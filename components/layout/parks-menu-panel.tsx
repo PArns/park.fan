@@ -281,6 +281,9 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
                       alt=""
                       fill
                       sizes="160px"
+                      style={
+                        park.imagePosition ? { objectPosition: park.imagePosition } : undefined
+                      }
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     {/* The scrim is what makes the name legible on a bright photo — the cards are

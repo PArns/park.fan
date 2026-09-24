@@ -1,4 +1,5 @@
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 
 /**
  * Placeholder for one `<AttractionCard>`, at the height the real card measures.
@@ -20,8 +21,8 @@ import { Skeleton } from '@/components/ui/skeleton';
  * the homepage's longest/shortest-wait cards, which are rides WITH a wait time by definition.
  *
  * It is deliberately one number rather than a `sm:` split, and that is the difference from
- * `ParkCardNearbySkeleton` next door: a park card's photo row is the dominant term and splits 145
- * against 365, while an attraction card that HAS its bottom panel measures 318 on a phone and 318
+ * `ParkCardNearbySkeleton` next door: a park card is a 100 px row on a phone and a 365 px card on a
+ * desk, while an attraction card that HAS its bottom panel measures 318 on a phone and 318
  * on a desk. The breakpoint only matters in the state this does not bet on.
  *
  * **`variant` is for the one context where the card is knowably shorter.** The homepage's
@@ -33,14 +34,26 @@ import { Skeleton } from '@/components/ui/skeleton';
  * Re-measure before changing either number — `pnpm measure:cls --late`, both states, and read the
  * desktop number in the same run.
  */
-export function AttractionCardSkeleton({ variant = 'full' }: { variant?: 'full' | 'stat' }) {
+export function AttractionCardSkeleton({
+  variant = 'full',
+  phoneRow = false,
+}: {
+  variant?: 'full' | 'stat';
+  /**
+   * Stands in for an `AttractionCard` with `phoneRow`: below `sm` it is that card's 72 px row
+   * (10 px padding, a 26 px first line, 6 px, a 22 px badge line, 8 px padding) and draws no
+   * bottom panel. From `sm` up nothing changes.
+   */
+  phoneRow?: boolean;
+}) {
   return (
     <article
-      className={
+      className={cn(
         variant === 'stat'
           ? 'relative isolate flex min-h-[232px] flex-col overflow-hidden rounded-[20px]'
-          : 'relative isolate flex min-h-[324px] flex-col overflow-hidden rounded-[20px]'
-      }
+          : 'relative isolate flex min-h-[324px] flex-col overflow-hidden rounded-[20px]',
+        phoneRow && 'max-sm:min-h-[72px] max-sm:rounded-[16px]'
+      )}
       style={{ boxShadow: 'var(--pk-card-shadow)' }}
     >
       {/* Background */}
@@ -72,11 +85,11 @@ export function AttractionCardSkeleton({ variant = 'full' }: { variant?: 'full' 
       </div>
 
       {/* Spacer */}
-      <div className="relative z-[2] flex-1" />
+      <div className={cn('relative z-[2] flex-1', phoneRow && 'max-sm:hidden')} />
 
       {/* Bottom glass panel */}
       <div
-        className="relative z-[3] shrink-0 overflow-hidden"
+        className={cn('relative z-[3] shrink-0 overflow-hidden', phoneRow && 'max-sm:hidden')}
         style={{
           padding: '12px 14px 13px',
           background: 'var(--pk-panel)',

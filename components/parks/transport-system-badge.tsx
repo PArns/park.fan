@@ -2,13 +2,14 @@ import { TramFront } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
-import { isTransportAttraction } from '@/lib/utils/transport-attractions';
+import type { AttractionKind } from '@/lib/api/types';
 
 interface TransportSystemBadgeProps {
-  /** The park's slug. Renders nothing when absent. */
-  parkSlug?: string | null;
-  /** The ride's slug. Renders nothing when absent. */
-  attractionSlug?: string | null;
+  /**
+   * The API's `attractionKind`. Anything other than `TRANSPORT` — including
+   * null and absent — renders nothing.
+   */
+  attractionKind?: AttractionKind | null;
   className?: string;
 }
 
@@ -32,16 +33,15 @@ interface TransportSystemBadgeProps {
  * here that asks a visitor to expect less rather than more, and a colour that
  * competed with the season's amber for attention would be arguing the opposite.
  *
- * Renders nothing unless the pair is curated — see `isTransportAttraction`.
+ * The same split as {@link VirtualLineBadge}: a curated fact about the ride,
+ * and `null` is unknown rather than "no". Nearly the whole catalogue is null,
+ * so an absent badge is not a statement that the ride is a normal one — see
+ * `docs/frontend/attraction-kind.md` in v4.api.park.fan.
  */
-export function TransportSystemBadge({
-  parkSlug,
-  attractionSlug,
-  className,
-}: TransportSystemBadgeProps) {
+export function TransportSystemBadge({ attractionKind, className }: TransportSystemBadgeProps) {
   const t = useTranslations('parks.transportSystem');
 
-  if (!isTransportAttraction(parkSlug, attractionSlug)) return null;
+  if (attractionKind !== 'TRANSPORT') return null;
 
   return (
     <Badge

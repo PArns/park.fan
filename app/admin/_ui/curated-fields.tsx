@@ -488,7 +488,15 @@ export function CuratedFieldsEditor({
     return [...byGroup.entries()];
   }, [fields]);
 
+  // One group at a time. The groups are still whatever the backend sends, in
+  // the order it sends them, so a new curated column lands in its tab with no
+  // change here. A chosen group that disappears from a refetch falls back to
+  // the first one instead of leaving an empty panel.
+  const [chosenGroup, setChosenGroup] = useState<string | null>(null);
+  const activeGroup = groups.find(([group]) => group === chosenGroup) ?? groups[0];
+
   const dirty = form.dirtyKeys.length > 0;
+  const dirtyKeySet = new Set(form.dirtyKeys);
 
   function handleSave() {
     const changed: FieldValues = {};
@@ -536,13 +544,62 @@ export function CuratedFieldsEditor({
           wiederhergestellt. Speichern oder verwerfen.
         </p>
       )}
-      {groups.map(([group, groupFields]) => (
-        <section key={group}>
-          <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">
-            {group}
-          </h3>
+      {/* The same underline tabs as the page's own bar one level up, one step
+          smaller. Each tab carries two counts, because a hidden group must not
+          hide work: how many of its fields are corrected, and — in the primary
+          colour — how many hold an unsaved edit. The save bar below still lists
+          every change across all groups. */}
+      {groups.length > 1 && (
+        <div className="border-border/50 flex flex-wrap gap-x-1 border-b">
+          {groups.map(([group, groupFields]) => {
+            const selected = group === activeGroup?.[0];
+            const overridden = groupFields.filter((field) => field.overridden).length;
+            const edited = groupFields.filter((field) => dirtyKeySet.has(field.key)).length;
+            return (
+              <button
+                key={group}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => setChosenGroup(group)}
+                className={cn(
+                  '-mb-px flex items-center gap-1.5 border-b-2 px-2.5 py-1.5 text-xs transition-colors',
+                  selected
+                    ? 'border-primary text-foreground font-medium'
+                    : 'text-muted-foreground hover:text-foreground border-transparent'
+                )}
+              >
+                {group}
+                {overridden > 0 && (
+                  <span
+                    className="text-muted-foreground tabular-nums"
+                    title={`${overridden} korrigiert`}
+                  >
+                    {overridden}
+                  </span>
+                )}
+                {edited > 0 && (
+                  <span
+                    className="bg-primary text-primary-foreground rounded-full px-1.5 text-[10px] leading-4 font-semibold tabular-nums"
+                    title={`${edited} ungespeichert`}
+                  >
+                    {edited}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {activeGroup && (
+        <section>
+          {groups.length === 1 && (
+            <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">
+              {activeGroup[0]}
+            </h3>
+          )}
           <div className="space-y-1">
-            {groupFields.map((field) => (
+            {activeGroup[1].map((field) => (
               <CuratedFieldRow
                 key={field.key}
                 field={field}
@@ -553,7 +610,7 @@ export function CuratedFieldsEditor({
             ))}
           </div>
         </section>
-      ))}
+      )}
 
       {/* A sticky bar rather than a button at the bottom of a long form: the
           field somebody just changed is usually not the last one, and hunting

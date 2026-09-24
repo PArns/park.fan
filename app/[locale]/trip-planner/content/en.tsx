@@ -20,16 +20,16 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
       >
         <P>
           A block is a ride, and its height is the wait predicted for its hour. Drag the same block
-          into a busier hour and it grows; drop it in a quieter one and it shrinks. What sits
-          between two blocks is not empty space but the transfer: how far it is, and whether there
-          is time for it. Getting out of the station and the ride itself are counted there rather
-          than in the block.
+          into a busier hour and it grows; drop it in a quieter one and it shrinks. Between two
+          blocks sits the transfer: how far it is, and whether there is time for it. Getting out of
+          the station and the ride itself are counted there rather than in the block.
         </P>
         <P>
           Nothing below is redrawn. These are the components the planner itself runs, fed with the
           answer the API gave on 4 September 2026 for Saturday 12 September at{' '}
           <A href={PARK}>Phantasialand</A>. Drag a block to another hour: it snaps to five minutes,
-          recomputes its height, and the transfers beside it follow. Nothing here is saved.
+          recomputes its height, and the transfers beside it follow. Nothing here is saved, so drag
+          away to your heart’s content.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -47,10 +47,11 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
       >
         <P>
           For every ride the API answers with a curve across the day, hour by hour. On this Saturday
-          Taron reads 45 minutes at ten, 50 at eleven, 40 at one and 50 again in the evening. That
-          is the real reason to ride Taron early: not because mornings are always quieter, but
-          because this day holds no quiet hour for this ride. Black Mamba does the opposite, falling
-          from 35 minutes at midday to 20 at six, and Chiapas climbs from 20 to 35.
+          Taron reads 45 minutes at ten, 50 at eleven, 40 at one and 50 again in the evening: ten
+          minutes between the best and the worst of the whole day. On this Saturday Taron is simply
+          popular all the time. A ride like that has no good window, so the planner puts it wherever
+          the rest of the day allows. Black Mamba, on the other hand, falls from 35 minutes at
+          midday to 20 at six, and Chiapas runs the other way, from 20 to 35.
         </P>
         <P>
           On top of that comes how far the figure typically lands from the truth, and that follows
@@ -67,9 +68,9 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           The planner also says what kind of forecast it is holding. Where the model works the day
           through hour by hour, it says so. Where the day&apos;s height is predicted and the shape
-          comes from earlier days — which is the case on this Saturday — it says that instead. Far
-          enough ahead the height itself gets thin and it drops to a rough estimate. For a day
-          nobody has ever measured there is no plan with numbers in it at all.
+          comes from earlier days, as on this Saturday, it says that instead. Far enough ahead the
+          height itself gets thin and it drops to a rough estimate. For a day nobody has ever
+          measured there is no plan with numbers in it at all.
         </P>
       </Chapter>
 
@@ -134,7 +135,8 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
           order.
         </P>
         <P>
-          It sorts for three things, and the ranking between them is the actual decision. First that
+          It sorts for four things, and the ranking between them is the actual decision. Your own
+          ranking comes first: whatever you pull to the front is the last to fall out. Next, that
           everything still happens before the park closes: a plan with one ride fewer that really
           takes place beats a plan with one more that will not. Then the total time spent queueing,
           which is what was asked for. And where two orders cost the same, the one that finishes
@@ -158,15 +160,15 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
           of over two hours to earn.
         </P>
         <P>
-          A lunch break at one stays at one, and a ride you have ticked off has happened and is not
-          re-planned; the rest is arranged around both. Afterwards it says what it did. &ldquo;18
-          min less queueing&rdquo; is the difference between two sums worked the same way, one
-          before the press and one after; where there is nothing to gain it says the order is
-          already right and the plan stays as it was. The headliner button reports no saving, since
-          the day is longer with the new rides in it — it counts instead how many rides came in and
-          how many are not for the group. Anything that no longer fits before closing is reported
-          after either button. An undo comes with it and puts back the state from before the press,
-          for as long as the planner is open.
+          A lunch break at one stays at one (the planner does not negotiate with hungry children),
+          and a ride you have ticked off has happened and is not re-planned; the rest is arranged
+          around both. Afterwards it says what it did. &ldquo;18 min less queueing&rdquo; is the
+          difference between two sums worked the same way, one before the press and one after; where
+          there is nothing to gain it says the order is already right and the plan stays as it was.
+          The headliner button reports no saving, since the day is longer with the new rides in it;
+          it counts instead how many rides came in and how many are not for the group. Anything that
+          no longer fits before closing is reported after either button. An undo comes with it and
+          puts back the state from before the press, for as long as the planner is open.
         </P>
         <Note>
           Where no wait times arrive, neither button is drawn at all. At Hansa-Park every ride costs
@@ -189,7 +191,7 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
           operator&apos;s listing gets neither.
         </P>
         <P>
-          Every showtime on this Saturday is a projection — Dragon Drago and Kroka&apos;s Lodge from
+          Every showtime on this Saturday is a projection: Dragon Drago and Kroka&apos;s Lodge from
           15 August, Miji African Dancers from the 29th. Kroka&apos;s Lodge&apos;s last performance
           at 19:00 does not appear on the axis: the park closes at 18:00, and projected times past
           closing are dropped.
@@ -213,15 +215,18 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           And what a plan really costs is decided on the day. A ride goes down, a show is cancelled,
-          a thunderstorm turns the afternoon around. So the plan is not a timetable but an argument
-          about whether the day can work at all. In the park you tick off what you have ridden, and
-          the planner records the wait that was actually there.
+          a thunderstorm turns the afternoon around, and a child in the Taron queue decides the
+          teacups would be nicer after all. So the plan is not a timetable but an argument about
+          whether the day can work at all. In the park you tick off what you have ridden, and the
+          planner records the wait that was actually there.
         </P>
         <P>
-          All of it lives in your browser. No account, no server, no sync: the plan is a file in
-          your own storage, and opening the planner without one starts the wizard with the three
-          questions that come first. Which park, which day, who is coming. The day itself is easiest
-          to pick in a park&apos;s <A href={`${PARK}/wait-time-calendar`}>wait-time calendar</A>.
+          All of it lives in your browser, with no account: the plan is a file in your own storage.
+          Only when you switch on notifications does a copy go to the server, and the planner says
+          so at that point. Opening the planner without a plan starts the wizard with the four
+          questions that have to be settled first: which park, which day, who is coming, and which
+          big rides belong in the day. The right day is easiest to find in a park&apos;s{' '}
+          <A href={`${PARK}/wait-time-calendar`}>wait-time calendar</A>.
         </P>
       </Chapter>
     </>

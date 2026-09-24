@@ -5,6 +5,7 @@ import { resolveAuthor } from '@/lib/blog/authors';
 import type { Locale } from '@/i18n/config';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { versionedPath } from '@/lib/media/focus';
+import { postPath } from '@/lib/blog/paths';
 
 const SITE_URL = 'https://park.fan';
 const ORG = {
@@ -155,7 +156,7 @@ export function BlogStructuredData({
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',
       headline: p.frontmatter.title,
-      url: `${SITE_URL}/${locale}/blog/${p.slug}`,
+      url: `${SITE_URL}/${locale}${postPath(p)}`,
       datePublished: p.frontmatter.date,
       dateModified: p.frontmatter.updatedAt ?? p.frontmatter.date,
       // Real cover photo preferred; generated OG card as fallback so every listed

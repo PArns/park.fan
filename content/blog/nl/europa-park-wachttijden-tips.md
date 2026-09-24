@@ -1,16 +1,16 @@
 ---
-title: 'Europa-Park: Duitslands grootste park, en waarom het er zo leeg aanvoelt'
+title: 'Europa-Park: Duitslands grootste park, en waar al die mensen blijven'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-08-23'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Rust sta je korter in de rij dan in het Phantasialand, dat een derde van
-  dat publiek trekt. Waarom uitgerekend de zondag de rustigste dag is, welke
-  novemberweken onze kalender helemaal op “laag” zet, en waarom je de Euro-Mir
-  nu moet rijden of nooit meer.
+  Geen park in Duitsland verkoopt meer tickets, en toch sta je in Rust korter
+  in de rij dan in het Phantasialand. Waarom uitgerekend de zondag de rustigste
+  dag is, waarom november van iedereen is die zonder waterbanen kan, en waarom
+  je de Euro-Mir nu moet rijden of nooit meer.
 tags:
   - europa-park
   - voltron
@@ -35,10 +35,10 @@ coverImage:
   caption: 'Voltron Nevera in het Kroatische themagebied. Zeven overkopelementen, en de steilste lancering ter wereld.'
   credit: 'park.fan'
 seo:
-  title: 'Europa-Park wachttijden & beste reistijd'
+  title: 'Europa-Park wachttijden: korte rijen in het drukste park'
   description: >-
-    Europa-Park wachttijden uit onze eigen metingen: zondag het rustigst,
-    november het leegst. Beste reistijd, prijzen 2026, route.
+    Europa-Park wachttijden, zelf gemeten: zondag is het rustigst, en op zaterdag
+    betaal je bij elke rij bij. Beste reistijd, prijzen 2026, route.
   keywords:
     - Europa-Park wachttijden
     - Europa-Park wachttijden nu
@@ -65,9 +65,9 @@ seo:
 Geen park in Duitsland verkoopt meer tickets dan het
 [Europa-Park](ref:europa-park?long), ruim zes miljoen per jaar. Toch sta je in
 Rust korter in de rij dan in het Phantasialand, dat maar een derde van dat
-publiek trekt.
+publiek trekt. Het klinkt als een tikfout in de persmap.
 
-Daar is niets aan geschat. We leggen de wachttijden in Rust al twaalf maanden
+Daar is niets aan geschat. We leggen de wachttijden in Rust sinds december 2025
 vast, baan voor baan, en wat er op dit moment bij de rijen staat, laat de
 [parkpagina](ref:europa-park?bare) elke vijf minuten opnieuw zien.
 
@@ -75,7 +75,8 @@ Wie er in 2026 heen gaat, ziet bovendien iets voor het laatst. Bij de ingang van
 de Euro-Mir staat een trainingsmodule van ruimtestation Mir. Geen replica. Een
 echte, waarin kosmonauten hebben geoefend. Drie van hen, Alexander Viktorenko,
 Joeri Malentsjenko en Alexander Serebrov, stonden er in juni 1997 bij toen de
-baan openging. Sindsdien lopen mensen eraan voorbij, houden het voor decor en
+baan openging. Sindsdien lopen mensen eraan voorbij, houden het voor nogal
+uitgebreid decor en
 stappen in een wagen die onderweg om zijn eigen as draait.
 
 Na het winterseizoen wordt de baan afgebroken. Het park heeft voor
@@ -83,11 +84,11 @@ Na het winterseizoen wordt de baan afgebroken. Het park heeft voor
 
 ![De hoofdingang van het Europa-Park, aan de gevel hangen landsvlaggen | De hoofdingang in Rust. Daarachter liggen 95 hectare en 18 Europese landen. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park wachttijden: een ruim kwartier gemiddeld
+## Europa-Park wachttijden, baan voor baan gemeten
 
 Onze wachttijdhistorie voor het Europa-Park begint in december 2025 en is sinds
-april compleet. Over alle weekdagen gerekend ligt de typische wachttijd
-parkbreed op **een ruim kwartier** (mediaan); op die ene dag van de tien waarop
+april compleet. Over alle weekdagen gerekend is de typische wachttijd parkbreed
+(de mediaan) **korter dan je bij zo’n drukte zou verwachten**; op die ene dag van de tien waarop
 het echt druk is, ligt hij daar duidelijk boven.
 
 De tien attracties waar je het langst staat, met de waarde van vandaag ernaast:
@@ -101,14 +102,15 @@ waarde op de tien procent drukste dagen. Geen van beide zegt iets over hoe een
 rij zich over de dag beweegt.
 
 Het Voletarium valt uit de toon. Zijn mediaan is de laagste van
-de tien langste, de piek precies zo hoog als die van Poseidon. Een
+de tien langste, de piek komt toch in de buurt van die van de grote achtbanen. Een
 vliegtheater laadt in grote porties. Tussen twee voorstellingen staat er
 nauwelijks iemand, op een volle ochtend reikt de rij tot op het voorplein. In
 het daggemiddelde blijft daar niets van over.
 
-Verder leest de lijst weinig spectaculair. **De langste rij van het park, voor de baan die in haar
-eerste jaar 3,25 miljoen ritten kreeg**, is, afgezet tegen ruim zes miljoen
-gasten, heel weinig. Ter vergelijking, dezelfde gegevens, dezelfde
+Verder is de lijst weinig spectaculair, en dat is juist het vreemde eraan.
+Voltron kreeg in zijn eerste jaar 3,25 miljoen ritten en heeft de langste rij
+van het park, en voor een park met ruim zes miljoen gasten is **die langste rij
+verrassend kort**. Ter vergelijking, dezelfde gegevens, dezelfde
 rekenmethode:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -121,17 +123,18 @@ en veranderen daarna een jaar lang niet. Voor 2024 zijn dat in Rust 6,2 miljoen
 voor het pretpark en niet de 7,4 miljoen van het hele resort, in het
 Phantasialand 2,1 miljoen, in de Efteling 5,6, in Parijs ongeveer tien.
 Toverland staat daar niet in, de 1,17 miljoen is de eigen opgave van het park.
-Rechts staat telkens de attractie met de hoogste mediaan waarvoor we minstens
-honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
+Bij elk park noemt de tabel de attractie met de hoogste mediaan waarvoor we
+minstens honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
 Bahn boven, maar op slechts 61 meetdagen, en een kinderachtbaan met
-een dunne meetbasis deugt niet als kengetal voor een heel park.
+een dunne meetbasis laten we niet namens een heel park spreken, hoe graag ze dat
+misschien ook zou willen.
 
-Met ongeveer een derde van het publiek heeft het Phantasialand parkbreed negen
-minuten langere rijen, wat aan de vorm van het terrein ligt en niet aan de
-banen; nagerekend in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
+Met ongeveer een derde van het publiek heeft het Phantasialand parkbreed merkbaar
+langere rijen. Dat ligt aan de vorm van het terrein en niet aan de banen,
+nagerekend in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
 Voor de [Efteling](/blog/efteling-disney-van-nederland) en
 [Toverland](/blog/toverland-troy-wachttijden-tips) hebben we dezelfde rekensom
-gemaakt. En in Parijs, waar ongeveer anderhalf keer zoveel gasten doorheen gaan,
+gemaakt. En in Parijs, waar ruim anderhalf keer zoveel gasten doorheen gaan,
 ligt het parkgemiddelde ongeveer daar waar in Rust de _langste_ rij van het park
 staat.
 
@@ -143,27 +146,28 @@ heb ik dat uitvoerig doorgerekend. Het Europa-Park is het beste bewijs daarvoor
 dat ik in Europa ken, omdat bij dit park allebei de kanten van de breuk extreem
 zijn.
 
-Boven staan 6,2 miljoen. Onder staan **96 attracties**, waarvan vijftien banen
-op rails, verdeeld over 95 hectare. Een gast die om tien uur bedenkt wat hij
+Boven staan 6,2 miljoen. Onder staan **96 attracties**, waarvan veertien
+achtbanen, verdeeld over 95 hectare. Een gast die om tien uur bedenkt wat hij
 hierna gaat doen, heeft hier geen drie opties maar dertig. De themagebieden
 zijn als landen gebouwd en liggen daardoor in een lange ketting in plaats van in
-een kring om één hoofdplein. De weg van Kroatië naar Ierland duurt. Dat zeurt in
-de benen en helpt tegen de rijen, omdat het de mensenmassa over de dag uit
+een kring om één hoofdplein. De weg van Kroatië naar Ierland duurt ongeveer zo lang als een rondje Ikea
+zonder de kortere weg. Dat is zwaar
+voor de benen en goed tegen de rijen, omdat het de mensenmassa over de dag uit
 elkaar trekt.
 
 Daar komt de lengte van het seizoen bij. Het seizoen 2026 loopt van 28 maart tot 9 januari 2027, aaneengesloten, met twee rustdagen met Kerstmis.
 Dat zijn **286 bedrijfsdagen** volgens de officiële seizoenskalender. Dezelfde vraag verdeelt zich daarmee over ongeveer
 zeventig dagen meer dan bij een park dat begin november dichtgaat en pas in april
 weer opengaat. Op papier komen er per dag krap 22.000 gasten, en 95 hectare kan
-dat aantal aan.
+dat aantal aan zonder te gaan zweten.
 
 ## Geen fast pass in het Europa-Park, en wat er in plaats daarvan is
 
-Het Europa-Park verkoopt geen wachtrijpas. Er bestaat geen product waarmee je je
-voor geld langs de rij schuift, zoals de
-[Quick Pass](/blog/phantasialand-wachttijden-tips) in het
-[Phantasialand](ref:phantasialand?bare) en de Fast Lane in de
-[Walibi-parken](/blog/walibi-holland-untamed-hard-gaan). Het park motiveert dat met de wens geen twee klassen gasten te
+Het Europa-Park verkoopt geen wachtrijpas. Je kunt bij de rij met je creditcard
+zwaaien zoveel je wilt, je komt er niemand mee voorbij. In het
+[Phantasialand](ref:phantasialand?bare) lukt dat met de
+[Quick Pass](/blog/phantasialand-wachttijden-tips), in de
+[Walibi-parken](/blog/walibi-holland-untamed-hard-gaan) met de Fast Lane. Het park motiveert dat met de wens geen twee klassen gasten te
 creëren.
 
 Dat weegt zwaarder dan de oppervlakte. Waar voordringen verkocht wordt, verhuist
@@ -181,13 +185,14 @@ en restplaatsen opvult: [Arthur](ref:europa-park/arthur?bare),
 [Voletarium](ref:europa-park/voletarium?bare),
 [Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare) en
 [Wodan](ref:europa-park/wodan-timburcoaster?bare). Kost niets, scheelt vaak de
-helft, en je zit nu eenmaal niet naast je gezelschap. Welke banen meedoen,
+helft, en je zit nu eenmaal niet naast je gezelschap, wat afhankelijk van het
+gezelschap ook een voordeel kan zijn. Welke banen meedoen,
 wisselt het park per seizoen.
 
 **Virtual Line.** Via de park-app kun je voor afzonderlijke attracties een
 tijdvenster reserveren in plaats van in de rij te staan. Laatst waren dat
-Poseidon en het Voletarium. Ook dat kost niets. Het park breekt wachtrijen af,
-maar verkoopt niemand een plek verder naar voren.
+Poseidon en het Voletarium. Ook dat kost niets, en tot je tijdvenster aan de
+beurt is, mag je ergens anders in de rij gaan staan.
 
 ```glossary-widget slug=single-rider
 
@@ -204,7 +209,7 @@ Eén enkele attractie, geen parkregel.
 
 ![Het zwarte gebouw van Eurosat Coastiality met wit masker en opschrift | Eurosat Coastiality, de tweede VR-installatie in het park. De eerste zit in de Alpenexpress. | wide](/media/europa-park/eurosat-coastiality-16x9.jpg)
 
-## Een park dat als showroom bedoeld was
+## Een showroom die een beetje uit de hand liep
 
 Het bedrijf is ouder dan het land waarin het staat. **Paul Mack** begon in
 **1780** een wagenmakerij in Waldkirch in het Zwarte Woud; gebouwd werden
@@ -234,20 +239,23 @@ De regel uit 1957 heeft een clou die je in het park kunt rijden. Het prototype
 van de wilde muis ontstond in Waldkirch, 26 kilometer hemelsbreed van Rust, toen
 nog van hout en tegenwoordig overal van staal. De
 **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** is er zo een. Het
-baantype en het park komen uit dezelfde werkplaats, en tot september 2024 zijn
-daar wereldwijd 174 achtbanen uit voortgekomen.
+baantype en het park komen uit dezelfde werkplaats, en die had tot september
+2024 wereldwijd 174 achtbanen geleverd, wilde muizen en alle andere typen bij
+elkaar opgeteld.
 
 Begin jaren zeventig had **Franz Mack** een praktisch probleem. Zijn klanten
 zaten in Europa, in de VS, in Japan, en wie een achtbaan wil kopen, wil er eerst
 in. Een catalogus volstaat daarvoor niet. Op een reis door de VS in **1972** kwam
 hij met zijn zoon **Roland Mack** op het idee de attracties op één plek op te
-bouwen, waar je ze kunt voordoen. Een showroom ter grootte van een park.
+bouwen, waar je ze kunt voordoen. Een meubelzaak waar je op de banken mag zitten,
+alleen maken deze banken een looping.
 
 Waar de naam vandaan komt, raadt bijna niemand goed. Met het landenthema heeft
 hij niets te maken, dat kwam pas tien jaar later. Het eerste stuk grond lag bij
 Breisach am Rhein, aan de **Europaweiher**, en daaraan dankt het park zijn naam.
 Van Breisach kwam niets terecht, omdat het terrein later als
-overstromingsgebied van de Rijn werd aangewezen. Een
+overstromingsgebied van de Rijn werd aangewezen (handig voor de waterbanen, voor
+de rest wat minder). Een
 tweede locatie bij Neuenburg am Rhein strandde op de bereikbaarheid. In Rust
 kocht de familie uiteindelijk het park van Schloss Balthasar en een aangrenzend
 sprookjespark, samen 16 hectare.
@@ -257,7 +265,7 @@ medewerkers. De entree kostte vijf mark voor kinderen en zes voor volwassenen,
 en op de eerste publieksdag kwamen er ongeveer 4.000 mensen. De lokale pers was
 sceptisch tot giftig, een kop uit die tijd luidde “De gieren cirkelen boven
 Rust”. Aan het eind van die eerste zomer stonden er **250.000 gasten** in de
-statistiek. In 1978 was het eerste miljoen bereikt, in 1991 het tweede.
+statistiek, en de gieren konden ergens anders gaan cirkelen. In 1978 was het eerste miljoen bereikt, in 1991 het tweede.
 
 Vijftig jaar later, in het jubileumjaar **2025**, meldde het park voor het eerst
 **meer dan zeven miljoen gasten** in een kalenderjaar, plus in november de
@@ -271,20 +279,20 @@ op plek 2, achter het Disneyland Park in Parijs.
 Daarachter zit een bedrijf met ruim 5.200 medewerkers uit meer dan honderd
 landen, onder wie 230 leerlingen in opleiding, op 95 bebouwde van in totaal 134
 hectare. Tien keer heeft het park de **Golden Ticket Award** als beste pretpark
-ter wereld gewonnen, het laatst in 2024 en 2025. Veel berichten spreken van een
-ononderbroken reeks. In 2023 won echter Dollywood, en werd het Europa-Park
+ter wereld gewonnen, het laatst in 2024 en 2025. Veel berichten maken daar een
+ononderbroken reeks van, alleen won in 2023 Dollywood en werd het Europa-Park
 tweede.
 
-Mack Rides bestaat nog steeds, en het park is tot op vandaag de
-referentie-installatie. Van de vijftien banen die er staan, komen er **dertien
+Voor Mack Rides is het park nog altijd de showroom die het moest worden. Van de
+veertien achtbanen die er staan, komen er **twaalf
 uit Waldkirch**. De andere twee zijn Silver Star van Bolliger & Mabillard en
 Wodan van Great Coasters International.
 
-## 18 landen op 95 hectare
+## Hoe Europa land voor land naar Rust verhuisde
 
 Dat het park naar Europese landen is ingedeeld, was in 1975 nog niet het plan.
 Dat begon pas in 1982, zeven jaar na de opening, met Italië.
-Daarna ging het hard: Nederland (1984), Engeland (1988), Frankrijk
+Daarna ging het hard, in pretparktempo dan: Nederland (1984), Engeland (1988), Frankrijk
 (1989), Oostenrijk en Scandinavië (1992), Zwitserland (1993), Spanje (1994),
 Duitsland (1996), Rusland (1998), Griekenland (2000), Portugal (2005), IJsland
 (2009), Ierland en Luxemburg (2016), Liechtenstein (2023), Kroatië (2024).
@@ -298,7 +306,7 @@ de opening.
 
 Voor het seizoen 2026 is het achttiende land erbij gekomen: **Monaco**, gebouwd
 rond de bestaande achtbaan Silver Star, die daarmee van het Franse naar het
-Monegaskische deel van het park is verhuisd. Côte d’Azur-architectuur, een
+Monegaskische deel van het park is verhuisd zonder een meter te verschuiven. Côte d’Azur-architectuur, een
 digitaal aquarium naar het voorbeeld van het Oceanografisch Museum, het
 Internationale Circusfestival van Monte-Carlo in de verbouwde Silver-Star-hal en
 een Café de Paris. De officiële opening in de zomer van 2026 vond plaats met
@@ -306,14 +314,14 @@ vorst Albert II.
 
 Mijn favoriete detail aan die indeling heeft met geen enkele attractie te maken.
 In het Ierse themagebied, de kinderwereld, staat een ooievaarsnest dat ouder is
-dan het themagebied eromheen, vier andere liggen verspreid over een
-medewerkersgebouw, de toren van het Santa Isabel en het dak van het Bell Rock.
-Daarin zitten geen decorooievaars. Het zijn wilde vogels die elk voorjaar terugkomen. Een
+dan het themagebied eromheen. Vier andere zitten op een medewerkersgebouw, op de
+toren van het Santa Isabel en op het dak van het Bell Rock. Decorooievaars zijn
+het niet. Het zijn wilde vogels die elk voorjaar terugkomen. Een
 medewerker ringt ze en weet daardoor dat het jaar in jaar uit dezelfde paren
-zijn. Miljoenen mensen lopen eronderdoor, en boven wordt zielsrustig
+zijn. Miljoenen mensen lopen eronderdoor, en boven wordt doodleuk
 doorgebroed.
 
-## De achtbanen van het Europa-Park, alle vijftien
+## De achtbanen van het Europa-Park
 
 ### Voltron Nevera powered by Rimac
 
@@ -349,24 +357,25 @@ simpelweg niet meer waar voor is, en daar verandert tot aan de eindrem niets
 meer aan. Op de draaischijf wordt er in de hele trein gelachen, omdat niemand
 erop rekent dat een achtbaan midden in de rit stil blijft staan en ronddraait.
 
-Aan records hangt navenant veel. Langste achtbaan met inversies van Europa en
+De lijst met records is zo lang dat hij een eigen wachtrij nodig heeft. Langste achtbaan met inversies van Europa en
 zesde langste wereldwijd, langste launch-coaster van Europa, wereldwijd de
 meeste inversies op een launch-coaster, gelijk met drie andere. In 2024 kwam de
 Golden Ticket Award als beste nieuwe achtbaan ter wereld erbij.
 
 Bij het eerste bezoek mis je het decor eromheen, omdat je naar de baan wilt.
 Verteld wordt een verhaal rond **Nikola Tesla**, geboren in het huidige Kroatië,
-en het station stelt een verbouwde waterkrachtcentrale voor. In het themagebied
+en het station is ingericht als verbouwde waterkrachtcentrale. In het themagebied
 staat de **Wardenclyffe Tower** meteen twee keer, die toren op Long Island
 waarmee Tesla vanaf 1901 stroom draadloos wilde overbrengen, tot het geld op
-was; in 1917 werd hij opgeblazen. In Rust staat hij weer, en wel verlicht.
+was; in 1917 werd hij opgeblazen. In Rust staat hij weer, verlicht,
+en de stroomrekening betaalt deze keer iemand anders.
 Sponsor Rimac bouwt een paar honderd kilometer zuidelijker elektrische
 hypersportwagens, en “nevera” is Kroatisch voor de plotselinge onweersbui die in
 de zomer boven de Adriatische Zee opsteekt.
 
-3,25 miljoen ritten in het eerste jaar, en de langste typische wachttijd van het
-park. Ruim boven het parkgemiddelde, voor de baan waarvoor half
-Zuid-Duitsland in 2024 naar Rust is gereden.
+Half Zuid-Duitsland is in 2024 voor deze baan naar Rust gereden. Het eerste
+jaar leverde 3,25 miljoen ritten op, en de typische wachttijd ligt ruim boven
+het parkgemiddelde, hoger dan bij welke andere baan in het park ook.
 
 **[Silver Star](ref:europa-park/silver-star)** is de oude dame met de records. In
 2002 gebouwd door **Bolliger & Mabillard** uit Monthey in Wallis, als hun
@@ -383,7 +392,7 @@ baan, geen enkele inversie. De naam komt van de sponsor, de ster uit Stuttgart.
 **[Wodan](ref:europa-park/wodan-timburcoaster)** is van 2012 en de enige houten
 achtbaan van het park, gebouwd door **Great Coasters International**. Veertig
 meter hoog, ruim een kilometer lang, 100 km/u en tot 3,5 g. De bouwcijfers lezen
-als uit een andere branche: zo’n vijftig timmerlieden, 1.000 kubieke meter
+als het boodschappenlijstje voor een heel groot tuinhuis: zo’n vijftig timmerlieden, 1.000 kubieke meter
 grenenhout, 21.000 balken, 100.000 schroefverbindingen en twee miljoen spijkers.
 
 ```glossary-widget slug=wooden-coaster
@@ -400,9 +409,10 @@ aanvoelt alsof je in slow motion wordt omgedraaid.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** loopt sinds
 1989 volledig binnen in een zilveren bol. In 2018 ruilde de baan het
 ruimtevaartthema in voor Parijs, met een Moulin-Rouge-gevel ervoor. 198 seconden
-in het donker. Dat ze met haar typische wachttijd op
-plek vier staat, heeft een banale reden. Ze is een van de weinige banen die bij
-regen betrouwbaar doorrijden.
+in het donker. Dat ze qua typische wachttijd meekomt met de grote
+buitenbanen, heeft een banale reden. Ze is een van de weinige banen die bij
+regen betrouwbaar doorrijden, en als het in Rust regent, bedenkt iedereen dat op
+hetzelfde moment.
 
 ![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel | De hele rit speelt zich binnen in de bol af. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
@@ -420,16 +430,16 @@ een wilde muis met draaiende wagens, de
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** uit 1984, de
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Ierland, plus
 **[Arthur](ref:europa-park/arthur)**, een hangende powered coaster door het
-Koninkrijk van de Minimoys, die de op een na langste rij van het
-park heeft. De vijftiende is de **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dezelfde baan als
-de Enzian, alleen met VR-bril en als aparte attractie geteld.
+Koninkrijk van de Minimoys, waarvan de rij voor geen van de grote achtbanen
+onderdoet. En de **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dezelfde baan als
+de Enzian, alleen met VR-bril en bij ons als aparte attractie geteld.
 
 ![Een paddenstoelenhuis in de hal van Arthur, boven alles de rail van de baan | Alles is te groot, omdat de Minimoys te klein zijn. | wide](/media/europa-park/arthur-16x9.jpg)
 
 En dan is er nog het **[Voletarium](ref:europa-park/voletarium)** uit 2017, een
 vliegtheater van Brogent dat je met vrij bungelende benen boven Europa laat
-zweven. Geen achtbaan, maar wel de attractie waarbij je jezelf het duurst kunt
-verplannen.
+zweven. Geen achtbaan, maar wel de attractie waar een verkeerde planning je het
+duurst komt te staan.
 
 ```glossary-widget slug=flying-theater
 
@@ -437,7 +447,7 @@ verplannen.
 
 ## De ritten zonder rails, en de brand van 2018
 
-Achtbanen zijn waar mensen voor afreizen. Ze zijn echter maar een zesde van het
+Achtbanen zijn waar mensen voor afreizen. Ze zijn echter maar een zevende van het
 bestand. In die 96 attracties zijn de 62 eetgelegenheden niet meegeteld, en de
 32 shows ook niet.
 
@@ -454,10 +464,9 @@ tientallen miljoenen. Op 6 juni maakten politie en openbaar ministerie bekend
 wat de brand had veroorzaakt: een technisch defect in de omgeving van de
 fjord-rafting.
 
-Opmerkelijk is wat er daarna gebeurde. De volgende ochtend om negen uur stond
-het park weer open, nog geen vierentwintig uur na de grote brand, met
-afzettingen alleen rond het afgebrande deel. Het Scandinavische themagebied had
-daarna tot 23 juli 2019 en ruim 350.000 arbeidsuren nodig voordat het er weer
+De volgende ochtend om negen uur was het park weer open, nog geen
+vierentwintig uur na de grote brand, met afzettingen alleen rond het afgebrande
+deel. Het Scandinavische themagebied had tot 23 juli 2019 en ruim 350.000 arbeidsuren nodig voordat het er weer
 stond.
 
 De piraten deden er langer over. **794 dagen** na de brand, op 28 juli 2020,
@@ -475,8 +484,9 @@ uit 2018 is een Elzasser boerderijverhaal met dinosauriërs in de stal. De boeri
 tutoyeert je, de beesten dragen gebreide sjaals, en op een gegeven moment merk je
 dat je in een darkride zit te grijnzen.
 **[Josefina’s Keizerlijke Toverreis](ref:europa-park/josefinas-magical-imperial-journey)**
-uit 2021 is het Oostenrijkse antwoord daarop, rustiger en met een typische
-wachttijd van vijf minuten het meest ontspannen kwartier in het hele park.
+uit 2021 is het Oostenrijkse antwoord daarop, rustiger, met een van de
+kortste rijen van het park en daarmee het meest ontspannen kwartier dat het te
+bieden heeft.
 **[Jim Knoop](ref:europa-park/jim-button-journey-through-morrowland)** uit 2019
 rijdt door Lummerland, en het
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** is het spookkasteel
@@ -487,7 +497,8 @@ in het Italiaanse themagebied.
 Rails heeft het **[Atlantis Adventure](ref:europa-park/atlantis-adventure)** ook
 niet nodig, een interactieve boottocht in het Griekse themagebied waarin je
 onderweg op doelen schiet. Wie kinderen bij zich heeft, doet hem twee keer,
-omdat de eerste keer niemand op de score let.
+omdat de eerste keer niemand op de score let en de tweede keer niemand op iets
+anders.
 
 ![Het opschrift “Abenteuer Atlantis” met twee gesneden koppen boven de ingang | De ingang ligt in Griekenland, meteen achter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
@@ -495,15 +506,14 @@ Vanaf de **[Euro-Tower](ref:europa-park/euro-tower)**, sinds 1983 in Rust, kijk 
 helder weer tot in de Vogezen. De panoramabaan stopt op drie stations, in
 Luxemburg en IJsland rijden monorails, en de EP-Express brengt je naar de
 hotels. Wie hier voor het eerst is, onderschat bijna altijd hoeveel van een
-parkdag uit lopen bestaat.
+parkdag uit lopen bestaat, en voelt dat ’s avonds in de kuiten.
 
 Dan zijn er nog de **shows**. Tweeëndertig telt onze database, van kunstschaatsen
 via acrobatiek tot de poppenspelen. Acht daarvan lopen strikt genomen hiernaast in
 Rulantica, in het park zelf zijn het er twee dozijn, en die spelen op een volle
 zomerdag krap tweehonderd keer. Wachttijdstatistieken registreren daar niets
-van. Voor de rijen zijn ze toch een van de belangrijkste factoren in het park.
-
-Wie in een show zit, staat nergens in de rij.
+van. De rijen merken het toch, want wie net naar het kunstschaatsen zit te
+kijken, staat zolang nergens in de rij.
 
 ## Euro-Mir: het laatste seizoen
 
@@ -521,14 +531,15 @@ Daarna komt een volledig nieuw bedacht ruimtevaartgebied met een familieachtbaan
 van Mack Rides, gepland voor **2028**. De twee markante torens moeten om
 constructieve redenen in vergelijkbare vorm terugkeren, het ruimtethema blijft,
 en het park spreekt van een samenwerking met de Europese ruimtevaartorganisatie
-**ESA**. Hoeveel daarvan uiteindelijk in de afgewerkte installatie zit, valt te
-bezien.
+**ESA**. Hoeveel ruimtevaartorganisatie er uiteindelijk in een familieachtbaan zit,
+valt te bezien.
 
-Wie toch al overweegt om er in 2026 heen te gaan, moet het niet naar 2027 doorschuiven. Tot het afscheidsevent op 9 januari 2027 komt er geen zomer meer.
+Wie toch al overweegt om er in 2026 heen te gaan, moet het niet naar 2027 doorschuiven. Tot het afscheidsevent op 9 januari 2027 komt er geen zomer meer, alleen nog glühwein.
 
 ## Beste reistijd: wanneer het in het Europa-Park het rustigst is
 
-Bij de weekdag wijkt het Europa-Park af van alles wat ik verder meet.
+Bij de weekdag loopt het Europa-Park uit de pas met alles wat ik verder
+registreer.
 
 ### De weekdag
 
@@ -536,9 +547,8 @@ Bij de weekdag wijkt het Europa-Park af van alles wat ik verder meet.
 
 ```
 
-Op zondag is het in Rust het rustigst, tien minuten onder de zaterdag en vier
-onder de beste werkdag. In de Duitse parkvergelijking is dat een uitzondering.
-In het [Phantasialand](ref:phantasialand?bare) is de maandag de leegste dag en
+Op zondag is het in Rust het rustigst, rustiger dan op elke werkdag en een stuk
+rustiger dan op zaterdag. In het [Phantasialand](ref:phantasialand?bare) is de maandag de leegste dag en
 de zondag na de zaterdag de drukste, in de [Efteling](ref:efteling?bare) is het
 de donderdag; allebei uitgewerkt in de
 [Phantasialand-gids](/blog/phantasialand-wachttijden-tips) en de
@@ -553,7 +563,7 @@ het is goed voor 27 procent van alle hotelboekingen.
 
 Zo’n park leeft van het weekendtripje. Op zaterdag reizen de mensen aan, op
 zondag rijden ze na het ontbijt weer naar huis, en velen komen helemaal niet
-meer in het park. De zondag is hier geen uitstapdag, het is een vertrekdag.
+meer in het park, omdat de auto al ingepakt is en de kofferbak alleen nog met een knie dichtgaat.
 
 Daarom werkt voor Rust ook de Duitse vakantiekalender in zijn eentje niet als
 planningsbasis. Onze kalender rekent voor dit park daarnaast de Franse vakanties
@@ -565,17 +575,17 @@ een volle dinsdag.
 
 Hemelvaartsdag valt altijd op een donderdag, en vol wordt niet de feestdag. Vol
 wordt de vrijdag erna, die half Duitsland vrij neemt. In onze data staat
-donderdag 14 mei 2026 op “matig” en de vrijdag erop op “hoog”. Op zondag lag het
-park weer op “laag”. Bij Sacramentsdag is dezelfde vorm nog scherper. De
-feestdag op 4 juni stond op “laag”, de brugvrijdag op de 5e op “hoog”.
+donderdag 14 mei 2026 op “matig” en de vrijdag erop op “zeer hoog”. Op zondag lag
+het park weer op “laag”. Bij Sacramentsdag hetzelfde patroon: de feestdag op
+4 juni stond op “laag”, de brugvrijdag op de 5e op “hoog”.
 
-Eén voorbehoud daarbij. We hebben precies één gemeten brugdag, en uitgerekend
-die viel mild uit. Op 15 mei 2026 trok er een onweersbui over, warmer dan twaalf
-graden werd het niet, en toch was het genoeg voor “hoog”. Het kanaal Parkfan95
-rijdt al jaren juist op die vrijdagen naar Rust en filmt het resultaat. Voor
+Eén voorbehoud daarbij: op beide brugvrijdagen was het weer beroerd. Op 15 mei
+2026 trok er een onweersbui over, warmer dan twaalf graden werd het niet, en toch
+was het genoeg voor “zeer hoog”; op 5 juni onweerde het opnieuw. Het kanaal Parkfan95
+rijdt al jaren juist op die vrijdagen naar Rust, vrijwillig, en filmt het resultaat. Voor
 2026 luidt de titel “De leegste volle dag”, voor de jaren daarvoor
 “Bezoekersmassa’s, hoge wachttijden en veel auto’s”. Een brugdag met
-zonneschijn ziet er anders uit dan onze ene meetwaarde.
+zonneschijn ziet er anders uit dan onze twee meetwaarden.
 
 https://www.youtube.com/watch?v=aRH5xvAKE_I
 
@@ -591,14 +601,15 @@ de naam, ik had toevallig eerder het domein gekocht.
 ```
 
 Voorzichtig met januari, maart en december. Daarachter staan maar drie tot zes
-meetdagen, wat in de kolom rechts staat. De orde van grootte klopt, op de losse
+meetdagen, en de tabel vermeldt dat. De orde van grootte klopt, op de losse
 minuut zou ik me daar niet vastleggen. Houdbaar is het blok april tot en met
-augustus, en dat zegt: mei en juni zijn de rustigste zomermaanden, augustus is
+september, en dat zegt: mei en juni zijn de rustigste zomermaanden, augustus is
 de drukste.
 
-Vier maanden ontbreken helemaal: februari, september, oktober en november, en
-maart bijna. Voor het najaar hebben we uit dit venster dus geen enkele meetdag.
-Over Halloween en HALLOWinter zeggen deze cijfers niets.
+Februari ontbreekt omdat het park dan dicht is, en maart is dun omdat het seizoen
+pas eind maart begint. Oktober en november hadden bij onze laatste controle, in
+september 2026, nog geen enkele meetdag. Of de tabel inmiddels iets zegt over
+Halloween en HALLOWinter, zie je aan het aantal meetdagen ernaast.
 
 ### De vier weken die bijna niemand kent
 
@@ -615,12 +626,10 @@ Het park draait vier seizoenen achter elkaar:
 halloweendecor langzaam wordt afgebroken en het winterdecor wordt opgebouwd. Het
 grootste deel van de 96 attracties draait door, Voltron, Wodan en Eurosat
 inbegrepen, de waterbanen niet doorlopend. Bijna niemand plant zijn parkbezoek
-voor begin november.
+voor begin november; dan zoek je eerder de handschoenen van vorige winter.
 
-Onze druktevoorspelling voor de komende drie maanden laat dat vrij duidelijk
-zien. Van de 90 voorspelde dagen liggen er **19 in november, en alle 19 staan op
-“laag”**. Geen enkele matige dag, geen enkele volle. In oktober zijn het er 16
-van de 31, in september 11 van de 30.
+Onze druktevoorspelling laat dat vrij duidelijk zien: **de meeste werkdagen in de
+HALLOWinter-weken staan op “laag”**, en voller wordt het vooral op zaterdag.
 
 ```best-days-widget slug=europa-park
 
@@ -629,24 +638,24 @@ van de 31, in september 11 van de 30.
 Gratis is dat niet. Het park opent pas om 11 uur en sluit om 19 uur, dat is een
 uur minder dan in de zomer, het wordt vroeg donker, en de waterattracties
 draaien niet allemaal. Als Poseidon en Atlantica je niets kunnen schelen en je
-Voltron zonder noemenswaardige rij wilt rijden, ga dan op een zondag in
-november. De 15e zou zo’n dag zijn.
+Voltron zonder noemenswaardige rij wilt rijden, ga dan in november door de week.
+Welke dag er nu het best uitziet, laat de kalender hierboven zien.
 
 ## De perfecte dag in het Europa-Park
 
 **Sta bij de ingang voordat er geopend wordt, en ga daarna naar het Voletarium.**
 
-Dat klinkt als een fout. Onze rope-drop-analyse vergelijkt voor elke attractie
+Dat klinkt alsof ik de lijst ondersteboven heb gelezen. Onze rope-drop-analyse vergelijkt voor elke attractie
 de wachttijd meteen bij opening met de hoogste dagpiek die daar op een volle dag
-is gemeten. Bij het Voletarium staan ruim twintig minuten tegenover tachtig, en dat is
-veruit de grootste besparing in het hele park.
+is gemeten. Bij het Voletarium is de rij bij opening maar een fractie van die
+piek, en dat is veruit de grootste besparing in het hele park.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Bij Voltron ligt diezelfde waarde op 20 minuten, bij Arthur en Silver Star op 25.
-Allemaal netjes, maar niets waarvoor je om acht uur opstaat. De achtbanen laten
+Bij Voltron, Arthur en Silver Star levert een vroege start nog niet de helft
+daarvan op. Allemaal netjes, maar niets waarvoor je om acht uur opstaat. De achtbanen laten
 zich over de dag verdelen, het vliegtheater niet.
 
 Hoe sterk zich dat over de dag verdeelt, zie je pas in het uurprofiel: de
@@ -660,19 +669,19 @@ drukste uur van elke attractie staat vet.
 ![Optakeling en eerste afdaling van Silver Star boven de boomkruinen, avondlucht | Sinds 2026 hoort de baan bij het nieuwe themagebied Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
 De regel die me de eerste keer verraste, is die van Silver Star. Om tien uur
-staat er de langste rij van de dag, vanaf twaalf uur is het ongeveer de helft, en
-daar verandert tot sluitingstijd niets meer aan. Een baan van 73 meter die de halve dag half
-leeg draait, omdat iedereen er ’s ochtends al is geweest.
+staat er de langste rij van de dag, vanaf twaalf uur wordt die merkbaar korter en pas
+tegen de avond trekt ze weer aan. Een baan van 73 meter die de hele middag onder
+haar kunnen blijft, omdat iedereen er ’s ochtends al is geweest.
 
 **De drukste uren liggen tussen tien en twaalf.** De meeste banen hebben hun
 maximum om tien of om elf uur; alleen Arthur en de twee waterbanen lopen pas in
-de middag vol. Wie rustig ontbijt en om half elf aankomt, loopt precies de
-dagpiek in.
+de middag vol. Wie rustig ontbijt en om half elf aankomt, loopt met een volle maag
+precies de dagpiek in.
 
 ![Een uiteengeslagen houten schip in het waterbassin van Poseidon, daarachter een vestingmuur | Bij opening bijna leeg, om elf uur de langste rij van de dag. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-En dan de waterbanen. Bij opening staan ze allebei op een kwartier of minder;
-Poseidon piekt om elf uur, Atlantica pas in de middag. Wie bereid is ’s ochtends nat te worden,
+En dan de waterbanen. Bij opening hebben ze allebei nauwelijks een rij;
+Poseidon piekt om elf uur, Atlantica pas in de middag. Wie bereid is ’s ochtends nat te worden en de rest van de ochtend op vochtige sokken rond te lopen,
 rijdt ze allebei in de tijd die hij ’s middags voor één ervan nodig zou hebben.
 
 Een dagindeling die daaruit volgt:
@@ -681,8 +690,8 @@ Een dagindeling die daaruit volgt:
    om tien uur staat er al de langste rij van de dag.
 2. **Daarna meteen naar Kroatië, naar Voltron.** Bij opening is zijn rij het
    kortst, een uur later de langste van het hele park.
-3. **Tussen tien en twaalf niets forceren.** Dat zijn de twee uren voor het
-   ontbijt, een show of het sprookjesbos. Alles wat nu een rij heeft, heeft die
+3. **Tussen tien en twaalf niets forceren.** Dat zijn de twee uren voor een
+   tweede ontbijt, een show of het sprookjesbos. Alles wat nu een rij heeft, heeft die
    ’s middags korter.
 4. **Vanaf twaalf uur Silver Star**, dan Eurosat, Piraten in Batavia, Josefina’s
    Keizerlijke Toverreis en het Castello dei Medici. Binnen is het op hete dagen
@@ -693,7 +702,7 @@ Een dagindeling die daaruit volgt:
    het uur voor sluiting onder het openingsuur. Alleen de twee waterbanen zijn
    ’s ochtends leger.
 
-Eén kanttekening daarbij: deze curves zijn gemiddelden over alle gemeten
+Deze curves zijn wel gemiddelden over alle gemeten
 bedrijfsdagen, hoogzomer en winterseizoen samen. Op een korte
 novemberdag van elf tot negentien uur liggen de getallen lager en valt de piek
 eerder.
@@ -702,11 +711,11 @@ eerder.
 
 ```
 
-## Drie fouten die in het Europa-Park bijzonder veel tijd kosten
+## Zo gooi je in het Europa-Park tijd weg
 
-**De zaterdag boeken omdat het hotel op zaterdag vrij is.** De zaterdag kost je
-tien minuten per keer aansluiten ten opzichte van de zondag. Bij tien attracties
-op een dag is dat goed anderhalf uur. Blijf je toch twee nachten, draai de
+**De zaterdag boeken omdat het hotel op zaterdag vrij is.** De zaterdag is de
+drukste dag van de week, de zondag de rustigste, en het verschil betaal je bij
+elke rij opnieuw. Bij tien attracties op een dag dus tien keer. Blijf je toch twee nachten, draai de
 volgorde dan om: zaterdag aankomen, Rulantica of het dorp bekijken, zondag het
 park in.
 
@@ -717,25 +726,24 @@ of in Basel-Stadt de herfstvakantie. Onze kalender rekent de Franse en de
 Zwitserse vakanties voor dit park mee, de vakantiekalender van één enkele
 deelstaat doet dat niet.
 
-**De dinsdag voor een rustige werkdag houden.** Van maandag tot en met vrijdag is
-hij de drukste, drukker dan maandag, donderdag en vrijdag. Als er toch maar één
-doordeweekse dag in aanmerking komt, neem dan een van die drie, die liggen alle
-drie gelijk.
+**De dinsdag voor een rustige werkdag houden.** In onze data is hij de drukste
+werkdag, al is het krap. Als er toch maar één doordeweekse dag in aanmerking
+komt, neem dan de vrijdag, die komt het dichtst bij de zondag. Maandag, woensdag
+en donderdag liggen daarachter gelijk.
 
 ## Halloween, HALLOWinter, winter
 
 Vanaf **26 september** liggen er ruim **180.000 pompoenen** in het park, plus
-herfstdecoratie in alle achttien landen. Een horrorevent is dat niet. Het kost
+herfstdecoratie in alle achttien landen. Griezelig is hooguit de hoeveelheid pompoen. Het kost
 geen toeslag en loopt in de gewone dagexploitatie.
 
-Het horrorevent vindt hiernaast plaats, ’s avonds, met een eigen ticket en een
-eigen leeftijdsgrens. Het heet Traumatica, en wie het voor een extraatje voor
-’s avonds aanziet, verplant zijn dag.
+Het echte horrorevent vindt hiernaast plaats, ’s avonds, met een eigen ticket en een
+eigen leeftijdsgrens, en het heet Traumatica.
 
 Vanaf **28 november** is het winter. Kerstmarkten, een ijsbaan, ijsshows en
 gebieden die er alleen in deze weken zijn, zoals de Winter World of Wonder en de
-sleerit Snowflake. De typische wachttijd in december lag bij ons een tikje
-boven augustus, zij het op maar zes meetdagen. Op **24 en
+sleerit Snowflake. De typische wachttijd in december lag bij ons ongeveer
+op het niveau van augustus, zij het op maar zes meetdagen. Op **24 en
 25 december** is het dicht, hotelgasten mogen tot 10 januari blijven.
 
 ## Traumatica, het park in het park
@@ -805,7 +813,7 @@ koopt, geeft daarmee het laatste parkuur weg.
 kost een dag voor volwassenen vanaf 12 jaar **67 tot 76 €**, voor kinderen van 4
 tot 11 en senioren vanaf 60 **56,50 tot 65 €**, kinderen onder de 4 zijn gratis.
 Twee dagen kosten 127 tot 143,50 respectievelijk 105 tot 119 €. Aan de kassa
-komt er **10 € per ticket** bovenop, wat het park zelf ook open communiceert. Wie
+komt er **10 € per ticket** bovenop, als boete voor het niet vooruit boeken. Wie
 in het resort overnacht, krijgt de beste prijs ongeacht de datum: 67 € voor één
 dag, 127 voor twee, 160 voor drie.
 
@@ -816,7 +824,7 @@ gezinnen leveren twee dagen achter elkaar meer op.
 
 **Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**, en is van
 daaraf bewegwijzerd. Vanuit Freiburg is het zo’n 35 kilometer, vanuit Straatsburg
-zo’n 40, vanuit Bazel zo’n 80, vanuit Karlsruhe zo’n 130. Met de trein rijd je
+zo’n 40, vanuit Bazel zo’n 80, vanuit Karlsruhe zo’n 130, wegwerkzaamheden op de A5 niet meegerekend. Met de trein rijd je
 tot Ringsheim en van daar met de shuttlebus. **Parkeren kost 10 €** per dag,
 Rulantica heeft een eigen parkeerplaats voor dezelfde prijs.
 
@@ -845,18 +853,18 @@ blue-fire-Dome.
 
 ### Hoe lang zijn de wachttijden in het Europa-Park?
 
-Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op een ruim
-kwartier (mediaan). De langste rij heeft Voltron Nevera, gevolgd door Arthur,
-Wodan en Eurosat. Wat er vandaag bij de rij staat, zie je bij de [actuele
+Parkbreed korter dan in het Phantasialand of in het Disneyland Park in Parijs;
+de vergelijking staat in de tabel hierboven. De langste rij heeft meestal
+Voltron Nevera, met Arthur, Wodan en Eurosat dicht bij elkaar daarachter. Wat er vandaag bij de rij staat, zie je bij de [actuele
 Europa-Park wachttijden](ref:europa-park?bare), elke vijf minuten bijgewerkt en
 met een voorspelling voor de komende dagen.
 
 ### Wanneer is het in het Europa-Park het rustigst?
 
 De **zondag** is de rustigste weekdag, de zaterdag de drukste, en mei en juni
-zijn de rustigste zomermaanden. Het leegst is het in het
-HALLOWinter-seizoen begin november. [In onze voorspelling voor de komende drie
-maanden](ref:europa-park?calendar) staan alle 19 novemberdagen op “laag”.
+zijn de rustigste zomermaanden. Heel rustig zijn ook de werkdagen van het
+HALLOWinter-seizoen in november: [onze voorspelling](ref:europa-park?calendar)
+zet de meeste daarvan op “laag”.
 
 ### Is er in het Europa-Park een fast pass?
 
@@ -875,9 +883,10 @@ betalen niets. Aan de dagkassa komt er 10 € per ticket bij. Parkeren kost 10 �
 
 ### Hoeveel achtbanen heeft het Europa-Park?
 
-Het park zelf noemt er **14**. Volgens onze indeling zijn het vijftien banen op
-rails, omdat de Alpenexpress bij ons twee keer staat, één keer als Enzian en één
-keer als Coastiality met VR-bril. Dertien daarvan komen van Mack Rides uit
+**14**, zo tellen het park en de achtbaandatabase RCDB het. De Alpenexpress
+Coastiality met VR-bril is daarbij geen eigen baan, maar hetzelfde spoor als de
+Enzian. Twaalf van de veertien komen van Mack
+Rides uit
 Waldkirch, Silver Star van Bolliger & Mabillard en Wodan van Great Coasters
 International.
 
@@ -909,9 +918,9 @@ dubbele van een dagkaart.
 Ja, met één kanttekening. De winterdecoratie, de ijsbaan en de kerstmarkten zijn
 er alleen dan, daar staat tegenover dat het eerder donker wordt, dat het park al
 om 19 uur dichtgaat en dat de waterbanen niet doorlopend draaien. De wachttijden
-liggen in december zelfs een tikje hoger dan in augustus.
-Voor november zet onze voorspelling daarentegen alle 19 dagen die ze afdekt op
-“laag”; gemeten wachttijden hebben we uit die maand nog niet.
+lagen in december ongeveer even hoog als in augustus.
+Voor de werkdagen in november geeft onze voorspelling daarentegen meestal
+“laag”; gemeten wachttijden uit november hebben we nog niet.
 
 ## Waarom ik voor de Euro-Mir nog een keer terugga
 
@@ -932,7 +941,7 @@ Of het in Rust regent, bepaalt wat Eurosat doet:
 
 ```
 
-En de twee waarvoor je het langst zult staan, met hun actuele cijfers:
+En twee waarvoor je lang zult staan, met hun actuele cijfers:
 
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)

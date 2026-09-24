@@ -4,6 +4,216 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
+
+Wer im Park steht und keinen Plan hat, sieht auf der Parkseite („In deiner Nähe“) und auf der
+Startseite (`InParkView`) bis zu drei Fahrten, deren Live-Wartezeit mindestens 10 Min. unter der
+Prognose der nächsten zwei Stunden liegt („Jetzt 5 Min., ab 13:00 laut Prognose 30 Min.“). Die
+Regel `suggestNextRides` (`lib/planner/next-best-ride.ts`) liest die Kurve aus `/plan/day`, zählt
+eine Stunde erst ab der Ankunft (Laufzeit nach `leg.ts`), nie die Schließstunde, und lässt
+geschlossene, außer Saison stehende und nicht lesbare Fahrten weg, ebenso solche, für die
+jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Einstellungen des Tages.
+`/plan/day` wird nur im Park geholt. Geprüft von
+`pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
+
+## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
+
+Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
+40 px und das Band mit `pt-2.5 pb-3`. Die Startseiten-Variante (`tile`) hat eine 48-px-Plakette
+und einen `text-2xl`-Titel. `ChapterPanel`, `PageSection` und `AttractionHistoryPanel` beginnen
+mit 24 statt 40 px Abstand. Gemessen mit `pnpm measure:mobile-height` bei 390 × 664: Startseite
+−798 px, Ride-Seite Taron −226 px, Statistik −92 px, Parkseite −84 px, Kalender −80 px. Ab `sm`
+ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen Werten). Die
+Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
+den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
+
+## Unreleased – Park-Karten sind auf dem Handy eine Zeile (PAR-432)
+
+Unter `sm` rendert `ParkCard` keine Karte mehr, sondern eine Zeile mit vier festen Zeilen: Name mit
+Favoriten-Stern, Ort · Entfernung, `ParkStatusBadge` und `CrowdLevelBadge`, dann Schließ- oder
+Öffnungszeit (`ParkCardScheduleFooter compact`). Hat der Park ein Foto, steht links ein Thumbnail
+64 × 40 mit dem Fokuspunkt. „Nächster offen“ steht als Text hinter der Uhrzeit statt als drittes Badge. Die Zeile ist 100 px hoch, die Karte war 146 px. Gemessen mit
+`measure:mobile-height` bei 390 × 664: Startseite 27.905 → 27.420 px, Deutschland 3.724 → 3.312 px,
+Niederlande 2.706 → 2.522 px, Phantasialand 12.232 → 12.141 px. `measure:cls --late` auf der
+Deutschland-Seite mobil, spät: 0,2322 → kein Wert mehr, weil die Badges mit dem Batch-Call kommen und
+die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung mit, der Desktop
+bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
+Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
+
+## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
+
+Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
+erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
+Kalender-Knopf für den Tagesplaner. Die senkrechte Lasche am rechten Rand wird auf dem Handy nicht
+mehr gezeichnet, weil sie mit 24 × 102 px über Text und Karten lag. Beide Einstiege fragen dieselbe
+Variante (`planner-phone`), es gibt also bei jeder Größe genau einen.
+
+Der Brotkrümel zeigt auf dem Handy nur noch einen Link eine Ebene nach oben statt
+„Startseite › … › Phantasialand". Auf Park- und Ride-Seite fällt die Zeile auf dem Handy ganz weg:
+dort sind Land (und Stadt, wenn sie eine Seite hat) bzw. der Park in der Titelkarte verlinkt. Die
+H1 steht dort bei 390 px jetzt bei y=105 statt 151, gemessen mit `pnpm measure:mobile-height`.
+
+## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
+
+Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
+davon waren die drei Link-Spalten mit elf 44-px-Zeilen. Unter `sm` ist jede Spalte jetzt eine
+zugeklappte Zeile, die ihre Links per Tipp aufklappt (`FooterLinkGroup`). Die Links bleiben dabei im
+HTML, zugeklappt nur per `max-sm:hidden` ausgeblendet. Dazu knappere Abstände unter `sm`, und die
+zweite „Arns.dev"-Zeile fällt dort weg, weil derselbe Link oben in der Marke steht. Ergebnis: 636 px
+in de/en/nl/it, 660 px in fr/es. Ab `sm` ist der Footer unverändert, der Screenshot bei 1440 px ist
+byte-gleich. Der 562-px-Block, der im DOM vor dem Footer steht, ist `ParkBackground`: `position:
+fixed` hinter dem Seitenkopf, er belegt keine Höhe.
+
+## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
+
+Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
+16 px heran und nicht wieder heraus. Die Bahnsuche und der Name eines eigenen Blocks waren 14 px,
+danach stand die Seite auf 1,14×, das fixierte Sheet lief rechts über den Rand und Griff und
+Kopfzeile oben aus dem Bild. Jetzt rendert jedes Textfeld im Planer-Sheet auf Touch-Geräten mit
+16 px (`[data-planner-sheet]` in `app/globals.css`). Dazu hat das Handy-Sheet wieder einen ×-Knopf,
+rechts in der Park- und Datumszeile (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
+nur noch eine 90-px-Wischgeste herausführte.
+
+Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (105 statt
+210 px bei 390 px): Symbol als Dropdown, Löschen als Papierkorb in der Leiste, ein
+Größensystem für alle Knöpfe (PAR-326), und ein ausgewählter Block wird über die Leiste gescrollt
+(PAR-332). „Tag optimieren" steht jetzt direkt über der Gesamtwartezeit und ist ein gefüllter
+Knopf mit der gemessenen Ersparnis, sobald die Optimierung etwas bringt (PAR-493). Die Headliner
+stehen auf dem Handy in einer seitlich scrollbaren Reihe, der Hinweis unter der Suche verschwindet
+nach der ersten Bahn. Die Achse wächst damit von 319 auf 366 px (390×844) und von 262 auf 311 px
+(360×800). Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
+Trocken-Bleiben der Gruppe passt, statt „es fehlt keine große Bahn mehr" (PAR-484).
+
+Der Griff oben am Handy-Sheet arbeitet jetzt wie bei einem iOS-Sheet: Das Sheet folgt beim Ziehen
+dem Finger und rastet beim Loslassen auf halber Höhe, unter dem Header oder bildschirmfüllend ein;
+ein Wisch nach unten aus der halben Höhe schließt es. Einrasten, Öffnen und Schließen laufen auf der
+iOS-Kurve (400 ms). Bewegt wird über `bottom` und `height`, nie per `transform`, damit die Unschärfe
+des Glas-Hintergrunds erhalten bleibt.
+
+Die Griff-Zeile ist in die Kopfzeile gewandert: Der Griff liegt als schmale Leiste über Park und
+Datum, das × steht rechts in dieser Zeile, die Glocke daneben. 61 statt 89 px. Bei
+knapper Fensterhöhe (unter 800 px, also auf jedem iPhone in Safari) öffnet das Sheet bis 12 px unter
+den oberen Rand und verdeckt den park.fan-Header.
+
+Alle Bedienzeilen im Handy-Sheet (Park, Datum, Headliner-Pillen, die beiden Knöpfe darunter, die
+Glocke) sind 32 statt 44 px hoch gezeichnet, die Trefferfläche bleibt 44 px über einen unsichtbaren
+Überstand in Leerraum (`lib/planner/touch-target.ts`). Die Glocke steht jetzt rechts in der
+Kopfzeile neben dem ×, „Headliner planen" steht in der Optimieren-Zeile als kurzer zweizeiliger
+Text, und die Summenzeile ist eine schlanke Textzeile. Das Show-Band über der Achse fällt auf dem Handy
+weg; sein Schalter sind dort die Theatermasken am Ende der Optimieren-Zeile. Die Headliner-Pillen sind
+26 px hoch, „Tag optimieren" ohne Ersparnis ist getönt statt grau und nimmt immer die volle Breite;
+Rückgängig ist auf dem Handy ein Symbol in derselben Zeile, und die Rückmeldung darunter entfällt dort
+(außer als Warnung mit „Anpassen"). Ein Tipp in die Bahnsuche gibt ihr das
+ganze Sheet (Achse und Fuß treten zur Seite), „Fertig" holt den Tag zurück. In Ruhe ist die Suche eine
+Zeile: das 32-px-Feld und „Eigener Block" daneben, die Bahnliste gibt es erst im Suchmodus. Beides nur
+mit Touch; ein schmales Fenster mit Maus behält die Liste zum Ziehen. „Ferien nebenan" ist auf dem Handy eine Palme, die Infozeile passt bei 360 px wieder in
+eine Zeile. Kopfzeile 61 → 55 px, Band 96 → 70 px, Summenzeile 45 → 29 px; die Achse hat
+bei 390×664 jetzt 347 px, bei 360×640 323 px.
+
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
+## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
+
+Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprache ein `<url>` mit
+`<news:news>` (Name `park.fan`, Sprache, Datum aus dem Frontmatter, Titel). Nur echte
+Übersetzungen, höchstens 1000 Einträge, leer ohne News statt 404. Eingetragen in `robots.txt`,
+geprüft von `pnpm test:news-sitemap` und `pnpm check:agent-ready`. Details:
+[sitemaps](seo/sitemaps.md#the-news-sitemap).
+
+## Unreleased – Ride-Karten sind auf dem Handy eine Zeile (PAR-431)
+
+Unter `sm` rendert die Ride-Liste der Park-Seite (`LandSection`) jede `AttractionCard` als Zeile:
+Name und Wartezeit oben, die Badges einzeilig darunter, kein unteres Panel. Die Zeile ist 72 px hoch,
+die Karte war 121 px (Park zu) bis 318 px (Park offen). Gemessen mit `measure:mobile-height`:
+Phantasialand-Liste 6.503 → 4.328 px, Magic Kingdom 12.053 → 4.136 px. Glocke und Stern behalten
+ihre 34-px-Kreise mit 44-px-Trefferfläche. Die Prop heißt `phoneRow`, die anderen sieben
+Einbettungen der Karte und der Desktop bleiben gleich. `LazyMount` reserviert für eine Spalte jetzt
+80 px je Zeile (`phoneRowHeight`), das Tab-Skeleton hat dieselbe Zeilenform.
+
+## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
+
+„Wartezeiten-Kalender" passt in der Ersatzschrift („Geist Fallback") gerade noch in eine Zeile, in
+Geist nicht. Beim Erstbesuch malte die Kachelreihe deshalb mit 132 px und wuchs auf 148 px, sobald
+die Webfont da war (~440 ms), und mit `auto-rows-fr` jede Kachel mit ihr. Gemessen mit
+zurückgehaltener Schrift: de und nl bei 390, 1280 und 1440 px, es bei 800 px. Jetzt hält jeder
+Titel der Reihe zwei Zeilen (`[&_[data-tile-label]]:min-h-[2lh]` auf `ParkTileGrid`), der Titel
+selbst bleibt unverändert, weil er auch der Linktext zur Kalenderseite ist. Kosten: 16 px mehr
+Reihe, wo kein Titel umbricht (Englisch überall). Die Kachelreihe der Attraktionsseite nutzt
+denselben Kachelinhalt, aber nicht dieses Grid, und bleibt wie sie ist.
+
+## Unreleased – fix: „Andrang jetzt" und „Prognose heute" stehen immer untereinander
+
+Die beiden Metriken lagen in einer `flex-wrap`-Reihe, ob sie nebeneinander passten, hing also an der
+Breite der Werte. Die Prognose lädt als letztes (~4,4 s) und wird dabei von einem 80-px-Platzhalter
+zu Badge plus Pfeil; auf Phantasialand bei 1280 px (beide „Sehr niedrig") brauchte das Paar 282 px
+von 271 und brach dann um, die Karte darunter rutschte 16 px (CLS 0.027 bei y=0). Den Pfeil
+wegzulassen hätte nicht gereicht: Auf Niederländisch ist allein die Beschriftung „PROGNOSE VANDAAG"
+159 px breit. Jetzt stehen die beiden in jeder Breite untereinander, die Striche als Platzhalter
+haben die 22 px Zeilenhöhe des Badges. Damit die Zelle die Karte nicht streckt (gestapelt 229 px
+gegen 213 px der Headliner-Spalte), sind die Abstände enger: `gap-2` zwischen den Metriken, `gap-1`
+und `leading-none` im Auslastungsblock. Jetzt 210 px.
+
+## Unreleased – fix: der Toast für neue Beiträge meldet News auch im offenen Tab
+
+Der Toast aus PAR-444 zählte News schon immer mit, fragte aber nur einmal pro
+`sessionStorage`-Session nach. Die lebt so lange wie der Tab, und ein wiederhergestellter Tab oder
+die installierte App behält sie tagelang: Nach einem News-Deploy brachte ein Reload keine Anfrage
+und keinen Toast, nur ein neuer Tab. Im Browser nachgestellt, vorher und nachher.
+
+Jetzt fragt der Watcher nach dem ersten Seitenaufruf, nach jeder clientseitigen Navigation und wenn
+ein Tab wieder nach vorn kommt, höchstens einmal alle zehn Minuten über alle Tabs
+(`claimCheck`, `localStorage['pf:blog-seen-checked-at']`). `/api/blog-latest` bleibt an der Edge
+zehn Minuten statt einer Stunde frisch, weil Cloudflare niemand purgen kann und eine News in den
+Stunden nach dem Deploy am meisten wert ist. Ein Toast, der beim Wechsel in den Blog verschwindet,
+kommt beim Verlassen nicht wieder. Tests: `pnpm test:new-posts`. Doku:
+[New-posts toast](features/new-posts-toast.md).
+
+## Unreleased – fix: keine leere Mitte mehr in „Heute im Park"
+
+Zwischen den vier Spalten und der Kachelreihe lag auf fast jedem Park ein 104 px hohes leeres Band
+(135 px auf dem Handy). Es war die Reservierung für den Regen-/Unwetter-Streifen aus dem Nowcast,
+der clientseitig geladen wird und ohne Platzhalter die Seite 2,5 s nach dem ersten Paint um 134 px
+nach unten schob. Nur 11 von 210 Parks hatten an dem Tag, an dem sie eingebaut wurde, überhaupt eine
+Warnung.
+
+Die Warnung steht jetzt als eine Zeile in der Titelzeile des Panels, an der Stelle der
+Wetterbeschreibung (`useNowcastAlert`, `NowcastAlertToggle`). Die Zeile ist auf jedem Park da und
+bleibt mit und ohne Warnung 45 px hoch, also verschiebt eine spät ankommende Warnung nichts. Ein
+Druck darauf klappt das volle Banner mit Zeitleiste darunter auf; eine Verschiebung direkt nach
+einer Eingabe zählt nicht als CLS. Auf dem Handy machen Überschrift und Uhr der Warnung Platz,
+sonst blieb von „Gewitter in ca. 25 Min." nur „Gewitter in c…". `WeatherNowcastBanner` rendert für
+`/ui` und die Guide-Seite unverändert das ganze Banner. Regel:
+[A streamed section owes the page its height](rules/a-streamed-section-owes-the-page-its-height.md).
+
+## Unreleased – News stehen neben den Artikeln, nicht zwischen ihnen
+
+Beiträge der Kategorie `news` laufen auf den Teaser-Flächen nicht mehr in derselben Liste wie die
+Artikel. Startseite (Band unter dem Hero und Blog-Kapitel), Blog-Panel im Header-Menü sowie Park-
+und Attraktionsseiten zeigen oben nur Artikel und darunter eine kleinere News-Zeile (`NewsRow`,
+`NewsList`). Jede News zeigt ihr Alter („heute", „vor 3 Wochen"), die ersten sieben Tage in der
+Akzentfarbe. Ausgeblendet wird wegen des Alters nichts. Das Header-Menü zeigt dafür fünf statt sechs
+Artikel, damit das Panel nicht höher wird. Regel:
+[News is set apart from the articles](rules/news-is-set-apart-from-the-articles.md).
+
+## Unreleased – feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
+
+Wer wiederkommt und neue Beiträge verpasst hat, bekommt einmal einen Toast mit dem neuesten davon,
+beim Erstbesuch nie. Die ganze Karte ist der Link auf den Beitrag (ein gestrecktes `::after`),
+darüber liegen nur das X und „Alle ansehen“, das immer dasteht; „Und N weitere neue Beiträge“
+erscheint nur, wenn es mehr als einen gibt. Auf dem Handy sitzt der Toast unten über dem
+Home-Indicator und wird nach unten weggewischt, ab `sm` oben rechts 15 px unter dem Header, nach
+rechts wegzuwischen, auf `z-40` unter den Menübändern des Headers, unter dem Sprach-Banner, falls
+der offen ist, und neben dem offenen Planer-Panel. Nach 12 s schließt er sich, der Balken unten
+ist der Countdown und hält bei Hover, Fokus und verstecktem Tab an.
+
+Der Watcher im Locale-Layout fragt 2,5 s nach dem Laden und nur einmal pro Sitzung
+`/api/blog-latest/<locale>` ab (statisches JSON aus dem Blog-Manifest, samt der Strings des
+Toasts), die Toast-UI mit framer-motion wird nur geladen, wenn es etwas zu zeigen gibt. Keine Seite
+trägt dafür etwas im RSC-Payload. Verglichen wird über Translation-Keys plus Datumsuntergrenze in
+`localStorage`, nicht über einen Zeitstempel, weil `date` ein Tag ist. Neues Umami-Event
+`blog_toast_opened` ohne Properties. Details:
+[features/new-posts-toast.md](features/new-posts-toast.md).
+
 ## Unreleased – fix: die OG-Funktion trägt 18 MB Fotos statt 256
 
 Der Deploy scheiterte an `The Vercel Function "api/og/[...path]" is 290.96mb uncompressed`, zum

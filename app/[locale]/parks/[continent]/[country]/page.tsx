@@ -12,7 +12,7 @@ import {
   getParkImageSet,
 } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
-import { catchNonFatal } from '@/lib/api/client';
+import { catchNonFatal, nullOnNotFound } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeading } from '@/components/common/section-heading';
@@ -99,7 +99,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
   // Fetch cities and summary in parallel — summary failure is non-fatal
   const [response, summary] = await Promise.all([
-    catchNonFatal(getCitiesWithParks(continent, country)),
+    // Only the API's own 404 may end in `notFound()` — see the continent page.
+    nullOnNotFound(getCitiesWithParks(continent, country)),
     catchNonFatal(getCountrySummary(continent, country)),
   ]);
 
@@ -194,7 +195,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   latitude: park.latitude,
                   longitude: park.longitude,
                 }))}
-                className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
               />
             </div>
           ))}

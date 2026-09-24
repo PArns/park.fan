@@ -17,6 +17,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [An interaction may not rebuild the grid in the commit that answers it (REQUIREMENT)](an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)
 - [API budget per page (REQUIREMENT)](api-budget-per-page.md)
 - [The page render is the bigger half of the API budget, and it was never audited (ANTI-PATTERN)](the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)
+- [A day in the park has a byte budget (REQUIREMENT)](a-day-in-the-park-has-a-byte-budget.md)
 - [A `revalidate` at a call site is somebody else's page (REQUIREMENT)](a-revalidate-at-a-call-site-is-somebody-elses-page.md)
 - [A redirect thrown from a render carries the layout as its body (REQUIREMENT)](a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)
 - [An ISR route needs both halves, and one of them is an empty `generateStaticParams` (REQUIREMENT)](an-isr-route-needs-both-halves.md)
@@ -42,6 +43,8 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 - [The guide page teaches the real cards with the ride's real numbers (REQUIREMENT)](the-guide-page-teaches-the-real-cards-with-the-rides-real.md)
 - [Ride ↔ Glossary link](ride-and-glossary-link.md)
 - [Blog manifest is split (REQUIREMENT)](blog-manifest-is-split.md)
+- [News is set apart from the articles, and it is never hidden for its age (REQUIREMENT)](news-is-set-apart-from-the-articles.md)
+- [News posts live under `/news`, and every post URL comes from `postPath` (REQUIREMENT)](news-live-under-news.md)
 
 ## Design and layout
 

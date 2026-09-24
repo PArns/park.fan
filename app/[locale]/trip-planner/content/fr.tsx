@@ -21,16 +21,16 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Un bloc est une attraction, et sa hauteur est le temps d&apos;attente prévu pour son
           heure. Déplacez le même bloc vers une heure chargée et il grandit ; posez-le dans une
-          heure calme et il rétrécit. Entre deux blocs il n&apos;y a pas du vide mais la
-          correspondance : la distance, et le temps qu&apos;il reste pour la parcourir. La sortie de
-          la station et le tour lui-même y sont comptés, pas dans le bloc.
+          heure calme et il rétrécit. Entre deux blocs se trouve la correspondance : la distance, et
+          le temps qu&apos;il reste pour la parcourir. La sortie de la station et le tour lui-même y
+          sont comptés, pas dans le bloc.
         </P>
         <P>
           Rien de ce qui suit n&apos;a été redessiné. Ce sont les composants du planificateur
           lui-même, alimentés par la réponse que l&apos;API a donnée le 4 septembre 2026 pour le
           samedi 12 septembre à <A href={PARK}>Phantasialand</A>. Faites glisser un bloc vers une
           autre heure : il se cale sur cinq minutes, recalcule sa hauteur, et les correspondances à
-          côté suivent. Rien n&apos;est enregistré ici.
+          côté suivent. Rien n&apos;est enregistré ici, alors déplacez à votre guise.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -49,10 +49,11 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Pour chaque attraction, l&apos;API renvoie une courbe sur la journée, heure par heure. Ce
           samedi-là, Taron affiche 45 minutes à dix heures, 50 à onze, 40 à treize et de nouveau 50
-          en soirée. C&apos;est la vraie raison de faire Taron tôt : non pas parce que les matinées
-          sont toujours plus calmes, mais parce que cette journée-là n&apos;offre aucune heure
-          creuse pour cette attraction. Black Mamba fait l&apos;inverse et descend de 35 minutes à
-          midi à 20 à dix-huit heures, et Chiapas monte de 20 à 35.
+          en soirée : dix minutes d&apos;écart sur toute la journée. Ce samedi-là, Taron est tout
+          simplement demandé du matin au soir. Une telle attraction n&apos;a pas de bon créneau, et
+          le planificateur la place là où le reste de la journée le permet. Black Mamba, elle,
+          descend de 35 minutes à midi à 20 à dix-huit heures, et Chiapas fait l&apos;inverse, de 20
+          à 35.
         </P>
         <P>
           S&apos;y ajoute l&apos;écart habituel entre le chiffre et la réalité, qui suit le niveau :
@@ -144,13 +145,13 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
           peut-il être meilleur.
         </P>
         <P>
-          Le tri porte sur trois choses, et leur hiérarchie est la vraie décision. D&apos;abord que
-          tout passe encore avant la fermeture : un plan avec une attraction de moins qui a vraiment
-          lieu vaut mieux qu&apos;un plan avec une de plus qui n&apos;aura pas lieu. Ensuite le
-          total des temps d&apos;attente, ce qui était demandé. Et à coût égal, c&apos;est
-          l&apos;ordre qui se termine le plus tôt qui l&apos;emporte. Aucun curseur ne met
-          l&apos;attente en balance avec le temps passé à patienter : personne ne saurait justifier
-          ce nombre.
+          Le tri porte sur quatre choses, et leur hiérarchie est la vraie décision. Tout en haut, la
+          vôtre : ce que vous placez en tête sera la dernière chose à sauter. Ensuite, que tout
+          passe encore avant la fermeture : un plan avec une attraction de moins qui a vraiment lieu
+          vaut mieux qu&apos;un plan avec une de plus qui n&apos;aura pas lieu. Ensuite le total des
+          temps d&apos;attente, ce qui était demandé. Et à coût égal, c&apos;est l&apos;ordre qui se
+          termine le plus tôt qui l&apos;emporte. Aucun curseur ne met l&apos;attente en balance
+          avec le temps passé à patienter : personne ne saurait justifier ce nombre.
         </P>
         <P>
           Aucune règle sur le matin ne s&apos;y cache. Le planificateur ne connaît que la courbe
@@ -171,17 +172,17 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
           deux heures.
         </P>
         <P>
-          Une pause déjeuner à treize heures reste à treize heures, et une attraction cochée a été
-          faite et n&apos;est pas replanifiée ; le reste se range autour. Ensuite, il est écrit ce
-          qui s&apos;est passé. «&nbsp;18 min d&apos;attente en moins&nbsp;» est la différence entre
-          deux calculs menés de la même façon, l&apos;un avant le clic et l&apos;autre après ;
-          s&apos;il n&apos;y a rien à gagner, il est écrit que l&apos;ordre est déjà le bon et le
-          plan reste tel quel. Le bouton des têtes d&apos;affiche n&apos;annonce pas de gain, la
-          journée s&apos;allongeant avec les attractions ajoutées ; il compte plutôt combien
-          d&apos;attractions sont venues s&apos;ajouter et combien ne conviennent pas au groupe. Ce
-          qui ne tient plus dans la journée est signalé après les deux boutons. Un
-          «&nbsp;Annuler&nbsp;» va avec et rétablit l&apos;état d&apos;avant le clic, tant que le
-          planificateur reste ouvert.
+          Une pause déjeuner à treize heures reste à treize heures (le planificateur ne négocie pas
+          avec des enfants affamés), et une attraction cochée a été faite et n&apos;est pas
+          replanifiée ; le reste se range autour. Ensuite, il est écrit ce qui s&apos;est passé.
+          «&nbsp;18 min d&apos;attente en moins&nbsp;» est la différence entre deux calculs menés de
+          la même façon, l&apos;un avant le clic et l&apos;autre après ; s&apos;il n&apos;y a rien à
+          gagner, il est écrit que l&apos;ordre est déjà le bon et le plan reste tel quel. Le bouton
+          des têtes d&apos;affiche n&apos;annonce pas de gain, la journée s&apos;allongeant avec les
+          attractions ajoutées ; il compte plutôt combien d&apos;attractions sont venues
+          s&apos;ajouter et combien ne conviennent pas au groupe. Ce qui ne tient plus dans la
+          journée est signalé après les deux boutons. Un «&nbsp;Annuler&nbsp;» va avec et rétablit
+          l&apos;état d&apos;avant le clic, tant que le planificateur reste ouvert.
         </P>
         <Note>
           Là où aucun temps d&apos;attente n&apos;arrive, les deux boutons ne sont pas affichés. Au
@@ -230,16 +231,19 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           Et ce qu&apos;un plan coûte vraiment, c&apos;est la journée qui le décide. Une attraction
-          tombe en panne, un spectacle est annulé, un orage retourne l&apos;après-midi. Le plan
-          n&apos;est donc pas un horaire mais un calcul sur la question de savoir si la journée peut
-          tenir. Sur place, vous cochez ce que vous avez fait, et le planificateur note le temps
-          d&apos;attente qui était réellement affiché.
+          tombe en panne, un spectacle est annulé, un orage retourne l&apos;après-midi, et un enfant
+          dans la file de Taron décide que les tasses tournantes, finalement, c&apos;est mieux. Le
+          plan n&apos;est donc pas un horaire mais un calcul sur la question de savoir si la journée
+          peut tenir. Sur place, vous cochez ce que vous avez fait, et le planificateur note le
+          temps d&apos;attente qui était réellement affiché.
         </P>
         <P>
-          Tout cela reste dans votre navigateur. Pas de compte, pas de serveur, pas de
-          synchronisation : le plan est un fichier dans votre propre stockage, et qui ouvre le
-          planificateur sans plan tombe sur l&apos;assistant et ses trois questions préalables. Quel
-          parc, quel jour, qui vient. Le jour se choisit le plus facilement dans le{' '}
+          Tout cela reste dans votre navigateur, sans compte : le plan est un fichier dans votre
+          propre stockage. Ce n&apos;est qu&apos;en activant les notifications qu&apos;une copie
+          part sur le serveur, et le planificateur le signale à ce moment-là. Qui ouvre le
+          planificateur sans plan tombe sur l&apos;assistant et ses quatre questions préalables :
+          quel parc, quel jour, qui vient, et quelles grandes attractions doivent entrer dans la
+          journée. Le bon jour se trouve le plus facilement dans le{' '}
           <A href={`${PARK}/calendrier-temps-attente`}>calendrier des temps d&apos;attente</A> du
           parc.
         </P>

@@ -1,7 +1,8 @@
 ---
-title: 'Pretparken in de winter: wie in december opengaat, en wie zich dat niet kan veroorloven'
+title: 'Pretparken in de winter: wie in december opengaat en wie dat niet kan betalen'
 translationKey: winter-parks-2026
 date: '2026-09-03'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -33,11 +34,11 @@ coverImage:
   caption: 'Wintertraum in Phantasialand. Negen uur bedrijf, waarvan drieënhalf in het donker.'
   credit: 'park.fan'
 seo:
-  title: 'Pretparken open in de winter 2026/27: data & wachttijden'
+  title: 'Pretparken in de winter 2026/27: wie is open, hoe druk'
   description: >-
-    IJsbanen, kerstmarkten en 800.000 lichtjes: welke pretparken open zijn
-    in de winter van 2026/27. Winter Efteling, Wintertraum, Walibi Winter en
-    acht andere, met data, prijzen en echte wachttijdcijfers.
+    IJsbanen, glühwein en 800.000 lichtjes: welke pretparken in winter
+    2026/27 open zijn, wat het kost en waarom je in december langer in de rij
+    staat dan in mei.
   keywords:
     - pretparken open in de winter
     - pretpark kerst 2026
@@ -68,8 +69,8 @@ winterbedrijf. **Bright Nights**, vier edities lang: verlichte achtbanen en een
 vuurwerkshow die “Light up the Night” heette. Voorbij, zonder opvolger. Het park
 blijft van november tot april dicht.
 
-De onderbouwing daarvan verklaart bijna het hele winterseizoen.
-Directeur Mascha Taminiau wees op de korte openingsperiode en de afhankelijkheid
+De onderbouwing verklaart en passant bijna het hele winterseizoen. Directeur
+Mascha Taminiau wees op de korte openingsperiode en de afhankelijkheid
 van het weer. Vertaald: achtbanen rijden niet bij vorst, storm en ijzel, en
 Walibi Holland heeft vrijwel niets overdekt. Valt de techniek uit, dan houden de
 gasten een lichtshow over, en een lichtshow draagt geen ticket.
@@ -99,20 +100,23 @@ eigen programma, vrijwel dagelijks bedrijf.
 ### Phantasialand: Wintertraum, 14 november tot 24 januari
 
 Brühl doet in oktober niets. Geen Halloween, geen maze, niet eens een
-symbolische pompoen. In plaats daarvan steekt [Phantasialand](ref:phantasialand)
-het langste winterseizoen aan dat een Duits park draait: van **14 november 2026
+symbolische pompoen. In plaats daarvan begint [Phantasialand](ref:phantasialand)
+aan het langste winterseizoen dat een Duits park draait: van **14 november 2026
 tot 24 januari 2027**, dagelijks van **11 tot 20 uur**. Dat zijn 67
 bedrijfsdagen, ruim anderhalf keer zoveel als in het Europa-Park.
 
-Gesloten is het op vijf dagen: 24 en 25 december, 1 januari en 12 en 13 januari 2027. Op oudejaarsavond stopt het om 18 uur. Tickets beginnen bij **€29** en
+Gesloten is het op vijf dagen: 24 en 25 december, 1 januari en 12 en
+13 januari 2027. Op oudejaarsavond stopt het om 18 uur, op tijd voor je eigen
+vuurwerk. Tickets beginnen bij **€29** en
 worden online op een vaste datum geboekt.
 
 ![De toren van Mystery Castle in de mist, van onderen aangelicht | Mystery Castle zit in de berg. Daarom rijdt het ook als het buiten ijzelt. | wide](/media/phantasialand/mystery-castle.jpg)
 
-Voor die weken rijdt het park een programma dat er in de zomer niet is. **MAGIC
-SYMPHONY** sluit elke avond af met licht, vuur en dagelijks vuurwerk, daarnaast
-de ijsshows **Rock on Ice** en **Arctaris – The Hidden World**, plus
-**Spectaculum Phantastère** en **Tiempo de Fuego**. Schaatsen kan op de
+Dit programma bestaat in de zomer niet. In de theaters spelen drie shows: de
+ijsshow **Arctaris – The Hidden World**, **Der goldene Faden** en het
+**Spectaculum Phantastère**. Buiten komen er vier bij: **Tiempo de Fuego**,
+**Pulse of Rookburgh**, de illuminatie op de Kaiserplatz en als afsluiter
+**MAGIC SYMPHONY** met licht, vuur en vuurwerk. Schaatsen kan op de
 **Berliner Eislaufen** midden in het park.
 
 Dat Brühl dit volhoudt, komt door de bouwwijze. Een flink deel van het park ligt
@@ -137,8 +141,7 @@ Het [Europa-Park](ref:europa-park) hangt zijn winterseizoen achter de
 Halloweenweken: **28 november 2026 tot 10 januari 2027**, alleen gesloten op 24
 en 25 december. De 10e is wel voor hotel- en genodigde gasten: voor dagbezoekers
 is zaterdag 9 januari de laatste reguliere dag. Rulantica draait mee, de hotels
-draaien mee, de dinnershows zijn
-te boeken vanaf €260 per persoon op een tweepersoonskamer, en de
+draaien mee, de dinnershows zijn te boeken vanaf €260 per persoon op een tweepersoonskamer, en de
 oudejaarsarrangementen lopen afhankelijk van het hotel van €455 tot ruim €1.200.
 
 Wie deze december of januari naar Rust gaat, ziet bovendien iets voor het
@@ -165,7 +168,8 @@ dienen. [Droomvlucht](ref:efteling/droomvlucht),
 [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana,
 [Danse Macabre](ref:efteling/danse-macabre): een hele verzameling attracties
 waar regen, wind en duisternis niets aan doen, en waarvan er meerdere in de
-schemering beter werken dan in de zon.
+schemering beter werken dan in de zon. Eindelijk een park dat baat heeft bij
+het Nederlandse weer.
 
 ![Het blauw aangelichte kasteel van Symbolica bij nacht, ervoor een fontein | Symbolica op een winteravond. In december wordt het hier om half vijf donker, en het park wint daarbij. | wide](/media/efteling/symbolica.jpg)
 
@@ -173,8 +177,8 @@ De **Winter Efteling** loopt gewoonlijk twaalf weken van half november tot begin
 februari, met IJspaleis en schaatsbaan. In 2025/26 was dat van 10 november tot
 1 februari, doordeweeks tot 18 uur en in het weekend en de kerstvakantie langer.
 Kaatsheuvel had de data voor 2026/27 begin september nog niet bekendgemaakt; die
-komen doorgaans later in september of in oktober. In het rooster dat het park aan ons
-levert, staan november en december al volledig op bedrijf.
+komen doorgaans later in september of in oktober. In het rooster dat het park
+aan ons levert, staan november en december al volledig op bedrijf.
 
 Blijft het daarbij, dan heeft de Efteling het langste winterseizoen in dit
 overzicht, bijna twee weken langer dan de Wintertraum.
@@ -204,7 +208,8 @@ gewone dag aan wachttijd kost, staat in de
 ## De decemberopeners
 
 Deze parken zijn de rest van de winter dicht en gaan voor twee tot zes weken nog
-één keer open. De vensters zijn kort, en korte vensters maken lange rijen.
+één keer open. De vensters zijn kort, en wie maar een paar weekenden kan kiezen,
+deelt ze met iedereen die in hetzelfde schuitje zit.
 
 ### Walibi Belgium: Walibi Winter, 5 december tot 3 januari
 
@@ -237,16 +242,17 @@ een winterparade, een vuur-en-lichtshow en de kerstboomverlichting. Open op 18
 dagen in dit venster, van 11 tot 19 uur, op 24 en 31 december tot 18 uur; op
 25 december en 1 januari blijft het park dicht.
 
-In Kasterlee zit **alles in het dagticket**, van het schaatsen tot het
-ijspaleis. Bijboeken hoeft niet.
+In Kasterlee zit **alles in het dagticket**, van het schaatsen tot de
+tubingbaan. Bijboeken hoeft niet, dus je portemonnee kan in je jas blijven tot
+aan het frietkot.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ### Movie Park Germany: Hollywood Christmas, 27 november tot 5 januari
 
-Zes weken in het najaar heet het park Horrorwood Studios, en dat is nog maar net
-voorbij of het studioterrein wordt kerstelijk. **Movie Park’s Hollywood
-Christmas** loopt van **27 november 2026 tot 5 januari 2027**: meer dan een
+Zes weken in het najaar heet het park Horrorwood Studios, en het nepbloed is
+nog maar net weggepoetst of het studioterrein wordt kerstelijk. **Movie Park’s Hollywood
+Christmas** loopt van **27 november 2026 tot 5 januari 2027**: meer dan
 800.000 lichtjes, vier kerstgebieden, een ijsbaan, de winterversie van de
 parade, een Christmas Tree Celebration, een Meet Santa-station en nieuw een
 wintershow met illusionist Christian Farla.
@@ -266,10 +272,11 @@ Günzburg draait zijn vierde winteropening, en de kalender is opgeknipt: **28 en
 december**, ten slotte **2 tot 10 januari 2027**. Er zijn een ijsbaan, curling,
 shows en een Lego-kerstboom.
 
-Open zijn vooral de binnenattracties, plus enkele banen buiten, genoemd worden
+Open zijn vooral de binnenattracties, plus enkele banen buiten. Genoemd worden
 onder meer MAXIMUS, Temple X-pedition, LEGO NINJAGO The Ride en de Techno
-Schleuder. Reis je met een kind dat precies één bepaalde baan wil? Lees eerst de
-lijst van het park.
+Schleuder. Reis je met een kind dat precies één bepaalde baan wil, lees dan eerst
+de lijst van het park. Anders voer je de discussie bij een gesloten baan met
+iemand van een meter lang die gelijk heeft.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -277,8 +284,8 @@ lijst van het park.
 
 Ten noorden van Parijs ligt het kortste venster in dit overzicht.
 [Parc Astérix](ref:parc-asterix) is open van **19 december 2026 tot 3 januari
-2027**, van 11 tot 20 uur, op 24 en 31 december tot 19 uur. Nieuw zijn een
-ijsbaan in het vikinggebied en een kerstmarkt. Gallisch blijft het
+2027**, van 11 tot 20 uur, op 24 en 31 december tot 19 uur. Sinds vorige winter is
+er een ijsbaan in het vikinggebied en een kerstmarkt. Gallisch blijft het
 niettemin, inclusief de vraag wat er in deze weken met het everzwijn gebeurt.
 
 [Parc Astérix](ref:parc-asterix?full)
@@ -294,8 +301,8 @@ inbegrepen. Op 5 januari 2027 trekt de **Cabalgata de los Reyes Magos** door het
 Mediterrània-gebied, de driekoningenstoet, de avond waarop Spaanse kinderen hun
 cadeaus krijgen.
 
-Een waarschuwing die uit onze eigen metingen komt: van alle parken in dit
-overzicht sta je bij PortAventura het langst in de rij, en dat geldt het hele jaar
+Een waarschuwing die uit onze eigen metingen komt: bij PortAventura sta je
+niet korter in de rij dan in Brühl, eerder langer, en dat geldt het hele jaar
 door, niet alleen met kerst. De tabel verderop zet ze naast elkaar. Wie in
 december een leeg seizoen verwacht omdat het bij hem thuis winter is, plant voor
 het verkeerde land.
@@ -316,8 +323,8 @@ drukste dagen van het Italiaanse seizoen in het park.
 ## De parken die dicht blijven
 
 Het [Heide-Park](ref:heide-park) draait het seizoen 2026 van 28 maart tot
-**31 oktober** en gaat daarna dicht. Winterbedrijf is er in Soltau niet, en een
-kerstmarkt evenmin. Wat er in de zeven maanden daarvoor gebeurt, staat in de
+**31 oktober** en gaat daarna dicht. Winterbedrijf is er in Soltau niet, een
+kerstmarkt evenmin: Colossos houdt winterslaap. Wat er in de zeven maanden daarvoor gebeurt, staat in de
 [Heide-Park-gids](/blog/heide-park-wachttijden-tips).
 
 [Walibi Holland](ref:walibi-holland) blijft na het einde van Bright Nights ook
@@ -326,13 +333,13 @@ gesloten. Wie een abonnement voor 2026 had waarin het winterbedrijf van 2026 en
 vrijgekomen tijd doet, staat in de
 [Walibi-gids](/blog/walibi-holland-untamed-hard-gaan).
 
-Eén waarschuwing, omdat dit hier verkeerd gelezen wordt: een lege kalender
-betekent niet dat een park dicht is. Van Disneyland Paris en van Liseberg in
+Let op bij het lezen van onze kalender: is hij leeg, dan betekent dat niet dat
+een park dicht is. Van Disneyland Paris en van Liseberg in
 Göteborg lag begin september simpelweg nog geen rooster voorbij oktober klaar, en
-allebei zijn ze in december bekend open. De kalender op park.fan laat zien wat
-een park gepubliceerd heeft, niet wat het van plan is.
+allebei zijn ze in december bekend open. Een dag verschijnt pas op park.fan als
+het park hem gepubliceerd heeft.
 
-## Wat de cijfers zeggen
+## Wat de cijfers zeggen: voelt leeg, meet vol
 
 De winter voelt leeg. Het is donker, het is koud, op de paden hangt mist en het
 halve park is verlicht in plaats van bevolkt. De rijen zijn het niet.
@@ -347,8 +354,9 @@ afrondingskwestie.
 
 ```
 
-De wintermaanden staan op een handvol meetdagen, de zomermaanden op dertig. De kolom met dagen zegt bij elke regel waarop hij rust.
-Voor een uitspraak over de orde van grootte is dat genoeg, voor een voorspelling
+De wintermaanden staan op een handvol meetdagen, de zomermaanden op een
+veelvoud daarvan. De kolom met dagen zegt bij elke regel waarop hij rust. Voor
+een uitspraak over de orde van grootte is dat genoeg, voor een voorspelling
 op vijf minuten niet. Bij de Efteling zie je hetzelfde patroon met dezelfde
 voorbehouden.
 
@@ -370,8 +378,8 @@ de zomervakantie haalt.
 De voor de hand liggende verklaring zou de kortere dag zijn, en voor twee van de
 drie parken klopt die ook. We hebben de gepubliceerde openingstijden
 doorgerekend: een augustusdag in de Efteling duurt gemiddeld 11,7 uur, een
-novemberdag 8,4. In het Europa-Park is het 10,3 tegen 8,0. Waar twee tot ruim drie
-bedrijfsuren wegvallen, verdringen dezelfde gasten zich in minder tijd.
+novemberdag 8,4. In het Europa-Park is het 10,3 tegen 8,0. Waar twee tot ruim
+drie bedrijfsuren wegvallen, verdringen dezelfde gasten zich in minder tijd.
 
 Alleen in Phantasialand verklaart de klok helemaal niets. De Wintertraum rijdt
 negen uur per dag, van 11 tot 20 uur. Een meidag in Brühl duurt precies even
@@ -386,8 +394,8 @@ niets aan.
 De tweede is de kalender. Walibi Winter heeft 20 bedrijfsdagen, Bobbejaanland
 18, Parc Astérix 16. Een zomerbezoeker kiest uit vijf maanden een dinsdag; een
 winterbezoeker kiest tussen drie weekenden, met de kerstvakantie er middenin.
-Bij de Wintertraum komt daar nog bij dat het een doel op zich is. Mensen rijden
-naar Brühl vanwege de shows, niet ondanks het jaargetijde.
+Bij de Wintertraum komt daar nog bij dat het een doel op zich is: wie in december
+naar Brühl rijdt, wil de shows zien, en die zijn er alleen in deze weken.
 
 En omdat de vraag “welke van die parken is het drukst” op elke autorit
 langskomt, hier de parken uit dit overzicht naast elkaar, elk met zijn rustigste
@@ -403,17 +411,16 @@ Dat verklaart de dunne regels in de tabellen hierboven. Toen de vorige
 Wintertraum liep, ging deze site net van start: uit december 2025 hebben we een
 handvol meetdagen, uit januari 2026 vier, uit november geen enkele. Pas sinds
 april schrijven we elke openingsdag mee. Daarmee is de winter 2026/27 de eerste
-die we van de eerste tot de laatste openingsdag meeschrijven, en daarna heeft
-ons model voor het eerst een compleet jaar bij elkaar.
+die we volledig vastleggen, en daarna heeft ons model voor het eerst een
+compleet jaar bij elkaar.
 
-Wat die paar winterdagen nu al laten zien, klopt met wat iedereen ziet die er in
-december staat. In Phantasialand liggen december en januari op zomerniveau, in
-het Europa-Park haalt december de zomervakantie. Koude regen verandert daar
-niets aan, en de weekdag lang niet zoveel als in de zomer: ook op een dinsdag in
-de advent is het in beide parken flink druk.
+Voor een richting zijn die paar winterdagen toch genoeg. Koude regen maakt de
+rijen niet korter, en de weekdag maakt lang niet zoveel uit als in de zomer: ook
+op een dinsdag in de advent is het in Phantasialand en in het Europa-Park flink
+druk.
 
-De omslag duurt precies één nacht. Tot en met vrijdag 13 november draait Brühl
-het reguliere seizoen op de oude tijden, van 9 tot 18 uur, en die week is de
+In Brühl duurt de omslag precies één nacht. Tot en met vrijdag 13 november draait
+het park het reguliere seizoen op de oude tijden, van 9 tot 18 uur, en die week is de
 leegste van het hele naseizoen. Op zaterdag 14 november schakelt het park over
 naar 11 tot 20 uur, en vanaf die dag is het vol.
 
@@ -424,22 +431,21 @@ net iets minder, en vanaf de vakantie is tot ver in januari elke dag een
 vakantiedag.
 
 Neem de drukte-kalender deze ene winter nog niet op zijn woord: voor december
-zet hij in Brühl 29 van de 29 openingsdagen op “laag”, terwijl hij in juli van
-hetzelfde park over vier niveaus verdeelt. Een model dat een seizoen nooit
+zet hij in Brühl alle openingsdagen op “laag”, terwijl hij juli van hetzelfde
+park over meerdere niveaus verdeelt. Een model dat een seizoen nooit
 gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
 het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.
 
-## Datum, attractielijst, duisternis
+## Datum, attractielijst, dikke jas
 
-1. **De datum bepaalt de prijs, niet het park.** Bijna alle wintertickets zijn
+1. **De prijs hangt aan de datum.** Bijna alle wintertickets zijn
    datumgebonden en per dag gestaffeld. De Wintertraum begint bij €29, en die
    prijs krijg je niet op een zaterdag in de advent.
 2. **Lees de attractielijst voordat je boekt.** In de zomer is de vraag hoe lang
    je staat. In de winter is de vraag of de baan überhaupt rijdt. Elk park
    publiceert een winterlijst, en bij waterattracties is het antwoord vrijwel
    altijd nee.
-3. **Kleed je op drieënhalf uur donker, niet op negen uur daglicht.** Eind december
-   gaat in Brühl om half vijf de zon onder, en het park is daarna nog
+3. **Kleed je voor de avond.** Eind december gaat in Brühl om half vijf de zon onder, en het park is daarna nog
    drieënhalf uur open. Wie de dikke jas ’s ochtends in de kofferbak laat omdat
    de zon schijnt, loopt ’s avonds vloekend terug naar de auto.
 
@@ -447,14 +453,14 @@ het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.
 
 Het grootste programma staat in Brühl: 67 bedrijfsdagen, drie theatershows, vier
 openluchtshows. Het is ook het volste, dus neem een doordeweekse dag vóór de
-kerstvakantie. Moet het weer geen rol
-spelen, dan is Kaatsheuvel de veiligere keuze, want een flink deel van de beste
+kerstvakantie. Moet het weer geen rol spelen, dan is Kaatsheuvel de veiligere keuze, want een flink deel van de beste
 attracties ligt er toch al binnen. En wie de [Euro-Mir](ref:europa-park/euro-mir)
 nog één keer wil rijden, heeft tot 9 januari de tijd om naar Rust te komen.
 
 Met kinderen en zonder zin in bijboeken: in Kasterlee zit alles wat er die weken
-in het park staat in de dagprijs, van het schaatsen tot de tubingbaan. Na de
-Halloweenweken, waarin elk spookhuis apart verkocht wordt, is dat even wennen.
+in het park staat in de dagprijs. Na de
+Halloweenweken, waarin elk spookhuis apart verkocht wordt, is dat even wennen,
+maar het went snel.
 
 Wat er op jouw wensdag daadwerkelijk rijdt en hoe lang de rijen op dit moment
 zijn, staat de hele winter op de pagina van het park zelf.

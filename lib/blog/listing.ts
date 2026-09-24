@@ -2,6 +2,7 @@ import 'server-only';
 import { locales, defaultLocale, SITE_URL, type Locale } from '@/i18n/config';
 import type { BlogFrontmatter, BlogListItem } from './types';
 import { BLOG_POSTS_META } from './manifest';
+import { isNewsCategory, postPath } from './paths';
 
 /**
  * Everything a blog LISTING needs — cards, feeds, hreflang, the nav gate, the
@@ -292,21 +293,27 @@ export function buildPostAlternates(translationKey: string): Record<string, stri
     const entry = localeMap.get(locale);
     if (!entry) continue;
     if ((entry.fm.mode ?? 'published') !== 'published') continue;
-    out[locale] = `${SITE_URL}/${locale}/blog/${entry.slug}`;
+    out[locale] = `${SITE_URL}/${locale}${postPath({ slug: entry.slug, frontmatter: entry.fm })}`;
   }
   return out;
 }
 
-/** All visible URL slugs per locale — used for generateStaticParams. */
-export function listAllUrlSlugsByLocale(): Array<{ locale: Locale; slug: string }> {
-  const index = getTranslationIndex();
+/**
+ * All visible URL slugs per locale — used for generateStaticParams. `section` keeps the two
+ * post routes apart: `blog` lists the articles, `news` the news posts (see `./paths`). Whether a
+ * slug is news is read off the entry that locale actually serves, its own or the EN fallback.
+ */
+export function listAllUrlSlugsByLocale(
+  section: 'blog' | 'news'
+): Array<{ locale: Locale; slug: string }> {
   const out: Array<{ locale: Locale; slug: string }> = [];
-  for (const localeMap of index.values()) {
-    const enSlug = localeMap.get(defaultLocale);
+  for (const localeMap of getMetaIndex().values()) {
+    const enEntry = localeMap.get(defaultLocale);
     for (const locale of locales) {
-      const slug = localeMap.get(locale) ?? enSlug;
-      if (!slug) continue;
-      out.push({ locale, slug });
+      const entry = localeMap.get(locale) ?? enEntry;
+      if (!entry) continue;
+      if (isNewsCategory(entry.fm.category) !== (section === 'news')) continue;
+      out.push({ locale, slug: entry.slug });
     }
   }
   return out;
@@ -405,5 +412,46 @@ export function listPostsByRecency(requestedLocale: Locale): readonly BlogListIt
 
   const frozen = Object.freeze(items);
   POSTS_BY_RECENCY.set(requestedLocale, frozen);
+  return frozen;
+}
+
+/**
+ * News and articles publish at very different rates — a news post is a short note
+ * about a ride opening or an anniversary, an article is a measured guide — so the
+ * surfaces that show "the newest posts" keep them apart: otherwise a week of news
+ * pushes every guide off the homepage and out of the header menu. The category
+ * itself, and the `/news` URL it earns a post, live in `./paths`.
+ */
+export { NEWS_CATEGORY } from './paths';
+
+export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
+  return isNewsCategory(post.frontmatter.category);
+}
+
+const ARTICLES_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
+const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
+
+/** {@link listPostsByRecency} without the news posts. Frozen and memoised. */
+export function listArticlesByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = ARTICLES_BY_RECENCY.get(requestedLocale);
+  if (memo) return memo;
+  const frozen = Object.freeze(listPostsByRecency(requestedLocale).filter((p) => !isNewsPost(p)));
+  ARTICLES_BY_RECENCY.set(requestedLocale, frozen);
+  return frozen;
+}
+
+/**
+ * The news posts only, newest first by publication date — not by last edit: a
+ * corrected typo does not make an anniversary note news again. Frozen and memoised.
+ */
+export function listNewsByDate(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = NEWS_BY_DATE.get(requestedLocale);
+  if (memo) return memo;
+  const frozen = Object.freeze(
+    [...listPosts(requestedLocale)]
+      .filter(isNewsPost)
+      .sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
+  );
+  NEWS_BY_DATE.set(requestedLocale, frozen);
   return frozen;
 }

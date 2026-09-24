@@ -15,6 +15,19 @@ export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
 
 /**
+ * What an attraction is FOR, hand-decided by an editor. Contract with the API —
+ * see `docs/frontend/attraction-kind.md` in v4.api.park.fan.
+ *
+ * These four are the whole list; the API's `ATTRACTION_KIND_VALUES` is the same
+ * set, and the Swagger enum and the admin dropdown read it too.
+ *
+ * Distinct from the upstream's own free-text `attractionType`, which never
+ * reaches the public payload: upstream files water rides as ATTRACTION and
+ * walkthroughs as RIDE, so a label may never seed a kind.
+ */
+export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH';
+
+/**
  * Why a park's wait times cannot be read. Contract with the API — see
  * `docs/frontend/live-wait-times-availability.md` in v4.api.park.fan.
  *
@@ -758,6 +771,15 @@ export interface ParkAttraction {
   currentLoad?: ParkLoad | null;
   // added fields
   crowdLevel?: CrowdLevel;
+  /**
+   * The wait `crowdLevel` was rated against, in minutes: the ride's P50 over its samples (P90
+   * only for a ride too new to have one). `crowdLevel` is `current ÷ baseline`, so this is what
+   * turns the badge's word back into this ride's minutes — see `rideCrowdMinuteRanges`.
+   *
+   * Present only while the ride is rated: an operating ride with a live wait in a ratable park.
+   * Everything else, a closed park included, has it null or absent.
+   */
+  baseline?: number | null;
   trend?: TrendDirection;
   statistics?: AttractionStatistics;
   history?: AttractionHistoryDay[];
@@ -808,6 +830,23 @@ export interface ParkAttraction {
    * never "no": most of the catalogue has never been checked.
    */
   hasSingleRider?: boolean | null;
+  /**
+   * What this attraction is for: a ride, a transport system (railway, cable
+   * car, monorail), a show or a walkthrough. Curated one editor decision at a
+   * time.
+   *
+   * Null or absent means nobody has judged it, which is true of nearly the
+   * whole catalogue — and it never means "it is a ride". Render nothing for it.
+   */
+  attractionKind?: AttractionKind | null;
+  /**
+   * Whether the ride runs a virtual queue (return times or boarding groups) at all.
+   *
+   * Same split as `hasSingleRider`: a curated fact, not today's reading — the
+   * live `RETURN_TIME` / `BOARDING_GROUP` entries in `queues` answer that. Null or
+   * absent means unknown, never "no".
+   */
+  hasVirtualLine?: boolean | null;
   /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
@@ -1091,6 +1130,23 @@ export interface AttractionResponse {
    * never "no": most of the catalogue has never been checked.
    */
   hasSingleRider?: boolean | null;
+  /**
+   * What this attraction is for: a ride, a transport system (railway, cable
+   * car, monorail), a show or a walkthrough. Curated one editor decision at a
+   * time.
+   *
+   * Null or absent means nobody has judged it, which is true of nearly the
+   * whole catalogue — and it never means "it is a ride". Render nothing for it.
+   */
+  attractionKind?: AttractionKind | null;
+  /**
+   * Whether the ride runs a virtual queue (return times or boarding groups) at all.
+   *
+   * Same split as `hasSingleRider`: a curated fact, not today's reading — the
+   * live `RETURN_TIME` / `BOARDING_GROUP` entries in `queues` answer that. Null or
+   * absent means unknown, never "no".
+   */
+  hasVirtualLine?: boolean | null;
   /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;

@@ -5,6 +5,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { NewsRow } from '@/components/blog/news-row';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -92,6 +93,9 @@ export async function BlogChapter({
         </Reveal>
 
         {children}
+
+        {/* News under the articles, a size smaller — see `NewsRow`. */}
+        <NewsRow locale={locale} className="mt-8" />
       </div>
     </section>
   );

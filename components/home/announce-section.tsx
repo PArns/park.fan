@@ -2,6 +2,7 @@ import { getMarkdownContent } from '@/lib/markdown';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
 import { buttonLinkProps } from '@/components/ui/button';
@@ -71,7 +72,8 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
             alt="Background"
             fill
             loader={backgroundImageLoader}
-            className="object-cover object-top"
+            className="object-cover"
+            style={{ objectPosition: objectPositionForSrc(cleanBackground) }}
             sizes="100vw"
             // Sits below the hero — not the LCP. Keeping it off `priority` stops it
             // competing with the hero image for bandwidth (the hero's LCP load delay

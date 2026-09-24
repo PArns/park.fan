@@ -188,8 +188,27 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
 }
 
 /**
+ * `null` for the API's own 404, and a throw for everything else.
+ *
+ * This is the one to use when `null` ends in `notFound()`. A page that 404s on a failed fetch
+ * publishes an outage as a fact about the URL: Cloudflare holds a 404 for an hour, an ISR route
+ * stores it for its whole `revalidate`, and a crawler that arrives in that window drops the page.
+ * A throw reaches the error boundary as an uncached 500 instead, and the next request tries again.
+ * See "A negative cache may only hold a settled answer" in docs/architecture/caching-strategy.md.
+ */
+export function nullOnNotFound<T>(promise: Promise<T>): Promise<T | null> {
+  return promise.catch((err: unknown) => {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
+  });
+}
+
+/**
  * Like `.catch(() => null)` but re-throws maintenance errors so the error boundary
  * can detect API outages and render the maintenance page.
+ *
+ * For optional content only. Where `null` means "this page does not exist", use
+ * {@link nullOnNotFound}: this one turns a 500, a 429 or a timeout into the same `null`.
  */
 export function catchNonFatal<T>(promise: Promise<T>): Promise<T | null> {
   return promise.catch((err: unknown) => {

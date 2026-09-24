@@ -85,20 +85,21 @@ export function ContentNL() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Wanneer een pretpark vol loopt, is verrassend goed te voorspellen. Weekdag, vakanties,
-          weer en seizoen bepalen voor een groot deel of je bij de achtbaan tien minuten wacht of
-          anderhalf uur. En omdat elk bezoek wachttijden achterlaat, valt dat vrij nauwkeurig na te
-          rekenen.
+          Wanneer een pretpark vol loopt, is verrassend goed te voorspellen, in elk geval beter dan
+          het humeur van een zesjarige om drie uur ’s middags. Weekdag, vakanties, weer en seizoen
+          bepalen voor een groot deel of je bij de achtbaan tien minuten wacht of anderhalf uur. En
+          omdat elke parkdag wachttijden achterlaat, valt dat vrij nauwkeurig na te rekenen.
         </Lead>
         <P>
-          Precies dat hebben we gedaan: de meegeschreven wachttijden uit ruim 200 parken
-          doorgerekend. Hieronder staan de rustigste weekdagen en maanden, de beste uren van de dag
-          en de dagen waarop je beter thuisblijft. De druktekalender zoekt daarna voor jouw park de
+          Dus hebben we het nagerekend, met de meegeschreven wachttijden uit ruim 200 parken.
+          Hieronder staan de rustigste weekdagen en maanden, de beste uren van de dag en de dagen
+          waarop je beter op de bank blijft. De druktekalender zoekt daarna voor jouw park de
           passende dag uit.
         </P>
         <Highlight>
-          Korte versie: dinsdag tot en met donderdag buiten de schoolvakanties, op tijd bij de
-          opening zijn, en een wisselvallige weersvoorspelling is een voordeel, geen probleem.
+          Korte versie voor wie haast heeft: dinsdag tot en met donderdag buiten de schoolvakanties,
+          bij opening aan de poort staan, en een wisselvallige weersvoorspelling zien als cadeautje,
+          zolang er een regenjas in de rugzak zit.
         </Highlight>
       </div>
 
@@ -111,8 +112,8 @@ export function ContentNL() {
         icon={CalendarRange}
       >
         <PG>
-          De weekdag en de maand bewegen het meest. Allebei gemiddeld over alle parken, telkens uit
-          de werkelijk gemeten wachttijden. Zo ziet dat eruit:
+          Weekdag en maand bewegen het meest. Allebei hebben we gemiddeld over alle parken, uit de
+          wachttijden die echt gemeten zijn:
         </PG>
         <BestTimesData locale="nl" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="nl" />
@@ -139,17 +140,17 @@ export function ContentNL() {
                   Bij opening (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
                 </>
               ),
-              body: 'Het eerste uur is goud waard: wie bij opening binnen is, rijdt de topattracties vaak met een fractie van de latere wachttijd.',
+              body: 'Het eerste uur na opening is het beste van de dag. Wie op tijd aan de poort staat, rijdt de grote banen vaak nog voordat er überhaupt een rij staat.',
             },
             {
               icon: Users,
               title: 'Rond lunchtijd',
-              body: 'Als de massa eet, lopen de rijen leeg. Neem die tijd voor de populaire attracties en eet gewoon later.',
+              body: 'Als iedereen aan tafel zit, worden de rijen korter. Neem die tijd voor de populaire attracties en eet later. De frietjes smaken om half drie precies hetzelfde.',
             },
             {
               icon: Sun,
               title: 'Het laatste uur',
-              body: 'Veel dagjesmensen vertrekken vroeg. Vlak voor sluitingstijd dalen de wachttijden vaak nog eens flink.',
+              body: 'Veel gezinnen gaan voor het einde naar huis. In het laatste uur voor sluitingstijd worden de wachttijden vaak nog eens merkbaar korter.',
             },
             {
               icon: Ticket,
@@ -162,11 +163,11 @@ export function ContentNL() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba raast door de jungle in Phantasialand"
           kicker="Bij opening"
-          title="Vroeg zijn helpt – maar niet bij elke baan"
+          title="Vroeg zijn helpt, alleen niet bij elke baan"
         >
           Bij de grote publiekstrekkers levert het eerste uur na opening vaak meer ritten op dan
-          twee uur in de middag. Overal geldt dat niet: sommige banen lopen de hele dag even vol,
-          andere trekken pas na de middag aan. Op de pagina van elke attractie staat haar eigen
+          twee uur in de middag. Overal geldt dat niet: sommige banen zijn de hele dag even vol,
+          andere worden pas na de lunch wakker. Op de pagina van elke attractie staat haar eigen
           dagcurve, en daar staat ook of de vroegere wekker zich voor haar loont.
         </SplitFigure>
       </SectionShell>
@@ -180,8 +181,8 @@ export function ContentNL() {
         icon={Ban}
       >
         <PG>
-          Net zo nuttig is het om te weten wanneer het echt vol wordt. Op deze dagen zitten de
-          parken ervaringsgewijs propvol. Je stelt je erop in, of je plant er meteen omheen:
+          Net zo nuttig is weten wanneer je beter niet gaat. Op deze dagen zitten de parken propvol.
+          Je kunt je erop voorbereiden met proviand en veel geduld, of er meteen omheen plannen:
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -197,7 +198,7 @@ export function ContentNL() {
         >
           Een zaterdag in de zomervakantie bij mooi weer is het slechtste geval: iedereen is vrij,
           iedereen wil eruit, iedereen is er. Ben je flexibel, neem dan liever de dinsdag daarna.
-          Hetzelfde park voelt dan compleet anders.
+          Hetzelfde park lijkt dan wel ’s nachts verbouwd, waarbij iemand de rijen vergeten is.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -219,7 +220,7 @@ export function ContentNL() {
             {
               icon: Sparkles,
               title: 'Nieuwe attracties in hun eerste zomer',
-              body: 'Een gloednieuwe achtbaan trekt in zijn eerste seizoen iedereen aan. Reken bij premières op lange rijen.',
+              body: 'Een gloednieuwe achtbaan wil in zijn eerste seizoen iedereen gereden hebben, het liefst vóór de collega’s. Reken bij premières op lange rijen.',
             },
           ]}
         />
@@ -253,7 +254,7 @@ export function ContentNL() {
                   <GlossaryTermLink termId="virtual-queue">virtuele wachtrijen</GlossaryTermLink>
                 </>
               ),
-              body: 'Rijd als single rider op de losse vrije plaatsen, of sta via de app digitaal in de rij terwijl je eet of rondloopt. Op drukke dagen is dat gewonnen tijd.',
+              body: 'Vul als single rider de losse vrije plaatsen op, of sta via de app in de rij terwijl je eet of rondloopt. Jullie zitten dan niet naast elkaar, wel eerder in de trein.',
             },
           ]}
         />
@@ -272,7 +273,7 @@ export function ContentNL() {
         icon={Ticket}
       >
         <P>
-          De patronen hierboven zijn het startpunt. De echt beste dag vind je in de{' '}
+          De patronen hierboven zijn het grove kader. De beste dag voor jouw park vind je in de{' '}
           <GlossaryTermLink termId="crowd-calendar">druktekalender</GlossaryTermLink> op elke
           parkpagina: die geeft elke afzonderlijke dag groen, geel of rood, zo ver als het park zijn
           openingstijden gepubliceerd heeft en passend bij de vakanties en feestdagen van de
@@ -290,8 +291,8 @@ export function ContentNL() {
           }
         >
           Elke parkpagina heeft een dag-op-dag voorspelling die de school- en feestdagen van precies
-          die regio meerekent. Kies een groene dag en het belangrijkste deel van de planning is
-          klaar voordat je ook maar een ticket koopt.
+          die regio kent, ook die waar je nog nooit van gehoord hebt. Kies een groene dag en het
+          belangrijkste deel van de planning is klaar voordat je een ticket koopt.
         </SplitFigure>
         <P>Een paar populaire parken om meteen in te duiken:</P>
         <PopularParksGrid />

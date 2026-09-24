@@ -85,21 +85,22 @@ export function ContentIT() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Quando un parco divertimenti si riempie è sorprendentemente prevedibile. Giorno della
-          settimana, vacanze scolastiche, meteo e stagione decidono in buona parte se davanti alle
-          montagne russe aspetti dieci minuti o un’ora e mezza. E siccome ogni visita lascia dietro
-          di sé dei tempi di attesa, il conto si può rifare con una certa precisione.
+          Quando un parco divertimenti si riempie è sorprendentemente prevedibile, di sicuro più
+          dell’umore di un bambino di sei anni alle tre del pomeriggio. Giorno della settimana,
+          vacanze scolastiche, meteo e stagione decidono in buona parte se davanti alle montagne
+          russe aspetti dieci minuti o un’ora e mezza. E siccome ogni giornata al parco lascia
+          dietro di sé dei tempi di attesa, il conto si può rifare con una certa precisione.
         </Lead>
         <P>
-          È quello che abbiamo fatto: analizzare i tempi di attesa registrati in oltre 200 parchi.
-          Qui trovi i giorni feriali e i mesi più tranquilli, le ore migliori della giornata e le
-          date da schivare. Poi il calendario dell’affluenza ti cerca il giorno giusto per il parco
-          che hai in mente.
+          Così abbiamo fatto i conti, con i tempi di attesa registrati in oltre 200 parchi. Più in
+          basso trovi i giorni feriali e i mesi più tranquilli, le ore migliori della giornata e le
+          date in cui è meglio restare sul divano. Poi il calendario dell’affluenza ti cerca il
+          giorno giusto per il parco che hai in mente.
         </P>
         <Highlight>
-          Non hai voglia di leggere tutto? Vai in settimana, meglio dal martedì al giovedì e fuori
-          dalle vacanze scolastiche, arriva puntuale all’apertura e rallegrati quando il meteo è
-          mediocre. Il resto sono dettagli.
+          Versione breve per chi ha fretta: dal martedì al giovedì fuori dalle vacanze scolastiche,
+          davanti ai cancelli all’apertura, e un meteo incerto preso come un regalo, purché nello
+          zaino ci sia una giacca impermeabile.
         </Highlight>
       </div>
 
@@ -112,9 +113,8 @@ export function ContentIT() {
         icon={CalendarRange}
       >
         <PG>
-          Partiamo dalle due leve più grandi, il giorno della settimana e il mese. Entrambi li
-          abbiamo mediati su tutti i parchi, ogni volta dai tempi di attesa davvero misurati. Ecco
-          come viene:
+          A spostare di più sono il giorno della settimana e il mese. Entrambi li abbiamo mediati su
+          tutti i parchi, partendo dai tempi di attesa misurati davvero:
         </PG>
         <BestTimesData locale="it" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="it" />
@@ -129,8 +129,8 @@ export function ContentIT() {
         icon={Clock}
       >
         <P>
-          Non conta solo il giorno, ma anche l’ora. Queste quattro finestre sono quasi ovunque le
-          più tranquille:
+          Dopo il giorno della settimana, è l’ora a pesare di più. Queste quattro finestre sono
+          quasi ovunque le più tranquille:
         </P>
         <TouchpointGrid
           items={[
@@ -141,22 +141,22 @@ export function ContentIT() {
                   All’apertura (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
                 </>
               ),
-              body: 'La prima ora è d’oro: chi è dentro all’apertura sale sulle attrazioni di punta spesso con una frazione dell’attesa successiva.',
+              body: 'La prima ora dopo l’apertura è la migliore della giornata. Chi è puntuale ai cancelli sale spesso sulle grandi attrazioni prima ancora che si formi una coda.',
             },
             {
               icon: Users,
               title: 'Intorno all’ora di pranzo',
-              body: 'Quando la folla mangia, le code si svuotano: prenditi quel tempo per le attrazioni più gettonate e mangia più tardi.',
+              body: 'Quando tutti sono a tavola, le code si accorciano. Prenditi quel tempo per le attrazioni più gettonate e mangia più tardi. Le patatine hanno lo stesso sapore anche alle due e mezza.',
             },
             {
               icon: Sun,
-              title: 'Gli ultimi 90 minuti',
-              body: 'Molti visitatori giornalieri se ne vanno presto. Poco prima della chiusura i tempi di attesa spesso calano ancora sensibilmente.',
+              title: 'L’ultima ora',
+              body: 'Molte famiglie tornano a casa prima della fine. Nell’ultima ora prima della chiusura i tempi di attesa spesso calano ancora sensibilmente.',
             },
             {
               icon: Ticket,
               title: 'Durante il grande spettacolo serale',
-              body: 'Una parata o dei fuochi d’artificio impegnano migliaia di ospiti in una volta, e alle montagne russe si liberano posti.',
+              body: 'Una parata o dei fuochi d’artificio attirano migliaia di persone tutte insieme. Proprio allora alle montagne russe si liberano all’improvviso dei posti.',
             },
           ]}
         />
@@ -168,7 +168,7 @@ export function ContentIT() {
         >
           Sulle attrazioni di punta la prima ora dopo l’apertura rende spesso più giri di due nel
           pomeriggio. Non vale però ovunque: certe attrazioni restano piene uguali per tutta la
-          giornata, altre si animano solo dopo pranzo. La pagina di ogni attrazione riporta la sua
+          giornata, altre si svegliano solo dopo pranzo. La pagina di ogni attrazione riporta la sua
           curva della giornata, e lì si legge anche se per quella la sveglia prima conviene.
         </SplitFigure>
       </SectionShell>
@@ -176,8 +176,8 @@ export function ContentIT() {
       {/* 03 — Dates to avoid */}
       <SectionShell id="avoid" index="03" kicker="Giorni rossi" title="Date da evitare" icon={Ban}>
         <PG>
-          Tanto importanti quanto i giorni tranquilli sono quelli affollati. In queste date
-          aspettati la ressa. Mettile in conto, oppure pianifica per aggirarle:
+          Altrettanto utile è sapere quando è meglio non andare. In queste date i parchi sono pieni
+          zeppi. Puoi prepararti con merenda e tanta pazienza, oppure pianificare per aggirarle:
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -191,9 +191,10 @@ export function ContentIT() {
             </GlossaryTermLink>
           }
         >
-          La classica combinazione di punta (un sabato di vacanza in piena estate) mette insieme
-          quasi tutti i fattori di affluenza in una volta. Se puoi, prendi piuttosto il martedì
-          successivo. Lo stesso parco sembra tutt’altro posto.
+          Un sabato delle vacanze estive con un tempo splendido è il caso peggiore: tutti liberi,
+          tutti vogliono uscire, tutti qui. Se sei flessibile, prendi piuttosto il martedì
+          successivo. Lo stesso parco sembra allora ristrutturato di notte da qualcuno che si è
+          dimenticato le code.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -207,17 +208,17 @@ export function ContentIT() {
               title: (
                 <GlossaryTermLink termId="school-holiday">Vacanze scolastiche</GlossaryTermLink>
               ),
-              body: 'Durante le vacanze della tua regione e di quelle vicine l’affluenza sale nettamente, e le vacanze estive sono l’alta stagione assoluta.',
+              body: 'Appena la tua regione o quella accanto è in vacanza, l’affluenza sale. Le vacanze estive sono l’alta stagione assoluta.',
             },
             {
               icon: Sun,
               title: 'Ponti e sabati di vacanza in piena estate',
-              body: 'La classica combinazione di punta: bel tempo, tutti liberi, tutti presenti. Se puoi, meglio il martedì successivo.',
+              body: 'Sole, giorno libero e alta stagione cadono insieme. Di tutte le combinazioni del calendario, è la più affollata.',
             },
             {
               icon: Sparkles,
               title: 'Le novità nella loro prima estate',
-              body: 'Una montagna russa nuova di zecca attira folle nella sua stagione d’apertura: alle anteprime aspettati code lunghe.',
+              body: 'Una montagna russa nuova di zecca, nella prima stagione vogliono provarla tutti, possibilmente prima dei colleghi. Alle anteprime aspettati code lunghe.',
             },
           ]}
         />
@@ -251,7 +252,7 @@ export function ContentIT() {
                   <GlossaryTermLink termId="virtual-queue">code virtuali</GlossaryTermLink>
                 </>
               ),
-              body: 'Sali da solo o mettiti in coda in versione digitale mentre mangi o fai shopping: nei giorni affollati è tempo regalato.',
+              body: 'Riempi da single rider i posti liberi, oppure mettiti in coda con l’app mentre mangi o passeggi. Non sarete seduti vicini, ma vi siederete prima.',
             },
           ]}
         />
@@ -270,7 +271,7 @@ export function ContentIT() {
         icon={Ticket}
       >
         <P>
-          Gli schemi qui sopra sono il punto di partenza. Il giorno migliore esatto te lo svela il{' '}
+          Gli schemi qui sopra danno la cornice. Il giorno migliore per il tuo parco te lo dice il{' '}
           <GlossaryTermLink termId="crowd-calendar">calendario dell’affluenza</GlossaryTermLink> di
           ogni pagina di parco: verde, giallo, rosso, per ogni giornata pubblicata, con le vacanze e
           i giorni festivi della regione interessata.
@@ -286,9 +287,10 @@ export function ContentIT() {
             </GlossaryTermLink>
           }
         >
-          Ogni pagina di parco porta una previsione giorno per giorno che tiene conto delle vacanze
-          scolastiche e dei giorni festivi di quella precisa regione. Scegli un giorno verde e hai
-          fatto il novanta per cento della pianificazione prima ancora di aver prenotato.
+          Ogni pagina di parco porta una previsione giorno per giorno che conosce le vacanze
+          scolastiche e i giorni festivi della regione giusta, anche quelli di cui non hai mai
+          sentito parlare. Scegli un giorno verde e la parte più importante della pianificazione è
+          fatta prima di comprare il biglietto.
         </SplitFigure>
         <P>Qualche parco popolare per iniziare subito:</P>
         <PopularParksGrid />

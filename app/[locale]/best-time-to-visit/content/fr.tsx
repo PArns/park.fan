@@ -85,20 +85,22 @@ export function ContentFR() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Le moment où un parc d’attractions se remplit est étonnamment prévisible. Le jour de la
-          semaine, les vacances, la météo et la saison décident en grande partie si vous attendez
-          dix minutes ou une heure et demie devant les montagnes russes. Et comme chaque visite
-          laisse des temps d’attente derrière elle, cela se recalcule assez précisément.
+          Le moment où un parc d’attractions se remplit est étonnamment prévisible, en tout cas plus
+          prévisible que l’humeur d’un enfant de six ans à trois heures de l’après-midi. Le jour de
+          la semaine, les vacances, la météo et la saison décident en grande partie si vous attendez
+          dix minutes ou une heure et demie devant les montagnes russes. Et comme chaque journée au
+          parc laisse des temps d’attente derrière elle, cela se recalcule assez précisément.
         </Lead>
         <P>
-          C’est exactement ce que nous avons fait : dépouiller les temps d’attente relevés dans plus
-          de 200 parcs. Ici se trouvent les jours de semaine et les mois les plus calmes, les heures
-          les plus tranquilles de la journée et les dates à esquiver. Le calendrier d’affluence vous
-          sort ensuite le bon jour pour le parc de votre choix.
+          Nous avons donc fait le calcul, avec les temps d’attente relevés dans plus de 200 parcs.
+          Plus bas se trouvent les jours de semaine et les mois les plus calmes, les heures les plus
+          tranquilles de la journée et les dates où le canapé reste la meilleure option. Le
+          calendrier d’affluence vous sort ensuite le bon jour pour le parc de votre choix.
         </P>
         <Highlight>
-          Version courte : du mardi au jeudi hors vacances scolaires, arriver à l’heure pour
-          l’ouverture, et une météo incertaine est un avantage, pas un problème.
+          Version courte pour les pressés : du mardi au jeudi hors vacances scolaires, devant le
+          portail à l’ouverture, et une météo incertaine prise comme un cadeau, tant qu’il y a un
+          imperméable dans le sac.
         </Highlight>
       </div>
 
@@ -111,9 +113,8 @@ export function ContentFR() {
         icon={CalendarRange}
       >
         <PG>
-          Le jour de la semaine et le mois sont ce qui bouge le plus. Les deux en moyenne sur tous
-          les parcs, à chaque fois à partir des temps d’attente réellement mesurés. Voilà ce que ça
-          donne :
+          Le jour de la semaine et le mois pèsent le plus. Nous avons fait la moyenne des deux sur
+          tous les parcs, à partir des temps d’attente réellement mesurés :
         </PG>
         <BestTimesData locale="fr" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="fr" />
@@ -140,22 +141,22 @@ export function ContentFR() {
                   À l’ouverture (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
                 </>
               ),
-              body: 'La première heure est en or : en arrivant à l’ouverture, on enchaîne souvent les têtes d’affiche pour une fraction du temps d’attente ultérieur.',
+              body: 'La première heure après l’ouverture est la meilleure de la journée. En étant au portail à l’heure, on fait souvent les grosses attractions avant même que les files se forment.',
             },
             {
               icon: Users,
               title: 'Autour du déjeuner',
-              body: 'Quand la foule mange, les files se vident, un bon moment pour les attractions populaires (et pour manger plus tard).',
+              body: 'Quand tout le monde est à table, les files raccourcissent. Profitez-en pour les attractions populaires et mangez plus tard. Les frites ont le même goût à quatorze heures trente.',
             },
             {
               icon: Sun,
               title: 'La dernière heure',
-              body: 'Beaucoup de visiteurs à la journée partent tôt. Juste avant la fermeture, les temps d’attente baissent souvent encore nettement.',
+              body: 'Beaucoup de familles rentrent avant la fin. Dans la dernière heure avant la fermeture, les temps d’attente baissent souvent encore nettement.',
             },
             {
               icon: Ticket,
               title: 'Pendant le grand spectacle du soir',
-              body: 'Une parade ou un feu d’artifice mobilise des milliers de visiteurs d’un coup, et les temps d’attente des montagnes russes chutent de façon mesurable.',
+              body: 'Une parade ou un feu d’artifice attire des milliers de visiteurs d’un coup. C’est justement là que des places se libèrent dans les montagnes russes.',
             },
           ]}
         />
@@ -167,9 +168,9 @@ export function ContentFR() {
         >
           Sur les grosses têtes d’affiche, la première heure après l’ouverture donne souvent plus de
           tours que deux heures l’après-midi. Ce n’est pas vrai partout : certaines attractions
-          restent aussi chargées toute la journée, d’autres ne montent qu’après midi. La page de
-          chaque attraction porte sa propre courbe de la journée, et elle dit aussi si le réveil
-          matinal en vaut la peine pour elle.
+          restent aussi chargées toute la journée, d’autres ne se réveillent qu’après le déjeuner.
+          La page de chaque attraction porte sa propre courbe de la journée, et elle dit aussi si le
+          réveil matinal en vaut la peine pour elle.
         </SplitFigure>
       </SectionShell>
 
@@ -182,8 +183,9 @@ export function ContentFR() {
         icon={Ban}
       >
         <PG>
-          Aussi importantes que les jours calmes sont les jours chargés. À ces dates, attendez-vous
-          à de l’affluence : prévoyez-les, ou contournez-les :
+          Il est tout aussi utile de savoir quand ne pas y aller. À ces dates, les parcs sont
+          bondés. Vous pouvez vous y préparer avec un pique-nique et beaucoup de patience, ou
+          planifier autour :
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -199,7 +201,8 @@ export function ContentFR() {
         >
           Un samedi des vacances d’été par beau temps, c’est le pire des cas : tout le monde est en
           congé, tout le monde veut sortir, tout le monde est là. Si vous êtes flexible, prenez
-          plutôt le mardi suivant. Le même parc donne alors une tout autre impression.
+          plutôt le mardi suivant. Le même parc a alors l’air d’avoir été réaménagé pendant la nuit
+          par quelqu’un qui aurait oublié les files.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -213,7 +216,7 @@ export function ContentFR() {
               title: (
                 <GlossaryTermLink termId="school-holiday">Vacances scolaires</GlossaryTermLink>
               ),
-              body: 'Pendant les vacances de votre région et des régions voisines, l’affluence grimpe fortement, les grandes vacances d’été surtout.',
+              body: 'Dès que votre région ou la région voisine est en vacances, l’affluence grimpe. Les vacances d’été sont la haute saison par excellence.',
             },
             {
               icon: Sun,
@@ -223,7 +226,7 @@ export function ContentFR() {
             {
               icon: Sparkles,
               title: 'Les nouveautés lors de leur premier été',
-              body: 'Une montagne russe toute neuve attire les foules lors de sa saison d’ouverture ; attendez-vous à de longues files pour les premières.',
+              body: 'Une montagne russe toute neuve, tout le monde veut l’avoir faite dès sa première saison, de préférence avant les collègues. Attendez-vous à de longues files pour les premières.',
             },
           ]}
         />
@@ -247,7 +250,7 @@ export function ContentFR() {
             {
               icon: CloudRain,
               title: 'Jouer la météo avec malice',
-              body: 'Une prévision incertaine en décourage beaucoup. Qui est équipé contre la pluie fait moins la queue ; un imperméable vaut mieux qu’un parapluie.',
+              body: 'Une prévision incertaine garde beaucoup de gens chez eux. Si un peu de bruine ne vous gêne pas, vous faites nettement moins la queue. Un imperméable vaut mieux qu’un parapluie.',
             },
             {
               icon: Ticket,
@@ -257,7 +260,7 @@ export function ContentFR() {
                   <GlossaryTermLink termId="virtual-queue">files virtuelles</GlossaryTermLink>
                 </>
               ),
-              body: 'Montez seul ou faites la queue en version numérique pendant que vous mangez ou faites les boutiques : du temps gagné les jours chargés.',
+              body: 'Comblez les places libres en single rider, ou faites la queue via l’appli pendant que vous mangez ou flânez. Vous ne serez pas assis côte à côte, mais vous serez assis plus tôt.',
             },
           ]}
         />
@@ -276,7 +279,7 @@ export function ContentFR() {
         icon={Ticket}
       >
         <P>
-          Les tendances ci-dessus sont le point de départ. Le jour idéal exact, c’est le{' '}
+          Les tendances ci-dessus donnent le cadre. Le meilleur jour pour votre parc, c’est le{' '}
           <GlossaryTermLink termId="crowd-calendar">calendrier d’affluence</GlossaryTermLink> de
           chaque page de parc qui vous le donne : vert, jaune, rouge, aussi loin que le parc a
           publié ses horaires, avec les vacances et jours fériés de la région concernée.
@@ -292,9 +295,10 @@ export function ContentFR() {
             </GlossaryTermLink>
           }
         >
-          Chaque page de parc porte une prévision jour par jour qui intègre les vacances scolaires
-          et les jours fériés de cette région précise. Choisissez un jour vert et vous avez fait
-          quatre-vingt-dix pour cent de la planification avant même d’avoir réservé.
+          Chaque page de parc porte une prévision jour par jour qui connaît les vacances scolaires
+          et les jours fériés de la bonne région, y compris ceux dont vous n’avez jamais entendu
+          parler. Choisissez un jour vert, et le plus important de la planification est fait avant
+          d’acheter un billet.
         </SplitFigure>
         <P>Quelques parcs populaires pour se lancer directement :</P>
         <PopularParksGrid />
@@ -303,7 +307,7 @@ export function ContentFR() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Propulsé par Fancast"
-        body="Notre modèle de prévision maison estime l’affluence pour chaque jour publié et se note lui-même le lendemain."
+        body="Notre modèle de prévision maison estime l’affluence pour chaque jour publié et se note lui-même au passage."
       />
 
       {/* 06 — FAQ */}

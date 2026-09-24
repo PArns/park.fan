@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -15,6 +16,15 @@ import { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
+
+/** What the phone row paints: a 64 × 40 thumbnail. */
+const ROW_THUMB_SIZES = '64px';
+/**
+ * The card's own photo layers claim the row's 64 px for the phone segment. The card is
+ * `display:none` there, and with the default `100vw` both would pick a different srcset
+ * candidate than the row beside them: two requests for one picture instead of one.
+ */
+const CARD_PHOTO_SIZES = '(max-width: 640px) 64px, (max-width: 1024px) 50vw, 33vw';
 
 interface ParkCardProps {
   name: string;
@@ -119,23 +129,141 @@ export function ParkCard({
   const isInMaintenance =
     !!status && status !== 'OPERATING' && status !== 'CLOSED' && status !== 'UNKNOWN';
 
+  const locationLine = (
+    <>
+      <span className="min-w-0 truncate">
+        {city}, {displayCountry}
+      </span>
+      {distance != null && (
+        <>
+          <span style={{ color: 'var(--pk-text-3)' }}>·</span>
+          <span className="shrink-0">
+            {typeof distance === 'number' ? formatDistance(distance) : distance}
+          </span>
+        </>
+      )}
+    </>
+  );
+
+  const badges = (
+    <>
+      {status && <ParkStatusBadge status={status} />}
+      {isOpen && effectiveCrowdLevel && <CrowdLevelBadge level={effectiveCrowdLevel} />}
+    </>
+  );
+  const showNearestOpen = highlightAsNearestOpen && isOpen;
+
+  const scheduleFooter = (compact: boolean) => (
+    <ParkCardScheduleFooter
+      isOpen={isOpen}
+      operatingAttractions={operatingAttractions}
+      totalAttractions={totalAttractions}
+      timezone={timezone}
+      status={status}
+      isInMaintenance={isInMaintenance}
+      todaySchedule={todaySchedule}
+      nextSchedule={nextSchedule}
+      hasOperatingSchedule={hasOperatingSchedule}
+      compact={compact}
+    />
+  );
+
   return (
     <Link
       href={effectiveHref as '/europe/germany/rust/europa-park'}
       prefetch={false}
       className={cn('row-span-3 grid [grid-template-rows:subgrid]', className)}
     >
+      {/* Phones get a row, everything from `sm` up the panelled card — the same split as
+          `BlogPostRow` (docs/rules/a-blog-card-is-a-row-on-phones.md). Below `sm` the card
+          shows no photo, so it was two glass panels, 146 px, one per row. Two markups rather
+          than one responsive tree, because the glass is a block of inline styles that no
+          breakpoint can switch off. Inside the same `Link`, so every caller and every grid
+          that spans this card over three rows gets the row without a change. */}
+      <div
+        data-park-card-row
+        className="group bg-card hover:bg-accent/30 border-border/60 relative row-span-3 flex items-start gap-3 rounded-xl border p-2 transition-colors sm:hidden"
+      >
+        {backgroundImage && (
+          // The whole thumbnail is the visible box, so the focal point is applied to it
+          // directly, and it stays wider than 1.5 (64 × 40 = 1.6) so a 4:3 photo keeps some
+          // vertical range for it (docs/rules/card-photos-are-two-layers.md). 64 px wide, not
+          // the blog row's 96: at 360 px the badge line needs 228 px for "Geöffnet" and
+          // "Sehr niedrig", and a 96 px thumbnail leaves 204.
+          <div className="relative mt-0.5 h-10 w-16 shrink-0 overflow-hidden rounded-lg">
+            <Image
+              src={backgroundImage}
+              alt={name}
+              fill
+              sizes={ROW_THUMB_SIZES}
+              className={cn('object-cover', !isOperatingOrUnknown && 'pk-photo-closed')}
+              // `top` / `center` are valid CSS as they stand.
+              style={{ objectPosition: propObjectPosition ?? 'top' }}
+            />
+          </div>
+        )}
+        {/* Four fixed lines: name 18 · 2 · location 16 · 4 · badges 22 · 4 · time 16, so
+            98 px with the padding and 100 with the border. The time has a line of its own
+            because next to two badges it does not fit at 360 px, and a line that wraps only
+            sometimes gives the rows of one list different heights. `ParkCardNearbySkeleton`
+            draws the same lines. */}
+        <div className="min-w-0 flex-1">
+          <h3
+            className={cn(
+              'text-foreground group-hover:text-primary truncate text-[15px] leading-[18px] font-bold transition-colors',
+              effectiveParkId && 'pr-8'
+            )}
+          >
+            {name}
+          </h3>
+          <div
+            className={cn(
+              'text-muted-foreground mt-0.5 flex min-w-0 items-center gap-1 text-xs leading-4',
+              effectiveParkId && 'pr-8'
+            )}
+          >
+            <MapPin className="h-[11px] w-[11px] shrink-0 opacity-70" aria-hidden="true" />
+            {locationLine}
+          </div>
+          {/* `min-h` is one badge: on the region pages the badges arrive with the client
+              batch call, after the row is painted, and must not grow it. */}
+          <div className="mt-1 flex min-h-[22px] flex-wrap items-center gap-1.5">{badges}</div>
+          {/* "Nearest open" is text on the time line here, not a third badge: three badges
+              wrap to a second line at 390 px and the row would outgrow its 100 px. */}
+          <div className="mt-1 flex h-4 min-w-0 items-center gap-1.5">
+            <Suspense fallback={<Skeleton className="h-4 w-24" />}>{scheduleFooter(true)}</Suspense>
+            {showNearestOpen && (
+              <span className="text-primary shrink-0 text-xs leading-4 font-semibold">
+                · {tNearby('nearestOpenBadge')}
+              </span>
+            )}
+          </div>
+        </div>
+        {effectiveParkId && (
+          <div className="absolute top-1.5 right-1.5 h-7 w-7">
+            <FavoriteStar
+              type="park"
+              id={effectiveParkId}
+              name={name}
+              size="md"
+              noCircle
+              className="h-full w-full"
+            />
+          </div>
+        )}
+      </div>
+
       <article
         className={cn(
-          'pk-card-fx group relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1'
+          'pk-card-fx group relative isolate row-span-3 hidden cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 sm:grid'
         )}
         data-card-fx
         style={{
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
-        {/* Photo — z-0, inner div carries the hover scale. Hidden below `sm` (cards collapse
-            on phones), so only the gradient placeholder shows there. */}
+        {/* Photo — z-0, inner div carries the hover scale. `hideOnMobile` is belt and braces:
+            the whole card is `display:none` below `sm`, where the row above renders. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
@@ -144,6 +272,7 @@ export function ParkCard({
               alt={name}
               closed={!isOperatingOrUnknown}
               hideOnMobile
+              sizes={CARD_PHOTO_SIZES}
             />
           ) : (
             <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
@@ -242,9 +371,8 @@ export function ParkCard({
 
           {/* Badges row */}
           <div className="relative mt-[9px] flex flex-wrap items-center gap-[6px]">
-            {status && <ParkStatusBadge status={status} />}
-            {isOpen && effectiveCrowdLevel && <CrowdLevelBadge level={effectiveCrowdLevel} />}
-            {highlightAsNearestOpen && isOpen && (
+            {badges}
+            {showNearestOpen && (
               <Badge className="badge-primary text-xs">{tNearby('nearestOpenBadge')}</Badge>
             )}
           </div>
@@ -262,6 +390,7 @@ export function ParkCard({
               src={backgroundImage}
               closed={!isOperatingOrUnknown}
               hideOnMobile
+              sizes={CARD_PHOTO_SIZES}
             />
           )}
         </div>
@@ -289,19 +418,7 @@ export function ParkCard({
 
           {/* Skeleton reserves the footer's single-line height so the client-rendered
               schedule/countdown swaps in without shifting the card (cacheComponents defers it). */}
-          <Suspense fallback={<Skeleton className="h-4 w-32" />}>
-            <ParkCardScheduleFooter
-              isOpen={isOpen}
-              operatingAttractions={operatingAttractions}
-              totalAttractions={totalAttractions}
-              timezone={timezone}
-              status={status}
-              isInMaintenance={isInMaintenance}
-              todaySchedule={todaySchedule}
-              nextSchedule={nextSchedule}
-              hasOperatingSchedule={hasOperatingSchedule}
-            />
-          </Suspense>
+          <Suspense fallback={<Skeleton className="h-4 w-32" />}>{scheduleFooter(false)}</Suspense>
         </div>
       </article>
     </Link>

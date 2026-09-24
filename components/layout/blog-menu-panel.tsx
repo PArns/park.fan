@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { NewsList } from '@/components/blog/news-list';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
+import { categoryPath } from '@/lib/blog/paths';
 
 /**
  * The blog menu: one post given room, the rest as rows, the categories as a footer.
@@ -33,11 +35,16 @@ import type { BlogMenu } from '@/lib/navigation/blog-menu';
  * for three links; as pills they cost one line and read as what they are, a filter rather than a
  * section of their own.
  *
+ * News sits in a strip of its own between the articles and the categories: small cover, age and
+ * title (`NewsList`), three in a line. There will be more news than articles, and a list of
+ * the newest posts would soon be nothing but news — the articles keep the opener and the rows,
+ * whatever gets published.
+ *
  * Everything here is server-rendered from the build-time blog manifest — no fetch, no loading
  * state, and the covers are already 16:9 crops. That is the difference from the parks menu's rail,
  * which is a curated four because only 14 of 212 parks have a picture at all; here it is 7 of 7.
  */
-export function BlogMenuPanel({ categories, recent }: BlogMenu) {
+export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }: BlogMenu) {
   /*
    * `navigation`, not `blog`, for the headings — and the difference is 3 KB on every page.
    *
@@ -65,7 +72,7 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
           {lead && (
             <div data-menu-stagger>
               <Link
-                href={`/blog/${lead.slug}`}
+                href={lead.path}
                 prefetch={false}
                 className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
               >
@@ -77,6 +84,9 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                       width={640}
                       height={360}
                       sizes="(min-width: 1024px) 480px, 100vw"
+                      style={
+                        lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined
+                      }
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </span>
@@ -107,9 +117,9 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
             <div data-menu-stagger>
               <ul className="flex flex-col gap-1">
                 {rest.map((post) => (
-                  <li key={post.slug}>
+                  <li key={post.path}>
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={post.path}
                       prefetch={false}
                       className="group hover:bg-muted/60 -mx-2 flex items-start gap-3 rounded-lg px-2 py-2 transition-colors"
                     >
@@ -124,6 +134,11 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                             alt=""
                             fill
                             sizes="128px"
+                            style={
+                              post.imagePosition
+                                ? { objectPosition: post.imagePosition }
+                                : undefined
+                            }
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </span>
@@ -164,6 +179,14 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
         </div>
       </div>
 
+      {/* News: its own strip, a size smaller than the articles — see the docblock. */}
+      {news.length > 0 && (
+        <div data-menu-stagger>
+          <MenuSectionHeading label={newsLabel} href={newsPath} />
+          <NewsList items={news} className="sm:grid-cols-3" />
+        </div>
+      )}
+
       {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. */}
       {categories.length > 0 && (
         <div
@@ -176,7 +199,7 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
           {categories.map((category) => (
             <Link
               key={category.path}
-              href={`/blog/category/${category.path}`}
+              href={categoryPath(category.path)}
               prefetch={false}
               className="border-border/70 text-muted-foreground hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
             >

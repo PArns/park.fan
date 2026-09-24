@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
 interface BlogPostLinkProps {
-  /** Target href, already normalised to `/blog/<slug>` by the caller. */
+  /** Target href, already the post's real URL (`postPath`) by the caller. */
   href: string;
   /**
    * Pre-rendered `BlogPostCard` for the preview, or nothing when the slug

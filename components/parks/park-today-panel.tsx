@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
 import { ChevronRight, Crown, Loader2, Sparkles, Users } from 'lucide-react';
@@ -15,7 +15,7 @@ import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkHolidayRow } from './park-holiday-row';
 import { WeatherWarningBanner } from './weather-warning-banner';
-import { WeatherNowcastBanner } from './weather-nowcast-banner';
+import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
@@ -27,8 +27,10 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
+import { isParkDayOver } from '@/lib/utils/park-day-over';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
+import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-context';
 import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -38,6 +40,10 @@ import type { ParkWithAttractions } from '@/lib/api/types';
  *  four show rows and six headliner rows come out at about the same height. */
 const HEADLINER_ROWS = 6;
 const SHOW_ROWS = 4;
+/** Below `sm` the headliner column is full width and stacked under everything else, so each row
+ *  is a row of the page rather than of a column. Four is where the list stops being "which one
+ *  now" and becomes the ride list, which the „Alle N Attraktionen" link under it already is. */
+const HEADLINER_ROWS_PHONE = 4;
 
 interface ParkTodayPanelProps {
   initialData: ParkWithAttractions;
@@ -46,6 +52,13 @@ interface ParkTodayPanelProps {
   city: string;
   parkSlug: string;
   parkPath: string;
+  /**
+   * The server's clock at render time, in ms. Only a `force-dynamic` page may pass it — on a
+   * cached one it would be the time the cache was filled. With it the first HTML already knows
+   * whether the park's day is over ({@link isParkDayOver}), which the browser clock cannot tell
+   * before it mounts. Without it the panel draws its rows at every width, as it always did.
+   */
+  renderedAtMs?: number;
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
@@ -93,6 +106,7 @@ export function ParkTodayPanel({
   city,
   parkSlug,
   parkPath,
+  renderedAtMs,
 }: ParkTodayPanelProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
@@ -127,6 +141,25 @@ export function ParkTodayPanel({
   // over showed the 15-minute nowcast: "22 °C · Bedeckt" in the header against "24° · Klarer
   // Himmel" in the chapter, on the same page at the same moment.
   const { data: nowcast } = useWeatherNowcast({ continent, country, city, parkSlug });
+
+  // Rain, hail, thunderstorm or storm due now — off that same query, so again no request of its
+  // own. It is said in the title row, in the slot the weather reading holds, and the full banner
+  // (sentence, countdown, precipitation timeline) opens under that row on a press.
+  //
+  // It used to be a strip of its own under the columns, and because the nowcast is fetched
+  // client-side it is in no park's first HTML: on the parks that had one it landed 2.5 s after
+  // paint and pushed the page down by 134 px. The fix for that was a 104–135 px box held open
+  // whether or not a banner came, and 94.8 % of parks (199 of 210, counted 2026-09-21) never had
+  // one — so the card carried a band of nothing across its middle all day. The title row is
+  // there on every park at a fixed height, so a warning arriving late changes its text and not
+  // its height, and the banner only ever opens under the visitor's own press, which is not a
+  // layout shift (`hadRecentInput`).
+  const nowcastAlert = useNowcastAlert({ continent, country, city, parkSlug, initialData: null });
+  const [alertOpen, setAlertOpen] = useState(false);
+  // Closed again once the warning is over, so a warning that comes back later in the visit does
+  // not open by itself and push the card down without anyone having pressed anything.
+  if (alertOpen && !nowcastAlert) setAlertOpen(false);
+  const alertBannerId = useId();
 
   const { data: mergedPark, isFetching } = useLiveParkData({
     continent,
@@ -207,19 +240,56 @@ export function ParkTodayPanel({
       .slice(0, HEADLINER_ROWS);
   }, [park.attractions, park.status, waitsReadable]);
 
+  // The park's day is over — shut today, or past today's closing time — by the SERVER's clock and
+  // the schedule. Below `sm` the headliner and show columns are then one line each instead of six
+  // dashes and four empty rows.
+  //
+  // Decided once and kept for the visit. Not from the waits or showtimes: `initialData` is a
+  // structure snapshot cached for up to a day, so those are often yesterday's and the first poll
+  // replaces them straight after mount — a layout read off them would change one poll after every
+  // load. The schedule is in the same snapshot but covers 17 days, so today's entry is there and
+  // the poll does not move it. A park that closes while somebody reads keeps its rows, as before.
+  const dayOverAtRender = useMemo(
+    () =>
+      renderedAtMs === undefined
+        ? null
+        : isParkDayOver(initialData.schedule, timezone, renderedAtMs),
+    [initialData.schedule, timezone, renderedAtMs]
+  );
+  const headlinersFolded = dayOverAtRender === true;
+
+  // What the folded headliner column says: when the park opens next. Taken from the schedule the
+  // decision above read, measured from the same instant, and formatted only after mount — the
+  // server's and the browser's `Intl` need not spell a month the same, and one line of „Geschlossen"
+  // before it is the same height.
+  const nextOpeningLine = useMemo(() => {
+    if (!headlinersFolded || !browserNow || renderedAtMs === undefined) return null;
+    const next = (initialData.schedule ?? [])
+      .filter((s) => s.scheduleType === 'OPERATING' && s.openingTime)
+      .map((s) => new Date(s.openingTime as string))
+      .filter((d) => d.getTime() > renderedAtMs)
+      .sort((a, b) => a.getTime() - b.getTime())[0];
+    if (!next) return null;
+    const date = next.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      timeZone: timezone,
+    });
+    const time = next.toLocaleTimeString(locale, {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: timezone,
+    });
+    return `${t('opensOn')} ${date} · ${time}`;
+  }, [headlinersFolded, browserNow, renderedAtMs, initialData.schedule, locale, timezone, t]);
+
   // Same reasoning as `headliners` above: a fresh `.map()` on every render of this panel (a tab
   // switch, `detailDate` changing, anything unrelated to `park`) would hand `RideAlertsEntryButton`
   // a new array + new objects each time, for a list that only actually changes when the poll
   // replaces `park.attractions`.
   const rideAlertAttractions = useMemo(
-    () =>
-      (park.attractions ?? []).map((a) => ({
-        id: a.id,
-        name: stripNewPrefix(a.name),
-        slug: a.slug,
-        currentWaitTime:
-          getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
-      })),
+    () => rideAlertAttractionsFor(park),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [park.attractions, park.status]
   );
 
@@ -325,7 +395,15 @@ export function ParkTodayPanel({
    */
   const chapterHref = (chapter: string) => `/${locale}${parkPath}#${chapter}`;
 
-  const cell = PANEL_CELL;
+  // Below `sm` status and crowd share a row, so each gets half a phone: the padding comes down to
+  // what the two halves can spare. The full-width columns under them keep the panel's own.
+  const halfCell = cn(PANEL_CELL, 'max-sm:px-4');
+  const fullCell = cn(PANEL_CELL, 'col-span-2 sm:col-span-1');
+  // The day is over, so below `sm` the show column is one line instead of four reserved rows with a
+  // sentence centred over them; from `sm` up it sits beside columns of the same height, so the
+  // reservation costs nothing there and stays. A performance still ahead after closing (a night
+  // show) unfolds it again once the clock has mounted — a real answer beats the saved height.
+  const showsFolded = headlinersFolded && nextShows.length === 0;
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
@@ -349,7 +427,15 @@ export function ParkTodayPanel({
       />
 
       <div className="border-border/50 flex items-center gap-3 border-b px-5 py-3">
-        <div className="flex shrink-0 items-center gap-2">
+        {/* Below `sm` a warning takes the whole row: beside the heading it had ~120 px at 390 px
+            and cut „Gewitter in ca. 25 Min." off before the minutes. The heading stays in the
+            accessibility tree, so the card keeps its name for a screen reader. */}
+        <div
+          className={cn(
+            'flex shrink-0 items-center gap-2',
+            nowcastAlert && 'sr-only sm:not-sr-only sm:flex'
+          )}
+        >
           {/* A static dot, deliberately.
             This card flickered — going transparent for an instant, irregularly, then sitting
             still for seconds. Two attempts at the cause missed: consolidating the nowcast's
@@ -390,7 +476,12 @@ export function ParkTodayPanel({
             /* The group is a reading, not a phrase — „18 °C Bedeckt" tells a screen reader
                nothing about where the link goes, and below `sm` even the word is gone. */
             aria-label={t('weatherAndHourly')}
-            className="hover:text-primary flex min-w-0 items-center gap-2 transition-colors"
+            className={cn(
+              'hover:text-primary flex min-w-0 items-center gap-2 transition-colors',
+              // With a warning in the row the reading keeps icon and temperature and gives the
+              // warning the room; below `sm` there is not room for both, and the warning wins.
+              nowcastAlert && 'hidden shrink-0 sm:flex'
+            )}
           >
             {(() => {
               const WeatherIcon = weatherSummary.icon;
@@ -404,12 +495,27 @@ export function ParkTodayPanel({
             <span className="text-sm font-semibold whitespace-nowrap">
               {weatherSummary.temperature}
             </span>
-            {weatherSummary.description && (
+            {weatherSummary.description && !nowcastAlert && (
               <span className="text-muted-foreground hidden truncate text-sm sm:inline">
                 {weatherSummary.description}
               </span>
             )}
           </a>
+        )}
+        {/* The live region for the warning. It has to be in the markup before the warning is,
+            or a screen reader may not announce it, and it carries the heading rather than the
+            sentence: the sentence counts down by the minute, and a polite region re-announces
+            every change. Positioned out of the row by `sr-only`, so it takes no gap. */}
+        <span role="status" className="sr-only">
+          {nowcastAlert?.heading}
+        </span>
+        {nowcastAlert && (
+          <NowcastAlertToggle
+            alert={nowcastAlert}
+            expanded={alertOpen}
+            onToggle={() => setAlertOpen((o) => !o)}
+            controls={alertBannerId}
+          />
         )}
         {/* Guarded on `currentTime`, not on the formatted string: before the browser clock
             mounts `currentTimeFormatted` is an em dash, and the first German paint read
@@ -418,8 +524,15 @@ export function ParkTodayPanel({
             page is `force-dynamic`, so rendering it before the clock mounts would be a hydration
             mismatch. It costs no height — this row is here either way, which is the whole reason
             the indicator moved out of the 32 px slot it used to hold open above the tab bar. */}
+        {/* Below `sm` the clock gives way to a warning as well: at 360 px the heading and the
+            clock leave the row about 40 px, which is an icon, not a sentence. */}
         {sched.currentTime && (
-          <span className="text-muted-foreground ml-auto flex shrink-0 items-center gap-2 text-xs tabular-nums">
+          <span
+            className={cn(
+              'text-muted-foreground ml-auto flex shrink-0 items-center gap-2 text-xs tabular-nums',
+              nowcastAlert && 'hidden sm:flex'
+            )}
+          >
             {isFetching && (
               <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
             )}
@@ -429,6 +542,20 @@ export function ParkTodayPanel({
         )}
       </div>
 
+      {/* The full warning, opened from the title row. Squared off and full-bleed like the warning
+          strip above: the banner's own `rounded-xl` border drew a floating pill inside a band
+          whose neighbours are full-bleed. The overrides have to reach the two
+          absolutely-positioned overlay layers as well — they carry their own `rounded-xl`, and
+          left round inside a square strip they show the panel background through all four
+          corners. */}
+      {nowcastAlert && alertOpen && (
+        <NowcastAlertBanner
+          id={alertBannerId}
+          alert={nowcastAlert}
+          className="border-border/50 space-y-0 rounded-none border-x-0 border-t-0 border-b px-5 py-2.5 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
+        />
+      )}
+
       {/* -mr-px -mb-px + the wrapper's overflow-hidden clip the trailing hairlines, so the rules
           stay correct at four, two and one column. */}
       <div className="overflow-hidden">
@@ -436,9 +563,12 @@ export function ParkTodayPanel({
             than written down. At a fixed four-column track set a park with no headliners and no
             showtimes left two empty tracks sitting inside the panel's border — which is exactly
             what shipped. */}
-        <PanelGrid columnCount={columnCount}>
+        {/* Two tracks from the smallest width: below `sm` status and crowd are the first row and
+            the headliner and show columns span both tracks under them. One track per column
+            stacked those two short cells into 378 px of a 390 × 664 phone. */}
+        <PanelGrid columnCount={columnCount} className="grid-cols-2">
           {/* ── Status ── */}
-          <div className={cell}>
+          <div className={halfCell}>
             <PanelMetric caption={t('statusLabel')}>
               {sched.showStatusBadge && sched.badgeStatus ? (
                 <ParkStatusBadge status={sched.badgeStatus} />
@@ -446,10 +576,14 @@ export function ParkTodayPanel({
                 <Pending />
               )}
             </PanelMetric>
-            <div className="flex min-h-[3.25rem] flex-col gap-0.5">
+            {/* Below `sm` this is half a phone (~147 px of text at 390), so the countdown can wrap to
+                a second line — and it arrives after mount, off the browser clock. The reservation
+                there is the hours line plus two `text-xs` lines, so a wrapped countdown fills
+                reserved space instead of growing the row. */}
+            <div className="flex min-h-[3.25rem] flex-col gap-0.5 max-sm:min-h-[3.75rem]">
               {sched.isOperatingToday && sched.openingTime && sched.closingTime ? (
                 <>
-                  <span className="text-xl font-bold tabular-nums">
+                  <span className="text-base font-bold tabular-nums sm:text-xl">
                     <ParkTimeRange
                       openingTime={sched.openingTime}
                       closingTime={sched.closingTime}
@@ -461,7 +595,7 @@ export function ParkTodayPanel({
                   {sched.timeUntil && (
                     <span
                       className={cn(
-                        'text-sm font-medium',
+                        'text-xs font-medium sm:text-sm',
                         sched.timeUntil.variant === 'opening'
                           ? 'text-primary'
                           : 'text-amber-600 dark:text-amber-400'
@@ -472,33 +606,60 @@ export function ParkTodayPanel({
                   )}
                 </>
               ) : sched.offseason ? (
-                <span className="text-sm font-medium">{sched.offseason.message}</span>
+                <span className="text-xs font-medium sm:text-sm">{sched.offseason.message}</span>
               ) : (
                 <span className="text-muted-foreground text-sm">{t('status.CLOSED')}</span>
               )}
             </div>
             {stats && (
               <p className="text-muted-foreground mt-auto flex items-center gap-1.5 text-xs">
-                <Users className="h-3 w-3" aria-hidden="true" />
-                {t.rich('attractionsOpenOf', {
-                  open: stats.operatingAttractions,
-                  total: stats.totalAttractions,
-                  strong: (c) => <strong className="text-foreground font-semibold">{c}</strong>,
-                })}
+                <Users className="h-3 w-3 shrink-0" aria-hidden="true" />
+                {/* One flex item: bare, the number and the words around it were separate items,
+                    and in a half-width cell the number stood in a column of its own. */}
+                <span>
+                  {t.rich('attractionsOpenOf', {
+                    open: stats.operatingAttractions,
+                    total: stats.totalAttractions,
+                    strong: (c) => <strong className="text-foreground font-semibold">{c}</strong>,
+                  })}
+                </span>
               </p>
             )}
           </div>
 
           {/* ── Andrang ── */}
-          <div className={cell}>
-            <div className="flex flex-wrap gap-x-6 gap-y-3">
+          <div className={halfCell}>
+            {/* Always stacked, at every width.
+
+                This was `flex flex-wrap`, so whether „Prognose heute" sat beside „Andrang jetzt"
+                or under it depended on how wide the two values happened to be, and both change
+                after the first paint: the forecast goes from an 80 px loading pill to a badge
+                plus chevron when the (deliberately last) calendar query lands, and „Andrang
+                jetzt" goes between an em dash and a badge while the live status settles. On
+                Phantasialand at 1280 px, both „Sehr niedrig", the pair needed 282 px of a 271 px
+                cell, so it wrapped at ~4.4 s and moved the rest of the card 16 px (CLS 0.027 at
+                y=0).
+
+                Dropping the chevron would not have settled it. Measured across all six locales
+                and every crowd level (2026-09-23), the widest pair is 289 px, and in Dutch the
+                caption „PROGNOSE VANDAAG" alone is 159 px, so the pair there still flips with
+                „Andrang jetzt" alone. The dashes carry the badge's 22 px line box for the same
+                reason: stacked, a value that goes from „—" to a badge is otherwise 2 px of shift
+                per metric.
+
+                Stacked, the cell came out 229 px against the 213 px of the headliner column
+                beside it (1280 and 1920 px), so it would have set the row and grown the card by
+                16 px. The 19 px it gives back: `gap-2` between the two metrics instead of the
+                cell's `gap-3`, and in the occupancy block below `gap-1` and a `leading-none`
+                percentage, whose `text-lg` line box was the tallest thing in its row. */}
+            <div className="flex flex-col gap-2">
               <PanelMetric caption={t('crowdNow')}>
                 {isOpenish && currentCrowd ? (
                   // The park's own "how busy is it right now", and the one badge here that
                   // nothing interactive encloses — so this is where the scale is explained.
                   <CrowdLevelBadge level={currentCrowd} withScale />
                 ) : (
-                  <span className="text-muted-foreground text-sm">—</span>
+                  <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                 )}
               </PanelMetric>
               {/* Once today's full CalendarDay is loaded the value becomes a button (chevron =
@@ -518,7 +679,7 @@ export function ParkTodayPanel({
                       {predictedToday ? (
                         <CrowdLevelBadge level={predictedToday} />
                       ) : (
-                        <span className="text-muted-foreground text-sm">—</span>
+                        <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                       )}
                       <ChevronRight
                         className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
@@ -528,7 +689,7 @@ export function ParkTodayPanel({
                   ) : predictedToday ? (
                     <CrowdLevelBadge level={predictedToday} />
                   ) : (
-                    <span className="text-muted-foreground text-sm">—</span>
+                    <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                   )
                 ) : (
                   <Pending />
@@ -538,10 +699,10 @@ export function ParkTodayPanel({
 
             {/* Reserved whether or not occupancy lands — it rides the live poll, and gating the
                 block on it moved the whole panel a beat after paint. */}
-            <div className="mt-auto flex min-h-[4rem] flex-col gap-1.5">
+            <div className="mt-auto flex min-h-[4rem] flex-col gap-1">
               <div className="flex items-baseline justify-between">
                 <span className="text-muted-foreground text-xs">{t('occupancy')}</span>
-                <span className="text-lg font-bold tabular-nums">
+                <span className="text-lg leading-none font-bold tabular-nums">
                   {occupancy ? `${Math.round(occupancy.current)} %` : '—'}
                 </span>
               </div>
@@ -604,7 +765,7 @@ export function ParkTodayPanel({
 
           {/* ── Headliner jetzt ── */}
           {headlinerSlots > 0 && (
-            <div className={cell}>
+            <div className={fullCell}>
               <PanelMetric
                 caption={t('headlinersNow')}
                 action={
@@ -619,11 +780,19 @@ export function ParkTodayPanel({
                   ) : null
                 }
               >
-                <ul className="flex flex-col gap-0.5">
+                {headlinersFolded && (
+                  <p className="text-muted-foreground truncate text-sm sm:hidden">
+                    {nextOpeningLine ?? t('status.CLOSED')}
+                  </p>
+                )}
+                <ul className={cn('flex flex-col gap-0.5', headlinersFolded && 'max-sm:hidden')}>
                   {Array.from({ length: headlinerSlots }, (_, i) => {
                     const ride = headliners[i];
                     return (
-                      <li key={i} className="text-sm">
+                      <li
+                        key={i}
+                        className={cn('text-sm', i >= HEADLINER_ROWS_PHONE && 'max-sm:hidden')}
+                      >
                         {ride ? (
                           // The WHOLE row is the link, not just the name. The wait time beside it
                           // is the reason somebody reaches for this row at all, and a target that
@@ -674,7 +843,7 @@ export function ParkTodayPanel({
 
           {/* ── Nächste Shows ── */}
           {showSlots > 0 && (
-            <div className={cell}>
+            <div className={fullCell}>
               <PanelMetric
                 caption={t('nextShows')}
                 action={
@@ -686,7 +855,12 @@ export function ParkTodayPanel({
                   </a>
                 }
               >
-                <div className="relative">
+                {showsFolded && (
+                  <p className="text-muted-foreground text-sm sm:hidden">
+                    {tCommon('noShowtimesToday')}
+                  </p>
+                )}
+                <div className={cn('relative', showsFolded && 'max-sm:hidden')}>
                   {/* Nothing left today, and the park does have shows — `showSlots > 0` is counted
                     from `park.shows`, so this column is not even rendered for a park without any.
                     The sentence is centred over the rows the column has already reserved rather
@@ -849,58 +1023,20 @@ export function ParkTodayPanel({
         </PanelGrid>
       </div>
 
-      {/* Rain / storm nowcast — its own strip because it is an alert, not a reading, and it
-          renders nothing on a dry day. Squared off like the warning strip above, and for the same
-          reason: the banner's own `rounded-xl` border drew a floating pill inside a band whose
-          neighbours are full-bleed, so the card read as a box with a smaller box loose in it. The
-          overrides have to reach the two absolutely-positioned overlay layers as well — they
-          carry their own `rounded-xl`, and left round inside a square strip they show the panel
-          background through all four corners.
-
-          THE BOX IS HELD WHETHER OR NOT A BANNER COMES, and the reservation is the whole point of
-          the wrapper. `useWeatherNowcast` is `enabled: typeof window !== 'undefined'` and this call
-          site seeds `initialData={null}`, so the strip is in NO park's first HTML on ANY day: when
-          it appears, it always appears late. Measured on Universal Islands of Adventure while it
-          actually had rain forecast (2026-09-21), the banner landed 2.5 s after paint and pushed
-          everything under it by 134 px — a reader parked at y=1300 on a phone paid CLS 0.1476.
-
-          The two numbers are measured off the real strip on parks that were showing a banner, not
-          off the `/ui` demo (which sits at `p-4` against this strip's `py-2.5` and reads 13 px
-          taller). Across en/de/fr/it and 360–1440 px the rain strip is 135 px below `sm` and
-          104 px from `sm` up — `sm` is the switch because that is where the banner's own body/
-          timeline row turns from a column into a row.
-
-          It is a reservation, not a guarantee: a sentence that takes one more line (360 px, the
-          French copy up to 430 px) and the storm/hail/thunderstorm wordings each add ~23 px, and
-          those still shift by that much. 23 px instead of 134 is the trade; a constant that fit
-          every kind in every locale would have to reserve the tallest, which is 180 px of empty
-          card on the 94.8 % of parks (199 of 210, counted 2026-09-21) that have no alert at all. */}
-      <div className="min-h-[135px] sm:min-h-[104px]">
-        <WeatherNowcastBanner
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-          initialData={null}
-          className="border-border/50 space-y-0 rounded-none border-x-0 border-t border-b-0 px-5 py-2.5 shadow-none empty:hidden [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
-        />
-      </div>
-
       {/* Holiday context — the "why is it so busy" behind the forecast. One band now: this used
           to be a grey chip row for the park's own state followed by a much louder amber panel for
           the neighbouring ones, which put the emphasis on the wrong region. Renders nothing when
           neither half has anything to say.
 
-          NO RESERVATION HERE, and unlike the nowcast strip above that is not a deliberate gap —
-          this row cannot shift. It reads `initialData.schedule`, which `leanParkForShell` keeps
-          whole, and `useTodaySchedule` falls back to `schedule[0]` before the clock mounts. All
-          210 parks the API serves answer with `schedule[0].date` equal to today in their own
-          timezone (checked 2026-09-21), carrying `isHoliday`, `isSchoolHoliday`, `isBridgeDay` and
-          `influencingHolidays`, so the pre-mount entry and the post-mount entry are the same row
-          and the band is in the first HTML at full height. Measured on Lotte World Adventure,
-          which had a bridge day that day: 96 px with JavaScript off, 96 px settled, same chips.
-          Reserving a box for it would hold empty space on the 147 parks that have no holiday
-          today against a shift that does not happen. */}
+          NO RESERVATION HERE, because this row cannot shift. It reads `initialData.schedule`,
+          which `leanParkForShell` keeps whole, and `useTodaySchedule` falls back to `schedule[0]`
+          before the clock mounts. All 210 parks the API serves answer with `schedule[0].date`
+          equal to today in their own timezone (checked 2026-09-21), carrying `isHoliday`,
+          `isSchoolHoliday`, `isBridgeDay` and `influencingHolidays`, so the pre-mount entry and
+          the post-mount entry are the same row and the band is in the first HTML at full height.
+          Measured on Lotte World Adventure, which had a bridge day that day: 96 px with
+          JavaScript off, 96 px settled, same chips. Reserving a box for it would hold empty space
+          on the 147 parks that have no holiday today against a shift that does not happen. */}
       <ParkHolidayRow
         initialData={initialData}
         continent={continent}

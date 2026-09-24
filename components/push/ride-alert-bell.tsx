@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Bell, BellRing } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
@@ -8,24 +8,32 @@ import { GlassCircle } from '@/components/common/glass-circle';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { hasUsableThresholdRange } from '@/lib/push/threshold-minutes';
-import { RideAlertQuickDialog } from './ride-alert-quick-dialog';
+import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-dialog';
+import { useRideAlertParkAttractions } from './ride-alert-park-context';
 
 interface RideAlertBellProps {
   attractionId: string;
   attractionName: string;
   parkName: string;
-  /** The card's own photo, if it has one — carried into the dialog as its background. */
+  /** The card's own photo, if it has one — this ride's thumbnail in the dialog's list. */
   backgroundImage?: string | null;
   objectPosition?: string;
-  /** The card's own current reading, if any — seeds the dialog's slider. */
+  /** The card's own current reading, if any — seeds the dialog's slider off the park page. */
   currentWaitTime?: number | null;
 }
 
 /**
  * "Notify me when this ride's wait drops below X minutes" — a card corner
  * icon in the same style as `FavoriteStar`/`ShowFollowBell`, opening
- * `RideAlertQuickDialog` rather than toggling anything itself: a threshold
- * needs a number, which a single click cannot supply.
+ * `RideAlertDialog` with this ride picked rather than toggling anything
+ * itself: a threshold needs a number, which a single click cannot supply.
+ * It is the same dialog as the park overview's central entry point, so the
+ * visitor also sees the alerts already set in this park — including this
+ * ride's own, which the list shows instead of offering it a second time.
+ *
+ * The other rides come from `RideAlertParkProvider` on the park page. The
+ * cross-park listings (favorites, homepage, blog) have no provider, and there
+ * the dialog lists this one ride.
  *
  * It draws its own {@link GlassCircle}, because it is also the only thing
  * that knows whether there is an alert to offer at all — wrapped by the card,
@@ -41,26 +49,62 @@ export function RideAlertBell({
   currentWaitTime,
 }: RideAlertBellProps) {
   const [open, setOpen] = useState(false);
-  const [alerted, setAlerted] = useLocalPushFollowsValue(
-    false,
-    () => !!getRideAlertLocal(attractionId),
-    [attractionId]
-  );
+  const [alerted] = useLocalPushFollowsValue(false, () => !!getRideAlertLocal(attractionId), [
+    attractionId,
+  ]);
+  // Mounted on the first press and kept, so the close animation still plays. Until then the
+  // dialog's own hooks (fetch effect, sorted picker rows) do not run once per card on the page.
+  const [dialogMounted, setDialogMounted] = useState(false);
   const t = useTranslations('pushAlerts.rideBell');
+  const parkAttractions = useRideAlertParkAttractions();
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    setDialogMounted(true);
     setOpen(true);
   }, []);
+
+  // The park's list when there is one. This ride's own entry is the card's: its reading is the
+  // one the bell's visibility rule just read, where the list counts a wait only while the ride is
+  // `OPERATING`. Added when the list does not carry the ride, so the dialog can always pick it.
+  const dialogAttractions = useMemo((): RideAlertDialogAttraction[] => {
+    const self: RideAlertDialogAttraction = {
+      id: attractionId,
+      name: attractionName,
+      currentWaitTime,
+      backgroundImage,
+      backgroundPosition: objectPosition,
+    };
+    if (!parkAttractions) return [self];
+    if (!parkAttractions.some((a) => a.id === attractionId)) return [...parkAttractions, self];
+    return parkAttractions.map((a) =>
+      a.id === attractionId
+        ? {
+            ...a,
+            currentWaitTime,
+            backgroundImage: backgroundImage ?? a.backgroundImage,
+            backgroundPosition: objectPosition ?? a.backgroundPosition,
+          }
+        : a
+    );
+  }, [
+    parkAttractions,
+    attractionId,
+    attractionName,
+    currentWaitTime,
+    backgroundImage,
+    objectPosition,
+  ]);
 
   // A queue this short has no alert left to offer: the threshold may not go
   // under ten minutes, nor within ten of what the ride reads right now, and
   // below twenty there is no value between those two. Same shape as
   // `ShowFollowBell` hiding when a performance is too close to warn about —
   // and, like it, an alert already SET keeps its bell whatever the queue is
-  // doing, because that bell is the only way to take it off again.
-  if (!alerted && !hasUsableThresholdRange(currentWaitTime)) return null;
+  // doing, because that bell is the only way to take it off again. While the dialog is open the
+  // bell stays, or removing this ride's alert in the dialog would unmount the dialog with it.
+  if (!alerted && !open && !hasUsableThresholdRange(currentWaitTime)) return null;
 
   return (
     <>
@@ -93,21 +137,21 @@ export function RideAlertBell({
             // This bell's only home is the glass photo corner of AttractionCard,
             // so it takes FavoriteStar's `glass` colors directly rather than a
             // variant prop nothing else would ever set to `default`.
-            <Bell className="fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45" />
+            <Bell className="h-4 w-4 fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45" />
           )}
         </button>
       </GlassCircle>
-      <RideAlertQuickDialog
-        open={open}
-        onOpenChange={setOpen}
-        attractionId={attractionId}
-        attractionName={attractionName}
-        parkName={parkName}
-        onSaved={setAlerted}
-        backgroundImage={backgroundImage}
-        objectPosition={objectPosition}
-        currentWaitTime={currentWaitTime}
-      />
+      {/* The bell's icon follows the dialog's writes through the local mirror: `setRideAlert` and
+          `removeRideAlert` update it, and `useLocalPushFollowsValue` re-reads on its event. */}
+      {dialogMounted && (
+        <RideAlertDialog
+          open={open}
+          onOpenChange={setOpen}
+          parkName={parkName}
+          attractions={dialogAttractions}
+          initialAttractionId={attractionId}
+        />
+      )}
     </>
   );
 }

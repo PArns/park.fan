@@ -21,6 +21,7 @@ import { TransportSystemBadge } from '@/components/parks/transport-system-badge'
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
+import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { ChapterPanel } from '@/components/common/chapter-panel';
@@ -71,7 +72,11 @@ import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
-import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
+import {
+  cityHasOwnPage,
+  findRelocatedParkRedirect,
+  findRenamedParkRedirect,
+} from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { parkArgs } from '@/lib/i18n/park-phrase';
@@ -247,7 +252,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // no longer bakes into every per-attraction × per-locale ISR write (the dominant write source).
   // The park-embedded attraction carries everything the shell + JSON-LD + FAQ need (name,
   // statistics, bestVisitTimes); live status/wait times still come from the client poll.
-  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // Not `catchNonFatal`: a failed fetch must throw rather than 404 — see the park page.
+  const park = await getParkByGeoPath(continent, country, city, parkSlug);
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
   if (!park) {
@@ -289,6 +295,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     continentName,
     countryName,
     cityName,
+    cityHasPage: await cityHasOwnPage(continent, country, city),
     parkName,
     attractionName,
     homeLabel: tCommon('home'),
@@ -312,6 +319,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     attraction.maximumHeight != null ||
     Boolean(attraction.mayGetWet) ||
     attraction.hasSingleRider === true ||
+    attraction.hasVirtualLine === true ||
     Boolean(attraction.fastPass) ||
     attraction.rcdbId != null;
 
@@ -437,6 +445,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             breadcrumbs={breadcrumbs}
             currentPage={attractionCurrentPage}
             pinLastBreadcrumb
+            // The title card's park link is the way one level up on a phone.
+            phone="hidden"
           />
 
           <article itemScope itemType="https://schema.org/TouristAttraction">
@@ -494,7 +504,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           marker for a station on a park railway, whose wait is
                           a departure interval rather than a queue. Independent
                           of the season and works badges beside it. */}
-                      <TransportSystemBadge parkSlug={parkSlug} attractionSlug={attractionSlug} />
+                      <TransportSystemBadge attractionKind={attraction.attractionKind} />
                       {attraction.isSeasonal && (
                         <SeasonalBadge
                           seasonMonths={attraction.seasonMonths}
@@ -531,9 +541,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
                   The order inside it is the point: what decides whether you may ride
                   (height), then what the ride does (inversions), then what kind of ride
-                  it is, then who built it and when, then the way out to RCDB. */}
+                  it is, then who built it and when, then the way out to RCDB.
+
+                  Below `sm` the band is one row that scrolls sideways instead of wrapping: Taron's
+                  nine chips took three lines of a 390 px phone in front of the live wait time. The
+                  chips are `shrink-0` already (Badge), and the order above decides what is in view
+                  without a swipe — the height limits first. */}
                 {(hasMetaBadges || attraction.rideProfile) && (
-                  <div className="border-border/50 mt-5 flex flex-wrap items-center gap-2 border-t pt-4">
+                  <div className="border-border/50 no-scrollbar mt-5 flex items-center gap-2 border-t pt-4 max-sm:overflow-x-auto sm:flex-wrap">
                     <AttractionMetaBadges
                       minimumHeight={attraction.minimumHeight}
                       maximumHeight={attraction.maximumHeight}
@@ -543,6 +558,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         pass is a fact about the visit, like the height limits, and
                         not part of the ride's identity. */}
                     <SingleRiderBadge hasSingleRider={attraction.hasSingleRider} />
+                    <VirtualLineBadge hasVirtualLine={attraction.hasVirtualLine} />
                     <FastPassBadge fastPass={attraction.fastPass} />
                     {attraction.rideProfile ? (
                       <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
@@ -558,7 +574,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   "{attraction} Wartezeit(en)" that the client-streamed live panel doesn't
                   provide as static HTML. Inside the card, exactly like the park page: on
                   the bare background it sat on top of the hero photo and was unreadable. */}
-                <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
+                {/* Two lines below `sm`, the park header's clamp: CSS only, the full text stays
+                  in the HTML. */}
+                <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
                   {t('intro', {
                     attraction: attractionName,
                     ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
@@ -687,9 +705,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   chapter down, rather than restating the title. It names no window, because the
                   two cards under it are computed over different ones and only one of them
                   publishes its length — a figure here would be a claim about data this page does
-                  not hold. Length is measured, not guessed: the heading's text column is 244 px
-                  at a 360 px viewport, i.e. ~34 characters a line, so at 43–60 characters this
-                  wraps to two lines there and one at 1440 in all six locales. The first draft ran
+                  not hold. Length is measured, not guessed: the heading's text column is 256 px
+                  at a 360 px viewport (PAR-433), so English at 37 characters takes one line there
+                  and the other five at 43–60 characters take two; at 1440 all six take one. The first draft ran
                   71–90 characters and took three lines on every phone. */
                 hint={t('sectionPlanVisitHint')}
                 id="plan"

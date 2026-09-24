@@ -42,7 +42,9 @@ type Listener = () => void;
  * call site instead of a value nobody notices in the report until the column has
  * two spellings of the same entry point.
  *
- * - `tab` — the tab on the window's right edge, drawn on every page.
+ * - `tab` — the tab on the window's right edge, drawn on every page but a phone's.
+ * - `header` — the calendar button in the header, which replaces the tab on a phone
+ *   (`PlannerHeaderButton`, `planner-phone:` only).
  * - `park-header` — "Tag im Phantasialand planen" in a park page's or a wait-time
  *   calendar's header (`ParkPlannerLink`).
  * - `calendar-day` — "diesen Tag planen" in the wait-time calendar's day dialog
@@ -51,12 +53,15 @@ type Listener = () => void;
  *   panel the wizard opens nothing, so that press is not an open and is absent
  *   here by construction.
  * - `plan-list` — a day picked out of the list on the planner's own page.
+ * - `shared-link` — "Planer öffnen" on the shared-plan page, after the visitor
+ *   took over a plan somebody sent them.
  *
  * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
  * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
  * inside the already-open panel. Neither is a way in.
  */
-export type PlannerOpenedSource = 'tab' | 'park-header' | 'calendar-day' | 'wizard' | 'plan-list';
+export type PlannerOpenedSource =
+  'tab' | 'header' | 'park-header' | 'calendar-day' | 'wizard' | 'plan-list' | 'shared-link';
 
 export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 

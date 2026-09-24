@@ -1,14 +1,14 @@
 ---
-title: 'Sind 70 Minuten viel? Kommt auf den Wochentag an'
+title: 'Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 author: patrick
 mode: published
 excerpt: >-
-  Am Eingang von Taron hängt eine Zahl, und sie sagt für sich genommen fast
-  nichts. Erst der Vergleich mit jedem gemessenen Dienstag macht daraus eine
-  Auskunft. Warum park.fan Wartezeiten archiviert, was nachts damit passiert
-  und wo wir lieber gar nichts sagen.
+  Am Eingang von Taron steht eine Zahl, und allein sagt sie so viel wie eine
+  Temperatur ohne Jahreszeit. Erst der Vergleich mit jedem gemessenen Dienstag
+  macht daraus eine Auskunft. Warum park.fan nichts wegwirft, was nachts damit
+  passiert und warum wir im August keine Schlittschuhe mehr empfehlen.
 tags:
   - wartezeiten
   - park-fan
@@ -31,9 +31,8 @@ coverImage:
 seo:
   title: 'Wartezeiten richtig lesen: Sind 70 Minuten viel?'
   description: >-
-    Warum eine Wartezeit ohne Vergleichswert nichts aussagt, was „typisch“ und
-    „voll“ bei einer Attraktion bedeuten und wie park.fan aus Millionen
-    Messwerten eine Auskunft macht.
+    Eine Wartezeit ohne Vergleich ist wie eine Temperatur ohne Jahreszeit. Was
+    „typisch“ und „voll“ bedeuten und wie park.fan daraus eine Auskunft macht.
   keywords:
     - Wartezeiten Freizeitpark
     - Wartezeit einordnen
@@ -44,8 +43,8 @@ seo:
     - Crowd Kalender
 ---
 
-Du stehst vor [Taron](ref:phantasialand/taron), die Anzeige sagt **70 Minuten**, und dein Kopf macht
-sofort das Falsche: Er vergleicht die Zahl mit deiner Erinnerung. Beim letzten
+Du stehst vor [Taron](ref:phantasialand/taron), die Anzeige sagt **70 Minuten**,
+und dein Kopf macht sofort das Falsche: Er vergleicht die Zahl mit deiner Erinnerung. Beim letzten
 Besuch waren es 40, also ist heute schlimmer. Beim vorletzten 90, also ist
 heute super. Zwei Besuche sind keine Grundlage, und dein Gedächtnis rundet
 ohnehin zu deinen Ungunsten
@@ -53,7 +52,7 @@ ohnehin zu deinen Ungunsten
 
 Die Zahl selbst ist nicht das Problem. Die Parks schreiben sie an, sie stimmt
 meistens ungefähr, und sie kostet uns einen Abruf alle fünf Minuten. Das
-Problem ist, dass sie allein steht. 70 Minuten sind an einem Dienstag im Mai
+Problem ist, dass sie allein dasteht, wie eine Temperatur ohne Jahreszeit. 70 Minuten sind an einem Dienstag im Mai
 etwas völlig anderes als an einem Samstag in den Sommerferien, und ohne den
 zweiten Teil dieses Satzes kannst du nichts damit anfangen.
 
@@ -64,15 +63,14 @@ der Tagesspitzen: An der Hälfte aller gemessenen Tage war die längste Schlange
 kürzer als dieser Wert, an der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem
 richtig was los war.
 
-Beides sind Perzentile und keine Durchschnitte. Ein
-Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
+Beides sind Perzentile und keine Durchschnitte. Ein Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
 mit Betriebsstörung und 150 Minuten Rückstau zieht den Schnitt eines ganzen
 Monats nach oben, obwohl an 29 Tagen nichts davon zu spüren war. Der Median
-zuckt bei so einem Tag nicht. Der Rekord steht deshalb separat daneben, mit
-Datum, damit man ihn sieht, ohne dass er die anderen beiden Zahlen anfasst.
+zuckt bei so einem Tag nicht einmal. Der Rekord steht deshalb extra, mit Datum,
+damit man ihn sieht, ohne dass er die anderen beiden Zahlen anfasst.
 
-Für [Phantasialand](ref:phantasialand) sieht die Rangliste so aus. Die Spalte mit den Messtagen ist
-die wichtigste: Sie sagt, wie viel Gewicht eine Zeile trägt.
+Für das [Phantasialand](ref:phantasialand) sieht die Rangliste so aus. Die
+Spalte mit den Messtagen ist die wichtigste: Sie sagt, wie viel Gewicht eine Zeile trägt.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
@@ -82,13 +80,14 @@ Was hier steht, ist live. Wenn du diesen Artikel in drei Monaten noch einmal
 liest, stehen andere Zahlen in der Tabelle, und der Text drumherum stimmt
 trotzdem noch. Genau dafür gibt es diese Widgets: In vier älteren Artikeln
 standen die Zahlen mal von Hand getippt in Markdown-Tabellen, über sechs
-Sprachen verteilt, und sie sind nach ein paar Wochen still auseinandergelaufen.
+Sprachen verteilt, und sie sind nach ein paar Wochen still auseinandergelaufen, wie die Uhren in
+einer Ferienwohnung.
 
 ## Der Tag hat eine Form
 
 Eine Bahn hat nicht den ganzen Tag dieselbe Schlange. Die Grundbewegung kennt
-jeder: Zur Öffnung ist es kurz, danach zieht es an, gegen Abend wird es wieder
-erträglich. Wo genau der Höchststand liegt, ist pro Bahn verschieden, und
+jeder: Zur Öffnung ist es kurz, dann ist der Rest der Welt mit dem Frühstück
+fertig, und gegen Abend wird es wieder erträglich. Wo genau der Höchststand liegt, ist pro Bahn verschieden, und
 diese Abweichungen sind der nützliche Teil.
 
 ```hourly-profile-widget slug=phantasialand top=6
@@ -112,10 +111,11 @@ Die Uhrzeit spart dir eine halbe Stunde, das Datum bis zu einer ganzen. Zwischen
 zwei Tagen derselben Ferienwoche kann eine halbe Stunde Durchschnittswartezeit
 liegen, und einem gewöhnlichen Kalender sieht man das nicht an. Was den
 Unterschied macht: welche Bundesländer gerade frei haben, ob ein Brückentag
-dranhängt, ob es regnet, und ob im Nachbarland etwas los ist.
+dranhängt, ob es regnet und ob im Nachbarland etwas los ist.
 
 Der letzte Punkt wird gern unterschätzt. Ein Park nahe der Grenze merkt sofort,
-wenn nebenan die Ferien anfangen, also rechnen wir Regionen im Umkreis von rund
+wenn nebenan die Ferien anfangen, meistens schon an den Kennzeichen auf dem
+Parkplatz. Also rechnen wir Regionen im Umkreis von rund
 200 Kilometern mit ein und markieren sie im Kalender getrennt. Drei Parks im
 Vergleich, jeweils mit ihrem ruhigsten Wochentag:
 
@@ -135,27 +135,30 @@ festgelegt, weil jeder Schritt auf dem vorigen sitzt. Um 02:00 UTC die
 Perzentile pro Stunde, um 03:00 die Basiswerte pro Park, um 04:30 die
 Zusammenfassung von gestern, um 05:15 die Rope-Drop-Empfehlungen, die genau
 diese Zusammenfassung lesen. Um 06:00 trainiert sich das Prognosemodell mit
-den Wartezeiten des Vortags neu.
+den Wartezeiten des Vortags neu, während die Rope-Drop-Fraktion schon auf der
+Autobahn steht.
 
 Dazu kommt die andere Hälfte: Wir werfen nichts weg. Ältere Zeiträume werden
 komprimiert, aber jede Auswertung läuft weiterhin über alle Messwerte, die je
 angekommen sind. Wer im dritten Jahr anfängt zu speichern, hat im dritten Jahr
 ein Jahr Historie, und die beiden Jahre davor sind für immer weg.
 
-## Und die Stellen, an denen wir nichts sagen
+## Wo wir lieber gar nichts sagen
 
-[Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der eigenen App aus, und
-nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
+Der [Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der
+eigenen App aus, und nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
 Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
-meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort 82
-Attraktionen auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
-die auf null Beobachtungen beruht. Stattdessen steht auf der Parkseite ein
+meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort sämtliche
+Attraktionen des Parks auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
+die auf null Beobachtungen beruht. Ein Traumtag für jeden Besucher, und
+komplett erfunden. Stattdessen steht auf der Parkseite ein
 Hinweis, dass es hier nichts zu lesen gibt.
 
 Dieselbe Regel an einer kleineren Stelle: Der Schlittschuhverleih im
 Phantasialand läuft von November bis Januar. Im August meldet über ihn niemand
 etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet“ zu lesen,
-wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite.
+wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite:
+Schlittschuhe im Hochsommer, mit unserem Segen.
 Und Betriebsmonate einer Bahn nennen wir überhaupt erst nach 330
 Beobachtungstagen: Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
 April“ dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen

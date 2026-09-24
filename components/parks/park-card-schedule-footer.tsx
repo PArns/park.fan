@@ -6,6 +6,7 @@ import { ParkTime } from '@/components/common/park-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
 import type { ScheduleSummary } from '@/lib/api/types';
+import { cn } from '@/lib/utils';
 
 interface ParkCardScheduleFooterProps {
   isOpen: boolean;
@@ -17,6 +18,13 @@ interface ParkCardScheduleFooterProps {
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
   hasOperatingSchedule?: boolean;
+  /**
+   * The one-line form the phone row of `ParkCard` uses: an open park shows only its closing
+   * time (the attraction count when there is none), and a closed park's line is cut with an
+   * ellipsis instead of wrapping. The row puts this next to the badges, so it gets whatever
+   * width they leave.
+   */
+  compact?: boolean;
 }
 
 /**
@@ -36,6 +44,7 @@ export function ParkCardScheduleFooter({
   todaySchedule,
   nextSchedule,
   hasOperatingSchedule = true,
+  compact = false,
 }: ParkCardScheduleFooterProps) {
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
@@ -75,18 +84,24 @@ export function ParkCardScheduleFooter({
 
   const hasClosingTime = !!(todaySchedule?.closingTime && timezone && closingRemaining);
   const hasStats = (operatingAttractions != null && totalAttractions != null) || hasClosingTime;
+  // The compact line shows the closing time OR the attraction count, never both.
+  const showCount =
+    operatingAttractions != null && totalAttractions != null && !(compact && hasClosingTime);
 
   return isOpen ? (
     /* Open footer — stats strip only */
     hasStats ? (
       <div
-        className="relative flex items-center gap-[10px] overflow-hidden text-[11.5px] font-medium"
+        className={cn(
+          'relative flex items-center gap-[10px] overflow-hidden font-medium',
+          compact ? 'min-w-0 text-xs' : 'text-[11.5px]'
+        )}
         style={{
           color: 'var(--pk-text-2)',
           whiteSpace: 'nowrap',
         }}
       >
-        {operatingAttractions != null && totalAttractions != null && (
+        {showCount && (
           <span className="flex items-center gap-1">
             <Activity
               className="h-[11px] w-[11px] shrink-0"
@@ -105,7 +120,7 @@ export function ParkCardScheduleFooter({
           </span>
         )}
 
-        {operatingAttractions != null && hasClosingTime && (
+        {showCount && hasClosingTime && (
           <span style={{ color: 'var(--pk-text-3)' }} aria-hidden="true">
             ·
           </span>
@@ -127,9 +142,11 @@ export function ParkCardScheduleFooter({
                 showSuffix
               />
             </b>
-            <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
-              ({tCard('closingIn')} {closingRemaining})
-            </span>
+            {!compact && (
+              <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
+                ({tCard('closingIn')} {closingRemaining})
+              </span>
+            )}
           </span>
         )}
       </div>
@@ -137,7 +154,10 @@ export function ParkCardScheduleFooter({
   ) : (
     /* Closed footer */
     <div
-      className="relative flex items-center gap-[6px] text-[12px]"
+      className={cn(
+        'relative flex items-center gap-[6px] text-[12px]',
+        compact && 'min-w-0 leading-4'
+      )}
       style={{ color: 'var(--pk-text-2)' }}
     >
       <Calendar
@@ -145,7 +165,7 @@ export function ParkCardScheduleFooter({
         style={{ color: 'var(--pk-text-3)' }}
         aria-hidden="true"
       />
-      <span>
+      <span className={cn(compact && 'truncate')}>
         {scheduleInfo?.icon === 'opening' ? `${tNearby('opens')}: ` : ''}
         {scheduleInfo?.icon === 'offseason' ? (
           <>
@@ -165,7 +185,7 @@ export function ParkCardScheduleFooter({
                 showSuffix
               />
             </strong>
-            {scheduleInfo.remainingText && (
+            {scheduleInfo.remainingText && !compact && (
               <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
                 {' '}
                 ({scheduleInfo.remainingText})

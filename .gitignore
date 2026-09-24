@@ -57,6 +57,7 @@ lib/attraction-images.ts
 lib/blog/manifest.ts
 lib/blog/manifest-bodies.ts
 lib/blog/manifest-galleries.ts
+lib/blog/news-redirects.ts
 
 # Media database manifests — regenerated from the committed sidecars by
 # `pnpm generate:media` in prebuild, exactly like the blog manifests.

@@ -4,6 +4,7 @@ import { ArrowRight, Check, User } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { getAuthor } from '@/lib/blog/authors';
 import { resolveEntryForLocale } from '@/lib/blog/listing';
+import { postPath } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
@@ -49,7 +50,9 @@ export async function FounderSection({ locale }: { locale: Locale }) {
   // summarises. It falls back to the author page rather than dropping the link,
   // because the post is a file that can be unpublished and the page cannot.
   const storyPost = resolveEntryForLocale(STORY_POST_KEY, locale);
-  const authorHref = storyPost ? `/blog/${storyPost.entry.slug}` : `/blog/authors/${AUTHOR_SLUG}`;
+  const authorHref = storyPost
+    ? postPath({ slug: storyPost.entry.slug, frontmatter: storyPost.entry.fm })
+    : `/blog/authors/${AUTHOR_SLUG}`;
 
   return (
     <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">

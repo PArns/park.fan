@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: two parks, and the smaller one has the longer queues'
+title: 'Disneyland Paris: two parks, and of course the small one has the long queues'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
@@ -7,12 +7,12 @@ mode: published
 featured: false
 excerpt: >-
   Disneyland Park has 43 attractions with wait times, Disney Adventure World
-  has fourteen. Yet the smaller park is the one where you queue longer, and
-  across two years of measurement that has never once flipped, not for a
+  has fourteen, and the smaller park is still the one where you queue longer.
+  Across two years of measurement that has never once flipped, not for a
   single month or a single weekday. Also here: why the longest queue in the
-  big park belongs to a 1992 dark ride, what the second park has done
-  differently since 29 March 2026, and which ride has been shut for ten
-  months since 7 September.
+  big park forms for ninety seconds of 1992 dark ride, what the second park
+  has done differently since 29 March 2026, and which ride has been on a
+  ten-month break since 7 September.
 category: guides
 tags:
   - disneyland-paris
@@ -33,11 +33,10 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Under the rock base sits a seventeen-metre dragon.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris: Wait Times, Best Time to Go & Tips 2026'
+  title: 'Disneyland Paris 2026: Where the Queues Are Really Long'
   description: >-
-    Real wait-time data from two years of measurement: which of the two
-    Paris parks makes you queue longer, when it is quietest, and how to
-    split your day between the two.
+    Two years of wait-time data: why the smaller Paris park has the longer
+    queues, when it gets quieter, and which park to start your day in.
   keywords:
     - Disneyland Paris
     - Disneyland Paris wait times
@@ -76,6 +75,7 @@ Resort, about 32 kilometres east of Paris in the new town of
 Marne-la-Vallée. The site covers roughly **2,100 hectares**, a good half of
 it built on. It is still the most visited theme park in Europe, and with
 around 17,000 employees it is France's largest single-site employer.
+(Somebody has to fry all those churros.)
 
 Two parks stand on that site. [Disneyland
 Park](ref:/parks/europe/france/paris/disneyland-park) is the 1992 one: 56.7
@@ -90,8 +90,8 @@ You pay for the two parks separately. A day ticket covers **one** of them,
 and switching between the two means buying the two-park variant. It is the
 one decision that day you cannot undo at a ticket window come afternoon.
 
-Here is how the two Paris parks compare, alongside two more that sit a
-similarly long trip from Germany:
+Here is how the two Paris parks compare, with two more parks for scale that
+sit a similarly long trip from Germany:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,parc-asterix,europa-park show=quietest highlight=/parks/europe/france/paris/disneyland-park
 
@@ -111,20 +111,21 @@ Others will not go in at all.
 **[Big Thunder
 Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 is the largest version of this ride found in any Disney park, and the only
-one built on an island rather than next to the station. The train leaves the
+one built on an island. The train leaves the
 shore station, dives into a tunnel under the Rivers of the Far West and only
 resurfaces on the island, where the real track begins. Vekoma built it, it
 opened on the park's first day, minimum height 102 centimetres. It shut for a
-full year across 2015 and 2016: new brakes, repainted scenery and a handful
-of effects borrowed from the California version.
+full year across 2015 and 2016 and came back with new brakes, fresh paint and
+a handful of effects borrowed from California.
 
 **[Phantom
 Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)** is the
-reason haunted-house fans travel to Paris at all. The Haunted Mansion in
-Florida and California deliberately tells no continuous story. Paris does:
+Paris Haunted Mansion, with one difference that fans make the trip for: the
+Florida and California versions deliberately tell no continuous story. Paris
+does:
 Melanie Ravenswood has been waiting in her wedding dress ever since her
 wedding fell apart, and her father Henry killed her suitors one after
-another, a plot the 2019 refurbishment spelled out clearly for the first
+another (a father of the bride with firm views on meeting the family), a plot the 2019 refurbishment spelled out clearly for the first
 time. Six minutes in the Omnimover, 92 animatronics, plus Vincent Price's
 English narration, parts of which came back into the ride in 2019. After
 fifteen months of work, it reopened on 3 May 2019.
@@ -136,8 +137,9 @@ has only carried that name since 7 May 2017. It opened on 1 June 1995 as
 launch. That launch is still there: the train goes from 0 to 71 km/h up the
 mountain in 1.8 seconds. Three inversions, a kilometre of track, up to 5 g.
 Of every Space Mountain worldwide, it is the only one with a launch and the
-only one with inversions, and it is also the ride that saved the park after
-its early loss-making years.
+only one with inversions. Michael Eisner, Disney's boss at the time, called it
+the park's saviour: on the back of its success, Disneyland Paris turned its
+first profit after the loss-making early years.
 
 And yet it does not top our ranking.
 
@@ -149,8 +151,9 @@ The longest queue in the park belongs to **Peter Pan's Flight**, a 1992 dark
 ride that is over in about ninety seconds. Popularity only explains half of
 that. The other half is throughput: Hyperspace Mountain runs four trains and
 pushes almost 2,000 people through per hour, so it works its queue down all
-day long. A dark ride with small gondolas cannot do that. Anyone planning
-their morning around the coasters alone is planning the wrong morning.
+day long. Little flying pirate ships with room for one family cannot do that. Spend the morning on
+the coasters and you will spend part of the afternoon in the park's longest
+queue, for ninety seconds of dark ride.
 
 Three more rides cost you time that same morning. **[Pirates of the
 Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
@@ -164,7 +167,7 @@ from April 2000 to November 2004. Its minimum height of 140 centimetres is
 the highest of any Disney attraction worldwide, which regularly splits up
 families on site. And
 **[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
-is exactly what you would expect.
+is exactly what you are afraid it is.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -199,21 +202,24 @@ measured, on a broad data set and by a clear margin. It has been out of
 service since **7 September 2026**. The park pulled it for its biggest
 refurbishment since it opened: controls, sensors, communications technology
 and sections of track are being replaced, alongside cleaning, painting and
-repairs. The planned return is **summer 2027**, so around ten months.
+repairs. The planned return is **summer 2027**, which leaves the East Australian
+Current without passengers for around ten months.
 
 You can see it in our data without needing a press release: the last live
-wait time for this ride is timestamped **6 September, 20:21 UTC**. Every
-other closed attraction in the park kept getting updated after that.
+wait time for this ride is timestamped **6 September, 20:21 UTC**. After
+that it simply went quiet, while every other closed attraction in the park
+kept dutifully reporting its status.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
 ```
 
-What that means for a day there: the ride that used to eat half your morning
-is gone, and its guests are now spread across a park that had limited
-capacity to begin with. The table above still lists Crush's Coaster with its
-historical numbers, because the ranking covers two years. For your visit, the
-rows underneath it are the ones that matter.
+For a day there, that means the ride that used to eat half your morning is
+gone, and its guests are now spread across a park that had limited capacity
+to begin with. The table above still lists Crush's Coaster with its
+historical numbers, because the ranking covers two years, a bit like a dish
+still printed on the menu that the kitchen stopped making in September. For
+your visit, the rows underneath it are the ones that count.
 
 ## How busy it really gets
 
@@ -233,8 +239,7 @@ Adventure World stays higher. That has little to do with popularity and a
 lot to do with arithmetic: in 2023, Disneyland Park drew 10.4 million
 visitors and the second park 5.7 million. Divide that across the attractions
 that report wait times to us, and it works out to roughly **242,000 guests
-per attraction per year** against **407,000**. The same calculation shows up
-as a queue on the asphalt, every single day.
+per attraction per year** against **407,000**.
 
 Here is how a day at Disneyland Park spreads across the hours:
 
@@ -242,7 +247,7 @@ Here is how a day at Disneyland Park spreads across the hours:
 
 ```
 
-## When to go
+## When to go to a park that never closes
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
@@ -254,8 +259,7 @@ drives the crowds instead is French school holidays, which fall differently
 from the German ones and are staggered by zone, plus British half-term
 weeks, since a noticeable share of guests arrive via Eurostar.
 
-How flat the weekday curve is sits in the table above, and it comes out flat.
-A park open 365 days a year and advertised across half a dozen countries has
+The weekday curve above is flat, and for a reason: a park open 365 days a year and advertised across half a dozen countries has
 no dead Tuesday to escape to. Which of the coming weeks is quietest anyway is
 right here, recalculated continuously:
 
@@ -267,8 +271,8 @@ right here, recalculated continuously:
 
 The fast lane in Paris is called **Disney Premier Access**, sold per ride,
 per trip. There is no fixed price: Disney charges different amounts
-depending on the attraction, the date and the time of day, and the floor in
-our database sits at €5 per person, with plenty of room above that for the
+depending on the attraction, the date and the time of day, the same way
+airlines price the school holidays. The floor in our database sits at €5 per person, with plenty of room above that for the
 rides in demand. There is also a day variant covering every participating
 attraction, which likewise swings a lot by date.
 
@@ -278,14 +282,17 @@ attraction, which likewise swings a lot by date.
 
 Before you buy it, it is worth glancing back at the ranking further up. The
 price tracks demand, and the highest demand does not automatically belong to
-the rides where you would otherwise wait the longest.
+the rides where you would otherwise wait the longest. Pay for a coaster that
+moves its queue perfectly well at lunchtime, then join the back of the line
+for Peter Pan, and you have spent the money on the wrong queue.
 
-## The perfect day, in four sentences
+## How I would plan the day
 
 If you only have one day and one park, take Disneyland Park: more rides,
 shorter queues, and the castle is the reason most people came in the first
-place. Walk to the Fantasyland dark rides at opening, since the lead they
-give you first thing is never clawed back later in the day. Big Thunder
+place. Walk to the Fantasyland dark rides at opening, even if it feels wrong to
+leave Hyperspace Mountain alone and climb into a flying pirate ship: once
+their queues build, you will not catch up with them later in the day. Big Thunder
 Mountain, Hyperspace Mountain and Indiana Jones sit well in the lunch hours,
 while everyone else is eating. And if you are booking both parks, flip the
 usual order and start in Adventure World, where our rope-drop analysis shows
@@ -314,8 +321,9 @@ the turnstile. Current prices for your date are on
 
 **Food.** Both parks have table-service restaurants that need a reservation,
 plus plenty of quick service in between. Our database lists 35 dining venues
-in Disneyland Park and 19 in Adventure World. Lunchtime is when the ride
-queues briefly ease off.
+in Disneyland Park and 19 in Adventure World. At lunchtime the queue migrates
+from the rides to the counters, and for a while the chip stand is the most
+popular attraction in the park.
 
 ## Frequently asked questions about Disneyland Paris
 
@@ -337,9 +345,10 @@ table above.
 ### Why is Walt Disney Studios Park now called Disney Adventure World?
 
 The new name has applied since 29 March 2026 and had been announced since 12
-April 2024. It arrived together with the World of Frozen area and marks the
-end of the studio theme, which had matched what was actually there less and
-less every year since 2002.
+April 2024. It arrived together with the World of Frozen area and ends the
+studio theme, which had matched what was actually there less and less every
+year since 2002. Nobody was going to buy a 36-metre Frozen mountain with its
+own fjord as a film set.
 
 ### Is Crush's Coaster running right now?
 

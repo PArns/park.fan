@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-09-24T09:29:00Z",
+  "source": "api.park.fan /v1/parks/…/plan/day and /v1/discovery/nearby at the park centre",
+  "timezone": "Europe/Berlin",
+  "day": {
+    "context": {
+      "date": "2026-09-24",
+      "status": "OPERATING",
+      "openHour": 10,
+      "closeHour": 18,
+      "liveWaitTimes": {
+        "available": false,
+        "reason": "in_park_app_only"
+      }
+    },
+    "rides": []
+  },
+  "nearby": []
+}

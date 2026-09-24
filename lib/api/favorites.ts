@@ -8,6 +8,7 @@ import type {
   BestVisitSlot,
   RopeDropInfo,
   LiveWaitTimes,
+  AttractionKind,
 } from '@/lib/api/types';
 
 export interface FavoritePark {
@@ -106,6 +107,11 @@ export interface FavoriteAttraction {
     message?: string;
   } | null;
   crowdLevel?: CrowdLevel;
+  /**
+   * Not yet delivered by /v1/favorites: the service rates against the P50 but does not return it.
+   * Typed so the ride card's crowd-scale tooltip lights up here once the API ships it.
+   */
+  baseline?: number | null;
   currentLoad?: {
     crowdLevel: CrowdLevel;
     baseline?: number;
@@ -123,6 +129,12 @@ export interface FavoriteAttraction {
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Not yet delivered by /v1/favorites — typed so cards light up once the API ships it. */
   ropeDrop?: RopeDropInfo | null;
+  /**
+   * Also not yet delivered by /v1/favorites, like every other curated fact —
+   * the response carries none of `hasSingleRider`, `hasVirtualLine` or this.
+   * Typed so the card's transport badge lights up here once the API ships it.
+   */
+  attractionKind?: AttractionKind | null;
 }
 
 export interface FavoriteShow {

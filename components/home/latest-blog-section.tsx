@@ -2,9 +2,10 @@ import { ArrowRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
-import { listPostsByRecency } from '@/lib/blog/listing';
+import { listArticlesByRecency } from '@/lib/blog/listing';
 import type { Locale } from '@/i18n/config';
 
+// Articles only: news posts have their own row (`NewsRow`), see `isNewsPost`.
 interface LatestBlogSectionProps {
   locale: Locale;
   limit?: number;
@@ -49,7 +50,7 @@ export async function LatestBlogSection({
   variant = 'section',
 }: LatestBlogSectionProps) {
   const t = await getTranslations('blog');
-  const posts = listPostsByRecency(locale).slice(0, variant === 'lead' ? LEAD_ROWS + 1 : limit);
+  const posts = listArticlesByRecency(locale).slice(0, variant === 'lead' ? LEAD_ROWS + 1 : limit);
   if (posts.length === 0) return null;
 
   if (variant === 'lead') {

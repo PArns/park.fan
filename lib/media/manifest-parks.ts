@@ -48,6 +48,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "germany",
     "path": "europe/germany/rust/europa-park"
   },
+  "europe/germany/sierksdorf/hansa-park": {
+    "slug": "hansa-park",
+    "name": "Hansa-Park",
+    "city": "Sierksdorf",
+    "countrySlug": "germany",
+    "path": "europe/germany/sierksdorf/hansa-park"
+  },
   "europe/germany/soltau/heide-park": {
     "slug": "heide-park",
     "name": "Heide Park",
@@ -132,6 +139,7 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
   "phantasialand": "europe/germany/bruehl/phantasialand",
   "europa-park": "europe/germany/rust/europa-park",
+  "hansa-park": "europe/germany/sierksdorf/hansa-park",
   "heide-park": "europe/germany/soltau/heide-park",
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
   "efteling": "europe/netherlands/kaatsheuvel/efteling",

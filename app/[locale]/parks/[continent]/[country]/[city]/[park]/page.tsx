@@ -24,6 +24,7 @@ import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import {
+  cityHasOwnPage,
   findParkPageRedirect,
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
@@ -250,7 +251,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Fetch park data and holidays (holidays are optional). `leanParkForParkShell` strips the two
   // per-attraction fields only the ride page renders (typicalWaits, rideProfile) — ~11 KB of this
   // park's 33 KB attraction list that nothing here reads. The live poll returns them regardless.
-  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // Not `catchNonFatal`: `getParkByGeoPath` already answers the API's 404 with `null`, and any
+  // other failure has to reach the error boundary as a 500. Swallowed, it became a `notFound()`
+  // that Cloudflare holds for an hour (see `nullOnNotFound` in lib/api/client.ts).
+  const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
   const parkLean = parkFull ? leanParkForParkShell(parkFull) : parkFull;
   // Dev/preview only, and a no-op with no `?state=` — see `lib/parks/park-simulation.ts` for why
   // this one fabricates data where `?sim=` refuses to.
@@ -349,6 +353,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
     continentName,
     countryName,
     cityName,
+    cityHasPage: await cityHasOwnPage(continent, country, city),
     parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
@@ -387,6 +392,8 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
+        // On a phone the address line's links are the way one level up — see `cityHref`.
+        phoneBreadcrumb="hidden"
         pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
         // The two chapters that belong to the PARK rather than to any one of its pages, handed in
         // rather than switched on: what the shell imports, every route that uses it pays for in
@@ -483,6 +490,12 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             cityName={cityName}
             country={country}
             countryName={countryName}
+            // Read off the trail rather than rebuilt, so the address links exactly the pages the
+            // breadcrumb would: a city without a page of its own has no crumb and stays text.
+            cityHref={
+              breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url
+            }
+            countryHref={breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}`)?.url}
             locale={locale}
             suffix={t('h1Suffix')}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
@@ -539,6 +552,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               city={city}
               parkSlug={parkSlug}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+              renderedAtMs={seedNowMs}
             />
           }
         />

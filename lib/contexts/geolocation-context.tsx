@@ -18,6 +18,12 @@ export interface GeolocationPosition {
 
 export interface GeolocationContextValue {
   position: GeolocationPosition | null;
+  /**
+   * Radius of the last fix in metres (`coords.accuracy`, 95 % confidence), `null` before the
+   * first one. Kept beside `position` rather than inside it: every consumer that compares or
+   * keys on `position` would otherwise see a new object whenever only the accuracy moved.
+   */
+  accuracy: number | null;
   loading: boolean;
   error: boolean;
   permissionDenied: boolean;
@@ -68,6 +74,7 @@ interface GeolocationProviderProps {
  */
 export function GeolocationProvider({ children }: GeolocationProviderProps) {
   const [position, setPosition] = useState<GeolocationPosition | null>(null);
+  const [accuracy, setAccuracy] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [permissionDenied, setPermissionDenied] = useState(false);
@@ -101,6 +108,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
         // Keep the previous object identity when the fix is unchanged, so consumers and
         // position-keyed effects/queries don't churn on every refresh tick.
         setPosition((prev) => (prev && prev.lat === lat && prev.lng === lng ? prev : { lat, lng }));
+        setAccuracy(Number.isFinite(pos.coords.accuracy) ? pos.coords.accuracy : null);
         setLoading(false);
         setError(false);
         setPermissionDenied(false);
@@ -194,6 +202,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
   const value = useMemo<GeolocationContextValue>(
     () => ({
       position,
+      accuracy,
       loading,
       error,
       permissionDenied,
@@ -205,6 +214,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     }),
     [
       position,
+      accuracy,
       loading,
       error,
       permissionDenied,

@@ -2,10 +2,9 @@
 
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
-import { Card } from '@/components/ui/card';
-import { AlertCircle } from 'lucide-react';
+import { RideAlertParkProvider } from '@/components/push/ride-alert-park-context';
+import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
@@ -40,7 +39,7 @@ interface LiveParkDataProps {
  * - Uses initial SSR data for instant render
  * - Refreshes on window focus (when user returns to tab)
  * - Shows live indicator when data is fresh
- * - Gracefully falls back to last known state on error
+ * - Gracefully falls back to last known state on error (the warning is <LiveDataFreshness>)
  */
 export function LiveParkData({
   initialData,
@@ -55,13 +54,7 @@ export function LiveParkData({
   otherAttractionsLabel,
   todayPanel,
 }: LiveParkDataProps) {
-  const t = useTranslations('common');
-
-  const {
-    data: park,
-    isError,
-    error,
-  } = useLiveParkData({
+  const { data: park } = useLiveParkData({
     continent,
     country,
     city,
@@ -95,45 +88,34 @@ export function LiveParkData({
     });
   }, [currentAttractionsByLand, park, initialData.attractions, landNames, otherAttractionsLabel]);
 
+  // The park's ride list for every ride-alert bell in the tabs below: a bell opens the full
+  // alert dialog with this ride picked and the park's other rides in the list.
   const tabsWithHash = (
-    <TabsWithHash
-      defaultValue="attractions"
-      todayIso={todayIso}
-      showsAvailable={currentPark.shows && currentPark.shows.length > 0}
-      restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
-      weatherAvailable={!!currentPark.weather?.current}
-      statsAvailable={statsAvailable}
-      park={currentPark}
-      continent={continent}
-      country={country}
-      city={city}
-      parkSlug={parkSlug}
-      landNames={currentLandNames}
-      attractionsByLand={currentAttractionsByLand}
-      todayPanel={todayPanel}
-    />
+    <RideAlertParkProvider park={currentPark}>
+      <TabsWithHash
+        defaultValue="attractions"
+        todayIso={todayIso}
+        showsAvailable={currentPark.shows && currentPark.shows.length > 0}
+        restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
+        weatherAvailable={!!currentPark.weather?.current}
+        statsAvailable={statsAvailable}
+        park={currentPark}
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        landNames={currentLandNames}
+        attractionsByLand={currentAttractionsByLand}
+        todayPanel={todayPanel}
+      />
+    </RideAlertParkProvider>
   );
 
   return (
     <>
-      {/* Error State - Still show data but warn user */}
-      {isError && (
-        <Card className="mb-6 border-red-500 bg-red-50 p-4 dark:bg-red-950/20">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="mt-0.5 h-5 w-5 text-red-600 dark:text-red-400" />
-            <div className="flex-1">
-              <p className="text-sm font-medium text-red-900 dark:text-red-100">
-                {t('failedToLoadLiveData')}
-              </p>
-              <p className="mt-1 text-sm text-red-700 dark:text-red-300">
-                {t('showingLastKnownState')}
-                {error instanceof Error && ` (${error.message})`}
-              </p>
-            </div>
-          </div>
-        </Card>
-      )}
-
+      {/* A failed poll used to open a red card here, above the tabs, and every pixel of the page
+          below it moved by the card's height. It is now a warning on the "as of" line above the
+          ride list (<LiveDataFreshness>), in a row that is there in every state. */}
       {/* The "wird aktualisiert" indicator used to sit here, in a permanently reserved `mb-4 h-4`
           slot — 32 px of nothing between the header stack and its own navigation, on every view of
           every park page, so that the spinner appearing on each 5-minute poll would not shift the
@@ -153,6 +135,8 @@ export function LiveParkData({
           twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
           `display:none` does not skip hydration, which was the dominant mobile-INP source on
           large parks like PortAventura. */}
+      {/* "Near you" for a visitor standing in this park: one reserved row for everybody else. */}
+      <ParkInParkBlock park={currentPark} />
       {tabsWithHash}
     </>
   );

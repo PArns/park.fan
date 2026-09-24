@@ -24,6 +24,7 @@ import { ThemeToggle } from '@/components/common/theme-toggle';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
+import { PlannerHeaderButton } from '@/components/planner/planner-header-button';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -115,14 +116,15 @@ export function Header({
   const isHowto = Object.values(HOWTO_SEGMENTS).some((s) => pathname === '/' + s);
   // The blog index (not its sub-pages) opens with the same full-bleed hero.
   const isBlogIndex = pathname === '/blog';
-  // Blog articles open with a full-bleed cover banner (always dark: a cover
-  // image or a dark fallback gradient). The listing sub-pages (category/tag/
-  // author) keep the normal header.
+  // Blog articles and news posts open with a full-bleed cover banner (always
+  // dark: a cover image or a dark fallback gradient). The listing sub-pages
+  // (category/tag/author, and the news overview) keep the normal header.
   const isBlogPost =
-    pathname.startsWith('/blog/') &&
-    !pathname.startsWith('/blog/category/') &&
-    !pathname.startsWith('/blog/tag/') &&
-    !pathname.startsWith('/blog/authors/');
+    pathname.startsWith('/news/') ||
+    (pathname.startsWith('/blog/') &&
+      !pathname.startsWith('/blog/category/') &&
+      !pathname.startsWith('/blog/tag/') &&
+      !pathname.startsWith('/blog/authors/'));
   // Pages that open with a full-bleed hero the header floats over: transparent at
   // the top, solidifying to the normal bar on scroll. All of these heroes now show
   // the photo in its natural colours (no dark wash) with a frosted glass panel for
@@ -602,9 +604,17 @@ export function Header({
             <SearchCommand trigger="button" size="sm" />
           </div>
 
-          {/* Locale + theme + unit. The only copy — see the handoff note above for the corner
-              pill that used to hold a second one while the bar floated. */}
-          <div className="flex items-center gap-1">
+          {/* Locale + theme + unit. The only copy IN THE BAR — see the handoff note above for the
+              corner pill that used to hold a second one while the bar floated.
+
+              Not on a phone (PAR-434): below a 640 px bar the three move into the burger sheet,
+              where they are the first row. They were three controls of 24–34 px
+              in a row with 25 px of slack at 360, and they are preferences a visitor sets once,
+              not navigation. The bar's width and not the window's, like every switch in here.
+              The sheet copy is unconditional, because the sheet exists only below 1024 and a
+              portal cannot ask this container anything — between 640 and 1023 the three are in
+              both places, which costs nothing, while a mismatch could leave them in neither. */}
+          <div className="flex items-center gap-1 @max-[640px]:hidden">
             <LocaleSwitcher />
             <ThemeToggle />
             {/* The unit lived in the weather card's header, i.e. on park pages only, while it
@@ -614,6 +624,10 @@ export function Header({
                 this bar has at 360 px and where the space for it came from. */}
             <TemperatureUnitToggle />
           </div>
+
+          {/* The planner's way in on a phone, where the edge tab is not drawn — see
+              PlannerHeaderButton for why it asks `planner-phone` rather than this bar. */}
+          <PlannerHeaderButton label={t('planner')} />
 
           {/* Mobile Menu */}
           <div>
@@ -648,6 +662,22 @@ export function Header({
                   className="mt-8 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
                   aria-label="Mobile navigation"
                 >
+                  {/* The three preferences the bar no longer carries on a phone. FIRST in the
+                      sheet, above the favourites: at the end of the list they sat at y=662 of a
+                      664 px sheet (390 × 664, no favourites saved), and every saved favourite
+                      pushes them further out of sight. The same components as the bar's, so a
+                      change to one is a change to both. */}
+                  <div
+                    data-sheet-stagger
+                    className="border-border/60 flex items-center justify-between gap-3 border-b pb-4"
+                  >
+                    <span className="text-muted-foreground text-sm">{t('preferences')}</span>
+                    <div className="flex items-center gap-1">
+                      <LocaleSwitcher />
+                      <ThemeToggle />
+                      <TemperatureUnitToggle />
+                    </div>
+                  </div>
                   {showNearbyPark && (
                     <Link
                       href={convertApiUrlToFrontendUrl(nearestPark.url)}

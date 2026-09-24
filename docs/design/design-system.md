@@ -174,6 +174,32 @@ It is the same component the `compact` variant already was — the list beside t
 post. The thumbnail takes the card's `objectPosition`, so a focal point tuned in the admin holds at
 96 × 64 too.
 
+### The park card is a row too
+
+A park card collapsed onto its panels kept all of its content, but it was 146 px high and one per
+row: nine of them on the Germany page, ten on the homepage. Since PAR-432 `ParkCard` renders a row
+below `sm` (`data-park-card-row`, `sm:hidden`) and the panelled card from `sm` up (`hidden sm:grid`),
+both inside the same `Link`, so every caller and every grid that spans the card over three rows
+gets it without a change.
+
+| line     | content                                                           | height |
+| -------- | ----------------------------------------------------------------- | ------ |
+| 1        | name, one line, cut with an ellipsis; favourite star at the right | 18 px  |
+| 2        | city, country · distance                                          | 16 px  |
+| 3        | `ParkStatusBadge`, `CrowdLevelBadge`                              | 22 px  |
+| 4        | `ParkCardScheduleFooter compact`, then "nearest open" as text     | 16 px  |
+| together | with the gaps, 8 px padding and a 1 px border                     | 100 px |
+
+Four fixed lines, not three with the time beside the badges: next to "Geöffnet" and "Sehr niedrig"
+the time does not fit at 360 px, and a line that wraps only for some parks gave the rows of one list
+different heights. The badge line keeps `min-h-[22px]` because on the region pages the badges arrive
+with the client batch call after the row is painted. "Nearest open" is text on the time line and not a third badge, because three badges wrap at 390 px. The thumbnail is 64 × 40, not the blog row's 96 × 64, because a 96 px thumbnail leaves the badge line 204 px at 360 px and the two badges need 228; 40 px high keeps the box wider than 1.5. It is only drawn when the park has a photo (9 of 212). The hidden card's two photo layers claim
+the same `64px` for the phone segment of their `sizes`, for the reason given above.
+`ParkCardNearbySkeleton` draws the same four lines. The grids around the card keep
+`[grid-auto-rows:auto_1fr_auto]` from `sm` up and drop it below (`max-sm:auto-rows-auto`, the same
+switch as the ride list in `LandSection`): in one column a `1fr` track sizes every row to the tallest,
+so one park with a third badge gave every other row of the nearby list 40 px of empty space.
+
 **And it has no variants of its own.** The first version had two: a border and a three-line title
 where the row replaced a card, an `-mx-2` bleed and two lines where it sat in a list, reading time
 only in the first. On the homepage those two meet — below `lg` the lead post is a row and so are
@@ -303,6 +329,24 @@ breakpoint. Both streamed chapters therefore render **the real heading** in thei
 mount them, with only the data-dependent hint line replaced by a `Skeleton`. A sized grey box in
 their place left the mobile header 66–120 px short and the whole grid below absorbed the
 difference. See [system-overview](../architecture/system-overview.md#5-a-streamed-section-owes-the-page-its-height-requirement).
+
+**Below `sm` the heading and the gap above it are one step smaller** (PAR-433). A park page stacks
+14 chapters, a ride page 7, the homepage 20, and at 390 px a two-line `text-2xl` title under a 40 px
+glyph took 105 px on its own. On a phone the `md` title is `text-xl`, the watermark icon 28 px (the
+title's line box, so a one-line heading is as tall as its text), the numeral `text-3xl` and the band
+`pt-2.5 pb-3`. The `tile` variant's plate is 48 px and its title `text-2xl`. The chapter's top
+margin is `mt-6` below `sm` in all three places that set it — `ChapterPanel`, `PageSection` and
+`AttractionHistoryPanel`. From `sm` up nothing changed.
+
+The phone spacing is written as `max-sm:` classes added to the desktop value (`mt-10 max-sm:mt-6`),
+not as a base value with an `sm:` one over it. Call sites override the heading's spacing through
+`className` (`ChapterPanel` passes `mb-0`, the trip planner `mb-5 pb-4`, the guide `mb-8 pb-5`),
+and `twMerge` drops only the unprefixed class it conflicts with. The first draft wrote
+`mb-4 sm:mb-6`: `mb-0` removed the `mb-4`, the `sm:mb-6` stayed, and every glued panel on a
+desktop had a 24 px gap between its band and its body. For the same reason the heading's bottom
+margin has no phone step at all. The panel
+body keeps `p-4`: `p-3` would save 8 px per chapter, a fifth of what the heading and margin save,
+and put every panel's content 4 px closer to its border.
 
 `SectionHeading`'s `plain` variant is untouched and is still the right choice **inside** a card
 (the rope-drop panel, the typical-waits block, a city row on a country page) — a chapter header
@@ -694,6 +738,29 @@ the bar floated. PAR-170 removed it: once the nav, the search trigger and the bu
 from the first screen line, the pill lies across them — 240–336 px against a burger at 308–344 at
 360 px, over the search control at 1024 and 1280. The in-flow cluster is the only one now, on every
 page and in both states of the bar, so the width budget above is the whole budget.
+
+### On a phone the preferences live in the menu (PAR-434)
+
+Below a **640 px bar** (`@max-[640px]:hidden`, the bar's width like every switch in it) the locale
+switcher, the theme switch and the °C/°F button are not in the bar at all. They are one row,
+„Einstellungen", at the top of the burger sheet (at its end they sat at y=662 of a 664 px
+sheet) — the same three components, so a change to one is
+a change to both. The sheet copy is unconditional: the sheet exists only below a 1024 px bar and a
+portal cannot ask the header's container anything, so between 640 and 1023 the three are in both
+places, which costs nothing, while two conditions that could disagree might leave them in neither.
+The locale switcher's list is `z-[80]` for this, above the sheet's `z-[70]` overlay.
+
+What the bar carries on a phone instead is the **planner's way in** (`PlannerHeaderButton`, a 36 px
+calendar icon beside the burger), because the edge tab is not drawn on `planner-phone` any more —
+see [trip planner](../features/trip-planner.md#the-tab-is-on-every-page-but-a-phones). That button
+asks `planner-phone`, not the bar's width; on `planner-phone` the panel never insets the page, so
+the two are the same number wherever it applies.
+
+Measured after, on `/parks/europe/germany` in de and fr: the row is lockup 107, search 36, planner
+36, burger 36 and **0.0 px over its content box at 320, 360 and 390**, where it used to be 12.8 px
+over at 320. From 640 up nothing in the bar moved. So the 25 px budget above is history for a
+phone: the row has ~100 px of slack there now, and the question the next control asks is whether it
+is navigation (the bar) or a preference (the sheet).
 
 ### The bar has two states and the navigation is not one of them
 

@@ -72,6 +72,7 @@ const typeLabels = {
 };
 
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -113,6 +114,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
               alt={result.name}
               fill
               className="object-cover opacity-40 transition-opacity group-hover:opacity-50"
+              style={{ objectPosition: objectPositionForSrc(backgroundImage, '50% 50%') }}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />

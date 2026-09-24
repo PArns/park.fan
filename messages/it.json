@@ -106,12 +106,12 @@
     "browseParks": "Scopri tutti i parchi"
   },
   "home": {
-    "intro": "park.fan mostra i tempi di attesa in tempo reale e i livelli di affluenza per oltre 200 parchi a tema e più di 7.000 attrazioni in tutto il mondo, tra cui Disney, Universal Studios, Europa-Park e Phantasialand. Pianifica la tua visita con code live, orari di apertura e previsioni basate sull’intelligenza artificiale.",
+    "intro": "park.fan mostra i tempi di attesa in diretta e l’affluenza di oltre 200 parchi a tema e più di 7.000 attrazioni nel mondo, da Disney e Universal fino a Europa-Park e Phantasialand. In più orari di apertura e una previsione tutta nostra per i prossimi giorni.",
     "hero": {
       "cta": "Esplora i parchi",
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
       "title": "Dove conviene mettersi in fila oggi?",
-      "intro": "park.fan segue in diretta <strong>{parks, number} parchi divertimento</strong> e <strong>{attractions, number} attrazioni</strong>, da Gardaland ed Europa-Park fino al Magic Kingdom. Cerca il tuo parco, oppure gira il mondo dalla mappa.",
+      "intro": "park.fan segue in diretta <strong>{parks, number} parchi divertimento</strong> e <strong>{attractions, number} attrazioni</strong>, da Gardaland fino al Magic Kingdom. Cerca il tuo parco, oppure fai il giro del mondo dalla mappa. Almeno quello, senza fila.",
       "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
       "searchExamples": "Gardaland, Taron, Efteling …"
     },
@@ -119,11 +119,11 @@
       "liveNow": "Parchi aperti nel mondo",
       "liveNowIntro": "Numero di parchi a tema aperti per continente in tempo reale.",
       "featuredParks": "Parchi popolari",
-      "featuredParksIntro": "Sei parchi noti per cominciare, con tempi di attesa in diretta e previsione dell’affluenza."
+      "featuredParksIntro": "Sei parchi noti per scaldarsi, ognuno con tempi di attesa in diretta e previsione dell’affluenza."
     },
     "ai": {
       "title": "Quanto sono precise le nostre previsioni",
-      "subtitle": "park.fan calcola con un modello proprio, addestrato sulle code misurate in oltre 200 parchi. Tiene conto delle previsioni meteo, delle vacanze scolastiche e degli eventi speciali, e ogni giorno alle 06:00 UTC viene riaddestrato con i tempi di attesa del giorno prima.",
+      "subtitle": "park.fan calcola con un modello proprio, addestrato sulle code misurate in oltre 200 parchi. Tiene conto delle previsioni meteo, delle vacanze scolastiche e degli eventi speciali, e ogni giorno alle 06:00 UTC impara dai tempi di attesa del giorno prima.",
       "avgErrorDesc": "MAE – di quanti minuti si sbagliano le nostre previsioni in media",
       "rmseDesc": "RMSE – quanto pesano i peggiori errori sul risultato complessivo",
       "mapeDesc": "MAPE – errore percentuale rispetto al tempo di attesa reale",
@@ -143,7 +143,7 @@
       "howText": "Ogni previsione poggia su tre strati: lo storico dei tempi di attesa misurati nel parco, i segnali esterni come previsioni meteo, vacanze scolastiche e giorni festivi, e quello che quel giorno succede nel parco, cioè eventi speciali e stagione. Da lì il modello ricava l’attesa prevista per ogni attrazione e per ogni ora, e la condensa nel livello di affluenza della giornata, fin dove il parco ha pubblicato il proprio calendario.",
       "fancastLink": "Come funziona Fancast, il nostro modello di previsione",
       "improvingTitle": "Ogni previsione viene ricontrollata il giorno dopo",
-      "improvingText": "Il giorno seguente il sistema mette ogni previsione accanto al tempo di attesa misurato davvero e passa la differenza al ciclo di addestramento successivo. I valori qui sopra escono da questo confronto, non da un set di prova preparato da noi.",
+      "improvingText": "Il giorno seguente il sistema mette ogni previsione accanto al tempo di attesa misurato davvero e passa la differenza al ciclo di addestramento successivo. I valori qui sopra escono da questo confronto, non da un set di prova confezionato su misura da noi.",
       "badge": {
         "excellent": "Precisione eccellente",
         "good": "Buona precisione",
@@ -165,24 +165,24 @@
     "steps": {
       "kicker": "Come funziona",
       "title": "Tre passi per la giornata al parco",
-      "lead": "Scegli il parco, controlla la giornata, pianifica il giro. Per ognuno dei tre passi park.fan porta i dati misurati in oltre 200 parchi.",
+      "lead": "Scegli il parco, controlla la giornata, pianifica il giro. Sembra il foglietto di montaggio di un mobile, ma si fa prima, e per ogni passo i dati misurati in oltre 200 parchi sono già pronti.",
       "one": {
         "title": "Scegli il parco",
         "text": "Scrivi il parco o l’attrazione, oppure prendi il suggerimento vicino a te. Ogni parco ha la sua pagina con i tempi d’attesa in tempo reale, gli orari e il calendario.",
-        "tip": "La ricerca non trova solo parchi. Se sai di voler salire su Taron ma non in quale parco si trovi, scrivi semplicemente il nome dell’attrazione. Ci sono anche spettacoli e ristoranti.",
+        "tip": "La ricerca conosce più dei soli parchi. Se sai di voler salire su Taron ma non ricordi più in quale parco si trovi, scrivi semplicemente il suo nome. Ci sono anche spettacoli e ristoranti.",
         "placeholder": "Parco o attrazione",
         "label": "Cerca un parco o un’attrazione"
       },
       "two": {
         "title": "Controlla la giornata",
-        "text": "Il calendario dell’affluenza valuta ogni giorno che il parco ha già pubblicato: verde vuol dire code brevi, rosso vuol dire viali pieni e percorsi lunghi.",
-        "tip": "Due giorni vicini sono spesso due parchi diversi. Se la data è libera, guarda la settimana prima e quella dopo prima di prenotare.",
+        "text": "Il calendario dell’affluenza valuta ogni giorno che il parco ha già pubblicato: verde vuol dire code brevi, rosso vuol dire viali pieni e code che arrivano fino all’area tematica successiva.",
+        "tip": "Due giorni di fila sono spesso due parchi diversissimi. Se la data è libera, guarda la settimana prima e quella dopo prima di prenotare.",
         "legendLow": "poca affluenza",
         "caption": "Un mese di calendario: una casella per giorno, il colore è l’affluenza prevista."
       },
       "three": {
         "title": "Pianifica il giro",
-        "text": "Ogni attrazione porta con sé la sua finestra migliore, così non fai la fila all’headliner proprio nel picco di mezzogiorno.",
+        "text": "Ogni attrazione porta con sé la sua finestra migliore, così non punti all’headliner proprio quando mezzo parco ha avuto la stessa idea.",
         "tip": "«Arrivare presto» non vale per ogni attrazione. Alcune restano piene uguale tutto il giorno, altre salgono solo dopo pranzo. La pagina di ogni attrazione ha la sua curva.",
         "caption": "La giornata tipo di un coaster, dall’apertura alla sera.",
         "best": "I momenti più tranquilli sono presto e nell’ultima ora."
@@ -201,7 +201,7 @@
       "kicker": "Attese in tempo reale",
       "title": "Tempi d’attesa per ogni attrazione, aggiornati ogni cinque minuti",
       "lead": "Per ogni attrazione e ogni tipo di coda, più orari e guasti.",
-      "body": "Non mostriamo solo il numero, ma cosa significa: 95 minuti sono tanti un martedì di settembre e del tutto normali un sabato di ottobre. Per questo su ogni pagina di attrazione c’è cosa è tipico per quel giorno della settimana e cosa vuol dire una giornata piena.",
+      "body": "Un numero da solo dice poco. 95 minuti sono tanti un martedì di settembre e una mattina qualunque un sabato di ottobre. Per questo su ogni pagina di attrazione c’è cosa è tipico per quel giorno della settimana e com’è una giornata piena.",
       "ridesTitle": "Ogni attrazione ha la sua pagina",
       "ridesText": "Migliaia di pagine, ognuna con quello che vale per quella singola attrazione: tipi di coda, andamento della giornata tra misure e previsione, tempi tipici per giorno della settimana, altezza minima e consiglio per il rope drop.",
       "ridesLink": "Guarda un esempio",
@@ -212,13 +212,13 @@
     },
     "shows": {
       "kicker": "Spettacoli e ristoranti",
-      "title": "Una giornata al parco non è solo montagne russe",
+      "title": "Prima o poi anche il fan più accanito delle montagne russe vuole sedersi a mangiare",
       "lead": "park.fan elenca anche spettacoli e ristoranti: gli orari delle repliche di oggi, più la cucina, gli orari di apertura e se serve prenotare un tavolo.",
       "showsTitle": "Orari degli spettacoli",
       "showsHint": "Ogni replica della giornata con il suo orario, la prossima per prima, e se lo spettacolo è in stagione.",
       "restaurantsTitle": "Ristoranti nel parco",
       "restaurantsHint": "Cucina, orari e obbligo di prenotazione, così la caccia al tavolo non parte nel mezzo delle ore migliori per salire.",
-      "body": "Una replica alle 15 toglie qualche migliaio di persone dalle code e ce le rimette subito dopo. Chi conosce gli orari può passare la mezz’ora prima su un’attrazione invece che in sala.",
+      "body": "Una replica alle 15 toglie qualche migliaio di persone dalle code e poi le rimanda indietro tutte insieme. Chi conosce gli orari fa la fila durante lo spettacolo, non dopo, dietro a tutto il pubblico.",
       "statAttractions": "Attrazioni",
       "statShows": "Spettacoli",
       "statRestaurants": "Ristoranti",
@@ -251,21 +251,21 @@
         "label": "Giorni in anticipo"
       },
       "feedback": "Il giorno dopo ogni previsione viene messa a confronto con l’attesa davvero misurata. La differenza entra nel training successivo, ed è per questo che il colore di uno stesso giorno cambia man mano che si avvicina.",
-      "body": "Le giornate verdi sono code brevi e spazio per muoversi. Arancione e rosso vogliono dire che ogni attrazione gettonata ti costa tre quarti d’ora. Per arrivarci il calendario mette calendari delle vacanze, previsioni meteo, giorni della settimana ed eventi speciali contro lo storico reale del parco.",
+      "body": "Le giornate verdi sono code brevi e spazio per muoversi. Arancione e rosso vogliono dire che ogni attrazione gettonata ti costa tre quarti d’ora, più o meno una puntata di una serie tv per ogni giostra. Per arrivarci il calendario mette calendari delle vacanze, previsioni meteo, giorni della settimana ed eventi speciali contro lo storico reale del parco.",
       "cta": "Guarda il calendario di un parco",
       "bestTimeLink": "Periodo migliore: i giorni e i mesi più tranquilli"
     },
     "ai": {
       "kicker": "La nostra IA",
       "title": "Una previsione nostra, con lo scarto scritto accanto",
-      "lead": "Prevedere i tempi d’attesa è la parte difficile, e la maggior parte dei siti la evita. park.fan la affronta con Fancast, un modello proprio, riaddestrato ogni notte.",
+      "lead": "Prevedere i tempi d’attesa è la parte difficile, ingrata più o meno quanto prevedere il traffico dell’esodo estivo. park.fan lo fa lo stesso con Fancast, un modello proprio riaddestrato ogni giorno alle 06:00 UTC.",
       "compareTitle": "Come prevedono gli altri siti",
       "compareLead": "Tre approcci sono diffusi, e tutti e tre hanno lo stesso punto cieco: nessuno dice di quanto la previsione abbia sbagliato.",
       "c1": {
         "kicker": "Approccio 1",
         "title": "Nessuna previsione",
-        "text": "Il più grande sito tedesco di tempi d’attesa rinuncia di proposito alle previsioni: troppi fattori, e una previsione sbagliata potrebbe danneggiare sia i parchi sia i visitatori. Mostra solo quanto era pieno.",
-        "limit": "Guardare indietro non risponde a «che giorno prenoto?»"
+        "text": "Uno dei siti tedeschi di tempi d’attesa più noti rinuncia di proposito alle previsioni: troppi fattori, e una previsione sbagliata potrebbe danneggiare sia i parchi sia i visitatori. Mostra solo quanto era pieno.",
+        "limit": "Per «che giorno prenoto?» guardare indietro serve più o meno quanto il meteo di ieri."
       },
       "c2": {
         "kicker": "Approccio 2",
@@ -279,13 +279,13 @@
         "text": "Gli ensemble mescolano analisi statistica e una quota di IA e tengono conto di vacanze, festivi e meteo, dichiarati come beta, per un parco, a livelli da «eccellente» a «molto lunga».",
         "limit": "Senza un margine d’errore resta aperto quanto valga quel livello."
       },
-      "answerTitle": "Fancast calcola ora per ora, per attrazione – e dichiara il suo errore.",
-      "answerText": "Non un livello di affluenza al giorno, ma l’attesa prevista ora per ora. Ogni previsione viene poi verificata contro la misura reale, e da lì escono i valori di precisione qui sotto."
+      "answerTitle": "Fancast calcola ora per ora, attrazione per attrazione, e dichiara il suo errore.",
+      "answerText": "Invece di un livello di affluenza al giorno, l’attesa prevista ora per ora. Ogni previsione viene poi verificata contro la misura reale, e da lì escono i valori di precisione più in basso."
     },
     "bestTime": {
       "kicker": "Momento migliore",
       "title": "Molte attrazioni hanno due finestre tranquille, la mattina e verso sera",
-      "lead": "Il rope drop non conviene su ogni attrazione. La curva viene dai giorni misurati della singola attrazione.",
+      "lead": "Il rope drop non conviene su ogni attrazione, per quanto dispiaccia sentirlo quando la sveglia suona alle sei. La curva viene dai giorni misurati della singola attrazione.",
       "chartSubtitle": "Mediana su {days} giorni misurati, rilevati ogni 5 minuti",
       "legendToday": "misurato oggi",
       "legendMedian": "mediana dei giorni passati",
@@ -323,7 +323,7 @@
     },
     "dictionary": {
       "kicker": "Dizionario · roba da appassionati",
-      "title": "Zero-G roll, Immelmann, top hat – rifalle nel player",
+      "title": "Zero-G roll, Immelmann e top hat nel player 3D, senza stomaco sottosopra",
       "lead": "Il dizionario di park.fan spiega i termini tecnici, e per gli elementi di tracciato c’è il player 3D: scegli la figura, avviala, spostati in qualsiasi punto del giro.",
       "pickerTitle": "Elementi di tracciato",
       "cta": "Tutti i termini del dizionario",
@@ -331,7 +331,7 @@
     },
     "why": {
       "kicker": "Perché park.fan",
-      "title": "Sei motivi per cui qui funziona diversamente",
+      "title": "Cosa funziona diversamente qui",
       "r1": {
         "title": "Modello nostro, addestrato ogni giorno",
         "text": "Nessun fornitore esterno, nessuna scatola nera preconfezionata. Il modello continua a imparare ogni notte con i dati del giorno prima."
@@ -354,18 +354,18 @@
       },
       "r6": {
         "title": "Dati che spiegano qualcosa",
-        "text": "Dizionario, guide ai parchi e analisi sul blog. Perché a novembre un parco è vuoto e a ottobre pieno è spiegato in un articolo."
+        "text": "Dizionario, guide ai parchi e analisi sul blog. Perché a ottobre un parco è pieno e a novembre quasi vuoto è spiegato in un articolo, numeri alla mano."
       },
       "howtoLink": "Come funziona park.fan",
       "fancastLink": "Fancast, il nostro modello di previsione"
     },
     "founder": {
       "kicker": "La persona dietro",
-      "title": "Uno sviluppatore, un modello di dati suo, nessun investitore",
+      "title": "Uno sviluppatore che ha fatto troppe file",
       "name": "Patrick Arns",
       "role": "Fondatore di park.fan",
-      "p1": "park.fan non è una startup con investitori e riunioni di roadmap, ma il progetto di uno che va nei parchi da quando stava nel passeggino e scrive software da oltre 25 anni. La frustrazione era concreta: 90 minuti di fila per un’attrazione, col sospetto che un po’ di pianificazione l’avrebbe evitata.",
-      "p2": "Così è nato prima un tracker, poi un database, poi un sistema di machine learning fatto in casa, costruito dall’import dei dati fino alla previsione e riaddestrato ogni notte.",
+      "p1": "Dietro park.fan non ci sono investitori né riunioni di roadmap. Solo uno che va nei parchi da quando stava nel passeggino e scrive software da oltre 25 anni. La scintilla è stata concreta: 90 minuti di fila per un’attrazione, col sospetto che un po’ di pianificazione l’avrebbe evitata.",
+      "p2": "Così è nato prima un tracker, poi un database, poi un sistema di machine learning fatto in casa, costruito dall’import dei dati fino alla previsione e riaddestrato ogni notte. Altri, dopo una giornata così, si sarebbero semplicemente comprati un salta-fila.",
       "b1": "Oltre 25 anni di sviluppo software",
       "b2": "Appassionato di parchi fin da bambino",
       "b3": "Nessun gruppo, nessun investitore",
@@ -486,11 +486,13 @@
     "bestTime": "Periodo migliore",
     "bestTimeHint": "I giorni e i mesi più tranquilli, parco per parco.",
     "latestPosts": "Ultimi articoli",
+    "allNews": "Tutte le notizie",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
     "readingTime": "{minutes} min",
-    "nearby": "Vicino a te"
+    "nearby": "Vicino a te",
+    "preferences": "Impostazioni"
   },
   "theme": {
     "light": "Chiaro",
@@ -499,6 +501,12 @@
     "toggle": "Cambia tema"
   },
   "parks": {
+    "liveFreshness": {
+      "asOf": "Aggiornato",
+      "outdated": "Non aggiornato",
+      "offline": "Offline",
+      "retry": "Riprova"
+    },
     "blogPosts": {
       "title": "{park} sul blog",
       "intro": "Articoli dal nostro blog in cui compare {park}.",
@@ -531,6 +539,14 @@
       "upTo": "fino a {max}%",
       "between": "{min}–{max}%",
       "above": "oltre {min}%"
+    },
+    "rideCrowdScale": {
+      "title": "Affluenza di questa attrazione",
+      "note": "Rispetto all’attesa abituale di questa attrazione: {baseline} min. Ogni attrazione ha la sua scala.",
+      "upTo": "fino a {max} min",
+      "exactly": "{min} min",
+      "between": "{min}–{max} min",
+      "from": "da {min} min"
     },
     "avgWaitTime": "Tempo di attesa medio",
     "openAttractions": "Attrazioni aperte",
@@ -608,7 +624,9 @@
       "singleRider": "Single rider",
       "resetWet": "Azzera il filtro acqua",
       "resetFastPass": "Azzera il filtro salta fila",
-      "resetSingleRider": "Azzera il filtro single rider"
+      "resetSingleRider": "Azzera il filtro single rider",
+      "openFilters": "Filtri",
+      "activeCount": "{count, plural, one {# attivo} other {# attivi}}"
     },
     "heightFilter": {
       "label": "Altezza",
@@ -1326,6 +1344,7 @@
       "maxHeightLabel": "Fino a",
       "mayGetWet": "Potresti bagnarti",
       "singleRider": "Single Rider",
+      "virtualLine": "Coda virtuale",
       "fastPassFree": "gratuito",
       "fastPassFrom": "da",
       "rcdbLabel": "{attraction} su RCDB",
@@ -1396,7 +1415,19 @@
     "day": "{count, plural, =1 {giorno} other {giorni}}",
     "week": "{count, plural, =1 {settimana} other {settimane}}",
     "offseason": "Fuori stagione",
-    "nearbyParksArea": "Nei dintorni"
+    "nearbyParksArea": "Nei dintorni",
+    "parkPage": {
+      "heading": "Vicino a te",
+      "inParkCoarse": "Sei nel parco",
+      "ask": "Sei al parco? Mostra le attrazioni vicine",
+      "blocked": "La posizione è bloccata nel browser",
+      "away": "Sei a {distance} dal parco"
+    },
+    "nextRide": {
+      "heading": "Più breve ora che dopo",
+      "reason": "Ora {now} min, dalle {time} previsti {later} min",
+      "saving": "−{minutes} min"
+    }
   },
   "geo": {
     "continent": "Continente",
@@ -1525,7 +1556,7 @@
     },
     "home": {
       "title": "Tempi di attesa live e previsioni di affluenza",
-      "description": "Massimizza la tua visita con tempi di attesa in tempo reale, previsioni IA e navigazione nel parco. Copre Disney, Universal, Europa-Park e molto altro."
+      "description": "Tempi di attesa in diretta da oltre 200 parchi a tema, aggiornati ogni cinque minuti. In più un calendario dell’affluenza per i prossimi giorni e una previsione che dichiara il proprio errore."
     },
     "parks": {
       "title": "Parchi a tema nel mondo: tempi di attesa, mappa e panoramica",
@@ -1624,7 +1655,7 @@
         "whichParksQ": "Quali parchi a tema sono supportati da park.fan?",
         "whichParksA": "park.fan copre oltre 200 parchi a tema nel mondo, tra cui Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland e Bobbejaanland. L’elenco completo con i tempi di attesa in diretta è nella pagina di panoramica dei parchi.",
         "liveDataQ": "I tempi di attesa su park.fan sono in tempo reale?",
-        "liveDataA": "Sì. Dove un parco pubblica i propri tempi di attesa, li interroghiamo ogni cinque minuti da tre fonti pubbliche contemporaneamente: ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Se due fonti non concordano, decide la maggioranza, poi la mediana, poi la media. Il risultato è arrotondato a cinque minuti, perché è così che i parchi li espongono.",
+        "liveDataA": "Sì. Dove un parco pubblica i propri tempi di attesa, li interroghiamo ogni cinque minuti da tre fonti pubbliche contemporaneamente: ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Se le fonti non concordano, decide la maggioranza, poi la mediana, poi la media. Il risultato è arrotondato a cinque minuti, perché è così che i parchi li espongono.",
         "freeQ": "L’utilizzo di park.fan è gratuito?",
         "freeA": "Sì. Tempi di attesa in diretta, orari di apertura, spettacoli, ristoranti e calendario dell’affluenza si vedono senza account e senza barriere a pagamento. Non esiste un abbonamento che sblocchi altri dati.",
         "favoritesQ": "Posso salvare i miei parchi e attrazioni preferiti su park.fan?",
@@ -1694,13 +1725,15 @@
     "rideDialog": {
       "title": "Avvisi sul tempo di attesa",
       "subtitle": "Per {park} – ti avvisiamo appena l’attesa scende sotto la soglia scelta.",
-      "soloSubtitle": "{park} – ti avvisiamo appena l’attesa scende sotto la soglia scelta.",
       "loading": "Caricamento…",
       "empty": "Ancora nessun avviso per questo parco.",
       "thresholdLabel": "sotto {minutes} min",
       "remove": "Rimuovi {name}",
       "addTitle": "Aggiungi un avviso",
       "selectRide": "Scegli un’attrazione",
+      "searchRide": "Cerca un’attrazione",
+      "noRideFound": "Nessuna attrazione con questo nome.",
+      "noQueueNow": "Nessuna attesa ora",
       "thresholdInput": "Soglia in minuti",
       "minutes": "min",
       "add": "Aggiungi",
@@ -1710,8 +1743,6 @@
       "close": "Chiudi",
       "entry": "Avvisi sul tempo di attesa",
       "entryWithCount": "Avvisi sul tempo di attesa ({count})",
-      "removeShort": "Rimuovi",
-      "save": "Salva",
       "outOfSeason": "Solo in inverno",
       "retired": "Dismessa",
       "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",
@@ -1829,15 +1860,15 @@
     "rideCount": "{count, plural, one {# attrazione} other {# attrazioni}}"
   },
   "fancast": {
-    "title": "Fancast – il nostro modello di previsione dei tempi di attesa",
-    "description": "Fancast è il modello di IA di park.fan: prevede affluenza e tempi di attesa per ogni giorno che un parco ha già pubblicato, e valuta la propria accuratezza in modo aperto."
+    "title": "Fancast: il nostro modello di previsione dei tempi di attesa",
+    "description": "Fancast prevede affluenza e tempi di attesa per ogni giorno che un parco ha già in calendario, e poi verifica in pubblico di quanto ha sbagliato."
   },
   "bestTime": {
     "title": "Periodo migliore per visitare i parchi divertimento",
     "description": "I giorni e i mesi più tranquilli di oltre 200 parchi, da dati reali sui tempi di attesa, con trucchi per code brevi e il calendario dell’affollamento.",
     "quietestByPark": {
       "title": "Il giorno più tranquillo in ogni parco",
-      "intro": "Le medie qui sopra valgono per tutti i parchi insieme. Presi singolarmente cambia: ogni parco ha il suo ritmo, dettato dalle vacanze scolastiche, dalle distanze e da quando arrivano i visitatori giornalieri.",
+      "intro": "Le medie qui sopra valgono per tutti i parchi insieme. Presi uno per uno, ogni parco va per conto suo, a seconda delle vacanze scolastiche, delle distanze e di quando la gente della zona ha un giorno libero.",
       "colQuietest": "Giorno più tranquillo"
     }
   },
@@ -1971,10 +2002,18 @@
       "playHint": "Carica il player di YouTube solo al tocco."
     }
   },
+  "blogToast": {
+    "eyebrow": "Novità sul blog",
+    "read": "Leggi l’articolo",
+    "close": "Chiudi",
+    "moreOne": "E {count} altro articolo nuovo",
+    "moreOther": "E altri {count} articoli nuovi",
+    "allPosts": "Vedi tutti"
+  },
   "contribute": {
     "gallery": {
-      "title": "Lasciati ispirare",
-      "subtitle": "Dalle colline di airtime alle dark ride a tema – alcuni parchi e attrazioni su park.fan a cui aggiungere le tue foto."
+      "title": "Questi parchi e queste attrazioni aspettano le tue foto",
+      "subtitle": "Colline di airtime, dark ride piene di scenografie, parchi interi al tramonto: alcuni esempi su park.fan a cui aggiungere le tue foto."
     },
     "meta": {
       "title": "Condividi le tue foto di parchi e attrazioni",
@@ -1982,12 +2021,12 @@
     },
     "hero": {
       "title": "Condividi le tue foto di parchi e attrazioni",
-      "subtitle": "Hai foto di un coaster, di una parata o di un parco al tramonto? Caricali qui, dicci quale attrazione o parco mostrano e, dopo una rapida verifica, li aggiungiamo alla galleria."
+      "subtitle": "Da qualche parte nel tuo telefono ci sono le foto dell’ultima visita al parco, e alcune sono davvero belle. Sono proprio quelle che cerchiamo. Caricale qui, dicci quale attrazione o parco mostrano e, dopo una rapida verifica, le aggiungiamo alla galleria."
     },
     "banner": {
       "eyebrow": "Galleria della community",
       "title": "Hai foto di questa attrazione o parco?",
-      "subtitle": "Carica i tuoi scatti e aiuta gli altri fan: trascina, assegna, fatto.",
+      "subtitle": "Carica i tuoi scatti, così gli altri fan vedono prima in cosa si stanno cacciando. Trascina, assegna, fatto.",
       "cta": "Carica foto"
     },
     "dropzone": {
@@ -2164,7 +2203,8 @@
       "placeholder": "Cerca un’attrazione",
       "noResults": "Nessuna attrazione trovata.",
       "tapHint": "Tocca un'attrazione e si posiziona sul primo orario libero. Poi tocca il blocco per spostarlo di un quarto d'ora alla volta.",
-      "opensAt": "dalle {time}"
+      "opensAt": "dalle {time}",
+      "done": "Fine"
     },
     "clearDay": "Svuota il giorno",
     "clearDayTitle": "Svuotare il giorno?",
@@ -2211,7 +2251,8 @@
       "more": "{count, plural, =1 {+1 altro} other {+# altri}}",
       "hidden": "Orari nascosti",
       "hide": "Nascondi gli orari",
-      "show": "Mostra gli orari"
+      "show": "Mostra gli orari",
+      "chip": "Spettacoli"
     },
     "warn": {
       "closedNow": "Al momento risulta chiusa.",
@@ -2226,6 +2267,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minuti in meno",
       "longer": "15 minuti in più",
+      "iconPick": "Icona: {icon}. Scegline un’altra",
       "icon": {
         "break": "Pausa",
         "food": "Pasto",
@@ -2238,6 +2280,7 @@
     },
     "optimize": {
       "headliners": "Pianifica tutte le attrazioni principali",
+      "headlinersShort": "Attrazioni di punta",
       "run": "Ottimizza la giornata",
       "running": "Riordino …",
       "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
@@ -2289,7 +2332,8 @@
       "adjust": "Modifica"
     },
     "sheet": {
-      "handle": "Ingrandisci o chiudi il pianificatore",
+      "handle": "Ingrandisci o riduci il pianificatore",
+      "close": "Chiudi il pianificatore",
       "resize": "Regola la larghezza"
     },
     "headliners": {
@@ -2319,7 +2363,11 @@
         "show-times": "Orari degli spettacoli",
         "ride-status": "Quando un’attrazione in programma chiude o riapre",
         "wait-change": "Quando un’attesa in programma cambia molto"
-      }
+      },
+      "share": "Condividi un link a questo piano",
+      "shareCopied": "Link copiato",
+      "shareManual": "La copia non è riuscita. Ecco il link da selezionare:",
+      "shareTitle": "Il mio piano su park.fan"
     },
     "page": {
       "kicker": "Pianificatore",
@@ -2388,6 +2436,9 @@
         "hintTight": "Prima della chiusura c’è posto per {fits} su {total}.",
         "conflict": "Ne entrano {fits} su {total}. Togli la spunta a ciò di cui puoi fare a meno, oppure porta in cima quello che vuoi assolutamente fare.",
         "none": "Per questa giornata non manca nessuna attrazione principale.",
+        "noneFitHeight": "Nessuna attrazione principale va bene per il vostro gruppo: {count, plural, one {l’unica del parco richiede} other {tutte le # richiedono}} un’altezza minima superiore a quella della persona più bassa. Nel pianificatore puoi comunque aggiungerle una alla volta.",
+        "noneFitWet": "Nessuna attrazione principale va bene per il vostro gruppo: {count, plural, one {l’unica del parco bagna} other {tutte le # bagnano}}, e volete restare asciutti. Nel pianificatore puoi comunque aggiungerle una alla volta.",
+        "noneFitBoth": "Nessuna attrazione principale va bene per il vostro gruppo: {count, plural, one {l’unica del parco richiede un’altezza che la persona più bassa non raggiunge, oppure bagna} other {ognuna delle # richiede un’altezza che la persona più bassa non raggiunge, oppure bagna}}. Nel pianificatore puoi comunque aggiungerle una alla volta.",
         "resolved": "{count, plural, one {Così l’attrazione entra nella giornata} other {Così entrano tutte le # attrazioni nella giornata}}. Puoi continuare a cambiare la selezione."
       },
       "facts": {
@@ -2417,6 +2468,21 @@
     "plans": {
       "title": "I miei piani"
     },
-    "planDayInWizard": "Pianifica il giorno"
+    "planDayInWizard": "Pianifica il giorno",
+    "shared": {
+      "metaTitle": "Piano condiviso | park.fan",
+      "title": "Piano condiviso",
+      "subtitle": "Qualcuno ti ha inviato un piano dal pianificatore.",
+      "loading": "Caricamento del piano…",
+      "missing": "A questo link non corrisponde nessun piano. Forse è stato copiato a metà o è scaduto, oppure chi lo ha inviato ha disattivato le notifiche, e così il piano è stato cancellato.",
+      "failed": "Al momento non è stato possibile caricare il piano.",
+      "retry": "Riprova",
+      "empty": "In questo piano non c’è ancora nessuna attrazione.",
+      "copyNote": "Se prendi il piano, ne ricevi una copia tua. Quello che cambi resta a te, e il piano di chi lo ha inviato non cambia.",
+      "replaces": "Su questo dispositivo c’è già un piano. Verrà sostituito da quello condiviso.",
+      "adopt": "Aggiungi al mio pianificatore",
+      "adopted": "Il piano ora è nel tuo pianificatore.",
+      "open": "Apri pianificatore"
+    }
   }
 }

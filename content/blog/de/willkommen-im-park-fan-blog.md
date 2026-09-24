@@ -2,13 +2,15 @@
 title: 'Ein Kinderwagen, eine Gondel und eine halbe Million Zeilen Code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 excerpt: >-
   Ein Kinderwagen am Märchensee, eine Gondelfahrt durch „1001 Nacht“, und
   dreißig Jahre später sechzig Minuten Taron-Schlange mit der Frage, ob sich
   das gerade lohnt. Wie aus einer Kindheit im Phantasialand eine Plattform
-  wurde, die Parktage lesen kann.
+  wurde, die Parktage lesen kann, und warum auf meinem Schreibtisch ein
+  Taron-Rad liegt.
 tags:
   - park-fan
   - phantasialand
@@ -16,7 +18,7 @@ tags:
   - wartezeiten
   - ki-prognosen
   - hinter-den-kulissen
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany
@@ -28,11 +30,10 @@ coverImage:
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: der Velocicoaster im Looping, dahinter das Hogwarts-Schloss.'
 seo:
-  title: 'Warum es park.fan gibt'
+  title: 'Warum es park.fan gibt: Märchensee, Taron und Code'
   description: >-
-    Ein Kinderwagen am Märchensee, Nächte voller Code, eine KI, die Parktage
-    liest: die Geschichte von park.fan und wann sich dein Parkbesuch wirklich
-    lohnt.
+    Ein Kinderwagen am Märchensee, eine Stunde Taron-Schlange und viele Nächte
+    voller Code: wie park.fan entstand und wann sich dein Parkbesuch lohnt.
   keywords:
     - park.fan Blog
     - park.fan Geschichte
@@ -48,7 +49,7 @@ seo:
 
 Manche Orte funktionieren wie ein Schalter. Du gehst durch ein Drehkreuz, und
 der Kram, der dich zwei Stunden vorher noch beschäftigt hat, ist weg. Nicht
-verdrängt, sondern tatsächlich weg. Ich kenne nicht viele Orte, die das
+bloß verdrängt, richtig weg. Ich kenne nicht viele Orte, die das
 schaffen, und die wenigen sind bei Licht betrachtet aus Sperrholz und Farbe
 gebaut, von Leuten, die man nie zu Gesicht bekommt.
 
@@ -71,27 +72,22 @@ Geschichte, also gab es an jeder Szene einen Knopf. Einmal drücken, und ein
 Tonband erzählte das Märchen dazu.
 
 Ich habe diese Knöpfe gedrückt, und wenn meine Eltern schon zwei Szenen weiter
-waren, bin ich zurückgelaufen und habe sie noch einmal gedrückt. Für mich war
-das nie ein Parkbesuch.
+waren, bin ich zurückgelaufen und habe sie noch einmal gedrückt. Ein Parkbesuch
+war das für mich nie, eher ein Hörspiel mit Selbstbedienung.
 
-Dass dieser See der Anfang von allem sein würde, wusste ich damals natürlich
-nicht.
-
-## „1001 Nacht“, die Fahrten, die bleiben
+## Mit der Gondel durch „1001 Nacht“
 
 Dann war da die Gondelbahn **„1001 Nacht“**, ab 1970 in Betrieb und der erste
 stationäre Dark Ride Deutschlands. Ende der Achtzigerjahre gehörte sie zu
 jedem unserer Familienbesuche fest dazu. Meine Eltern und ich in einer dieser
-Gondeln, acht Meter über dem Boden, gemeinsam auf einer Reise, die mit jedem
-Meter tiefer in eine andere Welt führte. Durch das wuchtige Drachenmaul hinein
-in die Szenen von Ali Baba und Sindbad, vorbei am Sagenvogel Rok, hinein in
-eine Tropfsteinhöhle, in die man sich fallen lassen konnte wie in ein
+Gondeln, acht Meter über dem Boden: durch das wuchtige Drachenmaul hinein in die
+Szenen von Ali Baba und Sindbad, vorbei am Sagenvogel Rok, hinein in eine
+Tropfsteinhöhle, in die man sich fallen lassen konnte wie in ein
 aufgeschlagenes Märchenbuch.
 
 Mein Vater ist 2019 gestorben. Vielleicht sind mir diese gemeinsamen Fahrten
-gerade deshalb so kostbar geworden. Sie halten meine Kindheit lebendig, und mit
-ihr die Erinnerung an den Menschen, der damals neben mir durch diese Welten
-glitt.
+gerade deshalb so kostbar geworden. In meiner Erinnerung sitzt er bis heute
+neben mir in der Gondel.
 
 ![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
@@ -106,21 +102,21 @@ lieferten, Looping gegen Looping. Deutschlands einziger Dueling Coaster, ab
 es nicht mehr. Die Sucht, die sie ausgelöst hat, schon. Streng genommen ist
 meine Mutter also schuld an allem, was danach kam.
 
-Wenn diese Liebe zu Freizeitparks ein Erbe ist, dann stammt sie von beiden
-Elternteilen. Papa hat die Märchen beigesteuert, Mama die Achterbahnen.
+Die Arbeitsteilung war damit klar: Papa hat die Märchen beigesteuert, Mama die
+Achterbahnen.
 
 Warum park.fan kostenlos ist und bleiben wird, fragt mich hin und wieder
-jemand. Dieser Ort hat mir Erinnerungen geschenkt, die mein Leben geprägt
-haben. Das hier ist meine Art, etwas davon zurückzugeben.
+jemand. Diese Parks haben mir mehr geschenkt, als ich dort je an Eintritt
+bezahlt habe, und park.fan ist meine Art, etwas davon zurückzugeben.
 
 ## Von 5000er-Mäusen und einer 10.000er-Legende
 
 Die [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
-ist seit Juni 2011 so ein Moment: ein interaktiver Dark Ride, in dem der
+gibt es seit Juni 2011: ein interaktiver Dark Ride, in dem der
 Kammerjäger Oskar Koslowski die Backstube des Pâtissiers Gustav E. Lehmann von
 Mäusen befreit, bewaffnet mit einer Sahnespritze, verteilt auf 48 3D-Leinwände
-und sechs Minuten Fahrt. Ein frischer Highscore zaubert mir heute noch
-dasselbe kindliche Grinsen ins Gesicht wie früher. Auch wenn meine
+und sechs Minuten Fahrt. Bei einem frischen Highscore grinse ich heute noch wie
+damals an den Knöpfen am Märchensee. Auch wenn meine
 Freundin die bemerkenswerte Angewohnheit pflegt, mir die 5000er-Mäuse in genau
 dem Augenblick wegzuschnappen, in dem ich sie anvisiere, und mich damit Fahrt
 um Fahrt um den Hausrekord bringt.
@@ -135,8 +131,9 @@ lässt: Die Maus au Chocolat wurde 2011 auf genau der Fläche gebaut, auf der bi
 sitze ich in einem Gebäude, das dort steht, wo ich als Kind mit meinem Vater
 durch das Drachenmaul gefahren bin.
 
-Danach Pancakes und Shakes im **Phenie’s** in Wuze Town, und sie sind besser als
-das, was Freizeitparks sonst an Frühstück verkaufen.
+Hinterher, als Trost für die verlorenen 5000er: Pancakes und Shakes im
+**Phenie’s** in Wuze Town, und die sind besser als das, was Freizeitparks sonst
+an Frühstück verkaufen.
 
 ## Orlando, Mai 2026, einmal im Leben
 
@@ -153,21 +150,21 @@ exakt dasselbe Kribbeln wie damals in der Gondel. Dazwischen
 [Epic Universe](ref:universal-epic-universe?bare) in seinem ersten Sommer,
 Achterbahnen bei
 [Islands of Adventure](ref:universal-islands-of-adventure?bare), Orcas und
-Manta bei [SeaWorld](ref:seaworld-orlando?bare). Zwei Wochen, die sich
-angefühlt haben wie die Einlösung eines sehr alten Versprechens an mich selbst.
+Manta bei [SeaWorld](ref:seaworld-orlando?bare). Zwei Wochen, und hinter dem
+Punkt auf der Liste steht jetzt endlich der Haken.
 
 Die Bilder davon sortiere ich noch, die Berichte sind in Arbeit, beides landet
 in den kommenden Wochen genau hier im Blog. Nur so viel vorweg: Es war jedes
 einzelne Jahr der Vorfreude wert.
 
-## Das zweite Ich: der Entwickler
+## Das zweite Ich: der Entwickler mit zu vielen Side-Projects
 
 Parallel zu all diesen Parkjahren gab es immer ein zweites Ich, eines, das seit
 über fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt,
 erst als Head of Software Development bei **CyberGhost**, heute als
 Distinguished Software Engineer bei **ExpressVPN**. Systeme, die Millionen
-Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu verschwenden.
-Dazu Open Source, Smart-Home-Adapter und mehr Side-Projects, als mir guttun;
+Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu verschwenden,
+und mehr Lob gibt es für Infrastruktur nicht. Dazu Open Source, Smart-Home-Adapter und mehr Side-Projects, als mir guttun;
 der ganze Kram, der sich auf [arns.dev](https://arns.dev) und
 [GitHub](https://github.com/PArns) stapelt.
 
@@ -194,21 +191,22 @@ tauschte.
 > „Lass mich mal eben die Wartezeiten tracken.“ _Sagte ich. Es wurden drei
 > Jahre._
 
-## Drei Jahre, in denen aus einem Skript etwas anderes wurde
+## „Schon wieder dieses Park-Ding“
 
 Was daraus wurde, nennen Entwickler ein Herzensprojekt und Freundinnen
-vermutlich eher „schon wieder dieses Park-Ding“. Aus dem Skript wurde ein Datensammler, und irgendwann lief
-er für zweihundert Parks statt für einen. Dazwischen lagen Nächte, in denen
-ich um zwei Uhr morgens auf Wartezeiten-Kurven starrte, weil irgendein Park
-seine Daten anders meldete als alle anderen. Debugging-Sessions, die länger
-dauerten als mancher Parktag. Und dieser ganz eigene Moment von Ehrfurcht, wenn
-ein Modell zum ersten Mal einen überfüllten Samstag korrekt vorhersagt, Tage
-bevor er stattfindet.
+vermutlich eher „schon wieder dieses Park-Ding“. Aus dem Skript wurde ein
+Datensammler, und irgendwann lief er für zweihundert Parks statt für einen.
+Dazwischen lagen Nächte, in denen ich um zwei Uhr morgens auf Wartezeiten-Kurven
+starrte, weil irgendein Park seine Daten anders meldete als alle anderen.
+Debugging-Sessions, die länger dauerten als mancher Parktag. Und dann dieser
+Moment, in dem ein Modell zum ersten Mal einen überfüllten Samstag richtig
+vorhersagt, Tage bevor er stattfindet.
 
 Der Punkt war nie die Anzeige der aktuellen Zahl. Die schreibt der Park selbst
 an. Interessant wird es einen Schritt davor: Ein eigenes Modell musste lernen,
 dass ein verregneter Brückentag im Oktober etwas völlig anderes ist als ein
-sonniger Ferien-Samstag im Juli. Dass Ferienkalender,
+sonniger Ferien-Samstag im Juli. Jedem, der schon mal mit Kindern im Auto saß,
+muss man das nicht erklären, einem Computer schon. Dass Ferienkalender,
 Wetter, Öffnungszeiten und die mitgeschriebenen Öffnungstage zusammen ein Muster
 ergeben, das man lesen kann, wenn man nur hartnäckig genug hinschaut.
 
@@ -216,14 +214,13 @@ Auf dem Schreibtisch, an dem all diese Nächte stattfanden, liegt heute übrigen
 ein originales **Taron-Laufrad**. Eines von der Bahn, wohlgemerkt, nicht das
 Kinderfahrzeug; diese Klarstellung braucht es erstaunlich oft, wenn Besucher
 davor stehen. Dieses Rad ist tausende Runden durch Klugheim gejagt, bevor es
-bei mir in Rente gehen durfte, und es erinnert mich bei jeder nächtlichen
-Debugging-Session daran, wofür der ganze Aufwand eigentlich ist. Irgendwo da
-draußen fährt gerade eine echte Bahn, und irgendwer da draußen will wissen, ob
-sich die Schlange davor lohnt.
+bei mir in Rente gehen durfte. Bei jeder nächtlichen Debugging-Session erinnert
+es mich daran, dass irgendwo gerade jemand vor einer echten Bahn steht und
+wissen will, ob sich die Schlange lohnt.
 
-Heute stehen dahinter Live-Wartezeiten aus über **200 Parks** und **7.000
-Attraktionen**, alle fünf Minuten neu. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
-einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
+Heute stehen dahinter Live-Wartezeiten aus über **200 Parks** und mehr als **7.000
+Attraktionen**, alle fünf Minuten neu. Prognosen, die den Andrang bis zu
+**365 Tage** im Voraus einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später
 gegen die tatsächlich gemessene Wartezeit gehalten, und was dabei herauskommt,
 steht auf der [Fancast-Seite](/fancast).
@@ -231,36 +228,35 @@ steht auf der [Fancast-Seite](/fancast).
 ## Der beste Tag ist selten der, den man vermutet
 
 Es sind immer dieselben drei Fragen, die ein Parkbesuch aufwirft, lange bevor
-irgendjemand im Auto sitzt. Wann ist der beste Tag? Lohnt sich ein Sonntag? Und
+irgendjemand im Auto sitzt und von hinten fragt, wann wir endlich da sind. Wann ist der beste Tag? Lohnt sich ein Sonntag? Und
 wie voll wird es wirklich?
 
 Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der besten
-Besuchstage, bis zu einem Jahr im Voraus, gefüttert mit Ferienkalendern,
-Wetterprognosen, Öffnungszeiten und jedem Öffnungstag, den wir bisher
-mitgeschrieben haben. Der Blick in diese Daten räumt nebenbei mit ein paar Bauchgefühlen auf.
+Besuchstage, bis zu einem Jahr im Voraus. Der Blick in diese Daten räumt
+nebenbei mit ein paar Bauchgefühlen auf.
 Ein Sonntag im grauen November kann entspannter sein als jeder Dienstag in den
 NRW-Sommerferien. Ein Brückentag ist fast nie eine gute Idee. Und der
 „Geheimtipp“, bei Regen zu fahren, funktioniert exakt so lange, bis alle
 anderen denselben Geheimtipp gelesen haben.
 
-„Sonntage sind voll“ ist deshalb keine brauchbare Auskunft. Ein Sonntag Ende
+„Sonntage sind voll“ ist deshalb ungefähr so hilfreich wie „im Sommer ist es
+warm“. Ein Sonntag Ende
 November im Phantasialand ist eine andere Frage als ein Sonntag Anfang August im
-Europa-Park, und der Kalender beantwortet die zweite Fassung. Und wenn du schon
+Europa-Park, und der Kalender beantwortet die Frage genau so: mit Park und
+Datum. Wenn du dann schon
 im Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade die
 Ausnahme ist oder die Regel.
 
-## Was park.fan anders macht
+## Was park.fan anders macht als die Anzeige am Eingang
 
 Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
 Das können wir auch, alle fünf Minuten, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
-Ein eigenes Modell schaut deshalb bis zu **365 Tage** nach vorn statt nur auf die
-Anzeigetafel, und der Kalender der besten Tage verdichtet Ferien, Wetter,
-Schedules und jeden mitgeschriebenen Öffnungstag zu einer Antwort: hin oder
-lieber nicht. Jede dieser Prognosen wird später gegen die tatsächlich gemessene
-Wartezeit gehalten, und wer wissen will, wie gut das Modell ist, muss mir nicht
-glauben: die Zahlen stehen auf der [Fancast-Seite](/fancast).
+Deshalb schaut das Modell bis zu **365 Tage** nach vorn statt nur auf die
+Anzeigetafel, und der Kalender der besten Tage macht daraus eine Antwort: hin
+oder lieber nicht. Ob es dabei richtig liegt, musst du mir nicht glauben, das
+steht auf der [Fancast-Seite](/fancast).
 
 Dazu Wartezeiten, Crowd-Level, Wetter am Parkeingang, Öffnungszeiten und
 Attraktions-Historien in sechs Sprachen. Kein Konzern, keine Paywall, keine
@@ -271,21 +267,21 @@ Werbung, gebaut von jemandem, der selbst ansteht.
 Eine Wartezeit allein sagt fast nichts. Dieselbe Zahl bedeutet je nach Bahn und
 Tag etwas völlig anderes:
 
-- **50 Minuten** für ein Flat Ride? Glatte Zeitverschwendung. In der Spanne
+- **50 Minuten** für einen Flat Ride? Glatte Zeitverschwendung. In der Spanne
   wären drei echte Coaster drin gewesen.
 - **50 Minuten** für den
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  an einem Samstagnachmittag? Stark, sonst ist der Nachmittagspeak fast doppelt so
-  lang, du hast quasi den Express erwischt.
+  an einem Samstagnachmittag? Völlig normal. So sieht bei dieser Bahn ein ganz
+  gewöhnlicher Nachmittag aus, da hat niemand etwas falsch gemacht.
 - **20 Minuten** für
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), zwei
   Jahre nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
   verlaufen.
 
-![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch ist hier eine gute halbe Stunde, an Spitzentagen ein Vielfaches davon. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park, seit 2024 in Betrieb. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
-Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier, in
-drei Formaten.
+Die Zahl liefert das Diagramm. Für die Geschichte dahinter gibt es ab jetzt
+diesen Blog, in drei Geschmacksrichtungen.
 
 **Reiseberichte.** Lang, mit Haltung, mit Fotos, und mit echten Daten aus genau
 dem Park, der gerade besucht wurde. Kein „war schön“, sondern:
@@ -299,15 +295,15 @@ unsere Prognosen, was sie versprechen?
 
 **News.** Kurz und ohne Umschweife. Passiert etwas, steht es hier, meist noch am selben Tag.
 
-Die Beiträge leben dabei. Charts, Karten und Wartezeiten ziehen direkt aus
-park.fan, was du liest, macht der Park in diesem Moment wirklich.
-Die beiden Hauptdarsteller dieser Geschichte, live:
+Charts, Karten und Wartezeiten in diesen Beiträgen kommen direkt aus park.fan.
+Was du liest, macht der Park also gerade wirklich. Die beiden Hauptdarsteller
+dieser Geschichte, Stand jetzt:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
 Weil das Wetter der Faktor ist, der einen Parktag am schnellsten kippen lässt,
-hier die Lage genau jetzt am
+bevorzugt dann, wenn die Regenjacke im Auto liegt, hier die Lage genau jetzt am
 [Phantasialand](ref:phantasialand?bare)-Eingang:
 
 ```weather-widget slug=phantasialand
@@ -323,8 +319,9 @@ Datenmensch aus Berufung. Mehr Tech- und Side-Project-Kram auf
 
 ## Was hier nicht passieren wird
 
-park.fan kostet nichts, zeigt keine Werbung und gehört niemandem. Wird ein Park mies gemanagt, steht das hier. Ist eine App schlechter
-als die offizielle, steht das auch hier. Du hast ein Thema, das dich juckt?
+Da kein Konzern dahintersteht, redet mir auch keiner rein. Wird ein Park mies
+gemanagt, steht das hier. Ist eine App schlechter als die offizielle, steht das
+auch hier. Du hast ein Thema, das dich juckt?
 Schreib mir, die E-Mail steht im [Impressum](/impressum).
 
 Und weil es einfach sein musste, gibt es jetzt sogar einen **park.fan-Song**.
@@ -343,6 +340,6 @@ unterwegs eine 5000er sehen: Finger weg, die brauche ich für die Revanche._
 
 _P.P.S.: An Silas aka [Parkfan95](https://parkfan95.de): Ich hatte die Domain
 park.fan schon gekauft, bevor du dich von EPFan95 in Parkfan95 umbenannt hast,
-reiner Zufall, versprochen. Und an alle, die eigentlich zu ihm wollten und
-stattdessen hier gelandet sind: Entschuldigung! Einmal rüber zu
-[parkfan95.de](https://parkfan95.de), ein Besuch lohnt sich._
+reiner Zufall. Und an alle, die eigentlich zu ihm wollten und stattdessen hier
+gelandet sind: tut mir leid. Einmal rüber zu [parkfan95.de](https://parkfan95.de),
+ein Besuch lohnt sich._

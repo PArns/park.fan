@@ -5,7 +5,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
-import { catchNonFatal } from '@/lib/api/client';
+import { nullOnNotFound } from '@/lib/api/client';
 import { LiveCountryCards, type StaticCountryCard } from '@/components/parks/live-country-cards';
 import { LiveOpenCount } from '@/components/parks/live-open-count';
 import { PageContainer } from '@/components/common/page-container';
@@ -77,7 +77,9 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   // Fetch countries in this continent. Live open-park counts are NOT fetched here anymore — they
   // are layered on the client (<LiveCountryCards> / <LiveOpenCount> → useGeoLiveStats), so this
   // shell stays status-free and cacheable instead of revalidating every 10 min to refresh counts.
-  const rawCountries = await catchNonFatal(getCountriesInContinent(continent));
+  // `nullOnNotFound`, not `catchNonFatal`: only the API's own 404 may become `notFound()`, which
+  // this prerendered page would otherwise keep for its whole `revalidate`.
+  const rawCountries = await nullOnNotFound(getCountriesInContinent(continent));
 
   if (!rawCountries) {
     notFound();

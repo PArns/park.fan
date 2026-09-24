@@ -20,6 +20,7 @@ import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
+import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
@@ -199,6 +200,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       wetCount={wetAttractionCount}
       wetMode={wetMode}
       onCycleWet={() => setWetMode(nextWetMode)}
+      onClearWet={() => setWetMode(null)}
       fastPassCount={fastPassAttractionCount}
       fastPassLabel={fastPassLabel}
       onlyFastPass={onlyFastPass}
@@ -206,6 +208,19 @@ export const TabsWithHash = memo(function TabsWithHash({
       singleRiderCount={singleRiderAttractionCount}
       onlySingleRider={onlySingleRider}
       onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
+    />
+  );
+
+  // "As of 14:35" between the filters and the rides, on both sides of hydration. It carries its
+  // own subscription to the live query, so a poll re-renders this row and not the grid.
+  const freshnessLine = (
+    <LiveDataFreshness
+      park={park}
+      todayIso={todayIso}
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
     />
   );
 
@@ -230,9 +245,10 @@ export const TabsWithHash = memo(function TabsWithHash({
         // box is deferred — the rope-drop picks and the headliner cards are real cards
         // too, so leaving them out of this branch kept the urgent commit expensive and the
         // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
-        <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+        // `phoneRow` and `gap-2` below `sm`, matching what `LandSection` renders there.
+        <div className="grid gap-2 sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
           {Array.from({ length: 6 }, (_, i) => (
-            <AttractionCardSkeleton key={i} />
+            <AttractionCardSkeleton key={i} phoneRow />
           ))}
         </div>
       ) : (
@@ -281,7 +297,14 @@ export const TabsWithHash = memo(function TabsWithHash({
                 <LazyMount
                   key={landName}
                   eager={index === 0 || isSearching}
-                  grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
+                  // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
+                  // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
+                  grid={{
+                    count: attractions.length,
+                    rowHeight: 340,
+                    phoneRowHeight: 80,
+                    headerHeight: 64,
+                  }}
                 >
                   <LandSection
                     landName={landName}
@@ -385,6 +408,7 @@ export const TabsWithHash = memo(function TabsWithHash({
               paint, and the mount finds the class already in place. */}
           <TabsContent value={defaultValue} className={ATTRACTIONS_PANEL_ENTER}>
             {filterPanel}
+            {freshnessLine}
             {attractionsPanel}
           </TabsContent>
         </Tabs>
@@ -399,6 +423,7 @@ export const TabsWithHash = memo(function TabsWithHash({
 
         <TabsContent value="attractions" className={ATTRACTIONS_PANEL_ENTER}>
           {filterPanel}
+          {freshnessLine}
           {attractionsPanel}
         </TabsContent>
 

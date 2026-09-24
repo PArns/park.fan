@@ -49,6 +49,28 @@ The cell dividers are `bg-foreground/…`, not the `--border` token. In the dark
 white at 10 %, so an opacity modifier on it composites to nothing: `border-border/60` resolved to
 alpha 0.06 and the two hairlines sat in the DOM at 1×56 px, invisible on screen.
 
+### On a phone it is one row and a sheet (PAR-430)
+
+Open, the panel measured 515 px on a 390 × 664 phone (Phantasialand), and the first ride started
+at y=2,611, 3.9 screens down. Below `sm` the box now holds one row: the search box and a
+**„Filter"** button carrying the number of set filters. The heading, the height slider and the
+pills are `max-sm:hidden` in the box and render again inside a bottom sheet
+(`components/ui/sheet.tsx`, `side="bottom"`) the button opens. The box is `max-sm:p-2` around the
+44 px row, 62 px with its border.
+
+- **CSS decides, not JavaScript.** The server cannot know the width and both branches of
+  `TabsWithHash` render the same markup, so the phone row and the full panel are the same tree with
+  `max-sm:`/`sm:` classes, never a `matchMedia` branch.
+- **One set of controls.** The slider and the pills are two render functions inside the panel,
+  called once for the box and once for the sheet, over the state in `useAttractionFilter`. The
+  deferred copies from PAR-384 are untouched, so a pill pressed in the sheet still does not rebuild
+  the grid in its own commit.
+- **Set filters are chips under the row**, phone only: each is the lit `FilterToggle` of its filter
+  with an ×, and pressing it turns that filter off. The wet chip goes straight to off through
+  `onClearWet` rather than cycling, which would turn „Nur mit Nässe" into „Ohne Nässe". The search is
+  not a chip, it is in the row. Pill chips go `invisible` while a search runs, like the pills.
+- A park with no rider limits and no pills gets no button; the row is the search box alone.
+
 ---
 
 ## The height filter

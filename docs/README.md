@@ -115,6 +115,7 @@ sessions that need them.
 | Doc                                                       | Description                                                                                                                           |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | [SEO Analysis](seo/analysis.md)                           | Current status, optimizations, checklist                                                                                              |
+| [Crawl budget](seo/crawl-budget.md)                       | What Googlebot spends its requests on: the 2026-09-24 baseline, reading the Search Console exports, wasted fetches and their fixes    |
 | [Agent readiness](seo/agent-readiness.md)                 | What the site tells machines: robots policy, llms.txt, API catalog, skills, MCP, WebMCP                                               |
 | [Blog feeds](seo/blog-feeds.md)                           | The six RSS feeds: autodiscovery, full-text items, enclosures, WebSub                                                                 |
 | [Favicon](seo/favicon.md)                                 | The icon in the search result: one generated set, why the wordmark is out and the tile is in                                          |
@@ -140,6 +141,7 @@ sessions that need them.
 | [Attraction Filter Panel](features/attraction-filter-panel.md) | The park page's search + rider-height + off-season band, and how the three filters compose                          |
 | [The Guide Page](features/how-park-fan-works.md)               | What `/{locale}/{howto-segment}` teaches, why every block is a production component, and the claims it may make     |
 | [Trip Planner](features/trip-planner.md)                       | The visitor's own day: the wizard, the month grid, park-local time, the drag payload, and life without the endpoint |
+| [New-posts toast](features/new-posts-toast.md)                 | The "new on the blog since your last visit" toast: what counts as new, and why it costs a page nothing              |
 
 ### Product
 

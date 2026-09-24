@@ -398,6 +398,23 @@ Guide`, `<Zahl> Tipps, die du kennen solltest`, `Von X zu Y – wie man Z wählt
 - Do not skip levels (`##` then `####`), and never repeat the post title as an `##` heading.
 - Every chapter heading on this site is drawn by one component; see
   [design system → chapter headings](design/design-system.md#chapter-headings).
+- **A title and a heading carry no figure that moves.** The rule next door — never type a wait time
+  into a post (§5.4) — is about the body; this one is about the line a reader sees first and the
+  line a search result shows. A title is the one string that is quoted into the listing card, the
+  RSS item, the `<title>`, the breadcrumb and the shared link, and none of those re-render when the
+  number behind them changes. A counted figure belongs in the paragraph that also carries its
+  source and its date, where a later edit fixes one sentence instead of every surface at once.
+
+  Measured on 2026-09-22: `Hansa-Park: 214 Tage am Stück geöffnet, …` shipped as a title. 214 is the
+  season's opening-day count, read out of the calendar feed that morning; the park can add or drop
+  a day at any time, and the post would have gone on claiming the old number in six places. It
+  became `Hansa-Park: Der Kärnan fährt 127 km/h, und die Saison hat keinen Schließtag` — a ride spec
+  does not move, and "no closed day" stays true whether the season has 212 days or 216. The count
+  stayed in the body, attributed to the park's own plan.
+
+  The test: would this line still be true in a year, or after one ordinary data change? A dated
+  figure (`Saison 2026`, `23. Mai 2026`) is fine — it says when it was true. A live or counted one
+  (`214 Öffnungstage`, `Ø 34 Min.`, `82 Attraktionen`, `1,4 Millionen Gäste`) is not.
 
 ### 4.4 Lists
 

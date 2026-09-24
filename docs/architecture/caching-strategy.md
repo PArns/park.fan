@@ -654,6 +654,18 @@ Note the case that was never real: a park with **thin history** does not produce
 API answers it with a 200 and an aggregate to match, so `null` never meant "too little history",
 however the route's comment read. Guarded by `pnpm test:stats-fetchers`.
 
+**The same rule one layer up, at the pages.** The park, ride, calendar and stats pages wrapped
+`getParkByGeoPath` in `catchNonFatal`, and the continent, country and city hubs did the same to
+their geo fetch. `catchNonFatal` returns `null` for every error that is not a maintenance 502, and
+each of those pages turns `null` into `notFound()`. So a 500, a 429 after the last retry or a
+network timeout was served as a 404: Cloudflare holds a 404 for an hour, the stats page and the geo
+hubs are ISR routes that store it for their whole `revalidate`, and Search Console files a crawl
+that lands in that window under "Not found (404)". `getParkByGeoPath` already answered the API's
+own 404 with `null` and threw on everything else; the wrapper undid that. The pages now call it
+bare, and the geo hubs use `nullOnNotFound` (`lib/api/client.ts`). `catchNonFatal` stays for
+content a page can render without (a country summary, the homepage stats). Guarded by
+`pnpm test:page-fetch-misses`.
+
 ## A cached entry may only seed the question it answered (Sep 2026)
 
 The homepage asks `/api/nearby` twice on a first visit. Once without coordinates — the backend

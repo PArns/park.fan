@@ -56,6 +56,7 @@ import { BlogGallery } from './blog-gallery';
 import { parseWidgetParkRef, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
 import type { BlogImage } from '@/lib/blog/types';
+import { postPath } from '@/lib/blog/paths';
 
 /** Box / title classes + icon per GitHub-alert callout type. Kept as static
  *  class strings so Tailwind sees them at build time. */
@@ -175,11 +176,14 @@ function parseEntityRef(href: string | undefined): EntityRef | null {
 }
 
 /**
- * Matches an internal cross-reference to another post, i.e. `/blog/<slug>`.
- * Locale-prefixed hrefs are accepted too, since the editor writes both forms.
- * Anchors and query strings are ignored — they belong to the target page.
+ * Matches an internal cross-reference to another post, i.e. `/blog/<slug>` or
+ * `/news/<slug>`. Either prefix finds the post by its slug, and the link is
+ * rewritten to the post's real URL (`postPath`), so a news post linked the old
+ * way does not take the 308. Locale-prefixed hrefs are accepted too, since the
+ * editor writes both forms. Anchors and query strings are ignored — they belong
+ * to the target page.
  */
-const BLOG_POST_HREF = /^(?:\/[a-z]{2})?\/blog\/([a-z0-9-]+)\/?(?:[?#].*)?$/;
+const BLOG_POST_HREF = /^(?:\/[a-z]{2})?\/(?:blog|news)\/([a-z0-9-]+)\/?(?:[?#].*)?$/;
 
 function blogPostSlug(href: string | undefined): string | null {
   if (!href) return null;
@@ -567,7 +571,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         const post = postRefs.get(postSlug);
         return (
           <BlogPostLink
-            href={post ? `/blog/${post.slug}` : (href as string)}
+            href={post ? postPath(post) : (href as string)}
             card={post ? <BlogPostCard post={post} /> : null}
           >
             {children}

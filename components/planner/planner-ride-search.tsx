@@ -1,8 +1,10 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
 import { RiderHeight } from '@/components/common/unit-display';
@@ -41,6 +43,27 @@ interface PlannerRideSearchProps {
    * — and one of the answers is not in the catalogue.
    */
   onAddCustom?: () => void;
+  /**
+   * The phone's search mode (PAR-482): the panel hides the axis and the foot
+   * while it is on and hands this block the sheet, so the rows a query finds
+   * are on screen above the keyboard rather than under it. The field turns it
+   * on when it takes focus; „Fertig" beside the field turns it off. Leaving
+   * the field does not, on purpose: a tap on a row blurs the field before the
+   * row's click lands, and a layout that jumped back on blur would move the
+   * row out from under that click.
+   */
+  searching?: boolean;
+  onSearchingChange?: (searching: boolean) => void;
+  /**
+   * A portrait phone under a finger: out of search mode the block is ONE row — the field and
+   * the free-block button beside it — and the ride list is drawn only in search
+   * mode. The list at rest was the part the sheet squeezed away anyway: at
+   * 390×664 the block was handed about 100 px, which cut the free-block row in
+   * half and showed no ride at all (PAR-482: „Eigener Block abgeschnitten").
+   * A landscape phone draws the search in a column of its own and keeps it,
+   * and so does a narrow window under a mouse, which drags rows out of it.
+   */
+  compact?: boolean;
 }
 
 /** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
@@ -79,6 +102,9 @@ export function PlannerRideSearch({
   timezone,
   prefs,
   onAddCustom,
+  searching = false,
+  onSearchingChange,
+  compact = false,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
   /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
@@ -86,6 +112,9 @@ export function PlannerRideSearch({
   const locale = useLocale();
   const { addRide, activeEntries } = usePlanner();
   const [query, setQuery] = useState('');
+  const fieldRef = useRef<HTMLInputElement>(null);
+  /** The one-row state: a portrait phone that is not searching. See `compact`. */
+  const resting = compact && !searching;
 
   // How often each ride is already in this day — a COUNT, because a ride can
   // legitimately be planned twice (a morning lap on a walk-on, an evening one for
@@ -161,32 +190,77 @@ export function PlannerRideSearch({
        pairs — the empty day's sentence and the free-block row both mean
        something different depending on whether this list is drawn (PAR-76).
 
-       `py-1` rather than `py-2`, and the field keeps its 44 px: this block is
-       the one the panel squeezes (`shrink` at the call site), so at 390×844 it
-       is handed about 80 px while its own head — padding, field, hint — was 94.
-       Everything the visitor came here for, the ride rows, therefore started
-       below the fold, which is what „das Suchfeld ist zu hoch" describes. The
-       44 px are the touch-target floor from `CLAUDE.md`, asserted by
-       `check:planner`, so what gives way is the room around the field and never
-       the field. */
-    /* `planner-phone:py-0.5` on top of that (PAR-313): the field is a touch
-       target and stays 44 px, so „das Feld niedriger" is spent on the room
-       around it a second time. 4 px here and 2 more off the hint's margin
-       below; the hint itself stays, because it is the only place this panel
-       says what a tap on a row does. */
+       `py-1` rather than `py-2`: this block is the one the panel squeezes
+       (`shrink` at the call site), so at 390×844 it is handed about 80 px while
+       its own head — padding, field, hint — was 94. Everything the visitor came
+       here for, the ride rows, therefore started below the fold, which is what
+       „das Suchfeld ist zu hoch" describes. `planner-phone:py-0.5` on top of
+       that (PAR-313), and since PAR-482 the field itself is 36 px rather than
+       44, and a query gets the whole sheet (`searching`). */
     <div
       data-planner-ride-search=""
-      className="border-border/60 planner-phone:py-0.5 border-t px-2 pt-1 pb-1"
+      data-planner-search-mode={searching ? 'on' : undefined}
+      className={cn(
+        'border-border/60 planner-phone:py-0.5 border-t px-2 pt-1 pb-1',
+        // 6 px above and below the 32 px row on a portrait phone: the room its
+        // controls' 44 px reach lands in, so the reach stays inside this block
+        // rather than taking a strip off the axis above or the band below.
+        compact && 'planner-phone:py-1.5',
+        // In search mode the block is the sheet's, and the list is what scrolls:
+        // the field stays put above it.
+        searching && 'flex min-h-0 flex-1 flex-col'
+      )}
     >
-      <div className="relative">
+      {/* 32 px on a phone, down from 44 (PAR-482: „Bahn suchen nicht so hoch",
+          and at 36 „immer noch zu hoch"): the height every other control in
+          the sheet is drawn at. It stays at 16 px type on a coarse pointer, see
+          `[data-planner-sheet]` in `app/globals.css`. */}
+      <div className="relative flex items-center gap-2">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input
+          ref={fieldRef}
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          onFocus={() => onSearchingChange?.(true)}
           placeholder={t('search.placeholder')}
-          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 planner-phone:h-11 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none"
+          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 planner-phone:h-8 h-9 w-full min-w-0 flex-1 rounded-md pr-2 pl-7 text-sm transition-colors outline-none"
         />
+        {/* The way out of search mode, where iOS puts it. It empties the field
+            too: the rows a query left are not the ones the day was being read
+            against. 32 px drawn, 44 to a finger: 6 px up into this block's
+            padding and 6 down, short of the free-block row 8 px below. */}
+        {searching && onSearchingChange && (
+          <button
+            type="button"
+            onClick={() => {
+              setQuery('');
+              fieldRef.current?.blur();
+              onSearchingChange(false);
+            }}
+            data-planner-search-done=""
+            className="text-primary relative flex h-8 shrink-0 items-center px-1 text-sm font-medium after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-['']"
+          >
+            {t('search.done')}
+          </button>
+        )}
+        {/* At rest the free block sits beside the field, where the row has the
+            width for it; in search mode it heads the list below, as it does on
+            a landscape phone. Never both: see the note on the pair below. */}
+        {resting && onAddCustom && (
+          <button
+            type="button"
+            onClick={onAddCustom}
+            data-planner-add-custom-search=""
+            className={cn(
+              'text-muted-foreground hover:text-foreground hover:bg-accent/50 flex h-8 shrink-0 items-center gap-1.5 rounded-md px-2 text-xs transition-colors',
+              PHONE_TARGET_32
+            )}
+          >
+            <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
+            <span className="whitespace-nowrap">{t('custom.add')}</span>
+          </button>
+        )}
       </div>
 
       {/* What a TAP does, because this component is mounted on phones alone
@@ -201,16 +275,22 @@ export function PlannerRideSearch({
           gives back is leading rather than words: `leading-snug` draws the same
           two lines in 30 px instead of 33, and the 4 px off the margin come out
           of the gap to a field that carries its own background anyway. */}
-      <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
-        {t('search.tapHint')}
-      </p>
+      {/* Only until the first ride is in (PAR-482). By then the tap has done
+          what this sentence says, and on a phone its two lines are 30 px the
+          axis does not have — measured at 390×844 with a filled day, the axis
+          was the smallest thing in the sheet. */}
+      {planned.size === 0 && (
+        <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
+          {t('search.tapHint')}
+        </p>
+      )}
 
       {/* The phone's copy of the free-block offer, under its own name so the
           two can be counted together without disturbing what counts the foot's:
           they are a pair — this one is drawn where the search is, that one
           where it is not — and the way that pair breaks is both appearing at
           once. Before PAR-76 that is exactly what happened at 844x390. */}
-      {onAddCustom && (
+      {!resting && onAddCustom && (
         <button
           type="button"
           onClick={onAddCustom}
@@ -221,7 +301,7 @@ export function PlannerRideSearch({
           <span className="truncate">{t('custom.add')}</span>
         </button>
       )}
-      {matches.length === 0 ? (
+      {resting ? null : matches.length === 0 ? (
         <p className="text-muted-foreground mt-2 px-1 text-xs">
           {/* Three different silences, and they are not interchangeable: a
               query that matched nothing, a day the API has no forecast for, and
@@ -236,7 +316,12 @@ export function PlannerRideSearch({
                 : t('noPlan')}
         </p>
       ) : (
-        <ul className="mt-2 max-h-44 overflow-y-auto sm:max-h-56">
+        <ul
+          className={cn(
+            'mt-2 overflow-y-auto',
+            searching ? 'min-h-0 flex-1 overscroll-y-contain' : 'max-h-44 sm:max-h-56'
+          )}
+        >
           {matches.map((ride) => (
             <li key={ride.attractionSlug}>
               <button

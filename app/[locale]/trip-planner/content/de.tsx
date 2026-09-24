@@ -30,16 +30,16 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Ein Block ist eine Bahn, und seine Höhe ist die Wartezeit, die für seine Stunde
           vorhergesagt ist. Deshalb wächst derselbe Block, wenn du ihn in eine vollere Stunde
-          ziehst, und schrumpft in einer ruhigeren. Zwischen zwei Blöcken bleibt kein leerer Platz,
-          sondern der Umstieg: wie weit es ist und ob die Zeit dafür reicht. Der Weg aus der Station
-          und die Fahrt selbst stecken dort und nicht im Block.
+          ziehst, und schrumpft in einer ruhigeren. Zwischen zwei Blöcken steht der Umstieg: wie
+          weit es ist und ob die Zeit dafür reicht. Der Weg aus der Station und die Fahrt selbst
+          stecken dort und nicht im Block.
         </P>
         <P>
           Was du unten siehst, ist nicht abgemalt. Es sind dieselben Bauteile, die im Planer laufen,
           gefüttert mit der Antwort, die die API am 4. September 2026 für Samstag, den 12. September
           im <A href={PARK}>Phantasialand</A> gegeben hat. Zieh einen Block auf eine andere Uhrzeit:
           Er rastet auf fünf Minuten ein, rechnet seine Höhe neu und die Umstiege daneben ebenfalls.
-          Gespeichert wird hier nichts.
+          Gespeichert wird hier nichts, du kannst also nach Herzenslust herumschieben.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -58,10 +58,10 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Für jede Bahn liefert die API eine Kurve über den Tag, Stunde für Stunde. Taron steht an
           diesem Samstag bei 45 Minuten um zehn, 50 um elf, 40 um eins und wieder 50 am Abend: über
-          den ganzen Tag liegen zehn Minuten dazwischen. Für so eine Bahn gibt es kein gutes
-          Fenster, also setzt der Planer sie dorthin, wo der Rest des Tages es zulässt. Black Mamba
-          dagegen fällt von 35 Minuten mittags auf 20 um sechs, und Chiapas läuft andersherum, von
-          20 auf 35.
+          den ganzen Tag liegen zehn Minuten dazwischen. Taron ist an diesem Samstag also schlicht
+          immer gefragt. Für so eine Bahn gibt es kein gutes Fenster, und der Planer setzt sie
+          dorthin, wo der Rest des Tages es zulässt. Black Mamba dagegen fällt von 35 Minuten
+          mittags auf 20 um sechs, und Chiapas läuft andersherum, von 20 auf 35.
         </P>
         <P>
           Dazu kommt, wie weit die Zahl typischerweise danebenliegt, und das hängt am Niveau: Je
@@ -173,15 +173,16 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           und zwei Stunden Pause bräuchten dafür eine Schlange von über zwei Stunden.
         </P>
         <P>
-          Eine Mittagspause um eins bleibt um eins, und eine abgehakte Bahn ist gefahren und wird
-          nicht neu einsortiert; geplant wird um beide herum. Hinterher steht da, was passiert ist.
-          „18 Min. weniger Warten“ ist die Differenz zwischen zwei Rechnungen desselben Verfahrens,
-          einmal vor und einmal nach dem Klick; ist nichts zu holen, steht dort „Passt schon so“ und
-          der Plan bleibt, wie er war. Beim Headliner-Knopf fehlt die Ersparnis, weil der Tag mit
-          den neuen Bahnen länger wird; gezählt wird stattdessen, wie viele Bahnen dazugekommen sind
-          und wie viele nicht zur Gruppe passen. Was am Ende nicht mehr in den Tag passt, wird nach
-          beiden Knöpfen mitgezählt. Ein „Rückgängig“ gehört dazu und stellt den Stand von vor dem
-          Klick wieder her, solange der Planer offen ist.
+          Eine Mittagspause um eins bleibt um eins (mit hungrigen Kindern verhandelt der Planer
+          nicht), und eine abgehakte Bahn ist gefahren und wird nicht neu einsortiert; geplant wird
+          um beide herum. Hinterher steht da, was passiert ist. „18 Min. weniger Warten“ ist die
+          Differenz zwischen zwei Rechnungen desselben Verfahrens, einmal vor und einmal nach dem
+          Klick; ist nichts zu holen, steht dort „Passt schon so“ und der Plan bleibt, wie er war.
+          Beim Headliner-Knopf fehlt die Ersparnis, weil der Tag mit den neuen Bahnen länger wird;
+          gezählt wird stattdessen, wie viele Bahnen dazugekommen sind und wie viele nicht zur
+          Gruppe passen. Was am Ende nicht mehr in den Tag passt, wird nach beiden Knöpfen
+          mitgezählt. Ein „Rückgängig“ gehört dazu und stellt den Stand von vor dem Klick wieder
+          her, solange der Planer offen ist.
         </P>
         <Note>
           Wo keine Wartezeiten ankommen, erscheinen die beiden Knöpfe gar nicht erst. Im Hansa-Park
@@ -229,9 +230,11 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           Und was ein Plan wirklich kostet, entscheidet der Tag. Eine Bahn kann stehenbleiben, eine
-          Show ausfallen, ein Gewitter den Nachmittag drehen. Deshalb ist der Plan kein Fahrplan,
-          sondern eine Rechnung darüber, ob der Tag so aufgehen kann. Wer im Park steht, hakt
-          gefahrene Bahnen ab, und der Planer schreibt die Wartezeit dazu, die wirklich anstand.
+          Show ausfallen, ein Gewitter den Nachmittag drehen, und ein Kind kann in der Schlange vor
+          Taron beschließen, dass es doch lieber Teetassen fährt. Deshalb ist der Plan kein
+          Fahrplan, sondern eine Rechnung darüber, ob der Tag so aufgehen kann. Wer im Park steht,
+          hakt gefahrene Bahnen ab, und der Planer schreibt die Wartezeit dazu, die wirklich
+          anstand.
         </P>
         <P>
           Alles davon liegt in deinem Browser, ohne Konto: Der Plan ist eine Datei in deinem eigenen

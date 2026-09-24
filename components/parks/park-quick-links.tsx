@@ -26,6 +26,12 @@ interface ParkQuickLinksProps {
  * row is "world, ticket, book", which is readable before the labels are. The `ExternalLink` mark
  * stays as the trailing hint that the link leaves the site, at reduced opacity so it does not
  * compete with the leading icon.
+ *
+ * Below `sm` the three labelled links are icon squares of the same 36 px as the socials, so all six
+ * sit in one row. With labels they took two rows on a 390 px phone and, together with the planner
+ * button, 134 px of the header before the first live figure. The label stays in the DOM as
+ * `sr-only` text, so the accessible name and the crawled anchor text do not change, and `title`
+ * gives it back to a pointer.
  */
 export async function ParkQuickLinks({ info, className }: ParkQuickLinksProps) {
   const t = await getTranslations('parks.info');
@@ -55,11 +61,12 @@ export async function ParkQuickLinks({ info, className }: ParkQuickLinksProps) {
           href={href}
           target="_blank"
           rel="noreferrer noopener"
-          className="border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors"
+          title={label}
+          className="border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-2 rounded-lg border text-sm font-medium transition-colors max-sm:h-9 max-sm:w-9 max-sm:justify-center sm:px-3 sm:py-1.5"
         >
           <Icon className="h-4 w-4 opacity-80" aria-hidden="true" />
-          {label}
-          <ExternalLink className="h-3.5 w-3.5 opacity-50" aria-hidden="true" />
+          <span className="max-sm:sr-only">{label}</span>
+          <ExternalLink className="h-3.5 w-3.5 opacity-50 max-sm:hidden" aria-hidden="true" />
         </a>
       ))}
       {socials.map(({ href, label, Icon }) => (

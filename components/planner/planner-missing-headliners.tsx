@@ -108,6 +108,42 @@ export function PlannerMissingHeadliners({
         )
       : undefined;
 
+  /** The band's heading. */
+  const heading = (
+    <>
+      <Crown className="size-3 shrink-0" aria-hidden="true" />
+      {/* The line is one flex item, not three. `t.rich` splits the sentence into
+          text, link, text, and each run would otherwise become its own flex item
+          with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
+      <span>
+        {t.rich('headliners.missing', {
+          count: missing.length,
+          // A link on the wide arrangement, plain text on the phone. Every
+          // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
+          // line cannot pay it: as a link this word measured 50x15 and
+          // `check:planner` refused it, rightly — a 15 px target above the
+          // 44 px pills is one that gets missed.
+          //
+          // `showTooltip={false}` and that is NOT a preference: a tooltip
+          // opened from inside this sheet paints UNDER it. Measured at
+          // 1440x900 with the panel open — the box is 256x80 at x=934, the
+          // sheet starts at x=992, and 20 of 25 points sampled across the
+          // tooltip answer the sheet, because `TooltipContent` is `z-50`
+          // against the sheet's `z-[70]`. A definition four fifths hidden is
+          // worse than none; the link carries the reader to the whole of it.
+          term: (chunks) =>
+            isPhone ? (
+              <>{chunks}</>
+            ) : (
+              <GlossaryTermLink termId="headliner" showTooltip={false}>
+                {chunks}
+              </GlossaryTermLink>
+            ),
+        })}
+      </span>
+    </>
+  );
+
   if (missing.length === 0) return null;
   // A day that has been walked is a record, and "these headliners are still
   // missing" is an offer about a day somebody can still have. On yesterday it
@@ -115,72 +151,54 @@ export function PlannerMissingHeadliners({
   if (clock.phase === 'past') return null;
 
   return (
-    <div data-planner-headliner-hint="" className="border-border/60 shrink-0 border-t px-2 py-2">
+    <div
+      data-planner-headliner-hint=""
+      className="border-border/60 planner-phone:py-1.5 shrink-0 border-t px-2 py-2"
+    >
       {/* Its own ground, and only ONE of them: this shipped as
           `bg-crowd-high/10 bg-background/70`, which is two `background-color`
           declarations on one element — the tint never painted, and the band was
           the panel's ground with a crown on it. The photo behind the panel is
           in a negative layer now and no longer thins anything, so the band can
           go back to being what it says it is: the crowd tint, over the panel. */}
-      {/* Capped on a phone, where this band and the ride search under it are two
-          ways to add the same ride and 716 px of sheet has to carry both: a park
-          with ten missing headliners drew three rows of pills, 127 px, and took
-          them off the axis. Every pill stays reachable — the box scrolls — and
-          on the wide arrangement there is nothing to ration.
+      {/* ONE row on a phone, scrolled sideways (PAR-482). The band used to wrap
+          and was capped at 126 px with a vertical scroller of its own — two
+          rows of 44 px pills, which at 390×844 was more than a third of what
+          the axis had left, and a park with ten missing headliners still hid
+          most of them below a scroll nobody saw. A single row is 44 px plus the
+          heading, every pill stays reachable with a swipe, and the count in the
+          heading says how many there are. The desktop keeps the wrapping row,
+          where there is nothing to ration.
 
-          126 px rather than the 5.5rem it was, and the number follows the
-          pills: they are 44 px tall now instead of 23, so 88 px held the
-          heading and ONE row with the second cut off mid-pill — a scroll
-          container whose first screen shows no reason to scroll.
-
-          The content it has to fit is 112 px: 20 for the heading and its
-          `mt-1`, then 44 + `gap-1` + 44 for two whole rows, which is what
-          5.5rem used to show at the old pill height. `max-h` is a BORDER-box
-          measurement, though, so the box's own `py-1.5` and 1 px border have to
-          be in the number or the second row is clipped again at the exact
-          moment it was sized to fit: 112 + 12 + 2 = 126. Only on a park that is
-          actually missing a headliner — this whole band renders nothing
-          otherwise. */}
-      {/* `planner-phone:` for all three, and they are one decision: the cap, the
-          scroller it needs to stay usable, and the overscroll that keeps the
-          sheet from dragging with it. The band is rationing HEIGHT, which is
-          the axis a landscape phone is short of (PAR-76) — at 844x390 it took
-          101 px of a 359 px sheet uncapped, with no scroller of its own. Split
-          the three and the cap clips the list with no way to reach the rest. */}
-      <div className="planner-phone:max-h-[126px] planner-phone:overflow-y-auto planner-phone:overscroll-y-contain border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
+          `planner-phone:` for the whole arrangement and not `max-sm:`, for the
+          reason the rest of the sheet gives: the band rations HEIGHT, which a
+          landscape phone is short of (PAR-76), not width. */}
+      <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:p-1 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
-          <Crown className="size-3 shrink-0" aria-hidden="true" />
-          {/* The line is one flex item, not three. `t.rich` splits the sentence into
-              text, link, text, and each run would otherwise become its own flex item
-              with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
-          <span>
-            {t.rich('headliners.missing', {
-              count: missing.length,
-              // A link on the wide arrangement, plain text on the phone. Every
-              // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
-              // line cannot pay it: as a link this word measured 50x15 and
-              // `check:planner` refused it, rightly — a 15 px target above the
-              // 44 px pills is one that gets missed.
-              //
-              // `showTooltip={false}` and that is NOT a preference: a tooltip
-              // opened from inside this sheet paints UNDER it. Measured at
-              // 1440x900 with the panel open — the box is 256x80 at x=934, the
-              // sheet starts at x=992, and 20 of 25 points sampled across the
-              // tooltip answer the sheet, because `TooltipContent` is `z-50`
-              // against the sheet's `z-[70]`. A definition four fifths hidden is
-              // worse than none; the link carries the reader to the whole of it.
-              term: (chunks) =>
-                isPhone ? (
-                  <>{chunks}</>
-                ) : (
-                  <GlossaryTermLink termId="headliner" showTooltip={false}>
-                    {chunks}
-                  </GlossaryTermLink>
-                ),
-            })}
-          </span>
+          {heading}
         </p>
-        <div className="mt-1 flex flex-wrap gap-1">
+        {/* The pills are 26 px on a phone, so the 16 px thumbnail sits 4 px
+            from the pill's border above and below as it does on the left
+            (PAR-482: "die Headliner-Pillen sind viel zu hoch", then "oben zu
+            groß"). Their 44 px target is an `after:` reaching 12 px past the
+            border above and 6 below — `-top-[13px]` and `-bottom-[7px]`,
+            since an absolute box is placed from the PADDING edge and the pill
+            has a 1 px border. Up is where the room is: the heading, which is
+            text. Down it stops 1 px into the band's own padding, clear of the
+            optimise buttons' reach 3 px into the same padding from below.
+            A scroller clips its children for hit-testing as much as for
+            paint, so the row carries 14 px of padding above and 8 below (one
+            more than each reach, or the clip edge takes a pixel off) and
+            hands them back with negative margins: the pseudo-elements land
+            inside the scroller, and the band is no taller for them.
+            The heading keeps its own line on a phone as well: folded into
+            this row it took 150 of the 356 px the pills scroll in.
+
+            And on a phone the pills sit 4 px from the border on every side:
+            4 above to the heading, 4 below, 4 left and right (`p-1` on the
+            box). The box was `px-2` there, 8 px beside the pills and 4 above
+            and below them, and the report was that the uneven gaps showed. */}
+        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-2.5 planner-phone:-mb-2 planner-phone:items-center planner-phone:pt-3.5 planner-phone:pb-2 mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (
             <button
               key={ride.attractionSlug}
@@ -218,7 +236,7 @@ export function PlannerMissingHeadliners({
                   }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:min-h-11 planner-wide:cursor-grab planner-wide:active:cursor-grabbing flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:h-[26px] planner-phone:max-w-56 planner-phone:shrink-0 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-top-[13px] planner-phone:after:-bottom-[7px] planner-phone:after:content-[''] planner-wide:cursor-grab planner-wide:active:cursor-grabbing relative flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
             >
               {/* The ride's picture, at 16 px. A pill was a word in a rounded
                   box, which is what a filter chip looks like — and these are

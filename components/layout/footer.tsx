@@ -4,7 +4,7 @@ import { ExternalLink, Rss } from 'lucide-react';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { Separator } from '@/components/ui/separator';
-import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { FooterLinkGroup } from '@/components/layout/footer-link-group';
 import { BuildInfo } from '@/components/common/build-info';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -96,10 +96,10 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
 
   return (
     <footer className="bg-card border-t" role="contentinfo">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 pt-8 pb-6 sm:py-12">
         <div className="grid gap-8 md:grid-cols-6">
           {/* Brand */}
-          <section className="space-y-4 md:col-span-2">
+          <section className="space-y-3 sm:space-y-4 md:col-span-2">
             <Link
               href="/"
               /* Both halves are ink-tight artwork now, so the whole gap is in the class.
@@ -140,7 +140,9 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 className="hidden h-[25px] w-auto md:h-[38px] dark:block"
               />
             </Link>
-            <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
+            <p className="text-muted-foreground text-base leading-normal sm:leading-relaxed">
+              {t('description')}
+            </p>
             <PreferredSourceButton />
             <nav
               className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
@@ -422,9 +424,9 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
           </section>
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-6 sm:my-8" />
 
-        <div className="mt-4 mb-6 text-center">
+        <div className="mb-4 text-center sm:mt-4 sm:mb-6">
           <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
         </div>
 
@@ -433,7 +435,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             brand. As a `flex … justify-between` row the three link columns sat against the right
             edge with the copyright's own column nearly 1000 px wide and empty under two lines of
             text. */}
-        <div className="text-muted-foreground grid gap-8 text-sm md:grid-cols-6">
+        <div className="text-muted-foreground grid gap-6 text-sm sm:gap-8 md:grid-cols-6">
           <div className="flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
@@ -453,41 +455,43 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 Every link keeps `max-sm:min-h-11`. They were bare `text-sm` with no padding at
                 all — a 14 px font on a 20 px line box — and two of the eleven are Impressum and
                 Datenschutz. Above `sm` the footer keeps its density, the same split as the button
-                scale's phone tier. */}
+                scale's phone tier.
+
+                Below `sm` each column folds into one 44 px row (`FooterLinkGroup`, PAR-437): open,
+                the three stood as 438 px of rows in a 1,102 px footer. The links stay in the HTML
+                either way. */}
             <nav
-              className="grid w-full grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3"
+              className="grid w-full sm:grid-cols-3 sm:gap-x-8 sm:gap-y-6"
               aria-label="Site sections"
             >
               {linkGroups.map((group) => (
-                <div key={group.key}>
-                  <MenuSectionHeading label={group.heading} />
-                  <div className="flex flex-col">
-                    {group.items.map((item) =>
-                      item.plain ? (
-                        <a key={item.key} href={item.href} className={footerLinkClass}>
-                          {item.icon}
-                          {item.label}
-                        </a>
-                      ) : (
-                        <Link
-                          key={item.key}
-                          href={item.href as '/'}
-                          prefetch={false}
-                          className={footerLinkClass}
-                        >
-                          {item.icon}
-                          {item.label}
-                        </Link>
-                      )
-                    )}
-                  </div>
-                </div>
+                <FooterLinkGroup key={group.key} heading={group.heading}>
+                  {group.items.map((item) =>
+                    item.plain ? (
+                      <a key={item.key} href={item.href} className={footerLinkClass}>
+                        {item.icon}
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.key}
+                        href={item.href as '/'}
+                        prefetch={false}
+                        className={footerLinkClass}
+                      >
+                        {item.icon}
+                        {item.label}
+                      </Link>
+                    )
+                  )}
+                </FooterLinkGroup>
               ))}
             </nav>
             {/* `gap-1` because the word and the name are two flex items, and the space between
                 them in the source was collapsing: the line read "Powered byArns.dev". The gap
-                disappears with the span on a phone, where only the name shows. */}
-            <p className="md:text-right">
+                disappears with the span below `md`, where only the name shows. Not drawn at all
+                below `sm`: the same link is the last one in the brand block at the top. */}
+            <p className="max-sm:hidden md:text-right">
               <a
                 href="https://arns.dev"
                 target="_blank"

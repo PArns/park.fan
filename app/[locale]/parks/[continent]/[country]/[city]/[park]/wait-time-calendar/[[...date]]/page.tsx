@@ -17,6 +17,7 @@ import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import {
+  cityHasOwnPage,
   findParkPageRedirect,
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
@@ -233,7 +234,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // Not `catchNonFatal`: a failed fetch must throw rather than 404 — see the park page.
+  const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
   // This page draws no attraction cards, so it ships none of their data — the nine fields its
   // headliner rows and nav tiles actually read, and nothing else. See `leanParkForCalendarShell`.
   const parkForClock = parkFull ? leanParkForCalendarShell(parkFull) : parkFull;
@@ -334,6 +336,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
     continentName: translateContinent(tGeo, continent, locale),
     countryName,
     cityName,
+    cityHasPage: await cityHasOwnPage(continent, country, city),
     parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),

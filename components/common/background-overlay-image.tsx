@@ -10,6 +10,8 @@ interface BackgroundOverlayImageProps {
   hoverEffect?: boolean;
   /** `next/image` sizes hint. Defaults to the card layout; pass "100vw" for full-bleed use. */
   sizes?: string;
+  /** Focal point as a CSS `object-position`, resolved server-side. Centre when absent. */
+  objectPosition?: string;
 }
 
 /** Client leaf: manages fade-in state for the background image on load. */
@@ -18,6 +20,7 @@ export function BackgroundOverlayImage({
   alt,
   hoverEffect = false,
   sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+  objectPosition,
 }: BackgroundOverlayImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -32,6 +35,7 @@ export function BackgroundOverlayImage({
         hoverEffect && 'group-hover:opacity-70'
       )}
       sizes={sizes}
+      style={objectPosition ? { objectPosition } : undefined}
       priority={false}
       onLoad={() => setIsLoaded(true)}
     />

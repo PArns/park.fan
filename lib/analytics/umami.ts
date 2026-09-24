@@ -48,6 +48,7 @@
  * - ride_alert_removed: (no properties)
  * - show_follow_add: source
  * - show_follow_remove: (no properties)
+ * - blog_toast_opened: (no properties) — the "new since your last visit" toast was followed
  * - web-vital-inp: value, target, phase, path (only for non-`good` samples, see WebVitalsReporter)
  */
 
@@ -97,6 +98,7 @@ export const UMAMI_EVENTS = {
 
   // Hero & Entry points
   LOCATION_BANNER_CLICKED: 'location_banner_clicked',
+  BLOG_TOAST_OPENED: 'blog_toast_opened',
 
   // Engagement & health
   SEARCH_NO_RESULTS: 'search_no_results',
@@ -293,6 +295,10 @@ export function trackLocationBannerClicked(): void {
   trackEvent(UMAMI_EVENTS.LOCATION_BANNER_CLICKED);
 }
 
+export function trackBlogToastOpened(): void {
+  trackEvent(UMAMI_EVENTS.BLOG_TOAST_OPENED);
+}
+
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
 }
@@ -388,14 +394,15 @@ export function trackPreferredSourceClicked(): void {
 
 /**
  * A ride's wait-time alert was saved — the conversion this feature lives or
- * dies on, not the dialog opening. Opening `RideAlertQuickDialog`/`RideAlertDialog`
+ * dies on, not the dialog opening. Opening `RideAlertDialog`
  * costs nothing to bill, so it stays untracked; a visitor who opens the
  * dialog and backs out answers no question a report needs, the way looking
  * at a favorite star and not pressing it does not get its own event either.
  *
  * ONE property: `source` tells the two entry points the plan asked for
  * ("kombiniert": a bell per ride card, plus a central button in the park
- * overview) apart, which is exactly the design decision a report on this
+ * overview) apart — both open the same dialog, which reports `card` when a
+ * bell opened it, which is exactly the design decision a report on this
  * event can revisit — worth the second billed row for the same reason
  * `trackPlannerOpened`'s `source` is.
  */

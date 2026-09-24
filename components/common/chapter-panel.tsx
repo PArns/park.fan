@@ -75,7 +75,11 @@ export function ChapterPanel({
   children,
 }: ChapterPanelProps) {
   return (
-    <section id={id} className={cn('mt-10', id && 'scroll-mt-24', className)}>
+    // `mt-6` below `sm`, `mt-10` above: the same step the heading takes (PAR-433), and the same
+    // pair `PageSection` and `AttractionHistoryPanel` carry, so the rhythm between chapters does
+    // not depend on which of the three opened one. `max-sm:` on top of the desktop value, so a
+    // `className` margin still wins from `sm` up (see the spacing note in `ChapterHeading`).
+    <section id={id} className={cn('mt-10 max-sm:mt-6', id && 'scroll-mt-24', className)}>
       <ChapterHeading
         icon={icon}
         title={title}

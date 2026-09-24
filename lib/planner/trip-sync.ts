@@ -292,11 +292,15 @@ export type TripDeleteResult = { ok: true } | { ok: false; error: TripSyncError 
  * may not leave a row behind.
  *
  * This used to drop the LINK and nothing else, on the grounds that a shared id
- * must not die with one browser's switch. It had the effect backwards. There is
- * no share entry point (PAR-82), so no id has ever been passed on — while
- * dropping the link made the row **unreachable to the only person who wanted it
- * gone**, for the full 400-day TTL, and left it readable and writable by anyone
- * who had the id from a log or an old device. Switching off now deletes.
+ * must not die with one browser's switch. It had the effect backwards: dropping
+ * the link made the row **unreachable to the only person who wanted it gone**,
+ * for the full 400-day TTL, and left it readable and writable by anyone who had
+ * the id from a log or an old device. Switching off now deletes.
+ *
+ * Since PAR-82 the id can be passed on (`lib/planner/trip-share.ts`), and
+ * switching off still deletes: a link that was shared stops working. A
+ * recipient who already took the plan over has their own copy, and one who
+ * opens the link afterwards is told the plan was deleted (`planner.shared.missing`).
  *
  * **Server first, mirror second**, the rule the push removals keep: the id is
  * the credential and this browser holds the only copy, so forgetting it before
