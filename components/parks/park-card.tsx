@@ -17,7 +17,7 @@ import type { ScheduleSummary } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
-/** What the phone row paints: a 64 × 48 thumbnail. */
+/** What the phone row paints: a 64 × 40 thumbnail. */
 const ROW_THUMB_SIZES = '64px';
 /**
  * The card's own photo layers claim the row's 64 px for the phone segment. The card is
@@ -149,11 +149,9 @@ export function ParkCard({
     <>
       {status && <ParkStatusBadge status={status} />}
       {isOpen && effectiveCrowdLevel && <CrowdLevelBadge level={effectiveCrowdLevel} />}
-      {highlightAsNearestOpen && isOpen && (
-        <Badge className="badge-primary text-xs">{tNearby('nearestOpenBadge')}</Badge>
-      )}
     </>
   );
+  const showNearestOpen = highlightAsNearestOpen && isOpen;
 
   const scheduleFooter = (compact: boolean) => (
     <ParkCardScheduleFooter
@@ -188,9 +186,11 @@ export function ParkCard({
       >
         {backgroundImage && (
           // The whole thumbnail is the visible box, so the focal point is applied to it
-          // directly. 64 px wide, not the blog row's 96: at 360 px the badge line needs
-          // 228 px for "Geöffnet" and "Sehr niedrig", and a 96 px thumbnail leaves 204.
-          <div className="relative mt-0.5 h-12 w-16 shrink-0 overflow-hidden rounded-lg">
+          // directly, and it stays wider than 1.5 (64 × 40 = 1.6) so a 4:3 photo keeps some
+          // vertical range for it (docs/rules/card-photos-are-two-layers.md). 64 px wide, not
+          // the blog row's 96: at 360 px the badge line needs 228 px for "Geöffnet" and
+          // "Sehr niedrig", and a 96 px thumbnail leaves 204.
+          <div className="relative mt-0.5 h-10 w-16 shrink-0 overflow-hidden rounded-lg">
             <Image
               src={backgroundImage}
               alt={name}
@@ -228,8 +228,15 @@ export function ParkCard({
           {/* `min-h` is one badge: on the region pages the badges arrive with the client
               batch call, after the row is painted, and must not grow it. */}
           <div className="mt-1 flex min-h-[22px] flex-wrap items-center gap-1.5">{badges}</div>
-          <div className="mt-1 flex h-4 min-w-0 items-center">
+          {/* "Nearest open" is text on the time line here, not a third badge: three badges
+              wrap to a second line at 390 px and the row would outgrow its 100 px. */}
+          <div className="mt-1 flex h-4 min-w-0 items-center gap-1.5">
             <Suspense fallback={<Skeleton className="h-4 w-24" />}>{scheduleFooter(true)}</Suspense>
+            {showNearestOpen && (
+              <span className="text-primary shrink-0 text-xs leading-4 font-semibold">
+                · {tNearby('nearestOpenBadge')}
+              </span>
+            )}
           </div>
         </div>
         {effectiveParkId && (
@@ -363,7 +370,12 @@ export function ParkCard({
           </div>
 
           {/* Badges row */}
-          <div className="relative mt-[9px] flex flex-wrap items-center gap-[6px]">{badges}</div>
+          <div className="relative mt-[9px] flex flex-wrap items-center gap-[6px]">
+            {badges}
+            {showNearestOpen && (
+              <Badge className="badge-primary text-xs">{tNearby('nearestOpenBadge')}</Badge>
+            )}
+          </div>
         </div>
 
         {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height

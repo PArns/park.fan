@@ -42,7 +42,7 @@ export function ParkCardNearbySkeleton({ withPhoto = true }: { withPhoto?: boole
     <>
       {/* Below `sm` the card is a row (see `ParkCard`), built from the same four lines:
           1 px border + 8 px padding + name 18 + 2 + location 16 + 4 + badges 22 + 4 + time 16
-          + 8 + 1 = 100 px. No thumbnail: it is 48 px tall beside 82 px of text, so it never
+          + 8 + 1 = 100 px. No thumbnail: it is 40 px tall beside 82 px of text, so it never
           sets the height, and only 9 parks have one. */}
       <div className="bg-card border-border/60 rounded-xl border p-2 sm:hidden">
         <Skeleton className="h-[18px] w-40 max-w-[70%]" />

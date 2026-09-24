@@ -186,15 +186,14 @@ gets it without a change.
 | -------- | ----------------------------------------------------------------- | ------ |
 | 1        | name, one line, cut with an ellipsis; favourite star at the right | 18 px  |
 | 2        | city, country · distance                                          | 16 px  |
-| 3        | `ParkStatusBadge`, `CrowdLevelBadge`, "nearest open"              | 22 px  |
-| 4        | `ParkCardScheduleFooter compact`: closing or opening time only    | 16 px  |
+| 3        | `ParkStatusBadge`, `CrowdLevelBadge`                              | 22 px  |
+| 4        | `ParkCardScheduleFooter compact`, then "nearest open" as text     | 16 px  |
 | together | with the gaps, 8 px padding and a 1 px border                     | 100 px |
 
 Four fixed lines, not three with the time beside the badges: next to "Geöffnet" and "Sehr niedrig"
 the time does not fit at 360 px, and a line that wraps only for some parks gave the rows of one list
 different heights. The badge line keeps `min-h-[22px]` because on the region pages the badges arrive
-with the client batch call after the row is painted. The thumbnail is 64 × 48, not the blog row's
-96 × 64, because a 96 px thumbnail leaves the badge line 204 px at 360 px and the two badges need 228. It is only drawn when the park has a photo (9 of 212). The hidden card's two photo layers claim
+with the client batch call after the row is painted. "Nearest open" is text on the time line and not a third badge, because three badges wrap at 390 px. The thumbnail is 64 × 40, not the blog row's 96 × 64, because a 96 px thumbnail leaves the badge line 204 px at 360 px and the two badges need 228; 40 px high keeps the box wider than 1.5. It is only drawn when the park has a photo (9 of 212). The hidden card's two photo layers claim
 the same `64px` for the phone segment of their `sizes`, for the reason given above.
 `ParkCardNearbySkeleton` draws the same four lines. The grids around the card keep
 `[grid-auto-rows:auto_1fr_auto]` from `sm` up and drop it below (`max-sm:auto-rows-auto`, the same
