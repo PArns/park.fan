@@ -75,7 +75,10 @@ export function ChapterPanel({
   children,
 }: ChapterPanelProps) {
   return (
-    <section id={id} className={cn('mt-10', id && 'scroll-mt-24', className)}>
+    // `mt-6` below `sm`, `mt-10` above: the same step the heading takes (PAR-433), and the same
+    // pair `PageSection` and `AttractionHistoryPanel` carry, so the rhythm between chapters does
+    // not depend on which of the three opened one.
+    <section id={id} className={cn('mt-6 sm:mt-10', id && 'scroll-mt-24', className)}>
       <ChapterHeading
         icon={icon}
         title={title}

@@ -152,7 +152,12 @@ export function ChapterHeading({
   className,
 }: ChapterHeadingProps) {
   const tile = variant === 'tile';
-  const watermark = index ?? (Icon ? <Icon className="h-10 w-10 sm:h-14 sm:w-14" /> : null);
+  // Below `sm` every part of the heading is one step smaller: the icon, the numeral, the title
+  // and the padding around them. A park page stacks 14 of these, a ride page 7, and at 390 px a
+  // two-line `text-2xl` title under a 40 px glyph took 105 px before the chapter said anything
+  // (PAR-433). The glyph matches the title's line box there (28 px) so a one-line heading is as
+  // tall as its text, not as its icon.
+  const watermark = index ?? (Icon ? <Icon className="h-7 w-7 sm:h-14 sm:w-14" /> : null);
   const aside = Boolean(action) && actionAside;
 
   return (
@@ -164,8 +169,10 @@ export function ChapterHeading({
         // „below this the two do not share a line" rather than a breakpoint that guesses at the
         // width of six languages' worth of buttons.
         aside && 'flex-wrap',
-        tile ? 'mb-8 gap-4 pb-5' : 'mb-6 gap-3 pb-4 sm:gap-4',
-        frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3'),
+        tile
+          ? 'mb-6 gap-3 pb-4 sm:mb-8 sm:gap-4 sm:pb-5'
+          : 'mb-4 gap-3 pb-3 sm:mb-6 sm:gap-4 sm:pb-4',
+        frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-2.5 sm:pt-3'),
         className
       )}
     >
@@ -174,7 +181,7 @@ export function ChapterHeading({
             <span
               aria-hidden="true"
               className={cn(
-                'border-primary/30 flex size-14 shrink-0 items-center justify-center rounded-2xl border sm:size-[68px]',
+                'border-primary/30 flex size-12 shrink-0 items-center justify-center rounded-2xl border sm:size-[68px]',
                 // The plate is the one gradient the design system spends, and it
                 // runs 150° so the lit corner sits opposite the title rather than
                 // under it. `shadow-[inset…]` is the top highlight that keeps the
@@ -183,7 +190,7 @@ export function ChapterHeading({
                 'shadow-[inset_0_1px_0_color-mix(in_oklab,var(--color-primary)_25%,transparent)]'
               )}
             >
-              <Icon className={cn('size-7 sm:size-8', iconClassName ?? 'text-primary')} />
+              <Icon className={cn('size-6 sm:size-8', iconClassName ?? 'text-primary')} />
             </span>
           )
         : watermark !== null && (
@@ -192,7 +199,7 @@ export function ChapterHeading({
               className={cn(
                 'shrink-0 leading-none font-black tabular-nums',
                 index ? 'text-primary/15' : (iconClassName ?? 'text-primary/25'),
-                size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-4xl sm:text-6xl'
+                size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-3xl sm:text-6xl'
               )}
             >
               {watermark}
@@ -207,7 +214,7 @@ export function ChapterHeading({
       >
         {kicker &&
           (tile ? (
-            <div className="border-primary/30 bg-primary/10 text-primary mb-3 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase">
+            <div className="border-primary/30 bg-primary/10 text-primary mb-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase sm:mb-3">
               {Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
               {kicker}
             </div>
@@ -223,8 +230,8 @@ export function ChapterHeading({
             className={cn(
               id && 'scroll-mt-24',
               tile
-                ? 'text-3xl leading-[1.08] font-extrabold tracking-[-0.03em] text-balance sm:text-[42px]'
-                : cn('font-bold', size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-2xl sm:text-3xl')
+                ? 'text-2xl leading-[1.08] font-extrabold tracking-[-0.03em] text-balance sm:text-[42px]'
+                : cn('font-bold', size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-3xl')
             )}
           >
             {title}
