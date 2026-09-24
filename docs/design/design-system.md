@@ -330,6 +330,24 @@ mount them, with only the data-dependent hint line replaced by a `Skeleton`. A s
 their place left the mobile header 66–120 px short and the whole grid below absorbed the
 difference. See [system-overview](../architecture/system-overview.md#5-a-streamed-section-owes-the-page-its-height-requirement).
 
+**Below `sm` the heading and the gap above it are one step smaller** (PAR-433). A park page stacks
+14 chapters, a ride page 7, the homepage 20, and at 390 px a two-line `text-2xl` title under a 40 px
+glyph took 105 px on its own. On a phone the `md` title is `text-xl`, the watermark icon 28 px (the
+title's line box, so a one-line heading is as tall as its text), the numeral `text-3xl` and the band
+`pt-2.5 pb-3`. The `tile` variant's plate is 48 px and its title `text-2xl`. The chapter's top
+margin is `mt-6` below `sm` in all three places that set it — `ChapterPanel`, `PageSection` and
+`AttractionHistoryPanel`. From `sm` up nothing changed.
+
+The phone spacing is written as `max-sm:` classes added to the desktop value (`mt-10 max-sm:mt-6`),
+not as a base value with an `sm:` one over it. Call sites override the heading's spacing through
+`className` (`ChapterPanel` passes `mb-0`, the trip planner `mb-5 pb-4`, the guide `mb-8 pb-5`),
+and `twMerge` drops only the unprefixed class it conflicts with. The first draft wrote
+`mb-4 sm:mb-6`: `mb-0` removed the `mb-4`, the `sm:mb-6` stayed, and every glued panel on a
+desktop had a 24 px gap between its band and its body. For the same reason the heading's bottom
+margin has no phone step at all. The panel
+body keeps `p-4`: `p-3` would save 8 px per chapter, a fifth of what the heading and margin save,
+and put every panel's content 4 px closer to its border.
+
 `SectionHeading`'s `plain` variant is untouched and is still the right choice **inside** a card
 (the rope-drop panel, the typical-waits block, a city row on a country page) — a chapter header
 nested in a chapter's own content is what the split is for.
