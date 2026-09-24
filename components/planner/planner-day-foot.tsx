@@ -24,11 +24,13 @@ interface PlannerDayFootProps {
   entries: readonly PlannerEntry[];
   onAddFreeBlock: () => void;
   /**
-   * Drawn at the end of the summary row. The phone's notification bell lives
-   * here since PAR-482 gave its old place, the grabber's own row, back to the
-   * day.
+   * Drawn at the end of the optimise row. The phone's notification bell lives
+   * there since PAR-482 gave its old place, the grabber's own row, back to the
+   * day — and not in the summary row below it, because two rows of 44 px
+   * targets stacked cost the foot about 86 px, and the summary line without
+   * one is 29.
    */
-  summaryTrailing?: ReactNode;
+  actionsTrailing?: ReactNode;
 }
 
 /**
@@ -73,7 +75,7 @@ export function PlannerDayFoot({
   prefs,
   entries,
   onAddFreeBlock,
-  summaryTrailing,
+  actionsTrailing,
 }: PlannerDayFootProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -134,6 +136,7 @@ export function PlannerDayFoot({
         grid={grid}
         timezone={timezone}
         prefs={prefs}
+        trailing={actionsTrailing}
       />
 
       {entries.length > 0 && (
@@ -141,24 +144,17 @@ export function PlannerDayFoot({
           data-planner-summary=""
           className={cn(
             'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
-            // The bell is drawn 32 px and reaches 44 with 6 px above (into the
-            // optimise row's lower padding, where nothing else reaches down)
-            // and 6 below, which is this row's `pb-1.5`. The height is a floor
-            // with the text centred in its 32 px, not the bell's height: the
-            // toggle renders nothing while it checks and where push cannot
-            // work (iOS Safari outside the home screen), and the row may
-            // neither jump when it arrives nor squash its text where it never
-            // does (PAR-482).
-            summaryTrailing && 'min-h-[39px] items-center pt-0 pr-1 pb-1.5'
+            // A line of text and nothing to press, so on a phone it is only as
+            // tall as the text wants (PAR-482: "im Footer die Abstände nach
+            // oben und unten verringern"): 29 px, where the bell made it 39.
+            'planner-phone:py-1.5'
           )}
         >
           <span>
             {t('summary.rides', { count: entries.length - totals.custom })}
             {totals.custom > 0 && ` · ${t('summary.blocks', { count: totals.custom })}`}
           </span>
-          <span
-            className={cn('flex items-baseline gap-3', summaryTrailing && 'items-center gap-2')}
-          >
+          <span className="flex items-baseline gap-3">
             {totals.done > 0 && (
               <span>{t('summary.done', { done: totals.done, total: entries.length })}</span>
             )}
@@ -179,7 +175,6 @@ export function PlannerDayFoot({
                 </span>
               </span>
             )}
-            {summaryTrailing}
           </span>
         </div>
       )}

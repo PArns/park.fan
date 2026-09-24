@@ -1800,7 +1800,7 @@ at the top of the sheet header, and the grabber is a button laid BEHIND the head
 control is — the strip, the row's side padding — and a control is never under it. The
 × is the last control of the park/date row (the day picker folds its calendar icon
 away on a phone to pay for it: at 390 px the park name keeps 115 px), and the bell
-went to the end of the foot's summary row. 61 px instead of 89. On a window under
+went to the end of the optimise row (see below). 61 px instead of 89. On a window under
 50rem tall — which is every iPhone in Safari, whose visible page is 660–750 px — `large`
 opens over the site header too, 12 px under the top edge (the `@media` twin of
 `--planner-sheet-large`), and `full` is not offered there, being a
@@ -1826,15 +1826,21 @@ above. Where the overhangs go is the design:
 - the pills reach into the band's own padding. A scroller clips its children for
   hit-testing as well as for paint, so the pill row carries 8 px of padding and hands
   it back with negative margins, and an absolute box is placed from the padding edge,
-  so the bordered pill needs `-inset-y-[7px]` to reach 6 px past its border. On a phone
-  the band's heading is the first item of that same row instead of a line of its own;
-- the two optimise buttons reach only UP, 12 px, through their row's top padding and
-  3 px into the band, stopping short of the pills' reach;
-- the bell at the end of the summary row reaches 6 px up into the optimise row's
-  bottom padding, which nothing else reaches into, and 6 px down into its own.
+  so the bordered pill needs `-inset-y-[7px]` to reach 6 px past its border. The band's
+  heading keeps its own line: folded into the pill row it took 150 of the 356 px the
+  pills scroll in, which left two of them on screen;
+- the two optimise buttons and the bell beside them reach only UP, 12 px, through their
+  row's top padding and 3 px into the band, stopping short of the pills' reach. The bell
+  moved into this row from the summary line, because two stacked rows of 44 px targets
+  cost the foot about 86 px however the padding is shared out; the summary line under
+  it carries nothing to press and is as tall as its text. To fit three controls in the
+  row on a phone, "Headliner einplanen" is its crown alone there, named by its
+  `aria-label` (the band right above it is the crown's colour and lists the rides it
+  adds). On a day with nothing to optimise the row is drawn for the bell alone.
 
-Measured with `elementFromPoint` on every one of them: 32 + 6 + 6 or 32 + 12 + 0, i.e. 44. Header 61 → 55 px, band 96 → 55 px, the optimise row 53 → 47 px, the summary row
-45 → 39 px. The axis is 312 px at 390 × 664 and 430 px at 390 × 844.
+Measured with `elementFromPoint` on every one of them: 32 + 6 + 6 or 32 + 12 + 0, i.e. 44. Header 61 → 55 px, band 96 → 76 px, the optimise row 53 → 45 px, the summary line
+45 → 29 px. The axis is 305 px at 390 × 664, 267 px at 360 × 640 and 423 px at
+390 × 844.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

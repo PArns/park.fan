@@ -1096,7 +1096,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             bell and the × in its margins, 89 px of chrome before the day's first
             fact. Now the pill sits in a 16 px strip at the top of this header,
             the × is the last control in the row below it and the bell went to
-            the foot's summary row. The row's controls are drawn 32 px tall and
+            the end of the foot's optimise row. The row's controls are drawn 32 px tall and
             reach 44 with an overhang of 6 px into the strip above and into this
             header's `pb-1.5` below (`PHONE_TARGET_32`): 55 px in all, the same
             targets.
@@ -1736,11 +1736,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       prefs={prefs}
                       entries={activeEntries}
                       onAddFreeBlock={addFreeBlock}
-                      /* The bell, at the end of the day's total (PAR-482). It
-                         sat in the grabber's row, which is gone; the summary
-                         row is the day's own last line and the bell is about
-                         this day. */
-                      summaryTrailing={<PlannerPushToggle variant="icon" />}
+                      /* The bell, at the end of the optimise row (PAR-482). It
+                         sat in the grabber's row, which is gone; the foot is
+                         where the day is acted on, and the bell is about this
+                         day. See `actionsTrailing`. */
+                      actionsTrailing={<PlannerPushToggle variant="icon" />}
                     />
                   </>
                 )}
@@ -1758,7 +1758,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 nothing at all where push cannot work — see the component.
 
                 `!isPhone` since PAR-313: on a phone the same component is the
-                bell at the end of the foot's summary row (PAR-482; it sat in the
+                bell at the end of the foot's optimise row (PAR-482; it sat in the
                 grabber's row before that row was folded into the header), and two
                 copies would be two `[data-planner-push]` for a selector to pick
                 the wrong one of — and two `usePushSubscription()`, i.e. two

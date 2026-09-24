@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Bell, BellOff, Loader2 } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
-import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
+import { PHONE_TARGET_32_UP } from '@/lib/planner/touch-target';
 import { usePushSubscription } from '@/lib/planner/use-push-subscription';
 import { PlannerShareLink } from './planner-share-link';
 
@@ -261,8 +261,9 @@ function PushPopover({
           title={label}
           className={cn(
             'text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:w-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
-            // Drawn 32 px in the phone's summary row, 44 to a finger (PAR-482).
-            PHONE_TARGET_32
+            // Drawn 32 px at the end of the phone's optimise row, 44 to a finger
+            // with the overhang above, like the buttons beside it (PAR-482).
+            PHONE_TARGET_32_UP
           )}
         >
           {icon}

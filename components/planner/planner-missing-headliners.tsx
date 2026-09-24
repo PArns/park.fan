@@ -108,7 +108,7 @@ export function PlannerMissingHeadliners({
         )
       : undefined;
 
-  /** The band's heading, drawn as its own line wide and as the pill row's first item on a phone. */
+  /** The band's heading. */
   const heading = (
     <>
       <Crown className="size-3 shrink-0" aria-hidden="true" />
@@ -174,10 +174,7 @@ export function PlannerMissingHeadliners({
           reason the rest of the sheet gives: the band rations HEIGHT, which a
           landscape phone is short of (PAR-76), not width. */}
       <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:py-1 rounded-md border px-2 py-1.5">
-        {/* A line of its own on the wide arrangement; on a phone the same
-            words open the pill row instead (below), which is the line of
-            height this band had to give back (PAR-482). */}
-        <p className="text-crowd-high planner-phone:hidden flex items-center gap-1.5 text-[11px] font-medium">
+        <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           {heading}
         </p>
         {/* The pills are 32 px on a phone and their 44 px target is an `after:`
@@ -188,12 +185,11 @@ export function PlannerMissingHeadliners({
             much as for paint, so the row carries 8 px of padding (2 more than
             the overhang, or the clip edge takes a pixel off each side) and
             hands them back with negative margins: the pseudo-elements land
-            inside the scroller, and the band is no taller for them. Above and
-            below is the band's own padding, which takes no press. */}
-        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-my-2 planner-phone:items-center planner-phone:py-2 mt-1 flex flex-wrap gap-1">
-          <p className="text-crowd-high planner-wide:hidden flex shrink-0 items-center gap-1 pr-1 text-[11px] font-medium">
-            {heading}
-          </p>
+            inside the scroller, and the band is no taller for them. Above is
+            the heading, which is text; below is the band's own padding.
+            The heading keeps its own line on a phone as well: folded into
+            this row it took 150 of the 356 px the pills scroll in. */}
+        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-1 planner-phone:-mb-2 planner-phone:items-center planner-phone:py-2 mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (
             <button
               key={ride.attractionSlug}

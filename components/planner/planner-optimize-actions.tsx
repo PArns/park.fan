@@ -1,6 +1,6 @@
 'use client';
 
-import { useDeferredValue, useMemo, useState, useSyncExternalStore } from 'react';
+import { useDeferredValue, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, Crown, SlidersHorizontal, Undo2, Wand2 } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -50,6 +50,13 @@ interface PlannerOptimizeActionsProps {
   grid: DayGrid | null;
   timezone?: string;
   prefs?: PlannerDayPrefs;
+  /**
+   * Drawn at the end of the button row: the phone's notification bell
+   * (PAR-482). Where there are no buttons to draw, the row is drawn for it
+   * alone, so the bell never depends on the day being one that can be
+   * optimised.
+   */
+  trailing?: ReactNode;
 }
 
 /**
@@ -115,6 +122,7 @@ export function PlannerOptimizeActions({
   grid,
   timezone,
   prefs,
+  trailing,
 }: PlannerOptimizeActionsProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -249,11 +257,17 @@ export function PlannerOptimizeActions({
     return { fitted: Math.max(0, fitted), saved: Math.max(0, saved) };
   }, [grid, day, deferredEntries, date, timezone, nowTick]);
 
-  if (!grid || !canOptimize(day, grid) || !day) return null;
+  /** The row with the bell alone, where there is nothing to optimise. */
+  const bare = trailing ? (
+    <div className="border-border/60 planner-phone:pt-2 planner-phone:pb-1 flex shrink-0 justify-end border-t px-3 py-2">
+      {trailing}
+    </div>
+  ) : null;
+  if (!grid || !canOptimize(day, grid) || !day) return bare;
   // A day that has been walked is a record. Both buttons plan FOR the visitor,
   // and there is nothing left to plan — the engine refuses it too, so this is
   // about not drawing a control that could only answer "Passt schon so".
-  if (clock.phase === 'past') return null;
+  if (clock.phase === 'past') return bare;
 
   const missing = headlinersToAdd(day, entries, prefs);
   const skipped = headlinersSkipped(day, entries, prefs);
@@ -262,7 +276,7 @@ export function PlannerOptimizeActions({
   const movable = movableEntries(entries, clock);
 
   const canSort = movable.length >= 2;
-  if (!canSort && missing.length === 0) return null;
+  if (!canSort && missing.length === 0) return bare;
 
   const shownResult = result?.parkSlug === parkSlug && result?.date === date ? result : null;
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
@@ -412,12 +426,13 @@ export function PlannerOptimizeActions({
          `check:planner` asserts with an overhang of 12 px ABOVE them
          (PAR-482): 8 of this row's top padding, its border and 3 px of the
          band above, which stay clear of the headliner pills' own overhang.
-         Nothing reaches down, because the summary row's bell reaches up into
-         the 6 px under them. PAR-313 had kept the button itself at 44 and
+         Nothing reaches down, so the row closes on 4 px and the summary line
+         under it carries no target at all — the bell is the last item of this
+         row since PAR-482. PAR-313 had kept the button itself at 44 and
          taken the padding instead; the report since was that the CTAs were
          still too tall, so now the drawn button gives way and the target
          does not. */
-      className="border-border/60 planner-phone:pt-2 planner-phone:pb-1.5 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
+      className="border-border/60 planner-phone:pt-2 planner-phone:pb-1 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
     >
       <div className="flex flex-wrap items-center gap-1.5">
         {missing.length > 0 && (
@@ -425,24 +440,22 @@ export function PlannerOptimizeActions({
             type="button"
             onClick={() => attempt(missing)}
             data-planner-optimize-headliners=""
+            aria-label={t('optimize.headliners')}
             title={t('optimize.hint')}
             className={cn(
               'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
-              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE: the
-              // summary row's bell reaches up into this row's lower padding
+              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
               // (PAR-482). See `PHONE_TARGET_32_UP`.
               'planner-phone:py-0 planner-phone:px-2.5',
               PHONE_TARGET_32_UP
             )}
           >
-            <Crown className="size-3.5 shrink-0" aria-hidden="true" />
-            {/* The wizard's shorter label on a phone, where this button shares
-                its row with the optimise call to action: at 360 px the long one
-                pushed that onto a row of its own and took back the 48 px the
-                axis had just been given. The band right above names the rides,
-                so "all" is not lost. */}
+            <Crown className="planner-phone:size-4 size-3.5 shrink-0" aria-hidden="true" />
+            {/* The crown alone on a phone, where this button shares its row with
+                the optimise call to action and the notification bell (PAR-482):
+                the band right above it is the crown's own colour and lists the
+                rides it adds, and the name is the button's `aria-label`. */}
             <span className="planner-phone:hidden truncate">{t('optimize.headliners')}</span>
-            <span className="planner-wide:hidden truncate">{t('wizard.headliners.label')}</span>
           </button>
         )}
         {/* A call to action where the day would gain from it, the quiet button
@@ -460,8 +473,7 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
-              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE: the
-              // summary row's bell reaches up into this row's lower padding
+              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
               // (PAR-482). See `PHONE_TARGET_32_UP`.
               'planner-phone:py-0 planner-phone:px-2.5',
               PHONE_TARGET_32_UP,
@@ -491,6 +503,9 @@ export function PlannerOptimizeActions({
             )}
           </button>
         )}
+        {/* At the row's end whatever the buttons before it do; `ml-auto` for
+            the day whose optimise button is the quiet one and does not grow. */}
+        {trailing && <div className="ml-auto flex shrink-0 items-center">{trailing}</div>}
       </div>
       {/* Polite rather than assertive: it reports something the reader asked for
           and can see on the axis above, so it does not interrupt them. The undo

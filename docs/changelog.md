@@ -37,9 +37,10 @@ den oberen Rand und verdeckt den park.fan-Header.
 
 Alle Bedienzeilen im Handy-Sheet (Park, Datum, Headliner-Pillen, die beiden Knöpfe darunter, die
 Glocke) sind 32 statt 44 px hoch gezeichnet, die Trefferfläche bleibt 44 px über einen unsichtbaren
-Überstand in Leerraum (`lib/planner/touch-target.ts`). Die Überschrift des Headliner-Bands steht auf
-dem Handy vor den Pillen statt darüber. Kopfzeile 61 → 55 px, Band 96 → 55 px, Summenzeile 45 → 39
-px; die Achse hat bei 390×664 jetzt 312 px.
+Überstand in Leerraum (`lib/planner/touch-target.ts`). Die Glocke steht jetzt rechts in der
+Optimieren-Zeile, „Headliner einplanen" ist dort auf dem Handy nur die Krone, und die Summenzeile ist
+eine schlanke Textzeile. Kopfzeile 61 → 55 px, Band 96 → 76 px, Summenzeile 45 → 29 px; die Achse hat
+bei 390×664 jetzt 305 px.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
