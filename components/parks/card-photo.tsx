@@ -21,8 +21,9 @@ interface CardPhotoProps {
   alt: string;
   /** Desaturate while the park/ride is not operating (mirrors `pk-photo-closed`). */
   closed?: boolean;
-  /** Hide the photo below `sm` and show only the gradient placeholder — park cards collapse
-   *  on phones, so the (decorative) photo download is skipped there. */
+  /** Hide the photo below `sm` and show only the gradient placeholder — below `sm` park and
+   *  blog cards render a row instead, and ride cards collapse onto their panels, so the
+   *  (decorative) photo download is skipped there. */
   hideOnMobile?: boolean;
   /** Responsive `sizes` for the underlying next/image. Defaults to the 1/2/3-col grid. */
   sizes?: string;

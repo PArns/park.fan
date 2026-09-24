@@ -445,6 +445,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             breadcrumbs={breadcrumbs}
             currentPage={attractionCurrentPage}
             pinLastBreadcrumb
+            // The title card's park link is the way one level up on a phone.
+            phone="hidden"
           />
 
           <article itemScope itemType="https://schema.org/TouristAttraction">

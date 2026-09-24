@@ -394,14 +394,15 @@ export function trackPreferredSourceClicked(): void {
 
 /**
  * A ride's wait-time alert was saved — the conversion this feature lives or
- * dies on, not the dialog opening. Opening `RideAlertQuickDialog`/`RideAlertDialog`
+ * dies on, not the dialog opening. Opening `RideAlertDialog`
  * costs nothing to bill, so it stays untracked; a visitor who opens the
  * dialog and backs out answers no question a report needs, the way looking
  * at a favorite star and not pressing it does not get its own event either.
  *
  * ONE property: `source` tells the two entry points the plan asked for
  * ("kombiniert": a bell per ride card, plus a central button in the park
- * overview) apart, which is exactly the design decision a report on this
+ * overview) apart — both open the same dialog, which reports `card` when a
+ * bell opened it, which is exactly the design decision a report on this
  * event can revisit — worth the second billed row for the same reason
  * `trackPlannerOpened`'s `source` is.
  */

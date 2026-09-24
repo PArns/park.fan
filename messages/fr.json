@@ -491,7 +491,8 @@
     "categories": "Catégories",
     "popularParks": "Parcs populaires",
     "readingTime": "{minutes} min",
-    "nearby": "Près de chez vous"
+    "nearby": "Près de chez vous",
+    "preferences": "Préférences"
   },
   "theme": {
     "light": "Clair",
@@ -1714,7 +1715,6 @@
     "rideDialog": {
       "title": "Alertes de temps d’attente",
       "subtitle": "Pour {park} – nous vous prévenons dès que l’attente passe sous le seuil choisi.",
-      "soloSubtitle": "{park} – nous vous prévenons dès que l’attente passe sous le seuil choisi.",
       "loading": "Chargement…",
       "empty": "Aucune alerte pour ce parc pour l’instant.",
       "thresholdLabel": "sous {minutes} min",
@@ -1733,8 +1733,6 @@
       "close": "Fermer",
       "entry": "Alertes de temps d’attente",
       "entryWithCount": "Alertes de temps d’attente ({count})",
-      "removeShort": "Supprimer",
-      "save": "Enregistrer",
       "outOfSeason": "Hiver uniquement",
       "retired": "Démonté",
       "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
