@@ -209,6 +209,39 @@ test('the peak must start after the walk, inside two hours, before the closing h
   );
 });
 
+test('a day that runs past midnight is read on one axis', () => {
+  // Open 16:00, closes in the 01:00 hour: 22:00 and 23:00 are evening hours, not after the close.
+  const late = {
+    context: { openHour: 16, closeHour: 1, liveWaitTimes: { available: true } },
+    rides: [
+      curve('a', [
+        [21, 20],
+        [22, 45],
+        [23, 30],
+        [0, 60],
+        [1, 70],
+      ]),
+    ],
+  };
+  const evening = suggestNextRides({ rides: [row('a', 20)], day: late, nowMinute: 21 * 60 + 10 });
+  assert.deepEqual(
+    evening.map((s) => [s.laterHour, s.laterWait]),
+    [[22, 45]]
+  );
+  // At 23:10 midnight is inside the look-ahead; the 01:00 hour is the closing hour and is not.
+  const beforeMidnight = suggestNextRides({
+    rides: [row('a', 20)],
+    day: late,
+    nowMinute: 23 * 60 + 10,
+  });
+  assert.deepEqual(
+    beforeMidnight.map((s) => [s.laterHour, s.laterWait]),
+    [[0, 60]]
+  );
+  // After midnight the clock is on the same axis: at 00:10 only the closing hour is ahead.
+  assert.deepEqual(suggestNextRides({ rides: [row('a', 20)], day: late, nowMinute: 10 }), []);
+});
+
 test('equal gaps: the shorter walk first, at most three', () => {
   const out = suggestNextRides({
     rides: [

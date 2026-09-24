@@ -1,6 +1,7 @@
 import type { PlanDay } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { canRideAtHeight } from '@/lib/utils/rider-height';
+import { unfoldedCloseHour } from './day-grid';
 import { DETOUR_MAX, WALK_PARK_M_PER_MIN } from './leg';
 
 /**
@@ -81,10 +82,21 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
   if (forecastBySlug.size === 0) return [];
   // `closeHour` is the hour the closing time falls in, so that hour is not a
   // whole open hour: a queue there is one the visitor may not get into.
-  const closeHour = day.context.closeHour;
-  const horizon = nowMinute + NEXT_RIDE_LOOKAHEAD_MIN;
+  // A day that runs past midnight (16:00–01:00) is unfolded onto one axis first,
+  // the same way `day-grid.ts` does it: hours and the clock after midnight move
+  // to 24+, or every evening hour would compare as later than a 1 o'clock close.
+  const { openHour, closeHour: rawCloseHour } = day.context;
+  const wrapAt =
+    openHour != null && rawCloseHour != null && rawCloseHour < openHour ? openHour : null;
+  const unfold = (hour: number) => (wrapAt != null && hour < wrapAt ? hour + 24 : hour);
+  const closeHour =
+    openHour != null && rawCloseHour != null
+      ? unfoldedCloseHour(openHour, rawCloseHour)
+      : rawCloseHour;
+  const now = wrapAt != null && nowMinute < wrapAt * 60 ? nowMinute + 24 * 60 : nowMinute;
+  const horizon = now + NEXT_RIDE_LOOKAHEAD_MIN;
 
-  const out: NextRideSuggestion[] = [];
+  const out: (NextRideSuggestion & { peakAxis: number })[] = [];
   for (const ride of rides) {
     if (ride.status !== 'OPERATING') continue;
     if (ride.isCurrentlyInSeason === false) continue;
@@ -96,13 +108,18 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
     const walkMin = walkMinutesFrom(ride.distance);
     // "Later" starts once the visitor could be there; an hour that has begun
     // before they arrive is the hour they would queue in, not an alternative.
-    const arrival = nowMinute + walkMin;
+    const arrival = now + walkMin;
     let peak: { hour: number; wait: number } | null = null;
+    let peakAxis = 0;
     for (const h of forecast.hours) {
-      const start = h.hour * 60;
+      const axis = unfold(h.hour);
+      const start = axis * 60;
       if (start < arrival || start > horizon) continue;
-      if (closeHour != null && h.hour >= closeHour) continue;
-      if (!peak || h.wait > peak.wait) peak = h;
+      if (closeHour != null && axis >= closeHour) continue;
+      if (!peak || h.wait > peak.wait) {
+        peak = h;
+        peakAxis = axis;
+      }
     }
     if (!peak) continue;
 
@@ -116,6 +133,7 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
       laterWait: peak.wait,
       saving,
       walkMin,
+      peakAxis,
     });
   }
 
@@ -125,8 +143,8 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
     (a, b) =>
       b.saving - a.saving ||
       a.walkMin - b.walkMin ||
-      a.laterHour - b.laterHour ||
+      a.peakAxis - b.peakAxis ||
       a.name.localeCompare(b.name)
   );
-  return out.slice(0, NEXT_RIDE_LIMIT);
+  return out.slice(0, NEXT_RIDE_LIMIT).map(({ peakAxis: _axis, ...s }) => s);
 }
