@@ -206,15 +206,17 @@ export function LiveActivitySkeleton({ labels }: { labels: SectionHeadingLabels 
           {Array.from({ length: 5 }).map((_, i) => (
             <Card key={i} className="bg-muted/50">
               <CardHeader className="pb-2">
+                {/* h-7 and h-9 are the line boxes of the real `text-lg` title and `text-3xl`
+                    count; h-5 and h-8 left each card 12 px short. */}
                 <div className="flex items-center justify-between">
-                  <Skeleton className="h-5 w-28" />
+                  <Skeleton className="h-7 w-28" />
                   <Skeleton className="h-4 w-4" />
                 </div>
                 <Skeleton className="mt-1 h-3 w-16" />
               </CardHeader>
               <CardContent>
                 <div className="mb-2 flex items-baseline gap-2">
-                  <Skeleton className="h-8 w-12" />
+                  <Skeleton className="h-9 w-12" />
                   <Skeleton className="h-4 w-10" />
                 </div>
                 <Skeleton className="h-2 w-full rounded-full" />

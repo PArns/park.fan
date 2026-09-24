@@ -97,7 +97,10 @@ export async function ThreeSteps() {
           />
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        {/* The columns ask the page's width, like the MobileMore inside: with the trip planner
+            open a wide window can leave the page under 768 px, and a window-based
+            `md:grid-cols-3` then drew step 1 beside two empty columns. */}
+        <div className="grid gap-5 @min-[768px]/page:grid-cols-3">
           {/* 1 — choose a park. Literally the hero's field, not a lookalike: a
               search box that cannot search is the one thing a first visitor
               tries first, and a second implementation is a second thing that can
