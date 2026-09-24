@@ -740,13 +740,21 @@
 }
 
 /*
- * Planner: the empty day's drag, acted out (`PlannerDragDemo`, PAR-521). Seven poses over
- * 3.2 s: the hand comes down on the card (14 %), closes (20 %), lifts it (26 %), carries it
- * onto the slot (54 %), sets it down (62 %), opens (68 %) and draws back (80 %); the card
- * fades out on the slot and in at its start. Eased between poses, never cut, and the two
- * hands crossfade. Under reduced motion none of this runs and the scene holds its static
- * pose, the fist on the card.
+ * Planner: the empty day's drag, acted out (`PlannerDragDemo`, PAR-521). The screen in little,
+ * left to right: a ride list, the planner's edge, its axis. Seven poses over 3.6 s: the hand
+ * comes down on the middle ride (12 %), closes (18 %), lifts a copy (26 %), carries it across
+ * the edge (50 %), sets it on the slot as a block (58 %), opens (64 %) and draws back (78 %);
+ * the block fades out and the copy fades in at the list. Eased between poses, never cut, and
+ * the two hands and the row/block looks crossfade.
+ *
+ * The transforms outside the media query are the pose reduced motion holds: the fist carrying
+ * the card across the edge, which still says which way the gesture goes.
  */
+.planner-drag-card,
+.planner-drag-hand {
+  transform: translate(58px, -9px);
+}
+
 @keyframes planner-drag-card {
   0% {
     transform: translate(0, 0) scale(1);
@@ -758,110 +766,138 @@
     opacity: 1;
   }
   26% {
-    transform: translate(0, -3px) scale(1.1);
+    transform: translate(0, -3px) scale(1.06);
   }
-  54% {
-    transform: translate(32px, 13px) scale(1.1);
+  50% {
+    transform: translate(116px, -11px) scale(1.06);
   }
-  62%,
-  86% {
-    transform: translate(32px, 16px) scale(1);
+  58%,
+  84% {
+    transform: translate(116px, -8px) scale(1);
     opacity: 1;
   }
-  94%,
+  92%,
   100% {
-    transform: translate(32px, 16px) scale(1);
+    transform: translate(116px, -8px) scale(1);
     opacity: 0;
   }
 }
 
 @keyframes planner-drag-hand {
   0% {
-    transform: translate(8px, -10px);
+    transform: translate(10px, -14px);
     opacity: 0;
   }
   6% {
     opacity: 1;
   }
-  14%,
+  12%,
   20% {
     transform: translate(0, 0);
   }
   26% {
     transform: translate(0, -3px);
   }
-  54% {
-    transform: translate(32px, 13px);
+  50% {
+    transform: translate(116px, -11px);
   }
-  62%,
-  68% {
-    transform: translate(32px, 16px);
+  58%,
+  64% {
+    transform: translate(116px, -8px);
   }
-  80% {
-    transform: translate(36px, 0);
+  78% {
+    transform: translate(124px, -26px);
     opacity: 1;
   }
-  88%,
+  86%,
   100% {
-    transform: translate(36px, 0);
+    transform: translate(124px, -26px);
     opacity: 0;
   }
 }
 
 @keyframes planner-drag-open {
   0%,
-  14%,
-  68%,
+  12%,
+  64%,
   100% {
     opacity: 1;
   }
-  20%,
-  62% {
+  18%,
+  58% {
     opacity: 0;
   }
 }
 
 @keyframes planner-drag-closed {
   0%,
-  14%,
-  68%,
+  12%,
+  64%,
   100% {
     opacity: 0;
   }
-  20%,
-  62% {
+  18%,
+  58% {
+    opacity: 1;
+  }
+}
+
+@keyframes planner-drag-rowlook {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  62%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-blocklook {
+  0%,
+  55% {
+    opacity: 0;
+  }
+  62%,
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes planner-drag-slot {
   0%,
-  58%,
-  94%,
+  52%,
+  92%,
   100% {
     opacity: 0;
   }
-  64%,
-  86% {
+  58%,
+  84% {
     opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .planner-drag-card {
-    animation: planner-drag-card 3.2s ease-in-out infinite;
+    animation: planner-drag-card 3.6s ease-in-out infinite;
   }
   .planner-drag-hand {
-    animation: planner-drag-hand 3.2s ease-in-out infinite;
+    animation: planner-drag-hand 3.6s ease-in-out infinite;
   }
   .planner-drag-open {
-    animation: planner-drag-open 3.2s ease-in-out infinite;
+    animation: planner-drag-open 3.6s ease-in-out infinite;
   }
   .planner-drag-closed {
-    animation: planner-drag-closed 3.2s ease-in-out infinite;
+    animation: planner-drag-closed 3.6s ease-in-out infinite;
+  }
+  .planner-drag-rowlook {
+    animation: planner-drag-rowlook 3.6s ease-in-out infinite;
+  }
+  .planner-drag-blocklook {
+    animation: planner-drag-blocklook 3.6s ease-in-out infinite;
   }
   .planner-drag-slot {
-    animation: planner-drag-slot 3.2s ease-in-out infinite;
+    animation: planner-drag-slot 3.6s ease-in-out infinite;
   }
 }
 

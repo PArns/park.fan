@@ -1946,10 +1946,13 @@ to the side panel too, and several things were found on the way.
 - **The empty day says how to start, legibly.** The drag sentence was muted text
   a third of the way down, and the show pills ran through it. It is a card over
   the axis now. On the desktop it plays the gesture above the sentence
-  (`PlannerDragDemo`, keyframes `planner-drag-*` in `app/globals.css`): an open
-  hand comes down on a small ride card, closes, carries it onto a dashed slot on
-  a strip of axis, lets go and draws back, seven poses over 3.2 s, eased and with
-  the two hands crossfading; under reduced motion it holds the fist on the card.
+  (`PlannerDragDemo`, keyframes `planner-drag-*` in `app/globals.css`), as the
+  screen in little: the park page's ride list on the left, the planner's edge,
+  and its time axis with a dashed slot on the right. A hand takes the middle
+  ride, carries a copy across the edge and sets it on the slot, where the list
+  row turns into a planner block; seven poses over 3.6 s, eased, the two hands
+  and the two looks crossfading. Under reduced motion it holds the fist carrying
+  the card across the edge, which still says which way.
   A still grab icon said "hand" and nothing about where it goes. A pill whose
   line falls under the card is not drawn: the card is measured (it wraps
   differently per locale and width), and at its edge half a pill used to peek

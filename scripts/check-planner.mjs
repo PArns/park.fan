@@ -377,6 +377,26 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     .catch(() => {});
 }
 
+/**
+ * Read a value until it is the expected one or the time is up, and hand back the
+ * last reading either way.
+ *
+ * For an assertion on a state a transition arrives at. A fixed wait read the
+ * shows switch as broken on a loaded full run (3 → 3 lines at 500 ms) that
+ * reads 3 → 0 on its own, because the lines fade for 200 ms before they go
+ * (PAR-521) and on a busy machine the commit that starts the fade comes late.
+ * The state asserted does not change; only the moment it is read does.
+ */
+async function until(read, done, timeoutMs = 3000) {
+  const started = Date.now();
+  let value = await read();
+  while (!done(value) && Date.now() - started < timeoutMs) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    value = await read();
+  }
+  return value;
+}
+
 /** How long the edge tab is waited for before a step gives up on it. */
 const LAUNCHER_TIMEOUT_MS = 20_000;
 /**
@@ -3256,8 +3276,10 @@ step: {
   const badge = card.locator('[data-planner-drag-hint]');
   const restOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
   await card.hover();
-  await drag.waitForTimeout(300);
-  const hoverOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
+  const hoverOpacity = await until(
+    () => badge.evaluate((el) => getComputedStyle(el).opacity),
+    (opacity) => opacity === '1'
+  );
   check(
     'der Anfasser erscheint erst unter dem Zeiger',
     restOpacity === '0' && hoverOpacity === '1',
@@ -4142,8 +4164,7 @@ step: {
     );
 
     await chip.click();
-    await phoneShows.waitForTimeout(500);
-    const hidden = await linesShown();
+    const hidden = await until(linesShown, (count) => count === 0);
     check(
       'der Schalter nimmt die Show-Linien aus dem Raster',
       hidden === 0 && (await chip.getAttribute('data-planner-shows-button')) === 'off',
@@ -4151,8 +4172,7 @@ step: {
     );
 
     await chip.click();
-    await phoneShows.waitForTimeout(500);
-    const back = await linesShown();
+    const back = await until(linesShown, (count) => count === before);
     check(
       'und derselbe Schalter holt sie zurück',
       back === before && (await chip.getAttribute('data-planner-shows-button')) === 'on',
@@ -4829,9 +4849,14 @@ step: {
     `${winja?.height} px, Foto: ${winja?.photo}`
   );
 
-  // Every ride search row carries its photo.
+  // Every ride search row carries its photo. On the desktop the rows are
+  // drawn only while a query is typed (PAR-521), and „a" finds both rides.
+  await photos.locator(`${SHEET} [data-planner-ride-search] input`).first().fill('a');
+  await photos.waitForTimeout(400);
   const searchThumbs = await photos
-    .locator(`${SHEET} img[src*="taron"], ${SHEET} img[src*="black-mamba"]`)
+    .locator(
+      `${SHEET} [data-planner-ride-search] img[src*="taron"], ${SHEET} [data-planner-ride-search] img[src*="black-mamba"]`
+    )
     .count();
   check('die Suchzeilen tragen ihre Fotos', searchThumbs >= 2, `${searchThumbs}`);
 

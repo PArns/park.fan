@@ -15,7 +15,8 @@ Wiederholungsfahrten vor Bahnen, die noch niemand gefahren ist, und „Anpassen"
 mit der letzten Wahl. Eine Show-Linie, die durch eine Bahn oder einen Umstieg läuft, zeigt dort nur
 noch die Masken statt einer Namensleiste über dem Block, und mit der Maus auf einem Block treten
 alle Shows zurück. Ein leerer Tag zeigt den Drag-&-Drop-Hinweis als gut lesbare Karte, am Rechner
-mit einer kleinen Animation: Eine Hand greift eine Bahn und legt sie auf die Zeitachse. Die Knöpfe
+mit einer kleinen Animation: Eine Hand nimmt eine Bahn aus der Liste links, zieht sie über die
+Kante des Planers und legt sie rechts auf die Zeitachse. Die Knöpfe
 im Fuß sind gleich hoch, und im Planer blendet nichts mehr hart um: Show-Linien, der Ghost beim
 Ziehen, die Drop-Linie und die gedimmten Zustände gleiten oder blenden weich.
 
