@@ -2242,7 +2242,8 @@
       "more": "{count, plural, =1 {+1 altro} other {+# altri}}",
       "hidden": "Orari nascosti",
       "hide": "Nascondi gli orari",
-      "show": "Mostra gli orari"
+      "show": "Mostra gli orari",
+      "chip": "Spettacoli"
     },
     "warn": {
       "closedNow": "Al momento risulta chiusa.",
@@ -2270,6 +2271,7 @@
     },
     "optimize": {
       "headliners": "Pianifica tutte le attrazioni principali",
+      "headlinersShort": "Attrazioni di punta",
       "run": "Ottimizza la giornata",
       "running": "Riordino …",
       "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",

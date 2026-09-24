@@ -24,11 +24,10 @@ interface PlannerDayFootProps {
   entries: readonly PlannerEntry[];
   onAddFreeBlock: () => void;
   /**
-   * Drawn at the end of the optimise row. The phone's notification bell lives
-   * there since PAR-482 gave its old place, the grabber's own row, back to the
-   * day — and not in the summary row below it, because two rows of 44 px
-   * targets stacked cost the foot about 86 px, and the summary line without
-   * one is 29.
+   * Drawn at the end of the optimise row: the phone's show switch since
+   * PAR-482 (the notification bell before it went up beside the ×). Not in
+   * the summary row below, because two rows of 44 px targets stacked cost the
+   * foot about 86 px, and the summary line without one is 29.
    */
   actionsTrailing?: ReactNode;
 }
@@ -146,7 +145,7 @@ export function PlannerDayFoot({
             'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
             // A line of text and nothing to press, so on a phone it is only as
             // tall as the text wants (PAR-482: "im Footer die Abstände nach
-            // oben und unten verringern"): 29 px, where the bell made it 39.
+            // oben und unten verringern"): 29 px, where a bell in it made it 39.
             'planner-phone:py-1.5'
           )}
         >

@@ -173,23 +173,32 @@ export function PlannerMissingHeadliners({
           `planner-phone:` for the whole arrangement and not `max-sm:`, for the
           reason the rest of the sheet gives: the band rations HEIGHT, which a
           landscape phone is short of (PAR-76), not width. */}
-      <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:py-1 rounded-md border px-2 py-1.5">
+      <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:p-1 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           {heading}
         </p>
-        {/* The pills are 32 px on a phone and their 44 px target is an `after:`
-            reaching 6 px past the border above and below — `-inset-y-[7px]`,
+        {/* The pills are 26 px on a phone, so the 16 px thumbnail sits 4 px
+            from the pill's border above and below as it does on the left
+            (PAR-482: "die Headliner-Pillen sind viel zu hoch", then "oben zu
+            groß"). Their 44 px target is an `after:` reaching 12 px past the
+            border above and 6 below — `-top-[13px]` and `-bottom-[7px]`,
             since an absolute box is placed from the PADDING edge and the pill
-            has a 1 px border (PAR-482: "die Headliner-Pillen sind
-            viel zu hoch"). A scroller clips its children for hit-testing as
-            much as for paint, so the row carries 8 px of padding (2 more than
-            the overhang, or the clip edge takes a pixel off each side) and
+            has a 1 px border. Up is where the room is: the heading, which is
+            text. Down it stops 1 px into the band's own padding, clear of the
+            optimise buttons' reach 3 px into the same padding from below.
+            A scroller clips its children for hit-testing as much as for
+            paint, so the row carries 14 px of padding above and 8 below (one
+            more than each reach, or the clip edge takes a pixel off) and
             hands them back with negative margins: the pseudo-elements land
-            inside the scroller, and the band is no taller for them. Above is
-            the heading, which is text; below is the band's own padding.
+            inside the scroller, and the band is no taller for them.
             The heading keeps its own line on a phone as well: folded into
-            this row it took 150 of the 356 px the pills scroll in. */}
-        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-1 planner-phone:-mb-2 planner-phone:items-center planner-phone:py-2 mt-1 flex flex-wrap gap-1">
+            this row it took 150 of the 356 px the pills scroll in.
+
+            And on a phone the pills sit 4 px from the border on every side:
+            4 above to the heading, 4 below, 4 left and right (`p-1` on the
+            box). The box was `px-2` there, 8 px beside the pills and 4 above
+            and below them, and the report was that the uneven gaps showed. */}
+        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-2.5 planner-phone:-mb-2 planner-phone:items-center planner-phone:pt-3.5 planner-phone:pb-2 mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (
             <button
               key={ride.attractionSlug}
@@ -227,7 +236,7 @@ export function PlannerMissingHeadliners({
                   }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:h-8 planner-phone:max-w-56 planner-phone:shrink-0 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-[7px] planner-phone:after:content-[''] planner-wide:cursor-grab planner-wide:active:cursor-grabbing relative flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:h-[26px] planner-phone:max-w-56 planner-phone:shrink-0 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-top-[13px] planner-phone:after:-bottom-[7px] planner-phone:after:content-[''] planner-wide:cursor-grab planner-wide:active:cursor-grabbing relative flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
             >
               {/* The ride's picture, at 16 px. A pill was a word in a rounded
                   box, which is what a filter chip looks like — and these are

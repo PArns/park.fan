@@ -2242,7 +2242,8 @@
       "more": "{count, plural, =1 {+1 weitere} other {+# weitere}}",
       "hidden": "Spielzeiten ausgeblendet",
       "hide": "Spielzeiten ausblenden",
-      "show": "Spielzeiten einblenden"
+      "show": "Spielzeiten einblenden",
+      "chip": "Shows"
     },
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",
@@ -2270,6 +2271,7 @@
     },
     "optimize": {
       "headliners": "Alle Headliner einplanen",
+      "headlinersShort": "Headliner planen",
       "run": "Tag optimieren",
       "running": "Sortiert …",
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",

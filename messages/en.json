@@ -2242,7 +2242,8 @@
       "more": "{count, plural, =1 {+1 more} other {+# more}}",
       "hidden": "Showtimes hidden",
       "hide": "Hide showtimes",
-      "show": "Show showtimes"
+      "show": "Show showtimes",
+      "chip": "Shows"
     },
     "warn": {
       "closedNow": "Reporting closed right now.",
@@ -2270,6 +2271,7 @@
     },
     "optimize": {
       "headliners": "Plan every headliner",
+      "headlinersShort": "Plan headliners",
       "run": "Optimise the day",
       "running": "Sorting …",
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",

@@ -31,16 +31,18 @@ iOS-Kurve (400 ms). Bewegt wird über `bottom` und `height`, nie per `transform`
 des Glas-Hintergrunds erhalten bleibt.
 
 Die Griff-Zeile ist in die Kopfzeile gewandert: Der Griff liegt als schmale Leiste über Park und
-Datum, das × steht rechts in dieser Zeile, die Glocke am Ende der Summenzeile. 61 statt 89 px. Bei
+Datum, das × steht rechts in dieser Zeile, die Glocke daneben. 61 statt 89 px. Bei
 knapper Fensterhöhe (unter 800 px, also auf jedem iPhone in Safari) öffnet das Sheet bis 12 px unter
 den oberen Rand und verdeckt den park.fan-Header.
 
 Alle Bedienzeilen im Handy-Sheet (Park, Datum, Headliner-Pillen, die beiden Knöpfe darunter, die
 Glocke) sind 32 statt 44 px hoch gezeichnet, die Trefferfläche bleibt 44 px über einen unsichtbaren
 Überstand in Leerraum (`lib/planner/touch-target.ts`). Die Glocke steht jetzt rechts in der
-Optimieren-Zeile, „Headliner einplanen" ist dort auf dem Handy nur die Krone, und die Summenzeile ist
-eine schlanke Textzeile. Kopfzeile 61 → 55 px, Band 96 → 76 px, Summenzeile 45 → 29 px; die Achse hat
-bei 390×664 jetzt 305 px.
+Kopfzeile neben dem ×, „Headliner planen" steht in der Optimieren-Zeile als kurzer zweizeiliger
+Text, und die Summenzeile ist eine schlanke Textzeile. Das Show-Band über der Achse fällt auf dem Handy
+weg; sein Schalter sind dort die Theatermasken am Ende der Optimieren-Zeile. Die Headliner-Pillen sind
+26 px hoch, „Tag optimieren" ohne Ersparnis ist getönt statt grau. Kopfzeile 61 → 55 px, Band 96 → 70 px, Summenzeile 45 → 29 px; die Achse hat
+bei 390×664 jetzt 308 px, bei 360×640 270 px.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 

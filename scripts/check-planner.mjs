@@ -3975,17 +3975,17 @@ step: {
     bandText.slice(0, 120)
   );
 
-  // The switch says something different on each screen, and only the phone's
-  // half is a geometry claim: there the strip IS what is short, so switching the
-  // shows off has to give the axis its row back rather than swap the sentence in
-  // it. The desktop above keeps its strip in both states, which the two
-  // assertions before this one already read off the same element.
+  // The phone draws no show band since PAR-482: the strip was `sticky` over the
+  // axis and 44 px tall there to carry its switch, which is 44 px of day
+  // covered for a sentence the grid already says at every show. The switch is a
+  // button at the end of the foot's optimise row instead, and what this asserts
+  // is the pair: no band on screen, and a button that takes the grid's show
+  // lines away and brings them back.
   //
-  // Asserted on the same stubbed five shows as the desktop, because the strip
-  // only collapses where there is a switch on it: over a park the API answered
-  // with no shows the strip reads „keine Spielzeiten", carries no switch, and
-  // must not collapse — a page without the stub would take that branch and grade
-  // nothing (📚 G-72).
+  // Asserted on the same stubbed five shows as the desktop, because the button
+  // only renders where there is something to switch: over a park the API
+  // answered with no shows there is none, and a page without the stub would
+  // take that branch and grade nothing (📚 G-72).
   {
     const phoneShows = await browser.newPage({
       viewport: { width: 390, height: 844 },
@@ -4003,63 +4003,36 @@ step: {
     }
     await phoneShows.waitForTimeout(2500);
 
-    const bandHeight = () =>
-      phoneShows
-        .locator(`${SHEET} [data-planner-show-band]`)
-        .evaluate((el) => Math.round(el.getBoundingClientRect().height));
-    const phoneToggle = phoneShows.locator(`${SHEET} [data-planner-shows-toggle]`);
+    const bandShown = await phoneShows.locator(`${SHEET} [data-planner-show-band]:visible`).count();
+    check('auf dem Telefon steht kein Show-Band', bandShown === 0, `${bandShown} sichtbar`);
 
-    // The anchor the collapse is measured against: without it a strip that never
-    // rendered would pass the assertion below for the wrong reason.
-    const shownHeight = await bandHeight();
+    const chip = phoneShows.locator(`${SHEET} [data-planner-shows-button]:visible`);
+    const linesShown = () => phoneShows.locator(`${SHEET} [data-planner-show]:visible`).count();
+    const before = await linesShown();
     check(
-      'auf dem Telefon steht der Streifen, solange die Shows an sind',
-      shownHeight >= 40,
-      `${shownHeight} px`
+      'der Show-Schalter sitzt in der Optimieren-Zeile, und die Linien stehen',
+      (await chip.count()) === 1 &&
+        (await chip.getAttribute('data-planner-shows-button')) === 'on' &&
+        before >= 2,
+      `${await chip.count()} Schalter · ${before} Linien`
     );
 
-    await phoneToggle.click();
+    await chip.click();
     await phoneShows.waitForTimeout(500);
-    const hiddenHeight = await bandHeight();
+    const hidden = await linesShown();
     check(
-      'ausgeblendet gibt der Streifen dem Telefon seine Zeile zurück',
-      hiddenHeight === 0,
-      `${shownHeight} px → ${hiddenHeight} px`
+      'der Schalter nimmt die Show-Linien aus dem Raster',
+      hidden === 0 && (await chip.getAttribute('data-planner-shows-button')) === 'off',
+      `${before} → ${hidden} Linien`
     );
 
-    // The corner it claims in exchange. Collapsed, the switch is the only thing
-    // left of the strip and it hangs over the grid's own blocks, so the trade is
-    // 44 × 44 of cover against the 45 px × full width it gave up — worth pinning
-    // as a box AND as ownership, because a control that is drawn there and does
-    // not answer there is the worse half of both states.
-    const corner = await phoneShows
-      .locator(`${SHEET} [data-planner-shows-toggle]`)
-      .evaluate((el) => {
-        const box = el.getBoundingClientRect();
-        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
-        return { w: Math.round(box.width), h: Math.round(box.height), owns: el.contains(hit) };
-      });
-    check(
-      'der freistehende Schalter ist 44 px groß und gehört ihm auch',
-      corner.w === 44 && corner.h === 44 && corner.owns,
-      `${corner.w}×${corner.h}, Mitte ${corner.owns ? 'trifft ihn' : 'trifft etwas anderes'}`
-    );
-
-    // The way back. A `click()` fails on a control something else intercepts, so
-    // this is also the assertion that the freestanding switch is reachable where
-    // it hangs over the grid.
-    check(
-      'und der Schalter bleibt der einzige und ist antippbar',
-      (await phoneToggle.count()) === 1 &&
-        (await phoneShows.locator(`${SHEET} [data-planner-show-band]`).count()) === 1
-    );
-    await phoneToggle.click();
+    await chip.click();
     await phoneShows.waitForTimeout(500);
-    const backHeight = await bandHeight();
+    const back = await linesShown();
     check(
-      'und derselbe Schalter holt den Streifen zurück',
-      backHeight === shownHeight,
-      `${hiddenHeight} px → ${backHeight} px`
+      'und derselbe Schalter holt sie zurück',
+      back === before && (await chip.getAttribute('data-planner-shows-button')) === 'on',
+      `${hidden} → ${back} Linien`
     );
 
     await phoneShows.close();

@@ -7,6 +7,8 @@ import { CalendarPlus, ChevronDown, Columns2, Plus, X } from 'lucide-react';
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerPartyChips } from './planner-party-chips';
+import { PlannerShowsButton } from './planner-show-band';
+import { dayHasShowLines } from '@/lib/planner/shows';
 import { PlannerDayColumn } from './planner-day-column';
 import { PlannerColumnHead } from './planner-column-head';
 import { PlannerRideSearch } from './planner-ride-search';
@@ -1150,7 +1152,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               window this branch calls a phone the button is gone entirely. */}
           {/* `relative`, so the row paints over the handle behind it and its
               controls take their own presses. */}
-          <div className={cn('relative flex items-center gap-2', !isPhone && 'pr-7')}>
+          <div
+            className={cn(
+              'relative flex items-center gap-2',
+              // 4 px between the phone's controls, not 8: the row holds the
+              // park, the day picker, the bell and the ×, and every pixel of
+              // gap comes out of the park name (PAR-482).
+              isPhone ? 'gap-1' : 'pr-7'
+            )}
+          >
             {/* Radix wants a title and a phone has no room for one. 45 px went
                 to this row and 45 to the column's own head, 90 px of a 776 px
                 sheet spent saying "Tagesplaner" over a park name and a date —
@@ -1378,16 +1388,29 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
                 The last control of this row rather than `SheetContent`'s own
                 corner slot, which would sit on top of the day picker's `›` (what
-                PAR-188 was about). Measured at 390 px the row is 366: the day
-                picker takes 170 with its calendar icon folded away on a phone,
-                this 44, and the park name keeps 136. */}
+                PAR-188 was about). Drawn 32 px wide, so the disc sits 12 px
+                from the sheet's edge like the park button on the left, and it
+                reaches 44 × 44: 6 px up and down (`PHONE_TARGET_32`) and 12 px
+                right, through the row's padding to the edge. The row at 360 px
+                is 336: the day picker 148, the bell and this 32 each, three
+                4 px gaps, and the park name keeps the rest. */}
+            {/* The notification bell, beside the × (PAR-482). It has been
+                the grabber's row, the summary line and the optimise row; up
+                here it is with the other control that is about the panel
+                rather than about the day, and the optimise row gets the show
+                switch. Only with something planned, like the desktop's row:
+                switching it on uploads the plan, and an empty one is nothing
+                to be told about. What it costs is the park name's room — see
+                the measurement on the × below. */}
+            {isPhone && park && activeEntries.length > 0 && <PlannerPushToggle variant="icon" />}
             {isPhone && (
               <SheetClose
                 data-planner-sheet-close=""
                 aria-label={t('sheet.close')}
                 className={cn(
-                  'group text-muted-foreground hover:text-foreground flex w-11 shrink-0 items-center justify-center',
-                  PHONE_TARGET_32
+                  'group text-muted-foreground hover:text-foreground flex w-8 shrink-0 items-center justify-center',
+                  PHONE_TARGET_32,
+                  'planner-phone:after:-right-3'
                 )}
               >
                 {/* The round grey × of an iOS sheet: a 28 px disc drawn inside
@@ -1736,11 +1759,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       prefs={prefs}
                       entries={activeEntries}
                       onAddFreeBlock={addFreeBlock}
-                      /* The bell, at the end of the optimise row (PAR-482). It
-                         sat in the grabber's row, which is gone; the foot is
-                         where the day is acted on, and the bell is about this
-                         day. See `actionsTrailing`. */
-                      actionsTrailing={<PlannerPushToggle variant="icon" />}
+                      /* The phone's show switch, at the end of the optimise
+                         row, because the phone draws no show band (PAR-482).
+                         Only for a day that has shows: the row is drawn for
+                         its trailing control alone where there is nothing to
+                         optimise, and a switch that renders nothing would
+                         leave that row empty. See `actionsTrailing`. */
+                      actionsTrailing={dayHasShowLines(day) ? <PlannerShowsButton /> : undefined}
                     />
                   </>
                 )}
@@ -1758,10 +1783,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 nothing at all where push cannot work — see the component.
 
                 `!isPhone` since PAR-313: on a phone the same component is the
-                bell at the end of the foot's optimise row (PAR-482; it sat in the
-                grabber's row before that row was folded into the header), and two
-                copies would be two `[data-planner-push]` for a selector to pick
-                the wrong one of — and two `usePushSubscription()`, i.e. two
+                bell beside the × in the header row (PAR-482), and two copies
+                would be two `[data-planner-push]` for a selector to pick the
+                wrong one of — and two `usePushSubscription()`, i.e. two
                 `/api/push` requests and two states free to disagree about whether
                 it is on. */}
                 {!isPhone && activeEntries.length > 0 && (

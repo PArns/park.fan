@@ -687,6 +687,7 @@ export function PlannerDayColumn({
                 isToday={isToday}
                 visible={showsVisible}
                 onToggle={plannerShowsVisible.toggle}
+                className="planner-phone:hidden"
               />
             )}
             {grid ? (

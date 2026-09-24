@@ -1,4 +1,4 @@
-import type { PlanDayShow, PlanDayShowSource } from '@/lib/api/types';
+import type { PlanDay, PlanDayShow, PlanDayShowSource } from '@/lib/api/types';
 import { unfoldedCloseHour } from './day-grid';
 
 /**
@@ -115,6 +115,19 @@ export function showLinesFor(
     }
   }
   return out.sort((a, b) => a.minute - b.minute);
+}
+
+/**
+ * Whether the grid draws any show on this day: the day's shows within its
+ * hours, asked exactly as the grid asks. The phone's show switch renders only
+ * where this is true, and so does the row it sits in — a switch over an empty
+ * set does nothing, and a row drawn for it alone would be an empty row.
+ */
+export function dayHasShowLines(day: PlanDay | null | undefined): boolean {
+  if (!day) return false;
+  return (
+    showLinesFor(day.shows, showDayHours(day.context.openHour, day.context.closeHour)).length > 0
+  );
 }
 
 /**

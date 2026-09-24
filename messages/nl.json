@@ -2242,7 +2242,8 @@
       "more": "{count, plural, =1 {+1 meer} other {+# meer}}",
       "hidden": "Speeltijden verborgen",
       "hide": "Speeltijden verbergen",
-      "show": "Speeltijden tonen"
+      "show": "Speeltijden tonen",
+      "chip": "Shows"
     },
     "warn": {
       "closedNow": "Meldt nu gesloten.",
@@ -2270,6 +2271,7 @@
     },
     "optimize": {
       "headliners": "Alle headliners inplannen",
+      "headlinersShort": "Headliners plannen",
       "run": "Dag optimaliseren",
       "running": "Sorteren …",
       "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",

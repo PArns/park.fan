@@ -51,10 +51,11 @@ interface PlannerOptimizeActionsProps {
   timezone?: string;
   prefs?: PlannerDayPrefs;
   /**
-   * Drawn at the end of the button row: the phone's notification bell
-   * (PAR-482). Where there are no buttons to draw, the row is drawn for it
-   * alone, so the bell never depends on the day being one that can be
-   * optimised.
+   * Drawn at the end of the button row: the phone's show switch (PAR-482).
+   * Where there are no buttons to draw, the row is drawn for it alone, so the
+   * switch never depends on the day being one that can be optimised. Pass it
+   * only where it renders something: the row cannot tell an element that
+   * renders `null` from one that does not, and would be drawn empty.
    */
   trailing?: ReactNode;
 }
@@ -257,7 +258,7 @@ export function PlannerOptimizeActions({
     return { fitted: Math.max(0, fitted), saved: Math.max(0, saved) };
   }, [grid, day, deferredEntries, date, timezone, nowTick]);
 
-  /** The row with the bell alone, where there is nothing to optimise. */
+  /** The row with its trailing control alone, where there is nothing to optimise. */
   const bare = trailing ? <OptimizeRow marked={false} trailing={trailing} /> : null;
   if (!grid || !canOptimize(day, grid) || !day) return bare;
   // A day that has been walked is a record. Both buttons plan FOR the visitor,
@@ -426,26 +427,38 @@ export function PlannerOptimizeActions({
               type="button"
               onClick={() => attempt(missing)}
               data-planner-optimize-headliners=""
-              aria-label={t('optimize.headliners')}
               title={t('optimize.hint')}
               className={cn(
                 'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
                 // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
-                // (PAR-482). See `PHONE_TARGET_32_UP`.
-                'planner-phone:py-0 planner-phone:px-2.5',
+                // (PAR-482). See `PHONE_TARGET_32_UP`. `w-min` on a phone: as
+                // wide as its longest word, so the label always takes two lines
+                // like the call to action beside it, and the call to action
+                // grows into the rest. A box does not shrink to text that has
+                // wrapped, so without it the button kept the width the row
+                // left it and carried empty space beside "Headliner / planen".
+                // Never below the longest word: with `min-w-0` it went below,
+                // and French lost the "s" of "Attractions".
+                'planner-phone:py-0 planner-phone:px-2.5 planner-phone:w-min',
                 PHONE_TARGET_32_UP
               )}
             >
-              <Crown className="planner-phone:size-4 size-3.5 shrink-0" aria-hidden="true" />
-              {/* The crown alone on a phone, where this button shares its row with
-                the optimise call to action and the notification bell (PAR-482):
-                the band right above it is the crown's own colour and lists the
-                rides it adds, and the name is the button's `aria-label`. */}
+              <Crown className="size-3.5 shrink-0" aria-hidden="true" />
+              {/* A shorter label on a phone, where this button shares its row
+                  with the call to action and the show switch (PAR-482), and it may
+                  take two lines there like the call to action does, which is
+                  what 32 px holds at this size. It was the crown alone for a
+                  while; nobody read the crown as "add the headliners". The
+                  hidden span is `display: none`, so the button's name is
+                  whichever label is on screen. */}
               <span className="planner-phone:hidden truncate">{t('optimize.headliners')}</span>
+              <span className="planner-wide:hidden line-clamp-2 text-left leading-tight">
+                {t('optimize.headlinersShort')}
+              </span>
             </button>
           )}
-          {/* A call to action where the day would gain from it, the quiet button
-            it always was where it would not — see `gain`. Filled with the
+          {/* A call to action where the day would gain from it, a tinted button
+            like the headliner one where it would not — see `gain`. Filled with the
             primary colour and stretched over the rest of the row, so it is
             the one thing in the foot that reads as "press me", and it names
             what the press is worth in the same words the result line will use
@@ -469,7 +482,11 @@ export function PlannerOptimizeActions({
                     // headliner label: `flex-[1_0_auto]` never shrinks below its
                     // content, `max-w-full` keeps it inside the row.
                     'bg-primary text-primary-foreground hover:bg-primary/90 max-w-full flex-[1_0_auto] justify-center shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                  : // The headliner button's tint where there is nothing to
+                    // gain, so the row reads as one set of buttons rather than
+                    // a button and a stray word (PAR-482: "gleiche Farbe,
+                    // wenn's nix zu optimieren gibt"). It still sorts the day.
+                    'bg-primary/10 text-primary hover:bg-primary/20 font-medium'
               )}
             >
               <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />
@@ -586,14 +603,13 @@ export function PlannerOptimizeActions({
  * The row's frame, shared by the day that can be optimised and the day that
  * cannot.
  *
- * One frame and not two because of what `trailing` is on a phone: the
- * notification bell, whose `usePushSubscription()` asks `/api/push` when it
- * mounts. The row is drawn for the bell alone until the day's plan has
- * arrived, and when the buttons joined it the bell used to move from a bare
- * `div` into this one — a different place in the tree, so React unmounted it,
- * mounted a new one, and the bell vanished for the length of a second request
- * (measured: gone at 4160 ms, back at 4677 with the plan held for 4 s). Here
- * it is the second child of the same element in both cases.
+ * One frame and not two, so `trailing` keeps its place in the tree when the
+ * buttons arrive or go. It was two once, a bare `div` and this one, and the
+ * control moved between them: React unmounted it and mounted a new one. With
+ * the notification bell there, whose `usePushSubscription()` asks `/api/push`
+ * on mount, the bell vanished for the length of a second request (measured:
+ * gone at 4160 ms, back at 4677 with the plan held for 4 s). Here it is the
+ * second child of the same element in both cases.
  *
  * `data-planner-optimize` only where there is something to press, which is
  * what `check:planner` counts it for.
@@ -603,7 +619,7 @@ export function PlannerOptimizeActions({
  * this row's top padding, its border and 3 px of the band above, which stay
  * clear of the headliner pills' own overhang. Nothing reaches down, so the row
  * closes on 4 px and the summary line under it carries no target at all — the
- * bell is the last item of this row since PAR-482. PAR-313 had kept the button
+ * trailing control is the last item of this row since PAR-482. PAR-313 had kept the button
  * itself at 44 and taken the padding instead; the report since was that the
  * CTAs were still too tall, so now the drawn button gives way and the target
  * does not.
@@ -624,7 +640,12 @@ function OptimizeRow({
       data-planner-optimize={marked ? '' : undefined}
       className="border-border/60 planner-phone:pt-2 planner-phone:pb-1 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
     >
-      <div className="flex flex-wrap items-center gap-1.5">
+      {/* One line on a phone, always: a wrapping flex row never shrinks an
+          item before it breaks the line, so at 360 px the trailing control went to a
+          second line (83 px instead of 45) rather than the headliner label
+          taking two. With `nowrap` the headliner button is the one that gives
+          way, the call to action and the trailing control keep their size. */}
+      <div className="planner-phone:flex-nowrap flex flex-wrap items-center gap-1.5">
         {buttons}
         {/* At the row's end whatever the buttons before it do; `ml-auto` for
             the day whose optimise button is the quiet one and does not grow,

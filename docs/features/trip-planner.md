@@ -268,40 +268,33 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
-**They switch off, and on a phone the strip goes with them.** Shows are the one
-thing on the grid nobody put there — a plan is what somebody dragged in, and four
-dotted rules across it are context. The switch lives in the band
-(`lib/planner/shows-visible.ts`, an external store on `localStorage` so the
-decision survives a reload) and hides the rules. It renders only where there is
-something to switch: on a day the API answered with no shows, a control that
-toggles an empty set is a control that does nothing.
+**They switch off, and a phone has no strip at all.** Shows are the one thing on
+the grid nobody put there — a plan is what somebody dragged in, and four dotted
+rules across it are context. The switch (`lib/planner/shows-visible.ts`, an
+external store on `localStorage` so the decision survives a reload) hides the
+rules. It renders only where there is something to switch: on a day the API
+answered with no shows, a control that toggles an empty set is a control that
+does nothing.
 
-What the switch may take away depends on which screen is asking, and the reason
-is that only one of them is short. On a **desktop** the strip stays and says
-„Spielzeiten ausgeblendet": 22 px is not what is missing there, and a strip that
-vanished would take the switch with it. On a **phone** it is 45 px of a **776 px**
-sheet (measured at 390 × 844 — the sheet is `max-sm:max-h-[92svh]`, so the 716
-that older notes in this feature quote is the 85svh figure), so below `sm` the
-strip collapses to `h-0` — rule, glass, symbol and sentence with it — and the
-switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
-Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
-and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
-a switch rather than move somewhere else: the panel's header row has 119 px left
-for the park name at 390 px and the name measures 80 of them (63 until PAR-188
-dropped the ×; see the arithmetic in `planner-flyout.tsx`, and PAR-202 for what
-the 56 px it gave back are worth), so a fourth control there comes out of the
-park name — and a row of its own in `PlannerDayFoot` would have cost about 35 px
-of chrome to give 45 back. It costs the corner: 44 × 44 of grid under a visible control, against
-44 px across the full width before.
+On a **desktop** the switch lives in the band, and the band stays when the shows
+are off and says „Spielzeiten ausgeblendet": 22 px is not what is missing there,
+and a strip that vanished would take the switch with it.
 
-That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`
-flag), never in a `useMediaQuery` branch — this component is also server-rendered
-by the guide's demos, where the hook's snapshot would ship the phone's markup to
-every desktop and then delete it. And the collapse is gated on the switch
-EXISTING: `visible` is the panel's state rather than the day's, so it can be
-false over a park with no shows, where the strip reads „keine Spielzeiten" and
-carries no switch. Collapsing that one would remove a strip and leave nothing to
-bring it back with.
+On a **phone** the band is not drawn (PAR-482, „lass uns das Showband ausblenden").
+It used to collapse to its switch when the shows were off and stand 44 px tall
+when they were on, `sticky` at the top of the axis' scroller, so the default
+state covered 44 px of the day with a sentence the grid already says at every
+show. The planner passes it `planner-phone:hidden`; the trip-planner page's demos
+render it without a switch and are unaffected. The switch is `PlannerShowsButton`
+there, the theatre masks at the end of the foot's optimise row — the mark every
+show line in the grid carries, so the button looks like what it hides — with
+`aria-pressed` and the primary tint for on. It was a chip „Shows" in the context
+band first, which pushed that band's chip row onto a second line at 390 px (60 →
+80 px); the optimise row had room once the notification bell went up beside the ×.
+The flyout passes it only for a day with shows (`dayHasShowLines` in
+`lib/planner/shows.ts`, asked exactly as the grid asks), because the row is drawn
+for its trailing control alone where there is nothing to optimise, and a switch
+over nothing would leave that row empty.
 
 ## The photo behind the panel sits in a NEGATIVE layer
 
@@ -1798,9 +1791,13 @@ phone spent 89 px on chrome before the park name. The pill now sits in a 16 px s
 at the top of the sheet header, and the grabber is a button laid BEHIND the header
 (`absolute inset-0`, the row painting over it), so a press lands on it wherever no
 control is — the strip, the row's side padding — and a control is never under it. The
-× is the last control of the park/date row (the day picker folds its calendar icon
-away on a phone to pay for it: at 390 px the park name keeps 115 px), and the bell
-went to the end of the optimise row (see below). 61 px instead of 89. On a window under
+× is the last control of the park/date row with the bell beside it (the day picker
+folds its calendar icon away on a phone, its chevrons are 32 px wide and the row's
+gaps 4 px to pay for them: the park name keeps 127 px at 390 and 97 at 360). The × is
+drawn 32 px wide so its disc sits 12 px from the sheet's edge, like the park button
+on the left, and its target reaches through the row's padding to the edge. The bell
+was at the end of the optimise row for a while; it went up when the shows switch
+needed that place (see the section on shows). 61 px instead of 89. On a window under
 50rem tall — which is every iPhone in Safari, whose visible page is 660–750 px — `large`
 opens over the site header too, 12 px under the top edge (the `@media` twin of
 `--planner-sheet-large`), and `full` is not offered there, being a
@@ -1823,23 +1820,39 @@ above. Where the overhangs go is the design:
 - the header row's reach 6 px up into the grabber's 16 px strip (the pill sits in the
   10 px above that, where a press still lands on the grabber) and 6 px down into the
   header's `pb-1.5`;
-- the pills reach into the band's own padding. A scroller clips its children for
-  hit-testing as well as for paint, so the pill row carries 8 px of padding and hands
-  it back with negative margins, and an absolute box is placed from the padding edge,
-  so the bordered pill needs `-inset-y-[7px]` to reach 6 px past its border. The band's
-  heading keeps its own line: folded into the pill row it took 150 of the 356 px the
-  pills scroll in, which left two of them on screen;
-- the two optimise buttons and the bell beside them reach only UP, 12 px, through their
-  row's top padding and 3 px into the band, stopping short of the pills' reach. The bell
-  moved into this row from the summary line, because two stacked rows of 44 px targets
-  cost the foot about 86 px however the padding is shared out; the summary line under
-  it carries nothing to press and is as tall as its text. To fit three controls in the
-  row on a phone, "Headliner einplanen" is its crown alone there, named by its
-  `aria-label` (the band right above it is the crown's colour and lists the rides it
-  adds). On a day with nothing to optimise the row is drawn for the bell alone.
+- the pills are the exception: drawn 26 px, so the 16 px thumbnail sits 4 px from
+  the pill's border above and below as it does on the left ("oben zu groß"), and the
+  box around them keeps 4 px on every side of the pills too. Their reach goes 12 px
+  up into the heading, which is text, and 6 px down, 1 px into the band's padding and
+  clear of the optimise buttons' reach from below. A scroller clips its children for
+  hit-testing as well as for paint, so the pill row carries 14 px of padding above and
+  8 below and hands it back with negative margins, and an absolute box is placed from
+  the padding edge, so the bordered pill needs `-top-[13px]` and `-bottom-[7px]`. The
+  band's heading keeps its own line: folded into the pill row it took 150 of the
+  356 px the pills scroll in, which left two of them on screen;
+- the two optimise buttons and the shows switch beside them reach only UP, 12 px,
+  through their row's top padding and 3 px into the band, stopping short of the pills'
+  reach. A third 44 px row of targets under this one would cost the foot about 43 px
+  however the padding is shared out, so the summary line under it carries nothing to
+  press and is as tall as its text. The shows switch is drawn 36 px wide and reaches
+  4 px to each side, into the row's gap and its padding. On a phone the headliner
+  button says a shorter label (`optimize.headlinersShort`, „Headliner planen") and is
+  `w-min`: as wide as its longest word, so the label always takes two lines like the
+  call to action beside it and the call to action grows into the rest (a box does not
+  shrink to text that has wrapped). The row does not wrap on a phone either: a
+  wrapping flex row breaks the line before it shrinks anything, and at 360 px that
+  put the last control on a line of its own. It was the crown alone for a while; the
+  report was that nobody reads a crown as "add the headliners". Where there is nothing
+  to gain, "Tag optimieren" is tinted like the headliner button rather than grey. All
+  six locales fit at 360 px with the row at 45. On a day with nothing to optimise the
+  row is drawn for the shows switch alone, and only on a day that has shows
+  (`dayHasShowLines`), in the same frame (`OptimizeRow`), so the switch keeps its
+  place in the tree when the buttons arrive.
 
-Measured with `elementFromPoint` on every one of them: 32 + 6 + 6 or 32 + 12 + 0, i.e. 44. Header 61 → 55 px, band 96 → 76 px, the optimise row 53 → 45 px, the summary line
-45 → 29 px. The axis is 305 px at 390 × 664, 267 px at 360 × 640 and 423 px at
+Measured with `elementFromPoint` on every one of them: 32 + 6 + 6, 32 + 12 + 0 or, for
+the pills, 26 + 12 + 6, i.e. 44. Header 61 → 55 px, band 96 → 70 px, the optimise row
+53 → 45 px, the summary line 45 → 29 px, and the show band, 44 px over the top of the
+axis, gone. The axis is 308 px at 390 × 664, 270 px at 360 × 640 and 425 px at
 390 × 844.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
