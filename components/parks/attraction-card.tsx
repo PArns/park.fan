@@ -71,6 +71,18 @@ interface AttractionCardProps {
    * without this prop, via the fallback below.
    */
   parkName?: string;
+  /**
+   * Below `sm`, lay the card out as one compact row: name and wait time on
+   * the first line, the badges on a single line under it, no bottom panel.
+   *
+   * The park page's ride list (`LandSection`) passes it. At one card per row
+   * the full card is 318 px tall while the park is open, so Phantasialand's
+   * 47 rides took 8.6 screens (PAR-431). The sparkline, trend and day values
+   * the row drops are all on the ride's own page, one tap away. The other
+   * seven call sites keep the full card at every width. From `sm` up the
+   * prop changes nothing. Every class it adds is `max-sm:`.
+   */
+  phoneRow?: boolean;
 }
 
 // ---------- helpers ----------
@@ -132,6 +144,7 @@ export function AttractionCard({
   timezone,
   todayIso,
   parkName: parkNameProp,
+  phoneRow = false,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
@@ -197,15 +210,18 @@ export function AttractionCard({
     : backgroundImage
       ? 'photo'
       : 'none';
-  const seamStyle =
-    panelSeat === 'panel'
+  // A phone row drops the bottom panel, so below `sm` its seam has nothing to
+  // sit on either. `.pk-panel-seam-sm` draws the same border and shadow as the
+  // inline `panel` style from `sm` up, and only the shine below it.
+  const seamOnClass = panelSeat === 'photo' || (phoneRow && panelSeat === 'panel');
+  const seamStyle = seamOnClass
+    ? {}
+    : panelSeat === 'panel'
       ? {
           borderBottom: '1px solid var(--pk-panel-border)',
           boxShadow: `${PANEL_SHINE}, inset 0 -1px 0 rgba(0,0,0,0.06)`,
         }
-      : panelSeat === 'photo'
-        ? {} // `.pk-panel-seam-sm` owns both halves here
-        : { boxShadow: PANEL_SHINE };
+      : { boxShadow: PANEL_SHINE };
 
   return (
     <Link
@@ -220,7 +236,14 @@ export function AttractionCard({
       // `sm:` on both, because a coarse pointer has no drag and drop at all:
       // the phone's way into a plan is the panel's own search, and a grab
       // cursor there would promise a gesture that does nothing.
-      className="group row-span-3 grid [grid-template-rows:subgrid] sm:[html[data-planner-open]_&]:cursor-grab sm:[html[data-planner-open]_&]:active:cursor-grabbing"
+      //
+      // A phone row is `block` below `sm`: with one card per row there is no
+      // neighbour to share row heights with through the subgrid, and the
+      // subgrid's inherited 16 px gaps would sit inside the row.
+      className={cn(
+        'group row-span-3 grid [grid-template-rows:subgrid] sm:[html[data-planner-open]_&]:cursor-grab sm:[html[data-planner-open]_&]:active:cursor-grabbing',
+        phoneRow && 'max-sm:block'
+      )}
       // Read by the trip planner while a drag is in flight — see
       // `lib/planner/use-ride-drag-source.ts`, which attaches the payload from
       // one listener on the document. Two attributes rather than a handler,
@@ -231,7 +254,8 @@ export function AttractionCard({
     >
       <article
         className={cn(
-          'pk-card-fx relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1'
+          'pk-card-fx relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1',
+          phoneRow && 'max-sm:block max-sm:rounded-[16px]'
         )}
         data-card-fx
         style={{
@@ -298,9 +322,18 @@ export function AttractionCard({
             shared edge — measured, `gap-2` (8px) left a 2px sliver where a
             tap could land on either icon's zone. `gap-3` (12px, 34+12=46 ≥
             44) puts the zones edge-to-edge with room to spare. From `sm` up
-            the touch targets are gone, so the row tightens to `gap-2`. */}
+            the touch targets are gone, so the row tightens to `gap-2`.
+            In a phone row the circles move up to centre on the first line
+            (10 px padding + half of its 26 px = 23 px, minus half a circle =
+            6 px). Their 44 px zones then run from 1 px to 45 px, inside the
+            card, which clips at its own edge. */}
         {attraction.id && (
-          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3 sm:gap-2">
+          <div
+            className={cn(
+              'absolute top-3 right-3 z-[4] flex items-center gap-3 sm:gap-2',
+              phoneRow && 'max-sm:top-[6px]'
+            )}
+          >
             {/* `attraction.id` on a blog fallback card (its live detail failed
                 to resolve at build time) is `attractionSlug`, not a UUID —
                 `POST /push/ride-alerts` 400s on that, so the bell needs a real
@@ -344,11 +377,16 @@ export function AttractionCard({
             never change, so 92px there reserves a circle that will never
             arrive. Left alone rather than folded in, because narrowing it
             widens the title on those cards — a visible change PAR-120 did not
-            ask for and no screenshot in this PR covers. */}
+            ask for and no screenshot in this PR covers.
+            A phone row overrides the inline padding below `sm` (hence the
+            `!`): the corner reservation moves onto the first line, which is
+            the only line that shares its height with the circles, and the
+            badge line runs the full width under them. */}
         <div
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
-            panelSeat === 'photo' && 'pk-panel-seam-sm'
+            seamOnClass && 'pk-panel-seam-sm',
+            phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-3! max-sm:pb-2! max-sm:pl-3.5!'
           )}
           style={{
             padding: parkName ? '14px 92px 13px 16px' : '14px 52px 13px 16px',
@@ -373,9 +411,12 @@ export function AttractionCard({
             const displayName = stripNewPrefix(attraction.name);
             const isHeadliner = 'isHeadliner' in attraction && attraction.isHeadliner;
             const headlinerHint = `${t('headliner.title')} — ${t('headliner.description')}`;
-            return (
+            const heading = (
               <h3
-                className="relative flex items-center gap-1.5 text-[16px] leading-[1.2] font-extrabold tracking-[-0.022em]"
+                className={cn(
+                  'relative flex items-center gap-1.5 text-[16px] leading-[1.2] font-extrabold tracking-[-0.022em]',
+                  phoneRow && 'max-sm:min-w-0 max-sm:flex-1'
+                )}
                 style={{ color: 'var(--pk-text-1)' }}
               >
                 {isHeadliner && (
@@ -387,6 +428,34 @@ export function AttractionCard({
                   {displayName}
                 </span>
               </h3>
+            );
+            if (!phoneRow) return heading;
+            // The first line of a phone row: name, then the wait time, then
+            // the room the corner circles take (80 px for bell and star at
+            // `gap-3`, 34 px for the star alone, plus an 8 px gap). The wait
+            // time is the largest thing in the row, as it is on the card, and
+            // it sits outside the <h3> so the heading stays the ride's name.
+            // From `sm` up the wrapper is a plain block around the heading.
+            return (
+              <div
+                className={cn(
+                  'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
+                  parkName ? 'max-sm:pr-[88px]' : 'max-sm:pr-[42px]'
+                )}
+              >
+                {heading}
+                {hasBottomPanel && (
+                  <span className="flex shrink-0 items-baseline gap-0.5 leading-none sm:hidden">
+                    <WaitTimeValue
+                      minutes={roundWaitTo5(waitTime)}
+                      className="text-[26px] font-extrabold tracking-[-0.02em] tabular-nums"
+                    />
+                    <span className="text-[11px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
+                      min
+                    </span>
+                  </span>
+                )}
+              </div>
             );
           })()}
 
@@ -426,7 +495,16 @@ export function AttractionCard({
 
           {/* Badges — CSS subgrid on the outer grid equalizes header heights
               across all cards in a row; no artificial min-h needed. */}
-          <div className="relative mt-[9px] flex flex-wrap items-start gap-[6px]">
+          {/* In a phone row the badges keep to one line and fade out at the
+              right edge rather than wrap: a wrapped line is another 26 px on
+              one ride in forty. The full set is on the ride's page. */}
+          <div
+            className={cn(
+              'relative mt-[9px] flex flex-wrap items-start gap-[6px]',
+              phoneRow &&
+                'max-sm:mt-[6px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:shrink-0'
+            )}
+          >
             <ParkStatusBadge status={status as ParkStatus} />
             {isOperatingOrUnknown && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
@@ -507,10 +585,15 @@ export function AttractionCard({
                     timezone={effectiveTimezone}
                   />
                 ))}
-            {/* `w-full` so it always takes its own line inside the wrap rather
-                than sometimes sitting beside a badge and sometimes below one:
-                a sentence whose position depends on how many badges happen to
-                be present is a sentence whose card height nobody can predict. */}
+          </div>
+          {/* Own lines under the badges, never beside one: a sentence whose
+              position depends on how many badges happen to be present is a
+              sentence whose card height nobody can predict. They sat in the
+              badge wrap as `w-full` items until PAR-431; a phone row's badge
+              line does not wrap, so they moved out. `mt-[6px]` and `gap-[6px]`
+              are the wrap's own row gap, and `empty:hidden` drops the margin
+              for the rides without an outage, which is nearly all of them. */}
+          <div className="relative mt-[6px] flex flex-col gap-[6px] empty:hidden">
             <OutageNote
               outage={'outage' in attraction ? attraction.outage : undefined}
               timezone={effectiveTimezone}
@@ -552,10 +635,14 @@ export function AttractionCard({
           )}
         </div>
 
-        {/* Bottom glass panel — only rendered when we have a live wait time */}
+        {/* Bottom glass panel — only rendered when we have a live wait time.
+            A phone row shows the wait time on its first line instead. */}
         {hasBottomPanel && (
           <div
-            className="pk-panel-bot relative z-[3] -mt-4 overflow-hidden"
+            className={cn(
+              'pk-panel-bot relative z-[3] -mt-4 overflow-hidden',
+              phoneRow && 'max-sm:hidden'
+            )}
             style={{
               padding: '12px 14px 13px',
               background: 'var(--pk-panel-highlight-bot), var(--pk-panel)',
