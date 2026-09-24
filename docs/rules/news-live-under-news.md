@@ -42,7 +42,9 @@ Two cases take two hops, and both are rare. A bare `/blog/<news-slug>` without a
 
 A note's park comes from `getNewsParkRef()` in `lib/blog/backlinks.ts`: the first `parkLinks` entry, in the order the author wrote them, across all translations. A post without `parkLinks` falls back to the best-scored park it mentions, with the score the park pages rank by. `resolveNewsPark()` (`lib/blog/news-park.ts`) turns that into a name and a park page; a park the geo structure does not know leaves the note without a label, never out of the list.
 
-The park filter is a query parameter on the one static page, `?park=<slug>`, handled by `NewsStream` in the browser. It adds no URL of its own: the route stays static and the canonical stays `/news`. It offers only parks that have news. An unknown slug in the parameter shows everything.
+`pnpm test:news-park` pins that choice against the real manifest.
+
+The park filter is a query parameter on the one static page, `?park=<slug>`, handled by `NewsStream`. It adds no URL of its own: the route stays static and the canonical stays `/news`. It offers only parks that have news. The filter is CSS on a `data-news-filter` attribute, and an inline script sets that attribute from the URL while the HTML is parsed. A shared `?park=` link therefore paints filtered and does not shrink after hydration. An unknown slug in the parameter shows everything.
 
 ## What is not here yet
 

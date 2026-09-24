@@ -85,7 +85,7 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
         locale={locale}
         name={`${label} · park.fan`}
         description={t('intro')}
-        posts={posts}
+        posts={[...posts]}
         path={NEWS_INDEX_PATH}
       />
       <BreadcrumbStructuredData
