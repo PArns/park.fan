@@ -1810,18 +1810,31 @@ is 264 px at 390 × 664, 382 px at 390 × 844 (366 before) and 316 px at 844 × 
 `check:planner` grabs the strip rather than the handle's centre, which is under the
 day picker now, and asserts the landscape sheet at 378 px.
 
-**The headliner pills and the two buttons under them are drawn at 32 px.** Both
-rows were 44 px tall to a finger and 44 px tall to the eye, and on a 664 px window
-that was the report: "die Headliner-Pillen sind viel zu hoch, die CTAs auch". They
-are 32 px now and keep a 44 px target with an `after:` reaching 6 px above and below,
-into padding and text that take no press — the party chip's trade, which the section
-on targets above explains. Two details decide whether that holds. A scroller clips
-its children for hit-testing as well as for paint, so the pill row carries 8 px of
-padding and hands it back with negative margins; and an absolute box is placed from
-the padding edge, so the bordered pill needs `-inset-y-[7px]` to reach 6 px past its
-border. Measured with `elementFromPoint`: pill, "Headliner einplanen" and "Tag
-optimieren" each 32 + 6 + 6. The band went 96 → 76 px and the button row 53 → 45 px;
-the axis is 287 px at 390 × 664 and 405 px at 390 × 844.
+**Every row of controls in the phone sheet is drawn at 32 px.** The park and date
+buttons, the headliner pills, "Headliner einplanen", "Tag optimieren" and the bell were
+44 px tall to a finger and 44 px tall to the eye, and on a 664 px window that was the
+report: "die Headliner-Pillen sind viel zu hoch, die CTAs auch", then "die Datums- und
+Parkanzeige hat noch viel Platz nach oben und unten". They are drawn at 32 now and keep
+a 44 px target with an `::after` overhang, which is the party chip's trade that the
+section on targets above explains, written down once in `lib/planner/touch-target.ts`:
+`PHONE_TARGET_32` reaches 6 px above and below, `PHONE_TARGET_32_UP` puts all 12 px
+above. Where the overhangs go is the design:
+
+- the header row's reach 6 px up into the grabber's 16 px strip (the pill sits in the
+  10 px above that, where a press still lands on the grabber) and 6 px down into the
+  header's `pb-1.5`;
+- the pills reach into the band's own padding. A scroller clips its children for
+  hit-testing as well as for paint, so the pill row carries 8 px of padding and hands
+  it back with negative margins, and an absolute box is placed from the padding edge,
+  so the bordered pill needs `-inset-y-[7px]` to reach 6 px past its border. On a phone
+  the band's heading is the first item of that same row instead of a line of its own;
+- the two optimise buttons reach only UP, 12 px, through their row's top padding and
+  3 px into the band, stopping short of the pills' reach;
+- the bell at the end of the summary row reaches 6 px up into the optimise row's
+  bottom padding, which nothing else reaches into, and 6 px down into its own.
+
+Measured with `elementFromPoint` on every one of them: 32 + 6 + 6 or 32 + 12 + 0, i.e. 44. Header 61 → 55 px, band 96 → 55 px, the optimise row 53 → 47 px, the summary row
+45 → 39 px. The axis is 312 px at 390 × 664 and 430 px at 390 × 844.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerMonthCalendar } from './planner-month-calendar';
 import type { CalendarDay } from '@/lib/api/types';
@@ -82,7 +83,8 @@ export function PlannerDayPicker({
           // this costs the axis nothing beyond what the row already spent.
           // 48 WIDE since PAR-313 — the height is at its floor, so what the
           // freed chevron buys the most-pressed control is width.
-          'hover:bg-accent planner-phone:h-11 planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
+          'hover:bg-accent planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
+          PHONE_TARGET_32,
           atStart && 'pointer-events-none opacity-30'
         )}
       >
@@ -95,7 +97,10 @@ export function PlannerDayPicker({
             type="button"
             data-planner-day-trigger=""
             aria-label={t('day.pick')}
-            className="bg-accent/40 hover:bg-accent planner-phone:h-11 planner-phone:min-w-20 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
+            className={cn(
+              'bg-accent/40 hover:bg-accent planner-phone:min-w-20 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors',
+              PHONE_TARGET_32
+            )}
           >
             {/* Not on a phone (PAR-482): the sheet's × joined this row there, and
                 the 20 px of the icon are what the park name would otherwise pay
@@ -147,7 +152,8 @@ export function PlannerDayPicker({
         aria-label={t('calendar.nextDay')}
         className={cn(
           // 48 × 44 on a phone, like its twin above — see the note on the row.
-          'hover:bg-accent planner-phone:h-11 planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
+          'hover:bg-accent planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
+          PHONE_TARGET_32,
           atEnd && 'pointer-events-none opacity-30'
         )}
       >

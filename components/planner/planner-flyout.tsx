@@ -44,6 +44,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 
 interface PlannerFlyoutProps {
   open: boolean;
@@ -1095,7 +1096,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             bell and the × in its margins, 89 px of chrome before the day's first
             fact. Now the pill sits in a 16 px strip at the top of this header,
             the × is the last control in the row below it and the bell went to
-            the foot's summary row: 61 px, the same targets.
+            the foot's summary row. The row's controls are drawn 32 px tall and
+            reach 44 with an overhang of 6 px into the strip above and into this
+            header's `pb-1.5` below (`PHONE_TARGET_32`): 55 px in all, the same
+            targets.
 
             The handle is a button laid BEHIND the row (`absolute inset-0`, and
             the row after it in the DOM paints over it), so it takes a press
@@ -1104,7 +1108,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             px stack of two separate rows could not promise — see the note on
             the old pseudo-element in `docs/features/trip-planner.md`.
             `planner-wide:hidden`, because a side panel has no grabber. */}
-        <SheetHeader className="border-border/60 planner-phone:pt-4 planner-phone:pb-0 relative shrink-0 gap-0 border-b px-3 py-2">
+        <SheetHeader className="border-border/60 planner-phone:pt-4 planner-phone:pb-1.5 relative shrink-0 gap-0 border-b px-3 py-2">
           <button
             type="button"
             onPointerDown={handleSheetGrab}
@@ -1223,7 +1227,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     onClick={() => setShowOverview((value) => !value)}
                     aria-expanded={showOverview}
                     data-planner-overview-toggle=""
-                    className="text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
+                    className={cn(
+                      'text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors',
+                      PHONE_TARGET_32
+                    )}
                   >
                     {/* "Meine Pläne", never the active park's name. This control
                         opens the list of ALL plans, and labelling it with one of
@@ -1378,7 +1385,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               <SheetClose
                 data-planner-sheet-close=""
                 aria-label={t('sheet.close')}
-                className="group text-muted-foreground hover:text-foreground flex size-11 shrink-0 items-center justify-center"
+                className={cn(
+                  'group text-muted-foreground hover:text-foreground flex w-11 shrink-0 items-center justify-center',
+                  PHONE_TARGET_32
+                )}
               >
                 {/* The round grey × of an iOS sheet: a 28 px disc drawn inside
                     the 44 px target. */}

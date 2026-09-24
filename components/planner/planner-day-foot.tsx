@@ -141,12 +141,15 @@ export function PlannerDayFoot({
           data-planner-summary=""
           className={cn(
             'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
-            // A 44 px bell in the row, so the row is 44 px — as a floor with
-            // the text centred in it, not as the bell's height: the toggle
-            // renders nothing while it checks and where push cannot work (iOS
-            // Safari outside the home screen), and the row may neither jump
-            // when it arrives nor squash its text where it never does.
-            summaryTrailing && 'min-h-11 items-center py-0 pr-1'
+            // The bell is drawn 32 px and reaches 44 with 6 px above (into the
+            // optimise row's lower padding, where nothing else reaches down)
+            // and 6 below, which is this row's `pb-1.5`. The height is a floor
+            // with the text centred in its 32 px, not the bell's height: the
+            // toggle renders nothing while it checks and where push cannot
+            // work (iOS Safari outside the home screen), and the row may
+            // neither jump when it arrives nor squash its text where it never
+            // does (PAR-482).
+            summaryTrailing && 'min-h-[39px] items-center pt-0 pr-1 pb-1.5'
           )}
         >
           <span>

@@ -35,6 +35,7 @@ import type { DayGrid } from '@/lib/planner/day-grid';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from '@/lib/planner/types';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
+import { PHONE_TARGET_32_UP } from '@/lib/planner/touch-target';
 import { cn } from '@/lib/utils';
 
 /** The entries of a day that has none, as one array rather than a new one per render. */
@@ -407,14 +408,16 @@ export function PlannerOptimizeActions({
   return (
     <div
       data-planner-optimize=""
-      /* The row's padding and gap are 6 px on a phone because that is what
-         the buttons' targets reach into (PAR-482): each is drawn 32 px tall
-         and grows to the 44 px `check:planner` asserts with an `after:` 6 px
-         above and below. PAR-313 had kept the button itself at 44 and taken
-         the padding instead; the report since was that the CTAs are still too
-         tall, so now the drawn button gives way and the target does not.
-         Measured at 390 px the row goes 53 → 45 px. */
-      className="border-border/60 planner-phone:py-1.5 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
+      /* The buttons are drawn 32 px tall on a phone and reach the 44 px
+         `check:planner` asserts with an overhang of 12 px ABOVE them
+         (PAR-482): 8 of this row's top padding, its border and 3 px of the
+         band above, which stay clear of the headliner pills' own overhang.
+         Nothing reaches down, because the summary row's bell reaches up into
+         the 6 px under them. PAR-313 had kept the button itself at 44 and
+         taken the padding instead; the report since was that the CTAs were
+         still too tall, so now the drawn button gives way and the target
+         does not. */
+      className="border-border/60 planner-phone:pt-2 planner-phone:pb-1.5 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
     >
       <div className="flex flex-wrap items-center gap-1.5">
         {missing.length > 0 && (
@@ -425,10 +428,11 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
-              // 32 px drawn, 44 px to a finger: the `after:` reaches 6 px above and
-              // below, into this row's padding and the gap before the result line,
-              // where nothing else takes a press (PAR-482).
-              "planner-phone:h-8 planner-phone:py-0 planner-phone:px-2.5 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-1.5 planner-phone:after:content-[''] relative"
+              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE: the
+              // summary row's bell reaches up into this row's lower padding
+              // (PAR-482). See `PHONE_TARGET_32_UP`.
+              'planner-phone:py-0 planner-phone:px-2.5',
+              PHONE_TARGET_32_UP
             )}
           >
             <Crown className="size-3.5 shrink-0" aria-hidden="true" />
@@ -456,10 +460,11 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
-              // 32 px drawn, 44 px to a finger: the `after:` reaches 6 px above and
-              // below, into this row's padding and the gap before the result line,
-              // where nothing else takes a press (PAR-482).
-              "planner-phone:h-8 planner-phone:py-0 planner-phone:px-2.5 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-1.5 planner-phone:after:content-[''] relative",
+              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE: the
+              // summary row's bell reaches up into this row's lower padding
+              // (PAR-482). See `PHONE_TARGET_32_UP`.
+              'planner-phone:py-0 planner-phone:px-2.5',
+              PHONE_TARGET_32_UP,
               gain
                 ? // Grows into the rest of the row, and WRAPS onto a row of its
                   // own rather than shrinking into "Tag op…" beside a long

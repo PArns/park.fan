@@ -108,6 +108,42 @@ export function PlannerMissingHeadliners({
         )
       : undefined;
 
+  /** The band's heading, drawn as its own line wide and as the pill row's first item on a phone. */
+  const heading = (
+    <>
+      <Crown className="size-3 shrink-0" aria-hidden="true" />
+      {/* The line is one flex item, not three. `t.rich` splits the sentence into
+          text, link, text, and each run would otherwise become its own flex item
+          with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
+      <span>
+        {t.rich('headliners.missing', {
+          count: missing.length,
+          // A link on the wide arrangement, plain text on the phone. Every
+          // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
+          // line cannot pay it: as a link this word measured 50x15 and
+          // `check:planner` refused it, rightly — a 15 px target above the
+          // 44 px pills is one that gets missed.
+          //
+          // `showTooltip={false}` and that is NOT a preference: a tooltip
+          // opened from inside this sheet paints UNDER it. Measured at
+          // 1440x900 with the panel open — the box is 256x80 at x=934, the
+          // sheet starts at x=992, and 20 of 25 points sampled across the
+          // tooltip answer the sheet, because `TooltipContent` is `z-50`
+          // against the sheet's `z-[70]`. A definition four fifths hidden is
+          // worse than none; the link carries the reader to the whole of it.
+          term: (chunks) =>
+            isPhone ? (
+              <>{chunks}</>
+            ) : (
+              <GlossaryTermLink termId="headliner" showTooltip={false}>
+                {chunks}
+              </GlossaryTermLink>
+            ),
+        })}
+      </span>
+    </>
+  );
+
   if (missing.length === 0) return null;
   // A day that has been walked is a record, and "these headliners are still
   // missing" is an offer about a day somebody can still have. On yesterday it
@@ -138,37 +174,11 @@ export function PlannerMissingHeadliners({
           reason the rest of the sheet gives: the band rations HEIGHT, which a
           landscape phone is short of (PAR-76), not width. */}
       <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:py-1 rounded-md border px-2 py-1.5">
-        <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
-          <Crown className="size-3 shrink-0" aria-hidden="true" />
-          {/* The line is one flex item, not three. `t.rich` splits the sentence into
-              text, link, text, and each run would otherwise become its own flex item
-              with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
-          <span>
-            {t.rich('headliners.missing', {
-              count: missing.length,
-              // A link on the wide arrangement, plain text on the phone. Every
-              // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
-              // line cannot pay it: as a link this word measured 50x15 and
-              // `check:planner` refused it, rightly — a 15 px target above the
-              // 44 px pills is one that gets missed.
-              //
-              // `showTooltip={false}` and that is NOT a preference: a tooltip
-              // opened from inside this sheet paints UNDER it. Measured at
-              // 1440x900 with the panel open — the box is 256x80 at x=934, the
-              // sheet starts at x=992, and 20 of 25 points sampled across the
-              // tooltip answer the sheet, because `TooltipContent` is `z-50`
-              // against the sheet's `z-[70]`. A definition four fifths hidden is
-              // worse than none; the link carries the reader to the whole of it.
-              term: (chunks) =>
-                isPhone ? (
-                  <>{chunks}</>
-                ) : (
-                  <GlossaryTermLink termId="headliner" showTooltip={false}>
-                    {chunks}
-                  </GlossaryTermLink>
-                ),
-            })}
-          </span>
+        {/* A line of its own on the wide arrangement; on a phone the same
+            words open the pill row instead (below), which is the line of
+            height this band had to give back (PAR-482). */}
+        <p className="text-crowd-high planner-phone:hidden flex items-center gap-1.5 text-[11px] font-medium">
+          {heading}
         </p>
         {/* The pills are 32 px on a phone and their 44 px target is an `after:`
             reaching 6 px past the border above and below — `-inset-y-[7px]`,
@@ -178,9 +188,12 @@ export function PlannerMissingHeadliners({
             much as for paint, so the row carries 8 px of padding (2 more than
             the overhang, or the clip edge takes a pixel off each side) and
             hands them back with negative margins: the pseudo-elements land
-            inside the scroller, and the band is no taller for them. Above is
-            the heading, which is text; below is the band's own padding. */}
-        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-1 planner-phone:-mb-2 planner-phone:py-2 mt-1 flex flex-wrap gap-1">
+            inside the scroller, and the band is no taller for them. Above and
+            below is the band's own padding, which takes no press. */}
+        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-my-2 planner-phone:items-center planner-phone:py-2 mt-1 flex flex-wrap gap-1">
+          <p className="text-crowd-high planner-wide:hidden flex shrink-0 items-center gap-1 pr-1 text-[11px] font-medium">
+            {heading}
+          </p>
           {missing.map((ride) => (
             <button
               key={ride.attractionSlug}
