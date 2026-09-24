@@ -22,12 +22,8 @@ import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
  * — 22 px of cursor-help over nothing, with the tooltip anchored to the middle of the empty box
  * instead of to the badge.
  */
-export const CROWD_SCALE_TRIGGER_CLASS = cn(
-  'focus-visible:ring-ring/60 inline-flex w-fit cursor-help rounded-full focus-visible:ring-2 focus-visible:outline-none',
-  // The badge is 22 px high and opens its scale on a tap; on a ride card a miss by a few pixels
-  // navigates to the ride instead.
-  PHONE_HIT_AREA
-);
+export const CROWD_SCALE_TRIGGER_CLASS =
+  'focus-visible:ring-ring/60 inline-flex w-fit cursor-help rounded-full focus-visible:ring-2 focus-visible:outline-none';
 
 interface CrowdScaleTooltipProps {
   /** The level the wrapped badge shows; it is the row that gets highlighted. */
@@ -90,7 +86,13 @@ export function CrowdScaleTooltip({
       <TooltipTrigger
         ref={triggerRef}
         type="button"
-        className={CROWD_SCALE_TRIGGER_CLASS}
+        className={cn(
+          CROWD_SCALE_TRIGGER_CLASS,
+          // The badge is 22 px high. Outside a card the 44 px target can grow around it; inside a
+          // ride card it cannot: the badge row there is `overflow-hidden` and clips the
+          // pseudo-element to the row.
+          !insideLink && PHONE_HIT_AREA
+        )}
         onPointerDown={(event) => {
           tappedRef.current = event.pointerType !== 'mouse';
           // Only the opening half is ours. Radix's own pointerdown handler still runs, and
