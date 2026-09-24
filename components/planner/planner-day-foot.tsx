@@ -1,10 +1,12 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus } from 'lucide-react';
 import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
 import { totalsFor } from '@/lib/planner/estimate';
+import { cn } from '@/lib/utils';
 import { formatShortDuration } from '@/lib/utils/duration';
 import type { DayGrid } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
@@ -21,6 +23,12 @@ interface PlannerDayFootProps {
   prefs?: PlannerDayPrefs;
   entries: readonly PlannerEntry[];
   onAddFreeBlock: () => void;
+  /**
+   * Drawn at the end of the summary row. The phone's notification bell lives
+   * here since PAR-482 gave its old place, the grabber's own row, back to the
+   * day.
+   */
+  summaryTrailing?: ReactNode;
 }
 
 /**
@@ -65,6 +73,7 @@ export function PlannerDayFoot({
   prefs,
   entries,
   onAddFreeBlock,
+  summaryTrailing,
 }: PlannerDayFootProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -130,13 +139,19 @@ export function PlannerDayFoot({
       {entries.length > 0 && (
         <div
           data-planner-summary=""
-          className="border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs"
+          className={cn(
+            'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
+            // A 44 px bell in the row: it sets the height, so the padding goes.
+            summaryTrailing && 'items-center py-0 pr-1'
+          )}
         >
           <span>
             {t('summary.rides', { count: entries.length - totals.custom })}
             {totals.custom > 0 && ` · ${t('summary.blocks', { count: totals.custom })}`}
           </span>
-          <span className="flex items-baseline gap-3">
+          <span
+            className={cn('flex items-baseline gap-3', summaryTrailing && 'items-center gap-2')}
+          >
             {totals.done > 0 && (
               <span>{t('summary.done', { done: totals.done, total: entries.length })}</span>
             )}
@@ -157,6 +172,7 @@ export function PlannerDayFoot({
                 </span>
               </span>
             )}
+            {summaryTrailing}
           </span>
         </div>
       )}

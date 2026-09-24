@@ -1427,10 +1427,14 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
      * bare number.
      */
     const DRAG_PX = 80;
+    // The grabber lies BEHIND the sheet header since PAR-482 and takes a press
+    // wherever no control is — its centre is under the day picker. So every
+    // gesture starts in the strip across its top, where the pill is drawn.
+    const GRAB_STRIP_Y = 8;
     const pullFrom = async (dy) => {
       const box = await grab.boundingBox();
       const x = box.x + box.width / 2;
-      const y = box.y + box.height / 2;
+      const y = box.y + GRAB_STRIP_Y;
       await phone.mouse.move(x, y);
       await phone.mouse.down();
       await phone.mouse.move(x, y + dy, { steps: 8 });
@@ -1489,7 +1493,7 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       const restTop = await sheetTop();
       const box = await grab.boundingBox();
       const x = box.x + box.width / 2;
-      const y = box.y + box.height / 2;
+      const y = box.y + GRAB_STRIP_Y;
       await phone.mouse.move(x, y);
       await phone.mouse.down();
       await phone.mouse.move(x, y + 130, { steps: 10 });
@@ -1505,7 +1509,8 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         midTop >= restTop + 120 && detentNow === 'medium' && Math.abs(halfTop - half) <= 4,
         `Ruhe ${restTop} px · beim Ziehen ${midTop} px · losgelassen ${halfTop} px (${detentNow}, Mitte ${half})`
       );
-      await grab.click();
+      const stripBox = await grab.boundingBox();
+      await grab.click({ position: { x: stripBox.width / 2, y: GRAB_STRIP_Y } });
       await phone.waitForTimeout(700);
       const backTop = await sheetTop();
       check(
@@ -7508,14 +7513,15 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
         room.left === 0 && room.bottom === 0 && room.width >= 800,
         `Sheet ${room.width}×${room.height} bei (${room.left}, unten ${room.bottom} px)`
       );
-      // 92svh of 390, i.e. the phone ceiling doing its job at a size where the
-      // width breakpoint never reached it. Bounded on both sides: `h-auto` with
-      // no ceiling would grow past the window, and a ceiling that clamps to
-      // nothing would collapse the sheet.
+      // The whole window less a 12 px sliver: 390 px is under the 50rem
+      // `SHEET_SHORT_QUERY`, so `large` opens over the site header since
+      // PAR-482 (it was 92svh = 359 before). Bounded on both sides: a sheet as
+      // tall as the window reads as a page rather than a sheet, and a ceiling
+      // that clamps to nothing would collapse it.
       check(
-        'das Querformat-Sheet nimmt 92svh statt der ganzen Höhe',
-        room.height === 359,
-        `${room.height} px von 390 (erwartet 359 = 92svh)`
+        'das Querformat-Sheet lässt oben nur einen Streifen frei',
+        room.height === 378,
+        `${room.height} px von 390 (erwartet 378 = 100svh − 12 px)`
       );
       // Only where there IS an axis, and the guard is the assertion's own: with
       // a 404 from `/plan/day` there are no opening hours, `buildDayGrid`
@@ -7578,10 +7584,23 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // hid it, because 844 is over `sm`.
     const handle = land.locator('[data-planner-sheet-handle]');
     const handleBox = (await handle.count()) ? await handle.first().boundingBox() : null;
+    // Since PAR-482 the grabber lies behind the sheet header, as tall as the
+    // header, and a press lands on it in the strip across the top where the
+    // pill is drawn. Asked with `elementFromPoint` there, because the box is
+    // the whole header and says nothing about where the controls cover it.
+    const stripHit = handleBox
+      ? await land.evaluate(
+          ([x, y]) =>
+            document.elementFromPoint(x, y)?.closest('[data-planner-sheet-handle]') !== null,
+          [handleBox.x + handleBox.width / 2, handleBox.y + 8]
+        )
+      : false;
     check(
-      'der Griff ist im Querformat da und 44 px hoch',
-      handleBox !== null && Math.round(handleBox.height) === 44,
-      handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
+      'der Griff ist im Querformat da und nimmt oben einen Druck an',
+      handleBox !== null && Math.round(handleBox.height) >= 44 && stripHit,
+      handleBox
+        ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px · Leiste oben ${stripHit ? 'trifft' : 'trifft nicht'}`
+        : 'kein Griff'
     );
 
     // The handle's other half, and the reason it is asserted HERE and not only

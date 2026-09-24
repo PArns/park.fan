@@ -1791,6 +1791,24 @@ keeps its 300 ms, timed against the page's inset. `check:planner` drags the grab
 halfway, asserts the sheet is already following, releases at `medium` and taps back to
 `large`.
 
+**The grabber is the header, and a short window gives up the site header.** The
+grabber had a 44 px row of its own with the bell and the × in its margins, so a
+phone spent 89 px on chrome before the park name. The pill now sits in a 16 px strip
+at the top of the sheet header, and the grabber is a button laid BEHIND the header
+(`absolute inset-0`, the row painting over it), so a press lands on it wherever no
+control is — the strip, the row's side padding — and a control is never under it. The
+× is the last control of the park/date row (the day picker folds its calendar icon
+away on a phone to pay for it: at 390 px the park name keeps 115 px), and the bell
+went to the end of the foot's summary row. 61 px instead of 89. On a window under
+50rem tall — which is every iPhone in Safari, whose visible page is 660–750 px — `large`
+opens over the site header too, 12 px under the top edge (`SHEET_SHORT_QUERY` and the
+`@media` twin of `--planner-sheet-large`), and `full` is not offered there, being a
+12 px sliver above it; a tap then toggles between half and large. Taller windows keep
+the header visible. Measured with Europa-Park, eight rides and a lunch block: the axis
+is 264 px at 390 × 664, 382 px at 390 × 844 (366 before) and 316 px at 844 × 390 (269).
+`check:planner` grabs the strip rather than the handle's centre, which is under the
+day picker now, and asserts the landscape sheet at 378 px.
+
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to
 stay dry, and an empty list used to land in the same branch as "every headliner is

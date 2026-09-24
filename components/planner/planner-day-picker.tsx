@@ -95,9 +95,12 @@ export function PlannerDayPicker({
             type="button"
             data-planner-day-trigger=""
             aria-label={t('day.pick')}
-            className="bg-accent/40 hover:bg-accent planner-phone:h-11 planner-phone:min-w-24 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
+            className="bg-accent/40 hover:bg-accent planner-phone:h-11 planner-phone:min-w-20 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
           >
-            <CalendarDays className="size-3.5 shrink-0" aria-hidden="true" />
+            {/* Not on a phone (PAR-482): the sheet's × joined this row there, and
+                the 20 px of the icon are what the park name would otherwise pay
+                for it. The date and the two chevrons say what this is. */}
+            <CalendarDays className="planner-phone:hidden size-3.5 shrink-0" aria-hidden="true" />
             {dayLabel(value, today, locale, t)}
           </button>
         </PopoverTrigger>

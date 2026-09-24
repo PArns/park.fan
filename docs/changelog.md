@@ -30,6 +30,11 @@ ein Wisch nach unten aus der halben Höhe schließt es. Einrasten, Öffnen und S
 iOS-Kurve (400 ms). Bewegt wird über `bottom` und `height`, nie per `transform`, damit die Unschärfe
 des Glas-Hintergrunds erhalten bleibt.
 
+Die Griff-Zeile ist in die Kopfzeile gewandert: Der Griff liegt als schmale Leiste über Park und
+Datum, das × steht rechts in dieser Zeile, die Glocke am Ende der Summenzeile. 61 statt 89 px. Bei
+knapper Fensterhöhe (unter 800 px, also auf jedem iPhone in Safari) öffnet das Sheet bis 12 px unter
+den oberen Rand und verdeckt den park.fan-Header.
+
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
