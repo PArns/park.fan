@@ -31,10 +31,10 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import { loadMessageChunk } from '@/lib/i18n/message-chunk-loader';
 import type { Locale } from '@/i18n/config';
 import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
-import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM } from '@/lib/planner/party';
+import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM, partyFlags } from '@/lib/planner/party';
 import { buildDayGrid } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
-import { headlinersToAdd } from '@/lib/planner/optimize';
+import { headlinersSkipped, headlinersToAdd } from '@/lib/planner/optimize';
 import {
   evaluateFit,
   fitBlocks,
@@ -317,6 +317,31 @@ export function PlannerWizard({
     [dayPayload, pxPerMin]
   );
   const headliners = useMemo(() => headlinersToAdd(dayPayload, [], prefs), [dayPayload, prefs]);
+  /**
+   * The headliners this party's own answers ruled out, and why (PAR-484).
+   *
+   * `headlinersToAdd` drops a ride that is too tall for the smallest rider or
+   * wet for a party that wants to stay dry, and an empty list used to fall into
+   * the same branch as "every headliner is already in": „Für diesen Tag fehlt
+   * keine große Bahn mehr" over a family whose children fit none of them. The
+   * total is `headlinersSkipped`, the engine's own count; the split only picks
+   * which sentence names the reason.
+   */
+  const unfitHeadliners = useMemo(() => {
+    const total = headlinersSkipped(dayPayload, [], prefs);
+    if (!dayPayload || total === 0) return null;
+    let tooShort = 0;
+    let wet = 0;
+    for (const ride of dayPayload.rides) {
+      if (!ride.isHeadliner) continue;
+      const flags = partyFlags(ride, prefs);
+      if (flags.tooShort) tooShort += 1;
+      if (flags.wet) wet += 1;
+    }
+    const key =
+      wet === 0 ? 'noneFitHeight' : tooShort === 0 ? 'noneFitWet' : ('noneFitBoth' as const);
+    return { total, key };
+  }, [dayPayload, prefs]);
   const lunchLabel = t('wizard.blocks.lunch');
   const lunchEntries = useMemo(
     () =>
@@ -783,6 +808,23 @@ export function PlannerWizard({
                 {dayPending ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {t('wizard.facts.loading')}
+                  </p>
+                ) : headliners.length === 0 && unfitHeadliners ? (
+                  /* Every headliner the day is missing was ruled out by the
+                     party, which is a problem to see and not a success to read
+                     past — so it is drawn as a notice, in the crowd tint the
+                     planner uses for a day that came out short. */
+                  <p
+                    role="status"
+                    data-planner-wizard-headliners-unfit=""
+                    className="border-crowd-high/40 bg-crowd-high/10 text-crowd-high flex items-start gap-2 rounded-md border px-2.5 py-2 text-xs leading-relaxed"
+                  >
+                    <AlertTriangle className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+                    <span>
+                      {t(`wizard.headliners.${unfitHeadliners.key}`, {
+                        count: unfitHeadliners.total,
+                      })}
+                    </span>
                   </p>
                 ) : headliners.length === 0 || headlinerFit === null || !fitInput ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">

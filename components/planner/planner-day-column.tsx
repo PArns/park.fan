@@ -48,6 +48,14 @@ import { cn } from '@/lib/utils';
 const SELF_ACTING =
   'button, a, input, textarea, select, [role="button"], [role="slider"], [draggable="true"], [data-planner-block]';
 
+/** Air between a revealed block and the action bar docked under it. */
+const REVEAL_GAP_PX = 8;
+/**
+ * How far below the scroller's top a revealed block's head must stay: the
+ * sticky show strip is drawn there, 40 px tall with its rule.
+ */
+const REVEAL_TOP_PX = 44;
+
 interface PlannerDayColumnProps {
   parkSlug: string | null;
   date: string | null;
@@ -224,6 +232,58 @@ export function PlannerDayColumn({
   const [dragging, setDragging] = useState(false);
   const [flatDropActive, setFlatDropActive] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  /**
+   * The action bar's height, and a request to bring the selected block clear
+   * of it (PAR-332).
+   *
+   * The bar is docked `absolute` over the scroller's lower edge, so a block
+   * selected down there sat underneath the very bar that acts on it — the
+   * grip, the label and the corner ✕ all answered to the bar instead. Two
+   * things fix it, and neither costs the axis a pixel of height: the scroller
+   * gets the bar's height as extra bottom padding while a block is selected,
+   * so even the day's last block CAN scroll above it, and a tap that selects
+   * scrolls the block up by as much as the bar covers of it.
+   *
+   * The scroll follows the CLICK, not the selection. A drag selects its block
+   * on `pointerdown` (see `PlannerDayGrid`), and scrolling the day under a
+   * finger that is still holding the grip would move the drop target with it.
+   * The click comes after the release, whatever the gesture was.
+   */
+  const barBoxRef = useRef<HTMLDivElement>(null);
+  const [barHeight, setBarHeight] = useState(0);
+  /** The block a click asked to reveal, with a counter so a second tap asks again. */
+  const [reveal, setReveal] = useState<{ id: string; tick: number } | null>(null);
+  useEffect(() => {
+    const bar = selectedId
+      ? barBoxRef.current?.querySelector<HTMLElement>('[data-planner-grid-actions]')
+      : null;
+    if (!bar) return;
+    // The observer reports once on `observe`, so no direct read is needed here.
+    const observer = new ResizeObserver(() => setBarHeight(bar.offsetHeight));
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, [selectedId]);
+  useEffect(() => {
+    // Only the block the click was on: a later drag selects ANOTHER block on
+    // `pointerdown`, and that must not re-run this with the old request.
+    if (!reveal || reveal.id !== selectedId || dragging || barHeight === 0) return;
+    const scroller = scrollerRef.current;
+    const block = scroller?.querySelector<HTMLElement>(
+      `[data-planner-entry="${CSS.escape(selectedId)}"]`
+    );
+    if (!scroller || !block) return;
+    const box = scroller.getBoundingClientRect();
+    const rect = block.getBoundingClientRect();
+    const clearBottom = box.bottom - barHeight - REVEAL_GAP_PX;
+    if (rect.bottom <= clearBottom) return;
+    // As far as the bar covers, but never so far that the block's top goes
+    // under the sticky show strip at the scroller's top edge — a block taller
+    // than the space between the two keeps its head in view.
+    const delta = Math.min(rect.bottom - clearBottom, rect.top - box.top - REVEAL_TOP_PX);
+    if (delta <= 0) return;
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    scroller.scrollBy({ top: delta, behavior: smooth ? 'smooth' : 'auto' });
+  }, [reveal, selectedId, dragging, barHeight]);
 
   const {
     data: day,
@@ -269,9 +329,13 @@ export function PlannerDayColumn({
    * untouched by the growth, so the opening-hours band still marks the park's
    * real day and every placement rule still speaks for the park.
    */
-  const grid = growGridForSpans(
-    buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin),
-    spans
+  // Memoised, so the grid keeps its identity across renders that do not move
+  // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
+  const openHour = day?.context.openHour;
+  const closeHour = day?.context.closeHour;
+  const grid = useMemo(
+    () => growGridForSpans(buildDayGrid(openHour, closeHour, pxPerMin), spans),
+    [openHour, closeHour, pxPerMin, spans]
   );
 
   const dayFacts = usePlannerDayFacts(park, open);
@@ -559,7 +623,7 @@ export function PlannerDayColumn({
             handle and the header take 89. That is unmeasured and open as
             PAR-231; it is not made worse here, and it is not fixed here
             either. */}
-        <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
+        <div ref={barBoxRef} className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}
             className={cn(
@@ -575,6 +639,19 @@ export function PlannerDayColumn({
               'planner-phone:pt-0 relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
               flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
             )}
+            /* Room under the day for the action bar, while there is one — see
+               `barHeight`. Padding rather than a spacer element, so the grid's
+               own geometry, which every drag reads, does not change. */
+            style={
+              selectedId && barHeight > 0 ? { paddingBottom: barHeight + REVEAL_GAP_PX } : undefined
+            }
+            /* After the block's own handler has selected it. See `reveal`. */
+            onClick={(event) => {
+              const id = (event.target as HTMLElement)
+                .closest('[data-planner-entry]')
+                ?.getAttribute('data-planner-entry');
+              if (id) setReveal((last) => ({ id, tick: (last?.tick ?? 0) + 1 }));
+            }}
             onDragOver={(event) => {
               if (grid || !park || !date) return;
               if (!event.dataTransfer.types.includes(PLANNER_RIDE_MIME)) return;
@@ -610,6 +687,7 @@ export function PlannerDayColumn({
                 isToday={isToday}
                 visible={showsVisible}
                 onToggle={plannerShowsVisible.toggle}
+                className="planner-phone:hidden"
               />
             )}
             {grid ? (

@@ -2192,10 +2192,11 @@
       "hoursObservedHint": "Le parc n’a rien publié pour cette date. Ces horaires viennent d’heures que nous avons relevées, et la journée peut être plus longue."
     },
     "search": {
-      "placeholder": "Chercher une attraction",
+      "placeholder": "Rechercher",
       "noResults": "Aucune attraction trouvée.",
       "tapHint": "Touchez une attraction : elle se place au prochain créneau libre. Touchez ensuite le bloc pour le déplacer par quarts d'heure.",
-      "opensAt": "dès {time}"
+      "opensAt": "dès {time}",
+      "done": "OK"
     },
     "clearDay": "Vider la journée",
     "clearDayTitle": "Vider la journée ?",
@@ -2242,7 +2243,8 @@
       "more": "{count, plural, =1 {+1 autre} other {+# autres}}",
       "hidden": "Horaires masqués",
       "hide": "Masquer les horaires",
-      "show": "Afficher les horaires"
+      "show": "Afficher les horaires",
+      "chip": "Spectacles"
     },
     "warn": {
       "closedNow": "Signalée fermée en ce moment.",
@@ -2257,6 +2259,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minutes de moins",
       "longer": "15 minutes de plus",
+      "iconPick": "Icône : {icon}. En choisir une autre",
       "icon": {
         "break": "Pause",
         "food": "Repas",
@@ -2269,6 +2272,7 @@
     },
     "optimize": {
       "headliners": "Planifier toutes les attractions phares",
+      "headlinersShort": "Attractions phares",
       "run": "Optimiser la journée",
       "running": "Tri en cours …",
       "hint": "Classe les attractions selon leurs courbes horaires, les trajets entre elles et leurs horaires d’ouverture. Les pauses et les attractions déjà faites ne bougent pas.",
@@ -2320,7 +2324,8 @@
       "adjust": "Ajuster"
     },
     "sheet": {
-      "handle": "Agrandir ou fermer le planificateur",
+      "handle": "Agrandir ou réduire le planificateur",
+      "close": "Fermer le planificateur",
       "resize": "Ajuster la largeur"
     },
     "headliners": {
@@ -2423,6 +2428,9 @@
         "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture.",
         "conflict": "{fits} sur {total} rentrent. Décochez ce dont vous pouvez vous passer, ou remontez ce que vous voulez absolument faire.",
         "none": "Aucune attraction phare ne manque pour cette journée.",
+        "noneFitHeight": "Aucune attraction phare ne convient à votre groupe : {count, plural, one {la seule du parc exige} other {les # exigent}} une taille minimale supérieure à celle de la plus petite personne. Vous pouvez quand même les ajouter une par une dans le planificateur.",
+        "noneFitWet": "Aucune attraction phare ne convient à votre groupe : {count, plural, one {la seule du parc mouille} other {les # mouillent}}, et vous voulez rester au sec. Vous pouvez quand même les ajouter une par une dans le planificateur.",
+        "noneFitBoth": "Aucune attraction phare ne convient à votre groupe : {count, plural, one {la seule du parc exige une taille que la plus petite personne n’atteint pas, ou mouille} other {chacune des # exige une taille que la plus petite personne n’atteint pas, ou mouille}}. Vous pouvez quand même les ajouter une par une dans le planificateur.",
         "resolved": "{count, plural, one {L’attraction rentre ainsi dans la journée} other {Les # attractions rentrent ainsi dans la journée}}. Vous pouvez encore modifier votre sélection."
       },
       "facts": {

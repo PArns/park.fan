@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Check, ChevronDown, LayoutList, MapPin, Plus, X } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import type { PlannerPark } from '@/lib/planner/types';
 import { PlannerDayPicker } from './planner-day-picker';
 import type { CalendarDay } from '@/lib/api/types';
@@ -119,7 +120,11 @@ export function PlannerColumnHead({
             // than as the control that changes the park. Same tint as its
             // neighbour, phone only: a fine pointer gets the hover and the
             // desktop row keeps the two controls it has always had.
-            className="hover:bg-accent planner-phone:bg-accent/40 planner-phone:h-11 flex h-7 min-w-0 flex-1 items-center gap-1 rounded-md px-1.5 text-xs font-medium transition-colors"
+            className={cn(
+              'hover:bg-accent planner-phone:bg-accent/40 flex h-7 min-w-0 flex-1 items-center gap-1 rounded-md px-1.5 text-xs font-medium transition-colors',
+              // Drawn 32 px, 44 to a finger (PAR-482). See `PHONE_TARGET_32`.
+              PHONE_TARGET_32
+            )}
           >
             <span className="truncate">{park?.name ?? t('column.noPark')}</span>
             <ChevronDown className="size-3 shrink-0 opacity-60" aria-hidden="true" />

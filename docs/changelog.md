@@ -4,6 +4,54 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
+
+Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
+16 px heran und nicht wieder heraus. Die Bahnsuche und der Name eines eigenen Blocks waren 14 px,
+danach stand die Seite auf 1,14×, das fixierte Sheet lief rechts über den Rand und Griff und
+Kopfzeile oben aus dem Bild. Jetzt rendert jedes Textfeld im Planer-Sheet auf Touch-Geräten mit
+16 px (`[data-planner-sheet]` in `app/globals.css`). Dazu hat das Handy-Sheet wieder einen ×-Knopf,
+rechts in der Park- und Datumszeile (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
+nur noch eine 90-px-Wischgeste herausführte.
+
+Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (105 statt
+210 px bei 390 px): Symbol als Dropdown, Löschen als Papierkorb in der Leiste, ein
+Größensystem für alle Knöpfe (PAR-326), und ein ausgewählter Block wird über die Leiste gescrollt
+(PAR-332). „Tag optimieren" steht jetzt direkt über der Gesamtwartezeit und ist ein gefüllter
+Knopf mit der gemessenen Ersparnis, sobald die Optimierung etwas bringt (PAR-493). Die Headliner
+stehen auf dem Handy in einer seitlich scrollbaren Reihe, der Hinweis unter der Suche verschwindet
+nach der ersten Bahn. Die Achse wächst damit von 319 auf 366 px (390×844) und von 262 auf 311 px
+(360×800). Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
+Trocken-Bleiben der Gruppe passt, statt „es fehlt keine große Bahn mehr" (PAR-484).
+
+Der Griff oben am Handy-Sheet arbeitet jetzt wie bei einem iOS-Sheet: Das Sheet folgt beim Ziehen
+dem Finger und rastet beim Loslassen auf halber Höhe, unter dem Header oder bildschirmfüllend ein;
+ein Wisch nach unten aus der halben Höhe schließt es. Einrasten, Öffnen und Schließen laufen auf der
+iOS-Kurve (400 ms). Bewegt wird über `bottom` und `height`, nie per `transform`, damit die Unschärfe
+des Glas-Hintergrunds erhalten bleibt.
+
+Die Griff-Zeile ist in die Kopfzeile gewandert: Der Griff liegt als schmale Leiste über Park und
+Datum, das × steht rechts in dieser Zeile, die Glocke daneben. 61 statt 89 px. Bei
+knapper Fensterhöhe (unter 800 px, also auf jedem iPhone in Safari) öffnet das Sheet bis 12 px unter
+den oberen Rand und verdeckt den park.fan-Header.
+
+Alle Bedienzeilen im Handy-Sheet (Park, Datum, Headliner-Pillen, die beiden Knöpfe darunter, die
+Glocke) sind 32 statt 44 px hoch gezeichnet, die Trefferfläche bleibt 44 px über einen unsichtbaren
+Überstand in Leerraum (`lib/planner/touch-target.ts`). Die Glocke steht jetzt rechts in der
+Kopfzeile neben dem ×, „Headliner planen" steht in der Optimieren-Zeile als kurzer zweizeiliger
+Text, und die Summenzeile ist eine schlanke Textzeile. Das Show-Band über der Achse fällt auf dem Handy
+weg; sein Schalter sind dort die Theatermasken am Ende der Optimieren-Zeile. Die Headliner-Pillen sind
+26 px hoch, „Tag optimieren" ohne Ersparnis ist getönt statt grau und nimmt immer die volle Breite;
+Rückgängig ist auf dem Handy ein Symbol in derselben Zeile, und die Rückmeldung darunter entfällt dort
+(außer als Warnung mit „Anpassen"). Ein Tipp in die Bahnsuche gibt ihr das
+ganze Sheet (Achse und Fuß treten zur Seite), „Fertig" holt den Tag zurück. In Ruhe ist die Suche eine
+Zeile: das 32-px-Feld und „Eigener Block" daneben, die Bahnliste gibt es erst im Suchmodus. Beides nur
+mit Touch; ein schmales Fenster mit Maus behält die Liste zum Ziehen. „Ferien nebenan" ist auf dem Handy eine Palme, die Infozeile passt bei 360 px wieder in
+eine Zeile. Kopfzeile 61 → 55 px, Band 96 → 70 px, Summenzeile 45 → 29 px; die Achse hat
+bei 390×664 jetzt 347 px, bei 360×640 323 px.
+
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
 ## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
 
 Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprache ein `<url>` mit

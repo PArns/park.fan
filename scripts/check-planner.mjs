@@ -1366,17 +1366,120 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
 
   check('der Anfasser ist da', (await grab.count()) === 1);
 
-  // And he is the only way out that is drawn, which is why the line above is
-  // not a formality any more. The × went off the phone sheet with PAR-188 —
-  // three exits were one too many, and the one that went is the one parked in
-  // the corner a thumb reaches worst — so the pair has to be asserted
-  // together: no close button, AND a handle that is
-  // there. Either one alone would pass over a sheet with no visible exit at
-  // all, which is exactly the state at 100svh, where the modal shield sits
-  // behind the sheet and tapping beside it does nothing.
+  // And a drawn way out beside him (PAR-483). PAR-188 took the × off the
+  // phone sheet and left the handle as the exit; a tap on the handle pulls the
+  // sheet to 100svh, where the shield is gone, and people got stuck there. So
+  // the × is back, as the last control of the header row rather than in
+  // `SheetContent`'s corner (that corner is the day picker on a phone) —
+  // exactly ONE close button, a 44 px one, and one that takes a press rather
+  // than sitting under something.
+  //
+  // 44 px is the REACH, walked with `elementFromPoint` like the sweep below,
+  // never the bounding box: the header row is drawn 32 px tall since PAR-482
+  // and every control in it keeps its 44 through an `after:` overhang
+  // (`PHONE_TARGET_32`), which `boundingBox()` cannot see. Asserting the box
+  // failed a button that measured 32 + 6 + 6.
+  const sheetClose = phone.locator(`${SHEET} [data-planner-sheet-close]`);
+  const sheetCloseReach = await sheetClose
+    .evaluate((el) => {
+      const box = el.getBoundingClientRect();
+      const x = Math.round(box.left + box.width / 2);
+      const hits = (y) => {
+        const hit = document.elementFromPoint(x, y);
+        return hit !== null && (hit === el || el.contains(hit));
+      };
+      const y = Math.round(box.top + box.height / 2);
+      if (!hits(y)) return { width: 0, height: 0 };
+      let up = 0;
+      while (up < 30 && hits(Math.ceil(box.top) - 1 - up)) up += 1;
+      let down = 0;
+      while (down < 30 && hits(Math.ceil(box.bottom) + down)) down += 1;
+      // And across, for the same reason: the box is 32 px wide since the bell
+      // joined this row, and the target reaches through the row's padding to
+      // the sheet's edge (`after:-right-3`).
+      const across = (px) => {
+        const hit = document.elementFromPoint(px, y);
+        return hit !== null && (hit === el || el.contains(hit));
+      };
+      let left = 0;
+      while (left < 30 && across(Math.ceil(box.left) - 1 - left)) left += 1;
+      let right = 0;
+      while (right < 30 && across(Math.ceil(box.right) + right)) right += 1;
+      return {
+        width: Math.round(box.width) + left + right,
+        height: Math.round(box.height) + up + down,
+      };
+    })
+    .catch(() => null);
   check(
-    'und auf dem Handy trägt das Sheet keinen ×-Knopf mehr',
-    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+    'das Handy-Sheet hat genau einen ×-Knopf, 44 px, in der Kopfzeile',
+    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1 &&
+      sheetCloseReach !== null &&
+      Math.round(sheetCloseReach.width) >= 44 &&
+      sheetCloseReach.height >= 44,
+    sheetCloseReach
+      ? `${Math.round(sheetCloseReach.width)}×${sheetCloseReach.height} px Trefferfläche`
+      : 'kein ×'
+  );
+
+  // The phone's search mode (PAR-482). The ride search is the block the sheet
+  // squeezes, so with a day in it the rows a query finds were under the
+  // search's own head, and on an iPhone under the keyboard too: „da kann man
+  // nix drin suchen". A tap into the field hands it the sheet — axis and foot
+  // step aside — and „Fertig" gives the day back, field emptied.
+  {
+    const field = phone.locator(`${SHEET} [data-planner-ride-search] input`);
+    const gridShown = () =>
+      phone
+        .locator(`${SHEET} [data-planner-grid]`)
+        .first()
+        .evaluate((el) => el.getClientRects().length > 0)
+        .catch(() => false);
+    await field.tap();
+    await phone.waitForTimeout(400);
+    const inMode = {
+      mode: await phone.locator(`${SHEET} [data-planner-search-mode="on"]`).count(),
+      grid: await gridShown(),
+      foot: await phone.locator(`${SHEET} [data-planner-optimize]:visible`).count(),
+      top: await phone
+        .locator(`${SHEET} [data-planner-ride-search]`)
+        .evaluate((el) => Math.round(el.getBoundingClientRect().top)),
+    };
+    check(
+      'ein Tipp ins Suchfeld gibt der Suche das Sheet, Achse und Fuß treten zur Seite',
+      inMode.mode === 1 && !inMode.grid && inMode.foot === 0 && inMode.top < 120,
+      `Modus ${inMode.mode} · Achse ${inMode.grid} · Fuß ${inMode.foot} · oben ${inMode.top} px`
+    );
+    await field.fill('silver');
+    await phone.locator(`${SHEET} [data-planner-search-done]`).tap();
+    await phone.waitForTimeout(400);
+    const after = {
+      mode: await phone.locator(`${SHEET} [data-planner-search-mode="on"]`).count(),
+      grid: await gridShown(),
+      query: await field.inputValue(),
+    };
+    check(
+      '„Fertig" gibt den Tag zurück und leert das Feld',
+      after.mode === 0 && after.grid && after.query === '',
+      `Modus ${after.mode} · Achse ${after.grid} · Feld „${after.query}"`
+    );
+  }
+
+  // Every field somebody types into renders at 16 px on a coarse pointer. Under
+  // that iOS zooms the page in on focus and never back out, and at 1.14× the
+  // fixed sheet ran off the right edge and its handle off the top — the
+  // "Buttons außerhalb der View" and "lässt sich nicht schließen" of PAR-485.
+  // Chromium does not zoom, so the rule is asserted rather than the zoom.
+  const fieldSizes = await phone.evaluate((sel) => {
+    const sheet = document.querySelector(sel);
+    return [...(sheet?.querySelectorAll('input, textarea, select') ?? [])]
+      .filter((el) => !['checkbox', 'radio', 'range'].includes(el.getAttribute('type') ?? ''))
+      .map((el) => parseFloat(getComputedStyle(el).fontSize));
+  }, SHEET);
+  check(
+    'kein Textfeld im Sheet ist auf dem Grobzeiger kleiner als 16 px',
+    fieldSizes.length > 0 && fieldSizes.every((size) => size >= 16),
+    `${fieldSizes.length} Felder: ${fieldSizes.join(', ')} px`
   );
   if (await grab.count()) {
     /**
@@ -1404,10 +1507,14 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
      * bare number.
      */
     const DRAG_PX = 80;
+    // The grabber lies BEHIND the sheet header since PAR-482 and takes a press
+    // wherever no control is — its centre is under the day picker. So every
+    // gesture starts in the strip across its top, where the pill is drawn.
+    const GRAB_STRIP_Y = 8;
     const pullFrom = async (dy) => {
       const box = await grab.boundingBox();
       const x = box.x + box.width / 2;
-      const y = box.y + box.height / 2;
+      const y = box.y + GRAB_STRIP_Y;
       await phone.mouse.move(x, y);
       await phone.mouse.down();
       await phone.mouse.move(x, y + dy, { steps: 8 });
@@ -1423,6 +1530,17 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       after > before + 40,
       `${before} px -> ${after} px (Weg ${DRAG_PX} px)`
     );
+
+    // The state PAR-483 was about: pulled up to 100svh there is no shield
+    // beside the sheet, so the × has to be there AND reachable. Asked as a
+    // trial click, which runs the whole actionability chain and names whatever
+    // intercepts the press, without closing the sheet the rest of this pass
+    // measures.
+    const closeUp = await sheetClose
+      .click({ trial: true, timeout: 5_000 })
+      .then(() => 'ok')
+      .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
+    check('und auch hochgezogen ist der ×-Knopf erreichbar', closeUp === 'ok', closeUp);
 
     // And back down, so the geometry assertions below measure the sheet in the
     // state they were written for.
@@ -1441,8 +1559,47 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         ? `der Zug von ${DRAG_PX} px hat das Sheet geschlossen — über SHEET_DISMISS_PX`
         : back === before
           ? `${back} px`
-          : `${back} px statt ${before} px — Weg ${DRAG_PX} px, Schwelle SHEET_EXPAND_PX`
+          : `${back} px statt ${before} px — Weg ${DRAG_PX} px, nächster Rastpunkt`
     );
+
+    // The third detent, and the drag that reaches it (PAR-482). The grabber
+    // works like an iOS sheet's: the sheet follows the finger while it moves —
+    // asserted halfway, before the release — and snaps to half the screen when
+    // let go near it. A tap then steps back up to where the sheet opened, which
+    // is also the state every assertion after this one is written for.
+    if (stillOpen) {
+      const sheetTop = () =>
+        phone.locator(SHEET).evaluate((el) => Math.round(el.getBoundingClientRect().top));
+      const restTop = await sheetTop();
+      const box = await grab.boundingBox();
+      const x = box.x + box.width / 2;
+      const y = box.y + GRAB_STRIP_Y;
+      await phone.mouse.move(x, y);
+      await phone.mouse.down();
+      await phone.mouse.move(x, y + 130, { steps: 10 });
+      const midTop = await sheetTop();
+      await phone.mouse.move(x, y + 260, { steps: 10 });
+      await phone.mouse.up();
+      await phone.waitForTimeout(700);
+      const halfTop = await sheetTop();
+      const half = await phone.evaluate(() => Math.round(window.innerHeight / 2));
+      const detentNow = await grab.getAttribute('data-planner-sheet-detent');
+      check(
+        'das Sheet folgt dem Finger und rastet halb hoch ein',
+        midTop >= restTop + 120 && detentNow === 'medium' && Math.abs(halfTop - half) <= 4,
+        `Ruhe ${restTop} px · beim Ziehen ${midTop} px · losgelassen ${halfTop} px (${detentNow}, Mitte ${half})`
+      );
+      const stripBox = await grab.boundingBox();
+      await grab.click({ position: { x: stripBox.width / 2, y: GRAB_STRIP_Y } });
+      await phone.waitForTimeout(700);
+      const backTop = await sheetTop();
+      check(
+        'und ein Tipp auf den Griff holt es wieder hoch',
+        (await grab.getAttribute('data-planner-sheet-detent')) === 'large' &&
+          Math.abs(backTop - restTop) <= 1,
+        `${backTop} px gegen ${restTop} px`
+      );
+    }
   }
 
   const geometry = await phone.evaluate((sel) => {
@@ -1629,6 +1786,41 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
           `${before} -> ${after}`
         );
       }
+
+      // The bar a selection docks, measured on the phone (PAR-492, PAR-332).
+      // It used to wrap into four lines — about 200 px over a scroller not much
+      // taller — and a block selected low in the day sat underneath it. Two
+      // lines now, and the selected block is scrolled clear of it: its middle
+      // answers to the block, not to the bar.
+      const barFacts = await phone.evaluate(
+        ([sel, id]) => {
+          const sheet = document.querySelector(sel);
+          const bar = sheet?.querySelector('[data-planner-grid-actions]');
+          const block = sheet?.querySelector(`li[data-planner-entry="${id}"]`);
+          if (!bar || !block) return null;
+          const b = block.getBoundingClientRect();
+          const hit = document.elementFromPoint(
+            b.left + b.width / 2,
+            b.top + Math.min(b.height / 2, 10)
+          );
+          return {
+            bar: Math.round(bar.getBoundingClientRect().height),
+            covered: Boolean(hit && bar.contains(hit)),
+            remove: Boolean(bar.querySelector('[data-planner-grid-remove]')),
+          };
+        },
+        [SHEET, entryId]
+      );
+      check(
+        'die Aktionsleiste ist auf dem Handy höchstens zwei Zeilen hoch und trägt Löschen',
+        barFacts !== null && barFacts.bar <= 110 && barFacts.remove,
+        barFacts ? `${barFacts.bar} px, Löschen ${barFacts.remove}` : 'keine Leiste'
+      );
+      check(
+        'und der ausgewählte Block liegt nicht unter ihr',
+        barFacts !== null && !barFacts.covered,
+        barFacts ? `verdeckt ${barFacts.covered}` : 'keine Leiste'
+      );
     }
 
     // What is left for the day after the chrome has taken its share. The
@@ -1836,8 +2028,14 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       // press this assertion is about, so a trial click on one times out and
       // reports the overlap defect over a button that is merely off today —
       // the day picker's `›` is exactly that at the best-days horizon (G-56).
+      // Not the grabber: since PAR-482 it lies BEHIND the whole header as its
+      // drag surface, so its box reaches the right edge while the controls
+      // sit on top of it. The row's last control is what this asks about.
       const controls = [...header.querySelectorAll('button')].filter(
-        (el) => el.getBoundingClientRect().width > 0 && !el.disabled
+        (el) =>
+          el.getBoundingClientRect().width > 0 &&
+          !el.disabled &&
+          !el.hasAttribute('data-planner-sheet-handle')
       );
       if (controls.length === 0) return null;
       const last = controls.reduce((a, b) =>
@@ -3835,17 +4033,17 @@ step: {
     bandText.slice(0, 120)
   );
 
-  // The switch says something different on each screen, and only the phone's
-  // half is a geometry claim: there the strip IS what is short, so switching the
-  // shows off has to give the axis its row back rather than swap the sentence in
-  // it. The desktop above keeps its strip in both states, which the two
-  // assertions before this one already read off the same element.
+  // The phone draws no show band since PAR-482: the strip was `sticky` over the
+  // axis and 44 px tall there to carry its switch, which is 44 px of day
+  // covered for a sentence the grid already says at every show. The switch is a
+  // button at the end of the foot's optimise row instead, and what this asserts
+  // is the pair: no band on screen, and a button that takes the grid's show
+  // lines away and brings them back.
   //
-  // Asserted on the same stubbed five shows as the desktop, because the strip
-  // only collapses where there is a switch on it: over a park the API answered
-  // with no shows the strip reads „keine Spielzeiten", carries no switch, and
-  // must not collapse — a page without the stub would take that branch and grade
-  // nothing (📚 G-72).
+  // Asserted on the same stubbed five shows as the desktop, because the button
+  // only renders where there is something to switch: over a park the API
+  // answered with no shows there is none, and a page without the stub would
+  // take that branch and grade nothing (📚 G-72).
   {
     const phoneShows = await browser.newPage({
       viewport: { width: 390, height: 844 },
@@ -3863,63 +4061,36 @@ step: {
     }
     await phoneShows.waitForTimeout(2500);
 
-    const bandHeight = () =>
-      phoneShows
-        .locator(`${SHEET} [data-planner-show-band]`)
-        .evaluate((el) => Math.round(el.getBoundingClientRect().height));
-    const phoneToggle = phoneShows.locator(`${SHEET} [data-planner-shows-toggle]`);
+    const bandShown = await phoneShows.locator(`${SHEET} [data-planner-show-band]:visible`).count();
+    check('auf dem Telefon steht kein Show-Band', bandShown === 0, `${bandShown} sichtbar`);
 
-    // The anchor the collapse is measured against: without it a strip that never
-    // rendered would pass the assertion below for the wrong reason.
-    const shownHeight = await bandHeight();
+    const chip = phoneShows.locator(`${SHEET} [data-planner-shows-button]:visible`);
+    const linesShown = () => phoneShows.locator(`${SHEET} [data-planner-show]:visible`).count();
+    const before = await linesShown();
     check(
-      'auf dem Telefon steht der Streifen, solange die Shows an sind',
-      shownHeight >= 40,
-      `${shownHeight} px`
+      'der Show-Schalter sitzt in der Optimieren-Zeile, und die Linien stehen',
+      (await chip.count()) === 1 &&
+        (await chip.getAttribute('data-planner-shows-button')) === 'on' &&
+        before >= 2,
+      `${await chip.count()} Schalter · ${before} Linien`
     );
 
-    await phoneToggle.click();
+    await chip.click();
     await phoneShows.waitForTimeout(500);
-    const hiddenHeight = await bandHeight();
+    const hidden = await linesShown();
     check(
-      'ausgeblendet gibt der Streifen dem Telefon seine Zeile zurück',
-      hiddenHeight === 0,
-      `${shownHeight} px → ${hiddenHeight} px`
+      'der Schalter nimmt die Show-Linien aus dem Raster',
+      hidden === 0 && (await chip.getAttribute('data-planner-shows-button')) === 'off',
+      `${before} → ${hidden} Linien`
     );
 
-    // The corner it claims in exchange. Collapsed, the switch is the only thing
-    // left of the strip and it hangs over the grid's own blocks, so the trade is
-    // 44 × 44 of cover against the 45 px × full width it gave up — worth pinning
-    // as a box AND as ownership, because a control that is drawn there and does
-    // not answer there is the worse half of both states.
-    const corner = await phoneShows
-      .locator(`${SHEET} [data-planner-shows-toggle]`)
-      .evaluate((el) => {
-        const box = el.getBoundingClientRect();
-        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
-        return { w: Math.round(box.width), h: Math.round(box.height), owns: el.contains(hit) };
-      });
-    check(
-      'der freistehende Schalter ist 44 px groß und gehört ihm auch',
-      corner.w === 44 && corner.h === 44 && corner.owns,
-      `${corner.w}×${corner.h}, Mitte ${corner.owns ? 'trifft ihn' : 'trifft etwas anderes'}`
-    );
-
-    // The way back. A `click()` fails on a control something else intercepts, so
-    // this is also the assertion that the freestanding switch is reachable where
-    // it hangs over the grid.
-    check(
-      'und der Schalter bleibt der einzige und ist antippbar',
-      (await phoneToggle.count()) === 1 &&
-        (await phoneShows.locator(`${SHEET} [data-planner-show-band]`).count()) === 1
-    );
-    await phoneToggle.click();
+    await chip.click();
     await phoneShows.waitForTimeout(500);
-    const backHeight = await bandHeight();
+    const back = await linesShown();
     check(
-      'und derselbe Schalter holt den Streifen zurück',
-      backHeight === shownHeight,
-      `${hiddenHeight} px → ${backHeight} px`
+      'und derselbe Schalter holt sie zurück',
+      back === before && (await chip.getAttribute('data-planner-shows-button')) === 'on',
+      `${hidden} → ${back} Linien`
     );
 
     await phoneShows.close();
@@ -4260,7 +4431,11 @@ step: {
   }
   await push.waitForTimeout(2000);
 
-  const toggle = push.locator('[data-planner-push] button');
+  // `[aria-pressed]`: since PAR-82 the switched-on toggle also carries the
+  // "Link zum Plan teilen" button, so a bare `button` matched two elements and
+  // the first strict click ended the run.
+  const TOGGLE = '[data-planner-push] button[aria-pressed]';
+  const toggle = push.locator(TOGGLE);
   check('der Schalter ist erreichbar', (await toggle.count()) === 1);
 
   if (await toggle.count()) {
@@ -4326,7 +4501,7 @@ step: {
     );
 
     // ── Off ──────────────────────────────────────────────────────────────────
-    await push.locator('[data-planner-push] button').click();
+    await push.locator(TOGGLE).click();
     await push.waitForTimeout(1500);
 
     check('ausschalten geht auch', (await push.locator('[data-planner-push="off"]').count()) === 1);
@@ -4346,7 +4521,7 @@ step: {
 
     // ── And on again ─────────────────────────────────────────────────────────
     // A switch that only works once is the shape of bug that survives a demo.
-    await push.locator('[data-planner-push] button').click();
+    await push.locator(TOGGLE).click();
     await push.waitForTimeout(1500);
     check('und wieder an', (await push.locator('[data-planner-push="on"]').count()) === 1);
   }
@@ -6829,10 +7004,25 @@ step: {
   // column's box is 295 px of a 716 px sheet there and this row measures 195, so
   // inside the column it would leave the axis 100 px. Two copies in the DOM
   // would also be two of every selector below.
+  //
+  // Waited for, not counted at a fixed moment: the optimise row carries
+  // `data-planner-optimize` only once the day's plan has arrived, and until
+  // then it is the bell alone. Two seconds after the open were enough on a
+  // quiet server and not forty minutes into this run, where the count came
+  // back 0 with the row on screen. A wait that runs out still fails below.
+  await phone
+    .locator(`${SHEET} [data-planner-optimize]`)
+    .first()
+    .waitFor({ timeout: 15_000 })
+    .catch(() => {});
+  const footCounts = {
+    optimize: await phone.locator(`${SHEET} [data-planner-optimize]`).count(),
+    summary: await phone.locator(`${SHEET} [data-planner-summary]`).count(),
+  };
   check(
     'der Fuß wird auf dem Telefon genau einmal gezeichnet',
-    (await phone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
-      (await phone.locator(`${SHEET} [data-planner-summary]`).count()) === 1
+    footCounts.optimize === 1 && footCounts.summary === 1,
+    `Optimieren ${footCounts.optimize} · Summe ${footCounts.summary}`
   );
 
   // Nothing in the sheet paints over anything else. It did: with the foot inside
@@ -7397,14 +7587,15 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
         room.left === 0 && room.bottom === 0 && room.width >= 800,
         `Sheet ${room.width}×${room.height} bei (${room.left}, unten ${room.bottom} px)`
       );
-      // 92svh of 390, i.e. the phone ceiling doing its job at a size where the
-      // width breakpoint never reached it. Bounded on both sides: `h-auto` with
-      // no ceiling would grow past the window, and a ceiling that clamps to
-      // nothing would collapse the sheet.
+      // The whole window less a 12 px sliver: 390 px is under the 50rem
+      // `SHEET_SHORT_QUERY`, so `large` opens over the site header since
+      // PAR-482 (it was 92svh = 359 before). Bounded on both sides: a sheet as
+      // tall as the window reads as a page rather than a sheet, and a ceiling
+      // that clamps to nothing would collapse it.
       check(
-        'das Querformat-Sheet nimmt 92svh statt der ganzen Höhe',
-        room.height === 359,
-        `${room.height} px von 390 (erwartet 359 = 92svh)`
+        'das Querformat-Sheet lässt oben nur einen Streifen frei',
+        room.height === 378,
+        `${room.height} px von 390 (erwartet 378 = 100svh − 12 px)`
       );
       // Only where there IS an axis, and the guard is the assertion's own: with
       // a 404 from `/plan/day` there are no opening hours, `buildDayGrid`
@@ -7467,10 +7658,23 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // hid it, because 844 is over `sm`.
     const handle = land.locator('[data-planner-sheet-handle]');
     const handleBox = (await handle.count()) ? await handle.first().boundingBox() : null;
+    // Since PAR-482 the grabber lies behind the sheet header, as tall as the
+    // header, and a press lands on it in the strip across the top where the
+    // pill is drawn. Asked with `elementFromPoint` there, because the box is
+    // the whole header and says nothing about where the controls cover it.
+    const stripHit = handleBox
+      ? await land.evaluate(
+          ([x, y]) =>
+            document.elementFromPoint(x, y)?.closest('[data-planner-sheet-handle]') !== null,
+          [handleBox.x + handleBox.width / 2, handleBox.y + 8]
+        )
+      : false;
     check(
-      'der Griff ist im Querformat da und 44 px hoch',
-      handleBox !== null && Math.round(handleBox.height) === 44,
-      handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
+      'der Griff ist im Querformat da und nimmt oben einen Druck an',
+      handleBox !== null && Math.round(handleBox.height) >= 44 && stripHit,
+      handleBox
+        ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px · Leiste oben ${stripHit ? 'trifft' : 'trifft nicht'}`
+        : 'kein Griff'
     );
 
     // The handle's other half, and the reason it is asserted HERE and not only
@@ -7483,8 +7687,9 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // together for the same reason the portrait pass does it — either half
     // alone passes over exactly that state.
     check(
-      'und im Querformat trägt es keinen ×-Knopf',
-      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+      'und im Querformat trägt es genau einen ×-Knopf, den in der Kopfzeile',
+      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1 &&
+        (await land.locator(`${SHEET} [data-planner-sheet-close]`).count()) === 1
     );
 
     // The two PAIRS this change is built on, asserted rather than assumed.

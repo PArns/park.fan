@@ -2195,7 +2195,8 @@
       "placeholder": "Search rides",
       "noResults": "No ride found.",
       "tapHint": "Tap a ride and it lands on the next free time. Tap the block afterwards to move it in quarter hours.",
-      "opensAt": "from {time}"
+      "opensAt": "from {time}",
+      "done": "Done"
     },
     "clearDay": "Clear the day",
     "clearDayTitle": "Clear this day?",
@@ -2242,7 +2243,8 @@
       "more": "{count, plural, =1 {+1 more} other {+# more}}",
       "hidden": "Showtimes hidden",
       "hide": "Hide showtimes",
-      "show": "Show showtimes"
+      "show": "Show showtimes",
+      "chip": "Shows"
     },
     "warn": {
       "closedNow": "Reporting closed right now.",
@@ -2257,6 +2259,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minutes shorter",
       "longer": "15 minutes longer",
+      "iconPick": "Icon: {icon}. Pick another",
       "icon": {
         "break": "Break",
         "food": "Food",
@@ -2269,6 +2272,7 @@
     },
     "optimize": {
       "headliners": "Plan every headliner",
+      "headlinersShort": "Plan headliners",
       "run": "Optimise the day",
       "running": "Sorting …",
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
@@ -2320,7 +2324,8 @@
       "adjust": "Adjust"
     },
     "sheet": {
-      "handle": "Resize or close the planner",
+      "handle": "Expand or shrink the planner",
+      "close": "Close the planner",
       "resize": "Drag to resize"
     },
     "headliners": {
@@ -2423,6 +2428,9 @@
         "hintTight": "There is room for {fits} of {total} before the park closes.",
         "conflict": "{fits} of {total} fit. Untick what you can do without, or move up what you really want to ride.",
         "none": "No big ride is missing from this day.",
+        "noneFitHeight": "No big ride suits your group: {count, plural, one {the one here has} other {all # have}} a minimum height above your smallest rider. You can still add them one by one in the planner.",
+        "noneFitWet": "No big ride suits your group: {count, plural, one {the one here gets} other {all # get}} you wet, and you want to stay dry. You can still add them one by one in the planner.",
+        "noneFitBoth": "No big ride suits your group: {count, plural, one {the one here needs a height your smallest rider does not reach, or gets you wet} other {each of the # needs a height your smallest rider does not reach, or gets you wet}}. You can still add them one by one in the planner.",
         "resolved": "{count, plural, one {The ride fits into the day like this} other {All # rides fit into the day like this}}. You can keep changing your selection."
       },
       "facts": {
