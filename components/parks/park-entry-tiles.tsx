@@ -110,8 +110,9 @@ export const tileCell = cn(
   'text-foreground dark:text-foreground',
   'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50',
   // Phone: a third of the row. Chip and label side by side, the hint hidden — 47 px against the
-  // 148 px the stacked cell took, and above the 44 px a touch target needs.
-  'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2'
+  // 148 px the stacked cell took. `min-h-11` holds the 44 px a touch target needs where the label
+  // has no reserved second line: the ride row, whose lone „FAQ" cell measured 41 px without it.
+  'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2 max-sm:min-h-11'
 );
 
 /**
