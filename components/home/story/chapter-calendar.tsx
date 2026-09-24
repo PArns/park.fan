@@ -76,40 +76,40 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
           />
         </Reveal>
 
-        {/* On a phone: the heading and the links. How the forecast is made (the pipeline, the
-            feedback note and the body) opens on request (PAR-435). */}
+        <Reveal>
+          <h3 className="text-xl font-semibold">
+            <GlossaryInject noUnderline>{t('pipelineTitle')}</GlossaryInject>
+          </h3>
+          <p className="text-muted-foreground mt-1.5 max-w-3xl text-sm leading-relaxed">
+            {t('pipelineLead')}
+          </p>
+        </Reveal>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map(({ icon: Icon, title, text, value, label }, i) => (
+            <Reveal key={title} delay={i * 70}>
+              <div className="border-border bg-card/60 flex h-full flex-col rounded-2xl border p-5">
+                <span className="bg-primary/10 text-primary mb-3 flex size-9 items-center justify-center rounded-xl">
+                  <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                </span>
+                <h4 className="font-semibold">{title}</h4>
+                <p className="text-muted-foreground mt-1.5 flex-1 text-sm leading-relaxed">
+                  <GlossaryInject>{text}</GlossaryInject>
+                </p>
+                {value && (
+                  <div className="border-border mt-4 border-t pt-3">
+                    <div className="text-primary text-xl font-bold">{value}</div>
+                    <div className="text-muted-foreground text-xs">{label}</div>
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* On a phone the pipeline is the chapter's exhibit; the feedback note and the body
+              open on request (PAR-435). */}
         <MobileMore label={tCommon('showMore')}>
-          <Reveal>
-            <h3 className="text-xl font-semibold">
-              <GlossaryInject noUnderline>{t('pipelineTitle')}</GlossaryInject>
-            </h3>
-            <p className="text-muted-foreground mt-1.5 max-w-3xl text-sm leading-relaxed">
-              {t('pipelineLead')}
-            </p>
-          </Reveal>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map(({ icon: Icon, title, text, value, label }, i) => (
-              <Reveal key={title} delay={i * 70}>
-                <div className="border-border bg-card/60 flex h-full flex-col rounded-2xl border p-5">
-                  <span className="bg-primary/10 text-primary mb-3 flex size-9 items-center justify-center rounded-xl">
-                    <Icon className="h-4.5 w-4.5" aria-hidden="true" />
-                  </span>
-                  <h4 className="font-semibold">{title}</h4>
-                  <p className="text-muted-foreground mt-1.5 flex-1 text-sm leading-relaxed">
-                    <GlossaryInject>{text}</GlossaryInject>
-                  </p>
-                  {value && (
-                    <div className="border-border mt-4 border-t pt-3">
-                      <div className="text-primary text-xl font-bold">{value}</div>
-                      <div className="text-muted-foreground text-xs">{label}</div>
-                    </div>
-                  )}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
           <Reveal delay={80}>
             <p className="text-muted-foreground border-border mt-6 max-w-3xl border-l-2 pl-4 text-sm leading-relaxed">
               <GlossaryInject>{t('feedback')}</GlossaryInject>

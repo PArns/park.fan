@@ -34,22 +34,24 @@ export async function ChapterInPark() {
           />
         </Reveal>
 
-        {/* On a phone the heading's lead carries the chapter; the two cards open on request. */}
-        <MobileMore label={tCommon('showMore')}>
-          <div className="grid gap-5 md:grid-cols-2">
-            <Reveal>
-              <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">
-                <div className="flex items-center gap-2.5">
-                  <Star className="size-5 fill-amber-400 text-amber-500" aria-hidden="true" />
-                  <h3 className="text-lg font-semibold">{t('favTitle')}</h3>
-                </div>
-                <p className="text-muted-foreground mt-1 text-xs">{t('favHint')}</p>
-                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-                  <GlossaryInject>{t('favText')}</GlossaryInject>
-                </p>
+        {/* On a phone the favourites card stays and the map card opens on request (PAR-435).
+            `contents` keeps both items of one grid from 768 px up, and the columns ask the
+            page's width, the same as the collapse. */}
+        <div className="grid gap-5 @min-[768px]/page:grid-cols-2">
+          <Reveal>
+            <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">
+              <div className="flex items-center gap-2.5">
+                <Star className="size-5 fill-amber-400 text-amber-500" aria-hidden="true" />
+                <h3 className="text-lg font-semibold">{t('favTitle')}</h3>
               </div>
-            </Reveal>
+              <p className="text-muted-foreground mt-1 text-xs">{t('favHint')}</p>
+              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                <GlossaryInject>{t('favText')}</GlossaryInject>
+              </p>
+            </div>
+          </Reveal>
 
+          <MobileMore label={tCommon('showMore')} contents>
             <Reveal delay={80}>
               <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">
                 <div className="flex items-center gap-2.5">
@@ -63,8 +65,8 @@ export async function ChapterInPark() {
                 </p>
               </div>
             </Reveal>
-          </div>
-        </MobileMore>
+          </MobileMore>
+        </div>
       </div>
     </section>
   );

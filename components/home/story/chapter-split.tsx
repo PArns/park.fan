@@ -18,7 +18,9 @@ import { cn } from '@/lib/utils';
  * for a screen reader and for a crawler. `order` moves the box, never the source.
  * Below a 768 px page the prose is drawn under the exhibit: a phone reads the
  * chapter as heading, then the live component, then the argument behind "show
- * more" (PAR-435).
+ * more" (PAR-435). Every switch here asks the page's width, not the window's,
+ * so the collapse and the two-column grid cannot disagree while the trip
+ * planner narrows the page.
  *
  * **The exhibit is not wrapped in `Reveal`.** `Reveal` keeps a `translate-y-0`
  * on its wrapper for good, and a transform makes that wrapper a backdrop root —
@@ -40,7 +42,7 @@ export function ChapterSplit({
 }: {
   /** The live component. Rendered wide, and allowed off the container edge. */
   exhibit: ReactNode;
-  /** Which side the exhibit is drawn on from `lg` up. Alternate it per chapter. */
+  /** Which side the exhibit is drawn on from a 1024 px page up. Alternate it per chapter. */
   exhibitSide?: 'start' | 'end';
   /** The chapter's prose and its links. */
   children: ReactNode;
@@ -51,15 +53,26 @@ export function ChapterSplit({
   return (
     <div
       className={cn(
-        'grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-12',
+        'grid gap-8 @min-[1024px]/page:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] @min-[1024px]/page:items-center @min-[1024px]/page:gap-12',
         className
       )}
     >
-      <Reveal className={cn('@max-[768px]/page:order-last', exhibitAtStart && 'lg:order-2')}>
+      <Reveal
+        className={cn(
+          '@max-[768px]/page:order-last',
+          exhibitAtStart && '@min-[1024px]/page:order-2'
+        )}
+      >
         {children}
       </Reveal>
 
-      <div className={cn(exhibitAtStart ? 'lg:order-1 lg:-ml-8 xl:-ml-14' : 'lg:-mr-8 xl:-mr-14')}>
+      <div
+        className={cn(
+          exhibitAtStart
+            ? '@min-[1024px]/page:order-1 @min-[1024px]/page:-ml-8 @min-[1280px]/page:-ml-14'
+            : '@min-[1024px]/page:-mr-8 @min-[1280px]/page:-mr-14'
+        )}
+      >
         {exhibit}
       </div>
     </div>
