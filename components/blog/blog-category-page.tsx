@@ -25,10 +25,11 @@ import { blogFeedAlternates } from '@/lib/blog/feed';
 import { categoryPath, NEWS_CATEGORY } from '@/lib/blog/paths';
 
 /**
- * A category listing, shared by `/blog/category/[...path]` and `/news`. The news category's
- * listing is the news overview at `/news` (`categoryPath` in `lib/blog/paths.ts`); every other
- * category keeps its `/blog/category/…` URL. Canonical, hreflang and breadcrumbs all come from
- * `categoryPath`, so the two routes cannot disagree about which URL a category has.
+ * A category listing's metadata, shared by `/blog/category/[...path]` and `/news`. The news
+ * category's listing is the news overview at `/news` (`categoryPath` in `lib/blog/paths.ts`, its
+ * body is `NewsIndexPageBody`); every other category keeps its `/blog/category/…` URL. Canonical,
+ * hreflang and breadcrumbs all come from `categoryPath`, so the two routes cannot disagree about
+ * which URL a category has.
  */
 export async function buildCategoryMetadata(locale: string, path: string[]): Promise<Metadata> {
   if (!routing.locales.includes(locale as Locale)) return {};

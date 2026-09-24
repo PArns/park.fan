@@ -2465,5 +2465,15 @@
       "adopted": "Il piano ora è nel tuo pianificatore.",
       "open": "Apri pianificatore"
     }
+  },
+  "news": {
+    "intro": "Cosa succede nei parchi, dalla notizia più recente.",
+    "count": "{count, plural, one {# notizia} other {# notizie}}",
+    "filter": {
+      "label": "Filtra per parco",
+      "all": "Tutti i parchi"
+    },
+    "moreFromPark": "Altre notizie da {park}",
+    "byline": "Di {author}"
   }
 }

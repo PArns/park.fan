@@ -4,6 +4,23 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: `/news` sieht nicht mehr aus wie der Blog
+
+Die Übersicht `/news` war bis hier die Kategorieseite des Blogs an neuer URL: Kartenraster,
+Kategoriebaum, Tag-Cloud. Jetzt ist sie ein Strom nach Tagen, neueste zuerst. Jeder Tag beginnt mit
+Datum und Alter (`NewsAge`), jede Meldung trägt ihren Park als Link, den Titel, eine Zeile Teaser
+und ein kleines Bild. Über dem Strom filtern Pillen nach Park (`?park=<slug>`), angeboten werden nur
+Parks mit News. Die Seite bleibt statisch, der Filter läuft im Browser und die Canonical bleibt
+`/news`.
+
+Ein News-Beitrag öffnet nicht mehr mit dem Vollbild-Hero der Artikel, sondern mit einem Kopf im
+Seitenfluss: News-Label und Park, Datum mit Alter, Titel, Teaser, Autor und das Titelbild als Band.
+Die Lesezeit entfällt. Am Ende steht „Mehr News aus <Park>“, und wenn es davon keine gibt, die
+neuesten anderen News. Der Header ist auf `/news/…` deshalb keine Hero-Seite mehr.
+
+Der Park einer Meldung ist der erste Eintrag in `parkLinks`, ohne Eintrag der bestbewertete Park,
+den der Beitrag erwähnt (`getNewsParkRef`). Siehe `docs/rules/news-live-under-news.md`.
+
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
 
 „Wartezeiten-Kalender" passt in der Ersatzschrift („Geist Fallback") gerade noch in eine Zeile, in

@@ -2465,5 +2465,15 @@
       "adopted": "Der Plan steht jetzt in deinem Planer.",
       "open": "Planer öffnen"
     }
+  },
+  "news": {
+    "intro": "Neues aus den Parks, die neueste Meldung zuerst.",
+    "count": "{count, plural, one {# Meldung} other {# Meldungen}}",
+    "filter": {
+      "label": "Nach Park filtern",
+      "all": "Alle Parks"
+    },
+    "moreFromPark": "Mehr News aus {park}",
+    "byline": "Von {author}"
   }
 }

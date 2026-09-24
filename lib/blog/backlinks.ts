@@ -314,6 +314,39 @@ export function getPostsForPark(
   return resolveMentions(buildIndex().parks.get(parkSlug), locale, options);
 }
 
+/**
+ * The one park a news post is about, for its label on `/news` and its "more news from" list.
+ *
+ * A news item belongs to one park, and every news post so far names it in `parkLinks`. So the
+ * first configured entry wins, in the order the author wrote them — the Disneyland Paris note
+ * lists `disneyland-park` before `disney-adventure-world`, and the first is the resort's name
+ * readers look for. Without configuration the best-scored park the post mentions stands in, the
+ * same score the park pages rank by. Resolved per post across all translations, like the index.
+ */
+export function getNewsParkRef(translationKey: string): ManifestParkRef | null {
+  const entries = BLOG_POSTS_META.filter(
+    (entry) => translationKeyOf(entry.slug, entry.frontmatter) === translationKey
+  );
+  if (entries.length === 0) return null;
+  const { suppressed, mentions } = collectMentions(entries, 'park');
+  if (suppressed || mentions.size === 0) return null;
+
+  let best: { slug: string; mention: Mention; score: number } | null = null;
+  for (const [slug, mention] of mentions) {
+    if (mention.explicit) {
+      best = { slug, mention, score: Infinity };
+      break;
+    }
+    const score = Math.max(
+      ...entries.map((entry) => scoreFor(entry.frontmatter, slug, false, mention.viaRide))
+    );
+    if (!best || score > best.score) best = { slug, mention, score };
+  }
+  if (!best) return null;
+  const geo = [...best.mention.geoPaths];
+  return geo.length > 0 ? { slug: best.slug, geo } : { slug: best.slug };
+}
+
 /** The same for a single ride. Ranking and locale semantics as above. */
 export function getPostsForRide(
   locale: Locale,

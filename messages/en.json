@@ -2465,5 +2465,15 @@
       "adopted": "The plan is now in your planner.",
       "open": "Open planner"
     }
+  },
+  "news": {
+    "intro": "What is happening at the parks, newest first.",
+    "count": "{count, plural, one {# story} other {# stories}}",
+    "filter": {
+      "label": "Filter by park",
+      "all": "All parks"
+    },
+    "moreFromPark": "More news from {park}",
+    "byline": "By {author}"
   }
 }

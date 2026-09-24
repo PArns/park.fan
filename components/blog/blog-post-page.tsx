@@ -13,6 +13,11 @@ import {
 } from '@/lib/blog/paths';
 import { BlogContent } from '@/components/blog/blog-content';
 import { BlogPostBanner } from '@/components/blog/blog-post-banner';
+import { NewsPostHeader } from '@/components/blog/news-post-header';
+import { NewsRow } from '@/components/blog/news-row';
+import { getNewsParkRef } from '@/lib/blog/backlinks';
+import { listNewsByDate } from '@/lib/blog/listing';
+import { resolveNewsPark } from '@/lib/blog/news-park';
 import { HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
 import { cn } from '@/lib/utils';
 import { BlogLanguageNotice } from '@/components/blog/blog-language-notice';
@@ -40,6 +45,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
+import type { BlogListItem } from '@/lib/blog/types';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 
 /**
@@ -271,6 +277,12 @@ export async function BlogPostPageBody({
   const shareUrl = `${SITE_URL}/${locale}${postPath(post)}`;
   const hasToc = extractToc(post.content).length >= 3;
 
+  // A news post opens with its date and park instead of the article hero, and ends with more
+  // news: from the same park when there is any, otherwise the newest other notes.
+  const newsPark = isNews ? await resolveNewsPark(post.translationKey) : null;
+  const moreNews = isNews ? listMoreNews(locale as Locale, post.translationKey) : null;
+  const tNews = isNews ? await getTranslations({ locale, namespace: 'news' }) : null;
+
   return (
     <>
       <BlogReadingProgress />
@@ -280,17 +292,29 @@ export async function BlogPostPageBody({
           browser then fetched the optimized rendition — a second, full-size
           download of an image nothing displayed. `<Image priority>` in the banner
           emits the correct preload on its own. */}
-      {/* Full-bleed cover banner — the header floats transparent over it. */}
-      <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
+      {/* Full-bleed cover banner — the header floats transparent over it. News has its own,
+          slimmer head inside the container instead (`NewsPostHeader`). */}
+      {!isNews && <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />}
 
       {/* Pulled up over the banner on phones — see `HERO_FLOW_INTO_PULL`, which
             owns the number so it stays paired with the banner's bottom padding.
             `relative` puts this above the banner's stacking context. */}
-      <PageContainer className={cn('relative pt-0 sm:pt-8', HERO_FLOW_INTO_PULL)}>
+      <PageContainer
+        className={cn('relative', isNews ? 'pt-6 sm:pt-8' : ['pt-0 sm:pt-8', HERO_FLOW_INTO_PULL])}
+      >
         <BlogPostingStructuredData post={post} locale={locale} path={postPath(post)} />
         <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
         <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
+
+        {isNews && (
+          <NewsPostHeader
+            post={post}
+            park={newsPark}
+            currentLocale={locale as Locale}
+            label={kicker}
+          />
+        )}
 
         <BlogLanguageNotice
           currentLocale={locale as Locale}
@@ -352,6 +376,20 @@ export async function BlogPostPageBody({
                  soft "make park.fan your preferred Google source" ask. */}
               <PreferredSourcePrompt className="mt-8" />
 
+              {moreNews && moreNews.posts.length > 0 && (
+                <NewsRow
+                  locale={locale as Locale}
+                  posts={moreNews.posts}
+                  title={
+                    moreNews.fromPark && newsPark
+                      ? tNews?.('moreFromPark', { park: newsPark.name })
+                      : undefined
+                  }
+                  boxed
+                  className="mt-8"
+                />
+              )}
+
               {/* Prev/next as a standalone, full-width bar right under the article
                  so it doesn't get buried under the footer sections. */}
               <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
@@ -379,4 +417,25 @@ export async function BlogPostPageBody({
       <PageBottomSections locale={locale} />
     </>
   );
+}
+
+/** How many other notes a news post lists at its end. */
+const MORE_NEWS_COUNT = 3;
+
+/**
+ * The other news a news post ends with: the park's own when it has any, newest first, else the
+ * newest notes overall. `fromPark` says which of the two it is, for the section's label.
+ */
+function listMoreNews(
+  locale: Locale,
+  translationKey: string
+): { posts: BlogListItem[]; fromPark: boolean } {
+  const others = listNewsByDate(locale).filter((p) => p.translationKey !== translationKey);
+  const parkSlug = getNewsParkRef(translationKey)?.slug;
+  const fromPark = parkSlug
+    ? others.filter((p) => getNewsParkRef(p.translationKey)?.slug === parkSlug)
+    : [];
+  return fromPark.length > 0
+    ? { posts: fromPark.slice(0, MORE_NEWS_COUNT), fromPark: true }
+    : { posts: others.slice(0, MORE_NEWS_COUNT), fromPark: false };
 }
