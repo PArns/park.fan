@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
+
+Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
+40 px und das Band mit `pt-2.5 pb-3`. Die Startseiten-Variante (`tile`) hat eine 48-px-Plakette
+und einen `text-2xl`-Titel. `ChapterPanel`, `PageSection` und `AttractionHistoryPanel` beginnen
+mit 24 statt 40 px Abstand. Gemessen mit `pnpm measure:mobile-height` bei 390 × 664: Startseite
+−798 px, Ride-Seite Taron −226 px, Statistik −92 px, Parkseite −84 px, Kalender −80 px. Ab `sm`
+ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen Werten). Die
+Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
+den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
+
 ## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
 
 Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
