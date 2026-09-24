@@ -695,6 +695,29 @@ from the first screen line, the pill lies across them — 240–336 px against a
 360 px, over the search control at 1024 and 1280. The in-flow cluster is the only one now, on every
 page and in both states of the bar, so the width budget above is the whole budget.
 
+### On a phone the preferences live in the menu (PAR-434)
+
+Below a **640 px bar** (`@max-[640px]:hidden`, the bar's width like every switch in it) the locale
+switcher, the theme switch and the °C/°F button are not in the bar at all. They are one row,
+„Einstellungen", at the top of the burger sheet (at its end they sat at y=662 of a 664 px
+sheet) — the same three components, so a change to one is
+a change to both. The sheet copy is unconditional: the sheet exists only below a 1024 px bar and a
+portal cannot ask the header's container anything, so between 640 and 1023 the three are in both
+places, which costs nothing, while two conditions that could disagree might leave them in neither.
+The locale switcher's list is `z-[80]` for this, above the sheet's `z-[70]` overlay.
+
+What the bar carries on a phone instead is the **planner's way in** (`PlannerHeaderButton`, a 36 px
+calendar icon beside the burger), because the edge tab is not drawn on `planner-phone` any more —
+see [trip planner](../features/trip-planner.md#the-tab-is-on-every-page-but-a-phones). That button
+asks `planner-phone`, not the bar's width; on `planner-phone` the panel never insets the page, so
+the two are the same number wherever it applies.
+
+Measured after, on `/parks/europe/germany` in de and fr: the row is lockup 107, search 36, planner
+36, burger 36 and **0.0 px over its content box at 320, 360 and 390**, where it used to be 12.8 px
+over at 320. From 640 up nothing in the bar moved. So the 25 px budget above is history for a
+phone: the row has ~100 px of slack there now, and the question the next control asks is whether it
+is navigation (the bar) or a preference (the sheet).
+
 ### The bar has two states and the navigation is not one of them
 
 `isTransparent` used to decide whether the main menu existed. On the six pages that open on a

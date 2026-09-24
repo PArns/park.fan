@@ -491,7 +491,8 @@
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
     "readingTime": "{minutes} Min.",
-    "nearby": "In deiner Nähe"
+    "nearby": "In deiner Nähe",
+    "preferences": "Einstellungen"
   },
   "theme": {
     "light": "Hell",
