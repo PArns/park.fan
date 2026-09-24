@@ -65,8 +65,9 @@ export function RideAlertBell({
     setOpen(true);
   }, []);
 
-  // The park's list when there is one. This ride is added when the list does not carry it, so
-  // the dialog can always pick it.
+  // The park's list when there is one. This ride's own entry is the card's: its reading is the
+  // one the bell's visibility rule just read, where the list counts a wait only while the ride is
+  // `OPERATING`. Added when the list does not carry the ride, so the dialog can always pick it.
   const dialogAttractions = useMemo((): RideAlertDialogAttraction[] => {
     const self: RideAlertDialogAttraction = {
       id: attractionId,
@@ -76,9 +77,17 @@ export function RideAlertBell({
       backgroundPosition: objectPosition,
     };
     if (!parkAttractions) return [self];
-    return parkAttractions.some((a) => a.id === attractionId)
-      ? [...parkAttractions]
-      : [...parkAttractions, self];
+    if (!parkAttractions.some((a) => a.id === attractionId)) return [...parkAttractions, self];
+    return parkAttractions.map((a) =>
+      a.id === attractionId
+        ? {
+            ...a,
+            currentWaitTime,
+            backgroundImage: backgroundImage ?? a.backgroundImage,
+            backgroundPosition: objectPosition ?? a.backgroundPosition,
+          }
+        : a
+    );
   }, [
     parkAttractions,
     attractionId,
