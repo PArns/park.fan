@@ -4,6 +4,14 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
+
+Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprache ein `<url>` mit
+`<news:news>` (Name `park.fan`, Sprache, Datum aus dem Frontmatter, Titel). Nur echte
+Übersetzungen, höchstens 1000 Einträge, leer ohne News statt 404. Eingetragen in `robots.txt`,
+geprüft von `pnpm test:news-sitemap` und `pnpm check:agent-ready`. Details:
+[sitemaps](seo/sitemaps.md#the-news-sitemap).
+
 ## Unreleased – Ride-Karten sind auf dem Handy eine Zeile (PAR-431)
 
 Unter `sm` rendert die Ride-Liste der Park-Seite (`LandSection`) jede `AttractionCard` als Zeile:

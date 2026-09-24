@@ -76,6 +76,29 @@ check(
   /ARTICLE 4 OF THE EUROPEAN/.test(robots.text)
 );
 
+// ── the sitemaps robots.txt names ───────────────────────────────────────────
+// A Sitemap line pointing at a 404 is only visible in Search Console, days later.
+const sitemapUrls = [...robots.text.matchAll(/^Sitemap: (\S+)$/gm)].map((m) => m[1]);
+check(
+  'robots.txt names the news sitemap',
+  sitemapUrls.includes(`${SITE}/sitemap-news.xml`),
+  `${sitemapUrls.length} sitemap(s)`
+);
+for (const url of sitemapUrls) {
+  const sitemap = await get(url.replace(SITE, ''));
+  check(
+    `${url.replace(SITE, '')} serves as XML`,
+    sitemap.status === 200 && sitemap.type.includes('xml') && sitemap.text.startsWith('<?xml')
+  );
+}
+// Empty on most days, and served anyway: the file is in robots.txt permanently.
+const newsSitemap = await get('/sitemap-news.xml');
+check(
+  'the news sitemap declares the news namespace',
+  /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/.test(newsSitemap.text),
+  `${(newsSitemap.text.match(/<url>/g) ?? []).length} news URL(s)`
+);
+
 // ── the licence ─────────────────────────────────────────────────────────────
 const license = await get('/license.xml');
 check('license.xml serves as RSL', license.status === 200 && license.type.includes('rsl+xml'));
