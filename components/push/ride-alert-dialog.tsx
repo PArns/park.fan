@@ -169,14 +169,19 @@ export function RideAlertDialog({
   }, [selectedId, attractions]);
 
   // A bell's ride can sit anywhere in an alphabetical list that shows five rows on a phone, so
-  // it is scrolled into view once it is the picked row. Runs again only when the pick changes.
+  // it is scrolled into view once it is the picked row. One frame later, and again when the
+  // alerts arrive: the dialog's content mounts through a portal after the commit that opened it,
+  // so on that first run the list is not in the DOM yet.
   const listRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open || !initialAttractionId || selectedId !== initialAttractionId) return;
-    listRef.current
-      ?.querySelector<HTMLElement>('[aria-current="true"]')
-      ?.scrollIntoView({ block: 'nearest' });
-  }, [open, initialAttractionId, selectedId]);
+    const frame = requestAnimationFrame(() => {
+      listRef.current
+        ?.querySelector<HTMLElement>('[aria-current="true"]')
+        ?.scrollIntoView({ block: 'nearest' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [open, initialAttractionId, selectedId, alerts]);
 
   const handleAdd = async () => {
     const attraction = attractions.find((a) => a.id === selectedId);
@@ -311,8 +316,11 @@ export function RideAlertDialog({
                 {/* The list filters itself (`shouldFilter={false}`): cmdk's own
                     matcher scores fuzzy subsequences, so "tar" would also find
                     rides that merely contain a t, an a and an r in that order. */}
+                {/* `defaultValue` puts cmdk's own highlight on the bell's ride. Left to
+                    itself it highlights the first row, which then looks picked. */}
                 <Command
                   shouldFilter={false}
+                  defaultValue={initialAttractionId}
                   label={t('selectRide')}
                   className="border-input border bg-transparent **:data-[slot=command-input-wrapper]:h-11 **:data-[slot=command-input-wrapper]:gap-2 **:data-[slot=command-input-wrapper]:px-3 sm:**:data-[slot=command-input-wrapper]:h-10 [&_[data-slot=command-input-wrapper]_svg]:size-4"
                 >
