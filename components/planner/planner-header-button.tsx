@@ -11,7 +11,7 @@ import { plannerUi } from '@/lib/planner/ui-store';
  * The planner's way in on a phone, in the header instead of on the window's edge.
  *
  * `PlannerEdgeTab` is the way in everywhere else and it is `planner-phone:hidden` now: on a
- * 390 px screen it was a 34 px strip laid over the right edge of every page, across card text
+ * 390 px screen it was 24 × 102 px laid over the right edge of every page, across card text
  * and prices (PAR-434). This button takes its place in the bar, where the three preference
  * controls moved out to the burger sheet and left the room for it.
  *

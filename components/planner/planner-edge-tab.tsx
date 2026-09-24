@@ -38,7 +38,7 @@ import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/poi
  * On a phone (`planner-phone`) it is not drawn at all. Open, the panel is a
  * modal bottom sheet with a grab handle of its own, and a tab clinging to the
  * right edge would be a second handle for the same object, over the overlay.
- * Closed, it was a 34 px strip over the right edge of every page (PAR-434), so
+ * Closed, it was a 24 × 102 px tab over the right edge of every page (PAR-434), so
  * the way in there is `PlannerHeaderButton` in the bar instead.
  */
 export function PlannerEdgeTab({
@@ -145,7 +145,7 @@ export function PlannerEdgeTab({
         // needs no second term of its own.
         //
         // And it is hidden there while CLOSED as well (PAR-434): on a 390 px
-        // screen the closed tab was a 34 px strip laid over the right edge of
+        // screen the closed tab was 24 × 102 px laid over the right edge of
         // every page, across card text and prices. The way in on a phone is
         // `PlannerHeaderButton` in the bar, which asks the same variant, so
         // exactly one of the two exists at any size.
