@@ -1714,7 +1714,6 @@
     "rideDialog": {
       "title": "Wait-time alerts",
       "subtitle": "For {park} – we’ll notify you once the wait drops below your threshold.",
-      "soloSubtitle": "{park} – we’ll notify you once the wait drops below your threshold.",
       "loading": "Loading…",
       "empty": "No alerts for this park yet.",
       "thresholdLabel": "under {minutes} min",
@@ -1733,8 +1732,6 @@
       "close": "Close",
       "entry": "Wait-time alerts",
       "entryWithCount": "Wait-time alerts ({count})",
-      "removeShort": "Remove",
-      "save": "Save",
       "outOfSeason": "Winter only",
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",

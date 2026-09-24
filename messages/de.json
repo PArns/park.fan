@@ -1714,7 +1714,6 @@
     "rideDialog": {
       "title": "Wartezeit-Alarme",
       "subtitle": "Für {park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
-      "soloSubtitle": "{park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
       "loading": "Lädt …",
       "empty": "Noch keine Alarme für diesen Park.",
       "thresholdLabel": "unter {minutes} Min.",
@@ -1733,8 +1732,6 @@
       "close": "Schließen",
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
-      "removeShort": "Entfernen",
-      "save": "Speichern",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",

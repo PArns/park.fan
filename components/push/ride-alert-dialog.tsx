@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Bell, Check, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -43,7 +43,7 @@ import { cn } from '@/lib/utils';
 export interface RideAlertDialogAttraction {
   id: string;
   name: string;
-  slug: string;
+  slug?: string;
   /** Seeds the add-form's slider when this ride is selected — see `defaultThresholdFor`. */
   currentWaitTime?: number | null;
   /** The ride's photo for its row in the picker — the same fields `PlannerRideThumb` reads. */
@@ -57,13 +57,18 @@ interface RideAlertDialogProps {
   parkName: string;
   /** Every ride in this park the "add" row may offer. */
   attractions: RideAlertDialogAttraction[];
+  /**
+   * The ride to pick on open — set by a ride's own bell (`RideAlertBell`). When that ride already
+   * has an alert it is not in the picker; its alert is in the list above, and the picker falls
+   * back to the first ride that can take one.
+   */
+  initialAttractionId?: string;
 }
 
 /**
- * All of this park's wait-time alerts, and a form to add one — the central
- * entry point (`RideAlertsEntryButton`, in the park overview). A ride's own
- * card opens `RideAlertQuickDialog` instead, which needs no dropdown because
- * the ride is already fixed by which bell was clicked.
+ * All of this park's wait-time alerts, and a form to add one. Two entry
+ * points open it: `RideAlertsEntryButton` in the park overview, and a ride's
+ * own bell (`RideAlertBell`), which passes `initialAttractionId`.
  *
  * Structure follows `PlannerFitAssistant`: `max-h-[92svh]` with the header
  * and footer `shrink-0` and only the middle scrolling, so a long list never
@@ -75,6 +80,7 @@ export function RideAlertDialog({
   onOpenChange,
   parkName,
   attractions,
+  initialAttractionId,
 }: RideAlertDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
   const locale = useLocale();
@@ -83,7 +89,7 @@ export function RideAlertDialog({
   // for this park" — the add-form would then offer every ride again,
   // including ones this browser already watches.
   const [alerts, setAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
-  const [rawSelectedId, setRawSelectedId] = useState('');
+  const [rawSelectedId, setRawSelectedId] = useState(initialAttractionId ?? '');
   const [query, setQuery] = useState('');
   const [thresholdRaw, setThresholdRaw] = useState('');
   const threshold = parseThresholdMinutes(thresholdRaw);
@@ -115,6 +121,7 @@ export function RideAlertDialog({
     setAddError(null);
     setRemoveErrors({});
     setQuery('');
+    if (initialAttractionId) setRawSelectedId(initialAttractionId);
     void fetchRideAlertsRemote().then((result) => {
       if (cancelled) return;
       if (!result.ok) {
@@ -161,6 +168,16 @@ export function RideAlertDialog({
     setThresholdRaw(String(defaultThresholdFor(attraction?.currentWaitTime)));
   }, [selectedId, attractions]);
 
+  // A bell's ride can sit anywhere in an alphabetical list that shows five rows on a phone, so
+  // it is scrolled into view once it is the picked row. Runs again only when the pick changes.
+  const listRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open || !initialAttractionId || selectedId !== initialAttractionId) return;
+    listRef.current
+      ?.querySelector<HTMLElement>('[aria-current="true"]')
+      ?.scrollIntoView({ block: 'nearest' });
+  }, [open, initialAttractionId, selectedId]);
+
   const handleAdd = async () => {
     const attraction = attractions.find((a) => a.id === selectedId);
     // Defensive, not the real gate — the button below is already disabled
@@ -184,7 +201,7 @@ export function RideAlertDialog({
     // No manual reset here — the just-added ride drops out of `rows`,
     // `selectedId` moves to whatever is next, and the effect above reseeds
     // the slider for it.
-    trackRideAlertSet('central');
+    trackRideAlertSet(initialAttractionId ? 'card' : 'central');
   };
 
   const handleRemove = async (attractionId: string) => {
@@ -305,7 +322,7 @@ export function RideAlertDialog({
                     placeholder={t('searchRide')}
                     className="h-11 py-0 sm:h-10"
                   />
-                  <CommandList className="max-h-44 sm:max-h-56">
+                  <CommandList ref={listRef} className="max-h-44 sm:max-h-56">
                     <CommandEmpty className="text-muted-foreground px-3 py-4 text-center text-xs">
                       {t('noRideFound')}
                     </CommandEmpty>
@@ -375,6 +392,9 @@ export function RideAlertDialog({
                         attractions.find((a) => a.id === selectedId)?.currentWaitTime
                       )}
                     />
+                    <p className="text-muted-foreground text-[11px] leading-snug">
+                      {t('todayOnly')}
+                    </p>
                   </div>
                 )}
                 <Button
