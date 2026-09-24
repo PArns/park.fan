@@ -4,6 +4,19 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Park-Karten sind auf dem Handy eine Zeile (PAR-432)
+
+Unter `sm` rendert `ParkCard` keine Karte mehr, sondern eine Zeile mit vier festen Zeilen: Name mit
+Favoriten-Stern, Ort · Entfernung, `ParkStatusBadge` und `CrowdLevelBadge`, dann Schließ- oder
+Öffnungszeit (`ParkCardScheduleFooter compact`). Hat der Park ein Foto, steht links ein Thumbnail
+64 × 40 mit dem Fokuspunkt. „Nächster offen“ steht als Text hinter der Uhrzeit statt als drittes Badge. Die Zeile ist 100 px hoch, die Karte war 146 px. Gemessen mit
+`measure:mobile-height` bei 390 × 664: Startseite 27.905 → 27.420 px, Deutschland 3.724 → 3.312 px,
+Niederlande 2.706 → 2.522 px, Phantasialand 12.232 → 12.141 px. `measure:cls --late` auf der
+Deutschland-Seite mobil, spät: 0,2322 → kein Wert mehr, weil die Badges mit dem Batch-Call kommen und
+die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung mit, der Desktop
+bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
+Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
+
 ## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
 
 Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als

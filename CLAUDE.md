@@ -164,6 +164,7 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Blog spotlight cards](docs/rules/blog-spotlight-cards.md)** — the row template sits on the card itself, never on a shared wrapper that
   also holds the heading.
 - **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
+  `ParkCard` does the same with its own four-line row (`data-park-card-row`).
   Two markups, not one responsive tree. The hero overlap is safe by construction:
   `HERO_FLOW_INTO_PULL` (176 px) must stay smaller than the hero's mobile `pb-48`.
 - **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
