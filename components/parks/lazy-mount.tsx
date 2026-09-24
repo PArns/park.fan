@@ -12,6 +12,12 @@ export interface LazyMountGrid {
   count: number;
   /** Approximate height of one grid row in px, including the row gap. */
   rowHeight: number;
+  /**
+   * Row height for the one-column (phone) grid, when it differs from `rowHeight` — the park
+   * page's ride list lays its cards out as compact rows there (`AttractionCard`'s `phoneRow`).
+   * Falls back to `rowHeight`.
+   */
+  phoneRowHeight?: number;
   /** Extra px above the grid (section heading etc.). */
   headerHeight?: number;
 }
@@ -41,8 +47,12 @@ interface LazyMountProps {
 }
 
 /** Reserved height for `columns` columns of the grid. */
-function reservedHeight({ count, rowHeight, headerHeight = 0 }: LazyMountGrid, columns: number) {
-  return headerHeight + Math.ceil(count / columns) * rowHeight;
+function reservedHeight(
+  { count, rowHeight, phoneRowHeight, headerHeight = 0 }: LazyMountGrid,
+  columns: number
+) {
+  const row = columns === 1 ? (phoneRowHeight ?? rowHeight) : rowHeight;
+  return headerHeight + Math.ceil(count / columns) * row;
 }
 
 /**

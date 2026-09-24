@@ -1,12 +1,20 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Bell, X } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { Bell, Check, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import {
+  Command,
+  CommandEmpty,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
+import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { PushDialogHero } from '@/components/push/push-dialog-hero';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
@@ -23,6 +31,13 @@ import {
   maxThresholdFor,
   parseThresholdMinutes,
 } from '@/components/push/threshold-minutes-input';
+import {
+  filterRideAlertPickerRows,
+  resolveRideAlertSelection,
+  rideAlertPickerRows,
+} from '@/lib/push/ride-alert-picker';
+import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 
 export interface RideAlertDialogAttraction {
@@ -31,6 +46,9 @@ export interface RideAlertDialogAttraction {
   slug: string;
   /** Seeds the add-form's slider when this ride is selected — see `defaultThresholdFor`. */
   currentWaitTime?: number | null;
+  /** The ride's photo for its row in the picker — the same fields `PlannerRideThumb` reads. */
+  backgroundImage?: string | null;
+  backgroundPosition?: string;
 }
 
 interface RideAlertDialogProps {
@@ -59,12 +77,14 @@ export function RideAlertDialog({
   attractions,
 }: RideAlertDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
+  const locale = useLocale();
   const pushErrorMessage = usePushErrorMessage();
   // Three states, not two: a failed fetch must not render as "no alerts
   // for this park" — the add-form would then offer every ride again,
   // including ones this browser already watches.
   const [alerts, setAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
   const [rawSelectedId, setRawSelectedId] = useState('');
+  const [query, setQuery] = useState('');
   const [thresholdRaw, setThresholdRaw] = useState('');
   const threshold = parseThresholdMinutes(thresholdRaw);
   const [adding, setAdding] = useState(false);
@@ -94,6 +114,7 @@ export function RideAlertDialog({
     setAlerts('loading');
     setAddError(null);
     setRemoveErrors({});
+    setQuery('');
     void fetchRideAlertsRemote().then((result) => {
       if (cancelled) return;
       if (!result.ok) {
@@ -113,17 +134,20 @@ export function RideAlertDialog({
     () => new Set((Array.isArray(alerts) ? alerts : []).map((a) => a.attractionId)),
     [alerts]
   );
-  const available = useMemo(
-    () => attractions.filter((a) => !alertedIds.has(a.id)),
-    [attractions, alertedIds]
+  const rows = useMemo(
+    () => rideAlertPickerRows(attractions, alertedIds, locale),
+    [attractions, alertedIds, locale]
   );
+  const visibleRows = useMemo(() => filterRideAlertPickerRows(rows, query), [rows, query]);
 
-  // Derived, not synced via an effect: the select's value is whatever was
-  // chosen if it is still available, otherwise the first option.
-  const selectedId = useMemo(() => {
-    if (rawSelectedId && available.some((a) => a.id === rawSelectedId)) return rawSelectedId;
-    return available[0]?.id ?? '';
-  }, [available, rawSelectedId]);
+  // Derived, not synced via an effect: the visitor's pick while it is still on
+  // offer, otherwise the first ride that can take an alert at all. Resolved
+  // against every row, not the filtered ones, so typing in the search field
+  // never changes which ride the slider below belongs to.
+  const selectedId = useMemo(
+    () => resolveRideAlertSelection(rows, rawSelectedId),
+    [rows, rawSelectedId]
+  );
 
   // The slider itself CANNOT be derived the same way: it is also the
   // visitor's own input, so re-deriving it on every render would overwrite a
@@ -157,7 +181,7 @@ export function RideAlertDialog({
       ...(Array.isArray(current) ? current : []).filter((a) => a.attractionId !== attraction.id),
       result.value,
     ]);
-    // No manual reset here — the just-added ride drops out of `available`,
+    // No manual reset here — the just-added ride drops out of `rows`,
     // `selectedId` moves to whatever is next, and the effect above reseeds
     // the slider for it.
     trackRideAlertSet('central');
@@ -259,7 +283,7 @@ export function RideAlertDialog({
               </ul>
             )}
 
-            {available.length > 0 && (
+            {rows.length > 0 && (
               <div
                 className={cn(
                   'flex flex-col gap-2',
@@ -267,33 +291,92 @@ export function RideAlertDialog({
                 )}
               >
                 <p className="text-xs font-medium">{t('addTitle')}</p>
-                <select
-                  value={selectedId}
-                  onChange={(e) => setRawSelectedId(e.target.value)}
-                  aria-label={t('selectRide')}
-                  className="border-input h-9 min-w-0 rounded-md border bg-transparent px-3 text-sm shadow-xs max-sm:h-11"
+                {/* The list filters itself (`shouldFilter={false}`): cmdk's own
+                    matcher scores fuzzy subsequences, so "tar" would also find
+                    rides that merely contain a t, an a and an r in that order. */}
+                <Command
+                  shouldFilter={false}
+                  label={t('selectRide')}
+                  className="border-input border bg-transparent **:data-[slot=command-input-wrapper]:h-11 **:data-[slot=command-input-wrapper]:gap-2 **:data-[slot=command-input-wrapper]:px-3 sm:**:data-[slot=command-input-wrapper]:h-10 [&_[data-slot=command-input-wrapper]_svg]:size-4"
                 >
-                  {available.map((a) => (
-                    <option key={a.id} value={a.id}>
-                      {a.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-muted-foreground text-xs">{t('thresholdInput')}</span>
-                  <ThresholdMinutesInput
-                    value={thresholdRaw}
-                    onChange={setThresholdRaw}
-                    ariaLabel={t('thresholdInput')}
-                    minutesLabel={t('minutes')}
-                    // The cap follows the picker: each ride in the list carries
-                    // its own reading, so switching from a 20-minute ride to a
-                    // 120-minute one re-opens the top of the track.
-                    max={maxThresholdFor(
-                      attractions.find((a) => a.id === selectedId)?.currentWaitTime
-                    )}
+                  <CommandInput
+                    value={query}
+                    onValueChange={setQuery}
+                    placeholder={t('searchRide')}
+                    className="h-11 py-0 sm:h-10"
                   />
-                </div>
+                  <CommandList className="max-h-44 sm:max-h-56">
+                    <CommandEmpty className="text-muted-foreground px-3 py-4 text-center text-xs">
+                      {t('noRideFound')}
+                    </CommandEmpty>
+                    {visibleRows.map(({ attraction, selectable }) => {
+                      const wait =
+                        attraction.currentWaitTime == null
+                          ? null
+                          : roundWaitTo5(attraction.currentWaitTime);
+                      const picked = attraction.id === selectedId;
+                      return (
+                        <CommandItem
+                          key={attraction.id}
+                          value={attraction.id}
+                          disabled={!selectable}
+                          onSelect={() => setRawSelectedId(attraction.id)}
+                          aria-current={picked ? 'true' : undefined}
+                          className={cn('m-1 gap-2.5 rounded-md', picked && 'bg-primary/10')}
+                        >
+                          <PlannerRideThumb
+                            src={attraction.backgroundImage}
+                            position={attraction.backgroundPosition}
+                            size={8}
+                          />
+                          <span className="min-w-0 flex-1 truncate">{attraction.name}</span>
+                          {/* A row that cannot be picked still says what the queue
+                              reads — "no queue" only where it really is zero. The
+                              greyed row is what says it cannot be picked. */}
+                          {wait === 0 ? (
+                            <span className="text-muted-foreground shrink-0 text-xs">
+                              {t('noQueueNow')}
+                            </span>
+                          ) : !selectable && wait !== null ? (
+                            <span className="text-muted-foreground shrink-0 text-xs tabular-nums">
+                              {wait} {t('minutes')}
+                            </span>
+                          ) : wait !== null ? (
+                            <span className="shrink-0 text-sm font-semibold tabular-nums">
+                              <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>
+                                {wait}
+                              </span>
+                              <span className="text-muted-foreground ml-1 text-xs font-normal">
+                                {t('minutes')}
+                              </span>
+                            </span>
+                          ) : null}
+                          {picked && <Check className="text-primary size-4" aria-hidden="true" />}
+                        </CommandItem>
+                      );
+                    })}
+                  </CommandList>
+                </Command>
+                {/* No slider while no ride is picked — which happens only when
+                    every ride left in the list is too short a queue for an alert.
+                    A track drawn for nothing would read as a choice. */}
+                {selectedId && (
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-muted-foreground text-xs">{t('thresholdInput')}</span>
+                    <ThresholdMinutesInput
+                      value={thresholdRaw}
+                      onChange={setThresholdRaw}
+                      ariaLabel={t('thresholdInput')}
+                      minutesLabel={t('minutes')}
+                      // The cap follows the picker: each ride in the list carries
+                      // its own reading, so switching from a 20-minute ride to a
+                      // 120-minute one re-opens the top of the track.
+                      max={maxThresholdFor(
+                        attractions.find((a) => a.id === selectedId)?.currentWaitTime
+                      )}
+                    />
+                  </div>
+                )}
                 <Button
                   type="button"
                   onClick={handleAdd}
