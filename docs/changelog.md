@@ -4,6 +4,15 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – die Desktop-Leiste in der Reihenfolge des Handy-Menüs, mit dessen Icons
+
+Die Leiste oben am Desktop steht jetzt so wie das Handy-Menü: Backstage, News, Parks entdecken,
+„Mehr" (dort, wo das Handy-Menü Beste Reisezeit, Wörterbuch und So funktioniert's führt),
+Tagesplaner; die Favoriten bleiben rechts. Jeder Eintrag trägt das Icon, das er im Handy-Menü hat,
+„Mehr" drei Punkte. Alle sechs Sprachen bleiben einzeilig, Französisch mit 47 px Luft bei 1024 px.
+Im Handy-Menü ist „Meine Alarme · Fancast" jetzt ein echter Fuß: außerhalb der scrollenden Liste,
+direkt am unteren Rand.
+
 ## Unreleased – die News im Handy-Menü als kleine Karte, eine Achterbahn für „Parks entdecken"
 
 Die neueste Meldung oben im Handy-Menü war ein Chip, und in der 300 px breiten Spalte blieben davon

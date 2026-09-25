@@ -35,6 +35,22 @@ closes the sheet too: it used to close only when `pathname` changed, so the chip
 or "News" on `/news` left it open and looked broken. Only that case — a locale switch still keeps
 the sheet open, and a modifier click opens a tab without closing it.
 
+**The bar follows the sheet's order and carries the sheet's icons** (Patrick, 2026-09-25):
+Backstage, News, Parks entdecken, „Mehr", Tagesplaner, then the favorites star, which stays on the
+right. „Mehr" stands where the sheet lists its three hubs (between the parks and the planner); the
+homepage has no entry, the logo is its link. Each entry leads with the sheet's glyph at 14 px in
+the accent (`NavEntryLabel` in `nav-menu.tsx`, `icon` on `NavMenu`), „Mehr" with `Ellipsis`
+because the sheet has no „Mehr". Measured at `/<locale>/parks/europe/germany`: one line in all six
+locales at a 1024 and a 1280 px bar, document never wider than the window, French the tightest at
+**47 px of slack at 1024** and 61 at 1280 (147 before the icons). The nearby-park chip, drawn
+only within 5 km of a park, did not fit beside the French row even before; it is the next thing to
+look at if that row ever has to carry more.
+
+**The sheet's footer is a footer.** „Meine Alarme · Fancast" (`MoreMenuLinks variant="sheet"`)
+stands outside the scrolling list, on the sheet's bottom edge, with only
+`env(safe-area-inset-bottom)` or 4 px beneath it rather than the sheet's 24 px padding; the list
+scrolls above it and never takes it along.
+
 **On a mobile-first render the header contributed no navigation.** The desktop `<nav>` is
 `display:none` below its breakpoint — Google still reads links there, so nothing was lost — but the
 burger's `SheetContent` is a Radix dialog that unmounts when closed, so those links are not in the
@@ -274,8 +290,8 @@ Two decisions worth keeping:
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
 catch-all — `/alerts`, `/favorites`, `/fancast` and `/contribute` sit in here too, in the footer
-row below — so it is named after being one, and it sits at the END of the row's three entries,
-where a catch-all belongs.
+row below — so it is named after being one. It used to sit at the END of the row, where a
+catch-all belongs; since 2026-09-25 the row follows the phone sheet's order instead (below).
 
 **The footer row is `MoreMenuLinks`, and it renders twice.** Three of those pages had no link from
 the header at all: measured before it was added, a grep over `components/layout/` found `/fancast`

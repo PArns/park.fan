@@ -14,6 +14,7 @@ import {
   CalendarRange,
   ChevronDown,
   Compass,
+  Ellipsis,
   House,
   MapPin,
   Megaphone,
@@ -25,7 +26,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
-import { NavMenu, headerNavInk } from '@/components/layout/nav-menu';
+import { NavMenu, NavEntryLabel, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
@@ -213,6 +214,21 @@ export function Header({
   const setMobileMenuOpen = (next: boolean) => setMenuOpenedOn(next ? pathname : null);
   const sheetRef = useSheetReveal(mobileMenuOpen);
   const latestNews = latestNewsFrom(newsMenu, { excerpt: true });
+
+  /*
+   * A tap on a link to the page already showing changes no `pathname`, so the close-on-navigation
+   * above never fires and the sheet just stays open — the news card made that the common case on
+   * the newest post. That one case, and only that one, closes it here: a plain click on a link in
+   * the sheet's own DOM (not a portalled menu) whose path is the current one. A locale switch keeps
+   * the sheet open, as it always has, and a modifier click opens a tab. On the list and on the
+   * sheet's footer alike.
+   */
+  const closeOnSamePageTap = (event: React.MouseEvent<HTMLElement>) => {
+    const link = (event.target as HTMLElement).closest('a');
+    if (!link || !event.currentTarget.contains(link) || link.target === '_blank') return;
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
+    if (new URL(link.href).pathname === window.location.pathname) setMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     // Only hero pages have a transparent-at-the-top header, so only they need the scroll
@@ -563,25 +579,13 @@ export function Header({
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
             </Link>
           )}
-          {/* Discovery. The trigger goes to `/parks` — the actual index — where it used to go
-              straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
-          {geoMenu && geoMenu.length > 0 ? (
-            <NavMenu href="/parks" label={t('explore')} floating={isTransparent}>
-              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? []} />
-            </NavMenu>
-          ) : (
-            <Link href="/parks" prefetch={false} className={navLinkClass}>
-              {t('explore')}
-            </Link>
-          )}
-          {/* Der Tagesplaner. Er stand hier zuerst nicht, weil diese Zeile mit
-              sechs Einträgen schon umbrach; `whitespace-nowrap` und die
-              schmalere Suche haben ihn möglich gemacht und **nicht** gereicht —
-              auf Französisch lief die Zeile bei 1024 px 23,7 px über ihre Box,
-              siehe den Kommentar am „Mehr"-Eintrag unten. */}
-          <Link href={plannerPath} prefetch={false} className={navLinkClass}>
-            {t('planner')}
-          </Link>
+          {/* Die Reihenfolge ist die des Handy-Menüs (Patrick, 2026-09-25): Backstage, News,
+              Parks entdecken, dann „Mehr" an der Stelle, an der das Sheet dessen drei Ziele führt
+              (Beste Reisezeit, Wörterbuch, So funktioniert's), dann der Tagesplaner. Die
+              Startseite hat hier keinen Eintrag, das Logo ist ihr Link; die Favoriten bleiben
+              ganz rechts. Jeder Eintrag trägt das Icon, das er im Sheet trägt (`NavEntryLabel`),
+              „Mehr" die drei Punkte, weil es im Sheet kein „Mehr" gibt. */}
+
           {/* Backstage — der Blog, und er ist der eine der vier Reiselektüre-Einträge, der aus
               dem „Mehr"-Panel wieder in die Zeile zurückkommt. Er ist der stärkste SEO-Treiber
               der Seite, und hinter einem Sammel-Trigger sieht ihn nur, wer ihn aufklappt.
@@ -590,19 +594,15 @@ export function Header({
               zeichnet, steht damit wieder unmittelbar unter seinem eigenen Eintrag statt in der
               rechten Hälfte eines fremden. Mit `href="/blog"`, also ein echtes `<a>` plus
               Chevron-Button — siehe NavMenu, Regel 2. Ohne Panel-Daten bleibt der nackte Link
-              übrig, dieselbe Staffelung wie beim Parks-Eintrag oben.
-
-              Der Platz dafür war da: die Zeile hatte vor diesem Eintrag 346,8 px Luft auf
-              Französisch bei 1024 px Container (gemessen auf `/parks/europe/germany`), und die
-              23,7 px Überlauf, die PAR-191 aufgelöst hat, kamen von SECHS Einträgen. */}
+              übrig, dieselbe Staffelung wie beim Parks-Eintrag unten. */}
           {showBlog &&
             (blogMenu && blogMenu.recent.length > 0 ? (
-              <NavMenu href="/blog" label={t('blog')} floating={isTransparent}>
+              <NavMenu href="/blog" label={t('blog')} icon={Newspaper} floating={isTransparent}>
                 <BlogMenuPanel {...blogMenu} />
               </NavMenu>
             ) : (
               <Link href="/blog" prefetch={false} className={navLinkClass}>
-                {t('blog')}
+                <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
               </Link>
             ))}
           {/* News — ein eigener Eintrag neben Backstage und nicht mehr ein Streifen in dessen
@@ -613,23 +613,41 @@ export function Header({
               des Blogs, siehe `NewsMenuPanel`. Das Label ist das der News-Kategorie
               (`categories.json`), dasselbe Wort wie über der Übersicht. */}
           {newsMenu && newsMenu.items.length > 0 && (
-            <NavMenu href={newsMenu.path} label={newsMenu.label} floating={isTransparent}>
+            <NavMenu
+              href={newsMenu.path}
+              label={newsMenu.label}
+              icon={Megaphone}
+              floating={isTransparent}
+            >
               <NewsMenuPanel {...newsMenu} />
             </NavMenu>
           )}
-          {/* Der Sammel-Eintrag, und er ist der Grund, warum die drei Links darüber hier nicht
+          {/* Discovery. The trigger goes to `/parks` — the actual index — where it used to go
+              straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
+          {geoMenu && geoMenu.length > 0 ? (
+            <NavMenu
+              href="/parks"
+              label={t('explore')}
+              icon={RollerCoaster}
+              floating={isTransparent}
+            >
+              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? []} />
+            </NavMenu>
+          ) : (
+            <Link href="/parks" prefetch={false} className={navLinkClass}>
+              <NavEntryLabel icon={RollerCoaster}>{t('explore')}</NavEntryLabel>
+            </Link>
+          )}
+          {/* Der Sammel-Eintrag, und er ist der Grund, warum die drei Links darin hier nicht
               mehr stehen: „Beste Reisezeit", „Wörterbuch" und „So funktioniert's" waren eigene
               Einträge in einer Zeile, die auf Französisch bei 1024 px 23,7 px über ihre Box lief
               und das Dokument auf 1032 px zog. Sie liegen jetzt im Panel, das `MoreMenuPanel`
               beschreibt — im HTML jeder Seite, weil `MenuBand` das Panel nur versteckt und nie
-              abhängt.
-
-              Als letzter der vier Navigationseinträge, weil ein Sammel-Trigger ans Ende einer
-              Zeile gehört; die Favoriten dahinter sind wie „Mehr" kein Link. Vor allen vieren
-              kann noch der Nearby-Chip stehen, der ist aber ein Fund und kein Menüpunkt.
+              abhängt. Er steht dort, wo das Handy-Menü diese drei führt, zwischen „Parks
+              entdecken" und dem Tagesplaner.
 
               Ohne `href`: „Mehr" hat keine eigene Seite. Siehe NavMenu, Regel 2. */}
-          <NavMenu label={t('more')} floating={isTransparent}>
+          <NavMenu label={t('more')} icon={Ellipsis} floating={isTransparent}>
             <MoreMenuPanel
               bestTimeHref={bestTimePath}
               glossaryHref={glossaryPath}
@@ -637,6 +655,14 @@ export function Header({
               glossary={glossaryMenu}
             />
           </NavMenu>
+          {/* Der Tagesplaner, als letzter Eintrag vor den Favoriten, wie im Handy-Menü. Er stand
+              hier zuerst nicht, weil diese Zeile mit sechs Einträgen schon umbrach;
+              `whitespace-nowrap` und die schmalere Suche haben ihn möglich gemacht und **nicht**
+              gereicht — auf Französisch lief die Zeile bei 1024 px 23,7 px über ihre Box, siehe
+              den Kommentar am „Mehr"-Eintrag oben. */}
+          <Link href={plannerPath} prefetch={false} className={navLinkClass}>
+            <NavEntryLabel icon={CalendarPlus}>{t('planner')}</NavEntryLabel>
+          </Link>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
               dasselbe Band wie „Parks entdecken" und „Mehr", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
@@ -729,7 +755,10 @@ export function Header({
                   `max-sm:top-2` and 44 px tall, the row `min-h-11` from 8 px — so the menu starts
                   at the top of the sheet. From `sm` the X is the 16 px one at `top-4`, centred at
                   24 px, and `sm:pt-0.5` centres the row there too. */}
-              <SheetContent side="right" className="w-[300px] p-6 pt-2 sm:pt-0.5">
+              <SheetContent
+                side="right"
+                className="w-[300px] gap-0 px-6 pt-2 pb-[max(0.25rem,env(safe-area-inset-bottom))] sm:pt-0.5"
+              >
                 <nav
                   ref={sheetRef}
                   // `min-h-0` is load-bearing, not tidying: `flex-1` leaves `min-height: auto`,
@@ -737,26 +766,9 @@ export function Header({
                   // past the sheet instead of scrolling inside it, and a menu longer than the
                   // panel spilled out with no way to reach the end. With `min-h-0` it is the
                   // scroll container the close button no longer sits in.
-                  className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
+                  className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain pb-4"
                   aria-label="Mobile navigation"
-                  // A tap on a link to the page already showing changes no `pathname`, so the
-                  // close-on-navigation above never fires and the sheet just stays open — the
-                  // news chip made that the common case on the newest post. That one case, and
-                  // only that one, closes it here: a plain click on a link in the sheet's own DOM
-                  // (not a portalled menu) whose path is the current one. A locale switch keeps
-                  // the sheet open, as it always has, and a modifier click opens a tab.
-                  onClick={(event) => {
-                    const link = (event.target as HTMLElement).closest('a');
-                    if (!link || !event.currentTarget.contains(link) || link.target === '_blank') {
-                      return;
-                    }
-                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) {
-                      return;
-                    }
-                    if (new URL(link.href).pathname === window.location.pathname) {
-                      setMobileMenuOpen(false);
-                    }
-                  }}
+                  onClick={closeOnSamePageTap}
                 >
                   {/* The three preferences the bar no longer carries on a phone. FIRST in the
                       sheet, above the favourites: at the end of the list they sat at y=662 of a
@@ -871,14 +883,20 @@ export function Header({
                   <SheetNavLink href={plannerPath} icon={CalendarPlus}>
                     {t('planner')}
                   </SheetNavLink>
-                  {/* Dieselbe Zeile wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
-                      demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
-                      Besucher suchen, diese sind Ziele, die man findet. Hier stehen drei davon und
-                      im Panel vier — „Meine Favoriten" trägt in diesem Sheet schon das
-                      Favoriten-Panel darüber, siehe `MoreMenuLinks` samt Begründung, warum das
-                      Sheet die Zeile überhaupt bekommt. */}
-                  <MoreMenuLinks variant="sheet" />
                 </nav>
+                {/* Dieselbe Zeile wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
+                    demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
+                    Besucher suchen, diese sind Ziele, die man findet. „Meine Favoriten" fehlt
+                    hier, weil das Favoriten-Panel darüber es schon trägt, siehe `MoreMenuLinks`.
+
+                    Ein echter Fuß des Sheets (Patrick, 2026-09-25): AUSSERHALB der scrollenden
+                    Liste, also immer am unteren Rand und nie weggescrollt, und mit nur dem
+                    Abstand darunter, den die Home-Leiste eines iPhones braucht
+                    (`env(safe-area-inset-bottom)`, sonst 4 px) statt der 24 px Innenabstand des
+                    Sheets. Derselbe Schließ-Handler wie an der Liste. */}
+                <div onClick={closeOnSamePageTap}>
+                  <MoreMenuLinks variant="sheet" />
+                </div>
               </SheetContent>
             </Sheet>
           </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useId } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MenuBand } from '@/components/layout/menu-band';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
@@ -67,9 +67,37 @@ interface NavMenuProps {
    * replaced it with.
    */
   floating?: boolean;
+  /**
+   * The entry's glyph, drawn before the label in the accent — the same one the phone sheet gives
+   * the same destination (`SheetNavLabel` in `header.tsx`), so the two menus read as one.
+   */
+  icon?: LucideIcon;
 }
 
-export function NavMenu({ href, label, children, floating }: NavMenuProps) {
+/**
+ * The icon-plus-label of an entry in the header's nav row. One definition for the `NavMenu`
+ * triggers and the row's plain links, so every entry in the row carries its glyph the same way.
+ * 14 px and a 6 px gap: the row is one line by construction and its width is counted (see the
+ * header), and at the 20 px the sheet uses five glyphs would have cost the French row most of its
+ * slack at a 1024 px bar.
+ */
+export function NavEntryLabel({
+  icon: Icon,
+  children,
+}: {
+  icon?: LucideIcon;
+  children: React.ReactNode;
+}) {
+  if (!Icon) return <>{children}</>;
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <Icon className="text-primary h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+      {children}
+    </span>
+  );
+}
+
+export function NavMenu({ href, label, children, floating, icon }: NavMenuProps) {
   const panelId = useId();
   const { open, triggerProps, toggle } = useMenuTrigger();
   const ink = headerNavInk(floating);
@@ -91,7 +119,7 @@ export function NavMenu({ href, label, children, floating }: NavMenuProps) {
               prefetch={false}
               className={`text-sm font-medium transition-colors duration-200 ${ink}`}
             >
-              {label}
+              <NavEntryLabel icon={icon}>{label}</NavEntryLabel>
             </Link>
             {/* Separate from the link so a click can open the panel without swallowing the
                 navigation — and so touch and keyboard have a control at all. */}
@@ -118,7 +146,7 @@ export function NavMenu({ href, label, children, floating }: NavMenuProps) {
             onClick={toggle}
             className={`flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors duration-200 ${ink}`}
           >
-            {label}
+            <NavEntryLabel icon={icon}>{label}</NavEntryLabel>
             {chevron}
           </button>
         )}
