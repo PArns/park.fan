@@ -307,7 +307,7 @@ mostrava nel 2025 una donna terrorizzata in una gabbia di vetro, messa all’ast
 come “oggetto 666” prima di sparire attraverso il fondo mentre il vetro si
 riempiva di sangue. Con **889 reclami** è diventato lo spot olandese più
 contestato dell’anno; la Reclame Code Commissie ci ha visto una lesione della
-dignità umana. Walibi lo ha ritirato il 21 agosto 2025, prima in via
+dignità umana. Walibi lo ha ritirato il 22 agosto 2025, prima in via
 provvisoria e quattro giorni dopo per sempre. Un anno dopo lo stesso clown
 distribuisce zucchero filato e dorme male.
 

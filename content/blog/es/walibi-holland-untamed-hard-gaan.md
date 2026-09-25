@@ -116,8 +116,8 @@ Hoy el parque ocupa unas **40 hectáreas**, a las que se suman 20 hectáreas de
 parque vacacional (Walibi Village) y un **recinto de eventos de 80 hectáreas**
 justo al lado.
 
-Las cifras de visitantes oscilaron después mucho tiempo entre 700.000 y 900.000
-y solo desde hace poco se acercan al millón: 936.000 en el ejercicio 2023, 919.000 en 2024 y últimamente **972.000** en el ejercicio de
+Tras los años de Six Flags, las cifras de visitantes oscilaron mucho tiempo entre
+700.000 y 900.000 y solo desde hace poco se acercan al millón: 936.000 en el ejercicio 2023, 919.000 en 2024 y últimamente **972.000** en el ejercicio de
 octubre de 2024 a septiembre de 2025, casi un seis por ciento más. El director
 de marketing Marc Guffens lo llamó «el mejor año de la historia, si no cuentas
 las cifras de la época de Six Flags» (un récord con asterisco), porque entonces quedaba mucho menos por

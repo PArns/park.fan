@@ -313,7 +313,7 @@ Sale » montrait en 2025 une femme terrifiée dans une cage de verre, vendue a
 enchères comme « objet 666 » avant de disparaître par le fond pendant que le
 verre se couvrait de sang. Avec **889 plaintes**, c’est devenu la publicité
 néerlandaise la plus contestée de l’année ; la Reclame Code Commissie y a vu une
-atteinte à la dignité humaine. Walibi l’a retiré le 21 août 2025, d’abord
+atteinte à la dignité humaine. Walibi l’a retiré le 22 août 2025, d’abord
 provisoirement, puis définitivement quatre jours plus tard. Un an plus tard, le
 même clown distribue de la barbe à papa et dort mal.
 

@@ -114,8 +114,8 @@ het park eigendom van het Franse concern **Compagnie des Alpes**, dat ook
 Vandaag beslaat het park zo’n **40 hectare**, plus 20 hectare vakantiepark
 (Walibi Village) en een **evenemententerrein van 80 hectare** er direct naast.
 
-De bezoekersaantallen schommelden daarna lang tussen 700.000 en 900.000 en
-kruipen pas sinds kort richting het miljoen: 936.000 in boekjaar 2023, 919.000 in 2024 en laatstelijk **972.000** in het boekjaar
+Na de Six Flags-jaren schommelden de bezoekersaantallen lang tussen 700.000 en
+900.000, en pas sinds kort kruipen ze richting het miljoen: 936.000 in boekjaar 2023, 919.000 in 2024 en laatstelijk **972.000** in het boekjaar
 oktober 2024 tot september 2025, een plus van bijna zes procent.
 Marketingdirecteur Marc Guffens noemde dat “het beste jaar ooit, als je de
 bezoekersaantallen uit de Six Flags-tijd niet meetelt” (een record met een sterretje), omdat er destijds per

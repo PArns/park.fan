@@ -118,8 +118,8 @@ Heute umfasst der Park rund **40 Hektar**, dazu kommen 20 Hektar Ferienpark
 (Walibi Village) und ein **80 Hektar großes Veranstaltungsgelände** direkt
 daneben.
 
-Die Besucherzahlen pendelten danach lange zwischen 700.000 und 900.000 und
-nähern sich erst seit Kurzem der Million: 936.000 im Geschäftsjahr 2023, 919.000 in 2024 und zuletzt **972.000** im
+Nach der Six-Flags-Zeit pendelten die Besucherzahlen lange zwischen 700.000 und
+900.000 und nähern sich erst seit Kurzem der Million: 936.000 im Geschäftsjahr 2023, 919.000 in 2024 und zuletzt **972.000** im
 Geschäftsjahr Oktober 2024 bis September 2025, ein Plus von knapp sechs Prozent.
 Marketingchef Marc Guffens nannte das „das beste Jahr aller Zeiten, wenn man die
 Besucherzahlen aus der Six-Flags-Zeit nicht mitzählt“ (ein Rekord mit

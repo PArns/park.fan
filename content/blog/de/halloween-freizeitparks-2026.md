@@ -309,7 +309,7 @@ Sale“ zeigte 2025 eine verängstigte Frau in einem Glaskasten, die als „Obje
 666“ versteigert wurde und danach durch den Boden verschwand, während sich das
 Glas mit Blut füllte. Mit **889 Beschwerden** wurde daraus die
 meistbeanstandete niederländische Werbung des Jahres; die Reclame Code
-Commissie sah die Menschenwürde verletzt. Walibi zog den Spot am 21. August 2025
+Commissie sah die Menschenwürde verletzt. Walibi zog den Spot am 22. August 2025
 zurück, erst vorläufig, vier Tage später endgültig. Ein Jahr später verteilt
 derselbe Clown Zuckerwatte und schläft schlecht.
 

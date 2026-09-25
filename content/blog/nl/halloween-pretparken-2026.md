@@ -302,7 +302,7 @@ in 2025 een doodsbange vrouw in een glazen kooi zien die als “object 666” we
 geveild en daarna door de bodem verdween, terwijl het glas onder het bloed
 kwam te zitten. Met **889 klachten** werd dat de meest beklaagde Nederlandse
 reclame van het jaar; de Reclame Code Commissie zag de menselijke waardigheid
-geschonden. Walibi trok de spot op 21 augustus 2025 terug, eerst tijdelijk en
+geschonden. Walibi trok de spot op 22 augustus 2025 terug, eerst tijdelijk en
 vier dagen later definitief. Een jaar later deelt dezelfde clown suikerspinnen
 uit en slaapt slecht.
 

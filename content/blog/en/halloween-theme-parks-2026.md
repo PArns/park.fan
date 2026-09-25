@@ -296,7 +296,7 @@ a terrified woman in a glass box, auctioned off as “object 666” before she
 vanished through the floor and the glass filled with blood. With **889
 complaints** it became the most-complained-about Dutch ad of the year; the
 Reclame Code Commissie found it incompatible with human dignity. Walibi pulled
-it on 21 August 2025, first temporarily and four days later for good. A year
+it on 22 August 2025, first temporarily and four days later for good. A year
 later the same clown is handing out candy floss and sleeping badly.
 
 What Biddinghuizen feels like without the fog machines, and what Untamed costs

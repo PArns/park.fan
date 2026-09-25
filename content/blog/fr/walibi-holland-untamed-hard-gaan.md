@@ -120,8 +120,8 @@ Aujourd’hui le parc couvre environ **40 hectares**, auxquels s’ajoutent 20
 hectares de parc de vacances (Walibi Village) et un **site événementiel de 80
 hectares** juste à côté.
 
-La fréquentation a ensuite longtemps oscillé entre 700 000 et 900 000 et ne
-s’approche du million que depuis peu : 936 000 sur l’exercice 2023, 919 000 en 2024 et dernièrement **972 000** sur l’exercice
+Après les années Six Flags, la fréquentation a longtemps oscillé entre 700 000
+et 900 000 et ne s’approche du million que depuis peu : 936 000 sur l’exercice 2023, 919 000 en 2024 et dernièrement **972 000** sur l’exercice
 octobre 2024 à septembre 2025, soit près de six pour cent de plus. Le directeur
 marketing Marc Guffens a parlé de « la meilleure année de tous les temps, si on
 ne compte pas la fréquentation de l’époque Six Flags » (un record avec astérisque), parce qu’à l’époque il

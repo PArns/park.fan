@@ -114,8 +114,8 @@ belonged to the French group **Compagnie des Alpes**, which also owns
 Today the park covers around **40 hectares**, plus 20 hectares of holiday park
 (Walibi Village) and an **80-hectare event site** right next door.
 
-Attendance then hovered between 700,000 and 900,000 for a long time and has
-only recently been edging towards a million: 936,000 in financial year 2023, 919,000 in 2024 and most recently **972,000** for October
+After the Six Flags years, attendance hovered between 700,000 and 900,000 for a
+long time and has only recently been edging towards a million: 936,000 in financial year 2023, 919,000 in 2024 and most recently **972,000** for October
 2024 to September 2025, up by almost six per cent. Marketing director Marc
 Guffens called it "the best year ever, if you leave out the attendance from the
 Six Flags era" (a record with an asterisk), because back then far less of it stuck per guest. For scale: the

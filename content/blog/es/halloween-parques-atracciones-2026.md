@@ -306,7 +306,7 @@ mostraba en 2025 a una mujer aterrorizada en una jaula de cristal, subastada
 como «objeto 666» antes de desaparecer por el suelo mientras el cristal se
 llenaba de sangre. Con **889 quejas** se convirtió en el anuncio neerlandés más
 denunciado del año; la Reclame Code Commissie vio vulnerada la dignidad humana.
-Walibi lo retiró el 21 de agosto de 2025, primero de forma provisional y cuatro
+Walibi lo retiró el 22 de agosto de 2025, primero de forma provisional y cuatro
 días después para siempre. Un año después el mismo payaso reparte algodón de
 azúcar y duerme mal.
 
