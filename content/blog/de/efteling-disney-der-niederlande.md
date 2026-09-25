@@ -2,7 +2,7 @@
 title: 'Efteling: das Disney der Niederlande, drei Jahre älter als das Original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -56,9 +56,11 @@ offenem Mund, der zwischen zwei Bäumen steht und darauf wartet, dass ihm jemand
 ein Eispapier hineinwirft. Tut es jemand, sagt er artig danke. Vor mir sammelt
 ein Junge fremden Leuten den Müll ab, damit er noch dreimal füttern kann.
 
-Der erste Holle Bolle Gijs ging am **29. März 1959** in Betrieb, ausgedacht von
-Peter Reijnders und Henk Knuivers. Es sind inzwischen etwa ein Dutzend im Park.
-Ein Papierkorb, der eine Figur ist, mit Namen, Stimme und Manieren, aus einer
+Der erste Holle Bolle Gijs ging am **29. März 1959** in Betrieb. Die Absaugtechnik
+dahinter hat Henk Knuivers gebaut, der Chef des technischen Dienstes. Die Figur aus
+dem alten Kindervers haben Anton Pieck und Peter Reijnders dafür ausgesucht,
+gezeichnet hat sie Pieck. Elf solcher Papierkörbe stehen heute im Park, nicht alle
+in Gijs-Gestalt. Ein Papierkorb, der eine Figur ist, mit Namen, Stimme und Manieren, aus einer
 Zeit, in der hier keine einzige Achterbahn stand.
 
 Das [Efteling](ref:efteling?long) in Kaatsheuvel wird gern das Disney der
@@ -81,33 +83,41 @@ hereinkommt, geht wieder in den Park.
 Steuerberaterkram, könnte man denken. Die Folgen stehen aber im ganzen Park
 herum. Ein Märchenwald, in den seit 1952 immer neue Szenen gebaut werden, von
 denen keine einzige einen Fahrgast zählt. Eine Bootsfahrt von 1986, die seit
-vierzig Jahren keinen Zweck erfüllt außer schön zu sein. Zwölf Papierkörbe mit
+vierzig Jahren keinen Zweck erfüllt außer schön zu sein. Elf Papierkörbe mit
 Sprachausgabe.
 
 Ein Liebhaberprojekt im Gartenhäuschen ist das trotzdem nicht. 2025 zählte das Efteling **5,78 Millionen
 Besuche** von 4,98 Millionen Gästen, dazu 347 Millionen Euro Betriebsertrag,
-27,2 Millionen Euro Gewinn und rund 3.000 Beschäftigte auf 72 Hektar
-Parkfläche. Damit ist es der meistbesuchte Freizeitpark der Niederlande und einer
-der drei größten Europas (vor ihm liegen nur das
+27,2 Millionen Euro Nettogewinn und rund 3.000 Beschäftigte auf 72 Hektar
+Parkfläche. Damit ist es der meistbesuchte Freizeitpark der Niederlande. Im
+TEA-Index für 2024, der jüngsten Ausgabe, steht es mit 5,6 Millionen auf Platz drei
+in Europa, hinter dem
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in Paris und
-der [Europa-Park](ref:europa-park) in Rust).
+dem [Europa-Park](ref:europa-park) in Rust. Knapp ist das allerdings: Der zweite
+Pariser Disney-Park, heute Disney Adventure World, liegt dort nur 2.000 geschätzte
+Besucher dahinter.
 
 Und die 3.000 Leute, die dort arbeiten, tun das offenbar gern. 2023 wählten die
 Niederländer das Efteling im **Randstad Employer Brand Research** zum
-**attraktivsten Arbeitgeber des Landes** in der Privatwirtschaft. Kantar befragt
+**attraktivsten Arbeitgeber des Landes** in der Privatwirtschaft. Randstad lässt
 dafür jedes Jahr über zehntausend Menschen zu den 150 größten Arbeitgebern der
-Niederlande, und genannt wurden bei Efteling Ruf, Arbeitsatmosphäre und
-finanzielle Gesundheit. Den Titel hält inzwischen ASML, dreimal in Folge, aber 2023 lag ein Park mit sprechenden Mülleimern vor sämtlichen Konzernen des Landes. Für eine Branche, die man sonst eher mit Saisonverträgen und Mindestlohn verbindet, ist das eine ziemlich seltene Schlagzeile.
+Niederlande befragen (2026 waren es 13.434), und genannt wurden beim Efteling Ruf,
+Arbeitsatmosphäre und finanzielle Gesundheit. Den Titel hält inzwischen ASML, dreimal in Folge, aber 2023 lag ein Park mit sprechenden Mülleimern vor sämtlichen Konzernen des Landes. Für eine Branche, die man sonst eher mit Saisonverträgen und Mindestlohn verbindet, ist das eine ziemlich seltene Schlagzeile.
 
-Angefangen hat es mit zwei Männern und einem Sportpark. **Anton Pieck**,
-Illustrator, zeichnete die Märchen und in den folgenden Jahrzehnten weit über
-tausend Entwürfe für Attraktionen, Plätze und Gaststätten. **Peter Reijnders**,
-Fotograf und Filmemacher, baute die Technik dahinter: die Bewegungen, den Ton,
-später Holle Bolle Gijs. Piecks Regel für den Märchenwald war, dass nichts nach Maschine aussehen durfte, was für einen Park voller Maschinen eine ziemlich sportliche Vorgabe ist. Man sieht sie heute noch an jedem Dachüberstand.
+Angefangen hat es mit einem katholischen Sport- und Wanderpark, der 1935 südlich
+von Kaatsheuvel öffnete, und mit drei Männern, die der Park heute seine Gründer
+nennt. Bürgermeister **Reinier van der Heijden** saß der Stiftung vor und wollte
+mehr Besucher ins Dorf holen. Mit dem Fotografen und Filmemacher **Peter Reijnders**
+ließ er einen Märchenwald planen, und Reijnders baute die Technik dahinter: die
+Bewegungen, den Ton. Er war es auch, der den Illustrator **Anton Pieck** überredete,
+und Pieck machte allein für den Märchenwald rund 1.500 Skizzen und Zeichnungen.
+Er zeichnete schiefe Türme und halb eingesackte Dächer, und der Bauleiter der
+Gemeinde musste die Maurer ständig davon abhalten, gerade zu mauern. Die Steine
+kamen von abgerissenen Bauernhöfen, die Schieferplatten möglichst mit dem Moos
+noch drauf. Man sieht es heute noch an jedem Dachüberstand.
 
-Aus zehn Märchen von 1952 sind über dreißig geworden, das jüngste ist die
-Prinzessin auf der Erbse von 2025. Zum **75. Geburtstag 2027** kommt laut Park
-Nummer 32 dazu.
+Aus zehn Märchen von 1952 sind 31 geworden, das jüngste ist die Prinzessin auf der
+Erbse vom Mai 2025. 2027, im Jahr des **75. Geburtstags**, soll Nummer 32 dazukommen.
 
 ## Die fünf Reiche und was darin fährt
 
@@ -121,7 +131,7 @@ Märchenwald, der seit November 2023 als eigener Bereich gezählt wird.
 **[Symbolica](ref:efteling/symbolica)** war mit 35 Millionen Euro bei der
 Eröffnung 2017 eine der teuersten Attraktionen der Benelux: ein trackless Dark
 Ride von **ETF Ride Systems** aus dem nahen Nederweert. Die Wagen fahren scheinbar frei durchs
-Palastinnere, tatsächlich führt sie ein Kabel unter dem Boden. Sieben Minuten,
+Palastinnere, tatsächlich folgen sie einem Draht im Boden. Sieben Minuten,
 sechs Personen pro Wagen, 34 Wagen, theoretisch 1.400 Gäste pro Stunde. Beim
 Einstieg wählst du zwischen Helden-, Schatz- und Musiktour, und die drei Routen
 zeigen dir unterschiedliche Räume. Man muss also dreimal fahren, und das ist
@@ -136,10 +146,10 @@ kommen: ein Dive Coaster von **Bolliger & Mabillard**, seit dem 1. Juli 2015, mi
 37,5 Meter Sturz, 87 Grad Neigung und 90 km/h. Drei Züge zu je 18 Plätzen, sechs
 nebeneinander in drei Reihen, und oben die Sekunden, in denen der Zug über der Kante hängt und du nach unten guckst, weil es keine andere Richtung mehr gibt. Die Geschichte drumherum
 ist typisch für diesen Park und
-vollständig erfunden: Baron Gustave Hooghmoed findet Gold in einem alten
-Kohleschacht, die Witte Wieven aus der niederländischen Sage bewachen es, und
-irgendwann kappen sie das Seil des Förderkorbs. Zwei Vorshows mit Animatronics
-erzählen das, bevor du überhaupt sitzt.
+vollständig erfunden: Baron Gustave Hooghmoed findet in einer Höhle, dem
+Heksenbult, Gold und baut darüber ein Bergwerk, die Witte Wieven aus der
+niederländischen Sage bewachen es, und irgendwann reißt das Seil des Förderkorbs.
+Zwei Vorshows erzählen das, bevor du überhaupt sitzt.
 
 ```glossary-widget slug=dive-coaster
 
@@ -185,8 +195,8 @@ Eingang des Souvenirladens _Dr. Charlatans Kwalycke Zaken_ geworden, was man als
 neonfarbene **Geige**, die Hauptfigur des Spookslot, kehrt nicht in ihrer alten
 Form zurück, hat in der neuen Show aber wieder einen großen Auftritt.
 
-2025 gab es für das Ganze den **Thea Award** der Themed Entertainment
-Association. Im Mai 2025 hat der Park nachgeschärft: mehr Blick in die Krypta,
+Im November 2025 sprach die Themed Entertainment Association dem Ganzen einen
+**Thea Award** zu. Im Mai 2025 hat der Park nachgeschärft: mehr Blick in die Krypta,
 ein zusätzlicher Fallmoment vor der Pause, wildere Bewegungen.
 
 Wer wissen will, wie man so etwas baut, wenn es das vorher nirgends gab: Der Park
@@ -207,7 +217,7 @@ Nachfolger der alten Pegasus und in unseren Daten die gefragteste Attraktion des
 Parks. Über sie habe ich im
 [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps) schon geschrieben, und
 zwar nicht besonders freundlich, weil siebzig Kilometer weiter südöstlich eine
-bessere GCI-Bahn mit der halben Schlange steht. Das bleibt so. Als Rennstrecke,
+bessere GCI-Bahn mit weniger als der halben Schlange steht. Das bleibt so. Als Rennstrecke,
 auf der du dem anderen Zug beim Verlieren zusehen kannst, macht Joris trotzdem
 etwas, das Troy nicht kann.
 
@@ -223,7 +233,7 @@ Loopings und zwei Korkenziehern. Sie war lange die Bahn, an der man in den
 Niederlanden gemessen hat, was eine Achterbahn ist, und über Jahre auch die, nach der man seine Wirbel einzeln nachgezählt hat. Anfang 2018 hat der Park deshalb für 4,5 Millionen
 Euro die komplette Stahlkonstruktion zwischen erstem Drop und Schlussbremse
 austauschen lassen. Das Layout blieb gleich, ein paar Kurven wurden weiter
-gezogen und anders überhöht. Die Züge sind die alten geblieben.
+gezogen und anders überhöht. Die Züge von 2011 blieben.
 
 ![Eine riesige goldene Vogelfigur mit ausgebreiteten Flügeln über dem Eingang von Vogel Rok | Rok, der Riesenvogel aus Tausendundeiner Nacht. Dahinter geht es in den Berg. | left](/media/efteling/vogel-rok-4x3.jpg)
 
@@ -237,7 +247,7 @@ zuverlässigste Abkühlung im Park. **[Max & Moritz](ref:efteling/max-and-moritz
 sind seit 2020 zwei parallele Familienbahnen von Mack, benannt nach den beiden
 Lausbuben, und **[Hooghmoed](ref:efteling/hooghmoed)** ist die Neuheit dieser
 Saison: seit dem **1. Mai 2026** steht neben Baron ein 14,5 Meter hoher
-Schornstein, in dem drei kleine Falltürme bis auf 9,5 Meter hochdrehen und dann sechs Meter fallen. Ab 90 Zentimeter, rund 600 Gäste pro Stunde, also Baron für alle, die dort noch am Messstab scheitern.
+Schornstein, in dem drei kleine Falltürme bis auf 9,5 Meter hochdrehen und dann sechs Meter fallen. Ab 90 Zentimeter mit erwachsener Begleitung, rund 600 Gäste pro Stunde, also Baron für alle, die dort noch am Messstab scheitern.
 
 **[Villa Volta](ref:efteling/villa-volta)** im Marerijk war 1996 das **erste moderne Madhouse
 der Welt**: ein Raum, der sich um dich dreht, während deine Bank still steht (dein Gleichgewichtssinn glaubt dir das nicht),
@@ -262,16 +272,21 @@ sie trotz ihrer Beliebtheit selten in der Wartezeit-Tabelle auftaucht. Nach
 Achterbahnmaßstäben passiert dort gar nichts. Für mich gehört sie trotzdem
 zu den besten Dark Rides Europas.
 
-![Das Stoomcarrousel mit vergoldeten Pferden unter einem orangefarbenen Zeltdach | Das Gavioli-Orgelwerk ist so alt wie das Karussell. Die Dampfmaschine flog 1944 raus, der Name blieb. | right](/media/efteling/stoomcarrousel-4x3.jpg)
+![Das Stoomcarrousel mit vergoldeten Pferden unter einem orangefarbenen Zeltdach | Das Gavioli-Orgelwerk ist so alt wie das Karussell. Seit 1944 dreht es ein Elektromotor, die Dampfmaschine steht nur noch zur Zierde drin. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
-Dazu kommt das, was kaum ein Park dieser Größe noch hat: eine echte
-**[Dampfeisenbahn](ref:efteling/stoomtrein-marerijk)** mit zwei Bahnhöfen, das
+Dazu kommen eine **[Dampfeisenbahn](ref:efteling/stoomtrein-marerijk)** von 1969
+mit zwei Bahnhöfen, deren Loks bis 2025 alle mit Kohle fuhren (seit Mai 2025 läuft
+die älteste, Aagje von 1911, elektrisch, die anderen werden nach und nach
+umgebaut, fürs Dampflok-Gefühl sorgen dann Showeffekte), das
 **[Stoomcarrousel](ref:efteling/stoomcarrousel)** von 1895, das seit 1956 hier
 steht, die **[Gondoletta](ref:efteling/gondoletta)** über den See, die schwebende
 **[Pagode](ref:efteling/pagode)** und **Aquanura**, die Wassershow auf dem See
-vor Fata Morgana. 17 Millionen Euro, über 900 Scheinwerfer, zehn Minuten, Platz
-für 6.500 Zuschauer. Nach der Dubai Fountain und dem Bellagio in Las Vegas ist
-sie die drittgrößte Fontänenshow der Welt.
+vor Fata Morgana. 17 Millionen Euro, 200 Fontänen, Platz für 6.500 Zuschauer.
+Seit Dezember 2024 läuft dort die Show „Efteling Symphonica“, vierzehn Minuten
+lang und ohne die alten Feuereffekte, also ohne Propan, die Beleuchtung ist
+komplett auf LED umgestellt. Bei der Eröffnung 2012 war Aquanura nach der Dubai
+Fountain und dem Bellagio in Las Vegas die drittgrößte Fontänenshow der Welt,
+diesen Platz hat sie seitdem abgegeben.
 
 ## Der Märchenwald war zuerst da
 
@@ -281,8 +296,9 @@ andere ist später drumherum gewachsen.
 Am 31. Mai 1952 standen zehn Szenen zwischen den Bäumen: Dornröschen,
 Schneewittchen, der Froschkönig, die Magische Uhr, die Chinesische Nachtigall,
 der Sprechende Papagei, das Zwergendorf, Frau Holle, Langnek und die Kleine
-Boodschap. Fast alle gibt es noch, teils umgebaut, teils versetzt. Heute sind es
-rund dreißig.
+Boodschap. Neun davon gibt es noch, teils umgebaut, teils versetzt. Das Palais der
+Chinesischen Nachtigall wurde im Frühjahr 2026 abgerissen, das Märchen soll 2027
+in kleinerer Form zurückkehren.
 
 Ein paar davon lohnen den Umweg auch ohne Kinder an der Hand.
 
@@ -293,9 +309,10 @@ oben, bis der Kopf zwischen den Ästen hängt. Kein Bildschirm, kein Projektor,
 seit 1952 einfach Mechanik.
 
 **Kleine Boodschap** ist die eleganteste Toilettenbeschilderung, die je gebaut
-wurde. Ein Herold auf dem Herautenplein ruft in regelmäßigen Abständen aus, wo es
-langgeht, und weil „kleine Boodschap“ im Niederländischen genau das meint, was du
-gerade vermutest, versteht es jeder sofort. Auch das eine der zehn Szenen von 1952.
+wurde. Ein Zwerg sitzt auf einem Stein am Weg zum einzigen Toilettenhäuschen im
+Märchenwald, zeigt dorthin und ruft ohne Pause „Kleine boodschap!“, und weil das im
+Niederländischen genau das meint, was du gerade vermutest, versteht es jeder
+sofort. Auch das eine der zehn Szenen von 1952.
 
 **Das Mädchen mit den Schwefelhölzern** ist der Beweis dafür, dass dieser Park
 seine Vorlagen nicht weichspült. Andersens Erzählung endet damit, dass ein Kind
@@ -316,14 +333,14 @@ Fassade hängen seine Büste und ovale Rahmen mit allen sechs. Den Stand gibt es
 seit 1967, 2002 machte er mangels Umsatz zu (Stroopwafels, die sich nicht verkaufen, das muss man in den Niederlanden erst einmal schaffen), seit dem 26. April 2019 ist er wieder offen.
 
 Nebenbei ist dieses Waldstück der beste Trick gegen Schlangen, den der Park hat.
-Es gibt keine Warteschlange, keine Kapazitätsgrenze und keine Fahrzeit. Mehrere tausend Gäste
-können hier gleichzeitig unterwegs sein, ohne dass am Eingang je eine Wartezeit
-ausgehängt werden müsste. Genau das ist ein Grund, warum dieser Park mit
+Es gibt keine Warteschlange, keine Kapazitätsgrenze und keine Fahrzeit. Wer hier
+unterwegs ist, fehlt vor den Fahrgeschäften, und am Eingang des Waldes muss nie
+eine Wartezeit ausgehängt werden. Genau das ist ein Grund, warum dieser Park mit
 fast sechs Millionen Besuchen erträgliche Wartezeiten hat.
 
-Seit Mai 2026 baut der Park die Wegeführung um, weil dreißig Märchen auf einer
-festen Route inzwischen zu viel für einen Durchgang sind. Es entstehen vier
-gleichwertige Ein- und Ausgänge, dazu **Dreven**: braun gepflasterte Hauptachsen
+Seit dem Frühjahr 2026 baut der Park die Wegeführung um. Es entstehen vier
+gleichwertige Ein- und Ausgänge (der am Grand Hotel nur für Hotelgäste), dazu
+**Dreven**: braun gepflasterte Hauptachsen
 in Nord-Süd- und Ost-West-Richtung, die sich am Herautenplein kreuzen, mit rot
 gepflasterten Stichwegen zu den einzelnen Szenen. Die gelben Abkürzungen
 verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen, ohne dich zu verlaufen. Im Märchen ist genau das sonst der halbe Plot.

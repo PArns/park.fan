@@ -2,6 +2,7 @@
 title: 'Le planificateur calcule avant que tu sois dans la mauvaise file'
 translationKey: trip-planner-launch
 date: '2026-09-05'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -29,7 +30,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Un théâtre en plein air bondé vu de l’arrière, le public attend dans le noir'
-  caption: 'Fantasmic aux Hollywood Studios, juste avant le début. Dix mille personnes qui, pendant cette demi-heure, ne font la queue nulle part.'
+  caption: 'Fantasmic aux Hollywood Studios, juste avant le début. Près de dix mille personnes y tiennent, et pendant cette demi-heure aucune ne fait la queue nulle part.'
   credit: 'Patrick Arns'
 seo:
   title: 'Journée au parc : compter les files avant de faire la queue'
@@ -66,7 +67,7 @@ moment », on y répond depuis le premier jour. « Est-ce beaucoup pour un m
 depuis [fin août](/blog/70-minutes-est-ce-beaucoup). La troisième question
 n’était nulle part : est-ce que ma journée tient debout ?
 
-Depuis cette semaine, elle y est. Le [planificateur](/planificateur) pose tes
+Depuis début septembre, elle y est. Le [planificateur](/planificateur) pose tes
 attractions sur une frise et calcule la journée avant que tu partes.
 
 ## Une journée est un ordre, et cet ordre a une horloge
@@ -89,7 +90,9 @@ heures et demie.
 
 Dix attractions, de l’ouverture à seize heures, et sous le plan la somme : cinq
 heures et quart rien qu’à faire la queue. C’est la version que l’optimiseur a
-jugée la meilleure. Sans ordre, tu attends tout autant et tu montes moins.
+jugée la meilleure. Quand il réorganise une journée que tu as posée toi-même, il
+indique ensuite combien de minutes d’attente le nouvel ordre fait gagner,
+calculées avec la même formule qu’avant.
 
 ## Entre deux attractions, il y a un chemin, souvent autour d’un lac
 
@@ -103,9 +106,9 @@ là où aucune durée n’est renseignée. La distance est à vol d’oiseau, et
 planificateur le dit. C’est une borne basse et pas un temps de marche : les
 allées contournent l’eau, les files et les sens uniques, certains parcs empilent
 leurs zones, et dans un grand parc la ligne droite traverse volontiers un lac
-dont il faut faire tout le tour. Pour la borne haute, le planificateur compte donc en rythme
-de parc plutôt qu’en rythme de marche et ajoute deux tiers de détour à la ligne
-droite.
+dont il faut faire tout le tour. Pour la borne haute, le planificateur compte donc au
+rythme du parc, environ quatre kilomètres à l’heure avec la foule et les
+poussettes, et ajoute 60 % de détour à la ligne droite.
 
 Dans un parc compact, un transfert mal placé coûte trois minutes et personne ne
 le remarque. Dans un grand, il coûte un quart d’heure. Fais-le huit fois dans la
@@ -156,8 +159,10 @@ Autre chose qu’on intègre rarement de tête : la première heure n’est sou
 la tienne. Beaucoup de parcs ouvrent leurs portes avant qu’une partie des
 attractions tourne, et les grosses sont volontiers parmi les dernières à
 démarrer. Remplis cette première heure avec elles et tu as planifié une heure
-qui n’existe pas. Le planificateur connaît l’heure d’ouverture de chaque
-attraction et ne laisse aucun bloc glisser avant. Il n’y a pas d’équivalent en
+qui n’existe pas. Au Phantasialand, les portes ouvrent à neuf heures, mais Taron,
+F.L.Y. et la plupart des autres grosses attractions seulement à dix heures. Là
+où l’API connaît l’heure d’ouverture propre d’une attraction, le planificateur
+ne laisse aucun bloc glisser avant. Il n’y a pas d’équivalent en
 sens inverse : aucun flux n’annonce de façon fiable quand une attraction ferme
 le soir, donc rien n’est écrit là-dessus.
 
@@ -173,17 +178,30 @@ peut-il être meilleur.
 Le tri pèse trois choses, et leur hiérarchie est la vraie décision.
 
 1. **Tout doit passer avant la fermeture.** Un plan avec une attraction de moins
-   qui a vraiment lieu bat un plan avec une de plus qui n’arrivera pas. Et si
-   quelque chose saute, ça saute par la fin : d’abord ce que le bouton vient
-   d’ajouter, jamais ce que tu avais prévu toi-même.
+   qui a vraiment lieu bat un plan avec une de plus qui n’arrivera pas. Ce qui
+   compte, c’est le moment où tu entres dans la file : une file où tu entres
+   encore un quart d’heure avant la fermeture compte. Et si quelque chose saute,
+   c’est d’abord ce que le bouton vient d’ajouter, pas ce que tu avais prévu
+   toi-même. Parmi les attractions ajoutées, un deuxième tour sur la même passe
+   avant tout premier tour, puis celle dont la file attendue est la plus courte.
+   Les attractions pour lesquelles la plupart des gens viennent restent le plus
+   longtemps.
 2. **La somme des attentes.** C’est ce qui était demandé.
 3. **L’heure à laquelle tu fais la queue pour la dernière fois.** À coût égal,
    c’est l’ordre qui finit le plus tôt qui gagne.
 
 Dans un parc avec plus d’attractions phares qu’il n’en tient dans une journée,
-le point un est tout le jeu. C’est pour ça que le bouton ne disparaît pas
-toujours après une pression : s’il reste une attraction sans place, le compte
-s’affiche en dessous et l’offre reste là au cas où tu supprimerais autre chose.
+le point un est tout le jeu, et depuis le 21 septembre le planificateur ne le
+tranche plus en silence. Si tout ne tient pas, chacun des deux boutons ouvre
+d’abord un assistant en trois étapes. Sous « Ajustements » figure ce qui ferait
+de la place, par exemple supprimer la pause déjeuner ou la réduire à une
+demi-heure, et chaque ligne est calculée : elle n’apparaît que si elle fait
+vraiment entrer une attraction de plus dans la journée. Sous « Priorités », la
+liste complète dans l’ordre où l’on rayerait, et tu remontes tout en haut ce que
+tu ne veux surtout pas manquer. Les attractions que tu avais planifiées toi-même
+y figurent aussi, parce qu’ici c’est toi qui décides, pas le bouton. Sous
+« Résultat », ce qui reste dehors, avec son nom. Rien n’est écrit dans le plan
+avant que tu l’appliques.
 
 Il n’y a volontairement aucun curseur qui arbitre entre faire la queue et
 traîner. Personne ne pourrait justifier ce chiffre, et la première personne à le
@@ -212,12 +230,13 @@ Ce qui nous a pris le plus de temps, ce sont quatre endroits où le planificateu
 affirme volontairement moins qu’il ne pourrait.
 
 **La prévision se trompe, et de façon mesurable.** Chaque bloc sélectionné
-indique de combien les prévisions pour cette attraction se sont écartées en
-moyenne de ce que la journée a réellement apporté. (C’est ce que j’attends de
-la météo depuis des années.) « Typique » veut dire
-ici : la moitié des jours tombe plus loin. Le chiffre
-est donc présenté comme une erreur typique et jamais comme une fourchette qui
-contiendrait déjà la bonne réponse.
+indique de combien, en moyenne sur les 45 derniers jours, les prévisions pour une
+file de cette longueur et à cette distance se sont écartées de ce que la journée
+a réellement apporté. C’est affiché jusqu’à 60 jours à l’avance ; la mesure ne
+va pas plus loin pour l’instant. (C’est ce que j’attends de la météo depuis des
+années.) Une moyenne n’est pas un plafond, et bien des jours la prévision tombe
+plus loin. Le chiffre est donc présenté comme une erreur typique et jamais comme
+une fourchette qui contiendrait déjà la bonne réponse.
 
 **Les horaires de spectacle sont deux choses différentes.** Ce que le parc a
 publié pour aujourd’hui est une annonce. Ce que nous avons reporté depuis le
@@ -252,25 +271,37 @@ qu’au tourniquet d’entrée.
 La seule exception, ce sont les notifications push. Pour pouvoir te dire qu’il
 est temps d’y aller, le plan doit se trouver sur notre serveur, et le
 planificateur écrit ce que ça implique : qui a le lien peut le lire et le
-modifier. Aucun mot de passe ne protège ça. Qui n’en veut pas laisse les
-notifications désactivées et ne perd rien d’autre.
+modifier. Aucun mot de passe ne protège ça. Si tu coupes à nouveau les
+notifications, le plan est supprimé du serveur. Qui ne veut rien de tout ça les
+laisse désactivées et ne perd rien d’autre. Ce qui déclenche un message, c’est
+toi qui le choisis : quand partir vers l’attraction suivante, les horaires des
+spectacles, une attraction prévue qui ferme ou rouvre, et une attente prévue qui
+change nettement.
 
-Deux choses encore, faciles à manquer. Un onglet est accroché au bord de
-l’écran sur chaque page et ouvre le planificateur, même quand rien n’est encore
-prévu. Et sur ordinateur, tu peux ouvrir une deuxième colonne, ce qui met deux
+Tant que les notifications sont activées, il existe aussi depuis le 23
+septembre un lien de partage. Qui l’ouvre reçoit sa propre copie dans son
+planificateur, et ce qu’il y change reste chez lui. C’est aussi comme ça qu’un
+plan passe de l’ordinateur au téléphone.
+
+Deux choses encore, faciles à manquer. Sur ordinateur, un onglet est accroché au
+bord de l’écran sur chaque page et ouvre le planificateur, même quand rien n’est
+encore prévu ; sur téléphone, c’est depuis le 24 septembre une icône de calendrier
+dans la barre du haut. Et sur ordinateur, tu peux ouvrir une deuxième colonne, ce qui met deux
 journées côte à côte. Je l’ai construit pour exactement une phrase : « et ça
 donnerait quoi samedi ».
 
 ## Par où commencer
 
-L’entrée passe par trois questions. Quel parc, quel jour, et qui vient.
+L’entrée passe par quatre questions. Quel parc, quel jour, qui vient, et
+quelles grosses attractions mettre dedans. Les images ci-dessous montrent encore
+la première version, en trois étapes.
 
 La première est un champ de recherche, et derrière se cache un détail qui part
 vite de travers. Tape « Disneyland » et tu obtiens cinq parcs sur trois
 continents qui portent tous ce nom. Pour les baptêmes, la souris n’a pas fait
 preuve d’une grande imagination.
 
-![Première étape de l’assistant : « Disneyland » saisi dans le champ de recherche, cinq parcs de cinq pays en dessous. | Un nom, cinq parcs. C’est pour ça que le planificateur retient le chemin de l’API et pas le nom.](/media/tagesplaner/planer-wizard-park-fr.webp)
+![Première étape de l’assistant : « Disneyland » saisi dans le champ de recherche, cinq parcs à Anaheim, Paris, Tokyo, Shanghai et Hong Kong en dessous. | Un nom, cinq parcs. C’est pour ça que le planificateur retient le chemin de l’API et pas le nom.](/media/tagesplaner/planer-wizard-park-fr.webp)
 
 Un plan est rangé sous le chemin que l’API renvoie elle-même, jamais sous un
 chemin fabriqué à partir du nom affiché. « Pays-Bas » ne s’écrit pas pareil dans
@@ -281,16 +312,22 @@ soixante lignes, tu obtiens un mois entier, et chaque jour porte la fréquentati
 prévue de ce parc. « Le samedi en huit » devient affaire d’un coup d’œil, et ce
 que nous savons d’autre à son sujet est sous la grille.
 
-![Deuxième étape de l’assistant : une photo du Disneyland Park d’Anaheim au-dessus d’une grille mensuelle où chaque jour porte la fréquentation prévue, samedi 19 sélectionné. | Un septembre annoncé calme d’un bout à l’autre à Anaheim. Soixante lignes d’une liste déroulante ne montrent jamais ça.](/media/tagesplaner/planer-wizard-tag-fr.webp)
+![Deuxième étape de l’assistant : le Disneyland Park d’Anaheim est choisi, chaque jour de la grille mensuelle porte la fréquentation prévue, samedi 19 sélectionné. | Un septembre annoncé calme d’un bout à l’autre à Anaheim. Soixante lignes d’une liste déroulante ne montrent jamais ça.](/media/tagesplaner/planer-wizard-tag-fr.webp)
 
 La troisième question a l’air d’un formulaire et compte plus qu’il n’y paraît :
-prévoir le déjeuner, des enfants viennent-ils, voulez-vous rester secs. Les trois
+prévoir le déjeuner, des enfants viennent-ils, voulez-vous rester secs. Le
+déjeuner devient un bloc dans la journée. Les enfants et l’envie de rester au sec
 sont des marques sur la liste des attractions et pas des filtres, et le
 planificateur l’écrit sur la carte : les attractions à taille minimale plus
 élevée sont signalées, pas masquées. Un filtre raccourcirait le parc en douce, et
 savoir si mamie tient les sacs, ça, il n’y a que toi.
 
 ![Troisième étape de l’assistant : trois cartes pour le déjeuner, les enfants et les attractions aquatiques, avec le bouton d’ouverture du planning en dessous. | Trois réponses qui ne raccourcissent pas le parc. La pause déjeuner arrive comme bloc à 12h30 et se déplace.](/media/tagesplaner/planer-wizard-wer-fr.webp)
+
+La quatrième question est arrivée le 21 septembre. Elle met les grosses
+attractions du parc dans la journée, et si elles ne tiennent pas toutes avant la
+fermeture, elle montre les mêmes ajustements et la même liste que l’assistant
+sous la frise.
 
 Ensuite tu atterris sur la page du parc avec le planificateur ouvert, et de là tu
 fais glisser des attractions sur la frise. Chaque page d’attraction a aussi un

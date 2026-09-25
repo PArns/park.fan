@@ -2,7 +2,7 @@
 title: 'Un passeggino, una gondola e mezzo milione di righe di codice'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -60,20 +60,21 @@ Molto prima che qualcuno pensasse ai dati sui tempi di attesa.
 ## Un passeggino in riva al lago delle fiabe
 
 I miei genitori mi hanno spinto da piccolo nel passeggino attorno al lago delle
-fiabe del [Phantasialand](ref:phantasialand?bare). Su quella riva ci sono più di
-quaranta mondi fiabeschi, ognuno un piccolo palcoscenico con figure mosse
-meccanicamente. Cappuccetto Rosso, Cenerentola, Alì Babà.
+fiabe del [Phantasialand](ref:phantasialand?bare). Su quella riva allora c’erano
+una quarantina di fiabe, ognuna un piccolo palcoscenico con figure mosse
+meccanicamente. Cappuccetto Rosso, Cenerentola, il piccolo Muck.
 
-Quel bosco delle fiabe è più antico di qualsiasi altra cosa nel parco. Quando il
-Phantasialand aprì il 30 aprile 1967, era in assoluto la prima attrazione,
-costruita con il repertorio del burattinaio Richard Schmidt, che aveva messo in
+Quel bosco delle fiabe era il cuore del parco. Quando il Phantasialand aprì il
+30 aprile 1967 c’era già, costruito con il repertorio del burattinaio Richard Schmidt, che aveva messo in
 piedi il parco insieme al giostraio Gottlieb Löffelhardt. E poiché i burattini
 da soli non fanno una storia, a ogni scena c’era un pulsante. Una pressione, e
 un nastro raccontava la fiaba corrispondente.
 
 Io quei pulsanti li ho premuti, e quando i miei genitori erano già due scene
 avanti tornavo indietro di corsa per premerli ancora. Per me quella non è mai
-stata una visita a un parco. Era un radiodramma self-service.
+stata una visita a un parco. Era un radiodramma self-service. Il bosco delle
+fiabe non esiste più: il parco l’ha demolito nell’inverno 2007-2008 per
+costruire Baumbergen, e ne resta poco più del tempio de “Il piccolo Muck”.
 
 ## In gondola dentro “1001 Notte”
 
@@ -89,7 +90,7 @@ Mio padre è morto nel 2019. Forse è proprio per questo che quei giri condivisi
 mi sono diventati così preziosi. Nel mio ricordo è ancora seduto accanto a me
 nella gondola.
 
-![Sagoma di montagne russe al Movie Park Germany di notte, illuminata di viola e blu | Il Movie Park Germany di notte. Lethal Weapon Pursuit stava qui fino al 2006. | left](/media/movie-park-germany/iron-claw.jpg)
+![Sagoma di montagne russe al Movie Park Germany di notte, illuminata di viola e blu | Iron Claw al Movie Park Germany, di notte. Gira dal 1996, allora con il nome di Eraser. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Quando mio padre era di nuovo in viaggio come camionista, mia madre prendeva
 semplicemente il volante. Con lei ho scoperto molti altri parchi, primo fra
@@ -97,9 +98,10 @@ tutti il [Movie Park](ref:movie-park-germany?bare), allora ancora Warner Bros.
 Movie World. Lì sono salito per la prima volta in vita mia su montagne russe, su
 **Lethal Weapon Pursuit**: due treni disegnati come auto della polizia
 americane che si sfidavano in una corsa dentro un capannone costruito come un
-magazzino, loop contro loop. L’unico duelling coaster della Germania, dal 2005
-in giro come “Cop Car Chase”, demolito nell’ottobre 2006. L’attrazione non c’è
-più. La dipendenza che ha innescato sì. A rigore, quindi, la colpa di tutto
+magazzino, loop contro loop. All’epoca l’unico duelling coaster della Germania,
+dal 2005 in giro come “Cop Car Chase”, chiuso nell’agosto 2006 e demolito da
+ottobre. Sul suo terreno ha aperto nel maggio 2007 l’area Santa Monica Pier, con
+il Disk’O Coaster Crazy Surfer. L’attrazione non c’è più. La dipendenza che ha innescato sì. A rigore, quindi, la colpa di tutto
 quello che è venuto dopo è di mia madre.
 
 La divisione dei compiti era chiara: papà ha messo le fiabe, mamma le montagne
@@ -112,9 +114,9 @@ park.fan è il mio modo di restituirne una parte.
 ## Di topi da 5000 e di una leggenda da 10.000
 
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) esiste da
-giugno 2011: un dark ride interattivo in cui il disinfestatore Oskar Koslowski
-libera dai topi il laboratorio del pasticciere Gustav E. Lehmann, armato di
-sac-à-poche, distribuito su 48 schermi 3D e sei minuti di percorso. Con un nuovo
+giugno 2011: un dark ride interattivo in 3D in cui aiuti il disinfestatore Oskar
+Koslowski a liberare dai topi la fabbrica imperiale di torte Gustav E. Lehmann,
+armato di sac-à-poche, attraverso sette sale e circa sette minuti. Con un nuovo
 record personale sorrido ancora come allora davanti ai pulsanti del lago delle
 fiabe.
 Anche se la mia ragazza ha la notevole abitudine di soffiarmi i topi da 5000
@@ -127,10 +129,11 @@ preciso? Quello resta, con tutta la comprensione per la domanda, un mio
 segreto.
 
 C’è una cosa che ho ignorato a lungo e che ancora oggi mi fa restare un attimo
-in silenzio: Maus au Chocolat è stato costruito nel 2011 esattamente sull’area
-dove fino al 2009 stava la gondola. Quando lì dentro litigo per i punti con la
-mia ragazza, sono seduto in un edificio che sorge dove da bambino attraversavo
-le fauci del drago con mio padre.
+in silenzio: la gondola ha funzionato fino al 1° novembre 2009, poi il parco ha
+spianato la sua area e l’ha ricostruita, e in uno di quei nuovi edifici,
+sull’attuale Kaiserplatz, dal 2011 c’è Maus au Chocolat. Quando lì dentro litigo
+per i punti con la mia ragazza, sono seduto più o meno dove da bambino
+attraversavo le fauci del drago con mio padre.
 
 Poi, per consolarmi dei topi da 5000 persi: pancake e frullati al **Phenie’s**
 di Wuze Town, e sono migliori di quello che i parchi divertimento vendono di
@@ -148,14 +151,14 @@ ragazzino del lago delle fiabe piantato decenni dopo davanti al Cinderella
 Castle del [Magic Kingdom](ref:magic-kingdom-park?bare). Tutto più grande, tutto
 più rumoroso, tutto più lontano da Brühl e, nonostante questo, esattamente lo
 stesso formicolio di allora nella gondola. Nel mezzo
-[Epic Universe](ref:universal-epic-universe?bare) nella sua prima estate,
+[Epic Universe](ref:universal-epic-universe?bare), un anno dopo l’apertura nel
+maggio 2025,
 coaster a [Islands of Adventure](ref:universal-islands-of-adventure?bare), orche
 e Manta a [SeaWorld](ref:seaworld-orlando?bare). Due settimane, e adesso quel
 punto della lista ha finalmente la sua spunta.
 
-Le foto le sto ancora selezionando, i resoconti sono in lavorazione; entrambi
-atterreranno proprio qui sul blog nelle prossime settimane. Solo un
-anticipo: valeva ognuno di quegli anni di attesa.
+Le foto le sto ancora selezionando, e i resoconti non sono finiti. Usciranno
+proprio qui sul blog appena lo saranno. Solo un anticipo: valeva ognuno di quegli anni di attesa.
 
 ## Il secondo io: lo sviluppatore con troppi progetti collaterali
 
@@ -217,9 +220,10 @@ giri attraverso Klugheim prima di potersi ritirare da me. A ogni sessione di
 debug notturna mi ricorda che da qualche parte, in questo momento, qualcuno sta
 davanti a un’attrazione vera e vuole sapere se la coda vale la pena.
 
-Dietro ci sono oggi tempi di attesa live da oltre **200 parchi** e oltre **7000
-attrazioni**, aggiornati ogni cinque minuti. Previsioni che stimano l’affluenza
-fino a **365 giorni** in anticipo. E siccome per principio mi fido dei numeri
+Dietro ci sono oggi **210 parchi** con circa **6900 attrazioni** in tutto (al 25
+settembre 2026), e 209 di questi inviano tempi di attesa nuovi ogni cinque
+minuti. Quello che manca è l’Hansa-Park, che pubblica i suoi solo nella propria
+app. In più, previsioni che stimano l’affluenza con circa sei mesi di anticipo. E siccome per principio mi fido dei numeri
 solo se devono dimostrare qualcosa, il modello si dà un voto da sé: ogni
 previsione viene poi confrontata con il tempo di attesa effettivamente misurato,
 e quello che ne esce sta sulla [pagina di Fancast](/fancast).
@@ -231,12 +235,13 @@ che qualcuno salga in auto e chieda dal sedile posteriore quando si arriva. Qual
 domenica? E quanto sarà pieno davvero?
 
 È esattamente per questo che park.fan è stato costruito. Ogni pagina di parco ha
-un calendario dei giorni migliori per la visita, fino a un anno in anticipo.
-Uno sguardo a quei dati fa piazza pulita, di passaggio, di qualche sensazione di
-pancia. Una domenica di un novembre
-grigio può essere più rilassata di qualsiasi martedì durante le vacanze estive
-della Renania Settentrionale-Vestfalia. Un ponte non è quasi mai una buona idea.
-E la “dritta segreta” di andarci con la pioggia funziona esattamente finché
+un calendario con l’affluenza prevista per ogni giorno, circa sei mesi in
+anticipo. Uno sguardo a quei dati fa piazza pulita, di passaggio, di qualche
+sensazione di pancia. Al Phantasialand domenica 21 giugno 2026 risulta nel
+calendario più tranquilla di ciascuno dei martedì delle vacanze estive della
+Renania Settentrionale-Vestfalia venuti dopo. I due ponti di primavera, il 15
+maggio e il 5 giugno, lì sono stati più affollati di qualsiasi venerdì normale di
+maggio e giugno (dati di settembre 2026). E la “dritta segreta” di andarci con la pioggia funziona esattamente finché
 tutti gli altri non hanno letto la stessa dritta segreta.
 
 “Le domeniche sono piene” è quindi utile più o meno quanto “d’estate fa caldo”. Una domenica
@@ -250,14 +255,18 @@ Ci sono buoni siti che ti mostrano quanto è lunga la coda proprio adesso. Lo
 sappiamo fare anche noi, ogni cinque minuti, in tutto il mondo. Ma park.fan è
 stato costruito per la domanda che viene prima: _vale la pena andarci?_
 
-Per questo il modello guarda fino a **365 giorni** avanti invece che al solo
+Per questo il modello guarda circa sei mesi avanti invece che al solo
 tabellone, e il calendario dei giorni migliori ne ricava una risposta: si va, o
 meglio di no. Se ci azzecca o no, non devi credermi sulla parola: sta sulla
 [pagina di Fancast](/fancast).
 
 Più tempi di attesa, livelli di affluenza, meteo all’ingresso del parco, orari e
-storici delle attrazioni in sei lingue. Nessun gruppo, nessun paywall, nessuna
-pubblicità, costruito da uno che in coda ci sta di persona.
+storici delle attrazioni in sei lingue. Da settembre c’è anche il
+[pianificatore](/blog/pianificatore), che mette le tue attrazioni su una linea
+del tempo a confronto con la previsione, e se vuoi una notifica push ti avvisa
+quando la coda di un’attrazione scende sotto una soglia che scegli tu. Nessun
+gruppo, nessun paywall, nessuna pubblicità, costruito da uno che in coda ci sta
+di persona.
 
 ## Cosa vuole diventare questo blog
 
@@ -284,15 +293,15 @@ questo blog, in tre gusti.
 proprio dal parco appena visitato. Non “è stato bello”, ma:
 “[Magic Kingdom](ref:magic-kingdom-park?bare), 15 maggio, rope drop alle 09:08,
 questo era il piano, questo ha funzionato, questo è andato a rotoli.” Il viaggio
-a Orlando di cui sopra apre le danze: Disney World, Universal e SeaWorld, foto
-comprese.
+a Orlando di cui sopra avrà proprio un resoconto così: Disney World, Universal e
+SeaWorld, foto comprese.
 
 **Analisi dei dati.** Cosa rivela _davvero_ lo storico delle code di un parco?
 Quando conviene di più il [Taron](ref:phantasialand/taron?bare)? E le nostre
 previsioni mantengono quello che promettono?
 
-**Notizie.** Brevi e senza giri di parole. Se succede qualcosa, sta qui, di
-solito lo stesso giorno.
+**Notizie.** Brevi e senza giri di parole. Dal 25 settembre hanno una sezione
+tutta loro sotto [Notizie](/news), separata dagli articoli.
 
 Grafici, mappe e tempi di attesa di questi post arrivano direttamente da
 park.fan: quello che leggi è ciò che il parco sta facendo davvero. I due

@@ -2,6 +2,7 @@
 title: 'De dagplanner rekent mee voordat je in de verkeerde rij staat'
 translationKey: trip-planner-launch
 date: '2026-09-05'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -28,7 +29,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Een volgepakt openluchttheater van achteren gezien, het publiek wacht in het donker'
-  caption: 'Fantasmic in de Hollywood Studios, vlak voor aanvang. Tienduizend mensen die dat halfuur nergens in de rij staan.'
+  caption: 'Fantasmic in de Hollywood Studios, vlak voor aanvang. Er passen bijna tienduizend mensen in, en dat halfuur staat geen van hen ergens in de rij.'
   credit: 'Patrick Arns'
 seo:
   title: 'Pretparkdag plannen: wachttijden inrekenen vóór de rij'
@@ -65,7 +66,7 @@ Precies dat gat had park.fan. “Hoe lang is de rij nu” beantwoorden we sinds 
 [eind augustus](/blog/is-70-minuten-veel). De derde vraag stond nergens: komt
 mijn dag zo eigenlijk wel uit?
 
-Sinds deze week staat hij er. De [dagplanner](/dagplanner) legt je attracties op
+Sinds begin september staat hij er. De [dagplanner](/dagplanner) legt je attracties op
 een tijdlijn en rekent de dag door voordat je vertrekt.
 
 ## Een dag is een volgorde, en die heeft een klok
@@ -87,7 +88,9 @@ eindigt, zie je al bij het ontbijt welke ervan om half elf nog over zijn.
 
 Tien attracties, van opening tot vier uur ’s middags, en onder het plan staat de
 som: vijf uur en een kwartier alleen wachten. Dat is de versie die de optimizer
-het beste vond. Zonder volgorde sta je er net zo lang, maar rijd je minder.
+het beste vond. Herschikt hij een dag die je zelf hebt ingedeeld, dan staat er
+daarna hoeveel minuten wachten de nieuwe volgorde scheelt, uitgerekend met
+dezelfde formule als ervoor.
 
 ## Tussen twee attracties ligt een weg, vaak om een meer heen
 
@@ -102,8 +105,8 @@ zo. Het is een ondergrens en geen looptijd: paden buigen om water heen, om
 wachtrijen en om eenrichtingsroutes, sommige parken stapelen hun gebieden op
 elkaar, en in een groot park loopt de rechte lijn nogal eens dwars over een
 meer waar je helemaal omheen moet. Voor de bovengrens rekent de planner daarom met
-parktempo in plaats van wandeltempo en legt twee derde omweg op de hemelsbrede
-afstand.
+parktempo, zo’n vier kilometer per uur met drukte en kinderwagens, en telt 60
+procent omweg op bij de hemelsbrede afstand.
 
 In een compact park kost een onhandige overstap drie minuten en valt het
 niemand op. In een groot park kost hij een kwartier. Wie dat acht keer per dag
@@ -152,9 +155,10 @@ dan komt er iets anders uit.
 Nog iets wat mensen bij het plannen in hun hoofd zelden meerekenen: het eerste
 uur is vaak helemaal niet van jou. Veel parken openen hun poorten voordat een
 deel van de attracties draait, en de headliners zitten graag bij de latere. Wie
-dat eerste uur met hen volplant, heeft een uur volgepland dat er niet is. De
-planner kent de openingstijd van elke afzonderlijke attractie en laat geen blok
-ervoor schuiven. Een tegenhanger is er niet: wanneer een enkele attractie
+dat eerste uur met hen volplant, heeft een uur volgepland dat er niet is. In
+Phantasialand gaan de poorten om negen uur open, maar Taron, F.L.Y. en de meeste
+andere grote attracties pas om tien uur. Waar de API de eigen openingstijd van
+een attractie kent, laat de planner geen blok ervoor schuiven. Een tegenhanger is er niet: wanneer een enkele attractie
 ’s avonds dichtgaat, meldt geen enkele feed betrouwbaar, dus staat daar ook
 niets over.
 
@@ -170,16 +174,27 @@ Er wordt op drie dingen gesorteerd, en hun rangorde is de eigenlijke beslissing.
 
 1. **Alles moet vóór sluitingstijd aan de beurt komen.** Een plan met één
    attractie minder die echt plaatsvindt, verslaat er een met één meer die het
-   niet meer wordt. En valt er iets af, dan van achteren: eerst wat de knop zelf
-   net heeft toegevoegd, nooit wat jij vooraf had bedacht.
+   niet meer wordt. Wat telt, is het moment waarop je in de rij gaat staan: een
+   rij waar je een kwartier voor sluitingstijd nog in komt, telt mee. En valt er
+   iets af, dan eerst wat de knop zelf net heeft toegevoegd, niet wat jij vooraf
+   had bedacht. Onder de toegevoegde attracties gaat een tweede rit op dezelfde
+   attractie vóór elke eerste, daarna die met de kortste verwachte rij. De
+   attracties waar de meeste mensen voor komen, blijven het langst staan.
 2. **De som van de wachttijden.** Daar was tenslotte om gevraagd.
 3. **Het tijdstip waarop je voor het laatst gaat staan.** Waar twee volgordes
    evenveel kosten, wint die welke eerder klaar is.
 
 In een park met meer headliners dan er in een dag passen, is punt één het hele
-spel. Daarom verdwijnt de knop ook niet altijd na een druk: blijft er een
-attractie over waarvoor geen plaats meer is, dan staat eronder hoeveel het er
-zijn, en het aanbod blijft staan voor het geval je iets anders schrapt.
+spel, en sinds 21 september beslist de planner dat niet meer stilletjes. Past
+niet alles, dan opent elk van de twee knoppen eerst een assistent met drie
+stappen. Onder “Aanpassingen” staat wat ruimte zou maken, zoals de lunchpauze
+weglaten of inkorten tot een halfuur, en elke regel is doorgerekend: hij
+verschijnt alleen als hij echt een attractie extra in de dag krijgt. Onder
+“Prioriteit” staat de hele lijst in de volgorde waarin geschrapt zou worden, en
+je zet bovenaan wat je beslist niet wilt missen. Ook de attracties die je zelf
+had ingepland, staan in die lijst, want hier beslis jij en niet de knop. Onder
+“Resultaat” staat met naam wat erbuiten blijft. In het plan komt pas iets te
+staan als je het overneemt.
 
 Een schuifregelaar die wachten tegen rondhangen afweegt, is er bewust niet. Dat
 getal zou niemand kunnen verantwoorden, en de eerste die het tegenspreekt, zou
@@ -208,9 +223,13 @@ Het langst hebben we gezeten op vier plekken waar de planner bewust minder
 beweert dan hij zou kunnen.
 
 **De voorspelling zit ernaast, en meetbaar ook.** Bij elk geselecteerd blok
-staat hoe ver de voorspellingen voor die attractie gemiddeld af lagen van wat de
-dag werkelijk bracht. (Dat zou ik van het weerbericht ook al jaren willen.)
-“Typisch” betekent hier: de helft van de dagen ligt er verder naast. Daarom staat het getal er als typische fout en nooit als marge waarin het juiste antwoord al zou zitten.
+staat hoe ver de voorspellingen voor een rij van die lengte, met zoveel
+aanlooptijd, de afgelopen 45 dagen gemiddeld af lagen van wat de dag werkelijk
+bracht. Dat staat er tot 60 dagen vooruit; verder reikt de meting nog niet. (Dat
+zou ik van het weerbericht ook al jaren willen.) Een gemiddelde is geen
+bovengrens, op veel dagen zit de voorspelling er verder naast. Daarom staat het
+getal er als typische fout en nooit als marge waarin het juiste antwoord al zou
+zitten.
 
 **Speeltijden zijn twee dingen.** Wat het park voor vandaag heeft gepubliceerd,
 is een mededeling. Wat wij van de laatste passende weekdag hebben doorgetrokken,
@@ -241,25 +260,34 @@ liever bij het ontbijt dan bij de parkkassa.
 De ene uitzondering zijn pushmeldingen. Om je te kunnen zeggen dat je zo moet
 vertrekken, moet het plan op onze server staan, en de planner schrijft erbij wat
 dat betekent: wie de link heeft, kan hem lezen en wijzigen. Er staat geen
-wachtwoord voor. Wie dat niet wil, zet de meldingen niet aan en verliest verder
-niets.
+wachtwoord voor. Zet je de meldingen weer uit, dan wordt het plan daar
+verwijderd. Wie dat allemaal niet wil, zet ze niet aan en verliest verder niets.
+Waarover we je een seintje geven, kies je zelf: wanneer je naar de volgende
+attractie moet, de speeltijden, een geplande attractie die sluit of weer opengaat,
+en een geplande wachttijd die duidelijk verandert.
 
-Nog twee dingen die je makkelijk over het hoofd ziet. Aan de rand van het
-scherm hangt op elke pagina een tab die de planner opent, ook als er nog niets
-gepland is. En op een computer kun je een tweede kolom openen, dan staan er twee
+Zolang de meldingen aan staan, is er sinds 23 september ook een link om te
+delen. Wie hem opent, krijgt een eigen kopie in zijn planner, en wat hij daaraan
+verandert, blijft bij hem. Zo komt een plan ook van de computer op de telefoon.
+
+Nog twee dingen die je makkelijk over het hoofd ziet. Op een computer hangt op
+elke pagina aan de rand van het scherm een tab die de planner opent, ook als er
+nog niets gepland is; op de telefoon zit daarvoor sinds 24 september een
+kalendericoon bovenin de balk. En op een computer kun je een tweede kolom openen, dan staan er twee
 dagen naast elkaar. Voor precies één zin heb ik dat gebouwd: “en hoe zou dat er
 op zaterdag uitzien”.
 
 ## Zo begin je
 
-De weg naar binnen loopt via drie vragen. Naar welk park, op welke dag, en wie
-gaat er mee.
+De weg naar binnen loopt via vier vragen. Naar welk park, op welke dag, wie gaat
+er mee, en welke grote attracties moeten erin. De afbeeldingen hieronder tonen
+nog de eerste versie, met drie stappen.
 
 De eerste is een zoekveld, en daarachter zit een kleinigheid die snel misgaat.
 Tik “Disneyland” in en je krijgt vijf parken op drie continenten die allemaal zo
 heten. Erg vindingrijk was de muis niet bij het bedenken van namen.
 
-![Stap één van de planner-wizard: “Disneyland” in het zoekveld, daaronder vijf parken uit vijf landen. | Eén naam, vijf parken. Daarom onthoudt de planner het pad uit de API en niet de naam.](/media/tagesplaner/planer-wizard-park-nl.webp)
+![Stap één van de planner-wizard: “Disneyland” in het zoekveld, daaronder vijf parken in Anaheim, Parijs, Tokio, Shanghai en Hongkong. | Eén naam, vijf parken. Daarom onthoudt de planner het pad uit de API en niet de naam.](/media/tagesplaner/planer-wizard-park-nl.webp)
 
 Een plan wordt opgeslagen onder het pad dat de API zelf teruggeeft, nooit onder
 een pad dat wij uit de getoonde naam in elkaar zetten. “Nederland” heet niet in
@@ -270,16 +298,20 @@ regels krijg je een hele maand, en elke dag draagt de drukteverwachting van dat
 park. “De zaterdag over twee weken” is daarmee een kwestie van één blik, en wat
 we er verder over weten staat onder het rooster.
 
-![Stap twee van de planner-wizard: boven het maandrooster een foto van Disneyland Park in Anaheim, elke dag draagt de drukteverwachting, zaterdag de 19e is gekozen. | Een september die in Anaheim de hele maand rustig voorspeld is. In zestig regels van een keuzelijst zie je dat niet.](/media/tagesplaner/planer-wizard-tag-nl.webp)
+![Stap twee van de planner-wizard: Disneyland Park in Anaheim is gekozen, elke dag in het maandrooster draagt de drukteverwachting, zaterdag de 19e is gemarkeerd. | Een september die in Anaheim de hele maand rustig voorspeld is. In zestig regels van een keuzelijst zie je dat niet.](/media/tagesplaner/planer-wizard-tag-nl.webp)
 
 De derde vraag klinkt als een formulier en is belangrijker dan ze eruitziet:
-lunchpauze inplannen, gaan er kinderen mee, wil je droog blijven. Alle drie zijn
-markeringen op de attractielijst en geen filters, en de planner zet het op de
-kaart: attracties met een hogere minimumlengte worden gemarkeerd, niet
+lunchpauze inplannen, gaan er kinderen mee, wil je droog blijven. De lunch wordt
+een blok in de dag. Kinderen en droog blijven zijn markeringen op de
+attractielijst en geen filters, en de planner zet het op de kaart: attracties met een hogere minimumlengte worden gemarkeerd, niet
 verborgen. Een filter zou het park stiekem inkorten, en of oma de tassen
 vasthoudt, weet alleen jij.
 
 ![Stap drie van de planner-wizard: drie kaarten voor de lunch, kinderen en waterattracties, daaronder de knop om het plan te openen. | Drie antwoorden die het park niet inkorten. De lunchpauze landt als blok om 12:30 in de dag en is te verschuiven.](/media/tagesplaner/planer-wizard-wer-nl.webp)
+
+De vierde vraag kwam er op 21 september bij. Die zet de grote attracties van het
+park in de dag, en als ze vóór sluitingstijd niet allemaal passen, laat hij
+dezelfde aanpassingen en dezelfde lijst zien als de assistent onder de tijdlijn.
 
 Daarna kom je op de parkpagina uit met de planner open, en van daaruit sleep je
 attracties op de tijdlijn. Op elke attractiepagina zit daar ook een knop voor,
