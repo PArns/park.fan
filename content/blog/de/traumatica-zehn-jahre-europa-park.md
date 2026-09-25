@@ -81,7 +81,7 @@ zusätzlichen Hindernissen und neuen Streckenabschnitten.
 ## Die acht Horror-Attraktionen
 
 - Wakala's Wonderland, eine knallbunte Spielwelt, in der man lieber nicht spielt
-- Day One, der erste Tag der Apokalypse, und du suchst den Ausgang
+- Day 1, der erste Tag der Apokalypse, und du suchst den Ausgang
 - Tarot-House – Last Descent, eine verfluchte Gruft, in der Madame Monroe neue
   Seelen sammelt
 - Dark Remains, Katakomben, in denen nicht alles schläft, was begraben ist
@@ -132,5 +132,4 @@ Alle Termine und Tickets stehen auf der
 
 — Patrick
 
-> [!CORRECTION]
-> 25. September 2026: In der ersten Fassung stand THE HOTEL als achte Horror-Attraktion in der Liste. THE HOTEL ist ein Zusatzerlebnis mit eigenem Ticket, die achte Attraktion ist The Field. Außerdem stand dort, THE HOTEL sei das erste Vollkontakt-Erlebnis bei Traumatica; angefasst wird man laut Veranstalter auch im Murderdome. Ergänzt haben wir, dass am Sonntag, dem 27. September, nicht gespielt wird. Den Event Pass nennt die Traumatica-Seite am 25. September mit einem Preis ab 45 €.
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand THE HOTEL als achte Horror-Attraktion in der Liste. THE HOTEL ist ein Zusatzerlebnis mit eigenem Ticket, die achte Attraktion ist The Field. Außerdem stand dort, THE HOTEL sei das erste Vollkontakt-Erlebnis bei Traumatica; angefasst wird man laut Veranstalter auch im Murderdome. Ergänzt haben wir, dass am Sonntag, dem 27. September, nicht gespielt wird. Den Event Pass nennt die Traumatica-Seite am 25. September mit einem Preis ab 45 €.

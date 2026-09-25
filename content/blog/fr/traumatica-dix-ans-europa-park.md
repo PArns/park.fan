@@ -81,7 +81,7 @@ des obstacles en plus et de nouveaux tronçons de parcours.
 ## Les huit attractions d’horreur
 
 - Wakala’s Wonderland, un monde de jeux multicolore où l’on préfère ne pas jouer
-- Day One, le premier jour de l’apocalypse, et vous cherchez la sortie
+- Day 1, le premier jour de l’apocalypse, et vous cherchez la sortie
 - Tarot-House – Last Descent, une crypte maudite où Madame Monroe collectionne
   de nouvelles âmes
 - Dark Remains, des catacombes où tout ce qui est enterré ne dort pas

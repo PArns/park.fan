@@ -328,8 +328,7 @@ Costa Azul, un acuario digital hecho junto con el Museo Oceanográfico, en la na
 reformada de Silver Star coches de carreras de la colección del príncipe
 Alberto II y un concurso de preguntas sobre el Festival Internacional del Circo
 de Montecarlo, además de un Café de Paris. La zona abrió con la temporada en
-marzo; la familia principesca la inauguró oficialmente el 30 de junio de
-2026.
+marzo; la familia principesca la inauguró oficialmente el 30 de junio de 2026.
 
 Mi detalle favorito de esta ordenación no tiene que ver con ninguna atracción. En
 la zona irlandesa, el mundo infantil, hay un nido de cigüeñas más antiguo que la

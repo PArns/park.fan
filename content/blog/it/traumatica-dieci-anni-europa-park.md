@@ -43,9 +43,10 @@ seo:
 
 Nell’autunno del 2007 [Europa-Park](ref:europa-park) ha liberato per la prima
 volta, di sera, attori coperti di sangue finto in mezzo ai visitatori. Si
-chiamava «Terenzi Horror Nights», dal cantante Marc Terenzi, che aveva portato
-l’idea dagli Stati Uniti insieme a Michael Mack. Dal 2017 si chiama Traumatica,
-quindi il 2026 è la decima edizione con questo nome. Il motto somma le due
+chiamava «Terenzi Horror Nights», dal cantante Marc Terenzi, che ha
+organizzato l’evento insieme a Michael Mack fino al 2012. Dal 2017 porta il nome
+Traumatica, all’inizio come «Horror Nights – Traumatica», quindi il 2026 è la
+decima edizione con questo nome. Il motto somma le due
 cose: «20 anni di horror, 10 anni di Traumatica».
 
 L’anteprima è stasera, mercoledì 23 settembre. La prima ufficiale è venerdì
@@ -53,9 +54,10 @@ L’anteprima è stasera, mercoledì 23 settembre. La prima ufficiale è venerd�
 
 ## Le novità dell’anniversario
 
-**THE HOTEL** è la prima esperienza a contatto fisico di Traumatica. Entri da
-solo in un hotel abbandonato, senza un gruppo dietro cui nasconderti, e gli
-attori possono toccarti. Secondo lo
+**THE HOTEL** è nuovo ed è pensato come esperienza a pieno contatto fisico.
+Entri da solo in un hotel abbandonato, senza un gruppo dietro cui nasconderti, e
+gli attori possono toccarti. Anche nel Murderdome, dice l’organizzatore, ti
+toccano, ma questa è l’unica casa che si attraversa da soli. Secondo lo
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html)
 non è accessibile in sedia a rotelle ed è riservata ai maggiorenni. Costa 29 €
 in più rispetto al biglietto di Traumatica. Quanto duri, il parco non lo dice,
@@ -77,7 +79,7 @@ tratti di percorso.
 
 - Wakala’s Wonderland, un mondo di giochi coloratissimo dove è meglio non
   giocare
-- Day One, il primo giorno dell’apocalisse, e tu cerchi l’uscita
+- Day 1, il primo giorno dell’apocalisse, e tu cerchi l’uscita
 - Tarot-House – Last Descent, una cripta maledetta dove Madame Monroe colleziona
   anime nuove
 - Dark Remains, catacombe dove non tutto ciò che è sepolto dorme
@@ -85,10 +87,11 @@ tratti di percorso.
   bambini scomparsi
 - Murderdome – Bonus Round, con i nuovi ostacoli di cui sopra
 - Studio-13 – Callback, un casting cinematografico per una parte che non vuoi
-- THE HOTEL, da soli e solo maggiorenni
+- The Field, una passeggiata serale in un campo di mais in cui non sei solo
 
-In più c’è Brain Shocker, un breve viaggio in realtà virtuale a 6 €, ci sono
-spettacoli sul palco e attori che vanno a caccia su tutta l’area.
+THE HOTEL non è una delle otto: si paga a parte. In più c’è Brain Shocker, un
+breve viaggio in realtà virtuale a 6 €, ci sono spettacoli sul palco, lo
+spettacolo sul ghiaccio e attori che vanno a caccia su tutta l’area.
 
 ## Chi può entrare e quanto costa
 
@@ -97,8 +100,8 @@ niente, e all’ingresso chiedono un documento d’identità originale. Una foto
 telefono non basta, per quanto convincente sia lo sguardo. THE HOTEL,
 THE FORBIDDEN e il Vampire’s Club sono solo per maggiorenni.
 
-Si va in scena dal venerdì alla domenica, più tre giovedì: 22 e 29 ottobre e
-5 novembre. L’ingresso apre alle 17:45, il food court alle 18, e le attrazioni
+Si va in scena dal venerdì alla domenica, tranne domenica 27 settembre, più tre
+giovedì: 22 e 29 ottobre e 5 novembre. L’ingresso apre alle 17:45, il food court alle 18, e le attrazioni
 horror funzionano dalle 19 alle 23:30.
 
 | Biglietto                 | Prezzo             |
@@ -127,3 +130,6 @@ Tutte le date e i biglietti sono sulla
 [pagina Traumatica di Europa-Park](https://www.europapark.de/en/events/traumatica).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 settembre 2026: nella prima versione THE HOTEL compariva come ottava attrazione horror dell’elenco. THE HOTEL è un’esperienza aggiuntiva con biglietto proprio, l’ottava attrazione è The Field. Vi si diceva anche che THE HOTEL fosse la prima esperienza a contatto fisico di Traumatica, mentre secondo l’organizzatore si viene toccati anche nel Murderdome. Abbiamo aggiunto che domenica 27 settembre non si va in scena. Il 25 settembre il sito di Traumatica indica l’Event Pass a partire da 45 €.

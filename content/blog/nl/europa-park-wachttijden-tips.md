@@ -830,8 +830,8 @@ horrorattracties om 23.30 uur. Podiumshow en ijsshow zitten in elk ticket. De
 club loopt daarna door tot drie uur ’s nachts.
 
 **Vanaf 16, en daar valt niet over te onderhandelen.** Afzonderlijke formats als
-THE HOTEL, de clubs THE FORBIDDEN en Vampire’s Club en het Eden Manor zijn vanaf
-18. Zwangeren laat de organisatie om veiligheidsredenen niet toe.
+THE HOTEL, de clubs THE FORBIDDEN en Vampire’s Club en het Eden Manor zijn
+vanaf 18. Zwangeren laat de organisatie om veiligheidsredenen niet toe.
 
 Er wordt gespeeld tussen **23 september en 7 november 2026** van vrijdag tot en
 met zondag, behalve op zondag 27 september, plus op drie donderdagen (22 en

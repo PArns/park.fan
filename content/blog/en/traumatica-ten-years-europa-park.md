@@ -77,7 +77,7 @@ sections of route.
 ## The eight horror attractions
 
 - Wakala's Wonderland, a brightly coloured playland you would rather not play in
-- Day One, the first day of the apocalypse, and you are looking for the exit
+- Day 1, the first day of the apocalypse, and you are looking for the exit
 - Tarot-House – Last Descent, a cursed crypt where Madame Monroe collects new
   souls
 - Dark Remains, catacombs where not everything buried is asleep

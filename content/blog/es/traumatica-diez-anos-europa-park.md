@@ -57,7 +57,7 @@ noviembre.
 
 **THE HOTEL** es nuevo y está planteado como experiencia de contacto total.
 Entras solo en un hotel abandonado, sin grupo detrás del que esconderte, y los
-actores pueden tocarte. Según el organizador, en el Murderdome también te tocan,
+actores pueden tocarte. En el Murderdome también te tocan, dice el organizador,
 pero esta es la única casa que se recorre en solitario. Según el
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html),
 no es accesible en silla de ruedas y solo admite mayores de 18. Cuesta 29 €
@@ -80,7 +80,7 @@ nuevos y tramos de recorrido añadidos.
 
 - Wakala's Wonderland, un mundo de juegos de colores chillones donde mejor no
   jugar
-- Day One, el primer día del apocalipsis, y tú buscas la salida
+- Day 1, el primer día del apocalipsis, y tú buscas la salida
 - Tarot-House – Last Descent, una cripta maldita donde Madame Monroe colecciona
   almas nuevas
 - Dark Remains, catacumbas donde no todo lo enterrado duerme
@@ -103,8 +103,7 @@ en el móvil no sirve, por muy convincente que sea la cara que pongas.
 THE HOTEL, THE FORBIDDEN y el Vampire's Club son para mayores de 18.
 
 Hay función de viernes a domingo, salvo el domingo 27 de septiembre, y además
-tres jueves: 22 y 29 de octubre y
-5 de noviembre. El acceso abre a las 17:45, el food court a las 18:00, y las
+tres jueves: 22 y 29 de octubre y 5 de noviembre. El acceso abre a las 17:45, el food court a las 18:00, y las
 atracciones de terror funcionan de 19:00 a 23:30.
 
 | Entrada              | Precio               |
@@ -134,4 +133,4 @@ Todas las fechas y entradas están en la
 — Patrick
 
 > [!CORRECTION]
-> 25 de septiembre de 2026: En la primera versión, THE HOTEL aparecía como la octava atracción de terror de la lista. THE HOTEL es una experiencia adicional con entrada propia; la octava atracción es The Field. También decía que THE HOTEL era la primera experiencia de contacto físico de Traumatica, pero según el organizador en el Murderdome también te tocan. Hemos añadido que el domingo 27 de septiembre no hay función. El 25 de septiembre, la web de Traumatica anuncia el Event Pass desde 45 €.
+> 25 de septiembre de 2026: en la primera versión, THE HOTEL aparecía como la octava atracción de terror de la lista. THE HOTEL es una experiencia adicional con entrada propia; la octava atracción es The Field. También decía que THE HOTEL era la primera experiencia de contacto físico de Traumatica, pero según el organizador en el Murderdome también te tocan. Hemos añadido que el domingo 27 de septiembre no hay función. El 25 de septiembre, la web de Traumatica anuncia el Event Pass desde 45 €.

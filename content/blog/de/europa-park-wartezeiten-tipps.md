@@ -67,8 +67,8 @@ Kein Park in Deutschland verkauft mehr Tickets als der
 stehst du in Rust kürzer an als im Phantasialand, das nur ein Drittel dieses
 Publikums hat. Das klingt nach einem Tippfehler in der Pressemappe.
 
-Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit dem
-26. Dezember 2025, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
+Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit dem 26.
+Dezember 2025, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
 [Parkseite](ref:europa-park?bare) alle fünf Minuten neu.
 
 Wer 2026 hinfährt, erwischt außerdem etwas zum letzten Mal. Am Eingang der
@@ -286,8 +286,8 @@ Afrika auf Rang 2, hinter dem Disneyland Park in Paris.
 
 Dahinter steht ein Resort, das nach eigener Angabe in der Saison über 5.500
 Leute beschäftigt, und ein Park auf 95 Hektar. Elfmal hat der Park den
-**Golden Ticket Award** als bester Freizeitpark der Welt gewonnen, zuletzt am
-12. September 2026 in Austin, Texas. Gern wird daraus eine ununterbrochene Serie
+**Golden Ticket Award** als bester Freizeitpark der Welt gewonnen, zuletzt am 12.
+September 2026 in Austin, Texas. Gern wird daraus eine ununterbrochene Serie
 gemacht, nur hat 2023 Dollywood gewonnen, und der Europa-Park wurde Zweiter;
 2020 fiel die Verleihung wegen der Pandemie aus.
 
@@ -635,7 +635,7 @@ Juni sind die ruhigsten Sommermonate, August ist der vollste.
 
 Der Februar fehlt, weil der Park dann zu hat, und der März ist dünn, weil die
 Saison 2026 erst am 28. März begonnen hat. 2027 geht es früher los: Vom 7. bis
-19. März öffnet der Park erstmals für zwei Pre-Opening Weeks, noch nicht mit
+zum 19. März öffnet der Park erstmals für zwei Pre-Opening Weeks, noch nicht mit
 allen Attraktionen und Shows, dafür mit den billigsten Tickets des Jahres, die
 Sommersaison beginnt dann am 20. März. Oktober und November hatten bei unserer
 letzten Durchsicht im September 2026 noch keinen einzigen Messtag. Ob die
@@ -897,8 +897,8 @@ dazubekommen.
 **Schlafen.** Sechs Themenhotels gehören zum Resort: El Andaluz (1995), Castillo
 Alcazar (1999), Colosseo (2004), Santa Isabel (2007), Bell Rock (2012) und
 Krønasår (2019), dazu die Silver Lake City im Westernstil, das frühere Camp
-Resort mit Tipis, Planwagen, Blockhütten und Campingplatz, zu der seit dem
-18. Juni 2026 die Riverside Western Lodge mit 119 Zimmern gehört. Der
+Resort mit Tipis, Planwagen, Blockhütten und Campingplatz, zu der seit dem 18.
+Juni 2026 die Riverside Western Lodge mit 119 Zimmern gehört. Der
 Frühzutritt gilt für alle Übernachtungsgäste, vom Campingplatz bis zum Krønasår.
 
 **Der Rest des Resorts.** **Rulantica**, die Wasserwelt, hat am 28. November 2019
@@ -962,11 +962,11 @@ soll in der Saison 2028 fertig sein.
 
 Nein. Traumatica ist ein eigenes Abendevent auf einem abgesperrten Gelände mit
 eigenem Eingang, eigenem Ticket und eigener Altersgrenze von 16 Jahren. Es läuft
-2026 vom 23. September bis zum 7. November freitags bis sonntags, außer am
-27. September, dazu an drei Donnerstagen im Oktober und November. Bis zum
-1. November schließt der Freizeitpark frühestens um achtzehn Uhr und Traumatica
-öffnet um neunzehn, beides an einem Tag ist also machbar. An den Spieltagen im November läuft im Park schon
-HALLOWinter, und der macht selbst erst um neunzehn Uhr zu.
+2026 vom 23. September bis zum 7. November freitags bis sonntags, außer am 27.
+September, dazu an drei Donnerstagen im Oktober und November. Bis zum 1. November
+schließt der Freizeitpark frühestens um achtzehn Uhr und Traumatica öffnet um
+neunzehn, beides an einem Tag ist also machbar. An den Spieltagen im November
+läuft im Park schon HALLOWinter, und der macht selbst erst um neunzehn Uhr zu.
 
 ### Schafft man den Europa-Park an einem Tag?
 
