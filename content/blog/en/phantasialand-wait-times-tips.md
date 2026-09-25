@@ -2,7 +2,7 @@
 title: 'Phantasialand Wait Times & Tips: the perfect day, planned by a repeat offender'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -10,7 +10,7 @@ excerpt: >-
   Phantasialand is my home park, and park.fan was born in a Taron queue, which
   tells you something about those queues. The 2026 guide: the rides, the food,
   the small wonders, and how to keep Phantasialand wait times short, find the
-  best day and see through a Quick Pass whose “dynamic” price barely moves.
+  best day and do the Quick Pass math properly.
 tags:
   - phantasialand
   - wait-times
@@ -54,11 +54,12 @@ seo:
 
 Some parks I can write about with the sober eye of the data guy. Throughput
 here, saturation curve there. And then there’s
-[Phantasialand](ref:phantasialand?long), where I can’t manage a single sober
+[Phantasialand](ref:phantasialand), where I can’t manage a single sober
 sentence, and I really have tried. Too many childhood afternoons are buried in
 this patch of ground in Brühl. My parents pushed me around its Märchensee in a
 stroller, my father and I glided through an open storybook in the “1001 Nacht”
-gondola, and park.fan was invented here, in a sixty-minute Taron queue.
+gondola long before it was torn down, and park.fan was invented here, in a
+sixty-minute Taron queue.
 
 The full sentimental version is in
 [our origin story](/blog/welcome-to-park-fan-blog). This one is about what I
@@ -72,23 +73,26 @@ mostly in your own hands, because they come down to which day you pick.
 
 ![A lit swing carousel turning, a light tree at the left | Wintertraum, Phantasialand’s winter season. | wide](/media/phantasialand/background-16x9.jpg)
 
-## Nine worlds in a tight space, and everyone wants in
+## Many worlds in a tight space, and everyone wants in
 
 ![Taron in the basalt village of Klugheim | Taron races through the basalt village of Klugheim, and the village doubles as the queue. | right](/media/phantasialand/taron-4x3.jpg)
 
-Phantasialand calls itself “Europe’s Most Immersive Theme Park,” and it means
-every word. Here is what that looks like in practice: the queue for [Taron](ref:phantasialand/taron) is Klugheim, a basalt village
+Phantasialand wears “Europe’s most immersive theme park” like a middle name; it
+has won that Parkscout plus award eight years running. Here is what that looks
+like in practice: the queue for [Taron](ref:phantasialand/taron) is Klugheim, a basalt village
 with crooked roofs and weathered walls, and there is no visible line between
 queueing and set. From inside the village you don’t get to see much of the
 coaster until late.
 
-Nine areas sit on 28 hectares, and none of them bleeds into the next: Berlin
-around 1900 at the entrance, China Town with its temples, Deep in Africa with
-mud huts, Aztec Mexico, Mysteryland, Fantasy around the Märchensee, plus the two
-youngest, Klugheim and Victorian Rookburgh. Each has its own music and its own
-smell, which is more noticeable in summer outside the churros stand in China
-Town than in any press release. Ride nothing at all and you still have a full
-day.
+The park counts seven themed areas, and none of them bleeds into the next:
+Berlin in its Golden Twenties look at the entrance, China Town with its temples,
+Deep in Africa with mud huts, Mexico with Maya ruins, Fantasy with Wuze Town on
+the Mondsee, Mystery with the basalt village of Klugheim and, youngest of all,
+Victorian Rookburgh. With car parks and hotels the site covers about 28
+hectares; the park itself is a good deal smaller. Each area has its own music
+and its own smell, which is more noticeable in summer outside the churros stand
+in China Town than in any press release. Ride nothing at all and you still have
+a full day.
 
 All that density has a downside. On a busy day, everyone wants the same two or
 three rides at the same time. In [the art of waiting](/blog/the-art-of-waiting) I
@@ -109,48 +113,63 @@ is about as far from a thrill park as you can get.
 It all began in 1967, in a mined-out brown-coal pit on the edge of Brühl. Two
 men who had met in Berlin after the war poured their money and their hearts into
 it: Gottlieb Löffelhardt, a born Berliner, and Richard Schmidt, who had
-performed as an artiste on the stage of the legendary Wintergarten-Varieté and
+performed as an artiste on the stage of Berlin’s Wintergarten variety theatre and
 produced numerous puppet TV plays. What the two wanted to make of the
 worked-out pit called “Berggeist” was a **Märchenwald** (fairy-tale forest)
 rather than a fairground: a quiet place for families and grandparents, with puppets from
-Schmidt’s collection, fairy-tale scenes and plenty of greenery. The gates opened on
+Schmidt’s collection, some forty fairy-tale scenes and plenty of greenery. The gates opened on
 30 April 1967. There were no roller coasters, and the grandparents will have
 coped.
 
 ![F.L.Y. in Rookburgh | Rookburgh with F.L.Y. (2020), the world’s first flying launch coaster. | left](/media/phantasialand/fly-4x3.jpg)
 
 How that turned into a park enthusiasts cross Europe for is a story of slow
-growth and a near-ending. The park grew bigger,
-bolder, more technical; in 1996 Michael Jackson, yes, that one, personally opened the mine
-train [Colorado Adventure](ref:phantasialand/colorado-adventure). And then, on
-**1 May 2001**, came the fire. A technical fault on the Grand Canyon ride set a
-large part of the old park ablaze; the fire brigade said afterwards they had
-“narrowly avoided a catastrophe.” It could have been the end.
+growth and a near-ending. The park grew bigger, bolder, more technical; 1996
+brought the mine train [Colorado Adventure](ref:phantasialand/colorado-adventure),
+and a few weeks after it opened, Michael Jackson, yes, that one, christened it
+in person. And then, on **1 May 2001**, came the fire. A technical fault on the
+Grand Canyon ride set light to the artificial mountain that also housed the
+Gebirgsbahn coaster, and the flames spread to the Tanagra theatre and parts of
+the western town. Around 20,000 guests were in the park that day, 63 were
+slightly injured, the damage came to 38 million euros, and the park stayed shut
+for 15 days. It could have been the end.
 
-Instead, within a year, the park built Wuze Town on the ruins of the burned-out
-rides, with the two crazy
-spinning coasters [Winja’s Fear](ref:phantasialand/winjas-fear) & Force and the
-water ride [River Quest](ref:phantasialand/river-quest), both of which you can
-still ride today. What came out of the ashes was an attitude: if you’re going to build
-new, do it properly, themed down to the last screw.
+Wuze Town, with the two spinning coasters
+[Winja’s Fear](ref:phantasialand/winjas-fear) & Force, had been due to open in
+2001 and arrived a year late. In that same year, 2002, the replacements for
+what had burned were ready: the rapids ride
+[River Quest](ref:phantasialand/river-quest) and the Feng Ju Palace madhouse,
+both still there today. What came out of the ashes was an attitude: if you’re
+going to build new, do it properly, themed down to the last screw.
 
 Just how seriously the park meant it became clear in 2006. With **Deep in
 Africa** and the inverted coaster [Black Mamba](ref:phantasialand/black-mamba),
-Phantasialand laid out a complete African world, mud huts, watercourses, the
-ride set low among the rocks rather than screwed up into the sky. Enthusiasts
-from Belgium and the Netherlands have been making the trip for it ever since. In 2016
-came the basalt village Klugheim with
-[Taron](ref:phantasialand/taron), in 2020 the Victorian aviator city
-Rookburgh with the world’s first flying launch coaster
-[F.L.Y.](ref:phantasialand/fly). In both cases the themed area came first and
-the ride was built into it, not the other way round.
+the park’s first coaster with inversions, Phantasialand laid out a complete
+African world, mud huts, watercourses, the ride set low among the rocks rather
+than screwed up into the sky. In 2016 came the basalt village Klugheim with
+[Taron](ref:phantasialand/taron), in 2020 the Victorian aviator city Rookburgh
+with [F.L.Y.](ref:phantasialand/fly), the world’s first flying launch coaster
+according to the park. In both cases the themed area came first and the ride
+was built into it, not the other way round.
 
 One more thing explains a lot: to this day, Phantasialand has remained in **family hands**. In
-1998 Gottlieb Löffelhardt handed the business to his son Robert; the park has
-never answered to an international corporation or shareholders watching the quarterly
-figures. You can see it in details a controller would have cut: in the aviator
-workshop in front of F.L.Y., which you walk through without it dispatching
-anything at all.
+1998 Gottlieb Löffelhardt’s son Robert took over as sole managing director,
+three years after buying out co-founder Richard Schmidt’s share; the park has
+never answered to an international corporation or shareholders watching the
+quarterly figures. For how it can go otherwise, look an hour’s drive north: Movie
+Park Germany’s owner belongs to a private equity firm, and that firm
+[has been looking for a buyer since September 2026](/blog/parques-reunidos-sale-movie-park).
+At Phantasialand you can see the family in details a controller would have cut:
+in the aviator workshop in front of F.L.Y., which you walk through without it
+dispatching anything at all.
+
+Room to grow is scarce, though. The park has been fighting for an expansion
+since 2003, and in July 2026 Brühl’s planning committee opened the formal
+planning procedure for about 15 hectares at the Ententeich nature reserve.
+Nothing is approved by that: surveys on nature, traffic and flood protection
+come first, and a network of conservationists is preparing a citizens’
+initiative against it. The park hasn’t announced what would go there; the
+opponents expect a water park, a hotel resort and an event hall.
 
 ## The headliners, and what they do to you
 
@@ -170,32 +189,35 @@ happening while you read:
   Africa, running since 2006 and still venomous. It threads so close past rocks,
   huts and treetops that on every element you’re sure you’re about to clip
   something.
-- **[Chiapas](ref:phantasialand/chiapas-die-wasserbahn)**, one of the steepest
-  log flumes in the world, with a backwards drop, a lot of water and a soundtrack
-  you won’t get out of your head for days afterwards (ask my girlfriend, who by now
-  hums it in her sleep).
-- **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, the mine
-  train that Michael Jackson helped open in person in 1996. Family-friendly, but
-  with surprising pace and that gloriously old-fashioned Wild West charm.
+- **[Chiapas](ref:phantasialand/chiapas-die-wasserbahn)**, which at 53 degrees
+  has the steepest drop of any log flume in the world, the park says, plus a
+  drop taken backwards, a lot of water and a soundtrack you won’t get out of your
+  head for days afterwards (ask my girlfriend, who by now hums it in her sleep).
+- **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, the 1996 mine
+  train that Michael Jackson christened in person shortly after it opened.
+  Family-friendly, but with surprising pace and that gloriously old-fashioned
+  Wild West charm.
 - **[Talocan](ref:phantasialand/talocan)**, a top spin with fire and water
   effects that looks like a temple set from below and feels like a lovingly
   staged punishment from above.
 - **[Winja’s Fear](ref:phantasialand/winjas-fear)** & Winja’s Force, the two
-  spinning coasters in Wuze Town, full of lifts, tilting tracks and surprises.
-  Two layouts, and no run is like the last.
-- **[Mystery Castle](ref:phantasialand/mystery-castle)**, the freefall in
-  Mysteryland, with changing ride programs and a pre-show that makes up half the
-  terror, long before you ever go up.
+  spinning coasters in Wuze Town. A vertical lift takes you up, and halfway
+  round a section of track tips with the car on it, forwards on Fear, sideways on
+  Force. Two layouts, free-spinning cars, and no run is like the last.
+- **[Mystery Castle](ref:phantasialand/mystery-castle)**, the 65-metre tower in
+  Mystery that shoots you up before it drops you, with changing ride programs and
+  a pre-show that makes up half the terror, long before you ever go up.
 
 And for the little ones (or the young at heart): [Raik](ref:phantasialand/raik),
-the family launch in Klugheim, is the perfect first “real” coaster, gentle
-enough for the first time, fast enough for the second.
+the family boomerang in Klugheim that runs forwards and backwards through the
+basalt gorge, is the perfect first “real” coaster, gentle enough for the first
+time, fast enough for the second.
 
 ```gallery-widget heading="The headliners in pictures"
-- /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | The Chiapas water ride | Chiapas, one of the steepest log flumes in the world.
+- /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | The Chiapas water ride | Chiapas, the steepest log flume drop in the world, according to the park.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, the mine train with Wild West charm.
 - /media/phantasialand/winjas-fear-16x9.jpg | Winja’s Force in Wuze Town | Winja’s: two spinning coasters full of surprises.
-- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, the freefall with changing programs.
+- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in the Mystery area | Mystery Castle, a 65-metre tower with changing programs.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, white water with lifts and a guaranteed soaking.
 - /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, the perfect first “real” coaster.
 ```
@@ -210,19 +232,24 @@ sells exclusively **dated online tickets**, you book a specific visit day in
 advance, and without that e-ticket on your phone you may well find yourself
 standing at a locked gate.
 
-The prices are **dynamic**: book very early and you get into the cheapest
-allocation, from **€28**, which is strictly limited. The closer the day and the
-more popular it is, the more you pay. You can usually still buy a ticket for
-the **same day** online, but it costs **a lot more**, up to around **€78**.
-That’s nearly three times the price for the same park day, just for being late. The rule is as simple as it is
-unromantic: **book early, pay less**, and the cheap day is usually the emptier
-one, too.
+The prices are **dynamic**. Each price tier has a limited allocation per day,
+and the closer the day and the more popular it is, the more you pay. In spring
+2026 the cheapest tickets went for **€28**; the top tier in the ticket calendar
+is **€78** (adults 12 and over), nearly three times the price for the same park
+day. You can still go on a whim, but only online and only until 2 p.m. on the
+day itself, at that day’s price and only if the day hasn’t sold out; on 25
+September 2026 a same-day ticket cost €64. The rule is as simple as it is
+unromantic: **book early, pay less.** That the cheap day is also the emptier one
+holds often, but not always: on that same day the following Sunday cost €49 and
+the Monday €64, and our calendar expects the Monday to be the quieter of the two.
 
 And then there’s the thing that still rankles the most loyal fans:
-**there are no more annual passes.** Phantasialand abolished them after the
-pandemic, making it one of the last big parks in Europe with no season pass at
-all. For a place that turns so many people into repeat offenders, that’s a slap
-in the face of the regulars. The resentment was (and is) big enough that fans
+**there are no more annual passes.** Phantasialand took its Club-Karte off sale
+during the pandemic and never brought it back; the last ones expired in
+summer 2022. Among Germany’s big parks that makes it the exception: Europa-Park,
+for one, still sells its ResortPass, even if the allocations go fast. For a place
+that turns so many people into repeat offenders, that’s a slap in the face of
+the regulars. The resentment was (and is) big enough that in 2022 fans
 launched **several [petitions to bring them back](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)**.
 What’s changed so far: nothing. If you love the park, you pay for a dated day
 ticket at that day’s price, every single visit, like a regular who gets asked
@@ -246,7 +273,9 @@ you did.
 
 A few rules of thumb that almost always hold:
 
-- **Weekdays beat weekends**, and Tuesday to Thursday are best.
+- **Weekdays beat weekends.** Monday to Friday come out level in our
+  measurements, with Saturday and Sunday above them (as of 25 September 2026).
+  There is no secret-tip weekday here.
 - **Avoid NRW school holidays**, especially the summer and autumn breaks. The
   Cologne/Bonn/Ruhr catchment is enormous, and half of it will be standing with
   you at Taron.
@@ -258,7 +287,7 @@ A few rules of thumb that almost always hold:
 Gut feeling is a poor guide once holiday calendars, weather and opening hours
 start overlapping. That’s exactly what park.fan is built for. The best-days
 calendar folds all of it together with the park’s wait-time history into one
-color per day: green, yellow or red. Here are the
+crowd level per day, from very low to extreme. Here are the
 quietest upcoming days for Phantasialand:
 
 ```best-days-widget slug=phantasialand
@@ -266,7 +295,9 @@ quietest upcoming days for Phantasialand:
 ```
 
 Which weekdays and months are usually relaxed and which to avoid shows up in the
-**crowds by weekday and month**, measured on the park’s operating days:
+**crowds by weekday and month**, measured on the park’s operating days. The
+table shows how many days sit behind each month, and winter is still thinly
+measured:
 
 ```stats-widget slug=phantasialand
 
@@ -277,20 +308,32 @@ does. That’s why the calendar carries a value per day and not a rule per
 weekday, and why you’re best off booking the ticket only after you’ve looked at
 it.
 
-## Quick Pass: two versions and a very steady “dynamic” price
+## Quick Pass: single ride or Ultimate, and what became of the “dynamic” price
 
 Yes, Phantasialand has a **Quick Pass** that lets you skip the regular line.
 Since Wintertraum 2025/26, though, it works completely differently, and it’s
 worth understanding before you spend money at Kaiserplatz. There are now two variants:
 
-- **Quick Pass Single Ride**, the fast track for **a single ride**. Officially
-  the price is _dynamic_ and is supposed to rise with the current wait time. In
-  practice? I’m here a lot, and so far I have always seen the same price. The
-  “dynamic” part exists mostly on paper.
-- **Quick Pass Ultimate**, the premium version for several rides a day. This is
-  the one F.L.Y. fans care about: **only Ultimate gets you onto
-  [F.L.Y.](ref:phantasialand/fly) with a Quick Pass**. Single Ride doesn’t
-  include it.
+- **Quick Pass (Single)**, the fast track for **one ride** on one specific
+  attraction. At launch the price was billed as _dynamic_, rising with the
+  current wait time. I always saw the same price at the counter anyway, and by
+  now the park’s information page lists fixed prices too: €5 for
+  [Colorado Adventure](ref:phantasialand/colorado-adventure),
+  [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
+  [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
+  [Mystery Castle](ref:phantasialand/mystery-castle) and
+  [Talocan](ref:phantasialand/talocan), €7 each for
+  [Winja’s Fear](ref:phantasialand/winjas-fear) and Winja’s Force, €10 for
+  [Black Mamba](ref:phantasialand/black-mamba) and
+  [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), €12 for
+  [River Quest](ref:phantasialand/river-quest) and
+  [Taron](ref:phantasialand/taron) (as of 25 September 2026).
+- **Quick Pass Ultimate** for €80: one go on each of those eleven rides plus one
+  on [F.L.Y.](ref:phantasialand/fly). This is the one F.L.Y. fans care about:
+  **only Ultimate gets you onto F.L.Y. with a Quick Pass**; you can’t buy it
+  singly. Do the sums and all eleven single passes add up to €83, so Ultimate is
+  cheaper and throws F.L.Y. in on top. It only pays off if you really want to do
+  the lot, though.
 
 A detail that catches a lot of people out: **even with the Quick Pass you still
 wait at F.L.Y., up top, in the station.** The elaborate flying restraints make
@@ -298,15 +341,9 @@ loading take forever, and the fast track doesn’t make that jam go away. You sk
 the big line, but you still stand through the last, slow stretch before
 boarding.
 
-Otherwise the big rides are included, among them
-[Taron](ref:phantasialand/taron), [Black Mamba](ref:phantasialand/black-mamba),
-[Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
-[Talocan](ref:phantasialand/talocan), [Winja’s](ref:phantasialand/winjas-fear),
-[Colorado Adventure](ref:phantasialand/colorado-adventure) and
-[Maus au Chocolat](ref:phantasialand/maus-au-chocolat). You buy it at Guest
-Services on Kaiserplatz, and there aren’t many: **during Wintertraum in
-particular, the Quick Passes are often sold out by midday on weekends.** If you
-need one, get there early or go without.
+You can only buy it on the spot, at Guest Services on Kaiserplatz, and there
+aren’t many: **during Wintertraum in particular, the Quick Passes are often sold
+out by midday on weekends.** If you need one, get there early or go without.
 
 My opinion after many, many visits: **on a green day you simply don’t need it.**
 Arrive early, ride in a sensible order, and you’ll get the headliners with short
@@ -319,30 +356,36 @@ Ultimate. More on that under the hotels.)
 ## The order you ride in, and why the alarm goes off early
 
 The most effective free trick at Phantasialand is **arriving early and riding
-against the flow**. There’s hardly anything lovelier than this park in the first
-hour: the lanes still empty, the music already on, the sets in the
-morning light, and the lines so short you barely stop walking. In a park this compact, that
-hour is worth real money: it’s the difference between “three rides” and “ten.”
+against the flow**. In the summer season the gates open at 9 a.m., and by 10
+every ride is running. There’s hardly anything lovelier than this park in the
+first hour: the lanes still empty, the music already on, the sets in the
+morning light, and most rides with lines shorter than they will be all day. In
+a park this compact, that hour is worth real money: it’s the difference between
+“three rides” and “ten.”
 
-My order, tested over many years, thrown out several times and in the end
-ridden exactly like this again:
+My order, tested over many years, thrown out several times and, since we’ve had
+hourly data, rebuilt in one place (data as of 25 September 2026):
 
 1. **Straight to [Taron](ref:phantasialand/taron)** in Klugheim. The
-   multi-launch coaster is the park’s most in-demand ride and fills up first.
-   Ride it at 10 a.m. and you save yourself what feels like an eternity later,
-   and start the day with the widest grin this park has to offer.
-2. **Then [F.L.Y.](ref:phantasialand/fly)** in Rookburgh. Elaborate station,
-   correspondingly leisurely dispatch, which is exactly why it belongs at the
-   start, before the jam builds up in the station.
-3. Only then the rest. The **water rides**
+   multi-launch coaster has the longest line in the park, and it is as long in
+   the first hour as it is at midday. The head start belongs to whoever is at
+   the front at 10 sharp; turn up at half past and you might as well ride it
+   after lunch. What you get is a day that starts with the widest grin this
+   park has to offer.
+2. **Then the water rides**
    ([Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
-   [River Quest](ref:phantasialand/river-quest)) are emptiest in the morning and
-   busiest around midday. If a wet morning doesn’t put you off, ride them right
-   after Taron and F.L.Y.; you can dry off over lunch.
+   [River Quest](ref:phantasialand/river-quest)). They have the biggest morning
+   advantage in the park: in the first hour Chiapas has barely more than half its
+   midday line, and River Quest is never that short again after eleven. If a wet
+   morning doesn’t put you off, you can dry off over lunch.
+3. **[F.L.Y.](ref:phantasialand/fly) in the late afternoon.** I used to ride it
+   straight after Taron because the station dispatches so slowly. In our data,
+   though, its line peaks at 11 a.m. and is shortest in the late afternoon. Walk
+   from Taron straight to Rookburgh and you land right in the peak.
 4. **Put shows and meals into the peak** (around midday), when the lines
    are longest anyway. And if you’ve already seen a show, use it the other way
-   round: it ties up thousands of people at once, none of whom are in the line
-   ahead of you.
+   round: it ties up a whole theatre full of people at once, none of whom are in
+   the line ahead of you.
 
 You will still watch a few people walk past you here, but the Quick Pass is
 strictly limited. There is no Orlando-style army of
@@ -358,19 +401,21 @@ restaurants. Three places I name to anyone who asks, and to a few who didn’t:
 
 - **Rutmor’s Taverne** (Klugheim) is my favorite, and I know nobody who has
   eaten there and disagrees. À la carte, rustic down to the carved
-  wooden benches, with hearty cooking, Spätzle, Schnitzel, fried potatoes, plus
-  soups and sharing platters and a Kaiserschmarrn that briefly makes you forget a
-  roller coaster is waiting outside. If there’s one point in a park day where
-  you want to sit down and eat properly: here.
+  wooden benches, with hearty cooking: Eierknöpfli (spätzle), dumplings, veal
+  schnitzel with fried potatoes, sharing boards of cold cuts and a
+  Kaiserschmarrn (for two, also served in a giant pan) that briefly makes you
+  forget a roller coaster is waiting outside. If there’s one point in a park day
+  where you want to sit down and eat properly: here.
 - **Restaurant Uhrwerk** (Rookburgh) is its steampunk sibling, burgers,
   homemade fries, pasta and bowls, in a setting of gears and brass, with a view
   of [F.L.Y.](ref:phantasialand/fly). Mornings and evenings it’s reserved for
   guests of the Charles Lindbergh, but by day anyone can go in, so at lunchtime you eat your burger while
   the trains fly past outside.
-- **Phenie’s** (Wuze Town) has been my obligatory sweet-tooth stop for as long as
-  I can remember: pancakes and shakes, fluffy and magnificent and far too good by
-  theme-park standards. There are days I come almost purely for those pancakes,
-  and then pretend the coasters were the reason.
+- **Phenie’s Shakes & Pancakes** (Fantasy, on the Mondsee) has been my
+  obligatory sweet-tooth stop since it opened in July 2025: pancake towers and
+  shakes, fluffy and magnificent and far too good by theme-park standards. There
+  are days I come almost purely for those pancakes, and then pretend the coasters
+  were the reason.
 
 For in between, my snack classic: the **churros**, fresh, cinnamony and
 available all year round.
@@ -378,36 +423,42 @@ available all year round.
 And the most important food tip is the same as for queuing: **go against the
 flow.** Eat around 11:30 a.m., before the restaurants fill up. That way
 you’re at the table while the lines outside are at their longest, and you don’t
-queue for your food on top of it. (And if you come in
-winter, a treat all its own is waiting for you in the Wintertraum.)
+queue for your food on top of it. (And if you come in winter, the park adds a
+winter menu of its own on Kaiserplatz; more on that under Wintertraum.)
 
 ## The small things I keep coming back for
 
 As much as I love the coasters, what makes this park for me are the quiet
 moments nobody writes a travel guide about.
 
-There’s the **Märchenwald** around the Märchensee, with its more than forty
-lovingly built scenes: Little Red Riding Hood, Cinderella, Ali Baba, each in its
-own little set, each with animatronics that tell whole stories without a single
-word. As a small boy I rolled past here in my stroller, convinced the figures
-would come to life if only I looked long enough. Today I stop of my own accord
-and watch them, and for a moment it’s true again.
+There was the **Märchenwald** around the Märchensee, some forty lovingly built
+scenes: Little Red Riding Hood, Cinderella, Hansel and Gretel, each in its own
+little set, each with figures that told a whole story once you pressed the
+switch. As a small boy I rolled past in my stroller, convinced the figures
+would come to life if only I looked long enough. The park tore the Märchenwald
+down in autumn 2007, and the ground is part of the Wuze world in Fantasy now.
+What’s left is the temple from “Little Muck”, which the water Wuze now use as an
+observatory, and a tree with a face. If you know where to look, you’ll find both.
 
 There’s the **[Maus au Chocolat](ref:phantasialand/maus-au-chocolat)**, the
 interactive dark ride where my girlfriend and I have been fighting a bitter
 little war over the high score for years. She has the remarkable habit of snatching the
 5,000-point mice away from me at the exact moment I take aim. (As for the
 10,000-point mouse in the second room, which I finally found after what felt like
-a hundred rides: my lips are sealed. Find it yourself.) New right next door:
-**[Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)**, a 360° 4D
-attraction that replaced the old cinema in 2026 and carries the mouse story on.
+a hundred rides: my lips are sealed. Find it yourself.) Right next door, since
+October 2025, the Residenz Theater has been showing the 4D film
+**[Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)**: three mice against
+a rat boss, motion seats and an LED screen instead of a projector. The same
+building, then called the Schauspielhaus, showed “Pirates 4D” from 1999 until
+early 2025, and the new film carries this corner’s mouse theme on nicely.
 
 ![The Geister Rikscha in China Town | Even a dark ride like the Geister Rikscha is set dressing from start to finish. | left](/media/phantasialand/geister-rikscha-4x3.jpg)
 
-And there are the many dark rides this park builds almost in passing, as if they
+And there are the dark rides this park builds almost in passing, as if they
 were no big deal, though each one would be the headliner at another park. One
-ride on the Geister Rikscha through China Town, and you understand what
-“immersive” really means.
+ride on the [Geister Rikscha](ref:phantasialand/geister-rikscha), which has been
+running through China Town since 1981, and you understand what “immersive”
+really means.
 
 But my very favorite moment belongs to the end of the day: **Klugheim in the blue
 hour.** When the lights come on and [Taron](ref:phantasialand/taron) thunders
@@ -419,33 +470,42 @@ this park, and why in the evening I never want to go home.
 
 If you’re planning two days (and it’s worth it, there’s more in here than it looks
 from outside), there are three elaborately themed hotels right at the park:
-**Charles Lindbergh** (Victorian steampunk, right in the middle of Rookburgh),
-Ling Bao (imperial China Town) and Matamba (African, by Deep in Africa).
-Wake up in the Charles Lindbergh and it takes a moment to work out which century
-you are in. Plus the grand dinner show Fantissima, if you want to turn the evening into a
-celebration.
+**Charles Lindbergh** (Victorian steampunk, right in the middle of Rookburgh,
+guests from age 8 only), Ling Bao (imperial China Town) and Matamba (African, by
+Deep in Africa). Wake up in the Charles Lindbergh and it takes a moment to work
+out which century you are in. Plus the grand dinner show Fantissima, if you want
+to turn the evening into a celebration.
 
 One important note, because many people know it differently from
 [Europa-Park](ref:europa-park): a Phantasialand hotel does **not** get you
-**general early park entry**. The concrete perk lies elsewhere, guests of the
-**Charles Lindbergh** get **two Fast Passes for [F.L.Y.](ref:phantasialand/fly)**
-per person. On the ride with the slowest dispatch in the park, that’s worth its
-weight in gold, and apart from the Quick Pass Ultimate it’s the only comfortable
-way onto that flyer.
+**early park entry**. The concrete perk lies elsewhere. Guests of the **Charles
+Lindbergh** get **faster access to [F.L.Y.](ref:phantasialand/fly) once a day**
+with their hotel ticket, through a separate entrance; on the usual package of one
+night and two park days, that makes two rides. On the ride with the slowest
+dispatch in the park, that’s worth its weight in gold, and apart from the Quick
+Pass Ultimate it’s the only comfortable way onto that flyer. At the Matamba and
+the Ling Bao you get one faster entry per person per night on one of five rides
+(Chiapas, Maus au Chocolat, Talocan, Winja’s or Colorado Adventure), but only
+with a park ticket bought separately.
 
 ## Getting there & parking
 
 Phantasialand sits in Brühl, right between Cologne and Bonn, easy to reach,
 but tight.
 
-- **By car:** via the A553/A555, and it is signposted from there. You park in the
-  _Mystery_ or _China_ lots; the parking fee is around **€7 per day** (cheaper
-  for motorcycles). My tip: come early and your car ends up closer to the
-  entrance. In the evening, when your feet are burning, every meter counts.
-- **By train:** to **Brühl** station or the **Brühl-Mitte** stop; from Cologne,
-  **line 18** takes you straight there. From both stops a **shuttle bus** runs to
-  the park in about 20 minutes (a few euros per trip; children up to 1.00 m as
-  well as wheelchair users and blind guests with a pass ride free).
+- **By car:** via the A553, exit Brühl-Süd. The park warns that sat-navs like to
+  suggest the Bornheim exit, which is the wrong one. You park in the _Mystery_
+  (P1) or _China_ (P2) lots for **€8 per car per day**; hotel guests park free at
+  their hotel. My tip: come early and your car ends up closer to the entrance.
+  In the evening, when your feet are burning, every meter counts.
+- **By train:** take the RE5, RB26 or RB48 to **Brühl (Rheinland)**, or light
+  rail **line 18** between Cologne and Bonn to **Brühl Mitte**. From both stops a
+  **shuttle bus** runs to the park, about a quarter of an hour from Brühl Mitte
+  and about 20 minutes from the station. The return trip costs €6 per person;
+  children up to 1.00 m as well as wheelchair users and blind guests with a pass
+  ride free, and transit passes aren’t valid on the shuttle. The published
+  timetable runs until 13 November 2026. Without the shuttle, bus 985 goes to
+  Berggeiststraße, about ten minutes’ walk from the park.
 
 If you have the choice: train plus shuttle spares you the parking stress entirely
 on busy days, and after a long, happy day at the park you just get on instead of
@@ -453,23 +513,25 @@ inching out of the car park with a few thousand other happy people.
 
 ## Wintertraum: mulled wine, lights and Taron in the dark
 
-In the Halloween guide I fondly counted Phantasialand among the “refuseniks”: it
-deliberately doesn’t do a scare festival. Instead, in winter it dons a completely
-different, beautiful costume: the
-**[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
+In the [Halloween guide](/blog/halloween-theme-parks-2026) I fondly counted
+Phantasialand among the “refuseniks”: it deliberately doesn’t do a scare
+festival. Instead, in winter it dons a completely different, beautiful costume:
+the **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
 
-For that, the park closes its gates for around two weeks after the summer
-season ends in early November, redecorates, and reopens as a glowing winter
-village: hundreds of
-thousands of lights, a snowy look (the snow is decoration, the cold is real), fir trees and market-stall magic, plus wintery
-shows and an ice rink in the Berlin area. At dusk, with a cup of mulled wine in
-hand and [Taron](ref:phantasialand/taron) in the sea of lights above you, this is
-my favorite way to end a park year.
+In 2026 there’s no break between summer and winter: the summer season runs
+until 13 November, and on the 14th the park reopens as a glowing winter village,
+with millions of lights according to the park, a snowy look (the snow is
+decoration, the cold is real), fir trees and market-stall magic, seven shows
+with the “Magic Symphony” finale every evening, and an ice rink in front of the
+big Christmas tree on Kaiserplatz. At dusk, with a cup of mulled wine in hand
+and [Taron](ref:phantasialand/taron) in the sea of lights above you, this is my
+favorite way to end a park year.
 
-And then there’s the **food you only get in winter.** Every year Wintertraum
-rolls out specialties, my secret number one (not so secret from now on) is the
-**flat croissants**: crisply
-pressed, gloriously buttery and genuinely only available in the winter season.
+And then there’s the **food you only get in winter.** Kaiserplatz serves flamed
+salmon, a kale pan and hot crumble. My secret number one (not so secret from now
+on) is still the **flat croissants** from China Town: crisply pressed and
+gloriously buttery. They aren’t a winter-only bake, mind you; the park sells
+them outside Wintertraum too.
 
 And my best Wintertraum tip: **Taron in the dark.** In winter it gets dark
 early, and when [Taron](ref:phantasialand/taron) races through the lit-up
@@ -479,19 +541,23 @@ the **Quick Pass early in the day** (on weekends they’re gone by midday), then
 ride Taron in the dark as often as you can.
 
 **The 2026/27 dates:** from **14 November 2026 to 24 January 2027**, daily from
-**11 a.m. to 8 p.m.** (closed on 24 and 25 December and on 1 January; on New
-Year’s Eve only until 6 p.m.). As in summer, tickets run through dated online day
-tickets. Three more things:
+**11 a.m. to 8 p.m.** The park is closed on 24 and 25 December and on 1 January,
+and, according to its Wintertraum page, on 12 and 13 January 2027 as well; on
+New Year’s Eve it’s open only until 6 p.m. As in summer, tickets run through
+dated online day tickets, and in late September 2026 the park was advertising
+an advance allocation from €29. Three more things:
 
-- **Not everything runs.** The big coasters like
-  [Taron](ref:phantasialand/taron) and [F.L.Y.](ref:phantasialand/fly) keep doing
-  their laps, but the **water rides**
-  ([Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
-  [River Quest](ref:phantasialand/river-quest)) take a break in the cold, nobody
-  really wants wet clothes in sub-zero temperatures.
-- **Wintertraum is popular** and correspondingly busy, plan it like a holiday
-  day, not like a quiet November. The crowd calendar from above applies to the
-  winter season too.
+- **Not everything runs.** Taron, F.L.Y., Black Mamba and the Winja’s keep doing
+  their laps, and [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) runs
+  during Wintertraum too, the park says, down to minus five degrees (Taron down
+  to minus ten). [River Quest](ref:phantasialand/river-quest), on the other hand,
+  is closed in winter, and in extreme weather any outdoor ride can shut at short
+  notice. If you ride Chiapas in December, pack a change of clothes.
+- **Plan the weekends like holiday days.** Our calendar expects heavy crowds on
+  the first Wintertraum weekends and light ones on December weekdays. We have
+  only measured Wintertraum on a handful of days so far (as of 25 September
+  2026), and those were busy. For anything but the weekends, check the crowd
+  calendar from above first.
 - **Dress warmly.** The wait times feel twice as long in sub-zero temperatures.
   Why felt minutes and real ones drift so far apart is explained in
   [the art of waiting](/blog/the-art-of-waiting).
@@ -500,37 +566,41 @@ tickets. Three more things:
 
 ### When are the shortest wait times at Phantasialand?
 
-On weekdays (Tue–Thu) outside the NRW school holidays and generally in the
-off-season. But don’t rely on gut feeling: the
-[crowd calendar for Phantasialand](ref:phantasialand?calendar) tells you up to 365 days in
-advance when to expect light crowds, green means go.
+On weekdays outside the NRW school holidays; Monday to Friday come out level in
+our data, and the quietest month we have measured was September, after the
+summer holidays (as of 25 September 2026). But don’t rely on gut feeling: the
+[crowd calendar for Phantasialand](ref:phantasialand?calendar) tells you when to
+expect light crowds as far ahead as the park has published its opening hours;
+right now that is up to 24 January 2027. Green means go.
 
 ### How do I avoid long wait times at Phantasialand?
 
 Three levers, in this order: **pick the right day** (this matters most), **be
-there early** and ride Taron + F.L.Y. in the first hour, and **go against the
-flow** (water rides early in the day, coasters during the shows). Check the live wait
-times on the go on the
-[Phantasialand park page](ref:phantasialand).
+there early** (Taron at 10 sharp, then the water rides), and **go against the
+flow** (F.L.Y. in the late afternoon, coasters during the shows). Check the live
+wait times on the go on the [Phantasialand park page](ref:phantasialand).
 
 ### Which attraction has the longest wait times?
 
-Usually [Taron](ref:phantasialand/taron) and [F.L.Y.](ref:phantasialand/fly),
-the two most sought-after coasters. Which is exactly why you ride them right at
-opening, before the lines build up.
+[Taron](ref:phantasialand/taron). Behind it,
+[Chiapas](ref:phantasialand/chiapas-die-wasserbahn) and
+[F.L.Y.](ref:phantasialand/fly) are level (as of 25 September 2026). That’s why
+you ride Taron right at opening, Chiapas in the first hour and F.L.Y. in the late
+afternoon, when its line is at its shortest.
 
 ### Do you need a Quick Pass at Phantasialand?
 
 On a quiet (green) day, no: arrive early and you’ll ride everything with short
-waits. On a busy day, the Single Ride or Ultimate Quick Pass can rescue Taron and
-F.L.Y. for you (F.L.Y. only with Ultimate). Check the live wait times first: if the
-numbers are low, save your money.
+waits. On a busy day it can rescue Taron and F.L.Y. for you: Taron costs €12 as a
+single pass, and F.L.Y. only comes with the €80 Ultimate (as of 25 September
+2026). Check the live wait times first: if the numbers are low, save your money.
 
 ### Are there still annual passes at Phantasialand?
 
-No. Phantasialand abolished the annual passes after the pandemic and, despite
-several fan petitions, hasn’t brought them back so far. Every visit runs through a
-dated online day ticket whose price rises dynamically with demand.
+No. Phantasialand took its Club-Karte off sale during the pandemic, the last
+ones expired in summer 2022, and despite several fan petitions it hasn’t come
+back. Every visit runs through a dated online day ticket whose price rises
+dynamically with demand.
 
 ### Can you do Phantasialand in one day?
 
@@ -540,11 +610,12 @@ treat).
 
 ## What I’d send you off with
 
-Phantasialand isn’t a park you squeeze in on the side. It gets a third of
-Europa-Park’s visitors, and you still queue longer here. On the right days, with the
-right order and a break in Rutmor’s Taverne, it is the park I have been going
-back to for thirty years. The good news: almost everything that separates a good day
-from a great one, you decide **beforehand**, with a look at the calendar.
+Phantasialand isn’t a park you squeeze in on the side. It gets about a third of
+Europa-Park’s visitors, and our data still has you queueing longer here. On the
+right days, with the right order and a break in Rutmor’s Taverne, it is the park
+I have been going back to for thirty years. The good news: almost everything
+that separates a good day from a great one, you decide **beforehand**, with a
+look at the calendar.
 
 Before you set off, one last look at the weather in Brühl, right now:
 
@@ -571,10 +642,14 @@ green day in time and saved myself both, the Quick Pass and the Saturday price._
 
 ### Sources & further reading
 
-- Prices, tickets & opening hours 2026: [Phantasialand online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Prices & opening hours 2026 (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/phantasialand/preise/) · [Tickets from €28 instead of up to €78 (mydealz)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
-- End of the annual pass & fan petitions: [Petition “Reintroduce the Phantasialand annual passes” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
-- Quick Pass (Single Ride / Ultimate & dynamic pricing): [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
-- Food: [Rutmor’s Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (official)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
-- 2026 new attraction “Die 3 Mausketiere”: [Phantasialand 2026 (La Vie Zine)](https://www.laviezine.com/1545370/phantasialand-2026-das-erwartet-euch-in-der-saison/)
-- Wintertraum 2026/27: [Wintertraum opening hours (NRW-Parks)](https://www.nrw-parks.de/phantasialand/oeffnungszeiten-winter.html) · [Wintertraum (official)](https://www.phantasialand.de/de/themenpark/wintertraum/)
+- Prices, tickets & opening hours 2026: [Tickets & prices (official)](https://www.phantasialand.de/en/theme-park/tickets-offers/) · [Ticket calendar in the online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Visitor information with opening hours and Quick Pass prices (official)](https://www.phantasialand.de/en/theme-park/information-and-arrival/) · [Tickets from €28 instead of up to €78 (mydealz, April 2026)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
+- End of the annual pass & fan petitions: [Club-Karte abolished (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petition “Reintroduce the Phantasialand annual passes” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
+- Quick Pass at its Wintertraum 2025/26 launch: [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
+- History, the 2001 fire and the Märchenwald: [Phantasialand (Wikipedia, German)](https://de.wikipedia.org/wiki/Phantasialand) · [30 April 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
+- Expansion at the Ententeich: [Planning committee clears the way for the review (FreizeitparkNEWS, July 2026)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
+- Rides: [Chiapas (official)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/chiapas-die-wasserbahn/) · [F.L.Y. (official)](https://www.phantasialand.de/de/rookburgh/fly/) · [Raik (Wikipedia)](https://en.wikipedia.org/wiki/Raik) · [Winja’s Fear & Force (Wikipedia)](https://en.wikipedia.org/wiki/Winja%27s_Fear_%26_Force)
+- Die 3 Mausketiere: [Phantasialand opens Residenz Theater with new 4D film (DRdb, October 2025)](https://darkridedatabase.com/phantasialand-opens-residenz-theater-with-new-4d-film/)
+- Food: [Rutmor’s Taverne (official)](https://www.phantasialand.de/de/celebr-eat/restaurants-snacks-im-park/rutmors-taverne/) · [Restaurant Uhrwerk (official)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/) · [Phenie’s Shakes & Pancakes opens (Themepark Central, July 2025)](https://www.themepark-central.de/phantasialand-phenies-shakes-pancakes/)
+- Hotels: [Information on the themed hotels (official)](https://www.phantasialand.de/de/informationen-hotels/)
+- Wintertraum 2026/27: [Wintertraum (official)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Wintertraum attractions (official)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/)
 - Getting there, shuttle & parking: [Getting there and shuttle bus (official)](https://www.phantasialand.de/en/theme-park/information-and-arrival/arrival-and-shuttle-bus/)

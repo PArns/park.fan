@@ -215,12 +215,12 @@ luid, en het park waarschuwt zelf voor schrikreacties bij de kleinsten.
 ## Dit park rekent in jaren, niet alleen in centimeters
 
 Bij de meeste parken staat bij elke ingang een aantal centimeters. Hier staat er vaak ook een
-leeftijd bij, en die bepaalt of je kind alleen mag of alleen met een volwassene ernaast.
+leeftijd bij, en die bepaalt of je kind zelfstandig mag of alleen met een volwassene ernaast.
 
 Alleen de drie groten hebben een harde ondergrens: de [Highlander](ref:hansa-park/highlander?bare) 1,40 meter, de [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) 1,30, de [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) 1,25. Bij de andere achtbanen volstaat minder, zolang er een volwassene naast het kind zit. [Crazy Mine](ref:hansa-park/crazy-mine?bare) neemt kinderen vanaf
-1,10 meter mee, alleen pas **vanaf 9 jaar**. [Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) beginnen bij een meter, alleen mag pas
-**vanaf 10 jaar**. De [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) begint bij 90 centimeter en alleen vanaf 8 jaar, de [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) bij 90
-centimeter en alleen vanaf 6. [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) neemt kinderen vanaf 90 centimeter mee op een kinderzitje naast een volwassene; alleen rijden kan vanaf 1,20 meter.
+1,10 meter mee, zonder begeleiding pas **vanaf 9 jaar**. [Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) beginnen bij een meter, zonder begeleiding mag pas
+**vanaf 10 jaar**. De [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) begint bij 90 centimeter en zonder begeleiding vanaf 8 jaar, de [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) bij 90
+centimeter en zonder begeleiding vanaf 6. [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) neemt kinderen vanaf 90 centimeter mee op een kinderzitje naast een volwassene; zonder begeleiding rijden kan vanaf 1,20 meter.
 
 Een kind van zeven met 1,25 meter komt daarmee in zeven van de acht achtbanen, maar in vier daarvan
 alleen met een volwassene ernaast. Ga je met één volwassene en twee kinderen, dan rijd je Nessie
@@ -353,7 +353,7 @@ ticket hetzelfde als aan de kassa. Parkeren kost € 7 per dag, op de e-parkeerp
 
 ### Vanaf welke lengte mag mijn kind mee?
 
-[Highlander](ref:hansa-park/highlander?bare) vanaf 1,40 m, [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) vanaf 1,30 m, [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) vanaf 1,25 m. Met een volwassene ernaast: [Crazy Mine](ref:hansa-park/crazy-mine?bare) vanaf 1,10 m (alleen vanaf 9 jaar), [Nessie](ref:hansa-park/nessie?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) vanaf 1 m (alleen vanaf 10), [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) vanaf 90 cm (alleen vanaf 8), [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) vanaf 90 cm (alleen vanaf 6), [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) vanaf 90 cm op een kinderzitje (alleen vanaf 1,20 m).
+[Highlander](ref:hansa-park/highlander?bare) vanaf 1,40 m, [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) vanaf 1,30 m, [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) vanaf 1,25 m. Met een volwassene ernaast: [Crazy Mine](ref:hansa-park/crazy-mine?bare) vanaf 1,10 m (zonder begeleiding vanaf 9 jaar), [Nessie](ref:hansa-park/nessie?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) vanaf 1 m (zonder begeleiding vanaf 10), [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) vanaf 90 cm (zonder begeleiding vanaf 8), [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) vanaf 90 cm (zonder begeleiding vanaf 6), [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) vanaf 90 cm op een kinderzitje (zonder begeleiding vanaf 1,20 m).
 
 ### Wat is Herbstzauber am Meer?
 

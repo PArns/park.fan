@@ -2,7 +2,7 @@
 title: 'Halloween 2026 en los parques de Europa: motosierra, calabaza o nada de nada'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

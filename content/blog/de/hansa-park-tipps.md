@@ -170,12 +170,12 @@ Mai, Juni und September. Wer in Sierksdorf einen ruhigen Wochentag sucht, bekomm
 wirklich als Öffnungstag und nicht als verschlossenes Tor.
 
 Die Uhrzeiten sind fast genauso eintönig, im besten Sinn: Wer hier plant, braucht keinen Kalender
-mit Fußnoten. Bis zum **9. Oktober** öffnet der Park täglich um
-**10 Uhr**, und die Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fielen aus der Reihe,
-alle schon vorbei: Am Karfreitag, dem 3. April, fuhren die Attraktionen erst ab 11 Uhr. Am
-11. August blieb das Gelände bis 19 Uhr offen, am 12. August bis 18:30, die Bahnen standen an beiden
-Abenden trotzdem um 18 Uhr still. Wer noch im September kommt, sieht werktags ein geändertes
-Showprogramm, weil der Park den Herbstzauber vorbereitet. Anders laufen nur die letzten 16 Tage der Saison, und das liegt
+mit Fußnoten. Bis zum **9. Oktober** öffnet der Park täglich um **10 Uhr**, und die
+Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fielen aus der Reihe, alle schon vorbei:
+Am Karfreitag, dem 3. April, fuhren die Attraktionen erst ab 11 Uhr. Am 11. August blieb das
+Gelände bis 19 Uhr offen, am 12. August bis 18:30, die Bahnen standen an beiden Abenden trotzdem um
+18 Uhr still. Wer noch im September kommt, sieht werktags ein geändertes Showprogramm, weil der
+Park den Herbstzauber vorbereitet. Anders laufen nur die letzten 16 Tage der Saison, und das liegt
 eben an diesem Herbstzauber.
 
 Die Saison 2027 plant der Park nach heutigem Stand vom **25. März bis zum 24. Oktober**.
@@ -188,8 +188,8 @@ Die Saison 2027 plant der Park nach heutigem Stand vom **25. März bis zum 24. O
 
 Vom **10. bis zum 25. Oktober 2026** öffnet der Park von **11 bis 21 Uhr**, und was in dieser Zeit
 läuft, heißt „Herbstzauber am Meer“. Keine Mazes, keine Scare Zones, kein Mindestalter von 16. Die
-„Zeit der Schattenwesen“, mit der der Park früher an Herbstwochenenden gegruselt hat, bietet er
-nicht mehr an. Er hängt stattdessen rund **2.000 Leuchtfiguren** auf und fährt zwei Programmpunkte:
+„Zeit der Schattenwesen“, das frühere Grusel-Event an Herbstwochenenden, bietet der Park nicht mehr
+an. Er hängt stattdessen rund **2.000 Leuchtfiguren** auf und fährt zwei Programmpunkte:
 
 - Die **Lichter-Parade** startet gegen 19:30 Uhr, bei trockenem Wetter. Es gibt sie seit **2002**,
   eingeführt zum 25-jährigen Bestehen des Parks.
@@ -245,9 +245,10 @@ allein ab 6. [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) nimmt Kinder 
 auf einem Kindersitz neben einem Erwachsenen mit, allein fährt, wer 1,20 Meter misst.
 
 Ein siebenjähriges Kind mit 1,25 Metern kommt damit auf sieben der acht Achterbahnen, auf vier davon
-aber nur mit einem Erwachsenen daneben. Wer allein mit zwei Kindern kommt, fährt Nessie zweimal.
-Unterhalb der Achterbahnen gibt es reichlich: Unser Katalog zählt **82 Attraktionen** (Stand
-25. September 2026), der Park selbst wirbt mit über 125 und zählt offenbar großzügiger.
+aber nur mit einem Erwachsenen daneben. Wer als einziger Erwachsener mit zwei Kindern kommt, fährt
+Nessie zweimal.
+Unterhalb der Achterbahnen gibt es reichlich: Unser Katalog zählt am 25. September 2026
+**82 Attraktionen**, der Park selbst wirbt mit über 125 und zählt offenbar großzügiger.
 
 ## Vom Legoland zum Hansa-Park
 
@@ -328,9 +329,9 @@ Gesichtserkennung personalisiert.
 Der Online-Preis ist derselbe wie der Kassenpreis. In Soltau zahlst du an der Kasse bis zu 27 € mehr
 als online, hier sparst du mit dem Vorverkauf keinen Cent, nur die Schlange an der Kasse.
 
-**Saisonkarte.** Die für 2026 kostete ab Saisonbeginn 135 €. Die für 2027 kostet **120 €** bis zum
-24. März 2027, danach 140 €. Wer volljährig ist und bis zum 25. Oktober 2026 kauft, parkt 2027 auf
-dem Großparkplatz kostenlos, bei Kauf bis zum 24. März für 1 € pro Tag.
+**Saisonkarte.** Die für 2026 kostete ab Saisonbeginn 135 €. Die für 2027 kostet **120 €** bis
+zum 24. März 2027, danach 140 €. Wer volljährig ist und bis zum 25. Oktober 2026 kauft, parkt 2027
+auf dem Großparkplatz kostenlos, bei Kauf bis zum 24. März für 1 € pro Tag.
 
 **Im Eintritt enthalten.** Alle Fahrattraktionen, Shows und Mitmachattraktionen, die in Betrieb
 sind. Einzelne Angebote wie das Goldwaschen kosten extra.
@@ -345,7 +346,7 @@ Saison 2027. Damit hat der Park gut zwei Jahre nach dem Abbau des Holsteinturms 
 Aussichtsturm.
 
 Nach dem Cornwall Coaster ist das die zweite große Neuheit in zwei Jahren; zwischen Highlander und
-Cornwall Coaster lagen sieben Jahre mit kleineren. Gleichzeitig verschwindet einer: Der
+Cornwall Coaster lagen sieben Jahre mit kleineren. Gleichzeitig verschwindet eine Attraktion: Der
 [Super Splash](ref:hansa-park/super-splash?bare) von 1986 wird im Winter 2026/27 abgebaut, weil der
 Park seinen Bereich neu plant. Was dort entsteht, hat er noch nicht gesagt.
 

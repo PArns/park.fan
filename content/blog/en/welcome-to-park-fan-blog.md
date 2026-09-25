@@ -214,8 +214,8 @@ reminds me that somewhere, right now, somebody is standing in front of a real
 ride and wants to know whether the queue is worth it.
 
 Behind it today are **210 parks** with around **6,900 attractions** between
-them (as of 25 September 2026), and 209 of them send fresh wait times every five
-minutes. The one missing is Hansa-Park, which publishes its waits only in its
+them (as of 25 September 2026), and for 209 of them we fetch fresh wait times
+every five minutes. The one missing is Hansa-Park, which publishes its waits only in its
 own app. On top of that, forecasts that estimate crowds roughly six months
 ahead. And because I only ever trust numbers that have to prove
 themselves, the model grades itself: every prediction is later held against the

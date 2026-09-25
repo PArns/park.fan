@@ -52,9 +52,10 @@ parmi les plus grands événements d’Halloween d’Allemagne.
 
 Les Fright Nights ont lieu **les vendredis et samedis du 2 au 31 octobre
 2026** : les 2, 3, 9, 10, 16, 17, 23, 24, 30 et 31 octobre. Ces jours-là, le
-parc ouvre de **10 h à 22 h** et toutes les attractions tournent jusqu’à la
-fermeture. Seules les attractions aquatiques DinoSplash et Wickie Splash
-s’arrêtent à 20 h, ce qui, en octobre, ne dérangera sans doute personne.
+parc ouvre de **10 h à 22 h** et, selon le parc, presque toutes les
+attractions tournent jusqu’à la fermeture. Il ne cite que les attractions
+aquatiques DinoSplash et Wickie Splash, qui s’arrêtent à 20 h, ce qui, en
+octobre, ne dérangera sans doute personne.
 
 En journée se tient en parallèle la Fête d’automne Plopsa, pensée pour les
 enfants. Les monstres sortent le soir.
@@ -82,7 +83,9 @@ pas en tant que client.
 
 Deux spectacles sont nouveaux aussi : le **Monster Release Show « Freaks
 Reloaded »** avec Reddles, le clown attitré des Fright Nights, et le spectacle
-de catch **« The Killing Games »**, où un seul combattant quitte le ring vivant.
+de catch **« The Killing Games »**, où un seul combattant quitte le ring vivant. Les deux formats existaient déjà
+en 2025, avec une autre histoire, sous les noms « Freaks Unleashed » et
+« Night of Anarchy ».
 Le spectacle de feu Flames of Valhalla, avec ses Vikings, revient. Chaque
 soirée se termine par le nouveau final **Carnival Inferno**, précédé des DJ
 du Fright Festival.
@@ -110,23 +113,24 @@ l’entrée**.
 
 Chaque maison fonctionne sur créneau horaire, choisi à l’achat. Seul le
 Nightmare Society Pass s’en passe, et il donne en plus accès à un espace
-réservé pendant les spectacles. Les abonnés Plopsaland entrent aux Fright Nights sans
+réservé pendant les spectacles, dans la limite des places. Les abonnés Plopsaland entrent aux Fright Nights sans
 supplément et reçoivent jusqu’au 30 septembre, dans la limite des stocks, un
 billet gratuit pour Mad Rat.
 
 Pour faire les six maisons, le calcul est vite fait : le billet le moins cher
-plus le forfait à 49 € reviennent à 88 € par personne ; le pass coûte 109 € et
-évite de réserver six créneaux. Si vous venez un samedi d’octobre bondé, prenez le pass.
+plus le forfait à 49 € reviennent à 88 € par personne ; le pass coûte 109 €, inclut le
+parking et évite de réserver six créneaux. Si vous venez un samedi d’octobre bondé, prenez le pass.
 
 ## Pour qui
 
-Le parc conseille les Fright Nights **à partir de 16 ans**. C’est une
-recommandation et pas une règle d’accès comme à Traumatica. Si vous venez avec des plus
-jeunes ou des personnes sensibles, sachez que Majaland et la halle Plopsa Indoor restent
-sans monstres, et sur place on peut obtenir un « Schreck-Stopp » : qui le porte
-est laissé tranquille par les comédiens. Dès 12 ans, masques, maquillage
-élaboré et déguisements sont interdits, pour qu’on sache dans le noir qui fait
-partie du personnel.
+Le parc conseille les Fright Nights **à partir de 16 ans**. Contrairement à
+Traumatica, ce n’est pas une limite stricte : selon la FAQ du parc, les plus
+jeunes entrent accompagnés d’un parent ou d’un tuteur légal. Pour les plus
+jeunes ou les personnes sensibles, Majaland et la halle Plopsa Indoor restent
+sans monstres, et sur place, uniquement là, on peut se procurer un
+« Schreck-Stopp » qui, selon le parc, tient les monstres à distance. Masques,
+maquillage élaboré et déguisements sont interdits aux visiteurs de plus de
+12 ans, pour qu’on sache dans le noir qui fait partie du personnel.
 
 Haßloch se situe entre l’A65 et la B9, et une navette relie la gare de Haßloch
 au parc. [Europa-Park](ref:europa-park) et Traumatica sont à un peu moins de
@@ -140,3 +144,6 @@ Billets, créneaux et détails :
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/fr/plopsaland-deutschland/shows-evenements/halloween-fright-nights).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 septembre 2026 : la première version disait que les 16 ans n’étaient qu’une recommandation, sans règle d’accès. Selon la FAQ du parc, les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal. L’interdiction des déguisements vaut pour les visiteurs de plus de 12 ans ; la première version disait « dès 12 ans ». Nous avons aussi ajouté que le Monster Release Show et le spectacle de catch existaient déjà en 2025.

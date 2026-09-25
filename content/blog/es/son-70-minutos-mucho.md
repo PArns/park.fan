@@ -2,6 +2,7 @@
 title: '¿Son 70 minutos mucho? Depende de si es martes'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -17,8 +18,8 @@ tags:
   - entre-bastidores
 category: behind-the-scenes
 parkLinks:
-  # Hansa-Park gets a paragraph of its own — why its page shows no wait times at
-  # all — which is exactly the question somebody on that page is asking.
+  # Hansa-Park gets a paragraph of its own on why its page shows no wait times at
+  # all. That is exactly the question somebody on that page is asking.
   - phantasialand
   - hansa-park
 rideLinks:
@@ -58,11 +59,13 @@ sin la segunda mitad de esa frase no puedes hacer nada con ellos.
 
 ## Qué significan de verdad «típico» y «lleno»
 
-park.fan pone junto a cada atracción dos valores de comparación. **Típico** es la
-mediana de los picos diarios: en la mitad de todos los días medidos la cola más
-larga fue más corta que ese valor, en la otra mitad más larga. **Lleno** es el
-percentil 90 de la misma serie, aproximadamente ese día de cada diez en que
-había de verdad gente.
+park.fan pone junto a cada atracción grande de un parque dos valores de
+comparación, calculados sobre los últimos 365 días. **Típico** es la mediana de
+los picos diarios: en la mitad de todos los días medidos la cola más larga fue
+más corta que ese valor, en la otra mitad más larga. **Lleno** es el percentil
+90 de la misma serie, aproximadamente ese día de cada diez en que había de
+verdad gente. En la página de la atracción aparecen los dos para el día de la
+semana de hoy, con la semana entera día a día debajo.
 
 Los dos son percentiles y no promedios. Una media se deja mover por un único día excepcional: una tarde con avería y 150 minutos de
 atasco tira hacia arriba del promedio de un mes entero, aunque durante 29 días
@@ -96,20 +99,23 @@ atracción a otra, y esas diferencias son la parte útil.
 
 De esa forma salen dos recomendaciones. La primera es el **rope drop**: ir
 directo a una atracción concreta en la apertura, antes de que se llenen los
-caminos. Solo lo proponemos si el pico del día llega al menos a 60 minutos y
-madrugar ahorra al menos 45 de ellos. Por debajo de eso sería un consejo válido
+caminos. Solo lo proponemos si el pico de un día normal de los últimos 70 llega
+al menos a 60 minutos y madrugar ahorra al menos 45 de ellos. Por debajo de eso sería un consejo válido
 en cualquier sitio y por tanto inútil en todos.
 
-La segunda es la alternativa más tranquila de la tarde. En las grandes montañas
-rusas, la última hora antes del cierre suele ser tan buena como la primera
-después de abrir, y para eso no hay que levantarse a las siete. Ambos datos
-están en la página de cada atracción, con una hora concreta en hora del parque.
+La segunda es la alternativa más tranquila: la hora a la que la cola de esa
+atracción suele ser más corta. Si cae por la tarde, para eso no hay que
+levantarse a las siete. Ambos datos están en la página de cada atracción grande
+con suficientes días medidos, con una hora concreta en hora del parque.
 
 ## Lo más importante se decide antes de salir
 
-La hora te ahorra media hora, la fecha hasta una entera. Entre dos días de la
-misma semana de vacaciones puede haber media hora de espera media de diferencia,
-y en un calendario corriente no se ve. Lo que marca la diferencia: qué regiones
+En una atracción para la que proponemos rope drop, la hora te ahorra al menos
+tres cuartos de hora. La fecha decide el día entero. En las vacaciones de verano
+de 2026 de Renania del Norte-Westfalia, el martes 18 de agosto figuraba en el
+calendario del Phantasialand como «Normal» y el jueves de la misma semana como
+«Muy alta» (datos de septiembre de 2026), y en un calendario corriente no se ve.
+Lo que marca la diferencia: qué regiones
 están de vacaciones, si hay un puente pegado, si llueve y si al otro lado de la
 frontera pasa algo.
 
@@ -123,8 +129,9 @@ calendario. Tres parques comparados, cada uno con su día más tranquilo:
 
 ```
 
-Si una celda de la última columna sale vacía, ese parque no tiene ningún día de
-la semana que destaque de forma fiable sobre los demás.
+Un guion en la última columna quiere decir que en ese parque ningún día de la
+semana destaca de forma fiable, o que sus días se midieron de forma demasiado
+desigual para compararlos. Si salen dos días, los dos son igual de tranquilos.
 
 ## Para qué hace falta un turno de noche
 
@@ -133,14 +140,19 @@ martes medido es otra cosa: tiene que estar lista antes de que alguien la pida.
 Así que cada noche corre una cadena de tareas, y su orden está fijado, porque
 cada paso se apoya en el anterior. A las 02:00 UTC los percentiles por hora, a
 las 03:00 los valores base por parque, a las 04:30 el resumen de ayer, a las
-05:15 las recomendaciones de rope drop, que leen justo ese resumen. A las 06:00
+05:15 las recomendaciones de rope drop, que leen justo ese resumen, a las 05:30
+«típico» y «lleno» para las atracciones grandes. A las 06:00
 el modelo de previsión se reentrena con los tiempos de espera del día anterior,
 mientras los del rope drop ya están en la autopista.
 
-A eso se suma la otra mitad: no tiramos nada. Los periodos antiguos se
-comprimen, pero cada análisis sigue corriendo sobre todas las mediciones que han
-llegado alguna vez. Quien empieza a guardar en el tercer año tiene en el tercer año un año de
-historial, y los dos anteriores se han perdido para siempre.
+A eso se suma la otra mitad: no tiramos ninguna medición. Los periodos antiguos
+se comprimen, no se aclaran. Hasta dónde mira atrás un análisis es otra
+decisión: «típico» y «lleno» cuentan los últimos 365 días, una vuelta completa
+al año, y la recomendación de rope drop solo los últimos 70, para seguir la
+temporada. Quien empieza a guardar en el tercer año tiene en el tercer año un
+año de historial, y los dos anteriores se han perdido para siempre. Nuestra
+serie de mediciones empieza el 26 de diciembre de 2025, y la columna de días
+medidos de la tabla de arriba cuenta desde ahí.
 
 ## Donde preferimos no decir nada
 
@@ -151,14 +163,18 @@ cualquier otro a las tres de la madrugada: ninguna atracción informa de nada. S
 sacáramos la conclusión evidente, ahí estarían todas las atracciones del parque en «muy baja», con
 una media de 0 minutos y una previsión basada en cero observaciones. El día
 soñado de cualquier visitante, y totalmente inventado. En su lugar,
-la página del parque lleva un aviso de que aquí no hay nada que leer.
+la página del parque lleva un aviso de que aquí no hay nada que leer. Lo que sí
+podemos contar del parque está en la
+[guía del Hansa-Park](/blog/hansa-park-consejos).
 
-La misma regla en un sitio más pequeño: la pista de hielo de Phantasialand
-funciona de noviembre a enero. En agosto nadie informa de nada sobre ella,
+La misma regla en un sitio más pequeño: la pista de hielo «Berliner Eislaufen»,
+en la Kaiserplatz del Phantasialand, solo existe durante el Wintertraum, esta vez
+del 14 de noviembre de 2026 al 24 de enero de 2027. En agosto nadie informa de
+nada sobre ella,
 porque no hay nada que informar. Leer ese silencio como «abierta» sería el error
 cómodo, y así llegó a figurar realmente en la página del parque: patinaje en
-pleno verano, con nuestra bendición. Y los meses de
-funcionamiento de una atracción no los nombramos hasta 330 días de observación:
+pleno verano, con nuestra bendición. Y los meses de funcionamiento que leemos en nuestras
+propias mediciones no los nombramos hasta 330 días de observación:
 antes de eso no aparece ningún mes, porque «funciona de diciembre a abril»
 describiría el periodo en el que casualmente ya hemos medido.
 
@@ -167,10 +183,12 @@ describiría el periodo en el que casualmente ya hemos medido.
 La versión larga, con las tarjetas reales para ir leyendo, es ahora una página
 propia: [Así funciona park.fan](/es/como-funciona-park-fan). Ahí está, capítulo
 a capítulo, qué se ve en una tarjeta de atracción, cómo funciona la escala bajo
-«típico» y «lleno», cómo el calendario cuenta las vacaciones y en qué tres
-sitios no afirmamos nada a propósito. También hay cuatro situaciones de visita
-concretas, desde la familia en las vacaciones de otoño hasta el del pase anual a
-las siete de la tarde.
+«típico» y «lleno», cómo el calendario cuenta las vacaciones, cómo el
+planificador convierte todo eso en un día y en qué tres sitios no afirmamos nada
+a propósito. También hay cuatro situaciones de visita concretas, desde la
+familia en las vacaciones de otoño hasta la primera vez en un parque grande,
+pasando por quien tiene pase anual y se pregunta si esa tarde aún merece la pena
+ir.
 
 Y la próxima vez que estés en la entrada mirando el panel: consulta qué es
 normal en esa atracción un martes.

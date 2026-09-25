@@ -221,7 +221,7 @@ debug notturna mi ricorda che da qualche parte, in questo momento, qualcuno sta
 davanti a un’attrazione vera e vuole sapere se la coda vale la pena.
 
 Dietro ci sono oggi **210 parchi** con circa **6900 attrazioni** in tutto (al 25
-settembre 2026), e 209 di questi inviano tempi di attesa nuovi ogni cinque
+settembre 2026), e per 209 di questi raccogliamo i tempi di attesa ogni cinque
 minuti. Quello che manca è l’Hansa-Park, che pubblica i suoi solo nella propria
 app. In più, previsioni che stimano l’affluenza con circa sei mesi di anticipo. E siccome per principio mi fido dei numeri
 solo se devono dimostrare qualcosa, il modello si dà un voto da sé: ogni

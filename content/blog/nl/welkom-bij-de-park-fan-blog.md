@@ -220,8 +220,8 @@ er ergens op dit moment iemand voor een echte baan staat die wil weten of de rij
 de moeite waard is.
 
 Daarachter zitten inmiddels **210 parken** met samen zo’n **6.900 attracties**
-(stand 25 september 2026), en 209 daarvan leveren elke vijf minuten verse
-wachttijden. De ene die ontbreekt is Hansa-Park, dat zijn wachttijden alleen in
+(stand 25 september 2026), en bij 209 daarvan halen we elke vijf minuten de
+actuele wachttijden op. De ene die ontbreekt is Hansa-Park, dat zijn wachttijden alleen in
 de eigen app laat zien. Daarbij voorspellingen die de drukte zo’n half jaar
 vooruit inschatten. En omdat ik cijfers principieel alleen vertrouw als
 ze zich moeten bewijzen, geeft het model zichzelf een cijfer: elke voorspelling

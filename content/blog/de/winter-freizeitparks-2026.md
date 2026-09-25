@@ -495,9 +495,9 @@ Für eine Richtung reichen die wenigen Wintertage trotzdem, und sie zeigen vor
 allem, wie sehr es im Winter auf den Tag ankommt. Zwischen den Jahren war es
 überall voll: Im Phantasialand stand unser Kalender vom 26. Dezember bis zum 5.
 Januar an jedem Öffnungstag auf „hoch“, am 2. Januar auf „sehr hoch“. Nach
-den Ferien kippte es. Im Januar 2026 lagen in Brühl alle Samstage und Sonntage
+den Ferien kippte es. Ab dem 7. Januar lagen in Brühl alle Samstage und Sonntage
 auf „hoch“ oder „sehr hoch“, die Werktage fast alle auf „niedrig“ oder „sehr
-niedrig“, und im Efteling sah es ab Mitte Januar genauso aus. Der Europa-Park
+niedrig“, und im Efteling sah es ab Mitte Januar ähnlich aus. Der Europa-Park
 kam nach dem 6. Januar selbst am Wochenende nicht über „normal“ hinaus. Aus dem
 Advent haben wir gar keine Messung.
 

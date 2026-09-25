@@ -118,8 +118,8 @@ bezahlt habe, und park.fan ist meine Art, etwas davon zurückzugeben.
 Die [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
 gibt es seit Juni 2011: ein interaktiver 3D-Dark-Ride, in dem du dem
 Kammerjäger Oskar Koslowski hilfst, die kaiserliche Tortenfabrik Gustav E.
-Lehmann von Mäusen zu befreien, bewaffnet mit einem Spritzbeutel, sieben Räume
-und rund sieben Minuten lang. Bei einem frischen Highscore grinse ich heute noch wie
+Lehmann von Mäusen zu befreien, bewaffnet mit einem Spritzbeutel, durch sieben
+Räume und rund sieben Minuten lang. Bei einem frischen Highscore grinse ich heute noch wie
 damals an den Knöpfen am Märchensee. Auch wenn meine
 Freundin die bemerkenswerte Angewohnheit pflegt, mir die 5000er-Mäuse in genau
 dem Augenblick wegzuschnappen, in dem ich sie anvisiere, und mich damit Fahrt
@@ -225,8 +225,8 @@ es mich daran, dass irgendwo gerade jemand vor einer echten Bahn steht und
 wissen will, ob sich die Schlange lohnt.
 
 Heute stehen dahinter **210 Parks** mit zusammen rund **6.900 Attraktionen**
-(Stand 25. September 2026), und aus 209 davon kommen alle fünf Minuten neue
-Wartezeiten. Der eine fehlende ist der Hansa-Park, der seine nur in der eigenen
+(Stand 25. September 2026), und bei 209 davon holen wir alle fünf Minuten die
+aktuellen Wartezeiten ab. Der eine fehlende ist der Hansa-Park, der seine nur in der eigenen
 App herausgibt. Dazu Prognosen, die den Andrang rund ein halbes Jahr im Voraus
 einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später

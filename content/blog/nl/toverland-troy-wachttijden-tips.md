@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, de houten achtbaan waar iedereen langsrijdt'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -37,8 +37,8 @@ coverImage:
 seo:
   title: 'Toverland: Troy, wachttijden & halloween zonder fastpass'
   description: >-
-    Troy in Toverland: een van de beste houten achtbanen van Europa, en bijna
-    niemand neemt de afslag. Wachttijddata, Fēnix, tickets en Halloween Nights.
+    Troy in Toverland: de grootste houten achtbaan van de Benelux, en er staat
+    amper een rij voor. Wachttijddata, Fēnix, tickets, Halloween Nights en wat er in 2027 komt.
   keywords:
     - Toverland
     - Toverland wachttijden
@@ -73,28 +73,34 @@ niemand. Dus eruit, door de lege rij, en er weer in.
 
 ![Het houten Trojaanse paard in Ithaka, op een kar, in herfstlicht | Het Trojaanse paard bewaakt de ingang van Ithaka. De baan zelf verstopt zich erachter tussen de bomen. | right](/media/toverland/troy-4x3.jpg)
 
-Dat is het stuk dat ik moeilijk uitgelegd krijg. Troy hoort bij de beste houten
-achtbanen van Europa en staat in een park waar elk jaar heel wat
-achtbaanfans langsrijden zonder ook maar hun knipperlicht aan te zetten: op de A67 tussen Venlo en
-Eindhoven, afrit Sevenum. De meesten hebben dan nog een klein uur voor de boeg,
-tot Kaatsheuvel, naar de [Efteling](ref:efteling), de Disney van Nederland.
+Dat is het stuk dat ik moeilijk uitgelegd krijg. Bij de Golden Ticket Awards
+2026, waarvoor het Amerikaanse vakblad Amusement Today ervaren achtbaanrijders
+ondervraagt, eindigde Troy op plek 24 van de houten achtbanen wereldwijd; uit
+Europa stonden er maar vier boven haar. En ze staat in een park waar elk jaar
+heel wat achtbaanfans langsrijden zonder ook maar hun knipperlicht aan te
+zetten: op de A67 tussen Venlo en Eindhoven, afrit 38, Helden/Sevenum. De
+meesten hebben dan nog een klein uur voor de boeg, tot Kaatsheuvel, naar de
+[Efteling](ref:efteling), de Disney van Nederland.
 
 Zeventig kilometer scheidt de twee parken. In allebei staat een houten achtbaan
 van dezelfde Amerikaanse fabrikant. Voor de ene wacht je doorgaans zo’n
 kwartier, voor de andere ruim het dubbele. De kortste rij staat in Sevenum.
 
-[Toverland](ref:attractiepark-toverland?long) in Sevenum, voor mij een van de
+[Toverland](ref:attractiepark-toverland) in Sevenum, voor mij een van de
 mooiste kleine parken van Europa, wordt dit jaar 25. Ik heb er zelfs ooit aan
 de andere kant gestaan, in kostuum en met de opdracht mensen te laten schrikken.
 Er waren er geen, maar daarover later meer.
 
 ## Troy op papier en Troy in de trein
 
-De technische gegevens zijn netjes, maar niet spectaculair: 35 meter hoog,
-1.077 meter lang, 90 km/u, ruim 20.000 vierkante meter grondoppervlak. Daarmee
-is ze tot vandaag de hoogste, langste en snelste houten achtbaan van de Benelux,
-en toch verklaren die cijfers weinig. Er zijn grotere woodies die aanvoelen als
-een lange rit over de A2: veel kilometers, weinig gebeurtenissen.
+De technische gegevens zijn netjes, maar niet spectaculair, en ze hangen een
+beetje af van wie je het vraagt. Het park noemt 35 meter hoogte en 90 km/u,
+fabrikant GCI 31,9 meter, de Roller Coaster DataBase net geen 87 km/u. Over de
+1.077 meter baan is iedereen het eens, over de ruim 20.000 vierkante meter
+grondoppervlak ook. De hoogste, langste en snelste houten achtbaan van de
+Benelux is ze hoe dan ook, en toch verklaren die cijfers weinig. Er zijn grotere
+woodies die aanvoelen als een lange rit over de A2: veel kilometers, weinig
+gebeurtenissen.
 
 Het verschil zit in twee keuzes.
 
@@ -118,11 +124,15 @@ per trein, twee treinen, 850 gasten per uur.
 
 Blijft het vooroordeel dat elke houten achtbaan vanaf een zekere leeftijd
 meesleept: dat ze rammelt. (Bij haar vaste rijders begint het vanaf een zekere
-leeftijd ook te kraken, maar daar gaat het hier niet over.) Daar werkt het park sinds **2024** aan. In een meerjarige **retrack** vervangt het elke winter zo’n 198 meter
-traject op beide rails, samen bijna 400 strekkende meter hout per seizoen. Er
-wordt gewerkt onder een tijdelijk dak, zodat regen en vorst de werkzaamheden
-niet ophouden, door twintig speciaal daarvoor opgeleide mensen uit het eigen
-team. Eerst waren de first drop en de horseshoe aan de beurt. Wie Troy tien jaar
+leeftijd ook te kraken, maar daar gaat het hier niet over.) Daar werkt het park
+sinds **2024** winter na winter aan, met een **retrack**: nieuwe houtlagen voor
+de baan. In de winter van 2024/25 brak het zo’n 200 meter traject af, waaronder
+bijna de complete first drop, en bouwde het die onder een tijdelijk dak opnieuw
+op; Troy was daarvoor ruim drie maanden dicht. In de winter van 2025/26 volgden
+volgens Looopings nog eens 130 meter, de camelback en de windmeterbocht,
+ongeveer een vijfde van de baan, vernieuwd door vijftien mensen uit het eigen
+team. Het plan: binnen vier jaar de complete baan, en dan weer helemaal in hout,
+zonder de stalen toplaag die GCI als Titan Track verkoopt. Wie Troy tien jaar
 geleden reed en haar herinnert als “geweldig, maar ruw”: rijd haar nog eens.
 
 ```glossary-widget slug=airtime
@@ -146,8 +156,8 @@ publiekstrekker. Zelfde databasis, zelfde rekenmethode:
 
 ```
 
-Meer dan het dubbele, voor een baan die bij de European Star Awards nooit boven
-Troy stond. Neem je staal erbij, dan wordt het voor de buren niet beter. Dit
+Meer dan het dubbele, voor een baan die bij de Golden Ticket Awards 2026 vijf
+plekken achter Troy eindigde. Neem je staal erbij, dan wordt het voor de buren niet beter. Dit
 kosten de grote namen van de regio aan wachttijd, hout én staal:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, staal;phantasialand/fly|F.L.Y.|Flying, staal;efteling/joris-en-de-draak|Joris en de Draak|Hout;efteling/baron-1898|Baron 1898|Dive coaster, staal;attractiepark-toverland/troy|Troy|Hout;attractiepark-toverland/fenix|Fēnix|Wing, staal columns=type,park,peak highlight=attractiepark-toverland/troy
@@ -162,17 +172,19 @@ inbegrepen.
 Daarachter zit de rekensom uit [De kunst van het
 wachten](/blog/de-kunst-van-het-wachten), vraag gedeeld door capaciteit.
 Toverland had in 2025 **1.137.000 gasten** en verdeelt ze over vijf achtbanen,
-vijf waterattracties en in totaal ruim veertig attracties. Wie driemaal zoveel
-mensen binnenlaat, bouwt zelden driemaal zoveel erbij.
+vijf waterattracties en in totaal ruim veertig attracties. De Efteling telde
+datzelfde jaar 5,78 miljoen bezoeken, zo’n vijf keer zoveel, en heeft geen vijf
+keer zoveel achtbanen.
 
 Daar komt iets bij dat andere parken allang hebben ingebouwd en hier ontbreekt:
 **Toverland verkoopt geen fastpass en geen expresspass.** In het hele park is
-er precies één manier om tijd tegen geld te ruilen, en die bestaat alleen in
-oktober. Op alle andere dagen is de rij die je ziet, de rij die er is. Een
-single rider-rij is er sinds 2023 overigens wel, maar bij één enkele attractie,
-de valtoren Dragonwatch, en die kost niets extra.
+er precies één manier om tijd tegen geld te ruilen, en die bestaat alleen op de
+13 halloweenavonden in oktober en begin november. Op alle andere dagen is de rij
+die je ziet, de rij die er is. Een single rider-rij is er sinds 2023 overigens
+wel, maar bij één enkele attractie, de vrijevaltoren Dragonwatch, en die kost
+niets extra.
 
-## De rest van het park: liggend, ondersteboven en nat
+## De rest van het park: ondersteboven, op de motor en nat
 
 ![Fēnix met een trein ondersteboven in de baan, blauwe rails tegen een zomerhemel | Fēnix, de langste wing coaster van Europa. De stoelen hangen links en rechts naast de rail. | left](/media/toverland/fenix-4x3.jpg)
 
@@ -184,25 +196,27 @@ coaster van **Bolliger & Mabillard**, 40 meter hoog, 813 meter lang, tot
 daarna Immelmann en zero-g roll), 13 miljoen euro duur. De eerste wing coaster van Nederland en tot vandaag de
 langste van Europa. Wing coaster betekent: je zit links en rechts naast de rail,
 zonder baan boven of onder je, en omdat je stoel de bochten verder naar buiten
-meemaakt dan het voertuig, voelt elke draai groter dan hij is. Onderweg sproeit
-een feniks nevel over je heen, wat niets met natuurkunde te maken heeft en de
-zaak toch beter maakt. Wachttijd: dezelfde orde van grootte als bij Troy.
+meemaakt dan het voertuig, voelt elke draai groter dan hij is. Vlak na het
+station sproeit een feniks nevel over je heen, wat niets met natuurkunde te maken
+heeft en de zaak toch beter maakt. Wachttijd: dezelfde orde van grootte als bij Troy.
 
 ![Het station van Fēnix met blauwe rail, wingcoastertrein en vuurschalen aan kettingen onder houten balken | Het station van Fēnix: vuurschalen aan kettingen, zware balken, en de trein met de stoelen naast de rail. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** is de vreemde eend en mijn
 tweede favoriet hier. Vekoma bouwde in 2004 in Sevenum het wereldwijde prototype
-van de motorachtbaan: je zit niet, je ligt op een motor, handen aan het stuur,
-knieën opgetrokken, ergens tussen MotoGP en tandartsstoel, en wordt dan als
-launch coaster weggeschoten. Een ongemakkelijke, absurde, prachtige baan. Met
-haar mediaan heeft uitgerekend zij de langste typische wachttijd van alle
-coasters in het park, wat komt doordat je één voor één en liggend instapt, en
-op je buik instappen ziet er bij de meeste mensen minder elegant uit dan ze
-hopen.
+van de motorachtbaan: je zit schrijlings op een motor, voorovergebogen, handen
+aan het stuur, één beugel drukt van achteren in je rug en twee andere houden je
+bovenbenen vast, ergens tussen MotoGP en tandartsstoel, en dan schiet een
+hydraulische lancering je in drie seconden naar ruim 70 km/u. Een
+ongemakkelijke, absurde, prachtige baan. Met haar mediaan heeft uitgerekend zij
+de langste typische wachttijd van alle coasters in het park. Dat komt door de
+capaciteit: Booster Bike rijdt met één enkele trein van 16 plaatsen, en het park
+noemt 518 rijders per uur, iets meer dan de helft van Fēnix.
 
 **[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** van Mack Rides is een spinning
-coaster in het donker, half darkride, half achtbaan, met vrij draaiende gondels
-en een boordgeluid dat een achtbaan van dit type daarvoor niet had. Haar
+coaster die tussen rotsen en vijvers door de Magische Vallei kronkelt, met vrij
+draaiende gondels en een boordgeluid dat een achtbaan van dit type daarvoor niet
+had. Haar
 openingsdatum is een kleine strikvraag. De baan was aangekondigd voor 2013,
 maar ze was lang voor de rest van de Magische Vallei klaar, en in plaats van
 haar een jaar stil te laten staan haalde het park haar naar voren: een paar
@@ -213,75 +227,87 @@ gebouwd kon worden, en kwam ze in **april 2013** terug met het complete
 themagebied, nu als Dwervelwind in plaats van de d’wervelwind van 2012. Daarom
 lees je afhankelijk van de bron 2012 of 2013. Allebei klopt.
 
-**[Toos-Express](ref:attractiepark-toverland/toos-express)** uit het openingsjaar 2001 is de
-juniorcoaster waarop hier al een kwart eeuw kinderen hun eerste achtbaan rijden.
+**[Toos-Express](ref:attractiepark-toverland/toos-express)** rijdt sinds de openingsdag in mei
+2001 en is de juniorcoaster waarop hier al een kwart eeuw kinderen hun eerste
+achtbaan rijden.
 
-De natte en donkere afdeling is beter dan haar reputatie:
+Wat er tussen de achtbanen staat, is beter dan zijn reputatie:
 
-- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), de boottocht door
-  Merlijns toren, met animatronics en een reeks scènes waar andere parken extra
-  entree voor zouden vragen. De stille ster van Avalon.
-- **[Djengu River](ref:attractiepark-toverland/djengu-river)**, de wildwaterbaan van Hafema.
-  De vraag is niet _of_ je nat wordt.
-- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, een “Twist & Splash” van
-  Mack: waterbaan en carrousel in één, en flink gemener dan ze eruitziet.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, een madhouse van Vekoma dat je
-  rotsvast laat geloven dat jij draait en de kamer stilstaat.
-- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), 40 meter uitkijktoren,
-  van waaraf je ziet hoe klein dit park eigenlijk is en hoeveel er toch in past.
+- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), de twaalf minuten
+  lange boottocht van Mack door grotten tot in Merlijns bibliotheek met zwevende
+  boeken, waar andere parken extra entree voor zouden vragen. De stille ster
+  van Avalon.
+- **[Djengu River](ref:attractiepark-toverland/djengu-river)** (2013), de wildwaterbaan van
+  Hafema. De vraag is niet _of_ je nat wordt.
+- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, vroeger Backstroke, een
+  boomstamwildwaterbaan van Mack, sinds 2004 in het Wunderwald. Twee afdalingen,
+  de grootste 15 meter.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, een funhouse uit 2004, het huis
+  van Maximus Müller, waar de trap beweegt en de vloer draait.
+- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), een familievrijevaltoren van
+  Intamin, zo’n 40 meter hoog, en de rit gaat tot net geen 20 meter. Van daaruit
+  zie je hoe klein dit park eigenlijk is en hoeveel er toch in past.
 
 ## Van regenhal tot themapark
 
-Het verhaal van dit achtbaanpark begint uitgerekend zonder achtbaan.
+Het verhaal van dit achtbaanpark begint met een regenbui.
 
-Op **19 mei 2001** opende de familie Gelissen in Sevenum een indoorspeelhal.
-Geen themapark, geen decors, alleen 2.000 vierkante meter overdekte
-ruimte met klimrekken, glijbanen en een ballenbak, gebouwd voor regendagen in
-een streek waar het er veel van heeft. Een familiebedrijf in het grensland, met
-als bedrijfsmodel dat kinderen ergens heen moeten als het giet. De opening werd
-verricht door een jonge Nederlandse illusionist die toen nog geen wereldcarrière
-had: **Hans Klok**.
+Jean Gelissen, timmerman van beroep, was met zijn kinderen in het Steinerbos in
+Landgraaf toen het begon te gieten en alle bezoekers naar huis gingen. Zo kwam
+hij op het idee van een overdekt park. Op **19 mei 2001** opende hij het samen
+met zijn zus Caroline in Sevenum: één hal, het huidige Land van Toos, vol
+attracties voor kleine kinderen, met al een juniorachtbaan van Vekoma, de
+Toos-Express. Een familiebedrijf in het grensland, met als bedrijfsmodel dat
+kinderen ergens heen moeten als het giet. De opening werd verricht door een
+jonge Nederlandse illusionist die toen nog geen wereldcarrière had:
+**Hans Klok**.
 
 Geld om te verspillen had dit park nooit. Toch bouwde het twee keer iets dat er
 daarvoor nergens was.
 
 **2004** kwam de tweede hal erbij, toen “Magic Forest”, vandaag het
-**Wunderwald**. En daarmee [Booster Bike](ref:attractiepark-toverland/booster-bike), het
-wereldwijde prototype van de motorachtbaan van Vekoma. Een park dat buiten
-Limburg nauwelijks iemand kende, liet een bouwwijze ontwikkelen die nog niet
-bestond. Dat is ongeveer alsof het dorpscafé bij de brouwerij een eigen bier
-bestelt, en de brouwerij zegt ja.
+**Wunderwald**, met een wildwaterbaan, een bobkartbaan en een funhouse. Buiten
+ernaast verrees [Booster Bike](ref:attractiepark-toverland/booster-bike), het wereldwijde
+prototype van de motorachtbaan van Vekoma, al opende die pas op 27 juli; tot dan
+zette het park als goedmakertje een wildemuis van een kermisexploitant neer. Een
+park dat buiten Limburg nauwelijks iemand kende, liet een bouwwijze ontwikkelen
+die nog niet bestond. Dat is ongeveer alsof het dorpscafé bij de brouwerij een
+eigen bier bestelt, en de brouwerij zegt ja. Een jaar later volgde het tweede
+prototype: de Wirbelbaum, toen nog Twist & Turn, een 13 meter hoog reuzenrad van
+Metallbau Emmeln waarvan je de mandjes zelf zo wild laat draaien als je wilt.
 
-**2007** volgde het eerste echte buitengebied: **Ithaka**, Griekse oudheid,
-gebouwd rond één enkele baan. Voor 6,5 miljoen euro kreeg een park met destijds
-zo’n half miljoen bezoekers een houten GCI-achtbaan zoals huizen met het
-vijfvoudige aan publiek er een neerzetten. Troy was pas de tweede GCI-installatie
-in Europa, na Thunderbird in het Finse PowerPark, en de elfde wereldwijd. In
-maart 2007, kort voor de opening, waaide een deel van het halfafgebouwde
-liftgestel om tijdens een storm. Het park bouwde het weer op en opende toch op
-tijd voor het seizoen. Wie vandaag de lifthill op ratelt, zit dus op een
-constructie die twee keer gebouwd moest worden.
+**2007** volgde het eerste themagebied in de open lucht: **Ithaka**, Griekse
+oudheid, gebouwd rond één enkele baan. Voor 6,5 miljoen euro kreeg een park met
+destijds zo’n half miljoen bezoekers een houten GCI-achtbaan zoals huizen met
+het vijfvoudige aan publiek er een neerzetten. Troy was pas de tweede
+GCI-installatie in Europa, na Thunderbird in het Finse PowerPark, en de elfde
+wereldwijd. Op 5 maart 2007, bijna vier maanden voor de opening, blies een
+windstoot 13 jukken van het halfafgebouwde liftgestel om; gewond raakte
+niemand. Het park bouwde ze weer op, en Troy opende op 1 juli 2007, volgens de
+toenmalige parkdirectie maar een week later dan gepland. Wie vandaag de
+lifthill op ratelt, zit dus op een constructie die deels twee keer gebouwd moest
+worden.
 
 **2013** ontstond de **Magische Vallei** rond de “Dwervels”, met
-[Dwervelwind](ref:attractiepark-toverland/dwervelwind) en
-[Expedition Zork](ref:attractiepark-toverland/expedition-zork). En **2018** kwam de sprong die
+[Dwervelwind](ref:attractiepark-toverland/dwervelwind) en de wildwaterbaan
+[Djengu River](ref:attractiepark-toverland/djengu-river). En **2018** kwam de sprong die
 van het uitje een themapark maakte: een uitbreiding van 35 miljoen euro, met een
 compleet nieuw entreegebied in mediterrane havenstijl (**Port Laguna**) en de
 Arthurwereld **Avalon**, waar [Fēnix](ref:attractiepark-toverland/fenix) en
 [Merlin’s Quest](ref:attractiepark-toverland/merlins-quest) staan. Toen kreeg het park ook
 zijn huidige claim, “Discover your own magic”, die de oude leuzen “Magisch mooi”
 en “Feel the Magic” verving. In datzelfde jaar veegde Toverland de
-**European Star Awards** aan: beste themapark in de categorie tot een miljoen
-bezoekers, plus een onderscheiding voor Avalon en Port Laguna als beste
-nieuwigheid. Troy eindigde in de categorie beste houten achtbaan van Europa net
-achter de winnaar, met een toen elf jaar oude baan. **2023** groeide Avalon
-verder, onder meer met de 40 meter hoge uitkijktoren
-[Dragonwatch](ref:attractiepark-toverland/dragonwatch).
+**European Star Awards** aan: beste pretpark in de categorie tot een miljoen
+bezoekers, plus een tweede plek voor Fēnix als beste nieuwe achtbaan. Troy
+eindigde in de categorie beste houten achtbaan net achter de winnaar, met een
+toen elf jaar oude baan. **2023** groeide Avalon verder, onder meer met de
+vrijevaltoren [Dragonwatch](ref:attractiepark-toverland/dragonwatch) en de vliegtuigmolen
+Pixarus.
 
-De bezoekersaantallen: 620.000 in 2013,
-862.000 in het laatste jaar voor corona, 2019, sinds 2022 constant boven een
-miljoen, laatstelijk **1.137.000 in 2025**. Dat is ongeveer een derde van wat de
-Efteling of Europa-Park doorsluizen.
+De bezoekersaantallen: 862.000 in het laatste jaar voor corona, 2019, sinds 2022
+elk jaar boven een miljoen, laatstelijk **1.137.000 in 2025**. Ter vergelijking:
+Europa-Park kwam in 2025 voor het eerst boven zeven miljoen gasten, de Efteling
+op 5,78 miljoen bezoeken.
 
 ![De verlichte zweefmolen Djinn in de hal Land van Toos, gasten in de gondels in beweging | Djinn draait zijn rondjes boven de oosterse markt in Land van Toos, en dat volledig onder dak. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
@@ -292,11 +318,14 @@ voorbeeld: 12,8 meter hoog, volledig overdekt, en ’s avonds met een lichtsfeer
 waarvoor andere parken een buitengebied nodig zouden hebben.
 
 **2026 is jubileumjaar**, en het park viert dat op een manier waar een concern
-niet op zou komen. Sinds **18 april** loopt “Magic Memories”, een illusieshow
-van diezelfde Hans Klok die 25 jaar geleden de poorten opendeed, zo’n 30 minuten
-lang, meermaals per dag, bij de entree inbegrepen. En in het **weekend van
-27/28 juni** was Toverland voor het eerst in zijn geschiedenis 25 uur aan één
-stuk open, één per levensjaar, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
+niet op zou komen. Van **18 april tot 28 juni** liep op 25 dagen “Magic
+Memories”, een illusieshow van zo’n 30 minuten van diezelfde Hans Klok die 25
+jaar geleden de poorten opendeed, meermaals per dag in een circustent met ruim
+700 plaatsen en bij de entree inbegrepen. En in het **weekend van 27/28 juni**
+was Toverland voor het eerst in zijn geschiedenis 25 uur aan één stuk open, één
+per levensjaar, van zaterdag 9 uur tot zondag 10 uur, in vijf themablokken van
+vijf uur, met een XXL-parade en vuurwerk. Daarvoor gold een apart ticket van
+46,50 €.
 
 ```map-widget slug=attractiepark-toverland
 
@@ -306,8 +335,7 @@ stuk open, één per levensjaar, met elke vijf uur een verrassing, een XXL-parad
 
 ![Het houten Trojaanse paard bij nacht, rood aangelicht en in nevel gehuld, ervoor een mensenmenigte | Hetzelfde paard als hierboven, zes weken later. Overdag maken families er foto’s voor. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
-Zes weken per jaar krijgt dit park een tweede persoonlijkheid, en voor veel
-gasten uit West-Duitsland is dat de eigenlijke aanleiding om te komen. Hoe het
+Op 17 dagen in de herfst krijgt dit park een tweede persoonlijkheid. Hoe het
 zich in Europa verhoudt staat in onze
 [halloweengids](/blog/halloween-pretparken-2026); hier de Toverland-versie.
 
@@ -317,29 +345,31 @@ Het seizoen loopt **van 3 oktober tot 8 november 2026** en valt uiteen in twee
 heel verschillende evenementen:
 
 - **Halloween Days** (17 dagen), overdag, gezinsvriendelijk, voor kinderen tot
-  ongeveer 12: pompoenboerderij, shows, onschuldig verklede figuren, scare zones
-  zonder schrik.
+  ongeveer 12: pompoenboerderij, een maisdoolhof voor kinderen, shows, goedlachse
+  heksen.
 - **Halloween Nights** (13 nachten, tot 7 november), 18 tot 23 uur, aanbevolen
-  vanaf 12 jaar: **zes scare zones**, **zes haunted experiences**, openingsparade,
-  grondnevel overal, vuurwerk als slot.
+  vanaf 12 jaar: 170 scare actors in **zes scare zones** en **zes haunted
+  experiences**, openingsparade, grondnevel overal, om 22.45 uur vuurwerk als
+  slot. De scare zones zitten bij de entree inbegrepen, de haunted experiences
+  kosten extra, 6,50 tot 13 € per tijdslot, afhankelijk van het huis.
 
 ![Verlichte pompoenen met heksenhoeden tussen droge maisstengels | Pompoenen in de mais. Van hetzelfde materiaal bestaat in 2026 het grootste doolhof van het park. | left](/media/toverland-halloween/04-kuerbisse-maisfeld.jpg)
 
 De nieuwigheid van **2026** groeit letterlijk: **“Entwined: The Maze”**, een
-**maisveld van zeven hectare** met metershoge wanden achter Fēnix, volgens het
-park twee keer zo groot als het hele Avalon-gebied en vermarkt als grootste
-halloween-experience van Europa (nagemeten hebben we dat niet, verdwalen zouden
-we er meteen). Het vervangt het jarenlange rattenlabyrint
-“Trapped”. De enige regel die er telt: wie stil blijft staan, wordt gepakt.
+**maisveld van zeven hectare** met metershoge wanden op een tot nu toe
+afgesloten stuk grond achter Fēnix, volgens het park twee keer zo groot als het
+hele Avalon-gebied en vermarkt als grootste halloween-experience van Europa
+(nagemeten hebben we dat niet, verdwalen zouden we er meteen). Het vervangt de
+jarenlange experience “Trapped” in het Dwaalhof. De enige regel die er telt: wie
+stil blijft staan, wordt gepakt.
 
-![Het entreebord van Troy, omgebouwd tot “DesTROY – The Ride”, eronder twee Halloween Nights-banners | Van Troy wordt DesTROY. Het park schroeft daarvoor het entreebord van de achtbaan om. | right](/media/toverland-halloween/03-destroy-schild.jpg)
+![De naam van Troy boven de ingang, omgebouwd tot “DesTROY – The Ride”, eronder twee Halloween Nights-banners | Van Troy wordt DesTROY. Het park bouwt daarvoor de letters boven de ingang van de achtbaan om. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 Voor Troy-fans komt het beste deel echter nog. Een van de scare zones heet
 **“DesTroy”** en ligt in **Ithaka**, dus pal naast en onder de houten achtbaan.
 Gemuteerde Trojaanse soldaten bewaken de ruïnes van de stadsmuur, en Troy rijdt
-er middendoor. Homerus zou vragen hebben. Er zijn in Europa niet veel gelegenheden om een eersteklas houten
-achtbaan in het donker door een bespeelde scare zone te rijden, met nevel in het
-remstuk en acteurs in de wachtrij.
+er middendoor, die avonden tot 23 uur en dus in het donker. Homerus zou vragen
+hebben.
 
 ![Een Trojaanse krijger met speer staat in het schijnwerperlicht voor het rood verlichte paard | Of dat een pop is of een acteur, merk je pas als het te laat is. | left](/media/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
@@ -361,27 +391,28 @@ pas daarna de kostuums. Dat diezelfde avond de parkdirecteur langskwam en tijd
 voor ons nam, past bij dit park.
 
 > [!TIP]
-> **De tip die Toverland-kenners meteen geven: de Fear Pass.** Voor 62,50 €
-> krijg je eenmalig snellere toegang tot alle zes haunted experiences, en wel
-> via een **eigen ingang**, plus een gereserveerd vak voor de parade. Dat is de
-> enige afsnijroute die hier te koop is, en op volle nachten het verschil tussen
-> “drie huizen gehaald” en “alle zes, en ook nog heelhuids uit de mais gekomen”.
+> **Mijn tip voor de Halloween Nights: de Fear Pass.** Voor 69,95 € krijg je
+> eenmalig toegang tot alle zes haunted experiences, en wel via een **eigen
+> ingang** in plaats van de gewone rij, plus een gereserveerd vak bij de parade.
+> Dat is de enige afsnijroute die hier te koop is, en op volle nachten het
+> verschil tussen “drie huizen gehaald” en “alle zes, en ook nog heelhuids uit
+> de mais gekomen”.
 >
-> De toegang tot de Halloween Nights zit bij het **Magic Member** inbegrepen, de
-> Fear Pass niet, maar met het abonnement is **een van de doolhoven gratis**. En
-> de Halloween Nights zijn de drukste avonden van het jaar, hier loont de blik
-> op de kalender dubbel.
+> De Fear Pass is alleen online te koop en per avond beperkt. De toegang tot de
+> Halloween Nights zit bij het **Magic Member**-abonnement inbegrepen, de haunted
+> experiences en de Fear Pass niet.
 
 [Toverland](ref:attractiepark-toverland?full)
 
 ## Een afscheid met remhendel, en wat erna komt
 
-![Een gesneden siermotief aan de Maximus' Blitz Bahn, blauw aangelicht, ernaast oude gloeilampen aan kabels | Een detail van de Blitz Bahn, zoals ze er negentien jaar bij stond. Bijna alles hier was handwerk. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
+![Een gesneden siermotief aan de Maximus' Blitz Bahn, blauw aangelicht, ernaast oude gloeilampen aan kabels | Een detail van de Blitz Bahn, zoals ze er elf jaar bij stond. Bijna alles hier was handwerk. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 Wie er langer niet geweest is, zal een attractie missen. Op **17 mei 2026** was
 **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in het Wunderwald
-voor het laatst open, de Mack-bobbaan uit 2007, waarop je met een remhendel zelf
-bepaalde hoe snel het bergaf ging. Zolang we haar gemeten hebben, was ze de
+voor het laatst open, de bobkartbaan waarop je met hendels zelf bepaalde hoe
+snel het bergaf ging. Ze stond er sinds 2015, als opvolger van de Woudracer die
+op dezelfde plek in 2004 was geopend. Zolang we haar gemeten hebben, was ze de
 attractie met de langste typische wachttijd van het hele park.
 
 Dat lag aan een rekensom die nooit kon uitkomen: in een wagen pasten één,
@@ -400,42 +431,60 @@ voor degene aan wie de baan volgens de huisgeschiedenis altijd heeft toebehoord:
 stapte zelf in en reed zijn eigen constructie een laatste keer naar beneden.
 
 Je kunt dat flauw vinden, een verzonnen figuur in een bobwagen. Ik vond het
-juist. Negentien jaar lang heeft deze baan haar verhaal serieus genomen, en op
+juist. Elf jaar lang heeft deze baan haar verhaal serieus genomen, en op
 haar laatste dag heeft het park het afgemaakt in plaats van gewoon de stroom
 eraf te halen.
 
 Haar opvolger is de reden dat ik Toverland het dapperste kleine park van Europa
-vind. In de winter opent daar een **Swinging Bobsled**, een attractietype dat er
-tot nu toe nergens ter wereld is. Ontwikkeld werd het met **ETF Ride Systems**
-uit Nederweert, dus uit diezelfde provincie Limburg, 30 kilometer van het park.
-Het principe van de Blitz Bahn blijft, je regelt je tempo nog steeds zelf, maar
-de voertuigen zwaaien op bepaalde punten dynamisch uit. De wagens komen in
-steampunklook, passend bij de uitvindingen van Maximus Müller. Naam en verhaal heeft het park tot nu toe niet verklapt. Het
-is de derde keer dat hier een wereldprimeur ontstaat.
+vind. In het winterseizoen 2026/27 moet daar een **Swinging Bobsled** opengaan,
+een attractietype dat er tot nu toe nergens ter wereld is; een exacte datum had
+het park eind september nog niet genoemd. Ontwikkeld werd het met **ETF Ride
+Systems** uit Nederweert, dus uit diezelfde provincie Limburg, hemelsbreed ruim
+20 kilometer van het park. Layout, overkapping en het chalet van Maximus als
+wachtrij blijven, maar gereden wordt er over een klassieke achtbaanrail met
+gekantelde bochten. Je regelt je tempo nog steeds zelf met hendels, een
+minimumsnelheid zorgt dat niemand meer op de baan stil komt te staan, en de
+bobsleeën voor twee personen zwaaien op bepaalde punten mechanisch uit. De wagens
+komen in steampunklook, passend bij de uitvindingen van Maximus Müller. Naam en
+verhaal heeft het park tot nu toe niet verklapt. Het is de derde keer dat hier
+een wereldprimeur ontstaat.
+
+Daarna wordt het groter. Toverland wil een short-staybestemming met een eigen
+hotelresort worden en trekt daarvoor, inclusief nieuwe attracties en een
+werkplaats- en medewerkerscomplex, 98 miljoen euro uit; het bestemmingsplan
+daarvoor stelde de gemeenteraad van Horst aan de Maas in december 2025 vast.
+Officieel aangekondigd is er voor 2027 nog niets. Uit stukken van de provincie
+Limburg, waarover Looopings in februari 2026 schreef, blijkt wel dat in het
+vierde kwartaal van 2027 een vernieuwd Port Laguna open moet gaan, met een
+darkride, een nieuw restaurant en een waterattractie voor kleine kinderen.
 
 Na halloween gaat het park kort dicht en opent het van **28 november 2026 tot
-17 januari 2027** als **Winter Feelings**: lichtjes, kerstmarktsfeer, schaats-
-en curlingbaan, woensdags en in de weekends plus doorlopend tijdens de
-kerstvakantie. De waterattracties pauzeren dan, daarvoor komt de wereldprimeur
-erbij. Prachtig, alleen geen geheime tip meer zodra de lichtjes aan zijn:
-december hoort in onze data bij de drukste maanden van het jaar.
+17 januari 2027** als **Winter Feelings**: lichtjes, kerstmarktsfeer, een
+schaatsbaan en een tubingbaan in Port Laguna, woensdags en in de weekends plus
+doorlopend tijdens de kerstvakantie. De attracties draaien dan gewoon, zolang
+het weer het toelaat. Voor het jubileum is de entree op de eerste drie weekends
+en woensdagen, tot en met 16 december, gratis: wie vooraf gratis reserveert,
+betaalt per rit, met strippen van 2 € per stuk, en Troy kost er drie. Gewone
+dagtickets zijn er gewoon naast. Prachtig, alleen geen geheime tip meer zodra de
+lichtjes aan zijn: de dagen tussen kerst en oudejaarsdag 2025, waarmee onze
+metingen hier begonnen, waren even druk als augustus.
 
 ## Wanneer je moet gaan
 
 Het antwoord valt ontspannen uit: bijna altijd.
 
-**Per maand** liggen maart tot en met juli dicht bij elkaar, en daarboven steken
-**augustus** en de winterweken in **december** uit. Dat de winter het
-met de hoogzomer kan opnemen, komt door het korte, sterk gevraagde
-winterseizoen: er draait maar een deel van de attracties, en het park is alleen
-op woensdag en in het weekend open. Eén beperking daarbij: winter
-en voorseizoen hebben zo weinig openingsdagen dat achter die maandwaarden
-duidelijk minder meetdagen staan dan achter de zomermaanden. De richting is
-eenduidig, de decimaal niet.
+**Per maand** liggen april tot en met juli dicht bij elkaar, en daarboven steken
+**augustus** en **december** uit. Achter december staan in onze data wel alleen
+de dagen tussen kerstavond en oudejaarsdag 2025, midden in de kerstvakantie.
+Van de goed gemeten maanden was **september** tot nu toe het rustigst, na het
+einde van de zomervakantie. Eén beperking daarbij: januari en maart staan op een
+handvol meetdagen, februari, oktober en november ontbreken nog helemaal (stand
+25 september 2026), en buiten het hoogseizoen is het park sowieso alleen op
+woensdag en in het weekend open.
 
-**Per weekdag** lopen de cijfers nauwelijks uiteen. Het drukst is het op vrijdag
-en zaterdag, en ook daar is het verschil met de rest van de week klein. In
-Phantasialand liggen tussen een dinsdag en een zaterdag werelden.
+**Per weekdag** lopen de cijfers zo goed als niet uiteen, geen enkele dag van de
+week springt eruit. In Phantasialand is een zaterdag merkbaar drukker dan een
+dinsdag.
 
 Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
@@ -452,10 +501,9 @@ openingsdagen:
 
 ```
 
-Eén ding moet je daarbij meedenken: de **Nederlandse** vakanties slaan hier
-harder door dan de Duitse, vooral de herfst- en meivakantie van de zuidelijke
-provincies. Woon je zelf in het zuiden: als jouw kinderen vrij hebben, heeft de
-rest van Limburg dat ook.
+Eén ding moet je daarbij meedenken: hier tellen twee vakantiekalenders, de
+Nederlandse voor regio zuid en die van Noordrijn-Westfalen. Leg ze allebei naast
+je planning, hoe droog ze ook lezen.
 
 ## Een dag zonder fastpass
 
@@ -463,39 +511,39 @@ Omdat er geen fastpass is, helpt alleen timing je hier. Veel daarvan heb je
 overigens niet nodig.
 
 Ga bij opening direct naar Ithaka voor **Troy**. Vol wordt ze later ook niet,
-maar een houten achtbaan is ’s ochtends nog koud en loopt in de loop van de dag
-meetbaar sneller. Rijd haar vroeg **én** laat, dan heb je twee
-verschillende banen gereden. Daarna **Fēnix** in Avalon, de twee headliners
-liggen praktisch muur aan muur. Als derde **Booster Bike**, omdat zij in onze
-data de langste typische wachttijd van alle coasters heeft (instappen op je buik,
-weet je nog). De **waterattracties** bewaar je voor de middaghitte, dan zijn je
-sokken tegen de terugrit weer droog, meestal. Als “Magic Memories” draait,
-zit een aanzienlijk deel van de gasten een half uur in het theater, buiten is
-het dan opvallend rustig. En het laatste uur is weer voor Ithaka: Troy in de
-schemering, als de constructie wordt aangelicht en de trein hoorbaar sneller
-door het station raast dan ’s ochtends.
+maar een houten achtbaan is ’s ochtends nog koud en loopt sneller zodra ze
+warmgereden is. Rijd haar vroeg **én** laat, dan heb je twee verschillende banen
+gereden. Daarna **Fēnix** in Avalon, een paar minuten lopen naar het noorden.
+Als derde **Booster Bike**, omdat zij in onze data de langste typische wachttijd
+van alle coasters heeft (één trein, 16 plaatsen, weet je nog). De
+**waterattracties** bewaar je voor de middaghitte, dan zijn je sokken tegen de
+terugrit weer droog, meestal. En het laatste uur is weer voor Ithaka: Troy raast
+dan hoorbaar sneller door het station dan ’s ochtends. In het donker beleef je
+dat alleen op de halloweenavonden en in de winter, als het park pas na
+zonsondergang sluit.
 
 ## Praktisch: tickets, route, eten
 
-**Tickets.** De prijsstructuur is verheugend ouderwets.
+**Tickets.** De prijzen bewegen mee met de kalender.
 
-- **Dagkaart aan de kassa:** 42,50 € (vanaf 140 cm), 34,50 € voor kinderen van
-  90 tot 140 cm, kinderen onder 90 cm gratis, 60-plussers 28 €.
-- **Online duidelijk goedkoper.** Wie minstens zeven dagen van tevoren boekt,
-  krijgt de **early-birdkorting** van 7 € (vanaf 140 cm) respectievelijk 3,50 €
-  (90–140 cm); korter van tevoren is het nog 2 € of 0,50 €. Realistisch kom je
-  uit op **30 tot 37 €**. Er is een dagkassa, maar geen reden om die te
-  gebruiken.
+- **Dagticket:** Toverland werkt met vier prijsniveaus, brons, zilver, goud en
+  platina, afhankelijk van de openingstijden en het aanbod van de dag; welk
+  niveau geldt, zie je in de ticketkalender. Kinderen onder 90 cm en jarigen
+  mogen gratis naar binnen, maar ook zij moeten reserveren.
+- **Online goedkoper.** Wie minstens zeven dagen van tevoren boekt, krijgt de
+  **early-birdkorting** van 7 € (vanaf 140 cm) respectievelijk 3,50 € (90–140 cm)
+  op het dagtarief; korter van tevoren is het nog 2 € of 0,50 €. Aan de dagkassa
+  krijg je geen korting, dus is er ook geen reden om die te gebruiken.
 - **Parkeren:** 13,50 € per auto per dag, online vooraf te boeken. Fietsen staan
   gratis bij de ingang.
-- **Summer Pass:** 79 € voor volwassenen, 59 € voor kinderen van 90 tot 140 cm,
-  onbeperkt bezoek van 1 juli tot 30 september, parkeer-add-on 25 €. Vanaf het
-  tweede bezoek loont dat.
+- **Summer Pass:** in 2026 voor het eerst verkocht, 79 € voor volwassenen, 59 €
+  voor kinderen van 90 tot 140 cm, onbeperkt bezoek van 1 juli tot 30 september,
+  parkeer-add-on 25 €. Of hij er in 2027 weer is, heeft het park nog niet gezegd.
 - **Magic Member (abonnement):** 160 € voor volwassenen, 120 € voor kinderen,
-  130 € vanaf 60 jaar, maandtermijnen vanaf 6,75 €, parkeren 50 € per jaar
-  extra. Inbegrepen is onbeperkte toegang **ook tot speciale evenementen zoals
-  halloween**, plus een van de halloweendoolhoven gratis en 5 % op horeca en
-  winkels.
+  130 € vanaf 60 jaar, of per maand (volwassenen 14 €, minimaal twaalf maanden),
+  parkeren 50 € per jaar extra. Inbegrepen is onbeperkte toegang **ook op
+  evenementdagen zoals halloween** en 5 % korting op horeca en winkels; de haunted
+  experiences kosten ook met abonnement extra.
 
 Bij dat laatste punt loont een blik over de grens: Toverland verkoopt een heel
 gewoon abonnement met halloween erin. Phantasialand heeft het zijne na de
@@ -508,10 +556,12 @@ Toverlaan 2, zo’n tien autominuten ten westen van Venlo. Via de **A67** ben je
 er vanuit Düsseldorf in ongeveer een uur, vanuit het Ruhrgebied in ruim 1:15,
 vanuit Keulen in zo’n 1:20. Met de trein gaat het tot **Horst-Sevenum**, van
 daar met **buslijn 79 en 679** in ongeveer tien minuten naar de ingang; de
-frequentie is landelijk, plan de terugreis voor je vertrekt. Een eigen parkhotel
-is er niet, in de omgeving wel genoeg pensions en vakantieparken. Wie de streek
-toch aandoet, combineert goed met [Bobbejaanland](ref:bobbejaanland) (ongeveer
-een uur) of inderdaad de [Efteling](ref:efteling).
+frequentie is landelijk, plan de terugreis voor je vertrekt. Een parkhotel is er
+nog niet, dat hoort bij de uitbreidingsplannen. In het seizoen staat op het
+eigen terrein het Pop-Up Summer Camp met tenten en staanplaatsen, en in de
+omgeving zijn genoeg pensions en vakantieparken. Wie de streek toch aandoet,
+combineert goed met [Bobbejaanland](ref:bobbejaanland) (ongeveer een uur) of
+inderdaad de [Efteling](ref:efteling).
 
 **Eten.** Twee adressen zijn echt de moeite waard.
 
@@ -522,24 +572,26 @@ een uur) of inderdaad de [Efteling](ref:efteling).
   met een hele reeks smeersels. Neem het wel met z’n tweeën of drieën, alleen
   eet je je er vol aan voordat het hoofdgerecht komt.
 - **Katara Plaza** (Magische Vallei) is het foodcourt met het beste uitzicht:
-  tropische gerechten, tafels aan het water, en daarbij de watershow Katara.
+  burgers, friet, burrito’s en nacho’s, tafels aan het water, en daarbij de
+  watershow Katara.
 
 Voor tussendoor is er de **Waldstube** in het Wunderwald (pizza, burgers,
-sandwiches, bij regen een zegen), **Hungry Harry** en **Mañana** voor wraps,
-friet en softijs, en de **snackautomaten in Port Laguna**, waar de meesten
-langslopen. Ten onrechte: zonder rij, zonder omweg, en voor de honger tussendoor
-de makkelijkste oplossing in het park. Eet vroeg of laat, half twaalf of vanaf
-half drie.
+sandwiches, bij regen een zegen), **Hungry Harry** in Avalon voor wraps en warme
+broodjes, **Mañana** in Port Laguna voor friet en fish & chips, en de
+**snackautomaten in Port Laguna**, waar de meesten langslopen. Ten onrechte:
+zonder rij, zonder omweg, en voor de honger tussendoor de makkelijkste oplossing
+in het park. Eet vroeg of laat, half twaalf of vanaf half drie.
 
 ## Veelgestelde vragen over Toverland
 
 ### Is Toverland een bezoek waard?
 
-Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met zo’n
+Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met ruim
 een miljoen gasten per jaar klein vergeleken met de Efteling of Europa-Park,
-maar heeft met [Troy](ref:attractiepark-toverland/troy) een van de beste houten achtbanen van
-Europa en met [Fēnix](ref:attractiepark-toverland/fenix) de langste wing coaster van het
-continent, bij typische wachttijden van zo’n kwartier.
+maar heeft met [Troy](ref:attractiepark-toverland/troy) de houten achtbaan die bij de Golden
+Ticket Awards 2026 als vijfde beste van Europa eindigde, en met
+[Fēnix](ref:attractiepark-toverland/fenix) de langste wing coaster van het continent, bij
+typische wachttijden van zo’n kwartier.
 
 ### Hoe lang zijn de wachttijden in Toverland?
 
@@ -549,45 +601,51 @@ vind je op de [Toverland-parkpagina](ref:attractiepark-toverland).
 
 ### Wanneer is het in Toverland het rustigst?
 
-Maart tot en met juli liggen in onze data dicht bij elkaar en vormen het
-rustigste deel van het jaar. Doordeweeks is het iets leger dan in het weekend,
-maar het verschil is klein. Wat daaruit opvalt, zijn de
-Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat de [wachttijden-kalender](ref:attractiepark-toverland?calendar) dat zien.
+Van de goed gemeten maanden was het tot nu toe in september het rustigst, na de
+zomervakantie. April tot en met juli liggen dicht bij elkaar, augustus en de
+kerstvakantie steken erboven uit. Tussen de weekdagen zit nauwelijks verschil.
+Dag voor dag laat de [wachttijden-kalender](ref:attractiepark-toverland?calendar) dat zien.
 
 ### Heb je in Toverland een fastpass nodig?
 
 Die is er niet. Toverland verkoopt helemaal geen fastpass; de enige
 uitzondering is de **Fear Pass** voor de haunted experiences tijdens de
-Halloween Nights (62,50 €). Een gratis single rider-rij bestaat alleen bij de
-valtoren Dragonwatch. Bij de medianen die op de headliners staan heb je op
+Halloween Nights (69,95 €). Een gratis single rider-rij bestaat alleen bij de
+vrijevaltoren Dragonwatch. Bij de medianen die op de headliners staan heb je op
 een normale dag sowieso geen kortere weg nodig.
 
 ### Is Troy de beste houten achtbaan van Europa?
 
-“De beste” is smaak, en concurrentie is er genoeg:
-[Wodan](ref:europa-park/wodan-timburcoaster) in [Europa-Park](ref:europa-park),
-[Untamed](ref:walibi-holland/untamed) in [Walibi Holland](ref:walibi-holland) en
-[Balder](ref:liseberg/balder) in [Liseberg](ref:liseberg). Onder liefhebbers
-staat Troy echter geregeld in de Europese topgroep, en ze is met 35 meter
-hoogte, 1.077 meter lengte en 90 km/u de hoogste, langste en snelste houten
-achtbaan van de Benelux. En haar rij is een stuk korter dan die van
-haar GCI-zus Joris en de Draak in de Efteling.
+“De beste” is smaak, en de concurrentie is sterk. Bij de Golden Ticket Awards
+2026 eindigden vier Europese houten achtbanen boven Troy:
+[Wodan](ref:europa-park/wodan-timburcoaster) in [Europa-Park](ref:europa-park) op 11,
+Wildfire in het Zweedse Kolmården op 12, [Balder](ref:liseberg/balder) in
+[Liseberg](ref:liseberg) op 13 en
+[Colossos](ref:heide-park/colossos-kampf-der-giganten) in [Heide Park](ref:heide-park) op 18.
+Troy werd 24e, vijf plekken voor Joris en de Draak. Volgens de cijfers van het
+park is ze met 35 meter hoogte, 1.077 meter lengte en 90 km/u de hoogste,
+langste en snelste houten achtbaan van de Benelux, en haar rij is een stuk
+korter dan die van haar GCI-zus in de Efteling.
 
 ### Wat is er in 2026 nieuw in Toverland?
 
-Drie dingen: de illusieshow **“Magic Memories”** van Hans Klok voor het
-25-jarig jubileum (sinds 18 april, bij de entree inbegrepen), het einde van
-**Maximus' Blitz Bahn** op 17 mei, en haar opvolger, de **Swinging Bobsled**,
-een attractietype dat er tot nu toe nergens ter wereld is, ontwikkeld met ETF
-Ride Systems, opening in het winterseizoen 2026/27.
+Nogal wat, en een deel is alweer voorbij: de illusieshow **“Magic Memories”**
+van Hans Klok voor het 25-jarig jubileum (18 april tot 28 juni), het
+ToverFestival met 25 uur openstelling op 27/28 juni, de Summer Pass, het einde
+van **Maximus' Blitz Bahn** op 17 mei en voor halloween het maisdoolhof
+**“Entwined”**. Van 28 november tot 16 december is de entree gratis en betaal je
+per rit. De opvolger van de Blitz Bahn, de **Swinging Bobsled**, een
+attractietype dat er tot nu toe nergens ter wereld is, ontwikkeld met ETF Ride
+Systems, moet in het winterseizoen 2026/27 opengaan.
 
 ### Hoeveel kost de entree van Toverland?
 
-Aan de kassa 42,50 € (vanaf 140 cm) respectievelijk 34,50 € (90–140 cm),
-60-plussers 28 €, kinderen onder 90 cm gratis. Online met early-birdkorting
-(minstens zeven dagen van tevoren) is het 7 € respectievelijk 3,50 € minder.
-Parkeren kost 13,50 €. Het abonnement (**Magic Member**) begint bij 160 € en
-bevat halloween.
+Dat hangt van de dag af: Toverland heeft vier prijsniveaus, afhankelijk van de
+openingstijden en het aanbod. Online krijg je minstens zeven dagen van tevoren
+7 € (vanaf 140 cm) respectievelijk 3,50 € (90–140 cm) korting, korter van
+tevoren 2 € of 0,50 €; aan de kassa betaal je het volle tarief. Kinderen onder
+90 cm zijn gratis, parkeren kost 13,50 €. Het abonnement (**Magic Member**)
+begint bij 160 € en bevat de toegang op halloween.
 
 ### Red je Toverland op één dag?
 
@@ -607,10 +665,10 @@ jaren Troy. Anderen komen voor de Maison de la Magie, voor de Djengu River op
 een warme middag of voor de Halloween Nights.
 
 En dit is allang geen klein park meer dat aardig is voor de regio. In Sevenum
-staat een houten achtbaan die in elke Europese ranglijst thuishoort. Twee
-attractietypes zijn voor dit park bedacht en hier voor het eerst gebouwd, in de
-winter komt het derde erbij. En toch zit je doordeweeks na een kwartier weer in
-de trein.
+staat een houten achtbaan die sinds 2008 in elke editie van de Golden Ticket
+Awards bij de 50 beste houten achtbanen ter wereld stond. Twee attractietypes
+zijn voor dit park bedacht en hier voor het eerst gebouwd, in de winter komt het
+derde erbij. En toch zit je doordeweeks na een kwartier weer in de trein.
 
 Hoe het er nu bij het park uitziet:
 
@@ -634,19 +692,23 @@ meeste andere parken van Europa kun je het vergeten.
 
 ### Bronnen & verder lezen
 
-- Troy (gegevens, bouwwijze, GCI, stormschade 2007): [Troy (Toverland) op Wikipedia](<https://de.wikipedia.org/wiki/Troy_(Toverland)>) · [Troy (roller coaster), Engelse Wikipedia](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>) · [Troy (officieel)](https://www.toverland.com/attracties/troy)
-- Troy-retrack: [“Toverland: Retrack der Holzachterbahn Troy” (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/)
+- Troy (gegevens, bouwwijze, GCI, stormschade 2007): [Troy (Toverland) op Wikipedia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy (roller coaster), Engelse Wikipedia](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy in de Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (officieel)](https://www.toverland.com/attracties/troy)
+- Ranglijst: [Golden Ticket Awards 2026, alle plaatsen (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)
+- Troy-retrack: [“Toverland: Retrack der Holzachterbahn Troy” (FreizeitparkNEWS, januari 2025)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/) · [“Troy heropent bijna weer na intensief onderhoud” (officieel, april 2025)](https://www.toverland.com/toverblog/blog-onderhoud-troy) · [“Toverland vervangt 20 procent van houten achtbaan Troy” (Looopings, februari 2026)](https://www.looopings.nl/weblog/31677/Fotos-Toverland-vervangt-20-procent-van-houten-achtbaan-Troy--maar-hier-geen-titan-track.html)
 - Fēnix (B&M, langste wing coaster van Europa): [Fēnix op Wikipedia](https://de.wikipedia.org/wiki/F%C4%93nix)
+- Booster Bike, Expedition Zork, Villa Fiasko, Dragonwatch, Wirbelbaum (gegevens van het park): [Booster Bike](https://www.toverland.com/attracties/booster-bike) · [Booster Bike in de RCDB](https://rcdb.com/2747.htm) · [Expedition Zork](https://www.toverland.com/attracties/expedition-zork) · [Villa Fiasko](https://www.toverland.com/attracties/villa-fiasko) · [Dragonwatch](https://www.toverland.com/attracties/dragonwatch) · [Wirbelbaum](https://www.toverland.com/attracties/wirbelbaum)
 - Dwervelwind (vervroegde opening 29 september tot 4 november 2012, complete Magische Vallei vanaf april 2013): [Dwervelwind op de.wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind op nl.wikipedia](https://nl.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (officieel)](https://www.toverland.com/attracties/dwervelwind)
-- European Star Awards 2018: [“Toverland hat gleich drei European Star Awards gewonnen” (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (officieel)](https://www.toverland.com/en/awards)
-- Parkgeschiedenis, themagebieden & bezoekersaantallen: [Toverland op Wikipedia](https://nl.wikipedia.org/wiki/Toverland) · [Bezoekersaantallen 2025 (officieel)](https://www.toverland.com/de/presse/neuigkeiten)
+- European Star Awards 2018: [“Toverland hat gleich drei European Star Awards gewonnen” (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Prijzenkast (officieel)](https://www.toverland.com/prijzenkast)
+- Parkgeschiedenis, themagebieden & bezoekersaantallen: [Attractiepark Toverland op Wikipedia](https://nl.wikipedia.org/wiki/Attractiepark_Toverland) · [Toverland-kroniek (Frei-Zeit-Blog)](https://frei-zeit-blog.de/toverland/toverland-chronik/) · [Bezoekersaantal 2025 en uitbreidingsplannen (officieel)](https://www.toverland.com/pers/nieuws/nieuwsbericht-bezoekersaantal2025)
+- Vergelijkingscijfers 2025: [Efteling: 5,78 miljoen bezoeken (Looopings)](https://www.looopings.nl/weblog/32415/Weer-een-record-voor-de-Efteling-van-5-6-naar-5-78-miljoen-bezoekers.html) · [Europa-Park: voor het eerst boven zeven miljoen (Themepark Central)](https://www.themepark-central.de/europa-park-besucherzahlen-2025/)
 - Claim “Discover your own magic” (sinds 2018, daarvoor “Magisch mooi” en “Feel the Magic”): [“Toverland kiest voor nieuwe slogan” (Looopings)](https://www.looopings.nl/weblog/9639/Toverland-kiest-voor-nieuwe-slogan.html)
-- Afscheidsfeest op 17 mei 2026 (randprogramma, souvenirs): [“Wir verabschieden uns von Maximus' Blitz Bahn” (officieel)](https://www.toverland.com/de/toverblog/blog-neue-blitzbahn) · [“Toverland ersetzt Maximus' Blitz Bahn” (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/maximus-blitz-abschied/)
-- Swinging Bobsled & afscheid van Maximus' Blitz Bahn: [“Nieuwe attractie: de Swinging Bobsled!” (officieel)](https://www.toverland.com/en/press/news/press-blitzbahn) · [“Toverland to replace bobsleigh with new swinging bobsled” (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
-- 25 jaar Toverland, Hans Klok & ToverFestival: [Hans Klok: Magic Memories (officieel)](https://www.toverland.com/en/shows/hansklok) · [“Toverland wird 25” (Themepark Central)](https://www.themepark-central.de/toverland-25-hans-klok/)
-- Openingstijden & jaarkalender 2026: [Jaarkalender 2026 (officieel)](https://www.toverland.com/toverblog/blog-jaarkalender2026)
-- Prijzen, early bird, Summer Pass & Magic Member: [Prijzen & openingstijden (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/toverland/preise/) · [Abonnementen (officieel)](https://www.toverland.com/de/jahreskarten) · [Summer Pass 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/summer-pass-2026/)
-- Halloween Days & Nights, scare zones en Fear Pass: [Scare zones & experiences (officieel)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [onze halloweengids](/blog/halloween-pretparken-2026)
-- Route, bus & parkeren: [Adres en route (officieel)](https://www.toverland.com/en/contact/adress-route)
+- Afscheid van Maximus' Blitz Bahn en Swinging Bobsled: [“We nemen afscheid van de Maximus' Blitz Bahn” (officieel)](https://www.toverland.com/toverblog/blog-neue-blitzbahn) · [Persbericht over de swinging bobsled (officieel)](https://www.toverland.com/pers/nieuws/nieuwsbericht-nieuwe-blitzbahn) · [“Toverland ersetzt Maximus' Blitz Bahn” (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/maximus-blitz-abschied/) · [“Toverland to replace bobsleigh with new swinging bobsled” (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
+- Uitbreidingsplannen en 2027: [Bestemmingsplan (officieel)](https://www.toverland.com/omwonenden/bestemmingsplan) · [“Nieuwe tekeningen tonen uitbreiding Port Laguna” (Looopings)](https://www.looopings.nl/weblog/31870/Nieuwe-tekeningen-tonen-uitbreiding-Port-Laguna-in-Toverland-darkride--restaurant-en-complete-upgrade.html)
+- 25 jaar Toverland, Hans Klok & ToverFestival: [“Toverland wird 25” (Themepark Central)](https://www.themepark-central.de/toverland-25-hans-klok/) · [Hans Klok: Magic Memories (officieel)](https://www.toverland.com/pers/nieuws/nieuwsbericht-hansklok) · [ToverFestival (officieel)](https://www.toverland.com/pers/nieuws/nieuwsbericht-toverfestival)
+- Openingstijden, Winter Feelings & pay-per-ride: [Jaarkalender 2026 (officieel)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Pay-per-ride (officieel)](https://www.toverland.com/evenementen/winter-feelings/pay-per-ride)
+- Prijzen, early bird, Summer Pass & Magic Member: [Ticketshop met prijs-FAQ (officieel)](https://tickets.toverland.com/nl/tickets) · [Abonnementen (officieel)](https://www.toverland.com/abonnementen) · [Summer Pass (officieel)](https://www.toverland.com/abonnementen/summer-pass)
+- Halloween Days & Nights, scare zones en Fear Pass: [Scare zones & experiences (officieel)](https://www.toverland.com/evenementen/halloween/scare-zones-experiences) · [Fear Pass (officieel)](https://www.toverland.com/evenementen/halloween/fear-pass) · [Persbericht over Entwined en de halloweendata (officieel)](https://www.toverland.com/pers/nieuws/nieuwsbericht-entwined) · [onze halloweengids](/blog/halloween-pretparken-2026)
+- Phantasialand zonder abonnement: [“Jahreskarte abgeschafft” (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
+- Route, bus & parkeren: [Adres en route (officieel)](https://www.toverland.com/contact/adres-route)
 - Backstage in de Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
 - Wachttijd- en drukte-data: eigen historie sinds december 2025, [Toverland op park.fan](ref:attractiepark-toverland)

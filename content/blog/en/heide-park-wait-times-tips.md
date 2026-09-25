@@ -2,7 +2,7 @@
 title: 'Heide Park: Colossos in wood, surrounded by one German first after another'
 translationKey: heide-park-guide
 date: '2026-09-20'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -11,8 +11,8 @@ excerpt: >-
   years nobody was allowed to ride it. It opened in 2001. Around it,
   the park was first in Germany with four ride types, and its 103-metre tower
   started life as a viewing platform. Also here: when it gets busy, why a quiet
-  Monday in Soltau is usually a closed one, and why the Big Loop got new
-  running gear after more than forty years.
+  Monday in Soltau is usually a closed one, and why the 43-year-old Big Loop
+  now runs trains styled like the ones it opened with in 1983.
 tags:
   - heide-park
   - colossos
@@ -63,17 +63,21 @@ nobody was allowed to ride. On **28 July 2016**
 middle of the season, because after fifteen years the track was worn out. It
 did not run again until **19 April 2019**.
 
-It came back as a wooden coaster. The usual
-route would have been a different one: when the track of a woodie rots away,
-these days it mostly gets steel rails bolted onto the old structure and carries
-on as a hybrid. Heide Park had new wooden track built instead, new trains to go
-with it, and in 2026 the whole thing turns **25 years old**.
+It came back as a wooden coaster, which was not a given. Since 2011 Rocky
+Mountain Construction has been taking worn-out woodies, bolting steel rails onto
+the old structure and turning them into hybrids. In the same year Colossos
+returned, Walibi Holland opened exactly that kind of conversion:
+[Untamed](ref:walibi-holland/untamed?bare), formerly the wooden coaster Robin
+Hood. Merlin went the other way in Soltau and had new wooden track laid, with
+new trains to match. The first ride was **25 years** ago on 13 April 2026; the
+park celebrated on 12 September with an evening party open only to winners of a
+golden ticket.
 
 ## What was here first
 
-Colossos is the reason most coaster fans drive to Soltau. What stands around it
-is more interesting. With four ride types this park was the first in Germany,
-and three of them came one after the other.
+Colossos is what brings coaster fans to Soltau. What stands around it is more
+interesting. With four ride types this park was the first in Germany, and the
+last three of them arrived within seven years.
 
 The run started in **1999**, two years before Colossos, with a coaster that was
 called Limit back then and is called
@@ -82,53 +86,64 @@ suspended looping coaster, a Vekoma model where the train hangs below the track
 and your feet dangle free. 33 metres tall, 689 metres long, five inversions.
 
 **[Desert Race](ref:heide-park/desert-race)** arrived on **15 May 2007** as
-Germany’s first launch coaster: no lift hill, but a hydraulic catapult that
-takes the train to **102 km/h** in two seconds. After that it is 650 metres and
-49 seconds back to the station, less time than the argument over who gets the
-front row.
+Germany’s first launch coaster. There is no lift hill; a hydraulic catapult
+takes the train to **102 km/h** in two seconds. After 650 metres and 49 seconds
+it is back in the station, quicker than the argument over who gets the front
+row.
 
 ```glossary-widget slug=launch-coaster
 
 ```
 
-**[Krake](ref:heide-park/krake)** followed on **30 March 2011** as Germany’s
-first dive coaster, built by Bolliger & Mabillard for 12 million euros. 41
-metres tall, six people side by side per row, and at the top the train stops
-until the whole car hangs out over the edge. Then it goes down at 87 degrees,
-so almost vertically, into **103 km/h** and an Immelmann. The entire ride lasts
-less than half a minute; the hanging over the edge feels considerably longer.
+**[Krake](ref:heide-park/krake)** followed on **16 April 2011** as Germany’s
+first dive coaster, built by Bolliger & Mabillard for 12 million euros, with its
+station on the site of the old dolphinarium. 41 metres tall, six people side by
+side in one row, and at the top the train stops until the front row hangs out
+over the edge. Then it goes down at 87 degrees, so almost vertically, at
+**103 km/h** through a splashdown and into an Immelmann. The wait at the edge
+lasts a few seconds and feels a lot longer.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** was the country’s
 first wing coaster on **29 March 2014**. On this layout nobody sits above or
-below the track, but to the left and right of it, with nothing in front of
-their feet. 40 metres tall, 772 metres long, 100 km/h, five inversions, three
-minutes of ride time, 1,060 guests per hour.
+below the track; the seats hang off its left and right sides, with nothing in
+front of your feet. 40 metres tall, 772 metres long, 100 km/h, five inversions,
+three minutes of ride time, 1,060 guests per hour.
 
-Here is how the park compares to the three other large German parks, calculated
+Here is how the park compares with three other large German parks, calculated
 from today’s data:
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
 
 ```
 
-## Colossos: 50 metres of wood, built twice
+## Colossos: wooden track, laid twice
 
 ```glossary-widget slug=wooden-coaster
 
 ```
 
-When it opened in April 2001, Colossos was the tallest, steepest and fastest
-wooden coaster in the world. It has lost all three world titles since; in
-Europe it is still the tallest all-wooden coaster: **50 metres**, a first drop
-of **48.5 metres** at 61 degrees, a top speed of **110 km/h**, **1,344 metres**
-of track, two minutes and 25 seconds of ride time. The engineering came from
-Ingenieurbüro Stengel, the carpentry from Cordes Holzbau.
+When it opened in April 2001, Colossos was the steepest wooden coaster in the
+world according to Guinness. The only taller and faster one was Son of Beast at
+Kings Island in the US, which not everyone counted as a true woodie because of
+its steel loop. Balder at Liseberg took the Guinness title in 2003, and since
+2006 Colossos has held no world record at all. In Europe it is still the tallest
+all-wooden coaster. Wildfire at Kolmården in Sweden is faster at 115 km/h and,
+according to the Roller Coaster DataBase, taller too, but it runs on steel-topped
+Topper Track from Rocky Mountain Construction.
+
+The numbers depend on who you ask. The Roller Coaster DataBase lists
+**50 metres** of height, a first drop of **48.5 metres** at 61 degrees,
+**110 km/h** and **1,344 metres** of track in two minutes and 25 seconds; the
+park itself says 60 metres and 1,500 metres. The design came from
+Ingenieurbüro Stengel, and Intamin built it together with the carpentry firm
+Cordes.
 
 The track was the problem. For Colossos, Intamin had used a process in which
 the running surface is prefabricated from glued wooden layers and then
-assembled. After fifteen years it was finished, the ride closed in 2016, and
-when it opened again it was called **Colossos – Kampf der Giganten** and had a
-whole themed land around it.
+assembled. After fifteen years it was finished, the ride closed in 2016, the
+first old rail came out in June 2018, and when it opened again it was called
+**Colossos – Kampf der Giganten**. Since then a fire-breathing giant has stood
+on the last hill, and the train rides straight through it.
 
 There is still no steel rail on it. If you like wooden coasters, you notice
 that from the first drop onwards, and your back notices by the first bend.
@@ -138,53 +153,53 @@ that from the first drop onwards, and your back notices by the first bend.
 ## The rest of the park: senior citizens and a tower
 
 The park’s first coaster is the **[Big Loop](ref:heide-park/big-loop)** from
-**1983**, a Vekoma looper with two vertical loops and a double corkscrew, 706
-metres long and over after ninety seconds. You can read this park’s approach to
-its older stock off that ride: in 2010 it got the trains of the demolished
-Corkscrew from Alton Towers, and for the 2026 season those same trains were
-given new running gear whose bodywork copies the original 1983 cars. Second
-rejuvenation in sixteen years, for a ride that is 43 years old.
+**1983**, a Vekoma looper with two vertical loops and a double corkscrew, just
+over 700 metres long and done in under two minutes. You can read this park’s
+approach to its older stock off that ride: in 2010 it got the trains of the
+demolished Corkscrew from Alton Towers, and for the 2026 season Vekoma
+delivered new trains styled after the original 1983 cars. That is the second
+set of trains in sixteen years for a ride that is 43 years old.
 
 Toxic Garden has only carried that name since **May 2023**. Vekoma replaced a
 section of track during the rebuild, the entrance and station have stood in a
 garden of poisonous plants ever since, and the ride finally looks like part of
-the Transylvania land it has stood in since 1999.
+the Transylvania land its site has belonged to since 2011.
 
-The **[Bobbahn](ref:heide-park/bobbahn)** by Mack Rides has run without rail
-guidance in a half pipe since **1993**: 826 metres, three and a half minutes,
-the longest ride time of any coaster in the park. The
-**[Grottenblitz](ref:heide-park/grottenblitz)** has been doing its laps since
-**1985** for everyone still too small for the big rides, and the
+The **[Bobbahn](ref:heide-park/bobbahn)** by Mack Rides has run without fixed
+rails in a half pipe since **1993**. The bobs start from 27 metres up, the ride
+lasts 166 seconds according to the park, and in bad weather it opens late or
+not at all. The **[Grottenblitz](ref:heide-park/grottenblitz)** has been doing
+its laps since **1985** for everyone still too small for the big rides, and the
 **[Indy-Blitz](ref:heide-park/indy-blitz)** from 2008 is the smallest coaster
 on the property at 4.5 metres.
 
 The most conspicuous structure is not on rails at all.
 **[Scream](ref:heide-park/scream)** is **103 metres** tall and lets you fall
-freely for 71 of them, at 103 km/h, with a 28-metre braking section. The tower
+freely for 71 of them, at just under 100 km/h (the park says 98.3). The tower
 started out in 1992 as an observation tower; Intamin rebuilt it into a gyro
-drop tower between October 2002 and April 2003 for 7.5 million euros, and until
-the 2019 season the park advertised it as the tallest gyro drop tower in the
-world. It has only been the tallest structure on the site since **March 2022**,
-though: until then a second tower from 1985 stood next to it, the 104-metre
-Panoramaturm, whose gondola no longer met safety requirements. Three days after
-the announcement, dismantling began.
+drop tower between October 2002 and April 2003 for 7.5 million euros. For years
+the park advertised it as the tallest gyro drop tower in the world, until the
+120-metre Highlander opened at Hansa-Park in 2019. It has only been the tallest
+structure on the site since **March 2022**, though: until then a second tower
+from 1985 stood next to it, the 104-metre Panoramaturm, whose gondola no longer
+met current safety standards according to the park. Three days after the
+announcement, dismantling began.
 
-The newest attraction sits in a building that was supposed to disappear. The
+The newest ride sits in a building that stood empty for thirteen years. The
 **[Dämonen Gruft](ref:heide-park/daemonen-gruft)** by Preston & Barbieri has
 been running through the old station of the second log flume, closed in 2011,
-since **2024**, five minutes at a time. The flume’s course lies underneath Flug
-der Dämonen, the buildings were left standing, and after thirteen years the
-park put one of them back into service. (Never clear out the attic, and one day
-you have a new attraction.)
+since **2024**, about three minutes at a time. Flug der Dämonen now stands where
+the flume used to run; the buildings stayed, and the park has put one of them
+back into service.
 
-Then there are the rides that collect the longest queues in summer without
-anyone writing about them: the
-**[Wildwasserbahn](ref:heide-park/wildwasserbahn)** from 1980,
-**[Mountain Rafting](ref:heide-park/mountain-rafting)** (1992, an Intamin rapid
-river) and **[Ghostbusters 5D](ref:heide-park/ghostbusters-5d)**, which has sat
-since 2017 in the hall where the puppet show Hallo Spencer used to live. The
-youngest visitors get two corners of their own, Peppa Pig Land and the "How to
-Train Your Dragon" island.
+Then there are two rides that hardly anyone writes about and that still sit
+high in our wait-time table: the
+**[Wildwasserbahn](ref:heide-park/wildwasserbahn)** log flume from 1980, and
+**[Ghostbusters 5D](ref:heide-park/ghostbusters-5d)**, which has sat since 2017
+in the hall where the puppet show Hallo Spencer used to live. You also get wet
+on **[Mountain Rafting](ref:heide-park/mountain-rafting)** (1992, an Intamin
+rapid river). The youngest visitors get two corners of their own, Peppa Pig
+Land and the "How to Train Your Dragon" island.
 
 If you are planning with children, you are planning in centimetres. The four
 big coasters all start at **140 cm**, Toxic Garden and Scream at 130, Big Loop
@@ -199,8 +214,9 @@ came for.
 
 ## How busy it really gets
 
-The table below rests on two years of measurement, each ride with its own
-number of measured days:
+The table counts the measured days of the last two years, each ride with its
+own number. For Heide Park those are so far only days from the 2026 season (as
+of 25 September 2026):
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -208,10 +224,11 @@ number of measured days:
 
 Colossos is on top, and the gap to what follows is smaller than you would
 expect at a park with a ride that famous. Queueing for a long time in Soltau
-does not necessarily mean queueing for the woodie: right below it sit the
-Bobbahn from 1993 and the log flume from 1980, two rides that appear in nobody’s
-trip report as a reason to drive to Soltau. For the Bobbahn, the ride time
-explains part of it; for the log flume, the weather does.
+does not necessarily mean queueing for the woodie: close behind it, alongside
+Flug der Dämonen and Krake, sit the Bobbahn from 1993 and the log flume from
+1980, two rides that appear in nobody’s trip report as a reason to drive to
+Soltau. For the log flume it is the weather, as the daily profile further down
+shows; for the Bobbahn the table gives no reason.
 
 What tells you more is the hour at which the queues grow.
 
@@ -219,16 +236,16 @@ What tells you more is the hour at which the queues grow.
 
 ```
 
-On the coasters the heavy cells all sit in the same window, shortly before and
-shortly after noon. The log flume peaks hours later, once it has warmed up.
-That fits a park whose guests mostly arrive by car in the morning: everyone
-stands in front of the same three rides at the same time, like a DIY store on a
-Saturday morning, and in the afternoon it spreads out.
+On the coasters the heavy cells all sit in the same window, between eleven and
+two. The log flume only peaks in the afternoon, once it has warmed up. That
+fits a park whose guests mostly arrive by car in the morning: everyone stands in
+front of the same three rides at the same time, like a DIY store on a Saturday
+morning, and in the afternoon it spreads out.
 
 For your plan, that means the first hour belongs to Colossos and Krake, because
-it is the only moment when both are short at once. After that it pays off more
-to stay in whichever area is currently empty than to walk across the site to
-the next headliner.
+both are at their shortest then and both start climbing at eleven. After that
+it pays off more to stay in whichever area is currently empty than to walk
+across the site to the next headliner.
 
 The quietest of the upcoming operating days, calculated live:
 
@@ -244,13 +261,19 @@ The quietest of the upcoming operating days, calculated live:
 
 If your day does turn out to be one of the busy ones, part of the queueing can
 be bought off. The **Express Ticket** comes in four tiers: Bronze from **€25**
-for the log flume, Big Loop and Bobbahn, Silver from €39 with Krake and Desert
-Race, Gold from €59 adding Colossos and Scream, Platinum from €99 with no
-limit. Two things about it are easy to miss. The three lower tiers include
-**one ride per attraction**, not as many as you like: if you want a second go
-on Colossos with Gold, you join the back of the normal queue like everyone
-else. And it is sold on
-selected days only and in advance only, which means not at the gate.
+for the log flume, Big Loop and Bobbahn, Silver from €39 for five of the big
+attractions, Gold from €59 for all eight, Platinum from €99 for all eight with
+no limit. Which five are in Silver, the park’s own page answers in two
+different ways: its comparison table names Colossos, Desert Race, Flug der
+Dämonen, Krake and Scream, while the list below it puts Colossos and Scream in
+Gold only. Toxic Garden is not in any tier.
+
+Two things about it are easy to miss. The three lower tiers include **one ride
+per attraction**, not as many as you like: if you want a second go on Colossos
+with Gold, you join the back of the normal queue like everyone else. And it is
+sold on selected days only, in 2026 mostly weekends and school holidays. The
+park advises booking online in advance, because once a day is sold out there
+are none left on site.
 
 ## When to go
 
@@ -263,41 +286,49 @@ The 2026 season runs from **28 March to 31 October**, with a preview Sunday on
 other German parks
 ([here is the overview](/blog/winter-theme-parks-2026)).
 
-In early autumn the park no longer opens daily. An ordinary operating day in
-September and October runs from 10am to 5pm, an hour longer on Sundays, and
-Mondays regularly drop out. The long Saturdays are not an extended normal day:
-they start at noon and run until 9pm. The park calls them Late Rides. What has
-actually been published for the coming weeks is in the calendar on the
+In September the park does not open every day: the Mondays of 7, 14, 21 and 28
+September are closing days, and in October it is open daily again. An ordinary
+operating day runs from 10am to 5pm, an hour longer on Sundays. Those times are
+for the rides; the park itself closes an hour later.
+
+The long autumn days are not an extended normal day: they start at noon, and
+rides run until 9pm. On 19 and 26 September and 3 October they are called Late
+Rides, and the five after that belong to Halloween. On all of these days the
+water rides and a few other attractions close at dusk, from around 5pm. What
+has actually been published for the coming weeks is in the calendar on the
 [park page](ref:heide-park).
 
 ### The weekday
 
-The weekday matters less here than you might think. Six of the seven days sit close together in
-the table above, only Saturday stands out, and Friday and Sunday sit at the
-bottom. Monday rests on only about half as many measured days as the rest,
-because the park regularly takes it out of the calendar in spring and autumn. So
-the Mondays that do get counted are mostly high-season ones, and those are not
-quiet. A quiet Monday in Soltau is usually a closed Monday.
+The weekday matters less here than you might think. Saturday sits at the top,
+Friday at the bottom, and the days in between sit close together in the table
+above. Monday rests on only about half as many measured days as the rest,
+because the park regularly takes it out of the calendar in spring and in
+September. So the Mondays that do get counted are mostly high-season ones, and
+those are not quiet. A quiet Monday in Soltau is usually a closed Monday.
 
 ### The month
 
 The month moves roughly as much as the weekday does, which is the reason to
 combine the two. July and August sit high, September drops off noticeably after
-them. Taking a Friday in September instead of a Saturday in August gets you
-more than either decision on its own.
+them. We have no measured days for October yet (as of 25 September 2026); the
+park itself names the school holidays as its busiest periods, and October
+brings autumn holidays and Halloween at once. Taking a Friday in September
+instead of a Saturday in August gets you more than either decision on its own.
 
 ### Halloween: 10 to 31 October 2026
 
-On five days in October the park runs from noon to 9pm (Sat 10, Sat 17, Sat 24,
-Fri 30 and Sat 31). During the day the decoration is family-friendly, with a
-wizard’s forest and a trick-or-treat rally for children. From around 4pm the
-scare zone and three horror mazes wake up. The mazes have a minimum age of
-**16** with an ID check, and each one needs its own timed ticket, sold online in
-advance only (the three-maze bundle was €22 last time). Turn up too early or
-too late at the entrance and you do not get in, and the maze door is about as
-open to negotiation as a nightclub bouncer. How that compares to Toverland,
-Movie Park and Walibi is in the
-[Halloween guide 2026](/blog/halloween-theme-parks-2026).
+On five Halloween days the rides run from noon to 9pm (Sat 10, Sat 17, Sat 24,
+Fri 30 and Sat 31), with the park open until 10pm; the other days keep normal
+hours. During the day the decoration is family-friendly, with a wizard’s forest
+and a trick-or-treat rally for children. On the five long days the scare zone
+and three horror mazes wake up from around 4pm: Parasomnis, Grand Hotel Morton
+and SubTerra. The mazes have a minimum age of **16** and you must show ID, and
+the maze door is about as open to negotiation on that as a nightclub bouncer.
+Each maze needs its own timed ticket, sold online only, €9 per maze or €22 for
+all three. If you only want the evening, the evening ticket from €24 gets you
+into the park from 5pm. How all that compares to Toverland, Movie Park and
+Walibi is in the [Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
 ## From travelling showmen to a Merlin park
 
@@ -305,12 +336,13 @@ Heide Park opened on **19 August 1978**, with six rides and a founder from a
 family of travelling showmen: **Hans-Jürgen Tiemann**. The purchase of the land
 came with a condition you would not guess from looking at a theme park: the
 **Heidenhof chapel from 1350** had to stay standing, and native animals had to
-keep being kept. On the first day 2,000 guests came, in the first season around
-**600,000**, and the six rides grew into 85 hectares of park.
+keep being kept. On the first day 2,000 guests came, and the six rides grew
+into 85 hectares of park.
 
-Three of those six still run today, under different names: the raft ride, the
-elevated railway (now the Panoramabahn) and the western railway, which has been
-called Heide Park Express since 1997.
+Three of those six still run today: the raft ride, the elevated railway (now
+the Panoramabahn) and the western railway, which has been called Heide Park
+Express since 1997. A fourth, the Oldtimer circuit with its replica Ford
+Model T cars, ran until 2025, when the park closed it with little announcement.
 
 The structure that describes the early Heide Park best no longer exists. From
 **1986** until the winter of 2011/2012 a 35-metre replica of the Statue of
@@ -320,88 +352,111 @@ upper half stood around as decoration at Colossos for a few more years, a late
 career Lady Liberty had presumably not planned on, and the
 rest was scrapped for the 2019 reopening.
 
-On **31 December 2001** the British **Tussauds Group** bought the park, and in
-early 2007 **Merlin Entertainments** took the majority of Tussauds off Dubai
-International Capital. The best years were before that: in the nineties Soltau
-counted up to two million guests, in 2001 it was 2.1 million, in 2023 still
-**1.68 million**. You can see both phases in the park: the showman heritage in
-how densely the rides are packed, the corporation in the licensed areas for
-Peppa Pig and Ghostbusters.
+On **31 December 2001** the British **Tussauds Group** bought the park. The
+best years were before that: in the nineties Soltau counted up to two million
+guests, in 2001 it was 2.1 million, in 2023 still **1.68 million**. In 2007 the
+investment firm Blackstone, which owned **Merlin Entertainments** at the time,
+bought the Tussauds Group from Dubai International Capital and merged it into
+Merlin. Since 2019 Merlin has belonged to a consortium of Kirkbi (the holding
+company of the family that owns Lego), Blackstone and the Canadian pension fund
+CPP Investments. Merlin leases the land from a British property group, now
+LondonMetric Property, and the lease was extended by 35 years at the end
+of 2021. In September 2026 the Spanish paper Expansión also named Merlin as a
+possible buyer of Parques Reunidos, the group behind Movie Park
+([more on that](/blog/parques-reunidos-sale-movie-park)).
 
-## Staying overnight, in a VW camper if need be
+You can see both phases in the park: the showman heritage in how densely the
+rides are packed, the corporation in the licensed areas for Peppa Pig and
+Ghostbusters.
 
-Anyone coming from southern Germany usually makes two days out of it. The
+## Staying at the park
+
+If you are coming from southern Germany, make two days of it. The
 **Abenteuerhotel** has 680 beds and four stars and was converted in 2015 from
 the former Hotel Port Royal for 20 million euros, themed as the villa of an
 adventurer named Lord Alexander Explorus. Sultan’s Spaßbad, the hotel’s water
 park, opened next to it the same year. The **Holiday Camp** from 2005 consists,
-after an extension, of 81 wooden houses with 536 beds between them, and the
-**Bulli Camp** has held seven converted VW T2 vans since July 2014 that you
-actually sleep in.
+after an extension, of 81 wooden houses with 536 beds between them. The seven
+converted VW T2 vans of the **Bulli Camp**, which you could sleep in from July
+2014, were gone by 2025; the camp now only books huts.
 
 The practical advantage is not the bed. It is standing in front of the entrance
-at ten rather than sitting on the A7 at ten.
+at ten rather than sitting on the A7 at ten. On the long autumn days hotel and
+camp guests are let in at 11am, an hour before everyone else, and a few rides
+are already running then, Krake among them.
 
-## The perfect day, in four sentences
+## A day in Soltau, roughly planned
 
-At opening go to **Colossos** first, straight afterwards to **Krake**, because
-both reach their daily maximum shortly before noon. **Flug der Dämonen** and
-**Desert Race** fit in well after that, before the crowd has spread across the
-park. Save the water rides for the warmest hour, which in the afternoon is the
-only place where a queue is pleasant anyway. **Scream** and the **Big Loop**
-are the gap fillers between two big rides, and if you have booked the mazes,
-there is nothing more to plan for the evening.
+At opening go to **Colossos** first and straight afterwards to **Krake**,
+because both start climbing at eleven. **Flug der Dämonen** and
+**Desert Race** fit in well after that, and the last hour before closing is the
+second-best window of the day on the big rides. Save the water rides for the
+warmest hour, even though that is exactly when the log flume has its longest
+queue; at least getting soaked feels good in the heat. On the long autumn days
+that plan falls away, because the water rides close at dusk. **Scream** and the
+**Big Loop** are the gap fillers between two big rides, and if you have booked
+the mazes, there is nothing more to plan for the evening.
 
 ## Practical: getting there, tickets, opening hours
 
 **Getting there.** Heide Park 1, 29614 Soltau, on the **A7** between Hamburg
 and Hannover, exit **Soltau-Ost**, signposted from there. The site has around
 8,000 parking spaces plus 300 for coaches and motorhomes; parking costs €14
-online for a car and €20 for a motorhome, more on site and by card only. By
+online for a car and €20 for a motorhome. On site, parking tickets are sold only
+in exceptional cases, by card only and at a higher price, €16 for a car. By
 train you go to Soltau or to Wolterdingen; from Wolterdingen it is a 20-minute
 walk, and a coach runs from Hamburg and Hannover straight to the gate. It is
-called Heide-Park-Express, like the park railway, and has nothing to do with it.
+called Heide Park Express, like the park railway, and has nothing to do with it.
 
-**Opening hours.** 28 March to 31 October 2026, daily in the core of the
-season, by calendar in spring and autumn and without most Mondays.
+**Opening hours.** 28 March to 31 October 2026, daily in the core of the season
+and in October, with some Mondays closed in spring and in September. The times
+are for the rides; the park closes an hour later, and the turnstiles open
+about half an hour before the first ride.
 
-**Tickets.** From **€37** online, **€64** at the gate. The surcharge for
-deciding spontaneously is therefore larger than half the ticket price, and one
-minute of lead time avoids it. The undated ticket for the whole season is €52,
-and children under 90 cm get in free.
+**Tickets.** From **€37** online. There is no ticket booth: the ticket machines
+at the entrance charge **€64** for the day (€49 for children from 90 cm up to
+age 11), and only while that day’s allocation lasts. If you arrive without a
+ticket, the park says you can still book in the online shop on site as long as
+there is availability; the €37 only applies on selected days, though. The
+undated ticket for the whole season is €52. Children under 90 cm get in free
+but need a €0 ticket from the online shop.
 
-**Food.** Our park page counts 21 food outlets, from the doughnut stand at the
-entrance to the tavern in Pirate Bay.
+**Food.** Our park page lists 21 food outlets (as of September 2026), from the
+Schmalzkuchen-Schmiede doughnut stand on the Colossos terrace to the Wirtshaus
+des Admirals tavern.
 
 ## Frequently asked questions about Heide Park
 
 ### How tall and how fast is Colossos?
 
-50 metres tall, a first drop of 48.5 metres at 61 degrees, a top speed of 110
-km/h and 1,344 metres of track. When it opened in 2001 it was the tallest,
-steepest and fastest wooden coaster in the world, and it is still the tallest
-all-wooden coaster in Europe. Current wait times are on the
+According to the Roller Coaster DataBase it is 50 metres tall, with a first
+drop of 48.5 metres at 61 degrees, a top speed of 110 km/h and 1,344 metres of
+track; the park itself gives 60 metres and 1,500 metres. When it opened in 2001
+it was the steepest wooden coaster in the world according to Guinness, and it
+is still the tallest all-wooden coaster in Europe. Current wait times are on the
 [Colossos page](ref:heide-park/colossos-kampf-der-giganten).
 
 ### Why was Colossos closed for years?
 
 The prefabricated wooden track was worn out. The ride closed on 28 July 2016 in
-the middle of the season and reopened on 19 April 2019 with new wooden track
-and new trains. A conversion to a steel-tracked hybrid, which other parks pick
-in this situation, did not happen.
+the middle of the season, Merlin decided to refurbish it in January 2018, and
+it reopened on 19 April 2019 with new wooden track and new trains. A conversion
+to a steel-tracked hybrid, which Walibi Holland carried out on Robin Hood the
+same year, never happened in Soltau.
 
 ### When is Heide Park open in 2026?
 
-From 28 March to 31 October 2026, plus a preview Sunday on 22 March. The park
-does not open daily in spring and autumn, and there is no winter season. The
-published calendar is on the [park page](ref:heide-park).
+From 28 March to 31 October 2026, plus a preview Sunday on 22 March. Some
+Mondays are closed in spring and in September, October is open daily, and there
+is no winter season. The published calendar is on the
+[park page](ref:heide-park).
 
 ### When is Heide Park least busy?
 
-A Friday or a Sunday in September, well ahead of a Saturday in August. Weekday
-and month each move about the same amount on their own, and twice that
-together. Which of the next operating days will be quietest is calculated daily
-by the widget further up.
+On a Friday in September, well ahead of a Saturday in August. Weekday and month
+each move about the same amount on their own, and together they move more than
+either one alone. Which of the next operating days will be quietest is
+calculated daily by the widget further up.
 
 ### Which coasters at Heide Park were German firsts?
 
@@ -412,7 +467,8 @@ dive coaster and Flug der Dämonen (2014) the first wing coaster.
 ### How many roller coasters does Heide Park have?
 
 Nine, counting the Grottenblitz and the Indy-Blitz, both built for small
-children. The park itself markets seven of them as the "Big 7".
+children. The park markets seven headline attractions as the "Big 7": six of
+those coasters plus the Scream drop tower. The Bobbahn is not one of them.
 
 ### How tall does my child have to be?
 
@@ -422,15 +478,16 @@ Peppa Pig Land, 86 cm is enough.
 
 ### What does admission cost?
 
-From €37 per person online, €64 at the gate. Parking costs €14 online for a
-car. Current prices are on
-[heide-park.de](https://www.heide-park.de/tickets-paesse/tickets/tages-tickets/).
+From €37 per person online, €64 at the ticket machines on site; there is no
+ticket booth. Parking costs €14 online for a car. Current prices are on
+[heide-park.de](https://www.heide-park.de/tickets-paesse/tickets/).
 
 ### Is it worth staying overnight at the park?
 
 If the drive takes more than two hours, yes. What you gain is the first hour
 after opening, and that counts for a lot here, because the crowd concentrates
-around midday.
+around midday. On the long autumn days hotel and camp guests also get in an
+hour earlier.
 
 ## Further reading
 
@@ -441,9 +498,9 @@ What the weather over the park looks like when you go:
 ```
 
 And if you are planning the north right now:
-[Movie Park Germany](/blog/movie-park-germany-wait-times-tips) resembles Heide
-Park so closely in the shape of its week that the two guides read well
-alongside each other.
+[Movie Park Germany](/blog/movie-park-germany-wait-times-tips) also drops some
+weekdays from its calendar outside the holidays, and there too Friday is one of
+the quietest days. The two guides read well alongside each other.
 
 ## What I would tell you about Soltau
 
@@ -468,34 +525,61 @@ in front of the gate at ten and you will spend two hours on a meadow.
   former ride names, the end of the Statue of Liberty:
   [Heide Park on en.wikipedia](https://en.wikipedia.org/wiki/Heide_Park) ·
   [Heide-Park Resort on de.wikipedia (German)](https://de.wikipedia.org/wiki/Heide_Park_Resort)
-- Build time, conversion cost and prehistory of Scream, plus the Panoramaturm
-  dismantled in 2022:
+- The end of the Oldtimer circuit and the Bulli Camp in 2025:
+  [Farewell to the Oldtimer-Rundkurs (Heide Park World, German)](https://www.heide-park-world.de/baublog/blog/2029-2020/baublog-2025/4159-abschied-vom-oldtimer-rundkurs)
+  · [Bulli Camp (Heide Park World, German)](https://www.heide-park-world.de/historie/ehemaliges/442-resort/443-camp/2888-bulli-camp)
+- Tussauds, Merlin, ownership and the land lease:
+  [Merlin Entertainments on en.wikipedia](https://en.wikipedia.org/wiki/Merlin_Entertainments)
+  · [The Tussauds Group on en.wikipedia](https://en.wikipedia.org/wiki/The_Tussauds_Group)
+  · [Lease extension of 30 December 2021 (Secure Income REIT)](https://otp.investis.com/clients/uk/secure_income_reit_plc/rns/regulatory-story.aspx?cid=2129&newsid=1539840)
+  · [our report on the Parques Reunidos sale](/blog/parques-reunidos-sale-movie-park)
+- Colossos, its records, closure and refurbishment, the 25th anniversary:
+  [Colossos on en.wikipedia](https://en.wikipedia.org/wiki/Colossos_-_Kampf_der_Giganten)
+  · [Colossos on de.wikipedia (German)](https://de.wikipedia.org/wiki/Colossos_%E2%80%93_Kampf_der_Giganten)
+  · [25 years of Colossos (official, German)](https://www.heide-park.de/entdecken/resort-highlights/colossos-25-jaehriges-jubilaeum/)
+  · [Wildfire](https://rcdb.com/12032.htm) in the Roller Coaster DataBase
+- Build time, conversion cost, speed and prehistory of Scream, plus the
+  Panoramaturm dismantled in 2022:
   [Scream on en.wikipedia](https://en.wikipedia.org/wiki/Scream_%28Heide_Park%29)
   ·
-  [Panoramaturm (Heide Park) on de.wikipedia (German)](<https://de.wikipedia.org/wiki/Panoramaturm_(Heide_Park)>)
+  [Panoramaturm (Heide Park) on de.wikipedia (German)](https://de.wikipedia.org/wiki/Panoramaturm_%28Heide_Park%29)
 - Technical data for the coasters (height, length, speed, ride time, trains):
   [Colossos](https://rcdb.com/988.htm) ·
   [Krake](https://rcdb.com/9097.htm) ·
   [Flug der Dämonen](https://rcdb.com/6667.htm) ·
   [Desert Race](https://rcdb.com/3617.htm) ·
-  [Big Loop](https://rcdb.com/986.htm) in the Roller Coaster DataBase
+  [Big Loop](https://rcdb.com/986.htm) ·
+  [Toxic Garden](https://rcdb.com/987.htm) in the Roller Coaster DataBase ·
+  fact boxes in the
+  [park’s attraction overview (German)](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/)
+  · [Krake on de.wikipedia (German)](https://de.wikipedia.org/wiki/Krake_%28Heide-Park%29)
 - Limit as Germany’s first suspended looping coaster, the track correction and
   the 2023 retheme:
   [From Limit to Toxic Garden (park press release, German)](https://www.heide-park.de/presse/pressemeldungen/heide-park-resort-startet-am-25-maerz-in-die-neue-saison-aus-limit-wird-toxic-garden/)
   · [Toxic Garden on en.wikipedia](https://en.wikipedia.org/wiki/Toxic_Garden)
-- The 2026 season, the Big Loop’s new running gear, the Colossos anniversary,
-  Piratenfest, Pyro Games and Late Rides:
+- The 2026 season, the Big Loop’s new trains, the Colossos anniversary, the
+  Big 7:
   [Park press release on the 2026 season start (German)](https://www.heide-park.de/presse/pressemeldungen/saisonstart-2026/)
+  · [The "Big 7" (official, German)](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/unsere-big-7-grossbahnen/)
+- Opening hours, closing days, Late Rides and early entry for overnight guests:
+  [Opening hours (official, German)](https://www.heide-park.de/planen/besuch-planen/oeffnungszeiten/)
+  · [Late Rides (official, German)](https://www.heide-park.de/entdecken/events/late-rides/)
 - Halloween 2026, dates, scare zone from 4pm, mazes from age 16 with a timed
   ticket:
   [Halloween (official)](https://www.heide-park.de/en/explore/events/halloween/)
+  · [Horror mazes 2026 (official, German)](https://www.heide-park.de/entdecken/events/halloween/halloween-mazes-2026/)
   · [our Halloween guide 2026](/blog/halloween-theme-parks-2026)
 - The Express Ticket, its four tiers and what each one includes:
   [Express Ticket (official)](https://www.heide-park.de/en/tickets-passes/extras/express-ticket/)
-- Getting there, parking fees, ticket prices:
-  [Getting there & parking (official)](https://www.heide-park.de/planen/besuch-planen/anreise-parken/)
   ·
-  [Day tickets (official, German)](https://www.heide-park.de/tickets-paesse/tickets/tages-tickets/)
+  [Is the Express entrance open? (park help centre, German)](https://support.heide-park.de/hc/de/articles/360019649617-Ist-der-Express-Eingang-ge%C3%B6ffnet)
+- Getting there, parking fees, ticket prices, ticket machines instead of a
+  booth:
+  [Getting there & parking (official, German)](https://www.heide-park.de/planen/besuch-planen/anreise-parken/)
+  ·
+  [Day tickets (official, German)](https://www.heide-park.de/tickets-paesse/tickets/)
+  ·
+  [Are tickets available on site? (park help centre, German)](https://support.heide-park.de/hc/de/articles/4469462362269-Sind-Tickets-vor-Ort-erh%C3%A4ltlich)
 - Wait times, measured days, daily curves, height limits and opening hours: the
   widgets in this post and [our park page](ref:heide-park), from our own
   measurements

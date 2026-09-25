@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: 22 noches de terror desde el sábado, y en el pasaje nuevo espera Jason'
+title: 'Movie Park Germany: noches de terror del sábado al 8 de noviembre, y en el pasaje nuevo espera Jason'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -103,7 +103,8 @@ cuestan ahora 38,90 € según el parque. En taquilla son 59,90 € a partir de
 12 años.
 
 Los pasajes y PHOBIA **no están incluidos**. Cada pasaje necesita su propia
-entrada con franja horaria, que solo se vende en línea. Las páginas de
+entrada con franja horaria, que se reserva en línea. Según el plano del parque,
+también se venden entradas sobrantes en atención al visitante, según disponibilidad. Las páginas de
 Halloween del parque no dan un precio por pasaje. Solo aparece en la tienda en
 línea.
 
@@ -149,3 +150,6 @@ Fechas, pasajes y entradas:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 de septiembre de 2026: la primera versión decía que las entradas con franja horaria para los pasajes solo se vendían en línea. Según el plano del parque, también se venden entradas sobrantes en el propio parque, según disponibilidad.

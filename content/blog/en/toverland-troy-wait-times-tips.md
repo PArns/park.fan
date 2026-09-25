@@ -2,7 +2,7 @@
 title: 'Toverland: Troy, the wooden coaster everyone drives past'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -37,8 +37,8 @@ coverImage:
 seo:
   title: 'Toverland: Troy, Wait Times & Halloween, No Fast Pass'
   description: >-
-    Troy at Toverland is one of Europe’s best wooden coasters, and hardly anyone
-    takes the exit. Wait-time data, Fēnix, tickets and Halloween Nights.
+    Troy at Toverland is the biggest wooden coaster in the Benelux, with hardly
+    a queue in front of it. Wait-time data, Fēnix, tickets, Halloween Nights and what comes in 2027.
   keywords:
     - Toverland
     - Toverland wait times
@@ -73,29 +73,34 @@ you: nobody. So out you get, through the empty queue, and back in.
 
 ![The wooden Trojan horse in Ithaka, on a cart, in autumn light | The Trojan horse guards the entrance to Ithaka. The coaster itself hides in the trees behind it. | right](/media/toverland/troy-4x3.jpg)
 
-That is the part I struggle to explain. Troy is one of the best wooden coasters
-in Europe, and it sits in a park that plenty of coaster fans
-drive past every year without so much as touching the indicator: the A67 between Venlo and Eindhoven,
-exit Sevenum. Most of them still have a good hour ahead of them, on to
-Kaatsheuvel and the [Efteling](ref:efteling), the Disney of the Netherlands.
+That is the part I struggle to explain. In the 2026 Golden Ticket Awards, for
+which the US trade paper Amusement Today polls experienced coaster riders, Troy
+came 24th among the world's wooden coasters, and only four European ones
+finished ahead of it. And it sits in a park that plenty of coaster fans drive
+past every year without so much as touching the indicator: the A67 between
+Venlo and Eindhoven, exit 38, Helden/Sevenum. Most of them still have a good
+hour ahead of them, on to Kaatsheuvel and the [Efteling](ref:efteling), the
+Disney of the Netherlands.
 
 Seventy kilometres separate the two parks. Both have a wooden coaster from the
 same American manufacturer. For one of them you typically wait around a quarter of
 an hour, for the other more than twice that. The shorter queue is the one in
 Sevenum.
 
-[Toverland](ref:attractiepark-toverland?long) in Sevenum, which I consider one
+[Toverland](ref:attractiepark-toverland) in Sevenum, which I consider one
 of the loveliest small parks in Europe, turns 25 this year. I once even stood on
 the other side of it all there, in costume, with orders to frighten people.
 There weren't any, but more on that later.
 
 ## Troy on paper, and Troy in the train
 
-The specs are solid rather than spectacular: 35 metres tall, 1,077 metres long,
-90 km/h, a footprint of just over 20,000 square metres. That still makes it the
-tallest, longest and fastest wooden coaster in the Benelux, and the numbers
-explain very little. There are bigger woodies that feel like a long motorway
-drive: plenty of distance, not much happening.
+The specs are solid rather than spectacular, and they depend a little on who you
+ask. The park says 35 metres tall and 90 km/h, the manufacturer GCI says 31.9
+metres, and the Roller Coaster DataBase lists just under 87 km/h. Everyone
+agrees on 1,077 metres of track, on a footprint of just over 20,000 square
+metres. Either way it is the tallest, longest and fastest wooden coaster in the
+Benelux, and the numbers explain very little. There are bigger woodies that feel
+like a long motorway drive: plenty of distance, not much happening.
 
 The difference comes down to two decisions.
 
@@ -119,12 +124,16 @@ guests per hour.
 
 That leaves the prejudice every wooden coaster picks up past a certain age:
 that it gets rough. (Its regular riders start creaking past a certain age too,
-but they are not the subject here.) The park has been working on it since **2024**. A multi-year **retrack** replaces around 198 metres of layout on both
-rails every winter, close to 400 running metres of wood per season. The work
-happens under a temporary roof so rain and frost can’t hold it up, carried out
-by twenty people from the park’s own team, trained specifically for the job.
-The first drop and the horseshoe went first. If you rode Troy ten years ago and
-remember it as "brilliant, but rough": ride it again.
+but they are not the subject here.) The park has been working on it winter after
+winter since **2024**, with a **retrack**, new layers of wooden track. In the
+winter of 2024/25 it tore out around 200 metres, including almost the entire
+first drop, and rebuilt them under a temporary roof; Troy was closed for a good
+three months. In the winter of 2025/26, Dutch site Looopings reported, another
+130 metres followed, the camelback and the so-called windmeterbocht, about a
+fifth of the ride, renewed by fifteen people from the park's own team. The plan
+is the complete track within four years, in wood again, without the steel
+topping GCI sells as Titan Track. If you rode Troy ten years ago and remember it
+as "brilliant, but rough": ride it again.
 
 ```glossary-widget slug=airtime
 
@@ -148,8 +157,8 @@ racing coaster. Same data basis, same method:
 
 ```
 
-More than double, for a ride that has never finished above Troy at the European
-Star Awards. Add the steel coasters and the neighbours don't look any better.
+More than double, for a ride that finished five places behind Troy in the 2026
+Golden Ticket Awards. Add the steel coasters and the neighbours don't look any better.
 Here is what the big names of the region cost you in waiting, wood or steel:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, steel;phantasialand/fly|F.L.Y.|Flying, steel;efteling/joris-en-de-draak|Joris en de Draak|Wood;efteling/baron-1898|Baron 1898|Dive coaster, steel;attractiepark-toverland/troy|Troy|Wood;attractiepark-toverland/fenix|Fēnix|Wing, steel columns=type,park,peak highlight=attractiepark-toverland/troy
@@ -164,17 +173,19 @@ thrown in.
 Behind that sits the arithmetic from [The Art of
 Waiting](/blog/the-art-of-waiting), demand divided by capacity. Toverland had
 **1,137,000 guests** in 2025 and spreads them across five coasters, five water
-rides and more than forty attractions in total. Let three times as many people
-through the gate and you rarely build three times as much for them to ride.
+rides and more than forty attractions in total. The Efteling counted 5.78
+million visits the same year, roughly five times as many, and it does not have
+five times as many coasters.
 
 On top of that comes something other parks built in long ago and this one
 hasn’t: **Toverland sells no fast pass and no express pass.** In the entire
-park there is exactly one way to trade money for time, and it only exists in
-October. On every other day, the queue you see is the queue there is. There has
-been a single rider line since 2023, mind you, but only at one attraction, the
-Dragonwatch drop tower, and it costs nothing extra.
+park there is exactly one way to trade money for time, and it only exists on
+the 13 Halloween nights in October and early November. On every other day, the
+queue you see is the queue there is. There has been a single rider line since
+2023, mind you, but only at one attraction, the Dragonwatch drop tower, and it
+costs nothing extra.
 
-## The rest of the park: lying down, upside down and wet
+## The rest of the park: upside down, on a motorbike and wet
 
 ![Fēnix with a train inverted on the track, blue rails against a summer sky | Fēnix, the longest wing coaster in Europe. The seats sit out to the left and right of the rail. | left](/media/toverland/fenix-4x3.jpg)
 
@@ -186,24 +197,25 @@ three times upside down (the wing-over drop counts as an inversion in its own
 right, then an Immelmann and a zero-g roll), 13 million euros spent. The first wing coaster in the Netherlands and still the longest in
 Europe. Wing coaster means you sit out to the left and right of the rail, with
 no track above or below you, and because your seat swings wider through a curve
-than the vehicle does, every turn feels bigger than it is. Along the way a
-phoenix sprays mist over you, which has nothing to do with physics and improves
-the whole thing anyway. Wait: the same order of magnitude as Troy.
+than the vehicle does, every turn feels bigger than it is. Right after the
+station a phoenix sprays mist over you, which has nothing to do with physics and
+improves the whole thing anyway. Wait: the same order of magnitude as Troy.
 
 ![The Fēnix station with blue track, a wing coaster train and fire bowls hanging on chains under wooden beams | The Fēnix station: fire bowls on chains, heavy beams, and the train with its seats beside the rail. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** is the oddball, and my second
 favourite here. In 2004, Vekoma built the world’s prototype motorbike coaster in
-Sevenum: you don’t sit, you lie on a motorbike, hands on the bars, knees tucked
-in, somewhere between MotoGP and the dentist's chair, and then get launched. An
-uncomfortable, absurd, wonderful ride. With its median it has, of all things,
-the longest typical wait of any coaster in the park, which comes down to
-boarding one at a time, lying down, and very few people climb on face-first as
-gracefully as they hope to.
+Sevenum: you straddle a motorbike, bent forward, hands on the bars, one
+restraint pressing into your back and two more holding your thighs, somewhere
+between MotoGP and the dentist's chair, and then a hydraulic launch takes you to
+just over 70 km/h in three seconds. An uncomfortable, absurd, wonderful ride.
+With its median it has, of all things, the longest typical wait of any coaster
+in the park. That is capacity: Booster Bike runs a single train of 16 seats, and
+the park quotes 518 riders an hour, a little over half what Fēnix manages.
 
 **[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** by Mack Rides is a spinning coaster
-in the dark, half dark ride, half coaster, with freely rotating cars and an
-onboard sound system no coaster of this type had before. Its opening date is a
+that winds between rocks and ponds through the Magische Vallei, with freely
+rotating cars and an onboard sound system no coaster of this type had before. Its opening date is a
 small trick question. The ride was announced for 2013, but it was finished long
 before the rest of the Magische Vallei, and rather than let it stand idle for a
 year the park brought it forward: a few preview days in the week of 24
@@ -214,59 +226,66 @@ over the winter so construction could continue around it, and came back in
 the d’wervelwind of 2012. Which is why sources say either 2012 or 2013. Both
 are right.
 
-**[Toos-Express](ref:attractiepark-toverland/toos-express)** from the opening year of 2001 is
-the junior coaster where children here have been riding their first coaster for
-a quarter of a century.
+**[Toos-Express](ref:attractiepark-toverland/toos-express)** has been running since opening day
+in May 2001, the junior coaster where children here have been riding their first
+coaster for a quarter of a century.
 
-The wet-and-dark department is better than its reputation:
+What stands between the coasters is better than its reputation:
 
-- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), the boat ride
-  through Merlin’s tower, with animatronics and a run of scenes other parks
-  would charge extra for. The quiet star of Avalon.
-- **[Djengu River](ref:attractiepark-toverland/djengu-river)**, the Hafema rapids. The
+- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), a twelve-minute Mack
+  boat ride through caves into Merlin's library of floating books, the kind of
+  thing other parks would charge extra for. The quiet star of Avalon.
+- **[Djengu River](ref:attractiepark-toverland/djengu-river)** (2013), the Hafema rapids. The
   question is not _whether_ you get wet.
-- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, a "Twist & Splash" by
-  Mack: water ride and carousel in one, and considerably meaner than it looks.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, a Vekoma madhouse that convinces
-  you, utterly, that you are the one turning and the room is standing still.
-- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), a 40-metre observation
-  tower from which you see how small this park actually is, and how much they
-  still fitted into it.
+- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, formerly Backstroke, a Mack
+  log flume in the Wunderwald since 2004. Two drops, the bigger one 15 metres.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, a funhouse from 2004 and the home
+  of Maximus Müller, where the stairs move and the floor turns.
+- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), an Intamin family drop tower
+  around 40 metres tall, with the ride going up to just under 20. From there you
+  see how small this park actually is, and how much they still fitted into it.
 
 ## From rainy-day hall to theme park
 
-The story of this coaster park starts, of all things, without a coaster.
+The story of this coaster park starts with a downpour.
 
-On **19 May 2001** the Gelissen family opened an indoor playhall in Sevenum. No
-theme park, no scenery, just 2,000 square metres under a roof with
-climbing frames, slides and a ball pit, built for rainy days in a region that
-has plenty. A family business in the borderlands, whose business model was that
-children have to go somewhere when it pours. The opening was performed by a
+Jean Gelissen, a carpenter by trade, was at the Steinerbos recreation area in
+Landgraaf with his children when it started pouring and every visitor went
+home. That gave him the idea for a park with a roof. On **19 May 2001** he
+opened it in Sevenum together with his sister Caroline: one hall, today's Land
+van Toos, full of rides for small children, among them a Vekoma junior coaster,
+the Toos-Express. A family business in the borderlands, whose business model was
+that children have to go somewhere when it pours. The opening was performed by a
 young Dutch illusionist who had no world career yet: **Hans Klok**.
 
 This park never had money to waste. It still managed, twice, to build something
 that had never existed anywhere.
 
 **2004** brought the second hall, then "Magic Forest", today the
-**Wunderwald**. And with it [Booster Bike](ref:attractiepark-toverland/booster-bike), Vekoma’s
-worldwide prototype of the motorbike coaster. A park that barely anyone outside
-Limburg had heard of had a ride type developed that did not yet exist. Think of
-the village pub asking the brewery for a beer of its own, and the brewery
-saying yes.
+**Wunderwald**, with a log flume, a bobkart track and a funhouse. Outside it rose
+[Booster Bike](ref:attractiepark-toverland/booster-bike), Vekoma’s worldwide prototype of the
+motorbike coaster, although it only opened on 27 July; until then the park put
+up a travelling showman's Wild Mouse by way of apology. A park that barely anyone
+outside Limburg had heard of had a ride type developed that did not yet exist.
+Think of the village pub asking the brewery for a beer of its own, and the
+brewery saying yes. A year later came the second prototype: the Wirbelbaum, then
+called Twist & Turn, a 13-metre wheel by Metallbau Emmeln whose baskets spin as
+wildly as you make them.
 
-**2007** brought the first proper outdoor area: **Ithaka**, Greek antiquity,
-built around a single ride. For 6.5 million euros, a park with around half a
-million visitors at the time got itself a GCI wooden coaster of the kind
+**2007** brought the first themed area in the open air: **Ithaka**, Greek
+antiquity, built around a single ride. For 6.5 million euros, a park with around
+half a million visitors at the time got itself a GCI wooden coaster of the kind
 normally bought by places with five times the crowd. Troy was only the second
 GCI installation in Europe, after Thunderbird at Finland’s PowerPark, and the
-eleventh worldwide. In March 2007, shortly before opening, part of the
-half-finished lift hill structure blew over in a storm. The park rebuilt it and
-opened on time for the season anyway. Whoever clatters up that lift hill today
-is riding on a structure that had to be built twice.
+eleventh worldwide. On 5 March 2007, almost four months before opening, a gust
+of wind blew over 13 bents of the half-finished lift hill structure; nobody was
+hurt. The park rebuilt them, and Troy opened on 1 July 2007, according to the
+park management of the time only a week later than planned. Whoever clatters up
+that lift hill today is riding on a structure that partly had to be built twice.
 
 **2013** brought the **Magische Vallei** around the "Dwervels", with
-[Dwervelwind](ref:attractiepark-toverland/dwervelwind) and
-[Expedition Zork](ref:attractiepark-toverland/expedition-zork). And **2018** brought the leap
+[Dwervelwind](ref:attractiepark-toverland/dwervelwind) and the
+[Djengu River](ref:attractiepark-toverland/djengu-river) rapids. And **2018** brought the leap
 that turned a day-trip destination into a theme park: a 35-million-euro
 expansion with a completely new entrance area in Mediterranean harbour style
 (**Port Laguna**) and the Arthurian world of **Avalon**, home to
@@ -275,16 +294,16 @@ expansion with a completely new entrance area in Mediterranean harbour style
 up its current claim, "Discover your own magic", replacing the older lines
 "Magisch mooi" and "Feel the Magic". The same year Toverland cleaned up at the
 **European Star Awards**: best theme park in the category up to one million
-visitors, plus an award for Avalon and Port Laguna as best new development. Troy
-came in just behind the winner in the best wooden coaster in Europe category,
-with a ride that was eleven years old at the time. **2023** grew Avalon further,
-among other things by the 40-metre observation tower
-[Dragonwatch](ref:attractiepark-toverland/dragonwatch).
+visitors, plus second place for Fēnix as best new coaster. Troy came in just
+behind the winner in the best wooden coaster category, with a ride that was
+eleven years old at the time. **2023** grew Avalon further, among other things
+by the [Dragonwatch](ref:attractiepark-toverland/dragonwatch) drop tower and the Pixarus
+flying ride.
 
-The visitor numbers: 620,000 in 2013, 862,000 in
-the last pre-covid year of 2019, consistently above a million since 2022, most
-recently **1,137,000 in 2025**. That is roughly a third of what the Efteling or
-Europa-Park push through.
+The visitor numbers: 862,000 in the last pre-covid year of 2019, above a million
+every year since 2022, most recently **1,137,000 in 2025**. For comparison,
+Europa-Park passed seven million guests for the first time in 2025, and the
+Efteling counted 5.78 million visits.
 
 ![The illuminated Djinn swing carousel in the Land van Toos hall, guests in the seats mid-flight | Djinn circles above the oriental market in Land van Toos, entirely under a roof. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
@@ -295,12 +314,14 @@ the prettiest example: 12.8 metres tall, fully covered, and lit in the evening
 in a way other parks would need an outdoor area for.
 
 **2026 is the anniversary year**, and the park is celebrating it in a way no
-corporation would come up with. Since **18 April**, "Magic Memories" has been
-running, an illusion show by that same Hans Klok who opened the gates 25 years
-ago, around 30 minutes long, several times a day, included with admission. And
-on the **weekend of 27/28 June**, Toverland stayed open for 25 hours straight
-for the first time in its history, one for every year, with a surprise every five hours, an XXL
-parade and fireworks.
+corporation would come up with. From **18 April to 28 June**, on 25 days, it ran
+"Magic Memories", an illusion show of around 30 minutes by that same Hans Klok
+who opened the gates 25 years ago, several times a day in a circus tent with
+more than 700 seats, included with admission. And on the **weekend of 27/28
+June**, Toverland stayed open for 25 hours straight for the first time in its
+history, one for every year, from 9am on Saturday to 10am on Sunday, in five
+themed blocks of five hours each, with an XXL parade and fireworks. That one
+needed its own ticket, at 46.50 €.
 
 ```map-widget slug=attractiepark-toverland
 
@@ -310,8 +331,7 @@ parade and fireworks.
 
 ![The wooden Trojan horse at night, lit red and wrapped in fog, a crowd in front of it | The same horse as above, six weeks later. By day, families take photos in front of it. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
-For six weeks a year this park takes on a second personality, and for many
-guests from western Germany that is the actual reason to come. Where it sits in
+On 17 days every autumn this park takes on a second personality. Where it sits in
 the European field is in our
 [Halloween guide](/blog/halloween-theme-parks-2026); here is the Toverland
 version.
@@ -322,29 +342,30 @@ The season runs **from 3 October to 8 November 2026** and splits into two very
 different events:
 
 - **Halloween Days** (17 days), daytime, family-friendly, for children up to
-  around 12: pumpkin farm, shows, harmlessly costumed characters, scare zones
-  without the scares.
+  around 12: pumpkin farm, a corn maze for kids, shows, harmless witches.
 - **Halloween Nights** (13 nights, through 7 November), 18:00 to 23:00,
-  recommended from age 12: **six scare zones**, **six haunted experiences**, an
-  opening parade, ground fog everywhere, fireworks to close.
+  recommended from age 12: 170 scare actors across **six scare zones** and **six
+  haunted experiences**, an opening parade, ground fog everywhere, fireworks at
+  22:45 to close. The scare zones are included with admission, the haunted
+  experiences cost extra, 6.50 € to 13 € per timed ticket depending on the house.
 
 ![Illuminated pumpkins with witches' hats among dry corn stalks | Pumpkins in the corn. The park’s biggest maze of 2026 is made of the same material. | left](/media/toverland-halloween/04-kuerbisse-maisfeld.jpg)
 
 The **2026** newcomer literally grows: **"Entwined: The Maze"**, a
-**seven-hectare corn field** with walls metres high behind Fēnix, according to
-the park twice the size of the whole Avalon area and marketed as the largest
-Halloween experience in Europe (we haven't measured it, but we would get lost
-in it straight away). It replaces the long-running rat labyrinth
-"Trapped". The only rule that counts in there: stand still and you get caught.
+**seven-hectare corn field** with walls metres high on previously off-limits
+ground behind Fēnix, according to the park twice the size of the whole Avalon
+area and marketed as the largest Halloween experience in Europe (we haven't
+measured it, but we would get lost in it straight away). It replaces the
+long-running "Trapped" experience in the Dwaalhof maze. The only rule that
+counts in there: stand still and you get caught.
 
-![The Troy entrance lettering redressed as "DesTROY – The Ride", with two Halloween Nights banners below | Troy becomes DesTROY. The park unscrews the coaster’s entrance lettering for it. | right](/media/toverland-halloween/03-destroy-schild.jpg)
+![The Troy entrance lettering redressed as "DesTROY – The Ride", with two Halloween Nights banners below | Troy becomes DesTROY. The park redresses the coaster’s entrance lettering for it. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 For Troy fans, though, the best part is still to come. One of the scare zones is
 called **"DesTroy"** and sits in **Ithaka**, right beside and underneath the
 wooden coaster. Mutated Trojan soldiers guard the ruins of the city wall, and
-Troy runs straight through it. Homer would have questions. There are not many chances in Europe to ride a
-first-class wooden coaster in the dark through a live scare zone, with fog on
-the brake run and performers in the queue.
+Troy runs straight through it, until 23:00 on those nights, so in the dark.
+Homer would have questions.
 
 ![A Trojan warrior with a spear standing in a spotlight in front of the red-lit horse | Whether that’s a prop or a performer, you find out too late. | left](/media/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
@@ -367,28 +388,29 @@ manager came by the same evening and took time for us, which is very much this
 park.
 
 > [!TIP]
-> **The tip Toverland regulars give straight away: the Fear Pass.** For 62.50 €
-> you get one-time faster access to all six haunted experiences, through a
-> **separate entrance**, plus a reserved area for the parade. It is the only
-> shortcut on sale here, and on busy nights it is the difference between "made
-> it through three houses" and "all six, and got out of the corn in one piece".
+> **My tip for the Halloween Nights: the Fear Pass.** For 69.95 € you get
+> one-time entry to all six haunted experiences through a **separate
+> entrance** instead of the normal queue, plus a reserved area for the parade.
+> It is the only shortcut on sale here, and on busy nights it is the difference
+> between "made it through three houses" and "all six, and got out of the corn
+> in one piece".
 >
-> Admission to the Halloween Nights is included with the **Magic Member**, the
-> Fear Pass is not, but the annual pass does get you **one maze for free**. And
-> the Halloween Nights are the busiest evenings of the year, so checking the
-> calendar pays off twice.
+> The Fear Pass is sold online only, in a limited number per night. Admission
+> to the Halloween Nights is included with the **Magic Member** annual pass, the
+> haunted experiences and the Fear Pass are not.
 
 [Toverland](ref:attractiepark-toverland?full)
 
 ## A farewell with a brake lever, and what comes next
 
-![A carved decorative detail on Maximus' Blitz Bahn, lit blue, with old light bulbs on cables beside it | A detail of the Blitz Bahn, as it stood for nineteen years. Almost everything here was made by hand. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
+![A carved decorative detail on Maximus' Blitz Bahn, lit blue, with old light bulbs on cables beside it | A detail of the Blitz Bahn, as it stood for eleven years. Almost everything here was made by hand. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 If you haven’t been for a while, one attraction will be missing. On
 **17 May 2026**, **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in
-the Wunderwald opened for the last time, the 2007 Mack bobsled where a brake
-lever let you decide how fast you went downhill. For as long as we measured it, it was
-the attraction with the longest typical wait in the entire park.
+the Wunderwald opened for the last time, the bobkart ride where levers let you
+decide how fast you went downhill. It had been there since 2015, replacing the
+Woudracer that opened on the same spot in 2004. For as long as we measured it,
+it was the attraction with the longest typical wait in the entire park.
 
 That came down to arithmetic that could never work out: one car held one, maybe
 two people. And because the current record was posted at the exit with a photo,
@@ -405,39 +427,57 @@ Müller**, the eccentric inventor who lives in the Wunderwald. He climbed in
 himself and took his own contraption down one final time.
 
 You can find that silly, a fictional character in a bobsled. I thought it was
-right. For nineteen years this ride took its own story seriously, and on its
+right. For eleven years this ride took its own story seriously, and on its
 last day the park finished telling it instead of just cutting the power.
 
 Its successor is the reason I consider Toverland the boldest small park in
-Europe. This winter a **Swinging Bobsled** opens there, a ride type that does
-not exist anywhere in the world yet. It was developed with **ETF Ride Systems**
-from Nederweert, from the same province of Limburg, 30 kilometres from the park.
-The principle of the Blitz Bahn stays, you still control your own speed, but the
-vehicles swing out dynamically at certain points. The cars come in a steampunk
-look, to match Maximus Müller's inventions. The park has not revealed a name or a story yet. This is the third time a
-world first has been created here.
+Europe. A **Swinging Bobsled** is due to open there in the 2026/27 winter season,
+a ride type that does not exist anywhere in the world yet; by the end of
+September the park had not named a date. It was developed with **ETF Ride
+Systems** from Nederweert, in the same province of Limburg, a little over 20
+kilometres from the park as the crow flies. The layout, the roof and Maximus's
+chalet as the queue all stay, but the sleds run on a classic coaster track with
+banked turns. You still set your own speed with levers, a base speed makes sure
+nobody gets stuck on the track any more, and the two-seater sleds swing out
+mechanically at certain points. The cars come in a steampunk look, to match
+Maximus Müller's inventions. The park has not revealed a name or a story yet.
+This is the third time a world first has been created here.
+
+After that, things get bigger. Toverland wants to become a short-break
+destination with its own hotel resort and has put 98 million euros on that, new
+attractions and a workshop and staff complex included; the council of Horst aan
+de Maas adopted the zoning plan for it in December 2025. Nothing has been
+officially announced for 2027 yet. Documents from the province of Limburg,
+reported by Looopings in February 2026, do show a rebuilt Port Laguna due to
+open in the fourth quarter of 2027, with a dark ride, a new restaurant and a
+small water ride for young children.
 
 After Halloween the park closes briefly and opens from **28 November 2026 to
 17 January 2027** as **Winter Feelings**: lights, Christmas market atmosphere,
-ice skating and curling, Wednesdays and weekends plus daily through the
-Christmas holidays. The water rides pause then, and the world premiere joins the
-line-up. Beautiful, just no longer a secret once the lights are on: December is
-one of the fullest months of the year in our data.
+an ice rink and a tubing run in Port Laguna, Wednesdays and weekends plus daily
+through the Christmas holidays. The rides keep running as long as the weather
+allows. For the anniversary, admission is free on the first three weekends and
+Wednesdays, up to 16 December: book a free reservation and you pay per ride, in
+strips of 2 € each, with Troy costing three. Regular day tickets are sold
+alongside. Beautiful, just no longer a secret once the lights are on: the days
+between Christmas and New Year's Eve 2025, where our measurements here began,
+were as busy as August.
 
 ## When to go
 
 The answer is a relaxed one: almost always.
 
-**By month**, March through July sit close together, and what stands out above
-them is **August** and the winter weeks in **December**. Winter keeps up with high
-summer because the winter season is short and in heavy demand: only part of the
-attractions run, and the park opens only on Wednesdays and weekends. One caveat: winter and early season have so
-few operating days that these monthly values rest on far fewer measurement days
-than the summer months. The direction is clear, the decimal place is not.
+**By month**, April through July sit close together, and what stands out above
+them is **August** and **December**. Behind December, though, our data only has
+the days between Christmas Eve and New Year's Eve 2025, in the middle of the
+Christmas holidays. Among the months with a solid basis, **September** has been
+the quietest so far, after the summer holidays ended. One caveat: January and
+March rest on a handful of measured days, and February, October and November
+are still missing entirely (as of 25 September 2026). Outside the main season
+the park only opens on Wednesdays and weekends anyway.
 
-**By weekday** the numbers barely spread out. Friday and Saturday are the
-busiest, and even there the gap to the rest of the week is small. At
-Phantasialand there are worlds between a Tuesday and a Saturday.
+**By weekday** the numbers barely spread out at all, and no day of the week
+stands out. At Phantasialand a Saturday is noticeably busier than a Tuesday.
 
 You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
@@ -454,10 +494,9 @@ operating days we have measured:
 
 ```
 
-One thing to keep in mind: the **Dutch** holidays hit harder here than the
-German ones, especially the autumn and May breaks in the southern provinces. So
-the Dutch school holiday calendar is required reading for this park, dry as it
-is.
+One thing to keep in mind: two school holiday calendars count here, the Dutch
+one for the southern region and the one for North Rhine-Westphalia. Keep both
+at hand, dry as they are.
 
 ## A day without a fast pass
 
@@ -465,36 +504,38 @@ Since there is no fast pass, all you have here is timing. You won’t need much 
 it though.
 
 At opening, head straight to Ithaka for **Troy**. It won't get busy later
-either, but a wooden coaster is still cold in the morning and runs measurably
-faster as the day goes on. Ride it early **and** late, and you will
-have ridden two different coasters. Then **Fēnix** in Avalon, the two headliners
-are practically wall to wall. Third **Booster Bike**, because it has the longest
-typical wait of any coaster in our data (the face-first boarding, remember).
-Save the **water rides** for the midday heat, and your socks will be dry again
-by the drive home, mostly. When "Magic Memories" is on, a sizeable share of the guests spends half an
-hour in the theatre, and it is noticeably quiet outside. And the last hour
-belongs to Ithaka again: Troy at dusk, when the structure is lit and the train
-runs audibly faster through the station than it did in the morning.
+either, but a wooden coaster is still cold in the morning and runs faster once
+it has warmed up. Ride it early **and** late, and you will have ridden two
+different coasters. Then **Fēnix** in Avalon, a few minutes' walk to the north.
+Third **Booster Bike**, because it has the longest typical wait of any coaster
+in our data (one train, 16 seats, remember). Save the **water rides** for the
+midday heat, and your socks will be dry again by the drive home, mostly. And the
+last hour belongs to Ithaka again: by then Troy runs audibly faster through the
+station than it did in the morning. You only get it in the dark on the Halloween
+nights and in winter, when the park closes after sunset.
 
 ## Practical: tickets, getting there, food
 
-**Tickets.** The pricing is pleasantly old-fashioned.
+**Tickets.** The prices move with the calendar.
 
-- **Day ticket at the gate:** 42.50 € (from 140 cm), 34.50 € for children from
-  90 to 140 cm, under 90 cm free, seniors from 60 pay 28 €.
-- **Much cheaper online.** Book at least seven days ahead and you get the
-  **early bird discount** of 7 € (from 140 cm) or 3.50 € (90–140 cm); later
-  bookings still save 2 € or 0.50 €. Realistically you land at **30 to 37 €**.
-  There is a ticket window, but no reason to use it.
+- **Day ticket:** Toverland works with four price tiers, bronze, silver, gold
+  and platinum, depending on the day's opening hours and programme; the ticket
+  calendar shows which one applies. Children under 90 cm and birthday guests go
+  free, but they need a reservation too.
+- **Cheaper online.** Book at least seven days ahead and you get the
+  **early bird discount** of 7 € (from 140 cm) or 3.50 € (90–140 cm) off the
+  day rate; later bookings still save 2 € or 0.50 €. There is no discount at the
+  ticket window, so there is no reason to use it.
 - **Parking:** 13.50 € per car per day, bookable online in advance. Bicycles
   park free at the entrance.
-- **Summer Pass:** 79 € for adults, 59 € for children from 90 to 140 cm,
-  unlimited visits from 1 July to 30 September, parking add-on 25 €. It pays for
-  itself on the second visit.
+- **Summer Pass:** sold for the first time in 2026, 79 € for adults, 59 € for
+  children from 90 to 140 cm, unlimited visits from 1 July to 30 September,
+  parking add-on 25 €. The park has not said yet whether it returns in 2027.
 - **Magic Member (annual pass):** 160 € for adults, 120 € for children, 130 €
-  from 60, monthly instalments from 6.75 €, parking 50 € a year extra. It
-  includes unlimited admission **to special events such as Halloween too**, plus
-  one of the Halloween mazes free and 5 % off food and shops.
+  from 60, or monthly (14 € for adults, twelve months minimum), parking 50 € a
+  year extra. It includes unlimited admission **on event days such as
+  Halloween too** and 5 % off food and shops; the haunted experiences cost extra
+  even with the pass.
 
 That last point is worth a look across the border: Toverland sells a perfectly
 ordinary annual pass with Halloween included. Phantasialand scrapped theirs
@@ -507,10 +548,12 @@ Maas), Toverlaan 2, about ten minutes' drive west of Venlo. Via the **A67** you
 are there in about an hour from Düsseldorf, a good 1:15 from the Ruhr area,
 around 1:20 from Cologne. By train, go to **Horst-Sevenum**, from there **bus
 lines 79 and 679** take about ten minutes to the entrance; the frequency is
-rural, so plan the return trip before you set off. There is no park hotel of its
-own, but plenty of guesthouses and holiday parks nearby. If you are touring the
-region anyway, it combines well with [Bobbejaanland](ref:bobbejaanland) (around
-an hour) or indeed the [Efteling](ref:efteling).
+rural, so plan the return trip before you set off. There is no park hotel yet,
+though one is part of the expansion plans. In season the Pop-Up Summer Camp on
+the park's own grounds has tents and pitches, and there are plenty of
+guesthouses and holiday parks nearby. If you are touring the region anyway, it
+combines well with [Bobbejaanland](ref:bobbejaanland) (around an hour) or indeed
+the [Efteling](ref:efteling).
 
 **Food.** Two addresses are genuinely worth it.
 
@@ -521,24 +564,27 @@ an hour) or indeed the [Efteling](ref:efteling).
   spreads. Take it between two or three of you though, on your own you fill up
   on it before the main course arrives.
 - **Katara Plaza** (Magische Vallei) is the food court with the best view:
-  tropical dishes, tables by the water, and the Katara water show alongside.
+  burgers, fries, burritos and nachos, tables by the water, and the Katara
+  water show alongside.
 
 For something in between there is the **Waldstube** in the Wunderwald (pizza,
-burgers, sandwiches, a blessing in the rain), **Hungry Harry** and **Mañana**
-for wraps, fries and soft ice, and the **snack vending machines in Port
-Laguna**, which most people walk straight past. Unfairly: no queue, no detour,
-and the least complicated solution in the park for a gap between meals. Eat
-early or late, half eleven or from half two.
+burgers, sandwiches, a blessing in the rain), **Hungry Harry** in Avalon for
+wraps and warm sandwiches, **Mañana** in Port Laguna for fries and fish and
+chips, and the **snack vending machines in Port Laguna**, which most people walk
+straight past. Unfairly: no queue, no detour, and the least complicated solution
+in the park for a gap between meals. Eat early or late, half eleven or from half
+two.
 
 ## Frequently asked questions about Toverland
 
 ### Is Toverland worth a visit?
 
-Yes, especially for coaster fans who have had enough of queues. With around a
-million guests a year the park is small compared with the Efteling or
-Europa-Park, but it has one of Europe’s best wooden coasters in
-[Troy](ref:attractiepark-toverland/troy) and the continent’s longest wing coaster in
-[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of around a quarter of an hour.
+Yes, especially for coaster fans who have had enough of queues. With a little
+over a million guests a year the park is small compared with the Efteling or
+Europa-Park, but it has [Troy](ref:attractiepark-toverland/troy), the fifth-best European
+wooden coaster in the 2026 Golden Ticket Awards, and the continent’s longest wing
+coaster in [Fēnix](ref:attractiepark-toverland/fenix), at typical waits of around a quarter
+of an hour.
 
 ### How long are the wait times at Toverland?
 
@@ -549,44 +595,50 @@ figures are on the
 
 ### When is Toverland least busy?
 
-March to July sit close together in our data and make up the calmest part of
-the year. Weekdays are a little emptier than weekends, but the difference is
-small. What stands out from that range are the Dutch May and
-autumn holidays and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
+Among the months we have measured well, September has been the quietest so far,
+after the summer holidays. April to July sit close together, August and the
+Christmas holidays stand out. Between the days of the week there is hardly any
+difference. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
 
 ### Do you need a fast pass at Toverland?
 
 There isn’t one. Toverland sells no fast pass at all; the only exception is the
 **Fear Pass** for the haunted experiences during the Halloween Nights
-(62.50 €). A free single rider line exists only at the Dragonwatch drop tower.
+(69.95 €). A free single rider line exists only at the Dragonwatch drop tower.
 With the medians the headliners are showing you don’t need a shortcut on a
 normal day anyway.
 
 ### Is Troy the best wooden coaster in Europe?
 
-"Best" is a matter of taste, and there is plenty of competition:
-[Wodan](ref:europa-park/wodan-timburcoaster) at [Europa-Park](ref:europa-park),
-[Untamed](ref:walibi-holland/untamed) at [Walibi Holland](ref:walibi-holland)
-and [Balder](ref:liseberg/balder) at [Liseberg](ref:liseberg). Among
-enthusiasts, though, Troy sits in the European top group regularly, and at 35
-metres tall, 1,077 metres long and 90 km/h it is the tallest, longest and
-fastest wooden coaster in the Benelux. And its queue is a good deal shorter
-than that of its GCI sibling, Joris en de Draak at the Efteling.
+"Best" is a matter of taste, and the competition is strong. In the 2026 Golden
+Ticket Awards four European wooden coasters finished ahead of Troy:
+[Wodan](ref:europa-park/wodan-timburcoaster) at [Europa-Park](ref:europa-park) in 11th,
+Wildfire at Kolmården in Sweden in 12th, [Balder](ref:liseberg/balder) at
+[Liseberg](ref:liseberg) in 13th and
+[Colossos](ref:heide-park/colossos-kampf-der-giganten) at [Heide Park](ref:heide-park) in 18th.
+Troy came 24th, five places ahead of Joris en de Draak. By the park's figures,
+35 metres tall, 1,077 metres long and 90 km/h, it is the tallest, longest and
+fastest wooden coaster in the Benelux, and its queue is a good deal shorter than
+that of its GCI sibling at the Efteling.
 
 ### What’s new at Toverland in 2026?
 
-Three things: the illusion show **"Magic Memories"** by Hans Klok for the 25th
-anniversary (since 18 April, included with admission), the end of **Maximus'
-Blitz Bahn** on 17 May, and its successor, the **Swinging Bobsled**, a ride type
-that does not exist anywhere in the world yet, developed with ETF Ride Systems,
-opening in the 2026/27 winter season.
+Quite a lot, and some of it is already over: the illusion show **"Magic
+Memories"** by Hans Klok for the 25th anniversary (18 April to 28 June), the
+ToverFestival with 25 hours of opening on 27/28 June, the Summer Pass, the end of
+**Maximus' Blitz Bahn** on 17 May, and the **"Entwined"** corn maze for
+Halloween. From 28 November to 16 December admission is free and you pay per
+ride. The Blitz Bahn's successor, the **Swinging Bobsled**, a ride type that
+does not exist anywhere in the world yet, developed with ETF Ride Systems, is
+due to open in the 2026/27 winter season.
 
 ### How much does Toverland admission cost?
 
-At the gate 42.50 € (from 140 cm) or 34.50 € (90–140 cm), seniors 28 €, children
-under 90 cm free. Online with the early bird discount (at least seven days
-ahead) it is 7 € or 3.50 € less. Parking costs 13.50 €. The annual pass
-(**Magic Member**) starts at 160 € and includes Halloween.
+That depends on the day: Toverland has four price tiers, set by opening hours
+and programme. Online you save 7 € (from 140 cm) or 3.50 € (90–140 cm) when you
+book at least seven days ahead, 2 € or 0.50 € later than that; at the gate you
+pay the full rate. Children under 90 cm go free, parking costs 13.50 €. The
+annual pass (**Magic Member**) starts at 160 € and includes Halloween admission.
 
 ### Can you do Toverland in one day?
 
@@ -606,9 +658,10 @@ For me that has been Troy for years. Other people come for the Maison de la
 Magie, for the Djengu River on a warm afternoon, or for the Halloween Nights.
 
 And this is long past being a small park that is quite nice for the region.
-Sevenum has a wooden coaster that makes every European best-of list. Two ride
-types were invented for this park and built here first, and the third arrives
-this winter. And you are still back in the train after a quarter of an hour on a
+Sevenum has a wooden coaster that has made the top 50 wooden coasters in the
+world in every edition of the Golden Ticket Awards since 2008. Two ride types
+were invented for this park and built here first, and the third arrives this
+winter. And you are still back in the train after a quarter of an hour on a
 weekday.
 
 How things look at the park right now:
@@ -633,19 +686,23 @@ Europe you can forget it.
 
 ### Sources & further reading
 
-- Troy (specs, type, GCI, 2007 storm damage): [Troy (roller coaster) on Wikipedia](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>) · [Troy (Toverland), German Wikipedia](<https://de.wikipedia.org/wiki/Troy_(Toverland)>) · [Troy (official)](https://www.toverland.com/en/attractions/troy)
-- Troy retrack: ["Toverland: Retrack der Holzachterbahn Troy" (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/)
+- Troy (specs, type, GCI, 2007 storm damage): [Troy (roller coaster) on Wikipedia](https://en.wikipedia.org/wiki/Troy_%28roller_coaster%29) · [Troy (Toverland), German Wikipedia](https://de.wikipedia.org/wiki/Troy_%28Toverland%29) · [Troy in the Roller Coaster DataBase](https://rcdb.com/3589.htm) · [Troy (official)](https://www.toverland.com/en/rides/troy)
+- Rankings: [2026 Golden Ticket Awards, full results (Coaster101)](https://www.coaster101.com/2026/09/13/full-list-of-2026-golden-ticket-awards-winners/)
+- Troy retrack: ["Toverland: Retrack der Holzachterbahn Troy" (FreizeitparkNEWS, January 2025)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/) · ["Troy heropent bijna weer na intensief onderhoud" (official, April 2025)](https://www.toverland.com/toverblog/blog-onderhoud-troy) · ["Toverland vervangt 20 procent van houten achtbaan Troy" (Looopings, February 2026)](https://www.looopings.nl/weblog/31677/Fotos-Toverland-vervangt-20-procent-van-houten-achtbaan-Troy--maar-hier-geen-titan-track.html)
 - Fēnix (B&M, longest wing coaster in Europe): [Fēnix on Wikipedia](https://de.wikipedia.org/wiki/F%C4%93nix)
-- Dwervelwind (brought-forward opening 29 September to 4 November 2012, complete Magische Vallei from April 2013): [Dwervelwind on de.wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind on nl.wikipedia](https://nl.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (official)](https://www.toverland.com/en/attractions/dwervelwind)
+- Booster Bike, Expedition Zork, Villa Fiasko, Dragonwatch, Wirbelbaum (the park's figures): [Booster Bike](https://www.toverland.com/en/rides/booster-bike) · [Booster Bike in the RCDB](https://rcdb.com/2747.htm) · [Expedition Zork](https://www.toverland.com/en/rides/expedition-zork) · [Villa Fiasko](https://www.toverland.com/en/rides/villa-fiasko) · [Dragonwatch](https://www.toverland.com/en/rides/dragonwatch) · [Wirbelbaum](https://www.toverland.com/en/rides/wirbelbaum)
+- Dwervelwind (brought-forward opening 29 September to 4 November 2012, complete Magische Vallei from April 2013): [Dwervelwind on de.wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind on nl.wikipedia](https://nl.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (official)](https://www.toverland.com/en/rides/dwervelwind)
 - European Star Awards 2018: ["Toverland hat gleich drei European Star Awards gewonnen" (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (official)](https://www.toverland.com/en/awards)
-- Park history, themed areas & visitor numbers: [Toverland on Wikipedia](https://en.wikipedia.org/wiki/Toverland) · [2025 visitor numbers (official)](https://www.toverland.com/de/presse/neuigkeiten)
+- Park history, themed areas & visitor numbers: [Toverland on Wikipedia](https://en.wikipedia.org/wiki/Toverland) · [Attractiepark Toverland on nl.wikipedia](https://nl.wikipedia.org/wiki/Attractiepark_Toverland) · [Toverland chronicle (Frei-Zeit-Blog)](https://frei-zeit-blog.de/toverland/toverland-chronik/) · [2025 visitor numbers and expansion plans (official)](https://www.toverland.com/en/press/news/press-visitornumbers2025)
+- 2025 comparison figures: [Efteling: 5.78 million visits (Looopings)](https://www.looopings.nl/weblog/32415/Weer-een-record-voor-de-Efteling-van-5-6-naar-5-78-miljoen-bezoekers.html) · [Europa-Park: more than seven million guests (Themepark Central)](https://www.themepark-central.de/europa-park-besucherzahlen-2025/)
 - The claim "Discover your own magic" (since 2018, previously "Magisch mooi" and "Feel the Magic"): ["Toverland kiest voor nieuwe slogan" (Looopings)](https://www.looopings.nl/weblog/9639/Toverland-kiest-voor-nieuwe-slogan.html)
-- Farewell event on 17 May 2026 (programme, souvenirs): ["Wir verabschieden uns von Maximus' Blitz Bahn" (official)](https://www.toverland.com/de/toverblog/blog-neue-blitzbahn) · ["Toverland ersetzt Maximus' Blitz Bahn" (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/maximus-blitz-abschied/)
-- Swinging Bobsled & the Blitz Bahn farewell: ["A new attraction: the Swinging Bobsled!" (official)](https://www.toverland.com/en/press/news/press-blitzbahn) · ["Toverland to replace bobsleigh with new swinging bobsled" (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
-- 25 years of Toverland, Hans Klok & ToverFestival: [Hans Klok: Magic Memories (official)](https://www.toverland.com/en/shows/hansklok) · ["Toverland wird 25" (Themepark Central)](https://www.themepark-central.de/toverland-25-hans-klok/)
-- Opening hours & 2026 calendar: [2026 calendar (official)](https://www.toverland.com/toverblog/blog-jaarkalender2026)
-- Prices, early bird, Summer Pass & Magic Member: [Prices & opening hours (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/toverland/preise/) · [Annual passes (official)](https://www.toverland.com/de/jahreskarten) · [Summer Pass 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/summer-pass-2026/)
-- Halloween Days & Nights, scare zones and Fear Pass: [Scare zones & experiences (official)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [our Halloween guide](/blog/halloween-theme-parks-2026)
+- Blitz Bahn farewell and Swinging Bobsled: [Press release on the Swinging Bobsled (official)](https://www.toverland.com/en/press/news/press-blitzbahn) · ["Wir verabschieden uns von Maximus' Blitz Bahn" (official, German)](https://www.toverland.com/de/toverblog/blog-neue-blitzbahn) · ["Toverland ersetzt Maximus' Blitz Bahn" (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/maximus-blitz-abschied/) · ["Toverland to replace bobsleigh with new swinging bobsled" (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
+- Expansion plans and 2027: [Zoning plan (official, Dutch)](https://www.toverland.com/omwonenden/bestemmingsplan) · ["Nieuwe tekeningen tonen uitbreiding Port Laguna" (Looopings)](https://www.looopings.nl/weblog/31870/Nieuwe-tekeningen-tonen-uitbreiding-Port-Laguna-in-Toverland-darkride--restaurant-en-complete-upgrade.html)
+- 25 years of Toverland, Hans Klok & ToverFestival: ["Toverland wird 25" (Themepark Central)](https://www.themepark-central.de/toverland-25-hans-klok/) · [Hans Klok: Magic Memories (official, Dutch)](https://www.toverland.com/pers/nieuws/nieuwsbericht-hansklok) · [ToverFestival (official, Dutch)](https://www.toverland.com/pers/nieuws/nieuwsbericht-toverfestival)
+- Opening hours, Winter Feelings & pay per ride: [2026 calendar (official, Dutch)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Pay per Ride (official)](https://www.toverland.com/en/activities/winter-feelings/pay-per-ride)
+- Prices, early bird, Summer Pass & Magic Member: [Ticket shop with price FAQ (official)](https://tickets.toverland.com/en/tickets) · [Annual passes (official)](https://www.toverland.com/en/annualpasses) · [Summer Pass (official)](https://www.toverland.com/en/annualpasses/summer-pass)
+- Halloween Days & Nights, scare zones and Fear Pass: [Scare zones & experiences (official)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [Fear Pass (official)](https://www.toverland.com/en/activities/halloween/fear-pass) · [Entwined and the Halloween dates, press release (official, Dutch)](https://www.toverland.com/pers/nieuws/nieuwsbericht-entwined) · [our Halloween guide](/blog/halloween-theme-parks-2026)
+- Phantasialand without an annual pass: ["Jahreskarte abgeschafft" (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
 - Getting there, bus & parking: [Address and route (official)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in the Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
 - Wait-time and crowd data: our own history since December 2025, [Toverland on park.fan](ref:attractiepark-toverland)

@@ -2,7 +2,7 @@
 title: 'Halloween 2026 nei parchi d’Europa: motosega, zucca o niente del tutto'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

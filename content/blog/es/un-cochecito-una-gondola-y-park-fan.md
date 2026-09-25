@@ -221,8 +221,8 @@ algún sitio, ahora mismo, alguien está delante de una atracción de verdad y
 quiere saber si la cola merece la pena.
 
 Detrás hay hoy **210 parques** con unas **6900 atracciones** en total (a 25 de
-septiembre de 2026), y 209 de ellos envían tiempos de espera nuevos cada cinco
-minutos. El que falta es el Hansa-Park, que solo publica los suyos en su propia
+septiembre de 2026), y de 209 de ellos recogemos los tiempos de espera cada
+cinco minutos. El que falta es el Hansa-Park, que solo publica los suyos en su propia
 app. A eso se suman previsiones que estiman la afluencia con unos seis meses de
 antelación. Y como por principio solo me fío de
 las cifras que tienen que demostrarse, el modelo se pone nota a sí mismo: cada
