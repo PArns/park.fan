@@ -1,6 +1,5 @@
 ---
-title: "Plopsaland Deutschland: dieci Fright Nights, due case dell'orrore nuove
-e una cotoletta che non vorrai ordinare"
+title: "Plopsaland Deutschland: dieci Fright Nights, due case dell'orrore nuove e una cotoletta che non vorrai ordinare"
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick

@@ -214,9 +214,9 @@ came for.
 
 ## How busy it really gets
 
-The table counts the measured days of the last two years, each ride with its
-own number. For Heide Park those are so far only days from the 2026 season (as
-of 25 September 2026):
+Our measurements go back to late December 2025. Because Heide Park only opens
+at the end of March, the table holds nothing but days from the 2026 season (as
+of 25 September 2026), each ride with its own number of measured days:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 

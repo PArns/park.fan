@@ -234,7 +234,7 @@ queue to plan your day there around.
 
 ## How busy it really gets
 
-Both parks have fed us wait times since 26 December 2025, though only almost without a gap since late March 2026. From the winter in between we only have scattered days in December and
+Both parks have fed us wait times since 26 December 2025, but only since late March 2026 almost without a gap. From the winter in between we only have scattered days in December and
 January, and none yet for February, October or November. As of 25 September
 2026, each park has 190 measured operating days behind it, and how many of them
 sit behind each row, the tables state themselves.

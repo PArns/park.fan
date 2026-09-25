@@ -351,7 +351,8 @@ verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen, o
 dann auch irgendwann einsteigt, steht in den Wartezeiten.
 
 Unsere Historie für das Efteling umfasst, Stand 25. September 2026, **knapp 190
-Betriebstage** mit Wartezeit-Daten, aufgenommen seit Dezember 2025. Über alle
+Betriebstage** mit Wartezeit-Daten, aufgenommen seit dem 26. Dezember 2025, also
+rund neun Monate. Über alle
 Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt **unter einer
 halben Stunde**; zu den Spitzenzeiten ist es etwa das Anderthalbfache.
 
@@ -509,7 +510,8 @@ Winter-Efteling-Saison.
 
 Dazu gehört eine Einschränkung, sonst liest sich das genauer, als es ist: Hinter
 April bis August steht jeweils ein voller Monat an Messtagen, hinter dem September
-gut drei Wochen, hinter Dezember, Januar und März nur eine Handvoll, und für
+gut drei Wochen, hinter Dezember, Januar und März nur eine Handvoll (beim Dezember
+sind es die Weihnachtsferien ab dem 26.), und für
 Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Richtung stimmt, die Rangfolge im Detail nicht.
 
 **Nach Wochentag** wird es interessant, weil sich der übliche Rat hier auflöst:
@@ -712,8 +714,8 @@ anders aus: Die Piraña war noch in keinem Winter offen, De Vliegende Hollander 
 an wärmeren Tagen.
 
 Und dann die Kehrseite: **Der Dezember ist in unseren Daten der vollste Monat des
-Jahres**, auch wenn dahinter bisher nur eine Handvoll Tage aus dem Dezember 2025
-stehen. Der Parkschnitt liegt dann nicht weit unter dem, was Joris en de Draak
+Jahres**, allerdings stehen dahinter bisher nur die Tage ab dem 26. Dezember 2025,
+also genau die Weihnachtsferien. Der Parkschnitt liegt dann nicht weit unter dem, was Joris en de Draak
 sonst übers Jahr hat. Dazu kommt, dass der Park in den Winterferien an vollen
 Tagen keine Tickets mehr verkauft. Wer die Wintersaison in Ruhe sehen will, nimmt
 einen Werktag im November oder in der zweiten Januarhälfte, nicht die Woche
@@ -789,7 +791,7 @@ Aktuelle Zahlen stehen auf der [Efteling-Parkseite](ref:efteling).
 ### Wann ist im Efteling am wenigsten los?
 
 Nach Monat sind **April** und **September** am entspanntesten, am vollsten ist der
-**Dezember**. Der Wochentag spielt kaum eine Rolle: Zwischen dem besten und dem
+**Dezember**, wobei wir den bisher nur in den Weihnachtsferien gemessen haben. Der Wochentag spielt kaum eine Rolle: Zwischen dem besten und dem
 schlechtesten liegt eine einzige Stufe.
 Entscheidend sind die niederländischen Schulferien. Für einen konkreten Termin
 hilft der [Kalender der besten Besuchstage](ref:efteling?calendar) mehr als jede
@@ -896,4 +898,4 @@ mit dem offenen Mund. Er bedankt sich, seit 1959, bei jedem Einzelnen.
 - Preise, Datumsbindung, flexibles Ticket, Parken und Jahreskarten 2026: [Ticketpreise (offiziell)](https://www.efteling.com/de/park/informationen/ticketpreise) · [Ticket-Übersicht (offiziell)](https://www.efteling.com/en/park/information/ticket-overview) · [Abonnementen mit Sperrtagen (offiziell)](https://www.efteling.com/nl/park/abonnement) · [Plus-Karte am 31. Dezember 2026 gesperrt (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Preise & Öffnungszeiten (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jahreskarten-Vergleich (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (Gründung, Aufnahme nur für Familien aus den Niederlanden, Kapazität, Ehrenamt, Finanzierung): [Wie wij zijn (offiziell)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes auf Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes auf nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [der Elefant aus dem Kinderbad (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok in Toverland 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Spenden](https://www.villapardoes.nl/doneren)
 - Polles Keuken (seit 2012, am Ende der Pardoes Promenade): [Polles Keuken auf Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
-- Wartezeit- und Crowd-Daten: eigene Historie aus knapp 190 Betriebstagen seit Dezember 2025 (Stand 25. September 2026), [Efteling auf park.fan](ref:efteling)
+- Wartezeit- und Crowd-Daten: eigene Historie aus knapp 190 Betriebstagen seit dem 26. Dezember 2025 (Stand 25. September 2026), [Efteling auf park.fan](ref:efteling)

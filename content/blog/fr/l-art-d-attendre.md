@@ -426,8 +426,9 @@ nos prévisions collent à la réalité figure sur la [page Fancast](/fancast).
 Disneyland, pas de montagnes russes, pas de sensations fortes. Pourtant, au
 [Disneyland Park de Paris](ref:/parks/europe/france/paris/disneyland-park?bare),
 c’est l’attraction à l’attente médiane la plus longue, et au Magic Kingdom
-d’Orlando elle fait partie du peloton de tête (médiane des deux dernières
-années, au 25 septembre 2026). À Paris, la file dépasse dès la première heure
+d’Orlando elle fait partie du peloton de tête. C’est ce que donne la médiane
+de tous les jours mesurés depuis le début de nos relevés, fin décembre 2025 (au
+25 septembre 2026). À Paris, la file dépasse dès la première heure
 après l’ouverture celle de toutes les autres attractions, comme s’il y avait
 une distribution gratuite de champagne au bout. Ce n’est pas le cas partout : à
 Anaheim, Tokyo et Shanghai, où l’attraction existe aussi, elle se classe dans
@@ -515,8 +516,8 @@ Flight à Paris. La différence est au dénominateur, dans tout ce sur quoi la
 demande peut se répartir ailleurs. À Paris, Peter Pan se trouve au milieu de
 dizaines d’alternatives. À Brühl, un samedi de vacances, on dirait que la
 moitié du parc a la même attraction en tête. Et Voltron à l’Europa-Park, avec
-1 600 par heure, ne fait qu’un tiers de plus, mais a eu la file médiane la plus
-courte des deux sur les deux dernières années (au 25 septembre 2026). Mon
+1 600 par heure, ne fait qu’un tiers de plus, mais a eu depuis fin décembre
+2025 la file médiane la plus courte des deux (au 25 septembre 2026). Mon
 explication : les autres coasters voisins siphonnent la demande.
 
 C’est pour ça que chaque page de parc sur park.fan affiche, à côté des temps
@@ -524,7 +525,10 @@ d’attente en direct, les statistiques de longue durée. « Chargé » est 
 la même attente, c’est une mauvaise journée à Brühl et une journée ordinaire au
 Magic Kingdom. Regardez le même jeu de données
 pour les deux parcs, les temps d’attente typiques par mois et par jour de la
-semaine, sur les jours d’ouverture mesurés des deux dernières années.
+semaine, sur tous les jours d’ouverture que nous avons mesurés. Nos relevés
+ont commencé fin décembre 2025 et ne sont continus que depuis avril 2026 ;
+février, octobre et novembre manquent encore entièrement
+(au 25 septembre 2026).
 
 **D’abord le [Phantasialand](ref:phantasialand?bare) à Brühl**, le cas extrême
 compact : quand un chiffre grimpe ici, il grimpe fort, parce que tout se
@@ -537,7 +541,7 @@ concentre sur quelques têtes d’affiche.
 **Et maintenant le [Magic Kingdom](ref:magic-kingdom-park?bare) à Orlando**, le
 parc le plus fréquenté du monde : une charge de base plus élevée, mais répartie
 sur des dizaines d’attractions. Observez à quel point les minutes « typiques »
-et la courbe saisonnière diffèrent déjà sur l’année.
+et la courbe sur les mois mesurés jusqu’ici diffèrent déjà.
 
 ```stats-widget slug=magic-kingdom-park
 

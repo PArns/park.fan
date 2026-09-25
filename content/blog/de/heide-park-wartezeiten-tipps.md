@@ -214,9 +214,9 @@ Bahnen, wegen derer die Eltern gekommen sind.
 
 ## Wie voll es wirklich ist
 
-Die Tabelle rechnet mit den Messtagen der letzten zwei Jahre, jede Bahn mit
-ihrer eigenen Zahl. Für den Heide Park sind das bisher nur Tage aus der Saison
-2026 (Stand 25. September 2026):
+Unsere Messungen laufen seit Ende Dezember 2025. Weil der Heide Park erst Ende
+März öffnet, stehen in der Tabelle nur Tage aus der Saison 2026
+(Stand 25. September 2026), jede Bahn mit ihrer eigenen Zahl an Messtagen:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 

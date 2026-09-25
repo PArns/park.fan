@@ -408,8 +408,9 @@ quotiënt. Hoe vaak onze voorspellingen de realiteit raken, staat op de
 openging, geen achtbaan, geen thrill. Toch heeft de baan in het
 [Parijse Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?bare)
 de langste mediane wachttijd van alle attracties, en in het Magic Kingdom in
-Orlando hoort ze bij de kopgroep (mediaan van de laatste twee jaar, stand
-25 september 2026). In Parijs is de rij al in het eerste uur na opening langer
+Orlando hoort ze bij de kopgroep. Zo staat het in de mediaan over alle dagen
+die we sinds het begin van onze metingen eind december 2025 hebben vastgelegd
+(stand 25 september 2026). In Parijs is de rij al in het eerste uur na opening langer
 dan bij elke andere baan, alsof er aan het eind gratis bier is. Overal geldt
 dat niet: in Anaheim, Tokio en Shanghai, waar de baan ook staat, eindigt ze in
 onze data in de middenmoot.
@@ -490,15 +491,17 @@ Parijs schatten. Het verschil zit in de noemer, in alles waarover de vraag zich
 verder kan verdelen. In Parijs staat Peter Pan tussen tientallen alternatieven.
 In Brühl heeft op een vakantiezaterdag zo’n beetje het halve park dezelfde ene
 baan in gedachten. En Voltron in het Europa-Park ligt met 1.600 per uur maar een
-derde hoger, maar had de afgelopen twee jaar wel de kortere mediane rij (stand
-25 september 2026). Mijn verklaring: de andere achtbanen ernaast trekken vraag
+derde hoger, maar had sinds eind december 2025 wel de kortere mediane rij
+(stand 25 september 2026). Mijn verklaring: de andere achtbanen ernaast trekken vraag
 weg.
 
 Daarom toont elke parkpagina op park.fan naast de live wachttijden ook de
 langetermijnstatistieken. “Druk” is namelijk relatief: dezelfde wachttijd is in
 Brühl een slechte dag en in het Magic Kingdom een heel gewone. Bekijk dezelfde
-dataset voor beide parken, typische wachttijden per maand en weekdag, uit de
-gemeten openingsdagen van de laatste twee jaar.
+dataset voor beide parken, typische wachttijden per maand en weekdag, uit alle
+openingsdagen die we gemeten hebben. Onze metingen lopen sinds eind december
+2025 en pas sinds april 2026 zonder gaten; februari, oktober en november
+ontbreken nog helemaal (stand 25 september 2026).
 
 **Eerst het [Phantasialand](ref:phantasialand?bare) in Brühl**, het compacte
 uiterste geval: gaat hier een getal omhoog, dan steil, omdat alles zich op
@@ -511,7 +514,7 @@ weinig headliners concentreert.
 **En nu het [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, het
 drukstbezochte park ter wereld: een hogere basislast, maar breder verdeeld over
 tientallen attracties. Let op hoe verschillend alleen al de “typische” minuten
-en de seizoenscurve over het jaar eruitzien.
+en het verloop over de tot nu toe gemeten maanden eruitzien.
 
 ```stats-widget slug=magic-kingdom-park
 

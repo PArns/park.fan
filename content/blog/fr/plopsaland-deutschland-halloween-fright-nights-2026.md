@@ -1,6 +1,5 @@
 ---
-title: 'Plopsaland Deutschland : dix Fright Nights, deux nouvelles maisons
-hantées et un schnitzel qu’on ne commande pas'
+title: 'Plopsaland Deutschland : dix Fright Nights, deux nouvelles maisons hantées et un schnitzel qu’on ne commande pas'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick

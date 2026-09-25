@@ -1,6 +1,5 @@
 ---
-title: 'Plopsaland Deutschland: tien Fright Nights, twee nieuwe horrorhuizen en
-een schnitzel die je niet wilt bestellen'
+title: 'Plopsaland Deutschland: tien Fright Nights, twee nieuwe horrorhuizen en een schnitzel die je niet wilt bestellen'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick

@@ -225,9 +225,10 @@ les parents sont venus.
 
 ## L’affluence réelle
 
-Le tableau compte les jours mesurés des deux dernières années, chaque
-attraction avec son propre nombre. Pour le Heide Park, il ne s’agit pour
-l’instant que de jours de la saison 2026 (état au 25 septembre 2026) :
+Nos mesures remontent à fin décembre 2025. Comme le Heide Park n’ouvre qu’à la
+fin mars, le tableau ne contient que des jours de la saison 2026 (état au
+25 septembre 2026), chaque attraction avec son propre nombre de jours
+mesurés :
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 

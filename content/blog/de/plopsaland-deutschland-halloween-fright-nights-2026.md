@@ -1,6 +1,5 @@
 ---
-title: 'Plopsaland Deutschland: Zehn Fright Nights, zwei neue Horrorhäuser und
-ein Schnitzel, das du nicht bestellen willst'
+title: 'Plopsaland Deutschland: Zehn Fright Nights, zwei neue Horrorhäuser und ein Schnitzel, das du nicht bestellen willst'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick

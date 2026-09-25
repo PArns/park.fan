@@ -220,9 +220,10 @@ las atracciones por las que han venido los padres.
 
 ## Cuánta gente hay de verdad
 
-La tabla cuenta los días medidos de los dos últimos años, cada atracción con su
-propio número. Para el Heide Park son, de momento, solo días de la temporada
-2026 (a 25 de septiembre de 2026):
+Nuestras mediciones empiezan a finales de diciembre de 2025. Como el Heide Park
+no abre hasta finales de marzo, en la tabla solo hay días de la temporada 2026
+(a 25 de septiembre de 2026), cada atracción con su propio número de días
+medidos:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 

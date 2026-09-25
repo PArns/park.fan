@@ -219,9 +219,10 @@ per cui i genitori sono venuti.
 
 ## Quanta gente c’è davvero
 
-La tabella conta i giorni misurati degli ultimi due anni, ogni attrazione con
-il proprio numero. Per l’Heide Park per ora sono solo giorni della stagione
-2026 (dati al 25 settembre 2026):
+Le nostre rilevazioni partono da fine dicembre 2025. Siccome l’Heide Park apre
+solo a fine marzo, nella tabella ci sono soltanto giorni della stagione 2026
+(dati al 25 settembre 2026), ogni attrazione con il proprio numero di giorni
+misurati:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 

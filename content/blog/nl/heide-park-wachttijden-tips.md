@@ -216,9 +216,9 @@ zijn.
 
 ## Hoe druk het echt is
 
-De tabel rekent met de meetdagen van de afgelopen twee jaar, elke baan met zijn
-eigen aantal. Voor Heide Park zijn dat tot nu toe alleen dagen uit het seizoen
-2026 (stand 25 september 2026):
+Onze metingen lopen sinds eind december 2025. Omdat Heide Park pas eind maart
+opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
+25 september 2026), elke baan met zijn eigen aantal meetdagen:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 

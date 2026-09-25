@@ -1,6 +1,5 @@
 ---
-title: 'Plopsaland Deutschland: diez Fright Nights, dos casas del terror nuevas
-y un schnitzel que no querrás pedir'
+title: 'Plopsaland Deutschland: diez Fright Nights, dos casas del terror nuevas y un schnitzel que no querrás pedir'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick

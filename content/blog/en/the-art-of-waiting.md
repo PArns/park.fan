@@ -405,7 +405,8 @@ How often our forecasts match reality is on the [Fancast page](/fancast).
 1955: no coaster, no thrill. Yet at the
 [Disneyland Park in Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
 it has the longest median wait of any attraction, and at the Magic Kingdom in
-Orlando it sits in the leading group (median over the last two years, as of
+Orlando it sits in the leading group. That is the median over every day we
+have measured since our measurements began in late December 2025 (as of
 25 September 2026). In Paris the queue is already longer than at any other ride
 in the first hour after opening, as if there were free beer at the end. It
 isn’t like that everywhere: in Anaheim, Tokyo and Shanghai, where the ride also
@@ -487,15 +488,17 @@ in Paris. The difference sits in the denominator, in everything else the demand
 can spread across. In Paris, Peter Pan stands among dozens of alternatives. In
 Brühl, on a holiday Saturday, what feels like half the park has the same single
 ride in mind. And Voltron at Europa-Park, at 1,600 an hour, is only a third
-higher, yet over the last two years it has had the shorter median queue (as of
-25 September 2026). My explanation: the other coasters next door siphon demand
+higher, yet since late December 2025 it has had the shorter median queue (as
+of 25 September 2026). My explanation: the other coasters next door siphon demand
 away.
 
 That’s why every park page on park.fan shows long-term statistics alongside
 the live wait times. “Busy” is relative: the same wait is a bad day in Brühl
 and an ordinary one at the Magic Kingdom. Look at the same
-data set for both parks, typical wait times by month and weekday, from the
-operating days we measured over the last two years.
+data set for both parks, typical wait times by month and weekday, from every
+operating day we have measured. Our measurements started in late December 2025
+and have been continuous only since April 2026; February, October and November
+are still missing entirely (as of 25 September 2026).
 
 **First [Phantasialand](ref:phantasialand?bare) in Brühl**, the compact extreme
 case: when a number goes up here, it goes up steeply, because everything
@@ -507,8 +510,8 @@ concentrates on a few headliners.
 
 **And now the [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, the
 busiest park in the world: a higher base load, but spread across dozens of
-attractions. Note how different the “typical” minutes and the seasonal curve
-across the year already look.
+attractions. Note how different the “typical” minutes and the curve across the
+months measured so far already look.
 
 ```stats-widget slug=magic-kingdom-park
 
