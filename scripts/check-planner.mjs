@@ -175,6 +175,8 @@ const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
 // carry the attribute and exactly one is ever displayed, so `:visible` is the whole
 // selector — a bare attribute would resolve `.first()` to the hidden one.
 const LAUNCHER = '[data-planner-launcher]:visible';
+/** The launcher's question when the day it would open on is over. */
+const PAST_DAY_QUESTION = '[data-confirm-dialog="planner-past-day"]';
 const SHEET = '[data-slot="sheet-content"]';
 
 const results = [];
@@ -534,6 +536,25 @@ async function openSheet(page, where) {
         .catch(() => true)
     : true;
 
+  // Whether the launcher will ASK before it opens: the seeded plan's active day
+  // has entries and is over. The question is a modal dialog on every viewport,
+  // so it waits out the hydration a modal sheet does.
+  const asksFirst = await page
+    .evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const park = plan?.parks?.[plan?.activeParkSlug];
+      const day = park?.days?.[plan?.activeDate];
+      if (!day || !(day.entries?.length > 0)) return false;
+      const today = new Intl.DateTimeFormat('en-CA', {
+        timeZone: park.timezone ?? Intl.DateTimeFormat().resolvedOptions().timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(new Date());
+      return day.date < today;
+    })
+    .catch(() => false);
+
   let blame = '';
   let presses = 0;
   for (let attempt = 1; attempt <= SHEET_ATTEMPTS; attempt += 1) {
@@ -546,13 +567,28 @@ async function openSheet(page, where) {
       // hydration warning from one) and costs the run real time: with the wait
       // on every press the run took 1468 s, and one desktop assertion that reads
       // a URL 1500 ms after a click went red twice in a row.
-      if (modal || presses > 0) await settleHydration(page);
+      if (modal || asksFirst || presses > 0) await settleHydration(page);
       presses += 1;
       const failure = await launcher
         .click({ timeout: SHEET_PRESS_MS })
         .then(() => null)
         .catch((error) => String(error.message).split('\n')[0].trim().slice(0, 160));
       if (failure) blame = failure;
+    }
+    // A plan whose active day is over is asked about before it opens
+    // (`pastActiveDay`), and every step that seeds one is there to look at
+    // that day — which is the question's „Vergangenen Tag ansehen".
+    if (asksFirst) {
+      const question = page.locator(PAST_DAY_QUESTION);
+      const asked = await question
+        .waitFor({ state: 'visible', timeout: SHEET_ARRIVE_MS })
+        .then(() => true)
+        .catch(() => false);
+      if (asked)
+        await question
+          .locator('[data-confirm-cancel]')
+          .click()
+          .catch(() => {});
     }
     const open = await arriving
       .waitFor({ state: 'visible', timeout: SHEET_ARRIVE_MS })
@@ -4788,6 +4824,139 @@ step: {
   check('und zeigt, was an dem Tag wirklich anstand', /35/.test(rowText), rowText);
 
   await past.close();
+}
+
+// ── A day that is over is asked about, not opened ───────────────────────────
+// The panel opens on the ACTIVE day, and after a trip that is the trip. The two
+// ways in that name no day — the edge tab, the header button on a phone — ask
+// first: look at the day that is over, or plan a new one. Escape opens nothing.
+step: {
+  const YESTERDAY = parkDay(-1);
+  const seedWalked = (page) =>
+    page.evaluate(
+      ([plan, yesterday]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [yesterday]: {
+            date: yesterday,
+            entries: [
+              {
+                id: 'walked-1',
+                attractionSlug: 'taron',
+                attractionName: 'Taron',
+                startMinute: 600,
+                done: true,
+                actualWait: 35,
+              },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = yesterday;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      },
+      [PLAN, YESTERDAY]
+    );
+
+  const ask = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(ask);
+  await ask.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await seedWalked(ask);
+  await ask.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  // The question is a MODAL dialog even where the panel is not, so it waits out
+  // the hydration like every modal open does — see `settleHydration`.
+  await settleHydration(ask);
+
+  const question = ask.locator(PAST_DAY_QUESTION);
+  const openSheets = () => ask.locator(`${SHEET}[data-state="open"]`).count();
+  const pressLauncher = async () => {
+    await ask.locator(LAUNCHER).first().click();
+    await question.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => {});
+    await ask.waitForTimeout(300);
+  };
+
+  await pressLauncher();
+  const asked = { question: await question.count(), sheets: await openSheets() };
+  check(
+    'ein vorbeigegangener Tag öffnet nicht, der Planer fragt',
+    asked.question === 1 && asked.sheets === 0,
+    `Frage ${asked.question} · offene Sheets ${asked.sheets}`
+  );
+  if (asked.question !== 1) {
+    await ask.close();
+    break step;
+  }
+  const said = ((await question.textContent()) ?? '').replace(/\s+/g, ' ').trim();
+  check('und nennt Park und Tag', /Phantasialand/.test(said), said);
+
+  await ask.keyboard.press('Escape');
+  await ask.waitForTimeout(500);
+  check(
+    'Escape öffnet nichts',
+    (await question.count()) === 0 && (await openSheets()) === 0,
+    `Frage ${await question.count()} · offene Sheets ${await openSheets()}`
+  );
+
+  await pressLauncher();
+  await question.locator('[data-confirm-cancel]').click();
+  await ask
+    .locator(`${SHEET}[data-state="open"]`)
+    .first()
+    .waitFor({ state: 'visible', timeout: 15_000 })
+    .catch(() => {});
+  await ask.waitForTimeout(800);
+  const viewed = {
+    sheets: await openSheets(),
+    entry: await ask.locator('li[data-planner-entry="walked-1"]').count(),
+    active: await ask.evaluate(
+      () => JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}').activeDate
+    ),
+  };
+  check(
+    '„Vergangenen Tag ansehen" öffnet den vergangenen Tag',
+    viewed.sheets === 1 && viewed.entry === 1 && viewed.active === YESTERDAY,
+    `Sheets ${viewed.sheets} · Eintrag ${viewed.entry} · aktiv ${viewed.active}`
+  );
+
+  await ask.keyboard.press('Escape');
+  await ask.waitForTimeout(800);
+  await pressLauncher();
+  await question.locator('[data-confirm-action]').click();
+  await ask.waitForTimeout(1500);
+  const started = {
+    sheets: await openSheets(),
+    wizard: await ask.locator('[data-planner-wizard-next]:visible').count(),
+  };
+  check(
+    '„Neuen Tag planen" öffnet den Assistenten',
+    started.sheets === 1 && started.wizard === 1,
+    `Sheets ${started.sheets} · Assistent ${started.wizard}`
+  );
+  await ask.close();
+
+  // The header button, which is the phone's way in and reaches the launcher as
+  // a request rather than as a press of its own.
+  const phoneAsk = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+  });
+  noteErrors(phoneAsk);
+  await phoneAsk.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await seedWalked(phoneAsk);
+  await phoneAsk.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await settleHydration(phoneAsk);
+  await phoneAsk.locator(LAUNCHER).first().click();
+  const phoneQuestion = phoneAsk.locator(PAST_DAY_QUESTION);
+  await phoneQuestion.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => {});
+  check(
+    'am Handy fragt der Knopf im Kopf genauso',
+    (await phoneQuestion.count()) === 1 &&
+      (await phoneAsk.locator(`${SHEET}[data-state="open"]`).count()) === 0
+  );
+  await phoneAsk.close();
 }
 
 // ── The photos the payload already carries ──────────────────────────────────

@@ -51,6 +51,17 @@ export interface ConfirmDialogProps {
    * if they were made here first.
    */
   onConfirm: () => void;
+  /**
+   * Runs when the CANCEL BUTTON is pressed, and only then, before the dialog
+   * closes.
+   *
+   * For a question whose two buttons are both answers: the planner's past-day
+   * prompt offers „Vergangenen Tag ansehen" beside „Neuen Tag planen", and
+   * that first one opens the panel. Escape and the overlay still only close,
+   * which is why this cannot be `onOpenChange(false)`: a reflex away from the
+   * dialog must not count as a choice. Callers without it read as before.
+   */
+  onCancel?: () => void;
   tone?: ConfirmTone;
   /**
    * Greys out the way on, for a question whose answer can be empty.
@@ -80,6 +91,13 @@ export interface ConfirmDialogProps {
    * button already carries the tone.
    */
   icon?: LucideIcon;
+  /**
+   * Names the dialog for a script: `data-confirm-dialog` on the content, with
+   * `data-confirm-cancel` and `data-confirm-action` on the two buttons. A
+   * browser check that has to answer the question in any of six languages
+   * cannot find the buttons by their labels.
+   */
+  marker?: string;
 }
 
 /**
@@ -136,10 +154,12 @@ export function ConfirmDialog({
   confirmLabel,
   cancelLabel,
   onConfirm,
+  onCancel,
   tone = 'default',
   confirmDisabled = false,
   children,
   icon: Icon,
+  marker,
 }: ConfirmDialogProps) {
   const cancelRef = React.useRef<HTMLButtonElement>(null);
   const destructive = tone === 'destructive';
@@ -154,6 +174,7 @@ export function ConfirmDialog({
           buttons, and 512 px around them reads as a dialog somebody forgot to
           fill in. */}
       <DialogContent
+        data-confirm-dialog={marker}
         showCloseButton={false}
         {...(description ? {} : { 'aria-describedby': undefined })}
         onOpenAutoFocus={(event) => {
@@ -205,10 +226,24 @@ export function ConfirmDialog({
             `max-sm:min-h-11` on both, although the button scale already resolves
             `sm` and `default` to 44 px below `sm`. It is a floor rather than a
             second copy of that height, so a caller reaching for `lg` — the one
-            size with no phone tier — still clears the touch target. */}
-        <div className="border-border/60 flex shrink-0 items-center justify-end gap-2 border-t px-3 py-3 sm:px-6">
+            size with no phone tier — still clears the touch target.
+
+            `flex-wrap` for a pair that does not fit, which the planner's
+            past-day question is: two answers rather than an answer and a way
+            out, both named in full („Vergangenen Tag ansehen", „Neuen Tag
+            planen"), 71 px wider than the row at 320 px. Unwrapped, the first
+            button ran off the dialog's left edge. A pair that fits is
+            unchanged. */}
+        <div className="border-border/60 flex shrink-0 flex-wrap items-center justify-end gap-2 border-t px-3 py-3 sm:px-6">
           <DialogClose asChild>
-            <Button ref={cancelRef} variant="ghost" size="sm" className="max-sm:min-h-11">
+            <Button
+              ref={cancelRef}
+              variant="ghost"
+              size="sm"
+              className="max-sm:min-h-11"
+              onClick={onCancel}
+              data-confirm-cancel=""
+            >
               {cancelLabel}
             </Button>
           </DialogClose>
@@ -216,6 +251,7 @@ export function ConfirmDialog({
             variant={destructive ? 'destructive' : 'default'}
             className="max-sm:min-h-11"
             disabled={confirmDisabled}
+            data-confirm-action=""
             onClick={() => {
               onConfirm();
               onOpenChange(false);

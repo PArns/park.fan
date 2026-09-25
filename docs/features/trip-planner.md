@@ -488,6 +488,35 @@ bar came from the three preference controls, which moved into the burger sheet o
 
 `check:planner` finds whichever of the two is displayed through `[data-planner-launcher]:visible`.
 
+### A day that is over is asked about, not opened
+
+The panel opens on the active day, which is whatever the visitor last looked at, and after a trip
+that is the trip. The first click on the planner the morning after opened yesterday's plan, and a
+new day was two steps further in, behind the overview's „Neuen Tag planen" („wenn ein geplanter
+Tag in der Vergangenheit vorhanden ist, soll ein Klick auf den Planer diesen nicht öffnen").
+
+So the tab and the header button ask first. `pastActiveDay()` (`lib/planner/park-time.ts`) answers
+whether the active day has entries and lies before today in the park's own zone; if it does, the
+launcher sets `askingPastDay` instead of `open`, and the panel draws a `ConfirmDialog` outside the
+sheet: „Dein geplanter Tag ist vorbei", the park and the date, and two answers. „Neuen Tag planen"
+(`wizard.open`) opens the panel with the wizard on top, on the page's park where there is one;
+„Vergangenen Tag ansehen" opens the panel on the day as it was. Escape and the overlay open
+nothing, which is why the second answer is `ConfirmDialog`'s new `onCancel` and not its
+`onOpenChange(false)`.
+
+Only those two ask. Every other way in names its day (a calendar day, a park page's „Tag im …
+planen", a row on the planner's own page), and a day with nothing in it is not a planned day, so
+an empty husk left by `openDay` opens as before. The launcher decides for both: the tab calls
+`openOrAsk` directly, and the header button's request is told apart by its source in
+`answerRequest`, a callback and not a branch in the effect for the lint rule's reason. The dialog
+lives in the panel because the launcher is a lazy message boundary and may not read `planner`.
+
+`check:planner` seeds a ticked day yesterday, presses the tab and asserts the question and no
+sheet, then Escape (nothing), „Vergangenen Tag ansehen" (the sheet, on that day) and „Neuen Tag
+planen" (the sheet with the wizard), and the header button on a phone. `openSheet()` answers the
+question with „Vergangenen Tag ansehen" wherever a step seeds a past active day, and finds it by
+`data-confirm-dialog="planner-past-day"` rather than by its words.
+
 ## The axis is the park's day, and the canvas is not
 
 `buildDayGrid` answers a question about the **park** — when it opens, when it

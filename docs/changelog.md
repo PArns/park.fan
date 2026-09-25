@@ -4,6 +4,16 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – der Planer fragt, wenn der geplante Tag vorbei ist
+
+Ein Klick auf den Planer (die Lasche am Rand, am Handy der Knopf im Kopf) öffnete immer den
+zuletzt angesehenen Tag, nach einem Parkbesuch also den Tag, der schon vorbei ist. Jetzt fragt er
+in diesem Fall erst: „Dein geplanter Tag ist vorbei", mit Park und Datum, und zwei Antworten.
+„Neuen Tag planen" öffnet den Assistenten, auf einer Parkseite gleich mit diesem Park.
+„Vergangenen Tag ansehen" öffnet den Tag wie bisher. Escape öffnet nichts. Wege, die einen Tag
+schon nennen (ein Tag im Kalender, „Tag im … planen"), fragen nicht.
+Details: [trip-planner.md](features/trip-planner.md#a-day-that-is-over-is-asked-about-not-opened).
+
 ## Unreleased – Tagesplaner am Handy: Suche in einer Zeile, Verschieben im 5-Minuten-Raster
 
 In der Handy-Ansicht unter einer Maus (ein schmales Browserfenster) stand „Eigener Block" als

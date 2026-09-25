@@ -2461,6 +2461,11 @@
       "progress": "Voortgang",
       "nextUp": "Daarna naar {park}. Daar sleep je attracties uit de lijst in de dag."
     },
+    "pastDay": {
+      "title": "Je geplande dag is voorbij",
+      "body": "{park}, {date}. Wil je die dag nog eens bekijken of een nieuwe plannen?",
+      "view": "Afgelopen dag bekijken"
+    },
     "party": {
       "add": "Wie gaat mee?",
       "tooShort": "Minimumlengte hoger dan de kleinste persoon in het plan",
