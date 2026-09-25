@@ -1,31 +1,53 @@
+import { useFormatter } from 'next-intl';
 import { ArrowRight, Megaphone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { Badge } from '@/components/ui/badge';
 import { newsPostPath } from '@/lib/blog/paths';
 import { cn } from '@/lib/utils';
+import type { NewsMenu } from '@/lib/navigation/news-menu';
 
 /** The newest news post, as the chip draws it. Resolved on the server from the blog manifest. */
 export interface LatestNews {
   slug: string;
   title: string;
+  /** Publication date, `YYYY-MM-DD`. */
+  date: string;
   /** The news section's label in this locale ("News", "Actualités"), from `categories.json`. */
   label: string;
 }
 
 /**
- * The newest news post as one chip: the section's label in the accent, the headline, an arrow.
+ * The chip's data out of the news menu, which already holds the newest item and the label. One
+ * derivation for both hosts (the homepage hero and the phone menu), so the two chips cannot
+ * disagree about which post is the newest or what the section is called.
+ */
+export function latestNewsFrom(
+  menu: Pick<NewsMenu, 'items' | 'label'> | undefined
+): LatestNews | null {
+  const newest = menu?.items[0];
+  if (!menu || !newest) return null;
+  return { slug: newest.slug, title: newest.title, date: newest.date, label: menu.label };
+}
+
+/**
+ * The newest news post as one chip: the section's label, the date, the headline, an arrow.
  *
  * Used where a whole news row would cost too much room: in the homepage hero beside the
- * open-parks badge, which is the only news a phone sees before the blog chapter at the bottom of
- * the page (the band under the hero is `lg` only), and at the top of the phone menu.
+ * open-parks badge — the only news above the fold on any screen, since the hero is `min-h-dvh`,
+ * and the only news a phone sees before the blog chapter at the foot of the page (the band under
+ * the hero is `lg` only) — and at the top of the phone menu.
  *
- * One line by construction in the hero — the headline truncates, so the chip is exactly as tall as
+ * One line by construction in the hero: the headline truncates, so the chip is exactly as tall as
  * the badge beside it and never pushes the hero down. The phone menu lets it take two
- * (`twoLines`). No age on it on purpose: `NewsAge` adds its relative half after hydration, and
- * inside a truncating line that would slide the headline sideways under the reader's eyes. The
- * post itself is one tap away and says how old it is.
+ * (`twoLines`).
  *
- * No `'use client'` and no hooks, so the client header and the client hero render the same
- * component the server would.
+ * **News shows its age, and here it is the date.** Not `NewsAge`: that one adds its relative half
+ * ("vor 3 Tagen") after hydration, and inside a truncating line the growth would slide the
+ * headline sideways under the reader's eyes. The date is formatted in UTC, the zone the
+ * frontmatter's bare day parses into, so the server and the browser print the same day.
+ *
+ * No `'use client'`: both hosts are client components already, and `useFormatter` works on either
+ * side.
  */
 export function LatestNewsChip({
   news,
@@ -40,6 +62,13 @@ export function LatestNewsChip({
   twoLines?: boolean;
   className?: string;
 }) {
+  const format = useFormatter();
+  const date = format.dateTime(new Date(`${news.date}T00:00:00Z`), {
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'UTC',
+  });
+
   return (
     <Link
       href={newsPostPath(news.slug) as '/'}
@@ -50,12 +79,19 @@ export function LatestNewsChip({
         className
       )}
     >
-      <span className="bg-primary text-primary-foreground inline-flex h-[22px] shrink-0 items-center gap-1 rounded-full px-2 text-[10px] font-bold tracking-[0.12em] uppercase">
-        <Megaphone className="h-3 w-3" aria-hidden="true" />
+      <Badge
+        variant="default"
+        className="h-[22px] px-2 text-[10px] font-bold tracking-[0.12em] uppercase"
+      >
+        <Megaphone aria-hidden="true" />
         {news.label}
-      </span>
-      <span className={cn('min-w-0 font-medium', twoLines ? 'line-clamp-2' : 'truncate')}>
-        {news.title}
+      </Badge>
+      <span className={cn('min-w-0', twoLines ? 'line-clamp-2' : 'truncate')}>
+        <time dateTime={news.date} className="text-muted-foreground tabular-nums">
+          {date}
+        </time>
+        <span className="text-muted-foreground/60"> · </span>
+        <span className="font-medium">{news.title}</span>
       </span>
       <ArrowRight
         className="text-primary h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"

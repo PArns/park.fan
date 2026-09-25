@@ -8,7 +8,20 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import type { Locale } from '@/i18n/config';
-import { Menu, MapPin, ChevronDown } from 'lucide-react';
+import {
+  BookOpen,
+  CalendarPlus,
+  CalendarRange,
+  ChevronDown,
+  Compass,
+  Earth,
+  House,
+  MapPin,
+  Megaphone,
+  Menu,
+  Newspaper,
+  type LucideIcon,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
@@ -18,7 +31,7 @@ import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
-import { LatestNewsChip } from '@/components/blog/latest-news-chip';
+import { LatestNewsChip, latestNewsFrom } from '@/components/blog/latest-news-chip';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
@@ -79,6 +92,29 @@ interface HeaderProps {
    * catalog and this is a Client Component — only four URLs cross the boundary.
    */
   featuredParks?: FeaturedParkCard[];
+}
+
+/** One destination in the phone sheet: its icon in the accent, then its label. */
+function SheetNavLink({
+  href,
+  icon: Icon,
+  children,
+}: {
+  href: string;
+  icon: LucideIcon;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      prefetch={false}
+      data-sheet-stagger
+      className="hover:text-primary flex items-center gap-3 text-lg font-medium transition-colors"
+    >
+      <Icon className="text-primary size-5 shrink-0" aria-hidden="true" />
+      {children}
+    </Link>
+  );
 }
 
 export function Header({
@@ -163,6 +199,7 @@ export function Header({
   const mobileMenuOpen = menuOpenedOn === pathname;
   const setMobileMenuOpen = (next: boolean) => setMenuOpenedOn(next ? pathname : null);
   const sheetRef = useSheetReveal(mobileMenuOpen);
+  const latestNews = latestNewsFrom(newsMenu);
 
   useEffect(() => {
     // Only hero pages have a transparent-at-the-top header, so only they need the scroll
@@ -682,6 +719,12 @@ export function Header({
                   // scroll container the close button no longer sits in.
                   className="mt-8 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
                   aria-label="Mobile navigation"
+                  // A tap on a link to the page already showing changes no `pathname`, so the
+                  // close-on-navigation above never fires and the sheet just stays open — the
+                  // news chip made that the common case on the newest post. Any link closes it.
+                  onClick={(event) => {
+                    if ((event.target as HTMLElement).closest('a')) setMobileMenuOpen(false);
+                  }}
                 >
                   {/* The three preferences the bar no longer carries on a phone. FIRST in the
                       sheet, above the favourites: at the end of the list they sat at y=662 of a
@@ -714,67 +757,55 @@ export function Header({
                   {/* The newest news post, as the same chip the homepage hero draws beside its
                       badge — a find like the nearby park above, not a menu entry. From the
                       news menu's own data, so it costs the sheet nothing new. */}
-                  {newsMenu?.items[0] && (
+                  {latestNews && (
                     <div data-sheet-stagger>
-                      <LatestNewsChip
-                        news={{
-                          slug: newsMenu.items[0].slug,
-                          title: newsMenu.items[0].title,
-                          label: newsMenu.label,
-                        }}
-                        twoLines
-                        className="w-full text-sm"
-                      />
+                      <LatestNewsChip news={latestNews} twoLines className="w-full text-sm" />
                     </div>
                   )}
-                  {/* Favorites, first — on a phone this sheet IS the navigation, and a returning
-                      visitor's own parks are the shortest route out of it. Radix unmounts the
-                      sheet's contents when it closes, so `open` is only ever true here and the
-                      panel's request is gated by the sheet itself. */}
+                  {/* Favorites before the destinations (only the two finds, nearby park and
+                      newest news, stand above them) — on a phone this sheet IS the navigation,
+                      and a returning visitor's own parks are the shortest route out of it. Radix
+                      unmounts the sheet's contents when it closes, so `open` is only ever true
+                      here and the panel's request is gated by the sheet itself. */}
                   <div data-sheet-stagger className="border-border/60 border-b pb-4">
                     <FavoritesMenuPanel open variant="sheet" />
                   </div>
+                  {/* Every entry leads with its icon, in the accent (Patrick, 2026-09-25): the
+                      same glyph the destination carries elsewhere — `Newspaper` for the blog as
+                      on the homepage, `Megaphone` for news as on every news label, the "more"
+                      panel's three for its three hubs, `CalendarPlus` from the planner's button —
+                      so the sheet does not invent a second icon for a place that has one. */}
                   {showBlog && (
-                    <Link
-                      href="/blog"
-                      prefetch={false}
-                      data-sheet-stagger
-                      className="hover:text-primary text-lg font-medium transition-colors"
-                    >
+                    <SheetNavLink href="/blog" icon={Newspaper}>
                       {t('blog')}
-                    </Link>
+                    </SheetNavLink>
                   )}
                   {newsMenu && newsMenu.items.length > 0 && (
-                    <Link
-                      href={newsMenu.path}
-                      prefetch={false}
-                      data-sheet-stagger
-                      className="hover:text-primary text-lg font-medium transition-colors"
-                    >
+                    <SheetNavLink href={newsMenu.path} icon={Megaphone}>
                       {newsMenu.label}
-                    </Link>
+                    </SheetNavLink>
                   )}
-                  <Link
-                    href="/"
-                    prefetch={false}
-                    data-sheet-stagger
-                    className="hover:text-primary text-lg font-medium transition-colors"
-                  >
+                  <SheetNavLink href="/" icon={House}>
                     {t('home')}
-                  </Link>
+                  </SheetNavLink>
                   {/* Discovery in the sheet: a native <details>, so the continents open with no
                       JavaScript at all and the disclosure state is the browser's, not ours. The
                       countries stay out of it — the sheet is a phone-sized column, and the
                       continent hubs are one tap from the parks that matter. */}
                   <details className="group" data-sheet-stagger>
                     <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
-                      {t('explore')}
+                      <span className="flex items-center gap-3">
+                        <Earth className="text-primary size-5 shrink-0" aria-hidden="true" />
+                        {t('explore')}
+                      </span>
                       <ChevronDown
                         className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
                         aria-hidden="true"
                       />
                     </summary>
-                    <div className="border-border/60 mt-2 ml-1 flex flex-col gap-2 border-l pl-3">
+                    {/* `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under
+                        the label's first letter (20 px icon + 12 px gap). */}
+                    <div className="border-border/60 mt-2 ml-2.5 flex flex-col gap-2 border-l pl-5">
                       <Link
                         href="/parks"
                         prefetch={false}
@@ -794,38 +825,18 @@ export function Header({
                       ))}
                     </div>
                   </details>
-                  <Link
-                    href={bestTimePath}
-                    prefetch={false}
-                    data-sheet-stagger
-                    className="hover:text-primary text-lg font-medium transition-colors"
-                  >
+                  <SheetNavLink href={bestTimePath} icon={CalendarRange}>
                     {t('bestTime')}
-                  </Link>
-                  <Link
-                    href={glossaryPath}
-                    prefetch={false}
-                    data-sheet-stagger
-                    className="hover:text-primary text-lg font-medium transition-colors"
-                  >
+                  </SheetNavLink>
+                  <SheetNavLink href={glossaryPath} icon={BookOpen}>
                     {t('glossary')}
-                  </Link>
-                  <Link
-                    href={howtoPath}
-                    prefetch={false}
-                    data-sheet-stagger
-                    className="hover:text-primary text-lg font-medium transition-colors"
-                  >
+                  </SheetNavLink>
+                  <SheetNavLink href={howtoPath} icon={Compass}>
                     {t('howto')}
-                  </Link>
-                  <Link
-                    href={plannerPath}
-                    prefetch={false}
-                    data-sheet-stagger
-                    className="hover:text-primary text-lg font-medium transition-colors"
-                  >
+                  </SheetNavLink>
+                  <SheetNavLink href={plannerPath} icon={CalendarPlus}>
                     {t('planner')}
-                  </Link>
+                  </SheetNavLink>
                   {/* Dieselbe Zeile wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
                       demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
                       Besucher suchen, diese sind Ziele, die man findet. Hier stehen drei davon und

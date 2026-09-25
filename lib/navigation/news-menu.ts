@@ -17,7 +17,8 @@ import { trimExcerpt } from '@/lib/navigation/blog-menu';
  * Drawn differently from the blog panel on purpose. An article is chosen by its topic and its
  * length, so the blog panel is covers, teasers and reading times. A news item is chosen by what
  * happened and when, so this panel is one lead with its cover and teaser, and after it a column of
- * headlines on a time line, each with its age (`NewsAge`) and nothing else.
+ * headlines on a time line, each led by its age (`NewsAge`) with a small cover on the right.
+ * No image is fetched until the panel opens: the band is `hidden`, and `next/image` is lazy.
  *
  * No API call — the generated blog manifest, read synchronously, like the blog menu.
  */
@@ -35,7 +36,7 @@ export interface NewsMenuItem {
   date: string;
   /** The lead only: its teaser, already cut. */
   excerpt?: string;
-  /** The lead only: its cover, versioned. The headlines carry no picture. */
+  /** Its cover, versioned — the lead's large, a headline's as a thumbnail on the right. */
   image?: string;
   /** The cover's focal point as a CSS `object-position` — the panel cannot read the manifest. */
   imagePosition?: string;
@@ -59,19 +60,17 @@ export function getNewsMenu(locale: Locale): NewsMenu {
     path: NEWS_INDEX_PATH,
     total: news.length,
     items: news.slice(0, NEWS_MENU_LIMIT).map((post, index) => {
+      const src = post.frontmatter.coverImage?.src;
       const item: NewsMenuItem = {
         slug: post.slug,
         title: post.frontmatter.title,
         date: post.frontmatter.date,
-      };
-      if (index > 0) return item;
-      const src = post.frontmatter.coverImage?.src;
-      return {
-        ...item,
-        excerpt: trimExcerpt(post.frontmatter.excerpt, LEAD_EXCERPT_CHARS),
         image: versionedPath(src) ?? src,
         imagePosition: objectPositionForSrc(src, '50% 50%'),
       };
+      return index > 0
+        ? item
+        : { ...item, excerpt: trimExcerpt(post.frontmatter.excerpt, LEAD_EXCERPT_CHARS) };
     }),
   };
 }

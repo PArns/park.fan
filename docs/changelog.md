@@ -11,7 +11,9 @@ Neben dem „Parks jetzt geöffnet"-Badge im Hero der Startseite steht die neues
 das bisher gar nicht zu sehen, bis man ans Ende der Seite scrollte, weil das Band unter dem Hero mit
 seiner News-Zeile erst ab `lg` gezeichnet wird. Derselbe Chip steht oben im Handy-Menü. „Fotos
 hochladen" ist dort raus; das Formular bleibt über das Banner jeder Park- und Ride-Seite und über
-das „Mehr"-Panel am Desktop erreichbar.
+das „Mehr"-Panel am Desktop erreichbar. Die Einträge im Handy-Menü haben jetzt Icons, und ein Tipp
+auf einen Link schließt das Menü auch dann, wenn er auf die gerade offene Seite führt. Im
+News-Panel des Headers hat jede Meldung in der Zeitleiste rechts ihr Bild.
 
 Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md).
 

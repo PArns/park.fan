@@ -19,7 +19,9 @@ import type { NewsMenu } from '@/lib/navigation/news-menu';
  * accent colour for the first seven days) rather than a category, which would be "News" six times.
  *
  * The time line on the right is a border with a dot per item, not a list of cards: headlines one
- * under the other read as a sequence of events, which is what they are.
+ * under the other read as a sequence of events, which is what they are. Each carries its own cover
+ * as a thumbnail at the right end of its row (Patrick, 2026-09-25), the side the `/news` stream
+ * puts its covers on, so the time line keeps its left edge for the dots.
  *
  * `navigation` for the strings, never `blog` — see `BlogMenuPanel` for the 3 KB that one
  * `useTranslations('blog')` in the header chrome costs every page.
@@ -85,12 +87,30 @@ export function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
                   <Link
                     href={newsPostPath(item.slug) as '/'}
                     prefetch={false}
-                    className="group hover:bg-muted/60 ml-3 block rounded-lg px-2 py-1.5 transition-colors"
+                    className="group hover:bg-muted/60 ml-3 flex items-start gap-3 rounded-lg px-2 py-1.5 transition-colors"
                   >
-                    <NewsAge date={item.date} />
-                    <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 block text-sm leading-snug font-semibold text-pretty transition-colors">
-                      {item.title}
+                    <span className="min-w-0 flex-1">
+                      <NewsAge date={item.date} />
+                      <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 block text-sm leading-snug font-semibold text-pretty transition-colors">
+                        {item.title}
+                      </span>
                     </span>
+                    {/* 16:10 on 5.5 rem: two lines of headline plus the age line are ~56 px, and
+                        a thumbnail taller than its text would push the rows apart. */}
+                    {item.image && (
+                      <span className="bg-muted relative block aspect-[16/10] w-22 shrink-0 overflow-hidden rounded-md">
+                        <Image
+                          src={item.image}
+                          alt=""
+                          fill
+                          sizes="88px"
+                          style={
+                            item.imagePosition ? { objectPosition: item.imagePosition } : undefined
+                          }
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}

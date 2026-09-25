@@ -81,7 +81,8 @@ export function MoreMenuLinks({ variant }: { variant: 'panel' | 'sheet' }) {
       className={`border-border/60 flex flex-wrap items-center border-t ${
         // `min-h-11` in the sheet: it is the navigation on a phone, and this is the one row here
         // whose hit area does not already come from its type size. `gap-y` is load-bearing with
-        // it — the row wraps to two lines in all six locales at 320 and 360 px, and without it two
+        // it — the row wrapped to two lines in all six locales at 320 and 360 px while it held three
+        // entries (it holds two since `/contribute` left the sheet), and without it two
         // 44 px tap targets abut at exactly 0 px.
         isSheet ? 'gap-x-5 gap-y-1 pt-2' : 'gap-x-6 gap-y-2 pt-3'
       }`}
