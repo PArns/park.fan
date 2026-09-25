@@ -103,13 +103,13 @@ Restaurant.
 
 En 2026, Halloween tombe un samedi, et c’est le seul jour de l’année où les
 adultes aussi peuvent entrer déguisés. Le Parc Disneyland reste ouvert jusqu’à
-**23 h**, avec des rencontres de personnages spéciales, un feu d’artifice unique
+**23 h**, avec des rencontres de personnages spéciales, un feu d’artifice unique
 et des friandises offertes par M&M’S. Pas besoin de billet de soirée à part :
 tout est compris dans l’entrée normale, c’est-à-dire un billet daté dont le
 prix, selon Disney, varie avec la saison et la demande.
 
 Les règles pour les déguisements figurent déjà sur la page Halloween du parc.
-Les masques sont interdits à partir de 12 ans (sauf masques médicaux), tout
+Les masques sont interdits à partir de 12 ans (sauf masques médicaux), tout
 comme les costumes qui couvrent entièrement le visage ou la tête, les vêtements
 qui traînent par terre, les longues capes, les bâtons et tout ce qui ressemble à
 une arme. Qui vient en personnage Disney s’engage à ne pas poser pour des photos

@@ -44,9 +44,10 @@ seo:
 
 À l’automne 2007, [Europa-Park](ref:europa-park) lâchait pour la première fois,
 le soir, des comédiens couverts de faux sang sur ses visiteurs. Ça s’appelait
-les « Terenzi Horror Nights », du nom du chanteur Marc Terenzi, qui avait
-rapporté l’idée des États-Unis avec Michael Mack. Depuis 2017, l’événement
-s’appelle Traumatica, ce qui fait de 2026 la dixième édition sous ce nom. La
+les « Terenzi Horror Nights », du nom du chanteur Marc Terenzi, qui les a organisées
+avec Michael Mack jusqu’en 2012. Depuis 2017, l’événement porte le nom de
+Traumatica, d’abord sous la forme « Horror Nights – Traumatica », ce qui fait de
+2026 la dixième édition sous ce nom. La
 devise additionne les deux : « 20 ans d’horreur, 10 ans de Traumatica ».
 
 L’avant-première a lieu ce soir, mercredi 23 septembre. La première officielle
@@ -55,9 +56,11 @@ suit le vendredi 25 septembre, et la saison se poursuit jusqu’au samedi
 
 ## Les nouveautés de l’anniversaire
 
-**THE HOTEL** est la première expérience en contact physique de Traumatica. On
-entre seul dans un hôtel abandonné, sans groupe derrière lequel se cacher, et
-les comédiens ont le droit de vous toucher. D’après le
+**THE HOTEL** est une nouveauté conçue comme une expérience en contact physique.
+On entre seul dans un hôtel abandonné, sans groupe derrière lequel se cacher, et
+les comédiens ont le droit de vous toucher. D’après l’organisateur, on est aussi
+touché dans le Murderdome, mais c’est le seul endroit qu’on traverse seul de
+bout en bout. D’après le
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html),
 elle n’est pas accessible en fauteuil roulant et réservée aux 18 ans et plus.
 Elle coûte 29 € en plus du billet Traumatica. Combien de temps on y reste, le
@@ -86,10 +89,11 @@ des obstacles en plus et de nouveaux tronçons de parcours.
   recherche d’enfants disparus
 - Murderdome – Bonus Round, avec les nouveaux obstacles dont on parlait plus haut
 - Studio-13 – Callback, un casting de film pour un rôle dont vous ne voulez pas
-- THE HOTEL, seul et à partir de 18 ans
+- The Field, une promenade du soir dans un champ de maïs où vous n’êtes pas seul
 
-Il y a aussi Brain Shocker, un court trajet en réalité virtuelle à 6 €, des
-spectacles sur scène et des comédiens qui chassent sur tout le site.
+THE HOTEL ne fait pas partie des huit, il est payant en supplément. Il y a aussi
+Brain Shocker, un court trajet en réalité virtuelle à 6 €, des spectacles sur
+scène, le spectacle sur glace et des comédiens qui chassent sur tout le site.
 
 ## Qui peut entrer, et combien ça coûte
 
@@ -99,8 +103,8 @@ Une photo sur le téléphone ne suffit pas, même avec le regard le plus
 convaincant. THE HOTEL, THE FORBIDDEN et le Vampire’s Club sont réservés aux
 18 ans et plus.
 
-L’événement a lieu du vendredi au dimanche, plus trois jeudis : les 22 et
-29 octobre et le 5 novembre. L’accès ouvre à 17 h 45, le food court à 18 h, et
+L’événement a lieu du vendredi au dimanche, sauf le dimanche 27 septembre, plus
+trois jeudis : les 22 et 29 octobre et le 5 novembre. L’accès ouvre à 17 h 45, le food court à 18 h, et
 les attractions d’horreur tournent de 19 h à 23 h 30.
 
 | Billet                        | Prix               |
@@ -128,3 +132,6 @@ Toutes les dates et les billets sont sur la
 [page Traumatica d’Europa-Park](https://www.europapark.de/en/events/traumatica).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 septembre 2026 : la première version plaçait THE HOTEL en huitième attraction d’horreur. THE HOTEL est une expérience en supplément avec son propre billet ; la huitième attraction est The Field. Elle présentait aussi THE HOTEL comme la première expérience en contact physique de Traumatica, alors que d’après l’organisateur on est également touché dans le Murderdome. Nous avons ajouté qu’il n’y a pas de soirée le dimanche 27 septembre. Le 25 septembre, le site de Traumatica affiche l’Event Pass à partir de 45 €.
