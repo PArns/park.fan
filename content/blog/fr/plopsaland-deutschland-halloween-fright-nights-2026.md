@@ -1,5 +1,6 @@
 ---
-title: 'Plopsaland Deutschland : dix Fright Nights, deux nouvelles maisons hantées et un schnitzel qu’on ne commande pas'
+title: 'Plopsaland Deutschland : dix Fright Nights, deux nouvelles maisons
+hantées et un schnitzel qu’on ne commande pas'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -83,7 +84,8 @@ pas en tant que client.
 
 Deux spectacles sont nouveaux aussi : le **Monster Release Show « Freaks
 Reloaded »** avec Reddles, le clown attitré des Fright Nights, et le spectacle
-de catch **« The Killing Games »**, où un seul combattant quitte le ring vivant. Les deux formats existaient déjà
+de catch **« The Killing Games »**, où un seul combattant quitte le ring vivant.
+Les deux formats existaient déjà
 en 2025, avec une autre histoire, sous les noms « Freaks Unleashed » et
 « Night of Anarchy ».
 Le spectacle de feu Flames of Valhalla, avec ses Vikings, revient. Chaque
@@ -113,7 +115,8 @@ l’entrée**.
 
 Chaque maison fonctionne sur créneau horaire, choisi à l’achat. Seul le
 Nightmare Society Pass s’en passe, et il donne en plus accès à un espace
-réservé pendant les spectacles, dans la limite des places. Les abonnés Plopsaland entrent aux Fright Nights sans
+réservé pendant les spectacles, dans la limite des places. Les abonnés
+Plopsaland entrent aux Fright Nights sans
 supplément et reçoivent jusqu’au 30 septembre, dans la limite des stocks, un
 billet gratuit pour Mad Rat.
 
@@ -141,7 +144,8 @@ Toverland cet automne est dans le
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Billets, créneaux et détails :
-[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/fr/plopsaland-deutschland/shows-evenements/halloween-fright-nights).
+[plopsa.com → Halloween Fright
+Nights](https://www.plopsa.com/fr/plopsaland-deutschland/shows-evenements/halloween-fright-nights).
 
 — Patrick
 

@@ -79,7 +79,8 @@ demi-heure de route au sud-est de Bruxelles, moins de trois heures depuis
 Cologne ou Aix-la-Chapelle. L’ouverture date du **26 juillet 1975**, dix-neuf
 ans avant que son pendant néerlandais ne reprenne le nom Walibi en 1994 (le site
 de Biddinghuizen est plus ancien : le parc agricole Flevohof y a ouvert en 1971,
-et le groupe Walibi l’a racheté en 1992). Le nom « Walibi » est la contraction des trois communes sur lesquelles le parc est bâti :
+et le groupe Walibi l’a racheté en 1992). Le nom « Walibi » est la contraction
+des trois communes sur lesquelles le parc est bâti :
 **Wa**vre, **Li**mal et **Bi**erges. Ce que le parc fait de ce nom à Halloween est
 dans notre [guide Halloween](/blog/halloween-parcs-attractions-2026).
 
@@ -420,8 +421,8 @@ en 2001, l’année même où son parc est brièvement devenu Six Flags Belgium.
 ### Qu’est-ce que « Worlds of Walibi » ?
 
 Le plan d’investissement annoncé par le parc en 2017 : environ 100 millions
-d’euros pour huit nouveaux mondes thématiques et dix attractions, à livrer pour
-2023. Quatre mondes sont là, dont les plus gros morceaux sont
+d’euros pour huit nouveaux mondes thématiques et dix attractions, à livrer
+pour 2023. Quatre mondes sont là, dont les plus gros morceaux sont
 [Kondaa](ref:walibi-belgium/kondaa) (2021) et la zone portuaire **Dock World**
 avec [Mecalodon](ref:walibi-belgium/mecalodon) (2025). Viendra ensuite, en
 2028, Festival World avec le Loup-Garou transformé par RMC, et le plan court

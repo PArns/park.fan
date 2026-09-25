@@ -80,7 +80,8 @@ hora de coche al sureste de Bruselas y a menos de tres horas de Colonia o
 Aquisgrán. Abrió el **26 de julio de 1975**, diecinueve años antes de que su
 homólogo neerlandés recibiera el nombre de Walibi en 1994 (el recinto de
 Biddinghuizen es más antiguo: allí abrió en 1971 el parque agrícola Flevohof,
-que el grupo Walibi compró en 1992). El nombre «Walibi» es la abreviatura de los tres municipios sobre cuyo término está el parque:
+que el grupo Walibi compró en 1992). El nombre «Walibi» es la abreviatura de los
+tres municipios sobre cuyo término está el parque:
 **Wa**vre, **Li**mal y **Bi**erges. Lo que el parque hace con ese nombre en
 Halloween está en nuestra
 [guía de Halloween](/blog/halloween-parques-atracciones-2026).
@@ -154,7 +155,8 @@ Kondaa se lleva los titulares. La montaña rusa más antigua del parque le saca
 39 años y no piensa en jubilarse.
 
 **[Turbine](ref:walibi-belgium/turbine)** es esa montaña rusa, un
-**Schwarzkopf Shuttle Loop** de 1982. Al tren lo disparan hacia delante desde la estación a 85,3 km/h, desde 2013
+**Schwarzkopf Shuttle Loop** de 1982. Al tren lo disparan hacia delante desde la
+estación a 85,3 km/h, desde 2013
 con un motor lineal en lugar del volante de inercia original, se
 mete en el único looping de la instalación, sube la torre que hay detrás y
 vuelve a recorrer lo mismo marcha atrás, otra vez por el looping y, ya pasada
@@ -322,7 +324,8 @@ sobre todo las vacaciones escolares belgas, que desde el curso 2022-2023 ya no
 coinciden: en 2026 los colegios francófonos de Valonia y Bruselas tienen
 vacaciones de otoño del 19 al 30 de octubre, los flamencos del 2 al 8 de
 noviembre, e Ibilaw abarca ambas. A eso se suman los días entre semana fuera
-del verano, cuando el parque no abre a diario de todos modos. Cuáles de los próximos días de apertura son los más
+del verano, cuando el parque no abre a diario de todos modos. Cuáles de los
+próximos días de apertura son los más
 tranquilos está en el calendario de más arriba, actualizado a diario.
 
 ## El día perfecto, en cuatro frases
@@ -350,8 +353,10 @@ está a 150 metros de la entrada.
 **Horarios.** La temporada va de principios de abril hasta bien entrado
 noviembre; fuera del verano no abre a diario, sino según calendario. En octubre
 el parque se convierte en Ibilaw, en 2026 del 10 de octubre al 11 de noviembre,
-y tampoco entonces abre todos los días. Desde 2023 se añade una apertura de invierno durante las vacaciones de
-Navidad, Walibi Winter, del 5 de diciembre de 2026 al 3 de enero de 2027. El calendario y las horas exactas los muestra la
+y tampoco entonces abre todos los días. Desde 2023 se añade una apertura de
+invierno durante las vacaciones de
+Navidad, Walibi Winter, del 5 de diciembre de 2026 al 3 de enero de 2027. El
+calendario y las horas exactas los muestra la
 [página del parque](ref:walibi-belgium), actualizados a diario.
 
 **Comer.** Hay puestos de comida por todo el parque. Quien quiera sentarse,
@@ -377,7 +382,8 @@ des Alpes). **Walibi Belgium**, en Wavre, es el primer Walibi (1975) y el que da
 nombre a la marca, con [Kondaa](ref:walibi-belgium/kondaa) como montaña rusa
 más alta y más rápida del Benelux desde 2021.
 [Walibi Holland](ref:walibi-holland), en Biddinghuizen, abierto en 1971 como
-Flevohof y convertido en Walibi en 1994, es el más conocido de los dos, con [Untamed](ref:walibi-holland/untamed) y
+Flevohof y convertido en Walibi en 1994, es el más conocido de los dos, con
+[Untamed](ref:walibi-holland/untamed) y
 [Goliath](ref:walibi-holland/goliath). Una entrada para uno no vale en el otro.
 
 ### ¿Cómo de alta y de rápida es Kondaa?
@@ -421,8 +427,7 @@ para ocho mundos temáticos nuevos y diez atracciones, listos para 2023. Hay
 cuatro mundos terminados, y las piezas más grandes son
 [Kondaa](ref:walibi-belgium/kondaa) (2021) y la zona portuaria **Dock World**
 con [Mecalodon](ref:walibi-belgium/mecalodon) (2025). Lo siguiente es Festival
-World en 2028, con Loup-Garou transformada por RMC, y el plan llega ya hasta
-2030.
+World en 2028, con Loup-Garou transformada por RMC, y el plan llega ya hasta 2030.
 
 ## Para seguir leyendo
 

@@ -178,11 +178,12 @@ für alle, die nach Kondaa „erst mal was Ruhiges“ brauchen.
 wird rückwärts einen Lifthill hochgezogen, durchfährt vorwärts eine Cobra Roll
 und einen Looping, zusammen drei Überschläge, und fährt dieselbe Strecke danach
 rückwärts noch einmal. Damit hat der Park zwei Cobra Rolls: eine, die dich auf den Kopf
-stellt, und die von Kondaa, die es bleiben lässt. **[Loup-Garou](ref:walibi-belgium/loup-garou)**, ebenfalls seit 2001,
+stellt, und die von Kondaa, die es bleiben lässt.
+**[Loup-Garou](ref:walibi-belgium/loup-garou)**, ebenfalls seit 2001,
 ist eine hölzerne Konstruktion von Vekoma, einem Hersteller, den man eher mit
 Stahl verbindet. Ein Holz-Vekoma ist ungefähr so häufig wie ein Belgier, der
-seine Pommes ohne Mayo bestellt, und dieser hier fährt nur noch bis zum
-3. Januar 2027. Danach baut Rocky Mountain Construction ihn zur Hybridbahn um.
+seine Pommes ohne Mayo bestellt, und dieser hier fährt nur noch bis zum 3.
+Januar 2027. Danach baut Rocky Mountain Construction ihn zur Hybridbahn um.
 
 Jünger sind **[Pulsar](ref:walibi-belgium/pulsar)** (2016, Mack Rides,
 Launched-Wasserachterbahn), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
@@ -297,9 +298,11 @@ Eine Altersgrenze gibt es nicht: Die Monster bleiben im Bereich zwischen Wave
 Swinger und Buzzsaw, und Kinder unter zwölf bekommen an der Information einen
 Anti-Monster-Button. Eines der Spukhäuser, **Aquarium**, steht im selben Dock-World-Areal,
 in dem tagsüber Mecalodon fährt, in einem angeblich seit den Neunzigern
-geschlossenen Schauaquarium, nach dessen Fischen man besser nicht fragt. Bis auf Mine Blast kosten die Spukhäuser extra. Den
+geschlossenen Schauaquarium, nach dessen Fischen man besser nicht fragt. Bis auf
+Mine Blast kosten die Spukhäuser extra. Den
 **Speedy Pass**, die Fast-Lane des Parks, gibt es zu Ibilaw in sechs Paketen
-für Fahrgeschäfte und Spukhäuser, den Parkeintritt enthält keines davon. Wie sich das gegen Toverland, Movie Park und Co.
+für Fahrgeschäfte und Spukhäuser, den Parkeintritt enthält keines davon. Wie
+sich das gegen Toverland, Movie Park und Co.
 schlägt, steht in unserem
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
@@ -314,8 +317,8 @@ Februar einen leeren Dienstag sucht, findet ihn, allerdings hinter einem
 geschlossenen Tor. Innerhalb der Saison entscheiden vor allem die belgischen
 Schulferien, wie voll es wird, und die fallen seit dem Schuljahr 2022/23 nicht
 mehr zusammen: Die französischsprachigen Schulen in Wallonien und Brüssel haben
-2026 vom 19. bis 30. Oktober Herbstferien, die flämischen vom 2. bis
-8. November, und Ibilaw läuft über beide. Dazu kommen die Wochentage außerhalb
+2026 vom 19. bis 30. Oktober Herbstferien, die flämischen vom 2. bis 8.
+November, und Ibilaw läuft über beide. Dazu kommen die Wochentage außerhalb
 der Sommerferien, an denen der Park ohnehin nicht täglich öffnet. Welche der kommenden Öffnungstage
 die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell.
 
@@ -346,8 +349,8 @@ Park 150 Meter vom Eingang.
 außerhalb der Sommerferien nicht täglich, sondern nach Saisonkalender. Im
 Oktober wird der Park zu Ibilaw, 2026 vom 10. Oktober bis 11. November, und
 auch dann öffnet er nur an ausgewählten Tagen. Seit 2023 kommt eine zusätzliche
-Winteröffnung über die Weihnachtsferien dazu, als Walibi Winter 2026 vom
-5. Dezember bis 3. Januar. Den aktuellen Kalender und die
+Winteröffnung über die Weihnachtsferien dazu, als Walibi Winter 2026 vom 5.
+Dezember bis 3. Januar. Den aktuellen Kalender und die
 Uhrzeiten zeigt die [Parkseite](ref:walibi-belgium) tagesaktuell.
 
 **Essen.** Imbissstände gibt es überall im Park. Wer sitzen will, geht in den
@@ -373,7 +376,8 @@ Zwei verschiedene Parks in zwei Ländern, seit 2006 im selben Konzern
 und der Namensgeber der Marke, mit [Kondaa](ref:walibi-belgium/kondaa)
 als höchster und schnellster Achterbahn der Beneluxstaaten seit 2021.
 [Walibi Holland](ref:walibi-holland) in Biddinghuizen, 1971 als Flevohof
-eröffnet und 1994 zum Walibi geworden, ist der bekanntere der beiden, mit [Untamed](ref:walibi-holland/untamed) und
+eröffnet und 1994 zum Walibi geworden, ist der bekanntere der beiden, mit
+[Untamed](ref:walibi-holland/untamed) und
 [Goliath](ref:walibi-holland/goliath). Ein Ticket für den einen gilt nicht im
 anderen.
 
@@ -393,8 +397,7 @@ Für Achterbahnfans ja, besonders in Kombination mit Brüssel oder einer Runde
 Stunden. Einen Intamin-Megacoaster gibt es mit
 [Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) zwar
 auch in Haßloch, sogar höher und schneller, aber ohne Kondaas Cobra Roll, die
-dich nicht auf den Kopf stellt. Und Loup-Garou fährt nur noch bis zum
-3. Januar 2027.
+dich nicht auf den Kopf stellt. Und Loup-Garou fährt nur noch bis zum 3. Januar 2027.
 
 ### Was ist Ibilaw bei Walibi Belgium?
 

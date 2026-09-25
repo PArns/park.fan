@@ -1,5 +1,6 @@
 ---
-title: 'Plopsaland Deutschland: diez Fright Nights, dos casas del terror nuevas y un schnitzel que no querrás pedir'
+title: 'Plopsaland Deutschland: diez Fright Nights, dos casas del terror nuevas
+y un schnitzel que no querrás pedir'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -83,7 +84,8 @@ carta, y no como cliente.
 
 También hay dos espectáculos nuevos: el **Monster Release Show «Freaks
 Reloaded»**, con Reddles, el payaso de la casa, y el espectáculo de lucha
-**«The Killing Games»**, en el que solo un luchador sale vivo del ring. Los dos formatos ya existían en
+**«The Killing Games»**, en el que solo un luchador sale vivo del ring. Los dos
+formatos ya existían en
 2025, con otra historia, como «Freaks Unleashed» y «Night of Anarchy». Vuelve
 el espectáculo de fuego Flames of Valhalla, con vikingos. Cada noche termina con
 el nuevo cierre **Carnival Inferno**, y antes pinchan DJ en el Fright Festival.
@@ -101,11 +103,11 @@ sin franja horaria y sin suplemento.
 
 Como en Movie Park, las casas del terror **no están incluidas en la entrada**.
 
-| Entrada                 | Precio                         | Incluye                                                            |
-| ----------------------- | ------------------------------ | ------------------------------------------------------------------ |
-| Entrada con fecha       | desde 39 € (normal 58 €)       | parque hasta las 22:00, scare zones, espectáculos, Fright Festival |
-| Entrada casa del terror | desde 3 € por casa             | una casa con franja horaria, solo con entrada al parque            |
-| Las seis casas          | 49 €                           | paquete sin entrada al parque                                      |
+| Entrada                 | Precio                             | Incluye                                                            |
+| ----------------------- | ---------------------------------- | ------------------------------------------------------------------ |
+| Entrada con fecha       | desde 39 € (normal 58 €)           | parque hasta las 22:00, scare zones, espectáculos, Fright Festival |
+| Entrada casa del terror | desde 3 € por casa                 | una casa con franja horaria, solo con entrada al parque            |
+| Las seis casas          | 49 €                               | paquete sin entrada al parque                                      |
 | Nightmare Society Pass  | desde 109 € (con pase anual, 79 €) | entrada, cada casa una vez sin franja, parking, pin                |
 
 Cada casa funciona con franjas horarias que eliges al comprar. Solo el
@@ -116,7 +118,8 @@ entrada para Mad Rat.
 
 Si quieres las seis casas, la cuenta es sencilla: la entrada más barata más el
 paquete de 49 € suman 88 € por persona; el pase cuesta 109 €, incluye el
-parking y te ahorra reservar seis franjas. Si vas un sábado de octubre con el parque lleno, coge el pase.
+parking y te ahorra reservar seis franjas. Si vas un sábado de octubre con el
+parque lleno, coge el pase.
 
 ## Para quién es
 
@@ -138,7 +141,8 @@ Movie Park, Walibi y Toverland está en el
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Entradas, franjas horarias y detalles:
-[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright
+Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 

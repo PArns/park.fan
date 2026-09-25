@@ -77,7 +77,8 @@ mezz’ora d’auto a sud-est di Bruxelles, meno di tre ore da Colonia o da
 Aquisgrana. Ha aperto il **26 luglio 1975**, diciannove anni prima che il suo
 omologo olandese ricevesse il nome Walibi, nel 1994 (il terreno di
 Biddinghuizen è più vecchio: lì nel 1971 aprì il parco agricolo Flevohof, che il
-gruppo Walibi comprò nel 1992). Il nome «Walibi» è la contrazione dei tre comuni sul cui territorio sorge il parco: **Wa**vre,
+gruppo Walibi comprò nel 1992). Il nome «Walibi» è la contrazione dei tre comuni
+sul cui territorio sorge il parco: **Wa**vre,
 **Li**mal e **Bi**erges. Che cosa ne fa il parco ad Halloween sta nella nostra
 [guida ad Halloween](/blog/halloween-parchi-divertimenti-2026).
 
@@ -168,7 +169,8 @@ penzolano liberi. Ancora per poco: secondo il parco Vampire resta aperto fino
 a ottobre 2027, poi verrà demolito. **[Calamity Mine](ref:walibi-belgium/calamity-mine)**
 (1992, battezzata all’inizio «Colorado») è il classico coaster minerario su
 785 metri di tracciato, andatura tranquilla, curve strette, ideale per entrare
-in clima o per chi dopo Kondaa ha bisogno di «qualcosa di tranquillo, prima». **[Cobra](ref:walibi-belgium/cobra)** (2001) è un **Boomerang**: il
+in clima o per chi dopo Kondaa ha bisogno di «qualcosa di tranquillo, prima».
+**[Cobra](ref:walibi-belgium/cobra)** (2001) è un **Boomerang**: il
 treno viene trainato all’indietro su un lift, percorre in avanti un cobra roll e
 un looping, tre inversioni in tutto, e poi rifà tutto il percorso
 all’indietro. Il parco ha
@@ -348,7 +350,8 @@ parco la stazione è a 150 metri dall’ingresso.
 vacanze estive non tutti i giorni ma secondo calendario stagionale. A ottobre
 il parco diventa Ibilaw, nel 2026 dal 10 ottobre all’11 novembre, e anche allora
 apre solo in giorni selezionati. Dal 2023 si aggiunge un’apertura invernale
-nelle vacanze di Natale, Walibi Winter, dal 5 dicembre 2026 al 3 gennaio 2027. Il calendario aggiornato e gli orari li trovi giorno
+nelle vacanze di Natale, Walibi Winter, dal 5 dicembre 2026 al 3 gennaio 2027.
+Il calendario aggiornato e gli orari li trovi giorno
 per giorno sulla [pagina del parco](ref:walibi-belgium).
 
 **Mangiare.** Chioschi ce ne sono in tutto il parco. Chi vuole sedersi va
@@ -412,8 +415,8 @@ Six Flags Belgium.
 ### Che cos’è «Worlds of Walibi»?
 
 Il piano di investimenti annunciato dal parco nel 2017: circa 100 milioni di
-euro per otto nuove aree a tema e dieci nuove attrazioni, da finire entro il
-2023. Quattro aree ci sono, e i tasselli più grossi sono
+euro per otto nuove aree a tema e dieci nuove attrazioni, da finire entro
+il 2023. Quattro aree ci sono, e i tasselli più grossi sono
 [Kondaa](ref:walibi-belgium/kondaa) (2021) e l’area portuale **Dock World** con
 [Mecalodon](ref:walibi-belgium/mecalodon) (2025). Poi, nel 2028, arriva
 Festival World con Loup-Garou trasformato da RMC, e il piano ormai arriva fino

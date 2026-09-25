@@ -1,5 +1,6 @@
 ---
-title: 'Plopsaland Deutschland: ten Fright Nights, two new horror houses and a schnitzel you do not want to order'
+title: 'Plopsaland Deutschland: ten Fright Nights, two new horror houses and a
+schnitzel you do not want to order'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -103,11 +104,11 @@ to you, with no time slot and no surcharge.
 
 As at Movie Park, the horror houses are **not included in admission**.
 
-| Ticket                 | Price                        | Includes                                                  |
-| ---------------------- | ---------------------------- | --------------------------------------------------------- |
-| Dated day ticket       | from €39 (normally €58)      | park until 10 p.m., scare zones, shows, Fright Festival   |
-| Horror house ticket    | from €3 per house            | one house with a time slot, only with an admission ticket |
-| All six houses         | €49                          | bundle, park entry not included                           |
+| Ticket                 | Price                               | Includes                                                  |
+| ---------------------- | ----------------------------------- | --------------------------------------------------------- |
+| Dated day ticket       | from €39 (normally €58)             | park until 10 p.m., scare zones, shows, Fright Festival   |
+| Horror house ticket    | from €3 per house                   | one house with a time slot, only with an admission ticket |
+| All six houses         | €49                                 | bundle, park entry not included                           |
 | Nightmare Society Pass | from €109 (€79 with an annual pass) | entry, every house once without a time slot, parking, pin |
 
 Each horror house runs on fixed time slots that you pick when you buy. Only the
@@ -137,7 +138,8 @@ do this autumn is in the [Halloween overview](/blog/halloween-theme-parks-2026).
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Tickets, time slots and details:
-[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright
+Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 

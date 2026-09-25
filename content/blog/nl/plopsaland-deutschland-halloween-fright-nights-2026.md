@@ -1,5 +1,6 @@
 ---
-title: 'Plopsaland Deutschland: tien Fright Nights, twee nieuwe horrorhuizen en een schnitzel die je niet wilt bestellen'
+title: 'Plopsaland Deutschland: tien Fright Nights, twee nieuwe horrorhuizen en
+een schnitzel die je niet wilt bestellen'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -100,12 +101,12 @@ zonder tijdslot en zonder toeslag.
 
 Net als in Movie Park zitten de horrorhuizen **niet in de toegang**.
 
-| Ticket                 | Prijs                         | Inbegrepen                                                |
-| ---------------------- | ----------------------------- | --------------------------------------------------------- |
-| Dagticket met datum    | vanaf € 39 (normaal € 58)     | park tot 22 uur, scare zones, shows, Fright Festival      |
-| Horrorhuisticket       | vanaf € 3 per huis            | één huis met tijdslot, alleen samen met een toegangsticket |
-| Alle zes huizen        | € 49                          | pakket zonder parktoegang                                 |
-| Nightmare Society Pass | vanaf € 109 (met jaarkaart € 79) | toegang, elk huis één keer zonder tijdslot, parkeren, pin |
+| Ticket                 | Prijs                            | Inbegrepen                                                 |
+| ---------------------- | -------------------------------- | ---------------------------------------------------------- |
+| Dagticket met datum    | vanaf € 39 (normaal € 58)        | park tot 22 uur, scare zones, shows, Fright Festival       |
+| Horrorhuisticket       | vanaf € 3 per huis               | één huis met tijdslot, alleen samen met een toegangsticket |
+| Alle zes huizen        | € 49                             | pakket zonder parktoegang                                  |
+| Nightmare Society Pass | vanaf € 109 (met jaarkaart € 79) | toegang, elk huis één keer zonder tijdslot, parkeren, pin  |
 
 De horrorhuizen werken met vaste tijdslots die je bij het kopen kiest. Alleen
 met de Nightmare Society Pass heb je die niet nodig, en daar hoort ook een
@@ -136,7 +137,8 @@ Walibi en Toverland deze herfst doen, staat in het
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Tickets, tijdslots en details:
-[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/nl/plopsaland-deutschland/shows-evenementen/halloween-fright-nights).
+[plopsa.com → Halloween Fright
+Nights](https://www.plopsa.com/nl/plopsaland-deutschland/shows-evenementen/halloween-fright-nights).
 
 — Patrick
 

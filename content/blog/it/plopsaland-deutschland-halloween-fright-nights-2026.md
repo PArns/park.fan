@@ -1,5 +1,6 @@
 ---
-title: "Plopsaland Deutschland: dieci Fright Nights, due case dell'orrore nuove e una cotoletta che non vorrai ordinare"
+title: "Plopsaland Deutschland: dieci Fright Nights, due case dell'orrore nuove
+e una cotoletta che non vorrai ordinare"
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -85,7 +86,8 @@ Anche due spettacoli sono nuovi: il **Monster Release Show «Freaks
 Reloaded»** con Reddles, il clown di casa delle Fright Nights, e lo spettacolo
 di wrestling **«The Killing Games»**, in cui un solo lottatore esce vivo dal
 ring. Entrambi i format c'erano già nel 2025, con un'altra storia, come
-«Freaks Unleashed» e «Night of Anarchy». Torna lo spettacolo di fuoco Flames of Valhalla, con i vichinghi. Ogni
+«Freaks Unleashed» e «Night of Anarchy». Torna lo spettacolo di fuoco Flames of
+Valhalla, con i vichinghi. Ogni
 sera si chiude con il nuovo finale **Carnival Inferno**, e prima suonano i DJ
 del Fright Festival.
 
@@ -102,22 +104,24 @@ fascia oraria e senza supplemento.
 
 Come al Movie Park, le case dell'orrore **non sono comprese nell'ingresso**.
 
-| Biglietto              | Prezzo                               | Comprende                                                        |
-| ---------------------- | ------------------------------------ | ---------------------------------------------------------------- |
-| Biglietto con data     | da 39 € (prezzo pieno 58 €)          | parco fino alle 22, scare zone, spettacoli, Fright Festival      |
-| Biglietto singola casa | da 3 € per casa                      | una casa con fascia oraria, solo insieme al biglietto d'ingresso |
-| Tutte e sei le case    | 49 €                                 | pacchetto senza ingresso al parco                                |
+| Biglietto              | Prezzo                                  | Comprende                                                        |
+| ---------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| Biglietto con data     | da 39 € (prezzo pieno 58 €)             | parco fino alle 22, scare zone, spettacoli, Fright Festival      |
+| Biglietto singola casa | da 3 € per casa                         | una casa con fascia oraria, solo insieme al biglietto d'ingresso |
+| Tutte e sei le case    | 49 €                                    | pacchetto senza ingresso al parco                                |
 | Nightmare Society Pass | da 109 € (con abbonamento annuale 79 €) | ingresso, ogni casa una volta senza fascia, parcheggio, spilla   |
 
 Ogni casa funziona con fasce orarie che scegli al momento dell'acquisto. Solo il
 Nightmare Society Pass ne fa a meno, e dà anche accesso a un'area riservata durante
-gli spettacoli, fino a esaurimento posti. Chi ha l'abbonamento annuale Plopsaland entra alle Fright Nights
+gli spettacoli, fino a esaurimento posti. Chi ha l'abbonamento annuale
+Plopsaland entra alle Fright Nights
 senza sovrapprezzo e riceve fino al 30 settembre, fino a esaurimento, un
 biglietto gratuito per Mad Rat.
 
 Se vuoi tutte e sei le case, il conto è presto fatto: il biglietto più economico
 più il pacchetto da 49 € fanno 88 € a testa; il pass costa 109 €, include il
-parcheggio e ti evita di prenotare sei fasce orarie. In un sabato affollato di ottobre, prendi il pass.
+parcheggio e ti evita di prenotare sei fasce orarie. In un sabato affollato di
+ottobre, prendi il pass.
 
 ## Per chi è
 
@@ -139,7 +143,8 @@ Walibi e Toverland è nella
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Biglietti, fasce orarie e dettagli:
-[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright
+Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 

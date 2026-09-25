@@ -67,8 +67,8 @@ Kein Park in Deutschland verkauft mehr Tickets als der
 stehst du in Rust kürzer an als im Phantasialand, das nur ein Drittel dieses
 Publikums hat. Das klingt nach einem Tippfehler in der Pressemappe.
 
-Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit Dezember
-2025, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
+Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit dem
+26. Dezember 2025, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
 [Parkseite](ref:europa-park?bare) alle fünf Minuten neu.
 
 Wer 2026 hinfährt, erwischt außerdem etwas zum letzten Mal. Am Eingang der
@@ -86,8 +86,9 @@ Nach der Wintersaison wird die Bahn abgebaut. Der Park hat für den
 
 ## Europa-Park Wartezeiten, Bahn für Bahn gemessen
 
-Unsere Wartezeit-Historie für den Europa-Park beginnt im Dezember 2025 und ist seit April bis auf
-einen Tag im Juli lückenlos. Über
+Unsere Wartezeit-Historie für den Europa-Park beginnt am 26. Dezember 2025, umfasst
+also Ende September 2026 rund neun Monate, und ist seit April bis auf einen Tag
+im Juli lückenlos. Über
 alle Wochentage gerechnet ist die typische Wartezeit im Parkschnitt (der Median)
 **kürzer, als man es bei diesem Andrang erwarten würde**; an vollen Tagen liegt sie
 deutlich darüber.
@@ -626,7 +627,9 @@ Namen, ich hatte nur zufällig vorher die Domain gekauft.
 ```
 
 Vorsicht bei Januar, März und Dezember. Dahinter stehen nur drei bis sechs
-Messtage, die Tabelle nennt sie mit. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
+Messtage, die Tabelle nennt sie mit, und der Dezember besteht ausschließlich aus
+den Tagen zwischen Weihnachten und Silvester 2025, der vollsten Woche des
+Winters. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
 nicht festlegen. Belastbar ist der Block April bis September, und der sagt: Mai und
 Juni sind die ruhigsten Sommermonate, August ist der vollste.
 
@@ -693,7 +696,7 @@ Achterbahnen lassen sich über den Tag verteilen, das Flugtheater nicht.
 
 Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil: die
 typische Wartezeit jeder Stunde, der Median über alle gemessenen Betriebstage
-der letzten zwölf Monate. Fett steht jeweils die stärkste Stunde einer Bahn.
+seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -742,7 +745,7 @@ Ein Tagesablauf, der daraus folgt:
    noch einmal an.
 
 Die Kurven sind allerdings Werte über alle gemessenen Betriebstage, Hochsommer
-und Wintersaison zusammen. Für einen Novembertag von elf bis neunzehn Uhr haben
+und die Wochen um den Jahreswechsel zusammen. Für einen Novembertag von elf bis neunzehn Uhr haben
 wir noch keine eigenen Messwerte; die Spalte für neun Uhr gibt es dann schlicht
 nicht, und die Tagesspitze kann frühestens um elf kommen.
 
@@ -785,8 +788,10 @@ Altersgrenze, und es heißt Traumatica.
 Ab **28. November** ist Winter. Weihnachtsmarkt, ein nordisches Winterdorf, eine
 Eislaufbahn, das Riesenrad Bellevue, eine Kinderskischule mit Snow-Tubes und ein
 Weihnachtszirkus; das Zirkusfestival von Monte-Carlo soll wie im vergangenen
-Winter wieder dabei sein. Die typische Wartezeit im Dezember 2025 lag bei uns etwa
-auf Augusthöhe, allerdings auf nur sechs Messtagen. Am **24. und 25. Dezember**
+Winter wieder dabei sein. An den sechs Tagen zwischen Weihnachten und Silvester
+2025, unseren ersten Messtagen in Rust, lag die typische Wartezeit etwa auf
+Augusthöhe; wie ein Werktag Anfang Dezember aussieht, haben wir noch nicht
+gemessen. Am **24. und 25. Dezember**
 ist zu. Der letzte reguläre Tag ist Samstag, der 9. Januar 2027; am 10. Januar
 öffnet der Park nur noch für Übernachtungsgäste und geladene Gäste.
 
@@ -975,8 +980,8 @@ Euro, der zweite Tag also rund 60 bis 67,50 Euro.
 Ja, mit einer Einschränkung. Die Winterdekoration, die Eisbahn und den
 Weihnachtsmarkt gibt es nur dann, dafür ist es früher dunkel, der Park macht
 frühestens um 19 Uhr zu, und die Wasserbahnen laufen nicht durchgehend;
-Atlantica hat im Winter Pause. Die Wartezeiten lagen im Dezember 2025 etwa so
-hoch wie im August, gemessen an nur sechs Tagen. Für die Werktage im November sagt unsere Prognose dagegen meist „niedrig“ voraus;
+Atlantica hat im Winter Pause. Zwischen Weihnachten und Silvester 2025 lagen
+die Wartezeiten etwa so hoch wie im August, gemessen an sechs Tagen. Für die Werktage im November sagt unsere Prognose dagegen meist „niedrig“ voraus;
 gemessene Wartezeiten aus dem November haben wir noch keine.
 
 ## Warum ich für die Euro-Mir noch einmal hinfahre
@@ -1041,4 +1046,4 @@ dreht.
 - Anreise über die A5, Parkgebühren, Rulantica, Eatrenalin mit Michelin-Stern 2026: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Anreise nach Rulantica (offiziell)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/anreise-nach-rulantica) · [Neuheiten & News (offiziell)](https://www.europapark.de/de/freizeitpark/infos/europa-park-neuheiten-news) · [Eatrenalin auf en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin); Straßenentfernungen nach OpenStreetMap-Routing
 - Gästestruktur nach Herkunftsland (2017) und der Schweizer Anteil (2025): [Europa-Park auf de.wikipedia, Abschnitt Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie seit Dezember 2025, Stundenprofil über die letzten zwölf Monate, Crowd-Prognose über 90 Tage, Ferienregionen des Kalenders, Show-Zahlen vom 25. September 2026, [Europa-Park auf park.fan](ref:europa-park)
+- Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie seit dem 26. Dezember 2025, Stundenprofil über alle Messtage seit diesem Datum, Crowd-Prognose über 90 Tage, Ferienregionen des Kalenders, Show-Zahlen vom 25. September 2026, [Europa-Park auf park.fan](ref:europa-park)

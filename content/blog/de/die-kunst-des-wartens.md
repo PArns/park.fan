@@ -416,9 +416,10 @@ treffen, steht auf der [Fancast-Seite](/fancast).
 eröffnet hat, keine Achterbahn, kein Thrill. Trotzdem hat die Bahn im
 [Pariser Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?bare)
 die längste mittlere Wartezeit aller Attraktionen, und im Magic Kingdom in Orlando
-gehört sie zur Spitzengruppe (Median der letzten zwei Jahre,
-Stand: 25. September 2026). In Paris ist die Schlange schon in der ersten Stunde nach Parköffnung
-länger als vor jeder anderen Bahn, als gäbe es am Ende Freibier. Überall gilt
+gehört sie zur Spitzengruppe. So steht es im Median aller Tage, die wir seit
+Beginn unserer Messungen Ende Dezember 2025 erfasst haben
+(Stand: 25. September 2026). In Paris ist die Schlange schon in der ersten
+Stunde nach Parköffnung länger als vor jeder anderen Bahn, als gäbe es am Ende Freibier. Überall gilt
 das nicht: In Anaheim, Tokio und Shanghai, wo es die Bahn ebenfalls gibt, liegt
 sie in unseren Daten im Mittelfeld.
 
@@ -500,7 +501,7 @@ schätzen. Der Unterschied steckt im Nenner, in allem, worauf sich die Nachfrage
 sonst verteilen kann. In Paris steht Peter Pan zwischen Dutzenden Alternativen.
 In Brühl hat an einem Ferien-Samstag gefühlt der halbe Park dieselbe eine Bahn
 im Kopf. Und Voltron im Europa-Park liegt mit 1.600 pro Stunde nur ein Drittel
-darüber, hat im Median der letzten zwei Jahre aber die kürzere Schlange
+darüber, hat im Median seit Ende Dezember 2025 aber die kürzere Schlange
 (Stand: 25. September 2026). Meine Erklärung: Die übrigen Achterbahnen nebenan ziehen
 Nachfrage ab.
 
@@ -508,7 +509,9 @@ Deshalb zeigt jede Parkseite auf park.fan neben den Live-Wartezeiten auch die
 Langzeit-Statistiken. „Voll“ ist nämlich relativ: Dieselbe Wartezeit ist in
 Brühl ein schlechter Tag und im Magic Kingdom ein ganz normaler.
 Schau dir denselben Datensatz für beide Parks an, typische Wartezeiten nach
-Monat und Wochentag, aus den gemessenen Öffnungstagen der letzten zwei Jahre.
+Monat und Wochentag, aus allen Öffnungstagen, die wir gemessen haben. Unsere
+Messungen laufen seit Ende Dezember 2025, lückenlos erst seit April 2026;
+Februar, Oktober und November fehlen noch ganz (Stand: 25. September 2026).
 
 **Zuerst das [Phantasialand](ref:phantasialand?bare) in Brühl**, der kompakte
 Extremfall: Wenn hier eine Zahl hochgeht, dann steil, weil sich alles auf
@@ -521,7 +524,7 @@ wenige Headliner konzentriert.
 **Und jetzt das [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, der
 meistbesuchte Park der Welt: höhere Grundlast, aber breiter verteilt über
 Dutzende Attraktionen. Achte darauf, wie unterschiedlich schon die „typischen“
-Minuten und die Saison-Kurve über das Jahr aussehen.
+Minuten und der Verlauf über die bisher gemessenen Monate aussehen.
 
 ```stats-widget slug=magic-kingdom-park
 

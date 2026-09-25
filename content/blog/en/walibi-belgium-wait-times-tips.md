@@ -202,7 +202,8 @@ in Exotic World, next to the coaster it is named after.
 
 Of the two recent builds in the park, Mecalodon is the one that surprised me
 more. A family coaster next to a 50-metre ride is usually the support act
-everyone watches from the bar queue. Dock World gets people to look anyway. The harbour was built and not set down, with
+everyone watches from the bar queue. Dock World gets people to look anyway. The
+harbour was built and not set down, with
 details you stand in front of for a while even where there is no ride attached.
 
 If you still have time after the coaster round and swimming things in the
@@ -293,9 +294,11 @@ no age limit: the monsters stay in the stretch between Wave Swinger and
 Buzzsaw, and children under twelve can pick up an anti-monster badge at the
 information desk. One of the haunted houses, **Aquarium**, sits in the
 same Dock World area Mecalodon runs through by day, inside a public aquarium
-supposedly shut since the nineties. Best not to ask about the fish. Apart from Mine Blast, the haunted houses cost
+supposedly shut since the nineties. Best not to ask about the fish. Apart from
+Mine Blast, the haunted houses cost
 extra. The **Speedy Pass**, the park’s fast lane, comes in six Ibilaw packages
-covering rides and haunted houses, none of which includes park entry. Where all this lands against Toverland, Movie Park and the
+covering rides and haunted houses, none of which includes park entry. Where all
+this lands against Toverland, Movie Park and the
 rest is in our
 [Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
@@ -370,7 +373,8 @@ des Alpes). **Walibi Belgium** in Wavre is the first Walibi (1975) and the one
 the brand is named after, with [Kondaa](ref:walibi-belgium/kondaa) as the
 tallest and fastest coaster in the Benelux since 2021.
 [Walibi Holland](ref:walibi-holland) in Biddinghuizen, opened in 1971 as
-Flevohof and a Walibi since 1994, is the better known of the two, with [Untamed](ref:walibi-holland/untamed) and
+Flevohof and a Walibi since 1994, is the better known of the two, with
+[Untamed](ref:walibi-holland/untamed) and
 [Goliath](ref:walibi-holland/goliath). A ticket for one is not valid at the
 other.
 
@@ -379,7 +383,8 @@ other.
 50 metres tall, a top speed of 113 km/h, 1,200 metres of track, no inversions.
 At its opening in 2021 it was the tallest and fastest coaster in the Benelux,
 and it still is. The RMC coaster due in 2028 on the Loup-Garou site stays
-below it at 49 metres and 106 km/h. Current wait times are on the [Kondaa page](ref:walibi-belgium/kondaa).
+below it at 49 metres and 106 km/h. Current wait times are on the [Kondaa
+page](ref:walibi-belgium/kondaa).
 
 ### Is Walibi Belgium worth a day trip from Germany?
 

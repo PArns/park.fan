@@ -1,5 +1,6 @@
 ---
-title: 'Plopsaland Deutschland: Zehn Fright Nights, zwei neue Horrorhäuser und ein Schnitzel, das du nicht bestellen willst'
+title: 'Plopsaland Deutschland: Zehn Fright Nights, zwei neue Horrorhäuser und
+ein Schnitzel, das du nicht bestellen willst'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -101,12 +102,12 @@ ohne Zeitfenster und ohne Aufpreis zu dir.
 
 Wie im Movie Park sind die Horrorhäuser **nicht im Eintritt**.
 
-| Ticket                 | Preis                        | Enthält                                                       |
-| ---------------------- | ---------------------------- | ------------------------------------------------------------- |
-| Datiertes Tagesticket  | ab 39 € (regulär 58 €)       | Park bis 22 Uhr, Scare Zones, Shows, Fright Festival          |
-| Horrorhaus-Ticket      | ab 3 € pro Haus              | ein Haus mit Zeitfenster, nur zusammen mit einem Eintrittsticket |
-| Alle sechs Häuser      | 49 €                         | Paket ohne Parkeintritt                                       |
-| Nightmare Society Pass | ab 109 € (mit Jahreskarte 79 €) | Eintritt, alle Häuser einmal ohne Zeitfenster, Parkplatz, Pin |
+| Ticket                 | Preis                           | Enthält                                                          |
+| ---------------------- | ------------------------------- | ---------------------------------------------------------------- |
+| Datiertes Tagesticket  | ab 39 € (regulär 58 €)          | Park bis 22 Uhr, Scare Zones, Shows, Fright Festival             |
+| Horrorhaus-Ticket      | ab 3 € pro Haus                 | ein Haus mit Zeitfenster, nur zusammen mit einem Eintrittsticket |
+| Alle sechs Häuser      | 49 €                            | Paket ohne Parkeintritt                                          |
+| Nightmare Society Pass | ab 109 € (mit Jahreskarte 79 €) | Eintritt, alle Häuser einmal ohne Zeitfenster, Parkplatz, Pin    |
 
 Die Horrorhäuser laufen mit festen Zeitfenstern, die du beim Kauf wählst. Nur
 der Nightmare Society Pass kommt ohne aus und bringt dazu einen reservierten
@@ -138,9 +139,9 @@ Herbst machen, steht im [Halloween-Überblick](/blog/halloween-freizeitparks-202
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Tickets, Zeitfenster und Details:
-[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/de/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright
+Nights](https://www.plopsa.com/de/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 
-> [!CORRECTION]
-> 25. September 2026: In der ersten Fassung stand, ab 16 sei nur eine Empfehlung und keine Einlassregel. Laut den FAQ des Parks kommen Jüngere in Begleitung eines Erziehungsberechtigten hinein. Das Kostümverbot gilt laut Park für Gäste über 12 Jahren, in der ersten Fassung stand „ab 12“. Ergänzt haben wir, dass es Monster-Release- und Wrestling-Show schon 2025 gab.
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, ab 16 sei nur eine Empfehlung und keine Einlassregel. Laut den FAQ des Parks kommen Jüngere in Begleitung eines Erziehungsberechtigten hinein. Das Kostümverbot gilt laut Park für Gäste über 12 Jahren, in der ersten Fassung stand „ab 12“. Ergänzt haben wir, dass es Monster-Release- und Wrestling-Show schon 2025 gab.

@@ -327,7 +327,8 @@ komen, en omdat het eerste uur in onze data de kortste rij van de dag heeft.
 en in het laatste uur, het drukst rond elf uur, dus meteen na Kondaa of pas
 laat in de middag. **Turbine**, **Cobra** en **Calamity Mine** schommelen over
 de dag nauwelijks en vullen elk gat, terwijl **Vampire** en **Loup-Garou** ’s
-ochtends het drukst zijn en vanaf de middag duidelijk rustiger worden. De waterattracties **Pulsar** en
+ochtends het drukst zijn en vanaf de middag duidelijk rustiger worden. De
+waterattracties **Pulsar** en
 **Flash Back** bewaar je voor het heetste uur van de dag, dan zijn je sokken
 droog voor je bij de parkeerplaats bent, en wie nog tijd en een tweede ticket
 heeft, plakt er een middag **Aqualibi** achteraan.
@@ -345,7 +346,8 @@ het station op 150 meter van de ingang.
 de zomervakantie niet dagelijks, maar volgens seizoenskalender. In oktober
 wordt het park Ibilaw, in 2026 van 10 oktober tot 11 november, en ook dan is
 het alleen op geselecteerde dagen open. Sinds 2023 komt daar een winteropening over de
-kerstvakantie bij, als Walibi Winter van 5 december 2026 tot 3 januari 2027. De actuele kalender en de tijden staan dag voor dag op de
+kerstvakantie bij, als Walibi Winter van 5 december 2026 tot 3 januari 2027. De
+actuele kalender en de tijden staan dag voor dag op de
 [parkpagina](ref:walibi-belgium).
 
 **Eten.** Snackkramen staan overal in het park. Wie wil zitten, gaat naar het
@@ -371,7 +373,8 @@ Twee verschillende parken in twee landen, sinds 2006 in hetzelfde concern
 de naamgever van het merk, met [Kondaa](ref:walibi-belgium/kondaa) sinds 2021
 als hoogste en snelste achtbaan van de Benelux.
 [Walibi Holland](ref:walibi-holland) in Biddinghuizen, in 1971 geopend als
-Flevohof en in 1994 een Walibi geworden, is de bekendste van de twee, met [Untamed](ref:walibi-holland/untamed) en
+Flevohof en in 1994 een Walibi geworden, is de bekendste van de twee, met
+[Untamed](ref:walibi-holland/untamed) en
 [Goliath](ref:walibi-holland/goliath). Een ticket voor het ene geldt niet in het
 andere.
 
@@ -412,8 +415,7 @@ voor acht nieuwe themagebieden en tien nieuwe attracties, klaar in 2023. Vier
 gebieden staan er, de grootste onderdelen zijn [Kondaa](ref:walibi-belgium/kondaa)
 (2021) en het havengebied **Dock World** met
 [Mecalodon](ref:walibi-belgium/mecalodon) (2025). Daarna komt in 2028 Festival
-World met de RMC-ombouw van Loup-Garou, en het plan loopt inmiddels tot
-2030.
+World met de RMC-ombouw van Loup-Garou, en het plan loopt inmiddels tot 2030.
 
 ## Verder lezen
 

@@ -63,8 +63,7 @@ Park](ref:/parks/europe/france/paris/disneyland-park), then a quick hop over to
 the second park sometime in the afternoon, on the assumption that there is not
 much queuing there anyway.
 
-That is the wrong order. We have measured both parks almost every day since late
-March 2026, plus a handful of days from the winter before. In every single month
+That is the wrong order. Our measurements start on 26 December 2025 and have run almost without a gap since late March 2026. In every single month
 we have data for, the crowd level in **Disney Adventure World** was higher than
 the big park's, and on every one of the seven weekdays. Never the other way
 round. The smaller park spreads its guests across fewer than half as many
@@ -235,8 +234,7 @@ queue to plan your day there around.
 
 ## How busy it really gets
 
-Both parks feed us wait times continuously, almost without a gap since late
-March 2026. From the winter before we only have scattered days in December and
+Both parks have fed us wait times since 26 December 2025, though only almost without a gap since late March 2026. From the winter in between we only have scattered days in December and
 January, and none yet for February, October or November. As of 25 September
 2026, each park has 190 measured operating days behind it, and how many of them
 sit behind each row, the tables state themselves.
@@ -246,7 +244,7 @@ sit behind each row, the tables state themselves.
 ```
 
 The gap between the two parks shows up in every month we have measured. Only in
-December, for which we have seven days from the end of 2025, did typical wait
+December, for which we only have the last days of 2025, did typical wait
 times draw level, and even then the crowd level in Adventure World was higher.
 That has little to do with popularity and a lot to do with arithmetic: for 2024
 the TEA counted 10.2 million visits to Disneyland Park and 5.5 million to the
