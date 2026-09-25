@@ -138,8 +138,7 @@ Herbst machen, steht im [Halloween-Überblick](/blog/halloween-freizeitparks-202
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Tickets, Zeitfenster und Details:
-[plopsa.com → Halloween Fright
-Nights](https://www.plopsa.com/de/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/de/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 

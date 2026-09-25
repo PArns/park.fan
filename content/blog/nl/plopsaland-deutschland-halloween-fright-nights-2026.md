@@ -136,8 +136,7 @@ Walibi en Toverland deze herfst doen, staat in het
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Tickets, tijdslots en details:
-[plopsa.com → Halloween Fright
-Nights](https://www.plopsa.com/nl/plopsaland-deutschland/shows-evenementen/halloween-fright-nights).
+[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/nl/plopsaland-deutschland/shows-evenementen/halloween-fright-nights).
 
 — Patrick
 

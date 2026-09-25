@@ -142,8 +142,7 @@ Walibi e Toverland è nella
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Biglietti, fasce orarie e dettagli:
-[plopsa.com → Halloween Fright
-Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 

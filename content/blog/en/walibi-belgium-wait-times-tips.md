@@ -383,8 +383,8 @@ other.
 50 metres tall, a top speed of 113 km/h, 1,200 metres of track, no inversions.
 At its opening in 2021 it was the tallest and fastest coaster in the Benelux,
 and it still is. The RMC coaster due in 2028 on the Loup-Garou site stays
-below it at 49 metres and 106 km/h. Current wait times are on the [Kondaa
-page](ref:walibi-belgium/kondaa).
+below it at 49 metres and 106 km/h. Current wait times are on the
+[Kondaa page](ref:walibi-belgium/kondaa).
 
 ### Is Walibi Belgium worth a day trip from Germany?
 

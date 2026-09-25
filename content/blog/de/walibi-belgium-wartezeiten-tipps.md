@@ -182,8 +182,8 @@ stellt, und die von Kondaa, die es bleiben lässt.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, ebenfalls seit 2001,
 ist eine hölzerne Konstruktion von Vekoma, einem Hersteller, den man eher mit
 Stahl verbindet. Ein Holz-Vekoma ist ungefähr so häufig wie ein Belgier, der
-seine Pommes ohne Mayo bestellt, und dieser hier fährt nur noch bis zum 3.
-Januar 2027. Danach baut Rocky Mountain Construction ihn zur Hybridbahn um.
+seine Pommes ohne Mayo bestellt, und dieser hier fährt nur noch bis
+zum 3. Januar 2027. Danach baut Rocky Mountain Construction ihn zur Hybridbahn um.
 
 Jünger sind **[Pulsar](ref:walibi-belgium/pulsar)** (2016, Mack Rides,
 Launched-Wasserachterbahn), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**

@@ -143,8 +143,7 @@ Toverland cet automne est dans le
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Billets, créneaux et détails :
-[plopsa.com → Halloween Fright
-Nights](https://www.plopsa.com/fr/plopsaland-deutschland/shows-evenements/halloween-fright-nights).
+[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/fr/plopsaland-deutschland/shows-evenements/halloween-fright-nights).
 
 — Patrick
 

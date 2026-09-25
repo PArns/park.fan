@@ -137,8 +137,7 @@ do this autumn is in the [Halloween overview](/blog/halloween-theme-parks-2026).
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
 Tickets, time slots and details:
-[plopsa.com → Halloween Fright
-Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
+[plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
 
