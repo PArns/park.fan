@@ -10,7 +10,9 @@ Die neueste Meldung oben im Handy-Menü war ein Chip, und in der 300 px breiten 
 drei Wörter der Schlagzeile übrig. Jetzt ist sie eine kleine Karte: Label und Datum, die
 Schlagzeile in zwei Zeilen und zwei bis drei Zeilen des Teasers, in kleinerer Schrift als die
 Menüeinträge. Im Hero der Startseite bleibt es der einzeilige Chip neben dem Badge. „Parks
-entdecken" trägt im Handy-Menü eine Achterbahn statt eines Globus.
+entdecken" trägt im Handy-Menü eine Achterbahn statt eines Globus. Das Menü beginnt oben: die
+Einstellungen stehen links neben dem X statt 80 px darunter, und die Zeile „Meine Alarme · Fancast"
+steht immer am unteren Rand.
 
 Nebenbei: In den Header-Panels (Backstage und News) und in `NewsList` griff keine Zeilenbegrenzung.
 Jede stand als `line-clamp-N block` im Code, und `.block` steht im erzeugten CSS hinter

@@ -721,8 +721,15 @@ export function Header({
                   positioned ancestor of the X in components/ui/sheet.tsx, so with
                   `overflow-y-auto` on it the close button scrolled up and out of the panel with
                   the links — on the one surface that IS the phone navigation. `overscroll-contain`
-                  stops a flick at the end of the list from carrying on into the page behind. */}
-              <SheetContent side="right" className="w-[300px] p-6 pt-12">
+                  stops a flick at the end of the list from carrying on into the page behind.
+
+                  `pt-2` and no top margin on the nav (Patrick, 2026-09-25): the list used to start
+                  80 px down (`pt-12` + `mt-8`), under a band that held nothing but the X. The
+                  first row, the preferences, now stands in the X's own band — the X is
+                  `max-sm:top-2` and 44 px tall, the row `min-h-11` from 8 px — so the menu starts
+                  at the top of the sheet. From `sm` the X is the 16 px one at `top-4`, centred at
+                  24 px, and `sm:pt-0.5` centres the row there too. */}
+              <SheetContent side="right" className="w-[300px] p-6 pt-2 sm:pt-0.5">
                 <nav
                   ref={sheetRef}
                   // `min-h-0` is load-bearing, not tidying: `flex-1` leaves `min-height: auto`,
@@ -730,7 +737,7 @@ export function Header({
                   // past the sheet instead of scrolling inside it, and a menu longer than the
                   // panel spilled out with no way to reach the end. With `min-h-0` it is the
                   // scroll container the close button no longer sits in.
-                  className="mt-8 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
+                  className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
                   aria-label="Mobile navigation"
                   // A tap on a link to the page already showing changes no `pathname`, so the
                   // close-on-navigation above never fires and the sheet just stays open — the
@@ -755,17 +762,22 @@ export function Header({
                       sheet, above the favourites: at the end of the list they sat at y=662 of a
                       664 px sheet (390 × 664, no favourites saved), and every saved favourite
                       pushes them further out of sight. The same components as the bar's, so a
-                      change to one is a change to both. */}
+                      change to one is a change to both.
+
+                      In the X's band, on the left, and without the visible „Einstellungen" in
+                      front of them: beside a 44 px X the 252 px row has ~220 px left, and label
+                      plus controls came to about that in German and more in French. The flag, the
+                      sun and the unit say what they are; the word stays for screen readers as the
+                      group's name. `pr-12` keeps the controls clear of the X at any width. */}
                   <div
                     data-sheet-stagger
-                    className="border-border/60 flex items-center justify-between gap-3 border-b pb-4"
+                    role="group"
+                    aria-label={t('preferences')}
+                    className="border-border/60 flex min-h-11 items-center gap-1 border-b pr-12 pb-2"
                   >
-                    <span className="text-muted-foreground text-sm">{t('preferences')}</span>
-                    <div className="flex items-center gap-1">
-                      <LocaleSwitcher />
-                      <ThemeToggle />
-                      <TemperatureUnitToggle />
-                    </div>
+                    <LocaleSwitcher />
+                    <ThemeToggle />
+                    <TemperatureUnitToggle />
                   </div>
                   {showNearbyPark && (
                     <Link
