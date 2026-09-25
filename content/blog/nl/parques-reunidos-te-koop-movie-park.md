@@ -9,8 +9,7 @@ excerpt: >-
   Investeerder EQT laat JPMorgan een koper zoeken voor Parques Reunidos, het
   concern achter Slagharen, Bobbejaanland, Movie Park Germany en Tropical
   Islands. Volgens Expansión zijn Merlin en Compagnie des Alpes mogelijke
-  gegadigden. Wat dat betekent voor bezoekers en voor de Bonus Club van het
-  Movie Park-seizoensabonnement.
+  gegadigden. Voor bezoekers verandert er voorlopig niets, alleen de Bonus Club van het Movie Park-abonnement staat op losse schroeven.
 tags:
   - nieuws
   - movie-park
@@ -34,7 +33,7 @@ seo:
   description: >-
     EQT laat JPMorgan Parques Reunidos verkopen, volgens Expansión voor zo’n
     1,7 miljard euro. Slagharen, Bobbejaanland, Movie Park Germany en Tropical
-    Islands horen erbij. Wat bezoekers en abonnementhouders moeten weten.
+    Islands horen erbij. Voor bezoekers verandert er voorlopig niets.
   keywords:
     - Parques Reunidos te koop
     - Slagharen te koop
@@ -94,8 +93,7 @@ Entertainment aan Herschend, meer dan twintig parken en attracties in tien
 staten. elEconomista schat de deal op zo’n 1 miljard euro, en de VS waren tot
 dan toe goed voor ongeveer een derde van de omzet. Topman Pascal Ferracci zei
 toen: “Onze toekomst ligt in Europa, waar we een enorm potentieel voor expansie
-zien.” Anderhalf jaar later zoekt de grootaandeelhouder een koper voor precies
-dat Europa.
+zien.”
 
 Twee weken na die aankondiging ging Belantis bij Leipzig naar Compagnie des
 Alpes, voor een ondernemingswaarde van ongeveer 22 miljoen euro. In september
@@ -106,7 +104,7 @@ elEconomista kregen de aandeelhouders daarbij 50 miljoen euro dividend.
 
 Expansión noemt twee exploitanten als mogelijke gegadigden, Merlin
 Entertainments en Compagnie des Alpes, maar schrijft erbij dat er nog geen
-vaste lijst is. In Nederland en België ken je ze allebei. Merlin heeft onder
+vaste lijst is. Merlin heeft onder
 meer het [Heide Park](ref:heide-park?bare) en
 [Legoland Deutschland](ref:legoland-deutschland?bare), Compagnie des Alpes onder
 meer [Walibi Holland](ref:walibi-holland?bare),

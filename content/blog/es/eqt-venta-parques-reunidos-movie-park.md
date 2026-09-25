@@ -9,8 +9,7 @@ excerpt: >-
   EQT ha encargado a JPMorgan buscar comprador para Parques Reunidos, dueño de
   Parque Warner, el Parque de Atracciones de Madrid, Movie Park Germany y
   Bobbejaanland. Según Expansión, Merlin y Compagnie des Alpes podrían estar
-  interesados. Qué supone para quien visita los parques y para el Bonus Club del
-  pase anual de Movie Park.
+  interesados. Para quien visita los parques no cambia nada por ahora; lo único en el aire es el Bonus Club del pase anual de Movie Park.
 tags:
   - noticias
   - movie-park
@@ -34,7 +33,7 @@ seo:
   description: >-
     EQT ha encargado a JPMorgan la venta de Parques Reunidos, valorado en unos
     1.700 millones según Expansión. Incluye Parque Warner, Movie Park Germany,
-    Bobbejaanland y Slagharen. Lo que conviene saber si visitas sus parques.
+    Bobbejaanland y Slagharen. Para los visitantes, de momento no cambia nada.
   keywords:
     - venta Parques Reunidos
     - EQT Parques Reunidos
@@ -91,8 +90,7 @@ Entertainment, a Herschend: más de veinte parques y centros de ocio en diez
 estados. elEconomista cifra la operación en unos 1.000 millones de euros, y
 Estados Unidos aportaba hasta entonces cerca de un tercio de los ingresos. El
 consejero delegado, Pascal Ferracci, dijo entonces: «Nuestro futuro está en
-Europa, donde vemos un enorme potencial de expansión». Dieciocho meses después,
-el accionista mayoritario busca comprador para esa misma Europa.
+Europa, donde vemos un enorme potencial de expansión».
 
 Dos semanas más tarde, Belantis, cerca de Leipzig, pasó a Compagnie des Alpes
 por un valor de empresa de unos 22 millones de euros. En septiembre de 2025, EQT

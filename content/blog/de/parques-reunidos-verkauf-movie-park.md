@@ -9,7 +9,7 @@ excerpt: >-
   Der Finanzinvestor EQT lässt JPMorgan einen Käufer für Parques Reunidos
   suchen, den Konzern hinter Movie Park, Bobbejaanland, Slagharen und Tropical
   Islands. Laut Expansión könnten Merlin oder die Compagnie des Alpes
-  zugreifen. Was das für Besucher und den Bonus Club im Saisonpass heißt.
+  zugreifen. Für Besucher ändert sich vorerst nichts, offen ist nur der Bonus Club im Saisonpass.
 tags:
   - news
   - movie-park
@@ -33,7 +33,7 @@ seo:
   description: >-
     EQT lässt JPMorgan einen Käufer für Parques Reunidos suchen, laut Expansión
     für rund 1,7 Mrd. €. Betroffen sind Movie Park, Bobbejaanland, Slagharen und
-    Tropical Islands. Was Besucher und Saisonpass-Inhaber wissen sollten.
+    Tropical Islands. Für Besucher ändert sich vorerst nichts.
   keywords:
     - Movie Park Verkauf
     - Movie Park Germany neuer Eigentümer
@@ -92,8 +92,7 @@ Herschend ab, mehr als 20 Parks und Freizeitanlagen in zehn Bundesstaaten.
 elEconomista beziffert den Deal auf rund eine Milliarde Euro, und die USA
 standen bis dahin für etwa ein Drittel des Umsatzes. Konzernchef Pascal
 Ferracci sagte damals: „Unsere Zukunft liegt in Europa, wo wir enormes Potenzial
-für Wachstum sehen.“ Achtzehn Monate später sucht der Mehrheitseigentümer einen
-Käufer für genau dieses Europa.
+für Wachstum sehen.“
 
 Zwei Wochen nach der Ankündigung ging Belantis bei Leipzig an die französische
 Compagnie des Alpes, für einen Unternehmenswert von rund 22 Millionen Euro. Im
@@ -104,7 +103,7 @@ die Eigentümer bekamen laut elEconomista eine Dividende von 50 Millionen Euro.
 
 Expansión nennt zwei Betreiber als mögliche Interessenten, Merlin
 Entertainments und die Compagnie des Alpes, schreibt aber dazu, dass es noch
-keine feste Liste gibt. Beide kennt man hierzulande. Merlin betreibt den
+keine feste Liste gibt. Merlin betreibt den
 [Heide Park](ref:heide-park?bare) und das
 [Legoland Deutschland](ref:legoland-deutschland?bare), die Compagnie des Alpes
 unter anderem [Walibi Holland](ref:walibi-holland?bare),

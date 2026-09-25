@@ -8,8 +8,7 @@ featured: false
 excerpt: >-
   EQT has hired JPMorgan to find a buyer for Parques Reunidos, the group behind
   Movie Park Germany, Bobbejaanland, Slagharen and Tropical Islands. Expansión
-  names Merlin and Compagnie des Alpes as possible bidders. What it means for
-  visitors, and for the Bonus Club on the season pass.
+  names Merlin and Compagnie des Alpes as possible bidders. Nothing changes for visitors yet; the Bonus Club on the season pass is the open question.
 tags:
   - news
   - movie-park
@@ -33,7 +32,7 @@ seo:
   description: >-
     EQT has hired JPMorgan to sell Parques Reunidos, valued at around €1.7bn
     according to Expansión. Movie Park Germany, Bobbejaanland, Slagharen and
-    Tropical Islands are part of it. What visitors and pass holders should know.
+    Tropical Islands are part of it. Nothing changes for visitors yet.
   keywords:
     - Movie Park Germany sale
     - Movie Park Germany new owner
@@ -88,8 +87,7 @@ In March 2025 Parques Reunidos sold its US arm, Palace Entertainment, to
 Herschend: more than 20 parks and attractions in ten states. elEconomista puts
 the deal at around €1 billion, and the US had brought in about a third of group
 revenue. CEO Pascal Ferracci said at the time: "Our future is in Europe, where
-we see tremendous potential for expansion." Eighteen months on, the majority
-owner is looking for someone to buy that Europe.
+we see tremendous potential for expansion."
 
 Two weeks after the US announcement, Belantis near Leipzig went to Compagnie
 des Alpes for an enterprise value of about €22 million. In September 2025 EQT
@@ -99,8 +97,7 @@ shareholders took a €50 million dividend out of it.
 ## Who might buy
 
 Expansión names two operators as possible bidders, Merlin Entertainments and
-Compagnie des Alpes, while stressing that there is no shortlist yet. Anyone who
-visits German parks knows both. Merlin runs [Heide Park](ref:heide-park?bare)
+Compagnie des Alpes, while stressing that there is no shortlist yet. Merlin runs [Heide Park](ref:heide-park?bare)
 and [Legoland Deutschland](ref:legoland-deutschland?bare); Compagnie des Alpes
 owns [Walibi Holland](ref:walibi-holland?bare),
 [Walibi Belgium](ref:walibi-belgium?bare), [Parc Astérix](ref:parc-asterix?bare)

@@ -9,8 +9,7 @@ excerpt: >-
   Il fondo EQT ha incaricato JPMorgan di trovare un compratore per Parques
   Reunidos, il gruppo che possiede Mirabilandia, Movie Park Germany,
   Bobbejaanland e Tropical Islands. Secondo Expansión potrebbero farsi avanti
-  Merlin o la Compagnie des Alpes. Cosa cambia per chi visita i parchi e per il
-  Bonus Club dell’abbonamento di Movie Park.
+  Merlin o la Compagnie des Alpes. Per chi visita i parchi per ora non cambia nulla; resta in sospeso solo il Bonus Club dell’abbonamento di Movie Park.
 tags:
   - notizie
   - movie-park
@@ -34,7 +33,7 @@ seo:
   description: >-
     EQT ha affidato a JPMorgan la vendita di Parques Reunidos, valutato circa
     1,7 miliardi secondo Expansión. Nel gruppo ci sono Mirabilandia, Movie Park
-    Germany, Bobbejaanland e Slagharen. Cosa sapere se visiti questi parchi.
+    Germany, Bobbejaanland e Slagharen. Per chi visita i parchi, per ora non cambia nulla.
   keywords:
     - Parques Reunidos vendita
     - Mirabilandia vendita
@@ -93,8 +92,7 @@ Entertainment, a Herschend: più di venti parchi e strutture in dieci Stati.
 elEconomista stima l’operazione in circa un miliardo di euro, e gli Stati Uniti
 valevano fino ad allora circa un terzo del fatturato. L’amministratore delegato
 Pascal Ferracci disse in quell’occasione: «Il nostro futuro è in Europa, dove
-vediamo un enorme potenziale di espansione». Diciotto mesi dopo, l’azionista di
-maggioranza cerca un compratore proprio per quell’Europa.
+vediamo un enorme potenziale di espansione».
 
 Due settimane dopo, Belantis, vicino a Lipsia, è passato alla Compagnie des
 Alpes per un valore d’impresa di circa 22 milioni di euro. A settembre 2025 EQT

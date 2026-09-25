@@ -9,8 +9,7 @@ excerpt: >-
   Le fonds EQT a chargé JPMorgan de trouver un acheteur pour Parques Reunidos,
   le groupe derrière Movie Park Germany, Bobbejaanland, Slagharen et Tropical
   Islands. Selon Expansión, Merlin et la Compagnie des Alpes pourraient être
-  intéressés. Ce que ça change pour les visiteurs et pour le Bonus Club du pass
-  annuel.
+  intéressés. Pour les visiteurs, rien ne change pour l’instant ; seul le Bonus Club du pass annuel est en suspens.
 tags:
   - actualites
   - movie-park
@@ -34,7 +33,7 @@ seo:
   description: >-
     EQT a confié à JPMorgan la vente de Parques Reunidos, valorisé autour de
     1,7 milliard d’euros selon Expansión. Movie Park Germany, Bobbejaanland,
-    Slagharen et Tropical Islands en font partie. Ce qu’il faut savoir.
+    Slagharen et Tropical Islands en font partie. Pour les visiteurs, rien ne change pour l’instant.
   keywords:
     - Parques Reunidos vente
     - Movie Park Germany à vendre
@@ -93,8 +92,7 @@ Entertainment, à Herschend : plus de vingt parcs et sites de loisirs dans dix
 États. elEconomista chiffre l’opération à environ un milliard d’euros, et les
 États-Unis représentaient jusque-là à peu près un tiers du chiffre d’affaires.
 Le PDG Pascal Ferracci déclarait alors : « Notre avenir est en Europe, où nous
-voyons un énorme potentiel d’expansion. » Dix-huit mois plus tard, l’actionnaire
-majoritaire cherche un acheteur pour cette même Europe.
+voyons un énorme potentiel d’expansion. »
 
 Deux semaines après cette annonce, Belantis, près de Leipzig, passait à la
 Compagnie des Alpes pour une valeur d’entreprise d’environ 22 millions d’euros.
@@ -105,9 +103,7 @@ et selon elEconomista les actionnaires en ont tiré un dividende de 50 millions.
 
 Expansión cite deux exploitants comme candidats possibles, Merlin
 Entertainments et la Compagnie des Alpes, tout en précisant qu’il n’existe pas
-encore de liste arrêtée. Le second est français, et on connaît ses parcs :
-[Parc Astérix](ref:parc-asterix?bare), Walibi Rhône-Alpes, mais aussi
-[Walibi Belgium](ref:walibi-belgium?bare),
+encore de liste arrêtée. La Compagnie des Alpes exploite [Parc Astérix](ref:parc-asterix?bare), Walibi Rhône-Alpes, [Walibi Belgium](ref:walibi-belgium?bare),
 [Walibi Holland](ref:walibi-holland?bare) et, depuis avril 2025, Belantis.
 Merlin exploite de son côté [Heide Park](ref:heide-park?bare) et
 [Legoland Deutschland](ref:legoland-deutschland?bare).
