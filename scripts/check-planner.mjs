@@ -4926,9 +4926,16 @@ step: {
   await pressLauncher();
   await question.locator('[data-confirm-action]').click();
   await ask.waitForTimeout(1500);
+  // The wizard's FIRST step has no footer (picking a park is the advance), so
+  // its „Weiter" is no sign of it here, on a page with no park behind it: the
+  // park search is. On a park page the same press opens it on the date step.
   const started = {
     sheets: await openSheets(),
-    wizard: await ask.locator('[data-planner-wizard-next]:visible').count(),
+    wizard: await ask
+      .locator(
+        '[data-slot="dialog-content"][data-state="open"]:has([data-planner-park-search], [data-planner-wizard-next])'
+      )
+      .count(),
   };
   check(
     '„Neuen Tag planen" öffnet den Assistenten',
