@@ -2480,5 +2480,13 @@
       "adopted": "Le plan est maintenant dans votre planificateur.",
       "open": "Ouvrir le planificateur"
     }
+  },
+  "news": {
+    "intro": "Ce qui se passe dans les parcs, le plus récent d’abord.",
+    "count": "{count, plural, one {# actualité} other {# actualités}}",
+    "filter": {
+      "label": "Filtrer par parc",
+      "all": "Tous les parcs"
+    }
   }
 }

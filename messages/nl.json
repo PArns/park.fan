@@ -2480,5 +2480,13 @@
       "adopted": "Het plan staat nu in je planner.",
       "open": "Planner openen"
     }
+  },
+  "news": {
+    "intro": "Wat er in de parken gebeurt, het nieuwste eerst.",
+    "count": "{count, plural, one {# bericht} other {# berichten}}",
+    "filter": {
+      "label": "Filteren op park",
+      "all": "Alle parken"
+    }
   }
 }

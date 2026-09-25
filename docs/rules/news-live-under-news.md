@@ -19,7 +19,7 @@ Cards and rows, prev/next, the header menu, the new-posts toast (its payload car
 
 ## One page, two routes
 
-`app/[locale]/blog/[slug]` and `app/[locale]/news/[slug]` render the same page, `BlogPostPageBody` in `components/blog/blog-post-page.tsx`, with a `section` prop. `/blog/category/[...path]` and `/news` share `BlogCategoryPageBody` the same way. Each route file keeps only its `generateStaticParams`, its metadata call and its `<RouteMessages>`. `listAllUrlSlugsByLocale('blog' | 'news')` splits the static params, deciding on the entry that locale actually serves (its own translation, else the EN fallback).
+`app/[locale]/blog/[slug]` and `app/[locale]/news/[slug]` render the same page, `BlogPostPageBody` in `components/blog/blog-post-page.tsx`, with a `section` prop. A news post reads exactly like an article: the full-bleed `BlogPostBanner`, the reading time, the header floating over the cover (`isBlogPost` in `components/layout/header.tsx` counts `/news/…`). Only the overview has a look of its own. PAR-473 briefly gave the post page a slimmer head of its own and a "more news from <park>" row, and Patrick took it back on 2026-09-24: the overview is where news looks different, reading a news post stays in the blog style. The overview at `/news` has its own body, `NewsIndexPageBody` (`components/blog/news-index-page.tsx`); it only shares `buildCategoryMetadata` with `/blog/category/[...path]`. Each route file keeps only its `generateStaticParams`, its metadata call and its `<RouteMessages>`. `listAllUrlSlugsByLocale('blog' | 'news')` splits the static params, deciding on the entry that locale actually serves (its own translation, else the EN fallback).
 
 No post is reachable under both paths. An article under `/news/<slug>` is a 404. A news post under `/blog/<slug>` is a 308 to `/news/<slug>`.
 
@@ -36,8 +36,17 @@ Both pages keep their own answer behind the proxy (`permanentRedirect` for a new
 
 Two cases take two hops, and both are rare. A bare `/blog/<news-slug>` without a locale is first resolved by next-intl and then 308'd. A renamed slug from `next.config.ts` `redirects()` runs before the proxy. No news slug has been renamed so far.
 
+## The overview and a post's park
+
+`/news` is a stream grouped by day, newest first. The day heading is `NewsAge`; every note shows its park (`NewsParkLabel`), title, one line of excerpt and a small cover. Every note is listed, whatever its age.
+
+A note's park comes from `getNewsParkRef()` in `lib/blog/backlinks.ts`: the first `parkLinks` entry, in the order the author wrote them, across all translations. A post without `parkLinks` falls back to the best-scored park it mentions, with the score the park pages rank by. `resolveNewsPark()` (`lib/blog/news-park.ts`) turns that into a name and a park page; a park the geo structure does not know leaves the note without a label, never out of the list.
+
+`pnpm test:news-park` pins that choice against the real manifest.
+
+The park filter is a query parameter on the one static page, `?park=<slug>`, handled by `NewsStream`. It adds no URL of its own: the route stays static and the canonical stays `/news`. It offers only parks that have news. The filter is CSS on a `data-news-filter` attribute, and an inline script sets that attribute from the URL while the HTML is parsed. A shared `?park=` link therefore paints filtered and does not shrink after hydration. An unknown slug in the parameter shows everything.
+
 ## What is not here yet
 
-- The overview at `/news` is the old category listing at its new URL. Its own look is PAR-473.
 - News posts still send `BlogPosting` structured data (PAR-471) and have no news sitemap (PAR-472).
 - A news subcategory (`news/<sub>`) would keep a `/blog/category/news/<sub>` listing while its posts live under `/news`. None exists.

@@ -139,7 +139,7 @@ carries the reasoning, the measurements and the counter-examples.
   age (`NewsAge`) and is never hidden for it.
 - **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
   `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
-  `pnpm test:news-redirects`.
+  `pnpm test:news-redirects`, `pnpm test:news-park`.
 
 ### Design and layout
 

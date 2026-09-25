@@ -27,7 +27,7 @@ import { categoryPath, NEWS_CATEGORY } from '@/lib/blog/paths';
 /**
  * A blog category listing at `/blog/category/[...path]`. Articles only: the news category is not
  * a blog category — its posts live under `/news`, and its overview is the news page
- * (`components/news/news-index-page.tsx`), which draws nothing from here. Canonical, hreflang and
+ * (`NewsIndexPageBody`, `components/blog/news-index-page.tsx`), which draws nothing from here. Canonical, hreflang and
  * breadcrumbs come from `categoryPath` (`lib/blog/paths.ts`).
  */
 export async function buildCategoryMetadata(locale: string, path: string[]): Promise<Metadata> {

@@ -157,6 +157,21 @@ Phantasialand-Liste 6.503 → 4.328 px, Magic Kingdom 12.053 → 4.136 px. Glock
 ihre 34-px-Kreise mit 44-px-Trefferfläche. Die Prop heißt `phoneRow`, die anderen sieben
 Einbettungen der Karte und der Desktop bleiben gleich. `LazyMount` reserviert für eine Spalte jetzt
 80 px je Zeile (`phoneRowHeight`), das Tab-Skeleton hat dieselbe Zeilenform.
+## Unreleased – feat: `/news` sieht nicht mehr aus wie der Blog
+
+Die Übersicht `/news` war bis hier die Kategorieseite des Blogs an neuer URL: Kartenraster,
+Kategoriebaum, Tag-Cloud. Jetzt ist sie ein Strom nach Tagen, neueste zuerst. Jeder Tag beginnt mit
+Datum und Alter (`NewsAge`), jede Meldung trägt ihren Park als Link, den Titel, eine Zeile Teaser
+und ein kleines Bild. Über dem Strom filtern Pillen nach Park (`?park=<slug>`), angeboten werden nur
+Parks mit News. Die Seite bleibt statisch, der Filter läuft im Browser und die Canonical bleibt
+`/news`.
+
+Der einzelne Beitrag unter `/news/<slug>` bleibt, wie er war: Er liest sich wie ein Artikel, mit
+Vollbild-Hero und Lesezeit. Ein eigener, schlanker Kopf für Beiträge war kurz Teil dieser Änderung
+und ist auf Patricks Wunsch wieder raus.
+
+Der Park einer Meldung ist der erste Eintrag in `parkLinks`, ohne Eintrag der bestbewertete Park,
+den der Beitrag erwähnt (`getNewsParkRef`). Siehe `docs/rules/news-live-under-news.md`.
 
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
 
