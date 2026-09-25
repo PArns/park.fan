@@ -49,7 +49,17 @@ look at if that row ever has to carry more.
 **The sheet's footer is a footer.** „Meine Alarme · Fancast" (`MoreMenuLinks variant="sheet"`)
 stands outside the scrolling list, on the sheet's bottom edge, with only
 `env(safe-area-inset-bottom)` or 4 px beneath it rather than the sheet's 24 px padding; the list
-scrolls above it and never takes it along.
+scrolls above it and never takes it along. The reveal's root (`useSheetReveal`'s ref) is a column
+around both, so the footer slides in with the rows instead of standing there while they move.
+
+**The list never scrolls sideways.** `overflow-y: auto` computes `overflow-x` to `auto` too, and a
+favourites row (`Row` in `favorites-menu-rows.tsx`) bleeds 8 px past its column with `-mx-2` so it
+sits flush with its heading. With three parks saved the list measured 259 px in a 251 px box, a
+horizontal scrollbar under the sheet on every phone with a favourite (the first measurement had
+none saved and saw nothing). The `<nav>` is `-mx-2 px-2 overflow-x-hidden`: 8 px wider on both
+sides and padded back, so the content column is unchanged and the bleed lands inside the box;
+`overflow-x-hidden` also covers the reveal's `x: 16` while it runs. Re-measured at 320, 360 and
+390 px with three parks saved: `scrollWidth` equals `clientWidth`, no element past the edge.
 
 **On a mobile-first render the header contributed no navigation.** The desktop `<nav>` is
 `display:none` below its breakpoint — Google still reads links there, so nothing was lost — but the

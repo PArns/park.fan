@@ -759,18 +759,33 @@ export function Header({
                 side="right"
                 className="w-[300px] gap-0 px-6 pt-2 pb-[max(0.25rem,env(safe-area-inset-bottom))] sm:pt-0.5"
               >
-                <nav
-                  ref={sheetRef}
-                  // `min-h-0` is load-bearing, not tidying: `flex-1` leaves `min-height: auto`,
-                  // and a flex item with that will not shrink below its content — so the nav grew
-                  // past the sheet instead of scrolling inside it, and a menu longer than the
-                  // panel spilled out with no way to reach the end. With `min-h-0` it is the
-                  // scroll container the close button no longer sits in.
-                  className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain pb-4"
-                  aria-label="Mobile navigation"
-                  onClick={closeOnSamePageTap}
-                >
-                  {/* The three preferences the bar no longer carries on a phone. FIRST in the
+                {/* The reveal's root spans the list AND the footer below it: `useSheetReveal`
+                    staggers every `[data-sheet-stagger]` under its ref, and with the ref on the
+                    `<nav>` the footer, which sits outside the scrolling list, just appeared while
+                    every row above it slid in. The column is the one the sheet already was:
+                    `flex-1 min-h-0`, so the nav inside can still be the scroll container. */}
+                <div ref={sheetRef} className="flex min-h-0 flex-1 flex-col">
+                  <nav
+                    // `min-h-0` is load-bearing, not tidying: `flex-1` leaves `min-height: auto`,
+                    // and a flex item with that will not shrink below its content — so the nav grew
+                    // past the sheet instead of scrolling inside it, and a menu longer than the
+                    // panel spilled out with no way to reach the end. With `min-h-0` it is the
+                    // scroll container the close button no longer sits in.
+                    //
+                    // `-mx-2 px-2` and `overflow-x-hidden` because a scroll container scrolls both
+                    // ways: `overflow-y: auto` computes `overflow-x` to `auto` as well, and the
+                    // favourites rows bleed 8 px past their column (`Row`'s `-mx-2`, which puts
+                    // them flush with their heading). Three saved parks made the list 259 px wide
+                    // in a 251 px box — a horizontal scrollbar under the sheet on every phone with
+                    // a favourite. The nav now reaches 8 px further on both sides and pads that
+                    // back, so the content column is the same 252 px and the bleed lands inside
+                    // the box; `overflow-x-hidden` also keeps the reveal's `x: 16` slide from
+                    // flashing a scrollbar while it runs.
+                    className="-mx-2 flex min-h-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto overscroll-contain px-2 pb-4"
+                    aria-label="Mobile navigation"
+                    onClick={closeOnSamePageTap}
+                  >
+                    {/* The three preferences the bar no longer carries on a phone. FIRST in the
                       sheet, above the favourites: at the end of the list they sat at y=662 of a
                       664 px sheet (390 × 664, no favourites saved), and every saved favourite
                       pushes them further out of sight. The same components as the bar's, so a
@@ -781,121 +796,121 @@ export function Header({
                       plus controls came to about that in German and more in French. The flag, the
                       sun and the unit say what they are; the word stays for screen readers as the
                       group's name. `pr-12` keeps the controls clear of the X at any width. */}
-                  <div
-                    data-sheet-stagger
-                    role="group"
-                    aria-label={t('preferences')}
-                    className="border-border/60 flex min-h-11 items-center gap-1 border-b pr-12 pb-2"
-                  >
-                    <LocaleSwitcher />
-                    <ThemeToggle />
-                    <TemperatureUnitToggle />
-                  </div>
-                  {showNearbyPark && (
-                    <Link
-                      href={convertApiUrlToFrontendUrl(nearestPark.url)}
-                      prefetch={false}
-                      className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
-                      aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+                    <div
                       data-sheet-stagger
+                      role="group"
+                      aria-label={t('preferences')}
+                      className="border-border/60 flex min-h-11 items-center gap-1 border-b pr-12 pb-2"
                     >
-                      <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-                      {t('nearbyPark', { parkName: nearestPark.name })}
-                    </Link>
-                  )}
-                  {/* The newest news post, as the same chip the homepage hero draws beside its
+                      <LocaleSwitcher />
+                      <ThemeToggle />
+                      <TemperatureUnitToggle />
+                    </div>
+                    {showNearbyPark && (
+                      <Link
+                        href={convertApiUrlToFrontendUrl(nearestPark.url)}
+                        prefetch={false}
+                        className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                        aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+                        data-sheet-stagger
+                      >
+                        <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+                        {t('nearbyPark', { parkName: nearestPark.name })}
+                      </Link>
+                    )}
+                    {/* The newest news post, as the same chip the homepage hero draws beside its
                       badge — a find like the nearby park above, not a menu entry. From the
                       news menu's own data, so it costs the sheet nothing new. */}
-                  {latestNews && (
-                    <div data-sheet-stagger>
-                      <LatestNewsChip news={latestNews} variant="card" />
-                    </div>
-                  )}
-                  {/* Favorites before the destinations (only the two finds, nearby park and
+                    {latestNews && (
+                      <div data-sheet-stagger>
+                        <LatestNewsChip news={latestNews} variant="card" />
+                      </div>
+                    )}
+                    {/* Favorites before the destinations (only the two finds, nearby park and
                       newest news, stand above them) — on a phone this sheet IS the navigation,
                       and a returning visitor's own parks are the shortest route out of it. Radix
                       unmounts the sheet's contents when it closes, so `open` is only ever true
                       here and the panel's request is gated by the sheet itself. */}
-                  <div data-sheet-stagger className="border-border/60 border-b pb-4">
-                    <FavoritesMenuPanel open variant="sheet" />
-                  </div>
-                  {/* Every entry leads with its icon, in the accent (Patrick, 2026-09-25): the
+                    <div data-sheet-stagger className="border-border/60 border-b pb-4">
+                      <FavoritesMenuPanel open variant="sheet" />
+                    </div>
+                    {/* Every entry leads with its icon, in the accent (Patrick, 2026-09-25): the
                       same glyph the destination carries elsewhere — `Newspaper` for the blog as
                       on the homepage, `Megaphone` for news as on every news label, the "more"
                       panel's three for its three hubs, `CalendarPlus` from the planner's button —
                       so the sheet does not invent a second icon for a place that has one. */}
-                  {showBlog && (
-                    <SheetNavLink href="/blog" icon={Newspaper}>
-                      {t('blog')}
+                    {showBlog && (
+                      <SheetNavLink href="/blog" icon={Newspaper}>
+                        {t('blog')}
+                      </SheetNavLink>
+                    )}
+                    {newsMenu && newsMenu.items.length > 0 && (
+                      <SheetNavLink href={newsMenu.path} icon={Megaphone}>
+                        {newsMenu.label}
+                      </SheetNavLink>
+                    )}
+                    <SheetNavLink href="/" icon={House}>
+                      {t('home')}
                     </SheetNavLink>
-                  )}
-                  {newsMenu && newsMenu.items.length > 0 && (
-                    <SheetNavLink href={newsMenu.path} icon={Megaphone}>
-                      {newsMenu.label}
-                    </SheetNavLink>
-                  )}
-                  <SheetNavLink href="/" icon={House}>
-                    {t('home')}
-                  </SheetNavLink>
-                  {/* Discovery in the sheet: a native <details>, so the continents open with no
+                    {/* Discovery in the sheet: a native <details>, so the continents open with no
                       JavaScript at all and the disclosure state is the browser's, not ours. The
                       countries stay out of it — the sheet is a phone-sized column, and the
                       continent hubs are one tap from the parks that matter. */}
-                  <details className="group" data-sheet-stagger>
-                    <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
-                      <SheetNavLabel icon={RollerCoaster}>{t('explore')}</SheetNavLabel>
-                      <ChevronDown
-                        className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
-                        aria-hidden="true"
-                      />
-                    </summary>
-                    {/* `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under
+                    <details className="group" data-sheet-stagger>
+                      <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
+                        <SheetNavLabel icon={RollerCoaster}>{t('explore')}</SheetNavLabel>
+                        <ChevronDown
+                          className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
+                          aria-hidden="true"
+                        />
+                      </summary>
+                      {/* `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under
                         the label's first letter — `SheetNavLabel`'s 20 px icon + 12 px gap. */}
-                    <div className="border-border/60 mt-2 ml-2.5 flex flex-col gap-2 border-l pl-5">
-                      <Link
-                        href="/parks"
-                        prefetch={false}
-                        className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-                      >
-                        {t('parks')}
-                      </Link>
-                      {(geoMenu ?? []).map((continent) => (
+                      <div className="border-border/60 mt-2 ml-2.5 flex flex-col gap-2 border-l pl-5">
                         <Link
-                          key={continent.slug}
-                          href={`/parks/${continent.slug}`}
+                          href="/parks"
                           prefetch={false}
                           className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                         >
-                          {translateContinent(tGeo, continent.slug, locale, continent.name)}
+                          {t('parks')}
                         </Link>
-                      ))}
-                    </div>
-                  </details>
-                  <SheetNavLink href={bestTimePath} icon={CalendarRange}>
-                    {t('bestTime')}
-                  </SheetNavLink>
-                  <SheetNavLink href={glossaryPath} icon={BookOpen}>
-                    {t('glossary')}
-                  </SheetNavLink>
-                  <SheetNavLink href={howtoPath} icon={Compass}>
-                    {t('howto')}
-                  </SheetNavLink>
-                  <SheetNavLink href={plannerPath} icon={CalendarPlus}>
-                    {t('planner')}
-                  </SheetNavLink>
-                </nav>
-                {/* Dieselbe Zeile wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
-                    demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
-                    Besucher suchen, diese sind Ziele, die man findet. „Meine Favoriten" fehlt
-                    hier, weil das Favoriten-Panel darüber es schon trägt, siehe `MoreMenuLinks`.
+                        {(geoMenu ?? []).map((continent) => (
+                          <Link
+                            key={continent.slug}
+                            href={`/parks/${continent.slug}`}
+                            prefetch={false}
+                            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                          >
+                            {translateContinent(tGeo, continent.slug, locale, continent.name)}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                    <SheetNavLink href={bestTimePath} icon={CalendarRange}>
+                      {t('bestTime')}
+                    </SheetNavLink>
+                    <SheetNavLink href={glossaryPath} icon={BookOpen}>
+                      {t('glossary')}
+                    </SheetNavLink>
+                    <SheetNavLink href={howtoPath} icon={Compass}>
+                      {t('howto')}
+                    </SheetNavLink>
+                    <SheetNavLink href={plannerPath} icon={CalendarPlus}>
+                      {t('planner')}
+                    </SheetNavLink>
+                  </nav>
+                  {/* The same row as the foot of the "Mehr" panel, from one definition, and down
+                    here and smaller for the same reason: the rest of this list is places visitors
+                    look for, these are places they come across. "Meine Favoriten" is missing here
+                    because the favourites panel above already carries it, see `MoreMenuLinks`.
 
-                    Ein echter Fuß des Sheets (Patrick, 2026-09-25): AUSSERHALB der scrollenden
-                    Liste, also immer am unteren Rand und nie weggescrollt, und mit nur dem
-                    Abstand darunter, den die Home-Leiste eines iPhones braucht
-                    (`env(safe-area-inset-bottom)`, sonst 4 px) statt der 24 px Innenabstand des
-                    Sheets. Derselbe Schließ-Handler wie an der Liste. */}
-                <div onClick={closeOnSamePageTap}>
-                  <MoreMenuLinks variant="sheet" />
+                    A real footer of the sheet (Patrick, 2026-09-25): OUTSIDE the scrolling list,
+                    so always on the bottom edge and never scrolled away, with only the room an
+                    iPhone's home indicator needs beneath it (`env(safe-area-inset-bottom)`, else
+                    4 px) instead of the sheet's 24 px padding. Same close handler as the list. */}
+                  <div onClick={closeOnSamePageTap}>
+                    <MoreMenuLinks variant="sheet" />
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
