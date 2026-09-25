@@ -38,8 +38,9 @@ export function latestNewsFrom(
  * the hero is `lg` only) — and at the top of the phone menu.
  *
  * One line by construction in the hero: the headline truncates, so the chip is exactly as tall as
- * the badge beside it and never pushes the hero down. The phone menu lets it take two
- * (`twoLines`).
+ * the badge. Beside the badge (from a 34 rem row, `HeroBadgeRow`) that costs the hero no height;
+ * below it (every phone) the chip stands under the badge and the plate is one chip, 38 px, taller.
+ * The phone menu lets it take two lines (`twoLines`).
  *
  * **News shows its age, and here it is the date.** Not `NewsAge`: that one adds its relative half
  * ("vor 3 Tagen") after hydration, and inside a truncating line the growth would slide the
@@ -63,11 +64,13 @@ export function LatestNewsChip({
   className?: string;
 }) {
   const format = useFormatter();
-  const date = format.dateTime(new Date(`${news.date}T00:00:00Z`), {
-    day: 'numeric',
-    month: 'short',
-    timeZone: 'UTC',
-  });
+  // `new Date('2026-09-25')` is UTC midnight by spec, so formatting in UTC prints that day on the
+  // server and in any browser. Anything that does not parse drops the date rather than throwing
+  // out of the header on every page.
+  const published = new Date(news.date);
+  const date = Number.isNaN(published.getTime())
+    ? null
+    : format.dateTime(published, { day: 'numeric', month: 'short', timeZone: 'UTC' });
 
   return (
     <Link
@@ -87,10 +90,14 @@ export function LatestNewsChip({
         {news.label}
       </Badge>
       <span className={cn('min-w-0', twoLines ? 'line-clamp-2' : 'truncate')}>
-        <time dateTime={news.date} className="text-muted-foreground tabular-nums">
-          {date}
-        </time>
-        <span className="text-muted-foreground/60"> · </span>
+        {date && (
+          <>
+            <time dateTime={news.date} className="text-muted-foreground tabular-nums">
+              {date}
+            </time>
+            <span className="text-muted-foreground/60"> · </span>
+          </>
+        )}
         <span className="font-medium">{news.title}</span>
       </span>
       <ArrowRight

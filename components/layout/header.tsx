@@ -94,10 +94,24 @@ interface HeaderProps {
   featuredParks?: FeaturedParkCard[];
 }
 
-/** One destination in the phone sheet: its icon in the accent, then its label. */
+/**
+ * A destination's icon and label in the phone sheet: the icon in the accent, 20 px, 12 px before
+ * the label. One definition for the links and the „Parks entdecken" disclosure, whose indented
+ * continent list is aligned to exactly these two numbers.
+ */
+function SheetNavLabel({ icon: Icon, children }: { icon: LucideIcon; children: React.ReactNode }) {
+  return (
+    <span className="flex items-center gap-3">
+      <Icon className="text-primary size-5 shrink-0" aria-hidden="true" />
+      {children}
+    </span>
+  );
+}
+
+/** One destination in the phone sheet. */
 function SheetNavLink({
   href,
-  icon: Icon,
+  icon,
   children,
 }: {
   href: string;
@@ -109,10 +123,9 @@ function SheetNavLink({
       href={href}
       prefetch={false}
       data-sheet-stagger
-      className="hover:text-primary flex items-center gap-3 text-lg font-medium transition-colors"
+      className="hover:text-primary text-lg font-medium transition-colors"
     >
-      <Icon className="text-primary size-5 shrink-0" aria-hidden="true" />
-      {children}
+      <SheetNavLabel icon={icon}>{children}</SheetNavLabel>
     </Link>
   );
 }
@@ -721,9 +734,21 @@ export function Header({
                   aria-label="Mobile navigation"
                   // A tap on a link to the page already showing changes no `pathname`, so the
                   // close-on-navigation above never fires and the sheet just stays open — the
-                  // news chip made that the common case on the newest post. Any link closes it.
+                  // news chip made that the common case on the newest post. That one case, and
+                  // only that one, closes it here: a plain click on a link in the sheet's own DOM
+                  // (not a portalled menu) whose path is the current one. A locale switch keeps
+                  // the sheet open, as it always has, and a modifier click opens a tab.
                   onClick={(event) => {
-                    if ((event.target as HTMLElement).closest('a')) setMobileMenuOpen(false);
+                    const link = (event.target as HTMLElement).closest('a');
+                    if (!link || !event.currentTarget.contains(link) || link.target === '_blank') {
+                      return;
+                    }
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) {
+                      return;
+                    }
+                    if (new URL(link.href).pathname === window.location.pathname) {
+                      setMobileMenuOpen(false);
+                    }
                   }}
                 >
                   {/* The three preferences the bar no longer carries on a phone. FIRST in the
@@ -794,17 +819,14 @@ export function Header({
                       continent hubs are one tap from the parks that matter. */}
                   <details className="group" data-sheet-stagger>
                     <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
-                      <span className="flex items-center gap-3">
-                        <Earth className="text-primary size-5 shrink-0" aria-hidden="true" />
-                        {t('explore')}
-                      </span>
+                      <SheetNavLabel icon={Earth}>{t('explore')}</SheetNavLabel>
                       <ChevronDown
                         className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
                         aria-hidden="true"
                       />
                     </summary>
                     {/* `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under
-                        the label's first letter (20 px icon + 12 px gap). */}
+                        the label's first letter — `SheetNavLabel`'s 20 px icon + 12 px gap. */}
                     <div className="border-border/60 mt-2 ml-2.5 flex flex-col gap-2 border-l pl-5">
                       <Link
                         href="/parks"

@@ -53,7 +53,21 @@ export interface NewsMenu {
   total: number;
 }
 
+const NEWS_MENU = new Map<Locale, NewsMenu>();
+
+/**
+ * Memoised per process, like the listings it reads: the manifest is fixed for the deployment, and
+ * the layout (every page) and the homepage hero both ask for it.
+ */
 export function getNewsMenu(locale: Locale): NewsMenu {
+  const memo = NEWS_MENU.get(locale);
+  if (memo) return memo;
+  const menu = buildNewsMenu(locale);
+  NEWS_MENU.set(locale, menu);
+  return menu;
+}
+
+function buildNewsMenu(locale: Locale): NewsMenu {
   const news = listNewsByDate(locale);
   return {
     label: resolveCategoryLabel(NEWS_CATEGORY, locale, 'News'),
@@ -65,8 +79,10 @@ export function getNewsMenu(locale: Locale): NewsMenu {
         slug: post.slug,
         title: post.frontmatter.title,
         date: post.frontmatter.date,
-        image: versionedPath(src) ?? src,
-        imagePosition: objectPositionForSrc(src, '50% 50%'),
+        ...(src && {
+          image: versionedPath(src) ?? src,
+          imagePosition: objectPositionForSrc(src, '50% 50%'),
+        }),
       };
       return index > 0
         ? item

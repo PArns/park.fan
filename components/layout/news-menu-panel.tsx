@@ -95,21 +95,22 @@ export function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
                         {item.title}
                       </span>
                     </span>
-                    {/* 16:10 on 5.5 rem: two lines of headline plus the age line are ~56 px, and
-                        a thumbnail taller than its text would push the rows apart. */}
+                    {/* 88 × 55 (16:10): two lines of headline plus the age line are ~56 px, and a
+                        thumbnail taller than its text would push the rows apart. A fixed size
+                        rather than `fill`, because this markup ships `hidden` on every page and
+                        `fill` with a px `sizes` lists every configured width in its srcset; a
+                        fixed one lists two (1x, 2x). */}
                     {item.image && (
-                      <span className="bg-muted relative block aspect-[16/10] w-22 shrink-0 overflow-hidden rounded-md">
-                        <Image
-                          src={item.image}
-                          alt=""
-                          fill
-                          sizes="88px"
-                          style={
-                            item.imagePosition ? { objectPosition: item.imagePosition } : undefined
-                          }
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </span>
+                      <Image
+                        src={item.image}
+                        alt=""
+                        width={88}
+                        height={55}
+                        style={
+                          item.imagePosition ? { objectPosition: item.imagePosition } : undefined
+                        }
+                        className="bg-muted h-[55px] w-[88px] shrink-0 rounded-md object-cover"
+                      />
                     )}
                   </Link>
                 </li>

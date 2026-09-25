@@ -27,9 +27,10 @@ one `SheetNavLink`: the glyph each place already carries elsewhere — `Newspape
 the homepage, `Megaphone` for news, the "more" panel's `CalendarRange`, `BookOpen` and `Compass`
 for its three hubs, the planner button's `CalendarPlus` — plus `House` and `Earth` for the two that
 had none. Above them, under the nearby-park chip, stands the newest news post as a
-`LatestNewsChip`, the same chip the homepage hero draws. Any link tap closes the sheet: it used to
-close only when `pathname` changed, so a tap on the page already showing (the chip on the newest
-post, "News" on `/news`) left it open and looked broken.
+`LatestNewsChip`, the same chip the homepage hero draws. A tap on a link to the page already showing
+closes the sheet too: it used to close only when `pathname` changed, so the chip on the newest post
+or "News" on `/news` left it open and looked broken. Only that case — a locale switch still keeps
+the sheet open, and a modifier click opens a tab without closing it.
 
 **On a mobile-first render the header contributed no navigation.** The desktop `<nav>` is
 `display:none` below its breakpoint — Google still reads links there, so nothing was lost — but the
