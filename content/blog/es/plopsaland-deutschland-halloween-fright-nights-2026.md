@@ -145,4 +145,4 @@ Entradas, franjas horarias y detalles:
 — Patrick
 
 > [!CORRECTION]
-> 25 de septiembre de 2026: La primera versión decía que los 16 años eran solo una recomendación y que nadie se quedaba fuera por ser menor. Según las preguntas frecuentes del parque, los menores de 16 entran acompañados de su padre, su madre o su tutor legal. La prohibición de disfraces vale para mayores de 12 años; la primera versión decía «a partir de 12 años». Hemos añadido además que el Monster Release Show y el espectáculo de lucha ya existían en 2025.
+> 25 de septiembre de 2026: la primera versión decía que los 16 años eran solo una recomendación y que nadie se quedaba fuera por ser menor. Según las preguntas frecuentes del parque, los menores de 16 entran acompañados de su padre, su madre o su tutor legal. La prohibición de disfraces vale para mayores de 12 años; la primera versión decía «a partir de 12 años». Hemos añadido además que el Monster Release Show y el espectáculo de lucha ya existían en 2025.

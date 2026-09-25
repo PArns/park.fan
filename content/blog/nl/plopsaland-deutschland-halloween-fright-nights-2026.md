@@ -141,4 +141,4 @@ Tickets, tijdslots en details:
 — Patrick
 
 > [!CORRECTION]
-> 25 september 2026: In de eerste versie stond dat 16 jaar alleen een advies was en geen toegangsregel. Volgens de FAQ van het park komen jongeren onder begeleiding van een ouder of voogd naar binnen. Het kostuumverbod geldt voor gasten ouder dan 12; in de eerste versie stond “vanaf 12 jaar”. Ook hebben we toegevoegd dat de Monster Release Show en de worstelshow al in 2025 bestonden.
+> 25 september 2026: in de eerste versie stond dat 16 jaar alleen een advies was en geen toegangsregel. Volgens de FAQ van het park komen jongeren onder begeleiding van een ouder of voogd naar binnen. Het kostuumverbod geldt voor gasten ouder dan 12; in de eerste versie stond “vanaf 12 jaar”. Ook hebben we toegevoegd dat de Monster Release Show en de worstelshow al in 2025 bestonden.

@@ -142,4 +142,4 @@ Programma e date: [disneylandparis.com → Halloween](https://www.disneylandpari
 — Patrick
 
 > [!CORRECTION]
-> 25 settembre 2026: La prima versione diceva che il parco avrebbe comunicato più avanti quali costumi sono ammessi il 31 ottobre. Le regole erano già sulla sua pagina di Halloween e ora sono nel testo. Per Jack e Sally può iscriverti alla coda virtuale anche un Cast Member sul posto, non solo l'app. Abbiamo tolto la frase secondo cui l'ingresso il 31 ottobre costa più che negli altri giorni del festival, perché non siamo riusciti a verificarla.
+> 25 settembre 2026: la prima versione diceva che il parco avrebbe comunicato più avanti quali costumi sono ammessi il 31 ottobre. Le regole erano già sulla sua pagina di Halloween e ora sono nel testo. Per Jack e Sally può iscriverti alla coda virtuale anche un Cast Member sul posto, non solo l'app. Abbiamo tolto la frase secondo cui l'ingresso il 31 ottobre costa più che negli altri giorni del festival, perché non siamo riusciti a verificarla.

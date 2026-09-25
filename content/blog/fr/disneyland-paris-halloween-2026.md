@@ -144,4 +144,4 @@ Programme et dates : [disneylandparis.com → Halloween](https://www.disneyland
 — Patrick
 
 > [!CORRECTION]
-> 25 septembre 2026 : La première version disait que le parc préciserait plus tard les déguisements autorisés le 31 octobre. Les règles figuraient déjà sur sa page Halloween et sont désormais dans le texte. Pour Jack et Sally, un Cast Member sur place peut aussi vous inscrire à la file virtuelle, pas seulement l’application. Nous avons retiré la phrase selon laquelle l’entrée coûte plus cher le 31 octobre que les autres jours du festival, faute de pouvoir l’étayer.
+> 25 septembre 2026 : la première version disait que le parc préciserait plus tard les déguisements autorisés le 31 octobre. Les règles figuraient déjà sur sa page Halloween et sont désormais dans le texte. Pour Jack et Sally, un Cast Member sur place peut aussi vous inscrire à la file virtuelle, pas seulement l’application. Nous avons retiré la phrase selon laquelle l’entrée coûte plus cher le 31 octobre que les autres jours du festival, faute de pouvoir l’étayer.

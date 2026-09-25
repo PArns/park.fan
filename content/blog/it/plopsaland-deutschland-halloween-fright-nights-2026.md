@@ -147,4 +147,4 @@ Biglietti, fasce orarie e dettagli:
 — Patrick
 
 > [!CORRECTION]
-> 25 settembre 2026: La prima versione diceva che i 16 anni erano solo un consiglio, senza regola d'ingresso. Secondo le FAQ del parco, chi ha meno di 16 anni entra accompagnato da un genitore o da chi ne fa le veci. Il divieto di costumi vale per chi ha più di 12 anni; la prima versione diceva «dai 12 anni». Abbiamo anche aggiunto che il Monster Release Show e lo spettacolo di wrestling esistevano già nel 2025.
+> 25 settembre 2026: la prima versione diceva che i 16 anni erano solo un consiglio, senza regola d'ingresso. Secondo le FAQ del parco, chi ha meno di 16 anni entra accompagnato da un genitore o da chi ne fa le veci. Il divieto di costumi vale per chi ha più di 12 anni; la prima versione diceva «dai 12 anni». Abbiamo anche aggiunto che il Monster Release Show e lo spettacolo di wrestling esistevano già nel 2025.
