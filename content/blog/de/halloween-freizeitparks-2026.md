@@ -468,8 +468,7 @@ an zehn Abenden die **Halloween Fright Nights**, freitags und samstags vom **2.
 bis 31. Oktober 2026**, jeweils bis 22 Uhr. Von den sechs Horrorhäusern sind zwei
 neu, **NEXUS AI** und **Lost: Deep in the Woods**. Die drei Scare Zones stecken
 im Eintritt, die Häuser nicht: ab 3 € pro Haus mit Zeitfenster, alle sechs als
-Paket für 49 €. Empfohlen ist das ab 16, eine Einlassgrenze wie bei Traumatica
-gibt es aber nicht. Tickets, Shows und die Rechnung, ab wann sich der Nightmare
+Paket für 49 €. Empfohlen ist das ab 16. Anders als bei Traumatica ist das keine harte Grenze: Jüngere kommen in Begleitung eines Erziehungsberechtigten hinein. Tickets, Shows und die Rechnung, ab wann sich der Nightmare
 Society Pass lohnt, stehen in unserer
 [Meldung zu den Fright Nights](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
@@ -605,8 +604,7 @@ Das Besucherlimit von fünf Millionen Gästen und der Winter Efteling stehen im
    meisten Horrorhäuser im Movie Park und die Mazes im Heide-Park kontrollieren
    den Ausweis und lassen Jüngere auch _mit_ Eltern nicht rein. Vorher klären,
    sonst wird die halbe Familie am Einlass abgewiesen und der Abend ist
-   gelaufen, bevor er anfing. Bei Walibi Holland und im Plopsaland ist „ab 16“
-   dagegen nur eine Empfehlung, im Toverland gilt „ab 12“.
+   gelaufen, bevor er anfing. Bei Walibi Holland ist „ab 16“ dagegen nur eine Empfehlung, im Plopsaland kommen Jüngere mit einem Erziehungsberechtigten hinein, und im Toverland gilt „ab 12“.
 2. **Mazes und Experiences kosten extra.** Bei fast allen großen Events sind die
    Häuser und Experiences nicht im Tagesticket. Einrechnen, und früh buchen,
    wenn dir ein bestimmtes Datum wichtig ist.

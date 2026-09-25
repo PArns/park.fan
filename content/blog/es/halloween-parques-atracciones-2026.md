@@ -461,8 +461,7 @@ celebra sus **Halloween Fright Nights** diez noches, los viernes y sábados del
 **2 al 31 de octubre de 2026**, hasta las 22. De sus seis casas de terror, dos
 son nuevas, **NEXUS AI** y **Lost: Deep in the Woods**. Las tres scare zones van
 incluidas en la entrada, las casas no: desde 3 € por casa con franja horaria, o
-49 € las seis en paquete. La edad recomendada es 16, pero a diferencia de
-Traumatica no se deja a nadie fuera en la puerta. Entradas, espectáculos y
+49 € las seis en paquete. La edad recomendada es 16. A diferencia de Traumatica, no es un límite estricto: los menores entran acompañados de su padre, su madre o un tutor legal. Entradas, espectáculos y
 cuándo compensa el Nightmare Society Pass están en nuestra
 [noticia sobre las Fright Nights](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
@@ -599,8 +598,7 @@ El límite de cinco millones de visitantes y el Winter Efteling se tratan en la
    de las casas del Movie Park y los mazes del Heide-Park piden documento y no
    dejan entrar a los más jóvenes ni _con_ sus padres. Aclararlo antes, o media
    familia se queda fuera en la entrada y la noche termina antes de empezar. En
-   Walibi Holland y en el Plopsaland, «a partir de 16» es solo una
-   recomendación, y Toverland recomienda a partir de 12.
+   Walibi Holland, «a partir de 16» es solo una recomendación, en el Plopsaland los menores entran con su padre, su madre o un tutor legal, y Toverland recomienda a partir de 12.
 2. **Los mazes y las experiences cuestan aparte.** En casi todos los grandes
    eventos, las casas y las experiences no están en la entrada del día.
    Calcularlo, y reservar pronto si te importa una fecha concreta.
