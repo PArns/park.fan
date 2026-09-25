@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
+import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   buildTagAlternates,
   findCanonicalTag,
@@ -107,7 +107,8 @@ export default async function BlogTagPage({ params }: TagPageProps) {
   if (!canonicalTag) notFound();
 
   const t = await getTranslations('blog');
-  const allPosts = listPosts(locale as Locale).filter((p) =>
+  // Articles only, like `listTags` counts them — news is never listed under `/blog`.
+  const allPosts = listArticles(locale as Locale).filter((p) =>
     (p.frontmatter.tags ?? []).some((x) => normalizeTagSlug(x) === tag)
   );
   if (allPosts.length === 0) notFound();

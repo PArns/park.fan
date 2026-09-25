@@ -1,23 +1,25 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
-import { listArticlesByRecency, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
-import { NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
+import { listArticlesByRecency } from '@/lib/blog/listing';
+import { postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
 /**
  * What the blog menu shows, and what it deliberately leaves out.
  *
- * The blog currently holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes
- * 1, news 1), **31 tags** and one author. So:
+ * The blog currently holds 16 articles per locale across **3 categories** (guides, behind-the-
+ * scenes, new on park.fan), a few dozen tags and one author. News is not in it: news has its own
+ * bar entry and panel (`lib/navigation/news-menu.ts`), and neither panel lists the other's posts.
+ * So:
  *
- * - **Categories are in.** Three stable hubs; that is what a template link is for.
- * - **The newest articles are in, and the newest news in a strip of its own.** Five plus three
- *   links (`RECENT_LIMIT`, `NEWS_LIMIT` below), server-rendered. At this publishing rate the "the
- *   template's link set changes with every post" objection costs nothing — it is eight URLs on a
- *   site that publishes a handful of times a year. If the blog ever reaches the point where the
- *   front of the list turns over weekly, move this pane to a fetch the way the parks menu does
- *   with its cities.
+ * - **Categories are in.** Three stable hubs; that is what a template link is for. The news
+ *   category is not one of them — `buildCategoryTree` holds articles only.
+ * - **The newest articles are in.** Five links (`RECENT_LIMIT` below), server-rendered. At this
+ *   publishing rate the "the template's link set changes with every post" objection costs
+ *   nothing — it is five URLs, and news, the part that turns over fast, is not among them. If the
+ *   blog ever reaches the point where the front of the list turns over weekly, move this pane to a
+ *   fetch the way the parks menu does with its cities.
  * - **Tags are out, and this is the whole reason the panel is small.** 31 tag pages for 7 posts
  *   means most of them are one post's teaser under a different URL. Promoting that set into a
  *   template that runs on ~35,000 pages would hand sitewide weight to precisely the pages worth
@@ -32,22 +34,11 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 /**
  * Articles in the panel.
  *
- * Five: an opener plus four rows. It was six (five rows) while the panel held nothing else; the news
- * strip under the rows now takes the height the fifth row had, and four rows end level with the
- * opener, so the band still fits without scrolling. What this may NOT become is the whole blog —
- * see the note above on why 31 tags stayed out.
+ * Five: an opener plus four rows. Four rows end level with the opener, so the band fits without
+ * scrolling. What this may NOT become is the whole blog — see the note above on why the tags stayed
+ * out.
  */
 const RECENT_LIMIT = 5;
-
-/**
- * News posts in their own strip under the articles: cover, title and date, no teaser.
- *
- * News is expected to outnumber the articles, so it no longer competes for the article slots above —
- * a busy week of short notes would otherwise push every guide out of the header. Three is one line
- * of the strip at `lg`; the rest is one click away on the news category. The item carries its date
- * and the panel shows its age next to it (`NewsAge`): with news, how old it is decides the click.
- */
-const NEWS_LIMIT = 3;
 
 /**
  * How much of a post's teaser reaches the header.
@@ -64,7 +55,7 @@ const EXCERPT_CHARS = 170;
 const LEAD_EXCERPT_CHARS = 300;
 
 /** Cut on a word boundary, never mid-word, and only when there is something to cut. */
-function trimExcerpt(text: string | undefined, limit: number): string | undefined {
+export function trimExcerpt(text: string | undefined, limit: number): string | undefined {
   if (!text) return undefined;
   const clean = text.trim();
   if (clean.length <= limit) return clean;
@@ -96,26 +87,11 @@ export interface BlogMenuPost {
   imagePosition?: string;
 }
 
-export interface BlogMenuNewsItem {
-  slug: string;
-  title: string;
-  /** ISO date — the panel formats it in the reader's locale. */
-  date: string;
-  /** Cover, versioned like the article rows' covers. */
-  image?: string;
-  /** The cover's focal point as a CSS `object-position` — the panel cannot read the manifest. */
-  imagePosition?: string;
-}
-
 export interface BlogMenu {
+  /** The blog's categories. Never the news category — see `buildCategoryTree`. */
   categories: BlogMenuCategory[];
-  /** Articles only — news posts are in `news`. */
+  /** Articles only — news has its own panel (`getNewsMenu`). */
   recent: BlogMenuPost[];
-  news: BlogMenuNewsItem[];
-  /** The news category's label in this locale, for the strip's heading. */
-  newsLabel: string;
-  /** The news overview's locale-relative path, for the heading link. */
-  newsPath: string;
 }
 
 export function getBlogMenu(locale: Locale): BlogMenu {
@@ -160,16 +136,5 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
         imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
       })),
-    news: listNewsByDate(locale)
-      .slice(0, NEWS_LIMIT)
-      .map((post) => ({
-        slug: post.slug,
-        title: post.frontmatter.title,
-        date: post.frontmatter.date,
-        image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
-        imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
-      })),
-    newsLabel: resolveCategoryLabel(NEWS_CATEGORY, locale, 'News'),
-    newsPath: NEWS_INDEX_PATH,
   };
 }

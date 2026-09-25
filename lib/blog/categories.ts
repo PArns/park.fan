@@ -4,7 +4,7 @@ import path from 'path';
 import { cache } from 'react';
 import type { Locale } from '@/i18n/config';
 import { defaultLocale } from '@/i18n/config';
-import { listPosts } from './listing';
+import { listArticles } from './listing';
 import type { BlogListItem, CategoryNode } from './types';
 
 const LABELS_PATH = path.resolve(process.cwd(), 'content', 'blog', 'categories.json');
@@ -54,10 +54,17 @@ export function categoryPathBreadcrumbs(input: string | undefined | null): strin
   return parts.map((_, i) => parts.slice(0, i + 1));
 }
 
-/** Build the full category tree from all visible posts. */
+/**
+ * Build the blog's category tree from every visible ARTICLE.
+ *
+ * News is not a blog category any more: it has its own section at `/news`, and a "News" branch in
+ * this tree put the one section a reader was not on into the sidebar, the header's category pills
+ * and the category sitemap of the other. So the tree is built from `listArticles` and the news
+ * category never enters it (see `docs/rules/news-is-set-apart-from-the-articles.md`).
+ */
 export const buildCategoryTree = cache(
   (locale: Locale): { root: CategoryNode; flat: Map<string, CategoryNode> } => {
-    const posts = listPosts(locale);
+    const posts = listArticles(locale);
     const flat = new Map<string, CategoryNode>();
 
     const ensureNode = (segments: string[]): CategoryNode => {
@@ -126,7 +133,7 @@ export function filterPostsByCategory(
   posts: readonly BlogListItem[],
   segments: string[]
 ): BlogListItem[] {
-  // Copy: `listPosts` hands out a shared frozen array, and callers of this
+  // Copy: the listings hand out a shared frozen array, and callers of this
   // helper own their result (they paginate and slice it).
   if (segments.length === 0) return [...posts];
   const prefix = segments.join('/');

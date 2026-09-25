@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
-import { NewsList } from '@/components/blog/news-list';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 import { categoryPath } from '@/lib/blog/paths';
 
@@ -35,16 +34,15 @@ import { categoryPath } from '@/lib/blog/paths';
  * for three links; as pills they cost one line and read as what they are, a filter rather than a
  * section of their own.
  *
- * News sits in a strip of its own between the articles and the categories: small cover, age and
- * title (`NewsList`), three in a line. There will be more news than articles, and a list of
- * the newest posts would soon be nothing but news — the articles keep the opener and the rows,
- * whatever gets published.
+ * No news in here. News used to sit in a strip between the articles and the categories, which
+ * filed it as one more corner of the blog; it has its own bar entry and panel now
+ * (`NewsMenuPanel`), and this panel lists articles only, like `/blog` itself.
  *
  * Everything here is server-rendered from the build-time blog manifest — no fetch, no loading
  * state, and the covers are already 16:9 crops. That is the difference from the parks menu's rail,
  * which is a curated four because only 14 of 212 parks have a picture at all; here it is 7 of 7.
  */
-export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }: BlogMenu) {
+export function BlogMenuPanel({ categories, recent }: BlogMenu) {
   /*
    * `navigation`, not `blog`, for the headings — and the difference is 3 KB on every page.
    *
@@ -178,14 +176,6 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
           )}
         </div>
       </div>
-
-      {/* News: its own strip, a size smaller than the articles — see the docblock. */}
-      {news.length > 0 && (
-        <div data-menu-stagger>
-          <MenuSectionHeading label={newsLabel} href={newsPath} />
-          <NewsList items={news} className="sm:grid-cols-3" />
-        </div>
-      )}
 
       {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. */}
       {categories.length > 0 && (

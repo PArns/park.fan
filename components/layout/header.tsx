@@ -17,6 +17,7 @@ import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
+import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
@@ -33,6 +34,7 @@ import type { NearbyParksData } from '@/types/nearby';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
+import type { NewsMenu } from '@/lib/navigation/news-menu';
 import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
@@ -57,8 +59,13 @@ interface HeaderProps {
    * 420 B brotli — see `lib/navigation/geo-menu.ts` for why it stops at countries.
    */
   geoMenu?: GeoMenuContinent[];
-  /** Categories + newest posts for the blog menu, read from the generated manifest. */
+  /** Categories + newest articles for the blog menu, read from the generated manifest. */
   blogMenu?: BlogMenu;
+  /**
+   * The news entry's label and the newest news for its panel, from the same manifest. No items →
+   * no entry: news is its own section, not a corner of the blog (see `lib/navigation/news-menu.ts`).
+   */
+  newsMenu?: NewsMenu;
   /**
    * The dictionary's categories for the "more" menu, with their labels already translated.
    * Resolved in the layout for the same reason `featuredParks` is: this is a Client Component,
@@ -77,6 +84,7 @@ export function Header({
   showBlog = true,
   geoMenu,
   blogMenu,
+  newsMenu,
   featuredParks,
   glossaryMenu,
 }: HeaderProps) {
@@ -546,6 +554,18 @@ export function Header({
                 {t('blog')}
               </Link>
             ))}
+          {/* News — ein eigener Eintrag neben Backstage und nicht mehr ein Streifen in dessen
+              Panel. Dort war News eine weitere Ecke des Blogs, und `/blog` listete sie auch so;
+              jetzt sind es zwei Bereiche, die sich keinen Beitrag teilen, also zwei Einträge.
+              Dasselbe Muster wie Backstage: `href="/news"` plus Chevron-Button, und ohne
+              Meldungen gibt es den Eintrag gar nicht. Das Panel sieht bewusst anders aus als das
+              des Blogs, siehe `NewsMenuPanel`. Das Label ist das der News-Kategorie
+              (`categories.json`), dasselbe Wort wie über der Übersicht. */}
+          {newsMenu && newsMenu.items.length > 0 && (
+            <NavMenu href={newsMenu.path} label={newsMenu.label} floating={isTransparent}>
+              <NewsMenuPanel {...newsMenu} />
+            </NavMenu>
+          )}
           {/* Der Sammel-Eintrag, und er ist der Grund, warum die drei Links darüber hier nicht
               mehr stehen: „Beste Reisezeit", „Wörterbuch" und „So funktioniert's" waren eigene
               Einträge in einer Zeile, die auf Französisch bei 1024 px 23,7 px über ihre Box lief
@@ -705,6 +725,16 @@ export function Header({
                       className="hover:text-primary text-lg font-medium transition-colors"
                     >
                       {t('blog')}
+                    </Link>
+                  )}
+                  {newsMenu && newsMenu.items.length > 0 && (
+                    <Link
+                      href={newsMenu.path}
+                      prefetch={false}
+                      data-sheet-stagger
+                      className="hover:text-primary text-lg font-medium transition-colors"
+                    >
+                      {newsMenu.label}
                     </Link>
                   )}
                   <Link
