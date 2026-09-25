@@ -35,6 +35,45 @@ closes the sheet too: it used to close only when `pathname` changed, so the chip
 or "News" on `/news` left it open and looked broken. Only that case — a locale switch still keeps
 the sheet open, and a modifier click opens a tab without closing it.
 
+**The bar follows the sheet's order and carries the sheet's icons** (Patrick, 2026-09-25):
+Backstage, News, Parks entdecken, „Mehr", Tagesplaner, then the favorites star, which stays on the
+right. „Mehr" stands where the sheet lists its three hubs (between the parks and the planner); the
+homepage has no entry, the logo is its link. Each entry leads with the sheet's glyph at 14 px in
+the accent (`NavEntryLabel` in `nav-menu.tsx`, required `icon` on `NavMenu`), „Mehr" with
+`Ellipsis` because the sheet has no „Mehr". The sheet's destinations draw the same component at
+`size="sheet"` (20 px, 12 px gap), so the two menus cannot drift apart in how a glyph sits. Measured
+at `/<locale>/parks/europe/germany`: one line in all six locales at a 1024 and a 1280 px bar,
+document never wider than the window, French the tightest at **47 px of slack at 1024** and 61 at
+1280 (147 before the icons).
+
+**The nearby-park chip is a pin below a 1280 px bar.** It is drawn only within 5 km of a park, and
+with the icons it no longer fitted anywhere at 1024: measured 3.5 km from Phantasialand (a 124 px
+chip), the row ran over its box in all six locales, French by 91 px with the document 1099 px wide.
+Below 1280 it is the `MapPin` alone, a 28 px circle with the name in its `aria-label` and `title`;
+that leaves French 5 px and every other locale 29 px or more. From 1280 the name is back, because
+the search input beside the row shrinks first, but only to 155 px, which leaves the chip 142 px in
+French at a 1280–1535 px bar; the name is cut at 96 px there (`max-w-24`, „Movie Park Ge…") and
+gets its 140 px from 1536, where the bar is 256 px wider. Measured with Phantasialand and with Movie
+Park Germany: document never wider than the window at 1024, 1180, 1280 and 1536.
+
+**The sheet's footer is a footer.** „Meine Alarme · Fancast" (`MoreMenuLinks variant="sheet"`)
+stands outside the scrolling list, on the sheet's bottom edge, with 4 px beneath it rather than
+the sheet's 24 px padding; the list scrolls above it and never takes it along. The class is
+`pb-[max(0.25rem,env(safe-area-inset-bottom))]`, but the `env()` half reads 0 as the site stands:
+the viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above an iPhone's
+home indicator itself. The `<nav aria-label="Mobile navigation">` and the reveal's root
+(`useSheetReveal`'s ref) are one column around the list and the footer, so the footer's links are
+inside the landmark and slide in with the rows instead of standing there while they move.
+
+**The list never scrolls sideways.** `overflow-y: auto` computes `overflow-x` to `auto` too, and a
+favourites row (`Row` in `favorites-menu-rows.tsx`) bleeds 8 px past its column with `-mx-2` so it
+sits flush with its heading. With three parks saved the list measured 259 px in a 251 px box, a
+horizontal scrollbar under the sheet on every phone with a favourite (the first measurement had
+none saved and saw nothing). The list is `-mx-2 px-2 overflow-x-hidden`: 8 px wider on both
+sides and padded back, so the content column is unchanged and the bleed lands inside the box;
+`overflow-x-hidden` also covers the reveal's `x: 16` while it runs. Re-measured at 320, 360 and
+390 px with three parks saved: `scrollWidth` equals `clientWidth`, no element past the edge.
+
 **On a mobile-first render the header contributed no navigation.** The desktop `<nav>` is
 `display:none` below its breakpoint — Google still reads links there, so nothing was lost — but the
 burger's `SheetContent` is a Radix dialog that unmounts when closed, so those links are not in the
@@ -274,8 +313,9 @@ Two decisions worth keeping:
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
 catch-all — `/alerts`, `/favorites`, `/fancast` and `/contribute` sit in here too, in the footer
-row below — so it is named after being one, and it sits at the END of the row's three entries,
-where a catch-all belongs.
+row below — so it is named after being one. It used to sit at the END of the row, where a
+catch-all belongs; since 2026-09-25 the row follows the phone sheet's order instead (see „The bar
+follows the sheet's order" near the top of this page).
 
 **The footer row is `MoreMenuLinks`, and it renders twice.** Three of those pages had no link from
 the header at all: measured before it was added, a grep over `components/layout/` found `/fancast`
