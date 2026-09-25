@@ -10,6 +10,8 @@ Die Leiste oben am Desktop steht jetzt so wie das Handy-Menü: Backstage, News, 
 „Mehr" (dort, wo das Handy-Menü Beste Reisezeit, Wörterbuch und So funktioniert's führt),
 Tagesplaner; die Favoriten bleiben rechts. Jeder Eintrag trägt das Icon, das er im Handy-Menü hat,
 „Mehr" drei Punkte. Alle sechs Sprachen bleiben einzeilig, Französisch mit 47 px Luft bei 1024 px.
+Der Chip mit dem Park in der Nähe passte daneben nicht mehr: Unter 1280 px ist er jetzt nur noch
+die Stecknadel, der Name steht im Tooltip; ab 1280 kommt der Name zurück.
 Im Handy-Menü ist „Meine Alarme · Fancast" jetzt ein echter Fuß: außerhalb der scrollenden Liste,
 direkt am unteren Rand. Und das Menü scrollt nicht mehr seitwärts: Wer Favoriten gespeichert hatte,
 bekam darunter einen horizontalen Scrollbalken, weil deren Zeilen 8 px über die Spalte hinausragten.

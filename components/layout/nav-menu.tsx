@@ -3,6 +3,7 @@
 import { useId } from 'react';
 import { ChevronDown, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { cn } from '@/lib/utils';
 import { MenuBand } from '@/components/layout/menu-band';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
 
@@ -69,29 +70,39 @@ interface NavMenuProps {
   floating?: boolean;
   /**
    * The entry's glyph, drawn before the label in the accent — the same one the phone sheet gives
-   * the same destination (`SheetNavLabel` in `header.tsx`), so the two menus read as one.
+   * the same destination, so the two menus read as one. Required: an entry without one is exactly
+   * the inconsistency the icons were added to remove.
    */
-  icon?: LucideIcon;
+  icon: LucideIcon;
 }
 
 /**
- * The icon-plus-label of an entry in the header's nav row. One definition for the `NavMenu`
- * triggers and the row's plain links, so every entry in the row carries its glyph the same way.
- * 14 px and a 6 px gap: the row is one line by construction and its width is counted (see the
- * header), and at the 20 px the sheet uses five glyphs would have cost the French row most of its
- * slack at a 1024 px bar.
+ * The icon-plus-label of a header destination, in both menus: the entries of the nav row (the
+ * `NavMenu` triggers and the row's plain links) and the phone sheet's destinations. One
+ * definition, so the bar and the sheet cannot drift apart in how a glyph sits before its word.
+ *
+ * - **`bar`**: 14 px and a 6 px gap. The row is one line by construction and its width is counted
+ *   (see the header); at the sheet's 20 px five glyphs would have cost the French row most of its
+ *   slack at a 1024 px bar.
+ * - **`sheet`**: 20 px and a 12 px gap, beside a `text-lg` label. The „Parks entdecken"
+ *   disclosure indents its continent list by exactly these two numbers.
  */
 export function NavEntryLabel({
   icon: Icon,
+  size = 'bar',
   children,
 }: {
-  icon?: LucideIcon;
+  icon: LucideIcon;
+  size?: 'bar' | 'sheet';
   children: React.ReactNode;
 }) {
-  if (!Icon) return <>{children}</>;
+  const sheet = size === 'sheet';
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <Icon className="text-primary h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+    <span className={sheet ? 'flex items-center gap-3' : 'inline-flex items-center gap-1.5'}>
+      <Icon
+        className={cn('text-primary shrink-0', sheet ? 'size-5' : 'size-3.5')}
+        aria-hidden="true"
+      />
       {children}
     </span>
   );

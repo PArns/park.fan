@@ -748,8 +748,8 @@ components, so a change to one is a change to both. Since 2026-09-25 that row st
 button's own band, left of the X, and the sheet starts there (`pt-2`, no margin above the list)
 instead of 80 px down under a band that held only the X; the visible „Einstellungen" in front of the
 controls gave way for it and names the row for screen readers only (`role="group"` +
-`aria-label`). The footer row under the list (`MoreMenuLinks`) stands on the sheet's bottom edge
-(`mt-auto`). The sheet copy is unconditional: the sheet exists only below a 1024 px bar and a
+`aria-label`). The footer row under the list (`MoreMenuLinks`) stands outside the scrolling list,
+on the sheet's bottom edge, see [header navigation](../features/header-navigation.md). The sheet copy is unconditional: the sheet exists only below a 1024 px bar and a
 portal cannot ask the header's container anything, so between 640 and 1023 the three are in both
 places, which costs nothing, while two conditions that could disagree might leave them in neither.
 The locale switcher's list is `z-[80]` for this, above the sheet's `z-[70]` overlay.
