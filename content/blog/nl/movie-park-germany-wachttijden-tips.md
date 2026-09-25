@@ -110,10 +110,7 @@ verlengd werd en de boottocht dichtging. Vier jaar stond het gebouw leeg.
 
 Het mooiste verhaal uit de jaren tien gaat over een achtbaan die nooit af kwam.
 In 2012 legde het park de gemeente Bottrop plannen voor voor een **45 meter hoge
-achtbaan** vlak achter de ingang, tien miljoen euro, opening in 2014. De
-funderingen werden gestort. Toen stopte Parques Reunidos het project, omdat in
-Spanje de bezoekersaantallen wegzakten. Er werd pas in 2017 weer gebouwd, en
-toen iets anders.
+achtbaan** vlak achter de ingang, tien miljoen euro, opening in 2014. In september 2012 stopte Parques Reunidos het project, omdat in Spanje de bezoekersaantallen wegzakten. Op dat grasveld werd pas in 2017 weer gebouwd, en toen iets anders: Star Trek: Operation Enterprise.
 
 Die voorgeschiedenis verklaart de reputatie die Movie Park in de coasterwereld
 tot vandaag heeft. Wie er tussen 2012 en 2016 kwam, zag een park waar weinig
@@ -716,8 +713,7 @@ Het tweede deel hoort er net zo goed bij, en ik zeg het als iemand die er graag
 komt: **zijn beste jaren heeft dit park achter zich.** Die lagen in de
 Warner-tijd, toen een studio er geld en figuren in stak, en wat daarna kwam was
 grotendeels beheer van de bestaande boel. De laatste achtbaan voor volwassenen
-kwam in 2017, de laatste geplande ligt sinds 2012 als fundering onder het gras,
-en de nieuwigheid in het jubileumjaar is een filmtunnel in het gebouw van een
+kwam in 2017, en de nieuwigheid in het jubileumjaar is een filmtunnel in het gebouw van een
 attractie uit 2014.
 
 En toch komen verrassend veel mensen telkens terug. In
@@ -751,7 +747,7 @@ wil slopen is dan paars uitgelicht, en met een beetje geluk staat de maan eracht
 - Van Helsing’s Factory (18 juni 2011, Gerstlauer bobsled, 400 meter, 36 km/u, 848 personen per uur, 5 miljoen euro, voormalige Gremlins-hal): [Van Helsing’s Factory op en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
 - Iron Claw (6 april 2001 als Eraser, Vekoma SLC, 689 meter, eerdere namen FX en MP-Xpress): [Iron Claw op rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (officieel)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
 - Excalibur – Secrets of the Dark Forest (1996 als Het Oneindige Verhaal, 2005 Mystery River, heropening 7 mei 2018): [Excalibur – Secrets of the Dark Forest op de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River wordt Excalibur (Parkerlebnis, Duits)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
-- Gestopte achtbaan voor 2014 (45 meter, tien miljoen euro, funderingen gestort): [Achtbaanplannen gestopt (officieel, Duits)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany plant 45 meter hoge achtbaan (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
+- Gestopte achtbaan voor 2014 (45 meter, tien miljoen euro, vlak achter de hoofdingang, gestopt in september 2012, sinds 2017 staat daar Star Trek): [Achtbaanplannen gestopt (officieel, gearchiveerd, Duits)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Freizeitparkinfos, juni 2012 (Duits)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, februari 2016 (Duits)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany plant 45 meter hoge achtbaan (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
 - 30-jarig jubileum, nieuwe shows 2026, Parade of Celebration: [30 jaar park- en filmgeschiedenis (officieel, Duits)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [Wat is nieuw in 2026 (officieel)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 jaar Movie Park Germany (Themepark Central, Duits)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
 - Halloween Horror Festival 2026 (26 september tot 8 november, 28ste editie, ruim 300 monsters, vier scare zones): [Movie Park Halloween (officieel)](https://www.movieparkgermany.de/en/halloween) · [Monstercasting 2026 (FreizeitparkNEWS, Duits)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [onze Halloween-gids 2026](/blog/halloween-pretparken-2026)
 - De negen huizen in 2026, waarvan Jason Universe als enige nieuw: [Horrormazes (officieel)](https://www.movieparkgermany.de/en/halloween/horrorhauser)

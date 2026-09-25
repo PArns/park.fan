@@ -9,7 +9,7 @@ excerpt: >-
   Investeerder EQT laat JPMorgan een koper zoeken voor Parques Reunidos, het
   concern achter Slagharen, Bobbejaanland, Movie Park Germany en Tropical
   Islands. Volgens Expansión zijn Merlin en Compagnie des Alpes mogelijke
-  gegadigden. Voor bezoekers verandert er voorlopig niets, alleen de Bonus Club van het Movie Park-abonnement staat op losse schroeven.
+  gegadigden. Voor bezoekers verandert er voorlopig niets, ook niet aan het Movie Park-abonnement voor 2027.
 tags:
   - nieuws
   - movie-park
@@ -33,7 +33,7 @@ seo:
   description: >-
     EQT laat JPMorgan Parques Reunidos verkopen, volgens Expansión voor zo’n
     1,7 miljard euro. Slagharen, Bobbejaanland, Movie Park Germany en Tropical
-    Islands horen erbij. Voor bezoekers verandert er voorlopig niets.
+    Islands horen erbij. Voor bezoekers en abonnementhouders verandert er voorlopig niets.
   keywords:
     - Parques Reunidos te koop
     - Slagharen te koop
@@ -126,30 +126,15 @@ Voorlopig niets. Het Halloween Horror Festival in Movie Park begint morgen,
 Tickets en abonnementen die je al hebt, blijven geldig. Verkocht wordt het
 moederbedrijf, en het park blijft het bedrijf waar je je kaartje kocht.
 
-Bij het seizoensabonnement van Movie Park is er één onderdeel dat wel van de
-eigenaar afhangt. Goud en Platina hebben de Bonus Club, en het grootste deel
-daarvan is gratis toegang tot de zusterparken: drie keer Bobbejaanland,
-Slagharen en Walsrode, één keer onder meer Tropical Islands, Mirabilandia en
-Tusenfryd. De lijst voor 2026 staat bij het park als pdf, met “Parques Reunidos
-Gruppe” in de titel. Die voor 2027 komt volgens de website pas “bij het begin
-van het seizoen 2027”, en tegen die tijd kan het concern er anders uitzien.
-Belantis, tot 2025 zelf een zusterpark, staat op de lijst voor 2026 bij de
-kortingen, met 50 procent.
+Ook aan het seizoensabonnement verandert de verkoop niets. Goud en Platina gelden voor de rest van dit seizoen en het hele seizoen 2027, en de drie gratis bezoeken aan Bobbejaanland, Slagharen en Weltvogelpark Walsrode staan op de site van Movie Park al bij wat het abonnement voor 2027 inhoudt. Via de Bonus Club komt er één gratis bezoek bij aan andere parken van de groep, zoals Tropical Islands, Mirabilandia en Tusenfryd. Die lijst publiceert het park “bij het begin van het seizoen 2027”, en omdat het concern in zijn geheel verkocht wordt, blijven dat ook na een verkoop zusterparken.
 
-Wil je het Gold-abonnement voor 2027 vooral voor Movie Park zelf, dan kun je
-het nu kopen. Gaat het je om de gratis dagen in Slagharen en Bobbejaanland,
-wacht dan tot de nieuwe lijst er is.
+Hoe het park omgaat met een eigenaarswissel midden in het seizoen, laat Belantis zien. Op de lijst voor 2025 stond het park bij Leipzig met drie gratis bezoeken, geldig tot 9 november, en de verkoop aan Compagnie des Alpes in april veranderde daar niets aan. Pas op de lijst voor 2026 staat Belantis bij de kortingen. Twijfel je over het Gold-abonnement voor 2027, dan hoef je vanwege de verkoop niet te wachten. Of er iets verandert aan de partnerparken, is op zijn vroegst een vraag voor 2028.
 
-Wat een eigenaar voor het park zelf betekent, heeft Bottrop onder Parques
-Reunidos van twee kanten meegemaakt. Een maand na de overname in 2010 gaf het
-concern vijf miljoen euro vrij voor
-[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), die in
-2011 openging. Een achtbaan van 45 meter vlak achter de ingang, in 2012 aan de
-gemeente gepresenteerd en met de funderingen al gestort, werd geschrapt toen de
-bezoekersaantallen in Spanje instortten. Het hele verhaal staat in de
-[gids over Movie Park](/blog/movie-park-germany-wachttijden-tips).
+Parques Reunidos heeft sinds de overname in 2010 meer dan eens in Bottrop gebouwd. Een maand erna gaf het concern vijf miljoen euro vrij voor [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), die in 2011 openging. Een achtbaan van 45 meter op het grasveld vlak achter de ingang, in 2012 aan de gemeente gepresenteerd, stopte het park in september van datzelfde jaar, officieel vanwege “een wijziging in onze investeringsstrategie”. Op die plek opende in 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), de grootste achtbaan van het park. Daarna kwamen [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) (2018) en de [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) (2021). De hele geschiedenis van het park staat in de [gids over Movie Park](/blog/movie-park-germany-wachttijden-tips).
 
 [Bobbejaanland](ref:bobbejaanland?full)
+
+_Gecorrigeerd op 25 september: in de eerste versie stond dat de gratis bezoeken aan de zusterparken voor 2027 nog open waren. De drie bezoeken aan Bobbejaanland, Slagharen en Walsrode horen al bij het abonnement voor 2027. Ook hebben we toegevoegd dat Star Trek nu staat waar in 2012 de gestopte achtbaan gepland was._
 
 — Patrick
 
@@ -164,4 +149,7 @@ bezoekersaantallen in Spanje instortten. Het hele verhaal staat in de
 - Belantis naar Compagnie des Alpes, april 2025: [FreizeitparkNEWS (Duits)](https://www.freizeitparknews.de/belantis/uebernahme-compagnie-des-alpes/)
 - Herfinanciering en dividend, september 2025: [EQT refinancia 1.043 millones del dueño de la Warner (elEconomista, Spaans)](https://www.eleconomista.es/capital-riesgo/noticias/13559344/09/25/eqt-refinancia-1043-millones-del-dueno-de-la-warner-y-se-dara-un-dividendo.html)
 - Six Flags, Palamon en de verkoop van de Walibi-parken in 2006: [StarParks op de.wikipedia (Duits)](https://de.wikipedia.org/wiki/StarParks)
-- Bonus Club, de voordelen voor 2026 en de aankondiging voor 2027: [Bonus Club (Movie Park Germany, Duits)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub)
+- Seizoensabonnement 2027 met drie gratis bezoeken aan Walsrode, Bobbejaanland en Slagharen: [Saisonpass (Movie Park Germany, Duits)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass)
+- Bonus Club, de groepslijst voor 2025 met Belantis (geldig tot 9 november 2025) en de lijst voor 2026: [Bonus Club (Movie Park Germany, Duits)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Voordelen 2025, parken van de groep (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2025/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202025_Parques%20Reunidos%20Gruppe.pdf) · [Voordelen 2026, parken van de groep (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf)
+- De in 2012 geplande achtbaan vlak achter de hoofdingang en de stop in september 2012: [Movie Park Germany plant für 2014 neue Achterbahn (Freizeitparkinfos, Duits)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Achterbahnpläne gestoppt (Movie Park, 26 september 2012, gearchiveerd, Duits)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt)
+- Star Trek: Operation Enterprise bij de ingang: [Neu 2017 im Movie Park Germany (Freizeitparkinfos, Duits)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn)

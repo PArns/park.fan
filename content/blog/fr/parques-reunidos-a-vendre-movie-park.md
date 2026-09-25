@@ -9,7 +9,7 @@ excerpt: >-
   Le fonds EQT a chargé JPMorgan de trouver un acheteur pour Parques Reunidos,
   le groupe derrière Movie Park Germany, Bobbejaanland, Slagharen et Tropical
   Islands. Selon Expansión, Merlin et la Compagnie des Alpes pourraient être
-  intéressés. Pour les visiteurs, rien ne change pour l’instant ; seul le Bonus Club du pass annuel est en suspens.
+  intéressés. Pour les visiteurs, rien ne change pour l’instant, pas même le pass annuel 2027.
 tags:
   - actualites
   - movie-park
@@ -33,7 +33,7 @@ seo:
   description: >-
     EQT a confié à JPMorgan la vente de Parques Reunidos, valorisé autour de
     1,7 milliard d’euros selon Expansión. Movie Park Germany, Bobbejaanland,
-    Slagharen et Tropical Islands en font partie. Pour les visiteurs, rien ne change pour l’instant.
+    Slagharen et Tropical Islands en font partie. Pour les visiteurs et les détenteurs de pass, rien ne change pour l’instant.
   keywords:
     - Parques Reunidos vente
     - Movie Park Germany à vendre
@@ -122,28 +122,15 @@ le 26 septembre, et dure jusqu’au 8 novembre ; les dates sont dans
 Les billets et pass annuels déjà achetés restent valables. C’est la maison mère
 qui est vendue, et le parc reste celui auprès duquel vous avez acheté.
 
-Une partie du pass annuel dépend quand même du propriétaire. Les pass Gold et
-Platine donnent accès au Bonus Club, dont l’essentiel est l’entrée gratuite dans
-les parcs frères : trois fois à Bobbejaanland, Slagharen et Walsrode, une fois
-notamment à Tropical Islands, Mirabilandia et Tusenfryd. Le parc publie la liste
-2026 en PDF, avec « Parques Reunidos Gruppe » dans le titre. Celle de 2027
-sortira « au début de la saison 2027 », selon son site, et d’ici là le groupe
-aura peut-être changé de visage. Belantis, parc frère jusqu’en 2025, figure sur
-la liste 2026 parmi les réductions, à 50 %.
+La vente ne touche pas non plus au pass annuel. Gold et Platine couvrent la fin de cette saison et toute la saison 2027, et les trois entrées gratuites à Bobbejaanland, Slagharen et au Weltvogelpark Walsrode figurent déjà dans le descriptif du pass 2027 sur le site de Movie Park. Le Bonus Club y ajoute une entrée gratuite dans d’autres parcs du groupe, comme Tropical Islands, Mirabilandia ou Tusenfryd. Le parc publiera cette liste « au début de la saison 2027 », et comme le groupe doit être vendu d’un bloc, ces parcs resteront des parcs frères après la vente.
 
-Si vous voulez le pass Gold 2027 pour Movie Park lui-même, vous pouvez
-l’acheter maintenant. Si ce sont surtout les entrées gratuites en Belgique et
-aux Pays-Bas qui vous intéressent, attendez la nouvelle liste.
+Belantis montre comment le parc gère un changement de propriétaire en pleine saison. La liste 2025 donnait droit à trois entrées gratuites dans ce parc près de Leipzig, valables jusqu’au 9 novembre, et la vente à la Compagnie des Alpes en avril n’y a rien changé. Ce n’est que sur la liste 2026 que Belantis passe dans les réductions. Si vous hésitez à prendre le pass Gold 2027, la vente n’est pas une raison d’attendre. Pour les parcs partenaires, la question d’un changement ne se posera pas avant 2028.
 
-Bottrop a déjà vu les deux faces de ce qu’un propriétaire peut faire. Un mois
-après le rachat de 2010, Parques Reunidos a débloqué cinq millions d’euros pour
-[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), ouverte
-en 2011. Un grand huit de 45 mètres juste derrière l’entrée, présenté à la ville
-en 2012 et dont les fondations étaient déjà coulées, a été abandonné quand la
-fréquentation s’est effondrée en Espagne. Toute l’histoire est dans notre
-[guide de Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
+Depuis le rachat de 2010, Parques Reunidos a construit plusieurs fois à Bottrop. Un mois après, le groupe a débloqué cinq millions d’euros pour [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), ouverte en 2011. Un grand huit de 45 mètres sur la pelouse juste derrière l’entrée, présenté à la ville en 2012, a été arrêté en septembre de la même année, officiellement pour « un changement de notre stratégie d’investissement ». C’est sur ce terrain qu’a ouvert en 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), la plus grande montagne russe du parc. Ont suivi [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) en 2018 et le [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) en 2021. Toute l’histoire du parc est dans notre [guide de Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
 
 [Movie Park Germany](ref:movie-park-germany?full)
+
+_Corrigé le 25 septembre : la première version disait que les entrées gratuites dans les parcs frères restaient incertaines pour 2027. Les trois entrées à Bobbejaanland, Slagharen et Walsrode font déjà partie du pass 2027. Nous avons aussi ajouté que Star Trek se trouve aujourd’hui là où le grand huit arrêté en 2012 était prévu._
 
 — Patrick
 
@@ -158,4 +145,7 @@ fréquentation s’est effondrée en Espagne. Toute l’histoire est dans notre
 - Belantis cédé à la Compagnie des Alpes, avril 2025 : [FreizeitparkNEWS (en allemand)](https://www.freizeitparknews.de/belantis/uebernahme-compagnie-des-alpes/)
 - Refinancement et dividende, septembre 2025 : [EQT refinancia 1.043 millones del dueño de la Warner (elEconomista, en espagnol)](https://www.eleconomista.es/capital-riesgo/noticias/13559344/09/25/eqt-refinancia-1043-millones-del-dueno-de-la-warner-y-se-dara-un-dividendo.html)
 - Six Flags, Palamon et la vente des parcs Walibi en 2006 : [StarParks sur de.wikipedia (en allemand)](https://de.wikipedia.org/wiki/StarParks)
-- Bonus Club, avantages 2026 et annonce pour 2027 : [Bonus Club (Movie Park Germany, en allemand)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub)
+- Pass annuel 2027 avec trois entrées gratuites à Walsrode, Bobbejaanland et Slagharen : [Saisonpass (Movie Park Germany, en allemand)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass)
+- Bonus Club, la liste du groupe pour 2025 avec Belantis (valable jusqu’au 9 novembre 2025) et celle de 2026 : [Bonus Club (Movie Park Germany, en allemand)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Avantages 2025, parcs du groupe (PDF, en allemand)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2025/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202025_Parques%20Reunidos%20Gruppe.pdf) · [Avantages 2026, parcs du groupe (PDF, en allemand)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf)
+- Le grand huit prévu en 2012 juste derrière l’entrée principale et son arrêt en septembre 2012 : [Movie Park Germany plant für 2014 neue Achterbahn (Freizeitparkinfos, en allemand)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Achterbahnpläne gestoppt (Movie Park, 26 septembre 2012, archivé, en allemand)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt)
+- Star Trek: Operation Enterprise dans la zone d’entrée : [Neu 2017 im Movie Park Germany (Freizeitparkinfos, en allemand)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn)

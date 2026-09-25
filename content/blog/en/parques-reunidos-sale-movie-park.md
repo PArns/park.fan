@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   EQT has hired JPMorgan to find a buyer for Parques Reunidos, the group behind
   Movie Park Germany, Bobbejaanland, Slagharen and Tropical Islands. Expansión
-  names Merlin and Compagnie des Alpes as possible bidders. Nothing changes for visitors yet; the Bonus Club on the season pass is the open question.
+  names Merlin and Compagnie des Alpes as possible bidders. Nothing changes for visitors yet, and the 2027 season pass keeps its free sister-park visits.
 tags:
   - news
   - movie-park
@@ -32,7 +32,7 @@ seo:
   description: >-
     EQT has hired JPMorgan to sell Parques Reunidos, valued at around €1.7bn
     according to Expansión. Movie Park Germany, Bobbejaanland, Slagharen and
-    Tropical Islands are part of it. Nothing changes for visitors yet.
+    Tropical Islands are part of it. Nothing changes for visitors or pass holders yet.
   keywords:
     - Movie Park Germany sale
     - Movie Park Germany new owner
@@ -117,28 +117,15 @@ Nothing for now. The Halloween Horror Festival opens as planned tomorrow,
 Tickets and season passes you already hold stay valid. It is the parent company
 being sold, and the park remains the one you bought from.
 
-There is one part of the season pass that does depend on who owns the group.
-Gold and Platinum include the Bonus Club, and most of its value is free entry
-to sister parks: three visits each to Bobbejaanland, Slagharen and Walsrode, one
-each to Tropical Islands, Mirabilandia, Tusenfryd and a few others. The park
-publishes the 2026 list as a PDF with "Parques Reunidos Gruppe" in its title.
-The 2027 list will come out "at the start of the 2027 season", the park says,
-by which time the group may look different. Belantis, a sister park until 2025,
-is on the 2026 list among the discounts, at 50 percent off.
+The sale doesn't touch the season pass either. Gold and Platinum cover the rest of this season and all of 2027, and the three free visits each to Bobbejaanland, Slagharen and Weltvogelpark Walsrode are already listed among the 2027 pass benefits on Movie Park's site. The Bonus Club adds one free visit to other parks in the group, such as Tropical Islands, Mirabilandia and Tusenfryd. The park publishes that list "at the start of the 2027 season", and since the group is being sold as a whole, those parks stay sister parks after a sale.
 
-If you want the 2027 Gold pass for Movie Park itself, go ahead and buy it. If
-it's the free days in Belgium and the Netherlands you are after, wait until the
-new list is out.
+Belantis shows how the park handles a change of owner mid-season. The 2025 list gave pass holders three free visits there, valid until 9 November, and the sale to Compagnie des Alpes in April didn't change that. Only the 2026 list moves Belantis to the discounts. If you're thinking about the 2027 Gold pass, the sale is no reason to wait. Whether anything changes for the partner parks is a question for 2028 at the earliest.
 
-Bottrop has seen both sides of what an owner can do. A month after taking over
-in 2010, Parques Reunidos signed off €5 million for
-[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), which
-opened in 2011. A 45-metre coaster right behind the entrance, presented to the
-town in 2012 with its foundations already poured, was dropped when attendance in
-Spain collapsed. The full story is in the
-[Movie Park guide](/blog/movie-park-germany-wait-times-tips).
+Parques Reunidos has built in Bottrop more than once since taking over in 2010. A month after the deal it signed off €5 million for [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), which opened in 2011. A 45-metre coaster on the meadow right behind the entrance, presented to the town in 2012, was stopped in September that year, officially because of "a change in our investment strategy". [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), now the park's biggest coaster, opened on that plot in 2017. [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) followed in 2018 and the [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) in 2021. The park's full history is in the [Movie Park guide](/blog/movie-park-germany-wait-times-tips).
 
 [Movie Park Germany](ref:movie-park-germany?full)
+
+_Corrected on 25 September: the first version said the free sister-park visits for 2027 were still undecided. The three visits to Bobbejaanland, Slagharen and Walsrode are already part of the 2027 pass. We have also added that Star Trek now stands where the coaster stopped in 2012 was planned._
 
 — Patrick
 
@@ -153,4 +140,7 @@ Spain collapsed. The full story is in the
 - Belantis sold to Compagnie des Alpes, April 2025: [FreizeitparkNEWS (German)](https://www.freizeitparknews.de/belantis/uebernahme-compagnie-des-alpes/)
 - Refinancing and dividend, September 2025: [EQT refinancia 1.043 millones del dueño de la Warner (elEconomista, Spanish)](https://www.eleconomista.es/capital-riesgo/noticias/13559344/09/25/eqt-refinancia-1043-millones-del-dueno-de-la-warner-y-se-dara-un-dividendo.html)
 - Six Flags, Palamon and the 2006 sale of the Walibi parks: [StarParks on de.wikipedia (German)](https://de.wikipedia.org/wiki/StarParks)
-- Bonus Club, the 2026 benefits and the note on 2027: [Bonus Club (Movie Park Germany, German)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub)
+- The 2027 season pass with three free visits each to Walsrode, Bobbejaanland and Slagharen: [Season pass (Movie Park Germany)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass)
+- Bonus Club, the 2025 group list with Belantis (valid until 9 November 2025) and the 2026 list: [Bonus Club (Movie Park Germany, German)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [2025 benefits, group parks (PDF, German)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2025/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202025_Parques%20Reunidos%20Gruppe.pdf) · [2026 benefits, group parks (PDF, German)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf)
+- The coaster planned in 2012 right behind the main entrance, and its cancellation in September 2012: [Movie Park Germany plant für 2014 neue Achterbahn (Freizeitparkinfos, German)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Achterbahnpläne gestoppt (Movie Park, 26 September 2012, archived, German)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt)
+- Star Trek: Operation Enterprise in the entrance area: [Neu 2017 im Movie Park Germany (Freizeitparkinfos, German)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn)
