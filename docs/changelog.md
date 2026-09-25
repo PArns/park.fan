@@ -4,6 +4,18 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: das Planer-Sheet auf dem Handy ist so hoch wie der sichtbare Bereich
+
+Das Sheet des Tagesplaners war so hoch wie der Layout-Viewport (`92svh`, `100svh`), auch wenn der
+Browser gerade weniger davon zeigte: hineingezoomt, mit Tastatur oder in einem Browser, dessen
+`svh` nicht zum Fenster passt. iOS schneidet den Rest oben ab, und damit verschwanden Griff und ×
+(„wenn das nicht Standardhöhe ist, lässt sich der Planer nicht schließen"). In Chromium bei
+390 × 844 und Zoom 1,3 waren 649 px sichtbar und das Sheet endete bei 844. Jetzt liest
+`useSheetViewport()` die sichtbare Höhe aus `window.visualViewport`, alle drei Rastpunkte rechnen
+damit, und das Sheet steht auf der Unterkante des sichtbaren Bereichs statt auf der des Layouts.
+Ohne Zoom misst alles wie vorher.
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
 ## Unreleased – die Desktop-Leiste in der Reihenfolge des Handy-Menüs, mit dessen Icons
 
 Die Leiste oben am Desktop steht jetzt so wie das Handy-Menü: Backstage, News, Parks entdecken,

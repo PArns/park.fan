@@ -37,28 +37,46 @@
 }
 
 /*
- * The phone sheet's detents, as CSS so the resting heights need no script.
+ * The phone sheet's detents, as CSS so the resting heights need no script
+ * beyond the one number below.
  *
  * `large` is where the sheet opens: everything under the 48 px site header, or
- * 92svh where that is more (see the note on the class list in
+ * 92 % of the screen where that is more (see the note on the class list in
  * `planner-flyout.tsx`), and on a short window nearly the whole screen (below).
  * `medium` is half the screen, reached by dragging the grabber down; the sheet
  * keeps its `large` box there and slides down with `bottom`. The drag measures
  * these very values with a probe (`sheetDetentHeights()` in the same file), so
  * this is the only place they are written down.
+ *
+ * All of them are written in `--planner-viewport`, the height the browser
+ * actually shows, and not in `svh`. The sheet is fixed to the layout viewport,
+ * and a zoom, the keyboard or a browser whose units are not its window leaves
+ * less than that on screen; iOS then cuts the difference off the top, where
+ * the grabber and the × are. `useSheetViewport()` (`lib/planner/`) sets the
+ * number from `window.visualViewport` while the sheet is open, and with it
+ * `--planner-viewport-lift`, the gap between the bottom of what is on screen
+ * and the bottom of the layout viewport, which the sheet stands on. `100svh`
+ * and `0px` are the fallbacks for a browser without `visualViewport`.
  */
 :root {
-  --planner-sheet-large: max(92svh, calc(100svh - 3rem));
-  --planner-sheet-medium: 50svh;
+  --planner-viewport: 100svh;
+  --planner-viewport-lift: 0px;
+  --planner-sheet-large: max(
+    calc(var(--planner-viewport) * 0.92),
+    calc(var(--planner-viewport) - 3rem)
+  );
+  --planner-sheet-medium: calc(var(--planner-viewport) * 0.5);
 }
 /* A short window gives the day the header's strip too: `large` opens 12 px
    under the top edge, over the site header, and the sheet reads as a sheet by
    the sliver of dimmed page above it. `SHEET_SHORT_QUERY` in
    `planner-flyout.tsx` repeats the query for the one thing CSS cannot answer:
-   whether the grabber still has a second detent to toggle to. */
+   whether the grabber still has a second detent to toggle to. The query asks
+   the window and the 12 px are counted from the top of what is on screen, so
+   a keyboard or a zoom moves the edge with the view. */
 @media (height < 50rem) {
   :root {
-    --planner-sheet-large: calc(100svh - 0.75rem);
+    --planner-sheet-large: calc(var(--planner-viewport) - 0.75rem);
   }
 }
 

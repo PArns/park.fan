@@ -31,6 +31,7 @@ import {
   usePlannerPxPerMin,
 } from '@/lib/planner/use-grid-scale';
 import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
+import { useSheetViewport } from '@/lib/planner/use-sheet-viewport';
 import { addDays, dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
@@ -122,7 +123,8 @@ function cssLengthPx(value: string): number {
  * The detents in pixels, for the drag, smallest first.
  *
  * Measured off the stylesheet rather than recomputed from `innerHeight`: the
- * sheet RESTS on `svh`, and on iOS Safari `innerHeight` and `100svh` differ
+ * sheet rests on `--planner-viewport` (see {@link useSheetViewport}), which
+ * falls back to `svh`, and on iOS Safari `innerHeight` and `100svh` differ
  * whenever the toolbar collapses, so a drag that snapped against its own
  * arithmetic would pick one height and the CSS would then settle at another —
  * a second jump after the release. A probe with the very values the classes
@@ -130,7 +132,7 @@ function cssLengthPx(value: string): number {
  */
 function sheetDetentHeights(withMedium: boolean) {
   const large = cssLengthPx('var(--planner-sheet-large)');
-  const full = cssLengthPx('100svh');
+  const full = cssLengthPx('var(--planner-viewport)');
   return [
     ...(withMedium
       ? [{ detent: 'medium' as const, height: cssLengthPx('var(--planner-sheet-medium)') }]
@@ -228,6 +230,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   };
 
   const isPhone = useMediaQuery(PLANNER_PHONE_QUERY);
+  // The phone sheet's height is what the browser shows, not a viewport unit:
+  // a zoom or the keyboard otherwise leaves the grabber and the × above the
+  // top of the screen with no way out. See `useSheetViewport`.
+  useSheetViewport(open && isPhone);
   /**
    * A landscape phone — the one size where the sheet is a ROW rather than a
    * stack, with the day's chrome left of the axis instead of above it.
@@ -790,12 +796,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     // height came back 717 px before and 717 px after an 80 px pull.
     draggedSheet.current = false;
 
-    // Where the sheet is, in the numbers the drag works in: how much of it is
-    // on screen, and how tall its box is laid out. Taken once, at the press.
-    const viewport = window.innerHeight;
-    const box = sheet.getBoundingClientRect();
-    const startVisible = viewport - box.top;
-    const layoutHeight = box.height;
+    // Where the sheet is, in the numbers the drag works in: how much screen
+    // there is, how much of the sheet stands on it, and how tall its box is
+    // laid out. Taken once, at the press. The first two come from the values
+    // the sheet is PLACED by — the custom properties and its own `bottom` —
+    // and not from `innerHeight`: at a page scale of 1.3 that stayed at 844
+    // while 649 px were on screen, so a pull capped by it could take the
+    // sheet 195 px past what `full` would then settle at.
+    const room = cssLengthPx('var(--planner-viewport)');
+    const lift = cssLengthPx('var(--planner-viewport-lift)');
+    const layoutHeight = sheet.getBoundingClientRect().height;
+    const startVisible = layoutHeight + parseFloat(getComputedStyle(sheet).bottom) - lift;
     // No `medium` on a landscape phone: half of a 390 px window is not a day.
     const detents = sheetDetentHeights(!isLandscape);
     const startDetent = detent;
@@ -811,7 +822,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       sheet.style.transition = 'none';
       sheet.style.height = `${height}px`;
       sheet.style.maxHeight = `${height}px`;
-      sheet.style.bottom = `${visible - height}px`;
+      sheet.style.bottom = `${lift + visible - height}px`;
     };
     const unplace = () => {
       sheet.style.removeProperty('transition');
@@ -821,10 +832,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     };
     const visibleAt = (clientY: number) => {
       const visible = startVisible - (clientY - startY);
-      const top = viewport;
       // Past the top of the screen the sheet resists, and stops.
-      if (visible <= top) return Math.max(0, visible);
-      return top + Math.min(SHEET_OVERPULL_PX, (visible - top) / 3);
+      if (visible <= room) return Math.max(0, visible);
+      return room + Math.min(SHEET_OVERPULL_PX, (visible - room) / 3);
     };
 
     const onMove = (moveEvent: PointerEvent) => {
@@ -953,9 +963,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           if (!isPhone) event.preventDefault();
         }}
         // `side="bottom"` ships `h-auto` and no ceiling, so the height is the
-        // call site's business. `svh` rather than `vh`: on iOS the address bar
-        // makes `vh` taller than what is actually visible, and the summary row
-        // at the bottom would sit under it.
+        // call site's business. Never `vh`: on iOS the address bar makes `vh`
+        // taller than what is actually visible, and the summary row at the
+        // bottom would sit under it. Not `svh` either: that is the layout
+        // viewport, which is more than the screen shows under a zoom or with
+        // the keyboard up — see the detent classes below.
         className={cn(
           'planner-phone:rounded-t-2xl flex w-full flex-col gap-0 p-0',
           // Glass, like the header's menu band: a translucent dark ground with
@@ -1043,7 +1055,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           //
           // **Three detents since PAR-482, and a height rather than a cap.** The
           // resting height above is `large` (`--planner-sheet-large` in
-          // `app/globals.css`, the same `max()`), 100svh is `full`, and
+          // `app/globals.css`, the same `max()`), the whole screen is `full`, and
           // `medium` is half the screen: the sheet keeps its `large` box and
           // slides down with `bottom`, its lower half past the screen's edge,
           // which is what an iOS sheet's medium detent looks like and costs the
@@ -1052,11 +1064,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // sheet, and `medium`'s offset, measured from the top of a `large`
           // box, would have pushed it off the screen. The `max-h` stays the
           // same value, which is what `check:planner` reads as the ceiling.
+          //
+          // **Every one of them is counted in what is on screen, not in
+          // `svh`** (`--planner-viewport`, see `useSheetViewport`). A viewport
+          // unit is the layout viewport, and the sheet was as tall as that
+          // whether or not the browser was showing all of it: zoomed in on a
+          // field, with the keyboard up, or in a browser whose units are not
+          // its window, iOS cut the rest off the top, and the grabber and the
+          // × went with it — "wenn das nicht Standardhöhe ist, lässt sich der
+          // Planer nicht schließen". The sheet stands on
+          // `--planner-viewport-lift` for the same reason: the bottom of the
+          // layout viewport is under the keyboard, the bottom of what is on
+          // screen is not.
           detent === 'full'
-            ? 'planner-phone:h-svh planner-phone:max-h-svh'
+            ? 'planner-phone:h-(--planner-viewport) planner-phone:max-h-(--planner-viewport)'
             : 'planner-phone:h-(--planner-sheet-large) planner-phone:max-h-(--planner-sheet-large)',
-          detent === 'medium' &&
-            'planner-phone:bottom-[calc(var(--planner-sheet-medium)_-_var(--planner-sheet-large))]',
+          detent === 'medium'
+            ? 'planner-phone:bottom-[calc(var(--planner-viewport-lift)_+_var(--planner-sheet-medium)_-_var(--planner-sheet-large))]'
+            : 'planner-phone:bottom-(--planner-viewport-lift)',
           // Snapping to a detent, and opening and closing, on the curve iOS
           // uses for its sheets rather than a symmetric ease-in-out: fast off
           // the mark, long settle. `--tw-ease` and `--tw-duration` are what

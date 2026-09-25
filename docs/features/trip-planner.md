@@ -1784,7 +1784,7 @@ lunch block: the axis went from 319 to 366 px at 390 × 844 and from 262 to 311 
 distance and do nothing while the finger moved, with two heights to choose between —
 the sheet could be pulled bigger and never smaller. Now it follows the finger and snaps
 to one of three detents on release: `large` (where it opens, under the header), `full`
-(100svh) and `medium` (half the screen, to see the page the rides come from). The
+(the whole screen) and `medium` (half the screen, to see the page the rides come from). The
 nearest detent wins; a flick (over 0.5 px/ms) moves one detent on from where the drag
 started even over a short distance; a flick down from `medium`, or a release 90 px under
 it, closes the sheet; a tap steps up one detent and from `full` back to `large`. A
@@ -1795,7 +1795,8 @@ with its lower half past the screen, the way iOS draws a medium detent. At rest 
 detents are classes on the CSS variables `--planner-sheet-large` and
 `--planner-sheet-medium` (`app/globals.css`), and the drag measures those very values
 with a probe element (`sheetDetentHeights()`) rather than recomputing them from
-`innerHeight`, which on iOS differs from `svh` whenever the toolbar collapses; the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
+`innerHeight`, which on iOS differs from `svh` whenever the toolbar collapses (and since the
+section below, neither is what the sheet is sized by); the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
 measured from the top of a `large` box and a short day with `h-auto` would have slid off
 the screen. Snapping, opening and closing run on the iOS sheet curve,
 `cubic-bezier(0.32, 0.72, 0, 1)` over 400 ms (PAR-190's first half); the desktop panel
@@ -1824,6 +1825,44 @@ the header visible. Measured with Europa-Park, eight rides and a lunch block: th
 is 264 px at 390 × 664, 382 px at 390 × 844 (366 before) and 316 px at 844 × 390 (269).
 `check:planner` grabs the strip rather than the handle's centre, which is under the
 day picker now, and asserts the landscape sheet at 378 px.
+
+**The sheet is as tall as what is on screen, not as a viewport unit.** The 16 px rule
+for text fields (PAR-485) stopped the zoom that had pushed the grabber off the top, and
+the report came back the day after it shipped: „wenn das nicht Standardhöhe ist, ist das
+Fenster zu hoch, sodass ich es nicht mehr schließen kann". The zoom was one case of a
+general one. The sheet is `position: fixed` at the bottom of the layout viewport and
+every detent was written in `svh`, i.e. in the layout viewport too, so the sheet was as
+tall as that box whether or not the browser was showing all of it. A pinch, the keyboard,
+an in-app browser or a toolbar left out of `svh` each leave less on screen than the box,
+and iOS takes the difference off the top, grabber and × first. Measured in Chromium at
+390 × 844 with the page scale at 1.3: 649 px visible, sheet ending at 844, 195 px of it
+outside the view.
+
+`useSheetViewport()` (`lib/planner/use-sheet-viewport.ts`) reads `window.visualViewport`
+while the phone sheet is open and keeps two numbers on `<html>`: `--planner-viewport`,
+the height on screen, and `--planner-viewport-lift`, how far the bottom of what is on
+screen sits above the bottom of the layout viewport (the keyboard, or the part of a
+zoomed page below the view). Every detent in `app/globals.css` is written in the first,
+and the sheet stands on the second instead of on `bottom: 0`. They fall back to `100svh`
+and `0px` without `visualViewport`, which is where the sheet was before. The lift is
+measured against a fixed `top: 0; bottom: 0` probe, which is the box a fixed `bottom`
+counts from by definition, and not against `innerHeight`, whose meaning under a zoom has
+not always been the same across engines (Chromium kept it at 844 in the measurement
+above). The drag reads the
+same two numbers and the sheet's own `bottom`, not `innerHeight` and the rect's `top`,
+for the same reason. On `<html>` and not on the sheet, because the detents are declared
+on `:root` and a custom property substitutes where it is declared. The numbers stay there
+after a close, so the sheet slides out at the size it had.
+
+Nothing changes at a page scale of 1: every detent, drag and tap measured the same
+before and after at 390 × 844 and 390 × 700. At 1.3 the sheet ends at 649 and keeps its
+48 px under the header; `medium` lands on half of the 649, `full` on all of it.
+`check:planner` sets the page scale with `Emulation.setPageScaleFactor` (Chromium
+cannot pinch in a headless run) and asserts that the sheet and its × lie inside the
+visual viewport. What it cannot reach is a visual viewport panned down, which is what
+iOS does for a focused field: headless Chromium keeps `offsetTop` at 0 under every
+gesture tried. That half rests on the arithmetic (`lift = layout − offsetTop − height`)
+and wants a look on a real iPhone.
 
 **Every row of controls in the phone sheet is drawn at 32 px.** The park and date
 buttons, the headliner pills, "Headliner einplanen", "Tag optimieren" and the bell were

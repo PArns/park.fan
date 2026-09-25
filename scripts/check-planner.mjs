@@ -1522,6 +1522,46 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
     fieldSizes.length > 0 && fieldSizes.every((size) => size >= 16),
     `${fieldSizes.length} Felder: ${fieldSizes.join(', ')} px`
   );
+
+  // The 16 px rule stops ONE zoom. A pinch still zooms, the keyboard shrinks
+  // what is on screen the same way, and every one of them left the sheet as
+  // tall as the layout viewport: at 1.3× it ended 195 px below the view, and
+  // iOS pans that overhang off the TOP, grabber and × first ("lässt sich nicht
+  // schließen", again). The sheet is sized from `visualViewport` now
+  // (`useSheetViewport`), and Chromium can set the page scale where it cannot
+  // pinch — which shrinks the visual viewport exactly as that zoom does.
+  {
+    const cdp = await phone.context().newCDPSession(phone);
+    await cdp.send('Emulation.setPageScaleFactor', { pageScaleFactor: 1.3 });
+    await phone.waitForTimeout(600);
+    const fit = await phone.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      const close = sheet?.querySelector('[data-planner-sheet-close]');
+      if (!sheet || !close) return null;
+      const view = window.visualViewport;
+      const box = sheet.getBoundingClientRect();
+      return {
+        viewTop: Math.round(view.offsetTop),
+        viewBottom: Math.round(view.offsetTop + view.height),
+        top: Math.round(box.top),
+        bottom: Math.round(box.bottom),
+        closeTop: Math.round(close.getBoundingClientRect().top),
+      };
+    }, SHEET);
+    await cdp.send('Emulation.setPageScaleFactor', { pageScaleFactor: 1 });
+    await phone.waitForTimeout(600);
+    await cdp.detach();
+    check(
+      'gezoomt passt das Sheet in den sichtbaren Ausschnitt, Griff und × bleiben im Bild',
+      fit !== null &&
+        fit.top >= fit.viewTop - 1 &&
+        fit.closeTop >= fit.viewTop &&
+        fit.bottom <= fit.viewBottom + 1,
+      fit
+        ? `sichtbar ${fit.viewTop}–${fit.viewBottom} px · Sheet ${fit.top}–${fit.bottom} px · × ab ${fit.closeTop} px`
+        : 'kein Sheet'
+    );
+  }
   if (await grab.count()) {
     /**
      * How far a drag travels, and it is a DISTANCE rather than a destination.
