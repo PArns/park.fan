@@ -2,7 +2,7 @@
 title: 'Een kinderwagen, een gondel en een half miljoen regels code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -60,20 +60,23 @@ aan wachttijddata dacht.
 ## Een kinderwagen aan het sprookjesmeer
 
 Mijn ouders hebben me als klein kind in de kinderwagen rond het sprookjesmeer
-van [Phantasialand](ref:phantasialand?bare) geduwd. Ruim veertig sprookjeswerelden
-staan daar langs de oever, elk een klein podium met mechanisch bewegende
-figuren. Roodkapje, Assepoester, Ali Baba.
+van [Phantasialand](ref:phantasialand?bare) geduwd. Zo’n veertig sprookjes
+stonden daar toen langs de oever, elk een klein podium met mechanisch bewegende
+figuren. Roodkapje, Assepoester, de kleine Muck.
 
-Dat sprookjesbos is ouder dan al het andere in het park. Toen Phantasialand op
-30 april 1967 opende, was het de allereerste attractie, gebouwd uit de collectie
-van poppenspeler Richard Schmidt, die het park samen met kermisexploitant
+Dat sprookjesbos was het hart van het park. Toen Phantasialand op 30 april 1967
+opende, stond het er al, gebouwd uit de collectie van poppenspeler Richard
+Schmidt, die het park samen met kermisexploitant
 Gottlieb Löffelhardt opzette. En omdat poppen alleen nog geen verhaal maken, zat
 er bij elke scène een knop. Eén keer drukken en een bandrecorder vertelde het
 bijbehorende sprookje.
 
 Ik heb op die knoppen gedrukt, en als mijn ouders al twee scènes verder waren,
 rende ik terug om nog een keer te drukken. Een parkbezoek was dat voor mij
-nooit. Eerder een hoorspel waar je zelf op de knop mocht drukken.
+nooit. Eerder een hoorspel waar je zelf op de knop mocht drukken. Het
+sprookjesbos bestaat niet meer: in de winter van 2007/2008 heeft het park het
+gesloopt voor de bouw van Baumbergen, en er is weinig meer van over dan de tempel
+uit “De kleine Muck”.
 
 ## Met de gondel door “1001 Nacht”
 
@@ -88,7 +91,7 @@ Mijn vader is in 2019 overleden. Misschien zijn juist daarom die gezamenlijke
 ritten zo kostbaar voor me geworden. In mijn herinnering zit hij nog altijd naast
 me in de gondel.
 
-![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/media/movie-park-germany/iron-claw.jpg)
+![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Iron Claw in Movie Park Germany bij nacht. De baan rijdt sinds 1996, toen nog als Eraser. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Was mijn vader als vrachtwagenchauffeur weer eens op pad, dan nam mijn moeder
 gewoon het stuur over. Met haar heb ik veel andere parken ontdekt, vooral
@@ -96,8 +99,10 @@ gewoon het stuur over. Met haar heb ik veel andere parken ontdekt, vooral
 Daar heb ik in **Lethal Weapon Pursuit** voor het eerst van mijn leven in een
 achtbaan gezeten: twee treinen vormgegeven als Amerikaanse politiewagens die een
 race met elkaar reden door een als magazijn gebouwde overkapping, looping tegen
-looping. De enige duelling coaster van Duitsland, vanaf 2005 onderweg als “Cop
-Car Chase”, in oktober 2006 gesloopt. De baan bestaat niet meer. De verslaving
+looping. Destijds de enige duelling coaster van Duitsland, vanaf 2005 onderweg
+als “Cop Car Chase”, in augustus 2006 stilgelegd en vanaf oktober gesloopt. Op
+die plek opende in mei 2007 het themagebied Santa Monica Pier, met de Disk’O
+Coaster Crazy Surfer. De baan bestaat niet meer. De verslaving
 die hij aanwakkerde wel. Strikt genomen is mijn moeder dus schuldig aan alles
 wat daarna kwam.
 
@@ -111,10 +116,10 @@ mijn manier om er iets van terug te geven.
 ## Over muizen van 5000 en een legende van 10.000
 
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
-bestaat sinds juni 2011: een interactieve dark ride waarin
-ongediertebestrijder Oskar Koslowski de bakkerij van patissier Gustav E. Lehmann
-van muizen verlost, gewapend met een spuitzak, verdeeld over 48 3D-schermen en
-zes minuten rijtijd. Bij een verse highscore grijns ik nog altijd zoals vroeger
+bestaat sinds juni 2011: een interactieve 3D-dark ride waarin je
+ongediertebestrijder Oskar Koslowski helpt de keizerlijke taartenfabriek Gustav
+E. Lehmann van muizen te verlossen, gewapend met een spuitzak, door zeven zalen
+en zo’n zeven minuten lang. Bij een verse highscore grijns ik nog altijd zoals vroeger
 bij de knoppen aan het sprookjesmeer. Ook al heeft mijn vriendin de opmerkelijke
 gewoonte om precies op het moment dat ik ze in het vizier krijg de muizen van
 5000 punten weg te kapen, waardoor ik rit na rit het huisrecord misloop.
@@ -123,10 +128,12 @@ Eén triomf is inmiddels van mij alleen. Na gevoelsmatig honderd ritten heb ik
 hem eindelijk gevonden, de **muis van 10.000 in de tweede zaal**. Waar hij
 precies zit? Dat blijft, met alle begrip voor de vraag, mijn geheim.
 
-Iets wat ik lang niet wist en waar ik nog steeds even stil van word: Maus au
-Chocolat is in 2011 gebouwd op precies het terrein waar tot 2009 de gondelbaan
-stond. Als ik daar met mijn vriendin over punten ruzie, zit ik in een gebouw dat
-staat waar ik als kind met mijn vader door de drakenmuil voer.
+Iets wat ik lang niet wist en waar ik nog steeds even stil van word: de
+gondelbaan reed tot 1 november 2009, daarna heeft het park het terrein
+geëgaliseerd en opnieuw bebouwd, en in een van die nieuwe gebouwen aan wat nu de
+Kaiserplatz is, zit sinds 2011 Maus au Chocolat. Als ik daar met mijn vriendin
+over punten ruzie, zit ik dus ongeveer waar ik als kind met mijn vader door de
+drakenmuil voer.
 
 Daarna, als troost voor de gemiste muizen van 5000: pannenkoeken en shakes bij
 **Phenie’s** in Wuze Town, en die zijn beter dan wat pretparken verder als
@@ -144,13 +151,14 @@ eigenaardig mooi gevoel als de jongen van het sprookjesmeer decennia later voor
 Cinderella Castle in het [Magic Kingdom](ref:magic-kingdom-park?bare) staat.
 Alles groter, alles luider, alles verder weg van Brühl, en toch precies dezelfde
 kriebel als destijds in de gondel. Daartussen
-[Epic Universe](ref:universal-epic-universe?bare) in zijn eerste zomer,
+[Epic Universe](ref:universal-epic-universe?bare), een jaar na de opening in mei
+2025,
 achtbanen bij [Islands of Adventure](ref:universal-islands-of-adventure?bare),
 orka’s en Manta bij [SeaWorld](ref:seaworld-orlando?bare). Twee weken, en
 achter dat punt op de lijst staat nu eindelijk het vinkje.
 
-De foto’s ben ik nog aan het sorteren, de verslagen zijn in de maak; allebei
-landen ze de komende weken precies hier op de blog. Alvast dit: het was elk
+De foto’s ben ik nog aan het sorteren, en de verslagen zijn nog niet af. Ze
+verschijnen hier op de blog zodra ze klaar zijn. Alvast dit: het was elk
 afzonderlijk jaar voorpret waard.
 
 ## Het tweede ik: de ontwikkelaar met te veel zijprojecten
@@ -211,9 +219,11 @@ met pensioen mocht. Bij elke nachtelijke debugsessie herinnert het me eraan dat
 er ergens op dit moment iemand voor een echte baan staat die wil weten of de rij
 de moeite waard is.
 
-Daarachter zitten inmiddels live wachttijden uit ruim **200 parken** en meer dan **7.000
-attracties**, elke vijf minuten ververst. Voorspellingen die de drukte tot **365
-dagen** vooruit inschatten. En omdat ik cijfers principieel alleen vertrouw als
+Daarachter zitten inmiddels **210 parken** met samen zo’n **6.900 attracties**
+(stand 25 september 2026), en bij 209 daarvan halen we elke vijf minuten de
+actuele wachttijden op. De ene die ontbreekt is Hansa-Park, dat zijn wachttijden alleen in
+de eigen app laat zien. Daarbij voorspellingen die de drukte zo’n half jaar
+vooruit inschatten. En omdat ik cijfers principieel alleen vertrouw als
 ze zich moeten bewijzen, geeft het model zichzelf een cijfer: elke voorspelling
 wordt later naast de werkelijk gemeten wachttijd gelegd, en wat daaruit komt
 staat op de [Fancast-pagina](/fancast).
@@ -224,10 +234,12 @@ Het zijn altijd dezelfde drie vragen die een parkbezoek oproept, lang voordat
 iemand in de auto zit en van achteren vraagt of we er al bijna zijn. Wanneer is de beste dag? Is een zondag de moeite waard?
 En hoe druk wordt het echt?
 
-Precies daarvoor is park.fan gebouwd. Elke parkpagina heeft een kalender van de
-beste bezoekdagen, tot een jaar vooruit. De blik in die data ruimt en passant
-een paar onderbuikgevoelens op. Een zondag in grauw november kan rustiger zijn dan welke dinsdag ook in de
-zomervakantie van Noordrijn-Westfalen. Een brugdag is bijna nooit een goed idee.
+Precies daarvoor is park.fan gebouwd. Elke parkpagina heeft een kalender met de
+verwachte drukte voor elke dag, zo’n half jaar vooruit. De blik in die data ruimt
+en passant een paar onderbuikgevoelens op. In Phantasialand staat zondag 21 juni
+2026 in de kalender rustiger dan elke dinsdag van de zomervakantie in
+Noordrijn-Westfalen daarna. De twee brugdagen in het voorjaar, 15 mei en 5 juni,
+waren daar drukker dan elke gewone vrijdag in mei en juni (stand september 2026).
 En de “geheime tip” om bij regen te gaan werkt precies zolang tot alle anderen
 diezelfde geheime tip gelezen hebben.
 
@@ -244,13 +256,16 @@ Er zijn goede sites die je laten zien hoe lang de rij op dit moment is. Dat
 kunnen wij ook, elke vijf minuten, wereldwijd. Maar park.fan is gebouwd voor de vraag
 die daaraan voorafgaat: _is het überhaupt de moeite om te gaan?_
 
-Daarom kijkt het model tot **365 dagen** vooruit in plaats van alleen naar de
+Daarom kijkt het model zo’n half jaar vooruit in plaats van alleen naar de
 aanduiding bij de ingang, en de kalender van de beste dagen maakt daar één antwoord
 van: gaan of liever niet. Of het model het goed heeft, hoef je mij niet te
 geloven, dat staat op de [Fancast-pagina](/fancast).
 
 Daarbij wachttijden, drukteniveaus, weer bij de parkingang, openingstijden en
-attractiehistories in zes talen. Geen concern, geen paywall, geen reclame,
+attractiehistories in zes talen. Sinds september is er ook de
+[dagplanner](/blog/dagplanner), die je attracties tegen de voorspelling op een
+tijdlijn zet, en wie wil, krijgt een pushbericht zodra de rij bij een attractie
+onder een zelfgekozen grens zakt. Geen concern, geen paywall, geen reclame,
 gebouwd door iemand die zelf in de rij staat.
 
 ## Wat deze blog moet worden
@@ -276,15 +291,15 @@ in drie smaken.
 **Reisverslagen.** Lang, met een mening, met foto’s, en met echte data uit precies
 het park dat bezocht is. Geen “was leuk”, maar:
 “[Magic Kingdom](ref:magic-kingdom-park?bare), 15 mei, 09:08 uur rope drop, dat
-was het plan, dit werkte, dit ging fout.” De Orlando-reis van hierboven bijt het
-spits af: Disney World, Universal en SeaWorld, foto’s inbegrepen.
+was het plan, dit werkte, dit ging fout.” De Orlando-reis van hierboven krijgt
+precies zo’n verslag: Disney World, Universal en SeaWorld, foto’s inbegrepen.
 
 **Data deep dives.** Wat verraadt de wachttijdhistorie van een park _echt_?
 Wanneer is [Taron](ref:phantasialand/taron?bare) het meest de moeite waard? En
 houden onze voorspellingen wat ze beloven?
 
-**Nieuws.** Kort en zonder omhaal. Gebeurt er iets, dan staat het hier, meestal
-nog dezelfde dag.
+**Nieuws.** Kort en zonder omhaal. Sinds 25 september staat het in een eigen
+rubriek onder [Nieuws](/news), los van de artikelen.
 
 Grafieken, kaarten en wachttijden in deze berichten komen rechtstreeks uit
 park.fan. Wat je leest, doet het park dus nu echt. De twee hoofdrolspelers van

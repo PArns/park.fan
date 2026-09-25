@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany : 22 soirées d’horreur dès samedi, et Jason attend dans le nouveau maze'
+title: 'Movie Park Germany : soirées d’horreur de samedi au 8 novembre, et Jason attend dans le nouveau maze'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -99,7 +99,8 @@ zones et le défilé March of the Monsters. Les billets datés en ligne coûtent
 ce moment 38,90 € selon le parc, contre 59,90 € au guichet à partir de 12 ans.
 
 Les mazes et PHOBIA ne sont **pas compris**. Chaque maze demande son propre
-billet à créneau horaire, vendu uniquement en ligne. Les pages Halloween du parc
+billet à créneau horaire, à réserver en ligne. D’après le plan du parc, des billets
+restants sont aussi vendus sur place, au service clients, selon les disponibilités. Les pages Halloween du parc
 n’indiquent pas de prix par maze. On ne le trouve que dans la boutique en ligne.
 
 Si vous voulez les neuf, faites le calcul face au **S.I.K. Pass** : 215 € avec
@@ -147,3 +148,6 @@ Dates, mazes et billets :
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 septembre 2026 : la première version disait que les billets à créneau pour les mazes étaient vendus uniquement en ligne. D’après le plan du parc, des billets restants sont aussi vendus sur place, selon les disponibilités.

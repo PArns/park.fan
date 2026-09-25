@@ -49,10 +49,11 @@ allowed in wearing a costume. It opens on **Saturday 26 September** and runs
 until **Sunday 1 November 2026**, and every part of it is covered by an
 ordinary park ticket.
 
-Only Disneyland Park gets decorated. Next door,
-[Disney Adventure World](ref:disney-adventure-world) has no Halloween programme
-of its own. If you want a scare over there, ride
-[Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
+Of the two parks, only Disneyland Park gets decorated, and the Disney hotels get
+autumn decorations too. Next door, [Disney Adventure
+World](ref:disney-adventure-world) has no Halloween programme of its own. If you
+want a scare over there, ride [Tower of
+Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
 
 ## New this year
 
@@ -63,12 +64,13 @@ colour.
 
 Cruella, Maleficent, Jafar and the Queen of Hearts are back for villain
 meet-and-greets. **Dr. Facilier** from _The Princess and the Frog_ returns for
-the first time since 2021, in Frontierland. Jack Skellington and Sally from _The Nightmare Before
-Christmas_ return on selected days, and you can only meet them through the
-virtual queue in the Disneyland Paris app. You join it on your phone on the day
-of your visit, not in person.
+the first time since 2021, in Frontierland. Jack Skellington and Sally from _The
+Nightmare Before Christmas_ return on selected days, and the only way to meet
+them is a virtual queue. You join it on the day of your visit, mostly through
+the Disneyland Paris app, or with a Cast Member at the entrance to the
+meet-and-greet. Places are limited.
 
-Main Street gets around forty new pumpkins, 170 new Mickey-shaped candles,
+Main Street gets around forty new pumpkins, 170 new candles shaped like Mickey and friends,
 Victorian garlands, a newly composed soundtrack and projections on the
 façades after dark. Inside the station at the entrance hang four new Art Deco
 stained-glass windows showing Maleficent and Ursula. At the far end, thorns,
@@ -97,13 +99,18 @@ Market House Deli and an Ursula cake at Victoria's Home-Style Restaurant.
 ## 31 October
 
 Halloween falls on a Saturday in 2026, and it is the one day of the year when
-adults may wear a costume into the park. Disneyland Park stays open until
-**11 p.m.** with extra character meetings, a fireworks show of its own and
-sweets handed out by M&M'S. There is no separate party ticket: the evening is
-part of normal admission, although admission itself costs more that day than
-on the rest of the festival. The park will publish the costume rules in advance,
-so check the app before you spend hours on a mask that has to stay at the
-gate.
+adults may wear a costume into the park. Disneyland Park stays open until **11
+p.m.** with extra character meetings, a fireworks show of its own and sweets
+handed out by M&M'S. There is no separate party ticket: the evening is part of
+normal admission, which means a dated ticket whose price, Disney says, moves
+with the season and with demand.
+
+The costume rules are already on the park's Halloween page. Guests aged 12 and
+over may not wear masks (medical ones excepted), and costumes that fully cover
+the face or head are out, as are clothes that trail on the ground, long capes,
+sticks and anything that looks like a weapon. If you come as a Disney character,
+you may not pose for photos or sign autographs. A multi-layered full-body
+costume can mean a closer check at the entrance.
 
 A Saturday, Halloween, costumes and an evening programme for everyone with a
 ticket: it will be packed. If you can live without the costume night, the
@@ -131,3 +138,6 @@ children in tow is in the
 Programme and dates: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 September 2026: The first version said the park had yet to publish the costume rules for 31 October. They were already on its Halloween page and are now in the text. A Cast Member on site can also add you to the virtual queue for Jack and Sally, not only the app. We have removed the claim that admission costs more on 31 October than on the other festival days, because we could not back it up.

@@ -2,6 +2,7 @@
 title: '70 minutes, c’est beaucoup ? Tout dépend si on est mardi'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -17,8 +18,8 @@ tags:
   - coulisses
 category: behind-the-scenes
 parkLinks:
-  # Hansa-Park gets a paragraph of its own — why its page shows no wait times at
-  # all — which is exactly the question somebody on that page is asking.
+  # Hansa-Park gets a paragraph of its own on why its page shows no wait times at
+  # all. That is exactly the question somebody on that page is asking.
   - phantasialand
   - hansa-park
 rideLinks:
@@ -59,11 +60,13 @@ seconde moitié de cette phrase, tu ne peux rien en faire.
 
 ## Ce que « habituel » et « chargé » veulent vraiment dire
 
-park.fan place deux valeurs de comparaison à côté de chaque attraction.
-**Habituel** est la médiane des pics quotidiens : sur la moitié des jours
-mesurés, la file la plus longue était plus courte que cette valeur, sur l’autre
-moitié plus longue. **Chargé** est le 90e centile de la même série, soit à peu
-près le jour sur dix où il y avait vraiment du monde.
+park.fan place deux valeurs de comparaison à côté de chaque grande attraction
+d’un parc, calculées sur les 365 derniers jours. **Habituel** est la médiane des
+pics quotidiens : sur la moitié des jours mesurés, la file la plus longue était
+plus courte que cette valeur, sur l’autre moitié plus longue. **Chargé** est le
+90e centile de la même série, soit à peu près le jour sur dix où il y avait
+vraiment du monde. Sur la page de l’attraction, les deux sont donnés pour le
+jour de la semaine en cours, avec toute la semaine jour par jour en dessous.
 
 Ce sont des centiles, pas des moyennes. Une
 moyenne se laisse déplacer par une seule journée exceptionnelle : un après-midi
@@ -99,22 +102,25 @@ attraction à l’autre, et ces écarts sont la partie utile.
 
 De cette forme naissent deux recommandations. La première, c’est le **rope
 drop** : filer dès l’ouverture vers une attraction précise, avant que les allées
-ne se remplissent. Nous ne le proposons que si le pic de la journée atteint au
-moins 60 minutes et si le départ matinal en fait gagner au moins 45. En dessous,
+ne se remplissent. Nous ne le proposons que si le pic d’une journée ordinaire
+des 70 derniers jours atteint au moins 60 minutes et si le départ matinal en
+fait gagner au moins 45. En dessous,
 ce serait un conseil valable partout et donc utile nulle part.
 
-La seconde, c’est l’alternative plus calme du soir. Sur les grands coasters, la
-dernière heure avant la fermeture vaut souvent la première après l’ouverture,
-sauf qu’il n’y a pas besoin de se lever à sept heures. Les deux indications
-figurent sur la page de chaque attraction, avec une heure concrète en heure du
+La seconde, c’est l’alternative plus calme : l’heure à laquelle la file de
+cette attraction est d’habitude la plus courte. Si elle tombe le soir, pas
+besoin de se lever à sept heures. Les deux indications figurent sur la page de
+chaque grande attraction assez mesurée, avec une heure concrète en heure du
 parc.
 
 ## L’essentiel se joue avant le départ
 
-L’heure te fait gagner une demi-heure, la date jusqu’à une heure entière. Entre
-deux jours de la même semaine de vacances, il peut y avoir une demi-heure
-d’attente moyenne d’écart, et un calendrier ordinaire n’en laisse rien voir. Ce
-qui fait la différence : quelles régions sont en vacances, s’il y a un pont
+Sur une attraction pour laquelle nous proposons le rope drop, l’heure te fait
+gagner au moins trois quarts d’heure. La date décide de toute la journée.
+Pendant les vacances d’été 2026 de Rhénanie-du-Nord-Westphalie, le mardi 18
+août figurait au calendrier du Phantasialand en « Normal », le jeudi de la même
+semaine en « Très élevée » (état en septembre 2026), et un calendrier ordinaire
+n’en laisse rien voir. Ce qui fait la différence : quelles régions sont en vacances, s’il y a un pont
 accroché derrière, s’il pleut et s’il se passe quelque chose de l’autre côté de
 la frontière.
 
@@ -128,8 +134,10 @@ le calendrier. Trois parcs côte à côte, chacun avec son jour le plus calme :
 
 ```
 
-Si une cellule de la dernière colonne reste vide, ce parc n’a aucun jour de
-semaine qui se détache vraiment des autres.
+Un tiret dans la dernière colonne signifie qu’aucun jour de semaine ne se
+détache vraiment dans ce parc, ou que ses jours ont été mesurés trop
+inégalement pour être comparés. Deux jours indiqués veulent dire qu’ils sont
+aussi calmes l’un que l’autre.
 
 ## À quoi sert une équipe de nuit
 
@@ -139,14 +147,19 @@ demande. Chaque nuit, une chaîne de tâches se déroule donc, dans un ordre fix
 parce que chaque étape s’appuie sur la précédente. À 02:00 UTC les centiles par
 heure, à 03:00 les valeurs de référence par parc, à 04:30 l’agrégation de la
 veille, à 05:15 les recommandations rope drop, qui lisent précisément cette
-agrégation. À 06:00, le modèle de prévision se réentraîne avec les temps
+agrégation, à 05:30 « habituel » et « chargé » pour les grandes attractions. À
+06:00, le modèle de prévision se réentraîne avec les temps
 d’attente de la veille, pendant que les adeptes du rope drop sont déjà sur
 l’autoroute.
 
-À cela s’ajoute l’autre moitié : nous ne jetons rien. Les périodes anciennes
-sont compressées, mais chaque analyse continue de porter sur tous les relevés
-jamais arrivés. Commencer à enregistrer la troisième année, c’est avoir un an d’historique la
-troisième année, et les deux précédentes sont perdues pour de bon.
+À cela s’ajoute l’autre moitié : nous ne jetons aucun relevé. Les périodes
+anciennes sont compressées, pas éclaircies. Jusqu’où une analyse remonte est une
+décision à part : « habituel » et « chargé » portent sur les 365 derniers jours,
+un tour d’année complet, la recommandation rope drop seulement sur les 70
+derniers, pour suivre la saison. Commencer à enregistrer la troisième année,
+c’est avoir un an d’historique la troisième année, et les deux précédentes sont
+perdues pour de bon. Notre série de mesures commence le 26 décembre 2025, et la
+colonne des jours mesurés du tableau plus haut compte à partir de là.
 
 ## Là où nous préférons ne rien dire
 
@@ -158,15 +171,17 @@ que ce soit. Si nous en tirions la conclusion évidente, toutes les attractions 
 seraient en « très faible », avec une moyenne de 0 minute et une prévision
 fondée sur zéro observation. Une journée de rêve pour n’importe quel visiteur,
 et entièrement inventée. À la place, la page du parc porte une mention
-disant qu’il n’y a rien à lire ici.
+disant qu’il n’y a rien à lire ici. Ce que nous pouvons quand même dire du parc
+se trouve dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
 
-La même règle à plus petite échelle : la patinoire du Phantasialand fonctionne
-de novembre à janvier. En août, personne ne remonte rien à son sujet, parce
+La même règle à plus petite échelle : la patinoire « Berliner Eislaufen », sur
+la Kaiserplatz du Phantasialand, n’existe que pendant le Wintertraum, cette fois
+du 14 novembre 2026 au 24 janvier 2027. En août, personne ne remonte rien à son sujet, parce
 qu’il n’y a rien à remonter. Lire ce silence comme « ouvert » serait l’erreur
 commode, et c’est bel et bien ce qui a figuré une fois sur la page du parc :
 du patin à glace en plein été, avec notre bénédiction.
-Quant aux mois d’exploitation d’une attraction, nous ne les nommons qu’après 330
-jours d’observation : avant cela, aucun mois n’y figure, parce que « fonctionne
+Quant aux mois d’exploitation que nous lisons dans nos propres mesures, nous ne
+les nommons qu’après 330 jours d’observation : avant cela, aucun mois n’y figure, parce que « fonctionne
 de décembre à avril » décrirait la période où nous avons mesuré par hasard.
 
 ## Où tout cela se trouve
@@ -175,9 +190,11 @@ La version longue, avec les vraies fiches à lire en parallèle, est désormais 
 page à part : [Comment fonctionne park.fan](/fr/comment-fonctionne-park-fan).
 Chapitre par chapitre, on y voit ce qu’affiche une fiche d’attraction, comment
 fonctionne l’échelle sous « habituel » et « chargé », comment le calendrier tient
-compte des vacances et les trois endroits où nous n’affirmons délibérément rien.
-Quatre situations de visite concrètes s’y trouvent aussi, de la famille pendant
-les vacances d’automne à l’abonné annuel à sept heures du soir.
+compte des vacances, comment le planificateur en fait une journée et les trois
+endroits où nous n’affirmons délibérément rien. Quatre situations de visite
+concrètes s’y trouvent aussi, de la famille pendant les vacances d’automne à la
+première fois dans un grand parc, en passant par l’abonné annuel qui se demande
+s’il y va encore ce soir.
 
 Et la prochaine fois que tu seras devant l’entrée à fixer l’affichage : regarde
 ce qui est normal sur cette attraction un mardi.

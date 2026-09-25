@@ -530,6 +530,37 @@ https://www.instagram.com/reel/CxYz123/
 - **Suno**: full song URLs (`suno.com/song/<id>`) become an audio player. Short
   share links (`suno.com/s/<code>`) aren't embeddable — use the full song URL.
 
+### Callouts, and the correction note
+
+GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
+`> [!WARNING]` and `> [!CAUTION]` ([`lib/blog/remark-callouts.ts`](../../lib/blog/remark-callouts.ts)).
+
+`> [!CORRECTION]` is ours, and it is for **news posts only**. When a published
+news post gets a factual fix, the fix is shown, not made silently, and the note
+goes **under the signature**, before the rule that opens the sources list:
+
+```md
+— Patrick
+
+> [!CORRECTION]
+> 25 September 2026: The first version said the free sister-park visits for 2027
+> were still open. They are already part of the 2027 pass.
+
+---
+```
+
+In German the date goes on the marker line, `> [!CORRECTION] 25. September 2026: …`.
+A line that starts with „25." reads as a numbered list item, so Prettier pulls it
+up there anyway. Both forms render the same box.
+
+It renders as a quiet grey box with an icon and its own translated label
+(`blog.correction`: „Korrektur", "Correction", …), set upright, not in italics.
+So the text starts with the date and does not repeat the word. Say what was wrong
+and what is right. Typos and a replaced dead link need no note; a changed fact
+does. A guide or any other post that is not news never gets one: fix it in place
+and bump `updatedAt`. The rule behind it:
+[a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md).
+
 ---
 
 ## 7. Niceties (automatic — nothing to write)

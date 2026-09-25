@@ -106,7 +106,7 @@
     "browseParks": "Alle parken bekijken"
   },
   "home": {
-    "intro": "park.fan toont live wachttijden en drukte voor meer dan 200 pretparken en ruim 7.000 attracties wereldwijd, van Disney en Universal tot Europa-Park en Phantasialand. Met openingstijden en een eigen voorspelling voor de komende dagen erbij.",
+    "intro": "park.fan toont live wachttijden en drukte voor meer dan 200 pretparken en bijna 7.000 attracties wereldwijd, van Disney en Universal tot Europa-Park en Phantasialand. Met openingstijden en een eigen voorspelling voor de komende dagen erbij.",
     "hero": {
       "cta": "Ontdek parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
@@ -1909,6 +1909,7 @@
     "readMore": "Artikel lezen",
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
+    "correction": "Correctie",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
       "fallback": "Nog niet vertaald – je ziet de {language}-versie."

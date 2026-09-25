@@ -2,7 +2,7 @@
 title: 'L’art d’attendre : pourquoi on fait « volontiers » la queue pour certaines attractions'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -28,7 +28,7 @@ seo:
   title: 'Pourquoi l’attente au parc paraît si longue'
   description: >-
     Pourquoi une heure de file passe parfois comme vingt minutes, pourquoi se
-    rapprocher ne sert à rien et quelle formule se cache derrière l’affichage.
+    rapprocher ne sert à rien et quelle formule se cache derrière chaque file.
   keywords:
     - temps d’attente parc d’attractions
     - psychologie des files d’attente
@@ -72,21 +72,21 @@ d’un sous-bock.
 **David Maister**, alors professeur à la Harvard Business School, a disséqué le problème de fond dès
 1985 dans son classique
 [« The Psychology of Waiting Lines »](https://www.columbia.edu/~ww2040/4615S13/Psychology_of_Waiting_Lines.pdf).
-Sa première règle, et la plus importante : le temps inoccupé paraît plus long
-que le temps occupé. Quand on ne fait que fixer le dos de la personne devant
-soi, l’horloge se traîne. Quand on a quelque chose à voir, à entendre ou à
-faire, elle tourne presque normalement.
+Il ouvre sur une règle qu’il qualifie lui-même de l’une des plus familières : le
+temps inoccupé paraît plus long que le temps occupé. Quand on ne fait que fixer
+le dos de la personne devant soi, l’horloge se traîne. Quand on a quelque chose
+à voir, à entendre ou à faire, elle tourne presque normalement.
 
 Maister en a noté huit. Ces trois-là, on les voit dans toutes les files :
 
-- **Une attente incertaine paraît plus longue qu’une attente expliquée.** D’où
-  les indications de temps restant tous les quelques mètres dans la file, et
-  l’écran d’attente à l’entrée, qui adore d’ailleurs vous mentir. On y revient
-  dans un instant.
-- **L’attente injuste est insupportable.** Rien ne gâche l’ambiance plus vite
-  que le sentiment que d’autres vous doublent. C’est pour ça que les parcs
-  cachent leurs files express du mieux qu’ils peuvent, c’est-à-dire rarement
-  très bien.
+- **Une attente incertaine paraît plus longue qu’une attente dont on connaît la
+  fin.** D’où les indications de temps restant tous les quelques mètres dans la
+  file, et l’écran d’attente à l’entrée, qui adore d’ailleurs vous mentir. On y
+  revient dans un instant.
+- **Une attente injuste paraît plus longue qu’une attente équitable.** Rien ne
+  gâche l’ambiance plus vite que le sentiment que d’autres vous doublent. C’est
+  pour ça que les parcs cachent leurs files express du mieux qu’ils peuvent,
+  c’est-à-dire rarement très bien.
 - **On tient plus longtemps quand on attend quelque chose de précieux.** Plus
   l’impatience est grande, plus la file est patiente. Pour un flat ride de
   fête foraine, on ne fera pas 20 minutes. Pour le nouveau méga-coaster, on se
@@ -94,25 +94,25 @@ Maister en a noté huit. Ces trois-là, on les voit dans toutes les files :
 
 ### Votre sens du temps exagère, d’un bon tiers
 
-À quel point nous jugeons mal l’attente inoccupée, cela se mesure. Dans les
-expériences de terrain du chercheur en marketing **Jacob Hornik**, les personnes
-qui attendaient surestimaient le temps réellement écoulé de **près de 36 pour
-cent** en moyenne. Dix minutes mesurées en deviennent presque quatorze dans la
-tête, et l’erreur va toujours dans le même sens : personne ne sort d’une file
-en l’estimant plus courte qu’elle ne l’était. Et dès 1991, le chercheur du MIT
-**Richard Larson** a montré avec ses collègues, sous le beau titre
-[« Entertain, Enlighten, and Engage »](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
-qu’une simple distraction améliore nettement la qualité perçue de l’attente.
-Dans l’expérience, un écran d’informations dans une agence bancaire a suffi.
-Pas d’animatronique, pas de bande-son, juste une télé accrochée au mur.
+À quel point nous jugeons mal l’attente inoccupée, cela se mesure. En 1984, le
+chercheur en marketing **Jacob Hornik** a chronométré l’attente aux caisses de
+magasins, puis demandé aux clients combien de temps ils pensaient avoir
+patienté. En moyenne, leurs estimations dépassaient la réalité de **près de 36
+pour cent**. Dix minutes mesurées en deviennent presque quatorze dans la tête.
 
-Le mécanisme derrière : notre cerveau ne peut compter le temps méticuleusement
-que lorsqu’il n’a rien d’autre à faire. Dès que l’attention se porte sur la
-musique, sur des détails de thématisation ou sur un spectacle, le compteur
-interne manque tout simplement de ressources, et la surestimation fond. C’est à
-ça que sert tout ce que vous voyez dans une bonne file : bandes-son,
-animatroniques, éléments interactifs, détails cachés. Beaucoup d’efforts pour
-un couloir que tout le monde veut quitter au plus vite.
+Ce que la distraction y change, le chercheur du MIT **Richard Larson** l’a
+étudié en 1991 avec deux collègues, sous le beau titre
+[« Entertain, Enlighten, and Engage »](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage).
+Dans une agence bancaire, ils ont regardé ce qu’apportait un panneau
+d’informations électronique. Les clients n’estimaient guère leur attente plus
+courte, mais ils la trouvaient plus intéressante et repartaient plus satisfaits.
+Pas d’animatronique, pas de bande-son, juste des gros titres au mur.
+
+Maister cite à ce propos le philosophe William James : l’ennui naît quand on
+prête attention à l’écoulement du temps lui-même. Tout ce que vous voyez dans
+une bonne file est construit contre cela : bandes-son, animatroniques, éléments
+interactifs, détails cachés. Beaucoup d’efforts pour un couloir que tout le
+monde veut quitter au plus vite.
 
 ```glossary-widget slug=pre-show
 
@@ -141,12 +141,11 @@ n’évalue pas les expériences en moyenne, mais à partir de deux points : le
 émotionnel et la fin. C’est la fameuse
 [règle du pic-fin](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule). Pour
 les files d’attente, cela signifie que les dernières minutes avant
-l’embarquement façonnent le souvenir de toute l’heure qui a précédé. C’est
-pourquoi le final d’une file est presque toujours la partie la plus soignée. La
-thématisation la plus dense, la meilleure animatronique, le moment de chair de
-poule arrivent juste avant la gare. Si la fin est forte, votre mémoire pardonne
-le milieu poussif avec une facilité déconcertante. Quiconque a déjà recommandé
-un film moyen pour son grand final connaît le principe.
+l’embarquement façonnent le souvenir de toute l’heure qui a précédé. Flight of
+Passage et Cosmic Rewind placent d’ailleurs tous deux leurs pre-shows tout au
+bout de la file, juste avant l’embarquement. Si la fin est forte, votre mémoire
+pardonne le milieu poussif avec une facilité déconcertante. Quiconque a déjà
+recommandé un film moyen pour son grand final connaît le principe.
 
 ## Quand la file est elle-même le spectacle
 
@@ -162,7 +161,7 @@ musée à parcourir avec un simulateur de vol en guise de sortie. Le chemin
 serpente d’abord à travers le paysage de Pandora et des grottes couvertes de
 peintures na’vis, puis dans un laboratoire de recherche abandonné, avec un
 avatar grandeur nature qui flotte dans une cuve amniotique et respire de façon
-si convaincante que des visiteurs s’arrêtent régulièrement et bloquent la file.
+si convaincante que des visiteurs s’arrêtent sans cesse et bloquent la file.
 Une file qui se bouche elle-même parce qu’elle est trop belle. Suivent ensuite
 **deux salles de pre-show**, où vous êtes « scanné » puis « relié » à votre
 propre avatar.
@@ -177,9 +176,9 @@ partie de l’attraction, c’est-à-dire précisément la phase dont la règle 
 pic-fin dit qu’elle sera la plus mémorisée. Elles sont en même temps la colonne
 vertébrale de la capacité : on vole dans des **link chambers** en forme de
 salles de spectacle, 16 places par niveau, trois niveaux superposés, quatre
-salles en parallèle. Près de 200 visiteurs à la fois, environ 1 400 par heure.
-Qui y passe la moitié de la matinée raconte quand même ensuite l’avatar qui
-respire dans sa cuve.
+salles en parallèle. Près de 200 visiteurs à la fois ; avec un cycle de huit
+minutes, Coaster101 arrive à environ 1 440 par heure. Qui y passe la moitié de
+la matinée raconte quand même ensuite l’avatar qui respire dans sa cuve.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -199,13 +198,13 @@ commencée vingt minutes plus tôt.
 ```
 
 Côté capacité aussi, EPCOT a fait à sa façon. Cosmic Rewind a ouvert en mai
-2022 sans la moindre file standby classique. L’accès s’est fait exclusivement
-via une file virtuelle dans l’application, jusqu’au **25 février 2025**. Pendant
-près de trois ans, la file la plus célèbre d’EPCOT était une file dans laquelle
-personne n’a jamais mis les pieds ; ce n’est qu’ensuite qu’une file standby
-permanente est arrivée. La file physique n’existait pratiquement plus que comme
-parcours narratif, et non comme espace de stockage, sur une attraction qui
-évacue environ 2 000 visiteurs par heure avec des trains de 20 places.
+2022 sans la moindre file standby classique. À moins de payer une Lightning
+Lane, on n’y entrait que par la file virtuelle de l’application, et ce jusqu’au
+**25 février 2025**. Pendant près de trois ans, il n’existait donc aucune file
+où l’on pouvait simplement se mettre au bout ; ce n’est qu’ensuite qu’une file
+standby permanente est arrivée. Jusque-là, la file physique servait surtout de
+parcours narratif et à peine d’espace de stockage, sur une attraction qui,
+selon RCDB, évacue 2 000 visiteurs par heure avec des trains de 20 places.
 
 ### VelociCoaster : attendre dans l’enclos des raptors
 
@@ -213,23 +212,26 @@ Universal joue la même carte à
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
 à [Islands of Adventure](ref:universal-islands-of-adventure?bare), mais avec
 des dents. La file traverse en plein l’**enclos des raptors** de _Jurassic
-World_ : le long de grillages éventrés, de raptors animatroniques à portée de
-main et d’un atrium végétalisé où même les murs en béton ressemblent à Isla
-Nublar. On n’attend pas un coaster, on fait une visite d’enclos qui se termine
-par hasard sur un coaster à deux lancements. C’est ce que Maister appelle
-le **« occupied time »** : le temps occupé paraît plus court, et celui qui est
-en train de vérifier si le raptor derrière la clôture a vraiment tourné la tête
-ne regarde pas son téléphone toutes les dix secondes.
+World_ : le long de clôtures endommagées et de fenêtres donnant sur le
+parcours, jusqu’à une salle d’examen où deux raptors animatroniques muselés
+attendent derrière des barreaux. On n’attend pas un coaster, on fait une visite
+d’enclos qui se termine par hasard sur un coaster à deux lancements. C’est ce
+que Maister appelle le **« occupied time »** : le temps occupé paraît plus
+court, et celui qui est en train de vérifier si le raptor derrière les barreaux
+a vraiment tourné la tête ne regarde pas son téléphone toutes les dix secondes.
 
 ```gallery-widget folder=/media/velocicoaster heading="Bienvenue dans l’enclos des raptors"
 
 ```
 
-Et puis il y a ici une astuce de capacité qui arrange les deux côtés : la
-**file single rider**. Quand on roule seul et qu’on se laisse
-placer sur le siège isolé qu’un groupe de quatre laisse libre, on raccourcit
-drastiquement sa propre attente et on aide au passage le parc à remplir chaque
-wagon à ras bord. Le prix à payer : votre compagnon de route est assis trois
+Longtemps, il y avait aussi ici une astuce de capacité qui arrange les deux
+côtés : la **file single rider**. Quand on roule seul, on occupe le siège
+isolé qu’un groupe de trois laisse libre dans un wagon de quatre places, on
+raccourcit sa propre attente et le parc remplit chaque wagon. Au VelociCoaster,
+Universal a fermé cette file en décembre 2025. Depuis, le personnel répartit
+les visiteurs en groupes au nombre pair ou impair de personnes et remplit ainsi
+les wagons sans passagers solo. Au Hulk voisin, la file single rider existe
+toujours. Le prix à payer là-bas : votre compagnon de route est assis quelques
 rangs plus loin, et vous ne saurez qu’à la sortie s’il a crié.
 
 ```glossary-widget slug=single-rider
@@ -245,14 +247,17 @@ l’attraction. Une parade, un feu
 d’artifice ou un spectacle de cascades mobilise d’un coup des milliers de
 visiteurs, des gens qui, pendant cette heure-là, ne sont dans aucune file. Avec
 ses places assises et debout, l’amphithéâtre de **Fantasmic!** aux Hollywood
-Studios accueille près de 10 000 personnes par représentation. Cela fait dix
-mille personnes qui, pour la demi-heure qui vient, sont assurément assises
-ailleurs que devant votre coaster préféré, et le reste du parc respire. Sur les graphiques en direct de park.fan, vous pouvez suivre
-cet effet en temps réel : pendant le grand spectacle du soir, les temps
-d’attente des têtes d’affiche fléchissent de façon mesurable, et qui connaît
-déjà le spectacle roule au meilleur rapport de la journée pendant cette heure.
-C’est pour ces moments-là que nous relisons les temps d’attente toutes les
-cinq minutes.
+Studios accueille près de 10 000 personnes par représentation. Cela fait près de
+dix mille personnes qui, pour la demi-heure qui vient, sont assises ailleurs que
+devant votre coaster préféré, et le reste du parc respire. Le profil horaire des
+Hollywood Studios sur park.fan le montre : dans les heures du soir où se joue
+Fantasmic!, les temps d’attente des têtes d’affiche baissent nettement. Quelle
+part revient au spectacle et quelle part à la fermeture qui approche, les
+chiffres ne permettent pas de le dire. Le 25 septembre 2026, par exemple, la
+première représentation commence à 20 h, une heure avant la fermeture du parc.
+Qui connaît déjà le spectacle roule quand même au meilleur rapport de la
+journée pendant cette heure. C’est pour ces moments-là que nous relisons les
+temps d’attente toutes les cinq minutes.
 
 ![Des milliers de spectateurs dans l’amphithéâtre nocturne de Fantasmic! à Disney’s Hollywood Studios | Fantasmic! aux Hollywood Studios. Qui est assis ici ne fait la queue nulle part. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -288,26 +293,26 @@ le papier montrent la différence :
 à [Universal Islands of Adventure](ref:universal-islands-of-adventure?bare)
 mise sur les grosses portions : huit wagons, quatre personnes de front, soit
 **32 places par départ**. Sa capacité théorique est de **1 920 personnes par
-heure**, soit sur le papier 60 trains pleins, un par minute (32 × 60). Un
-train avale d’un coup plus de monde qu’il n’en tient simultanément dans
-certains dark rides.
+heure**, soit sur le papier 60 trains pleins, un par minute (32 × 60).
 
 **Exemple B, le bar à tapas.** Le contre-modèle roulait juste à côté jusqu’en
 août 2025 :
 [Hollywood Rip Ride Rockit](ref:universal-studios-florida/hollywood-rip-ride-rockit)
 à [Universal Studios Florida](ref:universal-studios-florida?bare) envoyait de
-petits wagons de **12 places** seulement sur le parcours, mais avec une
-impression de départ toutes les quelques secondes. Pour atteindre des **~1 850
-personnes par heure** comparables, **sept wagons** circulaient en même temps et
-la gare devait expédier presque trois fois plus souvent que sur le Hulk. Même
-résultat, concept d’exploitation totalement différent. (L’attraction appartient
-désormais au passé ; sur son terrain naît son successeur, _Fast & Furious:
-Hollywood Drift_.)
+petits trains de **12 places** seulement sur le parcours, en théorie un toutes
+les 23 secondes. Pour atteindre des **~1 850 personnes par heure**
+comparables, **sept trains** étaient en circulation et la gare devait expédier
+presque trois fois plus souvent que sur le Hulk. Ce qui le permettait, c’était
+une gare où les trains ne s’arrêtaient jamais tout à fait : ils avançaient au
+ralenti, et les passagers montaient depuis un tapis roulant. Même résultat,
+concept d’exploitation totalement différent. (L’attraction appartient désormais
+au passé ; sur son terrain, Universal construit son successeur, _Fast &
+Furious: Hollywood Drift_, annoncé pour 2027.)
 
 ### Les sections de bloc : pourquoi pas simplement « plus de trains » ?
 
-Sept wagons en même temps, cela pose la question de savoir pourquoi ils ne
-finissent pas par se rentrer dedans. La réponse est le **système de blocs** :
+Sept trains sur un même parcours, cela pose la question de savoir pourquoi ils
+ne finissent pas par se rentrer dedans. La réponse est le **système de blocs** :
 le parcours est découpé en sections, et une seule rame peut se trouver dans
 chaque section. Ce n’est que lorsque le bloc devant est libre que la commande
 libère la suivante. Chaque bloc a donc besoin d’un endroit où une rame peut
@@ -321,112 +326,130 @@ Plus de trains ne signifie donc pas automatiquement plus de débit. Sans
 suffisamment de sections de bloc, les trains s’accumulent devant la gare, et
 les passionnés connaissent le redouté « stacking » : la rame reste suspendue au
 frein final, les passagers font signe à la gare, la gare fait signe en retour,
-et personne ne bouge. Le goulot d’étranglement, au bout du compte, c’est
-presque toujours l’expédition. À quelle vitesse tous les harnais sont-ils
-vérifiés et la rame de nouveau dehors ?
+et personne ne bouge. Le goulot d’étranglement, c’est alors l’expédition. À
+quelle vitesse tous les harnais sont-ils vérifiés et la rame de nouveau dehors ?
 
 Le sérieux avec lequel les attractions modernes traitent la question apparaît
 sur
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) à
-l’[Europa-Park](ref:europa-park?bare). Selon la fiche technique du constructeur
-Mack Rides, **sept trains** y circulent simultanément, avec un objectif
-d’**un départ toutes les 36 secondes**. Cela donne 1 600 visiteurs par heure,
-alors qu’un train ne compte que 16 places, soit plus que le Hulk avec ses 32
-places par départ.
+l’[Europa-Park](ref:europa-park?bare). Selon la fiche technique de Mack Rides,
+l’attraction dispose de **sept trains**, dont trois ou quatre circulent en même
+temps sur le parcours. L’objectif d’expédition est, selon Coaster101, d’**un
+départ toutes les 36 secondes**. Avec 16 places par train, cela donne les 1 600
+visiteurs par heure que Mack indique comme capacité théorique. Pas tout à fait
+le niveau du Hulk, mais avec des trains deux fois plus petits.
 
-### Des trains qui ne s’arrêtent jamais
+### Des trains qui ne s’arrêtent pas
 
-Le dernier degré d’escalade de ce raisonnement : des trains qui ne s’arrêtent
-plus du tout. Voltron utilise des **rolling launches**, où les trains ne sont
-pas immobilisés avant le lancement puis propulsés, mais accélérés au passage,
-« en vol », comme lors d’un relais. Pour que les moteurs LSM tiennent ce rythme
-de 36 secondes, Mack leur a tout bonnement donné quatre rangées de stators au
-lieu de deux. Un train qui ne s’arrête pas libère son bloc plus tôt, et la cadence de 36
-secondes tient.
+L’étape suivante de ce raisonnement : des trains qui ne s’arrêtent même plus.
+Voltron cache l’un de ses blocs dans un lancement en vol, au creux d’une
+vallée. Si la section suivante est libre, le train est accéléré au passage, sans
+s’arrêter. Si elle est occupée, le propulseur reste coupé, le train oscille au
+fond de la vallée puis reprend de l’élan par un lancement en balancier. Comme
+les moteurs LSM se déclenchent très souvent sur un rythme de 36 secondes, Mack
+leur a donné quatre rangées de stators au lieu des deux habituelles, qui
+évacuent mieux la chaleur. Un train qui n’a pas à s’arrêter dans un bloc le
+libère plus tôt.
 
-Et [Walibi Holland](ref:walibi-holland?bare) a transposé le même principe à la
-gare en 2025. Sur **YOY**, premier duelling coaster monorail d’Europe, où l’on
-choisit entre les parcours jumeaux
+Sur **YOY**, à [Walibi Holland](ref:walibi-holland?bare), la même idée est
+passée dans la gare en 2025, comme autrefois sur Rip Ride Rockit. Sur le premier
+duelling coaster monorail d’Europe, où l’on choisit entre les parcours jumeaux
 [YOY Thrill](ref:walibi-holland/yoy-thrill?bare) et
-[YOY Chill](ref:walibi-holland/yoy-chill?bare), les trains ne s’arrêtent plus
-du tout en gare. Ils la traversent au pas pendant que les visiteurs
-s’installent : une **rolling station**, en somme le principe de l’omnimover
-appliqué aux montagnes russes. Avec seulement huit places par train (les unes
-derrière les autres, comme sur un vélo très décidé), chaque seconde où le train
-ne s’arrête pas compte.
+[YOY Chill](ref:walibi-holland/yoy-chill?bare), les trains ne s’arrêtent pas en
+gare. Ils la traversent au pas pendant que les visiteurs s’installent : une
+**rolling station**, en somme le principe de l’omnimover appliqué aux montagnes
+russes. Avec seulement huit places par train (les unes derrière les autres,
+comme sur un vélo très décidé), chaque seconde où le train ne s’arrête pas
+compte. Cela ne fait pas beaucoup pour autant : Freizeitpark-Welt compte pour
+YOY environ 800 passagers par heure.
 
-## La loi de Little : la formule derrière chaque affichage d’attente
+## La loi de Little : la formule derrière chaque file
 
-La formule qui relie les deux faces, c’est la deuxième du sous-bock. Le
-professeur du MIT **John D. C.
-Little** a démontré en 1961 la relation que l’on appelle aujourd’hui la
-[loi de Little](https://en.wikipedia.org/wiki/Little%27s_law) :
+La formule qui relie les deux faces, c’est la deuxième du sous-bock. **John D.
+C. Little**, alors au Case Institute of Technology de Cleveland et professeur
+au MIT à partir de 1962, a démontré en 1961 la relation que l’on appelle
+aujourd’hui la [loi de Little](https://en.wikipedia.org/wiki/Little%27s_law) :
 
-> **L = λ × W**: le nombre de personnes qui attendent (L) est égal au taux
-> d’arrivée (λ) multiplié par le temps d’attente (W).
+> **L = λ × W**: le nombre moyen de personnes qui attendent (L) est égal au
+> taux d’arrivée (λ) multiplié par le temps d’attente moyen (W).
 
-Pour une visite de parc, on la réarrange simplement :
+Pour une visite de parc, on la réarrange. Dans une file stable, il arrive en
+moyenne autant de visiteurs que l’attraction en évacue, λ y est donc le débit :
 
 > **Temps d’attente = personnes dans la file ÷ débit**
 
 S’il y a 640 personnes devant le Hulk et que l’attraction en traite 1 920 par
 heure, vous attendez **20 minutes** (640 ÷ 1 920 = ⅓ d’heure). Ces mêmes 640
-personnes devant une attraction à 800 de capacité ? **48 minutes.** Ce qu’il y a
-de bien avec la formule de Little, c’est qu’elle vaut pour toute file stable,
-quelle que soit l’irrégularité avec laquelle les visiteurs arrivent. Et c’est ce
-calcul, sous une forme raffinée, qui se cache derrière chaque affichage
-d’attente. Les parcs estiment le nombre de personnes qui patientent et divisent
-par le débit du moment, ou bien ils mesurent le temps directement, par exemple
-avec des cartes de chronométrage qu’un visiteur reçoit à l’entrée de la file et
-rend à la gare.
+personnes devant une attraction à 800 de capacité, comme YOY ? **48 minutes.**
+Ce qu’il y a de bien avec la formule de Little, c’est qu’elle vaut pour toute
+file stable, quelle que soit l’irrégularité avec laquelle les visiteurs
+arrivent, tant qu’on parle de moyennes. Les parcs utilisent exactement ce calcul
+quand ils estiment le nombre de personnes qui patientent et divisent par le
+débit du moment. D’autres mesurent le temps directement, par exemple avec des
+cartes de chronométrage qu’un visiteur reçoit à l’entrée de la file et rend à
+la gare.
 
 La formule explique aussi pourquoi une même longueur de file peut correspondre
 à des attentes complètement différentes selon les jours. Si une attraction
-tourne aujourd’hui avec deux trains au lieu de trois, λ baisse, et W grimpe
-immédiatement sans qu’il y ait un seul visiteur de plus dans le parc.
+tourne aujourd’hui avec deux trains au lieu de trois, le débit baisse, et W
+grimpe immédiatement sans qu’il y ait un seul visiteur de plus dans le parc.
 
-Et l’affichage à l’entrée, celui qui vous ment ? Au nombre calculé avec
-précision vient volontiers s’ajouter une marge de sécurité généreuse, et c’est
-voulu. L’affichage doit en effet faire deux choses contradictoires à la fois. Il doit vous donner une base
-de décision fiable, et il ne doit pas vous décevoir. Un affichage qui
-sous-estime produit à la sortie une foule de gens qui se sentent floués ; un
-affichage qui surestime renvoie quelques visiteurs mais rend tous les autres
-heureux. Les parcs choisissent systématiquement la seconde erreur, exactement
-comme le livreur qui annonce quarante minutes et sonne au bout de trente. Qui compte
-60 minutes et embarque au bout de 45 quitte la gare en vainqueur. Règle du
-pic-fin, souvenez-vous : l’heure se termine mieux que prévu, et c’est ainsi
-qu’elle est archivée.
+Et l’affichage à l’entrée, celui qui vous ment ? À Disney World, quelqu’un l’a
+mesuré. TouringPlans compare les temps affichés avec ceux que les visiteurs
+chronomètrent eux-mêmes dans la file, et arrivait dans une analyse de février
+2023 à 60 à 68 pour cent du temps affiché selon le parc. Aucune attraction
+n’affichait en moyenne moins que l’attente réelle. Disney ne dit pas si cette
+marge est voulue. Elle colle en tout cas à la première loi du service de
+Maister : la satisfaction, c’est la perception moins l’attente. Un affichage
+qui sous-estime produit à la sortie une foule de gens qui se sentent floués ;
+un affichage qui surestime renvoie quelques visiteurs mais rend tous les autres
+heureux. Exactement comme le livreur qui annonce quarante minutes et sonne au
+bout de trente. Qui compte 60 minutes et embarque au bout de 45 quitte la gare
+en vainqueur. Règle du pic-fin, souvenez-vous : l’heure se termine mieux que
+prévu, et c’est ainsi qu’elle est archivée.
 
-C’est à cette formule que tient park.fan. Les temps d’attente en direct vous
-montrent toutes les cinq minutes ce que font réellement L et λ, et quand notre
-modèle prévoit les temps d’attente jusqu’à 365 jours à l’avance, il calcule
-avec ces deux mêmes grandeurs : la **demande** (combien de personnes veulent
-monter dans cette attraction aujourd’hui ?) et le **débit** (combien peut-elle
-en évacuer ?). La fréquence à laquelle
+park.fan se trouve, dans ce calcul, de l’autre côté de l’affichage. Nous ne
+comptons pas les têtes dans la file : toutes les cinq minutes, nous
+rassemblons les temps d’attente que les parcs publient eux-mêmes, marge
+comprise. Fancast, notre modèle de prévision, ne calcule pas non plus avec des
+effectifs ou des capacités de trains. Il apprend de l’historique mesuré des
+temps d’attente d’un parc, des vacances scolaires et des jours fériés (y
+compris ceux des régions voisines), des prévisions météo, des horaires
+d’ouverture et des événements, et voit actuellement environ six mois à l’avance.
+La demande et le débit sont pourtant dans chacun de ces chiffres, puisque
+tout temps d’attente relève au bout du compte de la loi de Little : la file
+divisée par le débit. La fréquence à laquelle
 nos prévisions collent à la réalité figure sur la [page Fancast](/fancast).
 
 ## Pourquoi Peter Pan’s Flight « déraille » toujours
 
-**Peter Pan’s Flight** est un dark ride tranquille de facture 1955, pas de
-montagnes russes, pas de sensations fortes. Pourtant, dans pratiquement tous
-les parcs Disney du monde, de
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
-jusqu’à Orlando, il traîne toute la journée une file digne d’une distribution
-gratuite de champagne.
+**Peter Pan’s Flight** est un dark ride tranquille, ouvert en 1955 avec
+Disneyland, pas de montagnes russes, pas de sensations fortes. Pourtant, au
+[Disneyland Park de Paris](ref:/parks/europe/france/paris/disneyland-park?bare),
+c’est l’attraction à l’attente médiane la plus longue, et au Magic Kingdom
+d’Orlando elle fait partie du peloton de tête. C’est ce que donne la médiane
+de tous les jours mesurés depuis le début de nos relevés, fin décembre 2025 (au
+25 septembre 2026). À Paris, la file dépasse dès la première heure
+après l’ouverture celle de toutes les autres attractions, comme s’il y avait
+une distribution gratuite de champagne au bout. Ce n’est pas le cas partout : à
+Anaheim, Tokyo et Shanghai, où l’attraction existe aussi, elle se classe dans
+le milieu de tableau dans nos données.
 
-Cela tient peu à l’attraction et beaucoup à l’arithmétique :
+À Paris et à Orlando, cela tient peu à l’attraction et beaucoup à
+l’arithmétique :
 
 1. **Les bateaux pirates ne sont pas des transports en commun.**
    [Peter Pan’s Flight à Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
-   envoie **16 galions** au-dessus de Londres, et chacun accueille, en comptant
-   large, cinq personnes. C’est la capacité de transport d’un ascenseur moyen,
-   répartie sur tout un ciel nocturne. Des comptages officieux arrivent à
-   environ **1 200 visiteurs par heure**, et la
-   [version d’origine au Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
-   n’en fait même que 800 environ. Un seul train du Hulk transporte par départ
-   deux fois plus de monde que Peter Pan n’a de bateaux. Et pour comparer dans
-   la même maison : Pirates of the Caribbean, juste à côté, en avale plusieurs
-   fois plus avec ses grandes barques.
+   envoie **16 galions** au-dessus de Londres selon DLP Guide, et chacun
+   accueille, en comptant large, cinq personnes. Cela fait 80 places, réparties
+   sur tout un ciel nocturne. Des estimations de fans comme celle de MagicWait
+   arrivent à environ **1 200 visiteurs par heure**, et la
+   [version du Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
+   (ouverte en 1971) n’en fait même que 800 environ d’après une liste compilée
+   par des fans. Un seul train du Hulk transporte par départ deux fois plus de
+   monde que Peter Pan n’a de bateaux. Et pour comparer dans la même maison :
+   Pirates of the Caribbean, dans le même parc, en avale plusieurs fois plus
+   avec ses grandes barques.
 2. **Saturation dès le petit-déjeuner.** Dès que la demande atteint la capacité
    maximale (saturation = 1,0), la file s’allonge linéairement à chaque
    visiteur supplémentaire. Elle ne peut se résorber que lorsqu’il arrive moins
@@ -440,8 +463,13 @@ Cela tient peu à l’attraction et beaucoup à l’arithmétique :
    met donc d’autant plus volontiers dans la file, et l’attente devient une
    prophétie autoréalisatrice.
 
-Voici les temps d’attente en direct de la version d’Orlando, dans le parc le
-plus fréquenté du monde :
+Une réserve : notre classement repose sur les temps affichés, et c’est
+justement pour Peter Pan’s Flight au Magic Kingdom que l’affichage exagère le
+plus selon TouringPlans. Les visiteurs y ont chronométré en moyenne 45 pour cent
+du temps affiché (analyse de février 2023).
+
+Voici les temps d’attente en direct de la version d’Orlando, dans le parc
+d’attractions le plus fréquenté du monde :
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -451,49 +479,57 @@ plus fréquenté du monde :
 un parc, cela se voit le mieux en posant deux grands parcs européens à côté
 d’Orlando.
 
-**Orlando joue dans une catégorie de demande à part.** Le
-[Magic Kingdom](ref:magic-kingdom-park?bare) est le parc d’attractions le plus
-fréquenté au monde, et Disney comme Universal attirent des visiteurs de tous
-les continents. S’y ajoute un facteur que l’Europe ne connaît guère avec cette
-dureté : là-bas, on peut s’acheter un passage devant la file. Lightning Lane
-et Express Pass vendent une part de la capacité à des visiteurs payants, et
-chaque passage express manque à la file standby. L’attente injuste de Maister,
-ticket de caisse compris. Des têtes d’affiche comme
+**Orlando joue dans une catégorie de demande à part.** Avec 17,8 millions de
+visiteurs en 2024, le [Magic Kingdom](ref:magic-kingdom-park?bare) est selon
+l’association professionnelle TEA le parc d’attractions le plus fréquenté au
+monde, et Disney comme Universal attirent des visiteurs de tous les continents.
+S’y ajoute que là-bas, on peut s’acheter un passage devant la file : Lightning
+Lane et Express Pass vendent une part de la capacité à des visiteurs payants,
+et chaque passage express manque à la file standby. L’attente injuste de
+Maister, ticket de caisse compris. Au Disney’s Animal Kingdom,
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-ont donc régulièrement de longues files malgré une capacité horaire massive.
+a l’attente médiane la plus longue du parc malgré quatre salles en parallèle
+(au 25 septembre 2026). L’Europe vend aussi des coupe-files : Disneyland Paris
+propose Premier Access, et le Phantasialand vend pour ses grandes attractions
+un Quick Pass, désormais à l’unité.
 
 **L’[Europa-Park](ref:europa-park?bare) est le contre-modèle.** Le plus grand
-parc d’Allemagne, deuxième d’Europe derrière Disneyland Paris en fréquentation,
-répartit ses quelque six millions de visiteurs annuels sur **quatorze montagnes
-russes** et des dizaines d’attractions thématisées. Cette masse de capacité
-parallèle agit comme une soupape de surpression : la demande se disperse et
-presque aucune file ne tourne durablement à saturation. C’est pourquoi même les
-journées chargées à Rust ressemblent rarement à Orlando, et les vraies longues
-files se forment surtout devant les nouveautés comme Voltron.
+parc d’Allemagne, deuxième d’Europe derrière Disneyland Paris en fréquentation
+(6,2 millions de visiteurs en 2024 selon TEA), répartit ses visiteurs sur
+**quatorze montagnes russes** (décompte de RCDB) et des dizaines d’attractions
+thématisées. Cette masse de capacité parallèle agit comme une soupape de
+surpression : la demande se disperse et presque aucune file ne tourne
+durablement à saturation. C’est pourquoi même les journées chargées à Rust
+ressemblent rarement à Orlando, et l’attente médiane la plus longue du parc
+revient à son coaster le plus récent, Voltron.
 
 **Le [Phantasialand](ref:phantasialand?bare), en revanche, est le cas extrême
-dans l’autre sens :** l’un des grands parcs les plus compacts d’Europe, avec
-peu d’attractions mais une thématisation extrêmement soignée. La charge se
-concentre sur une poignée de têtes d’affiche, et quand tout le monde veut
+dans l’autre sens :** environ 28 hectares, moitié moins de montagnes russes
+qu’à Rust (sept selon RCDB), et une thématisation extrêmement soignée. La charge
+se concentre sur une poignée de têtes d’affiche, et quand tout le monde veut
 [Taron](ref:phantasialand/taron?bare) un samedi de vacances (salutations, j’en
 fais généralement partie), la saturation arrive aussi vite que pour Peter Pan à
 Paris.
 
 Les chiffres sont presque comiques. Taron traite environ **1 200 visiteurs par
-heure**, soit à peu près autant que Peter Pan’s Flight à Paris. La différence
-est au dénominateur, dans tout ce sur quoi la demande peut se répartir
-ailleurs. À Paris, Peter Pan se trouve au milieu de dizaines d’alternatives. À
-Brühl, un samedi de vacances, on dirait que la moitié du parc a la même
-attraction en tête. Et Voltron à l’Europa-Park, avec 1 600 par heure, ne fait
-qu’un tiers de plus, mais garde une file bien plus courte parce que les autres
-coasters voisins siphonnent la demande.
+heure** selon RCDB, soit à peu près ce que les fans estiment pour Peter Pan’s
+Flight à Paris. La différence est au dénominateur, dans tout ce sur quoi la
+demande peut se répartir ailleurs. À Paris, Peter Pan se trouve au milieu de
+dizaines d’alternatives. À Brühl, un samedi de vacances, on dirait que la
+moitié du parc a la même attraction en tête. Et Voltron à l’Europa-Park, avec
+1 600 par heure, ne fait qu’un tiers de plus, mais a eu depuis fin décembre
+2025 la file médiane la plus courte des deux (au 25 septembre 2026). Mon
+explication : les autres coasters voisins siphonnent la demande.
 
 C’est pour ça que chaque page de parc sur park.fan affiche, à côté des temps
 d’attente en direct, les statistiques de longue durée. « Chargé » est relatif :
-la même attente, c’est une mauvaise journée à Brühl et un cadeau au Magic
-Kingdom. Regardez le même jeu de données
+la même attente, c’est une mauvaise journée à Brühl et une journée ordinaire au
+Magic Kingdom. Regardez le même jeu de données
 pour les deux parcs, les temps d’attente typiques par mois et par jour de la
-semaine, sur tous les jours d’ouverture que nous avons mesurés.
+semaine, sur tous les jours d’ouverture que nous avons mesurés. Nos relevés
+ont commencé fin décembre 2025 et ne sont continus que depuis avril 2026 ;
+février, octobre et novembre manquent encore entièrement
+(au 25 septembre 2026).
 
 **D’abord le [Phantasialand](ref:phantasialand?bare) à Brühl**, le cas extrême
 compact : quand un chiffre grimpe ici, il grimpe fort, parce que tout se
@@ -506,7 +542,7 @@ concentre sur quelques têtes d’affiche.
 **Et maintenant le [Magic Kingdom](ref:magic-kingdom-park?bare) à Orlando**, le
 parc le plus fréquenté du monde : une charge de base plus élevée, mais répartie
 sur des dizaines d’attractions. Observez à quel point les minutes « typiques »
-et la courbe saisonnière diffèrent déjà sur l’année.
+et la courbe sur les mois mesurés jusqu’ici diffèrent déjà.
 
 ```stats-widget slug=magic-kingdom-park
 
@@ -515,7 +551,7 @@ et la courbe saisonnière diffèrent déjà sur l’année.
 Ce sont ces motifs qui apprennent à notre modèle quand une visite en
 vaut la peine.
 
-## Se rapprocher ne sert à rien, et ralentit même la file
+## Se rapprocher ne sert à rien
 
 Petite expérience pour la prochaine fois : vous êtes dans la file et un espace
 de deux mètres s’ouvre devant vous. Que fait votre corps ? Il avance.
@@ -528,41 +564,41 @@ devant vous. Que vous vous colliez à elle ou que vous laissiez deux mètres
 d’air, votre position dans la file change d’exactement zéro place. Vous avancez
 de deux mètres ; vous n’arrivez pas devant une seconde plus tôt.
 
-Pire encore : ce resserrement collectif ralentit même la file de façon
-mesurable. C’est la même physique que l’embouteillage autoroutier qui semble
-naître de nulle part. Le physicien Yuki Sugiyama a lancé 22 voitures sur un
-circuit circulaire, avec pour unique consigne de rouler à vitesse constante et
-à distance égale. En quelques minutes, un bouchon stop-and-go s’est formé sans
-le moindre goulot d’étranglement, remontant la colonne à contresens. Les
-mathématiciens du MIT appellent ces ondes autoentretenues des « jamitons »,
-parce qu’elles se comportent comme des ondes de détonation. Dans les foules
-denses, il se passe exactement la même chose : lors de la catastrophe de Mina,
-pendant le hadj de 2006, de telles ondes stop-and-go ont précédé la bousculade
-meurtrière.
+Si la file avance quand même par à-coups plutôt que régulièrement, c’est la
+même physique que l’embouteillage autoroutier qui semble naître de nulle part.
+En 2008, le physicien Yuki Sugiyama a fait rouler 22 voitures sur un circuit
+circulaire de 230 mètres, avec pour consigne de tenir 30 km/h. Très vite, un
+bouchon stop-and-go s’est formé sans le moindre goulot d’étranglement,
+remontant la colonne à contresens. Les mathématiciens du MIT appellent ces
+ondes autoentretenues des « jamitons » ; leurs équations ressemblent à celles
+des ondes de détonation. On les retrouve aussi dans les foules très denses :
+lors de la catastrophe de Mina, pendant le hadj de 2006, de telles ondes
+stop-and-go ont précédé la bousculade meurtrière.
 
-Le coupable est le **temps perdu au démarrage**, que tout le monde connaît au
-feu rouge. Quand il passe au vert, la colonne entière ne démarre pas ensemble :
-chacun réagit environ une seconde après celui qui le précède, et la dernière
-voiture s’ébranle nettement plus tard. Chaque fois que votre file avance par
-à-coups, le même décalage de réaction se dissipe. Vingt cycles de secousses
-multipliés par soixante personnes qui attendent, cela fait s’accumuler une
-étonnante quantité de rien.
+Le moteur de ces ondes, c’est le temps de réaction, que tout le monde connaît
+au feu rouge. Quand il passe au vert, la colonne entière ne démarre pas
+ensemble : chacun réagit environ une seconde après celui qui le précède, et la
+dernière voiture s’ébranle nettement plus tard. Dans une file, cela veut dire
+que lorsque quelqu’un avance devant, vous, soixante places derrière, ne bougez
+qu’une bonne minute plus tard. Cela ne vous coûte pourtant aucun temps
+d’attente tant qu’il y a assez de monde prêt à la gare, car c’est l’expédition
+qui donne le rythme, pas le couloir qui la précède. Avancer régulièrement au
+lieu de s’arrêter, se rapprocher et s’arrêter de nouveau est plus agréable. En
+moyenne, la file n’en va pas plus vite.
 
-Si tout le monde avançait simplement de façon régulière et lente, au lieu de
-s’arrêter, de se rapprocher et de s’arrêter à nouveau, la file s’écoulerait
-plus fluidement et, en moyenne, plus vite. La recherche sur le trafic connaît
-cela sous le nom d’effet « faster-is-slower » : celui qui pousse davantage à un
-goulot d’étranglement fait baisser le débit, parce que tout le monde se coince.
-Dirk Helbing l’a montré dans _Nature_ en 2000. Une seule condition : il faut
-rester sous la densité critique.
+Pousser ne devient un vrai problème que là où une foule se presse sans ordre à
+travers un goulot. Pour ce genre de situation, Dirk Helbing, Illés Farkas et
+Tamás Vicsek ont décrit en 2000 dans _Nature_, à partir de simulations, l’effet
+« faster-is-slower » : celui qui pousse plus fort à une sortie étroite fait
+baisser le débit, parce que tout le monde se coince. Une file ordonnée avec une
+gare au bout en est très loin.
 
-Côté véhicules, les parcs ont résolu ce problème depuis longtemps.
-L’omnimover de la Haunted Mansion et la rolling station de YOY ne s’arrêtent
-jamais : aucun arrêt, aucun temps perdu au démarrage, flux maximal. Seuls
-les visiteurs dans la file devant constituent le dernier système stop-and-go
-que personne n’a encore su éliminer par le design. En attendant, une seule chose
-aide vraiment, et elle dépend de vous : venir un jour où la file ne part
-pas en bouchon. Quel jour c’est, le calendrier des meilleurs jours vous le dira.
+Côté véhicules, en revanche, chaque arrêt coûte de la vraie capacité. C’est
+pourquoi l’omnimover de la Haunted Mansion et la rolling station de YOY ne
+s’arrêtent pas du tout en fonctionnement normal. Dans la file devant eux, le
+stop-and-go ne coûte que de la patience. Ce qui raccourcit vraiment votre
+attente se décide avant la visite : un jour où moins de gens se trouvent devant
+vous. Quel jour c’est, le calendrier des meilleurs jours vous le dira.
 
 ## Files virtuelles et gares doubles
 
@@ -574,18 +610,20 @@ téléphone.
 
 ```
 
-L’Europa-Park a introduit sa **VirtualLine** au début de la pandémie de
-coronavirus en 2020 et l’a conservée, parce qu’elle fonctionne tout simplement :
-via l’application du parc, vous réservez gratuitement un créneau pour des
-attractions comme blue fire, Wodan ou Voltron. Disney a piloté des ouvertures
-majeures comme
+L’Europa-Park a introduit sa **VirtualLine** en 2020, la première année de la
+pandémie, et l’a conservée. Via l’application du parc, vous réservez
+gratuitement un créneau, actuellement par exemple pour blue fire, Wodan ou
+Voltron, mais pour une seule attraction à la fois, et le parc prévient que les
+places sont très limitées. Disney a fait tourner
 [Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
-ou justement Cosmic Rewind entièrement par **boarding groups** pendant des
-années. Le principe est toujours le même : vous faites la queue
-numériquement pendant que vous mangez, faites les boutiques ou regardez un
-spectacle. La file existe toujours, elle se déroule simplement sans vos jambes.
-L’attente ne disparaît pas, mais elle ne dévore plus votre journée, et le parc
-répartit la demande de façon plus contrôlée sur les heures.
+uniquement par **boarding groups** de son ouverture en décembre 2019 jusqu’en
+septembre 2021, et Cosmic Rewind jusqu’en février 2025 (là, la Lightning Lane
+payante était la seule autre porte d’entrée). Le principe est toujours le même :
+vous faites la queue numériquement pendant que vous mangez, faites les
+boutiques ou regardez un spectacle. La file existe toujours, elle se déroule
+simplement sans vos jambes. L’attente ne disparaît pas, mais elle ne dévore
+plus votre journée, et le parc répartit la demande de façon plus contrôlée sur
+les heures.
 
 Pour ceux qui préfèrent faire la queue avec leurs pieds plutôt qu’avec leur
 pouce, les parcs travaillent en parallèle sur la gare elle-même :
@@ -596,42 +634,45 @@ pouce, les parcs travaillent en parallèle sur la gare elle-même :
 - **Des gares doubles**, où la voie se divise en deux quais parallèles avant la
   gare : un train est chargé pendant que l’autre est expédié. Une astuce dont
   les flying coasters de Vekoma avaient besoin à cause de leurs longs temps de
-  chargement, et qu’Efteling utilise aussi sur le water coaster De Vliegende
-  Hollander.
+  chargement, et qu’utilisent aussi Cosmic Rewind à EPCOT et le water coaster
+  De Vliegende Hollander d’Efteling.
 - **Carrément deux parcours complets** : le Space Mountain de Disney au Magic
   Kingdom en est l’exemple le plus radical. Deux parcours entrelacés et en
   miroir (« Alpha » et « Omega ») cohabitent dans le même bâtiment avec leurs
   propres gares, ce qui double pratiquement la capacité du système.
-  Effectivement deux montagnes russes qui se font passer pour une seule, et la
-  plupart des visiteurs ne s’en aperçoivent jamais. Le modèle en a été fourni
-  en 1959 par le Matterhorn Bobsleds de Disneyland, premier coaster au monde à
-  rails tubulaires en acier, également à deux parcours.
+  Effectivement deux montagnes russes qui se font passer pour une seule. Le
+  modèle en a été fourni en 1959 par le Matterhorn Bobsleds de Disneyland,
+  premier coaster au monde à rails tubulaires en acier, également à deux
+  parcours.
 
-Le plus gros débit revient à un système qui se passe totalement de gare. Sur
+Un débit très élevé revient à un système qui ne s’arrête jamais en gare. Sur
 l’**omnimover**,
 la chaîne de véhicules continue de Disney telle que l’utilise la Haunted
-Mansion, la bande ne s’arrête jamais. On monte et on descend sur le véhicule en
-mouvement, et l’attraction avale ainsi plus de 3 000 visiteurs par heure, plus
-que bien des méga-coasters, avec une chaîne de véhicules qui tourne sans
-broncher depuis les années soixante et ne demande jamais de pause.
+Mansion, la bande tourne sans interruption en fonctionnement normal. On monte
+et on descend sur le véhicule en mouvement, et la Haunted Mansion du Magic
+Kingdom atteint ainsi environ 3 200 visiteurs par heure d’après la même liste
+de fans, plus que toute autre attraction de ce parc sur la liste et plus que
+bien des méga-coasters. Disney utilise ce système depuis 1967.
 
 ## Ce que park.fan vous épargne dans la file
 
 La prochaine file de 60 minutes n’en sera pas plus courte. Mais elle se lit
 autrement quand on sait trois choses, et elles sont sur park.fan :
 
-- **Quelle est la longueur _réelle_ de la file, à cet instant ?** C’est à cela
-  que servent nos **temps d’attente en direct** : plus de 200 parcs, 7 000
-  attractions, actualisés toutes les cinq minutes. La loi de Little en temps
-  réel, sans que vous ayez
-  à compter vous-même les 640 personnes devant vous.
+- **Quelle est la longueur de la file en ce moment ?** C’est à cela que servent
+  nos **temps d’attente en direct** : plus de 200 parcs et environ 7 000
+  attractions au total, actualisés toutes les cinq minutes. Ce sont les
+  chiffres que les parcs affichent eux-mêmes, marge comprise. Vous voyez quand
+  même s’ils montent ou descendent, sans avoir à compter vous-même les 640
+  personnes devant vous.
 - **Est-ce beaucoup ou normal ?** Ce sont les **statistiques de longue durée**
   de chaque attraction qui le disent, car le même chiffre est, selon le parc,
   une contrariété ou un gros lot.
 - **Et dois-je vraiment faire la queue ?** Cela se décide le plus souvent dès
   le choix du jour. C’est pour ça qu’existe le **calendrier des meilleurs jours
-  de visite**, avec des prévisions jusqu’à 365 jours à l’avance, par exemple
-  pour l’Europa-Park :
+  de visite**. La prévision qui l’alimente porte actuellement sur environ six
+  mois, et le widget ci-dessous montre les trois prochains, par exemple pour
+  l’Europa-Park :
 
 ```best-days-widget slug=europa-park
 
@@ -640,9 +681,10 @@ autrement quand on sait trois choses, et elles sont sur park.fan :
 — Patrick
 
 _P.S. : oui, je fais quand même toujours la queue pour
-[Taron](ref:phantasialand/taron?bare). Mais maintenant je sais à la minute près
-à quel point c’est déraisonnable, et j’ai par écrit que mon sens du temps
-exagère de 36 pour cent pendant ce temps-là._
+[Taron](ref:phantasialand/taron?bare). Mais maintenant je vois à l’avance à
+quel point c’est déraisonnable, et je sais que les clients de l’étude de Hornik
+surestimaient leur attente de 36 pour cent en moyenne. Moi aussi, sans
+doute._
 
 ---
 
@@ -650,13 +692,16 @@ exagère de 36 pour cent pendant ce temps-là._
 
 - David Maister : [The Psychology of Waiting Lines](https://www.columbia.edu/~ww2040/4615S13/Psychology_of_Waiting_Lines.pdf) (1985)
 - Katz, Larson & Larson : [Prescription for the Waiting-in-Line Blues: Entertain, Enlighten, and Engage](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage) (Sloan Management Review, 1991)
-- Sur la surestimation d’environ 36 % (Hornik 1984) : [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
+- Sur la surestimation d’environ 36 % : Jacob Hornik, [Subjective vs. Objective Time Measures: A Note on the Perception of Time in Consumer Behavior](https://academic.oup.com/jcr/article/11/1/615/1822778) (Journal of Consumer Research, 1984)
 - Alex Stone : [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman et al. : [Règle du pic-fin](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little : [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [La loi de Little expliquée](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little : [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [La loi de Little expliquée](https://en.wikipedia.org/wiki/Little%27s_law) · [Le parcours de Little](https://en.wikipedia.org/wiki/John_Little_%28academic%29)
+- Temps affichés et temps réels à Disney World : [Posted vs Actual Wait Times (TouringPlans, février 2023)](https://touringplans.com/blog/posted-vs-actual-wait-times-worst-offenders/)
 - Sur les bouchons fantômes : Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [Les « jamitons » du MIT](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - Sur les ondes stop-and-go dans les foules : Helbing, Johansson & Al-Abideen, [Dynamics of crowd disasters: An empirical study](https://arxiv.org/abs/physics/0701203) (Physical Review E, 2007)
 - Sur l’effet « faster-is-slower » : Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
-- Données techniques : [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) et [YOY](https://rcdb.com/20669.htm) sur RCDB · [Fiche technique Mack Rides de Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [La technique derrière Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY et sa rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)
-- Analyses de capacité : [THRC contre OHRC à Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Les faits sur Flight of Passage chez TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/) · [Cosmic Rewind : la fin de la file virtuelle (WDWMagic)](https://www.wdwmagic.com/attractions/guardians-of-the-galaxy/news/25feb2025-guardians-of-the-galaxy-cosmic-rewind-opens-standby-queue-as-virtual-queue-ends-at-epcot,-hits-170-minute-wait.htm)
-- Europa-Park : [les montagnes russes sur RCDB](https://rcdb.com/4870.htm) · [VirtualLine officiel](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park)
+- Données techniques : [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm), [Cosmic Rewind](https://rcdb.com/15504.htm), [VelociCoaster](https://rcdb.com/6992.htm), [Taron](https://rcdb.com/12723.htm) et [YOY](https://rcdb.com/20669.htm) sur RCDB · [Rip Ride Rockit et Hollywood Drift (Wikipédia)](https://en.wikipedia.org/wiki/Hollywood_Rip_Ride_Rockit) · [Fiche technique Mack Rides de Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [La technique derrière Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY et sa rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)
+- Analyses de capacité : [THRC contre OHRC à Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Les faits sur Flight of Passage chez TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/) · [La capacité de Flight of Passage (Coaster101)](https://www.coaster101.com/2018/12/11/what-makes-avatar-flight-of-passage-so-immersive/) · [Peter Pan’s Flight à Paris (DLP Guide)](https://www.dlpguide.com/guidebook/disneyland-park/fantasyland/peter-pans-flight/) · [Capacités horaires à Disneyland Paris (MagicWait)](https://magicwaitparis.com/blog/hourly-capacity-attractions-disneyland-paris/) · [Cosmic Rewind : la fin de la file virtuelle (WDWMagic)](https://www.wdwmagic.com/attractions/guardians-of-the-galaxy/news/25feb2025-guardians-of-the-galaxy-cosmic-rewind-opens-standby-queue-as-virtual-queue-ends-at-epcot,-hits-170-minute-wait.htm)
+- Règles de file : [VelociCoaster sans file single rider (WDWNT, décembre 2025)](https://wdwnt.com/2025/12/jurassic-world-velocicoaster-closes-single-rider-line-probably-wont-come-back/) · [Rise of the Resistance passe à la file standby (WDWNT, 2021)](https://wdwnt.com/2021/09/breaking-virtual-queue-being-paused-at-star-wars-rise-of-the-resistance-traditional-standby-queue-coming-september-23-to-disneys-hollywood-studios/) · [Quick Pass du Phantasialand (conditions officielles)](https://www.phantasialand.de/de/quick-pass/) · [Les prix du Quick Pass en 2026 (Achterbahnreporter)](https://achterbahnreporter.de/erlebt-empfohlen/deals-events/phantasialand-quickpass/) · [Fantasmic! (Wikipédia)](https://en.wikipedia.org/wiki/Fantasmic!)
+- Fréquentation : [TEA Global Experience Index 2024](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)
+- Europa-Park : [les montagnes russes sur RCDB](https://rcdb.com/4870.htm) · [VirtualLine officiel](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park) · Phantasialand : [les montagnes russes sur RCDB](https://rcdb.com/4872.htm)

@@ -106,7 +106,7 @@
     "browseParks": "Scopri tutti i parchi"
   },
   "home": {
-    "intro": "park.fan mostra i tempi di attesa in diretta e l’affluenza di oltre 200 parchi a tema e più di 7.000 attrazioni nel mondo, da Disney e Universal fino a Europa-Park e Phantasialand. In più orari di apertura e una previsione tutta nostra per i prossimi giorni.",
+    "intro": "park.fan mostra i tempi di attesa in diretta e l’affluenza di oltre 200 parchi a tema e quasi 7.000 attrazioni nel mondo, da Disney e Universal fino a Europa-Park e Phantasialand. In più orari di apertura e una previsione tutta nostra per i prossimi giorni.",
     "hero": {
       "cta": "Esplora i parchi",
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
@@ -1909,6 +1909,7 @@
     "readMore": "Leggi l’articolo",
     "readingTime": "{minutes} min di lettura",
     "updatedOn": "Aggiornato il {date}",
+    "correction": "Correzione",
     "languageNotice": {
       "available": "Questo articolo è disponibile anche in {language}",
       "fallback": "Non ancora tradotto – qui vedi la versione in {language}."

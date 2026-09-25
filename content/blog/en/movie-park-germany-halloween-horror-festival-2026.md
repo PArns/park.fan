@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: 22 horror nights start on Saturday, and Jason is waiting in the new maze'
+title: 'Movie Park Germany: horror nights from Saturday until 8 November, and Jason is waiting in the new maze'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -99,7 +99,8 @@ scare zones and the March of the Monsters parade. Dated online tickets currently
 cost €38.90 according to the park. At the gate it is €59.90 for ages 12 and up.
 
 The mazes and PHOBIA are **not included**. Each maze needs its own timed ticket,
-sold online only. The park's Halloween pages do not give a price per maze. It
+booked online. According to the park map, leftover tickets are also sold at guest
+services in the park, subject to availability. The park's Halloween pages do not give a price per maze. It
 only shows up in the web shop.
 
 If you want all nine, do the sums against the **S.I.K. Pass**: €215 with park
@@ -143,3 +144,6 @@ Dates, mazes and tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 September 2026: The first version said timed maze tickets were sold online only. According to the park map, the park also sells leftover tickets on site, subject to availability.

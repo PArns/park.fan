@@ -1693,6 +1693,11 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   border-color: color-mix(in oklab, oklch(0.645 0.246 16.439) 30%, transparent);
   background: color-mix(in oklab, oklch(0.645 0.246 16.439) 10%, transparent);
 }
+.tiptap-canvas .editor-callout--correction {
+  border-color: var(--border);
+  background: color-mix(in oklab, var(--muted) 40%, transparent);
+  color: var(--muted-foreground);
+}
 .tiptap-canvas .editor-callout-marker {
   display: inline-block;
   border-radius: 9999px;
@@ -1722,6 +1727,11 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 .tiptap-canvas .editor-callout-marker--caution {
   background: color-mix(in oklab, oklch(0.645 0.246 16.439) 20%, transparent);
   color: oklch(0.712 0.194 13.428);
+}
+
+.tiptap-canvas .editor-callout-marker--correction {
+  background: color-mix(in oklab, var(--muted-foreground) 15%, transparent);
+  color: var(--muted-foreground);
 }
 
 /* Empty-editor placeholder. */

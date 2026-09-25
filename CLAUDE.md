@@ -218,6 +218,9 @@ carries the reasoning, the measurements and the counter-examples.
   visible capability, PATCH for a bundle of fixes. `docs/changelog.md` is the internal log and
   `content/changelog/<version>.md` the public entry at `/en/changelog`; never parse one into the
   other, and a blog post is never a release.
+- **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
+  news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
+  (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
 
 ---
 

@@ -50,10 +50,11 @@ un soir où les adultes aussi peuvent venir déguisés. Il commence le **samedi
 26 septembre** et dure jusqu’au **dimanche 1er novembre 2026**. Tout le
 programme est compris dans un billet ordinaire.
 
-Seul le Parc Disneyland est décoré et animé. Juste à côté,
-[Disney Adventure World](ref:disney-adventure-world) n’a pas de programme
-Halloween à lui. Pour frissonner là-bas, il reste
-[Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
+Des deux parcs, seul le Parc Disneyland est décoré et animé, et les hôtels
+Disney ont aussi leur décor d’automne. Juste à côté, [Disney Adventure
+World](ref:disney-adventure-world) n’a pas de programme Halloween à lui. Pour
+frissonner là-bas, il reste [Tower of
+Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
 
 ## Les nouveautés 2026
 
@@ -65,13 +66,14 @@ l’autre.
 
 Cruella, Maléfique, Jafar et la Reine de cœur reviennent pour les rencontres.
 Absent depuis 2021, le **Dr Facilier** de _La Princesse et la Grenouille_
-revient, à Frontierland. Jack Skellington et Sally, de _L’Étrange Noël de Monsieur Jack_,
-sont de retour certains jours, uniquement via la file d’attente virtuelle de
-l’application Disneyland Paris. On s’inscrit le jour même sur son téléphone,
-pas en faisant la queue.
+revient, à Frontierland. Jack Skellington et Sally, de _L’Étrange Noël de
+Monsieur Jack_, sont de retour certains jours, uniquement via une file d’attente
+virtuelle. On s’y inscrit le jour de sa visite, surtout dans l’application
+Disneyland Paris, ou auprès d’un Cast Member à l’entrée de la rencontre. Les
+places sont limitées.
 
 Main Street reçoit une quarantaine de nouvelles citrouilles, 170 nouvelles
-bougies en forme de Mickey, des guirlandes de style victorien, une musique
+bougies à l’effigie de Mickey et de ses amis, des guirlandes de style victorien, une musique
 composée pour l’occasion et, le soir, des projections sur les façades. Dans la
 gare, à l’entrée, quatre nouveaux vitraux Art déco montrent Maléfique et
 Ursula. Au bout de la rue, sur la Royal Castle Stage, épines, corbeaux et
@@ -101,12 +103,18 @@ Restaurant.
 
 En 2026, Halloween tombe un samedi, et c’est le seul jour de l’année où les
 adultes aussi peuvent entrer déguisés. Le Parc Disneyland reste ouvert jusqu’à
-**23 h**, avec des rencontres de personnages spéciales, un feu d’artifice
-unique et des friandises offertes par M&M’S. Pas besoin de billet de soirée à
-part : tout est compris dans l’entrée normale, mais
-l’entrée elle-même coûte plus cher ce jour-là que les autres jours du festival. Le parc précisera à l’avance
-quels déguisements sont autorisés. Consultez l’application avant de partir, et
-avant de passer des heures sur un masque qui devra rester à l’entrée.
+**23 h**, avec des rencontres de personnages spéciales, un feu d’artifice unique
+et des friandises offertes par M&M’S. Pas besoin de billet de soirée à part :
+tout est compris dans l’entrée normale, c’est-à-dire un billet daté dont le
+prix, selon Disney, varie avec la saison et la demande.
+
+Les règles pour les déguisements figurent déjà sur la page Halloween du parc.
+Les masques sont interdits à partir de 12 ans (sauf masques médicaux), tout
+comme les costumes qui couvrent entièrement le visage ou la tête, les vêtements
+qui traînent par terre, les longues capes, les bâtons et tout ce qui ressemble à
+une arme. Qui vient en personnage Disney s’engage à ne pas poser pour des photos
+ni signer d’autographes. Un costume intégral à plusieurs couches peut valoir un
+contrôle plus poussé à l’entrée.
 
 Samedi, Halloween, déguisements, soirée ouverte à tous les détenteurs d’un
 billet : ce sera bondé. Si vous pouvez vous passer de la soirée costumée, les
@@ -134,3 +142,6 @@ ceux qui viennent sans enfants, c’est dans le
 Programme et dates : [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 septembre 2026 : la première version disait que le parc préciserait plus tard les déguisements autorisés le 31 octobre. Les règles figuraient déjà sur sa page Halloween et sont désormais dans le texte. Pour Jack et Sally, un Cast Member sur place peut aussi vous inscrire à la file virtuelle, pas seulement l’application. Nous avons retiré la phrase selon laquelle l’entrée coûte plus cher le 31 octobre que les autres jours du festival, faute de pouvoir l’étayer.

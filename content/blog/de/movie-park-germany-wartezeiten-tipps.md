@@ -2,14 +2,14 @@
 title: '30 Jahre Movie Park Germany, und keine Marke von 1996 ist noch da'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Batman weg, Bugs Bunny weg, und seitdem baut der Park Fahrgeschäfte über sich
-  selbst. Zum 30. Geburtstag: gemessene Wartezeiten, der Wochentag, bei dem fast
-  jeder Ratgeber danebenliegt, der Fahrplan ab September und das Halloween Horror
+  selbst. Zum 30. Geburtstag: gemessene Wartezeiten, der Wochentag, bei dem die
+  gängigen Ratgeber danebenliegen, der Fahrplan ab September und das Halloween Horror
   Festival ab dem 26. September.
 tags:
   - movie-park
@@ -28,7 +28,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/star-trek-operation-enterprise-16x9.jpg
   alt: 'Die rot angeleuchtete Strecke von Star Trek: Operation Enterprise bei Nacht, darunter der Leuchtschriftzug „Horrorwood Studios“'
-  caption: 'Sechs Wochen im Jahr heißt der Park Horrorwood Studios. Der Schriftzug am Eingang wird dafür umgebaut, nicht ausgetauscht.'
+  caption: 'Sechs Wochen im Jahr heißt der Park Horrorwood Studios, und so steht es dann auch in Leuchtschrift am Eingang.'
   credit: 'park.fan'
 seo:
   title: 'Movie Park Wartezeiten & Halloween 2026, ohne Batman'
@@ -68,10 +68,11 @@ Name des Nachbarn.
 
 Dazu kommt eine Zahl, die zum Ruf dieses Parks überhaupt nicht passt. Über
 alle Öffnungstage, die wir bisher gemessen haben, steht man im
-[Movie Park](ref:movie-park-germany) gut halb so lang an wie im
+[Movie Park](ref:movie-park-germany) gut ein Drittel kürzer an als im
 [Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich.
 
-Und der leerste Wochentag ist der, den dir kein Ratgeber im Netz nennt.
+Und der Sonntag, den die gängigen Ratgeber im Netz als vollen Wochenendtag
+abschreiben, gehört in unseren Daten zu den ruhigsten Tagen der Woche.
 
 ## Bugs Bunny, Batman, Gremlins: alle ausgezogen
 
@@ -92,6 +93,11 @@ musste der Park praktisch alles umbenennen, was einen Namen aus einem Warner-Fil
 trug, ein Umzug, bei dem die Möbel bleiben und nur die Klingelschilder neu
 kommen. Im März 2005 machte er als **Movie Park Germany** wieder auf. Fünf Jahre
 später, am 17. Mai 2010, übernahm der spanische Betreiber **Parques Reunidos**.
+Der Madrider Konzern gehört seit 2019 mehrheitlich dem schwedischen
+Finanzinvestor EQT, und der will ihn laut einem Bericht der spanischen
+Wirtschaftszeitung Expansión vom 24. September 2026 als Ganzes verkaufen, samt
+Movie Park. Was das für Besucher und Saisonpässe heißt, steht in
+[unserer Meldung zum Verkauf](/blog/parques-reunidos-verkauf-movie-park).
 
 Fünf der bekanntesten Fahrgeschäfte leben deshalb unter neuem Namen weiter, wie
 Kronzeugen im Schutzprogramm:
@@ -106,16 +112,19 @@ Kronzeugen im Schutzprogramm:
 
 Zwischenstationen sind da noch gar nicht mitgezählt. Die Halle der Looney Tunes
 beherbergte von 2005 bis 2016 **Ice Age Adventure**, bis auch diese Lizenz nicht
-verlängert wurde und die Bootsfahrt zumachte. Vier Jahre stand das Gebäude leer.
+verlängert wurde und die Bootsfahrt zumachte. Danach fuhr dort vier Jahre lang
+nichts, 2018 und 2019 diente die Halle nur zu Halloween als Horrorhaus.
 
 Die beste Geschichte aus den Zehnerjahren handelt von einer Achterbahn, die nie
 fertig wurde. 2012 stellte der Park der Stadt Bottrop Pläne für eine **45 Meter hohe
 Achterbahn** direkt hinter dem Eingang vor, zehn Millionen Euro, Eröffnung 2014.
-Im September 2012 stoppte Parques Reunidos das Projekt, weil in Spanien die Besucherzahlen wegbrachen. Gebaut wurde auf der Wiese erst 2017 wieder, und zwar etwas anderes: Star Trek: Operation Enterprise.
+Im September 2012 stoppte der Park das Projekt. Offiziell hatte sich die
+Investitionsstrategie geändert, Parkchef Wouter Dekkers nannte als Grund die
+sinkenden Besucherzahlen in den Schwesterparks in Spanien und Italien. Gebaut wurde auf der Wiese erst 2017 wieder, und zwar etwas anderes: Star Trek: Operation Enterprise.
 
 Diese Vorgeschichte erklärt den Ruf, den der Movie Park in der Coaster-Szene bis
 heute hat. Wer ihn zwischen 2012 und 2016 besucht hat, sah einen Park, in dem
-sich wenig bewegte, ungefähr wie ein Kino, das im Foyer noch die Plakate von
+sich außer The Lost Temple (2014) wenig bewegte, ungefähr wie ein Kino, das im Foyer noch die Plakate von
 Filmen hängen hat, die es nicht mehr zeigen darf.
 
 ## Die Filmgeschichte, die er stattdessen erzählt
@@ -124,8 +133,8 @@ Ab 2017 kam wieder Geld ins Gelände, und die Art, wie es ausgegeben wurde, kön
 kein anderer deutscher Park nachmachen.
 
 Ein Studio-Park ohne Studio-Lizenzen hat zwei Möglichkeiten. Er kann neue Marken
-einkaufen, was Bottrop getan hat: 2007 entstand mit dem **Nickland** der erste
-Nickelodeon-Themenbereich Europas, 2017 kam Star Trek dazu, 2026 Paramount. Oder
+einkaufen, was Bottrop getan hat: 2007 entstand mit dem **Nickland** ein eigener
+Nickelodeon-Themenbereich, 2017 kam Star Trek dazu, 2026 Paramount. Oder
 er kann über das erzählen, was er selbst ist. Ein Park, der seit dreißig Jahren
 Filmkulissen baut, hat dafür mehr Material als die meisten.
 
@@ -137,7 +146,7 @@ In der leeren Ice-Age-Halle, 3.800 Quadratmeter, eröffnete am **23. Juni 2021**
 die **Movie Park Studio Tour**: ein Multi-Dimension-Coaster von **Intamin**, 532
 Meter Schiene, bis zu 60 km/h, 900 Personen pro Stunde, zwei Minuten Fahrzeit.
 Zwei Launches, davon einer rückwärts, dazu eine Drehscheibe, die den Zug
-mitten in einer Szene um Dreiviertel dreht, und eine Weiche in der Strecke.
+mitten in einer Szene in eine andere Richtung dreht, und eine Weiche in der Strecke.
 
 Erzählt wird auf zwölf Szenen die Geschichte des Parks selbst. Du fährst durch
 ein Filmarchiv, durch die Spezialeffekt-Abteilung, durch die Tonabteilung, durch
@@ -176,7 +185,7 @@ sieben.
 
 ### Star Trek™: Operation Enterprise
 
-Die größte Bahn im Park kam **2017** und war das Ende der Investitionspause.
+Die größte Bahn im Park kam **2017** und war die erste neue Achterbahn seit 2011.
 **[Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise)**
 ist ein Launch Coaster von **Mack Rides**, 40 Meter hoch, 90 km/h, 720 Meter
 lang, drei Überschläge, Mindestgröße 130 Zentimeter. Zwei Züge zu je zwanzig
@@ -193,9 +202,9 @@ im Schnee die Einfahrt zur Tiefgarage hochwill. Danach kommen
 Immelmann, Heartline Roll und Korkenzieher. Der Soundtrack stammt von IMAscore,
 davor läuft eine Preshow mit Projektionen.
 
-Außerdem ist es die Bahn, bei der sich Rennen am Morgen am meisten auszahlt:
-Ihre Schlange ist in der zweiten Stunde am längsten und danach nie wieder so
-lang.
+Morgens hinzurennen bringt bei ihr wenig: Ihre Schlange ist in der zweiten
+Stunde am längsten, danach nie wieder so lang, und am kürzesten wird sie am
+Nachmittag.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -236,8 +245,9 @@ Maßstab nimmt, sollte es bei dem einen Mal belassen.
 Fahrgeschäft, an dem in diesem Park am längsten angestanden wird, und die
 Eckdaten lesen sich wie die einer Bahn für den Kindergeburtstag. Eröffnet am **18. Juni 2011**, ein
 Bobsled-Coaster von **Gerstlauer** in der ehemaligen Gremlins-Halle, 3.000
-Quadratmeter, acht Meter hoch, 400 Meter lang, **36 km/h**. Fünf Millionen Euro
-hat Parques Reunidos dafür freigegeben, einen Monat nach der Übernahme.
+Quadratmeter, acht Meter hoch, 400 Meter lang, **36 km/h**. Die Idee legte Parkchef
+Wouter Dekkers den neuen Eigentümern einen Monat nach der Übernahme vor, Parques
+Reunidos gab dafür fünf Millionen Euro frei.
 
 ```glossary-widget slug=bobsled-coaster
 
@@ -250,8 +260,8 @@ das Ding drinnen erstaunlich leise, und der zweite Lifthill zieht mit
 Reibrädern an, sodass der Wagen im Steigen schneller wird.
 
 Die Erklärung steht trotzdem im Datenblatt, nur eine Zeile tiefer: **848
-Personen pro Stunde**. Für einen Park, der an starken Tagen Zehntausende
-hereinlässt, ist das eine einzige offene Kasse am Ikea-Samstag, und man sieht es
+Personen pro Stunde**. Für einen Park, der im Jahr deutlich über eine Million
+Gäste zählt, ist das eine einzige offene Kasse am Ikea-Samstag, und man sieht es
 in unseren Zahlen den ganzen Tag über.
 
 ```glossary-widget slug=ride-capacity
@@ -262,7 +272,7 @@ in unseren Zahlen den ganzen Tag über.
 
 **[Iron Claw](ref:movie-park-germany/iron-claw)** ist der Vekoma **Suspended
 Looping Coaster**, den es in leichten Abwandlungen weltweit dutzendfach gibt.
-Eröffnet am 6. April 2001 als **Eraser**, 689 Meter, 80 km/h, zwei Überschläge,
+Eröffnet am 6. April 2001 als **Eraser**, 689 Meter, 80 km/h, fünf Überschläge,
 zwei Züge zu zwanzig Personen. Die Beine hängen frei, der Kopf steckt zwischen
 zwei harten Schulterbügeln wie eine Walnuss im Nussknacker.
 
@@ -272,8 +282,8 @@ zwei harten Schulterbügeln wie eine Walnuss im Nussknacker.
 
 Diese Bauart hat Vekoma über Jahre den Ruf eingebracht, den die Firma seit den
 Zwanzigern mühsam wieder loswird, und dieses Exemplar macht da keine Ausnahme.
-Als der Park vor ein paar Jahren seine Fans nach Verbesserungsvorschlägen
-fragte, war die meistgenannte Antwort, sie abzureißen.
+Als der Park im Februar 2024 auf Facebook fragte, wie man Iron Claw am besten
+übersteht, rieten auffällig viele Kommentare zum Abriss.
 
 ![Eine violett und blau angeleuchtete Achterbahn bei Nacht, dahinter der Mond, davor ein Parkplatz mit Autos | Vom Parkplatz aus, nach Feierabend. Der Mond stand günstig. Darunter fährt trotzdem eine Vekoma von 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
 
@@ -309,7 +319,7 @@ Wasserbahn mit Animatronics im Stil der Science-Fiction-B-Movies der
 Sechzigerjahre. Die Außenkulisse ist eine der Ecken, an denen man noch sieht,
 wie viel Geld hier 1996 verbaut wurde.
 
-![Eine Wellblechhalle mit der Aufschrift „U.S. A.F.“, darin ein Militärjeep, daneben ein kleines Flugzeug und ein roter Felsen | Der Vorplatz von Area 51. Der Jeep steht seit dreißig Jahren an dieser Stelle. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
+![Eine Wellblechhalle mit der Aufschrift „U.S. A.F.“, darin ein Militärjeep, daneben ein kleines Flugzeug und ein roter Felsen | Der Vorplatz von Area 51. Die Wasserbahn fährt seit 1996, unter diesem Namen seit 2019. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
 
 **[The High Fall](ref:movie-park-germany/the-high-fall)** ist der rund 60 Meter
 hohe Freifallturm von Intamin im Themenbereich The Old West. Die Gondel dreht
@@ -369,9 +379,10 @@ Derselbe Tag, nach Stunden aufgeschlüsselt:
 
 ```
 
-Zwei Rhythmen liegen hier übereinander. Die Achterbahnen füllen sich am
-Vormittag und bauen danach ab: Star Trek und Ghost Chasers haben ihre stärkste
-Stunde am späten Vormittag, Bandit gegen Mittag. Die **Wasserbahnen laufen
+Zwei Rhythmen liegen hier übereinander. Die großen Achterbahnen im Freien
+füllen sich am Vormittag und bauen danach ab: Star Trek hat seine stärkste
+Stunde am späten Vormittag, Bandit und Iron Claw um die Mittagszeit, und gegen
+drei Uhr sind alle drei kürzer. Die **Wasserbahnen laufen
 genau andersherum**. Dora, Excalibur und Area 51 haben ihre volle Stunde am
 späten Nachmittag, weil bei dreißig Grad irgendwann alle nass werden wollen.
 
@@ -387,17 +398,16 @@ Im Vergleich mit der Nachbarschaft:
 ```
 
 Von diesen sechs Parks stehst du nur im [Toverland](ref:attractiepark-toverland)
-kürzer an. Gegen die beiden großen deutschen Nachbarn, die um dieselben
-Ausflügler werben, gewinnt Bottrop deutlich. Den besten Coaster der Region hat
+kürzer an, im Walibi Holland ungefähr gleich lang. Gegen die beiden großen
+deutschen Parks in der Tabelle gewinnt Bottrop deutlich. Den besten Coaster der Region hat
 der Movie Park nicht, dafür fährst du an einem normalen Tag mehr.
 
 > [!NOTE]
 > Eine Einschränkung, die für diesen Park besonders wichtig ist. Unsere Historie
-> beginnt im Dezember 2025, und für **Oktober und November steht darin noch
-> kein einziger auswertbarer Tag**, für den September nur seine ersten Wochen.
-> Ausgerechnet die Wochen des Halloween Horror Festivals sind bei uns also nicht
-> gemessen. Was der Kalender weiter
-> unten für den Herbst zeigt, ist eine Prognose, keine Messung.
+> beginnt im Dezember 2025, und Stand 25. September 2026 steht darin für
+> **Oktober und November noch kein einziger Tag** und noch kein Abend des
+> Halloween Horror Festivals. Was der Kalender weiter unten für den Herbst zeigt,
+> ist eine Prognose, keine Messung.
 
 ## Wann du hinfahren solltest, und der Fahrplan ab September
 
@@ -409,17 +419,17 @@ Die verbreitetste Empfehlung für diesen Park ist falsch.
 
 ```
 
-Am kürzesten stehst du am **Sonntag** und am **Freitag**, am längsten am
-**Dienstag**. Wer nach Movie-Park-Tipps sucht, liest fast überall das
-Gegenteil: Dienstag bis Donnerstag seien die ruhigen Tage, das Wochenende sei
-voll. Am Samstag stehst du tatsächlich länger als am Sonntag, und beide sind bei
-uns etwa gleich oft gemessen, also direkt vergleichbar. Nur ist der Samstag eben
-nicht der vollste Tag der Woche.
+Am kürzesten stehst du am **Freitag**, dicht dahinter liegen **Sonntag** und
+**Donnerstag**, am längsten am **Dienstag**. Wer nach Movie-Park-Tipps sucht,
+liest meist etwas anderes: Unter der Woche sei es ruhig, das Wochenende sei voll.
+Am Samstag stehst du tatsächlich länger als am Sonntag, und beide sind bei uns
+etwa gleich oft gemessen, also direkt vergleichbar. Nur gehört der Sonntag eben
+nicht zu den vollen Tagen, und der Samstag ist nicht der vollste der Woche.
 
 Montag und Dienstag lassen sich so nicht vergleichen, und die Zahl der Messtage
-sagt, warum. Außerhalb der Ferien hat der Park an diesen Tagen zu, also
-stammen unsere Montage und Dienstage fast ausschließlich aus den Sommerferien,
-und Sommerferientage sind die vollsten des Jahres. Auf der
+sagt, warum. Außerhalb der Ferien hat der Park an diesen Tagen meist zu,
+also stammen unsere Montage und Dienstage fast ausschließlich aus den Ferien, vor
+allem aus den Sommerferien, und Sommerferientage sind die vollsten des Jahres. Auf der
 [Beste-Reisezeit-Seite](/beste-reisezeit) fallen diese beiden Tage deshalb aus
 dem Parkvergleich heraus, statt ihn zu verzerren.
 
@@ -430,7 +440,7 @@ selben Tag zurück, und im Ruhrgebiet mit seinen Millionen Menschen in Fahrweite
 ist der klassische Ausflugstag der Samstag. Am Sonntag steht bei vielen schon
 der Montag im Weg.
 
-Beim [Europa-Park](ref:europa-park) ist der Sonntag ebenfalls der leerste Tag,
+Beim [Europa-Park](ref:europa-park) ist der Sonntag sogar der leerste Tag,
 dort aber aus dem umgekehrten Grund: Rust lebt von Hotelgästen, die samstags
 anreisen und sonntags abfahren, nachzulesen im
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Derselbe Wochentag,
@@ -443,20 +453,23 @@ Movie Park ähnelt, sieht die Woche übrigens fast genauso aus, nachgerechnet im
 Wer diesen Herbst hinwill, braucht den Kalender dringender als jede
 Wartezeit-Tabelle.
 
-Die **Sommerferien in Nordrhein-Westfalen enden am 1. September 2026**. Einen Tag
-später stellt der Park auf Herbstbetrieb um und öffnet dann nur noch von
-**Donnerstag bis Sonntag**. Montag, Dienstag und Mittwoch ist zu. Der Rat „geh
+Die **Sommerferien in Nordrhein-Westfalen endeten am 1. September 2026**. Seitdem
+läuft der Herbstbetrieb, und der Park öffnet nur noch von **Donnerstag bis
+Sonntag**. Montag, Dienstag und Mittwoch ist zu. Der Rat „geh
 unter der Woche“ war vorher schon schlecht, ab September kannst du ihn nicht mal
 mehr befolgen.
 
-Damit bleibt für die zwei Monate bis zum Saisonende eine sehr kurze Empfehlung:
+Damit bleibt für die Wochen bis zum Saisonende eine sehr kurze Empfehlung:
 **Donnerstag, Freitag oder Sonntag, nicht Samstag.**
 
 Zwei Ausnahmen von diesem Rhythmus gibt es:
 
-- In den **Herbstferien vom 17. bis 31. Oktober** öffnet der Park täglich.
-- Am **8. November 2026** ist Saisonschluss, und das ist gleichzeitig der letzte
-  Abend des Halloween Horror Festivals. Danach bleibt bis zum Weihnachtsevent zu.
+- In den **Herbstferien vom 17. bis 31. Oktober** öffnet der Park täglich, dazu
+  am Sonntag, dem 1. November.
+- In der Woche nach den Ferien bleibt er von Montag bis Donnerstag zu und öffnet
+  nur noch am letzten Wochenende. Am **8. November 2026** ist Saisonschluss, und das ist
+  gleichzeitig der letzte Abend des Halloween Horror Festivals. Danach bleibt bis
+  zum Weihnachtsevent zu.
 
 Die ruhigsten der kommenden Öffnungstage laut unserem Kalender:
 
@@ -477,8 +490,8 @@ gesucht hat: In den Sommerferien wird es voll.
 
 Bei Januar, März und Dezember stehen dagegen nur drei bis vier Messtage hinter
 dem Wert. Die Größenordnung stimmt, auf die Minute würde ich mich da nicht
-festlegen. Vom September haben wir bisher nur die ersten Wochen, Oktober und
-November fehlen ganz.
+festlegen. Der September reicht Stand 25. September 2026 nur bis zum Vortag des
+Halloween Horror Festivals, Oktober und November fehlen noch ganz.
 
 ## Halloween Horror Festival: 26. September bis 8. November
 
@@ -513,9 +526,10 @@ viel kosten und wo es wirklich weh tut, steht ausführlich in unserem
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026). Hier nur die zwei
 Dinge, die den Parkbesuch selbst betreffen.
 
-**Erstens:** Die Mazes sind im Tagesticket nicht enthalten und werden separat
-gebucht. Wer alle neun mitnehmen will, sollte vorher rechnen, sonst kostet der
-Abend das Dreifache des Eintritts.
+**Erstens:** Die Mazes sind im Tagesticket nicht enthalten und werden mit
+festem Zeitfenster separat gebucht. Wer alle neun mitnehmen will, rechnet am
+besten gegen den **S.I.K. Pass**: 185 € zum vorhandenen Ticket oder 215 € mit
+Eintritt, dafür kommst du einmal ohne Zeitfenster in jedes Haus.
 
 **Zweitens:** Der Tagesbesuch und der Horrorabend sind zwei verschiedene
 Veranstaltungen am selben Ticket. Für kleinere Kinder gibt es tagsüber
@@ -525,8 +539,9 @@ Scare Zones sind ausdrücklich nicht für Sechsjährige gemacht. Wer mit
 Grundschulkindern da ist, plant die Abfahrt vorher ein.
 
 Nebenbei bekommst du an einem Halloween-Abend fast den längsten Parktag des
-Jahres. Der Park verlängert dafür bis 22 Uhr, das Tagesticket läuft weiter, und
-damit kommst du auf zwölf Stunden am Stück. Länger offen war nur am Geburtstag im
+Jahres. Der Park hat dann freitags und samstags bis 22 Uhr offen, sonntags bis
+21 Uhr, das Tagesticket läuft weiter, und damit kommst du auf bis zu zwölf
+Stunden am Stück. Länger offen war nur am Geburtstag im
 Juli.
 
 [Movie Park Germany](ref:movie-park-germany?full)
@@ -534,20 +549,19 @@ Juli.
 ## Der perfekte Tag, in fünf Sätzen
 
 Lauf bei Öffnung direkt zu
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)**, das
-ist die Bahn, bei der Rennen am meisten bringt, danach
-gleich weiter zu
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
-weil deren Schlange ab der zweiten Stunde bis zum Abend nicht mehr kürzer wird.
-Der Vormittag gehört dann **[Bandit](ref:movie-park-germany/the-bandit?bare)**
-und der
+weil deren Schlange nur in der ersten Stunde kürzer ist als für den Rest des
+Tages, und danach gleich weiter zur
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
-beiden mit deutlich mehr Luft als nach dem Mittagessen.
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**,
-**[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** und
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** legst du auf
-die warmen Stunden, aber eher um zwei als um fünf, weil sie am späten Nachmittag
-anziehen. **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
+die in der ersten Stunde nicht einmal halb so lang ansteht wie danach.
+**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** nimmst du noch
+am Vormittag mit,
+**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
+und **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** um die
+Mittagszeit, weil alle drei am späten Nachmittag anziehen.
+**[Bandit](ref:movie-park-germany/the-bandit?bare)** und
+**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** hebst
+du dir für den Nachmittag auf, beide sind gegen drei Uhr am kürzesten. **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
 und die Shows nimmst du zwischendurch mit, beide laufen in festen Takten und
 interessieren sich nicht dafür, wie voll der Park gerade ist.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** fährst du, wenn
@@ -558,8 +572,9 @@ Halloween-Abend im Dunkeln erst recht.
 
 **Saison.** Die reguläre Saison 2026 läuft vom **27. März bis 8. November**.
 Danach folgt vom **27. November 2026 bis 5. Januar 2027** das Winterevent
-**Movie Park’s Hollywood Christmas** mit über einer Million Lichtern, das eigene
-Termine und eigene Tickets hat.
+**Movie Park’s Hollywood Christmas** mit über einer Million Lichtern, mit eigenen
+Terminen und eigenen Tagestickets. In den Saisonpässen 2027 ab Silber ist es
+schon enthalten.
 
 **Tickets.** Der Kassenpreis ist hoch, der Onlinepreis ist es nicht:
 
@@ -570,53 +585,62 @@ Termine und eigene Tickets hat.
 | Ermäßigt (ab 65, Schwangere, GdB unter 100)                   | 29,90 € | 29,90 €     |
 | Familienpaket (2 Erwachsene, 2 Kinder, begrenztes Kontingent) | –       | ab 129,90 € |
 | Kinder unter 4 Jahren                                         | frei    | frei        |
-| Geburtstagsticket (am Geburtstag, mit Ausweis)                | 16,90 € | 16,90 €     |
+| Geburtstagsticket (am Geburtstag, mit Ausweis, nur Infokasse) | 16,90 € | –           |
 | Parken                                                        | 9 €     | 9 €         |
 
-Der Aufschlag an der Tageskasse liegt bei fünfundzwanzig Euro pro Erwachsenem.
-Bei vier Leuten sind das neunzig Euro dafür, dass vorher niemand aufs Handy
-geschaut hat. Gäste mit einem GdB von 100 und einem der Merkzeichen aG, Bl, B
+Der Aufschlag an der Tageskasse liegt bei fünfundzwanzig Euro pro Erwachsenem
+und zwanzig pro Kind. Bei zwei Erwachsenen und zwei Kindern sind das neunzig Euro
+dafür, dass vorher niemand aufs Handy geschaut hat. Gäste mit einem GdB von 100 und einem der Merkzeichen aG, Bl, B
 oder H kommen frei rein, die Begleitperson zahlt 29,90 €. Bevorzugtes Parken
-näher am Eingang kostet 19,90 € und gibt es nur online.
+näher am Eingang kostet 19,90 € und gibt es nur online. Das Geburtstagsticket gibt
+es nur am Geburtstag selbst an der Infokasse, zum selben Preis auch für eine
+Begleitperson.
 
 **Saisonpässe.** Hier liegt der eigentliche Preistipp. Vier Stufen, für
 Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber 135,90 €, Gold
 155,90 € und Platin 179,90 €. Verkauft wird schon der Pass für 2027, und der gilt
 ab sofort bis zum **7. November 2027**. Wer jetzt kauft, hat also den Rest dieser
-Saison mitsamt dem kompletten Halloween Horror Festival drin und danach die ganze
-Saison 2027. Wer schon einen Pass für 2026 hat und verlängert, zahlt an der
+Saison drin, ab Silber mit allen Halloween-Abenden und mit Hollywood Christmas
+2026, und danach die ganze Saison 2027. Die Horrorhäuser kosten auch mit Pass
+extra. Wer schon einen Pass für 2026 hat und verlängert, zahlt an der
 Infokasse in jeder Stufe 15 € weniger, online gibt es diesen Rabatt nicht.
 
 Zwischen Bronze und Gold liegen 66 €. Dafür fallen sämtliche Sperrtage weg, das
-Parken ist drin, und der Bonus Club kommt dazu.
+Parken ist drin, und dazu kommen die Freieintritte in den Schwesterparks und der
+Bonus Club.
 
-**Der Bonus Club** ist der Teil, den in Bottrop kaum jemand auf dem Zettel hat.
-Er hängt an Gold und Platin und an der endgültigen Plastikkarte mit Foto, und er
-bringt eine ganze Reihe fremder Parks aufs Ticket:
+**Die Schwesterparks** sind der Teil, den in Bottrop kaum jemand auf dem Zettel
+hat. Für Gold und Platin 2027 stehen sie schon in der Leistungsbeschreibung:
+
+- **Dreimal freier Eintritt** im [Bobbejaanland](ref:bobbejaanland), im
+  Freizeitpark Slagharen und im Weltvogelpark Walsrode.
+- **Einmal freier Eintritt** in Tropical Islands und in weiteren europäischen
+  Parks der Gruppe, genannt werden Mirabilandia in Italien und der Parque Warner
+  in Madrid.
+
+Alle gehören wie der Movie Park zu Parques Reunidos, und weil EQT den Konzern als
+Ganzes verkaufen will, blieben sie auch nach einem Verkauf Schwesterparks.
+
+Dazu kommt der **Bonus Club**, der ebenfalls nur an Gold und Platin hängt. Seine
+Angebote für 2027 veröffentlicht der Park erst zum Beginn der Saison 2027. Was
+darin stecken kann, zeigt die Liste für 2026:
 
 - **Einmal freier Eintritt** pro Kalenderjahr im [Efteling](ref:efteling). Ein
-  Tagesticket dort kostet regulär rund fünfzig Euro, also ungefähr ein Drittel
-  dessen, was der Gold-Pass selbst kostet.
-- **Dreimal freier Eintritt** im [Bobbejaanland](ref:bobbejaanland), im
-  Freizeitpark Slagharen (ohne Aqua Mexicana) und im Weltvogelpark Walsrode.
-  Alle drei gehören wie der Movie Park zu Parques Reunidos.
-- **Einmal freier Eintritt** in weiteren Parks der Gruppe, darunter Tropical
-  Islands, Mirabilandia in Italien, Parque Warner und der Parque de Atracciones
-  in Madrid, Tusenfryd in Norwegen und BonBonLand in Dänemark.
-- **Rabatte** obendrauf: 40 % in beiden Walibi-Parks und in den Plopsa-Parks,
-  50 % bei Belantis, Fort Fun und im Schwaben Park.
+  Ticket ohne festes Datum kostet dort 56 Euro, gut ein Drittel des Gold-Passes.
+- **Rabatte**: 40 % in beiden Walibi-Parks und in den Plopsa-Parks, 50 % bei
+  Belantis, Fort Fun und im Schwaben Park.
 
-Ein paar Haken hat die Liste. Tropical Islands ist an
-Samstagen, an Feiertagen und in den Ferien von Berlin, Brandenburg und Sachsen
-ausgenommen, die Vorteile lassen sich nicht mit anderen Angeboten kombinieren,
-und die Liste gilt jeweils für eine Saison. Für 2026 steht sie beim Park als PDF,
-die Fassung für 2027 kommt erst.
+Ein paar Haken hatte die Liste für 2026 auch. Alle Vorteile galten nur mit der
+endgültigen Plastikkarte mit Foto und nicht zusammen mit anderen Angeboten,
+Slagharen ohne Aqua Mexicana, und Tropical Islands war an Samstagen, an
+Feiertagen und in den Ferien von Berlin, Brandenburg und Sachsen ausgenommen.
 
 Beim Pass selbst stehen drei Dinge im Kleingedruckten:
 
-- **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, dazu alle
-  Feiertage, die Samstage in den NRW-Ferien, die Oktober-Samstage und Halloween
-  selbst. Also ausgerechnet die Tage, an denen du hinwillst.
+- **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, vorher
+  schon die Tage vom 28. bis 30. November, dazu alle Feiertage, die Samstage in
+  den NRW-Ferien, die Oktober-Samstage und Halloween selbst. Also ausgerechnet
+  die Tage, an denen du hinwillst.
 - **Parken ist erst ab Gold enthalten.** Bei Bronze und Silber kostet die
   Saisonkarte fürs Parken 25 € extra, sonst zahlst du die 9 € bei jedem Besuch.
 - **Es gibt ein Tageskontingent.** Jeder Besuch muss vorher angemeldet werden,
@@ -624,22 +648,26 @@ Beim Pass selbst stehen drei Dinge im Kleingedruckten:
   geht mit Pass also schlechter als mit Tagesticket.
 
 **Anreise.** Die Adresse ist **Warner-Allee 1, 46244 Bottrop**. Mit dem Auto
-über die A31, Abfahrt Kirchhellen, danach ist alles ausgeschildert. Aus Essen
+über die A31 und dort über die Ausfahrt 39 Bottrop-Feldhausen, auch wenn das Navi
+eine andere vorschlägt. So empfiehlt es der Park ausdrücklich, danach ist alles
+ausgeschildert. Aus Essen
 sind es rund zwanzig Minuten, aus Düsseldorf gut vierzig, aus Köln etwa eine
 Stunde.
 
 Und in einem Punkt schlägt Bottrop jeden anderen großen deutschen Park, den ich
 kenne: **Der Bahnhof Feldhausen liegt rund 400 Meter vom Eingang entfernt.**
 Dorthin fahren der RE14 ab Essen Hauptbahnhof und der RB43 ab Dortmund über
-Herne. Wer lieber im Bus sitzt, nimmt die **SB16** ab Essen
-Hauptbahnhof, die auf dem Parkgelände endet. Ohne Auto in einen deutschen
+Herne. Bis einschließlich 30. September 2026 hält dort allerdings kein Zug, bis
+dahin fährt ein Ersatzbus ab Dorsten. Wer lieber im Bus sitzt, nimmt die
+**SB16** ab Essen Hauptbahnhof, die an der Haltestelle Movie Park direkt am
+Haupteingang hält. Ohne Auto in einen deutschen
 Freizeitpark zu kommen, ist sonst eine Tagesaufgabe. Hier ist es eine
 Regionalbahn und ein Fußweg von fünf Minuten.
 
-**Essen.** Hier bin ich kurz: Pizza, Pasta, Burger, Pommes, eine Bäckerei, und
-die Preise sind der am häufigsten genannte Kritikpunkt in Besucherbewertungen.
-Für 2026 hat der Park Verbesserungen angekündigt. Gemerkt habe ich davon bisher
-nichts, und ich esse hier so schnell wie möglich.
+**Essen.** Hier bin ich kurz: Pizza und Pasta, seit 2024 als All-you-can-eat in
+der Trattoria Hollywood, dazu Burger, Pommes und eine Bäckerei. Für das, was auf
+den Teller kommt, finde ich die Preise hoch, und ich esse hier so schnell wie
+möglich.
 
 Ob es in Bottrop gerade regnet, entscheidet, wo sich die Schlangen stapeln:
 
@@ -652,22 +680,23 @@ Ob es in Bottrop gerade regnet, entscheidet, wo sich die Schlangen stapeln:
 ### Wie lang sind die Wartezeiten im Movie Park?
 
 Kürzer als in den großen Nachbarparks: Über alle bisher gemessenen Öffnungstage
-stehst du hier gut halb so lang an wie im Phantasialand. Den höchsten Wert im Park hat
+stehst du hier gut ein Drittel kürzer an als im Phantasialand. Den höchsten Wert im Park hat
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), nicht die
 große Achterbahn. Die aktuellen Zahlen stehen auf der
 [Movie-Park-Parkseite](ref:movie-park-germany?bare).
 
 ### Wann ist im Movie Park am wenigsten los?
 
-**Sonntag und Freitag** sind in unseren Daten die ruhigsten Wochentage, der
-Dienstag ist der vollste, und der Samstag liegt deutlich über dem Sonntag. Ab
+**Freitag**, dicht gefolgt von **Sonntag** und **Donnerstag**, ist in unseren
+Daten der ruhigste Wochentag, der Dienstag ist der vollste, und der Samstag liegt deutlich über dem Sonntag. Ab
 Anfang September öffnet der Park ohnehin nur noch von Donnerstag bis Sonntag, in
 den Herbstferien vom 17. bis 31. Oktober täglich. Welcher Tag es konkret wird, steht im [Wartezeiten-Kalender](ref:movie-park-germany?calendar).
 
 ### An welchen Tagen hat der Movie Park im Herbst geöffnet?
 
 Vom 2. September an **Donnerstag bis Sonntag**, in den NRW-Herbstferien vom 17.
-bis 31. Oktober täglich, letzter Saisontag ist der **8. November 2026**. Das
+bis 31. Oktober täglich, danach nur noch am Wochenende vom 6. bis 8. November,
+letzter Saisontag ist der **8. November 2026**. Das
 Winterevent Hollywood Christmas läuft danach vom 27. November 2026 bis zum 5. Januar 2027.
 
 ### Wann ist das Halloween Horror Festival 2026?
@@ -698,8 +727,9 @@ Bandit steht hier die Holzachterbahn, die 1999 die einzige in Deutschland war.
 
 Ja, und zwar besser als bei fast jedem anderen deutschen Park. Der Bahnhof
 Feldhausen liegt rund 400 Meter vom Eingang entfernt und wird vom RE14 ab Essen
-und vom RB43 ab Dortmund bedient. Die Buslinie SB16 ab Essen Hauptbahnhof hält
-auf dem Parkgelände.
+und vom RB43 ab Dortmund bedient, bis einschließlich 30. September 2026 fährt
+stattdessen ein Ersatzbus ab Dorsten. Die Buslinie SB16 ab Essen Hauptbahnhof hält
+direkt am Haupteingang.
 
 ### Lohnt sich der Movie Park für Erwachsene ohne Kinder?
 
@@ -722,23 +752,28 @@ des Kontinents.
 
 Der zweite Teil gehört genauso dazu, und ich sage ihn als jemand, der gerne
 hinfährt: **Seine besten Jahre hat dieser Park hinter sich.** Die lagen in der
-Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte, und was danach kam,
-war über weite Strecken Verwaltung des Bestands. Die letzte Achterbahn für Erwachsene kam 2017, und die Neuheit im Jubiläumsjahr ist ein Filmtunnel im Gebäude einer
-Attraktion von 2014.
+Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte. Gebaut wird seitdem
+weiter, 2011, 2017, 2018, 2021 und 2026, aber ohne die Marken, die den Park einmal
+ausgemacht haben. Die letzte Achterbahn für Erwachsene kam 2017, und die Neuheit
+im Jubiläumsjahr ist ein Filmtunnel im Gebäude einer Attraktion von 2014.
 
-Und trotzdem kommen erstaunlich viele Leute immer wieder. Im Oktober reisen sie aus dem ganzen Land nach Bottrop an, viele davon
-jedes Jahr, und wer hier mit dem Saisonpass durch die Streets of New York läuft,
-tut das nicht, weil dort zuletzt viel investiert worden wäre. Auf 45 Hektar steht
+Und trotzdem kommen die Leute. 2024 zählte der Park so viele Besucher wie seit dem
+Jahr 2002 nicht mehr, mit einem Besucherrekord beim Halloween Horror Festival. Im
+Oktober reisen sie aus dem ganzen Land nach Bottrop an, viele davon jedes Jahr,
+und wer hier mit dem Saisonpass durch die Streets of New York läuft, tut das
+nicht wegen der letzten Neuheit. Auf 45 Hektar steht
 eine Kulissenstadt, die 1996 mit dem Geld eines Hollywood-Studios gebaut wurde
 und deren Fassaden
 immer noch stehen, obwohl das Studio seit zweiundzwanzig Jahren weg ist. Der Park
-hat dreimal den Besitzer gewechselt, jede Marke verloren, mit der er angetreten war,
-und irgendwann angefangen, Fahrgeschäfte über die eigene Vergangenheit zu bauen.
+hat dreimal den Besitzer gewechselt, gehört zu einem Konzern, den EQT gerade
+verkaufen will, hat jede Marke verloren, mit der er angetreten war, und irgendwann
+angefangen, Fahrgeschäfte über die eigene Vergangenheit zu bauen.
 
-Wenn du in diesem Herbst hinfährst: Nimm den Sonntag, nicht den Samstag, sei um
-zehn am Eingang und stell dich zuerst bei Star Trek an. Und wenn du nach
+Wenn du in diesem Herbst hinfährst: Nimm den Freitag oder den Sonntag, nicht den
+Samstag, sei um zehn am Eingang und stell dich zuerst bei Van Helsing’s Factory
+an. Und wenn du nach
 Feierabend über den Parkplatz zurückgehst, dreh dich noch einmal um. Die alte
-Vekoma-Bahn, die alle abreißen wollen, leuchtet dann violett, und mit etwas Glück
+Vekoma-Bahn, die so viele abreißen wollen, leuchtet dann violett, und mit etwas Glück
 steht der Mond dahinter.
 
 — Patrick
@@ -749,25 +784,29 @@ steht der Mond dahinter.
 
 - Parkgeschichte, Eröffnung 1996, Eigentümerwechsel, Themenbereiche, Fläche: [Movie Park Germany auf de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany auf en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World an der Gold Coast (eröffnet 3. Juni 1991) als Vorbild: [Warner Bros. Movie World auf en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)
-- Verlust der Warner-Lizenzen 2004/05 und die Folgen für Looney Tunes Adventure und Ice Age Adventure: [Ice Age Adventure auf en.wikipedia](https://en.wikipedia.org/wiki/Ice_Age_Adventure) · [Movie Park Germany to build a new ride on the site of the old Ice Age darkride (Dark Ride Database)](https://darkridedatabase.com/movie-park-germany-to-build-a-new-ride-on-the-site-of-the-old-ice-age-darkride/)
-- Movie Park Studio Tour (Intamin, 532 Meter, 900 Personen pro Stunde, zwölf Szenen, Drehscheibe, Rückwärts-Launch): [Movie Park Studio Tour bei Intamin](https://www.intamin.com/project/movie-park-studio-tour/) · [10 Fakten über die neue „Studio Tour“ (Parkerlebnis)](https://www.parkerlebnis.de/movie-park-studio-tour-neue-achterbahn-2021-fakten_120236.html)
+- Verlust der Warner-Lizenzen 2004/05, die Folgen für Looney Tunes Adventure und Ice Age Adventure, die Namen von Area 51 (1996 Bermuda-Dreieck, 2005 bis 2018 Bermuda Triangle – Alien Encounter): [Ice Age Adventure auf en.wikipedia](https://en.wikipedia.org/wiki/Ice_Age_Adventure) · [Movie Park Germany to build a new ride on the site of the old Ice Age darkride (Dark Ride Database)](https://darkridedatabase.com/movie-park-germany-to-build-a-new-ride-on-the-site-of-the-old-ice-age-darkride/)
+- Movie Park Studio Tour (Intamin, 532 Meter, 900 Personen pro Stunde, zwölf Szenen, Drehscheibe, Rückwärts-Launch, die leere Halle 2018 und 2019 als Horrorhaus): [Movie Park Studio Tour bei Intamin](https://www.intamin.com/project/movie-park-studio-tour/) · [10 Fakten über die neue „Studio Tour“ (Parkerlebnis)](https://www.parkerlebnis.de/movie-park-studio-tour-neue-achterbahn-2021-fakten_120236.html)
 - Journey to the Forbidden Chamber (Eröffnung 14. Mai 2026, Simworx Immersive Tunnel, Vorgänger The Lost Temple und Movie Magic): [Neu in 2026 (offiziell)](https://www.movieparkgermany.de/en/journey-to-the-forbidden-chamber) · [Journey to the Forbidden Chamber (Dark Ride Database)](https://darkridedatabase.com/rides/journey-to-the-forbidden-chamber/) · [Die Movie Park Germany Neuheit 2026 (Themepark Central)](https://www.themepark-central.de/movie-park-journey-to-the-forbidden-chamber/)
 - Star Trek™: Operation Enterprise (Mack Rides, 40 Meter, 90 km/h, 720 Meter, drei Überschläge, LSM-Launch, IMAscore): [Star Trek: Operation Enterprise auf en.wikipedia](https://en.wikipedia.org/wiki/Star_Trek:_Operation_Enterprise)
-- The Bandit (1999 als Wild Wild West, RCCA, 27,8 Meter, 1.099 Meter, Cyclone-Layout, Premier-Züge ab 2001): [Bandit (Movie Park Germany) auf de.wikipedia](<https://de.wikipedia.org/wiki/Bandit_(Movie_Park_Germany)>) · [Bandit bei Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
+- The Bandit (1999 als Wild Wild West, RCCA, 27,8 Meter, 1.099 Meter, Cyclone-Layout, Premier-Züge ab 2001): [Bandit (Movie Park Germany) auf de.wikipedia](https://de.wikipedia.org/wiki/Bandit_%28Movie_Park_Germany%29) · [Bandit bei Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
 - Retracking der Bandit im Winter 2015/16 (200 Meter Schiene, zehn Zimmerleute, zwei Wandergesellen): [Neue Schienen für the Bandit (offiziell)](https://www.movieparkgermany.de/blog/neue-schienen-fuer-the-bandit-groesstes-retracking-seit-bau-der-achterbahn-im)
-- Van Helsing’s Factory (18. Juni 2011, Gerstlauer Bobsled, 400 Meter, 36 km/h, 848 Personen pro Stunde, 5 Millionen Euro, ehemalige Gremlins-Halle): [Van Helsing’s Factory auf en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
-- Iron Claw (6. April 2001 als Eraser, Vekoma SLC, 689 Meter, frühere Namen FX und MP-Xpress): [Iron Claw auf rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (offiziell)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
+- Van Helsing’s Factory (18. Juni 2011, Gerstlauer Bobsled, 400 Meter, 36 km/h, 848 Personen pro Stunde, Idee einen Monat nach der Übernahme, 5 Millionen Euro, ehemalige Gremlins-Halle): [Van Helsing’s Factory auf en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
+- Iron Claw (6. April 2001 als Eraser, Vekoma SLC, 689 Meter, fünf Überschläge, frühere Namen FX und MP-Xpress, die Facebook-Frage im Februar 2024): [Iron Claw auf rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (offiziell)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw) · [Movie Park vraagt tips voor pijnlijke achtbaan (Looopings, niederländisch)](https://www.looopings.nl/weblog/24822/Movie-Park-vraagt-tips-voor-pijnlijke-achtbaan-fans-smeken-om-sloop.html)
 - Excalibur – Secrets of the Dark Forest (1996 als Die Unendliche Geschichte, 2005 Mystery River, Neueröffnung 7. Mai 2018): [Excalibur – Secrets of the Dark Forest auf de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River wird zu Excalibur (Parkerlebnis)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
-- Gestoppte Achterbahn für 2014 (45 Meter, zehn Millionen Euro, direkt hinter dem Haupteingang, im September 2012 gestoppt, seit 2017 steht dort Star Trek): [Achterbahnpläne gestoppt (offiziell, archiviert)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Freizeitparkinfos, Juni 2012](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, Februar 2016](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany plant 45 Meter hohe Achterbahn (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
+- Gestoppte Achterbahn für 2014 (45 Meter, zehn Millionen Euro, direkt hinter dem Haupteingang, im September 2012 gestoppt, offizielle Begründung und die von Wouter Dekkers, seit 2017 steht dort Star Trek): [Achterbahnpläne gestoppt (offiziell, archiviert)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Überraschendes Aus für die Achterbahn (Freizeitparkinfos, September 2012)](https://www.freizeitparkinfos.de/news/ueberraschendes-aus-fuer-die-achterbahn-im-movie-park) · [Freizeitparkinfos, Juni 2012](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, Februar 2016](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany plant 45 Meter hohe Achterbahn (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
 - 30-jähriges Jubiläum, neue Shows 2026, Parade of Celebration: [30 Jahre Park- und Filmgeschichte (offiziell)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [Was ist neu in 2026 (offiziell)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 Jahre Movie Park Germany (Themepark Central)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
-- Halloween Horror Festival 2026 (26. September bis 8. November, 28. Ausgabe, über 300 Monster, vier Scare Zones): [Movie Park Halloween (offiziell)](https://www.movieparkgermany.de/en/halloween) · [Monster-Casting 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [unser Halloween-Guide 2026](/blog/halloween-freizeitparks-2026)
+- Halloween Horror Festival 2026 (26. September bis 8. November, 28. Ausgabe, über 300 Monster, vier Scare Zones, S.I.K. Pass, Abende bis 21 oder 22 Uhr): [Movie Park Halloween (offiziell)](https://www.movieparkgermany.de/en/halloween) · [S.I.K. Pass (offiziell)](https://www.movieparkgermany.de/halloween/sik-pass) · [Tickets und Hinweise (offiziell)](https://www.movieparkgermany.de/halloween/tickets-kaufen) · [Monster-Casting 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [unser Halloween-Guide 2026](/blog/halloween-freizeitparks-2026)
 - Die neun Häuser 2026, davon Jason Universe als einziges neues: [Horrormazes (offiziell)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
 - PHOBIA – The Live Horror Game Show im Studio 7 und der Monsteraufmarsch: [Shows (offiziell)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (seit 2022, 2026 die fünfte Ausgabe am 17. Oktober): [Haunters Against Hate (offiziell)](https://www.movieparkgermany.de/en/halloween/hah) · [„Haunters Against Hate“ bei Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
 - Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (offiziell)](https://www.movieparkgermany.de/en/christmas)
-- Preise, Saisonpässe 2027 (gültig ab Kauf bis 7. November 2027, Verlängerungsbonus an der Infokasse) und Parkgebühr: [Unsere Preise & Angebote (offiziell)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Saisonpass (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Eintrittspreise 2026 (NRW-Parks)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
-- Bonus Club: Vorteile nur für Gold und Platin, freier Eintritt im Efteling je Kalenderjahr, dreimal Bobbejaanland, Slagharen und Weltvogelpark Walsrode, dazu die Rabattliste: [Bonus Club (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Vorteile 2026, Parks der Gruppe (PDF)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf) · [Vorteile 2026, Freizeitparks, Zoos und Co. (PDF)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf)
-- Anreise, Bahnhof Feldhausen, SB16: [Anfahrt & Parken (offiziell)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Ausflugstipp mit der Bahn (DB Regio NRW)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
+- Preise, Geburtstagsticket, Saisonpässe 2027 (gültig ab Kauf bis 7. November 2027, Sperrtage, Hollywood Christmas 2026 ab Silber, Verlängerungsbonus an der Infokasse, freie Eintritte in den Schwesterparks) und Parkgebühr: [Unsere Preise & Angebote (offiziell)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Saisonpass (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Informationen zum Saisonpass (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/informationen-zum-saisonpass) · [Eintrittspreise 2026 (NRW-Parks)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
+- Bonus Club: Vorteile nur für Gold und Platin, Angebote für 2027 erst zum Saisonbeginn 2027, 2026 freier Eintritt im Efteling je Kalenderjahr und die Rabattliste: [Bonus Club (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Vorteile 2026, Parks der Gruppe (PDF)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf) · [Vorteile 2026, Freizeitparks, Zoos und Co. (PDF)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf)
+- Efteling-Ticket ohne Datum: [Tickets (Efteling)](https://www.efteling.com/de/tickets)
+- Verkaufspläne für Parques Reunidos: [unsere Meldung vom 25. September 2026](/blog/parques-reunidos-verkauf-movie-park)
+- Anreise, Ausfahrt 39, Bahnhof Feldhausen und Ersatzverkehr bis 30. September 2026, SB16: [Anfahrt & Parken (offiziell)](https://www.movieparkgermany.de/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Linie SB16 (Ruhrbahn)](https://www.ruhrbahn.de/essen/fahrplan/linienfahrplaene/linie/sb16) · [Ausflugstipp mit der Bahn (DB Regio NRW)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Herbstferien NRW 2026 (17. bis 31. Oktober): [Ferienordnung für Nordrhein-Westfalen (Bildungsportal NRW)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
-- Saisonbilanz 2024 und 30 Millionen Besucher seit 1996: [Saisonbilanz und MPHC Event 2024 (offiziell)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany begrüßt seinen 30-millionsten Besucher (EuroAmusement Professional)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Movie Park Germany auf park.fan](ref:movie-park-germany)
+- Besucherzahlen: über 1,3 Millionen 2015, 2024 die meisten seit 2002 mit einem Halloween-Rekord, der 40-millionste Gast im August 2026: [Freizeitparkinfos, Februar 2016](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Saisonbilanz und MPHC Event 2024 (offiziell)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Der 40-millionste Gast (offiziell)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
+- Essen, Trattoria Hollywood seit 2024: [Neuerungen im Movie Park Germany (EuroAmusement Professional, März 2024)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
+- Die übliche Wochentags-Empfehlung anderer Ratgeber, als Beispiel: [Movie Park Wartezeiten (Freizeitfun)](https://freizeitfun.com/movie-park-wartezeiten/)
+- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, Stand 25. September 2026, [Movie Park Germany auf park.fan](ref:movie-park-germany)

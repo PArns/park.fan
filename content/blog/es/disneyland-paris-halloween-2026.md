@@ -49,10 +49,11 @@ noche en la que también los adultos pueden entrar disfrazados. Empieza el
 **sábado 26 de septiembre** y dura hasta el **domingo 1 de noviembre de
 2026**. Todo el programa está incluido en una entrada normal.
 
-Solo se decora Disneyland Park. Al lado,
-[Disney Adventure World](ref:disney-adventure-world) no tiene programa propio
-de Halloween. Si allí quieres pasar miedo, súbete a
-[Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
+De los dos parques, solo se decora Disneyland Park, y los hoteles Disney también
+tienen decoración de otoño. Al lado, [Disney Adventure
+World](ref:disney-adventure-world) no tiene programa propio de Halloween. Si
+allí quieres pasar miedo, súbete a [Tower of
+Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
 
 ## Novedades de 2026
 
@@ -63,13 +64,14 @@ una piedra de un color distinto para cada uno.
 
 Cruella, Maléfica, Jafar y la Reina de Corazones vuelven a los encuentros con
 villanos. Por primera vez desde 2021 vuelve también el **Dr. Facilier**, de
-_Tiana y el sapo_, en Frontierland. Jack Skellington y Sally, de _Pesadilla antes de Navidad_,
-regresan algunos días concretos y solo se les puede ver a través de la cola
-virtual de la app de Disneyland Paris. Te pones en la cola desde el móvil el día de tu visita,
-no allí en persona.
+_Tiana y el sapo_, en Frontierland. Jack Skellington y Sally, de _Pesadilla
+antes de Navidad_, regresan algunos días concretos, y solo se les puede ver a
+través de una cola virtual. Te apuntas el día de tu visita, sobre todo desde la
+app de Disneyland Paris o con un Cast Member en la entrada del encuentro. Las
+plazas son limitadas.
 
 Main Street recibe unas cuarenta calabazas nuevas, 170 velas nuevas con forma
-de Mickey, guirnaldas de estilo victoriano, una banda sonora compuesta para la
+de Mickey y sus amigos, guirnaldas de estilo victoriano, una banda sonora compuesta para la
 ocasión y, por la noche, proyecciones en las fachadas. En la estación de la
 entrada cuelgan cuatro vidrieras art déco nuevas con Maléfica y Úrsula. Al
 final de la calle, en el Royal Castle Stage, espinas, cuervos y escudos de los
@@ -99,13 +101,19 @@ Home-Style Restaurant.
 ## El 31 de octubre
 
 En 2026 Halloween cae en sábado, y es el único día del año en que los adultos
-también pueden entrar disfrazados. Disneyland Park abre hasta las **23:00**,
-con encuentros especiales con personajes, un espectáculo de fuegos artificiales
+también pueden entrar disfrazados. Disneyland Park abre hasta las **23:00**, con
+encuentros especiales con personajes, un espectáculo de fuegos artificiales
 propio y caramelos de M&M'S. No hace falta ninguna entrada aparte para la
-fiesta: la noche está incluida en la entrada normal, aunque ese día la entrada cuesta
-más que los demás días del festival. El parque publicará antes
-qué disfraces se permiten. Antes de salir, mira la app: no vaya a ser que pases horas haciendo una
-máscara que tenga que quedarse en la puerta.
+fiesta: la noche está incluida en la entrada normal, es decir, en una entrada
+con fecha cuyo precio, según Disney, varía con la temporada y la demanda.
+
+Las normas sobre disfraces ya están en la página de Halloween del parque. A
+partir de 12 años no se permiten máscaras (salvo las médicas), ni disfraces que
+tapen del todo la cara o la cabeza, ropa que arrastre por el suelo, capas
+largas, palos o cualquier cosa que parezca un arma. Quien vaya disfrazado de
+personaje Disney no puede posar para fotos ni firmar autógrafos. Un disfraz de
+cuerpo entero con varias capas puede suponer un control más a fondo en la
+entrada.
 
 Sábado, Halloween, disfraces y programa nocturno para todo el que tenga
 entrada: estará lleno. Si puedes pasar sin la noche de disfraces, la decoración
@@ -133,3 +141,6 @@ quien va sin niños lo compara el
 Programa y fechas: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 de septiembre de 2026: la primera versión decía que el parque publicaría más adelante qué disfraces se permiten el 31 de octubre. Las normas ya estaban en su página de Halloween y ahora están en el texto. Para Jack y Sally, también un Cast Member allí mismo puede apuntarte a la cola virtual, no solo la app. Hemos quitado la frase según la cual la entrada cuesta más el 31 de octubre que el resto de días del festival, porque no hemos podido comprobarla.

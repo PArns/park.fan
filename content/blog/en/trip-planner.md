@@ -2,6 +2,7 @@
 title: 'The trip planner checks your day before you join the wrong queue'
 translationKey: trip-planner-launch
 date: '2026-09-05'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -28,7 +29,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'A packed open-air theatre seen from the back, the audience waiting in the dark'
-  caption: 'Fantasmic at Hollywood Studios, just before it starts. Ten thousand people who are not queueing anywhere for that half hour.'
+  caption: 'Fantasmic at Hollywood Studios, just before it starts. Close to ten thousand people fit in, and for that half hour none of them is queueing anywhere.'
   credit: 'Patrick Arns'
 seo:
   title: 'Plan a theme park day: count the queues before you join them'
@@ -63,7 +64,7 @@ since day one. “Is that a lot for a Tuesday” since
 [late August](/blog/is-70-minutes-a-long-wait). The third question was nowhere:
 does my day actually add up?
 
-Since this week it is there. The [trip planner](/trip-planner) lays your rides
+Since early September it is there. The [trip planner](/trip-planner) lays your rides
 on a timeline and works the day out before you set off.
 
 ## A day is an order, and the order has a clock
@@ -84,7 +85,9 @@ breakfast which of them will still be waiting at half past ten.
 
 Ten rides, from opening to four in the afternoon, and under the plan sits the
 total: five and a quarter hours of queueing. That is the version the optimiser
-considered best. Without an order you queue just as long and ride less.
+considered best. When it reorders a day you laid out yourself, it then tells you
+how many minutes of queueing the new order saves, worked out with the same
+formula as before.
 
 ## Between two rides there is a walk, often around a lake
 
@@ -98,8 +101,9 @@ ride time is on file. The distance is as the crow flies, and the planner says so
 out loud. It is a lower bound and not a walking time: paths bend around water,
 around queue lines and around one-way routes, some parks stack their areas on
 top of each other, and at a large one the straight line often crosses a lake you
-have to walk all the way around. For the upper bound the planner uses park pace
-rather than walking pace and adds two thirds of the straight line as a detour.
+have to walk all the way around. For the upper bound the planner therefore uses
+park pace, about four kilometres an hour with crowds and pushchairs, and adds 60
+per cent of the straight line as a detour.
 
 At a compact park a clumsy transfer costs three minutes and nobody notices. At a
 large one it costs a quarter of an hour. Do that eight times in a day and you
@@ -149,8 +153,10 @@ it is flat, something else falls out.
 A second thing hardly anybody works out in their head: the first hour is often not
 yours at all. Plenty of parks open their gates before some of the rides run, and
 the headliners like to be among the later ones. Fill that first hour with them
-and you have planned an hour that does not exist. The planner knows when each
-ride opens and lets no block slip in front of it. There is no counterpart to
+and you have planned an hour that does not exist. At Phantasialand the gates
+open at nine, but Taron, F.L.Y. and most of the other big rides only start at
+ten. Wherever the API knows a ride’s own opening time, the planner lets no block
+slip in front of it. There is no counterpart to
 that: no feed reliably reports when a single ride shuts for the evening, so
 nothing is said about it.
 
@@ -166,17 +172,27 @@ The sorting weighs three things, and the ranking between them is the real
 decision.
 
 1. **Everything has to happen before closing.** A plan with one ride fewer that
-   actually takes place beats one with a ride more that never will. And if
-   something falls out, it falls out from the back: first whatever the button
-   just added, never what you had thought of yourself.
+   actually takes place beats one with a ride more that never will. What counts
+   is the moment you join the queue: a line you still get into a quarter of an
+   hour before closing is fine. And if something falls out, it is first whatever
+   the button just added, not what you had thought of yourself. Among the added
+   rides, a second go on the same ride goes before any first ride, then the one
+   with the shortest expected queue. The rides most people come for stay in
+   longest.
 2. **The sum of the waits.** That is what was asked for.
 3. **The time you join the last queue.** Where two orders cost the same, the one
    that finishes earlier wins.
 
-At a park with more headliners than fit into a day, point one is the whole game.
-Which is why the button does not always disappear after a press: if a ride is
-left over with no room for it, the count sits underneath and the offer stays
-standing in case you drop something else.
+At a park with more headliners than fit into a day, point one is the whole game,
+and since 21 September the planner no longer decides it quietly. If not
+everything fits, either button first opens an assistant with three steps.
+“Adjustments” lists what would make room, such as dropping the lunch break or
+cutting it to half an hour, and every line is worked out: it only appears if it
+really gets one more ride into the day. “Priorities” shows the whole list in the
+order things would be cut, and you move to the top whatever you must not miss.
+The rides you planned yourself are on that list too, because here you decide,
+not the button. “Result” names what stays out. Nothing is written into the plan
+until you apply it.
 
 There is deliberately no slider that trades queueing against hanging about.
 Nobody could justify that number, and the first person to disagree with it would
@@ -204,12 +220,13 @@ the eleven blocks and swallow hard.
 We spent longest on four places where the planner deliberately claims less than
 it could.
 
-**The forecast is off, and measurably so.** Every selected block says how far
-the predictions for that ride sat, on average, from what the day actually
-brought. (I have wanted the same from weather forecasts for years.)
-“Typical” here means: half the days land further out. So the number
-stands there as a typical error and never as a range that already
-contains the right answer.
+**The forecast is off, and measurably so.** Every selected block says how far,
+on average over the last 45 days, the predictions for a queue that long and that
+far ahead sat from what the day actually brought. It is there up to 60 days
+ahead; the measurement does not reach further yet. (I have wanted the same from
+weather forecasts for years.) An average is not a ceiling, and on plenty of days
+the forecast lands further out. So the number stands there as a typical error
+and never as a range that already contains the right answer.
 
 **Showtimes are two different things.** What the park has published for today is
 a statement. What we carried forward from the last matching weekday is a guess,
@@ -240,24 +257,33 @@ plan, which is better learned over breakfast than at the turnstiles.
 The one exception is push notifications. For us to tell you it is time to head
 over, the plan has to sit on our server, and the planner writes down what that
 means: whoever has the link can read it and change it. No password stands in
-front of it. If you do not want that, leave the notifications off and you lose
-nothing else.
+front of it. Switch the notifications off again and the plan is deleted from the
+server. If you want none of that, leave them off and you lose nothing else. What
+we tell you about is your choice: when to head to the next ride, showtimes, a
+planned ride closing or reopening, and a planned wait changing noticeably.
 
-Two more things that are easy to miss. A tab hangs at the edge of the screen on
-every page and opens the planner, even with nothing planned yet. And
-on a desktop you can open a second column, which puts two days side by side. I
+While notifications are on, there has also been a share link since 23
+September. Whoever opens it gets their own copy in their planner, and whatever
+they change stays with them. That is also how a plan gets from a computer onto a
+phone.
+
+Two more things that are easy to miss. On a computer a tab hangs at the edge of
+the screen on every page and opens the planner, even with nothing planned yet;
+on a phone, since 24 September, a calendar icon in the top bar does that job.
+And on a desktop you can open a second column, which puts two days side by side. I
 built it for exactly one sentence: “and what would that look like on Saturday”.
 
 ## How to start
 
-The way in runs through three questions. Which park, which day, and who is
-coming.
+The way in runs through four questions. Which park, which day, who is coming,
+and which big rides should go in. The pictures below still show the first
+version, with three steps.
 
 The first is a search field, and there is a small thing behind it that goes
 wrong easily. Type “Disneyland” and you get five parks on three continents that
 all go by that name. The mouse was not feeling inventive when it came to names.
 
-![Step one of the planner wizard: “Disneyland” typed into the search field, five parks from five countries listed below it. | One name, five parks. Which is why the planner remembers the path from the API and not the name.](/media/tagesplaner/planer-wizard-park-en.webp)
+![Step one of the planner wizard: “Disneyland” typed into the search field, five parks in Anaheim, Paris, Tokyo, Shanghai and Hong Kong listed below it. | One name, five parks. Which is why the planner remembers the path from the API and not the name.](/media/tagesplaner/planer-wizard-park-en.webp)
 
 A plan is filed under the path the API itself returns, never under one we build
 from the name on screen. “Netherlands” is not spelled the same in every
@@ -268,16 +294,21 @@ rows you get a whole month, and every day carries that park’s crowd forecast.
 “The Saturday after next” is a glance rather than a scroll, and whatever else we
 know about it sits under the grid.
 
-![Step two of the planner wizard: a photo of Disneyland Park in Anaheim above a month grid where every day carries the crowd forecast, with Saturday the 19th picked. | A September forecast quiet throughout at Anaheim. Sixty rows in a dropdown never show you that.](/media/tagesplaner/planer-wizard-tag-en.webp)
+![Step two of the planner wizard: Disneyland Park in Anaheim is chosen, every day in the month grid carries the crowd forecast, and Saturday the 19th is picked. | A September forecast quiet throughout at Anaheim. Sixty rows in a dropdown never show you that.](/media/tagesplaner/planer-wizard-tag-en.webp)
 
 The third question sounds like paperwork and matters more than it looks: plan a
-lunch break, are children coming, do you want to stay dry. All three are marks
-on the ride list rather than filters, and the planner puts it on the card: rides
-with a higher height limit get marked, not hidden. A filter would quietly
+lunch break, are children coming, do you want to stay dry. Lunch becomes a block
+in the day. Children and staying dry are marks on the ride list rather than
+filters, and the planner puts it on the card: rides with a higher height limit
+get marked, not hidden. A filter would quietly
 shorten the park, and whether grandma is holding the bags is something only you
 know.
 
 ![Step three of the planner wizard: three cards for lunch, children and water rides, with the “open plan” button below them. | Three answers that do not shorten the park. The lunch break lands as a block at 12:30 and can be moved.](/media/tagesplaner/planer-wizard-wer-en.webp)
+
+The fourth question was added on 21 September. It puts the park’s big rides into
+the day, and if they do not all fit before closing, it shows the same
+adjustments and the same list as the assistant under the timeline.
 
 After that you land on the park page with the planner open, and from there you
 drag rides onto the timeline. Every attraction page has a button for it too,

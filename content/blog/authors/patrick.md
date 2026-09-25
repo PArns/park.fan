@@ -17,7 +17,7 @@ first leading development at CyberGhost, today in engineering at ExpressVPN:
 systems millions of people rely on without ever noticing them.
 
 park.fan is where the two halves finally met. Live data from over 200 theme
-parks and 7,000 attractions, plus an AI that sees crowds coming up to a year
-ahead, so time in a park goes to magic rather than railings. On the blog I
+parks and nearly 7,000 attractions, plus an AI that sees crowds coming about
+half a year ahead, so time in a park goes to magic rather than railings. On the blog I
 write trip reports, data deep dives and everything the numbers alone can’t
 explain.

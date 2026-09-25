@@ -52,9 +52,9 @@ Duitsland. Wie toch al richting Europa-Park rijdt, komt er bijna langs.
 
 Er wordt gespeeld op **vrijdag en zaterdag van 2 tot 31 oktober 2026**: 2, 3,
 9, 10, 16, 17, 23, 24, 30 en 31 oktober. Op die dagen is het park open van
-**10 tot 22 uur** en draaien alle attracties tot sluitingstijd. Alleen de
-waterbanen DinoSplash en Wickie Splash stoppen om 20 uur, en in oktober zal
-niemand dat erg vinden.
+**10 tot 22 uur** en draaien volgens het park bijna alle attracties tot
+sluitingstijd. Met name genoemd worden alleen de waterbanen DinoSplash en Wickie
+Splash, die om 20 uur stoppen, en in oktober zal niemand dat erg vinden.
 
 Overdag loopt tegelijk het kindvriendelijke Plopsa Herfstfeest. De monsters
 komen 's avonds.
@@ -81,7 +81,9 @@ kaart, en niet als gast.
 
 Ook twee shows zijn nieuw: de **Monster Release Show “Freaks Reloaded”** met
 Reddles, de huisclown van de Fright Nights, en de worstelshow **“The Killing
-Games”**, waarin maar één vechter levend de ring verlaat. De vuurshow Flames
+Games”**, waarin maar één vechter levend de ring verlaat. Beide formats liepen
+in 2025 al, met een ander verhaal, als “Freaks Unleashed” en “Night of
+Anarchy”. De vuurshow Flames
 of Valhalla met Vikingen is er weer. Elke avond eindigt met de nieuwe slotshow
 **Carnival Inferno**, en daarvoor draaien dj's op het Fright Festival.
 
@@ -98,31 +100,32 @@ zonder tijdslot en zonder toeslag.
 
 Net als in Movie Park zitten de horrorhuizen **niet in de toegang**.
 
-| Ticket                 | Prijs                         | Inbegrepen                                                |
-| ---------------------- | ----------------------------- | --------------------------------------------------------- |
-| Dagticket met datum    | vanaf € 39 (normaal € 58)     | park tot 22 uur, scare zones, shows, Fright Festival      |
-| Horrorhuisticket       | vanaf € 3 per huis            | één huis met tijdslot, alleen samen met een parkticket    |
-| Alle zes huizen        | € 49                          | pakket zonder parktoegang                                 |
-| Nightmare Society Pass | vanaf € 109 (jaarkaart: € 79) | toegang, elk huis één keer zonder tijdslot, parkeren, pin |
+| Ticket                 | Prijs                            | Inbegrepen                                                 |
+| ---------------------- | -------------------------------- | ---------------------------------------------------------- |
+| Dagticket met datum    | vanaf € 39 (normaal € 58)        | park tot 22 uur, scare zones, shows, Fright Festival       |
+| Horrorhuisticket       | vanaf € 3 per huis               | één huis met tijdslot, alleen samen met een toegangsticket |
+| Alle zes huizen        | € 49                             | pakket zonder parktoegang                                  |
+| Nightmare Society Pass | vanaf € 109 (met jaarkaart € 79) | toegang, elk huis één keer zonder tijdslot, parkeren, pin  |
 
 De horrorhuizen werken met vaste tijdslots die je bij het kopen kiest. Alleen
 met de Nightmare Society Pass heb je die niet nodig, en daar hoort ook een
-gereserveerd vak bij de shows bij. Met een jaarkaart van Plopsaland kom je
+gereserveerd vak bij de shows bij, zolang er plek is. Met een jaarkaart van Plopsaland kom je
 zonder toeslag naar de Fright Nights, en tot 30 september krijg je, zolang de
 voorraad strekt, een gratis ticket voor Mad Rat.
 
 Wil je alle zes huizen, dan is de rekensom kort. Het goedkoopste dagticket plus
-het pakket van € 49 komt op € 88 per persoon, de pass kost € 109 en scheelt je
-zes tijdslots boeken. Op een drukke zaterdag in oktober neem je de pass.
+het pakket van € 49 komt op € 88 per persoon, de pass kost € 109, inclusief
+parkeren, en scheelt je zes tijdslots boeken. Op een drukke zaterdag in oktober neem je de pass.
 
 ## Voor wie het is
 
-Het park raadt de Fright Nights aan **vanaf 16 jaar**. Dat is een advies en
-geen toegangsregel zoals bij Traumatica. Ga je met jongere of schrikkerige
-mensen, dan blijven Majaland en de Plopsa Indoor-hal monstervrij, en ter
-plaatse krijg je een “Schreck-Stopp”: wie die draagt, wordt door de acteurs met
-rust gelaten. Vanaf 12 jaar zijn maskers, zware make-up en kostuums verboden,
-zodat het in het donker duidelijk blijft wie er werkt.
+Het park raadt de Fright Nights aan **vanaf 16 jaar**. Anders dan bij
+Traumatica is dat geen harde grens: volgens de FAQ van het park mag wie jonger
+is mee naar binnen onder begeleiding van een ouder of voogd. Voor jongere of
+schrikkerige mensen blijven Majaland en de Plopsa Indoor-hal monstervrij, en
+alleen ter plaatse is er de “Schreck-Stopp”, waarmee de monsters je volgens het
+park met rust laten. Gasten ouder dan 12 mogen geen maskers, zware make-up of
+kostuums dragen, zodat het in het donker duidelijk blijft wie er werkt.
 
 Haßloch ligt tussen de A65 en de B9, en vanaf station Haßloch rijdt een
 pendelbus naar het park. [Europa-Park](ref:europa-park) met Traumatica ligt
@@ -136,3 +139,6 @@ Tickets, tijdslots en details:
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/nl/plopsaland-deutschland/shows-evenementen/halloween-fright-nights).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 september 2026: in de eerste versie stond dat 16 jaar alleen een advies was en geen toegangsregel. Volgens de FAQ van het park komen jongeren onder begeleiding van een ouder of voogd naar binnen. Het kostuumverbod geldt voor gasten ouder dan 12; in de eerste versie stond “vanaf 12 jaar”. Ook hebben we toegevoegd dat de Monster Release Show en de worstelshow al in 2025 bestonden.

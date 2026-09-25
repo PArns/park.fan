@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: Ab Samstag 22 Horrorabende, und im neuen Haus wartet Jason'
+title: 'Movie Park Germany: Ab Samstag Horrorabende bis 8. November, und im neuen Haus wartet Jason'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -100,7 +100,8 @@ Online-Tickets kosten laut Park gerade 38,90 €, an der Tageskasse sind es ab
 12 Jahren 59,90 €.
 
 Die Horrorhäuser und PHOBIA sind **nicht im Eintritt**. Jedes Haus braucht ein
-eigenes Zeitfenster-Ticket, das es nur online gibt. Einen Einzelpreis pro Haus
+eigenes Zeitfenster-Ticket, gebucht wird online. Restkarten gibt es laut Parkplan
+je nach Verfügbarkeit auch im Park am Gästeservice. Einen Einzelpreis pro Haus
 nennt der Park auf seinen Halloween-Seiten nicht, der steht erst im Webshop.
 
 Wer alle neun Häuser will, rechnet am besten gegen den **S.I.K. Pass**: 215 €
@@ -145,3 +146,5 @@ Termine, Häuser und Tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/halloween).
 
 — Patrick
+
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, die Zeitfenster-Tickets für die Horrorhäuser gebe es nur online. Laut Parkplan verkauft der Park je nach Verfügbarkeit auch Restkarten vor Ort.

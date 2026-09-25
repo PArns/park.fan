@@ -2,7 +2,7 @@
 title: 'Ein Kinderwagen, eine Gondel und eine halbe Million Zeilen Code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -61,19 +61,22 @@ irgendjemand an Wartezeiten-Daten dachte.
 ## Ein Kinderwagen am Märchensee
 
 Meine Eltern haben mich als kleines Kind im Kinderwagen um den Märchensee im
-[Phantasialand](ref:phantasialand?bare) geschoben. Über vierzig Märchenwelten
-stehen dort am Ufer, jede eine kleine Bühne mit mechanisch bewegten Figuren.
-Rotkäppchen, Aschenputtel, Ali Baba.
+[Phantasialand](ref:phantasialand?bare) geschoben. Rund vierzig Märchen
+standen damals am Ufer, jedes eine kleine Bühne mit mechanisch bewegten Figuren.
+Rotkäppchen, Aschenputtel, der kleine Muck.
 
-Dieser Märchenwald ist älter als alles andere im Park. Als das Phantasialand am 30. April 1967 eröffnete, war er die erste Attraktion überhaupt, gebaut aus dem
-Fundus des Puppenspielers Richard Schmidt, der den Park zusammen mit dem
-Schausteller Gottlieb Löffelhardt aufzog. Puppen allein ergeben aber noch keine
+Dieser Märchenwald war der Kern des Parks. Als das Phantasialand am 30. April
+1967 eröffnete, stand er schon da, gebaut aus dem Fundus des Puppenspielers
+Richard Schmidt, der den Park zusammen mit dem Schausteller Gottlieb Löffelhardt
+aufzog. Puppen allein ergeben aber noch keine
 Geschichte, also gab es an jeder Szene einen Knopf. Einmal drücken, und ein
 Tonband erzählte das Märchen dazu.
 
 Ich habe diese Knöpfe gedrückt, und wenn meine Eltern schon zwei Szenen weiter
 waren, bin ich zurückgelaufen und habe sie noch einmal gedrückt. Ein Parkbesuch
-war das für mich nie, eher ein Hörspiel mit Selbstbedienung.
+war das für mich nie, eher ein Hörspiel mit Selbstbedienung. Den Märchenwald
+gibt es nicht mehr: Im Winter 2007/2008 hat der Park ihn für den Bau von
+Baumbergen abgerissen, übrig ist kaum mehr als der Tempel aus „Der kleine Muck“.
 
 ## Mit der Gondel durch „1001 Nacht“
 
@@ -89,7 +92,7 @@ Mein Vater ist 2019 gestorben. Vielleicht sind mir diese gemeinsamen Fahrten
 gerade deshalb so kostbar geworden. In meiner Erinnerung sitzt er bis heute
 neben mir in der Gondel.
 
-![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/media/movie-park-germany/iron-claw.jpg)
+![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Iron Claw im Movie Park Germany bei Nacht. Die Bahn fährt seit 1996, damals hieß sie noch Eraser. | left](/media/movie-park-germany/iron-claw.jpg)
 
 War mein Vater als LKW-Fahrer mal wieder auf Tour, hat meine Mutter kurzerhand
 das Steuer übernommen. Mit ihr habe ich viele andere Parks entdeckt,
@@ -97,9 +100,10 @@ allen voran den [Movie Park](ref:movie-park-germany?bare), damals noch Warner
 Bros. Movie World. Dort bin ich im **Lethal Weapon Pursuit** zum ersten Mal in
 meinem Leben Achterbahn gefahren: zwei Züge im Design amerikanischer
 Streifenwagen, die sich ein Rennen durch eine als Lagerhalle gebaute Einhausung
-lieferten, Looping gegen Looping. Deutschlands einziger Dueling Coaster, ab
-2005 als „Cop Car Chase“ unterwegs, im Oktober 2006 abgerissen. Die Bahn gibt
-es nicht mehr. Die Sucht, die sie ausgelöst hat, schon. Streng genommen ist
+lieferten, Looping gegen Looping. Damals Deutschlands einziger Dueling Coaster,
+ab 2005 als „Cop Car Chase“ unterwegs, im August 2006 stillgelegt und ab Oktober
+abgerissen. Auf der Fläche eröffnete im Mai 2007 der Themenbereich Santa Monica
+Pier mit dem Disk’O Coaster Crazy Surfer. Die Bahn gibt es nicht mehr. Die Sucht, die sie ausgelöst hat, schon. Streng genommen ist
 meine Mutter also schuld an allem, was danach kam.
 
 Die Arbeitsteilung war damit klar: Papa hat die Märchen beigesteuert, Mama die
@@ -112,10 +116,10 @@ bezahlt habe, und park.fan ist meine Art, etwas davon zurückzugeben.
 ## Von 5000er-Mäusen und einer 10.000er-Legende
 
 Die [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
-gibt es seit Juni 2011: ein interaktiver Dark Ride, in dem der
-Kammerjäger Oskar Koslowski die Backstube des Pâtissiers Gustav E. Lehmann von
-Mäusen befreit, bewaffnet mit einer Sahnespritze, verteilt auf 48 3D-Leinwände
-und sechs Minuten Fahrt. Bei einem frischen Highscore grinse ich heute noch wie
+gibt es seit Juni 2011: ein interaktiver 3D-Dark-Ride, in dem du dem
+Kammerjäger Oskar Koslowski hilfst, die kaiserliche Tortenfabrik Gustav E.
+Lehmann von Mäusen zu befreien, bewaffnet mit einem Spritzbeutel, durch sieben
+Räume und rund sieben Minuten lang. Bei einem frischen Highscore grinse ich heute noch wie
 damals an den Knöpfen am Märchensee. Auch wenn meine
 Freundin die bemerkenswerte Angewohnheit pflegt, mir die 5000er-Mäuse in genau
 dem Augenblick wegzuschnappen, in dem ich sie anvisiere, und mich damit Fahrt
@@ -126,10 +130,11 @@ habe ich sie endlich entdeckt, die **10.000er-Maus im zweiten Raum**. Wo genau
 sie sitzt? Das bleibt, bei allem Verständnis für die Frage, mein Geheimnis.
 
 Was ich lange nicht wusste und was mich bis heute jedes Mal kurz still werden
-lässt: Die Maus au Chocolat wurde 2011 auf genau der Fläche gebaut, auf der bis
-2009 die Gondelbahn stand. Wenn ich dort mit meiner Freundin um Punkte streite,
-sitze ich in einem Gebäude, das dort steht, wo ich als Kind mit meinem Vater
-durch das Drachenmaul gefahren bin.
+lässt: Die Gondelbahn fuhr bis zum 1. November 2009, danach hat der Park ihr
+Gelände eingeebnet und neu bebaut, und in einem dieser Neubauten am heutigen
+Kaiserplatz steckt seit 2011 die Maus au Chocolat. Wenn ich dort mit meiner
+Freundin um Punkte streite, sitze ich also ungefähr da, wo ich als Kind mit
+meinem Vater durch das Drachenmaul gefahren bin.
 
 Hinterher, als Trost für die verlorenen 5000er: Pancakes und Shakes im
 **Phenie’s** in Wuze Town, und die sind besser als das, was Freizeitparks sonst
@@ -147,14 +152,15 @@ ein eigenartig schönes Gefühl, wenn der Junge vom Märchensee Jahrzehnte spät
 vor dem Cinderella Castle im [Magic Kingdom](ref:magic-kingdom-park?bare)
 steht. Alles größer, alles lauter, alles weiter weg von Brühl, und trotzdem
 exakt dasselbe Kribbeln wie damals in der Gondel. Dazwischen
-[Epic Universe](ref:universal-epic-universe?bare) in seinem ersten Sommer,
+[Epic Universe](ref:universal-epic-universe?bare), ein Jahr nach seiner Eröffnung
+im Mai 2025,
 Achterbahnen bei
 [Islands of Adventure](ref:universal-islands-of-adventure?bare), Orcas und
 Manta bei [SeaWorld](ref:seaworld-orlando?bare). Zwei Wochen, und hinter dem
 Punkt auf der Liste steht jetzt endlich der Haken.
 
-Die Bilder davon sortiere ich noch, die Berichte sind in Arbeit, beides landet
-in den kommenden Wochen genau hier im Blog. Nur so viel vorweg: Es war jedes
+Die Bilder davon sortiere ich noch, und die Berichte sind nicht fertig. Sie
+erscheinen hier im Blog, sobald sie es sind. Nur so viel vorweg: Es war jedes
 einzelne Jahr der Vorfreude wert.
 
 ## Das zweite Ich: der Entwickler mit zu vielen Side-Projects
@@ -218,9 +224,11 @@ bei mir in Rente gehen durfte. Bei jeder nächtlichen Debugging-Session erinnert
 es mich daran, dass irgendwo gerade jemand vor einer echten Bahn steht und
 wissen will, ob sich die Schlange lohnt.
 
-Heute stehen dahinter Live-Wartezeiten aus über **200 Parks** und mehr als **7.000
-Attraktionen**, alle fünf Minuten neu. Prognosen, die den Andrang bis zu
-**365 Tage** im Voraus einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
+Heute stehen dahinter **210 Parks** mit zusammen rund **6.900 Attraktionen**
+(Stand 25. September 2026), und bei 209 davon holen wir alle fünf Minuten die
+aktuellen Wartezeiten ab. Der eine fehlende ist der Hansa-Park, der seine nur in der eigenen
+App herausgibt. Dazu Prognosen, die den Andrang rund ein halbes Jahr im Voraus
+einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später
 gegen die tatsächlich gemessene Wartezeit gehalten, und was dabei herauskommt,
 steht auf der [Fancast-Seite](/fancast).
@@ -231,11 +239,13 @@ Es sind immer dieselben drei Fragen, die ein Parkbesuch aufwirft, lange bevor
 irgendjemand im Auto sitzt und von hinten fragt, wann wir endlich da sind. Wann ist der beste Tag? Lohnt sich ein Sonntag? Und
 wie voll wird es wirklich?
 
-Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der besten
-Besuchstage, bis zu einem Jahr im Voraus. Der Blick in diese Daten räumt
-nebenbei mit ein paar Bauchgefühlen auf.
-Ein Sonntag im grauen November kann entspannter sein als jeder Dienstag in den
-NRW-Sommerferien. Ein Brückentag ist fast nie eine gute Idee. Und der
+Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender mit dem
+erwarteten Andrang für jeden Tag, rund ein halbes Jahr im Voraus. Der Blick in
+diese Daten räumt nebenbei mit ein paar Bauchgefühlen auf. Im Phantasialand
+stand Sonntag, der 21. Juni 2026, im Kalender ruhiger da als jeder Dienstag der
+NRW-Sommerferien danach. Die beiden Brückentage im Frühjahr, der 15. Mai und
+der 5. Juni, waren dort voller als jeder gewöhnliche Freitag im Mai und Juni
+(Stand September 2026). Und der
 „Geheimtipp“, bei Regen zu fahren, funktioniert exakt so lange, bis alle
 anderen denselben Geheimtipp gelesen haben.
 
@@ -253,14 +263,17 @@ Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
 Das können wir auch, alle fünf Minuten, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
-Deshalb schaut das Modell bis zu **365 Tage** nach vorn statt nur auf die
+Deshalb schaut das Modell rund ein halbes Jahr nach vorn statt nur auf die
 Anzeigetafel, und der Kalender der besten Tage macht daraus eine Antwort: hin
 oder lieber nicht. Ob es dabei richtig liegt, musst du mir nicht glauben, das
 steht auf der [Fancast-Seite](/fancast).
 
 Dazu Wartezeiten, Crowd-Level, Wetter am Parkeingang, Öffnungszeiten und
-Attraktions-Historien in sechs Sprachen. Kein Konzern, keine Paywall, keine
-Werbung, gebaut von jemandem, der selbst ansteht.
+Attraktions-Historien in sechs Sprachen. Seit September gibt es außerdem den
+[Tagesplaner](/blog/tagesplaner), der deine Bahnen gegen die Prognose auf eine
+Zeitleiste legt, und wer mag, lässt sich per Push-Nachricht Bescheid geben,
+sobald die Schlange an einer Bahn unter eine selbst gewählte Marke fällt. Kein
+Konzern, keine Paywall, keine Werbung, gebaut von jemandem, der selbst ansteht.
 
 ## Was dieser Blog werden soll
 
@@ -287,13 +300,15 @@ diesen Blog, in drei Geschmacksrichtungen.
 dem Park, der gerade besucht wurde. Kein „war schön“, sondern:
 „[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope Drop,
 das war der Plan, das hat funktioniert, das ging baden.“ Die Orlando-Reise von
-oben macht den Anfang: Disney World, Universal und SeaWorld, Bilder inklusive.
+oben bekommt genau so einen Bericht: Disney World, Universal und SeaWorld,
+Bilder inklusive.
 
 **Daten-Deep-Dives.** Was verrät die Wartezeit-Historie eines Parks _wirklich_?
 Wann lohnt sich [Taron](ref:phantasialand/taron?bare) am ehesten? Und halten
 unsere Prognosen, was sie versprechen?
 
-**News.** Kurz und ohne Umschweife. Passiert etwas, steht es hier, meist noch am selben Tag.
+**News.** Kurz und ohne Umschweife. Seit dem 25. September stehen sie in einem
+eigenen Bereich unter [News](/news), getrennt von den Artikeln.
 
 Charts, Karten und Wartezeiten in diesen Beiträgen kommen direkt aus park.fan.
 Was du liest, macht der Park also gerade wirklich. Die beiden Hauptdarsteller

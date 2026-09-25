@@ -2,7 +2,7 @@
 title: 'Die Kunst des Wartens: Warum wir für manche Rides „gerne“ anstehen'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -27,7 +27,7 @@ seo:
   title: 'Warum sich Warten im Freizeitpark so lang anfühlt'
   description: >-
     Warum sich eine Stunde Schlange mal wie zwanzig Minuten anfühlt, warum
-    Aufrücken nichts bringt und welche Formel hinter jeder Wartezeit-Anzeige steckt.
+    Aufrücken nichts bringt und welche Formel hinter jeder Warteschlange steckt.
   keywords:
     - Wartezeiten Freizeitpark
     - Warteschlangen Psychologie
@@ -70,20 +70,21 @@ Bierdeckel.
 Das Grundproblem hat **David Maister**, damals Professor an der Harvard Business School, schon 1985 in seinem
 Klassiker
 [„The Psychology of Waiting Lines“](https://www.columbia.edu/~ww2040/4615S13/Psychology_of_Waiting_Lines.pdf)
-seziert. Seine erste und wichtigste Regel: Unbeschäftigte Zeit fühlt sich
-länger an als beschäftigte Zeit. Wer nur auf die Rückseite des Vordermanns
-starrt, für den kriecht die Uhr. Wer etwas zu sehen, zu hören oder zu tun hat,
-für den läuft sie fast normal weiter.
+seziert. Gleich die erste seiner Regeln nennt er selbst eine der vertrautesten:
+Unbeschäftigte Zeit fühlt sich länger an als beschäftigte Zeit. Wer nur auf die
+Rückseite des Vordermanns starrt, für den kriecht die Uhr. Wer etwas zu sehen,
+zu hören oder zu tun hat, für den läuft sie fast normal weiter.
 
 Maister hat acht davon aufgeschrieben. Diese drei sieht man in jeder Queue:
 
-- **Ungewisses Warten fühlt sich länger an als erklärtes Warten.** Deshalb
+- **Ungewisses Warten fühlt sich länger an als absehbares.** Deshalb
   markieren in der Queue alle paar Meter Restzeit-Angaben den Weg, und am
   Eingang hängt die Wartezeit-Anzeige, die einen übrigens gern anlügt. Dazu
   gleich mehr.
-- **Unfaires Warten ist unerträglich.** Nichts ruiniert die Stimmung schneller
-  als das Gefühl, andere ziehen vorbei. Deshalb verstecken Parks ihre
-  Express-Spuren, so gut es eben geht, und meistens geht es nicht besonders gut.
+- **Unfaires Warten fühlt sich länger an als gerechtes.** Nichts ruiniert die
+  Stimmung schneller als das Gefühl, andere ziehen vorbei. Deshalb verstecken
+  Parks ihre Express-Spuren, so gut es eben geht, und meistens geht es nicht
+  besonders gut.
 - **Warten auf etwas Wertvolles hält man länger durch.** Je größer die
   Vorfreude, desto geduldiger die Schlange. Für ein Flat Ride vom Jahrmarkt
   stehen wir keine 20 Minuten. Für den neuen Mega-Coaster reden wir uns 90
@@ -91,25 +92,25 @@ Maister hat acht davon aufgeschrieben. Diese drei sieht man in jeder Queue:
 
 ### Dein Zeitgefühl übertreibt, um gut ein Drittel
 
-Wie schlecht wir unbeschäftigtes Warten einschätzen, lässt sich messen. In den
-Feldexperimenten des Marketingforschers **Jacob Hornik** überschätzten Wartende
-die tatsächlich verstrichene Zeit im Schnitt um **rund 36 Prozent**. Aus
-gemessenen zehn Minuten werden im Kopf fast vierzehn, und der Fehler geht immer
-in dieselbe Richtung: Niemand kommt aus einer Schlange und schätzt sie kürzer,
-als sie war. Der MIT-Warteschlangenforscher **Richard Larson** zeigte mit
-Kollegen schon 1991 unter dem schönen Titel
-[„Entertain, Enlighten, and Engage“](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
-dass schon simple Ablenkung die empfundene Wartequalität deutlich verbessert.
-Im Experiment reichte dafür ein Nachrichten-Bildschirm in einer Bankfiliale.
-Keine Animatronic, kein Soundtrack, einfach ein Fernseher an der Wand.
+Wie schlecht wir unbeschäftigtes Warten einschätzen, lässt sich messen. Der
+Marketingforscher **Jacob Hornik** hat 1984 an Kassen im Einzelhandel die
+gestoppte Wartezeit mit dem verglichen, was die Wartenden hinterher schätzten.
+Im Schnitt lagen die Schätzungen **rund 36 Prozent** zu hoch. Aus gemessenen
+zehn Minuten werden im Kopf fast vierzehn.
 
-Der Mechanismus dahinter: Unser Gehirn kann Zeit nur dann akribisch mitzählen,
-wenn es sonst nichts zu tun hat. Richtet sich die Aufmerksamkeit auf Musik,
-Details im Theming oder eine Show, fehlen dem inneren Zähler schlicht die
-Ressourcen, und die Überschätzung schmilzt zusammen. Dafür ist alles da, was
-du in einer guten Warteschlange siehst: Soundtracks, Animatronics, interaktive
-Elemente, versteckte Details. Ziemlich viel Aufwand für einen Flur, den am
-Ende alle nur so schnell wie möglich hinter sich lassen wollen.
+Was Ablenkung dagegen ausrichtet, hat der MIT-Warteschlangenforscher **Richard
+Larson** 1991 mit zwei Kollegen unter dem schönen Titel
+[„Entertain, Enlighten, and Engage“](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage)
+untersucht. In einer Bankfiliale prüften sie, was eine elektronische
+Nachrichtentafel bewirkt. Kürzer geschätzt wurde das Warten dadurch kaum, aber
+die Kundschaft fand es interessanter und war zufriedener. Keine Animatronic, kein Soundtrack,
+nur Schlagzeilen an der Wand.
+
+Maister zitiert dazu den Philosophen William James: Langeweile entsteht, wenn
+man auf das Verstreichen der Zeit selbst achtet. Genau dagegen ist alles
+gebaut, was du in einer guten Warteschlange siehst: Soundtracks, Animatronics,
+interaktive Elemente, versteckte Details. Ziemlich viel Aufwand für einen Flur,
+den am Ende alle nur so schnell wie möglich hinter sich lassen wollen.
 
 ```glossary-widget slug=pre-show
 
@@ -137,9 +138,8 @@ Gedächtnis Erlebnisse nicht als Durchschnitt bewertet, sondern nach zwei
 Punkten: dem emotionalen Höhepunkt und dem Ende. Das ist die sogenannte
 [Peak-End-Regel](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule). Für
 Warteschlangen heißt das: Die letzten Minuten vor dem Boarding prägen die
-Erinnerung an die gesamte Stunde davor. Deshalb wird das Finale einer Queue
-fast immer am aufwendigsten inszeniert. Die dichteste Thematisierung, die beste
-Animatronic, der Gänsehaut-Moment kommen kurz vor der Station. Wenn das Ende
+Erinnerung an die gesamte Stunde davor. Flight of Passage und Cosmic Rewind
+setzen ihre Pre-Shows ans Ende der Queue, direkt vor den Einstieg. Wenn das Ende
 stark ist, verzeiht dein Gedächtnis den zähen Mittelteil erstaunlich
 bereitwillig. Das Prinzip kennt jeder, der schon mal einen mittelmäßigen Film
 wegen eines großartigen Finales weiterempfohlen hat.
@@ -157,7 +157,7 @@ in [Disney’s Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) ist e
 begehbares Museum mit Flugsimulator-Ausgang. Erst windet sich der Weg durch die
 Landschaft Pandoras und Höhlen mit Malereien der Na’vi, dann durch ein
 verlassenes Forschungslabor, inklusive eines lebensgroßen Avatars, der in einem
-Amnio-Tank schwebt und so überzeugend atmet, dass regelmäßig Menschen stehen
+Amnio-Tank schwebt und so überzeugend atmet, dass immer wieder Menschen stehen
 bleiben und die Schlange aufhalten. Eine Warteschlange, die sich selbst
 verstopft, weil sie zu gut aussieht. Danach folgen gleich **zwei
 Pre-Show-Räume**, in denen du „gescannt“ und mit deinem eigenen Avatar
@@ -172,8 +172,9 @@ Gruppen und verwandeln die letzte Viertelstunde in einen Teil der Attraktion,
 also genau die Phase, die laut Peak-End-Regel am stärksten erinnert wird. Und
 sie sind zugleich das Kapazitäts-Rückgrat: Geflogen wird in Theater-artigen
 **Link Chambers** mit 16 Plätzen pro Ebene, drei Ebenen übereinander, vier
-Theater parallel. Knapp 200 Gäste gleichzeitig, rund 1.400 pro Stunde. Wer dort
-den halben Vormittag steht, erzählt hinterher trotzdem vom atmenden Avatar im Tank.
+Theater parallel. Knapp 200 Gäste gleichzeitig; bei acht Minuten pro Durchgang
+rechnet Coaster101 mit rund 1.440 pro Stunde. Wer dort den halben Vormittag
+steht, erzählt hinterher trotzdem vom atmenden Avatar im Tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -193,13 +194,13 @@ die schon zwanzig Minuten vorher begonnen hat.
 ```
 
 Auch bei der Kapazität ging EPCOT eigene Wege: Cosmic Rewind eröffnete im Mai
-2022 komplett ohne klassische Standby-Schlange. Zugang gab es ausschließlich
-per virtueller Warteschlange über die App, und zwar bis zum **25. Februar 2025**.
-Fast drei Jahre lang war die berühmteste Schlange EPCOTs eine, in der nie jemand
-stand; erst dann kam eine dauerhafte Standby-Queue. Die physische Schlange
-existierte quasi nur noch als Story-Strecke, nicht als Stauraum, und das bei
-einer Bahn, die mit Zügen für 20 Personen um die 2.000 Gäste pro Stunde
-wegschafft.
+2022 komplett ohne klassische Standby-Schlange. Wer nicht für eine Lightning
+Lane bezahlte, kam bis zum **25. Februar 2025** nur über die virtuelle
+Warteschlange in der App hinein. Fast drei Jahre lang gab es vor dem Coaster
+also keine Schlange, in die man sich einfach hätte stellen können; erst dann kam
+eine dauerhafte Standby-Queue. Die physische Schlange existierte bis dahin quasi
+nur als Story-Strecke, kaum als Stauraum, und das bei einer Bahn, die laut RCDB
+mit Zügen für 20 Personen 2.000 Gäste pro Stunde wegschafft.
 
 ### VelociCoaster: Warten im Raptor-Paddock
 
@@ -207,24 +208,28 @@ Universal spielt bei
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
 in [Islands of Adventure](ref:universal-islands-of-adventure?bare) die gleiche
 Karte, nur mit Zähnen. Die Warteschlange führt mitten durch das
-**Raptor-Paddock** aus _Jurassic World_: vorbei an aufgerissenen Gehege-Zäunen,
-animatronischen Raptoren in Greifweite und einem begrünten Atrium, in dem
-selbst die Betonwände nach Isla Nublar aussehen. Man wartet nicht auf einen
-Coaster, man macht eine Paddock-Führung, die zufällig in einem Coaster mit
-zwei Abschüssen endet. Genau das meint Maister mit **„occupied time“**: Beschäftigte Zeit fühlt
-sich kürzer an, und wer gerade prüft, ob der Raptor hinter dem Zaun wirklich
-den Kopf gedreht hat, schaut nicht alle zehn Sekunden aufs Handy.
+**Raptor-Paddock** aus _Jurassic World_: vorbei an beschädigten Gehege-Zäunen
+und Fenstern mit Blick auf die Strecke bis in einen Untersuchungsraum, in dem
+zwei animatronische Raptoren mit Maulkorb hinter Gittern stehen. Man wartet
+nicht auf einen Coaster, man macht eine Paddock-Führung, die zufällig in einem
+Coaster mit zwei Abschüssen endet. Genau das meint Maister mit **„occupied
+time“**: Beschäftigte Zeit fühlt sich kürzer an, und wer gerade prüft, ob der
+Raptor hinter dem Gitter wirklich den Kopf gedreht hat, schaut nicht alle zehn
+Sekunden aufs Handy.
 
 ```gallery-widget folder=/media/velocicoaster heading="Willkommen im Raptor-Paddock"
 
 ```
 
-Dazu kommt hier ein Kapazitäts-Trick, der beiden Seiten hilft: die
-**Single-Rider-Spur**. Wer allein fährt und sich auf den freien
-Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt, kürzt die eigene
-Wartezeit drastisch ab und hilft nebenbei dem Park, jeden Wagen randvoll zu
-machen. Der Preis: Deine Begleitung sitzt drei Reihen weiter vorne, und ob sie
-geschrien hat, erfährst du erst am Ausgang.
+Zur Kapazität gehörte hier lange ein Trick, der beiden Seiten hilft: die
+**Single-Rider-Spur**. Wer allein fährt, füllt den einzelnen Platz, den etwa eine
+Dreiergruppe in einem Wagen mit vier Sitzen frei lässt, kürzt damit die eigene
+Wartezeit ab und hilft dem Park, jeden Wagen voll zu machen. Am VelociCoaster
+hat Universal diese Spur im Dezember 2025 geschlossen. Seitdem teilt das
+Personal die Wartenden in Gruppen mit gerader und ungerader Personenzahl auf und
+füllt die Wagen so ohne Einzelfahrer. Am Hulk nebenan gibt es die
+Single-Rider-Spur weiterhin. Der Preis dort: Deine Begleitung sitzt ein paar
+Reihen weiter vorne, und ob sie geschrien hat, erfährst du erst am Ausgang.
 
 ```glossary-widget slug=single-rider
 
@@ -239,13 +244,16 @@ stattfindet. Eine Parade, ein Feuerwerk oder eine Stunt-Show bindet auf einen
 Schlag tausende Gäste, also Menschen, die in dieser Stunde in keiner einzigen
 Warteschlange stehen. Das Amphitheater
 von **Fantasmic!** in den Hollywood Studios fasst mit Steh- und Sitzplätzen an
-die 10.000 Menschen pro Vorstellung. Das sind zehntausend Leute, die für die
-nächste halbe Stunde garantiert woanders sitzen als vor deinem Lieblingscoaster,
-und der Rest des Parks atmet entsprechend durch. In den Live-Charts auf park.fan kannst
-du diesem Effekt in Echtzeit zusehen: Während der großen Abendshow knicken die
-Wartezeiten der Headliner messbar ein, und wer die Show schon kennt, fährt in
-dieser Stunde am günstigsten. Für solche Momente lesen wir die Wartezeiten
-alle fünf Minuten neu ein.
+die 10.000 Menschen pro Vorstellung. Das sind knapp zehntausend Leute, die für
+die nächste halbe Stunde woanders sitzen als vor deinem Lieblingscoaster, und
+der Rest des Parks atmet entsprechend durch. Im Stundenprofil der Hollywood
+Studios auf park.fan sieht man das: In den Abendstunden, in denen Fantasmic!
+läuft, fallen die Wartezeiten der Headliner deutlich. Wie viel davon die Show
+ausmacht und wie viel das nahende Parkende, trennen die Zahlen allerdings nicht:
+Am 25. September 2026 etwa beginnt die erste Vorstellung um 20 Uhr, eine Stunde
+vor Parkschluss. Wer die Show schon kennt, fährt in dieser Stunde trotzdem am
+günstigsten. Für solche Momente lesen wir die Wartezeiten alle fünf
+Minuten neu ein.
 
 ![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in den Hollywood Studios. Wer hier sitzt, steht gerade nirgends an. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -281,25 +289,25 @@ in [Universal Islands of Adventure](ref:universal-islands-of-adventure?bare)
 setzt auf große Portionen: acht Wagen, vier Personen nebeneinander, macht **32
 Plätze pro Abfahrt**. Die theoretische Kapazität liegt bei **1.920 Personen pro
 Stunde**, rechnerisch also 60 volle Züge oder einer pro Minute (32 × 60).
-Ein Zug schluckt auf einmal mehr Menschen, als in so manchen Dark Ride
-gleichzeitig passen.
 
 **Beispiel B, die Tapas-Bar.** Das Gegenmodell fuhr bis August 2025 gleich
 nebenan:
 [Hollywood Rip Ride Rockit](ref:universal-studios-florida/hollywood-rip-ride-rockit)
 in [Universal Studios Florida](ref:universal-studios-florida?bare) schickte
-kleine Wagen mit nur **12 Plätzen** auf die Strecke, dafür gefühlt im
-Sekundentakt. Um auf vergleichbare **~1.850 Personen pro Stunde** zu kommen,
-waren **sieben Wagen** gleichzeitig im Umlauf, und die Station musste fast
-dreimal so oft abfertigen wie beim Hulk. Gleiches Ergebnis, komplett anderes
-Betriebskonzept. (Inzwischen ist die Bahn Geschichte; auf ihrem Grundstück
-entsteht der Nachfolger _Fast & Furious: Hollywood Drift_.)
+kleine Züge mit nur **12 Plätzen** auf die Strecke, rechnerisch alle 23 Sekunden
+einen. Um auf vergleichbare **~1.850 Personen pro Stunde** zu kommen, waren
+**sieben Züge** im Umlauf, und die Station musste fast dreimal so oft abfertigen
+wie beim Hulk. Möglich machte das eine Station, in der die Züge nie ganz
+anhielten: Sie rollten langsam durch, und die Gäste stiegen von einem
+mitlaufenden Band aus ein. Gleiches Ergebnis, komplett anderes Betriebskonzept.
+(Inzwischen ist die Bahn Geschichte; auf ihrem Grundstück baut Universal den
+Nachfolger _Fast & Furious: Hollywood Drift_, angekündigt für 2027.)
 
 ### Block-Abschnitte: Warum nicht einfach „mehr Züge“?
 
-Sieben Wagen gleichzeitig wirft die Frage auf, warum die sich nicht irgendwann
-ineinanderschieben. Die Antwort ist das **Block-System**: Die Strecke ist in
-Abschnitte unterteilt, und in jedem Abschnitt darf sich immer nur ein Zug
+Sieben Züge auf einer Strecke werfen die Frage auf, warum die sich nicht
+irgendwann ineinanderschieben. Die Antwort ist das **Block-System**: Die Strecke
+ist in Abschnitte unterteilt, und in jedem Abschnitt darf sich immer nur ein Zug
 befinden. Erst wenn der vordere Block frei ist, gibt die Steuerung den nächsten
 frei. Jeder Block braucht dafür eine Stelle, an der ein Zug notfalls komplett
 stoppen kann.
@@ -312,105 +320,122 @@ Mehr Züge bedeuten also nicht automatisch mehr Durchsatz. Ohne genug
 Block-Abschnitte stauen sich die Züge vor der Station, und Enthusiasten kennen
 das gefürchtete „Stacking“: Der Zug hängt in der Schlussbremse, die Insassen
 winken der Station zu, die Station winkt zurück, und niemand bewegt sich. Das
-Nadelöhr ist am Ende fast immer die Abfertigung. Wie schnell sind alle Bügel
-geprüft und der Zug wieder draußen?
+Nadelöhr ist dann die Abfertigung. Wie schnell sind alle Bügel geprüft und der
+Zug wieder draußen?
 
 Wie ernst moderne Bahnen das nehmen, zeigt
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) im
 [Europa-Park](ref:europa-park?bare). Laut Hersteller-Factsheet von Mack Rides
-sind dort **sieben Züge** gleichzeitig unterwegs, mit einer Ziel-Abfertigung
-von **einer Abfahrt alle 36 Sekunden**. Macht 1.600 Gäste pro Stunde, obwohl
-ein Zug nur 16 Personen fasst, also mehr als der Hulk mit seinen 32 Plätzen pro
-Abfahrt schafft.
+hat die Bahn **sieben Züge**, von denen drei bis vier gleichzeitig auf der
+Strecke sind. Das Ziel für die Abfertigung ist laut Coaster101 **eine Abfahrt
+alle 36 Sekunden**. Bei 16 Plätzen pro Zug ergibt das die 1.600 Gäste pro
+Stunde, die Mack als theoretische Kapazität angibt. Das ist nicht ganz das
+Niveau des Hulk, aber mit Zügen, die nur halb so groß sind.
 
-### Züge, die nie anhalten
+### Züge, die nicht anhalten
 
-Die neueste Eskalationsstufe dieses Denkens: Züge, die gar nicht mehr anhalten.
-Voltron nutzt **Rolling Launches**, bei denen die Züge nicht vor dem Launch
-gestoppt und dann abgeschossen, sondern im Vorbeifahren beschleunigt werden,
-„fliegend“ wie beim Staffellauf. Damit die LSM-Motoren das im 36-Sekunden-Takt
-durchhalten, hat Mack ihnen kurzerhand vier statt zwei Statorreihen spendiert.
-Ein Zug, der nicht anhält, gibt seinen Block früher frei, und damit hält der
-36-Sekunden-Takt.
+Die nächste Stufe dieses Denkens: Züge, die gar nicht erst anhalten. Voltron
+versteckt einen seiner Blöcke in einem fliegenden Launch in einer Talsenke. Ist
+der Abschnitt dahinter frei, beschleunigt der Zug im Vorbeifahren, ohne zu
+stoppen. Ist er belegt, bleibt der Antrieb aus, der Zug pendelt im Tal und holt
+sich den Schwung danach per Swing-Launch. Weil die LSM-Motoren im
+36-Sekunden-Takt so oft feuern, hat Mack ihnen vier statt der üblichen zwei
+Statorreihen gegeben, die die Wärme besser loswerden. Ein Zug, der im Block
+nicht anhalten muss, gibt ihn früher wieder frei.
 
-Und [Walibi Holland](ref:walibi-holland?bare) hat dasselbe Prinzip 2025 auf die
-Station übertragen. Bei **YOY**, Europas erstem Single-Rail-Duell-Coaster, bei
-dem du dich zwischen den Schwester-Strecken
+Bei **YOY** in [Walibi Holland](ref:walibi-holland?bare) steckt dasselbe Prinzip
+seit 2025 in der Station, so wie früher bei Rip Ride Rockit. Bei Europas erstem
+Single-Rail-Duell-Coaster, bei dem du dich zwischen den Schwester-Strecken
 [YOY Thrill](ref:walibi-holland/yoy-thrill?bare) und
-[YOY Chill](ref:walibi-holland/yoy-chill?bare) entscheidest, stoppen die Züge
-im Bahnhof überhaupt nicht mehr. Sie rollen im Schritttempo durch, während die
-Gäste einsteigen: eine **Rolling Station**, quasi das Omnimover-Prinzip für
+[YOY Chill](ref:walibi-holland/yoy-chill?bare) entscheidest, halten die Züge im
+Bahnhof nicht an. Sie rollen im Schritttempo durch, während die Gäste
+einsteigen: eine **Rolling Station**, quasi das Omnimover-Prinzip für
 Achterbahnen. Bei nur acht Plätzen pro Zug (hintereinander, wie auf einem sehr
-entschlossenen Fahrrad) zählt eben jede Sekunde, die der Zug nicht steht.
+entschlossenen Fahrrad) zählt jede Sekunde, die der Zug nicht steht. Viel wird
+es trotzdem nicht: Freizeitpark-Welt kommt für YOY auf rund 800 Fahrgäste pro
+Stunde.
 
-## Little’s Law: Die Formel hinter jeder Wartezeit-Anzeige
+## Little’s Law: Die Formel hinter jeder Warteschlange
 
 Die Formel, die beide Seiten zusammenbindet, ist die zweite vom Bierdeckel.
-Der MIT-Professor **John D. C. Little**
-bewies 1961 den Zusammenhang, der heute
+**John D. C. Little**, damals am Case Institute of Technology in Cleveland und
+ab 1962 Professor am MIT, bewies 1961 den Zusammenhang, der heute
 [Little’s Law](https://en.wikipedia.org/wiki/Little%27s_law) heißt:
 
-> **L = λ × W**: die Anzahl der Wartenden (L) ist gleich Ankunftsrate (λ) mal
-> Wartezeit (W).
+> **L = λ × W**: die durchschnittliche Zahl der Wartenden (L) ist gleich
+> Ankunftsrate (λ) mal durchschnittlicher Wartezeit (W).
 
-Für den Parkbesuch stellt man sie einfach um:
+Für den Parkbesuch stellt man sie um. In einer stabilen Schlange kommen im
+Mittel so viele Gäste an, wie die Bahn wegschafft, λ ist dort also der
+Durchsatz:
 
 > **Wartezeit = Personen in der Schlange ÷ Durchsatz**
 
 Stehen vor dem Hulk 640 Menschen und die Bahn schafft 1.920 pro Stunde, wartest
 du **20 Minuten** (640 ÷ 1.920 = ⅓ Stunde). Dieselben 640 Menschen vor einer
-Bahn mit 800er-Kapazität? **48 Minuten.** Das Schöne an Littles Formel: Sie
-gilt für jede stabile Schlange, egal wie unregelmäßig die Gäste eintrudeln. Und
-diese Rechnung steckt in verfeinerter Form hinter jeder Wartezeit-Anzeige. Parks schätzen die Zahl der Wartenden und teilen durch den
-aktuellen Durchsatz, oder sie messen die Zeit direkt, etwa mit Zeitkarten,
-die ein Gast am Eingang der Schlange bekommt und an der Station wieder abgibt.
+Bahn mit 800er-Kapazität wie YOY? **48 Minuten.** Das Schöne an Littles Formel:
+Sie gilt für jede stabile Schlange, egal wie unregelmäßig die Gäste eintrudeln,
+solange man über Durchschnitte redet. Parks nutzen genau diese Rechnung, wenn
+sie die Zahl der Wartenden schätzen und durch den aktuellen Durchsatz teilen.
+Andere messen die Zeit direkt, etwa mit Zeitkarten, die ein Gast am Eingang der
+Schlange bekommt und an der Station wieder abgibt.
 
 Die Formel erklärt auch, warum dieselbe Schlangenlänge an zwei Tagen völlig
 verschiedene Wartezeiten bedeuten kann. Fährt eine Bahn heute mit zwei statt
-drei Zügen, sinkt λ, und W steigt sofort, ohne dass auch nur ein Gast mehr im
-Park wäre.
+drei Zügen, sinkt der Durchsatz, und W steigt sofort, ohne dass auch nur ein
+Gast mehr im Park wäre.
 
-Und die Anzeige am Eingang, die einen anlügt? Auf die exakt errechnete Zahl
-kommt dort gern noch ein großzügiger Sicherheitsaufschlag, und zwar mit
-Absicht. Die Anzeige muss nämlich zwei Dinge gleichzeitig leisten, die sich
-widersprechen. Sie soll dir eine belastbare
-Entscheidungsgrundlage geben, und sie soll dich nicht enttäuschen. Eine Anzeige,
+Und die Anzeige am Eingang, die einen anlügt? Für Disney World ist das
+nachgemessen. TouringPlans vergleicht die angezeigten Wartezeiten mit Zeiten,
+die Gäste in der Schlange selbst stoppen, und kam in einer Auswertung vom
+Februar 2023 je nach Park auf 60 bis 68 Prozent der Anzeige. Bei keiner
+einzigen Attraktion lag der Schnitt darüber. Ob Disney den Aufschlag mit
+Absicht einbaut, sagt der Konzern nicht. Er passt aber zu Maisters erstem
+Gesetz des Service: Zufriedenheit ist Wahrnehmung minus Erwartung. Eine Anzeige,
 die zu niedrig schätzt, produziert am Ausgang lauter Menschen, die sich
 betrogen fühlen; eine, die zu hoch schätzt, schickt ein paar Gäste weg, macht
-dafür aber alle anderen glücklich. Parks entscheiden sich systematisch für den
-zweiten Fehler, genau wie der Lieferdienst, der vierzig Minuten ansagt und nach
-dreißig klingelt. Wer mit 60 Minuten rechnet und nach 45 einsteigt, verlässt die
-Station als Gewinner. Peak-End-Regel, wir erinnern uns: Die Stunde endet
-besser als erwartet, und so wird sie abgespeichert.
+dafür aber alle anderen glücklich. Wie beim Lieferdienst, der vierzig Minuten
+ansagt und nach dreißig klingelt. Wer mit 60 Minuten rechnet und nach 45
+einsteigt, verlässt die Station als Gewinner. Peak-End-Regel, wir erinnern uns:
+Die Stunde endet besser als erwartet, und so wird sie abgespeichert.
 
-An dieser Formel hängt park.fan. Die Live-Wartezeiten zeigen alle fünf
-Minuten, was L und λ gerade wirklich tun, und wenn unser Modell Wartezeiten bis
-zu 365 Tage im Voraus prognostiziert, rechnet es mit genau diesen beiden
-Größen: **Nachfrage** (wie viele Menschen wollen heute zu dieser Bahn?) und
-**Durchsatz** (wie viele schafft sie weg?). Wie oft unsere Prognosen die
-Realität treffen, steht auf der [Fancast-Seite](/fancast).
+park.fan sitzt bei dieser Rechnung auf der anderen Seite der Anzeige. Wir
+zählen keine Köpfe in der Schlange, wir sammeln alle fünf Minuten die
+Wartezeiten, die die Parks selbst veröffentlichen, samt ihrem Aufschlag. Auch
+Fancast, unser Prognosemodell, rechnet nicht mit Personenzahlen und
+Zugkapazitäten. Es lernt aus der gemessenen Wartezeit-Historie eines Parks, aus
+Schulferien und Feiertagen (auch denen der Nachbarregionen), Wetterprognosen,
+Öffnungszeiten und Sonderevents und schaut derzeit rund ein halbes Jahr voraus.
+Nachfrage und Durchsatz stecken trotzdem in jeder dieser Zahlen, denn jede
+Wartezeit ist am Ende Little’s Law: die Schlange geteilt durch den Durchsatz. Wie oft unsere Prognosen die Realität
+treffen, steht auf der [Fancast-Seite](/fancast).
 
 ## Warum Peter Pan’s Flight immer „eskaliert“
 
-**Peter Pan’s Flight** ist ein gemütlicher Dark Ride von 1955er-Bauart, keine
-Achterbahn, kein Thrill. Trotzdem steht davor in praktisch jedem Disney-Park
-der Welt, vom
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) bis
-nach Orlando, den ganzen Tag eine Schlange, als gäbe es am Ende Freibier.
+**Peter Pan’s Flight** ist ein gemütlicher Dark Ride, der 1955 mit Disneyland
+eröffnet hat, keine Achterbahn, kein Thrill. Trotzdem hat die Bahn im
+[Pariser Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?bare)
+die längste mittlere Wartezeit aller Attraktionen, und im Magic Kingdom in Orlando
+gehört sie zur Spitzengruppe. So steht es im Median aller Tage, die wir seit
+Beginn unserer Messungen Ende Dezember 2025 erfasst haben
+(Stand: 25. September 2026). In Paris ist die Schlange schon in der ersten
+Stunde nach Parköffnung länger als vor jeder anderen Bahn, als gäbe es am Ende Freibier. Überall gilt
+das nicht: In Anaheim, Tokio und Shanghai, wo es die Bahn ebenfalls gibt, liegt
+sie in unseren Daten im Mittelfeld.
 
-Das hat mit der Bahn wenig zu tun und mit Arithmetik viel:
+In Paris und Orlando hat das mit der Bahn wenig zu tun und mit Arithmetik viel:
 
 1. **Piratenschiffe sind keine Massentransportmittel.**
    [Peter Pan’s Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
-   schickt **16 Galeonen** über London, und in jede passen, großzügig gezählt,
-   fünf Menschen. Das ist die Beförderungskapazität eines mittleren Fahrstuhls,
-   verteilt auf einen ganzen Nachthimmel. Inoffizielle Zählungen kommen auf
-   etwa **1.200 Gäste pro Stunde**, die
-   [Ur-Version im Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
-   schafft sogar nur um die 800. Ein einziger Hulk-Zug befördert pro Abfahrt
-   doppelt so viele Menschen, wie Peter Pan Schiffe besitzt. Und zum Vergleich
-   im eigenen Haus: Pirates of the Caribbean gleich nebenan schluckt mit seinen
-   großen Booten ein Mehrfaches.
+   schickt laut DLP Guide **16 Galeonen** über London, und in jede passen,
+   großzügig gezählt, fünf Menschen. Das sind 80 Plätze, verteilt auf einen
+   ganzen Nachthimmel. Fanschätzungen wie die von MagicWait kommen auf etwa
+   **1.200 Gäste pro Stunde**, die
+   [Version im Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
+   (seit 1971) schafft nach einer Fan-Aufstellung sogar nur um die 800. Ein
+   einziger Hulk-Zug befördert pro Abfahrt doppelt so viele Menschen, wie Peter
+   Pan Schiffe besitzt. Und zum Vergleich im eigenen Haus: Pirates of the
+   Caribbean schluckt im selben Park mit seinen großen Booten ein Mehrfaches.
 2. **Sättigung ab dem Frühstück.** Sobald die Nachfrage die maximale Kapazität
    erreicht (Sättigung = 1,0), wächst die Schlange mit jedem zusätzlichen Gast
    linear weiter. Schrumpfen kann sie erst wieder, wenn weniger Menschen
@@ -423,7 +448,13 @@ Das hat mit der Bahn wenig zu tun und mit Arithmetik viel:
    sich alle erst recht an, und die Wartezeit wird zur selbsterfüllenden
    Prophezeiung.
 
-Hier die Live-Wartezeiten der Orlando-Version, im meistbesuchten Park der Welt:
+Eine Einschränkung dazu: Unsere Rangliste beruht auf angezeigten Wartezeiten,
+und ausgerechnet bei Peter Pan’s Flight im Magic Kingdom übertreibt die Anzeige
+laut TouringPlans am stärksten. Gestoppt wurden dort im Schnitt 45 Prozent der
+angezeigten Zeit (Auswertung vom Februar 2023).
+
+Hier die Live-Wartezeiten der Orlando-Version, im meistbesuchten Freizeitpark
+der Welt:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -434,46 +465,53 @@ bestimmen, sieht man am besten, wenn man zwei große Parks aus Europa neben
 Orlando legt.
 
 **Orlando spielt in einer eigenen Nachfrage-Liga.** Das
-[Magic Kingdom](ref:magic-kingdom-park?bare) ist der meistbesuchte Freizeitpark
-der Welt, und Disney wie Universal ziehen Gäste von allen Kontinenten an. Dazu
-kommt ein Faktor, den Europa in dieser Härte kaum kennt: Man kann sich dort an
-der Schlange vorbeikaufen. Lightning Lane und Express Pass verkaufen einen Teil
-der Kapazität an zahlende Gäste, und jede Express-Fahrt fehlt der
-Standby-Schlange. Maisters unfaires Warten, diesmal mit Kassenbon. Headliner wie
+[Magic Kingdom](ref:magic-kingdom-park?bare) ist mit 17,8 Millionen Gästen im
+Jahr 2024 laut dem Branchenverband TEA der meistbesuchte Freizeitpark der Welt,
+und Disney wie Universal ziehen Gäste von allen Kontinenten an. Dazu kommt, dass
+man sich dort an der Schlange vorbeikaufen kann: Lightning Lane und Express Pass
+verkaufen einen Teil der Kapazität an zahlende Gäste, und jede Express-Fahrt
+fehlt der Standby-Schlange. Maisters unfaires Warten, diesmal mit Kassenbon. Im
+Animal Kingdom hat
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-haben deshalb trotz massiver stündlicher Kapazität regelmäßig lange Schlangen.
+trotz vier parallel laufender Theater die längste mittlere Wartezeit des Parks
+(Stand: 25. September 2026). Europa kennt das Vorbeikaufen auch: Disneyland
+Paris verkauft Premier Access, und das Phantasialand verkauft für seine großen
+Bahnen einen Quick Pass, inzwischen pro Fahrt.
 
 **Der [Europa-Park](ref:europa-park?bare) ist das Gegenmodell.** Deutschlands
-größter Park, nach Disneyland Paris der meistbesuchte Europas, verteilt seine
-rund sechs Millionen Gäste pro Jahr auf **vierzehn Achterbahnen** plus Dutzende
-Themenfahrten. Diese schiere Menge an paralleler Kapazität wirkt wie ein
-Überdruckventil: Die Nachfrage verteilt sich, kaum eine Schlange läuft
-dauerhaft in die Sättigung. Deshalb fühlen sich selbst volle Tage in Rust
-selten nach Orlando an, und richtig lang wird es vor allem vor Neuheiten wie
-Voltron.
+größter Park, nach Disneyland Paris der meistbesuchte Europas (6,2 Millionen
+Gäste 2024 laut TEA), verteilt seine Besucher auf **vierzehn Achterbahnen**
+(Zählung von RCDB) plus Dutzende Themenfahrten. Diese schiere Menge an
+paralleler Kapazität wirkt wie ein Überdruckventil: Die Nachfrage verteilt sich,
+kaum eine Schlange läuft dauerhaft in die Sättigung. Deshalb fühlen sich selbst
+volle Tage in Rust selten nach Orlando an, und die längste mittlere Wartezeit
+im Park hat mit Voltron die neueste Achterbahn.
 
 **Das [Phantasialand](ref:phantasialand?bare) wiederum ist der Extremfall in
-der anderen Richtung:** einer der kompaktesten Großparks Europas, mit wenigen,
-dafür extrem aufwendig thematisierten Attraktionen. Die Last konzentriert sich
-auf eine Handvoll Headliner, und wenn an einem Ferien-Samstag alle zu
+der anderen Richtung:** rund 28 Hektar, halb so viele Achterbahnen wie in Rust
+(sieben laut RCDB), dafür extrem aufwendig thematisiert. Die Last konzentriert
+sich auf eine Handvoll Headliner, und wenn an einem Ferien-Samstag alle zu
 [Taron](ref:phantasialand/taron?bare) wollen (Grüße gehen raus, ich bin
 erfahrungsgemäß einer davon), ist die Sättigung genauso schnell erreicht wie
 bei Peter Pan in Paris.
 
-Die Zahlen dazu sind fast schon komisch. Taron schafft rund **1.200 Gäste pro
-Stunde**, also ziemlich genau so viele wie Peter Pan’s Flight in Paris. Der
-Unterschied steckt im Nenner, in allem, worauf sich die Nachfrage sonst
-verteilen kann. In Paris steht Peter Pan zwischen Dutzenden Alternativen. In
-Brühl hat an einem Ferien-Samstag gefühlt der halbe Park dieselbe eine Bahn im
-Kopf. Und Voltron im Europa-Park liegt mit 1.600 pro Stunde nur ein Drittel
-darüber, hält die Schlange aber deutlich kürzer, weil die übrigen Achterbahnen
-nebenan Nachfrage abziehen.
+Die Zahlen dazu sind fast schon komisch. Taron schafft laut RCDB rund **1.200
+Gäste pro Stunde**, also etwa so viele, wie Fans für Peter Pan’s Flight in Paris
+schätzen. Der Unterschied steckt im Nenner, in allem, worauf sich die Nachfrage
+sonst verteilen kann. In Paris steht Peter Pan zwischen Dutzenden Alternativen.
+In Brühl hat an einem Ferien-Samstag gefühlt der halbe Park dieselbe eine Bahn
+im Kopf. Und Voltron im Europa-Park liegt mit 1.600 pro Stunde nur ein Drittel
+darüber, hat im Median seit Ende Dezember 2025 aber die kürzere Schlange
+(Stand: 25. September 2026). Meine Erklärung: Die übrigen Achterbahnen nebenan ziehen
+Nachfrage ab.
 
 Deshalb zeigt jede Parkseite auf park.fan neben den Live-Wartezeiten auch die
 Langzeit-Statistiken. „Voll“ ist nämlich relativ: Dieselbe Wartezeit ist in
-Brühl ein schlechter Tag und im Magic Kingdom ein Geschenk.
+Brühl ein schlechter Tag und im Magic Kingdom ein ganz normaler.
 Schau dir denselben Datensatz für beide Parks an, typische Wartezeiten nach
-Monat und Wochentag, aus allen gemessenen Öffnungstagen.
+Monat und Wochentag, aus allen Öffnungstagen, die wir gemessen haben. Unsere
+Messungen laufen seit Ende Dezember 2025, lückenlos erst seit April 2026;
+Februar, Oktober und November fehlen noch ganz (Stand: 25. September 2026).
 
 **Zuerst das [Phantasialand](ref:phantasialand?bare) in Brühl**, der kompakte
 Extremfall: Wenn hier eine Zahl hochgeht, dann steil, weil sich alles auf
@@ -486,7 +524,7 @@ wenige Headliner konzentriert.
 **Und jetzt das [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, der
 meistbesuchte Park der Welt: höhere Grundlast, aber breiter verteilt über
 Dutzende Attraktionen. Achte darauf, wie unterschiedlich schon die „typischen“
-Minuten und die Saison-Kurve über das Jahr aussehen.
+Minuten und der Verlauf über die bisher gemessenen Monate aussehen.
 
 ```stats-widget slug=magic-kingdom-park
 
@@ -494,7 +532,7 @@ Minuten und die Saison-Kurve über das Jahr aussehen.
 
 Aus solchen Mustern lernt unser Modell, wann sich ein Besuch lohnt.
 
-## Aufrücken bringt nichts, und bremst die Schlange sogar aus
+## Aufrücken bringt nichts
 
 Kleiner Selbstversuch fürs nächste Mal: Du stehst in der Schlange, vor dir
 öffnet sich eine Lücke von zwei Metern. Was macht dein Körper? Er rückt auf.
@@ -507,37 +545,39 @@ ihn heranschiebst oder zwei Meter Luft lässt, ändert deine Position in der
 Reihe um exakt null Plätze. Du bewegst dich zwei Meter, vorne ankommen tust du
 dadurch keine Sekunde früher.
 
-Schlimmer noch: Das kollektive Aufrücken macht die Schlange sogar messbar
-langsamer. Es ist dieselbe Physik wie beim Autobahnstau, der scheinbar aus dem
-Nichts entsteht. Der Physiker Yuki Sugiyama hat 22 Autos auf eine Kreisbahn
-geschickt, mit der einzigen Anweisung, konstant und mit gleichem Abstand zu
-fahren. Nach wenigen Minuten bildete sich ganz ohne Engpass ein
-Stop-and-Go-Stau, der rückwärts durch die Kolonne lief. MIT-Mathematiker nennen
-diese sich selbst tragenden Wellen „Jamitons“, weil sie sich verhalten wie
-Detonationswellen. In dichten Menschenmengen passiert exakt dasselbe: Bei der
-Katastrophe von Mina während des Hadsch 2006 liefen solche Stop-and-go-Wellen
-dem tödlichen Gedränge voraus.
+Dass sich die Schlange trotzdem in Schüben bewegt statt gleichmäßig, ist
+dieselbe Physik wie beim Autobahnstau, der scheinbar aus dem Nichts entsteht.
+Der Physiker Yuki Sugiyama hat für eine 2008 veröffentlichte Studie 22 Autos
+auf eine 230 Meter lange Kreisbahn geschickt, mit der Anweisung, gleichmäßig 30 km/h zu fahren. Nach kurzer Zeit
+bildete sich ganz ohne Engpass ein Stop-and-Go-Stau, der rückwärts durch die
+Kolonne lief. MIT-Mathematiker nennen solche sich selbst tragenden Wellen
+„Jamitons“; mathematisch ähneln sie Detonationswellen. In sehr dichten
+Menschenmengen gibt es sie auch: Bei der Katastrophe von Mina während des
+Hadsch 2006 liefen Stop-and-go-Wellen dem tödlichen Gedränge voraus.
 
-Der Übeltäter ist die **Anfahr-Verlustzeit**, die jeder von der Ampel kennt.
+Der Motor dieser Wellen ist die Reaktionszeit, die jeder von der Ampel kennt.
 Springt sie auf Grün, fährt nicht die ganze Kolonne gleichzeitig los: Jeder
 reagiert rund eine Sekunde nach seinem Vordermann, und das hinterste Auto rollt
-erst spürbar später an. Jedes Mal, wenn deine Schlange anruckt, verpufft
-dieselbe gestaffelte Reaktionszeit. Zwanzig Ruck-Zyklen, mal sechzig Wartende,
-da summiert sich erstaunlich viel Nichts.
+erst spürbar später an. In der Schlange heißt das: Rückt vorne jemand auf, bist
+du sechzig Plätze weiter hinten erst eine gute Minute später dran. Wartezeit
+kostet dich das trotzdem nicht, solange an der Station genug Leute bereitstehen,
+denn das Tempo gibt die Abfertigung vor und nicht der Gang davor. Gleichmäßig
+weiterzugehen, statt zu stehen, aufzurücken und wieder zu stehen, fühlt sich
+besser an. Schneller wird die Schlange davon im Schnitt nicht.
 
-Würden einfach alle gleichmäßig und langsam weitergehen, statt zu stehen,
-aufzurücken und wieder zu stehen, bewegte sich die Schlange flüssiger und im
-Schnitt schneller. Der Verkehrsforschung ist das als „Faster-is-slower“-Effekt
-bekannt: Wer an einer Engstelle mehr drückt, senkt den Durchsatz, weil sich alle
-ineinander verkeilen. Dirk Helbing hat das im Jahr 2000 in _Nature_ gezeigt. Die
-eine Bedingung: Man muss unter der kritischen Dichte bleiben.
+Gefährlich wird Drängeln erst dort, wo sich eine Menge ohne Ordnung durch einen
+Engpass schiebt. Für solche Lagen haben Dirk Helbing, Illés Farkas und Tamás
+Vicsek im Jahr 2000 in _Nature_ per Simulation den „Faster-is-slower“-Effekt
+beschrieben: Wer an einem engen Ausgang stärker drückt, senkt den Durchfluss,
+weil sich alle ineinander verkeilen. Eine geordnete Warteschlange mit einer
+Station vorne ist davon weit entfernt.
 
-Auf der Fahrzeugseite haben die Parks dieses Problem längst gelöst. Der
-Omnimover der Haunted Mansion und die Rolling Station von YOY halten nie an,
-kein Stopp, keine Anfahr-Verlustzeit, maximaler Fluss. Nur die Gäste in der
-Schlange davor sind das letzte Stop-and-Go-System, das noch niemand wegdesignt
-hat. Bis es so weit ist, hilft dir vor allem eins, und das liegt bei dir: an
-einem Tag kommen, an dem die Schlange gar nicht erst in den Stau läuft. Welcher das ist, steht im Kalender der besten Tage.
+Auf der Fahrzeugseite kostet jeder Stopp dagegen echte Kapazität. Deshalb
+halten der Omnimover der Haunted Mansion und die Rolling Station von YOY im
+Normalbetrieb gar nicht erst an. In der Schlange davor kostet das Stop-and-Go
+nur Nerven. Was deine Wartezeit tatsächlich verkürzt, entscheidest du vor dem
+Parkbesuch: ein Tag, an dem weniger Leute vor dir stehen. Welcher das ist,
+steht im Kalender der besten Tage.
 
 ## Virtual Queues und doppelte Stationen
 
@@ -548,17 +588,19 @@ das Warten zunehmend dorthin, wo es nicht wehtut: aufs Handy.
 
 ```
 
-Der Europa-Park hat seine **VirtualLine** zu Beginn der Corona-Pandemie 2020
-eingeführt und behalten, weil sie schlicht funktioniert: Über die Park-App
-reservierst du kostenlos ein Zeitfenster für Attraktionen wie blue fire, Wodan
-oder Voltron. Disney steuerte Mega-Neuheiten wie
+Der Europa-Park hat seine **VirtualLine** 2020 eingeführt, im ersten
+Corona-Jahr, und bis heute behalten. Über die Park-App reservierst du kostenlos
+ein Zeitfenster, derzeit etwa für blue fire, Wodan oder Voltron, allerdings
+immer nur für eine Attraktion gleichzeitig, und laut Park sind die Plätze sehr
+begrenzt. Disney ließ
 [Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
-oder eben Cosmic Rewind jahrelang komplett über **Boarding Groups**. Das
-Prinzip ist immer dasselbe: Du „stehst“ digital an, während du isst, shoppst
-oder eine Show schaust. Die Schlange existiert weiter, sie findet nur ohne
-deine Beine statt. Die Wartezeit verschwindet nicht, aber sie frisst nicht mehr
-deinen Tag, und der Park verteilt die Nachfrage kontrollierter über die
-Stunden.
+von der Eröffnung im Dezember 2019 bis September 2021 nur über **Boarding
+Groups** fahren, Cosmic Rewind bis Februar 2025 (dort gab es zusätzlich die
+bezahlte Lightning Lane). Das Prinzip ist immer dasselbe: Du „stehst“ digital
+an, während du isst, shoppst oder eine Show schaust. Die Schlange existiert
+weiter, sie findet nur ohne deine Beine statt. Die Wartezeit verschwindet nicht,
+aber sie frisst nicht mehr deinen Tag, und der Park verteilt die Nachfrage
+kontrollierter über die Stunden.
 
 Für alle, die lieber mit den Füßen anstehen als mit dem Daumen, schrauben die
 Parks parallel an der Station selbst:
@@ -568,38 +610,41 @@ Parks parallel an der Station selbst:
 - **Doppelstationen**, bei denen sich das Gleis vor der Station in zwei
   parallele Bahnsteige gabelt: Ein Zug wird beladen, während der andere
   abgefertigt wird. Ein Trick, den etwa Vekomas Flying Coaster wegen ihrer
-  langen Ladezeiten brauchten und den auch das Efteling beim Wasser-Coaster De
-  Vliegende Hollander nutzt.
+  langen Ladezeiten brauchten und den auch Cosmic Rewind in EPCOT und das
+  Efteling beim Wasser-Coaster De Vliegende Hollander nutzen.
 - **Gleich zwei komplette Strecken**: Disneys Space Mountain im Magic Kingdom
   ist das radikalste Beispiel. Im selben Gebäude laufen zwei verschränkte,
   spiegelbildliche Bahnen („Alpha“ und „Omega“) mit eigenen Stationen, was die
   Kapazität des Systems praktisch verdoppelt. Effektiv zwei Achterbahnen, die
-  sich als eine ausgeben, und den meisten Gästen fällt es nie auf. Das Vorbild
-  lieferte 1959 die Matterhorn-Bobbahn in Disneyland, die erste Achterbahn der
-  Welt mit Stahlrohr-Schienen, ebenfalls mit zwei Strecken.
+  sich als eine ausgeben. Das Vorbild lieferte 1959 die Matterhorn-Bobbahn in
+  Disneyland, die erste Achterbahn der Welt mit Stahlrohr-Schienen, ebenfalls
+  mit zwei Strecken.
 
-Den höchsten Durchsatz schafft ein System, das ganz ohne Station auskommt. Beim
-**Omnimover**, Disneys kontinuierlicher Fahrzeugkette, wie sie etwa die Haunted
-Mansion nutzt, hält das Band niemals an. Ein- und Ausstieg passieren am
-laufenden Fahrzeug, und die Attraktion schluckt so über 3.000 Gäste pro Stunde,
-mehr als so mancher Mega-Coaster, mit einer Fahrzeugkette, die seit den
-Sechzigern klaglos ihre Runden dreht und nie nach einer Pause fragt.
+Sehr hohen Durchsatz schafft ein System, das in der Station gar nicht erst
+anhält. Beim **Omnimover**, Disneys kontinuierlicher Fahrzeugkette, wie sie etwa
+die Haunted Mansion nutzt, läuft das Band im Normalbetrieb ohne Pause. Ein- und
+Ausstieg passieren am fahrenden Fahrzeug, und die Haunted Mansion im Magic
+Kingdom kommt so nach derselben Fan-Aufstellung auf rund 3.200 Gäste pro
+Stunde, mehr als jede andere Fahrt des Parks auf dieser Liste und mehr als so
+mancher Mega-Coaster. Disney setzt das System seit 1967 ein.
 
 ## Was dir park.fan in der Schlange abnimmt
 
 Kürzer wird die nächste 60-Minuten-Schlange dadurch nicht. Aber sie liest sich
 anders, wenn man drei Dinge weiß, und die stehen auf park.fan:
 
-- **Wie lang ist die Schlange _wirklich_, genau jetzt?** Dafür gibt es unsere
-  **Live-Wartezeiten**: über 200 Parks, 7.000 Attraktionen, alle fünf Minuten neu.
-  Little’s Law in Echtzeit, ohne dass du die 640 Leute vor dir selbst zählen
-  musst.
+- **Wie lang ist die Schlange gerade?** Dafür gibt es unsere
+  **Live-Wartezeiten**: über 200 Parks mit zusammen rund 7.000 Attraktionen,
+  alle fünf Minuten neu. Es sind die Zahlen, die die Parks selbst anzeigen, also
+  samt Aufschlag. Ob sie gerade steigen oder fallen, siehst du trotzdem, ohne die
+  640 Leute vor dir selbst zählen zu müssen.
 - **Ist das gerade viel oder normal?** Das verraten die **Langzeit-Statistiken**
   jeder Attraktion, denn dieselbe Zahl ist je nach Park ein Ärgernis oder ein
   Lottogewinn.
 - **Und muss ich überhaupt anstehen?** Das entscheidet sich meist schon bei der
-  Tageswahl. Dafür gibt es den **Kalender der besten Besuchstage** mit
-  Prognosen bis zu 365 Tage im Voraus, zum Beispiel für den Europa-Park:
+  Tageswahl. Dafür gibt es den **Kalender der besten Besuchstage**. Die
+  Prognose dahinter reicht derzeit rund ein halbes Jahr voraus, das Widget hier
+  zeigt die nächsten drei Monate, zum Beispiel für den Europa-Park:
 
 ```best-days-widget slug=europa-park
 
@@ -608,8 +653,9 @@ anders, wenn man drei Dinge weiß, und die stehen auf park.fan:
 — Patrick
 
 _P.S.: Ja, ich stehe trotzdem noch für [Taron](ref:phantasialand/taron?bare)
-an. Aber jetzt weiß ich auf die Minute genau, wie unklug das gerade ist, und
-ich habe es schriftlich, dass mein Zeitgefühl dabei um 36 Prozent übertreibt._
+an. Aber jetzt sehe ich vorher, wie unklug das gerade ist, und ich weiß, dass
+Horniks Wartende ihre Zeit im Schnitt um 36 Prozent überschätzt haben. Ich
+vermutlich auch._
 
 ---
 
@@ -617,13 +663,16 @@ ich habe es schriftlich, dass mein Zeitgefühl dabei um 36 Prozent übertreibt._
 
 - David Maister: [The Psychology of Waiting Lines](https://www.columbia.edu/~ww2040/4615S13/Psychology_of_Waiting_Lines.pdf) (1985)
 - Katz, Larson & Larson: [Prescription for the Waiting-in-Line Blues: Entertain, Enlighten, and Engage](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage) (Sloan Management Review, 1991)
-- Zur ~36-%-Überschätzung (Hornik 1984): [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
+- Zur ~36-%-Überschätzung: Jacob Hornik, [Subjective vs. Objective Time Measures: A Note on the Perception of Time in Consumer Behavior](https://academic.oup.com/jcr/article/11/1/615/1822778) (Journal of Consumer Research, 1984)
 - Alex Stone: [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman et al.: [Peak-End-Regel](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little’s Law erklärt](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little’s Law erklärt](https://en.wikipedia.org/wiki/Little%27s_law) · [Littles Laufbahn](https://en.wikipedia.org/wiki/John_Little_%28academic%29)
+- Angezeigte und tatsächliche Wartezeiten bei Disney World: [Posted vs Actual Wait Times (TouringPlans, Februar 2023)](https://touringplans.com/blog/posted-vs-actual-wait-times-worst-offenders/)
 - Zum Phantom-Stau: Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT „Jamitons“](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - Zu Stop-and-go-Wellen in Menschenmengen: Helbing, Johansson & Al-Abideen, [Dynamics of crowd disasters: An empirical study](https://arxiv.org/abs/physics/0701203) (Physical Review E, 2007)
 - Zum „Faster-is-slower“-Effekt: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
-- Technische Daten: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) und [YOY](https://rcdb.com/20669.htm) auf RCDB · [Mack-Rides-Factsheet zu Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [Die Technik hinter Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YoY mit Rolling Station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)
-- Kapazitäts-Deep-Dives: [THRC vs. OHRC bei Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Flight-of-Passage-Fakten bei TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/) · [Cosmic Rewind: Ende der virtuellen Warteschlange (WDWMagic)](https://www.wdwmagic.com/attractions/guardians-of-the-galaxy/news/25feb2025-guardians-of-the-galaxy-cosmic-rewind-opens-standby-queue-as-virtual-queue-ends-at-epcot,-hits-170-minute-wait.htm)
-- Europa-Park: [Achterbahnen auf RCDB](https://rcdb.com/4870.htm) · [VirtualLine offiziell](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park)
+- Technische Daten: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm), [Cosmic Rewind](https://rcdb.com/15504.htm), [VelociCoaster](https://rcdb.com/6992.htm), [Taron](https://rcdb.com/12723.htm) und [YOY](https://rcdb.com/20669.htm) auf RCDB · [Rip Ride Rockit und Hollywood Drift (Wikipedia)](https://en.wikipedia.org/wiki/Hollywood_Rip_Ride_Rockit) · [Mack-Rides-Factsheet zu Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [Die Technik hinter Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY mit Rolling Station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)
+- Kapazitäts-Deep-Dives: [THRC vs. OHRC bei Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Flight-of-Passage-Fakten bei TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/) · [Kapazität von Flight of Passage (Coaster101)](https://www.coaster101.com/2018/12/11/what-makes-avatar-flight-of-passage-so-immersive/) · [Peter Pan’s Flight in Paris (DLP Guide)](https://www.dlpguide.com/guidebook/disneyland-park/fantasyland/peter-pans-flight/) · [Stundenkapazitäten in Disneyland Paris (MagicWait)](https://magicwaitparis.com/blog/hourly-capacity-attractions-disneyland-paris/) · [Cosmic Rewind: Ende der virtuellen Warteschlange (WDWMagic)](https://www.wdwmagic.com/attractions/guardians-of-the-galaxy/news/25feb2025-guardians-of-the-galaxy-cosmic-rewind-opens-standby-queue-as-virtual-queue-ends-at-epcot,-hits-170-minute-wait.htm)
+- Warteschlangen-Regeln: [VelociCoaster ohne Single-Rider-Spur (WDWNT, Dezember 2025)](https://wdwnt.com/2025/12/jurassic-world-velocicoaster-closes-single-rider-line-probably-wont-come-back/) · [Rise of the Resistance bekommt eine Standby-Schlange (WDWNT, 2021)](https://wdwnt.com/2021/09/breaking-virtual-queue-being-paused-at-star-wars-rise-of-the-resistance-traditional-standby-queue-coming-september-23-to-disneys-hollywood-studios/) · [Quick Pass im Phantasialand (offizielle Bedingungen)](https://www.phantasialand.de/de/quick-pass/) · [Quick-Pass-Preise 2026 (Achterbahnreporter)](https://achterbahnreporter.de/erlebt-empfohlen/deals-events/phantasialand-quickpass/) · [Fantasmic! (Wikipedia)](https://en.wikipedia.org/wiki/Fantasmic!)
+- Besucherzahlen: [TEA Global Experience Index 2024](https://www.teaconnect.org/news/official-release-2024-tea-global-experience-indextm)
+- Europa-Park: [Achterbahnen auf RCDB](https://rcdb.com/4870.htm) · [VirtualLine offiziell](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park) · Phantasialand: [Achterbahnen auf RCDB](https://rcdb.com/4872.htm)

@@ -2,7 +2,7 @@
 title: 'A Stroller, a Gondola and Half a Million Lines of Code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -59,19 +59,21 @@ anyone was thinking about wait-time data.
 ## A stroller by the Märchensee
 
 My parents pushed me around the Märchensee at
-[Phantasialand](ref:phantasialand?bare) in a stroller when I was small. More
-than forty fairy-tale scenes stand along that shoreline, each one a little stage
-with mechanically moving figures. Red Riding Hood, Cinderella, Ali Baba.
+[Phantasialand](ref:phantasialand?bare) in a stroller when I was small. Around
+forty fairy tales stood along that shoreline back then, each one a little stage
+with mechanically moving figures. Red Riding Hood, Cinderella, Little Muck.
 
-That fairy-tale forest is older than anything else in the park. When
-Phantasialand opened on 30 April 1967, it was the very first attraction, built
-from the collection of puppeteer Richard Schmidt, who set the park up together
+That fairy-tale forest was the heart of the park. When Phantasialand opened on
+30 April 1967 it was already there, built from the collection of puppeteer
+Richard Schmidt, who set the park up together
 with showman Gottlieb Löffelhardt. Puppets alone don’t make a story, though, so
 every scene had a button. Press it once and a tape told you the fairy tale.
 
 I pressed those buttons, and when my parents were already two scenes ahead I ran
 back and pressed them again. It was never a park visit to me. It was an audio
-drama where I got to work the play button.
+drama where I got to work the play button. The fairy-tale forest is gone now:
+the park tore it down over the winter of 2007/2008 to build Baumbergen, and
+little more than the temple from “Little Muck” is left of it.
 
 ## By gondola through “1001 Nacht”
 
@@ -85,7 +87,7 @@ fall into the way you fall into an open book of fairy tales.
 My father died in 2019. Maybe that’s exactly why those shared rides have become
 so precious to me. In my memory he is still sitting next to me in the gondola.
 
-![Roller coaster silhouette at Movie Park Germany at night, lit in purple and blue | Movie Park Germany after dark. Lethal Weapon Pursuit stood here until 2006. | left](/media/movie-park-germany/iron-claw.jpg)
+![Roller coaster silhouette at Movie Park Germany at night, lit in purple and blue | Iron Claw at Movie Park Germany after dark. It has been running since 1996, back then as Eraser. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Whenever my father was away on the road as a lorry driver, my mother simply
 took the wheel. She was the one I discovered a lot of other parks with, above
@@ -93,8 +95,10 @@ all [Movie Park](ref:movie-park-germany?bare), back then still Warner Bros.
 Movie World. That’s where I rode my first ever roller coaster,
 **Lethal Weapon Pursuit**: two trains styled as American police cars racing each
 other through an enclosure built to look like a warehouse, loop against loop.
-Germany’s only duelling coaster, running as “Cop Car Chase” from 2005, torn down
-in October 2006. The ride is gone. The addiction it triggered is not. Strictly
+At the time Germany’s only duelling coaster, running as “Cop Car Chase” from
+2005, closed in August 2006 and torn down from that October. Its plot became the
+Santa Monica Pier area, which opened in May 2007 around the Disk’O Coaster
+Crazy Surfer. The ride is gone. The addiction it triggered is not. Strictly
 speaking, my mother is to blame for everything that followed.
 
 So the division of labour was settled: Dad supplied the fairy tales, Mum the
@@ -107,9 +111,9 @@ way of giving some of it back.
 ## On 5000-point mice and a 10,000-point legend
 
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) opened in June 2011:
-an interactive dark ride in which pest controller Oskar Koslowski rids pâtissier
-Gustav E. Lehmann’s bakery of mice, armed with a piping bag, spread across 48 3D
-screens and six minutes of ride time. A fresh high score still makes me grin the
+an interactive 3D dark ride in which you help pest controller Oskar Koslowski
+clear the mice out of the imperial Gustav E. Lehmann cake factory, armed with a
+piping bag, across seven rooms and about seven minutes. A fresh high score still makes me grin the
 way those buttons by the Märchensee did. Even though my girlfriend has the
 remarkable habit of snatching the 5000-point mice at precisely the moment I line
 them up, costing me the household record ride after ride.
@@ -119,10 +123,11 @@ finally found it, the **10,000-point mouse in the second room**. Where exactly
 it sits? That stays my secret, with all due respect to the question.
 
 Here’s something I didn’t know for a long time, and it still stops me short
-every time: Maus au Chocolat was built in 2011 on exactly the ground where the
-gondola ride stood until 2009. When I’m in there arguing over points with my
-girlfriend, I’m sitting in a building that stands where I rode through the
-dragon’s mouth with my father as a child.
+every time: the gondola ride ran until 1 November 2009, then the park levelled
+its site and built on it again, and one of those new buildings on what is now
+the Kaiserplatz has housed Maus au Chocolat since 2011. When I’m in there
+arguing over points with my girlfriend, I’m sitting roughly where I rode
+through the dragon’s mouth with my father as a child.
 
 Afterwards, as consolation for the lost 5000-pointers: pancakes and shakes at
 **Phenie’s** in Wuze Town, which beat anything else theme parks sell for
@@ -140,13 +145,14 @@ from the Märchensee stands in front of Cinderella Castle at the
 [Magic Kingdom](ref:magic-kingdom-park?bare) decades later. Everything bigger,
 everything louder, everything further from Brühl, and still exactly the same
 flutter as back in that gondola. In between,
-[Epic Universe](ref:universal-epic-universe?bare) in its first summer, coasters
+[Epic Universe](ref:universal-epic-universe?bare) a year after it opened in May
+2025, coasters
 at [Islands of Adventure](ref:universal-islands-of-adventure?bare), orcas and
 Manta at [SeaWorld](ref:seaworld-orlando?bare). Two weeks, and that item on the
 list finally has its tick.
 
-I’m still sorting the pictures and the reports are in progress; both land right
-here on the blog over the coming weeks. One thing up front: it was worth every
+I’m still sorting the pictures, and the reports aren’t finished. They’ll appear
+here on the blog once they are. One thing up front: it was worth every
 single year of looking forward to it.
 
 ## The second self: the developer with too many side projects
@@ -207,9 +213,11 @@ was allowed to retire at my place. During every late-night debugging session it
 reminds me that somewhere, right now, somebody is standing in front of a real
 ride and wants to know whether the queue is worth it.
 
-Behind it today are live wait times from over **200 parks** and more than **7,000
-attractions**, refreshed every five minutes. Forecasts that estimate crowds up
-to **365 days** ahead. And because I only ever trust numbers that have to prove
+Behind it today are **210 parks** with around **6,900 attractions** between
+them (as of 25 September 2026), and for 209 of them we fetch fresh wait times
+every five minutes. The one missing is Hansa-Park, which publishes its waits only in its
+own app. On top of that, forecasts that estimate crowds roughly six months
+ahead. And because I only ever trust numbers that have to prove
 themselves, the model grades itself: every prediction is later held against the
 wait time actually measured, and whatever comes out of that is on the
 [Fancast page](/fancast).
@@ -220,11 +228,13 @@ It’s always the same three questions a park visit raises, long before anyone i
 in the car asking from the back seat whether we’re there yet. When is the best day? Is a Sunday worth it? And how busy will it
 really get?
 
-That’s exactly what park.fan was built for. Every park page has a calendar of
-the best days to visit, up to a year ahead. Looking into that data clears out a
-few gut feelings along the way. A Sunday in grey November can be calmer than any
-Tuesday during the North Rhine-Westphalian summer holidays. A bridge day is
-almost never a good idea. And the “insider tip” of going in the rain works
+That’s exactly what park.fan was built for. Every park page has a calendar with
+the expected crowds for each day, roughly six months ahead. Looking into that
+data clears out a few gut feelings along the way. At Phantasialand, Sunday 21
+June 2026 sits in the calendar as calmer than every Tuesday of the North
+Rhine-Westphalian summer holidays that followed. The two spring bridge days,
+15 May and 5 June, were busier there than any ordinary Friday in May or June (as
+of September 2026). And the “insider tip” of going in the rain works
 exactly as long as it takes everyone else to read the same insider tip.
 
 “Sundays are busy” is therefore about as useful as “summer is warm”. A Sunday in late November at
@@ -239,14 +249,17 @@ There are good sites that show you how long the queue is right now. We do that
 too, every five minutes, worldwide. But park.fan was built for the question that
 comes before: _is it even worth going?_
 
-So the model looks up to **365 days** ahead instead of only at the board above
+So the model looks roughly six months ahead instead of only at the board above
 the entrance, and the calendar of best days turns that into one answer: go, or
 better not. Whether it gets that right, you don’t have to take my word for; it’s
 on the [Fancast page](/fancast).
 
 On top of that: wait times, crowd levels, weather at the park entrance, opening
-hours and attraction histories, in six languages. No corporation, no paywall, no
-ads, built by somebody who queues up himself.
+hours and attraction histories, in six languages. Since September there is also
+the [trip planner](/blog/trip-planner), which lays your rides out on a timeline
+against the forecast, and if you like, a push notification tells you when the
+queue at a ride drops below a mark you set. No corporation, no paywall, no ads,
+built by somebody who queues up himself.
 
 ## What this blog is meant to be
 
@@ -271,15 +284,16 @@ blog, in three flavours.
 **Trip reports.** Long, opinionated, with photos, and with real data from
 exactly the park being visited. Not “it was lovely”, but:
 “[Magic Kingdom](ref:magic-kingdom-park?bare), 15 May, rope drop at 09:08, that
-was the plan, this worked, this went badly wrong.” The Orlando trip above kicks
-things off: Disney World, Universal and SeaWorld, pictures included.
+was the plan, this worked, this went badly wrong.” The Orlando trip above gets
+exactly that kind of report: Disney World, Universal and SeaWorld, pictures
+included.
 
 **Data deep dives.** What does a park’s wait-time history _really_ tell you?
 When is [Taron](ref:phantasialand/taron?bare) most worth it? And do our
 forecasts live up to what they promise?
 
-**News.** Short and to the point. If something happens, it goes here, usually
-the same day.
+**News.** Short and to the point. Since 25 September they have their own
+section under [News](/news), separate from the articles.
 
 Charts, maps and wait times in these posts come straight from park.fan, so what
 you read is what the park is actually doing. The two lead actors of this story,

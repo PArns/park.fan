@@ -49,10 +49,11 @@ Abend, an dem auch Erwachsene im Kostüm kommen dürfen. Es startet am
 **Samstag, 26. September**, und läuft bis **Sonntag, 1. November 2026**. Das
 Programm steckt komplett im normalen Parkticket.
 
-Dekoriert und bespielt wird nur der Disneyland Park. Nebenan in der
-[Disney Adventure World](ref:disney-adventure-world) gibt es keinen eigenen
-Halloween-Teil. Wer dort Grusel will, fährt eben
-[Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
+Von den beiden Parks wird nur der Disneyland Park dekoriert und bespielt,
+Herbstdeko gibt es außerdem in den Disney-Hotels. Nebenan in der [Disney
+Adventure World](ref:disney-adventure-world) gibt es keinen eigenen
+Halloween-Teil. Wer dort Grusel will, fährt eben [Tower of
+Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
 
 ## Was 2026 neu ist
 
@@ -63,14 +64,14 @@ eine Fledermaus mit Stein, jeweils in einer anderen Farbe.
 
 Bei den Schurken sind wieder Cruella, Maleficent, Jafar und die Herzkönigin
 dabei. Zum ersten Mal seit 2021 ist auch **Dr. Facilier** aus _Küss den Frosch_
-wieder da, in Frontierland.
-Jack Skellington und Sally aus _The Nightmare Before Christmas_ sind zurück, an
-ausgewählten Tagen und nur über die virtuelle Warteschlange in der
-Disneyland-Paris-App. Wer sie treffen will, reiht sich also am Besuchstag am
-Handy ein, nicht vor Ort.
+wieder da, in Frontierland. Jack Skellington und Sally aus _The Nightmare Before
+Christmas_ sind an ausgewählten Tagen zurück, und treffen kannst du sie nur über
+eine virtuelle Warteschlange. Einreihen kannst du dich am Besuchstag vor allem
+in der Disneyland-Paris-App, alternativ bei einem Cast Member am Eingang des
+Treffpunkts. Die Plätze sind begrenzt.
 
 Die Main Street bekommt rund vierzig neue Kürbisse, 170 neue Kerzen in
-Mickey-Form, Girlanden im viktorianischen Stil, eine eigens komponierte Musik
+der Form von Mickey und seinen Freunden, Girlanden im viktorianischen Stil, eine eigens komponierte Musik
 und abends Projektionen auf den Fassaden. Im Bahnhof am Eingang hängen vier
 neue Buntglasfenster im Art-déco-Stil mit Maleficent und Ursula. Am Ende der
 Straße ranken sich auf der Royal Castle Stage Dornen, Raben und
@@ -98,14 +99,19 @@ Home-Style Restaurant.
 
 ## Der 31. Oktober
 
-Halloween fällt 2026 auf einen Samstag, und das ist der eine Tag im Jahr, an
-dem auch Erwachsene verkleidet in den Park dürfen. Der Disneyland Park bleibt
-bis **23 Uhr** offen, mit eigenen Figuren-Treffen, einem eigenen Feuerwerk
-und Süßigkeiten von M&M'S. Ein gesondertes Party-Ticket braucht es nicht, auch
-dieses Abendprogramm ist im normalen Eintritt enthalten. Der Eintritt selbst
-kostet an diesem Tag allerdings mehr als an den übrigen Festivaltagen. Welche Kostüme genau
-erlaubt sind, nennt der Park vorab. Schau vor der Abfahrt in die App, bevor du
-stundenlang an einer Maske bastelst, die am Einlass bleiben muss.
+Halloween fällt 2026 auf einen Samstag, und das ist der eine Tag im Jahr, an dem
+auch Erwachsene verkleidet in den Park dürfen. Der Disneyland Park bleibt bis
+**23 Uhr** offen, mit eigenen Figuren-Treffen, einem eigenen Feuerwerk und
+Süßigkeiten von M&M'S. Ein gesondertes Party-Ticket braucht es nicht, auch
+dieses Abendprogramm ist im normalen Eintritt enthalten, also in einem datierten
+Ticket, dessen Preis laut Disney mit Saison und Nachfrage schwankt.
+
+Die Kostümregeln stehen schon auf der Halloween-Seite des Parks. Masken sind ab
+zwölf Jahren tabu (medizinische ausgenommen), ebenso Kostüme, die Gesicht oder
+Kopf ganz verdecken, Kleidung, die über den Boden schleift, lange Umhänge, Stäbe
+und alles, was wie eine Waffe aussieht. Wer als Disney-Figur kommt, darf nicht
+für Fotos posieren und keine Autogramme geben. Wer im Ganzkörperkostüm mit
+mehreren Lagen kommt, muss am Einlass mit einer genaueren Kontrolle rechnen.
 
 Samstag, Halloween, Kostüme, Abendprogramm für alle mit Ticket: Das wird voll.
 Wer die Kostümnacht nicht braucht, hat von der Deko an einem Wochentag Ende
@@ -133,3 +139,5 @@ Kinder im Schlepptau machen, vergleicht der
 Programm und Termine: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
 — Patrick
+
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, der Park nenne die Kostümregeln für den 31. Oktober erst noch. Sie standen da schon auf seiner Halloween-Seite und sind jetzt im Text. Für Jack und Sally trägt dich auch ein Cast Member vor Ort in die virtuelle Warteschlange ein, nicht nur die App. Den Satz, der Eintritt koste am 31. Oktober mehr als an den übrigen Festivaltagen, haben wir gestrichen, weil wir ihn nicht belegen konnten.
