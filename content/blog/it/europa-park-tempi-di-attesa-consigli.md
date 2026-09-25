@@ -542,21 +542,24 @@ nessuna parte.
 
 ## Euro-Mir: l’ultima stagione
 
-L’**[Euro-Mir](ref:europa-park/euro-mir)** ha aperto il **12 giugno 1997** e nel
-2026 gira per l’ultima volta. Dopo la stagione invernale verrà smontata.
+L’**[Euro-Mir](ref:europa-park/euro-mir)** ha aperto il **12 giugno 1997** e
+gira per l’ultima volta nella stagione 2026/27, fino al 9 gennaio 2027. Poi verrà
+smontata.
 
-L’attrazione è un oggetto strano, e lo dico come complimento. Quattro minuti e 47
-secondi di corsa, di cui una buona parte dentro due torri a specchi, e i vagoni
-lungo il percorso girano su se stessi, così non sai mai dove starai guardando tra
-un istante. 982 metri, 28,2 metri d’altezza, 80 km/h. Solo tra l’inaugurazione di
-giugno e la fine della stagione, nel novembre 1997, ci sono salite circa 1,5
+L’attrazione è un oggetto strano, e lo dico come complimento. Quasi cinque minuti
+di corsa, di cui una buona parte attorno a due torri a specchi, e i vagoni lungo
+il percorso girano su se stessi, così non sai mai dove starai guardando tra un
+istante. Circa 980 metri, 28,3 metri d’altezza, 80 km/h. Solo tra l’inaugurazione
+di giugno e la fine della stagione, nel novembre 1997, ci sono salite circa 1,5
 milioni di persone.
 
 Dopo arriverà un’area spaziale concepita da zero, con una family coaster di Mack
-Rides, prevista per il **2028**. Le due torri caratteristiche dovrebbero tornare
-in forma simile per ragioni statiche, il tema spaziale resta, e il parco parla di
-una collaborazione con l’agenzia spaziale europea **ESA**. Quanta agenzia spaziale
-possa stare in una family coaster, si vedrà.
+Rides, che dovrebbe essere pronta per la stagione **2028**. Le due torri
+caratteristiche devono sparire per ragioni costruttive, ma torneranno in forma
+simile, e il tema spaziale resta. L’8 giugno 2026 il parco ha firmato una
+partnership con l’agenzia spaziale europea **ESA**, che dovrebbe avere un ruolo
+anche nella nuova area. Quanta agenzia spaziale possa stare in una family
+coaster, si vedrà.
 
 Chi comunque sta pensando di andarci nel 2026, non lo rimandi al 2027. Da qui
 all’evento d’addio del 9 gennaio 2027 non arriva più nessuna estate, solo vin brulé.
@@ -573,17 +576,19 @@ quello che registro altrove.
 ```
 
 La domenica a Rust è il giorno con meno gente, meno di qualsiasi giorno feriale
-e parecchio meno del sabato. Al [Phantasialand](ref:phantasialand?bare) il lunedì è il giorno più
-vuoto e la domenica, dopo il sabato, il più pieno; all’[Efteling](ref:efteling?bare)
-è il giovedì. Entrambi i conti stanno nella
+e parecchio meno del sabato. Al [Phantasialand](ref:phantasialand?bare) i cinque
+giorni feriali sono alla pari e la domenica, dopo il sabato, è la più piena;
+all’[Efteling](ref:efteling?bare) il più tranquillo è il giovedì. Più dettagli
+nella
 [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli) e nella
 [guida all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
 
 La spiegazione sta nella composizione del pubblico. Da Rust al Reno, e quindi alla
-Francia, sono pochi chilometri, fino a Basilea non c’è un’ora d’auto, e di
-conseguenza il pubblico è internazionale. Nell’ultima ripartizione pubblicata, il
-49 per cento degli ospiti veniva dalla Germania, il 24 per cento dalla Francia e
-il 20 per cento dalla Svizzera. Sui pernottamenti la Svizzera pesa di più, a lei
+Francia, sono pochi chilometri, fino a Basilea poco più di un’ora d’auto, e di
+conseguenza il pubblico è internazionale. Nell’ultima ripartizione completa,
+quella del 2017, il 49 per cento degli ospiti veniva dalla Germania, il 23 per
+cento dalla Francia e il 22 per cento dalla Svizzera; nel 2025 la NZZ contava
+uno svizzero ogni cinque visitatori. Sui pernottamenti la Svizzera pesa di più, a lei
 va il 27 per cento di tutte le prenotazioni alberghiere.
 
 Un parco così vive del viaggio del fine settimana. Il sabato la gente arriva, la
@@ -592,9 +597,10 @@ nemmeno piede, perché la macchina è già carica e il bagagliaio si chiude solo
 
 Per questo, a Rust, il calendario delle vacanze scolastiche tedesche da solo non
 basta come base di pianificazione. Per questo parco il nostro calendario
-conteggia anche le vacanze francesi e quelle dei cantoni svizzeri di Argovia,
-Basilea Città e Basilea Campagna. Chi guarda solo al Baden-Württemberg, prima o
-poi si stupisce davanti a un martedì pieno.
+conteggia anche le vacanze della regione francese Grand Est, cioè dell’Alsazia,
+quelle dei cantoni svizzeri di Argovia, Basilea Città e Basilea Campagna e quelle
+dei Länder confinanti di Baviera, Assia e Renania-Palatinato. Chi guarda solo al
+Baden-Württemberg, prima o poi si stupisce davanti a un martedì pieno.
 
 ### Il ponte
 
@@ -606,11 +612,12 @@ Corpus Domini lo stesso schema: il giorno di festa, il 4 giugno, stava su
 “basso”, il venerdì del ponte, il 5, su “alto”.
 
 Una limitazione c’è: entrambi i venerdì di ponte hanno fatto un tempo da cani.
-Il 15 maggio 2026 è passato un temporale, il termometro non ha superato i dodici
-gradi, e nonostante questo è bastato per “molto alto”; il 5 giugno di nuovo
-temporali. Il canale Parkfan95 da anni ci va proprio in questi venerdì, di sua spontanea
-volontà, e filma il risultato. Per il 2026 il titolo è “Il giorno pieno più vuoto”, per gli anni
-prima “Folle di visitatori, lunghe attese e tante auto”. Un giorno di ponte con
+Il 15 maggio 2026 è passato un temporale, il termometro è arrivato a malapena a
+dodici gradi, e nonostante questo è bastato per “molto alto”; il 5 giugno di
+nuovo temporali. Il canale Parkfan95 ci va proprio in questi venerdì, di sua
+spontanea volontà, e filma il risultato. Per il 2026 il titolo è “Il giorno pieno
+più vuoto”, quello del 2025 promette “lunghe attese” e “consigli per i giorni
+pieni”. Un giorno di ponte con
 il sole ha tutto un altro aspetto rispetto ai nostri due dati misurati.
 
 https://www.youtube.com/watch?v=aRH5xvAKE_I
@@ -627,13 +634,18 @@ ha il nome; io avevo solo comprato il dominio prima, per caso.
 ```
 
 Attenzione a gennaio, marzo e dicembre. Dietro ci stanno solo da tre a sei giorni
-di rilevazione, e la tabella lo dice. L’ordine di grandezza
-è giusto, sul singolo minuto lì non ci metterei la mano sul fuoco. Solido è il
+di rilevazione, e la tabella lo dice; dicembre è fatto soltanto dei giorni tra
+Natale e Capodanno 2025, la settimana più piena dell’inverno. L’ordine di
+grandezza è giusto, sul singolo minuto lì non ci metterei la mano sul fuoco. Solido è il
 blocco da aprile a settembre, e dice questo: maggio e giugno sono i mesi estivi più
 tranquilli, agosto il più pieno.
 
 Febbraio manca perché il parco è chiuso, e marzo è scarno perché la stagione
-comincia solo a fine mese. All’ultimo controllo dei dati, a settembre 2026,
+2026 è cominciata solo il 28 marzo. Nel 2027 si parte prima: dal 7 al 19 marzo il
+parco apre per la prima volta due Pre-Opening Weeks, non ancora con tutte le
+attrazioni e gli spettacoli, ma con i biglietti più economici dell’anno, e la
+stagione estiva comincia poi il 20 marzo. All’ultimo controllo dei dati, a
+settembre 2026,
 ottobre e novembre non avevano ancora un solo giorno di rilevazione. Se ormai la
 tabella dice qualcosa su Halloween e HALLOWinter, te lo indica il numero di giorni
 rilevati lì accanto.
@@ -651,8 +663,10 @@ Il parco fa quattro stagioni una dietro l’altra:
 
 **HALLOWinter** è una stagione di transizione di poco meno di quattro settimane,
 in cui le decorazioni di Halloween vengono smontate piano piano e quelle
-invernali montate. La gran parte delle 96 attrazioni continua a funzionare,
-Voltron, Wodan ed Eurosat compresi, le attrazioni acquatiche non di continuo.
+invernali montate. La gran parte delle attrazioni continua a funzionare,
+Voltron, Wodan ed Eurosat compresi. Poseidon e Atlantica sono nel programma di
+HALLOWinter, ma con freddo, vento o ghiaccio possono restare chiuse, e i lavori di
+trasformazione possono chiudere qualche area.
 Quasi nessuno pianifica la sua visita al parco per l’inizio di novembre; in quei
 giorni si cercano piuttosto i guanti dell’inverno scorso.
 
@@ -664,10 +678,12 @@ riempirsi è soprattutto il sabato.
 
 ```
 
-Gratis non è. Il parco apre solo alle 11 e chiude alle 19, cioè un’ora in meno che
-d’estate, fa buio presto, e le attrazioni acquatiche non funzionano tutte. Se di
-Poseidon e Atlantica non ti importa nulla e vuoi fare Voltron senza una coda degna
-di questo nome, allora vacci a novembre in un giorno feriale. Quale giorno si
+Gratis non è. Il parco apre solo alle 11 e chiude non prima delle 19, cioè un’ora
+in meno che d’estate, fa buio presto, e sulle attrazioni acquatiche non si può
+contare. Se di Poseidon e Atlantica non ti importa nulla e vuoi fare Voltron in un
+giorno che la nostra previsione mette su “basso”, allora vacci a novembre in un
+giorno feriale. Un novembre a Rust però non l’abbiamo ancora misurato, è una
+previsione. Quale giorno si
 presenta meglio in questo momento te lo dice il calendario qui sopra.
 
 ## La giornata perfetta all’Europa-Park
@@ -688,8 +704,8 @@ Tutto rispettabile, ma niente per cui alzarsi alle otto. Le montagne russe si po
 distribuire nell’arco della giornata, il teatro volante no.
 
 Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario:
-l’attesa tipica di ogni ora, mediata su tutti i giorni di apertura misurati. In
-grassetto l’ora di punta di ogni attrazione.
+l’attesa tipica di ogni ora, la mediana di tutti i giorni di apertura misurati
+dalla fine di dicembre 2025. In grassetto l’ora di punta di ogni attrazione.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -697,14 +713,14 @@ grassetto l’ora di punta di ogni attrazione.
 
 ![Lifthill e prima discesa di Silver Star sopra le chiome degli alberi, cielo serale | Dal 2026 l’attrazione sta nella nuova area tematica Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
-La riga che la prima volta mi ha sorpreso è quella di Silver Star. Alle dieci lì
-c’è la fila più lunga della giornata, da mezzogiorno si accorcia parecchio e
-risale solo verso sera. Un’attrazione da 73 metri che per tutto il pomeriggio
+La riga che la prima volta mi ha sorpreso è quella di Silver Star. Alle dieci e
+alle undici lì c’è la fila più lunga della giornata, da mezzogiorno si accorcia
+parecchio e risale solo nelle ultime ore delle lunghe giornate estive. Un’attrazione da 73 metri che per tutto il pomeriggio
 resta sotto le sue possibilità, perché la mattina sono già stati tutti lì.
 
 **Le ore più piene stanno tra le dieci e mezzogiorno.** La maggior parte delle
-attrazioni ha il massimo alle dieci o alle undici; solo Arthur e le due acquatiche
-si riempiono nel pomeriggio. Chi fa colazione con calma e arriva alle dieci e
+attrazioni ha il massimo alle dieci o alle undici; solo Arthur, Atlantica e il
+rafting sul fiordo toccano il massimo nel pomeriggio. Chi fa colazione con calma e arriva alle dieci e
 mezza, entra a pancia piena esattamente nel picco della giornata.
 
 ![Una nave di legno sfasciata nella vasca di Poseidon, dietro un muro di fortezza | Quasi vuota all’apertura, alle undici la fila più lunga della giornata. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
@@ -716,24 +732,29 @@ Un programma di giornata che ne consegue:
 
 1. **Al Voletarium all’apertura.** La Germania sta vicino all’ingresso, e alle
    dieci ha già la fila più lunga della giornata.
-2. **Poi dritti in Croazia da Voltron.** All’apertura la sua fila è la più corta,
-   un’ora dopo la più lunga di tutto il parco.
+2. **Poi dritti in Croazia da Voltron.** Nella prima ora la sua fila è corta
+   come non lo sarà più fino al tardo pomeriggio; alle dieci è la più lunga di
+   tutto il parco.
 3. **Tra le dieci e mezzogiorno non forzare niente.** Sono le due ore per una
-   seconda colazione, uno spettacolo o il bosco delle fiabe. Tutto quello che adesso ha
-   una coda, nel pomeriggio ce l’ha più corta.
+   seconda colazione, uno spettacolo o il bosco delle fiabe. Quasi tutto quello
+   che adesso ha una coda, nel pomeriggio ce l’ha più corta; ad Arthur e a Wodan
+   resta più o meno uguale.
 4. **Da mezzogiorno Silver Star**, poi Eurosat, Pirates in Batavia, Josefina’s
    Magical Imperial Journey e il Castello dei Medici. Nelle giornate calde al
    chiuso si sta comunque meglio.
 5. **Dalle cinque del pomeriggio le attrazioni acquatiche**, se bagnarsi la
-   mattina ti sembrava troppo presto. Scendono entrambe ben sotto i loro valori
-   di mezzogiorno e del pomeriggio.
-6. **L’ultima ora è la migliore della giornata.** Mediata sui coaster, l’ora
-   prima della chiusura sta sotto quella dell’apertura. Solo le due attrazioni
-   acquatiche la mattina sono più vuote.
+   mattina ti sembrava troppo presto. Scendono entrambe sotto i loro valori di
+   mezzogiorno e del pomeriggio, e nettamente dalle sei.
+6. **Non sopravvalutare la sera.** L’ultima ora è più tranquilla della tarda
+   mattinata, ma non vuota come la prima: mediata sui coaster, l’ora dopo
+   l’apertura è la più corta della giornata, e nelle lunghe serate estive
+   Voltron, Eurosat e Silver Star risalgono nell’ultima ora.
 
-Queste curve restano comunque medie su tutti i giorni di apertura misurati,
-piena estate e stagione invernale insieme. In una corta giornata di novembre, dalle
-undici alle sette di sera, i numeri sono più bassi e il picco arriva prima.
+Queste curve coprono tutti i giorni di apertura misurati, piena estate e le
+settimane attorno a Capodanno insieme. Per una giornata di novembre, dalle undici
+alle sette di sera, non abbiamo ancora misurazioni nostre; la colonna delle nove
+lì semplicemente non esiste, e il picco della giornata non può arrivare prima
+delle undici.
 
 ```map-widget slug=europa-park
 
@@ -750,8 +771,8 @@ sabato arrivo, Rulantica o un giro in paese, domenica al parco.
 dalla Germania. Un giorno di fine ottobre in Baden-Württemberg può essere un
 normale giorno di scuola e riempirsi lo stesso, perché in Francia ci sono le
 vacanze di Ognissanti o a Basilea Città quelle d’autunno. Il nostro calendario per
-questo parco conteggia le vacanze francesi e svizzere, il calendario di un singolo
-Land tedesco no.
+questo parco conteggia le vacanze dell’Alsazia e di tre cantoni svizzeri, il
+calendario di un singolo Land tedesco no.
 
 **Prendere il martedì per un tranquillo giorno feriale.** Nei nostri dati è il
 giorno feriale più pieno, anche se di poco. Se comunque l’unica opzione è un
