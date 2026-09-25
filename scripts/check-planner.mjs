@@ -1837,6 +1837,15 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         startBefore !== null && startAfter !== null && startAfter !== startBefore,
         `${startBefore} -> ${startAfter}`
       );
+      // And on the five-minute grid a mouse has, not on half hours: 90 px on
+      // the phone's axis (1.8 px per minute) is 50 minutes. Under the old
+      // coarse step of 30 the same drag moved the block 60, and anything under
+      // 27 px moved it not at all.
+      check(
+        'und rastet dabei auf fünf Minuten',
+        startBefore !== null && startAfter !== null && startAfter - startBefore === 50,
+        `${startAfter - startBefore} Min. für 90 px`
+      );
 
       // The gesture-free way. It exists because the one above depends on a
       // gesture landing on a 44 px strip of a box whose height is a queue, and a
@@ -3425,6 +3434,15 @@ step: {
   const firedBand = await fireDrag(`${SHEET} [data-planner-headliner-hint] button`);
   await drag.setViewportSize({ width: 390, height: 1000 });
   await drag.waitForTimeout(800);
+  // The list is drawn in search mode only, under a mouse as under a finger:
+  // at rest the narrow window's list sat in the block the sheet squeezes
+  // first and showed no ride whole. A click into the field opens it.
+  await drag
+    .locator(`${SHEET} [data-planner-ride-search] input`)
+    .first()
+    .click()
+    .catch(() => {});
+  await drag.waitForTimeout(400);
   const firedList = await fireDrag(`${SHEET} ul li button[draggable="true"]`);
   await drag.waitForTimeout(200);
   const chips = await drag.evaluate(() => window.__plannerChips ?? []);

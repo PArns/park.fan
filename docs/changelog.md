@@ -4,6 +4,20 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Tagesplaner am Handy: Suche in einer Zeile, Verschieben im 5-Minuten-Raster
+
+In der Handy-Ansicht unter einer Maus (ein schmales Browserfenster) stand „Eigener Block" als
+44 px hohe eigene Zeile unter dem Suchfeld, und die Trefferliste scrollte in einem Kasten, der selbst
+scrollte. Bei 390 × 844 mit zehn geplanten Bahnen bekam die Suche 106 px, und keine einzige Bahn war
+ganz zu sehen. Jetzt verhält sich die Suche dort wie am Handy mit Finger: eine Zeile mit „Eigener
+Block" daneben, ein Klick ins Feld gibt der Suche das Sheet (12 Bahnen sichtbar), „Fertig" bringt den
+Tag zurück. Die Achse wächst dabei von 429 auf 491 px.
+
+Ein Block lässt sich am Handy jetzt in 5-Minuten-Schritten ziehen statt in halben Stunden. 90 px
+Zug sind 50 Minuten, und kurze Züge bewegen den Block überhaupt erst: 18 px sind 10 Minuten, vorher
+blieb er stehen. Die Knöpfe ±15 Minuten in der Aktionsleiste bleiben.
+Details: [trip-planner.md](features/trip-planner.md).
+
 ## Unreleased – fix: das Planer-Sheet auf dem Handy ist so hoch wie der sichtbare Bereich
 
 Das Sheet des Tagesplaners war so hoch wie der Layout-Viewport (`92svh`, `100svh`), auch wenn der

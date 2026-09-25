@@ -1635,8 +1635,19 @@ for every entry, not only for free blocks. It is the same write (`moveEntry`) an
 the caller clamps it — `clampStart` against the same `rideFloor().hardMin` the
 drag obeys, so a press cannot put a block anywhere a drag could not.
 
-15 and not the drag's 30: `SNAP_MIN_COARSE` is half an hour because fifteen
-minutes under a sliding finger reads as jitter, and a press is not sliding.
+15 and not the drag's 5: a press names a distance, and six presses for half an
+hour is too many.
+
+**A finger drags in fives, like a mouse.** The drag's step was `SNAP_MIN_COARSE`,
+half an hour, on a coarse pointer, on the theory that fifteen minutes under a
+sliding finger reads as jitter. What it meant in use was that a phone could only
+drag a block onto :00 or :30, and that any pull under 27 px (half a step on the
+1.8 px axis) moved nothing at all, in a panel whose waits, walks and shows are all
+counted in fives („das ich auf mobile in 5 min raster verschieben kann"). The step is
+`DRAG_SNAP_MIN` (5) for both pointers now; `SNAP_MIN_COARSE` stays only as the
+arrow-key step on a coarse pointer. Measured on the phone with a touch pointer:
+90 px moved a block 50 minutes (60 before), 18 px moved it 10 (0 before), 27 px up
+moved it 15 (0 before). `check:planner` asserts the 50.
 
 The row wraps below `sm` (`max-sm:flex-wrap`, label on its own line) because a
 free block now carries four icons, two durations, two moves and a delete beside a
@@ -1935,10 +1946,20 @@ and showed no ride at all („Eigener Block abgeschnitten"). The row is 45 px, t
 field 32 px like every other control in the sheet, the free-block button reaches
 44 px into the row's own 6 px padding, and the block is `shrink-0` so the sheet
 cannot clip it. The axis is 347 px at 390 × 664 and 323 px at 360 × 640 with it.
-A landscape phone keeps the list, in its own column, and so does a narrow window
-under a mouse: both halves ask `(pointer: coarse)` as well, because a mouse drags
-rows out of that list onto the axis, and search mode would hide the axis it drops
-on. In the context band „Ferien nebenan" is a palm
+A landscape phone keeps the list, in its own column. A narrow window under a mouse
+kept it too for a while, on the argument that a mouse drags rows out of that list
+onto the axis and search mode would hide the axis it drops on. It kept it in the
+same squeezed block, though: at 390 × 844 with ten rides planned the block was
+106 px, the free-block row 44 of them, and a 176 px list scrolled inside a box
+that scrolled too, with no ride row whole on screen („der eigene Block Button ist
+immer noch sehr hoch … dadurch kann man die Suche quasi nicht verwenden"). So the
+switch asks for a portrait phone and nothing about the pointer now
+(`phoneSearch` in `planner-flyout.tsx`). The row is 45 px under a mouse as well,
+the axis goes from 429 to 491 px at 390 × 844 and from 275 to 303 at 605 × 620,
+and a click into the field shows 12 and 8 whole rides. The drag out of the list is
+what it costs; a row's click files the ride at the next free slot on either
+pointer. `check:planner` opens search mode before it starts that drag at 390 px.
+In the context band „Ferien nebenan" is a palm
 on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
 brings the chip row back to one line at 360 px: the band is 60 px there again, 20 px
 that go to the axis.

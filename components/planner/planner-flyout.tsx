@@ -248,16 +248,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    */
   const isLandscape = useMediaQuery(PLANNER_LANDSCAPE_QUERY);
   /**
-   * A portrait phone with a finger on it: where the ride search is one row at
-   * rest and a tap into it opens the search mode. The pointer is asked because
-   * `isPhone` is also a desktop window narrowed under 40rem, and there a mouse
-   * drags rows out of the search list onto the axis — a list that is not drawn,
-   * or an axis that steps aside, would take that gesture away. The search mode
-   * is for the one thing a touch screen adds: a keyboard over the results.
+   * A portrait phone: where the ride search is one row at rest and a tap or a
+   * click into it opens the search mode.
+   *
+   * It asked for a finger as well until the mouse's half of it was measured.
+   * `isPhone` is also a desktop window narrowed under 40rem, and the idea was
+   * that a mouse there drags rows out of the list onto the axis, so the list
+   * stayed drawn at rest. It stayed drawn in the block the sheet squeezes
+   * first: 106 px at 390×844 with ten rides planned, a 44 px free-block row
+   * and a list scrolling inside a box that scrolled too, not one ride whole on
+   * screen. The drag out of the list is what that costs, and a row's click
+   * still files the ride at the next free slot, where the block can be
+   * dragged on the axis like any other.
    */
-  const isCoarse = useMediaQuery('(pointer: coarse)');
-  const touchSearch = isPhone && !isLandscape && isCoarse;
-  const searchMode = searching && touchSearch;
+  const phoneSearch = isPhone && !isLandscape;
+  const searchMode = searching && phoneSearch;
   /**
    * Whether a tap on the grabber has anywhere to go. A landscape phone has no
    * `medium`, and a short window no `full`, so there `large` is the only
@@ -1773,7 +1778,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       // At rest on a portrait phone the block is one 45 px row
                       // (see `compact`), with nothing below it to give away:
                       // squeezed, it would clip the row it is.
-                      touchSearch && !searchMode && 'shrink-0'
+                      phoneSearch && !searchMode && 'shrink-0'
                     )}
                   >
                     <PlannerRideSearch
@@ -1788,7 +1793,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       onAddCustom={addFreeBlock}
                       searching={searchMode}
                       onSearchingChange={setSearching}
-                      compact={touchSearch}
+                      compact={phoneSearch}
                     />
                   </div>
                 )}
