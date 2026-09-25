@@ -149,10 +149,6 @@ es Angstschweiß war.
 Termine, Maze-Line-up und Ticketstufen stehen auf der
 [offiziellen Halloween-Horror-Festival-Seite](https://www.movieparkgermany.de/halloween).
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Kaputte Kinderwelt"
-
-```
-
 ### Europa-Park: Traumatica (Festival of Fear)
 
 Der [Europa-Park](ref:europa-park) macht Halloween in zwei Schichten.
@@ -325,6 +321,14 @@ normalen Tag an Wartezeit kostet, steht im
 
 Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/halloween/de/halloween-fright-nights).
 
+```gallery-widget folder=/media/halloween-2026/kinderwelt heading="Kaputte Kinderwelt"
+
+```
+
+```gallery-widget folder=/media/halloween-2026/darsteller heading="Die Darsteller"
+
+```
+
 ### Bobbejaanland: Kino zum Reinlaufen
 
 Das belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 sein bis dahin
@@ -359,10 +363,6 @@ durchgezogen. Den Konzern will sein Eigentümer EQT gerade verkaufen, mehr dazu
 in unserer [Meldung vom 25. September](/blog/parques-reunidos-verkauf-movie-park).
 
 [Bobbejaanland](ref:bobbejaanland?full)
-
-```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="Die Darsteller"
-
-```
 
 ### Toverland: sieben Hektar Mais, und bloß nicht stehenbleiben
 
@@ -654,7 +654,7 @@ noch kein Oktober dabei, und Halloween musst du dir vorerst dazudenken:
 
 ```
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Kulissen und Zonen"
+```gallery-widget folder=/media/halloween-2026/kulissen heading="Kulissen und Zonen"
 
 ```
 

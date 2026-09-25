@@ -145,10 +145,6 @@ was.
 Data, maze-line-up en ticketniveaus staan op de
 [officiële Halloween-Horror-Festival-pagina](https://www.movieparkgermany.de/nl/halloween).
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Kapotte kinderwereld"
-
-```
-
 ### Europa-Park: Traumatica (Festival of Fear)
 
 Het [Europa-Park](ref:europa-park) doet Halloween in twee diensten. Overdag,
@@ -318,6 +314,14 @@ aan wachttijd kost, staat in de
 
 Actuele line-up en data: [walibi.nl/halloween](https://www.walibi.nl/halloween/nl/halloween-fright-nights).
 
+```gallery-widget folder=/media/halloween-2026/kinderwelt heading="Kapotte kinderwereld"
+
+```
+
+```gallery-widget folder=/media/halloween-2026/darsteller heading="De acteurs"
+
+```
+
 ### Bobbejaanland: bioscoop om in te lopen
 
 Het Belgische [Bobbejaanland](ref:bobbejaanland) opende in 2025 zijn tot dan
@@ -352,10 +356,6 @@ Eigenaar EQT wil de groep nu verkopen, meer daarover in ons
 [nieuwsbericht van 25 september](/blog/parques-reunidos-te-koop-movie-park).
 
 [Bobbejaanland](ref:bobbejaanland?full)
-
-```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="De acteurs"
-
-```
 
 ### Toverland: zeven hectare mais, en vooral niet stilstaan
 
@@ -638,7 +638,7 @@ Halloween moet je er voorlopig zelf bij denken:
 
 ```
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Decors en zones"
+```gallery-widget folder=/media/halloween-2026/kulissen heading="Decors en zones"
 
 ```
 

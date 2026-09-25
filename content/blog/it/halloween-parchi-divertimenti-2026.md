@@ -146,10 +146,6 @@ vantaggio: se esci fradicio, nessuno può dimostrare che fosse paura.
 Date, line-up dei maze e livelli di biglietto sulla
 [pagina ufficiale dell’Halloween Horror Festival](https://www.movieparkgermany.de/en/halloween).
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Mondo dei bambini rotto"
-
-```
-
 ### Europa-Park: Traumatica (Festival of Fear)
 
 L’[Europa-Park](ref:europa-park) fa Halloween su due turni. Di giorno, dal 26
@@ -323,6 +319,14 @@ Walibi](/blog/walibi-holland-untamed-hard-gaan).
 
 Line-up attuale e date: [walibi.nl/halloween](https://www.walibi.nl/halloween/en/halloween-fright-nights).
 
+```gallery-widget folder=/media/halloween-2026/kinderwelt heading="Mondo dei bambini rotto"
+
+```
+
+```gallery-widget folder=/media/halloween-2026/darsteller heading="Gli attori"
+
+```
+
 ### Bobbejaanland: cinema in cui si entra a piedi
 
 Il belga [Bobbejaanland](ref:bobbejaanland) ha inaugurato nel 2025 la sua casa
@@ -355,10 +359,6 @@ a termine ad agosto. Il proprietario EQT vuole ora vendere il gruppo, ne
 parliamo nella nostra [notizia del 25 settembre](/blog/parques-reunidos-in-vendita-movie-park).
 
 [Bobbejaanland](ref:bobbejaanland?full)
-
-```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="Gli attori"
-
-```
 
 ### Toverland: sette ettari di mais, e non fermarsi
 
@@ -652,7 +652,7 @@ devi immaginartelo:
 
 ```
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Scenografie e zone"
+```gallery-widget folder=/media/halloween-2026/kulissen heading="Scenografie e zone"
 
 ```
 

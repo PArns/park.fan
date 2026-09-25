@@ -143,10 +143,6 @@ nobody can prove it was fear.
 Dates, maze line-up and ticket tiers are on the
 [official Halloween Horror Festival page](https://www.movieparkgermany.de/en/halloween).
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Broken Kids' World"
-
-```
-
 ### Europa-Park: Traumatica (Festival of Fear)
 
 [Europa-Park](ref:europa-park) does Halloween in two shifts. By day, from 26
@@ -311,6 +307,14 @@ guide](/blog/walibi-holland-untamed-hard-gaan).
 
 Current line-up and dates: [walibi.nl/halloween](https://www.walibi.nl/halloween/en/halloween-fright-nights).
 
+```gallery-widget folder=/media/halloween-2026/kinderwelt heading="Broken Kids' World"
+
+```
+
+```gallery-widget folder=/media/halloween-2026/darsteller heading="The performers"
+
+```
+
 ### Bobbejaanland: cinema you can walk into
 
 Belgium’s [Bobbejaanland](ref:bobbejaanland) opened its largest spook house
@@ -343,10 +347,6 @@ trying to sell it; more in our
 [news piece of 25 September](/blog/parques-reunidos-sale-movie-park).
 
 [Bobbejaanland](ref:bobbejaanland?full)
-
-```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="The performers"
-
-```
 
 ### Toverland: seven hectares of maize, and don’t stop walking
 
@@ -631,7 +631,7 @@ start in late December 2025, no October had been measured by 25 September
 
 ```
 
-```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Sets and zones"
+```gallery-widget folder=/media/halloween-2026/kulissen heading="Sets and zones"
 
 ```
 
