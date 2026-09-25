@@ -98,7 +98,7 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                   {lead.title}
                 </span>
                 {lead.excerpt && (
-                  <span className="text-muted-foreground mt-1.5 line-clamp-4 block text-[13px] leading-relaxed">
+                  <span className="text-muted-foreground mt-1.5 line-clamp-4 text-[13px] leading-relaxed">
                     {lead.excerpt}
                   </span>
                 )}
@@ -155,11 +155,11 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                             {post.category}
                           </span>
                         )}
-                        <span className="text-foreground group-hover:text-primary line-clamp-2 block text-sm leading-snug font-medium text-pretty transition-colors">
+                        <span className="text-foreground group-hover:text-primary line-clamp-2 text-sm leading-snug font-medium text-pretty transition-colors">
                           {post.title}
                         </span>
                         {post.excerpt && (
-                          <span className="text-muted-foreground mt-0.5 line-clamp-1 block text-xs">
+                          <span className="text-muted-foreground mt-0.5 line-clamp-1 text-xs">
                             {post.excerpt}
                           </span>
                         )}

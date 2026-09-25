@@ -25,9 +25,12 @@ name the route and would not link it.
 **The sheet's destinations lead with their icon** (Patrick, 2026-09-25), in the accent, through
 one `SheetNavLink`: the glyph each place already carries elsewhere — `Newspaper` for the blog as on
 the homepage, `Megaphone` for news, the "more" panel's `CalendarRange`, `BookOpen` and `Compass`
-for its three hubs, the planner button's `CalendarPlus` — plus `House` and `Earth` for the two that
-had none. Above them, under the nearby-park chip, stands the newest news post as a
-`LatestNewsChip`, the same chip the homepage hero draws. A tap on a link to the page already showing
+for its three hubs, the planner button's `CalendarPlus` — plus `House` for the homepage and
+`RollerCoaster` for „Parks entdecken" (Patrick, 2026-09-25: a coaster, not a globe; the same glyph
+the ride-profile teaser and the planner's ride thumbnails already draw). Above them, under the nearby-park chip, stands the newest news post as a
+`LatestNewsChip` card: label and date, the headline in two lines and two to three lines of its
+teaser — the one-line chip the homepage hero draws left three words of the headline in a 300 px
+column. A tap on a link to the page already showing
 closes the sheet too: it used to close only when `pathname` changed, so the chip on the newest post
 or "News" on `/news` left it open and looked broken. Only that case — a locale switch still keeps
 the sheet open, and a modifier click opens a tab without closing it.

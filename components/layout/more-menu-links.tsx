@@ -84,7 +84,11 @@ export function MoreMenuLinks({ variant }: { variant: 'panel' | 'sheet' }) {
         // it — the row wrapped to two lines in all six locales at 320 and 360 px while it held three
         // entries (it holds two since `/contribute` left the sheet), and without it two
         // 44 px tap targets abut at exactly 0 px.
-        isSheet ? 'gap-x-5 gap-y-1 pt-2' : 'gap-x-6 gap-y-2 pt-3'
+        // `mt-auto` in the sheet: the row is the sheet's footer and stands on its bottom edge
+        // whatever the list above it holds (Patrick, 2026-09-25) — the nav is a flex column, so
+        // the auto margin takes the free space; with more list than sheet it simply follows the
+        // list, at the end of the scroll.
+        isSheet ? 'mt-auto gap-x-5 gap-y-1 pt-2' : 'gap-x-6 gap-y-2 pt-3'
       }`}
     >
       {LINKS.filter((link) => !isSheet || !link.panelOnly).map(({ href, Icon, key }) => (
