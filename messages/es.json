@@ -486,6 +486,7 @@
     "bestTime": "Mejor época",
     "bestTimeHint": "Los días y los meses más tranquilos, parque por parque.",
     "latestPosts": "Últimas entradas",
+    "latestNews": "Últimas noticias",
     "allNews": "Todas las noticias",
     "moreCities": "{count, plural, =1 {1 ciudad más} other {# ciudades más}}",
     "categories": "Categorías",
@@ -1894,10 +1895,10 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Historias, datos y noticias de los parques",
+    "heroTitle": "Historias y datos de los parques",
     "badge": "Blog de park.fan",
-    "description": "Crónicas de visita, análisis de datos y noticias de parques.",
-    "intro": "Crónicas de viaje, análisis de tiempos de espera y noticias breves de los parques que cubrimos. Escrito por alguien que hace la cola.",
+    "description": "Crónicas de visita, análisis de datos y guías de parques.",
+    "intro": "Crónicas de viaje, análisis de tiempos de espera y guías de los parques que cubrimos. Escrito por alguien que hace la cola.",
     "blog": "Blog",
     "empty": "Todavía no hay artículos.",
     "readMore": "Leer artículo",
@@ -1911,7 +1912,7 @@
     "categories": "Categorías",
     "category": {
       "label": "Categoría",
-      "description": "Todos los artículos del blog de park.fan en la categoría {category}: crónicas de visita, análisis de datos y noticias de los parques, del más reciente.",
+      "description": "Todos los artículos del blog de park.fan en la categoría {category}: crónicas de visita, análisis de datos y guías de los parques, del más reciente.",
       "postsCount": "{count, plural, =1 {# artículo} other {# artículos}}"
     },
     "home": {
@@ -1941,7 +1942,8 @@
       "atPark": "en {park}"
     },
     "related": {
-      "title": "Más del blog"
+      "title": "Más del blog",
+      "news": "Más noticias"
     },
     "relatedParks": {
       "title": "Parques mencionados"
@@ -2479,6 +2481,16 @@
       "adopt": "Pasar a mi planificador",
       "adopted": "El plan ya está en tu planificador.",
       "open": "Abrir planificador"
+    }
+  },
+  "news": {
+    "metaTitle": "Noticias de parques: eventos, novedades y fechas",
+    "metaDescription": "Noticias breves de los parques temáticos: atracciones nuevas, eventos, aniversarios y ventas, cada una con fecha y enlace al parque.",
+    "intro": "Lo que pasa en los parques, lo más reciente primero.",
+    "count": "{count, plural, one {# noticia} other {# noticias}}",
+    "filter": {
+      "label": "Filtrar por parque",
+      "all": "Todos los parques"
     }
   }
 }

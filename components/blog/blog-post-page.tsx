@@ -27,6 +27,7 @@ import { BlogReadingProgress } from '@/components/blog/blog-reading-progress';
 import { BlogGallery } from '@/components/blog/blog-gallery';
 import { resolveGallery } from '@/lib/blog/gallery';
 import { BlogTags } from '@/components/blog/blog-tags';
+import { listTags, normalizeTagSlug } from '@/lib/blog/tags';
 import { BlogRelatedPosts } from '@/components/blog/blog-related-posts';
 import { BlogReferences } from '@/components/blog/blog-references';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
@@ -66,6 +67,13 @@ export async function buildPostMetadata(
 
   const t = await getTranslations({ locale, namespace: 'blog' });
   const { frontmatter, translationKey } = post;
+  const isNews = section === 'news';
+  // The section a post is filed under, by name: "Blog" for an article, the news label ("News",
+  // "Actualités") for a news post. It names the title's suffix and `article:section`, so a news
+  // post no longer calls itself a blog post in the search result.
+  const sectionName = isNews
+    ? resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News')
+    : t('title');
   const title = frontmatter.seo?.title ?? frontmatter.title;
   const description = frontmatter.seo?.description ?? frontmatter.excerpt;
   // Google shows ~60 characters. The " | Blog · park.fan" suffix costs 18 of
@@ -74,7 +82,7 @@ export async function buildPostMetadata(
   // the bare title, which always fits because the frontmatter keeps it short.
   const fullTitle = fitWithin(
     MAX_TITLE_LENGTH,
-    `${title} | ${t('title')} · park.fan`,
+    `${title} | ${sectionName} · park.fan`,
     `${title} · park.fan`,
     title
   );
@@ -138,6 +146,7 @@ export async function buildPostMetadata(
       type: 'article',
       publishedTime: frontmatter.date,
       modifiedTime: frontmatter.updatedAt ?? frontmatter.date,
+      section: sectionName,
       tags: frontmatter.tags,
       images: [
         {
@@ -268,6 +277,14 @@ export async function BlogPostPageBody({
     ? tBlog('languageNotice.fallback', { language: loadedLanguageName })
     : null;
 
+  // A tag pill links to its archive under `/blog/tag/…`, which lists articles only (`listTags`).
+  // An article's tags all have one. A news post keeps the pills whose archive exists and drops the
+  // rest (`news`, a company only news has covered), which would otherwise be links to a 404.
+  const archivedTags = isNews ? new Set(listTags(locale as Locale).map((tag) => tag.slug)) : null;
+  const tags = (post.frontmatter.tags ?? []).filter(
+    (tag) => !archivedTags || archivedTags.has(normalizeTagSlug(tag))
+  );
+
   const shareUrl = `${SITE_URL}/${locale}${postPath(post)}`;
   const hasToc = extractToc(post.content).length >= 3;
 
@@ -318,11 +335,16 @@ export async function BlogPostPageBody({
                 className="blog-sidebar-scroll hidden space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:block lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
               >
                 <BlogToc markdown={post.content} title={post.frontmatter.title} />
-                {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
-                <div className="hidden space-y-6 lg:block">
-                  <BlogCategoryTree locale={locale as Locale} />
-                  <BlogTagCloud locale={locale as Locale} />
-                </div>
+                {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top.
+                    The blog's categories and tags, so an article only: a news post is not in
+                    either, and the sidebar of a news post is no place to hand its reader to
+                    the blog's archive. */}
+                {!isNews && (
+                  <div className="hidden space-y-6 lg:block">
+                    <BlogCategoryTree locale={locale as Locale} />
+                    <BlogTagCloud locale={locale as Locale} />
+                  </div>
+                )}
               </aside>
             )}
 
@@ -334,9 +356,9 @@ export async function BlogPostPageBody({
                 return images.length > 0 ? <BlogGallery images={images} /> : null;
               })()}
 
-              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+              {tags.length > 0 && (
                 <div className="border-border/60 mt-12 border-t pt-6">
-                  <BlogTags tags={post.frontmatter.tags} />
+                  <BlogTags tags={tags} />
                 </div>
               )}
 

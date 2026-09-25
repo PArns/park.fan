@@ -428,8 +428,23 @@ export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
   return isNewsCategory(post.frontmatter.category);
 }
 
+const ARTICLES = new Map<Locale, readonly BlogListItem[]>();
 const ARTICLES_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
+
+/**
+ * {@link listPosts} without the news posts: what the blog lists. The blog index, its category,
+ * tag and author pages, the category tree, the tag cloud and an article's prev/next all read
+ * this — news has its own section at `/news` and never appears under `/blog`. Same order as
+ * `listPosts` (featured first, then publication date). Frozen and memoised.
+ */
+export function listArticles(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = ARTICLES.get(requestedLocale);
+  if (memo) return memo;
+  const frozen = Object.freeze(listPosts(requestedLocale).filter((p) => !isNewsPost(p)));
+  ARTICLES.set(requestedLocale, frozen);
+  return frozen;
+}
 
 /** {@link listPostsByRecency} without the news posts. Frozen and memoised. */
 export function listArticlesByRecency(requestedLocale: Locale): readonly BlogListItem[] {

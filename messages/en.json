@@ -486,6 +486,7 @@
     "bestTime": "Best Time to Visit",
     "bestTimeHint": "The quietest weekdays and months, park by park.",
     "latestPosts": "Latest posts",
+    "latestNews": "Latest news",
     "allNews": "All news",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
     "categories": "Categories",
@@ -1894,10 +1895,10 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Stories, data and news from the parks",
+    "heroTitle": "Stories and data from the parks",
     "badge": "park.fan Blog",
-    "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
-    "intro": "Trip reports, wait-time analyses and short news from the parks we cover. Written by someone who stands in the queues too.",
+    "description": "Trip reports, data dives and park guides from the park.fan team.",
+    "intro": "Trip reports, wait-time analyses and guides to the parks we cover. Written by someone who stands in the queues too.",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read article",
@@ -1911,7 +1912,7 @@
     "categories": "Categories",
     "category": {
       "label": "Category",
-      "description": "All park.fan blog posts filed under {category} — trip reports, data deep-dives and theme park news, newest first.",
+      "description": "All park.fan blog posts filed under {category} — trip reports, data deep-dives and park guides, newest first.",
       "postsCount": "{count, plural, =1 {# post} other {# posts}}"
     },
     "home": {
@@ -1941,7 +1942,8 @@
       "atPark": "at {park}"
     },
     "related": {
-      "title": "More from the blog"
+      "title": "More from the blog",
+      "news": "More news"
     },
     "relatedParks": {
       "title": "Parks mentioned in this article"
@@ -2479,6 +2481,16 @@
       "adopt": "Add to my planner",
       "adopted": "The plan is now in your planner.",
       "open": "Open planner"
+    }
+  },
+  "news": {
+    "metaTitle": "Theme park news: events, openings and dates",
+    "metaDescription": "Short news from the theme parks: new rides, events, anniversaries and sales, each dated and linked to the park it is about.",
+    "intro": "What is happening at the parks, newest first.",
+    "count": "{count, plural, one {# story} other {# stories}}",
+    "filter": {
+      "label": "Filter by park",
+      "all": "All parks"
     }
   }
 }

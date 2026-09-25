@@ -486,6 +486,7 @@
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
     "latestPosts": "Neueste Beiträge",
+    "latestNews": "Neueste Meldungen",
     "allNews": "Alle News",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
     "categories": "Kategorien",
@@ -1894,10 +1895,10 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Geschichten, Daten und News aus den Parks",
+    "heroTitle": "Geschichten und Daten aus den Parks",
     "badge": "park.fan Blog",
-    "description": "Reiseberichte, Wartezeit-Analysen und Park-News. Geschrieben von jemandem, der selbst ansteht.",
-    "intro": "Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von jemandem, der selbst ansteht.",
+    "description": "Reiseberichte, Wartezeit-Analysen und Park-Guides. Geschrieben von jemandem, der selbst ansteht.",
+    "intro": "Reiseberichte, Wartezeit-Analysen und Guides zu den Parks, die wir abdecken. Geschrieben von jemandem, der selbst ansteht.",
     "blog": "Blog",
     "empty": "Noch keine Beiträge. Schau bald wieder vorbei.",
     "readMore": "Artikel lesen",
@@ -1911,7 +1912,7 @@
     "categories": "Kategorien",
     "category": {
       "label": "Kategorie",
-      "description": "Alle park.fan-Blogbeiträge in der Kategorie {category} – Reiseberichte, Datenanalysen und News aus den Freizeitparks, neueste zuerst.",
+      "description": "Alle park.fan-Blogbeiträge in der Kategorie {category} – Reiseberichte, Datenanalysen und Guides aus den Freizeitparks, neueste zuerst.",
       "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}"
     },
     "home": {
@@ -1941,7 +1942,8 @@
       "atPark": "im {park}"
     },
     "related": {
-      "title": "Mehr aus dem Blog"
+      "title": "Mehr aus dem Blog",
+      "news": "Weitere News"
     },
     "relatedParks": {
       "title": "Parks im Beitrag"
@@ -2479,6 +2481,16 @@
       "adopt": "In meinen Planer übernehmen",
       "adopted": "Der Plan steht jetzt in deinem Planer.",
       "open": "Planer öffnen"
+    }
+  },
+  "news": {
+    "metaTitle": "Freizeitpark-News: Events, Neuheiten und Termine",
+    "metaDescription": "Kurze Meldungen aus den Freizeitparks: neue Bahnen, Events, Jubiläen und Verkäufe, jeweils mit Datum und Link zum Park, um den es geht.",
+    "intro": "Neues aus den Parks, die neueste Meldung zuerst.",
+    "count": "{count, plural, one {# Meldung} other {# Meldungen}}",
+    "filter": {
+      "label": "Nach Park filtern",
+      "all": "Alle Parks"
     }
   }
 }

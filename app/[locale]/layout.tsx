@@ -19,6 +19,7 @@ import { PlannerLauncher } from '@/components/planner/planner-launcher';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
+import { getNewsMenu } from '@/lib/navigation/news-menu';
 import { getGlossaryMenu } from '@/lib/navigation/glossary-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
@@ -150,13 +151,16 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // manifest, read synchronously. Fetched here because `Header` is a Client Component.
   const geoMenu = await getGeoMenu();
   const blogMenu = showBlog ? getBlogMenu(locale as Locale) : undefined;
+  // News is its own bar entry beside the blog's, from the same manifest. No items → no entry.
+  const newsMenu = showBlog ? getNewsMenu(locale as Locale) : undefined;
+  const hasNews = (newsMenu?.items.length ?? 0) > 0;
   const featuredParks = getFeaturedParksMenu(locale);
   // The dictionary's categories for the "more" menu. No I/O either — the term data is a module in
   // this repo; the await is only `getTranslations` reaching for the labels.
   const glossaryMenu = await getGlossaryMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
-  // parks menu opens onto. Kept to ten, or nine where `showBlog` is false: this is a hint about
-  // the primary navigation, and the country links are already in the rendered <nav>.
+  // parks menu opens onto. Kept to eleven — ten without news, nine where `showBlog` is false: this
+  // is a hint about the primary navigation, and the country links are already in the rendered <nav>.
   //
   // It used to say "the same entries the bar renders, in the same order", and that has not been
   // true since four of them moved behind the "Mehr" trigger: they are still in the navigation,
@@ -168,6 +172,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const navigationItems = [
     { name: tNav('explore'), path: '/parks' },
     ...(showBlog ? [{ name: tNav('blog'), path: '/blog' }] : []),
+    ...(hasNews && newsMenu ? [{ name: newsMenu.label, path: newsMenu.path }] : []),
     { name: tNav('bestTime'), path: `/${BEST_TIME_SEGMENTS[locale as Locale]}` },
     { name: tNav('glossary'), path: `/${GLOSSARY_SEGMENTS[locale as Locale]}` },
     { name: tNav('howto'), path: `/${HOWTO_SEGMENTS[locale as Locale]}` },
@@ -388,6 +393,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     showBlog={showBlog}
                     geoMenu={geoMenu}
                     blogMenu={blogMenu}
+                    newsMenu={newsMenu}
                     featuredParks={featuredParks}
                     glossaryMenu={glossaryMenu}
                   />
@@ -396,7 +402,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 {/* Footer renders next-intl links (dynamic under Cache Components) — stream it
                     as a below-the-fold dynamic hole so pages keep a static, cacheable shell. */}
                 <Suspense fallback={null}>
-                  <Footer locale={locale} showBlog={showBlog} />
+                  <Footer
+                    locale={locale}
+                    showBlog={showBlog}
+                    newsLabel={hasNews ? newsMenu?.label : undefined}
+                  />
                 </Suspense>
               </div>
               {/* `fixed`, so it is outside the flow and reserves nothing. The

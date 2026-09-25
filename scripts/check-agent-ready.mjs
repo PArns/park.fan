@@ -262,11 +262,14 @@ for (const locale of FEED_LOCALES) {
   // Items carry the excerpt, not the article — rendering the body pulled the whole post-body
   // manifest and a full filesystem sweep into this route's function and broke the deployment.
   // An item that lost its excerpt is one that reads as a bare link.
-  const descriptions = feed.text.match(/<description>/g)?.length ?? 0;
+  // Counted per `<item>`, not across the document: the `<channel>` carries a `<description>` of
+  // its own, which read as 16/15 and failed a feed that had one per item (PAR-478).
+  const itemBodies = feed.text.match(/<item>[\s\S]*?<\/item>/g) ?? [];
+  const described = itemBodies.filter((item) => /<description>/.test(item)).length;
   check(
     `${locale} feed ships a description per item`,
-    descriptions === items,
-    `${descriptions}/${items} with a description`
+    described === items,
+    `${described}/${items} with a description`
   );
 
   // RSS requires a byte count on an enclosure, and this feed answered 0 for every cover until

@@ -1,7 +1,7 @@
 import 'server-only';
 import { cache } from 'react';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
-import { listPosts } from './listing';
+import { listArticles } from './listing';
 
 /** Lowercase + replace any whitespace / special chars with hyphens. */
 export function normalizeTagSlug(tag: string): string {
@@ -23,13 +23,18 @@ export interface TagEntry {
 }
 
 /**
- * Collect every tag across every published post in the given locale, returning
+ * Collect every tag across every published ARTICLE in the given locale, returning
  * a stable, count-sorted list. Used by the tag archive page, the sidebar tag
  * cloud and SEO/sitemap helpers.
+ *
+ * News posts are not counted: a tag archive lives under `/blog/tag/…` and lists
+ * the blog's articles only, so a tag carried by news alone (`news`,
+ * `parques-reunidos`) has no archive, and a news post's tag pills link only to
+ * the archives that exist (see `BlogTags`).
  */
 export const listTags = cache((locale: Locale): TagEntry[] => {
   const map = new Map<string, TagEntry>();
-  for (const post of listPosts(locale)) {
+  for (const post of listArticles(locale)) {
     for (const tag of post.frontmatter.tags ?? []) {
       const slug = normalizeTagSlug(tag);
       if (!slug) continue;
@@ -104,7 +109,7 @@ export function findCanonicalTag(locale: Locale, slug: string): string | null {
 const getTagTranslationIndex = cache((): Map<string, Map<Locale, string>> => {
   const byKey = new Map<string, Map<Locale, string[]>>();
   for (const locale of locales) {
-    for (const post of listPosts(locale)) {
+    for (const post of listArticles(locale)) {
       if (post.isFallback) continue;
       const slugs = (post.frontmatter.tags ?? []).map(normalizeTagSlug).filter(Boolean);
       if (slugs.length === 0) continue;
