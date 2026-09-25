@@ -11,6 +11,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -152,6 +153,34 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
 }
 
 /**
+ * The open-parks badge and, beside it, the newest news post as a chip.
+ *
+ * One element in the text panel's flow, so the panel's entrance stagger (`hero-in-stagger`, by
+ * `nth-child`) counts the same children it always did. The chip is the one news a phone sees
+ * before the blog chapter at the foot of the page: the band under the hero, which carries a news
+ * row, is `lg` only.
+ *
+ * The chip's `basis` decides the wrap. With room for the badge plus 15 rem it stays on the
+ * badge's line and takes what is left, so the plate is no taller than before; with less (every
+ * phone) it drops to a line of its own. Its headline truncates either way, so it is always one
+ * line and exactly as tall as the badge.
+ */
+function HeroBadgeRow({
+  openParks,
+  latestNews,
+}: {
+  openParks: number | null;
+  latestNews: LatestNews | null | undefined;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <OpenParksBadge openParks={openParks} />
+      {latestNews && <LatestNewsChip news={latestNews} className="flex-1 basis-60" />}
+    </div>
+  );
+}
+
+/**
  * The headline, with the pin beside it on a wide page, sized to German's two-line wrap — the case
  * in the screenshot that started this ticket.
  *
@@ -228,7 +257,14 @@ function HeroHeadline({ children, mark = false }: { children: React.ReactNode; m
  * attraction counts (SSR seed + 5-min client overlay). When the visitor is inside or right
  * next to a park it switches to the "Willkommen im …" variant with that park's live badges.
  */
-export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCounts | null }) {
+export function HeroWithNearby({
+  initialCounts,
+  latestNews,
+}: {
+  initialCounts: HeroInitialCounts | null;
+  /** The newest news post, for the chip beside the badge. Resolved on the server. */
+  latestNews?: LatestNews | null;
+}) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
@@ -301,7 +337,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
 
     return (
       <>
-        <OpenParksBadge openParks={openParks} />
+        <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
         <HeroHeadline>{t('heroWelcome', { parkName: stripNewPrefix(park.name) })}</HeroHeadline>
         <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
           {tHome.rich('hero.intro', introValues)}
@@ -344,7 +380,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
 
   return (
     <>
-      <OpenParksBadge openParks={openParks} />
+      <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
       <HeroHeadline mark>{tHome('hero.title')}</HeroHeadline>
       {showNearParkHero ? (
         <>

@@ -83,6 +83,9 @@ import type { Metadata } from 'next';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
 import { blogFeedAlternates } from '@/lib/blog/feed';
+import { listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
+import { resolveCategoryLabel } from '@/lib/blog/categories';
+import type { LatestNews } from '@/components/blog/latest-news-chip';
 
 // STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
 // attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
@@ -172,6 +175,16 @@ export default async function HomePage({ params }: HomePageProps) {
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
+  // The newest news post for the chip beside the hero's open-parks badge. The manifest, read
+  // synchronously, so the chip is in the static shell and in the fallback alike.
+  const newestNews = listNewsByDate(locale as Locale)[0];
+  const latestNews: LatestNews | null = newestNews
+    ? {
+        slug: newestNews.slug,
+        title: newestNews.frontmatter.title,
+        label: resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News'),
+      }
+    : null;
 
   return (
     <RouteMessages route="/">
@@ -230,8 +243,10 @@ export default async function HomePage({ params }: HomePageProps) {
                 {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
                 <HeroTextPanel className="hero-in-stagger">
-                  <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
-                    <HeroStats />
+                  <Suspense
+                    fallback={<HeroWithNearby initialCounts={null} latestNews={latestNews} />}
+                  >
+                    <HeroStats latestNews={latestNews} />
                   </Suspense>
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}

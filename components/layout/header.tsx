@@ -18,6 +18,7 @@ import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
+import { LatestNewsChip } from '@/components/blog/latest-news-chip';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
@@ -709,6 +710,22 @@ export function Header({
                       <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
                       {t('nearbyPark', { parkName: nearestPark.name })}
                     </Link>
+                  )}
+                  {/* The newest news post, as the same chip the homepage hero draws beside its
+                      badge — a find like the nearby park above, not a menu entry. From the
+                      news menu's own data, so it costs the sheet nothing new. */}
+                  {newsMenu?.items[0] && (
+                    <div data-sheet-stagger>
+                      <LatestNewsChip
+                        news={{
+                          slug: newsMenu.items[0].slug,
+                          title: newsMenu.items[0].title,
+                          label: newsMenu.label,
+                        }}
+                        twoLines
+                        className="w-full text-sm"
+                      />
+                    </div>
                   )}
                   {/* Favorites, first — on a phone this sheet IS the navigation, and a returning
                       visitor's own parks are the shortest route out of it. Radix unmounts the

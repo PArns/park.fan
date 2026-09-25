@@ -28,10 +28,14 @@ Every surface that shows "the newest posts" as a teaser keeps the two apart:
 
 | Surface                       | Articles                                                     | News                                            |
 | ----------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
+| Homepage, hero                | —                                                            | `LatestNewsChip` beside the open-parks badge    |
 | Homepage, band under the hero | `BlogTeaserBand` — three cards, `listArticlesByRecency`      | `NewsRow` under the cards                       |
 | Homepage, blog chapter        | `LatestBlogSection variant="lead"` — `listArticlesByRecency` | `NewsRow` under the lead block                  |
 | Header menu                   | „Backstage": opener + rows, `recent` in `getBlogMenu()`      | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
+| Phone menu (burger sheet)     | the „Backstage" link                                         | the News link and a `LatestNewsChip`            |
 | Park and ride pages           | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                  |
+
+**The hero chip is the one news a phone sees near the top of the homepage.** The band under the hero, with its `NewsRow`, is `lg` only (three full cards between the hero and the first chapter would be a screen and a half of blog on a phone), and the blog chapter with the second `NewsRow` is near the foot of the page. The chip (`components/blog/latest-news-chip.tsx`) is one line by construction: it sits on the badge's line wherever there are 15 rem left beside it, so the desktop plate is no taller than before, and drops to a line of its own on a phone. In the phone menu it may take two lines (`twoLines`), because the 300 px sheet left three words of the headline on one. It carries no age, because `NewsAge` grows after hydration and would slide a truncated headline sideways.
 
 On the teaser surfaces news is drawn a step below the articles (a 112 px cover, a semibold title, no teaser), but with its own accent label, through one component: `NewsList` (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages.
 

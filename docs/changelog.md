@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – die neueste Meldung als Chip auf der Startseite und im Handy-Menü
+
+Neben dem „Parks jetzt geöffnet"-Badge im Hero der Startseite steht die neueste News als Chip
+(`LatestNewsChip`): das News-Label in der Akzentfarbe, die Schlagzeile, ein Pfeil. Auf dem Handy war
+das bisher gar nicht zu sehen, bis man ans Ende der Seite scrollte, weil das Band unter dem Hero mit
+seiner News-Zeile erst ab `lg` gezeichnet wird. Derselbe Chip steht oben im Handy-Menü. „Fotos
+hochladen" ist dort raus; das Formular bleibt über das Banner jeder Park- und Ride-Seite und über
+das „Mehr"-Panel am Desktop erreichbar.
+
+Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md).
+
 ## Unreleased – Blog und News sind getrennt, News hat einen eigenen Menüeintrag
 
 `/blog` listete News weiter mit: im Kartenraster des Index, als Zweig „News" im Kategoriebaum, über
