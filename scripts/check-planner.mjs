@@ -4001,7 +4001,12 @@ step: {
 
   await stubShows(shows);
 
-  /** The same one-block Phantasialand day both pages in this block run on. */
+  /**
+   * The same Phantasialand day both pages in this block run on: Taron at 10:00,
+   * clear of every show, and a second go at 14:40 whose 45-minute queue the
+   * 15:00 line (with 15:05 folded in) falls into, so one show is written inside
+   * a block (PAR-521).
+   */
   const seedDay = (page) =>
     page.evaluate(
       ([plan, date]) => {
@@ -4013,6 +4018,7 @@ step: {
             date,
             entries: [
               { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+              { id: 'taron-2', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 880 },
             ],
           },
         };
@@ -4048,14 +4054,16 @@ step: {
   );
 
   // A pill of names may not lie on a block (PAR-482 follow-up): it covered the
-  // name and the times of every ride a show fell into. Over a block or a
-  // transfer chip the grid draws the mask alone.
+  // name and the times of every ride a show fell into. A block writes its own
+  // shows on its own line instead (PAR-521), so those are not pills.
   const namesOnBlocks = await shows.evaluate((sheet) => {
     const blocks = [...document.querySelectorAll(`${sheet} [data-planner-block]`)].map((el) =>
       el.getBoundingClientRect()
     );
     return [
-      ...document.querySelectorAll(`${sheet} [data-planner-show]:not([data-planner-show-covered])`),
+      ...document.querySelectorAll(
+        `${sheet} [data-planner-show]:not([data-planner-show-covered]):not([data-planner-show-in-block])`
+      ),
     ].filter((pill) => {
       const r = pill.getBoundingClientRect();
       return blocks.some(
@@ -4067,6 +4075,28 @@ step: {
     'keine Show-Pille mit Namen liegt auf einem Block',
     namesOnBlocks === 0,
     `${namesOnBlocks} auf Blöcken`
+  );
+
+  // …and the show is not lost there: the mask alone said nothing about which
+  // show it was („jetzt sieht man die Shows gar nicht mehr"). The 15:00 line
+  // falls into the second Taron, which writes it, with its time, and the grid
+  // draws no pill of its own for it.
+  const inBlock = await shows.evaluate((sheet) => {
+    const block = document.querySelector(`${sheet} li[data-planner-entry="taron-2"]`);
+    const label = block?.querySelector('[data-planner-show-in-block]');
+    const gridPills = [
+      ...document.querySelectorAll(
+        `${sheet} [data-planner-show]:not([data-planner-show-in-block])`
+      ),
+    ].filter((pill) => /Nobis/.test(pill.textContent ?? '')).length;
+    return { text: label?.textContent ?? null, gridPills };
+  }, SHEET);
+  check(
+    'eine Show in einer Bahn steht im Block selbst, mit ihrer Zeit',
+    /15:00/.test(inBlock.text ?? '') &&
+      /Nobis Vol\. 2/.test(inBlock.text ?? '') &&
+      inBlock.gridPills === 0,
+    `${inBlock.text ?? '(keine)'} · ${inBlock.gridPills} Pillen im Raster`
   );
 
   // Two shows at one minute share a line and BOTH are named — and the 15:05 one

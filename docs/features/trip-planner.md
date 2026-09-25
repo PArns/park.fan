@@ -1935,18 +1935,25 @@ to the side panel too, and several things were found on the way.
   nothing. The result now keeps the assistant's input and answer, and the link
   reopens the assistant on them; applying a revision keeps the undo pointing at
   the day before the first answer.
-- **A show pill does not lie on a block.** The pill of names was centred on the
-  axis and up to 80 % of its width, so wherever a show fell inside a planned ride
-  it covered the ride's name, its times, its lateness hint or the transfer chip
-  under it; on Europa-Park, with a show every hour, that was every other block of
-  a full day, and with two blocks side by side the middle was the second one's
-  name. Only on free axis does the grid draw the names now. Over a block or a
-  chip it draws the mask alone, and `showLineCover` (`lib/planner/day-grid.ts`)
-  says where: centred in the first column over a block, three quarters across it
-  where a chip meets the next block, at the axis' right end over a chip alone.
-  The names stay in the markup for a screen reader, the time in the gutter. With
-  a mouse on any block every show mark fades to 20 %, so a ride can be read in
-  full; a fine pointer only, since a tap leaves `:hover` stuck on a touch screen.
+- **A show pill does not lie on a block, and the block says which show.** The
+  pill of names was centred on the axis and up to 80 % of its width, so wherever
+  a show fell inside a planned ride it covered the ride's name, its times, its
+  lateness hint or the transfer chip under it; on Europa-Park, with a show every
+  hour, that was every other block of a full day, and with two blocks side by
+  side the middle was the second one's name. It was cut back to the mask alone
+  over a block, which kept the ride legible and said nothing about the show
+  („jetzt sieht man die Shows gar nicht mehr"). So a block that a show falls
+  into writes it itself (`showLineHost` in `lib/planner/day-grid.ts`, the
+  leftmost of two side by side): on its second line beside the times, or on its
+  first between the name and the figure where it has no second line, as
+  „🎭 ~15:15 Fina & The Yomis, …" with each show's own time. The label is
+  `flex-1` from a basis of 0, so it gets only the room the name, the times and
+  the figure leave; shrinking it with them took a pixel off the name, and a pixel
+  is an ellipsis. The grid then draws nothing for that line. In the gap between
+  two blocks the pill keeps its names at the right end, clear of the transfer
+  chip, and a line that only grazes a block's edge gets the mask, placed by
+  `showLineCover`. With a mouse on any block every grid show mark fades to 20 %;
+  a fine pointer only, since a tap leaves `:hover` stuck on a touch screen.
 - **The empty day says how to start, legibly.** The drag sentence was muted text
   a third of the way down, and the show pills ran through it. It is a card over
   the axis now. On the desktop it plays the gesture above the sentence

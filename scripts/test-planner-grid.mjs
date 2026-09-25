@@ -37,6 +37,7 @@ import {
   MAX_SHOW_LINES,
   showLinePositions,
   showLineCover,
+  showLineHost,
   SHOW_PILL_HALF_PX,
   snapTo,
   unfoldedCloseHour,
@@ -372,6 +373,26 @@ test(
     'block'
   );
   test('…and one a whole pill above it does not', kind(100 - SHOW_PILL_HALF_PX), 'free');
+}
+
+// ── 14d. A block that falls on a show says so itself ─────────────────────────
+{
+  const fly = { id: 'fly', topPx: 100, bottomPx: 150, column: 0 };
+  const pause = { id: 'pause', topPx: 100, bottomPx: 170, column: 1 };
+  const all = [pause, fly];
+  test("a line inside a block is that block's", showLineHost(120, [fly]), 'fly');
+  test("…and of two side by side, the left one's", showLineHost(120, all), 'fly');
+  test(
+    "a line under the left one but inside the right one is the right one's",
+    showLineHost(160, all),
+    'pause'
+  );
+  test('a line on free axis has no host', showLineHost(300, all), null);
+  test(
+    "the block's top edge is inside it, its bottom edge is not",
+    `${showLineHost(100, [fly])}|${showLineHost(150, [fly])}`,
+    'fly|null'
+  );
 }
 
 // ── 15. Snapping and placement ───────────────────────────────────────────────
