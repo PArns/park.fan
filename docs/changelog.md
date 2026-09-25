@@ -4,6 +4,27 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Blog und News sind getrennt, News hat einen eigenen Menüeintrag
+
+`/blog` listete News weiter mit: im Kartenraster des Index, als Zweig „News" im Kategoriebaum, über
+Tags, die nur News tragen, auf der Autorenseite und im Vor/Zurück eines Artikels. Jetzt listet alles
+unter `/blog` nur Artikel (`listArticles`), `/news` nur News, und `pnpm test:news-split` prüft das in
+allen sechs Sprachen. Im Header steht News als eigener Eintrag neben „Backstage", mit einem Panel,
+das anders aussieht als das des Blogs: eine Meldung mit Bild und Teaser, daneben die weiteren
+Schlagzeilen auf einer Zeitleiste, jede mit ihrem Alter. Das Backstage-Panel verliert seinen
+News-Streifen und die News-Pille. News auch im Handy-Menü, im Footer und in `llms.txt`.
+
+Dazu SEO für News: `/news` hat eigene Metadaten (Titel „Freizeitpark-News: …", eigene
+OG-Karte statt der kaputten `blog/news`), eigenes JSON-LD (`CollectionPage` mit `NewsArticle`-Liste)
+und einen eigenen Eintrag in `sitemap.xml`. Ein News-Beitrag heißt im Titel „| News · park.fan"
+statt „| Blog", sendet `NewsArticle` (PAR-471) und `article:section`. Das Publisher-Logo im
+Beitrags-JSON-LD ist das PNG statt des SVG, das Google dort nicht liest (PAR-486). Der Feed
+misst die Enclosure-Länge auch für Titelbilder, die auf einen Zuschnitt zeigen, und
+`check:agent-ready` zählt die Beschreibung des Kanals nicht mehr als Item (PAR-478).
+
+Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md),
+[news lives under `/news`](rules/news-live-under-news.md).
+
 ## Unreleased – fix: der Tagesplaner nennt die Shows wieder (PAR-521, Nachtrag)
 
 Über einer Bahn stand von einer Show nur noch die Maske, man sah also nicht, welche Show läuft.
@@ -157,6 +178,7 @@ Phantasialand-Liste 6.503 → 4.328 px, Magic Kingdom 12.053 → 4.136 px. Glock
 ihre 34-px-Kreise mit 44-px-Trefferfläche. Die Prop heißt `phoneRow`, die anderen sieben
 Einbettungen der Karte und der Desktop bleiben gleich. `LazyMount` reserviert für eine Spalte jetzt
 80 px je Zeile (`phoneRowHeight`), das Tab-Skeleton hat dieselbe Zeilenform.
+
 ## Unreleased – feat: `/news` sieht nicht mehr aus wie der Blog
 
 Die Übersicht `/news` war bis hier die Kategorieseite des Blogs an neuer URL: Kartenraster,

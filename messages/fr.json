@@ -486,6 +486,7 @@
     "bestTime": "Meilleure période",
     "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc.",
     "latestPosts": "Derniers articles",
+    "latestNews": "Dernières actualités",
     "allNews": "Toutes les actualités",
     "moreCities": "{count, plural, =1 {1 autre ville} other {# autres villes}}",
     "categories": "Catégories",
@@ -1894,10 +1895,10 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Histoires, données et actus des parcs",
+    "heroTitle": "Histoires et données des parcs",
     "badge": "Blog park.fan",
-    "description": "Carnets de visite, analyses de données et actualités des parcs par l’équipe park.fan.",
-    "intro": "Carnets de visite, analyses des temps d’attente et brèves des parcs que nous couvrons. Écrits par quelqu’un qui fait la queue lui-même.",
+    "description": "Carnets de visite, analyses de données et guides des parcs par l’équipe park.fan.",
+    "intro": "Carnets de visite, analyses des temps d’attente et guides des parcs que nous couvrons. Écrits par quelqu’un qui fait la queue lui-même.",
     "blog": "Blog",
     "empty": "Aucun article pour le moment.",
     "readMore": "Lire l’article",
@@ -1911,7 +1912,7 @@
     "categories": "Catégories",
     "category": {
       "label": "Catégorie",
-      "description": "Tous les articles du blog park.fan classés dans {category} – carnets de visite, analyses de données et actualité des parcs, les plus récents d’abord.",
+      "description": "Tous les articles du blog park.fan classés dans {category} – carnets de visite, analyses de données et guides des parcs, les plus récents d’abord.",
       "postsCount": "{count, plural, =1 {# article} other {# articles}}"
     },
     "home": {
@@ -1941,7 +1942,8 @@
       "atPark": "à {park}"
     },
     "related": {
-      "title": "Plus depuis le blog"
+      "title": "Plus depuis le blog",
+      "news": "Autres actualités"
     },
     "relatedParks": {
       "title": "Parcs mentionnés dans l’article"
@@ -2482,6 +2484,8 @@
     }
   },
   "news": {
+    "metaTitle": "Actualités des parcs : événements et nouveautés",
+    "metaDescription": "Brèves des parcs d’attractions : nouvelles attractions, événements, anniversaires et ventes, chacune datée et reliée au parc concerné.",
     "intro": "Ce qui se passe dans les parcs, le plus récent d’abord.",
     "count": "{count, plural, one {# actualité} other {# actualités}}",
     "filter": {

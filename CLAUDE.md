@@ -134,9 +134,10 @@ carries the reasoning, the measurements and the counter-examples.
   are intentional. Never dedupe or sort. This app is the only place a term id is defined.
 - **[Blog manifest is split](docs/rules/blog-manifest-is-split.md)** — import listings from `@/lib/blog/listing`; `@/lib/blog` drags every
   post body into the bundle of a route the root layout imports.
-- **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — teasers (homepage, header menu, park/ride
-  pages) list articles and news separately (`isNewsPost`, `listArticlesByRecency`, `NewsRow`/`NewsList`). News shows its
-  age (`NewsAge`) and is never hidden for it.
+- **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — `/blog` lists articles only
+  (`listArticles`, category tree, tags), `/news` news only, and the header has a News entry of its own beside
+  „Backstage" (`NewsMenuPanel`). Teasers list both separately (`NewsRow`/`NewsList`). News shows its age (`NewsAge`)
+  and is never hidden for it. `pnpm test:news-split`.
 - **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
   `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
   `pnpm test:news-redirects`, `pnpm test:news-park`.

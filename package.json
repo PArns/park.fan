@@ -102,6 +102,7 @@
     "test:news-redirects": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-redirects.mjs",
     "test:news-sitemap": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-sitemap.mjs",
     "test:news-park": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-park.mjs",
+    "test:news-split": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-split.mjs",
     "test:widget-park-ref": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-widget-park-ref.mjs",
     "audit:media": "node scripts/audit-media.mjs",
     "check:media-urls": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-media-urls.mjs",

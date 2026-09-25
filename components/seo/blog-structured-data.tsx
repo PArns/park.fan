@@ -1,5 +1,12 @@
 import { escapeJsonLd } from './structured-data';
-import type { Blog, BlogPosting, ImageObject, NewsArticle, WithContext } from 'schema-dts';
+import type {
+  Blog,
+  BlogPosting,
+  CollectionPage,
+  ImageObject,
+  NewsArticle,
+  WithContext,
+} from 'schema-dts';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 import type { BlogFrontmatter, BlogListItem, BlogPost } from '@/lib/blog/types';
 import { resolveAuthor } from '@/lib/blog/authors';
@@ -11,13 +18,23 @@ import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
 import { fitWithin } from '@/lib/utils/metadata';
 
 const SITE_URL = 'https://park.fan';
+/**
+ * The publisher of every post, article and news alike.
+ *
+ * The logo is the PNG, not `logo-big.svg`: Google wants `publisher.logo` in a format Google Images
+ * supports, and SVG is not one of them (PAR-486). The Schema.org validator does not flag it — the
+ * restriction is Google's, not Schema.org's. `components/seo/structured-data.tsx` already falls
+ * back to the same PNG for the park pages. 1024 × 1024, measured off the file.
+ */
 const ORG = {
   '@type': 'Organization',
   name: 'park.fan',
   url: SITE_URL,
   logo: {
     '@type': 'ImageObject',
-    url: `${SITE_URL}/logo-big.svg`,
+    url: `${SITE_URL}/logo-big.png`,
+    width: '1024',
+    height: '1024',
   },
 } as const;
 
@@ -244,6 +261,63 @@ export function BlogStructuredData({
       // post carries an image when linked.
       image: resolvePostImage(locale, p.slug, p.frontmatter),
     })),
+  };
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
+  );
+}
+
+interface NewsListingStructuredDataProps {
+  locale: string;
+  description: string;
+  posts: readonly BlogListItem[];
+  /** Locale-relative path of the overview, `/news`. */
+  path: string;
+  name: string;
+}
+
+/**
+ * JSON-LD for the news overview: a `CollectionPage` whose main entity is an `ItemList` of the news
+ * posts, newest first, each a `NewsArticle` reference with its own URL under `/news`.
+ *
+ * Not `Blog`: the overview used to send the blog's listing type, whose `blogPost` entries are
+ * `BlogPosting`s, while every post it lists sends `NewsArticle` on its own page (PAR-471). One
+ * page calling a post a blog posting and the post calling itself a news article is the kind of
+ * disagreement structured data exists to avoid.
+ */
+export function NewsListingStructuredData({
+  locale,
+  description,
+  posts,
+  path,
+  name,
+}: NewsListingStructuredDataProps) {
+  const canonical = `${SITE_URL}/${locale}${path}`;
+  const data: WithContext<CollectionPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    description,
+    url: canonical,
+    inLanguage: locale,
+    publisher: ORG,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: posts.length,
+      itemListElement: posts.map((p, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'NewsArticle',
+          headline: newsHeadline(p.frontmatter),
+          url: `${SITE_URL}/${locale}${postPath(p)}`,
+          datePublished: withZoneOffset(p.frontmatter.date),
+          dateModified: withZoneOffset(p.frontmatter.updatedAt ?? p.frontmatter.date),
+          image: resolvePostImage(locale, p.slug, p.frontmatter),
+        },
+      })),
+    },
   };
 
   return (

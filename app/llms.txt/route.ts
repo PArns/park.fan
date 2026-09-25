@@ -68,6 +68,7 @@ ${[
   ),
   line('Glossary', `${EN}/glossary`, 'ride types, track elements and the vocabulary of the site'),
   line('Blog', `${EN}/blog`, 'longer pieces, with the wait times in them kept live'),
+  line('News', `${EN}/news`, 'short dated notes per park: events, new rides, sales'),
 ].join('\n')}
 
 ## Parks people ask about
@@ -90,6 +91,7 @@ ${[
     'ARD: everything on this list, typed'
   ),
   line('Sitemap', `${SITE_URL}/sitemap.xml`, 'pages; rides are in /sitemap-attractions.xml'),
+  line('News sitemap', `${SITE_URL}/sitemap-news.xml`, 'Google News format, the last two days'),
   line(
     'Blog feed',
     blogFeedUrl('en'),

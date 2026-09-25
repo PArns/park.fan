@@ -67,6 +67,13 @@ export async function buildPostMetadata(
 
   const t = await getTranslations({ locale, namespace: 'blog' });
   const { frontmatter, translationKey } = post;
+  const isNews = section === 'news';
+  // The section a post is filed under, by name: "Blog" for an article, the news label ("News",
+  // "Actualités") for a news post. It names the title's suffix and `article:section`, so a news
+  // post no longer calls itself a blog post in the search result.
+  const sectionName = isNews
+    ? resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News')
+    : t('title');
   const title = frontmatter.seo?.title ?? frontmatter.title;
   const description = frontmatter.seo?.description ?? frontmatter.excerpt;
   // Google shows ~60 characters. The " | Blog · park.fan" suffix costs 18 of
@@ -75,7 +82,7 @@ export async function buildPostMetadata(
   // the bare title, which always fits because the frontmatter keeps it short.
   const fullTitle = fitWithin(
     MAX_TITLE_LENGTH,
-    `${title} | ${t('title')} · park.fan`,
+    `${title} | ${sectionName} · park.fan`,
     `${title} · park.fan`,
     title
   );
@@ -139,6 +146,7 @@ export async function buildPostMetadata(
       type: 'article',
       publishedTime: frontmatter.date,
       modifiedTime: frontmatter.updatedAt ?? frontmatter.date,
+      section: sectionName,
       tags: frontmatter.tags,
       images: [
         {

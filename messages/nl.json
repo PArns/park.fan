@@ -486,6 +486,7 @@
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
     "latestPosts": "Nieuwste berichten",
+    "latestNews": "Laatste nieuws",
     "allNews": "Al het nieuws",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
@@ -1894,10 +1895,10 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Verhalen, data en nieuws uit de parken",
+    "heroTitle": "Verhalen en data uit de parken",
     "badge": "park.fan Blog",
-    "description": "Reisverslagen, data-analyses en pretpark-nieuws van het park.fan-team.",
-    "intro": "Reisverslagen, wachttijdanalyses en korte updates uit de parken die we volgen. Geschreven door iemand die zelf in de rij staat.",
+    "description": "Reisverslagen, data-analyses en parkgidsen van het park.fan-team.",
+    "intro": "Reisverslagen, wachttijdanalyses en gidsen over de parken die we volgen. Geschreven door iemand die zelf in de rij staat.",
     "blog": "Blog",
     "empty": "Nog geen artikelen. Kom snel terug.",
     "readMore": "Artikel lezen",
@@ -1911,7 +1912,7 @@
     "categories": "Categorieën",
     "category": {
       "label": "Categorie",
-      "description": "Alle blogartikelen van park.fan in de categorie {category} – reisverslagen, data-analyses en nieuws uit de pretparken, nieuwste eerst.",
+      "description": "Alle blogartikelen van park.fan in de categorie {category} – reisverslagen, data-analyses en gidsen over de pretparken, nieuwste eerst.",
       "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}"
     },
     "home": {
@@ -1941,7 +1942,8 @@
       "atPark": "in {park}"
     },
     "related": {
-      "title": "Meer uit het blog"
+      "title": "Meer uit het blog",
+      "news": "Meer nieuws"
     },
     "relatedParks": {
       "title": "Parken in dit artikel"
@@ -2482,6 +2484,8 @@
     }
   },
   "news": {
+    "metaTitle": "Pretparknieuws: evenementen en nieuwe attracties",
+    "metaDescription": "Korte berichten uit de pretparken: nieuwe attracties, evenementen, jubilea en verkopen, telkens met datum en een link naar het park.",
     "intro": "Wat er in de parken gebeurt, het nieuwste eerst.",
     "count": "{count, plural, one {# bericht} other {# berichten}}",
     "filter": {

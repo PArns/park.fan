@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { NEWS_CATEGORY } from '@/lib/blog/paths';
-import { buildCategoryMetadata } from '@/components/blog/blog-category-page';
-import { NewsIndexPageBody } from '@/components/blog/news-index-page';
+import { buildNewsIndexMetadata, NewsIndexPageBody } from '@/components/blog/news-index-page';
 import { RouteMessages } from '@/i18n/route-messages';
 
 interface NewsIndexPageProps {
@@ -21,7 +19,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: NewsIndexPageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildCategoryMetadata(locale, [NEWS_CATEGORY]);
+  return buildNewsIndexMetadata(locale);
 }
 
 export default async function NewsIndexPage({ params }: NewsIndexPageProps) {

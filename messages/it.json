@@ -486,6 +486,7 @@
     "bestTime": "Periodo migliore",
     "bestTimeHint": "I giorni e i mesi più tranquilli, parco per parco.",
     "latestPosts": "Ultimi articoli",
+    "latestNews": "Ultime notizie",
     "allNews": "Tutte le notizie",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
     "categories": "Categorie",
@@ -1894,10 +1895,10 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Storie, dati e news dai parchi",
+    "heroTitle": "Storie e dati dai parchi",
     "badge": "Blog park.fan",
-    "description": "Resoconti di visita, analisi dati e notizie dai parchi.",
-    "intro": "Resoconti di viaggio, analisi dei tempi di attesa e notizie brevi dai parchi che seguiamo. Scritti da qualcuno che in fila ci sta davvero.",
+    "description": "Resoconti di visita, analisi dati e guide ai parchi.",
+    "intro": "Resoconti di viaggio, analisi dei tempi di attesa e guide ai parchi che seguiamo. Scritti da qualcuno che in fila ci sta davvero.",
     "blog": "Blog",
     "empty": "Ancora nessun articolo.",
     "readMore": "Leggi l’articolo",
@@ -1911,7 +1912,7 @@
     "categories": "Categorie",
     "category": {
       "label": "Categoria",
-      "description": "Tutti gli articoli del blog park.fan nella categoria {category}: racconti di visita, analisi dei dati e notizie dai parchi, dal più recente.",
+      "description": "Tutti gli articoli del blog park.fan nella categoria {category}: racconti di visita, analisi dei dati e guide ai parchi, dal più recente.",
       "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}"
     },
     "home": {
@@ -1941,7 +1942,8 @@
       "atPark": "al {park}"
     },
     "related": {
-      "title": "Altro dal blog"
+      "title": "Altro dal blog",
+      "news": "Altre notizie"
     },
     "relatedParks": {
       "title": "Parchi citati"
@@ -2482,6 +2484,8 @@
     }
   },
   "news": {
+    "metaTitle": "Notizie dai parchi: eventi, novità e date",
+    "metaDescription": "Notizie brevi dai parchi divertimento: nuove attrazioni, eventi, anniversari e vendite, ognuna con data e link al parco di cui parla.",
     "intro": "Cosa succede nei parchi, dalla notizia più recente.",
     "count": "{count, plural, one {# notizia} other {# notizie}}",
     "filter": {

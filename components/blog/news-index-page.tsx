@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Megaphone } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
+import {
+  generateAlternateLanguages,
+  locales,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
 import { Link } from '@/i18n/navigation';
 import { hasPublishedPosts, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
@@ -18,9 +25,63 @@ import {
   type NewsStreamPark,
 } from '@/components/blog/news-stream';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
-import { BlogStructuredData } from '@/components/seo/blog-structured-data';
+import { NewsListingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { BlogListItem } from '@/lib/blog/types';
+import { blogFeedAlternates } from '@/lib/blog/feed';
+import { getOgImageUrl } from '@/lib/utils/og-image';
+import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
+
+/**
+ * The overview's own metadata. It used to borrow the blog category's, which titled it
+ * "News | Blog · park.fan", described it as "all blog posts in the category News" and asked the OG
+ * route for a card at `blog/news` — a post slug that does not exist, so the card's title was the
+ * word "news". The page is not a blog category any more, so none of that fits: the title carries
+ * the search phrase ("Freizeitpark-News"), the card is `/api/og/<locale>/news`, and the canonical
+ * is `/news` whatever `?park=` says (the filter adds no URLs, see `NewsStream`).
+ */
+export async function buildNewsIndexMetadata(locale: string): Promise<Metadata> {
+  if (!routing.locales.includes(locale as Locale)) return {};
+  const t = await getTranslations({ locale, namespace: 'news' });
+  const title = fitWithin(MAX_TITLE_LENGTH, `${t('metaTitle')} | park.fan`, t('metaTitle'));
+  const description = t('metaDescription');
+  const url = `${SITE_URL}/${locale}${NEWS_INDEX_PATH}`;
+  const ogImageUrl = getOgImageUrl([locale, 'news']);
+
+  return {
+    title: { absolute: title },
+    description,
+    openGraph: {
+      title,
+      description,
+      locale: localeToOpenGraphLocale[locale as Locale],
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
+      url,
+      siteName: 'park.fan',
+      type: 'website',
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImageUrl] },
+    alternates: {
+      canonical: url,
+      languages: {
+        ...generateAlternateLanguages((l) => `/${l}${NEWS_INDEX_PATH}`),
+        'x-default': `${SITE_URL}/en${NEWS_INDEX_PATH}`,
+      },
+      types: blogFeedAlternates(locale as Locale),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
 
 /**
  * The news overview at `/news`: a stream of dated notes, newest day first, not the blog's card
@@ -81,11 +142,11 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
 
   return (
     <>
-      <BlogStructuredData
+      <NewsListingStructuredData
         locale={locale}
         name={`${label} · park.fan`}
-        description={t('intro')}
-        posts={[...posts]}
+        description={t('metaDescription')}
+        posts={posts}
         path={NEWS_INDEX_PATH}
       />
       <BreadcrumbStructuredData

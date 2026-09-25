@@ -8,6 +8,8 @@ import { OgBrandLockup } from '@/lib/og/brand-mark';
 import { getListItemByLocaleSlug } from '@/lib/blog/listing';
 import { findCanonicalTag } from '@/lib/blog/tags';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
+import { getTranslations } from 'next-intl/server';
+import { NEWS_CATEGORY } from '@/lib/blog/paths';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -17,6 +19,8 @@ interface BlogOgParams {
   locale: Locale;
   /** path segments AFTER `<locale>/blog/`, e.g. ['my-post-slug'] or ['tag', 'disney']. */
   segments: string[];
+  /** `news` renders the news overview's card (`/api/og/<locale>/news`); `segments` is then empty. */
+  section?: 'blog' | 'news';
 }
 
 /**
@@ -26,12 +30,20 @@ interface BlogOgParams {
  *   /api/og/<locale>/blog/<slug>                → single post
  *   /api/og/<locale>/blog/category/<path...>    → category archive
  *   /api/og/<locale>/blog/tag/<tag>             → tag archive
+ *   /api/og/<locale>/news                       → news overview (`section: 'news'`)
+ *
+ * A news post's card is still asked for under `/blog/<slug>`: it is found by its slug either way,
+ * and its kicker is its category's label ("News").
  *
  * The renderer is intentionally simple — title, kicker, brand bar — so it
  * works as a fallback when no editorial cover image is set, and as the
  * fall-through OG image for every category/tag listing.
  */
-export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<Response> {
+export async function renderBlogOg({
+  locale,
+  segments,
+  section = 'blog',
+}: BlogOgParams): Promise<Response> {
   const [first, ...rest] = segments;
 
   // Try to identify which blog surface we're rendering for. The kicker is a
@@ -43,13 +55,19 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
   let coverImage: string | null = null;
   let palette: PaletteName = 'cyan';
 
-  if (!first) {
-    // /<locale>/blog
-    title = locale === 'de' ? 'Blog' : 'Blog';
+  if (section === 'news') {
+    // /<locale>/news — the overview's own card. It used to be asked for as `blog/news`, which
+    // took the post branch below, found no post called "news" and printed the slug as the title.
+    title = resolveCategoryLabel(NEWS_CATEGORY, locale, 'News');
+    subtitle = (await getTranslations({ locale, namespace: 'news' }))('intro');
+    palette = paletteFromString(NEWS_CATEGORY);
+  } else if (!first) {
+    // /<locale>/blog — articles only; news has its own section and card.
+    title = 'Blog';
     subtitle =
       locale === 'de'
-        ? 'Reiseberichte, Daten-Deep-Dives & Park-News'
-        : 'Trip reports, data dives & theme-park news';
+        ? 'Reiseberichte, Daten-Deep-Dives & Park-Guides'
+        : 'Trip reports, data dives & park guides';
   } else if (first === 'tag') {
     const tagSlug = rest[0];
     const canonical = tagSlug ? findCanonicalTag(locale, tagSlug) : null;

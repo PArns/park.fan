@@ -46,7 +46,13 @@ A note's park comes from `getNewsParkRef()` in `lib/blog/backlinks.ts`: the firs
 
 The park filter is a query parameter on the one static page, `?park=<slug>`, handled by `NewsStream`. It adds no URL of its own: the route stays static and the canonical stays `/news`. It offers only parks that have news. The filter is CSS on a `data-news-filter` attribute, and an inline script sets that attribute from the URL while the HTML is parsed. A shared `?park=` link therefore paints filtered and does not shrink after hydration. An unknown slug in the parameter shows everything.
 
+## Search engines
+
+- **The overview has its own metadata** (`buildNewsIndexMetadata` in `components/blog/news-index-page.tsx`): the title carries the search phrase from `news.metaTitle` ("Freizeitpark-News: …"), the description is `news.metaDescription`, the card is `/api/og/<locale>/news` and the canonical is `/news` whatever `?park=` says. It used to borrow the blog category's metadata, which titled it "News | Blog · park.fan", called it "all blog posts in the category News" and asked for a card at `blog/news`, a post slug that does not exist.
+- **A news post names its section as News**, not Blog: the title suffix (`| News · park.fan`) and `article:section` come from the news label (`buildPostMetadata`).
+- **Structured data.** A news post sends `NewsArticle` (PAR-471): headline ≤ 110 characters, dates with the Berlin offset, an image list with one image of at least 1200 px (the OG card is added when the cover is narrower). The overview sends a `CollectionPage` whose `ItemList` holds the same `NewsArticle` references (`NewsListingStructuredData`), not the blog's `Blog`/`BlogPosting`. The publisher logo in both is `logo-big.png`, 1024 × 1024: Google does not read an SVG there (PAR-486).
+- **Sitemaps.** `/news` is its own entry in `sitemap.xml`, dated by the newest news post (it used to arrive through the category loop, which holds articles only now). The news posts of the last two days are also in `/sitemap-news.xml` (PAR-472, `lib/seo/news-sitemap.ts`). IndexNow submits `/news` per locale.
+
 ## What is not here yet
 
-- News posts still send `BlogPosting` structured data (PAR-471) and have no news sitemap (PAR-472).
-- A news subcategory (`news/<sub>`) would keep a `/blog/category/news/<sub>` listing while its posts live under `/news`. None exists.
+- A news subcategory (`news/<sub>`) would have no listing of its own: the category tree holds articles only, and `/news` lists every news post. None exists.
