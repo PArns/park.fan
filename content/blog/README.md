@@ -535,9 +535,9 @@ https://www.instagram.com/reel/CxYz123/
 GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
 `> [!WARNING]` and `> [!CAUTION]` ([`lib/blog/remark-callouts.ts`](../../lib/blog/remark-callouts.ts)).
 
-`> [!CORRECTION]` is ours. When a published post gets a factual fix, the fix is
-shown, not made silently, and the note goes **under the signature**, before the
-rule that opens the sources list:
+`> [!CORRECTION]` is ours, and it is for **news posts only**. When a published
+news post gets a factual fix, the fix is shown, not made silently, and the note
+goes **under the signature**, before the rule that opens the sources list:
 
 <!-- A `text` fence, not `md`: Prettier formats a Markdown fence and would pull the
      date up onto the marker line, which is not how a post writes it. -->
@@ -556,7 +556,9 @@ It renders as a quiet grey box with an icon and its own translated label
 (`blog.correction`: „Korrektur", "Correction", …), set upright, not in italics.
 So the text starts with the date and does not repeat the word. Say what was wrong
 and what is right. Typos and a replaced dead link need no note; a changed fact
-does. The rule behind it: [a correction is shown, never silent](../../docs/rules/a-correction-is-shown-never-silent.md).
+does. A guide or any other post that is not news never gets one: fix it in place
+and bump `updatedAt`. The rule behind it:
+[a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md).
 
 ---
 

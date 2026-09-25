@@ -13,9 +13,10 @@
  * The syntax is deliberately GitHub's — posts render sensibly on GitHub
  * itself and survive any GFM round-trip the editor does.
  *
- * `[!CORRECTION]` is ours, not GitHub's: the dated note a post carries after
- * a factual fix, set under the signature as a quiet grey box (see
- * content/blog/README.md, "Corrections"). GitHub shows it as a plain quote.
+ * `[!CORRECTION]` is ours, not GitHub's: the dated note a news post carries
+ * after a factual fix, set under the signature as a quiet grey box (see
+ * content/blog/README.md, "Callouts, and the correction note"). Guides never
+ * carry one. GitHub shows it as a plain quote.
  */
 
 export const CALLOUT_TYPES = [

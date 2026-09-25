@@ -216,7 +216,7 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
         ['important', 'Important callout', 'Purple emphasis box', MessageSquareWarning],
         ['warning', 'Warning callout', 'Amber caution box', AlertTriangle],
         ['caution', 'Caution callout', 'Red danger box', OctagonAlert],
-        ['correction', 'Correction note', 'Grey dated fix, goes under the signature', FilePenLine],
+        ['correction', 'Correction note', 'News only: dated fix under the signature', FilePenLine],
       ] as const
     ).map<SlashItem>(([kind, title, description, icon]) => ({
       title,
