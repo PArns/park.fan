@@ -22,6 +22,16 @@ from nowhere in the chrome. `messages/*.json` had been carrying an unused `navig
 matches the localized segment so the bar can float transparent over that page's hero. It could
 name the route and would not link it.
 
+**The sheet's destinations lead with their icon** (Patrick, 2026-09-25), in the accent, through
+one `SheetNavLink`: the glyph each place already carries elsewhere — `Newspaper` for the blog as on
+the homepage, `Megaphone` for news, the "more" panel's `CalendarRange`, `BookOpen` and `Compass`
+for its three hubs, the planner button's `CalendarPlus` — plus `House` and `Earth` for the two that
+had none. Above them, under the nearby-park chip, stands the newest news post as a
+`LatestNewsChip`, the same chip the homepage hero draws. A tap on a link to the page already showing
+closes the sheet too: it used to close only when `pathname` changed, so the chip on the newest post
+or "News" on `/news` left it open and looked broken. Only that case — a locale switch still keeps
+the sheet open, and a modifier click opens a tab without closing it.
+
 **On a mobile-first render the header contributed no navigation.** The desktop `<nav>` is
 `display:none` below its breakpoint — Google still reads links there, so nothing was lost — but the
 burger's `SheetContent` is a Radix dialog that unmounts when closed, so those links are not in the
@@ -275,9 +285,14 @@ above them.
 
 The same component renders at the foot of the **burger sheet**, and that is not a second surface
 for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it
-those three stay unreachable from the header on every phone. One definition,
+`/alerts` and `/fancast` stay unreachable from the header on every phone. One definition,
 `variant="panel" | "sheet"`, differing in type scale and in which entries it carries — the next
-paragraph is the one entry that differs.
+two paragraphs are the entries that differ.
+
+**`/contribute` is not in the sheet (Patrick, 2026-09-25).** The phone menu is the navigation of
+a visitor on the move, and „Fotos hochladen" was the one entry nobody opens it for. It carries
+`panelOnly` like `/favorites` below; the form stays one tap away on the banner of every park and
+ride page and in the desktop panel's row.
 
 **`/favorites` is the fourth entry, and the one the sheet does not get (PAR-290).** It is labelled
 from `favorites.link` and marked with the `Star` that `FavoritesPageMenuLink` already gives that
@@ -291,8 +306,9 @@ panel there is no such pair: this band and the favorites band are never open at 
 
 Two things the second host cost, both measured rather than reasoned:
 
-- The sheet row wraps to two lines in **all six locales at 320 and 360 px**, so it needs a `gap-y`:
-  without one, two 44 px tap targets abutted at exactly 0 px. It is 4 px in all twelve now.
+- The sheet row wrapped to two lines in **all six locales at 320 and 360 px** while it carried
+  three entries, so it has a `gap-y`: without one, two 44 px tap targets abutted at exactly 0 px.
+  With `/contribute` gone it holds two; the gap stays for a locale where those two still wrap.
 - `/alerts` was then in that 300 px column **twice** — the favorites panel's own
   `PushAlertsMenuLink` carries the same destination, the same `Bell` and, in all six locales, the
   same string. Measured with one favorite at 360 px: y = 104 and y = 547. The favorites panel's

@@ -20,8 +20,8 @@ import { Link } from '@/i18n/navigation';
  * entries they carry (see `panelOnly` below), so `variant` is the whole parameter.
  *
  * **Why the sheet gets it at all**, when the issue only named the panel: the nav row that carries
- * the panel is `@min-[1024px]:flex`, so without this row `/alerts`, `/fancast` and `/contribute`
- * stay unreachable from the header on every phone. The sheet is what the panel stands in for down
+ * the panel is `@min-[1024px]:flex`, so without this row `/alerts` and `/fancast` stay
+ * unreachable from the header on every phone. The sheet is what the panel stands in for down
  * there.
  *
  * **It is a footer, not a column of its own.** A column would rank an upload form with the guide
@@ -30,7 +30,12 @@ import { Link } from '@/i18n/navigation';
  * heading over it either: a heading in this panel is a link to a hub page, and these have none
  * above them.
  *
- * **`/favorites` is the one entry the sheet does not get (PAR-290)**, and it is the same call the
+ * **`/contribute` is not in the sheet either** (Patrick, 2026-09-25). The phone menu is the
+ * navigation of a visitor on the move, and „Fotos hochladen" was the one entry in it nobody opens
+ * the menu for. The form stays one tap away where it is asked for: the banner of every park and
+ * ride page, and this row in the desktop panel.
+ *
+ * **`/favorites` is the other entry the sheet does not get (PAR-290)**, and it is the same call the
  * favorites panel makes in the other direction one file over. That panel renders its own link to
  * `/favorites` in every state, sheet included and not behind `!isSheet`, so an unconditional
  * fourth entry here would stand under it as a second „Meine Favoriten" in a 300 px column — the
@@ -42,7 +47,7 @@ const LINKS = [
   { href: '/alerts', Icon: Bell, key: 'alerts', panelOnly: false },
   { href: '/favorites', Icon: Star, key: 'favorites', panelOnly: true },
   { href: '/fancast', Icon: LineChart, key: 'fancast', panelOnly: false },
-  { href: '/contribute', Icon: Camera, key: 'contribute', panelOnly: false },
+  { href: '/contribute', Icon: Camera, key: 'contribute', panelOnly: true },
 ] as const;
 
 export function MoreMenuLinks({ variant }: { variant: 'panel' | 'sheet' }) {
@@ -76,7 +81,8 @@ export function MoreMenuLinks({ variant }: { variant: 'panel' | 'sheet' }) {
       className={`border-border/60 flex flex-wrap items-center border-t ${
         // `min-h-11` in the sheet: it is the navigation on a phone, and this is the one row here
         // whose hit area does not already come from its type size. `gap-y` is load-bearing with
-        // it — the row wraps to two lines in all six locales at 320 and 360 px, and without it two
+        // it — the row wrapped to two lines in all six locales at 320 and 360 px while it held three
+        // entries (it holds two since `/contribute` left the sheet), and without it two
         // 44 px tap targets abut at exactly 0 px.
         isSheet ? 'gap-x-5 gap-y-1 pt-2' : 'gap-x-6 gap-y-2 pt-3'
       }`}

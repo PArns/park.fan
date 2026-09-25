@@ -11,6 +11,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -129,7 +130,7 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
   return (
     <span
       className={cn(
-        'inline-flex h-[30px] w-fit items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
+        'inline-flex h-[30px] w-fit shrink-0 items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
         pending
           ? 'border-border/50 bg-background/50'
           : 'border-status-operating/40 bg-status-operating/10 text-status-operating'
@@ -148,6 +149,43 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
         </>
       )}
     </span>
+  );
+}
+
+/**
+ * The open-parks badge and, beside it, the newest news post as a chip.
+ *
+ * One element in the text panel's flow, so the panel's entrance stagger (`hero-in-stagger`, by
+ * `nth-child`) counts the same children it always did.
+ *
+ * **The row's own width decides the layout, never the badge's.** The badge changes width after
+ * the first paint — a skeleton bar until the count arrives, then "8" or "123" parks in one of six
+ * languages — so a wrap left to `flex-wrap` could move the chip to a second line late and push the
+ * headline, the intro and the search 38 px down under the reader. So the row is its own container
+ * (`@container/badges`): from 34 rem it is one line that never wraps (`flex-nowrap`), the badge
+ * keeps its width and the chip shrinks into what is left and truncates; below that the two stand
+ * in a column, badge above chip, whatever the count. 34 rem is the widest badge (French, 286 px)
+ * plus the gap plus 15 rem of chip. Measured: the chip is on the badge's line from a 768 px
+ * window up in all six locales, and the plate is not a pixel taller there than without it.
+ *
+ * The chip does not grow: a short headline gets a short chip, not a pill of empty tint.
+ */
+function HeroBadgeRow({
+  openParks,
+  latestNews,
+}: {
+  openParks: number | null;
+  latestNews: LatestNews | null | undefined;
+}) {
+  return (
+    // Two elements because a container query styles the container's descendants, never the
+    // container itself: the outer box is measured, the inner one is laid out.
+    <div className="@container/badges w-full">
+      <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
+        <OpenParksBadge openParks={openParks} />
+        {latestNews && <LatestNewsChip news={latestNews} />}
+      </div>
+    </div>
   );
 }
 
@@ -228,7 +266,14 @@ function HeroHeadline({ children, mark = false }: { children: React.ReactNode; m
  * attraction counts (SSR seed + 5-min client overlay). When the visitor is inside or right
  * next to a park it switches to the "Willkommen im …" variant with that park's live badges.
  */
-export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCounts | null }) {
+export function HeroWithNearby({
+  initialCounts,
+  latestNews,
+}: {
+  initialCounts: HeroInitialCounts | null;
+  /** The newest news post, for the chip beside the badge. Resolved on the server. */
+  latestNews?: LatestNews | null;
+}) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
@@ -301,7 +346,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
 
     return (
       <>
-        <OpenParksBadge openParks={openParks} />
+        <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
         <HeroHeadline>{t('heroWelcome', { parkName: stripNewPrefix(park.name) })}</HeroHeadline>
         <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
           {tHome.rich('hero.intro', introValues)}
@@ -344,7 +389,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
 
   return (
     <>
-      <OpenParksBadge openParks={openParks} />
+      <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
       <HeroHeadline mark>{tHome('hero.title')}</HeroHeadline>
       {showNearParkHero ? (
         <>
