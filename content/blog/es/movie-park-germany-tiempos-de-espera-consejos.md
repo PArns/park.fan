@@ -2,14 +2,14 @@
 title: '30 años de Movie Park Germany, y no queda ni una marca de 1996'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Sin Batman, sin Bugs Bunny, y desde entonces el parque construye atracciones
   sobre sí mismo. Por su 30 cumpleaños: tiempos de espera medidos, el día de la
-  semana en el que casi todas las guías se equivocan, el calendario desde
+  semana en el que se equivocan las guías habituales, el calendario desde
   septiembre y el Halloween Horror Festival desde el 26 de septiembre.
 tags:
   - movie-park
@@ -28,7 +28,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/star-trek-operation-enterprise-16x9.jpg
   alt: 'La vía de Star Trek: Operation Enterprise iluminada de rojo por la noche, debajo el rótulo luminoso «Horrorwood Studios»'
-  caption: 'Seis semanas al año este parque se llama Horrorwood Studios. El rótulo de la entrada se transforma para la ocasión, no se cambia.'
+  caption: 'Seis semanas al año este parque se llama Horrorwood Studios, y eso es también lo que dicen entonces las letras luminosas de la entrada.'
   credit: 'park.fan'
 seo:
   title: 'Movie Park: tiempos de espera y Halloween 2026, sin Batman'
@@ -68,11 +68,12 @@ como si en la tarta de las bodas de perla apareciera el nombre del vecino.
 
 A eso se suma una cifra que no encaja en absoluto con la fama de este parque. A
 lo largo de todos los días de apertura que hemos medido hasta ahora, en el
-[Movie Park](ref:movie-park-germany) se hace algo más de la mitad de cola que en el
+[Movie Park](ref:movie-park-germany) se hace un buen tercio menos de cola que en el
 [Phantasialand](ref:phantasialand), a poco menos de una hora en coche hacia el
 sur.
 
-Y el día de la semana más vacío es el que ninguna guía de internet te dice.
+Y el domingo, que las guías habituales de internet dan por día lleno de fin de
+semana, está en nuestros datos entre los días más tranquilos de la semana.
 
 ## Bugs Bunny, Batman, los Gremlins: todos se mudaron
 
@@ -93,7 +94,11 @@ de 2004/05 el parque tuvo que rebautizar prácticamente todo lo que llevaba un
 nombre salido de una película de Warner, una mudanza en la que los muebles se
 quedan y solo cambian los nombres del buzón. En marzo de 2005 reabrió como **Movie
 Park Germany**. Cinco años después, el 17 de mayo de 2010, tomó el relevo la
-operadora española **Parques Reunidos**.
+operadora española **Parques Reunidos**. Ese grupo madrileño pertenece desde 2019
+mayoritariamente al fondo sueco EQT, que ahora quiere venderlo entero, Movie Park
+incluido, según publicó el diario económico Expansión el 24 de septiembre de 2026.
+Qué significa eso para los visitantes y los titulares de pase está en
+[nuestra noticia sobre la venta](/blog/eqt-venta-parques-reunidos-movie-park).
 
 Por eso cinco de las atracciones más conocidas siguen viviendo con otro nombre,
 como testigos protegidos:
@@ -108,17 +113,20 @@ como testigos protegidos:
 
 Y las estaciones intermedias ni siquiera están contadas. La nave de los Looney
 Tunes albergó de 2005 a 2016 **Ice Age Adventure**, hasta que tampoco esa
-licencia se renovó y el paseo en barca cerró. El edificio estuvo cuatro años
-vacío.
+licencia se renovó y el paseo en barca cerró. Después no funcionó allí ninguna
+atracción durante cuatro años, y en 2018 y 2019 la nave solo se usó como pasaje
+del terror en Halloween.
 
 La mejor historia de los años diez es la de una montaña rusa que nunca se
 terminó. En 2012 el parque presentó al ayuntamiento de Bottrop los planos de una **montaña
 rusa de 45 metros** justo detrás de la entrada, diez millones de euros, apertura
-en 2014. En septiembre de 2012 Parques Reunidos paró el proyecto, porque en España se hundían las visitas. En ese prado no se volvió a construir hasta 2017, y fue otra cosa: Star Trek: Operation Enterprise.
+en 2014. En septiembre de 2012 el parque paró el proyecto. Oficialmente había cambiado la
+estrategia de inversión; el director del parque, Wouter Dekkers, citó como motivo
+la caída de visitantes en los parques hermanos de España e Italia. En ese prado no se volvió a construir hasta 2017, y fue otra cosa: Star Trek: Operation Enterprise.
 
 Esa prehistoria explica la fama que el Movie Park sigue teniendo hoy en el mundo
-de las montañas rusas. Quien lo visitó entre 2012 y 2016 vio un parque en el que
-se movía poco, un poco como un cine que sigue teniendo en el vestíbulo los
+de las montañas rusas. Quien lo visitó entre 2012 y 2016 vio un parque en el que,
+aparte de The Lost Temple (2014), se movía poco, un poco como un cine que sigue teniendo en el vestíbulo los
 carteles de películas que ya no puede proyectar.
 
 ## La historia del cine que cuenta en su lugar
@@ -127,8 +135,8 @@ A partir de 2017 volvió a entrar dinero en el recinto, y la manera en que se
 gastó no podría copiarla ningún otro parque alemán.
 
 Un parque de estudio sin licencias de estudio tiene dos opciones. Puede comprar
-marcas nuevas, que es lo que hizo Bottrop: en 2007 nació con el **Nickland** la
-primera zona temática de Nickelodeon de Europa, en 2017 se sumó Star Trek, en
+marcas nuevas, que es lo que hizo Bottrop: en 2007 nació con el **Nickland** una
+zona temática propia de Nickelodeon, en 2017 se sumó Star Trek, en
 2026 Paramount. O puede contar lo que él mismo es. Un parque que lleva treinta
 años construyendo decorados de cine tiene para eso más material que la mayoría.
 
@@ -140,7 +148,7 @@ En la nave vacía de Ice Age, 3.800 metros cuadrados, abrió el **23 de junio de
 2021** la **Movie Park Studio Tour**: un multi-dimension coaster de **Intamin**,
 532 metros de vía, hasta 60 km/h, 900 personas por hora, dos minutos de
 recorrido. Dos lanzamientos, uno de ellos hacia atrás, más una plataforma
-giratoria que hace girar el tren tres cuartos en mitad de una escena, y un desvío
+giratoria que cambia la dirección del tren en mitad de una escena, y un desvío
 en la vía.
 
 En doce escenas se cuenta la historia del propio parque. Se atraviesa un archivo
@@ -178,8 +186,8 @@ El parque tiene ocho, y una de ellas ya está más arriba. Quedan siete.
 
 ### Star Trek™: Operation Enterprise
 
-La atracción más grande del parque llegó en **2017** y puso fin al parón
-inversor.
+La atracción más grande del parque llegó en **2017** y fue la primera montaña
+rusa nueva desde 2011.
 **[Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise)**
 es un launch coaster de **Mack Rides**, 40 metros de altura, 90 km/h, 720 metros
 de longitud, tres inversiones, altura mínima 130 centímetros. Dos trenes de
@@ -196,8 +204,8 @@ hat, como el coche familiar que intenta subir la rampa del garaje con nieve.
 Después llegan un Immelmann, un heartline roll y un sacacorchos. La banda
 sonora es de IMAscore, y antes hay un preshow con proyecciones.
 
-Es además la atracción en la que correr por la mañana más compensa: su cola es
-más larga en la segunda hora y nunca vuelve a serlo tanto.
+Correr hacia ella al abrir compensa poco: su cola es más larga en la segunda
+hora, nunca vuelve a serlo tanto y es más corta por la tarde.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -238,8 +246,9 @@ referencia, que se quede en esa única vez.
 atracción en la que más se espera en este parque, y sus datos principales
 parecen los de una atracción para cumpleaños infantiles. Inaugurada el **18 de junio de 2011**, un bobsled coaster de
 **Gerstlauer** en la antigua nave de los Gremlins, 3.000 metros cuadrados, ocho
-metros de altura, 400 metros de longitud, **36 km/h**. Parques Reunidos liberó
-cinco millones de euros para ella, un mes después de la compra.
+metros de altura, 400 metros de longitud, **36 km/h**. El director del parque, Wouter
+Dekkers, presentó la idea a los nuevos dueños un mes después de la compra, y
+Parques Reunidos liberó cinco millones de euros para ella.
 
 ```glossary-widget slug=bobsled-coaster
 
@@ -252,8 +261,8 @@ sorprendentemente silencioso por dentro, y el segundo lift tira con ruedas de
 fricción, de modo que la vagoneta gana velocidad mientras sube.
 
 La explicación está igualmente en la ficha técnica, una línea más abajo: **848
-personas por hora**. Para un parque que en los días fuertes deja entrar a decenas
-de miles, es como tener una sola caja abierta un sábado en Ikea, y se ve en
+personas por hora**. Para un parque que cuenta bastante más de un millón de
+visitantes al año, es como tener una sola caja abierta un sábado en Ikea, y se ve en
 nuestras cifras durante todo el día.
 
 ```glossary-widget slug=ride-capacity
@@ -264,7 +273,7 @@ nuestras cifras durante todo el día.
 
 **[Iron Claw](ref:movie-park-germany/iron-claw)** es el **Suspended Looping
 Coaster** de Vekoma que existe en variantes ligeras por decenas en todo el mundo.
-Abrió el 6 de abril de 2001 como **Eraser**, 689 metros, 80 km/h, dos
+Abrió el 6 de abril de 2001 como **Eraser**, 689 metros, 80 km/h, cinco
 inversiones, dos trenes de veinte personas. Las piernas cuelgan libres y la
 cabeza queda entre dos arneses de hombro duros, como una nuez en el cascanueces.
 
@@ -274,8 +283,9 @@ cabeza queda entre dos arneses de hombro duros, como una nuez en el cascanueces.
 
 Este modelo le dio a Vekoma durante años la fama de la que la empresa se está
 quitando trabajosamente desde los años veinte, y este ejemplar no es una
-excepción. Cuando el parque preguntó a sus fans hace unos años qué habría que
-mejorar, la respuesta más repetida fue derribarla.
+excepción. Cuando el parque preguntó en Facebook, en febrero de 2024, cómo se
+sobrevive a una vuelta en Iron Claw, una cantidad llamativa de comentarios
+recomendó derribarla.
 
 ![Una montaña rusa iluminada de violeta y azul por la noche, detrás la luna, delante un aparcamiento con coches | Desde el aparcamiento, después del cierre. La luna estaba bien colocada. Debajo sigue rodando una Vekoma de 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
 
@@ -311,7 +321,7 @@ atracción acuática con animatrónicos al estilo de las películas B de ciencia
 ficción de los años sesenta. El decorado exterior es uno de esos rincones donde
 todavía se ve cuánto dinero se metió aquí en 1996.
 
-![Una nave de chapa ondulada con el letrero «U.S. A.F.», dentro un jeep militar, al lado una avioneta y una roca roja | La explanada de Area 51. El jeep lleva treinta años en ese sitio. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
+![Una nave de chapa ondulada con el letrero «U.S. A.F.», dentro un jeep militar, al lado una avioneta y una roca roja | La explanada de Area 51. La atracción acuática funciona aquí desde 1996, con este nombre desde 2019. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
 
 **[The High Fall](ref:movie-park-germany/the-high-fall)** es la torre de caída
 libre de Intamin, de unos 60 metros, en la zona The Old West. La góndola gira
@@ -373,9 +383,10 @@ El mismo día, desglosado por horas:
 
 ```
 
-Aquí se superponen dos ritmos. Las montañas rusas se llenan por la mañana y luego
-bajan: Star Trek y Ghost Chasers tienen su hora más fuerte a última hora de la
-mañana, Bandit hacia el mediodía. Las **atracciones de agua funcionan justo al
+Aquí se superponen dos ritmos. Las grandes montañas rusas al aire libre se llenan
+por la mañana y luego bajan: Star Trek tiene su hora más fuerte a última hora de
+la mañana, Bandit e Iron Claw hacia el mediodía, y hacia las tres las tres son
+más cortas. Las **atracciones de agua funcionan justo al
 revés**. Dora, Excalibur y Area 51 tienen su hora llena a última hora de la
 tarde, porque con treinta grados en algún momento todo el mundo quiere mojarse.
 
@@ -391,17 +402,17 @@ En comparación con el vecindario:
 ```
 
 De estos seis parques, solo en el [Toverland](ref:attractiepark-toverland) se
-espera menos. Frente a los dos grandes vecinos alemanes, que compiten por los
-mismos visitantes de un día, Bottrop gana con claridad. La mejor montaña rusa de
+espera menos, y en Walibi Holland más o menos lo mismo. Frente a los dos grandes
+parques alemanes de la tabla, Bottrop gana con claridad. La mejor montaña rusa de
 la región no la tiene el Movie Park, pero en un día normal te montas en más
 cosas.
 
 > [!NOTE]
 > Una limitación que para este parque pesa especialmente. Nuestro histórico
-> empieza en diciembre de 2025, y para **octubre y noviembre todavía no contiene
-> ni un solo día aprovechable**; de septiembre, solo las primeras semanas. Precisamente las semanas del
-> Halloween Horror Festival no están medidas por nosotros. Lo que el calendario
-> muestra más abajo para el otoño es una previsión, no una medición.
+> empieza en diciembre de 2025, y a 25 de septiembre de 2026 **todavía no
+> contiene ni un solo día de octubre o noviembre**, ni ninguna noche del
+> Halloween Horror Festival. Lo que el calendario muestra más abajo para el otoño
+> es una previsión, no una medición.
 
 ## Cuándo ir, y el calendario a partir de septiembre
 
@@ -413,17 +424,18 @@ La recomendación más extendida para este parque es falsa.
 
 ```
 
-Donde menos se espera es el **domingo** y el **viernes**, donde más, el
-**martes**. Quien busca consejos sobre el Movie Park lee casi en todas partes lo
-contrario: de martes a jueves serían los días tranquilos, el fin de semana
-estaría lleno. El sábado sí se espera más que el domingo, y los dos están medidos
-por nosotros más o menos con la misma frecuencia, así que son directamente
-comparables. Solo que el sábado no es el día más cargado de la semana.
+Donde menos se espera es el **viernes**, seguido de cerca por el **domingo** y
+el **jueves**; donde más, el **martes**. Quien busca consejos sobre el Movie
+Park lee sobre todo otra cosa: entre semana estaría tranquilo, el fin de semana
+lleno. El sábado sí se espera más que el domingo, y los dos están medidos por
+nosotros más o menos con la misma frecuencia, así que son directamente
+comparables. Solo que el domingo no está entre los días cargados, y el sábado no
+es el día más cargado de la semana.
 
 El lunes y el martes, en cambio, no se pueden comparar así, y el número de días
-medidos dice por qué. Fuera de vacaciones el parque cierra esos días, así que nuestros
-lunes y martes proceden casi exclusivamente de las vacaciones de verano, y los
-días de vacaciones de verano son los más llenos del año. En la
+medidos dice por qué. Fuera de vacaciones el parque suele cerrar esos días, así que
+nuestros lunes y martes proceden casi exclusivamente de vacaciones, sobre todo de
+las de verano, y los días de vacaciones de verano son los más llenos del año. En la
 [página de la mejor época](/mejor-epoca-para-visitar) esos dos días quedan por
 eso fuera de la comparación entre parques, en lugar de distorsionarla.
 
@@ -433,7 +445,7 @@ hoteles asociados de los alrededores, el público viene y se va el mismo día, y
 la cuenca del Ruhr, con millones de personas a distancia de coche, el día clásico
 de excursión es el sábado. El domingo, a mucha gente ya se le cruza el lunes.
 
-En el [Europa-Park](ref:europa-park) el domingo también es el día más vacío, pero
+En el [Europa-Park](ref:europa-park) el domingo es incluso el día más vacío, pero
 allí por el motivo contrario: Rust vive de los clientes de hotel que llegan el
 sábado y se van el domingo, como se puede leer en la
 [guía del Europa-Park](/blog/europa-park-tiempos-de-espera-consejos). El mismo
@@ -447,21 +459,23 @@ misma forma, con las cuentas en la
 Quien quiera ir este otoño necesita el calendario más que cualquier tabla de
 tiempos de espera.
 
-Las **vacaciones de verano en Renania del Norte-Westfalia terminan el 1 de
-septiembre de 2026**. Un día después el parque pasa al régimen de otoño y solo
+Las **vacaciones de verano en Renania del Norte-Westfalia terminaron el 1 de
+septiembre de 2026**. Desde entonces el parque está en régimen de otoño y solo
 abre ya de **jueves a domingo**. Lunes, martes y miércoles está cerrado. El
 consejo de «ve entre semana» ya era malo; a partir de septiembre ni siquiera se
 puede seguir.
 
-Con eso queda, para los dos meses hasta el final de la temporada, una
+Con eso queda, para las semanas que faltan hasta el final de la temporada, una
 recomendación muy corta: **jueves, viernes o domingo, no sábado.**
 
 Hay dos excepciones a ese ritmo:
 
 - En las **vacaciones de otoño, del 17 al 31 de octubre**, el parque abre a
-  diario.
-- El **8 de noviembre de 2026** termina la temporada, y es a la vez la última
-  noche del Halloween Horror Festival. Después cierra hasta el evento navideño.
+  diario, y también el domingo 1 de noviembre.
+- La semana siguiente cierra de lunes a jueves y ya solo abre el último fin de
+  semana. El **8 de noviembre de 2026** termina la temporada, y es a la vez la
+  última noche del Halloween Horror Festival. Después cierra hasta el evento
+  navideño.
 
 Los más tranquilos de los próximos días de apertura según nuestro calendario:
 
@@ -482,8 +496,9 @@ verano se llena.
 
 En enero, marzo y diciembre, en cambio, solo hay tres o cuatro días medidos
 detrás del valor. El orden de magnitud es correcto, pero de ahí al minuto no me
-comprometería. De septiembre solo tenemos por ahora las primeras semanas, y
-octubre y noviembre faltan por completo.
+comprometería. A 25 de septiembre de 2026, septiembre solo llega hasta la
+víspera del Halloween Horror Festival, y octubre y noviembre todavía faltan por
+completo.
 
 ## Halloween Horror Festival: del 26 de septiembre al 8 de noviembre
 
@@ -520,8 +535,9 @@ pasaje y dónde duele de verdad, está detallado en nuestra
 dos cosas que afectan a la visita al parque en sí.
 
 **Primero:** los pasajes no están incluidos en la entrada de día y se reservan
-aparte. Quien quiera hacer los nueve, que eche cuentas antes, o la noche costará
-el triple que la entrada.
+aparte, con franja horaria fija. Quien quiera hacer los nueve, que compare con el
+**S.I.K. Pass**: 185 € además de una entrada que ya tengas o 215 € con la
+entrada, y con él se entra una vez en cada pasaje sin franja horaria.
 
 **Segundo:** la visita de día y la noche de terror son dos eventos distintos con
 la misma entrada. Para los más pequeños hay durante el día **Halloween for Kids**
@@ -531,8 +547,9 @@ están hechas, expresamente, para niños de seis años. Quien vaya con niños de
 primaria, que planifique antes la salida.
 
 Por lo demás, una noche de Halloween te da casi el día de parque más largo del
-año. El parque alarga hasta las 22 horas, la entrada de día sigue valiendo, y así
-se llega a doce horas seguidas. Solo el día del cumpleaños, en julio, cerró más
+año. El parque abre entonces hasta las 22 horas los viernes y sábados y hasta las
+21 los domingos, la entrada de día sigue valiendo, y así se llega a hasta doce
+horas seguidas. Solo el día del cumpleaños, en julio, cerró más
 tarde.
 
 [Movie Park Germany](ref:movie-park-germany?full)
@@ -540,18 +557,19 @@ tarde.
 ## El día perfecto, en cinco frases
 
 Al abrir, ve directo a
-**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)**, que
-es la atracción en la que correr más rinde, y de ahí sigue enseguida a
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
-porque su cola ya no se acorta desde la segunda hora hasta la noche. La mañana es
-después para **[Bandit](ref:movie-park-germany/the-bandit?bare)** y la
+porque solo en la primera hora su cola es más corta que el resto del día, y de ahí
+sigue enseguida a la
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
-las dos con mucho más aire que después de comer.
-**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**,
-**[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** y
-**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** van en las
-horas de calor, pero más hacia las dos que hacia las cinco, porque a última hora
-de la tarde se cargan.
+cuya cola en la primera hora no llega ni a la mitad de lo que será después.
+**[Dora](ref:movie-park-germany/doras-big-river-adventure?bare)** va todavía por
+la mañana,
+**[Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest?bare)**
+y **[Area 51](ref:movie-park-germany/area-51-top-secret?bare)** hacia el
+mediodía, porque las tres se cargan a última hora de la tarde.
+**[Bandit](ref:movie-park-germany/the-bandit?bare)** y
+**[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** se
+guardan para la tarde, las dos están en su mínimo hacia las tres.
 **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
 y los espectáculos se cogen entre medias, los dos van a intervalos fijos y les da
 igual lo lleno que esté el parque.
@@ -564,66 +582,72 @@ Halloween, a oscuras, más todavía.
 **Temporada.** La temporada regular de 2026 va del **27 de marzo al 8 de
 noviembre**. Después llega, del **27 de noviembre de 2026 al 5 de enero de
 2027**, el evento de invierno **Movie Park’s Hollywood Christmas**, con más de un
-millón de luces, que tiene sus propias fechas y sus propias entradas.
+millón de luces, sus propias fechas y sus propias entradas de día. Los pases de
+temporada 2027 a partir de Silber ya lo incluyen.
 
 **Entradas.** El precio en taquilla es alto, el precio en línea no:
 
-| Entrada                                                    | Taquilla | En línea       |
-| ---------------------------------------------------------- | -------- | -------------- |
-| Entrada de día a partir de 12 años                         | 59,90 €  | desde 34,90 €  |
-| Niños de 4 a 11 años                                       | 54,90 €  | desde 34,90 €  |
-| Reducida (a partir de 65, embarazadas, GdB inferior a 100) | 29,90 €  | 29,90 €        |
-| Paquete familiar (2 adultos, 2 niños, cupo limitado)       | –        | desde 129,90 € |
-| Niños menores de 4 años                                    | gratis   | gratis         |
-| Entrada de cumpleaños (ese día, con documento)             | 16,90 €  | 16,90 €        |
-| Aparcamiento                                               | 9 €      | 9 €            |
+| Entrada                                                                      | Taquilla | En línea       |
+| ---------------------------------------------------------------------------- | -------- | -------------- |
+| Entrada de día a partir de 12 años                                           | 59,90 €  | desde 34,90 €  |
+| Niños de 4 a 11 años                                                         | 54,90 €  | desde 34,90 €  |
+| Reducida (a partir de 65, embarazadas, GdB inferior a 100)                   | 29,90 €  | 29,90 €        |
+| Paquete familiar (2 adultos, 2 niños, cupo limitado)                         | –        | desde 129,90 € |
+| Niños menores de 4 años                                                      | gratis   | gratis         |
+| Entrada de cumpleaños (ese día, con documento, solo taquilla de información) | 16,90 €  | –              |
+| Aparcamiento                                                                 | 9 €      | 9 €            |
 
-El recargo en taquilla es de veinticinco euros por adulto. Con cuatro personas
-son noventa euros porque nadie miró antes el móvil. Los visitantes con un GdB de
+El recargo en taquilla es de veinticinco euros por adulto y veinte por niño. Con
+dos adultos y dos niños son noventa euros porque nadie miró antes el móvil. Los visitantes con un GdB de
 100 y una de las marcas aG, Bl, B o H entran gratis, y el acompañante paga
 29,90 €. El aparcamiento preferente, más cerca de la entrada, cuesta 19,90 € y
-solo se vende en línea.
+solo se vende en línea. La entrada de cumpleaños solo se compra el mismo día en
+la taquilla de información, y al mismo precio también para un acompañante.
 
 **Pases de temporada.** Aquí está el verdadero consejo de precio. Cuatro niveles,
 al mismo precio para adultos y niños: Bronze 89,90 €, Silber 135,90 €, Gold
 155,90 € y Platin 179,90 €. Lo que se vende ahora ya es el pase de 2027, válido
 desde el día de compra hasta el **7 de noviembre de 2027**. Quien lo compra ahora
-tiene, por tanto, el resto de esta temporada, con el Halloween Horror Festival
-entero, y después toda la temporada 2027. Quien ya tiene un pase de 2026 y lo
+tiene, por tanto, el resto de esta temporada, a partir de Silber con todas las
+noches de Halloween y con Hollywood Christmas 2026, y después toda la temporada 2027. Los pasajes del terror se pagan aparte también con pase. Quien ya tiene un pase de 2026 y lo
 renueva paga 15 € menos en cada nivel en la taquilla de información; en línea no
 hay ese descuento.
 
 Entre Bronze y Gold hay 66 €. A cambio desaparecen todos los días bloqueados, el
-aparcamiento va incluido y encima llega el Bonus Club.
+aparcamiento va incluido y encima llegan las entradas gratis en los parques
+hermanos y el Bonus Club.
 
-**El Bonus Club** es la parte en la que en Bottrop casi nadie piensa. Va unido a
-Gold y Platin y a la tarjeta de plástico definitiva con foto, y pone toda una
-lista de parques ajenos en tu entrada:
+**Los parques hermanos** son la parte en la que en Bottrop casi nadie piensa.
+Para Gold y Platin 2027 ya figuran en las condiciones del pase:
+
+- **Tres entradas gratuitas** en [Bobbejaanland](ref:bobbejaanland), en el parque
+  Slagharen y en el Weltvogelpark Walsrode.
+- **Una entrada gratuita** en Tropical Islands y en otros parques europeos del
+  grupo, con Mirabilandia en Italia y el Parque Warner de Madrid como ejemplos.
+
+Todos pertenecen, como el Movie Park, a Parques Reunidos, y como EQT quiere
+vender el grupo entero, seguirían siendo parques hermanos después de una venta.
+
+A eso se suma el **Bonus Club**, también reservado a Gold y Platin. El parque no
+publicará sus ofertas de 2027 hasta el comienzo de la temporada 2027. La lista de
+2026 muestra lo que puede incluir:
 
 - **Una entrada gratuita** por año natural en el [Efteling](ref:efteling). Una
-  entrada de día allí cuesta en tarifa normal unos cincuenta euros, más o menos un
-  tercio de lo que cuesta el propio pase Gold.
-- **Tres entradas gratuitas** en [Bobbejaanland](ref:bobbejaanland), en el parque
-  Slagharen (sin Aqua Mexicana) y en el Weltvogelpark Walsrode. Los tres
-  pertenecen, como el Movie Park, a Parques Reunidos.
-- **Una entrada gratuita** en otros parques del grupo, entre ellos Tropical
-  Islands, Mirabilandia en Italia, el Parque Warner y el Parque de Atracciones de
-  Madrid, Tusenfryd en Noruega y BonBonLand en Dinamarca.
-- **Descuentos** encima: 40 % en los dos parques Walibi y en los parques Plopsa,
-  50 % en Belantis, Fort Fun y el Schwaben Park.
+  entrada sin fecha cuesta allí 56 €, un buen tercio del pase Gold.
+- **Descuentos**: 40 % en los dos parques Walibi y en los parques Plopsa, 50 % en
+  Belantis, Fort Fun y el Schwaben Park.
 
-La lista tiene algunas trampas. Tropical Islands queda excluido los
-sábados, los festivos y durante las vacaciones de Berlín, Brandemburgo y Sajonia,
-las ventajas no se pueden combinar con otras ofertas, y la lista vale para una
-temporada cada vez. La de 2026 está en PDF en la web del parque; la de 2027
-todavía no ha salido.
+La lista de 2026 también tenía sus trampas. Todas las ventajas exigían la
+tarjeta de plástico definitiva con foto y no se combinaban con otras ofertas,
+Slagharen era sin Aqua Mexicana, y Tropical Islands quedaba excluido los
+sábados, los festivos y durante las vacaciones de Berlín, Brandemburgo y Sajonia.
 
 El pase en sí esconde tres cosas en la letra pequeña:
 
-- **Bronze tiene más días bloqueados**: diciembre y enero enteros, además de
-  todos los festivos, los sábados de las vacaciones de RNW, los sábados de
-  octubre y el propio Halloween. Es decir, justo los días en que tú quieres
-  ir.
+- **Bronze tiene más días bloqueados**: diciembre y enero enteros, y antes los
+  días del 28 al 30 de noviembre, además de todos los festivos, los sábados de
+  las vacaciones de RNW, los sábados de octubre y el propio Halloween. Es decir,
+  justo los días en que tú quieres ir.
 - **El aparcamiento solo está incluido a partir de Gold.** Con Bronze y Silber la
   tarjeta de temporada de aparcamiento cuesta 25 € aparte; si no, pagas los 9 €
   en cada visita.
@@ -632,21 +656,23 @@ El pase en sí esconde tres cosas en la letra pequeña:
   espontánea funciona por tanto peor con pase que con entrada de día.
 
 **Cómo llegar.** La dirección es **Warner-Allee 1, 46244 Bottrop**. En coche por
-la A31, salida Kirchhellen, a partir de ahí todo está señalizado. Desde Essen son
+la A31, y allí por la salida 39 Bottrop-Feldhausen, aunque el navegador proponga
+otra. El parque lo recomienda expresamente, y a partir de ahí todo está
+señalizado. Desde Essen son
 unos veinte minutos, desde Düsseldorf unos cuarenta largos, desde Colonia
 alrededor de una hora.
 
 Y en un punto Bottrop gana a cualquier otro gran parque alemán que conozco: **la
 estación de Feldhausen está a unos 400 metros de la entrada.** Allí paran el RE14
-desde Essen Hauptbahnhof y el RB43 desde Dortmund vía Herne. Quien prefiera el
-autobús toma el **SB16** desde Essen Hauptbahnhof, que termina en el recinto del
-parque. Llegar a un parque de atracciones alemán sin coche es normalmente una
+desde Essen Hauptbahnhof y el RB43 desde Dortmund vía Herne. Eso sí, hasta el 30
+de septiembre de 2026 incluido no para allí ningún tren y sale un autobús de
+sustitución desde Dorsten. Quien prefiera el autobús toma el **SB16** desde Essen
+Hauptbahnhof, que para en la parada Movie Park, junto a la entrada principal. Llegar a un parque de atracciones alemán sin coche es normalmente una
 tarea para todo el día. Aquí es un tren regional y cinco minutos a pie.
 
-**Comer.** Aquí seré breve: pizza, pasta, hamburguesas, patatas, una panadería, y
-los precios son la crítica más repetida en las reseñas de los visitantes. Para
-2026 el parque ha anunciado mejoras. Hasta ahora no he notado nada, y aquí como
-lo más rápido posible.
+**Comer.** Aquí seré breve: pizza y pasta, desde 2024 en bufé libre en la
+Trattoria Hollywood, además de hamburguesas, patatas y una panadería. Para lo que
+llega al plato, los precios me parecen altos, y aquí como lo más rápido posible.
 
 Que llueva o no en Bottrop decide dónde se amontonan las colas:
 
@@ -659,7 +685,7 @@ Que llueva o no en Bottrop decide dónde se amontonan las colas:
 ### ¿Cuánto se espera en el Movie Park?
 
 Menos que en los grandes vecinos: a lo largo de todos los días de apertura
-medidos hasta ahora, aquí se hace algo más de la mitad de cola que en el Phantasialand. El valor más
+medidos hasta ahora, aquí se hace un buen tercio menos de cola que en el Phantasialand. El valor más
 alto del parque lo tiene
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), no la gran
 montaña rusa. Las cifras actuales están en la [página del Movie
@@ -667,16 +693,16 @@ Park](ref:movie-park-germany?bare).
 
 ### ¿Cuándo hay menos gente en el Movie Park?
 
-**El domingo y el viernes** son en nuestros datos los días más tranquilos, el
-martes el más cargado, y el sábado queda claramente por encima del domingo. A
+**El viernes**, seguido de cerca por **el domingo** y **el jueves**, es en
+nuestros datos el día más tranquilo, el martes el más cargado, y el sábado queda claramente por encima del domingo. A
 partir de principios de septiembre el parque solo abre de jueves a domingo de
 todas formas, y a diario en las vacaciones de otoño, del 17 al 31 de octubre. Qué día en concreto está en el [calendario de tiempos de espera](ref:movie-park-germany?calendar).
 
 ### ¿Qué días abre el Movie Park en otoño?
 
 Desde el 2 de septiembre, de **jueves a domingo**, a diario en las vacaciones de
-otoño de RNW del 17 al 31 de octubre, y el último día de temporada es el **8 de
-noviembre de 2026**. El evento de invierno Hollywood Christmas va después, del 27
+otoño de RNW del 17 al 31 de octubre, después solo el fin de semana del 6 al 8 de
+noviembre, y el último día de temporada es el **8 de noviembre de 2026**. El evento de invierno Hollywood Christmas va después, del 27
 de noviembre de 2026 al 5 de enero de 2027.
 
 ### ¿Cuándo es el Halloween Horror Festival 2026?
@@ -709,8 +735,9 @@ Bandit está aquí la montaña rusa de madera que en 1999 era la única de Alema
 
 Sí, y mejor que a casi cualquier otro parque alemán. La estación de Feldhausen
 está a unos 400 metros de la entrada y la sirven el RE14 desde Essen y el RB43
-desde Dortmund. La línea de autobús SB16 desde Essen Hauptbahnhof para en el
-recinto del parque.
+desde Dortmund; hasta el 30 de septiembre de 2026 incluido va en su lugar un
+autobús de sustitución desde Dorsten. La línea de autobús SB16 desde Essen
+Hauptbahnhof para junto a la entrada principal.
 
 ### ¿Merece la pena el Movie Park para adultos sin niños?
 
@@ -732,23 +759,26 @@ recuento, es el mayor evento de Halloween del continente.
 
 La segunda parte forma parte de esto igual, y la digo como alguien que va con
 gusto: **sus mejores años este parque ya los ha dejado atrás.** Fueron los de la
-época Warner, cuando un estudio metía dinero y personajes, y lo que vino después
-fue en buena medida administrar lo que había. La última montaña rusa para adultos llegó en 2017, y la novedad del año del aniversario es un túnel cinematográfico en el
-edificio de una atracción de 2014.
+época Warner, cuando un estudio metía dinero y personajes. Desde entonces el
+parque sigue construyendo, en 2011, 2017, 2018, 2021 y 2026, pero sin las marcas
+que un día lo definían. La última montaña rusa para adultos llegó en 2017, y la
+novedad del año del aniversario es un túnel cinematográfico en el edificio de una
+atracción de 2014.
 
-Y aun así, una cantidad sorprendente de gente vuelve una y otra vez.
-En octubre viajan a Bottrop desde todo el país, muchos de ellos cada año, y quien
-recorre aquí las Streets of New York con un pase de temporada no lo hace porque
-últimamente se haya invertido mucho. En 45 hectáreas se levanta una ciudad de
+Y aun así, la gente viene. En 2024 el parque contó más visitantes que en ningún
+otro año desde 2002, con un récord en el Halloween Horror Festival. En octubre
+viajan a Bottrop desde todo el país, muchos de ellos cada año, y quien recorre
+aquí las Streets of New York con un pase de temporada no lo hace por la última
+novedad. En 45 hectáreas se levanta una ciudad de
 decorados construida en 1996 con el dinero de un estudio de Hollywood, y sus
 fachadas siguen en pie aunque el estudio se fue hace veintidós años. El parque
-ha cambiado tres veces de dueño, perdió todas las marcas con las que
-empezó, y en algún momento se puso a construir atracciones sobre su propio
+ha cambiado tres veces de dueño, pertenece a un grupo que EQT quiere vender,
+perdió todas las marcas con las que empezó, y en algún momento se puso a construir atracciones sobre su propio
 pasado.
 
-Si vas este otoño: coge el domingo, no el sábado, ponte a las diez en la entrada
-y haz primero la cola de Star Trek. Y si vuelves cruzando el aparcamiento después
-del cierre, date la vuelta una vez más. La vieja Vekoma que todo el mundo quiere
+Si vas este otoño: coge el viernes o el domingo, no el sábado, ponte a las diez
+en la entrada y haz primero la cola de Van Helsing’s Factory. Y si vuelves cruzando el aparcamiento después
+del cierre, date la vuelta una vez más. La vieja Vekoma que tanta gente quiere
 derribar estará iluminada de violeta, y con un poco de suerte la luna detrás.
 
 — Patrick
@@ -759,25 +789,29 @@ derribar estará iluminada de violeta, y con un poco de suerte la luna detrás.
 
 - Historia del parque, apertura en 1996, cambios de propietario, zonas temáticas, superficie: [Movie Park Germany en de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany en en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World en la Gold Coast (abierto el 3 de junio de 1991) como modelo: [Warner Bros. Movie World en en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)
-- Pérdida de las licencias de Warner en 2004/05 y sus consecuencias para Looney Tunes Adventure e Ice Age Adventure: [Ice Age Adventure en en.wikipedia](https://en.wikipedia.org/wiki/Ice_Age_Adventure) · [Movie Park Germany to build a new ride on the site of the old Ice Age darkride (Dark Ride Database)](https://darkridedatabase.com/movie-park-germany-to-build-a-new-ride-on-the-site-of-the-old-ice-age-darkride/)
-- Movie Park Studio Tour (Intamin, 532 metros, 900 personas por hora, doce escenas, plataforma giratoria, lanzamiento hacia atrás): [Movie Park Studio Tour en Intamin](https://www.intamin.com/project/movie-park-studio-tour/) · [10 datos sobre la nueva «Studio Tour» (Parkerlebnis, en alemán)](https://www.parkerlebnis.de/movie-park-studio-tour-neue-achterbahn-2021-fakten_120236.html)
+- Pérdida de las licencias de Warner en 2004/05, sus consecuencias para Looney Tunes Adventure e Ice Age Adventure y los nombres de Area 51 (Das Bermuda Dreieck desde 1996, Bermuda Triangle: Alien Encounter de 2005 a 2018): [Ice Age Adventure en en.wikipedia](https://en.wikipedia.org/wiki/Ice_Age_Adventure) · [Movie Park Germany to build a new ride on the site of the old Ice Age darkride (Dark Ride Database)](https://darkridedatabase.com/movie-park-germany-to-build-a-new-ride-on-the-site-of-the-old-ice-age-darkride/)
+- Movie Park Studio Tour (Intamin, 532 metros, 900 personas por hora, doce escenas, plataforma giratoria, lanzamiento hacia atrás, la nave vacía como pasaje del terror en 2018 y 2019): [Movie Park Studio Tour en Intamin](https://www.intamin.com/project/movie-park-studio-tour/) · [10 datos sobre la nueva «Studio Tour» (Parkerlebnis, en alemán)](https://www.parkerlebnis.de/movie-park-studio-tour-neue-achterbahn-2021-fakten_120236.html)
 - Journey to the Forbidden Chamber (apertura el 14 de mayo de 2026, túnel inmersivo de Simworx, predecesores The Lost Temple y Movie Magic): [Novedad 2026 (oficial)](https://www.movieparkgermany.de/en/journey-to-the-forbidden-chamber) · [Journey to the Forbidden Chamber (Dark Ride Database)](https://darkridedatabase.com/rides/journey-to-the-forbidden-chamber/) · [La novedad 2026 del Movie Park Germany (Themepark Central, en alemán)](https://www.themepark-central.de/movie-park-journey-to-the-forbidden-chamber/)
 - Star Trek™: Operation Enterprise (Mack Rides, 40 metros, 90 km/h, 720 metros, tres inversiones, lanzamiento LSM, IMAscore): [Star Trek: Operation Enterprise en en.wikipedia](https://en.wikipedia.org/wiki/Star_Trek:_Operation_Enterprise)
-- The Bandit (1999 como Wild Wild West, RCCA, 27,8 metros, 1.099 metros, trazado Cyclone, trenes Premier desde 2001): [Bandit (Movie Park Germany) en de.wikipedia](<https://de.wikipedia.org/wiki/Bandit_(Movie_Park_Germany)>) · [Bandit en Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
+- The Bandit (1999 como Wild Wild West, RCCA, 27,8 metros, 1.099 metros, trazado Cyclone, trenes Premier desde 2001): [Bandit (Movie Park Germany) en de.wikipedia](https://de.wikipedia.org/wiki/Bandit_%28Movie_Park_Germany%29) · [Bandit en Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
 - Retracking del Bandit en el invierno de 2015/16 (200 metros de vía, diez carpinteros, dos oficiales de viaje): [Vías nuevas para the Bandit (oficial, en alemán)](https://www.movieparkgermany.de/blog/neue-schienen-fuer-the-bandit-groesstes-retracking-seit-bau-der-achterbahn-im)
-- Van Helsing’s Factory (18 de junio de 2011, bobsled de Gerstlauer, 400 metros, 36 km/h, 848 personas por hora, 5 millones de euros, antigua nave de los Gremlins): [Van Helsing’s Factory en en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
-- Iron Claw (6 de abril de 2001 como Eraser, Vekoma SLC, 689 metros, nombres anteriores FX y MP-Xpress): [Iron Claw en rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (oficial)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
+- Van Helsing’s Factory (18 de junio de 2011, bobsled de Gerstlauer, 400 metros, 36 km/h, 848 personas por hora, idea presentada un mes después de la compra, 5 millones de euros, antigua nave de los Gremlins): [Van Helsing’s Factory en en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
+- Iron Claw (6 de abril de 2001 como Eraser, Vekoma SLC, 689 metros, cinco inversiones, nombres anteriores FX y MP-Xpress, la pregunta en Facebook de febrero de 2024): [Iron Claw en rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (oficial)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw) · [Movie Park vraagt tips voor pijnlijke achtbaan (Looopings, en neerlandés)](https://www.looopings.nl/weblog/24822/Movie-Park-vraagt-tips-voor-pijnlijke-achtbaan-fans-smeken-om-sloop.html)
 - Excalibur – Secrets of the Dark Forest (1996 como La historia interminable, 2005 Mystery River, reapertura el 7 de mayo de 2018): [Excalibur – Secrets of the Dark Forest en de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River se convierte en Excalibur (Parkerlebnis, en alemán)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
-- Montaña rusa cancelada para 2014 (45 metros, diez millones de euros, justo detrás de la entrada principal, detenida en septiembre de 2012; desde 2017 ahí está Star Trek): [Planes de montaña rusa detenidos (oficial, archivado, en alemán)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Freizeitparkinfos, junio de 2012 (en alemán)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, febrero de 2016 (en alemán)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany planea una montaña rusa de 45 metros (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
+- Montaña rusa cancelada para 2014 (45 metros, diez millones de euros, justo detrás de la entrada principal, detenida en septiembre de 2012, el motivo oficial y el de Wouter Dekkers; desde 2017 ahí está Star Trek): [Planes de montaña rusa detenidos (oficial, archivado, en alemán)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Final sorpresa para la montaña rusa (Freizeitparkinfos, septiembre de 2012, en alemán)](https://www.freizeitparkinfos.de/news/ueberraschendes-aus-fuer-die-achterbahn-im-movie-park) · [Freizeitparkinfos, junio de 2012 (en alemán)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, febrero de 2016 (en alemán)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany planea una montaña rusa de 45 metros (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
 - 30 aniversario, espectáculos nuevos 2026, Parade of Celebration: [30 años de historia del parque y del cine (oficial, en alemán)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [Novedades 2026 (oficial)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 años de Movie Park Germany (Themepark Central, en alemán)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
-- Halloween Horror Festival 2026 (del 26 de septiembre al 8 de noviembre, 28ª edición, más de 300 monstruos, cuatro scare zones): [Movie Park Halloween (oficial)](https://www.movieparkgermany.de/en/halloween) · [Casting de monstruos 2026 (FreizeitparkNEWS, en alemán)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [nuestra guía de Halloween 2026](/blog/halloween-parques-atracciones-2026)
+- Halloween Horror Festival 2026 (del 26 de septiembre al 8 de noviembre, 28ª edición, más de 300 monstruos, cuatro scare zones, S.I.K. Pass, noches hasta las 21 o las 22 horas): [Movie Park Halloween (oficial)](https://www.movieparkgermany.de/en/halloween) · [S.I.K. Pass (oficial)](https://www.movieparkgermany.de/en/halloween/sik-pass) · [Entradas y avisos (oficial, en alemán)](https://www.movieparkgermany.de/halloween/tickets-kaufen) · [Casting de monstruos 2026 (FreizeitparkNEWS, en alemán)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [nuestra guía de Halloween 2026](/blog/halloween-parques-atracciones-2026)
 - Los nueve pasajes de 2026, de los que Jason Universe es el único nuevo: [Pasajes del terror (oficial)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
 - PHOBIA – The Live Horror Game Show en el Studio 7 y el desfile de monstruos: [Espectáculos (oficial)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (desde 2022, quinta edición el 17 de octubre de 2026): [Haunters Against Hate (oficial)](https://www.movieparkgermany.de/en/halloween/hah) · [«Haunters Against Hate» en Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
 - Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (oficial)](https://www.movieparkgermany.de/en/christmas)
-- Precios, pases de temporada 2027 (válidos desde la compra hasta el 7 de noviembre de 2027, descuento por renovación en la taquilla de información) y aparcamiento: [Nuestros precios y ofertas (oficial)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Pase de temporada (oficial)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Precios de entrada 2026 (NRW-Parks, en alemán)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
-- Bonus Club: ventajas solo para Gold y Platin, entrada gratuita en el Efteling una vez por año natural, tres veces Bobbejaanland, Slagharen y Weltvogelpark Walsrode, más la lista de descuentos: [Bonus Club (oficial)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Ventajas 2026, parques del grupo (PDF, en alemán)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf) · [Ventajas 2026, parques de ocio, zoos y demás (PDF, en alemán)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf)
-- Cómo llegar, estación de Feldhausen, SB16: [Acceso y aparcamiento (oficial)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Excursión en tren (DB Regio NRW, en alemán)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
+- Precios, entrada de cumpleaños, pases de temporada 2027 (válidos desde la compra hasta el 7 de noviembre de 2027, días bloqueados, Hollywood Christmas 2026 a partir de Silber, descuento por renovación en la taquilla de información, entradas gratis en los parques hermanos) y aparcamiento: [Nuestros precios y ofertas (oficial)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Pase de temporada (oficial)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Información sobre el pase de temporada (oficial)](https://www.movieparkgermany.de/en/tickets-kaufen/saisonpass/informationen-zum-saisonpass) · [Precios de entrada 2026 (NRW-Parks, en alemán)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
+- Bonus Club: ventajas solo para Gold y Platin, ofertas de 2027 solo al comienzo de la temporada 2027, en 2026 entrada gratuita en el Efteling una vez por año natural y la lista de descuentos: [Bonus Club (oficial)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Ventajas 2026, parques del grupo (PDF, en alemán)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf) · [Ventajas 2026, parques de ocio, zoos y demás (PDF, en alemán)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf)
+- Entrada del Efteling sin fecha: [Tickets (Efteling)](https://www.efteling.com/en/tickets)
+- La venta prevista de Parques Reunidos: [nuestra noticia del 25 de septiembre de 2026](/blog/eqt-venta-parques-reunidos-movie-park)
+- Cómo llegar, salida 39, estación de Feldhausen y autobús de sustitución hasta el 30 de septiembre de 2026, SB16: [Acceso y aparcamiento (oficial, en alemán)](https://www.movieparkgermany.de/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Línea SB16 (Ruhrbahn, en alemán)](https://www.ruhrbahn.de/essen/fahrplan/linienfahrplaene/linie/sb16) · [Excursión en tren (DB Regio NRW, en alemán)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Vacaciones de otoño en RNW 2026 (del 17 al 31 de octubre): [Calendario escolar de Renania del Norte-Westfalia (Bildungsportal NRW, en alemán)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
-- Balance de la temporada 2024 y 30 millones de visitantes desde 1996: [Balance de temporada y evento MPHC 2024 (oficial, en alemán)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany recibe a su visitante 30 millones (EuroAmusement Professional, en alemán)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Datos de tiempos de espera y afluencia: histórico propio desde diciembre de 2025, [Movie Park Germany en park.fan](ref:movie-park-germany)
+- Visitantes: más de 1,3 millones en 2015, en 2024 la cifra más alta desde 2002 con un récord en Halloween, el visitante 40 millones en agosto de 2026: [Freizeitparkinfos, febrero de 2016 (en alemán)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Balance de temporada y evento MPHC 2024 (oficial, en alemán)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [El visitante 40 millones (oficial, en alemán)](https://www.movieparkgermany.de/presse/pm-06-08-2026-40-millionsten-gast)
+- Comer, Trattoria Hollywood desde 2024: [Neuerungen im Movie Park Germany (EuroAmusement Professional, marzo de 2024, en alemán)](https://www.eap-magazin.de/Nachricht/Neuerungen-im-Movie-Park-Germany.html)
+- El consejo habitual sobre los días de la semana en otras guías, como ejemplo: [Movie Park Wartezeiten (Freizeitfun, en alemán)](https://freizeitfun.com/movie-park-wartezeiten/)
+- Datos de tiempos de espera y afluencia: histórico propio desde diciembre de 2025, a 25 de septiembre de 2026, [Movie Park Germany en park.fan](ref:movie-park-germany)

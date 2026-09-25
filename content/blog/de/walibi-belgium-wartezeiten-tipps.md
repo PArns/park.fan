@@ -12,8 +12,8 @@ excerpt: >-
   seit 1975 so (abgesehen von vier Saisons als Six Flags Belgium) und hat seit
   2021 mit Kondaa die höchste und schnellste Achterbahn der Beneluxstaaten.
   Wartezeiten, Technik, ein Gründer, der eigentlich nur einen Wasserski-Teich
-  wollte, ein Investitionsplan, der zwei Jahre länger braucht als geplant, und
-  der Abschied von Loup-Garou, den RMC bis 2028 umbaut.
+  wollte, ein Investitionsplan, der 2023 fertig sein sollte und jetzt bis 2030
+  reicht, und der Abschied von Loup-Garou, den RMC bis 2028 umbaut.
 tags:
   - walibi-belgium
   - kondaa
@@ -269,7 +269,7 @@ Jahre nach dem Zieltermin. Am BER hätte man dafür Sekt aufgemacht.
 Durchgezogen wird der Plan trotzdem, und nicht nur in Wavre: Im Schwesterpark
 [Walibi Holland](ref:walibi-holland) hat die **Compagnie des Alpes** im selben
 Zeitraum mit [Untamed](ref:walibi-holland/untamed) (2019) und der
-YOY-Doppelbahn (2025) zwei weitere große Neuheiten gebaut. Ein Park, den in
+YOY-Doppelbahn (2025) zwei weitere große Neuheiten gebaut. Und Wavre, das in
 Deutschland kaum jemand auf dem Zettel hat, bekam binnen vier Jahren zwei neue
 Achterbahnen und ein komplett neues Areal.
 
@@ -325,9 +325,9 @@ die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell.
 ## Der perfekte Tag, in vier Sätzen
 
 Bei Öffnung zuerst zu **Kondaa**, weil sie der Grund ist, aus dem die meisten
-überhaupt herkommen, und weil die erste Stunde in unseren Daten die kürzeste
-Schlange des Tages hat. **Mecalodon** in Dock World zeigt bei uns dasselbe
-Muster, morgens und in der letzten Stunde kurz, gegen elf am vollsten: also
+überhaupt herkommen, und weil die erste Stunde in unseren Messungen (seit Ende
+Dezember 2025) die kürzeste Schlange des Tages hat. **Mecalodon** in Dock World
+zeigt bei uns dasselbe Muster, morgens und in der letzten Stunde kurz, gegen elf am vollsten: also
 direkt nach Kondaa oder erst am späten Nachmittag. **Turbine**, **Cobra** und
 **Calamity Mine** schwanken über den Tag kaum und passen in jede Lücke, während
 **Vampire** und **Loup-Garou** morgens am vollsten sind und ab Mittag deutlich
@@ -454,4 +454,4 @@ Reihe, wo er dich schon erwischt, bevor der Zug überhaupt ganz oben ist.
 - Ibilaw 2026 (Termine, Spukhäuser, Scare Zones, Anti-Monster-Button, Speedy): [Ibilaw (Walibi Belgium)](https://www.walibi.be/halloween-walibi/en) · unser [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026)
 - Herbstferien 2026: [Französische Gemeinschaft (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Flandern (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Tickets, Pässe, Anreise, Walibi Winter: [Tickets](https://www.walibi.be/en/tickets) · [Pässe](https://www.walibi.be/en/tickets/pass) · [Anreise](https://www.walibi.be/en/plan-your-visit/directions) · [Walibi Winter](https://www.walibi.be/walibi-winter/en)
-- Wartezeit- und Crowd-Daten: eigene Historie, [Walibi Belgium auf park.fan](ref:walibi-belgium)
+- Wartezeit- und Crowd-Daten: eigene Messungen seit Ende Dezember 2025, [Walibi Belgium auf park.fan](ref:walibi-belgium)

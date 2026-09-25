@@ -169,8 +169,7 @@ cosmonautes formés dans ce module même étaient invités à la conférence de 
 de l’inauguration. Le parc a annoncé un événement d’adieu pour le
 **9 janvier 2027**, après quoi commence le démontage. Le thème spatial reste : à
 cet emplacement naît une zone thématique à part, avec un nouveau coaster familial
-de Mack Rides et l’ESA comme partenaire, prévue selon le parc pour la saison
-2028.
+de Mack Rides et l’ESA comme partenaire, prévue selon le parc pour la saison 2028.
 
 Quel jour de la semaine est le plus calme à Rust, et à quoi ressemble novembre
 là-bas, c’est calculé dans le
@@ -369,7 +368,8 @@ parc n’a pas encore publié la date exacte du début de son programme de Noël
 Mediterrània, le défilé des Rois mages, le soir où les enfants espagnols
 reçoivent leurs cadeaux.
 
-Un avertissement issu de nos propres mesures : à PortAventura, on attend en
+Un avertissement issu de nos propres mesures depuis fin décembre 2025 : à
+PortAventura, on attend en
 moyenne plus longtemps qu’à Brühl, nettement en hiver et au printemps. Il n’y a
 qu’en juillet et en août que Brühl est plus chargé. Le tableau plus bas les met
 côte à côte. Attendre une saison vide parce que c’est l’hiver chez soi, c’est
@@ -428,9 +428,9 @@ d’arrondi.
 
 Les mois d’hiver reposent sur une poignée de jours mesurés, les mois d’été sur
 plusieurs fois plus. La colonne des jours indique pour chaque ligne sur quoi
-elle s’appuie. Et la ligne de décembre vient entièrement des vacances de Noël :
-nos relevés commencent le 26 décembre 2025 à Phantasialand, le 24 à Europa-Park
-et à Efteling. C’est suffisant pour un ordre de grandeur entre Noël et le Nouvel
+elle s’appuie. Et la ligne de décembre vient entièrement des vacances de Noël,
+parce que nos mesures ne commencent qu’à la fin de décembre 2025, entre Noël et
+le Nouvel An. C’est suffisant pour un ordre de grandeur entre Noël et le Nouvel
 An, et cela ne dit rien de l’Avent. À Efteling, décembre est même le mois le
 plus chargé de tout le tableau, janvier non.
 
@@ -449,10 +449,10 @@ plus chargé de tout le tableau, janvier non.
 ```
 
 L’explication évidente serait la journée plus courte, et pour deux des trois
-parcs elle explique une partie. Nous avons calculé les horaires publiés : les
-jours de vacances dont est faite notre ligne de décembre, Efteling était ouvert
-un peu moins de dix heures en moyenne, alors qu’une journée d’août 2026 dure
-11,7 heures. À Europa-Park, c’est 8,8 contre 10,3. Les mêmes visiteurs ont donc
+parcs elle explique une partie. Nous avons calculé les horaires publiés : du 26 au
+31 décembre 2025, Efteling était ouvert un peu moins de dix heures par jour en
+moyenne, alors qu’une journée d’août 2026 dure 11,7 heures. À Europa-Park,
+c’est 9,1 contre 10,3. Les mêmes visiteurs ont donc
 une à deux heures de moins.
 
 À Phantasialand, en revanche, l’horloge n’explique rien du tout. Le Wintertraum

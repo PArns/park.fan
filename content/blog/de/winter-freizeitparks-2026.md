@@ -367,7 +367,8 @@ nicht veröffentlicht. Am 5. Januar 2027 zieht die **Cabalgata de los Reyes
 Magos** durch den Mediterrània-Bereich, der Dreikönigsumzug, an dem in Spanien
 die Geschenke kommen.
 
-Eine Warnung dazu, und sie kommt aus unseren eigenen Messungen: Bei
+Eine Warnung dazu, und sie kommt aus unseren eigenen Messungen seit Ende
+Dezember 2025: Bei
 PortAventura steht man im Mittel länger an als in Brühl, im Winter und im
 Frühjahr deutlich. Nur im Juli und August ist es in Brühl voller. Die Tabelle
 weiter unten stellt die beiden nebeneinander. Wer im Dezember mit einer leeren
@@ -427,9 +428,9 @@ Rundungsfrage.
 
 Die Wintermonate stehen auf einer Handvoll Messtagen, die Sommermonate auf
 einem Vielfachen davon. Die Tage-Spalte in der Tabelle sagt bei jeder Zeile,
-worauf sie steht. Und die Dezemberzeile stammt komplett aus den Weihnachtsferien:
-Unsere Aufzeichnung beginnt im Phantasialand am 26. Dezember 2025, im
-Europa-Park und im Efteling am 24. Für eine Aussage über die Größenordnung
+worauf sie steht. Und die Dezemberzeile stammt komplett aus den Weihnachtsferien,
+weil unsere Messungen erst Ende Dezember 2025 beginnen, zwischen den Jahren. Für
+eine Aussage über die Größenordnung
 zwischen den Jahren reicht das, für den Advent sagt es nichts. Beim Efteling ist
 der Dezember sogar der vollste Monat der ganzen Tabelle, der Januar dagegen
 nicht.
@@ -451,9 +452,9 @@ Juni.
 
 Die naheliegende Erklärung wäre der kürzere Tag, und für zwei der drei Parks
 trägt sie ein Stück weit. Wir haben die veröffentlichten Öffnungszeiten
-durchgerechnet: An den Ferientagen, aus denen unsere Dezemberzeile besteht,
-hatte das Efteling im Schnitt knapp zehn Stunden offen, ein Augusttag 2026
-dauert 11,7. Im Europa-Park sind es 8,8 gegen 10,3. Dieselben Gäste haben also
+durchgerechnet: Vom 26. bis 31. Dezember 2025 hatte das Efteling im Schnitt
+knapp zehn Stunden am Tag offen, ein Augusttag 2026 dauert 11,7. Im Europa-Park
+sind es 9,1 gegen 10,3. Dieselben Gäste haben also
 ein bis zwei Stunden weniger Zeit.
 
 Nur im Phantasialand erklärt die Uhr gar nichts. Der Wintertraum fährt neun

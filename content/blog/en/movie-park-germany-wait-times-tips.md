@@ -576,15 +576,15 @@ already include it.
 
 **Tickets.** The gate price is high, the online price is not:
 
-| Ticket                                                     | Gate   | Online       |
-| ---------------------------------------------------------- | ------ | ------------ |
-| Day ticket, 12 and over                                    | €59.90 | from €34.90  |
-| Children 4 to 11                                           | €54.90 | from €34.90  |
-| Reduced (65+, pregnant visitors, disability under 100 GdB) | €29.90 | €29.90       |
-| Family package (2 adults, 2 children, limited contingent)  | –      | from €129.90 |
-| Children under 4                                           | free   | free         |
+| Ticket                                                      | Gate   | Online       |
+| ----------------------------------------------------------- | ------ | ------------ |
+| Day ticket, 12 and over                                     | €59.90 | from €34.90  |
+| Children 4 to 11                                            | €54.90 | from €34.90  |
+| Reduced (65+, pregnant visitors, disability under 100 GdB)  | €29.90 | €29.90       |
+| Family package (2 adults, 2 children, limited contingent)   | –      | from €129.90 |
+| Children under 4                                            | free   | free         |
 | Birthday ticket (on your birthday, with ID, info desk only) | €16.90 | –            |
-| Parking                                                    | €9     | €9           |
+| Parking                                                     | €9     | €9           |
 
 The surcharge at the gate is twenty-five euros per adult and twenty per child.
 For two adults and two children that is ninety euros for nobody having looked at

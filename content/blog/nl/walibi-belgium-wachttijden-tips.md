@@ -12,8 +12,8 @@ excerpt: >-
   zo (op vier seizoenen als Six Flags Belgium na) en heeft sinds 2021 met
   Kondaa de hoogste en snelste achtbaan van de Benelux. Wachttijden, techniek,
   een oprichter die eigenlijk alleen een waterskivijver wilde, een
-  investeringsplan dat twee jaar achterloopt, en het laatste seizoen van
-  Loup-Garou voordat RMC hem voor 2028 ombouwt.
+  investeringsplan dat in 2023 klaar moest zijn en nu tot 2030 loopt, en het
+  laatste seizoen van Loup-Garou voordat RMC hem voor 2028 ombouwt.
 tags:
   - walibi-belgium
   - kondaa
@@ -267,7 +267,7 @@ vertraging de vlag uitgehangen.
 Doorgezet wordt het plan wel, en niet alleen in Waver: in zusterpark
 [Walibi Holland](ref:walibi-holland) bouwde de **Compagnie des Alpes** in
 dezelfde periode met [Untamed](ref:walibi-holland/untamed) (2019) en de
-dubbelbaan YOY (2025) nog twee grote nieuwigheden. Een park dat bij de meesten
+dubbelbaan YOY (2025) nog twee grote nieuwigheden. En Waver, dat bij de meesten
 niet eens op het lijstje staat, kreeg binnen vier jaar twee nieuwe achtbanen en
 een compleet nieuw gebied.
 
@@ -322,7 +322,8 @@ hierboven in de kalender, dag voor dag bijgewerkt.
 ## De perfecte dag, in vier zinnen
 
 Bij opening meteen naar **Kondaa**, omdat zij de reden is dat de meesten hier
-komen, en omdat het eerste uur in onze data de kortste rij van de dag heeft.
+komen, en omdat het eerste uur in onze metingen (sinds eind december 2025) de
+kortste rij van de dag heeft.
 **Mecalodon** in Dock World volgt bij ons hetzelfde patroon, kort in de ochtend
 en in het laatste uur, het drukst rond elf uur, dus meteen na Kondaa of pas
 laat in de middag. **Turbine**, **Cobra** en **Calamity Mine** schommelen over
@@ -448,4 +449,4 @@ pakken heeft voordat de trein helemaal boven is.
 - Ibilaw 2026 (data, spookhuizen, scare zones, anti-monsterbadge, Speedy): [Ibilaw (Walibi Belgium)](https://www.walibi.be/halloween-walibi/nl) · onze [halloweengids 2026](/blog/halloween-pretparken-2026)
 - Herfstvakantie 2026: [Franse Gemeenschap (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Vlaanderen (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Tickets, abonnementen, route, Walibi Winter: [tickets](https://www.walibi.be/nl/tickets) · [abonnementen](https://www.walibi.be/en/tickets/pass) · [route](https://www.walibi.be/nl/plan-uw-bezoek/route) · [Walibi Winter](https://www.walibi.be/walibi-winter/en)
-- Wachttijd- en druktedata: eigen historie, [Walibi Belgium op park.fan](ref:walibi-belgium)
+- Wachttijd- en druktedata: eigen metingen sinds eind december 2025, [Walibi Belgium op park.fan](ref:walibi-belgium)

@@ -294,8 +294,9 @@ brillante idée que toi.
 Quelques règles empiriques qui se vérifient presque toujours :
 
 - **La semaine bat le week-end.** Du lundi au vendredi, les jours font jeu égal
-  dans nos mesures, le samedi et le dimanche sont au-dessus (au 25 septembre 2026).
-  Il n’y a donc pas ici de jour de semaine miracle.
+  dans nos mesures, le samedi et le dimanche sont au-dessus (mesures depuis fin
+  décembre 2025, au 25 septembre 2026). Il n’y a donc pas ici de jour de semaine
+  miracle.
 - **Éviter les vacances scolaires de Rhénanie-du-Nord-Westphalie**, surtout celles
   d’été et d’automne. Le bassin de population Cologne/Bonn/Ruhr est colossal, et
   la moitié se retrouve alors avec toi devant Taron.
@@ -318,8 +319,9 @@ calmes pour le Phantasialand :
 
 Quels jours de la semaine et quels mois sont en général tranquilles, et lesquels
 éviter : l’**affluence par jour de la semaine et par mois**, mesurée sur les
-jours d’ouverture, te le montre. Le tableau indique combien de jours se cachent
-derrière chaque mois, et l’hiver y est encore peu mesuré.
+jours d’ouverture, te le montre. Nos mesures commencent fin décembre 2025 ; le
+tableau indique combien de jours se cachent derrière chaque mois, et l’hiver y est
+encore peu mesuré.
 
 ```stats-widget slug=phantasialand
 
@@ -391,9 +393,9 @@ des files plus courtes qu’elles ne le seront de toute la journée. Dans un par
 aussi compact, cette heure-là vaut de l’or : c’est la différence entre « trois
 tours » et « dix ».
 
-Mon ordre de passage, éprouvé au fil des ans, abandonné plusieurs fois et, depuis
-que nous avons des données heure par heure, remanié sur un point (données au
-25 septembre 2026) :
+Mon ordre de passage, éprouvé au fil des ans, abandonné plusieurs fois et remanié
+sur un point grâce à nos données heure par heure (mesures depuis fin décembre
+2025, au 25 septembre 2026) :
 
 1. **Directement à [Taron](ref:phantasialand/taron)**, dans Klugheim. Le
    multi-launch coaster a la plus longue file du parc, et elle est dès la première
@@ -597,7 +599,8 @@ un contingent de prévente dès 29 €. Trois choses encore :
 - **Prévoir les week-ends comme des jours de vacances.** Notre calendrier attend
   beaucoup de monde les premiers week-ends du Wintertraum et peu les jours de
   semaine de décembre. Nous n’avons encore mesuré le Wintertraum que sur une
-  poignée de jours (au 25 septembre 2026), et ils étaient chargés. Pour tout ce
+  poignée de jours, entre fin décembre 2025 et janvier 2026, et ils étaient
+  chargés. Pour tout ce
   qui n’est pas un week-end, regarde donc d’abord le calendrier d’affluence
   ci-dessus.
 - **Habille-toi chaudement.** Par températures négatives, les temps d’attente
@@ -610,7 +613,8 @@ un contingent de prévente dès 29 €. Trois choses encore :
 
 En semaine, hors vacances scolaires de Rhénanie-du-Nord-Westphalie ; du lundi au
 vendredi, les jours font jeu égal dans nos données, et le mois le plus calme que
-nous ayons mesuré est septembre, après les vacances d’été (au 25 septembre 2026).
+nous ayons mesuré est septembre, après les vacances d’été (mesures depuis fin
+décembre 2025, au 25 septembre 2026).
 Mais ne te fie pas à ton intuition : le
 [calendrier d’affluence du Phantasialand](ref:phantasialand?calendar) te dit quand
 s’attendre à peu de monde aussi loin que le parc a publié ses horaires ; en ce
@@ -627,7 +631,8 @@ spectacles). Les temps d’attente en direct, tu les vérifies en chemin sur la
 ### Quelle attraction a les plus longs temps d’attente ?
 
 [Taron](ref:phantasialand/taron). Derrière, [Chiapas](ref:phantasialand/chiapas-die-wasserbahn)
-et [F.L.Y.](ref:phantasialand/fly) font jeu égal (au 25 septembre 2026). C’est
+et [F.L.Y.](ref:phantasialand/fly) font jeu égal (mesures depuis fin décembre
+2025, au 25 septembre 2026). C’est
 pour cela que tu fais Taron dès l’ouverture, Chiapas dans la première heure et
 F.L.Y. en fin d’après-midi, quand sa file est la plus courte.
 

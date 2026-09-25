@@ -43,9 +43,9 @@ seo:
 
 In autumn 2007 [Europa-Park](ref:europa-park) let actors with fake blood loose
 on its evening guests for the first time. It was called "Terenzi Horror Nights",
-after the pop singer Marc Terenzi, who had brought the idea back from the US
-with Michael Mack. Since 2017 it has been Traumatica, which makes 2026 the tenth
-edition under that name. The motto adds the two together: "20 years of horror,
+after the pop singer Marc Terenzi, who ran it with Michael Mack until 2012.
+Since 2017 it has carried the name Traumatica, at first as "Horror Nights –
+Traumatica", which makes 2026 the tenth edition under that name. The motto adds the two together: "20 years of horror,
 10 years of Traumatica".
 
 The preview is tonight, Wednesday 23 September. The official premiere is on
@@ -53,9 +53,10 @@ Friday 25 September, and the season runs until Saturday 7 November.
 
 ## New for the anniversary
 
-**THE HOTEL** is Traumatica's first full-contact experience. You walk into an
+**THE HOTEL** is new and built as a full-contact experience. You walk into an
 abandoned hotel on your own, with no group to hide behind, and the actors are
-allowed to touch you. According to the
+allowed to touch you. According to the organisers you get touched in the
+Murderdome too, but this is the only house you go through alone. According to the
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html),
 it is not wheelchair accessible and strictly 18+. It costs €29 on top of a
 Traumatica ticket. The park doesn't say how long you're in there, which is
@@ -84,10 +85,11 @@ sections of route.
   children
 - Murderdome – Bonus Round, with the new obstacles mentioned above
 - Studio-13 – Callback, a film casting for a part you don't want
-- THE HOTEL, alone and 18+
+- The Field, an evening walk through a cornfield where you are not alone
 
-On top of that there is Brain Shocker, a short VR ride for €6, stage shows, and
-actors hunting across the whole site.
+THE HOTEL is not one of the eight; it costs extra. On top of that there is
+Brain Shocker, a short VR ride for €6, stage shows, the ice show, and actors
+hunting across the whole site.
 
 ## Who gets in, and what it costs
 
@@ -96,8 +98,8 @@ help, and the gate wants an original ID. A photo of it on your phone won't do,
 however convincing the face you pull. THE HOTEL, THE FORBIDDEN and the
 Vampire's Club are 18+.
 
-It runs Friday to Sunday, plus three Thursdays: 22 and 29 October and
-5 November. Entry opens at 5:45 pm, the food court at 6 pm, and the horror
+It runs Friday to Sunday, except on Sunday 27 September, plus three Thursdays:
+22 and 29 October and 5 November. Entry opens at 5:45 pm, the food court at 6 pm, and the horror
 attractions run from 7 pm to 11:30 pm.
 
 | Ticket               | Price               |
@@ -125,3 +127,6 @@ All dates and tickets are on
 [Europa-Park's Traumatica page](https://www.europapark.de/en/events/traumatica).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 September 2026: The first version listed THE HOTEL as the eighth horror attraction. THE HOTEL is an add-on with its own ticket; the eighth attraction is The Field. It also called THE HOTEL Traumatica's first full-contact experience, while according to the organisers you are touched in the Murderdome as well. We have added that there is no event on Sunday 27 September. On 25 September the Traumatica site lists the Event Pass from €45.

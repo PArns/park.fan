@@ -568,15 +568,15 @@ data en eigen dagtickets. In de seizoenpassen 2027 vanaf Silber zit het al.
 
 **Tickets.** De kassaprijs is hoog, de onlineprijs niet:
 
-| Ticket                                                   | Kassa   | Online         |
-| -------------------------------------------------------- | ------- | -------------- |
-| Dagticket vanaf 12 jaar                                  | € 59,90 | vanaf € 34,90  |
-| Kinderen 4 tot en met 11 jaar                            | € 54,90 | vanaf € 34,90  |
-| Gereduceerd (65+, zwangeren, GdB onder 100)              | € 29,90 | € 29,90        |
-| Gezinspakket (2 volwassenen, 2 kinderen, beperkt aantal) | –       | vanaf € 129,90 |
-| Kinderen onder 4 jaar                                    | gratis  | gratis         |
-| Verjaardagsticket (op je verjaardag, met legitimatie, alleen infokassa) | € 16,90 | – |
-| Parkeren                                                 | € 9     | € 9            |
+| Ticket                                                                  | Kassa   | Online         |
+| ----------------------------------------------------------------------- | ------- | -------------- |
+| Dagticket vanaf 12 jaar                                                 | € 59,90 | vanaf € 34,90  |
+| Kinderen 4 tot en met 11 jaar                                           | € 54,90 | vanaf € 34,90  |
+| Gereduceerd (65+, zwangeren, GdB onder 100)                             | € 29,90 | € 29,90        |
+| Gezinspakket (2 volwassenen, 2 kinderen, beperkt aantal)                | –       | vanaf € 129,90 |
+| Kinderen onder 4 jaar                                                   | gratis  | gratis         |
+| Verjaardagsticket (op je verjaardag, met legitimatie, alleen infokassa) | € 16,90 | –              |
+| Parkeren                                                                | € 9     | € 9            |
 
 De toeslag aan de kassa is vijfentwintig euro per volwassene en twintig per kind.
 Bij twee volwassenen en twee kinderen is dat negentig euro omdat niemand vooraf op
@@ -611,8 +611,7 @@ Ze horen net als Movie Park allemaal bij Parques Reunidos, en omdat EQT het
 concern in zijn geheel wil verkopen, blijven het ook na een verkoop zusterparken.
 
 Daarbij komt de **Bonus Club**, die ook alleen bij Gold en Platin hoort. De
-aanbiedingen voor 2027 publiceert het park pas bij het begin van het seizoen
-2027. De lijst voor 2026 laat zien wat erin kan zitten:
+aanbiedingen voor 2027 publiceert het park pas bij het begin van het seizoen 2027. De lijst voor 2026 laat zien wat erin kan zitten:
 
 - **Eén keer gratis entree** per kalenderjaar in de [Efteling](ref:efteling). Een
   ticket zonder vaste datum kost daar € 56, ruim een derde van de Gold-pas.

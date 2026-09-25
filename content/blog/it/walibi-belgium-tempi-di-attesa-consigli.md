@@ -11,8 +11,8 @@ excerpt: >-
   mezz’ora d’auto oltre Bruxelles, si chiama così dal 1975 (tolte quattro
   stagioni da Six Flags Belgium) e dal 2021 ha in Kondaa il coaster più alto e
   più veloce del Benelux. Tempi di attesa, tecnica, un fondatore che voleva
-  soltanto un laghetto per lo sci nautico, un piano di investimenti in ritardo
-  di due anni e l’ultima stagione di Loup-Garou prima che RMC lo trasformi per
+  soltanto un laghetto per lo sci nautico, un piano di investimenti che doveva
+  finire nel 2023 e ora arriva al 2030, e l’ultima stagione di Loup-Garou prima che RMC lo trasformi per
   il 2028.
 tags:
   - walibi-belgium
@@ -266,8 +266,8 @@ dopo la scadenza. Per un cantiere di queste dimensioni, praticamente puntuale.
 Il piano va avanti comunque, e non solo a Wavre: nel parco gemello
 [Walibi Holland](ref:walibi-holland) la **Compagnie des Alpes** ha costruito
 nello stesso periodo altre due grosse novità,
-[Untamed](ref:walibi-holland/untamed) (2019) e la doppia pista YOY (2025). Un
-parco che quasi nessuno mette in lista si è ritrovato in quattro anni con due
+[Untamed](ref:walibi-holland/untamed) (2019) e la doppia pista YOY (2025). E
+Wavre, che quasi nessuno mette in lista, si è ritrovato in quattro anni con due
 coaster nuovi e un’area completamente nuova.
 
 Il prossimo mondo ha ormai un nome. Il 1° giugno 2026 il parco ha annunciato
@@ -318,17 +318,17 @@ scolastico 2022-2023 non coincidono più: nel 2026 le scuole francofone di
 Vallonia e Bruxelles hanno le vacanze d’autunno dal 19 al 30 ottobre, quelle
 fiamminghe dal 2 all’8 novembre, e Ibilaw le copre entrambe. Poi ci sono i
 giorni della settimana fuori dalle vacanze estive, quando comunque il parco non
-apre tutti i giorni. Quali dei prossimi giorni di
-apertura siano i più tranquilli sta nel calendario più in alto, aggiornato ogni
-giorno.
+apre tutti i giorni. Quali dei prossimi giorni di apertura siano i più
+tranquilli sta nel calendario più in alto, aggiornato ogni giorno.
 
 ## La giornata perfetta, in quattro frasi
 
 All’apertura prima di tutto a **Kondaa**, perché è il motivo per cui i più
-vengono fin qui, e perché nei nostri dati la prima ora ha la coda più corta
-della giornata. **Mecalodon**, a Dock World, segue lo stesso schema, corto al
-mattino e nell’ultima ora e più pieno verso le undici, quindi subito dopo
-Kondaa o nel tardo pomeriggio. **Turbine**, **Cobra** e **Calamity Mine**
+vengono fin qui, e perché nelle nostre misurazioni (da fine dicembre 2025) la
+prima ora ha la coda più corta della giornata. **Mecalodon**, a Dock World,
+segue lo stesso schema, con coda corta al mattino e nell’ultima ora e più gente
+verso le undici, quindi subito dopo Kondaa o nel tardo pomeriggio. **Turbine**,
+**Cobra** e **Calamity Mine**
 cambiano poco nel corso della giornata e riempiono qualsiasi buco, mentre
 **Vampire** e **Loup-Garou** sono più pieni al mattino e calano parecchio da
 mezzogiorno in poi. Le attrazioni acquatiche
@@ -453,4 +453,4 @@ sia arrivato del tutto in cima.
 - Ibilaw 2026 (date, case stregate, scare zone, spilla anti-mostri, Speedy): [Ibilaw (Walibi Belgium)](https://www.walibi.be/halloween-walibi/en) · la nostra [guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026)
 - Vacanze d’autunno 2026: [Comunità francese (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Fiandre (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Biglietti, abbonamenti, come arrivare, Walibi Winter: [biglietti](https://www.walibi.be/en/tickets) · [abbonamenti](https://www.walibi.be/en/tickets/pass) · [come arrivare](https://www.walibi.be/en/plan-your-visit/directions) · [Walibi Winter](https://www.walibi.be/walibi-winter/en)
-- Dati su attese e affluenza: storico proprio, [Walibi Belgium su park.fan](ref:walibi-belgium)
+- Dati su attese e affluenza: misurazioni proprie da fine dicembre 2025, [Walibi Belgium su park.fan](ref:walibi-belgium)

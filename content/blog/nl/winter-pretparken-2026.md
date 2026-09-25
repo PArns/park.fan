@@ -364,7 +364,8 @@ het kerstprogramma precies begint, heeft het park nog niet bekendgemaakt. Op
 Mediterrània-gebied, de driekoningenstoet, de avond waarop Spaanse kinderen hun
 cadeaus krijgen.
 
-Een waarschuwing die uit onze eigen metingen komt: bij PortAventura sta je
+Een waarschuwing die uit onze eigen metingen sinds eind december 2025 komt: bij
+PortAventura sta je
 gemiddeld langer in de rij dan in Brühl, in de winter en het voorjaar
 duidelijk. Alleen in juli en augustus is het in Brühl drukker. De tabel verderop
 zet ze naast elkaar. Wie in december een leeg seizoen verwacht omdat het bij hem
@@ -422,9 +423,8 @@ afrondingskwestie.
 
 De wintermaanden staan op een handvol meetdagen, de zomermaanden op een
 veelvoud daarvan. De kolom met dagen zegt bij elke regel waarop hij rust. En de
-decemberregel komt helemaal uit de kerstvakantie: onze metingen beginnen in
-Phantasialand op 26 december 2025, in het Europa-Park en de Efteling op de 24e.
-Voor een uitspraak over de orde van grootte tussen kerst en oud en nieuw is dat
+decemberregel komt helemaal uit de kerstvakantie, omdat onze metingen pas eind
+december 2025 beginnen, tussen kerst en oud en nieuw. Voor een uitspraak over de orde van grootte tussen kerst en oud en nieuw is dat
 genoeg, over de adventsweken zegt het niets. Bij de Efteling is december zelfs
 de drukste maand van de hele tabel, januari niet.
 
@@ -444,9 +444,9 @@ In het Europa-Park ligt december gelijk met hartje zomer en boven mei en juni.
 
 De voor de hand liggende verklaring zou de kortere dag zijn, en voor twee van de
 drie parken verklaart die een deel. We hebben de gepubliceerde openingstijden
-doorgerekend: op de vakantiedagen waaruit onze decemberregel bestaat, was de
-Efteling gemiddeld net geen tien uur open, een augustusdag in 2026 duurt 11,7
-uur. In het Europa-Park is het 8,8 tegen 10,3. Dezelfde gasten hebben dus een à
+doorgerekend: van 26 tot en met 31 december 2025 was de Efteling gemiddeld net
+geen tien uur per dag open, een augustusdag in 2026 duurt 11,7 uur. In het
+Europa-Park is het 9,1 tegen 10,3. Dezelfde gasten hebben dus een à
 twee uur minder.
 
 Alleen in Phantasialand verklaart de klok helemaal niets. De Wintertraum rijdt

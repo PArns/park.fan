@@ -603,9 +603,9 @@ Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
 
 Meer dan welke line-up ook beslist over de avond **wanneer je komt.** Het
 drukst wordt het in de weekenden en op 31 oktober, en dat verwacht onze
-druktekalender ook voor bijna alle parken in deze gids. Een Halloween-oktober
-hadden we op 25 september 2026 alleen nog bij geen van die parken gemeten, dit
-is dus een prognose. Doordeweeks en in de randweken van het seizoen verwacht hij
+druktekalender ook voor bijna alle parken in deze gids. Onze metingen beginnen
+alleen pas eind december 2025, en een Halloween-oktober hadden we op 25
+september 2026 bij geen van die parken gemeten, dit is dus een prognose. Doordeweeks en in de randweken van het seizoen verwacht hij
 merkbaar minder drukte (en hebben de acteurs dan meer tijd om zich exclusief met
 _jou_ bezig te houden, afhankelijk van je perspectief een voor- of nadeel).
 
@@ -629,7 +629,7 @@ dagen** uit onze AI-druktekalender bekijken:
 Voor Movie Park kent de kalender nog geen gemeten Halloween-herfst, neem zijn
 prognose voor de horroravonden dus met een korrel zout. Hoe druk het in Bottrop
 per weekdag en maand doorgaans wordt, laat de statistiek zien. We meten daar pas
-sinds december 2025, tot 25 september 2026 zat er nog geen oktober bij, en
+sinds eind december 2025, tot 25 september 2026 zat er nog geen oktober bij, en
 Halloween moet je er voorlopig zelf bij denken:
 
 **Movie Park Germany, typische wachttijden per weekdag & maand**

@@ -508,8 +508,8 @@ Verhältnis bestimmt die Wartezeit, nachzulesen in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
 Eine Einschränkung dazu, bevor jemand die Zahlen zu ernst nimmt: Unsere Historie
-für diesen Park beginnt im Dezember 2025, und Walibi öffnet nur von April bis
-Anfang November. Hinter den Monatswerten für April bis August stehen jeweils 25
+für diesen Park beginnt am 26. Dezember 2025, umfasst also gut neun Monate, und
+Walibi öffnet nur von April bis Anfang November. Hinter den Monatswerten für April bis August stehen jeweils 25
 bis 30 Messtage, das trägt. Der September steht bisher auf neun Tagen (Stand 25.
 September 2026), die Zeilen für Dezember, Januar und März auf einem bis vier
 Tagen aus dem letzten Bright-Nights-Winter und einem Einzeltag. Ob du in die
@@ -1006,4 +1006,4 @@ denkst an gar nichts mehr.
 - Tickets, Parken, Bus 247 und die drei Pass-Stufen 2026 samt Halloween-Kontingent: [Tickets (offiziell)](https://www.walibi.nl/en/tickets) · [Passes (offiziell)](https://www.walibi.nl/en/tickets/passes) · [Parken und Anreise (offiziell)](https://www.walibi.nl/en/plan-your-visit/route-parking) · [Parkticket (offiziell)](https://www.walibi.nl/en/tickets/parking-ticket) · [Parken an Fright-Nights-Tagen (offiziell)](https://www.walibi.nl/halloween/en/halloween-fright-nights/plan-your-visit/route-parking) · [Parken 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren) · [Tickets 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/tickets)
 - Walibi Play Land 2026 und die geplante Attraktion für 2027: [„Walibi Holland geeft vijf attracties een andere naam“ (Looopings)](https://www.looopings.nl/weblog/32257/Walibi-Holland-geeft-vijf-attracties-een-andere-naam-themagebied-wordt-getransformeerd.html) · [„Walibi Holland vraagt vergunning aan voor nieuwe attractie, open in 2027“ (Looopings)](https://www.looopings.nl/weblog/33618/Walibi-Holland-vraagt-vergunning-aan-voor-nieuwe-attractie--open-in-2027.html) · [„Kindergebied Walibi Holland krijgt grote make-over in 2026“ (Looopings)](https://www.looopings.nl/weblog/30837/Kindergebied-Walibi-Holland-krijgt-grote-make-over-in-2026.html)
 - Was ein kompletter Halloween-Abend kostet (mindestens 116,50 € über dem Eintritt, Stand 2025): [„In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken“ (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, Stand 25. September 2026, [Walibi Holland auf park.fan](ref:walibi-holland)
+- Wartezeit- und Crowd-Daten: eigene Historie seit 26. Dezember 2025, Stand 25. September 2026, [Walibi Holland auf park.fan](ref:walibi-holland)

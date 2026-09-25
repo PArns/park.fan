@@ -479,8 +479,8 @@ solange das Wetter mitspielt. Zum Jubiläum ist an den ersten drei Wochenenden
 und Mittwochen, bis zum 16. Dezember, der Eintritt frei: Wer vorher kostenlos
 reserviert, zahlt nur pro Fahrt, mit Streifen zu je 2 €, und Troy kostet drei
 davon. Normale Tagestickets gibt es parallel. Wunderschön, nur eben kein
-Geheimtipp mehr, sobald die Lichter an sind: Die Tage zwischen Weihnachten und
-Silvester 2025, mit denen unsere Messung hier begann, waren so voll wie der
+Geheimtipp mehr, sobald die Lichter an sind: Die letzten Tage des Jahres 2025, mit
+denen unsere Messung am 26. Dezember begann, waren so voll wie der
 August.
 
 ## Wann du hinfahren solltest
@@ -489,8 +489,8 @@ Die Antwort fällt entspannt aus: fast immer.
 
 **Nach Monat** liegen April bis Juli eng beieinander, und darüber heraus ragen
 der **August** und der **Dezember**. Hinter dem Dezember stehen in unseren Daten
-allerdings nur die Tage zwischen Heiligabend und Silvester 2025, mitten in den
-Weihnachtsferien. Unter den gut gemessenen Monaten war bisher der **September**
+allerdings nur die letzten Tage des Jahres 2025, ab dem 26. Dezember, mitten
+in den Weihnachtsferien. Unter den gut gemessenen Monaten war bisher der **September**
 am ruhigsten, nach dem Ende der Sommerferien. Eine Einschränkung dazu: Januar und März stehen auf einer Handvoll
 Messtagen, Februar, Oktober und November fehlen noch ganz (Stand 25. September
 2026), und außerhalb der Saison öffnet der Park ohnehin nur mittwochs und am
@@ -730,4 +730,4 @@ anderen Parks Europas kannst du es vergessen.
 - Phantasialand ohne Jahreskarte: [„Jahreskarte abgeschafft“ (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
 - Anreise, Bus & Parken: [Adresse und Route (offiziell)](https://www.toverland.com/de/kontakt/adresse-route)
 - Backstage in der Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Toverland auf park.fan](ref:attractiepark-toverland)
+- Wartezeit- und Crowd-Daten: eigene Messungen seit dem 26. Dezember 2025, [Toverland auf park.fan](ref:attractiepark-toverland)

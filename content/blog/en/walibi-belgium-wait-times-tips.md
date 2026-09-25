@@ -12,8 +12,8 @@ excerpt: >-
   name since 1975 (bar four seasons as Six Flags Belgium) and has had the
   tallest and fastest coaster in the Benelux since 2021 in Kondaa. Wait times,
   engineering, a founder who only wanted a water-ski pond, an investment plan
-  running two years behind, and the last season of Loup-Garou before RMC
-  rebuilds it for 2028.
+  meant to be done by 2023 that now runs to 2030, and the last season of
+  Loup-Garou before RMC rebuilds it for 2028.
 tags:
   - walibi-belgium
   - kondaa
@@ -266,8 +266,8 @@ early.
 The plan is still being carried out, and not only in Wavre: over the same
 period the **Compagnie des Alpes** gave the sister park
 [Walibi Holland](ref:walibi-holland) two more major additions in
-[Untamed](ref:walibi-holland/untamed) (2019) and the YOY twin track (2025). A
-park hardly anybody in Germany has on their list got two new coasters and a
+[Untamed](ref:walibi-holland/untamed) (2019) and the YOY twin track (2025).
+Wavre, which hardly anybody in Germany has on their list, got two new coasters and a
 whole new area inside four years.
 
 The next world now has a name. On 1 June 2026 the park announced
@@ -321,9 +321,10 @@ days are the quietest is in the calendar further up, updated daily.
 ## The perfect day, in four sentences
 
 At opening, go to **Kondaa** first, because it is the reason most people came
-at all, and because in our data the first hour brings the shortest queue of the
-day. **Mecalodon** in Dock World follows the same pattern, short in the morning
-and in the last hour and busiest around eleven, so ride it straight after
+at all, and because in our measurements (since late December 2025) the first
+hour brings the shortest queue of the day. **Mecalodon** in Dock World follows
+the same pattern, short in the morning and in the last hour and busiest around
+eleven, so ride it straight after
 Kondaa or late in the afternoon. **Turbine**, **Cobra** and **Calamity Mine**
 barely change through the day and fill any gap, while **Vampire** and
 **Loup-Garou** are busiest in the morning and ease off noticeably from
@@ -449,4 +450,4 @@ before the train is even over the top.
 - Ibilaw 2026 (dates, haunted houses, scare zones, anti-monster badge, Speedy): [Ibilaw (Walibi Belgium)](https://www.walibi.be/halloween-walibi/en) · our [Halloween guide 2026](/blog/halloween-theme-parks-2026)
 - Autumn school holidays 2026: [French Community (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Flanders (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Tickets, passes, directions, Walibi Winter: [tickets](https://www.walibi.be/en/tickets) · [passes](https://www.walibi.be/en/tickets/pass) · [directions](https://www.walibi.be/en/plan-your-visit/directions) · [Walibi Winter](https://www.walibi.be/walibi-winter/en)
-- Wait-time and crowd data: our own history, [Walibi Belgium on park.fan](ref:walibi-belgium)
+- Wait-time and crowd data: our own measurements since late December 2025, [Walibi Belgium on park.fan](ref:walibi-belgium)

@@ -594,13 +594,13 @@ The five-million visitor cap and the Winter Efteling are covered in the
    another minute of panic for your money.
 
 More than any line-up, what decides the evening is **when you turn up.** The
-weekends and 31 October get the busiest, and that is also what our crowd
-calendar expects for almost every park in this guide. As of 25 September 2026
-we had not yet measured a Halloween October at any of them, though, so this is
-a forecast. Midweek and in the fringe weeks of the season it expects noticeably
-fewer people (and the performers then have more time to attend to _you_
-exclusively, which is either an advantage or a drawback depending on your
-point of view).
+weekends and 31 October are the busiest, and that is also what our crowd
+calendar expects for almost every park in this guide. Our measurements only
+begin in late December 2025, though, and as of 25 September 2026 we had not
+measured a Halloween October at any of these parks, so this is a forecast.
+Midweek and in the fringe weeks of the season it expects noticeably fewer
+people (and the performers then have more time to attend to _you_ exclusively,
+which is either an advantage or a drawback depending on your point of view).
 
 ![Illuminated Psycho Circus archway with a crowd at night | A busy night: from here on you queue more than you’d like. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
@@ -622,8 +622,8 @@ choice from our AI crowd calendar:
 At Movie Park the calendar has no measured Halloween autumn to learn from yet,
 so take its forecast for the horror evenings with a pinch of salt. How busy
 Bottrop typically gets by weekday and month, from our measurements: they only
-start in December 2025, no October had been measured by 25 September 2026, and
-Halloween is left to your imagination for now:
+start in late December 2025, no October had been measured by 25 September
+2026, and Halloween is left to your imagination for now:
 
 **Movie Park Germany, typical wait times by weekday & month**
 

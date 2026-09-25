@@ -466,7 +466,7 @@ het weer het toelaat. Voor het jubileum is de entree op de eerste drie weekends
 en woensdagen, tot en met 16 december, gratis: wie vooraf gratis reserveert,
 betaalt per rit, met strippen van 2 € per stuk, en Troy kost er drie. Gewone
 dagtickets zijn er gewoon naast. Prachtig, alleen geen geheime tip meer zodra de
-lichtjes aan zijn: de dagen tussen kerst en oudejaarsdag 2025, waarmee onze
+lichtjes aan zijn: de laatste dagen van 2025, vanaf 26 december, toen onze
 metingen hier begonnen, waren even druk als augustus.
 
 ## Wanneer je moet gaan
@@ -475,7 +475,7 @@ Het antwoord valt ontspannen uit: bijna altijd.
 
 **Per maand** liggen april tot en met juli dicht bij elkaar, en daarboven steken
 **augustus** en **december** uit. Achter december staan in onze data wel alleen
-de dagen tussen kerstavond en oudejaarsdag 2025, midden in de kerstvakantie.
+de laatste dagen van 2025, vanaf 26 december, midden in de kerstvakantie.
 Van de goed gemeten maanden was **september** tot nu toe het rustigst, na het
 einde van de zomervakantie. Eén beperking daarbij: januari en maart staan op een
 handvol meetdagen, februari, oktober en november ontbreken nog helemaal (stand
@@ -711,4 +711,4 @@ meeste andere parken van Europa kun je het vergeten.
 - Phantasialand zonder abonnement: [“Jahreskarte abgeschafft” (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
 - Route, bus & parkeren: [Adres en route (officieel)](https://www.toverland.com/contact/adres-route)
 - Backstage in de Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wachttijd- en drukte-data: eigen historie sinds december 2025, [Toverland op park.fan](ref:attractiepark-toverland)
+- Wachttijd- en drukte-data: eigen metingen sinds 26 december 2025, [Toverland op park.fan](ref:attractiepark-toverland)

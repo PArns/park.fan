@@ -274,8 +274,8 @@ you did.
 A few rules of thumb that almost always hold:
 
 - **Weekdays beat weekends.** Monday to Friday come out level in our
-  measurements, with Saturday and Sunday above them (as of 25 September 2026).
-  There is no secret-tip weekday here.
+  measurements, with Saturday and Sunday above them (measured since late
+  December 2025, as of 25 September 2026). There is no secret-tip weekday here.
 - **Avoid NRW school holidays**, especially the summer and autumn breaks. The
   Cologne/Bonn/Ruhr catchment is enormous, and half of it will be standing with
   you at Taron.
@@ -295,9 +295,9 @@ quietest upcoming days for Phantasialand:
 ```
 
 Which weekdays and months are usually relaxed and which to avoid shows up in the
-**crowds by weekday and month**, measured on the park’s operating days. The
-table shows how many days sit behind each month, and winter is still thinly
-measured:
+**crowds by weekday and month**, measured on the park’s operating days. Our
+measurements start in late December 2025; the table shows how many days sit
+behind each month, and winter is still thinly measured:
 
 ```stats-widget slug=phantasialand
 
@@ -363,8 +363,9 @@ morning light, and most rides with lines shorter than they will be all day. In
 a park this compact, that hour is worth real money: it’s the difference between
 “three rides” and “ten.”
 
-My order, tested over many years, thrown out several times and, since we’ve had
-hourly data, rebuilt in one place (data as of 25 September 2026):
+My order, tested over many years, thrown out several times and rebuilt in one
+place with our hourly data (measured since late December 2025, as of 25
+September 2026):
 
 1. **Straight to [Taron](ref:phantasialand/taron)** in Klugheim. The
    multi-launch coaster has the longest line in the park, and it is as long in
@@ -555,8 +556,8 @@ an advance allocation from €29. Three more things:
   notice. If you ride Chiapas in December, pack a change of clothes.
 - **Plan the weekends like holiday days.** Our calendar expects heavy crowds on
   the first Wintertraum weekends and light ones on December weekdays. We have
-  only measured Wintertraum on a handful of days so far (as of 25 September
-  2026), and those were busy. For anything but the weekends, check the crowd
+  only measured Wintertraum on a handful of days so far, between late December
+  2025 and January 2026, and those were busy. For anything but the weekends, check the crowd
   calendar from above first.
 - **Dress warmly.** The wait times feel twice as long in sub-zero temperatures.
   Why felt minutes and real ones drift so far apart is explained in
@@ -568,7 +569,8 @@ an advance allocation from €29. Three more things:
 
 On weekdays outside the NRW school holidays; Monday to Friday come out level in
 our data, and the quietest month we have measured was September, after the
-summer holidays (as of 25 September 2026). But don’t rely on gut feeling: the
+summer holidays (measured since late December 2025, as of 25 September 2026).
+But don’t rely on gut feeling: the
 [crowd calendar for Phantasialand](ref:phantasialand?calendar) tells you when to
 expect light crowds as far ahead as the park has published its opening hours;
 right now that is up to 24 January 2027. Green means go.
@@ -584,7 +586,8 @@ wait times on the go on the [Phantasialand park page](ref:phantasialand).
 
 [Taron](ref:phantasialand/taron). Behind it,
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) and
-[F.L.Y.](ref:phantasialand/fly) are level (as of 25 September 2026). That’s why
+[F.L.Y.](ref:phantasialand/fly) are level (measured since late December 2025,
+as of 25 September 2026). That’s why
 you ride Taron right at opening, Chiapas in the first hour and F.L.Y. in the late
 afternoon, when its line is at its shortest.
 

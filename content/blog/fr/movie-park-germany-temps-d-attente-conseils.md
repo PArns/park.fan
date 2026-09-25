@@ -123,7 +123,7 @@ La meilleure histoire des années 2010 est celle d’un grand huit qui n’a jam
 **grand huit de 45 mètres** juste derrière l’entrée, dix millions d’euros,
 ouverture en 2014. En septembre 2012, le parc a arrêté le projet. Officiellement, la stratégie
 d’investissement avait changé ; le directeur du parc, Wouter Dekkers, a cité la
-baisse de fréquentation des parcs frères en Espagne et en Italie. Sur cette pelouse, on n’a construit qu’en 2017, et autre chose : Star Trek: Operation Enterprise.
+baisse de fréquentation des parcs frères en Espagne et en Italie. Sur cette pelouse, on n’a construit qu’en 2017, et autre chose : Star Trek: Operation Enterprise.
 
 Cette histoire explique la réputation que le Movie Park garde aujourd’hui encore
 dans le milieu des amateurs de montagnes russes. Qui l’a visité entre 2012 et
@@ -599,15 +599,15 @@ l’incluent déjà.
 
 **Billets.** Le tarif en caisse est élevé, le tarif en ligne ne l’est pas :
 
-| Billet                                                                      | Caisse  | En ligne             |
-| --------------------------------------------------------------------------- | ------- | -------------------- |
-| Billet journée à partir de 12 ans                                           | 59,90 € | à partir de 34,90 €  |
-| Enfants de 4 à 11 ans                                                       | 54,90 € | à partir de 34,90 €  |
-| Tarif réduit (65 ans et plus, femmes enceintes, GdB < 100)                  | 29,90 € | 29,90 €              |
-| Forfait famille (2 adultes, 2 enfants, quota limité)                        | –       | à partir de 129,90 € |
-| Enfants de moins de 4 ans                                                   | gratuit | gratuit              |
-| Billet anniversaire (le jour même, pièce d’identité, caisse d’information)  | 16,90 € | –                    |
-| Stationnement                                                               | 9 €     | 9 €                  |
+| Billet                                                                     | Caisse  | En ligne             |
+| -------------------------------------------------------------------------- | ------- | -------------------- |
+| Billet journée à partir de 12 ans                                          | 59,90 € | à partir de 34,90 €  |
+| Enfants de 4 à 11 ans                                                      | 54,90 € | à partir de 34,90 €  |
+| Tarif réduit (65 ans et plus, femmes enceintes, GdB < 100)                 | 29,90 € | 29,90 €              |
+| Forfait famille (2 adultes, 2 enfants, quota limité)                       | –       | à partir de 129,90 € |
+| Enfants de moins de 4 ans                                                  | gratuit | gratuit              |
+| Billet anniversaire (le jour même, pièce d’identité, caisse d’information) | 16,90 € | –                    |
+| Stationnement                                                              | 9 €     | 9 €                  |
 
 Le supplément en caisse est de vingt-cinq euros par adulte et de vingt par
 enfant. Avec deux adultes et deux enfants, cela fait quatre-vingt-dix euros parce

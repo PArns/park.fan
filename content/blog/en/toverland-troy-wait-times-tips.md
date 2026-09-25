@@ -459,8 +459,8 @@ through the Christmas holidays. The rides keep running as long as the weather
 allows. For the anniversary, admission is free on the first three weekends and
 Wednesdays, up to 16 December: book a free reservation and you pay per ride, in
 strips of 2 € each, with Troy costing three. Regular day tickets are sold
-alongside. Beautiful, just no longer a secret once the lights are on: the days
-between Christmas and New Year's Eve 2025, where our measurements here began,
+alongside. Beautiful, just no longer a secret once the lights are on: the last
+days of 2025, from 26 December, when our measurements here began,
 were as busy as August.
 
 ## When to go
@@ -469,8 +469,8 @@ The answer is a relaxed one: almost always.
 
 **By month**, April through July sit close together, and what stands out above
 them is **August** and **December**. Behind December, though, our data only has
-the days between Christmas Eve and New Year's Eve 2025, in the middle of the
-Christmas holidays. Among the months with a solid basis, **September** has been
+the last days of 2025, from 26 December, in the middle of the Christmas
+holidays. Among the months with a solid basis, **September** has been
 the quietest so far, after the summer holidays ended. One caveat: January and
 March rest on a handful of measured days, and February, October and November
 are still missing entirely (as of 25 September 2026). Outside the main season
@@ -705,4 +705,4 @@ Europe you can forget it.
 - Phantasialand without an annual pass: ["Jahreskarte abgeschafft" (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
 - Getting there, bus & parking: [Address and route (official)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in the Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wait-time and crowd data: our own history since December 2025, [Toverland on park.fan](ref:attractiepark-toverland)
+- Wait-time and crowd data: our own measurements since 26 December 2025, [Toverland on park.fan](ref:attractiepark-toverland)

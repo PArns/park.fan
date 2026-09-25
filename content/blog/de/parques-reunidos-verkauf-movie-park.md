@@ -134,8 +134,7 @@ Seit der Übernahme 2010 hat Parques Reunidos in Bottrop mehrfach gebaut. Einen 
 
 — Patrick
 
-> [!CORRECTION]
-> 25. September 2026: In der ersten Fassung stand, die Gratis-Eintritte in den Schwesterparks seien für 2027 noch offen. Laut Leistungsbeschreibung gehören je drei Eintritte in Bobbejaanland, Slagharen und Walsrode, einer in Tropical Islands und je einer in weiteren Parks der Gruppe aber schon zum Pass für 2027. Ergänzt haben wir außerdem, dass auf der Fläche der 2012 gestoppten Achterbahn heute Star Trek steht.
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, die Gratis-Eintritte in den Schwesterparks seien für 2027 noch offen. Laut Leistungsbeschreibung gehören je drei Eintritte in Bobbejaanland, Slagharen und Walsrode, einer in Tropical Islands und je einer in weiteren Parks der Gruppe aber schon zum Pass für 2027. Ergänzt haben wir außerdem, dass auf der Fläche der 2012 gestoppten Achterbahn heute Star Trek steht.
 
 ---
 

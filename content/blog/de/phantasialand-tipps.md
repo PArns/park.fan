@@ -282,8 +282,9 @@ aus lauter Menschen, die alle dieselbe gute Idee hatten wie du.
 Ein paar Faustregeln, die fast immer stimmen:
 
 - **Wochentags schlägt Wochenende.** Montag bis Freitag liegen in unseren
-  Messungen gleichauf, Samstag und Sonntag darüber (Stand 25. September 2026).
-  Einen Geheimtipp-Wochentag gibt es hier also nicht.
+  Messungen gleichauf, Samstag und Sonntag darüber (gemessen seit Ende Dezember
+  2025, Stand 25. September 2026). Einen Geheimtipp-Wochentag gibt es hier also
+  nicht.
 - **NRW-Schulferien meiden**, besonders Sommer- und Herbstferien, das
   Einzugsgebiet Köln/Bonn/Ruhrgebiet ist gewaltig, und halb davon steht dann mit
   dir bei Taron.
@@ -304,8 +305,9 @@ ruhigsten kommenden Tage fürs Phantasialand:
 
 Welche Wochentage und Monate übers Jahr typischerweise entspannt sind und welche
 du meiden solltest, zeigt der **Andrang nach Wochentag und Monat**, gemessen an
-den Öffnungstagen. Wie viele Tage hinter einem Monat stehen, steht in der Tabelle
-dabei, und der Winter ist darin noch dünn gemessen:
+den Öffnungstagen. Unsere Messungen beginnen Ende Dezember 2025; wie viele Tage
+hinter einem Monat stehen, steht in der Tabelle dabei, und der Winter ist darin
+noch dünn gemessen:
 
 ```stats-widget slug=phantasialand
 
@@ -372,9 +374,9 @@ Morgenlicht, und an den meisten Bahnen so kurze Schlangen wie den ganzen Tag
 nicht mehr. Diese Stunde ist im kompakten Phantasialand bares Geld wert, sie ist
 der Unterschied zwischen „drei Fahrten“ und „zehn“.
 
-Meine Reihenfolge, über die Jahre erprobt, mehrfach verworfen und, seit wir
-stündliche Daten haben, an einer Stelle umgebaut (Stand der Daten: 25. September
-2026):
+Meine Reihenfolge, über die Jahre erprobt, mehrfach verworfen und mit unseren
+stündlichen Daten an einer Stelle umgebaut (gemessen seit Ende Dezember 2025,
+Stand 25. September 2026):
 
 1. **Direkt zu [Taron](ref:phantasialand/taron)** nach Klugheim. Der
    Multi-Launch-Coaster hat die längste Schlange im Park, und sie ist schon in der
@@ -572,7 +574,7 @@ Vorverkaufskontingent ab 29 €. Drei Dinge noch:
 - **Die Wochenenden wie Ferientage planen.** Unser Kalender erwartet für die
   ersten Wintertraum-Wochenenden viel Andrang und für die Wochentage im Dezember
   wenig. Gemessen haben wir den Wintertraum bisher nur an einer Handvoll Tagen
-  (Stand 25. September 2026), und an denen war es voll. Für alles außer den
+  zwischen Ende Dezember 2025 und Januar 2026, und an denen war es voll. Für alles außer den
   Wochenenden gilt also: erst in den Crowd-Kalender von oben schauen.
 - **Warm anziehen.** Die Wartezeiten fühlen sich bei Minusgraden gleich doppelt so
   lang an. Warum gefühlte und echte Minuten so weit auseinanderliegen, steht in der
@@ -584,7 +586,8 @@ Vorverkaufskontingent ab 29 €. Drei Dinge noch:
 
 An Wochentagen außerhalb der NRW-Schulferien; Montag bis Freitag liegen in
 unseren Daten gleichauf, und der ruhigste gemessene Monat war der September nach
-den Sommerferien (Stand 25. September 2026). Verlass dich aber nicht aufs
+den Sommerferien (gemessen seit Ende Dezember 2025, Stand 25. September 2026).
+Verlass dich aber nicht aufs
 Bauchgefühl: Der [Crowd-Kalender fürs Phantasialand](ref:phantasialand?calendar)
 sagt dir so weit im Voraus, wie der Park seine Öffnungszeiten veröffentlicht hat,
 wann mit wenig Andrang zu rechnen ist; im Moment reicht er bis
@@ -602,7 +605,8 @@ Shows). Die Live-Wartezeiten checkst du unterwegs auf der
 
 [Taron](ref:phantasialand/taron). Dahinter liegen
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) und
-[F.L.Y.](ref:phantasialand/fly) gleichauf (Stand 25. September 2026). Taron
+[F.L.Y.](ref:phantasialand/fly) gleichauf (gemessen seit Ende Dezember 2025,
+Stand 25. September 2026). Taron
 fährst du deshalb direkt zur Öffnung, Chiapas in der ersten Stunde und F.L.Y. am
 späten Nachmittag, wenn die Schlange dort am kürzesten ist.
 

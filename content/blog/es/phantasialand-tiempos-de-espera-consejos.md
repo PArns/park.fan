@@ -287,8 +287,9 @@ lleno de gente que tuvo la misma idea brillante que tú.
 Un par de reglas de oro que casi siempre se cumplen:
 
 - **Entre semana gana al fin de semana.** De lunes a viernes, los días quedan
-  empatados en nuestras mediciones, y el sábado y el domingo por encima (a 25 de
-  septiembre de 2026). Aquí no hay un día laborable milagro.
+  empatados en nuestras mediciones, y el sábado y el domingo por encima (medido
+  desde finales de diciembre de 2025, a 25 de septiembre de 2026). Aquí no hay un
+  día laborable milagro.
 - **Evita las vacaciones escolares de Renania del Norte-Westfalia**, sobre todo las
   de verano y otoño. El área de influencia Colonia/Bonn/cuenca del Ruhr es enorme,
   y la mitad de ella se planta contigo en la cola de Taron.
@@ -311,8 +312,9 @@ Phantasialand:
 
 Qué días de la semana y qué meses suelen ser tranquilos y cuáles conviene evitar
 lo muestra la **afluencia por día de la semana y por mes**, medida en los días
-de apertura. La tabla indica cuántos días hay detrás de cada mes, y el invierno
-todavía está poco medido:
+de apertura. Nuestras mediciones empiezan a finales de diciembre de 2025; la
+tabla indica cuántos días hay detrás de cada mes, y el invierno todavía está poco
+medido:
 
 ```stats-widget slug=phantasialand
 
@@ -381,8 +383,9 @@ sonando, los decorados a la luz de la mañana, y en la mayoría de las atraccion
 colas más cortas que en todo el resto del día. En un parque tan compacto, esa hora
 vale dinero contante: es la diferencia entre «tres vueltas» y «diez».
 
-Mi orden, probado a lo largo de los años, descartado varias veces y, desde que
-tenemos datos por horas, rehecho en un punto (datos a 25 de septiembre de 2026):
+Mi orden, probado a lo largo de los años, descartado varias veces y rehecho en un
+punto con nuestros datos por horas (medidos desde finales de diciembre de 2025, a
+25 de septiembre de 2026):
 
 1. **Directo a [Taron](ref:phantasialand/taron)**, a Klugheim. La montaña rusa
    multilanzamiento tiene la cola más larga del parque, y ya en la primera hora es
@@ -584,7 +587,8 @@ parque anunciaba un cupo de preventa desde 29 €. Tres cosas más:
 - **Planifica los fines de semana como días de vacaciones.** Nuestro calendario
   espera mucha gente los primeros fines de semana del Wintertraum y poca los días
   laborables de diciembre. De momento solo hemos medido el Wintertraum en un
-  puñado de días (a 25 de septiembre de 2026), y en esos había mucha gente. Para
+  puñado de días, entre finales de diciembre de 2025 y enero de 2026, y en esos
+  había mucha gente. Para
   todo lo que no sea fin de semana, mira primero el calendario de afluencia de más
   arriba.
 - **Abrígate bien.** Con temperaturas bajo cero, los tiempos de espera se sienten
@@ -597,8 +601,8 @@ parque anunciaba un cupo de preventa desde 29 €. Tres cosas más:
 
 Entre semana, fuera de las vacaciones escolares de Renania del Norte-Westfalia; de
 lunes a viernes los días quedan empatados en nuestros datos, y el mes más tranquilo
-que hemos medido fue septiembre, después de las vacaciones de verano (a 25 de
-septiembre de 2026). Pero no te fíes de la intuición: el
+que hemos medido fue septiembre, después de las vacaciones de verano (medido
+desde finales de diciembre de 2025, a 25 de septiembre de 2026). Pero no te fíes de la intuición: el
 [calendario de afluencia del Phantasialand](ref:phantasialand?calendar) te dice
 cuándo cabe esperar poca gente hasta donde el parque haya publicado sus horarios;
 ahora mismo, hasta el 24 de enero de 2027. Verde significa ir.
@@ -615,7 +619,8 @@ la [página del Phantasialand](ref:phantasialand).
 
 [Taron](ref:phantasialand/taron). Detrás van empatadas
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) y
-[F.L.Y.](ref:phantasialand/fly) (a 25 de septiembre de 2026). Por eso montas en
+[F.L.Y.](ref:phantasialand/fly) (medido desde finales de diciembre de 2025, a 25
+de septiembre de 2026). Por eso montas en
 Taron nada más abrir, en Chiapas en la primera hora y en F.L.Y. a última hora de la
 tarde, cuando su cola es la más corta.
 

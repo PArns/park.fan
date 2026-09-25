@@ -539,18 +539,19 @@ GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
 news post gets a factual fix, the fix is shown, not made silently, and the note
 goes **under the signature**, before the rule that opens the sources list:
 
-<!-- A `text` fence, not `md`: Prettier formats a Markdown fence and would pull the
-     date up onto the marker line, which is not how a post writes it. -->
-
-```text
+```md
 — Patrick
 
 > [!CORRECTION]
-> 25. September 2026: In der ersten Fassung stand, die Gratis-Eintritte für 2027
-> seien noch offen. Sie gehören schon zum Pass für 2027.
+> 25 September 2026: The first version said the free sister-park visits for 2027
+> were still open. They are already part of the 2027 pass.
 
 ---
 ```
+
+In German the date goes on the marker line, `> [!CORRECTION] 25. September 2026: …`.
+A line that starts with „25." reads as a numbered list item, so Prettier pulls it
+up there anyway. Both forms render the same box.
 
 It renders as a quiet grey box with an icon and its own translated label
 (`blog.correction`: „Korrektur", "Correction", …), set upright, not in italics.

@@ -357,7 +357,8 @@ published when exactly the Christmas programme starts. On 5 January 2027 the
 **Cabalgata de los Reyes Magos** moves through the Mediterrània area, the Three
 Kings parade, the night Spanish children get their presents.
 
-A warning that comes from our own measurements: PortAventura’s queues are longer
+A warning that comes from our own measurements since late December 2025:
+PortAventura’s queues are longer
 than Brühl’s on average, clearly so in winter and spring. Only in July and
 August is Brühl the busier of the two. The table further down puts them side by
 side. Expecting an empty season because it is winter where you live means
@@ -413,9 +414,9 @@ August there than to May and June, and the gap is not a rounding question.
 
 The winter months rest on a handful of measured days, the summer months on
 several times as many. The days column tells you what each row is built on. And
-the December row comes entirely from the Christmas holidays: our recording
-starts on 26 December 2025 at Phantasialand and on the 24th at Europa-Park and
-the Efteling. That is enough for the order of magnitude between Christmas and
+the December row comes entirely from the Christmas holidays, because our
+measurements only begin in late December 2025, between Christmas and New Year.
+That is enough for the order of magnitude between Christmas and
 New Year, and says nothing about Advent. At the Efteling, December is the
 busiest month in the whole table, January is not.
 
@@ -434,10 +435,10 @@ At Europa-Park December sits level with high summer and above May and June.
 ```
 
 The obvious explanation would be the shorter day, and for two of the three parks
-it goes some of the way. We ran the published opening hours: on the holiday
-days our December row is made of, the Efteling was open for just under ten
-hours on average, while a day in August 2026 lasts 11.7. At Europa-Park it is
-8.8 against 10.3. The same guests get one to two hours less.
+it goes some of the way. We ran the published opening hours: from 26 to
+31 December 2025 the Efteling was open for just under ten hours a day on
+average, while a day in August 2026 lasts 11.7. At Europa-Park it is 9.1
+against 10.3. The same guests get one to two hours less.
 
 At Phantasialand the clock explains nothing at all. Wintertraum runs nine hours
 a day, 11:00 to 20:00. A day in May in Brühl is exactly as long, 09:00 to 18:00.

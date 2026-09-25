@@ -618,11 +618,12 @@ Das Besucherlimit von fünf Millionen Gästen und der Winter Efteling stehen im
 
 Mehr als jedes Line-up entscheidet über den Abend aber, **wann du kommst.** Am
 vollsten wird es an den Wochenenden und am 31. Oktober, so sieht es auch unser
-Crowd-Kalender für fast alle Parks in diesem Guide. Gemessen haben wir einen
-Halloween-Oktober bis zum 25. September 2026 allerdings noch in keinem von
-ihnen, das ist eine Prognose. Unter der Woche und in den Randwochen der Saison
-rechnet er mit spürbar weniger Andrang (und die Darsteller haben dann mehr Zeit,
-sich exklusiv um _dich_ zu kümmern, je nach Sichtweise ein Vor- oder Nachteil).
+Crowd-Kalender für fast alle Parks in diesem Guide. Unsere Messungen beginnen
+allerdings erst Ende Dezember 2025, einen Halloween-Oktober hatten wir am 25.
+September 2026 noch in keinem dieser Parks, das ist also eine Prognose. Unter
+der Woche und in den Randwochen der Saison rechnet er mit spürbar weniger
+Andrang (und die Darsteller haben dann mehr Zeit, sich exklusiv um _dich_ zu
+kümmern, je nach Sichtweise ein Vor- oder Nachteil).
 
 ![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Volle Nacht: ab hier stehst du mehr an, als dir lieb ist. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
@@ -644,8 +645,8 @@ aus unserem KI-Crowd-Kalender an:
 Beim Movie Park kennt der Kalender noch keinen gemessenen Halloween-Herbst,
 seine Prognose für die Horrorabende nimmst du also besser mit Vorsicht. Wie voll
 es in Bottrop nach Wochentag und Monat typischerweise wird, zeigt die Statistik.
-Gemessen wird dort erst seit Dezember 2025, bis zum 25. September 2026 war noch
-kein Oktober dabei, und Halloween musst du dir vorerst dazudenken:
+Gemessen wird dort erst seit Ende Dezember 2025, bis zum 25. September 2026 war
+noch kein Oktober dabei, und Halloween musst du dir vorerst dazudenken:
 
 **Movie Park Germany, typische Wartezeiten nach Wochentag & Monat**
 

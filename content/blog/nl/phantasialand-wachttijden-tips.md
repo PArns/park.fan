@@ -281,8 +281,8 @@ die allemaal hetzelfde slimme idee hadden als jij.
 Een paar vuistregels die bijna altijd kloppen:
 
 - **Doordeweeks verslaat weekend.** Maandag tot en met vrijdag liggen in onze
-  metingen gelijk op, zaterdag en zondag erboven (stand 25 september 2026). Een
-  geheime tip-weekdag bestaat hier dus niet.
+  metingen gelijk op, zaterdag en zondag erboven (gemeten sinds eind december
+  2025, stand 25 september 2026). Een geheime tip-weekdag bestaat hier dus niet.
 - **NRW-schoolvakanties mijden**, vooral zomer- en herfstvakantie. Het verzorgingsgebied
   Keulen/Bonn/Ruhrgebied is enorm, en de helft daarvan staat dan met je mee bij Taron.
 - **Brugdagen zijn bijna nooit een goed idee**: de vrije dag daarvoor heeft half
@@ -301,9 +301,9 @@ komende dagen voor het Phantasialand:
 ```
 
 Welke weekdagen en maanden doorgaans ontspannen zijn en welke je beter mijdt,
-zie je aan de **drukte per weekdag en maand**, gemeten op de openingsdagen. Hoeveel
-dagen er achter een maand zitten, staat er in de tabel bij, en de winter is daarin
-nog dun gemeten:
+zie je aan de **drukte per weekdag en maand**, gemeten op de openingsdagen. Onze
+metingen beginnen eind december 2025; hoeveel dagen er achter een maand zitten,
+staat er in de tabel bij, en de winter is daarin nog dun gemeten:
 
 ```stats-widget slug=phantasialand
 
@@ -369,9 +369,9 @@ meeste banen rijen zo kort als de hele dag niet meer. Dat uur is in het compacte
 Phantasialand klinkende munt waard, het is het verschil tussen “drie ritten” en
 “tien”.
 
-Mijn volgorde, over de jaren beproefd, een paar keer verworpen en, sinds we
-gegevens per uur hebben, op één punt omgebouwd (stand van de data: 25 september
-2026):
+Mijn volgorde, over de jaren beproefd, een paar keer verworpen en met onze
+gegevens per uur op één punt omgebouwd (gemeten sinds eind december 2025, stand
+25 september 2026):
 
 1. **Meteen naar [Taron](ref:phantasialand/taron)** in Klugheim. De
    multi-launch-coaster heeft de langste rij van het park, en die is in het eerste
@@ -554,8 +554,8 @@ Nog drie dingen:
   Chiapas rijdt, neemt droge kleren mee.
 - **Plan de weekenden als vakantiedagen.** Onze kalender verwacht voor de eerste
   Wintertraum-weekenden veel drukte en voor de doordeweekse dagen in december weinig.
-  We hebben de Wintertraum tot nu toe maar op een handvol dagen gemeten (stand
-  25 september 2026), en die waren druk. Voor alles buiten de weekenden geldt dus:
+  We hebben de Wintertraum tot nu toe maar op een handvol dagen gemeten, tussen
+  eind december 2025 en januari 2026, en die waren druk. Voor alles buiten de weekenden geldt dus:
   eerst in de druktekalender van hierboven kijken.
 - **Kleed je warm aan.** De wachttijden voelen bij vriestemperaturen meteen twee keer zo lang. Waarom gevoelde en
   echte minuten zo ver uit elkaar liggen, lees je in de [kunst van het wachten](/blog/de-kunst-van-het-wachten).
@@ -566,7 +566,8 @@ Nog drie dingen:
 
 Op weekdagen buiten de NRW-schoolvakanties; maandag tot en met vrijdag liggen in
 onze data gelijk op, en de rustigste gemeten maand was september, na de
-zomervakantie (stand 25 september 2026). Vertrouw echter niet op je
+zomervakantie (gemeten sinds eind december 2025, stand 25 september 2026).
+Vertrouw echter niet op je
 onderbuikgevoel: de [druktekalender voor het Phantasialand](ref:phantasialand?calendar)
 vertelt je zo ver vooruit als het park zijn openingstijden heeft gepubliceerd
 wanneer je op weinig drukte kunt rekenen; op dit moment is dat tot
@@ -584,7 +585,8 @@ de shows). De live wachttijden check je onderweg op de
 
 [Taron](ref:phantasialand/taron). Daarachter liggen
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) en
-[F.L.Y.](ref:phantasialand/fly) gelijk op (stand 25 september 2026). Daarom rijd je
+[F.L.Y.](ref:phantasialand/fly) gelijk op (gemeten sinds eind december 2025,
+stand 25 september 2026). Daarom rijd je
 Taron meteen bij opening, Chiapas in het eerste uur en F.L.Y. aan het eind van de
 middag, als de rij daar het kortst is.
 

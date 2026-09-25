@@ -12,7 +12,7 @@ excerpt: >-
   ce nom depuis 1975 (à quatre saisons de Six Flags Belgium près) et abrite
   depuis 2021, avec Kondaa, le coaster le plus haut et le plus rapide du
   Benelux. Temps d’attente, technique, un fondateur qui voulait seulement un
-  étang de ski nautique, un plan d’investissement en retard de deux ans, et la
+  étang de ski nautique, un plan d’investissement prévu pour 2023 qui court désormais jusqu’en 2030, et la
   dernière saison du Loup-Garou avant sa transformation par RMC pour 2028.
 tags:
   - walibi-belgium
@@ -261,8 +261,8 @@ début d’octobre, pour Halloween.
 Le **22 juin 2017**, le parc a présenté un plan d’investissement sans équivalent
 dans son histoire : **« Worlds of Walibi »**, environ **100 millions d’euros**
 pour transformer 75 % de la surface en huit nouveaux mondes thématiques, plus
-dix attractions. Tout devait être fini en 2023. Tout a commencé en 2018
-avec Tiki-Waka, puis sont venus en 2019 le parcours scénique Popcorn Revenge et
+dix attractions. Tout devait être fini en 2023. Les travaux ont démarré en
+2018 avec Tiki-Waka, puis sont venus en 2019 le parcours scénique Popcorn Revenge et
 Fun Pilot, en 2021 **Kondaa** et en 2025 **Dock World** avec Mecalodon. Le parc
 compte depuis 2016 quatre nouveaux mondes (Exotic, Karma, Fun et Dock World),
 soit la moitié, et le dernier est arrivé deux ans après l’échéance. Pour un
@@ -271,8 +271,8 @@ chantier de cette taille, c’est presque de la ponctualité.
 Le plan avance quand même, et pas seulement à Wavre : dans le parc frère
 [Walibi Holland](ref:walibi-holland), la **Compagnie des Alpes** a construit sur
 la même période [Untamed](ref:walibi-holland/untamed) (2019) et la double
-installation YOY (2025), deux grosses nouveautés de plus. Un parc que presque
-personne n’a en tête en Allemagne a reçu en quatre ans deux coasters et une zone
+installation YOY (2025), deux grosses nouveautés de plus. Et Wavre, que presque
+personne n’a en tête en Allemagne, a reçu en quatre ans deux coasters et une zone
 entièrement neuve.
 
 Le prochain monde a désormais un nom. Le 1er juin 2026, le parc a annoncé
@@ -321,17 +321,18 @@ belges qui décident de l’affluence, et depuis l’année scolaire 2022-2023 e
 ne coïncident plus : en 2026, les écoles francophones de Wallonie et de
 Bruxelles ont leur congé d’automne du 19 au 30 octobre, les écoles flamandes du
 2 au 8 novembre, et Ibilaw couvre les deux. S’y ajoutent les jours de semaine
-hors vacances d’été, quand le parc n’ouvre de toute façon pas tous les jours. Lesquels des
-prochains jours d’ouverture sont les plus calmes, le calendrier plus haut le
+hors vacances d’été, quand le parc n’ouvre de toute façon pas tous les jours.
+Lesquels des prochains jours d’ouverture sont les plus calmes, le calendrier plus haut le
 dit, au jour le jour.
 
 ## La journée parfaite, en quatre phrases
 
 À l’ouverture, direction **Kondaa** en premier, parce que c’est pour elle que la
-plupart des gens sont venus et parce que, dans nos données, la première heure
-offre la file la plus courte de la journée. **Mecalodon**, à Dock World, suit le
-même schéma, courte le matin et dans la dernière heure, au plus haut vers
-11 h : fais-la juste après Kondaa ou en fin d’après-midi. **Turbine**,
+plupart des gens sont venus et parce que, dans nos mesures (depuis fin
+décembre 2025), la première heure offre la file la plus courte de la journée.
+**Mecalodon**, à Dock World, suit le même schéma, file courte le matin et dans
+la dernière heure, au plus haut vers 11 h : fais-le juste après Kondaa ou en fin
+d’après-midi. **Turbine**,
 **Cobra** et **Calamity Mine** varient à peine au fil de la journée et bouchent
 n’importe quel trou, alors que **Vampire** et **Loup-Garou** sont au plus
 chargé le matin et se calment nettement à partir de midi. Les
@@ -459,4 +460,4 @@ t’attrape avant même que le train soit tout en haut.
 - Ibilaw 2026 (dates, maisons hantées, scare zones, badge anti-monstres, Speedy) : [Ibilaw (Walibi Belgium)](https://www.walibi.be/halloween-walibi/fr) · notre [guide Halloween 2026](/blog/halloween-parcs-attractions-2026)
 - Congés d’automne 2026 : [Fédération Wallonie-Bruxelles (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Flandre (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Billets, abonnements, accès, Walibi Winter : [billets](https://www.walibi.be/fr/tickets) · [abonnements](https://www.walibi.be/en/tickets/pass) · [accès](https://www.walibi.be/fr/planifier-votre-visite/acces) · [Walibi Winter](https://www.walibi.be/walibi-winter/en)
-- Données d’attente et d’affluence : notre propre historique, [Walibi Belgium sur park.fan](ref:walibi-belgium)
+- Données d’attente et d’affluence : nos propres mesures depuis fin décembre 2025, [Walibi Belgium sur park.fan](ref:walibi-belgium)

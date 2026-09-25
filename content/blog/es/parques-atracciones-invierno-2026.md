@@ -368,7 +368,8 @@ incluidos**. El parque aún no ha publicado cuándo empieza exactamente su
 programa de Navidad. El 5 de enero de 2027 la **Cabalgata de los Reyes Magos**
 recorre la zona de Mediterrània.
 
-Un aviso que sale de nuestras propias mediciones: en PortAventura se espera de
+Un aviso que sale de nuestras propias mediciones desde finales de diciembre de
+2025: en PortAventura se espera de
 media más que en Brühl, y claramente más en invierno y en primavera. Solo en
 julio y agosto hay más cola en Brühl. La tabla de más abajo los pone uno al lado
 del otro. Quien llegue en diciembre desde el norte contando con una temporada
@@ -426,9 +427,9 @@ redondeo.
 
 Los meses de invierno se apoyan en un puñado de días medidos, los de verano en
 varias veces más. La columna de días indica en cada fila sobre qué se sostiene.
-Y la fila de diciembre sale entera de las vacaciones de Navidad: nuestros
-registros empiezan el 26 de diciembre de 2025 en Phantasialand y el 24 en
-Europa-Park y en Efteling. Da para hablar del orden de magnitud entre Navidad y
+Y la fila de diciembre sale entera de las vacaciones de Navidad, porque
+nuestras mediciones no empiezan hasta finales de diciembre de 2025, entre
+Navidad y Año Nuevo. Da para hablar del orden de magnitud entre Navidad y
 Año Nuevo, pero no dice nada del Adviento. En Efteling, diciembre es incluso el
 mes más lleno de toda la tabla, enero no.
 
@@ -448,10 +449,10 @@ junio.
 ```
 
 La explicación evidente sería el día más corto, y para dos de los tres parques
-explica una parte. Hemos calculado los horarios publicados: en los días de
-vacaciones de los que sale nuestra fila de diciembre, Efteling abrió de media
-algo menos de diez horas, mientras que un día de agosto de 2026 dura 11,7. En
-Europa-Park son 8,8 frente a 10,3. Los mismos visitantes tienen, por tanto,
+explica una parte. Hemos calculado los horarios publicados: del 26 al 31
+de diciembre de 2025, Efteling abrió de media algo menos de diez horas al día,
+mientras que un día de agosto de 2026 dura 11,7. En Europa-Park son 9,1 frente
+a 10,3. Los mismos visitantes tienen, por tanto,
 entre una y dos horas menos.
 
 Solo que en Phantasialand el reloj no explica nada. El Wintertraum funciona

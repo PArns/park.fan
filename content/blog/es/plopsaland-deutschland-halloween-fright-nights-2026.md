@@ -84,8 +84,8 @@ carta, y no como cliente.
 También hay dos espectáculos nuevos: el **Monster Release Show «Freaks
 Reloaded»**, con Reddles, el payaso de la casa, y el espectáculo de lucha
 **«The Killing Games»**, en el que solo un luchador sale vivo del ring. Los dos
-formatos ya existían en
-2025, con otra historia, como «Freaks Unleashed» y «Night of Anarchy». Vuelve
+formatos ya existían en 2025, con otra historia, como «Freaks Unleashed» y
+«Night of Anarchy». Vuelve
 el espectáculo de fuego Flames of Valhalla, con vikingos. Cada noche termina con
 el nuevo cierre **Carnival Inferno**, y antes pinchan DJ en el Fright Festival.
 

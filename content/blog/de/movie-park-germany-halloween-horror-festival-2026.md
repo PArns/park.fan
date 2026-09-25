@@ -147,5 +147,4 @@ Termine, Häuser und Tickets:
 
 — Patrick
 
-> [!CORRECTION]
-> 25. September 2026: In der ersten Fassung stand, die Zeitfenster-Tickets für die Horrorhäuser gebe es nur online. Laut Parkplan verkauft der Park je nach Verfügbarkeit auch Restkarten vor Ort.
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, die Zeitfenster-Tickets für die Horrorhäuser gebe es nur online. Laut Parkplan verkauft der Park je nach Verfügbarkeit auch Restkarten vor Ort.
