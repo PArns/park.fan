@@ -45,16 +45,17 @@ Palatinato, si chiamava Holiday Park fino a giugno 2025. È il fratello tedesco
 del [Plopsaland De Panne](ref:plopsaland-belgium) e in **dieci sere di
 ottobre** organizza le **Halloween Fright Nights**, che il parco stesso conta
 tra i più grandi eventi di Halloween in Germania. A differenza di Traumatica,
-all'[Europa-Park](ref:europa-park), qui non si resta fuori se si hanno meno di
-16 anni.
+all'[Europa-Park](ref:europa-park), qui chi ha meno di 16 anni entra se è
+accompagnato da un genitore o da chi ne fa le veci.
 
 ## Date e orari
 
 Le Fright Nights si tengono **il venerdì e il sabato dal 2 al 31 ottobre
 2026**: il 2, 3, 9, 10, 16, 17, 23, 24, 30 e 31. In quei giorni il parco è
-aperto **dalle 10 alle 22** e tutte le attrazioni girano fino alla chiusura.
-Fanno eccezione solo quelle acquatiche, DinoSplash e Wickie Splash, che si
-fermano alle 20, cosa che a ottobre non darà fastidio a nessuno.
+aperto **dalle 10 alle 22** e, secondo il parco, quasi tutte le attrazioni
+girano fino alla chiusura. Le uniche che nomina sono quelle acquatiche,
+DinoSplash e Wickie Splash, che si fermano alle 20, cosa che a ottobre non darà
+fastidio a nessuno.
 
 Di giorno c'è in parallelo la Festa d'autunno Plopsa, pensata per i bambini. I
 mostri escono la sera.
@@ -83,7 +84,8 @@ menù, e non come cliente.
 Anche due spettacoli sono nuovi: il **Monster Release Show «Freaks
 Reloaded»** con Reddles, il clown di casa delle Fright Nights, e lo spettacolo
 di wrestling **«The Killing Games»**, in cui un solo lottatore esce vivo dal
-ring. Torna lo spettacolo di fuoco Flames of Valhalla, con i vichinghi. Ogni
+ring. Entrambi i format c'erano già nel 2025, con un'altra storia, come
+«Freaks Unleashed» e «Night of Anarchy». Torna lo spettacolo di fuoco Flames of Valhalla, con i vichinghi. Ogni
 sera si chiude con il nuovo finale **Carnival Inferno**, e prima suonano i DJ
 del Fright Festival.
 
@@ -105,26 +107,28 @@ Come al Movie Park, le case dell'orrore **non sono comprese nell'ingresso**.
 | Biglietto con data     | da 39 € (prezzo pieno 58 €)          | parco fino alle 22, scare zone, spettacoli, Fright Festival      |
 | Biglietto singola casa | da 3 € per casa                      | una casa con fascia oraria, solo insieme al biglietto d'ingresso |
 | Tutte e sei le case    | 49 €                                 | pacchetto senza ingresso al parco                                |
-| Nightmare Society Pass | da 109 € (abbonamento annuale: 79 €) | ingresso, ogni casa una volta senza fascia, parcheggio, spilla   |
+| Nightmare Society Pass | da 109 € (con abbonamento annuale 79 €) | ingresso, ogni casa una volta senza fascia, parcheggio, spilla   |
 
 Ogni casa funziona con fasce orarie che scegli al momento dell'acquisto. Solo il
 Nightmare Society Pass ne fa a meno, e dà anche accesso a un'area riservata durante
-gli spettacoli. Chi ha l'abbonamento annuale Plopsaland entra alle Fright Nights
+gli spettacoli, fino a esaurimento posti. Chi ha l'abbonamento annuale Plopsaland entra alle Fright Nights
 senza sovrapprezzo e riceve fino al 30 settembre, fino a esaurimento, un
 biglietto gratuito per Mad Rat.
 
 Se vuoi tutte e sei le case, il conto è presto fatto: il biglietto più economico
-più il pacchetto da 49 € fanno 88 € a testa; il pass costa 109 € e ti evita di
-prenotare sei fasce orarie. In un sabato affollato di ottobre, prendi il pass.
+più il pacchetto da 49 € fanno 88 € a testa; il pass costa 109 €, include il
+parcheggio e ti evita di prenotare sei fasce orarie. In un sabato affollato di ottobre, prendi il pass.
 
 ## Per chi è
 
-Il parco consiglia le Fright Nights **dai 16 anni**. È un consiglio, non una
-regola d'ingresso come a Traumatica. Se vai con ragazzi più giovani o persone
-che si spaventano facilmente, Majaland e il padiglione Plopsa Indoor restano
-senza mostri, e sul posto si può avere uno «Schreck-Stopp»: chi lo indossa
-viene lasciato in pace dagli attori. Dai 12 anni in su sono vietati maschere,
-trucco elaborato e costumi, così al buio resta chiaro chi lavora lì.
+Il parco consiglia le Fright Nights **dai 16 anni**. A differenza di
+Traumatica non è un limite rigido: secondo le FAQ del parco, chi è più giovane
+entra accompagnato da un genitore o da chi ne fa le veci. Per ragazzi più
+giovani o persone che si spaventano facilmente, Majaland e il padiglione Plopsa
+Indoor restano senza mostri, e solo sul posto si trova lo «Schreck-Stopp», con
+cui, dice il parco, i mostri ti lasciano in pace. Chi ha più di 12 anni non può
+indossare maschere, trucco elaborato o costumi, così al buio resta chiaro chi
+lavora lì.
 
 Haßloch si trova tra la A65 e la B9, e una navetta collega la stazione di
 Haßloch al parco. L'[Europa-Park](ref:europa-park) con Traumatica è a poco meno
@@ -138,3 +142,6 @@ Biglietti, fasce orarie e dettagli:
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/en/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 settembre 2026: La prima versione diceva che i 16 anni erano solo un consiglio, senza regola d'ingresso. Secondo le FAQ del parco, chi ha meno di 16 anni entra accompagnato da un genitore o da chi ne fa le veci. Il divieto di costumi vale per chi ha più di 12 anni; la prima versione diceva «dai 12 anni». Abbiamo anche aggiunto che il Monster Release Show e lo spettacolo di wrestling esistevano già nel 2025.

@@ -468,7 +468,7 @@ histoire dès qu’on appuyait sur le bouton. Petit garçon, j’ai roulé le lo
 ça en poussette, convaincu que les figures s’animeraient pour peu que je les fixe
 assez longtemps. À l’automne 2007, le parc a démoli le Märchenwald, et le terrain
 fait aujourd’hui partie du monde des Wuze, dans le Fantasy. Il en reste le temple
-du « Petit Mouk », qui sert désormais d’observatoire aux Wuze de l’eau, et un arbre
+du conte « Le Petit Muck », qui sert désormais d’observatoire aux Wuze de l’eau, et un arbre
 avec un visage. Qui sait où chercher les trouve tous les deux.
 
 Il y a la **[Maus au Chocolat](ref:phantasialand/maus-au-chocolat)**, le dark ride
