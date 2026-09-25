@@ -12,7 +12,7 @@ CyberGhost, heute im Engineering bei ExpressVPN: Systeme, auf die sich
 Millionen Menschen verlassen, ohne sie je zu bemerken.
 
 park.fan ist der Ort, an dem beide Hälften zusammengefunden haben. Live-Daten
-aus über 200 Parks und 7.000 Attraktionen, plus eine KI, die den Andrang bis zu
-einem Jahr im Voraus sieht, damit die Zeit im Park für Magie draufgeht und
+aus über 200 Parks und rund 7.000 Attraktionen, plus eine KI, die den Andrang
+rund ein halbes Jahr im Voraus sieht, damit die Zeit im Park für Magie draufgeht und
 nicht für Geländer. Im Blog schreibe ich Reiseberichte, Daten-Analysen und
 alles, was Zahlen allein nicht erklären.
