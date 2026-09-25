@@ -57,14 +57,14 @@ export function EntryTileBody({
           and never on the tile itself: the box carries `backdrop-blur-md`, and a transform on a
           backdrop-filtered element (or any ancestor) makes it a backdrop root and flattens the
           blur for the length of the animation. */}
-      <span
-        data-tile-stagger
-        className={cn(entryTileChip, 'max-sm:h-6 max-sm:w-6 max-sm:shrink-0', chipClassName)}
-      >
+      {/* Below `sm` the tile is a third of the row (`tileRowPhone`), 109 px wide at 360 px. A
+          chip beside the label took 46 px of that and left ~63 px, and words were cut mid-word
+          at the cell edge („Attraktione", „Restaurant") — 18 labels over six locales on the park
+          and Taron rows. So on a phone there is no chip: the label alone, in `text-xs`, clamped
+          to its two reserved lines, and no hint. The selected cell keeps the bar and the tint. */}
+      <span data-tile-stagger className={cn(entryTileChip, 'max-sm:hidden', chipClassName)}>
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      {/* Below `sm` the tile is a third of the row (`tileRowPhone`): a smaller chip, the label
-          in `text-xs` beside it and clamped to its two reserved lines, and no hint. */}
       <span
         data-tile-stagger
         data-tile-label
