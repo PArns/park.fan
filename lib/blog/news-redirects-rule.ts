@@ -1,6 +1,6 @@
 import { isValidLocale } from '@/i18n/config';
 import { NEWS_CATEGORY, NEWS_INDEX_PATH } from './paths';
-import { NEWS_POST_TARGETS } from './news-redirects';
+import { NEWS_ONLY_TAGS, NEWS_POST_TARGETS } from './news-redirects';
 
 /**
  * The 308s that moved news out of the blog, decided from the URL alone so `proxy.ts` can answer
@@ -12,6 +12,9 @@ import { NEWS_POST_TARGETS } from './news-redirects';
  *   that locale serves the post under. A slug from another locale lands on the canonical URL in
  *   the same hop instead of taking the post page's canonical-slug redirect afterwards.
  * - `/<locale>/blog/category/news` → `/<locale>/news`.
+ * - `/<locale>/blog/tag/<slug>` of a tag only news carries → `/<locale>/news`. The tag archives
+ *   count articles only, so such an archive has nothing left to list; it was in the sitemap while
+ *   `/blog` listed news, and a 404 there throws away what it earned.
  *
  * Which slugs are news is not decided here: `scripts/generate-blog-manifest.mjs` writes that list
  * (`./news-redirects.ts`) from the same frontmatter the post page reads. Everything else returns
@@ -31,6 +34,11 @@ export function newsRedirect(pathname: string): string | null {
 
   // '', locale, 'blog', 'category', 'news'
   if (parts.length === 5 && parts[3] === 'category' && parts[4] === NEWS_CATEGORY) {
+    return `/${locale}${NEWS_INDEX_PATH}`;
+  }
+
+  // '', locale, 'blog', 'tag', <slug>
+  if (parts.length === 5 && parts[3] === 'tag' && NEWS_ONLY_TAGS[locale]?.includes(parts[4])) {
     return `/${locale}${NEWS_INDEX_PATH}`;
   }
 

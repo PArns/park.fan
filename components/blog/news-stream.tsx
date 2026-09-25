@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
-import { useMounted } from '@/lib/hooks/use-mounted';
+import { Suspense, useEffect, useRef, type ReactNode, type RefObject } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 export interface NewsStreamItem {
   key: string;
-  /** The item's park slug, or `null` when it has none (it then shows only unfiltered). */
+  /** The item's park filter key (see {@link NewsStreamPark}), or `null` when it has no park. */
   park: string | null;
   /** The server-rendered entry. */
   node: ReactNode;
@@ -21,6 +21,10 @@ export interface NewsStreamGroup {
 }
 
 export interface NewsStreamPark {
+  /**
+   * The filter key, and the value of `?park=`: the park slug, or slug plus city where two parks
+   * with news share a slug (`NewsIndexPageBody`).
+   */
   slug: string;
   name: string;
   count: number;
@@ -46,8 +50,11 @@ const PARK_PARAM = 'park';
  * the notes are painted. A slug with no rule (an old link, a typo) matches nothing and shows
  * everything. Browsers without `:has()` keep the heading of a day with no match.
  *
- * A pill press only changes that one attribute, so no list is rebuilt in the interaction's
- * commit (`docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md`).
+ * After hydration the URL is the only state (`FilterBar`): it had a `useState` of its own, which
+ * survived a navigation to plain `/news` and kept the list filtered under an unfiltered address.
+ *
+ * A pill press only changes that one attribute and the pill row, so no list is rebuilt in the
+ * interaction's commit (`docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md`).
  */
 export function NewsStream({
   groups,
@@ -60,20 +67,10 @@ export function NewsStream({
   filterLabel: string;
   allLabel: string;
 }) {
-  // `undefined` until the reader picks a pill; until then the URL decides, once mounted.
-  const [chosen, setChosen] = useState<string | null | undefined>(undefined);
-  const mounted = useMounted();
-  const fromUrl = mounted ? new URLSearchParams(window.location.search).get(PARK_PARAM) : null;
-  const park =
-    chosen !== undefined ? chosen : parks.some((p) => p.slug === fromUrl) ? fromUrl : null;
-
-  const choose = (next: string | null) => {
-    setChosen(next);
-    const url = new URL(window.location.href);
-    if (next) url.searchParams.set(PARK_PARAM, next);
-    else url.searchParams.delete(PARK_PARAM);
-    window.history.replaceState(window.history.state, '', url);
-  };
+  // The stream's root, whose `data-news-filter` the CSS rules below read. React never renders the
+  // attribute: the inline script sets it before paint and `FilterBar` keeps it in step with the
+  // URL afterwards, so this component does not re-render when a pill is pressed.
+  const rootRef = useRef<HTMLDivElement>(null);
 
   // Slugs are `[a-z0-9-]`; anything else is dropped rather than escaped into a selector.
   const rules = parks
@@ -86,9 +83,9 @@ export function NewsStream({
     .join('');
 
   return (
-    // `suppressHydrationWarning`: the script below may already have set the attribute from the
-    // URL when React hydrates; the state takes it over after mount.
-    <div data-news-filter={park ?? ''} suppressHydrationWarning>
+    // `suppressHydrationWarning`: the script below sets `data-news-filter` from the URL before
+    // React hydrates this element.
+    <div ref={rootRef} suppressHydrationWarning>
       <script
         dangerouslySetInnerHTML={{
           __html: `(function(s){try{var p=new URLSearchParams(location.search).get(${JSON.stringify(PARK_PARAM)});if(p)s.parentElement.setAttribute("data-news-filter",p)}catch(e){}})(document.currentScript)`,
@@ -97,17 +94,22 @@ export function NewsStream({
       {rules && <style>{rules}</style>}
 
       {parks.length > 1 && (
-        <div role="group" aria-label={filterLabel} className="mb-8 flex flex-wrap gap-2">
-          <FilterPill pressed={park === null} onClick={() => choose(null)}>
-            {allLabel}
-          </FilterPill>
-          {parks.map((p) => (
-            <FilterPill key={p.slug} pressed={park === p.slug} onClick={() => choose(p.slug)}>
-              {p.name}
-              <span className="tabular-nums opacity-70">{p.count}</span>
-            </FilterPill>
-          ))}
-        </div>
+        // The pills read the URL (`useSearchParams`), and on a prerendered page that renders the
+        // nearest Suspense boundary in the browser. The boundary sits around the pills alone, so
+        // the stream below stays in the static HTML. The fallback is the same row with nothing
+        // chosen yet: same height, so the swap after hydration moves nothing.
+        <Suspense
+          fallback={
+            <FilterPills parks={parks} park={null} filterLabel={filterLabel} allLabel={allLabel} />
+          }
+        >
+          <FilterBar
+            parks={parks}
+            filterLabel={filterLabel}
+            allLabel={allLabel}
+            rootRef={rootRef}
+          />
+        </Suspense>
       )}
 
       <div className="space-y-10">
@@ -128,6 +130,77 @@ export function NewsStream({
           </section>
         ))}
       </div>
+    </div>
+  );
+}
+
+/**
+ * The pills, driven by the URL. The chosen park IS `?park=`: there is no state of its own, so a
+ * navigation to plain `/news` (the header's News entry, the footer link) clears the filter
+ * instead of leaving the list filtered under an address that says it is not. `replaceState`
+ * integrates with the Next router, so `useSearchParams` sees a pill press as well.
+ */
+function FilterBar({
+  parks,
+  filterLabel,
+  allLabel,
+  rootRef,
+}: {
+  parks: NewsStreamPark[];
+  filterLabel: string;
+  allLabel: string;
+  rootRef: RefObject<HTMLDivElement | null>;
+}) {
+  const fromUrl = useSearchParams().get(PARK_PARAM);
+  const park = fromUrl && parks.some((p) => p.slug === fromUrl) ? fromUrl : null;
+
+  // A DOM write, not state: the list is filtered by CSS and never re-rendered by a pill.
+  useEffect(() => {
+    rootRef.current?.setAttribute('data-news-filter', park ?? '');
+  }, [park, rootRef]);
+
+  const choose = (next: string | null) => {
+    const url = new URL(window.location.href);
+    if (next) url.searchParams.set(PARK_PARAM, next);
+    else url.searchParams.delete(PARK_PARAM);
+    window.history.replaceState(window.history.state, '', url);
+  };
+
+  return (
+    <FilterPills
+      parks={parks}
+      park={park}
+      filterLabel={filterLabel}
+      allLabel={allLabel}
+      onChoose={choose}
+    />
+  );
+}
+
+function FilterPills({
+  parks,
+  park,
+  filterLabel,
+  allLabel,
+  onChoose,
+}: {
+  parks: NewsStreamPark[];
+  park: string | null;
+  filterLabel: string;
+  allLabel: string;
+  onChoose?: (next: string | null) => void;
+}) {
+  return (
+    <div role="group" aria-label={filterLabel} className="mb-8 flex flex-wrap gap-2">
+      <FilterPill pressed={park === null} onClick={() => onChoose?.(null)}>
+        {allLabel}
+      </FilterPill>
+      {parks.map((p) => (
+        <FilterPill key={p.slug} pressed={park === p.slug} onClick={() => onChoose?.(p.slug)}>
+          {p.name}
+          <span className="tabular-nums opacity-70">{p.count}</span>
+        </FilterPill>
+      ))}
     </div>
   );
 }

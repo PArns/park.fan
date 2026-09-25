@@ -104,6 +104,21 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
     posts.map(async (post) => ({ post, park: await resolveNewsPark(post.translationKey) }))
   );
 
+  // The filter's key per park. A bare slug is not unique (`lib/blog/park-resolver.ts`): Paris and
+  // Anaheim both have a `disneyland-park`, and one pill for the two would mix their news. So the
+  // key is the slug where it names one park among the news, and slug plus city where it does not.
+  const hrefsBySlug = new Map<string, Set<string>>();
+  for (const { park } of withParks) {
+    if (!park) continue;
+    const hrefs = hrefsBySlug.get(park.slug) ?? new Set<string>();
+    hrefs.add(park.href);
+    hrefsBySlug.set(park.slug, hrefs);
+  }
+  const filterKey = (park: NewsPark) =>
+    (hrefsBySlug.get(park.slug)?.size ?? 0) > 1
+      ? `${park.slug}-${park.href.split('/').at(-2)}`
+      : park.slug;
+
   // Days, newest first — `listNewsByDate` is already sorted, so a day is a run of equal dates.
   const groups: NewsStreamGroup[] = [];
   for (const { post, park } of withParks) {
@@ -123,7 +138,7 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
     }
     group.items.push({
       key: post.translationKey,
-      park: park?.slug ?? null,
+      park: park ? filterKey(park) : null,
       node: <NewsStreamEntry post={post} park={park} />,
     });
   }
@@ -132,9 +147,10 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
   const parkCounts = new Map<string, NewsStreamPark>();
   for (const { park } of withParks) {
     if (!park) continue;
-    const entry = parkCounts.get(park.slug) ?? { slug: park.slug, name: park.name, count: 0 };
+    const key = filterKey(park);
+    const entry = parkCounts.get(key) ?? { slug: key, name: park.name, count: 0 };
     entry.count += 1;
-    parkCounts.set(park.slug, entry);
+    parkCounts.set(key, entry);
   }
   const parks = [...parkCounts.values()].sort(
     (a, b) => b.count - a.count || a.name.localeCompare(b.name, locale)

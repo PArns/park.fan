@@ -86,7 +86,7 @@ export async function GET(request: Request) {
   // category and tag pages genuinely reshuffle whenever anything is published, so
   // there is nothing here worth a change detector.
   try {
-    const { listPosts, getMetaIndex } = await import('@/lib/blog');
+    const { listPosts, listNewsByDate, getMetaIndex } = await import('@/lib/blog');
     const { buildCategoryTree } = await import('@/lib/blog/categories');
     const { listTags } = await import('@/lib/blog/tags');
     const { categoryPath, NEWS_INDEX_PATH, postPath } = await import('@/lib/blog/paths');
@@ -94,8 +94,9 @@ export async function GET(request: Request) {
 
     for (const locale of locales) {
       urls.push(`${BASE_URL}/${locale}/blog`);
-      // The news overview. It used to arrive through the category tree, which holds articles only.
-      urls.push(`${BASE_URL}/${locale}${NEWS_INDEX_PATH}`);
+      // The news overview, where the locale lists news (it 404s otherwise). It used to arrive
+      // through the category tree, which holds articles only now.
+      if (listNewsByDate(locale).length > 0) urls.push(`${BASE_URL}/${locale}${NEWS_INDEX_PATH}`);
       // Posts — only real translations; EN-fallback URLs canonicalize to the
       // EN original and shouldn't be submitted.
       for (const [, localeMap] of metaIndex) {

@@ -9,7 +9,7 @@ import {
 import { parseRefKey } from './derive.mjs';
 import { normalizeTagSlug } from './tags';
 import type { BlogFrontmatter, BlogListItem } from './types';
-import type { Locale } from '@/i18n/config';
+import { defaultLocale, type Locale } from '@/i18n/config';
 
 /**
  * Reverse index: park slug → the posts about that park, and `parkSlug/rideSlug`
@@ -322,10 +322,23 @@ export function getPostsForPark(
  * lists `disneyland-park` before `disney-adventure-world`, and the first is the resort's name
  * readers look for. Without configuration the best-scored park the post mentions stands in, the
  * same score the park pages rank by. Resolved per post across all translations, like the index.
+ *
+ * "First" is the English translation's order, then the other locales alphabetically. The
+ * translations used to be read in manifest order, so a post whose German `parkLinks` listed the
+ * same parks the other way round than the English could change park with the order the generator
+ * happened to write the files in.
  */
 export function getNewsParkRef(translationKey: string): ManifestParkRef | null {
   const entries = BLOG_POSTS_META.filter(
     (entry) => translationKeyOf(entry.slug, entry.frontmatter) === translationKey
+  ).sort((a, b) =>
+    a.locale === b.locale
+      ? 0
+      : a.locale === defaultLocale
+        ? -1
+        : b.locale === defaultLocale
+          ? 1
+          : a.locale.localeCompare(b.locale)
   );
   if (entries.length === 0) return null;
   const { suppressed, mentions } = collectMentions(entries, 'park');

@@ -12,6 +12,7 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
+import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
@@ -50,7 +51,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
         ...(showBlog
           ? [
               { key: 'blog', href: '/blog', label: t('blog') },
-              ...(newsLabel ? [{ key: 'news', href: '/news', label: newsLabel }] : []),
+              ...(newsLabel ? [{ key: 'news', href: NEWS_INDEX_PATH, label: newsLabel }] : []),
               /*
                 The feed's only visible link on the site. The `<head>` link autodiscovery needs has
                 been there all along, which no person can see and no reader shows you until you

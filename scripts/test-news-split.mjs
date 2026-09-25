@@ -9,6 +9,8 @@
  *   - `listArticles` holds no news post, `listNewsByDate` nothing else, and together they are
  *     `listPosts`
  *   - the category tree has no news branch, and every tag counted for an archive is on an article
+ *   - a tag only news carries is exactly what the proxy 308s from `/blog/tag/…` to `/news`, so an
+ *     archive that disappeared with the split answers a redirect, not a 404
  *   - the blog menu lists articles and no news category, the news menu lists news only
  *
  * Needs the generated manifests: run `pnpm generate:blog-manifest` (or `pnpm prebuild`) first.
@@ -18,17 +20,14 @@
 
 import assert from 'node:assert/strict';
 import { locales } from '../i18n/config.ts';
-import {
-  isNewsPost,
-  listArticles,
-  listNewsByDate,
-  listPosts,
-} from '../lib/blog/listing.ts';
+import { isNewsPost, listArticles, listNewsByDate, listPosts } from '../lib/blog/listing.ts';
 import { buildCategoryTree } from '../lib/blog/categories.ts';
 import { listTags, normalizeTagSlug } from '../lib/blog/tags.ts';
 import { isNewsCategory, postPath } from '../lib/blog/paths.ts';
 import { getBlogMenu } from '../lib/navigation/blog-menu.ts';
 import { getNewsMenu } from '../lib/navigation/news-menu.ts';
+import { NEWS_ONLY_TAGS } from '../lib/blog/news-redirects.ts';
+import { newsRedirect } from '../lib/blog/news-redirects-rule.ts';
 
 let failures = 0;
 let checks = 0;
@@ -84,6 +83,22 @@ for (const locale of locales) {
         (p.frontmatter.tags ?? []).some((t) => normalizeTagSlug(t) === tag.slug)
       ).length;
       assert.equal(tag.count, onArticles, `#${tag.slug}`);
+    }
+  });
+
+  test(`${locale}: the news-only tags are the ones the proxy sends to /news`, () => {
+    const tagsOf = (posts) =>
+      new Set(
+        posts.flatMap((p) => (p.frontmatter.tags ?? []).map(normalizeTagSlug)).filter(Boolean)
+      );
+    const articleTags = tagsOf(articles);
+    const expected = [...tagsOf(news)].filter((slug) => !articleTags.has(slug)).sort();
+    assert.deepEqual([...(NEWS_ONLY_TAGS[locale] ?? [])].sort(), expected);
+    for (const slug of expected) {
+      assert.equal(newsRedirect(`/${locale}/blog/tag/${slug}`), `/${locale}/news`, slug);
+    }
+    for (const tag of listTags(locale)) {
+      assert.equal(newsRedirect(`/${locale}/blog/tag/${tag.slug}`), null, tag.slug);
     }
   });
 
