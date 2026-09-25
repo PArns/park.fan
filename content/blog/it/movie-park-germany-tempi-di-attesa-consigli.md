@@ -116,9 +116,7 @@ La storia più bella degli anni Dieci è quella di montagne russe mai finite. Ne
 2012
 il parco ha presentato al comune di Bottrop i progetti per **montagne russe alte
 45 metri** subito dietro l’ingresso, dieci milioni di euro, apertura nel 2014.
-Le fondamenta sono state gettate. Poi Parques Reunidos ha fermato il progetto,
-perché in Spagna crollavano le presenze. Si è ricostruito solo nel 2017, e
-qualcosa di diverso.
+A settembre 2012 Parques Reunidos ha fermato il progetto, perché in Spagna crollavano le presenze. Su quel prato si è costruito solo nel 2017, e qualcosa di diverso: Star Trek: Operation Enterprise.
 
 Questa preistoria spiega la fama che il Movie Park ha ancora oggi nel mondo delle
 montagne russe. Chi l’ha visitato fra il 2012 e il 2016 ha visto un parco in cui
@@ -730,8 +728,7 @@ La seconda parte fa parte del discorso allo stesso modo, e la dico da persona ch
 ci va volentieri: **i suoi anni migliori questo parco se li è lasciati alle
 spalle.** Erano quelli dell’epoca Warner, quando uno studio ci metteva soldi e
 personaggi, e quello che è venuto dopo è stato in buona parte amministrazione
-dell’esistente. Le ultime montagne russe per adulti sono del 2017, le ultime
-progettate stanno dal 2012 sotto il prato sotto forma di fondamenta, e la novità
+dell’esistente. Le ultime montagne russe per adulti sono del 2017, e la novità
 dell’anno del giubileo è un tunnel cinematografico nell’edificio di
 un’attrazione del 2014.
 
@@ -768,7 +765,7 @@ starà dietro.
 - Van Helsing’s Factory (18 giugno 2011, bobsled Gerstlauer, 400 metri, 36 km/h, 848 persone all’ora, 5 milioni di euro, ex capannone dei Gremlins): [Van Helsing’s Factory su en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
 - Iron Claw (6 aprile 2001 come Eraser, Vekoma SLC, 689 metri, nomi precedenti FX e MP-Xpress): [Iron Claw su rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (ufficiale)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
 - Excalibur – Secrets of the Dark Forest (1996 come La storia infinita, 2005 Mystery River, riapertura il 7 maggio 2018): [Excalibur – Secrets of the Dark Forest su de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River diventa Excalibur (Parkerlebnis, in tedesco)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
-- Montagne russe bloccate per il 2014 (45 metri, dieci milioni di euro, fondamenta gettate): [Progetto di montagne russe fermato (ufficiale, in tedesco)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany progetta montagne russe da 45 metri (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
+- Montagne russe bloccate per il 2014 (45 metri, dieci milioni di euro, subito dietro l’ingresso principale, fermate a settembre 2012; dal 2017 lì c’è Star Trek): [Progetto di montagne russe fermato (ufficiale, archiviato, in tedesco)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Freizeitparkinfos, giugno 2012 (in tedesco)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, febbraio 2016 (in tedesco)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany progetta montagne russe da 45 metri (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
 - Trentesimo anniversario, nuovi spettacoli 2026, Parade of Celebration: [30 anni di storia del parco e del cinema (ufficiale, in tedesco)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [Le novità 2026 (ufficiale)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 anni di Movie Park Germany (Themepark Central, in tedesco)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
 - Halloween Horror Festival 2026 (dal 26 settembre all’8 novembre, 28ª edizione, oltre 300 mostri, quattro scare zone): [Movie Park Halloween (ufficiale)](https://www.movieparkgermany.de/en/halloween) · [Casting dei mostri 2026 (FreizeitparkNEWS, in tedesco)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [la nostra guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026)
 - Le nove case del 2026, di cui Jason Universe è l’unica nuova: [Case dell’orrore (ufficiale)](https://www.movieparkgermany.de/en/halloween/horrorhauser)

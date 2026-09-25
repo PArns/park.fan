@@ -112,10 +112,7 @@ unrenewed and the boat ride closed. The building stood empty for four years.
 The best story from the 2010s is about a roller coaster that never got finished.
 In 2012
 the park presented plans to the city of Bottrop for a **45-metre roller
-coaster** right behind the entrance, ten million euros, opening in 2014. The
-foundations were poured. Then Parques Reunidos stopped the project because
-visitor numbers in Spain were collapsing. Nothing was built again until 2017,
-and it was something else.
+coaster** right behind the entrance, ten million euros, opening in 2014. In September 2012 Parques Reunidos stopped the project because visitor numbers in Spain were collapsing. Nothing was built on that meadow until 2017, and then it was something else: Star Trek: Operation Enterprise.
 
 This backstory explains the reputation Movie Park still has in the coaster
 scene. Anyone who visited between 2012 and 2016 saw a park where little was
@@ -720,9 +717,7 @@ on the continent.
 The second half belongs here just as much, and I say it as somebody who enjoys
 going: **this park’s best years are behind it.** They were in the Warner era,
 when a studio was putting money and characters into it, and what came afterwards
-was largely administration of the existing stock. The last coaster for adults
-came in 2017, the last planned one has been sitting under the grass as a
-foundation since 2012, and the new attraction in the anniversary year is a film
+was largely administration of the existing stock. The last coaster for adults came in 2017, and the new attraction in the anniversary year is a film
 tunnel inside the building of a 2014 ride.
 
 And still, a surprising number of people keep coming back. In
@@ -756,7 +751,7 @@ wants torn down will be lit purple, and with a bit of luck the moon is behind it
 - Van Helsing’s Factory (18 June 2011, Gerstlauer bobsled, 400 metres, 36 km/h, 848 people per hour, 5 million euros, former Gremlins hall): [Van Helsing’s Factory on en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
 - Iron Claw (6 April 2001 as Eraser, Vekoma SLC, 689 metres, earlier names FX and MP-Xpress): [Iron Claw on rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (official)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
 - Excalibur – Secrets of the Dark Forest (1996 as The NeverEnding Story, 2005 Mystery River, reopened 7 May 2018): [Excalibur – Secrets of the Dark Forest on de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River becomes Excalibur (Parkerlebnis, German)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
-- The coaster stopped for 2014 (45 metres, ten million euros, foundations poured): [Roller coaster plans stopped (official, German)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany plans a 45-metre roller coaster (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
+- The coaster stopped for 2014 (45 metres, ten million euros, right behind the main entrance, stopped in September 2012, Star Trek has stood there since 2017): [Roller coaster plans stopped (official, archived, German)](https://web.archive.org/web/20210224180830/https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Freizeitparkinfos, June 2012 (German)](https://www.freizeitparkinfos.de/news/movie-park-germany-plant-fuer-2014-neue-achterbahn) · [Freizeitparkinfos, February 2016 (German)](https://www.freizeitparkinfos.de/news/neu-2017-im-movie-park-germany-eine-achterbahn) · [Movie Park Germany plans a 45-metre roller coaster (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
 - 30th anniversary, new shows in 2026, Parade of Celebration: [30 years of park and film history (official, German)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [What’s new in 2026 (official)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 years of Movie Park Germany (Themepark Central, German)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
 - Halloween Horror Festival 2026 (26 September to 8 November, 28th edition, more than 300 monsters, four scare zones): [Movie Park Halloween (official)](https://www.movieparkgermany.de/en/halloween) · [Monster casting 2026 (FreizeitparkNEWS, German)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [our Halloween guide 2026](/blog/halloween-theme-parks-2026)
 - The nine houses in 2026, of which Jason Universe is the only new one: [Horror mazes (official)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
