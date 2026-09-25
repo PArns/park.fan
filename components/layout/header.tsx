@@ -14,12 +14,12 @@ import {
   CalendarRange,
   ChevronDown,
   Compass,
-  Earth,
   House,
   MapPin,
   Megaphone,
   Menu,
   Newspaper,
+  RollerCoaster,
   type LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -212,7 +212,7 @@ export function Header({
   const mobileMenuOpen = menuOpenedOn === pathname;
   const setMobileMenuOpen = (next: boolean) => setMenuOpenedOn(next ? pathname : null);
   const sheetRef = useSheetReveal(mobileMenuOpen);
-  const latestNews = latestNewsFrom(newsMenu);
+  const latestNews = latestNewsFrom(newsMenu, { excerpt: true });
 
   useEffect(() => {
     // Only hero pages have a transparent-at-the-top header, so only they need the scroll
@@ -784,7 +784,7 @@ export function Header({
                       news menu's own data, so it costs the sheet nothing new. */}
                   {latestNews && (
                     <div data-sheet-stagger>
-                      <LatestNewsChip news={latestNews} twoLines className="w-full text-sm" />
+                      <LatestNewsChip news={latestNews} variant="card" />
                     </div>
                   )}
                   {/* Favorites before the destinations (only the two finds, nearby park and
@@ -819,7 +819,7 @@ export function Header({
                       continent hubs are one tap from the parks that matter. */}
                   <details className="group" data-sheet-stagger>
                     <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
-                      <SheetNavLabel icon={Earth}>{t('explore')}</SheetNavLabel>
+                      <SheetNavLabel icon={RollerCoaster}>{t('explore')}</SheetNavLabel>
                       <ChevronDown
                         className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
                         aria-hidden="true"

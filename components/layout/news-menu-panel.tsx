@@ -67,7 +67,7 @@ export function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
               {lead.title}
             </span>
             {lead.excerpt && (
-              <span className="text-muted-foreground mt-1.5 line-clamp-3 block text-[13px] leading-relaxed">
+              <span className="text-muted-foreground mt-1.5 line-clamp-3 text-[13px] leading-relaxed">
                 {lead.excerpt}
               </span>
             )}
@@ -91,7 +91,7 @@ export function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
                   >
                     <span className="min-w-0 flex-1">
                       <NewsAge date={item.date} />
-                      <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 block text-sm leading-snug font-semibold text-pretty transition-colors">
+                      <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-2 text-sm leading-snug font-semibold text-pretty transition-colors">
                         {item.title}
                       </span>
                     </span>

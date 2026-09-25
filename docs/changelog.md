@@ -4,6 +4,20 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – die News im Handy-Menü als kleine Karte, eine Achterbahn für „Parks entdecken"
+
+Die neueste Meldung oben im Handy-Menü war ein Chip, und in der 300 px breiten Spalte blieben davon
+drei Wörter der Schlagzeile übrig. Jetzt ist sie eine kleine Karte: Label und Datum, die
+Schlagzeile in zwei Zeilen und zwei bis drei Zeilen des Teasers, in kleinerer Schrift als die
+Menüeinträge. Im Hero der Startseite bleibt es der einzeilige Chip neben dem Badge. „Parks
+entdecken" trägt im Handy-Menü eine Achterbahn statt eines Globus.
+
+Nebenbei: In den Header-Panels (Backstage und News) und in `NewsList` griff keine Zeilenbegrenzung.
+Jede stand als `line-clamp-N block` im Code, und `.block` steht im erzeugten CSS hinter
+`.line-clamp-N` und setzt das `display` zurück, das die Begrenzung braucht. Gemessen an der neuen
+Karte: 3 statt 2 Zeilen Schlagzeile, 5 statt 3 Zeilen Teaser. An allen acht Stellen ist das
+`block` jetzt weg, `line-clamp` ist selbst blockartig.
+
 ## Unreleased – die neueste Meldung als Chip auf der Startseite und im Handy-Menü
 
 Neben dem „Parks jetzt geöffnet"-Badge im Hero der Startseite steht die neueste News als Chip
