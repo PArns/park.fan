@@ -406,8 +406,8 @@ Fancast, unser Prognosemodell, rechnet nicht mit Personenzahlen und
 Zugkapazitäten. Es lernt aus der gemessenen Wartezeit-Historie eines Parks, aus
 Schulferien und Feiertagen (auch denen der Nachbarregionen), Wetterprognosen,
 Öffnungszeiten und Sonderevents und schaut derzeit rund ein halbes Jahr voraus.
-Nachfrage und Durchsatz stecken trotzdem in jeder dieser Zahlen, denn eine
-Wartezeit ist am Ende ihr Quotient. Wie oft unsere Prognosen die Realität
+Nachfrage und Durchsatz stecken trotzdem in jeder dieser Zahlen, denn jede
+Wartezeit ist am Ende Little’s Law: die Schlange geteilt durch den Durchsatz. Wie oft unsere Prognosen die Realität
 treffen, steht auf der [Fancast-Seite](/fancast).
 
 ## Warum Peter Pan’s Flight immer „eskaliert“
@@ -547,8 +547,8 @@ dadurch keine Sekunde früher.
 
 Dass sich die Schlange trotzdem in Schüben bewegt statt gleichmäßig, ist
 dieselbe Physik wie beim Autobahnstau, der scheinbar aus dem Nichts entsteht.
-Der Physiker Yuki Sugiyama hat 2008 22 Autos auf eine 230 Meter lange Kreisbahn
-geschickt, mit der Anweisung, gleichmäßig 30 km/h zu fahren. Nach kurzer Zeit
+Der Physiker Yuki Sugiyama hat für eine 2008 veröffentlichte Studie 22 Autos
+auf eine 230 Meter lange Kreisbahn geschickt, mit der Anweisung, gleichmäßig 30 km/h zu fahren. Nach kurzer Zeit
 bildete sich ganz ohne Engpass ein Stop-and-Go-Stau, der rückwärts durch die
 Kolonne lief. MIT-Mathematiker nennen solche sich selbst tragenden Wellen
 „Jamitons“; mathematisch ähneln sie Detonationswellen. In sehr dichten

@@ -609,7 +609,9 @@ al mismo precio para adultos y niños: Bronze 89,90 €, Silber 135,90 €, Gold
 155,90 € y Platin 179,90 €. Lo que se vende ahora ya es el pase de 2027, válido
 desde el día de compra hasta el **7 de noviembre de 2027**. Quien lo compra ahora
 tiene, por tanto, el resto de esta temporada, a partir de Silber con todas las
-noches de Halloween y con Hollywood Christmas 2026, y después toda la temporada 2027. Los pasajes del terror se pagan aparte también con pase. Quien ya tiene un pase de 2026 y lo
+noches de Halloween y con Hollywood Christmas 2026, y después toda la
+temporada 2027. Los pasajes del terror se pagan aparte también con pase. Quien ya
+tiene un pase de 2026 y lo
 renueva paga 15 € menos en cada nivel en la taquilla de información; en línea no
 hay ese descuento.
 

@@ -398,8 +398,8 @@ rekent niet met aantallen personen of treincapaciteit. Het leert van de gemeten
 wachttijdgeschiedenis van een park, van schoolvakanties en feestdagen (ook die
 van naburige regio’s), weersvoorspellingen, openingstijden en evenementen, en
 kijkt op dit moment zo’n half jaar vooruit. Vraag en doorstroom zitten
-desondanks in elk van die getallen, want een wachttijd is uiteindelijk hun
-quotiënt. Hoe vaak onze voorspellingen de realiteit raken, staat op de
+desondanks in elk van die getallen, want elke wachttijd is uiteindelijk
+Little’s Law: de rij gedeeld door de doorstroom. Hoe vaak onze voorspellingen de realiteit raken, staat op de
 [Fancast-pagina](/fancast).
 
 ## Waarom Peter Pan’s Flight altijd “escaleert”
@@ -538,8 +538,8 @@ vooraan kom je er geen seconde eerder door aan.
 
 Dat de rij toch met schokken vooruitgaat in plaats van gelijkmatig, is dezelfde
 fysica als bij de file op de snelweg die uit het niets lijkt te ontstaan.
-Natuurkundige Yuki Sugiyama liet in 2008 22 auto’s rondrijden op een cirkelbaan
-van 230 meter, met de opdracht gelijkmatig 30 km/u te rijden. Al snel vormde
+Voor een studie uit 2008 liet natuurkundige Yuki Sugiyama 22 auto’s rondrijden
+op een cirkelbaan van 230 meter, met de opdracht gelijkmatig 30 km/u te rijden. Al snel vormde
 zich zonder enig knelpunt een stop-and-go-file die achterwaarts door de colonne
 liep. MIT-wiskundigen noemen zulke zichzelf in stand houdende golven
 “jamitons”; wiskundig lijken ze op detonatiegolven. Ook in heel dichte

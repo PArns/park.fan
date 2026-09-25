@@ -483,7 +483,7 @@ to a bratwurst.
 [Heide-Park](ref:heide-park?full)
 
 Current dates and age ratings:
-[heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
+[heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
 
 The rest of the season in Soltau, from Colossos to the quietest weekday, is in
 the [Heide Park guide](/blog/heide-park-wait-times-tips).

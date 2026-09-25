@@ -489,7 +489,7 @@ iedereen rijdt overdag samen achtbaan, en wie oud en dapper genoeg is, verdwijnt
 [Heide-Park](ref:heide-park?full)
 
 Actuele data en leeftijdsindicaties:
-[heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
+[heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
 
 De rest van het seizoen in Soltau, van Colossos tot de rustigste weekdag, staat
 in de [Heide-Park-gids](/blog/heide-park-wachttijden-tips).

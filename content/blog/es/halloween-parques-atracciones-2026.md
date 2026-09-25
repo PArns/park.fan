@@ -495,7 +495,7 @@ resto se aferra a una salchicha.
 [Heide-Park](ref:heide-park?full)
 
 Fechas actuales y edades permitidas:
-[heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
+[heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
 
 El resto de la temporada en Soltau, de Colossos al día más tranquilo de la
 semana, está en la [guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos).

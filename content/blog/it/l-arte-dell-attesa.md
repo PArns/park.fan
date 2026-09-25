@@ -405,8 +405,8 @@ calcola con numeri di persone o capacità dei treni. Impara dalla storia misurat
 dei tempi di attesa di un parco, dalle vacanze scolastiche e dai giorni festivi
 (anche quelli delle regioni vicine), dalle previsioni meteo, dagli orari di
 apertura e dagli eventi, e al momento guarda avanti di circa sei mesi. Domanda e
-portata stanno comunque dentro ognuno di quei numeri, perché un tempo di attesa
-è alla fine il loro quoziente. Quanto spesso le nostre previsioni colgano la
+portata stanno comunque dentro ognuno di quei numeri, perché ogni tempo di attesa
+è alla fine la legge di Little: la coda divisa per la portata. Quanto spesso le nostre previsioni colgano la
 realtà sta sulla [pagina di Fancast](/fancast).
 
 ## Perché Peter Pan’s Flight “esplode” sempre

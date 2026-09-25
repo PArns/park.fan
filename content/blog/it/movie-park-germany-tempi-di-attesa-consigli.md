@@ -606,7 +606,9 @@ livelli, allo stesso prezzo per adulti e bambini: Bronze 89,90 €, Silber
 135,90 €, Gold 155,90 € e Platin 179,90 €. Quello in vendita adesso è già
 l’abbonamento 2027, valido dal giorno dell’acquisto fino al **7 novembre 2027**.
 Chi compra ora ha quindi il resto di questa stagione, da Silber in su con tutte
-le serate di Halloween e con Hollywood Christmas 2026, e poi tutta la stagione 2027. Le case dell’orrore si pagano a parte anche con l’abbonamento. Chi ha già un abbonamento 2026 e lo
+le serate di Halloween e con Hollywood Christmas 2026, e poi tutta la
+stagione 2027. Le case dell’orrore si pagano a parte anche con l’abbonamento. Chi
+ha già un abbonamento 2026 e lo
 rinnova paga 15 € in meno per ogni livello alla cassa informazioni; online lo
 sconto non c’è.
 

@@ -402,7 +402,8 @@ historial medido de tiempos de espera de un parque, de las vacaciones escolares
 y los festivos (también los de las regiones vecinas), de las previsiones del
 tiempo, los horarios y los eventos, y ahora mismo mira unos seis meses hacia
 delante. La demanda y el rendimiento están aun así en cada una de esas cifras,
-porque un tiempo de espera es, al final, su cociente. Con qué frecuencia
+porque todo tiempo de espera es, al final, la ley de Little: la cola dividida
+entre el rendimiento. Con qué frecuencia
 aciertan nuestras predicciones está en la [página de Fancast](/fancast).
 
 ## Por qué Peter Pan’s Flight siempre «se desmadra»

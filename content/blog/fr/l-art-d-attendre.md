@@ -416,8 +416,9 @@ effectifs ou des capacités de trains. Il apprend de l’historique mesuré des
 temps d’attente d’un parc, des vacances scolaires et des jours fériés (y
 compris ceux des régions voisines), des prévisions météo, des horaires
 d’ouverture et des événements, et voit actuellement environ six mois à l’avance.
-La demande et le débit sont pourtant dans chacun de ces chiffres, puisqu’un
-temps d’attente est au bout du compte leur quotient. La fréquence à laquelle
+La demande et le débit sont pourtant dans chacun de ces chiffres, puisque
+tout temps d’attente relève au bout du compte de la loi de Little : la file
+divisée par le débit. La fréquence à laquelle
 nos prévisions collent à la réalité figure sur la [page Fancast](/fancast).
 
 ## Pourquoi Peter Pan’s Flight « déraille » toujours

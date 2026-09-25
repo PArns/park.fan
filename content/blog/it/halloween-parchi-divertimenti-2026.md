@@ -495,7 +495,7 @@ una salsiccia.
 [Heide-Park](ref:heide-park?full)
 
 Date attuali e limiti d’età:
-[heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
+[heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
 
 Il resto della stagione a Soltau, da Colossos al giorno più tranquillo della
 settimana, sta nella [guida dell’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).

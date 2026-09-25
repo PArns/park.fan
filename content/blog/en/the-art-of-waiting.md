@@ -396,7 +396,8 @@ head counts or train capacities either. It learns from a park’s measured
 wait-time history, from school and public holidays (including those of
 neighbouring regions), weather forecasts, opening hours and special events, and
 currently looks about six months ahead. Demand and throughput are still in
-every one of those numbers, because a wait time is their quotient in the end.
+every one of those numbers, because every wait is Little’s Law in the end: the
+queue divided by the throughput.
 How often our forecasts match reality is on the [Fancast page](/fancast).
 
 ## Why Peter Pan’s Flight always “escalates”

@@ -140,5 +140,4 @@ Programm und Termine: [disneylandparis.com → Halloween](https://www.disneyland
 
 — Patrick
 
-> [!CORRECTION]
-> 25. September 2026: In der ersten Fassung stand, der Park nenne die Kostümregeln für den 31. Oktober erst noch. Sie standen da schon auf seiner Halloween-Seite und sind jetzt im Text. Für Jack und Sally trägt dich auch ein Cast Member vor Ort in die virtuelle Warteschlange ein, nicht nur die App. Den Satz, der Eintritt koste am 31. Oktober mehr als an den übrigen Festivaltagen, haben wir gestrichen, weil wir ihn nicht belegen konnten.
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, der Park nenne die Kostümregeln für den 31. Oktober erst noch. Sie standen da schon auf seiner Halloween-Seite und sind jetzt im Text. Für Jack und Sally trägt dich auch ein Cast Member vor Ort in die virtuelle Warteschlange ein, nicht nur die App. Den Satz, der Eintritt koste am 31. Oktober mehr als an den übrigen Festivaltagen, haben wir gestrichen, weil wir ihn nicht belegen konnten.

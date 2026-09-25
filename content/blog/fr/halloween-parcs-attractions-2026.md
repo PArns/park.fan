@@ -508,7 +508,7 @@ que les autres s’accrochent à une saucisse grillée.
 [Heide-Park](ref:heide-park?full)
 
 Dates actuelles et âges autorisés :
-[heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
+[heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
 
 Le reste de la saison à Soltau, de Colossos au jour le plus calme, se trouve
 dans le [guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).

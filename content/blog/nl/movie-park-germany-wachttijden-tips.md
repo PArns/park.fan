@@ -611,7 +611,8 @@ Ze horen net als Movie Park allemaal bij Parques Reunidos, en omdat EQT het
 concern in zijn geheel wil verkopen, blijven het ook na een verkoop zusterparken.
 
 Daarbij komt de **Bonus Club**, die ook alleen bij Gold en Platin hoort. De
-aanbiedingen voor 2027 publiceert het park pas bij het begin van het seizoen 2027. De lijst voor 2026 laat zien wat erin kan zitten:
+aanbiedingen voor 2027 publiceert het park pas bij het begin van het
+seizoen 2027. De lijst voor 2026 laat zien wat erin kan zitten:
 
 - **Eén keer gratis entree** per kalenderjaar in de [Efteling](ref:efteling). Een
   ticket zonder vaste datum kost daar € 56, ruim een derde van de Gold-pas.
