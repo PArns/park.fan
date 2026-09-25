@@ -1909,6 +1909,7 @@
     "readMore": "Artikel lezen",
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
+    "correction": "Correctie",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
       "fallback": "Nog niet vertaald – je ziet de {language}-versie."

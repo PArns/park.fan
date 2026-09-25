@@ -530,6 +530,34 @@ https://www.instagram.com/reel/CxYz123/
 - **Suno**: full song URLs (`suno.com/song/<id>`) become an audio player. Short
   share links (`suno.com/s/<code>`) aren't embeddable — use the full song URL.
 
+### Callouts, and the correction note
+
+GitHub-style alerts render as boxes: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`,
+`> [!WARNING]` and `> [!CAUTION]` ([`lib/blog/remark-callouts.ts`](../../lib/blog/remark-callouts.ts)).
+
+`> [!CORRECTION]` is ours. When a published post gets a factual fix, the fix is
+shown, not made silently, and the note goes **under the signature**, before the
+rule that opens the sources list:
+
+<!-- A `text` fence, not `md`: Prettier formats a Markdown fence and would pull the
+     date up onto the marker line, which is not how a post writes it. -->
+
+```text
+— Patrick
+
+> [!CORRECTION]
+> 25. September 2026: In der ersten Fassung stand, die Gratis-Eintritte für 2027
+> seien noch offen. Sie gehören schon zum Pass für 2027.
+
+---
+```
+
+It renders as a quiet grey box with an icon and its own translated label
+(`blog.correction`: „Korrektur", "Correction", …), set upright, not in italics.
+So the text starts with the date and does not repeat the word. Say what was wrong
+and what is right. Typos and a replaced dead link need no note; a changed fact
+does. The rule behind it: [a correction is shown, never silent](../../docs/rules/a-correction-is-shown-never-silent.md).
+
 ---
 
 ## 7. Niceties (automatic — nothing to write)

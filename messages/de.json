@@ -1909,6 +1909,7 @@
     "readMore": "Artikel lesen",
     "readingTime": "{minutes} Min. Lesezeit",
     "updatedOn": "Aktualisiert {date}",
+    "correction": "Korrektur",
     "languageNotice": {
       "available": "Diesen Artikel gibt es auch auf {language}",
       "fallback": "Noch nicht übersetzt – du siehst die Version auf {language}."

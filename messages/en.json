@@ -1909,6 +1909,7 @@
     "readMore": "Read article",
     "readingTime": "{minutes} min read",
     "updatedOn": "Updated {date}",
+    "correction": "Correction",
     "languageNotice": {
       "available": "This article is also available in {language}",
       "fallback": "Not translated yet — showing the {language} version."
