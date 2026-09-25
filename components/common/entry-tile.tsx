@@ -57,19 +57,34 @@ export function EntryTileBody({
           and never on the tile itself: the box carries `backdrop-blur-md`, and a transform on a
           backdrop-filtered element (or any ancestor) makes it a backdrop root and flattens the
           blur for the length of the animation. */}
-      <span data-tile-stagger className={cn(entryTileChip, chipClassName)}>
+      {/* Below `sm` the tile is a third of the row (`tileRowPhone`), 109 px wide at 360 px. A
+          chip beside the label took 46 px of that and left ~63 px, and words were cut mid-word
+          at the cell edge („Attraktione", „Restaurant") — 18 labels over six locales on the park
+          and Taron rows. So on a phone there is no chip: the label alone, in `text-xs`, clamped
+          to its two reserved lines, and no hint. The selected cell keeps the bar and the tint. */}
+      <span data-tile-stagger className={cn(entryTileChip, 'max-sm:hidden', chipClassName)}>
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <span data-tile-stagger data-tile-label className="text-sm leading-tight font-semibold">
+      <span
+        data-tile-stagger
+        data-tile-label
+        className="text-sm leading-tight font-semibold max-sm:line-clamp-2 max-sm:min-w-0 max-sm:text-xs"
+      >
         {label}
         {count !== undefined && (
-          <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
+          <>
+            {/* The label and the count are adjacent inline boxes with no space between them, so
+                without this there is no place to break: in a third of a 390 px row „Attraktionen"
+                fills the line and the count was pushed past the edge and clipped. */}
+            <wbr />
+            <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
+          </>
         )}
       </span>
       {hint !== undefined && (
         <span
           data-tile-stagger
-          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug"
+          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug max-sm:hidden"
         >
           {hint}
         </span>

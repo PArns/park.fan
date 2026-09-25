@@ -9,6 +9,7 @@ import {
   EntryTileBody,
   ParkTileGrid,
   SelectionBar,
+  phoneLastCellSpan,
   activeCell,
   activeChip,
   tileCell,
@@ -74,7 +75,8 @@ export function ParkNavTiles({
 
   return (
     <ParkTileGrid tileCount={tileCount} parkSlug={parkSlug}>
-      {items.map((item) => {
+      {items.map((item, index) => {
+        const span = phoneLastCellSpan(index, tileCount);
         const isCurrent = item.key === current;
         // Two of the cells are pages of their own; the rest are chapters of the park page, whose
         // tab router activates one from the hash on arrival, so the link lands on the right tab
@@ -104,7 +106,7 @@ export function ParkNavTiles({
           <span
             key={item.key}
             aria-current="page"
-            className={cn('group', item.order, tileCell, activeCell)}
+            className={cn('group', item.order, tileCell, activeCell, span)}
           >
             <SelectionBar />
             {body}
@@ -113,7 +115,7 @@ export function ParkNavTiles({
           <Link
             key={item.key}
             href={href}
-            className={cn('group', item.order, tileCell)}
+            className={cn('group', item.order, tileCell, span)}
             // Every cell here leaves the page, and the row is on the page it leads to as well —
             // so none of them may go to the top. The recorded offset then puts the row back on
             // the pixel. `getPathname` because `ScrollToTop` compares against

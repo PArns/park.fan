@@ -106,10 +106,35 @@ export const tileCell = cn(
   // and the calendar cell rendered white, and the row read as if the calendar were selected too.
   // All six labels carry the same weight now: they are six equally valid destinations, and the
   // selected one is marked by the bar, the filled chip and the tint rather than by being the only
-  // legible one.
+  // legible one. Below `sm` there is no chip, so the bar and the tint carry it alone.
   'text-foreground dark:text-foreground',
-  'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50'
+  'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50',
+  // Phone: a third of the row. The label alone, chip and hint hidden (`EntryTileBody`) — 47 px
+  // against the 148 px the stacked cell took. `min-h-11` holds the 44 px a touch target needs where the label
+  // has no reserved second line: the ride row, whose lone „FAQ" cell measured 41 px without it.
+  'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2 max-sm:min-h-11'
 );
+
+/**
+ * The row on a phone: three columns instead of two, and no second line in the cells.
+ *
+ * Two columns put seven cells in four rows, 596 px on Phantasialand at 390 × 664 — most of the
+ * first screen, and the seventh cell alone in the last row. Three columns of 47 px cells are
+ * three rows and 141 px. Both rows use it, the park's (`ParkTileGrid`) and the ride's
+ * (`RideNavTiles`); from `sm` up the grids are unchanged.
+ */
+export const tileRowPhone = 'max-sm:grid-cols-3';
+
+/**
+ * The span of the LAST cell on a phone, so the three-column row never ends on an empty cell: one
+ * cell left over takes the whole row, two share it. The last item of both rows' item lists is
+ * also the visually last cell — the park row's `order` classes reproduce the list order.
+ */
+export function phoneLastCellSpan(index: number, count: number): string | undefined {
+  if (index !== count - 1) return undefined;
+  const rest = count % 3;
+  return rest === 1 ? 'max-sm:col-span-3' : rest === 2 ? 'max-sm:col-span-2' : undefined;
+}
 
 /**
  * The selected cell's bar, along its top edge.
@@ -436,6 +461,7 @@ export function ParkTileGrid({
         // the panel's own column band does one row up. No `gap`: the cells touch and the rules
         // between them are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
+        tileRowPhone,
         // Every label holds two lines, wrapped or not. „Wartezeiten-Kalender" sits at the edge of
         // its cell: one line in „Geist Fallback", two in Geist. On a first visit the row painted
         // at 132 px and grew to 148 px when the web font arrived (~440 ms), and with
