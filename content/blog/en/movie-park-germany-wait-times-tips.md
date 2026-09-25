@@ -629,8 +629,8 @@ The park will only publish its 2027 offers at the start of the 2027 season. The
   Belantis, Fort Fun and Schwaben Park.
 
 The 2026 list had its catches too. Every benefit required the final plastic card
-with the photo and could not be combined with other offers, Slagharen excluded
-Aqua Mexicana, and Tropical Islands was off limits on Saturdays, on public
+with the photo and could not be combined with other offers, the Slagharen visits
+left out Aqua Mexicana, and Tropical Islands was off limits on Saturdays, on public
 holidays and during the school holidays in Berlin, Brandenburg and Saxony.
 
 The pass itself has three things in the small print:
