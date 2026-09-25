@@ -94,6 +94,16 @@ interface ParkPageShellProps {
    * or not it rendered one.
    */
   faqSection?: React.ReactNode;
+  /**
+   * The park's long-range crowd outlook, rendered between the statistics and the seasons.
+   *
+   * A slot for the same reason as {@link blogSection}: one page of the park renders it, and what
+   * the shell imports at module scope, every route that uses it pays for in routed translations.
+   * Its place in the order is the argument the chapter makes — the statistics say what the park
+   * has been, the outlook what the forecast expects, and the seasons what is already on the
+   * calendar.
+   */
+  outlookSection?: React.ReactNode;
 }
 
 /**
@@ -144,6 +154,7 @@ export async function ParkPageShell({
   hideStats = false,
   blogSection,
   faqSection,
+  outlookSection,
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
@@ -227,6 +238,8 @@ export async function ParkPageShell({
           {blogSection}
 
           {statsAfterChildren ? null : stats}
+
+          {outlookSection}
 
           {/* What is on at this park. Hand-researched, day-stable, and its own request rather than
             a field on the park: the park payload is re-polled every five minutes and a season

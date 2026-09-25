@@ -969,6 +969,11 @@
       "bestTimeLink": "Beste Reisezeit über alle Parks",
       "viewCalendarLink": "Vollständigen Crowd-Kalender ansehen"
     },
+    "yearlyOutlook": {
+      "title": "Die nächsten zwölf Monate",
+      "hint": "Was die Prognose erwartet, Tag für Tag, zu Monaten zusammengefasst.",
+      "recommendedDays": "{count}/{total} empfohlen"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Gering",
