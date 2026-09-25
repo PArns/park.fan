@@ -13,7 +13,7 @@
  */
 
 import {
-  DRAG_SNAP_MIN_FINE,
+  DRAG_SNAP_MIN,
   GATE_TO_FIRST_RIDE_MIN,
   MIN_BLOCK_MIN,
   MIN_BLOCK_PX,
@@ -404,12 +404,12 @@ test('snapTo rounds up past the midpoint', snapTo(608, SNAP_MIN_FINE), 615);
 // arithmetic still lands on a quarter hour. Both halves matter — a change that
 // made `SNAP_MIN_FINE` five would pass a test of the drag alone and would move
 // every computed start in the planner with it.
-test('a mouse drag commits to a five', snapTo(607, DRAG_SNAP_MIN_FINE), 605);
-test('…and rounds up past that midpoint', snapTo(608, DRAG_SNAP_MIN_FINE), 610);
+test('a drag commits to a five', snapTo(607, DRAG_SNAP_MIN), 605);
+test('…and rounds up past that midpoint', snapTo(608, DRAG_SNAP_MIN), 610);
 test('…and the quarter hour is still the quarter hour', SNAP_MIN_FINE, 15);
 test(
   'the drag step divides into it, so every quarter hour is reachable',
-  SNAP_MIN_FINE % DRAG_SNAP_MIN_FINE,
+  SNAP_MIN_FINE % DRAG_SNAP_MIN,
   0
 );
 // `latestStart` is one of `SNAP_MIN_FINE`'s clamp call sites and the one a drag

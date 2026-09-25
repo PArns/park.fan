@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
-  DRAG_SNAP_MIN_FINE,
+  DRAG_SNAP_MIN,
   MIN_BLOCK_MIN,
   SNAP_MIN_COARSE,
   SNAP_MIN_FINE,
@@ -133,19 +133,6 @@ const LIVE_WINDOW_MIN = 45;
 
 /** Five minutes, like every displayed wait in this app. */
 const RESIZE_STEP_MIN = 5;
-
-/**
- * The step a drag commits to.
- *
- * A property of the POINTER, not of the grid, so it is asked at the moment of
- * the gesture: a laptop with a touchscreen answers differently depending on
- * which of its two inputs is in the visitor's hand, and a value captured at
- * render would answer for the other one. Both call sites — a block being moved
- * and a ride being dropped in from the list — go through here so they cannot
- * drift apart; they were two copies of this ternary.
- */
-const dragStep = () =>
-  matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : DRAG_SNAP_MIN_FINE;
 
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
@@ -522,7 +509,7 @@ export function PlannerDayGrid({
       const raw = minuteAt(grid, clientY - canvas.getBoundingClientRect().top);
       return clampStart(
         grid,
-        snapTo(raw, dragStep()),
+        snapTo(raw, DRAG_SNAP_MIN),
         Math.max(grid.openMin, floorMin ?? grid.openMin)
       );
     },
@@ -598,7 +585,7 @@ export function PlannerDayGrid({
       const top = canvas.getBoundingClientRect().top;
       const raw = minuteAt(grid, state.lastClientY - top - state.grabOffsetPx);
       if (!snap) return clampStart(grid, Math.round(raw), state.floorMin);
-      return clampStart(grid, snapTo(raw, dragStep()), state.floorMin);
+      return clampStart(grid, snapTo(raw, DRAG_SNAP_MIN), state.floorMin);
     },
     [grid]
   );
@@ -891,9 +878,9 @@ export function PlannerDayGrid({
    * The `step` of each block's range input, which is the ARROW-KEY step.
    *
    * It carried the drag's step as well until PAR-307, under the name `snapStep`,
-   * and that is why it still reads the pointer: half an hour is the right arrow
-   * key on a phone for the same reason it is the right drag there. What it must
-   * NOT become is {@link DRAG_SNAP_MIN_FINE} — five minutes is a good step for a
+   * and that is why it still reads the pointer: half an hour on a phone, where
+   * the drag was half an hour too until it moved to fives. What it must
+   * NOT become is {@link DRAG_SNAP_MIN} — five minutes is a good step for a
    * hand moving a block over a distance it can see, and a bad one for a key that
    * has to be pressed once per step to cross a day. So the fine branch stays at
    * the quarter hour the keyboard has always had, and this is now the only place

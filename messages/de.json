@@ -2461,6 +2461,11 @@
       "progress": "Fortschritt",
       "nextUp": "Danach geht es zu {park}. Dort ziehst du Fahrten aus der Liste in den Tag."
     },
+    "pastDay": {
+      "title": "Dein geplanter Tag ist vorbei",
+      "body": "{park}, {date}. Willst du dir den Tag noch einmal ansehen oder einen neuen planen?",
+      "view": "Vergangenen Tag ansehen"
+    },
     "party": {
       "add": "Wer kommt mit?",
       "tooShort": "Mindestgröße höher als die kleinste Person im Plan",

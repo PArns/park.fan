@@ -2461,6 +2461,11 @@
       "progress": "Progreso",
       "nextUp": "Después vamos a {park}. Allí arrastras atracciones de la lista al día."
     },
+    "pastDay": {
+      "title": "Tu día planificado ya pasó",
+      "body": "{park}, {date}. ¿Quieres volver a ver ese día o planificar uno nuevo?",
+      "view": "Ver el día pasado"
+    },
     "party": {
       "add": "¿Quién viene?",
       "tooShort": "Altura mínima superior a la de la persona más baja del plan",

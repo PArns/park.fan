@@ -17,6 +17,7 @@ import {
   formatGridTime,
   nextPlannedDay,
   parkMinuteNow,
+  pastActiveDay,
   parkToday,
   resolveTimeZone,
   todayInZone,
@@ -206,6 +207,46 @@ test(
   )?.parkSlug,
   'a-park'
 );
+
+// ── The day the launcher would open on, when it is over ─────────────────────
+// What the edge tab and the header button ask before they open the panel. At
+// ACROSS_MIDNIGHT Berlin is on the 4th and New York still on the 3rd.
+{
+  const active = (trip, slug, date) => ({ ...trip, activeParkSlug: slug, activeDate: date });
+  const trip = plan(
+    park('phantasialand', 'Europe/Berlin', [
+      ['2026-09-03', 3],
+      ['2026-09-02', 0],
+    ]),
+    park('magic-kingdom', 'America/New_York', [['2026-09-03', 2]])
+  );
+  test(
+    'yesterday in Berlin is over',
+    pastActiveDay(active(trip, 'phantasialand', '2026-09-03'), ACROSS_MIDNIGHT)?.date,
+    '2026-09-03'
+  );
+  test(
+    '…and names its park for the question',
+    pastActiveDay(active(trip, 'phantasialand', '2026-09-03'), ACROSS_MIDNIGHT)?.parkName,
+    'phantasialand'
+  );
+  test(
+    'the same date is still today in New York',
+    pastActiveDay(active(trip, 'magic-kingdom', '2026-09-03'), ACROSS_MIDNIGHT),
+    null
+  );
+  test(
+    'a past day with nothing in it asks nothing',
+    pastActiveDay(active(trip, 'phantasialand', '2026-09-02'), ACROSS_MIDNIGHT),
+    null
+  );
+  test('no active day asks nothing', pastActiveDay(trip, ACROSS_MIDNIGHT), null);
+  test(
+    'an active park the plan no longer holds asks nothing',
+    pastActiveDay(active(trip, 'europa-park', '2026-09-01'), ACROSS_MIDNIGHT),
+    null
+  );
+}
 
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;

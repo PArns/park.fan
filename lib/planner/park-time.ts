@@ -239,3 +239,36 @@ export function nextPlannedDay(
 
   return best;
 }
+
+export interface PastActiveDay {
+  parkSlug: string;
+  parkName: string;
+  date: string;
+}
+
+/**
+ * The day the panel would open on, if that day is already over.
+ *
+ * The panel always opens on the ACTIVE day, which is whatever the visitor last
+ * looked at, and after a trip that is the trip: a click on the planner the
+ * morning after opened yesterday's plan, ticked or not, and a new day was two
+ * steps further (the overview, then „Neuen Tag planen"). The two ways in that
+ * name no day — the edge tab and the header button — ask this first and put
+ * the choice to the visitor instead.
+ *
+ * Only a day with something in it counts. `openDay` registers a date the
+ * moment a calendar day is pressed, with no entry, and a question about
+ * „your planned day" over an empty one would be about nothing.
+ *
+ * Past in the PARK's zone, for the reason {@link nextPlannedDay} gives: a plan
+ * for Magic Kingdom is not over at midnight in Berlin.
+ */
+export function pastActiveDay(state: PlannerState, now: number = Date.now()): PastActiveDay | null {
+  const { activeParkSlug, activeDate } = state;
+  if (!activeParkSlug || !activeDate) return null;
+  const park = state.parks[activeParkSlug];
+  const day = park?.days[activeDate];
+  if (!park || !day || day.entries.length === 0) return null;
+  if (activeDate >= todayInZone(park.timezone, now)) return null;
+  return { parkSlug: park.slug, parkName: park.name, date: activeDate };
+}

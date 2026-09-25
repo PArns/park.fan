@@ -2461,6 +2461,11 @@
       "progress": "Progress",
       "nextUp": "Then on to {park}, where you drag rides from the list into the day."
     },
+    "pastDay": {
+      "title": "Your planned day is over",
+      "body": "{park}, {date}. Look at that day again, or plan a new one?",
+      "view": "View past day"
+    },
     "party": {
       "add": "Who’s coming?",
       "tooShort": "Minimum height above the smallest person in the plan",

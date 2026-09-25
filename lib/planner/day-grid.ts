@@ -26,10 +26,9 @@ import type { DayClock } from './park-time';
  *
  * Chosen from content rather than from a viewport: a 40-minute queue — the
  * common headliner figure — is 48 px, which is two lines of `text-sm` plus a
- * `text-[10px]` meta line and 6 px of padding; the drag step a FINGER gets
- * ({@link SNAP_MIN_COARSE}) is 36 px here, comfortably above touch tolerance,
- * and a mouse's {@link DRAG_SNAP_MIN_FINE} is 6 px, which is a step a pointer
- * with sub-pixel resolution can aim at. Deriving it from a container's height would
+ * `text-[10px]` meta line and 6 px of padding; the drag step
+ * ({@link DRAG_SNAP_MIN}) is 6 px here, which is a step a pointer with
+ * sub-pixel resolution can aim at, and 9 px on the phone's axis. Deriving it from a container's height would
  * be a measurement arriving after paint, i.e. a resize of the whole grid on
  * every open, so it is a constant per pointer class and not a function of the
  * box.
@@ -110,15 +109,19 @@ export const CLOSE_SLACK_MIN = 60;
  *
  * It was the drag's step too until PAR-307, and that is the one thing it is no
  * longer: a pointer has a resolution of its own and does not have to agree with
- * the grid the optimiser plans on. {@link DRAG_SNAP_MIN_FINE} is that step now.
+ * the grid the optimiser plans on. {@link DRAG_SNAP_MIN} is that step now.
  */
 export const SNAP_MIN_FINE = 15;
 
-/** 36 px. Fifteen minutes under a finger reads as jitter, not as a choice. */
+/**
+ * The arrow-key step of a block on a coarse pointer, and nothing else since the
+ * drag stopped using it (see {@link DRAG_SNAP_MIN}). 54 px on the phone's axis.
+ */
 export const SNAP_MIN_COARSE = 30;
 
 /**
- * What a drag with a mouse or trackpad commits to. Five minutes, 6 px here.
+ * What a drag commits to, under a mouse and under a finger. Five minutes, 6 px
+ * here and 9 px on the phone's axis.
  *
  * Five because that is the resolution every displayed wait in this app already
  * has, so a block dropped on a five is on a minute the rest of the panel can
@@ -131,11 +134,16 @@ export const SNAP_MIN_COARSE = 30;
  * saying a minute out loud, while `nowFloor` and the optimiser are rounding one
  * they computed, and the quarter hour is what those round to.
  *
- * There is no coarse twin of this constant on purpose. Under a finger the step
- * stays {@link SNAP_MIN_COARSE} — the reason for the half hour there is the
- * contact patch, which a smaller number makes worse rather than better.
+ * A finger had a step of its own until it was asked for in so many words („das
+ * ich auf mobile in 5 min raster verschieben kann"): half an hour, on the
+ * theory that a smaller step under a sliding contact patch reads as jitter. It
+ * also meant a phone could only drag a block onto :00 or :30, while every
+ * wait, walk and show in the same panel is counted in fives. The step is the
+ * same for both pointers now; what a finger lands on is where it lets go, and
+ * the ±15 buttons in the action row are still there for a start that has to be
+ * exact without a gesture.
  */
-export const DRAG_SNAP_MIN_FINE = 5;
+export const DRAG_SNAP_MIN = 5;
 
 /**
  * The smallest BOX a block may occupy — not a claim about its height.

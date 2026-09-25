@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { PlannerFlyoutHost } from './planner-launcher-button';
 import { PlannerEdgeTab } from './planner-edge-tab';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { trackPlannerOpened } from '@/lib/analytics/umami';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
+import { pastActiveDay } from '@/lib/planner/park-time';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 
@@ -42,7 +43,7 @@ const PLANNER_NAMESPACES = ['planner', 'parks.weather'] as const;
  * part of the feature with no box to reserve.
  */
 export function PlannerLauncher() {
-  const { total } = usePlanner();
+  const { total, state } = usePlanner();
   // A counter, not a boolean: two requests in a row are two events, and the
   // server snapshot is 0 so this is never in the first HTML.
   const openRequests = useSyncExternalStore(
@@ -56,18 +57,56 @@ export function PlannerLauncher() {
     plannerPanelWidth.getServerSnapshot
   );
   const [open, setOpen] = useState(false);
+  /**
+   * Whether the past-day question is on screen instead of the panel.
+   *
+   * Held here because this is where the two ways in that name no day arrive,
+   * and drawn by the panel (`PlannerFlyout`), because the question is asked in
+   * the `planner` namespace and its „Neuen Tag planen" is the panel's wizard.
+   * This file is a lazy message boundary and may not read that namespace
+   * itself — see `PlannerFlyoutHost`.
+   */
+  const [askingPastDay, setAskingPastDay] = useState(false);
 
-  // Something outside the panel asked for it — a day picked in the park
-  // calendar. An effect is right here and a render-time branch is not: the
-  // request arrives from another component's event, and the panel must reopen on
-  // a SECOND request after the visitor has closed it, which is why the counter
-  // is compared against the last one seen rather than against zero.
+  /**
+   * The planner's own button was pressed: open it, unless it would open on a
+   * day that is over.
+   *
+   * Only the edge tab and the header button come through here. Every other way
+   * in names its day — a calendar day, a park, a day off the list — and asking
+   * those whether they meant a new day would be asking a question they have
+   * already answered. The plan is read at the press rather than at render, so
+   * a trip that ends at midnight is past on the first click after it.
+   */
+  const openOrAsk = useCallback(() => {
+    if (pastActiveDay(state)) setAskingPastDay(true);
+    else setOpen(true);
+  }, [state]);
+
+  /**
+   * Something outside the panel asked for it — a day picked in the park
+   * calendar, or the header button on a phone. An effect is right here and a
+   * render-time branch is not: the request arrives from another component's
+   * event, and the panel must reopen on a SECOND request after the visitor has
+   * closed it, which is why the counter is compared against the last one seen
+   * rather than against zero.
+   *
+   * The header button is the one request that names no day, so it gets the
+   * tab's treatment. The branch lives in a callback rather than in the effect,
+   * for the reason `startFromRequest` in `planner-flyout.tsx` gives:
+   * `react-hooks/set-state-in-effect` refuses an effect body that branches
+   * into a `setState`.
+   */
+  const answerRequest = useCallback(() => {
+    if (plannerUi.getOpenSource() === 'header') openOrAsk();
+    else setOpen(true);
+  }, [openOrAsk]);
   const lastSeen = useRef(0);
   useEffect(() => {
     if (openRequests === lastSeen.current) return;
     lastSeen.current = openRequests;
-    setOpen(true);
-  }, [openRequests]);
+    answerRequest();
+  }, [openRequests, answerRequest]);
 
   /**
    * One `planner_opened` per opening, with the way in that produced it.
@@ -154,7 +193,14 @@ export function PlannerLauncher() {
   // its own close animation and the wizard resets by unmounting with the panel,
   // so tying this to `open` would cut both.
   const panel =
-    wanted && messages.ready ? <PlannerFlyoutHost open={open} onOpenChange={setOpen} /> : null;
+    wanted && messages.ready ? (
+      <PlannerFlyoutHost
+        open={open}
+        onOpenChange={setOpen}
+        askingPastDay={askingPastDay}
+        onAskingPastDayChange={setAskingPastDay}
+      />
+    ) : null;
 
   return (
     <>
@@ -169,7 +215,8 @@ export function PlannerLauncher() {
         // previous opener's name standing for whatever opens next.
         onToggle={() => {
           plannerUi.noteOpenSource('tab');
-          setOpen((value) => !value);
+          if (open) setOpen(false);
+          else openOrAsk();
         }}
       />
       {/* Until the chunk resolves — a same-origin module, a few milliseconds —
