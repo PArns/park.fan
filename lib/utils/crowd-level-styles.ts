@@ -55,14 +55,19 @@ export const CROWD_LEVEL_PERCENT_RANGE: Record<ColoredCrowdLevel, CrowdPercentRa
   extreme: { min: 200 },
 };
 
-/** `text-crowd-*` text color per level (inline values, blog annotations, …). */
+/**
+ * Text color per level (inline values, blog annotations, …).
+ *
+ * `crowd-ink-*`, not `crowd-*`: in the light theme the fills are too light to read as text (3.3 …
+ * 3.9:1 on white), and a wait time is text. In the dark theme the two are the same colour.
+ */
 export const CROWD_TEXT_CLASS: Record<ColoredCrowdLevel, string> = {
-  very_low: 'text-crowd-very-low',
-  low: 'text-crowd-low',
-  moderate: 'text-crowd-moderate',
-  high: 'text-crowd-high',
-  very_high: 'text-crowd-very-high',
-  extreme: 'text-crowd-extreme',
+  very_low: 'text-crowd-ink-very-low',
+  low: 'text-crowd-ink-low',
+  moderate: 'text-crowd-ink-moderate',
+  high: 'text-crowd-ink-high',
+  very_high: 'text-crowd-ink-very-high',
+  extreme: 'text-crowd-ink-extreme',
 };
 
 /** `badge-crowd-*` solid badge per level (CrowdLevelBadge, blog wait badges, …). */
@@ -77,12 +82,12 @@ export const CROWD_BADGE_CLASS: Record<ColoredCrowdLevel, string> = {
 
 /** Outlined chip (tinted border + text) per level (live ticker, …). */
 export const CROWD_OUTLINE_CLASS: Record<ColoredCrowdLevel, string> = {
-  very_low: 'border-crowd-very-low/60 text-crowd-very-low',
-  low: 'border-crowd-low/60 text-crowd-low',
-  moderate: 'border-crowd-moderate/60 text-crowd-moderate',
-  high: 'border-crowd-high/60 text-crowd-high',
-  very_high: 'border-crowd-very-high/60 text-crowd-very-high',
-  extreme: 'border-crowd-extreme/60 text-crowd-extreme',
+  very_low: 'border-crowd-very-low/60 text-crowd-ink-very-low',
+  low: 'border-crowd-low/60 text-crowd-ink-low',
+  moderate: 'border-crowd-moderate/60 text-crowd-ink-moderate',
+  high: 'border-crowd-high/60 text-crowd-ink-high',
+  very_high: 'border-crowd-very-high/60 text-crowd-ink-very-high',
+  extreme: 'border-crowd-extreme/60 text-crowd-ink-extreme',
 };
 
 /**
@@ -136,12 +141,12 @@ export const CROWD_DOT_CLASS: Record<ColoredCrowdLevel, string> = {
 
 /** Soft tinted chip (translucent bg + border + text) per level (best-days chips, …). */
 export const CROWD_CHIP_CLASS: Record<ColoredCrowdLevel, string> = {
-  very_low: 'bg-crowd-very-low/20 text-crowd-very-low border border-crowd-very-low/30',
-  low: 'bg-crowd-low/20 text-crowd-low border border-crowd-low/30',
-  moderate: 'bg-crowd-moderate/20 text-crowd-moderate border border-crowd-moderate/30',
-  high: 'bg-crowd-high/20 text-crowd-high border border-crowd-high/30',
-  very_high: 'bg-crowd-very-high/20 text-crowd-very-high border border-crowd-very-high/30',
-  extreme: 'bg-crowd-extreme/20 text-crowd-extreme border border-crowd-extreme/30',
+  very_low: 'bg-crowd-very-low/20 text-crowd-ink-very-low border border-crowd-very-low/30',
+  low: 'bg-crowd-low/20 text-crowd-ink-low border border-crowd-low/30',
+  moderate: 'bg-crowd-moderate/20 text-crowd-ink-moderate border border-crowd-moderate/30',
+  high: 'bg-crowd-high/20 text-crowd-ink-high border border-crowd-high/30',
+  very_high: 'bg-crowd-very-high/20 text-crowd-ink-very-high border border-crowd-very-high/30',
+  extreme: 'bg-crowd-extreme/20 text-crowd-ink-extreme border border-crowd-extreme/30',
 };
 
 /**
