@@ -293,8 +293,10 @@ For `in_park` only, `ParkCompassSlot` (`app/[locale]/page.tsx`, straight after t
 lazy-loads `ParkCompass`: a compass bezel around a small radar. Every in-season headliner is a
 marker at its true bearing and at a radius that grows with its distance, showing its current wait
 in the wait colours; two dashed range rings, the outer one labelled („500 m"). The same rides are
-listed beside it with an arrow each, a distance and the wait, nearest first. The bar under the
-dial names the reader's pick, the ride straight ahead, or the nearest one.
+listed beside it with an arrow each, a distance and the wait, nearest first. A compass needle
+points at one ride (the reader's pick, the ride straight ahead, or the nearest one) and the bar
+under the dial names it; a tapped marker swings the needle over. The needle's angle is kept
+unwrapped, so its CSS transition always takes the short way round.
 
 - **The heading** comes from `DeviceOrientation` (`useCompassHeading`): Chrome's
   `deviceorientationabsolute`, Safari's `webkitCompassHeading`. Safari only sends it after

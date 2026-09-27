@@ -10,7 +10,8 @@ Wer im Park steht, sieht unter dem Hero der Startseite einen Kompass. Jede Top-A
 Punkt in ihrer Richtung, je weiter weg, desto weiter außen, mit der aktuellen Wartezeit in den
 Wartezeit-Farben. Daneben stehen dieselben Bahnen als Liste mit Pfeil, Entfernung und Wartezeit.
 Auf dem Handy dreht sich der Kompass mit, auf dem iPhone nach einem Tipp auf „Kompass
-einschalten". Die Leiste unter dem Kompass nennt die Bahn, die vor dir liegt. Ohne Kompass (am
+einschalten". Eine Kompassnadel zeigt auf eine Bahn: die angetippte, sonst die vor dir, sonst
+die nächste. Die Leiste unter dem Kompass nennt sie. Ohne Kompass (am
 Rechner) ist Norden oben. Die Koordinaten der Bahnen liefert eine neue, kleine Route
 (`/api/parks/…/positions`, 0,7 KB), weil die Antwort von `/api/nearby` keine enthält.
 Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
