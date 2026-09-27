@@ -1447,7 +1447,7 @@
       "coarse": "GPS imprecise (± {meters} m)",
       "ahead": "Ahead",
       "nearest": "Nearest",
-      "picked": "Selected",
+      "picked": "Pinned",
       "closed": "Closed",
       "demo": "Demo: {park} around you",
       "demoLocation": "Use my location"

@@ -295,9 +295,19 @@ headliner is a marker at its true bearing and at a radius that grows with its di
 its current wait in the wait colours; two dashed range rings, the outer one labelled („500 m").
 The reader is an arrow with a view cone that turns with the phone, the way a maps app shows which
 way somebody is looking; without a compass it is a plain dot. The bar under the dial names one
-ride (the one tapped, the one straight ahead, or the nearest), and the list beside it carries the
-same rides with an arrow each (the way to go from where the reader is looking), a distance and
-the wait, nearest first.
+ride, and the list beside it carries the same rides with an arrow each (the way to go from where
+the reader is looking), a distance and the wait, nearest first.
+
+**The bar follows the reader's eyes.** With a compass it names the ride the phone points at,
+worked out on every heading (`rideAhead`, the smallest angle to the heading) and held against
+jitter by 4°: a ride keeps the bar until another is nearer the heading by more than that, so two
+rides a few degrees apart do not trade places with the phone held still. It is put into state
+only when it changes, so turning re-renders the panel a few times a sweep. The first version
+re-chose it only after 8° of turn and at most every 0.4 s, and a tap on a marker held the bar
+for good, so for anybody who had tapped once the bar stopped following the eyes at all. **A tap
+pins**: the marker gets a pin badge, the bar says „Fixiert" and stays whichever way the phone
+turns; a tap on the pinned marker lets go and the bar follows the heading again, a tap on another
+marker pins that one. Without a compass the bar shows the pinned ride or the nearest.
 
 The first version turned the whole dial heading-up and marked „ahead" with a small triangle at the
 top, then gained a needle pointing at the selected ride. Neither showed the one thing a compass is

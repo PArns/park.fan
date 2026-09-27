@@ -19,6 +19,7 @@ import {
   placeLabels,
   placeMarkers,
   relocate,
+  rideAhead,
   smoothHeading,
 } from '../lib/utils/compass.ts';
 import { calculateDistance } from '../lib/utils/distance-utils.ts';
@@ -229,6 +230,30 @@ test('in a crowd no label covers another or any marker, and the one in focus is 
     }
     for (const m of markers) assert.ok(!coversMarker(placed[i], m, LABELS.markerRadius));
   }
+});
+
+test('the ride ahead is the one nearest the heading, across north too', () => {
+  const rides = [
+    { id: 'taron', bearing: 97 },
+    { id: 'crazy-bats', bearing: 358 },
+    { id: 'winjas', bearing: 300 },
+    { id: 'no-coords', bearing: null },
+  ];
+  assert.equal(rideAhead(rides, 100, null), 'taron');
+  assert.equal(rideAhead(rides, 5, null), 'crazy-bats');
+  assert.equal(rideAhead(rides, 290, null), 'winjas');
+  assert.equal(rideAhead([{ id: 'x', bearing: null }], 0, null), null);
+});
+
+test('the ride ahead holds against jitter and lets go once another is clearly nearer', () => {
+  const rides = [
+    { id: 'fear', bearing: 300 },
+    { id: 'force', bearing: 306 },
+  ];
+  // Facing 303.5: force is 2.5° off, fear 3.5°. Fear, already chosen, keeps the bar.
+  assert.equal(rideAhead(rides, 303.5, 'fear'), 'fear');
+  // Facing 306: force is dead ahead, fear 6° off, beyond the 4° of hold.
+  assert.equal(rideAhead(rides, 306, 'fear'), 'force');
 });
 
 console.log(`\n${passed} assertions passed.`);

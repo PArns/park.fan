@@ -308,3 +308,29 @@ export function placeLabels(
   }
   return placed;
 }
+
+/**
+ * The ride the reader is facing: the one whose bearing lies nearest the heading, or `null` when
+ * no ride has a bearing.
+ *
+ * `current` is the ride chosen the last time, and it keeps its place until another is nearer by
+ * more than `hysteresis` degrees. Without that, two rides a few degrees apart would trade the
+ * bar back and forth on the magnetometer's jitter alone, with the phone held still.
+ */
+export function rideAhead(
+  items: readonly { id: string; bearing: number | null }[],
+  heading: number,
+  current: string | null,
+  hysteresis = 4
+): string | null {
+  let best: { id: string; off: number } | null = null;
+  let held: number | null = null;
+  for (const { id, bearing } of items) {
+    if (bearing === null) continue;
+    const off = Math.abs(angleDelta(heading, bearing));
+    if (id === current) held = off;
+    if (!best || off < best.off) best = { id, off };
+  }
+  if (!best) return null;
+  return held !== null && held <= best.off + hysteresis ? current : best.id;
+}

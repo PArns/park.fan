@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type Ref } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { CircleDashed } from 'lucide-react';
+import { CircleDashed, Pin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CROWD_BADGE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { placeLabels } from '@/lib/utils/compass';
@@ -112,6 +112,7 @@ function roseRay(angle: number, length: number, base: number) {
 export function ParkCompassDial({
   markers,
   focusId,
+  pinnedId,
   onPick,
   compassOn,
   range,
@@ -121,6 +122,9 @@ export function ParkCompassDial({
 }: {
   markers: readonly DialMarker[];
   focusId: string | null;
+  /** The ride a tap has pinned, or `null` while the bar follows the heading. */
+  pinnedId: string | null;
+  /** A tap on a marker: pins it, or lets go when it is the pinned one. */
   onPick: (id: string) => void;
   compassOn: boolean;
   /** The outer range ring's distance, in metres. */
@@ -469,7 +473,7 @@ export function ParkCompassDial({
           key={m.id}
           type="button"
           onClick={() => onPick(m.id)}
-          aria-pressed={focusId === m.id}
+          aria-pressed={pinnedId === m.id}
           aria-label={m.label}
           className={cn(
             'absolute flex size-[30px] items-center justify-center rounded-full border text-xs font-bold tabular-nums shadow-[inset_0_1px_0_rgb(255_255_255/0.25),0_0_0_2px_var(--background),0_4px_10px_-2px_rgb(0_0_0/0.45)] transition-[box-shadow,scale]',
@@ -486,6 +490,11 @@ export function ParkCompassDial({
           }}
         >
           {m.wait ?? '–'}
+          {pinnedId === m.id && (
+            <span className="bg-primary text-primary-foreground ring-background absolute -top-1.5 -right-1.5 flex size-4 items-center justify-center rounded-full ring-2">
+              <Pin className="size-2.5" aria-hidden="true" />
+            </span>
+          )}
         </button>
       ))}
 

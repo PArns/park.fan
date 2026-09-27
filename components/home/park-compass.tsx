@@ -1,17 +1,9 @@
 'use client';
 
-import {
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from 'react';
+import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ArrowUp, ChevronRight, Compass } from 'lucide-react';
+import { ArrowUp, ChevronRight, Compass, Pin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { PANEL_FLAT } from '@/components/common/glass-card';
 import { LiveDot } from '@/components/common/live-dot';
@@ -25,12 +17,12 @@ import { useRidePositions } from '@/lib/hooks/use-ride-positions';
 import { heroObjectPosition, parkHeroImageSrcs } from '@/lib/media/hero';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import {
-  angleDelta,
   bearingBetween,
   dialLabel,
   niceRange,
   placeMarkers,
   relocate,
+  rideAhead,
 } from '@/lib/utils/compass';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { CROWD_BADGE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
@@ -51,10 +43,6 @@ const GLASS_CHIP =
 const MARKER_GAP = 10;
 /** A fix worse than this makes the arrows a guess, and the header says so. */
 const COARSE_FIX_M = 40;
-/** The "ahead" ride is re-chosen when the phone has turned this far, and no more often than… */
-const AHEAD_STEP_DEG = 8;
-/** …this. The ring itself turns on every frame; only the text in its middle waits. */
-const AHEAD_THROTTLE_MS = 400;
 
 interface CompassRide {
   id: string;
@@ -181,35 +169,6 @@ export function ParkCompass({
       ? here
       : { lat: userLocation.latitude, lng: userLocation.longitude };
 
-  // The ride straight ahead only moves when the phone has turned far enough, and not more often
-  // than AHEAD_THROTTLE_MS — see the note above.
-  const [aheadHeading, setAheadHeading] = useState<number | null>(null);
-  const lastAhead = useRef({ heading: -1000, at: 0 });
-  const headingTextRef = useRef<HTMLSpanElement>(null);
-  const onHeading = useCallback((heading: number) => {
-    rootRef.current?.style.setProperty('--heading', deg(heading));
-    const figure = `${Math.round(heading) % 360}°`;
-    if (headingTextRef.current && headingTextRef.current.textContent !== figure) {
-      headingTextRef.current.textContent = figure;
-    }
-    const now = performance.now();
-    const last = lastAhead.current;
-    if (
-      Math.abs(angleDelta(last.heading, heading)) >= AHEAD_STEP_DEG &&
-      now - last.at >= AHEAD_THROTTLE_MS
-    ) {
-      lastAhead.current = { heading, at: now };
-      setAheadHeading(heading);
-    }
-  }, []);
-  const { status, enable } = useCompassHeading(onHeading, visible);
-  const compassOn = status === 'active';
-  // A compass that stopped (denied, or the tab went away and came back without one) leaves the
-  // ring where it was; north-up is the honest resting state.
-  useEffect(() => {
-    if (!compassOn) rootRef.current?.style.setProperty('--heading', '0deg');
-  }, [compassOn]);
-
   const geo = useMemo(
     () =>
       data.rides.reduce<ReturnType<typeof parkGeoFromUrl>>(
@@ -271,25 +230,37 @@ export function ParkCompass({
     shift?.to.lng,
   ]);
 
-  // What the middle of the dial talks about: the reader's pick, else the ride straight ahead, else
-  // the nearest one.
-  const [picked, setPicked] = useState<string | null>(null);
-  const ahead = useMemo(() => {
-    if (!compassOn || aheadHeading === null) return null;
-    let best: CompassRide | null = null;
-    for (const r of rides) {
-      if (r.bearing === null) continue;
-      if (
-        !best ||
-        Math.abs(angleDelta(aheadHeading, r.bearing)) <
-          Math.abs(angleDelta(aheadHeading, best.bearing!))
-      )
-        best = r;
+  // What the middle of the dial talks about. With a compass it is the ride the reader faces,
+  // worked out on every heading (`rideAhead`) and put into state only when it changes, so turning
+  // re-renders the panel a few times a sweep, not sixty times a second. A tap on a marker pins
+  // that ride, and it stays whichever way the phone turns; a tap on the pinned one lets go and
+  // the bar follows the reader's eyes again, a tap on another pins that one. With neither a
+  // compass nor a pin, the nearest ride.
+  const [aheadId, setAheadId] = useState<string | null>(null);
+  const [pinned, setPinned] = useState<string | null>(null);
+  const headingTextRef = useRef<HTMLSpanElement>(null);
+  // Called through `useEffectEvent` inside the hook, so it always sees this render's rides.
+  const onHeading = (heading: number) => {
+    rootRef.current?.style.setProperty('--heading', deg(heading));
+    const figure = `${Math.round(heading) % 360}°`;
+    if (headingTextRef.current && headingTextRef.current.textContent !== figure) {
+      headingTextRef.current.textContent = figure;
     }
-    return best;
-  }, [compassOn, aheadHeading, rides]);
-  const focus = rides.find((r) => r.id === picked) ?? ahead ?? rides[0] ?? null;
-  const focusReason = focus && focus.id === picked ? 'picked' : ahead ? 'ahead' : 'nearest';
+    const next = rideAhead(rides, heading, aheadId);
+    if (next !== aheadId) setAheadId(next);
+  };
+  const { status, enable } = useCompassHeading(onHeading, visible);
+  const compassOn = status === 'active';
+  // A compass that stopped (denied, or the tab went away and came back without one) leaves the
+  // ring where it was; north-up is the honest resting state.
+  useEffect(() => {
+    if (!compassOn) rootRef.current?.style.setProperty('--heading', '0deg');
+  }, [compassOn]);
+
+  const ahead = (compassOn && rides.find((r) => r.id === aheadId)) || null;
+  const focus = rides.find((r) => r.id === pinned) ?? ahead ?? rides[0] ?? null;
+  const focusReason = focus && focus.id === pinned ? 'picked' : ahead ? 'ahead' : 'nearest';
+  const togglePin = (id: string) => setPinned((p) => (p === id ? null : id));
 
   const waitLabel = (r: CompassRide) => (r.wait === null ? null : `${r.wait} ${tCommon('min')}`);
   const markers = useMemo(
@@ -395,7 +366,8 @@ export function ParkCompass({
           <ParkCompassDial
             markers={markers}
             focusId={focus?.id ?? null}
-            onPick={(id) => setPicked((p) => (p === id ? null : id))}
+            onPick={togglePin}
+            pinnedId={pinned}
             compassOn={compassOn}
             range={range}
             photo={photo}
@@ -425,7 +397,8 @@ export function ParkCompass({
                 )}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="text-primary block text-[10px] font-semibold tracking-[0.12em] uppercase">
+                <span className="text-primary flex items-center gap-1 text-[10px] font-semibold tracking-[0.12em] uppercase">
+                  {focusReason === 'picked' && <Pin className="size-3" aria-hidden="true" />}
                   {t(focusReason)}
                 </span>
                 <span className="block truncate text-base font-semibold">{focus.name}</span>
