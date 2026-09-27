@@ -42,6 +42,7 @@ function FeaturedLiveCard({ park, live }: { park: FeaturedCardStatic; live?: Liv
       hasOperatingSchedule={live?.hasOperatingSchedule}
       todaySchedule={live?.todaySchedule}
       nextSchedule={live?.nextSchedule}
+      reserveStatusRow
     />
   );
 }

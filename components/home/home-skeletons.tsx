@@ -197,19 +197,26 @@ export function LiveActivitySkeleton({ labels }: { labels: SectionHeadingLabels 
     <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <LiveActivityHeading labels={labels} />
+        {/* Five cards, one per continent the discovery endpoint lists today (Asia, Europe,
+            North America, Oceania, South America). Six reserved one card too many, and on a
+            phone, one column wide, that was 130 px the page lost when the grid landed. Since
+            PAR-435 the section sits above the story chapters there, so every chapter moved.
+            Five or six is the same two rows at `lg` and three at `sm`. */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: 5 }).map((_, i) => (
             <Card key={i} className="bg-muted/50">
               <CardHeader className="pb-2">
+                {/* h-7 and h-9 are the line boxes of the real `text-lg` title and `text-3xl`
+                    count; h-5 and h-8 left each card 12 px short. */}
                 <div className="flex items-center justify-between">
-                  <Skeleton className="h-5 w-28" />
+                  <Skeleton className="h-7 w-28" />
                   <Skeleton className="h-4 w-4" />
                 </div>
                 <Skeleton className="mt-1 h-3 w-16" />
               </CardHeader>
               <CardContent>
                 <div className="mb-2 flex items-baseline gap-2">
-                  <Skeleton className="h-8 w-12" />
+                  <Skeleton className="h-9 w-12" />
                   <Skeleton className="h-4 w-10" />
                 </div>
                 <Skeleton className="h-2 w-full rounded-full" />

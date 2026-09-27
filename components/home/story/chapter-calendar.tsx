@@ -3,6 +3,7 @@ import { ArrowRight, CalendarRange, CloudSun, Cpu, Database, Gauge } from 'lucid
 import { Link } from '@/i18n/navigation';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { getGlobalStats } from '@/lib/api/analytics';
@@ -21,8 +22,9 @@ import { getLeadPark } from './lead-park';
  * step that owns them instead of being dressed up as live values.
  */
 export async function ChapterCalendar({ locale }: { locale: string }) {
-  const [t, stats, park] = await Promise.all([
+  const [t, tCommon, stats, park] = await Promise.all([
     getTranslations('homeStory.calendar'),
+    getTranslations('common'),
     catchNonFatal(getGlobalStats()),
     getLeadPark(locale),
   ]);
@@ -105,17 +107,24 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
           ))}
         </div>
 
-        <Reveal delay={80}>
-          <p className="text-muted-foreground border-border mt-6 max-w-3xl border-l-2 pl-4 text-sm leading-relaxed">
-            <GlossaryInject>{t('feedback')}</GlossaryInject>
-          </p>
-        </Reveal>
+        {/* On a phone the pipeline is the chapter's exhibit; the feedback note and the body
+              open on request (PAR-435). */}
+        <MobileMore label={tCommon('showMore')}>
+          <Reveal delay={80}>
+            <p className="text-muted-foreground border-border mt-6 max-w-3xl border-l-2 pl-4 text-sm leading-relaxed">
+              <GlossaryInject>{t('feedback')}</GlossaryInject>
+            </p>
+          </Reveal>
 
-        <Reveal delay={120}>
-          <div className="mt-8 max-w-3xl">
-            <p className="text-muted-foreground leading-relaxed">
+          <Reveal delay={120}>
+            <p className="text-muted-foreground mt-8 max-w-3xl leading-relaxed">
               <GlossaryInject>{t('body')}</GlossaryInject>
             </p>
+          </Reveal>
+        </MobileMore>
+
+        <Reveal delay={120}>
+          <div className="max-w-3xl">
             <div className="mt-4 flex flex-col gap-2">
               {park && (
                 <Link

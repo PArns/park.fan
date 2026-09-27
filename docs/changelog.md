@@ -46,6 +46,22 @@ der Seite ist, die Pille „Zum Kompass" an der Stelle des News-Chips und scroll
 erste, grobe Ortung per WLAN hatte sonst alle Entfernungen um den Sprung zum GPS-Fix verschoben.
 Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
 
+## Unreleased – improvement: die Startseite auf dem Handy (PAR-435)
+
+Unter 768 px Seitenbreite stehen die Park-Listen vor den erklärenden Kapiteln: Parks in der Nähe,
+Favoriten, beliebte Parks und die offenen Parks je Kontinent. Die Kapitel folgen darunter in der
+bisherigen Reihenfolge. Umgestellt wird per CSS `order` (`PHONE_LATER` in `app/[locale]/page.tsx`),
+das DOM bleibt, wie es war. Jedes Kapitel zeigt auf dem Handy seine Überschrift und ein Exponat,
+der Rest liegt hinter „Mehr anzeigen" (`MobileMore`, `components/common/mobile-more.tsx`) und
+bleibt im HTML. `/de` misst 22.558 statt 27.905 px (34 statt 42 Bildschirme bei 390 × 664),
+Desktop ist unverändert 18.846 px.
+
+Mit der neuen Reihenfolge lagen zwei Layout-Shifts über den Kapiteln. Die Karten unter „Beliebte
+Parks" hatten eine leere Badge-Zeile, bis der Live-Abruf kam (0 → 22 px je Karte), dafür gibt es
+jetzt `reserveStatusRow` an `ParkCard`. `LiveActivitySkeleton` reservierte sechs statt fünf
+Kontinente und je Karte 12 px zu wenig. An der Stelle „Beliebte Parks" misst `measure:cls --late`
+jetzt 0,10 statt 0,34.
+
 ## Unreleased – Der Kompass sieht aus wie ein Kompass
 
 Der Kompass unter dem Hero war eine flache Scheibe mit Strichen und sah aus wie jedes Radar. Jetzt

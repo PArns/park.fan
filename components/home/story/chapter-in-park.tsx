@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { MapPinned, Navigation, Star } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 /**
@@ -14,7 +15,10 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
  * favourites nothing.
  */
 export async function ChapterInPark() {
-  const t = await getTranslations('homeStory.inPark');
+  const [t, tCommon] = await Promise.all([
+    getTranslations('homeStory.inPark'),
+    getTranslations('common'),
+  ]);
 
   return (
     <section className="px-4 py-16 sm:py-18">
@@ -30,7 +34,10 @@ export async function ChapterInPark() {
           />
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        {/* On a phone the favourites card stays and the map card opens on request (PAR-435).
+            `contents` keeps both items of one grid from 768 px up, and the columns ask the
+            page's width, the same as the collapse. */}
+        <div className="grid gap-5 @min-[768px]/page:grid-cols-2">
           <Reveal>
             <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">
               <div className="flex items-center gap-2.5">
@@ -44,19 +51,21 @@ export async function ChapterInPark() {
             </div>
           </Reveal>
 
-          <Reveal delay={80}>
-            <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">
-              <div className="flex items-center gap-2.5">
-                <span className="bg-primary/10 text-primary flex size-9 items-center justify-center rounded-xl">
-                  <Navigation className="h-4.5 w-4.5" aria-hidden="true" />
-                </span>
-                <h3 className="text-lg font-semibold">{t('mapTitle')}</h3>
+          <MobileMore label={tCommon('showMore')} contents>
+            <Reveal delay={80}>
+              <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">
+                <div className="flex items-center gap-2.5">
+                  <span className="bg-primary/10 text-primary flex size-9 items-center justify-center rounded-xl">
+                    <Navigation className="h-4.5 w-4.5" aria-hidden="true" />
+                  </span>
+                  <h3 className="text-lg font-semibold">{t('mapTitle')}</h3>
+                </div>
+                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                  <GlossaryInject>{t('mapText')}</GlossaryInject>
+                </p>
               </div>
-              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-                <GlossaryInject>{t('mapText')}</GlossaryInject>
-              </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </MobileMore>
         </div>
       </div>
     </section>
