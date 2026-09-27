@@ -1448,7 +1448,9 @@
       "ahead": "Ahead",
       "nearest": "Nearest",
       "picked": "Selected",
-      "closed": "Closed"
+      "closed": "Closed",
+      "demo": "Demo: {park} around you",
+      "demoLocation": "Use my location"
     }
   },
   "geo": {

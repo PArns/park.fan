@@ -9,19 +9,29 @@ import {
   useState,
   useSyncExternalStore,
 } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ArrowUp, ChevronRight, CircleDashed, Compass } from 'lucide-react';
+import { ArrowUp, ChevronRight, Compass } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { PANEL_FLAT } from '@/components/common/glass-card';
 import { LiveDot } from '@/components/common/live-dot';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { ParkCompassDial, RANGE_INNER, RANGE_OUTER } from './park-compass-dial';
 import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useCompassHeading } from '@/lib/hooks/use-compass-heading';
 import { useLivePosition } from '@/lib/hooks/use-live-position';
 import { useRidePositions } from '@/lib/hooks/use-ride-positions';
+import { heroObjectPosition, parkHeroImageSrcs } from '@/lib/media/hero';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
-import { angleDelta, bearingBetween, niceRange, placeMarkers } from '@/lib/utils/compass';
+import {
+  angleDelta,
+  bearingBetween,
+  dialLabel,
+  niceRange,
+  placeMarkers,
+  relocate,
+} from '@/lib/utils/compass';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { CROWD_BADGE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -29,14 +39,14 @@ import { cn, stripNewPrefix } from '@/lib/utils';
 import type { NearbyAttractionsData, UserLocation } from '@/types/nearby';
 
 /**
- * The dial's radii, in `cqw` of the dial itself (it is a size container, so these are shares of
- * its width and the drawing is the same at 280 px and at 340 px). Outermost in: the bezel's ticks
- * (45–48), the cardinal letters (40), the radar's outer range ring (34), and the radius a ride at
- * 0 m would sit at (8), just outside the reader's own dot.
+ * Glass for the small surfaces on the panel — the bar under the dial, the list's arrow chips: a
+ * pale fill, a hairline and a lit top edge. No `backdrop-filter`: the panel's photo under them is
+ * already blurred (see the panel), so a translucent fill over it is what a backdrop blur would
+ * have drawn, without re-blurring it on every frame the arrows turn.
  */
-const LETTER_RADIUS = 40;
-const RANGE_OUTER = 34;
-const RANGE_INNER = 8;
+const GLASS_CHIP =
+  'border-white/70 bg-white/45 shadow-[inset_0_1px_0_rgb(255_255_255/0.6)] dark:border-white/12 dark:bg-white/[0.05] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.07)]';
+
 /** A 30 px marker is ~9.4 cqw on a 320 px dial; this keeps a hair of space between two. */
 const MARKER_GAP = 10;
 /** A fix worse than this makes the arrows a guess, and the header says so. */
@@ -111,11 +121,17 @@ const deg = (value: number) => `${value}deg`;
 export function ParkCompass({
   data,
   userLocation,
+  demo,
   className,
 }: {
   data: NearbyAttractionsData;
   /** The point the nearby answer was computed for. */
   userLocation: UserLocation;
+  /**
+   * `?sim=compass`: this park is a demo, laid out around wherever the device is — see
+   * `resolveCompassDemo`. `anchor` is the point inside the park that stands in for the reader.
+   */
+  demo?: { parkName: string; anchor: { lat: number; lng: number } };
   className?: string;
 }) {
   const t = useTranslations('nearby.compass');
@@ -144,21 +160,38 @@ export function ParkCompass({
     };
   }, []);
 
-  // Under `?sim=` the park is somewhere the device is not, so the device's own fix is ignored.
-  const simulated = useSyncExternalStore(subscribeNever, readSimulated, () => false);
-  const { permissionGranted } = useGeolocation();
+  // Under `?sim=` the park is somewhere the device is not, so the device's own fix is ignored —
+  // except in the compass demo, which moves the park to the device instead.
+  const simulated = useSyncExternalStore(subscribeNever, readSimulated, () => false) && !demo;
+  const { permissionGranted, refresh: askForLocation } = useGeolocation();
   const live = useLivePosition(visible && !simulated, permissionGranted);
-  const origin =
-    !simulated && live
-      ? { lat: live.lat, lng: live.lng }
+  const here = live ? { lat: live.lat, lng: live.lng } : null;
+  // In the demo, with a fix, the park's anchor is put down where the device first was and every
+  // ride moves with it (`relocate`), so walking through the living room walks through the park.
+  // Without a fix the reader stands on the anchor, as under `?sim=in_park`.
+  // The park is put down once, where the first fix lands, and stays there; every later fix moves
+  // the reader through it. Anchoring it to every fix would carry the park along with the reader,
+  // and no ride would ever come closer.
+  const [pin, setPin] = useState<{ lat: number; lng: number } | null>(null);
+  if (demo && here && !pin) setPin(here);
+  const shift = demo && pin ? { from: demo.anchor, to: pin } : null;
+  const origin = demo
+    ? (here ?? demo.anchor)
+    : !simulated && here
+      ? here
       : { lat: userLocation.latitude, lng: userLocation.longitude };
 
   // The ride straight ahead only moves when the phone has turned far enough, and not more often
   // than AHEAD_THROTTLE_MS — see the note above.
   const [aheadHeading, setAheadHeading] = useState<number | null>(null);
   const lastAhead = useRef({ heading: -1000, at: 0 });
+  const headingTextRef = useRef<HTMLSpanElement>(null);
   const onHeading = useCallback((heading: number) => {
     rootRef.current?.style.setProperty('--heading', deg(heading));
+    const figure = `${Math.round(heading) % 360}°`;
+    if (headingTextRef.current && headingTextRef.current.textContent !== figure) {
+      headingTextRef.current.textContent = figure;
+    }
     const now = performance.now();
     const last = lastAhead.current;
     if (
@@ -190,7 +223,14 @@ export function ParkCompass({
   const { range, list: rides } = useMemo((): { range: number; list: CompassRide[] } => {
     const { headliners } = splitInParkRides(data.rides);
     const base = headliners.map((ride) => {
-      const at = positions?.get(ride.slug);
+      const stored = positions?.get(ride.slug);
+      const at = stored
+        ? shift
+          ? (({ lat, lng }) => ({ latitude: lat, longitude: lng }))(
+              relocate({ lat: stored.latitude, lng: stored.longitude }, shift.from, shift.to)
+            )
+          : stored
+        : null;
       return {
         id: ride.id,
         slug: ride.slug,
@@ -218,7 +258,18 @@ export function ParkCompass({
         .map((r) => ({ ...r, point: pointOf.get(r.id) ?? null }))
         .sort((a, b) => a.distance - b.distance),
     };
-  }, [data.rides, positions, origin.lat, origin.lng]);
+    // `shift` is read through its four numbers, which is what changes; the object is new each render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    data.rides,
+    positions,
+    origin.lat,
+    origin.lng,
+    shift?.from.lat,
+    shift?.from.lng,
+    shift?.to.lat,
+    shift?.to.lng,
+  ]);
 
   // What the middle of the dial talks about: the reader's pick, else the ride straight ahead, else
   // the nearest one.
@@ -241,12 +292,33 @@ export function ParkCompass({
   const focusReason = focus && focus.id === picked ? 'picked' : ahead ? 'ahead' : 'nearest';
 
   const waitLabel = (r: CompassRide) => (r.wait === null ? null : `${r.wait} ${tCommon('min')}`);
-  const cardinals = [
-    { key: 'n', angle: 0 },
-    { key: 'e', angle: 90 },
-    { key: 's', angle: 180 },
-    { key: 'w', angle: 270 },
-  ] as const;
+  const markers = useMemo(
+    () =>
+      rides.flatMap((r) =>
+        r.point === null
+          ? []
+          : [
+              {
+                id: r.id,
+                name: dialLabel(r.name),
+                wait: r.wait,
+                point: r.point,
+                label: [
+                  r.name,
+                  r.wait === null ? t('closed') : `${r.wait} ${tCommon('min')}`,
+                  formatDistance(r.distance),
+                ].join(', '),
+              },
+            ]
+      ),
+    [rides, t, tCommon]
+  );
+  // The face is the park's own photo, the one the hero above rotates first; a park without one
+  // gets a plain face.
+  const photo = useMemo(() => {
+    const src = parkHeroImageSrcs(data.park.slug)[0];
+    return src ? { src, position: heroObjectPosition(src) } : null;
+  }, [data.park.slug]);
 
   if (rides.length === 0) return null;
 
@@ -254,9 +326,51 @@ export function ParkCompass({
     <div
       ref={rootRef}
       style={{ '--heading': '0deg' } as React.CSSProperties}
-      className={cn(PANEL_FLAT, 'rounded-3xl border p-5 sm:p-6', className)}
+      className={cn(
+        'relative rounded-3xl border p-5 sm:p-6',
+        photo
+          ? 'isolate overflow-hidden border-white/60 shadow-[inset_0_1px_0_rgb(255_255_255/0.5)] dark:border-white/10 dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08)]'
+          : PANEL_FLAT,
+        className
+      )}
       data-park-compass=""
     >
+      {/* The panel is glass over the park: the same photo as the face, blurred into colour and
+          light under the site's heavy-glass fill (`HEAVY_GLASS`, one step more solid for the
+          small print in the list). It is the photo that is blurred, not a `backdrop-filter`: the
+          arrows on this panel turn with every sensor frame, and a moving element under a
+          backdrop filter is what made „Heute im Park" flicker. Same rendition as the face, so
+          one request between them. */}
+      {photo && (
+        <div aria-hidden="true" className="absolute inset-0 -z-10">
+          <Image
+            src={photo.src}
+            alt=""
+            fill
+            sizes="128px"
+            quality={50}
+            className="scale-125 object-cover blur-2xl saturate-150"
+            style={{ objectPosition: photo.position }}
+          />
+          <div className="bg-background/68 absolute inset-0 dark:bg-[oklch(0.13_0.02_241_/_0.68)]" />
+        </div>
+      )}
+      {demo && (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm">
+          <span className="font-semibold text-amber-700 dark:text-amber-300">
+            {t('demo', { park: demo.parkName })}
+          </span>
+          {!permissionGranted && (
+            <button
+              type="button"
+              onClick={askForLocation}
+              className="inline-flex min-h-9 items-center rounded-lg border border-amber-500/50 px-3 font-semibold text-amber-800 transition-colors hover:bg-amber-500/15 max-sm:min-h-11 dark:text-amber-200"
+            >
+              {t('demoLocation')}
+            </button>
+          )}
+        </div>
+      )}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex items-center gap-2">
           <Compass className="text-primary h-5 w-5 shrink-0" aria-hidden="true" />
@@ -278,209 +392,80 @@ export function ParkCompass({
       <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
         {/* ── The dial ── */}
         <div className="mx-auto w-full max-w-[340px]">
-          <div className="relative aspect-square w-full" style={{ containerType: 'inline-size' }}>
-            <svg viewBox="0 0 100 100" aria-hidden="true" className="absolute inset-0 size-full">
-              <circle
-                cx="50"
-                cy="50"
-                r="49"
-                className="fill-background stroke-border"
-                strokeWidth="0.6"
-              />
-              {/* Range rings: half the range and the whole of it. Circles, so they need not turn. */}
-              {[0.5, 1].map((share) => (
-                <circle
-                  key={share}
-                  cx="50"
-                  cy="50"
-                  r={RANGE_INNER + (RANGE_OUTER - RANGE_INNER) * share}
-                  className="stroke-border fill-none"
-                  strokeWidth="0.4"
-                  strokeDasharray="1 1.6"
-                />
-              ))}
-            </svg>
-
-            {/* North-up, like a map: the bezel, its letters and the markers stay where they are,
-                and what turns is the reader's own arrow in the middle. */}
-            <div className="absolute inset-0">
-              <svg viewBox="0 0 100 100" aria-hidden="true" className="absolute inset-0 size-full">
-                {Array.from({ length: 36 }, (_, i) => {
-                  const major = i % 3 === 0;
-                  return (
-                    <line
-                      key={i}
-                      x1="50"
-                      y1={major ? 2.2 : 2.6}
-                      x2="50"
-                      y2={major ? 5.2 : 4.2}
-                      transform={`rotate(${i * 10} 50 50)`}
-                      className={major ? 'stroke-foreground/50' : 'stroke-foreground/25'}
-                      strokeWidth={major ? 0.7 : 0.45}
-                      strokeLinecap="round"
-                    />
-                  );
-                })}
-              </svg>
-
-              {cardinals.map(({ key, angle }) => (
-                <span
-                  key={key}
-                  aria-hidden="true"
-                  className={cn(
-                    'absolute text-xs font-bold',
-                    key === 'n' ? 'text-primary' : 'text-muted-foreground'
-                  )}
-                  style={{
-                    left: `calc(50% + ${LETTER_RADIUS * Math.sin((angle * Math.PI) / 180)}cqw)`,
-                    top: `calc(50% - ${LETTER_RADIUS * Math.cos((angle * Math.PI) / 180)}cqw)`,
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                >
-                  {t(key)}
-                </span>
-              ))}
-
-              {/* The reader: an arrow and a view cone turned to the phone's heading — where they
-                  are looking, the way a maps app draws it. Without a compass there is no heading
-                  to show, and it is a plain dot. Under the markers, so the cone never hides one. */}
-              {compassOn ? (
-                <div
-                  aria-hidden="true"
-                  data-compass-facing=""
-                  className="absolute inset-0"
-                  style={{ transform: 'rotate(var(--heading))' }}
-                >
-                  <svg viewBox="0 0 100 100" className="size-full">
-                    <defs>
-                      <radialGradient
-                        id={coneId}
-                        cx="50"
-                        cy="50"
-                        r="30"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop
-                          offset="0"
-                          className="[stop-color:var(--primary)]"
-                          stopOpacity="0.45"
-                        />
-                        <stop offset="1" className="[stop-color:var(--primary)]" stopOpacity="0" />
-                      </radialGradient>
-                    </defs>
-                    {/* ±28° around straight ahead, fading out at 30 units. */}
-                    <path d="M50 50 L35.9 23.5 A30 30 0 0 1 64.1 23.5 Z" fill={`url(#${coneId})`} />
-                    <polygon
-                      points="50,42 56,56.5 50,53 44,56.5"
-                      className="fill-primary stroke-background"
-                      strokeWidth="1.4"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              ) : (
-                <svg
-                  viewBox="0 0 100 100"
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 size-full"
-                >
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="3"
-                    className="fill-primary stroke-background"
-                    strokeWidth="1.4"
-                  />
-                </svg>
-              )}
-
-              {/* One marker per headliner: its direction and, by the radius, its distance. */}
-              {rides.map((r) =>
-                r.point === null ? null : (
-                  <button
-                    key={r.id}
-                    type="button"
-                    onClick={() => setPicked((p) => (p === r.id ? null : r.id))}
-                    aria-pressed={focus?.id === r.id}
-                    aria-label={[
-                      r.name,
-                      waitLabel(r) ?? t('closed'),
-                      formatDistance(r.distance),
-                    ].join(', ')}
-                    className={cn(
-                      'absolute flex size-[30px] items-center justify-center rounded-full border text-xs font-bold tabular-nums shadow-sm transition-[box-shadow,scale]',
-                      r.wait === null
-                        ? 'bg-muted text-muted-foreground border-border'
-                        : cn(CROWD_BADGE_CLASS[waitTimeCrowdTier(r.wait)], 'border-transparent'),
-                      focus?.id === r.id &&
-                        'ring-primary ring-offset-background z-10 scale-110 ring-2 ring-offset-2'
-                    )}
-                    style={{
-                      left: `calc(50% + ${r.point.x}cqw)`,
-                      top: `calc(50% + ${r.point.y}cqw)`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                  >
-                    {r.wait ?? '–'}
-                  </button>
-                )
-              )}
-            </div>
-
-            {/* The outer ring's distance, where no marker can hide it: the bottom right, off the
-                ring, and it does not turn. */}
-            <span className="text-muted-foreground absolute right-[2%] bottom-[2%] flex items-center gap-1 text-[10px] tabular-nums">
-              <CircleDashed className="size-3" aria-hidden="true" />
-              {formatDistance(range)}
-            </span>
-          </div>
+          <ParkCompassDial
+            markers={markers}
+            focusId={focus?.id ?? null}
+            onPick={(id) => setPicked((p) => (p === id ? null : id))}
+            compassOn={compassOn}
+            range={range}
+            photo={photo}
+            coneId={coneId}
+            headingRef={headingTextRef}
+          />
 
           {/* The ride the dial is talking about: the reader's pick, the one straight ahead, or the
               nearest. One fixed height, so a different ride moving in does not move the list. */}
           {focus && (
-            <div className="border-border/60 mt-3 flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2">
-              <span className="border-primary text-primary flex size-9 shrink-0 items-center justify-center rounded-full border">
+            <div
+              className={cn(
+                GLASS_CHIP,
+                'border-primary/40 dark:border-primary/40 mt-4 flex min-h-16 items-center gap-3 rounded-2xl border px-3 py-2.5'
+              )}
+            >
+              <span className="bg-primary text-primary-foreground flex size-11 shrink-0 items-center justify-center rounded-full shadow-md">
                 {focus.bearing !== null ? (
                   <ArrowUp
                     aria-hidden="true"
-                    className="size-4"
+                    className="size-5"
+                    strokeWidth={2.5}
                     style={{ transform: `rotate(calc(${deg(focus.bearing)} - var(--heading)))` }}
                   />
                 ) : (
-                  <Compass aria-hidden="true" className="size-4" />
+                  <Compass aria-hidden="true" className="size-5" />
                 )}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="text-muted-foreground block text-[10px] font-semibold tracking-[0.12em] uppercase">
+                <span className="text-primary block text-[10px] font-semibold tracking-[0.12em] uppercase">
                   {t(focusReason)}
                 </span>
-                <span className="block truncate font-semibold">{focus.name}</span>
+                <span className="block truncate text-base font-semibold">{focus.name}</span>
+                {/* A closed ride's badge goes under the name: on the right it is twice a wait's
+                    width and took the name down to „Colorado …". */}
+                <span className="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1 text-xs tabular-nums">
+                  {formatDistance(focus.distance)} {tNearby('awayFrom')}
+                  {focus.wait === null && <ParkStatusBadge status={focus.status as 'CLOSED'} />}
+                </span>
               </span>
-              <span className="text-muted-foreground shrink-0 text-right text-xs tabular-nums">
-                {formatDistance(focus.distance)}
-                {waitLabel(focus) && (
-                  <span className="text-foreground block text-sm font-bold">
-                    {waitLabel(focus)}
-                  </span>
-                )}
-              </span>
+              {focus.wait !== null && (
+                <span
+                  className={cn(
+                    CROWD_BADGE_CLASS[waitTimeCrowdTier(focus.wait)],
+                    'shrink-0 rounded-full px-2.5 py-1 text-sm font-bold tabular-nums'
+                  )}
+                >
+                  {waitLabel(focus)}
+                </span>
+              )}
             </div>
           )}
         </div>
 
         {/* ── The same rides as a list, nearest first ── */}
-        <ul className="divide-border/60 divide-y">
+        <ul className="divide-foreground/10 divide-y">
           {rides.map((r) => (
             <li key={r.id}>
               <Link
                 href={r.href}
                 prefetch={false}
-                className="group hover:bg-muted/40 -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors"
+                className="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/40 dark:hover:bg-white/[0.04]"
               >
                 <span
                   className={cn(
+                    GLASS_CHIP,
                     'flex size-9 shrink-0 items-center justify-center rounded-full border',
-                    focus?.id === r.id ? 'border-primary text-primary' : 'text-foreground'
+                    focus?.id === r.id
+                      ? 'border-primary text-primary dark:border-primary'
+                      : 'text-foreground'
                   )}
                 >
                   {r.bearing !== null ? (
