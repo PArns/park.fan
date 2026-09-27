@@ -452,6 +452,32 @@ ride would otherwise both be called `troy` and the second would replace the firs
 Everything lands with `review: true` (see [media database](media-database.md)), so
 the evening's work is a filter in the media browser rather than a memory.
 
+### The open pull request counts
+
+The media index is built from `main`, and a photo taken today waits in the
+session's draft pull request until the evening. The backlog used to read the index
+alone, so after a reload every ride photographed today was back under „Fehlt noch",
+and the next photo of it was named after the first one. Measured against session
+PR #627 at Phantasialand on 2026-09-27: 10 rides and 12 file names in the pull
+request, none of them on `main`.
+
+`/api/admin/media/backlog` now reads the session's file list as well
+(`resolveSession`, then `pulls.listFiles`, or a compare with the base for a branch
+without a pull request). File names are read off paths and join `takenNames`. Rides
+are read out of the sidecars, never off a file name, and an added sidecar comes
+whole in its patch, so the capture screen's photos cost no extra request. A ride
+found there counts as photographed and carries an „im PR" chip. The parsing is in
+`lib/media/session-photos.ts`.
+
+When GitHub cannot be asked, the backlog still answers from `main` with
+`sessionChecked: false`, and the screen says the list may still hold rides
+photographed today.
+
+On the phone the reserved names only ever grow. A backlog refetch (the admin
+refetches on focus) used to replace them with the server's list, and a reload lost
+the names of photos still in the queue. Both now stay reserved, per collection.
+`pnpm test:capture-session`.
+
 ## The admin on a phone
 
 Two things were actually broken, and neither was a layout.

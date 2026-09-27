@@ -1,6 +1,8 @@
 import 'server-only';
 import type { Octokit } from '@octokit/rest';
 
+import type { SessionFile } from '@/lib/media/session-photos';
+
 /**
  * Which pull request a media save lands in.
  *
@@ -130,6 +132,51 @@ export async function resolveSession(
   if (prs.length) return null; // spent — merged or closed. Start fresh from base.
 
   return { number: null, url: null, branch, title: null, draft: true, body: '' };
+}
+
+/**
+ * The files a session changes against its base.
+ *
+ * The pull request's own file list when there is one. A session branch that
+ * never got its pull request (an earlier save answered 207) is compared with the
+ * base instead, which is the same diff by another door.
+ */
+export async function sessionFiles(
+  octokit: Octokit,
+  { owner, repo, baseBranch }: RepoRef,
+  session: MediaSession
+): Promise<SessionFile[]> {
+  const files = session.number
+    ? await octokit.paginate(octokit.pulls.listFiles, {
+        owner,
+        repo,
+        pull_number: session.number,
+        per_page: 100,
+      })
+    : ((
+        await octokit.repos.compareCommitsWithBasehead({
+          owner,
+          repo,
+          basehead: `${baseBranch}...${session.branch}`,
+        })
+      ).data.files ?? []);
+  return files.map(({ filename, status, patch }) => ({ filename, status, patch }));
+}
+
+/** A JSON file as it stands on the session branch, or null when it cannot be read. */
+export async function readSessionJson(
+  octokit: Octokit,
+  { owner, repo }: RepoRef,
+  session: MediaSession,
+  path: string
+): Promise<unknown> {
+  try {
+    const { data } = await octokit.repos.getContent({ owner, repo, path, ref: session.branch });
+    const content = Array.isArray(data) ? undefined : (data as { content?: string }).content;
+    return content ? JSON.parse(Buffer.from(content, 'base64').toString('utf8')) : null;
+  } catch {
+    return null;
+  }
 }
 
 /**
