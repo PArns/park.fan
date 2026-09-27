@@ -198,7 +198,12 @@ export default function CapturePage() {
         failed={failed}
         parkName={data?.park.name ?? park?.name ?? null}
         manual={Boolean(chosenPath)}
-        onRetry={retry}
+        onRetry={() => {
+          // The park too, not only the watch: a "no park" answer, or the wrong
+          // one after a drive to the next park, is what this press is usually for.
+          retry();
+          redetect();
+        }}
         onPick={() => setPicking(true)}
         onRedetect={() => {
           setManualPath(null);

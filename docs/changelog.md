@@ -4,6 +4,20 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: Foto-Aufnahme im Admin erkennt den Park wieder und folgt dem Standort sofort
+
+`/admin/capture` fand nie einen Park, weil die `in_park`-Antwort von `/api/nearby` am Park
+keine URL mitliefert (0 von 210 Parks) und der Hook genau die verlangte. Kontinent, Land und
+Stadt kommen jetzt aus der URL einer Bahn in derselben Antwort, und wenn die Bahnliste leer ist,
+aus einer zweiten Abfrage mit `radius=0`, deren Parks ihre URL tragen. Alle 210 Parks werden so
+erkannt. Findet die erste Abfrage keinen Park, fragt ein späterer Fix nach 15 s erneut, und
+„Neu orten" fragt sofort.
+
+Bei aktivem Tab kommt wieder jeder GPS-Fix auf den Bildschirm, etwa einer pro Sekunde, und ein
+gecachter Fix darf höchstens 15 s alt sein. Die 10-m-Schwelle und der 60-s-Cache aus PAR-341 sind
+raus. Im Hintergrund bleibt die Ortung aus.
+Details: [admin.md](features/admin.md#which-park-and-how-fast-the-position-follows).
+
 ## Unreleased – der Planer fragt, wenn der geplante Tag vorbei ist
 
 Ein Klick auf den Planer (die Lasche am Rand, am Handy der Knopf im Kopf) öffnete immer den
