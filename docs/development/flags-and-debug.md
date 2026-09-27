@@ -64,8 +64,12 @@ park's real answer as a labelled demo („Demo: Phantasialand um dich herum").
 
 With a location fix, every ride is moved along with the park so that the preset's standing point
 lies where the device is (`relocate()` in `lib/utils/compass.ts`, in metres east and north, so
-distances and bearings survive the move). The park is put down once, at the first fix, and stays
-there; every later fix moves the reader through it. Walking through the living room walks through
+distances and bearings survive the move). The park is put down under the device and then stays
+there; every later fix moves the reader through it. A phone's first fix is usually a Wi-Fi or cell
+estimate tens or hundreds of metres out, and the GPS fix after it "moved" the reader by that much
+without a step taken, so every distance was off by the jump. While the fix is worse than 25 m
+(`DEMO_SETTLED_M`), each clearly better one (a fifth tighter) puts the park down again; the first
+fix within 25 m pins it. Walking through the living room walks through
 the park.
 Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen". The
 hero and its own nearby request stay on the device's real position; `useHomeNearbyParks` treats a

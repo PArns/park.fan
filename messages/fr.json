@@ -1450,7 +1450,8 @@
       "picked": "Épinglée",
       "closed": "Fermé",
       "demo": "Démo : {park} autour de toi",
-      "demoLocation": "Utiliser ma position"
+      "demoLocation": "Utiliser ma position",
+      "heroPill": "Vers la boussole"
     }
   },
   "geo": {

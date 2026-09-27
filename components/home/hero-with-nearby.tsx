@@ -2,9 +2,11 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { ArrowDown, Compass } from 'lucide-react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { PARK_COMPASS_ID, useCompassPresent } from '@/lib/home/compass-presence';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -86,6 +88,12 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
  * window up in all six locales, and the plate is not a pixel taller there than without it.
  *
  * The chip does not grow: a short headline gets a short chip, not a pill of empty tint.
+ *
+ * **In a park the chip's place goes to the compass.** While the compass is on the page (see
+ * `useCompassPresent`), the row carries a pill that scrolls down to it instead of the news: in a
+ * park, the rides around you are the reason to be here, and the compass sits a screen below a
+ * hero that fills the phone. Same shape and height as the chip, in the chip's slot, so the swap
+ * moves nothing.
  */
 function HeroBadgeRow({
   openParks,
@@ -94,15 +102,50 @@ function HeroBadgeRow({
   openParks: number | null;
   latestNews: LatestNews | null | undefined;
 }) {
+  const compass = useCompassPresent();
   return (
     // Two elements because a container query styles the container's descendants, never the
     // container itself: the outer box is measured, the inner one is laid out.
     <div className="@container/badges w-full">
       <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
         <OpenParksBadge openParks={openParks} />
-        {latestNews && <LatestNewsChip news={latestNews} />}
+        {compass ? <CompassPill /> : latestNews && <LatestNewsChip news={latestNews} />}
       </div>
     </div>
+  );
+}
+
+/**
+ * „Zum Kompass": scrolls to the in-park compass under the hero and hands it the focus, so a
+ * keyboard or screen reader lands where the eye does. A plain fragment link underneath, which is
+ * what it does without JavaScript; the smooth scroll is dropped under reduced motion.
+ */
+function CompassPill() {
+  const t = useTranslations('nearby.compass');
+  const jump = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById(PARK_COMPASS_ID);
+    if (!target) return;
+    event.preventDefault();
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+    target.focus({ preventScroll: true });
+  };
+  return (
+    <a
+      href={`#${PARK_COMPASS_ID}`}
+      onClick={jump}
+      data-hero-compass=""
+      className="group border-primary/40 bg-primary/10 text-foreground hover:bg-primary/15 inline-flex h-[30px] max-w-full min-w-0 items-center gap-2 rounded-full border pr-3 pl-1 text-xs font-semibold shadow-sm transition-colors"
+    >
+      <span className="bg-primary text-primary-foreground flex size-[22px] shrink-0 items-center justify-center rounded-full">
+        <Compass className="size-3.5" aria-hidden="true" />
+      </span>
+      <span className="min-w-0 truncate">{t('heroPill')}</span>
+      <ArrowDown
+        className="text-primary size-3.5 shrink-0 transition-transform group-hover:translate-y-0.5 motion-reduce:transition-none"
+        aria-hidden="true"
+      />
+    </a>
   );
 }
 

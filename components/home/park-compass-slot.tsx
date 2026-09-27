@@ -1,11 +1,13 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import dynamic from 'next/dynamic';
 import { useQuery } from '@tanstack/react-query';
+import { useTranslations } from 'next-intl';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
+import { PARK_COMPASS_ID, setCompassPresent } from '@/lib/home/compass-presence';
 import type { NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
 
 const subscribeNever = () => () => {};
@@ -37,6 +39,7 @@ const ParkCompass = dynamic(
  * the hero fills the first screen on a phone, so the reader at the top does not see it arrive.
  */
 export function ParkCompassSlot() {
+  const t = useTranslations('nearby.compass');
   const mounted = useMounted();
   const { data: nearby } = useHomeNearbyParks();
 
@@ -62,12 +65,27 @@ export function ParkCompassSlot() {
   });
 
   const data = demo ? demoAnswer : nearby;
-  if (!mounted || data?.type !== 'in_park') return null;
-  const inPark = data.data as NearbyAttractionsData;
-  if (!inPark.rides?.some((r) => r.isHeadliner && r.isCurrentlyInSeason !== false)) return null;
+  const inPark = mounted && data?.type === 'in_park' ? (data.data as NearbyAttractionsData) : null;
+  const shown = Boolean(
+    inPark?.rides?.some((r) => r.isHeadliner && r.isCurrentlyInSeason !== false)
+  );
+  // The hero's pill to this section appears while it is here (`useCompassPresent`).
+  useEffect(() => {
+    setCompassPresent(shown);
+    return () => setCompassPresent(false);
+  }, [shown]);
+
+  if (!inPark || !shown || !data) return null;
 
   return (
-    <section className="px-4 pt-2 pb-12">
+    // `scroll-mt-16`: the hero's pill scrolls here, and the sticky 48 px header would cover the
+    // panel's top edge without it.
+    <section
+      id={PARK_COMPASS_ID}
+      tabIndex={-1}
+      aria-label={t('title')}
+      className="scroll-mt-16 px-4 pt-2 pb-12 outline-none"
+    >
       <div className="container mx-auto">
         <ParkCompass
           data={inPark}

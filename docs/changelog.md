@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Kompass: folgt dem Blick, Tippen fixiert, Pille im Hero
+
+Die Leiste unter dem Kompass nennt jetzt immer die Bahn, in deren Richtung das Handy zeigt, und
+wechselt sofort beim Drehen. Vorher wurde sie erst nach 8° Drehung neu bestimmt, und ein einziger
+Tipp auf einen Punkt hielt sie für immer fest. Ein Tipp fixiert jetzt eine Bahn (Pinnadel am Punkt,
+„Fixiert" in der Leiste), ein zweiter Tipp löst sie wieder. Im Hero steht, solange der Kompass auf
+der Seite ist, die Pille „Zum Kompass" an der Stelle des News-Chips und scrollt hin. In der Demo
+(`?sim=compass`) wird der Park erst dann fest abgelegt, wenn der Standort auf 25 m genau ist. Die
+erste, grobe Ortung per WLAN hatte sonst alle Entfernungen um den Sprung zum GPS-Fix verschoben.
+Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
+
 ## Unreleased – Der Kompass sieht aus wie ein Kompass
 
 Der Kompass unter dem Hero war eine flache Scheibe mit Strichen und sah aus wie jedes Radar. Jetzt

@@ -1450,7 +1450,8 @@
       "picked": "Fixiert",
       "closed": "Geschlossen",
       "demo": "Demo: {park} um dich herum",
-      "demoLocation": "Standort nutzen"
+      "demoLocation": "Standort nutzen",
+      "heroPill": "Zum Kompass"
     }
   },
   "geo": {

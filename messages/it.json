@@ -1450,7 +1450,8 @@
       "picked": "Fissata",
       "closed": "Chiusa",
       "demo": "Demo: {park} intorno a te",
-      "demoLocation": "Usa la mia posizione"
+      "demoLocation": "Usa la mia posizione",
+      "heroPill": "Vai alla bussola"
     }
   },
   "geo": {

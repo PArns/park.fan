@@ -1450,7 +1450,8 @@
       "picked": "Pinned",
       "closed": "Closed",
       "demo": "Demo: {park} around you",
-      "demoLocation": "Use my location"
+      "demoLocation": "Use my location",
+      "heroPill": "To the compass"
     }
   },
   "geo": {

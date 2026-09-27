@@ -1450,7 +1450,8 @@
       "picked": "Vastgezet",
       "closed": "Gesloten",
       "demo": "Demo: {park} om je heen",
-      "demoLocation": "Locatie gebruiken"
+      "demoLocation": "Locatie gebruiken",
+      "heroPill": "Naar het kompas"
     }
   },
   "geo": {

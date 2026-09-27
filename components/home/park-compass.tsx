@@ -43,6 +43,8 @@ const GLASS_CHIP =
 const MARKER_GAP = 10;
 /** A fix worse than this makes the arrows a guess, and the header says so. */
 const COARSE_FIX_M = 40;
+/** The compass demo puts its park down for good at the first fix this accurate (see `pin`). */
+const DEMO_SETTLED_M = 25;
 
 interface CompassRide {
   id: string;
@@ -157,12 +159,22 @@ export function ParkCompass({
   // In the demo, with a fix, the park's anchor is put down where the device first was and every
   // ride moves with it (`relocate`), so walking through the living room walks through the park.
   // Without a fix the reader stands on the anchor, as under `?sim=in_park`.
-  // The park is put down once, where the first fix lands, and stays there; every later fix moves
-  // the reader through it. Anchoring it to every fix would carry the park along with the reader,
-  // and no ride would ever come closer.
-  const [pin, setPin] = useState<{ lat: number; lng: number } | null>(null);
-  if (demo && here && !pin) setPin(here);
-  const shift = demo && pin ? { from: demo.anchor, to: pin } : null;
+  // The park is put down where the device is and then stays there; every later fix moves the
+  // reader through it. Anchoring it to every fix would carry the park along with the reader, and
+  // no ride would ever come closer. But a phone's first fix is rarely its real one: it comes off
+  // Wi-Fi or the cell network, tens or hundreds of metres out, and the GPS fix that follows
+  // "moves" the reader by that much without a step taken — every distance was off by the jump.
+  // So while the fix is still settling (worse than DEMO_SETTLED_M), each clearly better one puts
+  // the park down again under the reader; once one is good enough, it stays.
+  const [pin, setPin] = useState<{ lat: number; lng: number; accuracy: number } | null>(null);
+  if (
+    demo &&
+    live &&
+    (!pin || (pin.accuracy > DEMO_SETTLED_M && live.accuracy < pin.accuracy * 0.8))
+  ) {
+    setPin({ lat: live.lat, lng: live.lng, accuracy: live.accuracy });
+  }
+  const shift = demo && pin ? { from: demo.anchor, to: { lat: pin.lat, lng: pin.lng } } : null;
   const origin = demo
     ? (here ?? demo.anchor)
     : !simulated && here

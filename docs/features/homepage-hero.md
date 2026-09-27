@@ -289,6 +289,15 @@ headline gets a „… ist in deiner Nähe" line. Both variants render `HeroPark
 
 ### Under the hero: the headliners on a compass
 
+**The hero points at it.** The compass sits a full screen below a hero that fills the phone, so
+while it is on the page the hero's badge row carries „Zum Kompass" in the news chip's slot: same
+shape and 30 px height, so the swap moves nothing. A tap scrolls the section (`#park-compass`,
+`scroll-mt-16` for the sticky header) to the top, smoothly unless reduced motion is asked for, and
+hands it the focus. The hero learns that the compass is there from `useCompassPresent`
+(`lib/home/compass-presence.ts`), which `ParkCompassSlot` sets while it renders, rather than from
+its own nearby answer: under `?sim=compass` the hero stays on the device's real position and knows
+nothing of the park.
+
 For `in_park` only, `ParkCompassSlot` (`app/[locale]/page.tsx`, straight after the hero section)
 lazy-loads `ParkCompass`: a north-up compass dial with the reader in the middle. Every in-season
 headliner is a marker at its true bearing and at a radius that grows with its distance, showing
