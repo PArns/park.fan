@@ -316,6 +316,10 @@ read for, which way the reader faces; the arrow in the middle does.
   [API budget](../architecture/api-budget.md)), because the nearby answer has none.
 - **Layout arithmetic** is `lib/utils/compass.ts`, tested by `pnpm test:compass`. Markers are placed
   by distance, not spread round the ring: spreading put Taron 45° off its own arrow.
+- **To try it on a phone anywhere**, open `/?sim=compass` (or `?sim=compass:disneylandparis`). A
+  real park's live answer is laid out around the device's position, so turning and walking behave
+  as in the park. It works on production too; see
+  [flags and debug](../development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
 
 ---
 

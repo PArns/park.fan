@@ -1448,7 +1448,9 @@
       "ahead": "Voor je",
       "nearest": "Dichtstbij",
       "picked": "Gekozen",
-      "closed": "Gesloten"
+      "closed": "Gesloten",
+      "demo": "Demo: {park} om je heen",
+      "demoLocation": "Locatie gebruiken"
     }
   },
   "geo": {

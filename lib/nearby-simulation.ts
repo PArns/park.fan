@@ -14,6 +14,8 @@
  *   - `?sim=in_park`            → default park (Phantasialand)
  *   - `?sim=<presetName>`       → e.g. `?sim=efteling`, `?sim=europapark`
  *   - `?sim=<lat>,<lng>`        → arbitrary coordinates
+ *   - `?sim=compass` / `?sim=compass:<presetName>` → the in-park compass demo, see
+ *     {@link resolveCompassDemo}. The one value that also works in production.
  */
 
 export interface SimLocation {
@@ -82,4 +84,34 @@ export function resolveSimLocation(raw: string | null | undefined): SimLocation 
   }
 
   return null;
+}
+
+/** A park the compass demo shows, and the point inside it the demo treats as "where you stand". */
+export interface CompassDemo {
+  preset: string;
+  anchor: SimLocation;
+}
+
+/**
+ * `?sim=compass` (Phantasialand) or `?sim=compass:<presetName>` (`compass:disneylandparis`, also
+ * spelled `compass-…`): the homepage's in-park compass with a real park's live answer, laid out
+ * around wherever the device actually is.
+ *
+ * It is the one `sim` value honoured in production, and it can be, because it overrides nothing on
+ * the server. `resolveSimLocation` does not know it (so `/api/nearby` ignores it like any unknown
+ * value); the compass slot asks `/api/nearby` for the preset's coordinates itself, which is a
+ * request any visitor may make, and it draws a labelled demo. What it exists for is testing the
+ * compass on a real phone — the magnetometer, the live position, walking — without being in a park,
+ * and a preview deployment is not always at hand on a phone.
+ *
+ * `null` for anything else, including every other `sim` value.
+ */
+export function resolveCompassDemo(raw: string | null | undefined): CompassDemo | null {
+  const value = raw?.trim().toLowerCase();
+  if (!value || !value.startsWith('compass')) return null;
+  const rest = value.slice('compass'.length);
+  if (rest !== '' && !rest.startsWith(':') && !rest.startsWith('-')) return null;
+  const preset = rest === '' ? DEFAULT_PRESET : rest.slice(1).replace(/[\s_-]/g, '');
+  const anchor = SIM_PRESETS[preset];
+  return anchor ? { preset, anchor } : null;
 }

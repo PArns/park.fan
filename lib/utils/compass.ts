@@ -159,3 +159,28 @@ export function placeMarkers(
   }
   return points.map(({ x, y }) => ({ x, y }));
 }
+
+/** Metres per degree of latitude (and of longitude on the equator), for {@link relocate}. */
+const METRES_PER_DEGREE = 111_320;
+
+/**
+ * A point moved along with its park: where `point` would be if the park's `from` stood at `to`.
+ *
+ * The compass demo uses it to lay a real park out around the reader. The offset is carried in
+ * METRES, east and north, not in degrees: a degree of longitude is 70 km at Phantasialand and
+ * 111 km at the equator, so shifting the raw numbers from Brühl to Lisbon would stretch the park
+ * east to west by a quarter. Over a park's few hundred metres the flat approximation is exact to
+ * well under a metre.
+ */
+export function relocate(
+  point: { lat: number; lng: number },
+  from: { lat: number; lng: number },
+  to: { lat: number; lng: number }
+): { lat: number; lng: number } {
+  const north = (point.lat - from.lat) * METRES_PER_DEGREE;
+  const east = (point.lng - from.lng) * METRES_PER_DEGREE * Math.cos(toRad(from.lat));
+  return {
+    lat: to.lat + north / METRES_PER_DEGREE,
+    lng: to.lng + east / (METRES_PER_DEGREE * Math.cos(toRad(to.lat))),
+  };
+}

@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Kompass-Demo zum Testen: `?sim=compass`
+
+Den Kompass unter dem Hero kann man jetzt auch zu Hause auf dem Handy ausprobieren, auf park.fan
+selbst und nicht nur in einer Vorschau. `?sim=compass` legt Phantasialand mit seinen echten Wartezeiten um
+den eigenen Standort, `?sim=compass:disneylandparis` (oder `efteling`, `europapark`) einen anderen
+Park. Entfernungen und Richtungen bleiben dabei wie im Park, also dreht sich der Pfeil mit dem
+Handy und die Bahnen kommen näher, wenn man in ihre Richtung geht. Ein gelber Hinweis über dem
+Kompass sagt, dass es eine Demo ist; ohne Standortfreigabe steht man auf dem Punkt im Park und
+kann die Freigabe dort mit „Standort nutzen" geben. Der Hero bleibt dabei unverändert.
+Details: [flags-and-debug.md](development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
+
 ## Unreleased – Startseite im Park: Kompass mit den Top-Attraktionen
 
 Wer im Park steht, sieht unter dem Hero der Startseite einen Kompass. Norden ist oben, jede

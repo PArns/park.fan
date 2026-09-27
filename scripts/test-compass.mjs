@@ -16,8 +16,11 @@ import {
   normalizeDegrees,
   niceRange,
   placeMarkers,
+  relocate,
   smoothHeading,
 } from '../lib/utils/compass.ts';
+import { calculateDistance } from '../lib/utils/distance-utils.ts';
+import { resolveCompassDemo, resolveSimLocation } from '../lib/nearby-simulation.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -145,6 +148,35 @@ test('two markers on exactly one point still get a direction to part in', () => 
     RADAR
   );
   assert.ok(Math.hypot(a.x - b.x, a.y - b.y) >= 9.99);
+});
+
+test('a relocated park keeps its distances and bearings, wherever it is put down', () => {
+  const taron = { lat: 50.7996591, lng: 6.8829768 };
+  // Phantasialand's simulation point, put down in Lisbon.
+  const lisbon = { lat: 38.7223, lng: -9.1393 };
+  const moved = relocate(taron, HERE, lisbon);
+  const before = calculateDistance(HERE.lat, HERE.lng, taron.lat, taron.lng);
+  const after = calculateDistance(lisbon.lat, lisbon.lng, moved.lat, moved.lng);
+  assert.ok(Math.abs(before - after) < 0.5, `${before} m against ${after} m`);
+  near(
+    bearingBetween(lisbon.lat, lisbon.lng, moved.lat, moved.lng),
+    bearingBetween(HERE.lat, HERE.lng, taron.lat, taron.lng),
+    0.2,
+    'bearing'
+  );
+});
+
+test('the compass demo parses, and it is the only sim value the server does not act on', () => {
+  assert.equal(resolveCompassDemo('compass')?.preset, 'phantasialand');
+  assert.equal(resolveCompassDemo('compass:disneylandparis')?.preset, 'disneylandparis');
+  assert.equal(resolveCompassDemo('compass-europa-park')?.preset, 'europapark');
+  assert.equal(resolveCompassDemo('Compass')?.preset, 'phantasialand');
+  assert.equal(resolveCompassDemo('compass:nowhere'), null);
+  assert.equal(resolveCompassDemo('compasses'), null);
+  assert.equal(resolveCompassDemo('in_park'), null);
+  assert.equal(resolveCompassDemo(null), null);
+  assert.equal(resolveSimLocation('compass'), null);
+  assert.equal(resolveSimLocation('compass:disneylandparis'), null);
 });
 
 console.log(`\n${passed} assertions passed.`);

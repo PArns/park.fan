@@ -21,7 +21,7 @@ import { useCompassHeading } from '@/lib/hooks/use-compass-heading';
 import { useLivePosition } from '@/lib/hooks/use-live-position';
 import { useRidePositions } from '@/lib/hooks/use-ride-positions';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
-import { angleDelta, bearingBetween, niceRange, placeMarkers } from '@/lib/utils/compass';
+import { angleDelta, bearingBetween, niceRange, placeMarkers, relocate } from '@/lib/utils/compass';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { CROWD_BADGE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -111,11 +111,17 @@ const deg = (value: number) => `${value}deg`;
 export function ParkCompass({
   data,
   userLocation,
+  demo,
   className,
 }: {
   data: NearbyAttractionsData;
   /** The point the nearby answer was computed for. */
   userLocation: UserLocation;
+  /**
+   * `?sim=compass`: this park is a demo, laid out around wherever the device is — see
+   * `resolveCompassDemo`. `anchor` is the point inside the park that stands in for the reader.
+   */
+  demo?: { parkName: string; anchor: { lat: number; lng: number } };
   className?: string;
 }) {
   const t = useTranslations('nearby.compass');
@@ -144,13 +150,20 @@ export function ParkCompass({
     };
   }, []);
 
-  // Under `?sim=` the park is somewhere the device is not, so the device's own fix is ignored.
-  const simulated = useSyncExternalStore(subscribeNever, readSimulated, () => false);
-  const { permissionGranted } = useGeolocation();
+  // Under `?sim=` the park is somewhere the device is not, so the device's own fix is ignored —
+  // except in the compass demo, which moves the park to the device instead.
+  const simulated = useSyncExternalStore(subscribeNever, readSimulated, () => false) && !demo;
+  const { permissionGranted, refresh: askForLocation } = useGeolocation();
   const live = useLivePosition(visible && !simulated, permissionGranted);
-  const origin =
-    !simulated && live
-      ? { lat: live.lat, lng: live.lng }
+  const here = live ? { lat: live.lat, lng: live.lng } : null;
+  // In the demo, with a fix, the park's anchor stands where the device does and every ride moves
+  // with it (`relocate`), so walking through the living room walks through the park. Without a
+  // fix the reader stands on the anchor, as under `?sim=in_park`.
+  const shift = demo && here ? { from: demo.anchor, to: here } : null;
+  const origin = demo
+    ? (here ?? demo.anchor)
+    : !simulated && here
+      ? here
       : { lat: userLocation.latitude, lng: userLocation.longitude };
 
   // The ride straight ahead only moves when the phone has turned far enough, and not more often
@@ -190,7 +203,14 @@ export function ParkCompass({
   const { range, list: rides } = useMemo((): { range: number; list: CompassRide[] } => {
     const { headliners } = splitInParkRides(data.rides);
     const base = headliners.map((ride) => {
-      const at = positions?.get(ride.slug);
+      const stored = positions?.get(ride.slug);
+      const at = stored
+        ? shift
+          ? (({ lat, lng }) => ({ latitude: lat, longitude: lng }))(
+              relocate({ lat: stored.latitude, lng: stored.longitude }, shift.from, shift.to)
+            )
+          : stored
+        : null;
       return {
         id: ride.id,
         slug: ride.slug,
@@ -218,7 +238,18 @@ export function ParkCompass({
         .map((r) => ({ ...r, point: pointOf.get(r.id) ?? null }))
         .sort((a, b) => a.distance - b.distance),
     };
-  }, [data.rides, positions, origin.lat, origin.lng]);
+    // `shift` is read through its four numbers, which is what changes; the object is new each render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    data.rides,
+    positions,
+    origin.lat,
+    origin.lng,
+    shift?.from.lat,
+    shift?.from.lng,
+    shift?.to.lat,
+    shift?.to.lng,
+  ]);
 
   // What the middle of the dial talks about: the reader's pick, else the ride straight ahead, else
   // the nearest one.
@@ -257,6 +288,22 @@ export function ParkCompass({
       className={cn(PANEL_FLAT, 'rounded-3xl border p-5 sm:p-6', className)}
       data-park-compass=""
     >
+      {demo && (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm">
+          <span className="font-semibold text-amber-700 dark:text-amber-300">
+            {t('demo', { park: demo.parkName })}
+          </span>
+          {!permissionGranted && (
+            <button
+              type="button"
+              onClick={askForLocation}
+              className="inline-flex min-h-9 items-center rounded-lg border border-amber-500/50 px-3 font-semibold text-amber-800 transition-colors hover:bg-amber-500/15 max-sm:min-h-11 dark:text-amber-200"
+            >
+              {t('demoLocation')}
+            </button>
+          )}
+        </div>
+      )}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex items-center gap-2">
           <Compass className="text-primary h-5 w-5 shrink-0" aria-hidden="true" />
