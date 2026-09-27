@@ -8,6 +8,7 @@ import { postPath } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 
 /** Author slug the blog already publishes a page for. */
 const AUTHOR_SLUG = 'patrick';
@@ -42,7 +43,10 @@ const STORY_POST_KEY = 'welcome-to-park-fan-blog';
  * broken image.
  */
 export async function FounderSection({ locale }: { locale: Locale }) {
-  const t = await getTranslations('homeStory.founder');
+  const [t, tCommon] = await Promise.all([
+    getTranslations('homeStory.founder'),
+    getTranslations('common'),
+  ]);
   const author = getAuthor(AUTHOR_SLUG, locale);
   const bullets = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6'] as const;
 
@@ -110,19 +114,22 @@ export async function FounderSection({ locale }: { locale: Locale }) {
           <Reveal delay={80}>
             <div>
               <p className="leading-relaxed">{t('p1')}</p>
-              <p className="text-muted-foreground mt-4 leading-relaxed">{t('p2')}</p>
+              {/* On a phone: the portrait and the first paragraph; the rest on request. */}
+              <MobileMore label={tCommon('showMore')}>
+                <p className="text-muted-foreground mt-4 leading-relaxed">{t('p2')}</p>
 
-              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                {bullets.map((key) => (
-                  <li key={key} className="flex items-start gap-2.5 text-sm">
-                    <Check
-                      className="text-status-operating mt-0.5 h-4 w-4 shrink-0"
-                      aria-hidden="true"
-                    />
-                    {t(key)}
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                  {bullets.map((key) => (
+                    <li key={key} className="flex items-start gap-2.5 text-sm">
+                      <Check
+                        className="text-status-operating mt-0.5 h-4 w-4 shrink-0"
+                        aria-hidden="true"
+                      />
+                      {t(key)}
+                    </li>
+                  ))}
+                </ul>
+              </MobileMore>
             </div>
           </Reveal>
         </div>

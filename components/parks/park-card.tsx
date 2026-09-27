@@ -73,6 +73,12 @@ interface ParkCardProps {
   translateCountry?: boolean;
   /** Accepted for API-shape compatibility — not used in rendering. */
   continent?: string;
+  /**
+   * Hold the badge row open (22 px, one status badge) while `status` is still unknown. For a
+   * card whose status arrives from a client query after the first paint: without it the row
+   * is 0 px until then, and a grid of six cards grows 132 px under the reader (PAR-435).
+   */
+  reserveStatusRow?: boolean;
 }
 
 export function ParkCard({
@@ -103,6 +109,7 @@ export function ParkCard({
   highlightAsNearestOpen = false,
   translateCountry = false,
   continent: _continent,
+  reserveStatusRow = false,
 }: ParkCardProps) {
   const tNearby = useTranslations('nearby');
   const tGeo = useTranslations('geo');
@@ -370,7 +377,12 @@ export function ParkCard({
           </div>
 
           {/* Badges row */}
-          <div className="relative mt-[9px] flex flex-wrap items-center gap-[6px]">
+          <div
+            className={cn(
+              'relative mt-[9px] flex flex-wrap items-center gap-[6px]',
+              reserveStatusRow && 'min-h-[22px]'
+            )}
+          >
             {badges}
             {showNearestOpen && (
               <Badge className="badge-primary text-xs">{tNearby('nearestOpenBadge')}</Badge>
