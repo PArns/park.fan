@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowUp, ChevronRight, CircleDashed, Compass } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -13,13 +21,7 @@ import { useCompassHeading } from '@/lib/hooks/use-compass-heading';
 import { useLivePosition } from '@/lib/hooks/use-live-position';
 import { useRidePositions } from '@/lib/hooks/use-ride-positions';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
-import {
-  angleDelta,
-  bearingBetween,
-  niceRange,
-  normalizeDegrees,
-  placeMarkers,
-} from '@/lib/utils/compass';
+import { angleDelta, bearingBetween, niceRange, placeMarkers } from '@/lib/utils/compass';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { CROWD_BADGE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -37,10 +39,6 @@ const RANGE_OUTER = 34;
 const RANGE_INNER = 8;
 /** A 30 px marker is ~9.4 cqw on a 320 px dial; this keeps a hair of space between two. */
 const MARKER_GAP = 10;
-/** Half a marker plus a little air: where the needle's tip stops short of the marker's centre. */
-const MARKER_RIM = 5.5;
-/** The needle as drawn, from the hub to its tip, before it is scaled to its ride. */
-const NEEDLE_LENGTH = 34;
 /** A fix worse than this makes the arrows a guess, and the header says so. */
 const COARSE_FIX_M = 40;
 /** The "ahead" ride is re-chosen when the phone has turned this far, and no more often than… */
@@ -75,15 +73,19 @@ const deg = (value: number) => `${value}deg`;
  * The headliners around somebody standing in a park, inside a compass bezel: which way each one
  * is, how far, and what its queue costs right now.
  *
- * **A bezel, turned by the phone, around a radar, with a needle.** The bezel carries the ticks and
- * the cardinal letters. Inside it every headliner is a marker at its true bearing, at a radius that
- * grows with its distance, showing the current wait in the site's wait colours; two dashed rings
- * mark half and all of the range, and the outer one is labelled. A compass needle points from the
- * reader at one ride — the one they tapped, else the one straight ahead, else the nearest — and
- * the bar under the dial names it; tapping another marker swings the needle over. Where the phone
- * has a compass, the whole drawing turns so that up is the way the reader is facing; without one
- * it stays north-up, which is a map like any other, and says so. The list beside it carries the
- * same rides with an arrow each, and every arrow turns with it.
+ * **A map with the reader's arrow in it.** The bezel carries the ticks and the cardinal letters,
+ * north up. Inside it every headliner is a marker at its true bearing, at a radius that grows with
+ * its distance, showing the current wait in the site's wait colours; two dashed rings mark half
+ * and all of the range, and the outer one is labelled. In the middle is the reader: where the
+ * phone has a compass, an arrow with a view cone that turns with the phone — which way they are
+ * looking, the way a maps app draws it — and without one a plain dot, with the header saying north
+ * is up. The bar under the dial names one ride (the one tapped, else the one straight ahead, else
+ * the nearest), and the list beside it carries every ride with an arrow that points the way to go
+ * from where the reader is looking.
+ *
+ * The first version turned the whole dial instead (heading-up), with a small mark at the top for
+ * „ahead". It asked the reader to work out that up meant their own direction; an arrow that turns
+ * as they turn shows it.
  *
  * Markers are not spread round the ring by bearing, and that was the first version: seven of
  * Phantasialand's ten headliners lie east of the simulation point within 35°, and spreading them
@@ -91,9 +93,9 @@ const deg = (value: number) => `${value}deg`;
  * direction by itself; `placeMarkers` only parts true piles.
  *
  * **Turning costs React nothing.** The heading arrives at up to 60 Hz and is written into one CSS
- * custom property, `--heading`, on the root; the bezel, the letters, the markers and the arrows
- * all rotate off it in CSS. React re-renders when the ride straight ahead changes, which is a few
- * times a minute while somebody turns on the spot.
+ * custom property, `--heading`, on the root; the reader's arrow and every list arrow rotate off it
+ * in CSS. React re-renders when the ride straight ahead changes, which is a few times a minute
+ * while somebody turns on the spot.
  *
  * **Where the reader stands** is, in order: a high-accuracy fix this component watches while it is
  * on screen (`useLivePosition`), then the point `/api/nearby` answered for. Under `?sim=` only the
@@ -120,6 +122,8 @@ export function ParkCompass({
   const tNearby = useTranslations('nearby');
   const tCommon = useTranslations('common');
   const rootRef = useRef<HTMLDivElement>(null);
+  // `useId` answers with characters (`«r1»`) a `url(#…)` reference does not survive.
+  const coneId = `compass-cone-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
 
   // On screen and in front — the two conditions every sensor in here runs under.
   const [visible, setVisible] = useState(false);
@@ -236,37 +240,6 @@ export function ParkCompass({
   const focus = rides.find((r) => r.id === picked) ?? ahead ?? rides[0] ?? null;
   const focusReason = focus && focus.id === picked ? 'picked' : ahead ? 'ahead' : 'nearest';
 
-  // The needle points at the focused ride's MARKER — where it is drawn, which `placeMarkers` may
-  // have nudged a few degrees off the true bearing — and ends at the marker's edge, so it reads
-  // as "this one" rather than as a direction that runs on past it. The bar's arrow keeps the true
-  // bearing.
-  //
-  // Its angle is kept UNWRAPPED: it swings by CSS transition, and a transition from 350° to 10°
-  // goes the long way round, 340° backwards. So each new target is reached from the last angle by
-  // the short way (`angleDelta`), and the number is allowed to leave [0, 360). Adjusted during
-  // render rather than in an effect, the way the planner adjusts state derived from a prop.
-  const needleTarget = focus?.point
-    ? {
-        angle: normalizeDegrees((Math.atan2(focus.point.x, -focus.point.y) * 180) / Math.PI),
-        reach: Math.hypot(focus.point.x, focus.point.y),
-      }
-    : null;
-  const [needleAngle, setNeedleAngle] = useState<number | null>(needleTarget?.angle ?? null);
-  if (
-    needleTarget !== null &&
-    (needleAngle === null || Math.abs(angleDelta(needleAngle, needleTarget.angle)) > 0.01)
-  ) {
-    setNeedleAngle(
-      needleAngle === null
-        ? needleTarget.angle
-        : needleAngle + angleDelta(needleAngle, needleTarget.angle)
-    );
-  }
-  // Drawn NEEDLE_LENGTH long and scaled to end at the marker's rim, never shorter than a stub.
-  const needleScale = needleTarget
-    ? Math.min(1, Math.max(0.3, (needleTarget.reach - MARKER_RIM) / NEEDLE_LENGTH))
-    : 1;
-
   const waitLabel = (r: CompassRide) => (r.wait === null ? null : `${r.wait} ${tCommon('min')}`);
   const cardinals = [
     { key: 'n', angle: 0 },
@@ -326,17 +299,11 @@ export function ParkCompass({
                   strokeDasharray="1 1.6"
                 />
               ))}
-              {/* The reader's view, fixed upward while the bezel turns under it. */}
-              {compassOn && (
-                <path d="M50 50 L41 17 A34 34 0 0 1 59 17 Z" className="fill-primary/10" />
-              )}
             </svg>
 
-            {/* What turns with the phone: the bezel, its letters and the markers. */}
-            <div
-              className="absolute inset-0"
-              style={{ transform: 'rotate(calc(var(--heading) * -1))' }}
-            >
+            {/* North-up, like a map: the bezel, its letters and the markers stay where they are,
+                and what turns is the reader's own arrow in the middle. */}
+            <div className="absolute inset-0">
               <svg viewBox="0 0 100 100" aria-hidden="true" className="absolute inset-0 size-full">
                 {Array.from({ length: 36 }, (_, i) => {
                   const major = i % 3 === 0;
@@ -367,46 +334,65 @@ export function ParkCompass({
                   style={{
                     left: `calc(50% + ${LETTER_RADIUS * Math.sin((angle * Math.PI) / 180)}cqw)`,
                     top: `calc(50% - ${LETTER_RADIUS * Math.cos((angle * Math.PI) / 180)}cqw)`,
-                    transform: 'translate(-50%, -50%) rotate(var(--heading))',
+                    transform: 'translate(-50%, -50%)',
                   }}
                 >
                   {t(key)}
                 </span>
               ))}
 
-              {/* The needle: from the reader's dot to the ride the bar below names. Inside the
-                  turning group, so it turns with the bezel on every frame and only its own swing
-                  to a new ride is animated. Under the markers, so it never hides one. */}
-              {needleTarget !== null && needleAngle !== null && (
+              {/* The reader: an arrow and a view cone turned to the phone's heading — where they
+                  are looking, the way a maps app draws it. Without a compass there is no heading
+                  to show, and it is a plain dot. Under the markers, so the cone never hides one. */}
+              {compassOn ? (
                 <div
                   aria-hidden="true"
-                  data-compass-needle=""
-                  className="absolute inset-0 transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
-                  style={{ transform: `rotate(${needleAngle}deg) scaleY(${needleScale})` }}
+                  data-compass-facing=""
+                  className="absolute inset-0"
+                  style={{ transform: 'rotate(var(--heading))' }}
                 >
                   <svg viewBox="0 0 100 100" className="size-full">
+                    <defs>
+                      <radialGradient
+                        id={coneId}
+                        cx="50"
+                        cy="50"
+                        r="30"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop
+                          offset="0"
+                          className="[stop-color:var(--primary)]"
+                          stopOpacity="0.45"
+                        />
+                        <stop offset="1" className="[stop-color:var(--primary)]" stopOpacity="0" />
+                      </radialGradient>
+                    </defs>
+                    {/* ±28° around straight ahead, fading out at 30 units. */}
+                    <path d="M50 50 L35.9 23.5 A30 30 0 0 1 64.1 23.5 Z" fill={`url(#${coneId})`} />
                     <polygon
-                      points={`50,${50 - NEEDLE_LENGTH} 46.6,50 53.4,50`}
-                      className="fill-primary"
+                      points="50,42 56,56.5 50,53 44,56.5"
+                      className="fill-primary stroke-background"
+                      strokeWidth="1.4"
+                      strokeLinejoin="round"
                     />
-                    <polygon points="46.6,50 50,60 53.4,50" className="fill-muted-foreground/50" />
                   </svg>
                 </div>
+              ) : (
+                <svg
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 size-full"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="3"
+                    className="fill-primary stroke-background"
+                    strokeWidth="1.4"
+                  />
+                </svg>
               )}
-              {/* The hub, over the needle and unscaled with it: the reader's own dot. */}
-              <svg
-                viewBox="0 0 100 100"
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 size-full"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="3.4"
-                  className="fill-background stroke-primary"
-                  strokeWidth="1.6"
-                />
-              </svg>
 
               {/* One marker per headliner: its direction and, by the radius, its distance. */}
               {rides.map((r) =>
@@ -432,7 +418,7 @@ export function ParkCompass({
                     style={{
                       left: `calc(50% + ${r.point.x}cqw)`,
                       top: `calc(50% + ${r.point.y}cqw)`,
-                      transform: 'translate(-50%, -50%) rotate(var(--heading))',
+                      transform: 'translate(-50%, -50%)',
                     }}
                   >
                     {r.wait ?? '–'}
@@ -557,7 +543,7 @@ function CompassStatusLine({
       {status === 'active' ? (
         <span className="flex items-center gap-2">
           <LiveDot variant="pulse" color="bg-status-operating" />
-          {t('turnsWithPhone')}
+          {t('facing')}
         </span>
       ) : status === 'needs-permission' ? (
         <button

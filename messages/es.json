@@ -1442,7 +1442,7 @@
       "w": "O",
       "enable": "Activar brújula",
       "northUp": "El norte está arriba",
-      "turnsWithPhone": "Gira con tu móvil",
+      "facing": "La flecha indica hacia dónde miras",
       "denied": "Brújula no permitida. El norte está arriba.",
       "coarse": "GPS impreciso (± {meters} m)",
       "ahead": "Delante",

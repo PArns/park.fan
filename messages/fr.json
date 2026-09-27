@@ -1442,7 +1442,7 @@
       "w": "O",
       "enable": "Activer la boussole",
       "northUp": "Le nord est en haut",
-      "turnsWithPhone": "Tourne avec ton téléphone",
+      "facing": "La flèche indique où tu regardes",
       "denied": "Boussole non autorisée. Le nord est en haut.",
       "coarse": "GPS imprécis (± {meters} m)",
       "ahead": "Devant toi",

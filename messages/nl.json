@@ -1442,7 +1442,7 @@
       "w": "W",
       "enable": "Kompas aanzetten",
       "northUp": "Noorden is boven",
-      "turnsWithPhone": "Draait mee met je telefoon",
+      "facing": "De pijl wijst waar je naartoe kijkt",
       "denied": "Kompas niet toegestaan. Noorden is boven.",
       "coarse": "GPS onnauwkeurig (± {meters} m)",
       "ahead": "Voor je",

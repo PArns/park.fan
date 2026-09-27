@@ -290,20 +290,25 @@ headline gets a „… ist in deiner Nähe" line. Both variants render `HeroPark
 ### Under the hero: the headliners on a compass
 
 For `in_park` only, `ParkCompassSlot` (`app/[locale]/page.tsx`, straight after the hero section)
-lazy-loads `ParkCompass`: a compass bezel around a small radar. Every in-season headliner is a
-marker at its true bearing and at a radius that grows with its distance, showing its current wait
-in the wait colours; two dashed range rings, the outer one labelled („500 m"). The same rides are
-listed beside it with an arrow each, a distance and the wait, nearest first. A compass needle
-points at one ride (the reader's pick, the ride straight ahead, or the nearest one) and the bar
-under the dial names it; a tapped marker swings the needle over. The needle's angle is kept
-unwrapped, so its CSS transition always takes the short way round.
+lazy-loads `ParkCompass`: a north-up compass dial with the reader in the middle. Every in-season
+headliner is a marker at its true bearing and at a radius that grows with its distance, showing
+its current wait in the wait colours; two dashed range rings, the outer one labelled („500 m").
+The reader is an arrow with a view cone that turns with the phone, the way a maps app shows which
+way somebody is looking; without a compass it is a plain dot. The bar under the dial names one
+ride (the one tapped, the one straight ahead, or the nearest), and the list beside it carries the
+same rides with an arrow each (the way to go from where the reader is looking), a distance and
+the wait, nearest first.
+
+The first version turned the whole dial heading-up and marked „ahead" with a small triangle at the
+top, then gained a needle pointing at the selected ride. Neither showed the one thing a compass is
+read for, which way the reader faces; the arrow in the middle does.
 
 - **The heading** comes from `DeviceOrientation` (`useCompassHeading`): Chrome's
   `deviceorientationabsolute`, Safari's `webkitCompassHeading`. Safari only sends it after
   `requestPermission()` inside a tap, so iOS shows „Kompass einschalten". Without a compass (a
-  desktop, a denied prompt) the dial stays north-up and says so. The heading is written into one
-  CSS variable, `--heading`, and everything turns off it in CSS, so a 60 Hz sensor costs React
-  nothing.
+  desktop, a denied prompt) there is no arrow and the header says north is up. The heading is
+  written into one CSS variable, `--heading`, and the reader's arrow and the list arrows turn off
+  it in CSS, so a 60 Hz sensor costs React nothing.
 - **The reader's position** is a high-accuracy `watchPosition` while the compass is on screen and
   the tab is in front (`useLivePosition`), else the point the nearby answer was made for; never a
   prompt. Under `?sim=` only the latter.

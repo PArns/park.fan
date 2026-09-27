@@ -1442,7 +1442,7 @@
       "w": "W",
       "enable": "Turn on compass",
       "northUp": "North is up",
-      "turnsWithPhone": "Turns with your phone",
+      "facing": "The arrow shows where you’re facing",
       "denied": "Compass not allowed. North is up.",
       "coarse": "GPS imprecise (± {meters} m)",
       "ahead": "Ahead",
