@@ -1,0 +1,150 @@
+/**
+ * Unit tests for the in-park compass arithmetic (`lib/utils/compass.ts`): the bearing to a ride,
+ * the phone's heading out of a DeviceOrientation event, the filter that keeps the ring from
+ * shivering, and the radar layout that puts each marker at its bearing and distance.
+ *
+ * The points are Phantasialand's own: the in-park simulation's standing point and the coordinates
+ * the park payload gives its rides.
+ *
+ * Run: pnpm test:compass
+ */
+import assert from 'node:assert/strict';
+import {
+  angleDelta,
+  bearingBetween,
+  headingFromOrientation,
+  normalizeDegrees,
+  niceRange,
+  placeMarkers,
+  smoothHeading,
+} from '../lib/utils/compass.ts';
+
+let passed = 0;
+function test(name, fn) {
+  fn();
+  passed++;
+  console.log(`  ✓ ${name}`);
+}
+const near = (actual, expected, tolerance, label) =>
+  assert.ok(
+    Math.abs(angleDelta(expected, actual)) <= tolerance,
+    `${label}: expected ~${expected}, got ${actual}`
+  );
+
+// The in-park simulation's point (`lib/nearby-simulation.ts`, preset phantasialand).
+const HERE = { lat: 50.7991, lng: 6.8782 };
+
+test('the four cardinal directions', () => {
+  near(bearingBetween(50, 7, 51, 7), 0, 0.01, 'north');
+  near(bearingBetween(50, 7, 50, 7.01), 90, 0.05, 'east');
+  near(bearingBetween(50, 7, 49, 7), 180, 0.01, 'south');
+  near(bearingBetween(50, 7, 50, 6.99), 270, 0.05, 'west');
+});
+
+test('Crazy Bats lies north of the simulation point, Colorado Adventure east-south-east', () => {
+  // 50.8005072, 6.8781136: 157 m north, a metre west.
+  near(bearingBetween(HERE.lat, HERE.lng, 50.8005072, 6.8781136), 358, 2, 'Crazy Bats');
+  // 50.7985636, 6.8820704: 60 m south, 272 m east.
+  near(bearingBetween(HERE.lat, HERE.lng, 50.7985636, 6.8820704), 103, 3, 'Colorado Adventure');
+});
+
+test('a bearing is always in [0, 360)', () => {
+  for (const [lat, lng] of [
+    [HERE.lat + 0.001, HERE.lng - 0.0001],
+    [HERE.lat - 0.001, HERE.lng - 0.001],
+  ]) {
+    const b = bearingBetween(HERE.lat, HERE.lng, lat, lng);
+    assert.ok(b >= 0 && b < 360, String(b));
+  }
+  assert.equal(normalizeDegrees(-90), 270);
+  assert.equal(normalizeDegrees(720), 0);
+});
+
+test('angleDelta takes the short way round and signs left and right', () => {
+  assert.equal(angleDelta(350, 10), 20);
+  assert.equal(angleDelta(10, 350), -20);
+  assert.equal(angleDelta(0, 180), 180);
+  assert.equal(angleDelta(90, 90), 0);
+});
+
+test("Safari's webkitCompassHeading is taken as it is", () => {
+  assert.equal(headingFromOrientation({ alpha: 12, webkitCompassHeading: 250 }), 250);
+});
+
+test('an absolute alpha counts counter-clockwise, so the heading is 360 minus it', () => {
+  assert.equal(headingFromOrientation({ alpha: 90, absolute: true }), 270);
+  assert.equal(headingFromOrientation({ alpha: 0, absolute: true }), 0);
+});
+
+test('a relative alpha says nothing about north and is refused', () => {
+  assert.equal(headingFromOrientation({ alpha: 90, absolute: false }), null);
+  assert.equal(headingFromOrientation({ alpha: null, absolute: true }), null);
+});
+
+test('a screen turned to landscape adds its angle', () => {
+  assert.equal(headingFromOrientation({ alpha: 0, absolute: true }, 90), 90);
+  assert.equal(headingFromOrientation({ alpha: null, webkitCompassHeading: 300 }, 90), 30);
+});
+
+test('smoothing crosses north the short way', () => {
+  const step = smoothHeading(359, 1, 0.5);
+  assert.ok(step > 359 || step < 1, `stayed near north: ${step}`);
+  assert.equal(smoothHeading(null, 42), 42);
+});
+
+test('the outer ring snaps to a round distance', () => {
+  assert.equal(niceRange(402), 500);
+  assert.equal(niceRange(90), 100);
+  assert.equal(niceRange(500), 500);
+  assert.equal(niceRange(6300), 7000);
+});
+
+const RADAR = { range: 500, inner: 8, outer: 34, minGap: 10 };
+const length = (p) => Math.hypot(p.x, p.y);
+const bearingOf = (p) => normalizeDegrees((Math.atan2(p.x, -p.y) * 180) / Math.PI);
+
+test('a lone marker sits at its true bearing and a radius that grows with distance', () => {
+  const [east] = placeMarkers([{ bearing: 90, distance: 250 }], RADAR);
+  near(bearingOf(east), 90, 0.001, 'bearing');
+  assert.ok(Math.abs(length(east) - 21) < 1e-9, `radius ${length(east)}`);
+  const [far] = placeMarkers([{ bearing: 0, distance: 900 }], RADAR);
+  assert.ok(Math.abs(length(far) - 34) < 1e-9, 'beyond the range stays on the outer ring');
+});
+
+test("Winja's Fear and Winja's Force, 3 m apart, are parted by the gap and stay close to true", () => {
+  const [fear, force] = placeMarkers(
+    [
+      { bearing: 300, distance: 132 },
+      { bearing: 301, distance: 130 },
+    ],
+    RADAR
+  );
+  assert.ok(Math.hypot(fear.x - force.x, fear.y - force.y) >= 9.99, 'parted');
+  near(bearingOf(fear), 300, 20, 'fear');
+  near(bearingOf(force), 301, 20, 'force');
+});
+
+test('two rides in one direction at different distances do not move at all', () => {
+  const pts = placeMarkers(
+    [
+      { bearing: 80, distance: 150 },
+      { bearing: 82, distance: 400 },
+    ],
+    RADAR
+  );
+  near(bearingOf(pts[0]), 80, 0.001, 'near one');
+  near(bearingOf(pts[1]), 82, 0.001, 'far one');
+});
+
+test('two markers on exactly one point still get a direction to part in', () => {
+  const [a, b] = placeMarkers(
+    [
+      { bearing: 45, distance: 200 },
+      { bearing: 45, distance: 200 },
+    ],
+    RADAR
+  );
+  assert.ok(Math.hypot(a.x - b.x, a.y - b.y) >= 9.99);
+});
+
+console.log(`\n${passed} assertions passed.`);

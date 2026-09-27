@@ -36,6 +36,7 @@ import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch'
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
+import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
@@ -324,6 +325,10 @@ export default async function HomePage({ params }: HomePageProps) {
             )}
           </HeroRotationProvider>
         </section>
+
+        {/* Standing in a park: the headliners on a compass ring, straight under the hero that says
+          which park it is. Client-only and absent for everybody else — see ParkCompassSlot. */}
+        <ParkCompassSlot />
 
         {/* The newest post, in the band the park shortcuts used to hold: the first
           thing under the fold, and the only spot on this page that reaches a

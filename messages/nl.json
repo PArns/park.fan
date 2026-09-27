@@ -1433,6 +1433,22 @@
       "heading": "Nu korter dan straks",
       "reason": "Nu {now} min, vanaf {time} volgens de prognose {later} min",
       "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Topattracties om je heen",
+      "n": "N",
+      "e": "O",
+      "s": "Z",
+      "w": "W",
+      "enable": "Kompas aanzetten",
+      "northUp": "Noorden is boven",
+      "facing": "De pijl wijst waar je naartoe kijkt",
+      "denied": "Kompas niet toegestaan. Noorden is boven.",
+      "coarse": "GPS onnauwkeurig (± {meters} m)",
+      "ahead": "Voor je",
+      "nearest": "Dichtstbij",
+      "picked": "Gekozen",
+      "closed": "Gesloten"
     }
   },
   "geo": {

@@ -1433,6 +1433,22 @@
       "heading": "Jetzt kürzer als später",
       "reason": "Jetzt {now} Min., ab {time} laut Prognose {later} Min.",
       "saving": "−{minutes} Min."
+    },
+    "compass": {
+      "title": "Top-Attraktionen um dich herum",
+      "n": "N",
+      "e": "O",
+      "s": "S",
+      "w": "W",
+      "enable": "Kompass einschalten",
+      "northUp": "Norden ist oben",
+      "facing": "Der Pfeil zeigt, wohin du schaust",
+      "denied": "Kompass nicht freigegeben. Norden ist oben.",
+      "coarse": "GPS ungenau (± {meters} m)",
+      "ahead": "Vor dir",
+      "nearest": "Am nächsten",
+      "picked": "Ausgewählt",
+      "closed": "Geschlossen"
     }
   },
   "geo": {

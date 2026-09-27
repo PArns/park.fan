@@ -1433,6 +1433,22 @@
       "heading": "Più breve ora che dopo",
       "reason": "Ora {now} min, dalle {time} previsti {later} min",
       "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Le attrazioni top intorno a te",
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "O",
+      "enable": "Attiva la bussola",
+      "northUp": "Il nord è in alto",
+      "facing": "La freccia indica dove stai guardando",
+      "denied": "Bussola non consentita. Il nord è in alto.",
+      "coarse": "GPS impreciso (± {meters} m)",
+      "ahead": "Davanti a te",
+      "nearest": "Più vicina",
+      "picked": "Selezionata",
+      "closed": "Chiusa"
     }
   },
   "geo": {

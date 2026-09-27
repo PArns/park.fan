@@ -4,6 +4,19 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Startseite im Park: Kompass mit den Top-Attraktionen
+
+Wer im Park steht, sieht unter dem Hero der Startseite einen Kompass. Norden ist oben, jede
+Top-Attraktion ist ein Punkt in ihrer Richtung, je weiter weg, desto weiter außen, mit der
+aktuellen Wartezeit in den Wartezeit-Farben. In der Mitte zeigt ein Pfeil mit Blickkegel, wohin
+du schaust, und dreht sich mit dem Handy; auf dem iPhone nach einem Tipp auf „Kompass
+einschalten". Die Leiste unter dem Kompass nennt die Bahn, die vor dir liegt (oder die
+angetippte). Daneben stehen dieselben Bahnen als Liste mit Pfeil, Entfernung und Wartezeit. Ohne
+Kompass (am Rechner) gibt es keinen Pfeil, nur deinen Punkt. Die Koordinaten der Bahnen liefert
+eine neue, kleine Route (`/api/parks/…/positions`, 0,7 KB), weil die Antwort von `/api/nearby`
+keine enthält.
+Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
+
 ## Unreleased – fix: Foto-Aufnahme kennt die Fotos im offenen Pull Request
 
 Nach einem Neuladen von `/admin/capture` standen alle heute fotografierten Bahnen wieder unter
