@@ -135,7 +135,8 @@ function CompassPill() {
       href={`#${PARK_COMPASS_ID}`}
       onClick={jump}
       data-hero-compass=""
-      className="group border-primary/40 bg-primary/10 text-foreground hover:bg-primary/15 inline-flex h-[30px] max-w-full min-w-0 items-center gap-2 rounded-full border pr-3 pl-1 text-xs font-semibold shadow-sm transition-colors"
+      // 30 px to match the chip it stands in for; the `::after` makes the target 44 px tall.
+      className="group border-primary/40 bg-primary/10 text-foreground hover:bg-primary/15 relative inline-flex h-[30px] max-w-full min-w-0 items-center gap-2 rounded-full border pr-3 pl-1 text-xs font-semibold shadow-sm transition-colors after:absolute after:inset-x-0 after:-inset-y-[7px] after:content-['']"
     >
       <span className="bg-primary text-primary-foreground flex size-[22px] shrink-0 items-center justify-center rounded-full">
         <Compass className="size-3.5" aria-hidden="true" />

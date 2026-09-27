@@ -944,6 +944,16 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
       {
+        // The homepage compass's ride coordinates and the park's magnetic declination: both move
+        // when somebody re-surveys a park or a year passes, never between two visits. The
+        // handler's own value; `next dev` answered `no-store` from the blanket rule until this
+        // entry existed.
+        source: '/api/parks/:continent/:country/:city/:park/positions',
+        headers: sharedCache(
+          'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
+        ),
+      },
+      {
         // The blog's inline ride references poll this, so it is live data — but the backend
         // caches it 5 min anyway, and one post naming ten rides in one park is one request.
         source: '/api/parks/:continent/:country/:city/:park/wait-times',

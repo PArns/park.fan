@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useSyncExternalStore } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useTranslations } from 'next-intl';
+import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
@@ -14,15 +13,17 @@ const subscribeNever = () => () => {};
 const readSim = () => new URLSearchParams(window.location.search).get('sim');
 
 /**
- * The compass's own chunk, fetched only by a visitor this page has placed inside a park. Everybody
- * else — nearly every visitor to the homepage — never downloads it.
+ * How much of the viewport may lie below the slot when the compass goes in. On a 390 × 844 phone
+ * the homepage's next section starts under the hero at 798 px, so at the top of the page the
+ * slot is never quite below the fold; waiting for that would mean never. What lies below it then
+ * is a 46 px sliver, and pushing a sliver out of view scores its own share of the screen: 0.05,
+ * against the 1.0 a reader scrolled past it got before. From 360 × 740 to 1920 × 1080 the slot
+ * starts at or below the fold and this never comes into it.
  */
-const ParkCompass = dynamic(
-  () => import('./park-compass').then((m) => ({ default: m.ParkCompass })),
-  {
-    ssr: false,
-  }
-);
+const VISIBLE_SLICE = 0.1;
+
+/** The compass's own module, loaded by hand — see „where it appears" below. */
+type ParkCompassComponent = typeof import('./park-compass').ParkCompass;
 
 /**
  * Directly under the homepage hero: the in-park compass, or nothing.
@@ -31,21 +32,33 @@ const ParkCompass = dynamic(
  * between them), and like the welcome it waits for the mount — the hook can answer from a cached
  * position in the first client render, and the server wrote nothing here.
  *
- * Only for `in_park`. The 1 km fallback the hero also welcomes comes from `nearby_parks`, which
- * carries no rides, so there is nothing to point at.
+ * Only for `in_park` with a headliner in season — the same filter `ParkCompass` lists by
+ * (`splitInParkRides`), so the two cannot disagree about whether there is anything to show. The
+ * 1 km fallback the hero also welcomes comes from `nearby_parks`, which carries no rides.
  *
- * It does move the page when it appears, and that is accepted rather than reserved: a box held
- * open under the hero would be several hundred pixels of nothing for every visitor at home, and
- * the hero fills the first screen on a phone, so the reader at the top does not see it arrive.
+ * **Where it appears, and when.** The compass is some 1,300 px on a phone and lands a second or
+ * more after load. No box is held open for it (a screen of nothing for every visitor at home),
+ * so its arrival moves whatever is below it, and a reader who had already scrolled past this
+ * point had the page shoved down under them: a layout shift of 1.0 at y = 1100, measured. The
+ * browser's scroll anchoring did not absorb it, and a `scrollBy` to compensate kept the page
+ * visually still but is scored all the same — the Layout Instability API counts a node that
+ * moved in the document, whatever the scroll did.
+ *
+ * So it is only ever put in where nobody is looking: once its module has loaded (the chunk is
+ * fetched as soon as we know the visitor is in a park, and only then — everybody else never
+ * downloads it), and only while this slot lies below the bottom of the viewport, give or take
+ * VISIBLE_SLICE. On a phone the hero fills the first screen, so that is the moment the answer
+ * lands for anybody at the top; a reader who has scrolled past gets it when they come back up. Inside, `ParkCompass` keeps its
+ * height as its data arrives (see its status line), so nothing moves after that either.
  */
 export function ParkCompassSlot() {
-  const t = useTranslations('nearby.compass');
   const mounted = useMounted();
   const { data: nearby } = useHomeNearbyParks();
 
   // `?sim=compass[:preset]`: the park's own nearby answer, asked for at the preset's coordinates —
   // a request like any visitor's, which is why this works in production (`resolveCompassDemo`).
-  const demo = resolveCompassDemo(useSyncExternalStore(subscribeNever, readSim, () => null));
+  const sim = useSyncExternalStore(subscribeNever, readSim, () => null);
+  const demo = useMemo(() => resolveCompassDemo(sim), [sim]);
   const { data: demoAnswer } = useQuery({
     queryKey: ['compass-demo', demo?.preset],
     queryFn: async (): Promise<NearbyResponse> => {
@@ -66,40 +79,85 @@ export function ParkCompassSlot() {
 
   const data = demo ? demoAnswer : nearby;
   const inPark = mounted && data?.type === 'in_park' ? (data.data as NearbyAttractionsData) : null;
-  const shown = Boolean(
-    inPark?.rides?.some((r) => r.isHeadliner && r.isCurrentlyInSeason !== false)
+  const shown = inPark !== null && splitInParkRides(inPark.rides ?? []).headliners.length > 0;
+  const parkName = inPark?.park.name;
+  // One object for as long as the demo and the park stay the same: `ParkCompass` keys its
+  // placement of the park on it.
+  const demoProp = useMemo(
+    () =>
+      demo && parkName
+        ? {
+            parkName,
+            anchor: { lat: demo.anchor.latitude, lng: demo.anchor.longitude },
+          }
+        : undefined,
+    [demo, parkName]
   );
+
+  // The module, fetched the moment there is a park to show and not before.
+  const [ParkCompass, setParkCompass] = useState<ParkCompassComponent | null>(null);
+  useEffect(() => {
+    if (!shown || ParkCompass) return;
+    let live = true;
+    import('./park-compass').then((m) => {
+      if (live) setParkCompass(() => m.ParkCompass);
+    });
+    return () => {
+      live = false;
+    };
+  }, [shown, ParkCompass]);
+
+  // Put in only while the slot is below the viewport — see „where it appears" above. Once in, it
+  // stays.
+  const slotRef = useRef<HTMLDivElement>(null);
+  const [placed, setPlaced] = useState(false);
+  useEffect(() => {
+    if (!shown || !ParkCompass || placed) return;
+    const el = slotRef.current;
+    if (!el) return;
+    const check = () => {
+      if (el.getBoundingClientRect().top >= window.innerHeight * (1 - VISIBLE_SLICE)) {
+        setPlaced(true);
+      }
+    };
+    const frame = requestAnimationFrame(check);
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', check);
+      window.removeEventListener('resize', check);
+    };
+  }, [shown, ParkCompass, placed]);
+  const visible = shown && placed && ParkCompass !== null;
+
   // The hero's pill to this section appears while it is here (`useCompassPresent`).
   useEffect(() => {
-    setCompassPresent(shown);
+    setCompassPresent(visible);
     return () => setCompassPresent(false);
-  }, [shown]);
-
-  if (!inPark || !shown || !data) return null;
+  }, [visible]);
 
   return (
-    // `scroll-mt-16`: the hero's pill scrolls here, and the sticky 48 px header would cover the
-    // panel's top edge without it.
-    <section
-      id={PARK_COMPASS_ID}
-      tabIndex={-1}
-      aria-label={t('title')}
-      className="scroll-mt-16 px-4 pt-2 pb-12 outline-none"
-    >
-      <div className="container mx-auto">
-        <ParkCompass
-          data={inPark}
-          userLocation={data.userLocation}
-          demo={
-            demo
-              ? {
-                  parkName: inPark.park.name,
-                  anchor: { lat: demo.anchor.latitude, lng: demo.anchor.longitude },
-                }
-              : undefined
-          }
-        />
-      </div>
-    </section>
+    <div ref={slotRef} data-compass-slot="">
+      {visible && inPark && data && ParkCompass && (
+        // `scroll-mt-16`: the hero's pill scrolls here, and the sticky 48 px header would cover
+        // the panel's top edge without it. The heading inside names the section.
+        <section
+          id={PARK_COMPASS_ID}
+          tabIndex={-1}
+          className="scroll-mt-16 px-4 pt-2 pb-12 outline-none"
+        >
+          <div className="container mx-auto">
+            {/* Keyed by park: a pin and a ride ahead belong to the park they were chosen in. */}
+            <ParkCompass
+              key={inPark.park.slug}
+              data={inPark}
+              userLocation={data.userLocation}
+              demo={demoProp}
+            />
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

@@ -71,7 +71,8 @@ without a step taken, so every distance was off by the jump. While the fix is wo
 (`DEMO_SETTLED_M`), each clearly better one (a fifth tighter) puts the park down again; the first
 fix within 25 m pins it. Walking through the living room walks through
 the park.
-Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen". The
+Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen"; after a
+denied prompt it says so instead. „Demo beenden" is the same page without `?sim`. The
 hero and its own nearby request stay on the device's real position; `useHomeNearbyParks` treats a
 compass value as no simulation (`resolveCompassDemo()`).
 

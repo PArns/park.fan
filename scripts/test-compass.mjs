@@ -12,6 +12,8 @@ import assert from 'node:assert/strict';
 import {
   angleDelta,
   bearingBetween,
+  compassPoint,
+  compassUnreliable,
   dialLabel,
   headingFromOrientation,
   normalizeDegrees,
@@ -21,6 +23,8 @@ import {
   relocate,
   rideAhead,
   smoothHeading,
+  stableOrder,
+  stableRange,
 } from '../lib/utils/compass.ts';
 import { calculateDistance } from '../lib/utils/distance-utils.ts';
 import { resolveCompassDemo, resolveSimLocation } from '../lib/nearby-simulation.ts';
@@ -256,4 +260,157 @@ test('the ride ahead holds against jitter and lets go once another is clearly ne
   assert.equal(rideAhead(rides, 306, 'fear'), 'force');
 });
 
-console.log(`\n${passed} assertions passed.`);
+test('nothing is „ahead" outside the cone, and a ride that left the list is not held', () => {
+  const rides = [
+    { id: 'taron', bearing: 97 },
+    { id: 'crazy-bats', bearing: 358 },
+  ];
+  // Facing south-west, 116° off either: the bar falls back to the nearest ride instead.
+  assert.equal(rideAhead(rides, 220, null), null);
+  assert.equal(rideAhead(rides, 220, 'taron'), null);
+  // 28° off is still inside; 35° is not.
+  assert.equal(rideAhead(rides, 125, null), 'taron');
+  assert.equal(rideAhead(rides, 132, null), null);
+  // The ride held last time is gone: the nearest in the cone takes over.
+  assert.equal(rideAhead(rides, 100, 'gone'), 'taron');
+});
+
+test('a steeply held phone takes its heading from its back, and agrees at the hand-over', () => {
+  // Level side to side, the top edge and the back point the same way.
+  assert.equal(
+    Math.round(headingFromOrientation({ alpha: 40, beta: 64, gamma: 0, absolute: true })),
+    320
+  );
+  assert.equal(
+    Math.round(headingFromOrientation({ alpha: 40, beta: 80, gamma: 0, absolute: true })),
+    320
+  );
+  // Upright and rolled 30° to the right, the back swings right of the top edge's heading.
+  const rolled = headingFromOrientation({ alpha: 0, beta: 90, gamma: 30, absolute: true });
+  near(rolled, 330, 0.5, 'rolled');
+  // Landscape keeps the top-edge reading: the tilt axes are not the ones this reads there.
+  assert.equal(headingFromOrientation({ alpha: 0, beta: 80, gamma: 0, absolute: true }, 90), 90);
+});
+
+test("Safari's own accuracy says when the compass needs a figure eight", () => {
+  assert.equal(compassUnreliable({ alpha: 0, webkitCompassAccuracy: 10 }), false);
+  assert.equal(compassUnreliable({ alpha: 0, webkitCompassAccuracy: 40 }), true);
+  assert.equal(compassUnreliable({ alpha: 0, webkitCompassAccuracy: -1 }), true);
+  assert.equal(compassUnreliable({ alpha: 0, absolute: true }), false);
+});
+
+test('the eight points of the compass', () => {
+  assert.equal(compassPoint(0), 'n');
+  assert.equal(compassPoint(22), 'n');
+  assert.equal(compassPoint(23), 'ne');
+  assert.equal(compassPoint(225), 'sw');
+  assert.equal(compassPoint(350), 'n');
+  assert.equal(compassPoint(-90), 'w');
+});
+
+test('the list reorders only past the tolerance, and places newcomers by distance', () => {
+  const rows = (pairs) => pairs.map(([id, distance]) => ({ id, distance }));
+  const ids = (list) => list.map((r) => r.id).join(' ');
+  // First sight: plain nearest first.
+  assert.equal(
+    ids(
+      stableOrder(
+        rows([
+          ['b', 200],
+          ['a', 100],
+          ['c', 300],
+        ]),
+        [],
+        15
+      )
+    ),
+    'a b c'
+  );
+  // A walk makes b 8 m nearer than a: within the tolerance, the order holds.
+  assert.equal(
+    ids(
+      stableOrder(
+        rows([
+          ['a', 110],
+          ['b', 102],
+          ['c', 300],
+        ]),
+        ['a', 'b', 'c'],
+        15
+      )
+    ),
+    'a b c'
+  );
+  // 30 m nearer: b overtakes.
+  assert.equal(
+    ids(
+      stableOrder(
+        rows([
+          ['a', 130],
+          ['b', 100],
+          ['c', 300],
+        ]),
+        ['a', 'b', 'c'],
+        15
+      )
+    ),
+    'b a c'
+  );
+  // A ride new to the list bubbles up to where its distance puts it.
+  assert.equal(
+    ids(
+      stableOrder(
+        rows([
+          ['a', 100],
+          ['c', 300],
+          ['d', 50],
+        ]),
+        ['a', 'c'],
+        15
+      )
+    ),
+    'd a c'
+  );
+  // Idempotent: its own answer as `previous` gives the same order back.
+  const once = stableOrder(
+    rows([
+      ['a', 130],
+      ['b', 100],
+      ['c', 90],
+    ]),
+    ['a', 'b', 'c'],
+    15
+  );
+  assert.equal(
+    ids(
+      stableOrder(
+        once,
+        once.map((r) => r.id),
+        15
+      )
+    ),
+    ids(once)
+  );
+});
+
+test('the range ring grows at once and shrinks only with a margin', () => {
+  assert.equal(stableRange(null, 290), 300);
+  assert.equal(stableRange(300, 310), 400);
+  // Back to 290 m: the 300 m ring would fit, but only just, so the ring stays at 400.
+  assert.equal(stableRange(400, 290), 400);
+  // Well inside the step below (under three quarters of 300 m): it shrinks.
+  assert.equal(stableRange(400, 200), 200);
+  assert.equal(stableRange(7000, 5200), 7000);
+  assert.equal(stableRange(7000, 3000), 3000);
+});
+
+test('a smaller marker lets its label sit closer', () => {
+  const big = placeLabels([{ x: 20, y: 0, width: 10 }], [0], { ...LABELS, face: 45 });
+  const small = placeLabels([{ x: 20, y: 0, width: 10, radius: 2 }], [0], {
+    ...LABELS,
+    face: 45,
+  });
+  assert.ok(small[0].x < big[0].x, `${small[0].x} against ${big[0].x}`);
+});
+
+console.log(`\n${passed} tests passed.`);
