@@ -55,13 +55,22 @@ type Listener = () => void;
  * - `plan-list` — a day picked out of the list on the planner's own page.
  * - `shared-link` — "Planer öffnen" on the shared-plan page, after the visitor
  *   took over a plan somebody sent them.
+ * - `home-hero` — "Heute planen" in the homepage hero, shown to a visitor it has
+ *   placed in or right next to a park (`HeroParkActions`).
  *
  * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
  * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
  * inside the already-open panel. Neither is a way in.
  */
 export type PlannerOpenedSource =
-  'tab' | 'header' | 'park-header' | 'calendar-day' | 'wizard' | 'plan-list' | 'shared-link';
+  | 'tab'
+  | 'header'
+  | 'park-header'
+  | 'calendar-day'
+  | 'wizard'
+  | 'plan-list'
+  | 'shared-link'
+  | 'home-hero';
 
 export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 
