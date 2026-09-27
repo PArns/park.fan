@@ -71,3 +71,38 @@ export function formatTime(
 ): string {
   return getDateTimeFormat(locale, options).format(value);
 }
+
+/**
+ * Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English.
+ *
+ * For the homepage hero's hours tile, which is half a phone wide. Written the site's usual way
+ * (`hour: '2-digit'`, `minute: '2-digit'`) the English range is „09:00 AM – 06:00 PM", about 130 px.
+ * A 12-hour clock drops a `:00` it does not need; a 24-hour one keeps both digits, because „9–18"
+ * reads as a date range as easily as a time.
+ *
+ * Not `formatRange`: two times that fall on different days in the park's zone (a park closing at
+ * 01:00) come back from it with both dates written out.
+ */
+export function formatHoursRange(
+  openingIso: string,
+  closingIso: string,
+  locale: string,
+  timeZone: string
+): string {
+  const twelveHour = ['h11', 'h12'].includes(
+    getDateTimeFormat(locale, { hour: 'numeric', timeZone }).resolvedOptions().hourCycle ?? ''
+  );
+  const format = (iso: string) => {
+    const at = new Date(iso);
+    if (!twelveHour)
+      return formatTime(at, locale, { hour: '2-digit', minute: '2-digit', timeZone });
+    // Minutes alone come back unpadded („0"), so the check is numeric.
+    const onTheHour = Number(formatTime(at, 'en-GB', { minute: 'numeric', timeZone })) === 0;
+    return formatTime(
+      at,
+      locale,
+      onTheHour ? { hour: 'numeric', timeZone } : { hour: 'numeric', minute: '2-digit', timeZone }
+    );
+  };
+  return `${format(openingIso)}–${format(closingIso)}`;
+}

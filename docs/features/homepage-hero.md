@@ -257,6 +257,36 @@ the page down (0.0147 CLS on a throttled phone). Note also the `grid-cols-1` on 
 an implicit grid column is sized to its content's max-content width, and a horizontally
 scrollable row is wider than a phone — without it the whole hero overflowed the viewport.
 
+## In a park, or next to one
+
+When `/api/nearby` places the visitor inside a park (`in_park`, or `nearby_parks` with the nearest
+park under 1 km) the headline becomes „Herzlich willkommen im …", and within 5 km the general
+headline gets a „… ist in deiner Nähe" line. Both variants render `HeroParkActions`
+(`components/home/hero-park-actions.tsx`) under it, a 2×2 block:
+
+| Cell           | Shows                                                | Leads to                                      |
+| -------------- | ---------------------------------------------------- | --------------------------------------------- |
+| „Heute planen" | today's date in the park's zone                      | the planner's wizard, park and today answered |
+| „Zum Park"     | rides running (`operatingAttractions`)               | the park page                                 |
+| Öffnungszeiten | today's hours (`formatHoursRange`), dot for open now | the park's crowd calendar                     |
+| Wetter         | nowcast condition and temperature                    | `#weather` on the park page                   |
+
+- **The park's slugs come from a ride.** The `in_park` answer carries no URL for the park itself
+  (0 of 210 parks), which is why the old „Zum Park" link never rendered for a visitor inside the
+  park. `parkGeoFromUrl` reads them off the first ride URL, as `PlannerInParkCta` does.
+- **„Heute planen" is the calendar's hand-off.** A `PlannerPageParkBeacon` is mounted with the
+  block, so the panel knows which park the page is about; the press files today with
+  `plannerPageDay` and requests `page-park-wizard` (source `home-hero`), and the wizard opens on
+  „Wer kommt mit". Today already in the plan: „Plan für heute", which opens that day and goes to
+  the park page. Shut today or already closed: „Besuch planen", which asks for the date, with the
+  next opening under it.
+- **No intro in the welcome variant.** The general sentence was six lines on a phone between the
+  welcome and the block; the variant is client-only, so the served HTML keeps the general intro.
+  The welcome variant has three children like the general one, so the plate's entrance stagger
+  counts the search and the pills at the same places.
+- **One request of its own:** the nowcast, under the park page's query key, and only for a
+  visitor this hero has placed in or near a park.
+
 ---
 
 ## Nothing appears out of nowhere

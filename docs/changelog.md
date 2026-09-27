@@ -4,6 +4,19 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Startseite im Park: „Heute planen", „Zum Park", Öffnungszeiten, Wetter
+
+Steht man in einem Park oder in dessen Nähe, zeigt der Hero der Startseite unter der Begrüßung
+vier Felder. „Heute planen" öffnet den Assistenten des Tagesplaners mit diesem Park und dem
+heutigen Tag, direkt bei „Wer kommt mit". Ist heute schon geplant, heißt der Knopf „Plan für
+heute" und öffnet den Tag auf der Parkseite. Hat der Park heute zu oder schon geschlossen, heißt
+er „Besuch planen" und fragt nach dem Datum. „Zum Park" führt zu den Wartezeiten und zeigt, wie
+viele Attraktionen laufen. Dazu die Öffnungszeiten von heute (zum Wartezeiten-Kalender) und das
+Wetter (zum Wetter-Kapitel). Den Link zum Park gab es im Park vorher gar nicht, weil die
+`in_park`-Antwort keine Park-URL mitliefert; die Adresse kommt jetzt aus einer Bahn-URL. Der
+allgemeine Einleitungstext fällt in dieser Variante weg.
+Details: [homepage-hero.md](features/homepage-hero.md#in-a-park-or-next-to-one).
+
 ## Unreleased – fix: Foto-Aufnahme im Admin erkennt den Park wieder und folgt dem Standort sofort
 
 `/admin/capture` fand nie einen Park, weil die `in_park`-Antwort von `/api/nearby` am Park
