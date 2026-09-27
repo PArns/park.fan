@@ -64,7 +64,9 @@ park's real answer as a labelled demo („Demo: Phantasialand um dich herum").
 
 With a location fix, every ride is moved along with the park so that the preset's standing point
 lies where the device is (`relocate()` in `lib/utils/compass.ts`, in metres east and north, so
-distances and bearings survive the move). Walking through the living room walks through the park.
+distances and bearings survive the move). The park is put down once, at the first fix, and stays
+there; every later fix moves the reader through it. Walking through the living room walks through
+the park.
 Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen". The
 hero and its own nearby request stay on the device's real position; `useHomeNearbyParks` treats a
 compass value as no simulation (`resolveCompassDemo()`).

@@ -4,13 +4,29 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Der Kompass sieht aus wie ein Kompass
+
+Der Kompass unter dem Hero war eine flache Scheibe mit Strichen und sah aus wie jedes Radar. Jetzt
+hat er eine Lünette mit Gradzahlen alle 30°, Strichen alle 5° und einem Dreieck für Norden. Das
+Zifferblatt ist das Foto des Parks, verschwommen und abgedunkelt, darüber liegt eine blasse
+Windrose. Wohin du schaust, leuchtet auf der Lünette ein Bogen, und dort steht auch die Gradzahl
+(„100°"). Von dir zur Bahn in der Leiste unter dem Kompass führt eine gestrichelte Linie. Neben
+den Punkten stehen jetzt die Namen der Bahnen, gekürzt („Big Thunder…") und mit einer feinen Linie
+zum Punkt. Wo im Gedränge kein Platz ist, fällt ein Name weg; in Disneyland waren 8 von 10 Punkten
+beschriftet. Das ganze Panel ist Glas über dem verschwommenen Parkfoto, wie die Glasflächen im
+Rest der Seite, aber ohne `backdrop-filter`, weil sich hier ständig etwas dreht. Eine
+geschlossene Bahn zeigt ihr Abzeichen in der Leiste unter dem Namen, damit der Name nicht mehr
+abgeschnitten wird. Das Foto kostet 2,9 KB.
+Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
+
 ## Unreleased – Kompass-Demo zum Testen: `?sim=compass`
 
 Den Kompass unter dem Hero kann man jetzt auch zu Hause auf dem Handy ausprobieren, auf park.fan
 selbst und nicht nur in einer Vorschau. `?sim=compass` legt Phantasialand mit seinen echten Wartezeiten um
 den eigenen Standort, `?sim=compass:disneylandparis` (oder `efteling`, `europapark`) einen anderen
 Park. Entfernungen und Richtungen bleiben dabei wie im Park, also dreht sich der Pfeil mit dem
-Handy und die Bahnen kommen näher, wenn man in ihre Richtung geht. Ein gelber Hinweis über dem
+Handy und die Bahnen kommen näher, wenn man in ihre Richtung geht. Der Park wird dafür einmal an
+der ersten Position abgelegt und bleibt dort liegen. Ein gelber Hinweis über dem
 Kompass sagt, dass es eine Demo ist; ohne Standortfreigabe steht man auf dem Punkt im Park und
 kann die Freigabe dort mit „Standort nutzen" geben. Der Hero bleibt dabei unverändert.
 Details: [flags-and-debug.md](development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).

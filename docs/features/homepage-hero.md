@@ -303,6 +303,39 @@ The first version turned the whole dial heading-up and marked „ahead" with a s
 top, then gained a needle pointing at the selected ride. Neither showed the one thing a compass is
 read for, which way the reader faces; the arrow in the middle does.
 
+**It is drawn as an instrument, not as a radar** (`ParkCompassDial`,
+`components/home/park-compass-dial.tsx`). A flat disc with ticks read like any radar widget on any
+site. The dial now has a bezel the way a real one is drawn: 5° ticks, numerals every 30° set along
+the ring (turned over in the lower half, so none stands on its head), upright N/O/S/W, and a
+triangle for north. Inside it the face is the park's own photo, the first one the hero above
+rotates, blurred and dimmed so it tints the face rather than competing with the markers, with a
+faint eight-point rose over it. A park without a hero photo gets a plain face with a blue glow. The
+photo is a 256 px rendition at quality 50, 2.9 KB as AVIF for Phantasialand's.
+
+**Every marker says which ride it is**, where there is room: a short name beside it
+(`dialLabel`: „Chiapas" for „Chiapas - DIE Wasserbahn", „Big Thunder…" for „Big Thunder
+Mountain"), placed the way a map labels its pins (`placeLabels`). Each label tries the eight places
+around its marker, outward first, then the same eight a step further out, and may reach onto the
+bezel; it takes the first that covers no marker, no other label and not the reader. The ride in
+focus chooses first, then the nearest. A hairline runs from each marker to its label, because a
+label that had to go diagonally into a cluster was otherwise a guess. Where no place is free the
+label is left out, and a tap on the marker names it in the bar. On the live Disneyland answer 8 of
+10 markers carried a name, on Phantasialand's tight east side 7 of 10.
+
+**The panel is glass over the park.** The same photo as the face lies under the whole panel,
+blurred to colour and light under the heavy-glass fill (`HEAVY_GLASS`'s tint, a step more solid),
+and the bezel, the bar under the dial, the name labels and the list's arrow chips are translucent
+fills with a hairline and a lit top edge. None of it is a `backdrop-filter`: the arrows turn with
+every sensor frame, and a moving element under a backdrop filter is what made „Heute im Park"
+flicker. The photo is blurred once, as an image, and both layers use the same 256 px rendition, so
+it is one request. A park without a photo keeps the flat panel (`PANEL_FLAT`).
+
+What turns with the phone is one layer rotated by `--heading`: the view cone, a lit arc on the
+bezel and the arrow. The heading as a figure („100°") rides the bezel at the same angle and stays
+upright (rotate, push out, rotate back); `ParkCompass` writes the figure into it from the sensor
+callback, so it re-renders nothing. The ride the bar under the dial names gets a dashed line from
+the reader to its marker, so a tap or a turn shows the way in the drawing too.
+
 - **The heading** comes from `DeviceOrientation` (`useCompassHeading`): Chrome's
   `deviceorientationabsolute`, Safari's `webkitCompassHeading`. Safari only sends it after
   `requestPermission()` inside a tap, so iOS shows „Kompass einschalten". Without a compass (a

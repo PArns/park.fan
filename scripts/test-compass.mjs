@@ -12,9 +12,11 @@ import assert from 'node:assert/strict';
 import {
   angleDelta,
   bearingBetween,
+  dialLabel,
   headingFromOrientation,
   normalizeDegrees,
   niceRange,
+  placeLabels,
   placeMarkers,
   relocate,
   smoothHeading,
@@ -177,6 +179,56 @@ test('the compass demo parses, and it is the only sim value the server does not 
   assert.equal(resolveCompassDemo(null), null);
   assert.equal(resolveSimLocation('compass'), null);
   assert.equal(resolveSimLocation('compass:disneylandparis'), null);
+});
+
+test('a ride name is cut to its title, at a word, never ending on a filler', () => {
+  assert.equal(dialLabel('Taron'), 'Taron');
+  assert.equal(dialLabel('Chiapas - DIE Wasserbahn'), 'Chiapas');
+  assert.equal(dialLabel('Autopia, presented by Avis'), 'Autopia');
+  assert.equal(dialLabel('Big Thunder Mountain'), 'Big Thunder…');
+  assert.equal(dialLabel('Pirates of the Caribbean'), 'Pirates…');
+  assert.equal(dialLabel('Dumbo the Flying Elephant'), 'Dumbo…');
+  assert.equal(dialLabel('Indiana Jones™ and the Temple of Peril'), 'Indiana Jones…');
+  assert.equal(dialLabel('Supercalifragilisticexpialidocious'), 'Supercalifrag…');
+});
+
+const LABELS = { markerRadius: 5, height: 5, gap: 0.6, reach: 4, face: 49, centre: 6 };
+const boxesOverlap = (a, b) =>
+  a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+const coversMarker = (box, m, r) => {
+  const nx = Math.max(box.x, Math.min(m.x, box.x + box.width));
+  const ny = Math.max(box.y, Math.min(m.y, box.y + box.height));
+  return Math.hypot(nx - m.x, ny - m.y) < r;
+};
+
+test("a lone marker's name goes on its outer side", () => {
+  const [east] = placeLabels([{ x: 25, y: 0, width: 12 }], [0], { ...LABELS, face: 45 });
+  assert.ok(east.x > 25, `label starts right of the marker: ${east.x}`);
+  const [west] = placeLabels([{ x: -25, y: 0, width: 12 }], [0], { ...LABELS, face: 45 });
+  assert.ok(west.x + west.width < -25, `label ends left of the marker: ${west.x}`);
+});
+
+test('in a crowd no label covers another or any marker, and the one in focus is placed', () => {
+  // Phantasialand's east side: seven markers within a few units of each other.
+  const markers = [
+    [8, -10],
+    [12, -2],
+    [18, -6],
+    [22, 2],
+    [15, 8],
+    [26, -8],
+    [28, 6],
+  ].map(([x, y]) => ({ x, y, width: 16 }));
+  const order = [4, 0, 1, 2, 3, 5, 6];
+  const boxes = placeLabels(markers, order, LABELS);
+  assert.ok(boxes[4], 'the focus got a label');
+  const placed = boxes.filter(Boolean);
+  for (let i = 0; i < placed.length; i++) {
+    for (let j = i + 1; j < placed.length; j++) {
+      assert.ok(!boxesOverlap(placed[i], placed[j]), `labels ${i} and ${j} overlap`);
+    }
+    for (const m of markers) assert.ok(!coversMarker(placed[i], m, LABELS.markerRadius));
+  }
 });
 
 console.log(`\n${passed} assertions passed.`);

@@ -184,3 +184,127 @@ export function relocate(
     lng: to.lng + east / (METRES_PER_DEGREE * Math.cos(toRad(to.lat))),
   };
 }
+
+/** Words a shortened ride name does not end on: „Pirates of the…" says less than „Pirates…". */
+const TRAILING_FILLERS = new Set(['the', 'of', 'and', 'a', 'der', 'die', 'das', 'de', 'la', 'le']);
+
+/**
+ * A ride's name short enough to stand next to its marker on the dial: „Chiapas" for „Chiapas -
+ * DIE Wasserbahn", „Autopia" for „Autopia, presented by Avis", „Big Thunder…" for „Big Thunder
+ * Mountain". The list under the dial carries the full name.
+ *
+ * What comes after a dash, a colon or a comma is a subtitle or a sponsor and goes first; a name
+ * still longer than `max` is cut at a word and gets an ellipsis, and a filler word left at the
+ * end is dropped with it.
+ */
+export function dialLabel(name: string, max = 14): string {
+  let label = name.replace(/[™®©]/g, '').trim();
+  label = label.split(/\s[-–—]\s|:\s|,\s/)[0].trim();
+  if (label.length <= max) return label;
+  const words = label.split(/\s+/);
+  const kept: string[] = [];
+  for (const word of words) {
+    if ([...kept, word].join(' ').length > max) break;
+    kept.push(word);
+  }
+  while (kept.length > 1 && TRAILING_FILLERS.has(kept[kept.length - 1].toLowerCase())) kept.pop();
+  if (kept.length === 0) return `${label.slice(0, max - 1)}…`;
+  return `${kept.join(' ')}…`;
+}
+
+/** A label's box on the dial, in the same units as the markers (x right, y down, from the centre). */
+export interface LabelBox {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+/**
+ * Where each marker's name goes, or `null` where there is no room.
+ *
+ * The way a map labels its pins: every label tries the eight places around its marker, the one
+ * facing away from the centre first (rides spread outwards, so outwards is where the room is), and
+ * takes the first that covers no marker, no label already placed and not the reader in the middle,
+ * and stays inside the face. Where all eight are taken it tries them again `reach` further out;
+ * the dial draws a hairline from every marker to its label, so a label a step away is still
+ * plainly its marker's. `order` is who chooses first — the ride in focus, then the nearest —
+ * and a label that finds no place is left out rather than laid over another: the bar under the
+ * dial names any marker that is tapped.
+ */
+export function placeLabels(
+  markers: readonly { x: number; y: number; width: number }[],
+  order: readonly number[],
+  {
+    markerRadius,
+    height,
+    gap,
+    reach,
+    face,
+    centre,
+  }: {
+    markerRadius: number;
+    height: number;
+    gap: number;
+    /** How much further out the second round of places sits. */
+    reach: number;
+    face: number;
+    centre: number;
+  }
+): (LabelBox | null)[] {
+  const placed: (LabelBox | null)[] = markers.map(() => null);
+  const boxes: LabelBox[] = [];
+  const overlaps = (a: LabelBox, b: LabelBox) =>
+    a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+  const hitsCircle = (box: LabelBox, cx: number, cy: number, r: number) => {
+    const nx = Math.max(box.x, Math.min(cx, box.x + box.width));
+    const ny = Math.max(box.y, Math.min(cy, box.y + box.height));
+    return Math.hypot(nx - cx, ny - cy) < r;
+  };
+  const insideFace = (box: LabelBox) =>
+    [
+      [box.x, box.y],
+      [box.x + box.width, box.y],
+      [box.x, box.y + box.height],
+      [box.x + box.width, box.y + box.height],
+    ].every(([px, py]) => Math.hypot(px, py) <= face);
+
+  for (const i of order) {
+    const m = markers[i];
+    const w = m.width;
+    const h = height;
+    // The eight places right beside the marker first, then the same eight one step further out,
+    // which the hairline to the label makes as readable as the near ones.
+    const candidates = [gap, gap + reach].flatMap((g) => {
+      const off = markerRadius + g;
+      const diag = markerRadius * 0.72 + g;
+      return [
+        { dx: 1, dy: 0, far: g, x: m.x + off, y: m.y - h / 2 },
+        { dx: -1, dy: 0, far: g, x: m.x - off - w, y: m.y - h / 2 },
+        { dx: 0, dy: 1, far: g, x: m.x - w / 2, y: m.y + off },
+        { dx: 0, dy: -1, far: g, x: m.x - w / 2, y: m.y - off - h },
+        { dx: 0.7, dy: 0.7, far: g, x: m.x + diag, y: m.y + diag },
+        { dx: -0.7, dy: 0.7, far: g, x: m.x - diag - w, y: m.y + diag },
+        { dx: 0.7, dy: -0.7, far: g, x: m.x + diag, y: m.y - diag - h },
+        { dx: -0.7, dy: -0.7, far: g, x: m.x - diag - w, y: m.y - diag - h },
+      ].map((c) => ({ ...c, width: w, height: h }));
+    });
+    const out = Math.hypot(m.x, m.y) || 1;
+    candidates.sort(
+      (a, b) => a.far - b.far || (b.dx * m.x + b.dy * m.y) / out - (a.dx * m.x + a.dy * m.y) / out
+    );
+    const fit = candidates.find(
+      (box) =>
+        insideFace(box) &&
+        !hitsCircle(box, 0, 0, centre) &&
+        !markers.some((o) => hitsCircle(box, o.x, o.y, markerRadius)) &&
+        !boxes.some((b) => overlaps(box, b))
+    );
+    if (fit) {
+      const box = { x: fit.x, y: fit.y, width: w, height: h };
+      placed[i] = box;
+      boxes.push(box);
+    }
+  }
+  return placed;
+}
