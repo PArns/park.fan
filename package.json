@@ -96,7 +96,7 @@
     "test:crop-box": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-crop-box.mjs",
     "test:media": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media.mjs",
     "test:photo-backlog": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-photo-backlog.mjs",
-    "test:device-position": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-device-position.mjs",
+    "test:capture-location": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-capture-location.mjs",
     "test:media-references": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-references.mjs",
     "test:blog-image-sidecar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-image-sidecar.mjs",
     "test:new-posts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-new-posts.mjs",

@@ -383,6 +383,27 @@ nobody has ever photographed. The list comes from `/api/admin/media/backlog`, wh
 crosses the park payload with the media index server-side and answers a few KB
 instead of the 65–85 KB park payload over park WLAN.
 
+### Which park, and how fast the position follows
+
+The `in_park` answer of `/api/nearby` names the park by slug and name and carries
+**no URL** on the park object: on 2026-09-27, standing at each of the 210 parks in
+`/v1/parks`, all 210 answered `in_park` and none had `park.url`. The hook required
+it until then, so the screen never found a park and every visit started in the
+picker. The four path segments now come from the first ride URL in the same
+answer (183 parks), and where the ride list is empty from a second request with
+`radius=0`, whose `nearby_parks` entries carry their URL, matched by slug (27).
+Both readers live in `_lib/use-park-location.ts` and reuse `parkGeoFromUrl`.
+
+A "no park" answer is not final. The first fix is often a coarse one, so a later
+fix asks again every 15 s until a park is found, and „Neu orten" asks at once.
+Once a park is found it is not asked again while walking.
+
+While the tab is in front the watch publishes every fix, about one a second, and
+accepts a cached fix of at most 15 s. PAR-341 had added a 10 m movement gate and a
+60 s cache; in the park the nearest-ride card then lagged the walk by several
+seconds, so both are gone. The watch is still released while the tab is in the
+background. `pnpm test:capture-location` pins all of this.
+
 ### The park is a row too
 
 Above the ride list sits one row for the park itself, and everything it uploads carries
