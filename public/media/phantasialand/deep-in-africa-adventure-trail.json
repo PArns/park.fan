@@ -1,0 +1,18 @@
+{
+  "park": "phantasialand",
+  "ride": "deep-in-africa-adventure-trail",
+  "area": "Deep in Africa",
+  "tags": ["day", "photo", "ride"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-27",
+  "gps": {
+    "lat": 50.798675,
+    "lon": 6.880714
+  },
+  "review": true
+}

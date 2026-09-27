@@ -1,0 +1,14 @@
+{
+  "park": "phantasialand",
+  "ride": "wuermling-express",
+  "area": "Fantasy",
+  "tags": ["day", "photo", "ride"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-27",
+  "review": true
+}

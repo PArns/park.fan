@@ -1,0 +1,18 @@
+{
+  "park": "phantasialand",
+  "ride": "wellenflug",
+  "area": "Berlin",
+  "tags": ["day", "photo", "ride"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2022
+  },
+  "shotAt": "2022-12-18",
+  "gps": {
+    "lat": 50.799858,
+    "lon": 6.880619
+  },
+  "review": true
+}
