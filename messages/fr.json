@@ -1433,6 +1433,22 @@
       "heading": "Plus court maintenant que plus tard",
       "reason": "Maintenant {now} min, {later} min prévues à partir de {time}",
       "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Les incontournables autour de toi",
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "O",
+      "enable": "Activer la boussole",
+      "northUp": "Le nord est en haut",
+      "turnsWithPhone": "Tourne avec ton téléphone",
+      "denied": "Boussole non autorisée. Le nord est en haut.",
+      "coarse": "GPS imprécis (± {meters} m)",
+      "ahead": "Devant toi",
+      "nearest": "Le plus proche",
+      "picked": "Sélection",
+      "closed": "Fermé"
     }
   },
   "geo": {

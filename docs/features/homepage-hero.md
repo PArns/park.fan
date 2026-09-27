@@ -287,6 +287,29 @@ headline gets a „… ist in deiner Nähe" line. Both variants render `HeroPark
 - **One request of its own:** the nowcast, under the park page's query key, and only for a
   visitor this hero has placed in or near a park.
 
+### Under the hero: the headliners on a compass
+
+For `in_park` only, `ParkCompassSlot` (`app/[locale]/page.tsx`, straight after the hero section)
+lazy-loads `ParkCompass`: a compass bezel around a small radar. Every in-season headliner is a
+marker at its true bearing and at a radius that grows with its distance, showing its current wait
+in the wait colours; two dashed range rings, the outer one labelled („500 m"). The same rides are
+listed beside it with an arrow each, a distance and the wait, nearest first. The bar under the
+dial names the reader's pick, the ride straight ahead, or the nearest one.
+
+- **The heading** comes from `DeviceOrientation` (`useCompassHeading`): Chrome's
+  `deviceorientationabsolute`, Safari's `webkitCompassHeading`. Safari only sends it after
+  `requestPermission()` inside a tap, so iOS shows „Kompass einschalten". Without a compass (a
+  desktop, a denied prompt) the dial stays north-up and says so. The heading is written into one
+  CSS variable, `--heading`, and everything turns off it in CSS, so a 60 Hz sensor costs React
+  nothing.
+- **The reader's position** is a high-accuracy `watchPosition` while the compass is on screen and
+  the tab is in front (`useLivePosition`), else the point the nearby answer was made for; never a
+  prompt. Under `?sim=` only the latter.
+- **The rides' positions** come from `/positions` (see
+  [API budget](../architecture/api-budget.md)), because the nearby answer has none.
+- **Layout arithmetic** is `lib/utils/compass.ts`, tested by `pnpm test:compass`. Markers are placed
+  by distance, not spread round the ring: spreading put Taron 45° off its own arrow.
+
 ---
 
 ## Nothing appears out of nowhere

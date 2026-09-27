@@ -1433,6 +1433,22 @@
       "heading": "Shorter now than later",
       "reason": "Now {now} min, forecast {later} min from {time}",
       "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Headliners around you",
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "W",
+      "enable": "Turn on compass",
+      "northUp": "North is up",
+      "turnsWithPhone": "Turns with your phone",
+      "denied": "Compass not allowed. North is up.",
+      "coarse": "GPS imprecise (± {meters} m)",
+      "ahead": "Ahead",
+      "nearest": "Nearest",
+      "picked": "Selected",
+      "closed": "Closed"
     }
   },
   "geo": {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
 import {
+  getParkByGeoPath,
   getParkByGeoPathFresh,
   getAttractionByGeoPathFresh,
   getParkWaitTimesFresh,
@@ -268,6 +269,46 @@ export async function GET(
     } catch (error) {
       console.error('[Best-Days API] Error:', error);
       return NextResponse.json({ error: 'Failed to fetch best-days data' }, { status: 500 });
+    }
+  }
+
+  // Handle ride positions: [continent, country, city, park, 'positions'] (5 segments)
+  // Every ride's coordinates and nothing else — what the homepage's in-park compass needs to point
+  // at the headliners. `/api/nearby` sends each ride's distance and wait but no coordinates, and the
+  // park itself is ~88 KB on Phantasialand for 40 pairs of numbers. Coordinates move when somebody
+  // re-surveys a park, not between two polls, so this reads the day-cached park snapshot (not the
+  // no-store one the live poll uses) and the CDN keeps the answer for a day.
+  if (path && path.length === 5 && path[4] === 'positions') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const parkData = await getParkByGeoPath(continent, country, city, park);
+
+      if (!parkData) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
+      const positions = (parkData.attractions ?? [])
+        .filter(
+          (a) =>
+            typeof a.latitude === 'number' &&
+            typeof a.longitude === 'number' &&
+            Number.isFinite(a.latitude) &&
+            Number.isFinite(a.longitude)
+        )
+        .map((a) => ({ slug: a.slug, latitude: a.latitude, longitude: a.longitude }));
+
+      return NextResponse.json(
+        { positions },
+        {
+          headers: cdnCacheHeaders(
+            'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
+          ),
+        }
+      );
+    } catch (error) {
+      console.error('[Positions API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch ride positions' }, { status: 500 });
     }
   }
 

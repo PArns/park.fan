@@ -244,6 +244,16 @@ park references use the same route through `useRegionParks`, at ~55% of the byte
 Because the response is byte-identical for every visitor of a region set, its 60 s CDN window is
 close to a pure hit — the old per-visitor `no-store` calls could not collapse at all.
 
+### Ride positions for the in-park compass: 88 KB → 0.7 KB
+
+The homepage's in-park compass (`ParkCompass`, under the hero) points at the headliners, and
+`/api/nearby` sends each ride's distance and wait with no coordinates. The park payload has them,
+at ~88 KB on Phantasialand for 40 pairs of numbers. `/api/parks/<geo>/<park>/positions` returns
+only `{ slug, latitude, longitude }` per ride: **2.8 KB raw, 739 B brotli**, read from the
+day-cached park snapshot and held a day by the CDN. The client asks once per tab
+(`useRidePositions`, `staleTime: Infinity`), and only a visitor the nearby answer places inside a
+park ever mounts it.
+
 ## Where the remaining weight is
 
 Two things measured large and were deliberately left alone.

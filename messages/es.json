@@ -1433,6 +1433,22 @@
       "heading": "Más corto ahora que después",
       "reason": "Ahora {now} min, desde las {time} se prevén {later} min",
       "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Atracciones estrella a tu alrededor",
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "O",
+      "enable": "Activar brújula",
+      "northUp": "El norte está arriba",
+      "turnsWithPhone": "Gira con tu móvil",
+      "denied": "Brújula no permitida. El norte está arriba.",
+      "coarse": "GPS impreciso (± {meters} m)",
+      "ahead": "Delante",
+      "nearest": "Más cerca",
+      "picked": "Elegida",
+      "closed": "Cerrada"
     }
   },
   "geo": {
