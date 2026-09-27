@@ -1479,7 +1479,7 @@
       },
       "unpin": "Soltar",
       "tapHint": "Toca un punto para fijar esa atracción.",
-      "unpinHint": "Tócalo otra vez y la barra vuelve a seguir tu mirada.",
+      "unpinHint": "Tócalo otra vez para soltarlo.",
       "allClosed": "Todas las atracciones principales están cerradas ahora.",
       "demoEnd": "Salir de la demo",
       "demoNoLocation": "Sin tu ubicación te quedas fijo en un punto del parque.",

@@ -373,11 +373,16 @@ export function ParkCompass({
 
   if (rides.length === 0 || range === null) return null;
 
-  /** The second line of a ride: distance, direction without a compass, status without a wait. */
-  const meta = (r: CompassRide) => (
+  /**
+   * The second line of a ride: distance, direction without a compass (in the list; the bar's chip
+   * already says it and the line was cut to „Geschl…"), status without a wait.
+   */
+  const meta = (r: CompassRide, withDirection: boolean) => (
     <>
       {arrived(r) ? t('here') : formatDistance(r.distance)}
-      {!compassOn && r.bearing !== null && !arrived(r) && <> · {toward(r.bearing)}</>}
+      {withDirection && !compassOn && r.bearing !== null && !arrived(r) && (
+        <> · {toward(r.bearing)}</>
+      )}
       {r.wait === null && (
         <>
           {' · '}
@@ -542,7 +547,7 @@ export function ParkCompass({
                       {focus.name}
                     </span>
                     <span className="text-foreground/70 block truncate text-xs tabular-nums">
-                      {meta(focus)}
+                      {meta(focus, false)}
                     </span>
                   </span>
                   {focus.wait !== null && wait(focus.wait)}
@@ -596,7 +601,7 @@ export function ParkCompass({
                     {r.name}
                   </span>
                   <span className="text-foreground/70 block truncate text-xs tabular-nums">
-                    {meta(r)}
+                    {meta(r, true)}
                     {/* With a compass the way is an arrow, and a screen reader hears nothing of
                         it; the point of the compass says it, and does not change as the phone
                         turns. */}

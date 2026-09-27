@@ -1479,7 +1479,7 @@
       },
       "unpin": "Fixierung lösen",
       "tapHint": "Tipp auf einen Punkt, um die Bahn zu fixieren.",
-      "unpinHint": "Nochmal tippen, dann folgt die Leiste wieder deinem Blick.",
+      "unpinHint": "Nochmal tippen löst die Fixierung.",
       "allClosed": "Alle Top-Attraktionen haben gerade geschlossen.",
       "demoEnd": "Demo beenden",
       "demoNoLocation": "Ohne Standort stehst du fest an einem Punkt im Park.",

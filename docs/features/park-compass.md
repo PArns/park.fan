@@ -47,8 +47,8 @@ Cologne Cathedral under `?sim=compass:disneylandparis`.
 
 ## The dial
 
-A bezel (the „Lünette", 43–49.5 of a 100-unit drawing) with 5° ticks, the four letters upright in
-its middle and a triangle for north; a face cut out of the park's own hero photo, blurred and
+A bezel (the „Lünette", 43–49.5 of a 100-unit drawing) with 5° ticks and the four letters upright
+in its middle (a north triangle under the N covered the letter once the bezel narrowed); a face cut out of the park's own hero photo, blurred and
 dimmed, with a faint eight-point rose; the rides on the face at their true bearing, distance as
 the radius. The first bezel ran 40–49.5 with numerals every 30° and the heading as a figure on the
 ring. That left the rides a 194 px circle on a 360 px phone, where 13 pairs of Phantasialand's
@@ -152,12 +152,14 @@ The heading is written into `--heading` on exactly the elements that turn (`data
 collected after every commit), each on its own compositing layer (`will-change: transform`), and
 not at all for changes under 0.25°. It used to go on the panel root: every frame restyled the 387
 elements under it and repainted the blurred photos, 45 fps measured, and it never stopped, since
-magnetometer noise moves a still phone's heading on every sample. Three seconds of rotation now:
+magnetometer noise moves a still phone's heading on every sample. Three seconds of rotation, the
+„before" column from the review's `next dev` run, the „now" column against `pnpm build && pnpm
+start` (186 ms and 179 frames under `next dev`):
 
 |                     | before  | now    |
 | ------------------- | ------- | ------ |
-| frames              | 134     | 179    |
-| style recalculation | 1520 ms | 186 ms |
+| frames              | 134     | 181    |
+| style recalculation | 1520 ms | 188 ms |
 
 ## Data
 

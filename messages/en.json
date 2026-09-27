@@ -1479,7 +1479,7 @@
       },
       "unpin": "Unpin",
       "tapHint": "Tap a dot to pin that ride.",
-      "unpinHint": "Tap it again and the bar follows your gaze once more.",
+      "unpinHint": "Tap it again to unpin it.",
       "allClosed": "All top attractions are closed right now.",
       "demoEnd": "End demo",
       "demoNoLocation": "Without your location you stay on one spot in the park.",

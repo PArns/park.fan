@@ -107,7 +107,8 @@ function roseRay(angle: number, length: number, base: number) {
  *
  * **An instrument, and the rides first.** The face is the park photo the hero above it just
  * showed, blurred and dimmed so it tints rather than competes, with a faint rose; the bezel is a
- * ring of glass with 5° ticks and the four letters. Blue means one thing on it: the reader and
+ * ring of glass with 5° ticks and the four letters (a north triangle under the N covered the
+ * letter once the bezel narrowed, and the letter says it). Blue means one thing on it: the reader and
  * the way to the ride in focus. North is drawn in the foreground colour; when it was blue too, a
  * reader facing north saw two blue spikes leave the centre.
  *
@@ -412,7 +413,7 @@ export function ParkCompassDial({
         />
         {Array.from({ length: 72 }, (_, i) => {
           const angle = i * 5;
-          // The cardinals carry a letter instead; north a triangle.
+          // The cardinals carry a letter instead.
           if (angle % 90 === 0) return null;
           const major = angle % 30 === 0;
           return (
@@ -429,11 +430,6 @@ export function ParkCompassDial({
             />
           );
         })}
-        {/* North: a triangle where its tick would be, in the foreground colour. */}
-        <polygon
-          points={`48.6,${50 - FACE - 0.5} 51.4,${50 - FACE - 0.5} 50,${50 - FACE - 2.6}`}
-          className="fill-foreground"
-        />
         {/* Upright: letters are read, not admired, and a W on its side is not one. */}
         {cardinals.map(({ key, angle }) => (
           <text
@@ -541,8 +537,15 @@ export function ParkCompassDial({
             {r.kind === 'down' && <AlertTriangle className="size-3.5" aria-hidden="true" />}
             {r.kind === 'refurb' && <Wrench className="size-3.5" aria-hidden="true" />}
             {pinnedId === r.id && (
-              <span className="bg-primary text-primary-foreground ring-background absolute -top-1.5 -right-1.5 flex size-4 items-center justify-center rounded-full ring-2">
-                <Pin className="size-2.5" aria-hidden="true" />
+              // Off the corner of whatever the marker draws: on a closed ride's 16 px ring a
+              // badge at the 30 px disc's offset covered the ring it was pinning.
+              <span
+                className={cn(
+                  'bg-primary text-primary-foreground ring-background absolute flex items-center justify-center rounded-full ring-2',
+                  closed ? '-top-3 -right-3 size-3.5' : '-top-1.5 -right-1.5 size-4'
+                )}
+              >
+                <Pin className={closed ? 'size-2' : 'size-2.5'} aria-hidden="true" />
               </span>
             )}
           </button>
