@@ -30,6 +30,12 @@ interface PlannerDayFootProps {
    * foot about 86 px, and the summary line without one is 29.
    */
   actionsTrailing?: ReactNode;
+  /**
+   * The desktop's ride search, drawn in the free-block row beside its button.
+   * The column passes it; the phone's foot does not, because the phone's search
+   * is the panel's own (`PlannerRideSearch` in `planner-flyout.tsx`).
+   */
+  search?: ReactNode;
 }
 
 /**
@@ -75,6 +81,7 @@ export function PlannerDayFoot({
   entries,
   onAddFreeBlock,
   actionsTrailing,
+  search,
 }: PlannerDayFootProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -108,15 +115,24 @@ export function PlannerDayFoot({
           drawn, and `t('custom.add')` stood twice in the same sheet — once here
           and once in the list right below. It also cost the axis 33 px it had
           none of. "Desktop only" has to mean the same thing on both halves. */}
-      <button
-        type="button"
-        onClick={onAddFreeBlock}
-        data-planner-add-custom=""
-        className="text-muted-foreground hover:text-foreground hover:bg-accent/50 border-border/60 planner-wide:flex hidden shrink-0 items-center gap-2 border-t px-3 py-2 text-left text-xs transition-colors"
-      >
-        <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
-        <span className="truncate">{t('custom.add')}</span>
-      </button>
+      {/* With the ride search beside it where the column passes one: the
+          phone's row reads the same, [Bahn suchen][Eigener Block], and a found
+          ride's list opens under the field. */}
+      <div className="border-border/60 planner-wide:flex hidden shrink-0 items-start gap-2 border-t px-2 py-1.5">
+        {search && <div className="min-w-0 flex-1">{search}</div>}
+        <button
+          type="button"
+          onClick={onAddFreeBlock}
+          data-planner-add-custom=""
+          className={cn(
+            'text-muted-foreground hover:text-foreground hover:bg-accent/50 flex h-8 shrink-0 items-center gap-2 rounded-md px-2 text-left text-xs transition-colors',
+            !search && 'flex-1'
+          )}
+        >
+          <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
+          <span className="truncate">{t('custom.add')}</span>
+        </button>
+      </div>
 
       {/* Letting the day sort itself, directly above what the day adds up to
           (PAR-493). It used to open the foot, above the headliner band, and the

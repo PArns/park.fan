@@ -2,6 +2,7 @@
 title: 'Der Tagesplaner rechnet nach, bevor du in der falschen Schlange stehst'
 translationKey: trip-planner-launch
 date: '2026-09-05'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -28,7 +29,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Ein voll besetztes Freilufttheater von hinten, vor der Bühne wartet das Publikum im Dunkeln'
-  caption: 'Fantasmic im Hollywood Studios, kurz vor Beginn. Zehntausend Leute, die für diese halbe Stunde nirgends anstehen.'
+  caption: 'Fantasmic im Hollywood Studios, kurz vor Beginn. Knapp zehntausend Leute passen hinein, und für diese halbe Stunde steht keiner von ihnen irgendwo an.'
   credit: 'Patrick Arns'
 seo:
   title: 'Parktag planen: Wartezeiten einrechnen, bevor du anstehst'
@@ -65,7 +66,7 @@ beantworten wir seit dem ersten Tag. „Ist das viel für einen Dienstag“ seit
 [Ende August](/blog/sind-70-minuten-viel). Die dritte Frage stand nirgends:
 Geht mein Tag so überhaupt auf?
 
-Seit dieser Woche steht sie da. Der [Tagesplaner](/tagesplaner) legt deine
+Seit Anfang September steht sie da. Der [Tagesplaner](/tagesplaner) legt deine
 Bahnen auf eine Zeitleiste und rechnet den Tag durch, bevor du losfährst.
 
 ## Der Tag ist eine Reihenfolge, und die hat eine Uhr
@@ -86,8 +87,9 @@ schon beim Frühstück, welche davon um halb elf abends noch übrig sind.
 
 Zehn Bahnen, vom Öffnen bis vier Uhr nachmittags, und unter dem Plan steht die
 Summe: fünf Stunden und eine Viertelstunde nur Anstehen. Das ist die Fassung,
-die der Sortierer für die beste gehalten hat. Ohne Reihenfolge stehst du genauso
-lange, fährst aber weniger.
+die der Sortierer für die beste gehalten hat. Sortiert er einen Tag um, den du
+selbst gelegt hast, steht danach da, wie viele Minuten Anstehen die neue
+Reihenfolge spart, gerechnet mit derselben Formel wie vorher.
 
 ## Zwischen zwei Bahnen liegt ein Weg, gern um einen See herum
 
@@ -102,8 +104,9 @@ Planer nennt sie auch so. Sie ist eine Untergrenze und keine Gehzeit: Wege
 biegen um Wasser herum, um Warteschlangen und um Einbahnstraßen, manche Parks
 stapeln ihre Bereiche übereinander, und in einem großen kommt dazu, dass die
 Luftlinie quer über einen See führt, um den du außen herumlaufen musst. Für die obere
-Grenze rechnet der Planer deshalb mit Parktempo statt mit
-Schrittgeschwindigkeit und legt zwei Drittel Umweg auf die Luftlinie.
+Grenze rechnet der Planer deshalb mit Parktempo, rund vier Kilometern pro Stunde
+mit Gedränge und Kinderwagen, und schlägt auf die Luftlinie 60 Prozent Umweg
+auf.
 
 In einem kompakten Park kostet ein ungeschickter Umstieg drei Minuten und fällt
 niemandem auf. In einem großen kostet er eine Viertelstunde. Wer den achtmal am
@@ -154,8 +157,10 @@ Eine zweite Sache, die man beim Planen im Kopf selten mitrechnet: Die erste
 Stunde gehört oft gar nicht dir. Viele Parks öffnen ihre Tore, bevor ein Teil
 der Bahnen läuft, und die Headliner sind gern unter denen, die später aufmachen.
 Wer die erste Stunde mit ihnen verplant, hat eine Stunde verplant, die es nicht
-gibt. Der Planer kennt die Öffnungszeit jeder einzelnen Bahn und lässt keinen
-Block davor rutschen. Ein Gegenstück dazu gibt es nicht: Wann eine einzelne Bahn
+gibt. Im Phantasialand öffnen die Tore um neun, Taron, F.L.Y. und die meisten
+anderen großen Bahnen aber erst um zehn. Wo die API für eine Bahn eine eigene
+Öffnungszeit kennt, lässt der Planer keinen Block davor rutschen. Ein
+Gegenstück dazu gibt es nicht: Wann eine einzelne Bahn
 abends dichtmacht, meldet kein Feed verlässlich, also steht dazu auch nichts da.
 
 ## Zwei Knöpfe sortieren den Tag
@@ -171,16 +176,29 @@ Entscheidung.
 
 1. **Alles muss vor Parkschluss drankommen.** Ein Plan mit einer Bahn weniger,
    die wirklich stattfindet, schlägt einen mit einer Bahn mehr, die es nicht
-   mehr wird. Und wenn etwas rausfliegt, dann von hinten: zuerst das, was der
-   Knopf gerade selbst dazugeholt hat, nie das, was du dir vorher überlegt hast.
+   mehr wird. Gezählt wird der Moment, in dem du dich anstellst: Eine Schlange,
+   in die du eine Viertelstunde vor Schluss noch hineinkommst, gilt. Und wenn
+   etwas rausfliegt, dann zuerst, was der Knopf gerade selbst dazugeholt hat,
+   nicht das, was du dir vorher überlegt hast. Unter den dazugeholten Bahnen geht
+   eine zweite Runde auf derselben Bahn vor jeder ersten, danach die mit der
+   kürzesten erwarteten Schlange. Die Bahnen, für die die meisten hinfahren,
+   bleiben am längsten drin.
 2. **Die Summe der Wartezeiten.** Danach war ja gefragt.
 3. **Die Uhrzeit, zu der du dich das letzte Mal anstellst.** Wo zwei
    Reihenfolgen gleich viel kosten, gewinnt die, die früher fertig ist.
 
 In einem Park mit mehr Headlinern, als in einen Tag passen, ist Punkt eins das
-ganze Spiel. Deswegen verschwindet der Knopf auch nicht immer nach dem Drücken:
-Bleibt eine Bahn übrig, für die kein Platz mehr ist, steht darunter, wie viele
-es sind, und das Angebot bleibt stehen, falls du etwas anderes streichst.
+ganze Spiel, und seit dem 21. September entscheidet der Planer das nicht mehr
+still. Passt nicht alles hinein, öffnet jeder der beiden Knöpfe zuerst einen
+Assistenten mit drei Schritten. Unter „Stellschrauben“ steht, was Platz schaffen
+würde, etwa die Mittagspause weglassen oder auf eine halbe Stunde kürzen, und
+jede Zeile ist nachgerechnet: Sie erscheint nur, wenn sie wirklich eine Bahn mehr
+in den Tag bringt. Unter „Wichtigkeit“ steht die ganze Liste in der Reihenfolge,
+in der gestrichen würde, und du hebst nach oben, was du auf keinen Fall
+verpassen willst. In dieser Liste stehen auch die Bahnen, die du selbst
+eingeplant hast, denn hier entscheidest du und nicht der Knopf. Unter
+„Ergebnis“ steht mit Namen, was draußen bleibt. In den Plan geschrieben wird
+erst, wenn du ihn übernimmst.
 
 Einen Regler, der Anstehen gegen Herumstehen abwägt, gibt es bewusst nicht.
 Diese Zahl könnte niemand begründen, und die erste Person, die ihr widerspricht,
@@ -209,11 +227,13 @@ Am längsten haben wir an vier Stellen gesessen, an denen der Planer absichtlich
 weniger behauptet, als er könnte.
 
 **Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
-steht, wie weit die Vorhersagen für diese Bahn im Schnitt von dem entfernt
-lagen, was der Tag dann wirklich brachte. (Von der Wettervorhersage wünsche ich
-mir das seit Jahren.) „Typisch“ heißt hier: Die Hälfte der Tage liegt weiter
-daneben. Deshalb steht die Zahl als typischer Fehler da und nie als Spanne, in der die richtige Antwort schon
-drin wäre.
+steht, wie weit die Vorhersagen für eine so lange Schlange mit so viel Vorlauf in
+den letzten 45 Tagen im Schnitt von dem entfernt lagen, was der Tag dann
+wirklich brachte. Das gibt es bis 60 Tage im Voraus, weiter reicht die Messung
+noch nicht. (Von der Wettervorhersage wünsche ich mir das seit Jahren.) Ein
+Schnitt ist keine Obergrenze, an vielen Tagen liegt die Prognose weiter daneben.
+Deshalb steht die Zahl als typischer Fehler da und nie als Spanne, in der die
+richtige Antwort schon drin wäre.
 
 **Showzeiten sind zweierlei.** Was der Park für heute veröffentlicht hat, ist
 eine Ansage. Was wir vom letzten passenden Wochentag hochgerechnet haben, ist
@@ -245,26 +265,37 @@ anderer Plan, und das weißt du besser beim Frühstück als an der Parkkasse.
 Die eine Ausnahme sind Push-Benachrichtigungen. Damit wir dir sagen können, dass
 du gleich losmusst, muss der Plan auf unserem Server liegen, und der Planer
 schreibt dazu, was das bedeutet: Wer den Link hat, kann ihn lesen und ändern. Es
-gibt kein Passwort, das davor liegt. Wer das nicht will, schaltet die
-Benachrichtigungen nicht ein und verliert sonst nichts.
+gibt kein Passwort, das davor liegt. Schaltest du die Benachrichtigungen wieder
+aus, wird der Plan dort gelöscht. Wer das alles nicht will, schaltet sie nicht
+ein und verliert sonst nichts. Worüber wir Bescheid sagen, wählst du selbst:
+wann du zur nächsten Bahn losmusst, die Showzeiten, eine geplante Bahn, die
+schließt oder wieder öffnet, und eine geplante Wartezeit, die sich deutlich
+ändert.
 
-Zwei Sachen noch, die man leicht übersieht. Auf jeder Seite hängt am Rand ein
-Reiter, der den Planer aufmacht, auch wenn noch gar nichts geplant ist. Und am
-Rechner lässt sich eine zweite Spalte aufziehen, dann stehen zwei Tage
+Solange die Benachrichtigungen an sind, gibt es seit dem 23. September auch
+einen Link zum Teilen. Wer ihn öffnet, bekommt eine eigene Kopie in seinen
+Planer, und was er daran ändert, bleibt bei ihm. So kommt ein Plan auch vom
+Rechner aufs Handy.
+
+Zwei Sachen noch, die man leicht übersieht. Am Rechner hängt auf jeder Seite am
+Rand ein Reiter, der den Planer aufmacht, auch wenn noch gar nichts geplant ist;
+auf dem Handy sitzt dafür seit dem 24. September ein Kalender-Symbol oben in der
+Leiste. Und am Rechner lässt sich eine zweite Spalte aufziehen, dann stehen zwei Tage
 gleichzeitig da. Für diesen einen Satz habe ich das gebaut: „und wie
 sähe das am Samstag aus“.
 
 ## So fängst du an
 
-Der Weg hinein führt über drei Fragen. In welchen Park geht’s, an welchem Tag,
-und wer kommt mit.
+Der Weg hinein führt über vier Fragen. In welchen Park geht’s, an welchem Tag,
+wer kommt mit, und welche großen Bahnen sollen rein. Die Bilder unten zeigen
+noch die erste Fassung mit drei Schritten.
 
 Die erste ist ein Suchfeld, und dahinter steckt eine Kleinigkeit, die schnell
 schiefgeht. Tipp „Disneyland“ ein, und du bekommst fünf Parks auf drei
 Kontinenten, die alle so heißen. Bei der Namensfindung war die Maus nicht
 besonders erfinderisch.
 
-![Schritt eins des Planer-Assistenten: ins Suchfeld ist „Disneyland“ getippt, darunter fünf Parks aus fünf Ländern. | Ein Name, fünf Parks. Deswegen merkt sich der Planer den Pfad aus der API und nicht den Namen.](/media/tagesplaner/planer-wizard-park-de.webp)
+![Schritt eins des Planer-Assistenten: ins Suchfeld ist „Disneyland“ getippt, darunter fünf Parks in Anaheim, Paris, Tokio, Shanghai und Hongkong. | Ein Name, fünf Parks. Deswegen merkt sich der Planer den Pfad aus der API und nicht den Namen.](/media/tagesplaner/planer-wizard-park-de.webp)
 
 Ein Plan wird unter dem Pfad abgelegt, den die API selbst liefert, nie unter
 einem, den wir aus dem angezeigten Namen zusammenbauen. „Niederlande“ heißt
@@ -277,16 +308,21 @@ Auslastungsprognose dieses Parks. „Der übernächste Samstag“ ist damit eine
 Sache von einem Blick, und was wir sonst noch über ihn wissen, steht unter dem
 Raster.
 
-![Schritt zwei des Planer-Assistenten: über dem Monatsraster ein Foto des Disneyland Park in Anaheim, jeder Tag trägt die Auslastungsprognose, Samstag der 19. ist gewählt. | Ein September, der in Anaheim durchgehend ruhig vorhergesagt ist. In sechzig Zeilen einer Auswahlliste sieht man das nicht.](/media/tagesplaner/planer-wizard-tag-de.webp)
+![Schritt zwei des Planer-Assistenten: Disneyland Park in Anaheim ist gewählt, im Monatsraster trägt jeder Tag die Auslastungsprognose, Samstag der 19. ist markiert. | Ein September, der in Anaheim durchgehend ruhig vorhergesagt ist. In sechzig Zeilen einer Auswahlliste sieht man das nicht.](/media/tagesplaner/planer-wizard-tag-de.webp)
 
 Die dritte Frage klingt nach Formular und ist wichtiger, als sie aussieht:
-Mittagessen einplanen, sind Kinder dabei, wollt ihr trocken bleiben. Alle drei
-sind Markierungen an der Bahnenliste und keine Filter, und der Planer schreibt
-es auf die Karte: Bahnen mit höherer Mindestgröße werden markiert, nicht
-versteckt. Ein Filter würde den Park heimlich kürzen, und ob Oma die Taschen
+Mittagessen einplanen, sind Kinder dabei, wollt ihr trocken bleiben. Das
+Mittagessen wird ein Block im Tag. Kinder und Trockenbleiben sind Markierungen
+an der Bahnenliste und keine Filter, und der Planer schreibt es auf die Karte:
+Bahnen mit höherer Mindestgröße werden markiert, nicht versteckt. Ein Filter würde den Park heimlich kürzen, und ob Oma die Taschen
 hält, weißt nur du.
 
 ![Schritt drei des Planer-Assistenten: drei Karten für Mittagessen, Kinder und Wasserbahnen, darunter der Knopf „Plan öffnen“. | Drei Antworten, die den Park nicht kürzen. Die Mittagspause landet als Block um 12:30 im Tag und lässt sich verschieben.](/media/tagesplaner/planer-wizard-wer-de.webp)
+
+Die vierte Frage kam am 21. September dazu. Sie legt die großen Bahnen des
+Parks in den Tag, und wenn vor Parkschluss nicht alle hineinpassen, zeigt sie
+dieselben Stellschrauben und dieselbe Liste wie der Assistent unter der
+Zeitachse.
 
 Danach landest du auf der Parkseite mit offenem Planer, und von dort ziehst du
 Bahnen auf die Zeitachse. Auf jeder Attraktionsseite gibt es dafür auch einen

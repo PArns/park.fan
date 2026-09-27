@@ -12,12 +12,24 @@
  *
  * The syntax is deliberately GitHub's — posts render sensibly on GitHub
  * itself and survive any GFM round-trip the editor does.
+ *
+ * `[!CORRECTION]` is ours, not GitHub's: the dated note a news post carries
+ * after a factual fix, set under the signature as a quiet grey box (see
+ * content/blog/README.md, "Callouts, and the correction note"). Guides never
+ * carry one. GitHub shows it as a plain quote.
  */
 
-export const CALLOUT_TYPES = ['note', 'tip', 'important', 'warning', 'caution'] as const;
+export const CALLOUT_TYPES = [
+  'note',
+  'tip',
+  'important',
+  'warning',
+  'caution',
+  'correction',
+] as const;
 export type CalloutType = (typeof CALLOUT_TYPES)[number];
 
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*\n?/;
+const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION)\]\s*\n?/;
 
 interface MdNode {
   type: string;

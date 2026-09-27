@@ -124,7 +124,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
     <AdminPage>
       <ParkHeader park={data} />
 
-      <div className="border-border/50 flex gap-1 border-b">
+      <div className="border-border/50 flex flex-wrap gap-x-1 border-b">
         {TABS.map((entry) => (
           <button
             key={entry.id}

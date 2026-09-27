@@ -198,7 +198,12 @@ export default function CapturePage() {
         failed={failed}
         parkName={data?.park.name ?? park?.name ?? null}
         manual={Boolean(chosenPath)}
-        onRetry={retry}
+        onRetry={() => {
+          // The park too, not only the watch: a "no park" answer, or the wrong
+          // one after a drive to the next park, is what this press is usually for.
+          retry();
+          redetect();
+        }}
         onPick={() => setPicking(true)}
         onRedetect={() => {
           setManualPath(null);
@@ -306,6 +311,12 @@ export default function CapturePage() {
                 Nähe
               </SortButton>
             </div>
+            {!data.sessionChecked && (
+              <p className="border-border/50 border-b px-4 py-2 text-xs text-amber-400">
+                Der offene Pull Request ließ sich nicht lesen. Bahnen, die heute schon ein Foto
+                bekommen haben, können hier noch stehen.
+              </p>
+            )}
             {missing.length === 0 ? (
               <EmptyState
                 icon={CheckCircle2}

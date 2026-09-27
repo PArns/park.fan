@@ -106,7 +106,7 @@
     "browseParks": "Alle Parks entdecken"
   },
   "home": {
-    "intro": "park.fan zeigt Live-Wartezeiten und Andrang für über 200 Freizeitparks und mehr als 7.000 Attraktionen weltweit, von Disney und Universal bis Europa-Park und Phantasialand. Dazu kommen Öffnungszeiten und eine eigene Prognose für die kommenden Tage.",
+    "intro": "park.fan zeigt Live-Wartezeiten und Andrang für über 200 Freizeitparks und rund 7.000 Attraktionen weltweit, von Disney und Universal bis Europa-Park und Phantasialand. Dazu kommen Öffnungszeiten und eine eigene Prognose für die kommenden Tage.",
     "hero": {
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
@@ -486,12 +486,14 @@
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
     "latestPosts": "Neueste Beiträge",
+    "latestNews": "Neueste Meldungen",
     "allNews": "Alle News",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
     "readingTime": "{minutes} Min.",
-    "nearby": "In deiner Nähe"
+    "nearby": "In deiner Nähe",
+    "preferences": "Einstellungen"
   },
   "theme": {
     "light": "Hell",
@@ -516,6 +518,11 @@
     "heroNearPark": "{parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",
     "heroWelcomeAttractions": "{count} Attraktionen in Betrieb",
     "heroParkLink": "Zum Park",
+    "heroPlanToday": "Heute planen",
+    "heroOpenTodayPlan": "Plan für heute",
+    "heroPlanVisit": "Besuch planen",
+    "heroPlanVisitSub": "Tag im Kalender wählen",
+    "heroHours": "Öffnungszeiten",
     "operating": "Geöffnet",
     "closed": "Geschlossen",
     "open": "Geöffnet",
@@ -967,6 +974,11 @@
       "bestTimeLink": "Beste Reisezeit über alle Parks",
       "viewCalendarLink": "Vollständigen Crowd-Kalender ansehen"
     },
+    "yearlyOutlook": {
+      "title": "Die nächsten zwölf Monate",
+      "hint": "Was die Prognose erwartet, Tag für Tag, zu Monaten zusammengefasst.",
+      "recommendedDays": "{count}/{total} empfohlen"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Gering",
@@ -1416,6 +1428,29 @@
       "ask": "Im Park? Fahrten in deiner Nähe zeigen",
       "blocked": "Standortzugriff ist im Browser blockiert",
       "away": "Du bist {distance} vom Park entfernt"
+    },
+    "nextRide": {
+      "heading": "Jetzt kürzer als später",
+      "reason": "Jetzt {now} Min., ab {time} laut Prognose {later} Min.",
+      "saving": "−{minutes} Min."
+    },
+    "compass": {
+      "title": "Top-Attraktionen um dich herum",
+      "n": "N",
+      "e": "O",
+      "s": "S",
+      "w": "W",
+      "enable": "Kompass einschalten",
+      "northUp": "Norden ist oben",
+      "facing": "Der Pfeil zeigt, wohin du schaust",
+      "denied": "Kompass nicht freigegeben. Norden ist oben.",
+      "coarse": "GPS ungenau (± {meters} m)",
+      "ahead": "Vor dir",
+      "nearest": "Am nächsten",
+      "picked": "Ausgewählt",
+      "closed": "Geschlossen",
+      "demo": "Demo: {park} um dich herum",
+      "demoLocation": "Standort nutzen"
     }
   },
   "geo": {
@@ -1714,7 +1749,6 @@
     "rideDialog": {
       "title": "Wartezeit-Alarme",
       "subtitle": "Für {park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
-      "soloSubtitle": "{park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
       "loading": "Lädt …",
       "empty": "Noch keine Alarme für diesen Park.",
       "thresholdLabel": "unter {minutes} Min.",
@@ -1733,8 +1767,6 @@
       "close": "Schließen",
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
-      "removeShort": "Entfernen",
-      "save": "Speichern",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
@@ -1891,15 +1923,16 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Geschichten, Daten und News aus den Parks",
+    "heroTitle": "Geschichten und Daten aus den Parks",
     "badge": "park.fan Blog",
-    "description": "Reiseberichte, Wartezeit-Analysen und Park-News. Geschrieben von jemandem, der selbst ansteht.",
-    "intro": "Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von jemandem, der selbst ansteht.",
+    "description": "Reiseberichte, Wartezeit-Analysen und Park-Guides. Geschrieben von jemandem, der selbst ansteht.",
+    "intro": "Reiseberichte, Wartezeit-Analysen und Guides zu den Parks, die wir abdecken. Geschrieben von jemandem, der selbst ansteht.",
     "blog": "Blog",
     "empty": "Noch keine Beiträge. Schau bald wieder vorbei.",
     "readMore": "Artikel lesen",
     "readingTime": "{minutes} Min. Lesezeit",
     "updatedOn": "Aktualisiert {date}",
+    "correction": "Korrektur",
     "languageNotice": {
       "available": "Diesen Artikel gibt es auch auf {language}",
       "fallback": "Noch nicht übersetzt – du siehst die Version auf {language}."
@@ -1908,7 +1941,7 @@
     "categories": "Kategorien",
     "category": {
       "label": "Kategorie",
-      "description": "Alle park.fan-Blogbeiträge in der Kategorie {category} – Reiseberichte, Datenanalysen und News aus den Freizeitparks, neueste zuerst.",
+      "description": "Alle park.fan-Blogbeiträge in der Kategorie {category} – Reiseberichte, Datenanalysen und Guides aus den Freizeitparks, neueste zuerst.",
       "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}"
     },
     "home": {
@@ -1938,7 +1971,8 @@
       "atPark": "im {park}"
     },
     "related": {
-      "title": "Mehr aus dem Blog"
+      "title": "Mehr aus dem Blog",
+      "news": "Weitere News"
     },
     "relatedParks": {
       "title": "Parks im Beitrag"
@@ -2279,6 +2313,7 @@
       "saved": "{minutes} Min. weniger Warten",
       "already": "Passt schon so",
       "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
+      "resolved": "{count, plural, one {ein Konflikt weniger} other {# Konflikte weniger}}",
       "sameWait": "Umgestellt, gleiche Wartezeit",
       "resorted": "Der Tag ist umgestellt",
       "added": "{count, plural, one {Eine Bahn ergänzt} other {# Bahnen ergänzt}}",
@@ -2449,6 +2484,11 @@
       "progress": "Fortschritt",
       "nextUp": "Danach geht es zu {park}. Dort ziehst du Fahrten aus der Liste in den Tag."
     },
+    "pastDay": {
+      "title": "Dein geplanter Tag ist vorbei",
+      "body": "{park}, {date}. Willst du dir den Tag noch einmal ansehen oder einen neuen planen?",
+      "view": "Vergangenen Tag ansehen"
+    },
     "party": {
       "add": "Wer kommt mit?",
       "tooShort": "Mindestgröße höher als die kleinste Person im Plan",
@@ -2475,6 +2515,16 @@
       "adopt": "In meinen Planer übernehmen",
       "adopted": "Der Plan steht jetzt in deinem Planer.",
       "open": "Planer öffnen"
+    }
+  },
+  "news": {
+    "metaTitle": "Freizeitpark-News: Events, Neuheiten und Termine",
+    "metaDescription": "Kurze Meldungen aus den Freizeitparks: neue Bahnen, Events, Jubiläen und Verkäufe, jeweils mit Datum und Link zum Park, um den es geht.",
+    "intro": "Neues aus den Parks, die neueste Meldung zuerst.",
+    "count": "{count, plural, one {# Meldung} other {# Meldungen}}",
+    "filter": {
+      "label": "Nach Park filtern",
+      "all": "Alle Parks"
     }
   }
 }

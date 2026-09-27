@@ -4,7 +4,13 @@ import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Boxes, CalendarDays, Clock, HelpCircle, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { EntryTileBody, SelectionBar, tileCell } from '@/components/parks/park-entry-tiles';
+import {
+  EntryTileBody,
+  SelectionBar,
+  phoneLastCellSpan,
+  tileCell,
+  tileRowPhone,
+} from '@/components/parks/park-entry-tiles';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
@@ -246,6 +252,7 @@ export function RideNavTiles({
         // the park's row does one card over. No `gap`: the cells touch and the rules between them
         // are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
+        tileRowPhone,
         items.length === 5 && '@min-[1024px]/page:grid-cols-5',
         items.length === 4 && '@min-[1024px]/page:grid-cols-4',
         items.length === 3 && '@min-[1024px]/page:grid-cols-3',
@@ -253,8 +260,12 @@ export function RideNavTiles({
         items.length === 1 && 'grid-cols-1'
       )}
     >
-      {items.map((item) => (
-        <a key={item.href} href={item.href} className={cn('group', tileCell)}>
+      {items.map((item, index) => (
+        <a
+          key={item.href}
+          href={item.href}
+          className={cn('group', tileCell, phoneLastCellSpan(index, items.length))}
+        >
           <SelectionBar />
           <EntryTileBody icon={item.icon} label={item.label} count={item.count} hint={item.hint} />
         </a>

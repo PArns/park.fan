@@ -79,7 +79,7 @@ export function NearbyParksListView({
         {/* The location prompt lives in the floating LocationBanner now — an inline,
             conditionally-rendered hint here would re-introduce an in-flow layout shift
             (and duplicate the banner's message). */}
-        <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+        <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {parks.map((park, index) => {
             const hidden = !isExpanded && index >= 2;
 

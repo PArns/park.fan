@@ -1,16 +1,15 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
-import { ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import { stripNewPrefix, cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { HeroParkActions, type HeroPark } from '@/components/home/hero-park-actions';
+import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -25,92 +24,11 @@ const NEAR_PARK_HERO_RADIUS_M = 5000; // 5 km
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
 
-const BADGE_BASE = 'px-3 py-1 text-xs md:px-4 md:py-1.5 md:text-sm';
-
 /** Seed for the live counts, baked into the static shell by <HeroStats>. */
 export interface HeroInitialCounts {
   openParks: number;
   parks: number;
   attractions: number;
-}
-
-function formatTimeRange(
-  openingTime: string | undefined,
-  closingTime: string | undefined,
-  locale: string,
-  timeZone: string
-): string | null {
-  if (!openingTime || !closingTime) return null;
-  try {
-    const open = new Date(openingTime);
-    const close = new Date(closingTime);
-    return `${open.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', timeZone })} – ${close.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', timeZone })}`;
-  } catch {
-    return null;
-  }
-}
-
-interface ParkBadgesProps {
-  isOpen: boolean;
-  operatingCount: number | null;
-  crowdLabel: string | null;
-  hoursStr: string | null;
-  parkUrl: string | null;
-  t: ReturnType<typeof useTranslations<'parks'>>;
-  tCommon: ReturnType<typeof useTranslations<'common'>>;
-}
-
-function ParkBadges({
-  isOpen,
-  operatingCount,
-  crowdLabel,
-  hoursStr,
-  parkUrl,
-  t,
-  tCommon,
-}: ParkBadgesProps) {
-  return (
-    <div className="mt-4 mb-2 flex flex-wrap items-center gap-2 md:gap-3">
-      <Badge
-        variant="outline"
-        className={
-          isOpen
-            ? `border-emerald-500/60 bg-emerald-500/10 text-emerald-700 dark:border-emerald-400/60 dark:bg-emerald-500/20 dark:text-emerald-300 ${BADGE_BASE}`
-            : `border-red-500/60 bg-red-500/10 text-red-700 dark:border-red-400/60 dark:bg-red-500/20 dark:text-red-300 ${BADGE_BASE}`
-        }
-      >
-        {isOpen ? tCommon('open') : tCommon('closed')}
-      </Badge>
-      {operatingCount != null && (
-        <Badge variant="secondary" className={BADGE_BASE}>
-          {t('heroWelcomeAttractions', { count: operatingCount })}
-        </Badge>
-      )}
-      {crowdLabel && isOpen && (
-        <Badge
-          variant="outline"
-          className={`border-emerald-500/40 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 ${BADGE_BASE}`}
-        >
-          {crowdLabel}
-        </Badge>
-      )}
-      {hoursStr && (
-        <Badge variant="outline" className={`text-muted-foreground ${BADGE_BASE}`}>
-          {hoursStr}
-        </Badge>
-      )}
-      {parkUrl && (
-        <Link
-          href={parkUrl}
-          prefetch={false}
-          className="text-primary hover:text-primary/90 focus-visible:ring-ring inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none md:px-4 md:py-2 md:text-sm"
-        >
-          {t('heroParkLink')}
-          <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />
-        </Link>
-      )}
-    </div>
-  );
 }
 
 /**
@@ -129,7 +47,7 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
   return (
     <span
       className={cn(
-        'inline-flex h-[30px] w-fit items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
+        'inline-flex h-[30px] w-fit shrink-0 items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
         pending
           ? 'border-border/50 bg-background/50'
           : 'border-status-operating/40 bg-status-operating/10 text-status-operating'
@@ -148,6 +66,43 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
         </>
       )}
     </span>
+  );
+}
+
+/**
+ * The open-parks badge and, beside it, the newest news post as a chip.
+ *
+ * One element in the text panel's flow, so the panel's entrance stagger (`hero-in-stagger`, by
+ * `nth-child`) counts the same children it always did.
+ *
+ * **The row's own width decides the layout, never the badge's.** The badge changes width after
+ * the first paint — a skeleton bar until the count arrives, then "8" or "123" parks in one of six
+ * languages — so a wrap left to `flex-wrap` could move the chip to a second line late and push the
+ * headline, the intro and the search 38 px down under the reader. So the row is its own container
+ * (`@container/badges`): from 34 rem it is one line that never wraps (`flex-nowrap`), the badge
+ * keeps its width and the chip shrinks into what is left and truncates; below that the two stand
+ * in a column, badge above chip, whatever the count. 34 rem is the widest badge (French, 286 px)
+ * plus the gap plus 15 rem of chip. Measured: the chip is on the badge's line from a 768 px
+ * window up in all six locales, and the plate is not a pixel taller there than without it.
+ *
+ * The chip does not grow: a short headline gets a short chip, not a pill of empty tint.
+ */
+function HeroBadgeRow({
+  openParks,
+  latestNews,
+}: {
+  openParks: number | null;
+  latestNews: LatestNews | null | undefined;
+}) {
+  return (
+    // Two elements because a container query styles the container's descendants, never the
+    // container itself: the outer box is measured, the inner one is laid out.
+    <div className="@container/badges w-full">
+      <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
+        <OpenParksBadge openParks={openParks} />
+        {latestNews && <LatestNewsChip news={latestNews} />}
+      </div>
+    </div>
   );
 }
 
@@ -228,11 +183,16 @@ function HeroHeadline({ children, mark = false }: { children: React.ReactNode; m
  * attraction counts (SSR seed + 5-min client overlay). When the visitor is inside or right
  * next to a park it switches to the "Willkommen im …" variant with that park's live badges.
  */
-export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCounts | null }) {
+export function HeroWithNearby({
+  initialCounts,
+  latestNews,
+}: {
+  initialCounts: HeroInitialCounts | null;
+  /** The newest news post, for the chip beside the badge. Resolved on the server. */
+  latestNews?: LatestNews | null;
+}) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
-  const tCommon = useTranslations('common');
-  const locale = useLocale();
   const { data: liveNearbyData } = useHomeNearbyParks();
   /*
    * Die Nähe-Variante erst nach dem Mount.
@@ -281,84 +241,41 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
   }
 
   if (park) {
-    const isOpen = park.status === 'OPERATING';
-    const crowdLabel = park.analytics?.crowdLevel
-      ? t(`crowdLevels.${park.analytics.crowdLevel}` as 'very_low') || park.analytics.crowdLevel
-      : null;
-    const operatingCount = park.analytics?.operatingAttractions ?? null;
-    const hoursStr =
-      isOpen && park.todaySchedule?.scheduleType === 'OPERATING'
-        ? formatTimeRange(
-            park.todaySchedule.openingTime,
-            park.todaySchedule.closingTime,
-            locale,
-            park.timezone
-          )
-        : null;
+    // `in_park` sends no URL for the park itself, so its slugs are read off a ride's — every ride
+    // names the same four. The 1 km fallback above comes from `nearby_parks`, which does carry one.
+    const geo =
+      parkGeoFromUrl(park.url) ??
+      (inPark?.rides ?? []).reduce<ReturnType<typeof parkGeoFromUrl>>(
+        (found, ride) => found ?? parkGeoFromUrl(ride.url),
+        null
+      );
 
-    const parkUrl =
-      park.url != null && park.url !== '' ? convertApiUrlToFrontendUrl(park.url) : null;
-
+    // No intro under the welcome. The general sentence („park.fan hat 210 Freizeitparks …") was
+    // six lines on a phone between the welcome and the one thing somebody in the park came for,
+    // and this variant is client-only, so the served HTML — and its crawlable intro — is the
+    // general one either way. Three children, like the general variant, so the plate's entrance
+    // stagger counts the search and the pills below at the same places.
     return (
       <>
-        <OpenParksBadge openParks={openParks} />
+        <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
         <HeroHeadline>{t('heroWelcome', { parkName: stripNewPrefix(park.name) })}</HeroHeadline>
-        <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
-          {tHome.rich('hero.intro', introValues)}
-        </p>
-        <ParkBadges
-          isOpen={isOpen}
-          operatingCount={operatingCount}
-          crowdLabel={crowdLabel}
-          hoursStr={hoursStr}
-          parkUrl={parkUrl}
-          t={t}
-          tCommon={tCommon}
-        />
+        <HeroParkActions park={heroPark(park, geo)} className="mt-2" />
       </>
     );
   }
 
-  const nearParkOpen = nearestParkForVariant?.status === 'OPERATING';
-  const nearParkOperatingCount = nearestParkForVariant?.operatingAttractions ?? null;
-  const nearParkCrowdLabel =
-    nearestParkForVariant?.analytics?.crowdLevel != null
-      ? t(`crowdLevels.${nearestParkForVariant.analytics.crowdLevel}` as 'very_low') ||
-        nearestParkForVariant.analytics.crowdLevel
-      : null;
-  const nearParkHoursStr =
-    nearParkOpen &&
-    nearestParkForVariant?.todaySchedule?.scheduleType === 'OPERATING' &&
-    nearestParkForVariant?.timezone
-      ? formatTimeRange(
-          nearestParkForVariant.todaySchedule?.openingTime,
-          nearestParkForVariant.todaySchedule?.closingTime,
-          locale,
-          nearestParkForVariant.timezone
-        )
-      : null;
-  const nearParkUrl =
-    nearestParkForVariant?.url != null && nearestParkForVariant.url !== ''
-      ? convertApiUrlToFrontendUrl(nearestParkForVariant.url)
-      : null;
-
   return (
     <>
-      <OpenParksBadge openParks={openParks} />
+      <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
       <HeroHeadline mark>{tHome('hero.title')}</HeroHeadline>
       {showNearParkHero ? (
         <>
           <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
             {t('heroNearPark', { parkName: nearestParkForVariant!.name })}
           </p>
-          <ParkBadges
-            isOpen={nearParkOpen ?? false}
-            operatingCount={nearParkOperatingCount}
-            crowdLabel={nearParkCrowdLabel}
-            hoursStr={nearParkHoursStr}
-            parkUrl={nearParkUrl}
-            t={t}
-            tCommon={tCommon}
+          <HeroParkActions
+            park={heroPark(nearestParkForVariant!, parkGeoFromUrl(nearestParkForVariant!.url))}
+            className="mt-5"
           />
         </>
       ) : (
@@ -368,4 +285,23 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
       )}
     </>
   );
+}
+
+/** The two nearby shapes, reduced to what the hero's park block reads. */
+function heroPark(park: NearbyParkInfo | ParkWithDistance, geo: HeroPark['geo']): HeroPark {
+  return {
+    slug: park.slug,
+    name: stripNewPrefix(park.name),
+    geo,
+    timezone: park.timezone,
+    status: park.status,
+    todaySchedule: park.todaySchedule,
+    nextSchedule: park.nextSchedule,
+    operatingAttractions:
+      'operatingAttractions' in park
+        ? park.operatingAttractions
+        : (park.analytics?.operatingAttractions ?? null),
+    backgroundImage: park.backgroundImage,
+    backgroundPosition: park.backgroundPosition,
+  };
 }

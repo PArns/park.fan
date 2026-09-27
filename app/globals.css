@@ -37,28 +37,46 @@
 }
 
 /*
- * The phone sheet's detents, as CSS so the resting heights need no script.
+ * The phone sheet's detents, as CSS so the resting heights need no script
+ * beyond the one number below.
  *
  * `large` is where the sheet opens: everything under the 48 px site header, or
- * 92svh where that is more (see the note on the class list in
+ * 92 % of the screen where that is more (see the note on the class list in
  * `planner-flyout.tsx`), and on a short window nearly the whole screen (below).
  * `medium` is half the screen, reached by dragging the grabber down; the sheet
  * keeps its `large` box there and slides down with `bottom`. The drag measures
  * these very values with a probe (`sheetDetentHeights()` in the same file), so
  * this is the only place they are written down.
+ *
+ * All of them are written in `--planner-viewport`, the height the browser
+ * actually shows, and not in `svh`. The sheet is fixed to the layout viewport,
+ * and a zoom, the keyboard or a browser whose units are not its window leaves
+ * less than that on screen; iOS then cuts the difference off the top, where
+ * the grabber and the × are. `useSheetViewport()` (`lib/planner/`) sets the
+ * number from `window.visualViewport` while the sheet is open, and with it
+ * `--planner-viewport-lift`, the gap between the bottom of what is on screen
+ * and the bottom of the layout viewport, which the sheet stands on. `100svh`
+ * and `0px` are the fallbacks for a browser without `visualViewport`.
  */
 :root {
-  --planner-sheet-large: max(92svh, calc(100svh - 3rem));
-  --planner-sheet-medium: 50svh;
+  --planner-viewport: 100svh;
+  --planner-viewport-lift: 0px;
+  --planner-sheet-large: max(
+    calc(var(--planner-viewport) * 0.92),
+    calc(var(--planner-viewport) - 3rem)
+  );
+  --planner-sheet-medium: calc(var(--planner-viewport) * 0.5);
 }
 /* A short window gives the day the header's strip too: `large` opens 12 px
    under the top edge, over the site header, and the sheet reads as a sheet by
    the sliver of dimmed page above it. `SHEET_SHORT_QUERY` in
    `planner-flyout.tsx` repeats the query for the one thing CSS cannot answer:
-   whether the grabber still has a second detent to toggle to. */
+   whether the grabber still has a second detent to toggle to. The query asks
+   the window and the 12 px are counted from the top of what is on screen, so
+   a keyboard or a zoom moves the edge with the view. */
 @media (height < 50rem) {
   :root {
-    --planner-sheet-large: calc(100svh - 0.75rem);
+    --planner-sheet-large: calc(var(--planner-viewport) - 0.75rem);
   }
 }
 
@@ -736,6 +754,168 @@
   }
   50% {
     opacity: 0.8;
+  }
+}
+
+/*
+ * Planner: the empty day's drag, acted out (`PlannerDragDemo`, PAR-521). The screen in little,
+ * left to right: a ride list, the planner's edge, its axis. Seven poses over 3.6 s: the hand
+ * comes down on the middle ride (12 %), closes (18 %), lifts a copy (26 %), carries it across
+ * the edge (50 %), sets it on the slot as a block (58 %), opens (64 %) and draws back (78 %);
+ * the block fades out and the copy fades in at the list. Eased between poses, never cut, and
+ * the two hands and the row/block looks crossfade.
+ *
+ * The transforms outside the media query are the pose reduced motion holds: the fist carrying
+ * the card across the edge, which still says which way the gesture goes.
+ */
+.planner-drag-card,
+.planner-drag-hand {
+  transform: translate(58px, -9px);
+}
+
+@keyframes planner-drag-card {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  6%,
+  20% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  26% {
+    transform: translate(0, -3px) scale(1.06);
+  }
+  50% {
+    transform: translate(116px, -11px) scale(1.06);
+  }
+  58%,
+  84% {
+    transform: translate(116px, -8px) scale(1);
+    opacity: 1;
+  }
+  92%,
+  100% {
+    transform: translate(116px, -8px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-hand {
+  0% {
+    transform: translate(10px, -14px);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  12%,
+  20% {
+    transform: translate(0, 0);
+  }
+  26% {
+    transform: translate(0, -3px);
+  }
+  50% {
+    transform: translate(116px, -11px);
+  }
+  58%,
+  64% {
+    transform: translate(116px, -8px);
+  }
+  78% {
+    transform: translate(124px, -26px);
+    opacity: 1;
+  }
+  86%,
+  100% {
+    transform: translate(124px, -26px);
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-open {
+  0%,
+  12%,
+  64%,
+  100% {
+    opacity: 1;
+  }
+  18%,
+  58% {
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-closed {
+  0%,
+  12%,
+  64%,
+  100% {
+    opacity: 0;
+  }
+  18%,
+  58% {
+    opacity: 1;
+  }
+}
+
+@keyframes planner-drag-rowlook {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  62%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-blocklook {
+  0%,
+  55% {
+    opacity: 0;
+  }
+  62%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes planner-drag-slot {
+  0%,
+  52%,
+  92%,
+  100% {
+    opacity: 0;
+  }
+  58%,
+  84% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .planner-drag-card {
+    animation: planner-drag-card 3.6s ease-in-out infinite;
+  }
+  .planner-drag-hand {
+    animation: planner-drag-hand 3.6s ease-in-out infinite;
+  }
+  .planner-drag-open {
+    animation: planner-drag-open 3.6s ease-in-out infinite;
+  }
+  .planner-drag-closed {
+    animation: planner-drag-closed 3.6s ease-in-out infinite;
+  }
+  .planner-drag-rowlook {
+    animation: planner-drag-rowlook 3.6s ease-in-out infinite;
+  }
+  .planner-drag-blocklook {
+    animation: planner-drag-blocklook 3.6s ease-in-out infinite;
+  }
+  .planner-drag-slot {
+    animation: planner-drag-slot 3.6s ease-in-out infinite;
   }
 }
 
@@ -1531,6 +1711,11 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   border-color: color-mix(in oklab, oklch(0.645 0.246 16.439) 30%, transparent);
   background: color-mix(in oklab, oklch(0.645 0.246 16.439) 10%, transparent);
 }
+.tiptap-canvas .editor-callout--correction {
+  border-color: var(--border);
+  background: color-mix(in oklab, var(--muted) 40%, transparent);
+  color: var(--muted-foreground);
+}
 .tiptap-canvas .editor-callout-marker {
   display: inline-block;
   border-radius: 9999px;
@@ -1560,6 +1745,11 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 .tiptap-canvas .editor-callout-marker--caution {
   background: color-mix(in oklab, oklch(0.645 0.246 16.439) 20%, transparent);
   color: oklch(0.712 0.194 13.428);
+}
+
+.tiptap-canvas .editor-callout-marker--correction {
+  background: color-mix(in oklab, var(--muted-foreground) 15%, transparent);
+  color: var(--muted-foreground);
 }
 
 /* Empty-editor placeholder. */

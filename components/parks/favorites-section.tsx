@@ -236,7 +236,7 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
                 <LazyMount
                   grid={{ count: sortedFavorites.parks.length, rowHeight: 200, headerHeight: 64 }}
                 >
-                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                     {sortedFavorites.parks.map((park) => (
                       <ParkCard
                         key={park.id}
@@ -281,7 +281,7 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
                     headerHeight: 64,
                   }}
                 >
-                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                     {sortedFavorites.attractions.map((attraction) => (
                       <AttractionCard
                         key={attraction.id}

@@ -12,11 +12,11 @@ import { Link } from '@/i18n/navigation';
  * `href` is optional because not every column has a hub to point at, and `count` because most do
  * not have a number worth printing.
  *
- * No `'use client'`: there is no hook, no state and no handler in here, and the footer renders it
- * from the server. With the directive each of its three headings down there became a client
- * reference in the RSC payload of every page. The two panels that still import it —
- * `ParksMenuPanel` and `BlogMenuPanel`, the "more" panel drew cards instead from PAR-269 — are
- * client components themselves, so it still compiles into their bundle without it.
+ * No `'use client'`: there is no hook, no state and no handler in here. With the directive it
+ * would be a client reference of its own wherever a Server Component renders it. Everything that
+ * imports it today is a client component itself — `ParksMenuPanel`, `BlogMenuPanel` (the "more"
+ * panel drew cards instead from PAR-269) and the footer's `FooterLinkGroup`, which folds each
+ * column on a phone (PAR-437) — so it compiles into their bundles without it.
  */
 export function MenuSectionHeading({
   label,

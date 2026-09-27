@@ -2,6 +2,7 @@
 title: 'Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -17,8 +18,8 @@ tags:
   - hinter-den-kulissen
 category: behind-the-scenes
 parkLinks:
-  # Hansa-Park gets a paragraph of its own — why its page shows no wait times at
-  # all — which is exactly the question somebody on that page is asking.
+  # Hansa-Park gets a paragraph of its own on why its page shows no wait times at
+  # all. That is exactly the question somebody on that page is asking.
   - phantasialand
   - hansa-park
 rideLinks:
@@ -58,10 +59,13 @@ zweiten Teil dieses Satzes kannst du nichts damit anfangen.
 
 ## Was „typisch“ und „voll“ wirklich heißen
 
-park.fan legt neben jede Bahn zwei Vergleichswerte. **Typisch** ist der Median
-der Tagesspitzen: An der Hälfte aller gemessenen Tage war die längste Schlange
-kürzer als dieser Wert, an der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem
-richtig was los war.
+park.fan legt neben jede große Bahn eines Parks zwei Vergleichswerte, gerechnet
+über die letzten 365 Tage. **Typisch** ist der Median der Tagesspitzen: An der
+Hälfte aller gemessenen Tage war die längste Schlange kürzer als dieser Wert, an
+der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also
+ungefähr der eine Tag von zehn, an dem richtig was los war. Auf der Seite der
+Bahn stehen beide für den heutigen Wochentag, darunter die ganze Woche Tag für
+Tag.
 
 Beides sind Perzentile und keine Durchschnitte. Ein Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
 mit Betriebsstörung und 150 Minuten Rückstau zieht den Schnitt eines ganzen
@@ -96,20 +100,23 @@ diese Abweichungen sind der nützliche Teil.
 
 Aus dieser Form entstehen zwei Empfehlungen. Die erste ist **Rope Drop**:
 direkt zur Öffnung an eine bestimmte Bahn, bevor sich die Wege füllen. Wir
-schlagen das nur vor, wenn die Tagesspitze mindestens 60 Minuten erreicht und
-der frühe Start davon mindestens 45 spart. Alles darunter wäre ein Tipp, der
+schlagen das nur vor, wenn die Tagesspitze an einem gewöhnlichen Tag der letzten
+70 Tage mindestens 60 Minuten erreicht und der frühe Start davon mindestens 45
+spart. Alles darunter wäre ein Tipp, der
 überall stünde und deshalb nirgends etwas wert wäre.
 
-Die zweite ist die ruhigere Alternative am Abend. Bei den großen Coastern ist
-die letzte Stunde vor Schluss oft genauso gut wie die erste nach der Öffnung,
-nur muss man dafür nicht um sieben aufstehen. Beide Angaben stehen auf der
-Seite jeder Bahn, mit konkreter Uhrzeit in Parkzeit.
+Die zweite ist die ruhigere Alternative: die Uhrzeit, zu der die Schlange an
+dieser Bahn typischerweise am kürzesten ist. Liegt sie am Abend, muss man dafür
+nicht um sieben aufstehen. Beide Angaben stehen auf der Seite jeder großen Bahn,
+für die genug Messtage da sind, mit konkreter Uhrzeit in Parkzeit.
 
 ## Das meiste entscheidet sich vor der Abreise
 
-Die Uhrzeit spart dir eine halbe Stunde, das Datum bis zu einer ganzen. Zwischen
-zwei Tagen derselben Ferienwoche kann eine halbe Stunde Durchschnittswartezeit
-liegen, und einem gewöhnlichen Kalender sieht man das nicht an. Was den
+Die Uhrzeit spart dir an einer Bahn, für die wir Rope Drop vorschlagen,
+mindestens eine Dreiviertelstunde. Das Datum entscheidet über den ganzen Tag. In
+den NRW-Sommerferien 2026 stand im Phantasialand Dienstag, der 18. August, im
+Kalender auf „normal“, der Donnerstag derselben Woche auf „sehr hoch“ (Stand
+September 2026), und einem gewöhnlichen Kalender sieht man das nicht an. Was den
 Unterschied macht: welche Bundesländer gerade frei haben, ob ein Brückentag
 dranhängt, ob es regnet und ob im Nachbarland etwas los ist.
 
@@ -123,8 +130,9 @@ Vergleich, jeweils mit ihrem ruhigsten Wochentag:
 
 ```
 
-Bleibt eine Zelle in der letzten Spalte leer, hat dieser Park keinen Wochentag,
-der sich verlässlich von den anderen abhebt.
+Steht in der letzten Spalte ein Strich, hebt sich an diesem Park kein Wochentag
+verlässlich ab, oder die Wochentage sind zu ungleich gemessen, um sie zu
+vergleichen. Stehen dort zwei Tage, sind beide gleich ruhig.
 
 ## Wofür man eine Nachtschicht braucht
 
@@ -134,14 +142,19 @@ Also läuft jede Nacht eine Kette von Jobs, und ihre Reihenfolge ist
 festgelegt, weil jeder Schritt auf dem vorigen sitzt. Um 02:00 UTC die
 Perzentile pro Stunde, um 03:00 die Basiswerte pro Park, um 04:30 die
 Zusammenfassung von gestern, um 05:15 die Rope-Drop-Empfehlungen, die genau
-diese Zusammenfassung lesen. Um 06:00 trainiert sich das Prognosemodell mit
+diese Zusammenfassung lesen, um 05:30 „typisch“ und „voll“ für die großen Bahnen.
+Um 06:00 trainiert sich das Prognosemodell mit
 den Wartezeiten des Vortags neu, während die Rope-Drop-Fraktion schon auf der
 Autobahn steht.
 
-Dazu kommt die andere Hälfte: Wir werfen nichts weg. Ältere Zeiträume werden
-komprimiert, aber jede Auswertung läuft weiterhin über alle Messwerte, die je
-angekommen sind. Wer im dritten Jahr anfängt zu speichern, hat im dritten Jahr
-ein Jahr Historie, und die beiden Jahre davor sind für immer weg.
+Dazu kommt die andere Hälfte: Wir werfen keine Messung weg. Ältere Zeiträume
+werden komprimiert, aber nicht ausgedünnt. Wie weit eine Auswertung
+zurückschaut, ist eine eigene Entscheidung: „Typisch“ und „voll“ rechnen über
+die letzten 365 Tage, also einen ganzen Jahreslauf, die Rope-Drop-Empfehlung nur
+über die letzten 70, damit sie der Saison folgt. Wer im dritten Jahr anfängt zu
+speichern, hat im dritten Jahr ein Jahr Historie, und die beiden Jahre davor
+sind für immer weg. Unsere Messreihe beginnt am 26. Dezember 2025; die Spalte
+mit den Messtagen in der Tabelle oben zählt ab da.
 
 ## Wo wir lieber gar nichts sagen
 
@@ -152,15 +165,17 @@ meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort sämtl
 Attraktionen des Parks auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
 die auf null Beobachtungen beruht. Ein Traumtag für jeden Besucher, und
 komplett erfunden. Stattdessen steht auf der Parkseite ein
-Hinweis, dass es hier nichts zu lesen gibt.
+Hinweis, dass es hier nichts zu lesen gibt. Was wir über den Park trotzdem
+sagen können, steht im [Hansa-Park-Guide](/blog/hansa-park-tipps).
 
-Dieselbe Regel an einer kleineren Stelle: Der Schlittschuhverleih im
-Phantasialand läuft von November bis Januar. Im August meldet über ihn niemand
+Dieselbe Regel an einer kleineren Stelle: Die Eisbahn „Berliner Eislaufen“ auf
+dem Kaiserplatz im Phantasialand gibt es nur zum Wintertraum, diesmal vom 14.
+November 2026 bis zum 24. Januar 2027. Im August meldet über sie niemand
 etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet“ zu lesen,
 wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite:
 Schlittschuhe im Hochsommer, mit unserem Segen.
-Und Betriebsmonate einer Bahn nennen wir überhaupt erst nach 330
-Beobachtungstagen: Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
+Und Betriebsmonate, die wir aus den eigenen Messungen ablesen, nennen wir
+überhaupt erst nach 330 Beobachtungstagen: Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
 April“ dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen
 haben.
 
@@ -170,9 +185,10 @@ Die lange Fassung, mit den echten Karten zum Mitlesen, ist jetzt eine eigene
 Seite: [So funktioniert park.fan](/de/so-funktioniert-park-fan). Dort steht
 Kapitel für Kapitel, was auf einer Attraktionskarte zu sehen ist, wie die
 Skala unter „typisch“ und „voll“ funktioniert, wie der Kalender die Ferien
-verrechnet und an welchen drei Stellen wir bewusst nichts behaupten. Vier
-konkrete Besuchssituationen sind auch dabei, von der Familie in den
-Herbstferien bis zum Jahreskarten-Abend um sieben.
+verrechnet, wie der Tagesplaner daraus einen Tag macht und an welchen drei
+Stellen wir bewusst nichts behaupten. Vier konkrete Besuchssituationen sind auch
+dabei, von der Familie in den Herbstferien über den spontanen Abend mit
+Jahreskarte bis zum ersten Besuch in einem großen Park.
 
 Und wenn du das nächste Mal am Eingang stehst und auf die Anzeige starrst:
 Schau nach, was an dieser Bahn an einem Dienstag normal ist.

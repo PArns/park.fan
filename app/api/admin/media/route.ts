@@ -5,6 +5,7 @@ import { getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import {
   MEDIA_REVISION,
+  getCollection,
   getMediaImage,
   listCollections,
   listParks,
@@ -27,7 +28,7 @@ import type { MediaImage, MediaLicense, MediaRole } from '@/lib/media/types';
  * roles, licences) so the UI never hardcodes a list that could drift from
  * `lib/media/tags.mjs`.
  *
- *   GET /api/admin/media?q=&park=&tag=&lowres=1
+ *   GET /api/admin/media?q=&park=&tag=&collection=&lowres=1
  *   GET /api/admin/media?id=toverland/troy      one image, with its GPS verdict
  */
 
@@ -132,6 +133,10 @@ export async function GET(req: Request) {
       licenses: MEDIA_LICENSES,
       parks: listParks(),
       collections: listCollections(),
+      collectionCounts: listCollections().map((collection) => ({
+        collection,
+        count: getCollection(collection).length,
+      })),
       lowResLongEdge: LOW_RES_LONG_EDGE,
     },
   });

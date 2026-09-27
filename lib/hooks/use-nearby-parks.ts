@@ -8,6 +8,7 @@ import {
   readCacheEntry,
   writeCache,
 } from '@/lib/nearby/nearby-cache';
+import { resolveCompassDemo } from '@/lib/nearby-simulation';
 import type { NearbyResponse } from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
@@ -54,8 +55,11 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
 
   // Dev-only: `?sim=in_park` (and friends) simulates standing in a park so the in-park UI can be
   // previewed without real GPS. Forwarded to /api/nearby, which only honors it outside production.
-  const simMode =
+  // The compass demo (`?sim=compass`) is not one of them: it asks for its park itself and leaves
+  // this request, and the hero, to the device's real position.
+  const rawSim =
     typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('sim') : null;
+  const simMode = resolveCompassDemo(rawSim) ? null : rawSim;
 
   const hasCoords = position != null;
   // Wait while a GPS lookup is pending (permission granted → coords imminent) instead of

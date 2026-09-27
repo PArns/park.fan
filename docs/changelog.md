@@ -20,6 +20,270 @@ jetzt `reserveStatusRow` an `ParkCard`. `LiveActivitySkeleton` reservierte sechs
 Kontinente und je Karte 12 px zu wenig. An der Stelle „Beliebte Parks" misst `measure:cls --late`
 jetzt 0,10 statt 0,34.
 
+## Unreleased – Der Kompass sieht aus wie ein Kompass
+
+Der Kompass unter dem Hero war eine flache Scheibe mit Strichen und sah aus wie jedes Radar. Jetzt
+hat er eine Lünette mit Gradzahlen alle 30°, Strichen alle 5° und einem Dreieck für Norden. Das
+Zifferblatt ist das Foto des Parks, verschwommen und abgedunkelt, darüber liegt eine blasse
+Windrose. Wohin du schaust, leuchtet auf der Lünette ein Bogen, und dort steht auch die Gradzahl
+(„100°"). Von dir zur Bahn in der Leiste unter dem Kompass führt eine gestrichelte Linie. Neben
+den Punkten stehen jetzt die Namen der Bahnen, gekürzt („Big Thunder…") und mit einer feinen Linie
+zum Punkt. Wo im Gedränge kein Platz ist, fällt ein Name weg; in Disneyland waren 8 von 10 Punkten
+beschriftet. Das ganze Panel ist Glas über dem verschwommenen Parkfoto, wie die Glasflächen im
+Rest der Seite, aber ohne `backdrop-filter`, weil sich hier ständig etwas dreht. Eine
+geschlossene Bahn zeigt ihr Abzeichen in der Leiste unter dem Namen, damit der Name nicht mehr
+abgeschnitten wird. Das Foto kostet 2,9 KB.
+Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
+
+## Unreleased – Kompass-Demo zum Testen: `?sim=compass`
+
+Den Kompass unter dem Hero kann man jetzt auch zu Hause auf dem Handy ausprobieren, auf park.fan
+selbst und nicht nur in einer Vorschau. `?sim=compass` legt Phantasialand mit seinen echten Wartezeiten um
+den eigenen Standort, `?sim=compass:disneylandparis` (oder `efteling`, `europapark`) einen anderen
+Park. Entfernungen und Richtungen bleiben dabei wie im Park, also dreht sich der Pfeil mit dem
+Handy und die Bahnen kommen näher, wenn man in ihre Richtung geht. Der Park wird dafür einmal an
+der ersten Position abgelegt und bleibt dort liegen. Ein gelber Hinweis über dem
+Kompass sagt, dass es eine Demo ist; ohne Standortfreigabe steht man auf dem Punkt im Park und
+kann die Freigabe dort mit „Standort nutzen" geben. Der Hero bleibt dabei unverändert.
+Details: [flags-and-debug.md](development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
+
+## Unreleased – Startseite im Park: Kompass mit den Top-Attraktionen
+
+Wer im Park steht, sieht unter dem Hero der Startseite einen Kompass. Norden ist oben, jede
+Top-Attraktion ist ein Punkt in ihrer Richtung, je weiter weg, desto weiter außen, mit der
+aktuellen Wartezeit in den Wartezeit-Farben. In der Mitte zeigt ein Pfeil mit Blickkegel, wohin
+du schaust, und dreht sich mit dem Handy; auf dem iPhone nach einem Tipp auf „Kompass
+einschalten". Die Leiste unter dem Kompass nennt die Bahn, die vor dir liegt (oder die
+angetippte). Daneben stehen dieselben Bahnen als Liste mit Pfeil, Entfernung und Wartezeit. Ohne
+Kompass (am Rechner) gibt es keinen Pfeil, nur deinen Punkt. Die Koordinaten der Bahnen liefert
+eine neue, kleine Route (`/api/parks/…/positions`, 0,7 KB), weil die Antwort von `/api/nearby`
+keine enthält.
+Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
+
+## Unreleased – fix: Foto-Aufnahme kennt die Fotos im offenen Pull Request
+
+Nach einem Neuladen von `/admin/capture` standen alle heute fotografierten Bahnen wieder unter
+„Fehlt noch", weil der Backlog nur `main` kannte und die Fotos bis zum Merge im Session-PR liegen.
+Das nächste Foto derselben Bahn bekam außerdem wieder den Namen des ersten und hätte es im PR
+überschrieben. Der Backlog liest jetzt die Dateiliste des offenen Session-PRs mit: Bahnen daraus
+zählen als fotografiert und tragen „im PR", ihre Dateinamen gelten als belegt. Am offenen PR #627
+in Phantasialand waren das 10 Bahnen und 12 Namen. Reservierte Namen gehen auf dem Handy auch
+beim Neuladen der Liste und für Fotos in der Warteschlange nicht mehr verloren.
+Details: [admin.md](features/admin.md#the-open-pull-request-counts).
+
+## Unreleased – Startseite im Park: „Heute planen", „Zum Park", Öffnungszeiten, Wetter
+
+Steht man in einem Park oder in dessen Nähe, zeigt der Hero der Startseite unter der Begrüßung
+vier Felder. „Heute planen" öffnet den Assistenten des Tagesplaners mit diesem Park und dem
+heutigen Tag, direkt bei „Wer kommt mit". Ist heute schon geplant, heißt der Knopf „Plan für
+heute" und öffnet den Tag auf der Parkseite. Hat der Park heute zu oder schon geschlossen, heißt
+er „Besuch planen" und fragt nach dem Datum. „Zum Park" führt zu den Wartezeiten und zeigt, wie
+viele Attraktionen laufen. Dazu die Öffnungszeiten von heute (zum Wartezeiten-Kalender) und das
+Wetter (zum Wetter-Kapitel). Den Link zum Park gab es im Park vorher gar nicht, weil die
+`in_park`-Antwort keine Park-URL mitliefert; die Adresse kommt jetzt aus einer Bahn-URL. Der
+allgemeine Einleitungstext fällt in dieser Variante weg.
+Details: [homepage-hero.md](features/homepage-hero.md#in-a-park-or-next-to-one).
+
+## Unreleased – fix: Foto-Aufnahme im Admin erkennt den Park wieder und folgt dem Standort sofort
+
+`/admin/capture` fand nie einen Park, weil die `in_park`-Antwort von `/api/nearby` am Park
+keine URL mitliefert (0 von 210 Parks) und der Hook genau die verlangte. Kontinent, Land und
+Stadt kommen jetzt aus der URL einer Bahn in derselben Antwort, und wenn die Bahnliste leer ist,
+aus einer zweiten Abfrage mit `radius=0`, deren Parks ihre URL tragen. Alle 210 Parks werden so
+erkannt. Findet die erste Abfrage keinen Park, fragt ein späterer Fix nach 15 s erneut, und
+„Neu orten" fragt sofort.
+
+Bei aktivem Tab kommt wieder jeder GPS-Fix auf den Bildschirm, etwa einer pro Sekunde, und ein
+gecachter Fix darf höchstens 15 s alt sein. Die 10-m-Schwelle und der 60-s-Cache aus PAR-341 sind
+raus. Im Hintergrund bleibt die Ortung aus.
+Details: [admin.md](features/admin.md#which-park-and-how-fast-the-position-follows).
+
+## Unreleased – der Planer fragt, wenn der geplante Tag vorbei ist
+
+Ein Klick auf den Planer (die Lasche am Rand, am Handy der Knopf im Kopf) öffnete immer den
+zuletzt angesehenen Tag, nach einem Parkbesuch also den Tag, der schon vorbei ist. Jetzt fragt er
+in diesem Fall erst: „Dein geplanter Tag ist vorbei", mit Park und Datum, und zwei Antworten.
+„Neuen Tag planen" öffnet den Assistenten, auf einer Parkseite gleich mit diesem Park.
+„Vergangenen Tag ansehen" öffnet den Tag wie bisher. Escape öffnet nichts. Wege, die einen Tag
+schon nennen (ein Tag im Kalender, „Tag im … planen"), fragen nicht.
+Details: [trip-planner.md](features/trip-planner.md#a-day-that-is-over-is-asked-about-not-opened).
+
+## Unreleased – Tagesplaner am Handy: Suche in einer Zeile, Verschieben im 5-Minuten-Raster
+
+In der Handy-Ansicht unter einer Maus (ein schmales Browserfenster) stand „Eigener Block" als
+44 px hohe eigene Zeile unter dem Suchfeld, und die Trefferliste scrollte in einem Kasten, der selbst
+scrollte. Bei 390 × 844 mit zehn geplanten Bahnen bekam die Suche 106 px, und keine einzige Bahn war
+ganz zu sehen. Jetzt verhält sich die Suche dort wie am Handy mit Finger: eine Zeile mit „Eigener
+Block" daneben, ein Klick ins Feld gibt der Suche das Sheet (12 Bahnen sichtbar), „Fertig" bringt den
+Tag zurück. Die Achse wächst dabei von 429 auf 491 px.
+
+Ein Block lässt sich am Handy jetzt in 5-Minuten-Schritten ziehen statt in halben Stunden. 90 px
+Zug sind 50 Minuten, und kurze Züge bewegen den Block überhaupt erst: 18 px sind 10 Minuten, vorher
+blieb er stehen. Die Knöpfe ±15 Minuten in der Aktionsleiste bleiben.
+Details: [trip-planner.md](features/trip-planner.md).
+
+## Unreleased – fix: das Planer-Sheet auf dem Handy ist so hoch wie der sichtbare Bereich
+
+Das Sheet des Tagesplaners war so hoch wie der Layout-Viewport (`92svh`, `100svh`), auch wenn der
+Browser gerade weniger davon zeigte: hineingezoomt, mit Tastatur oder in einem Browser, dessen
+`svh` nicht zum Fenster passt. iOS schneidet den Rest oben ab, und damit verschwanden Griff und ×
+(„wenn das nicht Standardhöhe ist, lässt sich der Planer nicht schließen"). In Chromium bei
+390 × 844 und Zoom 1,3 waren 649 px sichtbar und das Sheet endete bei 844. Jetzt liest
+`useSheetViewport()` die sichtbare Höhe aus `window.visualViewport`, alle drei Rastpunkte rechnen
+damit, und das Sheet steht auf der Unterkante des sichtbaren Bereichs statt auf der des Layouts.
+Ohne Zoom misst alles wie vorher.
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
+## Unreleased – die Desktop-Leiste in der Reihenfolge des Handy-Menüs, mit dessen Icons
+
+Die Leiste oben am Desktop steht jetzt so wie das Handy-Menü: Backstage, News, Parks entdecken,
+„Mehr" (dort, wo das Handy-Menü Beste Reisezeit, Wörterbuch und So funktioniert's führt),
+Tagesplaner; die Favoriten bleiben rechts. Jeder Eintrag trägt das Icon, das er im Handy-Menü hat,
+„Mehr" drei Punkte. Alle sechs Sprachen bleiben einzeilig, Französisch mit 47 px Luft bei 1024 px.
+Der Chip mit dem Park in der Nähe passte daneben nicht mehr: Unter 1280 px ist er jetzt nur noch
+die Stecknadel, der Name steht im Tooltip; ab 1280 kommt der Name zurück.
+Im Handy-Menü ist „Meine Alarme · Fancast" jetzt ein echter Fuß: außerhalb der scrollenden Liste,
+direkt am unteren Rand. Und das Menü scrollt nicht mehr seitwärts: Wer Favoriten gespeichert hatte,
+bekam darunter einen horizontalen Scrollbalken, weil deren Zeilen 8 px über die Spalte hinausragten.
+
+## Unreleased – die News im Handy-Menü als kleine Karte, eine Achterbahn für „Parks entdecken"
+
+Die neueste Meldung oben im Handy-Menü war ein Chip, und in der 300 px breiten Spalte blieben davon
+drei Wörter der Schlagzeile übrig. Jetzt ist sie eine kleine Karte: Label und Datum, die
+Schlagzeile in zwei Zeilen und zwei bis drei Zeilen des Teasers, in kleinerer Schrift als die
+Menüeinträge. Im Hero der Startseite bleibt es der einzeilige Chip neben dem Badge. „Parks
+entdecken" trägt im Handy-Menü eine Achterbahn statt eines Globus. Das Menü beginnt oben: die
+Einstellungen stehen links neben dem X statt 80 px darunter, und die Zeile „Meine Alarme · Fancast"
+steht immer am unteren Rand.
+
+Nebenbei: In den Header-Panels (Backstage und News) und in `NewsList` griff keine Zeilenbegrenzung.
+Jede stand als `line-clamp-N block` im Code, und `.block` steht im erzeugten CSS hinter
+`.line-clamp-N` und setzt das `display` zurück, das die Begrenzung braucht. Gemessen an der neuen
+Karte: 3 statt 2 Zeilen Schlagzeile, 5 statt 3 Zeilen Teaser. An allen acht Stellen ist das
+`block` jetzt weg, `line-clamp` ist selbst blockartig.
+
+## Unreleased – die neueste Meldung als Chip auf der Startseite und im Handy-Menü
+
+Neben dem „Parks jetzt geöffnet"-Badge im Hero der Startseite steht die neueste News als Chip
+(`LatestNewsChip`): das News-Label in der Akzentfarbe, die Schlagzeile, ein Pfeil. Auf dem Handy war
+das bisher gar nicht zu sehen, bis man ans Ende der Seite scrollte, weil das Band unter dem Hero mit
+seiner News-Zeile erst ab `lg` gezeichnet wird. Derselbe Chip steht oben im Handy-Menü. „Fotos
+hochladen" ist dort raus; das Formular bleibt über das Banner jeder Park- und Ride-Seite und über
+das „Mehr"-Panel am Desktop erreichbar. Die Einträge im Handy-Menü haben jetzt Icons, und ein Tipp
+auf einen Link schließt das Menü auch dann, wenn er auf die gerade offene Seite führt. Im
+News-Panel des Headers hat jede Meldung in der Zeitleiste rechts ihr Bild.
+
+Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md).
+
+## Unreleased – Blog und News sind getrennt, News hat einen eigenen Menüeintrag
+
+`/blog` listete News weiter mit: im Kartenraster des Index, als Zweig „News" im Kategoriebaum, über
+Tags, die nur News tragen, auf der Autorenseite und im Vor/Zurück eines Artikels. Jetzt listet alles
+unter `/blog` nur Artikel (`listArticles`), `/news` nur News, und `pnpm test:news-split` prüft das in
+allen sechs Sprachen. Im Header steht News als eigener Eintrag neben „Backstage", mit einem Panel,
+das anders aussieht als das des Blogs: eine Meldung mit Bild und Teaser, daneben die weiteren
+Schlagzeilen auf einer Zeitleiste, jede mit ihrem Alter. Das Backstage-Panel verliert seinen
+News-Streifen und die News-Pille. News auch im Handy-Menü, im Footer und in `llms.txt`.
+
+Dazu SEO für News: `/news` hat eigene Metadaten (Titel „Freizeitpark-News: …", eigene
+OG-Karte statt der kaputten `blog/news`), eigenes JSON-LD (`CollectionPage` mit `NewsArticle`-Liste)
+und einen eigenen Eintrag in `sitemap.xml`. Ein News-Beitrag heißt im Titel „| News · park.fan"
+statt „| Blog", sendet `NewsArticle` (PAR-471) und `article:section`. Das Publisher-Logo im
+Beitrags-JSON-LD ist das PNG statt des SVG, das Google dort nicht liest (PAR-486). Der Feed
+misst die Enclosure-Länge auch für Titelbilder, die auf einen Zuschnitt zeigen, und
+`check:agent-ready` zählt die Beschreibung des Kanals nicht mehr als Item (PAR-478).
+
+Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md),
+[news lives under `/news`](rules/news-live-under-news.md).
+
+## Unreleased – fix: der Tagesplaner nennt die Shows wieder (PAR-521, Nachtrag)
+
+Über einer Bahn stand von einer Show nur noch die Maske, man sah also nicht, welche Show läuft.
+Jetzt schreibt der Block die Shows, die in ihn fallen, selbst hin: neben die Zeiten oder, bei
+einem kurzen Block, zwischen Namen und Wartezeit, jeweils mit Uhrzeit. Der Name der Bahn behält
+Vorrang, gekürzt wird die Show. In den Lücken zwischen zwei Bahnen stehen die Namen rechts neben
+dem Umstiegs-Chip.
+
+Details: [trip-planner.md](features/trip-planner.md).
+
+## Unreleased – fix: der Tagesplaner auf dem Desktop wie auf dem Handy (PAR-482, Nachtrag)
+
+Jede Desktop-Spalte hat wieder eine Bahnsuche, in einer Zeile mit „Eigener Block"; die Treffer
+erscheinen beim Tippen und lassen sich anklicken oder auf die Achse ziehen. Der Fuß ist der des
+Handys: „Tag optimieren" über die volle Breite, Rückgängig als Symbol, die Glocke oben in der
+Kopfzeile statt einer eigenen Zeile unten. Eine Pause über einer Bahn gilt jetzt als Konflikt,
+und der CTA bietet an, ihn aufzulösen („ein Konflikt weniger"). Der Fit-Assistent streicht
+Wiederholungsfahrten vor Bahnen, die noch niemand gefahren ist, und „Anpassen" öffnet ihn wieder
+mit der letzten Wahl. Eine Show-Linie, die durch eine Bahn oder einen Umstieg läuft, zeigt dort nur
+noch die Masken statt einer Namensleiste über dem Block, und mit der Maus auf einem Block treten
+alle Shows zurück. Ein leerer Tag zeigt den Drag-&-Drop-Hinweis als gut lesbare Karte, am Rechner
+mit einer kleinen Animation: Eine Hand nimmt eine Bahn aus der Liste links, zieht sie über die
+Kante des Planers und legt sie rechts auf die Zeitachse. Die Knöpfe
+im Fuß sind gleich hoch, und im Planer blendet nichts mehr hart um: Show-Linien, der Ghost beim
+Ziehen, die Drop-Linie und die gedimmten Zustände gleiten oder blenden weich.
+
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
+## Unreleased – „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
+
+Wer im Park steht und keinen Plan hat, sieht auf der Parkseite („In deiner Nähe“) und auf der
+Startseite (`InParkView`) bis zu drei Fahrten, deren Live-Wartezeit mindestens 10 Min. unter der
+Prognose der nächsten zwei Stunden liegt („Jetzt 5 Min., ab 13:00 laut Prognose 30 Min.“). Die
+Regel `suggestNextRides` (`lib/planner/next-best-ride.ts`) liest die Kurve aus `/plan/day`, zählt
+eine Stunde erst ab der Ankunft (Laufzeit nach `leg.ts`), nie die Schließstunde, und lässt
+geschlossene, außer Saison stehende und nicht lesbare Fahrten weg, ebenso solche, für die
+jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Einstellungen des Tages.
+`/plan/day` wird nur im Park geholt. Geprüft von
+`pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
+
+## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
+
+Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
+40 px und das Band mit `pt-2.5 pb-3`. Die Startseiten-Variante (`tile`) hat eine 48-px-Plakette
+und einen `text-2xl`-Titel. `ChapterPanel`, `PageSection` und `AttractionHistoryPanel` beginnen
+mit 24 statt 40 px Abstand. Gemessen mit `pnpm measure:mobile-height` bei 390 × 664: Startseite
+−798 px, Ride-Seite Taron −226 px, Statistik −92 px, Parkseite −84 px, Kalender −80 px. Ab `sm`
+ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen Werten). Die
+Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
+den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
+
+## Unreleased – Park-Karten sind auf dem Handy eine Zeile (PAR-432)
+
+Unter `sm` rendert `ParkCard` keine Karte mehr, sondern eine Zeile mit vier festen Zeilen: Name mit
+Favoriten-Stern, Ort · Entfernung, `ParkStatusBadge` und `CrowdLevelBadge`, dann Schließ- oder
+Öffnungszeit (`ParkCardScheduleFooter compact`). Hat der Park ein Foto, steht links ein Thumbnail
+64 × 40 mit dem Fokuspunkt. „Nächster offen“ steht als Text hinter der Uhrzeit statt als drittes Badge. Die Zeile ist 100 px hoch, die Karte war 146 px. Gemessen mit
+`measure:mobile-height` bei 390 × 664: Startseite 27.905 → 27.420 px, Deutschland 3.724 → 3.312 px,
+Niederlande 2.706 → 2.522 px, Phantasialand 12.232 → 12.141 px. `measure:cls --late` auf der
+Deutschland-Seite mobil, spät: 0,2322 → kein Wert mehr, weil die Badges mit dem Batch-Call kommen und
+die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung mit, der Desktop
+bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
+Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
+
+## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
+
+Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
+erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
+Kalender-Knopf für den Tagesplaner. Die senkrechte Lasche am rechten Rand wird auf dem Handy nicht
+mehr gezeichnet, weil sie mit 24 × 102 px über Text und Karten lag. Beide Einstiege fragen dieselbe
+Variante (`planner-phone`), es gibt also bei jeder Größe genau einen.
+
+Der Brotkrümel zeigt auf dem Handy nur noch einen Link eine Ebene nach oben statt
+„Startseite › … › Phantasialand". Auf Park- und Ride-Seite fällt die Zeile auf dem Handy ganz weg:
+dort sind Land (und Stadt, wenn sie eine Seite hat) bzw. der Park in der Titelkarte verlinkt. Die
+H1 steht dort bei 390 px jetzt bei y=105 statt 151, gemessen mit `pnpm measure:mobile-height`.
+
+## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
+
+Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
+davon waren die drei Link-Spalten mit elf 44-px-Zeilen. Unter `sm` ist jede Spalte jetzt eine
+zugeklappte Zeile, die ihre Links per Tipp aufklappt (`FooterLinkGroup`). Die Links bleiben dabei im
+HTML, zugeklappt nur per `max-sm:hidden` ausgeblendet. Dazu knappere Abstände unter `sm`, und die
+zweite „Arns.dev"-Zeile fällt dort weg, weil derselbe Link oben in der Marke steht. Ergebnis: 636 px
+in de/en/nl/it, 660 px in fr/es. Ab `sm` ist der Footer unverändert, der Screenshot bei 1440 px ist
+byte-gleich. Der 562-px-Block, der im DOM vor dem Footer steht, ist `ParkBackground`: `position:
+fixed` hinter dem Seitenkopf, er belegt keine Höhe.
+
 ## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
 
 Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
@@ -85,6 +349,22 @@ Phantasialand-Liste 6.503 → 4.328 px, Magic Kingdom 12.053 → 4.136 px. Glock
 ihre 34-px-Kreise mit 44-px-Trefferfläche. Die Prop heißt `phoneRow`, die anderen sieben
 Einbettungen der Karte und der Desktop bleiben gleich. `LazyMount` reserviert für eine Spalte jetzt
 80 px je Zeile (`phoneRowHeight`), das Tab-Skeleton hat dieselbe Zeilenform.
+
+## Unreleased – feat: `/news` sieht nicht mehr aus wie der Blog
+
+Die Übersicht `/news` war bis hier die Kategorieseite des Blogs an neuer URL: Kartenraster,
+Kategoriebaum, Tag-Cloud. Jetzt ist sie ein Strom nach Tagen, neueste zuerst. Jeder Tag beginnt mit
+Datum und Alter (`NewsAge`), jede Meldung trägt ihren Park als Link, den Titel, eine Zeile Teaser
+und ein kleines Bild. Über dem Strom filtern Pillen nach Park (`?park=<slug>`), angeboten werden nur
+Parks mit News. Die Seite bleibt statisch, der Filter läuft im Browser und die Canonical bleibt
+`/news`.
+
+Der einzelne Beitrag unter `/news/<slug>` bleibt, wie er war: Er liest sich wie ein Artikel, mit
+Vollbild-Hero und Lesezeit. Ein eigener, schlanker Kopf für Beiträge war kurz Teil dieser Änderung
+und ist auf Patricks Wunsch wieder raus.
+
+Der Park einer Meldung ist der erste Eintrag in `parkLinks`, ohne Eintrag der bestbewertete Park,
+den der Beitrag erwähnt (`getNewsParkRef`). Siehe `docs/rules/news-live-under-news.md`.
 
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
 

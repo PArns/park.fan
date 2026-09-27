@@ -257,6 +257,103 @@ the page down (0.0147 CLS on a throttled phone). Note also the `grid-cols-1` on 
 an implicit grid column is sized to its content's max-content width, and a horizontally
 scrollable row is wider than a phone — without it the whole hero overflowed the viewport.
 
+## In a park, or next to one
+
+When `/api/nearby` places the visitor inside a park (`in_park`, or `nearby_parks` with the nearest
+park under 1 km) the headline becomes „Herzlich willkommen im …", and within 5 km the general
+headline gets a „… ist in deiner Nähe" line. Both variants render `HeroParkActions`
+(`components/home/hero-park-actions.tsx`) under it, a 2×2 block:
+
+| Cell           | Shows                                                | Leads to                                      |
+| -------------- | ---------------------------------------------------- | --------------------------------------------- |
+| „Heute planen" | today's date in the park's zone                      | the planner's wizard, park and today answered |
+| „Zum Park"     | rides running (`operatingAttractions`)               | the park page                                 |
+| Öffnungszeiten | today's hours (`formatHoursRange`), dot for open now | the park's crowd calendar                     |
+| Wetter         | nowcast condition and temperature                    | `#weather` on the park page                   |
+
+- **The park's slugs come from a ride.** The `in_park` answer carries no URL for the park itself
+  (0 of 210 parks), which is why the old „Zum Park" link never rendered for a visitor inside the
+  park. `parkGeoFromUrl` reads them off the first ride URL, as `PlannerInParkCta` does.
+- **„Heute planen" is the calendar's hand-off.** A `PlannerPageParkBeacon` is mounted with the
+  block, so the panel knows which park the page is about; the press files today with
+  `plannerPageDay` and requests `page-park-wizard` (source `home-hero`), and the wizard opens on
+  „Wer kommt mit". Today already in the plan: „Plan für heute", which opens that day and goes to
+  the park page. Shut today or already closed: „Besuch planen", which asks for the date, with the
+  next opening under it.
+- **No intro in the welcome variant.** The general sentence was six lines on a phone between the
+  welcome and the block; the variant is client-only, so the served HTML keeps the general intro.
+  The welcome variant has three children like the general one, so the plate's entrance stagger
+  counts the search and the pills at the same places.
+- **One request of its own:** the nowcast, under the park page's query key, and only for a
+  visitor this hero has placed in or near a park.
+
+### Under the hero: the headliners on a compass
+
+For `in_park` only, `ParkCompassSlot` (`app/[locale]/page.tsx`, straight after the hero section)
+lazy-loads `ParkCompass`: a north-up compass dial with the reader in the middle. Every in-season
+headliner is a marker at its true bearing and at a radius that grows with its distance, showing
+its current wait in the wait colours; two dashed range rings, the outer one labelled („500 m").
+The reader is an arrow with a view cone that turns with the phone, the way a maps app shows which
+way somebody is looking; without a compass it is a plain dot. The bar under the dial names one
+ride (the one tapped, the one straight ahead, or the nearest), and the list beside it carries the
+same rides with an arrow each (the way to go from where the reader is looking), a distance and
+the wait, nearest first.
+
+The first version turned the whole dial heading-up and marked „ahead" with a small triangle at the
+top, then gained a needle pointing at the selected ride. Neither showed the one thing a compass is
+read for, which way the reader faces; the arrow in the middle does.
+
+**It is drawn as an instrument, not as a radar** (`ParkCompassDial`,
+`components/home/park-compass-dial.tsx`). A flat disc with ticks read like any radar widget on any
+site. The dial now has a bezel the way a real one is drawn: 5° ticks, numerals every 30° set along
+the ring (turned over in the lower half, so none stands on its head), upright N/O/S/W, and a
+triangle for north. Inside it the face is the park's own photo, the first one the hero above
+rotates, blurred and dimmed so it tints the face rather than competing with the markers, with a
+faint eight-point rose over it. A park without a hero photo gets a plain face with a blue glow. The
+photo is a 256 px rendition at quality 50, 2.9 KB as AVIF for Phantasialand's.
+
+**Every marker says which ride it is**, where there is room: a short name beside it
+(`dialLabel`: „Chiapas" for „Chiapas - DIE Wasserbahn", „Big Thunder…" for „Big Thunder
+Mountain"), placed the way a map labels its pins (`placeLabels`). Each label tries the eight places
+around its marker, outward first, then the same eight a step further out, and may reach onto the
+bezel; it takes the first that covers no marker, no other label and not the reader. The ride in
+focus chooses first, then the nearest. A hairline runs from each marker to its label, because a
+label that had to go diagonally into a cluster was otherwise a guess. Where no place is free the
+label is left out, and a tap on the marker names it in the bar. On the live Disneyland answer 8 of
+10 markers carried a name, on Phantasialand's tight east side 7 of 10.
+
+**The panel is glass over the park.** The same photo as the face lies under the whole panel,
+blurred to colour and light under the heavy-glass fill (`HEAVY_GLASS`'s tint, a step more solid),
+and the bezel, the bar under the dial, the name labels and the list's arrow chips are translucent
+fills with a hairline and a lit top edge. None of it is a `backdrop-filter`: the arrows turn with
+every sensor frame, and a moving element under a backdrop filter is what made „Heute im Park"
+flicker. The photo is blurred once, as an image, and both layers use the same 256 px rendition, so
+it is one request. A park without a photo keeps the flat panel (`PANEL_FLAT`).
+
+What turns with the phone is one layer rotated by `--heading`: the view cone, a lit arc on the
+bezel and the arrow. The heading as a figure („100°") rides the bezel at the same angle and stays
+upright (rotate, push out, rotate back); `ParkCompass` writes the figure into it from the sensor
+callback, so it re-renders nothing. The ride the bar under the dial names gets a dashed line from
+the reader to its marker, so a tap or a turn shows the way in the drawing too.
+
+- **The heading** comes from `DeviceOrientation` (`useCompassHeading`): Chrome's
+  `deviceorientationabsolute`, Safari's `webkitCompassHeading`. Safari only sends it after
+  `requestPermission()` inside a tap, so iOS shows „Kompass einschalten". Without a compass (a
+  desktop, a denied prompt) there is no arrow and the header says north is up. The heading is
+  written into one CSS variable, `--heading`, and the reader's arrow and the list arrows turn off
+  it in CSS, so a 60 Hz sensor costs React nothing.
+- **The reader's position** is a high-accuracy `watchPosition` while the compass is on screen and
+  the tab is in front (`useLivePosition`), else the point the nearby answer was made for; never a
+  prompt. Under `?sim=` only the latter.
+- **The rides' positions** come from `/positions` (see
+  [API budget](../architecture/api-budget.md)), because the nearby answer has none.
+- **Layout arithmetic** is `lib/utils/compass.ts`, tested by `pnpm test:compass`. Markers are placed
+  by distance, not spread round the ring: spreading put Taron 45° off its own arrow.
+- **To try it on a phone anywhere**, open `/?sim=compass` (or `?sim=compass:disneylandparis`). A
+  real park's live answer is laid out around the device's position, so turning and walking behave
+  as in the park. It works on production too; see
+  [flags and debug](../development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
+
 ---
 
 ## Nothing appears out of nowhere

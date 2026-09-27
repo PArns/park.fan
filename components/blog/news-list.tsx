@@ -51,7 +51,7 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
             )}
             <span className="min-w-0 flex-1">
               <NewsAge date={item.date} />
-              <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-3 block text-sm leading-snug font-semibold text-pretty transition-colors">
+              <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-3 text-sm leading-snug font-semibold text-pretty transition-colors">
                 {item.title}
               </span>
             </span>

@@ -1,0 +1,771 @@
+{
+  "capturedAt": "2026-09-24T09:29:00Z",
+  "source": "api.park.fan /v1/parks/…/plan/day and /v1/discovery/nearby at the park centre",
+  "timezone": "Europe/Brussels",
+  "day": {
+    "context": {
+      "date": "2026-09-24",
+      "status": "OPERATING",
+      "openHour": 10,
+      "closeHour": 17,
+      "liveWaitTimes": {
+        "available": true
+      }
+    },
+    "rides": [
+      {
+        "attractionSlug": "dreamcatcher",
+        "attractionName": "Dreamcatcher",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 25
+          },
+          {
+            "hour": 12,
+            "wait": 25
+          },
+          {
+            "hour": 13,
+            "wait": 30
+          },
+          {
+            "hour": 14,
+            "wait": 30
+          },
+          {
+            "hour": 15,
+            "wait": 30
+          },
+          {
+            "hour": 16,
+            "wait": 30
+          },
+          {
+            "hour": 17,
+            "wait": 10,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "typhoon",
+        "attractionName": "Typhoon",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 15,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "fury",
+        "attractionName": "Fury",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 10,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 15
+          },
+          {
+            "hour": 14,
+            "wait": 15
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "naga-bay",
+        "attractionName": "Naga Bay",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 10,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "el-rio",
+        "attractionName": "El Rio",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "wildwaterbaan",
+        "attractionName": "Wild Water Slide",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 15
+          },
+          {
+            "hour": 14,
+            "wait": 15
+          },
+          {
+            "hour": 15,
+            "wait": 15
+          },
+          {
+            "hour": 16,
+            "wait": 15
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "bob-express",
+        "attractionName": "Bob Express",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "indiana-river",
+        "attractionName": "Terra Magma",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "oki-doki",
+        "attractionName": "Oki Doki",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 15
+          },
+          {
+            "hour": 14,
+            "wait": 15
+          },
+          {
+            "hour": 15,
+            "wait": 15
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "revolution",
+        "attractionName": "Revolution",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 0,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "speedy-bob",
+        "attractionName": "Speedy Bob",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "el-paso",
+        "attractionName": "El Paso",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 5,
+            "source": "composed"
+          }
+        ]
+      },
+      {
+        "attractionSlug": "king-kong",
+        "attractionName": "King Kong",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          }
+        ]
+      },
+      {
+        "attractionSlug": "reuzenrad",
+        "attractionName": "Reuzenrad",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          }
+        ]
+      },
+      {
+        "attractionSlug": "sledge-hammer",
+        "attractionName": "Sledge Hammer",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          }
+        ]
+      }
+    ]
+  },
+  "nearby": [
+    {
+      "slug": "wondergarden",
+      "name": "Wondergarden",
+      "distance": 95,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "flying-orca",
+      "name": "Flying Orca",
+      "distance": 111,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "wildwaterbaan",
+      "name": "Wild Water Slide",
+      "distance": 142,
+      "waitTime": 15,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "convoy-trucks",
+      "name": "Convoy Trucks",
+      "distance": 163,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "bootvaart",
+      "name": "Bootvaart",
+      "distance": 174,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "typhoon",
+      "name": "Typhoon",
+      "distance": 206,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "bob-express",
+      "name": "Bob Express",
+      "distance": 235,
+      "waitTime": 15,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "el-paso",
+      "name": "El Paso",
+      "distance": 245,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "naiads-waters",
+      "name": "Naiads Waters",
+      "distance": 248,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "naga-bay",
+      "name": "Naga Bay",
+      "distance": 267,
+      "waitTime": 10,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "fury",
+      "name": "Fury",
+      "distance": 281,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "sledge-hammer",
+      "name": "Sledge Hammer",
+      "distance": 291,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "monorail",
+      "name": "Monorail",
+      "distance": 307,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "indiana-river",
+      "name": "Terra Magma",
+      "distance": 359,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "big-bang",
+      "name": "Big Bang",
+      "distance": 368,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "banana-battle",
+      "name": "Banana Battle",
+      "distance": 388,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "king-kong",
+      "name": "King Kong",
+      "distance": 390,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "glijbaan",
+      "name": "Glijbaan",
+      "distance": 423,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "revolution",
+      "name": "Revolution",
+      "distance": 436,
+      "waitTime": 10,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "reuzenrad",
+      "name": "Reuzenrad",
+      "distance": 444,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "el-rio",
+      "name": "El Rio",
+      "distance": 485,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "oki-doki",
+      "name": "Oki Doki",
+      "distance": 491,
+      "waitTime": 15,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "speedy-bob",
+      "name": "Speedy Bob",
+      "distance": 514,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "kinderland",
+      "name": "Kinderland",
+      "distance": 576,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "ponyride",
+      "name": "Ponyride",
+      "distance": 580,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "horse-pedalo",
+      "name": "Horse Pedalo",
+      "distance": 588,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "aztek-express",
+      "name": "Aztek Express",
+      "distance": 605,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "dreamcatcher",
+      "name": "Dreamcatcher",
+      "distance": 611,
+      "waitTime": 35,
+      "status": "OPERATING"
+    }
+  ]
+}

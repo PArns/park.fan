@@ -37,6 +37,12 @@ interface ParkPageShellProps {
   countryName: string;
   breadcrumbs: Breadcrumb[];
   currentPage: string;
+  /**
+   * What the breadcrumb shows on a phone — see `BreadcrumbNav`'s `phone`. The park page passes
+   * "hidden" because its address line links the city, i.e. the level above it; the calendar and
+   * the record keep the default "back", which is the park.
+   */
+  phoneBreadcrumb?: 'back' | 'hidden';
   /** The title card's contents — the H1 and whatever belongs beside and under it. Every page of
    *  a park has a different one; the card around it is the same. */
   header: React.ReactNode;
@@ -88,6 +94,16 @@ interface ParkPageShellProps {
    * or not it rendered one.
    */
   faqSection?: React.ReactNode;
+  /**
+   * The park's long-range crowd outlook, rendered between the statistics and the seasons.
+   *
+   * A slot for the same reason as {@link blogSection}: one page of the park renders it, and what
+   * the shell imports at module scope, every route that uses it pays for in routed translations.
+   * Its place in the order is the argument the chapter makes — the statistics say what the park
+   * has been, the outlook what the forecast expects, and the seasons what is already on the
+   * calendar.
+   */
+  outlookSection?: React.ReactNode;
 }
 
 /**
@@ -129,6 +145,7 @@ export async function ParkPageShell({
   countryName,
   breadcrumbs,
   currentPage,
+  phoneBreadcrumb,
   header,
   head,
   pagePath,
@@ -137,6 +154,7 @@ export async function ParkPageShell({
   hideStats = false,
   blogSection,
   faqSection,
+  outlookSection,
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
@@ -185,7 +203,11 @@ export async function ParkPageShell({
           occupied 24px, the real nav 46px, so the whole article jumped 22px down the moment the
           boundary resolved — worth ~0.22 CLS on desktop and the reason this URL group failed Core
           Web Vitals. */}
-        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={currentPage} />
+        <BreadcrumbNav
+          breadcrumbs={breadcrumbs}
+          currentPage={currentPage}
+          phone={phoneBreadcrumb}
+        />
 
         <article itemScope itemType="https://schema.org/AmusementPark">
           <div className="mb-4">
@@ -216,6 +238,8 @@ export async function ParkPageShell({
           {blogSection}
 
           {statsAfterChildren ? null : stats}
+
+          {outlookSection}
 
           {/* What is on at this park. Hand-researched, day-stable, and its own request rather than
             a field on the park: the park payload is re-polled every five minutes and a season

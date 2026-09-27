@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
+import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   buildTagAlternates,
   findCanonicalTag,
@@ -24,6 +24,8 @@ import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
 import { blogFeedAlternates } from '@/lib/blog/feed';
+import { NEWS_ONLY_TAGS } from '@/lib/blog/news-redirects';
+import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 
 interface TagPageProps {
   params: Promise<{ locale: string; tag: string }>;
@@ -104,10 +106,16 @@ export default async function BlogTagPage({ params }: TagPageProps) {
   setRequestLocale(locale);
 
   const canonicalTag = findCanonicalTag(locale as Locale, tag);
-  if (!canonicalTag) notFound();
+  if (!canonicalTag) {
+    // A tag only news carries has no archive here. The proxy 308s it to `/news` before anything
+    // renders (`lib/blog/news-redirects-rule.ts`); this is the net behind it.
+    if (NEWS_ONLY_TAGS[locale]?.includes(tag)) permanentRedirect(`/${locale}${NEWS_INDEX_PATH}`);
+    notFound();
+  }
 
   const t = await getTranslations('blog');
-  const allPosts = listPosts(locale as Locale).filter((p) =>
+  // Articles only, like `listTags` counts them — news is never listed under `/blog`.
+  const allPosts = listArticles(locale as Locale).filter((p) =>
     (p.frontmatter.tags ?? []).some((x) => normalizeTagSlug(x) === tag)
   );
   if (allPosts.length === 0) notFound();

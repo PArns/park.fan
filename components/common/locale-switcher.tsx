@@ -97,7 +97,10 @@ export function LocaleSwitcher() {
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      {/* `z-[80]`, above the sheet's `z-[70]`: on a phone this switcher lives in the burger
+          sheet (PAR-434), and at the menu's default `z-50` the list opened UNDER the sheet's
+          overlay, which then took every tap meant for a language. */}
+      <DropdownMenuContent align="end" className="z-[80]">
         {routing.locales.map((loc) => (
           <DropdownMenuItem
             key={loc}

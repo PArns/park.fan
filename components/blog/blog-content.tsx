@@ -6,7 +6,15 @@ import rehypeHighlight from 'rehype-highlight';
 import type { Locale } from '@/i18n/config';
 import { remarkTableThemes } from '@/lib/blog/remark-table-themes';
 import { remarkCallouts, type CalloutType } from '@/lib/blog/remark-callouts';
-import { AlertTriangle, Info, Lightbulb, MessageSquareWarning, OctagonAlert } from 'lucide-react';
+import {
+  AlertTriangle,
+  FilePenLine,
+  Info,
+  Lightbulb,
+  MessageSquareWarning,
+  OctagonAlert,
+} from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import {
   extractInlineRefs,
   parseRefKey,
@@ -93,6 +101,15 @@ const CALLOUT_META: Record<
     icon: OctagonAlert,
     box: 'border-rose-500/30 bg-rose-500/10',
     title: 'text-rose-400',
+  },
+  // The dated note under the signature after a factual fix. Deliberately
+  // quiet: grey, no accent colour, and its label is translated (`blog.correction`)
+  // because unlike the others it always sits in running prose a reader sees.
+  correction: {
+    label: 'Correction',
+    icon: FilePenLine,
+    box: 'border-border bg-muted/40',
+    title: 'text-muted-foreground',
   },
 };
 
@@ -342,6 +359,7 @@ function hastText(node: unknown): string {
 
 export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
+  const tBlog = await getTranslations({ locale, namespace: 'blog' });
 
   // Pre-fetch glossary terms once so we can highlight them in headings and
   // paragraphs without making the renderer async. Dedupe is shared across
@@ -769,6 +787,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       if (callout && CALLOUT_META[callout]) {
         const meta = CALLOUT_META[callout];
         const Icon = meta.icon;
+        const isCorrection = callout === 'correction';
         return (
           <aside
             data-callout={callout}
@@ -777,10 +796,15 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
             <div
               className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase ${meta.title}`}
             >
-              <Icon className="h-3.5 w-3.5" />
-              {meta.label}
+              <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+              {isCorrection ? tBlog('correction') : meta.label}
             </div>
-            <div className="text-foreground/85 text-[0.95rem] leading-relaxed [&>p]:my-1.5">
+            <div
+              className={cn(
+                'leading-relaxed [&>p]:my-1.5',
+                isCorrection ? 'text-muted-foreground text-sm' : 'text-foreground/85 text-[0.95rem]'
+              )}
+            >
               {injectGlossary(children)}
             </div>
           </aside>

@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogPostCard } from './blog-post-card';
-import { listPosts } from '@/lib/blog/listing';
+import { listArticles, listNewsByDate } from '@/lib/blog/listing';
 import { parseCategoryPath } from '@/lib/blog/categories';
+import { isNewsCategory } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 import type { BlogListItem } from '@/lib/blog/types';
 
@@ -35,6 +36,12 @@ function scorePost(post: BlogListItem, category: string | undefined, tags: strin
   return score;
 }
 
+/**
+ * "Keep reading" under a post, from the post's own section: an article is followed by articles,
+ * a news post by news. The two sections are kept apart everywhere a list of posts appears (see
+ * `docs/rules/news-is-set-apart-from-the-articles.md`). The cards stay the blog's on both: a news
+ * post reads like an article (PAR-473), only what it recommends differs.
+ */
 export async function BlogRelatedPosts({
   locale,
   currentTranslationKey,
@@ -44,12 +51,14 @@ export async function BlogRelatedPosts({
   title,
 }: BlogRelatedPostsProps) {
   const t = await getTranslations('blog');
-  const all = listPosts(locale).filter((p) => p.translationKey !== currentTranslationKey);
+  const isNews = isNewsCategory(category);
+  const pool = isNews ? listNewsByDate(locale) : listArticles(locale);
+  const all = pool.filter((p) => p.translationKey !== currentTranslationKey);
 
-  // Rank the whole blog by relevance — same-category posts score highest (category
+  // Rank the section by relevance — same-category posts score highest (category
   // depth is weighted heavily in scorePost), then shared tags, with recency as the
-  // tiebreaker. Ranking across ALL posts (instead of only the same-category pool)
-  // means a thin category — e.g. a second "guides" post — still fills the row
+  // tiebreaker. Ranking across the whole section (instead of only the same-category
+  // pool) means a thin category — e.g. a second "guides" post — still fills the row
   // instead of surfacing a single lonely card.
   const ranked = [...all]
     .map((post) => ({ post, score: scorePost(post, category, tags) }))
@@ -65,7 +74,9 @@ export async function BlogRelatedPosts({
 
   return (
     <section className="my-12">
-      <h2 className="text-foreground mb-5 text-xl font-bold">{title ?? t('related.title')}</h2>
+      <h2 className="text-foreground mb-5 text-xl font-bold">
+        {title ?? (isNews ? t('related.news') : t('related.title'))}
+      </h2>
       <div className="grid gap-2 sm:grid-cols-2 sm:gap-5 @min-[1024px]/page:grid-cols-3">
         {ranked.map((post) => (
           <BlogPostCard key={post.translationKey} post={post} />

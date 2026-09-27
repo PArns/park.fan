@@ -15,6 +15,8 @@ export interface BacklogResponse {
   };
   waitTimesAvailable: boolean;
   statsAvailable: boolean;
+  /** False when the open session's pull request could not be read. */
+  sessionChecked: boolean;
   backlog: Backlog;
 }
 

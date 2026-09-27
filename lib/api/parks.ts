@@ -1,9 +1,12 @@
 import { cache } from 'react';
 
 import { api, ApiError } from './client';
+import { CACHE_TTL } from './cache-config';
 import { parkCacheTag } from './park-live-projection';
 import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
 import type {
+  CrowdLevel,
+  Recommendation,
   ParkSeason,
   ParkWithAttractions,
   ParkAttraction,
@@ -454,6 +457,69 @@ export async function getParkWaitTimesFresh(
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;
+  }
+}
+
+/**
+ * One day of the park's long-range crowd forecast, as `/predictions/yearly` serves it.
+ *
+ * Shape of the backend's `ParkDailyPredictionDto`. `crowdLevel` carries the same six tiers the
+ * rest of the site colours, plus `closed` and `unknown` — `unknown` is what a park with fewer
+ * than 30 operating days of history gets, because there is no typical-day peak to rate against.
+ */
+export interface ParkDailyPrediction {
+  /** Park-local calendar day, `YYYY-MM-DD`. */
+  date: string;
+  crowdLevel: CrowdLevel | 'closed';
+  confidencePercentage: number;
+  recommendation?: Recommendation;
+  source: 'ml';
+  avgWaitTime?: number;
+}
+
+/** The `/predictions/yearly` response. */
+export interface ParkYearlyPredictions {
+  park: { id: string; name: string; slug: string };
+  predictions: ParkDailyPrediction[];
+  generatedAt: string;
+}
+
+/**
+ * The park's long-range crowd forecast, day by day.
+ *
+ * "Yearly" is the endpoint's name rather than its window. Measured against the production API on
+ * 2026-09-22 for Phantasialand, Europa-Park, Efteling and Heide-Park: all four stop on the same
+ * day, **today + 182**, so what arrives is roughly six months and not the 365 days the backend's
+ * Swagger text promises. Days the forecast has nothing for are absent from the list entirely
+ * (Europa-Park answered with 124 entries over the same span, not 182), which is why the consumer
+ * lays the days out against the calendar instead of trusting the list to be dense.
+ *
+ * Data-cached for {@link CACHE_TTL.predictions} — a day, which is the forecast's own cadence: the
+ * backend recomputes it in the nightly batch and caches it 24 h in Redis behind the same window.
+ * Tagged with the park's own tag so a forecast warmup drops this entry rather than waiting the
+ * window out.
+ *
+ * Returns `null` for anything that goes wrong, including the 404 a park without a forecast gets:
+ * a park page must not fail over a chapter most of its readers scroll past.
+ */
+export async function getParkYearlyPredictions(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkYearlyPredictions | null> {
+  try {
+    return await api.get<ParkYearlyPredictions>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/predictions/yearly`,
+      {
+        next: {
+          revalidate: CACHE_TTL.predictions,
+          tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+        },
+      }
+    );
+  } catch {
+    return null;
   }
 }
 

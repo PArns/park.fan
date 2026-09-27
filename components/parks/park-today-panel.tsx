@@ -30,6 +30,7 @@ import { isInSeason } from '@/lib/utils/season';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
+import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-context';
 import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -287,25 +288,8 @@ export function ParkTodayPanel({
   // a new array + new objects each time, for a list that only actually changes when the poll
   // replaces `park.attractions`.
   const rideAlertAttractions = useMemo(
-    () =>
-      (park.attractions ?? []).map((a) => ({
-        id: a.id,
-        name: stripNewPrefix(a.name),
-        slug: a.slug,
-        currentWaitTime:
-          getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
-        // Attached by the live poll's route (`enrichAttractionsWithImages`), not
-        // declared on `ParkAttraction` — read the way `AttractionCard` reads them.
-        // Until the first poll lands the picker shows its placeholder instead.
-        backgroundImage:
-          'backgroundImage' in a && typeof a.backgroundImage === 'string'
-            ? a.backgroundImage
-            : null,
-        backgroundPosition:
-          'backgroundPosition' in a && typeof a.backgroundPosition === 'string'
-            ? a.backgroundPosition
-            : undefined,
-      })),
+    () => rideAlertAttractionsFor(park),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [park.attractions, park.status]
   );
 

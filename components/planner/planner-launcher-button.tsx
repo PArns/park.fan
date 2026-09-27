@@ -20,9 +20,20 @@ import { PlannerFlyout } from './planner-flyout';
 export function PlannerFlyoutHost({
   open,
   onOpenChange,
+  askingPastDay,
+  onAskingPastDayChange,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  askingPastDay: boolean;
+  onAskingPastDayChange: (asking: boolean) => void;
 }) {
-  return <PlannerFlyout open={open} onOpenChange={onOpenChange} />;
+  return (
+    <PlannerFlyout
+      open={open}
+      onOpenChange={onOpenChange}
+      askingPastDay={askingPastDay}
+      onAskingPastDayChange={onAskingPastDayChange}
+    />
+  );
 }

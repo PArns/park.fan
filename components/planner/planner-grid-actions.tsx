@@ -51,13 +51,12 @@ interface PlannerGridActionsProps {
 /**
  * What one press of the move buttons is worth.
  *
- * {@link SNAP_MIN_FINE}, and deliberately NOT the step the drag uses on the
- * device this control exists for: a coarse pointer commits on
- * `SNAP_MIN_COARSE`, half an hour, because fifteen minutes under a finger
- * that is sliding reads as jitter rather than as a choice. A press is not
- * sliding. It lands on the minute it names, so it takes the granularity every
- * other start in this app sits on, and the two are different for a reason rather
- * than by omission.
+ * {@link SNAP_MIN_FINE}, and deliberately NOT the drag's step: a drag commits
+ * on `DRAG_SNAP_MIN`, five minutes, under a finger as under a mouse, because a
+ * hand sliding a block picks the minute it lets go on. A press does not slide.
+ * It names a distance, and five minutes per press is six presses for half an
+ * hour, so it takes the quarter hour every other start in this app sits on,
+ * and the two are different for a reason rather than by omission.
  */
 const NUDGE_MIN = SNAP_MIN_FINE;
 

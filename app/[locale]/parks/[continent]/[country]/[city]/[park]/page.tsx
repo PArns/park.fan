@@ -38,6 +38,8 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
+import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
+import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
@@ -390,6 +392,8 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
+        // On a phone the address line's links are the way one level up — see `cityHref`.
+        phoneBreadcrumb="hidden"
         pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
         // The two chapters that belong to the PARK rather than to any one of its pages, handed in
         // rather than switched on: what the shell imports, every route that uses it pays for in
@@ -402,6 +406,23 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             parkName={parkName}
             className="mt-8"
           />
+        }
+        /* How busy the next twelve months look — the one chapter that reaches past the rolling
+           90 days `/best-days` is capped at. Streamed in its own boundary: the forecast is a
+           day-cached read, but a cold one falls through to an ML rebuild, and this chapter sits
+           eight screens down. The placeholder is the same chapter over an empty frame, so it
+           reserves the real height rather than a typed-in number. */
+        outlookSection={
+          <Suspense fallback={<ParkYearlyOutlookSkeleton todayIso={todayIso} locale={locale} />}>
+            <ParkYearlyOutlookSection
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              todayIso={todayIso}
+              locale={locale}
+            />
+          </Suspense>
         }
         faqSection={
           /* No `<Separator>` in front of it any more: the FAQ is a `ChapterPanel` now, so it
@@ -469,6 +490,12 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             cityName={cityName}
             country={country}
             countryName={countryName}
+            // Read off the trail rather than rebuilt, so the address links exactly the pages the
+            // breadcrumb would: a city without a page of its own has no crumb and stays text.
+            cityHref={
+              breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url
+            }
+            countryHref={breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}`)?.url}
             locale={locale}
             suffix={t('h1Suffix')}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the

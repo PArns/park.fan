@@ -28,6 +28,7 @@ import {
   fitOrder,
   fitWishes,
   needsFitHelp,
+  togglePin,
 } from '../lib/planner/fit.ts';
 
 let passed = 0;
@@ -451,6 +452,55 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     '10a every stop starts before the park shuts',
     outcome.stops.every((stop) => stop.startMinute < input.grid.closeMin),
     JSON.stringify(outcome.stops.map((s) => `${s.attractionSlug}@${s.startMinute}`))
+  );
+}
+
+// ── 11. A second go on a ride is given up before a ride nobody has had ─────
+//
+// Reported on Phantasialand: the assistant kept Chiapas three times and Winja's
+// Force twice and struck Winja's Fear and Raik. The weights were keyed on the
+// slug, so a lap took the rank of the ride's first go.
+
+{
+  const payload = day(['a', 'b', 'c', 'd', 'e', 'f'].map((slug) => ride(slug, 60)));
+  const entries = [
+    entry('a1', 'a', 540),
+    entry('b1', 'b', 600),
+    entry('a2', 'a', 660),
+    entry('c1', 'c', 720),
+    entry('d1', 'd', 780),
+    entry('b2', 'b', 840),
+    entry('e1', 'e', 900),
+    entry('f1', 'f', 960),
+  ];
+  const input = inputFor(payload, entries, []);
+  const choice = fitChoiceAll();
+  const outcome = evaluateFit(input, choice);
+  const lapKeys = ['a2', 'b2'].map(entryWishKey);
+  check(
+    '11a eight hour-long queues in a six-hour day leave some out',
+    outcome.missed.length >= 2,
+    names(input, outcome.missed)
+  );
+  check(
+    '11b and both second goes are among them',
+    lapKeys.every((key) => outcome.missed.includes(key)),
+    outcome.missed.join(', ')
+  );
+  const order = fitOrder(input, choice).map((wish) => wish.key);
+  check(
+    '11c the list shows the second goes at the bottom',
+    JSON.stringify(order.slice(-2)) === JSON.stringify(lapKeys),
+    order.join(', ')
+  );
+  // Pinned, a lap is the visitor's word and stays where they put it.
+  const pinned = togglePin(choice, entryWishKey('b2'));
+  check(
+    '11d a pinned second go stays at the top',
+    fitOrder(input, pinned)[0]?.key === entryWishKey('b2'),
+    fitOrder(input, pinned)
+      .map((wish) => wish.key)
+      .join(', ')
   );
 }
 

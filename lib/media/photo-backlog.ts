@@ -50,8 +50,13 @@ export interface BacklogRide {
    * 330 observation days before it will name a month.
    */
   isCurrentlyInSeason: boolean | null;
-  /** The media database already has at least one picture answering for this ride. */
+  /**
+   * At least one picture answers for this ride, on `main` or in the open media
+   * session's pull request.
+   */
   hasPhoto: boolean;
+  /** One of those pictures is in the open session and not merged yet. */
+  inSession?: boolean;
 }
 
 /** Why a ride sits where it sits — rendered as the badge next to its name. */

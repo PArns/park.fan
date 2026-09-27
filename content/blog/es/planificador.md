@@ -2,6 +2,7 @@
 title: 'El planificador echa cuentas antes de que estés en la cola equivocada'
 translationKey: trip-planner-launch
 date: '2026-09-05'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -28,7 +29,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Un teatro al aire libre abarrotado visto desde atrás, con el público esperando a oscuras'
-  caption: 'Fantasmic en los Hollywood Studios, justo antes de empezar. Diez mil personas que durante esa media hora no hacen cola en ningún sitio.'
+  caption: 'Fantasmic en los Hollywood Studios, justo antes de empezar. Caben casi diez mil personas, y durante esa media hora ninguna hace cola en ningún sitio.'
   credit: 'Patrick Arns'
 seo:
   title: 'Planifica tu día de parque: cuenta las colas antes de ir'
@@ -63,7 +64,7 @@ el primer día. «¿Es mucho para un martes?» desde
 [finales de agosto](/blog/son-70-minutos-mucho). La tercera pregunta no estaba en
 ninguna parte: ¿mi día sale así?
 
-Desde esta semana está. El [planificador](/planificador) pone tus atracciones en
+Desde principios de septiembre está. El [planificador](/planificador) pone tus atracciones en
 una línea de tiempo y calcula el día antes de que salgas de casa.
 
 ## Un día es un orden, y ese orden lleva reloj
@@ -85,7 +86,9 @@ y media.
 
 Diez atracciones, de la apertura a las cuatro de la tarde, y bajo el plan está
 la suma: cinco horas y cuarto solo de cola. Es la versión que el optimizador
-consideró mejor. Sin orden esperas lo mismo y montas menos.
+consideró mejor. Cuando reordena un día que has montado tú, después indica
+cuántos minutos de cola ahorra el nuevo orden, calculados con la misma fórmula
+que antes.
 
 ## Entre dos atracciones hay un camino, a menudo alrededor de un lago
 
@@ -99,8 +102,9 @@ donde no hay duración registrada. La distancia es en línea recta, y el
 planificador lo dice. Es una cota inferior y no un tiempo a pie: los caminos
 rodean el agua, las colas y los sentidos únicos, algunos parques apilan sus
 zonas, y en uno grande la línea recta suele cruzar un lago al que hay que dar la vuelta entera.
-Para la cota superior el planificador calcula con ritmo de parque en lugar de
-ritmo de paseo y añade dos tercios de rodeo a la línea recta.
+Para la cota superior el planificador calcula con ritmo de parque, unos cuatro
+kilómetros por hora con gente y carritos, y añade un 60 % de rodeo a la línea
+recta.
 
 En un parque compacto un traslado torpe cuesta tres minutos y no lo nota nadie.
 En uno grande cuesta un cuarto de hora. Hazlo ocho veces al día y habrás tirado
@@ -149,8 +153,10 @@ otra cosa.
 Otra cosa que casi nadie calcula de cabeza: la primera hora muchas veces no es
 tuya. Bastantes parques abren las puertas antes de que funcione una parte de las
 atracciones, y las estrella suelen estar entre las que arrancan más tarde. Si
-llenas esa primera hora con ellas, has planificado una hora que no existe. El
-planificador conoce la hora de apertura de cada atracción y no deja que ningún
+llenas esa primera hora con ellas, has planificado una hora que no existe. En el
+Phantasialand las puertas abren a las nueve, pero Taron, F.L.Y. y la mayoría de
+las demás grandes atracciones no arrancan hasta las diez. Donde la API conoce la
+hora de apertura propia de una atracción, el planificador no deja que ningún
 bloque se cuele antes. No hay equivalente en el otro sentido: ningún feed avisa
 de forma fiable de cuándo cierra una atracción por la noche, así que tampoco se
 dice nada al respecto.
@@ -166,17 +172,27 @@ lléname el día, y si el orden puede ser mejor.
 Se ordena según tres cosas, y su jerarquía es la decisión de verdad.
 
 1. **Todo tiene que caber antes del cierre.** Un plan con una atracción menos
-   que ocurre de verdad gana a uno con una más que ya no llega. Y si algo se
-   cae, se cae por detrás: primero lo que el botón acaba de añadir, nunca lo que
-   habías pensado tú.
+   que ocurre de verdad gana a uno con una más que ya no llega. Lo que cuenta es
+   el momento en que te pones en la cola: una fila en la que aún entras un
+   cuarto de hora antes del cierre, vale. Y si algo se cae, primero es lo que el
+   botón acaba de añadir, no lo que habías pensado tú. Entre las atracciones
+   añadidas, una segunda vuelta en la misma se cae antes que cualquier primera,
+   y después la de la cola prevista más corta. Las atracciones por las que va
+   la mayoría son las que más aguantan.
 2. **La suma de las esperas.** Que era lo que se preguntaba.
 3. **La hora a la que te pones en la última cola.** A igual coste, gana el orden
    que termina antes.
 
 En un parque con más atracciones estrella de las que caben en un día, el punto
-uno es todo el juego. Por eso el botón no siempre desaparece tras pulsarlo: si
-queda una atracción sin sitio, debajo pone cuántas son, y la oferta sigue ahí
-por si quitas otra cosa.
+uno es todo el juego, y desde el 21 de septiembre el planificador ya no lo
+decide en silencio. Si no cabe todo, cualquiera de los dos botones abre primero
+un asistente de tres pasos. En «Ajustes» aparece lo que haría sitio, como quitar
+el rato para comer o dejarlo en media hora, y cada línea está calculada: solo
+aparece si de verdad mete una atracción más en el día. En «Prioridad» está la
+lista entera en el orden en que se tacharía, y subes arriba del todo lo que no
+te quieres perder. También salen ahí las atracciones que habías planificado tú,
+porque aquí decides tú y no el botón. En «Resultado» aparece con nombre lo que
+se queda fuera. En el plan no se escribe nada hasta que lo aplicas.
 
 No hay, a propósito, ningún control deslizante que compense hacer cola contra
 estar parado. Ese número no lo podría justificar nadie, y la primera persona que
@@ -204,9 +220,12 @@ Donde más horas echamos fue en cuatro sitios en los que el planificador afirma
 a propósito menos de lo que podría.
 
 **La previsión se equivoca, y de forma medible.** En cada bloque seleccionado
-pone cuánto se apartaron de media las previsiones de esa atracción de lo que el
-día trajo realmente. (Al parte del tiempo se lo llevo pidiendo años.) «Típico»
-quiere decir aquí: la mitad de los días caen más lejos. Por eso el número está ahí como error típico y nunca como un margen que ya contuviera la respuesta correcta.
+pone cuánto se apartaron de media, en los últimos 45 días, las previsiones para
+una cola de esa longitud y con esa antelación de lo que el día trajo realmente.
+Está hasta 60 días vista; más allá la medición aún no llega. (Al parte del
+tiempo se lo llevo pidiendo años.) Una media no es un techo, y muchos días la
+previsión cae más lejos. Por eso el número está ahí como error típico y nunca
+como un margen que ya contuviera la respuesta correcta.
 
 **Los horarios de espectáculo son dos cosas.** Lo que el parque ha publicado
 para hoy es un anuncio. Lo que hemos proyectado desde el último día de la semana
@@ -238,24 +257,35 @@ conviene saberlo en el desayuno y no en la taquilla.
 La única excepción son las notificaciones push. Para poder avisarte de que toca
 salir, el plan tiene que estar en nuestro servidor, y el planificador escribe qué
 significa eso: quien tenga el enlace puede leerlo y cambiarlo. No hay ninguna
-contraseña delante. Quien no lo quiera, deja las notificaciones apagadas y no
-pierde nada más.
+contraseña delante. Si vuelves a apagar las notificaciones, el plan se borra del
+servidor. Quien no quiera nada de esto, las deja apagadas y no pierde nada más.
+De qué te avisamos lo eliges tú: cuándo salir hacia la siguiente atracción, los
+horarios de los espectáculos, una atracción planificada que cierra o vuelve a
+abrir, y una espera planificada que cambia de forma clara.
 
-Dos cosas más que se pasan por alto fácilmente. En el borde de la pantalla
-cuelga en cada página una pestaña que abre el planificador, incluso sin
-nada planificado. Y en el ordenador puedes abrir una segunda columna, y entonces
+Mientras las notificaciones están activas, desde el 23 de septiembre hay además
+un enlace para compartir. Quien lo abre recibe su propia copia en su
+planificador, y lo que cambie en ella se queda con él. Así llega también un plan
+del ordenador al móvil.
+
+Dos cosas más que se pasan por alto fácilmente. En el ordenador cuelga en cada
+página, en el borde de la pantalla, una pestaña que abre el planificador,
+incluso sin nada planificado; en el móvil lo hace desde el 24 de septiembre un
+icono de calendario en la barra de arriba. Y en el ordenador puedes abrir una segunda columna, y entonces
 hay dos días a la vez. Lo construí por una sola frase: «y el sábado, ¿cómo
 quedaría?».
 
 ## Cómo empezar
 
-La entrada pasa por tres preguntas. A qué parque, qué día y quién viene.
+La entrada pasa por cuatro preguntas. A qué parque, qué día, quién viene y qué
+atracciones grandes entran. Las imágenes de abajo todavía muestran la primera
+versión, con tres pasos.
 
 La primera es un buscador, y detrás hay una pequeñez que se tuerce enseguida.
 Escribe «Disneyland» y salen cinco parques en tres continentes que se llaman
 todos así. A la hora de poner nombres, el ratón no estuvo muy inspirado.
 
-![Primer paso del asistente: «Disneyland» escrito en el buscador y, debajo, cinco parques de cinco países. | Un nombre, cinco parques. Por eso el planificador se queda con la ruta de la API y no con el nombre.](/media/tagesplaner/planer-wizard-park-es.webp)
+![Primer paso del asistente: «Disneyland» escrito en el buscador y, debajo, cinco parques en Anaheim, París, Tokio, Shanghái y Hong Kong. | Un nombre, cinco parques. Por eso el planificador se queda con la ruta de la API y no con el nombre.](/media/tagesplaner/planer-wizard-park-es.webp)
 
 Un plan se guarda bajo la ruta que devuelve la propia API, nunca bajo una que
 montemos con el nombre visible. «Países Bajos» no se escribe igual en todos los
@@ -266,16 +296,21 @@ sesenta filas tienes un mes entero, y cada día lleva la afluencia prevista de e
 parque. «El sábado de dentro de dos semanas» pasa a ser cosa de un vistazo, y lo
 demás que sabemos de él está bajo la rejilla.
 
-![Segundo paso del asistente: una foto del Disneyland Park de Anaheim sobre una rejilla mensual donde cada día lleva la afluencia prevista, con el sábado 19 seleccionado. | Un septiembre que en Anaheim se prevé tranquilo de principio a fin. Sesenta filas de una lista desplegable no enseñan eso.](/media/tagesplaner/planer-wizard-tag-es.webp)
+![Segundo paso del asistente: el Disneyland Park de Anaheim está elegido, cada día de la rejilla mensual lleva la afluencia prevista y el sábado 19 está seleccionado. | Un septiembre que en Anaheim se prevé tranquilo de principio a fin. Sesenta filas de una lista desplegable no enseñan eso.](/media/tagesplaner/planer-wizard-tag-es.webp)
 
 La tercera pregunta suena a formulario y pesa más de lo que parece: reservar un
-rato para comer, si vienen niños, si queréis no mojaros. Las tres son marcas en
-la lista de atracciones y no filtros, y el planificador lo pone en la tarjeta:
+rato para comer, si vienen niños, si queréis no mojaros. La comida pasa a ser un
+bloque en el día. Los niños y lo de no mojarse son marcas en la lista de
+atracciones y no filtros, y el planificador lo pone en la tarjeta:
 las atracciones con estatura mínima más alta se marcan, no se ocultan. Un filtro
 recortaría el parque a escondidas, y si la abuela sujeta las mochilas solo lo
 sabes tú.
 
 ![Tercer paso del asistente: tres tarjetas para la comida, los niños y las atracciones de agua, con el botón para abrir el plan debajo. | Tres respuestas que no recortan el parque. El rato para comer entra como bloque a las 12:30 y se puede mover.](/media/tagesplaner/planer-wizard-wer-es.webp)
+
+La cuarta pregunta llegó el 21 de septiembre. Mete en el día las atracciones
+grandes del parque y, si no caben todas antes del cierre, enseña los mismos
+ajustes y la misma lista que el asistente de debajo de la línea de tiempo.
 
 Después aterrizas en la página del parque con el planificador abierto, y desde
 ahí arrastras atracciones a la línea de tiempo. Cada página de atracción tiene

@@ -13,7 +13,7 @@
  */
 
 import {
-  DRAG_SNAP_MIN_FINE,
+  DRAG_SNAP_MIN,
   GATE_TO_FIRST_RIDE_MIN,
   MIN_BLOCK_MIN,
   MIN_BLOCK_PX,
@@ -36,6 +36,9 @@ import {
   rideFloor,
   MAX_SHOW_LINES,
   showLinePositions,
+  showLineCover,
+  showLineHost,
+  SHOW_PILL_HALF_PX,
   snapTo,
   unfoldedCloseHour,
   yFor,
@@ -347,6 +350,51 @@ test(
   );
 }
 
+// ── 14c. A show pill steps back where the axis is taken ─────────────────────
+// A pill of names centred on its line lay on the name and the times of every
+// block a show fell into, and on the transfer chip between two of them.
+{
+  const block = { kind: 'block', topPx: 100, bottomPx: 160, columns: 1 };
+  const pair = { kind: 'block', topPx: 200, bottomPx: 260, columns: 2 };
+  const chip = { kind: 'chip', topPx: 300, bottomPx: 321 };
+  const all = [block, pair, chip];
+  const kind = (y) => showLineCover(y, all).kind;
+  test('a line on free axis keeps the whole pill', kind(50), 'free');
+  test('a line through a block is on the block', kind(130), 'block');
+  test('…and through blocks side by side says how many', showLineCover(230, all).columns, 2);
+  test('a line through a transfer chip alone is on the chip', kind(310), 'chip');
+  const edge = showLineCover(310, [chip, { ...block, topPx: 305, bottomPx: 340 }]);
+  test('a line through a chip and a block is on the block', edge.kind, 'block');
+  test('…and says the chip is in the way', edge.chip, true);
+  test('a block alone has no chip in the way', showLineCover(130, all).chip, false);
+  test(
+    'a line just above a block counts the pill that reaches into it',
+    kind(100 - SHOW_PILL_HALF_PX + 1),
+    'block'
+  );
+  test('…and one a whole pill above it does not', kind(100 - SHOW_PILL_HALF_PX), 'free');
+}
+
+// ── 14d. A block that falls on a show says so itself ─────────────────────────
+{
+  const fly = { id: 'fly', topPx: 100, bottomPx: 150, column: 0 };
+  const pause = { id: 'pause', topPx: 100, bottomPx: 170, column: 1 };
+  const all = [pause, fly];
+  test("a line inside a block is that block's", showLineHost(120, [fly]), 'fly');
+  test("…and of two side by side, the left one's", showLineHost(120, all), 'fly');
+  test(
+    "a line under the left one but inside the right one is the right one's",
+    showLineHost(160, all),
+    'pause'
+  );
+  test('a line on free axis has no host', showLineHost(300, all), null);
+  test(
+    "the block's top edge is inside it, its bottom edge is not",
+    `${showLineHost(100, [fly])}|${showLineHost(150, [fly])}`,
+    'fly|null'
+  );
+}
+
 // ── 15. Snapping and placement ───────────────────────────────────────────────
 test('snapTo rounds to the nearest step', snapTo(607, SNAP_MIN_FINE), 600);
 test('snapTo rounds up past the midpoint', snapTo(608, SNAP_MIN_FINE), 615);
@@ -356,12 +404,12 @@ test('snapTo rounds up past the midpoint', snapTo(608, SNAP_MIN_FINE), 615);
 // arithmetic still lands on a quarter hour. Both halves matter — a change that
 // made `SNAP_MIN_FINE` five would pass a test of the drag alone and would move
 // every computed start in the planner with it.
-test('a mouse drag commits to a five', snapTo(607, DRAG_SNAP_MIN_FINE), 605);
-test('…and rounds up past that midpoint', snapTo(608, DRAG_SNAP_MIN_FINE), 610);
+test('a drag commits to a five', snapTo(607, DRAG_SNAP_MIN), 605);
+test('…and rounds up past that midpoint', snapTo(608, DRAG_SNAP_MIN), 610);
 test('…and the quarter hour is still the quarter hour', SNAP_MIN_FINE, 15);
 test(
   'the drag step divides into it, so every quarter hour is reachable',
-  SNAP_MIN_FINE % DRAG_SNAP_MIN_FINE,
+  SNAP_MIN_FINE % DRAG_SNAP_MIN,
   0
 );
 // `latestStart` is one of `SNAP_MIN_FINE`'s clamp call sites and the one a drag

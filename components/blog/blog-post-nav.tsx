@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { listPosts } from '@/lib/blog/listing';
+import { isNewsPost, listArticles, listNewsByDate, listPosts } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
@@ -12,13 +12,16 @@ interface BlogPostNavProps {
 }
 
 /**
- * Previous / next links between adjacent posts in the site's canonical
- * listing order. Renders nothing when the current post can't be located or has
- * no neighbours.
+ * Previous / next links between adjacent posts of the same section: an article
+ * walks the blog's listing order (`listArticles`), a news post walks the news
+ * (`listNewsByDate`), so neither section hands its reader over to the other.
+ * Renders nothing when the current post can't be located or has no neighbours.
  */
 export async function BlogPostNav({ locale, currentTranslationKey }: BlogPostNavProps) {
   const t = await getTranslations('blog');
-  const posts = listPosts(locale);
+  const current = listPosts(locale).find((p) => p.translationKey === currentTranslationKey);
+  if (!current) return null;
+  const posts = isNewsPost(current) ? listNewsByDate(locale) : listArticles(locale);
   const idx = posts.findIndex((p) => p.translationKey === currentTranslationKey);
   if (idx === -1) return null;
 

@@ -294,12 +294,67 @@ function buildNewsRedirects(posts) {
   return out;
 }
 
+/** `normalizeTagSlug` in lib/blog/tags.ts, the one a tag archive's URL is built with. */
+function tagSlug(tag) {
+  return String(tag)
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * For every locale, the tag slugs only news carries there: tags on a listed news post and on no
+ * listed article. Their `/<locale>/blog/tag/<slug>` archives existed while `/blog` listed news, and
+ * are gone since the archives count articles only (\`listTags\`); the proxy 308s them to the news
+ * overview instead of leaving a 404 where the sitemap used to point. "Listed" is what
+ * \`listPosts\` lists: the entry the locale serves (its own, else EN, else any), neither a draft
+ * nor hidden.
+ */
+function buildNewsOnlyTags(posts) {
+  const isNews = (category) => category === 'news' || String(category ?? '').startsWith('news/');
+  const groups = new Map();
+  for (const post of posts) {
+    const key = post.frontmatter.translationKey?.trim() || post.slug;
+    const group = groups.get(key) ?? new Map();
+    group.set(post.locale, post);
+    groups.set(key, group);
+  }
+  const out = {};
+  for (const locale of [...LOCALE_DIRS].sort()) {
+    const newsTags = new Set();
+    const articleTags = new Set();
+    for (const group of groups.values()) {
+      const served = group.get(locale) ?? group.get('en') ?? group.get([...group.keys()].sort()[0]);
+      if ((served.frontmatter.mode ?? 'published') !== 'published') continue;
+      const target = isNews(served.frontmatter.category) ? newsTags : articleTags;
+      for (const tag of served.frontmatter.tags ?? []) {
+        const slug = tagSlug(tag);
+        if (slug) target.add(slug);
+      }
+    }
+    out[locale] = [...newsTags].filter((slug) => !articleTags.has(slug)).sort();
+  }
+  return out;
+}
+
 const newsRedirectsModule = `/**
  * \`/<locale>/blog/<slug>\` → the slug under \`/<locale>/news/\`, for news posts only. Read by
  * lib/blog/news-redirects-rule.ts, which \`proxy.ts\` runs on every request.
  */
 export const NEWS_POST_TARGETS: Record<string, Record<string, string>> = ${JSON.stringify(
   buildNewsRedirects(posts),
+  null,
+  2
+)};
+
+/**
+ * Per locale, the tag slugs only news carries. \`/<locale>/blog/tag/<slug>\` of one of them is a
+ * 308 to \`/<locale>/news\` (lib/blog/news-redirects-rule.ts).
+ */
+export const NEWS_ONLY_TAGS: Record<string, string[]> = ${JSON.stringify(
+  buildNewsOnlyTags(posts),
   null,
   2
 )};

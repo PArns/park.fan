@@ -170,7 +170,13 @@ const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
   String(i + 1).padStart(2, '0')
 ).join('');
 
-const LAUNCHER = '[data-planner-edge-tab]';
+// The way in, whichever of the two this viewport draws: the edge tab, or on a phone
+// (`planner-phone`) the header's calendar button, which replaces it (PAR-434). Both
+// carry the attribute and exactly one is ever displayed, so `:visible` is the whole
+// selector — a bare attribute would resolve `.first()` to the hidden one.
+const LAUNCHER = '[data-planner-launcher]:visible';
+/** The launcher's question when the day it would open on is over. */
+const PAST_DAY_QUESTION = '[data-confirm-dialog="planner-past-day"]';
 const SHEET = '[data-slot="sheet-content"]';
 
 const results = [];
@@ -377,6 +383,26 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     .catch(() => {});
 }
 
+/**
+ * Read a value until it is the expected one or the time is up, and hand back the
+ * last reading either way.
+ *
+ * For an assertion on a state a transition arrives at. A fixed wait read the
+ * shows switch as broken on a loaded full run (3 → 3 lines at 500 ms) that
+ * reads 3 → 0 on its own, because the lines fade for 200 ms before they go
+ * (PAR-521) and on a busy machine the commit that starts the fade comes late.
+ * The state asserted does not change; only the moment it is read does.
+ */
+async function until(read, done, timeoutMs = 3000) {
+  const started = Date.now();
+  let value = await read();
+  while (!done(value) && Date.now() - started < timeoutMs) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    value = await read();
+  }
+  return value;
+}
+
 /** How long the edge tab is waited for before a step gives up on it. */
 const LAUNCHER_TIMEOUT_MS = 20_000;
 /**
@@ -416,6 +442,23 @@ if (!PLANNER_PHONE_QUERY) {
   console.log(
     'ℹ️  PLANNER_PHONE_QUERY steht nicht mehr in lib/planner/use-grid-scale.ts — es wird vor jedem Druck gewartet'
   );
+}
+
+/**
+ * Opens the notification bell, where the switch lives.
+ *
+ * The switch was a row of its own under the desktop's foot until the PAR-482
+ * follow-up moved it into the header's bell, as the phone had it: its body is a
+ * popover now, mounted only while open, so every step that reads or presses it
+ * opens the bell first. Answers false where there is no bell, which is also
+ * what a deploy with no push draws.
+ */
+async function openPushBell(page) {
+  const bell = page.locator(`${SHEET} [data-planner-push-trigger]`).first();
+  if ((await bell.count()) === 0) return false;
+  await bell.click();
+  await page.waitForTimeout(400);
+  return true;
 }
 
 /**
@@ -493,6 +536,25 @@ async function openSheet(page, where) {
         .catch(() => true)
     : true;
 
+  // Whether the launcher will ASK before it opens: the seeded plan's active day
+  // has entries and is over. The question is a modal dialog on every viewport,
+  // so it waits out the hydration a modal sheet does.
+  const asksFirst = await page
+    .evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const park = plan?.parks?.[plan?.activeParkSlug];
+      const day = park?.days?.[plan?.activeDate];
+      if (!day || !(day.entries?.length > 0)) return false;
+      const today = new Intl.DateTimeFormat('en-CA', {
+        timeZone: park.timezone ?? Intl.DateTimeFormat().resolvedOptions().timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(new Date());
+      return day.date < today;
+    })
+    .catch(() => false);
+
   let blame = '';
   let presses = 0;
   for (let attempt = 1; attempt <= SHEET_ATTEMPTS; attempt += 1) {
@@ -505,13 +567,28 @@ async function openSheet(page, where) {
       // hydration warning from one) and costs the run real time: with the wait
       // on every press the run took 1468 s, and one desktop assertion that reads
       // a URL 1500 ms after a click went red twice in a row.
-      if (modal || presses > 0) await settleHydration(page);
+      if (modal || asksFirst || presses > 0) await settleHydration(page);
       presses += 1;
       const failure = await launcher
         .click({ timeout: SHEET_PRESS_MS })
         .then(() => null)
         .catch((error) => String(error.message).split('\n')[0].trim().slice(0, 160));
       if (failure) blame = failure;
+    }
+    // A plan whose active day is over is asked about before it opens
+    // (`pastActiveDay`), and every step that seeds one is there to look at
+    // that day — which is the question's „Vergangenen Tag ansehen".
+    if (asksFirst) {
+      const question = page.locator(PAST_DAY_QUESTION);
+      const asked = await question
+        .waitFor({ state: 'visible', timeout: SHEET_ARRIVE_MS })
+        .then(() => true)
+        .catch(() => false);
+      if (asked)
+        await question
+          .locator('[data-confirm-cancel]')
+          .click()
+          .catch(() => {});
     }
     const open = await arriving
       .waitFor({ state: 'visible', timeout: SHEET_ARRIVE_MS })
@@ -1481,6 +1558,46 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
     fieldSizes.length > 0 && fieldSizes.every((size) => size >= 16),
     `${fieldSizes.length} Felder: ${fieldSizes.join(', ')} px`
   );
+
+  // The 16 px rule stops ONE zoom. A pinch still zooms, the keyboard shrinks
+  // what is on screen the same way, and every one of them left the sheet as
+  // tall as the layout viewport: at 1.3× it ended 195 px below the view, and
+  // iOS pans that overhang off the TOP, grabber and × first ("lässt sich nicht
+  // schließen", again). The sheet is sized from `visualViewport` now
+  // (`useSheetViewport`), and Chromium can set the page scale where it cannot
+  // pinch — which shrinks the visual viewport exactly as that zoom does.
+  {
+    const cdp = await phone.context().newCDPSession(phone);
+    await cdp.send('Emulation.setPageScaleFactor', { pageScaleFactor: 1.3 });
+    await phone.waitForTimeout(600);
+    const fit = await phone.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      const close = sheet?.querySelector('[data-planner-sheet-close]');
+      if (!sheet || !close) return null;
+      const view = window.visualViewport;
+      const box = sheet.getBoundingClientRect();
+      return {
+        viewTop: Math.round(view.offsetTop),
+        viewBottom: Math.round(view.offsetTop + view.height),
+        top: Math.round(box.top),
+        bottom: Math.round(box.bottom),
+        closeTop: Math.round(close.getBoundingClientRect().top),
+      };
+    }, SHEET);
+    await cdp.send('Emulation.setPageScaleFactor', { pageScaleFactor: 1 });
+    await phone.waitForTimeout(600);
+    await cdp.detach();
+    check(
+      'gezoomt passt das Sheet in den sichtbaren Ausschnitt, Griff und × bleiben im Bild',
+      fit !== null &&
+        fit.top >= fit.viewTop - 1 &&
+        fit.closeTop >= fit.viewTop &&
+        fit.bottom <= fit.viewBottom + 1,
+      fit
+        ? `sichtbar ${fit.viewTop}–${fit.viewBottom} px · Sheet ${fit.top}–${fit.bottom} px · × ab ${fit.closeTop} px`
+        : 'kein Sheet'
+    );
+  }
   if (await grab.count()) {
     /**
      * How far a drag travels, and it is a DISTANCE rather than a destination.
@@ -1755,6 +1872,15 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         'ein Finger verschiebt den Block',
         startBefore !== null && startAfter !== null && startAfter !== startBefore,
         `${startBefore} -> ${startAfter}`
+      );
+      // And on the five-minute grid a mouse has, not on half hours: 90 px on
+      // the phone's axis (1.8 px per minute) is 50 minutes. Under the old
+      // coarse step of 30 the same drag moved the block 60, and anything under
+      // 27 px moved it not at all.
+      check(
+        'und rastet dabei auf fünf Minuten',
+        startBefore !== null && startAfter !== null && startAfter - startBefore === 50,
+        `${startAfter - startBefore} Min. für 90 px`
       );
 
       // The gesture-free way. It exists because the one above depends on a
@@ -2871,20 +2997,38 @@ step: {
   // top eight rendered twice. What it said now sits on the ride's own row as a
   // crown, and this asserts the two halves of that — every ride is offered, and
   // the crown is on the curated headliners and on nothing else.
+  //
+  // On the desktop that list is the column's search since PAR-521: one row at
+  // rest beside „Eigener Block", and rows only while a query is typed. So the
+  // resting field is asserted to draw none, and the list is read per query.
   const rows = hl.locator(`${SHEET} ul li button[draggable="true"]`);
-  const listed = await rows.evaluateAll((els) =>
-    els.map((el) => ({
-      // The NAME span, not the first one: the first is the thumbnail's box, and
-      // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
-      // reported a crown on every row in the park.
-      name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
-      crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
-    }))
-  );
+  const readRows = () =>
+    rows.evaluateAll((els) =>
+      els.map((el) => ({
+        // The NAME span, not the first one: the first is the thumbnail's box, and
+        // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
+        // reported a crown on every row in the park.
+        name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
+        crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
+      }))
+    );
+  const atRest = await rows.count();
+  check('am Rechner zeigt die ruhende Suche keine Liste', atRest === 0, `${atRest} Zeilen`);
+  const search = hl.locator(`${SHEET} [data-planner-ride-search] input`).first();
+  const listFor = async (query) => {
+    await search.fill(query);
+    await hl.waitForTimeout(400);
+    return readRows();
+  };
+  const fly = await listFor('fly');
+  const mamba = await listFor('mamba');
+  // „a" finds Taron and Black Mamba and not F.L.Y.: two rows to order.
+  const listed = await listFor('a');
+  await search.fill('');
   check(
     'der fehlende Headliner wird angeboten',
-    listed.some((r) => r.name === 'F.L.Y.'),
-    JSON.stringify(listed.map((r) => r.name))
+    fly.some((r) => r.name === 'F.L.Y.'),
+    JSON.stringify(fly.map((r) => r.name))
   );
   // The regression this replaced the band with: the list used to be
   // `day.rides.slice(0, 8)` over a payload the API sorts busiest first, so at
@@ -2892,20 +3036,21 @@ step: {
   // found. Black Mamba is the fixture's non-headliner.
   check(
     'eine gewöhnliche Bahn steht auch in der Liste',
-    listed.some((r) => r.name === 'Black Mamba'),
-    JSON.stringify(listed.map((r) => r.name))
+    mamba.some((r) => r.name === 'Black Mamba'),
+    JSON.stringify(mamba.map((r) => r.name))
   );
   check(
     'die Liste steht alphabetisch',
-    listed.map((r) => r.name).join('|') ===
-      [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
+    listed.length >= 2 &&
+      listed.map((r) => r.name).join('|') ===
+        [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
     JSON.stringify(listed.map((r) => r.name))
   );
   check(
     'die Krone sitzt auf den Headlinern und nur dort',
-    listed.find((r) => r.name === 'F.L.Y.')?.crown === true &&
-      listed.find((r) => r.name === 'Black Mamba')?.crown === false,
-    JSON.stringify(listed)
+    fly.find((r) => r.name === 'F.L.Y.')?.crown === true &&
+      mamba.find((r) => r.name === 'Black Mamba')?.crown === false,
+    JSON.stringify([...fly, ...mamba])
   );
   // And the band names what the plan is still missing. It was taken out once,
   // because the eight rows under it repeated the same rides, and asked for back:
@@ -3202,6 +3347,11 @@ step: {
     /Zieh eine Bahn/.test(coachText) && !/planner\./.test(coachText),
     coachText.replace(/\s+/g, ' ').slice(0, 80)
   );
+  // The query devtools' logo is fixed to the window's bottom right in `next
+  // dev`, which is where the coach's × sits since the panel foot lost its push
+  // row (PAR-521). It is not in a production build, so it is taken out of the
+  // way rather than the coach moved for it.
+  await drag.addStyleTag({ content: '.tsqd-parent-container { display: none !important; }' });
   await drag.locator(`${SHEET} [data-planner-drag-coach] button`).click();
   await drag.waitForTimeout(300);
   check('ausgeblendet bleibt ausgeblendet', (await coach.count()) === 0);
@@ -3215,8 +3365,10 @@ step: {
   const badge = card.locator('[data-planner-drag-hint]');
   const restOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
   await card.hover();
-  await drag.waitForTimeout(300);
-  const hoverOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
+  const hoverOpacity = await until(
+    () => badge.evaluate((el) => getComputedStyle(el).opacity),
+    (opacity) => opacity === '1'
+  );
   check(
     'der Anfasser erscheint erst unter dem Zeiger',
     restOpacity === '0' && hoverOpacity === '1',
@@ -3318,6 +3470,15 @@ step: {
   const firedBand = await fireDrag(`${SHEET} [data-planner-headliner-hint] button`);
   await drag.setViewportSize({ width: 390, height: 1000 });
   await drag.waitForTimeout(800);
+  // The list is drawn in search mode only, under a mouse as under a finger:
+  // at rest the narrow window's list sat in the block the sheet squeezes
+  // first and showed no ride whole. A click into the field opens it.
+  await drag
+    .locator(`${SHEET} [data-planner-ride-search] input`)
+    .first()
+    .click()
+    .catch(() => {});
+  await drag.waitForTimeout(400);
   const firedList = await fireDrag(`${SHEET} ul li button[draggable="true"]`);
   await drag.waitForTimeout(200);
   const chips = await drag.evaluate(() => window.__plannerChips ?? []);
@@ -3660,7 +3821,10 @@ step: {
       /Zieh eine Bahn/.test(lines) && !/unten/.test(lines),
       lines.slice(0, 90)
     );
-    check('und es gibt dort keine Suche, auf die es zeigen könnte', searchVisible === false);
+    // The desktop has its own search since the PAR-482 follow-up, one per
+    // column in the foot row. The sentence still names the drag, which is the
+    // desktop's first way in; the search is the second.
+    check('und die Suche steht am Rechner trotzdem bereit', searchVisible === true);
     // The same sentence twice, 300 px apart, is how a hint stops reading as one.
     check(
       'der Hinweis am Fuß schweigt, solange das Raster leer ist',
@@ -3931,7 +4095,12 @@ step: {
 
   await stubShows(shows);
 
-  /** The same one-block Phantasialand day both pages in this block run on. */
+  /**
+   * The same Phantasialand day both pages in this block run on: Taron at 10:00,
+   * clear of every show, and a second go at 14:40 whose 45-minute queue the
+   * 15:00 line (with 15:05 folded in) falls into, so one show is written inside
+   * a block (PAR-521).
+   */
   const seedDay = (page) =>
     page.evaluate(
       ([plan, date]) => {
@@ -3943,6 +4112,7 @@ step: {
             date,
             entries: [
               { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+              { id: 'taron-2', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 880 },
             ],
           },
         };
@@ -3975,6 +4145,52 @@ step: {
     'der Name steht an der Linie, nicht nur im Band',
     /Miji African Dancers/.test(pillText),
     pillText.slice(0, 80)
+  );
+
+  // A pill of names may not lie on a block (PAR-482 follow-up): it covered the
+  // name and the times of every ride a show fell into. A block writes its own
+  // shows on its own line instead (PAR-521), so those are not pills.
+  const namesOnBlocks = await shows.evaluate((sheet) => {
+    const blocks = [...document.querySelectorAll(`${sheet} [data-planner-block]`)].map((el) =>
+      el.getBoundingClientRect()
+    );
+    return [
+      ...document.querySelectorAll(
+        `${sheet} [data-planner-show]:not([data-planner-show-covered]):not([data-planner-show-in-block])`
+      ),
+    ].filter((pill) => {
+      const r = pill.getBoundingClientRect();
+      return blocks.some(
+        (b) => r.left < b.right && r.right > b.left && r.top < b.bottom && r.bottom > b.top
+      );
+    }).length;
+  }, SHEET);
+  check(
+    'keine Show-Pille mit Namen liegt auf einem Block',
+    namesOnBlocks === 0,
+    `${namesOnBlocks} auf Blöcken`
+  );
+
+  // …and the show is not lost there: the mask alone said nothing about which
+  // show it was („jetzt sieht man die Shows gar nicht mehr"). The 15:00 line
+  // falls into the second Taron, which writes it, with its time, and the grid
+  // draws no pill of its own for it.
+  const inBlock = await shows.evaluate((sheet) => {
+    const block = document.querySelector(`${sheet} li[data-planner-entry="taron-2"]`);
+    const label = block?.querySelector('[data-planner-show-in-block]');
+    const gridPills = [
+      ...document.querySelectorAll(
+        `${sheet} [data-planner-show]:not([data-planner-show-in-block])`
+      ),
+    ].filter((pill) => /Nobis/.test(pill.textContent ?? '')).length;
+    return { text: label?.textContent ?? null, gridPills };
+  }, SHEET);
+  check(
+    'eine Show in einer Bahn steht im Block selbst, mit ihrer Zeit',
+    /15:00/.test(inBlock.text ?? '') &&
+      /Nobis Vol\. 2/.test(inBlock.text ?? '') &&
+      inBlock.gridPills === 0,
+    `${inBlock.text ?? '(keine)'} · ${inBlock.gridPills} Pillen im Raster`
   );
 
   // Two shows at one minute share a line and BOTH are named — and the 15:05 one
@@ -4076,8 +4292,7 @@ step: {
     );
 
     await chip.click();
-    await phoneShows.waitForTimeout(500);
-    const hidden = await linesShown();
+    const hidden = await until(linesShown, (count) => count === 0);
     check(
       'der Schalter nimmt die Show-Linien aus dem Raster',
       hidden === 0 && (await chip.getAttribute('data-planner-shows-button')) === 'off',
@@ -4085,8 +4300,7 @@ step: {
     );
 
     await chip.click();
-    await phoneShows.waitForTimeout(500);
-    const back = await linesShown();
+    const back = await until(linesShown, (count) => count === before);
     check(
       'und derselbe Schalter holt sie zurück',
       back === before && (await chip.getAttribute('data-planner-shows-button')) === 'on',
@@ -4430,6 +4644,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   // `[aria-pressed]`: since PAR-82 the switched-on toggle also carries the
   // "Link zum Plan teilen" button, so a bare `button` matched two elements and
@@ -4488,13 +4703,17 @@ step: {
 
     // Reopening must still say "on". The state is read back from the browser's
     // own subscription AND the stored id, so losing either has to read as off.
-    await push.locator(`${SHEET} button[aria-label]`).first().press('Escape');
+    // Twice: the first Escape closes the bell's popover, the second the sheet.
+    await push.keyboard.press('Escape');
+    await push.waitForTimeout(300);
+    await push.keyboard.press('Escape');
     await push.waitForTimeout(400);
     if (!(await openSheet(push, 'Benachrichtigungen, zweiter Aufbau'))) {
       await push.close();
       break step;
     }
     await push.waitForTimeout(1500);
+    await openPushBell(push);
     check(
       'nach dem Wiederöffnen sind sie immer noch an',
       (await push.locator('[data-planner-push="on"]').count()) === 1
@@ -4605,6 +4824,146 @@ step: {
   check('und zeigt, was an dem Tag wirklich anstand', /35/.test(rowText), rowText);
 
   await past.close();
+}
+
+// ── A day that is over is asked about, not opened ───────────────────────────
+// The panel opens on the ACTIVE day, and after a trip that is the trip. The two
+// ways in that name no day — the edge tab, the header button on a phone — ask
+// first: look at the day that is over, or plan a new one. Escape opens nothing.
+step: {
+  const YESTERDAY = parkDay(-1);
+  const seedWalked = (page) =>
+    page.evaluate(
+      ([plan, yesterday]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [yesterday]: {
+            date: yesterday,
+            entries: [
+              {
+                id: 'walked-1',
+                attractionSlug: 'taron',
+                attractionName: 'Taron',
+                startMinute: 600,
+                done: true,
+                actualWait: 35,
+              },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = yesterday;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      },
+      [PLAN, YESTERDAY]
+    );
+
+  const ask = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(ask);
+  await ask.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await seedWalked(ask);
+  await ask.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  // The question is a MODAL dialog even where the panel is not, so it waits out
+  // the hydration like every modal open does — see `settleHydration`.
+  await settleHydration(ask);
+
+  const question = ask.locator(PAST_DAY_QUESTION);
+  const openSheets = () => ask.locator(`${SHEET}[data-state="open"]`).count();
+  const pressLauncher = async () => {
+    await ask.locator(LAUNCHER).first().click();
+    await question.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => {});
+    await ask.waitForTimeout(300);
+  };
+
+  await pressLauncher();
+  const asked = { question: await question.count(), sheets: await openSheets() };
+  check(
+    'ein vorbeigegangener Tag öffnet nicht, der Planer fragt',
+    asked.question === 1 && asked.sheets === 0,
+    `Frage ${asked.question} · offene Sheets ${asked.sheets}`
+  );
+  if (asked.question !== 1) {
+    await ask.close();
+    break step;
+  }
+  const said = ((await question.textContent()) ?? '').replace(/\s+/g, ' ').trim();
+  check('und nennt Park und Tag', /Phantasialand/.test(said), said);
+
+  await ask.keyboard.press('Escape');
+  await ask.waitForTimeout(500);
+  check(
+    'Escape öffnet nichts',
+    (await question.count()) === 0 && (await openSheets()) === 0,
+    `Frage ${await question.count()} · offene Sheets ${await openSheets()}`
+  );
+
+  await pressLauncher();
+  await question.locator('[data-confirm-cancel]').click();
+  await ask
+    .locator(`${SHEET}[data-state="open"]`)
+    .first()
+    .waitFor({ state: 'visible', timeout: 15_000 })
+    .catch(() => {});
+  await ask.waitForTimeout(800);
+  const viewed = {
+    sheets: await openSheets(),
+    entry: await ask.locator('li[data-planner-entry="walked-1"]').count(),
+    active: await ask.evaluate(
+      () => JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}').activeDate
+    ),
+  };
+  check(
+    '„Vergangenen Tag ansehen" öffnet den vergangenen Tag',
+    viewed.sheets === 1 && viewed.entry === 1 && viewed.active === YESTERDAY,
+    `Sheets ${viewed.sheets} · Eintrag ${viewed.entry} · aktiv ${viewed.active}`
+  );
+
+  await ask.keyboard.press('Escape');
+  await ask.waitForTimeout(800);
+  await pressLauncher();
+  await question.locator('[data-confirm-action]').click();
+  await ask.waitForTimeout(1500);
+  // The wizard's FIRST step has no footer (picking a park is the advance), so
+  // its „Weiter" is no sign of it here, on a page with no park behind it: the
+  // park search is. On a park page the same press opens it on the date step.
+  const started = {
+    sheets: await openSheets(),
+    wizard: await ask
+      .locator(
+        '[data-slot="dialog-content"][data-state="open"]:has([data-planner-park-search], [data-planner-wizard-next])'
+      )
+      .count(),
+  };
+  check(
+    '„Neuen Tag planen" öffnet den Assistenten',
+    started.sheets === 1 && started.wizard === 1,
+    `Sheets ${started.sheets} · Assistent ${started.wizard}`
+  );
+  await ask.close();
+
+  // The header button, which is the phone's way in and reaches the launcher as
+  // a request rather than as a press of its own.
+  const phoneAsk = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+  });
+  noteErrors(phoneAsk);
+  await phoneAsk.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await seedWalked(phoneAsk);
+  await phoneAsk.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await settleHydration(phoneAsk);
+  await phoneAsk.locator(LAUNCHER).first().click();
+  const phoneQuestion = phoneAsk.locator(PAST_DAY_QUESTION);
+  await phoneQuestion.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => {});
+  check(
+    'am Handy fragt der Knopf im Kopf genauso',
+    (await phoneQuestion.count()) === 1 &&
+      (await phoneAsk.locator(`${SHEET}[data-state="open"]`).count()) === 0
+  );
+  await phoneAsk.close();
 }
 
 // ── The photos the payload already carries ──────────────────────────────────
@@ -4758,9 +5117,14 @@ step: {
     `${winja?.height} px, Foto: ${winja?.photo}`
   );
 
-  // Every ride search row carries its photo.
+  // Every ride search row carries its photo. On the desktop the rows are
+  // drawn only while a query is typed (PAR-521), and „a" finds both rides.
+  await photos.locator(`${SHEET} [data-planner-ride-search] input`).first().fill('a');
+  await photos.waitForTimeout(400);
   const searchThumbs = await photos
-    .locator(`${SHEET} img[src*="taron"], ${SHEET} img[src*="black-mamba"]`)
+    .locator(
+      `${SHEET} [data-planner-ride-search] img[src*="taron"], ${SHEET} [data-planner-ride-search] img[src*="black-mamba"]`
+    )
     .count();
   check('die Suchzeilen tragen ihre Fotos', searchThumbs >= 2, `${searchThumbs}`);
 
@@ -4842,9 +5206,13 @@ step: {
     await push.close();
     break step;
   }
+  // The bell too, not only its body: the body is a popover that is not mounted
+  // until the bell is pressed, so counting it alone would pass over a bell that
+  // opens onto nothing.
   check(
     'ohne Schlüssel gibt es keinen Schalter',
-    (await push.locator('[data-planner-push]').count()) === 0
+    (await push.locator('[data-planner-push]').count()) === 0 &&
+      (await push.locator('[data-planner-push-trigger]').count()) === 0
   );
   await push.close();
 }
@@ -4896,6 +5264,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   const toggle = push.locator('[data-planner-push]');
   check('mit Schlüssel steht der Schalter da', (await toggle.count()) === 1);
@@ -4969,6 +5338,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   const denied = push.locator('[data-planner-push="denied"]');
   check('ein abgelehnter Browser bekommt eine Erklärung', (await denied.count()) === 1);

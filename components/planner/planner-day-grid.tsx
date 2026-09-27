@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
-  DRAG_SNAP_MIN_FINE,
+  DRAG_SNAP_MIN,
   MIN_BLOCK_MIN,
   SNAP_MIN_COARSE,
   SNAP_MIN_FINE,
@@ -19,6 +19,7 @@ import {
   yFor,
   type DayGrid,
 } from '@/lib/planner/day-grid';
+import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '@/lib/planner/leg-chip';
 import { legBetween, earliestGoodStart } from '@/lib/planner/leg';
 import { formatGridTime, parkMinuteNow, todayInZone } from '@/lib/planner/park-time';
 import {
@@ -40,12 +41,20 @@ import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/poi
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { PlannerGridGround } from './planner-grid-ground';
 import { PlannerWeatherRail } from './planner-weather-rail';
-import { PlannerBlock } from './planner-block';
+import { PlannerBlock, type PlannerBlockShow } from './planner-block';
 import { PlannerLeg } from './planner-leg';
-import { showLinePositions } from '@/lib/planner/day-grid';
+import {
+  SHOW_PILL_HALF_PX,
+  showLineCover,
+  showLineHost,
+  showLinePositions,
+  type ShowLineHostCandidate,
+  type ShowLineObstacle,
+} from '@/lib/planner/day-grid';
 import { BAND_FADE, bandGeometry } from '@/lib/planner/block-band';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
+import { PlannerDragDemo } from './planner-drag-demo';
 import { partyFlags } from '@/lib/planner/party';
 import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
@@ -62,6 +71,11 @@ interface PlannerDayGridProps {
   liveWaits?: Map<string, number> | null;
   /** Showtimes as park-local minutes. `null` while the day payload is on its way. */
   showLines?: PlannerShowLine[] | null;
+  /**
+   * The shows switch is off. The lines stay mounted and fade out, rather than
+   * leaving the grid in one frame (PAR-482 follow-up: „alle Fades animiert").
+   */
+  showsHidden?: boolean;
   /** Rendered inside the "nothing planned yet" overlay. Usually `null`. */
   emptyAction?: React.ReactNode;
   /** Free blocks only: the visitor dragged the bottom edge to this many minutes. */
@@ -120,19 +134,6 @@ const LIVE_WINDOW_MIN = 45;
 /** Five minutes, like every displayed wait in this app. */
 const RESIZE_STEP_MIN = 5;
 
-/**
- * The step a drag commits to.
- *
- * A property of the POINTER, not of the grid, so it is asked at the moment of
- * the gesture: a laptop with a touchscreen answers differently depending on
- * which of its two inputs is in the visitor's hand, and a value captured at
- * render would answer for the other one. Both call sites — a block being moved
- * and a ride being dropped in from the list — go through here so they cannot
- * drift apart; they were two copies of this ternary.
- */
-const dragStep = () =>
-  matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : DRAG_SNAP_MIN_FINE;
-
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
 
@@ -151,6 +152,7 @@ export function PlannerDayGrid({
   isToday,
   liveWaits,
   showLines = null,
+  showsHidden = false,
   emptyAction = null,
   onResize,
   parkSlug,
@@ -507,7 +509,7 @@ export function PlannerDayGrid({
       const raw = minuteAt(grid, clientY - canvas.getBoundingClientRect().top);
       return clampStart(
         grid,
-        snapTo(raw, dragStep()),
+        snapTo(raw, DRAG_SNAP_MIN),
         Math.max(grid.openMin, floorMin ?? grid.openMin)
       );
     },
@@ -583,7 +585,7 @@ export function PlannerDayGrid({
       const top = canvas.getBoundingClientRect().top;
       const raw = minuteAt(grid, state.lastClientY - top - state.grabOffsetPx);
       if (!snap) return clampStart(grid, Math.round(raw), state.floorMin);
-      return clampStart(grid, snapTo(raw, dragStep()), state.floorMin);
+      return clampStart(grid, snapTo(raw, DRAG_SNAP_MIN), state.floorMin);
     },
     [grid]
   );
@@ -876,9 +878,9 @@ export function PlannerDayGrid({
    * The `step` of each block's range input, which is the ARROW-KEY step.
    *
    * It carried the drag's step as well until PAR-307, under the name `snapStep`,
-   * and that is why it still reads the pointer: half an hour is the right arrow
-   * key on a phone for the same reason it is the right drag there. What it must
-   * NOT become is {@link DRAG_SNAP_MIN_FINE} — five minutes is a good step for a
+   * and that is why it still reads the pointer: half an hour on a phone, where
+   * the drag was half an hour too until it moved to fives. What it must
+   * NOT become is {@link DRAG_SNAP_MIN} — five minutes is a good step for a
    * hand moving a block over a distance it can see, and a bad one for a key that
    * has to be pressed once per step to cross a day. So the fine branch stays at
    * the quarter hour the keyboard has always had, and this is now the only place
@@ -907,6 +909,47 @@ export function PlannerDayGrid({
       at.push(line);
       byMinute.set(line.minute, at);
     }
+    // What the pills may not lie on: every block over its span or its drawn
+    // box, whichever reaches further (a short queue is drawn taller than it
+    // is), and every transfer chip where `PlannerLeg` puts it, which is the
+    // gap between two blocks and so exactly where a line between two rides
+    // falls.
+    const obstacles: ShowLineObstacle[] = [
+      ...layout.rows.map((row) => ({
+        kind: 'block' as const,
+        topPx: yFor(grid, row.entry.startMinute),
+        bottomPx: Math.max(
+          yFor(grid, row.entry.startMinute + row.spanMinutes),
+          yFor(grid, row.entry.startMinute) + drawnBoxPx(grid, row.wait)
+        ),
+        columns: layout.lanes.get(row.entry.id)?.columns ?? 1,
+      })),
+      ...layout.legs.map((l) => {
+        const top = yFor(grid, l.fromMinute);
+        const { topPx, compact } = legChipPlacement(
+          Math.max(0, yFor(grid, l.toEntry.startMinute) - top),
+          yFor(grid, l.fromEntry.startMinute) + drawnBoxPx(grid, l.fromWait) - top,
+          l.leg.verdict === 'broken'
+        );
+        return {
+          kind: 'chip' as const,
+          topPx: top + topPx,
+          bottomPx: top + topPx + (compact ? LEG_CHIP_COMPACT_PX : LEG_CHIP_PX),
+        };
+      }),
+    ];
+    // The blocks a line may be written into, over their drawn box: the line a
+    // show is written on is in the box, not in the queue band under it.
+    const hosts: ShowLineHostCandidate[] = layout.rows.map((row) => {
+      const top = yFor(grid, row.entry.startMinute);
+      const box = drawnBoxPx(grid, row.wait);
+      return {
+        id: row.entry.id,
+        topPx: top,
+        bottomPx: top + box,
+        column: layout.lanes.get(row.entry.id)?.column ?? 0,
+      };
+    });
     return showLinePositions(
       grid,
       showLines.map((line) => line.minute)
@@ -916,12 +959,63 @@ export function PlannerDayGrid({
         const minutes = [line.minute, ...line.collapsedWith];
         const shows = minutes.flatMap((m) => byMinute.get(m) ?? []);
         const names = [...new Set(shows.map((show) => show.name))];
-        return { ...line, minutes, names, source: lineSource(shows) };
+        // See the pill below for what these two change.
+        const cover = showLineCover(line.y, obstacles);
+        const host = showLineHost(line.y, hosts);
+        return { ...line, minutes, names, source: lineSource(shows), cover, host };
       });
-  }, [showLines, grid]);
+  }, [showLines, grid, layout]);
+  // The shows each block writes on its own second line, by entry.
+  const showsByEntry = useMemo(() => {
+    const byEntry = new Map<string, PlannerBlockShow[]>();
+    for (const line of showRows ?? []) {
+      if (line.host === null) continue;
+      const list = byEntry.get(line.host) ?? [];
+      list.push({ minute: line.minute, names: line.names, source: line.source });
+      byEntry.set(line.host, list);
+    }
+    return byEntry;
+  }, [showRows]);
+  // The empty day's card, where the canvas draws it. It sits at a third of the
+  // canvas and is as tall as its sentence wraps, so it is measured rather than
+  // computed, and a pill whose line falls under it is not drawn: at its edge
+  // the card cut a pill in half, and half a pill peeked over the one card an
+  // empty day is about.
+  const [emptyCard, setEmptyCard] = useState<{ top: number; bottom: number } | null>(null);
+  const measureEmptyCard = useCallback((card: HTMLDivElement | null) => {
+    if (!card) return;
+    const read = () => {
+      const top = card.offsetTop;
+      const bottom = top + card.offsetHeight;
+      setEmptyCard((current) =>
+        current?.top === top && current.bottom === bottom ? current : { top, bottom }
+      );
+    };
+    read();
+    const observer = new ResizeObserver(read);
+    observer.observe(card);
+    if (card.parentElement) observer.observe(card.parentElement);
+    return () => {
+      observer.disconnect();
+      setEmptyCard(null);
+    };
+  }, []);
+  const underEmptyCard = (y: number) =>
+    emptyCard !== null &&
+    y > emptyCard.top - SHOW_PILL_HALF_PX &&
+    y < emptyCard.bottom + SHOW_PILL_HALF_PX;
+
+  // Every show mark fades with the switch instead of leaving in one frame.
+  // `visibility` flips at the END of the fade out, so a hidden line takes no
+  // press and reads as absent to anything that asks, and at the start of the
+  // fade in.
+  const showFade = cn(
+    'transition-[opacity,visibility] duration-200',
+    showsHidden && 'invisible opacity-0'
+  );
 
   return (
-    <div className="relative flex" data-planner-grid="">
+    <div className="group/grid relative flex" data-planner-grid="">
       {/* The gutter. Its own column, so a show pill and an hour label resolve
           their only possible collision with the pill's own background. */}
       <div className="relative w-11 shrink-0 max-sm:w-10" style={{ height: grid.heightPx }}>
@@ -948,9 +1042,11 @@ export function PlannerDayGrid({
           <span
             key={`show-time-${line.minute}`}
             data-planner-show-time={line.source}
-            className={`bg-background absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums ${
-              line.source === 'projected' ? 'text-foreground/50' : 'text-foreground/70'
-            }`}
+            className={cn(
+              'bg-background absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums',
+              line.source === 'projected' ? 'text-foreground/50' : 'text-foreground/70',
+              showFade
+            )}
             style={{ top: line.y }}
           >
             {line.source === 'projected' ? '~' : ''}
@@ -1011,7 +1107,7 @@ export function PlannerDayGrid({
             answer the visitor sees is the answer they get. */}
         {dropMinute !== null && (
           <div
-            className="bg-primary pointer-events-none absolute inset-x-0 z-30 h-0.5"
+            className="bg-primary pointer-events-none absolute inset-x-0 z-30 h-0.5 transition-[top,opacity] duration-150 ease-out starting:opacity-0"
             style={{ top: yFor(grid, dropMinute) }}
             aria-hidden="true"
           />
@@ -1048,37 +1144,75 @@ export function PlannerDayGrid({
         {showRows?.map((line) => (
           <div key={`show-${line.minute}`}>
             <div
-              className={`pointer-events-none absolute inset-x-0 z-10 border-t ${
+              className={cn(
+                'pointer-events-none absolute inset-x-0 z-10 border-t',
                 line.source === 'projected'
                   ? 'border-foreground/20 border-dotted'
-                  : 'border-foreground/30 border-dashed'
-              }`}
+                  : 'border-foreground/30 border-dashed',
+                showFade
+              )}
               style={{ top: line.y }}
               aria-hidden="true"
             />
-            {/* The name, ON the line and above the blocks — a show starting while
-                somebody is in a queue is exactly the one worth reading, so it may
-                not hide behind the block it crosses. CENTRED, because the two
-                edges are spoken for: a block puts its name at the left and its
-                wait at the right, and the middle is the one strip of a block that
-                carries no figure. The mask icon is the band's, so the line and
-                the list above it read as the same subject. */}
-            <div
-              data-planner-show=""
-              data-planner-show-source={line.source}
-              className={`glass-light pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-1.5 py-px text-[10px] shadow-sm ${
-                line.source === 'projected' ? 'text-muted-foreground italic' : 'text-foreground'
-              }`}
-              style={{ top: line.y }}
-            >
-              <Theater className="size-2.5 shrink-0" aria-hidden="true" />
-              <span className="truncate">{line.names.join(' · ')}</span>
-              {line.minutes.length > 1 && (
-                <span className="text-muted-foreground shrink-0 tabular-nums">
-                  +{line.minutes.length - 1}
+            {/* The name, ON the line and above the blocks where the axis is
+                free, CENTRED, and with the band's mask icon, so the line and
+                the list above it read as the same subject.
+
+                Where the line runs into a block, the block writes the show on
+                its own second line (`showLineHost`, PAR-521: „jetzt sieht man
+                die Shows gar nicht mehr") and the grid draws nothing here. A
+                pill as wide as the axis had lain on the name, the times and the
+                lateness hint of every block a show fell into (PAR-482
+                follow-up), and the mask it was then reduced to said nothing
+                about which show. In the gap between two blocks the pill keeps
+                its names at the right end, clear of the transfer chip at the
+                left; 240 px is that chip at its widest plus its inset, and the
+                names truncate to the mask where the lane is narrower. A line
+                grazing a block's edge without falling into it gets the mask
+                alone, placed by `showLineCover`. */}
+            {line.host === null && (
+              <div
+                data-planner-show=""
+                data-planner-show-source={line.source}
+                data-planner-show-covered={line.cover.kind === 'free' ? undefined : line.cover.kind}
+                className={cn(
+                  'glass-light pointer-events-none absolute z-20 flex max-w-[80%] -translate-y-1/2 items-center gap-1 rounded-full text-[10px] shadow-sm',
+                  line.cover.kind === 'chip'
+                    ? 'right-2 px-1.5 py-px'
+                    : line.cover.kind === 'free'
+                      ? 'left-1/2 -translate-x-1/2 px-1.5 py-px'
+                      : 'left-1/2 -translate-x-1/2 p-1',
+                  line.source === 'projected' ? 'text-muted-foreground italic' : 'text-foreground',
+                  showFade,
+                  underEmptyCard(line.y) && 'invisible',
+                  // The pointer on a block is somebody reading or moving that
+                  // block, so every show mark steps back for as long as it is
+                  // there, and fades rather than blinks. A fine pointer only: a
+                  // tap leaves `:hover` stuck on a touch screen.
+                  'pointer-fine:group-has-[[data-planner-block]:hover]/grid:opacity-20'
+                )}
+                style={{
+                  top: line.y,
+                  ...(line.cover.kind === 'block'
+                    ? { left: `${(line.cover.chip ? 75 : 50) / line.cover.columns}%` }
+                    : line.cover.kind === 'chip'
+                      ? { maxWidth: 'max(20px, calc(100% - 240px))' }
+                      : null),
+                }}
+              >
+                <Theater className="size-2.5 shrink-0" aria-hidden="true" />
+                <span
+                  className={line.cover.kind === 'block' ? 'sr-only' : 'min-w-0 truncate pr-0.5'}
+                >
+                  {line.names.join(' · ')}
                 </span>
-              )}
-            </div>
+                {line.minutes.length > 1 && line.cover.kind !== 'block' && (
+                  <span className="text-muted-foreground shrink-0 tabular-nums">
+                    +{line.minutes.length - 1}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         ))}
 
@@ -1093,7 +1227,22 @@ export function PlannerDayGrid({
         )}
 
         {entries.length === 0 ? (
-          <div className="text-muted-foreground absolute inset-x-4 top-1/3 text-center text-xs">
+          /* A card over the axis rather than a caption on it (PAR-482
+             follow-up: „wenn keine Rides im Planer sind, weise drauf hin, dass
+             man die per Drag & Drop rein ziehen kann"). It was muted text at a
+             third of the height, and the show pills, which sit above the
+             blocks at `z-20`, ran straight through it — on a park with shows
+             the one sentence that says how to start was the thing a reader
+             could not read. `z-30` with its own ground, over the pills and the
+             now line, since nothing on an empty axis matters more than how to
+             fill it. */
+          <div
+            ref={measureEmptyCard}
+            className="text-muted-foreground border-border/60 bg-background/90 absolute inset-x-4 top-1/3 z-30 mx-auto max-w-sm rounded-lg border px-4 py-3 text-center text-xs shadow-sm backdrop-blur-sm transition-opacity duration-300 starting:opacity-0"
+          >
+            {/* The gesture itself on the desktop, where the sentence under it
+                is the drag: a hand carrying a card onto the axis. */}
+            <PlannerDragDemo className="planner-wide:block mx-auto mb-1.5 hidden" />
             <p className="text-foreground text-sm font-medium">{t('empty.title')}</p>
             {/* One sentence per pointer, chosen by CSS rather than by
                 `useMediaQuery`, whose server snapshot is `false` and would ship
@@ -1292,6 +1441,8 @@ export function PlannerDayGrid({
                   lane={layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
                   land={row.ride?.land}
                   metresFromPrevious={previous?.leg.metres ?? null}
+                  shows={showsByEntry.get(row.entry.id)}
+                  showsHidden={showsHidden}
                   showBandFigure={showBandFigure}
                   live={row.live}
                   photo={
