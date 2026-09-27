@@ -43,13 +43,27 @@ export function useCaptureUploads({ data, author }: Options) {
   const [pullRequest, setPullRequest] = useState<string | null>(null);
   const [draining, setDraining] = useState(false);
 
-  /** Every file name spoken for in this park's collection, on disk or in flight. */
-  const taken = useRef<Set<string>>(new Set());
+  /**
+   * Every file name spoken for, per collection: on `main`, in the open session's
+   * pull request, in flight, or waiting in the queue.
+   *
+   * It only ever grows. It used to be replaced by the server's list on every
+   * backlog fetch, and the admin refetches on focus, so coming back from the
+   * camera dropped the names of photos still uploading or queued. A reload
+   * dropped the queued ones too, and the next photo of that ride took the same
+   * name — which the drain then wrote over.
+   */
+  const taken = useRef<Map<string, Set<string>>>(new Map());
 
   useEffect(() => {
     if (!data) return;
-    taken.current = new Set(data.park.takenNames);
+    const names = namesIn(taken.current, data.park.slug);
+    for (const name of data.park.takenNames) names.add(name);
   }, [data]);
+
+  useEffect(() => {
+    for (const photo of queued) namesIn(taken.current, photo.collection).add(photo.name);
+  }, [queued]);
 
   /**
    * Which pull request the photographs are landing in, asked once on mount.
@@ -163,10 +177,11 @@ export function useCaptureUploads({ data, author }: Options) {
       );
       if (!list.length) return;
 
+      const names = namesIn(taken.current, data.park.slug);
       for (const file of list) {
         const id = crypto.randomUUID();
-        const name = freeName(ride.slug, taken.current);
-        taken.current.add(name);
+        const name = freeName(ride.slug, names);
+        names.add(name);
 
         const previewUrl = URL.createObjectURL(file);
         setActive((all) => [
@@ -270,6 +285,16 @@ export function useCaptureUploads({ data, author }: Options) {
   );
 
   return { active, queued, pullRequest, draining, upload, drain, refreshQueue };
+}
+
+/** The names taken in one collection, created empty on first ask. */
+function namesIn(taken: Map<string, Set<string>>, collection: string): Set<string> {
+  let names = taken.get(collection);
+  if (!names) {
+    names = new Set();
+    taken.set(collection, names);
+  }
+  return names;
 }
 
 /** `1724930000000` → `2026-08-29`, or null when the stamp is missing. */

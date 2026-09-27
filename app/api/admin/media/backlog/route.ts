@@ -1,11 +1,25 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
+import { Octokit } from '@octokit/rest';
 
+import {
+  mediaRepo,
+  mediaToken,
+  readSessionJson,
+  resolveSession,
+  sessionFiles,
+} from '@/lib/admin/media-session';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { getParkByGeoPathFresh } from '@/lib/api/parks';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 import { getParkImages, getRideImages } from '@/lib/media';
 import { buildBacklog, type BacklogRide } from '@/lib/media/photo-backlog';
+import {
+  ridesInSidecars,
+  sessionNames,
+  sessionSidecars,
+  sidecarFromPatch,
+} from '@/lib/media/session-photos';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 
@@ -46,6 +60,51 @@ export const maxDuration = 60;
  */
 const STATS_TOP_N = 30;
 
+/**
+ * Sidecars read from the branch one by one, at most this many per request.
+ *
+ * Only a sidecar the session changed rather than added needs a read: an added
+ * one comes whole in its patch. The capture screen only adds, so this is the
+ * media browser's retagging, where the ride is usually the one already on `main`.
+ */
+const MAX_SIDECAR_READS = 40;
+
+/**
+ * What the open media session already holds for this park.
+ *
+ * The media index is built from `main`, and a photo taken this morning sits in
+ * the session's draft pull request until the evening review. Without this, a
+ * reload put every ride photographed today back into "Fehlt noch" and named its
+ * next photo as if the first did not exist — the same file name, written over the
+ * photo already in the pull request. `lib/media/session-photos.ts` says how the
+ * diff is read.
+ *
+ * Null when GitHub could not be asked. The backlog still answers from `main` then,
+ * and says so, rather than failing the screen in a dead spot.
+ */
+async function sessionPhotos(
+  parkSlug: string
+): Promise<{ names: string[]; rides: Set<string> } | null> {
+  const token = mediaToken();
+  if (!token) return null;
+  const repoRef = mediaRepo();
+  const octokit = new Octokit({ auth: token });
+  const session = await resolveSession(octokit, repoRef);
+  if (!session) return { names: [], rides: new Set() };
+
+  const files = await sessionFiles(octokit, repoRef, session);
+  const sidecars: unknown[] = [];
+  let reads = 0;
+  for (const file of sessionSidecars(files)) {
+    const whole = sidecarFromPatch(file.patch);
+    if (whole) sidecars.push(whole);
+    else if (reads++ < MAX_SIDECAR_READS) {
+      sidecars.push(await readSessionJson(octokit, repoRef, session, file.filename));
+    }
+  }
+  return { names: sessionNames(files, parkSlug), rides: ridesInSidecars(sidecars, parkSlug) };
+}
+
 /** `/v1/parks/a/b/c/d`, `/parks/a/b/c/d` and `a/b/c/d` all name the same park. */
 function geoSegments(raw: string | null): string[] | null {
   if (!raw) return null;
@@ -72,6 +131,10 @@ export async function GET(request: Request) {
   }
   const [continent, country, city, parkSlug] = segments;
 
+  // Started first and awaited last: it is GitHub, not the park API, and the two
+  // do not wait on each other.
+  const pending = sessionPhotos(parkSlug).catch(() => null);
+
   const park = await getParkByGeoPathFresh(continent, country, city, parkSlug);
   if (!park) return NextResponse.json({ error: 'Park not found' }, { status: 404 });
 
@@ -91,8 +154,11 @@ export async function GET(request: Request) {
     rankBySlug.set(row.attractionSlug, { rank: row.rank, p90: row.avgWaitP90 });
   }
 
+  const session = await pending;
+
   const rides: BacklogRide[] = (park.attractions ?? []).map((attraction) => {
     const ranked = rankBySlug.get(attraction.slug);
+    const inSession = session?.rides.has(attraction.slug) ?? false;
     return {
       slug: attraction.slug,
       name: attraction.name,
@@ -109,7 +175,8 @@ export async function GET(request: Request) {
       // `getRideImages`, not a folder listing: a Halloween photo of Troy lives in
       // `toverland-halloween` and answers for the ride all the same, and one file
       // naming a second slug in `alsoRides` covers both halves of Winja's.
-      hasPhoto: getRideImages(parkSlug, attraction.slug).length > 0,
+      hasPhoto: inSession || getRideImages(parkSlug, attraction.slug).length > 0,
+      inSession,
     };
   });
 
@@ -136,11 +203,23 @@ export async function GET(request: Request) {
          * Only this collection matters: a Halloween photo of the same ride lives
          * in a different folder and cannot collide.
          */
-        takenNames: getParkImages(parkSlug)
-          .filter((image) => image.collection === parkSlug)
-          .map((image) => image.id.split('/').pop() ?? '')
-          .filter(Boolean),
+        takenNames: [
+          ...new Set([
+            ...getParkImages(parkSlug)
+              .filter((image) => image.collection === parkSlug)
+              .map((image) => image.id.split('/').pop() ?? '')
+              .filter(Boolean),
+            // The open session's too, or a reload names the next photo of a
+            // ride after the one already waiting in the pull request.
+            ...(session?.names ?? []),
+          ]),
+        ],
       },
+      /**
+       * False when the open session could not be read. The lists then know only
+       * what is on `main`, and a ride photographed today may still be listed.
+       */
+      sessionChecked: session !== null,
       /**
        * Hansa-Park and its kind publish no wait times at all, so every ride reads
        * zero and the ordering falls through to the name. Said out loud here,

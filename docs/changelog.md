@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: Foto-Aufnahme kennt die Fotos im offenen Pull Request
+
+Nach einem Neuladen von `/admin/capture` standen alle heute fotografierten Bahnen wieder unter
+„Fehlt noch", weil der Backlog nur `main` kannte und die Fotos bis zum Merge im Session-PR liegen.
+Das nächste Foto derselben Bahn bekam außerdem wieder den Namen des ersten und hätte es im PR
+überschrieben. Der Backlog liest jetzt die Dateiliste des offenen Session-PRs mit: Bahnen daraus
+zählen als fotografiert und tragen „im PR", ihre Dateinamen gelten als belegt. Am offenen PR #627
+in Phantasialand waren das 10 Bahnen und 12 Namen. Reservierte Namen gehen auf dem Handy auch
+beim Neuladen der Liste und für Fotos in der Warteschlange nicht mehr verloren.
+Details: [admin.md](features/admin.md#the-open-pull-request-counts).
+
 ## Unreleased – Startseite im Park: „Heute planen", „Zum Park", Öffnungszeiten, Wetter
 
 Steht man in einem Park oder in dessen Nähe, zeigt der Hero der Startseite unter der Begrüßung

@@ -62,6 +62,7 @@ export function RideRow({ ride, distanceM, states, onFiles, featured }: RideRowP
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-1.5">
           <ReasonChip ride={ride} />
+          {ride.inSession && <Chip tone="success">im PR</Chip>}
           {ride.land && <span className="text-muted-foreground text-xs">{ride.land}</span>}
           {distanceM !== null && (
             <span className="text-muted-foreground text-xs">· {formatDistance(distanceM)}</span>

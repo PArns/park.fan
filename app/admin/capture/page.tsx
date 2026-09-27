@@ -311,6 +311,12 @@ export default function CapturePage() {
                 Nähe
               </SortButton>
             </div>
+            {!data.sessionChecked && (
+              <p className="border-border/50 border-b px-4 py-2 text-xs text-amber-400">
+                Der offene Pull Request ließ sich nicht lesen. Bahnen, die heute schon ein Foto
+                bekommen haben, können hier noch stehen.
+              </p>
+            )}
             {missing.length === 0 ? (
               <EmptyState
                 icon={CheckCircle2}
