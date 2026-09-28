@@ -15,11 +15,7 @@ import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/ap
 import { hasParkStatsPage } from '@/lib/api/stats';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
-import {
-  ParkStructuredData,
-  BreadcrumbStructuredData,
-  ShowsStructuredData,
-} from '@/components/seo/structured-data';
+import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -363,8 +359,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // OG card is only a fallback for the JSON-LD image when the park has no real photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
-  // This page's canonical URL, which is also the `@id` of its `AmusementPark` node — the Shows
-  // Events reference that node as their `organizer` rather than restating the park.
+  // This page's canonical URL, which is also the `@id` of its `AmusementPark` node.
   const parkUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`;
 
   return (
@@ -462,9 +457,9 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               }}
               locale={locale}
             />
-            {park.shows && park.shows.length > 0 && (
-              <ShowsStructuredData shows={park.shows} park={park} parkUrl={parkUrl} />
-            )}
+            {/* No `Event` per show: a park show is included with admission and cannot be booked
+              on its own, and the API sends no end time, price or performer for one. See
+              docs/seo/analysis.md, item 15. */}
             {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
               least-crowded question is appended when the seed resolves — awaiting it here would
               block TTFB, so it's rendered inside its own Suspense boundary. It lives on THIS page

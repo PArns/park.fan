@@ -1,10 +1,4 @@
-import {
-  ParkResponse,
-  ParkWithAttractions,
-  Breadcrumb,
-  ParkAttraction,
-  ParkShow,
-} from '@/lib/api/types';
+import { ParkResponse, ParkWithAttractions, Breadcrumb, ParkAttraction } from '@/lib/api/types';
 import {
   Thing,
   WithContext,
@@ -15,7 +9,6 @@ import {
   Article,
 } from 'schema-dts';
 import {
-  getParkBackgroundImage,
   getParkImageSet,
   getAttractionBackgroundImage,
   getAttractionImageSet,
@@ -596,111 +589,6 @@ export function AttractionStructuredData({
   };
 
   return <JsonLd data={data} />;
-}
-
-export function ShowsStructuredData({
-  shows,
-  park,
-  parkUrl,
-}: {
-  shows: ParkShow[];
-  park: ParkResponse | ParkWithAttractions;
-  /** The park page's URL, which is also the `@id` of its `AmusementPark` node. */
-  parkUrl: string;
-}) {
-  if (!shows || shows.length === 0) return null;
-
-  // Filter shows that have showtimes for today
-  const showsWithTimes = shows.filter(
-    (show) => show.showtimes && show.showtimes.length > 0 && show.status === 'OPERATING'
-  );
-
-  if (showsWithTimes.length === 0) return null;
-
-  // Representative event date derived from the park's own schedule (the earliest OPERATING day in
-  // the day-stable shell data), NOT the server clock. This keeps the Shows JSON-LD time-INDEPENDENT
-  // so it never pins or stales the static shell, while still emitting a valid Event startDate.
-  const schedule = park.schedule;
-  const date = schedule?.find((s) => s.scheduleType === 'OPERATING')?.date ?? schedule?.[0]?.date;
-
-  // No schedule date to anchor the Event(s) → skip rather than emit a bogus startDate.
-  if (!date) return null;
-
-  /**
-   * `showtimes[].startTime` is a full ISO 8601 timestamp (`2026-07-27T19:00:00+02:00`), NOT a
-   * clock time — concatenating it onto `date` produced `2026-07-27T2026-07-27T19:00:00+02:00`,
-   * which is not a valid date-time, so Google discarded every Event on the page. Pass the
-   * timestamp through, and fall back to composing one only if the API ever sends a bare `HH:mm`.
-   */
-  const toStartDate = (startTime: string): string =>
-    /^\d{4}-\d{2}-\d{2}T/.test(startTime) ? startTime : `${date}T${startTime}`;
-  /** `eventSchedule.byDayTime` isn't a schema.org property; `Schedule` expects `startTime`s. */
-  const toClockTime = (startTime: string): string =>
-    /^\d{4}-\d{2}-\d{2}T/.test(startTime) ? startTime.slice(11, 16) : startTime;
-
-  // One Event per show (not per showtime): a popular park can have 100+ daily
-  // showtimes, which previously emitted 100+ near-identical Event blocks (~100KB
-  // of JSON-LD). A single representative Event per show keeps the rich-result
-  // value; the remaining showtimes are preserved via eventSchedule.
-  const parkBgImage = getParkBackgroundImage(park.slug);
-  const parkName = stripNewPrefix(park.name);
-  const events = showsWithTimes.map((show) => {
-    const showName = stripNewPrefix(show.name);
-    const startTimes = (show.showtimes || []).map((s) => s.startTime).filter(Boolean);
-    return {
-      '@context': 'https://schema.org' as const,
-      '@type': 'Event' as const,
-      name: showName,
-      // Search Console reported all 24 Show events as missing `description`. Nothing upstream
-      // carries one — `ParkShow` has no description field — so this is the same fallback
-      // template `TouristAttractionStructuredData` uses for a ride, built from two values the
-      // node already states. Writing anything richer would mean inventing it.
-      description: `${showName} at ${parkName} - Show times and live status.`,
-      startDate: toStartDate(startTimes[0]),
-      // One Schedule per remaining showtime: `Schedule` carries a single `startTime`, so the
-      // list has to be expressed as a list of schedules rather than one multi-valued entry.
-      ...(startTimes.length > 1 && {
-        eventSchedule: startTimes.slice(1).map((startTime) => ({
-          '@type': 'Schedule' as const,
-          startDate: date,
-          startTime: toClockTime(startTime),
-        })),
-      }),
-      image: parkBgImage ? `${SITE_URL}${parkBgImage}` : `${SITE_URL}/logo-big.png`,
-      location: {
-        '@type': 'Place' as const,
-        name: parkName,
-        address: {
-          '@type': 'PostalAddress' as const,
-          addressLocality: park.city || undefined,
-          addressCountry: park.country || undefined,
-          addressRegion: park.region || undefined,
-        },
-      },
-      // The park runs its own shows, so the organizer is the `AmusementPark` this page already
-      // declares — referenced by its `@id` instead of described a second time. `AmusementPark`
-      // is a `LocalBusiness`, which schema.org makes an `Organization` as well as a `Place`, so
-      // it satisfies the range of `organizer`. The reference leaves this `<script>` to reach
-      // `ParkStructuredData`'s node, so it carries `@type` next to `@id` (see
-      // `docs/seo/analysis.md`, item 12) plus the name and url that make it readable on its own.
-      organizer: {
-        '@type': 'AmusementPark' as const,
-        '@id': parkUrl,
-        name: parkName,
-        url: parkUrl,
-      },
-      eventStatus: 'https://schema.org/EventScheduled' as const,
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode' as const,
-    };
-  });
-
-  return (
-    <>
-      {events.map((event, index) => (
-        <JsonLd key={index} data={event} />
-      ))}
-    </>
-  );
 }
 
 /**
