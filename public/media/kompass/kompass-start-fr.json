@@ -1,0 +1,15 @@
+{
+  "title": "Boussole, bouton dans le hero",
+  "tags": ["diagram"],
+  "alt": {
+    "fr": "La page d’accueil de park.fan sur un téléphone à Disneyland Park, à Anaheim, avec le bouton « Vers la boussole » au-dessus du message de bienvenue."
+  },
+  "caption": {
+    "fr": "Le bouton n’apparaît que si park.fan te trouve dans un parc. Il te fait descendre un peu, jusqu’à la boussole."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2026-09-27"
+}
