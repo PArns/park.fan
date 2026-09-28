@@ -473,7 +473,8 @@ protects itself by already answering `no-store`. Verified against production aft
 | `/api/media`                          | `s-maxage=86400` | MISS → HIT |
 | `/api/nearby`                         | `no-store`       | BYPASS     |
 | `/api/favorites`                      | `no-store`       | BYPASS     |
-| `/api/search`, `/api/analytics/*`     | `no-store`       | BYPASS     |
+| `/api/search`                         | `no-store`       | BYPASS     |
+| `/api/analytics/*`, `/api/parks/near` | `s-maxage=60`    | (since 2026-09-28, not yet measured) |
 | `/api/parks/<geo>/<park>` (live poll) | `no-store`       | BYPASS     |
 
 `/api/nearby` is the one to keep an eye on when editing these: it falls back to geolocating the

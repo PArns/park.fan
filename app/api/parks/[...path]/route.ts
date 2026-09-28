@@ -86,6 +86,13 @@ const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-re
  */
 const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=300';
 
+/**
+ * On every failure, because a response without a Cache-Control of its own takes the window the
+ * rule for its path in next.config.ts declares: a day for the calendar and the ride positions. A
+ * 500 from one backend hiccup was a day of errors at the CDN for everybody reading that park.
+ */
+const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
@@ -152,7 +159,10 @@ export async function GET(
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
       }
 
-      return NextResponse.json({ error: 'Failed to fetch park data' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch park data' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -208,7 +218,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Calendar API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch calendar data' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch calendar data' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -255,7 +268,10 @@ export async function GET(
       );
     } catch (error) {
       console.error('[Calendar hourly API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch hourly forecast' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch hourly forecast' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -275,7 +291,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Best-Days API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch best-days data' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch best-days data' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -336,7 +355,10 @@ export async function GET(
       );
     } catch (error) {
       console.error('[Positions API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch ride positions' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch ride positions' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -360,7 +382,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Wait-Times API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch wait times' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch wait times' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -410,7 +435,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Stats API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch stats data' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch stats data' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -444,7 +472,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Hourly-Profile API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch hourly profile' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch hourly profile' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -481,7 +512,10 @@ export async function GET(
       // candidate list on a 404 and would quietly hide a broken endpoint behind
       // six parks in a row that "have no curve".
       console.error(`[Ride-Day-Curve API] ${continent}/${country}/${city}/${park}:`, error);
-      return NextResponse.json({ error: 'Failed to fetch day curve' }, { status: 502 });
+      return NextResponse.json(
+        { error: 'Failed to fetch day curve' },
+        { status: 502, headers: NO_STORE }
+      );
     }
   }
 
@@ -540,7 +574,10 @@ export async function GET(
       // Not a 404: the planner would otherwise read a broken endpoint as "this
       // park has no plan for that day" and quietly draw an empty timeline.
       console.error(`[Plan-Day API] ${continent}/${country}/${city}/${park}:`, error);
-      return NextResponse.json({ error: 'Failed to fetch plan' }, { status: 502 });
+      return NextResponse.json(
+        { error: 'Failed to fetch plan' },
+        { status: 502, headers: NO_STORE }
+      );
     }
   }
 
@@ -582,7 +619,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Attraction API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch attraction data' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch attraction data' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 
@@ -608,7 +648,10 @@ export async function GET(
       });
     } catch (error) {
       console.error('[Nowcast API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch nowcast data' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Failed to fetch nowcast data' },
+        { status: 500, headers: NO_STORE }
+      );
     }
   }
 

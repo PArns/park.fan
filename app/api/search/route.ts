@@ -24,7 +24,8 @@ export async function GET(request: Request) {
     console.error('Search API error:', error);
     return NextResponse.json(
       { error: 'Search failed', results: [], counts: {}, query: sanitizedQuery },
-      { status: 500 }
+      // `no-store`, or the shared window next.config.ts gives /api/search would keep the failure.
+      { status: 500, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
     );
   }
 }

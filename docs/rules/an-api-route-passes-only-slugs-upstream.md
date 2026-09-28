@@ -36,3 +36,22 @@ never retries:
   502, and the menu throws on `!r.ok`.
 
 A partial answer (some regions failed) is still an answer; an empty one is not.
+
+**And the failure says `no-store` itself.** A response without a `Cache-Control` of its own takes
+the window the rule for its path in `next.config.ts` declares. Until 2026-09-28 every 5xx of the
+park proxy went out bare, so a backend hiccup on `…/calendar` or `…/positions` left with a header
+allowing a day at the CDN and a failed OG card with one allowing thirty days; whether a cache then
+keeps a 5xx is down to its own status-code rules, which is not something to lean on. The nav geo
+route's old `200 { cities: [] }` had no such doubt: a 200 with a day's window, i.e. "this country
+has no cities" for everybody for a day. Every error response of a route under a shared rule
+carries `'Cache-Control': 'no-store, must-revalidate'`.
+
+## A shared answer is shared
+
+The other direction costs function time: an answer that is the same for every visitor and answers
+`no-store` is a function invocation per page view and per poll. `/api/parks/near` (the park's own
+coordinates) and `/api/analytics/{ticker,realtime,geo-live}` were; they carry the 60 s window of
+`/api/parks/live` now, in the handler and in `next.config.ts` alike (the two halves must match —
+see `lib/api/cdn-cache-headers.ts`). What stays `no-store` is what depends on the visitor
+(`/api/nearby`, which geolocates the request IP; `/api/favorites`) or is deliberately live (the
+park poll).

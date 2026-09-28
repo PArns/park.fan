@@ -816,6 +816,11 @@ export async function GET(
     );
   } catch (error) {
     console.error('[OG Image] Error generating image:', error);
-    return new Response(`Error generating image: ${error}`, { status: 500 });
+    // `no-store`, or the 30-day window next.config.ts gives this path keeps a failed card at the
+    // CDN for a month. The error itself goes to the log above, not into a public response.
+    return new Response('Error generating image', {
+      status: 500,
+      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+    });
   }
 }

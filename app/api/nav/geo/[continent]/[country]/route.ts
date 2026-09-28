@@ -67,6 +67,10 @@ export async function GET(
     // A failure, said as one. This used to answer 200 `{ cities: [] }`, which the menu cached as
     // "this country has no cities" for the rest of the session, against its own intent of asking
     // again on the next hover. The country link above the pane still works in the meantime.
-    return NextResponse.json({ error: 'Cities unavailable' }, { status: 502 });
+    // `no-store` explicitly, or the day-long window next.config.ts gives this path would apply.
+    return NextResponse.json(
+      { error: 'Cities unavailable' },
+      { status: 502, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    );
   }
 }
