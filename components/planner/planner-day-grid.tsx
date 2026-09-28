@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
@@ -18,6 +26,7 @@ import {
   snapTo,
   yFor,
   type DayGrid,
+  type LanePlacement,
 } from '@/lib/planner/day-grid';
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '@/lib/planner/leg-chip';
 import { legBetween, earliestGoodStart } from '@/lib/planner/leg';
@@ -57,7 +66,7 @@ import { cn } from '@/lib/utils';
 import { PlannerDragDemo } from './planner-drag-demo';
 import { partyFlags } from '@/lib/planner/party';
 import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
-import type { PlanDay, PlanDayRide } from '@/lib/api/types';
+import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 
 interface PlannerDayGridProps {
   entries: readonly PlannerEntry[];
@@ -170,20 +179,10 @@ export function PlannerDayGrid({
 }: PlannerDayGridProps) {
   const t = useTranslations('planner');
   const canvasRef = useRef<HTMLDivElement>(null);
-  /**
-   * The minute a dragged block would land on, as REACT state — and the one
-   * thing in this drag that is allowed to be.
-   *
-   * The pointer moves at 60 Hz and the block follows it through a custom
-   * property for the reason the rAF loop gives: a re-render per frame lays out
-   * every block in the day. But the SNAPPED minute changes only once per step
-   * of movement — a handful of times in a whole gesture — and that is what the
-   * ghost is drawn at. So the smooth half stays out of React and the ghost gets
-   * a real render, which is what lets it be an actual block rather than an
-   * outline: same photo, same tint, same name, and its own HEIGHT, because the
-   * height is the wait and the wait is a function of the start minute.
-   */
-  const [ghostMinute, setGhostMinute] = useState<number | null>(null);
+  /** The ghost of a dragged block, moved by the rAF loop — see {@link DragGhost}. */
+  const ghostRef = useRef<MinuteHandle>(null);
+  /** The line a ride dragged in from the page would land on — see {@link DropLine}. */
+  const dropLineRef = useRef<MinuteHandle>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dense, setDense] = useState(false);
 
@@ -399,21 +398,6 @@ export function PlannerDayGrid({
   );
 
   /**
-   * What the ghost would cost where it currently hovers.
-   *
-   * Hoisted out of the JSX because it is read twice now — the figure inside the
-   * ghost and the tier its lower edge is drawn with — and computing it twice
-   * would be two chances for the two to disagree.
-   */
-  const ghostEstimate = useMemo(
-    () =>
-      ghostRow && ghostMinute !== null
-        ? estimateFor(day, { ...ghostRow.entry, startMinute: ghostMinute })
-        : null,
-    [day, ghostRow, ghostMinute]
-  );
-
-  /**
    * A drag that has actually gone somewhere — which is what dims the day.
    *
    * NOT `draggingId !== null`. `setDraggingId` fires in `pointerdown`, with no
@@ -426,9 +410,16 @@ export function PlannerDayGrid({
    * So the test is whether the ghost stands anywhere other than where the block
    * already is. That is also exactly when there is something to compare, which
    * is the only reason to take contrast away from the rest of the day.
+   *
+   * State of its own rather than derived from the ghost's minute: every block
+   * and leg reads it, and it changes when the ghost leaves the block's minute
+   * and when the drag ends, while the minute changes at every five-minute step.
+   * As long as the minute was this component's state, each step re-rendered
+   * every block, leg and band of the day to move one of them; it is
+   * {@link DragGhost}'s now, and a step renders the ghost alone. Set only by
+   * `reportDragMoved` below.
    */
-  const dragMoved =
-    ghostRow !== null && ghostMinute !== null && ghostMinute !== ghostRow.entry.startMinute;
+  const [dragMoved, setDragMoved] = useState(false);
 
   /**
    * Tell the column when that is true, so the selected block's action bar can
@@ -447,12 +438,13 @@ export function PlannerDayGrid({
    * drag's end — and not by an effect on `dragMoved`. The column hands down its
    * own `setDragging`, so an effect cost a commit of the grid, then the effect,
    * then a second render of the whole column at every drag start and every
-   * drop. Called beside the grid's own update, React renders both in one pass.
+   * drop. Sent in the same frame that sets `dragMoved` and the ghost's minute,
+   * it is rendered with them in one pass.
    *
    * The frame compares the ghost against where the dragged block stands NOW,
-   * as `dragMoved` does. The loop is per gesture, so that start comes through a
-   * ref rather than from the closure the loop was created in, and a start that
-   * changes under a held pointer reaches the column on the next frame. The
+   * which is the test above. The loop is per gesture, so that start comes
+   * through a ref rather than from the closure the loop was created in, and a
+   * start that changes under a held pointer is picked up on the next frame. The
    * callback goes through a ref too, since the column hands it down fresh on
    * every render.
    */
@@ -470,6 +462,7 @@ export function PlannerDayGrid({
   const reportDragMoved = useCallback((moved: boolean) => {
     if (reportedMoved.current === moved) return;
     reportedMoved.current = moved;
+    setDragMoved(moved);
     onDragChangeRef.current?.(moved);
   }, []);
 
@@ -488,6 +481,8 @@ export function PlannerDayGrid({
     element: HTMLElement;
     frame: number | null;
     committed: boolean;
+    /** The minute the ghost was last handed, so a frame on the same step sends nothing. */
+    ghostMinute: number | null;
   } | null>(null);
 
   /**
@@ -620,7 +615,7 @@ export function PlannerDayGrid({
       const minute = targetMinute();
       dragState.current = null;
       setDraggingId(null);
-      setGhostMinute(null);
+      ghostRef.current?.show(null);
       reportDragMoved(false);
 
       // A gesture the browser steals must not write. The old list bound its end
@@ -658,8 +653,6 @@ export function PlannerDayGrid({
    * the forecast is per park, so the block would draw nothing and the day would
    * be a lie.
    */
-  const [dropMinute, setDropMinute] = useState<number | null>(null);
-
   const rideFromTransfer = useCallback(
     (transfer: DataTransfer): { slug: string; name: string } | null => {
       const dragged = parseRideDrag(transfer.getData(PLANNER_RIDE_MIME));
@@ -760,6 +753,7 @@ export function PlannerDayGrid({
         element: block,
         frame: null,
         committed: false,
+        ghostMinute: null,
       };
       setDraggingId(entry.id);
       onSelect(entry.id);
@@ -853,13 +847,15 @@ export function PlannerDayGrid({
         );
 
         // The ghost follows the SNAPPED minute, and only when it changes — so
-        // this setState fires a few times per gesture rather than sixty times a
-        // second. Guarded against the value it already holds because React
-        // bails out on an identical value only after re-entering the reducer,
-        // and the point here is to not call it at all.
-        setGhostMinute((current) => (current === minute ? current : minute));
-        // In the same frame, so the column's update joins this one — and on
-        // every frame rather than on a new minute alone, see `draggedStart`.
+        // its setState fires a few times per gesture rather than sixty times a
+        // second, and renders the ghost and nothing else (see `DragGhost`).
+        if (state.ghostMinute !== minute) {
+          state.ghostMinute = minute;
+          ghostRef.current?.show(minute);
+        }
+        // In the same frame, so the grid's and the column's updates join the
+        // ghost's — and on every frame rather than on a new minute alone, see
+        // `draggedStart`.
         const start = draggedStartRef.current;
         reportDragMoved(start !== null && minute !== start);
 
@@ -1105,9 +1101,9 @@ export function PlannerDayGrid({
           event.dataTransfer.dropEffect = 'copy';
           // The ride's own floor, not the park's — the same number the drop
           // below clamps to. See `draggedRideFloor`.
-          setDropMinute(minuteAtClientY(event.clientY, draggedRideFloor()));
+          dropLineRef.current?.show(minuteAtClientY(event.clientY, draggedRideFloor()));
         }}
-        onDragLeave={() => setDropMinute(null)}
+        onDragLeave={() => dropLineRef.current?.show(null)}
         onDrop={(event) => {
           // FIRST, and before any refusal. `dragover` above accepts a bare
           // `text/uri-list` optimistically — deliberately, so a ride card from a
@@ -1118,7 +1114,7 @@ export function PlannerDayGrid({
           // dragged onto the grid from this page or another tab, navigated the
           // app away and took the open panel with it.
           event.preventDefault();
-          setDropMinute(null);
+          dropLineRef.current?.show(null);
           if (!onDropRide) return;
           const ride = rideFromTransfer(event.dataTransfer);
           if (!ride) return;
@@ -1127,13 +1123,7 @@ export function PlannerDayGrid({
       >
         {/* Where it would land. The same line the drag itself commits to, so the
             answer the visitor sees is the answer they get. */}
-        {dropMinute !== null && (
-          <div
-            className="bg-primary pointer-events-none absolute inset-x-0 z-30 h-0.5 transition-[top,opacity] duration-150 ease-out starting:opacity-0"
-            style={{ top: yFor(grid, dropMinute) }}
-            aria-hidden="true"
-          />
-        )}
+        <DropLine ref={dropLineRef} grid={grid} />
 
         <PlannerGridGround grid={grid} dense={dense} loading={loading} />
 
@@ -1397,56 +1387,27 @@ export function PlannerDayGrid({
                 down.
 
                 It re-renders on the snapped minute, not on the pointer, so a
-                gesture costs a handful of renders. `ghost` makes it inert —
-                nothing about it can be clicked or dragged — and puts it in
-                front of everything, with every real block stepping back to 35 %
-                for the length of the gesture (`dimmed` below). It used to be
-                the other way round: the ghost was translucent and sat UNDER the
-                block being dragged, which with a five-minute step lands within
-                three pixels of it, so the preview was a dashed outline around
-                somebody else's old time. */}
-            {ghostRow && ghostMinute !== null && ghostEstimate && (
-              <PlannerBlock
-                key="ghost"
-                ghost
-                entry={{ ...ghostRow.entry, startMinute: ghostMinute }}
-                estimate={ghostEstimate}
-                grid={grid}
-                /* The hour the ghost would land in, not the day: dragging a
-                   block out of a measured hour and into a composed one is
-                   exactly the move whose edge has to change under the pointer. */
-                tier={ghostEstimate.tier ?? tier}
-                lane={layout.lanes.get(ghostRow.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
-                land={ghostRow.ride?.land}
-                metresFromPrevious={null}
-                showBandFigure={showBandFigure}
-                live={ghostRow.live}
-                photo={
-                  ghostRow.ride?.backgroundImage
-                    ? {
-                        src: ghostRow.ride.backgroundImage,
-                        position: ghostRow.ride.backgroundPosition ?? '50% 0%',
-                      }
-                    : null
-                }
-                closedNow={false}
-                downYesterday={false}
-                /* The ghost is the same ride, so it carries the same mark: a
-                   preview that dropped the droplet would say the flag goes away
-                   at the new hour, which is a claim about the ride and not
-                   about the clock. */
-                wet={partyFlags(ghostRow.ride ?? {}, prefs).wet}
-                selected={false}
-                dragging={false}
-                conflict={false}
-                onSelect={() => {}}
-                onDragStart={() => {}}
-                onMove={() => {}}
-                minMinute={grid.openMin}
-                maxMinute={latestStart(grid)}
-                keyboardStep={keyboardStep}
-              />
-            )}
+                gesture costs a handful of renders, and they are its own: the
+                minute is `DragGhost`'s state, so a step does not re-render the
+                day around it. `ghost` makes it inert — nothing about it can be
+                clicked or dragged — and puts it in front of everything, with
+                every real block stepping back to 35 % for the length of the
+                gesture (`dimmed` below). It used to be the other way round: the
+                ghost was translucent and sat UNDER the block being dragged,
+                which with a five-minute step lands within three pixels of it,
+                so the preview was a dashed outline around somebody else's old
+                time. */}
+            <DragGhost
+              ref={ghostRef}
+              row={ghostRow}
+              lane={ghostRow ? layout.lanes.get(ghostRow.entry.id) : undefined}
+              day={day}
+              grid={grid}
+              tier={tier}
+              showBandFigure={showBandFigure}
+              prefs={prefs}
+              keyboardStep={keyboardStep}
+            />
 
             {layout.rows.map((row, index) => {
               const floor = rideFloor(grid, row.ride);
@@ -1552,5 +1513,150 @@ export function PlannerDayGrid({
           })()}
       </div>
     </div>
+  );
+}
+
+/**
+ * A minute that a child draws and the grid's own handlers set.
+ *
+ * The grid's two gestures each produce a number that changes at every
+ * five-minute step: where the ghost of a dragged block stands, and where a ride
+ * dragged in from the page would land. Both were the grid's state, so every
+ * step re-rendered every block, leg and band of the day to move one element.
+ * Each is now the state of the component that draws it, and the grid hands the
+ * minute over through this handle. A `setState`, not a store: called from the
+ * same handler as the grid's and the column's own updates, it is batched with
+ * them into one render, as the grid's state was.
+ */
+interface MinuteHandle {
+  show: (minute: number | null) => void;
+}
+
+/** What the ghost reads off the row it stands in for. */
+interface GhostRow {
+  entry: PlannerEntry;
+  ride?: PlanDayRide;
+  live: boolean;
+}
+
+/**
+ * The ghost of a dragged block, at the minute the drag would commit to.
+ *
+ * The minute is this component's state (see {@link MinuteHandle}); everything
+ * else comes from the grid as props.
+ */
+function DragGhost({
+  ref,
+  row,
+  lane,
+  day,
+  grid,
+  tier,
+  showBandFigure,
+  prefs,
+  keyboardStep,
+}: {
+  ref: React.Ref<MinuteHandle>;
+  row: GhostRow | null;
+  lane: LanePlacement | undefined;
+  day: PlanDay | null;
+  grid: DayGrid;
+  /** The day's tier, for an hour whose estimate carries none of its own. */
+  tier: PlanDayTier;
+  showBandFigure: boolean;
+  prefs?: PlannerDayPrefs;
+  keyboardStep: number;
+}) {
+  /**
+   * The minute the dragged block would land on, as REACT state — and the one
+   * thing in the drag that is allowed to be.
+   *
+   * The pointer moves at 60 Hz and the block follows it through a custom
+   * property for the reason the grid's rAF loop gives: a re-render per frame
+   * lays out every block in the day. But the SNAPPED minute changes only once
+   * per step of movement — a handful of times in a whole gesture — and that is
+   * what the ghost is drawn at. So the smooth half stays out of React and the
+   * ghost gets a real render, which is what lets it be an actual block rather
+   * than an outline: same photo, same tint, same name, and its own HEIGHT,
+   * because the height is the wait and the wait is a function of the start
+   * minute.
+   */
+  const [minute, setMinute] = useState<number | null>(null);
+  useImperativeHandle(ref, () => ({ show: setMinute }), []);
+
+  /**
+   * What the ghost would cost where it currently hovers.
+   *
+   * Hoisted out of the JSX because it is read twice — the figure inside the
+   * ghost and the tier its lower edge is drawn with — and computing it twice
+   * would be two chances for the two to disagree.
+   */
+  const estimate = useMemo(
+    () => (row && minute !== null ? estimateFor(day, { ...row.entry, startMinute: minute }) : null),
+    [day, row, minute]
+  );
+
+  if (!row || minute === null || !estimate) return null;
+
+  return (
+    <PlannerBlock
+      ghost
+      entry={{ ...row.entry, startMinute: minute }}
+      estimate={estimate}
+      grid={grid}
+      /* The hour the ghost would land in, not the day: dragging a block out of
+         a measured hour and into a composed one is exactly the move whose edge
+         has to change under the pointer. */
+      tier={estimate.tier ?? tier}
+      lane={lane ?? { column: 0, columns: 1, overflow: 0 }}
+      land={row.ride?.land}
+      metresFromPrevious={null}
+      showBandFigure={showBandFigure}
+      live={row.live}
+      photo={
+        row.ride?.backgroundImage
+          ? {
+              src: row.ride.backgroundImage,
+              position: row.ride.backgroundPosition ?? '50% 0%',
+            }
+          : null
+      }
+      closedNow={false}
+      downYesterday={false}
+      /* The ghost is the same ride, so it carries the same mark: a preview that
+         dropped the droplet would say the flag goes away at the new hour, which
+         is a claim about the ride and not about the clock. */
+      wet={partyFlags(row.ride ?? {}, prefs).wet}
+      selected={false}
+      dragging={false}
+      conflict={false}
+      onSelect={() => {}}
+      onDragStart={() => {}}
+      onMove={() => {}}
+      minMinute={grid.openMin}
+      maxMinute={latestStart(grid)}
+      keyboardStep={keyboardStep}
+    />
+  );
+}
+
+/**
+ * The line a ride dragged in from the page would land on.
+ *
+ * Set on every `dragover`, which keeps firing for as long as the pointer is over
+ * the canvas; see {@link MinuteHandle} for why the minute is kept here.
+ */
+function DropLine({ ref, grid }: { ref: React.Ref<MinuteHandle>; grid: DayGrid }) {
+  const [minute, setMinute] = useState<number | null>(null);
+  useImperativeHandle(ref, () => ({ show: setMinute }), []);
+
+  if (minute === null) return null;
+
+  return (
+    <div
+      className="bg-primary pointer-events-none absolute inset-x-0 z-30 h-0.5 transition-[top,opacity] duration-150 ease-out starting:opacity-0"
+      style={{ top: yFor(grid, minute) }}
+      aria-hidden="true"
+    />
   );
 }
