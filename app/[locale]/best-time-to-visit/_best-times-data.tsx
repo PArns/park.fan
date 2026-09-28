@@ -1,5 +1,6 @@
 import { getGlobalBestTimes, type BestTimeBucket } from '@/lib/api/best-times';
 import type { CrowdLevel } from '@/lib/api/types';
+import { weekdayName } from '@/lib/utils/intl-format';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { Clock } from 'lucide-react';
 
@@ -119,10 +120,7 @@ export async function BestTimesData({
   const data = await getGlobalBestTimes().catch(() => null);
   if (!data || !data.meta.displayable) return <PendingPanel text={labels.pending} />;
 
-  const weekdayName = (dow: number) =>
-    new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(
-      new Date(Date.UTC(2023, 0, 1 + dow))
-    );
+  const dayName = (dow: number) => weekdayName(dow, locale);
   const monthName = (m: number) =>
     new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(Date.UTC(2023, m - 1, 1)));
 
@@ -150,7 +148,7 @@ export async function BestTimesData({
           <p className="text-muted-foreground max-w-3xl text-sm leading-relaxed">
             {labels.weekdaysBody}
           </p>
-          <BarList buckets={weekdays} name={weekdayName} labels={labels} />
+          <BarList buckets={weekdays} name={dayName} labels={labels} />
         </div>
       </Reveal>
       <Reveal delay={80}>
