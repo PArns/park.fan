@@ -791,7 +791,16 @@ export function ParkTodayPanel({
                     {nextOpeningLine ?? t('status.CLOSED')}
                   </p>
                 )}
-                <ul className={cn('flex flex-col gap-0.5', headlinersFolded && 'max-sm:hidden')}>
+                {/* 24 px apart below `sm`, not 22: a row is 20 px high, which is under the 44 px a
+                    button gets here, so it has to meet WCAG 2.5.8 by spacing instead — a 24 px
+                    circle on each row that does not reach the next one. Costs 6 px of panel
+                    height on a phone (PAR-422). */}
+                <ul
+                  className={cn(
+                    'flex flex-col gap-0.5 max-sm:gap-1',
+                    headlinersFolded && 'max-sm:hidden'
+                  )}
+                >
                   {Array.from({ length: headlinerSlots }, (_, i) => {
                     const ride = headliners[i];
                     return (

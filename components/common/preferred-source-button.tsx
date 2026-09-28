@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { trackPreferredSourceClicked } from '@/lib/analytics/umami';
 
 /**
@@ -59,6 +60,7 @@ export function PreferredSourceButton({ className }: PreferredSourceButtonProps)
         // mode too — the default `border-border` token is white-at-10% on the dark footer and
         // all but vanished, leaving only floating text + the coloured G.
         'text-muted-foreground hover:text-foreground border-foreground/20 hover:border-foreground/40 bg-foreground/[0.03] hover:bg-foreground/[0.08] inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors',
+        PHONE_HIT_AREA,
         className
       )}
     >
