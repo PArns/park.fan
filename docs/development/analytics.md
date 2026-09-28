@@ -180,6 +180,35 @@ This is a deliberate choice, not a legal requirement: Umami is cookieless and fu
 and the policy never promises DNT is honoured. Removing the attribute would recover those visitors
 at the cost of a slightly less strict privacy posture. It was reviewed in August 2026 and kept.
 
+### The in-park compass's five events (Sep 2026)
+
+One question, whether anybody standing in a park uses the compass under the homepage hero, as a
+funnel of five events, four without a property and one with one:
+
+| Event                  | Fires                                                       | Property           |
+| ---------------------- | ----------------------------------------------------------- | ------------------ |
+| `compass_viewed`       | once per page view, the first time the compass is on screen | none               |
+| `compass_heading_on`   | once per page view, when the phone's compass starts sending | none               |
+| `compass_ride_pinned`  | a tap on a marker that pins a ride                          | none               |
+| `compass_ride_opened`  | a ride page opened from the compass                         | `from`: bar / list |
+| `compass_pill_clicked` | the hero's „Zum Kompass" tapped                             | none               |
+
+- **Seen, not mounted.** `compass_viewed` waits for the compass to be on screen, so it counts the
+  in-park visitors who scrolled to it, not every in-park page view; scrolling away and back does
+  not count twice. The in-park page view itself is already `nearby_parks_loaded` with `type:
+in_park`.
+- **No platform, no park.** Umami records the OS, so on iOS `compass_heading_on` against
+  `compass_viewed` is how often „Kompass einschalten" gets tapped, without a property to say so.
+  The park is not the question.
+- **`from` is the one property** because the bar under the dial and the list below it are two
+  designs of the same link, and which one people follow decides where the effort goes.
+- **Not sent:** letting go of a pin, every turn of the phone, every change of the ride ahead, the
+  distance. Nothing fires under `?sim=` (the compass demo and the server simulation), which is the
+  team testing on its own phones.
+
+Cost: one row each for the two once-per-view events, for the small share of homepage views that
+come from inside a park and reach the compass; one or two rows per click.
+
 ---
 
 ## 4. Adding an event

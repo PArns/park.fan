@@ -186,6 +186,13 @@ and refurbishments to look at. See
 The banner says what it is, offers „Standort nutzen" and „Demo beenden", and after a denied prompt
 says the reader now stands still at one point in the park.
 
+## Is it used
+
+Five Umami events, four of them without a property: `compass_viewed` and `compass_heading_on`
+once per page view, `compass_ride_pinned`, `compass_ride_opened` (`from`: bar or list) and
+`compass_pill_clicked`. None fires under `?sim=`. Pricing and the reasoning are in
+[analytics](../development/analytics.md#the-in-park-compasss-five-events-sep-2026).
+
 ## What the review asked for and did not get
 
 - **Strip the bezel entirely** (design): the bezel stayed, because making the compass look like a
