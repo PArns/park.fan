@@ -1,9 +1,10 @@
-// Tests for when the site may read a position without a tap (`lib/utils/geolocation-permission.ts`).
+// Tests for when the site may read a position (`lib/utils/geolocation-permission.ts`).
 //
-// What must hold: on load only `granted` is read, on every page and in every browser, because it is
-// the one answer that promises no prompt. A stored denial is remembered. An earlier yes the browser
-// no longer reports is not reused: Safari on iOS prompts again on every page load. A background
-// refresh stops when a grant this page saw has run out, and a closed banner stays closed for 30 days.
+// What must hold: `granted` is read on load, on every page. A stored denial is remembered and never
+// asked again. An earlier yes the browser no longer reports is asked again, but only where a page
+// uses location (homepage, park page), never on a blog or news page. Without any earlier answer
+// nothing is read until a tap. A background refresh stops when a grant this page saw has run out,
+// and a closed banner stays closed for 30 days.
 import assert from 'node:assert/strict';
 import {
   LOCATION_BANNER_QUIET_MS,
@@ -31,23 +32,27 @@ test('WebKit is the engine whose `prompt` cannot be trusted', () => {
   assert.equal(promptStateIsReliable(undefined), true);
 });
 
-test('granted: read on load, the one answer that promises no prompt', () => {
-  assert.equal(initialLocationAction('granted'), 'request');
+test('granted: read on load, on every page, whatever else is stored', () => {
+  assert.equal(initialLocationAction('granted', false), 'request');
+  assert.equal(initialLocationAction('granted', true), 'request');
 });
 
-test('denied: remembered, never read', () => {
-  assert.equal(initialLocationAction('denied'), 'denied');
+test('denied: remembered, never read, even with an earlier yes on record', () => {
+  assert.equal(initialLocationAction('denied', false), 'denied');
+  assert.equal(initialLocationAction('denied', true), 'denied');
 });
 
-test('prompt: wait for a tap, in every browser', () => {
-  // Safari included. It reads `prompt` even while an earlier yes still holds, but on iOS with the
-  // default "Ask" setting a read on load is a native prompt on every page load, blog and news entry
-  // pages included. Reusing that yes was tried and taken out again.
-  assert.equal(initialLocationAction('prompt'), 'wait');
+test('an earlier yes the browser no longer reports: ask again where the page uses location', () => {
+  // Safari on iOS reads `prompt` and prompts on every page load; Chrome's "Allow this time" is gone
+  // with the page. The visitor said yes to exactly this, so the homepage and the park page ask the
+  // browser directly. `request-where-needed`, not `request`: a blog post must not ask.
+  assert.equal(initialLocationAction('prompt', true), 'request-where-needed');
+  assert.equal(initialLocationAction(null, true), 'request-where-needed');
 });
 
-test('no Permissions API, or it threw: wait for a tap', () => {
-  assert.equal(initialLocationAction(null), 'wait');
+test("nobody answered yet: wait for a tap on the page's own button", () => {
+  assert.equal(initialLocationAction('prompt', false), 'wait');
+  assert.equal(initialLocationAction(null, false), 'wait');
 });
 
 test('background refresh: a grant that ran out stops it (Chrome "Allow this time")', () => {

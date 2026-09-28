@@ -22,9 +22,11 @@ import type { NearbyAttractionsData } from '@/types/nearby';
  * page that already asks this question React Query dedupes the two into one
  * request rather than adding a second with a different key. It is rendered only
  * inside the open panel, so a page nobody planned on makes no extra request at
- * all. And the geolocation context never prompts on mount — it reads a position
- * only where permission is already granted, and otherwise falls back to GeoIP —
- * so opening the planner cannot produce a permission dialog.
+ * all. And it does not ask for location: the geolocation context asks only for
+ * the page parts that declare they use it (`useLocationNeeded`: the homepage
+ * banner, the park page's near-you row), reads a position elsewhere only where
+ * permission is already granted, and otherwise falls back to GeoIP — so opening
+ * the planner cannot produce a permission dialog.
  *
  * It renders nothing where the park being planned is already the one underfoot,
  * which is the common case the moment somebody has used it once: an offer to do

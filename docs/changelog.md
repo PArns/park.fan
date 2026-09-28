@@ -14,32 +14,32 @@ er jetzt immer. Das schiebt den Anschnitt des nächsten Kapitels aus dem Bild un
 0,30 Layout Shift, nur bei Aufrufen aus einem Park. Wer gescrollt hat, bleibt unberührt.
 Messungen: [park-compass.md](features/park-compass.md#where-it-appears-and-when).
 
-## Unreleased – Standort: nur noch auf Tipp fragen
+## Unreleased – Standort: fragen, wo er gebraucht wird, und nach einem Nein nicht mehr
 
 Wie lange ein Ja zum Standort gilt, entscheidet der Browser. Wie oft wir fragen, entscheiden wir.
-Beim Laden liest die Seite den Standort jetzt nur noch, wenn der Browser `granted` meldet, also
-ohne Prompt. Sonst fragt erst ein Tipp auf einen Knopf, und auf Blog- und News-Seiten gibt es
-keinen solchen Knopf.
+Gefragt wird auf der Startseite und den Parkseiten, denn nur dort braucht die Seite den genauen
+Standort (In-Park-Erkennung, Bahnen in der Nähe). Blog, News und alle anderen Seiten fragen nie.
 
+- **Wer früher schon Ja gesagt hat** (`pf_geo_optin`), bekommt auf Startseite und Parkseite direkt
+  den Prompt des Browsers, ohne unser Banner davor. Safari auf dem iPhone vergisst ein Ja mit der
+  Einstellung „Fragen" bei jedem Neuladen, Chromes „Nur dieses Mal" mit der Seite.
+- **Wer noch nie geantwortet hat,** sieht auf der Startseite das Banner und auf der Parkseite die
+  Zeile „Standort nutzen". Der Prompt kommt erst nach dem Tipp.
+- **Nach einem Nein** (Banner geschlossen oder Prompt abgelehnt) kommt 30 Tage kein Banner und bis
+  zum nächsten Ja kein direkter Prompt. Die Zeile auf der Parkseite behält ihren Knopf. Blockiert
+  der Browser, zeigt keine Stelle mehr einen Knopf, der nichts tun kann. Das Umami-Event für eine
+  Ablehnung zählt weiter nur eine Antwort auf der Seite.
+- **Meldet der Browser `granted`,** liest jede Seite den Standort ohne Frage.
 - **Die Parkkarte hat selbst gefragt,** beim Öffnen des Karten-Tabs und in jedem Blogartikel mit
   Karte. Chrome sperrt eine Seite nach drei ignorierten Anfragen für eine Woche. Die Karte nimmt
   den Standort jetzt aus dem Context.
-- **Ein früheres Ja wird nicht mehr beim Laden wiederverwendet.** Wo die Permissions-API nicht
-  antwortete, hat die Seite mit gemerktem Ja (`pf_geo_optin`) beim Laden gelesen. Safari auf dem
-  iPhone fragt mit der Einstellung „Fragen" aber bei jedem Neuladen, das war also auf jeder
-  Einstiegsseite ein Prompt. Das Flag ist entfernt.
 - **Nach Ablauf von „Nur dieses Mal"** (Chrome, nach fünf Minuten im Hintergrund) kam beim
   Zurückwechseln in den Tab sofort ein Prompt. Die Hintergrund-Aktualisierung prüft jetzt vorher
   den Status. Eine temporäre Freigabe in Firefox aktualisiert weiter.
-- **Wer den Standort blockiert hatte,** sah trotzdem Banner und „Standort nutzen", und der Knopf
-  konnte nichts tun. Das Umami-Event für eine Ablehnung zählt weiter nur eine Antwort auf der Seite.
-- **Das geschlossene Banner** blieb eine Browser-Sitzung zu, jetzt 30 Tage.
 
-Safari auf dem iPhone fragt nach einem Tipp weiterhin bei jedem Neuladen. Das kann die Seite nicht
-ändern, nur die Einstellung „Erlauben" für park.fan (aA → Website-Einstellungen → Standort).
 Details und Messungen:
-[location-is-asked-for-by-a-tap.md](rules/location-is-asked-for-by-a-tap.md), Test:
-`pnpm test:geolocation-permission`.
+[location-is-asked-for-where-it-is-needed.md](rules/location-is-asked-for-where-it-is-needed.md),
+Test: `pnpm test:geolocation-permission`.
 
 ---
 

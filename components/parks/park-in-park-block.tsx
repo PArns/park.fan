@@ -6,7 +6,7 @@ import { LocateFixed, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { InParkRideLists, splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { NextBestRides } from '@/components/parks/next-best-rides';
-import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { useGeolocation, useLocationNeeded } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { resolveInParkBlock } from '@/lib/utils/in-park-block';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -23,8 +23,9 @@ const subscribeNever = () => () => {};
  * reads the same `/api/nearby` answer the header already asks for on every page
  * (`useHomeNearbyParks`, deduped by React Query), so it adds no request, and lists the same rows.
  *
- * Nothing here asks for location on load. The geolocation context reads a position only where
- * permission is already granted; without it the row offers a button, and only the tap asks.
+ * This row is the park page's ask for location (`useLocationNeeded`). A visitor who said yes on
+ * an earlier visit is asked by the browser directly when the page opens; without an earlier yes the
+ * row offers a button, and only the tap asks. Where permission is granted nothing asks at all.
  *
  * Distances follow the visitor through the context's own refresh: 60 s while `isInPark` is set,
  * which this block sets for as long as it shows the lists, and the position keeps its identity
@@ -55,6 +56,7 @@ export function ParkInParkBlock({
     refresh,
     setIsInPark,
   } = useGeolocation();
+  useLocationNeeded();
   const nearbyQuery = useHomeNearbyParks();
   const nearby = nearbyQuery.data;
   // `placeholderData` counts too: when the fix arrives, the query key changes and React Query

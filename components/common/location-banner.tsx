@@ -4,36 +4,33 @@ import { useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import {
+  readLocationDeclinedAt,
+  rememberLocationDeclined,
+  useGeolocation,
+  useLocationNeeded,
+} from '@/lib/contexts/geolocation-context';
 import { trackLocationBannerClicked } from '@/lib/analytics/umami';
 import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
-
-/** Epoch ms of the last close. `sessionStorage` until 2026-09: closed for one session only. */
-const DISMISSED_AT_KEY = 'pf_geo_banner_dismissed_at';
-
-function readDismissedAt(): number | null {
-  try {
-    const raw = localStorage.getItem(DISMISSED_AT_KEY);
-    return raw == null ? null : Number(raw);
-  } catch {
-    return null;
-  }
-}
 
 interface LocationBannerProps {
   ariaLabel?: string;
 }
 
 /**
- * Banner shown when the user has not granted location yet (prompt).
+ * The homepage's ask for location, shown when the user has not granted location yet (prompt).
+ * Mounted, it marks the page as one that uses location (`useLocationNeeded`): a visitor who said
+ * yes on an earlier visit gets the browser's prompt directly and never sees this banner.
  * Not shown once the browser has denied it: the button would do nothing, and the browser alone
- * can lift a denial. Closing it keeps it closed for `LOCATION_BANNER_QUIET_MS` (30 days).
+ * can lift a denial. A no keeps it closed for `LOCATION_BANNER_QUIET_MS` (30 days): closing it,
+ * or answering the browser's prompt with no from any page (`rememberLocationDeclined`).
  */
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  const { permissionGranted, permissionDenied, loading, initialCheckDone, refresh } =
+  const { permissionGranted, permissionDenied, loading, initialCheckDone, earlierYes, refresh } =
     useGeolocation();
+  useLocationNeeded();
   // Server snapshot = false → always null during SSR and the hydration pass,
   // matching what the server produced. Client snapshot = true, so after
   // hydration the real geolocation state takes over.
@@ -47,7 +44,8 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   // localStorage in the initializer is safe). One session was too short: a visitor who had said
   // no was asked again on the next visit, and the one after.
   const [dismissed, setDismissed] = useState(
-    () => typeof window !== 'undefined' && locationBannerIsQuiet(readDismissedAt(), Date.now())
+    () =>
+      typeof window !== 'undefined' && locationBannerIsQuiet(readLocationDeclinedAt(), Date.now())
   );
 
   if (
@@ -56,6 +54,8 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     permissionGranted ||
     permissionDenied ||
     loading ||
+    // The browser is about to ask this visitor directly; the banner would be a second ask.
+    earlierYes ||
     dismissed
   ) {
     return null;
@@ -95,9 +95,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
           type="button"
           onClick={() => {
             setDismissed(true);
-            try {
-              localStorage.setItem(DISMISSED_AT_KEY, String(Date.now()));
-            } catch {}
+            rememberLocationDeclined();
           }}
           aria-label={tCommon('close')}
           // 24 px (a 16 px glyph in `p-1`), and it is the only way out of a toast that covers the
