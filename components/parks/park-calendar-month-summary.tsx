@@ -5,6 +5,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getParkArticleForms } from '@/lib/faq/park-faq';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { CalendarMonthSummary, NamedCalendarDay } from '@/lib/parks/calendar-month-summary';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -78,7 +79,7 @@ export async function ParkCalendarMonthSummary({
    */
   const dayList = (days: NamedCalendarDay[]) => {
     const parts = days.map((d) =>
-      new Intl.DateTimeFormat(locale, {
+      getDateTimeFormat(locale, {
         weekday: 'long',
         day: 'numeric',
         timeZone: 'UTC',
@@ -199,7 +200,7 @@ export async function ParkCalendarMonthSummary({
           {summary.quietest.map((day) => (
             <span key={day.date} className="flex items-center gap-1.5">
               <span className="text-sm font-medium">
-                {new Intl.DateTimeFormat(locale, {
+                {getDateTimeFormat(locale, {
                   weekday: 'short',
                   day: 'numeric',
                   month: 'short',

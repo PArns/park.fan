@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it.
@@ -299,9 +300,12 @@ export function isParkCalendarMonthInRange(
  * month it is there. One implementation, because the page computes the hub's neighbouring months
  * and the grid decides which month to draw, and the two disagreeing across a month boundary is a
  * stepper pointing one month off.
+ *
+ * The formatter is the cached one: `proxy.ts` runs this twice for every calendar month URL it sees,
+ * and the page's render and metadata once each on top.
  */
 export function currentParkCalendarMonth(timezone: string | null | undefined): ParkCalendarMonth {
-  const parts = new Intl.DateTimeFormat('en-CA', {
+  const parts = getDateTimeFormat('en-CA', {
     timeZone: timezone || 'UTC',
     year: 'numeric',
     month: '2-digit',
