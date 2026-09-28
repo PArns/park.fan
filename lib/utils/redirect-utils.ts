@@ -10,14 +10,21 @@
  */
 
 import { cache } from 'react';
-import { getContinents, getGeoStructure } from '@/lib/api/discovery';
+import { getContinents } from '@/lib/api/discovery';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 /**
  * O(1) park-slug → geo-path index for redirect lookups. Memoized per request via React `cache()`;
- * the underlying `getGeoStructure()` is itself cached cross-request in the Vercel Data Cache
+ * the underlying `getContinents()` is itself cached cross-request in the Vercel Data Cache
  * (`fetch` `next: { revalidate }`), so rebuilding this small index per request is cheap and never
  * hits the backend. Used only for malformed-URL redirect detection, never to serve a valid park.
+ *
+ * Built from `getContinents()`, like {@link getCityParkCounts}, not from `getGeoStructure()`. The
+ * two endpoints carry the same tree — compared on 2026-09-28: the same 210
+ * continent/country/city/park paths in the same order, same 7-day window, same `geo` tag — but
+ * the layout has already parsed the continents one for the header menu, while `/v1/discovery/geo`
+ * was a second 159 KB body fetched and parsed on every park, calendar and stats render for this
+ * lookup alone.
  *
  * Values are LISTS: park slugs are not globally unique (e.g. `disneyland-park` exists in both
  * Paris and Anaheim), so callers must disambiguate by continent/country before redirecting.
@@ -25,10 +32,9 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult[]>> => {
   const index: Record<string, ParkLookupResult[]> = {};
   try {
-    const data = await getGeoStructure();
-    for (const continent of data.continents) {
-      for (const country of continent.countries) {
-        for (const city of country.cities) {
+    for (const continent of await getContinents()) {
+      for (const country of continent.countries ?? []) {
+        for (const city of country.cities ?? []) {
           for (const park of city.parks) {
             (index[park.slug] ??= []).push({
               continent: continent.slug,
@@ -41,7 +47,7 @@ const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult
       }
     }
   } catch (error) {
-    console.error('[RedirectUtils] Failed to fetch geo structure:', error);
+    console.error('[RedirectUtils] Failed to fetch continents:', error);
   }
   return index;
 });

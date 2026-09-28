@@ -16,10 +16,16 @@ import type {
 /**
  * Get complete geographic structure. Cached in the Vercel Data Cache (geo changes rarely);
  * used for static generation. `revalidate` keys the cache lifetime (e.g. the sitemap asks for 24h).
+ *
+ * Wrapped in React `cache()` for the same reason as {@link getContinents}: the Data Cache dedupes
+ * the network but hands each call site its own `Response`, and the homepage alone has six (the
+ * hero's world panel, the featured parks, the live-activity band and three story chapters), each
+ * parsing the same 159 KB body. `revalidate` is part of the key, so a caller asking for the
+ * sitemaps' one-day window gets its own entry. Callers must not mutate the result.
  */
-export function getGeoStructure(revalidate: number = CACHE_TTL.geo): Promise<GeoStructure> {
-  return api.get<GeoStructure>('/v1/discovery/geo', { next: { revalidate, tags: ['geo'] } });
-}
+export const getGeoStructure = cache((revalidate: number = CACHE_TTL.geo): Promise<GeoStructure> =>
+  api.get<GeoStructure>('/v1/discovery/geo', { next: { revalidate, tags: ['geo'] } })
+);
 
 /**
  * Get all continents, with their countries, cities and parks.
