@@ -10,6 +10,13 @@
  *
  * NOT `contain: paint`, which is the right tool one file over for the countdowns: containment
  * clips to the box, and `animate-ping` scales a ring beyond its own bounds on purpose.
+ *
+ * `will-change` did not stop the flicker in the park's "Heute im Park" header, which is why that
+ * dot is static now (see `park-today-panel.tsx`). Inside a card that carries `backdrop-filter`,
+ * prefer `variant="ping"` with `showPing={false}`: the colour still says "live".
+ *
+ * Both animations stop for `prefers-reduced-motion`; the ping ring is hidden rather than frozen,
+ * because a frozen ring is a second, larger dot.
  */
 
 import { cn } from '@/lib/utils';
@@ -53,7 +60,12 @@ export function LiveDot({
   if (variant === 'pulse') {
     return (
       <span
-        className={cn(size, 'animate-pulse rounded-full [will-change:opacity]', color, className)}
+        className={cn(
+          size,
+          'animate-pulse rounded-full [will-change:opacity] motion-reduce:animate-none',
+          color,
+          className
+        )}
       />
     );
   }
@@ -63,7 +75,7 @@ export function LiveDot({
       {showPing && (
         <span
           className={cn(
-            'absolute inline-flex h-full w-full animate-ping rounded-full',
+            'absolute inline-flex h-full w-full animate-ping rounded-full motion-reduce:hidden',
             '[will-change:transform,opacity]',
             pingColor ?? color
           )}

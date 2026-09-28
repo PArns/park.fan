@@ -1,5 +1,6 @@
 import type { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
+import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 
 export type { ScheduleSummary };
 
@@ -42,6 +43,12 @@ export function getScheduleMessage(
   const effectiveStatus =
     status || (todaySchedule?.scheduleType === 'OPERATING' ? 'OPERATING' : 'CLOSED');
   const tzOptions = timezone ? { timeZone: timezone } : {};
+  // Cached formatters (`lib/utils/intl-format.ts`). This runs twice per ParkCard (the phone row and
+  // the card) and hub pages re-render 40–70 cards on every live refresh; `toLocale*String` with
+  // options built a new formatter on each call, up to three per call here.
+  const parkDay = (at: Date) => getDateTimeFormat('en-CA', tzOptions).format(at);
+  const clockTime = (at: Date) =>
+    formatTime(at, locale, { hour: '2-digit', minute: '2-digit', ...tzOptions });
 
   try {
     const now = new Date();
@@ -72,15 +79,11 @@ export function getScheduleMessage(
 
           if (hours < 24) {
             if (timezone) {
-              const openingTimeFormatted = opening.toLocaleTimeString(locale, {
-                hour: '2-digit',
-                minute: '2-digit',
-                ...tzOptions,
-              });
+              const openingTimeFormatted = clockTime(opening);
 
               // Check if it's "tomorrow" in the park's timezone
-              const todayInParkTz = now.toLocaleDateString('en-CA', tzOptions);
-              const openingInParkTz = opening.toLocaleDateString('en-CA', tzOptions);
+              const todayInParkTz = parkDay(now);
+              const openingInParkTz = parkDay(opening);
               const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
 
               if (hours > 0) {
@@ -126,15 +129,11 @@ export function getScheduleMessage(
             const { hours, minutes } = diffToHoursMinutes(diff);
 
             if (timezone) {
-              const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
-                hour: '2-digit',
-                minute: '2-digit',
-                ...tzOptions,
-              });
+              const openingTimeFormatted = clockTime(nextOpening);
 
               // Check if it's "tomorrow" in the park's timezone
-              const todayInParkTz = now.toLocaleDateString('en-CA', tzOptions);
-              const openingInParkTz = nextOpening.toLocaleDateString('en-CA', tzOptions);
+              const todayInParkTz = parkDay(now);
+              const openingInParkTz = parkDay(nextOpening);
               const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
 
               if (hours > 0) {
@@ -164,19 +163,15 @@ export function getScheduleMessage(
               return { message: `in ${minutes} Min.`, icon: 'opening' };
             }
           } else if (totalDays < 7) {
-            const weekday = nextOpening.toLocaleDateString(locale, {
+            const weekday = getDateTimeFormat(locale, {
               weekday: 'long',
               ...tzOptions,
-            });
+            }).format(nextOpening);
             const days = Math.floor(totalDays);
             const remainingHours = Math.floor(totalHours % 24);
 
             if (timezone) {
-              const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
-                hour: '2-digit',
-                minute: '2-digit',
-                ...tzOptions,
-              });
+              const openingTimeFormatted = clockTime(nextOpening);
               return {
                 message: `${weekday}, ${openingTimeFormatted}${tCommon('timeSuffix')} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
                 icon: 'opening',
@@ -190,11 +185,11 @@ export function getScheduleMessage(
               icon: 'opening',
             };
           } else if (hasOperatingSchedule) {
-            const dateFormatted = nextOpening.toLocaleDateString(locale, {
+            const dateFormatted = getDateTimeFormat(locale, {
               day: 'numeric',
               month: 'long',
               ...tzOptions,
-            });
+            }).format(nextOpening);
             const weeks = Math.ceil(totalWeeks);
 
             return {

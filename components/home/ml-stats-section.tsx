@@ -133,7 +133,9 @@ export async function MLStatsSection({
           <CardContent className="flex flex-1 flex-col p-5">
             {/* Live badge pill */}
             <div className="flex items-center gap-2">
-              <LiveDot variant="pulse" size="h-2.5 w-2.5" color={styles.dot} />
+              {/* Static: the card carries `backdrop-filter`, and an endless pulse inside one
+                  dirties the blurred region every frame (see `LiveDot`). */}
+              <LiveDot showPing={false} size="h-2.5 w-2.5" color={styles.dot} />
               <Brain className={cn('h-4 w-4', styles.text)} />
               <span className={cn('text-sm font-semibold tracking-wide uppercase', styles.text)}>
                 {t(`ai.badge.${badgeKey}` as Parameters<typeof t>[0])}

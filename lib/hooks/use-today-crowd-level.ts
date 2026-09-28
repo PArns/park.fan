@@ -70,6 +70,7 @@ export function useTodayCrowdLevel({
     from: todayStr ?? '',
     to: todayStr ?? '',
     enabled: !!todayStr && releasedLast,
+    loadLast: true,
   });
 
   const level = useMemo(() => {

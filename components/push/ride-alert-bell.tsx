@@ -56,7 +56,6 @@ export function RideAlertBell({
   // dialog's own hooks (fetch effect, sorted picker rows) do not run once per card on the page.
   const [dialogMounted, setDialogMounted] = useState(false);
   const t = useTranslations('pushAlerts.rideBell');
-  const parkAttractions = useRideAlertParkAttractions();
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -64,38 +63,6 @@ export function RideAlertBell({
     setDialogMounted(true);
     setOpen(true);
   }, []);
-
-  // The park's list when there is one. This ride's own entry is the card's: its reading is the
-  // one the bell's visibility rule just read, where the list counts a wait only while the ride is
-  // `OPERATING`. Added when the list does not carry the ride, so the dialog can always pick it.
-  const dialogAttractions = useMemo((): RideAlertDialogAttraction[] => {
-    const self: RideAlertDialogAttraction = {
-      id: attractionId,
-      name: attractionName,
-      currentWaitTime,
-      backgroundImage,
-      backgroundPosition: objectPosition,
-    };
-    if (!parkAttractions) return [self];
-    if (!parkAttractions.some((a) => a.id === attractionId)) return [...parkAttractions, self];
-    return parkAttractions.map((a) =>
-      a.id === attractionId
-        ? {
-            ...a,
-            currentWaitTime,
-            backgroundImage: backgroundImage ?? a.backgroundImage,
-            backgroundPosition: objectPosition ?? a.backgroundPosition,
-          }
-        : a
-    );
-  }, [
-    parkAttractions,
-    attractionId,
-    attractionName,
-    currentWaitTime,
-    backgroundImage,
-    objectPosition,
-  ]);
 
   // A queue this short has no alert left to offer: the threshold may not go
   // under ten minutes, nor within ten of what the ride reads right now, and
@@ -144,14 +111,80 @@ export function RideAlertBell({
       {/* The bell's icon follows the dialog's writes through the local mirror: `setRideAlert` and
           `removeRideAlert` update it, and `useLocalPushFollowsValue` re-reads on its event. */}
       {dialogMounted && (
-        <RideAlertDialog
+        <RideAlertBellDialog
           open={open}
           onOpenChange={setOpen}
           parkName={parkName}
-          attractions={dialogAttractions}
-          initialAttractionId={attractionId}
+          attractionId={attractionId}
+          attractionName={attractionName}
+          backgroundImage={backgroundImage}
+          objectPosition={objectPosition}
+          currentWaitTime={currentWaitTime}
         />
       )}
     </>
+  );
+}
+
+/**
+ * The bell's dialog, and the only part of it that reads the park's ride list.
+ *
+ * The list changes with every live poll, and it used to be read by the bell itself: every bell on
+ * the park page (one per card, ~100 on a big park) re-rendered through its card's `memo` on each
+ * poll and rebuilt an N-long list for a dialog that was not open. Read here, only bells somebody
+ * has pressed subscribe to it.
+ */
+function RideAlertBellDialog({
+  open,
+  onOpenChange,
+  parkName,
+  attractionId,
+  attractionName,
+  backgroundImage,
+  objectPosition,
+  currentWaitTime,
+}: RideAlertBellProps & { open: boolean; onOpenChange: (open: boolean) => void }) {
+  const parkAttractions = useRideAlertParkAttractions();
+
+  // The park's list when there is one. This ride's own entry is the card's: its reading is the
+  // one the bell's visibility rule just read, where the list counts a wait only while the ride is
+  // `OPERATING`. Added when the list does not carry the ride, so the dialog can always pick it.
+  const dialogAttractions = useMemo((): RideAlertDialogAttraction[] => {
+    const self: RideAlertDialogAttraction = {
+      id: attractionId,
+      name: attractionName,
+      currentWaitTime,
+      backgroundImage,
+      backgroundPosition: objectPosition,
+    };
+    if (!parkAttractions) return [self];
+    if (!parkAttractions.some((a) => a.id === attractionId)) return [...parkAttractions, self];
+    return parkAttractions.map((a) =>
+      a.id === attractionId
+        ? {
+            ...a,
+            currentWaitTime,
+            backgroundImage: backgroundImage ?? a.backgroundImage,
+            backgroundPosition: objectPosition ?? a.backgroundPosition,
+          }
+        : a
+    );
+  }, [
+    parkAttractions,
+    attractionId,
+    attractionName,
+    currentWaitTime,
+    backgroundImage,
+    objectPosition,
+  ]);
+
+  return (
+    <RideAlertDialog
+      open={open}
+      onOpenChange={onOpenChange}
+      parkName={parkName}
+      attractions={dialogAttractions}
+      initialAttractionId={attractionId}
+    />
   );
 }

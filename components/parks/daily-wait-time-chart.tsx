@@ -331,10 +331,13 @@ export function DailyWaitTimeChart({
                         className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default bg-transparent p-0 transition-[bottom] duration-500 motion-reduce:transition-none"
                         style={{ bottom: `calc(${barPct}% + 3px)` }}
                       >
-                        {/* Pulsing ring */}
+                        {/* A static ring. It used to ping, one endless animation per best slot
+                            inside the ride page's glass panel (`backdrop-blur-2xl`), which re-reads
+                            the blurred region every frame — the flicker `park-today-panel.tsx`
+                            documents for its own dot. */}
                         <span
                           className={cn(
-                            'absolute -inset-0.5 animate-ping rounded-full opacity-50 [will-change:transform,opacity] [animation-duration:2s]',
+                            'absolute -inset-0.5 rounded-full opacity-50',
                             bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
                           )}
                         />

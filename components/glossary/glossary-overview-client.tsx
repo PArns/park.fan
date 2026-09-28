@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef, useEffect, useDeferredValue } from 'react';
 import { useTranslations } from 'next-intl';
 import { Search, BookOpen, X, Tag, Rotate3d } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -83,14 +83,21 @@ export function GlossaryOverviewClient({
 
   const totalCount = groupedTerms.reduce((acc, g) => acc + g.terms.length, 0);
 
+  // The field and the pills read the live state; the grid reads deferred copies. A keystroke or a
+  // pill tap used to add or drop up to ~270 cards in its own commit, before the paint that answers
+  // it — docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
+  const listQuery = useDeferredValue(query);
+  const listCategory = useDeferredValue(activeCategory);
+  const listPlayerOnly = useDeferredValue(playerOnly);
+
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = listQuery.trim().toLowerCase();
     return groupedTerms
-      .filter((group) => !activeCategory || group.category === activeCategory)
+      .filter((group) => !listCategory || group.category === listCategory)
       .map((group) => ({
         ...group,
         terms: group.terms.filter((term) => {
-          if (playerOnly && !term.player) return false;
+          if (listPlayerOnly && !term.player) return false;
           if (!q) return true;
           return (
             term.name.toLowerCase().includes(q) ||
@@ -100,10 +107,19 @@ export function GlossaryOverviewClient({
         }),
       }))
       .filter((group) => group.terms.length > 0);
-  }, [query, activeCategory, playerOnly, groupedTerms]);
+  }, [listQuery, listCategory, listPlayerOnly, groupedTerms]);
 
   const filteredCount = filtered.reduce((acc, g) => acc + g.terms.length, 0);
-  const hasFilter = query.trim() || activeCategory || playerOnly;
+  const hasFilter = listQuery.trim() || listCategory || listPlayerOnly;
+
+  // Once per page, not once per card per render.
+  const rideCountLabels = useMemo(() => {
+    const labels: Record<string, string> = {};
+    for (const [id, count] of Object.entries(rideCounts)) {
+      if (count) labels[id] = t('rideCount', { count });
+    }
+    return labels;
+  }, [rideCounts, t]);
 
   return (
     <div>
@@ -209,7 +225,7 @@ export function GlossaryOverviewClient({
             <div className="bg-background/60 border-primary/15 flex flex-col items-center gap-3 rounded-xl border px-10 py-10 text-center shadow-sm backdrop-blur-md">
               <BookOpen className="text-muted-foreground h-10 w-10 opacity-40" />
               <p className="text-foreground font-medium">
-                {t('noResults', { query: query || activeCategory || '' })}
+                {t('noResults', { query: listQuery || listCategory || '' })}
               </p>
               <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>
             </div>
@@ -234,11 +250,7 @@ export function GlossaryOverviewClient({
                       segment={segment}
                       playerLabel={t('player.title')}
                       rideCount={rideCounts[term.id]}
-                      rideCountLabel={
-                        rideCounts[term.id]
-                          ? t('rideCount', { count: rideCounts[term.id] })
-                          : undefined
-                      }
+                      rideCountLabel={rideCountLabels[term.id]}
                     />
                   ))}
                 </div>

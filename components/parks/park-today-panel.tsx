@@ -212,6 +212,7 @@ export function ParkTodayPanel({
     from: queryDate ?? '',
     to: queryDate ?? '',
     enabled: !!queryDate && (releasedLast || detailDate !== null),
+    loadLast: true,
   });
   const detailDay = queryDate
     ? (detailCalendar?.days.find((d) => d.date === queryDate) ?? null)
