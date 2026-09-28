@@ -17,9 +17,9 @@ import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { formatTime } from '@/lib/utils/intl-format';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
+import { accuracyStyle } from '@/lib/utils/accuracy-styles';
 import { cn } from '@/lib/utils';
 import type {
-  AccuracyBadge,
   AttractionStatus,
   ParkAttraction,
   ParkWithAttractions,
@@ -29,14 +29,6 @@ import type {
 
 /** Best-visit rows the panel ever draws — the same shape as the park panel's show column. */
 const SLOT_ROWS = 3;
-
-const ACCURACY_BADGE_CLASS: Record<AccuracyBadge, string> = {
-  excellent: 'bg-status-operating/15 text-status-operating',
-  good: 'bg-status-operating/15 text-status-operating',
-  fair: 'bg-status-down/15 text-status-down',
-  poor: 'bg-destructive/15 text-destructive',
-  insufficient_data: 'bg-muted text-muted-foreground',
-};
 
 interface RideNowPanelProps {
   park: ParkWithAttractions;
@@ -205,7 +197,7 @@ export function RideNowPanel({
         {accuracy && (
           <Tooltip>
             <TooltipTrigger className="flex min-w-0 cursor-default">
-              <Badge className={cn('gap-1.5', ACCURACY_BADGE_CLASS[accuracy.badge])}>
+              <Badge className={cn('gap-1.5', accuracyStyle(accuracy.badge).badge)}>
                 <Sparkles className="h-3 w-3" aria-hidden="true" />
                 {/* „Gut" on its own says nothing about what is good. The prefix names it where
                   there is room and goes below `sm`, where the row also carries the clock — the
