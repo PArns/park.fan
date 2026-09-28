@@ -125,9 +125,13 @@ sparklines alone formatted 4 axis ticks x ~100 cards, all re-rendering together 
 minute clock.
 
 Use the cached factories in **`lib/utils/intl-format.ts`** instead — `getDateTimeFormat`,
-`getNumberFormat`, `formatTime`. Same arguments return the same instance, so repeated formatting
+`getNumberFormat`, `getRelativeTimeFormat`, `formatTime`. Same arguments return the same instance, so repeated formatting
 costs a map lookup. Constructing a formatter directly is only fine when it happens once per module
 or is already hoisted out of the loop.
+
+This section alone did not keep it out of the code: an audit on 2026-09-28 still found it in a dozen
+hot paths. It is indexed from `CLAUDE.md` now, as part of
+[A render redoes no work it did last time](../rules/a-render-redoes-no-work.md).
 
 ---
 

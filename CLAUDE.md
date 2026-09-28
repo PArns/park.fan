@@ -88,6 +88,20 @@ carries the reasoning, the measurements and the counter-examples.
   `join(process.cwd(), <root>, <var>)` bundles the whole root into the function (three failed
   deploys); `outputFileTracing*` is inert under `--turbo`. Root it at a purpose-built directory
   (`og-assets/`) or name the file literally. Prove it with `pnpm measure:function-size`.
+- **[A mount gate reads a store, never a timer](docs/rules/a-mount-gate-reads-a-store-never-a-timer.md)** —
+  client-only values go through `useSyncExternalStore` (`useMounted`, `useBrowserNow`, `useMinuteNow`,
+  `useAfterLoad`); never `setTimeout(() => setX(…), 0)` in an effect (a paint per mount), never a
+  private `setInterval` clock. A subscription ends when its answer stops mattering (`useLoadLast`).
+- **[A render redoes no work it did last time](docs/rules/a-render-redoes-no-work.md)** — `Intl`
+  formatters come from `lib/utils/intl-format.ts`, never `toLocale*String(locale, opts)` in a render;
+  no `?? []` into a `memo` child; a store ignores a reducer's no-op; a search runs on the step that
+  reads it. An `exhaustive-deps` suppression names what it leaves out.
+- **[A subscription lives in the leaf that shows it](docs/rules/a-subscription-lives-in-the-leaf-that-shows-it.md)** —
+  read a context or query in the smallest component that draws it (`HeaderNearbyPark`,
+  `RideAlertBellDialog`); a dialog behind a button mounts on the first press.
+- **[Work nobody can see is still work](docs/rules/work-nobody-can-see-is-still-work.md)** — gate
+  effects on the question the markup answers (`useMediaQuery` for `hidden lg:block`, an observer for
+  below the fold); no endless animation inside `backdrop-filter`; layout reads once per frame or hover.
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.
@@ -101,6 +115,9 @@ carries the reasoning, the measurements and the counter-examples.
   has three values, and `null` must behave exactly as before. Test `!== false`, never `=== true`
   (`lib/utils/season.ts`). A live `OPERATING` row still beats the season. The SQL twin
   `attractionIsOutOfSeason()` changes with the TS rule or not at all.
+- **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
+  catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
+  (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
 
 ### Features
 
@@ -177,6 +194,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
   `tile.openstreetmap.org` is for OSM's own site, not for embedding; hotlinking it got park.fan
   hard-blocked on 2026-09-18. Both `TileLayer`s use CARTO's basemap CDN, credited alongside OSM.
+- **[A keyboard shortcut waits for an unfocused page](docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md)** —
+  a page-wide `keydown` acts only when nothing is focused, never on Space, once per page; Escape
+  belongs to what has focus. The guard is in `hero-inline-search-panel.tsx`.
 - **[A fade is animated, never a cut](docs/rules/a-fade-is-animated-never-a-cut.md)** — opacity and
   visibility change over a transition: `starting:opacity-0` to appear, `invisible opacity-0` kept
   mounted to leave, and a ghost's snapped steps glide. `transition-colors` does not cover opacity.
