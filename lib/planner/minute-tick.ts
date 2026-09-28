@@ -1,5 +1,7 @@
+import { subscribeToMinuteClock } from '@/lib/hooks/use-minute-now';
+
 /**
- * One 60-second interval for everything in the panel that watches the clock.
+ * One minute counter for everything in the panel that watches the clock.
  *
  * A counter, not a time: the value only has to CHANGE each minute, and the
  * actual clock is read in park time where it is needed ({@link parkMinuteNow}).
@@ -9,25 +11,33 @@
  * Shared rather than per-component because two readers on one screen — the
  * grid's now line and the show band's next showtime — would otherwise install
  * two timers that fire a second apart and re-render the panel twice a minute.
+ * The same reason ties it to the app's minute clock below.
  */
 
 let minuteTick = 0;
-let minuteTimer: number | null = null;
+let releaseClock: (() => void) | null = null;
 const minuteListeners = new Set<() => void>();
 
+/**
+ * Driven by the app's shared minute clock (`useMinuteNow`) rather than an interval of its own.
+ * Its own interval ran in hidden tabs — the in-park list on a pocketed phone, the planner's
+ * optimiser in a background window — and out of phase with the shared clock, so a park page with
+ * the panel open repainted twice a minute. The shared clock pauses while the tab is hidden and
+ * ticks once on return, which also moves the counter.
+ */
 export function subscribeToMinute(listener: () => void): () => void {
   minuteListeners.add(listener);
   if (minuteListeners.size === 1) {
-    minuteTimer = window.setInterval(() => {
+    releaseClock = subscribeToMinuteClock(() => {
       minuteTick += 1;
       for (const l of minuteListeners) l();
-    }, 60_000);
+    });
   }
   return () => {
     minuteListeners.delete(listener);
-    if (minuteListeners.size === 0 && minuteTimer !== null) {
-      window.clearInterval(minuteTimer);
-      minuteTimer = null;
+    if (minuteListeners.size === 0 && releaseClock !== null) {
+      releaseClock();
+      releaseClock = null;
     }
   };
 }

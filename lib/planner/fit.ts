@@ -420,10 +420,18 @@ export function evaluateFit(input: FitInput, choice: FitChoice): FitOutcome {
  * Cost: one search per lever, 5–50 ms each, over the one to three free blocks a
  * day actually holds. It runs on a press and again on every tick, which is why
  * the call sites memoise it on the choice.
+ *
+ * `base` is `evaluateFit(input, choice)`. Every call site already holds it for
+ * its own count, and it is up to five searches on a day that does not fit, so
+ * they pass it in; it is computed here only when they do not.
  */
-export function fitLevers(input: FitInput, choice: FitChoice): FitLever[] {
+export function fitLevers(
+  input: FitInput,
+  choice: FitChoice,
+  base: FitOutcome = evaluateFit(input, choice)
+): FitLever[] {
   const wanted = input.wishes.filter((wish) => !choice.dropped.has(wish.key)).length;
-  const fitsNow = evaluateFit(input, choice).fitted.length;
+  const fitsNow = base.fitted.length;
   if (fitsNow >= wanted) return [];
 
   const open = input.blocks.filter((block) => !choice.droppedBlocks.has(block.entryId));
@@ -526,8 +534,12 @@ export interface FitLeverView {
  * draw this list, and a fold-back written twice is two chances for a lever to
  * vanish under somebody's finger in one of them.
  */
-export function fitLeverView(input: FitInput, choice: FitChoice): FitLeverView {
-  const levers = fitLevers(input, choice);
+export function fitLeverView(
+  input: FitInput,
+  choice: FitChoice,
+  base: FitOutcome = evaluateFit(input, choice)
+): FitLeverView {
+  const levers = fitLevers(input, choice, base);
   const applied = new Set<string>();
   for (const id of choice.droppedBlocks) applied.add(`drop-block:${id}`);
   for (const id of choice.shortBlocks) applied.add(`shorten-block:${id}`);
@@ -537,7 +549,7 @@ export function fitLeverView(input: FitInput, choice: FitChoice): FitLeverView {
   )
     applied.add('drop-all-blocks:*');
 
-  const fits = evaluateFit(input, choice).fitted.length;
+  const fits = base.fitted.length;
   const wanted = input.wishes.filter((wish) => !choice.dropped.has(wish.key)).length;
   const seen = new Set(levers.map(leverKey));
   const back: FitLever[] = [];

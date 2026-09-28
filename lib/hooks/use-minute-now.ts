@@ -74,6 +74,13 @@ function subscribe(listener: () => void): () => void {
   };
 }
 
+/**
+ * The clock's raw subscription, for a store that keeps its own snapshot but should tick with this
+ * one: the planner's minute counter (`lib/planner/minute-tick.ts`). Same timer, same hidden-tab
+ * pause, so two clocks on one page repaint in one batch instead of twice a minute.
+ */
+export const subscribeToMinuteClock = subscribe;
+
 // Stamped on first read rather than on subscribe. `subscribe` runs after the commit, so a
 // component mounted after hydration as the clock's first reader used to render `null`, paint
 // its fallback, and render again once its own subscription stamped the time.

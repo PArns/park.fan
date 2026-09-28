@@ -18,6 +18,7 @@ import {
   type FitChoice,
   type FitInput,
   type FitLever,
+  type FitLeverView,
 } from '@/lib/planner/fit';
 import { PlannerFitLevers } from './planner-fit-levers';
 import { PlannerFitList } from './planner-fit-list';
@@ -25,6 +26,8 @@ import { PlannerStepRail } from './planner-step-rail';
 import { cn } from '@/lib/utils';
 
 type FitStep = 'levers' | 'rides' | 'result';
+
+const NO_LEVERS: FitLeverView = { levers: [], applied: new Set() };
 
 interface PlannerFitAssistantProps {
   open: boolean;
@@ -116,7 +119,12 @@ export function PlannerFitAssistant({
    */
   const order = useMemo(() => fitOrder(input, choice), [input, choice]);
   const outcome = useMemo(() => evaluateFit(input, choice), [input, choice]);
-  const { levers, applied } = useMemo(() => fitLeverView(input, choice), [input, choice]);
+  // One probe per free block, and only the first screen draws them: off it, every tick and pin
+  // paid for levers nobody could see.
+  const { levers, applied } = useMemo(
+    () => (step === 'levers' ? fitLeverView(input, choice, outcome) : NO_LEVERS),
+    [step, input, choice, outcome]
+  );
 
   const wanted = input.wishes.filter((wish) => !choice.dropped.has(wish.key)).length;
   const fits = outcome.fitted.length;

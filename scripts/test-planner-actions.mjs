@@ -468,6 +468,15 @@ test(
 );
 
 test(
+  'setActive to the park and day already active returns the same state (no store write)',
+  (() => {
+    const active = setActive(threeRides(), PARK.parkSlug, PARK.date);
+    return setActive(active, PARK.parkSlug, PARK.date) === active;
+  })(),
+  true
+);
+
+test(
   'the original state is never mutated',
   (() => {
     const base = threeRides();
