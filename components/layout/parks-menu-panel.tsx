@@ -154,7 +154,10 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
     // on its skeleton for the rest of the session. Every country you pass on the way down to the
     // detail row is one you skim past, so it happened constantly.
     fetch(`/api/nav/geo/${countryKey}`)
-      .then((r) => (r.ok ? r.json() : { cities: [] }))
+      .then((r) => {
+        if (!r.ok) throw new Error(`nav geo ${r.status}`);
+        return r.json();
+      })
       .then((data: { cities?: CityEntry[] }) =>
         setCities((prev) => ({ ...prev, [countryKey]: data.cities ?? [] }))
       )

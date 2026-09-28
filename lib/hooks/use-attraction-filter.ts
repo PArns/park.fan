@@ -91,6 +91,12 @@ const hasSingleRider = (attraction: ParkAttraction): boolean => attraction.hasSi
  * output, so the headliner row, the land grid and the panel's counts can never
  * disagree.
  */
+
+/** Focus is on the page itself, not on a control somebody moved to. */
+function nothingFocused(active: Element | null): boolean {
+  return active === null || active === document.body || active === document.documentElement;
+}
+
 export function useAttractionFilter({
   attractionsByLand,
   shows,
@@ -143,9 +149,14 @@ export function useAttractionFilter({
   // no dependencies — it used to depend on `searchQuery`, which tore down and re-attached a
   // global `keydown` listener on EVERY keystroke, right in the middle of the typing path this
   // hook otherwise works hard to keep responsive.
+  //
+  // Only from the field itself or with nothing focused: an Escape that closes a dialog, a popover
+  // or the search palette used to clear the ride filter behind it as well.
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
+      const active = document.activeElement;
+      if (active !== inputRef.current && !nothingFocused(active)) return;
       // Keep focus in the input — clearing without blurring is the better UX here.
       setSearchQuery((q) => (q ? '' : q));
     };
@@ -154,29 +165,20 @@ export function useAttractionFilter({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Auto-focus on typing
+  // Auto-focus on typing — with the hero search's guard (`hero-inline-search-panel.tsx`): only
+  // when nothing is focused, and never for Space. The old test only exempted inputs, so Space on
+  // a focused pill, tab or link moved focus to the field before the control could activate, Space
+  // to scroll jumped the page to the field, and a letter meant for a menu's first-letter
+  // navigation or a screen reader landed in the ride search.
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       // Only trigger if attractions tab is active
       if (activeTab !== 'attractions') return;
-
-      // Ignore if user is already typing in an input
-      if (
-        document.activeElement?.tagName === 'INPUT' ||
-        document.activeElement?.tagName === 'TEXTAREA' ||
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement
-      ) {
-        return;
-      }
-
-      // Ignore modifiers
+      if (!nothingFocused(document.activeElement)) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-
-      // Only trigger on single character keys (letters, numbers, etc.)
-      if (e.key.length === 1) {
-        inputRef.current?.focus();
-      }
+      // Single printable characters only, and Space stays with the page.
+      if (e.key.length !== 1 || e.key === ' ') return;
+      inputRef.current?.focus();
     };
 
     window.addEventListener('keydown', handleGlobalKeyDown);

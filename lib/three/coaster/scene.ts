@@ -562,6 +562,10 @@ export function createCoasterScene(
       camera.updateProjectionMatrix();
       computeFront(camera.aspect);
       if (view === 'front') updateCamera(true);
+      // `setSize` clears the canvas, and with no loop running (reduced motion, or paused) nothing
+      // would draw it again until the next scrub: the player's first `resize()` right after
+      // creation left reduced-motion readers an empty stage. Same as `park-scene.ts`.
+      if (!playing || reduced) renderer.render(scene, camera);
     },
     setTheme(theme: SceneTheme) {
       applyTheme(theme);

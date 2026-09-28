@@ -273,13 +273,19 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
 
   // Derive "today" (park tz) on the client; before mount render nothing so SSR and the first client
   // render match (no hydration mismatch) and the static shell never reads the clock.
+  //
+  // The data props are listed one by one. They used to be left out on the claim that props came
+  // from the server shell and never changed, but the ride page feeds them from the attraction
+  // detail query, which polls every five minutes: the chart kept the first response for as long
+  // as the tab was open, and its "today" never rolled over. `translations` stays out — it is a new
+  // object on every render of the caller and only changes with the locale.
+  const { history, hourlyForecast, schedule, bestVisitTimes } = props;
   const data = useMemo(() => {
     if (!mounted) return null;
     const todayStr = getTodayInTimezone(props.timezone);
     return buildChartData(todayStr, props, corridorByHour);
-    // props is stable per render from the server shell; rebuild only on mount/tz change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mounted, props.timezone, corridorByHour]);
+  }, [mounted, props.timezone, history, hourlyForecast, schedule, bestVisitTimes, corridorByHour]);
 
   if (!data) return <>{props.fallback ?? null}</>;
   return <DailyWaitTimeChart {...data} hideTitle={props.hideTitle} />;

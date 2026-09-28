@@ -5,6 +5,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
+import { cronUnauthorized } from '@/lib/security/cron-auth';
 
 const BASE_URL = SITE_URL;
 
@@ -33,10 +34,8 @@ function isFullSweepDay(now: Date): boolean {
 }
 
 export async function GET(request: Request) {
-  const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const denied = cronUnauthorized(request);
+  if (denied) return denied;
 
   const urls: string[] = [];
   const now = new Date();

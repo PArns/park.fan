@@ -85,21 +85,18 @@ export function SearchCommand({
     return () => document.removeEventListener('keydown', down);
   }, [isGlobal, open]);
 
-  // Auto-focus on type: a single character anywhere opens the palette seeded with that key.
+  // Auto-focus on type: a single character anywhere opens the palette seeded with that key —
+  // with the hero search's guard (`hero-inline-search-panel.tsx`): only when nothing is focused,
+  // and never for Space, which scrolls the page and activates a focused control.
   useEffect(() => {
     if (!autoFocusOnType) return;
     const onKey = (e: KeyboardEvent) => {
       if (open) return;
-      if (
-        document.activeElement?.tagName === 'INPUT' ||
-        document.activeElement?.tagName === 'TEXTAREA' ||
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement
-      ) {
-        return;
-      }
+      const active = document.activeElement;
+      if (active && active !== document.body && active !== document.documentElement) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key.length === 1) openSearch('keyboard', e.key);
+      if (e.key.length !== 1 || e.key === ' ') return;
+      openSearch('keyboard', e.key);
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);

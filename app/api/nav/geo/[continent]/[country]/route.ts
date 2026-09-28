@@ -64,7 +64,9 @@ export async function GET(
       }
     );
   } catch {
-    // The menu renders its country link and drops the pane; nothing here is worth a 500.
-    return NextResponse.json({ cities: [] }, { status: 200 });
+    // A failure, said as one. This used to answer 200 `{ cities: [] }`, which the menu cached as
+    // "this country has no cities" for the rest of the session, against its own intent of asking
+    // again on the next hover. The country link above the pane still works in the meantime.
+    return NextResponse.json({ error: 'Cities unavailable' }, { status: 502 });
   }
 }
