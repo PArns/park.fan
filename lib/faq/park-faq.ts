@@ -4,6 +4,7 @@ import { translateCountry } from '@/lib/i18n/helpers';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
 import { parkArgs, parkPhrase } from '@/lib/i18n/park-phrase';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { Locale } from '@/i18n/config';
 
 export type ParkFaqIconName =
@@ -81,7 +82,7 @@ export function buildParkFaqItems(
   const parkDate = now ? formatInTimeZone(now, timeZone, 'yyyy-MM-dd') : null;
   const todaySchedule = parkDate ? park.schedule?.find((s) => s.date === parkDate) : undefined;
   const localizedDate = now
-    ? new Intl.DateTimeFormat(locale, {
+    ? getDateTimeFormat(locale, {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -242,7 +243,7 @@ export function getLeastCrowdedDays(
       const refMonday = new Date(2025, 0, 6);
       const date = new Date(refMonday);
       date.setDate(refMonday.getDate() + ((s.dayIndex - 1 + 7) % 7));
-      return new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
+      return getDateTimeFormat(locale, { weekday: 'long' }).format(date);
     })
     .join(conjunction);
   return { status: 'days', dayNames };

@@ -11,7 +11,21 @@ const LABELS_PATH = path.resolve(process.cwd(), 'content', 'blog', 'categories.j
 
 type CategoryLabels = Record<string, Partial<Record<Locale, string>>>;
 
-const getLabels = cache((): CategoryLabels => {
+/**
+ * Whether the labels and the tree below are kept for the life of the process.
+ *
+ * In production they are: `categories.json` ships with the deployment and nothing writes it at
+ * runtime (the blog editor commits to the repo), and the tree is built from it and from the
+ * generated manifest. React `cache()` alone re-read, re-parsed and rebuilt both on every request,
+ * and the root layout asks on every page through the header's blog and news menus.
+ *
+ * In development they stay per request, so an edited `categories.json` shows on the next reload.
+ * `./listing` can memoise per process in dev too because its source is a module that HMR
+ * re-evaluates; a file read with `fs` has no such reset.
+ */
+const MEMOISE_PER_PROCESS = process.env.NODE_ENV === 'production';
+
+const readLabels = cache((): CategoryLabels => {
   if (!fs.existsSync(LABELS_PATH)) return {};
   try {
     return JSON.parse(fs.readFileSync(LABELS_PATH, 'utf8')) as CategoryLabels;
@@ -19,6 +33,13 @@ const getLabels = cache((): CategoryLabels => {
     return {};
   }
 });
+
+let LABELS: CategoryLabels | undefined;
+
+function getLabels(): CategoryLabels {
+  if (!MEMOISE_PER_PROCESS) return readLabels();
+  return (LABELS ??= readLabels());
+}
 
 export function resolveCategoryLabel(
   fullPath: string,
@@ -61,72 +82,90 @@ export function categoryPathBreadcrumbs(input: string | undefined | null): strin
  * this tree put the one section a reader was not on into the sidebar, the header's category pills
  * and the category sitemap of the other. So the tree is built from `listArticles` and the news
  * category never enters it (see `docs/rules/news-is-set-apart-from-the-articles.md`).
+ *
+ * Kept per locale for the life of the process in production (see {@link MEMOISE_PER_PROCESS}),
+ * so every caller shares one tree and must not mutate it; none does.
  */
-export const buildCategoryTree = cache(
-  (locale: Locale): { root: CategoryNode; flat: Map<string, CategoryNode> } => {
-    const posts = listArticles(locale);
-    const flat = new Map<string, CategoryNode>();
+export function buildCategoryTree(locale: Locale): CategoryTree {
+  if (!MEMOISE_PER_PROCESS) return buildTree(locale);
+  let tree = CATEGORY_TREES.get(locale);
+  if (!tree) {
+    tree = buildTree(locale);
+    CATEGORY_TREES.set(locale, tree);
+  }
+  return tree;
+}
 
-    const ensureNode = (segments: string[]): CategoryNode => {
-      const fullPath = segments.join('/');
-      const existing = flat.get(fullPath);
-      if (existing) return existing;
-      const segment = segments[segments.length - 1] ?? '';
-      const node: CategoryNode = {
-        path: fullPath,
-        segment,
-        label: resolveCategoryLabel(fullPath, locale, segment),
-        directPostCount: 0,
-        totalPostCount: 0,
-        children: [],
-      };
-      flat.set(fullPath, node);
-      if (segments.length > 1) {
-        const parent = ensureNode(segments.slice(0, -1));
-        parent.children.push(node);
-      }
-      return node;
-    };
+interface CategoryTree {
+  root: CategoryNode;
+  flat: Map<string, CategoryNode>;
+}
 
-    const root: CategoryNode = {
-      path: '',
-      segment: '',
-      label: '',
+const CATEGORY_TREES = new Map<Locale, CategoryTree>();
+
+const buildTree = cache((locale: Locale): CategoryTree => {
+  const posts = listArticles(locale);
+  const flat = new Map<string, CategoryNode>();
+
+  const ensureNode = (segments: string[]): CategoryNode => {
+    const fullPath = segments.join('/');
+    const existing = flat.get(fullPath);
+    if (existing) return existing;
+    const segment = segments[segments.length - 1] ?? '';
+    const node: CategoryNode = {
+      path: fullPath,
+      segment,
+      label: resolveCategoryLabel(fullPath, locale, segment),
       directPostCount: 0,
       totalPostCount: 0,
       children: [],
     };
-
-    for (const post of posts) {
-      const segments = parseCategoryPath(post.frontmatter.category);
-      if (segments.length === 0) {
-        root.directPostCount++;
-        root.totalPostCount++;
-        continue;
-      }
-      const node = ensureNode(segments);
-      node.directPostCount++;
-      // Walk up adding to totalPostCount of all ancestors plus self.
-      for (let i = segments.length; i >= 1; i--) {
-        const ancestorPath = segments.slice(0, i).join('/');
-        const ancestor = flat.get(ancestorPath);
-        if (ancestor) ancestor.totalPostCount++;
-      }
-      // Attach top-level segments to root.
-      const top = flat.get(segments[0]);
-      if (top && !root.children.includes(top)) root.children.push(top);
+    flat.set(fullPath, node);
+    if (segments.length > 1) {
+      const parent = ensureNode(segments.slice(0, -1));
+      parent.children.push(node);
     }
+    return node;
+  };
 
-    // Sort children alphabetically by label.
-    const sortNode = (n: CategoryNode) => {
-      n.children.sort((a, b) => a.label.localeCompare(b.label));
-      n.children.forEach(sortNode);
-    };
-    sortNode(root);
+  const root: CategoryNode = {
+    path: '',
+    segment: '',
+    label: '',
+    directPostCount: 0,
+    totalPostCount: 0,
+    children: [],
+  };
 
-    return { root, flat };
+  for (const post of posts) {
+    const segments = parseCategoryPath(post.frontmatter.category);
+    if (segments.length === 0) {
+      root.directPostCount++;
+      root.totalPostCount++;
+      continue;
+    }
+    const node = ensureNode(segments);
+    node.directPostCount++;
+    // Walk up adding to totalPostCount of all ancestors plus self.
+    for (let i = segments.length; i >= 1; i--) {
+      const ancestorPath = segments.slice(0, i).join('/');
+      const ancestor = flat.get(ancestorPath);
+      if (ancestor) ancestor.totalPostCount++;
+    }
+    // Attach top-level segments to root.
+    const top = flat.get(segments[0]);
+    if (top && !root.children.includes(top)) root.children.push(top);
   }
-);
+
+  // Sort children alphabetically by label.
+  const sortNode = (n: CategoryNode) => {
+    n.children.sort((a, b) => a.label.localeCompare(b.label));
+    n.children.forEach(sortNode);
+  };
+  sortNode(root);
+
+  return { root, flat };
+});
 
 /** Posts whose category path starts with the given segments (inclusive). */
 export function filterPostsByCategory(
