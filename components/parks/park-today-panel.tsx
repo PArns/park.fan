@@ -880,7 +880,10 @@ export function ParkTodayPanel({
                     {tCommon('noShowtimesToday')}
                   </p>
                 )}
-                <div className={cn('relative', showsFolded && 'max-sm:hidden')}>
+                {/* `max-sm:mt-3`: "All N" above and the first row's bell below each get a 44 px
+                    target on phones, and at the 6 px gap alone the bell took the bottom 11 px of
+                    the link's (44 × 33). 12 px more puts the two targets 44 px apart. */}
+                <div className={cn('relative max-sm:mt-3', showsFolded && 'max-sm:hidden')}>
                   {/* Nothing left today, and the park does have shows — `showSlots > 0` is counted
                     from `park.shows`, so this column is not even rendered for a park without any.
                     The sentence is centred over the rows the column has already reserved rather
