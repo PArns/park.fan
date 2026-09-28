@@ -9,6 +9,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -77,14 +78,6 @@ export interface DailyWaitTimeChartData {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function barColorClass(w: number): string {
-  if (w < 20) return 'bg-crowd-very-low';
-  if (w < 35) return 'bg-crowd-low';
-  if (w < 50) return 'bg-crowd-moderate';
-  if (w < 65) return 'bg-crowd-high';
-  return 'bg-crowd-very-high';
-}
 
 /** Format "HH:mm" for display: 12h AM/PM for EN, otherwise HH:mm + suffix. */
 function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): string {
@@ -366,7 +359,9 @@ export function DailyWaitTimeChart({
                         // Half a second of height is the difference between the
                         // chart rescaling and the chart appearing to blink.
                         'w-full rounded-t transition-[height] duration-500 motion-reduce:transition-none',
-                        barColorClass(slot.value),
+                        // The app-wide wait scale, so a bar is the colour the same number
+                        // is everywhere else (the planner's bars, WaitTimeValue).
+                        CROWD_DOT_CLASS[waitTimeCrowdTier(slot.value)],
                         slot.type === 'past' && 'opacity-40'
                       )}
                       style={{ height: `${barPct}%` }}
