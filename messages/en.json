@@ -1580,13 +1580,6 @@
     "viewAllResults": "View all results for \"{query}\"",
     "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
     "at": "at {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attraction",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Location"
-    },
     "headings": {
       "park": "Parks ({count})",
       "attraction": "Attractions ({count})",
@@ -1606,6 +1599,17 @@
     "avgWait": "{minutes} min avg",
     "attractionsOpen": "{open}/{total} attractions open",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attraction",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Location",
+      "glossary": "Dictionary"
+    },
+    "minQueryLength": "Enter at least {count} characters to search"
   },
   "languageBanner": {
     "message": "This site is also available in {language}",

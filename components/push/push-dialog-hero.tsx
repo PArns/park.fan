@@ -1,9 +1,9 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { X, type LucideIcon } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { DialogClose, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import type { LucideIcon } from 'lucide-react';
+import { DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { DIALOG_HERO_TINT, DialogHeroClose } from '@/components/common/dialog-hero';
 
 interface PushDialogHeroProps {
   /** Drawn twice: oversized and translucent as the ground, nowhere else. */
@@ -31,6 +31,14 @@ interface PushDialogHeroProps {
  * It brings its own close button and the three dialogs pass
  * `showCloseButton={false}`: the dialog's default sits at `top-4 right-4`
  * measured against a padded body, and this head supplies its own padding.
+ * The button and the tint are `DialogHero`'s own, so the phone-sized target
+ * that one got is this one's too.
+ *
+ * Not folded into `DialogHero` itself: that band has a FIXED height and
+ * anchors its text to the lower edge so a photo landing late moves nothing,
+ * while this one grows with its title and a child line, keeps the glyph whole
+ * instead of bled, and sets smaller type. A "compact" switch would fork every
+ * one of those classes.
  *
  * The title takes two lines before it clips. `WizardHero` truncates at one,
  * which is right for a park name and wrong here — "Harry Potter and the
@@ -38,10 +46,6 @@ interface PushDialogHeroProps {
  * ride this is about may not end in an ellipsis.
  */
 export function PushDialogHero({ icon: Icon, title, description, children }: PushDialogHeroProps) {
-  // `common`, because this is a dialog's close button rather than any of the
-  // feature namespaces' own "close" labels. The chrome ships on every page.
-  const tCommon = useTranslations('common');
-
   // The band needs a ground of its OWN, not just the gradient: that one runs
   // to `transparent` at the lower right, i.e. to exactly the dialog colour the
   // footer sits on, so header and footer ran together into one block and the
@@ -50,10 +54,7 @@ export function PushDialogHero({ icon: Icon, title, description, children }: Pus
   // not have, and the border goes to full strength as its edge.
   return (
     <div className="bg-muted/40 relative flex min-h-28 shrink-0 flex-col justify-center overflow-hidden border-b px-5 py-4 sm:px-6">
-      <div
-        className="from-primary/25 via-primary/8 absolute inset-0 bg-gradient-to-br to-transparent"
-        aria-hidden="true"
-      />
+      <div className={DIALOG_HERO_TINT} aria-hidden="true" />
       {/* Sized off the BAND, not in pixels, and never bled past its edge. A
           fixed `size-36` bled `-right-5 -bottom-10` put 144 px of glyph into
           a 94 px band, and `overflow-hidden` cut the bottom third away —
@@ -73,12 +74,7 @@ export function PushDialogHero({ icon: Icon, title, description, children }: Pus
         aria-hidden="true"
       />
 
-      <DialogClose
-        aria-label={tCommon('close')}
-        className="text-muted-foreground hover:bg-accent hover:text-foreground ring-ring absolute top-2.5 right-2.5 z-10 rounded-full p-1.5 transition-colors focus-visible:ring-2 focus-visible:outline-none"
-      >
-        <X className="size-4" aria-hidden="true" />
-      </DialogClose>
+      <DialogHeroClose />
 
       {/* Positioned, so it paints over the two decorative layers above — both
           are absolute, and an absolutely positioned sibling outranks the

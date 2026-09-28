@@ -1580,13 +1580,6 @@
     "viewAllResults": "Vedi tutti i risultati per \"{query}\"",
     "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
     "at": "a {park}",
-    "types": {
-      "park": "Parco",
-      "attraction": "Attrazione",
-      "show": "Spettacolo",
-      "restaurant": "Ristorante",
-      "location": "Posizione"
-    },
     "headings": {
       "park": "Parchi ({count})",
       "attraction": "Attrazioni ({count})",
@@ -1606,6 +1599,17 @@
     "avgWait": "{minutes} min in media",
     "attractionsOpen": "{open}/{total} attrazioni aperte",
     "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Parco",
+      "attraction": "Attrazione",
+      "show": "Spettacolo",
+      "restaurant": "Ristorante",
+      "location": "Posizione",
+      "glossary": "Dizionario"
+    },
+    "minQueryLength": "Digita almeno {count} caratteri per cercare"
   },
   "languageBanner": {
     "message": "Questo sito è disponibile anche in {language}",

@@ -1,7 +1,33 @@
+import { useSyncExternalStore } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
-import { getFavoriteIds } from '@/lib/utils/favorites';
+import {
+  getFavoriteIds,
+  getFavoritesFromCookies,
+  subscribeToFavorites,
+} from '@/lib/utils/favorites';
 import type { FavoritesResponse } from '@/lib/api/favorites';
+
+/**
+ * Every starred id, each kind sorted, as one string — the query key's view of the cookie.
+ *
+ * The key used to be the position alone while the query function read the ids, so a star set
+ * anywhere but on the homepage band left the cached list standing: only the band invalidated on
+ * `favorites-changed`, and the header menu, which is mounted on every page, reopened with the
+ * list as it was before for up to five minutes. With the ids in the key a change is a new entry,
+ * wherever the star was pressed and whichever surface asks next.
+ *
+ * `null` in the server and hydrating renders (no cookie there), which keeps the query off until
+ * the real ids are known instead of fetching once for "none" and again for the real set.
+ */
+function getIdsSnapshot(): string {
+  const f = getFavoritesFromCookies();
+  return [f.parks, f.attractions, f.shows, f.restaurants]
+    .map((ids) => [...ids].sort().join(','))
+    .join('|');
+}
+
+const getServerIdsSnapshot = () => null;
 
 interface UseFavoritesOptions {
   /**
@@ -23,17 +49,23 @@ interface UseFavoritesOptions {
 
 /**
  * Hook to fetch favorites using React Query
- * - Reads favorite IDs from cookies inside queryFn so refetch after toggle uses current state
+ * - Keyed on the starred ids, so a toggle anywhere is a new entry (see `getIdsSnapshot`)
  * - Automatically uses geolocation from context
  * - Caches results for 5 minutes (matches the backend favorites TTL + the 5-min wait-times sync)
  */
 export function useFavorites({ enabled = true, poll = true }: UseFavoritesOptions = {}) {
   const { position, loading: geoLoading } = useGeolocation();
+  const ids = useSyncExternalStore<string | null>(
+    subscribeToFavorites,
+    getIdsSnapshot,
+    getServerIdsSnapshot
+  );
 
   return useQuery<FavoritesResponse>({
-    queryKey: ['favorites', position?.lat, position?.lng],
+    queryKey: ['favorites', ids, position?.lat, position?.lng],
     queryFn: async () => {
-      // Read current cookie state at fetch time so invalidate+refetch shows updated list
+      // The cookie as it is at fetch time, in the order the ids were starred — `ids` above is the
+      // same set, sorted for the key.
       const favoriteIds = {
         parks: getFavoriteIds('park'),
         attractions: getFavoriteIds('attraction'),
@@ -89,13 +121,13 @@ export function useFavorites({ enabled = true, poll = true }: UseFavoritesOption
 
       return response.json();
     },
-    enabled: !geoLoading && enabled,
+    enabled: !geoLoading && enabled && ids !== null,
     staleTime: 5 * 60 * 1000, // 5 minutes — matches refetch interval
     gcTime: 10 * 60 * 1000, // 10 minutes
     refetchOnWindowFocus: poll, // refresh when user returns to tab (live status can change)
     refetchInterval: poll ? 5 * 60 * 1000 : false, // poll every 5 min — attraction status changes during the day
-    // When geo resolves the queryKey gains lat/lng (new cache entry). Keep showing the
-    // no-coords result while the coords-query loads instead of flashing a skeleton.
+    // When geo resolves, or a star is set or removed, the queryKey changes (new cache entry). Keep
+    // showing the previous list while the new one loads instead of flashing a skeleton.
     placeholderData: (previousData: FavoritesResponse | undefined) => previousData,
   });
 }

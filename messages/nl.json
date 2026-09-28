@@ -1580,13 +1580,6 @@
     "viewAllResults": "Bekijk alle resultaten voor \"{query}\"",
     "searchPlaceholder": "Zoek parken, attracties, shows...",
     "at": "in {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attractie",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Locatie"
-    },
     "headings": {
       "park": "Parken ({count})",
       "attraction": "Attracties ({count})",
@@ -1606,6 +1599,17 @@
     "avgWait": "gem. {minutes} min",
     "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attractie",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Locatie",
+      "glossary": "Woordenboek"
+    },
+    "minQueryLength": "Typ minstens {count} tekens om te zoeken"
   },
   "languageBanner": {
     "message": "Deze site is ook beschikbaar in {language}",

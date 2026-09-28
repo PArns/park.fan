@@ -2521,7 +2521,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 name="OperatingHoursDisplay"
                 file="components/common/operating-hours-display.tsx"
               />
-              <Sub title="OperatingHoursDisplay — with timezone (LocalTimeRange) / without (HH:mm substring)">
+              <Sub title="OperatingHoursDisplay — with timezone (ParkTimeRange) / without (HH:mm substring)">
                 <Row>
                   <div className="flex flex-col gap-2">
                     <span className="text-muted-foreground font-mono text-[10px]">

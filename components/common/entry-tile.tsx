@@ -1,26 +1,15 @@
 import type { LucideIcon } from 'lucide-react';
-import { TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 
 /**
- * The entry tile — one definition for both places it appears.
+ * The entry tile's contents — one definition for both places it appears.
  *
  * A park page's tiles are real tabs (`TabsTrigger`), a ride page's are jump links to chapters
- * that stay in the HTML, so the two cannot share a component. They CAN share the box and the
- * icon chip, and they have to: both rows sit a few hundred pixels apart on the same park photo,
- * and a second copy of these classes is a second copy that drifts on the next restyle.
- *
- * Not `GlassCard`: that brings `p-6` and its own radius, and at tile size that is a card. The fill
- * is `TILE_GLASS` — the header stack's own glass one grade more solid, which is written down with
- * why a tile needs that grade and the two panels above it do not. What it replaces is a fill
- * invented here (`/85`, `oklch(…/0.88)` in the dark) with no relation to theirs, so the park page
- * opened with two panes of glass and a strip of black plastic underneath them.
+ * that stay in the HTML, so the two cannot share a component. They CAN share the cell
+ * (`tileCell` in `park-entry-tiles.tsx`), the icon chip and the body, and they have to: both rows
+ * sit a few hundred pixels apart on the same park photo, and a second copy of these classes is a
+ * second copy that drifts on the next restyle.
  */
-export const entryTileBox = cn(
-  'border-border/50 flex h-auto w-full flex-col items-start justify-start gap-2',
-  'rounded-xl border p-3.5 text-left whitespace-normal transition-colors',
-  TILE_GLASS
-);
 
 /** The icon chip. Square, so the row is scannable by shape before any label is read. */
 export const entryTileChip =

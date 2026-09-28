@@ -805,7 +805,7 @@ costs far more than it is worth: `transition-delay` is one property and the hove
 it would delay the hover of all seven entries on every page in the app. A timer in state is worse —
 a `setState` in an effect, which this project's lint rule refuses.
 
-The header's own GSAP stagger went with it (`lib/hooks/use-header-reveal.ts`): it built a
+The header's own GSAP stagger went with it (`lib/hooks/use-header-reveal.ts`, since deleted): it built a
 `fromTo(y: -10 → 0)` at the threshold and **reversed** it on the way back up, which is only
 invisible while the row is `opacity-0`. Measured on the old build, first nav link at 1440 px:
 `top 13.5` at rest, `matrix(1, 0, 0, 1, 0, -10)` and `top 3.5` after one scroll down and back — a

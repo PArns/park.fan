@@ -20,10 +20,9 @@ const DEFERRED_KEY_PREFIXES = [
 /**
  * `meta` for a query that gates itself on `useLoadLast` but whose key it shares with queries that
  * do not — `['calendar', …]` is the calendar grid's key too, where it is the page's main content
- * and must keep counting as traffic. The today panel's day detail and the today crowd level are
- * deferred `calendar` queries; without the mark they counted as outstanding traffic in every
- * other gate's window, the starvation described above, and held the best-days calendar and the
- * stats back by a round trip.
+ * and must keep counting as traffic. The today panel's day detail is a deferred `calendar`
+ * query; without the mark it counted as outstanding traffic in every other gate's window, the
+ * starvation described above, and held the best-days calendar and the stats back by a round trip.
  */
 export const LOAD_LAST_META = { loadLast: true } as const;
 

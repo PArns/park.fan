@@ -1,23 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/navigation';
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandList,
-} from '@/components/ui/command';
-import { Button } from '@/components/ui/button';
-import { trackSearchViewAll } from '@/lib/analytics/umami';
+import { CommandDialog, CommandInput } from '@/components/ui/command';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
-import { GlossaryResultItem } from '@/components/search/search-result-items';
-import { SkeletonItem } from '@/components/search/search-skeleton-list';
-import { SearchResultGroups } from '@/components/search/search-result-groups';
-import { SearchBrowseGroup } from '@/components/search/search-browse-group';
+import { SearchResultsPanel } from '@/components/search/search-results-panel';
 
 interface SearchDialogProps {
   /** Controlled open state — owned by the lightweight <SearchCommand> trigger. */
@@ -28,11 +17,17 @@ interface SearchDialogProps {
   onQueryChange: (query: string) => void;
 }
 
+const subscribeNever = () => () => {};
+const isApplePlatform = () => /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
+/** The ⌘ hint is the default, so the server and hydration passes agree. */
+const assumeApple = () => true;
+
 /**
  * The heavy search palette: cmdk + live result/glossary/nearby queries + result rendering. Code-
  * split out of the always-rendered <SearchCommand> trigger (see search-bar.tsx) so cmdk and this
  * tree stay OUT of every page's initial bundle — it only loads on first open. Data fetching +
- * match scoring live in `useSearchResults`; the result rows live in search-result-items.tsx.
+ * match scoring live in `useSearchResults`; the list body is `SearchResultsPanel`, the same one
+ * the hero's in-place search renders.
  */
 export default function SearchDialog({
   open,
@@ -42,48 +37,23 @@ export default function SearchDialog({
 }: SearchDialogProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
-  const router = useRouter();
 
   // Three live queries (search / glossary / browse) + debounce + match scoring.
-  const { debouncedQuery, results, loading, glossaryData, browse, sortResultsByMatch } =
-    useSearchResults(query);
-
-  // Open state lives in the lightweight <SearchCommand> trigger; closing just notifies it
-  // (the query reset is handled by the open/close effect above).
-  const handleOpenChange = (newOpen: boolean) => onOpenChange(newOpen);
+  const search = useSearchResults(query);
 
   // Shared analytics + routing for picking a result (same behavior as the hero's inline list).
+  // Closing just notifies the trigger, which owns the open state and clears the query.
   const { handleSelect, handleGlossarySelect } = useSearchNavigation(query.trim().length, () =>
-    handleOpenChange(false)
+    onOpenChange(false)
   );
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [isMac, setIsMac] = useState(true); // Default to Mac for SSR
-
-  useEffect(() => {
-    // matchMedia change events fire only when the breakpoint is actually
-    // crossed — unlike a window resize listener, which ran a layout read
-    // (innerWidth) on every resize frame just to recompute the same boolean.
-    const mq = window.matchMedia('(max-width: 639px)');
-    const updateMobile = () => setIsMobile(mq.matches);
-
-    const checkPlatform = () => {
-      setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent));
-    };
-
-    updateMobile();
-    checkPlatform();
-    mq.addEventListener('change', updateMobile);
-    return () => mq.removeEventListener('change', updateMobile);
-  }, []);
-
-  // Show skeleton as soon as user types ≥3 chars (covers debounce window + fetch)
-  const isPending = loading || (query.trim().length >= 3 && debouncedQuery.trim().length < 3);
+  const isMobile = useMediaQuery('(max-width: 639px)');
+  const isMac = useSyncExternalStore(subscribeNever, isApplePlatform, assumeApple);
 
   return (
     <CommandDialog
       open={open}
-      onOpenChange={handleOpenChange}
+      onOpenChange={onOpenChange}
       shouldFilter={false}
       showCloseButton={false}
     >
@@ -104,84 +74,19 @@ export default function SearchDialog({
           </kbd>
         }
       />
-      <CommandList>
-        {isPending && (
-          <div className="max-h-[calc(100svh-6rem)] overflow-hidden p-1 sm:max-h-[420px]">
-            {/* Fake section header */}
-            <div className="px-3 pt-4 pb-1.5">
-              <div className="h-2 w-16 animate-pulse rounded-full bg-white/[8%]" />
-            </div>
-            {Array.from({ length: 2 }).map((_, i) => (
-              <SkeletonItem key={`a${i}`} width={['55%', '72%'][i]} />
-            ))}
-            {/* Fake section header */}
-            <div className="px-3 pt-4 pb-1.5">
-              <div className="h-2 w-24 animate-pulse rounded-full bg-white/[8%]" />
-            </div>
-            {Array.from({ length: 3 }).map((_, i) => (
-              <SkeletonItem key={`b${i}`} width={['48%', '65%', '58%'][i]} />
-            ))}
+      <SearchResultsPanel
+        query={query}
+        search={search}
+        onSelect={handleSelect}
+        onGlossarySelect={handleGlossarySelect}
+        onNavigate={() => onOpenChange(false)}
+        restingFooter={null}
+        emptyBrowse={
+          <div className="text-muted-foreground py-10 text-center text-sm">
+            {tSearch('typeToSearch')}
           </div>
-        )}
-
-        {!isPending &&
-          debouncedQuery.length >= 3 &&
-          (!results || results.results.length === 0) &&
-          (!glossaryData || glossaryData.results.length === 0) && (
-            <CommandEmpty>{t('noResults')}</CommandEmpty>
-          )}
-
-        {!isPending &&
-          debouncedQuery.length >= 3 &&
-          (!results || results.results.length === 0) &&
-          glossaryData &&
-          glossaryData.results.length > 0 && (
-            <CommandGroup
-              heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
-            >
-              {glossaryData.results.map((item) => (
-                <GlossaryResultItem key={item.id} item={item} onSelect={handleGlossarySelect} />
-              ))}
-            </CommandGroup>
-          )}
-
-        {!isPending && results && results.results.length > 0 && (
-          <>
-            <SearchResultGroups
-              results={results}
-              glossaryData={glossaryData}
-              sortResultsByMatch={sortResultsByMatch}
-              onSelect={handleSelect}
-              onGlossarySelect={handleGlossarySelect}
-            />
-
-            {/* Link to full search page */}
-            <div className="border-border/30 border-t p-3">
-              <Button
-                variant="ghost"
-                className="hover:bg-foreground/10 w-full justify-center text-sm"
-                onClick={() => {
-                  handleOpenChange(false);
-                  trackSearchViewAll();
-                  router.push(`/search?q=${encodeURIComponent(query)}`);
-                }}
-              >
-                {tSearch('viewAllResults', { query })}
-              </Button>
-            </div>
-          </>
-        )}
-
-        {!isPending &&
-          query.length < 3 &&
-          (browse.items.length > 0 ? (
-            <SearchBrowseGroup browse={browse} onSelect={handleSelect} />
-          ) : (
-            <div className="text-muted-foreground py-10 text-center text-sm">
-              {tSearch('typeToSearch')}
-            </div>
-          ))}
-      </CommandList>
+        }
+      />
 
       {/* Keyboard shortcuts footer – hidden on mobile */}
       <div className="border-primary/10 bg-primary/10 text-foreground/50 dark:text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">

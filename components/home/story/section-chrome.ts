@@ -18,6 +18,3 @@ export const STORY_SECTION = 'px-4 py-16 sm:py-18';
 
 /** Tinted chapter band, with the rule that separates it from the one above. */
 export const STORY_SECTION_TINTED = 'border-border bg-muted/30 border-t px-4 py-16 sm:py-18';
-
-/** Untinted band that still wants the separating rule. */
-export const STORY_SECTION_RULED = 'border-border border-t px-4 py-16 sm:py-18';

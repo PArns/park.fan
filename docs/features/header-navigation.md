@@ -447,7 +447,7 @@ the reason nothing between the two may grow a stagger attribute.
 
 The band's columns lift into place when it opens, and the detail row settles again each time it
 fills with a different country. `lib/hooks/use-menu-reveal.ts`, following the rules
-`use-header-reveal.ts` arrived at (that hook no longer runs — PAR-170 took the header's own stagger
+`use-header-reveal.ts` arrived at (that hook is deleted — PAR-170 took the header's own stagger
 out with the fade it was layered on; the rules it arrived at are why this one is built as it is):
 
 - **CSS owns visibility, GSAP owns motion.** The timeline animates `y` and never `opacity`. The

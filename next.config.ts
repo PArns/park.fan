@@ -196,7 +196,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-tooltip',
       '@radix-ui/react-avatar',
       '@radix-ui/react-progress',
-      '@radix-ui/react-scroll-area',
       '@radix-ui/react-separator',
       '@radix-ui/react-slot',
     ],
