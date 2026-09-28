@@ -9,6 +9,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
 import type { CrowdLevel } from '@/lib/api/types';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -297,7 +298,11 @@ export function IngredientCard({
 }
 
 // ── Crowd-level spectrum: gradient bar + coloured cards ───────────────────────
-const CROWD_SPECTRUM = 'linear-gradient(90deg,#0d9488,#10b981,#22c55e,#f97316,#f43f5e,#dc2626)';
+// The site's crowd palette (`--crowd-*`) in scale order, so it follows the theme and any retuning
+// of the tokens. It was six fixed hex values from an older palette.
+const CROWD_SPECTRUM = `linear-gradient(90deg,${CROWD_LEVEL_ORDER.map(
+  (level) => `var(--crowd-${level.replace('_', '-')})`
+).join(',')})`;
 
 export function CrowdSpectrum({
   items,

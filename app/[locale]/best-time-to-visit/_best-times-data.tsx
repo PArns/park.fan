@@ -1,6 +1,8 @@
 import { getGlobalBestTimes, type BestTimeBucket } from '@/lib/api/best-times';
 import type { CrowdLevel } from '@/lib/api/types';
 import { weekdayName } from '@/lib/utils/intl-format';
+import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { cn } from '@/lib/utils';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { Clock } from 'lucide-react';
 
@@ -20,17 +22,6 @@ export interface BestTimesLabels {
   /** Shown while the live aggregate has not built up enough data yet. */
   pending: string;
 }
-
-// Crowd colours (match CrowdLevelBadge / the Fancast spectrum).
-const CROWD_HEX: Record<string, string> = {
-  very_low: '#0d9488',
-  low: '#10b981',
-  moderate: '#22c55e',
-  high: '#f97316',
-  very_high: '#f43f5e',
-  extreme: '#dc2626',
-  unknown: '#94a3b8',
-};
 
 function BarList({
   buckets,
@@ -71,12 +62,16 @@ function BarList({
               {name(b.key)}
             </span>
             <div className="bg-muted h-7 flex-1 overflow-hidden rounded-lg">
+              {/* The site's crowd palette (`--crowd-*`), as every other crowd bar draws it. It
+                  was six fixed hex values from an older palette. */}
               <div
-                className="h-full rounded-lg transition-[width,filter] duration-700 group-hover:brightness-110"
-                style={{
-                  width: `${Math.max(width, 4)}%`,
-                  backgroundColor: CROWD_HEX[b.crowdLevel] ?? CROWD_HEX.unknown,
-                }}
+                className={cn(
+                  'h-full rounded-lg transition-[width,filter] duration-700 group-hover:brightness-110',
+                  isColoredCrowdLevel(b.crowdLevel)
+                    ? CROWD_DOT_CLASS[b.crowdLevel]
+                    : 'bg-muted-foreground/40'
+                )}
+                style={{ width: `${Math.max(width, 4)}%` }}
                 aria-hidden
               />
             </div>
