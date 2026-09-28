@@ -9,6 +9,7 @@ import { STORY_SECTION, STORY_SECTION_TINTED } from '@/components/home/story/sec
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
+import { cn } from '@/lib/utils';
 
 /**
  * Suspense fallbacks for the homepage's data-dependent sections.
@@ -103,14 +104,14 @@ export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }
   );
 }
 
-export function FeaturedParksSkeleton() {
+/** `className` is the one `FeaturedParksSlot` gets, so the band's padding is the same box. */
+export function FeaturedParksSkeleton({ className }: { className?: string }) {
   return (
-    <section className="px-4 py-12">
+    <section className={cn('px-4 py-12', className)}>
       <div className="container mx-auto">
-        {/* This one section heads itself with a frosted pill instead of the bare row the
-            others use (see FeaturedParksSlot), and the pill is 76 px against the row's 40.
-            One child, same nesting, same height. */}
-        <div className="bg-background/70 mb-8 w-fit rounded-xl px-4 py-3 backdrop-blur-md">
+        {/* Title row and intro line, as in FeaturedParksSlot: one child, same nesting, same
+            height. */}
+        <div className="mb-8">
           <div className="flex items-center gap-2">
             <Skeleton className="h-5 w-5 rounded" />
             <Skeleton className="h-7 w-44 max-w-[60%]" />

@@ -9,6 +9,7 @@ import { HeroBackground } from '@/components/layout/hero-background';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
+import { STORY_SECTION_Y } from '@/components/home/story/section-chrome';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -16,11 +17,12 @@ const LocationBanner = nextDynamic(
 );
 
 // `loading` is a real Suspense fallback — see the note in page-bottom-sections.tsx. With
-// `() => null` the band arrived after the first paint and pushed the page tail down.
+// `() => null` the band arrived after the first paint and pushed the page tail down. It carries
+// the same `className` as the section below, or the band changes height as the chunk lands.
 const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
-  { loading: () => <FavoritesEmptyState textHidden />, ssr: true }
+  { loading: () => <FavoritesEmptyState textHidden className={STORY_SECTION_Y} />, ssr: true }
 );
 
 const NearbyParksCard = nextDynamic(
@@ -386,11 +388,18 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* Step 1, made real: the visitor's own nearest parks, then their own
           favourites. Both are Client Components that decide late (geolocation,
           a cookie) — hence the dynamic imports at the top of this file and the
-          box-reserving fallbacks. */}
+          box-reserving fallbacks.
+
+          The favourites band and the featured parks further down are borrowed
+          from the blog and glossary pages, which keep them tighter; here they
+          get the story's padding (`STORY_SECTION_Y`). On a phone these two, the
+          nearby chapter and the open-parks section stand together under the
+          hero, and with their own paddings every band edge in that block had a
+          different gap on either side of it. */}
         <NearbyChapter>
           <NearbyParksCard />
         </NearbyChapter>
-        <FavoritesSection />
+        <FavoritesSection className={STORY_SECTION_Y} />
 
         {/* From here to the FAQ, everything is drawn after the parks on a phone — see
           PHONE_LATER. The wrappers are plain boxes in this flex column; the sections inside
@@ -424,8 +433,8 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
 
         {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
-        <Suspense fallback={<FeaturedParksSkeleton />}>
-          <FeaturedParksSlot locale={locale} />
+        <Suspense fallback={<FeaturedParksSkeleton className={STORY_SECTION_Y} />}>
+          <FeaturedParksSlot locale={locale} className={STORY_SECTION_Y} />
         </Suspense>
 
         {/* Live Activity - Parks Open Now — no pk-reveal: its cards are GlassCards, and the

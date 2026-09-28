@@ -4,6 +4,36 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Homepage on a phone: one band padding throughout, and a kicker that stands on its own
+
+Below 768 px the park block under the hero (nearby, favourites, popular parks, open parks per
+continent) had a different gap at every band edge, measured on `/de` at 390 px from the last
+content of one band to the first of the next:
+
+| Edge                        | before         | after    |
+| --------------------------- | -------------- | -------- |
+| hero photo → nearby heading | 0              | 64       |
+| nearby → favourites         | 64 \| 32       | 64 \| 64 |
+| favourites → popular parks  | 32 \| 48 (+12) | 64 \| 64 |
+| popular parks → open parks  | 48 \| 64       | 64 \| 64 |
+
+Every story chapter below already ran 64 | 64 (`STORY_SECTION`, 72 from `sm`).
+
+- **`NearbyChapter`** gets a top padding below 768 px. It had none because `ThreeSteps` stands
+  above it on a wide page, but `PHONE_LATER` moves the steps under the park lists on a phone, so
+  the heading tile sat flush on the hero photo's lower edge. From 768 px up nothing changes.
+- **`FavoritesSection`, `FavoritesEmptyState`, `FeaturedParksSlot` and `FeaturedParksSkeleton`**
+  take a `className` for their band padding. The homepage passes `STORY_SECTION_Y` (new in
+  `section-chrome.ts`) to each section and to its fallback; blog and glossary pages keep the
+  tighter padding they had. On a wide homepage this is the same 72 | 72 as every other edge now
+  (favourites ran 32, popular parks 48).
+- **The popular-parks heading** loses its frosted pill: `bg-background/70` on `bg-background`,
+  so on every page nobody saw the pill, only its `px-4`, which put the star 16 px right of the
+  cards. The skeleton drops it the same way.
+- **The nearby chapter's kicker** read „Schritt 1 in echt“ („Step 1, for real“), a pointer at
+  `ThreeSteps` above it. On a phone the steps come after it, so the first thing under the hero
+  was a „step 1“ nobody had met yet. It says „Dein Standort“ now, in all six locales.
+
 ## Unreleased – Park page: the location control moves onto the title card's address line
 
 The park page's near-you row sat between the title card and „Heute im Park", outside both cards,
