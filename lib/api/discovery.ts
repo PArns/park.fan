@@ -146,7 +146,11 @@ async function fetchParksNearLocation(
       .filter((p) => p.distance <= maxDistanceM)
       .slice(0, limit)
       .map(stripUnreadableWaitStats);
-  } catch {
+  } catch (error) {
+    // The live variant backs `/api/parks/near`, which shares its answer for 60 s: an empty list
+    // there would be cached as "no neighbours" and replace the cards' last good status. It throws,
+    // and the route answers an uncached 502. The page's own proximity list keeps rendering nothing.
+    if (fresh) throw error;
     return [];
   }
 }

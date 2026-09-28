@@ -9,9 +9,10 @@ import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
  * /api/parks/[...path] catch-all (static segment wins).
  *
  * Shared-cached for 60 s, the window `/api/parks/live` has for the same kind of answer. It was
- * `no-store`, so every park and calendar page view and every five-minute poll was a function
- * invocation and a backend call, although the coordinates are the park's own and the URL is the
- * same for every visitor of that park. Unlike `/api/nearby`, which geolocates the visitor, nothing
+ * `no-store`, so every park page view and every five-minute poll was a function invocation and a
+ * backend call, although the coordinates are the park's own (`LiveNearbyParks`) and the URL is the
+ * same for every visitor of that park. A backend failure throws (`getParksNearLocationFresh`) and
+ * answers the uncached 502 below, never a shared empty list. Unlike `/api/nearby`, which geolocates the visitor, nothing
  * here depends on who asks. The rule in next.config.ts carries the same value.
  */
 export async function GET(request: NextRequest) {

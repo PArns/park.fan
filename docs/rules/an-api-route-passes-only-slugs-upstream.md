@@ -53,7 +53,10 @@ every time would otherwise be rendered for every crawler that asks, so its 500 c
 
 The other direction costs function time: an answer that is the same for every visitor and answers
 `no-store` is a function invocation per page view and per poll. `/api/parks/near` (the park's own
-coordinates) and `/api/analytics/{ticker,realtime,geo-live}` were; they carry the 60 s window of
+coordinates, one URL per park) and `/api/analytics/{ticker,realtime,geo-live}` (one URL for every
+homepage and hub visitor) were. How much a window saves follows the requests per URL inside it:
+the analytics URLs collapse well, a park's `near` URL only for parks with several visitors a
+minute. Both carry the 60 s window of
 `/api/parks/live` now, in the handler and in `next.config.ts` alike (the two halves must match —
 see `lib/api/cdn-cache-headers.ts`). What stays `no-store` is what depends on the visitor
 (`/api/nearby`, which geolocates the request IP; `/api/favorites`) or is deliberately live (the
