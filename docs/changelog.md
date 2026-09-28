@@ -4,6 +4,31 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Homepage and trip planner: copy without the quips
+
+The homepage bands and the trip-planner page read as generated, and not because of single words:
+nearly every lead ended on a joke or a simile („Die geht ganz ohne Anstehen“, „so dankbar wie eine
+Stauprognose für den ersten Ferientag“, „ganz ohne flauen Magen“, „ungefähr eine Serienfolge pro
+Bahn“, „Andere kaufen sich … einfach einen Express-Pass“, the child in the Taron queue who would
+rather ride the teacups), plus `nicht X, sondern Y` turns and closing maxims (§2.1, §2.8 of
+[blog.md](blog.md)). German was rewritten first, 69 keys in `home`, `homeStory`,
+`seo.homepage.faq` and `planner` plus the planner article in
+`app/[locale]/trip-planner/content/de.tsx`; the other five locales were written from it as their
+own sentences.
+
+Five statements were wrong and are fixed with it:
+
+- The crowd calendar's orange and red were described as „a three-quarter-hour queue at every
+  popular ride“. The colour is relative to a typical day in the same park
+  (`CROWD_LEVEL_PERCENT_RANGE`), so the band now says that, with the consequence spelled out.
+- The hero intro pointed at the world map, which is only drawn from 1280 px of page width.
+- „Zu jedem Park gibt es den passenden Artikel“: many parks have none.
+- The AI chapter said „instead of a crowd level per day“ under a calendar that shows one.
+- The nearby chapter said the list is sorted by distance; open parks come first
+  (`nearby-parks-list-view.tsx`).
+
+`UI_EM_DASH_BASELINE.en` in `scripts/check-prose.mjs` drops from 30 to 27.
+
 ## Unreleased – Homepage on a phone: one band padding throughout, and a kicker that stands on its own
 
 Below 768 px the park block under the hero (nearby, favourites, popular parks, open parks per
