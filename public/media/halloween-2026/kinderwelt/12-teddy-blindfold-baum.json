@@ -1,4 +1,5 @@
 {
+  "title": "12-teddy-blindfold-baum",
   "park": "walibi-holland",
   "tags": ["halloween", "photo", "theming"],
   "alt": {
@@ -20,5 +21,9 @@
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.4185,
+    "y": 0.2981
   }
 }
