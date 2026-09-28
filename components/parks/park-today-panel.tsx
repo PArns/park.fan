@@ -13,7 +13,7 @@ import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
-import { ParkHolidayRow } from './park-holiday-row';
+import { ParkHolidayBand } from './park-holiday-row';
 import { WeatherWarningBanner } from './weather-warning-banner';
 import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -1037,12 +1037,10 @@ export function ParkTodayPanel({
           Measured on Lotte World Adventure, which had a bridge day that day: 96 px with
           JavaScript off, 96 px settled, same chips. Reserving a box for it would hold empty space
           on the 147 parks that have no holiday today against a shift that does not happen. */}
-      <ParkHolidayRow
+      <ParkHolidayBand
+        holiday={sched.holiday}
         initialData={initialData}
-        continent={continent}
         country={country}
-        city={city}
-        parkSlug={parkSlug}
         className="border-border/50 border-t px-5 py-3 empty:hidden"
       />
 

@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { CalendarDays, Luggage } from 'lucide-react';
-import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
+import { useTodaySchedule, type TodayScheduleResult } from '@/lib/hooks/use-today-schedule';
 import { countryCodeForSlug, countryFlagEmoji, getRegionLabel } from '@/lib/utils/region-names';
 import { translateHolidayName, genericSchoolHolidayName } from '@/lib/utils/holiday-names';
 import { cn } from '@/lib/utils';
@@ -59,12 +59,8 @@ export function ParkHolidayRow({
   parkSlug = '',
   className,
 }: ParkHolidayRowProps) {
-  const t = useTranslations('parks');
-  const locale = useLocale();
-  const timezone = initialData.timezone ?? 'UTC';
-
   const sched = useTodaySchedule({
-    timezone,
+    timezone: initialData.timezone ?? 'UTC',
     schedule: initialData.schedule,
     nextSchedule: initialData.nextSchedule,
     status: initialData.status,
@@ -75,7 +71,36 @@ export function ParkHolidayRow({
     parkSlug,
   });
 
-  const holiday = sched.holiday;
+  return (
+    <ParkHolidayBand
+      holiday={sched.holiday}
+      initialData={initialData}
+      country={country}
+      className={className}
+    />
+  );
+}
+
+/**
+ * The band itself, for a caller that already holds today's schedule.
+ *
+ * `ParkTodayPanel` runs `useTodaySchedule` with exactly the inputs this row would, so rendering
+ * the row there ran the hook twice: a second live-query observer and every date computation again,
+ * on each minute tick and each poll. The panel hands its `sched.holiday` in instead.
+ */
+export function ParkHolidayBand({
+  holiday,
+  initialData,
+  country = '',
+  className,
+}: {
+  holiday: TodayScheduleResult['holiday'];
+  initialData: ParkWithAttractions;
+  country?: string;
+  className?: string;
+}) {
+  const t = useTranslations('parks');
+  const locale = useLocale();
 
   /** What the park's own state/country has today, in the order a visitor asks about it. */
   const localChips = useMemo(() => {
