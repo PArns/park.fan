@@ -41,12 +41,9 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { Temp } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
-import {
-  getEventIcon,
-  getWeatherIconFromCode,
-  getWeatherTranslationKey,
-  upcomingHourlyPredictions,
-} from '@/lib/utils/calendar-utils';
+import { parkDayOf } from '@/lib/utils/park-day';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 
@@ -109,7 +106,7 @@ export function ParkCalendarDayDetail({
   // month and a visit cannot be planned for a day that has already happened
   // where the park is. `en-CA` because it formats as YYYY-MM-DD, which is what
   // `CalendarDay.date` is and what compares correctly as a string.
-  const todayInPark = new Date().toLocaleDateString('en-CA', { timeZone: parkTimezone });
+  const todayInPark = parkDayOf(new Date(), parkTimezone);
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -616,12 +613,12 @@ export function ParkCalendarDayDetail({
                 {t('calendarView.details.weather.title')}
               </h3>
               <div className="flex items-center gap-3">
-                {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
+                {createElement(getWeatherConfig(day.weather.icon).icon, {
                   className: 'h-7 w-7 text-sky-500',
                 })}
                 <div className="text-sm">
                   <p className="font-medium">
-                    {t(`weather.${getWeatherTranslationKey(day.weather.icon)}`)}
+                    {t(`weather.${getWeatherConfig(day.weather.icon).label}`)}
                   </p>
                   <p className="text-muted-foreground">
                     <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />

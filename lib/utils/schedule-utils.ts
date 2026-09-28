@@ -1,16 +1,9 @@
+import { formatDurationShort } from '@/lib/i18n/time';
 import type { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 
 export type { ScheduleSummary };
-
-/** Splits a millisecond duration into full hours and remaining minutes. */
-function diffToHoursMinutes(diffMs: number): { hours: number; minutes: number } {
-  return {
-    hours: Math.floor(diffMs / (1000 * 60 * 60)),
-    minutes: Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)),
-  };
-}
 
 /**
  * Computes a human-readable schedule message for a park card.
@@ -58,15 +51,7 @@ export function getScheduleMessage(
       const diff = closing.getTime() - now.getTime();
       if (diff <= 0) return null;
 
-      const { hours, minutes } = diffToHoursMinutes(diff);
-
-      if (hours > 0) {
-        return {
-          message: `${t('closesIn')} ${hours} ${tCommon('hours')}. ${minutes} Min.`,
-          icon: 'closing',
-        };
-      }
-      return { message: `${t('closesIn')} ${minutes} Min.`, icon: 'closing' };
+      return { message: `${t('closesIn')} ${formatDurationShort(diff, tCommon)}`, icon: 'closing' };
     }
 
     if (effectiveStatus === 'CLOSED' || effectiveStatus === 'UNKNOWN') {
@@ -75,7 +60,8 @@ export function getScheduleMessage(
         const diff = opening.getTime() - now.getTime();
 
         if (diff > 0) {
-          const { hours, minutes } = diffToHoursMinutes(diff);
+          const hours = diff / (1000 * 60 * 60);
+          const remaining = `${tCommon('in')} ${formatDurationShort(diff, tCommon)}`;
 
           if (hours < 24) {
             if (timezone) {
@@ -86,31 +72,16 @@ export function getScheduleMessage(
               const openingInParkTz = parkDay(opening);
               const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
 
-              if (hours > 0) {
-                return {
-                  message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
-                  icon: 'opening',
-                  openingTimeISO: opening.toISOString(),
-                  dayPrefix,
-                  remainingText: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
-                };
-              }
               return {
-                message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
+                message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (${remaining})`,
                 icon: 'opening',
                 openingTimeISO: opening.toISOString(),
                 dayPrefix,
-                remainingText: `in ${minutes} Min.`,
+                remainingText: remaining,
               };
             } else {
               // No timezone available — show only relative time to avoid displaying wrong UTC time
-              if (hours > 0) {
-                return {
-                  message: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
-                  icon: 'opening',
-                };
-              }
-              return { message: `in ${minutes} Min.`, icon: 'opening' };
+              return { message: remaining, icon: 'opening' };
             }
           }
         }
@@ -126,7 +97,7 @@ export function getScheduleMessage(
           const totalWeeks = totalDays / 7;
 
           if (totalHours < 24) {
-            const { hours, minutes } = diffToHoursMinutes(diff);
+            const remaining = `${tCommon('in')} ${formatDurationShort(diff, tCommon)}`;
 
             if (timezone) {
               const openingTimeFormatted = clockTime(nextOpening);
@@ -136,31 +107,16 @@ export function getScheduleMessage(
               const openingInParkTz = parkDay(nextOpening);
               const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
 
-              if (hours > 0) {
-                return {
-                  message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
-                  icon: 'opening',
-                  openingTimeISO: nextOpening.toISOString(),
-                  dayPrefix,
-                  remainingText: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
-                };
-              }
               return {
-                message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
+                message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (${remaining})`,
                 icon: 'opening',
                 openingTimeISO: nextOpening.toISOString(),
                 dayPrefix,
-                remainingText: `in ${minutes} Min.`,
+                remainingText: remaining,
               };
             } else {
               // No timezone available — show only relative time to avoid displaying wrong UTC time
-              if (hours > 0) {
-                return {
-                  message: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
-                  icon: 'opening',
-                };
-              }
-              return { message: `in ${minutes} Min.`, icon: 'opening' };
+              return { message: remaining, icon: 'opening' };
             }
           } else if (totalDays < 7) {
             const weekday = getDateTimeFormat(locale, {
@@ -169,19 +125,20 @@ export function getScheduleMessage(
             }).format(nextOpening);
             const days = Math.floor(totalDays);
             const remainingHours = Math.floor(totalHours % 24);
+            const remaining = `${tCommon('in')} ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hourShort')}`;
 
             if (timezone) {
               const openingTimeFormatted = clockTime(nextOpening);
               return {
-                message: `${weekday}, ${openingTimeFormatted}${tCommon('timeSuffix')} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
+                message: `${weekday}, ${openingTimeFormatted}${tCommon('timeSuffix')} (${remaining})`,
                 icon: 'opening',
                 openingTimeISO: nextOpening.toISOString(),
                 dayPrefix: `${weekday}, `,
-                remainingText: `in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.`,
+                remainingText: remaining,
               };
             }
             return {
-              message: `${weekday} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
+              message: `${weekday} (${remaining})`,
               icon: 'opening',
             };
           } else if (hasOperatingSchedule) {

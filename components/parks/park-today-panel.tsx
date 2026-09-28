@@ -28,6 +28,7 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
 import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-context';
@@ -184,7 +185,7 @@ export function ParkTodayPanel({
   const browserNow = useMinuteNowDate();
   const { data: calendar } = useParkBestDaysCalendar({ continent, country, city, parkSlug });
   const todayStr = useMemo(
-    () => (browserNow ? browserNow.toLocaleDateString('en-CA', { timeZone: timezone }) : null),
+    () => (browserNow ? parkDayOf(browserNow, timezone) : null),
     [browserNow, timezone]
   );
 

@@ -36,12 +36,12 @@ const todayStr = formatInTimeZone(new Date(), timeZone, 'yyyy-MM-dd');
 // Use todayStr to filter schedule: schedule.find((s) => s.date === todayStr)
 ```
 
-Alternative (no date-fns-tz):
+Alternative (no date-fns-tz), on a cached formatter:
 
 ```ts
-const todayStr = new Date().toLocaleDateString('en-CA', {
-  timeZone: park.timezone,
-}); // "YYYY-MM-DD"
+import { parkDayOf } from '@/lib/utils/park-day';
+
+const todayStr = parkDayOf(new Date(), park.timezone); // "YYYY-MM-DD"
 ```
 
 ---
@@ -134,11 +134,11 @@ the bars whose hour has ended.
 
 | Place                   | Usage                                                                                        |
 | ----------------------- | -------------------------------------------------------------------------------------------- |
-| Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`                 |
+| Park page               | Today's schedule: `parkDayOf(now, park.timezone)` (`lib/utils/park-day.ts`)                  |
 | FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                                    |
 | Calendar (day cells)    | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')` — timezone from `meta.timezone` |
 | Calendar (hourly chart) | `hourlyPredictionInstants(day.date, hours, timezone)` → `formatInTimeZone(…, 'HH')`          |
-| Calendar utils          | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone`              |
+| Calendar utils          | `lib/utils/calendar-utils.ts`: `upcomingHourlyPredictions`, `isServableHourlyDate`           |
 | ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                                   |
 
 ---

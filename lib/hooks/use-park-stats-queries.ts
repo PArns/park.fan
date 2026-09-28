@@ -1,4 +1,4 @@
-import { useQueries } from '@tanstack/react-query';
+import { queryOptions, useQueries } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
@@ -34,6 +34,44 @@ function statsUrl(target: ParkStatsTarget, depth: StatsDepth): string {
 }
 
 /**
+ * The `/stats` query for one park at one depth: key, fetch and cache windows. Shared by
+ * `useParkStatsQueries` below and `useParkHistoricalStats` (the park page's stats and best-days
+ * sections), which used to spell the same query out a second time.
+ *
+ * 'park-historical-stats' + the four segments is the whole key at the default depth, so a
+ * default-depth table on a park page reuses the section's own fetch. The depth suffix only
+ * appears when it is not the default, keeping that key byte-identical.
+ *
+ * `releasedLast` is the caller's `useLoadLast()`: historical aggregates never race the live
+ * status and weather queries (loads-last rule).
+ */
+export function parkStatsQuery(target: ParkStatsTarget, depth: StatsDepth, releasedLast: boolean) {
+  const parkKey = [
+    'park-historical-stats',
+    target.continent,
+    target.country,
+    target.city,
+    target.parkSlug,
+  ] as const;
+  return queryOptions({
+    queryKey: depth === 'default' ? parkKey : ([...parkKey, depth] as const),
+    queryFn: async (): Promise<ParkHistoricalStats | null> => {
+      const res = await fetch(statsUrl(target, depth), { cache: 'no-store' });
+      // 404 is "this park has no displayable aggregate", a settled answer — not a failure to
+      // retry. The caller renders an em dash for it.
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error(`stats ${target.parkSlug}: ${res.statusText}`);
+      return (await res.json()) as ParkHistoricalStats;
+    },
+    enabled: typeof window !== 'undefined' && releasedLast,
+    staleTime: 60 * 60_000,
+    gcTime: 90 * 60_000,
+    refetchOnWindowFocus: false,
+    retry: 1,
+  });
+}
+
+/**
  * One `/stats` fetch per park, shared by every table built on the historical aggregate.
  *
  * Extracted because three surfaces read the same payload — the park-comparison table, the
@@ -63,41 +101,7 @@ export function useParkStatsQueries(
   const releasedLast = useLoadLast();
 
   const results = useQueries({
-    queries: targets.map((target) => ({
-      // 'park-historical-stats' + the four segments is exactly the key useParkHistoricalStats
-      // uses, so a default-depth table on a park page reuses the section's own fetch. The depth
-      // suffix only appears when it is not the default, keeping that key byte-identical.
-      queryKey:
-        depth === 'default'
-          ? ([
-              'park-historical-stats',
-              target.continent,
-              target.country,
-              target.city,
-              target.parkSlug,
-            ] as const)
-          : ([
-              'park-historical-stats',
-              target.continent,
-              target.country,
-              target.city,
-              target.parkSlug,
-              depth,
-            ] as const),
-      queryFn: async (): Promise<ParkHistoricalStats | null> => {
-        const res = await fetch(statsUrl(target, depth), { cache: 'no-store' });
-        // 404 is "this park has no displayable aggregate", a settled answer — not a failure to
-        // retry. The caller renders an em dash for it.
-        if (res.status === 404) return null;
-        if (!res.ok) throw new Error(`stats ${target.parkSlug}: ${res.statusText}`);
-        return (await res.json()) as ParkHistoricalStats;
-      },
-      enabled: typeof window !== 'undefined' && releasedLast,
-      staleTime: 60 * 60_000,
-      gcTime: 90 * 60_000,
-      refetchOnWindowFocus: false,
-      retry: 1,
-    })),
+    queries: targets.map((target) => parkStatsQuery(target, depth, releasedLast)),
   });
 
   return {

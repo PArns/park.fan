@@ -1,4 +1,5 @@
 import type { ScheduleItem } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 /**
  * Whether the park's day is over at `atMs`: it does not operate today, or today's last
@@ -20,7 +21,7 @@ export function isParkDayOver(
   atMs: number
 ): boolean | null {
   if (!schedule?.length) return null;
-  const today = new Date(atMs).toLocaleDateString('en-CA', { timeZone: timezone });
+  const today = parkDayOf(atMs, timezone);
   const entries = schedule.filter((s) => s.date === today);
   if (entries.length === 0) return null;
   const operating = entries.filter((s) => s.scheduleType === 'OPERATING');

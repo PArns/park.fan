@@ -103,53 +103,13 @@ export function ParkHolidayBand({
   const locale = useLocale();
 
   /** What the park's own state/country has today, in the order a visitor asks about it. */
-  const localChips = useMemo(() => {
-    if (!holiday) return [];
-    const chips: { key: string; icon: string; label: string; tone: string }[] = [];
-    if (holiday.publicHolidayName) {
-      chips.push({
-        key: 'public',
-        icon: '🎉',
-        label: translateHolidayName(holiday.publicHolidayName, locale),
-        tone: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-800 dark:bg-orange-950/50 dark:text-orange-300',
-      });
-    }
-    if (holiday.isBridgeDay) {
-      chips.push({
-        key: 'bridge',
-        icon: '🌉',
-        label: t('bridgeDay'),
-        tone: 'border-blue-300 bg-blue-50 text-blue-800 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
-      });
-    }
-    if (holiday.isSchoolVacation) {
-      chips.push({
-        key: 'school',
-        // The break's own name when the feed gives one ("Sommerferien"), the generic word when it
-        // only sets the flag — which is most parks outside Germany.
-        icon: '🎒',
-        label: holiday.schoolHolidayName
-          ? translateHolidayName(holiday.schoolHolidayName, locale)
-          : genericSchoolHolidayName(locale),
-        tone: 'border-yellow-300 bg-yellow-50 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-950/50 dark:text-yellow-300',
-      });
-    }
-    return chips;
-  }, [holiday, locale, t]);
+  const localChips = useMemo(
+    () => localHolidayChips(holiday, locale, t('bridgeDay')),
+    [holiday, locale, t]
+  );
 
   /** Neighbouring regions on a school break, deduplicated by the name they render under. */
-  const neighbours = useMemo(() => {
-    const labels: { label: string; flag: string }[] = [];
-    const seen = new Set<string>();
-    for (const h of holiday?.influencing ?? []) {
-      const { countryCode, regionCode } = h.source;
-      const label = getRegionLabel(countryCode, regionCode, locale);
-      if (seen.has(label)) continue;
-      seen.add(label);
-      labels.push({ label, flag: countryFlagEmoji(countryCode) });
-    }
-    return labels;
-  }, [holiday, locale]);
+  const neighbours = useMemo(() => neighbourRegions(holiday, locale), [holiday, locale]);
 
   if (localChips.length === 0 && neighbours.length === 0) return null;
 
@@ -188,16 +148,9 @@ export function ParkHolidayBand({
             </span>
             <div className="flex flex-wrap items-center gap-1.5">
               {localChips.map((chip) => (
-                <span
-                  key={chip.key}
-                  className={cn(
-                    'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-medium',
-                    chip.tone
-                  )}
-                >
-                  <span aria-hidden="true">{chip.icon}</span>
+                <HolidayChip key={chip.key} icon={chip.icon} tone={chip.tone}>
                   {chip.label}
-                </span>
+                </HolidayChip>
               ))}
             </div>
           </>
@@ -214,13 +167,9 @@ export function ParkHolidayBand({
             </span>
             <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
               {shownNeighbours.map((r) => (
-                <span
-                  key={r.label}
-                  className="border-border/60 text-muted-foreground inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-medium"
-                >
-                  {r.flag && <span aria-hidden="true">{r.flag}</span>}
+                <HolidayChip key={r.label} icon={r.flag} tone={NEIGHBOUR_CHIP_TONE}>
                   {r.label}
-                </span>
+                </HolidayChip>
               ))}
               {overflow > 0 && (
                 <span className="text-muted-foreground text-xs font-medium">+{overflow}</span>
@@ -236,4 +185,90 @@ export function ParkHolidayBand({
       </div>
     </div>
   );
+}
+
+/**
+ * One chip of the band. Exported with the two builders below for `ParkTimeInfo`, which reads the
+ * same `useTodaySchedule().holiday` and used to draw its own chips: a school break went behind the
+ * public holiday's party-popper there, in English, after the band had stopped doing it.
+ */
+export function HolidayChip({
+  icon,
+  tone,
+  children,
+}: {
+  icon?: string;
+  tone: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-medium',
+        tone
+      )}
+    >
+      {icon && <span aria-hidden="true">{icon}</span>}
+      {children}
+    </span>
+  );
+}
+
+/** Neighbouring regions are the second rank: neutral chips, no colour of their own. */
+export const NEIGHBOUR_CHIP_TONE = 'border-border/60 text-muted-foreground';
+
+/** What the park's own state/country has today, in the order a visitor asks about it. */
+export function localHolidayChips(
+  holiday: TodayScheduleResult['holiday'],
+  locale: string,
+  bridgeDayLabel: string
+): { key: string; icon: string; label: string; tone: string }[] {
+  if (!holiday) return [];
+  const chips: { key: string; icon: string; label: string; tone: string }[] = [];
+  if (holiday.publicHolidayName) {
+    chips.push({
+      key: 'public',
+      icon: '🎉',
+      label: translateHolidayName(holiday.publicHolidayName, locale),
+      tone: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-800 dark:bg-orange-950/50 dark:text-orange-300',
+    });
+  }
+  if (holiday.isBridgeDay) {
+    chips.push({
+      key: 'bridge',
+      icon: '🌉',
+      label: bridgeDayLabel,
+      tone: 'border-blue-300 bg-blue-50 text-blue-800 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300',
+    });
+  }
+  if (holiday.isSchoolVacation) {
+    chips.push({
+      key: 'school',
+      // The break's own name when the feed gives one ("Sommerferien"), the generic word when it
+      // only sets the flag — which is most parks outside Germany.
+      icon: '🎒',
+      label: holiday.schoolHolidayName
+        ? translateHolidayName(holiday.schoolHolidayName, locale)
+        : genericSchoolHolidayName(locale),
+      tone: 'border-yellow-300 bg-yellow-50 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-950/50 dark:text-yellow-300',
+    });
+  }
+  return chips;
+}
+
+/** Neighbouring regions on a school break, deduplicated by the name they render under. */
+export function neighbourRegions(
+  holiday: TodayScheduleResult['holiday'],
+  locale: string
+): { label: string; flag: string }[] {
+  const labels: { label: string; flag: string }[] = [];
+  const seen = new Set<string>();
+  for (const h of holiday?.influencing ?? []) {
+    const { countryCode, regionCode } = h.source;
+    const label = getRegionLabel(countryCode, regionCode, locale);
+    if (seen.has(label)) continue;
+    seen.add(label);
+    labels.push({ label, flag: countryFlagEmoji(countryCode) });
+  }
+  return labels;
 }

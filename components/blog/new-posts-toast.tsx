@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion, type PanInfo } from 'framer-
 import { ArrowRight, Newspaper, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import { LiveDot } from '@/components/common/live-dot';
 import type { LatestPost, LatestPostsLabels } from '@/lib/blog/new-posts';
 import { trackBlogToastOpened } from '@/lib/analytics/umami';
 
@@ -256,12 +257,11 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
               </div>
 
               <div className="relative flex items-center gap-2 px-4 pt-2 sm:pt-3.5">
-                <span className="relative flex h-2 w-2">
-                  {!reduceMotion && (
-                    <span className="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-60" />
-                  )}
-                  <span className="bg-primary relative inline-flex h-2 w-2 rounded-full" />
-                </span>
+                <LiveDot
+                  color="bg-primary"
+                  pingColor="bg-primary opacity-60"
+                  showPing={!reduceMotion}
+                />
                 <span className="text-primary text-[11px] font-semibold tracking-wide uppercase">
                   {labels.eyebrow}
                 </span>

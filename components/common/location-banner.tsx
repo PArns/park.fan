@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useSyncExternalStore } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { trackLocationBannerClicked } from '@/lib/analytics/umami';
 import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
 
@@ -34,14 +35,9 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const tCommon = useTranslations('common');
   const { permissionGranted, permissionDenied, loading, initialCheckDone, refresh } =
     useGeolocation();
-  // Server snapshot = false → always null during SSR and the hydration pass,
-  // matching what the server produced. Client snapshot = true, so after
-  // hydration the real geolocation state takes over.
-  const mounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false
-  );
+  // False on the server and in the hydration pass → the banner renders null there,
+  // matching what the server produced. After hydration the real geolocation state takes over.
+  const mounted = useMounted();
 
   // Dismissible: hide for 30 days once the user closes it (the banner is client-only, so reading
   // localStorage in the initializer is safe). One session was too short: a visitor who had said

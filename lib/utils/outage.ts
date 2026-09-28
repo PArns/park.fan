@@ -1,5 +1,5 @@
 import type { AttractionOutage, OutageEstimate } from '@/lib/api/types';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 /**
  * Reading the running-outage block, in one place, for the two surfaces that draw it.
@@ -118,29 +118,6 @@ const WEEKDAY_HORIZON_DAYS = 7;
 const MIN_CLOCK_SPREAD_MS = 60_000;
 
 /**
- * A formatter for the calendar day an instant falls on in a given zone, as
- * `YYYY-MM-DD`.
- *
- * `en-CA` because it is the one widely-supported locale whose short date IS
- * ISO order, so the result compares as a string. The zone is the whole point:
- * two instants 40 minutes apart sit on different days in Sydney and on the same
- * day in Berlin, and it is the park's evening a visitor is standing in.
- *
- * Throws on an unusable zone rather than falling back to the runtime's own — a
- * fallback would make this answer differ between the server render and the
- * hydration render, which is the one failure mode a day comparison must not
- * have. {@link outageRecoveryClock} catches it and withholds the clock form.
- */
-function zonedDayFormat(timeZone: string): Intl.DateTimeFormat {
-  return getDateTimeFormat('en-CA', {
-    timeZone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
-}
-
-/**
  * When the outage is expected to be over, on the park's own clock.
  *
  * The duration sentence beside this one is measured in OPERATING minutes, and
@@ -184,12 +161,16 @@ export function outageRecoveryClock(
   const from = new Date(window.from);
   if (Number.isNaN(from.getTime())) return null;
 
-  // One `Intl.DateTimeFormat` for both ends, built before either is read: an
-  // unusable zone throws on construction, and that has to cost the clock form
-  // rather than half of it.
-  let day: Intl.DateTimeFormat;
+  // The day `from` falls on in the park's zone, read before anything else: an
+  // unusable zone throws here, and that has to cost the clock form rather than
+  // half of it. Throwing rather than falling back to the runtime's own zone is
+  // deliberate — a fallback would make the day comparison below differ between
+  // the server render and the hydration render. The zone is the whole point:
+  // two instants 40 minutes apart sit on different days in Sydney and on the
+  // same day in Berlin, and it is the park's evening a visitor is standing in.
+  let fromDay: string;
   try {
-    day = zonedDayFormat(timezone);
+    fromDay = parkDayOf(from, timezone);
   } catch {
     return null;
   }
@@ -212,7 +193,7 @@ export function outageRecoveryClock(
   return {
     from: window.from,
     to: spread.toISOString(),
-    toOnLaterDay: day.format(spread) !== day.format(from),
+    toOnLaterDay: parkDayOf(spread, timezone) !== fromDay,
   };
 }
 

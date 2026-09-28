@@ -68,7 +68,8 @@ export interface TodayScheduleResult {
  * current park-local time, offseason reopening, holiday context) from the day-stable park
  * schedule + the browser clock in the park's timezone.
  *
- * Single source of truth shared by <ParkTimeInfo> and the park header board (<ParkHeaderStats>).
+ * Single source of truth shared by <ParkTimeInfo>, the park header (<ParkTodayPanel>) and
+ * <ParkHolidayRow>.
  * Subscribes to the same live park query LiveParkData polls (shared React Query key → no extra
  * fetch) and prefers its fresh values, falling back to the passed props until the poll lands so
  * SSR and the first client render agree (hydration-safe).

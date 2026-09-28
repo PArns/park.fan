@@ -10,6 +10,8 @@
  * They remain `async` so existing `await` call sites and `Promise` return types are unaffected.
  */
 
+import { parkDayOf } from '@/lib/utils/park-day';
+
 /** Current calendar year (for copyright lines). */
 export async function getCurrentYear(): Promise<number> {
   return new Date().getFullYear();
@@ -22,5 +24,5 @@ export async function getServerNowMs(): Promise<number> {
 
 /** Today's date as `YYYY-MM-DD` in the given IANA timezone. */
 export async function getServerToday(timeZone: string): Promise<string> {
-  return new Intl.DateTimeFormat('en-CA', { timeZone }).format(new Date());
+  return parkDayOf(Date.now(), timeZone);
 }

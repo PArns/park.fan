@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils';
 import { ropeDropCardVariant, ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
 import { quietestWeekdays } from '@/lib/utils/typical-waits';
 import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { weekdayName } from '@/lib/utils/intl-format';
 import type { RopeDropInfo, TypicalWaits } from '@/lib/api/types';
 
 interface RopeDropCardProps {
@@ -108,13 +108,6 @@ function BareCardFrame({
       {children}
     </div>
   );
-}
-
-/** Locale-aware weekday name for an API `dayOfWeek` (0=Sun…6=Sat). */
-function weekdayName(dayOfWeek: number, locale: string): string {
-  // 2024-01-07 is a Sunday; + dayOfWeek lands on the right weekday.
-  const d = new Date(Date.UTC(2024, 0, 7 + dayOfWeek));
-  return getDateTimeFormat(locale, { weekday: 'long', timeZone: 'UTC' }).format(d);
 }
 
 interface StatTile {

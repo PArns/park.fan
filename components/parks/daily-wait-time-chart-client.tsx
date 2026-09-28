@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useRideDayCurve } from '@/lib/hooks/use-ride-day-curve';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 import type {
   AttractionHistoryDay,
   ForecastItem,
@@ -62,11 +63,6 @@ function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
   const hour = parts.find((p) => p.type === 'hour')?.value || '00';
   const minute = parts.find((p) => p.type === 'minute')?.value || '00';
   return `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`;
-}
-
-/** Today's date as YYYY-MM-DD in the given IANA timezone. */
-function getTodayInTimezone(timezone: string): string {
-  return getDateTimeFormat('en-CA', { timeZone: timezone }).format(new Date());
 }
 
 /**
@@ -282,7 +278,7 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
   const { history, hourlyForecast, schedule, bestVisitTimes } = props;
   const data = useMemo(() => {
     if (!mounted) return null;
-    const todayStr = getTodayInTimezone(props.timezone);
+    const todayStr = parkDayOf(new Date(), props.timezone);
     return buildChartData(todayStr, props, corridorByHour);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mounted, props.timezone, history, hourlyForecast, schedule, bestVisitTimes, corridorByHour]);

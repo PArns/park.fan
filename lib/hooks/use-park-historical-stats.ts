@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
-import type { ParkHistoricalStats } from '@/lib/api/types';
+import { parkStatsQuery } from '@/lib/hooks/use-park-stats-queries';
 
 interface UseParkHistoricalStatsParams {
   continent: string;
@@ -17,6 +17,9 @@ interface UseParkHistoricalStatsParams {
  * write churn. The data is large and slow to compute, so the `/api/parks/.../stats` route
  * serves it as a CDN-cached function response (s-maxage=3600); this hook just polls that.
  *
+ * The query itself (key, fetch, cache windows) is `parkStatsQuery`, shared with the blog and
+ * comparison tables so a default-depth table on a park page reuses this fetch.
+ *
  * - Browser-only (`enabled` gated on `window`): never runs during the static prerender,
  *   where reading the clock internally (React Query) is forbidden under Cache Components.
  * - 404 = "no displayable stats for this park" → treated as `null`, no retries.
@@ -32,30 +35,5 @@ export function useParkHistoricalStats({
   parkSlug,
 }: UseParkHistoricalStatsParams) {
   const releasedLast = useLoadLast();
-
-  return useQuery<ParkHistoricalStats | null>({
-    queryKey: ['park-historical-stats', continent, country, city, parkSlug],
-    queryFn: async () => {
-      const response = await fetch(`/api/parks/${continent}/${country}/${city}/${parkSlug}/stats`, {
-        cache: 'no-store',
-      });
-
-      if (response.status === 404) {
-        return null;
-      }
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch stats: ${response.statusText}`);
-      }
-
-      return (await response.json()) as ParkHistoricalStats;
-    },
-    // `releasedLast` holds the fetch back until every other query on the page has settled
-    // (loads-last rule).
-    enabled: typeof window !== 'undefined' && releasedLast,
-    staleTime: 60 * 60_000,
-    gcTime: 90 * 60_000,
-    refetchOnWindowFocus: false,
-    retry: 1,
-  });
+  return useQuery(parkStatsQuery({ continent, country, city, parkSlug }, 'default', releasedLast));
 }

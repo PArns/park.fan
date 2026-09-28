@@ -10,8 +10,8 @@ import { NearbyParksListView } from '@/components/parks/nearby-parks-list-view';
 import { Button } from '@/components/ui/button';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
-import { useNearbyAnalytics } from '@/lib/hooks/use-nearby-analytics';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { useNearbyAnalytics } from '@/lib/hooks/use-nearby-analytics';
 import { cn } from '@/lib/utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 

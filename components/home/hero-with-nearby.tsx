@@ -11,6 +11,7 @@ import { trackCompassPillClicked } from '@/lib/analytics/umami';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
+import { LiveDot } from '@/components/common/live-dot';
 import { HeroParkActions, type HeroPark } from '@/components/home/hero-park-actions';
 import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
 import type {
@@ -61,10 +62,7 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
         <Skeleton className="h-2.5 w-36" />
       ) : (
         <>
-          <span className="relative flex h-2 w-2" aria-hidden="true">
-            <span className="bg-status-operating absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 [will-change:transform,opacity] motion-reduce:animate-none" />
-            <span className="bg-status-operating relative inline-flex h-2 w-2 rounded-full" />
-          </span>
+          <LiveDot color="bg-status-operating" pingColor="bg-status-operating opacity-60" />
           {tHome('hero.openNow', { count: openParks })}
         </>
       )}

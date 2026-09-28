@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { WeatherHourlyToday } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 interface UseWeatherHourlyParams {
   latitude: number | null | undefined;
@@ -16,16 +17,6 @@ interface UseWeatherHourlyParams {
   date?: string;
   /** Gate the fetch (e.g. when static `hourly` data is supplied instead). */
   enabled?: boolean;
-}
-
-/** Today's date (YYYY-MM-DD) in the park timezone, from the browser clock. */
-function parkLocalDate(timezone: string): string {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: timezone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(Date.now());
 }
 
 /**
@@ -65,7 +56,8 @@ export function useWeatherHourly({
       ? ['weather-hourly', latitude, longitude, timezone, date]
       : ['weather-hourly', latitude, longitude, timezone],
     queryFn: async () => {
-      const day = date ?? parkLocalDate(timezone!);
+      // Today in the park's zone, from the browser clock.
+      const day = date ?? parkDayOf(Date.now(), timezone!);
       const response = await fetch(
         `/api/weather/hourly?lat=${latitude}&lon=${longitude}&tz=${encodeURIComponent(timezone!)}&date=${day}`,
         { cache: 'no-store' }

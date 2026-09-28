@@ -15,6 +15,8 @@ import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
 import { NowcastPrecipTimeline } from '@/components/parks/nowcast-precip-timeline';
+import { formatTime } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatWindSpeed } from '@/lib/utils/temperature';
 import { formatShortDuration } from '@/lib/utils/duration';
@@ -73,19 +75,8 @@ const endsTodayLabel = (
   if (!iso) return null;
   const ts = Date.parse(iso);
   if (Number.isNaN(ts) || ts <= now) return null;
-  const dayKey = (ms: number) =>
-    new Intl.DateTimeFormat('en-CA', {
-      timeZone: timezone,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(ms);
-  if (dayKey(ts) !== dayKey(now)) return null;
-  return new Intl.DateTimeFormat(locale, {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: timezone,
-  }).format(ts);
+  if (parkDayOf(ts, timezone) !== parkDayOf(now, timezone)) return null;
+  return formatTime(ts, locale, { hour: '2-digit', minute: '2-digit', timeZone: timezone });
 };
 
 /** How far ahead (minutes) to surface a rain pre-warning. Severe events

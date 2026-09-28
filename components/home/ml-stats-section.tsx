@@ -8,50 +8,10 @@ import { MLSparklineLoader } from './ml-sparkline-loader';
 import { MLTrainingCountdown } from './ml-training-countdown';
 import { cn } from '@/lib/utils';
 import { LiveDot } from '@/components/common/live-dot';
-import type { AccuracyBadge } from '@/lib/api/types';
+import { accuracyStyle } from '@/lib/utils/accuracy-styles';
 
 function formatCompact(n: number): string {
   return new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
-}
-
-function getBadgeStyles(badge: AccuracyBadge) {
-  switch (badge) {
-    case 'excellent':
-      return {
-        dot: 'bg-status-operating',
-        text: 'text-status-operating',
-        border: 'border-status-operating/40',
-        glow: 'shadow-status-operating/10',
-      };
-    case 'good':
-      return {
-        dot: 'bg-status-operating',
-        text: 'text-status-operating',
-        border: 'border-status-operating/40',
-        glow: 'shadow-status-operating/10',
-      };
-    case 'fair':
-      return {
-        dot: 'bg-status-down',
-        text: 'text-status-down',
-        border: 'border-status-down/40',
-        glow: 'shadow-status-down/10',
-      };
-    case 'poor':
-      return {
-        dot: 'bg-destructive',
-        text: 'text-destructive',
-        border: 'border-destructive/40',
-        glow: 'shadow-destructive/10',
-      };
-    default:
-      return {
-        dot: 'bg-muted-foreground',
-        text: 'text-muted-foreground',
-        border: 'border-border',
-        glow: '',
-      };
-  }
 }
 
 function getR2Color(r2: number | null | undefined) {
@@ -99,7 +59,7 @@ export async function MLStatsSection({
   const fmtPct = (n: number | null | undefined) =>
     n != null && isFinite(n) ? `${Math.round(n)}%` : '—';
 
-  const styles = getBadgeStyles(live.badge);
+  const styles = accuracyStyle(live.badge);
   const badgeKey = live.badge as string;
 
   const body = (

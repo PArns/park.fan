@@ -5,7 +5,7 @@ import { Hourglass } from 'lucide-react';
 import { SectionHeading } from '@/components/common/section-heading';
 import { cn } from '@/lib/utils';
 import type { DayOfWeekWait, TypicalWaitBucket, TypicalWaits } from '@/lib/api/types';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 
 interface AttractionTypicalWaitsProps {
@@ -45,13 +45,6 @@ const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
  */
 const BUSY_FILL = 'bg-primary/40';
 const BUSY_EDGE = 'bg-primary';
-
-/** Locale-aware short weekday name for an API dayOfWeek (0=Sun…6=Sat). */
-function dayLabel(dayOfWeek: number, locale: string): string {
-  // 2024-01-07 is a Sunday; + dayOfWeek lands on the right weekday.
-  const d = new Date(Date.UTC(2024, 0, 7 + dayOfWeek));
-  return getDateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' }).format(d);
-}
 
 /**
  * The record peak's date, in the reader's locale.
@@ -173,8 +166,8 @@ export function AttractionTypicalWaits({
           const isWeekend = d?.isWeekend ?? (dow === 0 || dow === 6);
           const title =
             busy != null && typical != null
-              ? `${dayLabel(dow, locale)}: ${typical}–${busy} ${t('min')}`
-              : dayLabel(dow, locale);
+              ? `${weekdayName(dow, locale, 'short')}: ${typical}–${busy} ${t('min')}`
+              : weekdayName(dow, locale, 'short');
           return (
             <div key={dow} className="flex flex-1 flex-col items-center gap-1" title={title}>
               {/* The Voll value. Which of the two it is comes from the caption above the row, not
@@ -213,7 +206,7 @@ export function AttractionTypicalWaits({
                   isWeekend ? 'text-foreground font-medium' : 'text-muted-foreground'
                 )}
               >
-                {dayLabel(dow, locale)}
+                {weekdayName(dow, locale, 'short')}
               </span>
             </div>
           );

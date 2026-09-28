@@ -89,6 +89,24 @@ export function formatTime(
 }
 
 /**
+ * The weekday name for a day index, 0 = Sunday … 6 = Saturday — the convention of the API's
+ * `DayOfWeekStat.dayOfWeek` and of `Date#getUTCDay`.
+ *
+ * Anchored in UTC on both ends: 2023-01-01 was a Sunday, and a UTC midnight formatted in the
+ * runtime's own zone is the day before for anyone west of Greenwich. Several copies of this built
+ * that date and formatted it without `timeZone`, which only held because the servers run on UTC.
+ */
+export function weekdayName(
+  dayOfWeek: number,
+  locale: string,
+  width: 'long' | 'short' = 'long'
+): string {
+  return getDateTimeFormat(locale, { weekday: width, timeZone: 'UTC' }).format(
+    Date.UTC(2023, 0, 1 + dayOfWeek)
+  );
+}
+
+/**
  * Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English.
  *
  * For the homepage hero's hours tile, which is half a phone wide. Written the site's usual way
