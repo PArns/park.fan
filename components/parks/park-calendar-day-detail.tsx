@@ -42,12 +42,8 @@ import { Temp } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { parkDayOf } from '@/lib/utils/park-day';
-import {
-  getEventIcon,
-  getWeatherIconFromCode,
-  getWeatherTranslationKey,
-  upcomingHourlyPredictions,
-} from '@/lib/utils/calendar-utils';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
@@ -617,12 +613,12 @@ export function ParkCalendarDayDetail({
                 {t('calendarView.details.weather.title')}
               </h3>
               <div className="flex items-center gap-3">
-                {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
+                {createElement(getWeatherConfig(day.weather.icon).icon, {
                   className: 'h-7 w-7 text-sky-500',
                 })}
                 <div className="text-sm">
                   <p className="font-medium">
-                    {t(`weather.${getWeatherTranslationKey(day.weather.icon)}`)}
+                    {t(`weather.${getWeatherConfig(day.weather.icon).label}`)}
                   </p>
                   <p className="text-muted-foreground">
                     <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />
