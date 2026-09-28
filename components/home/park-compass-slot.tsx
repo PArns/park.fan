@@ -13,14 +13,28 @@ const subscribeNever = () => () => {};
 const readSim = () => new URLSearchParams(window.location.search).get('sim');
 
 /**
- * How much of the viewport may lie below the slot when the compass goes in. On a 390 × 844 phone
- * the homepage's next section starts under the hero at 798 px, so at the top of the page the
- * slot is never quite below the fold; waiting for that would mean never. What lies below it then
- * is a 46 px sliver, and pushing a sliver out of view scores its own share of the screen: 0.05,
- * against the 1.0 a reader scrolled past it got before. From 360 × 740 to 1920 × 1080 the slot
- * starts at or below the fold and this never comes into it.
+ * How much of the viewport may lie below the slot when the compass goes in for a reader who has
+ * scrolled. Pushing a sliver out of view scores its own share of the screen, so a tenth scores
+ * about 0.1 at most, against the 1.0 a reader scrolled past the slot got before.
  */
 const VISIBLE_SLICE = 0.1;
+
+/**
+ * Whether the compass may go in now: at the top of the page always, anywhere else only while the
+ * slot lies below the viewport, give or take VISIBLE_SLICE.
+ *
+ * The top of the page is the exception because waiting there can mean never. The slot's top at
+ * y = 0 is wherever the hero ends, and the hero's height follows its welcome line: „Herzlich
+ * willkommen im Disneyland Park" takes three lines on a 390 px phone, "Welcome to Disneyland
+ * Park" two. Measured at Disneyland (Anaheim), the slot sat at 680 px on 390 × 844, 412 × 915 and
+ * 430 × 932 in five of six locales, inside the viewport, and a reader who then scrolls only moves
+ * it further up. On those phones the compass never appeared. What it moves at the top is the
+ * sliver of the next chapter's heading below the hero, and that scores its share of the screen:
+ * up to 0.30 on a 430 × 932 phone in English (docs/features/park-compass.md has the table).
+ */
+function mayPlace(slotTop: number): boolean {
+  return window.scrollY < 1 || slotTop >= window.innerHeight * (1 - VISIBLE_SLICE);
+}
 
 /** The compass's own module, loaded by hand — see „where it appears" below. */
 type ParkCompassComponent = typeof import('./park-compass').ParkCompass;
@@ -44,12 +58,12 @@ type ParkCompassComponent = typeof import('./park-compass').ParkCompass;
  * visually still but is scored all the same — the Layout Instability API counts a node that
  * moved in the document, whatever the scroll did.
  *
- * So it is only ever put in where nobody is looking: once its module has loaded (the chunk is
- * fetched as soon as we know the visitor is in a park, and only then — everybody else never
- * downloads it), and only while this slot lies below the bottom of the viewport, give or take
- * VISIBLE_SLICE. On a phone the hero fills the first screen, so that is the moment the answer
- * lands for anybody at the top; a reader who has scrolled past gets it when they come back up. Inside, `ParkCompass` keeps its
- * height as its data arrives (see its status line), so nothing moves after that either.
+ * So it goes in once its module has loaded (the chunk is fetched as soon as we know the visitor is
+ * in a park, and only then — everybody else never downloads it), and then only where it moves
+ * nothing the reader is looking at (`mayPlace`): at the top of the page, or while this slot lies
+ * below the viewport. A reader who has scrolled past gets it when they come back up. Inside,
+ * `ParkCompass` keeps its height as its data arrives (see its status line), so nothing moves
+ * after that either.
  */
 export function ParkCompassSlot() {
   const mounted = useMounted();
@@ -115,20 +129,26 @@ export function ParkCompassSlot() {
     if (!shown || !ParkCompass || placed) return;
     const el = slotRef.current;
     if (!el) return;
-    // The same question as `top >= innerHeight × (1 − VISIBLE_SLICE)`, asked of an
-    // IntersectionObserver whose root ends at that line: it answers on its own schedule, once on
-    // observe and again whenever the slot crosses the line. The scroll listener it replaces read
-    // `getBoundingClientRect()` on every scroll event, unthrottled, for as long as a reader in a
-    // park was scrolled past the slot.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const lineY = entry.rootBounds?.bottom ?? window.innerHeight * (1 - VISIBLE_SLICE);
-        if (entry.boundingClientRect.top >= lineY) setPlaced(true);
-      },
-      { rootMargin: `0px 0px -${VISIBLE_SLICE * 100}% 0px` }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    // At most one layout read per frame. The listener read `getBoundingClientRect()` on every
+    // scroll event, unthrottled, for as long as a reader in a park was scrolled past the slot. It
+    // stays a listener rather than an IntersectionObserver because `mayPlace` also asks whether the
+    // page is back at its top, which no observer reports.
+    let frame = 0;
+    const check = () => {
+      frame = 0;
+      if (mayPlace(el.getBoundingClientRect().top)) setPlaced(true);
+    };
+    const schedule = () => {
+      if (frame === 0) frame = requestAnimationFrame(check);
+    };
+    schedule();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      if (frame !== 0) cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
   }, [shown, ParkCompass, placed]);
   const visible = shown && placed && ParkCompass !== null;
 

@@ -1493,6 +1493,13 @@
       "dialGroup": "Kompass, Norden oben"
     }
   },
+  "location": {
+    "active": "Standort aktiv",
+    "howTo": "So änderst du das",
+    "stepsDefault": "Tippe oder klicke links neben der Adresse auf das Symbol der Seite und stelle Standort auf „Zulassen“. Danach die Seite neu laden.",
+    "stepsIosSafari": "Tippe links in der Adressleiste auf „aA“, dann auf Website-Einstellungen → Standort → Erlauben. Danach die Seite neu laden.",
+    "stepsMacSafari": "Wähle in der Menüleiste Safari → Einstellungen für park.fan … und stelle Standort auf „Erlauben“. Danach die Seite neu laden."
+  },
   "geo": {
     "continent": "Kontinent",
     "country": "Land",

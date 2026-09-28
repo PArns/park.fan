@@ -10,7 +10,7 @@ answers:
 | Hidden by                        | Ask                                                               | Example                                          |
 | -------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------ |
 | a breakpoint (`hidden lg:block`) | `useMediaQuery('(min-width: 64rem)')` — rem, like Tailwind's `lg` | blog ToC scroll spy, guide page wait scale       |
-| being far down the page          | an `IntersectionObserver` with a generous `rootMargin`            | `BlogMapClient`, `LazyMount`, `ParkCompassSlot`  |
+| being far down the page          | an `IntersectionObserver` with a generous `rootMargin`            | `BlogMapClient`, `LazyMount`                     |
 | a background tab                 | `document.hidden` / the shared clock, which pauses on its own     | `useMinuteNow`, hero rotation                    |
 | a closed dialog                  | mount it on the first press                                       | `RideAlertBell`, `ShowFollowBell`                |
 | an effect meant for a change     | skip the first run                                                | world map chip tween (`hero-world-panel-client`) |
@@ -19,7 +19,7 @@ Found in the 2026-09-28 audit: the blog ToC ran a scroll listener and a ResizeOb
 on phones where it is `display: none`; the guide page fetched GSAP and tweened a hidden figure; the
 blog map mounted Leaflet, requested tiles and started a clock on hydration for a fence near the end
 of a post; the world map fetched GSAP on mount to fade in chips that were already painted; the
-compass slot read `getBoundingClientRect()` on every scroll event.
+compass slot read `getBoundingClientRect()` on every scroll event (now once per frame).
 
 ## Endless animations
 

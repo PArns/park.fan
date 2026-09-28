@@ -1493,6 +1493,13 @@
       "dialGroup": "Compass, north up"
     }
   },
+  "location": {
+    "active": "Location on",
+    "howTo": "How to change this",
+    "stepsDefault": "Tap or click the icon to the left of the address and set Location to “Allow”. Then reload the page.",
+    "stepsIosSafari": "Tap “aA” on the left of the address bar, then Website Settings → Location → Allow. Then reload the page.",
+    "stepsMacSafari": "In the menu bar, choose Safari → Settings for park.fan… and set Location to “Allow”. Then reload the page."
+  },
   "geo": {
     "continent": "Continent",
     "country": "Country",

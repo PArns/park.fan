@@ -1493,6 +1493,13 @@
       "dialGroup": "Boussole, nord en haut"
     }
   },
+  "location": {
+    "active": "Position activée",
+    "howTo": "Comment modifier cela",
+    "stepsDefault": "Touchez ou cliquez sur l’icône à gauche de l’adresse et réglez Position sur « Autoriser ». Rechargez ensuite la page.",
+    "stepsIosSafari": "Touchez « aA » à gauche de la barre d’adresse, puis Réglages du site web → Position → Autoriser. Rechargez ensuite la page.",
+    "stepsMacSafari": "Dans la barre des menus, choisissez Safari → Réglages pour park.fan… et réglez Position sur « Autoriser ». Rechargez ensuite la page."
+  },
   "geo": {
     "continent": "Continent",
     "country": "Pays",

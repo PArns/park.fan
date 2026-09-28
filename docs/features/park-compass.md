@@ -16,34 +16,60 @@ The slot renders for `in_park` answers with at least one in-season headliner (`s
 the same filter the list uses) and for the `?sim=compass` demo. The compass module is loaded by
 hand the moment that is known, so nobody else downloads it.
 
-**It is only ever put in below the viewport.** The compass is some 1,300 px on a phone and lands
-a second or more after load. No box is held open for it, since that would be a screen of nothing
-for every visitor at home. A reader who had scrolled past the slot had the page pushed down under
+**It is never put in under a reader who has scrolled.** The compass is some 1,300 px on a phone
+and lands a second or more after load. No box is held open for it, since that would be a screen
+of nothing for every visitor at home. A reader who had scrolled past the slot had the page pushed down under
 them, a layout shift of 1.0 at y = 1100. The browser's scroll anchoring did not absorb it. A
 `scrollBy` in a `ResizeObserver` kept the page visually still (a reference heading stayed at 52 px),
 but the Layout Instability API scored it 1.0 all the same, because it counts a node that moved in
 the document whatever the scroll did.
 
-So the slot waits until the module is there and the slot lies below the viewport, with at most
-10 % of the screen showing below it (`VISIBLE_SLICE`). On a 390 × 844 phone the next section
-starts at 798 px, so at the top of the page 46 px of it are in view; waiting for zero would mean
-never.
+So the slot waits until the module is there, and then puts the compass in only in two places
+(`mayPlace`): while the slot lies below the viewport, with at most 10 % of the screen showing
+below it (`VISIBLE_SLICE`), or at the very top of the page.
 
-| viewport  | reader at | before | now                                   |
-| --------- | --------- | ------ | ------------------------------------- |
-| 390 × 844 | y = 0     | 0.0545 | 0.0545                                |
-| 390 × 844 | y = 1100  | 1.0    | 0 (the compass comes back at the top) |
-| 360 × 740 | y = 0     | 0      | 0                                     |
-| 360 × 740 | y = 1100  | 1.0    | 0                                     |
+**The top of the page is an exception, and it took a bug to find out why.** The first version
+had only the below-the-viewport rule. It was measured in German, where „Herzlich willkommen im
+Disneyland Park" takes three lines on a 390 px phone and the hero ends at 824 px. "Welcome to
+Disneyland Park" takes two, and the hero ends at 680 px, inside a 390 × 844 screen. A reader at
+the top never saw the slot below the viewport, and scrolling only moved it further up: on
+390 × 844, 412 × 915 and 430 × 932 the compass never appeared in five of six locales, and on
+430 × 932 not in German either (measured 2026-09-28, at Disneyland in Anaheim, a real visit
+without `?sim`). Whether it came depended on how many lines the park's name took.
+
+At the top, the compass pushes the sliver of the next chapter's heading below the hero out of
+view, and that scores its share of the screen. Layout shift from the compass arriving, against
+`pnpm build && pnpm start`, reader at y = 0 (nl, fr, es, it end the hero where en does, except on
+768 × 1024, where nl and it end it at 920 px):
+
+| viewport   | hero ends (de / en) | de     | en     |
+| ---------- | ------------------- | ------ | ------ |
+| 360 × 740  | 864 / 720 px        | 0.0059 | 0.0292 |
+| 390 × 844  | 824 / 680 px        | 0.0283 | 0.1981 |
+| 412 × 915  | 824 / 680 px        | 0.1187 | 0.2798 |
+| 430 × 932  | 824 / 680 px        | 0.1355 | 0.3000 |
+| 768 × 1024 | 1040 / 960 px       | 0.0039 | 0.0659 |
+| 1280 × 800 | 1120 / 960 px       | 0.0021 | 0.0072 |
+
+Up to 0.30 is a real cost. It is paid only on page views from inside a park, once, and the
+alternative was a compass that never appeared on the phones most people carry. A reader who has
+scrolled is still never moved by it: at y = 1100 the compass stays out until they come back to
+the top.
+
+A reader at y = 1100 _is_ moved in a park, but not by the compass. „Parks in deiner Nähe", the
+chapter under it, grows from 661 to 2,057 px when its card switches to the in-park view, and
+that scored up to 1.0 in the same runs (0.07–0.085 for a visitor at home, which is PAR-435's).
+Its skeleton is sized for the list of parks, not for the in-park view.
 
 Inside, the compass keeps its height as its data arrives. The status line under the title always
 has its second line (calibration, „Standort wird genauer bestimmt …", or the coarse-fix warning,
 or nothing), the hint under the bar is always there, and the bar is a fixed 76 px with every line
 truncated. Each of these used to appear or change height a second after the compass did and move
 the list under the reader. `pnpm measure:cls --late` does not reach this block (it replays
-Suspense streaming, and this is geolocation-driven client state), so the table comes from
-Playwright's `layout-shift` entries against `pnpm build && pnpm start`, with the device placed at
-Cologne Cathedral under `?sim=compass:disneylandparis`.
+Suspense streaming, and this is geolocation-driven client state), so every figure on this page
+comes from Playwright's `layout-shift` entries against `pnpm build && pnpm start`: these with the
+device placed at Cologne Cathedral under `?sim=compass:disneylandparis`, the table above from a
+real visit placed at Disneyland in Anaheim.
 
 ## The dial
 

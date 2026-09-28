@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Navigation } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { HomeLocationRow } from '@/components/home/home-location-row';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 
 /**
@@ -16,6 +17,9 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
  * this frame exists: the card opens with a `GlassSectionTitle`, a band label
  * rather than a chapter header, so on its own it left a step of the explanation
  * with no heading a crawler could see.
+ *
+ * Under the lead ("share your location and …") sits the control that does what
+ * it says (`HomeLocationRow`), at one fixed height in every state.
  */
 export async function NearbyChapter({ children }: { children: React.ReactNode }) {
   const t = await getTranslations('homeStory.nearby');
@@ -43,6 +47,7 @@ export async function NearbyChapter({ children }: { children: React.ReactNode })
             }
           />
         </Reveal>
+        <HomeLocationRow className="mt-2" />
         {children}
       </div>
     </section>
