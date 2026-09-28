@@ -65,6 +65,10 @@ const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
  * the difference between a graph a consumer can read in one pass and one it can read only if it
  * chose to merge. The description itself stays where it is — restating a park's address on
  * 24,000 URLs is one entity written 24,000 times, free to drift from the first edit.
+ *
+ * The one field this rule does not settle is `Dataset.spatialCoverage`: a stated type is not
+ * enough there, it has to be the type Google's Dataset parser lists. See
+ * `ParkDatasetStructuredData`.
  */
 
 /**
@@ -791,20 +795,32 @@ export function ParkSubPageStructuredData({
  * so a modification date here would be one identical value across the whole catalogue — exactly
  * the signal docs/seo/sitemaps.md keeps out of `<lastmod>`, for the same reason.
  *
- * `spatialCoverage` and `creator` are references, not copies: the park's `AmusementPark` node and
- * the site `Organization` already exist under those ids, and restating either on 24,000 URLs is
- * one entity described 24,000 times, free to drift the moment one is edited. Both carry a
- * `@type` because both point out of this script — see the note above `ORGANIZATION_ID`. That is
- * the whole of what Search Console reported as „Ungültiger Objekttyp für Feld spatialCoverage":
- * the park stub the reference was written against lives in `ParkSubPageStructuredData`'s
- * `@graph`, one `<script>` over, so the value Google typed was `{'@id': …}` and nothing else.
- * `spatialCoverage` also carries the park's name, because it is the one reference here a
- * consumer renders rather than follows.
+ * `creator` is a reference, not a copy: the site `Organization` already exists under that id, and
+ * restating it on 24,000 URLs is one entity described 24,000 times, free to drift the moment one
+ * is edited. It carries a `@type` because it points out of this script — see the note above
+ * `ORGANIZATION_ID`.
+ *
+ * **`spatialCoverage` is a plain `Place`, and it carries no `@id`.** Google's Dataset parser takes
+ * `Text` or `Place` there and nothing else — not a subtype, although schema.org makes
+ * `AmusementPark` one (through `LocalBusiness`); the same parser rejects `Country`. Search Console
+ * has reported „Ungültiger Objekttyp für Feld spatialCoverage" twice. In August the value was a
+ * bare `{'@id': …}` with no type at all; the fix typed it `AmusementPark`, and from 23 September
+ * the wait-time records came back with the same error, 137 items on the first day.
+ * The park's `@id` stays off this node on purpose: it is the id of the `AmusementPark` stub in
+ * `ParkSubPageStructuredData`'s `@graph`, and a consumer that merges the page's blocks would fold
+ * the two into one node typed `AmusementPark` again. The link from this page to the park is that
+ * stub and the `WebPage`'s `about`, not this field.
+ *
+ * What the `Place` does carry is the name, the park page's URL, and the park's coordinates when
+ * the API has them: a single point is the form Google documents, and a name and a point do not
+ * drift the way an address or opening hours would.
  */
 export function ParkDatasetStructuredData({
   url,
   parkUrl,
   parkName,
+  parkLatitude,
+  parkLongitude,
   name,
   description,
   temporalCoverage,
@@ -812,10 +828,13 @@ export function ParkDatasetStructuredData({
   locale,
 }: {
   url: string;
-  /** The park page's URL, which is the `@id` of its `AmusementPark` node. */
+  /** The park page's URL — `spatialCoverage.url`, not its `@id` (see above). */
   parkUrl: string;
-  /** Names `spatialCoverage`, the one reference here a consumer renders rather than follows. */
+  /** Names `spatialCoverage`, the one value here a consumer renders rather than follows. */
   parkName: string;
+  /** The park's coordinates. `spatialCoverage` states no `geo` unless both are known. */
+  parkLatitude: number | null;
+  parkLongitude: number | null;
   /** The dataset's own name — the park AND what is tabulated, not the park alone. */
   name: string;
   description: string;
@@ -835,7 +854,15 @@ export function ParkDatasetStructuredData({
         name,
         description,
         temporalCoverage,
-        spatialCoverage: { '@type': 'AmusementPark', '@id': parkUrl, name: parkName, url: parkUrl },
+        spatialCoverage: {
+          '@type': 'Place',
+          name: parkName,
+          url: parkUrl,
+          ...(parkLatitude != null &&
+            parkLongitude != null && {
+              geo: { '@type': 'GeoCoordinates', latitude: parkLatitude, longitude: parkLongitude },
+            }),
+        },
         creator: { '@type': 'Organization', '@id': ORGANIZATION_ID },
         license: `${SITE_URL}${RSL_LICENSE_PATH}`,
         isAccessibleForFree: true,

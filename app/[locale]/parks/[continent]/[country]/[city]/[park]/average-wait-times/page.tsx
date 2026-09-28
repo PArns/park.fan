@@ -322,6 +322,8 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
               url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
               parkName={parkName}
+              parkLatitude={park.latitude}
+              parkLongitude={park.longitude}
               name={tDataset('name', parkPhrases)}
               description={tDataset('description', {
                 ...parkPhrases,
