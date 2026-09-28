@@ -83,14 +83,14 @@ ist **nicht** im Haunted Attractions Pass enthalten und hat ein eigenes Ticket.
 
 Alle Preise stehen auf der Add-on-Seite des Parks in US-Dollar, Stand 28. September. Dazu kommen bei jedem Kauf bis zu 9,99 $ Gebühr und die Steuer.
 
-| Ticket                              | Preis  | Enthält                                        |
-| ----------------------------------- | ------ | ---------------------------------------------- |
-| Haunted Attractions Pass            | ab $15 | die sechs Häuser an einem Abend, ohne Eintritt |
-| All Season Haunted Attractions Pass | ab $59 | die sechs Häuser an allen Abenden              |
-| HalloWeekends Bundle                | ab $70 | Eintritt und die Häuser am selben Abend        |
-| The Conjuring: Beyond Fear          | ab $25 | nur dieses Haus, an einem Abend, ohne Eintritt |
+| Ticket                              | Preis   | Enthält                                        |
+| ----------------------------------- | ------- | ---------------------------------------------- |
+| Haunted Attractions Pass            | ab 15 $ | die sechs Häuser an einem Abend, ohne Eintritt |
+| All Season Haunted Attractions Pass | ab 59 $ | die sechs Häuser an allen Abenden              |
+| HalloWeekends Bundle                | ab 70 $ | Eintritt und die Häuser am selben Abend        |
+| The Conjuring: Beyond Fear          | ab 25 $ | nur dieses Haus, an einem Abend, ohne Eintritt |
 
-Den Abendpass gibt es nur online. Wer im August von 35 $ für den Saisonpass
+Den Abendpass gibt es nur online. Wer im August von 35 $ für den All Season Pass
 gelesen hat: Auf der Seite des Parks stehen inzwischen 59 $. Der Gold Pass,
 die teurere Saisonkarte, schließt HalloWeekends ein. Für die Häuser braucht
 man trotzdem den Haunted Attractions Pass.
