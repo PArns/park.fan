@@ -14,7 +14,7 @@ import { ShowCard } from '@/components/parks/show-card';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useFavorites } from '@/lib/hooks/use-favorites';
-import { useHydrated } from '@/lib/hooks/use-mounted';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { stripNewPrefix } from '@/lib/utils';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
 import { parkChapterUrl } from '@/lib/utils/url-utils';
@@ -31,7 +31,7 @@ import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
  */
 export function FavoritesSection({ standalone = false }: { standalone?: boolean }) {
   const t = useTranslations('favorites');
-  const mounted = useHydrated();
+  const mounted = useMounted();
 
   const { position } = useGeolocation();
   const { data: favoritesData, isLoading: loading, isPending } = useFavorites();

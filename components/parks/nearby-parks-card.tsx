@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useNearbyAnalytics } from '@/lib/hooks/use-nearby-analytics';
-import { useHydrated } from '@/lib/hooks/use-mounted';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 
@@ -25,7 +25,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   const tCommon = useTranslations('common');
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const mounted = useHydrated();
+  const mounted = useMounted();
 
   const {
     position,
