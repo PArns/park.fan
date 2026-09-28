@@ -40,7 +40,23 @@ export interface FeaturedParkCard {
   imagePosition?: string;
 }
 
+const FEATURED_PARKS_MENU = new Map<string, FeaturedParkCard[]>();
+
+/**
+ * Memoised per process, like `getNewsMenu`: everything it reads is the generated media manifest
+ * and a constant, so the answer is fixed for the deployment, and the layout asks for it on every
+ * page. Callers share the array and must not mutate it.
+ */
 export function getFeaturedParksMenu(locale: string): FeaturedParkCard[] {
+  let menu = FEATURED_PARKS_MENU.get(locale);
+  if (!menu) {
+    menu = buildFeaturedParksMenu(locale);
+    FEATURED_PARKS_MENU.set(locale, menu);
+  }
+  return menu;
+}
+
+function buildFeaturedParksMenu(locale: string): FeaturedParkCard[] {
   const withPhoto = new Map(
     getImagesByRole('park-background')
       .filter((image) => image.park)
