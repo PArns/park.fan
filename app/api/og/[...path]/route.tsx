@@ -37,6 +37,7 @@ import {
   FlagBR,
 } from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { isSlugPath } from '@/lib/utils/servable-route';
 
 // OG Image dimensions
 const WIDTH = 1200;
@@ -170,6 +171,13 @@ export async function GET(
     const [localeParam, secondSegment] = path;
     const locale = isValidLocale(localeParam) ? localeParam : 'en';
     const isGeneric = secondSegment && Object.keys(genericPages).includes(secondSegment);
+
+    // The geo segments go into backend URLs below (`getParkByGeoPath` and friends), so they have to
+    // be slug-shaped before anything is fetched — see `isSlugPath`. A generic page's second segment
+    // is one of the keys above and passes the same test.
+    if (!isSlugPath(path.slice(1))) {
+      return new Response('Invalid path', { status: 400 });
+    }
 
     // Aliases for path segments to match existing logic
     const continent = path[1];

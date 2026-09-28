@@ -23,6 +23,7 @@ import {
   applyParkSimulation,
   parseParkSimulation,
 } from '@/lib/parks/park-simulation';
+import { isSlugPath } from '@/lib/utils/servable-route';
 
 /**
  * The shared-cache window for the two backend aggregates that are recomputed once a day.
@@ -91,6 +92,11 @@ export async function GET(
 ) {
   const resolvedParams = await params;
   const { path } = resolvedParams;
+
+  // Before any segment reaches a backend URL: see `isSlugPath`.
+  if (!path || !isSlugPath(path)) {
+    return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
+  }
 
   // Handle park data: [continent, country, city, park] (4 segments)
   // e.g., ['europe', 'germany', 'rust', 'europa-park']
