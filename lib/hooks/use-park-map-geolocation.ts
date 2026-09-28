@@ -36,9 +36,9 @@ export interface ParkMapGeolocation {
  *
  * The map never asks for location itself. It used to call `getCurrentPosition` on mount, so every
  * opened map tab (and every blog post with a park map) opened a native prompt nobody had tapped
- * for — and in Chrome three ignored prompts block the site for a week. The context reads a position
- * only where the browser will not ask; everywhere else the park page's own "near you" row offers
- * the button (docs/rules/location-is-asked-for-by-a-tap.md).
+ * for — and in Chrome three ignored prompts block the site for a week. On a park page the near-you
+ * row above the tabs is what asks; the map shows whatever position the context holds
+ * (docs/rules/location-is-asked-for-where-it-is-needed.md).
  */
 export function useParkMapGeolocation(
   park: ParkWithAttractions,
