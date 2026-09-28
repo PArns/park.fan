@@ -54,7 +54,7 @@ export function useTodayCrowdLevel({
   parkSlug,
   timezone,
 }: UseTodayCrowdLevelParams): TodayCrowdLevelResult {
-  const browserNow = useBrowserNow(null);
+  const browserNow = useBrowserNow();
   const releasedLast = useLoadLast();
 
   const todayStr = useMemo(

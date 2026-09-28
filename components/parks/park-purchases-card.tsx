@@ -40,7 +40,7 @@ interface ParkPurchasesCardProps {
 export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchasesCardProps) {
   const t = useTranslations('parks.purchases');
   const locale = useLocale();
-  const browserNow = useBrowserNow(null);
+  const browserNow = useBrowserNow();
 
   const entry = useMemo(() => {
     if (!browserNow || !schedule?.length) return null;

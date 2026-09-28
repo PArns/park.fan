@@ -13,7 +13,7 @@ import { formatPeakDate } from '@/components/parks/attraction-typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { LocalTime } from '@/components/ui/local-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatTime } from '@/lib/utils/intl-format';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
@@ -102,7 +102,7 @@ export function RideNowPanel({
   const locale = useLocale();
   const timezone = park.timezone ?? 'UTC';
 
-  const browserNow = useBrowserNow(60_000);
+  const browserNow = useMinuteNowDate();
   const isOperating = status === 'OPERATING';
   const wait = isOperating ? getStandbyWait(attraction) : null;
   const mainQueue =

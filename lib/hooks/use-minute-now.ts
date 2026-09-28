@@ -16,7 +16,8 @@ import { useMemo, useSyncExternalStore } from 'react';
  * never shows a stale minute.
  *
  * Returns `null` during SSR and the hydration render (so server and client HTML
- * match), then the current epoch ms, updated every minute.
+ * match), then the current epoch ms, updated every minute. A reader mounted after
+ * hydration gets the time on its first render.
  */
 
 const listeners = new Set<() => void>();
@@ -41,8 +42,13 @@ function stopTimer(): void {
 }
 
 function subscribe(listener: () => void): () => void {
+  // The first subscriber re-stamps a reading older than a tick: `getSnapshot` below may have
+  // stamped it for a render that never committed, and nothing kept it fresh since. A changed
+  // value here is caught by React's post-subscribe check and re-rendered.
+  if (listeners.size === 0 && (nowMs == null || Date.now() - nowMs >= 60_000)) {
+    nowMs = Date.now();
+  }
   listeners.add(listener);
-  if (nowMs == null) nowMs = Date.now();
   if (!document.hidden) startTimer();
   if (visibilityListener == null) {
     visibilityListener = () => {
@@ -68,11 +74,23 @@ function subscribe(listener: () => void): () => void {
   };
 }
 
-const getSnapshot = () => nowMs;
-const getServerSnapshot = () => null;
+// Stamped on first read rather than on subscribe. `subscribe` runs after the commit, so a
+// component mounted after hydration as the clock's first reader used to render `null`, paint
+// its fallback, and render again once its own subscription stamped the time.
+const getSnapshot = () => (nowMs ??= Date.now());
+const getNull = () => null;
+const subscribeToNothing = () => () => {};
 
-export function useMinuteNow(): number | null {
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+/**
+ * `enabled: false` reads `null` and takes no subscription — for a reader that only needs the
+ * clock while something is open, since a hook cannot be called conditionally.
+ */
+export function useMinuteNow(enabled = true): number | null {
+  return useSyncExternalStore(
+    enabled ? subscribe : subscribeToNothing,
+    enabled ? getSnapshot : getNull,
+    getNull
+  );
 }
 
 /**
@@ -80,7 +98,7 @@ export function useMinuteNow(): number | null {
  * call sites, but on the shared (visibility-paused) clock instead of a private
  * per-component interval.
  */
-export function useMinuteNowDate(): Date | null {
-  const ms = useMinuteNow();
+export function useMinuteNowDate(enabled = true): Date | null {
+  const ms = useMinuteNow(enabled);
   return useMemo(() => (ms == null ? null : new Date(ms)), [ms]);
 }

@@ -329,18 +329,31 @@ export function Header({
 
   useEffect(() => {
     if (!isHeroPage) return;
+    // One measurement per frame, and a commit only when a number moved. `resize` fires dozens of
+    // times per second while a window is dragged, and on phones every time the address bar
+    // collapses or returns — a vertical change that moves neither logo. A fresh object each time
+    // re-rendered the whole header for each of them.
+    let frame: number | null = null;
     const measure = () => {
+      frame = null;
       const cornerLogo = cornerLogoRef.current;
       const barLogo = barLogoRef.current;
       if (!cornerLogo || !barLogo || barLogo.offsetHeight === 0) return;
-      setHandoff({
-        logoShift: barLogo.offsetLeft - cornerLogo.offsetLeft,
-        logoScale: cornerLogo.offsetHeight / barLogo.offsetHeight,
-      });
+      const logoShift = barLogo.offsetLeft - cornerLogo.offsetLeft;
+      const logoScale = cornerLogo.offsetHeight / barLogo.offsetHeight;
+      setHandoff((was) =>
+        was.logoShift === logoShift && was.logoScale === logoScale ? was : { logoShift, logoScale }
+      );
+    };
+    const onResize = () => {
+      if (frame === null) frame = requestAnimationFrame(measure);
     };
     measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
   }, [isHeroPage]);
 
   const { logoShift, logoScale } = handoff;

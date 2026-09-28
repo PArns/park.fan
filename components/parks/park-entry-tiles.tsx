@@ -15,7 +15,7 @@ import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody } from '@/components/common/entry-tile';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { TILE_ROW_ATTR, useTileRowAnchor } from '@/lib/hooks/use-tile-row-anchor';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { isInSeason } from '@/lib/utils/season';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { formatDurationShort } from '@/lib/i18n/time';
@@ -190,7 +190,7 @@ export function useParkTileItems({
   const tCommon = useTranslations('common');
   // The show tile names the next start time, which is a question about the clock. Reading it in
   // render would be impure and would disagree between the server and the first client render.
-  const browserNow = useBrowserNow(60_000);
+  const browserNow = useMinuteNowDate();
 
   // Every hint below is read off the snapshot the tile row already has, except the calendar's,
   // which reads the best-days calendar through the SAME query key <ParkBestDaysSection> and

@@ -13,7 +13,7 @@ import {
 } from '@/components/parks/park-entry-tiles';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { formatTime } from '@/lib/utils/intl-format';
@@ -104,7 +104,7 @@ export function RideNavTiles({
   const t = useTranslations('attractions');
   const locale = useLocale();
   const rowRef = useTileReveal<HTMLDivElement>();
-  const browserNow = useBrowserNow(60_000);
+  const browserNow = useMinuteNowDate();
 
   // The live panel's own query, by key — React Query serves both from one fetch.
   const { data: detail } = useAttractionDetail({

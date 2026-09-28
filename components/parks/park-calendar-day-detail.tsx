@@ -48,7 +48,7 @@ import {
   upcomingHourlyPredictions,
 } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 
 const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
@@ -149,10 +149,10 @@ export function ParkCalendarDayDetail({
   // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
   // needs no timezone of its own.
   // Only while the dialog is open. This component stays mounted behind every park and calendar
-  // page (it renders `null` when closed), so an unconditional interval would put a minute timer
-  // and a re-render on those pages for the life of the tab, for a chart almost nobody opens.
-  // `null` still gives one clock reading, which is all a closed dialog could want.
-  const browserNow = useBrowserNow(open ? 60_000 : null);
+  // page (it renders `null` when closed), so an unconditional subscription would re-render it
+  // once a minute on those pages for the life of the tab, for a chart almost nobody opens. The
+  // shared clock stamps a fresh reading on the render that opens it.
+  const browserNow = useMinuteNowDate(open);
   const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
   const canHaveHourly =
     !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
@@ -217,7 +217,7 @@ export function ParkCalendarDayDetail({
     // `browserNow` rather than `Date.now()`: a clock read during render is impure, and the minute
     // tick is what retires a bar while the dialog is open instead of only at the next re-render.
     // The fallback still cuts — it reads the same wall clock — it just does not schedule anything,
-    // which is what the very first render needs before the hook's effect has run.
+    // which is all a render with the dialog not open (the hook then reads `null`) needs.
     (browserNow ?? new Date()).getTime(),
     parkTimezone
   );

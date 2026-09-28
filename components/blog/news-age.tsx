@@ -21,7 +21,7 @@ export function NewsAge({ date, className }: { date: string; className?: string 
   const format = useFormatter();
   const locale = useLocale();
   // One-shot: a day-granular label does not need a ticking clock.
-  const now = useBrowserNow(null);
+  const now = useBrowserNow();
 
   // Date-only ISO strings parse as UTC midnight on server and client alike, which keeps the
   // server-rendered date and the hydrated one identical (the same call `BlogMenuPanel` makes).

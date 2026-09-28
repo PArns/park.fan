@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { showFollowMatchesLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { ShowFollowDialog } from '@/components/push/show-follow-dialog';
 import { SHOW_FOLLOW_MIN_LEAD_MIN } from '@/lib/push/show-lead';
 
@@ -77,7 +77,7 @@ export function ShowFollowBell({
   // statically cached, so a server-side "minutes from now" would be the
   // moment the page was built. `null` until mount, which is also what keeps
   // the first paint identical to the server's.
-  const browserNow = useBrowserNow(30_000);
+  const browserNow = useMinuteNowDate();
   // Read-only here: the dialog owns the write, and the store's own change
   // event is what brings the new state back to every bell on the page.
   // Scoped to this bell's own performance where it has one: the panel lists an

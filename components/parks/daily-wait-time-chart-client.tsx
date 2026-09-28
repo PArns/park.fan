@@ -24,11 +24,12 @@ interface DailyWaitTimeChartClientProps {
   /**
    * What stands here while this component cannot draw yet.
    *
-   * It has a `useMounted()` gate of its own, one commit behind whatever gate its parent uses, so
-   * `null` here means the caller's own skeleton has already been taken down and nothing has
-   * replaced it — a card collapsing to its remaining chrome for one frame. On the ride page that
-   * was a 269 px jump of the Fancast link under it. Pass the same box the caller holds during its
-   * own wait.
+   * It has a `useMounted()` gate of its own. Mounted under a parent's gate it is already open (the
+   * gate reads the client snapshot after hydration), but where this component hydrates itself it
+   * renders this for the hydration pass, and `null` there is a card collapsing to its remaining
+   * chrome for one frame. On the ride page that was a 269 px jump of the Fancast link under it,
+   * back when the gate ran one commit behind its parent's. Pass the same box the caller holds
+   * during its own wait.
    */
   fallback?: React.ReactNode;
   /**

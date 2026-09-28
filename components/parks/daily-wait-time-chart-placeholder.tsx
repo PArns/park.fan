@@ -5,8 +5,9 @@ import { Skeleton } from '@/components/ui/skeleton';
  *
  * There are TWO waits here, and until this component existed the second one reserved nothing.
  * `LiveAttractionData` holds this box while the detail fetch is in flight; then it renders the
- * chart, and `DailyWaitTimeChartClient` — which carries a `useMounted()` gate of its own, one
- * commit behind its parent's — returns `null` for a frame. Measured on Phantasialand/Talocan at
+ * chart, and `DailyWaitTimeChartClient` — which carried a `useMounted()` gate of its own, one
+ * commit behind its parent's, until the gate moved to `useSyncExternalStore` — returned `null` for
+ * a frame. Measured on Phantasialand/Talocan at
  * 390 px: the card went to 24 px of Fancast link and nothing else at 200 ms, and the chart
  * arriving at 250 ms pushed that link down **269 px**. It was 0.129 of a 0.126 CLS, i.e. all of
  * it, and it looked like a chart-height problem because the settled card is the right height.

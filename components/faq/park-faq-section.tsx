@@ -100,7 +100,7 @@ export function ParkFAQSection({
   // crawlable first HTML. Both renders read the SAME prop value → no hydration mismatch; the
   // page is force-dynamic, so a per-request server clock is fine. Day-granular precision is all
   // Q1/Q7 need, so the browser clock taking over after mount yields the same text.
-  const browserNow = useBrowserNow(null);
+  const browserNow = useBrowserNow();
   const nowMs = browserNow ? browserNow.getTime() : (seedNowMs ?? null);
 
   // Calendar feeds only Q7 (least-crowded days). The deferred client fetch takes over once it
