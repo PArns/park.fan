@@ -108,7 +108,11 @@ export function GlossaryTermDetail({
       {/* prefetch off, matching the app-wide default in i18n/no-prefetch-link. This file reaches
           for plain next/link (the locale is already in the href), which bypasses that wrapper, so
           every Link here has to opt out by hand — the sibling glossary components do the same. */}
-      <Link href={`/${locale}/${segment}`} prefetch={false} {...buttonLinkProps({ size: 'sm' })}>
+      <Link
+        href={`/${locale}/${segment}`}
+        prefetch={false}
+        {...buttonLinkProps({ size: 'sm', withIcon: true })}
+      >
         <ArrowLeft className="h-4 w-4" />
         {labels.backToGlossary}
       </Link>

@@ -452,8 +452,14 @@
      width jump (flicker). Reserve the scrollbar's space for exactly that moment so the
      layout stays put. We do this ONLY while a popup is open (not permanently): during
      normal scrolling the browser's native scrollbar renders as-is — correct theme
-     colour, no forced always-visible bar. */
-  html:has(body[data-scroll-locked]) {
+     colour, no forced always-visible bar.
+
+     The lock lands on <body> and the gutter belongs on <html>, and this used to bridge
+     them with `html:has(body[data-scroll-locked])`. `ScrollLockGutter` copies the
+     attribute up instead: any `:has()` rule in the stylesheet made every DOM change on
+     the page restyle the whole document, a 400-700 ms tap on a throttled phone
+     (docs/rules/no-has-selector-in-the-stylesheet.md). */
+  html[data-scroll-locked] {
     scrollbar-gutter: stable;
   }
   body {
@@ -1824,11 +1830,9 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   max-width: 100%;
   width: 100%;
 }
-/* Paragraphs hosting only a floated image keep enough height for the caret
-   to land in them — without it the line is invisible and authors give up. */
-.tiptap-canvas p:has(> .editor-img-align-left, > .editor-img-align-right) {
-  min-height: 1.5rem;
-}
+/* The paragraph that hosts a floated image keeps its caret height in
+   editor-canvas.css — it is a `:has()` rule, and this stylesheet ships to every
+   page (docs/rules/no-has-selector-in-the-stylesheet.md). */
 .tiptap-canvas .editor-img-size-small {
   max-width: 200px;
 }
@@ -2178,12 +2182,8 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   line-height: 1;
 }
 
-/* Widget code fences carry the same data the preview card already shows —
-   hide them from the canvas. Their text is still in the underlying doc and
-   round-trips through markdown, so the source view stays editable. */
-.tiptap-canvas pre:has(> code[class*='-widget']) {
-  display: none;
-}
+/* Widget code fences are hidden from the canvas in editor-canvas.css, next to
+   the editor — a `:has()` rule, see the note on the floated-image paragraph. */
 
 /* Widget fence preview card — same visual family as ref-preview-spotlight but
    labeled with the widget kind so authors can tell what'll render at publish. */

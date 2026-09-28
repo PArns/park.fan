@@ -44,11 +44,16 @@ const buttonVariants = cva(
        * `LocaleSwitcher`, the `sm` search trigger and the burger — cancel this tier at their own
        * call site with `max-sm:` and say why. Their targets stay an open item; the answer for
        * them is the bar's height, not the button's.
+       *
+       * `data-[with-icon]` narrows the padding beside an icon. It was shadcn's `has-[>svg]:`, and
+       * any `:has()` rule in the stylesheet turned every DOM change on the page into a restyle of
+       * the whole document — `Button` now sets the attribute from its children (`hasIconChild`),
+       * see docs/rules/no-has-selector-in-the-stylesheet.md.
        */
       size: {
-        default: 'h-9 px-4 py-2 has-[>svg]:px-3 max-sm:h-11',
-        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 max-sm:h-11',
-        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
+        default: 'h-9 px-4 py-2 data-[with-icon]:px-3 max-sm:h-11',
+        sm: 'h-8 rounded-md gap-1.5 px-3 data-[with-icon]:px-2.5 max-sm:h-11',
+        lg: 'h-10 rounded-md px-6 data-[with-icon]:px-4',
         icon: 'size-9 max-sm:size-11',
         'icon-sm': 'size-8 max-sm:size-11',
         'icon-lg': 'size-10',
@@ -61,6 +66,39 @@ const buttonVariants = cva(
   }
 );
 
+/** `forwardRef`'s element type tag — what every lucide icon component is. */
+const FORWARD_REF = Symbol.for('react.forward_ref');
+
+/**
+ * Is this child an icon that renders as the button's own `<svg>` child?
+ *
+ * The question `has-[>svg]` used to ask in CSS, asked of the React children instead. An icon is a
+ * leaf: an `<svg>` element, a lucide icon (a named `forwardRef` component), or one of our own
+ * components named `…Icon`. Anything that carries children of its own — a `<span>` label, a badge
+ * — is content, and renders no `<svg>` as a direct child of the button either.
+ */
+function isIconElement(node: React.ReactNode): boolean {
+  if (!React.isValidElement(node)) return false;
+  const props = node.props as { children?: React.ReactNode };
+  if (node.type === React.Fragment) return hasIconChild(props.children);
+  if (node.type === 'svg') return true;
+  if (props.children !== undefined) return false;
+  const type: unknown = node.type;
+  if (typeof type === 'object' && type !== null) {
+    const component = type as { $$typeof?: symbol; displayName?: string };
+    return component.$$typeof === FORWARD_REF && Boolean(component.displayName);
+  }
+  if (typeof type === 'function') {
+    const component = type as { displayName?: string; name: string };
+    return /Icon$/.test(component.displayName || component.name);
+  }
+  return false;
+}
+
+function hasIconChild(children: React.ReactNode): boolean {
+  return React.Children.toArray(children).some(isIconElement);
+}
+
 function Button({
   className,
   variant = 'default',
@@ -72,12 +110,19 @@ function Button({
     asChild?: boolean;
   }) {
   const Comp = asChild ? Slot : 'button';
+  // With `asChild` the element that becomes the button is the child, so its children are the ones
+  // that sit directly inside the button box.
+  const content =
+    asChild && React.isValidElement(props.children)
+      ? (props.children.props as { children?: React.ReactNode }).children
+      : props.children;
 
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
       data-size={size}
+      data-with-icon={hasIconChild(content) ? '' : undefined}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
@@ -101,11 +146,18 @@ function buttonLinkProps({
   variant = 'default',
   size = 'default',
   className,
-}: VariantProps<typeof buttonVariants> & { className?: string } = {}) {
+  withIcon = false,
+}: VariantProps<typeof buttonVariants> & {
+  className?: string;
+  /** The link carries an icon as a direct child — `<Button>` works this out from its children,
+   *  spread props cannot see them, so the call site says so. */
+  withIcon?: boolean;
+} = {}) {
   return {
     'data-slot': 'button',
     'data-variant': variant,
     'data-size': size,
+    'data-with-icon': withIcon ? '' : undefined,
     className: cn(buttonVariants({ variant, size, className })),
   };
 }

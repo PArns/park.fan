@@ -26,6 +26,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [A render redoes no work it did last time (REQUIREMENT)](a-render-redoes-no-work.md)
 - [A subscription lives in the leaf that shows it (REQUIREMENT)](a-subscription-lives-in-the-leaf-that-shows-it.md)
 - [Work nobody can see is still work (REQUIREMENT)](work-nobody-can-see-is-still-work.md)
+- [No `:has()` in a stylesheet a page loads (REQUIREMENT)](no-has-selector-in-the-stylesheet.md)
 - [Translations are routed, not bundled (REQUIREMENT)](translations-are-routed-not-bundled.md)
 
 ## Data and API

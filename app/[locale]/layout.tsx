@@ -25,6 +25,7 @@ import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
+import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { PushTimezoneSync } from '@/components/push/push-timezone-sync';
@@ -290,6 +291,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     costs nothing on pages that have no cards. */}
                 <CardPointerFx />
                 <WebVitalsReporter />
+                {/* The scrollbar gutter while a popup locks the page, without a `:has()` rule. */}
+                <ScrollLockGutter />
                 {/* Keeps the stored push zone pointed at where the phone is, so the quiet
                     window from PAR-215 follows a traveller instead of staying where they
                     armed the alert. Does nothing at all on a browser with none armed. */}

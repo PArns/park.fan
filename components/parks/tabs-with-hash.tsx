@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useDeferredValue } from 'react';
+import { memo, useCallback, useDeferredValue } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
@@ -13,16 +13,18 @@ import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { ParkTabsList } from '@/components/parks/park-tabs-list';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { AttractionFilterPanel } from '@/components/parks/attraction-filter-panel';
-import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skeleton';
-import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
 
-import type { ParkWithAttractions, ParkAttraction, RopeDropHeadliner } from '@/lib/api/types';
+import type {
+  ParkWithAttractions,
+  ParkAttraction,
+  ParkShow,
+  RopeDropHeadliner,
+} from '@/lib/api/types';
 
 /** The enter animation of the attractions panel, named because both branches must carry the
  *  same one — see the pre-mount branch below. */
@@ -35,6 +37,100 @@ const NO_ATTRACTIONS: ParkAttraction[] = [];
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
+});
+
+/*
+ * The panel bodies and the filter panel, memoised. A tile tap re-renders `TabsWithHash` with a new
+ * `activeTab` while `deferredTab` still names the panel on screen, and without a memo boundary that
+ * urgent render re-rendered whatever the visible panel held — 55 restaurant cards, the weather
+ * card's hourly chart — for props that had not changed: 264 ms of the Weather tap's mousedown at
+ * 4x CPU on Six Flags Great Adventure, coming from the Restaurants panel it was leaving.
+ */
+const MemoAttractionFilterPanel = memo(AttractionFilterPanel);
+const MemoParkMap = memo(ParkMap);
+const MemoWeatherCard = memo(WeatherCard);
+
+const RestaurantsPanelBody = memo(function RestaurantsPanelBody({
+  restaurants,
+}: {
+  restaurants: ParkWithAttractions['restaurants'];
+}) {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+      {restaurants?.map((restaurant) => (
+        <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+      ))}
+    </div>
+  );
+});
+
+const ShowsPanelBody = memo(function ShowsPanelBody({
+  shows,
+  offSeasonShowCount,
+  showOffSeasonShows,
+  onToggleOffSeason,
+  timezone,
+  continent,
+  country,
+  city,
+  parkSlug,
+}: {
+  shows: ParkShow[];
+  offSeasonShowCount: number;
+  showOffSeasonShows: boolean;
+  onToggleOffSeason: () => void;
+  timezone: string;
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
+}) {
+  return (
+    <>
+      {/* Same as the attractions panel: the „Shows 4" tile above is this chapter's
+          header, so only the control the band used to carry is left. */}
+      {offSeasonShowCount > 0 && (
+        <div className="mb-4 flex h-9 items-center">
+          <OffSeasonToggle
+            count={offSeasonShowCount}
+            shown={showOffSeasonShows}
+            onToggle={onToggleOffSeason}
+          />
+        </div>
+      )}
+      <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+        {shows.map((show) => {
+          const showHref =
+            `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
+          return (
+            // The anchor the header panel's "nächste Shows" rows aim at. `:target`
+            // rings the card for as long as the hash names it, so arriving here from a
+            // row lands ON the show rather than merely in the right chapter.
+            // `scroll-mt-20` keeps it clear of the sticky bar when the browser does the
+            // scrolling itself.
+            <div
+              key={show.id}
+              id={`shows-${show.slug}`}
+              className="target:ring-primary scroll-mt-20 rounded-xl target:ring-2 target:ring-offset-2 target:ring-offset-transparent"
+            >
+              <ShowCard
+                id={show.id}
+                name={stripNewPrefix(show.name)}
+                slug={show.slug}
+                status={show.status || 'CLOSED'}
+                showtimes={show.showtimes}
+                timezone={timezone}
+                href={showHref}
+                isSeasonal={show.isSeasonal}
+                seasonMonths={show.seasonMonths}
+                isCurrentlyInSeason={show.isCurrentlyInSeason}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
 });
 
 interface TabsWithHashProps {
@@ -141,9 +237,14 @@ export const TabsWithHash = memo(function TabsWithHash({
   // that was ~300-380 ms per switch, with the handler itself costing 1 ms: the cost is purely
   // the render+paint that follows, which is exactly what INP charges to the tap.
   //
-  // The panel SWITCH stays urgent, so the highlight and the new (skeleton) panel paint
-  // immediately and the interaction ends there. The heavy body renders off a deferred copy of
-  // the tab value, arriving a beat later at lower priority.
+  // The TILE stays urgent, so the highlight paints on the tap and the interaction ends there.
+  // Which PANEL shows is the deferred copy: every panel is `forceMount`ed and hidden by
+  // `deferredTab`, and its body renders only once `deferredTab` names it. Letting Radix mount and
+  // unmount the panels on the urgent value cost 410 ms at 4x CPU on Six Flags Great Adventure even
+  // with the skeleton step — its `Presence` unmounted the 1,457-node ride grid inside the tap's
+  // commit and read `getComputedStyle` there, forcing a style pass over everything that had just
+  // changed. The old panel now stays on screen until the new one is ready, which also drops the
+  // skeleton flash. docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
   const deferredTab = useDeferredValue(activeTab);
 
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
@@ -184,15 +285,34 @@ export const TabsWithHash = memo(function TabsWithHash({
   // „Attraktionen 40" and is the selected one of six. A band repeating the word 100 px under it
   // is the same chapter opened twice. What is left of that band is the controls it carried, and
   // they are one object now: search, rider height and the off-season toggle over one list.
+  // Stable handlers, so `MemoAttractionFilterPanel` bails out of a render that changed nothing it
+  // shows — a tile tap, a live poll. Every setter here is a `useState` setter and never changes.
+  const toggleOffSeasonAttractions = useCallback(
+    () => setShowOffSeasonAttractions((v) => !v),
+    [setShowOffSeasonAttractions]
+  );
+  const toggleOnlyOpen = useCallback(() => setOnlyOpen((v) => !v), [setOnlyOpen]);
+  const cycleWet = useCallback(() => setWetMode(nextWetMode), [setWetMode]);
+  const clearWet = useCallback(() => setWetMode(null), [setWetMode]);
+  const toggleOnlyFastPass = useCallback(() => setOnlyFastPass((v) => !v), [setOnlyFastPass]);
+  const toggleOnlySingleRider = useCallback(
+    () => setOnlySingleRider((v) => !v),
+    [setOnlySingleRider]
+  );
+  const toggleOffSeasonShows = useCallback(
+    () => setShowOffSeasonShows((v) => !v),
+    [setShowOffSeasonShows]
+  );
+
   const filterPanel = (
-    <AttractionFilterPanel
+    <MemoAttractionFilterPanel
       inputRef={inputRef}
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
       isSearching={isSearching}
       offSeasonCount={offSeasonAttractionCount}
       showOffSeason={showOffSeasonAttractions}
-      onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
+      onToggleOffSeason={toggleOffSeasonAttractions}
       heightStops={heightStops}
       riderHeight={riderHeight}
       onRiderHeightChange={setRiderHeight}
@@ -200,18 +320,18 @@ export const TabsWithHash = memo(function TabsWithHash({
       totalCount={totalAttractionCount}
       openCount={openAttractionCount}
       onlyOpen={onlyOpen}
-      onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
+      onToggleOnlyOpen={toggleOnlyOpen}
       wetCount={wetAttractionCount}
       wetMode={wetMode}
-      onCycleWet={() => setWetMode(nextWetMode)}
-      onClearWet={() => setWetMode(null)}
+      onCycleWet={cycleWet}
+      onClearWet={clearWet}
       fastPassCount={fastPassAttractionCount}
       fastPassLabel={fastPassLabel}
       onlyFastPass={onlyFastPass}
-      onToggleOnlyFastPass={() => setOnlyFastPass((v) => !v)}
+      onToggleOnlyFastPass={toggleOnlyFastPass}
       singleRiderCount={singleRiderAttractionCount}
       onlySingleRider={onlySingleRider}
-      onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
+      onToggleOnlySingleRider={toggleOnlySingleRider}
     />
   );
 
@@ -244,20 +364,9 @@ export const TabsWithHash = memo(function TabsWithHash({
   // constant — the geometry is equal because the markup is the same markup.
   const attractionsPanel = (
     <div className="relative space-y-8">
-      {deferredTab !== 'attractions' ? (
-        // Switching BACK to this tab remounts the whole grid. EVERYTHING below the search
-        // box is deferred — the rope-drop picks and the headliner cards are real cards
-        // too, so leaving them out of this branch kept the urgent commit expensive and the
-        // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
-        // `phoneRow` and `gap-2` below `sm`, matching what `LandSection` renders there.
-        <div className="grid gap-2 sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
-          {Array.from({ length: 6 }, (_, i) => (
-            <AttractionCardSkeleton key={i} phoneRow />
-          ))}
-        </div>
-      ) : (
-        <>
-          {/* Renders nothing when there are neither worth nor evening picks — and
+      {/* Stays mounted when another tab is chosen — the mounted branch hides its panel instead
+          (`forceMount` + `hidden`), so leaving the ride list and coming back rebuilds nothing. */}
+      {/* Renders nothing when there are neither worth nor evening picks — and
                     nothing while a filter is narrowing the list either. It reads
                     `park.attractions` raw, so with "Nur mit Nässe" on it put a dry
                     rope-drop tip above a grid of four water rides, and with a rider
@@ -266,123 +375,121 @@ export const TabsWithHash = memo(function TabsWithHash({
                     searching: it is advice about the whole park, and the visitor has
                     just said they are asking about part of it. The off-season toggle is
                     not in this list — it widens the grid rather than narrowing it. */}
-          {!isNarrowing && (
-            <RopeDropHeadliners
-              headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
-              attractions={park.attractions ?? NO_ATTRACTIONS}
-              parkPath={parkPath}
-            />
-          )}
+      {!isNarrowing && (
+        <RopeDropHeadliners
+          headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
+          attractions={park.attractions ?? NO_ATTRACTIONS}
+          parkPath={parkPath}
+        />
+      )}
 
-          {headliners.length > 0 && !isSearching && (
-            <LandSection
-              landName={t('headlinersSection')}
-              attractions={headliners}
-              parkPath={parkPath}
-              parkSlug={parkSlug}
-              parkStatus={park.status}
-              timezone={park.timezone}
-              todayIso={todayIso}
-              parkName={park.name}
-            />
-          )}
+      {headliners.length > 0 && !isSearching && (
+        <LandSection
+          landName={t('headlinersSection')}
+          attractions={headliners}
+          parkPath={parkPath}
+          parkSlug={parkSlug}
+          parkStatus={park.status}
+          timezone={park.timezone}
+          todayIso={todayIso}
+          parkName={park.name}
+        />
+      )}
 
-          {hasSearchResults ? (
-            landNames.map((landName, index) => {
-              const attractions = filteredAttractionsByLand[landName];
-              if (!attractions) return null;
+      {hasSearchResults ? (
+        landNames.map((landName, index) => {
+          const attractions = filteredAttractionsByLand[landName];
+          if (!attractions) return null;
 
-              return (
-                // Lazy-mount every land below the first so a big park's 100+ glass cards no
-                // longer all render at once (excessive DOM + mobile paint/compositing cost).
-                // While searching, render every matching land eagerly so no result is hidden
-                // behind a placeholder. The reservation follows the grid's column count per
-                // breakpoint so the scroll length stays stable on desktop too.
-                <LazyMount
-                  key={landName}
-                  eager={index === 0 || isSearching}
-                  // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
-                  // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
-                  grid={{
-                    count: attractions.length,
-                    rowHeight: 340,
-                    phoneRowHeight: 80,
-                    headerHeight: 64,
-                  }}
-                >
-                  <LandSection
-                    landName={landName}
-                    attractions={attractions}
-                    parkPath={parkPath}
-                    parkSlug={parkSlug}
-                    parkStatus={park.status}
-                    timezone={park.timezone}
-                    todayIso={todayIso}
-                    parkName={park.name}
-                  />
-                </LazyMount>
-              );
-            })
-          ) : (
-            <div className="flex justify-center pt-14">
-              <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
-                <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                {/* Six filters can empty this grid and only one of them is obviously
+          return (
+            // Lazy-mount every land below the first so a big park's 100+ glass cards no
+            // longer all render at once (excessive DOM + mobile paint/compositing cost).
+            // While searching, render every matching land eagerly so no result is hidden
+            // behind a placeholder. The reservation follows the grid's column count per
+            // breakpoint so the scroll length stays stable on desktop too.
+            <LazyMount
+              key={landName}
+              eager={index === 0 || isSearching}
+              // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
+              // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
+              grid={{
+                count: attractions.length,
+                rowHeight: 340,
+                phoneRowHeight: 80,
+                headerHeight: 64,
+              }}
+            >
+              <LandSection
+                landName={landName}
+                attractions={attractions}
+                parkPath={parkPath}
+                parkSlug={parkSlug}
+                parkStatus={park.status}
+                timezone={park.timezone}
+                todayIso={todayIso}
+                parkName={park.name}
+              />
+            </LazyMount>
+          );
+        })
+      ) : (
+        <div className="flex justify-center pt-14">
+          <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
+            <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
+            {/* Six filters can empty this grid and only one of them is obviously
                           to blame: a search box you just typed into is right there, a rider
                           height or a pill set three scrolls ago is not. So each of them
                           offers its own way out here whenever it is on. */}
-                {riderHeight !== null && (
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setRiderHeight(null)}
-                  >
-                    {t('heightFilter.reset')}
-                  </button>
-                )}
-                {appliedPills.onlyOpen && (
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setOnlyOpen(false)}
-                  >
-                    {t('filterSection.resetOpenNow')}
-                  </button>
-                )}
-                {appliedPills.wetMode !== null && (
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setWetMode(null)}
-                  >
-                    {t('filterSection.resetWet')}
-                  </button>
-                )}
-                {appliedPills.onlyFastPass && (
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setOnlyFastPass(false)}
-                  >
-                    {t('filterSection.resetFastPass')}
-                  </button>
-                )}
-                {appliedPills.onlySingleRider && (
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setOnlySingleRider(false)}
-                  >
-                    {t('filterSection.resetSingleRider')}
-                  </button>
-                )}
-                {isSearching && (
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setSearchQuery('')}
-                  >
-                    {t('clearSearch')}
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
-        </>
+            {riderHeight !== null && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setRiderHeight(null)}
+              >
+                {t('heightFilter.reset')}
+              </button>
+            )}
+            {appliedPills.onlyOpen && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setOnlyOpen(false)}
+              >
+                {t('filterSection.resetOpenNow')}
+              </button>
+            )}
+            {appliedPills.wetMode !== null && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setWetMode(null)}
+              >
+                {t('filterSection.resetWet')}
+              </button>
+            )}
+            {appliedPills.onlyFastPass && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setOnlyFastPass(false)}
+              >
+                {t('filterSection.resetFastPass')}
+              </button>
+            )}
+            {appliedPills.onlySingleRider && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setOnlySingleRider(false)}
+              >
+                {t('filterSection.resetSingleRider')}
+              </button>
+            )}
+            {isSearching && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setSearchQuery('')}
+              >
+                {t('clearSearch')}
+              </button>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
@@ -420,12 +527,34 @@ export const TabsWithHash = memo(function TabsWithHash({
     );
   }
 
+  // Every panel is `forceMount`ed and shown by `deferredTab`, not by Radix: the tile's own state
+  // (`activeTab`) is the urgent one, the panel follows at lower priority, and a panel's body renders
+  // only once `deferredTab` names it — so the tap's commit mounts, unmounts and measures nothing.
+  // `hidden` is spread after Radix's own in `TabsContent`, so ours wins; the ride list's panel is
+  // never unmounted at all, only hidden, which makes the way back to it a style change.
+  //
+  // `data-state` is overridden the same way, and it has to be. Radix sets it from the urgent value,
+  // and an attribute change on an element restyles that element's WHOLE subtree while any rule of
+  // the shape `:is(:where(.group)[data-state=…] *)` exists — Tailwind's `group-data-*` variants
+  // compile to exactly that, and the tiles use three. On the ride list that was 1,312 elements and
+  // 297 ms inside the tap at 4x CPU. Following `deferredTab`, it changes in the deferred commit,
+  // together with `hidden`, where a hidden subtree is not restyled at all.
+  const panelProps = (value: string) => ({
+    forceMount: true as const,
+    hidden: deferredTab !== value,
+    'data-state': deferredTab === value ? 'active' : 'inactive',
+  });
+
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
         {headerCard}
 
-        <TabsContent value="attractions" className={ATTRACTIONS_PANEL_ENTER}>
+        <TabsContent
+          value="attractions"
+          {...panelProps('attractions')}
+          className={ATTRACTIONS_PANEL_ENTER}
+        >
           {filterPanel}
           {freshnessLine}
           {attractionsPanel}
@@ -434,103 +563,74 @@ export const TabsWithHash = memo(function TabsWithHash({
         {showsAvailable && (
           <TabsContent
             value="shows"
+            {...panelProps('shows')}
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            {/* Same as the attractions panel: the „Shows 4" tile above is this chapter's
-                header, so only the control the band used to carry is left. */}
-            {offSeasonShowCount > 0 && (
-              <div className="mb-4 flex h-9 items-center">
-                <OffSeasonToggle
-                  count={offSeasonShowCount}
-                  shown={showOffSeasonShows}
-                  onToggle={() => setShowOffSeasonShows((v) => !v)}
-                />
-              </div>
+            {deferredTab === 'shows' && (
+              <ShowsPanelBody
+                shows={visibleShows}
+                offSeasonShowCount={offSeasonShowCount}
+                showOffSeasonShows={showOffSeasonShows}
+                onToggleOffSeason={toggleOffSeasonShows}
+                timezone={park.timezone}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+              />
             )}
-            <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-              {visibleShows.map((show) => {
-                const showHref =
-                  `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
-                return (
-                  // The anchor the header panel's "nächste Shows" rows aim at. `:target` rings the
-                  // card for as long as the hash names it, so arriving here from a row lands ON
-                  // the show rather than merely in the right chapter. `scroll-mt-20` keeps it
-                  // clear of the sticky bar when the browser does the scrolling itself.
-                  <div
-                    key={show.id}
-                    id={`shows-${show.slug}`}
-                    className="target:ring-primary scroll-mt-20 rounded-xl target:ring-2 target:ring-offset-2 target:ring-offset-transparent"
-                  >
-                    <ShowCard
-                      id={show.id}
-                      name={stripNewPrefix(show.name)}
-                      slug={show.slug}
-                      status={show.status || 'CLOSED'}
-                      showtimes={show.showtimes}
-                      timezone={park.timezone}
-                      href={showHref}
-                      isSeasonal={show.isSeasonal}
-                      seasonMonths={show.seasonMonths}
-                      isCurrentlyInSeason={show.isCurrentlyInSeason}
-                    />
-                  </div>
-                );
-              })}
-            </div>
           </TabsContent>
         )}
 
         {restaurantsAvailable && (
           <TabsContent
             value="restaurants"
+            {...panelProps('restaurants')}
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-              {deferredTab === 'restaurants'
-                ? park.restaurants?.map((restaurant) => (
-                    <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-                  ))
-                : Array.from({ length: 6 }, (_, i) => <RestaurantCardSkeleton key={i} />)}
-            </div>
+            {deferredTab === 'restaurants' && (
+              <RestaurantsPanelBody restaurants={park.restaurants} />
+            )}
           </TabsContent>
         )}
 
         <TabsContent
           value="map"
+          {...panelProps('map')}
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          {deferredTab === 'map' ? (
-            <ParkMap park={park} focusShowSlug={mapShowSlug} />
-          ) : (
-            <Skeleton className="h-[28rem] w-full rounded-xl" />
-          )}
+          {deferredTab === 'map' && <MemoParkMap park={park} focusShowSlug={mapShowSlug} />}
         </TabsContent>
 
         {/* Weather is a chapter behind a tile now, not a ~360px card wedged between the header
             and the ride list. It answers a real question and almost nobody arrives asking it
             first — the summary a visitor does want on arrival (temperature, the nowcast, an
             official warning) still meets them above the fold in the banners, which stay in the
-            page body. Unlike the deferred tabs above this one renders its card as soon as the
-            tab is active without a skeleton step: everything it needs to draw is already in
-            `park.weather` from the server render, so there is nothing to wait for. */}
+            page body. Everything the card draws is already in `park.weather` from the server
+            render; it still waits for `deferredTab` like the others, because drawing it on the
+            tile's own state put the whole card in the tap's commit (411 ms of mousedown handler
+            at 4x CPU on Six Flags Great Adventure). */}
         {weatherAvailable && park.weather?.current && (
           <TabsContent
             value="weather"
+            {...panelProps('weather')}
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <WeatherCard
-              weather={park.weather}
-              nowcast={null}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              latitude={park.latitude}
-              longitude={park.longitude}
-              timezone={park.timezone}
-              schedule={park.schedule}
-              className="border-primary/10"
-            />
+            {deferredTab === 'weather' && (
+              <MemoWeatherCard
+                weather={park.weather}
+                nowcast={null}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                latitude={park.latitude}
+                longitude={park.longitude}
+                timezone={park.timezone}
+                schedule={park.schedule}
+                className="border-primary/10"
+              />
+            )}
           </TabsContent>
         )}
       </Tabs>

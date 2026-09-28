@@ -57,15 +57,32 @@ export function clampPanelWidth(px: number): number {
  */
 function fitToViewport(px: number): number {
   if (typeof window === 'undefined') return px;
-  return Math.max(PANEL_WIDTH_MIN, Math.min(px, window.innerWidth - PAGE_MIN_PX));
+  return Math.max(PANEL_WIDTH_MIN, Math.min(px, (viewport ?? window.innerWidth) - PAGE_MIN_PX));
 }
 
 let width = PANEL_WIDTH_DEFAULT;
 let loaded = false;
 const listeners = new Set<() => void>();
 
+/**
+ * The window's width, read on subscribe and on each resize — never in `getSnapshot`.
+ *
+ * `window.innerWidth` forces a style and layout pass whenever the document is dirty, and React
+ * calls `getSnapshot` in the middle of every render of a subscriber and again in the commit that
+ * follows. The edge tab subscribes on every page, so each of its renders paid a full style
+ * recalculation and layout of whatever the same commit had just changed: 317-522 ms at 4x CPU on
+ * a park page, traced to this line (docs/rules/no-has-selector-in-the-stylesheet.md, "Layout
+ * reads in a store"). `null` while nobody listens, and then the one caller reads the window.
+ */
+let viewport: number | null = null;
+
 function emit(): void {
   for (const listener of listeners) listener();
+}
+
+function onResize(): void {
+  viewport = window.innerWidth;
+  emit();
 }
 
 function load(): void {
@@ -87,10 +104,16 @@ export const plannerPanelWidth = {
     // The cap reads the window, so the window changing changes the answer. One
     // listener for all subscribers, installed with the first and removed with
     // the last, like the panel's minute tick.
-    if (listeners.size === 1) window.addEventListener('resize', emit);
+    if (listeners.size === 1) {
+      viewport = window.innerWidth;
+      window.addEventListener('resize', onResize);
+    }
     return () => {
       listeners.delete(listener);
-      if (listeners.size === 0) window.removeEventListener('resize', emit);
+      if (listeners.size === 0) {
+        window.removeEventListener('resize', onResize);
+        viewport = null;
+      }
     };
   },
   getSnapshot(): number {

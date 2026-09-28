@@ -186,6 +186,31 @@ export function PlannerDayGrid({
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dense, setDense] = useState(false);
 
+  // „A block is under the pointer" as an attribute on the grid, for the show marks that step
+  // back while somebody reads or moves a block. It was `group-has-[[data-planner-block]:hover]`,
+  // and any `:has()` rule in the stylesheet makes every DOM change on every page restyle the whole
+  // document (docs/rules/no-has-selector-in-the-stylesheet.md). One delegated pair of listeners
+  // and a DOM attribute — no state, so the grid does not re-render as the pointer crosses it.
+  const gridRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid || !window.matchMedia('(pointer: fine)').matches) return;
+    const sync = (event: PointerEvent) => {
+      const over =
+        event.type === 'pointerover' &&
+        event.target instanceof Element &&
+        event.target.closest('[data-planner-block]') !== null;
+      if (over !== grid.hasAttribute('data-block-hover'))
+        grid.toggleAttribute('data-block-hover', over);
+    };
+    grid.addEventListener('pointerover', sync);
+    grid.addEventListener('pointerleave', sync);
+    return () => {
+      grid.removeEventListener('pointerover', sync);
+      grid.removeEventListener('pointerleave', sync);
+    };
+  }, []);
+
   // The half-hour hairlines are a question about the CANVAS's width, not the
   // viewport's: this same component is 448 px in a desktop sheet and ~342 px on
   // a phone, and `/ui` could render it narrower still.
@@ -1033,7 +1058,7 @@ export function PlannerDayGrid({
   );
 
   return (
-    <div className="group/grid relative flex" data-planner-grid="">
+    <div ref={gridRef} className="group/grid relative flex" data-planner-grid="">
       {/* The gutter. Its own column, so a show pill and an hour label resolve
           their only possible collision with the pill's own background. */}
       <div className="relative w-11 shrink-0 max-sm:w-10" style={{ height: grid.heightPx }}>
@@ -1200,8 +1225,9 @@ export function PlannerDayGrid({
                   // The pointer on a block is somebody reading or moving that
                   // block, so every show mark steps back for as long as it is
                   // there, and fades rather than blinks. A fine pointer only: a
-                  // tap leaves `:hover` stuck on a touch screen.
-                  'pointer-fine:group-has-[[data-planner-block]:hover]/grid:opacity-20'
+                  // tap leaves `:hover` stuck on a touch screen. The attribute
+                  // is set by the listener on `gridRef` above.
+                  'pointer-fine:group-data-[block-hover]/grid:opacity-20'
                 )}
                 style={{
                   top: line.y,
