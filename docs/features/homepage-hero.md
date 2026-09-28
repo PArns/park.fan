@@ -528,7 +528,7 @@ build: React 19 compares hydrated attributes in `react-dom-client.development.js
   staggered reads as the panel answering the click rather than the content teleporting
   (`hero-world-panel-client.tsx`).
 - ~~**The header solidifying** on a hero page (`lib/hooks/use-header-reveal.ts`)~~ — **gone since
-  PAR-170**, and the reason is worth keeping because it is what a stagger over a scroll threshold
+  PAR-170** (the file is deleted too), and the reason is worth keeping because it is what a stagger over a scroll threshold
   costs. The timeline was a `fromTo(targets, {y:-10}, {y:0})` built the first time the bar
   solidified and **reversed** on the way back up, and reversing a `fromTo` ends on its from-state.
   That was safe only because the bar's contents were `opacity-0` up there: the hook's own docblock

@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { Input } from '@/components/ui/input';
-import { LocalTime } from '@/components/ui/local-time';
+import { LocalTime, LocalTimeRange } from '@/components/ui/local-time';
 import { search } from '@/lib/api/search';
 import { getContinents } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
@@ -191,8 +191,11 @@ function SearchResultCard({
           <div className="flex items-center gap-1 text-sm">
             <Clock className="h-3 w-3" />
             <span>
-              <LocalTime time={result.parkHours.open} timeZone={timezone} /> -{' '}
-              <LocalTime time={result.parkHours.close} timeZone={timezone} />
+              <LocalTimeRange
+                start={result.parkHours.open}
+                end={result.parkHours.close}
+                timeZone={timezone}
+              />
             </span>
           </div>
         )}
