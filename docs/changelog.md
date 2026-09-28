@@ -4,6 +4,16 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Kompass: erscheint auch, wenn der Hero im Bildschirm endet
+
+Der Kompass kam bisher nur, solange sein Platz unter dem Hero unterhalb des Bildschirms lag.
+Auf Englisch endet der Hero im Disneyland Anaheim bei 680 px („Welcome to Disneyland Park" hat
+zwei Zeilen, die deutsche Begrüßung drei), also mitten im Bildschirm: Auf 390 × 844, 412 × 915
+und 430 × 932 erschien der Kompass in fünf von sechs Sprachen nie. Ganz oben auf der Seite kommt
+er jetzt immer. Das schiebt den Anschnitt des nächsten Kapitels aus dem Bild und kostet bis zu
+0,30 Layout Shift, nur bei Aufrufen aus einem Park. Wer gescrollt hat, bleibt unberührt.
+Messungen: [park-compass.md](features/park-compass.md#where-it-appears-and-when).
+
 ## Unreleased – Kompass: Umami zählt, ob er genutzt wird
 
 Fünf Events, vier davon ohne Property: gesehen (`compass_viewed`) und Handy-Kompass aktiv
