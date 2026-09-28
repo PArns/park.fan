@@ -35,6 +35,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
     loading: geoLoading,
     permissionDenied,
     permissionGranted,
+    initialCheckDone,
     refresh,
     setIsInPark,
   } = useGeolocation();
@@ -49,7 +50,14 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
   const locationSource = position ? 'gps' : 'ip';
 
-  useNearbyAnalytics({ nearbyData, position, permissionDenied, locationSource, setIsInPark });
+  useNearbyAnalytics({
+    nearbyData,
+    position,
+    permissionDenied,
+    initialCheckDone,
+    locationSource,
+    setIsInPark,
+  });
 
   // Show skeleton whenever there's nothing to display and something is still in progress.
   // Keep showing skeleton even on 400 errors while GPS is still loading — coords may arrive

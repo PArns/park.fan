@@ -141,6 +141,11 @@ carries the reasoning, the measurements and the counter-examples.
 - **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
   `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
   `pnpm test:news-redirects`, `pnpm test:news-park`.
+- **[Location is asked for by a tap, never by a page load](docs/rules/location-is-asked-for-by-a-tap.md)** —
+  on load the provider reads only on `granted`, on every page (blog and news are entry pages);
+  nothing else calls `navigator.geolocation` into a `prompt` state, read `useGeolocation()`. Never
+  reuse an earlier yes: iPhone Safari prompts on every reload (`lib/utils/geolocation-permission.ts`,
+  `pnpm test:geolocation-permission`).
 
 ### Design and layout
 

@@ -4,6 +4,35 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Standort: nur noch auf Tipp fragen
+
+Wie lange ein Ja zum Standort gilt, entscheidet der Browser. Wie oft wir fragen, entscheiden wir.
+Beim Laden liest die Seite den Standort jetzt nur noch, wenn der Browser `granted` meldet, also
+ohne Prompt. Sonst fragt erst ein Tipp auf einen Knopf, und auf Blog- und News-Seiten gibt es
+keinen solchen Knopf.
+
+- **Die Parkkarte hat selbst gefragt,** beim Öffnen des Karten-Tabs und in jedem Blogartikel mit
+  Karte. Chrome sperrt eine Seite nach drei ignorierten Anfragen für eine Woche. Die Karte nimmt
+  den Standort jetzt aus dem Context.
+- **Ein früheres Ja wird nicht mehr beim Laden wiederverwendet.** Wo die Permissions-API nicht
+  antwortete, hat die Seite mit gemerktem Ja (`pf_geo_optin`) beim Laden gelesen. Safari auf dem
+  iPhone fragt mit der Einstellung „Fragen" aber bei jedem Neuladen, das war also auf jeder
+  Einstiegsseite ein Prompt. Das Flag ist entfernt.
+- **Nach Ablauf von „Nur dieses Mal"** (Chrome, nach fünf Minuten im Hintergrund) kam beim
+  Zurückwechseln in den Tab sofort ein Prompt. Die Hintergrund-Aktualisierung prüft jetzt vorher
+  den Status. Eine temporäre Freigabe in Firefox aktualisiert weiter.
+- **Wer den Standort blockiert hatte,** sah trotzdem Banner und „Standort nutzen", und der Knopf
+  konnte nichts tun. Das Umami-Event für eine Ablehnung zählt weiter nur eine Antwort auf der Seite.
+- **Das geschlossene Banner** blieb eine Browser-Sitzung zu, jetzt 30 Tage.
+
+Safari auf dem iPhone fragt nach einem Tipp weiterhin bei jedem Neuladen. Das kann die Seite nicht
+ändern, nur die Einstellung „Erlauben" für park.fan (aA → Website-Einstellungen → Standort).
+Details und Messungen:
+[location-is-asked-for-by-a-tap.md](rules/location-is-asked-for-by-a-tap.md), Test:
+`pnpm test:geolocation-permission`.
+
+---
+
 ## Unreleased – Kompass: Umami zählt, ob er genutzt wird
 
 Fünf Events, vier davon ohne Property: gesehen (`compass_viewed`) und Handy-Kompass aktiv
