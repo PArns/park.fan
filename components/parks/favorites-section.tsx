@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useCallback, useMemo, useSyncExternalStore } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
-import { Card, CardContent } from '@/components/ui/card';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { ParkCard } from '@/components/parks/park-card';
@@ -12,28 +11,17 @@ import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { ShowCard } from '@/components/parks/show-card';
-import { FavoriteStar } from '@/components/common/favorite-star';
+import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useFavorites } from '@/lib/hooks/use-favorites';
-import { useQueryClient } from '@tanstack/react-query';
-import { formatDistance } from '@/lib/utils/distance-utils';
+import { useHydrated } from '@/lib/hooks/use-mounted';
 import { stripNewPrefix } from '@/lib/utils';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
-import {
-  buildShowUrl,
-  buildRestaurantUrl,
-  convertApiUrlToFrontendUrl,
-} from '@/lib/utils/url-utils';
-import { Link } from '@/i18n/navigation';
-import { ChevronRight, Navigation, Star } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { parkChapterUrl } from '@/lib/utils/url-utils';
+import { Star } from 'lucide-react';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
-
-const emptySubscribe = () => () => {};
-const getClientSnapshot = () => true;
-const getServerSnapshot = () => false;
 
 /**
  * `standalone` is what `/favorites` passes: there the band is the page's whole content, so the
@@ -43,12 +31,10 @@ const getServerSnapshot = () => false;
  */
 export function FavoritesSection({ standalone = false }: { standalone?: boolean }) {
   const t = useTranslations('favorites');
-  const mounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
+  const mounted = useHydrated();
 
   const { position } = useGeolocation();
   const { data: favoritesData, isLoading: loading, isPending } = useFavorites();
-
-  const queryClient = useQueryClient();
 
   // Read cookie counts once after mount — avoids showing a skeleton for users with no favorites.
   // Returns -1 on the server (cookies not readable); after mount the real count is used.
@@ -103,18 +89,6 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
         : null,
     [favoritesData, sortByDistanceOrName]
   );
-
-  // Invalidate on favorites-changed (React Query refetches active queries automatically)
-  useEffect(() => {
-    const handleFavoritesChanged = () => {
-      queryClient.invalidateQueries({ queryKey: ['favorites'] });
-    };
-
-    window.addEventListener('favorites-changed', handleFavoritesChanged);
-    return () => {
-      window.removeEventListener('favorites-changed', handleFavoritesChanged);
-    };
-  }, [queryClient]);
 
   // Server / first hydration: cookies aren't readable, so we don't know yet which of the
   // three outcomes below this is. Hold the empty state's box anyway — it is the outcome
@@ -219,10 +193,12 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
             {t('title')} ({totalFavorites})
           </h2>
         ) : (
-          <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
-            <Star className="text-primary h-5 w-5" />
+          // The same pill, with the same margin, as the skeleton and the empty state. A bare
+          // `<h2>` here took 28 px less than the heading it replaced (a 28 px line with `mb-2`
+          // against the 48 px pill with `mb-4`), so the grids under it jumped up as they landed.
+          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
             {t('title')} ({totalFavorites})
-          </h2>
+          </GlassSectionTitle>
         )}
         {!position && (
           <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>
@@ -306,48 +282,20 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('shows')}</h3>
                 <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                  {sortedFavorites.shows.map((show) => {
-                    // Build show URL: always use park URL with #shows hash
-                    let showHref = '#';
-
-                    // First, try to get park URL from show.url
-                    let parkUrl: string | null = null;
-                    if (show.url) {
-                      if (show.url.startsWith('/v1/parks/') || show.url.startsWith('/parks/')) {
-                        // It's already a park URL, use it
-                        parkUrl = convertApiUrlToFrontendUrl(show.url);
-                      } else if (show.url.startsWith('/v1/shows/')) {
-                        // Show URL - we need park data
-                        parkUrl = null; // Will use park data below
-                      } else {
-                        // Try to convert it
-                        const converted = convertApiUrlToFrontendUrl(show.url);
-                        if (converted !== '#' && converted.startsWith('/parks/')) {
-                          parkUrl = converted;
-                        }
-                      }
-                    }
-
-                    // Build show URL with hash
-                    if (parkUrl) {
-                      showHref = buildShowUrl(parkUrl);
-                    }
-
-                    return (
-                      <ShowCard
-                        key={show.id}
-                        id={show.id}
-                        name={stripNewPrefix(show.name)}
-                        slug={show.slug}
-                        status={show.status}
-                        showtimes={show.showtimes}
-                        timezone={show.park?.timezone || 'UTC'}
-                        href={showHref}
-                        parkName={show.park?.name ? stripNewPrefix(show.park.name) : undefined}
-                        distance={show.distance}
-                      />
-                    );
-                  })}
+                  {sortedFavorites.shows.map((show) => (
+                    <ShowCard
+                      key={show.id}
+                      id={show.id}
+                      name={stripNewPrefix(show.name)}
+                      slug={show.slug}
+                      status={show.status}
+                      showtimes={show.showtimes}
+                      timezone={show.park?.timezone || 'UTC'}
+                      href={parkChapterUrl(show.url, 'shows') ?? '#'}
+                      parkName={show.park?.name ? stripNewPrefix(show.park.name) : undefined}
+                      distance={show.distance}
+                    />
+                  ))}
                 </div>
               </div>
               {sortedFavorites.restaurants.length > 0 && <Separator />}
@@ -359,80 +307,17 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
             <div>
               <h3 className="mb-4 text-lg font-semibold">{t('restaurants')}</h3>
               <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                {sortedFavorites.restaurants.map((restaurant) => {
-                  // Build restaurant URL: always use park URL with #restaurants hash
-                  let restaurantHref = '#';
-
-                  // First, try to get park URL from restaurant.url
-                  let parkUrl: string | null = null;
-                  if (restaurant.url) {
-                    if (
-                      restaurant.url.startsWith('/v1/parks/') ||
-                      restaurant.url.startsWith('/parks/')
-                    ) {
-                      // It's already a park URL, use it
-                      parkUrl = convertApiUrlToFrontendUrl(restaurant.url);
-                    } else if (restaurant.url.startsWith('/v1/restaurants/')) {
-                      // Restaurant URL - we need park data
-                      parkUrl = null; // Will use park data below
-                    } else {
-                      // Try to convert it
-                      const converted = convertApiUrlToFrontendUrl(restaurant.url);
-                      if (converted !== '#' && converted.startsWith('/parks/')) {
-                        parkUrl = converted;
-                      }
+                {sortedFavorites.restaurants.map((restaurant) => (
+                  <RestaurantCard
+                    key={restaurant.id}
+                    restaurant={restaurant}
+                    href={parkChapterUrl(restaurant.url, 'restaurants') ?? undefined}
+                    parkName={
+                      restaurant.park?.name ? stripNewPrefix(restaurant.park.name) : undefined
                     }
-                  }
-
-                  // Build restaurant URL with hash
-                  if (parkUrl) {
-                    restaurantHref = buildRestaurantUrl(parkUrl);
-                  }
-
-                  return (
-                    <Link
-                      key={restaurant.id}
-                      href={restaurantHref}
-                      prefetch={false}
-                      className="group block h-full"
-                    >
-                      <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">
-                        {/* Favorite Star */}
-                        <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                          <FavoriteStar type="restaurant" id={restaurant.id} />
-                        </div>
-                        <CardContent className="p-4">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="min-w-0 flex-1">
-                              <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
-                                {stripNewPrefix(restaurant.name)}
-                              </h3>
-                              {restaurant.park && (
-                                <p className="text-muted-foreground mt-1 truncate text-xs">
-                                  {stripNewPrefix(restaurant.park.name)}
-                                </p>
-                              )}
-                              {restaurant.cuisineType && (
-                                <Badge variant="secondary" className="mt-2 text-xs">
-                                  {restaurant.cuisineType}
-                                </Badge>
-                              )}
-                              {restaurant.distance && (
-                                <div className="text-muted-foreground mt-2 flex items-center gap-1.5 text-sm">
-                                  <Navigation className="h-4 w-4" />
-                                  <span className="font-medium">
-                                    {formatDistance(restaurant.distance)}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                            <ChevronRight className="text-muted-foreground group-hover:text-primary mt-0.5 h-4 w-4 flex-shrink-0 transition-colors" />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                })}
+                    distance={restaurant.distance}
+                  />
+                ))}
               </div>
             </div>
           )}

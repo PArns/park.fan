@@ -105,25 +105,19 @@ export function getParkUrlFromAttractionUrl(attractionUrl: string): string {
 }
 
 /**
- * Build show URL from park URL
- * Ensures the URL ends with #shows (replaces existing hash if present)
+ * The park-page chapter a show or restaurant lives under: `/parks/…#shows` or `/parks/…#restaurants`.
+ *
+ * Neither has a page of its own, so a link to one goes to its park's tab. `url` is whatever the API
+ * handed over for the item or its park: a park URL, a `/parks/…/shows/<slug>` URL (the show segment
+ * is dropped), or a bare `/v1/shows/<id>` that names no park at all. The last kind gives `null`, and
+ * each caller picks its own fallback rather than linking to `#shows` on whatever page it is on.
  */
-export function buildShowUrl(parkUrl: string): string {
-  const cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
-  // Remove any existing hash
-  const urlWithoutHash = cleanParkUrl.split('#')[0];
-  return `${urlWithoutHash}#shows`;
-}
-
-/**
- * Build restaurant URL from park URL
- * Ensures the URL ends with #restaurants (replaces existing hash if present)
- */
-export function buildRestaurantUrl(parkUrl: string): string {
-  const cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
-  // Remove any existing hash
-  const urlWithoutHash = cleanParkUrl.split('#')[0];
-  return `${urlWithoutHash}#restaurants`;
+export function parkChapterUrl(
+  url: string | null | undefined,
+  chapter: 'shows' | 'restaurants'
+): string | null {
+  const parkUrl = convertApiUrlToFrontendUrl(url);
+  return parkUrl.startsWith('/parks/') ? `${parkUrl.split('#')[0]}#${chapter}` : null;
 }
 
 /**

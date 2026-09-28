@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 
 /** Returns true after the first client-side render — prevents hydration mismatches. */
 export function useMounted(): boolean {
@@ -8,6 +8,23 @@ export function useMounted(): boolean {
     return () => clearTimeout(id);
   }, []);
   return mounted;
+}
+
+const subscribeNever = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
+
+/**
+ * `false` in the server render and in the hydrating render, `true` from then on.
+ *
+ * Not the same answer as {@link useMounted}. That one is `false` for the first render of EVERY
+ * mount and flips a task later; this one is `true` straight away when the component mounts after
+ * hydration (a client-side navigation, a dynamic import resolving), so a section that reads the
+ * cookie or the clock renders its real state on that first pass instead of first painting the
+ * placeholder it had to show the server.
+ */
+export function useHydrated(): boolean {
+  return useSyncExternalStore(subscribeNever, onClient, onServer);
 }
 
 /** Returns the browser IANA timezone string, or null during SSR / before hydration. */

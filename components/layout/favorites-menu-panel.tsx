@@ -32,11 +32,7 @@ import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-sty
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import {
-  buildRestaurantUrl,
-  buildShowUrl,
-  convertApiUrlToFrontendUrl,
-} from '@/lib/utils/url-utils';
+import { convertApiUrlToFrontendUrl, parkChapterUrl } from '@/lib/utils/url-utils';
 import type {
   FavoriteAttraction,
   FavoritePark,
@@ -961,26 +957,18 @@ function AttractionEntry({
  * Zahl am Stern.
  */
 function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
-  const parkHref = (url: string | undefined) => {
-    if (!url) return null;
-    const converted = convertApiUrlToFrontendUrl(url);
-    return converted !== '#' && converted.startsWith('/parks/') ? converted : null;
-  };
-
   return [
     ...shows.map((show) => ({
       id: show.id,
       title: stripNewPrefix(show.name),
       park: show.park ? stripNewPrefix(show.park.name) : null,
-      base: parkHref(show.url),
-      build: buildShowUrl,
+      chapter: parkChapterUrl(show.url, 'shows'),
     })),
     ...restaurants.map((restaurant) => ({
       id: restaurant.id,
       title: stripNewPrefix(restaurant.name),
       park: restaurant.park ? stripNewPrefix(restaurant.park.name) : null,
-      base: parkHref(restaurant.url),
-      build: buildRestaurantUrl,
+      chapter: parkChapterUrl(restaurant.url, 'restaurants'),
     })),
   ].map((v) => ({
     id: v.id,
@@ -988,7 +976,7 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
     park: v.park,
     // Ohne auflösbare Parkseite bleibt die Favoritenseite der einzige Ort, an dem der Eintrag
     // noch zu sehen ist.
-    href: v.base ? v.build(v.base) : '/favorites',
+    href: v.chapter ?? '/favorites',
   }));
 }
 
