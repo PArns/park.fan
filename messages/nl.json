@@ -1486,6 +1486,13 @@
       "dialGroup": "Kompas, noorden boven"
     }
   },
+  "location": {
+    "active": "Locatie aan",
+    "howTo": "Zo verander je dat",
+    "stepsDefault": "Tik of klik op het pictogram links van het adres en zet Locatie op ‘Toestaan’. Laad de pagina daarna opnieuw.",
+    "stepsIosSafari": "Tik links in de adresbalk op ‘aA’, dan op Website-instellingen → Locatie → Sta toe. Laad de pagina daarna opnieuw.",
+    "stepsMacSafari": "Kies in de menubalk Safari → Instellingen voor park.fan… en zet Locatie op ‘Sta toe’. Laad de pagina daarna opnieuw."
+  },
   "geo": {
     "continent": "Continent",
     "country": "Land",

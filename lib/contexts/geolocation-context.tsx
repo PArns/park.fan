@@ -14,6 +14,7 @@ import {
   canRefreshSilently,
   initialLocationAction,
   promptStateIsReliable,
+  wasOnlyDismissed,
 } from '@/lib/utils/geolocation-permission';
 
 export interface GeolocationPosition {
@@ -180,14 +181,20 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
         setLoading(false);
 
         if (err.code === 1) {
-          // User explicitly denied (or dismissed the prompt) → clear granted flag and the opt-in,
-          // so the next visit does not open the prompt again by itself
-          setPermissionDenied(true);
+          // User denied or dismissed the prompt → clear granted flag and the opt-in, so the next
+          // visit does not open the prompt again by itself. Only a block counts as denied: after a
+          // dismissal the button stays, because the next tap asks again. A block read as a
+          // dismissal here is corrected by the `change` event to `denied` that follows it.
+          const dismissed = wasOnlyDismissed(
+            permissionStatusRef.current?.state ?? null,
+            promptReliableRef.current
+          );
+          setPermissionDenied(!dismissed);
           setPermissionGranted(false);
           setError(true);
           setGeoOptIn(false);
           rememberLocationDeclined();
-          console.warn('[Geolocation] Permission denied by user');
+          console.warn('[Geolocation]', dismissed ? 'Prompt dismissed' : 'Permission denied');
         } else {
           // code=2 (unavailable) or code=3 (timeout): the browser had permission but
           // couldn't get a fix. Mark as granted so banners don't reappear.

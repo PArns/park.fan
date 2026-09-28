@@ -29,6 +29,15 @@ Standort (In-Park-Erkennung, Bahnen in der Nähe). Blog, News und alle anderen S
   zum nächsten Ja kein direkter Prompt. Die Zeile auf der Parkseite behält ihren Knopf. Blockiert
   der Browser, zeigt keine Stelle mehr einen Knopf, der nichts tun kann. Das Umami-Event für eine
   Ablehnung zählt weiter nur eine Antwort auf der Seite.
+- **Ein Nein lässt sich zurücknehmen.** Unter dem Einleitungssatz des Kapitels „Freizeitparks in
+  deiner Nähe" steht eine feste Zeile: „Standort aktivieren", „Standort aktiv" oder bei Blockade
+  „Standortzugriff ist im Browser blockiert" mit „So änderst du das" (Anleitung für Safari auf
+  iPhone oder Mac, sonst für das Symbol links neben der Adresse). Die Zeile auf der Parkseite zeigt
+  dasselbe. In Chrome ab Version 144 steht dort stattdessen Chromes eigener
+  `<geolocation>`-Knopf, der eine Blockade direkt auf der Seite aufheben kann.
+- **Weggeklickt ist nicht blockiert.** Wer in Chrome den Prompt nur schließt, behält den Knopf.
+  Bisher stand dann bis zum Neuladen „blockiert" da. Das Umami-Event `nearby_permission_denied`
+  zählt damit nur noch echte Blockaden.
 - **Meldet der Browser `granted`,** liest jede Seite den Standort ohne Frage.
 - **Die Parkkarte hat selbst gefragt,** beim Öffnen des Karten-Tabs und in jedem Blogartikel mit
   Karte. Chrome sperrt eine Seite nach drei ignorierten Anfragen für eine Woche. Die Karte nimmt

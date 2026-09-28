@@ -1486,6 +1486,13 @@
       "dialGroup": "Bussola, nord in alto"
     }
   },
+  "location": {
+    "active": "Posizione attiva",
+    "howTo": "Come cambiarlo",
+    "stepsDefault": "Tocca o fai clic sull’icona a sinistra dell’indirizzo e imposta Posizione su «Consenti». Poi ricarica la pagina.",
+    "stepsIosSafari": "Tocca «aA» a sinistra della barra degli indirizzi, poi Impostazioni sito web → Posizione → Consenti. Poi ricarica la pagina.",
+    "stepsMacSafari": "Nella barra dei menu scegli Safari → Impostazioni per park.fan… e imposta Posizione su «Consenti». Poi ricarica la pagina."
+  },
   "geo": {
     "continent": "Continente",
     "country": "Paese",

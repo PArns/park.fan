@@ -13,12 +13,24 @@ How a page asks depends on what the visitor answered before:
 | browser reports `granted`                                                   | read, no prompt                                                                                            | read, no prompt  |
 | said yes on an earlier visit (`pf_geo_optin`), browser no longer reports it | the browser's prompt, directly, once per page lifetime                                                     | nothing          |
 | never answered                                                              | our ask first: the banner (homepage) or the near-you row's button (park page); the prompt comes from a tap | nothing          |
-| said no: closed the banner, or answered the prompt with no                  | no direct prompt until the next yes, no banner for 30 days; the park page row keeps its button             | nothing          |
-| browser reports `denied`                                                    | nothing to press; the row says location is blocked                                                         | nothing          |
+| said no: closed the banner, dismissed or refused the prompt                 | no direct prompt until the next yes, no banner for 30 days; both rows keep their button                    | nothing          |
+| browser reports `denied`                                                    | both rows say location is blocked and how to lift it (Chrome 144+: the browser's `<geolocation>` button)   | nothing          |
+
+**A no can always be taken back** on the two pages that ask. The banner is the ask that comes by
+itself; below the nearby chapter's lead on the homepage sits `HomeLocationRow`, and at the top of
+every park page `ParkInParkBlock`. Both are server-rendered at one fixed height (44 px) and never go
+away: a button while nothing is decided or after a no, "location on" once it is, and after a block
+the line "blocked in your browser" with the way out. A script cannot lift a block, so
+`LocationBlockedHelp` offers what can: in Chrome 144+ the browser's own `<geolocation>` element,
+whose tap may lift a block or the week-long embargo from the page itself, and everywhere else the
+steps for this browser's settings in a popover (`locationHelpPlatform`: Safari on iOS, Safari on
+macOS, or the icon left of the address everywhere else). When the visitor allows location in the
+settings, Chrome tells the page through the permission's `change` event and it reads at once
+(measured in real Chromium); for the other browsers the steps end with a reload.
 
 A page part declares that it uses location with `useLocationNeeded()`
-(`lib/contexts/geolocation-context.tsx`); today that is `LocationBanner` on the homepage and
-`ParkInParkBlock` on the park pages, the two places that also carry the button. Nothing calls
+(`lib/contexts/geolocation-context.tsx`); today that is `LocationBanner` and `HomeLocationRow` on
+the homepage and `ParkInParkBlock` on the park pages, the places that also carry the button. Nothing calls
 `navigator.geolocation` into a `prompt` state by itself; components read `useGeolocation()`. The
 decisions live in `lib/utils/geolocation-permission.ts` and are pinned by
 `pnpm test:geolocation-permission`.
@@ -86,6 +98,17 @@ This rule went through three versions on 2026-09-28, and each one fixed a real c
    (`LOCATION_BANNER_QUIET_MS`, `rememberLocationDeclined`, key `pf_geo_banner_dismissed_at`), and
    a no to the prompt clears `pf_geo_optin`, so no direct prompt follows until the next yes.
 
+5. **A dismissed prompt read as a block.** Chrome answers code 1 to "Block" and to the prompt's
+   close button alike, and every code 1 set `permissionDenied`, so a visitor who had only closed the
+   prompt saw "blocked in your browser" and lost the button until a reload. The Permissions API
+   tells the two apart: after a dismissal it still reads `prompt` (`wasOnlyDismissed`). A dismissal
+   now keeps the button. On WebKit it cannot tell, and Safari refuses every further request in the
+   page after "Don't Allow", so there a refusal stays a block until the next load. The Umami event
+   `nearby_permission_denied` fires on `permissionDenied`, so since this change it counts blocks,
+   not dismissed prompts.
+6. **After a no, the homepage had no way back.** The banner was the homepage's only control, and it
+   stays away for 30 days after a no. `HomeLocationRow` is the standing one.
+
 ## Measured
 
 Stubbed: Playwright against `next dev`, the Permissions API, `navigator.vendor` and
@@ -105,6 +128,11 @@ the banner appeared even for a frame. A read in a `prompt` state is a native pro
   1 on arriving at the homepage, the banner never shown.
 - Safari with an earlier yes, answering the prompt with no, then reloading: the opt-in is cleared,
   and the reload reads nothing and shows no banner.
+- The rows, stubbed at 390 px: `HomeLocationRow` measures 44 px in every state (ask, on, blocked,
+  pending); the server HTML carries it as `data-location-row="pending"`. A dismissed prompt in
+  Chrome leaves both rows on their button and hides the banner for the page; a no in Safari shows
+  "blocked" with the iOS steps. With `HTMLGeolocationElement` defined, the blocked row renders
+  `<geolocation>`, and its `location` event reads the position and turns the row to "on".
 - Real Chromium, real Permissions API, `getCurrentPosition` only counted: with an earlier yes and
   `prompt`, homepage and park page read once, the blog post and `/news` not at all; without a
   grant nothing reads; with a grant each page reads once; revoking the grant while the page is
@@ -144,6 +172,6 @@ as in the table above.
 ## Not done
 
 - A tip for iPhone readers on setting park.fan to "Allow" in Safari was considered and not wanted.
-- Chrome 144 ships a `<geolocation>` element. A tap on it is a user gesture the browser can verify,
-  and it lets a visitor lift an earlier denial or an embargo from the page itself. It could replace
-  the "use my location" buttons in Chrome, with the current button as the fallback elsewhere.
+  The steps appear only after a block, where they are the way out.
+- The `<geolocation>` element is used only for a block, where nothing else on the page can help. The
+  button that asks while nothing is decided stays ours, in our words and our design.

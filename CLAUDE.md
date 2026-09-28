@@ -144,7 +144,8 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Location is asked for where a page needs it](docs/rules/location-is-asked-for-where-it-is-needed.md)** —
   homepage and park pages ask (`useLocationNeeded()`: an earlier yes gets the browser's prompt
   directly, a new visitor our button first); blog, news and every other page never ask, they read
-  only on `granted`. A no silences the banner for 30 days. `pnpm test:geolocation-permission`.
+  only on `granted`. A no silences the banner for 30 days; `HomeLocationRow` and the park row keep
+  the button, and after a block `LocationBlockedHelp`. `pnpm test:geolocation-permission`.
 
 ### Design and layout
 

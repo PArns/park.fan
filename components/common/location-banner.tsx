@@ -28,8 +28,15 @@ interface LocationBannerProps {
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  const { permissionGranted, permissionDenied, loading, initialCheckDone, earlierYes, refresh } =
-    useGeolocation();
+  const {
+    permissionGranted,
+    permissionDenied,
+    loading,
+    error,
+    initialCheckDone,
+    earlierYes,
+    refresh,
+  } = useGeolocation();
   useLocationNeeded();
   // Server snapshot = false → always null during SSR and the hydration pass,
   // matching what the server produced. Client snapshot = true, so after
@@ -53,6 +60,9 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     !initialCheckDone ||
     permissionGranted ||
     permissionDenied ||
+    // A no in this page (a dismissed prompt is not `permissionDenied`), or no Geolocation API at
+    // all. The chapter row under "near you" keeps the button for a change of mind.
+    error ||
     loading ||
     // The browser is about to ask this visitor directly; the banner would be a second ask.
     earlierYes ||

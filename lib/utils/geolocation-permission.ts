@@ -83,6 +83,43 @@ export function canRefreshSilently(
   return true;
 }
 
+/**
+ * Whether a refusal (`GeolocationPositionError` code 1) was only a dismissed prompt, not a block.
+ *
+ * The error cannot tell the two apart: Chrome answers code 1 to "Block" and to the prompt's close
+ * button alike. The Permissions API can. After a block it reads `denied`; after a dismissal it still
+ * reads `prompt`, and the next tap opens the prompt again. So a dismissal keeps the button, where
+ * showing "blocked" would take away the one thing that works. On WebKit `prompt` is no evidence
+ * (it reads `prompt` after "Don't Allow" too, and Safari refuses every further request in that
+ * page), so there a refusal counts as a block until the page is loaded again.
+ */
+export function wasOnlyDismissed(state: StoredPermission, promptReliable: boolean): boolean {
+  return promptReliable && state === 'prompt';
+}
+
+/** Which "how to allow location again" steps fit this browser. */
+export type LocationHelpPlatform = 'ios-safari' | 'mac-safari' | 'default';
+
+/**
+ * Picks the steps for lifting a block. Only for help text: the three browser families put the
+ * setting in three different places. Safari on iOS has it behind "aA" in the address bar, Safari on
+ * macOS in its menu, and Chrome, Edge, Firefox and Samsung Internet behind the icon left of the
+ * address. An iPad reports itself as a Mac and gives itself away by its touch points. Chrome,
+ * Firefox and Edge on iOS have no "aA", so they get the default steps.
+ */
+export function locationHelpPlatform(
+  userAgent: string,
+  vendor: string | undefined,
+  maxTouchPoints: number
+): LocationHelpPlatform {
+  if (/CriOS|FxiOS|EdgiOS/.test(userAgent)) return 'default';
+  const ios =
+    /iPhone|iPad|iPod/.test(userAgent) || (/Macintosh/.test(userAgent) && maxTouchPoints > 1);
+  if (ios) return 'ios-safari';
+  if (/Macintosh/.test(userAgent) && vendor?.startsWith('Apple')) return 'mac-safari';
+  return 'default';
+}
+
 /** How long a closed location banner stays closed. */
 export const LOCATION_BANNER_QUIET_MS = 30 * 24 * 60 * 60 * 1000;
 
