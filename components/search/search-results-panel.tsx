@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { CommandEmpty, CommandGroup, CommandList } from '@/components/ui/command';
@@ -19,14 +20,16 @@ interface SearchResultsPanelProps {
   search: UseSearchResultsReturn;
   onSelect: (result: SearchResultItem, position?: number) => void;
   onGlossarySelect: (item: GlossarySearchItem) => void;
+  /** Called before "all results" navigates — the palette closes itself on it. */
+  onNavigate?: () => void;
   /**
    * Cap for the pre-query browse list. The hero passes 3 because its dropdown is open at rest
    * and the layout reserves exactly that height; the palette leaves it open.
    */
   browseLimit?: number;
   /**
-   * Height behaviour of the scrolling list. The palette keeps the default cap; the hero passes
-   * `min-h-0 flex-1` because its card is already capped to the room left below the field.
+   * Height behaviour of the scrolling list. The palette keeps `CommandList`'s own cap; the hero
+   * passes `min-h-0 flex-1` because its card is already capped to the room left below the field.
    */
   listClassName?: string;
   /**
@@ -35,28 +38,37 @@ interface SearchResultsPanelProps {
    * height moves the pills under the dropdown. See `search-skeleton-list.tsx`.
    */
   skeletonRowClassName?: string;
+  /**
+   * Footer while no query has run. The hero's hint by default; the palette passes `null`, since
+   * its own keyboard legend already sits under the list.
+   */
+  restingFooter?: ReactNode;
+  /** What the list shows when the browse lookup came back empty — the hero shows nothing. */
+  emptyBrowse?: ReactNode;
 }
 
 /**
- * The body of the hero's floating search dropdown: skeleton → results (or glossary-only, or
- * "no results") once a query runs, and the browse list before that. Everything inside is shared
- * with the search palette; only the shell around it differs.
+ * The body of both search surfaces — the hero's floating dropdown and the header's palette:
+ * skeleton → results (or glossary-only, or "no results") once a query runs, and the browse list
+ * before that. Only the shell around it differs. The palette used to carry its own copy of this
+ * tree, and the copy drifted: a skeleton drawn in white on a light dialog, no wait for the browse
+ * list, and the last query's results left standing next to the browse list after a reopen.
  *
- * The list grows with its content and then scrolls. It can grow at all because the dropdown
- * floats over the page instead of sitting in the hero's flow — a list in flow would move the
- * vertically centred headline on every keystroke. The cap is deliberately below what would fit
- * "to the bottom of the screen": the field it hangs from sits in the lower half of a centred
- * hero, so a taller list would spill past the fold and make the visitor scroll the page to see
- * its own results.
+ * In the hero the list grows with its content and then scrolls. It can grow at all because the
+ * dropdown floats over the page instead of sitting in the hero's flow — a list in flow would move
+ * the vertically centred headline on every keystroke.
  */
 export function SearchResultsPanel({
   query,
   search,
   onSelect,
   onGlossarySelect,
+  onNavigate,
   browseLimit,
-  listClassName = 'max-h-[min(22rem,42vh)]',
+  listClassName,
   skeletonRowClassName,
+  restingFooter,
+  emptyBrowse,
 }: SearchResultsPanelProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
@@ -71,14 +83,18 @@ export function SearchResultsPanel({
     loading ||
     (query.trim().length >= 3 && debouncedQuery.trim().length < 3) ||
     (query.length < 3 && browse.isPending);
-  // Both `query` and `debouncedQuery` have to agree before results render. They disagree for
-  // the 300 ms debounce window after the field is cleared — `query` is already empty while
-  // `debouncedQuery` still holds the old term — and the browse branch below keys off `query`,
-  // so for that window the card rendered the full result list AND the browse list at once,
-  // ballooned to its cap and snapped back. Pressing Escape hit this every time.
+  // Both `query` and `debouncedQuery` have to agree before anything query-bound renders. They
+  // disagree for the 300 ms debounce window after the field is cleared — `query` is already
+  // empty while `debouncedQuery` still holds the old term — and the browse branch below keys off
+  // `query`, so for that window the card rendered the full result list AND the browse list at
+  // once, ballooned to its cap and snapped back. Pressing Escape hit this every time, and the
+  // palette, which is cleared on close, showed the last query's results on every reopen.
   const queryIsLive = query.trim().length >= 3;
-  const hasResults = !isPending && queryIsLive && debouncedQuery.length >= 3 && results;
+  const queryRan = !isPending && queryIsLive && debouncedQuery.length >= 3;
+  const hasResults = queryRan && results;
   const showViewAll = hasResults && results.results.length > 0;
+  const noMainResults = queryRan && (!results || results.results.length === 0);
+  const hasGlossary = Boolean(glossaryData && glossaryData.results.length > 0);
 
   return (
     <>
@@ -92,26 +108,17 @@ export function SearchResultsPanel({
           <SearchSkeletonList rows={browseLimit ?? 4} rowClassName={skeletonRowClassName} />
         )}
 
-        {!isPending &&
-          debouncedQuery.length >= 3 &&
-          (!results || results.results.length === 0) &&
-          (!glossaryData || glossaryData.results.length === 0) && (
-            <CommandEmpty>{t('noResults')}</CommandEmpty>
-          )}
+        {noMainResults && !hasGlossary && <CommandEmpty>{t('noResults')}</CommandEmpty>}
 
-        {!isPending &&
-          debouncedQuery.length >= 3 &&
-          (!results || results.results.length === 0) &&
-          glossaryData &&
-          glossaryData.results.length > 0 && (
-            <CommandGroup
-              heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
-            >
-              {glossaryData.results.map((item) => (
-                <GlossaryResultItem key={item.id} item={item} onSelect={onGlossarySelect} />
-              ))}
-            </CommandGroup>
-          )}
+        {noMainResults && glossaryData && hasGlossary && (
+          <CommandGroup
+            heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
+          >
+            {glossaryData.results.map((item) => (
+              <GlossaryResultItem key={item.id} item={item} onSelect={onGlossarySelect} />
+            ))}
+          </CommandGroup>
+        )}
 
         {showViewAll && (
           <SearchResultGroups
@@ -123,9 +130,13 @@ export function SearchResultsPanel({
           />
         )}
 
-        {!isPending && query.length < 3 && (
-          <SearchBrowseGroup browse={browse} onSelect={onSelect} limit={browseLimit} />
-        )}
+        {!isPending &&
+          query.length < 3 &&
+          (browse.items.length > 0 ? (
+            <SearchBrowseGroup browse={browse} onSelect={onSelect} limit={browseLimit} />
+          ) : (
+            emptyBrowse
+          ))}
       </CommandList>
 
       {/* Footer: hint while browsing, "all results" once a query ran */}
@@ -135,6 +146,7 @@ export function SearchResultsPanel({
             variant="ghost"
             className="hover:bg-foreground/10 w-full justify-center text-sm"
             onClick={() => {
+              onNavigate?.();
               trackSearchViewAll();
               router.push(`/search?q=${encodeURIComponent(query)}`);
             }}
@@ -142,10 +154,12 @@ export function SearchResultsPanel({
             {tSearch('viewAllResults', { query })}
           </Button>
         </div>
-      ) : (
+      ) : restingFooter === undefined ? (
         <div className="border-border/40 bg-muted/30 text-muted-foreground shrink-0 border-t px-4 py-2.5 text-xs">
           {tSearch('heroHint')}
         </div>
+      ) : (
+        restingFooter
       )}
     </>
   );
