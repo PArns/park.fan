@@ -1,4 +1,5 @@
 {
+  "title": "24-wald-zombie-totes-tier",
   "park": "walibi-holland",
   "tags": ["halloween", "performer", "photo"],
   "alt": {
@@ -20,5 +21,9 @@
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5485,
+    "y": 0.2032
   }
 }
