@@ -5,6 +5,7 @@ import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { CrowdLevel } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 interface UseTodayCrowdLevelParams {
   continent: string;
@@ -58,7 +59,7 @@ export function useTodayCrowdLevel({
   const releasedLast = useLoadLast();
 
   const todayStr = useMemo(
-    () => (browserNow ? browserNow.toLocaleDateString('en-CA', { timeZone: timezone }) : null),
+    () => (browserNow ? parkDayOf(browserNow, timezone) : null),
     [browserNow, timezone]
   );
 

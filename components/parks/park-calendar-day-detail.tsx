@@ -41,6 +41,7 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { Temp } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
+import { parkDayOf } from '@/lib/utils/park-day';
 import {
   getEventIcon,
   getWeatherIconFromCode,
@@ -109,7 +110,7 @@ export function ParkCalendarDayDetail({
   // month and a visit cannot be planned for a day that has already happened
   // where the park is. `en-CA` because it formats as YYYY-MM-DD, which is what
   // `CalendarDay.date` is and what compares correctly as a string.
-  const todayInPark = new Date().toLocaleDateString('en-CA', { timeZone: parkTimezone });
+  const todayInPark = parkDayOf(new Date(), parkTimezone);
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();

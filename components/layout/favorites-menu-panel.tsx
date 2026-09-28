@@ -25,6 +25,7 @@ import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDurationShort } from '@/lib/i18n/time';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
@@ -236,7 +237,7 @@ function scheduleMessage(
   if (!now) return null;
 
   const tz = timezone ? { timeZone: timezone } : {};
-  const dayIn = (d: Date) => d.toLocaleDateString('en-CA', tz);
+  const dayIn = (d: Date) => parkDayOf(d, timezone);
 
   try {
     if (todaySchedule?.scheduleType === 'OPERATING') {

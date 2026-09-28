@@ -20,6 +20,7 @@ import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
@@ -180,10 +181,7 @@ export function ParkCalendarGrid({
    * is a new value on every pass; the day only changes once a day, and the month re-renders far
    * more often than that.
    */
-  const todayStr = useMemo(
-    () => new Intl.DateTimeFormat('en-CA', { timeZone: parkTimezone }).format(new Date()),
-    [parkTimezone]
-  );
+  const todayStr = useMemo(() => parkDayOf(new Date(), parkTimezone), [parkTimezone]);
 
   /*
    * There used to be a second query here: today alone, on a five-minute staleTime, overlaid on
