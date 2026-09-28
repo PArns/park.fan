@@ -10,14 +10,15 @@
  */
 
 import { cache } from 'react';
-import { getContinents } from '@/lib/api/discovery';
+import { getContinentsOrLastGood, perContinentsDocument } from '@/lib/api/discovery';
+import type { Continent } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 /**
- * O(1) park-slug → geo-path index for redirect lookups. Memoized per request via React `cache()`;
- * the underlying `getContinents()` is itself cached cross-request in the Vercel Data Cache
- * (`fetch` `next: { revalidate }`), so rebuilding this small index per request is cheap and never
- * hits the backend. Used only for malformed-URL redirect detection, never to serve a valid park.
+ * O(1) park-slug → geo-path index for redirect lookups. Built once per continents document
+ * (`perContinentsDocument`), which the Data Cache holds for a week or until the `geo` tag drops
+ * it, and falls back to the last document this process read when the fetch fails. Used only for
+ * malformed-URL redirect detection, never to serve a valid park.
  *
  * Built from `getContinents()`, like {@link getCityParkCounts}, not from `getGeoStructure()`. The
  * two endpoints carry the same tree — compared on 2026-09-28: the same 210
@@ -30,24 +31,29 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
  * Paris and Anaheim), so callers must disambiguate by continent/country before redirecting.
  */
 const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult[]>> => {
-  const index: Record<string, ParkLookupResult[]> = {};
   try {
-    for (const continent of await getContinents()) {
-      for (const country of continent.countries ?? []) {
-        for (const city of country.cities ?? []) {
-          for (const park of city.parks) {
-            (index[park.slug] ??= []).push({
-              continent: continent.slug,
-              country: country.slug,
-              city: city.slug,
-              parkSlug: park.slug,
-            });
-          }
+    return buildParkSlugIndex(await getContinentsOrLastGood());
+  } catch (error) {
+    console.error('[RedirectUtils] Failed to fetch continents:', error);
+    return {};
+  }
+});
+
+const buildParkSlugIndex = perContinentsDocument((continents: Continent[]) => {
+  const index: Record<string, ParkLookupResult[]> = {};
+  for (const continent of continents) {
+    for (const country of continent.countries ?? []) {
+      for (const city of country.cities ?? []) {
+        for (const park of city.parks) {
+          (index[park.slug] ??= []).push({
+            continent: continent.slug,
+            country: country.slug,
+            city: city.slug,
+            parkSlug: park.slug,
+          });
         }
       }
     }
-  } catch (error) {
-    console.error('[RedirectUtils] Failed to fetch continents:', error);
   }
   return index;
 });
@@ -60,22 +66,27 @@ export interface ParkLookupResult {
 }
 
 /**
- * Parks per city, keyed `continent/country/city`, memoized per request like the park-slug index
- * above. Read from `getContinents()` rather than `getGeoStructure()`: the layout parses that one
- * on every page for the header menu, so on these routes the tree is already in memory.
+ * Parks per city, keyed `continent/country/city`, built once per document like the park-slug
+ * index above. Read from `getContinents()` rather than `getGeoStructure()`: the layout reads that
+ * one on every page for the header menu, so on these routes the tree is already in memory.
  */
 const getCityParkCounts = cache(async (): Promise<Map<string, number>> => {
-  const counts = new Map<string, number>();
   try {
-    for (const continent of await getContinents()) {
-      for (const country of continent.countries ?? []) {
-        for (const city of country.cities ?? []) {
-          counts.set(`${continent.slug}/${country.slug}/${city.slug}`, city.parks.length);
-        }
-      }
-    }
+    return buildCityParkCounts(await getContinentsOrLastGood());
   } catch (error) {
     console.error('[RedirectUtils] Failed to fetch continents:', error);
+    return new Map();
+  }
+});
+
+const buildCityParkCounts = perContinentsDocument((continents: Continent[]) => {
+  const counts = new Map<string, number>();
+  for (const continent of continents) {
+    for (const country of continent.countries ?? []) {
+      for (const city of country.cities ?? []) {
+        counts.set(`${continent.slug}/${country.slug}/${city.slug}`, city.parks.length);
+      }
+    }
   }
   return counts;
 });

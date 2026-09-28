@@ -119,7 +119,16 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const RETRYABLE_STATUS = new Set([429, 503, 504]);
 const RETRY_BACKOFF_MS = [300, 900];
 
-export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}): Promise<T> {
+/**
+ * @param read How a successful response becomes the result. `response.json()` unless the caller
+ *   has a reason to look at the response first — `getContinents` reads the ETag and skips the body
+ *   when it has already parsed that document.
+ */
+export async function apiFetch<T>(
+  endpoint: string,
+  options: FetchOptions = {},
+  read: (response: Response) => Promise<T> = (response) => response.json() as Promise<T>
+): Promise<T> {
   const { params, ...fetchOptions } = options;
 
   // Build URL with query params
@@ -155,7 +164,7 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
       });
 
       if (response.ok) {
-        return response.json() as Promise<T>;
+        return read(response);
       }
 
       const body = await response.text().catch(() => '');
