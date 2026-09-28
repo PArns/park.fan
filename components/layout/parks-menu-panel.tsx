@@ -13,10 +13,10 @@ import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { CalendarPlus } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
@@ -467,12 +467,13 @@ function NearbyRow({ park, minuteLabel }: { park: ParkWithDistance; minuteLabel:
           </span>
         </span>
         {wait !== null ? (
-          <span className="shrink-0 text-right text-sm font-semibold tabular-nums">
-            <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
-            <span className="text-muted-foreground ml-0.5 text-[10px] font-normal">
-              {minuteLabel}
-            </span>
-          </span>
+          <WaitTimeValue
+            minutes={wait}
+            shadow={false}
+            unit={minuteLabel}
+            unitClassName="ml-0.5 text-[10px]"
+            className="shrink-0 text-right text-sm font-semibold tabular-nums"
+          />
         ) : (
           <ParkStatusBadge
             status={park.status as ParkStatus}
