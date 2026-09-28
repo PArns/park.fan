@@ -34,13 +34,13 @@ the same two-tier shape, and the layout half of it still cannot be per-request.
 For developing the homepage **in-park** view (headliner list, live wait times, seasonal handling)
 without physically standing in a park, append a `sim` query param to any page:
 
-| Value                   | Effect                                                                          |
-| ----------------------- | ------------------------------------------------------------------------------- |
-| `?sim=in_park`          | Simulate standing in the default park (Phantasialand, returns real headliners). |
-| `?sim=efteling` etc.    | Named preset (`phantasialand`, `efteling`, `europapark`, `disneylandparis`).    |
-| `?sim=50.79,6.87`       | Arbitrary `lat,lng` coordinates.                                                |
-| `?sim=compass`          | The in-park compass demo, Phantasialand laid out around the device. See below.  |
-| `?sim=compass:<preset>` | The same with another preset, e.g. `?sim=compass:disneylandparis`.              |
+| Value                   | Effect                                                                                                                 |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `?sim=in_park`          | Simulate standing in the default park (Phantasialand, returns real headliners).                                        |
+| `?sim=efteling` etc.    | Named preset (`phantasialand`, `efteling`, `europapark`, `disneylandparis`, `disneylandanaheim`, `magickingdom`).      |
+| `?sim=50.79,6.87`       | Arbitrary `lat,lng` coordinates.                                                                                       |
+| `?sim=compass`          | The in-park compass demo, Phantasialand laid out around the device. See below.                                         |
+| `?sim=compass:<preset>` | The same with another preset, e.g. `?sim=compass:disneylandparis`. The two American ones are open while Europe sleeps. |
 
 How it works: the param is **not** fabricated data. `/api/nearby` (the proxy) overrides the request
 coordinates with the chosen park, so the **real backend** returns a genuine `in_park` response —

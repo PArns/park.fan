@@ -32,6 +32,10 @@ Drei Prüfer haben den Kompass unter dem Hero durchgesehen, das hier ist umgeset
   1,0, jetzt 0. Beim Drehen wird nur noch das neu gezeichnet, was sich dreht: 60 statt 45 Bilder
   pro Sekunde, ein Achtel der Style-Arbeit.
 
+Die Demo kennt zwei amerikanische Parks (`?sim=compass:disneylandanaheim`,
+`?sim=compass:magickingdom`). Die haben offen, wenn in Europa Nacht ist und jeder Punkt ein leerer
+Ring wäre.
+
 Bewusst nicht übernommen: die Lünette ganz zu entfernen und „Fixiert" in „Dein Ziel" umzubenennen.
 Details: [park-compass.md](features/park-compass.md).
 

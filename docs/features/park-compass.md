@@ -179,7 +179,9 @@ real position.
 ## The demo
 
 `?sim=compass` (Phantasialand) or `?sim=compass:<preset>` lays a real park's live answer around the
-device, in production too; see
+device, in production too. The European presets are closed at night, when every marker is an empty
+ring; `compass:disneylandanaheim` and `compass:magickingdom` are open then, with waits, breakdowns
+and refurbishments to look at. See
 [flags and debug](../development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
 The banner says what it is, offers „Standort nutzen" and „Demo beenden", and after a denied prompt
 says the reader now stands still at one point in the park.

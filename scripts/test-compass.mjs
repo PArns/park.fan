@@ -177,6 +177,8 @@ test('the compass demo parses, and it is the only sim value the server does not 
   assert.equal(resolveCompassDemo('compass')?.preset, 'phantasialand');
   assert.equal(resolveCompassDemo('compass:disneylandparis')?.preset, 'disneylandparis');
   assert.equal(resolveCompassDemo('compass-europa-park')?.preset, 'europapark');
+  assert.equal(resolveCompassDemo('compass:magickingdom')?.preset, 'magickingdom');
+  assert.equal(resolveCompassDemo('compass:disneyland-anaheim')?.preset, 'disneylandanaheim');
   assert.equal(resolveCompassDemo('Compass')?.preset, 'phantasialand');
   assert.equal(resolveCompassDemo('compass:nowhere'), null);
   assert.equal(resolveCompassDemo('compasses'), null);
