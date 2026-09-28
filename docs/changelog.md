@@ -4,6 +4,37 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – INP: no `:has()` in the stylesheet, and a tab tap that only moves the highlight
+
+Search Console flagged 361 park pages on 2026-09-23 for INP over 200 ms on phones (group value
+203 ms, example Six Flags Great Adventure). Traced on that page against a production build at
+390 px and 4× CPU:
+
+- **Every DOM change restyled the whole document.** With any `:has()` rule active, Chrome restyles
+  `<html>` after a mutation anywhere on the page, and here that recalculates all ~2,700 elements:
+  400–500 ms for one changed character in one ride card, paid by every React commit and so by
+  every tap. The thirteen rules came from shadcn's Button and Card, the two range sliders, the
+  homepage hero, the planner grid, the scroll-lock gutter in `globals.css` and the Tiptap editor.
+  Each is replaced (`peer-*`, a data attribute set by React or by a delegated listener, a call-site
+  class, `~=` on a word list); the editor's two rules moved to a stylesheet only the editor loads.
+  `pnpm check:no-has` guards the sources in CI and `pnpm build` checks the CSS it emits.
+- **A tab tap unmounted the ride list inside the tap.** Radix mounted and unmounted panels on the
+  urgent tab value, so leaving the ride list removed 1,457 nodes in the tap's commit and its
+  `Presence` forced a style pass there. Panels are `forceMount`ed and shown by the deferred tab now,
+  `data-state` included (a flip on the urgent value restyled the ride list's 1,312 elements through
+  Tailwind's `group-data-*` rules); the ride list is only hidden, and the panel bodies are `memo`
+  boundaries, so the tap no longer re-renders the panel it is leaving.
+- **The planner's width store read `window.innerWidth` in `getSnapshot`**, forcing style and layout
+  in the middle of every render of the edge tab (317–522 ms). It reads the width on subscribe and
+  on `resize` now.
+
+A/B against two production builds, 4× CPU, 390 px: the median of 13 taps on the page went from
+712 ms to 208 ms, typing in the ride search from 892 to 88 ms, the Weather tab from 1,224 to 224 ms.
+The filter sheet still takes 680–872 ms to open, nearly all of it Radix's scroll lock, and is left
+for a change of its own. `pnpm measure:inp` prints the style probe and every tap's Event Timing entry. Rule and numbers:
+[no-has-selector-in-the-stylesheet.md](rules/no-has-selector-in-the-stylesheet.md), the tab panels in
+[an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md](rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md).
+
 ## Unreleased – Kompass: erscheint auch, wenn der Hero im Bildschirm endet
 
 Der Kompass kam bisher nur, solange sein Platz unter dem Hero unterhalb des Bildschirms lag.

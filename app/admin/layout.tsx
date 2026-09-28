@@ -3,6 +3,7 @@ import { Geist } from 'next/font/google';
 import '../globals.css';
 import 'react-day-picker/style.css';
 import { AdminProviders } from './_app/providers';
+import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -65,6 +66,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="relative">
           <AdminProviders>{children}</AdminProviders>
         </div>
+        <ScrollLockGutter />
       </body>
     </html>
   );

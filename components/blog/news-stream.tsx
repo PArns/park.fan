@@ -48,7 +48,9 @@ const PARK_PARAM = 'park';
  * reading it after hydration drew the full list first and then took most of it away, which
  * moved everything below. The inline script sets the attribute while the HTML is parsed, before
  * the notes are painted. A slug with no rule (an old link, a typo) matches nothing and shows
- * everything. Browsers without `:has()` keep the heading of a day with no match.
+ * everything. A day knows its parks as `data-parks`, a space-separated list the rule matches with
+ * `~=`: it used to ask `:not(:has([data-park=…]))`, and any `:has()` rule on a page makes every
+ * DOM change there restyle the whole document (docs/rules/no-has-selector-in-the-stylesheet.md).
  *
  * After hydration the URL is the only state (`FilterBar`): it had a `useState` of its own, which
  * survived a navigation to plain `/news` and kept the list filtered under an unfiltered address.
@@ -78,7 +80,7 @@ export function NewsStream({
     .map(
       ({ slug }) =>
         `[data-news-filter="${slug}"] [data-news-item]:not([data-park="${slug}"]),` +
-        `[data-news-filter="${slug}"] [data-news-day]:not(:has([data-park="${slug}"])){display:none}`
+        `[data-news-filter="${slug}"] [data-news-day]:not([data-parks~="${slug}"]){display:none}`
     )
     .join('');
 
@@ -117,6 +119,9 @@ export function NewsStream({
           <section
             key={group.key}
             data-news-day=""
+            data-parks={[...new Set(group.items.map((item) => item.park).filter(Boolean))].join(
+              ' '
+            )}
             className="grid gap-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8"
           >
             <div className="sm:sticky sm:top-20 sm:self-start sm:pt-4">{group.heading}</div>

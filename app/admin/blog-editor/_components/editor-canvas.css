@@ -1,0 +1,21 @@
+/*
+ * The editor canvas's two `:has()` rules, loaded with the editor and nowhere else.
+ *
+ * They used to sit in app/globals.css, which every public page loads, and any `:has()` rule in a
+ * page's stylesheet makes every DOM change on that page restyle the whole document — measured at
+ * 400-700 ms per tap on a throttled phone (docs/rules/no-has-selector-in-the-stylesheet.md). Here
+ * they cost only the editor, where the canvas is a fraction of that size.
+ */
+
+/* Paragraphs hosting only a floated image keep enough height for the caret
+   to land in them — without it the line is invisible and authors give up. */
+.tiptap-canvas p:has(> .editor-img-align-left, > .editor-img-align-right) {
+  min-height: 1.5rem;
+}
+
+/* Widget code fences carry the same data the preview card already shows —
+   hide them from the canvas. Their text is still in the underlying doc and
+   round-trips through markdown, so the source view stays editable. */
+.tiptap-canvas pre:has(> code[class*='-widget']) {
+  display: none;
+}

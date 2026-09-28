@@ -138,7 +138,7 @@ export function RiderHeightFilter({
         </button>
       </div>
 
-      <div className="group relative h-5">
+      <div className="relative h-5">
         <div className="bg-foreground/12 dark:bg-foreground/15 absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full" />
         {/* No fill at all while the filter is off — a coloured bar behind the head is
             the thing that made an untouched control look set. */}
@@ -158,15 +158,6 @@ export function RiderHeightFilter({
             style={{ left: offset(i + 1) }}
           />
         ))}
-        <div
-          aria-hidden="true"
-          className={cn(
-            'absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md transition-colors',
-            isActive ? 'border-background bg-primary' : 'border-muted-foreground/60 bg-background',
-            'group-has-[:focus-visible]:ring-ring/50 group-has-[:focus-visible]:ring-4'
-          )}
-          style={{ left: offset(index) }}
-        />
         <input
           id={inputId}
           type="range"
@@ -187,7 +178,21 @@ export function RiderHeightFilter({
           // spills out of it to the 44 px phone tier — 4 px up (the caption row above
           // outranks it, see its `z-10`) and the rest down over the scale line, which is
           // this slider's own label and has nothing else to be tapped for.
-          className="absolute inset-x-0 top-0 h-full w-full cursor-pointer touch-manipulation appearance-none bg-transparent opacity-0 max-sm:-top-1 max-sm:h-11 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none"
+          className="peer absolute inset-x-0 top-0 h-full w-full cursor-pointer touch-manipulation appearance-none bg-transparent opacity-0 max-sm:-top-1 max-sm:h-11 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none"
+        />
+        {/* The drawn head comes AFTER the input so it can read the input's keyboard focus as
+            `peer-focus-visible` — it used to ask the whole row with `group-has-[:focus-visible]`,
+            and a `:has()` rule anywhere in the stylesheet restyles the whole document on every
+            DOM change (docs/rules/no-has-selector-in-the-stylesheet.md). Painting over the
+            input is why it takes no pointer events: the invisible input stays the target. */}
+        <div
+          aria-hidden="true"
+          className={cn(
+            'pointer-events-none absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md transition-colors',
+            isActive ? 'border-background bg-primary' : 'border-muted-foreground/60 bg-background',
+            'peer-focus-visible:ring-ring/50 peer-focus-visible:ring-4'
+          )}
+          style={{ left: offset(index) }}
         />
       </div>
 

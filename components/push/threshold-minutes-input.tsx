@@ -116,16 +116,11 @@ export function ThresholdMinutesInput({
         <span className="text-muted-foreground text-sm font-medium">{minutesLabel}</span>
       </div>
 
-      <div className="group relative h-6">
+      <div className="relative h-6">
         <div className="bg-foreground/12 dark:bg-foreground/15 absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full" />
         <div
           className="bg-primary absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full"
           style={{ width: thumbOffset }}
-        />
-        <div
-          aria-hidden="true"
-          className="border-background bg-primary group-has-[:focus-visible]:ring-ring/50 absolute top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md group-has-[:focus-visible]:ring-4"
-          style={{ left: thumbOffset }}
         />
         <input
           type="range"
@@ -138,7 +133,15 @@ export function ThresholdMinutesInput({
           aria-label={ariaLabel}
           // Same construction as RiderHeightFilter: a 44px phone-tier band the
           // drawn track sits inside of, real input invisible but on top.
-          className="absolute inset-x-0 top-1/2 h-11 w-full -translate-y-1/2 cursor-pointer touch-manipulation appearance-none bg-transparent opacity-0 [&::-webkit-slider-thumb]:size-5 [&::-webkit-slider-thumb]:appearance-none"
+          className="peer absolute inset-x-0 top-1/2 h-11 w-full -translate-y-1/2 cursor-pointer touch-manipulation appearance-none bg-transparent opacity-0 [&::-webkit-slider-thumb]:size-5 [&::-webkit-slider-thumb]:appearance-none"
+        />
+        {/* After the input, so its keyboard focus reaches the head as `peer-focus-visible` rather
+            than through a `:has()` rule — see RiderHeightFilter and
+            docs/rules/no-has-selector-in-the-stylesheet.md. */}
+        <div
+          aria-hidden="true"
+          className="border-background bg-primary peer-focus-visible:ring-ring/50 pointer-events-none absolute top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md peer-focus-visible:ring-4"
+          style={{ left: thumbOffset }}
         />
       </div>
 

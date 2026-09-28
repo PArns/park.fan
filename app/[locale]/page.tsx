@@ -258,13 +258,19 @@ export default async function HomePage({ params }: HomePageProps) {
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    className="mt-5"
+                    className="peer/hero-search mt-5"
                   />
                   {/* Nearby parks as pill bubbles (GeoIP fallback without location permission).
                     mt-8 matches the plate's own padding, so the pills sit the same distance from
                     the open dropdown above them as from the plate's bottom edge below — at mt-4
-                    they read as glued to the card's footer. */}
-                  <HeroNearbyBubbles className="mt-8" />
+                    they read as glued to the card's footer.
+
+                    While the search holds focus its dropdown covers the pills, and they fade out:
+                    through 75% translucency their high-contrast text ghosts straight through the
+                    glass, and the alternative was a nearly opaque dropdown. `peer-focus-within`
+                    because the two are siblings here — it used to be a `:has(input:focus)` on the
+                    plate, see docs/rules/no-has-selector-in-the-stylesheet.md. */}
+                  <HeroNearbyBubbles className="mt-8 peer-focus-within/hero-search:pointer-events-none peer-focus-within/hero-search:opacity-0" />
                 </HeroTextPanel>
 
                 {/* Right: world-map panel — only rendered when there is room, and "room" is the

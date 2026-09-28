@@ -139,7 +139,12 @@ function AllPostsLink({ label }: { label: string }) {
     <Link
       href={'/blog' as '/'}
       prefetch={false}
-      {...buttonLinkProps({ variant: 'outline', size: 'sm', className: 'rounded-full' })}
+      {...buttonLinkProps({
+        variant: 'outline',
+        size: 'sm',
+        className: 'rounded-full',
+        withIcon: true,
+      })}
     >
       {label}
       <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

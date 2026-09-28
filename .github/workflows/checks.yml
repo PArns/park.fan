@@ -1,7 +1,7 @@
 name: lint and format
 
-# Blocking gate for the two checks that need no build, no database and no browser:
-# ESLint and Prettier. It runs on every pull request and on pushes to main, so a
+# Blocking gate for the checks that need no build, no database and no browser:
+# ESLint, Prettier, and the :has() guard (added for the 2026-09 INP report). It runs on every pull request and on pushes to main, so a
 # red main is visible where it happened rather than as somebody else's bycatch.
 #
 # Why it exists: `pnpm format:check` went red on main twice within a month, both
@@ -73,3 +73,11 @@ jobs:
       - name: pnpm format:check
         if: ${{ !cancelled() }}
         run: pnpm format:check
+
+      # No `:has()` may reach a stylesheet: with one active, Chrome restyles the whole document
+      # after every DOM change, and that is what put the park pages over 200 ms INP in
+      # Search Console (docs/rules/no-has-selector-in-the-stylesheet.md). Sources only — the
+      # built CSS is checked by `pnpm build` itself.
+      - name: pnpm check:no-has
+        if: ${{ !cancelled() }}
+        run: pnpm check:no-has

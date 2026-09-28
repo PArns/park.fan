@@ -69,7 +69,11 @@ export function BlogSectionHeader({
         <Link
           href={action.href as '/'}
           prefetch={false}
-          {...buttonLinkProps({ variant: 'outline', className: 'rounded-full' })}
+          {...buttonLinkProps({
+            variant: 'outline',
+            className: 'rounded-full',
+            withIcon: Boolean(action.icon),
+          })}
         >
           {action.label}
           {action.icon && <action.icon className="h-3.5 w-3.5" />}

@@ -36,12 +36,11 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
         // window said 2000 and the page had 1100, so the plate took the two-column branch
         // (`max-w-2xl`, left-aligned) in a single-column grid and came out 356 px wide.
         'mx-auto max-w-3xl @min-[1280px]/page:mx-0 @min-[1280px]/page:max-w-2xl',
-        // While the search field has focus its dropdown covers the nearby pills. Fading them
-        // out is what lets that dropdown be real glass: through 75% translucency the pills'
-        // high-contrast text ghosts straight through the blur, and the only alternative was to
-        // make the dropdown nearly opaque. `:has()` keeps this in CSS — no shared open state
-        // between two sibling components — and browsers without it just keep the pills.
-        '[&:has(input:focus)_[data-hero-bubbles]]:pointer-events-none [&:has(input:focus)_[data-hero-bubbles]]:opacity-0',
+        // The nearby pills fade out while the search holds focus, and that is written on the two
+        // siblings themselves (`peer/hero-search` on the search, `peer-focus-within/hero-search:`
+        // on the pills — app/[locale]/page.tsx), not here as a `:has()` rule: any `:has()` in the
+        // stylesheet made every DOM change restyle the whole document
+        // (docs/rules/no-has-selector-in-the-stylesheet.md).
         // No forced height: the two columns are offset against each other rather than aligned,
         // so each is as tall as its own content.
         'xl:flex xl:flex-col',

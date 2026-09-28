@@ -2,6 +2,7 @@ import { memo } from 'react';
 import Link from 'next/link';
 import { Rotate3d, RollerCoaster } from 'lucide-react';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import type { GlossaryTermListItem } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 
@@ -39,7 +40,7 @@ export const GlossaryTermCard = memo(function GlossaryTermCard({
   return (
     <Link href={href} prefetch={false} className="group block">
       <Card className="border-primary/10 group-hover:border-primary/30 h-full transition-all group-hover:shadow-md">
-        <CardHeader className="pb-2">
+        <CardHeader className={cn('pb-2', (term.player || hasRides) && 'grid-cols-[1fr_auto]')}>
           <CardTitle className="text-base">{term.name}</CardTitle>
           {(term.player || hasRides) && (
             <CardAction>

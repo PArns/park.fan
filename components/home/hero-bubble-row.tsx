@@ -19,9 +19,6 @@ export function HeroBubbleRow({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      // The marker the hero's left panel targets to fade this row out while the search
-      // dropdown is open — see HeroTextPanel.
-      data-hero-bubbles=""
       className={cn(
         'flex h-9 items-center gap-2.5 overflow-x-auto overflow-y-hidden',
         '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
