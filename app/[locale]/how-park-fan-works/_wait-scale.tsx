@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
 /**
  * The figure the guide is built around: one wait time, drawn against what that
@@ -219,8 +220,12 @@ export function WaitScaleStage({
   const figureRef = useRef<HTMLDivElement>(null);
   /** What the bar currently shows, so a repeat notification is a no-op. */
   const shownRef = useRef<string>(steps[0]?.id ?? '');
+  // The figure is `hidden lg:block`. Below `lg` the observer still fired as a phone reader
+  // scrolled through the steps, fetched GSAP and tweened a subtree with `display: none`.
+  const figureShown = useMediaQuery('(min-width: 64rem)');
 
   useEffect(() => {
+    if (!figureShown) return;
     const root = rootRef.current;
     const figure = figureRef.current;
     if (!root || !figure || steps.length < 2) return;
@@ -321,7 +326,7 @@ export function WaitScaleStage({
       io.disconnect();
       tween?.kill();
     };
-  }, [steps, max, wait, labels.summary]);
+  }, [steps, max, wait, labels.summary, figureShown]);
 
   return (
     <div ref={rootRef} className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">

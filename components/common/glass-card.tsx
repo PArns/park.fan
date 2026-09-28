@@ -52,6 +52,18 @@ export const TILE_GLASS =
   'bg-background/75 backdrop-blur-2xl dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
+ * {@link TILE_GLASS}'s fill without its blur, for a panel that lays its own photograph behind
+ * itself and blurs the image instead of the backdrop.
+ *
+ * The homepage compass does that: its arrows turn with every sensor frame, and a moving element
+ * under a `backdrop-filter` is what made „Heute im Park" flicker, so the park's photo is blurred
+ * once as an `<img>` and this fill goes over it. The tile's 75 % and not the heavy glass's 62 %
+ * for the tile's reason: the list on that panel is small print, and over a bright park photo the
+ * lighter fill took secondary text under AA.
+ */
+export const PHOTO_GLASS_FILL = 'bg-background/75 dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
+
+/**
  * The same panel where there is no photograph behind it.
  *
  * {@link TILE_GLASS} is a fill of `--background` over a park's backdrop picture, so what a visitor

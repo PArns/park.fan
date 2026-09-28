@@ -57,7 +57,7 @@
     "updated": "Aggiornato",
     "reservation": "Prenotazione richiesta",
     "trend": "Tendenza",
-    "in": "in",
+    "in": "tra",
     "vsTypical": "vs tipico",
     "much_higher": "Molto più alta",
     "higher": "Più alta",
@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Sezioni del sito",
+    "opensInNewTab": "si apre in una nuova scheda",
     "description": "Tempi di attesa in diretta e previsioni di affluenza basate sull’IA per oltre 200 parchi a tema nel mondo. Pianifica la tua visita con dati in tempo reale e navigazione nel parco.",
     "keywords": "tempi di attesa parchi a tema, tempi di attesa LIVE, tempi di attesa oggi, calendario affluenza, previsione IA, tempi di coda, previsioni affluenza, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, miglior momento per visitare",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Cambia lingua",
+    "mobileNavigation": "Navigazione mobile",
+    "menu": "Menu",
     "home": "Home",
     "parks": "Tutti i parchi",
     "continents": "Continenti",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Scorri a destra",
+      "scrollLeft": "Scorri a sinistra",
       "clear": "Cielo sereno",
       "mainlyClear": "Prevalentemente sereno",
       "partlyCloudy": "Parzialmente nuvoloso",
@@ -1442,16 +1449,56 @@
       "w": "O",
       "enable": "Attiva la bussola",
       "northUp": "Il nord è in alto",
-      "facing": "La freccia indica dove stai guardando",
+      "facing": "Il cono blu mostra dove stai guardando",
       "denied": "Bussola non consentita. Il nord è in alto.",
-      "coarse": "GPS impreciso (± {meters} m)",
+      "coarse": "Posizione imprecisa (± {meters} m). Le frecce possono sbagliare.",
       "ahead": "Davanti a te",
       "nearest": "Più vicina",
-      "picked": "Selezionata",
-      "closed": "Chiusa",
-      "demo": "Demo: {park} intorno a te",
-      "demoLocation": "Usa la mia posizione"
+      "picked": "Fissata",
+      "demo": "Demo: {park} è ora intorno a te.",
+      "demoLocation": "Usa la mia posizione",
+      "heroPill": "Vai alla bussola",
+      "enableHint": "Safari chiede una volta l'accesso a movimento e orientamento. Fino ad allora il nord è in alto.",
+      "retry": "Chiedi di nuovo",
+      "calibrate": "Bussola imprecisa. Muovi il telefono qualche volta disegnando un 8.",
+      "locating": "Sto affinando la tua posizione …",
+      "here": "Sei arrivato",
+      "toward": "verso {point}",
+      "points": {
+        "n": "nord",
+        "ne": "nord-est",
+        "e": "est",
+        "se": "sud-est",
+        "s": "sud",
+        "sw": "sud-ovest",
+        "w": "ovest",
+        "nw": "nord-ovest"
+      },
+      "pointsShort": {
+        "n": "N",
+        "ne": "NE",
+        "e": "E",
+        "se": "SE",
+        "s": "S",
+        "sw": "SO",
+        "w": "O",
+        "nw": "NO"
+      },
+      "unpin": "Sblocca",
+      "tapHint": "Tocca un punto per fissare quell'attrazione.",
+      "unpinHint": "Toccalo di nuovo per sbloccarlo.",
+      "allClosed": "Tutte le attrazioni principali sono chiuse adesso.",
+      "demoEnd": "Esci dalla demo",
+      "demoNoLocation": "Senza la tua posizione resti fermo in un punto del parco.",
+      "dialGroup": "Bussola, nord in alto"
     }
+  },
+  "location": {
+    "active": "Posizione attiva",
+    "howTo": "Come cambiarlo",
+    "stepsDefault": "Tocca o fai clic sull’icona a sinistra dell’indirizzo e imposta Posizione su «Consenti». Poi ricarica la pagina.",
+    "stepsIosSafari": "Tocca «aA» a sinistra della barra degli indirizzi, poi Impostazioni sito web → Posizione → Consenti. Poi ricarica la pagina.",
+    "stepsMacSafari": "Nella barra dei menu scegli Safari → Impostazioni per park.fan… e imposta Posizione su «Consenti». Poi ricarica la pagina."
   },
   "geo": {
     "continent": "Continente",
@@ -1540,13 +1587,6 @@
     "viewAllResults": "Vedi tutti i risultati per \"{query}\"",
     "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
     "at": "a {park}",
-    "types": {
-      "park": "Parco",
-      "attraction": "Attrazione",
-      "show": "Spettacolo",
-      "restaurant": "Ristorante",
-      "location": "Posizione"
-    },
     "headings": {
       "park": "Parchi ({count})",
       "attraction": "Attrazioni ({count})",
@@ -1566,6 +1606,17 @@
     "avgWait": "{minutes} min in media",
     "attractionsOpen": "{open}/{total} attrazioni aperte",
     "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Parco",
+      "attraction": "Attrazione",
+      "show": "Spettacolo",
+      "restaurant": "Ristorante",
+      "location": "Posizione",
+      "glossary": "Dizionario"
+    },
+    "minQueryLength": "Digita almeno {count} caratteri per cercare"
   },
   "languageBanner": {
     "message": "Questo sito è disponibile anche in {language}",
@@ -1810,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Cancella ricerca",
     "blogPosts": {
       "title": "{term} sul blog"
     },

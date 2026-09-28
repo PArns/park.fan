@@ -166,6 +166,17 @@ function nextDetentOnTap(current: SheetDetent, available: readonly SheetDetent[]
   return available[0];
 }
 
+/**
+ * Whether the panel, at the width it stands at, holds two columns.
+ *
+ * The one fact about the width that the panel's render reads, so the panel
+ * subscribes to this and not to the width: a resize drag moves the width on
+ * every pointer move, and this flips once, at `TWO_COLUMN_MIN_WIDTH`. The
+ * pixels go onto the sheet without a render — see `attachSheet`.
+ */
+const panelHoldsTwo = () => maxColumnsFor(plannerPanelWidth.getSnapshot()) === 2;
+const panelHoldsTwoOnServer = () => maxColumnsFor(plannerPanelWidth.getServerSnapshot()) === 2;
+
 export function PlannerFlyout({
   open,
   onOpenChange,
@@ -317,10 +328,53 @@ export function PlannerFlyout({
   const pathname = usePathname();
   const isPlannerPage = PLANNER_PATHS.has(pathname);
 
-  const panelWidth = useSyncExternalStore(
+  const panelWideForTwo = useSyncExternalStore(
     plannerPanelWidth.subscribe,
-    plannerPanelWidth.getSnapshot,
-    plannerPanelWidth.getServerSnapshot
+    panelHoldsTwo,
+    panelHoldsTwoOnServer
+  );
+
+  /**
+   * The sheet's width on the wide arrangement, written onto the element rather
+   * than rendered.
+   *
+   * A resize drag changes the width on every pointer move, and as a `style`
+   * prop it re-rendered this whole panel each time — both day columns, every
+   * block and leg, the foot, the ride search — to change one number on one
+   * element. It is written from the store instead, from the ref: the ref runs
+   * in the commit that creates the element, before the browser paints it, so
+   * the first frame of every sheet Radix mounts is as wide as it always was.
+   *
+   * A callback that tears down on `null` rather than one returning a cleanup,
+   * so it does not depend on every Radix layer between here and the element
+   * passing a cleanup through. `isPhone` is its dependency, and a change of it
+   * detaches and reattaches: on a phone the sheet spans the screen, and an
+   * inline pixel width would hold it at 448 px in the middle of a 390 px one.
+   */
+  const detachSheet = useRef<(() => void) | null>(null);
+  const attachSheet = useCallback(
+    (sheet: HTMLDivElement | null) => {
+      detachSheet.current?.();
+      detachSheet.current = null;
+      sheetRef.current = sheet;
+      if (!sheet || isPhone) return;
+      // The store also speaks on a window resize, where the capped width often
+      // stays what it was; that writes nothing.
+      let written = '';
+      const writeWidth = () => {
+        const width = `${plannerPanelWidth.getSnapshot()}px`;
+        if (width === written) return;
+        written = width;
+        sheet.style.width = width;
+      };
+      writeWidth();
+      const unsubscribe = plannerPanelWidth.subscribe(writeWidth);
+      detachSheet.current = () => {
+        unsubscribe();
+        sheet.style.removeProperty('width');
+      };
+    },
+    [isPhone]
   );
 
   /**
@@ -355,7 +409,7 @@ export function PlannerFlyout({
    * — and a phone is a bottom sheet the width of the screen, where no stored
    * width applies at all.
    */
-  const twoColumnsFit = !isPhone && maxColumnsFor(panelWidth) === 2;
+  const twoColumnsFit = !isPhone && panelWideForTwo;
   const windowFitsTwoColumns = useMediaQuery(TWO_COLUMN_VIEWPORT_QUERY);
   const twoColumnsOffered = !isPhone && windowFitsTwoColumns;
   const storedColumn = useSyncExternalStore(
@@ -439,10 +493,15 @@ export function PlannerFlyout({
   // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
-  const grid = useMemo(
-    () => growGridForSpans(buildDayGrid(openHour, closeHour, pxPerMin), spans),
-    [openHour, closeHour, pxPerMin, spans]
+  // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
+  // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
+  // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
+  // grid itself when the plan fits, so the identity now moves only with the axis.
+  const baseGrid = useMemo(
+    () => buildDayGrid(openHour, closeHour, pxPerMin),
+    [openHour, closeHour, pxPerMin]
   );
+  const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
   /**
    * The park the page BEHIND the panel is about, which is a different question
@@ -1139,11 +1198,9 @@ export function PlannerFlyout({
             // the page's own inset transition, which a phone does not have.
             'planner-phone:transition-[height,max-height,bottom] planner-phone:duration-[400ms] planner-phone:ease-[cubic-bezier(0.32,0.72,0,1)]'
           )}
-          // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
-          // a bottom sheet spanning the viewport, and an inline pixel width would
-          // hold it at 448 px in the middle of a 390 px screen.
-          style={isPhone ? undefined : { width: panelWidth }}
-          ref={sheetRef}
+          // The width is not a prop: `attachSheet` writes it, and leaves it off
+          // on a phone.
+          ref={attachSheet}
         >
           {/* First child, so everything after it paints over it.
 
@@ -1447,7 +1504,7 @@ export function PlannerFlyout({
                         // write of our own, so this goes through the same clamp
                         // and the same storage key the edge drag uses — and only
                         // upwards, for the same reason closing does not touch it.
-                        if (panelWidth < TWO_COLUMN_MIN_WIDTH) {
+                        if (plannerPanelWidth.getSnapshot() < TWO_COLUMN_MIN_WIDTH) {
                           plannerPanelWidth.commit(TWO_COLUMN_MIN_WIDTH);
                         }
                         // A column narrowed away is remembered rather than

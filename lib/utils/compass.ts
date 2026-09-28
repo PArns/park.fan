@@ -42,9 +42,16 @@ export function angleDelta(from: number, to: number): number {
  */
 export interface OrientationReading {
   alpha: number | null;
+  beta?: number | null;
+  gamma?: number | null;
   absolute?: boolean;
   webkitCompassHeading?: number;
+  /** Safari's own error estimate in degrees; negative when it has none (uncalibrated). */
+  webkitCompassAccuracy?: number;
 }
+
+/** Tilted further than this towards upright, the phone is looked through, not down at. */
+const STEEP_BETA = 65;
 
 /**
  * Which way the top of the phone points, in degrees clockwise from north, or `null` where the
@@ -69,9 +76,35 @@ export function headingFromOrientation(event: OrientationReading, screenAngle = 
     return normalizeDegrees(event.webkitCompassHeading + screenAngle);
   }
   if (event.absolute && typeof event.alpha === 'number' && Number.isFinite(event.alpha)) {
+    const beta = event.beta ?? 0;
+    const gamma = event.gamma ?? 0;
+    // Held up towards upright, the top edge points at the sky and its heading stops meaning
+    // anything; what the reader faces is where the back of the phone points (the W3C spec's
+    // compass-heading formula). Below the threshold the two agree for a phone held level
+    // side to side, so the hand-over does not jump. Portrait only: turned to landscape, the axes
+    // the tilt is measured on are not the ones this reads.
+    if (screenAngle === 0 && Math.abs(beta) > STEEP_BETA) {
+      const a = toRad(event.alpha);
+      const b = toRad(beta);
+      const g = toRad(gamma);
+      const x = -Math.cos(a) * Math.sin(g) - Math.sin(a) * Math.sin(b) * Math.cos(g);
+      const y = -Math.sin(a) * Math.sin(g) + Math.cos(a) * Math.sin(b) * Math.cos(g);
+      return normalizeDegrees(toDeg(Math.atan2(x, y)));
+    }
     return normalizeDegrees(360 - event.alpha + screenAngle);
   }
   return null;
+}
+
+/**
+ * Whether the magnetometer says itself that it is off. Safari reports its error in degrees and a
+ * negative number when it is uncalibrated; next to the steel of a coaster that is common, and the
+ * reader should be told to wave the phone in a figure eight rather than trust the arrow. Chrome
+ * reports nothing, so `false` there.
+ */
+export function compassUnreliable(event: OrientationReading): boolean {
+  const accuracy = event.webkitCompassAccuracy;
+  return typeof accuracy === 'number' && (accuracy < 0 || accuracy > 25);
 }
 
 /**
@@ -96,6 +129,22 @@ const RANGE_STEPS = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000, 30
 export function niceRange(maxDistance: number): number {
   for (const step of RANGE_STEPS) if (maxDistance <= step) return step;
   return Math.ceil(maxDistance / 1000) * 1000;
+}
+
+/**
+ * The outer ring for a reader on the move: it grows at once when a ride falls outside it, and
+ * shrinks only when the farthest ride is well inside the step below (three quarters of it).
+ * Walking with the farthest ride near a step flipped the ring between 300 and 400 m every few
+ * fixes, and every flip moved every marker.
+ */
+export function stableRange(previous: number | null, maxDistance: number): number {
+  const fresh = niceRange(maxDistance);
+  if (previous === null || fresh >= previous) return fresh;
+  const below =
+    previous > RANGE_STEPS[RANGE_STEPS.length - 1]
+      ? previous - 1000
+      : ([...RANGE_STEPS].reverse().find((step) => step < previous) ?? RANGE_STEPS[0]);
+  return maxDistance < below * 0.75 ? fresh : previous;
 }
 
 /** A marker's centre, relative to the dial's centre, in the dial's own units (x right, y down). */
@@ -223,6 +272,9 @@ export interface LabelBox {
 /**
  * Where each marker's name goes, or `null` where there is no room.
  *
+ * `radius` per marker, where markers differ in size (a closed ride's is a small ring); the shared
+ * `markerRadius` otherwise.
+ *
  * The way a map labels its pins: every label tries the eight places around its marker, the one
  * facing away from the centre first (rides spread outwards, so outwards is where the room is), and
  * takes the first that covers no marker, no label already placed and not the reader in the middle,
@@ -233,7 +285,7 @@ export interface LabelBox {
  * dial names any marker that is tapped.
  */
 export function placeLabels(
-  markers: readonly { x: number; y: number; width: number }[],
+  markers: readonly { x: number; y: number; width: number; radius?: number }[],
   order: readonly number[],
   {
     markerRadius,
@@ -271,13 +323,14 @@ export function placeLabels(
 
   for (const i of order) {
     const m = markers[i];
+    const own = m.radius ?? markerRadius;
     const w = m.width;
     const h = height;
     // The eight places right beside the marker first, then the same eight one step further out,
     // which the hairline to the label makes as readable as the near ones.
     const candidates = [gap, gap + reach].flatMap((g) => {
-      const off = markerRadius + g;
-      const diag = markerRadius * 0.72 + g;
+      const off = own + g;
+      const diag = own * 0.72 + g;
       return [
         { dx: 1, dy: 0, far: g, x: m.x + off, y: m.y - h / 2 },
         { dx: -1, dy: 0, far: g, x: m.x - off - w, y: m.y - h / 2 },
@@ -297,7 +350,7 @@ export function placeLabels(
       (box) =>
         insideFace(box) &&
         !hitsCircle(box, 0, 0, centre) &&
-        !markers.some((o) => hitsCircle(box, o.x, o.y, markerRadius)) &&
+        !markers.some((o) => hitsCircle(box, o.x, o.y, o.radius ?? markerRadius)) &&
         !boxes.some((b) => overlaps(box, b))
     );
     if (fit) {
@@ -307,4 +360,78 @@ export function placeLabels(
     }
   }
   return placed;
+}
+
+/**
+ * The ride the reader is facing: the one whose bearing lies nearest the heading, within `reach`
+ * degrees either side; `null` when none is, or none has a bearing.
+ *
+ * `reach` is the view cone the dial draws (±26°) with a little give. Without it the bar said
+ * „vor dir" about whichever ride was least far off, 116° off at Phantasialand facing south-west,
+ * with its own arrow pointing backwards.
+ *
+ * `current` is the ride chosen the last time, and it keeps its place until another is nearer by
+ * more than `hold` degrees, or it leaves the cone. Without that, two rides a few degrees apart
+ * would trade the bar back and forth on the magnetometer's jitter alone, with the phone held
+ * still; the caller also waits a moment before taking a change (see `ParkCompass`).
+ */
+export function rideAhead(
+  items: readonly { id: string; bearing: number | null }[],
+  heading: number,
+  current: string | null,
+  { hold = 4, reach = 30 }: { hold?: number; reach?: number } = {}
+): string | null {
+  let best: { id: string; off: number } | null = null;
+  let held: number | null = null;
+  for (const { id, bearing } of items) {
+    if (bearing === null) continue;
+    const off = Math.abs(angleDelta(heading, bearing));
+    if (id === current) held = off;
+    if (!best || off < best.off) best = { id, off };
+  }
+  if (held !== null && held <= reach && best && held <= best.off + hold) return current;
+  return best && best.off <= reach ? best.id : null;
+}
+
+/** The eight points of the compass, clockwise from north, as message keys. */
+export const COMPASS_POINTS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'] as const;
+export type CompassPoint = (typeof COMPASS_POINTS)[number];
+
+/** The point of the compass a bearing falls in, 45° each, north from 337.5° to 22.5°. */
+export function compassPoint(bearing: number): CompassPoint {
+  return COMPASS_POINTS[Math.round(normalizeDegrees(bearing) / 45) % 8];
+}
+
+/**
+ * The rides nearest first, but a row only overtakes the one above it when it is nearer by more
+ * than `tolerance` metres. A reader walking with GPS jitter of a few metres otherwise saw the
+ * list reorder a quarter of the fixes, rows jumping under the thumb, and a row is a link.
+ *
+ * Starts from the order the reader last saw (`previous`; rides new to the list come after, by
+ * distance) and lets rows bubble up past neighbours they are clearly nearer than.
+ */
+export function stableOrder<T extends { id: string; distance: number }>(
+  items: readonly T[],
+  previous: readonly string[],
+  tolerance: number
+): T[] {
+  const rank = new Map(previous.map((id, i) => [id, i]));
+  const list = [...items].sort((a, b) => {
+    const ra = rank.get(a.id);
+    const rb = rank.get(b.id);
+    if (ra !== undefined && rb !== undefined) return ra - rb;
+    if (ra !== undefined) return -1;
+    if (rb !== undefined) return 1;
+    return a.distance - b.distance;
+  });
+  for (let swapped = true; swapped;) {
+    swapped = false;
+    for (let i = 0; i < list.length - 1; i++) {
+      if (list[i].distance - list[i + 1].distance > tolerance) {
+        [list[i], list[i + 1]] = [list[i + 1], list[i]];
+        swapped = true;
+      }
+    }
+  }
+  return list;
 }

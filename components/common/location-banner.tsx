@@ -1,40 +1,69 @@
 'use client';
 
-import { useState, useSyncExternalStore } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import {
+  readLocationDeclinedAt,
+  rememberLocationDeclined,
+  useGeolocation,
+  useLocationNeeded,
+} from '@/lib/contexts/geolocation-context';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { trackLocationBannerClicked } from '@/lib/analytics/umami';
+import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
 
 interface LocationBannerProps {
   ariaLabel?: string;
 }
 
 /**
- * Banner shown when the user has not granted location (prompt) or has denied it.
- * Renders only when there is no position; user can click to request location.
+ * The homepage's ask for location, shown when the user has not granted location yet (prompt).
+ * Mounted, it marks the page as one that uses location (`useLocationNeeded`): a visitor who said
+ * yes on an earlier visit gets the browser's prompt directly and never sees this banner.
+ * Not shown once the browser has denied it: the button would do nothing, and the browser alone
+ * can lift a denial. A no keeps it closed for `LOCATION_BANNER_QUIET_MS` (30 days): closing it,
+ * or answering the browser's prompt with no from any page (`rememberLocationDeclined`).
  */
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  const { permissionGranted, loading, initialCheckDone, refresh } = useGeolocation();
-  // Server snapshot = false → always null during SSR and the hydration pass,
-  // matching what the server produced. Client snapshot = true, so after
-  // hydration the real geolocation state takes over.
-  const mounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false
-  );
+  const {
+    permissionGranted,
+    permissionDenied,
+    loading,
+    error,
+    initialCheckDone,
+    earlierYes,
+    refresh,
+  } = useGeolocation();
+  useLocationNeeded();
+  // False on the server and in the hydration pass → the banner renders null there,
+  // matching what the server produced. After hydration the real geolocation state takes over.
+  const mounted = useMounted();
 
-  // Dismissible: hide for the rest of the session once the user closes it (the banner
-  // is client-only, so reading sessionStorage in the initializer is safe).
+  // Dismissible: hide for 30 days once the user closes it (the banner is client-only, so reading
+  // localStorage in the initializer is safe). One session was too short: a visitor who had said
+  // no was asked again on the next visit, and the one after.
   const [dismissed, setDismissed] = useState(
-    () => typeof window !== 'undefined' && sessionStorage.getItem('locationBannerDismissed') === '1'
+    () =>
+      typeof window !== 'undefined' && locationBannerIsQuiet(readLocationDeclinedAt(), Date.now())
   );
 
-  if (!mounted || !initialCheckDone || permissionGranted || loading || dismissed) {
+  if (
+    !mounted ||
+    !initialCheckDone ||
+    permissionGranted ||
+    permissionDenied ||
+    // A no in this page (a dismissed prompt is not `permissionDenied`), or no Geolocation API at
+    // all. The chapter row under "near you" keeps the button for a change of mind.
+    error ||
+    loading ||
+    // The browser is about to ask this visitor directly; the banner would be a second ask.
+    earlierYes ||
+    dismissed
+  ) {
     return null;
   }
 
@@ -72,9 +101,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
           type="button"
           onClick={() => {
             setDismissed(true);
-            try {
-              sessionStorage.setItem('locationBannerDismissed', '1');
-            } catch {}
+            rememberLocationDeclined();
           }}
           aria-label={tCommon('close')}
           // 24 px (a 16 px glyph in `p-1`), and it is the only way out of a toast that covers the

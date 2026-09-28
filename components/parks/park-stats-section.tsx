@@ -18,7 +18,7 @@ import { useParkWaitTimes } from '@/lib/hooks/use-park-wait-times';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
 import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
@@ -274,17 +274,14 @@ function StatsContent({
   }, [stats.byMonth, locale]);
 
   const dowRows = useMemo(() => {
-    const refMonday = new Date(2025, 0, 6);
-    const fmt = getDateTimeFormat(locale, { weekday: 'long' });
     return stats.byDayOfWeek
       .map((d) => {
+        // Monday first: `dayOfWeek` is 0 = Sunday, so Sunday sorts last.
         const offset = (d.dayOfWeek - 1 + 7) % 7;
-        const date = new Date(refMonday);
-        date.setDate(refMonday.getDate() + offset);
         return {
           key: d.dayOfWeek,
           sortKey: offset,
-          label: fmt.format(date),
+          label: weekdayName(d.dayOfWeek, locale),
           crowdLevel: d.avgCrowdLevel,
           p50: d.avgWaitP50,
           p90: d.avgWaitP90,

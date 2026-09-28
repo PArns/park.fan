@@ -1,5 +1,6 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import { LOAD_LAST_META } from '@/lib/hooks/use-load-last';
 
 interface UseCalendarDataParams {
   continent: string;
@@ -11,6 +12,8 @@ interface UseCalendarDataParams {
   enabled?: boolean;
   /** ms; defaults to {@link CALENDAR_STALE_TIME_MS}. */
   staleTime?: number;
+  /** The caller gates `enabled` on `useLoadLast`; see {@link LOAD_LAST_META}. */
+  loadLast?: boolean;
 }
 
 /**
@@ -42,6 +45,7 @@ export function useCalendarData({
   to,
   enabled = true,
   staleTime = CALENDAR_STALE_TIME_MS,
+  loadLast = false,
 }: UseCalendarDataParams) {
   return useQuery<IntegratedCalendarResponse>({
     queryKey: ['calendar', continent, country, city, parkSlug, from, to],
@@ -58,6 +62,7 @@ export function useCalendarData({
     },
     enabled,
     staleTime,
+    meta: loadLast ? LOAD_LAST_META : undefined,
     gcTime: 2 * CALENDAR_STALE_TIME_MS,
     retry: 2,
     // Month navigation changes `from`/`to` (a new query key). Keep showing the previous

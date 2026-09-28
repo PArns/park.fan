@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useRideDayCurve } from '@/lib/hooks/use-ride-day-curve';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 import type {
   AttractionHistoryDay,
   ForecastItem,
@@ -24,11 +25,12 @@ interface DailyWaitTimeChartClientProps {
   /**
    * What stands here while this component cannot draw yet.
    *
-   * It has a `useMounted()` gate of its own, one commit behind whatever gate its parent uses, so
-   * `null` here means the caller's own skeleton has already been taken down and nothing has
-   * replaced it — a card collapsing to its remaining chrome for one frame. On the ride page that
-   * was a 269 px jump of the Fancast link under it. Pass the same box the caller holds during its
-   * own wait.
+   * It has a `useMounted()` gate of its own. Mounted under a parent's gate it is already open (the
+   * gate reads the client snapshot after hydration), but where this component hydrates itself it
+   * renders this for the hydration pass, and `null` there is a card collapsing to its remaining
+   * chrome for one frame. On the ride page that was a 269 px jump of the Fancast link under it,
+   * back when the gate ran one commit behind its parent's. Pass the same box the caller holds
+   * during its own wait.
    */
   fallback?: React.ReactNode;
   /**
@@ -61,11 +63,6 @@ function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
   const hour = parts.find((p) => p.type === 'hour')?.value || '00';
   const minute = parts.find((p) => p.type === 'minute')?.value || '00';
   return `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`;
-}
-
-/** Today's date as YYYY-MM-DD in the given IANA timezone. */
-function getTodayInTimezone(timezone: string): string {
-  return getDateTimeFormat('en-CA', { timeZone: timezone }).format(new Date());
 }
 
 /**
@@ -272,13 +269,19 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
 
   // Derive "today" (park tz) on the client; before mount render nothing so SSR and the first client
   // render match (no hydration mismatch) and the static shell never reads the clock.
+  //
+  // The data props are listed one by one. They used to be left out on the claim that props came
+  // from the server shell and never changed, but the ride page feeds them from the attraction
+  // detail query, which polls every five minutes: the chart kept the first response for as long
+  // as the tab was open, and its "today" never rolled over. `translations` stays out — it is a new
+  // object on every render of the caller and only changes with the locale.
+  const { history, hourlyForecast, schedule, bestVisitTimes } = props;
   const data = useMemo(() => {
     if (!mounted) return null;
-    const todayStr = getTodayInTimezone(props.timezone);
+    const todayStr = parkDayOf(new Date(), props.timezone);
     return buildChartData(todayStr, props, corridorByHour);
-    // props is stable per render from the server shell; rebuild only on mount/tz change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mounted, props.timezone, corridorByHour]);
+  }, [mounted, props.timezone, history, hourlyForecast, schedule, bestVisitTimes, corridorByHour]);
 
   if (!data) return <>{props.fallback ?? null}</>;
   return <DailyWaitTimeChart {...data} hideTitle={props.hideTitle} />;

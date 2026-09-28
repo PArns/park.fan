@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type {
   ParkWithAttractions,
   ParkAttraction,
   ParkShow,
   ParkRestaurant,
 } from '@/lib/api/types';
+import { useGeolocation, type GeolocationPosition } from '@/lib/contexts/geolocation-context';
 import { calculateDistance } from '@/lib/utils/distance-utils';
 import { stripNewPrefix } from '@/lib/utils';
 
@@ -30,9 +31,14 @@ export interface ParkMapGeolocation {
 }
 
 /**
- * Geolocation for the park map: acquires the visitor's position on mount
- * (GDPR compliant — no cookie storage), and derives distance-to-park,
- * in-park state and the five nearest entities while inside the park.
+ * Geolocation for the park map: the visitor's position from the geolocation context, and
+ * distance-to-park, in-park state and the five nearest entities while inside the park.
+ *
+ * The map never asks for location itself. It used to call `getCurrentPosition` on mount, so every
+ * opened map tab (and every blog post with a park map) opened a native prompt nobody had tapped
+ * for — and in Chrome three ignored prompts block the site for a week. On a park page the near-you
+ * row above the tabs is what asks; the map shows whatever position the context holds
+ * (docs/rules/location-is-asked-for-where-it-is-needed.md).
  */
 export function useParkMapGeolocation(
   park: ParkWithAttractions,
@@ -40,33 +46,21 @@ export function useParkMapGeolocation(
   validShows: ParkShow[],
   validRestaurants: ParkRestaurant[]
 ): ParkMapGeolocation {
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const { position, permissionGranted } = useGeolocation();
 
-  const requestLocation = () => {
-    if (!navigator.geolocation) return;
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setUserLocation({ lat: latitude, lng: longitude });
-      },
-      () => {
-        // User denied or position unavailable — expected, no action needed
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 300000, // Cache position for 5 minutes
-      }
-    );
-  };
-
-  // Automatically request location on mount (GDPR compliant - no cookie storage)
+  // A fix from the in-park watch below, and the context position it replaced. The watch is newer
+  // than the context until the context itself moves on (a new object: it keeps its identity while
+  // the fix does not move), so the two sources never fight over the marker.
+  const [followed, setFollowed] = useState<{
+    over: GeolocationPosition | null;
+    at: { lat: number; lng: number };
+  } | null>(null);
+  const contextPositionRef = useRef(position);
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.geolocation) {
-      requestLocation();
-    }
-  }, []);
+    contextPositionRef.current = position;
+  }, [position]);
+
+  const userLocation = followed && followed.over === position ? followed.at : position;
 
   const { nearbyEntities, distanceToPark, isInPark } = useMemo(() => {
     // `!= null` rather than truthiness: 0 is a legal coordinate, and these values
@@ -158,18 +152,23 @@ export function useParkMapGeolocation(
   // the browser drive the geolocation hardware (callbacks only on movement) —
   // no fixed-interval wakeups, far less battery/CPU on the device actually
   // walking around a park. Outside the park the geolocation context already
-  // refreshes at 5-min intervals.
+  // refreshes at 5-min intervals. Only while the grant holds: a watch started
+  // after a one-time grant ran out would open a prompt.
   useEffect(() => {
-    if (!isInPark || typeof navigator === 'undefined' || !navigator.geolocation) return;
+    if (!isInPark || !permissionGranted) return;
+    if (typeof navigator === 'undefined' || !navigator.geolocation) return;
     const watchId = navigator.geolocation.watchPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
+      (fix) => {
+        const { latitude, longitude } = fix.coords;
         // Preserve identity while stationary so an unchanged fix doesn't
         // re-render the map tree.
-        setUserLocation((prev) =>
-          prev && prev.lat === latitude && prev.lng === longitude
+        setFollowed((prev) =>
+          prev &&
+          prev.over === contextPositionRef.current &&
+          prev.at.lat === latitude &&
+          prev.at.lng === longitude
             ? prev
-            : { lat: latitude, lng: longitude }
+            : { over: contextPositionRef.current, at: { lat: latitude, lng: longitude } }
         );
       },
       () => {
@@ -178,7 +177,7 @@ export function useParkMapGeolocation(
       { enableHighAccuracy: false, timeout: 10000, maximumAge: 5000 }
     );
     return () => navigator.geolocation.clearWatch(watchId);
-  }, [isInPark]);
+  }, [isInPark, permissionGranted]);
 
   return { userLocation, nearbyEntities, distanceToPark, isInPark };
 }

@@ -140,6 +140,7 @@ sessions that need them.
 | [Weather Day Chart](features/weather-day-chart.md)             | The hourly chart's park-hours time axis, its tick tiers, the in-visit annotations and the 143 px box                |
 | [Attraction Filter Panel](features/attraction-filter-panel.md) | The park page's search + rider-height + off-season band, and how the three filters compose                          |
 | [The Guide Page](features/how-park-fan-works.md)               | What `/{locale}/{howto-segment}` teaches, why every block is a production component, and the claims it may make     |
+| [In-Park Compass](features/park-compass.md)                    | The homepage compass under the hero: when it may appear, the dial, the bar that follows the eyes, true north        |
 | [Trip Planner](features/trip-planner.md)                       | The visitor's own day: the wizard, the month grid, park-local time, the drag payload, and life without the endpoint |
 | [New-posts toast](features/new-posts-toast.md)                 | The "new on the blog since your last visit" toast: what counts as new, and why it costs a page nothing              |
 

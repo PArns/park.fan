@@ -166,14 +166,15 @@ instead of dropping into an empty gap.
 Both surfaces share their behavior, so a result can never look or route differently depending
 on where it was clicked — including the list they show before anything is typed:
 
-| Shared piece            | Module                                       |
-| ----------------------- | -------------------------------------------- |
-| Queries + debounce      | `lib/hooks/use-search-results.ts`            |
-| Pre-query list          | `lib/hooks/use-hero-browse-parks.ts`         |
-| Analytics + routing     | `lib/hooks/use-search-navigation.ts`         |
-| Row rendering           | `components/search/search-result-items.tsx`  |
-| Category grouping/order | `components/search/search-result-groups.tsx` |
-| Panel body              | `components/search/search-results-panel.tsx` |
+| Shared piece                 | Module                                         |
+| ---------------------------- | ---------------------------------------------- |
+| Queries + debounce           | `lib/hooks/use-search-results.ts`              |
+| Pre-query list               | `lib/hooks/use-hero-browse-parks.ts`           |
+| Analytics + routing          | `lib/hooks/use-search-navigation.ts`           |
+| Result → URL (and `/search`) | `searchResultHref` in `lib/utils/url-utils.ts` |
+| Row rendering                | `components/search/search-result-items.tsx`    |
+| Category grouping/order      | `components/search/search-result-groups.tsx`   |
+| Panel body                   | `components/search/search-results-panel.tsx`   |
 
 **The dropdown is open at rest** and lists the three nearest parks — the hero's default state is
 an answer, not an empty field. **Focusing the field expands it** to the full browse list, tweened
@@ -289,70 +290,16 @@ headline gets a „… ist in deiner Nähe" line. Both variants render `HeroPark
 
 ### Under the hero: the headliners on a compass
 
-For `in_park` only, `ParkCompassSlot` (`app/[locale]/page.tsx`, straight after the hero section)
-lazy-loads `ParkCompass`: a north-up compass dial with the reader in the middle. Every in-season
-headliner is a marker at its true bearing and at a radius that grows with its distance, showing
-its current wait in the wait colours; two dashed range rings, the outer one labelled („500 m").
-The reader is an arrow with a view cone that turns with the phone, the way a maps app shows which
-way somebody is looking; without a compass it is a plain dot. The bar under the dial names one
-ride (the one tapped, the one straight ahead, or the nearest), and the list beside it carries the
-same rides with an arrow each (the way to go from where the reader is looking), a distance and
-the wait, nearest first.
+For `in_park` (and the `?sim=compass` demo), `ParkCompassSlot` (`app/[locale]/page.tsx`, straight
+after the hero section) puts a compass under the hero: the headliners on a north-up dial at their
+true bearing and distance, the reader's arrow and view cone turning with the phone, a bar naming
+the ride the phone points at (or the one a tap pinned), and the same rides as a list with the way
+to go, the distance and the wait. While it is on the page the hero's badge row carries „Zum
+Kompass" in the news chip's slot, which scrolls to it.
 
-The first version turned the whole dial heading-up and marked „ahead" with a small triangle at the
-top, then gained a needle pointing at the selected ride. Neither showed the one thing a compass is
-read for, which way the reader faces; the arrow in the middle does.
-
-**It is drawn as an instrument, not as a radar** (`ParkCompassDial`,
-`components/home/park-compass-dial.tsx`). A flat disc with ticks read like any radar widget on any
-site. The dial now has a bezel the way a real one is drawn: 5° ticks, numerals every 30° set along
-the ring (turned over in the lower half, so none stands on its head), upright N/O/S/W, and a
-triangle for north. Inside it the face is the park's own photo, the first one the hero above
-rotates, blurred and dimmed so it tints the face rather than competing with the markers, with a
-faint eight-point rose over it. A park without a hero photo gets a plain face with a blue glow. The
-photo is a 256 px rendition at quality 50, 2.9 KB as AVIF for Phantasialand's.
-
-**Every marker says which ride it is**, where there is room: a short name beside it
-(`dialLabel`: „Chiapas" for „Chiapas - DIE Wasserbahn", „Big Thunder…" for „Big Thunder
-Mountain"), placed the way a map labels its pins (`placeLabels`). Each label tries the eight places
-around its marker, outward first, then the same eight a step further out, and may reach onto the
-bezel; it takes the first that covers no marker, no other label and not the reader. The ride in
-focus chooses first, then the nearest. A hairline runs from each marker to its label, because a
-label that had to go diagonally into a cluster was otherwise a guess. Where no place is free the
-label is left out, and a tap on the marker names it in the bar. On the live Disneyland answer 8 of
-10 markers carried a name, on Phantasialand's tight east side 7 of 10.
-
-**The panel is glass over the park.** The same photo as the face lies under the whole panel,
-blurred to colour and light under the heavy-glass fill (`HEAVY_GLASS`'s tint, a step more solid),
-and the bezel, the bar under the dial, the name labels and the list's arrow chips are translucent
-fills with a hairline and a lit top edge. None of it is a `backdrop-filter`: the arrows turn with
-every sensor frame, and a moving element under a backdrop filter is what made „Heute im Park"
-flicker. The photo is blurred once, as an image, and both layers use the same 256 px rendition, so
-it is one request. A park without a photo keeps the flat panel (`PANEL_FLAT`).
-
-What turns with the phone is one layer rotated by `--heading`: the view cone, a lit arc on the
-bezel and the arrow. The heading as a figure („100°") rides the bezel at the same angle and stays
-upright (rotate, push out, rotate back); `ParkCompass` writes the figure into it from the sensor
-callback, so it re-renders nothing. The ride the bar under the dial names gets a dashed line from
-the reader to its marker, so a tap or a turn shows the way in the drawing too.
-
-- **The heading** comes from `DeviceOrientation` (`useCompassHeading`): Chrome's
-  `deviceorientationabsolute`, Safari's `webkitCompassHeading`. Safari only sends it after
-  `requestPermission()` inside a tap, so iOS shows „Kompass einschalten". Without a compass (a
-  desktop, a denied prompt) there is no arrow and the header says north is up. The heading is
-  written into one CSS variable, `--heading`, and the reader's arrow and the list arrows turn off
-  it in CSS, so a 60 Hz sensor costs React nothing.
-- **The reader's position** is a high-accuracy `watchPosition` while the compass is on screen and
-  the tab is in front (`useLivePosition`), else the point the nearby answer was made for; never a
-  prompt. Under `?sim=` only the latter.
-- **The rides' positions** come from `/positions` (see
-  [API budget](../architecture/api-budget.md)), because the nearby answer has none.
-- **Layout arithmetic** is `lib/utils/compass.ts`, tested by `pnpm test:compass`. Markers are placed
-  by distance, not spread round the ring: spreading put Taron 45° off its own arrow.
-- **To try it on a phone anywhere**, open `/?sim=compass` (or `?sim=compass:disneylandparis`). A
-  real park's live answer is laid out around the device's position, so turning and walking behave
-  as in the park. It works on production too; see
-  [flags and debug](../development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
+Everything about it, from where and when it may appear without moving the page, through the dial,
+the bar and the list, to magnetic declination and what a frame costs, is in
+[the in-park compass](park-compass.md).
 
 ---
 
@@ -581,7 +528,7 @@ build: React 19 compares hydrated attributes in `react-dom-client.development.js
   staggered reads as the panel answering the click rather than the content teleporting
   (`hero-world-panel-client.tsx`).
 - ~~**The header solidifying** on a hero page (`lib/hooks/use-header-reveal.ts`)~~ — **gone since
-  PAR-170**, and the reason is worth keeping because it is what a stagger over a scroll threshold
+  PAR-170** (the file is deleted too), and the reason is worth keeping because it is what a stagger over a scroll threshold
   costs. The timeline was a `fromTo(targets, {y:-10}, {y:0})` built the first time the bar
   solidified and **reversed** on the way back up, and reversing a `fromTo` ends on its from-state.
   That was safe only because the bar's contents were `opacity-0` up there: the hook's own docblock

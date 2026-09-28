@@ -12,6 +12,7 @@ import {
   weekdayLabels,
 } from '@/lib/planner/month-grid';
 import { CROWD_DOT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import type { CalendarDay } from '@/lib/api/types';
 
@@ -84,6 +85,10 @@ export function PlannerMonthCalendar({
   const cells = useMemo(() => monthMatrix(month), [month]);
   const headers = useMemo(() => weekdayLabels(locale), [locale]);
   const planned = useMemo(() => new Set(plannedDates), [plannedDates]);
+  // One cached formatter for the 42 cell labels. `toLocaleDateString` with
+  // options builds a fresh `Intl.DateTimeFormat` per call, which was 42 of them
+  // on every render of the grid; the output is the same string.
+  const dayLabel = getDateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' });
 
   const todayMonth = monthOf(today);
   const maxMonth = maxDate ? monthOf(maxDate) : null;
@@ -171,11 +176,7 @@ export function PlannerMonthCalendar({
               data-planner-day={cell.date}
               // The date in full, because the cell shows a number: a screen
               // reader would otherwise announce "17" in a grid of numbers.
-              aria-label={new Date(`${cell.date}T12:00:00Z`).toLocaleDateString(locale, {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-              })}
+              aria-label={dayLabel.format(new Date(`${cell.date}T12:00:00Z`))}
               className={cn(
                 'relative flex flex-col items-center justify-center rounded-md border border-transparent tabular-nums transition-colors',
                 roomy ? 'h-10' : 'h-8',

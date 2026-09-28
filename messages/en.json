@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Site sections",
+    "opensInNewTab": "opens in a new tab",
     "description": "Live wait times and AI-powered crowd predictions for 200+ theme parks worldwide. Plan your park visit with real-time data and in-park navigation.",
     "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Change language",
+    "mobileNavigation": "Mobile navigation",
+    "menu": "Menu",
     "home": "Home",
     "parks": "All Parks",
     "continents": "Continents",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Scroll right",
+      "scrollLeft": "Scroll left",
       "clear": "Clear sky",
       "mainlyClear": "Mainly clear",
       "partlyCloudy": "Partly cloudy",
@@ -1442,16 +1449,56 @@
       "w": "W",
       "enable": "Turn on compass",
       "northUp": "North is up",
-      "facing": "The arrow shows where you’re facing",
+      "facing": "The blue cone shows where you are looking",
       "denied": "Compass not allowed. North is up.",
-      "coarse": "GPS imprecise (± {meters} m)",
+      "coarse": "Location imprecise (± {meters} m). The arrows may be off.",
       "ahead": "Ahead",
       "nearest": "Nearest",
-      "picked": "Selected",
-      "closed": "Closed",
-      "demo": "Demo: {park} around you",
-      "demoLocation": "Use my location"
+      "picked": "Pinned",
+      "demo": "Demo: {park} is laid out around you.",
+      "demoLocation": "Use my location",
+      "heroPill": "To the compass",
+      "enableHint": "Safari asks once for access to motion and orientation. Until then, north is up.",
+      "retry": "Ask again",
+      "calibrate": "Compass unsure. Move your phone in a figure eight a few times.",
+      "locating": "Pinning down your location …",
+      "here": "You're here",
+      "toward": "to the {point}",
+      "points": {
+        "n": "north",
+        "ne": "northeast",
+        "e": "east",
+        "se": "southeast",
+        "s": "south",
+        "sw": "southwest",
+        "w": "west",
+        "nw": "northwest"
+      },
+      "pointsShort": {
+        "n": "N",
+        "ne": "NE",
+        "e": "E",
+        "se": "SE",
+        "s": "S",
+        "sw": "SW",
+        "w": "W",
+        "nw": "NW"
+      },
+      "unpin": "Unpin",
+      "tapHint": "Tap a dot to pin that ride.",
+      "unpinHint": "Tap it again to unpin it.",
+      "allClosed": "All top attractions are closed right now.",
+      "demoEnd": "End demo",
+      "demoNoLocation": "Without your location you stay on one spot in the park.",
+      "dialGroup": "Compass, north up"
     }
+  },
+  "location": {
+    "active": "Location on",
+    "howTo": "How to change this",
+    "stepsDefault": "Tap or click the icon to the left of the address and set Location to “Allow”. Then reload the page.",
+    "stepsIosSafari": "Tap “aA” on the left of the address bar, then Website Settings → Location → Allow. Then reload the page.",
+    "stepsMacSafari": "In the menu bar, choose Safari → Settings for park.fan… and set Location to “Allow”. Then reload the page."
   },
   "geo": {
     "continent": "Continent",
@@ -1540,13 +1587,6 @@
     "viewAllResults": "View all results for \"{query}\"",
     "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
     "at": "at {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attraction",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Location"
-    },
     "headings": {
       "park": "Parks ({count})",
       "attraction": "Attractions ({count})",
@@ -1566,6 +1606,17 @@
     "avgWait": "{minutes} min avg",
     "attractionsOpen": "{open}/{total} attractions open",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attraction",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Location",
+      "glossary": "Dictionary"
+    },
+    "minQueryLength": "Enter at least {count} characters to search"
   },
   "languageBanner": {
     "message": "This site is also available in {language}",
@@ -1810,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Clear search",
     "blogPosts": {
       "title": "{term} on the blog"
     },

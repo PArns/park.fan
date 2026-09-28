@@ -25,18 +25,15 @@ import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDurationShort } from '@/lib/i18n/time';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
-import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
+import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import {
-  buildRestaurantUrl,
-  buildShowUrl,
-  convertApiUrlToFrontendUrl,
-} from '@/lib/utils/url-utils';
+import { convertApiUrlToFrontendUrl, parkChapterUrl } from '@/lib/utils/url-utils';
 import type {
   FavoriteAttraction,
   FavoritePark,
@@ -110,11 +107,11 @@ function standbyWait(attraction: FavoriteAttraction): number | null {
 function WaitFigure({ minutes, unit }: { minutes: number; unit: string }) {
   return (
     <span className="flex items-baseline gap-1">
-      <span
-        className={`text-2xl leading-none font-bold tabular-nums ${CROWD_TEXT_CLASS[waitTimeCrowdTier(minutes)]}`}
-      >
-        {minutes}
-      </span>
+      <WaitTimeValue
+        minutes={minutes}
+        shadow={false}
+        className="text-2xl leading-none font-bold tabular-nums"
+      />
       <span className="text-muted-foreground text-[11px]">{unit}</span>
     </span>
   );
@@ -236,7 +233,7 @@ function scheduleMessage(
   if (!now) return null;
 
   const tz = timezone ? { timeZone: timezone } : {};
-  const dayIn = (d: Date) => d.toLocaleDateString('en-CA', tz);
+  const dayIn = (d: Date) => parkDayOf(d, timezone);
 
   try {
     if (todaySchedule?.scheduleType === 'OPERATING') {
@@ -849,10 +846,12 @@ function ParkEntry({
         imagePosition={park.backgroundPosition}
         trailing={
           wait !== null ? (
-            <span className="text-sm font-semibold tabular-nums">
-              <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
-              <span className="text-muted-foreground ml-1 text-xs font-normal">{minuteLabel}</span>
-            </span>
+            <WaitTimeValue
+              minutes={wait}
+              shadow={false}
+              unit={minuteLabel}
+              className="text-sm font-semibold tabular-nums"
+            />
           ) : (
             badge
           )
@@ -922,10 +921,12 @@ function AttractionEntry({
         imagePosition={attraction.backgroundPosition}
         trailing={
           wait !== null ? (
-            <span className="text-sm font-semibold tabular-nums">
-              <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
-              <span className="text-muted-foreground ml-1 text-xs font-normal">{minuteLabel}</span>
-            </span>
+            <WaitTimeValue
+              minutes={wait}
+              shadow={false}
+              unit={minuteLabel}
+              className="text-sm font-semibold tabular-nums"
+            />
           ) : (
             badge
           )
@@ -961,26 +962,18 @@ function AttractionEntry({
  * Zahl am Stern.
  */
 function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
-  const parkHref = (url: string | undefined) => {
-    if (!url) return null;
-    const converted = convertApiUrlToFrontendUrl(url);
-    return converted !== '#' && converted.startsWith('/parks/') ? converted : null;
-  };
-
   return [
     ...shows.map((show) => ({
       id: show.id,
       title: stripNewPrefix(show.name),
       park: show.park ? stripNewPrefix(show.park.name) : null,
-      base: parkHref(show.url),
-      build: buildShowUrl,
+      chapter: parkChapterUrl(show.url, 'shows'),
     })),
     ...restaurants.map((restaurant) => ({
       id: restaurant.id,
       title: stripNewPrefix(restaurant.name),
       park: restaurant.park ? stripNewPrefix(restaurant.park.name) : null,
-      base: parkHref(restaurant.url),
-      build: buildRestaurantUrl,
+      chapter: parkChapterUrl(restaurant.url, 'restaurants'),
     })),
   ].map((v) => ({
     id: v.id,
@@ -988,7 +981,7 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
     park: v.park,
     // Ohne auflösbare Parkseite bleibt die Favoritenseite der einzige Ort, an dem der Eintrag
     // noch zu sehen ist.
-    href: v.base ? v.build(v.base) : '/favorites',
+    href: v.chapter ?? '/favorites',
   }));
 }
 

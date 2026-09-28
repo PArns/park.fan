@@ -9,6 +9,40 @@ import { useTranslations } from 'next-intl';
 import { DialogClose, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 
+/** The tinted field behind a band without a photograph, shared with `PushDialogHero`. */
+export const DIALOG_HERO_TINT =
+  'from-primary/25 via-primary/8 absolute inset-0 bg-gradient-to-br to-transparent';
+
+/**
+ * The close button of a band that brings its own (the dialog then passes `showCloseButton={false}`):
+ * `DialogHero` and the push dialogs' `PushDialogHero`. The two drew it from copies of the same
+ * classes, and only one of them had the phone-sized target.
+ */
+export function DialogHeroClose({ onPhoto = false }: { onPhoto?: boolean }) {
+  // `common`, because a dialog's close button is chrome — the namespace every page already ships.
+  const tCommon = useTranslations('common');
+
+  return (
+    <DialogClose
+      aria-label={tCommon('close')}
+      className={cn(
+        'absolute top-2.5 right-2.5 z-10 rounded-full p-1.5 transition-colors focus-visible:ring-2 focus-visible:outline-none',
+        // Over a photograph the button has to carry its own ground: the dialog's default close
+        // is `text-muted-foreground`, which lands somewhere between invisible and illegible
+        // depending on what the picture happens to do in that corner.
+        onPhoto
+          ? 'bg-black/35 text-white/90 ring-white/40 hover:bg-black/55 hover:text-white'
+          : 'text-muted-foreground hover:bg-accent hover:text-foreground ring-ring',
+        // A 27 px target is under everything this project asks of a control on a phone, and the
+        // close is the one the reader reaches for with a thumb while holding the device.
+        'max-sm:top-2 max-sm:right-2 max-sm:p-2.5'
+      )}
+    >
+      <X className="size-4" aria-hidden="true" />
+    </DialogClose>
+  );
+}
+
 /**
  * The band across the top of a full-dress dialog: a title, a line under it, and either a
  * photograph or a tinted field with an oversized translucent glyph.
@@ -84,8 +118,6 @@ export function DialogHero({
   /** `object-position` for that picture, from the media database's focal point. */
   photoPosition?: string;
 }) {
-  // `common`, because a dialog's close button is chrome — the namespace every page already ships.
-  const tCommon = useTranslations('common');
   const descriptionClasses = cn(
     'mt-0.5 text-xs sm:text-sm',
     photo ? 'text-white/85' : 'text-muted-foreground',
@@ -124,10 +156,7 @@ export function DialogHero({
         </>
       ) : (
         <>
-          <div
-            className="from-primary/25 via-primary/8 absolute inset-0 bg-gradient-to-br to-transparent"
-            aria-hidden="true"
-          />
+          <div className={DIALOG_HERO_TINT} aria-hidden="true" />
           {/* Half as strong where `actions` share the corner with it: the glyph is 160 px of
               hairline calendar and the day stepper sits right on top of it, so at /20 the arrows
               read as part of the drawing. */}
@@ -141,23 +170,7 @@ export function DialogHero({
         </>
       )}
 
-      <DialogClose
-        aria-label={tCommon('close')}
-        className={cn(
-          'absolute top-2.5 right-2.5 z-10 rounded-full p-1.5 transition-colors focus-visible:ring-2 focus-visible:outline-none',
-          // Over a photograph the button has to carry its own ground: the dialog's default close
-          // is `text-muted-foreground`, which lands somewhere between invisible and illegible
-          // depending on what the picture happens to do in that corner.
-          photo
-            ? 'bg-black/35 text-white/90 ring-white/40 hover:bg-black/55 hover:text-white'
-            : 'text-muted-foreground hover:bg-accent hover:text-foreground ring-ring',
-          // A 27 px target is under everything this project asks of a control on a phone, and the
-          // close is the one the reader reaches for with a thumb while holding the device.
-          'max-sm:top-2 max-sm:right-2 max-sm:p-2.5'
-        )}
-      >
-        <X className="size-4" aria-hidden="true" />
-      </DialogClose>
+      <DialogHeroClose onPhoto={Boolean(photo)} />
 
       {/* The close button is absolutely positioned over this block, so the text has to leave its
           corner free — `pr-12` where nothing else is on the right. With `actions` there IS

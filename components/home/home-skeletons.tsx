@@ -19,30 +19,6 @@ import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skele
  * (minimal CLS). Pure, data-free Server Components rendered into the shell.
  */
 
-/**
- * Icon + title line + intro line — matches the `mb-2 / mb-8` header that the global-stats,
- * platform-stats and ML sections share.
- *
- * The heights are the real ones: a `text-xl` title is a 28 px line, not 24, and the intro is a
- * 20 px `<p>`, not a 16 px block. The tag matters as much as the height — a diff of first paint
- * against settled pairs children by tag, and a `<div>` standing in for a `<p>` makes the two
- * lists line up one place out, which reports the section's grid as a several-hundred-pixel
- * insertion.
- */
-function SectionHeaderSkeleton() {
-  return (
-    <>
-      <div className="mb-2 flex items-center gap-2">
-        <Skeleton className="h-5 w-5 rounded" />
-        <Skeleton className="h-7 w-48 max-w-[60%]" />
-      </div>
-      <p className="mb-8">
-        <Skeleton as="span" className="block h-5 w-72 max-w-full" />
-      </p>
-    </>
-  );
-}
-
 /** Mirrors <StatsCard>: title line + large value + description. (~116px tall) */
 function StatsCardSkeleton() {
   return (
@@ -149,43 +125,6 @@ export function FeaturedParksSkeleton() {
         <div className="mt-6 flex justify-center">
           {/* The live CTA is a `text-sm` link: a 20 px line, not 16. */}
           <Skeleton className="h-5 w-32" />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function MLStatsSkeleton() {
-  return (
-    <section className="bg-muted/30 px-4 py-14">
-      <div className="container mx-auto">
-        <SectionHeaderSkeleton />
-        {/* Featured accuracy card + 2×2 stats grid */}
-        <div className="mb-10 grid gap-4 lg:grid-cols-2">
-          <Card className="min-h-[340px] py-0">
-            <CardContent className="flex flex-col p-5">
-              <Skeleton className="h-5 w-40" />
-              <Skeleton className="mt-4 h-16 w-48" />
-              <Skeleton className="mt-2 h-3 w-56 max-w-full" />
-              <Skeleton className="mt-4 h-[120px] w-full" />
-            </CardContent>
-          </Card>
-          <div className="grid grid-cols-2 content-start gap-4">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <Card key={i} className="py-0">
-                <CardContent className="p-5">
-                  <Skeleton className="h-4 w-20" />
-                  <Skeleton className="mt-3 h-8 w-16" />
-                  <Skeleton className="mt-2 h-3 w-24" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-        {/* Bottom: two-column detail block */}
-        <div className="grid gap-8 border-t pt-10 md:grid-cols-2">
-          <Skeleton className="h-48 w-full" />
-          <Skeleton className="h-48 w-full" />
         </div>
       </div>
     </section>

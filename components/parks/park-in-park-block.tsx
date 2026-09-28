@@ -6,8 +6,10 @@ import { LocateFixed, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { InParkRideLists, splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { NextBestRides } from '@/components/parks/next-best-rides';
-import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { LocationBlockedHelp } from '@/components/common/location-blocked-help';
+import { useGeolocation, useLocationNeeded } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { resolveInParkBlock } from '@/lib/utils/in-park-block';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { cn } from '@/lib/utils';
@@ -23,8 +25,9 @@ const subscribeNever = () => () => {};
  * reads the same `/api/nearby` answer the header already asks for on every page
  * (`useHomeNearbyParks`, deduped by React Query), so it adds no request, and lists the same rows.
  *
- * Nothing here asks for location on load. The geolocation context reads a position only where
- * permission is already granted; without it the row offers a button, and only the tap asks.
+ * This row is the park page's ask for location (`useLocationNeeded`). A visitor who said yes on
+ * an earlier visit is asked by the browser directly when the page opens; without an earlier yes the
+ * row offers a button, and only the tap asks. Where permission is granted nothing asks at all.
  *
  * Distances follow the visitor through the context's own refresh: 60 s while `isInPark` is set,
  * which this block sets for as long as it shows the lists, and the position keeps its identity
@@ -55,6 +58,7 @@ export function ParkInParkBlock({
     refresh,
     setIsInPark,
   } = useGeolocation();
+  useLocationNeeded();
   const nearbyQuery = useHomeNearbyParks();
   const nearby = nearbyQuery.data;
   // `placeholderData` counts too: when the fix arrives, the query key changes and React Query
@@ -64,11 +68,7 @@ export function ParkInParkBlock({
   // Everything below reads browser state, so the server pass and the hydration pass must both
   // see "nothing known yet" — a local guard, not the provider's (the rule in
   // docs/rules/a-client-only-preference-may-not-decide-server-rendered-markup.md).
-  const mounted = useSyncExternalStore(
-    subscribeNever,
-    () => true,
-    () => false
-  );
+  const mounted = useMounted();
   const simulated = useSyncExternalStore(
     subscribeNever,
     () => new URLSearchParams(window.location.search).has('sim'),
@@ -155,10 +155,13 @@ export function ParkInParkBlock({
           </Button>
         )}
         {state.kind === 'blocked' && (
-          <p className="text-muted-foreground flex min-w-0 items-center gap-2">
-            <LocateFixed className="size-4 shrink-0" aria-hidden="true" />
-            <span className="truncate">{t('parkPage.blocked')}</span>
-          </p>
+          <>
+            <p className="text-muted-foreground flex min-w-0 items-center gap-2">
+              <LocateFixed className="size-4 shrink-0" aria-hidden="true" />
+              <span className="truncate">{t('parkPage.blocked')}</span>
+            </p>
+            <LocationBlockedHelp />
+          </>
         )}
         {state.kind === 'away' && state.distanceM != null && (
           <p className="text-muted-foreground flex min-w-0 items-center gap-2">

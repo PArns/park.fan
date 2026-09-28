@@ -33,6 +33,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
+  const tNav = await getTranslations({ locale, namespace: 'navigation' });
   const currentYear = await getCurrentYear();
 
   const footerLinkClass =
@@ -114,7 +115,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                  wordmark on its left, ~1.1/1.7 px of empty pin on its right. Optically 11.1 px
                  and 13.7 px, which is what these two round up to. */
               className="inline-flex items-center gap-3 md:gap-3.5"
-              aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
+              aria-label={`park.fan: ${tNav('home')}`}
             >
               <Image
                 src="/logo.svg"
@@ -153,16 +154,16 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             <PreferredSourceButton />
             <nav
               className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
-              aria-label="Developer resources and tools"
+              aria-label={t('sections.resources')}
             >
               <a
                 href="https://api.park.fan/api"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-                aria-label="park.fan API Documentation (opens in new tab)"
               >
                 {t('api')}
+                <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
               <span className="text-muted-foreground/60">•</span>
@@ -171,9 +172,9 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-                aria-label="GitHub Profile (opens in new tab)"
               >
                 GitHub
+                <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
               <span className="text-muted-foreground/60">•</span>
@@ -182,9 +183,9 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-                aria-label="Arns.dev website (opens in new tab)"
               >
                 Arns.dev
+                <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
             </nav>
@@ -201,19 +202,17 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   href="/parks/europe/germany"
                   prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                  aria-label={`${t('sections.germany')} - Theme Parks`}
                 >
                   {t('sections.germany')}
                 </Link>
                 <nav
                   className="flex flex-col gap-2 text-sm"
-                  aria-label="Popular theme parks in Germany"
+                  aria-label={`${t('sections.popularParks')}: ${t('sections.germany')}`}
                 >
                   <Link
                     href="/parks/europe/germany/rust/europa-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Europa-Park - Wait Times"
                   >
                     Europa-Park
                   </Link>
@@ -221,7 +220,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/germany/bruehl/phantasialand"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Phantasialand - Wait Times"
                   >
                     Phantasialand
                   </Link>
@@ -229,7 +227,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/germany/soltau/heide-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Heide-Park - Wait Times"
                   >
                     Heide-Park
                   </Link>
@@ -237,7 +234,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/germany/bottrop/movie-park-germany"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Movie Park Germany - Wait Times"
                   >
                     Movie Park Germany
                   </Link>
@@ -245,7 +241,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/netherlands/kaatsheuvel/efteling"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Efteling - Wait Times"
                   >
                     Efteling
                   </Link>
@@ -265,19 +260,17 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   href="/parks/north-america/united-states"
                   prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                  aria-label={`${t('sections.usa')} - Theme Parks`}
                 >
                   {t('sections.usa')}
                 </Link>
                 <nav
                   className="flex flex-col gap-2 text-sm"
-                  aria-label="Popular theme parks in USA"
+                  aria-label={`${t('sections.popularParks')}: ${t('sections.usa')}`}
                 >
                   <Link
                     href="/parks/north-america/united-states/orlando/magic-kingdom-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Magic Kingdom - Wait Times"
                   >
                     Magic Kingdom
                   </Link>
@@ -285,7 +278,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/north-america/united-states/orlando/universal-studios-florida"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Universal Studios - Wait Times"
                   >
                     Universal Studios
                   </Link>
@@ -293,7 +285,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/north-america/united-states/tampa/busch-gardens-tampa"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Busch Gardens Tampa - Wait Times"
                   >
                     Busch Gardens Tampa
                   </Link>
@@ -301,7 +292,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/north-america/united-states/anaheim/disneyland-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Disneyland - Wait Times"
                   >
                     Disneyland
                   </Link>
@@ -309,7 +299,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/north-america/united-states/santa-clarita/six-flags-magic-mountain"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Six Flags Magic Mountain - Wait Times"
                   >
                     Six Flags Magic Mountain
                   </Link>
@@ -329,19 +318,17 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   href="/parks/europe/france"
                   prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                  aria-label={`${tGeo('countries.france')} - Theme Parks`}
                 >
                   {tGeo('countries.france')}
                 </Link>
                 <nav
                   className="flex flex-col gap-2 text-sm"
-                  aria-label={`Popular theme parks in ${tGeo('countries.france')}`}
+                  aria-label={`${t('sections.popularParks')}: ${tGeo('countries.france')}`}
                 >
                   <Link
                     href="/parks/europe/france/paris/disneyland-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Disneyland Paris - Wait Times"
                   >
                     Disneyland Paris
                   </Link>
@@ -349,7 +336,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/france/plailly/parc-asterix"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Parc Asterix - Wait Times"
                   >
                     Parc Asterix
                   </Link>
@@ -357,7 +343,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/france/paris/disney-adventure-world"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Disney Adventure World - Wait Times"
                   >
                     Disney Adventure World
                   </Link>
@@ -365,7 +350,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/france/chasseneuil-du-poitou/futuroscope"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Futuroscope - Wait Times"
                   >
                     Futuroscope
                   </Link>
@@ -373,7 +357,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/europe/france/dolancourt/nigloland"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Nigloland - Wait Times"
                   >
                     Nigloland
                   </Link>
@@ -393,19 +376,17 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   href="/parks/asia/japan"
                   prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                  aria-label={`${tGeo('countries.japan')} - Theme Parks`}
                 >
                   {tGeo('countries.japan')}
                 </Link>
                 <nav
                   className="flex flex-col gap-2 text-sm"
-                  aria-label={`Popular theme parks in ${tGeo('countries.japan')}`}
+                  aria-label={`${t('sections.popularParks')}: ${tGeo('countries.japan')}`}
                 >
                   <Link
                     href="/parks/asia/japan/tokyo/tokyo-disneyland"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Tokyo Disneyland - Wait Times"
                   >
                     Tokyo Disneyland
                   </Link>
@@ -413,7 +394,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/asia/japan/tokyo/tokyo-disneysea"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Tokyo DisneySea - Wait Times"
                   >
                     Tokyo DisneySea
                   </Link>
@@ -421,7 +401,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     href="/parks/asia/japan/osaka/universal-studios-japan"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Universal Studios Japan - Wait Times"
                   >
                     Universal Studios Japan
                   </Link>
@@ -469,7 +448,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 either way. */}
             <nav
               className="grid w-full sm:grid-cols-3 sm:gap-x-8 sm:gap-y-6"
-              aria-label="Site sections"
+              aria-label={t('siteSections')}
             >
               {linkGroups.map((group) => (
                 <FooterLinkGroup key={group.key} heading={group.heading}>
@@ -504,9 +483,9 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-                aria-label="Visit Arns.dev website (opens in new tab)"
               >
                 <span className="hidden md:inline">{t('poweredBy')}</span> Arns.dev
+                <span className="sr-only"> ({t('opensInNewTab')})</span>
               </a>
             </p>
           </div>

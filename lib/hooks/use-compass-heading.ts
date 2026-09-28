@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useEffectEvent, useState, useSyncExternalStore } from 'react';
 import {
+  compassUnreliable,
   headingFromOrientation,
   smoothHeading,
   type OrientationReading,
@@ -22,6 +23,13 @@ export type CompassStatus = 'pending' | 'needs-permission' | 'active' | 'unavail
 
 /** How long to wait for a first absolute heading before calling the device compass-less. */
 const FIRST_READING_MS = 1500;
+/**
+ * How long a running stream may fall silent before the compass counts as gone. A sensor sends
+ * at 60 Hz even on a still phone, so three seconds of nothing is a stream that died (the site's
+ * motion permission revoked, the sensor suspended after a resume), and an arrow frozen under
+ * „Der Pfeil zeigt, wohin du schaust" would be pointing wherever it last was.
+ */
+const STREAM_LOST_MS = 3000;
 
 type PermissionRequester = { requestPermission?: () => Promise<'granted' | 'denied'> };
 
@@ -53,10 +61,11 @@ function screenAngle(): number {
 export function useCompassHeading(
   onHeading: (heading: number) => void,
   enabled: boolean
-): { status: CompassStatus; enable: () => void } {
+): { status: CompassStatus; enable: () => void; unreliable: boolean } {
   const capability = useSyncExternalStore(subscribeNever, readCapability, (): Capability => 'none');
   const [permission, setPermission] = useState<'unknown' | 'granted' | 'denied'>('unknown');
   const [stream, setStream] = useState<'pending' | 'active' | 'silent'>('pending');
+  const [unreliable, setUnreliable] = useState(false);
   const emit = useEffectEvent((heading: number) => onHeading(heading));
 
   useEffect(() => {
@@ -70,13 +79,22 @@ export function useCompassHeading(
     let smoothed: number | null = null;
     let frame = 0;
     let heard = false;
+    let lastAt = 0;
+    let doubtful: boolean | null = null;
     const onEvent = (event: Event) => {
-      const heading = headingFromOrientation(event as unknown as OrientationReading, screenAngle());
+      const reading = event as unknown as OrientationReading;
+      const heading = headingFromOrientation(reading, screenAngle());
       if (heading === null) return;
       smoothed = smoothHeading(smoothed, heading);
+      lastAt = performance.now();
       if (!heard) {
         heard = true;
         setStream('active');
+      }
+      const nowDoubtful = compassUnreliable(reading);
+      if (nowDoubtful !== doubtful) {
+        doubtful = nowDoubtful;
+        setUnreliable(nowDoubtful);
       }
       if (frame) return;
       frame = requestAnimationFrame(() => {
@@ -85,12 +103,21 @@ export function useCompassHeading(
       });
     };
     window.addEventListener(eventName, onEvent);
+    // Nothing within the first moments of listening — on the first subscription or on any later
+    // one, after the tab came back — is a device that sends no heading now, whatever it did before.
     const timer = window.setTimeout(() => {
-      if (!heard) setStream((s) => (s === 'active' ? s : 'silent'));
+      if (!heard) setStream('silent');
     }, FIRST_READING_MS);
+    const watchdog = window.setInterval(() => {
+      if (heard && performance.now() - lastAt > STREAM_LOST_MS) {
+        heard = false;
+        setStream('silent');
+      }
+    }, 1000);
     return () => {
       window.removeEventListener(eventName, onEvent);
       window.clearTimeout(timer);
+      window.clearInterval(watchdog);
       if (frame) cancelAnimationFrame(frame);
     };
   }, [enabled, capability, permission]);
@@ -119,5 +146,5 @@ export function useCompassHeading(
               ? 'unavailable'
               : 'pending';
 
-  return { status, enable };
+  return { status, enable, unreliable: status === 'active' && unreliable };
 }

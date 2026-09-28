@@ -266,7 +266,12 @@ export default function HeroInlineSearchPanel({
   // Space is excluded on purpose. It is a printable character, so a naive length-1 test catches
   // it — and then Space no longer scrolls the page and no longer activates a focused button,
   // for every visitor, whether or not they ever use the search.
+  //
+  // The hero's instance only. A second field on the page (`primary={false}`, `onHero` false here)
+  // added a second page-wide listener, and whichever mounted first took the keystroke — after a
+  // reload scrolled down, that was the field 2,000 px below the hero.
   useEffect(() => {
+    if (!onHero) return;
     const onKey = (e: KeyboardEvent) => {
       // Only when nothing is focused. Anything else — a link, a button, a menu — is a control
       // the visitor deliberately moved to, and letters there mean first-letter navigation to a
@@ -283,7 +288,7 @@ export default function HeroInlineSearchPanel({
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, []);
+  }, [onHero]);
 
   return (
     <CommandPrimitive

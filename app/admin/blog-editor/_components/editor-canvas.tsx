@@ -69,6 +69,10 @@ export function EditorCanvas({
    *  marking a freshly-loaded post as dirty (and overwriting the draft body
    *  with tiptap-markdown's normalisation of it). */
   const applyingThemesRef = useRef(false);
+  // The markdown this canvas last handed up. The parent stores it and passes it straight back as
+  // `initialMarkdown`, and the sync effect below serialised the whole document again on every
+  // keystroke just to find the two equal.
+  const lastEmittedRef = useRef<string | null>(null);
   /** When set, the next ParkRidePicker pick replaces an existing link at this
    *  position rather than inserting a fresh link. The PropertiesPanel asks
    *  for a replace via a window event; the canvas captures pos here. */
@@ -264,7 +268,9 @@ export function EditorCanvas({
       // tiptap-markdown drops table-level attrs on the floor — we re-inject
       // the theme as a leading `<!--tbl-theme: …-->` comment so the round
       // trip survives the save/load cycle.
-      onMarkdownChange(serializeWithThemes(e, raw));
+      const markdown = serializeWithThemes(e, raw);
+      lastEmittedRef.current = markdown;
+      onMarkdownChange(markdown);
     },
   });
 
@@ -279,6 +285,8 @@ export function EditorCanvas({
   // user flips to a different locale tab).
   useEffect(() => {
     if (!editor) return;
+    // Our own edit coming back: the editor already holds exactly this.
+    if (initialMarkdown === lastEmittedRef.current) return;
     const current = serializeWithThemes(
       editor,
       (

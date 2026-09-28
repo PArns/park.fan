@@ -5,6 +5,7 @@ import { RefreshCw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/card';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface Props {
   modelAge: { days: number; hours: number; minutes: number };
@@ -63,7 +64,8 @@ export function MLTrainingCountdown({ modelAge }: Props) {
     const tick = () => {
       const now = Date.now();
       if (now >= next) next = getNextTrainingUTC();
-      setLocalTime(new Date(next).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      // Cached formatter: this runs every second, and the string only changes when `next` does.
+      setLocalTime(getDateTimeFormat([], { hour: '2-digit', minute: '2-digit' }).format(next));
       setRemaining(next - now);
     };
     // The deferred first tick doubles as the "catch up immediately" stamp when

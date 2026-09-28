@@ -22,6 +22,10 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [A redirect thrown from a render carries the layout as its body (REQUIREMENT)](a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)
 - [An ISR route needs both halves, and one of them is an empty `generateStaticParams` (REQUIREMENT)](an-isr-route-needs-both-halves.md)
 - [A runtime file read ships the whole directory it is rooted at (REQUIREMENT)](a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)
+- [A mount gate reads a store, never a timer (REQUIREMENT)](a-mount-gate-reads-a-store-never-a-timer.md)
+- [A render redoes no work it did last time (REQUIREMENT)](a-render-redoes-no-work.md)
+- [A subscription lives in the leaf that shows it (REQUIREMENT)](a-subscription-lives-in-the-leaf-that-shows-it.md)
+- [Work nobody can see is still work (REQUIREMENT)](work-nobody-can-see-is-still-work.md)
 - [Translations are routed, not bundled (REQUIREMENT)](translations-are-routed-not-bundled.md)
 
 ## Data and API
@@ -30,6 +34,7 @@ _Wait times, seasons, a park with no source._
 
 - [Parks we cannot read (REQUIREMENT)](parks-we-cannot-read.md)
 - [A ride out of season is closed, and is not one of the park's rides today (REQUIREMENT)](a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md)
+- [An API route passes only slugs upstream, and says a failure is one (REQUIREMENT)](an-api-route-passes-only-slugs-upstream.md)
 
 ## Features
 
@@ -45,6 +50,7 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 - [Blog manifest is split (REQUIREMENT)](blog-manifest-is-split.md)
 - [News is set apart from the articles, and it is never hidden for its age (REQUIREMENT)](news-is-set-apart-from-the-articles.md)
 - [News posts live under `/news`, and every post URL comes from `postPath` (REQUIREMENT)](news-live-under-news.md)
+- [Location is asked for where a page needs it, and not again after a no (REQUIREMENT)](location-is-asked-for-where-it-is-needed.md)
 
 ## Design and layout
 
@@ -60,6 +66,7 @@ _Layout, a component, a breakpoint, the header, a card, three.js._
 - [Blog spotlight cards](blog-spotlight-cards.md)
 - [A blog card is a row on phones (REQUIREMENT)](a-blog-card-is-a-row-on-phones.md)
 - [Map tiles are CARTO, never OSM's own tile server (REQUIREMENT)](map-tiles-are-carto-not-osms-own-tile-server.md)
+- [A keyboard shortcut waits for an unfocused page (REQUIREMENT)](a-keyboard-shortcut-waits-for-an-unfocused-page.md)
 - [A fade is animated, never a cut (REQUIREMENT)](a-fade-is-animated-never-a-cut.md)
 
 ## SEO and the machine-facing surface

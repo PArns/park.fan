@@ -9,6 +9,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -77,14 +78,6 @@ export interface DailyWaitTimeChartData {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function barColorClass(w: number): string {
-  if (w < 20) return 'bg-crowd-very-low';
-  if (w < 35) return 'bg-crowd-low';
-  if (w < 50) return 'bg-crowd-moderate';
-  if (w < 65) return 'bg-crowd-high';
-  return 'bg-crowd-very-high';
-}
 
 /** Format "HH:mm" for display: 12h AM/PM for EN, otherwise HH:mm + suffix. */
 function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): string {
@@ -331,10 +324,13 @@ export function DailyWaitTimeChart({
                         className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default bg-transparent p-0 transition-[bottom] duration-500 motion-reduce:transition-none"
                         style={{ bottom: `calc(${barPct}% + 3px)` }}
                       >
-                        {/* Pulsing ring */}
+                        {/* A static ring. It used to ping, one endless animation per best slot
+                            inside the ride page's glass panel (`backdrop-blur-2xl`), which re-reads
+                            the blurred region every frame — the flicker `park-today-panel.tsx`
+                            documents for its own dot. */}
                         <span
                           className={cn(
-                            'absolute -inset-0.5 animate-ping rounded-full opacity-50 [will-change:transform,opacity] [animation-duration:2s]',
+                            'absolute -inset-0.5 rounded-full opacity-50',
                             bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
                           )}
                         />
@@ -366,7 +362,9 @@ export function DailyWaitTimeChart({
                         // Half a second of height is the difference between the
                         // chart rescaling and the chart appearing to blink.
                         'w-full rounded-t transition-[height] duration-500 motion-reduce:transition-none',
-                        barColorClass(slot.value),
+                        // The app-wide wait scale, so a bar is the colour the same number
+                        // is everywhere else (the planner's bars, WaitTimeValue).
+                        CROWD_DOT_CLASS[waitTimeCrowdTier(slot.value)],
                         slot.type === 'past' && 'opacity-40'
                       )}
                       style={{ height: `${barPct}%` }}

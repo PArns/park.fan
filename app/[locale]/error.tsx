@@ -10,10 +10,15 @@ import { API_MAINTENANCE_DIGEST } from '@/lib/api/client';
 
 interface ErrorProps {
   error: Error & { digest?: string };
-  reset: () => void;
+  /**
+   * Re-fetches the segment and re-renders it. Not `reset`, which only re-renders the payload that
+   * already failed: park and ride pages throw on a failed API call on purpose, so a `reset` retry
+   * showed the same error until a hard reload.
+   */
+  retry: () => void;
 }
 
-export default function Error({ error, reset }: ErrorProps) {
+export default function Error({ error, retry }: ErrorProps) {
   const t = useTranslations('common');
   const router = useRouter();
 
@@ -48,7 +53,7 @@ export default function Error({ error, reset }: ErrorProps) {
       <p className="text-muted-foreground mb-8 max-w-md text-base">{t('errorPageDescription')}</p>
 
       <div className="flex flex-col gap-3 sm:flex-row">
-        <Button onClick={reset} variant="default" className="gap-2">
+        <Button onClick={() => retry()} variant="default" className="gap-2">
           <RotateCcw className="h-4 w-4" />
           {t('retry')}
         </Button>

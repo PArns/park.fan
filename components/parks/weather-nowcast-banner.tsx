@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   AlertTriangle,
@@ -12,8 +12,11 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
 import { NowcastPrecipTimeline } from '@/components/parks/nowcast-precip-timeline';
+import { formatTime } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatWindSpeed } from '@/lib/utils/temperature';
 import { formatShortDuration } from '@/lib/utils/duration';
@@ -72,19 +75,8 @@ const endsTodayLabel = (
   if (!iso) return null;
   const ts = Date.parse(iso);
   if (Number.isNaN(ts) || ts <= now) return null;
-  const dayKey = (ms: number) =>
-    new Intl.DateTimeFormat('en-CA', {
-      timeZone: timezone,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(ms);
-  if (dayKey(ts) !== dayKey(now)) return null;
-  return new Intl.DateTimeFormat(locale, {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: timezone,
-  }).format(ts);
+  if (parkDayOf(ts, timezone) !== parkDayOf(now, timezone)) return null;
+  return formatTime(ts, locale, { hour: '2-digit', minute: '2-digit', timeZone: timezone });
 };
 
 /** How far ahead (minutes) to surface a rain pre-warning. Severe events
@@ -237,50 +229,34 @@ export function useNowcastAlert({
     enabled,
   });
 
-  // Live clock so countdowns recompute. Starts at 0 on BOTH the server and the hydration render
-  // (a `typeof window` initializer would bake epoch-based countdown text into server-rendered
-  // markup and mismatch on hydration); the effect below stamps the real time right after mount.
-  const [now, setNow] = useState(0);
+  // Live clock so countdowns recompute: the shared minute clock (`useMinuteNow`), `null` on the
+  // server and the hydration render, so no epoch-based countdown text is baked into the server
+  // markup. Sixty seconds, always. Everything derived from `now` is minute-granular —
+  // `minutesUntil` rounds to whole minutes, `isInPast` and `dayKey` are coarser still — so a
+  // per-second tick bought no accuracy anywhere on screen. What it bought was a re-render sixty
+  // times a minute of a component that owns a full-bleed `backdrop-blur-md` layer. Chromium has to
+  // re-read what is behind a backdrop filter whenever its subtree paints, so every one of those
+  // ticks was a backdrop re-rasterisation; miss a frame and the blur flattens for exactly that
+  // frame, which is the „Heute im Park" card going transparent for an instant, irregularly, and
+  // then sitting still for seconds. The one thing that genuinely needs seconds is the mm:ss
+  // countdown, and it keeps its own ticker — scoped to itself, gated on visibility, and painted in
+  // isolation.
+  //
+  // The shared clock pauses while the tab is hidden and re-stamps on return, which is what this
+  // hook used to do with an interval, a `visibilitychange` listener and a deferred first stamp of
+  // its own. That first stamp was a `setTimeout(…, 0)`: the banner's host painted once without the
+  // warning and once more with it on every mount, client-side navigations included.
+  //
+  // No `useActiveOnScreen` here, and its absence is the point. It was left behind when the
+  // per-second tick became a flat 60-second one: nothing read its `active` value, but the hook
+  // still mounted an IntersectionObserver and a `visibilitychange` listener, and still called
+  // `setOnScreen`/`setTabVisible`. Every one of those re-rendered the component that owns the
+  // backdrop layer — so scrolling the banner into view or switching tabs cost exactly the backdrop
+  // invalidation the tick had cost, just on a different trigger.
+  const now = useMinuteNow() ?? 0;
 
   // `now > 0` keeps the warning hidden until the clock mounts, so SSR and hydration agree.
   const banner = useMemo(() => (data && now > 0 ? pickBanner(data, now) : null), [data, now]);
-
-  // No `useActiveOnScreen` here any more, and its absence is the point.
-  //
-  // It was left behind when the per-second tick became a flat 60-second one: nothing read its
-  // `active` value, but the hook still mounted an IntersectionObserver and a `visibilitychange`
-  // listener, and still called `setOnScreen`/`setTabVisible`. Every one of those re-rendered the
-  // component that owns the full-bleed `backdrop-blur-md` layer below — so scrolling the banner
-  // into view or switching tabs cost exactly the backdrop invalidation the tick had cost, just on
-  // a different trigger. Which also fits „irregular and not reproducible" better than a timer
-  // does. The interval checks `document.hidden` itself; nothing else needed it.
-  useEffect(() => {
-    // Deferred initial stamp (same pattern as useBrowserNow) — no synchronous
-    // set-state-in-effect; the warning appears one tick after mount when applicable.
-    const init = window.setTimeout(() => setNow(Date.now()), 0);
-    // Sixty seconds, always. Everything derived from `now` is minute-granular — `minutesUntil`
-    // rounds to whole minutes, `isInPast` and `dayKey` are coarser still — so a per-second tick
-    // bought no accuracy anywhere on screen. What it bought was a re-render sixty times a minute
-    // of a component that owns a full-bleed `backdrop-blur-md` layer. Chromium has to re-read what
-    // is behind a backdrop filter whenever its subtree paints, so every one of those ticks was a
-    // backdrop re-rasterisation; miss a frame and the blur flattens for exactly that frame, which
-    // is the „Heute im Park" card going transparent for an instant, irregularly, and then sitting
-    // still for seconds. The one thing that genuinely needs seconds is the mm:ss countdown, and it
-    // keeps its own ticker — scoped to itself, gated on visibility, and painted in isolation.
-    const id = window.setInterval(() => {
-      if (!document.hidden) setNow(Date.now());
-    }, 60_000);
-    // Re-stamp when the tab returns so countdowns don't show the pre-hide minute.
-    const onVisibility = () => {
-      if (!document.hidden) setNow(Date.now());
-    };
-    document.addEventListener('visibilitychange', onVisibility);
-    return () => {
-      window.clearTimeout(init);
-      window.clearInterval(id);
-      document.removeEventListener('visibilitychange', onVisibility);
-    };
-  }, []);
 
   if (!data || !banner) return null;
 

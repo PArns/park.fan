@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -13,10 +13,10 @@ import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { CalendarPlus } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
@@ -87,7 +87,15 @@ interface ParksMenuPanelProps {
   featured: FeaturedParkCard[];
 }
 
-export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
+/**
+ * Memoised: the header renders every mega-menu panel on each of its own renders (a burger tap, the
+ * hero bar solidifying, a resize) — below the 1024 px bar, where the nav is hidden, all of it for
+ * nothing. The props come from the server and hold still.
+ */
+export const ParksMenuPanel = memo(function ParksMenuPanel({
+  continents,
+  featured,
+}: ParksMenuPanelProps) {
   /*
    * Die Parks in Reichweite, im selben Streifen wie die kuratierten.
    *
@@ -146,7 +154,10 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
     // on its skeleton for the rest of the session. Every country you pass on the way down to the
     // detail row is one you skim past, so it happened constantly.
     fetch(`/api/nav/geo/${countryKey}`)
-      .then((r) => (r.ok ? r.json() : { cities: [] }))
+      .then((r) => {
+        if (!r.ok) throw new Error(`nav geo ${r.status}`);
+        return r.json();
+      })
       .then((data: { cities?: CityEntry[] }) =>
         setCities((prev) => ({ ...prev, [countryKey]: data.cities ?? [] }))
       )
@@ -415,7 +426,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
       </div>
     </div>
   );
-}
+});
 
 /** What a hovered country row hands to the detail row below it. */
 function target(continent: string, country: { slug: string; code: string }) {
@@ -467,12 +478,13 @@ function NearbyRow({ park, minuteLabel }: { park: ParkWithDistance; minuteLabel:
           </span>
         </span>
         {wait !== null ? (
-          <span className="shrink-0 text-right text-sm font-semibold tabular-nums">
-            <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
-            <span className="text-muted-foreground ml-0.5 text-[10px] font-normal">
-              {minuteLabel}
-            </span>
-          </span>
+          <WaitTimeValue
+            minutes={wait}
+            shadow={false}
+            unit={minuteLabel}
+            unitClassName="ml-0.5 text-[10px]"
+            className="shrink-0 text-right text-sm font-semibold tabular-nums"
+          />
         ) : (
           <ParkStatusBadge
             status={park.status as ParkStatus}

@@ -1,6 +1,51 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+
+/*
+ * One gate for the whole page, not one per caller.
+ *
+ * Every caller used to own a `load` listener, an idle callback and a `useState`, and `useNearbyParks`
+ * calls this, so every nearby consumer had its own: three on every page (the header pill and both
+ * menu panels), about twelve on the homepage. Each idle callback is its own task, so the flips
+ * landed as separate commits, and a component mounted after a client-side navigation rendered
+ * `false`, waited for another idle period and rendered again, long after the page had loaded.
+ *
+ * The page loads once. The first subscriber arms the listener, the flip notifies every subscriber
+ * in one batch, and anything mounted afterwards reads `true` on its first render.
+ */
+
+let ready = false;
+let armed = false;
+const listeners = new Set<() => void>();
+
+function flip(): void {
+  ready = true;
+  listeners.forEach((listener) => listener());
+}
+
+function arm(): void {
+  if (armed) return;
+  armed = true;
+  const schedule = () => {
+    const ric = window.requestIdleCallback;
+    if (ric) ric(flip, { timeout: 2000 });
+    else window.setTimeout(flip, 300);
+  };
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule, { once: true });
+}
+
+function subscribe(listener: () => void): () => void {
+  listeners.add(listener);
+  arm();
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+const getSnapshot = () => ready;
+const getServerSnapshot = () => false;
 
 /**
  * Returns `true` once the page has finished loading (`load` event) and the main thread next
@@ -8,33 +53,10 @@ import { useEffect, useState } from 'react';
  * lookups, anything that isn't needed for first paint — out of the initial load window so it
  * can't compete with the LCP resource for bandwidth or main-thread time.
  *
- * SSR and the first client render return `false` (so hydration matches); it flips to `true`
+ * SSR and the hydration render return `false` (so hydration matches); it flips to `true`
  * shortly after the page is interactive. A `requestIdleCallback` timeout (and a setTimeout
  * fallback for browsers without it) guarantees it always resolves.
  */
 export function useAfterLoad(): boolean {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    let idle: number | undefined;
-
-    const schedule = () => {
-      const ric = window.requestIdleCallback;
-      idle = ric
-        ? ric(() => !cancelled && setReady(true), { timeout: 2000 })
-        : window.setTimeout(() => !cancelled && setReady(true), 300);
-    };
-
-    if (document.readyState === 'complete') schedule();
-    else window.addEventListener('load', schedule, { once: true });
-
-    return () => {
-      cancelled = true;
-      window.removeEventListener('load', schedule);
-      if (idle != null) (window.cancelIdleCallback ?? window.clearTimeout)(idle);
-    };
-  }, []);
-
-  return ready;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

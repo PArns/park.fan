@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import { Rotate3d, RollerCoaster } from 'lucide-react';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,7 +17,12 @@ interface GlossaryTermCardProps {
   rideCountLabel?: string;
 }
 
-export function GlossaryTermCard({
+/**
+ * Memoised: the overview renders all ~270 of these, and every one of its props is either a
+ * string or a term object that stays put while the visitor types, so a filter change re-renders
+ * only the cards it adds.
+ */
+export const GlossaryTermCard = memo(function GlossaryTermCard({
   term,
   locale,
   segment,
@@ -66,4 +72,4 @@ export function GlossaryTermCard({
       </Card>
     </Link>
   );
-}
+});

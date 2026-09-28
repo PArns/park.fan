@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getParkPaths, getAttractionPaths } from '@/lib/content-urls';
 import { defaultLocale, SITE_URL } from '@/i18n/config';
+import { cronUnauthorized } from '@/lib/security/cron-auth';
 
 /**
  * Data-Cache prewarm crawler.
@@ -84,10 +85,8 @@ async function warmAll(urls: string[]): Promise<{ ok: number; failed: number }> 
 }
 
 export async function GET(request: Request) {
-  const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const denied = cronUnauthorized(request);
+  if (denied) return denied;
 
   const includeAttractions = new URL(request.url).searchParams.get('include') === 'attractions';
 

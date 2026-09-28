@@ -34,13 +34,13 @@ the same two-tier shape, and the layout half of it still cannot be per-request.
 For developing the homepage **in-park** view (headliner list, live wait times, seasonal handling)
 without physically standing in a park, append a `sim` query param to any page:
 
-| Value                   | Effect                                                                          |
-| ----------------------- | ------------------------------------------------------------------------------- |
-| `?sim=in_park`          | Simulate standing in the default park (Phantasialand, returns real headliners). |
-| `?sim=efteling` etc.    | Named preset (`phantasialand`, `efteling`, `europapark`, `disneylandparis`).    |
-| `?sim=50.79,6.87`       | Arbitrary `lat,lng` coordinates.                                                |
-| `?sim=compass`          | The in-park compass demo, Phantasialand laid out around the device. See below.  |
-| `?sim=compass:<preset>` | The same with another preset, e.g. `?sim=compass:disneylandparis`.              |
+| Value                   | Effect                                                                                                                 |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `?sim=in_park`          | Simulate standing in the default park (Phantasialand, returns real headliners).                                        |
+| `?sim=efteling` etc.    | Named preset (`phantasialand`, `efteling`, `europapark`, `disneylandparis`, `disneylandanaheim`, `magickingdom`).      |
+| `?sim=50.79,6.87`       | Arbitrary `lat,lng` coordinates.                                                                                       |
+| `?sim=compass`          | The in-park compass demo, Phantasialand laid out around the device. See below.                                         |
+| `?sim=compass:<preset>` | The same with another preset, e.g. `?sim=compass:disneylandparis`. The two American ones are open while Europe sleeps. |
 
 How it works: the param is **not** fabricated data. `/api/nearby` (the proxy) overrides the request
 coordinates with the chosen park, so the **real backend** returns a genuine `in_park` response —
@@ -64,10 +64,15 @@ park's real answer as a labelled demo („Demo: Phantasialand um dich herum").
 
 With a location fix, every ride is moved along with the park so that the preset's standing point
 lies where the device is (`relocate()` in `lib/utils/compass.ts`, in metres east and north, so
-distances and bearings survive the move). The park is put down once, at the first fix, and stays
-there; every later fix moves the reader through it. Walking through the living room walks through
+distances and bearings survive the move). The park is put down under the device and then stays
+there; every later fix moves the reader through it. A phone's first fix is usually a Wi-Fi or cell
+estimate tens or hundreds of metres out, and the GPS fix after it "moved" the reader by that much
+without a step taken, so every distance was off by the jump. While the fix is worse than 25 m
+(`DEMO_SETTLED_M`), each clearly better one (a fifth tighter) puts the park down again; the first
+fix within 25 m pins it. Walking through the living room walks through
 the park.
-Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen". The
+Without a fix the reader stands on the preset point, and the banner offers „Standort nutzen"; after a
+denied prompt it says so instead. „Demo beenden" is the same page without `?sim`. The
 hero and its own nearby request stay on the device's real position; `useHomeNearbyParks` treats a
 compass value as no simulation (`resolveCompassDemo()`).
 

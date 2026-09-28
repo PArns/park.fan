@@ -57,7 +57,7 @@
     "updated": "Bijgewerkt",
     "reservation": "Reservering vereist",
     "trend": "Trend",
-    "in": "in",
+    "in": "over",
     "vsTypical": "vs normaal",
     "much_higher": "Veel hoger",
     "higher": "Hoger",
@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Onderdelen van de site",
+    "opensInNewTab": "opent in een nieuw tabblad",
     "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor meer dan 200 pretparken wereldwijd. Plan je parkbezoek met realtime gegevens en navigatie in het park.",
     "keywords": "pretpark wachttijden, live wachttijden, wachttijden vandaag, druktekalender, AI-voorspelling, wachtrijtijden, druktevoorspellingen, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, beste bezoektijd",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Taal wijzigen",
+    "mobileNavigation": "Mobiele navigatie",
+    "menu": "Menu",
     "home": "Home",
     "parks": "Alle parken",
     "continents": "Continenten",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Naar rechts scrollen",
+      "scrollLeft": "Naar links scrollen",
       "clear": "Helder",
       "mainlyClear": "Overwegend helder",
       "partlyCloudy": "Gedeeltelijk bewolkt",
@@ -1442,16 +1449,56 @@
       "w": "W",
       "enable": "Kompas aanzetten",
       "northUp": "Noorden is boven",
-      "facing": "De pijl wijst waar je naartoe kijkt",
+      "facing": "De blauwe kegel laat zien waar je naar kijkt",
       "denied": "Kompas niet toegestaan. Noorden is boven.",
-      "coarse": "GPS onnauwkeurig (± {meters} m)",
+      "coarse": "Locatie onnauwkeurig (± {meters} m). De pijlen kunnen ernaast zitten.",
       "ahead": "Voor je",
       "nearest": "Dichtstbij",
-      "picked": "Gekozen",
-      "closed": "Gesloten",
-      "demo": "Demo: {park} om je heen",
-      "demoLocation": "Locatie gebruiken"
+      "picked": "Vastgezet",
+      "demo": "Demo: {park} ligt nu om je heen.",
+      "demoLocation": "Locatie gebruiken",
+      "heroPill": "Naar het kompas",
+      "enableHint": "Safari vraagt één keer om toegang tot beweging en richting. Tot dan is het noorden boven.",
+      "retry": "Opnieuw vragen",
+      "calibrate": "Kompas onzeker. Beweeg je telefoon een paar keer in de vorm van een 8.",
+      "locating": "Locatie wordt nauwkeuriger bepaald …",
+      "here": "Je bent er",
+      "toward": "richting {point}",
+      "points": {
+        "n": "noorden",
+        "ne": "noordoosten",
+        "e": "oosten",
+        "se": "zuidoosten",
+        "s": "zuiden",
+        "sw": "zuidwesten",
+        "w": "westen",
+        "nw": "noordwesten"
+      },
+      "pointsShort": {
+        "n": "N",
+        "ne": "NO",
+        "e": "O",
+        "se": "ZO",
+        "s": "Z",
+        "sw": "ZW",
+        "w": "W",
+        "nw": "NW"
+      },
+      "unpin": "Losmaken",
+      "tapHint": "Tik op een punt om die attractie vast te zetten.",
+      "unpinHint": "Nog een keer tikken maakt hem los.",
+      "allClosed": "Alle topattracties zijn nu gesloten.",
+      "demoEnd": "Demo stoppen",
+      "demoNoLocation": "Zonder locatie sta je vast op één plek in het park.",
+      "dialGroup": "Kompas, noorden boven"
     }
+  },
+  "location": {
+    "active": "Locatie aan",
+    "howTo": "Zo verander je dat",
+    "stepsDefault": "Tik of klik op het pictogram links van het adres en zet Locatie op ‘Toestaan’. Laad de pagina daarna opnieuw.",
+    "stepsIosSafari": "Tik links in de adresbalk op ‘aA’, dan op Website-instellingen → Locatie → Sta toe. Laad de pagina daarna opnieuw.",
+    "stepsMacSafari": "Kies in de menubalk Safari → Instellingen voor park.fan… en zet Locatie op ‘Sta toe’. Laad de pagina daarna opnieuw."
   },
   "geo": {
     "continent": "Continent",
@@ -1540,13 +1587,6 @@
     "viewAllResults": "Bekijk alle resultaten voor \"{query}\"",
     "searchPlaceholder": "Zoek parken, attracties, shows...",
     "at": "in {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attractie",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Locatie"
-    },
     "headings": {
       "park": "Parken ({count})",
       "attraction": "Attracties ({count})",
@@ -1566,6 +1606,17 @@
     "avgWait": "gem. {minutes} min",
     "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attractie",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Locatie",
+      "glossary": "Woordenboek"
+    },
+    "minQueryLength": "Typ minstens {count} tekens om te zoeken"
   },
   "languageBanner": {
     "message": "Deze site is ook beschikbaar in {language}",
@@ -1810,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Zoekopdracht wissen",
     "blogPosts": {
       "title": "{term} op het blog"
     },

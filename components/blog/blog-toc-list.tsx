@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { List } from 'lucide-react';
 import type { TocEntry } from '@/lib/blog/toc';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
 interface BlogTocListProps {
   entries: TocEntry[];
@@ -21,8 +22,14 @@ interface BlogTocListProps {
 export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const activeRef = useRef<HTMLAnchorElement | null>(null);
+  // The list sits in an aside that is `hidden lg:block` (`blog-post-page.tsx`). Below `lg` it
+  // spied anyway: a scroll listener every frame, a ResizeObserver on <body> re-measuring every
+  // heading, and a re-render of a list nobody could see at each new section. Rem, like Tailwind's
+  // own `lg`.
+  const visible = useMediaQuery('(min-width: 64rem)');
 
   useEffect(() => {
+    if (!visible) return;
     const ids = entries.map((e) => e.id);
     const offset = 120;
 
@@ -85,7 +92,7 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', scheduleMeasure);
     };
-  }, [entries]);
+  }, [entries, visible]);
 
   // Keep the active entry visible inside the sticky sidebar's own scroll box as
   // the reader moves through the article. On a long ToC the highlighted section

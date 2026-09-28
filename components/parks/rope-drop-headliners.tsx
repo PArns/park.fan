@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Sunrise, Moon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -26,7 +27,12 @@ function attractionHref(attraction: ParkAttraction, parkPath: string): string {
  * derived from the attractions' ropeDrop data (see isEveningBetter). Full
  * details live on each attraction's detail page.
  */
-export function RopeDropHeadliners({ headliners, attractions, parkPath }: RopeDropHeadlinersProps) {
+/** Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move. */
+export const RopeDropHeadliners = memo(function RopeDropHeadliners({
+  headliners,
+  attractions,
+  parkPath,
+}: RopeDropHeadlinersProps) {
   const t = useTranslations('parks.ropeDropSection');
 
   const items = headliners
@@ -122,4 +128,4 @@ export function RopeDropHeadliners({ headliners, attractions, parkPath }: RopeDr
       )}
     </section>
   );
-}
+});

@@ -28,7 +28,7 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
 import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
@@ -543,9 +543,6 @@ function buildLead({
   const parts: string[] = [];
 
   const monthName = getDateTimeFormat(locale, { month: 'long', timeZone: 'UTC' });
-  // A Monday, so adding 0…6 days walks Monday→Sunday. `dayOfWeek` is 0 = Sunday, which is why
-  // the offset is `(d - 1 + 7) % 7` — the same arithmetic `ParkStatsSection` sorts its rows by.
-  const weekdayName = getDateTimeFormat(locale, { weekday: 'long', timeZone: 'UTC' });
   const listFormat = new Intl.ListFormat(locale, { type: 'conjunction' });
 
   if (findings.busiestMonths.length > 0 && findings.busiestP50 != null) {
@@ -568,11 +565,7 @@ function buildLead({
     parts.push(
       sentence('leadQuietest', {
         count: findings.quietestDays.length,
-        days: listFormat.format(
-          findings.quietestDays.map((d) =>
-            weekdayName.format(new Date(Date.UTC(2024, 0, 1 + ((d - 1 + 7) % 7))))
-          )
-        ),
+        days: listFormat.format(findings.quietestDays.map((d) => weekdayName(d, locale))),
         minutes: roundWaitTo5(findings.quietestP50),
       })
     );

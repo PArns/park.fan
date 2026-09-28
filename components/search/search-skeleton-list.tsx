@@ -43,7 +43,7 @@ interface SkeletonItemProps {
 }
 
 /** One placeholder result row, in the box a real `SearchResultRow` occupies. */
-export function SkeletonItem({ width, className }: SkeletonItemProps) {
+function SkeletonItem({ width, className }: SkeletonItemProps) {
   return (
     <div
       className={cn('flex items-center gap-2.5 rounded-lg px-3 py-2 sm:gap-4 sm:py-3.5', className)}

@@ -6,8 +6,8 @@ import { useEffect, useRef } from 'react';
  * Motion for the header's mega-menu band: its columns settling in when the panel opens, and the
  * detail row settling in again each time it fills with a different country.
  *
- * This follows the rules `use-header-reveal.ts` arrived at, for the same reasons, plus one that is
- * specific to the band:
+ * This follows the rules the header's own reveal hook (`use-header-reveal.ts`, retired in PAR-170
+ * and since deleted) arrived at, for the same reasons, plus one that is specific to the band:
  *
  * - **CSS owns visibility, GSAP owns motion.** The timeline animates `y` and never `opacity`. The
  *   panel is shown and hidden by a `hidden` class, so a failed chunk, a blocked import or a

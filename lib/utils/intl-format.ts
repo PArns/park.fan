@@ -63,6 +63,22 @@ export function getNumberFormat(
   return formatter;
 }
 
+const relativeTimeFormatters = new Map<string, Intl.RelativeTimeFormat>();
+
+/** Cached {@link Intl.RelativeTimeFormat}. Same arguments → same instance. */
+export function getRelativeTimeFormat(
+  locale?: string | string[],
+  options?: Intl.RelativeTimeFormatOptions
+): Intl.RelativeTimeFormat {
+  const key = cacheKey(locale, options);
+  let formatter = relativeTimeFormatters.get(key);
+  if (!formatter) {
+    formatter = new Intl.RelativeTimeFormat(locale, options);
+    relativeTimeFormatters.set(key, formatter);
+  }
+  return formatter;
+}
+
 /** Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`. */
 export function formatTime(
   value: number | Date,
@@ -70,6 +86,24 @@ export function formatTime(
   options: Intl.DateTimeFormatOptions
 ): string {
   return getDateTimeFormat(locale, options).format(value);
+}
+
+/**
+ * The weekday name for a day index, 0 = Sunday … 6 = Saturday — the convention of the API's
+ * `DayOfWeekStat.dayOfWeek` and of `Date#getUTCDay`.
+ *
+ * Anchored in UTC on both ends: 2023-01-01 was a Sunday, and a UTC midnight formatted in the
+ * runtime's own zone is the day before for anyone west of Greenwich. Several copies of this built
+ * that date and formatted it without `timeZone`, which only held because the servers run on UTC.
+ */
+export function weekdayName(
+  dayOfWeek: number,
+  locale: string,
+  width: 'long' | 'short' = 'long'
+): string {
+  return getDateTimeFormat(locale, { weekday: width, timeZone: 'UTC' }).format(
+    Date.UTC(2023, 0, 1 + dayOfWeek)
+  );
 }
 
 /**

@@ -34,7 +34,7 @@ export const WET_MM_FLOOR = 0.1;
 /**
  * The condition groups the band paints, coarsest first.
  *
- * Deliberately fewer than the fifteen `getWeatherTranslationKey` distinguishes:
+ * Deliberately fewer than the conditions `getWeatherConfig` (`lib/utils/weather-utils.ts`) labels:
  * a 6 px column can carry maybe five colours a reader can tell apart, and
  * "drizzle" against "light rain" is not a decision anybody makes about a day at
  * a theme park. The labels beside it keep the full vocabulary.
@@ -44,7 +44,7 @@ export type WeatherRailGroup = 'clear' | 'cloud' | 'fog' | 'rain' | 'snow' | 'st
 /**
  * WMO weather code → the group the band paints.
  *
- * The same code ranges `getWeatherIcon` and `getWeatherTranslationKey` split on,
+ * The same code ranges `getWeatherConfig` splits on,
  * collapsed. A code this does not know is `cloud` rather than a hole: the band
  * is continuous by construction, and a gap in it would read as a gap in the day.
  *

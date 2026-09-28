@@ -15,7 +15,7 @@ interface WaitTimeSparklineProps {
 
 export function WaitTimeSparkline({ history, timezone, className }: WaitTimeSparklineProps) {
   const locale = useLocale();
-  const browserNow = useBrowserNow(null);
+  const browserNow = useBrowserNow();
   const now = browserNow ? browserNow.getTime() : 0;
 
   const points: SparklinePoint[] = useMemo(() => {

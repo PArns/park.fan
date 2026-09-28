@@ -142,6 +142,12 @@ function dispatchFavoritesChanged(): void {
   }
 }
 
+/** `useSyncExternalStore` subscriber for the cookie: every add and remove above announces itself. */
+export function subscribeToFavorites(onChange: () => void): () => void {
+  window.addEventListener('favorites-changed', onChange);
+  return () => window.removeEventListener('favorites-changed', onChange);
+}
+
 /**
  * Add a favorite.
  * Updates cookies and dispatches immediately; API sync runs in background.

@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Megaphone } from 'lucide-react';
@@ -26,7 +27,8 @@ import type { NewsMenu } from '@/lib/navigation/news-menu';
  * `navigation` for the strings, never `blog` — see `BlogMenuPanel` for the 3 KB that one
  * `useTranslations('blog')` in the header chrome costs every page.
  */
-export function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
+/** Memoised for the same reason as `ParksMenuPanel`. */
+export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
   const t = useTranslations('navigation');
   const [lead, ...wire] = items;
   if (!lead) return null;
@@ -130,4 +132,4 @@ export function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
       </div>
     </div>
   );
-}
+});

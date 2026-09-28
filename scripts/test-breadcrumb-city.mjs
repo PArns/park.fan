@@ -108,6 +108,18 @@ const testCases = [
       '/parks/europe/germany/bruehl/phantasialand',
     ]),
   },
+  // First among the cases that fetch: the process keeps the last continents document it read and
+  // answers from it when the API fails (`getContinentsOrLastGood`), so "unreachable and nothing
+  // read yet" can only be tested before anything has been read.
+  {
+    name: 'cityHasOwnPage: an unreachable API, with nothing read before, keeps the crumb',
+    run: () =>
+      withFetch(
+        async () => json({ error: 'boom' }, 500),
+        () => cityHasOwnPage('europe', 'germany', 'bruehl')
+      ),
+    expected: true,
+  },
   {
     name: 'cityHasOwnPage: one park is no page',
     run: () =>
@@ -136,13 +148,13 @@ const testCases = [
     expected: true,
   },
   {
-    name: 'cityHasOwnPage: an unreachable API keeps the crumb',
+    name: 'cityHasOwnPage: an unreachable API answers from the last document read',
     run: () =>
       withFetch(
         async () => json({ error: 'boom' }, 500),
         () => cityHasOwnPage('europe', 'germany', 'bruehl')
       ),
-    expected: true,
+    expected: false,
   },
 ];
 

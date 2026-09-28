@@ -249,8 +249,9 @@ close to a pure hit — the old per-visitor `no-store` calls could not collapse 
 The homepage's in-park compass (`ParkCompass`, under the hero) points at the headliners, and
 `/api/nearby` sends each ride's distance and wait with no coordinates. The park payload has them,
 at ~88 KB on Phantasialand for 40 pairs of numbers. `/api/parks/<geo>/<park>/positions` returns
-only `{ slug, latitude, longitude }` per ride: **2.8 KB raw, 739 B brotli**, read from the
-day-cached park snapshot and held a day by the CDN. The client asks once per tab
+only `{ slug, latitude, longitude }` per ride and the park's magnetic declination (one number,
+for the compass to point at true north): **2.9 KB raw, 751 B brotli**, read from the day-cached
+park snapshot and held a day by the CDN. The client asks once per tab
 (`useRidePositions`, `staleTime: Infinity`), and only a visitor the nearby answer places inside a
 park ever mounts it.
 

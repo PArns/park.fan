@@ -1,4 +1,5 @@
 import { toSlug } from '../../_lib/media-upload';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 /**
  * What a photograph taken in the field is called, and what it is tagged with.
@@ -79,12 +80,7 @@ function parkHour(timezone: string | null, when: Date): number | null {
 /** `2026-08-29` in the park's own day, for `shotAt` when EXIF carries nothing. */
 export function parkDate(timezone: string | null, when: Date = new Date()): string | null {
   try {
-    return new Intl.DateTimeFormat('en-CA', {
-      timeZone: timezone ?? undefined,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(when);
+    return parkDayOf(when, timezone ?? undefined);
   } catch {
     return null;
   }

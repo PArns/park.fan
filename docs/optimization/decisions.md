@@ -1059,3 +1059,38 @@ is still an invocation — so this is a pure transfer saving.
 **Verification:** `pnpm lint`, `pnpm format:check`, `pnpm build` (Node 24, exit 0),
 `pnpm test:calendar-month` (60 cases, 11 of them new and pinning both window edges),
 `pnpm test:calendar`, `pnpm test:calendar-park-projection`, `pnpm test:content-changes`.
+
+## 2026-09-28 — ACCEPTED: less CPU per render, fewer invocations for shared answers
+
+**Lever:** Fluid Active CPU per invocation and function invocations. **Branch:**
+`claude/codebase-doppelpaints-cpu-xg2cxt` (PR #637). The Vercel MCP still had no access to the team,
+so nothing here is read off the Compute tab; every number is measured per call against live
+payloads, and the effect belongs in **Compute → Active CPU per invocation**, not in the CDN tab (see
+the traps in README.md).
+
+**Per render on the force-dynamic routes** (the ~90 % of park, ride and calendar requests that
+reach Vercel):
+
+| What                                                              | Before              | After           |
+| ----------------------------------------------------------------- | ------------------- | --------------- |
+| Glossary matcher, per `parseGlossarySegments` call (≤5 per ride)  | 453–550 µs          | 16–19 µs        |
+| Park payload trim, Europa-Park shell                              | 638 µs              | 115 µs          |
+| Shell + park-page trim                                            | 737 µs              | 171 µs          |
+| Continents document: menu + city counts + slug index, per request | 2.0–2.3 ms          | 0.19–0.29 ms    |
+| Geo tree for the park slug index                                  | second 159 KB parse | none (layout's) |
+
+The continents fetch still runs in every render: skipping it with a TTL memo would have dropped the
+page's `revalidate` window and `geo` tag on every render after the first in a worker (patch-fetch
+records them per fetch). Instead the parsed document is reused while the ETag is unchanged and the
+three derivations are keyed on the document. `initialRevalidateSeconds` is identical on all 2,655
+prerendered routes before and after.
+
+**Invocations.** `/api/parks/near` (one URL per park) and `/api/analytics/{ticker,realtime,geo-live}`
+(one URL for every homepage and hub visitor) answered `no-store` although they are the same for
+everybody; they carry the 60 s window of `/api/parks/live` now. Expect the analytics URLs to collapse
+well and `near` only on busy parks. Not measured yet: read the invocation count of both before and
+after the deploy.
+
+**Failures stopped inheriting windows.** Every 5xx of the park proxy, the search and hourly-weather
+errors and the new 502s answer `no-store`; a failed OG card is held 5 minutes, not 30 days. See
+[An API route passes only slugs upstream, and says a failure is one](../rules/an-api-route-passes-only-slugs-upstream.md).

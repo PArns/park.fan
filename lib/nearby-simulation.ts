@@ -46,6 +46,10 @@ const SIM_PRESETS: Record<string, SimLocation> = {
   efteling: { latitude: 51.6498, longitude: 5.0489 },
   europapark: { latitude: 48.2682, longitude: 7.7216 },
   disneylandparis: { latitude: 48.8722, longitude: 2.7758 },
+  // Two parks on American time, open while the European ones are shut for the night, so the
+  // compass demo shows live waits at any hour. Both are the park's hub in front of the castle.
+  disneylandanaheim: { latitude: 33.8121, longitude: -117.919 },
+  magickingdom: { latitude: 28.4177, longitude: -81.5812 },
 };
 
 /** Park used for the generic `in_park` / `in` aliases — known to return headliners. */

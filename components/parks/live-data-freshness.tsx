@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { AlertTriangle, RotateCw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,7 @@ import { liveDataHint, newestQueueUpdate } from '@/lib/utils/live-data-freshness
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 interface LiveDataFreshnessProps {
   /** The park as `TabsWithHash` has it. Only read before the first poll answers. */
@@ -42,7 +44,8 @@ const DAY_AND_TIME: Intl.DateTimeFormatOptions = {
  * instead of taking the query state as props, because `TabsWithHash` is memoized precisely so the
  * attraction grid does not re-render on every `isFetching` flip; only this row does.
  */
-export function LiveDataFreshness({
+/** Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move. */
+export const LiveDataFreshness = memo(function LiveDataFreshness({
   park,
   todayIso,
   continent,
@@ -74,9 +77,9 @@ export function LiveDataFreshness({
 
   // The date joins the time once the value is from another day in the park: the seed of a page
   // cached overnight, or a park shut for the season whose queues last moved in April.
-  const today = now === null ? todayIso : (parkDayOf(now, park.timezone) ?? todayIso);
+  const today = now === null ? todayIso : (parkDayOrNull(now, park.timezone) ?? todayIso);
   const format =
-    asOf !== null && parkDayOf(asOf, park.timezone) !== today ? DAY_AND_TIME : TIME_ONLY;
+    asOf !== null && parkDayOrNull(asOf, park.timezone) !== today ? DAY_AND_TIME : TIME_ONLY;
 
   return (
     <div
@@ -119,12 +122,12 @@ export function LiveDataFreshness({
       )}
     </div>
   );
-}
+});
 
-/** `YYYY-MM-DD` of an instant in the park's timezone, or `null` for an unusable timezone. */
-function parkDayOf(ms: number, timeZone: string): string | null {
+/** {@link parkDayOf}, or `null` for an unusable timezone. */
+function parkDayOrNull(ms: number, timeZone: string): string | null {
   try {
-    return new Date(ms).toLocaleDateString('en-CA', { timeZone });
+    return parkDayOf(ms, timeZone);
   } catch {
     return null;
   }

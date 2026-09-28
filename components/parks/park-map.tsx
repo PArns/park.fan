@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import type L from 'leaflet';
@@ -25,16 +25,25 @@ interface ZoomTrackerProps {
   onUserZoom: () => void;
 }
 
+/** Maps whose next zoom is one `MapViewController` started itself. */
+const programmaticZoom = new WeakSet<L.Map>();
+
+/**
+ * Reports a zoom the VISITOR made. Leaflet fires `zoomstart`/`zoomend` for `setView` as well, so
+ * the controller's own 17 → 19 step for an in-park visitor or a `#map-show-*` link used to count
+ * as the visitor taking control, and the map stopped following their position from then on.
+ */
 function ZoomTracker({ onUserZoom }: ZoomTrackerProps) {
   const map = useMap();
   const userInteractedRef = useRef(false);
 
   useEffect(() => {
     const handleZoomStart = () => {
-      userInteractedRef.current = true;
+      userInteractedRef.current = !programmaticZoom.has(map);
     };
 
     const handleZoomEnd = () => {
+      programmaticZoom.delete(map);
       if (userInteractedRef.current) {
         onUserZoom();
         userInteractedRef.current = false;
@@ -64,8 +73,14 @@ function MapViewController({ center, zoom, userHasZoomed }: MapViewControllerPro
   const hasSetInitialView = useRef(false);
 
   useEffect(() => {
+    // Only a view that changes the zoom fires zoom events for `ZoomTracker` to misread.
+    const markIfZooming = () => {
+      if (map.getZoom() !== zoom) programmaticZoom.add(map);
+    };
+
     // Initial view set
     if (!hasSetInitialView.current) {
+      markIfZooming();
       map.setView(center, zoom, { animate: false });
       hasSetInitialView.current = true;
       return;
@@ -73,6 +88,7 @@ function MapViewController({ center, zoom, userHasZoomed }: MapViewControllerPro
 
     // Reactive updates - ONLY if user hasn't taken control
     if (!userHasZoomed) {
+      markIfZooming();
       map.setView(center, zoom, { animate: true, duration: 1.5 });
     }
   }, [map, center, zoom, userHasZoomed]);
@@ -112,6 +128,8 @@ export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
   const tCommon = useTranslations('common');
   const [userHasZoomed, setUserHasZoomed] = useState(false);
+  // Stable, so `ZoomTracker` does not re-bind its two map listeners on every render.
+  const markUserZoom = useCallback(() => setUserHasZoomed(true), []);
   // Shared once-per-minute clock (paused in hidden tabs) re-renders the relative
   // time labels in the popups — replaces a private always-on 60 s interval.
   useMinuteNow();
@@ -208,7 +226,7 @@ export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
           maxZoom={23}
         />
 
-        <ZoomTracker onUserZoom={() => setUserHasZoomed(true)} />
+        <ZoomTracker onUserZoom={markUserZoom} />
         <MapViewController
           center={center}
           zoom={focusedShow || isInPark ? 19 : 17}

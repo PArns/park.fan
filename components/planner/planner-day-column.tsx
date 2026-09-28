@@ -334,10 +334,15 @@ export function PlannerDayColumn({
   // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
-  const grid = useMemo(
-    () => growGridForSpans(buildDayGrid(openHour, closeHour, pxPerMin), spans),
-    [openHour, closeHour, pxPerMin, spans]
+  // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
+  // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
+  // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
+  // grid itself when the plan fits, so the identity now moves only with the axis.
+  const baseGrid = useMemo(
+    () => buildDayGrid(openHour, closeHour, pxPerMin),
+    [openHour, closeHour, pxPerMin]
   );
+  const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
   const dayFacts = usePlannerDayFacts(park, open);
   const prefs = date ? park?.days[date]?.prefs : undefined;
@@ -352,17 +357,23 @@ export function PlannerDayColumn({
     parkSlug: parkSlug ?? '',
     enabled: open && isToday && Boolean(park),
   });
-  const liveWaits = liveWaitsFor(livePark);
-  const closedNow = closedNowFor(livePark);
+  // Memoised on the snapshot: the grid's layout and show memos key on these, and a fresh Map and
+  // Set on every column render rebuilt the lanes, the legs and the show positions each time.
+  const liveWaits = useMemo(() => liveWaitsFor(livePark), [livePark]);
+  const closedNow = useMemo(() => closedNowFor(livePark), [livePark]);
 
   const showsVisible = useSyncExternalStore(
     plannerShowsVisible.subscribe,
     plannerShowsVisible.getSnapshot,
     plannerShowsVisible.getServerSnapshot
   );
-  const showLines = day
-    ? showLinesFor(day.shows, showDayHours(day.context.openHour, day.context.closeHour))
-    : null;
+  const showLines = useMemo(
+    () =>
+      day
+        ? showLinesFor(day.shows, showDayHours(day.context.openHour, day.context.closeHour))
+        : null,
+    [day]
+  );
 
   const plannedDates = park
     ? Object.values(park.days)

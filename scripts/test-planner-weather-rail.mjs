@@ -124,7 +124,7 @@ function day(overrides = {}) {
 }
 
 // ── 5. The code groups ───────────────────────────────────────────────────────
-// The same ranges `getWeatherIcon` and `getWeatherTranslationKey` split on, one
+// The same ranges `getWeatherConfig` (lib/utils/weather-utils.ts) splits on, one
 // layer coarser. A code the map does not know is `cloud` rather than a hole,
 // because the band is continuous by construction.
 test('0 is clear', weatherRailGroup(0), 'clear');

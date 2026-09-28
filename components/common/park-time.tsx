@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useBrowserTimezone } from '@/lib/hooks/use-mounted';
+import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface ParkTimeProps {
   /** ISO datetime string from the API */
@@ -35,7 +36,10 @@ export function ParkTime({
   const date = new Date(isoTime);
   const suffix = showSuffix ? tCommon('timeSuffix') : '';
 
-  const parkTimeStr = date.toLocaleTimeString(locale, {
+  // Cached formatters (`lib/utils/intl-format.ts`): this renders once per park card footer, per
+  // attraction best-time row and twice per open calendar day, and `toLocaleTimeString` with
+  // options builds a new formatter on every call.
+  const parkTimeStr = formatTime(date, locale, {
     hour: '2-digit',
     minute: '2-digit',
     timeZone: parkTimezone,
@@ -52,13 +56,13 @@ export function ParkTime({
     );
   }
 
-  const browserTimeStr = date.toLocaleTimeString(locale, {
+  const browserTimeStr = formatTime(date, locale, {
     hour: '2-digit',
     minute: '2-digit',
   });
 
   const shortZone =
-    new Intl.DateTimeFormat(locale, {
+    getDateTimeFormat(locale, {
       timeZone: browserTimezone,
       timeZoneName: 'short',
     })

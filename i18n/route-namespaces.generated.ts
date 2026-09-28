@@ -29,6 +29,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'attractions',
     'home',
     'homeStory.bestTime',
+    'location',
     'nearby',
     'parkCard',
     'parks',
@@ -99,6 +100,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/parks/[continent]/[country]/[city]': ['nearby', 'parkCard'],
   '/parks/[continent]/[country]/[city]/[park]': [
     'attractions',
+    'location',
     'nearby',
     'parkCard',
     'parks',

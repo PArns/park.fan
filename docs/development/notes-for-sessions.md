@@ -56,10 +56,11 @@ Reminders and context for AI or human sessions working on the codebase.
     **API population timing** — bootstrap job runs 90 s after server start, then daily cron at 02:30. Fields absent from API response = not yet populated, treat as non-seasonal.
 
 14. **Shared hooks (`lib/hooks/use-mounted.ts`)** — Use these instead of raw `useState + useEffect` for hydration-safe client state:
-    - `useMounted()` → `boolean`, true after hydration
-    - `useBrowserTimezone()` → browser timezone string after mount
-    - `useBrowserNow(null)` → `Date | null`, one-shot mount value (no polling).
-    - For a **repeating minute tick**, do NOT pass an interval to `useBrowserNow` — use `useMinuteNow()` / `useMinuteNowDate()` (`lib/hooks/use-minute-now.ts`): one shared, visibility-paused timer for all subscribers instead of a private `setInterval` per component.
+    - `useMounted()` → `boolean`, false on the server and while hydrating, true after
+    - `useBrowserTimezone()` → browser timezone string, `null` on the server and while hydrating
+    - `useBrowserNow()` → `Date | null`, one-shot mount value (no polling).
+    - For a **repeating minute tick**, use `useMinuteNow()` / `useMinuteNowDate()` (`lib/hooks/use-minute-now.ts`): one shared, visibility-paused timer for all subscribers instead of a private `setInterval` per component. `useMinuteNowDate(open)` takes no subscription while `open` is false.
+    - All of them read through `useSyncExternalStore`, never a `setTimeout(() => setX(…), 0)` in an effect: that shape paints the fallback first and the value in a second commit on **every** mount, client-side navigations included, and a gate nested in another gate paid it once per level. A component mounted after hydration reads the value on its first render.
 
     **`lib/i18n/helpers.ts` is server-only** — it transitively imports `fs` via `lib/i18n/logger.ts`. Never import it in client components; use local inline helpers or `useTranslations()` instead.
 

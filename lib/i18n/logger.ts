@@ -23,6 +23,15 @@ function loadNodeModules(): { fs: FsModule; path: PathModule } | null {
   }
 }
 
+/**
+ * Whether missing keys go to `translation-missing.json`: during `next build` only.
+ *
+ * It used to be every production server, which put a synchronous `writeFileSync` of the whole log
+ * on the render path the first time an instance met an unknown geo slug — and on Vercel's
+ * read-only filesystem that write throws and logs an error each time.
+ */
+const LOGS_TO_FILE = process.env.NEXT_PHASE === 'phase-production-build';
+
 interface MissingTranslation {
   key: string;
   namespace?: string;
@@ -43,7 +52,7 @@ class TranslationLogger {
     this.logPath = node ? node.path.join(process.cwd(), 'translation-missing.json') : '';
 
     // Load existing log if in build mode
-    if (node && this.isServer && process.env.NODE_ENV === 'production') {
+    if (node && this.isServer && LOGS_TO_FILE) {
       try {
         if (node.fs.existsSync(this.logPath)) {
           const existing = JSON.parse(node.fs.readFileSync(this.logPath, 'utf-8'));
@@ -90,7 +99,7 @@ class TranslationLogger {
     }
 
     // Write to file during build
-    if (this.isServer && process.env.NODE_ENV === 'production') {
+    if (this.isServer && LOGS_TO_FILE) {
       this.saveToFile();
     }
   }

@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
 import { ChevronRight, Crown, Loader2, Sparkles, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
@@ -13,7 +13,7 @@ import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
-import { ParkHolidayRow } from './park-holiday-row';
+import { ParkHolidayBand } from './park-holiday-row';
 import { WeatherWarningBanner } from './weather-warning-banner';
 import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -28,6 +28,7 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
 import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-context';
@@ -182,10 +183,10 @@ export function ParkTodayPanel({
   const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
 
-  const browserNow = useBrowserNow(60_000);
+  const browserNow = useMinuteNowDate();
   const { data: calendar } = useParkBestDaysCalendar({ continent, country, city, parkSlug });
   const todayStr = useMemo(
-    () => (browserNow ? browserNow.toLocaleDateString('en-CA', { timeZone: timezone }) : null),
+    () => (browserNow ? parkDayOf(browserNow, timezone) : null),
     [browserNow, timezone]
   );
 
@@ -213,6 +214,7 @@ export function ParkTodayPanel({
     from: queryDate ?? '',
     to: queryDate ?? '',
     enabled: !!queryDate && (releasedLast || detailDate !== null),
+    loadLast: true,
   });
   const detailDay = queryDate
     ? (detailCalendar?.days.find((d) => d.date === queryDate) ?? null)
@@ -310,8 +312,8 @@ export function ParkTodayPanel({
   );
 
   // The next few showtimes across the whole park, not per show: the question here is what starts
-  // next, not when a given show runs. Needs the clock, so it stays empty until `useBrowserNow`
-  // lands rather than being answered during render (react-hooks/purity).
+  // next, not when a given show runs. Needs the clock, so it stays empty until the shared minute
+  // clock has a reading rather than being answered during render (react-hooks/purity).
   const nextShows = useMemo(() => {
     if (!browserNow) return [];
     const nowMs = browserNow.getTime();
@@ -1055,12 +1057,10 @@ export function ParkTodayPanel({
           Measured on Lotte World Adventure, which had a bridge day that day: 96 px with
           JavaScript off, 96 px settled, same chips. Reserving a box for it would hold empty space
           on the 147 parks that have no holiday today against a shift that does not happen. */}
-      <ParkHolidayRow
+      <ParkHolidayBand
+        holiday={sched.holiday}
         initialData={initialData}
-        continent={continent}
         country={country}
-        city={city}
-        parkSlug={parkSlug}
         className="border-border/50 border-t px-5 py-3 empty:hidden"
       />
 

@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Bereiche der Seite",
+    "opensInNewTab": "öffnet in neuem Tab",
     "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 200 Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
     "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Sprache ändern",
+    "mobileNavigation": "Mobile Navigation",
+    "menu": "Menü",
     "home": "Startseite",
     "parks": "Alle Parks",
     "continents": "Kontinente",
@@ -603,6 +608,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Nach rechts scrollen",
+      "scrollLeft": "Nach links scrollen",
       "clear": "Klarer Himmel",
       "mainlyClear": "Meist klar",
       "partlyCloudy": "Teilweise bewölkt",
@@ -1442,16 +1449,56 @@
       "w": "W",
       "enable": "Kompass einschalten",
       "northUp": "Norden ist oben",
-      "facing": "Der Pfeil zeigt, wohin du schaust",
+      "facing": "Der blaue Kegel zeigt, wohin du schaust",
       "denied": "Kompass nicht freigegeben. Norden ist oben.",
-      "coarse": "GPS ungenau (± {meters} m)",
+      "coarse": "Standort ungenau (± {meters} m). Die Pfeile können danebenliegen.",
       "ahead": "Vor dir",
       "nearest": "Am nächsten",
-      "picked": "Ausgewählt",
-      "closed": "Geschlossen",
-      "demo": "Demo: {park} um dich herum",
-      "demoLocation": "Standort nutzen"
+      "picked": "Fixiert",
+      "demo": "Demo: {park} liegt jetzt um deinen Standort.",
+      "demoLocation": "Standort nutzen",
+      "heroPill": "Zum Kompass",
+      "enableHint": "Safari fragt einmal nach Zugriff auf Bewegung und Ausrichtung. Bis dahin ist Norden oben.",
+      "retry": "Nochmal fragen",
+      "calibrate": "Kompass unsicher. Beweg das Handy ein paar Mal in Form einer 8.",
+      "locating": "Standort wird genauer bestimmt …",
+      "here": "Du bist da",
+      "toward": "Richtung {point}",
+      "points": {
+        "n": "Norden",
+        "ne": "Nordosten",
+        "e": "Osten",
+        "se": "Südosten",
+        "s": "Süden",
+        "sw": "Südwesten",
+        "w": "Westen",
+        "nw": "Nordwesten"
+      },
+      "pointsShort": {
+        "n": "N",
+        "ne": "NO",
+        "e": "O",
+        "se": "SO",
+        "s": "S",
+        "sw": "SW",
+        "w": "W",
+        "nw": "NW"
+      },
+      "unpin": "Fixierung lösen",
+      "tapHint": "Tipp auf einen Punkt, um die Bahn zu fixieren.",
+      "unpinHint": "Nochmal tippen löst die Fixierung.",
+      "allClosed": "Alle Top-Attraktionen haben gerade geschlossen.",
+      "demoEnd": "Demo beenden",
+      "demoNoLocation": "Ohne Standort stehst du fest an einem Punkt im Park.",
+      "dialGroup": "Kompass, Norden oben"
     }
+  },
+  "location": {
+    "active": "Standort aktiv",
+    "howTo": "So änderst du das",
+    "stepsDefault": "Tippe oder klicke links neben der Adresse auf das Symbol der Seite und stelle Standort auf „Zulassen“. Danach die Seite neu laden.",
+    "stepsIosSafari": "Tippe links in der Adressleiste auf „aA“, dann auf Website-Einstellungen → Standort → Erlauben. Danach die Seite neu laden.",
+    "stepsMacSafari": "Wähle in der Menüleiste Safari → Einstellungen für park.fan … und stelle Standort auf „Erlauben“. Danach die Seite neu laden."
   },
   "geo": {
     "continent": "Kontinent",
@@ -1540,13 +1587,6 @@
     "viewAllResults": "Alle Ergebnisse für „{query}“ anzeigen",
     "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
     "at": "in {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attraktion",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Ort"
-    },
     "headings": {
       "park": "Parks ({count})",
       "attraction": "Attraktionen ({count})",
@@ -1566,6 +1606,17 @@
     "avgWait": "Ø {minutes} Min.",
     "attractionsOpen": "{open}/{total} Attraktionen offen",
     "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attraktion",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Ort",
+      "glossary": "Wörterbuch"
+    },
+    "minQueryLength": "Mindestens {count} Zeichen eingeben, um zu suchen"
   },
   "languageBanner": {
     "message": "Diese Seite gibt’s auch auf {language}",
@@ -1810,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Suche löschen",
     "blogPosts": {
       "title": "{term} im Blog"
     },

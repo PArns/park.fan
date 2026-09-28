@@ -62,12 +62,25 @@ export function Sparkline({
   // history grid mounts one sparkline per day (~31), and each global listener ran
   // getBoundingClientRect() on EVERY pointer move anywhere on the page — 31 forced layout
   // reads per mousemove. Local handlers only fire while the cursor is over this sparkline.
+  //
+  // The box is measured once per hover, on enter, rather than on every move: the tooltip's own
+  // position is written between two moves, so a read per move was a forced layout per move. Only
+  // `left` and `width` are used, and scrolling the page vertically moves neither.
+  const boxRef = useRef<{ left: number; width: number } | null>(null);
+  const handleMouseEnter = useCallback(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    boxRef.current = { left: rect.left, width: rect.width };
+  }, []);
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (points.length === 0) return;
       const el = containerRef.current;
       if (!el) return;
-      const rect = el.getBoundingClientRect();
+      if (!boxRef.current) handleMouseEnter();
+      const rect = boxRef.current;
+      if (!rect) return;
       const xRange = xMax - xMin || 1;
       const hoverX = xMin + ((e.clientX - rect.left) / rect.width) * xRange;
       let found = points[0];
@@ -77,28 +90,34 @@ export function Sparkline({
       }
       setActivePoint({ ...found, clientX: e.clientX, clientY: e.clientY });
     },
-    [points, xMin, xMax]
+    [points, xMin, xMax, handleMouseEnter]
   );
-  const handleMouseLeave = useCallback(() => setActivePoint(null), []);
+  const handleMouseLeave = useCallback(() => {
+    boxRef.current = null;
+    setActivePoint(null);
+  }, []);
+
+  // The path depends on the data only; the hover re-renders on every move to place the tooltip.
+  const pathD = useMemo(() => {
+    const xRange = xMax - xMin || 1;
+    const yRange = yMax - yMin || 1;
+    const getX = (x: number) => ((x - xMin) / xRange) * 100;
+    const getY = (value: number) => 100 - ((value - yMin) / yRange) * 100;
+    let d = '';
+    points.forEach((p, i) => {
+      const x = getX(p.x);
+      const y = getY(p.value);
+      if (i === 0) {
+        d += `M ${x},${y}`;
+      } else {
+        d += ` L ${x},${getY(points[i - 1].value)}`;
+        d += ` L ${x},${y}`;
+      }
+    });
+    return d;
+  }, [points, xMin, xMax, yMin, yMax]);
 
   if (points.length === 0) return null;
-
-  const xRange = xMax - xMin || 1;
-  const yRange = yMax - yMin || 1;
-  const getX = (x: number) => ((x - xMin) / xRange) * 100;
-  const getY = (value: number) => 100 - ((value - yMin) / yRange) * 100;
-
-  let pathD = '';
-  points.forEach((p, i) => {
-    const x = getX(p.x);
-    const y = getY(p.value);
-    if (i === 0) {
-      pathD += `M ${x},${y}`;
-    } else {
-      pathD += ` L ${x},${getY(points[i - 1].value)}`;
-      pathD += ` L ${x},${y}`;
-    }
-  });
 
   const tooltip = activePoint && formatTooltip ? formatTooltip(activePoint) : null;
 
@@ -106,6 +125,7 @@ export function Sparkline({
     <div
       ref={containerRef}
       className={`relative h-full w-full ${className}`}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
