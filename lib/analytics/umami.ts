@@ -49,6 +49,9 @@
  * - show_follow_add: source
  * - show_follow_remove: (no properties)
  * - blog_toast_opened: (no properties) — the "new since your last visit" toast was followed
+ * - compass_viewed / compass_heading_on: (no properties) — once per page, see trackCompassViewed
+ * - compass_ride_pinned / compass_pill_clicked: (no properties)
+ * - compass_ride_opened: from
  * - web-vital-inp: value, target, phase, path (only for non-`good` samples, see WebVitalsReporter)
  */
 
@@ -126,6 +129,13 @@ export const UMAMI_EVENTS = {
   RIDE_ALERT_REMOVED: 'ride_alert_removed',
   SHOW_FOLLOW_ADD: 'show_follow_add',
   SHOW_FOLLOW_REMOVE: 'show_follow_remove',
+
+  // The in-park compass under the homepage hero — whether it is used, see trackCompassViewed
+  COMPASS_VIEWED: 'compass_viewed',
+  COMPASS_HEADING_ON: 'compass_heading_on',
+  COMPASS_RIDE_PINNED: 'compass_ride_pinned',
+  COMPASS_RIDE_OPENED: 'compass_ride_opened',
+  COMPASS_PILL_CLICKED: 'compass_pill_clicked',
 } as const;
 
 // Event property types
@@ -373,6 +383,52 @@ export function trackPlanDayStarted(parkName: string): void {
  */
 export function trackPlanOptimized(parkName: string): void {
   trackEvent(UMAMI_EVENTS.PLAN_OPTIMIZED, { parkName });
+}
+
+/**
+ * The in-park compass came on screen, once per page view.
+ *
+ * The compass's five events answer one question, whether anybody standing in a park uses it, and
+ * they are a funnel: it was seen (this), the phone's compass ran (`compass_heading_on`), a ride was
+ * pinned (`compass_ride_pinned`), a ride was opened from it (`compass_ride_opened`), and the hero's
+ * „Zum Kompass" was how they got there (`compass_pill_clicked`). Four carry no property at all and
+ * one carries one.
+ *
+ * Deliberately not sent: `parkName` (the reach is the question, not which park; the in-park
+ * `nearby_parks_loaded` already names it), the platform (Umami records the OS, and on iOS
+ * `compass_heading_on` against `compass_viewed` is the rate at which „Kompass einschalten" gets
+ * tapped), every turn of the phone, every change of the ride ahead, and letting go of a pin. Nothing
+ * fires in the `?sim=` demo, which is the team testing on its own phones.
+ *
+ * Cost: `compass_viewed` and `compass_heading_on` are one row each, once per page view of an in-park
+ * visitor who scrolls to the compass, a small share of the homepage's traffic; the clicks are one or
+ * two rows each and rarer still.
+ */
+export function trackCompassViewed(): void {
+  trackEvent(UMAMI_EVENTS.COMPASS_VIEWED);
+}
+
+/** The phone's compass started delivering, once per page view (on iOS: after the tap). */
+export function trackCompassHeadingOn(): void {
+  trackEvent(UMAMI_EVENTS.COMPASS_HEADING_ON);
+}
+
+/** A tap on a marker pinned a ride. Letting go of it is not tracked. */
+export function trackCompassRidePinned(): void {
+  trackEvent(UMAMI_EVENTS.COMPASS_RIDE_PINNED);
+}
+
+/**
+ * A ride page was opened from the compass. ONE property, `from`, because the bar under the dial and
+ * the list below it are two designs of the same link and which one people follow is a decision.
+ */
+export function trackCompassRideOpened(from: 'bar' | 'list'): void {
+  trackEvent(UMAMI_EVENTS.COMPASS_RIDE_OPENED, { from });
+}
+
+/** The hero's „Zum Kompass" pill was tapped. */
+export function trackCompassPillClicked(): void {
+  trackEvent(UMAMI_EVENTS.COMPASS_PILL_CLICKED);
 }
 
 export function trackGlossaryTermViewed(props: GlossaryTermViewedProps): void {
