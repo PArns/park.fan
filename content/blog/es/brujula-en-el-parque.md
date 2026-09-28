@@ -59,11 +59,16 @@ brújula.
 
 ## Cuándo aparece la brújula
 
-No hay nada que configurar. Si abres la página de inicio estando dentro de un
-parque, park.fan te saluda con el nombre del parque, y debajo del saludo hay
-ahora una brújula con las atracciones estrella a tu alrededor. En el recuadro
-del saludo está además el botón «Ir a la brújula», por si no quieres bajar hasta
-ella.
+Si abres la página de inicio estando dentro de un parque, park.fan te saluda con
+el nombre del parque, y debajo del saludo hay ahora una brújula con las
+atracciones estrella a tu alrededor. En el recuadro del saludo está además el
+botón «Ir a la brújula», por si no quieres bajar hasta ella.
+
+Para el saludo y la brújula, la página necesita tu ubicación, y solo la pide
+cuando tocas «Habilitar ubicación». Si ya le has dado permiso permanente a
+park.fan en el navegador, la brújula aparece enseguida. Si no, Safari en el
+iPhone vuelve a preguntar cada vez que recargas, y para permitirlo de forma
+permanente hay que ir a aA y los ajustes del sitio web.
 
 ![La página de inicio de park.fan en un móvil en Disneyland Park, en Anaheim, con el botón «Ir a la brújula» encima del saludo. | El botón solo aparece cuando park.fan te encuentra dentro de un parque. Te lleva un poco más abajo, hasta la brújula.](/media/kompass/kompass-start-es.webp)
 
@@ -185,7 +190,9 @@ Donde más sirve la brújula es en un parque, pero puedes verla desde el sofá.
 Añade `?sim=compass` a la dirección de la página de inicio y park.fan coloca el
 Phantasialand a tu alrededor, con los tiempos de espera reales del día:
 [park.fan/es?sim=compass](/es?sim=compass). Una franja encima de la brújula
-avisa de que es una demo y tiene un enlace para salir de ella.
+avisa de que es una demo y tiene un enlace para salir de ella. Si tocas «Usar mi
+ubicación» en ella, el parque se coloca alrededor de donde estás de verdad; si
+no, te quedas en un punto fijo del parque.
 
 Para otros parques se añade el nombre tras dos puntos, por ejemplo
 `?sim=compass:efteling`; también hay `compass:europapark` y

@@ -60,10 +60,16 @@ Kompass.
 
 ## Wann der Kompass erscheint
 
-Einstellen musst du nichts. Öffnest du die Startseite, während du in einem Park
-stehst, begrüßt dich park.fan mit dem Namen des Parks, und unter der Begrüßung
-liegt jetzt ein Kompass mit den Top-Attraktionen um dich herum. Oben im Kasten
-gibt es dazu den Knopf „Zum Kompass“, falls du nicht scrollen willst.
+Öffnest du die Startseite, während du in einem Park stehst, begrüßt dich
+park.fan mit dem Namen des Parks, und unter der Begrüßung liegt jetzt ein
+Kompass mit den Top-Attraktionen um dich herum. Oben im Kasten gibt es dazu den
+Knopf „Zum Kompass“, falls du nicht scrollen willst.
+
+Für Begrüßung und Kompass braucht die Seite deinen Standort, und sie fragt
+danach nur, wenn du auf „Standort aktivieren“ tippst. Hast du park.fan den
+Standort im Browser dauerhaft erlaubt, ist der Kompass sofort da. Safari auf dem
+iPhone fragt sonst nach jedem Neuladen neu, dauerhaft erlauben geht über aA und
+die Website-Einstellungen.
 
 ![Die Startseite von park.fan auf dem Handy im Disneyland Park in Anaheim, über der Begrüßung der Knopf „Zum Kompass“. | Den Knopf gibt es nur, wenn park.fan dich in einem Park findet. Er springt ein Stück nach unten, zum Kompass.](/media/kompass/kompass-start-de.webp)
 
@@ -186,9 +192,11 @@ und ohne den Park.
 
 Am meisten bringt der Kompass im Park, ansehen kannst du ihn aber auch vom Sofa
 aus. Hängst du `?sim=compass` an die Adresse der Startseite, legt park.fan das
-Phantasialand um deinen Standort, mit den echten Wartezeiten des Tages:
+Phantasialand um dich herum, mit den echten Wartezeiten des Tages:
 [park.fan/de?sim=compass](/de?sim=compass). Ein Streifen über dem Kompass sagt,
-dass es eine Demo ist, und hat einen Link, der sie beendet.
+dass es eine Demo ist, und hat einen Link, der sie beendet. Tippst du darin auf
+„Standort nutzen“, liegt der Park um deinen echten Standort, sonst stehst du an
+einem festen Punkt im Park.
 
 Andere Parks hängst du mit Doppelpunkt an, etwa `?sim=compass:efteling`, dazu
 gibt es `compass:europapark` und `compass:disneylandparis`. Nachts sind die

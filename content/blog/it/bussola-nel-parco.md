@@ -59,10 +59,16 @@ rispetto a te, non lo diceva. Dal 27 settembre te lo dice una bussola.
 
 ## Quando compare la bussola
 
-Non c’è niente da impostare. Se apri la home mentre sei dentro un parco,
-park.fan ti saluta con il nome del parco, e sotto il saluto adesso c’è una
-bussola con le attrazioni top intorno a te. In alto nel riquadro del benvenuto
-c’è anche il pulsante «Vai alla bussola», se non vuoi scorrere.
+Se apri la home mentre sei dentro un parco, park.fan ti saluta con il nome del
+parco, e sotto il saluto adesso c’è una bussola con le attrazioni top intorno a
+te. In alto nel riquadro del benvenuto c’è anche il pulsante «Vai alla bussola»,
+se non vuoi scorrere.
+
+Per il benvenuto e la bussola, la pagina ha bisogno della tua posizione, e la
+chiede solo quando tocchi «Abilita posizione». Se hai già autorizzato park.fan
+in modo permanente nel browser, la bussola c’è subito. Altrimenti Safari su
+iPhone la richiede a ogni ricarica, e per autorizzarla in modo permanente si
+passa da aA e dalle impostazioni del sito web.
 
 ![La home di park.fan su un telefono a Disneyland Park, ad Anaheim, con il pulsante «Vai alla bussola» sopra il messaggio di benvenuto. | Il pulsante compare solo quando park.fan ti trova dentro un parco. Ti porta un po’ più giù, alla bussola.](/media/kompass/kompass-start-it.webp)
 
@@ -187,7 +193,9 @@ La bussola serve soprattutto in un parco, ma puoi guardarla anche dal divano.
 Aggiungi `?sim=compass` all’indirizzo della home e park.fan mette il
 Phantasialand intorno a te, con i veri tempi di attesa della giornata:
 [park.fan/it?sim=compass](/it?sim=compass). Una striscia sopra la bussola avvisa
-che è una demo e ha un link per uscirne.
+che è una demo e ha un link per uscirne. Se lì tocchi «Usa la mia posizione», il
+parco si dispone intorno a dove sei davvero, altrimenti resti fermo in un punto
+del parco.
 
 Per gli altri parchi aggiungi i due punti e il nome, per esempio
 `?sim=compass:efteling`; ci sono anche `compass:europapark` e

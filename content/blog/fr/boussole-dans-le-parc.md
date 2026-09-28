@@ -60,10 +60,16 @@ boussole s’en charge.
 
 ## Quand la boussole apparaît
 
-Rien à régler. Ouvre la page d’accueil pendant que tu es dans un parc : park.fan
-t’accueille avec le nom du parc, et sous ce message il y a maintenant une
-boussole avec les incontournables autour de toi. Dans l’encadré de bienvenue, un
-bouton « Vers la boussole » t’y emmène si tu ne veux pas faire défiler la page.
+Ouvre la page d’accueil pendant que tu es dans un parc : park.fan t’accueille
+avec le nom du parc, et sous ce message il y a maintenant une boussole avec les
+incontournables autour de toi. Dans l’encadré de bienvenue, un bouton « Vers la
+boussole » t’y emmène si tu ne veux pas faire défiler la page.
+
+Pour le message de bienvenue et la boussole, la page a besoin de ta position, et
+elle ne la demande que si tu touches « Activer la localisation ». Si tu as
+autorisé park.fan une fois pour toutes dans ton navigateur, la boussole est là
+tout de suite. Sinon, Safari sur iPhone redemande à chaque rechargement, et pour
+l’autoriser durablement, il faut passer par aA et les réglages du site.
 
 ![La page d’accueil de park.fan sur un téléphone à Disneyland Park, à Anaheim, avec le bouton « Vers la boussole » au-dessus du message de bienvenue. | Le bouton n’apparaît que si park.fan te trouve dans un parc. Il te fait descendre un peu, jusqu’à la boussole.](/media/kompass/kompass-start-fr.webp)
 
@@ -195,7 +201,9 @@ C’est dans un parc que la boussole sert le plus, mais tu peux la regarder depu
 ton canapé. Ajoute `?sim=compass` à l’adresse de la page d’accueil et park.fan
 pose le Phantasialand autour de toi, avec les vrais temps d’attente du jour :
 [park.fan/fr?sim=compass](/fr?sim=compass). Un bandeau au-dessus de la boussole
-précise que c’est une démo, avec un lien pour en sortir.
+précise que c’est une démo, avec un lien pour en sortir. Touche « Utiliser ma
+position » dans ce bandeau et le parc se place autour de ta vraie position,
+sinon tu restes à un point fixe du parc.
 
 Pour un autre parc, ajoute un deux-points et son nom, par exemple
 `?sim=compass:efteling`. Il existe aussi `compass:europapark` et

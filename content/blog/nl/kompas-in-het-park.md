@@ -58,10 +58,16 @@ jouw plek lag, stond nergens. Sinds 27 september staat het op een kompas.
 
 ## Wanneer het kompas verschijnt
 
-Instellen hoef je niets. Open je de startpagina terwijl je in een park staat,
-dan begroet park.fan je met de naam van het park, en onder die begroeting staat
-nu een kompas met de topattracties om je heen. Bovenin het blok met de
-begroeting staat ook de knop “Naar het kompas”, voor als je niet wilt scrollen.
+Open je de startpagina terwijl je in een park staat, dan begroet park.fan je met
+de naam van het park, en onder die begroeting staat nu een kompas met de
+topattracties om je heen. Bovenin het blok met de begroeting staat ook de knop
+“Naar het kompas”, voor als je niet wilt scrollen.
+
+Voor de begroeting en het kompas heeft de pagina je locatie nodig, en daar
+vraagt ze alleen om als je op “Locatie inschakelen” tikt. Heb je park.fan je
+locatie in de browser blijvend toegestaan, dan staat het kompas er meteen.
+Anders vraagt Safari op de iPhone na elke keer herladen opnieuw, en blijvend
+toestaan gaat via aA en de website-instellingen.
 
 ![De startpagina van park.fan op een telefoon in Disneyland Park in Anaheim, met boven de begroeting de knop “Naar het kompas”. | De knop verschijnt alleen als park.fan je in een park vindt. Een tik brengt je een stukje omlaag, naar het kompas.](/media/kompass/kompass-start-nl.webp)
 
@@ -187,7 +193,9 @@ In een park heb je het meest aan het kompas, maar bekijken kan ook vanaf de
 bank. Zet je `?sim=compass` achter het adres van de startpagina, dan legt
 park.fan het Phantasialand om je heen, met de echte wachttijden van die dag:
 [park.fan/nl?sim=compass](/nl?sim=compass). Een strook boven het kompas zegt dat
-het een demo is, met een link waarmee je hem stopt.
+het een demo is, met een link waarmee je hem stopt. Tik je daar op “Locatie
+gebruiken”, dan ligt het park om je echte locatie, anders sta je op één vaste
+plek in het park.
 
 Andere parken zet je er met een dubbele punt achter, bijvoorbeeld
 `?sim=compass:efteling`, en verder zijn er `compass:europapark` en

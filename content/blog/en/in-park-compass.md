@@ -57,10 +57,16 @@ from where you stood, it could not. Since 27 September, a compass does.
 
 ## When the compass shows up
 
-There is nothing to set up. Open the home page while you are inside a park and
-park.fan greets you with the park's name. Under that welcome there is now a
-compass with the headliners around you. The welcome box also carries a "To the
-compass" button, in case you would rather not scroll for it.
+Open the home page while you are inside a park and park.fan greets you with the
+park's name. Under that welcome there is now a compass with the headliners
+around you. The welcome box also carries a "To the compass" button, in case you
+would rather not scroll for it.
+
+The welcome and the compass need your location, and the page only asks for it
+when you tap "Enable location". If you have allowed park.fan your location for
+good in the browser, the compass is there straight away. Otherwise Safari on the
+iPhone asks again after every reload, and allowing it for good goes through aA
+and the website settings.
 
 ![The park.fan home page on a phone at Disneyland Park in Anaheim, with the "To the compass" button above the welcome. | The button only appears when park.fan finds you inside a park. It jumps a little way down the page, to the compass.](/media/kompass/kompass-start-en.webp)
 
@@ -181,7 +187,9 @@ The compass is most useful in a park, but you can look at it from the sofa too.
 Add `?sim=compass` to the home page address and park.fan lays Phantasialand out
 around you, with that day's real wait times:
 [park.fan/en?sim=compass](/en?sim=compass). A strip above the compass says it is
-a demo and has a link that ends it.
+a demo and has a link that ends it. Tap "Use my location" in it and the park
+lies around where you really are; otherwise you stand on one fixed spot in the
+park.
 
 Other parks go after a colon, as in `?sim=compass:efteling`, and there are also
 `compass:europapark` and `compass:disneylandparis`. The European parks are shut
