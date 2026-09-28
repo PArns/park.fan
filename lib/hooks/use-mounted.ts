@@ -1,39 +1,62 @@
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 
-/** Returns true after the first client-side render — prevents hydration mismatches. */
+/*
+ * Hydration-safe client values, all read through `useSyncExternalStore` rather than
+ * `useState` + a deferred `setState` in an effect.
+ *
+ * The deferred shape these hooks used to have (`setTimeout(() => setX(...), 0)` inside a
+ * `useEffect`) cost a paint every time a consumer mounted, not only at hydration: the browser
+ * painted the server-equivalent fallback (a skeleton, `null`, "--:--"), then the timeout fired
+ * and a second commit painted the real value. On a client-side navigation to a park page that
+ * was a skeleton flash and a second render in every gated section, and a gate nested inside
+ * another gate (the daily chart inside the park stats) paid it once per level.
+ *
+ * `useSyncExternalStore` reads `getServerSnapshot` on the server and while hydrating, so the
+ * first client render still matches the server markup, and React re-renders with the client
+ * snapshot straight after hydration, in one batch for every consumer. A component mounted after
+ * hydration reads the client snapshot on its first render and renders once.
+ */
+
+const subscribeToNothing = () => () => {};
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
+
+/** True on the client, false on the server and during hydration. */
 export function useMounted(): boolean {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    const id = setTimeout(() => setMounted(true), 0);
-    return () => clearTimeout(id);
-  }, []);
-  return mounted;
+  return useSyncExternalStore(subscribeToNothing, clientSnapshot, serverSnapshot);
 }
 
-/** Returns the browser IANA timezone string, or null during SSR / before hydration. */
+let browserTimezone: string | null = null;
+const timezoneSnapshot = () =>
+  (browserTimezone ??= Intl.DateTimeFormat().resolvedOptions().timeZone);
+const noTimezone = () => null;
+
+/** The browser's IANA timezone, or null on the server and during hydration. */
 export function useBrowserTimezone(): string | null {
-  const [tz, setTz] = useState<string | null>(null);
-  useEffect(() => {
-    const id = setTimeout(() => setTz(Intl.DateTimeFormat().resolvedOptions().timeZone), 0);
-    return () => clearTimeout(id);
-  }, []);
-  return tz;
+  return useSyncExternalStore(subscribeToNothing, timezoneSnapshot, noTimezone);
 }
 
 /**
- * Returns the current time as a Date, optionally updating on an interval.
- * Returns null until after first client-side render to prevent hydration mismatches.
- * Pass null for intervalMs to disable auto-updating (one-shot mount value).
+ * The browser's clock at mount, or null on the server and during hydration. A one-shot value:
+ * it never updates. For a clock that follows the minute use `useMinuteNowDate()`
+ * (`lib/hooks/use-minute-now.ts`), one shared, visibility-paused timer for every subscriber.
+ *
+ * The reading is taken in the first render that has `mounted`, through a render-phase update
+ * (React re-runs the component before committing, so there is no second paint), not in an
+ * effect that paints `null` first.
+ *
+ * `enabled: false` takes no reading and returns `null` — for a caller that already has a clock
+ * value from the server and would only re-render to arrive at the same text.
  */
-export function useBrowserNow(intervalMs: number | null = 60_000): Date | null {
+export function useBrowserNow(enabled = true): Date | null {
+  // Disabled, the client snapshot is the server's, so hydration has nothing to catch up on and
+  // the caller does not re-render at all.
+  const mounted = useSyncExternalStore(
+    subscribeToNothing,
+    enabled ? clientSnapshot : serverSnapshot,
+    serverSnapshot
+  );
   const [now, setNow] = useState<Date | null>(null);
-  useEffect(() => {
-    const init = setTimeout(() => setNow(new Date()), 0);
-    const tick = intervalMs != null ? setInterval(() => setNow(new Date()), intervalMs) : null;
-    return () => {
-      clearTimeout(init);
-      if (tick != null) clearInterval(tick);
-    };
-  }, [intervalMs]);
-  return now;
+  if (enabled && mounted && now === null) setNow(new Date());
+  return enabled ? now : null;
 }

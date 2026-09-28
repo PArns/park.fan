@@ -21,3 +21,18 @@ const GEO_SLUG_RE = /^[a-z0-9-]+$/;
 export function isServableRoute(locale: string, ...slugs: string[]): boolean {
   return isValidLocale(locale) && slugs.every((slug) => GEO_SLUG_RE.test(slug));
 }
+
+/**
+ * True when every segment is slug-shaped — the guard for an `/api/*` route that interpolates its
+ * catch-all segments into a backend path.
+ *
+ * Next matches the raw pathname and percent-decodes each segment afterwards, so `%2F`, `%2E%2E`
+ * and `%3F` arrive inside ONE segment, and `new URL()` in `apiFetch` then resolves `..` and starts
+ * a query at `?`. Without this, `/api/parks/a/b/c/d/attractions/..%2F..%2F…` reached any path on
+ * the API with the deployment's `x-auth-key` attached — the hole `lib/admin/proxy-path.ts` closes
+ * for the admin proxy. Every fixed word these routes use (`calendar`, `stats`, `hourly`, …) is
+ * slug-shaped too.
+ */
+export function isSlugPath(segments: readonly string[]): boolean {
+  return segments.every((segment) => GEO_SLUG_RE.test(segment));
+}

@@ -2,7 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { searchResultHref } from '@/lib/utils/url-utils';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { trackSearchResultClicked } from '@/lib/analytics/umami';
 import type { SearchResultItem } from '@/lib/api/types';
@@ -12,23 +12,20 @@ import type { Locale } from '@/i18n/config';
 /**
  * Shared "a search result was picked" behavior: analytics + URL resolution + navigation.
  * Used by both the search palette (SearchDialog) and the hero's in-place result list, so a
- * result always routes the same way no matter which surface it was clicked in.
+ * result always routes the same way no matter which surface it was clicked in. `/search` links
+ * through the same `searchResultHref`.
  */
 export function useSearchNavigation(queryLength: number, onNavigate?: () => void) {
   const router = useRouter();
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   const handleSelect = (result: SearchResultItem, position?: number) => {
-    // A result with no `url` and no continent/country resolves to no route at all. Bailing
-    // BEFORE `onNavigate` matters for the hero's dropdown, which closes on that callback: it
-    // would otherwise shut on a click that goes nowhere, and since focus stays in the input
-    // (the dropdown swallows mousedown) nothing would reopen it.
-    const canResolve =
-      Boolean(result.url) ||
-      (result.type === 'park' && Boolean(result.continent) && Boolean(result.country)) ||
-      result.type === 'glossary' ||
-      Boolean(result.parentPark?.url);
-    if (!canResolve) return;
+    // A result that resolves to no route at all is refused BEFORE `onNavigate`. That matters for
+    // the hero's dropdown, which closes on that callback: it would otherwise shut on a click that
+    // goes nowhere, and since focus stays in the input (the dropdown swallows mousedown) nothing
+    // would reopen it.
+    const href = searchResultHref(result, locale);
+    if (!href) return;
 
     onNavigate?.();
 
@@ -39,32 +36,22 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
       queryLength,
     });
 
-    if (result.url) {
-      // Use centralized utility for URL conversion
-      const cleanUrl = convertApiUrlToFrontendUrl(result.url);
-      router.push(cleanUrl as '/parks/europe');
-    } else if (result.type === 'park' && result.continent && result.country) {
-      // Build URL from available data
-      const citySlug = result.city?.toLowerCase().replace(/\s+/g, '-') || 'unknown';
-      router.push(
-        `/parks/${result.continent.toLowerCase()}/${result.country.toLowerCase()}/${citySlug}/${result.slug}` as '/parks/europe/germany/rust/europa-park'
-      );
-    } else if (result.type === 'glossary') {
-      // Navigate to glossary term page — next-intl router adds locale prefix automatically
-      const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
-      router.push(`/${seg}/${result.slug}` as '/parks/europe');
-    } else if (result.parentPark && result.parentPark.url) {
-      // Fallback for attractions/shows/restaurants without explicit URL
-      const parkUrl = convertApiUrlToFrontendUrl(result.parentPark.url);
-
-      if (result.type === 'restaurant') {
-        router.push(`${parkUrl}#restaurants` as '/parks/europe');
-      } else if (result.type === 'show') {
-        router.push(`${parkUrl}#shows` as '/parks/europe');
+    // A show or restaurant of the park the visitor is already on is only a new fragment, and
+    // `router.push` writes that with `pushState`, which fires no `hashchange` — the one event the
+    // park page's tab router listens for (`useTabHashRouting`). The palette closed and nothing else
+    // happened. Setting the fragment on `location` is what a plain `<a href="#shows">` does, and it
+    // fires the event. The same fragment again fires nothing either, so that case dispatches it.
+    const [path, hash] = href.split('#');
+    if (hash && window.location.pathname === `/${locale}${path}`) {
+      if (window.location.hash === `#${hash}`) {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
       } else {
-        router.push(`${parkUrl}/${result.slug}` as '/parks/europe');
+        window.location.hash = hash;
       }
+      return;
     }
+
+    router.push(href as '/parks/europe');
   };
 
   const handleGlossarySelect = (item: GlossarySearchItem) => {
@@ -74,7 +61,7 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
       term_id: item.id,
       queryLength,
     });
-    const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
+    const seg = GLOSSARY_SEGMENTS[locale] ?? 'glossary';
     router.push(`/${seg}/${item.slug}` as '/parks/europe');
   };
 

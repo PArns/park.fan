@@ -62,13 +62,50 @@ function buildPatternFragment(pattern: string): string {
   return `\\b${escaped}${trailingBoundary}`;
 }
 
-export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]): GlossarySegment[] {
-  const entries = buildMatchEntries(terms);
-  if (entries.length === 0) return [{ type: 'text', content: text }];
+interface Matcher {
+  entryByPattern: Map<string, MatchEntry>;
+  /** Global, so it carries `lastIndex` between calls: reset it before every scan. */
+  regex: RegExp;
+}
 
-  const entryByPattern = new Map(entries.map((e) => [e.pattern.toLowerCase(), e]));
-  const pattern = entries.map((e) => buildPatternFragment(e.pattern)).join('|');
-  const regex = new RegExp(`(${pattern})`, 'gi');
+/**
+ * The compiled matcher for one term list, built once per list rather than once per call.
+ *
+ * Building it means sorting 550–739 names and aliases (depending on the locale) and compiling them
+ * into one alternation, and the text it then runs over is usually one sentence: a call on a German
+ * FAQ answer took 453 µs, 16 µs of it the match itself. It ran on every call — once per FAQ
+ * answer on a ride page, and the homepage's sections hold more than forty `<GlossaryInject>`s.
+ * `getGlossaryTerms` hands every caller the same array for the life of the process, so keyed by
+ * the array this is built once per locale. A `WeakMap` because the client passes lists it builds
+ * itself. Term lists are never mutated after they are handed out; one that was would keep its
+ * old matcher.
+ */
+const matchers = new WeakMap<GlossaryMatchTerm[], Matcher | null>();
+
+function getMatcher(terms: GlossaryMatchTerm[]): Matcher | null {
+  let matcher = matchers.get(terms);
+  if (matcher === undefined) {
+    const entries = buildMatchEntries(terms);
+    matcher =
+      entries.length === 0
+        ? null
+        : {
+            entryByPattern: new Map(entries.map((e) => [e.pattern.toLowerCase(), e])),
+            regex: new RegExp(
+              `(${entries.map((e) => buildPatternFragment(e.pattern)).join('|')})`,
+              'gi'
+            ),
+          };
+    matchers.set(terms, matcher);
+  }
+  if (matcher) matcher.regex.lastIndex = 0;
+  return matcher;
+}
+
+export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]): GlossarySegment[] {
+  const matcher = getMatcher(terms);
+  if (!matcher) return [{ type: 'text', content: text }];
+  const { entryByPattern, regex } = matcher;
 
   const segments: GlossarySegment[] = [];
   /** Track which term IDs have already been linked (first-occurrence-only). */
@@ -124,14 +161,10 @@ export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]):
  * (park name, weekday names, hours) has to be included by the caller.
  */
 export function filterMatchableTerms<T extends GlossaryMatchTerm>(corpus: string, terms: T[]): T[] {
-  const entries = buildMatchEntries(terms);
-  if (entries.length === 0 || !corpus) return [];
-
-  const entryByPattern = new Map(entries.map((e) => [e.pattern.toLowerCase(), e]));
-  const regex = new RegExp(
-    `(${entries.map((e) => buildPatternFragment(e.pattern)).join('|')})`,
-    'gi'
-  );
+  if (!corpus) return [];
+  const matcher = getMatcher(terms);
+  if (!matcher) return [];
+  const { entryByPattern, regex } = matcher;
 
   const keep = new Set<string>();
   let match: RegExpExecArray | null;

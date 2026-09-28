@@ -55,7 +55,7 @@ interface Coordinated {
  * they already were numbers (or absent), so a payload the backend sends
  * correctly costs nothing and keeps its object identity.
  */
-function withCoordinates<T extends Coordinated>(entity: T): T {
+export function withCoordinates<T extends Coordinated>(entity: T): T {
   const latitude = parseCoordinate(entity.latitude);
   const longitude = parseCoordinate(entity.longitude);
   if (latitude === entity.latitude && longitude === entity.longitude) return entity;
@@ -65,6 +65,9 @@ function withCoordinates<T extends Coordinated>(entity: T): T {
 /**
  * Parse the coordinates on a park and on every mapped thing inside it — the
  * attractions, shows and restaurants the park map draws markers for.
+ *
+ * `fetchParkByGeoPath` does not call this: it trims every attraction as well,
+ * and parses the pair in that same copy (`leanParkAtFetch` in ./parks).
  */
 export function withParkCoordinates(park: ParkWithAttractions): ParkWithAttractions {
   const parsed = withCoordinates(park);

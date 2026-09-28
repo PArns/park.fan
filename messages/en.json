@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Site sections",
+    "opensInNewTab": "opens in a new tab",
     "description": "Live wait times and AI-powered crowd predictions for 200+ theme parks worldwide. Plan your park visit with real-time data and in-park navigation.",
     "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Change language",
+    "mobileNavigation": "Mobile navigation",
+    "menu": "Menu",
     "home": "Home",
     "parks": "All Parks",
     "continents": "Continents",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Scroll right",
+      "scrollLeft": "Scroll left",
       "clear": "Clear sky",
       "mainlyClear": "Mainly clear",
       "partlyCloudy": "Partly cloudy",
@@ -1580,13 +1587,6 @@
     "viewAllResults": "View all results for \"{query}\"",
     "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
     "at": "at {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attraction",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Location"
-    },
     "headings": {
       "park": "Parks ({count})",
       "attraction": "Attractions ({count})",
@@ -1606,6 +1606,17 @@
     "avgWait": "{minutes} min avg",
     "attractionsOpen": "{open}/{total} attractions open",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attraction",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Location",
+      "glossary": "Dictionary"
+    },
+    "minQueryLength": "Enter at least {count} characters to search"
   },
   "languageBanner": {
     "message": "This site is also available in {language}",
@@ -1850,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Clear search",
     "blogPosts": {
       "title": "{term} on the blog"
     },

@@ -9,7 +9,7 @@ import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import { getWeatherIconFromCode, getEventIcon } from '@/lib/utils/calendar-utils';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
@@ -312,7 +312,7 @@ function ParkCalendarDayComponent({
         )}
         {day.weather && (
           <span className="flex items-center gap-1">
-            {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
+            {createElement(getWeatherConfig(day.weather.icon).icon, {
               className: 'h-3 w-3 shrink-0',
             })}
             <span className="tabular-nums">

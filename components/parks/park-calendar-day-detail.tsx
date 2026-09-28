@@ -41,14 +41,11 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { Temp } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
-import {
-  getEventIcon,
-  getWeatherIconFromCode,
-  getWeatherTranslationKey,
-  upcomingHourlyPredictions,
-} from '@/lib/utils/calendar-utils';
+import { parkDayOf } from '@/lib/utils/park-day';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 
 const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
@@ -109,7 +106,7 @@ export function ParkCalendarDayDetail({
   // month and a visit cannot be planned for a day that has already happened
   // where the park is. `en-CA` because it formats as YYYY-MM-DD, which is what
   // `CalendarDay.date` is and what compares correctly as a string.
-  const todayInPark = new Date().toLocaleDateString('en-CA', { timeZone: parkTimezone });
+  const todayInPark = parkDayOf(new Date(), parkTimezone);
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -149,10 +146,10 @@ export function ParkCalendarDayDetail({
   // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
   // needs no timezone of its own.
   // Only while the dialog is open. This component stays mounted behind every park and calendar
-  // page (it renders `null` when closed), so an unconditional interval would put a minute timer
-  // and a re-render on those pages for the life of the tab, for a chart almost nobody opens.
-  // `null` still gives one clock reading, which is all a closed dialog could want.
-  const browserNow = useBrowserNow(open ? 60_000 : null);
+  // page (it renders `null` when closed), so an unconditional subscription would re-render it
+  // once a minute on those pages for the life of the tab, for a chart almost nobody opens. The
+  // shared clock stamps a fresh reading on the render that opens it.
+  const browserNow = useMinuteNowDate(open);
   const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
   const canHaveHourly =
     !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
@@ -217,7 +214,7 @@ export function ParkCalendarDayDetail({
     // `browserNow` rather than `Date.now()`: a clock read during render is impure, and the minute
     // tick is what retires a bar while the dialog is open instead of only at the next re-render.
     // The fallback still cuts — it reads the same wall clock — it just does not schedule anything,
-    // which is what the very first render needs before the hook's effect has run.
+    // which is all a render with the dialog not open (the hook then reads `null`) needs.
     (browserNow ?? new Date()).getTime(),
     parkTimezone
   );
@@ -616,12 +613,12 @@ export function ParkCalendarDayDetail({
                 {t('calendarView.details.weather.title')}
               </h3>
               <div className="flex items-center gap-3">
-                {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
+                {createElement(getWeatherConfig(day.weather.icon).icon, {
                   className: 'h-7 w-7 text-sky-500',
                 })}
                 <div className="text-sm">
                   <p className="font-medium">
-                    {t(`weather.${getWeatherTranslationKey(day.weather.icon)}`)}
+                    {t(`weather.${getWeatherConfig(day.weather.icon).label}`)}
                   </p>
                   <p className="text-muted-foreground">
                     <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />

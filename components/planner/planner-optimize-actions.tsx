@@ -42,6 +42,23 @@ import { cn } from '@/lib/utils';
 /** The entries of a day that has none, as one array rather than a new one per render. */
 const NO_ENTRIES: readonly PlannerEntry[] = [];
 
+/**
+ * An entry as the "Tag optimieren" pre-search sees it: which ride or how long a block, where it
+ * sits, and whether it has been walked. Everything the search and its scoring read, and nothing it
+ * does not — a free block's label and icon are left out, so typing one is not a new search.
+ */
+function searchKeyOf(entry: PlannerEntry): string {
+  return [
+    entry.id,
+    entry.attractionSlug ?? '',
+    entry.attractionName ?? '',
+    entry.startMinute,
+    entry.done ? 1 : 0,
+    entry.actualWait ?? '',
+    entry.custom?.durationMinutes ?? '',
+  ].join(':');
+}
+
 interface PlannerOptimizeActionsProps {
   parkSlug: string;
   parkName: string;
@@ -247,13 +264,25 @@ export function PlannerOptimizeActions({
    * `docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md`:
    * typing a free block's label writes the entry on every keystroke, and a
    * 5–50 ms search in the same commit as the keystroke is a field that lags.
-   * The grid arrives memoised from the caller, so it is a stable key.
+   * The grid arrives memoised from the caller and keeps its identity until
+   * the axis moves; where the plan grows the canvas it changes with the edit,
+   * so it is deferred alongside the entries.
    * `nowTick` moves the answer on today's date, once a minute, the same way
    * the buttons' own visibility follows the clock (and the same pattern the
    * grid's now line uses).
+   *
+   * Deferring alone still ran the search once per keystroke of a label, in the
+   * deferred render. The answer is counts and minutes, and a free block's label
+   * and icon are not among its inputs, so the entries it searches are held
+   * until something the search reads has changed (`searchKey`).
    */
-  const deferredEntries = useDeferredValue(entries);
+  const searchKey = entries.map(searchKeyOf).join('|');
+  const [searched, setSearched] = useState({ key: searchKey, entries });
+  if (searched.key !== searchKey) setSearched({ key: searchKey, entries });
+  const deferredEntries = useDeferredValue(searched.entries);
+  const deferredGrid = useDeferredValue(grid);
   const gain = useMemo(() => {
+    const grid = deferredGrid;
     if (nowTick < 0 || !grid || !day || !canOptimize(day, grid)) return null;
     const now = dayClock(date, resolveTimeZone(timezone));
     if (now.phase === 'past') return null;
@@ -276,7 +305,7 @@ export function PlannerOptimizeActions({
       saved: Math.max(0, saved),
       resolved: Math.max(0, resolved),
     };
-  }, [grid, day, deferredEntries, date, timezone, nowTick]);
+  }, [deferredGrid, day, deferredEntries, date, timezone, nowTick]);
 
   /** The row with its trailing control alone, where there is nothing to optimise. */
   const bare = trailing ? <OptimizeRow marked={false} trailing={trailing} /> : null;

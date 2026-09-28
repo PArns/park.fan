@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -42,7 +43,8 @@ import { categoryPath } from '@/lib/blog/paths';
  * state, and the covers are already 16:9 crops. That is the difference from the parks menu's rail,
  * which is a curated four because only 14 of 212 parks have a picture at all; here it is 7 of 7.
  */
-export function BlogMenuPanel({ categories, recent }: BlogMenu) {
+/** Memoised for the same reason as `ParksMenuPanel`. */
+export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }: BlogMenu) {
   /*
    * `navigation`, not `blog`, for the headings — and the difference is 3 KB on every page.
    *
@@ -201,4 +203,4 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
       )}
     </div>
   );
-}
+});

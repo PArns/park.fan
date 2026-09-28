@@ -3,6 +3,7 @@
 import { useFormatter, useLocale } from 'next-intl';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
+import { getRelativeTimeFormat } from '@/lib/utils/intl-format';
 
 /** Up to this many days a news post counts as new and its age is drawn in the accent colour. */
 const NEW_DAYS = 7;
@@ -21,7 +22,7 @@ export function NewsAge({ date, className }: { date: string; className?: string 
   const format = useFormatter();
   const locale = useLocale();
   // One-shot: a day-granular label does not need a ticking clock.
-  const now = useBrowserNow(null);
+  const now = useBrowserNow();
 
   // Date-only ISO strings parse as UTC midnight on server and client alike, which keeps the
   // server-rendered date and the hydrated one identical (the same call `BlogMenuPanel` makes).
@@ -35,7 +36,8 @@ export function NewsAge({ date, className }: { date: string; className?: string 
     const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
     const days = Math.max(0, Math.round((today - published.getTime()) / 86_400_000));
     isNew = days <= NEW_DAYS;
-    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+    // Cached: one of these renders per day heading on /news and per item in the menus.
+    const rtf = getRelativeTimeFormat(locale, { numeric: 'auto' });
     relative =
       days < 7
         ? rtf.format(-days, 'day')

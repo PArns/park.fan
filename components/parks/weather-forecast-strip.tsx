@@ -94,7 +94,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
         <button
           onClick={() => scroll('left')}
           className="bg-background/80 hover:bg-background absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full p-1.5 shadow-md backdrop-blur-sm transition-colors"
-          aria-label="Scroll left"
+          aria-label={t('scrollLeft')}
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
@@ -108,7 +108,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
         <button
           onClick={() => scroll('right')}
           className="bg-background/80 hover:bg-background absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full p-1.5 shadow-md backdrop-blur-sm transition-colors"
-          aria-label="Scroll right"
+          aria-label={t('scrollRight')}
         >
           <ChevronRight className="h-4 w-4" />
         </button>

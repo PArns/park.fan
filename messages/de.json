@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Bereiche der Seite",
+    "opensInNewTab": "öffnet in neuem Tab",
     "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 200 Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
     "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Sprache ändern",
+    "mobileNavigation": "Mobile Navigation",
+    "menu": "Menü",
     "home": "Startseite",
     "parks": "Alle Parks",
     "continents": "Kontinente",
@@ -603,6 +608,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Nach rechts scrollen",
+      "scrollLeft": "Nach links scrollen",
       "clear": "Klarer Himmel",
       "mainlyClear": "Meist klar",
       "partlyCloudy": "Teilweise bewölkt",
@@ -1580,13 +1587,6 @@
     "viewAllResults": "Alle Ergebnisse für „{query}“ anzeigen",
     "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
     "at": "in {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attraktion",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Ort"
-    },
     "headings": {
       "park": "Parks ({count})",
       "attraction": "Attraktionen ({count})",
@@ -1606,6 +1606,17 @@
     "avgWait": "Ø {minutes} Min.",
     "attractionsOpen": "{open}/{total} Attraktionen offen",
     "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attraktion",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Ort",
+      "glossary": "Wörterbuch"
+    },
+    "minQueryLength": "Mindestens {count} Zeichen eingeben, um zu suchen"
   },
   "languageBanner": {
     "message": "Diese Seite gibt’s auch auf {language}",
@@ -1850,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Suche löschen",
     "blogPosts": {
       "title": "{term} im Blog"
     },

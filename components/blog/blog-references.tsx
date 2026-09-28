@@ -170,18 +170,5 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   );
 }
 
-/**
- * Helper that lets the page check whether `BlogReferences` will render
- * anything before the related-posts section, so we can suppress the
- * surrounding container's spacing when the post mentions no parks/rides.
- */
-export function postHasReferences(post: BlogPost): boolean {
-  const { parkSlugs, attractions } = extractInlineRefs(post.content);
-  if (parkSlugs.size > 0 || attractions.size > 0) return true;
-  if ((post.frontmatter.relatedParks?.length ?? 0) > 0) return true;
-  if ((post.frontmatter.relatedAttractions?.length ?? 0) > 0) return true;
-  return false;
-}
-
 // Re-export for ergonomic imports.
 export type { BlogAttractionRef };

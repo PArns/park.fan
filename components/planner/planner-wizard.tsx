@@ -379,13 +379,25 @@ export function PlannerWizard({
     };
   }, [dayPayload, wizardGrid, headliners, lunchEntries]);
 
+  /**
+   * The search, only on the step that reads it.
+   *
+   * `fitInput` exists from the date step on, because `/plan/day` does, and these ran on every date
+   * picked and every setup toggle — up to five beam searches for the outcome and as many again
+   * per free block for the levers, on screens that draw neither. `finish` is only reachable from
+   * the last step, so it always finds the outcome computed.
+   */
+  const onFitStep = step === 'headliners';
   const fitOutcome = useMemo(
-    () => (fitInput ? evaluateFit(fitInput, fitChoice) : null),
-    [fitInput, fitChoice]
+    () => (fitInput && onFitStep ? evaluateFit(fitInput, fitChoice) : null),
+    [fitInput, fitChoice, onFitStep]
   );
   const fitLevers = useMemo(
-    () => (fitInput ? fitLeverView(fitInput, fitChoice) : null),
-    [fitInput, fitChoice]
+    () =>
+      fitInput && fitOutcome && planHeadliners
+        ? fitLeverView(fitInput, fitChoice, fitOutcome)
+        : null,
+    [fitInput, fitChoice, fitOutcome, planHeadliners]
   );
   const fitWishOrder = useMemo(
     () => (fitInput ? fitOrder(fitInput, fitChoice) : []),

@@ -7,7 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { LocalTime } from '@/components/ui/local-time';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { trackShowFollowAdd, trackShowFollowRemove } from '@/lib/analytics/umami';
 import { followShow, unfollowShow, type PushWriteError } from '@/lib/push/push-follows';
 import {
@@ -77,7 +77,7 @@ export function ShowFollowDialog({
 }: ShowFollowDialogProps) {
   const t = useTranslations('pushAlerts.showDialog');
   const pushErrorMessage = usePushErrorMessage();
-  const browserNow = useBrowserNow(30_000);
+  const browserNow = useMinuteNowDate();
   // "Is the reminder this dialog is about already armed" — for a chosen
   // performance that is a question about that instant, not about the show.
   const [following, setFollowing] = useLocalPushFollowsValue(

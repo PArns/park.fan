@@ -95,12 +95,13 @@ export function ParkFAQSection({
   const t = useTranslations('seo.faq');
   const tGeo = useTranslations('geo');
 
-  // "now": browser clock once mounted; before that (SSR + first client render) the server-passed
-  // seedNowMs, so the time-dependent Q1 (today's hours) and Q7 (least crowded) are part of the
-  // crawlable first HTML. Both renders read the SAME prop value → no hydration mismatch; the
-  // page is force-dynamic, so a per-request server clock is fine. Day-granular precision is all
-  // Q1/Q7 need, so the browser clock taking over after mount yields the same text.
-  const browserNow = useBrowserNow(null);
+  // "now": the server-passed seedNowMs, so the time-dependent Q1 (today's hours) and Q7 (least
+  // crowded) are part of the crawlable first HTML. Both renders read the SAME prop value → no
+  // hydration mismatch; the page is force-dynamic, so a per-request server clock is fine. The
+  // browser clock is read only when there is no seed: day-granular precision is all Q1/Q7 need,
+  // so taking it over after mount yielded the same text and cost a second pass over the whole
+  // FAQ (the items, the least-crowded ranking, the accordion) on every park page.
+  const browserNow = useBrowserNow(seedNowMs == null);
   const nowMs = browserNow ? browserNow.getTime() : (seedNowMs ?? null);
 
   // Calendar feeds only Q7 (least-crowded days). The deferred client fetch takes over once it

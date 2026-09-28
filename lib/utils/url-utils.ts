@@ -6,6 +6,10 @@
  * Never manually construct URLs with string manipulation like `.replace('/v1/parks/', '/parks/')`.
  */
 
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import type { Locale } from '@/i18n/config';
+import type { SearchResultItem } from '@/lib/api/types';
+
 /**
  * Convert backend API URL to frontend route
  *
@@ -105,25 +109,19 @@ export function getParkUrlFromAttractionUrl(attractionUrl: string): string {
 }
 
 /**
- * Build show URL from park URL
- * Ensures the URL ends with #shows (replaces existing hash if present)
+ * The park-page chapter a show or restaurant lives under: `/parks/…#shows` or `/parks/…#restaurants`.
+ *
+ * Neither has a page of its own, so a link to one goes to its park's tab. `url` is whatever the API
+ * handed over for the item or its park: a park URL, a `/parks/…/shows/<slug>` URL (the show segment
+ * is dropped), or a bare `/v1/shows/<id>` that names no park at all. The last kind gives `null`, and
+ * each caller picks its own fallback rather than linking to `#shows` on whatever page it is on.
  */
-export function buildShowUrl(parkUrl: string): string {
-  const cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
-  // Remove any existing hash
-  const urlWithoutHash = cleanParkUrl.split('#')[0];
-  return `${urlWithoutHash}#shows`;
-}
-
-/**
- * Build restaurant URL from park URL
- * Ensures the URL ends with #restaurants (replaces existing hash if present)
- */
-export function buildRestaurantUrl(parkUrl: string): string {
-  const cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
-  // Remove any existing hash
-  const urlWithoutHash = cleanParkUrl.split('#')[0];
-  return `${urlWithoutHash}#restaurants`;
+export function parkChapterUrl(
+  url: string | null | undefined,
+  chapter: 'shows' | 'restaurants'
+): string | null {
+  const parkUrl = convertApiUrlToFrontendUrl(url);
+  return parkUrl.startsWith('/parks/') ? `${parkUrl.split('#')[0]}#${chapter}` : null;
 }
 
 /**
@@ -138,6 +136,38 @@ export function buildAttractionUrl(parkUrl: string, attractionSlug: string): str
   }
 
   return `${cleanParkUrl}/${attractionSlug}`;
+}
+
+/**
+ * Where a search result links to — one answer for the palette, the hero's dropdown and `/search`.
+ *
+ * Locale-less, like every path the i18n `Link` and router take; the locale only picks the
+ * glossary's own URL segment. `null` when the result names nowhere, so a surface can refuse the
+ * click instead of sending the visitor to "/" or to a bare `#`.
+ *
+ * In order: the result's own URL; for a park without one, its geo path; a glossary term; and for a
+ * ride, show or restaurant without one, its park — the ride's page under it, the other two as the
+ * park's tab (they have no page of their own).
+ */
+export function searchResultHref(result: SearchResultItem, locale: Locale): string | null {
+  const own = convertApiUrlToFrontendUrl(result.url);
+  if (own !== '#') return own;
+
+  if (result.type === 'park' && result.continent && result.country) {
+    const segment = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
+    const city = result.city ? segment(result.city) : 'unknown';
+    return `/parks/${segment(result.continent)}/${segment(result.country)}/${city}/${result.slug}`;
+  }
+
+  if (result.type === 'glossary') {
+    return `/${GLOSSARY_SEGMENTS[locale] ?? 'glossary'}/${result.slug}`;
+  }
+
+  const parkUrl = convertApiUrlToFrontendUrl(result.parentPark?.url);
+  if (!parkUrl.startsWith('/parks/')) return null;
+  if (result.type === 'show') return parkChapterUrl(parkUrl, 'shows');
+  if (result.type === 'restaurant') return parkChapterUrl(parkUrl, 'restaurants');
+  return `${parkUrl}/${result.slug}`;
 }
 
 // ============================================================================

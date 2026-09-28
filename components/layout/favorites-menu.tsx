@@ -1,6 +1,6 @@
 'use client';
 
-import { useId } from 'react';
+import { memo, useId } from 'react';
 import { ChevronDown, Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { MenuBand } from '@/components/layout/menu-band';
@@ -39,7 +39,8 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * @param floating True while the bar floats over a hero photo — the ink, and nothing else. See
  *   `NavMenu` for the prop it replaced and the header for the contrast arithmetic behind it.
  */
-export function FavoritesMenu({ floating }: { floating?: boolean }) {
+/** Memoised for the same reason as `ParksMenuPanel`: its one prop is a boolean. */
+export const FavoritesMenu = memo(function FavoritesMenu({ floating }: { floating?: boolean }) {
   const t = useTranslations('favorites');
   const panelId = useId();
   const counts = useFavoriteCounts();
@@ -103,4 +104,4 @@ export function FavoritesMenu({ floating }: { floating?: boolean }) {
       </MenuBand>
     </div>
   );
-}
+});

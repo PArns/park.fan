@@ -78,6 +78,19 @@ export async function GET(request: NextRequest) {
     })
   );
 
+  // Every region failed: a backend outage, not an empty answer. A 200 `{}` was cached at the CDN
+  // for up to three minutes and counted as success by React Query, which replaced every card's
+  // last good status with nothing and never retried. An uncached 502 keeps the last data on
+  // screen and lets the next poll try again.
+  if (responses.every((data) => data === null)) {
+    // `no-store` explicitly: without a Cache-Control of its own the response would take the
+    // shared window the rule in next.config.ts gives this path.
+    return NextResponse.json(
+      { error: 'Live data unavailable' },
+      { status: 502, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    );
+  }
+
   const live: Record<string, LiveParkFields> = {};
   for (const data of responses) {
     for (const city of data?.data ?? []) {

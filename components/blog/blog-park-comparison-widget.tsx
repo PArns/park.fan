@@ -5,6 +5,7 @@ import { getParkHistoricalStatsSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
+import { weekdayName } from '@/lib/utils/intl-format';
 
 interface BlogParkComparisonWidgetProps {
   /** Pre-resolved parks, keyed by the slug written in the fence. */
@@ -78,10 +79,7 @@ export async function BlogParkComparisonWidget({
     .includes('quietest');
   // Runtime weekday names, Sunday first — same reasoning as on the best-time hub: six translated
   // lists would be six things to keep in sync with `DayOfWeekStat.dayOfWeek`.
-  const weekdayFormat = new Intl.DateTimeFormat(locale, { weekday: 'long' });
-  const weekdayNames = Array.from({ length: 7 }, (_, i) =>
-    weekdayFormat.format(new Date(Date.UTC(2023, 0, 1 + i)))
-  );
+  const weekdayNames = Array.from({ length: 7 }, (_, i) => weekdayName(i, locale));
 
   // A single unresolvable slug is a typo in the post; showing the other six silently would hide
   // it. Name what is missing instead, the way the other widgets do.

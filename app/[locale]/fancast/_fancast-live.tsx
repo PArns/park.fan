@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server';
 import { Award, GitBranch, Database, CalendarClock, TrendingDown } from 'lucide-react';
 import { getMLDashboard } from '@/lib/api/ml';
 import { stripNewPrefix } from '@/lib/utils';
+import { formatCompact } from '@/lib/utils/number-utils';
 import { Reveal } from './_fancast-motion';
 
 export interface FancastLiveLabels {
@@ -61,9 +62,7 @@ export async function FancastLive({ labels }: { labels: FancastLiveLabels }) {
     }
   };
   const fmtCompact = (n?: number | null) =>
-    n != null && isFinite(n)
-      ? new Intl.NumberFormat(locale, { notation: 'compact', maximumFractionDigits: 1 }).format(n)
-      : '—';
+    n != null && isFinite(n) ? formatCompact(n, locale) : '—';
   const fmt1 = (n?: number | null) => (n != null && isFinite(n) ? n.toFixed(1) : null);
 
   const top = (insights?.topPerformers ?? []).filter((p) => p && isFinite(p.mae)).slice(0, 6);

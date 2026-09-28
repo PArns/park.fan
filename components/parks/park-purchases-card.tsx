@@ -10,6 +10,7 @@ import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 import type { ScheduleItem, SchedulePurchaseItem } from '@/lib/api/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 // The API may send placeholder prices (amount 0, formatted "Unknown") when the
 // real fee isn't available — same rule as <QueueTypeBadge>.
@@ -40,11 +41,11 @@ interface ParkPurchasesCardProps {
 export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchasesCardProps) {
   const t = useTranslations('parks.purchases');
   const locale = useLocale();
-  const browserNow = useBrowserNow(null);
+  const browserNow = useBrowserNow();
 
   const entry = useMemo(() => {
     if (!browserNow || !schedule?.length) return null;
-    const todayStr = browserNow.toLocaleDateString('en-CA', { timeZone: timezone });
+    const todayStr = parkDayOf(browserNow, timezone);
     return (
       schedule
         .filter((s) => s.date >= todayStr && (s.purchases?.length ?? 0) > 0)
@@ -64,7 +65,7 @@ export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchas
 
   if (!entry || items.length === 0) return null;
 
-  const todayStr = browserNow!.toLocaleDateString('en-CA', { timeZone: timezone });
+  const todayStr = parkDayOf(browserNow!, timezone);
   const isToday = entry.date === todayStr;
   const dateLabel = isToday
     ? null

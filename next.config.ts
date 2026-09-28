@@ -196,7 +196,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-tooltip',
       '@radix-ui/react-avatar',
       '@radix-ui/react-progress',
-      '@radix-ui/react-scroll-area',
       '@radix-ui/react-separator',
       '@radix-ui/react-slot',
     ],
@@ -1015,14 +1014,27 @@ const nextConfig: NextConfig = {
         source: '/api/parks/live',
         headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
+      {
+        // The park page's nearby-parks overlay (use-park-neighbors): the park's own coordinates,
+        // so the same URL for every visitor of a park. The handler's own value.
+        source: '/api/parks/near',
+        headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
+      },
+      {
+        // ticker, realtime and geo-live: the same bytes for everybody, cached 300 s by the backend
+        // itself. The handler's own value, and it sends it on a successful answer only. A rule here
+        // once claimed `s-maxage=60` while the handler answered `no-store`, and on Vercel the
+        // handler won; both halves say the same thing now.
+        source: '/api/analytics/:path*',
+        headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
+      },
       // NOT listed, on purpose: `/api/parks/:continent/:country/:city/:park` (the live park poll
-      // behind every park page's cards) and `/api/analytics/:path*`. Both handlers answer
-      // `no-store`, both did so in production while a rule here claimed `s-maxage=60`, and on
-      // Vercel the handler is the half that won. The rules are gone rather than corrected to
-      // `no-store`, because the blanket `/api` rule above already says exactly that. Keeping the
-      // park poll uncached is also what makes a park page's cards the fresher of the two readings
-      // of a queue — the ride page's live panel is served from the attraction detail, which is
-      // shared-cached above.
+      // behind every park page's cards). The handler answers `no-store`, and it did so in
+      // production while a rule here claimed `s-maxage=60`; on Vercel the handler is the half that
+      // won. The rule is gone rather than corrected to `no-store`, because the blanket `/api` rule
+      // above already says exactly that. Keeping the park poll uncached is also what makes a park
+      // page's cards the fresher of the two readings of a queue — the ride page's live panel is
+      // served from the attraction detail, which is shared-cached above.
       {
         // Search results are query-keyed and the backend caches them 60s — a matching CDN window
         // collapses popular queries without changing freshness.

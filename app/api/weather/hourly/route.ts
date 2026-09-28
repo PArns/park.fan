@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import type { WeatherHourlyPoint, WeatherHourlyToday } from '@/lib/api/types';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
+/** On failures: a response without its own Cache-Control takes the shared window next.config.ts
+ * gives this path. */
+const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
+
 /**
  * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo.
  *
@@ -84,13 +88,16 @@ export async function GET(request: NextRequest) {
     const res = await fetch(upstream, { next: { revalidate: 900 } });
 
     if (!res.ok) {
-      return NextResponse.json({ error: 'Upstream weather request failed' }, { status: 502 });
+      return NextResponse.json(
+        { error: 'Upstream weather request failed' },
+        { status: 502, headers: NO_STORE }
+      );
     }
 
     const data = (await res.json()) as OpenMeteoHourlyResponse;
     const h = data.hourly;
     if (!h?.time?.length) {
-      return NextResponse.json({ error: 'No hourly data' }, { status: 502 });
+      return NextResponse.json({ error: 'No hourly data' }, { status: 502, headers: NO_STORE });
     }
 
     const points: WeatherHourlyPoint[] = h.time.map((time, i) => ({
@@ -109,6 +116,9 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('[Weather Hourly API] Error:', error);
-    return NextResponse.json({ error: 'Failed to fetch hourly weather' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to fetch hourly weather' },
+      { status: 500, headers: NO_STORE }
+    );
   }
 }

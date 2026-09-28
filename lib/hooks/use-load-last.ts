@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useIsFetching } from '@tanstack/react-query';
+import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
+import { notifyManager, useQueryClient, type Query } from '@tanstack/react-query';
 
 // Query-key prefixes of the deferred trip-planning queries themselves — they
 // must not block their own release. Every query that gates itself on
-// `useLoadLast` belongs here, or two of them starve each other: the second to
-// mount counts the first as an outstanding "other" fetch and the grace window
-// never closes.
+// `useLoadLast` belongs here (or carries `LOAD_LAST_META`, below), or two of
+// them starve each other: the second to mount counts the first as an
+// outstanding "other" fetch and the grace window never closes.
 const DEFERRED_KEY_PREFIXES = [
   'park-best-days-calendar',
   'park-historical-stats',
@@ -16,6 +16,22 @@ const DEFERRED_KEY_PREFIXES = [
   // kept re-arming the grace window.
   'ride-day-curve',
 ];
+
+/**
+ * `meta` for a query that gates itself on `useLoadLast` but whose key it shares with queries that
+ * do not — `['calendar', …]` is the calendar grid's key too, where it is the page's main content
+ * and must keep counting as traffic. The today panel's day detail is a deferred `calendar`
+ * query; without the mark it counted as outstanding traffic in every other gate's window, the
+ * starvation described above, and held the best-days calendar and the stats back by a round trip.
+ */
+export const LOAD_LAST_META = { loadLast: true } as const;
+
+function isOtherTraffic(query: Query): boolean {
+  if (query.meta?.loadLast === true) return false;
+  return !DEFERRED_KEY_PREFIXES.includes(query.queryKey[0] as string);
+}
+
+const subscribeToNothing = () => () => {};
 
 // How long the rest of the page must be network-idle before the deferred
 // queries are released. Mount-time fetches dispatch within the same commit,
@@ -44,11 +60,22 @@ const SAFETY_TIMEOUT_MS = 5000;
  */
 export function useLoadLast(): boolean {
   const [released, setReleased] = useState(false);
+  const client = useQueryClient();
 
-  // In-flight queries other than the deferred ones themselves (reactive).
-  const fetchingOthers = useIsFetching({
-    predicate: (query) => !DEFERRED_KEY_PREFIXES.includes(query.queryKey[0] as string),
-  });
+  // In-flight queries other than the deferred ones themselves (reactive) — until the gate is
+  // released, and not after. This was `useIsFetching`, which stays subscribed to the query cache
+  // for the life of the page: every host of this hook (five on a park page, the ~1,000-line today
+  // panel among them) re-rendered twice on every live poll and every nowcast refetch, for a count
+  // nothing reads any more once `released` is true.
+  const subscribe = useCallback(
+    (onChange: () => void) =>
+      released
+        ? subscribeToNothing()
+        : client.getQueryCache().subscribe(notifyManager.batchCalls(onChange)),
+    [client, released]
+  );
+  const countOthers = () => (released ? 0 : client.isFetching({ predicate: isOtherTraffic }));
+  const fetchingOthers = useSyncExternalStore(subscribe, countOthers, countOthers);
 
   // Release after the page has been network-idle for the grace period. Any
   // fetch starting inside the window re-arms the timer (cleanup clears it).

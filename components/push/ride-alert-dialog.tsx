@@ -17,6 +17,7 @@ import {
 import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { PushDialogHero } from '@/components/push/push-dialog-hero';
+import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import {
   fetchRideAlertsRemote,
@@ -36,7 +37,6 @@ import {
   resolveRideAlertSelection,
   rideAlertPickerRows,
 } from '@/lib/push/ride-alert-picker';
-import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 
@@ -367,14 +367,12 @@ export function RideAlertDialog({
                               {wait} {t('minutes')}
                             </span>
                           ) : wait !== null ? (
-                            <span className="shrink-0 text-sm font-semibold tabular-nums">
-                              <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>
-                                {wait}
-                              </span>
-                              <span className="text-muted-foreground ml-1 text-xs font-normal">
-                                {t('minutes')}
-                              </span>
-                            </span>
+                            <WaitTimeValue
+                              minutes={wait}
+                              shadow={false}
+                              unit={t('minutes')}
+                              className="shrink-0 text-sm font-semibold tabular-nums"
+                            />
                           ) : null}
                           {picked && <Check className="text-primary size-4" aria-hidden="true" />}
                         </CommandItem>

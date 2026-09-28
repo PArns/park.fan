@@ -1,5 +1,6 @@
 import 'server-only';
-import { getContinents } from '@/lib/api/discovery';
+import { getContinentsOrLastGood, perContinentsDocument } from '@/lib/api/discovery';
+import type { Continent } from '@/lib/api/types';
 
 /**
  * The geographic spine of the header menu: continents and their countries, and nothing else.
@@ -51,12 +52,20 @@ export interface GeoMenuContinent {
  * which every page-level caller relies on to reach its error boundary, would take the whole page
  * (and, at build time, the whole build) down instead of reaching one. A plain swallow turns an
  * unreachable API into an empty list, and the menu then renders its plain links without the
- * geographic pane. A header is not worth a 500.
+ * geographic pane. A header is not worth a 500. Unless this process has read the document before:
+ * then the menu it built from that one (`getContinentsOrLastGood`).
+ *
+ * Built once per continents document, not once per request (`perContinentsDocument`): the layout
+ * asks on every page, and the document changes only when its Data Cache entry does — after a
+ * week, or when the `geo` tag drops it.
  */
 export async function getGeoMenu(): Promise<GeoMenuContinent[]> {
-  const continents = await getContinents().catch(() => []);
+  const continents = await getContinentsOrLastGood().catch(() => []);
+  return buildGeoMenu(continents);
+}
 
-  return continents
+const buildGeoMenu = perContinentsDocument((continents: Continent[]): GeoMenuContinent[] =>
+  continents
     .map((continent) => ({
       slug: continent.slug,
       name: continent.name,
@@ -72,5 +81,5 @@ export async function getGeoMenu(): Promise<GeoMenuContinent[]> {
         .sort((a, b) => b.parkCount - a.parkCount || a.slug.localeCompare(b.slug)),
     }))
     .filter((continent) => continent.countries.length > 0)
-    .sort((a, b) => b.parkCount - a.parkCount || a.slug.localeCompare(b.slug));
-}
+    .sort((a, b) => b.parkCount - a.parkCount || a.slug.localeCompare(b.slug))
+);

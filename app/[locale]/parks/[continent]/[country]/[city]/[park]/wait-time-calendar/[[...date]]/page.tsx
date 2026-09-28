@@ -42,6 +42,7 @@ import {
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getServerToday } from '@/lib/utils/server-time';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 import {
   BreadcrumbStructuredData,
@@ -94,7 +95,7 @@ function resolveMonth(
 
 /** The month's name in the reader's language, for the title, the H1 and the breadcrumb. */
 function monthLabel(locale: string, { year, month }: ParkCalendarMonth): string {
-  return new Intl.DateTimeFormat(locale, {
+  return getDateTimeFormat(locale, {
     month: 'long',
     year: 'numeric',
     timeZone: 'UTC',
@@ -234,6 +235,23 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
+  // Fired before the park is awaited, because none of the three needs it: they used to start
+  // only after the park fetch, three translation loads and the malformed-URL check, one round
+  // trip later than necessary. None of them rejects (each answers a failure with null, [] or
+  // false), so a redirect below that leaves one unread cannot leave an unhandled rejection.
+  //
+  // The best-days seed is consumed inside the <Suspense> boundary below, so a cold best-days
+  // compute streams in behind the shell instead of gating TTFB. One clock read serves the seed.
+  const seedNow = new Date();
+  const seedNowMs = seedNow.getTime();
+  const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
+  const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
+  // Whether this park has a wait-time record, for the tile row below. Data-cached for a day and
+  // shared with that page's own render and with `app/sitemap.ts`, so the whole class costs one
+  // upstream call per park per day however many calendar URLs ask. Awaited with the seasons,
+  // rather than on its own line further down where it would be a second round trip.
+  const statsAvailablePromise = hasParkStatsPage(continent, country, city, parkSlug);
+
   // Not `catchNonFatal`: a failed fetch must throw rather than 404 — see the park page.
   const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
   // This page draws no attraction cards, so it ships none of their data — the nine fields its
@@ -289,17 +307,6 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
     permanentRedirect(`/${locale}${malformed}${parkCalendarSuffix(locale, month)}`);
   }
 
-  // Fired, not awaited: consumed inside the <Suspense> boundary below, so a cold best-days
-  // compute streams in behind the shell instead of gating TTFB. One clock read serves the seed.
-  const seedNow = new Date();
-  const seedNowMs = seedNow.getTime();
-  const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
-  const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
-  // Whether this park has a wait-time record, for the tile row below. Data-cached for a day and
-  // shared with that page's own render and with `app/sitemap.ts`, so the whole class costs one
-  // upstream call per park per day however many calendar URLs ask. Fired here and awaited with
-  // the seasons, rather than on its own line further down where it would be a second round trip.
-  const statsAvailablePromise = hasParkStatsPage(continent, country, city, parkSlug);
   // The month the page is ABOUT — on the hub that is the current one, which is the month the grid
   // opens on and therefore the month a summary there would describe. Fired here, awaited inside
   // its own boundary below, and data-cached so tens of thousands of URLs do not each mean an

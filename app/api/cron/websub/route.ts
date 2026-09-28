@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { feedUrlsForPing, pingWebSub, WEBSUB_HUB } from '@/lib/websub';
+import { cronUnauthorized } from '@/lib/security/cron-auth';
 
 export const maxDuration = 30;
 
@@ -23,10 +24,8 @@ export const maxDuration = 30;
  * (`pnpm ping:websub`) after publishing if that matters for a particular post.
  */
 export async function GET(request: Request) {
-  const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const denied = cronUnauthorized(request);
+  if (denied) return denied;
 
   const feeds = feedUrlsForPing();
   const results = await pingWebSub(feeds);

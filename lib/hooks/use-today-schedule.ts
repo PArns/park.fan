@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDurationShort } from '@/lib/i18n/time';
+import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type {
   ParkStatus,
@@ -12,6 +13,7 @@ import type {
   InfluencingHoliday,
   ParkWithAttractions,
 } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 export interface UseTodayScheduleParams {
   timezone: string;
@@ -67,7 +69,8 @@ export interface TodayScheduleResult {
  * current park-local time, offseason reopening, holiday context) from the day-stable park
  * schedule + the browser clock in the park's timezone.
  *
- * Single source of truth shared by <ParkTimeInfo> and the park header board (<ParkHeaderStats>).
+ * Single source of truth shared by <ParkTimeInfo>, the park header (<ParkTodayPanel>) and
+ * <ParkHolidayRow>.
  * Subscribes to the same live park query LiveParkData polls (shared React Query key → no extra
  * fetch) and prefers its fresh values, falling back to the passed props until the poll lands so
  * SSR and the first client render agree (hydration-safe).
@@ -103,19 +106,22 @@ export function useTodaySchedule({
   const hasOperatingSchedule =
     (hasParams ? livePark?.hasOperatingSchedule : undefined) ?? hasOperatingScheduleProp;
 
+  // `parkDayOf` is one cached formatter: this hook runs on every minute tick and every live poll,
+  // and the `toLocaleDateString('en-CA', { timeZone })` it replaces built one per call.
+  const todayInParkTz = currentTime ? parkDayOf(currentTime, timezone) : null;
+
   // Pick today's entry CLIENT-side (browser clock in the park tz) so the static shell never reads
   // the server clock. Before mount we seed with the first entry; real "today" fills in after mount.
   const todaySchedule: ScheduleItem | null = (() => {
     if (!schedule || schedule.length === 0) return null;
     if (!currentTime) return schedule[0];
-    const todayInParkTz = currentTime.toLocaleDateString('en-CA', { timeZone: timezone });
     return schedule.find((s) => s.date === todayInParkTz) ?? schedule[0];
   })();
 
   const currentTimeFormatted = (() => {
     if (!currentTime) return '—';
     try {
-      return currentTime.toLocaleTimeString(locale, {
+      return formatTime(currentTime, locale, {
         timeZone: timezone,
         hour: '2-digit',
         minute: '2-digit',
@@ -134,9 +140,7 @@ export function useTodaySchedule({
     const opening = new Date(openingTime);
     const closing = new Date(closingTime);
     // Guard: opening must be today in the park tz (not tomorrow's entry).
-    const openingDateInParkTz = opening.toLocaleDateString('en-CA', { timeZone: timezone });
-    const todayInParkTz = now.toLocaleDateString('en-CA', { timeZone: timezone });
-    if (openingDateInParkTz !== todayInParkTz) return null;
+    if (parkDayOf(opening, timezone) !== todayInParkTz) return null;
     if (now < opening) {
       return {
         message: `${t('opensIn')} ${formatDurationShort(opening.getTime() - now.getTime(), tCommon)}`,
@@ -165,8 +169,7 @@ export function useTodaySchedule({
     if (!openingTime || !closingTime) return null;
     const opening = new Date(openingTime);
     const closing = new Date(closingTime);
-    const todayInParkTz = currentTime.toLocaleDateString('en-CA', { timeZone: timezone });
-    if (opening.toLocaleDateString('en-CA', { timeZone: timezone }) !== todayInParkTz) return null;
+    if (parkDayOf(opening, timezone) !== todayInParkTz) return null;
     return currentTime >= opening && currentTime < closing ? 'OPERATING' : 'CLOSED';
   })();
   const badgeStatus = liveStatus ?? scheduledStatus ?? status;
@@ -184,11 +187,11 @@ export function useTodaySchedule({
     const now = currentTime;
     const dayDiff = Math.ceil((nextOpening.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
     const totalWeeks = dayDiff / 7;
-    const dateFormatted = nextOpening.toLocaleDateString(locale, {
+    const dateFormatted = getDateTimeFormat(locale, {
       day: 'numeric',
       month: 'long',
       timeZone: timezone,
-    });
+    }).format(nextOpening);
     if (totalWeeks >= 1) {
       const weeks = Math.ceil(totalWeeks);
       return {

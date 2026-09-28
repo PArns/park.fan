@@ -57,7 +57,7 @@
     "updated": "Bijgewerkt",
     "reservation": "Reservering vereist",
     "trend": "Trend",
-    "in": "in",
+    "in": "over",
     "vsTypical": "vs normaal",
     "much_higher": "Veel hoger",
     "higher": "Hoger",
@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Onderdelen van de site",
+    "opensInNewTab": "opent in een nieuw tabblad",
     "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor meer dan 200 pretparken wereldwijd. Plan je parkbezoek met realtime gegevens en navigatie in het park.",
     "keywords": "pretpark wachttijden, live wachttijden, wachttijden vandaag, druktekalender, AI-voorspelling, wachtrijtijden, druktevoorspellingen, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, beste bezoektijd",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Taal wijzigen",
+    "mobileNavigation": "Mobiele navigatie",
+    "menu": "Menu",
     "home": "Home",
     "parks": "Alle parken",
     "continents": "Continenten",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Naar rechts scrollen",
+      "scrollLeft": "Naar links scrollen",
       "clear": "Helder",
       "mainlyClear": "Overwegend helder",
       "partlyCloudy": "Gedeeltelijk bewolkt",
@@ -1580,13 +1587,6 @@
     "viewAllResults": "Bekijk alle resultaten voor \"{query}\"",
     "searchPlaceholder": "Zoek parken, attracties, shows...",
     "at": "in {park}",
-    "types": {
-      "park": "Park",
-      "attraction": "Attractie",
-      "show": "Show",
-      "restaurant": "Restaurant",
-      "location": "Locatie"
-    },
     "headings": {
       "park": "Parken ({count})",
       "attraction": "Attracties ({count})",
@@ -1606,6 +1606,17 @@
     "avgWait": "gem. {minutes} min",
     "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Park",
+      "attraction": "Attractie",
+      "show": "Show",
+      "restaurant": "Restaurant",
+      "location": "Locatie",
+      "glossary": "Woordenboek"
+    },
+    "minQueryLength": "Typ minstens {count} tekens om te zoeken"
   },
   "languageBanner": {
     "message": "Deze site is ook beschikbaar in {language}",
@@ -1850,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Zoekopdracht wissen",
     "blogPosts": {
       "title": "{term} op het blog"
     },

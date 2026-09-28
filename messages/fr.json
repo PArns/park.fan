@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Rubriques du site",
+    "opensInNewTab": "s'ouvre dans un nouvel onglet",
     "description": "Temps d’attente en direct et prévisions d’affluence par IA pour plus de 200 parcs d’attractions dans le monde. Préparez votre visite avec des données en temps réel et la navigation dans le parc.",
     "keywords": "temps d’attente parc attraction, temps d’attente en direct, temps d’attente aujourd’hui, calendrier d’affluence, prévision IA, file d’attente, prévisions affluence, horaires ouverture, parc d’attractions, montagnes russes, Disney temps d’attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Changer de langue",
+    "mobileNavigation": "Navigation mobile",
+    "menu": "Menu",
     "home": "Accueil",
     "parks": "Tous les parcs",
     "continents": "Continents",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Défiler vers la droite",
+      "scrollLeft": "Défiler vers la gauche",
       "clear": "Dégagé",
       "mainlyClear": "Peu nuageux",
       "partlyCloudy": "Partiellement nuageux",
@@ -1580,13 +1587,6 @@
     "viewAllResults": "Voir tous les résultats pour \"{query}\"",
     "searchPlaceholder": "Rechercher parcs, attractions, spectacles...",
     "at": "à {park}",
-    "types": {
-      "park": "Parc",
-      "attraction": "Attraction",
-      "show": "Spectacle",
-      "restaurant": "Restaurant",
-      "location": "Lieu"
-    },
     "headings": {
       "park": "Parcs ({count})",
       "attraction": "Attractions ({count})",
@@ -1606,6 +1606,17 @@
     "avgWait": "{minutes} min en moyenne",
     "attractionsOpen": "{open}/{total} attractions ouvertes",
     "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
+  },
+  "searchPage": {
+    "types": {
+      "park": "Parc",
+      "attraction": "Attraction",
+      "show": "Spectacle",
+      "restaurant": "Restaurant",
+      "location": "Lieu",
+      "glossary": "Dictionnaire"
+    },
+    "minQueryLength": "Tapez au moins {count} caractères pour lancer la recherche"
   },
   "languageBanner": {
     "message": "Ce site est également disponible en {language}",
@@ -1850,6 +1861,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Effacer la recherche",
     "blogPosts": {
       "title": "{term} sur le blog"
     },

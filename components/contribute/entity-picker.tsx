@@ -68,6 +68,9 @@ export function EntityPicker({ value, onChange, disabled }: EntityPickerProps) {
     const timer = setTimeout(
       async () => {
         if (tooShort) {
+          // A request still in flight for the longer query would land after this and refill the
+          // list for text that is no longer in the field.
+          abortRef.current?.abort();
           setResults([]);
           setLoading(false);
           return;
@@ -88,7 +91,8 @@ export function EntityPicker({ value, onChange, disabled }: EntityPickerProps) {
         } catch (err) {
           if (!(err instanceof DOMException && err.name === 'AbortError')) setResults([]);
         } finally {
-          setLoading(false);
+          // An aborted request was superseded, and the one that replaced it owns the spinner.
+          if (!controller.signal.aborted) setLoading(false);
         }
       },
       tooShort ? 0 : 250
@@ -96,6 +100,9 @@ export function EntityPicker({ value, onChange, disabled }: EntityPickerProps) {
 
     return () => clearTimeout(timer);
   }, [query]);
+
+  // Nothing may land after the picker is gone.
+  useEffect(() => () => abortRef.current?.abort(), []);
 
   const parks = useMemo(() => results.filter((r) => r.type === 'park'), [results]);
   const attractions = useMemo(() => results.filter((r) => r.type === 'attraction'), [results]);

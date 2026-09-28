@@ -22,11 +22,15 @@ import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
 
-import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
+import type { ParkWithAttractions, ParkAttraction, RopeDropHeadliner } from '@/lib/api/types';
 
 /** The enter animation of the attractions panel, named because both branches must carry the
  *  same one — see the pre-mount branch below. */
 const ATTRACTIONS_PANEL_ENTER = 'animate-in fade-in-0 slide-in-from-bottom-2 duration-200';
+
+/** Stable fallbacks, so a park without either list does not defeat `RopeDropHeadliners`' memo. */
+const NO_HEADLINERS: RopeDropHeadliner[] = [];
+const NO_ATTRACTIONS: ParkAttraction[] = [];
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
@@ -264,8 +268,8 @@ export const TabsWithHash = memo(function TabsWithHash({
                     not in this list — it widens the grid rather than narrowing it. */}
           {!isNarrowing && (
             <RopeDropHeadliners
-              headliners={park.ropeDropHeadliners ?? []}
-              attractions={park.attractions ?? []}
+              headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
+              attractions={park.attractions ?? NO_ATTRACTIONS}
               parkPath={parkPath}
             />
           )}

@@ -533,6 +533,7 @@ export function setActive(
   parkSlug: string | null,
   date: string | null
 ): PlannerState {
+  if (state.activeParkSlug === parkSlug && state.activeDate === date) return state;
   return { ...state, activeParkSlug: parkSlug, activeDate: date };
 }
 

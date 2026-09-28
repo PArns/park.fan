@@ -1,72 +1,71 @@
 import { formatInTimeZone } from 'date-fns-tz';
 import {
-  getWeatherEmoji,
   hourlyPredictionInstants,
   isServableHourlyDate,
   upcomingHourlyPredictions,
 } from '../lib/utils/calendar-utils.ts';
+import { getWeatherConfig } from '../lib/utils/weather-utils.ts';
 
-const testCases = [
-  // Numeric codes (WMO)
-  { input: 0, expected: '☀️', name: 'Numeric: Clear sky' },
-  { input: 1, expected: '⛅', name: 'Numeric: Mainly clear' },
-  { input: 2, expected: '⛅', name: 'Numeric: Partly cloudy' },
-  { input: 3, expected: '⛅', name: 'Numeric: Overcast' },
-  { input: 45, expected: '🌫️', name: 'Numeric: Fog (45)' },
-  { input: 48, expected: '🌫️', name: 'Numeric: Fog (48)' },
-  { input: 51, expected: '🌦️', name: 'Numeric: Drizzle (51)' },
-  { input: 57, expected: '🌦️', name: 'Numeric: Drizzle (57)' },
-  { input: 61, expected: '🌧️', name: 'Numeric: Rain (61)' },
-  { input: 67, expected: '🌧️', name: 'Numeric: Rain (67)' },
-  { input: 71, expected: '🌨️', name: 'Numeric: Snow (71)' },
-  { input: 77, expected: '🌨️', name: 'Numeric: Snow (77)' },
-  { input: 80, expected: '🌧️', name: 'Numeric: Rain showers (80)' },
-  { input: 82, expected: '🌧️', name: 'Numeric: Rain showers (82)' },
-  { input: 85, expected: '❄️', name: 'Numeric: Snow showers (85)' },
-  { input: 86, expected: '❄️', name: 'Numeric: Snow showers (86)' },
-  { input: 95, expected: '⛈️', name: 'Numeric: Thunderstorm (95)' },
-  { input: 99, expected: '⛈️', name: 'Numeric: Thunderstorm (99)' },
-  { input: 100, expected: '☁️', name: 'Numeric: Unknown code' },
+// ---------------------------------------------------------------------------
+// getWeatherConfig, as the calendar reads it
+//
+// The calendar cell and the day-detail dialog used to map a day's WMO code through their own
+// `getWeatherIcon` / `getWeatherTranslationKey` in this file. They now read `getWeatherConfig`
+// (lib/utils/weather-utils.ts), the map the weather card uses; these are the keys the old copy
+// printed for every code WMO defines, so the swap cannot have changed a label.
+// ---------------------------------------------------------------------------
 
-  // String codes
-  { input: 'clear-day', expected: '☀️', name: 'String: clear-day' },
-  { input: 'clear-night', expected: '🌙', name: 'String: clear-night' },
-  { input: 'cloudy', expected: '☁️', name: 'String: cloudy' },
-  { input: 'partly-cloudy-day', expected: '⛅', name: 'String: partly-cloudy-day' },
-  { input: 'partly-cloudy-night', expected: '☁️', name: 'String: partly-cloudy-night' },
-  { input: 'rain', expected: '🌧️', name: 'String: rain' },
-  { input: 'drizzle', expected: '🌦️', name: 'String: drizzle' },
-  { input: 'snow', expected: '❄️', name: 'String: snow' },
-  { input: 'sleet', expected: '🌨️', name: 'String: sleet' },
-  { input: 'wind', expected: '💨', name: 'String: wind' },
-  { input: 'fog', expected: '🌫️', name: 'String: fog' },
-  { input: 'thunderstorm', expected: '⛈️', name: 'String: thunderstorm' },
-  { input: 'unknown-string', expected: '🌤️', name: 'String: Unknown icon' },
-];
+const calendarLabels = {
+  0: 'clear',
+  1: 'mainlyClear',
+  2: 'partlyCloudy',
+  3: 'overcast',
+  45: 'fog',
+  48: 'fog',
+  51: 'drizzle',
+  53: 'drizzle',
+  55: 'drizzle',
+  56: 'freezingDrizzle',
+  57: 'freezingDrizzle',
+  61: 'rain',
+  63: 'rain',
+  65: 'rain',
+  66: 'freezingRain',
+  67: 'freezingRain',
+  71: 'snow',
+  73: 'snow',
+  75: 'snow',
+  77: 'snowGrains',
+  80: 'rainShowers',
+  81: 'rainShowers',
+  82: 'rainShowers',
+  85: 'snowShowers',
+  86: 'snowShowers',
+  95: 'thunderstorm',
+  96: 'thunderstorm',
+  99: 'thunderstorm',
+};
 
-console.log('🧪 Testing getWeatherEmoji\n');
+console.log('🧪 Testing getWeatherConfig labels for the calendar\n');
 console.log('='.repeat(80) + '\n');
 
 let passed = 0;
 let failed = 0;
+let total = 0;
 
-testCases.forEach((testCase, _index) => {
-  const result = getWeatherEmoji(testCase.input);
-  const success = result === testCase.expected;
-
-  if (success) {
-    console.log(`✅ PASS: ${testCase.name}`);
+for (const [code, expected] of Object.entries(calendarLabels)) {
+  total++;
+  const { label } = getWeatherConfig(Number(code));
+  if (label === expected) {
+    console.log(`✅ PASS: WMO ${code} → ${expected}`);
     passed++;
   } else {
-    console.log(`❌ FAIL: ${testCase.name}`);
-    console.log(`   Input:    ${testCase.input}`);
-    console.log(`   Expected: ${testCase.expected}`);
-    console.log(`   Got:      ${result}`);
+    console.log(`❌ FAIL: WMO ${code}`);
+    console.log(`   Expected: ${expected}`);
+    console.log(`   Got:      ${label}`);
     failed++;
   }
-});
-
-let total = testCases.length;
+}
 
 // ---------------------------------------------------------------------------
 // hourlyPredictionInstants

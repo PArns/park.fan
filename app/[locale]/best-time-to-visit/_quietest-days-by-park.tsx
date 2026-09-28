@@ -4,6 +4,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { extractFeaturedParks } from '@/components/home/featured-parks-section';
 import { ParkComparisonCard } from '@/components/parks/park-comparison-card';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
+import { weekdayName } from '@/lib/utils/intl-format';
 
 /**
  * "The quietest day at each park" — the one section on this page that names parks.
@@ -50,12 +51,9 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
   ]);
 
   // Weekday names from the runtime rather than six translated lists: one less thing to keep in
-  // sync, and it already matches each locale's own conventions. 2023-01-01 was a Sunday, so the
-  // index maps straight onto `DayOfWeekStat.dayOfWeek`.
-  const weekday = new Intl.DateTimeFormat(locale, { weekday: 'long' });
-  const weekdayNames = Array.from({ length: 7 }, (_, i) =>
-    weekday.format(new Date(Date.UTC(2023, 0, 1 + i)))
-  );
+  // sync, and it already matches each locale's own conventions. Indexed like
+  // `DayOfWeekStat.dayOfWeek`, Sunday first.
+  const weekdayNames = Array.from({ length: 7 }, (_, i) => weekdayName(i, locale));
 
   return (
     <section className="mt-10">

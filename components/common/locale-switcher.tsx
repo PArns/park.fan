@@ -1,5 +1,5 @@
 'use client';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import {
@@ -51,6 +51,7 @@ function RoundFlag({ locale }: { locale: Locale }) {
 
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
+  const t = useTranslations('navigation');
   const router = useRouter();
   const pathname = usePathname();
 
@@ -94,7 +95,7 @@ export function LocaleSwitcher() {
               `sm` the flag stands alone and the dropdown, which lists the code AND the language
               name, is one tap away. Above `sm` nothing is tight and the code stays. */}
           <span className="max-sm:hidden">{LOCALE_CODES[locale]}</span>
-          <span className="sr-only">Change language</span>
+          <span className="sr-only">{t('changeLanguage')}</span>
         </Button>
       </DropdownMenuTrigger>
       {/* `z-[80]`, above the sheet's `z-[70]`: on a phone this switcher lives in the burger

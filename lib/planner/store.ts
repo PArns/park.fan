@@ -277,10 +277,20 @@ export const plannerStore = {
   subscribe,
   getSnapshot,
   getServerSnapshot,
-  /** Replace the whole state through a reducer, then notify. */
+  /**
+   * Replace the whole state through a reducer, then notify.
+   *
+   * A reducer that changed nothing returns the state it was given, and that has to end here. The
+   * version bump used to spread it into a new object anyway, so every no-op — a resize step that
+   * snapped to the same minute, `learnTimezone` with the zone it already had — stringified the
+   * whole multi-park plan into localStorage, re-rendered every `usePlanner` subscriber and re-armed
+   * the trip sync for a PUT of an unchanged plan.
+   */
   update(recipe: (state: PlannerState) => PlannerState): void {
     if (typeof window === 'undefined') return;
-    const next = recipe(getSnapshot());
+    const previous = getSnapshot();
+    const next = recipe(previous);
+    if (next === previous) return;
     write({ ...next, version: next.version + 1 });
   },
 };

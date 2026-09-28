@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { ParkTime } from '@/components/common/park-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
+import { formatDurationShort } from '@/lib/i18n/time';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 
@@ -73,9 +74,7 @@ export function ParkCardScheduleFooter({
           try {
             const diff = new Date(todaySchedule.closingTime).getTime() - nowMs;
             if (diff <= 0) return null;
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            return hours > 0 ? `${hours} ${tCommon('hours')}. ${minutes} min.` : `${minutes} min.`;
+            return formatDurationShort(diff, tCommon);
           } catch {
             return null;
           }

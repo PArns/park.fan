@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { showFollowMatchesLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { ShowFollowDialog } from '@/components/push/show-follow-dialog';
 import { SHOW_FOLLOW_MIN_LEAD_MIN } from '@/lib/push/show-lead';
 
@@ -77,7 +77,7 @@ export function ShowFollowBell({
   // statically cached, so a server-side "minutes from now" would be the
   // moment the page was built. `null` until mount, which is also what keeps
   // the first paint identical to the server's.
-  const browserNow = useBrowserNow(30_000);
+  const browserNow = useMinuteNowDate();
   // Read-only here: the dialog owns the write, and the store's own change
   // event is what brings the new state back to every bell on the page.
   // Scoped to this bell's own performance where it has one: the panel lists an
@@ -89,11 +89,16 @@ export function ShowFollowBell({
     [showId, startTime]
   );
   const [open, setOpen] = useState(false);
+  // Mounted on the first press and kept, so the close animation still plays — the same shape as
+  // `RideAlertBell`. Until then the dialog's clock subscription and its two local-store readers do
+  // not run once per bell (one per show card and one per showtime row in the today panel).
+  const [dialogMounted, setDialogMounted] = useState(false);
   const t = useTranslations('pushAlerts.showBell');
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    setDialogMounted(true);
     setOpen(true);
   }, []);
 
@@ -114,7 +119,8 @@ export function ShowFollowBell({
   // somebody" is a question about 18:00, and answering it from the show's
   // whole list would keep a bell on a performance starting in four minutes.
   const leadCandidates = startTime ? [startTime] : (showtimes ?? []).map((s) => s.startTime);
-  if (!following && browserNow && leadCandidates.length > 0) {
+  // Not while its dialog is open: hiding the bell would take the dialog down with it.
+  if (!following && !open && browserNow && leadCandidates.length > 0) {
     const nowMs = browserNow.getTime();
     const nextStartMs = leadCandidates
       .map((iso) => new Date(iso).getTime())
@@ -151,16 +157,18 @@ export function ShowFollowBell({
           <Bell className="text-muted-foreground h-4 w-4" />
         )}
       </button>
-      <ShowFollowDialog
-        open={open}
-        onOpenChange={setOpen}
-        showId={showId}
-        showName={showName ?? ''}
-        showtimes={showtimes}
-        startTime={startTime}
-        timezone={timezone}
-        source={source}
-      />
+      {dialogMounted && (
+        <ShowFollowDialog
+          open={open}
+          onOpenChange={setOpen}
+          showId={showId}
+          showName={showName ?? ''}
+          showtimes={showtimes}
+          startTime={startTime}
+          timezone={timezone}
+          source={source}
+        />
+      )}
     </>
   );
 }

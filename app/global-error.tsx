@@ -7,7 +7,7 @@
  * rely on globals.css, next-intl or any provider — hence inline styles and
  * untranslated copy.
  */
-export default function GlobalError({ reset }: { reset: () => void }) {
+export default function GlobalError({ retry }: { retry: () => void }) {
   return (
     <html lang="en">
       {/* The root layout's `viewport` export does not reach here — this file REPLACES that
@@ -41,7 +41,8 @@ export default function GlobalError({ reset }: { reset: () => void }) {
           back shortly.
         </p>
         <button
-          onClick={reset}
+          // `retry` re-fetches; `reset` would re-render the root layout's failed payload as is.
+          onClick={() => retry()}
           style={{
             marginTop: '0.5rem',
             padding: '0.5rem 1.25rem',

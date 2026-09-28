@@ -129,16 +129,25 @@ export function ParkCompassSlot() {
     if (!shown || !ParkCompass || placed) return;
     const el = slotRef.current;
     if (!el) return;
+    // At most one layout read per frame. The listener read `getBoundingClientRect()` on every
+    // scroll event, unthrottled, for as long as a reader in a park was scrolled past the slot. It
+    // stays a listener rather than an IntersectionObserver because `mayPlace` also asks whether the
+    // page is back at its top, which no observer reports.
+    let frame = 0;
     const check = () => {
+      frame = 0;
       if (mayPlace(el.getBoundingClientRect().top)) setPlaced(true);
     };
-    const frame = requestAnimationFrame(check);
-    window.addEventListener('scroll', check, { passive: true });
-    window.addEventListener('resize', check);
+    const schedule = () => {
+      if (frame === 0) frame = requestAnimationFrame(check);
+    };
+    schedule();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
     return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', check);
-      window.removeEventListener('resize', check);
+      if (frame !== 0) cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
     };
   }, [shown, ParkCompass, placed]);
   const visible = shown && placed && ParkCompass !== null;
