@@ -38,7 +38,7 @@ seo:
     - PortAventura Öffnungszeiten Oktober
 ---
 
-In [PortAventura Park](ref:portaventura-park) bei Salou ist seit dem 19.
+In [PortAventura Park](ref:portaventura-park) ist seit dem 19.
 September Halloween, und das bleibt so bis zum 15. November. Neu ist ein
 fünfter Horror-Pasaje, also ein Walkthrough mit Darstellern: **El Carnicero de
 Penitence**, auf Deutsch „der Metzger von Penitence". Im vergangenen Jahr gab es
@@ -65,21 +65,23 @@ besser nach, bevor er ein Ticket kauft.
 Keiner der Pasajes ist im Parkeintritt enthalten. Die Preise stehen auf der
 Ticketseite des Parks als „ab", je nach Tag kann es mehr werden.
 
-| Ticket                    | Preis ab | Enthält                                                 |
-| ------------------------- | -------- | ------------------------------------------------------- |
-| El Carnicero de Penitence | 10 €     | ein Durchgang, neu                                      |
-| La Isla Maldita           | 12 €     | ein Durchgang, Geisterpiraten im Caribe Aquatic Park    |
-| REC® Experience           | 8,90 €   | ein Durchgang, nach der spanischen Horrorfilmreihe REC  |
-| La Muerte Viva            | 6,90 €   | ein Durchgang                                           |
-| Angkor                    | 6,90 €   | ein Durchgang beim Kannibalenkönig Rajakarn             |
-| Halloween Passport 2      | 11,90 €  | El Carnicero und REC® Experience                        |
-| Halloween Passport 4      | 21,90 €  | alle außer La Isla Maldita                              |
-| Halloween Passport 5      | 30,90 €  | alle fünf                                               |
-| Express Miedo             | 10 €     | schnellerer Einlass bei La Isla Maldita, nur als Zusatz |
+| Ticket                    | Preis ab | Enthält                                             |
+| ------------------------- | -------- | --------------------------------------------------- |
+| El Carnicero de Penitence | 10 €     | ein Durchgang, neu                                  |
+| La Isla Maldita           | 12 €     | ein Durchgang, Geisterpiraten                       |
+| REC® Experience           | 8,90 €   | ein Durchgang, nach den REC-Filmen                  |
+| La Muerte Viva            | 6,90 €   | ein Durchgang                                       |
+| Angkor                    | 6,90 €   | ein Durchgang, Kannibalenkönig                      |
+| Halloween Passport 2      | 11,90 €  | El Carnicero und REC                                |
+| Halloween Passport 4      | 21,90 €  | alle außer La Isla Maldita                          |
+| Halloween Passport 5      | 30,90 €  | alle fünf                                           |
+| Express Miedo             | 10 €     | Express-Einlass bei La Isla Maldita, nur zusätzlich |
 
-Wer den neuen Pasaje sehen will, nimmt den Passport 2: Für 1,90 € mehr als El
-Carnicero allein ist REC dabei. Alle fünf einzeln kosten zusammen 44,60 €, der
-Passport 5 spart davon knapp 14 €.
+Wer den neuen Pasaje sehen will, nimmt den Passport 2: Für 1,90 € mehr als El
+Carnicero allein ist REC dabei. Alle fünf einzeln kosten zusammen 44,60 €, der
+Passport 5 spart davon knapp 14 €. La Isla Maldita spielt im Caribe Aquatic
+Park. REC geht auf die spanische Horrorfilmreihe zurück, als Pasaje gibt es sie
+nur in PortAventura.
 
 ## Ohne Aufpreis
 
@@ -89,8 +91,7 @@ Saloon läuft mit **Resurrection** eine neue Show aus Mystery und Tanz. Abends
 öffnet die Scare Zone La Maldición del Emperador.
 
 Nicht mehr dabei ist der Wasserpark: Der Caribe Aquatic Park hat nur von Mai
-bis September offen und ist jetzt geschlossen. La Isla Maldita spielt zwar dort,
-ist aber ein Pasaje und kein Badetag.
+bis September offen und ist jetzt geschlossen.
 
 Zwischen Januar und März 2026 hat [Dragon Khan](ref:portaventura-park/dragon-khan)
 im Looping und in der Cobra Roll neue Schienen bekommen. Laut Valencia Extra
