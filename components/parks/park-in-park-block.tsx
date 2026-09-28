@@ -8,6 +8,7 @@ import { InParkRideLists, splitInParkRides } from '@/components/parks/nearby-in-
 import { NextBestRides } from '@/components/parks/next-best-rides';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { resolveInParkBlock } from '@/lib/utils/in-park-block';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { cn } from '@/lib/utils';
@@ -64,11 +65,7 @@ export function ParkInParkBlock({
   // Everything below reads browser state, so the server pass and the hydration pass must both
   // see "nothing known yet" — a local guard, not the provider's (the rule in
   // docs/rules/a-client-only-preference-may-not-decide-server-rendered-markup.md).
-  const mounted = useSyncExternalStore(
-    subscribeNever,
-    () => true,
-    () => false
-  );
+  const mounted = useMounted();
   const simulated = useSyncExternalStore(
     subscribeNever,
     () => new URLSearchParams(window.location.search).has('sim'),

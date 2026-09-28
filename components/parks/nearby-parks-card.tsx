@@ -1,6 +1,6 @@
 'use client';
 
-import { useSyncExternalStore, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation } from 'lucide-react';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
@@ -10,6 +10,7 @@ import { NearbyParksListView } from '@/components/parks/nearby-parks-list-view';
 import { Button } from '@/components/ui/button';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { useNearbyAnalytics } from '@/lib/hooks/use-nearby-analytics';
 import { cn } from '@/lib/utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
@@ -24,11 +25,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   const tCommon = useTranslations('common');
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const mounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false
-  );
+  const mounted = useMounted();
 
   const {
     position,
