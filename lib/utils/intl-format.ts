@@ -63,6 +63,22 @@ export function getNumberFormat(
   return formatter;
 }
 
+const relativeTimeFormatters = new Map<string, Intl.RelativeTimeFormat>();
+
+/** Cached {@link Intl.RelativeTimeFormat}. Same arguments → same instance. */
+export function getRelativeTimeFormat(
+  locale?: string | string[],
+  options?: Intl.RelativeTimeFormatOptions
+): Intl.RelativeTimeFormat {
+  const key = cacheKey(locale, options);
+  let formatter = relativeTimeFormatters.get(key);
+  if (!formatter) {
+    formatter = new Intl.RelativeTimeFormat(locale, options);
+    relativeTimeFormatters.set(key, formatter);
+  }
+  return formatter;
+}
+
 /** Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`. */
 export function formatTime(
   value: number | Date,

@@ -44,10 +44,19 @@ export function useBrowserTimezone(): string | null {
  * The reading is taken in the first render that has `mounted`, through a render-phase update
  * (React re-runs the component before committing, so there is no second paint), not in an
  * effect that paints `null` first.
+ *
+ * `enabled: false` takes no reading and returns `null` — for a caller that already has a clock
+ * value from the server and would only re-render to arrive at the same text.
  */
-export function useBrowserNow(): Date | null {
-  const mounted = useMounted();
+export function useBrowserNow(enabled = true): Date | null {
+  // Disabled, the client snapshot is the server's, so hydration has nothing to catch up on and
+  // the caller does not re-render at all.
+  const mounted = useSyncExternalStore(
+    subscribeToNothing,
+    enabled ? clientSnapshot : serverSnapshot,
+    serverSnapshot
+  );
   const [now, setNow] = useState<Date | null>(null);
-  if (mounted && now === null) setNow(new Date());
-  return now;
+  if (enabled && mounted && now === null) setNow(new Date());
+  return enabled ? now : null;
 }

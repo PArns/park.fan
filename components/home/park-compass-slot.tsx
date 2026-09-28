@@ -115,19 +115,20 @@ export function ParkCompassSlot() {
     if (!shown || !ParkCompass || placed) return;
     const el = slotRef.current;
     if (!el) return;
-    const check = () => {
-      if (el.getBoundingClientRect().top >= window.innerHeight * (1 - VISIBLE_SLICE)) {
-        setPlaced(true);
-      }
-    };
-    const frame = requestAnimationFrame(check);
-    window.addEventListener('scroll', check, { passive: true });
-    window.addEventListener('resize', check);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', check);
-      window.removeEventListener('resize', check);
-    };
+    // The same question as `top >= innerHeight × (1 − VISIBLE_SLICE)`, asked of an
+    // IntersectionObserver whose root ends at that line: it answers on its own schedule, once on
+    // observe and again whenever the slot crosses the line. The scroll listener it replaces read
+    // `getBoundingClientRect()` on every scroll event, unthrottled, for as long as a reader in a
+    // park was scrolled past the slot.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const lineY = entry.rootBounds?.bottom ?? window.innerHeight * (1 - VISIBLE_SLICE);
+        if (entry.boundingClientRect.top >= lineY) setPlaced(true);
+      },
+      { rootMargin: `0px 0px -${VISIBLE_SLICE * 100}% 0px` }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [shown, ParkCompass, placed]);
   const visible = shown && placed && ParkCompass !== null;
 

@@ -101,7 +101,14 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   // content teleporting. This is an INTERACTION, so its chunk can load while the visitor is
   // already looking at the map — unlike the hero entrance, which has to own the first frame
   // and is therefore plain CSS.
+  //
+  // A switch only, never the mount: the chips arrive painted at full opacity, and running the
+  // tween on mount fetched the GSAP chunk for every visitor, then snapped the whole row to
+  // opacity 0 and faded it back — the late solo entrance `animateIn` above exists to prevent.
+  const shownSlug = useRef(selectedSlug);
   useEffect(() => {
+    if (shownSlug.current === selectedSlug) return;
+    shownSlug.current = selectedSlug;
     const row = chipsRef.current;
     if (!row) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
