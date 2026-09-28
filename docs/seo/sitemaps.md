@@ -82,13 +82,13 @@ Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) fo
 
 ## What is NOT in the sitemaps (deliberate)
 
-| Page                                      | Reason                                                                                              |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `/impressum`, `/datenschutz`              | **noindex** pages — listing them triggers Search Console errors                                     |
-| Single-park city hubs                     | The city page 308s to its only park (thin-duplicate rule) — a redirecting URL doesn't belong        |
-| Attraction variant slugs (e.g. `taron-2`) | noindex, canonical points to base slug — the attractions route mirrors the page's base-exists check |
-| `/search?q=...`                           | noindex (duplicate content risk); only the plain `/search` is listed                                |
-| Blog EN-fallback URLs                     | Canonicalize to EN original (see above)                                                             |
+| Page                            | Reason                                                                                                                |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `/impressum`, `/datenschutz`    | **noindex** pages — listing them triggers Search Console errors                                                       |
+| Single-park city hubs           | The city page 308s to its only park (thin-duplicate rule) — a redirecting URL doesn't belong                          |
+| Same-name attraction duplicates | The backend lists one row per name (PAR-498); the page noindexes a numbered slug only when its base has the same name |
+| `/search?q=...`                 | noindex (duplicate content risk); only the plain `/search` is listed                                                  |
+| Blog EN-fallback URLs           | Canonicalize to EN original (see above)                                                                               |
 
 ---
 

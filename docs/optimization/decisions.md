@@ -667,11 +667,14 @@ Startseite hat ISR-Seeds und gehört auf ein kurzes TTL oder gar nicht hinein.
 4. **`getGeoMenu()` parst 164 KB `/v1/discovery/continents` bei jedem Seitenaufruf der ganzen
    Site**, um 1.893 B Header-Navigation zu erzeugen. Eine Backend-Projektion, keine
    Frontend-Löschung. Der einzige CPU-Posten in diesem Audit, der über 2 ms liegt.
-5. **Der Sitemap-Varianten-Slug ist für 7 Bahnen invertiert:** `/v1/sitemap/attractions` listet
+5. ~~**Der Sitemap-Varianten-Slug ist für 7 Bahnen invertiert:** `/v1/sitemap/attractions` listet
    `raven` **und** `raven-2`, `getAttractionPaths()` verwirft `raven-2`, weil die Basis existiert
    — aber das Park-Payload enthält nur `raven-2`. Verifiziert: `…/raven` → **404**, `…/raven-2` →
    **200**. Kostenmäßig belanglos (80 Invocations/Tag); es geht darum, dass 7 echte Ride-Seiten
-   aus der Sitemap unerreichbar sind und an ihrer Stelle eine 404 im Index steht. Im selben
+   aus der Sitemap unerreichbar sind und an ihrer Stelle eine 404 im Index steht.~~ **Behoben
+   (PAR-498, PAR-546):** das Backend listet je Name die Zeile, die das Payload serviert, und
+   `getAttractionPaths()` filtert nicht mehr nach Slug; siehe `docs/seo/analysis.md` Punkt 8.
+   **Weiter offen** ist der zweite Teil. Im selben
    Aufwasch: **7.029 der 7.126 Ride-URLs (98,6 %) tragen dasselbe `<lastmod>` 2026-08-28**, weil
    der erste Durchlauf von `diffSnapshot` jeden unbekannten Key mit „heute" stempelt — genau die
    Pathologie, gegen die der Docstring dieser Datei geschrieben ist.
