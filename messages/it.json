@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Sezioni del sito",
+    "opensInNewTab": "si apre in una nuova scheda",
     "description": "Tempi di attesa in diretta e previsioni di affluenza basate sull’IA per oltre 200 parchi a tema nel mondo. Pianifica la tua visita con dati in tempo reale e navigazione nel parco.",
     "keywords": "tempi di attesa parchi a tema, tempi di attesa LIVE, tempi di attesa oggi, calendario affluenza, previsione IA, tempi di coda, previsioni affluenza, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, miglior momento per visitare",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Cambia lingua",
+    "mobileNavigation": "Navigazione mobile",
+    "menu": "Menu",
     "home": "Home",
     "parks": "Tutti i parchi",
     "continents": "Continenti",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Scorri a destra",
+      "scrollLeft": "Scorri a sinistra",
       "clear": "Cielo sereno",
       "mainlyClear": "Prevalentemente sereno",
       "partlyCloudy": "Parzialmente nuvoloso",
@@ -1843,6 +1850,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Cancella ricerca",
     "blogPosts": {
       "title": "{term} sul blog"
     },

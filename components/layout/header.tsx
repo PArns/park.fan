@@ -720,7 +720,7 @@ export function Header({
                   suppressHydrationWarning
                 >
                   <Menu className="h-5 w-5" />
-                  <span className="sr-only">Menu</span>
+                  <span className="sr-only">{t('menu')}</span>
                 </Button>
               </SheetTrigger>
               {/* The scroll belongs to the nav, not to the sheet. `SheetContent` is the
@@ -754,7 +754,7 @@ export function Header({
                 <nav
                   ref={sheetRef}
                   className="flex min-h-0 flex-1 flex-col"
-                  aria-label="Mobile navigation"
+                  aria-label={t('mobileNavigation')}
                   onClick={closeOnSamePageTap}
                 >
                   <div

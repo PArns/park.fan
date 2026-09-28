@@ -162,7 +162,7 @@ export function GlossaryOverviewClient({
               <button
                 onClick={() => setQuery('')}
                 className="text-muted-foreground hover:text-foreground absolute top-1/2 right-1 flex size-11 -translate-y-1/2 items-center justify-center transition-colors sm:right-3.5 sm:size-auto"
-                aria-label="Clear search"
+                aria-label={t('clearSearch')}
               >
                 <X className="h-4 w-4" />
               </button>

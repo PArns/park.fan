@@ -398,6 +398,8 @@
     }
   },
   "footer": {
+    "siteSections": "Onderdelen van de site",
+    "opensInNewTab": "opent in een nieuw tabblad",
     "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor meer dan 200 pretparken wereldwijd. Plan je parkbezoek met realtime gegevens en navigatie in het park.",
     "keywords": "pretpark wachttijden, live wachttijden, wachttijden vandaag, druktekalender, AI-voorspelling, wachtrijtijden, druktevoorspellingen, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, beste bezoektijd",
     "sections": {
@@ -467,6 +469,9 @@
     }
   },
   "navigation": {
+    "changeLanguage": "Taal wijzigen",
+    "mobileNavigation": "Mobiele navigatie",
+    "menu": "Menu",
     "home": "Home",
     "parks": "Alle parken",
     "continents": "Continenten",
@@ -834,6 +839,8 @@
       }
     },
     "weather": {
+      "scrollRight": "Naar rechts scrollen",
+      "scrollLeft": "Naar links scrollen",
       "clear": "Helder",
       "mainlyClear": "Overwegend helder",
       "partlyCloudy": "Gedeeltelijk bewolkt",
@@ -1843,6 +1850,7 @@
     }
   },
   "glossary": {
+    "clearSearch": "Zoekopdracht wissen",
     "blogPosts": {
       "title": "{term} op het blog"
     },
