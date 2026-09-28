@@ -141,6 +141,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
   `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
   `pnpm test:news-redirects`, `pnpm test:news-park`.
+- **[Location is asked for by a tap](docs/rules/location-is-asked-for-by-a-tap.md)** — nothing calls
+  `navigator.geolocation` into a `prompt` state except a button; read `useGeolocation()`. WebKit
+  reads `prompt` while a grant is live, so there the opt-in flag decides
+  (`lib/utils/geolocation-permission.ts`). `pnpm test:geolocation-permission`.
 
 ### Design and layout
 

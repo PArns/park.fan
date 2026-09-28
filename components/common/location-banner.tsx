@@ -6,19 +6,34 @@ import { MapPin, Navigation, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { trackLocationBannerClicked } from '@/lib/analytics/umami';
+import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
+
+/** Epoch ms of the last close. `sessionStorage` until 2026-09: closed for one session only. */
+const DISMISSED_AT_KEY = 'pf_geo_banner_dismissed_at';
+
+function readDismissedAt(): number | null {
+  try {
+    const raw = localStorage.getItem(DISMISSED_AT_KEY);
+    return raw == null ? null : Number(raw);
+  } catch {
+    return null;
+  }
+}
 
 interface LocationBannerProps {
   ariaLabel?: string;
 }
 
 /**
- * Banner shown when the user has not granted location (prompt) or has denied it.
- * Renders only when there is no position; user can click to request location.
+ * Banner shown when the user has not granted location yet (prompt).
+ * Not shown once the browser has denied it: the button would do nothing, and the browser alone
+ * can lift a denial. Closing it keeps it closed for `LOCATION_BANNER_QUIET_MS` (30 days).
  */
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  const { permissionGranted, loading, initialCheckDone, refresh } = useGeolocation();
+  const { permissionGranted, permissionDenied, loading, initialCheckDone, refresh } =
+    useGeolocation();
   // Server snapshot = false → always null during SSR and the hydration pass,
   // matching what the server produced. Client snapshot = true, so after
   // hydration the real geolocation state takes over.
@@ -28,13 +43,21 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     () => false
   );
 
-  // Dismissible: hide for the rest of the session once the user closes it (the banner
-  // is client-only, so reading sessionStorage in the initializer is safe).
+  // Dismissible: hide for 30 days once the user closes it (the banner is client-only, so reading
+  // localStorage in the initializer is safe). One session was too short: a visitor who had said
+  // no was asked again on the next visit, and the one after.
   const [dismissed, setDismissed] = useState(
-    () => typeof window !== 'undefined' && sessionStorage.getItem('locationBannerDismissed') === '1'
+    () => typeof window !== 'undefined' && locationBannerIsQuiet(readDismissedAt(), Date.now())
   );
 
-  if (!mounted || !initialCheckDone || permissionGranted || loading || dismissed) {
+  if (
+    !mounted ||
+    !initialCheckDone ||
+    permissionGranted ||
+    permissionDenied ||
+    loading ||
+    dismissed
+  ) {
     return null;
   }
 
@@ -73,7 +96,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
           onClick={() => {
             setDismissed(true);
             try {
-              sessionStorage.setItem('locationBannerDismissed', '1');
+              localStorage.setItem(DISMISSED_AT_KEY, String(Date.now()));
             } catch {}
           }}
           aria-label={tCommon('close')}

@@ -12,6 +12,8 @@ interface UseNearbyAnalyticsParams {
   nearbyData: NearbyResponse | undefined;
   position: GeolocationPosition | null;
   permissionDenied: boolean;
+  /** The context's permission check has run; a denial present at that point was stored, not answered. */
+  initialCheckDone: boolean;
   locationSource: 'gps' | 'ip';
   setIsInPark: (inPark: boolean) => void;
 }
@@ -31,11 +33,13 @@ export function useNearbyAnalytics({
   nearbyData,
   position,
   permissionDenied,
+  initialCheckDone,
   locationSource,
   setIsInPark,
 }: UseNearbyAnalyticsParams): void {
   const hasTrackedGranted = useRef(false);
   const hasTrackedDenied = useRef(false);
+  const seenCheck = useRef(false);
   const lastTrackedDataKey = useRef<string | null>(null);
 
   // Track analytics when nearby data changes (once per result, include source: gps | ip)
@@ -78,12 +82,21 @@ export function useNearbyAnalytics({
     if (!position) hasTrackedGranted.current = false;
   }, [position, permissionDenied]);
 
-  // Track permission denied once when user denies location
+  // Track permission denied once when user denies location. The context also reports a denial
+  // the browser had stored from an earlier visit, as soon as its check has run; that one is not
+  // an answer given now, and counting it would bill an event on every page view of every visitor
+  // who ever said no. So the first state seen after the check is taken as already tracked.
   useEffect(() => {
+    if (!initialCheckDone) return;
+    if (!seenCheck.current) {
+      seenCheck.current = true;
+      hasTrackedDenied.current = permissionDenied;
+      return;
+    }
     if (permissionDenied && !hasTrackedDenied.current) {
       hasTrackedDenied.current = true;
       trackNearbyPermissionDenied();
     }
     if (!permissionDenied) hasTrackedDenied.current = false;
-  }, [permissionDenied]);
+  }, [permissionDenied, initialCheckDone]);
 }

@@ -4,6 +4,30 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Standort: seltener fragen, ein Ja länger nutzen
+
+Wie lange ein Ja zum Standort gilt, entscheidet der Browser, nicht die Seite. Wie oft wir fragen,
+entscheiden wir. Fünf Stellen haben öfter gefragt als nötig:
+
+- **Safari hat bei jedem Besuch wieder gefragt.** Safari meldet über die Permissions-API für den
+  Standort `prompt`, auch wenn der Besucher gerade zugestimmt hat. Das gemerkte Ja
+  (`pf_geo_optin`) wurde nur bei `null` genutzt, also nie. Jetzt liest die Seite auf WebKit mit
+  gemerktem Ja still beim Laden, statt das Banner zu zeigen.
+- **Die Parkkarte hat selbst gefragt,** beim Öffnen des Karten-Tabs und in jedem Blogartikel mit
+  Karte. Chrome sperrt eine Seite nach drei ignorierten Anfragen für eine Woche. Die Karte nimmt
+  den Standort jetzt aus dem Context.
+- **Nach Ablauf von „Nur dieses Mal"** (Chrome, nach fünf Minuten im Hintergrund) kam beim
+  Zurückwechseln in den Tab sofort ein Prompt. Die Hintergrund-Aktualisierung prüft jetzt vorher
+  den Status.
+- **Wer den Standort blockiert hatte,** sah trotzdem Banner und „Standort nutzen", und der Knopf
+  konnte nichts tun. Das Umami-Event für eine Ablehnung zählt weiter nur eine Antwort auf der Seite.
+- **Das geschlossene Banner** blieb eine Browser-Sitzung zu, jetzt 30 Tage.
+
+Details und Messungen: [location-is-asked-for-by-a-tap.md](rules/location-is-asked-for-by-a-tap.md),
+Test: `pnpm test:geolocation-permission`.
+
+---
+
 ## Unreleased – Kompass nach Design-, Architektur- und Usability-Review
 
 Drei Prüfer haben den Kompass unter dem Hero durchgesehen, das hier ist umgesetzt:
