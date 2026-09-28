@@ -64,6 +64,25 @@ export function sameLocationBasis(
 }
 
 /**
+ * The last entry parsed, keyed by its raw string.
+ *
+ * `placeholderData` calls the reader on every render of every consumer while a query has no data
+ * — the header, both menu panels and about nine homepage sections — and the whole persisted
+ * answer was parsed each time, usually to be thrown away for being older than five minutes. The
+ * string only changes when `writeCache` (or another tab) writes, so one parse per write is enough.
+ */
+let lastRaw: string | null = null;
+let lastParsed: CachedNearby | null = null;
+
+function parseEntry(raw: string): CachedNearby | null {
+  if (raw !== lastRaw) {
+    lastParsed = JSON.parse(raw) as CachedNearby | null;
+    lastRaw = raw;
+  }
+  return lastParsed;
+}
+
+/**
  * Read from localStorage. Returns undefined when:
  * - No entry exists, or it is unreadable
  * - The entry is older than CACHE_MAX_AGE_MS
@@ -81,7 +100,7 @@ export function readCacheEntry(
   try {
     const raw = localStorage.getItem(CACHE_KEY);
     if (!raw) return undefined;
-    const cached: CachedNearby = JSON.parse(raw);
+    const cached = parseEntry(raw);
     if (!cached?.data || !cached.cachedAt) return undefined;
     if (Date.now() - cached.cachedAt > CACHE_MAX_AGE_MS) return undefined;
     if (!sameLocationBasis(currentLat, currentLng, cached)) return undefined;

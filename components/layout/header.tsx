@@ -16,7 +16,6 @@ import {
   Compass,
   Ellipsis,
   House,
-  MapPin,
   Megaphone,
   Menu,
   Newspaper,
@@ -41,19 +40,16 @@ import { TemperatureUnitToggle } from '@/components/common/temperature-unit-togg
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
 import { PlannerHeaderButton } from '@/components/planner/planner-header-button';
-import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
-import { useMounted } from '@/lib/hooks/use-mounted';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { HeaderNearbyPark } from '@/components/layout/header-nearby-park';
 import { translateContinent } from '@/lib/i18n/helpers';
-import type { NearbyParksData } from '@/types/nearby';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 import type { NewsMenu } from '@/lib/navigation/news-menu';
 import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
-/** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
-const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
+/** Stable fallback, so a missing list does not defeat `ParksMenuPanel`'s memo. */
+const NO_FEATURED_PARKS: FeaturedParkCard[] = [];
 
 /**
  * Where a transparent hero bar turns solid, and where it turns back — two numbers, not one.
@@ -138,22 +134,6 @@ export function Header({
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
   const pathname = usePathname();
-  const { data: nearbyData } = useHomeNearbyParks();
-  const parks =
-    nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
-  const nearestPark = parks[0];
-  /*
-   * Erst nach dem Mount, wie überall an dieser Query.
-   *
-   * `useHomeNearbyParks` seedet aus `localStorage`, also gibt es die Pille auf dem Server nicht
-   * und im ersten Client-Render eines Besuchers, der schon einmal in Parknähe war, schon — ein
-   * Hydration-Fehler mitten im Header, nach dem React die ganze Leiste neu rendert. Auf einer
-   * Maschine ohne Standort fällt das nie auf, weil die Pille dort nie erscheint.
-   */
-  const mounted = useMounted();
-  const showNearbyPark =
-    mounted && nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
-
   const isHomePage = pathname === '/';
   const isFancast = pathname === '/fancast';
   // The hub uses localized slugs (usePathname is locale-stripped but keeps the
@@ -579,20 +559,7 @@ export function Header({
               chip 142 px in French at a 1280–1535 px bar: the name is cut at 96 px there
               („Movie Park Ge…", 140 px of chip), and gets its 140 px from 1536, where the bar is
               256 px wider. */}
-          {showNearbyPark && (
-            <Link
-              href={convertApiUrlToFrontendUrl(nearestPark.url)}
-              prefetch={false}
-              className="bg-muted/80 hover:bg-muted text-foreground flex size-7 items-center justify-center gap-1.5 rounded-full text-xs font-medium transition-colors @min-[1280px]:w-auto @min-[1280px]:px-3"
-              aria-label={t('nearbyPark', { parkName: nearestPark.name })}
-              title={t('nearbyPark', { parkName: nearestPark.name })}
-            >
-              <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              <span className="hidden max-w-24 truncate @min-[1280px]:inline @min-[1536px]:max-w-[140px]">
-                {nearestPark.name}
-              </span>
-            </Link>
-          )}
+          <HeaderNearbyPark variant="bar" />
           {/* The order is the phone menu's (Patrick, 2026-09-25): Backstage, News, Parks
               entdecken, then „Mehr" where the sheet lists its three destinations (Beste
               Reisezeit, Wörterbuch, So funktioniert's), then the planner. The homepage has no
@@ -645,7 +612,7 @@ export function Header({
               icon={RollerCoaster}
               floating={isTransparent}
             >
-              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? []} />
+              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? NO_FEATURED_PARKS} />
             </NavMenu>
           ) : (
             <Link href="/parks" prefetch={false} className={navLinkClass}>
@@ -829,18 +796,7 @@ export function Header({
                       <ThemeToggle />
                       <TemperatureUnitToggle />
                     </div>
-                    {showNearbyPark && (
-                      <Link
-                        href={convertApiUrlToFrontendUrl(nearestPark.url)}
-                        prefetch={false}
-                        className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
-                        aria-label={t('nearbyPark', { parkName: nearestPark.name })}
-                        data-sheet-stagger
-                      >
-                        <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-                        {t('nearbyPark', { parkName: nearestPark.name })}
-                      </Link>
-                    )}
+                    <HeaderNearbyPark variant="sheet" />
                     {/* The newest news post, as the same chip the homepage hero draws beside its
                       badge — a find like the nearby park above, not a menu entry. From the
                       news menu's own data, so it costs the sheet nothing new. */}

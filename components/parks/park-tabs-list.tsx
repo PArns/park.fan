@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { useLocale } from 'next-intl';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link, getPathname } from '@/i18n/navigation';
@@ -42,7 +43,12 @@ import { cn } from '@/lib/utils';
  * `ParkNavTiles` reads too. That is what keeps this row and the one on the calendar page the
  * same row rather than two rows that happen to look alike.
  */
-export function ParkTabsList(props: ParkTileSource) {
+/**
+ * Memoised: `TabsWithHash` builds this row inline, and every search keystroke, pill tap and tab tap
+ * re-rendered it — `useParkTileItems` and its seven tiles — in the commit the interaction is
+ * waiting on, with props that had not changed.
+ */
+export const ParkTabsList = memo(function ParkTabsList(props: ParkTileSource) {
   const locale = useLocale();
   const { continent, country, city, parkSlug } = props;
   const { items, tileCount } = useParkTileItems(props);
@@ -101,7 +107,7 @@ export function ParkTabsList(props: ParkTileSource) {
       })}
     </ParkTileGrid>
   );
-}
+});
 
 function TabTile({ item, span }: { item: ParkTileItem; span?: string }) {
   return (

@@ -132,6 +132,12 @@ export function useAttractionFilter({
   const deferredOnlyFastPass = useDeferredValue(onlyFastPass);
   const deferredOnlySingleRider = useDeferredValue(onlySingleRider);
   const deferredShowOffSeasonAttractions = useDeferredValue(showOffSeasonAttractions);
+  // The rider height too. It was read live on the argument that a slider is not a tap, but a
+  // press on the resting slider switches the filter on, the ✕ and the empty state's reset are
+  // clicks, and arrow keys step it: each re-filtered the grid in its own commit, and a reset
+  // remounted every card the height had hidden. The slider's thumb, its label and the
+  // "23 of 40" readout keep the live value.
+  const deferredRiderHeight = useDeferredValue(riderHeight);
 
   // Clear search on Escape key. The updater form reads the current query, so the listener has
   // no dependencies — it used to depend on `searchQuery`, which tore down and re-attached a
@@ -185,7 +191,7 @@ export function useAttractionFilter({
         (a) =>
           a.isHeadliner &&
           (deferredShowOffSeasonAttractions || isInSeason(a)) &&
-          (riderHeight === null || canRideAtHeight(a, riderHeight)) &&
+          (deferredRiderHeight === null || canRideAtHeight(a, deferredRiderHeight)) &&
           (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
           matchesWet(a, deferredWetMode) &&
           (!deferredOnlyFastPass || hasFastPass(a)) &&
@@ -208,7 +214,7 @@ export function useAttractionFilter({
   }, [
     attractionsByLand,
     deferredShowOffSeasonAttractions,
-    riderHeight,
+    deferredRiderHeight,
     deferredOnlyOpen,
     deferredWetMode,
     deferredOnlyFastPass,
@@ -330,24 +336,29 @@ export function useAttractionFilter({
    * "Taron". So the filter holds, and the empty state offers to clear it by name.
    */
   const heightFilteredByLand = useMemo(() => {
-    if (riderHeight === null) return attractionsByLand;
+    if (deferredRiderHeight === null) return attractionsByLand;
     const result: Record<string, ParkAttraction[]> = {};
     for (const [land, attractions] of Object.entries(attractionsByLand)) {
-      const filtered = attractions.filter((a) => canRideAtHeight(a, riderHeight));
+      const filtered = attractions.filter((a) => canRideAtHeight(a, deferredRiderHeight));
       if (filtered.length > 0) result[land] = filtered;
     }
     return result;
-  }, [attractionsByLand, riderHeight]);
+  }, [attractionsByLand, deferredRiderHeight]);
 
   /** Denominator and numerator of the panel's "23 of 40" readout. */
   const totalAttractionCount = useMemo(
     () => Object.values(attractionsByLand).flat().length,
     [attractionsByLand]
   );
-  const rideableAttractionCount = useMemo(
-    () => Object.values(heightFilteredByLand).flat().length,
-    [heightFilteredByLand]
-  );
+  // Counted off the LIVE height: it is the slider's own readout and paints with the thumb.
+  const rideableAttractionCount = useMemo(() => {
+    if (riderHeight === null) return totalAttractionCount;
+    let count = 0;
+    for (const attractions of Object.values(attractionsByLand)) {
+      for (const a of attractions) if (canRideAtHeight(a, riderHeight)) count++;
+    }
+    return count;
+  }, [attractionsByLand, riderHeight, totalAttractionCount]);
 
   /**
    * "Open now" and "you may get wet", applied after the height and before the
@@ -435,7 +446,7 @@ export function useAttractionFilter({
     return fuse
       .search(searchTerm)
       .map((result) => result.item)
-      .filter((a) => riderHeight === null || canRideAtHeight(a, riderHeight))
+      .filter((a) => deferredRiderHeight === null || canRideAtHeight(a, deferredRiderHeight))
       .reduce(
         (acc, attraction) => {
           const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
@@ -444,7 +455,14 @@ export function useAttractionFilter({
         },
         {} as Record<string, ParkAttraction[]>
       );
-  }, [isSearching, searchTerm, inSeasonAttractionsByLand, fuse, attractionLandKey, riderHeight]);
+  }, [
+    isSearching,
+    searchTerm,
+    inSeasonAttractionsByLand,
+    fuse,
+    attractionLandKey,
+    deferredRiderHeight,
+  ]);
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
@@ -455,12 +473,12 @@ export function useAttractionFilter({
    * than the pills. It gates the rope-drop block, which is advice about the whole park: mounting
    * or unmounting that block is one of the costs a pill tap used to pay before its paint, and
    * flipping it off the urgent value would put the advice back over a grid that no longer
-   * matches it for as long as the deferred render takes. The rider height is the exception and
-   * is read live — it is a slider, not a pill, and it was never on the tap path.
+   * matches it for as long as the deferred render takes. The rider height is read the same way,
+   * for the same reason.
    */
   const isNarrowing =
     isSearching ||
-    riderHeight !== null ||
+    deferredRiderHeight !== null ||
     deferredOnlyOpen ||
     deferredWetMode !== null ||
     deferredOnlyFastPass ||

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -87,7 +87,15 @@ interface ParksMenuPanelProps {
   featured: FeaturedParkCard[];
 }
 
-export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
+/**
+ * Memoised: the header renders every mega-menu panel on each of its own renders (a burger tap, the
+ * hero bar solidifying, a resize) — below the 1024 px bar, where the nav is hidden, all of it for
+ * nothing. The props come from the server and hold still.
+ */
+export const ParksMenuPanel = memo(function ParksMenuPanel({
+  continents,
+  featured,
+}: ParksMenuPanelProps) {
   /*
    * Die Parks in Reichweite, im selben Streifen wie die kuratierten.
    *
@@ -415,7 +423,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
       </div>
     </div>
   );
-}
+});
 
 /** What a hovered country row hands to the detail row below it. */
 function target(continent: string, country: { slug: string; code: string }) {

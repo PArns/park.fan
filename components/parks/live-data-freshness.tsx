@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { AlertTriangle, RotateCw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,7 @@ import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { liveDataHint, newestQueueUpdate } from '@/lib/utils/live-data-freshness';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface LiveDataFreshnessProps {
@@ -42,7 +44,8 @@ const DAY_AND_TIME: Intl.DateTimeFormatOptions = {
  * instead of taking the query state as props, because `TabsWithHash` is memoized precisely so the
  * attraction grid does not re-render on every `isFetching` flip; only this row does.
  */
-export function LiveDataFreshness({
+/** Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move. */
+export const LiveDataFreshness = memo(function LiveDataFreshness({
   park,
   todayIso,
   continent,
@@ -119,12 +122,12 @@ export function LiveDataFreshness({
       )}
     </div>
   );
-}
+});
 
 /** `YYYY-MM-DD` of an instant in the park's timezone, or `null` for an unusable timezone. */
 function parkDayOf(ms: number, timeZone: string): string | null {
   try {
-    return new Date(ms).toLocaleDateString('en-CA', { timeZone });
+    return getDateTimeFormat('en-CA', { timeZone }).format(ms);
   } catch {
     return null;
   }

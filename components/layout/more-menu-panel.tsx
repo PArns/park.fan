@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { BookOpen, CalendarRange, Compass, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -146,7 +147,8 @@ function MoreMenuCard({
   );
 }
 
-export function MoreMenuPanel({
+/** Memoised for the same reason as `ParksMenuPanel`. */
+export const MoreMenuPanel = memo(function MoreMenuPanel({
   bestTimeHref,
   glossaryHref,
   howtoHref,
@@ -266,4 +268,4 @@ export function MoreMenuPanel({
       {extras}
     </div>
   );
-}
+});
