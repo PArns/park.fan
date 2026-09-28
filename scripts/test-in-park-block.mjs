@@ -1,6 +1,6 @@
-// Tests for the park page's "near you" row (`lib/utils/in-park-block.ts`, PAR-418).
+// Tests for the park page's "near you" decision (`lib/utils/in-park-block.ts`, PAR-418).
 //
-// The row decides between five states from browser inputs the server cannot see. What must hold:
+// It decides between five states from browser inputs the server cannot see. What must hold:
 // no state asks for location by itself, the lists appear only when the nearby answer places the
 // visitor in THIS park, a coarse fix hides distances, and distances are measured again from the
 // current fix wherever the page knows a ride's point.

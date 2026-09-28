@@ -85,11 +85,18 @@ export function ParkDistance({
   latitude,
   longitude,
   size = 'sm',
+  keepGap = false,
   className,
 }: {
   latitude: number | string | null | undefined;
   longitude: number | string | null | undefined;
   size?: 'sm' | 'md';
+  /**
+   * Hold the empty box at every width when no position is coming, not only below `sm`. For a row
+   * where something follows the distance on the same line: the park page's location line does
+   * from `lg` up, and dropping the box there moved it 160 px to the left (0.004 CLS at 1280 px).
+   */
+  keepGap?: boolean;
   className?: string;
 }) {
   const t = useTranslations('nearby');
@@ -115,7 +122,8 @@ export function ParkDistance({
   // gap — it un-wraps the row, and the page below moves up a whole line (34px, ~0.106 CLS).
   // Keep the box, empty and unannounced, for as long as the row is narrow enough to care;
   // from `sm` up the row has the width to absorb the change without reflowing, so it goes.
-  if (meters === null) return <DistanceGap sample={sample} size={size} className={className} />;
+  if (meters === null)
+    return <DistanceGap sample={sample} size={size} keepGap={keepGap} className={className} />;
 
   // The value sits inside the same reservation the placeholder used, so the
   // three states are one box: "250 m" does not shrink it and Spanish does not
@@ -130,19 +138,27 @@ export function ParkDistance({
 }
 
 /**
- * The placeholder's box without the pulse, held below `sm` only — this is the terminal state, so
- * a shimmer would promise a value that is never going to arrive.
+ * The placeholder's box without the pulse, held below `sm` only unless `keepGap` — this is the
+ * terminal state, so a shimmer would promise a value that is never going to arrive.
  */
 function DistanceGap({
   sample,
   size,
+  keepGap,
   className,
 }: {
   sample: string;
   size: 'sm' | 'md';
+  keepGap: boolean;
   className?: string;
 }) {
-  return <DistanceReservation sample={sample} size={size} className={cn('sm:hidden', className)} />;
+  return (
+    <DistanceReservation
+      sample={sample}
+      size={size}
+      className={cn(!keepGap && 'sm:hidden', className)}
+    />
+  );
 }
 
 /**

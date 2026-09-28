@@ -114,7 +114,7 @@ interface GeolocationProviderProps {
  * - Granted (Permissions API): read on mount, on every page, no banner.
  * - Denied: remembered as denied, so no control offers a button that cannot work.
  * - Said yes on an earlier visit: read as soon as a page part that uses location is mounted
- *   (`useLocationNeeded`: the homepage banner, the park page's near-you row). That read may open
+ *   (`useLocationNeeded`: the homepage banner, the park page's location line). That read may open
  *   the browser's prompt; on a blog or news page nothing uses location, so nothing asks.
  * - Nobody answered yet: read nothing; those same page parts show their own button first.
  * - Follows permission changes (a grant in another tab or in the site settings, an expired one).
@@ -391,7 +391,7 @@ export function useGeolocation() {
 
 /**
  * Marks the calling component as a page part that uses location: the homepage banner and the park
- * page's near-you row, the two places that also offer the button. While one is mounted, a visitor
+ * page's location line, the places that also offer the button. While one is mounted, a visitor
  * who said yes on an earlier visit is asked by the browser directly, once per page lifetime. Every
  * other page leaves location alone unless the browser reports `granted`.
  */

@@ -38,6 +38,12 @@ interface ParkTitleHeaderProps {
   suffix: string;
   /** The server-rendered intro paragraph. Same rule: one per page, in that page's words. */
   intro: string;
+  /**
+   * The page's location control, on the address line after the distance (`ParkLocationLine`).
+   * A slot and not a flag: only the park page asks for location, and a component imported here
+   * would put its translations on the calendar and the record too.
+   */
+  location?: React.ReactNode;
   /** Anything the page wants under the intro — a back link, for instance. */
   children?: React.ReactNode;
 }
@@ -65,6 +71,7 @@ export async function ParkTitleHeader({
   locale,
   suffix,
   intro,
+  location,
   children,
 }: ParkTitleHeaderProps) {
   const tGeo = await getTranslations('geo');
@@ -114,7 +121,17 @@ export async function ParkTitleHeader({
             </address>
             {/* How far the visitor is from this park — client-only (needs their position), so it
               just appears next to the address once known. */}
-            <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
+            <ParkDistance
+              latitude={park.latitude}
+              longitude={park.longitude}
+              size="md"
+              keepGap={!!location}
+            />
+            {/* A line of its own below `lg`: beside the address and the distance a phone has
+              about 250 px, and every locale's "At the park? Show rides near you" is longer. From
+              `lg` up it takes what is left of the line (`basis-0`), so its own width never decides
+              whether the row wraps and no state of it can move the card. */}
+            {location && <div className="min-w-0 basis-full lg:flex-1 lg:basis-0">{location}</div>}
           </div>
         </div>
         {park.id && <ParkFavoriteButton parkId={park.id} />}

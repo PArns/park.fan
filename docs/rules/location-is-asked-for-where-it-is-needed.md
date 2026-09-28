@@ -4,23 +4,31 @@ One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md),
 
 Two kinds of page use the visitor's position for something the coarse IP position from `/api/nearby`
 cannot give: the **homepage** (the in-park hero, the nearby parks, the compass) and the **park
-pages** (the near-you row with the rides around you). They ask. No other page does. Blog and news
-posts are where search traffic lands, and a reader who came for an article gets no prompt there.
+pages** (the location line in the title card, and the rides around you). They ask. No other page
+does. Blog and news posts are where search traffic lands, and a reader who came for an article gets
+no prompt there.
 How a page asks depends on what the visitor answered before:
 
-| Visitor                                                                     | Homepage, park page                                                                                        | Every other page |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------- |
-| browser reports `granted`                                                   | read, no prompt                                                                                            | read, no prompt  |
-| said yes on an earlier visit (`pf_geo_optin`), browser no longer reports it | the browser's prompt, directly, once per page lifetime                                                     | nothing          |
-| never answered                                                              | our ask first: the banner (homepage) or the near-you row's button (park page); the prompt comes from a tap | nothing          |
-| said no: closed the banner, dismissed or refused the prompt                 | no direct prompt until the next yes, no banner for 30 days; both rows keep their button                    | nothing          |
-| browser reports `denied`                                                    | both rows say location is blocked and how to lift it (Chrome 144+: the browser's `<geolocation>` button)   | nothing          |
+| Visitor                                                                     | Homepage, park page                                                                                         | Every other page |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
+| browser reports `granted`                                                   | read, no prompt                                                                                             | read, no prompt  |
+| said yes on an earlier visit (`pf_geo_optin`), browser no longer reports it | the browser's prompt, directly, once per page lifetime                                                      | nothing          |
+| never answered                                                              | our ask first: the banner (homepage) or the location line's button (park page); the prompt comes from a tap | nothing          |
+| said no: closed the banner, dismissed or refused the prompt                 | no direct prompt until the next yes, no banner for 30 days; both rows keep their button                     | nothing          |
+| browser reports `denied`                                                    | both rows say location is blocked and how to lift it (Chrome 144+: the browser's `<geolocation>` button)    | nothing          |
 
 **A no can always be taken back** on the two pages that ask. The banner is the ask that comes by
-itself; below the nearby chapter's lead on the homepage sits `HomeLocationRow`, and at the top of
-every park page `ParkInParkBlock`. Both are server-rendered at one fixed height (44 px) and never go
-away: a button while nothing is decided or after a no, "location on" once it is, and after a block
-the line "blocked in your browser" with the way out. A script cannot lift a block, so
+itself; below the nearby chapter's lead on the homepage sits `HomeLocationRow`, and on every park
+page `ParkLocationLine`, on the title card's address line after the distance. Both are
+server-rendered at one fixed height (44 px below `sm`; the park line is 32 px from `sm` up) and never
+go away: a button while nothing is decided or after a no, "location on" once it is, and after a
+block the line "blocked in your browser" with the way out. On the park page "location on" is also
+where the visitor is not in the park; the distance is the badge beside it, never a second sentence
+(the park line said „Du bist 55,7 km vom Park entfernt" under a badge saying „55,7 km entfernt"
+until 2026-09-28, in a row of its own between two cards). In the park the line says so, and the
+rides around the visitor open above the tabs (`ParkInParkBlock`). After a block the park line says
+„Standort blockiert" (`location.blocked`), not the homepage's full sentence, which on a 360 px phone
+kept about 70 px beside the help. A script cannot lift a block, so
 `LocationBlockedHelp` offers what can: in Chrome 144+ the browser's own `<geolocation>` element,
 whose tap may lift a block or the week-long embargo from the page itself, and everywhere else the
 steps for this browser's settings in a popover (`locationHelpPlatform`: Safari on iOS, Safari on
@@ -30,9 +38,9 @@ settings, Chrome tells the page through the permission's `change` event and it r
 
 A page part declares that it uses location with `useLocationNeeded()`
 (`lib/contexts/geolocation-context.tsx`); today that is `LocationBanner` and `HomeLocationRow` on
-the homepage and `ParkInParkBlock` on the park pages, the places that also carry the button. Nothing calls
-`navigator.geolocation` into a `prompt` state by itself; components read `useGeolocation()`. The
-decisions live in `lib/utils/geolocation-permission.ts` and are pinned by
+the homepage and `ParkLocationLine` on the park pages, the places that also carry the button.
+Nothing calls `navigator.geolocation` into a `prompt` state by itself; components read
+`useGeolocation()`. The decisions live in `lib/utils/geolocation-permission.ts` and are pinned by
 `pnpm test:geolocation-permission`.
 
 ## A page cannot ask for a longer grant
@@ -78,7 +86,7 @@ This rule went through three versions on 2026-09-28, and each one fixed a real c
    counts an ignored prompt: after three it blocks the site's requests for a week (the "embargo",
    [Chrome for Developers](https://developer.chrome.com/blog/geolocation-html-element)). The map
    now reads the context's position, and its in-park `watchPosition` starts only while
-   `permissionGranted` holds. On a park page the near-you row above the tabs is what asks.
+   `permissionGranted` holds. On a park page the location line in the title card is what asks.
 2. **A background refresh could open a prompt.** Chrome's "Allow this time" runs out after five
    minutes in the background. The `visibilitychange` refresh then read a position the instant the
    visitor came back, into a `prompt` state. Each background tick now reads the live

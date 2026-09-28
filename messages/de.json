@@ -1433,8 +1433,7 @@
       "heading": "In deiner Nähe",
       "inParkCoarse": "Du bist im Park",
       "ask": "Im Park? Fahrten in deiner Nähe zeigen",
-      "blocked": "Standortzugriff ist im Browser blockiert",
-      "away": "Du bist {distance} vom Park entfernt"
+      "blocked": "Standortzugriff ist im Browser blockiert"
     },
     "nextRide": {
       "heading": "Jetzt kürzer als später",
@@ -1495,6 +1494,7 @@
   },
   "location": {
     "active": "Standort aktiv",
+    "blocked": "Standort blockiert",
     "howTo": "So änderst du das",
     "stepsDefault": "Tippe oder klicke links neben der Adresse auf das Symbol der Seite und stelle Standort auf „Zulassen“. Danach die Seite neu laden.",
     "stepsIosSafari": "Tippe links in der Adressleiste auf „aA“, dann auf Website-Einstellungen → Standort → Erlauben. Danach die Seite neu laden.",

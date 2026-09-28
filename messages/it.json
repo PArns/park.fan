@@ -1433,8 +1433,7 @@
       "heading": "Vicino a te",
       "inParkCoarse": "Sei nel parco",
       "ask": "Sei al parco? Mostra le attrazioni vicine",
-      "blocked": "La posizione è bloccata nel browser",
-      "away": "Sei a {distance} dal parco"
+      "blocked": "La posizione è bloccata nel browser"
     },
     "nextRide": {
       "heading": "Più breve ora che dopo",
@@ -1495,6 +1494,7 @@
   },
   "location": {
     "active": "Posizione attiva",
+    "blocked": "Posizione bloccata",
     "howTo": "Come cambiarlo",
     "stepsDefault": "Tocca o fai clic sull’icona a sinistra dell’indirizzo e imposta Posizione su «Consenti». Poi ricarica la pagina.",
     "stepsIosSafari": "Tocca «aA» a sinistra della barra degli indirizzi, poi Impostazioni sito web → Posizione → Consenti. Poi ricarica la pagina.",

@@ -4,6 +4,29 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Park page: the location control moves onto the title card's address line
+
+The park page's near-you row sat between the title card and „Heute im Park", outside both cards,
+so on a phone its line of muted text stood on the park's photo. With location on and the visitor
+elsewhere it read „Du bist 55,7 km vom Park entfernt", under a badge two lines up that already said
+„55,7 km entfernt".
+
+- **`ParkLocationLine`** is the park page's location control now, on the title card's address line
+  after the distance badge: the button while nothing is decided, the way out after a block,
+  „Standort aktiv" once the position is in, „Du bist im Park" in the park. One box at one fixed
+  height in every state (44 px below `sm`, 32 px from `sm` up); below `lg` it is a line of its own,
+  from `lg` it takes what is left beside the address and the distance.
+- **`ParkInParkBlock`** renders only the rides around a visitor in the park, above the tabs, and
+  nothing for everyone else. The row between the two cards is gone.
+- After a block the line reads „Standort blockiert" (`location.blocked`, new in six locales) beside
+  „So änderst du das": the homepage's sentence left about 70 px for itself on a 360 px phone. Beside
+  Chrome's own `<geolocation>` button the text is left out below `sm`.
+- `ParkDistance` takes `keepGap`: with no position coming, its empty box stays at every width when
+  the location line follows it. Dropping it moved the line 160 px left at 1280 px (0.004 CLS).
+- `useInParkBlock` is the decision both read; `nearby.parkPage.away` is gone from all six locales.
+
+Rule: [location-is-asked-for-where-it-is-needed.md](rules/location-is-asked-for-where-it-is-needed.md).
+
 ## Unreleased – INP: no `:has()` in the stylesheet, and a tab tap that only moves the highlight
 
 Search Console flagged 361 park pages on 2026-09-23 for INP over 200 ms on phones (group value
