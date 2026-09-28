@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'A theme park compass: which ride is in front of you?'
   description: >-
-    Open park.fan in the park and turn around: the compass shows the
-    headliners around you with direction, distance and wait time. No app, no
-    account.
+    Open park.fan in the park and turn around: the compass shows the headliners
+    around you with direction, distance and wait time. No app, no account.
   keywords:
     - theme park compass
     - find a ride in a theme park

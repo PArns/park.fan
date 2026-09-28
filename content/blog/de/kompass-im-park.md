@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Kompass für den Freizeitpark: Welche Bahn liegt vor dir?'
   description: >-
-    Öffne park.fan im Park und dreh dich: Der Kompass zeigt die
-    Top-Attraktionen um dich herum mit Richtung, Entfernung und Wartezeit.
-    Ohne App und ohne Konto.
+    Öffne park.fan im Park und dreh dich: Der Kompass zeigt die Top-Attraktionen
+    um dich herum mit Richtung, Entfernung und Wartezeit. Ohne App und ohne
+    Konto.
   keywords:
     - Freizeitpark Kompass
     - Attraktion im Park finden
@@ -161,8 +161,8 @@ Für den Rest sagt der Kompass selbst, wie sehr du ihm gerade trauen kannst.
 
 Ohne Kompass, am Laptop oder auf dem iPhone vor dem Einschalten, gibt es keine
 Pfeile. Die Zeilen sagen dann „Richtung Südwesten“, und im Kreis fehlt der blaue
-Kegel. Einen Pfeil liest jeder als „da lang“, auch wenn er nur weiß, wo Norden
-ist, und nicht, wie du das Handy hältst. Und ob ein Laptop gerade mit der
+Kegel. Einen Pfeil liest jeder als „da lang“, auch wenn der Pfeil nur weiß, wo
+Norden ist, und nicht, wie du das Handy hältst. Und ob ein Laptop gerade mit der
 Tastatur nach Süden auf dem Tisch steht, weiß niemand.
 
 ## Was dein Handy verlässt
