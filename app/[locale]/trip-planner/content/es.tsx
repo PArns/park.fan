@@ -67,8 +67,8 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           El planificador dice además qué clase de previsión tiene entre manos. Si el modelo calcula
           el día hora a hora, lo indica. Si la altura del día viene de la previsión y la forma de
-          días anteriores, como ese sábado, también lo indica. Con bastante antelación esa altura se
-          vuelve fina y queda una estimación aproximada. Para un día que nunca se ha medido no hay
+          días anteriores, como ese sábado, también lo indica. Con bastante antelación esa altura ya
+          es incierta y queda una estimación aproximada. Para un día que nunca se ha medido no hay
           plan con números.
         </P>
       </Chapter>

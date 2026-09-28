@@ -194,7 +194,7 @@
     "nearby": {
       "kicker": "Jouw locatie",
       "title": "Pretparken bij jou in de buurt",
-      "lead": "Met je locatie zet park.fan de parken op volgorde van afstand. Per park zie je of het vandaag open is en hoe druk het er nu is.",
+      "lead": "Met je locatie toont park.fan de dichtstbijzijnde parken, de parken die open zijn eerst, en hoe druk het er nu is.",
       "allParks": "Alle parken ontdekken"
     },
     "live": {
@@ -354,7 +354,7 @@
       },
       "r6": {
         "title": "Artikelen met meetwaarden",
-        "text": "Op de blog vind je parkgidsen en analyses, bijvoorbeeld waarom een park in oktober vol is en in november bijna leeg. Wachttijden staan er in live widgets en zijn niet overgetypt."
+        "text": "Op de blog vind je parkgidsen en analyses, bijvoorbeeld waarom een park in oktober vol is en in november bijna leeg. De wachttijden daarin zijn live widgets met de actuele cijfers."
       },
       "howtoLink": "Zo werkt park.fan",
       "fancastLink": "Fancast, ons voorspelmodel"

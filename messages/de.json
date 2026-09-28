@@ -194,7 +194,7 @@
     "nearby": {
       "kicker": "Dein Standort",
       "title": "Freizeitparks in deiner Nähe",
-      "lead": "Mit deinem Standort sortiert park.fan die Parks nach Entfernung und zeigt, ob sie heute geöffnet haben und wie voll es gerade ist.",
+      "lead": "Mit deinem Standort zeigt park.fan die nächstgelegenen Parks, die geöffneten zuerst, und wie voll es dort gerade ist.",
       "allParks": "Alle Parks entdecken"
     },
     "live": {
@@ -354,7 +354,7 @@
       },
       "r6": {
         "title": "Artikel mit Messwerten",
-        "text": "Im Blog stehen Park-Guides und Auswertungen, zum Beispiel warum ein Park im Oktober voll ist und im November fast leer. Wartezeiten stehen dort als Live-Widgets, nicht abgetippt."
+        "text": "Im Blog stehen Park-Guides und Auswertungen, zum Beispiel warum ein Park im Oktober voll ist und im November fast leer. Die Wartezeiten darin sind Live-Widgets mit den aktuellen Werten."
       },
       "howtoLink": "So funktioniert park.fan",
       "fancastLink": "Fancast, unser Prognosemodell"

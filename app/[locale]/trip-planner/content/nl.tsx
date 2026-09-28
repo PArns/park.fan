@@ -68,9 +68,9 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           De planner zegt er ook bij wat voor voorspelling hij vasthoudt. Rekent het model de dag
           per uur door, dan staat dat er. Komt de hoogte van de dag uit de voorspelling en de vorm
-          uit eerdere dagen, zoals op deze zaterdag, dan staat dat er. Ver vooruit wordt die hoogte
-          zelf dun en blijft er een ruwe schatting over. Voor een dag die nooit gemeten is, is er
-          helemaal geen plan met getallen.
+          uit eerdere dagen, zoals op deze zaterdag, dan staat dat er. Ver vooruit is zelfs die
+          hoogte onzeker en blijft er een ruwe schatting over. Voor een dag die nooit gemeten is, is
+          er helemaal geen plan met getallen.
         </P>
       </Chapter>
 

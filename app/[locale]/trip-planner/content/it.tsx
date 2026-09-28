@@ -70,7 +70,7 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
           Il pianificatore dice anche che tipo di previsione ha in mano. Se il modello calcola la
           giornata ora per ora, lo scrive. Se l&apos;altezza del giorno viene dalla previsione e la
           forma da giornate precedenti, come quel sabato, scrive quello. Abbastanza in anticipo
-          quell&apos;altezza diventa sottile e resta una stima approssimativa. Per una giornata mai
+          quell&apos;altezza è già incerta e resta una stima approssimativa. Per una giornata mai
           misurata non esiste alcun piano con dei numeri.
         </P>
       </Chapter>

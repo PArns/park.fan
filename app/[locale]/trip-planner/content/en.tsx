@@ -67,9 +67,9 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           The planner also says what kind of forecast it is holding. Where the model works the day
           through hour by hour, it says so. Where the day&apos;s height is predicted and the shape
-          comes from earlier days, as on this Saturday, it says that instead. Far enough ahead the
-          height itself gets thin and it drops to a rough estimate. For a day nobody has ever
-          measured there is no plan with numbers in it at all.
+          comes from earlier days, as on this Saturday, it says that instead. Far enough ahead even
+          the height of the whole day is uncertain, and it drops to a rough estimate. For a day
+          nobody has ever measured there is no plan with numbers in it at all.
         </P>
       </Chapter>
 

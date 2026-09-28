@@ -79,8 +79,8 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           Der Planer sagt außerdem, welcher Art die Prognose ist. Rechnet das Modell den Tag
           stundengenau durch, steht dort „Stundenprognose“. Kommt die Tageshöhe aus der Vorhersage
           und der Verlauf aus früheren Tagen, steht „Aus Tagesprognose“, so wie an diesem Samstag.
-          Weit im Voraus wird die Tageshöhe selbst dünn, und dann steht dort „Grobe Schätzung“. Für
-          Tage, an denen wir nie etwas gemessen haben, gibt es keinen Plan mit Zahlen.
+          Weit im Voraus ist schon die Tageshöhe unsicher, und dann steht dort „Grobe Schätzung“.
+          Für Tage, an denen wir nie etwas gemessen haben, gibt es keinen Plan mit Zahlen.
         </P>
       </Chapter>
 

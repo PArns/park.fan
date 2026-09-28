@@ -194,7 +194,7 @@
     "nearby": {
       "kicker": "Your location",
       "title": "Theme parks near you",
-      "lead": "With your location, park.fan sorts the parks by distance and shows whether each one is open today and how busy it is right now.",
+      "lead": "With your location, park.fan lists the nearest parks, open ones first, and shows how busy each one is right now.",
       "allParks": "Browse all parks"
     },
     "live": {
@@ -2451,7 +2451,7 @@
     "page": {
       "kicker": "Trip planner",
       "title": "Plan your park day ride by ride",
-      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser — no account needed.",
+      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser, and you need no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
       "metaDescription": "Plan a theme park day against the forecast wait times: drop rides onto a timeline, check every transfer, and fit shows and breaks in between. No account.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",

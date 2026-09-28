@@ -194,7 +194,7 @@
     "nearby": {
       "kicker": "La tua posizione",
       "title": "Parchi di divertimento vicino a te",
-      "lead": "Con la tua posizione park.fan ordina i parchi per distanza e mostra se oggi sono aperti e quanto sono pieni in questo momento.",
+      "lead": "Con la tua posizione park.fan mostra i parchi più vicini, prima quelli aperti, e quanto sono pieni in questo momento.",
       "allParks": "Scopri tutti i parchi"
     },
     "live": {

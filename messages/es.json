@@ -194,7 +194,7 @@
     "nearby": {
       "kicker": "Tu ubicación",
       "title": "Parques cerca de ti",
-      "lead": "Con tu ubicación, park.fan ordena los parques por distancia y te dice si hoy abren y cuánta gente hay ahora.",
+      "lead": "Con tu ubicación, park.fan te muestra los parques más cercanos, primero los que están abiertos, y cuánta gente hay en cada uno ahora mismo.",
       "allParks": "Descubrir todos los parques"
     },
     "live": {
