@@ -1,4 +1,5 @@
 {
+  "title": "08-dracula-4d-clown-kanone",
   "park": "walibi-holland",
   "tags": ["halloween", "night", "performer", "photo"],
   "alt": {
@@ -20,5 +21,9 @@
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5437,
+    "y": 0.2458
   }
 }
