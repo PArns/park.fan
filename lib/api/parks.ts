@@ -3,7 +3,7 @@ import { cache } from 'react';
 import { api, ApiError } from './client';
 import { CACHE_TTL } from './cache-config';
 import { parkCacheTag } from './park-live-projection';
-import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
+import { parseCoordinate, withAttractionCoordinates, withCoordinates } from './coordinates';
 import type {
   CrowdLevel,
   Recommendation,
@@ -66,17 +66,13 @@ const ATTRACTION_REVALIDATE = 86400; // 1d
  */
 const SCHEDULE_HOLIDAY_CONTEXT_DAYS = 3;
 
-function leanScheduleHolidayContext(park: ParkWithAttractions): ParkWithAttractions {
-  if (!Array.isArray(park.schedule)) return park;
-  return {
-    ...park,
-    schedule: park.schedule.map((day, i) => {
-      if (i < SCHEDULE_HOLIDAY_CONTEXT_DAYS || !day.influencingHolidays) return day;
-      const lean = { ...day };
-      delete lean.influencingHolidays;
-      return lean;
-    }),
-  };
+function leanScheduleHolidayContext(schedule: ScheduleItem[]): ScheduleItem[] {
+  return schedule.map((day, i) => {
+    if (i < SCHEDULE_HOLIDAY_CONTEXT_DAYS || !day.influencingHolidays) return day;
+    const lean = { ...day };
+    delete lean.influencingHolidays;
+    return lean;
+  });
 }
 
 /**
@@ -90,18 +86,7 @@ function leanScheduleHolidayContext(park: ParkWithAttractions): ParkWithAttracti
  * Also drops the far-future days' `influencingHolidays` — see {@link SCHEDULE_HOLIDAY_CONTEXT_DAYS}.
  */
 function leanParkForLive(park: ParkWithAttractions): ParkWithAttractions {
-  const trimmed = leanScheduleHolidayContext(park);
-  return {
-    ...trimmed,
-    attractions: trimmed.attractions.map((a) => {
-      const lean = { ...a };
-      delete lean.url; // href falls back to `${parkPath}/${slug}` — identical frontend URL
-      delete lean.history; // attraction-detail-only if ever present
-      delete lean.hourlyForecast; // detail-only
-      delete lean.predictionAccuracy; // detail-only
-      return lean;
-    }),
-  };
+  return leanParkAtFetch(park, { shell: false });
 }
 
 /**
@@ -114,30 +99,92 @@ function leanParkForLive(park: ParkWithAttractions): ParkWithAttractions {
  * land, summary stats, and `queues` (the attraction FAQ's queue-type answers).
  */
 function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
-  const live = leanParkForLive(park);
+  return leanParkAtFetch(park, { shell: true });
+}
+
+/**
+ * Both trims above, plus the coordinate parsing (see ./coordinates), in one pass over the park.
+ *
+ * They used to be three: `withParkCoordinates`, then the live trim, then the shell trim on top of
+ * it, and each one spread every ride into a new object and the park around them — three copies of
+ * 97 rides on Europa-Park to keep one. Measured on its live payload (2026-09-28): the shell 638 →
+ * 115 µs, the shell plus the park page's {@link leanParkForParkShell} 737 → 171 µs, the live trim
+ * 198 → 107 µs. `JSON.stringify` of both results was byte-identical to the three-pass version on
+ * five parks and five synthetic edge cases (string, numeric, empty and missing coordinates,
+ * `statistics.history`, no schedule), key order included. Every render of a park, ride, calendar
+ * or stats page pays it once, and so does every five-minute poll.
+ */
+function leanParkAtFetch(
+  park: ParkWithAttractions,
+  { shell }: { shell: boolean }
+): ParkWithAttractions {
+  const parsed = withCoordinates(park);
   return {
-    ...live,
-    attractions: live.attractions.map((a) => {
-      // `comparison` rides in on every attraction and nothing in this app has ever rendered it —
-      // `ComparisonBadge` exists but is wired to nothing outside `/ui`, where it is fed string
-      // literals. {@link leanParkForLivePoll} leaves it out of the poll, and that rule was written
-      // down without ever being applied to the half that reaches a reader: the SERVER render,
-      // which is the copy that lands in the HTML of every park page. 1.0 KB per park page, on the
-      // route with the second-highest origin-miss count in the app.
-      //
-      // `baseline` is rendered now (the ride card's crowd-scale tooltip) and still stays out of
-      // the HTML: the tooltip draws nothing until someone reaches for it, and the poll that
-      // `useLiveParkData` fires on mount carries it long before that. Shipping it here would put
-      // a number in every park page's HTML that no first paint shows.
-      const lean = { ...a } as ParkAttraction & { comparison?: unknown; baseline?: unknown };
-      delete lean.comparison;
-      delete lean.baseline;
-      if (!lean.statistics) return lean;
-      const statsLean = { ...lean.statistics };
-      delete statsLean.history; // sparkline series — re-supplied by the live poll, not needed in HTML
-      return { ...lean, statistics: statsLean };
+    ...parsed,
+    ...(Array.isArray(parsed.schedule) && {
+      schedule: leanScheduleHolidayContext(parsed.schedule),
     }),
+    attractions: parsed.attractions.map((a) => {
+      const lean = shell ? leanAttractionForShell(a) : leanAttractionForLive(a);
+      // Parsed on the ride's one copy rather than by `withCoordinates`, which would make a second.
+      // Same result, key order included: an assignment keeps a key where it is and appends a
+      // missing one, exactly like the spread in `withCoordinates`.
+      lean.latitude = parseCoordinate(a.latitude);
+      lean.longitude = parseCoordinate(a.longitude);
+      return lean;
+    }),
+    shows: parsed.shows?.map(withCoordinates),
+    restaurants: parsed.restaurants?.map(withCoordinates),
   };
+}
+
+/**
+ * One ride as the live trim keeps it, in one copy.
+ *
+ * Rest destructuring rather than a spread and `delete`, here and in the shell's twin below:
+ * `delete` leaves the V8 object in dictionary mode, and the park page's
+ * {@link leanParkForParkShell} pass over such a list measured 400 µs on Europa-Park against 120 µs
+ * over the same list built without it.
+ */
+function leanAttractionForLive(a: ParkAttraction): ParkAttraction {
+  const {
+    url: _url, // href falls back to `${parkPath}/${slug}` — identical frontend URL
+    history: _history, // attraction-detail-only if ever present
+    hourlyForecast: _hourlyForecast, // detail-only
+    predictionAccuracy: _predictionAccuracy, // detail-only
+    ...lean
+  } = a;
+  return lean;
+}
+
+/** One ride as the shell keeps it: the live trim, minus the fields below, in one copy. */
+function leanAttractionForShell(a: ParkAttraction): ParkAttraction {
+  // `comparison` rides in on every attraction and nothing in this app has ever rendered it —
+  // `ComparisonBadge` exists but is wired to nothing outside `/ui`, where it is fed string
+  // literals. {@link leanParkForLivePoll} leaves it out of the poll, and that rule was written
+  // down without ever being applied to the half that reaches a reader: the SERVER render,
+  // which is the copy that lands in the HTML of every park page. 1.0 KB per park page, on the
+  // route with the second-highest origin-miss count in the app.
+  //
+  // `baseline` is rendered now (the ride card's crowd-scale tooltip) and still stays out of
+  // the HTML: the tooltip draws nothing until someone reaches for it, and the poll that
+  // `useLiveParkData` fires on mount carries it long before that. Shipping it here would put
+  // a number in every park page's HTML that no first paint shows.
+  const {
+    url: _url,
+    history: _history,
+    hourlyForecast: _hourlyForecast,
+    predictionAccuracy: _predictionAccuracy,
+    comparison: _comparison,
+    baseline: _baseline,
+    ...lean
+  } = a as ParkAttraction & { comparison?: unknown };
+  if (lean.statistics) {
+    // sparkline series — re-supplied by the live poll, not needed in HTML
+    const { history: _sparkline, ...statistics } = lean.statistics;
+    lean.statistics = statistics;
+  }
+  return lean;
 }
 
 /**
@@ -180,12 +227,10 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
 export function leanParkForParkShell(park: ParkWithAttractions): ParkWithAttractions {
   return {
     ...park,
-    attractions: park.attractions.map((a) => {
-      const lean = { ...a };
-      delete lean.typicalWaits;
-      delete lean.rideProfile;
-      return lean;
-    }),
+    // Rest destructuring, not spread + `delete` — see leanAttractionForLive.
+    attractions: park.attractions.map(
+      ({ typicalWaits: _typicalWaits, rideProfile: _rideProfile, ...lean }) => lean
+    ),
   };
 }
 
@@ -289,23 +334,21 @@ async function fetchParkByGeoPath(
   fresh: boolean
 ): Promise<ParkWithAttractions | null> {
   try {
-    // This endpoint sends its coordinates as decimal STRINGS while the type says
-    // `number | null`; `withParkCoordinates` is where that stops (see ./coordinates).
-    const park = withParkCoordinates(
-      await api.get<ParkWithAttractions>(
-        `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
-        fresh
-          ? { cache: 'no-store' }
-          : {
-              next: {
-                revalidate: PARK_REVALIDATE,
-                tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
-              },
-            }
-      )
+    const park = await api.get<ParkWithAttractions>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
+      fresh
+        ? { cache: 'no-store' }
+        : {
+            next: {
+              revalidate: PARK_REVALIDATE,
+              tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+            },
+          }
     );
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
     // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.
+    // Both also parse the coordinates, which this endpoint sends as decimal STRINGS while the type
+    // says `number | null` — this is where that stops (see ./coordinates).
     return fresh ? leanParkForLive(park) : leanParkForShell(park);
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
