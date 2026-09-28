@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarPlus, GripVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -45,15 +45,29 @@ export function PlannerEdgeTab({
   open,
   total,
   onToggle,
-  panelWidth,
 }: {
   open: boolean;
   /** Entries in the plan. No badge at zero — see below. */
   total: number;
   onToggle: () => void;
-  panelWidth: number;
 }) {
   const t = useTranslations('navigation');
+  /**
+   * The panel's width, read here rather than handed down by the launcher.
+   *
+   * A resize drag changes it on every pointer move. As a prop it made the
+   * launcher re-render for each move, and the launcher renders the whole panel
+   * — both day columns, every block and leg — so a drag re-rendered all of it to
+   * change one number. This tab is the only thing the launcher draws whose
+   * markup depends on the width; the page's inset and the sheet's own width are
+   * written from the store without a render (see `planner-launcher.tsx` and
+   * `planner-flyout.tsx`).
+   */
+  const panelWidth = useSyncExternalStore(
+    plannerPanelWidth.subscribe,
+    plannerPanelWidth.getSnapshot,
+    plannerPanelWidth.getServerSnapshot
+  );
   const [dragging, setDragging] = useState(false);
   /**
    * Tear-down for a resize that is still running, reachable from outside it.

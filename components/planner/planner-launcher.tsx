@@ -51,11 +51,6 @@ export function PlannerLauncher() {
     plannerUi.getSnapshot,
     plannerUi.getServerSnapshot
   );
-  const panelWidth = useSyncExternalStore(
-    plannerPanelWidth.subscribe,
-    plannerPanelWidth.getSnapshot,
-    plannerPanelWidth.getServerSnapshot
-  );
   const [open, setOpen] = useState(false);
   /**
    * Whether the past-day question is on screen instead of the panel.
@@ -167,6 +162,11 @@ export function PlannerLauncher() {
    * Written on every resize frame on purpose: the alternative is committing it
    * on release, and then the page visibly lags a panel edge the pointer is
    * already holding.
+   *
+   * Written from a subscription to the width store rather than from a render of
+   * this component. A render per resize frame here was a render of the whole
+   * panel below it, for a value that only this property, the sheet's own width
+   * and the edge tab use — and each of those now reads the store itself.
    */
   useEffect(() => {
     const root = document.documentElement;
@@ -175,7 +175,17 @@ export function PlannerLauncher() {
       root.removeAttribute('data-planner-open');
       return;
     }
-    root.style.setProperty('--planner-inset', `${panelWidth}px`);
+    // The store also speaks on a window resize, where the capped width often
+    // stays what it was; that writes nothing.
+    let written = '';
+    const writeInset = () => {
+      const inset = `${plannerPanelWidth.getSnapshot()}px`;
+      if (inset === written) return;
+      written = inset;
+      root.style.setProperty('--planner-inset', inset);
+    };
+    writeInset();
+    const unsubscribe = plannerPanelWidth.subscribe(writeInset);
     // An ATTRIBUTE beside the width, and it earns its place: a ride card on the
     // page behind the panel becomes a drag source while the planner is open,
     // and it has to say so. Passing that down as a prop would mean a context
@@ -184,10 +194,11 @@ export function PlannerLauncher() {
     // cards nothing at all.
     root.setAttribute('data-planner-open', '');
     return () => {
+      unsubscribe();
       root.style.removeProperty('--planner-inset');
       root.removeAttribute('data-planner-open');
     };
-  }, [open, panelWidth]);
+  }, [open]);
 
   // MOUNTED as soon as the chunk is there, not only while open: the sheet plays
   // its own close animation and the wizard resets by unmounting with the panel,
@@ -207,7 +218,6 @@ export function PlannerLauncher() {
       <PlannerEdgeTab
         open={open && panel !== null}
         total={total}
-        panelWidth={panelWidth}
         // The tab is the one way in that never goes through the store, so it
         // names itself here — before the flip, because the transition effect
         // reads the source in the very next commit. Noted on the way out as well as
