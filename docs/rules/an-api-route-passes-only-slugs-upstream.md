@@ -44,7 +44,10 @@ allowing a day at the CDN and a failed OG card with one allowing thirty days; wh
 keeps a 5xx is down to its own status-code rules, which is not something to lean on. The nav geo
 route's old `200 { cities: [] }` had no such doubt: a 200 with a day's window, i.e. "this country
 has no cities" for everybody for a day. Every error response of a route under a shared rule
-carries `'Cache-Control': 'no-store, must-revalidate'`.
+carries a `Cache-Control` of its own: `no-store, must-revalidate` where a retry is cheap, a short
+window where a failure is expensive to repeat. The OG route is the second kind: a card that fails
+every time would otherwise be rendered for every crawler that asks, so its 500 carries
+`s-maxage=300` — at most one render per URL every five minutes, and not a month of a frozen error.
 
 ## A shared answer is shared
 

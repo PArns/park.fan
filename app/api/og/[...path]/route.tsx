@@ -816,11 +816,13 @@ export async function GET(
     );
   } catch (error) {
     console.error('[OG Image] Error generating image:', error);
-    // `no-store`, or the 30-day window next.config.ts gives this path keeps a failed card at the
-    // CDN for a month. The error itself goes to the log above, not into a public response.
+    // A short window of its own, not the route's 30 days: a card that failed once is not frozen
+    // for a month, and one that fails every time is rendered at most once per five minutes per URL
+    // rather than for every crawler that asks (`no-store` would have been that). The successful
+    // card above keeps its 30-day window. The error itself goes to the log, not into the response.
     return new Response('Error generating image', {
       status: 500,
-      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+      headers: cdnCacheHeaders('public, max-age=0, s-maxage=300'),
     });
   }
 }
