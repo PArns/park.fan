@@ -4,6 +4,7 @@ import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
+import { cn } from '@/lib/utils';
 
 /**
  * The favorites band as it looks for a visitor who has none — which is almost everyone
@@ -25,18 +26,24 @@ import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
  * one: the page's own `<h1>` already says "Favorites" and its own `FavoritesHowTo` block
  * already stands under the band in every state, so drawing either here would be the same
  * heading twice and the same three steps twice.
+ *
+ * `className` goes onto the band and is for its padding: the homepage gives it the
+ * story's rhythm, and whatever `FavoritesSection` receives it passes on here, so the
+ * fallback and every settled state stand in the same box.
  */
 export function FavoritesEmptyState({
   textHidden = false,
   standalone = false,
+  className,
 }: {
   textHidden?: boolean;
   standalone?: boolean;
+  className?: string;
 }) {
   const t = useTranslations('favorites');
 
   return (
-    <section className="bg-muted/30 px-4 py-12">
+    <section className={cn('bg-muted/30 px-4 py-12', className)}>
       <div className="container mx-auto">
         {!standalone && (
           <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">

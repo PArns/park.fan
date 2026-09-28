@@ -13,8 +13,19 @@
  * they make it one edit instead of two files that only meet at runtime.
  */
 
+/**
+ * The vertical padding of every band on the homepage, alone.
+ *
+ * For the bands the homepage borrows rather than owns: `FavoritesSection` and
+ * `FeaturedParksSlot` also close every blog and glossary page, where they keep
+ * their own tighter padding, so the homepage hands them this one. Without it
+ * the phone's park block ran 64 | 32 at one band edge, 32 | 48 at the next and
+ * 48 | 64 at the one after, against 64 | 64 everywhere else on the page.
+ */
+export const STORY_SECTION_Y = 'py-16 sm:py-18';
+
 /** Untinted chapter band. */
-export const STORY_SECTION = 'px-4 py-16 sm:py-18';
+export const STORY_SECTION = `px-4 ${STORY_SECTION_Y}`;
 
 /** Tinted chapter band, with the rule that separates it from the one above. */
-export const STORY_SECTION_TINTED = 'border-border bg-muted/30 border-t px-4 py-16 sm:py-18';
+export const STORY_SECTION_TINTED = `border-border bg-muted/30 border-t px-4 ${STORY_SECTION_Y}`;

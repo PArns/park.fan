@@ -6,7 +6,13 @@ import { HomeLocationRow } from '@/components/home/home-location-row';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 
 /**
- * "Step 1, for real": the chapter frame around the nearby-parks card.
+ * The chapter frame around the nearby-parks card.
+ *
+ * Its kicker names the thing ("your location"), not its place in the story. It
+ * used to read "Step 1, for real", which leaned on `ThreeSteps` standing right
+ * above it — true from 768 px up, while on a phone `PHONE_LATER` (page.tsx)
+ * moves the steps below the park lists and this chapter opens right under the
+ * hero, so a reader met "step 1" before any steps had been named.
  *
  * The card itself is unchanged and comes in as a slot, because it is a Client
  * Component with its own geolocation gate and its own skeleton — the caller
@@ -25,7 +31,11 @@ export async function NearbyChapter({ children }: { children: React.ReactNode })
   const t = await getTranslations('homeStory.nearby');
 
   return (
-    <section className="px-4 pb-16 sm:pb-18">
+    // No top padding from 768 px up: `ThreeSteps` stands above and its bottom padding is the
+    // gap, one untinted band running on. Below that `PHONE_LATER` in page.tsx moves the steps
+    // under the park lists, this chapter opens right under the hero's photo, and without a top
+    // padding of its own the heading tile sat flush on the photo's lower edge.
+    <section className="px-4 pt-16 pb-16 sm:pt-18 sm:pb-18 @min-[768px]/page:pt-0">
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

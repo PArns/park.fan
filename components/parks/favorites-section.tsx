@@ -15,7 +15,7 @@ import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { stripNewPrefix } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
 import { parkChapterUrl } from '@/lib/utils/url-utils';
 import { Star } from 'lucide-react';
@@ -28,8 +28,18 @@ import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
  * page carries the title (as its `<h1>`) and the instructions (under the band, in every state)
  * and this component draws neither. Everywhere else — homepage, blog, glossary — it is one band
  * among several and needs its own heading to be one.
+ *
+ * `className` goes onto the band in every state, the empty one included, and is for its padding:
+ * the homepage hands it the story's rhythm (`STORY_SECTION_Y`), and must hand the same to the
+ * `FavoritesEmptyState` it uses as the dynamic-import fallback.
  */
-export function FavoritesSection({ standalone = false }: { standalone?: boolean }) {
+export function FavoritesSection({
+  standalone = false,
+  className,
+}: {
+  standalone?: boolean;
+  className?: string;
+}) {
   const t = useTranslations('favorites');
   const mounted = useMounted();
 
@@ -94,7 +104,8 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
   // three outcomes below this is. Hold the empty state's box anyway — it is the outcome
   // for the overwhelming majority, and the same box is this component's dynamic-import
   // fallback, so it stands from the first paint through hydration without moving.
-  if (!mounted) return <FavoritesEmptyState textHidden standalone={standalone} />;
+  if (!mounted)
+    return <FavoritesEmptyState textHidden standalone={standalone} className={className} />;
 
   // Cookies say no favorites, so the answer is already settled: render the empty state now
   // instead of waiting for a query whose result we can predict. It used to return null here
@@ -102,12 +113,12 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
   // gated on geolocation and answers `{parks: [], …}`, a TRUTHY empty result, so the guard
   // never held for long and the box arrived late instead of never.
   if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) {
-    return <FavoritesEmptyState standalone={standalone} />;
+    return <FavoritesEmptyState standalone={standalone} className={className} />;
   }
 
   // One skeleton shape for both waits below, so whatever replaces it lands in the same box.
   const renderSkeleton = (parkCount: number, attractionCount: number) => (
-    <section className="bg-muted/30 px-4 py-8">
+    <section className={cn('bg-muted/30 px-4 py-8', className)}>
       <div className="container mx-auto">
         {!standalone && (
           <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
@@ -166,7 +177,7 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
     (sortedFavorites?.restaurants.length || 0);
 
   if (!hasAnyFavorites) {
-    return <FavoritesEmptyState standalone={standalone} />;
+    return <FavoritesEmptyState standalone={standalone} className={className} />;
   }
 
   // Favorites are here, their translations are not (yet). Hold the skeleton at the REAL counts so
@@ -183,7 +194,7 @@ export function FavoritesSection({ standalone = false }: { standalone?: boolean 
   }
 
   const content = (
-    <section className="bg-muted/30 px-4 py-8">
+    <section className={cn('bg-muted/30 px-4 py-8', className)}>
       <div className="container mx-auto">
         {standalone ? (
           // On `/favorites` the page's own `<h1>` says it, so this one is only here to keep the

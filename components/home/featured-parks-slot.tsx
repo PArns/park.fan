@@ -4,6 +4,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { Link } from '@/i18n/navigation';
+import { cn } from '@/lib/utils';
 import { extractFeaturedParks, type FeaturedPark } from './featured-parks-section';
 import { FeaturedParkCardsLive } from './featured-park-cards-live';
 
@@ -43,8 +44,17 @@ async function FeaturedParkCards({ parks }: { parks: FeaturedPark[] }) {
 /**
  * Full featured-parks section (heading + intro + grid + "view all" CTA) — used on the homepage, the
  * blog context module and the bottom of glossary term pages.
+ *
+ * `className` goes onto the `<section>` and is for its padding: the homepage hands it the story's
+ * rhythm (`STORY_SECTION_Y`), and must hand the same to `FeaturedParksSkeleton` in its fallback.
  */
-export async function FeaturedParksSlot({ locale }: { locale: string }) {
+export async function FeaturedParksSlot({
+  locale,
+  className,
+}: {
+  locale: string;
+  className?: string;
+}) {
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
     catchNonFatal(getGeoStructure()),
@@ -53,9 +63,13 @@ export async function FeaturedParksSlot({ locale }: { locale: string }) {
   if (parks.length === 0) return null;
 
   return (
-    <section className="px-4 py-12">
+    <section className={cn('px-4 py-12', className)}>
       <div className="container mx-auto">
-        <div className="bg-background/70 mb-8 w-fit rounded-xl px-4 py-3 backdrop-blur-md">
+        {/* No frosted pill around the heading any more. It was `bg-background/70` on a band of
+            `bg-background` on every page that draws this section, so nobody ever saw the pill,
+            only its `px-4`: the star stood 16 px right of the cards' edge, the one heading on
+            the page that did not line up with its own content. */}
+        <div className="mb-8">
           <div className="flex items-center gap-2">
             <Star className="text-primary h-5 w-5" />
             <h2 className="text-xl font-bold">{tHome('sections.featuredParks')}</h2>

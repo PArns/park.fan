@@ -106,20 +106,20 @@
     "browseParks": "Browse all parks"
   },
   "home": {
-    "intro": "park.fan shows live wait times and crowd levels for more than 200 theme parks and nearly 7,000 attractions worldwide, from Disney and Universal to Europa-Park and Phantasialand. Opening hours and a forecast of its own for the days ahead come with it.",
+    "intro": "park.fan shows live wait times and crowd levels for more than 200 theme parks and nearly 7,000 attractions worldwide, among them the Disney and Universal parks, Europa-Park and Phantasialand. It also has opening hours and its own forecast for the days ahead.",
     "hero": {
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
-      "intro": "park.fan tracks <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong> live, from Europa-Park to Magic Kingdom. Find your park, or take a lap of the world on the map. That one has no queue.",
+      "intro": "park.fan shows the wait times at <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong>, updated every five minutes. For the coming days it also says how busy each park is likely to be.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
       "liveNow": "Parks Open Worldwide",
-      "liveNowIntro": "Live count of open theme parks per continent.",
+      "liveNowIntro": "How many parks on each continent are open right now.",
       "featuredParks": "Popular Parks",
-      "featuredParksIntro": "Six well-known parks to warm up with, each with live wait times and a crowd forecast."
+      "featuredParksIntro": "Six big parks to start with. Each card opens the park page with all its wait times."
     },
     "ai": {
       "title": "How accurate our forecasts are",
@@ -140,10 +140,10 @@
       "dailySchedule": "Daily · 06:00 UTC",
       "dailyScheduleLocal": "Daily · 06:00 UTC · {time} local",
       "howTitle": "How Predictions Are Made",
-      "howText": "Every forecast stands on three layers: the park’s own measured wait-time history, signals from outside such as the weather forecast, school holidays and public holidays, and whatever is on at the park that day, meaning special events and the season. From those the model works out the expected wait per ride and per hour, then condenses them into the day’s crowd level, as far ahead as the park has published its schedule.",
+      "howText": "Three things go into every forecast: the park’s measured wait-time history; the weather forecast, school holidays and public holidays; and what is happening at the park that day, such as a special event or the start of the season. From those the model works out the expected wait per ride and per hour and combines them into the day’s crowd level, as far ahead as the park has published its schedule.",
       "fancastLink": "How Fancast, our forecasting model, works",
       "improvingTitle": "Every forecast is checked the day after",
-      "improvingText": "The day after a forecast, the system lays it next to the wait time actually measured and writes the difference into the next training run. The figures above come out of exactly that comparison, not out of a test set we tidied up for ourselves beforehand.",
+      "improvingText": "The day after a forecast, the system lays it next to the wait time actually measured and writes the difference into the next training run. The figures above come from that comparison with real days.",
       "badge": {
         "excellent": "Excellent Accuracy",
         "good": "Good Accuracy",
@@ -164,26 +164,26 @@
   "homeStory": {
     "steps": {
       "kicker": "How it works",
-      "title": "Three steps to your park day",
-      "lead": "Pick a park, check the day, plan the route. Sounds like flat-pack instructions, takes less time, and the measurements from more than 200 parks are already laid out for each step.",
+      "title": "Planning a park day",
+      "lead": "Pick a park, check the day, then decide what order to ride in. For each of the three steps, park.fan has measurements from more than 200 parks.",
       "one": {
         "title": "Pick a park",
         "text": "Type the park or the ride, or take the suggestion near you. Every park has its own page with live wait times, opening hours and a calendar.",
-        "tip": "The search knows more than parks. If you know you want to ride Taron but have forgotten which park it is in, just type the ride’s name. Shows and restaurants are in there too.",
+        "tip": "The search also finds rides, shows and restaurants. Type “Taron” and you get the ride along with its park.",
         "placeholder": "Park or ride",
         "label": "Search for a park or ride"
       },
       "two": {
         "title": "Check the day",
-        "text": "The crowd calendar rates every day the park has published a schedule for: green means short queues, red means packed walkways and queues backing up into the next themed area.",
-        "tip": "Two days in a row are often two completely different parks. If the date is yours to choose, look at the week before and after before you book.",
+        "text": "The crowd calendar gives every day a colour, as far ahead as the park has published its schedule. Green means as busy as usual or quieter, red means much busier than a typical day at that park.",
+        "tip": "Days next to each other often have different colours. If you can move your date, look at the week before and the week after as well before you book.",
         "legendLow": "quiet",
         "caption": "A month in the calendar: one tile per day, the colour is the crowd level expected."
       },
       "three": {
         "title": "Plan the route",
-        "text": "Every ride comes with its best window, so you are not heading for the headliner at exactly the moment half the park has the same idea.",
-        "tip": "“Get there early” does not hold for every ride. Some run just as full all day, others only pick up after lunch. Each ride’s own page carries its own day curve.",
+        "text": "Every ride has a curve for the day, built from the days it was measured. It shows at what time the queue is usually shortest.",
+        "tip": "The curve is a median over many days. If a ride breaks down in the morning, the rest of that day will look different from the curve.",
         "caption": "A coaster’s typical day, from opening to evening.",
         "best": "The quietest windows sit early and in the last hour."
       }
@@ -192,33 +192,33 @@
       "label": "From the blog"
     },
     "nearby": {
-      "kicker": "Step 1, for real",
+      "kicker": "Your location",
       "title": "Theme parks near you",
-      "lead": "Share your location and park.fan shows the parks around you: whether they are open today, how busy it is right now and how long the average queue is.",
+      "lead": "With your location, park.fan lists the nearest parks, open ones first, and shows how busy each one is right now.",
       "allParks": "Browse all parks"
     },
     "live": {
       "kicker": "Live wait times",
       "title": "Wait times for every ride, refreshed every five minutes",
       "lead": "For every attraction and every queue type, plus opening hours and breakdowns.",
-      "body": "A number on its own says little. 95 minutes is a lot on a Tuesday in September and an ordinary morning on a Saturday in October. That is why every ride page says what is typical for that weekday and what a busy day looks like.",
+      "body": "95 minutes is a lot on a Tuesday in September and an ordinary morning on a Saturday in October. That is why every ride page shows what is typical for that weekday and how long the queue gets on busy days.",
       "ridesTitle": "Every ride has its own page",
-      "ridesText": "Thousands of ride pages, each with what holds for that one ride: queue types, the day’s course from measurement and forecast, typical times by weekday, height limit and a rope-drop tip.",
+      "ridesText": "A ride’s page lists its queue types, its day as measured and as forecast, typical wait times by weekday, the height limit and a rope-drop tip.",
       "ridesLink": "See an example",
       "typicalTitle": "Ride pages",
       "ropeDropTitle": "Rope drop tip",
-      "ropeDropText": "Head here at opening: on the popular rides the first hour is regularly the shortest window of the day.",
-      "howtoLink": "How to read a wait time: the guide"
+      "ropeDropText": "Head here as soon as the park opens. On the popular rides the first hour is usually the quietest of the day.",
+      "howtoLink": "Guide to reading and judging wait times"
     },
     "shows": {
       "kicker": "Shows & dining",
-      "title": "Even the keenest coaster fan has to sit down and eat at some point",
-      "lead": "park.fan lists shows and restaurants too: the day’s show times, plus the cuisine, the opening hours and whether a table has to be booked.",
+      "title": "When the show starts and where to eat",
+      "lead": "For each park, park.fan lists the shows with their times and the restaurants with their cuisine, opening hours and whether booking is required.",
       "showsTitle": "Show times",
       "showsHint": "Every performance of the day with its time, the next one first, and whether the show is currently in season.",
       "restaurantsTitle": "Restaurants in the park",
-      "restaurantsHint": "Cuisine, opening hours and whether booking is required, so the hunt for a table does not start in the middle of the best riding hours.",
-      "body": "A three o’clock performance pulls a few thousand people out of the queues and sends them all back at once afterwards. Know the show times and you can be at a ride during the show, not behind the entire audience when it lets out.",
+      "restaurantsHint": "Cuisine, opening hours and whether you need to book a table.",
+      "body": "While a big show is running, its audience is not queueing anywhere. When it ends, they all come back at once. The show times let you ride something while the show is on.",
       "statAttractions": "Rides",
       "statShows": "Shows",
       "statRestaurants": "Restaurants",
@@ -227,9 +227,9 @@
     "calendar": {
       "kicker": "Crowd calendar",
       "title": "A green day or a red one?",
-      "lead": "Before you book the hotel: the calendar rates every single day the park has published a schedule for. Where a day’s colour comes from is set out below.",
-      "pipelineTitle": "From the measurement to the colour of a day",
-      "pipelineLead": "Four steps, redone every night. Whatever ends up in the calendar as a green or a red day took this path.",
+      "lead": "The calendar rates every day the park has already published opening hours for. Look at it before you book a hotel.",
+      "pipelineTitle": "How a day gets its colour",
+      "pipelineLead": "Four steps, run again every night.",
       "p1": {
         "title": "Measure",
         "text": "Every five minutes park.fan polls the parks’ queue systems: standby, single rider, Lightning Lane, virtual queues, plus the operating status of every ride.",
@@ -237,7 +237,7 @@
       },
       "p2": {
         "title": "Collect",
-        "text": "Every reading is archived with its timestamp, ride and park. Out of those readings each ride gets a profile of its own: the course of a day, the rhythm of a week, the season.",
+        "text": "Every reading is stored with its timestamp, ride and park. Together they show how each ride’s wait time changes over a day, a week and a season.",
         "label": "Records"
       },
       "p3": {
@@ -251,21 +251,21 @@
         "label": "Days ahead"
       },
       "feedback": "The next day every forecast is laid against the wait time actually measured. The difference goes into the next round of training, and that is why the calendar colour for one and the same day changes as the day gets closer.",
-      "body": "Green days mean short queues and room to move. Orange and red mean every popular ride costs you three quarters of an hour, roughly one TV episode per ride. To get there the calendar weighs holiday calendars, weather forecasts, weekdays and special events against the park’s real wait-time history.",
+      "body": "The colour compares the day with a typical day at the same park. Green means as busy as usual or quieter, orange and red mean longer queues than usual. So a red day at a small park can still mean shorter waits than a green day at Europa-Park.",
       "cta": "See a park’s crowd calendar",
       "bestTimeLink": "Best time to visit: the quietest weekdays and months"
     },
     "ai": {
       "kicker": "Our model",
       "title": "A forecast of our own, with the error printed next to it",
-      "lead": "Predicting wait times is the hard part, about as thankless as forecasting traffic on the first day of the school holidays. park.fan does it anyway with Fancast, a model of its own, retrained daily at 06:00 UTC.",
+      "lead": "The forecasts come from Fancast, a model park.fan trains itself. It is retrained every day at 06:00 UTC on the previous day’s wait times.",
       "compareTitle": "How other wait-time sites forecast",
-      "compareLead": "Three approaches are common, and all three share one blind spot: nobody tells you how far off the forecast was.",
+      "compareLead": "Three approaches are common. None of them says how far off its forecasts turned out to be.",
       "c1": {
         "kicker": "Approach 1",
         "title": "No forecast at all",
         "text": "One of the best-known German wait-time sites deliberately does without predictions: too many factors, and a wrong forecast could hurt parks and visitors alike. All it shows is how busy it was.",
-        "limit": "A look back helps with “which day do I book?” about as much as yesterday’s weather forecast."
+        "limit": "Looking back does not show which day next month will be busy."
       },
       "c2": {
         "kicker": "Approach 2",
@@ -277,27 +277,27 @@
         "kicker": "Approach 3",
         "title": "Statistics plus a bit of AI",
         "text": "Ensembles mix statistical analysis with an AI share and factor in holidays and weather, labelled beta, for one park, in steps from “excellent” to “very long”.",
-        "limit": "With no error figure, what the level is worth stays open."
+        "limit": "There is no figure for how often the level is right."
       },
       "answerTitle": "Fancast forecasts by the hour, ride by ride, and publishes its error.",
-      "answerText": "Instead of one crowd level per day, you get the expected wait for each hour. Every forecast is later checked against the real measurement, and the accuracy figures further down come out of that."
+      "answerText": "Alongside the day’s crowd level, every ride gets an expected wait for each hour. Each forecast is later compared with the real measurement, and the accuracy figures further down come from that comparison."
     },
     "bestTime": {
       "kicker": "Best time to ride",
       "title": "Many rides have two quiet windows, in the morning and towards the evening",
-      "lead": "Rope drop does not pay off on every ride, however little you want to hear that when the alarm goes off at six. The curve comes from that attraction’s own measured days.",
+      "lead": "Rope drop does not help on every ride. Some are equally busy all day, others only fill up from midday. The curve shows a single ride, as the median of its measured days.",
       "chartSubtitle": "Median of {days} measured days, sampled every 5 minutes",
       "legendToday": "measured today",
       "legendMedian": "median of past days",
       "legendBand": "usual range (P25–P90)",
       "legendBandUpper": "median to peak",
       "heatTitle": "Heat warning",
-      "heatText": "On hot days the crowd shifts: water rides pick up, indoor dark rides fill, coasters empty out. The calendar takes that into account.",
+      "heatText": "On hot days more people queue for the water rides. That is why the weather forecast goes into the calendar.",
       "historyTitle": "History",
-      "historyText": "Every ride has a curve of its own, a rhythm of its own across the week and a season of its own. Every reading taken today goes into tomorrow’s model.",
+      "historyText": "The model works out each ride separately, from that ride’s own day curve and season. Whatever is measured today goes into training the next morning.",
       "hubLink": "Best time to visit for 200+ parks",
       "peakAt": "Busiest around",
-      "windowOpening": "A good start to the day",
+      "windowOpening": "After opening",
       "windowClosing": "Towards the end of the day",
       "windowWait": "around {minutes} min wait",
       "legendForecast": "forecast for today",
@@ -313,18 +313,18 @@
     },
     "inPark": {
       "kicker": "Favourites & map",
-      "title": "On the day itself, what counts is 200 metres away",
-      "lead": "Before the visit you plan with the calendar and the forecast. In the park you need two things: the rides you saved and the wait times on the park map.",
+      "title": "Favourites and the park map for the day of your visit",
+      "lead": "Before your visit you plan with the calendar and the forecast. In the park you are more likely to check the rides you saved and the park map with its wait times.",
       "favTitle": "Favourites",
       "favHint": "Parks, rides, shows, restaurants",
-      "favText": "One tap on the star, on every park, every ride, every show and every restaurant. Your favourites then sit at the top of the homepage with their live wait time and opening status. No account, saved in the browser.",
+      "favText": "Tap the star and the park or ride shows up on your homepage, with its live wait time and opening status. Favourites are saved in your browser and need no account.",
       "mapTitle": "Map & in-park mode",
-      "mapText": "Rides, shows and restaurants sit on the park map as coloured markers; a tap shows status, wait time and how busy it is. When park.fan can tell you are in the park, your position joins them and the nearest rides move to the top."
+      "mapText": "The park map shows rides, shows and restaurants as coloured markers. Tap one to see its status and wait time. When you are in the park, the map shows where you are and puts the nearest rides at the top."
     },
     "dictionary": {
       "kicker": "Dictionary · nerd knowledge",
-      "title": "Zero-G roll, Immelmann and top hat in the 3D player, no queasy stomach required",
-      "lead": "The park.fan dictionary explains the jargon, and track elements come with a 3-D player: pick a figure, play it, scrub to any point of the ride.",
+      "title": "Track elements such as the zero-G roll and the Immelmann in the 3-D player",
+      "lead": "The dictionary explains terms like airtime, rope drop and single rider. You can play track elements in the 3-D player and stop them at any point of the ride.",
       "pickerTitle": "Track elements",
       "cta": "All terms in the dictionary",
       "stage": "Play the figure"
@@ -334,27 +334,27 @@
       "title": "What works differently here",
       "r1": {
         "title": "Our own model, trained daily",
-        "text": "No third-party provider, no off-the-shelf black box. The model keeps learning every night from the previous day’s data."
+        "text": "Fancast was built at park.fan, from the data preparation to the training, and is retrained every morning on the previous day’s wait times."
       },
       "r2": {
         "title": "The accuracy is published",
-        "text": "The mean error and the R² value sit on this page and are recalculated after every round of training, good or bad."
+        "text": "The mean error and the R² value are on this page and are recalculated after every training run, even when they get worse."
       },
       "r3": {
-        "title": "Every five minutes, not once a day",
-        "text": "Wait times are merged from three public sources every five minutes. If a ride goes down it says so here before you are standing in front of it."
+        "title": "New wait times every five minutes",
+        "text": "park.fan reads three public sources and checks them against each other. When a ride goes down, its page shows that on the next update."
       },
       "r4": {
-        "title": "Free, no subscription, no paywall",
-        "text": "Everything park.fan knows about a park, you get to see as well, without an account and without a paywall."
+        "title": "Free, no account needed",
+        "text": "There is no paywall and no subscription tier with more data. What park.fan knows about a park is on that park’s page for anyone to see."
       },
       "r5": {
         "title": "200+ parks, 23 countries, 6 languages",
-        "text": "From Phantasialand to Tokyo DisneySea. Where a park publishes its wait times, they are here; where it does not, the park page says so."
+        "text": "Tokyo DisneySea, Efteling and Phantasialand are among them. Where a park publishes its wait times, they are here; where it does not, the park page says so."
       },
       "r6": {
-        "title": "Data that explains something",
-        "text": "A dictionary, park guides and data pieces on the blog. Why a park is packed in October and nearly empty in November is written up as an article, with numbers."
+        "title": "Articles with measured data",
+        "text": "The blog has park guides and analyses, for example of why a park is packed in October and nearly empty in November. The wait times in those articles are live widgets that load the current figures."
       },
       "howtoLink": "How park.fan works",
       "fancastLink": "Fancast, our forecasting model"
@@ -364,8 +364,8 @@
       "title": "A developer who queued once too often",
       "name": "Patrick Arns",
       "role": "Founder of park.fan",
-      "p1": "There are no investors and no roadmap meetings behind park.fan. Just someone who has been going to theme parks since he was in a pram and building software for over 25 years. The trigger was a concrete one: queueing 90 minutes for a ride and suspecting that a bit of planning would have avoided it.",
-      "p2": "So first came a tracker, then a database, then a machine-learning system of his own, built end to end from the data import to the forecast and retrained every day. Other people would simply have bought a fast-track pass after a day like that.",
+      "p1": "park.fan is run by one person, Patrick, who has been going to theme parks since he was a child and has been a software developer for more than 25 years. It began with 90 minutes in the queue for a single ride, and the feeling that a little planning would have avoided it.",
+      "p2": "That turned into a wait-time tracker, then a database, and finally the forecasting model, which is retrained every day. He built the data import, the model and this website himself.",
       "b1": "25+ years of software development",
       "b2": "Park nerd since childhood",
       "b3": "No corporation, no investor",
@@ -377,12 +377,12 @@
     },
     "blog": {
       "kicker": "Blog & guides",
-      "title": "Analyses of single parks, with today’s numbers",
-      "lead": "Park guides, wait-time analyses and seasonal tips, written by someone who stands in the queues too. Every park page carries the articles that belong to it.",
+      "title": "Articles on individual parks and rides",
+      "lead": "Park guides, wait-time analyses and seasonal tips, written by someone who stands in the queues too. Where a park has an article, its park page links to it.",
       "bestTimeTitle": "Best time to visit a theme park",
       "bestTimeText": "When parks are emptiest: the quietest weekdays and months, out of the measured wait times of more than 200 parks.",
       "glossaryCta": "Dictionary: single rider, rope drop, Lightning Lane",
-      "glossaryText": "Every term explained in one sentence, and track elements come with the 3-D player."
+      "glossaryText": "Park jargon explained briefly, with track elements in the 3-D player."
     },
     "faq": {
       "kicker": "Common questions",
@@ -1734,11 +1734,11 @@
         "freeQ": "Is using park.fan free?",
         "freeA": "Yes. Live wait times, opening hours, shows, restaurants and the crowd calendar are all there without an account and without a paywall. There is no subscription tier with more data behind it.",
         "favoritesQ": "Can I save my favorite parks and attractions on park.fan?",
-        "favoritesA": "Yes. One tap on the star saves a park, a ride, a show or a restaurant. Your favorites then sit at the top of the homepage with their live wait time and opening status. That works without an account, stored in your browser.",
+        "favoritesA": "Yes. Tap the star on a park, a ride, a show or a restaurant. Your favorites then appear on the homepage with their live wait time and opening status. They are saved in your browser, and you do not need an account.",
         "featuresQ": "What information does park.fan offer besides live wait times?",
         "featuresA": "Besides the live wait times, every park page carries the opening hours, the show times, the restaurants with their cuisine and whether a table has to be booked, the day’s weather forecast, the measured wait-time history and the crowd calendar. Each ride’s own page adds the typical course of its day.",
         "mobileQ": "Does park.fan work on smartphones?",
-        "mobileA": "Yes. park.fan is a website, not an app, and it runs in the browser on a phone, a tablet and a desktop. In the park you can use it to see where the queue is short right now; when the site can tell you are inside a park, the nearest rides move to the top."
+        "mobileA": "Yes. park.fan runs in the browser on a phone, a tablet or a computer, so there is no app to install. In the park you can use it to see where the queue is short right now. When the site can tell you are inside a park, the nearest rides move to the top."
       }
     }
   },
@@ -2205,7 +2205,7 @@
     "removeRide": "Remove from plan",
     "empty": {
       "title": "Nothing planned yet",
-      "bodyGrid": "Find a ride below – it lands on the timeline and can be moved from there.",
+      "bodyGrid": "Find a ride below. It lands on the timeline, where you can move it.",
       "planThisPark": "Plan {park} now"
     },
     "day": {
@@ -2225,7 +2225,7 @@
     "entry": {
       "expected": "expected",
       "typicalError": "typically {minutes} min out",
-      "typicalErrorHint": "How far this ride's forecasts have landed from the days that then happened, on average. Half the days fall further out.",
+      "typicalErrorHint": "This is how many minutes the forecast for this ride has typically been off. On half the days the error was smaller, on the other half larger.",
       "bandHint": "The model reports a spread of plus or minus this many minutes for this hour.",
       "markDone": "Mark as ridden",
       "markUndone": "Not ridden after all",
@@ -2255,13 +2255,13 @@
       "composed": "From the day forecast",
       "longRange": "Rough estimate",
       "unmeasured": "Accuracy unchecked",
-      "observedHint": "This day is over. The figures are what the queues actually did.",
+      "observedHint": "This day is over. The figures are the measured wait times.",
       "measuredHint": "The model works this day out hour by hour.",
       "measuredHintError": "Worked out hour by hour, typically {minutes} min off.",
       "composedHint": "The day’s level is predicted; the shape comes from earlier days.",
       "composedHintError": "Day’s level predicted, shape from earlier days, typically {minutes} min off.",
-      "longRangeHint": "This far ahead the day’s level itself gets thin. Read the figures as a direction, not a promise.",
-      "unmeasuredHint": "This far ahead nobody has checked yet how close these figures land. Read them as a direction."
+      "longRangeHint": "This far ahead even the level of the whole day is uncertain. The hourly figures are only a rough guide.",
+      "unmeasuredHint": "How well the forecast holds up this far ahead has not been evaluated yet. The figures are only a rough guide."
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -2420,7 +2420,7 @@
       "label": "Headliner"
     },
     "coach": {
-      "drag": "Drag a ride from the park page onto the timeline — that picks the hour at the same time.",
+      "drag": "Drag a ride from the park page onto the timeline. Where you drop it sets the time.",
       "dismiss": "Dismiss hint"
     },
     "parkSearch": {
@@ -2433,7 +2433,7 @@
       "off": "Turn on notifications",
       "on": "Notifications are on",
       "denied": "Your browser blocks notifications for this site. Only your browser settings can change that.",
-      "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password. Switch notifications off again and it is deleted there.",
+      "storedHint": "Your plan is stored on the server for this. Anyone with its link can read and change it, because there is no account and no password. Switch notifications off again and it is deleted there.",
       "deleteFailed": "Notifications are off. Your stored plan is still on the server, though. Switch them on and off once more to delete it.",
       "topics": {
         "legend": "What should we tell you about?",
@@ -2450,13 +2450,13 @@
     },
     "page": {
       "kicker": "Trip planner",
-      "title": "Your day at the theme park, sorted out first",
-      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser — no account needed.",
+      "title": "Plan your park day ride by ride",
+      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser, and you need no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
       "metaDescription": "Plan a theme park day against the forecast wait times: drop rides onto a timeline, check every transfer, and fit shows and breaks in between. No account.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
       "introTitle": "Nothing planned yet",
-      "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get across, and whether that is cutting it fine.",
+      "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get from one ride to the next, and whether that is enough.",
       "browseParks": "Pick a park",
       "demo": {
         "caption": "Real values: Phantasialand on Saturday 12 September 2026, read on 4 September. The day has passed; everything here still moves."
