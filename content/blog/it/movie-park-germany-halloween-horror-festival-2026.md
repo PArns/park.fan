@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: da sabato 22 serate horror, e nella casa nuova aspetta Jason'
+title: 'Movie Park Germany: serate horror da sabato all’8 novembre, e nella casa nuova aspetta Jason'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -101,7 +101,8 @@ scare zone e la parata March of the Monsters. I biglietti datati online costano
 al momento 38,90 € secondo il parco, alla cassa 59,90 € dai 12 anni in su.
 
 Le case e PHOBIA **non sono comprese**. Ogni casa richiede un proprio biglietto
-a fascia oraria, in vendita solo online. Le pagine Halloween del parco non
+a fascia oraria, da prenotare online. Secondo la mappa del parco, i biglietti rimasti
+si comprano anche al servizio ospiti nel parco, fino a esaurimento. Le pagine Halloween del parco non
 indicano un prezzo per casa. Lo si trova solo nel negozio online.
 
 Se vuoi tutte e nove, fai il conto con il **S.I.K. Pass**: 215 € con l’ingresso
@@ -146,3 +147,6 @@ Date, case e biglietti:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 settembre 2026: la prima versione diceva che i biglietti a fascia oraria per le case si vendevano solo online. Secondo la mappa del parco, i biglietti rimasti si vendono anche nel parco, fino a esaurimento.

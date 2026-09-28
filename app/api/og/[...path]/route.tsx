@@ -115,6 +115,12 @@ export async function GET(
       });
     }
 
+    // News overview — `<locale>/news`. Same renderer as the blog, with its own title.
+    if (path.length === 2 && path[1] === 'news' && isValidLocale(path[0])) {
+      const { renderBlogOg } = await import('@/lib/og/blog-og');
+      return renderBlogOg({ locale: path[0] as Locale, segments: [], section: 'news' });
+    }
+
     // Glossary TERM branch — `<locale>/<glossarySegment>/<termSlug>` (length 3).
     // The overview (length 2) still uses the generic card on purpose; only a
     // real term slug gets a dedicated name + definition card. Unknown slugs

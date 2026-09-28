@@ -273,7 +273,18 @@ export function fitOrder(input: FitInput, choice: FitChoice): FitWish[] {
   return ordered(input, choice);
 }
 
-/** The wishes in the visitor's order, with anything unranked behind them. */
+/**
+ * The wishes in the visitor's order, with anything unranked behind them — and a
+ * second go on a ride behind every first one.
+ *
+ * The engine gives a lap up before any ride that has not been ridden yet
+ * (`rankHeadliners` in `optimize.ts`, PAR-482 follow-up: „eher Doppelfahrten
+ * raus nehmen"), and this list says „gestrichen wird von unten", so the laps
+ * have to BE at the bottom or the list lies about what goes. A pinned lap stays
+ * where it was pinned: pinning is the visitor saying this one matters, and the
+ * first time a slug appears in the order is the one the engine counts as the
+ * ride itself.
+ */
 function ordered(input: FitInput, choice: FitChoice): FitWish[] {
   const byKey = new Map(input.wishes.map((wish) => [wish.key, wish]));
   const out: FitWish[] = [];
@@ -284,8 +295,18 @@ function ordered(input: FitInput, choice: FitChoice): FitWish[] {
       byKey.delete(key);
     }
   }
-  for (const wish of input.wishes) if (byKey.has(wish.key)) out.push(wish);
-  return out;
+  const seen = new Set(out.map((wish) => wish.attractionSlug));
+  const laps: FitWish[] = [];
+  for (const wish of input.wishes) {
+    if (!byKey.has(wish.key)) continue;
+    if (seen.has(wish.attractionSlug)) {
+      laps.push(wish);
+      continue;
+    }
+    seen.add(wish.attractionSlug);
+    out.push(wish);
+  }
+  return [...out, ...laps];
 }
 
 /**

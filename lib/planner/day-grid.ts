@@ -26,10 +26,9 @@ import type { DayClock } from './park-time';
  *
  * Chosen from content rather than from a viewport: a 40-minute queue — the
  * common headliner figure — is 48 px, which is two lines of `text-sm` plus a
- * `text-[10px]` meta line and 6 px of padding; the drag step a FINGER gets
- * ({@link SNAP_MIN_COARSE}) is 36 px here, comfortably above touch tolerance,
- * and a mouse's {@link DRAG_SNAP_MIN_FINE} is 6 px, which is a step a pointer
- * with sub-pixel resolution can aim at. Deriving it from a container's height would
+ * `text-[10px]` meta line and 6 px of padding; the drag step
+ * ({@link DRAG_SNAP_MIN}) is 6 px here, which is a step a pointer with
+ * sub-pixel resolution can aim at, and 9 px on the phone's axis. Deriving it from a container's height would
  * be a measurement arriving after paint, i.e. a resize of the whole grid on
  * every open, so it is a constant per pointer class and not a function of the
  * box.
@@ -110,15 +109,19 @@ export const CLOSE_SLACK_MIN = 60;
  *
  * It was the drag's step too until PAR-307, and that is the one thing it is no
  * longer: a pointer has a resolution of its own and does not have to agree with
- * the grid the optimiser plans on. {@link DRAG_SNAP_MIN_FINE} is that step now.
+ * the grid the optimiser plans on. {@link DRAG_SNAP_MIN} is that step now.
  */
 export const SNAP_MIN_FINE = 15;
 
-/** 36 px. Fifteen minutes under a finger reads as jitter, not as a choice. */
+/**
+ * The arrow-key step of a block on a coarse pointer, and nothing else since the
+ * drag stopped using it (see {@link DRAG_SNAP_MIN}). 54 px on the phone's axis.
+ */
 export const SNAP_MIN_COARSE = 30;
 
 /**
- * What a drag with a mouse or trackpad commits to. Five minutes, 6 px here.
+ * What a drag commits to, under a mouse and under a finger. Five minutes, 6 px
+ * here and 9 px on the phone's axis.
  *
  * Five because that is the resolution every displayed wait in this app already
  * has, so a block dropped on a five is on a minute the rest of the panel can
@@ -131,11 +134,16 @@ export const SNAP_MIN_COARSE = 30;
  * saying a minute out loud, while `nowFloor` and the optimiser are rounding one
  * they computed, and the quarter hour is what those round to.
  *
- * There is no coarse twin of this constant on purpose. Under a finger the step
- * stays {@link SNAP_MIN_COARSE} — the reason for the half hour there is the
- * contact patch, which a smaller number makes worse rather than better.
+ * A finger had a step of its own until it was asked for in so many words („das
+ * ich auf mobile in 5 min raster verschieben kann"): half an hour, on the
+ * theory that a smaller step under a sliding contact patch reads as jitter. It
+ * also meant a phone could only drag a block onto :00 or :30, while every
+ * wait, walk and show in the same panel is counted in fives. The step is the
+ * same for both pointers now; what a finger lands on is where it lets go, and
+ * the ±15 buttons in the action row are still there for a start that has to be
+ * exact without a gesture.
  */
-export const DRAG_SNAP_MIN_FINE = 5;
+export const DRAG_SNAP_MIN = 5;
 
 /**
  * The smallest BOX a block may occupy — not a claim about its height.
@@ -774,4 +782,91 @@ export function showLinePositions(
   }
 
   return out;
+}
+
+/**
+ * Half a show pill's drawn height, rounded up: one `text-[10px]` line at the
+ * pill's leading, its 1 px padding and its border, 19 px measured at 1280×900.
+ */
+export const SHOW_PILL_HALF_PX = 10;
+
+/** Something drawn on the axis that a show pill may not be laid over. */
+export type ShowLineObstacle =
+  | {
+      kind: 'block';
+      topPx: number;
+      bottomPx: number;
+      /** How many blocks stand side by side there; 1 for a block alone. */
+      columns: number;
+    }
+  | { kind: 'chip'; topPx: number; bottomPx: number };
+
+/** What a show line runs through, which decides how its pill is drawn. */
+export type ShowLineCover =
+  | { kind: 'free' }
+  | {
+      kind: 'block';
+      columns: number;
+      /** A transfer chip is in the way too, on the block's edge. */
+      chip: boolean;
+    }
+  | { kind: 'chip' };
+
+/**
+ * What a show line runs through (PAR-482 follow-up).
+ *
+ * A show pill is centred on its line and as wide as the axis allows, so over a
+ * planned ride it lay on the ride's name, its times, its lateness hint and the
+ * transfer chip below it: on a park with an hourly show that was every other
+ * block of a full day. Only on free axis does the grid draw the names. Over a
+ * block it draws the mask alone, centred in the first column, the one strip of
+ * a block that carries no figure. Over a transfer chip alone the middle is the
+ * chip's own end, so the mask goes to the right end of the axis, which in a gap
+ * between two blocks nothing is drawn on. A line through both is on the edge
+ * where a chip meets the next block, whose wait figure takes the right end, so
+ * there the grid puts the mask three quarters across the first column, between
+ * the chip's end and the figure.
+ *
+ * The pill's own half height counts, so a line a few pixels above a block's top
+ * edge is over the block's name line too.
+ */
+export function showLineCover(y: number, obstacles: readonly ShowLineObstacle[]): ShowLineCover {
+  let columns = 0;
+  let chip = false;
+  for (const box of obstacles) {
+    if (y <= box.topPx - SHOW_PILL_HALF_PX || y >= box.bottomPx + SHOW_PILL_HALF_PX) continue;
+    if (box.kind === 'block') columns = Math.max(columns, box.columns);
+    else chip = true;
+  }
+  if (columns > 0) return { kind: 'block', columns, chip };
+  return chip ? { kind: 'chip' } : { kind: 'free' };
+}
+
+/** A planned block as {@link showLineHost} sees it. */
+export interface ShowLineHostCandidate {
+  id: string;
+  topPx: number;
+  bottomPx: number;
+  /** Its lane; the leftmost of two blocks side by side takes the show. */
+  column: number;
+}
+
+/**
+ * The block a show line falls into, which then says so itself (PAR-521:
+ * „jetzt sieht man die Shows gar nicht mehr").
+ *
+ * Over a block the grid drew the mask alone, which kept the ride legible and
+ * said nothing about which show it was. A block that falls on a show now writes
+ * it itself, on its second line beside its times or, where it has none, on its
+ * first between the name and the figure, and the browser truncates the show
+ * before either; the grid then draws no mark of its own for that line. A line
+ * that only grazes a block's edge has no host, and there the mask stays.
+ */
+export function showLineHost(y: number, blocks: readonly ShowLineHostCandidate[]): string | null {
+  let host: ShowLineHostCandidate | null = null;
+  for (const block of blocks) {
+    if (y < block.topPx || y >= block.bottomPx) continue;
+    if (host === null || block.column < host.column) host = block;
+  }
+  return host?.id ?? null;
 }

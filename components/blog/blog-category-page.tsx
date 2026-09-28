@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { FolderTree } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
+import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   categoryPathBreadcrumbs,
   filterPostsByCategory,
@@ -25,10 +25,10 @@ import { blogFeedAlternates } from '@/lib/blog/feed';
 import { categoryPath, NEWS_CATEGORY } from '@/lib/blog/paths';
 
 /**
- * A category listing, shared by `/blog/category/[...path]` and `/news`. The news category's
- * listing is the news overview at `/news` (`categoryPath` in `lib/blog/paths.ts`); every other
- * category keeps its `/blog/category/…` URL. Canonical, hreflang and breadcrumbs all come from
- * `categoryPath`, so the two routes cannot disagree about which URL a category has.
+ * A blog category listing at `/blog/category/[...path]`. Articles only: the news category is not
+ * a blog category — its posts live under `/news`, and its overview is the news page
+ * (`NewsIndexPageBody`, `components/blog/news-index-page.tsx`), which draws nothing from here. Canonical, hreflang and
+ * breadcrumbs come from `categoryPath` (`lib/blog/paths.ts`).
  */
 export async function buildCategoryMetadata(locale: string, path: string[]): Promise<Metadata> {
   if (!routing.locales.includes(locale as Locale)) return {};
@@ -69,19 +69,11 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
   };
 }
 
-export async function BlogCategoryPageBody({
-  locale,
-  path,
-  section,
-}: {
-  locale: string;
-  path: string[];
-  section: 'blog' | 'news';
-}) {
+export async function BlogCategoryPageBody({ locale, path }: { locale: string; path: string[] }) {
   if (!routing.locales.includes(locale as Locale)) notFound();
   // `/blog/category/news` is `/news` now. The proxy 308s it before anything renders
   // (`lib/blog/news-redirects-rule.ts`); this is the net behind it.
-  if (section === 'blog' && path.join('/') === NEWS_CATEGORY) permanentRedirect(`/${locale}/news`);
+  if (path.join('/') === NEWS_CATEGORY) permanentRedirect(`/${locale}/news`);
   if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
@@ -89,7 +81,7 @@ export async function BlogCategoryPageBody({
   if (segments.length === 0) notFound();
 
   const t = await getTranslations('blog');
-  const all = listPosts(locale as Locale);
+  const all = listArticles(locale as Locale);
   const allInCategory = filterPostsByCategory(all, segments);
   if (allInCategory.length === 0) notFound();
 

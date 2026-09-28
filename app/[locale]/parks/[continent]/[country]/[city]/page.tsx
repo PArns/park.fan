@@ -211,7 +211,7 @@ export default async function CityPage({ params }: CityPageProps) {
             continent={continent}
             country={country}
             parks={staticParks}
-            className="grid [grid-auto-rows:auto_1fr_auto] gap-4 md:grid-cols-2"
+            className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto md:grid-cols-2"
           />
         </section>
       </PageContainer>

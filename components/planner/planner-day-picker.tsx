@@ -84,7 +84,7 @@ export function PlannerDayPicker({
           // 48 wide from PAR-313 until PAR-482 put the bell and the × into
           // this row: 32 now, which the park name was paying for ("E…" at
           // 360 px). 32 × 44 to a finger.
-          'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition-colors',
+          'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition',
           PHONE_TARGET_32,
           atStart && 'pointer-events-none opacity-30'
         )}
@@ -153,7 +153,7 @@ export function PlannerDayPicker({
         aria-label={t('calendar.nextDay')}
         className={cn(
           // 32 × 44 on a phone, like its twin above — see the note on the row.
-          'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition-colors',
+          'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition',
           PHONE_TARGET_32,
           atEnd && 'pointer-events-none opacity-30'
         )}

@@ -71,6 +71,9 @@ carries the reasoning, the measurements and the counter-examples.
   half these pages' bytes and is paid by every request including the crawler's. A page that renders
   none of a thing must not ship it. Judge compressed, A/B both sides in one build, and measure on a
   cache-busted URL.
+- **[A day in the park has a byte budget](docs/rules/a-day-in-the-park-has-a-byte-budget.md)** — park page on a phone: first live
+  wait time ≤ 2.5 s Slow 4G / 7.0 s 3G, first visit ≤ 850 KB, lean poll ≤ 5 KB brotli, a day ≤ 1,700 KB.
+  `next start` does not compress `/api/*`, so weigh poll bodies with brotli yourself.
 - **[A `revalidate` at a call site is somebody else's page](docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)** — Next takes the shortest `revalidate` a
   route executes. Never pass a numeric TTL at a call site: put it in `CACHE_TTL` or the helper's
   default, and set it from the data's cadence, not as a floor under some page. Prove it against
@@ -104,7 +107,8 @@ carries the reasoning, the measurements and the counter-examples.
 - **[The planner's day ends when the park closes, and a headliner is not a residual](docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md)** —
   `closeHour` is the hour the closing time falls in. `closeMin` is the certifiable end,
   `closeSlackMin` (60) is drawn and draggable but never planned into. The rule runs on the start
-  (`fits = start < closeMin`). Which headliner falls out is decided by `dropWeight`, not by cost.
+  (`fits = start < closeMin`). Which headliner falls out is decided by `dropWeight`, not by cost,
+  and per entry: a second go on a ride is given up before any first ride.
 - **[A day that does not fit opens an assistant, not a footnote](docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md)** — both presses probe with
   `needsFitHelp` and open `PlannerFitAssistant`. Every hint is a measured difference between two
   plans (`fitLevers`), never advice. `pnpm test:planner-fit`, `pnpm check:planner`.
@@ -130,12 +134,13 @@ carries the reasoning, the measurements and the counter-examples.
   are intentional. Never dedupe or sort. This app is the only place a term id is defined.
 - **[Blog manifest is split](docs/rules/blog-manifest-is-split.md)** — import listings from `@/lib/blog/listing`; `@/lib/blog` drags every
   post body into the bundle of a route the root layout imports.
-- **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — teasers (homepage, header menu, park/ride
-  pages) list articles and news separately (`isNewsPost`, `listArticlesByRecency`, `NewsRow`/`NewsList`). News shows its
-  age (`NewsAge`) and is never hidden for it.
+- **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — `/blog` lists articles only
+  (`listArticles`, category tree, tags), `/news` news only, and the header has a News entry of its own beside
+  „Backstage" (`NewsMenuPanel`). Teasers list both separately (`NewsRow`/`NewsList`). News shows its age (`NewsAge`)
+  and is never hidden for it. `pnpm test:news-split`.
 - **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
   `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
-  `pnpm test:news-redirects`.
+  `pnpm test:news-redirects`, `pnpm test:news-park`.
 
 ### Design and layout
 
@@ -161,11 +166,15 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Blog spotlight cards](docs/rules/blog-spotlight-cards.md)** — the row template sits on the card itself, never on a shared wrapper that
   also holds the heading.
 - **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
+  `ParkCard` does the same with its own four-line row (`data-park-card-row`).
   Two markups, not one responsive tree. The hero overlap is safe by construction:
   `HERO_FLOW_INTO_PULL` (176 px) must stay smaller than the hero's mobile `pb-48`.
 - **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
   `tile.openstreetmap.org` is for OSM's own site, not for embedding; hotlinking it got park.fan
   hard-blocked on 2026-09-18. Both `TileLayer`s use CARTO's basemap CDN, credited alongside OSM.
+- **[A fade is animated, never a cut](docs/rules/a-fade-is-animated-never-a-cut.md)** — opacity and
+  visibility change over a transition: `starting:opacity-0` to appear, `invisible opacity-0` kept
+  mounted to leave, and a ghost's snapped steps glide. `transition-colors` does not cover opacity.
 
 ### SEO and the machine-facing surface
 
@@ -209,6 +218,9 @@ carries the reasoning, the measurements and the counter-examples.
   visible capability, PATCH for a bundle of fixes. `docs/changelog.md` is the internal log and
   `content/changelog/<version>.md` the public entry at `/en/changelog`; never parse one into the
   other, and a blog post is never a release.
+- **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
+  news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
+  (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
 
 ---
 

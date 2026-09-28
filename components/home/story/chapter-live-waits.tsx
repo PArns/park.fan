@@ -3,6 +3,7 @@ import { ArrowRight, Gauge, Sunrise, Timer } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { ChapterSplit } from './chapter-split';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
@@ -25,7 +26,11 @@ import { getLeadPark } from './lead-park';
  * figure the table renders, so the copy stays true whatever the park does today.
  */
 export async function ChapterLiveWaits({ locale }: { locale: string }) {
-  const [t, park] = await Promise.all([getTranslations('homeStory.live'), getLeadPark(locale)]);
+  const [t, tCommon, park] = await Promise.all([
+    getTranslations('homeStory.live'),
+    getTranslations('common'),
+    getLeadPark(locale),
+  ]);
 
   return (
     // `overflow-x-clip`, not `overflow-hidden`: the exhibit runs past the
@@ -62,38 +67,40 @@ export async function ChapterLiveWaits({ locale }: { locale: string }) {
           }
         >
           <div className="space-y-5">
-            <p className="text-muted-foreground leading-relaxed">
-              <GlossaryInject>{t('body')}</GlossaryInject>
-            </p>
-
-            <div className="border-crowd-very-low/35 bg-crowd-very-low/8 rounded-2xl border p-5">
-              <div className="text-crowd-very-low flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                <Sunrise className="h-3.5 w-3.5" aria-hidden="true" />
-                <GlossaryInject noUnderline>{t('ropeDropTitle')}</GlossaryInject>
-              </div>
-              <p className="mt-2 text-sm leading-relaxed">{t('ropeDropText')}</p>
-            </div>
-
-            <div className="border-border bg-card/55 rounded-2xl border p-5">
-              <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                <Timer className="h-3.5 w-3.5" aria-hidden="true" />
-                {t('typicalTitle')}
-              </div>
-              <h3 className="mt-2.5 text-lg font-semibold">{t('ridesTitle')}</h3>
-              <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                <GlossaryInject>{t('ridesText')}</GlossaryInject>
+            <MobileMore label={tCommon('showMore')} className="space-y-5">
+              <p className="text-muted-foreground leading-relaxed">
+                <GlossaryInject>{t('body')}</GlossaryInject>
               </p>
-              {park && (
-                <Link
-                  href={park.href as '/'}
-                  prefetch={false}
-                  className="text-primary mt-3 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
-                >
-                  {t('ridesLink')}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              )}
-            </div>
+
+              <div className="border-crowd-very-low/35 bg-crowd-very-low/8 rounded-2xl border p-5">
+                <div className="text-crowd-very-low flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                  <Sunrise className="h-3.5 w-3.5" aria-hidden="true" />
+                  <GlossaryInject noUnderline>{t('ropeDropTitle')}</GlossaryInject>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed">{t('ropeDropText')}</p>
+              </div>
+
+              <div className="border-border bg-card/55 rounded-2xl border p-5">
+                <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                  <Timer className="h-3.5 w-3.5" aria-hidden="true" />
+                  {t('typicalTitle')}
+                </div>
+                <h3 className="mt-2.5 text-lg font-semibold">{t('ridesTitle')}</h3>
+                <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+                  <GlossaryInject>{t('ridesText')}</GlossaryInject>
+                </p>
+                {park && (
+                  <Link
+                    href={park.href as '/'}
+                    prefetch={false}
+                    className="text-primary mt-3 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+                  >
+                    {t('ridesLink')}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
+              </div>
+            </MobileMore>
 
             {/* The homepage states what a wait time means; the guide walks a
                 reader through one on real cards. Deep link rather than a repeat

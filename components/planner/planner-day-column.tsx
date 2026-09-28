@@ -13,6 +13,7 @@ import { PlannerTimeline } from './planner-timeline';
 import { PlannerHelpSteps } from './planner-help';
 import { PlannerPlanParkCta } from './planner-plan-park-cta';
 import { PlannerDayFoot } from './planner-day-foot';
+import { PlannerRideSearch } from './planner-ride-search';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { entriesFor, type PlannerEntry } from '@/lib/planner/types';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
@@ -698,9 +699,8 @@ export function PlannerDayColumn({
                 timezone={timezone}
                 isToday={isToday}
                 liveWaits={liveWaits}
-                /* `[]` rather than `null` while the switch is off: `null` is this
-                 prop's "the day payload has not arrived". */
-                showLines={showsVisible ? showLines : []}
+                showLines={showLines}
+                showsHidden={!showsVisible}
                 closedNow={closedNow}
                 prefs={prefs}
                 parkSlug={park?.slug}
@@ -853,6 +853,19 @@ export function PlannerDayColumn({
               prefs={prefs}
               entries={entries}
               onAddFreeBlock={addFreeBlock}
+              search={
+                <PlannerRideSearch
+                  parkSlug={park.slug}
+                  parkName={park.name}
+                  geo={park.geo}
+                  date={date}
+                  day={day ?? null}
+                  dayState={dayState}
+                  timezone={timezone}
+                  prefs={prefs}
+                  inline
+                />
+              }
             />
           </>
         )}

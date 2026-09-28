@@ -36,6 +36,7 @@ import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch'
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
+import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
@@ -83,6 +84,8 @@ import type { Metadata } from 'next';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
 import { blogFeedAlternates } from '@/lib/blog/feed';
+import { getNewsMenu } from '@/lib/navigation/news-menu';
+import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
 // STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
 // attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
@@ -118,6 +121,19 @@ export const revalidate = 604800;
 // with the ISR window, ~hourly). Server-rendered for LCP. Only used when HERO_3D_ENABLED is off;
 // the 3D hero ignores it.
 const HERO_TTL_MS = 5 * 60_000;
+
+// On a phone the story chapters trade places with the park lists. A returning visitor comes for
+// the parks near them, their favourites, the popular parks and the ones open right now; on a
+// 390 px screen those sat between twenty chapters of explanation, "Popular Parks" at y=21,753 of
+// 26,569 (PAR-435). Everything wrapped in this class is drawn after the unwrapped sections below
+// a 768 px page, in the same order as in the source; from 768 px up the order is the source
+// order and nothing moves.
+//
+// `order` moves the box, not the DOM, so a screen reader and a crawler still read the story
+// where it stands. The page's width is asked (`@container/page`), not the window's, like every
+// other phone-only switch on this page. The tinted/untinted alternation of the bands follows
+// the source order and is therefore broken on a phone where the parks now sit between them.
+const PHONE_LATER = '@max-[768px]/page:order-1';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -172,6 +188,10 @@ export default async function HomePage({ params }: HomePageProps) {
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
+  // The newest news post for the chip beside the hero's open-parks badge, out of the same news
+  // menu the header draws its chip from. The manifest, read synchronously, so the chip is in the
+  // static shell and in the fallback alike.
+  const latestNews = latestNewsFrom(getNewsMenu(locale as Locale));
 
   return (
     <RouteMessages route="/">
@@ -230,8 +250,10 @@ export default async function HomePage({ params }: HomePageProps) {
                 {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
                 <HeroTextPanel className="hero-in-stagger">
-                  <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
-                    <HeroStats />
+                  <Suspense
+                    fallback={<HeroWithNearby initialCounts={null} latestNews={latestNews} />}
+                  >
+                    <HeroStats latestNews={latestNews} />
                   </Suspense>
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
@@ -317,6 +339,10 @@ export default async function HomePage({ params }: HomePageProps) {
           </HeroRotationProvider>
         </section>
 
+        {/* Standing in a park: the headliners on a compass ring, straight under the hero that says
+          which park it is. Client-only and absent for everybody else — see ParkCompassSlot. */}
+        <ParkCompassSlot />
+
         {/* The newest post, in the band the park shortcuts used to hold: the first
           thing under the fold, and the only spot on this page that reaches a
           reader who has not decided to scroll yet. Rendered inline, not behind a
@@ -347,7 +373,9 @@ export default async function HomePage({ params }: HomePageProps) {
           blog and glossary pages too), so its tint is not this page's to flip,
           and it lands next to the tinted live-wait-times chapter. The chapter's
           own `border-t` carries that boundary — which is what the rule is for. */}
-        <ThreeSteps />
+        <div className={PHONE_LATER}>
+          <ThreeSteps />
+        </div>
 
         {/* Step 1, made real: the visitor's own nearest parks, then their own
           favourites. Both are Client Components that decide late (geolocation,
@@ -358,31 +386,36 @@ export default async function HomePage({ params }: HomePageProps) {
         </NearbyChapter>
         <FavoritesSection />
 
-        <ChapterLiveWaits locale={locale} />
-        <ChapterAI />
-        <ChapterCalendar locale={locale} />
-        <ChapterBestTime locale={locale} />
-        <ChapterShowsRestaurants />
-        <ChapterInPark />
-        <ChapterDictionary locale={locale as Locale} />
+        {/* From here to the FAQ, everything is drawn after the parks on a phone — see
+          PHONE_LATER. The wrappers are plain boxes in this flex column; the sections inside
+          stay the top-level sections they were. */}
+        <div className={PHONE_LATER}>
+          <ChapterLiveWaits locale={locale} />
+          <ChapterAI />
+          <ChapterCalendar locale={locale} />
+          <ChapterBestTime locale={locale} />
+          <ChapterShowsRestaurants />
+          <ChapterInPark />
+          <ChapterDictionary locale={locale as Locale} />
 
-        {/* The blog again, and deliberately not the same shape as the band under
-          the hero: that one is three cards for a desktop reader passing by, this
-          one is the lead post with four beside it for somebody who read this far.
-          The frame adds the two evergreen hubs (best travel time, dictionary). */}
-        <BlogChapter locale={locale as Locale}>
-          <LatestBlogSection locale={locale as Locale} variant="lead" />
-        </BlogChapter>
+          {/* The blog again, and deliberately not the same shape as the band under
+            the hero: that one is three cards for a desktop reader passing by, this
+            one is the lead post with four beside it for somebody who read this far.
+            The frame adds the two evergreen hubs (best travel time, dictionary). */}
+          <BlogChapter locale={locale as Locale}>
+            <LatestBlogSection locale={locale as Locale} variant="lead" />
+          </BlogChapter>
 
-        {/* The claim, then the evidence. `GlobalStatsSection` is the platform's
-          own live counters, so it belongs directly under the six reasons rather
-          than between the founder and the blog, where it used to sit. */}
-        <WhyParkFan locale={locale as Locale} />
-        <Suspense fallback={<GlobalStatsSkeleton labels={headingLabels} />}>
-          <GlobalStatsSection />
-        </Suspense>
+          {/* The claim, then the evidence. `GlobalStatsSection` is the platform's
+            own live counters, so it belongs directly under the six reasons rather
+            than between the founder and the blog, where it used to sit. */}
+          <WhyParkFan locale={locale as Locale} />
+          <Suspense fallback={<GlobalStatsSkeleton labels={headingLabels} />}>
+            <GlobalStatsSection />
+          </Suspense>
 
-        <FounderSection locale={locale as Locale} />
+          <FounderSection locale={locale as Locale} />
+        </div>
 
         {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
         <Suspense fallback={<FeaturedParksSkeleton />}>
@@ -397,7 +430,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
         {/* The page's only FAQPage markup — FaqSection renders the questions and
           the JSON-LD from one array. */}
-        <FaqSection />
+        <div className={PHONE_LATER}>
+          <FaqSection />
+        </div>
 
         {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
           once the visitor has seen what the site offers. The footer keeps the
@@ -406,7 +441,7 @@ export default async function HomePage({ params }: HomePageProps) {
           this card's distance to its neighbour is only the neighbour's bottom
           padding, which made the gap between the two closing cards 27 px tighter
           than the ones around them. */}
-        <section className="px-4 pt-8 pb-16">
+        <section className={`px-4 pt-8 pb-16 ${PHONE_LATER}`}>
           <div className="container mx-auto">
             <PreferredSourcePrompt />
           </div>

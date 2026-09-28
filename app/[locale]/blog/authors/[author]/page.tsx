@@ -8,7 +8,7 @@ import {
   localeToOpenGraphLocale,
   SITE_URL,
 } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
+import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import { getAuthor, listAuthorKeys, resolveAuthor } from '@/lib/blog/authors';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogAuthorProfile } from '@/components/blog/blog-author-profile';
@@ -82,7 +82,8 @@ export default async function BlogAuthorPage({ params }: AuthorPageProps) {
   if (!entry) notFound();
 
   const t = await getTranslations('blog');
-  const allPosts = listPosts(locale as Locale).filter(
+  // The author's articles. Their news posts live under `/news`, never under `/blog`.
+  const allPosts = listArticles(locale as Locale).filter(
     (p) => resolveAuthor(p.frontmatter.author, locale as Locale).key === author
   );
   const visiblePosts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);

@@ -2,6 +2,7 @@
 title: 'Is 70 Minutes a Long Wait? Depends Whether It’s a Tuesday'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -17,8 +18,8 @@ tags:
   - behind-the-scenes
 category: behind-the-scenes
 parkLinks:
-  # Hansa-Park gets a paragraph of its own — why its page shows no wait times at
-  # all — which is exactly the question somebody on that page is asking.
+  # Hansa-Park gets a paragraph of its own on why its page shows no wait times at
+  # all. That is exactly the question somebody on that page is asking.
   - phantasialand
   - hansa-park
 rideLinks:
@@ -57,10 +58,12 @@ second half of that sentence there is nothing you can do with it.
 
 ## What “typical” and “busy” actually mean
 
-park.fan puts two reference values next to every ride. **Typical** is the median
-of the daily peaks: on half of all days measured the longest queue was shorter
-than that value, on the other half longer. **Busy** is the 90th percentile of
-the same series, roughly the one day in ten when there really was a crowd.
+park.fan puts two reference values next to every big ride in a park, worked out
+over the last 365 days. **Typical** is the median of the daily peaks: on half of
+all days measured the longest queue was shorter than that value, on the other
+half longer. **Busy** is the 90th percentile of the same series, roughly the one
+day in ten when there really was a crowd. On the ride’s page both are shown for
+today’s weekday, with the whole week day by day underneath.
 
 Both are percentiles rather than averages. A mean can be shifted by a single exceptional day: one afternoon with a breakdown and a
 150-minute backlog drags a whole month’s average upwards, even though on 29 days
@@ -94,20 +97,23 @@ those differences are the useful part.
 
 Two recommendations come out of that shape. The first is **rope drop**: heading
 straight for one particular ride at opening, before the paths fill up. We only
-suggest it when the daily peak reaches at least 60 minutes and the early start
-saves at least 45 of them. Anything below that would be advice that applies
+suggest it when the daily peak on an ordinary day of the last 70 reaches at
+least 60 minutes and the early start saves at least 45 of them. Anything below that would be advice that applies
 everywhere and is therefore worth nothing anywhere.
 
-The second is the quieter alternative in the evening. On the big coasters the
-last hour before closing is often as good as the first hour after opening, and
-nobody has to get up at seven for it. Both figures are on every ride’s page,
-with a concrete time in park time.
+The second is the quieter alternative: the time of day when the queue at that
+ride is usually at its shortest. If that falls in the evening, nobody has to get
+up at seven for it. Both are on the page of every big ride with enough days
+measured, with a concrete time in park time.
 
 ## Most of it is decided before you set off
 
-The time of day saves you half an hour, the date up to a whole one. Two days of
-the same holiday week can be half an hour of average wait apart, and an ordinary
-calendar gives no sign of it. What makes the difference: which regions are on
+At a ride where we suggest rope drop, the time of day saves you at least three
+quarters of an hour. The date decides the whole day. In the North
+Rhine-Westphalian summer holidays of 2026, Tuesday 18 August sat at “Normal” in
+the Phantasialand calendar and the Thursday of the same week at “Very High” (as
+of September 2026), and an ordinary calendar gives no sign of it. What makes the
+difference: which regions are on
 holiday, whether a bridge day is attached, whether it rains, and whether
 something is going on across the border.
 
@@ -121,8 +127,9 @@ side by side, each with its quietest weekday:
 
 ```
 
-If a cell in the last column stays empty, this park has no weekday that reliably
-stands out from the others.
+A dash in the last column means no weekday reliably stands out at that park, or
+its weekdays were measured too unevenly to compare. Two days there means both
+are equally quiet.
 
 ## What a night shift is for
 
@@ -131,14 +138,18 @@ is something else: it has to be finished before anybody asks for it. So a chain
 of jobs runs every night, and their order is fixed, because each step sits on
 the one before. At 02:00 UTC the percentiles per hour, at 03:00 the park
 baselines, at 04:30 the roll-up of yesterday, at 05:15 the rope-drop
-recommendations, which read exactly that roll-up. At 06:00 the forecast model
+recommendations, which read exactly that roll-up, at 05:30 “typical” and “busy”
+for the big rides. At 06:00 the forecast model
 retrains itself on the previous day’s wait times, while the rope-drop crowd is
 already stuck on the motorway.
 
-Then there is the other half: we throw nothing away. Older periods get
-compressed, but every analysis still runs over every reading that ever arrived.
+Then there is the other half: we throw no reading away. Older periods get
+compressed, not thinned out. How far back an analysis looks is a separate
+decision: “typical” and “busy” work over the last 365 days, one full turn of
+the year, the rope-drop advice over just the last 70, so it follows the season.
 Start storing in your third year and you have one year of history in your third
-year, and the two before it are gone for good.
+year, and the two before it are gone for good. Our record starts on 26 December
+2025, and the column of days measured in the table above counts from there.
 
 ## Where we would rather say nothing
 
@@ -149,14 +160,16 @@ anything. If we drew the obvious conclusion, every attraction in the park would 
 there at “very low”, plus an average of 0 minutes and a forecast built on zero
 observations. A dream day for every visitor, and entirely made up. Instead
 there is a notice on the park page saying that there is
-nothing to read here.
+nothing to read here. What we can still tell you about the park is in the
+[Hansa-Park guide](/blog/hansa-park-tips).
 
-The same rule in a smaller place: the ice rink at Phantasialand runs from
-November to January. In August nobody reports anything about it, because there
+The same rule in a smaller place: the “Berliner Eislaufen” ice rink on
+Phantasialand’s Kaiserplatz only exists during Wintertraum, this time from 14
+November 2026 to 24 January 2027. In August nobody reports anything about it, because there
 is nothing to report. Reading that silence as “open” would be the convenient
 mistake, and it did actually say that on the park page once: ice skating in
-high summer, with our blessing. And we do not name
-a ride’s operating months until 330 days of observation: before that it carries
+high summer, with our blessing. And operating months that we read off our own
+measurements are not named until 330 days of observation: before that it carries
 no months at all, because “runs from December to April” would describe the
 period we happen to have measured.
 
@@ -165,9 +178,10 @@ period we happen to have measured.
 The long version, with the real cards to read along with, is now a page of its
 own: [How park.fan works](/en/how-park-fan-works). Chapter by chapter it covers
 what an attraction card shows, how the scale under “typical” and “busy” works,
-how the calendar accounts for holidays, and the three places where we
-deliberately claim nothing. Four concrete visits are in there too, from the
-family in the autumn holidays to the annual pass holder at seven in the evening.
+how the calendar accounts for holidays, how the trip planner turns that into a
+day, and the three places where we deliberately claim nothing. Four concrete
+visits are in there too, from the family in the autumn holidays via the annual
+pass holder deciding on an evening trip to a first time at a big park.
 
 And the next time you are standing at the entrance staring at the display: look
 up what is normal for this ride on a Tuesday.

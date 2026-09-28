@@ -8,7 +8,7 @@ import {
   localeToOpenGraphLocale,
   SITE_URL,
 } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
+import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
@@ -106,7 +106,8 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations('blog');
-  const allPosts = listPosts(locale as Locale);
+  // Articles only. News has its own section at `/news` and is never listed under `/blog`.
+  const allPosts = listArticles(locale as Locale);
 
   if (allPosts.length === 0) {
     return (

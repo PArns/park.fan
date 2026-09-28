@@ -62,7 +62,7 @@ export function PlannerFitList({
             <label
               data-planner-fit-row={wish.key}
               className={cn(
-                'hover:bg-accent/60 planner-phone:py-2.5 flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1.5 transition-colors',
+                'hover:bg-accent/60 planner-phone:py-2.5 flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1.5 transition',
                 off && 'opacity-55'
               )}
             >

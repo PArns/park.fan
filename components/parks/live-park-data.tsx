@@ -2,6 +2,7 @@
 
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
+import { RideAlertParkProvider } from '@/components/push/ride-alert-park-context';
 import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { useMemo } from 'react';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
@@ -87,23 +88,27 @@ export function LiveParkData({
     });
   }, [currentAttractionsByLand, park, initialData.attractions, landNames, otherAttractionsLabel]);
 
+  // The park's ride list for every ride-alert bell in the tabs below: a bell opens the full
+  // alert dialog with this ride picked and the park's other rides in the list.
   const tabsWithHash = (
-    <TabsWithHash
-      defaultValue="attractions"
-      todayIso={todayIso}
-      showsAvailable={currentPark.shows && currentPark.shows.length > 0}
-      restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
-      weatherAvailable={!!currentPark.weather?.current}
-      statsAvailable={statsAvailable}
-      park={currentPark}
-      continent={continent}
-      country={country}
-      city={city}
-      parkSlug={parkSlug}
-      landNames={currentLandNames}
-      attractionsByLand={currentAttractionsByLand}
-      todayPanel={todayPanel}
-    />
+    <RideAlertParkProvider park={currentPark}>
+      <TabsWithHash
+        defaultValue="attractions"
+        todayIso={todayIso}
+        showsAvailable={currentPark.shows && currentPark.shows.length > 0}
+        restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
+        weatherAvailable={!!currentPark.weather?.current}
+        statsAvailable={statsAvailable}
+        park={currentPark}
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        landNames={currentLandNames}
+        attractionsByLand={currentAttractionsByLand}
+        todayPanel={todayPanel}
+      />
+    </RideAlertParkProvider>
   );
 
   return (

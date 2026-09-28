@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, CalendarRange, Newspaper } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { NewsRow } from '@/components/blog/news-row';
@@ -31,14 +32,17 @@ export async function BlogChapter({
   // `variant="bare"` drops LatestBlogSection's own BlogSectionHeader, and with
   // it the homepage's only body link to the blog index — the hub would otherwise
   // be reachable from the chrome alone. It moves onto the chapter heading.
-  const [t, tBlog] = await Promise.all([
+  const [t, tBlog, tCommon] = await Promise.all([
     getTranslations('homeStory.blog'),
     getTranslations('blog'),
+    getTranslations('common'),
   ]);
 
   return (
     <section className="border-border border-t px-4 py-16 sm:py-18">
-      <div className="container mx-auto">
+      {/* On a phone the posts come first and the two hub cards open on request, under the
+          news (`order`), so the button does not sit between the heading and the posts. */}
+      <div className="container mx-auto @max-[768px]/page:flex @max-[768px]/page:flex-col">
         <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
@@ -60,37 +64,43 @@ export async function BlogChapter({
           />
         </Reveal>
 
-        <Reveal>
-          <div className="mb-8 grid gap-4 md:grid-cols-2">
-            <Link
-              href={`/${BEST_TIME_SEGMENTS[locale]}` as '/'}
-              prefetch={false}
-              className="border-border bg-card hover:border-primary/40 rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
-            >
-              <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
-                <CalendarRange className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <h3 className="font-semibold">{t('bestTimeTitle')}</h3>
-              <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                {t('bestTimeText')}
-              </p>
-            </Link>
+        <MobileMore
+          label={tCommon('showMore')}
+          className="@max-[768px]/page:order-2 @max-[768px]/page:mt-8"
+          buttonClassName="@max-[768px]/page:order-1"
+        >
+          <Reveal>
+            <div className="mb-8 grid gap-4 md:grid-cols-2">
+              <Link
+                href={`/${BEST_TIME_SEGMENTS[locale]}` as '/'}
+                prefetch={false}
+                className="border-border bg-card hover:border-primary/40 rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
+              >
+                <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
+                  <CalendarRange className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <h3 className="font-semibold">{t('bestTimeTitle')}</h3>
+                <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+                  {t('bestTimeText')}
+                </p>
+              </Link>
 
-            <Link
-              href={`/${GLOSSARY_SEGMENTS[locale]}` as '/'}
-              prefetch={false}
-              className="border-border bg-card hover:border-primary/40 rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
-            >
-              <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
-                <BookOpen className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <h3 className="font-semibold">{t('glossaryCta')}</h3>
-              <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                {t('glossaryText')}
-              </p>
-            </Link>
-          </div>
-        </Reveal>
+              <Link
+                href={`/${GLOSSARY_SEGMENTS[locale]}` as '/'}
+                prefetch={false}
+                className="border-border bg-card hover:border-primary/40 rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
+              >
+                <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
+                  <BookOpen className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <h3 className="font-semibold">{t('glossaryCta')}</h3>
+                <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+                  {t('glossaryText')}
+                </p>
+              </Link>
+            </div>
+          </Reveal>
+        </MobileMore>
 
         {children}
 

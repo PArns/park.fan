@@ -103,12 +103,12 @@ Measure with the three states a visitor can actually observe — fallback, serve
 settled client queries — and compare block geometry between them; the delta IS the
 shift. The client queries were never the problem: seed → settled measures 0.
 
-- **A placeholder's height is measured off the real thing, per breakpoint.** `ParkCard` hides
-  its photo row below `sm` (`[grid-template-rows:auto_2rem_auto]`) and is less than half as
-  tall there — 146 px against 366. Its placeholder was 360 px at every width, so a phone
+- **A placeholder's height is measured off the real thing, per breakpoint.** `ParkCard` hid
+  its photo row below `sm` and was less than half as tall there — 146 px against 366 (since
+  PAR-432 it is a 100 px row there). Its placeholder was 360 px at every width, so a phone
   reserved 2.4× what the featured-parks grid needed and collapsed by 1284 px when the cards
   landed. The one shared placeholder is now built from the card's own rows: top panel 100 px,
-  photo row 0 below `sm` and 220 px above, bottom panel 45 px. Same rule for the section
+  photo row 220 px and bottom panel 45 px from `sm` up, and the row's four lines below it. Same rule for the section
   headings around them: a `text-xl` title is a 28 px line, and the featured-parks section
   heads itself with a 76 px frosted pill where the others use a 40 px row.
 - **The geometry may not depend on data; the content may.** The park header's "Auslastung

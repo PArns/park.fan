@@ -1,0 +1,18 @@
+{
+  "park": "phantasialand",
+  "ride": "avoras",
+  "area": "Fantasy",
+  "tags": ["day", "photo", "ride"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-27",
+  "gps": {
+    "lat": 50.80045,
+    "lon": 6.878681
+  },
+  "review": true
+}

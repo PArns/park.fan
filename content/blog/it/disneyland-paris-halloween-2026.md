@@ -49,10 +49,11 @@ adulti possono entrare in costume. Comincia **sabato 26 settembre** e dura fino
 a **domenica 1° novembre 2026**. Tutto il programma è compreso in un normale
 biglietto.
 
-Solo il Disneyland Park viene decorato e animato. Accanto, la
-[Disney Adventure World](ref:disney-adventure-world) non ha un programma di
-Halloween suo. Se lì vuoi spaventarti, sali sulla
-[Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
+Dei due parchi, solo il Disneyland Park viene decorato e animato, e anche gli
+hotel Disney hanno i loro addobbi autunnali. Accanto, la [Disney Adventure
+World](ref:disney-adventure-world) non ha un programma di Halloween suo. Se lì
+vuoi spaventarti, sali sulla [Tower of
+Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
 
 ## Le novità 2026
 
@@ -62,14 +63,16 @@ piccola strega, Paperino un vampiro e Paperina una dama pipistrello. Tutti e
 quattro portano la stessa spilla, un pipistrello con una pietra di colore
 diverso per ciascuno.
 
-Tra i cattivi tornano Crudelia, Malefica, Jafar e la Regina di Cuori. Per la prima volta dal 2021 torna anche il **Dr. Facilier** de _La
-principessa e il ranocchio_, a Frontierland. Jack Skellington e Sally di _Nightmare Before Christmas_ tornano
-in alcuni giorni e si possono incontrare solo con la coda virtuale dell'app di
-Disneyland Paris. Ci si mette in coda dal telefono il giorno della visita, non sul
-posto.
+Tra i cattivi tornano Crudelia, Malefica, Jafar e la Regina di Cuori. Per la
+prima volta dal 2021 torna anche il **Dr. Facilier** de _La principessa e il
+ranocchio_, a Frontierland. Jack Skellington e Sally di _Nightmare Before
+Christmas_ tornano in alcuni giorni e si possono incontrare solo con una coda
+virtuale. Ci si iscrive il giorno della visita, soprattutto dall'app di
+Disneyland Paris oppure tramite un Cast Member all'ingresso dell'incontro. I
+posti sono limitati.
 
 Main Street riceve una quarantina di zucche nuove, 170 candele nuove a forma di
-Topolino, ghirlande in stile vittoriano, una colonna sonora composta apposta e,
+Topolino e dei suoi amici, ghirlande in stile vittoriano, una colonna sonora composta apposta e,
 la sera, proiezioni sulle facciate. Nella stazione all'ingresso ci sono quattro
 nuove vetrate art déco con Malefica e Ursula. In fondo alla strada, sul Royal
 Castle Stage, spine, corvi e stemmi dei cattivi si avvolgono attorno ai cancelli
@@ -97,13 +100,19 @@ Market House Deli o una torta di Ursula al Victoria's Home-Style Restaurant.
 ## Il 31 ottobre
 
 Nel 2026 Halloween cade di sabato, ed è l'unico giorno dell'anno in cui anche
-gli adulti possono entrare in costume. Il Disneyland Park resta aperto fino
-alle **23**, con incontri speciali con i personaggi, uno spettacolo di fuochi
+gli adulti possono entrare in costume. Il Disneyland Park resta aperto fino alle
+**23**, con incontri speciali con i personaggi, uno spettacolo di fuochi
 d'artificio tutto suo e dolcetti offerti da M&M'S. Non serve un biglietto a
-parte: la serata è compresa nell'ingresso normale, che
-però quel giorno costa più che nel resto del festival. Il parco comunicherà prima
-quali costumi sono ammessi. Controlla l'app prima di partire, e prima di passare ore a costruire una
-maschera che dovrà restare all'ingresso.
+parte: la serata è compresa nell'ingresso normale, cioè in un biglietto datato
+il cui prezzo, secondo Disney, varia con la stagione e la domanda.
+
+Le regole sui costumi sono già sulla pagina di Halloween del parco. Dai 12 anni
+in su le maschere non sono ammesse (tranne quelle mediche), e lo stesso vale per
+i costumi che coprono del tutto viso o testa, gli abiti che strisciano per
+terra, i mantelli lunghi, i bastoni e tutto ciò che sembra un'arma. Chi arriva
+vestito da personaggio Disney non può posare per le foto né firmare autografi.
+Un costume integrale a più strati può comportare un controllo più accurato
+all'ingresso.
 
 Sabato, Halloween, costumi e serata aperta a tutti quelli con il biglietto:
 sarà pieno. Se puoi fare a meno della notte in costume, gli addobbi si godono
@@ -131,3 +140,6 @@ va senza bambini lo confronta la
 Programma e date: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 settembre 2026: la prima versione diceva che il parco avrebbe comunicato più avanti quali costumi sono ammessi il 31 ottobre. Le regole erano già sulla sua pagina di Halloween e ora sono nel testo. Per Jack e Sally può iscriverti alla coda virtuale anche un Cast Member sul posto, non solo l'app. Abbiamo tolto la frase secondo cui l'ingresso il 31 ottobre costa più che negli altri giorni del festival, perché non siamo riusciti a verificarla.

@@ -470,19 +470,52 @@ source is unreadable the estimate is `missing: 'no-source'` with no figure at
 all, and the block says so; `pnpm test:planner-estimate` pins both directions,
 including that a ride the payload _does_ carry still reports its number.
 
-## The tab is on every page, so it has a phone tier
+## The tab is on every page but a phone's
 
-The edge tab is drawn on **every** page whether or not anything is planned, which
-is right — the feature has to be findable from a park page — and on a phone it
-was a permanent strip down the right edge at 34 × 130 px in German and 136 in
-French, against a 390 px screen. Below `sm` everything in it steps down one size:
-the padding, the two gaps, the icon and the word. Measured 34 × 130 → **28 × 102**
-(de) and 136 → 107 (fr), with 640 px and up unchanged to the pixel.
+The edge tab is drawn on every page whether or not anything is planned, which is right — the
+feature has to be findable from a park page. On a phone it was the opposite of findable: even
+after a phone tier took it from 34 × 130 to 24 × 102 px it lay over the right edge of every page,
+across card text and prices, on a 390 px screen (PAR-434).
 
-It is deliberately not reduced to the icon alone, which would halve it again and
-turn the one control that opens the feature into a glyph nobody has seen before.
-The word is also the button's accessible name, so hiding it would need an
-`aria-label` saying the same thing twice.
+So on `planner-phone` it is not drawn at all, open or closed, and the way in is
+`PlannerHeaderButton`: a calendar icon in the header bar, beside the burger, with the same count
+badge. Both ask `planner-phone` and not a width, so exactly one of the two exists at any size —
+including 844 × 390 on a coarse pointer, where the bar is 844 px wide and a container query would
+have hidden the button while the variant hid the tab. The button only opens (the sheet it opens is
+modal and closes itself) and reports `planner_opened` with `source: header`. The room for it in the
+bar came from the three preference controls, which moved into the burger sheet on a phone — see
+[design system → header geometry](../design/design-system.md#header-geometry).
+
+`check:planner` finds whichever of the two is displayed through `[data-planner-launcher]:visible`.
+
+### A day that is over is asked about, not opened
+
+The panel opens on the active day, which is whatever the visitor last looked at, and after a trip
+that is the trip. The first click on the planner the morning after opened yesterday's plan, and a
+new day was two steps further in, behind the overview's „Neuen Tag planen" („wenn ein geplanter
+Tag in der Vergangenheit vorhanden ist, soll ein Klick auf den Planer diesen nicht öffnen").
+
+So the tab and the header button ask first. `pastActiveDay()` (`lib/planner/park-time.ts`) answers
+whether the active day has entries and lies before today in the park's own zone; if it does, the
+launcher sets `askingPastDay` instead of `open`, and the panel draws a `ConfirmDialog` outside the
+sheet: „Dein geplanter Tag ist vorbei", the park and the date, and two answers. „Neuen Tag planen"
+(`wizard.open`) opens the panel with the wizard on top, on the page's park where there is one;
+„Vergangenen Tag ansehen" opens the panel on the day as it was. Escape and the overlay open
+nothing, which is why the second answer is `ConfirmDialog`'s new `onCancel` and not its
+`onOpenChange(false)`.
+
+Only those two ask. Every other way in names its day (a calendar day, a park page's „Tag im …
+planen", a row on the planner's own page), and a day with nothing in it is not a planned day, so
+an empty husk left by `openDay` opens as before. The launcher decides for both: the tab calls
+`openOrAsk` directly, and the header button's request is told apart by its source in
+`answerRequest`, a callback and not a branch in the effect for the lint rule's reason. The dialog
+lives in the panel because the launcher is a lazy message boundary and may not read `planner`.
+
+`check:planner` seeds a ticked day yesterday, presses the tab and asserts the question and no
+sheet, then Escape (nothing), „Vergangenen Tag ansehen" (the sheet, on that day) and „Neuen Tag
+planen" (the sheet with the wizard), and the header button on a phone. `openSheet()` answers the
+question with „Vergangenen Tag ansehen" wherever a step seeds a past active day, and finds it by
+`data-confirm-dialog="planner-past-day"` rather than by its words.
 
 ## The axis is the park's day, and the canvas is not
 
@@ -774,6 +807,20 @@ weight`, `MAX_STOPS` being 24) rather than added as Pareto axes, because a
    minutes themselves, since the gaps between the figures are inside the model's
    own error. Same day after the change: nine of the ten are planned, Taron and
    F.L.Y. among them, and what is given up is Colorado Adventure.
+
+   **The weight belongs to a ride in the list, not to a slug.** A day can hold
+   a ride twice, and the fit assistant hands the engine every planned ride as
+   one entry of `add`. The weight was keyed on `attractionSlug` and ranked off
+   `priority.indexOf(slug)`, so a second go on Chiapas took the rank of the
+   first and survived, and on Phantasialand the assistant struck Winja's Fear
+   and Raik — rides nobody had had yet — to keep Chiapas three times and
+   Winja's Force twice („eher Doppelfahrten raus nehmen"). `rankHeadliners`
+   now answers one weight per entry: the n-th time a slug appears is matched
+   to its n-th place in `priority`, and a lap ranks behind EVERY first ride,
+   named or not. `peeled()` sets aside by index for the same reason (by slug it
+   took all three laps at once), and `fitOrder` draws the laps at the bottom of
+   the assistant's list, so „gestrichen wird von unten" stays true. A pinned lap
+   stays where it was pinned. `test:planner-fit` §11.
 
    **And the set is decided before the order, because the beam cannot do it.**
    Overflow only appears on the last stop of an order, so every prefix scores
@@ -1617,8 +1664,19 @@ for every entry, not only for free blocks. It is the same write (`moveEntry`) an
 the caller clamps it — `clampStart` against the same `rideFloor().hardMin` the
 drag obeys, so a press cannot put a block anywhere a drag could not.
 
-15 and not the drag's 30: `SNAP_MIN_COARSE` is half an hour because fifteen
-minutes under a sliding finger reads as jitter, and a press is not sliding.
+15 and not the drag's 5: a press names a distance, and six presses for half an
+hour is too many.
+
+**A finger drags in fives, like a mouse.** The drag's step was `SNAP_MIN_COARSE`,
+half an hour, on a coarse pointer, on the theory that fifteen minutes under a
+sliding finger reads as jitter. What it meant in use was that a phone could only
+drag a block onto :00 or :30, and that any pull under 27 px (half a step on the
+1.8 px axis) moved nothing at all, in a panel whose waits, walks and shows are all
+counted in fives („das ich auf mobile in 5 min raster verschieben kann"). The step is
+`DRAG_SNAP_MIN` (5) for both pointers now; `SNAP_MIN_COARSE` stays only as the
+arrow-key step on a coarse pointer. Measured on the phone with a touch pointer:
+90 px moved a block 50 minutes (60 before), 18 px moved it 10 (0 before), 27 px up
+moved it 15 (0 before). `check:planner` asserts the 50.
 
 The row wraps below `sm` (`max-sm:flex-wrap`, label on its own line) because a
 free block now carries four icons, two durations, two moves and a delete beside a
@@ -1766,7 +1824,7 @@ lunch block: the axis went from 319 to 366 px at 390 × 844 and from 262 to 311 
 distance and do nothing while the finger moved, with two heights to choose between —
 the sheet could be pulled bigger and never smaller. Now it follows the finger and snaps
 to one of three detents on release: `large` (where it opens, under the header), `full`
-(100svh) and `medium` (half the screen, to see the page the rides come from). The
+(the whole screen) and `medium` (half the screen, to see the page the rides come from). The
 nearest detent wins; a flick (over 0.5 px/ms) moves one detent on from where the drag
 started even over a short distance; a flick down from `medium`, or a release 90 px under
 it, closes the sheet; a tap steps up one detent and from `full` back to `large`. A
@@ -1777,7 +1835,8 @@ with its lower half past the screen, the way iOS draws a medium detent. At rest 
 detents are classes on the CSS variables `--planner-sheet-large` and
 `--planner-sheet-medium` (`app/globals.css`), and the drag measures those very values
 with a probe element (`sheetDetentHeights()`) rather than recomputing them from
-`innerHeight`, which on iOS differs from `svh` whenever the toolbar collapses; the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
+`innerHeight`, which on iOS differs from `svh` whenever the toolbar collapses (and since the
+section below, neither is what the sheet is sized by); the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
 measured from the top of a `large` box and a short day with `h-auto` would have slid off
 the screen. Snapping, opening and closing run on the iOS sheet curve,
 `cubic-bezier(0.32, 0.72, 0, 1)` over 400 ms (PAR-190's first half); the desktop panel
@@ -1806,6 +1865,44 @@ the header visible. Measured with Europa-Park, eight rides and a lunch block: th
 is 264 px at 390 × 664, 382 px at 390 × 844 (366 before) and 316 px at 844 × 390 (269).
 `check:planner` grabs the strip rather than the handle's centre, which is under the
 day picker now, and asserts the landscape sheet at 378 px.
+
+**The sheet is as tall as what is on screen, not as a viewport unit.** The 16 px rule
+for text fields (PAR-485) stopped the zoom that had pushed the grabber off the top, and
+the report came back the day after it shipped: „wenn das nicht Standardhöhe ist, ist das
+Fenster zu hoch, sodass ich es nicht mehr schließen kann". The zoom was one case of a
+general one. The sheet is `position: fixed` at the bottom of the layout viewport and
+every detent was written in `svh`, i.e. in the layout viewport too, so the sheet was as
+tall as that box whether or not the browser was showing all of it. A pinch, the keyboard,
+an in-app browser or a toolbar left out of `svh` each leave less on screen than the box,
+and iOS takes the difference off the top, grabber and × first. Measured in Chromium at
+390 × 844 with the page scale at 1.3: 649 px visible, sheet ending at 844, 195 px of it
+outside the view.
+
+`useSheetViewport()` (`lib/planner/use-sheet-viewport.ts`) reads `window.visualViewport`
+while the phone sheet is open and keeps two numbers on `<html>`: `--planner-viewport`,
+the height on screen, and `--planner-viewport-lift`, how far the bottom of what is on
+screen sits above the bottom of the layout viewport (the keyboard, or the part of a
+zoomed page below the view). Every detent in `app/globals.css` is written in the first,
+and the sheet stands on the second instead of on `bottom: 0`. They fall back to `100svh`
+and `0px` without `visualViewport`, which is where the sheet was before. The lift is
+measured against a fixed `top: 0; bottom: 0` probe, which is the box a fixed `bottom`
+counts from by definition, and not against `innerHeight`, whose meaning under a zoom has
+not always been the same across engines (Chromium kept it at 844 in the measurement
+above). The drag reads the
+same two numbers and the sheet's own `bottom`, not `innerHeight` and the rect's `top`,
+for the same reason. On `<html>` and not on the sheet, because the detents are declared
+on `:root` and a custom property substitutes where it is declared. The numbers stay there
+after a close, so the sheet slides out at the size it had.
+
+Nothing changes at a page scale of 1: every detent, drag and tap measured the same
+before and after at 390 × 844 and 390 × 700. At 1.3 the sheet ends at 649 and keeps its
+48 px under the header; `medium` lands on half of the 649, `full` on all of it.
+`check:planner` sets the page scale with `Emulation.setPageScaleFactor` (Chromium
+cannot pinch in a headless run) and asserts that the sheet and its × lie inside the
+visual viewport. What it cannot reach is a visual viewport panned down, which is what
+iOS does for a focused field: headless Chromium keeps `offsetTop` at 0 under every
+gesture tried. That half rests on the arithmetic (`lift = layout − offsetTop − height`)
+and wants a look on a real iPhone.
 
 **Every row of controls in the phone sheet is drawn at 32 px.** The park and date
 buttons, the headliner pills, "Headliner einplanen", "Tag optimieren" and the bell were
@@ -1878,13 +1975,98 @@ and showed no ride at all („Eigener Block abgeschnitten"). The row is 45 px, t
 field 32 px like every other control in the sheet, the free-block button reaches
 44 px into the row's own 6 px padding, and the block is `shrink-0` so the sheet
 cannot clip it. The axis is 347 px at 390 × 664 and 323 px at 360 × 640 with it.
-A landscape phone keeps the list, in its own column, and so does a narrow window
-under a mouse: both halves ask `(pointer: coarse)` as well, because a mouse drags
-rows out of that list onto the axis, and search mode would hide the axis it drops
-on. In the context band „Ferien nebenan" is a palm
+A landscape phone keeps the list, in its own column. A narrow window under a mouse
+kept it too for a while, on the argument that a mouse drags rows out of that list
+onto the axis and search mode would hide the axis it drops on. It kept it in the
+same squeezed block, though: at 390 × 844 with ten rides planned the block was
+106 px, the free-block row 44 of them, and a 176 px list scrolled inside a box
+that scrolled too, with no ride row whole on screen („der eigene Block Button ist
+immer noch sehr hoch … dadurch kann man die Suche quasi nicht verwenden"). So the
+switch asks for a portrait phone and nothing about the pointer now
+(`phoneSearch` in `planner-flyout.tsx`). The row is 45 px under a mouse as well,
+the axis goes from 429 to 491 px at 390 × 844 and from 275 to 303 at 605 × 620,
+and a click into the field shows 12 and 8 whole rides. The drag out of the list is
+what it costs; a row's click files the ride at the next free slot on either
+pointer. `check:planner` opens search mode before it starts that drag at 390 px.
+In the context band „Ferien nebenan" is a palm
 on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
 brings the chip row back to one line at 360 px: the band is 60 px there again, 20 px
 that go to the axis.
+
+**The desktop follows (PAR-482 follow-up).** What the phone sheet learned went
+to the side panel too, and several things were found on the way.
+
+- **A ride search per column.** The desktop had none: `planner-wide:hidden` on
+  the panel's copy, on the argument that a mouse drags ride cards off the park
+  page. It is back as `inline` on `PlannerRideSearch`, drawn by each column in
+  its foot row beside „Eigener Block" — one row, like the phone — and its list
+  opens under the field only while a query is typed. Rows are clicked or
+  dragged onto the axis. The search reads its day's entries by park and date
+  rather than `activeEntries`, since a second column is a different day, and
+  the panel's phone copy is now gated on `isPhone` like the foot, so the desktop
+  sheet holds one `input[type=search]` per column and no hidden extra.
+- **The foot is the phone's.** „Tag optimieren" takes the rest of the row in
+  both states, the undo is the tinted icon in the row
+  (`data-planner-optimize-undo`), and the plain report under the row is read
+  out but not drawn. The notification switch left its row under the foot and
+  is the bell in the header, between „+" and the column switch; the check opens
+  it with `openPushBell`. The drag coach is the panel's last row now and has
+  `my-2` so it does not sit on the bottom edge.
+- **A clash is something to optimise.** A pause dropped on top of a ride left
+  the waits where they were, so neither figure the call to action reads changed
+  and the button stayed quiet over a day it would have fixed. `clashCount` counts
+  neighbours that start before the one before them is over and walked away from,
+  judged like the grid's `broken` leg, and `gain` compares it on the day with it
+  on the day `optimizeDay` would write: fewer clashes light the button with
+  „ein Konflikt weniger". `run` reports the same number.
+- **„Anpassen" asks the question again.** It re-ran the press, and after the
+  assistant's answer the day fits, so there was nothing to ask and the link did
+  nothing. The result now keeps the assistant's input and answer, and the link
+  reopens the assistant on them; applying a revision keeps the undo pointing at
+  the day before the first answer.
+- **A show pill does not lie on a block, and the block says which show.** The
+  pill of names was centred on the axis and up to 80 % of its width, so wherever
+  a show fell inside a planned ride it covered the ride's name, its times, its
+  lateness hint or the transfer chip under it; on Europa-Park, with a show every
+  hour, that was every other block of a full day, and with two blocks side by
+  side the middle was the second one's name. It was cut back to the mask alone
+  over a block, which kept the ride legible and said nothing about the show
+  („jetzt sieht man die Shows gar nicht mehr"). So a block that a show falls
+  into writes it itself (`showLineHost` in `lib/planner/day-grid.ts`, the
+  leftmost of two side by side): on its second line beside the times, or on its
+  first between the name and the figure where it has no second line, as
+  „🎭 ~15:15 Fina & The Yomis, …" with each show's own time. The label is
+  `flex-1` from a basis of 0, so it gets only the room the name, the times and
+  the figure leave; shrinking it with them took a pixel off the name, and a pixel
+  is an ellipsis. The grid then draws nothing for that line. In the gap between
+  two blocks the pill keeps its names at the right end, clear of the transfer
+  chip, and a line that only grazes a block's edge gets the mask, placed by
+  `showLineCover`. With a mouse on any block every grid show mark fades to 20 %;
+  a fine pointer only, since a tap leaves `:hover` stuck on a touch screen.
+- **The empty day says how to start, legibly.** The drag sentence was muted text
+  a third of the way down, and the show pills ran through it. It is a card over
+  the axis now. On the desktop it plays the gesture above the sentence
+  (`PlannerDragDemo`, keyframes `planner-drag-*` in `app/globals.css`), as the
+  screen in little: the park page's ride list on the left, the planner's edge,
+  and its time axis with a dashed slot on the right. A hand takes the middle
+  ride, carries a copy across the edge and sets it on the slot, where the list
+  row turns into a planner block; seven poses over 3.6 s, eased, the two hands
+  and the two looks crossfading. Under reduced motion it holds the fist carrying
+  the card across the edge, which still says which way.
+  A still grab icon said "hand" and nothing about where it goes. A pill whose
+  line falls under the card is not drawn: the card is measured (it wraps
+  differently per locale and width), and at its edge half a pill used to peek
+  over it.
+- **The foot's buttons are one height.** „Alle Headliner einplanen" was one line
+  at 24 px beside a call to action of two lines at 36. All three are `h-9` on the
+  desktop now, like the undo, and 32 px on a phone as before.
+- **Nothing fades in one frame.** See
+  [the rule](../rules/a-fade-is-animated-never-a-cut.md). The show switch keeps
+  its lines mounted and fades them (`showsHidden` on the grid, with `visibility`
+  flipping at the end), the ghost glides from one snapped minute to the next,
+  the drop line glides and fades in, and the empty card and the undo icon fade
+  in. The day picker's and the calendar's arrows, a ticked entry and an unticked
+  row in the fit assistant fade to their dimmed state instead of switching.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

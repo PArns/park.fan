@@ -49,10 +49,11 @@ avond waarop ook volwassenen verkleed binnen mogen. Het begint op **zaterdag
 26 september** en loopt tot **zondag 1 november 2026**. Alles zit in een
 gewoon parkticket.
 
-Alleen Disneyland Park wordt aangekleed. In
-[Disney Adventure World](ref:disney-adventure-world) ernaast is geen eigen
-Halloweenprogramma. Wie daar wil griezelen, neemt gewoon
-[Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
+Van de twee parken wordt alleen Disneyland Park aangekleed, en de Disney-hotels
+krijgen herfstversiering. In [Disney Adventure
+World](ref:disney-adventure-world) ernaast is geen eigen Halloweenprogramma. Wie
+daar wil griezelen, neemt gewoon [Tower of
+Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
 
 ## Nieuw dit jaar
 
@@ -62,14 +63,15 @@ Donald een vampier en Katrien een vleermuisdame. Alle vier hebben dezelfde
 broche, een vleermuis met een steen, bij elk in een andere kleur.
 
 Cruella, Maleficent, Jafar en de Hartenkoningin zijn er weer om mee op de foto
-te gaan. Voor het eerst sinds 2021 is ook **Dr. Facilier** uit _De Prinses en
-de Kikker_ er weer, in Frontierland. Jack Skellington en Sally uit _The Nightmare Before Christmas_
-komen op bepaalde dagen terug, en je kunt ze alleen ontmoeten via de virtuele
-wachtrij in de app van Disneyland Paris. Aansluiten doe je op de dag zelf op je
-telefoon, niet in een rij.
+te gaan. Voor het eerst sinds 2021 is ook **Dr. Facilier** uit _De Prinses en de
+Kikker_ er weer, in Frontierland. Jack Skellington en Sally uit _The Nightmare
+Before Christmas_ komen op bepaalde dagen terug, en je kunt ze alleen ontmoeten
+via een virtuele wachtrij. Aansluiten doe je op de dag van je bezoek, meestal in
+de app van Disneyland Paris, of bij een Cast Member aan de ingang van de
+ontmoetingsplek. Het aantal plekken is beperkt.
 
 Main Street krijgt zo'n veertig nieuwe pompoenen, 170 nieuwe kaarsen in de vorm
-van Mickey, slingers in Victoriaanse stijl, speciaal gecomponeerde muziek en 's
+van Mickey en zijn vrienden, slingers in Victoriaanse stijl, speciaal gecomponeerde muziek en 's
 avonds projecties op de gevels. In het station bij de ingang hangen vier
 nieuwe glas-in-loodramen in art-decostijl met Maleficent en Ursula. Aan het
 eind van de straat kronkelen op de Royal Castle Stage doornen, raven en
@@ -98,12 +100,17 @@ Market House Deli of een Ursula-taart in Victoria's Home-Style Restaurant.
 
 Halloween valt in 2026 op een zaterdag, en dat is de enige dag van het jaar
 waarop ook volwassenen verkleed het park in mogen. Disneyland Park blijft tot
-**23 uur** open, met extra ontmoetingen met figuren, een eigen vuurwerk en
-snoep van M&M'S. Een apart feestticket is niet nodig, ook deze avond zit in de
-gewone toegang. Die toegang kost op deze dag wel meer dan op de andere
-festivaldagen. Welke kostuums precies mogen, maakt het park vooraf bekend.
-Kijk dus voor vertrek in de app, voordat je urenlang aan een masker knutselt
-dat bij de ingang moet blijven.
+**23 uur** open, met extra ontmoetingen met figuren, een eigen vuurwerk en snoep
+van M&M'S. Een apart feestticket is niet nodig, ook deze avond zit in de gewone
+toegang: een gedateerd ticket waarvan de prijs volgens Disney meebeweegt met
+seizoen en vraag.
+
+De kostuumregels staan al op de Halloweenpagina van het park. Vanaf 12 jaar zijn
+maskers verboden (medische uitgezonderd), net als kostuums die gezicht of hoofd
+helemaal bedekken, kleding die over de grond sleept, lange capes, stokken en
+alles wat op een wapen lijkt. Wie als Disneyfiguur komt, mag niet poseren voor
+foto's en geen handtekeningen uitdelen. Wie in een meerlaags pak van top tot
+teen komt, kan bij de ingang een extra controle verwachten.
 
 Zaterdag, Halloween, kostuums, avondprogramma voor iedereen met een ticket: dat
 wordt vol. Wie de kostuumavond kan missen, heeft meer aan de versiering op een
@@ -131,3 +138,6 @@ zonder kinderen gaat, vergelijkt het
 Programma en data: [disneylandparis.com → Halloween](https://www.disneylandparis.com/en-int/seasons/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 september 2026: in de eerste versie stond dat het park de kostuumregels voor 31 oktober nog bekend zou maken. Ze stonden toen al op de Halloweenpagina en staan nu in de tekst. Voor Jack en Sally kan ook een Cast Member ter plekke je in de virtuele wachtrij zetten, niet alleen de app. De zin dat de toegang op 31 oktober meer kost dan op de andere festivaldagen hebben we geschrapt, omdat we hem niet konden onderbouwen.

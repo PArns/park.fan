@@ -2,6 +2,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { CalendarRange, Drama, FerrisWheel, Utensils } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
@@ -17,8 +18,9 @@ import { catchNonFatal } from '@/lib/api/client';
  * park adds thirty restaurants.
  */
 export async function ChapterShowsRestaurants() {
-  const [t, locale, stats] = await Promise.all([
+  const [t, tCommon, locale, stats] = await Promise.all([
     getTranslations('homeStory.shows'),
+    getTranslations('common'),
     getLocale(),
     catchNonFatal(getGlobalStats()),
   ]);
@@ -69,32 +71,37 @@ export async function ChapterShowsRestaurants() {
           </Reveal>
         )}
 
-        <Reveal delay={80}>
-          <div className="grid gap-5 md:grid-cols-2">
-            <div className="border-border bg-card/55 rounded-2xl border p-5 sm:p-6">
-              <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                <Drama className="h-3.5 w-3.5" aria-hidden="true" />
-                {t('showsTitle')}
+        {/* On a phone the counters are the chapter; the two cards and the body open on request. */}
+        <MobileMore label={tCommon('showMore')}>
+          <Reveal delay={80}>
+            <div className="grid gap-5 md:grid-cols-2">
+              <div className="border-border bg-card/55 rounded-2xl border p-5 sm:p-6">
+                <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                  <Drama className="h-3.5 w-3.5" aria-hidden="true" />
+                  {t('showsTitle')}
+                </div>
+                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                  {t('showsHint')}
+                </p>
               </div>
-              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">{t('showsHint')}</p>
-            </div>
-            <div className="border-border bg-card/55 rounded-2xl border p-5 sm:p-6">
-              <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                <Utensils className="h-3.5 w-3.5" aria-hidden="true" />
-                {t('restaurantsTitle')}
+              <div className="border-border bg-card/55 rounded-2xl border p-5 sm:p-6">
+                <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                  <Utensils className="h-3.5 w-3.5" aria-hidden="true" />
+                  {t('restaurantsTitle')}
+                </div>
+                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                  {t('restaurantsHint')}
+                </p>
               </div>
-              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-                {t('restaurantsHint')}
-              </p>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        <Reveal delay={140}>
-          <p className="text-muted-foreground mt-6 max-w-3xl leading-relaxed">
-            <GlossaryInject>{t('body')}</GlossaryInject>
-          </p>
-        </Reveal>
+          <Reveal delay={140}>
+            <p className="text-muted-foreground mt-6 max-w-3xl leading-relaxed">
+              <GlossaryInject>{t('body')}</GlossaryInject>
+            </p>
+          </Reveal>
+        </MobileMore>
       </div>
     </section>
   );

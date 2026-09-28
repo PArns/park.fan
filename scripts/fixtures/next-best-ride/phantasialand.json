@@ -1,0 +1,1619 @@
+{
+  "capturedAt": "2026-09-24T09:29:00Z",
+  "source": "api.park.fan /v1/parks/…/plan/day and /v1/discovery/nearby at the park centre",
+  "timezone": "Europe/Berlin",
+  "day": {
+    "context": {
+      "date": "2026-09-24",
+      "status": "OPERATING",
+      "openHour": 9,
+      "closeHour": 18,
+      "liveWaitTimes": {
+        "available": true
+      }
+    },
+    "rides": [
+      {
+        "attractionSlug": "taron",
+        "attractionName": "Taron",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 30,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 35
+          },
+          {
+            "hour": 12,
+            "wait": 35
+          },
+          {
+            "hour": 13,
+            "wait": 40
+          },
+          {
+            "hour": 14,
+            "wait": 45
+          },
+          {
+            "hour": 15,
+            "wait": 40
+          },
+          {
+            "hour": 16,
+            "wait": 40
+          },
+          {
+            "hour": 17,
+            "wait": 40
+          },
+          {
+            "hour": 18,
+            "wait": 35,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "raik",
+        "attractionName": "Raik",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 20,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 15
+          },
+          {
+            "hour": 14,
+            "wait": 20
+          },
+          {
+            "hour": 15,
+            "wait": 15
+          },
+          {
+            "hour": 16,
+            "wait": 15
+          },
+          {
+            "hour": 17,
+            "wait": 15
+          },
+          {
+            "hour": 18,
+            "wait": 15,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "fly",
+        "attractionName": "F.L.Y.",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 20,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 20
+          },
+          {
+            "hour": 12,
+            "wait": 15
+          },
+          {
+            "hour": 13,
+            "wait": 25
+          },
+          {
+            "hour": 14,
+            "wait": 30
+          },
+          {
+            "hour": 15,
+            "wait": 30
+          },
+          {
+            "hour": 16,
+            "wait": 30
+          },
+          {
+            "hour": 17,
+            "wait": 30
+          },
+          {
+            "hour": 18,
+            "wait": 20,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "winjas-fear",
+        "attractionName": "Winja‘s Fear",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 15,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 25
+          },
+          {
+            "hour": 12,
+            "wait": 25
+          },
+          {
+            "hour": 13,
+            "wait": 35
+          },
+          {
+            "hour": 14,
+            "wait": 40
+          },
+          {
+            "hour": 15,
+            "wait": 40
+          },
+          {
+            "hour": 16,
+            "wait": 35
+          },
+          {
+            "hour": 17,
+            "wait": 35
+          },
+          {
+            "hour": 18,
+            "wait": 20,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "winjas-force",
+        "attractionName": "Winja‘s Force",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 20,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 25
+          },
+          {
+            "hour": 12,
+            "wait": 25
+          },
+          {
+            "hour": 13,
+            "wait": 35
+          },
+          {
+            "hour": 14,
+            "wait": 40
+          },
+          {
+            "hour": 15,
+            "wait": 40
+          },
+          {
+            "hour": 16,
+            "wait": 35
+          },
+          {
+            "hour": 17,
+            "wait": 35
+          },
+          {
+            "hour": 18,
+            "wait": 20,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "crazy-bats",
+        "attractionName": "Crazy Bats",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 10,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 15
+          },
+          {
+            "hour": 12,
+            "wait": 15
+          },
+          {
+            "hour": 13,
+            "wait": 25
+          },
+          {
+            "hour": 14,
+            "wait": 30
+          },
+          {
+            "hour": 15,
+            "wait": 30
+          },
+          {
+            "hour": 16,
+            "wait": 25
+          },
+          {
+            "hour": 17,
+            "wait": 25
+          },
+          {
+            "hour": 18,
+            "wait": 20,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "black-mamba",
+        "attractionName": "Black Mamba",
+        "hours": [
+          {
+            "hour": 9,
+            "wait": 10,
+            "source": "composed"
+          },
+          {
+            "hour": 10,
+            "wait": 10,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 15
+          },
+          {
+            "hour": 12,
+            "wait": 15
+          },
+          {
+            "hour": 13,
+            "wait": 20
+          },
+          {
+            "hour": 14,
+            "wait": 25
+          },
+          {
+            "hour": 15,
+            "wait": 25
+          },
+          {
+            "hour": 16,
+            "wait": 25
+          },
+          {
+            "hour": 17,
+            "wait": 20
+          },
+          {
+            "hour": 18,
+            "wait": 10,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "feng-ju-palace",
+        "attractionName": "Feng Ju Palace",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "maus-au-chocolat",
+        "attractionName": "Maus au Chocolat",
+        "hours": [
+          {
+            "hour": 9,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 15
+          },
+          {
+            "hour": 12,
+            "wait": 15
+          },
+          {
+            "hour": 13,
+            "wait": 30
+          },
+          {
+            "hour": 14,
+            "wait": 40
+          },
+          {
+            "hour": 15,
+            "wait": 35
+          },
+          {
+            "hour": 16,
+            "wait": 35
+          },
+          {
+            "hour": 17,
+            "wait": 35
+          },
+          {
+            "hour": 18,
+            "wait": 5,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "mystery-castle",
+        "attractionName": "Mystery Castle",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 15
+          },
+          {
+            "hour": 14,
+            "wait": 15
+          },
+          {
+            "hour": 15,
+            "wait": 15
+          },
+          {
+            "hour": 16,
+            "wait": 15
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 10,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 130
+      },
+      {
+        "attractionSlug": "colorado-adventure",
+        "attractionName": "Colorado Adventure",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 10,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 20
+          },
+          {
+            "hour": 14,
+            "wait": 25
+          },
+          {
+            "hour": 15,
+            "wait": 20
+          },
+          {
+            "hour": 16,
+            "wait": 20
+          },
+          {
+            "hour": 17,
+            "wait": 20
+          },
+          {
+            "hour": 18,
+            "wait": 5,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "das-verrueckte-hotel-tartueff",
+        "attractionName": "Das verrückte Hotel Tartüff",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 15
+          },
+          {
+            "hour": 14,
+            "wait": 15
+          },
+          {
+            "hour": 15,
+            "wait": 15
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 10,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "talocan",
+        "attractionName": "Talocan",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 0,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 5,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "bolles-flugschule",
+        "attractionName": "Bolles Flugschule",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 100
+      },
+      {
+        "attractionSlug": "bolles-riesenrad",
+        "attractionName": "Bolles Riesenrad",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 90
+      },
+      {
+        "attractionSlug": "bumper-klumpen",
+        "attractionName": "Bumper Klumpen",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 100
+      },
+      {
+        "attractionSlug": "deep-in-africa-adventure-trail",
+        "attractionName": "Deep in Africa – Adventure Trail",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "der-lustige-papagei",
+        "attractionName": "Der lustige Papagei",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 90
+      },
+      {
+        "attractionSlug": "die-froehliche-bienchenjagd",
+        "attractionName": "Die fröhliche Bienchenjagd",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 90
+      },
+      {
+        "attractionSlug": "geister-rikscha",
+        "attractionName": "Geister Rikscha",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 130
+      },
+      {
+        "attractionSlug": "pferdekarussell",
+        "attractionName": "Pferdekarussell",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 110
+      },
+      {
+        "attractionSlug": "tittle-tattle-tree",
+        "attractionName": "Tittle Tattle Tree",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 110
+      },
+      {
+        "attractionSlug": "wirtls-taubenturm",
+        "attractionName": "Wirtl‘s Taubenturm",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "wolkes-luftpost",
+        "attractionName": "Wolke‘s Luftpost",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "woezls-duck-washer",
+        "attractionName": "Wözl‘s Duck Washer",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 100
+      },
+      {
+        "attractionSlug": "woezls-wassertreter",
+        "attractionName": "Wözl‘s Wassertreter",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "wupis-wabi-wipper",
+        "attractionName": "Wupi‘s Wabi Wipper",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 100
+      },
+      {
+        "attractionSlug": "tikal",
+        "attractionName": "Tikal",
+        "hours": [
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "wellenflug",
+        "attractionName": "Wellenflug",
+        "hours": [
+          {
+            "hour": 9,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 5,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "wuermling-express",
+        "attractionName": "Würmling Express",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 5,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 15
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 5,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "wakobato",
+        "attractionName": "Wakobato",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 0,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 0,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 120
+      },
+      {
+        "attractionSlug": "river-quest",
+        "attractionName": "River Quest",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 0,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 0,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 140
+      },
+      {
+        "attractionSlug": "chiapas-die-wasserbahn",
+        "attractionName": "Chiapas - DIE Wasserbahn",
+        "hours": [
+          {
+            "hour": 10,
+            "wait": 0,
+            "source": "composed"
+          },
+          {
+            "hour": 11,
+            "wait": 10
+          },
+          {
+            "hour": 12,
+            "wait": 10
+          },
+          {
+            "hour": 13,
+            "wait": 10
+          },
+          {
+            "hour": 14,
+            "wait": 10
+          },
+          {
+            "hour": 15,
+            "wait": 10
+          },
+          {
+            "hour": 16,
+            "wait": 10
+          },
+          {
+            "hour": 17,
+            "wait": 10
+          },
+          {
+            "hour": 18,
+            "wait": 0,
+            "source": "composed"
+          }
+        ],
+        "minimumHeight": 130
+      }
+    ]
+  },
+  "nearby": [
+    {
+      "slug": "wolkes-luftpost",
+      "name": "Wolke‘s Luftpost",
+      "distance": 21,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "wirtls-taubenturm",
+      "name": "Wirtl‘s Taubenturm",
+      "distance": 22,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "die-froehliche-bienchenjagd",
+      "name": "Die fröhliche Bienchenjagd",
+      "distance": 22,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "new-wavy-battle",
+      "name": "NEW: Wavy Battle",
+      "distance": 25,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "woezls-wassertreter",
+      "name": "Wözl‘s Wassertreter",
+      "distance": 31,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "new-winni-splash",
+      "name": "NEW: Winni Splash",
+      "distance": 31,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "der-lustige-papagei",
+      "name": "Der lustige Papagei",
+      "distance": 40,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "avoras",
+      "name": "Avoras",
+      "distance": 43,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "fly",
+      "name": "F.L.Y.",
+      "distance": 55,
+      "waitTime": 10,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "wuermling-express",
+      "name": "Würmling Express",
+      "distance": 61,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "crazy-bats",
+      "name": "Crazy Bats",
+      "distance": 80,
+      "waitTime": 10,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "tittle-tattle-tree",
+      "name": "Tittle Tattle Tree",
+      "distance": 82,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "maus-au-chocolat",
+      "name": "Maus au Chocolat",
+      "distance": 93,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "wupis-wabi-wipper",
+      "name": "Wupi‘s Wabi Wipper",
+      "distance": 93,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "woezls-duck-washer",
+      "name": "Wözl‘s Duck Washer",
+      "distance": 99,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "bumper-klumpen",
+      "name": "Bumper Klumpen",
+      "distance": 105,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "das-verrueckte-hotel-tartueff",
+      "name": "Das verrückte Hotel Tartüff",
+      "distance": 132,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "winjas-fear",
+      "name": "Winja‘s Fear",
+      "distance": 133,
+      "waitTime": 20,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "winjas-force",
+      "name": "Winja‘s Force",
+      "distance": 134,
+      "waitTime": 20,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "wellenflug",
+      "name": "Wellenflug",
+      "distance": 140,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "bolles-riesenrad",
+      "name": "Bolles Riesenrad",
+      "distance": 144,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "pferdekarussell",
+      "name": "Pferdekarussell",
+      "distance": 156,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "bolles-flugschule",
+      "name": "Bolles Flugschule",
+      "distance": 170,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "talocan",
+      "name": "Talocan",
+      "distance": 180,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "wakobato",
+      "name": "Wakobato",
+      "distance": 189,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "chiapas-die-wasserbahn",
+      "name": "Chiapas - DIE Wasserbahn",
+      "distance": 213,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "black-mamba",
+      "name": "Black Mamba",
+      "distance": 226,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "deep-in-africa-adventure-trail",
+      "name": "Deep in Africa – Adventure Trail",
+      "distance": 240,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "moptis-monkey-depot",
+      "name": "Mopti's Monkey Depot",
+      "distance": 248,
+      "waitTime": 0,
+      "status": "CLOSED"
+    },
+    {
+      "slug": "taron",
+      "name": "Taron",
+      "distance": 278,
+      "waitTime": 25,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "colorado-adventure",
+      "name": "Colorado Adventure",
+      "distance": 293,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "tikal",
+      "name": "Tikal",
+      "distance": 297,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "raik",
+      "name": "Raik",
+      "distance": 302,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "geister-rikscha",
+      "name": "Geister Rikscha",
+      "distance": 335,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "feng-ju-palace",
+      "name": "Feng Ju Palace",
+      "distance": 344,
+      "waitTime": 10,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "river-quest",
+      "name": "River Quest",
+      "distance": 355,
+      "waitTime": 5,
+      "status": "OPERATING"
+    },
+    {
+      "slug": "mystery-castle",
+      "name": "Mystery Castle",
+      "distance": 375,
+      "waitTime": 5,
+      "status": "OPERATING"
+    }
+  ]
+}

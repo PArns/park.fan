@@ -6,20 +6,40 @@ One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md),
 
 A post in the `news` category (or below it, `news/…`) is **news**; every other post is an **article**. `isNewsCategory()` in `lib/blog/paths.ts` is the one place that decides it (`isNewsPost()` in `lib/blog/listing.ts` wraps it) — never compare the category string at a call site. News posts also have their own URL, see [news lives under `/news`](news-live-under-news.md).
 
+**Two sections that never share a post.** Everything under `/blog` lists articles only, everything under `/news` news only, and neither is a corner of the other:
+
+| Surface                                      | Lists                                                                            |
+| -------------------------------------------- | -------------------------------------------------------------------------------- |
+| `/blog` index, category, tag and author page | articles — `listArticles` (`lib/blog/listing.ts`)                                |
+| Category tree, tag cloud, tag archives       | articles — `buildCategoryTree` and `listTags` count no news post                 |
+| Prev/next and "more from" under a post       | the post's own section: articles, or news for a news post (`listNewsByDate`)     |
+| `/news` overview                             | news — `listNewsByDate`, see [news lives under `/news`](news-live-under-news.md) |
+| Header                                       | two entries: „Backstage" (`BlogMenuPanel`, articles) and News (`NewsMenuPanel`)  |
+
+A news post keeps the tag pills whose archive exists under `/blog/tag/…` and drops the rest (a tag only news carries has no archive, since the archives count articles). Its sidebar shows no blog category tree or tag cloud.
+
+`pnpm test:news-split` walks the manifest in every locale and fails when a news post reaches an article list, a news branch reaches the category tree, a tag archive counts a news post, or either menu lists the other section.
+
+The one place both kinds still meet is `feed.xml`: it is the site's single subscription, named "park.fan Blog" with a description that promises the news, and a reader who subscribed once should not lose half of it. The [new-posts toast](../features/new-posts-toast.md) is not a listing either: it announces what arrived since the last visit, news included, and must never filter with `isNewsPost`.
+
+## Teasers keep the two apart
+
 Every surface that shows "the newest posts" as a teaser keeps the two apart:
 
-| Surface                       | Articles                                                     | News                                          |
-| ----------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
-| Homepage, band under the hero | `BlogTeaserBand` — three cards, `listArticlesByRecency`      | `NewsRow` under the cards                     |
-| Homepage, blog chapter        | `LatestBlogSection variant="lead"` — `listArticlesByRecency` | `NewsRow` under the lead block                |
-| Header menu (blog panel)      | opener + rows, `recent` in `getBlogMenu()`                   | strip between rows and category pills, `news` |
-| Park and ride pages           | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                |
+| Surface                       | Articles                                                     | News                                            |
+| ----------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
+| Homepage, hero                | —                                                            | `LatestNewsChip` beside the open-parks badge    |
+| Homepage, band under the hero | `BlogTeaserBand` — three cards, `listArticlesByRecency`      | `NewsRow` under the cards                       |
+| Homepage, blog chapter        | `LatestBlogSection variant="lead"` — `listArticlesByRecency` | `NewsRow` under the lead block                  |
+| Header menu                   | „Backstage": opener + rows, `recent` in `getBlogMenu()`      | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
+| Phone menu (burger sheet)     | the „Backstage" link                                         | the News link and a `LatestNewsChip` card       |
+| Park and ride pages           | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                  |
 
-News is always drawn a step below the articles (a 112 px cover, a semibold title, no teaser), but with its own accent label, through one component: `NewsList` (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages and used directly by the client-side menu panel.
+**The hero chip is the only news above the fold, on any screen.** The hero is `min-h-dvh`, so the band under it, with its `NewsRow`, starts below the first screen even on a desktop; on a phone that band is not drawn at all (`lg` only — three full cards between the hero and the first chapter would be a screen and a half of blog), and the next news is the blog chapter's `NewsRow` near the foot of the page. So a desktop reader who scrolls meets the newest post twice, in the chip and in the band, and that is accepted: the chip is the headline, the band the list. The chip (`components/blog/latest-news-chip.tsx`) is one line by construction: from a 34 rem row it sits on the badge's line and never wraps, below that it stands under the badge — decided by the row's own width (`@container/badges`), not by the badge, whose width changes when the count arrives. Measured: on the badge's line from a 768 px window up in all six locales, the plate not a pixel taller there. In the phone menu it is a small card instead (`variant="card"`): label and date, the headline in two lines and two to three lines of the teaser. The chip there, even with a second line for the headline, left three words of it in the 300 px sheet and nothing to tell what the news was about. It shows its age as the date, formatted in UTC, and not through `NewsAge`, whose relative half grows after hydration and would slide a truncated headline sideways. Both chips take their data from `getNewsMenu()` through `latestNewsFrom()`, so they cannot disagree about which post is the newest.
 
-The blog index, the category and tag pages and `feed.xml` are the archive and list both kinds together — this rule is about the teasers only.
+On the teaser surfaces news is drawn a step below the articles (a 112 px cover, a semibold title, no teaser), but with its own accent label, through one component: `NewsList` (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages.
 
-The [new-posts toast](../features/new-posts-toast.md) is not a teaser either: it announces what arrived since the last visit, news included, and must never filter with `isNewsPost`.
+The header's News entry is drawn differently from the blog's on purpose: one lead with cover and teaser, then the headlines on a time line, each led by its age. An article is picked by topic and length, a news item by what happened and when (`lib/navigation/news-menu.ts`). It used to be a strip of three at the bottom of the blog panel, which filed news as one more blog category.
 
 ## Why
 

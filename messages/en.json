@@ -106,7 +106,7 @@
     "browseParks": "Browse all parks"
   },
   "home": {
-    "intro": "park.fan shows live wait times and crowd levels for more than 200 theme parks and over 7,000 attractions worldwide, from Disney and Universal to Europa-Park and Phantasialand. Opening hours and a forecast of its own for the days ahead come with it.",
+    "intro": "park.fan shows live wait times and crowd levels for more than 200 theme parks and nearly 7,000 attractions worldwide, from Disney and Universal to Europa-Park and Phantasialand. Opening hours and a forecast of its own for the days ahead come with it.",
     "hero": {
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
@@ -486,12 +486,14 @@
     "bestTime": "Best Time to Visit",
     "bestTimeHint": "The quietest weekdays and months, park by park.",
     "latestPosts": "Latest posts",
+    "latestNews": "Latest news",
     "allNews": "All news",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
     "categories": "Categories",
     "popularParks": "Popular parks",
     "readingTime": "{minutes} min",
-    "nearby": "Near you"
+    "nearby": "Near you",
+    "preferences": "Settings"
   },
   "theme": {
     "light": "Light",
@@ -515,7 +517,12 @@
     "heroWelcome": "Welcome to {parkName}",
     "heroNearPark": "{parkName} is nearby (within 5 km). Below you’ll find live wait times, opening hours and crowd levels – or search for another park.",
     "heroWelcomeAttractions": "{count} attractions operating",
-    "heroParkLink": "To park",
+    "heroParkLink": "Go to park",
+    "heroPlanToday": "Plan today",
+    "heroOpenTodayPlan": "Today’s plan",
+    "heroPlanVisit": "Plan a visit",
+    "heroPlanVisitSub": "Pick a day on the calendar",
+    "heroHours": "Opening hours",
     "operating": "Operating",
     "closed": "Closed",
     "crowdLevel": "Crowd Level",
@@ -967,6 +974,11 @@
       "bestTimeLink": "Best time to visit, across all parks",
       "viewCalendarLink": "View full crowd calendar"
     },
+    "yearlyOutlook": {
+      "title": "The next twelve months",
+      "hint": "What the forecast expects, day by day, gathered into months.",
+      "recommendedDays": "{count}/{total} recommended"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Minor",
@@ -1416,6 +1428,29 @@
       "ask": "At the park? Show rides near you",
       "blocked": "Location access is blocked in your browser",
       "away": "You are {distance} from the park"
+    },
+    "nextRide": {
+      "heading": "Shorter now than later",
+      "reason": "Now {now} min, forecast {later} min from {time}",
+      "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Headliners around you",
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "W",
+      "enable": "Turn on compass",
+      "northUp": "North is up",
+      "facing": "The arrow shows where you’re facing",
+      "denied": "Compass not allowed. North is up.",
+      "coarse": "GPS imprecise (± {meters} m)",
+      "ahead": "Ahead",
+      "nearest": "Nearest",
+      "picked": "Selected",
+      "closed": "Closed",
+      "demo": "Demo: {park} around you",
+      "demoLocation": "Use my location"
     }
   },
   "geo": {
@@ -1714,7 +1749,6 @@
     "rideDialog": {
       "title": "Wait-time alerts",
       "subtitle": "For {park} – we’ll notify you once the wait drops below your threshold.",
-      "soloSubtitle": "{park} – we’ll notify you once the wait drops below your threshold.",
       "loading": "Loading…",
       "empty": "No alerts for this park yet.",
       "thresholdLabel": "under {minutes} min",
@@ -1733,8 +1767,6 @@
       "close": "Close",
       "entry": "Wait-time alerts",
       "entryWithCount": "Wait-time alerts ({count})",
-      "removeShort": "Remove",
-      "save": "Save",
       "outOfSeason": "Winter only",
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
@@ -1891,15 +1923,16 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Stories, data and news from the parks",
+    "heroTitle": "Stories and data from the parks",
     "badge": "park.fan Blog",
-    "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
-    "intro": "Trip reports, wait-time analyses and short news from the parks we cover. Written by someone who stands in the queues too.",
+    "description": "Trip reports, data dives and park guides from the park.fan team.",
+    "intro": "Trip reports, wait-time analyses and guides to the parks we cover. Written by someone who stands in the queues too.",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read article",
     "readingTime": "{minutes} min read",
     "updatedOn": "Updated {date}",
+    "correction": "Correction",
     "languageNotice": {
       "available": "This article is also available in {language}",
       "fallback": "Not translated yet — showing the {language} version."
@@ -1908,7 +1941,7 @@
     "categories": "Categories",
     "category": {
       "label": "Category",
-      "description": "All park.fan blog posts filed under {category} — trip reports, data deep-dives and theme park news, newest first.",
+      "description": "All park.fan blog posts filed under {category} — trip reports, data deep-dives and park guides, newest first.",
       "postsCount": "{count, plural, =1 {# post} other {# posts}}"
     },
     "home": {
@@ -1938,7 +1971,8 @@
       "atPark": "at {park}"
     },
     "related": {
-      "title": "More from the blog"
+      "title": "More from the blog",
+      "news": "More news"
     },
     "relatedParks": {
       "title": "Parks mentioned in this article"
@@ -2279,6 +2313,7 @@
       "saved": "{minutes} min less queueing",
       "already": "Already in the right order",
       "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
+      "resolved": "{count, plural, one {one clash fixed} other {# clashes fixed}}",
       "sameWait": "Rearranged, same time queueing",
       "resorted": "The day has been rearranged",
       "added": "{count, plural, one {One ride added} other {# rides added}}",
@@ -2449,6 +2484,11 @@
       "progress": "Progress",
       "nextUp": "Then on to {park}, where you drag rides from the list into the day."
     },
+    "pastDay": {
+      "title": "Your planned day is over",
+      "body": "{park}, {date}. Look at that day again, or plan a new one?",
+      "view": "View past day"
+    },
     "party": {
       "add": "Who’s coming?",
       "tooShort": "Minimum height above the smallest person in the plan",
@@ -2475,6 +2515,16 @@
       "adopt": "Add to my planner",
       "adopted": "The plan is now in your planner.",
       "open": "Open planner"
+    }
+  },
+  "news": {
+    "metaTitle": "Theme park news: events, openings and dates",
+    "metaDescription": "Short news from the theme parks: new rides, events, anniversaries and sales, each dated and linked to the park it is about.",
+    "intro": "What is happening at the parks, newest first.",
+    "count": "{count, plural, one {# story} other {# stories}}",
+    "filter": {
+      "label": "Filter by park",
+      "all": "All parks"
     }
   }
 }

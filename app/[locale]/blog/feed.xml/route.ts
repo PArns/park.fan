@@ -4,7 +4,7 @@ import { resolveAuthor } from '@/lib/blog/authors';
 import { routing, type Locale } from '@/i18n/routing';
 import { SITE_URL } from '@/i18n/config';
 import { versionedPath } from '@/lib/media/focus';
-import { getMediaImageBySrc } from '@/lib/media';
+import { getMediaImageForPath } from '@/lib/media';
 import { WEBSUB_HUB } from '@/lib/websub';
 import { BLOG_FEED_DESCRIPTION, BLOG_FEED_TITLE, blogFeedUrl } from '@/lib/blog/feed';
 import { postPath } from '@/lib/blog/paths';
@@ -52,9 +52,11 @@ const MIME_BY_EXTENSION: Record<string, string> = {
  * The cover image as an `<enclosure>`, with a byte count.
  *
  * `length` is required by RSS. It comes from the media manifest rather than a
- * filesystem stat: `getMediaImageBySrc` answers for the **source** photo, not
+ * filesystem stat: `getMediaImageForPath` answers for the **source** photo, not
  * the `-16x9`/`-4x3`/`-1x1` crop a cover usually points at, so the number is
- * approximate — but a dynamic `fs.statSync(path.join(process.cwd(), 'public',
+ * approximate. (It was `getMediaImageBySrc`, which does not know the crops at
+ * all, so every crop cover — 8 of 15 items — shipped `length="0"`; PAR-478.)
+ * But a dynamic `fs.statSync(path.join(process.cwd(), 'public',
  * …))` here traces as "unresolvable" and Next bundles the **entire** `/public`
  * directory into this function to cover every path it might resolve to (see
  * the `/api/og/[...path]` note in `next.config.ts`), which is what pushed this
@@ -65,7 +67,7 @@ function coverEnclosure(coverAbs: string, coverPath: string): string {
   const clean = coverPath.split('?')[0];
   const extension = clean.split('.').pop()?.toLowerCase() ?? '';
   const type = MIME_BY_EXTENSION[extension] ?? 'image/jpeg';
-  const length = getMediaImageBySrc(clean)?.bytes ?? 0;
+  const length = getMediaImageForPath(clean)?.bytes ?? 0;
   return `    <enclosure url="${escapeXml(coverAbs)}" type="${type}" length="${length}" />`;
 }
 

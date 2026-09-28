@@ -99,8 +99,8 @@ export function ShowFollowDialog({
   // The bell's failure is shown until this dialog produces one of its own.
   const shownError = error ?? initialError;
 
-  // Both outcomes close the dialog, the way `RideAlertQuickDialog` has always
-  // closed on save: the press answered the only question this dialog asks, and
+  // Both outcomes close the dialog, the way the ride bell's own dialog used to
+  // close on save: the press answered the only question this dialog asks, and
   // a form that stays open after succeeding reads as one that did not. Only a
   // FAILURE holds it open — that is when there is something left to read.
   const handleToggle = async () => {

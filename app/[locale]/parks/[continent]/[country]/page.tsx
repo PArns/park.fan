@@ -195,7 +195,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   latitude: park.latitude,
                   longitude: park.longitude,
                 }))}
-                className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
               />
             </div>
           ))}

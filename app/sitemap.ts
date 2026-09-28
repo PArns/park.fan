@@ -13,7 +13,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
-import { categoryPath, postPath } from '@/lib/blog/paths';
+import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -380,8 +380,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // past sitemap size limits if they carried the full hreflang alternate set.
 
   // ── Blog pages ────────────────────────────────────────────────────────────
-  const { listPosts, buildPostAlternates, getTranslationIndex, hasPublishedPosts } =
-    await import('@/lib/blog');
+  const {
+    listPosts,
+    listArticles,
+    listNewsByDate,
+    buildPostAlternates,
+    getTranslationIndex,
+    hasPublishedPosts,
+  } = await import('@/lib/blog');
   const { buildCategoryTree, filterPostsByCategory, parseCategoryPath } =
     await import('@/lib/blog/categories');
 
@@ -423,14 +429,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]),
   });
 
+  // The blog index lists the articles and the news overview the news — two sections that never
+  // share a post — so each one's date is the newest post IT shows.
   const blogIndexAlternates = buildBlogAlternates(() => '/blog');
   for (const locale of blogLocales) {
     routes.push({
       url: `${BASE_URL}/${locale}/blog`,
-      lastModified: newestPostDate(listPosts(locale as import('@/i18n/config').Locale)),
+      lastModified: newestPostDate(listArticles(locale as import('@/i18n/config').Locale)),
       changeFrequency: 'daily',
       priority: 0.7,
       alternates: blogIndexAlternates,
+    });
+  }
+
+  // The news overview. It used to come out of the category loop below as the news category's
+  // page; the category tree holds articles only now, so it is listed here on its own.
+  const newsLocales = blogLocales.filter(
+    (l) => listNewsByDate(l as import('@/i18n/config').Locale).length > 0
+  );
+  const newsIndexAlternates = {
+    languages: Object.fromEntries([
+      ...newsLocales.map((l) => [l, `${BASE_URL}/${l}${NEWS_INDEX_PATH}`]),
+      ...(newsLocales.includes('en') ? [['x-default', `${BASE_URL}/en${NEWS_INDEX_PATH}`]] : []),
+    ]),
+  };
+  for (const locale of newsLocales) {
+    routes.push({
+      url: `${BASE_URL}/${locale}${NEWS_INDEX_PATH}`,
+      lastModified: newestPostDate(listNewsByDate(locale as import('@/i18n/config').Locale)),
+      changeFrequency: 'daily',
+      priority: 0.7,
+      alternates: newsIndexAlternates,
     });
   }
 
@@ -460,9 +489,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Blog category pages. The news category's page is the news overview at `/news`.
+  // Blog category pages — articles only; news is not a blog category (see the news overview above).
   for (const locale of blogLocales) {
-    const posts = listPosts(locale as import('@/i18n/config').Locale);
+    const posts = listArticles(locale as import('@/i18n/config').Locale);
     const { flat } = buildCategoryTree(locale as import('@/i18n/config').Locale);
     for (const path of flat.keys()) {
       routes.push({
@@ -487,7 +516,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { listTags, buildTagAlternates, normalizeTagSlug, TAG_INDEX_MIN_POSTS } =
     await import('@/lib/blog/tags');
   for (const locale of blogLocales) {
-    const posts = listPosts(locale as import('@/i18n/config').Locale);
+    const posts = listArticles(locale as import('@/i18n/config').Locale);
     for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
       if (tag.count < TAG_INDEX_MIN_POSTS) continue;
       const tagAlternates = buildTagAlternates(locale as import('@/i18n/config').Locale, tag.slug);
@@ -509,7 +538,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Blog author pages
   const { listAuthorKeys, resolveAuthor } = await import('@/lib/blog/authors');
   for (const locale of blogLocales) {
-    const posts = listPosts(locale as import('@/i18n/config').Locale);
+    const posts = listArticles(locale as import('@/i18n/config').Locale);
     for (const author of listAuthorKeys()) {
       routes.push({
         url: `${BASE_URL}/${locale}/blog/authors/${author}`,

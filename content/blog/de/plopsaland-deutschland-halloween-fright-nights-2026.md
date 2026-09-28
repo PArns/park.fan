@@ -51,9 +51,10 @@ Deutschland.
 
 Gespielt wird **freitags und samstags vom 2. bis 31. Oktober 2026**, also am
 2., 3., 9., 10., 16., 17., 23., 24., 30. und 31. Oktober. An diesen Tagen hat
-der Park von **10 bis 22 Uhr** geöffnet, und alle Fahrgeschäfte laufen bis zum
-Schluss. Nur die Wasserbahnen DinoSplash und Wickie Splash machen um 20 Uhr zu,
-was im Oktober vermutlich niemanden stört.
+der Park von **10 bis 22 Uhr** geöffnet, und laut Park laufen fast alle
+Fahrgeschäfte bis zum Schluss. Ausdrücklich genannt sind nur die Wasserbahnen
+DinoSplash und Wickie Splash, die um 20 Uhr zumachen, was im Oktober vermutlich
+niemanden stört.
 
 Tagsüber läuft parallel das kinderfreundliche Plopsa Herbstfest. Die Monster
 kommen am Abend.
@@ -80,7 +81,9 @@ kommt, landet auf der Karte, und zwar nicht als Gast.
 
 Neu sind auch zwei Shows: die **Monster Release Show „Freaks Reloaded“** mit
 Reddles, dem Hausclown der Fright Nights, und die Wrestling-Show **„The
-Killing Games“**, bei der nur einer lebend aus dem Ring steigt. Die Feuershow
+Killing Games“**, bei der nur einer lebend aus dem Ring steigt. Beide Formate
+gab es 2025 schon, mit anderer Geschichte, als „Freaks Unleashed“ und „Night of
+Anarchy“. Die Feuershow
 Flames of Valhalla mit Wikingern ist wieder dabei. Jeden Abend beendet das neue
 Abschlussspektakel **Carnival Inferno**, vorher legen beim Fright Festival DJs
 auf.
@@ -98,32 +101,34 @@ ohne Zeitfenster und ohne Aufpreis zu dir.
 
 Wie im Movie Park sind die Horrorhäuser **nicht im Eintritt**.
 
-| Ticket                 | Preis                        | Enthält                                                       |
-| ---------------------- | ---------------------------- | ------------------------------------------------------------- |
-| Datiertes Tagesticket  | ab 39 € (regulär 58 €)       | Park bis 22 Uhr, Scare Zones, Shows, Fright Festival          |
-| Horrorhaus-Ticket      | ab 3 € pro Haus              | ein Haus mit Zeitfenster, nur zusammen mit einem Parkticket   |
-| Alle sechs Häuser      | 49 €                         | Paket ohne Parkeintritt                                       |
-| Nightmare Society Pass | ab 109 € (Jahreskarte: 79 €) | Eintritt, alle Häuser einmal ohne Zeitfenster, Parkplatz, Pin |
+| Ticket                 | Preis                           | Enthält                                                          |
+| ---------------------- | ------------------------------- | ---------------------------------------------------------------- |
+| Datiertes Tagesticket  | ab 39 € (regulär 58 €)          | Park bis 22 Uhr, Scare Zones, Shows, Fright Festival             |
+| Horrorhaus-Ticket      | ab 3 € pro Haus                 | ein Haus mit Zeitfenster, nur zusammen mit einem Eintrittsticket |
+| Alle sechs Häuser      | 49 €                            | Paket ohne Parkeintritt                                          |
+| Nightmare Society Pass | ab 109 € (mit Jahreskarte 79 €) | Eintritt, alle Häuser einmal ohne Zeitfenster, Parkplatz, Pin    |
 
 Die Horrorhäuser laufen mit festen Zeitfenstern, die du beim Kauf wählst. Nur
 der Nightmare Society Pass kommt ohne aus und bringt dazu einen reservierten
-Bereich bei den Shows mit. Wer eine Plopsaland-Jahreskarte hat, kommt ohne
+Bereich bei den Shows mit, solange der Platz reicht. Wer eine Plopsaland-Jahreskarte hat, kommt ohne
 Aufpreis zu den Fright Nights und bekommt bis 30. September, solange der Vorrat
 reicht, ein Freiticket für Mad Rat.
 
 Für zwei Leute, die alle sechs Häuser wollen, ist die Rechnung einfach: Mit dem
 günstigsten Tagesticket und dem 49-€-Paket landest du bei 88 € pro Person, der
-Pass kostet 109 € und spart das Buchen von sechs Zeitfenstern. Wer an einem
+Pass kostet 109 €, bringt den Parkschein mit und spart das Buchen von sechs
+Zeitfenstern. Wer an einem
 vollen Samstag im Oktober kommt, nimmt den Pass.
 
 ## Für wen das ist
 
 Empfohlen sind die Fright Nights **ab 16**. Anders als bei Traumatica ist das
-eine Empfehlung und keine Einlassgrenze. Wer mit Jüngeren oder Schreckhaften
-kommt: Majaland und die Plopsa Indoor-Halle bleiben monsterfrei, und vor Ort
-gibt es einen „Schreck-Stopp“. Wer den trägt, wird von den Darstellern in Ruhe
-gelassen. Ab 12 Jahren sind Masken, aufwendiges Make-up und Kostüme verboten,
-damit am Abend klar bleibt, wer zum Personal gehört.
+keine harte Grenze: Wer jünger ist, kommt laut den FAQ des Parks in Begleitung
+eines Erziehungsberechtigten hinein. Für Jüngere und Schreckhafte bleiben
+Majaland und die Plopsa Indoor-Halle monsterfrei, und nur vor Ort gibt es den
+„Schreck-Stopp“, mit dem einen die Monster laut Park in Ruhe
+lassen. Gästen über 12 Jahren sind Masken, aufwendiges Make-up und Kostüme
+nicht erlaubt, damit am Abend klar bleibt, wer zum Personal gehört.
 
 Haßloch liegt zwischen A65 und B9, vom Bahnhof Haßloch fährt ein Shuttlebus zum
 Park. Der [Europa-Park](ref:europa-park) mit Traumatica liegt knapp zwei
@@ -136,3 +141,5 @@ Tickets, Zeitfenster und Details:
 [plopsa.com → Halloween Fright Nights](https://www.plopsa.com/de/plopsaland-deutschland/shows-events/halloween-fright-nights).
 
 — Patrick
+
+> [!CORRECTION] 25. September 2026: In der ersten Fassung stand, ab 16 sei nur eine Empfehlung und keine Einlassregel. Laut den FAQ des Parks kommen Jüngere in Begleitung eines Erziehungsberechtigten hinein. Das Kostümverbot gilt laut Park für Gäste über 12 Jahren, in der ersten Fassung stand „ab 12“. Ergänzt haben wir, dass es Monster-Release- und Wrestling-Show schon 2025 gab.

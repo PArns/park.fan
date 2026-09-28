@@ -2,7 +2,7 @@
 title: 'Efteling: la Disney dei Paesi Bassi, di tre anni più vecchia dell’originale'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-09-22'
+updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -58,9 +58,11 @@ la carta di un gelato. Se qualcuno lo fa, ringrazia educatamente. Davanti a me u
 bambino raccoglie i rifiuti di sconosciuti per potergli dare da mangiare altre tre
 volte.
 
-Il primo Holle Bolle Gijs è entrato in servizio il **29 marzo 1959**, ideato da
-Peter Reijnders e Henk Knuivers. Adesso nel parco ce ne sono una dozzina. Un
-cestino che è un personaggio, con un nome, una voce e delle maniere, di un’epoca
+Il primo Holle Bolle Gijs è entrato in servizio il **29 marzo 1959**. Il sistema di
+aspirazione dentro l’ha costruito Henk Knuivers, capo del servizio tecnico; Anton
+Pieck e Peter Reijnders hanno scelto per lui il personaggio di una vecchia
+filastrocca, e Pieck l’ha disegnato. Oggi nel parco ce ne sono undici, non tutti
+con le sembianze di Gijs. Un cestino che è un personaggio, con un nome, una voce e delle maniere, di un’epoca
 in cui qui non c’era neanche un ottovolante.
 
 [Efteling](ref:efteling?long), a Kaatsheuvel, viene volentieri chiamata la Disney
@@ -82,34 +84,41 @@ torna nel parco.
 Roba da commercialisti, si potrebbe pensare. Solo che le conseguenze stanno sparse
 per tutto il parco. Un bosco delle fiabe in cui dal 1952 si continuano ad
 aggiungere scene, di cui nemmeno una conta un passeggero. Un giro in barca del
-1986 che da quarant’anni non serve ad altro che a essere bello. Dodici cestini che
+1986 che da quarant’anni non serve ad altro che a essere bello. Undici cestini che
 parlano.
 
 Non è per questo un’attività da garage sotto casa. Nel 2025 Efteling ha contato **5,78
 milioni di visite** da 4,98 milioni di persone, oltre a 347 milioni di euro di
-ricavi operativi, 27,2 milioni di utile e circa 3.000 dipendenti su 72 ettari di
-parco. È il parco divertimenti più visitato dei Paesi Bassi e uno dei tre più
-grandi d’Europa (davanti ci sono solo il
+ricavi operativi, 27,2 milioni di utile netto e circa 3.000 dipendenti su 72 ettari
+di parco. È il parco divertimenti più visitato dei Paesi Bassi. Nell’indice TEA per
+il 2024, l’edizione più recente, è terzo in Europa con 5,6 milioni, dietro il
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) di Parigi e
-l’[Europa-Park](ref:europa-park) di Rust).
+l’[Europa-Park](ref:europa-park) di Rust. Di un soffio: il secondo parco Disney di
+Parigi, oggi Disney Adventure World, lì sta solo 2.000 visitatori stimati dietro.
 
 E a quelle 3.000 persone, a quanto pare, lavorarci piace. Nel 2023 gli olandesi hanno
 eletto Efteling **datore di lavoro più attrattivo del paese** nel settore privato,
-nel **Randstad Employer Brand Research**. Kantar intervista ogni anno più di
-diecimila persone sui 150 maggiori datori di lavoro dei Paesi Bassi, e per Efteling
+nel **Randstad Employer Brand Research**. Randstad fa intervistare ogni anno più di
+diecimila persone sui 150 maggiori datori di lavoro dei Paesi Bassi (13.434 nel
+2026), e per Efteling
 sono stati citati reputazione, clima di lavoro e solidità finanziaria. Il titolo
 adesso è di ASML, tre anni di fila, ma nel 2023 un parco con i cestini parlanti è arrivato davanti a tutti i gruppi del paese. In un settore che di solito si associa a
 contratti stagionali e salario minimo, non è un titolo che si legge tutti i giorni.
 
-È cominciata con due uomini e un parco sportivo. **Anton Pieck**, illustratore, ha
-disegnato le fiabe e, nei decenni successivi, ben oltre mille progetti di
-attrazioni, piazze e locali. **Peter Reijnders**, fotografo e cineasta, ha
-costruito la tecnica sotto: i movimenti, il suono, più tardi Holle Bolle Gijs. La regola di Pieck per il bosco era che nulla doveva sembrare una macchina, un bel capitolato per un parco pieno di macchine. La si
-vede ancora su ogni sporto del tetto.
+È cominciata con un parco cattolico di sport e passeggio aperto nel 1935 a sud di
+Kaatsheuvel, e con tre uomini che il parco oggi chiama i suoi fondatori. Il sindaco
+**Reinier van der Heijden** presiedeva la fondazione e voleva portare più visitatori
+in paese. Con il fotografo e cineasta **Peter Reijnders** fece progettare un bosco
+delle fiabe, e Reijnders ne costruì la tecnica: i movimenti, il suono. Fu lui anche
+a convincere l’illustratore **Anton Pieck**, che per il solo bosco delle fiabe fece
+circa 1.500 schizzi e disegni. Disegnava torri storte e tetti mezzi afflosciati, e
+il tecnico comunale doveva continuamente impedire ai muratori di tirare su muri
+dritti. I mattoni venivano da fattorie demolite, le ardesie possibilmente con il
+muschio ancora sopra. Lo si vede ancora su ogni sporto del tetto.
 
-Dalle dieci fiabe del 1952 se ne sono ricavate più di trenta, la più recente è la
-Principessa sul pisello del 2025. Per il **75° compleanno nel 2027**, secondo il
-parco, si aggiungerà la numero 32.
+Dalle dieci fiabe del 1952 si è arrivati a 31, la più recente è la Principessa sul
+pisello, del maggio 2025. Nel 2027, l’anno del **75° compleanno**, deve aggiungersi
+la numero 32.
 
 ## I cinque regni e cosa ci gira dentro
 
@@ -123,7 +132,7 @@ fiabe, che da novembre 2023 conta come area a sé.
 **[Symbolica](ref:efteling/symbolica)** era, con 35 milioni di euro all’apertura
 nel 2017, una delle attrazioni più costose del Benelux: una dark ride trackless di
 **ETF Ride Systems**, con sede nella vicina Nederweert. I veicoli sembrano
-muoversi liberi nel palazzo, in realtà li guida un cavo sotto il pavimento. Sette
+muoversi liberi nel palazzo, in realtà seguono un filo annegato nel pavimento. Sette
 minuti, sei persone per veicolo, 34 veicoli, teoricamente 1.400 ospiti l’ora.
 All’imbarco scegli tra il percorso degli eroi, quello dei tesori e quello della
 musica, e le tre rotte ti mostrano stanze diverse. Bisogna quindi salirci tre
@@ -138,10 +147,10 @@ appassionati: un dive coaster di **Bolliger & Mabillard**, aperto dal 1° luglio
 2015, con 37,5 metri di caduta, 87 gradi e 90 km/h. Tre treni da 18 posti, sei
 affiancati su tre file, e in cima quei secondi in cui il treno resta sospeso sopra
 il bordo e guardi in basso, perché non è rimasta nessun’altra direzione. La storia intorno è tipica di questo
-parco e del tutto inventata: il barone Gustave Hooghmoed trova oro in un vecchio
-pozzo di carbone, le Witte Wieven del folclore olandese lo custodiscono, e a un
-certo punto tagliano il cavo della gabbia. Due preshow con animatronic raccontano
-tutto questo prima ancora che tu sia seduto.
+parco e del tutto inventata: il barone Gustave Hooghmoed trova oro in una grotta,
+lo Heksenbult, e ci costruisce sopra una miniera, le Witte Wieven del folclore
+olandese lo custodiscono, e a un certo punto il cavo della gabbia si spezza. Due
+preshow raccontano tutto questo prima ancora che tu sia seduto.
 
 ```glossary-widget slug=dive-coaster
 
@@ -187,8 +196,8 @@ del negozio di souvenir _Dr. Charlatans Kwalycke Zaken_, cosa che si può legger
 protagonista dello Spookslot, non torna nella vecchia forma, ma nel nuovo
 spettacolo ha di nuovo una grossa parte.
 
-Nel 2025 il tutto si è preso il **Thea Award** della Themed Entertainment
-Association. Nel maggio 2025 il parco ha ritoccato: più vista sulla cripta, un
+A novembre 2025 la Themed Entertainment Association ha assegnato al tutto un
+**Thea Award**. Nel maggio 2025 il parco ha ritoccato: più vista sulla cripta, un
 momento di caduta in più prima della pausa, movimenti più decisi.
 
 Per chi vuole sapere come si costruisce una cosa del genere quando prima non
@@ -210,7 +219,7 @@ Pegasus ed è, nei nostri dati, l’attrazione più richiesta del parco. Ne ho g
 scritto nella
 [guida di Toverland](/blog/toverland-troy-tempi-di-attesa-consigli), e non in modo
 particolarmente gentile, perché settanta chilometri a sud-est c’è una GCI migliore
-con metà della fila. Questo resta vero. Come gara in cui puoi guardare l’altro
+con meno di metà della fila. Questo resta vero. Come gara in cui puoi guardare l’altro
 treno perdere, però, Joris fa qualcosa che Troy non può fare.
 
 **[De Vliegende Hollander](ref:efteling/de-vliegende-hollander)**, del 2007, è metà
@@ -225,7 +234,7 @@ due looping e due cavatappi. È stata a lungo la macchina con cui nei Paesi Bass
 si misurava cosa fosse un ottovolante, e per anni anche quella dopo la quale ci si contava le vertebre una per una. Per questo all’inizio del 2018 il parco ha fatto sostituire,
 per 4,5 milioni di euro, tutta la struttura in acciaio tra la prima discesa e il
 freno finale. Il tracciato è rimasto uguale, qualche curva è stata allargata e
-sopraelevata diversamente. I treni sono rimasti quelli vecchi.
+sopraelevata diversamente. I treni del 2011 sono rimasti.
 
 ![Un enorme uccello dorato con le ali spiegate sopra l’ingresso di Vogel Rok | Rok, l’uccello gigante delle Mille e una notte. Dietro di lui si entra nella montagna. | left](/media/efteling/vogel-rok-4x3.jpg)
 
@@ -239,7 +248,7 @@ per rinfrescarsi qui. **[Max & Moritz](ref:efteling/max-and-moritz)** sono dal 2
 due percorsi familiari paralleli di Mack, con il nome dei due monelli, e
 **[Hooghmoed](ref:efteling/hooghmoed)** è la novità di questa stagione: dal
 **1° maggio 2026** accanto a Baron c’è un camino alto 14,5 metri in cui tre piccole
-torri di caduta salgono ruotando fino a 9,5 metri e poi cadono di sei. Da 90 centimetri, circa 600 ospiti l’ora: Baron per chi là viene ancora respinto dal metro.
+torri di caduta salgono ruotando fino a 9,5 metri e poi cadono di sei. Da 90 centimetri se accompagnati, circa 600 ospiti l’ora: Baron per chi là viene ancora respinto dal metro.
 
 **[Villa Volta](ref:efteling/villa-volta)**, nel Marerijk, è stata, nel 1996, il **primo madhouse
 moderno al mondo**: una stanza che ti gira intorno mentre la tua panca resta ferma (il tuo senso dell’equilibrio non ci crede nemmeno per un secondo),
@@ -263,16 +272,21 @@ nonostante la popolarità compaia di rado nella tabella delle attese. Con il met
 ottovolante, lì dentro non succede proprio niente. Eppure per me resta una delle
 migliori dark ride d’Europa.
 
-![Lo Stoomcarrousel e i suoi cavalli dorati sotto un telo arancione | L’organo Gavioli ha la stessa età della giostra. La macchina a vapore è uscita nel 1944, il nome è rimasto. | right](/media/efteling/stoomcarrousel-4x3.jpg)
+![Lo Stoomcarrousel e i suoi cavalli dorati sotto un telo arancione | L’organo Gavioli ha la stessa età della giostra. Dal 1944 la fa girare un motore elettrico; la macchina a vapore è ancora lì, per bellezza. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
-A questo si aggiunge quello che quasi nessun parco di queste dimensioni ha ancora:
-un vero **[treno a vapore](ref:efteling/stoomtrein-marerijk)** con due stazioni, lo
-**[Stoomcarrousel](ref:efteling/stoomcarrousel)** del 1895 che sta qui dal 1956, la
-**[Gondoletta](ref:efteling/gondoletta)** sul lago, la
+A questo si aggiungono un **[treno a vapore](ref:efteling/stoomtrein-marerijk)** del
+1969 con due stazioni, le cui locomotive fino al 2025 andavano tutte a carbone (da
+maggio 2025 la più vecchia, Aagje, del 1911, va a elettricità, le altre vengono
+convertite una alla volta, con effetti scenici per conservare l’atmosfera del
+vapore), lo **[Stoomcarrousel](ref:efteling/stoomcarrousel)** del 1895 che sta qui
+dal 1956, la **[Gondoletta](ref:efteling/gondoletta)** sul lago, la
 **[Pagode](ref:efteling/pagode)** sospesa e **Aquanura**, lo spettacolo d’acqua sul
-lago davanti a Fata Morgana. 17 milioni di euro, oltre 900 fari, dieci minuti,
-posto per 6.500 spettatori. Dopo la Dubai Fountain e il Bellagio di Las Vegas è il
-terzo spettacolo di fontane più grande al mondo.
+lago davanti a Fata Morgana. 17 milioni di euro, 200 fontane, posto per 6.500
+spettatori. Da dicembre 2024 va in scena «Efteling Symphonica», quattordici minuti
+senza i vecchi effetti di fuoco, quindi senza propano, con tutta l’illuminazione
+passata ai led. All’apertura nel 2012 Aquanura era il terzo spettacolo di fontane
+più grande al mondo dopo la Dubai Fountain e il Bellagio di Las Vegas; quel posto
+l’ha perso da tempo.
 
 ## Il bosco delle fiabe è arrivato per primo
 
@@ -282,8 +296,9 @@ il parco. Tutto il resto è cresciuto intorno dopo.
 Il 31 maggio 1952 tra gli alberi c’erano dieci scene: la Bella Addormentata,
 Biancaneve, il Re Ranocchio, l’Orologio Magico, l’Usignolo Cinese, il Pappagallo
 Parlante, il Villaggio degli Gnomi, la Signora Holle, Langnek e la Kleine
-Boodschap. Ci sono ancora quasi tutte, alcune ricostruite, altre spostate. Oggi
-sono una trentina.
+Boodschap. Nove ci sono ancora, alcune ricostruite, altre spostate. L’Usignolo
+Cinese è chiuso da marzo 2026, il suo palazzo del 1999 sarà smontato, e la fiaba
+deve tornare in forma più piccola nel 2027.
 
 Un paio meritano la deviazione anche senza bambini per mano.
 
@@ -293,10 +308,10 @@ seduto ad aspettare, e ogni pochi minuti il collo gli si allunga verso l’alto
 finché la testa non gli penzola tra i rami. Nessuno schermo, nessun proiettore,
 meccanica pura dal 1952.
 
-**Kleine Boodschap** è la segnaletica per i bagni più elegante mai costruita. Un
-araldo, sull’Herautenplein, annuncia a intervalli da che parte si va, e siccome
-«kleine boodschap» in olandese significa esattamente quello che state sospettando,
-lo capiscono tutti all’istante. Anche questa una delle dieci scene del 1952.
+**Kleine Boodschap** è la segnaletica per i bagni più elegante mai costruita. Uno
+gnomo seduto su un sasso lungo il sentiero verso gli unici bagni del bosco indica
+la strada e ripete senza sosta «Kleine boodschap!», e siccome in olandese significa
+esattamente quello che state sospettando, lo capiscono tutti all’istante. Anche questa una delle dieci scene del 1952.
 
 **La piccola fiammiferaia** è la prova che questo parco non addolcisce le sue
 fonti. Il racconto di Andersen finisce con una bambina che muore di freddo contro
@@ -317,14 +332,14 @@ appesi il suo busto e cornici ovali con tutti e sei. Il chiosco esiste dal 1967,
 
 Per inciso, questo pezzo di bosco è il miglior trucco contro le file che il parco
 abbia. Non c’è fila, non
-c’è limite di capienza e non c’è durata della corsa. Qui possono girare
-contemporaneamente diverse migliaia di ospiti senza che da nessuna parte debba
-essere esposto un tempo di attesa all’ingresso. È proprio uno dei motivi per cui un parco
+c’è limite di capienza e non c’è durata della corsa. Chi gira qui non sta in fila
+davanti a un’attrazione, e all’ingresso del bosco non serve mai esporre un tempo di
+attesa. È proprio uno dei motivi per cui un parco
 con quasi sei milioni di visite ha attese sopportabili.
 
-Da maggio 2026 il parco sta rifacendo i percorsi, perché trenta fiabe su un
-itinerario fisso sono diventate troppe per un passaggio solo. Nascono quattro
-ingressi e uscite equivalenti, più i **Dreven**: assi principali pavimentati in
+Dalla primavera 2026 il parco sta rifacendo i percorsi. Nascono quattro ingressi e
+uscite equivalenti (quello del Grand Hotel riservato ai suoi ospiti), più i
+**Dreven**: assi principali pavimentati in
 marrone da nord a sud e da est a ovest, che si incrociano sull’Herautenplein, con
 sentieri secondari pavimentati in rosso verso le singole scene. Le scorciatoie
 gialle spariscono. Dopo potrai vedere il bosco in due porzioni in due giorni senza perderti. Nelle fiabe, perdersi di solito è mezza trama.
@@ -334,10 +349,10 @@ gialle spariscono. Dopo potrai vedere il bosco in due porzioni in due giorni sen
 «Un parco per tutta la famiglia» sta su ogni depliant. Se poi tutta la famiglia
 riesce anche a salire su qualcosa, lo dicono i tempi di attesa.
 
-Il nostro storico per Efteling copre **più di 150 giorni di apertura** con dati
-di attesa, rilevati da dicembre 2025. Su tutti i giorni della settimana l’attesa
-tipica nella media del parco resta **sotto la mezz’ora** (mediana); in
-quel giorno su dieci in cui c’è davvero movimento è una volta e mezza tanto.
+Al 25 settembre 2026 il nostro storico per Efteling copre **quasi 190 giorni di
+apertura** con dati di attesa, rilevati dal 26 dicembre 2025, circa nove mesi. Su
+tutti i giorni della settimana l’attesa tipica nella media del parco resta **sotto
+la mezz’ora** (mediana); nei momenti di punta è più o meno una volta e mezza tanto.
 
 Le dieci attrazioni più richieste:
 
@@ -368,14 +383,17 @@ Phantasialand non pubblica il proprio numero di visitatori; l’indice TEA per i
 nonostante questo le file più lunghe della tabella. Il motivo è la stessa divisione
 che ho sviluppato ne [L’arte dell’attesa](/blog/l-arte-dell-attesa): l’attesa è
 domanda divisa per capacità, e a Efteling il numeratore è sì alto, ma il
-denominatore lo è ancora di più. 37 attrazioni, di cui una buona dozzina con
-capacità oraria a quattro cifre, più un bosco delle fiabe che assorbe diverse
-migliaia di persone senza che nessuno faccia la fila da nessuna parte. Un parco con
-il triplo del pubblico ha qui davvero più del triplo della capacità.
+denominatore lo è ancora di più. Villa Volta, Droomvlucht, Fata Morgana e Joris en
+de Draak smaltiscono ciascuna tra 1.750 e 1.900 ospiti l’ora, e in più c’è un bosco
+delle fiabe dove nessuno fa la fila. Il tutto su 72 ettari, contro i 28 di
+Phantasialand. Quasi il triplo del pubblico si distribuisce qui su più del doppio
+dello spazio.
 
 E un dettaglio di quella tabella mi piace in modo particolare: **Voltron**,
-all’Europa-Park, aperta nel 2024, la novità più costosa nella storia del parco, nella
-colonna della fila più lunga sta più o meno alla pari con **Joris en de Draak**, un ottovolante di legno del 2010 che Efteling non promuove nemmeno come attrazione di punta. A Rust non lo direi ad alta voce.
+all’Europa-Park, aperta nel 2024 e premiata lo stesso anno ai Golden Ticket Awards
+come miglior nuovo ottovolante del mondo, nella colonna della fila più lunga sta più
+o meno alla pari con **Joris en de Draak**, un ottovolante di legno del 2010. A Rust
+non lo direi ad alta voce.
 
 ## Il tetto dei cinque milioni
 
@@ -384,15 +402,16 @@ un depliant.
 
 Efteling si trova tra aree Natura 2000. Quando nel **2016** il parco ha ottenuto il
 permesso ambientale per il suo ampliamento, il carico di azoto è stato calcolato
-sulla base di **cinque milioni di visitatori l’anno**. Quel numero da allora figura
-come condizione nel permesso. Non un obiettivo, non una raccomandazione, un tetto.
+sulla base di **cinque milioni di visitatori l’anno**. Da allora il parco viene
+misurato su quel numero. Non un obiettivo, non una raccomandazione, un tetto.
 
 Il parco ha continuato allegramente a crescere oltre. Nel 2017 sono stati
 5,18 milioni, nel 2018 5.351.572 e nel 2019 circa 5,26 milioni. I residenti hanno
 chiesto alla provincia del Brabante Settentrionale di far rispettare il limite. La
-provincia in un primo momento ha rifiutato, richiamando l’importanza economica del
-parco. Il tribunale di Den Bosch ha dato ragione ai residenti e ha dato alla
-provincia dieci settimane per una nuova decisione.
+provincia in un primo momento ha rifiutato: chiudere il parco sarebbe
+sproporzionato viste le conseguenze per l’azienda, i visitatori, i dipendenti e i
+fornitori. A gennaio 2022 il tribunale di Den Bosch ha dato ragione ai residenti e
+ha dato alla provincia dieci settimane per una nuova decisione.
 
 La decisione della provincia del **maggio 2022** è poi uscita divisa in due. Ha
 imposto una **penale di 20 euro per visitatore oltre il limite**, quindi fino a
@@ -403,20 +422,23 @@ quante volte passi dal tornello in quella settimana. Proprio per questo i numeri
 del 2025 stanno insieme: **5,78 milioni di visite da 4,98 milioni di persone**, e
 quindi appena sotto il limite.
 
-Lo si può chiamare pragmatismo o creatività. I residenti hanno scelto creatività e sono andati avanti, davanti al **Raad van State**, la massima
-giurisdizione amministrativa dei Paesi Bassi. Il **15 maggio 2024** hanno perso, ma
-per un motivo che lascia la questione aperta: la corte non li ha ritenuti
-legittimati ad agire, perché le loro case distano da 1,5 a 1,8 chilometri dall’area
-protetta, con in mezzo la strada provinciale N261. Se Efteling abbia davvero
-sforato la condizione, il Raad van State non l’ha deciso. Da allora nessuno ha
-avviato un nuovo procedimento.
+Lo si può chiamare pragmatismo o creatività. Il caso è finito comunque davanti al
+**Raad van State**, la massima giurisdizione amministrativa dei Paesi Bassi, perché
+provincia ed Efteling hanno impugnato una sentenza precedente. Il **15 maggio 2024**
+i residenti hanno perso, ma per un motivo che lascia la questione aperta: la corte
+non li ha ritenuti legittimati ad agire, perché le loro case e aziende distano da
+1,5 a 1,8 chilometri dall’area protetta, con in mezzo la strada provinciale N261.
+Se Efteling abbia davvero sforato il limite, il Raad van State non l’ha deciso.
 
-Da settembre 2021 giace inoltre presso la provincia una richiesta di nuovo permesso
-per **sei milioni**. A oggi non è stata concessa.
+La richiesta di un nuovo permesso per **sei milioni** il parco l’ha presentata già
+nel 2020. A oggi non è stata concessa. Ad aprile 2026 il consiglio provinciale ha
+respinto una mozione del partito Lokaal Brabant per alzare il limite a sei milioni;
+l’ha appoggiata solo il PVV. Lo stesso mese un portavoce del parco ha detto che la
+cifra a cui il parco punta ora non è ancora fissata.
 
 In pratica questo significa che il parco accetta meno gite scolastiche ed eventi
 aziendali, sposta la domanda verso i propri hotel e **ferma la vendita dei biglietti
-durante le vacanze di Natale** quando un giorno è pieno. Per te ha due facce. I
+durante le vacanze invernali** quando un giorno è pieno. Per te ha due facce. I
 giorni buoni sono migliori che in un parco che fa entrare chiunque paghi. Nei giorni
 di punta può invece capitarti che per la data che volevi non ci sia più un biglietto,
 anche se fisicamente ci sarebbe ancora spazio. Chi va in vacanza prenota quindi
@@ -435,11 +457,13 @@ La fondazione ci ha messo **8,5 milioni di fiorini**, poco meno di quattro milio
 di euro. Il **26 ottobre 2000** ha aperto **Villa Pardoes**, dal nome di Pardoes,
 il giullare che è la mascotte del parco.
 
-Vengono accolte famiglie con un figlio gravemente malato tra i quattro e i dodici
-anni. Ricevono una settimana di vacanza completamente gratuita: alloggio, pasti,
+Vengono accolte famiglie residenti nei Paesi Bassi con un figlio tra i quattro e i
+dodici anni che ha una malattia grave, che gli segna la vita o la mette in
+pericolo. Ricevono una settimana di vacanza completamente gratuita: alloggio, pasti,
 programma, più l’ingresso libero a Efteling, al parco safari Beekse Bergen e a
-[Toverland](ref:attractiepark-toverland). La domanda la presentano i genitori insieme al pediatra
-curante, e decide una commissione medica.
+[Toverland](ref:attractiepark-toverland). Possono iscrivere una famiglia i genitori,
+i professionisti che curano il bambino o un altro adulto, e decide una commissione
+medica.
 
 L’architetto Anoul Bouwman ha costruito prima otto alloggi intorno a una corte
 comune; nel 2015 si è aggiunto un ampliamento a forma di fiore. Oggi sono dodici,
@@ -454,11 +478,13 @@ Questo esclude i bambini che hanno bisogno di assistenza continua. La villa ci t
 lo stesso, così che per sette giorni non sia la malattia a scrivere il programma
 della giornata.
 
-Il parco fornisce la scenografia. L’elefante bianco della vecchia piscina per
-bambini sta nel giardino della villa dal 2015, e nel 2023 si è aggiunto il portale a
-buco della serratura dell’Avonturen Doolhof demolito. Tra gli ambasciatori c’è
-**Hans Klok**, lo stesso illusionista che 25 anni fa ha inaugurato
-[Toverland](ref:attractiepark-toverland) e che quest’anno vi torna sul palco. Il mondo dei parchi
+Il parco fornisce la scenografia. L’elefante bianco inginocchiato che Anton Pieck
+disegnò per la piscina dei bambini si è trasferito nel giardino della villa quando
+la piscina è sparita nel 2002, e nel 2023 si è aggiunto il portale a buco della
+serratura dell’Avonturen Doolhof demolito. Tra gli ambasciatori c’è **Hans Klok**,
+lo stesso illusionista che nel 2001 ha inaugurato
+[Toverland](ref:attractiepark-toverland) e che nella primavera 2026 ci è tornato sul
+palco per il 25° compleanno. Il mondo dei parchi
 olandesi è più piccolo di quanto sembri.
 
 > [!TIP]
@@ -472,14 +498,16 @@ olandesi è più piccolo di quanto sembri.
 
 Efteling è aperta 365 giorni l’anno. Non dovrai mai controllare se è aperta; semmai quanti altri hanno avuto la stessa idea.
 
-**Per mese**, aprile è nei nostri dati il più tranquillo dei grandi mesi di
-stagione. Maggio, giugno e luglio stanno vicini, agosto sale in modo
+**Per mese**, aprile e settembre sono nei nostri dati i più tranquilli dei mesi ben
+misurati. Maggio, giugno e luglio stanno vicini, agosto sale in modo
 percepibile, e il più pesante è **dicembre**, cioè la stagione Winter Efteling.
 
 Una precisazione, perché non sembri più preciso di quanto sia:
 dietro aprile fino ad agosto c’è ogni volta un mese intero di giorni misurati,
-dietro dicembre, gennaio e marzo solo una manciata, e per febbraio, ottobre e
-novembre finora non abbiamo alcun giorno utilizzabile. La direzione tiene, la
+dietro settembre poco più di tre settimane, dietro dicembre, gennaio e marzo solo
+una manciata (per dicembre, le vacanze di Natale dal 26 in poi), e per febbraio,
+ottobre e novembre finora non abbiamo alcun giorno utilizzabile (al 25 settembre
+2026). La direzione tiene, la
 classifica nel dettaglio no.
 
 **Per giorno della settimana** si fa interessante, perché il consiglio abituale qui
@@ -489,12 +517,12 @@ si dissolve:
 
 ```
 
-Tra il giorno migliore e il peggiore della settimana c’è un solo gradino. A
-Phantasialand tra un martedì e un sabato c’è un abisso; qui il giorno non cambia
-quasi nulla. Il **lunedì** è addirittura il giorno più pieno nei nostri dati, cosa
-che suona assurda finché non ci si mettono accanto le settimane di vacanza olandesi:
-chi prenota una settimana in un villaggio vacanze o nell’hotel del parco comincia di
-lunedì. Con circa 20 giorni misurati per giorno della settimana, differenze così piccole non le venderei comunque come consiglio. L’effetto lunedì si vede, l’ordine
+Tra il giorno migliore e il peggiore della settimana c’è un solo gradino, e solo il
+sabato finisce un gradino sopra gli altri. Subito dietro, però, c’è già il
+**lunedì**, davanti alla domenica, cosa che all’inizio suona assurda. La mia
+spiegazione è il «midweek» olandese: i villaggi vacanze affittano dal lunedì al
+venerdì come blocco a sé, e chi prenota così il lunedì è al parco. Con quasi trenta
+giorni misurati per giorno della settimana, differenze così piccole non le venderei comunque come consiglio. L’effetto lunedì si vede, l’ordine
 intermedio è rumore.
 
 La conseguenza pratica: **a Efteling non decide il giorno, decide la settimana.** I
@@ -515,24 +543,29 @@ E l’affluenza per mesi, calcolata su tutti i giorni di apertura misurati:
 
 Qui non c’è nulla da comprare che ti faccia saltare la fila. Nessun biglietto
 prioritario, nessun express pass, e nemmeno una singola corsa a prezzo dinamico
-come quella che Phantasialand vende dall’ultimo Wintertraum. Gratis hai le corsie
-single rider su alcune attrazioni e il baby switch per i genitori con bambini
-piccoli, e chi dorme in hotel entra **30 minuti prima**.
+come quella che Phantasialand vende dall’ultimo Wintertraum. Gratis c’è il baby
+switch per i genitori con bambini piccoli, e sette attrazioni hanno una corsia single
+rider, che però dal 2026 il parco apre solo nei giorni di grande affluenza. Chi dorme
+in hotel entra **30 minuti prima**.
 
 Quello che il parco fa invece è decisamente più interessante: da anni armeggia
-sulla fila stessa. Già il **15 settembre 2017** è andato avanti per due mesi
-l’**Efteling Boarding Pass** a Python. Prenotavi tramite app o totem una finestra
-di un quarto d’ora e poi aspettavi al massimo un altro quarto d’ora sul posto.
-Opzionale non era: appena l’attesa normale superava il quarto d’ora, quello era
-l’unico modo per salire sul treno. Più tardi anche Symbolica ha avuto un boarding
-pass, e ci sono state prove alla Monorail, all’Oude Tufferbaan e al Carnaval
-Festival.
+sulla fila stessa. Il **15 settembre 2017** è partito a Python l’**Efteling Boarding
+Pass**, pensato come prova di due mesi, che alla fine è andato avanti fino alla
+primavera 2020. Prenotavi tramite app o totem una finestra di un quarto d’ora e poi
+aspettavi al massimo un altro quarto d’ora sul posto. Opzionale non era: appena
+l’attesa normale superava il quarto d’ora, quello era l’unico modo per salire sul
+treno. Nel 2018 anche Symbolica ha avuto per un po’ un boarding pass, e a fine 2022
+il parco ha reso obbligatoria la prenotazione via app al Carnaval Festival, per poi
+spegnerla a gennaio 2023 dopo alcuni incidenti.
 
 Nell’**estate 2024** è arrivata la variante più gentile, a
 [Droomvlucht](ref:efteling/droomvlucht): una **fila virtuale nell’app gratuita di
 Efteling**. Scegli la dimensione del gruppo, ti metti in fila digitalmente, ricevi
 una notifica sul telefono e poi passi da un ingresso dedicato per la scansione. A
-differenza del 2017 stavolta era volontario, la fila normale restava lì accanto.
+differenza del 2017 stavolta era volontario, la fila normale restava lì accanto. È
+andata così bene che [Danse Macabre](ref:efteling/danse-macabre) dal **22 aprile
+2025** ha una fila virtuale di questo tipo in modo permanente; Droomvlucht ce l’ha
+durante le vacanze scolastiche.
 
 E poi è arrivato l’inizio dell’estate 2026 a **[Python](ref:efteling/python)**.
 Dal **18 al 29 maggio 2026** il parco ha sostituito la corsia
@@ -551,7 +584,7 @@ membro del gruppo appoggia una mano, dopodiché si accende un colore a seconda d
 numero di mani e assegna la fila. Tre metodi in tre giorni, senza una parola di
 comunicazione ufficiale. Looopings ha scritto che ormai ricordava più un progetto artistico che un’ottimizzazione della capacità. Non ci erano andati lontano: due giorni dopo il parco ha spiegato che le prove facevano parte della tesi di laurea di uno studente della TU Delft. La ricerca è conclusa, e Python è tornata a una fila normalissima.
 
-Per te si riduce a questo: niente da comprare, e a Python fai quello che il parco si è inventato quel giorno. Se ricompare un uovo, mettici una mano sopra.
+Per te si riduce a questo: niente da comprare, a Danse Macabre conviene un’occhiata all’app, e a Python fai quello che il parco si è inventato quel giorno. Se ricompare un uovo, mettici una mano sopra.
 
 ## La giornata perfetta, più o meno
 
@@ -559,18 +592,18 @@ Resta il timing, e a Efteling funziona diversamente che in un parco compatto.
 
 All’apertura vai nel **Ruigrijk**, nell’angolo in fondo. La strada per arrivarci è lunga, ed è proprio per questo che la mattina è vuota: quasi tutti si fermano per strada davanti a qualcosa di carino.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) è il nostro consiglio di rope
-drop più netto per questo parco, è quella che monta la fila più in fretta. Proprio
+drop più netto per questo parco: nei nostri dati ha la fila più lunga del parco, e ce
+l’ha già in tarda mattinata. Proprio
 accanto ci sono [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) e, da maggio,
-[Hooghmoed](ref:efteling/hooghmoed): quattro attrazioni a portata di sguardo che
-insieme peserebbero quasi metà della tua attesa della giornata se le facessi nel
-pomeriggio.
+[Hooghmoed](ref:efteling/hooghmoed): quattro attrazioni a portata di sguardo, tre
+delle quali stanno in alto nella tabella qui sopra.
 
 Poi attraversa l’Anderrijk verso
 [Danse Macabre](ref:efteling/danse-macabre) e [Piraña](ref:efteling/pirana).
-[Symbolica](ref:efteling/symbolica) ha, con 1.400 ospiti l’ora, una capacità così
-alta che la sua fila resta sorprendentemente stabile lungo la giornata: quella puoi
-tenertela da parte.
+A [Symbolica](ref:efteling/symbolica) la fila nei nostri dati si muove appena da
+mezzogiorno a metà pomeriggio e si accorcia solo verso sera: quella puoi tenertela
+da parte.
 
 Le **ore centrali sono per il bosco delle fiabe**. È al suo meglio proprio quando
 ovunque altrove ci sono le file, e non ti costa attesa, ci passi e basta. Prenditi
@@ -596,15 +629,14 @@ stesso.
 
 Il **[Diorama](ref:efteling/diorama)** è una vetrina di 60 metri in cui dal
 25 maggio 1971 sta un paesaggio in miniatura su disegni di Anton Pieck: montagne,
-città, castelli, chiese, acqua che scorre davvero nei fiumi, treni Märklin in scala
-1:45, e una sezione in cui è notte. Nel restauro del 2007 ci hanno messo dentro
+città, castelli, chiese, acqua che scorre davvero nei fiumi, trenini in miniatura, e
+una sezione in cui è notte. Nel restauro del 2007 ci hanno messo dentro
 Pieck stesso, davanti al cavalletto. Non si viaggia, non si aspetta, ci si mette
 davanti e si guarda. La maggior parte della gente passa oltre.
 
 Il **[Volk van Laaf](ref:efteling/volk-van-laaf)** è dal 15 giugno 1990 un intero
-popolo inventato da Ton van de Ven, con un proprio insediamento, una propria
-mitologia e una storia secondo cui si è scavato la strada sottoterra fino a
-Kaatsheuvel. Dietro non c’è nessun modello, né fiaba né libro. Altri parchi comprano i diritti dei film, Efteling si è inventata un popolo intero.
+popolo inventato da Ton van de Ven, con un proprio villaggio, il Lavenlaar, dove i
+Laven fanno la birra, cuociono il pane e tengono scuola. Dietro non c’è nessun modello, né fiaba né libro. Altri parchi comprano i diritti dei film, Efteling si è inventata un popolo intero.
 
 La **[Gondoletta](ref:efteling/gondoletta)** naviga dal 13 aprile 1981 con quaranta
 barche su 1.081 metri d’acqua, e un giro dura **venti minuti**. Venti minuti in cui
@@ -613,20 +645,23 @@ passano davanti alla Pagode, è il mio momento preferito di tutto il parco.
 
 ## Pratico: biglietti, come arrivare, mangiare, dormire
 
-**Biglietti.** I prezzi sono dinamici e nel 2026 vanno dai **40 ai 56 €** al
-giorno, bambini fino a tre anni compresi gratis. A differenza di
-[Phantasialand](ref:phantasialand), qui non devi impegnarti su una data: il biglietto
-standard vale un anno dall’acquisto, e anche uno flessibile senza data. Le persone
-con disabilità e fino a tre accompagnatori pagano 2 € in meno. **Il parcheggio
-costa 15 €**, e il tagliando resta poi valido un anno per le visite successive.
+**Biglietti.** I prezzi dipendono dalla data e nel 2026 vanno dai **40 ai 56 €** al
+giorno, bambini fino a tre anni compresi gratis. Il biglietto normale vale solo nel
+giorno che scegli nel calendario al momento dell’acquisto. Puoi spostarlo nel tuo
+account Efteling entro un anno dall’acquisto; se il nuovo giorno costa di più, paghi
+la differenza. Se non vuoi impegnarti affatto, c’è il biglietto flessibile da 56 €,
+valido un anno senza prenotazione. Le persone con tessera di invalidità e fino a tre
+accompagnatori pagano 2 € in meno. **Il parcheggio costa 15 €** a visita; il
+tagliando si può usare fino a un anno dall’acquisto.
 
 **Gli abbonamenti annuali** esistono in tre livelli, e si distinguono soprattutto
 per i giorni esclusi:
 
-- **Classic, 240 €** (o 21 € al mese): circa 290 giorni consentiti, esclusi
-  festivi, vacanze e weekend selezionati. 40 % di sconto sul parcheggio.
-- **Plus, 310 €** (28,50 € al mese): esclusi solo i grandi festivi come Pasqua e
-  Pentecoste, 50 % sul parcheggio, 5 % su ristorazione e negozi.
+- **Classic, 240 €** (o 21 € al mese): almeno 290 giorni l’anno, esclusi festivi,
+  vacanze e weekend selezionati. 40 % di sconto sul parcheggio.
+- **Plus, 310 €** (28,50 € al mese): almeno 340 giorni, esclusi soprattutto i giorni
+  dopo Natale, l’Ascensione, la Pentecoste e alcuni weekend invernali; per il 2026 si
+  è aggiunto il 31 dicembre. 50 % sul parcheggio, 5 % su ristorazione e negozi.
 - **Premium, 400 €** (36 € al mese): nessun giorno escluso, 60 % sul parcheggio,
   10 % su ristorazione e negozi, quattro biglietti ospite scontati invece di due.
 
@@ -635,21 +670,23 @@ aggira comunque i giorni esclusi.
 
 **Come arrivare.** Kaatsheuvel è nel Brabante Settentrionale, a un’ora e mezza
 abbondante o due da Düsseldorf e a poco più di due da Colonia e dalla Ruhr, in
-entrambi i casi via A67 e A2. Chi è comunque in zona di confine abbina bene la
+entrambi i casi passando per Venlo ed Eindhoven. Chi è comunque in zona di confine abbina bene la
 visita con [Toverland](ref:attractiepark-toverland), che sta esattamente sulla strada. In treno è
 più faticoso: fino a 's-Hertogenbosch o Tilburg, poi l’autobus. Metti in conto i cambi e pianifica il ritorno prima di partire, non dopo Aquanura alla fermata del bus con mezzo parco.
 
 **Dormire.** Quattro possibilità direttamente al parco: l’**Efteling Grand Hotel**,
 aperto dal 1° agosto 2025 con 140 camere e suite, due ristoranti e piscina,
 l’**Efteling Wonder Hotel**, il villaggio **Bosrijk** e **Loonsche Land** ai
-margini dell’area naturale. Tutti e quattro ti danno l’ingresso mezz’ora prima, e
-in un parco di queste dimensioni vale più che altrove, perché ti porta al primo
-ottovolante nel Ruigrijk prima di tutti gli altri.
+margini dell’area naturale. Tutti e quattro ti danno l’ingresso mezz’ora prima. In
+quella mezz’ora funzionano nove attrazioni, tra cui Droomvlucht, Villa Volta, Fata
+Morgana e Vogel Rok, ma nel Ruigrijk solo Baron 1898. Joris en de Draak apre con il
+parco, quindi mettiti in fila prima.
 
 **Mangiare.** Due indirizzi che vanno oltre il livello da parco: **Polles Keuken**,
-ai margini del bosco delle fiabe, frittelle in una cucina piena di pentole
-parlanti, da decenni il classico con i bambini. E **In den Swarte Kat** nel
-Huyverwoud, la controparte scura e pesante, costruita insieme a
+in fondo alla Pardoes Promenade accanto a Symbolica, dal 2012 un ristorante di
+pancake in cui ogni quarto d’ora il grande fornello al centro impazzisce finché le
+pentole ballano e il bollitore fischia. E **In den Swarte Kat** nel Huyverwoud, la
+controparte scura e pesante, nata dallo stesso cantiere di
 [Danse Macabre](ref:efteling/danse-macabre). Per gli spuntini ci sono poffertjes a
 ogni angolo, e il consiglio è lo stesso di ovunque: mangia alle undici e mezza o
 dalle due e mezza in poi, così nell’ora di punta non fai una seconda fila, stavolta per le patatine.
@@ -658,22 +695,25 @@ dalle due e mezza in poi, così nell’ora di punta non fai una seconda fila, st
 
 ![La Pagode illuminata fluttua sopra le chiome degli alberi, con alberi illuminati di blu sotto | D’inverno le luci si accendono già nel primo pomeriggio. La Pagode gira lì sopra. | wide](/media/efteling/pagode-16x9.jpg)
 
-Da metà novembre a inizio febbraio qui ha tutto un altro aspetto. L’edizione
-2025/26 è andata dal 10 novembre al 1° febbraio; le date esatte per il 2026/27 il
-parco le annuncia di solito in autunno.
+Da metà novembre a fine gennaio qui ha tutto un altro aspetto. Secondo il parco,
+l’edizione 2026/27 va dal **16 novembre 2026 al 31 gennaio 2027**; la precedente è
+andata dal 10 novembre 2025 al 1° febbraio 2026.
 
 Arrivano fili di luci, tetti innevati, bracieri, lanterne, una pista di pattinaggio
-sulla Warme Winter Weide, enormi palle di neve in cui si entra e una versione di
-Aquanura che dal 2024 funziona a led invece che a propano. Le attrazioni acquatiche
-continuano finché il tempo lo consente, cosa che a Kaatsheuvel succede più spesso
-che in un parco tedesco di media montagna.
+sulla Warme Winter Weide e Aquanura al buio. Gli ottovolanti all’aperto girano
+finché il tempo lo consente. Con le attrazioni acquatiche è un’altra storia: la
+Piraña non ha mai aperto in inverno, De Vliegende Hollander solo nelle giornate più
+miti.
 
-E poi il rovescio: **dicembre è nei nostri dati il mese più pieno dell’anno**.
-A dicembre aspetti ovunque nel parco all’incirca quanto nel resto dell’anno
-aspetti solo a Joris en de Draak. In più la vendita dei biglietti si ferma non
-appena un giorno di vacanza si avvicina al limite del permesso. Chi vuole vedere la stagione invernale con calma
+E poi il rovescio: **dicembre è nei nostri dati il mese più pieno dell’anno**, anche
+se finora dietro ci sono solo i giorni dal 26 dicembre 2025 in poi, cioè le vacanze
+di Natale. La media del parco non è allora lontana da quella che Joris en de Draak
+tiene nel resto dell’anno. In più il parco smette di vendere biglietti nei giorni
+pieni delle vacanze invernali. Chi vuole vedere la stagione invernale con calma
 prende un giorno feriale di novembre o della seconda metà di gennaio, non la
-settimana tra Natale e Capodanno.
+settimana tra Natale e Capodanno. Prima conviene un’occhiata alla lista delle
+manutenzioni del parco: nel 2026 Droomvlucht è chiusa dal 9 novembre al 4 dicembre,
+Joris en de Draak dal 30 novembre al 18 dicembre.
 
 Le mie foto qui sono tutte di una sola sera d’inverno. La nebbia illuminata di blu
 intorno alla chiesa in rovina di Danse Macabre a luglio non ha esattamente
@@ -691,16 +731,20 @@ fiamme sul dorso, attivisti per gli animali hanno interrotto le rappresentazioni
 l’autorità alimentare olandese ha indagato senza trovare prove di maltrattamento.
 Il parco ha comunque deciso di lavorare d’ora in poi senza animali.
 
-**A fine 2026** l’area torna nel suo insieme: un nuovo spettacolo nel teatro
-all’aperto rimaneggiato, con una nuova trama, più tecnica e gli stessi interpreti,
-più un’attrazione da brivido fuori dalle mura su cui dovresti ruotare per aria come
-sotto ali di corvo. Se questo compensi i cavalli, si vedrà. Costretto, il parco non
+Il **1° dicembre 2026** l’area riapre, con 20 milioni di euro di investimento. Metà
+va al nuovo spettacolo «Raveleijn: Strijd om de stad», creato con il parco francese
+Puy du Fou, pieno di acrobazie e, come annunciato nel 2025, senza animali vivi.
+Cinque milioni vanno al rinnovo della città, con locanda rifatta e negozio nuovo,
+altri cinque alla **Ravenring** fuori dalle mura, una giostra rotante di Vekoma con
+18 navicelle alate per 36 passeggeri in tutto. Se questo compensi i cavalli, si
+vedrà. Costretto, il parco non
 l’ha costretto nessuno: l’autorità non aveva trovato niente.
 
-**Nel 2027**, per i 75 anni, apre la **Sprookjesbibliotheek** come 32ª fiaba.
-Invece di una scena davanti a cui si passa sarà una biblioteca in cui si entra,
-dove sette nani mettono in ordine le storie del mondo. Nasce alla fine del percorso
-del bosco, dove finora stava l’Usignolo Cinese, che torna lì accanto in forma più
+**Nel 2027**, l’anno dei 75 anni, deve aprire la **Sprookjesbibliotheek** come
+32ª fiaba. Invece di una scena davanti a cui si passa sarà un edificio alto nove
+metri in cui si entra, dove sette gnomi mettono in ordine le storie che lo
+Sprookjessprokkelaar ha portato dai suoi viaggi. Sorge dove, alla fine del vecchio
+percorso del bosco, stava l’Usignolo Cinese, che torna lì accanto in forma più
 piccola.
 
 **Nel 2029** arriva **Missie Luminar**, per 50 milioni di euro: il primo suspended
@@ -732,14 +776,15 @@ pensare.
 
 Su tutti i giorni di apertura misurati l’attesa tipica nella media del parco è
 **sotto la mezz’ora** (mediana). Si aspetta di più agli ottovolanti e alle grandi
-dark ride, con [Joris en de Draak](ref:efteling/joris-en-de-draak) e
-[Danse Macabre](ref:efteling/danse-macabre) in testa. I numeri attuali sono sulla [pagina del
+dark ride, con [Joris en de Draak](ref:efteling/joris-en-de-draak) in testa e
+[Danse Macabre](ref:efteling/danse-macabre), Symbolica e De Vliegende Hollander
+subito dietro. I numeri attuali sono sulla [pagina del
 parco Efteling](ref:efteling).
 
 ### Quando c’è meno gente a Efteling?
 
-Per mese, **aprile** è il mese di stagione più tranquillo, il più pieno è
-**dicembre**. Il giorno della settimana incide poco: tra il migliore e il
+Per mese, **aprile** e **settembre** sono i più tranquilli, il più pieno è
+**dicembre**, anche se finora l’abbiamo misurato solo durante le vacanze di Natale. Il giorno della settimana incide poco: tra il migliore e il
 peggiore c’è un solo gradino. A decidere sono le vacanze scolastiche olandesi. Per una data concreta il
 [calendario dei giorni migliori](ref:efteling?calendar) aiuta più di qualsiasi regola
 empirica.
@@ -747,37 +792,42 @@ empirica.
 ### C’è un fast pass a Efteling?
 
 No. Efteling non vende fast pass, express pass né priorità sulla singola corsa.
-Gratis ci sono corsie single rider su alcune attrazioni e il baby switch. Chi
-pernotta entra 30 minuti prima di tutti gli altri, ed è l’unico vantaggio
-acquistabile. Il parco però testa di continuo file virtuali, da ultimo a
-[Droomvlucht](ref:efteling/droomvlucht) tramite l’app gratuita, e a giugno 2026 ha sperimentato a [Python](ref:efteling/python) file per dimensione del gruppo.
+Gratis c’è il baby switch, e sette attrazioni hanno corsie single rider, aperte dal
+2026 solo nei giorni di grande affluenza. Chi pernotta entra 30 minuti prima di
+tutti gli altri, ed è l’unico vantaggio acquistabile. In più c’è una fila virtuale
+gratuita nell’app, fissa a [Danse Macabre](ref:efteling/danse-macabre) e durante le
+vacanze scolastiche a [Droomvlucht](ref:efteling/droomvlucht). A maggio e giugno
+2026 il parco ha sperimentato a [Python](ref:efteling/python) file per dimensione
+del gruppo.
 
 ### Perché Efteling limita il numero di visitatori?
 
 Il parco si trova tra aree Natura 2000, e il suo permesso ambientale del 2016
-consente al massimo **cinque milioni di visitatori l’anno**. Superandolo scatta una
-penale di 20 euro a testa. Per questo il parco accetta meno prenotazioni di gruppo
-e nei giorni di punta ferma la vendita dei biglietti. Una richiesta per sei milioni
-è depositata presso la provincia dal 2021 e a oggi non è stata concessa.
+consente al massimo **cinque milioni di visitatori l’anno**, e chi pernotta conta una
+volta sola. Superandolo scatta una penale di 20 euro a testa. Per questo il parco
+accetta meno prenotazioni di gruppo e nei giorni di punta ferma la vendita dei
+biglietti. Una richiesta per sei milioni è depositata presso la provincia dal 2020 e
+a oggi non è stata concessa.
 
 ### Quanto costa il biglietto per Efteling?
 
 A seconda del giorno **da 40 a 56 €**, bambini fino a tre anni gratis, parcheggio
-15 € (il tagliando resta poi valido un anno). Gli abbonamenti annuali costano 240 €
+15 € a visita. Il biglietto vale per il giorno scelto e si può spostare entro un
+anno; il biglietto flessibile senza data costa 56 €. Gli abbonamenti annuali costano 240 €
 (Classic), 310 € (Plus) e 400 € (Premium), da 21 € al mese.
 
 ### Si fa Efteling in un giorno?
 
-Le attrazioni sì, il parco no. 37 attrazioni con le attese tipiche stanno
-in una giornata lunga. Il bosco delle fiabe, gli spettacoli, Aquanura e il
+Le attrazioni sì, il parco no. Le grandi attrazioni stanno in una giornata lunga con
+le attese tipiche. Il bosco delle fiabe, gli spettacoli, Aquanura e il
 camminare non ci stanno più sopra. Due giorni qui sono la norma, non un consiglio
 per appassionati.
 
 ### Cosa c’è di nuovo a Efteling nel 2026?
 
 **Hooghmoed**, una torre di caduta per famiglie accanto a Baron 1898, aperta dal
-1° maggio 2026. Verso fine anno l’area Raveleijn viene rifatta con un nuovo
-spettacolo. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar nel 2029.
+1° maggio 2026. Il 1° dicembre 2026 riapre Raveleijn, con un nuovo spettacolo e la
+nuova Ravenring. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar nel 2029.
 
 ## Un cestino che dice grazie
 
@@ -795,7 +845,8 @@ Se a Kaatsheuvel piove o no decide metà della giornata:
 
 ```
 
-E le due per cui aspetterai di più, con i loro numeri attuali:
+La fila più lunga ce l’ha Joris en de Draak, e Danse Macabre è tra quelle subito
+dietro. Tutte e due con i loro numeri attuali:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)
@@ -810,28 +861,32 @@ aperta. Ringrazia, dal 1959, uno per uno.
 
 ### Fonti e approfondimenti
 
-- Storia del parco, Anton Pieck, aree tematiche, superficie e visitatori: [Efteling su nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling su de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Storia (ufficiale)](https://www.efteling.com/en/about-efteling/history)
-- Holle Bolle Gijs (prima figura il 29 marzo 1959, Peter Reijnders e Henk Knuivers): [Holle Bolle Gijs su Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders su Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)
+- Storia del parco, i tre fondatori, i circa 1.500 schizzi di Pieck, aree tematiche, superficie e personale: [Efteling su nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling su de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Storia (ufficiale)](https://www.efteling.com/en/about-efteling/history) · muri storti e muschio sui tetti: [Storia dello Sprookjesbos su Eftepedia](https://www.eftepedia.nl/lemma/Geschiedenis_van_het_Sprookjesbos)
+- Holle Bolle Gijs (prima figura il 29 marzo 1959, impianto di aspirazione di Henk Knuivers, undici cestini nel parco): [Holle Bolle Gijs su Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders su Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)
 - Struttura della fondazione e destinazione degli utili: [Stichting Natuurpark de Efteling su Eftepedia](https://www.eftepedia.nl/lemma/Stichting_Natuurpark_de_Efteling) · [«Van wie is de Efteling?» (Parkplanet)](https://parkplanet.nl/2022/04/efteling-kaatsheuvel-eigenaar-stichting/)
-- Risultati annuali 2025 (5,78 mln di visite, 347 mln di ricavi, Grand Hotel): [«Strong results for Efteling in 2025» (ufficiale)](https://www.efteling.com/en/press/strong-results-for-efteling-in-2025/) · [Dati 2025 (Themepark Central)](https://www.themepark-central.de/efteling-besucherzahlen-2025/)
-- Il tetto ai visitatori dal permesso del 2016, gli anni superati e il metodo di conteggio attuale: [«Efteling meldet Besucherrekord 2025 – trotz strenger Obergrenze» (FreizeitparkNEWS)](https://www.freizeitparknews.de/efteling/besucherrekord2025/) · [Sentenza del tribunale di Oost-Brabant (Pretwerk)](https://pretwerk.nl/recreatie-actueel/efteling-onaangenaam-verrast-door-rechter-maximaal-5-miljoen-bezoekers-per-jaar/73822/) · [Penale di 20 € per visitatore e metodo di conteggio modificato, maggio 2022 (Looopings)](https://www.looopings.nl/weblog/20714/Efteling-moet-voortaan-dwangsom-betalen-bij-meer-dan-vijf-miljoen-bezoekers--maar-telmethode-is-veranderd.html) · [Udienza davanti al Raad van State (Looopings)](https://www.looopings.nl/weblog/25415/Miljoenenboete-dreigt-voor-de-Efteling-Raad-van-State-buigt-zich-over-overschrijding-bezoekersaantal.html) · [Decisione del 15 maggio 2024, legittimazione ad agire (Looopings)](https://www.looopings.nl/weblog/25633/Klagende-buurtbewoners-Efteling-krijgen-ongelijk-van-Raad-van-State.html) · [Colloqui sui sei milioni (Omroep Brabant)](https://www.omroepbrabant.nl/nieuws/6007528/efteling-in-gesprek-met-de-provincie-om-meer-bezoekers-te-mogen-ontvangen)
+- Risultati 2025 (5,78 mln di visite, 347 mln di ricavi, Grand Hotel, prima locomotiva a vapore elettrica): [«Strong results for Efteling in 2025» (ufficiale)](https://www.efteling.com/en/press/strong-results-for-efteling-in-2025/) · [Dati 2025 (Themepark Central)](https://www.themepark-central.de/efteling-besucherzahlen-2025/)
+- Classifica europea secondo l’indice TEA 2024 (Efteling 5,6 mln, Disney Adventure World 5,598 mln, Phantasialand 2,1 mln): [List of amusement park rankings su en.wikipedia](https://en.wikipedia.org/wiki/List_of_amusement_park_rankings) · [TEA Global Experience Index](https://www.teaconnect.org/tea-global-experience-indextm)
+- Il tetto ai visitatori dal permesso del 2016, gli anni superati e il metodo di conteggio attuale: [«Efteling meldet Besucherrekord 2025 – trotz strenger Obergrenze» (FreizeitparkNEWS)](https://www.freizeitparknews.de/efteling/besucherrekord2025/) · [Sentenza del tribunale di Oost-Brabant del 28 gennaio 2022, con le motivazioni della provincia e la domanda per sei milioni (Rechtspraak)](https://www.rechtspraak.nl/Organisatie-en-contact/Organisatie/Rechtbanken/Rechtbank-Oost-Brabant/Nieuws/Paginas/Provincie-wees-onterecht-handhavingsverzoek-natuurbescherming-over-Efteling-af.aspx) · [la stessa sentenza (Pretwerk)](https://pretwerk.nl/recreatie-actueel/efteling-onaangenaam-verrast-door-rechter-maximaal-5-miljoen-bezoekers-per-jaar/73822/) · [Penale di 20 € per visitatore e metodo di conteggio modificato, maggio 2022 (Looopings)](https://www.looopings.nl/weblog/20714/Efteling-moet-voortaan-dwangsom-betalen-bij-meer-dan-vijf-miljoen-bezoekers--maar-telmethode-is-veranderd.html) · [Udienza davanti al Raad van State, ricorso della provincia e di Efteling (Looopings)](https://www.looopings.nl/weblog/25415/Miljoenenboete-dreigt-voor-de-Efteling-Raad-van-State-buigt-zich-over-overschrijding-bezoekersaantal.html) · [Decisione del 15 maggio 2024, legittimazione ad agire (Looopings)](https://www.looopings.nl/weblog/25633/Klagende-buurtbewoners-Efteling-krijgen-ongelijk-van-Raad-van-State.html) · [Colloqui su un nuovo permesso, aprile 2026 (Omroep Brabant)](https://www.omroepbrabant.nl/nieuws/6007528/efteling-in-gesprek-met-de-provincie-om-meer-bezoekers-te-mogen-ontvangen) · [Mozione di Lokaal Brabant respinta, aprile 2026 (Looopings)](https://www.looopings.nl/weblog/32397/Politieke-partij-wil-Efteling-uit-de-brand-helpen-met-nieuwe-natuurvergunning-weinig-steun.html)
 - Datore di lavoro più attrattivo dei Paesi Bassi nel 2023: [Vincitori del Randstad Award per anno (Randstad)](https://www.randstad.nl/werkgevers/kenniscentrum/employer-branding/winnaars-randstad-award) · [Randstad Employer Brand Research 2026, metodo](https://www.randstad.nl/werkgevers/kenniscentrum/employer-branding/employer-brand-research-2026)
-- Danse Macabre e il Huyverwoud: [Comunicato stampa dell’apertura (ufficiale)](https://www.efteling.com/en/press/danse-macabre-efteling-reveals-opening-date-and-inside-of-new-haunted-attraction/) · [Danse Macabre su en.wikipedia](<https://en.wikipedia.org/wiki/Danse_Macabre_(Efteling)>) · [Ritocchi del maggio 2025 (Looopings)](https://www.looopings.nl/weblog/28970/Nieuwe-effecten-en-wildere-bewegingen-Efteling-vernieuwt-Danse-Macabre.html)
+- Danse Macabre e il Huyverwoud: [Comunicato stampa dell’apertura (ufficiale)](https://www.efteling.com/en/press/danse-macabre-efteling-reveals-opening-date-and-inside-of-new-haunted-attraction/) · [Danse Macabre su en.wikipedia](https://en.wikipedia.org/wiki/Danse_Macabre_%28Efteling%29) · [Ritocchi del maggio 2025 (Looopings)](https://www.looopings.nl/weblog/28970/Nieuwe-effecten-en-wildere-bewegingen-Efteling-vernieuwt-Danse-Macabre.html) · [Thea Award, novembre 2025 (Looopings)](https://www.looopings.nl/weblog/30898/Amerikaanse-prijs-voor-Efteling-attractie-Danse-Macabre-Award-for-Outstanding-Achievement.html)
 - La musica e cosa è stato riutilizzato dallo Spookslot: [«Danse macabre werd bij toeval muziek van het Spookslot» (NPO Klassiek)](https://www.npoklassiek.nl/klassiek/funfact/fbc09021-dc6c-4b66-81a2-4d0c96a9e709/danse-macabre-werd-bij-toeval-muziek-van-het-spookslot-in-de-efteling) · [«Het Spookslot-verleden herleeft in Danse Macabre» (ufficiale)](https://www.efteling.com/nl/blog/nieuws/20231031-spookslot-verleden-herleeft-in-danse-macabre) · [Colonna sonora, 29 minuti (Looopings)](https://www.looopings.nl/weblog/27810/Efteling-zet-soundtrack-Danse-Macabre-online-29-minuten-aan-muziek.html)
-- Python (aperta nel 1981, struttura in acciaio sostituita nel 2018 per 4,5 mln €) e Kogeloog nel bosco delle fiabe: [Python su nl.wikipedia](<https://nl.wikipedia.org/wiki/Python_(Efteling)>) · [Kogeloog (horeca) su Eftepedia](<https://www.eftepedia.nl/lemma/Kogeloog_(horeca)>)
+- Python (aperta nel 1981, struttura in acciaio sostituita nel 2018 per 4,5 mln €) e Kogeloog nel bosco delle fiabe: [Python su nl.wikipedia](https://nl.wikipedia.org/wiki/Python_%28Efteling%29) · [Kogeloog (horeca) su Eftepedia](https://www.eftepedia.nl/lemma/Kogeloog_%28horeca%29)
 - Il Dynamic Motion Stage come primo impianto del suo tipo: [«Danse Macabre – The Dynamic Motion Stage» (Intamin)](https://www.intamin.com/2024/11/08/danse-macabre-the-dynamic-motion-stage/) · [Pagina del progetto (Intamin)](https://www.intamin.com/project/danse-macabre/) · Documentazione del cantiere da parte del parco: [playlist making-of (Efteling su YouTube)](https://www.youtube.com/playlist?list=PLax_Jl-_6xzAc3BCLis1qbRrLs4Urwjdr)
-- Baron 1898 (dati, tre treni da 18 posti), Symbolica, Villa Volta: [Baron 1898 su nl.wikipedia](https://nl.wikipedia.org/wiki/Baron_1898) · [Baron 1898 su de.wikipedia](https://de.wikipedia.org/wiki/Baron_1898) · [Symbolica su nl.wikipedia](https://nl.wikipedia.org/wiki/Symbolica) · [Villa Volta su de.wikipedia](https://de.wikipedia.org/wiki/Villa_Volta)
-- Fata Morgana (otto minuti, 1.800 ospiti l’ora, Ton van de Ven), Gondoletta (dal 13 aprile 1981, 20 minuti, 1.081 metri) e lo Stoomcarrousel (costruito nel 1895, nel parco dal 1956, elettrico dal 1944): [Fata Morgana su nl.wikipedia](<https://nl.wikipedia.org/wiki/Fata_Morgana_(Efteling)>) · [Gondoletta su nl.wikipedia](https://nl.wikipedia.org/wiki/Gondoletta) · [Stoomcarrousel su nl.wikipedia](<https://nl.wikipedia.org/wiki/Stoomcarrousel_(Efteling)>)
-- Sprookjesboom (serie televisiva da ottobre 2006, albero nello Sprookjesbos dal 1° aprile 2010): [Sprookjesboom (serie) su nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesboom_(televisieserie)>) · [«10 jaar Sprookjesboom» (ufficiale)](https://www.efteling.com/nl/blog/historie/20200317-10-jaar-sprookjesboom)
-- Hooghmoed (novità 2026): [«Efteling kündigt neue Familienattraktion Hooghmoed an» (Themepark Central)](https://www.themepark-central.de/efteling-neuheit-2026/)
-- Il bosco delle fiabe: le dieci scene del 1952, Langnek, Kleine Boodschap e la situazione attuale: [Sprookjesbos su nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesbos_(Efteling)>) · nuovi percorsi dal 2026: [«Efteling neemt routing Sprookjesbos op de schop» (Parkplanet)](https://parkplanet.nl/2026/05/efteling-routing-navigeren-wayfinding-sprookjesbos/)
-- Diorama (dal 25 maggio 1971) e Volk van Laaf (dal 15 giugno 1990): [Diorama su nl.wikipedia](<https://nl.wikipedia.org/wiki/Diorama_(Efteling)>) · [Volk van Laaf su nl.wikipedia](https://nl.wikipedia.org/wiki/Volk_van_Laaf)
-- La fine dello spettacolo equestre Raveleijn e cosa segue nel 2026: [«De Efteling stopt na vijftien jaar met omstreden show met paarden» (NOS)](https://nos.nl/artikel/2580130-de-efteling-stopt-na-vijftien-jaar-met-omstreden-show-met-paarden) · [Raveleijn su nl.wikipedia](<https://nl.wikipedia.org/wiki/Raveleijn_(attractie)>)
-- Missie Luminar 2029 e Sprookjesbibliotheek 2027: [«New attraction in 2029: Missie Luminar» (ufficiale)](https://www.efteling.com/en/blog/nieuws/new-attraction-in-2029-mission-luminar) · [Missie Luminar (blooloop)](https://blooloop.com/news/efteling-missie-luminar-launch-coaster) · [«Efteling deelt eerste informatie over 32e sprookje» (Pretwerk)](https://pretwerk.nl/geen-categorie/efteling-deelt-eerst-informatie-over-32e-sprookje-in-het-sprookjesbos/101709/)
-- Aquanura: [Aquanura (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/attraktionen/aquanura-s133)
-- Esperimenti sulla fila: [Prova del Boarding Pass a Python dal 15 settembre 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [fila virtuale a Droomvlucht, estate 2024 (ufficiale)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [gruppi pari e dispari a Python dal 18 maggio 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [la ruota dal 19 giugno 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [l’uovo dal 21 giugno 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html) · [la spiegazione: una tesi alla TU Delft, prova conclusa (Looopings)](https://www.looopings.nl/weblog/33163/Mysterie-opgelost-Efteling-legt-uit-wat-experimenten-bij-de-Python-moesten-voorstellen.html)
-- File, single rider e ingresso anticipato: [File a Efteling (ufficiale)](https://www.efteling.com/en/park/information/queues) · [Entrare prima nel parco (ufficiale)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
+- Baron 1898 (dati, tre treni da 18 posti, la storia dello Heksenbult), Symbolica, Villa Volta: [Baron 1898 su nl.wikipedia](https://nl.wikipedia.org/wiki/Baron_1898) · [Baron 1898 su de.wikipedia](https://de.wikipedia.org/wiki/Baron_1898) · [Symbolica su nl.wikipedia](https://nl.wikipedia.org/wiki/Symbolica) · [Villa Volta su de.wikipedia](https://de.wikipedia.org/wiki/Villa_Volta) · capacità orarie: [Villa Volta su nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Volta) · [Droomvlucht su nl.wikipedia](https://nl.wikipedia.org/wiki/Droomvlucht_%28darkride%29) · [Joris en de Draak su nl.wikipedia](https://nl.wikipedia.org/wiki/Joris_en_de_Draak) · 28 ettari: [Phantasialand su de.wikipedia](https://de.wikipedia.org/wiki/Phantasialand) · Golden Ticket Award 2024: [Voltron Nevera su en.wikipedia](https://en.wikipedia.org/wiki/Voltron_Nevera)
+- Fata Morgana (otto minuti, 1.800 ospiti l’ora, Ton van de Ven), Gondoletta (dal 13 aprile 1981, 20 minuti, 1.081 metri) e lo Stoomcarrousel (costruito nel 1895, nel parco dal 1956, elettrico dal 1944): [Fata Morgana su nl.wikipedia](https://nl.wikipedia.org/wiki/Fata_Morgana_%28Efteling%29) · [Gondoletta su nl.wikipedia](https://nl.wikipedia.org/wiki/Gondoletta) · [Stoomcarrousel su nl.wikipedia](https://nl.wikipedia.org/wiki/Stoomcarrousel_%28Efteling%29)
+- Sprookjesboom (serie televisiva da ottobre 2006, albero nello Sprookjesbos dal 1° aprile 2010): [Sprookjesboom (serie) su nl.wikipedia](https://nl.wikipedia.org/wiki/Sprookjesboom_%28televisieserie%29) · [«10 jaar Sprookjesboom» (ufficiale)](https://www.efteling.com/nl/blog/historie/20200317-10-jaar-sprookjesboom)
+- Hooghmoed (novità 2026): [«Vrije val-attractie Hooghmoed geopend» (ufficiale)](https://www.efteling.com/nl/pers/vrije-val-attractie-hooghmoed-geopend-in-de-efteling/) · [«Efteling kündigt neue Familienattraktion Hooghmoed an» (Themepark Central)](https://www.themepark-central.de/efteling-neuheit-2026/)
+- Treno a vapore (due stazioni, passaggio alla trazione elettrica, Aagje elettrica da maggio 2025): [«De stoomtrein in de Efteling wordt elektrisch» (ufficiale)](https://www.efteling.com/nl/pers/de-stoomtrein-in-de-efteling-wordt-elektrisch/) · [Efteling Stoomtrein Maatschappij su nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling_Stoomtrein_Maatschappij)
+- Il bosco delle fiabe: le dieci scene del 1952, Langnek, Kleine Boodschap, la fine dell’Usignolo Cinese e la situazione attuale: [Sprookjesbos su nl.wikipedia](https://nl.wikipedia.org/wiki/Sprookjesbos_%28Efteling%29) · [Usignolo Cinese: smontaggio dall’autunno 2026 (Looopings)](https://www.looopings.nl/weblog/31985/Efteling-gaat-Chinese-Nachtegaal-pas-in-het-najaar-slopen-eerst-uitvoerig-onderzoek.html) · nuovi percorsi dal 2026: [«Efteling neemt routing Sprookjesbos op de schop» (Parkplanet)](https://parkplanet.nl/2026/05/efteling-routing-navigeren-wayfinding-sprookjesbos/)
+- Diorama (dal 25 maggio 1971, restaurato nel 2007) e Volk van Laaf (dal 15 giugno 1990): [Diorama su nl.wikipedia](https://nl.wikipedia.org/wiki/Diorama_%28Efteling%29) · [Volk van Laaf su nl.wikipedia](https://nl.wikipedia.org/wiki/Volk_van_Laaf)
+- La fine dello spettacolo equestre Raveleijn e la riapertura del 1° dicembre 2026: [«De Efteling stopt na vijftien jaar met omstreden show met paarden» (NOS)](https://nos.nl/artikel/2580130-de-efteling-stopt-na-vijftien-jaar-met-omstreden-show-met-paarden) · [«Efteling announces opening date for Raveleijn themed area» (ufficiale, 1° settembre 2026)](https://www.efteling.com/en/press/efteling-announces-opening-date-for-raveleijn-themed-area-and-shares-new-images/) · [Raveleijn su nl.wikipedia](https://nl.wikipedia.org/wiki/Raveleijn_%28attractie%29)
+- Missie Luminar 2029 e Sprookjesbibliotheek 2027: [«Efteling announces new thrill ride: Missie Luminar» (ufficiale, 9 luglio 2026)](https://www.efteling.com/en/press/efteling-announces-new-thrill-ride-missie-luminar/) · [«New attraction in 2029: Missie Luminar» (ufficiale)](https://www.efteling.com/en/blog/nieuws/new-attraction-in-2029-mission-luminar) · [Missie Luminar (blooloop)](https://blooloop.com/news/efteling-missie-luminar-launch-coaster) · [«First look at Efteling’s 32nd fairytale» (ufficiale, 22 luglio 2026)](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/) · [«Nieuws over de Sprookjesbibliotheek én De Chinese Nachtegaal» (ufficiale)](https://www.efteling.com/nl/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal) · [«Efteling deelt eerste informatie over 32e sprookje» (Pretwerk)](https://pretwerk.nl/geen-categorie/efteling-deelt-eerst-informatie-over-32e-sprookje-in-het-sprookjesbos/101709/)
+- Aquanura (17 mln €, 200 fontane, 6.500 posti, «Efteling Symphonica» da dicembre 2024, 14 minuti, niente propano): [Aquanura (ufficiale)](https://www.efteling.com/en/park/shows/aquanura) · [«Nieuwe Aquanura-show vanaf komende winter» (ufficiale)](https://www.efteling.com/nl/pers/nieuwe-aquanura-show-vanaf-komende-winter-te-zien-in-de-efteling/) · [Aquanura su nl.wikipedia](https://nl.wikipedia.org/wiki/Aquanura)
+- Winter Efteling 2026/27 e 2025/26, attrazioni acquatiche d’inverno, elenco delle manutenzioni 2026: [Winter Efteling (ufficiale)](https://www.efteling.com/en/park/events/winter-efteling) · [Winter Efteling 2025/26 (Pretwerk)](https://pretwerk.nl/recreatie-actueel/winter-efteling-met-schaatsbaan-en-nieuw-entertainment-van-start/96753/) · [Winter Efteling su Eftepedia](https://www.eftepedia.nl/lemma/Winter_Efteling) · [Gesloten attracties (ufficiale)](https://www.efteling.com/nl/park/informatie/in-onderhoud)
+- Esperimenti sulla fila: [Prova del Boarding Pass a Python dal 15 settembre 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [Boarding Pass fino alla primavera 2020 (Looopings)](https://www.looopings.nl/weblog/20133/Efteling-Boarding-Pass-bij-de-Python-keert-niet-meer-terug.html) · [Carnaval Festival 2022/23 (Snelpas su nl.wikipedia)](https://nl.wikipedia.org/wiki/Snelpas) · [fila virtuale a Droomvlucht, estate 2024 (ufficiale)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [fila virtuale a Danse Macabre dal 22 aprile 2025 (Looopings)](https://www.looopings.nl/weblog/28700/Vanaf-vandaag-virtuele-wachtrij-actief-bij-Danse-Macabre-in-de-Efteling.html) · [single rider solo nei giorni di grandissima affluenza dal 2026 (Looopings)](https://www.looopings.nl/weblog/31345/Efteling-houdt-single-riders-wachtrijen-dit-jaar-vaker-gesloten.html) · [gruppi pari e dispari a Python dal 18 maggio 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [la ruota dal 19 giugno 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [l’uovo dal 21 giugno 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html) · [la spiegazione: una tesi alla TU Delft, prova conclusa (Looopings)](https://www.looopings.nl/weblog/33163/Mysterie-opgelost-Efteling-legt-uit-wat-experimenten-bij-de-Python-moesten-voorstellen.html)
+- File, single rider e ingresso anticipato: [Wachtrijen (ufficiale, in olandese)](https://www.efteling.com/nl/park/informatie/wachtrijen) · [Entrare prima nel parco (ufficiale)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
 - Niente Halloween: [«Geen Halloween in de Efteling» (ufficiale)](https://www.efteling.com/nl/park/events/halloween) · [la nostra guida di Halloween](/blog/halloween-parchi-divertimenti-2026)
-- Prezzi, parcheggio e abbonamenti annuali 2026: [Panoramica biglietti (ufficiale)](https://www.efteling.com/en/park/information/ticket-overview) · [Prezzi e orari (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Confronto abbonamenti annuali (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
-- Villa Pardoes (fondazione, capienza, volontariato, finanziamento): [Wie wij zijn (ufficiale)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes su Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes su nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Donare](https://www.villapardoes.nl/doneren)
-- Dati di attesa e affluenza: storico proprio di più di 150 giorni di apertura da dicembre 2025, [Efteling su park.fan](ref:efteling)
+- Prezzi, biglietti con data, biglietto flessibile, parcheggio e abbonamenti annuali 2026: [Prezzi e validità (ufficiale)](https://www.efteling.com/en/park/information/ticket-overview) · [Abbonamenti e giorni esclusi (ufficiale)](https://www.efteling.com/nl/park/abonnement) · [Abbonamento Plus escluso il 31 dicembre 2026 (Looopings)](https://www.looopings.nl/weblog/34285/Efteling-wijzigt-geldigheid-abonnement-dit-jaar-niet-welkom-op-oudejaarsdag.html) · [Prezzi e orari (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Confronto abbonamenti annuali (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
+- Villa Pardoes (fondazione, solo per famiglie residenti nei Paesi Bassi, capienza, volontariato, finanziamento): [Wie wij zijn (ufficiale)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes su Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes su nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [l’elefante della piscina per bambini (Eftepedia)](https://www.eftepedia.nl/lemma/Kinderbad) · [Hans Klok al Toverland nel 2026 (Toverland)](https://www.toverland.com/en/shows/hansklok) · [Donare](https://www.villapardoes.nl/doneren)
+- Polles Keuken (dal 2012, in fondo alla Pardoes Promenade): [Polles Keuken su Eftepedia](https://www.eftepedia.nl/lemma/Polles_Keuken)
+- Dati di attesa e affluenza: storico proprio di quasi 190 giorni di apertura dal 26 dicembre 2025 (al 25 settembre 2026), [Efteling su park.fan](ref:efteling)

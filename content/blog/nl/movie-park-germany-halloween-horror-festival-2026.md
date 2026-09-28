@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: vanaf zaterdag 22 horroravonden, en in de nieuwe maze wacht Jason'
+title: 'Movie Park Germany: vanaf zaterdag horroravonden tot 8 november, en in de nieuwe maze wacht Jason'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -100,7 +100,8 @@ zones en de monsterparade March of the Monsters. Gedateerde online tickets
 kosten volgens het park nu € 38,90, aan de kassa is het € 59,90 vanaf 12 jaar.
 
 De mazes en PHOBIA zitten **niet in de toegang**. Elke maze heeft een eigen
-ticket met tijdslot nodig, en dat is alleen online te koop. Een prijs per maze
+ticket met tijdslot nodig, en dat boek je online. Volgens de parkplattegrond zijn er,
+zolang de voorraad strekt, ook restkaarten bij de gastenservice in het park. Een prijs per maze
 noemt het park op zijn Halloween-pagina's niet, die zie je pas in de webshop.
 
 Wie alle negen wil, vergelijkt het best met de **S.I.K. Pass**: € 215 met
@@ -145,3 +146,6 @@ Data, mazes en tickets:
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
 — Patrick
+
+> [!CORRECTION]
+> 25 september 2026: in de eerste versie stond dat tickets met tijdslot voor de mazes alleen online te koop zijn. Volgens de parkplattegrond verkoopt het park, zolang de voorraad strekt, ook restkaarten ter plekke.

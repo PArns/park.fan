@@ -106,7 +106,7 @@
     "browseParks": "Alle parken bekijken"
   },
   "home": {
-    "intro": "park.fan toont live wachttijden en drukte voor meer dan 200 pretparken en ruim 7.000 attracties wereldwijd, van Disney en Universal tot Europa-Park en Phantasialand. Met openingstijden en een eigen voorspelling voor de komende dagen erbij.",
+    "intro": "park.fan toont live wachttijden en drukte voor meer dan 200 pretparken en bijna 7.000 attracties wereldwijd, van Disney en Universal tot Europa-Park en Phantasialand. Met openingstijden en een eigen voorspelling voor de komende dagen erbij.",
     "hero": {
       "cta": "Ontdek parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
@@ -486,12 +486,14 @@
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
     "latestPosts": "Nieuwste berichten",
+    "latestNews": "Laatste nieuws",
     "allNews": "Al het nieuws",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
     "readingTime": "{minutes} min.",
-    "nearby": "Bij jou in de buurt"
+    "nearby": "Bij jou in de buurt",
+    "preferences": "Instellingen"
   },
   "theme": {
     "light": "Licht",
@@ -516,6 +518,11 @@
     "heroNearPark": "{parkName} is in de buurt (binnen 5 km). Hieronder vind je actuele wachttijden, openingstijden en drukte – of zoek een ander park.",
     "heroWelcomeAttractions": "{count} attracties in bedrijf",
     "heroParkLink": "Naar park",
+    "heroPlanToday": "Vandaag plannen",
+    "heroOpenTodayPlan": "Plan voor vandaag",
+    "heroPlanVisit": "Bezoek plannen",
+    "heroPlanVisitSub": "Kies een dag in de kalender",
+    "heroHours": "Openingstijden",
     "operating": "Geopend",
     "closed": "Gesloten",
     "crowdLevel": "Drukteniveau",
@@ -967,6 +974,11 @@
       "bestTimeLink": "Beste tijd in alle parken",
       "viewCalendarLink": "Volledige druktekalender bekijken"
     },
+    "yearlyOutlook": {
+      "title": "De komende twaalf maanden",
+      "hint": "Wat de prognose verwacht, dag voor dag, samengevat per maand.",
+      "recommendedDays": "{count}/{total} aanbevolen"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Gering",
@@ -1416,6 +1428,29 @@
       "ask": "In het park? Toon attracties bij jou in de buurt",
       "blocked": "Locatietoegang is geblokkeerd in je browser",
       "away": "Je bent {distance} van het park"
+    },
+    "nextRide": {
+      "heading": "Nu korter dan straks",
+      "reason": "Nu {now} min, vanaf {time} volgens de prognose {later} min",
+      "saving": "−{minutes} min"
+    },
+    "compass": {
+      "title": "Topattracties om je heen",
+      "n": "N",
+      "e": "O",
+      "s": "Z",
+      "w": "W",
+      "enable": "Kompas aanzetten",
+      "northUp": "Noorden is boven",
+      "facing": "De pijl wijst waar je naartoe kijkt",
+      "denied": "Kompas niet toegestaan. Noorden is boven.",
+      "coarse": "GPS onnauwkeurig (± {meters} m)",
+      "ahead": "Voor je",
+      "nearest": "Dichtstbij",
+      "picked": "Gekozen",
+      "closed": "Gesloten",
+      "demo": "Demo: {park} om je heen",
+      "demoLocation": "Locatie gebruiken"
     }
   },
   "geo": {
@@ -1714,7 +1749,6 @@
     "rideDialog": {
       "title": "Wachttijdmeldingen",
       "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
-      "soloSubtitle": "{park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
       "loading": "Laden…",
       "empty": "Nog geen meldingen voor dit park.",
       "thresholdLabel": "onder {minutes} min.",
@@ -1733,8 +1767,6 @@
       "close": "Sluiten",
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
-      "removeShort": "Verwijderen",
-      "save": "Opslaan",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
@@ -1891,15 +1923,16 @@
   },
   "blog": {
     "title": "Blog",
-    "heroTitle": "Verhalen, data en nieuws uit de parken",
+    "heroTitle": "Verhalen en data uit de parken",
     "badge": "park.fan Blog",
-    "description": "Reisverslagen, data-analyses en pretpark-nieuws van het park.fan-team.",
-    "intro": "Reisverslagen, wachttijdanalyses en korte updates uit de parken die we volgen. Geschreven door iemand die zelf in de rij staat.",
+    "description": "Reisverslagen, data-analyses en parkgidsen van het park.fan-team.",
+    "intro": "Reisverslagen, wachttijdanalyses en gidsen over de parken die we volgen. Geschreven door iemand die zelf in de rij staat.",
     "blog": "Blog",
     "empty": "Nog geen artikelen. Kom snel terug.",
     "readMore": "Artikel lezen",
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
+    "correction": "Correctie",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
       "fallback": "Nog niet vertaald – je ziet de {language}-versie."
@@ -1908,7 +1941,7 @@
     "categories": "Categorieën",
     "category": {
       "label": "Categorie",
-      "description": "Alle blogartikelen van park.fan in de categorie {category} – reisverslagen, data-analyses en nieuws uit de pretparken, nieuwste eerst.",
+      "description": "Alle blogartikelen van park.fan in de categorie {category} – reisverslagen, data-analyses en gidsen over de pretparken, nieuwste eerst.",
       "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}"
     },
     "home": {
@@ -1938,7 +1971,8 @@
       "atPark": "in {park}"
     },
     "related": {
-      "title": "Meer uit het blog"
+      "title": "Meer uit het blog",
+      "news": "Meer nieuws"
     },
     "relatedParks": {
       "title": "Parken in dit artikel"
@@ -2279,6 +2313,7 @@
       "saved": "{minutes} min. minder wachten",
       "already": "Staat al goed",
       "fitted": "{count, plural, one {één attractie past nu in de dag} other {# attracties passen nu in de dag}}",
+      "resolved": "{count, plural, one {één conflict minder} other {# conflicten minder}}",
       "sameWait": "Anders ingedeeld, even lang wachten",
       "resorted": "De dag is anders ingedeeld",
       "added": "{count, plural, one {Eén attractie toegevoegd} other {# attracties toegevoegd}}",
@@ -2449,6 +2484,11 @@
       "progress": "Voortgang",
       "nextUp": "Daarna naar {park}. Daar sleep je attracties uit de lijst in de dag."
     },
+    "pastDay": {
+      "title": "Je geplande dag is voorbij",
+      "body": "{park}, {date}. Wil je die dag nog eens bekijken of een nieuwe plannen?",
+      "view": "Afgelopen dag bekijken"
+    },
     "party": {
       "add": "Wie gaat mee?",
       "tooShort": "Minimumlengte hoger dan de kleinste persoon in het plan",
@@ -2475,6 +2515,16 @@
       "adopt": "Overnemen in mijn planner",
       "adopted": "Het plan staat nu in je planner.",
       "open": "Planner openen"
+    }
+  },
+  "news": {
+    "metaTitle": "Pretparknieuws: evenementen en nieuwe attracties",
+    "metaDescription": "Korte berichten uit de pretparken: nieuwe attracties, evenementen, jubilea en verkopen, telkens met datum en een link naar het park.",
+    "intro": "Wat er in de parken gebeurt, het nieuwste eerst.",
+    "count": "{count, plural, one {# bericht} other {# berichten}}",
+    "filter": {
+      "label": "Filteren op park",
+      "all": "Alle parken"
     }
   }
 }
