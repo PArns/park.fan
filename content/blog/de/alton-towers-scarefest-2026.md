@@ -55,8 +55,8 @@ Scarefest läuft nicht jeden Tag. Laut Park sind es diese Termine:
 - 9. bis 11. Oktober
 - 16. Oktober bis 1. November, täglich
 
-Bis Mitte Oktober sind das also die Wochenenden, jeweils von Freitag bis
-Sonntag, danach durchgehend bis Allerheiligen. Die Kombitickets nennen
+Bis Mitte Oktober sind das also die Wochenenden, im Oktober jeweils von
+Freitag bis Sonntag, danach durchgehend bis Allerheiligen. Die Kombitickets nennen
 Parkeintritt bis 21 Uhr, und der Parkkalender zeigt für die Wochenenden im
 Oktober **10 bis 21 Uhr** Ortszeit. An den Tagen dazwischen, etwa von Montag,
 5., bis Donnerstag, 8. Oktober, schließt der Park um 16 Uhr, und dann gibt es
