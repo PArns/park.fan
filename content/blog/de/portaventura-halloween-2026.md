@@ -78,7 +78,7 @@ Ticketseite des Parks als „ab", je nach Tag kann es mehr werden.
 | Express Miedo             | 10 €     | Express-Einlass bei La Isla Maldita, nur zusätzlich |
 
 Wer den neuen Pasaje sehen will, nimmt den Passport 2: Für 1,90 € mehr als El
-Carnicero allein ist REC dabei. Alle fünf einzeln kosten zusammen 44,60 €, der
+Carnicero allein ist REC dabei. Alle fünf einzeln kosten zusammen 44,70 €, der
 Passport 5 spart davon knapp 14 €. La Isla Maldita spielt im Caribe Aquatic
 Park. REC geht auf die spanische Horrorfilmreihe zurück, als Pasaje gibt es sie
 nur in PortAventura.
