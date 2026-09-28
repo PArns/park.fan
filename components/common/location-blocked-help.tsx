@@ -16,6 +16,19 @@ function readPlatform(): LocationHelpPlatform {
 }
 
 /**
+ * Whether `LocationBlockedHelp` renders the browser's `<geolocation>` element rather than our
+ * popover. A caller that sets text beside it can tell whether that text is needed: the element
+ * carries the browser's own label, the popover's "How to change this" does not say what.
+ */
+export function useHasGeolocationElement(): boolean {
+  return useSyncExternalStore(
+    subscribeNever,
+    () => 'HTMLGeolocationElement' in window,
+    () => false
+  );
+}
+
+/**
  * What a visitor whose browser blocks location can do about it, next to the "blocked" line on the
  * homepage and the park page (docs/rules/location-is-asked-for-where-it-is-needed.md).
  *
@@ -30,11 +43,7 @@ function readPlatform(): LocationHelpPlatform {
 export function LocationBlockedHelp() {
   const t = useTranslations('location');
   const { refresh } = useGeolocation();
-  const hasElement = useSyncExternalStore(
-    subscribeNever,
-    () => 'HTMLGeolocationElement' in window,
-    () => false
-  );
+  const hasElement = useHasGeolocationElement();
   const platform = useSyncExternalStore<LocationHelpPlatform>(
     subscribeNever,
     readPlatform,

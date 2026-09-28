@@ -24,7 +24,7 @@ import type { NearbyAttractionsData } from '@/types/nearby';
  * inside the open panel, so a page nobody planned on makes no extra request at
  * all. And it does not ask for location: the geolocation context asks only for
  * the page parts that declare they use it (`useLocationNeeded`: the homepage
- * banner, the park page's near-you row), reads a position elsewhere only where
+ * banner, the park page's location line), reads a position elsewhere only where
  * permission is already granted, and otherwise falls back to GeoIP — so opening
  * the planner cannot produce a permission dialog.
  *

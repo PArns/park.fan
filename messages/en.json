@@ -1433,8 +1433,7 @@
       "heading": "Near you",
       "inParkCoarse": "You are in the park",
       "ask": "At the park? Show rides near you",
-      "blocked": "Location access is blocked in your browser",
-      "away": "You are {distance} from the park"
+      "blocked": "Location access is blocked in your browser"
     },
     "nextRide": {
       "heading": "Shorter now than later",
@@ -1495,6 +1494,7 @@
   },
   "location": {
     "active": "Location on",
+    "blocked": "Location blocked",
     "howTo": "How to change this",
     "stepsDefault": "Tap or click the icon to the left of the address and set Location to “Allow”. Then reload the page.",
     "stepsIosSafari": "Tap “aA” on the left of the address bar, then Website Settings → Location → Allow. Then reload the page.",

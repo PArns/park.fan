@@ -1433,8 +1433,7 @@
       "heading": "Cerca de ti",
       "inParkCoarse": "Estás en el parque",
       "ask": "¿En el parque? Mostrar atracciones cerca de ti",
-      "blocked": "La ubicación está bloqueada en tu navegador",
-      "away": "Estás a {distance} del parque"
+      "blocked": "La ubicación está bloqueada en tu navegador"
     },
     "nextRide": {
       "heading": "Más corto ahora que después",
@@ -1495,6 +1494,7 @@
   },
   "location": {
     "active": "Ubicación activada",
+    "blocked": "Ubicación bloqueada",
     "howTo": "Cómo cambiarlo",
     "stepsDefault": "Toca o haz clic en el icono a la izquierda de la dirección y pon Ubicación en «Permitir». Después, recarga la página.",
     "stepsIosSafari": "Toca «aA» a la izquierda de la barra de direcciones y luego Ajustes del sitio web → Ubicación → Permitir. Después, recarga la página.",

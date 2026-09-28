@@ -22,7 +22,7 @@ const subscribeNever = () => () => {};
  *
  * Layout: server-rendered at one fixed height (44 px, the phone target) and every state fills
  * exactly that row, invisible until the permission check has run, the same contract as the park
- * page's near-you row. So the first paint and the settled page agree whatever the answer is.
+ * page's location line. So the first paint and the settled page agree whatever the answer is.
  */
 export function HomeLocationRow({ className }: { className?: string }) {
   const t = useTranslations('nearby');

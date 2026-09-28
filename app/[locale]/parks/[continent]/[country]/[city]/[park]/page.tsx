@@ -36,6 +36,7 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
@@ -505,6 +506,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
               city: cityName,
             })}
+            // The park page's ask for location, and the answer to it, beside the distance. The
+            // rides near a visitor in the park are still `ParkInParkBlock`, above the tabs.
+            location={
+              <ParkLocationLine
+                park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
+              />
+            }
           />
         }
       >

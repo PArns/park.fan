@@ -1,10 +1,10 @@
 /**
- * What the park page's "near you" row shows, as one pure decision.
+ * Where the visitor stands relative to the park page's park, as one pure decision.
  *
- * The row sits at the top of the park page and is server-rendered at one fixed height, because
- * the server cannot know any of the inputs below. Every state except `inPark` fills that one row
- * and nothing else; `inPark` adds the ride lists under it. Kept out of the component so the
- * decision is testable without a browser (`pnpm test:in-park-block`).
+ * Two page parts show it: the location line on the title card's address line
+ * (`ParkLocationLine`, one box at one fixed height, because the server cannot know any of the
+ * inputs below) and, for `inPark` only, the ride lists above the tabs (`ParkInParkBlock`). Kept
+ * out of the components so the decision is testable without a browser (`pnpm test:in-park-block`).
  */
 import { calculateDistance } from '@/lib/utils/distance-utils';
 import type { AttractionWithDistance, NearbyAttractionsData, NearbyResponse } from '@/types/nearby';

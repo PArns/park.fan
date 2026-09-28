@@ -135,7 +135,8 @@ export function LiveParkData({
           twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
           `display:none` does not skip hydration, which was the dominant mobile-INP source on
           large parks like PortAventura. */}
-      {/* "Near you" for a visitor standing in this park: one reserved row for everybody else. */}
+      {/* "Near you" for a visitor standing in this park; nothing for everybody else. Its ask for
+          location is the title card's `ParkLocationLine`. */}
       <ParkInParkBlock park={currentPark} />
       {tabsWithHash}
     </>
