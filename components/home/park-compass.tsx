@@ -19,6 +19,12 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { ParkCompassDial, type DialRide, type DialRideKind } from './park-compass-dial';
+import {
+  trackCompassHeadingOn,
+  trackCompassRideOpened,
+  trackCompassRidePinned,
+  trackCompassViewed,
+} from '@/lib/analytics/umami';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useCompassHeading } from '@/lib/hooks/use-compass-heading';
 import { useInViewAndFront } from '@/lib/hooks/use-in-view-and-front';
@@ -311,6 +317,22 @@ export function ParkCompass({
   };
   const { status, enable, unreliable } = useCompassHeading(onHeading, visible);
   const compassOn = status === 'active';
+  // Whether anybody uses it (`trackCompassViewed`): seen, and the phone's compass running, once
+  // per page each. The demo and the server's `?sim=` are the team testing, and count nothing.
+  const counted = !demo && !simulated;
+  const reported = useRef({ viewed: false, heading: false });
+  useEffect(() => {
+    if (!counted) return;
+    if (visible && !reported.current.viewed) {
+      reported.current.viewed = true;
+      trackCompassViewed();
+    }
+    if (compassOn && !reported.current.heading) {
+      reported.current.heading = true;
+      trackCompassHeadingOn();
+    }
+  }, [counted, visible, compassOn]);
+
   // A compass that stopped (denied, gone silent) leaves the arrows where they were; north-up is
   // the honest resting state.
   useEffect(() => {
@@ -323,7 +345,10 @@ export function ParkCompass({
   const pinnedRide = rides.find((r) => r.id === pinned) ?? null;
   const focus = pinnedRide ?? ahead ?? rides[0] ?? null;
   const focusReason = pinnedRide ? 'picked' : ahead ? 'ahead' : 'nearest';
-  const togglePin = (id: string) => setPinned((p) => (p === id ? null : id));
+  const togglePin = (id: string) => {
+    if (counted && pinned !== id) trackCompassRidePinned();
+    setPinned((p) => (p === id ? null : id));
+  };
 
   const toward = (bearing: number) => t('toward', { point: t(`points.${compassPoint(bearing)}`) });
   const dialRides = useMemo(
@@ -533,6 +558,7 @@ export function ParkCompass({
                 <Link
                   href={focus.href}
                   prefetch={false}
+                  onClick={() => counted && trackCompassRideOpened('bar')}
                   className="group flex h-full min-w-0 flex-1 items-center gap-3 rounded-2xl pl-3"
                 >
                   <span className="bg-primary/15 text-primary ring-primary/40 flex size-11 shrink-0 items-center justify-center rounded-full ring-1">
@@ -583,6 +609,7 @@ export function ParkCompass({
               <Link
                 href={r.href}
                 prefetch={false}
+                onClick={() => counted && trackCompassRideOpened('list')}
                 className="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/40 dark:hover:bg-white/[0.04]"
               >
                 <span

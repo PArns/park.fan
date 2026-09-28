@@ -7,6 +7,7 @@ import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { PARK_COMPASS_ID, useCompassPresent } from '@/lib/home/compass-presence';
+import { trackCompassPillClicked } from '@/lib/analytics/umami';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -123,6 +124,8 @@ function HeroBadgeRow({
 function CompassPill() {
   const t = useTranslations('nearby.compass');
   const jump = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    // Not counted under `?sim=`: that is the team testing (see `trackCompassViewed`).
+    if (!new URLSearchParams(window.location.search).has('sim')) trackCompassPillClicked();
     const target = document.getElementById(PARK_COMPASS_ID);
     if (!target) return;
     event.preventDefault();

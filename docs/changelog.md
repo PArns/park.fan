@@ -28,6 +28,15 @@ Test: `pnpm test:geolocation-permission`.
 
 ---
 
+## Unreleased – Kompass: Umami zählt, ob er genutzt wird
+
+Fünf Events, vier davon ohne Property: gesehen (`compass_viewed`) und Handy-Kompass aktiv
+(`compass_heading_on`) je einmal pro Seitenaufruf, eine Bahn fixiert (`compass_ride_pinned`), zur
+Bahn gewechselt (`compass_ride_opened`, mit `from`: Leiste oder Liste) und die Pille „Zum Kompass"
+im Hero getippt (`compass_pill_clicked`). Nicht gezählt werden das Lösen einer Fixierung, jede
+Drehung und Besuche mit `?sim=`, also die eigenen Tests.
+Details: [analytics.md](development/analytics.md#the-in-park-compasss-five-events-sep-2026).
+
 ## Unreleased – Kompass nach Design-, Architektur- und Usability-Review
 
 Drei Prüfer haben den Kompass unter dem Hero durchgesehen, das hier ist umgesetzt:
