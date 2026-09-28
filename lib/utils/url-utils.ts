@@ -6,6 +6,10 @@
  * Never manually construct URLs with string manipulation like `.replace('/v1/parks/', '/parks/')`.
  */
 
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import type { Locale } from '@/i18n/config';
+import type { SearchResultItem } from '@/lib/api/types';
+
 /**
  * Convert backend API URL to frontend route
  *
@@ -132,6 +136,38 @@ export function buildAttractionUrl(parkUrl: string, attractionSlug: string): str
   }
 
   return `${cleanParkUrl}/${attractionSlug}`;
+}
+
+/**
+ * Where a search result links to — one answer for the palette, the hero's dropdown and `/search`.
+ *
+ * Locale-less, like every path the i18n `Link` and router take; the locale only picks the
+ * glossary's own URL segment. `null` when the result names nowhere, so a surface can refuse the
+ * click instead of sending the visitor to "/" or to a bare `#`.
+ *
+ * In order: the result's own URL; for a park without one, its geo path; a glossary term; and for a
+ * ride, show or restaurant without one, its park — the ride's page under it, the other two as the
+ * park's tab (they have no page of their own).
+ */
+export function searchResultHref(result: SearchResultItem, locale: Locale): string | null {
+  const own = convertApiUrlToFrontendUrl(result.url);
+  if (own !== '#') return own;
+
+  if (result.type === 'park' && result.continent && result.country) {
+    const segment = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
+    const city = result.city ? segment(result.city) : 'unknown';
+    return `/parks/${segment(result.continent)}/${segment(result.country)}/${city}/${result.slug}`;
+  }
+
+  if (result.type === 'glossary') {
+    return `/${GLOSSARY_SEGMENTS[locale] ?? 'glossary'}/${result.slug}`;
+  }
+
+  const parkUrl = convertApiUrlToFrontendUrl(result.parentPark?.url);
+  if (!parkUrl.startsWith('/parks/')) return null;
+  if (result.type === 'show') return parkChapterUrl(parkUrl, 'shows');
+  if (result.type === 'restaurant') return parkChapterUrl(parkUrl, 'restaurants');
+  return `${parkUrl}/${result.slug}`;
 }
 
 // ============================================================================

@@ -166,14 +166,15 @@ instead of dropping into an empty gap.
 Both surfaces share their behavior, so a result can never look or route differently depending
 on where it was clicked — including the list they show before anything is typed:
 
-| Shared piece            | Module                                       |
-| ----------------------- | -------------------------------------------- |
-| Queries + debounce      | `lib/hooks/use-search-results.ts`            |
-| Pre-query list          | `lib/hooks/use-hero-browse-parks.ts`         |
-| Analytics + routing     | `lib/hooks/use-search-navigation.ts`         |
-| Row rendering           | `components/search/search-result-items.tsx`  |
-| Category grouping/order | `components/search/search-result-groups.tsx` |
-| Panel body              | `components/search/search-results-panel.tsx` |
+| Shared piece                 | Module                                         |
+| ---------------------------- | ---------------------------------------------- |
+| Queries + debounce           | `lib/hooks/use-search-results.ts`              |
+| Pre-query list               | `lib/hooks/use-hero-browse-parks.ts`           |
+| Analytics + routing          | `lib/hooks/use-search-navigation.ts`           |
+| Result → URL (and `/search`) | `searchResultHref` in `lib/utils/url-utils.ts` |
+| Row rendering                | `components/search/search-result-items.tsx`    |
+| Category grouping/order      | `components/search/search-result-groups.tsx`   |
+| Panel body                   | `components/search/search-results-panel.tsx`   |
 
 **The dropdown is open at rest** and lists the three nearest parks — the hero's default state is
 an answer, not an empty field. **Focusing the field expands it** to the full browse list, tweened
