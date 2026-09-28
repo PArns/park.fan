@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { PlannerFlyout } from './planner-flyout';
 
 /**
@@ -16,8 +17,14 @@ import { PlannerFlyout } from './planner-flyout';
  * from. The way in is `PlannerEdgeTab` now, and that one is deliberately on the
  * OTHER side of this boundary: it is drawn on every page, so it may only read
  * what the chrome already carries.
+ *
+ * `memo`, because the launcher re-renders for things the panel does not draw —
+ * the plan's count on the tab, an open request it answers by setting `open` —
+ * and its four props are two booleans and two `useState` setters, so they
+ * change exactly when the panel has something new to show. The panel reads the
+ * plan and its other stores itself.
  */
-export function PlannerFlyoutHost({
+export const PlannerFlyoutHost = memo(function PlannerFlyoutHost({
   open,
   onOpenChange,
   askingPastDay,
@@ -36,4 +43,4 @@ export function PlannerFlyoutHost({
       onAskingPastDayChange={onAskingPastDayChange}
     />
   );
-}
+});
