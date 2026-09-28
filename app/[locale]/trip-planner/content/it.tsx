@@ -22,16 +22,15 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
           Un blocco è un&apos;attrazione, e la sua altezza è l&apos;attesa prevista per la sua ora.
           Trascina lo stesso blocco in un&apos;ora affollata e cresce; mettilo in una più tranquilla
           e si accorcia. Fra due blocchi c&apos;è il trasferimento: quanta strada c&apos;è e se il
-          tempo basta. L&apos;uscita dalla stazione e il giro stesso sono contati lì, non nel
-          blocco.
+          tempo basta. L&apos;uscita dalla stazione e il giro stesso sono conteggiati nel
+          trasferimento.
         </P>
         <P>
-          Niente di quello che segue è ridisegnato. Sono gli stessi componenti che girano nel
-          pianificatore, alimentati con la risposta che l&apos;API ha dato il 4 settembre 2026 per
-          sabato 12 settembre al <A href={PARK}>Phantasialand</A>. Trascina un blocco su
-          un&apos;altra ora: si aggancia a passi di cinque minuti, ricalcola la propria altezza e
-          con essa i trasferimenti accanto. Qui non viene salvato nulla, quindi trascina pure a
-          volontà.
+          La linea del tempo qui sotto è fatta degli stessi componenti del pianificatore e mostra la
+          risposta che l&apos;API ha dato il 4 settembre 2026 per sabato 12 settembre al{' '}
+          <A href={PARK}>Phantasialand</A>. Trascina un blocco su un&apos;altra ora. Si aggancia a
+          passi di cinque minuti, e la sua altezza e i trasferimenti accanto vengono ricalcolati.
+          Qui non viene salvato nulla.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -50,19 +49,18 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Per ogni attrazione l&apos;API restituisce una curva sulla giornata, ora per ora. Quel
           sabato Taron segna 45 minuti alle dieci, 50 alle undici, 40 all&apos;una e di nuovo 50 la
-          sera: su tutta la giornata ci sono dieci minuti di differenza. Quel sabato Taron è
-          semplicemente richiesto a tutte le ore. Per un&apos;attrazione così non esiste una buona
-          finestra, e il pianificatore la mette dove il resto della giornata lo consente. Black
-          Mamba invece scende da 35 minuti a mezzogiorno a 20 alle sei, e Chiapas fa il contrario,
-          da 20 a 35.
+          sera, appena dieci minuti di differenza su tutta la giornata. Per Taron quel giorno non
+          c&apos;è una buona finestra, quindi il pianificatore la mette dove il resto della giornata
+          lascia spazio. Black Mamba invece scende da 35 minuti a mezzogiorno a 20 alle sei, e
+          Chiapas fa il contrario, da 20 a 35.
         </P>
         <P>
           A questo si aggiunge di quanto il numero sbaglia di solito, e questo segue il livello: più
           lunga è la coda, più ampia la dispersione. Per le attrazioni il cui picco di giornata
           arriva a 35 minuti o più, l&apos;API indica quel sabato un errore tipico di 15,4 minuti, e
           di 10,9 per quelle più piatte. Tipico vuol dire che metà delle giornate si scosta di più.
-          Perciò il pianificatore lo scrive come un più-meno sul blocco selezionato e mai come un
-          intervallo che contenga già la risposta giusta.
+          Perciò il pianificatore lo scrive come un più-meno sul blocco selezionato. Come intervallo
+          darebbe l&apos;impressione che l&apos;attesa reale ci cada sicuramente dentro.
         </P>
         <Note>
           Dietro la curva di Taron ci sono 142 giorni misurati, dietro Black Mamba 161. Quanti siano
@@ -87,14 +85,14 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Quel sabato il Phantasialand apre alle 9. Taron, F.L.Y., entrambe le Winja&apos;s e Raik
           partono alle 10, Chiapas alle 10:15. Chi è al tornello alle nove può fare Black Mamba o
-          Maus au Chocolat, e la lista finisce lì. Non è un dettaglio: un piano che riempie la prima
-          ora con le attrazioni di punta sta pianificando un&apos;ora che non esiste.
+          Maus au Chocolat, nient&apos;altro. Quel giorno, quindi, un piano che riempie la prima ora
+          con le attrazioni di punta non regge.
         </P>
         <P>
           Il pianificatore conosce l&apos;orario di apertura di ogni singola attrazione e non lascia
-          scivolare un blocco prima di quello. Per la sera non c&apos;è un corrispettivo: nessun
-          feed segnala in modo affidabile quando un&apos;attrazione chiude, quindi non viene
-          affermato nulla. La linea del tempo si ferma all&apos;orario di chiusura del parco.
+          scivolare un blocco prima di quello. Per la sera non si può fare, perché nessun feed
+          segnala in modo affidabile quando un&apos;attrazione chiude. La linea del tempo si ferma
+          all&apos;orario di chiusura del parco.
         </P>
       </Chapter>
 
@@ -103,25 +101,25 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="04"
         icon={Footprints}
         kicker="La strada in mezzo"
-        title="Fra due attrazioni c'è una strada, e costa tempo"
+        title="Quanto ci metti da un'attrazione all'altra"
       >
         <P>
-          Un feed di tempi di attesa può dire che Taron è a 50 minuti. Quello che non può dire è che
-          da Rookburgh non ci arrivi in tempo. Il trasferimento serve a questo. Parte dalla distanza
-          fra le coordinate delle due attrazioni, più tre minuti per uscire da una stazione e tre
-          per salire e fare il giro dove non è nota alcuna durata.
+          Un feed di tempi di attesa dice che Taron è a 50 minuti. Se da Rookburgh ci arrivi in
+          tempo non lo dice, ed è questo che calcola il trasferimento. Parte dalla distanza fra le
+          coordinate delle due attrazioni, più tre minuti per uscire da una stazione e tre per
+          salire e fare il giro dove non è nota alcuna durata.
         </P>
         <P>
-          Quella distanza è in linea d&apos;aria, e viene chiamata così. È un limite inferiore e mai
-          un tempo di cammino: i vialetti girano intorno all&apos;acqua, alle code e ai sensi unici,
-          e il Phantasialand impila Rookburgh e Klugheim uno sopra l&apos;altro. Il limite superiore
-          si calcola quindi a passo da parco anziché a passo svelto, con due terzi in più sulla
-          linea d&apos;aria per il giro largo.
+          Quella distanza è in linea d&apos;aria, e viene chiamata così. A piedi la strada è più
+          lunga: i vialetti girano intorno all&apos;acqua, alle code e ai sensi unici, e il
+          Phantasialand impila Rookburgh e Klugheim uno sopra l&apos;altro. Il limite superiore si
+          calcola quindi a passo da parco anziché a passo svelto, con due terzi in più sulla linea
+          d&apos;aria per il giro largo.
         </P>
         <Note>
-          «Stretto» non vuol dire corto. Vuol dire che quel trasferimento non regge più se la
-          previsione sbaglia quanto lei stessa dichiara. Dove l&apos;API non fornisce una
-          dispersione, il giudizio si ferma a «buono» e lo dice nel proprio titolo.
+          «Stretto» vuol dire che quel trasferimento non regge più se la previsione sbaglia di
+          quanto lei stessa dichiara. Dove l&apos;API non fornisce una dispersione, il giudizio si
+          ferma a «buono» e lo dice nel proprio titolo.
         </Note>
       </Chapter>
 
@@ -130,52 +128,51 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="05"
         icon={Wand2}
         kicker="Riordino"
-        title="La giornata può mettersi in ordine da sola"
+        title="Far riordinare la giornata"
       >
         <P>
           Ci pensano due pulsanti. «Pianifica tutte le attrazioni principali» aggiunge quelle grandi
           del parco che ancora non sono nella giornata e poi rimette in fila tutto. «Ottimizza la
           giornata» non aggiunge nulla e riordina soltanto quello che è già in programma. Dietro
-          entrambi gira lo stesso calcolo; sono due pulsanti perché sono due domande: riempimi la
-          giornata, e l&apos;ordine si può fare meglio.
+          entrambi gira lo stesso calcolo. Il primo pulsante ti serve quando mancano ancora
+          attrazioni grandi, il secondo quando vuoi solo migliorare l&apos;ordine.
         </P>
         <P>
-          Si ordina secondo quattro cose, e la gerarchia fra loro è la decisione vera. In cima
-          c&apos;è la tua: quello che porti in testa è l&apos;ultimo a saltare. Poi che ci sia
-          ancora tempo prima della chiusura: un piano con un&apos;attrazione in meno che si fa
-          davvero batte un piano con una in più che non si farà. Poi la somma delle attese, che è
-          quello che era stato chiesto. E a parità di costo vince l&apos;ordine che finisce prima.
-          Non c&apos;è nessun cursore che bilanci la coda con il tempo passato ad aspettare: quel
-          numero non lo saprebbe difendere nessuno.
+          Le regole per riordinare sono quattro, in questa gerarchia. Prima viene la tua: quello che
+          porti in testa è l&apos;ultimo a saltare. Poi conta che tutto si faccia prima della
+          chiusura. Il pianificatore preferisce un&apos;attrazione in meno che si fa di sicuro a una
+          in più che poi non ci sta. Poi viene la somma delle attese. E a parità di costo vince
+          l&apos;ordine che finisce prima. Non c&apos;è un cursore per bilanciare la coda con il
+          tempo passato ad aspettare, perché per quel rapporto non esiste un valore che si possa
+          giustificare.
         </P>
         <P>
           Non c&apos;è dentro nessuna regola sul mattino presto. Il pianificatore conosce solo la
           curva oraria di ogni singola attrazione. Se il punto più basso cade subito dopo
           l&apos;apertura, «prima l&apos;attrazione grande» esce dal calcolo da sé; se la curva è
           piatta, esce altro. In una giornata misurata Taron segna ora dopo ora 60, 60, 54, 53 e 59
-          minuti, mentre Chiapas sale di 22. Una regola fissa darebbe a entrambe lo stesso
-          consiglio.
+          minuti, mentre Chiapas sale di 22.
         </P>
         <P>
           A volte la proposta è di aspettare un giro invece di mettersi subito in coda. Succede a
           una sola condizione: la coda deve calare abbastanza perché, pausa compresa, si torni
-          liberi prima che mettendosi in fila adesso. Stare meno in coda da solo non basta, e da
-          questo conto la giornata non si allunga mai. Più di due ore non fa aspettare nessuno. Quel
-          tetto da solo non entra quasi mai in gioco: una pausa conviene solo se è più corta della
-          coda che fa risparmiare, e due ore di pausa richiederebbero quindi una coda di oltre due
-          ore.
+          liberi prima che mettendosi in fila adesso. Stare meno in coda non basta, la giornata non
+          deve finire più tardi a causa della pausa. Una pausa così non dura mai più di due ore.
+          Quel limite però non entra quasi mai in gioco, perché una pausa conviene solo se è più
+          corta della coda che fa risparmiare, e due ore di pausa richiederebbero una coda di oltre
+          due ore.
         </P>
         <P>
-          Una pausa pranzo all&apos;una resta all&apos;una (il pianificatore non tratta con bambini
-          affamati), e un&apos;attrazione spuntata è già stata fatta e non viene ripianificata; il
-          resto si dispone intorno. Dopo c&apos;è scritto che cosa è successo. «18 min di coda in
-          meno» è la differenza fra due conti fatti allo stesso modo, uno prima del clic e uno dopo;
-          se non c&apos;è niente da guadagnare, c&apos;è scritto che l&apos;ordine va già bene e il
-          piano resta com&apos;era. Il pulsante delle attrazioni principali non annuncia un
-          risparmio, perché con le nuove attrazioni la giornata si allunga; conta invece quante
-          attrazioni sono state aggiunte e quante non fanno per il gruppo. Quello che alla fine non
-          entra più nella giornata viene segnalato dopo entrambi i pulsanti. Insieme arriva un
-          «Annulla» che rimette lo stato di prima del clic, finché il pianificatore resta aperto.
+          Una pausa pranzo all&apos;una resta all&apos;una, e un&apos;attrazione spuntata è già
+          stata fatta e non viene ripianificata; il resto si dispone intorno. Dopo c&apos;è scritto
+          che cosa è successo. «18 min di coda in meno» è la differenza fra due conti fatti allo
+          stesso modo, uno prima del clic e uno dopo; se non c&apos;è niente da guadagnare, c&apos;è
+          scritto che l&apos;ordine va già bene e il piano resta com&apos;era. Il pulsante delle
+          attrazioni principali non annuncia un risparmio, perché con le nuove attrazioni la
+          giornata si allunga; conta invece quante attrazioni sono state aggiunte e quante non fanno
+          per il gruppo. Quello che alla fine non entra più nella giornata viene segnalato dopo
+          entrambi i pulsanti. Insieme arriva un «Annulla» che rimette lo stato di prima del clic,
+          finché il pianificatore resta aperto.
         </P>
         <Note>
           Dove non arriva nessun tempo di attesa, i due pulsanti non compaiono nemmeno.
@@ -189,14 +186,14 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="06"
         icon={Theater}
         kicker="Spettacoli"
-        title="Un orario viene dal parco oppure dal nostro calcolo"
+        title="Da dove vengono gli orari degli spettacoli"
       >
         <P>
           Per oggi l&apos;API ha l&apos;orario pubblicato dal parco. Per qualsiasi altra data
           nessuna fonte lo conosce in anticipo, quindi riporta in avanti l&apos;ultimo giorno della
-          settimana uguale e dice da quale data vengono gli orari e su quanti giorni si reggono. I
-          due non devono somigliarsi: un riporto riceve una tilde davanti all&apos;ora e la parola
-          «previsto», un orario del parco nessuna delle due.
+          settimana uguale e dice da quale data vengono gli orari e su quanti giorni si reggono. Per
+          distinguere i due, un riporto riceve una tilde davanti all&apos;ora e la parola
+          «previsto». Un orario del parco non ha né l&apos;una né l&apos;altra.
         </P>
         <P>
           Quel sabato tutti gli orari sono riportati: quelli di Dragon Drago e Kroka&apos;s Lodge
@@ -222,20 +219,18 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
           lasciare un vuoto che si leggerebbe come «resterà asciutto».
         </P>
         <P>
-          E quanto costi davvero un piano lo decide la giornata. Un&apos;attrazione si ferma, uno
-          spettacolo salta, un temporale ribalta il pomeriggio, e un bambino in coda per Taron
-          decide che in fondo preferisce le tazze rotanti. Il piano non è quindi un orario ma un
-          conto sulla domanda se la giornata possa reggere così. Nel parco spunti quello che hai
-          fatto, e il pianificatore annota l&apos;attesa che c&apos;era davvero.
+          Il giorno stesso un&apos;attrazione può fermarsi, uno spettacolo può saltare o un
+          temporale può scombinare il pomeriggio. Il piano calcola soltanto se la giornata può
+          reggere con le attese previste. Nel parco spunti le attrazioni che hai fatto, e il
+          pianificatore annota l&apos;attesa che c&apos;era davvero.
         </P>
         <P>
-          Tutto questo resta nel tuo browser, senza account: il piano è un file nella memoria del
-          tuo dispositivo. Solo quando attivi le notifiche una copia finisce sul server, e il
-          pianificatore lo dice in quel momento. Chi apre il pianificatore senza un piano trova
-          l&apos;assistente con le quattro domande da chiarire prima: quale parco, quale giorno, chi
-          viene e quali grandi attrazioni devono entrare nella giornata. Il giorno giusto si trova
-          meglio nel <A href={`${PARK}/calendario-tempi-attesa`}>calendario dei tempi di attesa</A>{' '}
-          del parco.
+          Il piano resta nel tuo browser e non ti serve un account. Solo quando attivi le notifiche
+          una copia finisce sul server, e il pianificatore lo dice in quel momento. Chi apre il
+          pianificatore senza un piano trova l&apos;assistente con le quattro domande da chiarire
+          prima: quale parco, quale giorno, chi viene e quali grandi attrazioni devono entrare nella
+          giornata. Il giorno giusto si trova meglio nel{' '}
+          <A href={`${PARK}/calendario-tempi-attesa`}>calendario dei tempi di attesa</A> del parco.
         </P>
       </Chapter>
     </>
