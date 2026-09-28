@@ -10,8 +10,8 @@ import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { liveDataHint, newestQueueUpdate } from '@/lib/utils/live-data-freshness';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { cn } from '@/lib/utils';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { ParkWithAttractions } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 interface LiveDataFreshnessProps {
   /** The park as `TabsWithHash` has it. Only read before the first poll answers. */
@@ -77,9 +77,9 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
 
   // The date joins the time once the value is from another day in the park: the seed of a page
   // cached overnight, or a park shut for the season whose queues last moved in April.
-  const today = now === null ? todayIso : (parkDayOf(now, park.timezone) ?? todayIso);
+  const today = now === null ? todayIso : (parkDayOrNull(now, park.timezone) ?? todayIso);
   const format =
-    asOf !== null && parkDayOf(asOf, park.timezone) !== today ? DAY_AND_TIME : TIME_ONLY;
+    asOf !== null && parkDayOrNull(asOf, park.timezone) !== today ? DAY_AND_TIME : TIME_ONLY;
 
   return (
     <div
@@ -124,10 +124,10 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   );
 });
 
-/** `YYYY-MM-DD` of an instant in the park's timezone, or `null` for an unusable timezone. */
-function parkDayOf(ms: number, timeZone: string): string | null {
+/** {@link parkDayOf}, or `null` for an unusable timezone. */
+function parkDayOrNull(ms: number, timeZone: string): string | null {
   try {
-    return getDateTimeFormat('en-CA', { timeZone }).format(ms);
+    return parkDayOf(ms, timeZone);
   } catch {
     return null;
   }

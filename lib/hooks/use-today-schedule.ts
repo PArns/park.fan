@@ -13,6 +13,7 @@ import type {
   InfluencingHoliday,
   ParkWithAttractions,
 } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 export interface UseTodayScheduleParams {
   timezone: string;
@@ -105,12 +106,9 @@ export function useTodaySchedule({
   const hasOperatingSchedule =
     (hasParams ? livePark?.hasOperatingSchedule : undefined) ?? hasOperatingScheduleProp;
 
-  // The park-local calendar day of an instant, as `YYYY-MM-DD`. One cached formatter: this hook
-  // runs on every minute tick and every live poll in two consumers, and the
-  // `toLocaleDateString('en-CA', { timeZone })` it replaces built a new one per call, up to five
-  // per render.
-  const parkDay = (at: Date) => getDateTimeFormat('en-CA', { timeZone: timezone }).format(at);
-  const todayInParkTz = currentTime ? parkDay(currentTime) : null;
+  // `parkDayOf` is one cached formatter: this hook runs on every minute tick and every live poll,
+  // and the `toLocaleDateString('en-CA', { timeZone })` it replaces built one per call.
+  const todayInParkTz = currentTime ? parkDayOf(currentTime, timezone) : null;
 
   // Pick today's entry CLIENT-side (browser clock in the park tz) so the static shell never reads
   // the server clock. Before mount we seed with the first entry; real "today" fills in after mount.
@@ -142,7 +140,7 @@ export function useTodaySchedule({
     const opening = new Date(openingTime);
     const closing = new Date(closingTime);
     // Guard: opening must be today in the park tz (not tomorrow's entry).
-    if (parkDay(opening) !== todayInParkTz) return null;
+    if (parkDayOf(opening, timezone) !== todayInParkTz) return null;
     if (now < opening) {
       return {
         message: `${t('opensIn')} ${formatDurationShort(opening.getTime() - now.getTime(), tCommon)}`,
@@ -171,7 +169,7 @@ export function useTodaySchedule({
     if (!openingTime || !closingTime) return null;
     const opening = new Date(openingTime);
     const closing = new Date(closingTime);
-    if (parkDay(opening) !== todayInParkTz) return null;
+    if (parkDayOf(opening, timezone) !== todayInParkTz) return null;
     return currentTime >= opening && currentTime < closing ? 'OPERATING' : 'CLOSED';
   })();
   const badgeStatus = liveStatus ?? scheduledStatus ?? status;

@@ -2,6 +2,7 @@ import { formatDurationShort } from '@/lib/i18n/time';
 import type { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 export type { ScheduleSummary };
 
@@ -39,7 +40,7 @@ export function getScheduleMessage(
   // Cached formatters (`lib/utils/intl-format.ts`). This runs twice per ParkCard (the phone row and
   // the card) and hub pages re-render 40–70 cards on every live refresh; `toLocale*String` with
   // options built a new formatter on each call, up to three per call here.
-  const parkDay = (at: Date) => getDateTimeFormat('en-CA', tzOptions).format(at);
+  const parkDay = (at: Date) => parkDayOf(at, timezone);
   const clockTime = (at: Date) =>
     formatTime(at, locale, { hour: '2-digit', minute: '2-digit', ...tzOptions });
 
