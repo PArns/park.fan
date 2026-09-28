@@ -15,8 +15,9 @@ export type StoredPermission = PermissionState | null;
  * WebKit (Safari, and every browser on iOS) keeps the Permissions API at `prompt` while a grant
  * is live. With Safari's default "Ask" setting, allowing without "Remember for one day" leaves it
  * at `prompt`, and so does "Deny"; only the per-site "Allow" setting reads `granted`. There,
- * `prompt` says nothing about whether the browser would actually ask. Chromium and Firefox report
- * it faithfully: `prompt` after a grant means the grant is gone ("Allow this time" ran out).
+ * `prompt` says nothing about whether the browser would ask again right now. Chromium and Firefox
+ * report a change away from `granted` faithfully: `prompt` after a grant means the grant is gone
+ * ("Allow this time" ran out).
  *
  * Detected by `navigator.vendor`, which is "Apple Computer, Inc." exactly on WebKit (Safari and
  * every iOS browser), "Google Inc." on Chromium and empty on Firefox.
@@ -26,30 +27,26 @@ export function promptStateIsReliable(vendor: string | undefined): boolean {
 }
 
 export type InitialLocationAction =
-  /** Read a position now. The browser will not ask, or the visitor already said yes here. */
+  /** Read a position now. The browser has said it will not ask. */
   | 'request'
   /** The browser has refused; asking again would do nothing. */
   | 'denied'
-  /** Nothing to go on. Read nothing until the visitor taps a button that asks. */
+  /** Read nothing until the visitor taps a button that asks. */
   | 'wait';
 
 /**
- * What the provider does on load.
+ * What the provider does on load, on every page (it lives in the locale layout, so blog and news
+ * entry pages included): read only on `granted`, the one answer that promises no prompt.
  *
- * `optedIn` is the site's own record that this browser once handed over a position. It matters
- * only where the browser cannot say whether it still holds the grant: no Permissions API, or a
- * `prompt` from WebKit. There a silent read is a no-op when the grant is still there and one native
- * prompt when the browser has reset it — the visitor answered yes to exactly this before. Where
- * `prompt` is reliable, reading would open a prompt nobody tapped for, so the site waits.
+ * Everything else waits for a tap, including an earlier yes the browser no longer reports. Safari
+ * on iOS with its default "Ask" setting prompts again on every page load
+ * (https://developer.apple.com/forums/thread/740270), so a read "reusing" that yes was a native
+ * prompt on every page a reader landed on. `null` (no Permissions API, or it threw) is the same:
+ * nothing says the read would be silent.
  */
-export function initialLocationAction(
-  state: StoredPermission,
-  optedIn: boolean,
-  promptReliable: boolean
-): InitialLocationAction {
+export function initialLocationAction(state: StoredPermission): InitialLocationAction {
   if (state === 'granted') return 'request';
   if (state === 'denied') return 'denied';
-  if (optedIn && (state === null || !promptReliable)) return 'request';
   return 'wait';
 }
 

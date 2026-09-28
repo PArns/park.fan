@@ -1,10 +1,9 @@
 // Tests for when the site may read a position without a tap (`lib/utils/geolocation-permission.ts`).
 //
-// What must hold: a stored grant is used, a stored denial is remembered, a `prompt` opens no native
-// prompt on load (except on WebKit, where `prompt` is what the Permissions API says while a grant is
-// live, and the site's own opt-in record decides instead), and a background refresh stops when a
-// grant this page saw has run out.
-// A closed banner stays closed for 30 days, not one browser session.
+// What must hold: on load only `granted` is read, on every page and in every browser, because it is
+// the one answer that promises no prompt. A stored denial is remembered. An earlier yes the browser
+// no longer reports is not reused: Safari on iOS prompts again on every page load. A background
+// refresh stops when a grant this page saw has run out, and a closed banner stays closed for 30 days.
 import assert from 'node:assert/strict';
 import {
   LOCATION_BANNER_QUIET_MS,
@@ -32,38 +31,23 @@ test('WebKit is the engine whose `prompt` cannot be trusted', () => {
   assert.equal(promptStateIsReliable(undefined), true);
 });
 
-test('granted: read on load, whatever the engine and the opt-in record', () => {
-  for (const optedIn of [true, false]) {
-    for (const reliable of [true, false]) {
-      assert.equal(initialLocationAction('granted', optedIn, reliable), 'request');
-    }
-  }
+test('granted: read on load, the one answer that promises no prompt', () => {
+  assert.equal(initialLocationAction('granted'), 'request');
 });
 
-test('denied: remembered, never read, even with an old opt-in', () => {
-  assert.equal(initialLocationAction('denied', true, true), 'denied');
-  assert.equal(initialLocationAction('denied', false, false), 'denied');
+test('denied: remembered, never read', () => {
+  assert.equal(initialLocationAction('denied'), 'denied');
 });
 
-test('Safari after a yes on an earlier visit: read on load instead of showing the banner again', () => {
-  // The case this module exists for. Safari reads `prompt` here while the grant is still live, and
-  // the old check only reused the opt-in for `null`, so every Safari visit showed the banner.
-  assert.equal(initialLocationAction('prompt', true, promptStateIsReliable(SAFARI)), 'request');
+test('prompt: wait for a tap, in every browser', () => {
+  // Safari included. It reads `prompt` even while an earlier yes still holds, but on iOS with the
+  // default "Ask" setting a read on load is a native prompt on every page load, blog and news entry
+  // pages included. Reusing that yes was tried and taken out again.
+  assert.equal(initialLocationAction('prompt'), 'wait');
 });
 
-test('Safari without an earlier yes: wait for the tap', () => {
-  assert.equal(initialLocationAction('prompt', false, promptStateIsReliable(SAFARI)), 'wait');
-});
-
-test('Chrome/Firefox `prompt`: wait, even after an earlier yes (a one-time grant ran out)', () => {
-  assert.equal(initialLocationAction('prompt', true, promptStateIsReliable(CHROME)), 'wait');
-  assert.equal(initialLocationAction('prompt', true, promptStateIsReliable(FIREFOX)), 'wait');
-  assert.equal(initialLocationAction('prompt', false, promptStateIsReliable(CHROME)), 'wait');
-});
-
-test('no Permissions API: the opt-in record decides', () => {
-  assert.equal(initialLocationAction(null, true, true), 'request');
-  assert.equal(initialLocationAction(null, false, true), 'wait');
+test('no Permissions API, or it threw: wait for a tap', () => {
+  assert.equal(initialLocationAction(null), 'wait');
 });
 
 test('background refresh: a grant that ran out stops it (Chrome "Allow this time")', () => {

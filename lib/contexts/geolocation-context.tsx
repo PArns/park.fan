@@ -48,41 +48,18 @@ export interface GeolocationContextValue {
 
 const GeolocationContext = createContext<GeolocationContextValue | null>(null);
 
-/**
- * Persists that the user has previously granted location. Lets us silently reuse a
- * persisted grant on browsers whose Permissions API can't report geolocation state
- * (no API, or WebKit's standing `prompt`), instead of re-prompting via the banner every session.
- */
-const GEO_OPT_IN_KEY = 'pf_geo_optin';
-
-function setGeoOptIn(value: boolean): void {
-  try {
-    if (value) localStorage.setItem(GEO_OPT_IN_KEY, '1');
-    else localStorage.removeItem(GEO_OPT_IN_KEY);
-  } catch {
-    // localStorage unavailable (private mode / blocked) — ignore.
-  }
-}
-
-function hasGeoOptIn(): boolean {
-  try {
-    return localStorage.getItem(GEO_OPT_IN_KEY) === '1';
-  } catch {
-    return false;
-  }
-}
-
 interface GeolocationProviderProps {
   children: ReactNode;
 }
 
 /**
  * Centralized geolocation provider. The only place on a public page that reads a position without
- * a tap, and it does so only where the browser will not ask
+ * a tap, and it does so only where the browser has said it will not ask
  * (docs/rules/location-is-asked-for-by-a-tap.md).
- * - Granted (Permissions API), or opted in where the browser cannot tell: request on mount, no banner.
+ * - Granted (Permissions API): request on mount, no banner.
  * - Denied: remembered as denied, so no control offers a button that cannot work.
- * - Prompt: don't request on mount; user can enable via banner.
+ * - Prompt, or no answer: don't request on mount; user can enable via a button. This holds on
+ *   every page, blog and news entry pages included, whatever the visitor answered last time.
  * - Follows permission changes (a grant in another tab or in the site settings, an expired one).
  * - Auto-refreshes when position is set (5 min / 1 min in park), never into a prompt.
  */
@@ -134,24 +111,21 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
         setError(false);
         setPermissionDenied(false);
         setPermissionGranted(true);
-        setGeoOptIn(true);
         if (permissionStatusRef.current?.state === 'granted') grantSeenRef.current = true;
       },
       (err) => {
         setLoading(false);
 
         if (err.code === 1) {
-          // User explicitly denied → clear granted flag and the persisted opt-in
+          // User explicitly denied → clear granted flag
           setPermissionDenied(true);
           setPermissionGranted(false);
           setError(true);
-          setGeoOptIn(false);
           console.warn('[Geolocation] Permission denied by user');
         } else {
           // code=2 (unavailable) or code=3 (timeout): the browser had permission but
           // couldn't get a fix. Mark as granted so banners don't reappear.
           setPermissionGranted(true);
-          setGeoOptIn(true);
           console.warn(
             '[Geolocation]',
             err.code === 3 ? 'Timeout' : 'Position unavailable',
@@ -190,7 +164,6 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
       } else if (status.state === 'denied') {
         setPermissionDenied(true);
         setPermissionGranted(false);
-        setGeoOptIn(false);
       } else if (promptReliableRef.current) {
         // A one-time grant ran out, or a grant or block was reset in the site settings. The last
         // fix stays; the next read needs a tap.
@@ -209,17 +182,12 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
       );
       setInitialCheckDone(true);
 
-      const action = initialLocationAction(
-        result?.state ?? null,
-        hasGeoOptIn(),
-        promptReliableRef.current
-      );
+      const action = initialLocationAction(result?.state ?? null);
       if (action === 'request') {
         setPermissionGranted(true);
         requestLocation();
       } else if (action === 'denied') {
         setPermissionDenied(true);
-        setGeoOptIn(false);
       }
       // 'wait': stay not-granted (banner shows).
 
@@ -293,8 +261,6 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
 /**
  * Returns the live geolocation `PermissionStatus`, or `null` when the Permissions API can't
  * report it (unsupported / throws). Its `state` follows the browser and it fires `change`.
- * Callers use `null`, like WebKit's `prompt`, together with the opt-in flag to decide whether to
- * attempt a silent reuse.
  */
 async function queryGeolocationPermission(): Promise<PermissionStatus | null> {
   if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
