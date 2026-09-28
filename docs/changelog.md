@@ -4,6 +4,52 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Kompass nach Design-, Architektur- und Usability-Review
+
+Drei Prüfer haben den Kompass unter dem Hero durchgesehen, das hier ist umgesetzt:
+
+- **Blickrichtung:** Die Leiste nennt nur noch eine Bahn im Blickkegel (±30°), sonst die nächste.
+  Sie wechselt erst, wenn die neue Bahn 0,3 s vorn bleibt. Vorher stand dort „Vor dir" für eine
+  Bahn 116° daneben, und bei vier Bahnen innerhalb von 10° sprang die Leiste zehnmal in fünf
+  Sekunden. Der Kompass rechnet jetzt nach geografisch Nord (Missweisung aus dem
+  Weltmagnetfeldmodell, 2,2° in Paris, rund 11° in Anaheim). Ein hochkant gehaltenes Handy nimmt
+  die Richtung seiner Rückseite.
+- **Ohne Kompass** gibt es keine Pfeile mehr, die wie „hier lang" aussehen: Chips und Zeilen
+  nennen die Himmelsrichtung („Richtung Südwesten"). Ein abgerissener Sensor fällt auf „Norden ist
+  oben" zurück, statt einen eingefrorenen Pfeil zu zeigen. Auf dem iPhone steht dabei, was Safari
+  fragen wird, und nach einer Ablehnung gibt es „Nochmal fragen".
+- **Zifferblatt:** Die Gradzahlen und die Gradanzeige sind weg, das Zifferblatt ist größer. Die
+  Punkte zeigen, was die Bahn macht: Wartezeit auf deckender Farbe (im hellen Theme vorher 2,1 bis
+  3,2 : 1 Kontrast, jetzt 5,4 bis 7,9 : 1), Störung als oranger Ring mit Warnzeichen, geschlossen
+  als kleiner leerer Ring. Jeder Punkt hat 44 px Tippfläche. Blau steht nur noch für dich und
+  deinen Weg, Norden ist nicht mehr blau.
+- **Leiste und Liste:** Die Leiste ist ein Link zur Bahn, eine Fixierung lässt sich mit ✕ lösen.
+  In der Liste steht der Status als Text in der zweiten Zeile, die Namen werden nicht mehr auf
+  70 px gekürzt. Beim Gehen sortiert sich die Liste erst um, wenn eine Bahn mindestens 15 m näher
+  ist, und der Entfernungsring springt nicht mehr hin und her.
+- **Kein Sprung beim Laden:** Der Kompass wird nur eingefügt, wenn seine Stelle unterhalb des
+  Bildschirms liegt. Wer schon weitergescrollt hatte, bekam vorher eine Layout-Verschiebung von
+  1,0, jetzt 0. Beim Drehen wird nur noch das neu gezeichnet, was sich dreht: 60 statt 45 Bilder
+  pro Sekunde, ein Achtel der Style-Arbeit.
+
+Die Demo kennt zwei amerikanische Parks (`?sim=compass:disneylandanaheim`,
+`?sim=compass:magickingdom`). Die haben offen, wenn in Europa Nacht ist und jeder Punkt ein leerer
+Ring wäre.
+
+Bewusst nicht übernommen: die Lünette ganz zu entfernen und „Fixiert" in „Dein Ziel" umzubenennen.
+Details: [park-compass.md](features/park-compass.md).
+
+## Unreleased – Kompass: folgt dem Blick, Tippen fixiert, Pille im Hero
+
+Die Leiste unter dem Kompass nennt jetzt immer die Bahn, in deren Richtung das Handy zeigt, und
+wechselt sofort beim Drehen. Vorher wurde sie erst nach 8° Drehung neu bestimmt, und ein einziger
+Tipp auf einen Punkt hielt sie für immer fest. Ein Tipp fixiert jetzt eine Bahn (Pinnadel am Punkt,
+„Fixiert" in der Leiste), ein zweiter Tipp löst sie wieder. Im Hero steht, solange der Kompass auf
+der Seite ist, die Pille „Zum Kompass" an der Stelle des News-Chips und scrollt hin. In der Demo
+(`?sim=compass`) wird der Park erst dann fest abgelegt, wenn der Standort auf 25 m genau ist. Die
+erste, grobe Ortung per WLAN hatte sonst alle Entfernungen um den Sprung zum GPS-Fix verschoben.
+Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
+
 ## Unreleased – improvement: die Startseite auf dem Handy (PAR-435)
 
 Unter 768 px Seitenbreite stehen die Park-Listen vor den erklärenden Kapiteln: Parks in der Nähe,

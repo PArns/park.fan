@@ -1,3 +1,4 @@
+import geomagnetism from 'geomagnetism';
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
 import {
@@ -296,10 +297,31 @@ export async function GET(
             Number.isFinite(a.latitude) &&
             Number.isFinite(a.longitude)
         )
-        .map((a) => ({ slug: a.slug, latitude: a.latitude, longitude: a.longitude }));
+        // The filter above has checked both; TypeScript does not carry that through it.
+        .map((a) => ({
+          slug: a.slug,
+          latitude: a.latitude as number,
+          longitude: a.longitude as number,
+        }));
+
+      // A phone's compass points at MAGNETIC north (Safari's `webkitCompassHeading`, Android's
+      // rotation vector behind Chrome's absolute `alpha`), the bearings to the rides are TRUE
+      // north. The gap is 1–3° in western Europe and 11° at Disneyland Anaheim, where every arrow
+      // was off by that much. So the park's declination rides along, from the World Magnetic
+      // Model (WMM2025, bundled with `geomagnetism`) at the middle of its rides; it drifts a
+      // tenth of a degree a year, which the day's cache does not notice.
+      const middle = positions.length
+        ? {
+            lat: positions.reduce((sum, p) => sum + p.latitude, 0) / positions.length,
+            lng: positions.reduce((sum, p) => sum + p.longitude, 0) / positions.length,
+          }
+        : null;
+      const declination = middle
+        ? Math.round(geomagnetism.model().point([middle.lat, middle.lng]).decl * 10) / 10
+        : 0;
 
       return NextResponse.json(
-        { positions },
+        { positions, declination },
         {
           headers: cdnCacheHeaders(
             'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
