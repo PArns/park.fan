@@ -443,18 +443,35 @@ export function PlannerDayGrid({
    * position, which is a second, contradicting answer to the question the ghost
    * exists to answer.
    *
-   * Through a ref so the effect depends on `dragMoved` alone: the column hands
-   * its callback down fresh on every render of its own, and an effect that
-   * depended on the identity would fire on renders where nothing about the drag
-   * had changed.
+   * Reported by the gesture itself — the frame that moves the ghost and the
+   * drag's end — and not by an effect on `dragMoved`. The column hands down its
+   * own `setDragging`, so an effect cost a commit of the grid, then the effect,
+   * then a second render of the whole column at every drag start and every
+   * drop. Called beside the grid's own update, React renders both in one pass.
+   *
+   * The frame compares the ghost against where the dragged block stands NOW,
+   * as `dragMoved` does. The loop is per gesture, so that start comes through a
+   * ref rather than from the closure the loop was created in, and a start that
+   * changes under a held pointer reaches the column on the next frame. The
+   * callback goes through a ref too, since the column hands it down fresh on
+   * every render.
    */
+  const draggedStart = ghostRow?.entry.startMinute ?? null;
+  const draggedStartRef = useRef(draggedStart);
+  useEffect(() => {
+    draggedStartRef.current = draggedStart;
+  }, [draggedStart]);
   const onDragChangeRef = useRef(onDragChange);
   useEffect(() => {
     onDragChangeRef.current = onDragChange;
   });
-  useEffect(() => {
-    onDragChangeRef.current?.(dragMoved);
-  }, [dragMoved]);
+  /** The last value the column was told, so it hears each change once. */
+  const reportedMoved = useRef(false);
+  const reportDragMoved = useCallback((moved: boolean) => {
+    if (reportedMoved.current === moved) return;
+    reportedMoved.current = moved;
+    onDragChangeRef.current?.(moved);
+  }, []);
 
   const weatherSegments = useMemo(
     () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),
@@ -604,13 +621,14 @@ export function PlannerDayGrid({
       dragState.current = null;
       setDraggingId(null);
       setGhostMinute(null);
+      reportDragMoved(false);
 
       // A gesture the browser steals must not write. The old list bound its end
       // handler to `pointerup` AND `pointercancel` and committed unconditionally,
       // so a scroll that took the pointer over silently wrote a move nobody made.
       if (commit && minute !== state.startMinute) onMove(state.entryId, minute);
     },
-    [onMove, targetMinute]
+    [onMove, reportDragMoved, targetMinute]
   );
 
   /**
@@ -840,13 +858,17 @@ export function PlannerDayGrid({
         // bails out on an identical value only after re-entering the reducer,
         // and the point here is to not call it at all.
         setGhostMinute((current) => (current === minute ? current : minute));
+        // In the same frame, so the column's update joins this one — and on
+        // every frame rather than on a new minute alone, see `draggedStart`.
+        const start = draggedStartRef.current;
+        reportDragMoved(start !== null && minute !== start);
 
         state.frame = requestAnimationFrame(frame);
       };
 
       dragState.current.frame = requestAnimationFrame(frame);
     },
-    [endDrag, grid, minuteUnderPointer, onSelect, scrollerRef, targetMinute]
+    [endDrag, grid, minuteUnderPointer, onSelect, reportDragMoved, scrollerRef, targetMinute]
   );
 
   /**
