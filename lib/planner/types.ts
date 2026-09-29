@@ -106,6 +106,19 @@ export interface PlannerDay {
   entries: PlannerEntry[];
   /** Absent until the visitor has been asked. Never inferred. */
   prefs?: PlannerDayPrefs;
+  /**
+   * Set where the visitor accepted a day from the trip assistant and has planned
+   * nothing in it yet. Optional, so a plan written before it existed reads as it
+   * always did. `openDay` files an empty day too, and that one stays invisible on
+   * purpose; this flag is what tells "the visitor said yes to this day" from
+   * "the visitor once opened this date".
+   */
+  reserved?: boolean;
+}
+
+/** A day the lists, the countdown, the share link and the sync show: it holds entries or was reserved. */
+export function isPlannedDay(day: PlannerDay): boolean {
+  return day.entries.length > 0 || day.reserved === true;
 }
 
 export interface PlannerPark {
@@ -141,9 +154,7 @@ export const EMPTY_PLANNER_STATE: PlannerState = {
 
 /** True when there is anything at all worth opening the flyout for. */
 export function hasAnyPlan(state: PlannerState): boolean {
-  return Object.values(state.parks).some((park) =>
-    Object.values(park.days).some((day) => day.entries.length > 0)
-  );
+  return Object.values(state.parks).some((park) => Object.values(park.days).some(isPlannedDay));
 }
 
 /** Entries for one park and date, in plan order. Never `undefined`. */

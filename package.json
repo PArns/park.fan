@@ -59,6 +59,7 @@
     "test:planner-shows": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-shows.mjs",
     "test:planner-push-topics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-push-topics.mjs",
     "test:planner-month-grid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-month-grid.mjs",
+    "test:planner-assignment": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-assign.mjs",
     "test:planner-optimize": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-optimize.mjs",
     "test:planner-fit": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-fit.mjs",
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",

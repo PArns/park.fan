@@ -40,6 +40,7 @@ import {
   pastActiveDay,
   resolveTimeZone,
 } from '@/lib/planner/park-time';
+import { isPlannedDay } from '@/lib/planner/types';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
@@ -820,7 +821,7 @@ export function PlannerFlyout({
     () =>
       park
         ? Object.values(park.days)
-            .filter((entry) => entry.entries.length > 0)
+            .filter(isPlannedDay)
             .map((entry) => entry.date)
         : [],
     [park]

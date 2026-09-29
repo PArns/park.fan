@@ -12,6 +12,7 @@ import {
   moveEntry,
   openDay as openDayAction,
   removeEntry,
+  reserveDays as reserveDaysAction,
   restoreDay as restoreDayAction,
   setActive as setActiveAction,
   setCustomBlock,
@@ -156,6 +157,19 @@ export function usePlanner() {
     []
   );
 
+  /** The days accepted from the trip assistant, in one write. See `reserveDays`. */
+  const reserveDays = useCallback(
+    (
+      days: readonly {
+        park: { slug: string; name: string; geo: PlannerGeo; timezone?: string };
+        date: string;
+      }[]
+    ) => {
+      plannerStore.update((s) => reserveDaysAction(s, days));
+    },
+    []
+  );
+
   /**
    * Teach the plan a park's zone once the day payload names it — see
    * `learnTimezone`. A no-op when the plan already has it.
@@ -224,6 +238,7 @@ export function usePlanner() {
     setDone,
     setActive,
     openDay,
+    reserveDays,
     learnTimezone,
     addCustom,
     editCustom,

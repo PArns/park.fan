@@ -3,15 +3,26 @@
 import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { CalendarDays, CalendarPlus, Check, Compass, MapPin, Plus, Trash2 } from 'lucide-react';
+import {
+  CalendarDays,
+  CalendarPlus,
+  Check,
+  Compass,
+  MapPin,
+  Plus,
+  Route,
+  Trash2,
+} from 'lucide-react';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
+import { isPlannedDay } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerHelpSteps } from './planner-help';
 import { PlannerPolaroids, type PolaroidPhoto } from './planner-polaroids';
+import { PlannerTripAssistant } from './planner-trip-assistant';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
 
 /**
@@ -43,6 +54,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
    * panel's overview: one dialog under the whole list rather than one per row.
    */
   const [pendingClear, setPendingClear] = useState<{ parkSlug: string; date: string } | null>(null);
+  // Mounted only while open, so every opening starts from its defaults.
+  const [assistantOpen, setAssistantOpen] = useState(false);
 
   const parks = useMemo(() => {
     return Object.values(state.parks)
@@ -51,7 +64,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
         today: todayInZone(park.timezone),
         tomorrow: addDays(todayInZone(park.timezone), 1),
         days: Object.values(park.days)
-          .filter((day) => day.entries.length > 0)
+          .filter(isPlannedDay)
           .sort((a, b) => a.date.localeCompare(b.date)),
       }))
       .filter((park) => park.days.length > 0)
@@ -80,7 +93,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
           whether a day works — which day, and who is coming — were left to be
           discovered in the panel afterwards. */}
       {parks.length > 0 && (
-        <div>
+        <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setWizardFor({ park: null })}
@@ -89,6 +102,18 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
           >
             <CalendarPlus className="size-4" aria-hidden="true" />
             {t('wizard.open')}
+          </button>
+          {/* The other question: not which rides on a day, but which park on which
+              day. A button beside the wizard rather than a banner over the list,
+              because a proposal is something asked for. */}
+          <button
+            type="button"
+            onClick={() => setAssistantOpen(true)}
+            data-planner-trip-open=""
+            className="hover:bg-accent inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors"
+          >
+            <Route className="size-4" aria-hidden="true" />
+            {t('trip.open')}
           </button>
         </div>
       )}
@@ -220,6 +245,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
           if (pendingClear) clearDay(pendingClear.parkSlug, pendingClear.date);
         }}
       />
+
+      {assistantOpen && <PlannerTripAssistant onOpenChange={setAssistantOpen} />}
 
       {/* Mounted only while open — that is what resets its answers, see the note
           on `PlannerWizard`'s `open` prop. */}

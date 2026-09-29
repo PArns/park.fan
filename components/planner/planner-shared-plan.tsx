@@ -6,7 +6,7 @@ import { CalendarCheck, Loader2, MapPin, RotateCw, TriangleAlert } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
 import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
-import { hasAnyPlan, type PlannerState } from '@/lib/planner/types';
+import { hasAnyPlan, isPlannedDay, type PlannerState } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 
 /**
@@ -111,7 +111,7 @@ export function PlannerSharedPlan() {
             slug: park.slug,
             name: park.name,
             days: Object.values(park.days)
-              .filter((day) => day.entries.length > 0)
+              .filter(isPlannedDay)
               .sort((a, b) => a.date.localeCompare(b.date)),
           }))
           .filter((park) => park.days.length > 0)

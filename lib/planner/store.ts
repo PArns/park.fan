@@ -202,6 +202,7 @@ function toPlannerState(parsed: unknown): PlannerState {
             date,
             entries: entries.map(toEntry).filter((entry): entry is PlannerEntry => entry !== null),
             ...(prefs ? { prefs } : {}),
+            ...((dayValue as Record<string, unknown>).reserved === true ? { reserved: true } : {}),
           };
         }
       }

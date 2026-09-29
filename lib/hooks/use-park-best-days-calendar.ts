@@ -17,6 +17,38 @@ interface UseParkBestDaysCalendarParams {
 }
 
 /**
+ * The query itself, without the gates. The trip assistant asks for several parks at once with
+ * `useQueries` and has to hit the same cache entry the park page does, so the key and the
+ * fetcher live here and nowhere else.
+ */
+export function parkBestDaysQueryOptions({
+  continent,
+  country,
+  city,
+  parkSlug,
+}: Omit<UseParkBestDaysCalendarParams, 'enabled'>) {
+  return {
+    queryKey: ['park-best-days-calendar', continent, country, city, parkSlug] as const,
+    queryFn: async (): Promise<BestDaysSnapshot> => {
+      const response = await fetch(
+        `/api/parks/${continent}/${country}/${city}/${parkSlug}/best-days`,
+        { cache: 'no-store' }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch best-days data: ${response.statusText}`);
+      }
+
+      return (await response.json()) as BestDaysSnapshot;
+    },
+    staleTime: 30 * 60_000,
+    gcTime: 60 * 60_000,
+    refetchOnWindowFocus: false,
+    retry: 2,
+  };
+}
+
+/**
  * Client-side fetch of the precomputed best-days snapshot that feeds the "best days" widget,
  * the crowd-derived FAQ entry and the header "Prognose heute" forecast.
  *
@@ -43,25 +75,9 @@ export function useParkBestDaysCalendar({
   const releasedLast = useLoadLast();
 
   return useQuery<BestDaysSnapshot>({
-    queryKey: ['park-best-days-calendar', continent, country, city, parkSlug],
-    queryFn: async () => {
-      const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/best-days`,
-        { cache: 'no-store' }
-      );
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch best-days data: ${response.statusText}`);
-      }
-
-      return (await response.json()) as BestDaysSnapshot;
-    },
+    ...parkBestDaysQueryOptions({ continent, country, city, parkSlug }),
     // Browser-only, and held back by `releasedLast` until every other query on the page has
     // settled (loads-last rule).
     enabled: enabled && Boolean(parkSlug) && typeof window !== 'undefined' && releasedLast,
-    staleTime: 30 * 60_000,
-    gcTime: 60 * 60_000,
-    refetchOnWindowFocus: false,
-    retry: 2,
   });
 }

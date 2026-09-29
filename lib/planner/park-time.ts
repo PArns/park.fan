@@ -1,5 +1,5 @@
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import type { PlannerState } from './types';
+import { isPlannedDay, type PlannerState } from './types';
 
 /**
  * The planner's clock, which is the PARK's clock.
@@ -222,7 +222,7 @@ export function nextPlannedDay(
     const today = todayInZone(park.timezone, now);
 
     for (const day of Object.values(park.days)) {
-      if (day.entries.length === 0) continue;
+      if (!isPlannedDay(day)) continue;
       const inDays = daysBetween(today, day.date);
       if (inDays < 1) continue;
 

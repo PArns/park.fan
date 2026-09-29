@@ -7,7 +7,7 @@ import type {
   PlannerPark,
   PlannerState,
 } from './types';
-import { MAX_PLANNED_MINUTE } from './types';
+import { isPlannedDay, MAX_PLANNED_MINUTE } from './types';
 import { clampRiderHeight } from './party';
 import { SNAP_MIN_FINE } from './day-grid';
 import { dayClock, resolveTimeZone } from './park-time';
@@ -560,6 +560,45 @@ export function openDay(
     timezone: park.timezone,
   });
   return { ...next, activeParkSlug: park.slug, activeDate: date };
+}
+
+/**
+ * File the days the visitor accepted from the trip assistant.
+ *
+ * A day with nothing in it and `reserved` set: the lists, the countdown, the share link and the
+ * sync count it, which an empty day from `openDay` is not. A date that already holds a plan is
+ * left exactly as it is, so accepting a proposal can never overwrite a day, and nothing here
+ * moves the active park or date.
+ */
+export function reserveDays(
+  state: PlannerState,
+  days: readonly {
+    park: { slug: string; name: string; geo: PlannerGeo; timezone?: string };
+    date: string;
+  }[]
+): PlannerState {
+  let next = state;
+  for (const { park, date } of days) {
+    const existing = next.parks[park.slug]?.days[date];
+    if (existing && isPlannedDay(existing)) continue;
+    next = withDay(next, park.slug, date, [], {
+      parkName: park.name,
+      geo: park.geo,
+      timezone: park.timezone,
+    });
+    const filed = next.parks[park.slug];
+    next = {
+      ...next,
+      parks: {
+        ...next.parks,
+        [park.slug]: {
+          ...filed,
+          days: { ...filed.days, [date]: { ...filed.days[date], reserved: true } },
+        },
+      },
+    };
+  }
+  return next;
 }
 
 /**

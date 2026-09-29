@@ -4,6 +4,12 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Trip planner: which park on which day
+
+An assistant on the planner page proposes a park per day from the crowd forecast (country blocks,
+free travel day, second day for busy days, `unknown` ranked last). Accepting files days with
+`PlannerDay.reserved`. See [trip planner](features/trip-planner.md#which-park-on-which-day).
+
 ## Unreleased – Homepage and trip planner: copy without the quips
 
 The homepage bands and the trip-planner page read as generated, and not because of single words:
