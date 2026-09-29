@@ -1833,6 +1833,8 @@
       "nextShowtime": "Prochaine représentation",
       "chosenShowtime": "Séance choisie",
       "replacesShowtime": "Remplace votre rappel de",
+      "expiredShowtime": "Rappel expiré pour",
+      "narrow": "Me rappeler seulement pour cette séance",
       "viewAll": "Mes alertes"
     },
     "rideBell": {

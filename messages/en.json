@@ -1833,6 +1833,8 @@
       "nextShowtime": "Next performance",
       "chosenShowtime": "Chosen performance",
       "replacesShowtime": "Replaces your reminder for",
+      "expiredShowtime": "Expired reminder for",
+      "narrow": "Only remind me for this performance",
       "viewAll": "My alerts"
     },
     "rideBell": {

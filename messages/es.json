@@ -1833,6 +1833,8 @@
       "nextShowtime": "Próxima función",
       "chosenShowtime": "Función elegida",
       "replacesShowtime": "Sustituye tu recordatorio de las",
+      "expiredShowtime": "Recordatorio caducado de las",
+      "narrow": "Avisarme solo de esta función",
       "viewAll": "Mis avisos"
     },
     "rideBell": {

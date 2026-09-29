@@ -1833,6 +1833,8 @@
       "nextShowtime": "Nächste Vorstellung",
       "chosenShowtime": "Gewählte Vorstellung",
       "replacesShowtime": "Ersetzt deine Erinnerung um",
+      "expiredShowtime": "Abgelaufene Erinnerung um",
+      "narrow": "Nur für diese Vorstellung erinnern",
       "viewAll": "Meine Alarme"
     },
     "rideBell": {

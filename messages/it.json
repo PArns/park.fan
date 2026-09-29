@@ -1833,6 +1833,8 @@
       "nextShowtime": "Prossimo spettacolo",
       "chosenShowtime": "Spettacolo scelto",
       "replacesShowtime": "Sostituisce il tuo promemoria delle",
+      "expiredShowtime": "Promemoria scaduto delle",
+      "narrow": "Ricordami solo questo spettacolo",
       "viewAll": "I miei avvisi"
     },
     "rideBell": {

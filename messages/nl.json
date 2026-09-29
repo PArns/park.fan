@@ -1833,6 +1833,8 @@
       "nextShowtime": "Volgende voorstelling",
       "chosenShowtime": "Gekozen voorstelling",
       "replacesShowtime": "Vervangt je herinnering voor",
+      "expiredShowtime": "Verlopen herinnering voor",
+      "narrow": "Alleen voor deze voorstelling herinneren",
       "viewAll": "Mijn meldingen"
     },
     "rideBell": {
