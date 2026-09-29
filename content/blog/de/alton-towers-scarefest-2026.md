@@ -1,5 +1,5 @@
 ---
-title: 'Alton Towers: Scarefest läuft, und im neuen Maze sammelt ein Kurator Besucher'
+title: 'Scarefest in Alton Towers mit neuem Maze Final Exhibit'
 translationKey: alton-towers-scarefest-2026
 date: '2026-09-28'
 author: patrick

@@ -1,7 +1,7 @@
 ---
-title: 'Cedar Point: HalloWeekends mit einem Diablo-Labyrinth, und die Häuser kosten extra'
+title: 'HalloWeekends in Cedar Point: Neues Diablo-Labyrinth'
 translationKey: cedar-point-halloweekends-2026
-date: '2026-09-28'
+date: '2026-09-29'
 author: patrick
 mode: published
 featured: false
@@ -21,9 +21,9 @@ parkLinks:
 rideLinks:
   - cedar-point/*
 coverImage:
-  src: /media/halloween-2026/beispiel-metzger.jpg
-  alt: 'Darsteller mit Schweißerhelm und blutiger Lederschürze vor einem Containertor'
-  caption: 'Dieser Metzger arbeitet bei Walibi Holland. Aus Sandusky haben wir keine Fotos, ein Slaughter House gibt es dort aber auch.'
+  src: /media/halloween-2026/darsteller/22-totengraeber-blau.jpg
+  alt: 'Totengräber-Darsteller mit Schaufel zwischen zwei Säulen, blau beleuchtet'
+  caption: 'Ein Totengräber bei Walibi Holland. Aus Sandusky haben wir keine Fotos.'
   credit: 'Patrick Arns'
 seo:
   title: 'Cedar Point HalloWeekends 2026: Diablo, Termine & Haunted Pass'

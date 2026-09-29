@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: Ab Samstag Horrorabende bis 8. November, und im neuen Haus wartet Jason'
+title: 'Movie Park Halloween Horror Festival läuft bis 8. November'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
