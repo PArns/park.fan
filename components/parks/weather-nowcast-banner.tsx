@@ -20,6 +20,7 @@ import { parkDayOf } from '@/lib/utils/park-day';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatWindSpeed } from '@/lib/utils/temperature';
 import { formatShortDuration } from '@/lib/utils/duration';
+import { isRainingNow, offersShelter } from '@/lib/utils/nowcast-shelter';
 import type { WeatherNowcast } from '@/lib/api/types';
 
 interface UseNowcastAlertParams {
@@ -89,26 +90,6 @@ const RAIN_LEAD_MINUTES = 60;
 const WARNING_LEAD_MINUTES = 30;
 
 /**
- * How far ahead (minutes) rain or a thunderstorm makes the banner offer covered rides. Thirty is
- * about what it takes to walk across a large park and join a queue; further out the forecast
- * start moves by more than that between two nowcast updates, and the rides it would point at
- * are the ones to ride before the rain, not during it.
- */
-const SHELTER_LEAD_MINUTES = 30;
-
-/**
- * Whether this warning is one to go under a roof for: rain or a thunderstorm that is falling now
- * or starts within {@link SHELTER_LEAD_MINUTES}. Storm and hail are not in it: the ticket that
- * asked for the offer (PAR-425) scoped it to rain and thunderstorms.
- */
-function offersShelter(banner: BannerSpec, now: number): boolean {
-  if (banner.kind !== 'rain' && banner.kind !== 'thunderstorm') return false;
-  if (banner.state === 'active') return true;
-  const mins = minutesUntil(banner.startsAt, now);
-  return mins !== null && mins <= SHELTER_LEAD_MINUTES;
-}
-
-/**
  * Pick the highest-priority warning to surface. Order (per spec):
  *  1. storm (gusts >= 75 km/h)
  *  2. hail
@@ -141,15 +122,8 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
     };
   }
 
-  // Live rain: the API only sets `rainStartsAt` while rain is still ahead (it's null once
-  // rain is already falling), so a future start means it is NOT raining yet — no matter when
-  // it ends. Without this guard, a forecast that ends hours from now reads as "raining now".
-  const rainEndsTs = data.rainEndsAt ? Date.parse(data.rainEndsAt) : NaN;
-  const rainStartsTs = data.rainStartsAt ? Date.parse(data.rainStartsAt) : NaN;
-  const rainStartsInFuture = !Number.isNaN(rainStartsTs) && rainStartsTs > now;
-  const rainEndsInFuture = !Number.isNaN(rainEndsTs) && rainEndsTs > now;
-
-  const liveRaining = !rainStartsInFuture && (data.currentlyRaining || rainEndsInFuture);
+  // Live rain — see `isRainingNow` for why a future start means it is not raining yet.
+  const liveRaining = isRainingNow(data, now);
 
   if (liveRaining) {
     return {
@@ -218,7 +192,10 @@ export interface NowcastAlert {
   heading: string;
   body: string;
   data: WeatherNowcast;
-  /** Rain or a thunderstorm now or within the shelter lead time — see `offersShelter`. */
+  /**
+   * Rain or a thunderstorm now or within the shelter lead time (`offersShelter`), read off the
+   * nowcast rather than off the picked warning, which a storm or hail may outrank.
+   */
   offersShelter: boolean;
 }
 
@@ -368,7 +345,7 @@ export function useNowcastAlert({
     heading,
     body,
     data,
-    offersShelter: offersShelter(banner, now),
+    offersShelter: offersShelter(data, now),
   };
 }
 

@@ -81,20 +81,25 @@ export interface CoveredCandidate {
  * The covered rides to offer, best first: operating, in season, covered — and ordered by the
  * minutes until the visitor is on the ride, walk plus queue.
  *
- * The walk is the planner's ceiling (`walkMinutesFrom`, detour factor at park pace); without a
- * position it is zero for every ride, and the order is the queue alone. A ride that posts no
- * wait sorts after every ride that does: an unknown queue is not a short one. Between equal
- * totals the shorter walk goes first — the point is to get under a roof — then the name, for a
- * stable order.
+ * The walk is the planner's ceiling (`walkMinutesFrom`, detour factor at park pace), and it only
+ * counts when every offered ride has a distance. Without a position, or when the nearby answer
+ * left a ride out (it measures only rides with coordinates), the walk is zero for all of them and
+ * the order is the queue alone: a ride with no distance would otherwise read as zero minutes away
+ * and jump ahead of every ride whose walk is known. A ride that posts no wait sorts after every
+ * ride that does: an unknown queue is not a short one. Between equal totals the shorter walk goes
+ * first — the point is to get under a roof — then the name, for a stable order.
  */
 export function rankCoveredRides<T extends CoveredCandidate>(
   candidates: readonly T[],
   limit = COVERED_BANNER_LIMIT
 ): T[] {
-  return candidates
-    .filter((c) => c.status === 'OPERATING' && c.isCurrentlyInSeason !== false && isCovered(c))
+  const offered = candidates.filter(
+    (c) => c.status === 'OPERATING' && c.isCurrentlyInSeason !== false && isCovered(c)
+  );
+  const walksKnown = offered.every((c) => c.distance !== null);
+  return offered
     .map((c) => {
-      const walk = walkMinutesFrom(c.distance);
+      const walk = walksKnown ? walkMinutesFrom(c.distance) : 0;
       const wait =
         typeof c.waitTime === 'number' && Number.isFinite(c.waitTime) ? c.waitTime : null;
       return { c, walk, total: wait === null ? null : walk + wait };

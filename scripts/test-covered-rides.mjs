@@ -14,6 +14,7 @@ import {
   rankCoveredRides,
 } from '../lib/utils/covered-rides.ts';
 import { walkMinutesFrom } from '../lib/planner/next-best-ride.ts';
+import { offersShelter, SHELTER_LEAD_MINUTES } from '../lib/utils/nowcast-shelter.ts';
 
 const fixture = (name) =>
   JSON.parse(
@@ -150,6 +151,53 @@ test('ranking: outdoor, unknown, off-season and non-operating rides are never of
     out.map((r) => r.id),
     ['queue']
   );
+});
+
+test('ranking: one ride without a distance drops the walk for all of them', () => {
+  // The nearby answer measures only rides with coordinates. `nocoords` must not read as 0 m.
+  const out = rankCoveredRides([
+    row('near', 10, { distance: 0 }),
+    row('nocoords', 5, { distance: null }),
+    row('far', 3, { distance: 2000 }),
+  ]);
+  assert.deepEqual(
+    out.map((r) => r.id),
+    ['far', 'nocoords', 'near']
+  );
+});
+
+const NOW = Date.parse('2026-09-29T12:00:00Z');
+const at = (min) => new Date(NOW + min * 60_000).toISOString();
+const cast = (extra) => ({ currentlyRaining: false, ...extra });
+
+test('shelter: rain within the lead time, not beyond it', () => {
+  assert.equal(SHELTER_LEAD_MINUTES, 30);
+  assert.equal(offersShelter(cast({ rainStartsAt: at(30) }), NOW), true);
+  assert.equal(offersShelter(cast({ rainStartsAt: at(31) }), NOW), false);
+});
+
+test('shelter: rain falling now, by flag or by a future end', () => {
+  assert.equal(offersShelter(cast({ currentlyRaining: true }), NOW), true);
+  assert.equal(offersShelter(cast({ rainEndsAt: at(40) }), NOW), true);
+  // A future start means it is not raining yet, whatever the end says.
+  assert.equal(offersShelter(cast({ rainStartsAt: at(45), rainEndsAt: at(90) }), NOW), false);
+});
+
+test('shelter: a thunderstorm within the lead time or under way', () => {
+  assert.equal(offersShelter(cast({ thunderstormStartsAt: at(20) }), NOW), true);
+  assert.equal(offersShelter(cast({ thunderstormStartsAt: at(-10) }), NOW), true);
+  assert.equal(offersShelter(cast({ thunderstormStartsAt: at(50) }), NOW), false);
+});
+
+test('shelter: rain now counts even when a later thunderstorm would take the banner', () => {
+  assert.equal(
+    offersShelter(cast({ currentlyRaining: true, thunderstormStartsAt: at(50) }), NOW),
+    true
+  );
+});
+
+test('shelter: nothing forecast offers nothing', () => {
+  assert.equal(offersShelter(cast({}), NOW), false);
 });
 
 console.log(`\n${passed} passed`);
