@@ -157,17 +157,17 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Die Antworten markieren und blenden nichts aus. Liegt die Mindestgröße einer Bahn über
           deiner Angabe, steht an ihr „Mindestgröße höher als die kleinste Person im Plan“. Eine
-          Wasserbahn trägt das Zeichen „Wasserbahn“, sobald ihr trocken bleiben wollt. Beide Bahnen
-          bleiben in der Liste, weil nur die Gruppe weiß, ob jemand am Ausgang wartet und die
+          Wasserbahn trägt die Markierung „Wasserbahn“, sobald ihr trocken bleiben wollt. Beide
+          Bahnen bleiben in der Liste, weil nur die Gruppe weiß, ob jemand am Ausgang wartet und die
           Taschen hält.
         </P>
         <P>
           Im <A href={PARK}>Phantasialand</A> verlangt Taron laut API am 29. September 2026{' '}
           {DEMO_PARTY_RIDES.taron.minimumHeight} cm, Chiapas{' '}
           {DEMO_PARTY_RIDES.chiapas.minimumHeight} cm, und Chiapas macht nass. Steht die Zeile auf
-          den vorgeschlagenen 110 cm, tragen beide das Größenzeichen, Chiapas bei „trocken bleiben“
-          zusätzlich das Wasserzeichen. Bei 130 cm fällt das Größenzeichen an Chiapas weg, an Taron
-          bleibt es.
+          den vorgeschlagenen 110 cm, tragen beide die Markierung zur Mindestgröße, und Chiapas
+          bekommt bei „trocken bleiben“ zusätzlich „Wasserbahn“. Bei 130 cm ist Chiapas nicht mehr
+          wegen der Größe markiert, Taron bleibt es.
         </P>
         <Note>
           Für den Moptis Monkey Depot ist bei uns keine Mindestgröße hinterlegt. Der Planer liest
