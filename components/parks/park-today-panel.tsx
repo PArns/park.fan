@@ -182,6 +182,9 @@ export function ParkTodayPanel({
   // `liveWaitTimes` flag exists to close.
   const stats = waitsReadable ? park.analytics?.statistics : undefined;
   const occupancy = waitsReadable ? park.analytics?.occupancy : undefined;
+  // `null` on a park whose feed has gone silent (see `hasReadableWaitTimes`, which cannot tell).
+  const peakWait = stats?.peakWaitToday ?? 0;
+  const avgWait = stats?.avgWaitTime ?? 0;
   const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
 
@@ -758,9 +761,9 @@ export function ParkTodayPanel({
               {/* The last two figures off the "Ø Wartezeit" card that this panel replaced. They
                   belong beside the occupancy bar rather than in the headliner column: both are
                   park-wide readings about today, not about one queue. */}
-              {stats && (stats.peakWaitToday > 0 || (stats.peakHour && stats.peakHourSource)) && (
+              {stats && (peakWait > 0 || (stats.peakHour && stats.peakHourSource)) && (
                 <p className="text-muted-foreground text-xs">
-                  {stats.peakWaitToday > 0 && (
+                  {peakWait > 0 && (
                     <>
                       {t('parkPeak')}{' '}
                       <strong className="text-foreground font-semibold tabular-nums">
@@ -769,7 +772,7 @@ export function ParkTodayPanel({
                       {tCommon('minutes')}
                     </>
                   )}
-                  {stats.peakWaitToday > 0 && stats.peakHour && stats.peakHourSource && ' · '}
+                  {peakWait > 0 && stats.peakHour && stats.peakHourSource && ' · '}
                   {/* `peakHour` is an ISO timestamp, not an hour — printed raw it read
                       "Stoßzeit 2026-08-26T11:00:00+02:00". Same treatment the card this panel
                       replaced gave it, including the `≈` for a value that is predicted rather
@@ -795,7 +798,7 @@ export function ParkTodayPanel({
               <PanelMetric
                 caption={t('headlinersNow')}
                 action={
-                  stats && stats.avgWaitTime > 0 ? (
+                  stats && avgWait > 0 ? (
                     <span className="text-muted-foreground text-xs whitespace-nowrap">
                       Ø{' '}
                       <strong className="text-foreground font-bold tabular-nums">

@@ -228,6 +228,8 @@ export function applyParkSimulation(
       next.analytics = {
         ...next.analytics,
         occupancy: {
+          baseline90thPercentile: 0,
+          updatedAt: '',
           ...next.analytics.occupancy,
           current: 87,
           trend: 'increasing',

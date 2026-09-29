@@ -438,8 +438,10 @@ export interface ParkOccupancy {
 export type PeakHourSource = 'observed_today' | 'prediction' | 'historical_fallback';
 
 export interface ParkStatistics {
-  avgWaitTime: number;
-  avgWaitToday: number;
+  // The three wait aggregates are `null` when a park's wait times are unknowable: no readable
+  // source, or a feed silent for 30 days. `occupancy` is omitted in the same case.
+  avgWaitTime: number | null;
+  avgWaitToday: number | null;
   peakHour: string | null;
   peakHourSource: PeakHourSource | null;
   crowdLevel: CrowdLevel;
@@ -447,11 +449,11 @@ export interface ParkStatistics {
   operatingAttractions: number;
   closedAttractions: number;
   timestamp: string;
-  peakWaitToday: number;
+  peakWaitToday: number | null;
 }
 
 export interface ParkAnalytics {
-  occupancy: ParkOccupancy;
+  occupancy?: ParkOccupancy;
   statistics: ParkStatistics;
   percentiles?: Record<string, unknown>;
 }
