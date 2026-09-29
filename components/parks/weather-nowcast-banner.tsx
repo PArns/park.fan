@@ -482,9 +482,12 @@ export function NowcastAlertBanner({
               className="w-full sm:min-w-0 sm:flex-1"
             />
           </div>
-          {children}
         </div>
       </div>
+      {/* Under the icon column rather than inside the text column: at 360 px the text column is
+          ~50 px narrower than the banner, and the rows put in here carry a name, a distance and
+          two badges on one line. */}
+      {children && <div className="relative">{children}</div>}
     </section>
   );
 }
