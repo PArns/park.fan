@@ -4,6 +4,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { Link } from '@/i18n/navigation';
+import { hasParkKidsPage } from '@/lib/api/kids-page';
 import { parkKidsPath } from '@/lib/parks/kids-segments';
 import type { Locale } from '@/i18n/config';
 import { getKidsEntryParks } from './lead-park';
@@ -17,18 +18,27 @@ import { STORY_SECTION_TINTED } from './section-chrome';
  * page is per park, so the chapter offers the entry as a short row of parks and not as one URL.
  *
  * The parks are a curated list (`getKidsEntryParks`) that clears the page's gate with room to
- * spare, resolved against the geo structure the featured grid reads already. No sentence names a
+ * spare, and each one is asked again at render (`hasParkKidsPage`, the question the sitemap and the
+ * park page's link ask), so a park that slips under the gate drops out instead of linking at a
+ * 404. That read is the 1-day `getParkByGeoPath` entry the park page shares; the homepage's
+ * `initialRevalidateSeconds` was 86400 before this chapter and is after it. No sentence names a
  * count: the counts live on the page behind the link and move with the data.
  *
  * Nothing renders when the geo fetch fails, so the chapter is never an empty frame. It sits in
  * the static shell like its neighbours, not behind a `Suspense`.
  */
 export async function ChapterFamilies({ locale }: { locale: string }) {
-  const [t, tKids, parks] = await Promise.all([
+  const [t, tKids, candidates] = await Promise.all([
     getTranslations('homeStory.families'),
     getTranslations('parks.kidsPage'),
     getKidsEntryParks(),
   ]);
+  const gated = await Promise.all(
+    candidates.map(async (park) =>
+      (await hasParkKidsPage(park.continent, park.country, park.city, park.parkSlug)) ? park : null
+    )
+  );
+  const parks = gated.filter((p) => p !== null);
   if (parks.length === 0) return null;
 
   return (
@@ -46,7 +56,7 @@ export async function ChapterFamilies({ locale }: { locale: string }) {
         </Reveal>
 
         <Reveal>
-          <ul className="grid gap-3 sm:grid-cols-3">
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {parks.map((park) => (
               <li key={park.parkSlug}>
                 <Link
