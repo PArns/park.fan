@@ -28,6 +28,12 @@ export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT'
 export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH';
 
 /**
+ * Where an attraction stands in the weather: the ride under a roof (`indoor`), in the open
+ * (`outdoor`), or in the open behind a roofed queue (`covered_queue`). Curated per ride.
+ */
+export type IndoorOutdoor = 'indoor' | 'outdoor' | 'covered_queue';
+
+/**
  * Why a park's wait times cannot be read. Contract with the API — see
  * `docs/frontend/live-wait-times-availability.md` in v4.api.park.fan.
  *
@@ -840,6 +846,14 @@ export interface ParkAttraction {
    */
   attractionKind?: AttractionKind | null;
   /**
+   * Indoor, outdoor or outdoor with a roofed queue — see {@link IndoorOutdoor}.
+   *
+   * Curated and day-stable like `attractionKind`, so it rides the server render and not the
+   * five-minute poll. Null or absent means nobody has checked, which is most of the catalogue,
+   * and it never means "outdoor".
+   */
+  indoorOutdoor?: IndoorOutdoor | null;
+  /**
    * Whether the ride runs a virtual queue (return times or boarding groups) at all.
    *
    * Same split as `hasSingleRider`: a curated fact, not today's reading — the
@@ -1139,6 +1153,14 @@ export interface AttractionResponse {
    * whole catalogue — and it never means "it is a ride". Render nothing for it.
    */
   attractionKind?: AttractionKind | null;
+  /**
+   * Indoor, outdoor or outdoor with a roofed queue — see {@link IndoorOutdoor}.
+   *
+   * Curated and day-stable like `attractionKind`, so it rides the server render and not the
+   * five-minute poll. Null or absent means nobody has checked, which is most of the catalogue,
+   * and it never means "outdoor".
+   */
+  indoorOutdoor?: IndoorOutdoor | null;
   /**
    * Whether the ride runs a virtual queue (return times or boarding groups) at all.
    *

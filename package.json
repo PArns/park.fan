@@ -86,6 +86,7 @@
     "test:in-park-block": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-in-park-block.mjs",
     "test:geolocation-permission": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-geolocation-permission.mjs",
     "test:next-best-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-next-best-ride.mjs",
+    "test:covered-rides": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-covered-rides.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",
     "test:admin-cookie": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-cookie.mjs",

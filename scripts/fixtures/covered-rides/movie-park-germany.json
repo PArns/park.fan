@@ -1,0 +1,331 @@
+{
+ "capturedAt": "2026-09-29T06:24Z",
+ "park": "movie-park-germany",
+ "attractions": [
+  {
+   "id": "1b7f17de-37b5-46df-a1fd-0dc92893f513",
+   "name": "Movie Park Studio Tour",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "9f80ab20-d84e-481e-b055-70007d24d1c7",
+   "name": "Area 51 - Top Secret",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "010f0e06-82f1-4b0f-8a8c-048aea9892f9",
+   "name": "Jason-universum",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "81be79b9-a12f-48d7-b873-a31474ae3c82",
+   "name": "Circus of Freaks - Welkom bij de nieuwe show",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "709d1215-a97e-420d-a19a-4ab45cca0a2b",
+   "name": "Helhuis",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "932d84f3-e021-412a-9a3d-a7d13029003f",
+   "name": "Journey to the Forbidden Chamber",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "3b8b2510-34f4-49b9-962c-0d9b134410a5",
+   "name": "Hell House",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "8b10bdb5-3046-4c6e-b2d2-e7e44e8a6f4b",
+   "name": "Het slachthuis",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "5fc9d7ae-dd35-4a93-9a5a-e93cce4a309c",
+   "name": "Skye's High Flyer",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "6afc5fe5-34ea-4ab2-a1aa-a8a81ee1e1fa",
+   "name": "Pier Side Carousel",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "e24d881f-79c5-4096-824a-50ccd0cac17e",
+   "name": "SpongeBob Splash Bash",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "036c7782-75e9-4c35-82d5-df95f86bf879",
+   "name": "Sea Swing",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "a4a5fa5a-2a1c-44cd-bbf4-2441efc1de4c",
+   "name": "Rescue 112",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "5c73befa-4df0-41fd-8b51-6d5d5ab05b0a",
+   "name": "Santa Monica Wheel",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "3c9c3bc0-07ca-4174-a5f4-e3ec3d30d417",
+   "name": "Avatar Air Glider",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "020466c1-1a47-41b7-87d8-036b0d4db6b8",
+   "name": "Iron Claw",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "c7bb42e3-a99b-4b87-983c-4548b5d161ab",
+   "name": "The Bandit",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "bdf1827b-fa80-4001-b7e9-b559c678ee14",
+   "name": "Side Kick",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "6bf508cc-6ed0-4522-bfe1-973dfcb3e19c",
+   "name": "Crazy Surfer",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": false,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "5e17a7e2-4e83-4818-a9dc-bb1b10c8931c",
+   "name": "Excalibur - Secrets of the Dark Forest",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "1d33465d-98f5-4e4b-8435-4b549186e17d",
+   "name": "Ghost Chasers",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "1114220b-22f0-4766-b8d7-253eeb4b3a79",
+   "name": "Time Riders",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "indoor"
+  },
+  {
+   "id": "f63a726c-10f9-49dc-a6d1-3ff0ea8336c1",
+   "name": "Jimmy Neutron’s Atomic Flyer",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "7bc8bc32-72d9-4e87-9ed6-863e7bf7db00",
+   "name": "Fairy World Spin",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "b168306f-4cfe-4cf9-b568-b98b0c96c70c",
+   "name": "Splat-O-Sphere",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "eea29912-8a34-4cb3-8b16-2993b5d024c7",
+   "name": "Stormy Cruise",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": false,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "98a925fa-6536-419b-ba72-f8ba110ff669",
+   "name": "Teenage Mutant Ninja Turtles: License to Drive",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "64fc3667-999e-4632-9c3d-e02847fc6f62",
+   "name": "Van Helsing's Factory",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "indoor"
+  },
+  {
+   "id": "59d50de9-a198-4249-9349-9037b8660e66",
+   "name": "Dora’s Big River Adventure",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "0c134d2d-732b-4f33-a34a-d9ffc17199e2",
+   "name": "Adventure Tour",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "89cd1da2-800e-4948-b07d-50d188eb13c1",
+   "name": "Zuma's Zoomers",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "40f08730-bf38-4d7b-93ad-7575f3504cb0",
+   "name": "Backyardigans Mission to Mars",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "9d66e660-8865-4246-8cf8-1e1f254d7ba2",
+   "name": "Star Trek™: Operation Enterprise",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "0d232f99-8906-41e6-9e55-fcd4a00a4d8b",
+   "name": "Secrets of St. Elmo",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "d551b334-f65d-4e1f-a7cf-4ce67dc2ca86",
+   "name": "The Slaughterhouse",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "e03485c3-faa1-41f0-816a-50dc15950b4e",
+   "name": "Circus of Freaks",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "6d17d763-5912-4ef5-ab47-893bd37f2f54",
+   "name": "The High Fall",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "9bbd1f82-8b51-4a3a-adf0-d460e145c3ed",
+   "name": "Final Stop",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "46f32c7b-60fc-4582-b2a2-4d01835e0f44",
+   "name": "Blood Moon Trailer Park",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "4deb497d-fec6-4cba-a558-c4ca8f7259c3",
+   "name": "Murder Museum",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "938a27c5-3cd0-4665-92f4-e3f1f114cf03",
+   "name": "NYC Transformer",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0,
+   "indoorOutdoor": "outdoor"
+  },
+  {
+   "id": "b7cd4d53-85cb-4053-9385-079ad46cb09f",
+   "name": "Ahoj-Brause Horror Lab",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  },
+  {
+   "id": "38f4c923-e935-4edd-ad5a-500f3cf929ad",
+   "name": "A Quiet Place",
+   "status": "CLOSED",
+   "isCurrentlyInSeason": null,
+   "waitTime": 0
+  }
+ ]
+}
