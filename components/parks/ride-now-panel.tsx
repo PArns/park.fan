@@ -175,7 +175,10 @@ export function RideNowPanel({
         under it. The reservation read 46 and the trigger was a block box, whose line box put the
         22 px badge in 24 px: the row settled at 49 and the shift was 3 px (0.0071 at y=0 on
         Taron's phone layout once PAR-427 lifted this card into the first screen). */}
-      <div className="border-border/50 flex min-h-[47px] items-center gap-3 border-b px-5 py-3">
+      {/* Below `sm` the row is one line, 47 px, and wraps only so that a clock which does not fit
+        beside the heading drops to a second line `overflow-hidden` cuts off: the French heading
+        and clock need 376 px on a 286 px row at 360 px (PAR-441). */}
+      <div className="border-border/50 flex min-h-[47px] items-center gap-3 border-b px-5 py-3 max-sm:h-[47px] max-sm:flex-wrap max-sm:overflow-hidden">
         <div className="flex shrink-0 items-center gap-2">
           <span
             className={cn(
@@ -196,14 +199,13 @@ export function RideNowPanel({
 
         {accuracy && (
           <Tooltip>
-            <TooltipTrigger className="flex min-w-0 cursor-default">
+            <TooltipTrigger className="flex min-w-0 cursor-default max-sm:hidden">
               <Badge className={cn('gap-1.5', accuracyStyle(accuracy.badge).badge)}>
                 <Sparkles className="h-3 w-3" aria-hidden="true" />
-                {/* „Gut" on its own says nothing about what is good. The prefix names it where
-                  there is room and goes below `sm`, where the row also carries the clock — the
-                  same split the park panel's weather reading uses. A truncated „KI-Genauigk…"
-                  would be worse than the bare grade. */}
-                <span className="hidden sm:inline">{t('predictionAccuracy')}:</span>
+                {/* The whole badge goes below `sm`, where the row also carries the clock — the same
+                  split the park panel's weather reading uses. A bare „Gut" says nothing about
+                  what is good, and a truncated „KI-Genauigk…" is worse. */}
+                <span>{t('predictionAccuracy')}:</span>
                 <span className="truncate">{t(`accuracy.${accuracy.badge}`)}</span>
               </Badge>
             </TooltipTrigger>
@@ -221,12 +223,15 @@ export function RideNowPanel({
             {isRefreshing && (
               <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
             )}
-            {formatTime(browserNow, locale, {
-              hour: '2-digit',
-              minute: '2-digit',
-              timeZone: timezone,
-            })}
-            {tCommon('timeSuffix')} · {tParks('localTime')}
+            <span>
+              {formatTime(browserNow, locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: timezone,
+              })}
+              {tCommon('timeSuffix')}
+              <span className="max-sm:hidden"> · {tParks('localTime')}</span>
+            </span>
           </span>
         )}
       </div>
