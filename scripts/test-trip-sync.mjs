@@ -58,7 +58,8 @@ globalThis.fetch = async (url, init) => {
   return fetchStub();
 };
 
-const { syncTrip, getTripId, forgetTrip } = await import('../lib/planner/trip-sync.ts');
+const { syncTrip, getTripId, forgetTrip, startTripAutoSync, stopTripAutoSync } =
+  await import('../lib/planner/trip-sync.ts');
 
 /** A `Response` with just the parts `classifyWriteFailure` reads. */
 function response(status, body = null) {
@@ -128,7 +129,8 @@ await test('a 404 is the ONE answer that starts a new trip', async () => {
   seed();
   answers(response(404), response(201, { id: NEW_ID }));
   const result = await syncTrip();
-  assert.deepEqual(result, { ok: true, id: NEW_ID });
+  // `replaced` is how the push side learns its stored row names a dead id.
+  assert.deepEqual(result, { ok: true, id: NEW_ID, replaced: true });
   assert.equal(calls.length, 2);
   assert.equal(calls[1].method, 'POST');
   assert.equal(calls[1].url, '/api/trips');
@@ -425,6 +427,44 @@ await test('a sync started after a delete is a normal create', async () => {
   // The counter supersedes what was in flight, never what comes after.
   assert.deepEqual(result, { ok: true, id: NEW_ID });
   assert.equal(getTripId(), NEW_ID);
+});
+
+console.log('\nstartTripAutoSync · hearing that the id was replaced');
+
+const { plannerStore } = await import('../lib/planner/store.ts');
+
+/** Edit the plan, then wait out the debounce and the request behind it. */
+async function editAndSettle() {
+  plannerStore.update((current) => ({ ...current }));
+  await new Promise((resolve) => setTimeout(resolve, 4100));
+  await new Promise((resolve) => setImmediate(resolve));
+}
+
+await test('a background sync that starts a new trip tells the caller the new id', async () => {
+  seed();
+  answers(response(404), response(201, { id: NEW_ID }));
+  const heard = [];
+  startTripAutoSync((id) => heard.push(id));
+  await editAndSettle();
+  stopTripAutoSync();
+  assert.deepEqual(heard, [NEW_ID]);
+  assert.equal(getTripId(), NEW_ID);
+});
+
+await test('a background sync that keeps its id tells nobody', async () => {
+  seed();
+  answers(response(200, { id: EXISTING_ID }));
+  const heard = [];
+  startTripAutoSync((id) => heard.push(id));
+  await editAndSettle();
+  stopTripAutoSync();
+  assert.deepEqual(heard, []);
+});
+
+await test('a create with no id before it is not a replacement', async () => {
+  seed({ tripId: null });
+  answers(response(201, { id: NEW_ID }));
+  assert.deepEqual(await syncTrip(), { ok: true, id: NEW_ID });
 });
 
 console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);

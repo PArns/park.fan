@@ -144,6 +144,8 @@ interface TabsWithHashProps {
   /** The park has a wait-time record page. Tile only: there is no chapter behind this one, it is
    *  a URL of its own — see `ParkTileSource.statsAvailable`. */
   statsAvailable?: boolean;
+  /** The height the rider-height filter opens on — see `useAttractionFilter`. */
+  initialRiderHeight?: number | null;
   park: ParkWithAttractions;
   continent: string;
   country: string;
@@ -168,6 +170,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   restaurantsAvailable,
   weatherAvailable,
   statsAvailable,
+  initialRiderHeight,
   park,
   continent,
   country,
@@ -232,6 +235,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     shows: park.shows,
     activeTab,
     parkStatus: park.status,
+    initialRiderHeight,
   });
 
   // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the

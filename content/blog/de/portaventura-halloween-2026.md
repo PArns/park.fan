@@ -1,7 +1,7 @@
 ---
-title: 'PortAventura: Zu Halloween sucht der Sheriff von Penitence den Metzger'
+title: 'PortAventura feiert Halloween mit dem Metzger von Penitence'
 translationKey: portaventura-halloween-2026
-date: '2026-09-28'
+date: '2026-09-29'
 author: patrick
 mode: published
 featured: false

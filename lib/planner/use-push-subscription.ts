@@ -54,6 +54,45 @@ interface PushAvailability {
   topics: string[];
 }
 
+/**
+ * The one request that writes a subscription row: this endpoint, against this
+ * trip, with these topics.
+ *
+ * Sent when push is switched on, when the visitor changes what they want, and
+ * when the trip id the row names was replaced. Kept in one place because the
+ * three used to be copies, and a fourth field added to two of them is the kind
+ * of drift nobody sees.
+ */
+async function postSubscription(
+  subscription: PushSubscription,
+  tripId: string,
+  topics: string[]
+): Promise<{ response: Response; timezone: string | null }> {
+  const json = subscription.toJSON();
+  const timezone = currentPushTimezone();
+  const response = await fetch('/api/push/subscriptions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      endpoint: subscription.endpoint,
+      p256dh: json.keys?.p256dh,
+      auth: json.keys?.auth,
+      tripId,
+      locale: document.documentElement.lang || 'en',
+      ...(timezone ? { timezone } : {}),
+      topics,
+    }),
+  });
+  // The one place this is written: the server has just accepted this endpoint
+  // against this trip, and that answer is what the next mount reads instead of
+  // guessing from two local signals (`push-arming.ts`). Only on the 2xx, and
+  // deliberately not cleared on a refusal — see `forgetArmedPush`. Here rather
+  // than at each caller because a re-pointed row is a new pair and the record
+  // has to follow it.
+  if (response.ok) rememberArmedPush(subscription.endpoint, tripId);
+  return { response, timezone };
+}
+
 export function usePushSubscription() {
   const [state, setState] = useState<PushState>('checking');
   const [availability, setAvailability] = useState<PushAvailability | null>(null);
@@ -196,21 +235,11 @@ export function usePushSubscription() {
           applicationServerKey: urlBase64ToUint8Array(availability.publicKey),
         }));
 
-      const json = subscription.toJSON();
-      const timezone = currentPushTimezone();
-      const response = await fetch('/api/push/subscriptions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          endpoint: subscription.endpoint,
-          p256dh: json.keys?.p256dh,
-          auth: json.keys?.auth,
-          tripId,
-          locale: document.documentElement.lang || 'en',
-          ...(timezone ? { timezone } : {}),
-          topics: resolvePushTopics(availability.topics, selectedTopics),
-        }),
-      });
+      const { response, timezone } = await postSubscription(
+        subscription,
+        tripId,
+        resolvePushTopics(availability.topics, selectedTopics)
+      );
 
       if (!response.ok) {
         // The browser is now subscribed to a push service that will send it
@@ -230,11 +259,6 @@ export function usePushSubscription() {
         return;
       }
 
-      // The one place this is written: the server has just accepted this
-      // endpoint against this trip, and that answer is what the next mount
-      // reads instead of guessing from two local signals. Deliberately not
-      // cleared on the paths above — see `forgetArmedPush`.
-      rememberArmedPush(subscription.endpoint, tripId);
       // Same reasoning as the record above, one field over: the zone the API
       // just took is what `refreshPushTimezone` compares against on the next
       // page load, so a visitor who never travels never sends a second POST.
@@ -270,21 +294,11 @@ export function usePushSubscription() {
         const subscription = await registration?.pushManager.getSubscription();
         const tripId = getTripId();
         if (!subscription || !tripId) return;
-        const json = subscription.toJSON();
-        const timezone = currentPushTimezone();
-        const response = await fetch('/api/push/subscriptions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            endpoint: subscription.endpoint,
-            p256dh: json.keys?.p256dh,
-            auth: json.keys?.auth,
-            tripId,
-            locale: document.documentElement.lang || 'en',
-            ...(timezone ? { timezone } : {}),
-            topics: resolvePushTopics(availability.topics, topics),
-          }),
-        });
+        const { response, timezone } = await postSubscription(
+          subscription,
+          tripId,
+          resolvePushTopics(availability.topics, topics)
+        );
         // Only on the 2xx — this call's own failure is swallowed below, and a
         // zone recorded over a refused POST would stop the next page load from
         // sending the one the API never got.
@@ -381,11 +395,47 @@ export function usePushSubscription() {
   // reach the server, or the job keeps notifying about the plan as it was when
   // the switch was flipped. Armed here rather than at each mutation, because
   // there are eleven of them and the twelfth would be the one that forgot.
+  //
+  // Also the one place that hears the trip id change under it. A trip that
+  // expired while the tab was open gets a new id from the background sync, and
+  // the subscription row still names the old one: the job would read a plan
+  // that no longer exists while the switch says on. So the row is re-written
+  // with the new id, and when that fails the switch goes off — the same rule as
+  // `enable()`, on the one path that has no button press to fail visibly.
   useEffect(() => {
-    if (state !== 'on') return;
-    startTripAutoSync();
+    if (state !== 'on' || !availability) return;
+    startTripAutoSync((tripId) => {
+      void (async () => {
+        try {
+          const registration = await navigator.serviceWorker.getRegistration('/sw.js');
+          const subscription = await registration?.pushManager.getSubscription();
+          // Overtaken by a switch-off (`forgetTrip` clears the id): nothing is
+          // left to point at. Not the effect's cleanup, which also runs on a
+          // remount and would drop a replacement that is still in flight.
+          if (getTripId() !== tripId) return;
+          if (subscription) {
+            // Read now rather than captured: the visitor may have narrowed the
+            // topics since this effect ran.
+            const { response, timezone } = await postSubscription(
+              subscription,
+              tripId,
+              resolvePushTopics(availability.topics, plannerPushTopics.getSnapshot())
+            );
+            if (response.ok) {
+              if (timezone) rememberSentPushTimezone(subscription.endpoint, timezone);
+              return;
+            }
+          }
+        } catch {
+          // Falls through to the same answer as a refused write.
+        }
+        // Not re-pointed, so the switch would be on and doing nothing. Off with
+        // the teardown a press would run, and the plan taken back down with it.
+        if (getTripId() === tripId) void disable();
+      })();
+    });
     return () => stopTripAutoSync();
-  }, [state]);
+  }, [state, availability, disable]);
 
   return {
     state,

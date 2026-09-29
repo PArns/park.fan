@@ -91,6 +91,25 @@ export function partyFlags(ride: PartyRideFacts, prefs: PlannerDayPrefs | undefi
   return { tooShort, wet };
 }
 
+/**
+ * The wizard's chip for a height a park posts, e.g. 105 or 132 cm.
+ *
+ * The chips are round tens because a parent knows the door-frame mark, and a park's limits are
+ * not (95, 105, 132…). A child of `cm` may ride what the chip at or below it allows, so the
+ * choice rounds DOWN, never up: a plan for 132 cm that opened on 140 would flag nothing on a ride
+ * the child is too small for.
+ *
+ * **`null` below the lowest chip.** There is no chip that is not taller than such a child, and
+ * rounding up to the lowest one would plan for a 90 cm child at a park whose limit is 80 or 85 —
+ * the wizard would then leave rides of 85 to 90 cm unflagged for a child who may not board them.
+ * The caller leaves the wizard's question unanswered instead.
+ */
+export function riderHeightChoiceFor(cm: number): (typeof RIDER_HEIGHT_CHOICES)[number] | null {
+  let choice: (typeof RIDER_HEIGHT_CHOICES)[number] | null = null;
+  for (const c of RIDER_HEIGHT_CHOICES) if (c <= cm) choice = c;
+  return choice;
+}
+
 /** Inside the range a person can be. Used on the way in AND on the way out of storage. */
 export function clampRiderHeight(cm: number): number {
   if (!Number.isFinite(cm)) return MIN_RIDER_CM;

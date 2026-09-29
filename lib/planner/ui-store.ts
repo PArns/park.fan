@@ -57,6 +57,8 @@ type Listener = () => void;
  *   took over a plan somebody sent them.
  * - `home-hero` — "Heute planen" in the homepage hero, shown to a visitor it has
  *   placed in or right next to a park (`HeroParkActions`).
+ * - `kids-page` — a step of the height ladder on a park's "with kids" page
+ *   (`KidsPlannerButton`), which also leaves the height for the wizard.
  *
  * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
  * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
@@ -70,7 +72,8 @@ export type PlannerOpenedSource =
   | 'wizard'
   | 'plan-list'
   | 'shared-link'
-  | 'home-hero';
+  | 'home-hero'
+  | 'kids-page';
 
 export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 

@@ -43,8 +43,9 @@ export function ParkNavTiles({
   current,
   ...source
 }: ParkTileSource & {
-  /** The cell for the page being rendered. It becomes `aria-current="page"` and is not a link. */
-  current: ParkTileKey;
+  /** The cell for the page being rendered. It becomes `aria-current="page"` and is not a link.
+   *  `null` on a page that has no cell in the row (the park's "with kids" page). */
+  current: ParkTileKey | null;
 }) {
   const locale = useLocale();
   const { continent, country, city, parkSlug } = source;

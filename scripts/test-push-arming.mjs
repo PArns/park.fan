@@ -199,14 +199,18 @@ await test('resolve() asks the record and no longer the two local signals', () =
 await test('the record is written after the POST answered, and only there', () => {
   const writes = hook.match(/rememberArmedPush\(/g) ?? [];
   assert.equal(writes.length, 1, 'exactly one write');
-  const guard = hook.indexOf('if (!response.ok) {');
-  const write = hook.indexOf('rememberArmedPush(');
-  assert.ok(guard !== -1 && write > guard, 'the write sits past the !ok branch');
+  // In `postSubscription`, on the 2xx only, so every caller that writes a row
+  // (enable, the topics change, a re-pointed trip id) records the pair that was
+  // sent and none records a refused one.
   assert.match(
     hook,
-    /rememberArmedPush\(subscription\.endpoint, tripId\)/,
-    'the pair that was sent'
+    /if \(response\.ok\) rememberArmedPush\(subscription\.endpoint, tripId\);/,
+    'the pair that was sent, on the 2xx only'
   );
+  const helper = hook.indexOf('async function postSubscription');
+  const fetchAt = hook.indexOf("fetch('/api/push/subscriptions', {\n    method: 'POST'");
+  const write = hook.indexOf('rememberArmedPush(');
+  assert.ok(helper !== -1 && fetchAt > helper && write > fetchAt, 'the write follows the POST');
 });
 
 await test('switching off clears it, and a failed enable does not', () => {

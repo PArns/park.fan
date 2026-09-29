@@ -13,10 +13,9 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
  * tags. 274 term links in the chrome of ~35,000 pages would spread the site's own weight over the
  * pages worth the least of it.
  *
- * **Eleven rows, not twelve**, and the difference is not this file's: twelve categories hold terms,
- * and `GLOSSARY_CATEGORY_ORDER` leaves `logistics` out, so the overview does not draw it either
- * (PAR-264). What this returns is what that page renders, which is the whole point — `termCount`
- * below therefore counts 271 of the 274, and the heading it feeds says so.
+ * **Twelve rows, one per category that holds a term.** What this returns is what the overview
+ * renders, which is the whole point — `termCount` below therefore counts all 274 terms. Until
+ * PAR-264 `GLOSSARY_CATEGORY_ORDER` left `logistics` out and this was eleven rows and 271 terms.
  *
  * **Resolved on the server because the panel is a Client Component.** A `useTranslations('glossary')`
  * there would put the whole namespace — 2,402 B, ×6 locales — into the chrome every page

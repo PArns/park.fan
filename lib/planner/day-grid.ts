@@ -420,14 +420,42 @@ export function blockBoxFor(grid: DayGrid, minutes: number): number {
   return Math.max(heightFor(grid, minutes), minBlockPxFor(grid));
 }
 
-/** A block with no figure gets a stated box rather than a height it cannot back. */
+/**
+ * A block with no figure gets a stated box rather than a height it cannot back.
+ *
+ * Stated at {@link PX_PER_MIN} and scaled by the axis in {@link noFigurePxFor},
+ * like {@link MIN_BLOCK_PX}: 40 px is 33.3 minutes, and a flat 40 px would be
+ * 22.2 of them on the phone's {@link PX_PER_MIN_COARSE} axis.
+ */
 export const NO_FIGURE_PX = 40;
+
+/** {@link NO_FIGURE_PX} in minutes, 33.3 of them: the span lane packing counts for a block with no figure. */
+export const NO_FIGURE_MIN = NO_FIGURE_PX / PX_PER_MIN;
+
+/** The box of a block with no figure, on THIS axis: {@link NO_FIGURE_MIN} minutes tall. */
+export function noFigurePxFor(grid: DayGrid): number {
+  // Same multiplication order as `minBlockPxFor`, for the same reason.
+  return (NO_FIGURE_PX * grid.pxPerMin) / PX_PER_MIN;
+}
+
+/**
+ * How many minutes a block occupies for LANE PACKING, given its occupancy.
+ *
+ * This is the twin of {@link drawnBoxPx} in minutes, and the two have to agree
+ * for every block: a packing that counts less than the box is drawn at lets two
+ * blocks share a lane and overlap on screen, and a leg chip measured against
+ * the drawn edge then finds a negative gap. `minutes` is what {@link drawnBoxPx}
+ * takes: a custom block's duration, a planned block's wait, `null` for no figure.
+ */
+export function packedSpanMinutes(minutes: number | null): number {
+  return minutes === null ? NO_FIGURE_MIN : Math.max(minutes, MIN_BLOCK_MIN);
+}
 
 /**
  * How tall a block is DRAWN, for the one caller that is not the block.
  *
  * `blockBoxFor` answers for a block that has a number; a block that has none is
- * {@link NO_FIGURE_PX}, and that second case lived in `planner-block.tsx` alone.
+ * {@link noFigurePxFor}, and that second case lived in `planner-block.tsx` alone.
  * The gap a leg chip sits in is measured from the bottom edge of the box above
  * it, so the leg needs the same answer the block gives itself — and a second
  * copy of `Math.max(…)` beside a hard-coded 40 is the kind of twin that agrees
@@ -436,7 +464,7 @@ export const NO_FIGURE_PX = 40;
  * figure at all.
  */
 export function drawnBoxPx(grid: DayGrid, minutes: number | null): number {
-  return minutes === null ? NO_FIGURE_PX : blockBoxFor(grid, minutes);
+  return minutes === null ? noFigurePxFor(grid) : blockBoxFor(grid, minutes);
 }
 
 export function snapTo(minute: number, step: number): number {
