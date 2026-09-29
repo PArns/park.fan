@@ -1,7 +1,17 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
+import {
+  CalendarDays,
+  Footprints,
+  Gauge,
+  HelpCircle,
+  Sunrise,
+  Theater,
+  Users,
+  Wand2,
+} from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
+import { DEMO_PARTY_RIDES } from '../_fixtures';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerEntry } from '@/lib/planner/types';
 
@@ -131,8 +141,44 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="reihenfolge"
+        id="wer-mitkommt"
         index="05"
+        icon={Users}
+        kicker="Die Gruppe"
+        title="Was die kleinste Person fahren darf"
+      >
+        <P>
+          Der Planer fragt zwei Dinge über die Gruppe, einmal pro Tag: wie groß die kleinste Person
+          ist und ob ihr möglichst trocken bleiben wollt. Die Größe gibt es in Zehnerschritten von
+          90 bis 140 cm, die Zeile öffnet bei 110 cm. Beide Antworten gehören zum Tag und nicht zum
+          Park oder zum Browser, denn dieselbe Familie kommt im Oktober vielleicht ohne das
+          Vierjährige wieder.
+        </P>
+        <P>
+          Die Antworten markieren und blenden nichts aus. Liegt die Mindestgröße einer Bahn über
+          deiner Angabe, steht an ihr „Mindestgröße höher als die kleinste Person im Plan“. Eine
+          Wasserbahn trägt das Zeichen „Wasserbahn“, sobald ihr trocken bleiben wollt. Beide Bahnen
+          bleiben in der Liste, weil nur die Gruppe weiß, ob jemand am Ausgang wartet und die
+          Taschen hält.
+        </P>
+        <P>
+          Im <A href={PARK}>Phantasialand</A> verlangt Taron laut API am 29. September 2026{' '}
+          {DEMO_PARTY_RIDES.taron.minimumHeight} cm, Chiapas{' '}
+          {DEMO_PARTY_RIDES.chiapas.minimumHeight} cm, und Chiapas macht nass. Steht die Zeile auf
+          den vorgeschlagenen 110 cm, tragen beide das Größenzeichen, Chiapas bei „trocken bleiben“
+          zusätzlich das Wasserzeichen. Bei 130 cm fällt das Größenzeichen an Chiapas weg, an Taron
+          bleibt es.
+        </P>
+        <Note>
+          Für den Moptis Monkey Depot ist bei uns keine Mindestgröße hinterlegt. Der Planer liest
+          das als „nicht angegeben“ und markiert die Bahn nicht. Ein Verbot ist das nicht, und eine
+          Freigabe auch nicht: Ein Schild am Eingang gilt vor dem, was hier steht.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="reihenfolge"
+        index="06"
         icon={Wand2}
         kicker="Sortieren"
         title="Den Tag sortieren lassen"
@@ -189,7 +235,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="spielzeiten"
-        index="06"
+        index="07"
         icon={Theater}
         kicker="Shows"
         title="Woher die Spielzeiten kommen"
@@ -211,7 +257,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="grenzen"
-        index="07"
+        index="08"
         icon={HelpCircle}
         kicker="Grenzen"
         title="Was der Planer nicht weiß"
