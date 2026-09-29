@@ -962,6 +962,12 @@ export function ContentDE() {
                 Stimmung auf der Rückfahrt mehr als jede Wartezeit.
               </>,
               <>
+                Im Reiter <strong>Attraktionen</strong> den Regler „Körpergröße“ auf das kleinste
+                Kind stellen: Die Liste zeigt nur noch, was es fahren darf. Der{' '}
+                <A href={planner}>Tagesplaner</A> fragt ebenfalls nach dem kleinsten Kind und
+                markiert Bahnen mit höherer Mindestgröße, statt sie zu verstecken.
+              </>,
+              <>
                 Kinderbahnen im Reiter <strong>Attraktionen</strong> als Favorit markieren. Sie
                 stehen danach auf der Startseite mit ihrer aktuellen Wartezeit.
               </>,
@@ -1029,6 +1035,11 @@ export function ContentDE() {
               <>
                 Begriffe stehen im <A href={glossary}>Wörterbuch</A>, in sechs Sprachen. Auf den
                 Attraktionsseiten sind sie im Text direkt verlinkt.
+              </>,
+              <>
+                Steht unten auf der Parkseite ein Blogbeitrag zum Park, ist das meist einer der{' '}
+                <A href="/blog/category/guides">Parkführer</A>. Sie gehen Tickets, Reihenfolge und
+                Anreise durch. Einen Führer hat nicht jeder Park.
               </>,
               <>
                 Morgens die Rope-Drop-Empfehlung des Parks abarbeiten. Die Reihenfolge beruht auf
