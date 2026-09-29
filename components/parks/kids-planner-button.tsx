@@ -28,7 +28,8 @@ export function KidsPlannerButton({
   className,
 }: {
   parkSlug: string;
-  /** The step's height. The wizard's chips are round tens, so it is rounded down for them. */
+  /** The step's height. The wizard's chips are round tens, so it is rounded down for them, and
+   *  a step under the lowest chip hands nothing over. */
   cm: number;
   /** The finished sentence, resolved on the server. */
   label: string;
@@ -44,7 +45,10 @@ export function KidsPlannerButton({
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         if (event.button !== 0) return;
         event.preventDefault();
-        plannerPageHeight.set({ parkSlug, cm: riderHeightChoiceFor(cm) });
+        // Below the wizard's lowest chip there is nothing safe to hand over, so nothing is: the
+        // wizard asks the question itself.
+        const choice = riderHeightChoiceFor(cm);
+        if (choice !== null) plannerPageHeight.set({ parkSlug, cm: choice });
         plannerUi.requestOpen('kids-page', 'page-park-wizard');
       }}
       className={cn(

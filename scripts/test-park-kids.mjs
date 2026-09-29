@@ -22,6 +22,8 @@ import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_CALENDAR_SEGMENTS } from '../lib/parks/calendar-segments.ts';
 import { riderHeightChoiceFor, RIDER_HEIGHT_CHOICES } from '../lib/planner/party.ts';
 import { unprefixedPathRedirect } from '../lib/i18n/unprefixed-redirect.ts';
+import { plannerPageHeight } from '../lib/planner/page-height.ts';
+import { readFileSync } from 'node:fs';
 
 let passed = 0;
 function test(name, fn) {
@@ -179,14 +181,21 @@ test('a step maps to the chip at or below it, never above', () => {
   assert.equal(riderHeightChoiceFor(175), 140);
 });
 
-test('below the lowest chip it is the lowest', () => {
-  assert.equal(riderHeightChoiceFor(80), 90);
-  assert.equal(riderHeightChoiceFor(0), 90);
+test('below the lowest chip there is no choice, never a rounded-up one', () => {
+  assert.equal(riderHeightChoiceFor(89), null);
+  assert.equal(riderHeightChoiceFor(80), null);
+  assert.equal(riderHeightChoiceFor(0), null);
+  assert.equal(riderHeightChoiceFor(90), 90);
 });
 
-test('the result is always one of the wizard chips', () => {
+test('the choice is always one of the wizard chips and never above the height', () => {
   for (let cm = 40; cm <= 220; cm++) {
-    assert.ok(RIDER_HEIGHT_CHOICES.includes(riderHeightChoiceFor(cm)), String(cm));
+    const choice = riderHeightChoiceFor(cm);
+    if (choice === null) {
+      assert.ok(cm < RIDER_HEIGHT_CHOICES[0], String(cm));
+    } else {
+      assert.ok(RIDER_HEIGHT_CHOICES.includes(choice) && choice <= cm, String(cm));
+    }
   }
 });
 
@@ -230,6 +239,54 @@ test('an unprefixed "with kids" path goes to the locale its segment names', () =
   const path = '/parks/europe/germany/bruehl/phantasialand';
   assert.equal(unprefixedPathRedirect(`${path}/con-bambini`, true), `/it${path}/con-bambini`);
   assert.equal(unprefixedPathRedirect(`${path}/with-kids`, true), `/en${path}/with-kids`);
+});
+
+console.log('hand-off');
+
+test('take returns the height once and clears it', () => {
+  plannerPageHeight.set({ parkSlug: 'phantasialand', cm: 130 });
+  assert.equal(plannerPageHeight.take('phantasialand'), 130);
+  assert.equal(plannerPageHeight.take('phantasialand'), null);
+});
+
+test('another park asking gets nothing, and the hand-off is gone for the right park too', () => {
+  plannerPageHeight.set({ parkSlug: 'phantasialand', cm: 130 });
+  assert.equal(plannerPageHeight.take('toverland'), null);
+  assert.equal(plannerPageHeight.take('phantasialand'), null);
+});
+
+test('a hand-off older than ten seconds is not found', () => {
+  const realNow = Date.now;
+  try {
+    plannerPageHeight.set({ parkSlug: 'phantasialand', cm: 130 });
+    const t0 = realNow();
+    Date.now = () => t0 + 10_001;
+    assert.equal(plannerPageHeight.take('phantasialand'), null);
+  } finally {
+    Date.now = realNow;
+  }
+});
+
+console.log('next.config.ts');
+
+/** The `'key': 'value'` pairs of the object literal or rewrite loop that follows `anchor`. */
+function segmentsAfter(source, anchor) {
+  const start = source.indexOf(anchor);
+  assert.notEqual(start, -1, anchor);
+  const block = source.slice(start, source.indexOf('};', start));
+  return Object.fromEntries(
+    [...block.matchAll(/\b(en|de|fr|it|nl|es): '([^']+)'/g)].map((m) => [m[1], m[2]])
+  );
+}
+
+test('the header list and the rewrite list in next.config.ts match PARK_KIDS_SEGMENTS', () => {
+  const config = readFileSync(new URL('../next.config.ts', import.meta.url), 'utf8');
+  const headers = segmentsAfter(config, 'const parkKidsHeaderSegments');
+  const rewrites = segmentsAfter(config, 'const parkKidsSegments');
+  assert.deepEqual(headers, PARK_KIDS_SEGMENTS);
+  const { en, ...withoutEnglish } = PARK_KIDS_SEGMENTS;
+  assert.deepEqual(rewrites, withoutEnglish, 'English needs no rewrite');
+  assert.ok(en);
 });
 
 console.log(`\n${passed} passed`);
