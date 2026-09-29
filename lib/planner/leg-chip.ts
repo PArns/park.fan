@@ -65,19 +65,17 @@ export interface LegChipPlacement {
  *
  * A room smaller than the chip leaves the chip centred on it and therefore
  * overlapping both boxes by the same amount. Centring is the one degradation
- * that does not pick a side, and two things reach it:
- *
- * - A day somebody **drags** themselves, where nothing keeps two blocks apart.
- * - A block with **no figure**, whose box is a flat 40 px while the lane packing
- *   counts `MIN_BLOCK_MIN` for it — 20 px less on the desktop axis, 10 on the
- *   phone's — so its drawn bottom sits below where the packing thinks it ends.
- *   That disagreement is older than this function and is PAR-227.
+ * that does not pick a side. A day somebody **drags** themselves reaches it,
+ * because nothing keeps two blocks apart there. A block with **no figure** used to: its box was a flat 40 px while the lane
+ *   packing counted `MIN_BLOCK_MIN` for it, so its drawn bottom sat below where
+ *   the packing thought it ended (PAR-227). Both now count `NO_FIGURE_MIN`
+ *   minutes, on either axis.
  *
  * A day this app PLANS does not, and the measurement says so with a boundary on
  * it: 12.0 px is the floor over 267 legs of 46 planned park-days, and the short
  * chip is 12.0 px. Parks with no readable wait times were filtered out of that
- * corpus, which is exactly the second case above — so the floor is a statement
- * about days that have figures in them, not about every day.
+ * corpus, so the floor is a statement about days that have figures in them, not
+ * about every day.
  */
 export function legChipPlacement(
   legPx: number,
