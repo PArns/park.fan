@@ -1,5 +1,6 @@
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerEntry } from '@/lib/planner/types';
+import type { PartyRideFacts } from '@/lib/planner/party';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 
 /**
@@ -223,6 +224,27 @@ const RIDES: PlanDayRide[] = [
     longitude: 6.8820704,
   },
 ];
+
+/**
+ * When the party facts below were read.
+ *
+ * A second reading, on purpose: the day above is a frozen forecast, but a
+ * minimum height is a fact about the ride, and the chapter about the party
+ * quotes it as of the day it was written.
+ */
+export const DEMO_PARTY_READ_AT = '2026-09-29';
+
+/**
+ * What `/v1/parks/europe/germany/bruehl/phantasialand` answered on
+ * {@link DEMO_PARTY_READ_AT} for three rides: one with a minimum height, one with
+ * a minimum height that is also a water ride, and one where nobody wrote a limit
+ * down (`minimumHeight` absent). Verbatim, in the shape `partyFlags` reads.
+ */
+export const DEMO_PARTY_RIDES = {
+  taron: { minimumHeight: 140, mayGetWet: null },
+  chiapas: { minimumHeight: 130, mayGetWet: true },
+  moptisMonkeyDepot: { minimumHeight: null, mayGetWet: null },
+} satisfies Record<string, PartyRideFacts>;
 
 /**
  * The demo day, with the ride photos the proxy route would have put on it.
