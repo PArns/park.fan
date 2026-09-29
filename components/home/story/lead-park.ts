@@ -137,3 +137,49 @@ export async function getCurveCandidates(locale: string): Promise<LeadPark[]> {
 
   return CURVE_PARK_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
 }
+
+/**
+ * The parks the homepage's "with kids" chapter names, in order.
+ *
+ * Curated, not the locale's featured ranking: that list is what a locale searches for, and for
+ * `en` it holds no park that clears the page's gate (`KIDS_PAGE_GATE`), so an English reader
+ * would get no chapter. The same three parks serve every locale.
+ *
+ * Measured 2026-09-29 against `/v1/parks/<path>` (attractions with a `minimumHeight` / all):
+ * Phantasialand 35 of 40, Europa-Park 69 of 97, Parc Astérix 39 of 61. Gardaland (21 of 36) and
+ * Heide Park (20 of 39) clear the gate by one attraction and are left out: a park that slips
+ * under it turns the link into a 404. Re-measure before adding a park.
+ */
+const KIDS_ENTRY_SLUGS = ['phantasialand', 'europa-park', 'parc-asterix'] as const;
+
+/** {@link KIDS_ENTRY_SLUGS} resolved against the 24 h-cached geo structure, in this list's order. */
+export async function getKidsEntryParks(): Promise<LeadPark[]> {
+  const geoData = await catchNonFatal(getGeoStructure());
+  if (!geoData) return [];
+
+  const found = new Map<string, LeadPark>();
+  for (const continent of geoData.continents) {
+    for (const country of continent.countries) {
+      for (const city of country.cities) {
+        for (const park of city.parks) {
+          if (
+            !found.has(park.slug) &&
+            (KIDS_ENTRY_SLUGS as readonly string[]).includes(park.slug)
+          ) {
+            found.set(park.slug, {
+              continent: continent.slug,
+              country: country.slug,
+              city: city.slug,
+              parkSlug: park.slug,
+              name: park.name,
+              href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
+              countryCode: country.code,
+            });
+          }
+        }
+      }
+    }
+  }
+
+  return KIDS_ENTRY_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
+}

@@ -67,6 +67,7 @@ import { ChapterLiveWaits } from '@/components/home/story/chapter-live-waits';
 import { ChapterAI } from '@/components/home/story/chapter-ai';
 import { ChapterCalendar } from '@/components/home/story/chapter-calendar';
 import { ChapterBestTime } from '@/components/home/story/chapter-best-time';
+import { ChapterFamilies } from '@/components/home/story/chapter-families';
 import { ChapterShowsRestaurants } from '@/components/home/story/chapter-shows-restaurants';
 import { ChapterInPark } from '@/components/home/story/chapter-in-park';
 import { ChapterDictionary } from '@/components/home/story/chapter-dictionary';
@@ -409,6 +410,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <ChapterAI />
           <ChapterCalendar locale={locale} />
           <ChapterBestTime locale={locale} />
+          <ChapterFamilies locale={locale} />
           <ChapterShowsRestaurants />
           <ChapterInPark />
           <ChapterDictionary locale={locale as Locale} />

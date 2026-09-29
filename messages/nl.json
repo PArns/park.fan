@@ -395,6 +395,12 @@
     "platform": {
       "kicker": "Cijfers",
       "statsKicker": "Live uit het platform"
+    },
+    "families": {
+      "kicker": "Met kinderen",
+      "title": "Welke attracties mag mijn kind in? Kijk het na op lengte",
+      "lead": "Elk park noemt per attractie een minimumlengte. Voor deze parken staat op één pagina wat een kind bij welke lengte mag, in de stappen die het park zelf hanteert.",
+      "cardBody": "Welke attractie vanaf welke lengte."
     }
   },
   "footer": {

@@ -395,6 +395,12 @@
     "platform": {
       "kicker": "Chiffres",
       "statsKicker": "En direct de la plateforme"
+    },
+    "families": {
+      "kicker": "Avec enfants",
+      "title": "Quelles attractions mon enfant peut-il faire ? À vérifier selon la taille",
+      "lead": "Chaque parc indique une taille minimale par attraction. Pour ces parcs, une page liste ce qu’un enfant peut faire à chaque taille, selon les paliers que le parc fixe lui-même.",
+      "cardBody": "Quelle attraction à partir de quelle taille."
     }
   },
   "footer": {

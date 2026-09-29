@@ -395,6 +395,12 @@
     "platform": {
       "kicker": "Zahlen",
       "statsKicker": "Live aus der Plattform"
+    },
+    "families": {
+      "kicker": "Mit Kindern",
+      "title": "Welche Bahnen darf mein Kind fahren? Nach Körpergröße nachsehen",
+      "lead": "Jeder Park nennt pro Bahn eine Mindestgröße. Für diese Parks steht auf einer Seite, was ein Kind bei welcher Größe fahren darf, in den Stufen, die der Park selbst vorgibt.",
+      "cardBody": "Welche Bahn ab welcher Größe."
     }
   },
   "footer": {

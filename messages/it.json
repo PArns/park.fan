@@ -395,6 +395,12 @@
     "platform": {
       "kicker": "Numeri",
       "statsKicker": "In diretta dalla piattaforma"
+    },
+    "families": {
+      "kicker": "Con bambini",
+      "title": "Su quali giostre può salire mio figlio? Da controllare per altezza",
+      "lead": "Ogni parco indica un’altezza minima per attrazione. Per questi parchi una pagina mostra cosa può fare un bambino a ogni altezza, secondo i gradini che il parco stabilisce da solo.",
+      "cardBody": "Quale attrazione da quale altezza."
     }
   },
   "footer": {

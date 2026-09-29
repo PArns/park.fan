@@ -395,6 +395,12 @@
     "platform": {
       "kicker": "Numbers",
       "statsKicker": "Live from the platform"
+    },
+    "families": {
+      "kicker": "With kids",
+      "title": "Which rides can your child ride? Check by height",
+      "lead": "Every park posts a minimum height per ride. For these parks, one page lists what a child may ride at each height, on the steps the park sets itself.",
+      "cardBody": "Which ride from which height."
     }
   },
   "footer": {
