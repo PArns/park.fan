@@ -2453,7 +2453,7 @@
       "title": "Plan your park day ride by ride",
       "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser, and you need no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
-      "metaDescription": "Plan a theme park day against the forecast wait times: drop rides onto a timeline, check every transfer, and fit shows and breaks in between. No account.",
+      "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
       "introTitle": "Nothing planned yet",
       "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get from one ride to the next, and whether that is enough.",
