@@ -404,13 +404,15 @@ export function usePushSubscription() {
   // `enable()`, on the one path that has no button press to fail visibly.
   useEffect(() => {
     if (state !== 'on' || !availability) return;
-    let active = true;
     startTripAutoSync((tripId) => {
       void (async () => {
         try {
           const registration = await navigator.serviceWorker.getRegistration('/sw.js');
           const subscription = await registration?.pushManager.getSubscription();
-          if (!active) return;
+          // Overtaken by a switch-off (`forgetTrip` clears the id): nothing is
+          // left to point at. Not the effect's cleanup, which also runs on a
+          // remount and would drop a replacement that is still in flight.
+          if (getTripId() !== tripId) return;
           if (subscription) {
             // Read now rather than captured: the visitor may have narrowed the
             // topics since this effect ran.
@@ -429,13 +431,10 @@ export function usePushSubscription() {
         }
         // Not re-pointed, so the switch would be on and doing nothing. Off with
         // the teardown a press would run, and the plan taken back down with it.
-        if (active) void disable();
+        if (getTripId() === tripId) void disable();
       })();
     });
-    return () => {
-      active = false;
-      stopTripAutoSync();
-    };
+    return () => stopTripAutoSync();
   }, [state, availability, disable]);
 
   return {
