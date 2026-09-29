@@ -40,6 +40,7 @@ import {
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { translateContinent } from '@/lib/i18n/helpers';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Geist } from 'next/font/google';
@@ -160,14 +161,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // this repo; the await is only `getTranslations` reaching for the labels.
   const glossaryMenu = await getGlossaryMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
-  // parks menu opens onto. Kept to eleven — ten without news, nine where `showBlog` is false: this
+  // parks menu opens onto. Kept to twelve — eleven without news, ten where `showBlog` is false: this
   // is a hint about the primary navigation, and the country links are already in the rendered <nav>.
   //
   // It used to say "the same entries the bar renders, in the same order", and that has not been
   // true since four of them moved behind the "Mehr" trigger: they are still in the navigation,
   // one level down in a band that is `hidden` rather than unmounted, but the bar's order is no
-  // longer this one. The planner is in the bar and not in here, which predates that move and is
-  // PAR-248.
+  // longer this one. The planner is the bar's third entry and comes after the "more" entries here.
   const tNav = await getTranslations({ locale, namespace: 'navigation' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const navigationItems = [
@@ -177,6 +177,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     { name: tNav('bestTime'), path: `/${BEST_TIME_SEGMENTS[locale as Locale]}` },
     { name: tNav('glossary'), path: `/${GLOSSARY_SEGMENTS[locale as Locale]}` },
     { name: tNav('howto'), path: `/${HOWTO_SEGMENTS[locale as Locale]}` },
+    { name: tNav('planner'), path: `/${PLANNER_SEGMENTS[locale as Locale]}` },
     ...geoMenu.map((continent) => ({
       name: translateContinent(tGeo, continent.slug, locale, continent.name),
       path: `/parks/${continent.slug}`,
