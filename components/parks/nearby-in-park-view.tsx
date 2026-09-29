@@ -23,10 +23,11 @@ const NEAREST_LIMIT = 5;
 
 /**
  * A single in-park attraction row (name, distance, live wait/crowd badges). Shared by the
- * headliner list and the "nearest attractions" list so both render identically. When the ride is a
+ * headliner list, the "nearest attractions" list and the nowcast banner's covered rides
+ * (`NowcastCoveredRides`) so all three render identically. When the ride is a
  * headliner and `headlinerLabel` is set, a "Top" badge is shown next to the name in either list.
  */
-function InParkAttractionRow({
+export function InParkAttractionRow({
   attraction,
   awayLabel,
   headlinerLabel,

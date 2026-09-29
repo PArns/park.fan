@@ -103,7 +103,10 @@ test('ranking: without a position the queue decides', () => {
 
 test('ranking: walk plus queue, so a near ride beats a short queue far away', () => {
   // 600 m is ceil(600 × 1.6 / 67) = 15 minutes' walk: 15 + 5 = 20 against 0 + 15 = 15.
-  const out = rankCoveredRides([row('far', 5, { distance: 600 }), row('near', 15, { distance: 0 })]);
+  const out = rankCoveredRides([
+    row('far', 5, { distance: 600 }),
+    row('near', 15, { distance: 0 }),
+  ]);
   assert.deepEqual(
     out.map((r) => r.id),
     ['near', 'far']

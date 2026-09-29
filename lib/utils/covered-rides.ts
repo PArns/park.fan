@@ -102,9 +102,7 @@ export function rankCoveredRides<T extends CoveredCandidate>(
     .sort((a, b) => {
       if (a.total === null && b.total !== null) return 1;
       if (b.total === null && a.total !== null) return -1;
-      return (
-        (a.total ?? 0) - (b.total ?? 0) || a.walk - b.walk || a.c.name.localeCompare(b.c.name)
-      );
+      return (a.total ?? 0) - (b.total ?? 0) || a.walk - b.walk || a.c.name.localeCompare(b.c.name);
     })
     .slice(0, limit)
     .map(({ c }) => c);

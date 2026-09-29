@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   AlertTriangle,
@@ -87,6 +87,26 @@ const RAIN_LEAD_MINUTES = 60;
  *  away we escalate from a calm pre-warning to the urgent "seek shelter" wording.
  *  Beyond this lead time we keep it informational and drop the shelter advice. */
 const WARNING_LEAD_MINUTES = 30;
+
+/**
+ * How far ahead (minutes) rain or a thunderstorm makes the banner offer covered rides. Thirty is
+ * about what it takes to walk across a large park and join a queue; further out the forecast
+ * start moves by more than that between two nowcast updates, and the rides it would point at
+ * are the ones to ride before the rain, not during it.
+ */
+const SHELTER_LEAD_MINUTES = 30;
+
+/**
+ * Whether this warning is one to go under a roof for: rain or a thunderstorm that is falling now
+ * or starts within {@link SHELTER_LEAD_MINUTES}. Storm and hail are not in it: the ticket that
+ * asked for the offer (PAR-425) scoped it to rain and thunderstorms.
+ */
+function offersShelter(banner: BannerSpec, now: number): boolean {
+  if (banner.kind !== 'rain' && banner.kind !== 'thunderstorm') return false;
+  if (banner.state === 'active') return true;
+  const mins = minutesUntil(banner.startsAt, now);
+  return mins !== null && mins <= SHELTER_LEAD_MINUTES;
+}
 
 /**
  * Pick the highest-priority warning to surface. Order (per spec):
@@ -198,6 +218,8 @@ export interface NowcastAlert {
   heading: string;
   body: string;
   data: WeatherNowcast;
+  /** Rain or a thunderstorm now or within the shelter lead time — see `offersShelter`. */
+  offersShelter: boolean;
 }
 
 /**
@@ -341,7 +363,13 @@ export function useNowcastAlert({
     }
   }
 
-  return { kind: banner.kind, heading, body, data };
+  return {
+    kind: banner.kind,
+    heading,
+    body,
+    data,
+    offersShelter: offersShelter(banner, now),
+  };
 }
 
 /**
@@ -398,15 +426,20 @@ export function NowcastAlertToggle({
   );
 }
 
-/** The full warning: heading, sentence, update countdown and the precipitation timeline. */
+/**
+ * The full warning: heading, sentence, update countdown and the precipitation timeline — and,
+ * under them, whatever the host adds as `children` (the park page's covered rides).
+ */
 export function NowcastAlertBanner({
   alert,
   id,
   className,
+  children,
 }: {
   alert: NowcastAlert;
   id?: string;
   className?: string;
+  children?: ReactNode;
 }) {
   const { data, heading, body } = alert;
   const styles = BANNER_STYLES[alert.kind];
@@ -472,6 +505,7 @@ export function NowcastAlertBanner({
               className="w-full sm:min-w-0 sm:flex-1"
             />
           </div>
+          {children}
         </div>
       </div>
     </section>

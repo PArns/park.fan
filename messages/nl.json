@@ -633,9 +633,11 @@
       "wetHide": "Geen natte",
       "fastPass": "Wachtrij overslaan",
       "singleRider": "Single rider",
+      "covered": "Overdekt",
       "resetWet": "Natfilter wissen",
       "resetFastPass": "Wachtrijfilter wissen",
       "resetSingleRider": "Single-riderfilter wissen",
+      "resetCovered": "Overdekt-filter wissen",
       "openFilters": "Filters",
       "activeCount": "{count} actief"
     },
@@ -923,7 +925,11 @@
         "bodyEndsInMin": "Windstoten tot {gusts} – stopt over ongeveer {duration}."
       },
       "precipTimeline": "Neerslagverwachting tot {until}, piek {max} mm per 15 min.",
-      "precipProbability": "regenkans"
+      "precipProbability": "regenkans",
+      "covered": {
+        "headingNearby": "Overdekt in de buurt",
+        "heading": "Overdekte attracties"
+      }
     },
     "h1Suffix": "Live wachttijden",
     "intro": "Actuele wachttijden in {park} in {city} – live, elke vijf minuten opnieuw. Zie hoe druk het vandaag is, welke attracties nu open zijn en wanneer je bezoek het meest de moeite waard is – met AI-druktevoorspelling en de beste bezoekdagen.",

@@ -633,9 +633,11 @@
       "wetHide": "Senza bagnarsi",
       "fastPass": "Salta fila",
       "singleRider": "Single rider",
+      "covered": "Al coperto",
       "resetWet": "Azzera il filtro acqua",
       "resetFastPass": "Azzera il filtro salta fila",
       "resetSingleRider": "Azzera il filtro single rider",
+      "resetCovered": "Azzera il filtro al coperto",
       "openFilters": "Filtri",
       "activeCount": "{count, plural, one {# attivo} other {# attivi}}"
     },
@@ -923,7 +925,11 @@
         "bodyEndsInMin": "Raffiche fino a {gusts} – finiscono tra circa {duration}."
       },
       "precipTimeline": "Previsione di precipitazioni fino alle {until}, picco {max} mm ogni 15 min.",
-      "precipProbability": "probabilità di pioggia"
+      "precipProbability": "probabilità di pioggia",
+      "covered": {
+        "headingNearby": "Al coperto qui vicino",
+        "heading": "Attrazioni al coperto"
+      }
     },
     "h1Suffix": "Tempi di attesa in diretta",
     "intro": "Tempi di attesa in tempo reale per {park} a {city} – aggiornati ogni cinque minuti. Scopri quanta gente c’è oggi, quali attrazioni sono aperte e quando conviene di più la visita, con previsione IA dell’affluenza e i giorni migliori.",
