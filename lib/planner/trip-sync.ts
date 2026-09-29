@@ -67,8 +67,16 @@ function payloadOf(state: PlannerState): Record<string, unknown> {
  */
 export type TripSyncError = Exclude<HttpWriteError, { reason: 'not-found' }>;
 
-/** The id the plan is stored under, or why it is not stored. */
-export type TripSyncResult = { ok: true; id: string } | { ok: false; error: TripSyncError };
+/**
+ * The id the plan is stored under, or why it is not stored.
+ *
+ * `replaced` is set when the id the caller had is no longer the one in use: the
+ * server answered 404 for it and a new trip took its place. It is the whole
+ * interface to whoever keeps a second copy of the id (the push subscription):
+ * this file reports the change and never imports the other side.
+ */
+export type TripSyncResult =
+  { ok: true; id: string; replaced?: true } | { ok: false; error: TripSyncError };
 
 /**
  * Push the current plan to the server, creating a trip the first time.
@@ -109,12 +117,11 @@ export type TripSyncResult = { ok: true; id: string } | { ok: false; error: Trip
  * lost `/api/trips` with it, so the id is dropped and the create that would
  * replace it fails in the same breath.
  *
- * **What this does not close:** on that one remaining path the id really is
- * replaced, and nothing re-points the stored subscription at the new one — so a
- * trip expiring under an open tab leaves the same dangling reference described
- * above, for the one reason that is not a server having a bad minute. The repair
- * belongs on the push side rather than here (this file knows nothing about
- * subscriptions, deliberately) and is PAR-131.
+ * **The replaced id is reported, not repaired.** On that one remaining path the
+ * id really is replaced, and the stored subscription still names the old one.
+ * The result carries `replaced: true` so the caller that owns the subscription
+ * can re-point it (`usePushSubscription`, via `startTripAutoSync`'s callback);
+ * this file knows nothing about subscriptions, deliberately.
  */
 export async function syncTrip(): Promise<TripSyncResult> {
   const epoch = forgetCount;
@@ -146,7 +153,7 @@ export async function syncTrip(): Promise<TripSyncResult> {
     return SUPERSEDED;
   }
   setTripId(created.id);
-  return created;
+  return existing ? { ...created, replaced: true } : created;
 }
 
 /**
@@ -247,10 +254,14 @@ async function post(payload: Record<string, unknown>): Promise<TripSyncResult> {
  * Idempotent — calling it twice does not subscribe twice — and it returns the
  * stopper rather than exposing one, so a caller cannot arm it and lose the
  * handle.
+ *
+ * `onReplaced` is told the new id when a background sync had to start a new
+ * trip because the old one expired. Nobody else can hear that: the sync has no
+ * caller waiting on it, and the id is stored in two places.
  */
 let stopAutoSync: (() => void) | null = null;
 
-export function startTripAutoSync(): void {
+export function startTripAutoSync(onReplaced?: (id: string) => void): void {
   if (stopAutoSync) return;
 
   let timer: ReturnType<typeof setTimeout> | null = null;
@@ -260,7 +271,10 @@ export function startTripAutoSync(): void {
       // No id means push is not on, or the trip is gone. Either way this is
       // not the place to create one: that happens when the visitor turns the
       // switch on, deliberately.
-      if (getTripId()) void syncTrip();
+      if (!getTripId()) return;
+      void syncTrip().then((result) => {
+        if (result.ok && result.replaced) onReplaced?.(result.id);
+      });
     }, AUTO_SYNC_DEBOUNCE_MS);
   });
 
