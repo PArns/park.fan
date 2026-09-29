@@ -21,6 +21,8 @@ interface LiveParkDataProps {
   /** Does this park have a wait-time record page? Server-resolved, since the flag is a fact about
    *  the park's aggregate and not about the live poll — see `ParkTileSource.statsAvailable`. */
   statsAvailable?: boolean;
+  /** The height the rider-height filter opens on, from the URL's `?height=`, already validated. */
+  initialRiderHeight?: number | null;
   continent: string;
   country: string;
   city: string;
@@ -45,6 +47,7 @@ export function LiveParkData({
   initialData,
   todayIso,
   statsAvailable,
+  initialRiderHeight,
   continent,
   country,
   city,
@@ -99,6 +102,7 @@ export function LiveParkData({
         restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
         weatherAvailable={!!currentPark.weather?.current}
         statsAvailable={statsAvailable}
+        initialRiderHeight={initialRiderHeight}
         park={currentPark}
         continent={continent}
         country={country}

@@ -11,10 +11,11 @@ import type { GlossaryCategory } from '@/lib/glossary/types';
  * keeping a copy.
  *
  * **It is a curated order and not the type's member list**, which is what makes it a list at all:
- * `GlossaryCategory` has 13 members, `ai` currently holds no term, and `logistics` holds three and
- * is missing here. That omission is a defect on the overview rather than a decision (the three
- * terms fall out of the page and its search alike) and is filed as PAR-264 — fixing it there adds
- * the category to the menu with no change on this side, which is the point of one list.
+ * `GlossaryCategory` has 13 members and `ai` currently holds no term, so it stays out. Every
+ * category that does hold a term must be listed: a term in a category missing here falls out of
+ * the overview and its search alike (`logistics` did until PAR-264). `pnpm check:glossary-slugs`
+ * fails when that happens. Adding a category here adds it to the menu with no change on that
+ * side, which is the point of one list.
  *
  * **What the two readers share is this order, and they drop an empty category by asking different
  * questions.** The page groups the terms it loaded for one locale and skips a category its own map
@@ -35,6 +36,7 @@ export const GLOSSARY_CATEGORY_ORDER: GlossaryCategory[] = [
   'ride-experience',
   'dining',
   'shopping',
+  'logistics',
 ];
 
 /**

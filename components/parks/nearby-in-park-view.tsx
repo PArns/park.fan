@@ -32,12 +32,15 @@ export function InParkAttractionRow({
   awayLabel,
   headlinerLabel,
   showDistance = true,
+  onOpen,
 }: {
   attraction: AttractionWithDistance;
   awayLabel: string;
   headlinerLabel?: string;
   /** False when the fix is too coarse for a per-ride distance to mean anything. */
   showDistance?: boolean;
+  /** The row's link was followed. */
+  onOpen?: () => void;
 }) {
   // Non-operating rides (e.g. whole park closed) get a colored status badge instead of a wait time.
   const showStatusBadge =
@@ -50,6 +53,7 @@ export function InParkAttractionRow({
         href={convertApiUrlToFrontendUrl(attraction.url)}
         prefetch={false}
         className="group block"
+        onClick={onOpen}
       >
         <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
           {/* Favorite Star */}

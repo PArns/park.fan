@@ -547,6 +547,7 @@
     "crowdScale": {
       "title": "Drukteniveaus",
       "note": "100% is de wachttijd van de belangrijkste attracties op een typische dag in dit park.",
+      "glossaryLink": "Wat is een drukteniveau?",
       "upTo": "tot {max}%",
       "between": "{min}–{max}%",
       "above": "meer dan {min}%"
@@ -1117,6 +1118,38 @@
         "varSampleDays": "Gemeten openingsdagen"
       }
     },
+    "kidsPage": {
+      "breadcrumb": "Met kinderen",
+      "h1Suffix": "met kinderen",
+      "metaTitle": "{park} met kinderen: attracties per lengte",
+      "metaTitleShort": "{park} met kinderen",
+      "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? {withHeight} van de {total} attracties noemen een minimumlengte, de eerste vanaf {low} cm.",
+      "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? {withHeight} van de {total} attracties noemen een minimumlengte, de eerste vanaf {low} cm.",
+      "lead": "{inParkLeading} noemen {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
+      "tiersTitle": "Wat kan bij welke lengte",
+      "tiersHint": "{withHeight} van de {total} attracties noemen een minimumlengte. Elke stap is een grens die het park zelf opgeeft.",
+      "noLimitTitle": "Geen minimumlengte opgegeven",
+      "noLimitSummary": "{count, plural, =1 {De attractie zonder opgave} other {De {count} attracties zonder opgave}}",
+      "noLimitNote": "Het park noemt voor deze attracties geen grens. Of ze voor elke lengte openstaan of de opgave ontbreekt, blijkt hier niet uit. Het bord bij de ingang van de attractie geldt.",
+      "rideableCount": "{rideable} van de {total} attracties",
+      "tierTitle": "Vanaf",
+      "newAtTier": "Nieuw bij deze lengte:",
+      "filterOnPark": "Filteren op de parkpagina",
+      "planForHeight": "Dag plannen voor deze lengte",
+      "method": {
+        "title": "Waar de lengtes vandaan komen",
+        "limits": "De grenzen zijn de minimumlengtes die het park voor zijn attracties publiceert. park.fan schat er geen. Een attractie zonder opgave telt als toegankelijk, net als in het lengtefilter op de parkpagina. Maximumlengtes bij kinderattracties tellen mee: een groter kind wordt daar niet meegeteld.",
+        "stand": "De gegevens worden elke dag opnieuw uitgelezen. In het park geldt het bord bij de ingang."
+      },
+      "nextTitle": "Verder naar",
+      "nextPark": "Actuele wachttijden",
+      "nextParkBody": "Welke attractie open is en hoe lang de rij nu is.",
+      "nextCalendar": "Wachttijdenkalender",
+      "nextCalendarBody": "Verwachte drukte dag voor dag, met vakanties en openingstijden.",
+      "linkTitle": "Met kinderen",
+      "linkAnchor": "{park} met kinderen",
+      "linkBody": "{withHeight} van de {total} attracties noemen een minimumlengte. Welke attractie vanaf welke lengte, in {steps} stappen."
+    },
     "planDayCta": "Een dag in {park} plannen",
     "dayComparison": {
       "compare": "Twee dagen vergelijken",
@@ -1362,6 +1395,9 @@
       "minHeightLabel": "Vanaf",
       "maxHeightLabel": "Tot",
       "mayGetWet": "Je kunt nat worden",
+      "exposureIndoor": "Attractie binnen, onder een dak.",
+      "exposureOutdoor": "Attractie buiten, zonder dak.",
+      "exposureCoveredQueue": "Attractie buiten, wachtrij overdekt.",
       "singleRider": "Single Rider",
       "virtualLine": "Virtuele wachtrij",
       "fastPassFree": "gratis",

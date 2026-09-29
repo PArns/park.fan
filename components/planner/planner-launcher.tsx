@@ -5,7 +5,7 @@ import { PlannerFlyoutHost } from './planner-launcher-button';
 import { PlannerEdgeTab } from './planner-edge-tab';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { trackPlannerOpened } from '@/lib/analytics/umami';
+import { trackPlannerClosed, trackPlannerOpened } from '@/lib/analytics/umami';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
 import { pastActiveDay } from '@/lib/planner/park-time';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
@@ -147,6 +147,7 @@ export function PlannerLauncher() {
     if (panelVisible === reported.current) return;
     reported.current = panelVisible;
     if (panelVisible) trackPlannerOpened(plannerUi.getOpenSource());
+    else trackPlannerClosed();
   }, [panelVisible]);
 
   /**

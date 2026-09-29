@@ -55,7 +55,6 @@ export function useNearbyAnalytics({
 
     if (nearbyData.type === 'nearby_parks') {
       trackNearbyParksLoaded({
-        count: (nearbyData.data as NearbyParksData).parks.length,
         type: 'nearby_parks',
         source: locationSource,
       });
@@ -64,7 +63,6 @@ export function useNearbyAnalytics({
       const parkData = nearbyData.data as NearbyAttractionsData;
       if (!parkData?.park) return;
       trackNearbyParksLoaded({
-        count: 1,
         type: 'in_park',
         source: locationSource,
         parkName: stripNewPrefix(parkData.park.name),

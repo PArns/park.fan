@@ -34,6 +34,8 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { ParkKidsLink } from '@/components/parks/park-kids-link';
+import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
 import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
@@ -199,7 +201,8 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 // behind the SSR content, so their cold/slow fetches never block this page's TTFB.
 export default async function ParkPage({ params, searchParams }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
-  const simScenarios = parseParkSimulation((await searchParams)?.state as string | undefined);
+  const query = await searchParams;
+  const simScenarios = parseParkSimulation(query?.state as string | undefined);
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
@@ -257,6 +260,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // this one fabricates data where `?sim=` refuses to.
   const park = parkLean ? applyParkSimulation(parkLean, simScenarios) : parkLean;
   const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
+
+  // The "with kids" page: whether this park has one (the gate reads the attractions the page
+  // holds already, so it costs no fetch), and the `?height=` its steps link here with. The height
+  // is checked against the park's own posted minima before it reaches the client.
+  const attractionsForKids = parkFull?.attractions ?? [];
+  const kidsData = kidsPageData(attractionsForKids);
+  const initialRiderHeight = initialRiderHeightFromParam(query?.height, attractionsForKids);
 
   if (!park) {
     // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
@@ -540,6 +550,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           initialData={park}
           todayIso={todayIso}
           statsAvailable={statsAvailable}
+          initialRiderHeight={initialRiderHeight}
           continent={continent}
           country={country}
           city={city}
@@ -559,6 +570,18 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             />
           }
         />
+        {kidsData && (
+          <ParkKidsLink
+            data={kidsData}
+            locale={locale as Locale}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            parkName={parkName}
+            articleDe={park.nameArticleDe}
+          />
+        )}
       </ParkPageShell>
     </RouteMessages>
   );

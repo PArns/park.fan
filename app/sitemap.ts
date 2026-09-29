@@ -12,6 +12,8 @@ import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
+import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
+import { parksWithKidsPage } from '@/lib/api/kids-page';
 import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
 import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import type { GlossaryTerm } from '@/lib/glossary/types';
@@ -371,6 +373,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.7,
         alternates: statsAlternates,
+      });
+    }
+  }
+
+  // ── The "with kids" page, for the parks that clear its gate ───────────────
+  // Gated on `kidsPageData` (20 rides with a `minimumHeight` and half of the park's attractions;
+  // 32 of 203 parks on 2026-09-29, PAR-356), the same predicate the route 404s on. The probe reads
+  // the park payload the park pages already read, one Data Cache entry per park per day.
+  //
+  // No `lastModified`, for the reason the record above has none: the payload is read for a whole
+  // class at once and a date would be one identical value across it.
+  const kidsParks = await parksWithKidsPage(catalogue);
+  for (const park of catalogue) {
+    if (!kidsParks.has(parkGeoKey(park))) continue;
+    const parkPath = `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+    const kidsAlternates = buildAlternates(
+      (locale) => `${parkPath}/${PARK_KIDS_SEGMENTS[locale as Locale]}`
+    );
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}${parkPath}/${PARK_KIDS_SEGMENTS[locale]}`,
+        changeFrequency: 'monthly',
+        priority: 0.6,
+        alternates: kidsAlternates,
       });
     }
   }

@@ -4,6 +4,28 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Größenstufen je Park auf einer eigenen Seite: „Mit Kindern“
+
+Der Größenfilter der Parkseite ist ein Schieberegler, also Zustand und kein Text. Die Zahlen dahinter
+stehen jetzt unter einer eigenen URL: `/de/parks/…/mit-kindern`, in allen sechs Sprachen über einen
+Rewrite auf dem englischen Routenordner `with-kids` (`mit-kindern`, `with-kids`, `met-kinderen`,
+`avec-enfants`, `con-bambini`, `con-ninos`).
+
+Die Seite hat eine Karte je Größe, bei der sich die Antwort des Parks ändert (seine eigenen
+Mindestgrößen), mit der Zahl des Reglers („23 von 40“, dasselbe `canRideAtHeight`) und den Bahnen, die
+genau ab dieser Größe dazukommen, jede mit Link auf ihre Ride-Seite. Vor der ersten Stufe stehen die
+Attraktionen ohne veröffentlichte Mindestgröße, ausdrücklich ohne das Versprechen, dass sie für jede
+Größe frei sind. Jede Stufe hat zwei Links: die Parkseite mit `?height=`, deren Regler dann auf dieser
+Stufe startet, und „Tag für diese Größe planen“, der die Größe an den Wizard des Planers übergibt
+(`lib/planner/page-height.ts`, wie beim Datum aus dem Kalender) und dabei auf den Chip darunter rundet.
+
+**Gegatet auf die Entscheidung des PO vom 29.09.:** mindestens 20 Attraktionen mit `minimumHeight`
+und mindestens die Hälfte aller Attraktionen des Parks, eine Konstante (`KIDS_PAGE_GATE`). Am
+Zensus dieses Tages sind das 32 von 203 Parks, also 192 URLs (die 41 im Beschluss sind die Zahl für jede der beiden Bedingungen allein). Hansa-Park und Efteling bekommen keine
+Seite. Die Parkseite verlinkt sie nur für Parks über der Grenze, die Sitemap ebenso, und die Route
+liefert darunter 404. ISR mit Tagesfenster wie die Statistikseite. `pnpm test:park-kids`. Konzept:
+[dedicated-landing-pages.md §12](seo/dedicated-landing-pages.md).
+
 ## Unreleased – Homepage and trip planner: copy without the quips
 
 The homepage bands and the trip-planner page read as generated, and not because of single words:

@@ -13,7 +13,6 @@ import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
   DRAG_SNAP_MIN,
-  MIN_BLOCK_MIN,
   SNAP_MIN_COARSE,
   SNAP_MIN_FINE,
   clampStart,
@@ -22,6 +21,7 @@ import {
   latestStart,
   minuteAt,
   packLanes,
+  packedSpanMinutes,
   rideFloor,
   snapTo,
   yFor,
@@ -296,10 +296,12 @@ export function PlannerDayGrid({
       // into two columns at every width: every block half as wide, its name
       // truncated, and the leg chips lying over the blocks beside them.
       //
-      // `MIN_BLOCK_MIN` stays, and is the reason this is a floor rather than the
-      // bare wait: a ten-minute queue is still drawn in a box a line of text
-      // fits in, and two of those must be laid out as the boxes they are.
-      const spanMinutes = Math.max(wait ?? 0, MIN_BLOCK_MIN);
+      // `packedSpanMinutes` is a floor rather than the bare wait: a ten-minute
+      // queue is still drawn in a box a line of text fits in, and two of those
+      // must be laid out as the boxes they are. A block with no figure is
+      // drawn at `NO_FIGURE_MIN` and packed at the same, so its lane and its
+      // box end on the same line (PAR-227).
+      const spanMinutes = packedSpanMinutes(wait);
 
       // "Meldet gerade geschlossen" is a statement about NOW, so it belongs to a
       // block that is near now — the same window the live wait already obeys.
@@ -372,7 +374,7 @@ export function PlannerDayGrid({
 
     return { rows, lanes, legs, broken };
     // No `grid` and no `pxPerMin`: everything computed here is in MINUTES, which
-    // is what {@link MIN_BLOCK_MIN} bought — the floor under a span used to be
+    // is what {@link packedSpanMinutes} bought — the floor under a span used to be
     // written as `MIN_BLOCK_PX / grid.pxPerMin`, so a layout that has nothing to
     // do with the scale was recomputed whenever the scale changed.
   }, [entries, day, ridesBySlug, liveWaits, nowMinute]);

@@ -51,6 +51,7 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 | `/{locale}/parks/…/{park}/{calendar-segment}` (hub)                     | 0.8      | weekly          | –                         |
 | `/{locale}/parks/…/{park}/{calendar-segment}/{y}/{m}` (own sitemap)     | 0.4–0.6  | weekly–monthly  | –                         |
 | `/{locale}/parks/…/{park}/{stats-segment}` (**displayable parks only**) | 0.7      | monthly         | –                         |
+| `/{locale}/parks/…/{park}/{kids-segment}` (**gated parks only**)        | 0.6      | monthly         | –                         |
 | `/{locale}/{glossary-segment}/{term}`                                   | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
 | `/{locale}/blog/{slug}` (**blog-live locales only**)                    | 0.6      | monthly         | `updatedAt ?? date`       |
 | `/{locale}/blog` + category/tag/author listings                         | 0.4–0.7  | daily–weekly    | newest post in the list   |
@@ -67,6 +68,13 @@ build; a park whose probe fails is left out rather than advertised, since a day 
 is cheaper than a 404 in the file. It carries no `lastModified` for the same reason the calendar
 hub carries none: the aggregate behind it is recomputed daily on every park at once, and one
 identical date across a whole URL class is the signal that gets `lastmod` discounted wholesale.
+
+**The "with kids" page is the second class that is not the whole catalogue.** It is published only
+for a park with at least 20 attractions that post a `minimumHeight` and at least half of its
+attractions doing so (`KIDS_PAGE_GATE`, `lib/parks/kids-page.ts`, PAR-356): 32 parks on 2026-09-29,
+so 192 URLs. `app/sitemap.ts` asks `parksWithKidsPage()`, which reads the park payload the park pages
+read anyway (one Data Cache entry per park per day); a failed probe leaves the park out. No
+`lastModified`, for the reason the record carries none. The main file grows by 192 URLs.
 
 The six URLs still marked `–` are `/`, `/search`, `/fancast`, `/contribute`, the guide and the
 best-time hub, ×6 locales — 36 in total. They are code, not content: nothing writes down when they

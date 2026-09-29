@@ -36,8 +36,8 @@ import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
  *
  * **The glossary card carries its categories too (PAR-235)**, the one place in the app that says
  * what is in the dictionary before a reader is already inside it: 274 terms behind one bare
- * `/glossary` link until now, and eleven category rows below the card — the categories the
- * overview itself draws, which is twelve minus the one PAR-264 is about. Terms themselves stay
+ * `/glossary` link until now, and twelve category rows below the card — the categories the
+ * overview itself draws (eleven until PAR-264 added `logistics`). Terms themselves stay
  * out, like the parks panel's 144 cities and the blog panel's 31 tags — see
  * `lib/navigation/glossary-menu.ts`, which also explains why the labels arrive as props instead of
  * a `useTranslations('glossary')` here. Each row points at `/{segment}#{category}`, an anchor on

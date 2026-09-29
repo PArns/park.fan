@@ -547,6 +547,7 @@
     "crowdScale": {
       "title": "Niveaux d’affluence",
       "note": "100 % correspond aux temps d’attente des attractions principales lors d’une journée typique dans ce parc.",
+      "glossaryLink": "Qu’est-ce qu’un niveau d’affluence ?",
       "upTo": "jusqu’à {max} %",
       "between": "{min}–{max} %",
       "above": "plus de {min} %"
@@ -1117,6 +1118,38 @@
         "varSampleDays": "Jours d’ouverture mesurés"
       }
     },
+    "kidsPage": {
+      "breadcrumb": "Avec des enfants",
+      "h1Suffix": "avec des enfants",
+      "metaTitle": "{park} avec des enfants : attractions par taille",
+      "metaTitleShort": "{park} avec des enfants",
+      "metaDescription": "Dès quelle taille un enfant peut-il monter {inPark} ({city}) ? {withHeight} attractions sur {total} indiquent une taille minimale, les premières dès {low} cm.",
+      "metaDescriptionNoCity": "Dès quelle taille un enfant peut-il monter {inPark} ? {withHeight} attractions sur {total} indiquent une taille minimale, les premières dès {low} cm.",
+      "lead": "{inParkLeading}, {withHeight} attractions sur {total} indiquent une taille minimale, en {steps} paliers. Cette page montre ce qu'un enfant peut faire à chaque taille.",
+      "tiersTitle": "Ce qui est possible à chaque taille",
+      "tiersHint": "{withHeight} attractions sur {total} indiquent une taille minimale. Chaque palier est une limite que le parc annonce lui-même.",
+      "noLimitTitle": "Sans taille minimale indiquée",
+      "noLimitSummary": "{count, plural, =1 {L'attraction sans indication} other {Les {count} attractions sans indication}}",
+      "noLimitNote": "Le parc n'indique aucune limite pour celles-ci. On ne sait pas si l'attraction est ouverte à toutes les tailles ou si l'information manque. C'est le panneau à l'entrée de l'attraction qui fait foi.",
+      "rideableCount": "{rideable} attractions sur {total}",
+      "tierTitle": "Dès",
+      "newAtTier": "Nouveau à cette taille :",
+      "filterOnPark": "Filtrer sur la page du parc",
+      "planForHeight": "Planifier une journée pour cette taille",
+      "method": {
+        "title": "D'où viennent les tailles",
+        "limits": "Les limites sont les tailles minimales que le parc publie pour ses attractions. park.fan n'en estime aucune. Une attraction sans indication compte comme accessible, comme dans le filtre de taille de la page du parc. Les tailles maximales des attractions pour enfants comptent aussi : un enfant plus grand n'y est pas compté.",
+        "stand": "Les données sont relues chaque jour. Sur place, c'est le panneau à l'entrée qui fait foi."
+      },
+      "nextTitle": "Continuer vers",
+      "nextPark": "Temps d'attente en direct",
+      "nextParkBody": "Quelles attractions sont ouvertes et combien de temps dure chaque file en ce moment.",
+      "nextCalendar": "Calendrier des temps d'attente",
+      "nextCalendarBody": "Affluence attendue jour par jour, avec vacances et horaires.",
+      "linkTitle": "Avec des enfants",
+      "linkAnchor": "{park} avec des enfants",
+      "linkBody": "{withHeight} attractions sur {total} indiquent une taille minimale. Quelle attraction à partir de quelle taille, en {steps} paliers."
+    },
     "planDayCta": "Planifier une journée à {park}",
     "dayComparison": {
       "compare": "Comparer deux jours",
@@ -1362,6 +1395,9 @@
       "minHeightLabel": "Dès",
       "maxHeightLabel": "Jusqu’à",
       "mayGetWet": "Vous risquez d’être mouillé",
+      "exposureIndoor": "Attraction en intérieur, sous un toit.",
+      "exposureOutdoor": "Attraction en plein air, sans toit.",
+      "exposureCoveredQueue": "Attraction en plein air, file d’attente couverte.",
       "singleRider": "Single Rider",
       "virtualLine": "File virtuelle",
       "fastPassFree": "gratuit",
