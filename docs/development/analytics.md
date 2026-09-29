@@ -126,6 +126,27 @@ which of the two buttons it was.
 `parkName` rather than the slug, matching `tab_changed` and `nearby_parks_loaded`: a report that
 groups parks has to group them on one key, and shipping both would be the same fact twice.
 
+### Three events for the filters, the rain plan and the planner walk-away (Sep 2026)
+
+Added against a budget of 84,288 of 100,000 rows (export 2026-08-30 to 2026-09-29), and paid for by
+dropping `count` from `nearby_parks_loaded`: 5,559 rows a month, more than the three cost together.
+`type`, `source` and `parkName` stay, the in-park baseline reads them.
+
+| Event                    | Fires                                                                            | Property                                                                  | Cost                |
+| ------------------------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------- |
+| `attraction_filter_used` | a filter pill is switched **on** (not off); the height slider on its first value | `filter`: open, off_season, wet, fast_pass, single_rider, covered, height | 2 rows, under 1,000 |
+| `covered_ride_opened`    | a ride is opened from „Überdacht in der Nähe" in the rain banner                 | none                                                                      | 1 row, under 500    |
+| `planner_closed_empty`   | the planner panel closes and no day gained its first block in that opening       | none                                                                      | 1 row, under 500    |
+
+- **`filter` is a closed union** (`AttractionFilterName`). The wet pill has three states and counts
+  once, on the press that leaves „off". The phone's chips only turn a filter off and count nothing.
+- **`planner_closed_empty` is at most one per opening.** `trackPlannerOpened` starts an opening,
+  `trackPlanDayStarted` marks it, `trackPlannerClosed` fires and ends it. A day started while the
+  panel is closed belongs to no opening. Read with `planner_opened` and `plan_day_started`: 579
+  openings gave 197 first blocks in the export.
+- **Nothing fires under `?sim=` or `?state=`** (`isSimulatedVisit`), like the compass. On the
+  production deployment both parameters are ignored by the page, so a visit with one counts there.
+
 ---
 
 ## 2. The phantom-pageview trap (`data-exclude-hash`)

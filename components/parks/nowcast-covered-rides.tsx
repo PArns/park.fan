@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Umbrella } from 'lucide-react';
+import { trackCoveredRideOpened } from '@/lib/analytics/umami';
 import { InParkAttractionRow } from '@/components/parks/nearby-in-park-view';
 import { useInParkBlock } from '@/lib/hooks/use-in-park-block';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
@@ -95,6 +96,7 @@ export function NowcastCoveredRides({ park }: { park: ParkWithAttractions }) {
             awayLabel={tNearby('awayFrom')}
             headlinerLabel={tNearby('headlinerBadge')}
             showDistance={showDistance && ride.distance !== null}
+            onOpen={trackCoveredRideOpened}
           />
         ))}
       </ul>

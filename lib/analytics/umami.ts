@@ -28,7 +28,7 @@
  * Events & properties in use:
  * - favorite_add / favorite_remove: type, name
  * - nearby_permission_granted / nearby_permission_denied: (no properties)
- * - nearby_parks_loaded: count, type, source, parkName (parkName only when type is in_park)
+ * - nearby_parks_loaded: type, source, parkName (parkName only when type is in_park)
  * - search_opened: source
  * - hero_search_clicked: (no properties)
  * - search_result_clicked: resultType, position, queryLength, term_id
@@ -44,6 +44,9 @@
  * - planner_opened: source
  * - plan_day_started: parkName
  * - plan_optimized: parkName
+ * - planner_closed_empty: (no properties) — 1 row per closing without a first block
+ * - attraction_filter_used: filter — 2 rows per pill switched on
+ * - covered_ride_opened: (no properties) — 1 row per click in the rain banner's covered list
  * - ride_alert_set: source
  * - ride_alert_removed: (no properties)
  * - show_follow_add: source
@@ -65,6 +68,7 @@
  * one, and adding a way into the planner meant editing an analytics file.
  */
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
+import { isSimulationEnabled } from '@/lib/nearby-simulation';
 
 // Extend Window interface for Umami
 declare global {
@@ -123,6 +127,12 @@ export const UMAMI_EVENTS = {
   PLAN_DAY_STARTED: 'plan_day_started',
   // …and when the visitor lets the day sort itself. A click, not a load.
   PLAN_OPTIMIZED: 'plan_optimized',
+  // …and when the panel closes again without any day having gained its first block in that opening
+  PLANNER_CLOSED_EMPTY: 'planner_closed_empty',
+
+  // Park page: which filter pill gets switched on, and whether the rain banner's covered list is followed
+  ATTRACTION_FILTER_USED: 'attraction_filter_used',
+  COVERED_RIDE_OPENED: 'covered_ride_opened',
 
   // Push alerts — whether the feature is used at all, and through which entry point
   RIDE_ALERT_SET: 'ride_alert_set',
@@ -143,7 +153,6 @@ export const UMAMI_EVENTS = {
 type FavoriteType = 'park' | 'attraction' | 'show' | 'restaurant';
 
 export interface NearbyParksLoadedProps {
-  count: number;
   type: 'nearby_parks' | 'in_park';
   /**
    * Whether results came from GPS (user granted location) or IP fallback. Segments "geo allowed"
@@ -157,6 +166,10 @@ export interface NearbyParksLoadedProps {
   parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
+
+/** The pills of the park page's filter panel, plus the rider-height slider. Closed on purpose. */
+export type AttractionFilterName =
+  'open' | 'off_season' | 'wet' | 'fast_pass' | 'single_rider' | 'covered' | 'height';
 
 export interface SearchResultClickedProps {
   resultType: 'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary';
@@ -251,6 +264,17 @@ export function trackEvent(
   }
 }
 
+/**
+ * The team testing on its own phones: `?sim=` moves the reader, `?state=` patches the park. Neither is
+ * a visitor, so the events that only exist to be read as behaviour skip them, as the compass does.
+ * On the production deployment both parameters are ignored by the page, so there they count.
+ */
+function isSimulatedVisit(): boolean {
+  if (typeof window === 'undefined' || !isSimulationEnabled()) return false;
+  const params = new URLSearchParams(window.location.search);
+  return params.has('sim') || params.has('state');
+}
+
 // Convenience functions for common events
 
 export function trackFavoriteAdd(type: FavoriteType, name?: string): void {
@@ -343,7 +367,38 @@ export function trackSearchNoResults(props: SearchNoResultsProps): void {
  * run to ~50,000 openings a month before it were worth pricing again.
  */
 export function trackPlannerOpened(source: PlannerOpenedSource): void {
+  openingActive = true;
+  openingStartedADay = false;
   trackEvent(UMAMI_EVENTS.PLANNER_OPENED, { source });
+}
+
+/**
+ * Whether the panel is up, and whether a day gained its first block since it came up. Module state
+ * because the two ends live in different files (`PlannerLauncher` opens and closes, `usePlanner`
+ * counts the first block) and a closing has to know what happened in between.
+ */
+let openingActive = false;
+let openingStartedADay = false;
+
+/**
+ * The panel closed and nothing was planned in that opening.
+ *
+ * The other half of the funnel: 579 openings, 197 first blocks. This says how many of the rest walked
+ * away in the same opening, as against planning later, which `planner_opened` against
+ * `plan_day_started` cannot tell apart. No property: `planner_opened` already carries the way in, and
+ * a report joins the two on the session.
+ *
+ * At most once per opening: the flag is cleared here, so a second call without a new opening is
+ * silent. A day started while the panel is closed (a ride dragged onto the plan from the park page)
+ * belongs to no opening and changes nothing.
+ *
+ * Cost: 1 billed row per closing without a plan, under 500 a month.
+ */
+export function trackPlannerClosed(): void {
+  if (!openingActive) return;
+  openingActive = false;
+  if (openingStartedADay || isSimulatedVisit()) return;
+  trackEvent(UMAMI_EVENTS.PLANNER_CLOSED_EMPTY);
 }
 
 /**
@@ -365,6 +420,7 @@ export function trackPlannerOpened(source: PlannerOpenedSource): void {
  * day somebody is filling in.
  */
 export function trackPlanDayStarted(parkName: string): void {
+  if (openingActive) openingStartedADay = true;
   trackEvent(UMAMI_EVENTS.PLAN_DAY_STARTED, { parkName });
 }
 
@@ -383,6 +439,33 @@ export function trackPlanDayStarted(parkName: string): void {
  */
 export function trackPlanOptimized(parkName: string): void {
   trackEvent(UMAMI_EVENTS.PLAN_OPTIMIZED, { parkName });
+}
+
+/**
+ * A filter pill on the park page was switched ON, and which.
+ *
+ * ONE property, `filter`, a closed union so a report cannot hold two spellings of one pill. The
+ * question is which pills are used at all: five were added over a few weeks, and the newest
+ * („Überdacht") has to show whether it earns its place. Switching off is not sent, it answers nothing
+ * the switching on did not; the wet pill's three states count once, on the press that leaves „off".
+ * The rider-height slider counts on its first value, not on every step of a drag.
+ *
+ * Cost: 2 billed rows per use, under 1,000 uses a month.
+ */
+export function trackAttractionFilterUsed(filter: AttractionFilterName): void {
+  if (isSimulatedVisit()) return;
+  trackEvent(UMAMI_EVENTS.ATTRACTION_FILTER_USED, { filter });
+}
+
+/**
+ * A ride was opened from „Überdacht in der Nähe", the covered list in the rain banner.
+ *
+ * No property: the list is the only place it fires, and which ride is not the question, whether
+ * anybody takes the rain plan is. Cost: 1 billed row per click, under 500 a month.
+ */
+export function trackCoveredRideOpened(): void {
+  if (isSimulatedVisit()) return;
+  trackEvent(UMAMI_EVENTS.COVERED_RIDE_OPENED);
 }
 
 /**

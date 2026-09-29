@@ -32,6 +32,7 @@ import type { WetMode } from '@/lib/hooks/use-attraction-filter';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
+import { trackAttractionFilterUsed, type AttractionFilterName } from '@/lib/analytics/umami';
 
 interface AttractionFilterPanelProps {
   inputRef: React.RefObject<HTMLInputElement | null>;
@@ -179,6 +180,11 @@ export function AttractionFilterPanel({
   onToggleOnlyCovered,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
+  /** A pill's handler that reports the press only when it switches the filter ON. */
+  const counted = (filter: AttractionFilterName, on: boolean, handler: () => void) => () => {
+    if (!on) trackAttractionFilterUsed(filter);
+    handler();
+  };
   const { unit } = useTemperatureUnit();
   const [isFocused, setIsFocused] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -231,7 +237,10 @@ export function AttractionFilterPanel({
         className={className}
         stops={heightStops}
         value={riderHeight}
-        onChange={onRiderHeightChange}
+        onChange={(cm) => {
+          if (riderHeight === null && cm !== null) trackAttractionFilterUsed('height');
+          onRiderHeightChange(cm);
+        }}
         rideableCount={rideableCount}
         totalCount={totalCount}
       />
@@ -255,7 +264,7 @@ export function AttractionFilterPanel({
                   icon={DoorOpen}
                   label={t('filterSection.openNow')}
                   pressed={onlyOpen}
-                  onToggle={onToggleOnlyOpen}
+                  onToggle={counted('open', onlyOpen, onToggleOnlyOpen)}
                 />
               )}
               {offSeasonCount > 0 && (
@@ -263,7 +272,7 @@ export function AttractionFilterPanel({
                   size="md"
                   count={offSeasonCount}
                   shown={showOffSeason}
-                  onToggle={onToggleOffSeason}
+                  onToggle={counted('off_season', showOffSeason, onToggleOffSeason)}
                 />
               )}
             </div>
@@ -290,7 +299,7 @@ export function AttractionFilterPanel({
                   label={wetLabel}
                   labels={wetLabels}
                   pressed={wetMode !== null}
-                  onToggle={onCycleWet}
+                  onToggle={counted('wet', wetMode !== null, onCycleWet)}
                 />
               )}
               {showFastPass && (
@@ -299,7 +308,7 @@ export function AttractionFilterPanel({
                   icon={Ticket}
                   label={fastPassLabel ?? t('filterSection.fastPass')}
                   pressed={onlyFastPass}
-                  onToggle={onToggleOnlyFastPass}
+                  onToggle={counted('fast_pass', onlyFastPass, onToggleOnlyFastPass)}
                 />
               )}
               {showSingleRider && (
@@ -308,7 +317,7 @@ export function AttractionFilterPanel({
                   icon={Users}
                   label={t('filterSection.singleRider')}
                   pressed={onlySingleRider}
-                  onToggle={onToggleOnlySingleRider}
+                  onToggle={counted('single_rider', onlySingleRider, onToggleOnlySingleRider)}
                 />
               )}
               {showCovered && (
@@ -317,7 +326,7 @@ export function AttractionFilterPanel({
                   icon={Umbrella}
                   label={t('filterSection.covered')}
                   pressed={onlyCovered}
-                  onToggle={onToggleOnlyCovered}
+                  onToggle={counted('covered', onlyCovered, onToggleOnlyCovered)}
                 />
               )}
             </div>
