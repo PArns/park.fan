@@ -35,7 +35,15 @@ import type {
  */
 
 export type ParkSimScenario =
-  'warning' | 'extreme' | 'holiday' | 'bridge' | 'school' | 'neighbors' | 'busy' | 'closed';
+  | 'warning'
+  | 'extreme'
+  | 'holiday'
+  | 'bridge'
+  | 'school'
+  | 'neighbors'
+  | 'busy'
+  | 'closed'
+  | 'rain';
 
 const SCENARIOS = new Set<ParkSimScenario>([
   'warning',
@@ -46,9 +54,13 @@ const SCENARIOS = new Set<ParkSimScenario>([
   'neighbors',
   'busy',
   'closed',
+  'rain',
 ]);
 
-/** `all` expands to everything that can co-exist — `closed` is left out, it contradicts `busy`. */
+/**
+ * `all` expands to everything that can co-exist — `closed` is left out, it contradicts `busy`.
+ * `rain` is left out too: it replaces the nowcast's rain forecast, and `all` predates it.
+ */
 const ALL: ParkSimScenario[] = ['warning', 'holiday', 'bridge', 'school', 'neighbors', 'busy'];
 
 /**
@@ -255,12 +267,28 @@ export function applyNowcastSimulation(
 ): WeatherNowcast | null {
   if (!nowcast || scenarios.length === 0) return nowcast;
   const has = (s: ParkSimScenario) => scenarios.includes(s);
-  if (!has('warning') && !has('extreme')) return nowcast;
-  return {
-    ...nowcast,
-    warnings: [
-      ...(has('extreme') ? [warning('Extreme')] : []),
-      ...(has('warning') ? [warning('Severe')] : []),
-    ],
-  };
+  let next = nowcast;
+  if (has('warning') || has('extreme')) {
+    next = {
+      ...next,
+      warnings: [
+        ...(has('extreme') ? [warning('Extreme')] : []),
+        ...(has('warning') ? [warning('Severe')] : []),
+      ],
+    };
+  }
+  // Moderate rain from ten minutes after the request for an hour: inside the banner's rain
+  // lead time and the covered-ride offer's (PAR-425). Stamped at request time, so it stays ten
+  // minutes ahead on every poll. The precipitation steps are left as they came.
+  if (has('rain')) {
+    const now = Date.now();
+    next = {
+      ...next,
+      currentlyRaining: false,
+      rainStartsAt: new Date(now + 10 * 60_000).toISOString(),
+      rainStartsIntensity: 'moderate',
+      rainEndsAt: new Date(now + 70 * 60_000).toISOString(),
+    };
+  }
+  return next;
 }

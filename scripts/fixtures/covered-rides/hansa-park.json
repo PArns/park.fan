@@ -1,587 +1,587 @@
 {
- "capturedAt": "2026-09-29T06:24Z",
- "park": "hansa-park",
- "attractions": [
-  {
-   "id": "fadbe624-ffe9-432e-96bb-8292b67d2fc7",
-   "name": "Animal Babies of Peterhof",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "a319ef97-3e7d-42ba-9c30-9af9de6c0050",
-   "name": "\"Patio del Mar\"",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "599829c2-c8b1-4ff1-9433-6469501dda99",
-   "name": "HANSA Carousel",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "8d75e9bf-2d69-4cea-a08b-4eba6838cd6e",
-   "name": "Fondaco dei Tedeschi",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "22413283-fc24-42f2-b007-d3cd8c365bef",
-   "name": "Luftikus",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "a1deabcf-e994-4e83-a09a-c43e357d3051",
-   "name": "Pow Wow",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "7ee8725d-e48c-429b-a7ef-02d13fbb3e8f",
-   "name": "Störtebeker's Sea Raid",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "63b63a2c-a171-49b5-9f3b-b911d061886a",
-   "name": "Spanish Gardens",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "0d93f704-5479-4550-8824-138a736567dc",
-   "name": "Bear Sleigh",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "71199e90-3d7f-4005-9f1e-7d1bcae29b18",
-   "name": "Donkey cart",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "1cc83e62-81d4-4c7f-8131-e2d7ee763526",
-   "name": "Barcos del Mar",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "a2de97be-ce27-4b56-98f1-8ed68cd13d51",
-   "name": "Shooting Gallery",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "fcf0b2fb-7f41-42fd-b5f4-a7a32d07aebd",
-   "name": "Royal Scotsman",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "d6ee2cc8-7f89-44f2-b3ad-226d7f2a77c0",
-   "name": "Dr Livingstone’s Safari-Flight",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "3d8d1b6a-2e08-4570-ac2f-787105c85861",
-   "name": "Akira, the Giraffe",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "60a4d603-d1a7-4691-a0d3-926492e4bdf1",
-   "name": "\"HIGHLANDER\"",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "a9cdbad0-e50a-4917-a1bd-be4f844dd308",
-   "name": "Awilda’s Lookout",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "004ebb2d-1a35-451b-b1a2-4cd901cdeabf",
-   "name": "Hall of Mirrors",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "4e79d46f-ff0a-43f4-ac10-979173437f4c",
-   "name": "Wild Water Ride  - The Great Pike",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "494f2d70-c911-48d2-bbbf-0c2414388ee7",
-   "name": "New: Cornwall Coaster",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "164f9343-1cdc-4f04-8296-1598682328d4",
-   "name": "Bear Cave",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "a0eb88f2-87c3-40f0-bdd2-141d67c9c51d",
-   "name": "Escape of Novgorod",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "b7e28874-b103-478a-8f44-39e3773d7ca6",
-   "name": "Jungle Jeep",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "5b734b31-2bde-4ead-ae47-da6106dd7d4b",
-   "name": "Remote-controlled Boats",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "829c8218-95e2-4d50-9cb3-648dd4a645ca",
-   "name": "Störtebeker's Raft Trip",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "f30f564b-8c22-4e1f-8041-3f441c14b5df",
-   "name": "Rain Dance",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "fab52f05-be4b-46c8-b810-3d0096513071",
-   "name": "Super Splash Water Playground",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "5383ac20-beeb-4d6a-978d-f7e6032e9847",
-   "name": "HANSA Swing Ride",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "5eb2c44f-d945-42d2-8bee-e2159df01697",
-   "name": "Viking Baptism",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "f0d05a15-e73e-44ab-bd08-c39e423d11b6",
-   "name": "NEW LÜBECK Derby",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "cbcdeacc-6d69-4a0c-9736-842e8c06e60a",
-   "name": "Cog Ship Ride",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "eed3bbd5-6ca9-4d78-8edd-d543966177f4",
-   "name": "Nessie",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "38645252-7bf5-4499-8c08-2b90e724be7f",
-   "name": "Low-Rope Garden",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "d4c2502c-fce7-4064-a38e-fc06ba49a677",
-   "name": "Camino del Mar",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "9250e31e-a784-4d06-b9c9-8c13d7bb411b",
-   "name": "Mail Coach",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "7d5bfba7-7c97-48cb-a1be-71f98a077330",
-   "name": "Carrousel Baltique",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "c6359b94-85ee-4e71-88af-05bae56b2c6d",
-   "name": "Barracuda Slide",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "bb162eef-5179-4a9c-b119-033965de5c5c",
-   "name": "HANSA-PARK Express",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "20cbfa3b-e7d0-4e80-a3cd-03e01924cc4a",
-   "name": "\"Flower Magic\" Boat Tour",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "c98bf596-3946-4850-9915-f5d4f5f99869",
-   "name": "Stormy Dragon Boat Ride",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "7dde1236-bc6e-4036-8487-374a2c4f98b4",
-   "name": "Suspension Bridge, Floating and Shaking Bridge",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "748731ec-ecf1-4f75-a49c-ba6b45a205db",
-   "name": "Safari Jeeps",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "e7d11c49-3bbf-4dc6-a33f-181bf03bf45a",
-   "name": "The little Tsar",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "852d7a8f-2d7d-44bc-8197-fdf65e49ff42",
-   "name": "Störtebeker’s Rope Ladder Climb",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "8f345472-6cff-4128-bac6-83869c1e17d9",
-   "name": "Midgard Serpent",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "387323d1-717b-419e-ae67-64f42eb013d3",
-   "name": "Roanoke Water Playground",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "6eb1a924-ce19-4d44-be6c-76d2c54cbdce",
-   "name": "Pony Express",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "0e2dc9ef-fe42-40e9-8ed4-28b07ed20b2f",
-   "name": "Apache Lodge Tree House",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "3697cbd0-a6a6-492f-9f39-292892bd88cc",
-   "name": "Gamble Hall",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "ce199f91-317e-4357-883c-7e601308a661",
-   "name": "Viking Boat “Viking Odin”",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "8b7a2a72-06fb-486b-985d-61367195c922",
-   "name": "The lost trails of Roanoke",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "8cea5537-2d12-4975-a85e-7779c5506dc0",
-   "name": "Slide",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "9a32ef81-a279-462e-98f7-ec23d7d22261",
-   "name": "Elin's Travels through the Sky",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "cc9bcdc2-895d-4463-a332-110725f1b4fa",
-   "name": "1903 Somerset Traffic",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "1d47870c-8537-4191-b90d-9f1f31c0c1b6",
-   "name": "Einar's Fjord Cruise",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "299a082b-9341-4994-8f4c-80cbd278f065",
-   "name": "Super Trucks",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "f72cb087-b33b-46dd-bd03-ebba717c3244",
-   "name": "Crazy Mine",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "11ce9f90-ff58-4f0a-b7de-ba9a335dc065",
-   "name": "Can Knockdown and Fishing for Prize Bags",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "4ca5ba99-1e76-43ce-8731-d016aa54e0bc",
-   "name": "The Oath of KÄRNAN",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "2f572d1d-f410-4671-96c0-7de847b76427",
-   "name": "Gold Prospecting",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "9c8a358d-04ad-4a41-9799-78813862f272",
-   "name": "Awilda’s Adventure Ride",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "1ea0707f-e7fb-4e5a-9463-542e52bb4063",
-   "name": "Bronze Sea Lions",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "6fd2719f-5642-45e6-85f7-3a07b485fbaa",
-   "name": "Space Scooter",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "1d8d2287-9163-40cd-84db-6bec53e4fd0c",
-   "name": "Beach Trucks at the Pirates Camp",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "074c5666-6c1a-461f-88ce-0c19b9832f07",
-   "name": "Wave Rider",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "4ebe2f67-ed1e-42c9-a3f4-917507bbb299",
-   "name": "New in 2027: Buddenbrook-Turm",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "a7e042a7-d0d7-422a-ae5e-d78def62d910",
-   "name": "Swing Boat",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "12c5b2f0-bc0d-4f1a-bf2f-dd676d98fc42",
-   "name": "Peterhof Tower",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "f880f230-8606-4560-92cf-602300bc3013",
-   "name": "Flying Orcas",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "edeb6d6c-89fc-4872-8bba-eebdeec4784f",
-   "name": "Hanse Bowl",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "63f03d94-caa6-4bd7-aa5c-023764599227",
-   "name": "KÄRNAPULTEN",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "5425e0ce-8c3e-4aeb-9b23-396994101657",
-   "name": "The Navajo Trail High-Rope Garden",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "3124f286-5c26-4fda-a39b-cfe83b77c248",
-   "name": "Pirates Camp",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "05a2a41b-f11c-4de6-92d8-284e862a5d37",
-   "name": "Wall Climbing",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "9e7b7572-a66c-4a45-8060-6f55f099fcd7",
-   "name": "Road Locomotive",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "e541736b-6693-4d99-99e4-74623e89f561",
-   "name": "Super Splash",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "d79953e7-8afa-4fe8-b11f-46cf7b61b14e",
-   "name": "Viking Boat Trip",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "be5b0ee0-15c0-46e3-bb48-2939f49148eb",
-   "name": "Bouncy Hills",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "463bcb20-64bc-478c-8024-39806f106e4b",
-   "name": "Indian River",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "07c86fcf-0144-4e46-bbdc-191f1a2b9d8c",
-   "name": "Ball & Bounce House",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "083d5e6b-fc17-45f9-a806-65792d3b1f13",
-   "name": "Children's  Swing Boat Ride",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "de910230-aaed-4d00-8d42-d4da4415e212",
-   "name": "Tahiti Trail",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  },
-  {
-   "id": "4b26dce9-d952-4bc6-b35d-5efcd03b3f52",
-   "name": "Trolls‘ Playground",
-   "status": "CLOSED",
-   "isCurrentlyInSeason": null,
-   "waitTime": null
-  }
- ]
+  "capturedAt": "2026-09-29T06:24Z",
+  "park": "hansa-park",
+  "attractions": [
+    {
+      "id": "fadbe624-ffe9-432e-96bb-8292b67d2fc7",
+      "name": "Animal Babies of Peterhof",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "a319ef97-3e7d-42ba-9c30-9af9de6c0050",
+      "name": "\"Patio del Mar\"",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "599829c2-c8b1-4ff1-9433-6469501dda99",
+      "name": "HANSA Carousel",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "8d75e9bf-2d69-4cea-a08b-4eba6838cd6e",
+      "name": "Fondaco dei Tedeschi",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "22413283-fc24-42f2-b007-d3cd8c365bef",
+      "name": "Luftikus",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "a1deabcf-e994-4e83-a09a-c43e357d3051",
+      "name": "Pow Wow",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "7ee8725d-e48c-429b-a7ef-02d13fbb3e8f",
+      "name": "Störtebeker's Sea Raid",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "63b63a2c-a171-49b5-9f3b-b911d061886a",
+      "name": "Spanish Gardens",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "0d93f704-5479-4550-8824-138a736567dc",
+      "name": "Bear Sleigh",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "71199e90-3d7f-4005-9f1e-7d1bcae29b18",
+      "name": "Donkey cart",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "1cc83e62-81d4-4c7f-8131-e2d7ee763526",
+      "name": "Barcos del Mar",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "a2de97be-ce27-4b56-98f1-8ed68cd13d51",
+      "name": "Shooting Gallery",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "fcf0b2fb-7f41-42fd-b5f4-a7a32d07aebd",
+      "name": "Royal Scotsman",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "d6ee2cc8-7f89-44f2-b3ad-226d7f2a77c0",
+      "name": "Dr Livingstone’s Safari-Flight",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "3d8d1b6a-2e08-4570-ac2f-787105c85861",
+      "name": "Akira, the Giraffe",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "60a4d603-d1a7-4691-a0d3-926492e4bdf1",
+      "name": "\"HIGHLANDER\"",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "a9cdbad0-e50a-4917-a1bd-be4f844dd308",
+      "name": "Awilda’s Lookout",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "004ebb2d-1a35-451b-b1a2-4cd901cdeabf",
+      "name": "Hall of Mirrors",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "4e79d46f-ff0a-43f4-ac10-979173437f4c",
+      "name": "Wild Water Ride  - The Great Pike",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "494f2d70-c911-48d2-bbbf-0c2414388ee7",
+      "name": "New: Cornwall Coaster",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "164f9343-1cdc-4f04-8296-1598682328d4",
+      "name": "Bear Cave",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "a0eb88f2-87c3-40f0-bdd2-141d67c9c51d",
+      "name": "Escape of Novgorod",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "b7e28874-b103-478a-8f44-39e3773d7ca6",
+      "name": "Jungle Jeep",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "5b734b31-2bde-4ead-ae47-da6106dd7d4b",
+      "name": "Remote-controlled Boats",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "829c8218-95e2-4d50-9cb3-648dd4a645ca",
+      "name": "Störtebeker's Raft Trip",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "f30f564b-8c22-4e1f-8041-3f441c14b5df",
+      "name": "Rain Dance",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "fab52f05-be4b-46c8-b810-3d0096513071",
+      "name": "Super Splash Water Playground",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "5383ac20-beeb-4d6a-978d-f7e6032e9847",
+      "name": "HANSA Swing Ride",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "5eb2c44f-d945-42d2-8bee-e2159df01697",
+      "name": "Viking Baptism",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "f0d05a15-e73e-44ab-bd08-c39e423d11b6",
+      "name": "NEW LÜBECK Derby",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "cbcdeacc-6d69-4a0c-9736-842e8c06e60a",
+      "name": "Cog Ship Ride",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "eed3bbd5-6ca9-4d78-8edd-d543966177f4",
+      "name": "Nessie",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "38645252-7bf5-4499-8c08-2b90e724be7f",
+      "name": "Low-Rope Garden",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "d4c2502c-fce7-4064-a38e-fc06ba49a677",
+      "name": "Camino del Mar",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "9250e31e-a784-4d06-b9c9-8c13d7bb411b",
+      "name": "Mail Coach",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "7d5bfba7-7c97-48cb-a1be-71f98a077330",
+      "name": "Carrousel Baltique",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "c6359b94-85ee-4e71-88af-05bae56b2c6d",
+      "name": "Barracuda Slide",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "bb162eef-5179-4a9c-b119-033965de5c5c",
+      "name": "HANSA-PARK Express",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "20cbfa3b-e7d0-4e80-a3cd-03e01924cc4a",
+      "name": "\"Flower Magic\" Boat Tour",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "c98bf596-3946-4850-9915-f5d4f5f99869",
+      "name": "Stormy Dragon Boat Ride",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "7dde1236-bc6e-4036-8487-374a2c4f98b4",
+      "name": "Suspension Bridge, Floating and Shaking Bridge",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "748731ec-ecf1-4f75-a49c-ba6b45a205db",
+      "name": "Safari Jeeps",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "e7d11c49-3bbf-4dc6-a33f-181bf03bf45a",
+      "name": "The little Tsar",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "852d7a8f-2d7d-44bc-8197-fdf65e49ff42",
+      "name": "Störtebeker’s Rope Ladder Climb",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "8f345472-6cff-4128-bac6-83869c1e17d9",
+      "name": "Midgard Serpent",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "387323d1-717b-419e-ae67-64f42eb013d3",
+      "name": "Roanoke Water Playground",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "6eb1a924-ce19-4d44-be6c-76d2c54cbdce",
+      "name": "Pony Express",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "0e2dc9ef-fe42-40e9-8ed4-28b07ed20b2f",
+      "name": "Apache Lodge Tree House",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "3697cbd0-a6a6-492f-9f39-292892bd88cc",
+      "name": "Gamble Hall",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "ce199f91-317e-4357-883c-7e601308a661",
+      "name": "Viking Boat “Viking Odin”",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "8b7a2a72-06fb-486b-985d-61367195c922",
+      "name": "The lost trails of Roanoke",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "8cea5537-2d12-4975-a85e-7779c5506dc0",
+      "name": "Slide",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "9a32ef81-a279-462e-98f7-ec23d7d22261",
+      "name": "Elin's Travels through the Sky",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "cc9bcdc2-895d-4463-a332-110725f1b4fa",
+      "name": "1903 Somerset Traffic",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "1d47870c-8537-4191-b90d-9f1f31c0c1b6",
+      "name": "Einar's Fjord Cruise",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "299a082b-9341-4994-8f4c-80cbd278f065",
+      "name": "Super Trucks",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "f72cb087-b33b-46dd-bd03-ebba717c3244",
+      "name": "Crazy Mine",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "11ce9f90-ff58-4f0a-b7de-ba9a335dc065",
+      "name": "Can Knockdown and Fishing for Prize Bags",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "4ca5ba99-1e76-43ce-8731-d016aa54e0bc",
+      "name": "The Oath of KÄRNAN",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "2f572d1d-f410-4671-96c0-7de847b76427",
+      "name": "Gold Prospecting",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "9c8a358d-04ad-4a41-9799-78813862f272",
+      "name": "Awilda’s Adventure Ride",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "1ea0707f-e7fb-4e5a-9463-542e52bb4063",
+      "name": "Bronze Sea Lions",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "6fd2719f-5642-45e6-85f7-3a07b485fbaa",
+      "name": "Space Scooter",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "1d8d2287-9163-40cd-84db-6bec53e4fd0c",
+      "name": "Beach Trucks at the Pirates Camp",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "074c5666-6c1a-461f-88ce-0c19b9832f07",
+      "name": "Wave Rider",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "4ebe2f67-ed1e-42c9-a3f4-917507bbb299",
+      "name": "New in 2027: Buddenbrook-Turm",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "a7e042a7-d0d7-422a-ae5e-d78def62d910",
+      "name": "Swing Boat",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "12c5b2f0-bc0d-4f1a-bf2f-dd676d98fc42",
+      "name": "Peterhof Tower",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "f880f230-8606-4560-92cf-602300bc3013",
+      "name": "Flying Orcas",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "edeb6d6c-89fc-4872-8bba-eebdeec4784f",
+      "name": "Hanse Bowl",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "63f03d94-caa6-4bd7-aa5c-023764599227",
+      "name": "KÄRNAPULTEN",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "5425e0ce-8c3e-4aeb-9b23-396994101657",
+      "name": "The Navajo Trail High-Rope Garden",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "3124f286-5c26-4fda-a39b-cfe83b77c248",
+      "name": "Pirates Camp",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "05a2a41b-f11c-4de6-92d8-284e862a5d37",
+      "name": "Wall Climbing",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "9e7b7572-a66c-4a45-8060-6f55f099fcd7",
+      "name": "Road Locomotive",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "e541736b-6693-4d99-99e4-74623e89f561",
+      "name": "Super Splash",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "d79953e7-8afa-4fe8-b11f-46cf7b61b14e",
+      "name": "Viking Boat Trip",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "be5b0ee0-15c0-46e3-bb48-2939f49148eb",
+      "name": "Bouncy Hills",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "463bcb20-64bc-478c-8024-39806f106e4b",
+      "name": "Indian River",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "07c86fcf-0144-4e46-bbdc-191f1a2b9d8c",
+      "name": "Ball & Bounce House",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "083d5e6b-fc17-45f9-a806-65792d3b1f13",
+      "name": "Children's  Swing Boat Ride",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "de910230-aaed-4d00-8d42-d4da4415e212",
+      "name": "Tahiti Trail",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    },
+    {
+      "id": "4b26dce9-d952-4bc6-b35d-5efcd03b3f52",
+      "name": "Trolls‘ Playground",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": null
+    }
+  ]
 }
