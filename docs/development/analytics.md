@@ -144,8 +144,8 @@ dropping `count` from `nearby_parks_loaded`: 5,559 rows a month, more than the t
   `trackPlanDayStarted` marks it, `trackPlannerClosed` fires and ends it. A day started while the
   panel is closed belongs to no opening. Read with `planner_opened` and `plan_day_started`: 579
   openings gave 197 first blocks in the export.
-- **Nothing fires under `?sim=` or `?state=`** (`isSimulatedVisit`), like the compass. On the
-  production deployment both parameters are ignored by the page, so a visit with one counts there.
+- **Nothing fires under `?sim=` or `?state=`** (`isSimulatedVisit`), like the compass. It reads the
+  URL alone: `isSimulationEnabled()` is false in every built bundle, so it cannot gate a browser check.
 
 ---
 

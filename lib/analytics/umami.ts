@@ -68,7 +68,6 @@
  * one, and adding a way into the planner meant editing an analytics file.
  */
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
-import { isSimulationEnabled } from '@/lib/nearby-simulation';
 
 // Extend Window interface for Umami
 declare global {
@@ -267,10 +266,12 @@ export function trackEvent(
 /**
  * The team testing on its own phones: `?sim=` moves the reader, `?state=` patches the park. Neither is
  * a visitor, so the events that only exist to be read as behaviour skip them, as the compass does.
- * On the production deployment both parameters are ignored by the page, so there they count.
+ * Read from the URL alone: `isSimulationEnabled()` cannot be asked in the browser, where `VERCEL_ENV` is
+ * not exposed and `NODE_ENV` is `production` in every built bundle, so it would only ever say yes
+ * under `next dev`.
  */
 function isSimulatedVisit(): boolean {
-  if (typeof window === 'undefined' || !isSimulationEnabled()) return false;
+  if (typeof window === 'undefined') return false;
   const params = new URLSearchParams(window.location.search);
   return params.has('sim') || params.has('state');
 }
