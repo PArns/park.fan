@@ -1,5 +1,5 @@
 ---
-title: 'EQT will Parques Reunidos verkaufen, und der Movie Park gehört dazu'
+title: 'EQT sucht einen Käufer für Parques Reunidos'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
 author: patrick
@@ -24,9 +24,9 @@ parkLinks:
   - parque-de-atracciones-de-madrid
 rideLinks: false
 coverImage:
-  src: /media/movie-park-germany/van-helsings-factory.jpg
-  alt: 'Die Tankstellenfassade von Van Helsing’s Factory im Movie Park. Links an der rostigen Wellblechwand steht, halb hinter Bäumen, „For Sale“.'
-  caption: 'Van Helsing’s Factory Anfang September. Das „For Sale“ an der Wellblechwand ist Kulisse, seit Donnerstag stimmt es trotzdem.'
+  src: /media/bobbejaanland/background.jpg
+  alt: 'Ein riesiger Gorilla mit roten Augen greift nach einem Bahnwagen voller Fahrgäste.'
+  caption: 'Bobbejaanland gehört wie der Movie Park zu Parques Reunidos. Der Park steht in Belgien.'
   credit: 'Patrick Arns'
 seo:
   title: 'Parques Reunidos wird verkauft: Movie Park, Bobbejaanland, Slagharen'

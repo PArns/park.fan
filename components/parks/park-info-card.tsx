@@ -3,6 +3,7 @@ import { ExternalLink, MapPin, Navigation, Phone } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { parkMapsLinks } from '@/lib/parks/maps-links';
 import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { ParkInfo } from '@/lib/api/types';
 
 interface ParkInfoCardProps {
@@ -105,7 +106,10 @@ export async function ParkInfoCard({
               </p>
               <a
                 href={`tel:${info.phone.replace(/[^\d+]/g, '')}`}
-                className="hover:text-primary mt-1 block text-sm break-words transition-colors"
+                className={cn(
+                  'hover:text-primary mt-1 block text-sm break-words transition-colors',
+                  PHONE_HIT_AREA
+                )}
               >
                 {info.phone}
               </a>
@@ -131,7 +135,10 @@ export async function ParkInfoCard({
                   href={maps.google}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors"
+                  className={cn(
+                    'border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
+                    PHONE_HIT_AREA
+                  )}
                 >
                   Google Maps
                   <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
@@ -140,7 +147,10 @@ export async function ParkInfoCard({
                   href={maps.apple}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors"
+                  className={cn(
+                    'border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
+                    PHONE_HIT_AREA
+                  )}
                 >
                   Apple Maps
                   <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />

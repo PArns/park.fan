@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   AlertTriangle,
@@ -20,6 +20,7 @@ import { parkDayOf } from '@/lib/utils/park-day';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatWindSpeed } from '@/lib/utils/temperature';
 import { formatShortDuration } from '@/lib/utils/duration';
+import { isRainingNow, offersShelter } from '@/lib/utils/nowcast-shelter';
 import type { WeatherNowcast } from '@/lib/api/types';
 
 interface UseNowcastAlertParams {
@@ -121,15 +122,8 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
     };
   }
 
-  // Live rain: the API only sets `rainStartsAt` while rain is still ahead (it's null once
-  // rain is already falling), so a future start means it is NOT raining yet — no matter when
-  // it ends. Without this guard, a forecast that ends hours from now reads as "raining now".
-  const rainEndsTs = data.rainEndsAt ? Date.parse(data.rainEndsAt) : NaN;
-  const rainStartsTs = data.rainStartsAt ? Date.parse(data.rainStartsAt) : NaN;
-  const rainStartsInFuture = !Number.isNaN(rainStartsTs) && rainStartsTs > now;
-  const rainEndsInFuture = !Number.isNaN(rainEndsTs) && rainEndsTs > now;
-
-  const liveRaining = !rainStartsInFuture && (data.currentlyRaining || rainEndsInFuture);
+  // Live rain — see `isRainingNow` for why a future start means it is not raining yet.
+  const liveRaining = isRainingNow(data, now);
 
   if (liveRaining) {
     return {
@@ -198,6 +192,11 @@ export interface NowcastAlert {
   heading: string;
   body: string;
   data: WeatherNowcast;
+  /**
+   * Rain or a thunderstorm now or within the shelter lead time (`offersShelter`), read off the
+   * nowcast rather than off the picked warning, which a storm or hail may outrank.
+   */
+  offersShelter: boolean;
 }
 
 /**
@@ -341,7 +340,13 @@ export function useNowcastAlert({
     }
   }
 
-  return { kind: banner.kind, heading, body, data };
+  return {
+    kind: banner.kind,
+    heading,
+    body,
+    data,
+    offersShelter: offersShelter(data, now),
+  };
 }
 
 /**
@@ -398,15 +403,20 @@ export function NowcastAlertToggle({
   );
 }
 
-/** The full warning: heading, sentence, update countdown and the precipitation timeline. */
+/**
+ * The full warning: heading, sentence, update countdown and the precipitation timeline — and,
+ * under them, whatever the host adds as `children` (the park page's covered rides).
+ */
 export function NowcastAlertBanner({
   alert,
   id,
   className,
+  children,
 }: {
   alert: NowcastAlert;
   id?: string;
   className?: string;
+  children?: ReactNode;
 }) {
   const { data, heading, body } = alert;
   const styles = BANNER_STYLES[alert.kind];
@@ -474,6 +484,10 @@ export function NowcastAlertBanner({
           </div>
         </div>
       </div>
+      {/* Under the icon column rather than inside the text column: at 360 px the text column is
+          ~50 px narrower than the banner, and the rows put in here carry a name, a distance and
+          two badges on one line. */}
+      {children && <div className="relative">{children}</div>}
     </section>
   );
 }

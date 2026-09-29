@@ -389,12 +389,23 @@ const AVAILABILITY_CONCURRENCY = 8;
 export async function parksWithStatsPage(
   parks: readonly ParkGeoPath[]
 ): Promise<ReadonlySet<string>> {
+  return parksWhere(parks, (p) => hasParkStatsPage(p.continent, p.country, p.city, p.parkSlug));
+}
+
+/**
+ * The parks for which a probe answers `true`, asked {@link AVAILABILITY_CONCURRENCY} at a time.
+ *
+ * Shared by every "does this park have page X" gate the sitemap resolves in one pass, so the
+ * concurrency limit is written once. A probe must answer `false` rather than throw.
+ */
+export async function parksWhere(
+  parks: readonly ParkGeoPath[],
+  probe: (park: ParkGeoPath) => Promise<boolean>
+): Promise<ReadonlySet<string>> {
   const available = new Set<string>();
   for (let i = 0; i < parks.length; i += AVAILABILITY_CONCURRENCY) {
     const batch = parks.slice(i, i + AVAILABILITY_CONCURRENCY);
-    const answers = await Promise.all(
-      batch.map((p) => hasParkStatsPage(p.continent, p.country, p.city, p.parkSlug))
-    );
+    const answers = await Promise.all(batch.map(probe));
     answers.forEach((ok, j) => {
       if (ok) available.add(parkGeoKey(batch[j]));
     });

@@ -95,14 +95,14 @@ export function buildParkFaqItems(
   // Q0: Park-wide wait times today — targets the head query "{park} wait times (today)".
   // Uses live aggregate stats when the park is operating, else a generic evergreen answer.
   const stats = park.analytics?.statistics;
-  if (stats && stats.operatingAttractions > 0 && stats.avgWaitToday > 0) {
+  if (stats && stats.operatingAttractions > 0 && (stats.avgWaitToday ?? 0) > 0) {
     items.push({
       iconName: 'Clock2',
       question: t('waitTimesQ', args),
       answer: t('waitTimesA', {
         ...args,
-        avg: Math.round(stats.avgWaitToday),
-        peak: Math.round(stats.peakWaitToday),
+        avg: Math.round(stats.avgWaitToday ?? 0),
+        peak: Math.round(stats.peakWaitToday ?? 0),
         operating: stats.operatingAttractions,
       }),
     });

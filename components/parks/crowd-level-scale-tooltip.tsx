@@ -3,6 +3,7 @@
 import { useRef, useState, type ReactNode, type Ref } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import {
@@ -11,6 +12,7 @@ import {
   CROWD_LEVEL_PERCENT_RANGE,
   type ColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 
 /**
  * The trigger's box. Exported because the ride card's stand-in button has to be the same box, or
@@ -85,7 +87,13 @@ export function CrowdScaleTooltip({
       <TooltipTrigger
         ref={triggerRef}
         type="button"
-        className={CROWD_SCALE_TRIGGER_CLASS}
+        className={cn(
+          CROWD_SCALE_TRIGGER_CLASS,
+          // The badge is 22 px high. Outside a card the 44 px target can grow around it; inside a
+          // ride card it cannot: the badge row there is `overflow-hidden` and clips the
+          // pseudo-element to the row.
+          !insideLink && PHONE_HIT_AREA
+        )}
         onPointerDown={(event) => {
           tappedRef.current = event.pointerType !== 'mouse';
           // Only the opening half is ours. Radix's own pointerdown handler still runs, and
@@ -188,7 +196,19 @@ export function CrowdLevelScaleTooltip({ level, children }: CrowdLevelScaleToolt
   ) as Record<ColoredCrowdLevel, string>;
 
   return (
-    <CrowdScaleTooltip level={level} title={t('title')} rows={rows} note={t('note')}>
+    <CrowdScaleTooltip
+      level={level}
+      title={t('title')}
+      rows={rows}
+      note={
+        <>
+          {t('note')}{' '}
+          <GlossaryTermLink termId="crowd-level" showTooltip={false} className="underline">
+            {t('glossaryLink')}
+          </GlossaryTermLink>
+        </>
+      }
+    >
       {children}
     </CrowdScaleTooltip>
   );

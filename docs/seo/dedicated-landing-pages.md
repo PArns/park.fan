@@ -247,6 +247,44 @@ Three things the page needs that no section above covers, each written down wher
 
 ---
 
+## 12. The "with kids" page (PAR-356, built 2026-09-29)
+
+The second page built on the rule of §2. The park page has the height numbers behind a slider
+(`RiderHeightFilter`), which is state and not text; this URL prints them. Route
+`app/[locale]/parks/…/[park]/with-kids`, segments in `lib/parks/kids-segments.ts` (`mit-kindern`,
+`with-kids`, `met-kinderen`, `avec-enfants`, `con-bambini`, `con-ninos`), ISR on a one-day window on
+the same terms as §3 (both halves, see [an ISR route needs both
+halves](../rules/an-isr-route-needs-both-halves.md)). The three places the segment list lives in
+are the same three as in §4.
+
+**What is on it.** One card per height at which the park's own answer changes (its posted
+`minimumHeight`s, the same steps the slider stands on), with the slider's readout for that step
+("23 of 40", computed by `canRideAtHeight`) and the rides that open at exactly that height, each
+linking its ride page. Before the first step, the attractions with no limit posted, listed and
+labelled as what they are: the payload cannot tell "open to everyone" from "nobody wrote a limit
+down". Each step has two links: the park page with `?height=<cm>` (the slider opens on that step;
+the value is accepted only if it is one of the park's minima, `initialRiderHeightFromParam`) and
+"plan a day for this height", which leaves the height for the planner's wizard
+(`lib/planner/page-height.ts`, the same hand-off as the calendar's date) and rounds it **down** to
+the wizard's chips (`riderHeightChoiceFor`).
+
+**Which parks.** The gate is a decision of the PO from 2026-09-29 (option C, a pilot): at least 20
+attractions with a `minimumHeight` **and** at least half of the park's attractions, one constant
+(`KIDS_PAGE_GATE` in `lib/parks/kids-page.ts`) read by the route, the sitemap and the park page's
+link. On the census of that day it is 32 of 203 parks with attractions, so 192 URLs (the decision text says 41, which is the count for either condition alone: 41 parks have 20 or more rides with a limit, and 41 have 10 or more that make up half of the park); Hansa-Park (0 of 83) and Efteling (8 of 37) get none. 366 URLs (a gate of 10) were left out on purpose: the crawl
+budget pays for every URL and a gate is loosened after the re-measurement, not tightened after
+publication. The demand part of the ticket's first criterion was dropped by the same decision: no
+GSC export exists for family queries, and the four-week re-measurement answers it with real clicks.
+
+**How it is measured.** Search Console clicks on the new URLs, and the planner starts from this page:
+`planner_opened` with `source: 'kids-page'`, which is a value of an existing property, so the page
+adds no Umami event and no property ([Umami event budget](../rules/umami-event-budget.md)). The
+re-measurement after four weeks is its own ticket, created by the PO at merge.
+
+**Where it is linked.** From the park page only, in a server-rendered block under the ride tabs
+(`ParkKidsLink`), and only for a park that clears the gate. It is not a tile: the entry-tile row has
+seven cells at most and the layout is written around that number.
+
 ## Related
 
 - [SEO Roadmap](seo-roadmap.md) — the phases this continues

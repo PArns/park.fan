@@ -1,0 +1,317 @@
+{
+  "capturedAt": "2026-09-29T06:24Z",
+  "park": "phantasialand",
+  "attractions": [
+    {
+      "id": "1cc09665-7203-41ef-b7ba-37969a87721d",
+      "name": "Tittle Tattle Tree",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "78f8c8c5-7348-45d9-b984-95ec7e51ebbd",
+      "name": "Würmling Express",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "d9833356-1e38-4bb2-89ac-79dca6b691f5",
+      "name": "Crazy Bats",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "82313e9e-3738-45a2-9192-1f5e1c9657b3",
+      "name": "Colorado Adventure",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "61b2f579-a18b-4398-b316-656311860439",
+      "name": "Wirtl‘s Taubenturm",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "db438d2a-f28b-479f-a610-77138338ff12",
+      "name": "Wakobato",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "2f300d26-4982-45fb-8d3e-1d4eed6914e5",
+      "name": "Maus au Chocolat",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "87e0f305-9cd6-4b7d-9254-e230a6fab6d1",
+      "name": "Talocan",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "7c7bd29a-ff3a-4f24-864e-73a49f878a23",
+      "name": "F.L.Y.",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0
+    },
+    {
+      "id": "a6d18c60-5370-4920-b980-3ab6a316b49e",
+      "name": "Winja‘s Fear",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "f85c115a-9127-4829-a927-134f6c76b570",
+      "name": "River Quest",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "8eac899d-ff90-4099-b502-b890024fd889",
+      "name": "Pferdekarussell",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "df6e7ed1-cc6a-46d8-9d80-6657039da131",
+      "name": "Tikal",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "c8abbf98-dc6d-48af-9e3b-44d102b093d7",
+      "name": "Bolles Flugschule",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "0ebc34d2-d9ab-4e11-8a84-5a01551adc6f",
+      "name": "Die 3 Mausketiere",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": false,
+      "waitTime": 0
+    },
+    {
+      "id": "026b7257-d76a-41f5-bcc4-551549467697",
+      "name": "Black Mamba",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "4249fed8-46f7-4848-abae-57cf7953c9b2",
+      "name": "Taron",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "e8c9e77a-22b9-4490-b2ee-40ef203a2f96",
+      "name": "Mopti's Monkey Depot",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "c058b954-9411-4e25-a805-e2a2e8053952",
+      "name": "Avoras",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "62aec215-5007-4962-b658-d6fb89ca17bb",
+      "name": "Chiapas - DIE Wasserbahn",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "9de61506-cbd6-4025-b911-024bb5321016",
+      "name": "Der lustige Papagei",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "885fb4b3-0257-455d-b35c-c029e00e80d6",
+      "name": "Wözl‘s Duck Washer",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0
+    },
+    {
+      "id": "47b50767-d0fb-40a5-b722-2bedb95b81d5",
+      "name": "Wellenflug",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "6cdb6931-7acb-442c-8590-5d15788ffe3d",
+      "name": "Berliner Eislaufen",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": false,
+      "waitTime": 0
+    },
+    {
+      "id": "95e421f4-657c-4856-a72f-4a5f5f876052",
+      "name": "Ice skate hire",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": false,
+      "waitTime": 0
+    },
+    {
+      "id": "49229608-dfbc-484c-9638-d32cf392c143",
+      "name": "Mystery Castle",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "513b0c10-add2-4af1-8a94-79e83e44cd52",
+      "name": "Feng Ju Palace",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "14215810-e11d-4156-9d80-f8701697b3f9",
+      "name": "Bolles Riesenrad",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "332f4af9-a48d-49dc-8458-0d9ef0063e79",
+      "name": "Raik",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "50752d72-8133-4547-9558-9a95b4d41858",
+      "name": "Das verrückte Hotel Tartüff",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "5f4a7ea8-f20f-405e-aae1-67d354b41fc0",
+      "name": "Geister Rikscha",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "64c760b5-1e27-4173-a591-50f7d269eec5",
+      "name": "Deep in Africa – Adventure Trail",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "e35fb1a4-10cf-4575-bbcd-9b950bc23280",
+      "name": "Wupi‘s Wabi Wipper",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0
+    },
+    {
+      "id": "a204ab9a-fd68-400c-ba95-02993a4130d1",
+      "name": "Wolke‘s Luftpost",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "bdc66b6b-0f49-4df2-a4ce-d2ed8965fa0f",
+      "name": "Die fröhliche Bienchenjagd",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "d64606bb-92f1-4a5b-8d63-7fbfdc83686e",
+      "name": "Wözl‘s Wassertreter",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "outdoor"
+    },
+    {
+      "id": "472c8b2f-d545-426d-8bd8-08bbccced973",
+      "name": "Winja‘s Force",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0,
+      "indoorOutdoor": "indoor"
+    },
+    {
+      "id": "53892ed4-a5f0-40a7-9fd6-254d4db4c60c",
+      "name": "Bumper Klumpen",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0
+    },
+    {
+      "id": "e1d54b7e-c119-40be-bb6e-3367e8d689b5",
+      "name": "NEW: Wavy Battle",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0
+    },
+    {
+      "id": "2cafcc31-5073-4bd2-9f17-db02ddeeaf19",
+      "name": "NEW: Winni Splash",
+      "status": "CLOSED",
+      "isCurrentlyInSeason": null,
+      "waitTime": 0
+    }
+  ]
+}

@@ -109,8 +109,10 @@ shift. The client queries were never the problem: seed → settled measures 0.
   reserved 2.4× what the featured-parks grid needed and collapsed by 1284 px when the cards
   landed. The one shared placeholder is now built from the card's own rows: top panel 100 px,
   photo row 220 px and bottom panel 45 px from `sm` up, and the row's four lines below it. Same rule for the section
-  headings around them: a `text-xl` title is a 28 px line, and the featured-parks section
-  heads itself with a 76 px frosted pill where the others use a 40 px row.
+  headings around them: a `text-xl` title is a 28 px line. The featured-parks heading sat in a
+  76 px frosted pill until that pill turned out to be invisible on every page that draws it
+  (`bg-background/70` on `bg-background`) and only indented the heading 16 px off its cards;
+  it is the bare title row and intro line now, in the section and in its skeleton alike.
 - **The geometry may not depend on data; the content may.** The park header's "Auslastung
   heute" metric was rendered only once it had a value. Every input that could decide that
   arrives after the first paint — `crowdToday.level` comes from the deliberately last query on

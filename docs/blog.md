@@ -438,6 +438,12 @@ shape reads generated even when its content is fine.
 
 The general rules apply everywhere. These are the additions per surface.
 
+### 5.0 News posts (`category: news`)
+
+- **`date` is the day the post goes live** (merge day, Europe/Berlin), not the day it was written. Set the PR's day; if the PR merges on a later day, correct `date` before the merge.
+- Titles: one fact, at most 60 characters, no two in a week with the same shape ([blog writing style](rules/blog-writing-style.md)).
+- No cover image used twice among news posts ([media database](rules/media-database.md)).
+
 ### 5.1 UI strings (`messages/*.json`)
 
 Roughly 1,850 keys per locale, on every page, read a hundred times more often than any blog post.

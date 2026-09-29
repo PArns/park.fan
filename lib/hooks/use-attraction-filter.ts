@@ -6,6 +6,7 @@ import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
+import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
 
 /**
  * Shortest pattern Fuse can match, and therefore the shortest query worth running.
@@ -23,6 +24,12 @@ interface UseAttractionFilterOptions {
   activeTab: string;
   /** The park's own live status — a shut park closes every ride in it. */
   parkStatus?: ParkStatus;
+  /**
+   * The rider height the filter starts on, in cm — from `?height=` on the park's URL, which a
+   * park's "with kids" page links with. The server has already checked it against the park's own
+   * posted minima (`initialRiderHeightFromParam`), so it is always a stop of the slider.
+   */
+  initialRiderHeight?: number | null;
 }
 
 /**
@@ -79,15 +86,15 @@ const hasFastPass = (attraction: ParkAttraction): boolean => Boolean(attraction.
 const hasSingleRider = (attraction: ParkAttraction): boolean => attraction.hasSingleRider === true;
 
 /**
- * Search, rider-height, live-status, wet-ride, queue-jump, single-rider and seasonal
- * filtering for the park page's attractions and shows tabs: Fuse fuzzy search over all
- * attractions, the rider-height filter (stops derived from the park's own limits), the
- * four narrowing pills, off-season hiding (attractions + shows, with counts for the
+ * Search, rider-height, live-status, wet-ride, queue-jump, single-rider, covered and
+ * seasonal filtering for the park page's attractions and shows tabs: Fuse fuzzy search over
+ * all attractions, the rider-height filter (stops derived from the park's own limits), the
+ * five narrowing pills, off-season hiding (attractions + shows, with counts for the
  * "N off season" toggles), the wait-time-sorted headliners section, and the global
  * keyboard wiring for the search input (Escape clears, typing focuses).
  *
  * The filters compose in one order and it is the order they are declared in: height,
- * then the four pills, then season, then search — each reading the previous one's
+ * then the five pills, then season, then search — each reading the previous one's
  * output, so the headliner row, the land grid and the panel's counts can never
  * disagree.
  */
@@ -102,10 +109,11 @@ export function useAttractionFilter({
   shows,
   activeTab,
   parkStatus,
+  initialRiderHeight = null,
 }: UseAttractionFilterOptions) {
   const [searchQuery, setSearchQuery] = useState('');
   /** Rider height in cm, or `null` while the height filter is off. */
-  const [riderHeight, setRiderHeight] = useState<number | null>(null);
+  const [riderHeight, setRiderHeight] = useState<number | null>(initialRiderHeight);
   const [showOffSeasonAttractions, setShowOffSeasonAttractions] = useState(false);
   /** Show only rides that are OPERATING right now. */
   const [onlyOpen, setOnlyOpen] = useState(false);
@@ -115,6 +123,8 @@ export function useAttractionFilter({
   const [onlyFastPass, setOnlyFastPass] = useState(false);
   /** Show only rides with a single-rider line. */
   const [onlySingleRider, setOnlySingleRider] = useState(false);
+  /** Show only rides that keep you dry: indoors, or behind a roofed queue. */
+  const [onlyCovered, setOnlyCovered] = useState(false);
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -131,12 +141,13 @@ export function useAttractionFilter({
   // at lower priority, and React may interrupt that render for the next tap. Same split the search
   // box got below and the tab row got in `tabs-with-hash.tsx`, for the same reason.
   //
-  // Read as a set, not one by one. All five come from one update, so a render sees either every
+  // Read as a set, not one by one. All six come from one update, so a render sees either every
   // old value or every new one, and the grid can never show "open now" applied without "wet".
   const deferredOnlyOpen = useDeferredValue(onlyOpen);
   const deferredWetMode = useDeferredValue(wetMode);
   const deferredOnlyFastPass = useDeferredValue(onlyFastPass);
   const deferredOnlySingleRider = useDeferredValue(onlySingleRider);
+  const deferredOnlyCovered = useDeferredValue(onlyCovered);
   const deferredShowOffSeasonAttractions = useDeferredValue(showOffSeasonAttractions);
   // The rider height too. It was read live on the argument that a slider is not a tap, but a
   // press on the resting slider switches the filter on, the ✕ and the empty state's reset are
@@ -197,7 +208,8 @@ export function useAttractionFilter({
           (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
           matchesWet(a, deferredWetMode) &&
           (!deferredOnlyFastPass || hasFastPass(a)) &&
-          (!deferredOnlySingleRider || hasSingleRider(a))
+          (!deferredOnlySingleRider || hasSingleRider(a)) &&
+          (!deferredOnlyCovered || isCovered(a))
       );
 
     // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
@@ -221,6 +233,7 @@ export function useAttractionFilter({
     deferredWetMode,
     deferredOnlyFastPass,
     deferredOnlySingleRider,
+    deferredOnlyCovered,
     parkStatus,
   ]);
 
@@ -306,6 +319,20 @@ export function useAttractionFilter({
     () => Object.values(attractionsByLand).flat().filter(hasSingleRider).length,
     [attractionsByLand]
   );
+  /**
+   * Rides the „Überdacht" pill would keep — and 0 unless the park has curated enough of its
+   * rides to say so (`coveredOfferReady`). The same gate decides whether the nowcast banner
+   * offers covered rides, so the pill and the banner never disagree about a park.
+   *
+   * The other pills gate on their count alone, and this one cannot: `mayGetWet` marks the few
+   * rides that ARE wet, so three marked rides are three true answers. Here a park where somebody
+   * marked three rides indoor and left ninety unchecked would answer „Überdacht" with three,
+   * and a visitor standing in the rain reads that as the whole list.
+   */
+  const coveredAttractionCount = useMemo(() => {
+    const all = Object.values(attractionsByLand).flat();
+    return coveredOfferReady(all) ? all.filter(isCovered).length : 0;
+  }, [attractionsByLand]);
 
   /**
    * The park's own name for its queue-jump product, when it has exactly one.
@@ -376,7 +403,8 @@ export function useAttractionFilter({
       !deferredOnlyOpen &&
       deferredWetMode === null &&
       !deferredOnlyFastPass &&
-      !deferredOnlySingleRider
+      !deferredOnlySingleRider &&
+      !deferredOnlyCovered
     ) {
       return heightFilteredByLand;
     }
@@ -387,7 +415,8 @@ export function useAttractionFilter({
           (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
           matchesWet(a, deferredWetMode) &&
           (!deferredOnlyFastPass || hasFastPass(a)) &&
-          (!deferredOnlySingleRider || hasSingleRider(a))
+          (!deferredOnlySingleRider || hasSingleRider(a)) &&
+          (!deferredOnlyCovered || isCovered(a))
       );
       if (filtered.length > 0) result[land] = filtered;
     }
@@ -398,6 +427,7 @@ export function useAttractionFilter({
     deferredWetMode,
     deferredOnlyFastPass,
     deferredOnlySingleRider,
+    deferredOnlyCovered,
     parkStatus,
   ]);
 
@@ -484,7 +514,8 @@ export function useAttractionFilter({
     deferredOnlyOpen ||
     deferredWetMode !== null ||
     deferredOnlyFastPass ||
-    deferredOnlySingleRider;
+    deferredOnlySingleRider ||
+    deferredOnlyCovered;
 
   return {
     // Search
@@ -510,6 +541,8 @@ export function useAttractionFilter({
     setOnlyFastPass,
     onlySingleRider,
     setOnlySingleRider,
+    onlyCovered,
+    setOnlyCovered,
     /**
      * The pills as the GRID currently reads them, for anything that describes the grid instead of
      * the controls — the empty state's escape hatches, which belong to the list they explain. The
@@ -520,12 +553,14 @@ export function useAttractionFilter({
       wetMode: deferredWetMode,
       onlyFastPass: deferredOnlyFastPass,
       onlySingleRider: deferredOnlySingleRider,
+      onlyCovered: deferredOnlyCovered,
     },
     isNarrowing,
     openAttractionCount,
     wetAttractionCount,
     fastPassAttractionCount,
     singleRiderAttractionCount,
+    coveredAttractionCount,
     /** The park's own brand for its queue-jump product, or `null` when it sells several. */
     fastPassLabel,
     // Attractions

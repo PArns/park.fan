@@ -1,5 +1,5 @@
 ---
-title: 'Traumatica wird zehn, und zum Geburtstag gibt es ein Hotel, in dem man angefasst wird'
+title: 'Traumatica im Europa-Park wird zehn Jahre alt'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
 author: patrick

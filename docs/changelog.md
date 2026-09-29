@@ -4,6 +4,83 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Größenstufen je Park auf einer eigenen Seite: „Mit Kindern“
+
+Der Größenfilter der Parkseite ist ein Schieberegler, also Zustand und kein Text. Die Zahlen dahinter
+stehen jetzt unter einer eigenen URL: `/de/parks/…/mit-kindern`, in allen sechs Sprachen über einen
+Rewrite auf dem englischen Routenordner `with-kids` (`mit-kindern`, `with-kids`, `met-kinderen`,
+`avec-enfants`, `con-bambini`, `con-ninos`).
+
+Die Seite hat eine Karte je Größe, bei der sich die Antwort des Parks ändert (seine eigenen
+Mindestgrößen), mit der Zahl des Reglers („23 von 40“, dasselbe `canRideAtHeight`) und den Bahnen, die
+genau ab dieser Größe dazukommen, jede mit Link auf ihre Ride-Seite. Vor der ersten Stufe stehen die
+Attraktionen ohne veröffentlichte Mindestgröße, ausdrücklich ohne das Versprechen, dass sie für jede
+Größe frei sind. Jede Stufe hat zwei Links: die Parkseite mit `?height=`, deren Regler dann auf dieser
+Stufe startet, und „Tag für diese Größe planen“, der die Größe an den Wizard des Planers übergibt
+(`lib/planner/page-height.ts`, wie beim Datum aus dem Kalender) und dabei auf den Chip darunter rundet.
+
+**Gegatet auf die Entscheidung des PO vom 29.09.:** mindestens 20 Attraktionen mit `minimumHeight`
+und mindestens die Hälfte aller Attraktionen des Parks, eine Konstante (`KIDS_PAGE_GATE`). Am
+Zensus dieses Tages sind das 32 von 203 Parks, also 192 URLs (die 41 im Beschluss sind die Zahl für jede der beiden Bedingungen allein). Hansa-Park und Efteling bekommen keine
+Seite. Die Parkseite verlinkt sie nur für Parks über der Grenze, die Sitemap ebenso, und die Route
+liefert darunter 404. ISR mit Tagesfenster wie die Statistikseite. `pnpm test:park-kids`. Konzept:
+[dedicated-landing-pages.md §12](seo/dedicated-landing-pages.md).
+
+## Unreleased – Homepage and trip planner: copy without the quips
+
+The homepage bands and the trip-planner page read as generated, and not because of single words:
+nearly every lead ended on a joke or a simile („Die geht ganz ohne Anstehen“, „so dankbar wie eine
+Stauprognose für den ersten Ferientag“, „ganz ohne flauen Magen“, „ungefähr eine Serienfolge pro
+Bahn“, „Andere kaufen sich … einfach einen Express-Pass“, the child in the Taron queue who would
+rather ride the teacups), plus `nicht X, sondern Y` turns and closing maxims (§2.1, §2.8 of
+[blog.md](blog.md)). German was rewritten first, 69 keys in `home`, `homeStory`,
+`seo.homepage.faq` and `planner` plus the planner article in
+`app/[locale]/trip-planner/content/de.tsx`; the other five locales were written from it as their
+own sentences.
+
+Five statements were wrong and are fixed with it:
+
+- The crowd calendar's orange and red were described as „a three-quarter-hour queue at every
+  popular ride“. The colour is relative to a typical day in the same park
+  (`CROWD_LEVEL_PERCENT_RANGE`), so the band now says that, with the consequence spelled out.
+- The hero intro pointed at the world map, which is only drawn from 1280 px of page width.
+- „Zu jedem Park gibt es den passenden Artikel“: many parks have none.
+- The AI chapter said „instead of a crowd level per day“ under a calendar that shows one.
+- The nearby chapter said the list is sorted by distance; open parks come first
+  (`nearby-parks-list-view.tsx`).
+
+`UI_EM_DASH_BASELINE.en` in `scripts/check-prose.mjs` drops from 30 to 27.
+
+## Unreleased – Homepage on a phone: one band padding throughout, and a kicker that stands on its own
+
+Below 768 px the park block under the hero (nearby, favourites, popular parks, open parks per
+continent) had a different gap at every band edge, measured on `/de` at 390 px from the last
+content of one band to the first of the next:
+
+| Edge                        | before         | after    |
+| --------------------------- | -------------- | -------- |
+| hero photo → nearby heading | 0              | 64       |
+| nearby → favourites         | 64 \| 32       | 64 \| 64 |
+| favourites → popular parks  | 32 \| 48 (+12) | 64 \| 64 |
+| popular parks → open parks  | 48 \| 64       | 64 \| 64 |
+
+Every story chapter below already ran 64 | 64 (`STORY_SECTION`, 72 from `sm`).
+
+- **`NearbyChapter`** gets a top padding below 768 px. It had none because `ThreeSteps` stands
+  above it on a wide page, but `PHONE_LATER` moves the steps under the park lists on a phone, so
+  the heading tile sat flush on the hero photo's lower edge. From 768 px up nothing changes.
+- **`FavoritesSection`, `FavoritesEmptyState`, `FeaturedParksSlot` and `FeaturedParksSkeleton`**
+  take a `className` for their band padding. The homepage passes `STORY_SECTION_Y` (new in
+  `section-chrome.ts`) to each section and to its fallback; blog and glossary pages keep the
+  tighter padding they had. On a wide homepage this is the same 72 | 72 as every other edge now
+  (favourites ran 32, popular parks 48).
+- **The popular-parks heading** loses its frosted pill: `bg-background/70` on `bg-background`,
+  so on every page nobody saw the pill, only its `px-4`, which put the star 16 px right of the
+  cards. The skeleton drops it the same way.
+- **The nearby chapter's kicker** read „Schritt 1 in echt“ („Step 1, for real“), a pointer at
+  `ThreeSteps` above it. On a phone the steps come after it, so the first thing under the hero
+  was a „step 1“ nobody had met yet. It says „Dein Standort“ now, in all six locales.
+
 ## Unreleased – Park page: the location control moves onto the title card's address line
 
 The park page's near-you row sat between the title card and „Heute im Park", outside both cards,
