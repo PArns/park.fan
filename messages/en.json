@@ -547,6 +547,7 @@
     "crowdScale": {
       "title": "Crowd levels",
       "note": "100% is what the main rides wait on a typical day at this park.",
+      "glossaryLink": "What is a crowd level?",
       "upTo": "up to {max}%",
       "between": "{min}–{max}%",
       "above": "over {min}%"

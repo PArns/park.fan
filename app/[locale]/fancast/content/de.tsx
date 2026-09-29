@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
@@ -117,7 +118,10 @@ export function ContentDE() {
         </P>
         <Highlight>
           Jede Prognose wird am Tag darauf gegen die gemessene Wartezeit gelegt. Was dabei
-          herauskommt, steht im nächsten Abschnitt als MAE, RMSE und MAPE, auch an schlechten Tagen.
+          herauskommt, steht im nächsten Abschnitt als{' '}
+          <GlossaryTermLink termId="mae">MAE</GlossaryTermLink>,{' '}
+          <GlossaryTermLink termId="rmse">RMSE</GlossaryTermLink> und{' '}
+          <GlossaryTermLink termId="mape">MAPE</GlossaryTermLink>, auch an schlechten Tagen.
         </Highlight>
       </div>
 

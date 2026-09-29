@@ -22,11 +22,17 @@
  *                                                          is missing, leaving the other five
  *                                                          locales pointing an hreflang at nothing
  *   - no two terms share a slug inside one locale       → the second one is unreachable
+ *   - every category holding a term is in
+ *     `GLOSSARY_CATEGORY_ORDER`                          → the overview, its search and the header
+ *                                                          menu all read that list, and a term in a
+ *                                                          category missing from it renders nowhere
+ *                                                          (`logistics` did, PAR-264)
  *
  * Exits non-zero listing every offending term, locale and slug.
  */
 
 import { GLOSSARY_TERMS } from '../lib/glossary/data.ts';
+import { GLOSSARY_CATEGORY_ORDER } from '../lib/glossary/categories.ts';
 
 const LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 
@@ -85,15 +91,30 @@ for (const locale of LOCALES) {
   }
 }
 
+const listed = new Set(GLOSSARY_CATEGORY_ORDER);
+const unlisted = new Map();
+for (const term of GLOSSARY_TERMS) {
+  if (listed.has(term.category)) continue;
+  if (!unlisted.has(term.category)) unlisted.set(term.category, []);
+  unlisted.get(term.category).push(term.id);
+}
+for (const [category, ids] of unlisted) {
+  problems.push({
+    kind: 'category',
+    detail: `category "${category}" holds ${ids.length} term(s) (${ids.join(', ')}) but is not in GLOSSARY_CATEGORY_ORDER`,
+    hint: 'add it to lib/glossary/categories.ts, or the overview and its search leave these terms out',
+  });
+}
+
 if (problems.length === 0) {
   console.log(
     `✅ Glossary slugs are URL-safe — ${checked} slugs across ` +
-      `${GLOSSARY_TERMS.length} terms × ${LOCALES.length} locales, no gaps, no collisions.`
+      `${GLOSSARY_TERMS.length} terms × ${LOCALES.length} locales, no gaps, no collisions, every category listed.`
   );
   process.exit(0);
 }
 
-const order = { unsafe: 0, missing: 1, duplicate: 2 };
+const order = { unsafe: 0, missing: 1, duplicate: 2, category: 3 };
 console.error(`❌ ${problems.length} glossary slug problem(s):\n`);
 for (const problem of problems.sort((a, b) => order[a.kind] - order[b.kind])) {
   console.error(`  ${problem.detail}`);

@@ -547,6 +547,7 @@
     "crowdScale": {
       "title": "Niveles de afluencia",
       "note": "100 % son los tiempos de espera de las atracciones principales en un día típico en este parque.",
+      "glossaryLink": "¿Qué es un nivel de afluencia?",
       "upTo": "hasta {max} %",
       "between": "{min}–{max} %",
       "above": "más de {min} %"

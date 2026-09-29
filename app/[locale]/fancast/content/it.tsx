@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
@@ -118,7 +119,10 @@ export function ContentIT() {
         </P>
         <Highlight>
           Ogni previsione viene confrontata il giorno dopo con il tempo di attesa misurato. Il
-          risultato compare nella sezione successiva come MAE, RMSE e MAPE, anche nei giorni no.
+          risultato compare nella sezione successiva come{' '}
+          <GlossaryTermLink termId="mae">MAE</GlossaryTermLink>,{' '}
+          <GlossaryTermLink termId="rmse">RMSE</GlossaryTermLink> e{' '}
+          <GlossaryTermLink termId="mape">MAPE</GlossaryTermLink>, anche nei giorni no.
         </Highlight>
       </div>
 
