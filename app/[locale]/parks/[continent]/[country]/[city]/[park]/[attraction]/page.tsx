@@ -24,6 +24,7 @@ import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
+import { RideExposureLine } from '@/components/parks/ride-exposure-line';
 import { ChapterPanel } from '@/components/common/chapter-panel';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
@@ -569,6 +570,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     )}
                   </div>
                 )}
+                <RideExposureLine indoorOutdoor={attraction.indoorOutdoor} />
 
                 {/* Keyword-rich, server-rendered intro — crawlable topical text for
                   "{attraction} Wartezeit(en)" that the client-streamed live panel doesn't
