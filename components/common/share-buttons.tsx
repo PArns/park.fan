@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Check, Link2 } from 'lucide-react';
 import { FacebookIcon, WhatsAppIcon, XIcon } from '@/components/common/brand-icons';
+import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 
 interface ShareButtonsProps {
   /** Absolute canonical URL to share. */
@@ -51,11 +53,15 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
     },
   ];
 
-  const cls =
-    'border-border/60 text-foreground/80 hover:bg-muted hover:text-foreground inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors';
+  const cls = cn(
+    'border-border/60 text-foreground/80 hover:bg-muted hover:text-foreground inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors',
+    PHONE_HIT_AREA
+  );
 
   return (
-    <div className={`flex flex-wrap items-center gap-2 ${className ?? ''}`}>
+    // `gap-y-3.5` below `sm`: the buttons are 30 px high and wrap on a phone, and 14 px between
+    // the rows is what keeps the 44 px targets of two rows from overlapping.
+    <div className={cn('flex flex-wrap items-center gap-2 max-sm:gap-y-3.5', className)}>
       <span className="text-muted-foreground mr-1 text-xs font-semibold tracking-wider uppercase">
         {t('title')}
       </span>

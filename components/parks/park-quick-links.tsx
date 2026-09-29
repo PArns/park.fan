@@ -3,6 +3,7 @@ import { BookOpen, ExternalLink, Globe, Ticket } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/common/brand-icons';
 import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { ParkInfo } from '@/lib/api/types';
 
 interface ParkQuickLinksProps {
@@ -54,6 +55,8 @@ export async function ParkQuickLinks({ info, className }: ParkQuickLinksProps) {
   if (links.length === 0 && socials.length === 0) return null;
 
   return (
+    // 36 px squares 8 px apart: a 44 px target on each (`PHONE_HIT_AREA`) meets its neighbour's
+    // edge to edge, across a wrapped row as well, and never overlaps it.
     <div className={cn('flex flex-wrap items-center gap-2', className)}>
       {links.map(({ href, label, Icon }) => (
         <a
@@ -62,7 +65,10 @@ export async function ParkQuickLinks({ info, className }: ParkQuickLinksProps) {
           target="_blank"
           rel="noreferrer noopener"
           title={label}
-          className="border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-2 rounded-lg border text-sm font-medium transition-colors max-sm:h-9 max-sm:w-9 max-sm:justify-center sm:px-3 sm:py-1.5"
+          className={cn(
+            'border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-2 rounded-lg border text-sm font-medium transition-colors max-sm:h-9 max-sm:w-9 max-sm:justify-center sm:px-3 sm:py-1.5',
+            PHONE_HIT_AREA
+          )}
         >
           <Icon className="h-4 w-4 opacity-80" aria-hidden="true" />
           <span className="max-sm:sr-only">{label}</span>
@@ -77,7 +83,10 @@ export async function ParkQuickLinks({ info, className }: ParkQuickLinksProps) {
           rel="noreferrer noopener"
           aria-label={label}
           title={label}
-          className="border-border/60 hover:border-primary/50 hover:text-primary text-muted-foreground inline-flex h-9 w-9 items-center justify-center rounded-lg border transition-colors"
+          className={cn(
+            'border-border/60 hover:border-primary/50 hover:text-primary text-muted-foreground inline-flex h-9 w-9 items-center justify-center rounded-lg border transition-colors',
+            PHONE_HIT_AREA
+          )}
         >
           <Icon className="h-4 w-4" />
         </a>

@@ -22,6 +22,7 @@ import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
 import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 
 interface ParkStatsSectionProps {
   continent: string;
@@ -309,7 +310,10 @@ function StatsContent({
           statsPageHref ? (
             <Link
               href={statsPageHref}
-              className="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
+              className={cn(
+                'text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline',
+                PHONE_HIT_AREA
+              )}
             >
               {t('recordLink')}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

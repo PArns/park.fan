@@ -34,6 +34,7 @@ import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-butto
 import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-context';
 import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /** Rows the headliner and show columns ever show. The show column runs one short of the
@@ -600,7 +601,9 @@ export function ParkTodayPanel({
                         'text-xs font-medium sm:text-sm',
                         sched.timeUntil.variant === 'opening'
                           ? 'text-primary'
-                          : 'text-amber-600 dark:text-amber-400'
+                          : // 700, not 600: amber-600 on white is 3.2:1, and this is the line
+                            // that says when the park closes.
+                            'text-amber-700 dark:text-amber-400'
                       )}
                     >
                       {sched.timeUntil.message}
@@ -676,7 +679,10 @@ export function ParkTodayPanel({
                       title={t('dayDetail.openToday')}
                       aria-label={t('dayDetail.openToday')}
                       aria-haspopup="dialog"
-                      className="group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                      className={cn(
+                        'group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none',
+                        PHONE_HIT_AREA
+                      )}
                     >
                       {predictedToday ? (
                         <CrowdLevelBadge level={predictedToday} />
@@ -787,7 +793,16 @@ export function ParkTodayPanel({
                     {nextOpeningLine ?? t('status.CLOSED')}
                   </p>
                 )}
-                <ul className={cn('flex flex-col gap-0.5', headlinersFolded && 'max-sm:hidden')}>
+                {/* 24 px apart below `sm`, not 22: a row is 20 px high, which is under the 44 px a
+                    button gets here, so it has to meet WCAG 2.5.8 by spacing instead — a 24 px
+                    circle on each row that does not reach the next one. Costs 6 px of panel
+                    height on a phone (PAR-422). */}
+                <ul
+                  className={cn(
+                    'flex flex-col gap-0.5 max-sm:gap-1',
+                    headlinersFolded && 'max-sm:hidden'
+                  )}
+                >
                   {Array.from({ length: headlinerSlots }, (_, i) => {
                     const ride = headliners[i];
                     return (
@@ -832,7 +847,7 @@ export function ParkTodayPanel({
               <div className="mt-auto flex items-center justify-between gap-2">
                 <a
                   href={chapterHref('attractions')}
-                  className="text-primary text-left text-xs hover:underline"
+                  className={cn('text-primary text-left text-xs hover:underline', PHONE_HIT_AREA)}
                 >
                   {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
                 </a>
@@ -851,7 +866,10 @@ export function ParkTodayPanel({
                 action={
                   <a
                     href={chapterHref('shows')}
-                    className="text-primary text-xs whitespace-nowrap hover:underline"
+                    className={cn(
+                      'text-primary text-xs whitespace-nowrap hover:underline',
+                      PHONE_HIT_AREA
+                    )}
                   >
                     {t('allShowsLink', { count: park.shows?.length ?? 0 })}
                   </a>
@@ -862,7 +880,10 @@ export function ParkTodayPanel({
                     {tCommon('noShowtimesToday')}
                   </p>
                 )}
-                <div className={cn('relative', showsFolded && 'max-sm:hidden')}>
+                {/* `max-sm:mt-3`: "All N" above and the first row's bell below each get a 44 px
+                    target on phones, and at the 6 px gap alone the bell took the bottom 11 px of
+                    the link's (44 × 33). 12 px more puts the two targets 44 px apart. */}
+                <div className={cn('relative max-sm:mt-3', showsFolded && 'max-sm:hidden')}>
                   {/* Nothing left today, and the park does have shows — `showSlots > 0` is counted
                     from `park.shows`, so this column is not even rendered for a park without any.
                     The sentence is centred over the rows the column has already reserved rather
