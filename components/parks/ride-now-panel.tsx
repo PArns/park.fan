@@ -178,7 +178,7 @@ export function RideNowPanel({
       {/* Below `sm` the row is one line, 47 px, and wraps only so that a clock which does not fit
         beside the heading drops to a second line `overflow-hidden` cuts off: the French heading
         and clock need 376 px on a 286 px row at 360 px (PAR-441). */}
-      <div className="border-border/50 flex min-h-[47px] items-center gap-3 border-b px-5 py-3 max-sm:h-[47px] max-sm:flex-wrap max-sm:overflow-hidden">
+      <div className="border-border/50 flex min-h-[47px] items-center gap-3 border-b px-5 py-3 max-sm:h-[47px] max-sm:flex-wrap max-sm:gap-y-3.5 max-sm:overflow-hidden">
         <div className="flex shrink-0 items-center gap-2">
           <span
             className={cn(
