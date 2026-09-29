@@ -2453,7 +2453,7 @@
       "title": "Planifier sa journée au parc attraction par attraction",
       "lead": "Indiquez les attractions que vous voulez faire : le planificateur calcule avec les temps d'attente prévus si la journée tient debout. Tout reste dans votre navigateur, sans compte.",
       "metaTitle": "Planifier sa journée au parc d’attractions | park.fan",
-      "metaDescription": "Organisez votre journée au parc d’attractions avec les temps d’attente prévus : attractions sur une frise, temps de transfert, spectacles et pauses.",
+      "metaDescription": "Organisez votre journée au parc avec les attentes prévues : attractions sur une frise, spectacles et pauses, et un repère là où votre enfant est trop petit.",
       "yourPlans": "{count, plural, one {Une journée planifiée} other {# journées planifiées}}",
       "introTitle": "Rien de planifié pour l’instant",
       "introBody": "Le planificateur place vos attractions sur une frise et inscrit sur chacune l’attente prévue pour cette heure-là. Entre deux, il indique le temps qu’il vous reste pour passer d’une attraction à l’autre, et s’il suffit.",
