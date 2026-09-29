@@ -181,7 +181,7 @@ nicht rein, Punkt (einzelne Experiences wie **THE HOTEL** und der Club **THE
 FORBIDDEN** sogar erst ab 18). Dafür gibt es **acht Horror-Attraktionen**, jede
 Menge Darsteller, Bühnenshows und eben jenen Club, in dem man den
 überstandenen Schrecken freitags und samstags ab 23 Uhr wegtanzen kann. Die
-Vorpremiere lief am **Mittwoch, 23. September**, Premiere ist am **Freitag,
+Vorpremiere lief am **Mittwoch, 23. September**, Premiere war am **Freitag,
 dem 25. September**. Danach wird bis zum **7. November 2026** von Freitag bis
 Sonntag gespielt (nur am Sonntag, dem 27. September, nicht), dazu an drei
 Donnerstagen: am 22. und 29. Oktober sowie am 5. November.
@@ -197,8 +197,8 @@ obendrauf: die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
 Park es verrät, steht in unserer
 [Meldung zum Jubiläum](/blog/traumatica-zehn-jahre-europa-park).
 
-Zum Jubiläum kommt der **Vampire’s Club** zurück, und zwar für genau vier
-Nächte: 25. und 26. September, 2. und 3. Oktober. An diesen Abenden tritt er an
+Zum Jubiläum kam der **Vampire’s Club** zurück, und zwar für genau vier
+Nächte: 25. und 26. September (vorbei), 2. und 3. Oktober. An diesen Abenden tritt er an
 die Stelle von THE FORBIDDEN, und Marc Terenzi steht dort selbst auf der Bühne.
 Nach über einem Jahrzehnt Abstand zwischen ihm und dem Event ist das die Art
 Randnotiz, über die sich vor allem die freuen, die 2007 dabei waren und heute
