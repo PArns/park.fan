@@ -17,6 +17,7 @@ import {
   GATE_TO_FIRST_RIDE_MIN,
   MIN_BLOCK_MIN,
   MIN_BLOCK_PX,
+  NO_FIGURE_MIN,
   NO_FIGURE_PX,
   PX_PER_MIN,
   PX_PER_MIN_COARSE,
@@ -31,7 +32,9 @@ import {
   minBlockPxFor,
   minuteAt,
   nextFreeStart,
+  noFigurePxFor,
   packLanes,
+  packedSpanMinutes,
   nowFloor,
   rideFloor,
   MAX_SHOW_LINES,
@@ -541,12 +544,64 @@ test(
   test('a queue under it gets the floor', drawnBoxPx(g, 5), minBlockPxFor(g));
   test('…and the floor is the box, not the height', drawnBoxPx(g, 5) > heightFor(g, 5), true);
   test('no figure is a stated box', drawnBoxPx(g, null), NO_FIGURE_PX);
-  // The one that would have made the leg chip's gap wrong on the phone: the
-  // floor scales with the axis, the no-figure box does not — it is a statement
-  // about text, not about minutes.
+  // The stated box is a number of MINUTES like the floor is (PAR-227): flat 40 px
+  // was 22.2 minutes on the phone axis, and 20 px more than lane packing counted
+  // on the desktop one.
   test('the floor follows the axis', drawnBoxPx(m, 5), minBlockPxFor(m));
-  test('the stated box does not', drawnBoxPx(m, null), NO_FIGURE_PX);
+  test('the stated box follows it too', drawnBoxPx(m, null), noFigurePxFor(m));
+  test('…40 px on the desktop axis', noFigurePxFor(g), NO_FIGURE_PX);
+  test('…60 px on the phone axis', noFigurePxFor(m), 60);
+  test('…the same number of minutes on both', noFigurePxFor(m) / m.pxPerMin, NO_FIGURE_MIN);
   test('a zero-minute custom block still gets the floor', drawnBoxPx(g, 0), minBlockPxFor(g));
+}
+
+// ── 16c. Lane packing counts what the box is drawn at (PAR-227) ──────────────
+// `packedSpanMinutes` and `drawnBoxPx` are twins: one in minutes for the lane
+// packing, one in pixels for the render. Whenever they differ, two blocks the
+// packing files in separate lanes are drawn overlapping, or two it files in one
+// lane are drawn apart, and a leg chip measured against the drawn edge gets a
+// negative gap. Every occupancy a block can carry, on both axes.
+{
+  const axes = [g, buildDayGrid(9, 18, PX_PER_MIN_COARSE)];
+  const occupancies = [null, 0, 5, MIN_BLOCK_MIN, 20, NO_FIGURE_MIN, 45, 120];
+  for (const axis of axes) {
+    for (const minutes of occupancies) {
+      test(
+        `packed span is the drawn box: ${minutes} min at ${axis.pxPerMin} px/min`,
+        Math.abs(heightFor(axis, packedSpanMinutes(minutes)) - drawnBoxPx(axis, minutes)) < 1e-9,
+        true
+      );
+    }
+  }
+  test('no figure packs as 33.3 minutes', packedSpanMinutes(null), NO_FIGURE_MIN);
+  test('a short queue packs as the floor', packedSpanMinutes(5), MIN_BLOCK_MIN);
+
+  // Two blocks with no figure, 25 minutes apart: the first is drawn until 33.3
+  // minutes after its start, so the second overlaps it and they need two lanes.
+  // Counted as 16.7 minutes (the old floor) they fit in one and were drawn on top
+  // of each other.
+  const lanes = packLanes(
+    [0, 25].map((offset, i) => ({
+      id: `b${i}`,
+      topMin: 600 + offset,
+      bottomMin: 600 + offset + packedSpanMinutes(null),
+    }))
+  );
+  test('two figureless blocks 25 min apart take two lanes', lanes.get('b0').columns, 2);
+  test(
+    '…and 40 min apart share one',
+    (() => {
+      const far = packLanes(
+        [0, 40].map((offset, i) => ({
+          id: `b${i}`,
+          topMin: 600 + offset,
+          bottomMin: 600 + offset + packedSpanMinutes(null),
+        }))
+      );
+      return far.get('b0').columns;
+    })(),
+    1
+  );
 }
 
 // ── 15. The phone's axis ─────────────────────────────────────────────────────
