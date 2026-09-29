@@ -30,6 +30,19 @@ function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimiti
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
+/**
+ * Stacking order of everything portalled to `<body>`, lowest first — this is
+ * the one place it is written down:
+ *
+ * - `z-50`  sticky header
+ * - `z-[60]` language banner
+ * - `z-[70]` `SheetContent` / `DialogContent` and their overlays
+ * - `z-[80]` popovers and menus opened from inside a sheet (call-site class)
+ * - `z-[90]` tooltip — it is opened from anything above, so it sits on top
+ *
+ * The tooltip was `z-50`, so one opened from a sheet painted under it: at
+ * 1440x900 only 58 of 256 px of the box were visible.
+ */
 function TooltipContent({
   className,
   sideOffset = 0,
@@ -43,7 +56,7 @@ function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          'bg-background/80 text-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md border border-black/50 px-3 py-1.5 text-xs text-balance shadow-lg backdrop-blur-md dark:border-white/50',
+          'bg-background/80 text-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-[90] w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md border border-black/50 px-3 py-1.5 text-xs text-balance shadow-lg backdrop-blur-md dark:border-white/50',
           className
         )}
         {...props}
