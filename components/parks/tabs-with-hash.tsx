@@ -209,12 +209,15 @@ export const TabsWithHash = memo(function TabsWithHash({
     setOnlyFastPass,
     onlySingleRider,
     setOnlySingleRider,
+    onlyCovered,
+    setOnlyCovered,
     appliedPills,
     isNarrowing,
     openAttractionCount,
     wetAttractionCount,
     fastPassAttractionCount,
     singleRiderAttractionCount,
+    coveredAttractionCount,
     fastPassLabel,
     headliners,
     offSeasonAttractionCount,
@@ -299,6 +302,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     () => setOnlySingleRider((v) => !v),
     [setOnlySingleRider]
   );
+  const toggleOnlyCovered = useCallback(() => setOnlyCovered((v) => !v), [setOnlyCovered]);
   const toggleOffSeasonShows = useCallback(
     () => setShowOffSeasonShows((v) => !v),
     [setShowOffSeasonShows]
@@ -332,6 +336,9 @@ export const TabsWithHash = memo(function TabsWithHash({
       singleRiderCount={singleRiderAttractionCount}
       onlySingleRider={onlySingleRider}
       onToggleOnlySingleRider={toggleOnlySingleRider}
+      coveredCount={coveredAttractionCount}
+      onlyCovered={onlyCovered}
+      onToggleOnlyCovered={toggleOnlyCovered}
     />
   );
 
@@ -436,7 +443,7 @@ export const TabsWithHash = memo(function TabsWithHash({
         <div className="flex justify-center pt-14">
           <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
             <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-            {/* Six filters can empty this grid and only one of them is obviously
+            {/* Seven filters can empty this grid and only one of them is obviously
                           to blame: a search box you just typed into is right there, a rider
                           height or a pill set three scrolls ago is not. So each of them
                           offers its own way out here whenever it is on. */}
@@ -478,6 +485,14 @@ export const TabsWithHash = memo(function TabsWithHash({
                 onClick={() => setOnlySingleRider(false)}
               >
                 {t('filterSection.resetSingleRider')}
+              </button>
+            )}
+            {appliedPills.onlyCovered && (
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setOnlyCovered(false)}
+              >
+                {t('filterSection.resetCovered')}
               </button>
             )}
             {isSearching && (

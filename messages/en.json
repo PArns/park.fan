@@ -633,9 +633,11 @@
       "wetHide": "No wet ones",
       "fastPass": "Queue jump",
       "singleRider": "Single rider",
+      "covered": "Covered",
       "resetWet": "Clear the wet-ride filter",
       "resetFastPass": "Clear the queue-jump filter",
       "resetSingleRider": "Clear the single-rider filter",
+      "resetCovered": "Clear the covered filter",
       "openFilters": "Filters",
       "activeCount": "{count} active"
     },
@@ -923,7 +925,11 @@
         "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {duration}."
       },
       "precipTimeline": "Precipitation forecast until {until}, peak {max} mm per 15 min.",
-      "precipProbability": "rain probability"
+      "precipProbability": "rain probability",
+      "covered": {
+        "headingNearby": "Covered rides nearby",
+        "heading": "Covered rides"
+      }
     },
     "h1Suffix": "Live Wait Times",
     "intro": "Live wait times {inPark} in {city}, refreshed every five minutes. See how busy it is today, which attractions are open right now and when your visit is most worth it, with an AI crowd forecast and the best days to go.",

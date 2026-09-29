@@ -16,6 +16,7 @@ import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkHolidayBand } from './park-holiday-row';
 import { WeatherWarningBanner } from './weather-warning-banner';
 import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
+import { NowcastCoveredRides, coveredRowsOf } from './nowcast-covered-rides';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
@@ -27,6 +28,7 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
+import { coveredOfferReady, rankCoveredRides } from '@/lib/utils/covered-rides';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
@@ -220,6 +222,20 @@ export function ParkTodayPanel({
     ? (detailCalendar?.days.find((d) => d.date === queryDate) ?? null)
     : null;
   const todayReady = detailDate !== null || !!detailDay;
+
+  // The rain plan: while rain or a thunderstorm is due, the opened banner lists the covered rides
+  // that are open. Asked here rather than in the list so the list is never mounted empty — which
+  // rides qualify does not depend on where the visitor stands, only their order does. Only
+  // evaluated while the banner is open: it is the banner's content, and the live poll re-renders
+  // this panel every five minutes.
+  const showCoveredRides = useMemo(
+    () =>
+      alertOpen &&
+      !!nowcastAlert?.offersShelter &&
+      coveredOfferReady(park.attractions ?? []) &&
+      rankCoveredRides(coveredRowsOf(park), 1).length > 0,
+    [alertOpen, nowcastAlert?.offersShelter, park]
+  );
 
   // `isHeadliner` is the API's own classification and the exact predicate `useAttractionFilter`
   // uses for the Highlights section, so the two lists can never disagree about what a headliner is.
@@ -556,7 +572,9 @@ export function ParkTodayPanel({
           id={alertBannerId}
           alert={nowcastAlert}
           className="border-border/50 space-y-0 rounded-none border-x-0 border-t-0 border-b px-5 py-2.5 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
-        />
+        >
+          {showCoveredRides && <NowcastCoveredRides park={park} />}
+        </NowcastAlertBanner>
       )}
 
       {/* -mr-px -mb-px + the wrapper's overflow-hidden clip the trailing hairlines, so the rules

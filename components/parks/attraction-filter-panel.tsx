@@ -9,6 +9,7 @@ import {
   Search,
   SlidersHorizontal,
   Ticket,
+  Umbrella,
   Users,
   X,
 } from 'lucide-react';
@@ -66,6 +67,10 @@ interface AttractionFilterPanelProps {
   singleRiderCount: number;
   onlySingleRider: boolean;
   onToggleOnlySingleRider: () => void;
+  /** Rides indoors or behind a roofed queue — 0 also when the park has curated too few to say. */
+  coveredCount: number;
+  onlyCovered: boolean;
+  onToggleOnlyCovered: () => void;
 }
 
 /**
@@ -169,6 +174,9 @@ export function AttractionFilterPanel({
   singleRiderCount,
   onlySingleRider,
   onToggleOnlySingleRider,
+  coveredCount,
+  onlyCovered,
+  onToggleOnlyCovered,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
   const { unit } = useTemperatureUnit();
@@ -183,6 +191,7 @@ export function AttractionFilterPanel({
   const showWet = wetCount > 0 || wetMode !== null;
   const showFastPass = fastPassCount > 0 || onlyFastPass;
   const showSingleRider = singleRiderCount > 0 || onlySingleRider;
+  const showCovered = coveredCount > 0 || onlyCovered;
   /**
    * The pills are two groups, and the split is the one the attraction cards already
    * make: a status badge over the photo, the restriction badges under it. "Geöffnet"
@@ -192,7 +201,7 @@ export function AttractionFilterPanel({
    * matter — with one it was a detail.
    */
   const hasToday = showOpen || offSeasonCount > 0;
-  const hasTraits = showWet || showFastPass || showSingleRider;
+  const hasTraits = showWet || showFastPass || showSingleRider || showCovered;
   const hasPills = hasToday || hasTraits;
 
   // All three in the order they are cycled, so the pill reserves the width of the
@@ -213,7 +222,8 @@ export function AttractionFilterPanel({
     (showOffSeason ? 1 : 0) +
     (wetMode !== null ? 1 : 0) +
     (onlyFastPass ? 1 : 0) +
-    (onlySingleRider ? 1 : 0);
+    (onlySingleRider ? 1 : 0) +
+    (onlyCovered ? 1 : 0);
 
   const renderHeight = (className?: string) =>
     heightStops && (
@@ -299,6 +309,15 @@ export function AttractionFilterPanel({
                   label={t('filterSection.singleRider')}
                   pressed={onlySingleRider}
                   onToggle={onToggleOnlySingleRider}
+                />
+              )}
+              {showCovered && (
+                <FilterToggle
+                  size="md"
+                  icon={Umbrella}
+                  label={t('filterSection.covered')}
+                  pressed={onlyCovered}
+                  onToggle={onToggleOnlyCovered}
                 />
               )}
             </div>
@@ -453,6 +472,16 @@ export function AttractionFilterPanel({
               label={t('filterSection.singleRider')}
               pressed
               onToggle={onToggleOnlySingleRider}
+              className={cn(isSearching && 'invisible')}
+            />
+          )}
+          {onlyCovered && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={t('filterSection.covered')}
+              pressed
+              onToggle={onToggleOnlyCovered}
               className={cn(isSearching && 'invisible')}
             />
           )}

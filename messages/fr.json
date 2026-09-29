@@ -633,9 +633,11 @@
       "wetHide": "Sans mouillées",
       "fastPass": "Coupe-file",
       "singleRider": "Single rider",
+      "covered": "À l’abri",
       "resetWet": "Réinitialiser le filtre mouillé",
       "resetFastPass": "Réinitialiser le filtre coupe-file",
       "resetSingleRider": "Réinitialiser le filtre single rider",
+      "resetCovered": "Réinitialiser le filtre à l’abri",
       "openFilters": "Filtres",
       "activeCount": "{count, plural, one {# actif} other {# actifs}}"
     },
@@ -923,7 +925,11 @@
         "bodyEndsInMin": "Rafales jusqu’à {gusts} – se terminent dans environ {duration}."
       },
       "precipTimeline": "Prévisions de précipitations jusquà {until}, pic de {max} mm par 15 min.",
-      "precipProbability": "probabilité de pluie"
+      "precipProbability": "probabilité de pluie",
+      "covered": {
+        "headingNearby": "À l’abri près de vous",
+        "heading": "Attractions à l’abri"
+      }
     },
     "h1Suffix": "Temps d’attente en direct",
     "intro": "Temps d’attente en direct pour {park} à {city} – actualisés toutes les cinq minutes. Voyez l’affluence du jour, les attractions ouvertes en ce moment et le meilleur moment pour votre visite, avec la prévision d’affluence par IA et les meilleurs jours.",

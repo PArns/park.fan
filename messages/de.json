@@ -692,7 +692,11 @@
         "bodyEndsInMin": "Sturmböen bis {gusts} – noch ca. {duration}"
       },
       "precipTimeline": "Niederschlagsverlauf bis {until}, Spitze {max} mm pro 15 Min.",
-      "precipProbability": "Regenwahrscheinlichkeit"
+      "precipProbability": "Regenwahrscheinlichkeit",
+      "covered": {
+        "headingNearby": "Überdacht in der Nähe",
+        "heading": "Überdachte Fahrten"
+      }
     },
     "crowdLevel": "Auslastung",
     "crowdLevels": {
@@ -896,9 +900,11 @@
       "wetHide": "Ohne Nässe",
       "fastPass": "Quickpass",
       "singleRider": "Single Rider",
+      "covered": "Überdacht",
       "resetWet": "Nässe-Filter zurücksetzen",
       "resetFastPass": "Quickpass-Filter zurücksetzen",
       "resetSingleRider": "Single-Rider-Filter zurücksetzen",
+      "resetCovered": "Überdacht-Filter zurücksetzen",
       "openFilters": "Filter",
       "activeCount": "{count} aktiv"
     },
