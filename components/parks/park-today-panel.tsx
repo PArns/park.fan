@@ -455,7 +455,17 @@ export function ParkTodayPanel({
         className="space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
       />
 
-      <div className="border-border/50 flex items-center gap-3 border-b px-5 py-3">
+      {/* Below `sm` the row is one line high (45 px: `py-3`, the 20 px heading, the 1 px border) and
+          wraps only so that a clock which does not fit beside the heading drops to a second line
+          that `overflow-hidden` cuts off, instead of overlapping it. Measured at 320/360/390 px in
+          six languages: only the French heading (204 px) leaves too little room at 320 px. A
+          warning takes the row over below `sm`, and it must not be clipped. */}
+      <div
+        className={cn(
+          'border-border/50 flex items-center gap-3 border-b px-5 py-3',
+          !nowcastAlert && 'max-sm:h-[45px] max-sm:flex-wrap max-sm:overflow-hidden'
+        )}
+      >
         {/* Below `sm` a warning takes the whole row: beside the heading it had ~120 px at 390 px
             and cut „Gewitter in ca. 25 Min." off before the minutes. The heading stays in the
             accessibility tree, so the card keeps its name for a screen reader. */}
@@ -495,10 +505,10 @@ export function ParkTodayPanel({
             it: the whole group is the anchor, so „Wetter & Stundenverlauf ›" needs no separate
             line either.
 
-            The description is the part that does not fit on a phone, so it is the part that goes
-            below `sm`; icon and temperature stay at every width. No `flex-wrap` on the row — it
-            would put the clock on a second line at some widths and not others, and this row is
-            what reserves the panel's header height. */}
+            Below `sm` the whole reading goes: heading, clock and temperature need 314–411 px on
+            a 286 px row (PAR-441), so it cannot sit beside them. The chapter link still carries
+            it. The row is a fixed one-line height there, so this row keeps reserving the
+            panel's header height. */}
         {weatherSummary && (
           <a
             href={chapterHref('weather')}
@@ -506,10 +516,8 @@ export function ParkTodayPanel({
                nothing about where the link goes, and below `sm` even the word is gone. */
             aria-label={t('weatherAndHourly')}
             className={cn(
-              'hover:text-primary flex min-w-0 items-center gap-2 transition-colors',
-              // With a warning in the row the reading keeps icon and temperature and gives the
-              // warning the room; below `sm` there is not room for both, and the warning wins.
-              nowcastAlert && 'hidden shrink-0 sm:flex'
+              'hover:text-primary flex min-w-0 items-center gap-2 transition-colors max-sm:hidden',
+              nowcastAlert && 'shrink-0'
             )}
           >
             {(() => {
@@ -565,8 +573,11 @@ export function ParkTodayPanel({
             {isFetching && (
               <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
             )}
-            {sched.currentTimeFormatted}
-            {tCommon('timeSuffix')} · {t('localTime')}
+            <span>
+              {sched.currentTimeFormatted}
+              {tCommon('timeSuffix')}
+              <span className="max-sm:hidden"> · {t('localTime')}</span>
+            </span>
           </span>
         )}
       </div>
