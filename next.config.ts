@@ -144,6 +144,22 @@ const parkStatsHeaderSegments: Record<string, string> = {
   es: 'tiempos-de-espera-medios',
 };
 
+/**
+ * A park's "with kids" page, in the six segments a browser actually asks for.
+ *
+ * Same list as `PARK_KIDS_SEGMENTS` in `lib/parks/kids-segments.ts`, spelled out here because this
+ * file is the build config and cannot import from `@/`. Three places move together: that module,
+ * the rewrite block below and the cache-header block under it; the third rots silently.
+ */
+const parkKidsHeaderSegments: Record<string, string> = {
+  en: 'with-kids',
+  de: 'mit-kindern',
+  fr: 'avec-enfants',
+  it: 'con-bambini',
+  nl: 'met-kinderen',
+  es: 'con-ninos',
+};
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Cache Components (PPR) is intentionally OFF. The high-traffic detail pages (park, attraction,
@@ -773,6 +789,22 @@ const nextConfig: NextConfig = {
       });
     }
 
+    // A park's "with kids" page (app/[locale]/parks/…/[park]/with-kids). Same shape as the
+    // wait-time record above. EN needs no rewrite. Keep in step with `lib/parks/kids-segments.ts`.
+    const parkKidsSegments: Record<string, string> = {
+      de: 'mit-kindern',
+      fr: 'avec-enfants',
+      it: 'con-bambini',
+      nl: 'met-kinderen',
+      es: 'con-ninos',
+    };
+    for (const [locale, segment] of Object.entries(parkKidsSegments)) {
+      rules.push({
+        source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
+        destination: `/${locale}/parks/:continent/:country/:city/:park/with-kids`,
+      });
+    }
+
     return rules;
   },
   async headers() {
@@ -1364,6 +1396,18 @@ const nextConfig: NextConfig = {
           ],
         },
       ]),
+      ...Object.entries(parkKidsHeaderSegments).map(([locale, segment]) => ({
+        // A park's "WITH KIDS" page: a day, like the wait-time record. The height limits behind it
+        // come from the park payload, data-cached for a day, and the route's own `revalidate` is
+        // the same 86400. Only `CDN-Cache-Control`, as on the record and the calendar.
+        source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=86400, stale-while-revalidate=3600',
+          },
+        ],
+      })),
       ...Object.entries(parkStatsHeaderSegments).map(([locale, segment]) => ({
         // A park's WAIT-TIME RECORD. A day, which is both the longest window on any park URL and
         // the least eventful: nothing on this page is live, the aggregate behind it is recomputed

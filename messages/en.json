@@ -1117,6 +1117,38 @@
         "varSampleDays": "Measured operating days"
       }
     },
+    "kidsPage": {
+      "breadcrumb": "With kids",
+      "h1Suffix": "with kids",
+      "metaTitle": "{park} with kids: rides by height",
+      "metaTitleShort": "{park} with kids",
+      "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
+      "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
+      "lead": "{inParkLeading}, {withHeight} of {total} attractions post a minimum height, in {steps} steps. This page shows what a child may ride at each height.",
+      "tiersTitle": "What fits at which height",
+      "tiersHint": "{withHeight} of {total} attractions post a minimum height. Every step is a limit the park names itself.",
+      "noLimitTitle": "No minimum height posted",
+      "noLimitSummary": "{count, plural, =1 {The attraction without a limit} other {The {count} attractions without a limit}}",
+      "noLimitNote": "The park names no limit for these. The data does not say whether the ride is open to every height or the figure is missing. The sign at the ride entrance is what counts.",
+      "rideableCount": "{rideable} of {total} attractions",
+      "tierTitle": "From",
+      "newAtTier": "New at this height:",
+      "filterOnPark": "Filter on the park page",
+      "planForHeight": "Plan a day for this height",
+      "method": {
+        "title": "Where the heights come from",
+        "limits": "The limits are the minimum heights the park publishes for its attractions. park.fan estimates none. An attraction with no figure counts as rideable, as in the height filter on the park page. Maximum heights on children's rides count too: a taller child is not counted there.",
+        "stand": "The figures are read again every day. At the park, the sign at the ride entrance is what counts."
+      },
+      "nextTitle": "Go next to",
+      "nextPark": "Live wait times",
+      "nextParkBody": "Which rides are open and how long each queue is right now.",
+      "nextCalendar": "Wait-time calendar",
+      "nextCalendarBody": "Expected crowds day by day, with holidays and opening hours.",
+      "linkTitle": "With kids",
+      "linkAnchor": "{park} with kids",
+      "linkBody": "{withHeight} of {total} attractions post a minimum height. Which ride from which height, in {steps} steps."
+    },
     "planDayCta": "Plan a day at {park}",
     "dayComparison": {
       "compare": "Compare two days",
