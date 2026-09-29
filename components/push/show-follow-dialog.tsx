@@ -272,7 +272,7 @@ export function ShowFollowDialog({
           <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
             {t('viewAll')}
           </Link>
-          <div className="ml-auto flex shrink-0 items-center gap-2">
+          <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2">
             <Button type="button" variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
               {t('close')}
             </Button>
