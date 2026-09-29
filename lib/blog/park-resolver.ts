@@ -111,7 +111,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
             href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
             status: park.status,
             crowdLevel: park.currentLoad?.crowdLevel ?? park.analytics?.statistics?.crowdLevel,
-            avgWaitTime: park.analytics?.statistics?.avgWaitTime,
+            avgWaitTime: park.analytics?.statistics?.avgWaitTime ?? undefined,
             operatingAttractions: park.analytics?.statistics?.operatingAttractions,
             totalAttractions: park.analytics?.statistics?.totalAttractions,
             // Schedule data flows straight from the geo API. ParkCard reads

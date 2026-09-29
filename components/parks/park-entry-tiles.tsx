@@ -326,7 +326,7 @@ export function useParkTileItems({
       // three shared the hint's two-line clamp. The headliner reading is a different statement
       // from how many rides are open, so it gets the second line to itself.
       hint:
-        stats && shortestHeadlinerWait !== null ? (
+        stats && stats.avgWaitTime !== null && shortestHeadlinerWait !== null ? (
           <>
             <span className="block">
               {t.rich('tileAttractions', {

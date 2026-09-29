@@ -80,6 +80,7 @@
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
     "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
+    "test:park-null-wait-stats": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-null-wait-stats.mjs",
     "test:park-kids": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-kids.mjs",
     "test:park-stats-derive": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-stats-derive.mjs",
     "test:yearly-outlook": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-yearly-outlook.mjs",
