@@ -24,6 +24,12 @@ interface UseAttractionFilterOptions {
   activeTab: string;
   /** The park's own live status — a shut park closes every ride in it. */
   parkStatus?: ParkStatus;
+  /**
+   * The rider height the filter starts on, in cm — from `?height=` on the park's URL, which a
+   * park's "with kids" page links with. The server has already checked it against the park's own
+   * posted minima (`initialRiderHeightFromParam`), so it is always a stop of the slider.
+   */
+  initialRiderHeight?: number | null;
 }
 
 /**
@@ -103,10 +109,11 @@ export function useAttractionFilter({
   shows,
   activeTab,
   parkStatus,
+  initialRiderHeight = null,
 }: UseAttractionFilterOptions) {
   const [searchQuery, setSearchQuery] = useState('');
   /** Rider height in cm, or `null` while the height filter is off. */
-  const [riderHeight, setRiderHeight] = useState<number | null>(null);
+  const [riderHeight, setRiderHeight] = useState<number | null>(initialRiderHeight);
   const [showOffSeasonAttractions, setShowOffSeasonAttractions] = useState(false);
   /** Show only rides that are OPERATING right now. */
   const [onlyOpen, setOnlyOpen] = useState(false);

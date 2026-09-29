@@ -1,6 +1,7 @@
 import { defaultLocale, isValidLocale, locales, type Locale } from '@/i18n/config';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
+import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 
 /**
  * Where a path without a locale prefix goes, when the answer does not depend on the visitor.
@@ -34,11 +35,12 @@ import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
  * best-time, guide and planner segments to their locale.
  */
 
-/** A park sub-page segment (calendar, wait-time record) → the one locale that uses it. */
+/** A park sub-page segment (calendar, wait-time record, "with kids") → the one locale that uses it. */
 const PARK_SUBPAGE_SEGMENT_LOCALE: ReadonlyMap<string, Locale> = new Map(
   locales.flatMap((locale) => [
     [PARK_CALENDAR_SEGMENTS[locale], locale] as const,
     [PARK_STATS_SEGMENTS[locale], locale] as const,
+    [PARK_KIDS_SEGMENTS[locale], locale] as const,
   ])
 );
 

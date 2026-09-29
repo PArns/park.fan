@@ -1117,6 +1117,38 @@
         "varSampleDays": "Giorni di apertura misurati"
       }
     },
+    "kidsPage": {
+      "breadcrumb": "Con i bambini",
+      "h1Suffix": "con i bambini",
+      "metaTitle": "{park} con i bambini: attrazioni per altezza",
+      "metaTitleShort": "{park} con i bambini",
+      "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? {withHeight} attrazioni su {total} indicano un'altezza minima, le prime da {low} cm.",
+      "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? {withHeight} attrazioni su {total} indicano un'altezza minima, le prime da {low} cm.",
+      "lead": "{inParkLeading}, {withHeight} attrazioni su {total} indicano un'altezza minima, in {steps} gradini. Questa pagina mostra cosa può fare un bambino a ogni altezza.",
+      "tiersTitle": "Cosa è possibile a quale altezza",
+      "tiersHint": "{withHeight} attrazioni su {total} indicano un'altezza minima. Ogni gradino è un limite che il parco indica da sé.",
+      "noLimitTitle": "Senza altezza minima indicata",
+      "noLimitSummary": "{count, plural, =1 {L'attrazione senza indicazione} other {Le {count} attrazioni senza indicazione}}",
+      "noLimitNote": "Il parco non indica alcun limite per queste. Non si capisce se l'attrazione sia aperta a ogni altezza o se il dato manchi. Vale il cartello all'ingresso dell'attrazione.",
+      "rideableCount": "{rideable} attrazioni su {total}",
+      "tierTitle": "Da",
+      "newAtTier": "Novità a questa altezza:",
+      "filterOnPark": "Filtra nella pagina del parco",
+      "planForHeight": "Pianifica una giornata per questa altezza",
+      "method": {
+        "title": "Da dove vengono le altezze",
+        "limits": "I limiti sono le altezze minime che il parco pubblica per le sue attrazioni. park.fan non ne stima nessuna. Un'attrazione senza indicazione conta come accessibile, come nel filtro altezza della pagina del parco. Contano anche le altezze massime delle giostre per bambini: un bambino più alto lì non viene contato.",
+        "stand": "I dati vengono riletti ogni giorno. Sul posto vale il cartello all'ingresso."
+      },
+      "nextTitle": "Continua con",
+      "nextPark": "Tempi di attesa in diretta",
+      "nextParkBody": "Quali attrazioni sono aperte e quanto è lunga ogni coda adesso.",
+      "nextCalendar": "Calendario dei tempi di attesa",
+      "nextCalendarBody": "Affluenza prevista giorno per giorno, con vacanze e orari.",
+      "linkTitle": "Con i bambini",
+      "linkAnchor": "{park} con i bambini",
+      "linkBody": "{withHeight} attrazioni su {total} indicano un'altezza minima. Quale attrazione da quale altezza, in {steps} gradini."
+    },
     "planDayCta": "Pianifica una giornata a {park}",
     "dayComparison": {
       "compare": "Confronta due giorni",

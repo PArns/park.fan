@@ -1117,6 +1117,38 @@
         "varSampleDays": "Gemessene Öffnungstage"
       }
     },
+    "kidsPage": {
+      "breadcrumb": "Mit Kindern",
+      "h1Suffix": "mit Kindern",
+      "metaTitle": "{park} mit Kindern: Fahrten nach Größe",
+      "metaTitleShort": "{park} mit Kindern",
+      "metaDescription": "Ab welcher Größe darf ein Kind {inPark} in {city} mitfahren? {withHeight} von {total} Attraktionen nennen eine Mindestgröße, ab {low} cm geht es los.",
+      "metaDescriptionNoCity": "Ab welcher Größe darf ein Kind {inPark} mitfahren? {withHeight} von {total} Attraktionen nennen eine Mindestgröße, ab {low} cm geht es los.",
+      "lead": "{inParkLeading} nennen {withHeight} von {total} Attraktionen eine Mindestgröße, verteilt auf {steps} Stufen. Die Seite zeigt, was ein Kind bei welcher Größe fahren darf.",
+      "tiersTitle": "Was bei welcher Größe geht",
+      "tiersHint": "{withHeight} von {total} Attraktionen nennen eine Mindestgröße. Jede Stufe ist eine Grenze, die der Park selbst angibt.",
+      "noLimitTitle": "Ohne genannte Mindestgröße",
+      "noLimitSummary": "{count, plural, =1 {Die Attraktion ohne Angabe} other {Die {count} Attraktionen ohne Angabe}}",
+      "noLimitNote": "Der Park nennt hier keine Grenze. Ob die Bahn für jede Größe frei ist oder die Angabe fehlt, geht daraus nicht hervor. Verbindlich ist das Schild am Eingang der Bahn.",
+      "rideableCount": "{rideable} von {total} Attraktionen",
+      "tierTitle": "Ab",
+      "newAtTier": "Neu bei dieser Größe:",
+      "filterOnPark": "Auf der Parkseite filtern",
+      "planForHeight": "Tag für diese Größe planen",
+      "method": {
+        "title": "Woher die Größen kommen",
+        "limits": "Die Grenzen sind die Mindestgrößen, die der Park für seine Attraktionen veröffentlicht. park.fan schätzt keine. Eine Attraktion ohne Angabe zählt als fahrbar, wie im Größenfilter der Parkseite. Höchstgrößen von Kinderbahnen zählen mit: Ein größeres Kind wird dort nicht mitgezählt.",
+        "stand": "Die Angaben werden täglich neu gelesen. Vor Ort gilt das Schild am Eingang der Bahn."
+      },
+      "nextTitle": "Weiter zu",
+      "nextPark": "Aktuelle Wartezeiten",
+      "nextParkBody": "Welche Bahn gerade offen ist und wie lang die Schlange steht.",
+      "nextCalendar": "Wartezeiten-Kalender",
+      "nextCalendarBody": "Erwarteter Andrang Tag für Tag, mit Ferien und Öffnungszeiten.",
+      "linkTitle": "Mit Kindern",
+      "linkAnchor": "{park} mit Kindern",
+      "linkBody": "{withHeight} von {total} Attraktionen nennen eine Mindestgröße. Welche Bahn ab welcher Größe, in {steps} Stufen."
+    },
     "planDayCta": "Tag im {park} planen",
     "dayComparison": {
       "compare": "Zwei Tage vergleichen",
