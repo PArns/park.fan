@@ -418,6 +418,16 @@ export function ParkTodayPanel({
   // what the two halves can spare. The full-width columns under them keep the panel's own.
   const halfCell = cn(PANEL_CELL, 'max-sm:px-4');
   const fullCell = cn(PANEL_CELL, 'col-span-2 sm:col-span-1');
+  // Below `sm` the headliner column is the first thing in the panel, ahead of status and crowd,
+  // although it stays third in the markup. On a 360 × 780 phone it was the row that held the
+  // first live wait time, "Alle N Attraktionen" and the ride-alert bell, and it began 40 to 260 px
+  // below the fold, where the thumb does not reach until the page has been scrolled (PAR-564).
+  // Ahead of the status row it starts about 100 px into the panel. A grid `order` and not a second
+  // markup: the sizes are unchanged, so nothing shifts, the hairlines belong to the cells and
+  // follow them, and from `sm` up the columns keep their reading order. It is unconditional on
+  // purpose — a class that waited for `headlinersFolded` would swap the two rows after the
+  // browser clock mounts, which is a layout shift for every park that is closed.
+  const headlinersFirstOnPhone = 'max-sm:order-first';
   // The day is over, so below `sm` the show column is one line instead of four reserved rows with a
   // sentence centred over them; from `sm` up it sits beside columns of the same height, so the
   // reservation costs nothing there and stays. A performance still ahead after closing (a night
@@ -791,7 +801,7 @@ export function ParkTodayPanel({
 
           {/* ── Headliner jetzt ── */}
           {headlinerSlots > 0 && (
-            <div className={fullCell}>
+            <div className={cn(fullCell, headlinersFirstOnPhone)}>
               <PanelMetric
                 caption={t('headlinersNow')}
                 action={
