@@ -14,6 +14,7 @@
 import { assignParks, levelOn, windowDates } from '../lib/planner/assign.ts';
 import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { hasAnyPlan, isPlannedDay } from '../lib/planner/types.ts';
+import { clearDay, reserveDays } from '../lib/planner/actions.ts';
 import { nextPlannedDay } from '../lib/planner/park-time.ts';
 
 const cases = [];
@@ -146,6 +147,34 @@ const base = { from: '2026-10-01', to: '2026-10-05', fixed: [], travelDays: true
   test('and the gap holds on the other side too', show(before), ['2026-10-04:a']);
 }
 
+{
+  const a = park('a', 'de', '2026-10-01', ['low', 'low', 'low', 'low', 'low']);
+  const before = assignParks({
+    ...base,
+    parks: [a],
+    fixed: [{ date: '2026-09-30', country: 'nl' }],
+  });
+  test('a fixed day of another country the day before the window needs the gap', show(before), [
+    '2026-10-02:a',
+  ]);
+  const after = assignParks({
+    ...base,
+    parks: [a],
+    fixed: [{ date: '2026-10-06', country: 'nl' }],
+  });
+  test('and the day after the window', show(after), ['2026-10-01:a']);
+}
+{
+  const a = park('a', 'de', '2026-10-01', ['low', 'low', 'low', 'low', 'low']);
+  const only = assignParks({
+    ...base,
+    to: '2026-10-02',
+    parks: [a],
+    fixed: [{ date: '2026-10-03', country: 'nl' }],
+  });
+  test('the last window day is refused beside a foreign fixed day', show(only), ['2026-10-01:a']);
+}
+
 // ── 8. A second day for a busy first day ────────────────────────────────────
 {
   const a = park('a', 'de', '2026-10-01', [
@@ -207,6 +236,44 @@ const base = { from: '2026-10-01', to: '2026-10-05', fixed: [], travelDays: true
   const out = assignParks({ ...base, to: '2026-10-31', parks });
   test('eight parks in four countries over 31 days place every park', out.unplaced, []);
   test('and finish quickly', Date.now() - t0 < 5000, true);
+}
+
+// ── 9b. reserveDays ─────────────────────────────────────────────────────────
+{
+  const geo = { continent: 'europe', country: 'germany', city: 'x' };
+  const entry = { id: 'e', attractionSlug: 'r', attractionName: 'R', startMinute: 600, hour: 10 };
+  const state = {
+    parks: {
+      a: {
+        slug: 'a',
+        name: 'A',
+        geo,
+        days: { '2026-10-01': { date: '2026-10-01', entries: [entry], prefs: { avoidWet: true } } },
+      },
+    },
+    activeParkSlug: null,
+    activeDate: null,
+    version: 1,
+  };
+  const next = reserveDays(state, [
+    { park: { slug: 'a', name: 'A', geo }, date: '2026-10-01' },
+    { park: { slug: 'a', name: 'A', geo }, date: '2026-10-02' },
+    { park: { slug: 'b', name: 'B', geo }, date: '2026-10-03' },
+  ]);
+  test(
+    'a day with entries is left alone',
+    next.parks.a.days['2026-10-01'],
+    state.parks.a.days['2026-10-01']
+  );
+  test(
+    'a new day is reserved and empty',
+    [next.parks.a.days['2026-10-02'].reserved, next.parks.a.days['2026-10-02'].entries],
+    [true, []]
+  );
+  test('a new park is filed', next.parks.b.days['2026-10-03'].reserved, true);
+  test('the active day does not move', next.activeParkSlug, null);
+  const cleared = clearDay(next, 'b', '2026-10-03');
+  test('clearing a reserved day removes it', cleared.parks.b, undefined);
 }
 
 // ── 10. `reserved` on a stored plan ─────────────────────────────────────────

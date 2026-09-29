@@ -3,7 +3,6 @@
 import { useMemo } from 'react';
 import { useQueries } from '@tanstack/react-query';
 import { parkBestDaysQueryOptions } from '@/lib/hooks/use-park-best-days-calendar';
-import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { AssignCrowd } from './assign';
 import type { PlannerGeo } from './types';
 
@@ -28,7 +27,6 @@ export function useParksBestDays(
   parks: readonly { slug: string; geo: PlannerGeo }[],
   enabled: boolean
 ): { facts: ReadonlyMap<string, AssignFacts>; pending: boolean } {
-  const releasedLast = useLoadLast();
   const results = useQueries({
     queries: parks.map((park) => ({
       ...parkBestDaysQueryOptions({
@@ -37,7 +35,9 @@ export function useParksBestDays(
         city: park.geo.city,
         parkSlug: park.slug,
       }),
-      enabled: enabled && typeof window !== 'undefined' && releasedLast,
+      // Not gated on `useLoadLast`: that rule orders the park page's own queries, and this dialog
+      // is open because the visitor asked for it.
+      enabled: enabled && typeof window !== 'undefined',
     })),
   });
 

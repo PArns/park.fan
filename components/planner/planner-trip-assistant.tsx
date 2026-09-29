@@ -181,6 +181,7 @@ export function PlannerTripAssistant({ onOpenChange }: PlannerTripAssistantProps
                 <Input
                   type="date"
                   value={from}
+                  min={todayInZone(undefined)}
                   onChange={(event) => event.target.value && setFrom(event.target.value)}
                   data-planner-trip-from=""
                 />

@@ -165,7 +165,7 @@ export function assignParks(input: AssignInput): AssignResult {
       best = { cost: solve(i + 1, mask, fixed, last, left), park: -1 };
     } else {
       best = { cost: Number.POSITIVE_INFINITY, park: -1 };
-      const nextFixed = fixedCountry.get(dates[i + 1] ?? '');
+      const nextFixed = fixedCountry.get(addDays(date, 1));
 
       for (let p = 0; p < parks.length; p += 1) {
         if (mask & (1 << p)) continue;
@@ -195,13 +195,14 @@ export function assignParks(input: AssignInput): AssignResult {
     return best.cost;
   }
 
-  solve(0, 0, null, null, 0);
+  const start = dates.length > 0 ? (fixedCountry.get(addDays(dates[0], -1)) ?? null) : null;
+  solve(0, 0, start, null, 0);
 
   // Walk the choices the search kept. Re-deriving the state along the way is what the
   // memo key is made of, so the walk and the search cannot disagree.
   const days: AssignedDay[] = [];
   let mask = 0;
-  let prev: string | null = null;
+  let prev: string | null = start;
   let last: string | null = null;
   let left = 0;
   for (let i = 0; i < dates.length; i += 1) {
