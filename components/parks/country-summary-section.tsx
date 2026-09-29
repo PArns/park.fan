@@ -41,7 +41,7 @@ export async function CountrySummarySection({
             })}
       </p>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Top Parks */}
         {summary.topParks.length > 0 && (
           <GlassCard variant="light" className="space-y-3 p-4">
