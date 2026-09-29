@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
@@ -117,7 +118,9 @@ export function ContentNL() {
         </P>
         <Highlight>
           Elke voorspelling gaat de dag erna naast de gemeten wachttijd. Wat daaruit komt, staat in
-          het volgende blok als MAE, RMSE en MAPE, ook op slechte dagen.
+          het volgende blok als <GlossaryTermLink termId="mae">MAE</GlossaryTermLink>,{' '}
+          <GlossaryTermLink termId="rmse">RMSE</GlossaryTermLink> en{' '}
+          <GlossaryTermLink termId="mape">MAPE</GlossaryTermLink>, ook op slechte dagen.
         </Highlight>
       </div>
 

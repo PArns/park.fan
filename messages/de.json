@@ -715,6 +715,7 @@
     "crowdScale": {
       "title": "Auslastungsstufen",
       "note": "100 % sind die Wartezeiten an einem typischen Tag in diesem Park, gemessen an den wichtigsten Attraktionen.",
+      "glossaryLink": "Was ist eine Auslastungsstufe?",
       "upTo": "bis {max} %",
       "between": "{min}–{max} %",
       "above": "über {min} %"
