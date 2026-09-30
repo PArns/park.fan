@@ -181,6 +181,10 @@ export function PlannerLauncher() {
   /**
    * How much of the window the panel is holding, for the page beside it.
    *
+   * Follows `panelVisible`, not `open`: between the press and the chunk landing
+   * (about 240 ms at 150 ms RTT) the page would otherwise make room for a panel
+   * that is not drawn yet.
+   *
    * A CSS custom property on the document element rather than a prop, because
    * the reader is `app/[locale]/layout.tsx` — a Server Component shared by 3,109
    * prerendered routes, which cannot take a value from a client store. It is
@@ -199,7 +203,7 @@ export function PlannerLauncher() {
    */
   useEffect(() => {
     const root = document.documentElement;
-    if (!open) {
+    if (!panelVisible) {
       root.style.removeProperty('--planner-inset');
       root.removeAttribute('data-planner-open');
       return;
@@ -227,7 +231,7 @@ export function PlannerLauncher() {
       root.style.removeProperty('--planner-inset');
       root.removeAttribute('data-planner-open');
     };
-  }, [open]);
+  }, [panelVisible]);
 
   // MOUNTED as soon as the chunk is there, not only while open: the sheet plays
   // its own close animation and the wizard resets by unmounting with the panel,
