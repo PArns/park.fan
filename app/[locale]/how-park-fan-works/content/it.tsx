@@ -409,7 +409,7 @@ export function ContentIT() {
         id="numero"
         index="01"
         kicker="Il punto di partenza"
-        title="Un numero da solo non dice niente"
+        title="Quattro informazioni accanto al tempo di attesa"
         icon={Gauge}
       >
         <P>

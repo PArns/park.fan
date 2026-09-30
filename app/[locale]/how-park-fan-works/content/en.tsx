@@ -404,7 +404,7 @@ export function ContentEN() {
         id="number"
         index="01"
         kicker="The starting point"
-        title="A number on its own says nothing"
+        title="Four readings next to the wait time"
         icon={Gauge}
       >
         <P>

@@ -410,7 +410,7 @@ export function ContentDE() {
         id="zahl"
         index="01"
         kicker="Der Ausgangspunkt"
-        title="Eine Zahl allein sagt nichts"
+        title="Vier Angaben neben der Wartezeit"
         icon={Gauge}
       >
         <P>

@@ -409,7 +409,7 @@ export function ContentFR() {
         id="chiffre"
         index="01"
         kicker="Le point de départ"
-        title="Un chiffre tout seul ne dit rien"
+        title="Ce qui accompagne le temps d’attente"
         icon={Gauge}
       >
         <P>

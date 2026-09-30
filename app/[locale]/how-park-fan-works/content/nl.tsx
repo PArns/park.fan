@@ -405,7 +405,7 @@ export function ContentNL() {
         id="getal"
         index="01"
         kicker="Het startpunt"
-        title="Eén getal alleen zegt niets"
+        title="Vier gegevens naast de wachttijd"
         icon={Gauge}
       >
         <P>

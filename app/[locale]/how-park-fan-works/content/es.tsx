@@ -409,7 +409,7 @@ export function ContentES() {
         id="cifra"
         index="01"
         kicker="El punto de partida"
-        title="Una cifra sola no dice nada"
+        title="Cuatro datos junto al tiempo de espera"
         icon={Gauge}
       >
         <P>
