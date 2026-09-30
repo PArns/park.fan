@@ -51,6 +51,12 @@ const MAX_PARALLELISM_PER_1K = 1.5;
 const MAX_EXCLAMATIONS_PER_1K = 1;
 /** A sentence this short, three times in a row inside one paragraph, is staccato (§2.10). */
 const STACCATO_MAX_WORDS = 5;
+/** The product as the subject of the text, per 1,000 words (§2.13). The planner page read 8.8. */
+const MAX_PRODUCT_SUBJECT_PER_1K = 6;
+/** Negations per 100 words (§2.14). The German median is 1.2; the planner page read 2.8. */
+const MAX_NEGATIONS_PER_100 = 2;
+/** `X heißt: …` / `X means: …` per text (§2.15). */
+const MAX_DEFINITION_COLONS = 2;
 
 const BLOG = 'content/blog';
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -77,7 +83,7 @@ const CHAT_RESIDUE =
 const WATCH = [
   {
     what: 'the sign at the entrance (§3.3)',
-    re: /\b(das schild|the sign|het bord|le panneau|el cartel|il cartello)\b/gi,
+    re: /\b((?:das|ein|dem|den|am|vom|beim) schild|the sign|het bord|le panneau|el cartel|il cartello)\b/gi,
   },
   {
     what: 'summary formula (§1.5)',
@@ -126,6 +132,126 @@ const WATCH = [
 ];
 
 const PARALLELISM = /\bsondern\b|\bnot (just|only|merely)\b[^.!?]{0,60}\bbut\b/gi;
+
+/** Our own features as grammatical subject: `der Planer kennt`, `the planner says` (§2.13). */
+const PRODUCT_SUBJECT =
+  /\b(?:der|dem|den|des) (?:planer|tagesplaners?|kompass|assistent\w*)\b|\bthe (?:planner|compass|assistant)\b/gi;
+const NEGATION = {
+  de: /\b(nicht|nichts|kein\w*|nie|niemals)\b/gi,
+  en: /\b(not|no|never|nothing|none|isn'?t|doesn'?t|don'?t|won'?t|can'?t)\b/gi,
+};
+const DEFINITION_COLON = /\b(hei(?:ß|ss)t|bedeutet|means)\s*:/gi;
+
+/**
+ * Three habits of explanatory copy that a regex can count but not judge (§2.13–§2.15): the
+ * product as protagonist, a text that keeps saying what something does not do, and a run of
+ * `X heißt: …` definitions. All three were measured on the planner page before they were rules.
+ */
+function explainerHabits(file, text, locale) {
+  const words = text.trim().split(/\s+/).length;
+  if (words < 300) return;
+  const product = (text.match(PRODUCT_SUBJECT) ?? []).length;
+  if ((product / words) * 1000 > MAX_PRODUCT_SUBJECT_PER_1K)
+    warn(
+      file,
+      `the product as protagonist (§2.13): ${product}× in ${words} words, budget ${MAX_PRODUCT_SUBJECT_PER_1K}/1k`
+    );
+  const negation = NEGATION[locale];
+  if (negation) {
+    const n = (text.match(negation) ?? []).length;
+    if ((n / words) * 100 > MAX_NEGATIONS_PER_100)
+      warn(
+        file,
+        `${((n / words) * 100).toFixed(1)} negations per 100 words (§2.14, budget ${MAX_NEGATIONS_PER_100})`
+      );
+  }
+  const definitions = (text.match(DEFINITION_COLON) ?? []).length;
+  if (definitions > MAX_DEFINITION_COLONS)
+    warn(file, `${definitions} "X heißt:" definitions (§2.15, at most ${MAX_DEFINITION_COLONS})`);
+}
+
+/*
+ * A heading and the line under it (§5.6). One tell is strong enough on its own: a heading that
+ * asks a question and then gives an order (`Welche Bahnen darf mein Kind fahren? Nach Körpergröße
+ * nachsehen`). The rest are weak and only count when two sit in the same group of strings:
+ * the reader's own voice in the heading, a dek that repeats the heading, copy that describes the
+ * site instead of the thing, a dek that opens on something everybody knows, and a qualifier
+ * tacked on after the sentence was finished. The homepage block that prompted this carried six.
+ */
+const HEADING_KEY = /(^|\.)(title|heading|headline)$/i;
+const DEK_KEY = /(^|\.)(lead|subtitle|intro|dek|teaser|tagline|body|text)$/i;
+/** A question, then a fragment that is not a sentence: `Sind 70 Minuten viel? Kommt drauf an …`. */
+const QUESTION_THEN_FRAGMENT = /\?\s+(\S[^?]*[^.?!:…])$/;
+/** …and the fragment is an order: a German infinitive at the end, or a call-to-action verb up front. */
+const ORDER_FIRST_WORD =
+  /^(check|find|see|discover|explore|look|plan|compare|browse|get|start|learn|try|bekijk|kijk|zoek|vind|ontdek|vergelijk|vérifiez|vérifier|voir|voyez|trouvez|trouver|découvrez|découvrir|consultez|consulter|comparez|consulta|consultar|mira|busca|buscar|descubre|descubrir|compara|controlla|controllare|guarda|vedi|trova|trovare|scopri|scoprire|confronta)\b/i;
+function headingTell(heading) {
+  const m = heading.trim().match(QUESTION_THEN_FRAGMENT);
+  if (!m) return null;
+  const words = m[1].trim().split(/\s+/);
+  const germanInfinitive = words.length <= 6 && /^[a-zäöüß]+en$/.test(words.at(-1));
+  // `À vérifier …`, `Da controllare …`, `Comprobarlo …`: the Romance infinitive of an instruction.
+  const romanceInfinitive =
+    /^(à|da)\s+\p{L}+(er|ir|re|are|ere|ire)\b/iu.test(m[1].trim()) ||
+    /^\p{L}+(ar|er|ir)(lo|la|los|las)$/iu.test(words[0]);
+  return germanInfinitive || romanceInfinitive || ORDER_FIRST_WORD.test(words[0])
+    ? 'order'
+    : 'answer';
+}
+const headingCheck = (file, where, heading) => {
+  const tell = headingTell(heading);
+  if (tell === 'order')
+    fail(file, `${where}: a question followed by an order (§5.6) — "${heading}"`);
+  else if (tell === 'answer')
+    warn(file, `${where}: a question the heading answers itself (§2.12) — "${heading}"`);
+};
+const READER_VOICE =
+  /\b(mein|meine|meinem|meinen|meiner|ich|my|I|mijn|mon|ma|mes|mi|mis|mio|mia)\b/;
+const SELF_PAGE =
+  /\b(auf einer seite|(?:steht|stehen) auf dieser seite|diese seite zeigt|on one page|this page (?:shows|lists))\b/i;
+const TRUISM_OPENER = /^(jede[rs]?|alle|every|each|all) \p{L}+ /iu;
+const TACKED_ON =
+  /,\s(?:in|mit|nach|bei|für|auf|on|with|by|at)\s[^,.]{2,40},\s(?:die|der|das|which|that)\s[^,.]{2,50}\.$/i;
+const STOPWORDS = new Set(
+  'aber alle auch dass dein deine deinem deinen deiner diese diesem diesen dieser dieses doch eine einem einen einer eines euch hier ihre immer jede jedem jeden jeder jedes kann kein keine mehr nach nicht noch oder ohne sich sind über unter welche welchem welchen welcher welches wenn wird darf soll muss sein your the and for with from that this which what when where each every have into than then them they their about just only also more most some such'.split(
+    ' '
+  )
+);
+const stems = (text) =>
+  new Set(
+    (text.toLowerCase().match(/\p{L}{4,}/gu) ?? [])
+      .filter((w) => !STOPWORDS.has(w))
+      .map((w) => w.slice(0, 4))
+  );
+
+function headingTells(file, groups) {
+  for (const [group, entries] of groups) {
+    if (/(^|\.)(seo|meta)(\.|$)/i.test(group)) continue;
+    const heading = entries.find(([k]) => HEADING_KEY.test(k));
+    const tells = [];
+    if (heading) {
+      const [, h] = heading;
+      headingCheck(file, heading[0], h);
+      if (h.includes('?') && READER_VOICE.test(h)) tells.push('the reader’s voice in the heading');
+      const hs = stems(h);
+      for (const [k, v] of entries) {
+        if (!DEK_KEY.test(k) || hs.size < 2) continue;
+        const shared = [...stems(v)].filter((x) => hs.has(x));
+        if (shared.length >= 3 && shared.length / hs.size >= 0.5)
+          tells.push(`${k.split('.').pop()} repeats the heading`);
+      }
+    }
+    for (const [k, v] of entries) {
+      const text = v.trim();
+      if (SELF_PAGE.test(text)) tells.push(`${k.split('.').pop()} describes the page`);
+      if (DEK_KEY.test(k) && TRUISM_OPENER.test(text))
+        tells.push(`${k.split('.').pop()} opens on a truism`);
+      if (TACKED_ON.test(text)) tells.push(`${k.split('.').pop()} ends on a tacked-on qualifier`);
+    }
+    if (tells.length >= 2)
+      warn(file, `${group}: ${tells.length} heading/dek tells (§5.6): ${tells.join('; ')}`);
+  }
+}
 
 const errors = [];
 const warnings = [];
@@ -331,6 +457,16 @@ for (const locale of LOCALES) {
         `${bangs} exclamation mark(s) in ${words} words (§4.5, budget ${MAX_EXCLAMATIONS_PER_1K}/1k)`
       );
 
+    explainerHabits(file, body, locale);
+
+    for (const heading of [
+      ...plainTextFields(raw)
+        .filter(([f]) => f === 'title')
+        .map(([, v]) => v),
+      ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]),
+    ])
+      headingCheck(file, 'heading', heading);
+
     const staccato = staccatoRuns(body);
     if (staccato.length)
       warn(file, `staccato (§2.10), ${staccato.length}×: "${staccato[0].slice(0, 90)}"`);
@@ -401,6 +537,14 @@ for (const locale of LOCALES) {
     );
 
   scan(file, strings.map(([, v]) => v).join('\n'), { subject: 'us' });
+
+  const groups = new Map();
+  for (const [key, value] of strings) {
+    const parent = key.split('.').slice(0, -1).join('.');
+    if (!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push([key, value]);
+  }
+  headingTells(file, groups);
 }
 
 /* ------------------------------------------------------------------ media sidecars */
@@ -522,6 +666,8 @@ for (const [file, locale] of CONTENT_PAGES) {
 
   // A page is us talking about ourselves, same as a catalog string.
   scan(file, text, { subject: 'us' });
+  explainerHabits(file, text, locale);
+  for (const m of raw.matchAll(/\btitle="([^"]+)"/g)) headingCheck(file, 'title', m[1]);
 }
 
 /* ------------------------------------------------------------------ report */

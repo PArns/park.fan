@@ -36,7 +36,8 @@ trips one item here. A single sign is noise; a text is only in trouble when seve
 **Some signs are strong enough on their own.** The humanizer skill (see Sources) splits its list
 in two, and we follow it. A **strong** tell is fixed on sight: the em dash in running text (§4.1),
 the aphoristic closer (§2.8), `nicht X, sondern Y` at the edge of a section (§2.1), an honesty
-claim (§3.3), an invented detail (§1.8). Everything else is **weak**: a transition word, a triad,
+claim (§3.3), an invented detail (§1.8), a heading that asks and then gives an order (§5.6).
+Everything else is **weak**: a transition word, a triad,
 a short sentence, a rhetorical question. A weak tell matters only when several sit in the same
 passage.
 
@@ -348,7 +349,36 @@ later is a slide transition, not a question. stop-slop bans every sentence that 
 question word, which is too blunt for German, where `Wann` and `Wie` open plenty of honest
 sentences. We ban the set-up. Ask a question only where the reader would ask it; three rhetorical
 questions in a row are a triad (§2.2). `pnpm check:prose` flags `Das Ergebnis?`, `Der Grund?`,
-`Die Antwort?`, `Der Haken?` and their English twins.
+`Die Antwort?`, `Der Haken?` and their English twins, and a heading that asks and answers in one
+line (`Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist`) as a candidate.
+
+### 2.13 The product as protagonist
+
+`Der Planer kennt die Öffnungszeit`, `Der Planer fragt zwei Dinge`, `Der Planer liest das als`,
+`ist dem Planer lieber`, `der Planer erfindet keine`: 27 times on the planner page. A feature
+written as a character that knows, asks, prefers and refuses turns an explanation into a
+portrait of the software. Say what the reader sees or does, or what the number is: `Ein Block
+rastet auf fünf Minuten ein`, `Du gibst an, wie groß die kleinste Person ist`.
+
+The planner page read 8.8 per 1,000 words; `pnpm check:prose` warns above 6. The two compass posts
+are over it as well.
+
+### 2.14 Saying what it does not do
+
+A negation is information when the reader expected the opposite: `Für den Hansa-Park kommt nie
+eine Zahl an`. A text that keeps answering objections nobody raised (`Die Antworten markieren und
+blenden nichts aus`, `Ein Verbot ist das nicht, und eine Freigabe auch nicht`, `Eine Regel über
+den frühen Morgen steckt darin nicht`) argues with a reader who has not said anything. Say what
+happens instead.
+
+The German posts sit at a median of 1.2 negations per 100 words; the planner page read 2.8. The
+check warns above 2.
+
+### 2.15 The definition colon
+
+`Typisch heißt: …`, `„Knapp“ bedeutet: …`. One definition is useful. Four on one page are a
+glossary written as prose. Put the meaning into the sentence that uses the word, or link the
+glossary term. The check warns above two per text.
 
 ---
 
@@ -623,6 +653,46 @@ Voice reference for German: `content/blog/de/phantasialand-tipps.md` and
 too, when something breaks. Same rules, minus the voice: short, factual, no puffery, no
 significance claims.
 
+### 5.6 A heading and the line under it
+
+A section on the homepage opened like this, in six languages:
+
+> **Mit Kindern** · Welche Bahnen darf mein Kind fahren? Nach Körpergröße nachsehen
+>
+> Jeder Park nennt pro Bahn eine Mindestgröße. Für diese Parks steht auf einer Seite, was ein
+> Kind bei welcher Größe fahren darf, in den Stufen, die der Park selbst vorgibt.
+>
+> (card) Welche Bahn ab welcher Größe.
+
+Six tells in four lines, and each one is on the list below.
+
+1. **A question, then an order.** `…? Nach Körpergröße nachsehen` is a button label glued to a
+   question. A heading is one sentence or one noun phrase. This one is strong enough on its own,
+   and `pnpm check:prose` fails on it in every language: a German infinitive at the end, or a
+   call-to-action verb up front (`Check by height`, `Kijk het na`, `À vérifier`, `Comprobarlo`,
+   `Da controllare`).
+2. **The reader's voice.** `mein Kind` is the search box talking. The site says `du`, and a heading
+   in the first person imitates the query it wants to rank for.
+3. **The dek repeats the heading.** Kind, Bahn, fahren and Größe twice, and the card a third
+   time. The line under a heading says what the heading does not.
+4. **Copy that describes the site.** `steht auf einer Seite` tells the reader where something is
+   instead of what it is.
+5. **The truism opener.** `Jeder Park nennt pro Bahn eine Mindestgröße` is true of every park and
+   known to every parent. Cut it and nothing is missing (§1.7).
+6. **The tacked-on qualifier.** `…, in den Stufen, die der Park selbst vorgibt` arrives after the
+   sentence has ended, to fend off an objection.
+
+Tells 2 to 6 are weak and turn up alone in good copy too, so the check counts them per group of
+strings (a heading and its siblings in `messages/*.json`) and warns when two meet. Rewritten, the
+block says one thing in each line:
+
+> **Mit Kindern** · Ab welcher Größe dein Kind mitfahren darf
+>
+> Für jeden dieser Parks: alle Bahnen, sortiert nach der Mindestgröße, die der Park angibt.
+
+The card line goes, or carries a figure the heading does not (how many rides at that park have a
+height limit).
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -714,7 +784,9 @@ grep -rniE "\b(delve|boasts|vibrant|nestled|pivotal|showcase|testament|underscor
 grep -rnE "(^|[.!?] )(Darüber hinaus|Des Weiteren|Interessanterweise|Letztendlich|Das Ergebnis\?|Der Grund\?)" content/blog/de
 ```
 
-Staccato (§2.10), the ellipsis and exclamation budgets (§4.5), a `[!QUOTE]` without a source line
+The heading and dek tells (§5.6), the product as protagonist (§2.13), the negation budget (§2.14),
+the definition colons (§2.15), staccato (§2.10), the ellipsis and exclamation budgets (§4.5), a
+`[!QUOTE]` without a source line
 and Markdown in a plain-text field are counted by the script itself; a grep cannot see paragraphs.
 
 ### 7.1 Measured state, 2026-09-10
