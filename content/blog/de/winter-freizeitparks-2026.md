@@ -1,5 +1,5 @@
 ---
-title: 'Freizeitparks im Winter: wer im Dezember öffnet, wer es sich nicht leisten kann'
+title: 'Welche Freizeitparks im Winter 2026/27 geöffnet haben'
 translationKey: winter-parks-2026
 date: '2026-09-03'
 updatedAt: '2026-09-25'
@@ -34,7 +34,7 @@ coverImage:
   caption: 'Wintertraum im Phantasialand. Neun Stunden Betrieb, davon dreieinhalb im Dunkeln.'
   credit: 'park.fan'
 seo:
-  title: 'Freizeitparks im Winter 2026/27: wer aufhat, wie voll es ist'
+  title: 'Freizeitparks im Winter 2026/27: wer geöffnet hat und wie voll es ist'
   description: >-
     Eisbahnen, Glühwein und Lichterketten: welche Freizeitparks im Winter
     2026/27 aufhaben, was es kostet und warum man zwischen den Jahren länger
@@ -58,25 +58,23 @@ Feuerwerk, von da an jeden Abend bis in den Januar, solange der Wind mitspielt.
 In Bottrop sollen dann über eine Million Lichter hängen, in Wavre steht eine
 Eisbahn von 700 Quadratmetern unter einem Hallendach, und in Kasterlee ist der
 Weihnachtsmann im Tagesticket drin. Zwischen Mitte November und Anfang Januar
-wird aus einem guten Teil der europäischen Freizeitparks etwas, das mit
-Achterbahnen nur noch nebenbei zu tun hat: Glühwein, Schlittschuhe und
-Lichterketten in den Bäumen.
+geht es in einem guten Teil der europäischen Freizeitparks mehr um Glühwein,
+Schlittschuhe und Lichterketten in den Bäumen als um Achterbahnen.
 
-Aus den meisten aber nicht. Der Großteil der deutschen Parks schließt Ende
+In den meisten aber nicht. Der Großteil der deutschen Parks schließt Ende
 Oktober und macht erst im Frühjahr wieder auf, und einer in den Niederlanden hat
 im April aufgehört, es überhaupt zu versuchen.
 
 Am 23. April 2026 hat [Walibi Holland](ref:walibi-holland) seinen Winterbetrieb
-eingestellt. **Bright Nights** hieß das, vier Ausgaben lang: illuminierte
-Achterbahnen und eine Feuerwerksshow namens „Light up the Night“. Vorbei, ohne
-Nachfolger. Der Park bleibt nach Halloween bis in den April zu.
+eingestellt. Vier Ausgaben lang hieß das **Bright Nights**, mit illuminierten
+Achterbahnen und einer Feuerwerksshow namens „Light up the Night“. Einen
+Nachfolger gibt es nicht. Der Park bleibt nach Halloween bis in den April zu.
 
-Die Begründung erklärt nebenbei fast die ganze Wintersaison. Geschäftsführerin
-Mascha Taminiau nannte die kurze Öffnungsperiode in den Weihnachtsferien und die
-Abhängigkeit vom Wetter. Übersetzt: Achterbahnen fahren bei Frost, Sturm und
-Eisregen nicht, und Walibi Holland hat fast nichts Überdachtes. Fällt die
-Technik aus, bleibt den Gästen eine Lichtershow, und eine Lichtershow trägt kein
-Ticket.
+Geschäftsführerin Mascha Taminiau nannte als Gründe die kurze Öffnungsperiode in
+den Weihnachtsferien und die Abhängigkeit vom Wetter. Achterbahnen fahren bei
+Frost, Sturm und Eisregen nicht, und Walibi Holland hat fast nichts Überdachtes.
+Fällt die Technik aus, bleibt den Gästen eine Lichtershow, und eine Lichtershow
+trägt kein Ticket.
 
 Daran entscheidet sich, wer im Dezember aufmacht. Die Frage ist, wie viel
 Kapazität ein Park noch hat, wenn draußen niemand fahren will. Das
@@ -85,10 +83,8 @@ Regen sogar besser aus. Das [Phantasialand](ref:phantasialand) hat mit Wuze Town
 eine ganze Halle voller Fahrgeschäfte, Walibi Belgium hat Hallen. Walibi Holland
 hatte im Winter keine einzige überdachte Großbahn.
 
-Unten steht, wer die Saison 2026/27 fährt, mit Terminen, Öffnungszeiten und
-Preisen. Dazu eine Zahl, die den meisten quer zum Gefühl liegt: Zwischen
-Weihnachten und Neujahr, wenn es um halb fünf dunkel wird, stehen die Leute
-länger an als im Mai.
+Zwischen Weihnachten und Neujahr, wenn es um halb fünf dunkel wird, stehen die
+Leute länger an als im Mai.
 
 > **Zu den Terminen:** Stand ist der 25. September 2026. Die Parks schieben ihre
 > Winterkalender bis in den Herbst noch hin und her, und nicht jeder hat schon
@@ -98,16 +94,16 @@ länger an als im Mai.
 
 ## Die drei deutschen Parks, die einfach weiterlaufen
 
-Zwei deutsche Parks fahren den Winter mit dem ganzen Park als eigene Saison:
-eigenes Programm, täglicher Betrieb bis in den Januar. Ein dritter macht es eine
-Nummer kleiner, im letzten Winter dafür bis in den März.
+Zwei deutsche Parks fahren den Winter mit dem ganzen Park als eigene Saison, mit
+eigenem Programm und täglichem Betrieb bis in den Januar. Ein dritter macht es
+eine Nummer kleiner, im letzten Winter dafür bis in den März.
 
 ### Phantasialand: Wintertraum, 14. November bis 24. Januar
 
-Brühl macht im Oktober nichts. Kein Halloween, kein Maze, nicht mal ein
-symbolischer Kürbis. Dafür startet das [Phantasialand](ref:phantasialand) am
-**14. November 2026** in den Wintertraum: **bis zum 24. Januar 2027**, täglich
-von **11 bis 20 Uhr**. Das sind 67 Betriebstage. Bis einschließlich 13.
+Halloween lässt Brühl aus, im Oktober steht dort nicht mal ein symbolischer
+Kürbis. Dafür startet das [Phantasialand](ref:phantasialand) am
+**14. November 2026** in den Wintertraum, der **bis zum 24. Januar 2027** täglich
+von **11 bis 20 Uhr** läuft. Das sind 67 Betriebstage. Bis einschließlich 13.
 November läuft die reguläre Saison, eine Pause dazwischen gibt es nicht.
 
 Geschlossen bleibt an fünf Tagen: am 24. und 25. Dezember, am 1. Januar sowie
@@ -147,32 +143,32 @@ Wintertraum an Wochenenden oft schon mittags weg ist, steht im
 
 Termine und Tickets: [phantasialand.de → Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/).
 
-### Europa-Park: Wintersaison ab 28. November, und ein Abschied
+### Europa-Park: Wintersaison ab 28. November und Abschied von der Euro-Mir
 
 Der [Europa-Park](ref:europa-park) macht nach Halloween gar nicht erst zu. Vom 2.
 bis 27. November läuft HALLOWinter, eine Mischung aus Kürbis und Tanne, und ab
 dem **28. November 2026** die Wintersaison bis zum **10. Januar 2027**,
 geschlossen nur am 24. und 25. Dezember. Geöffnet ist täglich ab 11 Uhr bis
 mindestens 19 Uhr. Der 10. Januar gehört allerdings Hotelgästen und geladenen
-Gästen: Für Tagesbesucher ist Samstag, der 9. Januar, der letzte reguläre Tag.
+Gästen, für Tagesbesucher ist Samstag, der 9. Januar, der letzte reguläre Tag.
 Rulantica läuft mit, die Hotels laufen mit, die Dinner-Show mit Übernachtung
 gibt es ab 260 € pro Person im Doppelzimmer, und die Silvester-Arrangements
 reichen je nach Haus von 455 € bis über 1.200 €. Fünf davon waren Ende September
 schon ausgebucht.
 
-Wer im Dezember oder Januar nach Rust fährt, erwischt außerdem etwas zum letzten
-Mal. Die [Euro-Mir](ref:europa-park/euro-mir) fährt seit dem 12. Juni 1997 und
-wird nach dieser Wintersaison abgebaut. Am Eingang steht ein echtes
+Wer im Dezember oder Januar nach Rust fährt, kann außerdem ein letztes Mal mit der
+[Euro-Mir](ref:europa-park/euro-mir) fahren. Die Bahn läuft seit dem 12. Juni
+1997 und wird nach dieser Wintersaison abgebaut. Am Eingang steht ein echtes
 Trainingsmodul der Raumstation Mir, seit 1995 im Park, und zur
 Eröffnungs-Pressekonferenz kamen drei Kosmonauten, die in genau diesem Modul
 ausgebildet worden waren. Für den **9. Januar 2027** hat der Park ein
-Abschiedsevent angekündigt, danach beginnt der Abbau. Das Weltraumthema bleibt:
-Auf der Fläche entsteht ein eigener Themenbereich mit einer neuen
+Abschiedsevent angekündigt, danach beginnt der Abbau. Das Weltraumthema bleibt,
+denn auf der Fläche entsteht ein eigener Themenbereich mit einer neuen
 Familienachterbahn von Mack Rides, die ESA ist als Partner dabei, fertig sein
 soll er laut Park zur Saison 2028.
 
-Welcher Wochentag in Rust am ruhigsten ist und was im November los ist, rechnet
-der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) nach.
+Welcher Wochentag in Rust am ruhigsten ist und was im November los ist, haben
+wir im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) nachgerechnet.
 
 [Europa-Park](ref:europa-park?full)
 
@@ -191,15 +187,14 @@ aber wieder alle Freitage bis Sonntage auf Betrieb, jeweils von 11 bis 18 Uhr.
 
 ## Die Dark-Ride-Parks: gebaut für schlechtes Wetter
 
-### Efteling: elf Wochen Winter, und der Park sieht besser aus als im Sommer
+### Efteling: Winter Efteling, 16. November bis 31. Januar
 
 Das [Efteling](ref:efteling) ist der Park, an dem sich zeigt, wofür Dark Rides
-gut sind. [Droomvlucht](ref:efteling/droomvlucht),
-[Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana,
-[Danse Macabre](ref:efteling/danse-macabre): eine ganze Sammlung von
-Attraktionen, denen Regen, Wind und Dunkelheit nichts anhaben, und von denen
-mehrere in der Dämmerung besser wirken als bei Sonnenschein. Ein Park, dem das
-niederländische Wetter ausnahmsweise in die Karten spielt.
+gut sind. Regen, Wind und Dunkelheit können
+[Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica),
+Villa Volta, Fata Morgana und [Danse Macabre](ref:efteling/danse-macabre) nichts
+anhaben, und mehrere davon wirken in der Dämmerung besser als bei Sonnenschein.
+Ein Park, dem das niederländische Wetter ausnahmsweise in die Karten spielt.
 
 ![Das blau angeleuchtete Schloss von Symbolica bei Nacht, davor ein Springbrunnen | Symbolica an einem Winterabend. Im Dezember wird es hier um halb fünf dunkel, und der Park gewinnt dabei. | wide](/media/efteling/symbolica.jpg)
 
@@ -214,9 +209,8 @@ veröffentlicht. Die Achterbahnen im Freien fahren, solange das Wetter es zuläs
 
 Das sind elf Wochen, bis Ende Dezember ohne einen einzigen Ruhetag im Plan, und
 damit das längste Winterprogramm, das in dieser Übersicht fest angekündigt ist.
-Zwei Klassiker fehlen allerdings zeitweise: Droomvlucht ist vom 9.
-November bis 4. Dezember in Wartung, Joris en de Draak vom 30. November bis 18.
-Dezember.
+Droomvlucht ist allerdings vom 9. November bis 4. Dezember in Wartung, Joris en
+de Draak vom 30. November bis 18. Dezember.
 
 Warum überhaupt nur fünf Millionen Gäste im Jahr hinein dürfen und was das mit
 der Wintersaison zu tun hat, steht im
@@ -234,13 +228,13 @@ Park öffnet um 11 Uhr und schließt mittwochs um 18, am Wochenende um 19 und
 zwischen Weihnachten und Silvester um 20 Uhr. Port Laguna am Eingang wird in
 diesen Wochen zur Winter Laguna.
 
-Neu ist ein Preisversuch zum 25. Geburtstag des Parks, angekündigt am 23.
-September: An den ersten drei Wochenenden und Mittwochen, vom 28. November
-bis 16. Dezember, ist der Eintritt frei, bezahlt wird pro Fahrt. Ein Strip
-kostet 2 €, eine Attraktion je nach Bahn einen bis drei, und wer mehr Strips auf
-einmal kauft, zahlt pro Strip weniger. Für den freien Eintritt muss man vorher
-gratis reservieren, die Plätze pro Tag sind begrenzt. Das normale Tagesticket
-mit unbegrenzten Fahrten gibt es daneben weiter.
+Zum 25. Geburtstag probiert der Park ein neues Preismodell aus, das er am 23.
+September angekündigt hat. An den ersten drei Wochenenden und Mittwochen,
+vom 28. November bis 16. Dezember, ist der Eintritt frei, bezahlt wird pro Fahrt.
+Ein Strip kostet 2 €, eine Attraktion je nach Bahn einen bis drei, und wer mehr
+Strips auf einmal kauft, zahlt pro Strip weniger. Für den freien Eintritt muss
+man vorher gratis reservieren, die Plätze pro Tag sind begrenzt. Das normale
+Tagesticket mit unbegrenzten Fahrten gibt es daneben weiter.
 
 Sevenum ist der Park, an dem halb Köln und Düsseldorf auf dem Weg nach
 Kaatsheuvel vorbeifährt. Im Winter ist das noch einmal eine andere Rechnung als
@@ -333,20 +327,20 @@ eine Eisbahn, Eisstockschießen und Shows im Halbstundentakt. Frühbuchertickets
 kosten bis zum 4. Oktober 19 € statt 36 € und gelten an einem beliebigen
 Wintertag.
 
-Die Winterliste des Parks ist länger, als man denkt: gut 30 Einträge, darunter
-MAXIMUS, die Tempel X-pedition, LEGO NINJAGO The Ride und die Techno Schleuder.
-Bei den meisten Bahnen draußen steht allerdings „witterungsabhängig geöffnet“.
-Wer mit einem Kind anreist, das genau eine bestimmte Bahn fahren will, schaut
-vorher in die Liste des Parks. Die Diskussion vor einer geschlossenen Bahn
-führst du sonst mit jemandem, der einen Meter groß ist und recht hat.
+Auf der Winterliste des Parks stehen gut 30 Einträge, darunter MAXIMUS, die
+Tempel X-pedition, LEGO NINJAGO The Ride und die Techno Schleuder. Bei den
+meisten Bahnen draußen steht allerdings „witterungsabhängig geöffnet“. Wer mit
+einem Kind anreist, das genau eine bestimmte Bahn fahren will, schaut vorher in
+die Liste des Parks. Die Diskussion vor einer geschlossenen Bahn führst du sonst
+mit jemandem, der einen Meter groß ist und recht hat.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ### Parc Astérix: Noël Gaulois, 19. Dezember bis 3. Januar
 
-Nördlich von Paris gibt es das kürzeste Fenster in dieser Übersicht:
-[Parc Astérix](ref:parc-asterix) öffnet vom **19. Dezember 2026 bis 3. Januar
-2027** an allen 16 Tagen, auch am 25. Dezember und an Neujahr, von 11 bis 20 Uhr,
+[Parc Astérix](ref:parc-asterix) nördlich von Paris hat das kürzeste Fenster in
+dieser Übersicht und öffnet vom **19. Dezember 2026 bis 3. Januar 2027** an allen
+16 Tagen, auch am 25. Dezember und an Neujahr, von 11 bis 20 Uhr,
 am 24. und 31. Dezember bis 19 Uhr. Seit dem letzten Winter gibt es eine
 Eisbahn im Wikingerbereich und einen Weihnachtsmarkt. Gallisch bleibt es
 trotzdem, inklusive der Frage, was in diesen Wochen mit dem Wildschwein
@@ -360,18 +354,17 @@ passiert.
 
 An der Costa Daurada ist Winter etwas anderes als in Soltau.
 [PortAventura](ref:portaventura-park) macht nach Halloween, das bis zum 15.
-November läuft, gar nicht erst zu: Im Fahrplan des Parks steht jeder Tag bis
+November läuft, gar nicht erst zu. Im Fahrplan des Parks steht jeder Tag bis
 zum **6. Januar 2027** als Öffnungstag, **Weihnachten und Neujahr
 eingeschlossen**. Wann genau das Weihnachtsprogramm beginnt, hat der Park noch
 nicht veröffentlicht. Am 5. Januar 2027 zieht die **Cabalgata de los Reyes
 Magos** durch den Mediterrània-Bereich, der Dreikönigsumzug, an dem in Spanien
 die Geschenke kommen.
 
-Eine Warnung dazu, und sie kommt aus unseren eigenen Messungen seit Ende
-Dezember 2025: Bei
-PortAventura steht man im Mittel länger an als in Brühl, im Winter und im
-Frühjahr deutlich. Nur im Juli und August ist es in Brühl voller. Die Tabelle
-weiter unten stellt die beiden nebeneinander. Wer im Dezember mit einer leeren
+Nach unseren eigenen Messungen seit Ende Dezember 2025 steht man bei
+PortAventura im Mittel länger an als in Brühl, im Winter und im Frühjahr
+deutlich. Nur im Juli und August ist es in Brühl voller. In der Tabelle weiter
+unten stehen die beiden nebeneinander. Wer im Dezember mit einer leeren
 Saison rechnet, weil bei ihm zu Hause Winter ist, plant für das falsche Land.
 
 [PortAventura Park](ref:portaventura-park?full)
@@ -382,9 +375,9 @@ Saison rechnet, weil bei ihm zu Hause Winter ist, plant für das falsche Land.
 2027** auf: vom 5. bis 8. Dezember rund um Mariä Empfängnis, am Wochenende
 12./13. Dezember und dann ab dem 19. Dezember täglich bis Dreikönig, nur am 25.
 Dezember nicht. Der 6. Januar ist in Italien der Tag der Befana, an dem die
-Kinder ihre Geschenke bekommen. Voller war es im letzten Winter aber davor: Am 2.
-Januar 2026 stand unser Kalender für Gardaland auf „extrem“, am Dreikönigstag
-auf „normal“.
+Kinder ihre Geschenke bekommen. Im letzten Winter stand unser Kalender für
+Gardaland aber am 2. Januar 2026 auf „extrem“, am Dreikönigstag nur auf
+„normal“.
 
 [Gardaland](ref:gardaland?full)
 
@@ -402,15 +395,14 @@ Winterbetrieb 2026 und 2027 enthalten war, bekam als Ausgleich zwei Tickets, um
 jemanden mitzunehmen. Was der Park mit der freien Zeit macht, steht im
 [Walibi-Guide](/blog/walibi-holland-untamed-hard-gaan).
 
-Vorsicht beim Lesen unseres Kalenders: Ist er leer, heißt das nicht, dass ein
-Park zu hat. Disneyland Paris feiert Weihnachten vom 7. November 2026 bis zum 6.
-Januar 2027, der Liseberg in Göteborg startet sein Weihnachtsprogramm am 14.
-November. In unserem Kalender reichen beide Fahrpläne trotzdem nur bis in
-die zweite Novemberhälfte, weil die Parks die Tage danach noch nicht
-veröffentlicht haben. Ein Tag erscheint auf park.fan erst, wenn der Park ihn
-veröffentlicht hat.
+Ein leerer Tag in unserem Kalender heißt nicht, dass ein Park zu hat. Disneyland
+Paris feiert Weihnachten vom 7. November 2026 bis zum 6. Januar 2027, der
+Liseberg in Göteborg startet sein Weihnachtsprogramm am 14. November. In unserem
+Kalender reichen beide Fahrpläne trotzdem nur bis in die zweite Novemberhälfte,
+weil die Parks die Tage danach noch nicht veröffentlicht haben. Ein Tag
+erscheint auf park.fan erst, wenn der Park ihn veröffentlicht hat.
 
-## Was die Zahlen sagen: gefühlt leer, gemessen voll
+## Wie voll es im Winter ist
 
 Der Winter fühlt sich leer an. Es ist dunkel, es ist kalt, auf den Wegen steht
 Nebel, und der halbe Park ist beleuchtet statt bevölkert. Die Warteschlangen sind es
@@ -426,14 +418,13 @@ Rundungsfrage.
 
 ```
 
-Die Wintermonate stehen auf einer Handvoll Messtagen, die Sommermonate auf
-einem Vielfachen davon. Die Tage-Spalte in der Tabelle sagt bei jeder Zeile,
-worauf sie steht. Und die Dezemberzeile stammt komplett aus den Weihnachtsferien,
-weil unsere Messungen erst Ende Dezember 2025 beginnen, zwischen den Jahren. Für
-eine Aussage über die Größenordnung
-zwischen den Jahren reicht das, für den Advent sagt es nichts. Beim Efteling ist
-der Dezember sogar der vollste Monat der ganzen Tabelle, der Januar dagegen
-nicht.
+Die Wintermonate stehen auf einer Handvoll Messtagen, die Sommermonate auf einem
+Vielfachen davon. In der Tage-Spalte der Tabelle steht bei jeder Zeile, auf wie
+vielen Messtagen sie beruht. Und die Dezemberzeile stammt komplett aus den
+Weihnachtsferien, weil unsere Messungen erst Ende Dezember 2025 beginnen,
+zwischen den Jahren. Für eine Aussage über die Größenordnung zwischen den Jahren
+reicht das, über den Advent wissen wir daraus nichts. Beim Efteling ist der
+Dezember sogar der vollste Monat der ganzen Tabelle, der Januar dagegen nicht.
 
 **Efteling, typische Wartezeit nach Monat**
 
@@ -457,11 +448,11 @@ knapp zehn Stunden am Tag offen, ein Augusttag 2026 dauert 11,7. Im Europa-Park
 sind es 9,1 gegen 10,3. Dieselben Gäste haben also
 ein bis zwei Stunden weniger Zeit.
 
-Nur im Phantasialand erklärt die Uhr gar nichts. Der Wintertraum fährt neun
+Nur im Phantasialand liegt es nicht an der Uhr. Der Wintertraum fährt neun
 Stunden am Tag, von 11 bis 20 Uhr. Ein Maitag in Brühl dauert exakt genauso
 lang, von 9 bis 18 Uhr. Trotzdem ist der Dezember die vollere Hälfte.
 
-Zwei andere Gründe bleiben übrig. Der erste ist die Kapazität: Die Parks
+Zwei andere Gründe bleiben übrig. Der erste ist die Kapazität. Die Parks
 veröffentlichen für den Winter eigene Attraktionslisten, Walibi Belgium und das
 Phantasialand nennen je drei geschlossene Bahnen, im Legoland steht bei den
 meisten Bahnen draußen „witterungsabhängig“. Weniger Bahnen bei gleicher
@@ -471,8 +462,8 @@ Der zweite ist der Kalender. Walibi Winter hat 20 Betriebstage, Bobbejaanland
 18, Parc Astérix 16. Ein Sommerbesucher sucht sich aus fünf Monaten einen
 Dienstag aus; ein Winterbesucher wählt zwischen drei Wochenenden, und in der
 Mitte davon liegen die Weihnachtsferien. Genau diese Ferientage sind es, die in
-unseren Dezemberzeilen stehen. Beim Wintertraum kommt dazu, dass er ein eigenes
-Ziel ist: Wer im Dezember nach Brühl fährt, will die Shows sehen, und die gibt
+unseren Dezemberzeilen stehen. Dazu ist der Wintertraum ein eigenes Ziel. Wer im
+Dezember nach Brühl fährt, will die Shows sehen, und die gibt
 es nur in diesen Wochen.
 
 Und weil die Frage „welcher von denen ist der vollste“ auf jeder Autofahrt
@@ -486,15 +477,15 @@ ihrem ruhigsten Wochentag:
 ## In diesem Winter wird park.fan ein Jahr alt
 
 Das erklärt die dünnen Zeilen in den Tabellen oben. Als der letzte Wintertraum
-lief, ging diese Seite gerade erst an den Start: Aus dem Dezember 2025 haben wir
+lief, ging diese Seite gerade erst an den Start. Aus dem Dezember 2025 haben wir
 im Phantasialand eine Handvoll Messtage, aus dem Januar 2026 vier, aus dem
 November keinen einzigen. Erst seit April schreiben wir jeden Öffnungstag mit.
 Der Winter 2026/27 ist damit der erste, den wir komplett erfassen, und danach
 hat unser Modell zum ersten Mal ein vollständiges Jahr beisammen.
 
-Für eine Richtung reichen die wenigen Wintertage trotzdem, und sie zeigen vor
-allem, wie sehr es im Winter auf den Tag ankommt. Zwischen den Jahren war es
-überall voll: Im Phantasialand stand unser Kalender vom 26. Dezember bis zum 5.
+Für eine Richtung reichen die wenigen Wintertage trotzdem. Im Winter kommt es
+sehr auf den Tag an, und zwischen den Jahren war es überall voll. Im
+Phantasialand stand unser Kalender vom 26. Dezember bis zum 5.
 Januar an jedem Öffnungstag auf „hoch“, am 2. Januar auf „sehr hoch“. Nach
 den Ferien kippte es. Ab dem 7. Januar lagen in Brühl alle Samstage und Sonntage
 auf „hoch“ oder „sehr hoch“, die Werktage fast alle auf „niedrig“ oder „sehr
@@ -515,9 +506,9 @@ Den Crowd-Kalender solltest du für diesen einen Winter noch nicht beim Wort
 nehmen. Stand 25. September stuft er in Brühl jeden Dezembertag als „niedrig“
 oder „sehr niedrig“ ein, auch die Tage zwischen Weihnachten und Silvester, die
 im letzten Winter durchweg auf „hoch“ lagen. Im Europa-Park und im Efteling
-sieht der Dezember genauso aus. Ein Modell, das vom Winter bisher nur ein paar
-Ferientage kennt, hält ihn für ruhig. Nach diesem Winter hat es zum ersten Mal
-einen ganzen Dezember gesehen.
+sieht der Dezember genauso aus. In das Modell sind vom Winter bisher nur ein paar
+Ferientage eingeflossen, und heraus kommt ein ruhiger Dezember. Nach diesem
+Winter stecken zum ersten Mal Messungen aus einem ganzen Dezember darin.
 
 ## Datum, Attraktionsliste, dicke Jacke
 
@@ -547,10 +538,10 @@ allerdings erst ab dem 5. Dezember. Und wer die
 [Euro-Mir](ref:europa-park/euro-mir) noch einmal fahren will, hat bis zum 9.
 Januar Zeit, nach Rust zu kommen.
 
-Mit Kindern und ohne Lust auf Zusatztickets: In Kasterlee ist alles im
-Tagespreis drin, was in diesen Wochen im Park steht. Nach den Halloween-Wochen,
-in denen die Spukhäuser dort extra kosten, ist das eine Umstellung, an die man
-sich schnell gewöhnt.
+Wer mit Kindern kommt und keine Lust auf Zusatztickets hat, bekommt in Kasterlee
+alles im Tagespreis, was in diesen Wochen im Park steht. Nach den
+Halloween-Wochen, in denen die Spukhäuser dort extra kosten, ist das eine
+Umstellung, an die man sich schnell gewöhnt.
 
 Was an deinem Wunschtag tatsächlich läuft und wie lang die Warteschlangen gerade
 sind, steht den ganzen Winter über auf der jeweiligen Parkseite.
