@@ -252,6 +252,9 @@ The most recognisable cadence in both languages.
   Spanish `no solo … sino`, Italian `non solo … ma anche` and `non è …, è …`, and the tourism
   formula of every language: `Non è un hotel, è un'esperienza.`
 
+Advice is not a reframe: `Donnerstag, Freitag oder Sonntag, nicht Samstag` and `Nimm dir eine
+Stunde, nicht zwanzig Minuten` tell the reader what to do and stay.
+
 In 2026 the English shape has moved from `not just X but Y` to the **contrast reframe**, `It isn't
 a queue, it's a waiting room`, which Arize counted as one of the six habits of the model this site
 is written with. Same fix: say the second half and drop the first.
@@ -327,7 +330,10 @@ Saison seit diesem Jahr nicht mehr: …`, `2027 geht es früher los: …`. The c
   colon is a trailer for the sentence after it. Say the sentence: `Acht Piratenfiguren aus der
 alten Anlage von 1987 sind restauriert worden und sitzen heute in einem Rettungsboot.` Measured
   on 2026-09-30: 11 such pivots per 100 sentences across the German posts, 16 to 21 in the three
-  busiest. `pnpm check:prose` warns above 15.
+  busiest. `pnpm check:prose` counts them per sentence and warns above 15; a colon that
+  introduces a list, a date stamp (`Stand:`) or sits inside a name (`Guardians of the Galaxy:
+Cosmic Rewind`) is not counted, and French colons after a no-break space are. After the pass of
+  2026-09-30 the medians were 6.5 (de) to 12 (fr) per 100.
 - **Do not stack transitions.** `Darüber hinaus`, `Zusätzlich`, `Außerdem`, `Ferner`,
   `Additionally` — one is normal, one per paragraph is mechanical.
 - **Do not build every paragraph from the same parts.** Topic sentence, explanation, example,
@@ -378,7 +384,9 @@ Two of those are countable, and worth counting on a finished text:
 | **Sentence-length variance** (burstiness) | `stdev(sentence lengths) / mean` | under 0.4 is flat | **0.99** (0.39–2.57) | **1.08** (0.42–2.86) |
 | **Commas per 100 words**                  | `count(',') / words × 100`       | thin under ~4     | **8.3**              | **6.5**              |
 
-Both are supporting signals, never verdicts: a short reference text can be flat for good reasons.
+Both are supporting signals, never verdicts: a short reference text can be flat for good reasons,
+and under 40 sentences one merged sentence moves the figure across the line, so the check only
+warns on posts that long.
 But a long post under 0.4 is a post where every sentence came out the same length, and that is
 worth a read-aloud pass before it ships. `pnpm check:prose` prints both (§7).
 
@@ -433,8 +441,8 @@ person's verb (sagen, zeigen, verraten, wissen, verschweigen, lügen) to an obje
 sentence sounds like a scene instead of a statement. Write what is there and where: `Die
 aktuellen Wartezeiten stehen auf der Parkseite, alle fünf Minuten neu.` `Im Kalender sind die
 ruhigsten Tage grün.` `Nach unseren Messungen brauche ich ihn nicht.` A display or a board that
-literally shows a figure is fine (`Am Eingang stehen 70 Minuten`, §3.3), and so is a legend or a
-UI element that marks something on screen (`Der blaue Kegel zeigt, wohin du schaust`, `Die
+literally shows a figure is fine (`Am Eingang stehen 70 Minuten`, §3.3), and so is a legend, one of
+our own tables or widgets, or a UI element that marks something on screen (`Der blaue Kegel zeigt, wohin du schaust`, `Die
 Rahmenfarbe zeigt den Andrang an`); the queue itself never announces anything.
 
 The travel-guide version is **false agency**: `Der Park lädt zum Verweilen ein`, `Die Bahn sorgt
@@ -510,6 +518,10 @@ Budget: one wink per section, and never two paragraphs in a row. Keep the one th
 that carries a fact the paragraph did not; turn the rest into the fact they were decorating, or
 stop the paragraph a sentence earlier. `pnpm check:prose` flags the first two shapes; the third
 and the rate are for the review pass (§7.2).
+
+A long catalogue section (a dozen rides under one heading) may carry one per five paragraphs. The
+verbless fragment means the wry line that closes a paragraph; a spec fragment (`Mindestgröße 100
+Zentimeter.`, `Zwei Züge zu je zwanzig Plätzen.`) is information and stays.
 
 ### 2.18 The register of the model that writes here
 
@@ -611,7 +623,8 @@ text:
    `le panneau`, `el cartel`, `il cartello`. It is a stage direction, and it multiplies: it once
    stood in a hero caption, a scale legend, a screen-reader summary, a chapter paragraph and a
    companion post, six locales deep. Write `Am Eingang stehen 70 Minuten.`, `Mehr steht am
-Eingang nicht.`, `At the entrance it says 70 minutes.`
+Eingang nicht.`, `At the entrance it says 70 minutes.` The posted time as a measured value is
+   not the prop: a section that compares posted and actual waits may name the board it analyses.
 3. **No coined metaphor-currencies.** `Wartezeit-Währung`, `Lebenszeit-Konto`, `Datenpunkt` as a
    noun of art. One ordinary figure of speech per section is plenty.
 4. **Copy must not describe the page's own layout.** `Links steht … rechts …` is wrong on every
@@ -621,8 +634,10 @@ Parkseite`); horizontal order almost never is; `daneben` only when the two thing
 5. **Im Deutschen heißt es `Warteschlange`, nie `Schlange`.** The product's word, used the same
    way everywhere (§2.6): `die Warteschlange`, `die Single-Rider-Warteschlange`, `anstehen` for the
    verb (`Schlange stehen` becomes `anstehen`, never `Warteschlange stehen`). The only exception is
-   a proper name that means the animal: `Schlange von Midgard`. 255 uses were changed on
-   2026-09-30; `pnpm check:prose` fails on a new one.
+   a proper name that means the animal: `Schlange von Midgard`. Compounds count
+   (`Mittagsschlange` → `Warteschlange am Mittag`), a shape does not (`schlangenartig`).
+   `in der Warteschlange stehen` is correct German; for the verb alone, `anstehen` reads better.
+   255 uses were changed on 2026-09-30; `pnpm check:prose` fails on a new one.
 6. **Our data is not announced as real.** `echte Wartezeiten`, `echte Messungen`, `real wait-time
 data`, `données réelles`, `datos reales`, `dati reali`: the same move as rule 1, a quality
    claimed instead of shown. Say where the numbers come from and since when: `gemessene
@@ -790,7 +805,8 @@ The general rules apply everywhere. These are the additions per surface.
 - **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover. The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
 - A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
 - **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
-- **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it.
+- **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it: next to the prices, or at the first comparison with another park.
+- **"Shape" means the named template**, `<Park>: <Fakt>, und <Pointe>`. Four plain subject-verb headlines in one week are fine. `pnpm check:prose` flags a news title over 60 characters and the template.
 - **No send-off** (§1.6): the post ends on its last fact or on the sources.
 
 ### 5.1 UI strings (`messages/*.json`)
@@ -1030,7 +1046,9 @@ register is fine.
 This is a rule about sounding translated, not about sounding human. Contractions stopped being a
 human marker in 2026: the same cohort of models contracts at anywhere from 1,200 to over 30,000
 per million words (Rudnicka & Juzek 2026), and `it isn't X, it's Y` is now a model shape (§2.1).
-Contract where English speakers do; do not contract to look human.
+Contract where English speakers do; do not contract to look human. The 25 % is a floor, not a
+target: a post where every natural contraction is taken lands between 90 and 95 %, and that is
+fine, because the forms left (`what it is`, `how far it is`) cannot contract.
 
 ---
 

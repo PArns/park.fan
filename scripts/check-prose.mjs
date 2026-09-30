@@ -73,6 +73,10 @@ const MIN_CONTRACTION_SHARE = 0.25;
 const MAX_COLON_PIVOTS_PER_100 = 15;
 /** Share of one caption series that may be quips before the series reads templated (§5.2). */
 const MAX_QUIP_SHARE = 0.4;
+/** Longest news title in characters (§5.0). */
+const MAX_NEWS_TITLE = 60;
+/** `<Park>: <Fakt>, und <Pointe>`, the shape seven of the first eight news titles had (§5.0). */
+const NEWS_TEMPLATE = /^[^:]{2,40}[ \u00a0]?:\s[^,]+,\s(?:und|and|en|et|y|e)\s/iu;
 
 const BLOG = 'content/blog';
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -106,15 +110,21 @@ const PLACEHOLDER =
  * Hausregel (§3.3): im Deutschen heißt es Warteschlange, nie Schlange. Proper names that mean the
  * animal are exempt (`Schlange von Midgard` in the Hansa-Park).
  */
-const GERMAN_QUEUE = /(?<!\p{L})Schlange\p{L}*(?! von Midgard)/gu;
+const GERMAN_QUEUE = /\p{L}*schlange\p{L}*(?:\s+von\s+Midgard)?/giu;
+/** Compounds count too (`Mittagsschlange`, `Ausstiegsschlangen`); the animal and the house word do not. */
+const isQueueSlip = (word) =>
+  !/warteschlange|von\s+midgard|^(?:see|riesen|klapper|gift|wasser|ringel|königs)schlange|schlangen(?:artig|förmig|linie)/i.test(
+    word
+  );
 /** `„…"`: a German opening quote closed by the straight ASCII one (§4.5). */
 const GERMAN_STRAIGHT_CLOSE = /„[^“”"„\n]{1,200}"/g;
 
+const SIGN_RULE = 'the sign at the entrance (§3.3)';
 /** Warnings: a budget, a signal, or a candidate a person has to look at. */
 const WATCH = [
   {
-    what: 'the sign at the entrance (§3.3)',
-    re: /\b((?:das|ein|dem|den|am|vom|beim) schild|the sign|het bord|le panneau|el cartel|il cartello)\b/gi,
+    what: SIGN_RULE,
+    re: /\b((?:das|ein|dem|den|am|vom|beim) schild|the sign|het bord|wachttijdbord|le panneau|el cartel|il cartello)\b/gi,
   },
   {
     what: 'summary formula (§1.5)',
@@ -130,7 +140,8 @@ const WATCH = [
   },
   {
     what: 'pseudo-wisdom (§1.7)',
-    re: /\b(am ende des tages|der schl[üu]ssel liegt|die zahlen sprechen f[üu]r sich|die tendenz ist steigend|at the end of the day|the key is)\b/gi,
+    // `am Ende des Tages` is also the evening in a theme park: only the sentence-opening idiom.
+    re: /\b(der schl[üu]ssel liegt|die zahlen sprechen f[üu]r sich|die tendenz ist steigend|the key is)\b|(?<=^|[.!?]\s+)(?:am ende des tages|at the end of the day),/gim,
   },
   {
     what: 'vague authority (§1.2)',
@@ -176,7 +187,12 @@ const WATCH = [
     // `zeigt der Kalender`, `die Daten sagen`, `Was die Warteschlangen gerade anzeigen`: a queue,
     // a number or a calendar as the one who speaks (§2.13).
     what: 'things that talk (§2.13)',
-    re: /(?<!\p{L})(?:(?:der|die|das|den|dem|unsere?|diese[rs]?|jede[rs]?)\s+(?:\p{L}+\s+)?(?:warteschlangen?|schlangen?|zahl(?:en)?|daten|wartezeit(?:en)?|kurven?|tageskurve|(?:crowd-)?kalender|tabellen?|prognosen?|messwerte?|statistik(?:en)?|anzeigen?|karten?|diagramm|grafik|farben?|balken|median|spitze|liste|skala)\s+(?:dir\s+|dazu\s+|dann\s+|hier\s+|auch\s+|nur\s+|gerade\s+(?:jetzt\s+)?|jetzt\s+|schon\s+)?(?:zeigt|zeigen|sagt|sagen|verrät|verraten|erzählt|erzählen|weiß|wissen|kennt|kennen|lügt|lügen|spricht|sprechen|antwortet|verspricht|verschweigt|verschweigen|behauptet|anzeigen|zeigt an|zeigen an)|(?:zeigt|sagt|verrät|erzählt|weiß|kennt)\s+(?:dir\s+|dann\s+|hier\s+|auch\s+)?(?:der|die|das)\s+(?:\p{L}+\s+)?(?:warteschlange|schlange|zahl|kalender|tabelle|kurve|karte|prognose|statistik|anzeige|liste|parkseite)|the (?:queue|line|numbers?|data|calendar|chart|curve|table|forecast|median|figures?|sign|display) (?:(?:already|also|then|now) )?(?:tells?|says|knows?|reveals?|lies|speaks|shows you|tells you))(?!\p{L})/giu,
+    re: /(?<!\p{L})(?:(?:der|die|das|den|dem|unsere?|diese[rs]?|jede[rs]?)\s+(?:\p{L}+\s+)?(?:warteschlangen?|schlangen?|zahl(?:en)?|daten|wartezeit(?:en)?|kurven?|tageskurve|(?:crowd-)?kalender|tabellen?|prognosen?|messwerte?|statistik(?:en)?|anzeigen?|karten?|diagramm|grafik|farben?|balken|median|spitze|liste|skala)\s+(?:dir\s+|dazu\s+|dann\s+|hier\s+|auch\s+|nur\s+|gerade\s+(?:jetzt\s+)?|jetzt\s+|schon\s+)?(?:zeigt|zeigen|sagt|sagen|verrät|verraten|erzählt|erzählen|weiß|wissen|kennt|kennen|lügt|lügen|spricht|sprechen|antwortet|verspricht|verschweigt|verschweigen|behauptet|erwartet|erwarten|anzeigen|zeigt an|zeigen an)|(?:zeigt|sagt|verrät|erzählt|weiß|kennt)\s+(?:dir\s+|dann\s+|hier\s+|auch\s+)?(?:der|die|das)\s+(?:\p{L}+\s+)?(?:warteschlange|schlange|zahl|kalender|tabelle|kurve|karte|prognose|statistik|anzeige|liste|parkseite)|the (?:queue|line|numbers?|data|calendar|chart|curve|table|forecast|median|figures?|sign|display) (?:(?:already|also|then|now) )?(?:tells?|says|knows?|reveals?|lies|speaks|shows you|tells you))(?!\p{L})/giu,
+  },
+  {
+    // The same in the four derived languages; every hit there was found by reading until 2026-09-30.
+    what: 'things that talk, nl/fr/es/it (§2.13)',
+    re: /(?<!\p{L})(?:(?:de|het) (?:\p{L}+ )?(?:data|cijfers|tabel|kalender|kolom|curve|kaart|voorspelling|mediaan|wachtrij)\s+(?:zegt|zeggen|vertelt|vertellen|laat zien|laten zien|verraadt|verraden|weet|weten|kent|kennen|belooft|liegt)|(?:les données|les chiffres|le tableau|le calendrier|la courbe|la carte|la prévision|la médiane|la file)\s+(?:(?:te|vous|nous|le|la)\s+)*(?:dit|disent|montre|montrent|révèle|révèlent|sait|savent|annonce|promet|ment)|(?:los datos|las cifras|la tabla|el calendario|la curva|el mapa|la previsión|la mediana|la cola|la fila)\s+(?:(?:te|os|nos|lo|la)\s+)*(?:dice|dicen|muestra|muestran|revela|revelan|sabe|saben|anuncia|promete|miente|enseña)|(?:i dati|i numeri|la tabella|il calendario|la curva|la mappa|la previsione|la mediana|la coda|la fila)\s+(?:(?:ti|vi|ci|lo|la)\s+)*(?:dice|dicono|mostra|mostrano|rivela|rivelano|sa|sanno|annuncia|promette|mente|racconta))(?!\p{L})/giu,
   },
   {
     // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
@@ -212,7 +228,7 @@ const WATCH = [
   {
     // `Von rasanten Achterbahnen bis hin zu gemütlichen Familienfahrten`, `Egal, ob du …`.
     what: 'range or whether opener (§3)',
-    re: /(?<!\p{L})(?:bis hin zu[rm]?|(?<=^|[.!?]\s+)(?:egal,? ob|ob du nun|of je nu|que (?:vous soyez|tu sois)|ya seas?|tanto si|che tu sia|sia che))(?!\p{L})/gimu,
+    re: /(?<!\p{L})(?:von [^.!?]{3,60} bis hin zu[rm]?|(?<=^|[.!?]\s+)(?:egal,? ob|ob du nun|of je nu|que (?:vous soyez|tu sois)|ya seas?|tanto si|che tu sia|sia che))(?!\p{L})/gimu,
   },
   {
     // A park or a ride doing a person's verb (§2.13).
@@ -221,11 +237,11 @@ const WATCH = [
   },
   {
     what: 'AI vocabulary, nl/fr/es/it (§3)',
-    re: /(?<!\p{L})(?:het is belangrijk om op te merken|in een snel veranderende wereld|de kracht van|naadloze?|baanbrekend\p{L}*|il convient de souligner|dans un monde où|à l['’]ère du numérique|tirer parti de|es importante destacar|vale la pena (?:señalar|destacar)|en última instancia|profundizar en|embarcarse en|è importante sottolineare|vale la pena (?:ricordare|sottolineare)|una testimonianza di|epocale)(?!\p{L})/giu,
+    re: /(?<!\p{L})(?:het is belangrijk om op te merken|in een snel veranderende wereld|naadloze?|baanbrekend\p{L}*|il convient de souligner|dans un monde où|à l['’]ère du numérique|tirer parti de|es importante destacar|vale la pena (?:señalar|destacar)|en última instancia|profundizar en|embarcarse en|è importante sottolineare|vale la pena (?:ricordare|sottolineare)|una testimonianza di|epocale)(?!\p{L})/giu,
   },
   {
     what: 'vague sentiment (§1.2)',
-    re: /\b(?:enthusiasten|fans|kenner|puristen) (?:lieben|schätzen|bevorzugen|betrachten|feiern|halten|mögen|schwärmen)\b|\b(?:gilt|gelten) (?:als|unter)\b|\b(?:enthusiasts|fans|riders|purists) (?:love|prize|consider|regard|praise|celebrate|prefer|rave|adore)\b|\bis (?:widely|often|generally|commonly) (?:regarded|considered|seen|described)\b|\bwidely (?:regarded|considered|seen)\b/gi,
+    re: /\b(?:enthusiasten|fans|kenner|puristen) (?:lieben|schätzen|bevorzugen|betrachten|feiern|halten|mögen|schwärmen)\b|\b(?:gilt|gelten) (?:als|unter)\b|\b(?:enthusiasts|fans|riders|purists) (?:love|prize|consider|regard|praise|celebrate|prefer|rave|adore)\b|\bis (?:widely|often|generally|commonly) (?:regarded|considered|seen|described)\b|\bwidely (?:regarded|considered|seen)\b|(?<!\p{L})(?:(?:liefhebbers|kenners) (?:waarderen|houden van|beschouwen|zweren bij)|(?:geldt|gelden) als|wordt (?:vaak |algemeen )?(?:beschouwd|gezien) als|les (?:passionnés|amateurs|puristes) (?:apprécient|adorent|considèrent|préfèrent)|(?:est|sont) (?:souvent |généralement |largement )?considérée?s? comme|los (?:aficionados|entusiastas|puristas) (?:aprecian|adoran|consideran|valoran|prefieren)|(?:es|son) (?:a menudo |generalmente )?considerad[oa]s?|gli (?:appassionati|puristi) (?:apprezzano|amano|considerano|preferiscono)|(?:è|sono) (?:spesso |generalmente )?considerat[oaie])(?!\p{L})/giu,
   },
   {
     what: 'ad copy (§3)',
@@ -242,9 +258,10 @@ const TAILS = {
   en: /,\s(?:thus\s)?(?:making|creating|giving|adding|offering|allowing|providing|ensuring|highlighting|reflecting|showcasing|underscoring|emphasi[sz]ing|contributing to|resulting in|delivering|producing|enhancing|lending)\b/gi,
   de: /,\s(?:was|wodurch|womit)\s[^,.;]{0,80}?\b(?:macht|erzeugt|verleiht|steigert|schafft|ermöglicht|verstärkt|bietet|sorgt|beiträgt|unterstreicht|verschafft)\b/gi,
   nl: /,\s(?:wat|waardoor|waarmee)\s[^,.;]{0,80}?\b(?:maakt|zorgt|geeft|biedt|creëert|versterkt|oplevert)\b/gi,
-  fr: /,\s(?:ce qui|ce qu['’]|créant|offrant|donnant|rendant|permettant|ajoutant)\b/gi,
-  es: /,\s(?:lo que|lo cual|creando|ofreciendo|dando|haciendo|permitiendo|añadiendo|convirtiendo)\b/gi,
-  it: /,\s(?:il che|cosa che|creando|offrendo|dando|rendendo|permettendo|aggiungendo)\b/gi,
+  // `, lo que cuenta` opening a sentence is a relative clause, not a tail: only the pitching verbs.
+  fr: /,\s(?:ce qui (?:rend|donne|crée|permet|offre|fait|garantit|renforce|en dit)|créant|offrant|donnant|rendant|(?:leur |lui |vous )?permettant|ajoutant|produisant|générant|procurant)(?!\p{L})/giu,
+  es: /,\s(?:lo que (?:hace|convierte|permite|crea|da|ofrece|genera|aporta|garantiza)|lo cual|creando|ofreciendo|dando|haciendo|permitiendo|añadiendo|convirtiendo)\b/gi,
+  it: /,\s(?:(?:il che|cosa che) (?:rende|dà|crea|permette|offre|fa|garantisce)|creando|offrendo|dando|rendendo|permettendo|aggiungendo)\b/gi,
 };
 
 const EN_FULL =
@@ -279,16 +296,35 @@ function styleHabits(file, text, locale) {
   }
 }
 
-/** A clause, a colon, and the sentence that pays it off (§2.7). Lists and labels are not pivots. */
-const COLON_PIVOT = /(?:^|[.!?]\s+)(?:\S+\s+){2,}\S+?:\s+(?:\S+\s+){4,}\S+?[.!?](?=\s|$)/g;
+/**
+ * A clause, a colon, and the sentence that pays it off (§2.7), counted per sentence. French puts
+ * a no-break space before the colon; until 2026-09-30 that made every French post read zero.
+ * Not a pivot: a list after the colon (two commas or more between items of four words or fewer),
+ * a date stamp (`Stand:`), and a name with a colon in it (`Guardians of the Galaxy: Cosmic
+ * Rewind`: capitalised on both sides and in the second word after it).
+ */
+function isColonPivot(sentence) {
+  const m = sentence.match(/^(.*?\S)[ \u00a0\u202f]?:\s+(.+)$/u);
+  if (!m) return false;
+  const before = m[1].trim().split(/\s+/);
+  const after = m[2].trim().split(/\s+/);
+  if (before.length < 3 || after.length < 5) return false;
+  if (/^(?:stand|as of|état|actualizado|aggiornato)$/i.test(before.at(-1))) return false;
+  const cap = (w) => /^[\p{Lu}\d]/u.test(w ?? '');
+  if (cap(before.at(-1)) && cap(after[0]) && cap(after[1])) return false;
+  const items = m[2].split(/,\s*/);
+  if (items.length >= 3 && items.every((i) => i.trim().split(/\s+/).length <= 4)) return false;
+  return true;
+}
 function colonPivots(body) {
   let sentences = 0;
   let pivots = 0;
   for (const paragraph of body.split(/\n\s*\n/)) {
     const p = paragraph.trim().replace(/\s+/g, ' ');
     if (!p || /^([-+]|\d+\.|>|—)\s?/.test(p)) continue;
-    sentences += splitSentences(p).length;
-    pivots += (p.match(COLON_PIVOT) ?? []).length;
+    const list = splitSentences(p);
+    sentences += list.length;
+    pivots += list.filter(isColonPivot).length;
   }
   return { sentences, pivots };
 }
@@ -300,9 +336,13 @@ function colonPivots(body) {
 const PARALLELISM =
   /\bsondern\b|\bnot (?:just|only|merely)\b[^.!?]{0,60}\bbut\b|\b(?:it|this|that)(?:['’]s not| isn['’]t| is not) [^.!?]{1,40}[,;—–] (?:it['’]s|it is|but)\b|\bniet alleen\b|\bnon seulement\b|\bce n['’]est pas [^.!?]{1,40}, c['’]est\b|\bno solo\b[^.!?]{0,60}\bsino\b|\bnon solo\b[^.!?]{0,60}\bma\b|\bnon è [^.!?]{1,40}, è\b/gi;
 
-/** Our own features as grammatical subject: `der Planer kennt`, `the planner says` (§2.13). */
+/**
+ * Our own features as the subject of a verb: `der Planer kennt`, `the planner says` (§2.13). Until
+ * 2026-09-30 every `dem Kompass` and `the compass` counted, which in a post about the compass
+ * pushed writers into swapping the noun for `park.fan's compass` without changing who acts.
+ */
 const PRODUCT_SUBJECT =
-  /\b(?:der|dem|den|des) (?:planer|tagesplaners?|kompass|assistent\w*)\b|\bthe (?:planner|compass|assistant)\b/gi;
+  /\b(?:der|the) (?:planer|tagesplaner|kompass|assistent|planner|compass|assistant) (?:weiß|knows|(?!(?:ist|is|in|im|auf|on|of|von|zu|to|mit|with|als|as|und|and|oder|or|nicht|not|bis|its|seine?)\b)\p{Ll}+[ts])\b/giu;
 const NEGATION = {
   de: /\b(nicht|nichts|kein\w*|nie|niemals)\b/gi,
   en: /\b(not|no|never|nothing|none|isn'?t|doesn'?t|don'?t|won'?t|can'?t)\b/gi,
@@ -449,15 +489,19 @@ const warn = (file, msg) => warnings.push({ file, msg });
 
 /** Post body without frontmatter, HTML comments, widget fences, tables, headings and link URLs. */
 function postBody(raw) {
-  return raw
-    .replace(/^---\n[\s\S]*?\n---\n/, '')
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/^\s*\|.*$/gm, '')
-    .replace(/^\s*#{1,6} .*$/gm, '')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[*_`]/g, '');
+  return (
+    raw
+      .replace(/^---\n[\s\S]*?\n---\n/, '')
+      // A source list quotes other people's headlines (`1 Jahr pures Adrenalin`): not our prose.
+      .replace(/^\s*[-*] .*\]\(https?:\/\/.*$/gm, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .replace(/```[\s\S]*?```/g, '')
+      .replace(/^\s*\|.*$/gm, '')
+      .replace(/^\s*#{1,6} .*$/gm, '')
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+      .replace(/[*_`]/g, '')
+  );
 }
 
 /*
@@ -601,8 +645,8 @@ function hardRules(file, text, locale) {
   if (placeholder)
     fail(file, `placeholder text (§1.8): ${[...new Set(placeholder)].slice(0, 5).join(', ')}`);
   if (locale === 'de') {
-    const queue = text.match(GERMAN_QUEUE);
-    if (queue)
+    const queue = (text.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);
+    if (queue.length)
       fail(
         file,
         `"Schlange" where the house word is "Warteschlange" (§3.3), ${queue.length}×: ${[...new Set(queue)].slice(0, 5).join(', ')}`
@@ -617,13 +661,17 @@ function hardRules(file, text, locale) {
   if (locale === 'nl' && /„/.test(text)) warn(file, `German „ in Dutch text (§6), Dutch takes “…”`);
 }
 
-function scan(file, text, { subject } = {}) {
+function scan(file, raw, { subject, skip = [] } = {}) {
+  // A phrase wrapped across two lines (`datos\n    reales` in YAML, a hard-wrapped paragraph)
+  // is the same phrase: every list below is written with plain spaces.
+  const text = raw.replace(/\s+/g, ' ');
   const honesty = text.match(HONESTY);
   if (honesty) {
     const line = `${HONESTY_LABEL}: ${[...new Set(honesty)].slice(0, 5).join(', ')}`;
     (subject === 'us' ? fail : warn)(file, line);
   }
   for (const { what, re } of WATCH) {
+    if (skip.includes(what)) continue;
     const hits = text.match(re);
     if (hits) warn(file, `${what}: ${[...new Set(hits)].slice(0, 5).join(', ')}`);
   }
@@ -656,6 +704,23 @@ for (const locale of LOCALES) {
 
     scan(file, body);
     hardRules(file, raw.replace(/```[\s\S]*?```/g, ''), locale);
+    // Title, excerpt, SEO description and the text of every image leave the page too (the card,
+    // the feed, the search snippet, the photo). postBody() drops them, so they get their own pass:
+    // `echten Wartezeiten` in a `seo.description` went through unflagged until 2026-09-30.
+    const frontAndImages = [
+      ...plainTextFields(raw).map(([, v]) => v),
+      ...[...raw.matchAll(/!\[([^\]]+)\]\(/g)].map((m) => m[1]),
+    ].join('\n');
+    scan(`${file} (frontmatter and image text)`, frontAndImages, { skip: [SIGN_RULE] });
+
+    if (/^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '')) {
+      const title = plainTextFields(raw).find(([f]) => f === 'title')?.[1] ?? '';
+      const length = [...title].length;
+      if (length > MAX_NEWS_TITLE)
+        warn(file, `news title has ${length} characters (§5.0, at most ${MAX_NEWS_TITLE})`);
+      if (NEWS_TEMPLATE.test(title))
+        warn(file, `news title in the shape "<Park>: <fact>, und <aside>" (§5.0)`);
+    }
 
     for (const [field, value] of plainTextFields(raw)) {
       if (value.includes('—')) fail(file, `${field}: em dash (§4.1)`);
@@ -681,7 +746,16 @@ for (const locale of LOCALES) {
     if (ellipses > 1)
       warn(file, `${ellipses} ellipses (§4.5, one per post; "[…]" in a quote is exempt)`);
 
-    const bangs = (body.replace(/\[![A-Z]+\]/g, '').match(/!/g) ?? []).length;
+    // `RougaBOO!` and `MaverEEK!` are the rides' names, spelled by the park.
+    const bangs = (
+      body
+        .replace(/\s+/g, ' ')
+        .replace(/\[![A-Z]+\]/g, '')
+        .replace(/\p{Lu}{2,}!/gu, '')
+        // …and an exclamation inside a quotation is the speaker's (`„Ah, fresh meat!“`).
+        .replace(/[„“"«][^„“"«»”\n]{0,200}[“"»”]/g, '')
+        .match(/!/g) ?? []
+    ).length;
     if ((bangs / words) * 1000 > MAX_EXCLAMATIONS_PER_1K)
       warn(
         file,
@@ -723,7 +797,8 @@ for (const locale of LOCALES) {
     const commas = ((body.match(/,/g) ?? []).length / words) * 100;
     if (b !== null) {
       metrics.push({ file, locale, sentences: lengths.length, burstiness: b, commas });
-      if (b < MIN_BURSTINESS)
+      // Under 40 sentences one merged sentence moves the figure across the line (§2.9).
+      if (b < MIN_BURSTINESS && lengths.length >= 40)
         warn(file, `sentence-length variance ${b.toFixed(2)} (§2.9, flat under ${MIN_BURSTINESS})`);
     }
   }
@@ -826,7 +901,11 @@ for (const file of filesUnder('public/media', '.json')) {
     for (const [locale, text] of Object.entries(perLocale)) {
       if (typeof text !== 'string' || !text.trim()) continue;
       if (text.includes('—')) fail(file, `${field}.${locale}: em dash (§4.1)`);
-      scan(`${file} (${field}.${locale})`, text, { subject: 'us' });
+      scan(`${file} (${field}.${locale})`, text, {
+        subject: 'us',
+        // A sign in the photo is the thing itself; §3.3 rule 2 is about narrating one.
+        skip: field === 'alt' ? [SIGN_RULE] : [],
+      });
       hardRules(`${file} (${field}.${locale})`, text, locale);
       if (field === 'caption' && captions.has(locale)) captions.get(locale).push(text.trim());
       if (field === 'caption') {
@@ -1012,8 +1091,12 @@ function scanTerms(file, terms, locale) {
   }
 }
 
+/** Legal text is not rewritten for style (§6): only the rules with no exception apply to it. */
+const LEGAL = /\/(?:datenschutz|impressum)\//;
+
 function checkPage(file, locale, text, raw) {
   hardRules(file, text, locale);
+  if (LEGAL.test(file)) return;
   // German and Dutch take the en dash for a parenthetical; the em dash is the wrong
   // character before it is a tell (§4.1, §6).
   const dashes = (text.match(/—/g) ?? []).length;

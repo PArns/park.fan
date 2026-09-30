@@ -1,5 +1,5 @@
 ---
-title: 'Halloween Horror Festival au Movie Park jusqu’au 8 novembre'
+title: 'Le Movie Park fête Halloween jusqu’au 8 novembre'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick

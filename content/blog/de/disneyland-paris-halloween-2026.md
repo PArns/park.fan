@@ -1,5 +1,5 @@
 ---
-title: 'Dr. Facilier kehrt zu Halloween nach Disneyland Paris zurück'
+title: 'Dr. Facilier kehrt zu Halloween ins Disneyland Paris zurück'
 translationKey: disneyland-paris-halloween-2026
 date: '2026-09-23'
 author: patrick

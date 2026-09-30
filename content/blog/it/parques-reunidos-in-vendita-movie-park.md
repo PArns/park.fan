@@ -1,5 +1,5 @@
 ---
-title: 'EQT vuole vendere Parques Reunidos, con Movie Park e Mirabilandia'
+title: 'Mirabilandia e Movie Park in vendita con Parques Reunidos'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
 author: patrick

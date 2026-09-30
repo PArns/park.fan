@@ -1779,7 +1779,7 @@
         "favoritesQ": "Puis-je enregistrer mes parcs et attractions préférés sur park.fan ?",
         "favoritesA": "Oui. L’étoile d’un parc, d’une attraction, d’un spectacle ou d’un restaurant l’ajoute aux favoris. Les favoris apparaissent ensuite sur la page d’accueil, avec le temps d’attente en direct et l’état d’ouverture. Ils sont enregistrés dans le navigateur, aucun compte n’est nécessaire.",
         "featuresQ": "Quelles informations park.fan offre-t-il en plus des temps d’attente en direct ?",
-        "featuresA": "Outre les temps d’attente en direct, chaque page de parc donne les horaires d’ouverture, les horaires des spectacles, les restaurants avec leur cuisine et l’obligation éventuelle de réserver, la météo du jour, l’historique mesuré des temps d’attente et le calendrier d’affluence. La page de chaque attraction y ajoute son déroulé de journée habituel.",
+        "featuresA": "Chaque page de parc donne aussi les horaires d’ouverture, les horaires des spectacles, les restaurants avec leur cuisine et l’obligation éventuelle de réserver, la météo du jour, l’historique mesuré des temps d’attente et le calendrier d’affluence. La page de chaque attraction y ajoute son déroulé de journée habituel.",
         "mobileQ": "Est-ce que park.fan fonctionne sur les smartphones ?",
         "mobileA": "Oui. park.fan s’ouvre dans le navigateur, sur téléphone, tablette ou ordinateur, sans application à installer. Dans le parc, vous y voyez où la file est courte en ce moment. Si la page détecte que vous êtes sur place, les attractions les plus proches remontent en haut."
       }
