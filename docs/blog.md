@@ -1008,6 +1008,16 @@ geschätzt` has kept the English skeleton and lost the German reader.
 
 `pnpm check:prose` scans the glossary per term and reports each rule with the term ids.
 
+### 5.8 The public changelog (`content/changelog/`)
+
+English only, and every sentence in it is about us, so the honesty family is an error there, as in
+a catalog string. A list item never opens on bold: 2.12.0 shipped sixteen items shaped
+`- **A short claim.** The explanation`, the layout §4.2 names, because the collection's README
+showed it as the template. `title` and `summary` are plain-text fields (§4.5). A release note picks
+what a visitor would notice and says it with the number behind it; which changes belong in one at
+all is [a version is a unit of communication](rules/a-version-is-a-unit-of-communication.md).
+`pnpm check:changelog` runs the changelog half of `pnpm check:prose` in CI.
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -1068,9 +1078,10 @@ pnpm check:prose --verbose    # every hit, not the first forty
 way `attractionIsOutOfSeason()` is the SQL twin of the season rule: change one half and you
 change both. It walks the posts, the six message catalogs, every media sidecar, the glossary
 (per term), the content pages and the hero copy in their `page.tsx`, the homepage announcement,
-the changelog, the three agent skills and `/llms.txt`; for `Warteschlange` alone also every
-string in the tracked `.ts` and `.tsx` files under `app/`, `components/` and `lib/`, where the
-menus keep their chapter lists. It splits its output the way a regex can actually be trusted to:
+the changelog (§5.8; `--only=changelog` for that surface alone), the three agent skills and
+`/llms.txt`; for `Warteschlange` alone also every string in the tracked `.ts` and `.tsx` files
+under `app/`, `components/` and `lib/`, where the menus keep their chapter lists. It splits its
+output the way a regex can actually be trusted to:
 
 - **Errors** are rules with no legitimate exception: a `—` in a post body or in German or Dutch
   prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that

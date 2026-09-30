@@ -1,7 +1,7 @@
 ---
 title: 'Fast & Furious: Hollywood Drift ist eröffnet'
 translationKey: hollywood-drift-universal-studios-hollywood
-date: '2026-09-30'
+date: '2026-09-16'
 author: patrick
 mode: published
 featured: false

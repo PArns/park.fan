@@ -250,10 +250,10 @@ carries the reasoning, the measurements and the counter-examples.
   (`CardPhotoFrame`), never the whole card. `pnpm check:card-framing`.
 - **[Localized blog gallery captions](docs/rules/localized-blog-gallery-captions.md)** — a gallery is a collection, and its captions live per image in
   the sidecar.
-- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no bump per merge; the PO cuts one, MINOR for a new
-  visible capability, PATCH for a bundle of fixes. `docs/changelog.md` is the internal log and
-  `content/changelog/<version>.md` the public entry at `/en/changelog`; never parse one into the
-  other, and a blog post is never a release.
+- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no version per merge or ticket; the PO bundles
+  them, MINOR for a new visible capability, PATCH for fixes. A PR writes a fragment,
+  `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, `package.json` or `content/changelog/`;
+  `pnpm release:cut` moves all three in one PR. A blog post is never a release. `pnpm check:changelog`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
   news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.

@@ -2,9 +2,9 @@ name: lint and format
 
 # Blocking gate for the checks that need no build, no database and no browser:
 # ESLint, Prettier, the :has() guard (added for the 2026-09 INP report), the two sitemap
-# `<lastmod>` guards (PAR-366) and the header menu's chapter anchors. It runs on every pull
-# request and on pushes to main, so a red main is visible where it happened rather than as
-# somebody else's bycatch.
+# `<lastmod>` guards (PAR-366), the header menu's chapter anchors and the changelog's release
+# rules. It runs on every pull request and on pushes to main, so a red main is visible where it
+# happened rather than as somebody else's bycatch.
 #
 # Why it exists: `pnpm format:check` went red on main twice within a month, both
 # times from a merged PR that had not run `pnpm format` (PF-68: 8 files, PF-101:
@@ -106,3 +106,19 @@ jobs:
       - name: pnpm test:hub-chapters
         if: ${{ !cancelled() }}
         run: pnpm test:hub-chapters
+
+      # A version is cut in one pull request that moves `package.json`, `docs/changelog.md` and
+      # `content/changelog/<version>.md` together (`pnpm release:cut`); every other pull request
+      # writes a fragment in `docs/changelog.d/` and touches none of the three
+      # (docs/rules/a-version-is-a-unit-of-communication.md). The first run of this check found
+      # 2.12.0 published without its heading in the internal log. The second half is the
+      # changelog's share of check:prose. Local files only, under a second.
+      - name: pnpm check:changelog
+        if: ${{ !cancelled() }}
+        run: pnpm check:changelog
+
+      # Runs a whole cut in a scratch directory, so a change to the fragment rules that the cut and
+      # the check no longer agree on fails here rather than on release day. No network.
+      - name: pnpm test:changelog-fragments
+        if: ${{ !cancelled() }}
+        run: pnpm test:changelog-fragments
