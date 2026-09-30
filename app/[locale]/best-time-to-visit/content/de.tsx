@@ -34,7 +34,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Die ruhigsten Wochentage',
   weekdaysBody:
-    'Jeder Park zählt hier gleich viel, egal ob Disneyland oder kleiner Familienpark: Wir rechnen ihn zuerst auf seinen eigenen Schnitt um und mitteln dann. Der Balken zeigt, wie voll ein typischer Wochentag im Vergleich zum Durchschnitt ist. Der Samstag sticht heraus; die übrigen sechs Tage liegen enger beieinander, als die meisten erwarten.',
+    'Jeder Park zählt hier gleich viel, egal ob Disneyland oder kleiner Familienpark: Wir rechnen ihn zuerst auf seinen eigenen Schnitt um und mitteln dann. Je länger der Balken, desto voller ist ein typischer Wochentag im Vergleich zum Durchschnitt. Der Samstag sticht heraus, die übrigen sechs Tage liegen enger beieinander, als die meisten erwarten.',
   monthsTitle: 'Die ruhigsten Monate',
   monthsBody:
     'Dieselbe Rechnung, diesmal übers Jahr verteilt. Der Dezember fällt dabei aus dem Rahmen, weil nur die Parks darin stecken, die im Winter überhaupt öffnen, und die fahren dann Weihnachtsprogramm.',
@@ -55,22 +55,22 @@ const FAQ = [
   {
     question: 'Welcher Wochentag ist am leersten?',
     answer:
-      'Im Schnitt über alle Parks sind Dienstag, Mittwoch und Donnerstag am ruhigsten. Herausragend voll ist nur der Samstag; der Sonntag liegt näher am Dienstag als am Samstag. Bei einzelnen Parks kann es anders aussehen; das zeigt dir der Crowd-Kalender auf der jeweiligen Parkseite tagesgenau.',
+      'Im Schnitt über alle Parks sind Dienstag, Mittwoch und Donnerstag am ruhigsten. Herausragend voll ist nur der Samstag, der Sonntag liegt näher am Dienstag als am Samstag. Bei einzelnen Parks kann es anders aussehen. Tag für Tag steht das im Crowd-Kalender auf der jeweiligen Parkseite.',
   },
   {
     question: 'In welchen Monaten sind Freizeitparks am leersten?',
     answer:
-      'Das hängt stärker vom Park ab, als die Faustregel vermuten lässt: Über alle Parks gerechnet sind die Sommermonate nicht die vollsten, und der Dezember sticht nach oben heraus, weil im Winter nur die Parks mit Weihnachtsprogramm geöffnet haben. Die Monatsübersicht oben zeigt es Monat für Monat. Für einen konkreten Park zählt sein eigener Kalender.',
+      'Das hängt stärker vom Park ab, als die Faustregel vermuten lässt: Über alle Parks gerechnet sind die Sommermonate nicht die vollsten, und der Dezember sticht nach oben heraus, weil im Winter nur die Parks mit Weihnachtsprogramm geöffnet haben. Monat für Monat steht es in der Übersicht oben. Für einen konkreten Park zählt sein eigener Kalender.',
   },
   {
     question: 'Lohnt sich ein Besuch bei Regen?',
     answer:
-      'Oft ja. Schlechtes Wetter hält viele ab, und die Warteschlangen werden kürzer, gerade an Achterbahnen, die bei Regen weiterfahren. Der Geheimtipp funktioniert nur, solange nicht alle gleichzeitig darauf kommen. Deshalb rechnet unser Prognosemodell das Wetter gleich mit ein.',
+      'Oft ja. Schlechtes Wetter hält viele ab, und die Warteschlangen werden kürzer, gerade an Achterbahnen, die bei Regen weiterfahren. Das funktioniert nur, solange nicht alle gleichzeitig darauf kommen. Deshalb rechnet unser Prognosemodell das Wetter gleich mit ein.',
   },
   {
     question: 'Wie finde ich den besten Tag für einen bestimmten Park?',
     answer:
-      'Diese Seite gibt dir die groben Muster. Für einen konkreten Park öffnest du seinen Crowd-Kalender: Der zeigt für jeden veröffentlichten Tag grün, gelb oder rot, inklusive der Ferien und Feiertage der Region.',
+      'Diese Seite gibt dir die groben Muster. Für einen konkreten Park öffnest du seinen Crowd-Kalender. Dort ist jeder veröffentlichte Tag grün, gelb oder rot, mit den Ferien und Feiertagen der Region eingerechnet.',
   },
   {
     question: 'Woher stammen diese Daten?',
@@ -94,13 +94,13 @@ export function ContentDE() {
         <P>
           Also haben wir nachgerechnet, mit den mitgeschriebenen Wartezeiten aus über 200 Parks.
           Weiter unten stehen die ruhigsten Wochentage und Monate, die besten Uhrzeiten und die
-          Tage, an denen du besser auf dem Sofa bleibst. Für deinen Wunschpark sucht dir der
-          Crowd-Kalender danach den passenden Tag raus.
+          Termine, die du besser meidest. Den passenden Tag für deinen Wunschpark findest du danach
+          im Crowd-Kalender.
         </P>
         <Highlight>
-          Kurzfassung für Eilige: Dienstag bis Donnerstag außerhalb der Ferien, pünktlich zur
-          Öffnung am Tor stehen, und eine durchwachsene Wettervorhersage als Geschenk nehmen,
-          solange eine Regenjacke im Rucksack ist.
+          Am kürzesten stehst du dienstags bis donnerstags außerhalb der Ferien an, wenn du
+          pünktlich zur Öffnung am Tor bist. Eine durchwachsene Wettervorhersage ist dabei ein
+          Geschenk, solange eine Regenjacke im Rucksack ist.
         </Highlight>
       </div>
 
@@ -113,8 +113,8 @@ export function ContentDE() {
         icon={CalendarRange}
       >
         <PG>
-          Am meisten bewegen Wochentag und Monat. Beides haben wir über alle Parks gemittelt, und
-          zwar aus den Wartezeiten, die wirklich gemessen wurden:
+          Am meisten bewegen Wochentag und Monat. Beides haben wir aus den gemessenen Wartezeiten
+          über alle Parks gemittelt:
         </PG>
         <BestTimesData locale="de" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="de" />
@@ -213,7 +213,7 @@ export function ContentDE() {
             {
               icon: CalendarRange,
               title: <GlossaryTermLink termId="school-holiday">Schulferien</GlossaryTermLink>,
-              body: 'Sobald bei dir oder im Nachbarbundesland Ferien sind, wird es voller. Die Sommerferien sind die absolute Hochsaison.',
+              body: 'Sobald bei dir oder im Nachbarbundesland Ferien sind, wird es voller. Die Sommerferien sind die Hochsaison.',
             },
             {
               icon: Sun,
@@ -281,24 +281,25 @@ export function ContentDE() {
         <P>
           Die Muster von oben sind der grobe Rahmen. Den besten Tag für deinen Park findest du im{' '}
           <GlossaryTermLink termId="crowd-calendar">Crowd-Kalender</GlossaryTermLink> auf jeder
-          Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, so weit der Park
-          seinen Zeitplan veröffentlicht hat, und passend zu den Ferien und Feiertagen der
-          jeweiligen Region.
+          Parkseite. Dort ist jeder einzelne Tag grün, gelb oder rot, so weit der Park seinen
+          Zeitplan veröffentlicht hat, und die Ferien und Feiertage der jeweiligen Region sind
+          eingerechnet.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="Die Palastfahrt Symbolica im Efteling"
           kicker="Grün, gelb, rot"
-          title="Eine Farbe pro Tag, so weit der Zeitplan reicht"
+          title="Mit den Ferien und Feiertagen der Region"
           badge={
             <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
               <CrowdLevelBadge level="low" />
             </GlossaryTermLink>
           }
         >
-          Jede Parkseite hat eine tagesgenaue Prognose, die die Ferien und Feiertage der richtigen
-          Region kennt, auch die, von denen du noch nie gehört hast. Such dir einen grünen Tag aus,
-          dann ist der wichtigste Teil der Planung erledigt, bevor du ein Ticket kaufst.
+          Jede Parkseite hat eine tagesgenaue Prognose, in der die Ferien und Feiertage der
+          richtigen Region stecken, auch die, von denen du noch nie gehört hast. Such dir einen
+          grünen Tag aus, dann ist der wichtigste Teil der Planung erledigt, bevor du ein Ticket
+          kaufst.
         </SplitFigure>
         <P>Ein paar beliebte Parks zum direkten Ausprobieren:</P>
         <PopularParksGrid />

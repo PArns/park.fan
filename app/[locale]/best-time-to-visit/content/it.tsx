@@ -34,7 +34,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'I giorni feriali più tranquilli',
   weekdaysBody:
-    'Qui ogni parco pesa uguale, che sia Disneyland o un piccolo parco di famiglia: prima lo riportiamo alla sua media, poi facciamo la media fra tutti. La barra dice quanto è affollato un tipico giorno feriale rispetto alla media. Il sabato spicca; gli altri sei giorni stanno più vicini di quanto quasi tutti si aspettino.',
+    'Qui ogni parco pesa uguale, che sia Disneyland o un piccolo parco di famiglia: prima lo riportiamo alla sua media, poi facciamo la media fra tutti. Più la barra è lunga, più è affollato un tipico giorno feriale rispetto alla media. Il sabato spicca; gli altri sei giorni stanno più vicini di quanto quasi tutti si aspettino.',
   monthsTitle: 'I mesi più tranquilli',
   monthsBody:
     'Lo stesso calcolo, stavolta distribuito sull’anno. Dicembre esce dagli schemi, perché ci finiscono dentro solo i parchi che d’inverno aprono, e quelli fanno programma natalizio.',
@@ -55,22 +55,22 @@ const FAQ = [
   {
     question: 'Quale giorno della settimana è meno affollato?',
     answer:
-      'In media su tutti i parchi, il martedì, il mercoledì e il giovedì sono i più tranquilli. A spiccare per affollamento è solo il sabato; la domenica sta più vicina al martedì che al sabato. I singoli parchi possono variare: ogni pagina di parco ha un calendario dell’affluenza che lo mostra giorno per giorno.',
+      'In media su tutti i parchi, il martedì, il mercoledì e il giovedì sono i più tranquilli. A spiccare per affollamento è solo il sabato; la domenica sta più vicina al martedì che al sabato. I singoli parchi possono variare, e giorno per giorno lo trovi nel calendario dell’affluenza di ogni pagina di parco.',
   },
   {
     question: 'In quali mesi i parchi divertimenti sono meno affollati?',
     answer:
-      'Dipende dal parco più di quanto lasci intendere la regola generale: in media su tutti i parchi i mesi estivi non sono i più affollati, e dicembre spicca verso l’alto, perché d’inverno restano aperti solo i parchi con programma natalizio. Il riepilogo mensile qui sopra lo mostra mese per mese. Per un parco preciso conta il suo calendario.',
+      'Dipende dal parco più di quanto lasci intendere la regola generale: in media su tutti i parchi i mesi estivi non sono i più affollati, e dicembre spicca verso l’alto, perché d’inverno restano aperti solo i parchi con programma natalizio. Mese per mese è tutto nel riepilogo qui sopra. Per un parco preciso conta il suo calendario.',
   },
   {
     question: 'Vale la pena visitare con la pioggia?',
     answer:
-      'Spesso sì: il maltempo scoraggia molti visitatori e le code si accorciano, soprattutto davanti alle montagne russe, che con la pioggia continuano a girare. Ma il trucco da esperti funziona solo finché non hanno tutti la stessa idea; per questo il nostro modello di previsione mette in conto il meteo direttamente.',
+      'Spesso sì: il maltempo scoraggia molti visitatori e le code si accorciano, soprattutto davanti alle montagne russe, che con la pioggia continuano a girare. Ma funziona solo finché non hanno tutti la stessa idea; per questo il nostro modello di previsione mette in conto il meteo direttamente.',
   },
   {
     question: 'Come trovo il giorno migliore per un parco specifico?',
     answer:
-      'Questa pagina mostra gli schemi globali come punto di partenza. Per un parco preciso, apri il suo calendario dell’affluenza: mostra per ogni giornata pubblicata una previsione verde, gialla o rossa, comprese le vacanze scolastiche e i giorni festivi di quella regione.',
+      'Questa pagina dà gli schemi globali come punto di partenza. Per un parco preciso, apri il suo calendario dell’affluenza, dove ogni giornata pubblicata ha una previsione verde, gialla o rossa, comprese le vacanze scolastiche e i giorni festivi di quella regione.',
   },
   {
     question: 'Da dove arrivano questi dati?',
@@ -94,13 +94,13 @@ export function ContentIT() {
         <P>
           Così abbiamo fatto i conti, con i tempi di attesa registrati in oltre 200 parchi. Più in
           basso trovi i giorni feriali e i mesi più tranquilli, le ore migliori della giornata e le
-          date in cui è meglio restare sul divano. Poi il calendario dell’affluenza ti cerca il
-          giorno giusto per il parco che hai in mente.
+          date da evitare. Il giorno giusto per il parco che hai in mente lo trovi poi nel
+          calendario dell’affluenza.
         </P>
         <Highlight>
-          Versione breve per chi ha fretta: dal martedì al giovedì fuori dalle vacanze scolastiche,
-          davanti ai cancelli all’apertura, e un meteo incerto preso come un regalo, purché nello
-          zaino ci sia una giacca impermeabile.
+          Le code più corte le trovi dal martedì al giovedì fuori dalle vacanze scolastiche, se sei
+          davanti ai cancelli all’apertura. Un meteo incerto è allora un regalo, purché nello zaino
+          ci sia una giacca impermeabile.
         </Highlight>
       </div>
 
@@ -114,7 +114,7 @@ export function ContentIT() {
       >
         <PG>
           A spostare di più sono il giorno della settimana e il mese. Entrambi li abbiamo mediati su
-          tutti i parchi, partendo dai tempi di attesa misurati davvero:
+          tutti i parchi, partendo dai tempi di attesa misurati:
         </PG>
         <BestTimesData locale="it" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="it" />
@@ -208,7 +208,7 @@ export function ContentIT() {
               title: (
                 <GlossaryTermLink termId="school-holiday">Vacanze scolastiche</GlossaryTermLink>
               ),
-              body: 'Appena la tua regione o quella accanto è in vacanza, l’affluenza sale. Le vacanze estive sono l’alta stagione assoluta.',
+              body: 'Appena la tua regione o quella accanto è in vacanza, l’affluenza sale. Le vacanze estive sono l’alta stagione.',
             },
             {
               icon: Sun,
@@ -271,7 +271,7 @@ export function ContentIT() {
         icon={Ticket}
       >
         <P>
-          Gli schemi qui sopra danno la cornice. Il giorno migliore per il tuo parco te lo dice il{' '}
+          Gli schemi qui sopra danno la cornice. Il giorno migliore per il tuo parco lo trovi nel{' '}
           <GlossaryTermLink termId="crowd-calendar">calendario dell’affluenza</GlossaryTermLink> di
           ogni pagina di parco: verde, giallo, rosso, per ogni giornata pubblicata, con le vacanze e
           i giorni festivi della regione interessata.
@@ -280,15 +280,15 @@ export function ContentIT() {
           src="/media/efteling/symbolica.jpg"
           alt="L’attrazione del palazzo Symbolica a Efteling"
           kicker="Verde, giallo, rosso"
-          title="Un colore al giorno, fin dove arriva il calendario"
+          title="Con le vacanze e i giorni festivi della regione"
           badge={
             <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
               <CrowdLevelBadge level="low" />
             </GlossaryTermLink>
           }
         >
-          Ogni pagina di parco porta una previsione giorno per giorno che conosce le vacanze
-          scolastiche e i giorni festivi della regione giusta, anche quelli di cui non hai mai
+          Ogni pagina di parco porta una previsione giorno per giorno che tiene conto delle vacanze
+          scolastiche e dei giorni festivi della regione giusta, anche quelli di cui non hai mai
           sentito parlare. Scegli un giorno verde e la parte più importante della pianificazione è
           fatta prima di comprare il biglietto.
         </SplitFigure>

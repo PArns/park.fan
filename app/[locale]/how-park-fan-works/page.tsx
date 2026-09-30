@@ -59,10 +59,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'So funktioniert park.fan',
     metaTitle: 'Wartezeiten verstehen – so funktioniert park.fan',
     intro:
-      '70 Minuten bei Taron: viel oder normal? Diese Anleitung zeigt an echten Beispielen, wie du eine Wartezeit einordnest, wann eine Bahn ihren ruhigsten Moment hat und woher die Zahlen kommen.',
+      '70 Minuten bei Taron: viel oder normal? Diese Anleitung zeigt an Beispielen aus dem Phantasialand, wie du eine Wartezeit einordnest, wann eine Bahn ihren ruhigsten Moment hat und woher die Zahlen kommen.',
     kicker: 'park.fan · Die Anleitung',
     tagline:
-      '70 Minuten bei Taron. Viel? Normal? Eine Zahl allein beantwortet das nicht. Diese Seite zeigt, was park.fan daraus macht, und woher es das weiß.',
+      '70 Minuten bei Taron: viel oder normal? Sagen lässt sich das erst im Vergleich mit den Tagen, an denen park.fan Taron schon gemessen hat.',
     scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand am Abend',
     signUnit: 'Minuten',
@@ -77,10 +77,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'How park.fan works',
     metaTitle: 'Understanding wait times – how park.fan works',
     intro:
-      '70 minutes at Taron: a lot, or normal? This guide shows on real examples how to place a wait time, when a ride has its quietest moment and where the numbers come from.',
+      '70 minutes at Taron: a lot, or normal? Using examples from Phantasialand, this guide shows how to place a wait time, when a ride has its quietest moment and where the numbers come from.',
     kicker: 'park.fan · The guide',
     tagline:
-      '70 minutes at Taron. A lot? Normal? A number on its own does not answer that. This page shows what park.fan makes of it, and how it knows.',
+      '70 minutes at Taron: a lot, or normal? You can only tell once it’s set against the days park.fan has already measured at Taron.',
     scrollLabel: 'Scroll',
     heroAlt: 'Phantasialand in the evening',
     signUnit: 'minutes',
@@ -95,10 +95,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'Así funciona park.fan',
     metaTitle: 'Entender los tiempos de espera – park.fan',
     intro:
-      '70 minutos en Taron: ¿mucho o normal? Esta guía muestra con ejemplos reales cómo situar un tiempo de espera, cuándo una atracción está más tranquila y de dónde salen las cifras.',
+      '70 minutos en Taron: ¿mucho o normal? Esta guía muestra con ejemplos de Phantasialand cómo situar un tiempo de espera, cuándo una atracción está más tranquila y de dónde salen las cifras.',
     kicker: 'park.fan · La guía',
     tagline:
-      '70 minutos en Taron. ¿Mucho? ¿Normal? Una cifra sola no lo responde. Esta página muestra qué hace park.fan con ella y cómo lo sabe.',
+      '70 minutos en Taron: ¿mucho o normal? Solo se sabe comparándolos con los días que park.fan ya ha medido en Taron.',
     scrollLabel: 'Desplazar',
     heroAlt: 'Phantasialand al anochecer',
     signUnit: 'minutos',
@@ -113,10 +113,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'Comment fonctionne park.fan',
     metaTitle: 'Comprendre les temps d’attente – park.fan',
     intro:
-      '70 minutes à Taron : beaucoup, ou normal ? Ce guide montre sur des exemples réels comment situer un temps d’attente, quand une attraction connaît son moment le plus calme et d’où viennent les chiffres.',
+      '70 minutes à Taron : beaucoup, ou normal ? Ce guide montre sur des exemples pris à Phantasialand comment situer un temps d’attente, quand une attraction connaît son moment le plus calme et d’où viennent les chiffres.',
     kicker: 'park.fan · Le guide',
     tagline:
-      '70 minutes à Taron. Beaucoup ? Normal ? Un chiffre seul n’y répond pas. Cette page montre ce que park.fan en fait, et comment il le sait.',
+      '70 minutes à Taron : beaucoup, ou normal ? On ne peut le dire qu’en les comparant aux jours que park.fan a déjà mesurés sur Taron.',
     scrollLabel: 'Défiler',
     heroAlt: 'Phantasialand le soir',
     signUnit: 'minutes',
@@ -131,10 +131,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'Come funziona park.fan',
     metaTitle: 'Capire i tempi di attesa – park.fan',
     intro:
-      '70 minuti a Taron: tanti o normali? Questa guida mostra con esempi reali come collocare un tempo di attesa, quando un’attrazione ha il suo momento più tranquillo e da dove arrivano i numeri.',
+      '70 minuti a Taron: tanti o normali? Questa guida mostra con esempi da Phantasialand come collocare un tempo di attesa, quando un’attrazione ha il suo momento più tranquillo e da dove arrivano i numeri.',
     kicker: 'park.fan · La guida',
     tagline:
-      '70 minuti a Taron. Tanti? Normali? Un numero da solo non risponde. Questa pagina mostra cosa ne ricava park.fan, e come fa a saperlo.',
+      '70 minuti a Taron: tanti o normali? Si capisce solo confrontandoli con i giorni in cui park.fan ha già misurato Taron.',
     scrollLabel: 'Scorri',
     heroAlt: 'Phantasialand di sera',
     signUnit: 'minuti',
@@ -149,10 +149,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'Zo werkt park.fan',
     metaTitle: 'Wachttijden begrijpen – zo werkt park.fan',
     intro:
-      '70 minuten bij Taron: veel of normaal? Deze gids laat aan echte voorbeelden zien hoe je een wachttijd plaatst, wanneer een attractie haar rustigste moment heeft en waar de cijfers vandaan komen.',
+      '70 minuten bij Taron: veel of normaal? Deze gids laat aan voorbeelden uit Phantasialand zien hoe je een wachttijd plaatst, wanneer een attractie haar rustigste moment heeft en waar de cijfers vandaan komen.',
     kicker: 'park.fan · De gids',
     tagline:
-      '70 minuten bij Taron. Veel? Normaal? Eén getal alleen beantwoordt dat niet. Deze pagina laat zien wat park.fan ermee doet, en hoe het dat weet.',
+      '70 minuten bij Taron: veel of normaal? Dat zie je pas naast de dagen waarop park.fan Taron al gemeten heeft.',
     scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand in de avond',
     signUnit: 'minuten',

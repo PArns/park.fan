@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: the villains take over on Saturday, and Dr. Facilier is back after five years'
+title: 'Dr. Facilier returns for Halloween at Disneyland Paris'
 translationKey: disneyland-paris-halloween-2026
 date: '2026-09-23'
 author: patrick
@@ -26,7 +26,7 @@ coverImage:
   caption: 'Still without thorns. From Saturday the villains take over the castle gates.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris Halloween 2026: dates, what’s new, 31 October'
+  title: 'Disneyland Paris Halloween 2026 and the 31 October evening'
   description: >-
     Disney Halloween Festival from 26 September to 1 November 2026: new
     outfits, Dr. Facilier, Jack & Sally, the Unlucky Nugget Saloon and the
@@ -41,9 +41,10 @@ seo:
     - Jack Skellington Disneyland Paris
 ---
 
-If Halloween at a theme park means chainsaws and fake blood to you,
+If Halloween at a theme park means
+[chainsaws and fake blood](/blog/halloween-theme-parks-2026) to you,
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) will let you
-down, and it means to. The **Disney Halloween Festival** is the family version:
+down. The **Disney Halloween Festival** is the family version:
 pumpkins, villains to pose with, a parade, and one evening when grown-ups are
 allowed in wearing a costume. It opens on **Saturday 26 September** and runs
 until **Sunday 1 November 2026**, and every part of it is covered by an
@@ -79,7 +80,7 @@ ravens and villain crests wind around the castle gates on Royal Castle Stage.
 In Frontierland, _The Lucky Nugget Saloon_ turns into _The Unlucky Nugget
 Saloon_ again. Its story comes from
 [Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor):
-you are a guest at Melanie Ravenswood's wedding reception, the one that never
+you're a guest at Melanie Ravenswood's wedding reception, the one that never
 took place. This year the **upper floor** opens too, decorated after the
 portraits that change as you walk past them in Phantom Manor. The menu is new
 too.
@@ -98,10 +99,10 @@ Market House Deli and an Ursula cake at Victoria's Home-Style Restaurant.
 
 ## 31 October
 
-Halloween falls on a Saturday in 2026, and it is the one day of the year when
+Halloween falls on a Saturday in 2026, and it's the one day of the year when
 adults may wear a costume into the park. Disneyland Park stays open until **11
 p.m.** with extra character meetings, a fireworks show of its own and sweets
-handed out by M&M'S. There is no separate party ticket: the evening is part of
+handed out by M&M'S. There's no separate party ticket: the evening is part of
 normal admission, which means a dated ticket whose price, Disney says, moves
 with the season and with demand.
 
@@ -112,8 +113,8 @@ sticks and anything that looks like a weapon. If you come as a Disney character,
 you may not pose for photos or sign autographs. A multi-layered full-body
 costume can mean a closer check at the entrance.
 
-A Saturday, Halloween, costumes and an evening programme for everyone with a
-ticket: it will be packed. If you can live without the costume night, the
+With a Saturday, Halloween, costumes and an evening programme for everyone with
+a ticket, it'll be packed. If you can live without the costume night, the
 decorations are easier to enjoy on a weekday in late September or early
 October. French schools break up in mid-October, and the last week of the
 month is UK half term as well.
@@ -126,12 +127,9 @@ month is UK half term as well.
 
 ```
 
-What Premier Access costs, which days are calmer in a park that never closes
-for the season, and how to do both parks in one day: that is all in the
-[Disneyland Paris guide](/blog/disneyland-paris-wait-times-tips). What Movie
-Park, Traumatica, Walibi and Toverland do the same autumn for people without
-children in tow is in the
-[Halloween overview](/blog/halloween-theme-parks-2026).
+Premier Access prices, the calmer days in a park that never closes for the
+season and how to do both parks in one day are all in the
+[Disneyland Paris guide](/blog/disneyland-paris-wait-times-tips).
 
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 

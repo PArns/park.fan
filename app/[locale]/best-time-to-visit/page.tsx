@@ -58,12 +58,12 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
     title: 'Beste Reisezeit für Freizeitparks',
     intro:
-      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 200 Parks, dazu Tricks für kurze Warteschlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
+      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus gemessenen Wartezeiten von über 200 Parks, dazu Tricks für kurze Warteschlangen und der Kalender mit dem besten Tag für deinen Wunschpark.',
     kicker: 'park.fan · Reiseplanung',
     tagline:
-      'Wann ein Park voll wird, ist kein Glücksspiel. Aus echten Wartezeiten von über 200 Parks zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',
+      'Wann ein Park voll wird, lässt sich vorhersagen. Aus den Wartezeiten, die wir seit Dezember 2025 in über 200 Parks messen, zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',
     scrollLabel: 'Scrollen',
-    heroAlt: 'Freizeitpark-Landschaft im Abendlicht',
+    heroAlt: 'Symbolica im Efteling bei Nacht, blau angeleuchtet',
     stats: [
       { value: '200+', label: 'Parks analysiert' },
       { value: 'seit Dez. 2025', label: 'eigene Messungen' },
@@ -73,12 +73,12 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   en: {
     title: 'Best Time to Visit Theme Parks',
     intro:
-      'When are theme parks least crowded? The quietest weekdays and months — from real wait-time data across 200+ parks — plus tactics for short queues and the calendar that shows the best day for your park.',
+      'When are theme parks least crowded? The quietest weekdays and months, from wait times measured at 200+ parks, plus tactics for short queues and the calendar with the best day for your park.',
     kicker: 'park.fan · trip planner',
     tagline:
-      'Theme-park crowds are not random. From real wait-time data across 200+ parks, here are the quietest days — and how to dodge the busy ones.',
+      'Theme-park crowds follow a pattern. From the wait times we’ve measured at 200+ parks since December 2025, here are the quietest days and how to dodge the busy ones.',
     scrollLabel: 'Scroll',
-    heroAlt: 'A theme-park landscape in the evening light',
+    heroAlt: 'Symbolica at Efteling by night, lit in blue',
     stats: [
       { value: '200+', label: 'parks analysed' },
       { value: 'since Dec 2025', label: 'of our own readings' },
@@ -88,12 +88,12 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   es: {
     title: 'Mejor época para visitar parques temáticos',
     intro:
-      '¿Cuándo hay menos gente en los parques temáticos? Los días de la semana y los meses más tranquilos, a partir de datos reales de tiempos de espera de más de 200 parques, con trucos para colas cortas y el calendario que muestra el mejor día para tu parque.',
+      '¿Cuándo hay menos gente en los parques temáticos? Los días de la semana y los meses más tranquilos, a partir de los tiempos de espera medidos en más de 200 parques, con trucos para colas cortas y el calendario con el mejor día para tu parque.',
     kicker: 'park.fan · planificador de visitas',
     tagline:
-      'La afluencia no es aleatoria. Con datos reales de más de 200 parques te mostramos los días más tranquilos y cómo esquivar los llenos.',
+      'La afluencia sigue un patrón. Con los tiempos de espera que medimos desde diciembre de 2025 en más de 200 parques te mostramos los días más tranquilos y cómo esquivar los llenos.',
     scrollLabel: 'Desliza',
-    heroAlt: 'Paisaje de un parque temático a la luz del atardecer',
+    heroAlt: 'El palacio de Symbolica en Efteling, de noche e iluminado en azul',
     stats: [
       { value: '200+', label: 'parques analizados' },
       { value: 'desde dic. 2025', label: 'de mediciones propias' },
@@ -103,12 +103,12 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   fr: {
     title: "Meilleure période pour visiter les parcs d'attractions",
     intro:
-      "Quand les parcs d'attractions sont-ils les moins fréquentés ? Les jours de la semaine et les mois les plus calmes, à partir de données réelles de temps d'attente de plus de 200 parcs, avec des astuces pour des files courtes et le calendrier du meilleur jour pour votre parc.",
+      "Quand les parcs d'attractions sont-ils les moins fréquentés ? Les jours de la semaine et les mois les plus calmes, à partir des temps d'attente mesurés dans plus de 200 parcs, avec des astuces pour des files courtes et le calendrier du meilleur jour pour votre parc.",
     kicker: 'park.fan · planificateur de visite',
     tagline:
-      "L'affluence n'a rien d'aléatoire. À partir de données réelles de plus de 200 parcs, voici les jours les plus calmes — et comment éviter les pires.",
+      "L'affluence suit des tendances. À partir des temps d'attente que nous mesurons depuis décembre 2025 dans plus de 200 parcs, voici les jours les plus calmes et comment éviter les pires.",
     scrollLabel: 'Défiler',
-    heroAlt: "Paysage d'un parc d'attractions dans la lumière du soir",
+    heroAlt: 'Le palais de Symbolica à Efteling, la nuit, éclairé en bleu',
     stats: [
       { value: '200+', label: 'parcs analysés' },
       { value: 'depuis déc. 2025', label: 'de relevés propres' },
@@ -118,12 +118,12 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   it: {
     title: 'Periodo migliore per visitare i parchi divertimento',
     intro:
-      'Quando i parchi divertimento sono meno affollati? I giorni della settimana e i mesi più tranquilli, da dati reali sui tempi di attesa di oltre 200 parchi, con trucchi per code brevi e il calendario che mostra il giorno migliore per il tuo parco.',
+      'Quando i parchi divertimento sono meno affollati? I giorni della settimana e i mesi più tranquilli, dai tempi di attesa misurati in oltre 200 parchi, con trucchi per code brevi e il calendario con il giorno migliore per il tuo parco.',
     kicker: 'park.fan · pianificatore di visite',
     tagline:
-      "L'affluenza non è casuale. Dai dati reali di oltre 200 parchi, ecco i giorni più tranquilli — e come evitare quelli pieni.",
+      "L'affluenza segue degli schemi. Dai tempi di attesa che misuriamo da dicembre 2025 in oltre 200 parchi, ecco i giorni più tranquilli e come evitare quelli pieni.",
     scrollLabel: 'Scorri',
-    heroAlt: 'Paesaggio di un parco divertimenti nella luce della sera',
+    heroAlt: 'Il palazzo di Symbolica a Efteling di notte, illuminato di blu',
     stats: [
       { value: '200+', label: 'parchi analizzati' },
       { value: 'da dic. 2025', label: 'di rilevazioni proprie' },
@@ -138,7 +138,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     tagline:
       'De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen.',
     scrollLabel: 'Scroll',
-    heroAlt: 'Pretparklandschap in het avondlicht',
+    heroAlt: 'Het paleis van Symbolica in de Efteling bij nacht, blauw verlicht',
     stats: [
       { value: '200+', label: 'parken geanalyseerd' },
       { value: 'sinds dec. 2025', label: 'eigen metingen' },
