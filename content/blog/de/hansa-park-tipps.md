@@ -67,7 +67,7 @@ Sierksdorf liegt 24 Kilometer Luftlinie nördlich von Lübeck. Der Park nennt si
 des Resorts nebenan stehen direkt an der Ostsee, zwischen ihnen und dem Park fährt die Regionalbahn
 von Lübeck nach Neustadt, und vom Highlander aus schaust du über die Lübecker Bucht.
 
-## Kurze Wege, anderthalb Rekorde
+## Ein kleiner Park mit anderthalb Rekorden
 
 Der Hansa-Park kommt mit **46 Hektar** aus. Der Heide Park hat 85, und dieser Unterschied ist der
 erste, den du im Bein spürst: Zwischen zwei Achterbahnen liegen hier selten mehr als ein paar
@@ -83,8 +83,8 @@ Familien- und Kinderachterbahnen.
 Neue Achterbahnen kommen hier in Schüben. Zwischen 2009 und 2017 waren es vier, darunter der
 Kärnan, danach neun Jahre lang keine, bis 2026 der Cornwall Coaster eröffnete. In der Pause kamen
 der Highlander und mehrere kleinere Themenbereiche, und seit 2008 baut der Park Stadt für Stadt an
-einem einzigen großen, der „Hanse in Europa“. Was dabei immer gleich bleibt: Der Park hat jeden Tag
-seiner Saison geöffnet und hängt im Oktober rund 2.000 Leuchtfiguren auf, wo andere Parks Mazes
+einem einzigen großen, der „Hanse in Europa“. Gleich bleibt dabei, dass der Park an jedem Tag
+seiner Saison geöffnet hat und im Oktober rund 2.000 Leuchtfiguren aufhängt, wo andere Parks Mazes
 bauen.
 
 [Hansa-Park](ref:hansa-park?full)
@@ -98,8 +98,8 @@ nach oben zieht, und der erste Abgang fällt aus 67 Metern.
 
 Der eigentliche Trick passiert noch vor diesem Abgang und ist von außen nicht zu sehen. Auf dem
 Weg nach oben, auf dem Rücken liegend und im Dunkeln, fällt der Zug in über 60 Metern Höhe ein Stück
-rückwärts, bevor der Lift ihn weiter zum ersten Abgang zieht. Der Park nennt das weltweit
-einzigartig, fand es zwei Jahre nach der Eröffnung aber offenbar noch zu gemächlich: 2017 hat er die
+rückwärts, bevor der Lift ihn weiter zum ersten Abgang zieht. Der Park sagt, das gebe es weltweit sonst
+nirgends, fand es zwei Jahre nach der Eröffnung aber offenbar noch zu gemächlich: 2017 hat er die
 Fallgeschwindigkeit von rund 5 auf rund 11 Meter pro Sekunde mehr als verdoppelt.
 
 ```glossary-widget slug=infinity-coaster
@@ -116,8 +116,7 @@ fällt mit **97 Grad** über die Senkrechte hinaus. Bis 2020 hieß die Bahn Fluc
 
 **[Nessie](ref:hansa-park/nessie)** baute Anton Schwarzkopf **1980**, 26 Meter hoch, 741 Meter lang,
 80 km/h, mit einem einzelnen senkrechten Looping, und sie war damals die größte Loopingbahn Europas.
-Sie fährt seit 46 Jahren und hat 2019 einen neu thematisierten Bereich bekommen, so wie
-andere in dem Alter eine neue Küche.
+Sie fährt seit 46 Jahren und hat 2019 einen neu thematisierten Bereich bekommen.
 
 Dazu kommen vier kleinere, und nur eine davon ist keine Familienbahn. **[Crazy
 Mine](ref:hansa-park/crazy-mine)** von Maurer fährt seit 1997 als Wilde Maus im Bergwerksdekor,
@@ -152,25 +151,23 @@ nach dem Unfall zusätzliche Gurte an den Haltebügeln nachgerüstet.
 
 ```
 
-Für Familien zählt am Highlander vor allem eine andere Zahl: 1,40 Meter Mindestgröße, die höchste
-Hürde im ganzen Park.
+Für Familien zählt am Highlander vor allem die Mindestgröße von 1,40 Metern, die höchste im ganzen
+Park.
 
 ## Ein Kalender ohne Schließtag
 
 Die Saison 2026 läuft vom **26. März bis zum 25. Oktober**. Wir haben den Öffnungskalender des
 Parks Tag für Tag abgefragt, zuletzt am 25. September, und zwischen diesen beiden Daten steht
-**kein einziger Schließtag**. Kein ausgelassener Montag im Frühjahr, keine Dienstagslücke im
-Oktober, nichts. Das sind 214 Öffnungstage, im Kalender des Parks genauso wie in unserem
+**kein einziger Schließtag**. Das sind 214 Öffnungstage, im Kalender des Parks genauso wie in unserem
 Kalender-Feed.
 
 Europa-Park und Phantasialand halten es genauso. Der Heide Park dagegen nimmt im Frühjahr und im
 Herbst regelmäßig den Montag aus dem Kalender, der Movie Park schließt außerhalb der Hauptsaison
 meist montags bis mittwochs, und auch das Legoland in Günzburg hat 2026 einzelne Schließtage im
-Mai, Juni und September. Wer in Sierksdorf einen ruhigen Wochentag sucht, bekommt ihn deshalb auch
-wirklich als Öffnungstag und nicht als verschlossenes Tor.
+Mai, Juni und September. Wer in Sierksdorf einen ruhigen Wochentag sucht, kann deshalb jeden
+nehmen, auch einen Montag im Oktober.
 
-Die Uhrzeiten sind fast genauso eintönig, im besten Sinn: Wer hier plant, braucht keinen Kalender
-mit Fußnoten. Bis zum **9. Oktober** öffnet der Park täglich um **10 Uhr**, und die
+Die Uhrzeiten sind fast genauso eintönig, im besten Sinn. Bis zum **9. Oktober** öffnet der Park täglich um **10 Uhr**, und die
 Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fielen aus der Reihe, alle schon vorbei:
 Am Karfreitag, dem 3. April, fuhren die Attraktionen erst ab 11 Uhr. Am 11. August blieb das
 Gelände bis 19 Uhr offen, am 12. August bis 18:30, die Bahnen standen an beiden Abenden trotzdem um
@@ -187,7 +184,8 @@ Die Saison 2027 plant der Park nach heutigem Stand vom **25. März bis zum 24. O
 ## Herbstzauber statt Halloween
 
 Vom **10. bis zum 25. Oktober 2026** öffnet der Park von **11 bis 21 Uhr**, und was in dieser Zeit
-läuft, heißt „Herbstzauber am Meer“. Keine Mazes, keine Scare Zones, kein Mindestalter von 16. Die
+läuft, heißt „Herbstzauber am Meer“. Mazes, Scare Zones und ein Mindestalter von 16 gibt es dabei
+nicht. Die
 „Zeit der Schattenwesen“, das frühere Grusel-Event an Herbstwochenenden, bietet der Park nicht mehr
 an. Er hängt stattdessen rund **2.000 Leuchtfiguren** auf und fährt zwei Programmpunkte:
 
@@ -221,12 +219,12 @@ während der Parade.
 
 Im [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) stehen zehn Parks. Acht davon laufen
 in diesen Oktoberwochen mit Mazes oder Scare Zones, zwei lassen Halloween ganz aus. Der
-Hansa-Park macht etwas Drittes: dieselben Abende, volles Programm, nur ohne Schrecken. Wer mit
+Hansa-Park hat an denselben Abenden volles Programm, nur ohne Schrecken. Wer mit
 Kindern unter zehn fährt, ist hier deshalb besser aufgehoben als bei einem Maze-Abend. Ganz ohne
 Schrecken geht es aber auch hier nicht: Die Abendshow ist laut, und der Park warnt selbst vor
 Schreckreaktionen bei den Kleinsten.
 
-## Dieser Park rechnet in Jahren, nicht nur in Zentimetern
+## Mindestgröße und Alter an den Achterbahnen
 
 Bei den meisten Parks steht am Eingang jeder Bahn eine Zentimeterangabe. Hier steht oft zusätzlich
 ein Alter, und das entscheidet, ob dein Kind allein fahren darf oder nur mit einem Erwachsenen
@@ -247,8 +245,8 @@ auf einem Kindersitz neben einem Erwachsenen mit, allein fährt, wer 1,20 Meter 
 Ein siebenjähriges Kind mit 1,25 Metern kommt damit auf sieben der acht Achterbahnen, auf vier davon
 aber nur mit einem Erwachsenen daneben. Wer als einziger Erwachsener mit zwei Kindern kommt, fährt
 Nessie zweimal.
-Unterhalb der Achterbahnen gibt es reichlich: Unser Katalog zählt am 25. September 2026
-**82 Attraktionen**, der Park selbst wirbt mit über 125 und zählt offenbar großzügiger.
+Unterhalb der Achterbahnen gibt es reichlich. Unser Katalog zählt am 25. September 2026
+**82 Attraktionen**, der Park selbst wirbt mit über 125.
 
 ## Vom Legoland zum Hansa-Park
 
@@ -269,7 +267,7 @@ sich kurz vorstellen, vor jeder Karussellrunde noch einmal das Portemonnaie zu z
 Viele Legoland-Attraktionen blieben einfach stehen und bekamen ein neues Aussehen. Die
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), die im Oktober als Leuchtfiguren-Kanal
 fährt, ist eine davon. Am **15. Mai 1977** öffnete das Hansaland, und am 21. Juli desselben Jahres
-kam die erste originalamerikanische Wildwasserbahn Deutschlands dazu. Auch die fährt noch.
+kam die erste originalamerikanische Wildwasserbahn Deutschlands dazu, die bis heute fährt.
 
 Die ersten zwanzig Jahre waren vor allem Show-Jahre. **1978** eröffnete hier das damals größte und
 modernste Kuppelbau-Delfinarium Europas mit 1.400 Sitzplätzen; seit **1994** verzichtet der Park
@@ -289,16 +287,16 @@ Landungsbrücken und entsteht Fassade für Fassade, in acht dokumentierten Bauab
 Holstentor als Eingang, 2010 Brügge, Visby, Lübeck, Hamburg und Rostock, 2011 Groningen und Paris,
 2012 London, Ribe und Bergen, 2013 sechs weitere von Kopenhagen bis Nürnberg, 2018 Danzig und
 Krakau, und 2021 der bis dahin größte Abschnitt mit 14 Fassaden aus Krakau, Stockholm, Stralsund,
-Helsinki, Riga und Venedig. Veranschlagt war das auf 20 Jahre, ein Zeitplan, den man sonst von Autobahnbaustellen kennt. Der
+Helsinki, Riga und Venedig. Veranschlagt war das auf 20 Jahre. Der
 letzte Abschnitt, der Palacio de
 Braga, ist noch nicht fertig.
 
 Die Jahre seit 2021 lesen sich entsprechend kleinteilig: Awildas Welt, der Peterhof von Novgorod
 anstelle des Holzfällerlagers, New Lübeck anstelle der Westernstadt Bonanza City, das Carrousel
 Baltique, die Lost Trails of Roanoke, Einars Fjordfahrt. Keine dieser Neuheiten ist eine
-Achterbahn. Die kam 2026.
+Achterbahn, die nächste kam erst 2026.
 
-## Übernachten: drei Nächte oder keine
+## Übernachten im Resort am Meer
 
 Das **HANSA-PARK Resort am Meer** liegt am Ortsrand von Sierksdorf, zwischen Ferienpark und
 Freizeitpark verläuft die Bahnlinie. Gebucht wird über Landal oder Ostseezeit, der Mindestaufenthalt
@@ -327,7 +325,7 @@ aber nur an der Kasse. Das 2-Tagesticket kostet 85 € beziehungsweise 65 € un
 Gesichtserkennung personalisiert.
 
 Der Online-Preis ist derselbe wie der Kassenpreis. In Soltau zahlst du an der Kasse bis zu 27 € mehr
-als online, hier sparst du mit dem Vorverkauf keinen Cent, nur die Schlange an der Kasse.
+als online, hier sparst du mit dem Vorverkauf keinen Cent, nur die Warteschlange an der Kasse.
 
 **Saisonkarte.** Die für 2026 kostete ab Saisonbeginn 135 €. Die für 2027 kostet **120 €** bis
 zum 24. März 2027, danach 140 €. Wer volljährig ist und bis zum 25. Oktober 2026 kauft, parkt 2027
@@ -362,8 +360,8 @@ Achterbahn Deutschlands. Gebaut hat ihn Gerstlauer, eröffnet wurde er 2015.
 
 Vom 26. März bis zum 25. Oktober 2026, ohne einen Schließtag dazwischen. Bis zum 9. Oktober ab
 10 Uhr mit Fahrbetrieb bis 18 Uhr, vom 10. bis 25. Oktober von 11 bis 21 Uhr. Die Saison 2027 ist
-vom 25. März bis zum 24. Oktober geplant. Den veröffentlichten Kalender zeigt die
-[Parkseite](ref:hansa-park), tagesaktuell.
+vom 25. März bis zum 24. Oktober geplant. Der veröffentlichte Kalender steht tagesaktuell auf der
+[Parkseite](ref:hansa-park).
 
 ### Wie viele Achterbahnen hat der Hansa-Park?
 
@@ -420,7 +418,7 @@ Und wenn du gerade den Norden planst: Der [Heide Park](/blog/heide-park-wartezei
 ## Wo der Haken liegt
 
 Ein 79 Meter hoher Turm mit dem Kärnan darin und eine Kanalfahrt aus Legoland-Zeiten mit
-Leuchtfiguren stehen hier auf denselben 46 Hektar. Der Haken ist die Lage: Hamburg liegt
+Leuchtfiguren stehen hier auf denselben 46 Hektar. Der Haken ist die Lage. Hamburg liegt
 78 Kilometer Luftlinie entfernt, alles südlich davon deutlich weiter, und wer nur wegen der acht
 Achterbahnen kommt, ist am frühen Nachmittag durch. Der Park rechnet damit, dass du ohnehin an der
 Ostsee bist.

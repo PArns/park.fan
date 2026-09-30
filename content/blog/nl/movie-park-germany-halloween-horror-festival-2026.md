@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: vanaf zaterdag horroravonden tot 8 november, en in de nieuwe maze wacht Jason'
+title: 'Jason Voorhees krijgt een maze in Movie Park Germany'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -41,11 +41,11 @@ seo:
     - Movie Park Halloween kostuum
 ---
 
-Vrijdag gaat [Movie Park Germany](ref:movie-park-germany) nog om 17 uur dicht.
-Op **zaterdag 26 september** blijft het park open tot 22 uur, en vanaf de
-vroege avond lopen er meer dan 300 monsters rond in Bottrop-Kirchhellen: het
-**Halloween Horror Festival** begint aan zijn 28ste editie, met als motto
-“Legends Never Die”.
+Op **zaterdag 26 september** begint in
+[Movie Park Germany](ref:movie-park-germany) de 28ste editie van het
+**Halloween Horror Festival**, met als motto “Legends Never Die”, en vanaf de
+vroege avond lopen er dan meer dan 300 monsters rond in Bottrop-Kirchhellen.
+Vrijdag gaat het park nog om 17 uur dicht, zaterdag blijft het open tot 22 uur.
 
 Met het [familiefeest bij Disney](/blog/disneyland-paris-halloween-2026), dat op
 dezelfde zaterdag begint, heeft dit weinig te maken. In Bottrop zijn er ’s avonds
@@ -71,8 +71,8 @@ Bottrop hield die in 2022 als eerste pretpark.
 
 **Jason Universe** vervangt Secrets of St. Elmo – Last Hunt, dat sinds 2020
 draaide, en haalt Jason Voorhees naar Bottrop. Veertien scènes en een preshow
-volgen deel twee tot en met zes van _Friday the 13th_. Dat deel één ontbreekt,
-heeft een reden: daarin moordt zijn moeder nog. De maze is **vanaf 16 jaar**, en
+volgen deel twee tot en met zes van _Friday the 13th_. Deel één ontbreekt,
+omdat daarin nog zijn moeder moordt. De maze is **vanaf 16 jaar**, en
 bij de ingangen van de mazes wordt een identiteitsbewijs gevraagd.
 
 Twee bekende mazes zijn verbouwd. Het
@@ -135,10 +135,10 @@ of 16 oktober.
 
 ```
 
-Hoe het festival zich verhoudt tot Traumatica, Walibi en Toverland, staat in het
-[Halloween-overzicht](/blog/halloween-pretparken-2026). Welke weekdag in Movie
-Park verder de rustigste is en hoe het rooster in de herfst eruitziet, staat in de
-[Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).
+De rustigste weekdag in Movie Park en het rooster voor de herfst vind je in de
+[Movie Park-gids](/blog/movie-park-germany-wachttijden-tips). Traumatica, Walibi
+en Toverland komen naast het festival aan bod in het
+[Halloween-overzicht](/blog/halloween-pretparken-2026).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

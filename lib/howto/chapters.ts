@@ -45,7 +45,7 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'day-plan', index: '05', label: 'The day as a plan' },
     { id: 'park-page', index: '06', label: 'A park page, top to bottom' },
     { id: 'night-shift', index: '07', label: 'Where the numbers come from' },
-    { id: 'gaps', index: '08', label: 'When we do not know' },
+    { id: 'gaps', index: '08', label: 'When we don’t know' },
     { id: 'visits', index: '09', label: 'Four visits' },
     { id: 'signposts', index: '10', label: 'Where to find what' },
     { id: 'faq', index: '11', label: 'Common questions' },

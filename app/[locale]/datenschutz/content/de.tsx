@@ -28,7 +28,7 @@ export function DatenschutzDE() {
         </h4>
         <p className="mb-4">
           Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen
-          Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle" in dieser
+          Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser
           Datenschutzerklärung entnehmen.
         </p>
 
@@ -127,8 +127,8 @@ export function DatenschutzDE() {
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Cloudflare</h3>
         <p className="mb-4">
-          Wir nutzen den Service „Cloudflare". Anbieter ist die Cloudflare Inc., 101 Townsend St.,
-          San Francisco, CA 94107, USA (im Folgenden „Cloudflare").
+          Wir nutzen den Service „Cloudflare“. Anbieter ist die Cloudflare Inc., 101 Townsend St.,
+          San Francisco, CA 94107, USA (im Folgenden „Cloudflare“).
         </p>
 
         <p className="mb-4">
@@ -386,7 +386,7 @@ export function DatenschutzDE() {
           Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher
           Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber
           senden, eine SSL- bzw. TLS- Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie
-          daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem
+          daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem
           Schloss-Symbol in Ihrer Browserzeile.
         </p>
         <p className="mb-4">
@@ -400,7 +400,7 @@ export function DatenschutzDE() {
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Cookies</h3>
         <p className="mb-4">
-          Unsere Internetseiten verwenden so genannte „Cookies". Cookies sind kleine Datenpakete und
+          Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Datenpakete und
           richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die
           Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem
           Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht.
@@ -467,7 +467,7 @@ export function DatenschutzDE() {
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Standortbestimmung und „Parks in der Nähe"
+          Standortbestimmung und „Parks in der Nähe“
         </h3>
         <p className="mb-4">
           Um Ihnen Freizeitparks in Ihrer Nähe anzuzeigen, ermitteln wir Ihren ungefähren Standort.
@@ -557,13 +557,13 @@ export function DatenschutzDE() {
         <p className="mb-4">
           Wir setzen das Feedback-Tool Userback des Anbieters Userback Pty Ltd, Level 5, 100 Edward
           Street, Brisbane QLD 4000, Australien, ein. Userback ermöglicht es Ihnen, uns über eine
-          Schaltfläche „Feedback" Rückmeldungen, Fehlermeldungen und Verbesserungsvorschläge zu
+          Schaltfläche „Feedback“ Rückmeldungen, Fehlermeldungen und Verbesserungsvorschläge zu
           senden.
         </p>
         <p className="mb-4">
           Userback wird ausschließlich auf Ihre aktive Veranlassung hin geladen: Der zugehörige
           Programmcode wird erst dann von den Servern des Anbieters nachgeladen und ausgeführt, wenn
-          Sie die Schaltfläche „Feedback" anklicken. Vor diesem Klick findet keine Verbindung zu
+          Sie die Schaltfläche „Feedback“ anklicken. Vor diesem Klick findet keine Verbindung zu
           Userback statt, und es werden keine Daten an den Anbieter übertragen.
         </p>
         <p className="mb-4">
@@ -584,7 +584,7 @@ export function DatenschutzDE() {
           Rechtsgrundlage für die Verarbeitung sowie für die Speicherung und das Auslesen von
           Informationen in Ihrem Endgerät (Local Storage) ist Ihre Einwilligung gemäß Art. 6 Abs. 1
           lit. a DSGVO und § 25 Abs. 1 TDDDG, die Sie durch das aktive Anklicken der Schaltfläche
-          „Feedback" erteilen. Sie sind zur Nutzung von Userback nicht verpflichtet; klicken Sie die
+          „Feedback“ erteilen. Sie sind zur Nutzung von Userback nicht verpflichtet; klicken Sie die
           Schaltfläche nicht an, wird das Tool nicht geladen. Ihre Einwilligung können Sie jederzeit
           mit Wirkung für die Zukunft widerrufen, indem Sie das Tool künftig nicht mehr nutzen und
           den lokalen Speicher Ihres Browsers leeren. Weitere Informationen finden Sie in der

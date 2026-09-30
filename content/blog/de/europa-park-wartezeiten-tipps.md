@@ -38,7 +38,7 @@ seo:
   title: 'Europa-Park Wartezeiten: kurz anstehen im vollsten Park'
   description: >-
     Europa-Park Wartezeiten, selbst gemessen: sonntags ist am wenigsten los,
-    samstags zahlst du an jeder Schlange drauf. Beste Reisezeit, Preise 2026, Anreise.
+    samstags zahlst du an jeder Warteschlange drauf. Beste Reisezeit, Preise 2026, Anreise.
   keywords:
     - Europa-Park Wartezeiten
     - Europa-Park Wartezeiten aktuell
@@ -65,15 +65,15 @@ seo:
 Kein Park in Deutschland verkauft mehr Tickets als der
 [Europa-Park](ref:europa-park?long), gut sechs Millionen im Jahr. Trotzdem
 stehst du in Rust kürzer an als im Phantasialand, das nur ein Drittel dieses
-Publikums hat. Das klingt nach einem Tippfehler in der Pressemappe.
+Publikums hat.
 
 Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit dem 26.
-Dezember 2025, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
-[Parkseite](ref:europa-park?bare) alle fünf Minuten neu.
+Dezember 2025, Bahn für Bahn, und die aktuellen stehen alle fünf Minuten neu auf
+der [Parkseite](ref:europa-park?bare).
 
 Wer 2026 hinfährt, erwischt außerdem etwas zum letzten Mal. Am Eingang der
-Euro-Mir steht ein Trainingsmodul der Raumstation Mir. Kein Nachbau. Ein echtes,
-in dem Kosmonauten geübt haben. Drei von ihnen, Alexander Wiktorenko, Juri
+Euro-Mir steht ein Trainingsmodul der Raumstation Mir, in dem tatsächlich
+Kosmonauten geübt haben. Drei von ihnen, Alexander Wiktorenko, Juri
 Malentschenko und Alexander Serebrow, standen im Juni 1997 dabei, als die Bahn
 eröffnet wurde. Seitdem sind Leute daran vorbeigelaufen, haben es für ziemlich
 aufwendige Deko gehalten und sich in einen Wagen gesetzt, der sich auf der Strecke um die eigene
@@ -101,19 +101,19 @@ daneben:
 ```
 
 „Typisch“ ist dabei der Median aller Ablesungen, die „Spitze“ das 90. Perzentil,
-also der Wert, den nur jede zehnte Ablesung überschritten hat. Beides sagt nichts
-darüber, wie sich eine Schlange über den Tag bewegt.
+also der Wert, den nur jede zehnte Ablesung überschritten hat. Wie sich eine
+Warteschlange über den Tag bewegt, lässt sich aus keinem der beiden Werte ablesen.
 
 Das Voletarium fällt aus der Reihe. Sein Median ist der niedrigste der zehn
 längsten, seine Spitze reicht trotzdem an die der großen Achterbahnen heran. Ein
 Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
-jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
+jemand an, an einem vollen Vormittag reicht die Warteschlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
 
-Sonst ist die Liste unspektakulär, und genau das ist das Seltsame an ihr. Auf
+Sonst ist die Liste unspektakulär. Auf
 Voltron entfielen im ersten Jahr 3,25 Millionen Fahrten, er hat die längste
-Schlange im Park, und für einen Park mit über sechs Millionen Gästen ist **diese
-längste Schlange erstaunlich kurz**. Der Vergleich, gleiche Datenbasis, gleiche
+Warteschlange im Park, und für einen Park mit über sechs Millionen Gästen ist **diese
+längste Warteschlange erstaunlich kurz**. Der Vergleich, gleiche Datenbasis, gleiche
 Rechenmethode:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -126,22 +126,22 @@ im Jahr und ändern sich dann ein Jahr lang nicht. Für 2024 sind es in Rust
 6,2 Millionen für den Freizeitpark und nicht die 7,4 Millionen des gesamten
 Resorts, im Phantasialand 2,1 Millionen, im Efteling 5,6, in Paris rund zehn.
 Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des
-Parks. Zu jedem Park nennt die Tabelle die Attraktion mit dem höchsten Median,
-für die wir mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
+Parks. In der Tabelle steht zu jedem Park die Attraktion mit dem höchsten
+Median, für die wir mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
 noch Maximus' Blitz Bahn, allerdings auf nur 61 Messtagen (Stand 25. September 2026), und eine
 Kinderachterbahn mit dünner Messbasis lassen wir nicht für einen ganzen Park
 sprechen, so gern sie das vielleicht täte.
 
 Mit rund einem Drittel des Publikums hat das Phantasialand im Parkschnitt
-spürbar längere Schlangen. Das liegt am Zuschnitt des Geländes, nicht an den
+spürbar längere Warteschlangen. Das liegt am Zuschnitt des Geländes, nicht an den
 Bahnen, nachgerechnet im [Phantasialand-Guide](/blog/phantasialand-tipps). Für
 das [Efteling](/blog/efteling-disney-der-niederlande) und das
 [Toverland](/blog/toverland-troy-wartezeiten-tipps) haben wir dieselbe Rechnung
 aufgemacht. Und in Paris, wo gut anderthalbmal so viele Gäste
 durchgehen, liegt der Parkschnitt ungefähr dort, wo in Rust die _längste_
-Schlange des Parks steht.
+Warteschlange des Parks steht.
 
-## Warum der größte Park die kürzesten Schlangen hat
+## Warum der größte Park die kürzesten Warteschlangen hat
 
 Wartezeit ist Nachfrage geteilt durch Kapazität, und die Beliebtheit einer Bahn
 steht dabei nur im Zähler. In der [Kunst des Wartens](/blog/die-kunst-des-wartens)
@@ -153,18 +153,18 @@ Achterbahnen, verteilt auf 95 Hektar. Ein Gast, der um zehn Uhr überlegt,
 was er als Nächstes macht, hat hier keine drei Optionen, sondern dreißig. Die
 Themenbereiche sind als Länder gebaut und liegen deshalb in einer langen Kette
 statt im Kreis um einen Hauptplatz. Der Weg von Kroatien nach Irland zieht sich wie
-ein Ikea-Samstag ohne Abkürzung. Das nervt in den Beinen und hilft gegen die Schlangen, weil es die Menschenmenge
+ein Ikea-Samstag ohne Abkürzung. Das nervt in den Beinen und hilft gegen die Warteschlangen, weil es die Menschenmenge
 über den Tag auseinanderzieht.
 
 Dazu kommt die Saisonlänge. Die Saison 2026 läuft vom 28. März bis zum 9. Januar 2027, durchgehend, mit zwei Ruhetagen an Weihnachten.
 Das sind **286 Betriebstage** nach dem offiziellen Saisonkalender. Dieselbe Nachfrage verteilt sich damit auf rund
 siebzig Tage mehr als bei einem Park, der Anfang November zumacht und erst im
-April wieder aufsperrt. Rechnerisch kommen auf den Tag knapp 22.000 Gäste, und
-mit dieser Zahl werden 95 Hektar fertig, ohne ins Schwitzen zu kommen.
+April wieder aufsperrt. Rechnerisch kommen auf den Tag knapp 22.000 Gäste,
+verteilt auf 95 Hektar.
 
 ## Kein Fast Pass im Europa-Park, und was es stattdessen gibt
 
-Der Europa-Park verkauft keinen Warteschlangen-Pass. Du kannst an der Schlange
+Der Europa-Park verkauft keinen Warteschlangen-Pass. Du kannst an der Warteschlange
 mit der Kreditkarte wedeln, so viel du willst, vorbei kommst du damit nicht. Im
 [Phantasialand](ref:phantasialand?bare) klappt das mit dem
 [Quick Pass](/blog/phantasialand-tipps), in den
@@ -173,13 +173,13 @@ mit der Kreditkarte wedeln, so viel du willst, vorbei kommst du damit nicht. Im
 Das wiegt schwerer als die Fläche. Wo Vordrängeln verkauft wird, wandert
 Wartezeit von denen, die zahlen, zu denen, die nicht zahlen. Die
 Durchschnittswartezeit sinkt dadurch kein bisschen, sie verteilt sich nur
-ungleicher. In Rust kauft sich niemand an der normalen Schlange vorbei, und wer
+ungleicher. In Rust kauft sich niemand an der normalen Warteschlange vorbei, und wer
 über die VirtualLine kommt, hat seine Wartezeit nur woanders verbracht. Der
 Median, den wir messen, liegt deshalb nah an dem, was jeder erlebt.
 
 Vier Dinge gibt es trotzdem:
 
-**Single Rider.** An sechs Attraktionen gibt es eine eigene Schlange für Leute,
+**Single Rider.** An sechs Attraktionen gibt es eine eigene Warteschlange für Leute,
 die allein fahren und Restplätze auffüllen: [Arthur](ref:europa-park/arthur?bare),
 [blue fire](ref:europa-park/blue-fire-megacoaster?bare),
 [Eurosat](ref:europa-park/eurosat-cancan-coaster?bare),
@@ -190,11 +190,11 @@ eben nicht neben deiner Begleitung, was je nach Begleitung auch ein Vorteil sein
 kann. Welche Bahnen dabei sind, ändert der Park von Saison zu Saison.
 
 **Virtual Line.** Über die Park-App lässt sich für einzelne Attraktionen ein
-Zeitfenster reservieren, statt in der Schlange zu stehen. Im September 2026
+Zeitfenster reservieren, statt anzustehen. Im September 2026
 waren das sieben: blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium,
 Voltron und Wodan. Auch das kostet nichts, die Plätze sind aber knapp, und du
 kannst pro Ticket immer nur an einer Attraktion gleichzeitig virtuell anstehen.
-Bis dein Zeitfenster dran ist, darfst du woanders in der Schlange stehen.
+Bis dein Zeitfenster dran ist, darfst du woanders anstehen.
 
 ```glossary-widget slug=single-rider
 
@@ -209,7 +209,7 @@ Aufpreis auf das Tagesticket.
 
 **Eurosat Coastiality.** Die VR-Variante der Eurosat hat einen eigenen Bahnhof
 und eigene Züge auf derselben Strecke. Wer 7 Euro für ein Zeitticket zahlt,
-fährt also die Eurosat mit VR-Brille, ohne sich in die normale Eurosat-Schlange
+fährt also die Eurosat mit VR-Brille, ohne sich in die normale Eurosat-Warteschlange
 zu stellen. Das ist das Nächste an einem gekauften Vorbeikommen, das der Park
 hat, und es gilt für genau diese eine Strecke. Der Alpenexpress Coastiality
 kostet 4 Euro pro Fahrt, das Kombiticket für alle drei VR-Angebote im Park
@@ -242,8 +242,8 @@ Der Weg von der Kutsche zur Achterbahn dauerte anderthalb Jahrhunderte:
 | 2005     | Aus der Heinrich Mack GmbH wird Mack Rides                            |
 | 2018     | Ein Teil der Fertigung zieht nach Herbolzheim                         |
 
-Die Zeile von 1957 hat eine Pointe, die man im Park fahren kann. Der Prototyp
-der Wilden Maus entstand in Waldkirch, 26 Kilometer Luftlinie von Rust, damals
+Der Prototyp der Wilden Maus entstand 1957 in Waldkirch, 26 Kilometer Luftlinie
+von Rust, damals
 aus Holz und heute überall aus Stahl. Der
 **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** ist eine davon. Bautyp
 und Park kommen aus derselben Werkstatt, und die hatte bis September 2024
@@ -254,11 +254,9 @@ Anfang der Siebziger hatte **Franz Mack** ein praktisches Problem. Seine Kunden
 saßen in Europa, in den USA, in Japan, und wer eine Achterbahn kaufen will, will
 sie vorher fahren. Ein Katalog reicht dafür nicht. Auf einer USA-Reise **1972**
 kam ihm mit seinem Sohn **Roland Mack** die Idee, die Fahrgeschäfte an einem Ort
-aufzubauen, an dem man sie vorführen kann. Ein Möbelhaus mit Probesitzen, nur
-eben für Achterbahnen.
+aufzubauen, an dem man sie vorführen kann.
 
-Woher der Name kommt, rät fast nie jemand richtig. Mit dem Länderthema hat er
-nichts zu tun, das kam erst zehn Jahre später. Das erste Grundstück lag bei
+Mit dem Länderthema hat der Name nichts zu tun, das kam erst zehn Jahre später. Das erste Grundstück lag bei
 Breisach am Rhein, am **Europaweiher**, und daher hat der Park seinen Namen. Aus Breisach wurde nichts, weil
 die Fläche später als Rhein-Überschwemmungsgebiet ausgewiesen wurde (für die
 Wasserbahnen wäre das praktisch gewesen, für alles andere weniger). Ein zweiter
@@ -277,8 +275,8 @@ zweite.
 
 Fünfzig Jahre später, im Jubiläumsjahr **2025**, meldete der Park erstmals
 **über sieben Millionen Gäste** in einem Kalenderjahr, dazu im November den
-**150-millionsten Besucher** seit 1975. Bei dieser Zahl lohnt ein zweiter Blick,
-weil die Mitteilung nicht sauber trennt, was mitgezählt wird. Belastbar ist der
+**150-millionsten Besucher** seit 1975. Die Mitteilung trennt dabei nicht
+sauber, was mitgezählt wird. Belastbar ist der
 TEA Global Experience Index für 2024: **6,2 Millionen für den Freizeitpark**,
 1,23 Millionen für die Wasserwelt Rulantica, zusammen 7,4 Millionen fürs Resort.
 Damit lag der Park weltweit auf Rang 18 und in Europa, dem Nahen Osten und
@@ -287,16 +285,15 @@ Afrika auf Rang 2, hinter dem Disneyland Park in Paris.
 Dahinter steht ein Resort, das nach eigener Angabe in der Saison über 5.500
 Leute beschäftigt, und ein Park auf 95 Hektar. Elfmal hat der Park den
 **Golden Ticket Award** als bester Freizeitpark der Welt gewonnen, zuletzt am 12.
-September 2026 in Austin, Texas. Gern wird daraus eine ununterbrochene Serie
-gemacht, nur hat 2023 Dollywood gewonnen, und der Europa-Park wurde Zweiter;
-2020 fiel die Verleihung wegen der Pandemie aus.
+September 2026 in Austin, Texas. Ununterbrochen ist die Serie nicht, denn 2023
+hat Dollywood gewonnen, und der Europa-Park wurde Zweiter. 2020 fiel die
+Verleihung wegen der Pandemie aus.
 
 Der Vorführraum ist er für Mack Rides bis heute. Von den vierzehn Achterbahnen,
 die dort stehen, kommen nach Angabe des Parks **zwölf aus Waldkirch**. Die
 anderen beiden sind Silver Star von Bolliger & Mabillard und Wodan von Great
-Coasters International. Bei einer der zwölf ist die Sache nicht eindeutig: Die
-Achterbahn-Datenbank RCDB führt die Kinderachterbahn Ba-a-a Express als Bahn von
-ART Engineering.
+Coasters International. Eine der zwölf, die Kinderachterbahn Ba-a-a Express,
+führt die Achterbahn-Datenbank RCDB allerdings als Bahn von ART Engineering.
 
 ## Wie Europa Stück für Stück nach Rust kam
 
@@ -327,9 +324,8 @@ hat ihn die Fürstenfamilie am 30. Juni 2026.
 Mein liebstes Detail an dieser Sortierung hat mit keiner Attraktion zu tun. Im
 irischen Themenbereich, der Kinderwelt, steht ein Storchennest, das älter ist
 als der Themenbereich um es herum. Vier weitere sitzen auf einem Mitarbeiterhaus,
-auf dem Turm des Santa Isabel und auf dem Dach des Bell Rock. Kulissenstörche
-sind das nicht. Es sind Wildvögel, die
-jedes Frühjahr zurückkommen, und an ihren Ringen sieht der Park, dass es Jahr
+auf dem Turm des Santa Isabel und auf dem Dach des Bell Rock. Es sind wilde
+Störche, die jedes Frühjahr zurückkommen, und an ihren Ringen sieht der Park, dass es Jahr
 für Jahr dieselben Paare sind. Millionen Menschen laufen darunter durch,
 und oben brütet es seelenruhig weiter.
 
@@ -353,18 +349,16 @@ kam am 16. Mai 2023 an ihren Platz. Drei LSM-Abschnitte mit zusammen rund 300
 Statoren beschleunigen sieben Züge, allein der erste Launch braucht 2.500 PS;
 alle 36 Sekunden verlässt ein Zug die Station, macht 1.600 Personen in der Stunde.
 
-Und dann das Wichtigste. **Schoßbügel, sonst nichts.**
-Kein Bügel neben dem Kopf, kein Polster an den Schultern. Sieben Inversionen,
-und sie kommt ohne aus.
+Gehalten wirst du dabei nur von einem **Schoßbügel**, ohne Bügel neben dem
+Kopf und ohne Polster an den Schultern, und das über sieben Inversionen.
 
 ```glossary-widget slug=swing-launch
 
 ```
 
-Die Elementliste ist lang. Top Hat, Dive Loop,
-Zero-G-Stall, Immelmann, ein Element namens Ejection Drifter, zweimal
-Korkenzieher, ein Cutback, und in einem davon hängst du 2,2 Sekunden am Stück
-in den Bügeln. Auf dem Papier liest sich das wie bei jeder anderen modernen
+Auf der Elementliste stehen Top Hat, Dive Loop, Zero-G-Stall, Immelmann, ein
+Element namens Ejection Drifter, zweimal Korkenzieher und ein Cutback, und in
+einem davon hängst du 2,2 Sekunden am Stück in den Bügeln. Auf dem Papier liest sich das wie bei jeder anderen modernen
 Katapultbahn auch. Der Unterschied liegt in der Reihenfolge. Die meisten Bahnen
 dieser Bauart schießen dich einmal los und arbeiten dann ihr Programm ab, hier
 kommt nach der Drehscheibe der Rückwärtsstart, und ab da weißt du schlicht nicht
@@ -372,8 +366,8 @@ mehr, wo vorne ist. Daran ändert sich bis zur Schlussbremse nichts. Auf der Dre
 gelacht, weil niemand damit rechnet, dass eine Achterbahn mitten in der Fahrt
 stehen bleibt und sich dreht.
 
-Die Rekordliste ist so lang, dass sie eine eigene Schlange bräuchte. Längste Achterbahn mit Inversionen in
-Europa und sechstlängste weltweit, längste Katapultbahn Europas, weltweit die
+Voltron ist die längste Achterbahn mit Inversionen in Europa und die
+sechstlängste weltweit, die längste Katapultbahn Europas und hat weltweit die
 meisten Inversionen auf einer Katapultbahn, nach Parkangabe von 2024 gleichauf
 mit vier anderen. 2024 kam der Golden Ticket Award als beste neue Achterbahn der
 Welt dazu, 2026 stand sie in derselben Abstimmung unter den zehn besten
@@ -429,10 +423,10 @@ anfühlt, als würde man in Zeitlupe umgedreht.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** läuft seit
 1989 komplett im Inneren einer silbernen Kugel. 2018 wurde die Bahn vom
 Weltraum- auf ein Pariser Thema umgebaut, mit einer Moulin-Rouge-Fassade davor.
-198 Sekunden im Dunkeln. Dass sie bei der typischen Wartezeit mit den großen
-Außenbahnen mithält, hat einen banalen Grund. Sie ist eine der wenigen Bahnen, die bei
-Regen zuverlässig fahren, und wenn es in Rust regnet, fällt das allen
-gleichzeitig ein.
+198 Sekunden im Dunkeln. Bei der typischen Wartezeit hält sie mit den großen
+Außenbahnen mit, weil sie eine der wenigen Bahnen ist, die bei Regen
+zuverlässig fahren, und wenn es in Rust regnet, fällt das allen gleichzeitig
+ein.
 
 ![Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade | Die Bahn läuft komplett im Inneren der Kugel. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
@@ -451,7 +445,7 @@ von 1985, **[Pegasus](ref:europa-park/pegasus)** von 2006, der
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** von 1984, der
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Irland, sowie
 **[Arthur](ref:europa-park/arthur)**, eine hängende Antriebsbahn durch das
-Minimoys-Königreich, deren Schlange sich hinter keiner der großen Achterbahnen
+Minimoys-Königreich, deren Warteschlange sich hinter keiner der großen Achterbahnen
 verstecken muss. Und der
 **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dieselbe Strecke wie der
 Enzian, nur mit VR-Brille und bei uns als eigene Bahn geführt.
@@ -482,8 +476,8 @@ aus. Es griff auf die Attraktion über und von dort auf den norwegischen Teil de
 skandinavischen Themenbereichs. Rund **25.000 Gäste** waren zu diesem Zeitpunkt im
 Park. Der Park wurde geräumt, kein Gast und kein Mitarbeiter kam zu Schaden, sieben
 Feuerwehrleute wurden leicht verletzt. Der Sachschaden lag im zweistelligen
-Millionenbereich. Am 6. Juni teilten Polizei und Staatsanwaltschaft mit, was den
-Brand ausgelöst hatte: ein technischer Defekt im Bereich des Fjord-Raftings.
+Millionenbereich. Am 6. Juni nannten Polizei und Staatsanwaltschaft einen
+technischen Defekt im Bereich des Fjord-Raftings als Ursache.
 
 Am nächsten Morgen um neun hatte der Park wieder geöffnet, keine vierundzwanzig
 Stunden nach dem Großbrand, mit Absperrungen nur um das Abgebrannte. Der
@@ -491,8 +485,8 @@ skandinavische Themenbereich brauchte bis zum 23. Juli 2019 und über 350.000 Ar
 
 Die Piraten brauchten länger. **794 Tage** nach dem Feuer, am 28. Juli 2020,
 fuhren die Boote wieder, in einem 7.000 Quadratmeter großen Neubau mit über
-hundert Figuren. Acht davon sind Überlebende: Piratenfiguren aus der alten
-Anlage von 1987, restauriert und heute in einem Rettungsboot untergebracht. Auf
+hundert Figuren. Acht davon stammen aus der alten Anlage von 1987, haben das
+Feuer überstanden und sitzen restauriert in einem Rettungsboot. Auf
 die brennende Stadt aus der alten Fassung hat der Park verzichtet, sie ist jetzt
 nur noch als Feuerschein hinter einem geschlossenen Tor zu ahnen.
 
@@ -505,7 +499,7 @@ Bäuerin duzt einen, die Viecher tragen Strickschals, und irgendwann fällt eine
 auf, dass man in einer Dunkelfahrt grinst.
 **[Josefinas Kaiserliche Zauberreise](ref:europa-park/josefinas-magical-imperial-journey)**
 von 2022 ist die österreichische Antwort darauf, ruhiger, mit einer der kürzesten
-Schlangen im Park und damit die entspannteste Viertelstunde, die er zu bieten hat.
+Warteschlangen im Park und damit die entspannteste Viertelstunde, die er zu bieten hat.
 **[Jim Knopf](ref:europa-park/jim-button-journey-through-morrowland)** von 2018
 fährt durch Lummerland, und das
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** ist das
@@ -524,14 +518,14 @@ Vom **[Euro-Tower](ref:europa-park/euro-tower)**, seit 1983 in Rust, siehst du b
 Wetter bis in die Vogesen. Die Panoramabahn hält an vier Bahnhöfen, die
 Monorail pendelt zwischen Luxemburg und Island, und der EP-Express bringt dich
 zu den Hotels. Wer zum ersten Mal hier ist, unterschätzt fast immer, wie viel von einem
-Parktag aus Laufen besteht, und merkt es abends in den Waden.
+Parktag aus Laufen besteht.
 
 Bleiben die **Shows**, vom Eiskunstlauf über Akrobatik bis zu den
 Puppenspielen. Am 25. September 2026, dem letzten Tag der Sommersaison, führte
 unsere Datenbank für Rust 26 Shows mit zusammen über 170 Vorstellungen, die in
 Rulantica, in den Hotels und auf den Traumatica-Bühnen eingerechnet.
-Wartezeit-Statistiken erfassen davon nichts. Die Schlangen merken es trotzdem, denn wer gerade beim
-Eiskunstlauf sitzt, steht so lange nirgends an.
+Wartezeit-Statistiken erfassen davon nichts. Kürzer werden die Warteschlangen
+trotzdem, denn wer gerade beim Eiskunstlauf sitzt, steht so lange nirgends an.
 
 ## Euro-Mir: die letzte Saison
 
@@ -539,8 +533,7 @@ Die **[Euro-Mir](ref:europa-park/euro-mir)** eröffnete am **12. Juni 1997** und
 fährt in der Saison 2026/27 zum letzten Mal, bis zum 9. Januar 2027. Danach wird
 sie abgebaut.
 
-Die Bahn ist ein seltsames Ding, und das ist als Kompliment gemeint. Knapp
-fünf Minuten Fahrzeit, ein guter Teil davon um zwei verspiegelte Türme herum,
+Die Bahn ist auf eine liebenswerte Art seltsam. Knapp fünf Minuten Fahrzeit, ein guter Teil davon um zwei verspiegelte Türme herum,
 und die Wagen drehen sich unterwegs um die eigene Achse, sodass du nie weißt,
 wohin du gleich schaust. Rund 980 Meter, 28,3 Meter Höhe, 80 km/h.
 Allein zwischen der Eröffnung im Juni und dem Saisonende im November 1997 sind
@@ -551,8 +544,7 @@ Familienachterbahn von Mack Rides, fertig sein soll er in der Saison **2028**.
 Die beiden markanten Türme müssen aus baulichen Gründen weg, sollen aber in
 ähnlicher Form wiederkommen, und das Weltraumthema bleibt. Am 8. Juni 2026 hat
 der Park eine Partnerschaft mit der europäischen Raumfahrtagentur **ESA**
-unterschrieben, die auch im neuen Bereich eine Rolle spielen soll. Wie viel
-Raumfahrtagentur am Ende in einer Familienachterbahn steckt, wird man sehen.
+unterschrieben, die auch im neuen Bereich eine Rolle spielen soll.
 
 Wer ohnehin überlegt, 2026 hinzufahren, sollte es nicht auf 2027 schieben. Bis
 zum Abschiedsevent am 9. Januar 2027 kommt kein Sommer mehr, nur noch Glühwein.
@@ -586,20 +578,19 @@ die Schweiz schwerer, auf sie entfallen 27 Prozent aller Hotelbuchungen.
 
 So ein Park lebt vom Wochenendtrip. Samstags reisen die Leute an, sonntags
 fahren sie nach dem Frühstück wieder heim, und viele gehen gar nicht mehr in den
-Park, weil das Auto schon gepackt ist und der Kofferraum nur noch mit dem Knie
-zugeht.
+Park, weil das Auto schon gepackt ist.
 
 Deshalb funktioniert für Rust auch der deutsche Ferienkalender allein nicht als
-Planungsgrundlage. Unser Kalender rechnet für diesen Park zusätzlich die
+Planungsgrundlage. In unserem Kalender sind für diesen Park zusätzlich die
 Ferien der französischen Region Grand Est, also des Elsass, und die der
-Schweizer Kantone Aargau, Basel-Stadt und Basel-Landschaft mit ein, dazu die der
+Schweizer Kantone Aargau, Basel-Stadt und Basel-Landschaft eingerechnet, dazu die der
 angrenzenden Bundesländer Bayern, Hessen und Rheinland-Pfalz. Wer nur auf Baden-Württemberg
 schaut, wundert sich irgendwann über einen vollen Dienstag.
 
 ### Der Brückentag
 
-Christi Himmelfahrt fällt immer auf einen Donnerstag, und voll wird nicht der
-Feiertag. Voll wird der Freitag danach, den halb Deutschland freinimmt. In
+Christi Himmelfahrt fällt immer auf einen Donnerstag, und voll wird erst der
+Freitag danach, den halb Deutschland freinimmt. In
 unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat“ und der Freitag
 darauf auf „sehr hoch“. Am Sonntag lag der Park wieder auf „niedrig“. Bei
 Fronleichnam dasselbe Muster: Der Feiertag am 4. Juni stand auf „niedrig“, der
@@ -627,20 +618,20 @@ Namen, ich hatte nur zufällig vorher die Domain gekauft.
 ```
 
 Vorsicht bei Januar, März und Dezember. Dahinter stehen nur drei bis sechs
-Messtage, die Tabelle nennt sie mit, und der Dezember besteht ausschließlich aus
+Messtage (die Zahl steht in der Tabelle), und der Dezember besteht ausschließlich aus
 den Tagen zwischen Weihnachten und Silvester 2025, der vollsten Woche des
 Winters. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
-nicht festlegen. Belastbar ist der Block April bis September, und der sagt: Mai und
-Juni sind die ruhigsten Sommermonate, August ist der vollste.
+nicht festlegen. Belastbar ist der Block April bis September, und darin sind Mai
+und Juni die ruhigsten Sommermonate, der August der vollste.
 
 Der Februar fehlt, weil der Park dann zu hat, und der März ist dünn, weil die
-Saison 2026 erst am 28. März begonnen hat. 2027 geht es früher los: Vom 7. bis
-zum 19. März öffnet der Park erstmals für zwei Pre-Opening Weeks, noch nicht mit
-allen Attraktionen und Shows, dafür mit den billigsten Tickets des Jahres, die
+Saison 2026 erst am 28. März begonnen hat. 2027 öffnet der Park früher, vom 7.
+bis zum 19. März erstmals für zwei Pre-Opening Weeks, noch nicht mit allen
+Attraktionen und Shows, dafür mit den billigsten Tickets des Jahres. Die
 Sommersaison beginnt dann am 20. März. Oktober und November hatten bei unserer
-letzten Durchsicht im September 2026 noch keinen einzigen Messtag. Ob die
-Tabelle inzwischen etwas über Halloween und HALLOWinter sagt, siehst du an der
-Zahl der Messtage daneben.
+letzten Durchsicht im September 2026 noch keinen einzigen Messtag. Ob
+Halloween und HALLOWinter inzwischen in der Tabelle stecken, erkennst du an der
+Zahl der Messtage für Oktober und November.
 
 ### Die vier Wochen, die kaum jemand kennt
 
@@ -661,8 +652,8 @@ stehen im HALLOWinter-Plan, bei Kälte, Wind oder Eis bleiben sie aber auch mal
 zu, und wegen der Umbauten kann der eine oder andere Bereich gesperrt sein. Anfang November plant kaum jemand einen Parkbesuch, da sucht man eher die
 Handschuhe vom letzten Winter.
 
-Unsere Crowd-Prognose zeigt das ziemlich deutlich: **Die meisten Werktage der
-HALLOWinter-Wochen stehen auf „niedrig“**, voller wird es vor allem samstags.
+In unserer Crowd-Prognose stehen **die meisten Werktage der HALLOWinter-Wochen
+auf „niedrig“**, voller wird es vor allem samstags.
 
 ```best-days-widget slug=europa-park
 
@@ -673,8 +664,7 @@ Umsonst ist das nicht. Der Park öffnet erst um 11 Uhr und schließt frühestens
 die Wasserbahnen ist kein Verlass. Wenn dir Poseidon und Atlantica egal sind und
 du Voltron an einem Tag fahren willst, den unsere Prognose auf „niedrig“ stellt,
 dann fahr im November unter der Woche. Gemessen haben wir einen November in Rust
-allerdings noch nicht, das ist eine Prognose. Welcher Tag gerade am besten
-aussieht, zeigt der Kalender oben.
+allerdings noch nicht, das ist eine Prognose.
 
 ## Der perfekte Tag im Europa-Park
 
@@ -683,7 +673,7 @@ aussieht, zeigt der Kalender oben.
 Das klingt, als hätte ich die Liste falsch herum gelesen. Unsere Rope-Drop-Auswertung
 vergleicht für jede Attraktion die Wartezeit direkt zur Öffnung mit der
 höchsten Tagesspitze, die dort an einem vollen Tag gemessen wurde. Beim Voletarium
-ist die Schlange zur Öffnung nur ein Bruchteil dieser Spitze, und das ist mit
+ist die Warteschlange zur Öffnung nur ein Bruchteil dieser Spitze, und das ist mit
 Abstand die größte Ersparnis im ganzen Park.
 
 ```glossary-widget slug=rope-drop
@@ -691,8 +681,8 @@ Abstand die größte Ersparnis im ganzen Park.
 ```
 
 Bei Voltron, Arthur und Silver Star bringt der frühe Start nicht einmal halb so
-viel. Alles ordentlich, aber nichts, wofür man um acht Uhr aufsteht. Die
-Achterbahnen lassen sich über den Tag verteilen, das Flugtheater nicht.
+viel. Die Achterbahnen lassen sich über den Tag verteilen, das Flugtheater
+nicht.
 
 Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil: die
 typische Wartezeit jeder Stunde, der Median über alle gemessenen Betriebstage
@@ -705,32 +695,32 @@ seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 ![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel | Seit 2026 steht die Bahn im neuen Themenbereich Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
 Die Zeile, die mich beim ersten Mal überrascht hat, ist die von Silver Star. Um
-zehn und um elf steht dort die längste Schlange des Tages, ab zwölf wird sie
+zehn und um elf steht dort die längste Warteschlange des Tages, ab zwölf wird sie
 spürbar kürzer und zieht erst in den Abendstunden langer Sommertage wieder an.
-Eine 73-Meter-Bahn, die den ganzen Nachmittag unter ihren Möglichkeiten bleibt,
-weil alle schon morgens dort waren.
+Die 73-Meter-Bahn bleibt den ganzen Nachmittag unter ihren Möglichkeiten, weil
+alle schon morgens dort waren.
 
 **Die vollsten Stunden liegen zwischen zehn und zwölf.** Die meisten Bahnen haben
 ihr Maximum um zehn oder um elf; nur Arthur, Atlantica und das Fjord-Rafting
-haben ihre Spitze erst am Nachmittag. Wer gemütlich frühstückt und um halb elf ankommt, läuft
-mit vollem Bauch exakt in die Tagesspitze.
+haben ihre Spitze erst am Nachmittag. Wer erst um halb elf ankommt, läuft genau
+in die Tagesspitze.
 
-![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Zur Öffnung fast leer, um elf die längste Schlange des Tages. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
+![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Zur Öffnung fast leer, um elf die längste Warteschlange des Tages. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-Und dann die Wasserbahnen. Beide haben zur Öffnung kaum eine Schlange, Poseidon erreicht seine Spitze um elf, Atlantica
-erst am Nachmittag. Wer bereit ist, morgens nass zu
+Die beiden Wasserbahnen haben zur Öffnung kaum eine Warteschlange, Poseidon
+erreicht seine Spitze um elf, Atlantica erst am Nachmittag. Wer bereit ist, morgens nass zu
 werden und den Vormittag in feuchten Socken zu verbringen, fährt beide in der Zeit, die er mittags für eine bräuchte.
 
 Ein Tagesablauf, der daraus folgt:
 
 1. **Zur Öffnung ins Voletarium.** Deutschland liegt nah am Eingang, und um zehn
-   steht dort schon die längste Schlange des Tages.
+   steht dort schon die längste Warteschlange des Tages.
 2. **Danach direkt nach Kroatien zu Voltron.** In der ersten Stunde ist seine
-   Schlange so kurz wie sonst erst wieder am späten Nachmittag, um zehn ist sie
+   Warteschlange so kurz wie sonst erst wieder am späten Nachmittag, um zehn ist sie
    die längste des ganzen Parks.
 3. **Zwischen zehn und zwölf nichts erzwingen.** Das sind die zwei Stunden für
    ein zweites Frühstück, eine Show oder den Märchenwald. Fast alles, was jetzt
-   eine Schlange hat, hat sie am Nachmittag kürzer; bei Arthur und Wodan bleibt
+   eine Warteschlange hat, hat sie am Nachmittag kürzer; bei Arthur und Wodan bleibt
    sie ungefähr gleich.
 4. **Ab zwölf Silver Star**, dann Eurosat, Piraten in Batavia, Josefinas
    Kaiserliche Zauberreise und das Castello dei Medici. Drinnen ist es an heißen
@@ -757,16 +747,16 @@ nicht, und die Tagesspitze kann frühestens um elf kommen.
 
 **Den Samstag buchen, weil das Hotel am Samstag frei ist.** Der Samstag ist der
 vollste Tag der Woche, der Sonntag der leerste, und den Abstand zahlst du an
-jeder einzelnen Schlange. Bei zehn Attraktionen am Tag also zehnmal. Wenn du ohnehin zwei
+jeder einzelnen Warteschlange. Bei zehn Attraktionen am Tag also zehnmal. Wenn du ohnehin zwei
 Nächte bleibst, dreh die Reihenfolge um: Samstag ankommen, Rulantica oder den
 Ort ansehen, Sonntag in den Park.
 
 **Nur auf die deutschen Ferien schauen.** Gut die Hälfte des Publikums kommt
 nicht aus Deutschland. Ein Tag Ende Oktober kann in Baden-Württemberg ein
 gewöhnlicher Schultag sein und trotzdem voll werden, weil in Frankreich die
-Toussaint-Ferien laufen oder in Basel-Stadt die Herbstferien. Unser Kalender
-rechnet für diesen Park die Ferien im Elsass und in drei Schweizer Kantonen mit,
-der Ferienkalender eines einzelnen Bundeslandes tut das nicht.
+Toussaint-Ferien laufen oder in Basel-Stadt die Herbstferien. In unserem
+Kalender sind für diesen Park die Ferien im Elsass und in drei Schweizer
+Kantonen eingerechnet, im Ferienkalender eines einzelnen Bundeslandes nicht.
 
 **Den Dienstag für einen ruhigen Werktag halten.** Unter den Werktagen ist er in
 unseren Daten der vollste, wenn auch knapp. Kommt ohnehin nur ein Werktag
@@ -778,12 +768,12 @@ und Donnerstag liegen dahinter gleichauf.
 Ab dem **26. September** liegen rund **180.000 Kürbisse** im Park, dazu
 Herbstdekoration in allen achtzehn Ländern und 2026 neu ein Herbstdorf, das
 „Pumpkin Village“, im deutschen Themenbereich. Die Dekoration kostet keinen
-Aufpreis und läuft im normalen Tagesbetrieb. Ganz harmlos ist die Saison
-seit diesem Jahr nicht mehr: Neben Poseidon steht das Tages-Maze „Tartaros“, ein
-Gruselhaus mit Darstellern, das der Park erst ab zwölf Jahren empfiehlt.
+Aufpreis und läuft im normalen Tagesbetrieb. Seit diesem Jahr steht außerdem
+neben Poseidon das Tages-Maze „Tartaros“, ein Gruselhaus mit Darstellern, das
+der Park erst ab zwölf Jahren empfiehlt.
 
-Das eigentliche Horrorevent findet am Abend statt, mit eigenem Ticket und eigener
-Altersgrenze, und es heißt Traumatica.
+Das eigentliche Horrorevent heißt Traumatica und findet am Abend statt, mit
+eigenem Ticket und eigener Altersgrenze.
 
 Ab **28. November** ist Winter. Weihnachtsmarkt, ein nordisches Winterdorf, eine
 Eislaufbahn, das Riesenrad Bellevue, eine Kinderskischule mit Snow-Tubes und ein
@@ -798,9 +788,9 @@ ist zu. Der letzte reguläre Tag ist Samstag, der 9. Januar 2027; am 10. Januar
 ## Traumatica, der Park im Park
 
 Bei uns in der Datenbank steht **[Traumatica](ref:traumatica)** als eigener
-Park, mit eigenem Eintrag, eigenen Attraktionen und eigenem Kalender. Das trifft
-die Sache ganz gut. Eigenes Gelände, eigener Eingang, eigenes Ticket, eigene
-Altersgrenze, eigene Öffnungszeiten. Wer einen Europa-Park-Tag plant und denkt,
+Park, mit eigenem Eintrag, eigenen Attraktionen und eigenem Kalender, weil das
+Event ein eigenes Gelände, einen eigenen Eingang, ein eigenes Ticket, eine
+eigene Altersgrenze und eigene Öffnungszeiten hat. Wer einen Europa-Park-Tag plant und denkt,
 das Gruselzeug sei abends im Eintritt mit drin, plant falsch.
 
 Der Eingang ist **nicht der Haupteingang**. Man läuft vom großen Parkplatz über
@@ -835,7 +825,7 @@ das Gelände und die Attraktionen ab 19 Uhr, letzter Einlass in die
 Schreckensattraktionen um 23:30 Uhr. Bühnenshow und Eisshow sind in jedem Ticket
 drin. Der Club läuft danach bis drei Uhr morgens.
 
-**Ab 16, und da wird nicht verhandelt.** Einzelne Formate wie THE HOTEL, die Clubs
+**Einlass ab 16 Jahren.** Einzelne Formate wie THE HOTEL, die Clubs
 THE FORBIDDEN und Vampire’s Club und das Eden Manor sind ab 18. Schwangere
 lässt der Veranstalter aus Sicherheitsgründen nicht hinein.
 
@@ -847,8 +837,7 @@ Ticketstufen, die Geschichte des Events von den Terenzi Horror Nights 2007 bis
 heute und der Vergleich mit Movie Park, Walibi und Toverland stehen im
 [Halloween-Guide](/blog/halloween-freizeitparks-2026).
 
-Für die Tagesplanung ist vor allem die Uhr wichtig. Traumatica beginnt um 19 Uhr,
-der Freizeitpark schließt in der Halloween-Saison frühestens um 18 Uhr. Beides an einem
+Traumatica beginnt um 19 Uhr, der Freizeitpark schließt in der Halloween-Saison frühestens um 18 Uhr. Beides an einem
 Tag geht also, und zwar ohne Hetze. Nur solltest du wissen, dass du danach nicht
 mehr fahren kannst, was du tagsüber ausgelassen hast, weil vom Freizeitpark
 abends nur die drei Bahnen oben laufen.
@@ -887,7 +876,7 @@ Rulantica hat einen eigenen Parkplatz zum selben Preis.
 **Essen.** Unsere Datenbank zählt **62 Gastronomien** im Park, und
 weil jeder Themenbereich ein Land ist, kocht auch jeder etwas anderes. Wer in
 Rust nur an der Pommesbude steht, hat etwas falsch gemacht. Zwei Adressen
-gehören allerdings nicht in den Park, sondern ins Resort: Das
+liegen allerdings außerhalb des Parks, im Resort. Das
 **Ammolite – House of Light** im Hotel Bell Rock, früher „The Lighthouse
 Restaurant“, hält seit November 2014 **zwei Michelin-Sterne** und ist damit weltweit das einzige Restaurant in einem
 Freizeitpark mit zwei Sternen. Das **Eatrenalin**, in dem
@@ -911,9 +900,9 @@ blue-fire-Dome im Park und seit 2026 in der Silver Lake City.
 
 ### Wie lang sind die Wartezeiten im Europa-Park?
 
-Im Parkschnitt kürzer als im Phantasialand oder im Disneyland Park in Paris, den
-Vergleich zeigt die Tabelle oben. Die längste Schlange hat meist Voltron Nevera,
-dahinter liegen Arthur, Wodan und Eurosat dicht beieinander. Was heute an der Schlange steht, siehst du bei den
+Im Parkschnitt kürzer als im Phantasialand oder im Disneyland Park in Paris, der
+Vergleich steht in der Tabelle oben. Die längste Warteschlange hat meist Voltron Nevera,
+dahinter liegen Arthur, Wodan und Eurosat dicht beieinander. Was heute an der Warteschlange steht, siehst du bei den
 [aktuellen Europa-Park-Wartezeiten](ref:europa-park?bare), alle fünf Minuten
 aktualisiert und mit Prognose für die nächsten Tage.
 
@@ -921,19 +910,19 @@ aktualisiert und mit Prognose für die nächsten Tage.
 
 Der **Sonntag** ist der ruhigste Wochentag, der Samstag der vollste, und Mai und
 Juni sind die ruhigsten Sommermonate. Ruhig sind außerdem die Werktage der
-HALLOWinter-Saison im November: [Unsere Prognose](ref:europa-park?calendar)
-stellt die meisten davon auf „niedrig“.
+HALLOWinter-Saison im November, die meisten davon stehen in
+[unserer Prognose](ref:europa-park?calendar) auf „niedrig“.
 
 ### Gibt es im Europa-Park einen Fast Pass?
 
 Nein. Der Park verkauft kein Produkt, mit dem man Warteschlangen überspringt.
-Kostenlos gibt es Single-Rider-Schlangen an Arthur, blue fire, Eurosat,
+Kostenlos gibt es Single-Rider-Warteschlangen an Arthur, blue fire, Eurosat,
 Voletarium, Voltron und Wodan sowie eine Virtual Line über die Park-App, im
 September 2026 für blue fire, Euro-Mir, Piraten in Batavia, Poseidon,
 Voletarium, Voltron und Wodan. Hotelgäste dürfen in der Sommer- und
 Halloweensaison 45 Minuten vor der offiziellen Öffnung hinein, in der HALLOWinter-
 und Wintersaison eine Stunde. Aufpreis kosten nur die VR-Fahrten: Eurosat
-Coastiality für 7 Euro, mit eigenem Bahnhof neben der Eurosat-Schlange, und der
+Coastiality für 7 Euro, mit eigenem Bahnhof neben der Eurosat-Warteschlange, und der
 Alpenexpress Coastiality für 4 Euro.
 
 ### Was kostet der Eintritt in den Europa-Park 2026?
@@ -945,8 +934,8 @@ nichts. An der Tageskasse kommen 10 Euro pro Ticket dazu. Parken kostet 10 Euro.
 ### Wie viele Achterbahnen hat der Europa-Park?
 
 **14**, so zählen es der Park und die Achterbahn-Datenbank RCDB. Der Alpenexpress
-Coastiality mit VR-Brille ist dabei keine eigene Bahn, sondern dieselbe Strecke
-wie der Enzian. Zwölf der vierzehn stammen nach Parkangabe von Mack Rides aus
+Coastiality mit VR-Brille fährt auf derselben Strecke wie der Enzian und zählt
+dabei nicht als eigene Bahn. Zwölf der vierzehn stammen nach Parkangabe von Mack Rides aus
 Waldkirch, Silver Star von Bolliger & Mabillard und Wodan von Great Coasters
 International; den Ba-a-a Express schreibt die RCDB allerdings ART Engineering
 zu.
@@ -972,7 +961,7 @@ läuft im Park schon HALLOWinter, und der macht selbst erst um neunzehn Uhr zu.
 
 Die wichtigsten zehn bis zwölf Attraktionen an einem normalen Tag: ja. Den ganzen
 Park mit 96 Attraktionen, Shows und 62 Gastronomien: nein. Viel spart man mit
-zwei Tagen nicht: Das Zwei-Tages-Ticket kostet für Erwachsene 127 bis 143,50
+zwei Tagen nicht, das Zwei-Tages-Ticket kostet für Erwachsene 127 bis 143,50
 Euro, der zweite Tag also rund 60 bis 67,50 Euro.
 
 ### Lohnt sich der Europa-Park im Winter?
@@ -981,8 +970,9 @@ Ja, mit einer Einschränkung. Die Winterdekoration, die Eisbahn und den
 Weihnachtsmarkt gibt es nur dann, dafür ist es früher dunkel, der Park macht
 frühestens um 19 Uhr zu, und die Wasserbahnen laufen nicht durchgehend;
 Atlantica hat im Winter Pause. Zwischen Weihnachten und Silvester 2025 lagen
-die Wartezeiten etwa so hoch wie im August, gemessen an sechs Tagen. Für die Werktage im November sagt unsere Prognose dagegen meist „niedrig“ voraus;
-gemessene Wartezeiten aus dem November haben wir noch keine.
+die Wartezeiten etwa so hoch wie im August, gemessen an sechs Tagen. Die
+Werktage im November stehen in unserer Prognose dagegen meist auf „niedrig“,
+gemessene Wartezeiten aus dem November haben wir aber noch keine.
 
 ## Warum ich für die Euro-Mir noch einmal hinfahre
 
@@ -992,11 +982,8 @@ elfmal so aufgeschrieben hat, zuletzt im September 2026. Mich überzeugt eine an
 
 Über sechs Millionen Menschen im Jahr, und du stehst trotzdem kürzer an als anderswo.
 Kein Kunststück, wenn man 96 Attraktionen auf 95 Hektar verteilt, 286 Tage im
-Jahr aufmacht und keinen Pass verkauft, mit dem man sich an der Schlange
+Jahr aufmacht und keinen Pass verkauft, mit dem man sich an der Warteschlange
 vorbeikauft.
-
-Man fährt für Voltron und Silver Star nach Rust. Dass man vor beiden so kurz
-steht, liegt an den achtzig anderen Sachen daneben.
 
 Ob in Rust gerade Regen fällt, entscheidet über Eurosat:
 

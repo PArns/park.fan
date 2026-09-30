@@ -1,13 +1,13 @@
 ---
-title: 'Is 70 Minutes a Long Wait? Depends Whether It’s a Tuesday'
+title: 'Is 70 Minutes a Long Wait?'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
-  There is a number at the entrance to Taron, and on its own it says about as
-  much as a temperature without a season. Only the comparison with every Tuesday
+  There’s a number at the entrance to Taron, and on its own it’s about as
+  useful as a temperature without a season. Only the comparison with every Tuesday
   on record turns it into an answer. Why park.fan throws nothing away, what
   happens overnight and why we no longer recommend ice skating in August.
 tags:
@@ -27,7 +27,7 @@ rideLinks:
 coverImage:
   src: /media/phantasialand/taron.jpg
   alt: 'A Taron train between the basalt rocks of Klugheim'
-  caption: 'Taron in Klugheim. The number at the entrance says 70. Now what?'
+  caption: 'Taron in Klugheim. At the entrance it says 70. Now what?'
   credit: 'Patrick Arns'
 seo:
   title: 'How to Read a Wait Time: Is 70 Minutes a Lot?'
@@ -44,17 +44,17 @@ seo:
     - crowd calendar
 ---
 
-You are standing in front of [Taron](ref:phantasialand/taron), the display says
-**70 minutes**, and your head immediately does the wrong thing: it compares that number with your
+You’re standing in front of [Taron](ref:phantasialand/taron), the display shows
+**70 minutes**, and your head immediately compares that number with your
 memory. Last visit it was 40, so today is worse. The visit before that it was
-90, so today is great. Two visits are not a basis, and your memory rounds
-against you anyway ([here is why](/blog/the-art-of-waiting)).
+90, so today is great. Two visits aren’t a basis, and your memory rounds
+against you anyway ([here’s why](/blog/the-art-of-waiting)).
 
-The number itself is not the problem. The parks post it, it is usually roughly
-right, and it costs us one request every five minutes. The problem is that it
-stands alone, like a temperature without a season. Seventy minutes on a Tuesday in May is a completely different
+The parks post the number, it’s usually roughly right, and it costs us one
+request every five minutes. But it stands alone, like a temperature without a
+season. Seventy minutes on a Tuesday in May is a completely different
 thing from 70 minutes on a Saturday in the summer holidays, and without the
-second half of that sentence there is nothing you can do with it.
+second half of that sentence there’s nothing you can do with it.
 
 ## What “typical” and “busy” actually mean
 
@@ -65,28 +65,28 @@ half longer. **Busy** is the 90th percentile of the same series, roughly the one
 day in ten when there really was a crowd. On the ride’s page both are shown for
 today’s weekday, with the whole week day by day underneath.
 
-Both are percentiles rather than averages. A mean can be shifted by a single exceptional day: one afternoon with a breakdown and a
+Both are percentiles rather than averages. A single exceptional day can shift a mean. One afternoon with a breakdown and a
 150-minute backlog drags a whole month’s average upwards, even though on 29 days
-none of it was noticeable. The median does not even flinch at a day like that. The
+none of it was noticeable. The median doesn’t even flinch at a day like that. The
 record is therefore listed separately, with its date, so you can see it without
 it touching the other two numbers.
 
-For [Phantasialand](ref:phantasialand) the ranking looks like this. The column
-with the days measured is the important one: it says how much weight a row carries.
+For [Phantasialand](ref:phantasialand) the ranking looks like this. How much
+weight a row carries depends on the column with the days measured.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-What is in there is live. Read this article again in three months and the table
-will hold different numbers, while the text around it still holds. That is what
-these widgets are for: four older articles had their figures typed by hand into
+What’s in there is live. Read this article again in three months and the table
+will hold different numbers, while the text around it still holds. These widgets
+exist because four older articles had their figures typed by hand into
 Markdown tables, spread across six languages, and after a few weeks they had
 quietly drifted apart, like the clocks in a holiday rental.
 
 ## The day has a shape
 
-A ride does not carry the same queue all day. Everybody knows the basic
+A ride doesn’t carry the same queue all day. Everybody knows the basic
 movement: short at opening, then the rest of the world finishes breakfast, and
 towards the evening it becomes bearable again. Where exactly the high point sits differs from ride to ride, and
 those differences are the useful part.
@@ -112,12 +112,12 @@ At a ride where we suggest rope drop, the time of day saves you at least three
 quarters of an hour. The date decides the whole day. In the North
 Rhine-Westphalian summer holidays of 2026, Tuesday 18 August sat at “Normal” in
 the Phantasialand calendar and the Thursday of the same week at “Very High” (as
-of September 2026), and an ordinary calendar gives no sign of it. What makes the
-difference: which regions are on
+of September 2026), and an ordinary calendar gives no sign of it. The
+difference comes from which regions are on
 holiday, whether a bridge day is attached, whether it rains, and whether
 something is going on across the border.
 
-That last point tends to get underestimated. A park near a border notices
+A park near a border notices
 immediately when the holidays start next door, usually from the number plates
 in the car park. So we count regions within
 roughly 200 kilometres and mark them separately in the calendar. Three parks
@@ -134,7 +134,7 @@ are equally quiet.
 ## What a night shift is for
 
 Showing a live wait time is one request. A median across every Tuesday on record
-is something else: it has to be finished before anybody asks for it. So a chain
+has to be finished before anybody asks for it. So a chain
 of jobs runs every night, and their order is fixed, because each step sits on
 the one before. At 02:00 UTC the percentiles per hour, at 03:00 the park
 baselines, at 04:30 the roll-up of yesterday, at 05:15 the rope-drop
@@ -143,7 +143,7 @@ for the big rides. At 06:00 the forecast model
 retrains itself on the previous day’s wait times, while the rope-drop crowd is
 already stuck on the motorway.
 
-Then there is the other half: we throw no reading away. Older periods get
+We also throw no reading away. Older periods get
 compressed, not thinned out. How far back an analysis looks is a separate
 decision: “typical” and “busy” work over the last 365 days, one full turn of
 the year, the rope-drop advice over just the last 70, so it follows the season.
@@ -151,25 +151,25 @@ Start storing in your third year and you have one year of history in your third
 year, and the two before it are gone for good. Our record starts on 26 December
 2025, and the column of days measured in the table above counts from there.
 
-## Where we would rather say nothing
+## Where we’d rather say nothing
 
 [Hansa-Park](ref:hansa-park), for instance, only publishes its wait times in its
-own app, and only for devices on the park’s Wi-Fi. There is no public interface. In the raw data
-this park looks like any other at three in the morning: no ride is reporting
+own app, and only for devices on the park’s Wi-Fi. There’s no public interface. In the raw data
+this park looks like any other at three in the morning, with no ride reporting
 anything. If we drew the obvious conclusion, every attraction in the park would be sitting
 there at “very low”, plus an average of 0 minutes and a forecast built on zero
 observations. A dream day for every visitor, and entirely made up. Instead
-there is a notice on the park page saying that there is
+there’s a notice on the park page saying that there’s
 nothing to read here. What we can still tell you about the park is in the
 [Hansa-Park guide](/blog/hansa-park-tips).
 
-The same rule in a smaller place: the “Berliner Eislaufen” ice rink on
-Phantasialand’s Kaiserplatz only exists during Wintertraum, this time from 14
-November 2026 to 24 January 2027. In August nobody reports anything about it, because there
-is nothing to report. Reading that silence as “open” would be the convenient
+The same goes for the “Berliner Eislaufen” ice rink on
+Phantasialand’s Kaiserplatz, which only exists during Wintertraum, this time from 14
+November 2026 to 24 January 2027. In August nobody reports anything about it, because there’s
+nothing to report. Reading that silence as “open” would be the convenient
 mistake, and it did actually say that on the park page once: ice skating in
 high summer, with our blessing. And operating months that we read off our own
-measurements are not named until 330 days of observation: before that it carries
+measurements aren’t named until 330 days of observation. Before that it carries
 no months at all, because “runs from December to April” would describe the
 period we happen to have measured.
 
@@ -183,7 +183,7 @@ day, and the three places where we deliberately claim nothing. Four concrete
 visits are in there too, from the family in the autumn holidays via the annual
 pass holder deciding on an evening trip to a first time at a big park.
 
-And the next time you are standing at the entrance staring at the display: look
-up what is normal for this ride on a Tuesday.
+And the next time you’re standing at the entrance staring at the display, look
+up what’s normal for this ride on a Tuesday.
 
 — Patrick

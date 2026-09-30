@@ -115,7 +115,7 @@ const SCALE_LEGEND = [
   },
   {
     term: 'Record',
-    def: `${TARON_RECORD} minutes le 16 juillet 2026. Le pire jour de la période mesurée, et c’est précisément pour cela qu’il ne sert pas de repère.`,
+    def: `${TARON_RECORD} minutes le 16 juillet 2026. Le pire jour de la période mesurée, qui ne sert donc pas de repère.`,
     swatch: 'bg-foreground/40',
   },
 ];
@@ -161,7 +161,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Radar de pluie',
     body: 'Les prochaines heures par quarts d’heure. Indique si l’averse sera passée dans vingt minutes ou si elle tiendra l’après-midi.',
     example:
-      'Des quarts d’heure, pas des heures : une averse de 14:15 à 14:30 disparaît dans une valeur horaire ; ici, elle y est.',
+      'Une averse de 14:15 à 14:30 disparaît dans une valeur horaire. Au quart d’heure, elle reste visible.',
     demo: <NowcastBannerDemo single />,
     onlyWhen: 'des précipitations sont à portée.',
   },
@@ -213,7 +213,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parcs à proximité',
     body: 'Ce qu’il y a d’autre à portée, avec la distance et le statut actuel.',
     example:
-      'Depuis Phantasialand : Toverland et Movie Park Germany, tous deux à un bon 90 kilomètres.',
+      'Depuis Phantasialand : Toverland et Movie Park Germany, tous deux à 90 bons kilomètres.',
     demo: <AnatomyNearbyDemo />,
     onlyWhen: 'il y a des voisins. Pour environ la moitié des 212 parcs, il n’y en a pas.',
   },
@@ -243,7 +243,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Saison, infos, questions',
     body: 'Périodes d’ouverture et événements annoncés, adresse et fuseau horaire, et les questions fréquentes sur ce parc précis.',
-    example: 'La patinoire du chapitre 08 figure ici avec novembre à janvier.',
+    example: 'La patinoire du chapitre 08 y figure, avec sa saison de novembre à janvier.',
     demo: <AnatomySeasonDemo label="Patinoire" />,
   },
 ];
@@ -312,7 +312,7 @@ const FAQ = [
   {
     question: 'Pourquoi certains parcs affichent-ils « Pas de prévision » ?',
     answer:
-      'Parce que la base manque. Un niveau d’affluence naît de la comparaison avec le passé du parc lui-même, ce qui demande une trentaine de jours d’exploitation. Pour les parcs neufs ou rarement ouverts, la case reste donc vide au lieu d’afficher une couleur devinée.',
+      'Parce que la base manque. Un niveau d’affluence naît de la comparaison avec le passé du parc lui-même, et il faut pour cela une trentaine de jours d’exploitation. Pour les parcs neufs ou rarement ouverts, la case reste donc vide au lieu d’afficher une couleur devinée.',
   },
   {
     question: 'Pourquoi Hansa-Park n’affiche-t-il aucun temps d’attente ?',
@@ -393,14 +393,14 @@ export function ContentFR() {
         id="chiffre"
         index="01"
         kicker="Le point de départ"
-        title="Un chiffre tout seul ne dit rien"
+        title="Ce qui accompagne le temps d’attente"
         icon={Gauge}
       >
         <P>
           À l’entrée de Taron s’affichent 70 minutes, et c’est tout ce qu’on vous dira. La file
-          déborde jusqu’au premier escalier, votre téléphone montre le même chiffre, et ni l’un ni
-          l’autre ne vous dit s’il faut faire la queue maintenant ou après le déjeuner. Sur
-          park.fan, quatre informations l’accompagnent : un niveau d’affluence, une tendance, la
+          déborde jusqu’au premier escalier, votre téléphone affiche le même chiffre, et rien de
+          tout cela ne permet de savoir s’il faut faire la queue maintenant ou après le déjeuner.
+          Sur park.fan, quatre informations l’accompagnent : un niveau d’affluence, une tendance, la
           seconde file et la taille minimale.
         </P>
 
@@ -451,7 +451,7 @@ export function ContentFR() {
           <IntroWithAside
             value={`${TARON_RECORD} min`}
             label="La plus longue file mesurée de Taron"
-            note="Le 16 juillet 2026, pendant les vacances d’été. Un seul jour sur 365, et c’est pourquoi l’échelle raisonne en centiles plutôt qu’en maximum."
+            note="Le 16 juillet 2026, pendant les vacances d’été. Un seul jour sur 365, et c’est pourquoi l’échelle repose sur des centiles."
           >
             <P>
               Pour situer un chiffre, il faut deux valeurs de comparaison et l’indication de ce sur
@@ -478,7 +478,7 @@ export function ContentFR() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                     {i === 0 && 'Pour un lundi, 70 minutes, c’est beaucoup'}
-                    {i === 1 && 'Un samedi, c’est un samedi comme les autres'}
+                    {i === 1 && 'Pour un samedi, 70 minutes, c’est la normale'}
                     {i === 2 && 'Et une fois, il y en a eu 135'}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -533,9 +533,9 @@ export function ContentFR() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sur la page d’une attraction"
-              note="Valeurs réelles de Taron, relevées le 10 septembre 2026."
+              note="Valeurs de Taron relevées le 10 septembre 2026."
               href={TARON}
-              hrefLabel="Valeurs réelles pour Taron →"
+              hrefLabel="Valeurs actuelles de Taron →"
             >
               <TypicalWaitsDemo />
             </DemoFrame>
@@ -594,8 +594,8 @@ export function ContentFR() {
         </P>
 
         <DemoFrame
-          label="Le vrai profil horaire, à l’instant"
-          note="En direct du profil horaire du parc. En gras, l’heure la plus forte de chaque attraction, et elle est loin d’être la même pour les six. Une heure ne devient une colonne qu’à partir de dix jours mesurés sur cette attraction, si elle atteint au moins 40 pour cent de l’heure la mieux mesurée et si au moins la moitié des attractions la remontent. Cela écarte les heures de bord de journée, où une seule file de clients d’hôtel parlerait sinon pour toute la matinée."
+          label="Le profil horaire, en direct"
+          note="En direct du profil horaire du parc. En gras, l’heure la plus forte de chaque attraction, qui change d’une attraction à l’autre. Une heure ne devient une colonne qu’à partir de dix jours mesurés sur cette attraction, si elle atteint au moins 40 pour cent de l’heure la mieux mesurée et si au moins la moitié des attractions la remontent. Cela écarte les heures de bord de journée, où sinon la seule file des clients de l’hôtel compterait pour toute la matinée."
           href={PARK}
           hrefLabel="Phantasialand sur park.fan →"
         >
@@ -624,14 +624,14 @@ export function ContentFR() {
             <PG>
               La carte donne trois chiffres et une heure : le temps d’attente habituel à
               l’ouverture, le pic de la journée, l’écart entre les deux, et la fenêtre pendant
-              laquelle l’avance tient. Après, l’avance a disparu, et la carte ne le cache pas.
+              laquelle l’avance tient. Passé cette fenêtre, l’avance a disparu.
             </PG>
             <P>
               S’y ajoute le moment le plus calme de la journée, mais seulement s’il tombe en dehors
               de la fenêtre matinale. Pour Taron, les deux tombent dans la même heure, il n’y a donc
               pas de seconde heure ici. Pour d’autres attractions, c’est le soir, et la carte
-              indique alors cette heure. Pour tout le parc, l’aperçu des attractions liste celles où
-              le réveil rapporte le plus, triées par minutes gagnées.
+              indique alors cette heure. Sur la page du parc, l’aperçu des attractions liste celles
+              où le réveil rapporte le plus, triées par minutes gagnées.
             </P>
           </div>
         </div>
@@ -647,9 +647,9 @@ export function ContentFR() {
       >
         <P>
           La date décide plus que l’heure. Entre deux jours de la même semaine, il peut y avoir une
-          demi-heure d’attente moyenne d’écart, et le calendrier de la Poste accroché dans la
-          cuisine n’en laisse rien paraître. Ce qui fait la différence : vacances scolaires, jours
-          fériés, ponts et météo, autrement dit tout ce sur quoi les autres aussi calent leur
+          demi-heure d’attente moyenne d’écart, et rien de cela ne figure sur le calendrier de la
+          Poste accroché dans la cuisine. L’écart vient des vacances scolaires, des jours fériés,
+          des ponts et de la météo, autrement dit de tout ce sur quoi les autres aussi calent leur
           sortie.
         </P>
 
@@ -682,8 +682,8 @@ export function ContentFR() {
           <P>
             Jusqu’où va le calendrier dépend du parc. Un parc ouvert toute l’année reçoit une
             prévision environ onze mois à l’avance. Pour un parc saisonnier, elle s’arrête là où
-            finit la saison publiée : pour un mardi de mars où Phantasialand est démontrablement
-            fermé, le calendrier indique fermé et aucune couleur d’affluence.
+            finit la saison publiée : pour un mardi de mars où Phantasialand est fermé, le
+            calendrier indique fermé et aucune couleur d’affluence.
           </P>
         </div>
 
@@ -723,11 +723,11 @@ export function ContentFR() {
           trajet de l’une à l’autre.
         </P>
         <P>
-          L’exemple ci-dessous n’est pas un dessin. Ce sont les mêmes pièces qui tournent dans le
-          planificateur, alimentées par la réponse que l’API a donnée le 4 septembre 2026 pour le
-          samedi 12 septembre à Phantasialand : ouvert de 9 h à 18 h, peu de monde, bruine. Faites
-          glisser un bloc sur une autre heure : il recalcule sa hauteur, et les correspondances à
-          côté aussi. Votre propre plan n’en saura rien, alors glissez à volonté.
+          L’exemple ci-dessous est fait des mêmes pièces que le planificateur, alimentées par la
+          réponse que l’API a donnée le 4 septembre 2026 pour le samedi 12 septembre à
+          Phantasialand : ouvert de 9 h à 18 h, peu de monde, bruine. Faites glisser un bloc sur une
+          autre heure : il recalcule sa hauteur, et les correspondances à côté aussi. Votre propre
+          plan n’est pas modifié, alors glissez à volonté.
         </P>
 
         <DemoFrame
@@ -740,15 +740,15 @@ export function ContentFR() {
         </DemoFrame>
 
         <Highlight>
-          Deux choses que le planificateur sait et qu’aucun temps d’attente ne porte. Le parc ouvre
-          à 9 h ce samedi-là, Taron seulement à 10 h, et son bloc ne se laisse pas glisser avant
-          cette heure. Et le trajet entre deux attractions est calculé à partir de la distance à vol
+          Deux informations du planificateur qu’aucun temps d’attente ne porte. Le parc ouvre à 9 h
+          ce samedi-là, Taron seulement à 10 h, et son bloc ne se laisse pas glisser avant cette
+          heure. Et le trajet entre deux attractions est calculé à partir de la distance à vol
           d’oiseau entre les deux stations, plus des marges pour la sortie et pour le tour lui-même,
-          et il dit si le temps suffit.
+          et vous voyez si le temps suffit.
         </Highlight>
         <PG>
           Le bloc sélectionné indique aussi de combien la prévision se trompe habituellement pour
-          cette attraction. Pour Taron, ce samedi-là, c’est 15 minutes. Habituellement veut dire :
+          cette attraction. Pour Taron, ce samedi-là, c’est 15 minutes. Habituellement veut dire :
           la moitié des jours s’en écartent davantage.
         </PG>
       </SectionShell>
@@ -773,14 +773,14 @@ export function ContentFR() {
 
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
-              La moitié de ces blocs dépend d’une condition, et c’est voulu. Un parc sans spectacles
-              n’a pas d’onglet spectacles vide, et environ la moitié des 212 parcs n’affiche aucune
-              section voisins, parce qu’il n’y a rien à portée.
+              La moitié de ces blocs n’apparaît que sous condition. Un parc sans spectacles n’a pas
+              d’onglet spectacles vide, et environ la moitié des 212 parcs n’affiche aucune section
+              voisins, parce qu’il n’y a rien à portée.
             </Highlight>
             <PG>
               Les onglets gardent leur choix dans l’adresse. Ouvrez le calendrier, transmettez le
-              lien, et ce que vous envoyez, c’est le calendrier et non la liste des attractions.
-              Pratique quand la famille doit voter pour une date dans la conversation familiale.
+              lien, et la personne qui le reçoit tombe directement sur le calendrier. Pratique quand
+              la famille doit voter pour une date dans le groupe de discussion.
             </PG>
             <div className="pt-1">
               <Link
@@ -848,9 +848,9 @@ export function ContentFR() {
               question arrive.
             </P>
             <P>
-              Six étapes dans un ordre fixe, chaque nuit. Chacune lit ce que la précédente a écrit,
-              aucune ne peut donc resquiller, ce qui sur un site consacré aux files d’attente ferait
-              mauvais genre. Quand vous ouvrez la page le matin, tout cela est déjà calculé.
+              Six étapes dans un ordre fixe, chaque nuit. Chacune lit ce que la précédente a écrit
+              et ne démarre qu’une fois celle-ci terminée. Quand vous ouvrez la page le matin, tout
+              cela est déjà calculé.
             </P>
           </div>
 
@@ -871,14 +871,14 @@ export function ContentFR() {
         icon={HelpCircle}
       >
         <P>
-          Certaines cases restent vides ici, et c’est voulu. Trois cas où park.fan préfère se taire
-          plutôt que deviner, même quand un chiffre inventé ferait plus joli.
+          Dans les trois cas ci-dessous, park.fan laisse la case vide, même quand un chiffre inventé
+          ferait plus joli.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Parc sans source lisible"
-            note="Hansa-Park ne publie ses temps d’attente que dans sa propre application, sur le wifi du parc. Dans les données, cela ressemble à un parc en pleine nuit ; c’est donc une mention entretenue à la main sur park.fan. Sans elle, 82 attractions y figureraient en « très faible »."
+            note="Hansa-Park ne publie ses temps d’attente que dans sa propre application, sur le wifi du parc. Dans les données, cela ressemble à un parc en pleine nuit, d’où une mention entretenue à la main sur park.fan. Sans elle, 82 attractions y figureraient en « très faible »."
           >
             <NoWaitTimesDemo />
           </DemoFrame>
@@ -892,12 +892,12 @@ export function ContentFR() {
 
           <DemoFrame
             label="Aucune base d’évaluation"
-            note="« Aucune prévision » désigne les parcs que nous ne savons pas encore évaluer : sous une trentaine de jours d’exploitation, la valeur de référence manque. Un parc récent n’a pas de couleur plutôt qu’une couleur devinée."
+            note="« Pas de prévision » désigne les parcs que nous ne savons pas encore évaluer : sous une trentaine de jours d’exploitation, la valeur de référence manque. Un parc récent reste donc sans couleur."
           >
             <BadgeRowDemo
               crowdLabel="Affluence : à quel point c’est plein maintenant"
               comparisonLabel="Comparaison : plus que d’habitude ?"
-              caption="Deux échelles, un exemple : à 70 minutes, Taron affiche « Très élevée » – c’est l’affluence. Face à ses 45 minutes habituelles, c’est « Bien plus » – c’est la comparaison avec lui-même. Un petit parc peut être « Très élevée » et pourtant « Habituel » : chez lui, 25 minutes sont normales."
+              caption="Deux échelles, un exemple. À 70 minutes, Taron est en affluence « Très élevée ». Face à ses 45 minutes habituelles, la comparaison avec lui-même donne « Beaucoup plus élevé ». Un petit parc peut être en affluence « Très élevée » et pourtant « Habituel » : chez lui, 25 minutes sont normales."
             />
           </DemoFrame>
         </div>
@@ -939,9 +939,9 @@ export function ContentFR() {
                 vacances qui pèsent ce jour-là, y compris celles du pays voisin.
               </>,
               <>
-                Une journée de pluie au programme ? Le calendrier la montre comme la plus calme de
-                la semaine. Le jour même, le radar de pluie au quart d’heure, en haut de la page du
-                parc, dit quand cela s’arrête.
+                Une journée de pluie au programme ? Dans le calendrier, elle apparaît comme la plus
+                calme de la semaine. Le jour même, le radar de pluie au quart d’heure, en haut de la
+                page du parc, indique quand cela s’arrête.
               </>,
               <>
                 Chaque carte d’attraction porte la taille minimale là où le parc la publie. Taron
@@ -971,7 +971,8 @@ export function ContentFR() {
               </>,
               <>
                 Pendant la visite, surveiller le badge de comparaison : « beaucoup plus élevé »
-                signifie réellement exceptionnel aujourd’hui, pas simplement long.
+                signifie que la file est exceptionnelle aujourd’hui au regard de ses valeurs
+                habituelles.
               </>,
               <>
                 Chaque page d’attraction porte une note sur sa propre prévision, issue de la
@@ -1032,7 +1033,7 @@ export function ContentFR() {
                 journée, et les parades vident les allées pendant une demi-heure environ.
               </>,
               <>
-                Personne n’a à deviner l’ordre : le planificateur du chapitre 05 remplit la journée
+                Personne n’a à deviner l’ordre : le planificateur du chapitre 05 remplit la journée
                 d’un clic avec les grandes attractions du parc, la trie selon les courbes horaires
                 et compte le trajet entre deux attractions.
               </>,

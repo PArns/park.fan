@@ -62,9 +62,9 @@ publiek dat precies voor deze gecontroleerde hartaanval afreist.
 Griezelen trekt zich daarbij weinig aan van landsgrenzen. Het event dat zichzelf
 het grootste van het continent noemt, staat in Bottrop, de beruchte experiences van
 Walibi staan zo’n twee uur rijden verderop in Biddinghuizen, alleen dan in een
-ander land. De vraag die bijna niemand beantwoordt, is de saaiste en tegelijk
-de belangrijkste: op welke avonden je die rookmachines in loopt zonder er eerst
-in de oktoberkou voor vast te vriezen.
+ander land. De saaiste vraag beantwoordt bijna niemand, namelijk op welke
+avonden je die rookmachines in loopt zonder er eerst in de oktoberkou voor vast
+te vriezen.
 
 > [!NOTE]
 > **Bijgewerkt op 25 september 2026:** Alle data, leeftijdsgrenzen en prijzen
@@ -76,11 +76,10 @@ in de oktoberkou voor vast te vriezen.
 
 ## De grote horror-events ('s avonds, vaak vanaf 16)
 
-Dit is de harde kern: avondevents met uitgebreid ingerichte spookhuizen (in
+De harde kern zijn de avondevents met uitgebreid ingerichte spookhuizen (in
 jargon **mazes** of **haunted houses**), scare zones vol live acteurs en op
-sommige plekken een leeftijdsgrens die serieus is bedoeld. Een dure
-misvatting vooraf, waar eerste bezoekers steevast in trappen: de mazes zitten
-bijna overal _niet_ bij het dagticket. Ze worden apart geboekt, en op drukke
+sommige plekken een leeftijdsgrens die serieus is bedoeld. Wat eerste bezoekers
+steevast vergeten, is dat de mazes bijna overal _niet_ bij het dagticket zitten. Ze worden apart geboekt, en op drukke
 avonden zijn de goede slots weg voordat je “rookmachine” kunt zeggen.
 
 ![Verlaten caravan met houten kisten in de ochtendmist | Een eenzame caravan in de ochtendmist. Zelden een goed teken. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
@@ -90,14 +89,14 @@ avonden zijn de goede slots weg voordat je “rookmachine” kunt zeggen.
 Het **Halloween Horror Festival** in [Movie Park Germany](ref:movie-park-germany)
 in Bottrop draagt de titel “grootste Halloween-event van Europa” voor zich uit
 als een trofee. Controleren valt zo’n titel nauwelijks, want elk park telt
-anders. De eigen cijfers voor de **28e editie**, onder het jaarmotto “Legends
-Never Die”: ruim **300 monsters**, negen horrorhuizen en vier scare zones. Wie
+anders. Volgens het park heeft de **28e editie**, onder het jaarmotto “Legends
+Never Die”, ruim **300 monsters**, negen horrorhuizen en vier scare zones. Wie
 ooit op een oktoberzaterdag tussen mistflarden en een gierende kettingzaag door
 de “Streets of New York” is gejaagd, weet waarom mensen toch terugkomen.
 
-Nieuw is precies één huis, maar wel eentje met een naam die ook mensen kennen
-die het genre niet mogen: **Jason Universe** (vanaf 16) haalt Jason Voorhees
-naar Bottrop en werkt zich in 14 scènes door deel twee tot en met zes van de
+Nieuw is precies één huis, **Jason Universe** (vanaf 16), met een naam die ook
+mensen kennen die het genre niet mogen. Het haalt Jason Voorhees naar Bottrop en
+werkt zich in 14 scènes door deel twee tot en met zes van de
 reeks. Het vervangt Secrets of St. Elmo, dat sinds 2020 draaide. De andere acht
 komen uit eerdere jaren, twee daarvan herzien. Het **Ahoj-Brause Horror Lab**, nog
 steeds de fabrieksrondleiding waarbij in de kleine zakjes meer zit dan
@@ -112,8 +111,8 @@ nieuw zijn de vuur- en dansshow **“El Despertar”** en een seance met hypnoti
 Stephan Nölle, naast de monsterparade en dj-sets van Max Bering.
 
 “Het grootst” is alleen niet automatisch “het best”. Het HHF is de Volkswagen
-onder de Halloween-events: enorm, degelijk, voor ieder wat wils, maar op volle
-avonden ook lopendebandwerk met file voor de maze. De kleinere, persoonlijkere
+onder de Halloween-events, enorm en degelijk, maar op volle avonden ook
+lopendebandwerk met file voor de maze. De kleinere, persoonlijkere
 formaten staan zo’n twee uur rijden noordwestelijker in Biddinghuizen, en wie zich daar
 eenmaal op een brancard heeft laten vastgespen, vindt negen mazes in
 doorloopbedrijf achteraf tam. Wie massa en kettingzaagromantiek zoekt, zit in
@@ -126,8 +125,8 @@ gewone parkticket, de **mazes komen er apart bij**, en eigen kostuums of maskers
 zijn op geen enkele avond toegestaan. Alle 22 data, de prijzen en de S.I.K. Pass
 staan in ons
 [nieuwsbericht over de start](/blog/movie-park-germany-halloween-horror-festival-2026).
-Eén datum zou ik apart noteren: op **17 oktober** draait voor de vijfde keer de
-eventdag **Haunters Against Hate**.
+Op **17 oktober** draait voor de vijfde keer de eventdag **Haunters Against
+Hate**, en die datum zou ik apart noteren.
 
 Wat het park overdag en buiten deze zes weken kan, welke weekdag daar echt de
 rustigste is en waarom het vanaf september alleen nog van donderdag tot en met
@@ -136,8 +135,8 @@ zondag opengaat, staat in de
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-Een voorproefje was er deze zomer al: Bottrop heeft een van zijn
-Halloween-huizen gewoon eerder opengegooid. **Slaughterhouse** draaide onder het
+Deze zomer heeft Bottrop een van zijn Halloween-huizen gewoon eerder
+opengegooid. **Slaughterhouse** draaide onder het
 label “Summerween” in alle weekenden van augustus, € 5 per persoon. Een spookhuis bij daglicht en hoogzomer heeft één
 voordeel: wie er bezweet uitkomt, hoeft niet toe te geven dat het angstzweet
 was.
@@ -148,13 +147,11 @@ Data, maze-line-up en ticketniveaus staan op de
 ### Europa-Park: Traumatica (Festival of Fear)
 
 Het [Europa-Park](ref:europa-park) doet Halloween in twee diensten. Overdag,
-van 26 september tot 1 november: kleurrijk herfstdecor met meer dan 180.000
-pompoenen, griezelvrij, gezinsvriendelijk, zeer instagrammable. ’s
-Avonds neemt **Traumatica** het over, het “Festival of Fear”, en dat viert in
+van 26 september tot 1 november, staat er kleurrijk herfstdecor met meer dan
+180.000 pompoenen, griezelvrij en voor gezinnen. ’s Avonds neemt **Traumatica** het over, het “Festival of Fear”, en dat viert in
 2026 twee verjaardagen tegelijk: **20 jaar horror en 10 jaar Traumatica**.
 
-Het verhaal is zelf een klein griezelsprookje: in 2007 bedachten
-Europa-Park-baas Michael Mack en popzanger **Marc Terenzi** naar Amerikaans
+In 2007 bedachten Europa-Park-baas Michael Mack en popzanger **Marc Terenzi** naar Amerikaans
 voorbeeld de eerste “Terenzi Horror Nights”. Tot 2012 droeg Terenzi het event
 mee, daarna scheidden hun wegen, al deed hij in 2015 nog één seizoen mee. Van
 2013 tot 2016 liep het gewoon als “Horror Nights”, voordat het zich in **2017**
@@ -166,7 +163,7 @@ ScareCON-awards in 2025 de prijs voor de acteurs op het terrein en in 2026 die
 voor het beste scream-parkevent van Europa.
 
 Traumatica is **strikt vanaf 16**, en zo strikt dat ook mama’s handtekening en
-de beste puppyogen niets uithalen: wie jonger is, komt er niet in, punt
+de beste puppyogen niets uithalen. Wie jonger is, komt er niet in
 (afzonderlijke experiences als **THE HOTEL** en de club **THE FORBIDDEN** zelfs
 pas vanaf 18). Daarvoor krijg je **acht horrorattracties**, een hoop acteurs,
 podiumshows en precies die club waarin je de doorstane schrik op vrijdag en
@@ -186,15 +183,14 @@ FORBIDDEN (€ 10) en een korte horror-VR (€ 6). Wat er in THE HOTEL gebeurt,
 voor zover het park het verklapt, staat in ons
 [jubileumbericht](/blog/traumatica-tien-jaar-europa-park).
 
-Voor het jubileum keert de **Vampire’s Club** terug, en wel voor precies vier
-nachten: 25 en 26 september, 2 en 3 oktober. Op die avonden komt hij in de
+Voor het jubileum keert de **Vampire’s Club** terug, op precies vier nachten,
+25 en 26 september en 2 en 3 oktober. Op die avonden komt hij in de
 plaats van THE FORBIDDEN, en staat Marc Terenzi er zelf op het podium. Na ruim
 een decennium afstand tussen hem en het event is dat het soort voetnoot waar
 vooral de mensen blij van worden die er in 2007 bij waren en nu liever voor
 middernacht in bed liggen.
 
-’s Avonds is het terrein minder spookhuisrondgang dan jachtgebied: mistige
-steegjes waarin hele roedels acteurs gericht op individuen jagen, plus
+’s Avonds wordt het terrein een jachtgebied, met mistige steegjes waarin hele roedels acteurs gericht op individuen jagen, plus
 pyroshows en een kabaal dat je op de A5 richting huis nog in je oren hebt.
 
 Overdag is Rust een ander park, en een met verrassend korte rijen voor zijn
@@ -208,61 +204,52 @@ Programma, data en leeftijdsregels: [traumatica.com](https://traumatica.com/en/)
 
 ### Walibi Holland: vrijwillig betalen voor je eigen ellende
 
-Zo’n twee uur rijden ten noordwesten van Bottrop dus, in Biddinghuizen:
-[Walibi Holland](ref:walibi-holland). Het park runt een van de hardste Halloween-events van Nederland
+[Walibi Holland](ref:walibi-holland) in Biddinghuizen ligt dus zo’n twee uur
+rijden ten noordwesten van Bottrop. Het park runt een van de hardste Halloween-events van Nederland
 en sorteert het zo netjes op escalatieniveau dat eerste bezoekers gegarandeerd
 een keer in de verkeerde rij belanden.
 
-Onderaan staan de **Halloween Spooky Days**: de dagvariant, herfstig
-gedecoreerd, onschuldig, kinderen welkom, pompoen-snijden-niveau. Daarboven de
-**Halloween Fright Nights**, het avondevent waarin het er dan echt om gaat
-(in 2026 met vier haunted houses, twee walkthroughs, vier scare zones en twee
-fright areas). En _daar_
-splitst Walibi nog een keer: **haunted houses** zijn de klassieke
-doorloopspookhuizen waar je in een groep doorheen gaat. De **experiences** zijn
-daarentegen een eigen vinding: kleinste groepjes of alleen, maximale nabijheid,
-en de uitdrukkelijke belofte dat je hier iets _overkomt_. Dat is de categorie
-waar zelfs mensen bleek van wegtrekken die horror anders bij het ontbijt eten.
-Je betaalt er in de voorverkoop € 20 tot € 25 per experience voor, bovenop je
-parkticket, dat vreemden je zeer slecht behandelen, en je bedankt ze achteraf
-ook nog.
+Onderaan staan de **Halloween Spooky Days**, de dagvariant met herfstdecor,
+onschuldig en voor kinderen. Daarboven de **Halloween Fright Nights**, het
+avondevent waarin het er dan echt om gaat (in 2026 met vier haunted houses,
+twee walkthroughs, vier scare zones en twee fright areas). En _daar_ splitst
+Walibi nog een keer. De **haunted houses** zijn de klassieke doorloopspookhuizen
+waar je in een groep doorheen gaat. De **experiences** zijn daarentegen een
+eigen vinding, voor de kleinste groepjes of voor jou alleen, met maximale
+nabijheid en de uitdrukkelijke belofte dat je hier iets _overkomt_. Je betaalt
+er in de voorverkoop € 20 tot € 25 per experience voor, bovenop je parkticket.
 
 Neem **The Clinic**. De receptie ziet eruit als een normale kliniek, en dan word
 je op een brancard gegespt en liggend door de rest geduwd, met uitsluitend
 zicht op het plafond. Boven je razen flikkerende tl-buizen en beschimmelde
 tegels voorbij, dan verblindend OK-licht, een injectie, het gillen van een
 botzaag die zich over je borstkas ontfermt, een op hol geslagen hartmonitor,
-een panische verpleegkundige. Tot slot: het teenlabel en het stevige
-dichtslaan van een koellade. Je beleeft, kortom, je eigen spoedoperatie
-inclusief overlijden, vastgegespt, van onderen, zonder de mogelijkheid om “ik
-denk dat ik maar ga” te zeggen.
+een panische verpleegkundige. Het eindigt met het teenlabel en het stevige
+dichtslaan van een koellade.
 
 Of **Below**, dat sinds 2017 draait en bij de opening volgens Walibi “het
-meest exclusieve en intensieve spookhuis ooit” was. Het begint ermee dat je schoenen en broek uittrekt en in een lieslaars
-stapt. Ja, dat is het moment waarop het je daagt dat dit geen normale avond
-wordt. De reden is verheugend banaal en tegelijk afgrijselijk: je daalt af in
-een rioolstelsel en waadt door **kniehoog water**, zogenaamd op jacht naar een
-ongedierteplaag. De acteurs stormen door echte watervallen op je af, met, citaat
-van een bezoeker, aanzienlijke “spatschade”. Je verliest volledig je oriëntatie,
-en dat is precies de bedoeling. Je broek uittrekken in een pretpark is die
-avond het normaalste wat je overkomt.
+meest exclusieve en intensieve spookhuis ooit” was. Het begint ermee dat je
+schoenen en broek uittrekt en in een lieslaars stapt. Daarna daal je af in een
+rioolstelsel en waad je door **kniehoog water**, zogenaamd op jacht naar een
+ongedierteplaag. De acteurs stormen door echte watervallen op je af, met,
+citaat van een bezoeker, aanzienlijke “spatschade”. Je verliest volledig je
+oriëntatie.
 
 ![Acteur met lasmasker en leren schort voor een containerdeur | De slager wacht al. En nee, dat is geen welkomstcomité. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 Sinds 2022 is er **Slaughterhouse**, een vleesverwerkingsbedrijf waarin jij de
 rol van grondstof op je neemt. Eerst word
 je in een wachtruimte in veewagenstijl “gekeurd”, daarna in een aan een
-plafondrail hangende stoel gegespt. Het idee is de slagershaak, het effect is
-volledige weerloosheid: armen nutteloos, benen op comfortabele grijphoogte. Er
+plafondrail hangende stoel gegespt. Het idee is de slagershaak, en je hangt er
+volledig weerloos, met nutteloze armen en de benen op comfortabele grijphoogte. Er
 wordt geschoren, een schietmasker tegen je borst gezet, stevig toegetast, en tot
 slot krijg je je **stempel** opgedrukt: “kwaliteitscontrole geslaagd,
 premiumvlees”. Daarom zie je op goede avonden mensen met hun stempel de uitgang
 uit wankelen, half getraumatiseerd, half vreemd trots, en
-allemaal met een vaag luchtje van gerookt spek. Vrijwillig. Voor geld. Je moet Nederlanders
-gewoon mogen.
+allemaal met een vaag luchtje van gerookt spek. Ze doen het vrijwillig, en ze
+betalen er nog voor ook. Je moet Nederlanders gewoon mogen.
 
-Kortom: als je “Halloween in Walibi” zegt, bepaal dan eerst welk niveau je
-bedoelt. De weg van Spooky Days naar een experience is die van “pompoen
+Wie “Halloween in Walibi” zegt, moet dus eerst bepalen welk niveau hij bedoelt. De weg van Spooky Days naar een experience is die van “pompoen
 snijden” naar “aan een slagershaak gehangen en afgestempeld”. Alle drie de
 experiences zijn in 2026 weer van de partij, samen met **The Unhappy Hour** en
 een backstagetour. Nieuw zijn twee zones: **Camp Dead End**, een camping aan een
@@ -283,12 +270,12 @@ weekenden tussen **3 oktober en 1 november**, plus vrijdag de 16e, donderdag de
 22e en vrijdag de 23e. Halloween zelf valt in 2026 op een zaterdag en zit er dus
 gewoon bij. Op die 13 dagen is het park open van 10 tot 23 uur, het eerste
 haunted house gaat om 13 uur open. De prijs hangt af van de avond, op de
-rustigere bespaar je tot € 10 per ticket. Advies: vanaf 16 jaar, gecontroleerd
-wordt het niet.
+rustigere bespaar je tot € 10 per ticket. Het park adviseert vanaf 16 jaar,
+maar controleert dat niet.
 
 De trailer staat sinds 19 augustus online, en die is verdacht aardig.
 “Back to Reality” laat een minuut lang een uitgesproken aardige Eddie
-zien: de horrorclown drukt een jongetje bij Speed of Sound een roze knuffel in
+zien. De horrorclown drukt een jongetje bij Speed of Sound een roze knuffel in
 handen, deelt ijs en suikerspin uit, poseert lachend voor foto’s en danst door
 het park tot hij in een zee van roze knuffels staat. Dan wordt hij badend in het
 zweet wakker in zijn hol, bijl nog in de hand. “Relax, het is bijna Halloween.”
@@ -324,11 +311,11 @@ Actuele line-up en data: [walibi.nl/halloween](https://www.walibi.nl/halloween/n
 
 ### Bobbejaanland: bioscoop om in te lopen
 
-Het Belgische [Bobbejaanland](ref:bobbejaanland) opende in 2025 zijn tot dan
-toe grootste spookhuis ooit, en dat draait ook in 2026 door: **“Paranormal
-Activity: Next of Kin”**, gebouwd in samenwerking met filmstudio Paramount in
-de vroegere “Forbidden Caves”. De cijfers zijn een statement: **520 vierkante
-meter, zeventien scènes, twee verdiepingen** en 14 acteurs, binnen en buiten.
+Het Belgische [Bobbejaanland](ref:bobbejaanland) opende in 2025 **“Paranormal
+Activity: Next of Kin”**, zijn tot dan toe grootste spookhuis ooit, gebouwd in
+samenwerking met filmstudio Paramount in de vroegere “Forbidden Caves”, en dat
+draait ook in 2026 door. Het huis heeft **520 vierkante meter, zeventien
+scènes, twee verdiepingen** en 14 acteurs, binnen en buiten.
 Het verhaal draait om een documentairemaakster die haar verdwenen moeder zoekt,
 een Amish-dorp en een familie die je liever niet uitnodigt om te barbecueën.
 Daarmee staan er in Bobbejaanland **zeven spookhuizen**; naast het
@@ -346,9 +333,8 @@ november. Nieuw is de scare zone **Deadbolt Creek**, een vroeger mijnstadje vol
 fabrieken en stoomleidingen waar na zonsondergang een reusachtige mechanische
 sheriff de baas is.
 
-Het enige Halloween-teken van leven deze zomer eindigde daarentegen met een
-terugtrekkende beweging: het spookhuis **Bazaar Bizarre** zou bij wijze van
-uitzondering in juli, augustus en de septemberweekenden draaien. Na nog geen
+Het spookhuis **Bazaar Bizarre** zou deze zomer bij wijze van uitzondering in
+juli, augustus en de septemberweekenden draaien. Na nog geen
 vier weken ging het op 26 juli weer dicht, omdat er te weinig tickets verkocht
 werden. Met Halloween is het vanaf 31 oktober weer van de partij. Bottrop, dat
 ook bij Parques Reunidos hoort, zette zijn zomerspookhuis in augustus wel door.
@@ -370,8 +356,8 @@ zetten op sfeer in plaats van afgehakte ledematen en veel bloed.
 
 ![Acteur met tentakelmasker en handbel voor het Toverland-Halloween-Nights-banner | De nachtwaker van de Toverland Halloween Nights. Gezicht: bespreekbaar. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
-De echte nieuwigheid voor **2026** is de hele zomer de lucht in gegroeid en
-ligt niet eens in het park: **“Entwined: The Maze”**, een **zeven hectare
+De nieuwigheid voor **2026**, **“Entwined: The Maze”**, is de hele zomer de
+lucht in gegroeid en ligt niet eens in het park. Het is een **zeven hectare
 groot maisveld** met metershoge wanden achter de Fenix-achtbaan, volgens het
 park _twee keer zo groot als het hele Avalon-gebied_. Het vervangt het oude
 rattenlabyrint “Trapped” (2018–2025); Toverland is dus van knaagdieren direct
@@ -382,8 +368,8 @@ doorlopen, ook als je allang niet meer weet waarheen.
 
 Toverland vermarkt Entwined als **“grootste Halloween-experience van Europa”**.
 Daarmee claimen binnen ruim een uur rijden meteen twee parken “het grootste van
-Europa”, keurig verdeeld: Bottrop heeft het grootste _event_, Sevenum de
-grootste _experience_, en zo zitten ze elkaar niet in de weg.
+Europa”, keurig verdeeld, want Bottrop heeft het grootste _event_ en Sevenum de
+grootste _experience_.
 
 **Als je in Toverland ergens extra voor betaalt, laat het dan de Fear Pass
 zijn.** Voor € 69,95 krijg je eenmalig snellere toegang tot alle zes
@@ -403,13 +389,12 @@ Details over experiences, scare zones en de Fear Pass:
 
 ### Walibi Belgium: “Ibilaw”
 
-![Clown met fez bij de messenwerpkraam overdag | Een clown. Bij de messenwerpkraam. Twee angsten voor de prijs van één. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
+![Clown met fez bij de messenwerpkraam overdag | Een clown bij de messenwerpkraam, twee angsten voor de prijs van één. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
-Ook de tweede Walibi doet mee: [Walibi Belgium](ref:walibi-belgium) in Waver
-verandert zijn herfst in **“Ibilaw”**, en de naam is meteen de eerste hint:
-“Ibilaw” is “Walibi” achterstevoren. Waarbij “Walibi” zelf een afkorting is,
+Ook de tweede Walibi doet mee. [Walibi Belgium](ref:walibi-belgium) in Waver
+verandert zijn herfst in **“Ibilaw”**, en dat is “Walibi” achterstevoren. Waarbij “Walibi” zelf een afkorting is,
 samengesteld uit de drie buurgemeenten **Wa**ver, **Li**maal en **Bi**erges.
-Met Halloween wordt het park dus letterlijk omgedraaid: een spiegel-Walibi
+Met Halloween wordt het park dus letterlijk omgedraaid tot een spiegel-Walibi
 waarin alles een beetje verkeerd om loopt, sinds 2024 geënsceneerd rond
 mascotte **Bill** en zijn “grimmige koninkrijk”.
 
@@ -425,8 +410,8 @@ wachten, neemt de **Speedy Pass** als fast lane.
 
 ![Verroeste oude vrachtwagen met mos op het plaatwerk, erachter een stellage met schotelantennes | Een echte Austin, geen decorbouw. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
-Anders dan Traumatica met zijn strikte 16 jaar blijft Ibilaw gezinsvriendelijker:
-een leeftijdsgrens is er niet, het park raadt alleen de spookhuizen af voor wie
+Anders dan Traumatica met zijn strikte 16 jaar blijft Ibilaw gezinsvriendelijker.
+Een leeftijdsgrens is er niet, het park raadt alleen de spookhuizen af voor wie
 jonger is dan 16. De monsters blijven in een afgebakend gebied tussen Wave
 Swinger en Buzzsaw, de rest van het park is voor de gezinnen, en kinderen onder
 de twaalf krijgen bij de ingang een **antimonsterbutton**. Ibilaw zit bij de
@@ -451,13 +436,13 @@ weekend.
 
 ### Plopsaland Deutschland: tien nachten in de Palts
 
-Vanuit Zuidwest-Duitsland ligt Haßloch dichterbij dan Bottrop:
+Vanuit Zuidwest-Duitsland ligt Haßloch dichterbij dan Bottrop. Daar houdt
 [Plopsaland Deutschland](ref:plopsaland-deutschland), vroeger Holiday Park,
-houdt op tien avonden de **Halloween Fright Nights**, op vrijdag en zaterdag van
+op tien avonden de **Halloween Fright Nights**, op vrijdag en zaterdag van
 **2 tot en met 31 oktober 2026**, telkens tot 22 uur. Van de zes horrorhuizen
 zijn er twee nieuw, **NEXUS AI** en **Lost: Deep in the Woods**. De drie scare
-zones zitten bij de toegang, de huizen niet: vanaf € 3 per huis met tijdslot,
-alle zes als pakket voor € 49. Het advies is vanaf 16. Anders dan bij Traumatica is dat geen harde grens: wie jonger is, komt binnen met een ouder of voogd. Tickets, shows en wanneer de
+zones zitten bij de toegang, de huizen niet. Die kosten vanaf € 3 per huis met
+tijdslot, alle zes als pakket € 49. Het advies is vanaf 16. Anders dan bij Traumatica is dat geen harde grens: wie jonger is, komt binnen met een ouder of voogd. Tickets, shows en wanneer de
 Nightmare Society Pass loont, staan in ons
 [nieuwsbericht over de Fright Nights](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
@@ -466,7 +451,7 @@ Nightmare Society Pass loont, staan in ons
 ## Gezinsvriendelijk: griezelen met vangnet
 
 Niet iedereen wil (of mag) aan een slagershaak. Voor gezinnen met kinderen is er
-de ontscherpte versie: griezelen als sfeer, niet als shocktherapie.
+een ontscherpte versie, waarin het griezelen vooral sfeer is.
 
 ![Actrice als gebroken porseleinen pop voor een kleurrijk kinderwereldhek | Het zijn altijd de poppen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
@@ -481,8 +466,8 @@ een uur later sluit. Vanaf ongeveer 16 uur gaan dan een scare zone en **drie
 horrormazes vanaf 16** open, met legitimatiecontrole: _Parasomnis_ in een
 verlaten kapel, het _Grand Hotel Morton_ in de stijl van de jaren twintig en
 _SubTerra_, een oogstbanket met maskers. Elke maze vraagt een eigen
-tijdslotticket van € 9, alle drie samen kosten € 22. Ideaal voor de gezinsvrede:
-iedereen rijdt overdag samen achtbaan, en wie oud en dapper genoeg is, verdwijnt
+tijdslotticket van € 9, alle drie samen kosten € 22. Dat is goed voor de
+gezinsvrede. Iedereen rijdt overdag samen achtbaan, en wie oud en dapper genoeg is, verdwijnt
 ’s avonds in een maze terwijl de rest zich aan de braadworst vasthoudt.
 
 [Heide-Park](ref:heide-park?full)
@@ -495,7 +480,7 @@ in de [Heide-Park-gids](/blog/heide-park-wachttijden-tips).
 
 ### Parc Astérix: Peur sur le Parc
 
-Wie het uitje groter opzet, rijdt naar Frankrijk: [Parc Astérix](ref:parc-asterix)
+Wie het uitje groter opzet, rijdt naar Frankrijk. [Parc Astérix](ref:parc-asterix)
 ten noorden van Parijs trekt zijn **Peur sur le Parc** van **3 oktober tot 8
 november 2026** door, overdag gezinsvriendelijk, op twaalf geselecteerde
 avonden als **Nocturnes** met flink meer spanning: 10, 16, 17, 21, 22, 23, 24,
@@ -510,9 +495,10 @@ everzwijn op de loer.
 
 ### Disneyland Paris: schurken in plaats van kettingzagen
 
-Het tegenprogramma van Bottrop loopt van **26 september tot en met 1 november
-2026** in het [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park):
-het **Disney Halloween Festival**, met pompoenen op Main Street, de parade
+Het tegenprogramma van Bottrop, het **Disney Halloween Festival**, loopt van
+**26 september tot en met 1 november 2026** in het
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), met pompoenen
+op Main Street, de parade
 Mickey's Halloween Celebration en schurken om mee op de foto te gaan, dit jaar
 ook weer Dr. Facilier. Alles zit bij het gewone ticket, een maze is er niet. Op
 **31 oktober** blijft het park open tot 23 uur, met vuurwerk, en dat is de
@@ -528,21 +514,20 @@ Twee van de best bezochte parken in de regio doen aan de hele
 mist-en-kettingzaagpoppenkast helemaal niet mee, en de Efteling zegt het zelfs
 met zoveel woorden.
 
-### Phantasialand: niets. Helemaal niets.
+### Phantasialand: geen enkel Halloween-event
 
-Hoezeer het de vele NRW-fans ook pijn doet: het
-[Phantasialand](ref:phantasialand) in Brühl biedt **geen Halloween-event.** Geen
-maze, geen scare night, niet eens een symbolische pompoen met een slecht humeur.
-Voor een park dat theming anders met de precisie van een horlogemaker bedrijft,
+Hoezeer het de vele NRW-fans ook pijn doet, het
+[Phantasialand](ref:phantasialand) in Brühl biedt **geen Halloween-event.** Voor
+een park dat theming anders met de precisie van een horlogemaker bedrijft,
 is dat bijna demonstratief. Phantasialand is die ene vriend op het feest die “eigenlijk niet zo
 van Halloween houdt”, en dan in november met glühwein en een compleet
 winterlandschap om de hoek komt en iedereen weer inzamelt.
 
-Want Brühl steekt zijn grote seizoen gewoon **later** aan: vanaf **14 november
+Brühl steekt zijn grote seizoen gewoon **later** aan. Vanaf **14 november
 2026** loopt **Wintertraum** tot in januari (24 januari 2027), met ijsbaan,
 wintershows en avondlijke illuminatie. Wie in oktober op Phantasialand-griezelen
-hoopt, plant dus om: of een buurpark voor de schrik, of een paar weken geduld
-tot het suikerglazuur. Wie er in Europa verder tussen november en januari
+hoopt, kiest dus een buurpark voor de schrik of wacht een paar weken tot het
+suikerglazuur. Wie er in Europa verder tussen november en januari
 opengaat, staat in de [wintergids](/blog/winter-pretparken-2026).
 
 Wintertraum krijgt een eigen hoofdstuk in de
@@ -555,8 +540,7 @@ Pass, die sinds het seizoen 2025/26 compleet anders werkt.
 
 De [Efteling](ref:efteling) in Kaatsheuvel maakt het zelfs officieel duidelijk:
 **“De Efteling viert geen Halloween”**, al is er volgens het park genoeg om te
-griezelen. Geen schrikmoment, geen kettingzaag, nergens, en toch is in de
-herfst nauwelijks een park sfeervoller. De
+griezelen. Toch ken ik in de herfst nauwelijks een park dat sfeervoller is. De
 Efteling griezelt nu eenmaal sprookjesachtig in plaats van bloederig, als de
 elegante oudtante die geen spookelakens nodig heeft om je kippenvel te
 bezorgen.
@@ -570,13 +554,13 @@ Entertainment Association, zeg maar de Oscar van de branche. Wie het
 gezellig-huiveringwekkende herfstgevoel zoekt in plaats van de adrenalineschok,
 en wie kinderen bij zich heeft, rijdt naar Kaatsheuvel.
 
-Voor de planning: **Danse Macabre is tot en met 28 september dicht voor
-onderhoud, en daarna nog een keer van 26 oktober tot en met 6 november 2026.**
+**Danse Macabre is tot en met 28 september dicht voor onderhoud, en daarna nog
+een keer van 26 oktober tot en met 6 november 2026.**
 Max & Moritz en de Gondoletta zijn van 26 tot en met 30 oktober ook dicht, Baron
 1898 al van 5 tot en met 9 oktober. Wie eind oktober gaat en voor Danse Macabre
 komt, kan dus beter vóór de 26e komen. Die week valt wel in de herfstvakantie
-van regio midden en zuid, en onze druktekalender verwacht dan meer mensen dan in
-de week erna (stand 25 september).
+van regio midden en zuid, en volgens onze druktekalender wordt het dan drukker
+dan in de week erna (stand 25 september).
 
 Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
 [Efteling-gids](/blog/efteling-disney-van-nederland).
@@ -600,11 +584,12 @@ Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
    _niet_ in de rij staat, is een minuut extra paniek voor je geld.
 
 Meer dan welke line-up ook beslist over de avond **wanneer je komt.** Het
-drukst wordt het in de weekenden en op 31 oktober, en dat verwacht onze
-druktekalender ook voor bijna alle parken in deze gids. Onze metingen beginnen
+drukst wordt het in de weekenden en op 31 oktober, en zo staat het ook in onze
+druktekalender voor bijna alle parken in deze gids. Onze metingen beginnen
 alleen pas eind december 2025, en een Halloween-oktober hadden we op 25
-september 2026 bij geen van die parken gemeten, dit is dus een prognose. Doordeweeks en in de randweken van het seizoen verwacht hij
-merkbaar minder drukte (en hebben de acteurs dan meer tijd om zich exclusief met
+september 2026 bij geen van die parken gemeten, dit is dus een prognose. Voor
+doordeweekse dagen en de randweken van het seizoen staat er merkbaar minder
+drukte in (en hebben de acteurs dan meer tijd om zich exclusief met
 _jou_ bezig te houden, afhankelijk van je perspectief een voor- of nadeel).
 
 ![Verlichte poort Psycho Circus met mensenmenigte bij nacht | Volle nacht: vanaf hier sta je meer in de rij dan je lief is. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
@@ -624,9 +609,9 @@ dagen** uit onze AI-druktekalender bekijken:
 
 ```
 
-Voor Movie Park kent de kalender nog geen gemeten Halloween-herfst, neem zijn
-prognose voor de horroravonden dus met een korrel zout. Hoe druk het in Bottrop
-per weekdag en maand doorgaans wordt, laat de statistiek zien. We meten daar pas
+Voor Movie Park zit er nog geen gemeten Halloween-herfst in de kalender, neem
+zijn prognose voor de horroravonden dus met een korrel zout. Hoe druk het in
+Bottrop per weekdag en maand doorgaans wordt, staat in de statistiek. We meten daar pas
 sinds eind december 2025, tot 25 september 2026 zat er nog geen oktober bij, en
 Halloween moet je er voorlopig zelf bij denken:
 
@@ -643,9 +628,9 @@ Halloween moet je er voorlopig zelf bij denken:
 ## Wanneer je gaat
 
 Voor welke zenuwsterkte je kiest, is jouw zaak. Alleen springt er in een rij
-gegarandeerd _niemand_ op je af, wat bij deze prijzen vervelend is. Welke dag
-het leegst is, laten de live wachttijden en de druktekalender op park.fan zien,
-de hele herfst door.
+gegarandeerd _niemand_ op je af, en bij deze prijzen is dat vervelend. Welke dag
+het leegst is, staat de hele herfst door in de live wachttijden en de
+druktekalender op park.fan.
 
 Wie Below boekt, stopt reservesokken in zijn tas. Ik heb dat één keer niet
 gedaan.

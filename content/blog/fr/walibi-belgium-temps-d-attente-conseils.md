@@ -29,7 +29,7 @@ rideLinks:
 coverImage:
   src: /media/walibi-belgium/kondaa.jpg
   alt: 'Une barque squelette éclairée en bleu dans l’eau, derrière elle le lift de Kondaa'
-  caption: 'Kondaa pendant la saison Ibilaw 2025. En journée, la barque n’est pas là, ce qui ne change rien à la physique du coaster.'
+  caption: 'Kondaa pendant la saison Ibilaw 2025. En journée, la barque n’est pas là, et la physique du coaster reste la même.'
   credit: 'Patrick Arns'
 seo:
   title: 'Walibi Belgium : Kondaa, attente et conseils de l’original'
@@ -115,7 +115,7 @@ sur le côté et, selon le parc, quinze moments d’airtime en un seul tour.
 ```
 
 À son ouverture, Kondaa a raflé deux records d’un coup. Devenue le coaster le
-plus haut et le plus rapide du Benelux, elle a délogé, comble de l’ironie,
+plus haut et le plus rapide du Benelux, elle a délogé
 [Goliath](ref:walibi-holland/goliath) dans son propre parc frère
 [Walibi Holland](ref:walibi-holland) sur la hauteur (depuis, j’imagine les
 repas de famille du groupe un peu tendus) et
@@ -148,8 +148,7 @@ même idée :
 
 ## Le reste du parc, du vétéran au port
 
-Kondaa fait les gros titres. Le plus vieux coaster du parc a 39 ans de plus et
-ne pense pas à la retraite.
+Le plus vieux coaster du parc a 39 ans de plus que Kondaa et tourne toujours.
 
 **[Turbine](ref:walibi-belgium/turbine)**, c’est elle, un
 **Schwarzkopf Shuttle Loop** de 1982. Le train est
@@ -167,7 +166,7 @@ Turbine.
 **[Vampire](ref:walibi-belgium/vampire-2)** (1999) est un **SLC de Vekoma**
 (Suspended Looping Coaster, modèle 689) et, à son ouverture, le premier de ce
 type en Belgique. Le train est suspendu sous le rail, et les pieds battent l’air
-à chaque virage. Plus pour très longtemps : selon le parc, Vampire tourne
+à chaque virage. Selon le parc, Vampire tourne
 jusqu’en octobre 2027, puis sera démoli.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, baptisée
 « Colorado » à l’origine) est le train de la mine classique, 785 mètres de
@@ -177,8 +176,7 @@ ou pour ceux à qui il faut, après Kondaa, « d’abord un truc calme ».
 hissé en marche arrière en haut d’un lift, passe en avant dans un cobra roll et
 un looping, trois inversions en tout, puis refait tout le parcours en marche
 arrière. Le parc a donc
-deux cobra rolls : un qui te met la tête en bas, et celui de Kondaa, qui ne
-s’en donne pas la peine.
+deux cobra rolls, et seul celui de Cobra te met la tête en bas.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, en place lui aussi depuis 2001,
 est une construction en bois signée Vekoma, un constructeur qu’on associe plutôt
 à l’acier. Un Vekoma en bois, c’est à peu près aussi rare qu’un Belge qui
@@ -238,8 +236,8 @@ près d’Ypres, et en 1992 le Flevohof aux Pays-Bas. En 1998, le groupe
 américain Premier Parks, rebaptisé Six Flags en 2000, rachète tout le groupe,
 et de 2001 à 2004 le site de Wavre
 s’appelle **Six Flags Belgium**, dans la même vague de rachats qui a donné à Six
-Flags l’actuel [Walibi Holland](ref:walibi-holland). Eddy Meeùs n’en a vu que le
-début : il est mort le **24 novembre 2001**, l’année où son parc a porté un
+Flags l’actuel [Walibi Holland](ref:walibi-holland). Eddy Meeùs est mort
+le **24 novembre 2001**, l’année où son parc a porté un
 autre nom pour la première fois.
 
 En 2004, Six Flags vend ses parcs européens au fonds londonien Palamon
@@ -281,8 +279,8 @@ Le prochain monde a désormais un nom. Le 1er juin 2026, le parc a annoncé
 Rocky Mountain Construction transformera le coaster en bois en coaster hybride
 à rails d’acier. Ouverture prévue en 2028, avec 49 mètres de haut, 106 km/h,
 une descente de 47 mètres inclinée à 89 degrés et 1 231 mètres de parcours.
-Ce serait le coaster le plus long du Benelux, Kondaa gardant la hauteur et la
-vitesse. Le cinéma 4D disparaît pour faire place à la nouvelle gare, et une
+Ce serait le coaster le plus long du Benelux, et Kondaa garderait la hauteur et
+la vitesse. Le cinéma 4D disparaît pour faire place à la nouvelle gare, et une
 seconde phase doit suivre en 2030 avec des tours de chute familiales, une aire
 de jeux aquatique et un grand restaurant thématisé. Ce qui remplacera Vampire
 après sa démolition, le parc ne l’a pas encore dit.
@@ -291,9 +289,8 @@ après sa démolition, le parc ne l’a pas encore dit.
 
 ![Bâtiment en bois délabré portant l’enseigne Aquarium, éclairé en bleu-vert la nuit | La maison hantée Aquarium, en plein Dock World, là où Mecalodon roule en journée. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-Pour Halloween, le parc retourne son propre nom : **« Ibilaw »**, c’est
-« Walibi » à l’envers, le nom de l’événement depuis 2024, avec sa propre
-mascotte, **Bill**. En 2026, il se tient du 10 octobre au 11 novembre sur
+Depuis 2024, l’événement d’Halloween du parc s’appelle **« Ibilaw »**,
+soit « Walibi » à l’envers, et il a sa propre mascotte, **Bill**. En 2026, il se tient du 10 octobre au 11 novembre sur
 20 jours, dont dix jusqu’à 22 h, avec quatre maisons hantées (The Grand Hotel
 est nouvelle) et quatre scare zones, dont le cirque de clowns **Psycho Circus**
 et **Arachnophobia**. Pas de limite d’âge : les monstres restent dans le secteur
@@ -322,10 +319,10 @@ ne coïncident plus : en 2026, les écoles francophones de Wallonie et de
 Bruxelles ont leur congé d’automne du 19 au 30 octobre, les écoles flamandes du
 2 au 8 novembre, et Ibilaw couvre les deux. S’y ajoutent les jours de semaine
 hors vacances d’été, quand le parc n’ouvre de toute façon pas tous les jours.
-Lesquels des prochains jours d’ouverture sont les plus calmes, le calendrier plus haut le
-dit, au jour le jour.
+Les jours d’ouverture les plus calmes des prochaines semaines sont dans le
+calendrier plus haut, recalculés chaque jour.
 
-## La journée parfaite, en quatre phrases
+## L’ordre de la journée
 
 À l’ouverture, direction **Kondaa** en premier, parce que c’est pour elle que la
 plupart des gens sont venus et parce que, dans nos mesures (depuis fin
@@ -351,7 +348,7 @@ de Bruxelles à l’heure de pointe. En train, on descend à Bierges-Walibi, gar
 située selon le parc à 150 mètres de l’entrée.
 
 **Horaires.** La saison court de début avril jusqu’en novembre. Hors vacances
-d’été, le parc n’ouvre pas tous les jours : il suit un calendrier de saison.
+d’été, le parc suit un calendrier de saison et n’ouvre pas tous les jours.
 En octobre, il devient Ibilaw, en 2026 du 10 octobre au 11 novembre, et même
 alors il n’ouvre que certains jours. Depuis 2023 s’y
 ajoute une ouverture hivernale pendant les vacances de Noël, Walibi Winter, du
@@ -437,10 +434,7 @@ La météo à Wavre pour le jour où tu y vas :
 
 ```
 
-Le parc qui a donné son nom à toute la chaîne est posé depuis 1975 au
-bord de la Dyle, entre Wavre, Limal et Bierges, et reste pourtant dans l’ombre de son
-homonyme néerlandais. Qui y va devrait faire Kondaa
-deux fois : devant, où tu vois la descente arriver, et au dernier rang, où elle
+Qui va à Wavre devrait faire Kondaa deux fois : devant, où tu vois la descente arriver, et au dernier rang, où elle
 t’attrape avant même que le train soit tout en haut.
 
 — Patrick

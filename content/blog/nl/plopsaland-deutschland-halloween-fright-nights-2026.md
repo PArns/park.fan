@@ -1,5 +1,5 @@
 ---
-title: 'Plopsaland Deutschland: tien Fright Nights, twee nieuwe horrorhuizen en een schnitzel die je niet wilt bestellen'
+title: 'Fright Nights in Plopsaland Deutschland vanaf 2 oktober'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -40,13 +40,13 @@ seo:
     - Haßloch Halloween
 ---
 
-De meeste Nederlanders en Belgen kennen Plopsa van
-[Plopsaland De Panne](ref:plopsaland-belgium). Het Duitse zusterpark,
-[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch in de Pfalz,
-heette tot juni 2025 nog Holiday Park en is vooral bekend om de achtbaan
-Expedition GeForce. Op **tien avonden in oktober** houdt het de **Halloween
-Fright Nights**, volgens het park een van de grootste Halloweenevenementen van
-Duitsland. Wie toch al richting Europa-Park rijdt, komt er bijna langs.
+[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch in de Pfalz
+houdt op **tien avonden in oktober** de **Halloween Fright Nights**, volgens het
+park een van de grootste Halloweenevenementen van Duitsland. De meeste
+Nederlanders en Belgen kennen Plopsa van
+[Plopsaland De Panne](ref:plopsaland-belgium). Het Duitse zusterpark heette tot
+juni 2025 nog Holiday Park en is vooral bekend om de achtbaan Expedition
+GeForce. Wie toch al richting Europa-Park rijdt, komt er bijna langs.
 
 ## Data en openingstijden
 
@@ -129,8 +129,8 @@ kostuums dragen, zodat het in het donker duidelijk blijft wie er werkt.
 
 Haßloch ligt tussen de A65 en de B9, en vanaf station Haßloch rijdt een
 pendelbus naar het park. [Europa-Park](ref:europa-park) met Traumatica ligt
-iets minder dan twee uur rijden zuidelijker. Wat Traumatica, Movie Park,
-Walibi en Toverland deze herfst doen, staat in het
+iets minder dan twee uur rijden zuidelijker. Prijzen en data van Traumatica,
+Movie Park, Walibi en Toverland vergelijk je in het
 [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)

@@ -59,12 +59,12 @@ l’uscita un tizio con una motosega accesa. Per i grandi parchi **Halloween** �
 da un pezzo una stagione a sé, con biglietti propri, limiti d’età propri e un pubblico che si sposta
 proprio per questo infarto controllato.
 
-Al terrore, in questo, importa poco dei confini nazionali. L’evento che si
-proclama il più grande del continente sta a Bottrop, le famigerate experience di Walibi
-circa due ore di macchina più in là, a Biddinghuizen, solo che in un altro
-paese. La domanda a cui non risponde quasi mai nessuno è la più noiosa e insieme
-la più importante: in quali serate ci si infila in queste macchine del fumo
-senza prima restare congelati in coda nel freddo di ottobre.
+I confini nazionali, qui, contano poco. L’evento che si proclama il più grande
+del continente sta a Bottrop, le famigerate experience di Walibi circa due ore
+di macchina più in là, a Biddinghuizen, solo che in un altro paese. Quasi mai
+qualcuno risponde alla domanda più noiosa di tutte, e cioè in quali serate ci si
+infila in queste macchine del fumo senza prima restare congelati in coda nel
+freddo di ottobre.
 
 > [!NOTE]
 > **Al 25 settembre 2026:** quel giorno abbiamo confrontato tutte le date, i
@@ -76,11 +76,11 @@ senza prima restare congelati in coda nel freddo di ottobre.
 
 ## I grandi eventi horror (di sera, spesso dai 16 anni)
 
-Questo è il nocciolo duro: eventi serali con case degli orrori percorribili e
+Il nocciolo duro sono gli eventi serali con case degli orrori percorribili e
 allestite con cura (**maze** o **haunted house** in gergo), scare zone piene di
-attori dal vivo e, in alcuni posti, un limite d’età che va preso sul serio. Un
-malinteso costoso in apertura, in cui i debuttanti cascano puntualmente: quasi
-ovunque i maze _non_ sono compresi nel biglietto giornaliero. Si prenotano a
+attori dal vivo e, in alcuni posti, un limite d’età che va preso sul serio. I
+debuttanti cascano puntualmente in un malinteso costoso, perché quasi ovunque i
+maze _non_ sono compresi nel biglietto giornaliero. Si prenotano a
 parte, e nelle serate forti gli slot buoni spariscono prima che tu riesca a
 dire “macchina del fumo”.
 
@@ -91,14 +91,13 @@ dire “macchina del fumo”.
 L’**Halloween Horror Festival** del [Movie Park Germany](ref:movie-park-germany)
 a Bottrop porta il titolo di “più grande evento di Halloween d’Europa” davanti a
 sé come un trofeo. Verificare un titolo così è difficile, perché ogni parco
-conta a modo suo. I numeri del parco per la **28ª edizione**, con il motto
-“Legends Never Die”: oltre **300 mostri**, nove case horror e quattro scare
-zone. Chi si è già fatto braccare in un sabato di ottobre tra banchi di nebbia e
+conta a modo suo. Per la **28ª edizione**, con il motto “Legends Never Die”, il
+parco conta oltre **300 mostri**, nove case horror e quattro scare zone. Chi si è già fatto braccare in un sabato di ottobre tra banchi di nebbia e
 una motosega stridente lungo le “Streets of New York” sa perché la gente ci
 torna lo stesso.
 
-Di nuovo c’è esattamente una casa, ma con un nome che conoscono anche quelli a
-cui il genere non piace: **Jason Universe** (dai 16 anni) porta Jason Voorhees a
+Di nuovo c’è esattamente una casa, **Jason Universe** (dai 16 anni), con un nome
+che conoscono anche quelli a cui il genere non piace. Porta Jason Voorhees a
 Bottrop e percorre in 14 scene i capitoli dal due al sei della serie. Sostituisce
 Secrets of St. Elmo, in programma dal 2020. Le altre otto vengono dagli anni
 scorsi, due delle quali rimaneggiate. L’**Ahoj-Brause Horror Lab**, sempre la
@@ -115,8 +114,8 @@ l’ipnotizzatore Stephan Nölle, oltre alla parata dei mostri e ai set del DJ M
 Bering.
 
 Detto questo, “il più grande” non è automaticamente “il migliore”. L’HHF è la Volkswagen degli eventi
-di Halloween: enorme, solido, qualcosa per tutti, ma nelle serate piene anche
-lavoro di catena con coda davanti al maze. I formati più piccoli e più
+di Halloween, enorme e solido, ma nelle serate piene anche lavoro di catena con
+coda davanti al maze. I formati più piccoli e più
 personali stanno circa due ore di macchina più a nord-ovest, a Biddinghuizen, e chi lì si è fatto
 legare una volta a una barella, dopo trova mansueti nove maze a flusso continuo.
 Chi cerca la massa e il romanticismo da motosega, a Bottrop va comunque bene.
@@ -128,8 +127,8 @@ normalmente dalle 10, e le aree horror partono in prima serata. La serata horror
 costumi o maschere propri non sono ammessi in nessuna serata. Le 22 date, i
 prezzi e il S.I.K. Pass sono nella nostra
 [notizia sull’apertura](/blog/movie-park-germany-halloween-horror-festival-2026).
-C’è una data che segnerei a parte: il **17 ottobre** si tiene per la quinta
-volta la giornata **Haunters Against Hate**.
+Segnerei a parte il **17 ottobre**, quando si tiene per la quinta volta la
+giornata **Haunters Against Hate**.
 
 Che cosa sa fare il parco di giorno e fuori da queste sei settimane, quale giorno
 della settimana lì è davvero il più tranquillo e perché da settembre apre solo da
@@ -138,8 +137,7 @@ giovedì a domenica, sta nella
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-Un assaggio c’è già stato in estate: Bottrop ha aperto in anticipo una delle
-sue case di Halloween. **Slaughterhouse** ha girato sotto l’etichetta
+In estate Bottrop ha già aperto in anticipo una delle sue case di Halloween. **Slaughterhouse** ha girato sotto l’etichetta
 “Summerween” in tutti i fine settimana di agosto, 5 € a persona. Una casa degli orrori in pieno giorno e in piena estate ha almeno un
 vantaggio: se esci fradicio, nessuno può dimostrare che fosse paura.
 
@@ -152,10 +150,9 @@ L’[Europa-Park](ref:europa-park) fa Halloween su due turni. Di giorno, dal 26
 settembre al 1° novembre: scenografia autunnale colorata con oltre 180.000
 zucche, senza spaventi, adatta alle famiglie, molto
 instagrammabile. Di sera subentra **Traumatica**, il “Festival of Fear”, che
-nel 2026 spegne due candeline insieme: **20 anni di horror e 10 anni di
-Traumatica**.
+nel 2026 festeggia insieme **20 anni di horror e 10 anni di Traumatica**.
 
-La storia è essa stessa una piccola favola del terrore: nel 2007 Michael Mack,
+Nel 2007 Michael Mack,
 alla guida dell’Europa-Park, e il cantante pop **Marc Terenzi** misero in piedi
 sul modello americano le prime “Terenzi Horror Nights”. Terenzi portò avanti
 l’evento fino al 2012, poi le strade si divisero, anche se nel 2015 tornò per
@@ -167,9 +164,9 @@ Award della Haunted Attraction Association statunitense (2025) e, ai premi
 britannici ScareCON, quello del 2025 per gli attori itineranti e quello del 2026
 come miglior evento di scream park d’Europa.
 
-Traumatica è **rigorosamente dai 16 anni**, e così rigorosamente che non
-servono né la firma della mamma né il miglior sguardo da cucciolo: chi è più
-giovane non entra, punto (singole experience come **THE HOTEL** e il club **THE
+Traumatica è **rigorosamente dai 16 anni**, e chi è più giovane non entra,
+nemmeno con la firma della mamma o il miglior sguardo da cucciolo (singole
+experience come **THE HOTEL** e il club **THE
 FORBIDDEN** addirittura solo dai 18). In compenso ci sono **otto attrazioni
 horror**, attori a volontà, spettacoli dal vivo e proprio quel club in cui
 ballare via lo spavento superato il venerdì e il sabato a partire dalle 23.
@@ -178,13 +175,12 @@ settembre**. Poi si gioca dal venerdì alla domenica fino al **7 novembre 2026**
 (tranne domenica 27 settembre), più tre giovedì: il 22 e il 29 ottobre e il 5
 novembre.
 
-Lo svolgimento è cronometrato: ingresso alle 17:45, food court dalle 18
-(l’ultimo pasto, per così dire), mondi horror dalle 19, chiusura alle 23:30.
+Lo svolgimento è cronometrato: ingresso alle 17:45, food court dalle 18, mondi
+horror dalle 19, chiusura alle 23:30.
 L’accesso passa da pass scaglionati, dall’**Event Pass** (il prezzo dipende
 dalla serata, al 25 settembre da 45 €) allo **Shoxter Pass** con accesso
-prioritario (da 96 €, ormai esaurito) fino al **Psycho Pass** per
-i più temprati, con un fido in banca a prova di bomba (dai 18, tutto incluso,
-349 €). Alcuni brividi extra si pagano a
+prioritario (da 96 €, ormai esaurito) fino al **Psycho Pass** (dai 18, tutto
+incluso, 349 €). Alcuni brividi extra si pagano a
 parte: l’experience a contatto pieno THE HOTEL (29 €), il club THE FORBIDDEN
 (10 €) e una breve VR horror (6 €). Che cosa succede in THE HOTEL, per quanto il
 parco lo racconti, sta nella nostra
@@ -192,10 +188,8 @@ parco lo racconti, sta nella nostra
 
 Per l’anniversario torna il **Vampire’s Club**, e per esattamente quattro notti:
 25 e 26 settembre, 2 e 3 ottobre. In quelle serate prende il posto di THE
-FORBIDDEN, e Marc Terenzi sale lui stesso sul palco. Dopo più di un decennio di
-distanza fra lui e l’evento è il genere di nota a piè di pagina che fa piacere
-soprattutto a chi c’era nel 2007 e oggi preferisce essere a letto prima di
-mezzanotte.
+FORBIDDEN, e Marc Terenzi sale lui stesso sul palco. Mancava dall’evento da più
+di un decennio.
 
 Di sera l’area è meno un percorso in una casa degli orrori che una riserva di
 caccia: vicoli avvolti nella nebbia in cui interi branchi di attori danno la
@@ -211,12 +205,12 @@ l’ultima ora nel parco.
 
 Programma, date e regole d’età: [traumatica.com](https://traumatica.com/en/).
 
-### Walibi Holland: pagare volontariamente per la propria disgrazia
+### Walibi Holland: Halloween Fright Nights
 
-Circa due ore di macchina a nord-ovest di Bottrop, dunque, a Biddinghuizen:
-[Walibi Holland](ref:walibi-holland). Il parco gestisce uno degli eventi di Halloween più duri dei
-Paesi Bassi e lo ordina per livelli di escalation così bene che i debuttanti
-finiscono di sicuro almeno una volta nella coda sbagliata.
+[Walibi Holland](ref:walibi-holland) sta dunque a Biddinghuizen, circa due ore
+di macchina a nord-ovest di Bottrop. Il parco gestisce uno degli eventi di
+Halloween più duri dei Paesi Bassi e lo divide in livelli che i debuttanti
+confondono facilmente.
 
 In fondo ci sono gli **Halloween Spooky Days**: la versione diurna, decorata in
 stile autunnale, innocua, bambini benvenuti, livello intaglio delle zucche.
@@ -226,52 +220,44 @@ fright area). E
 _lì_ Walibi divide ancora: le **haunted house** sono le classiche case degli
 orrori percorribili che si attraversano in gruppo. Le **experience**, invece,
 sono un’invenzione propria: gruppi minuscoli o da soli, vicinanza massima e la
-promessa esplicita che qui ti _succederà_ qualcosa. È la categoria davanti alla
-quale impallidiscono anche quelli che l’horror lo mangiano a colazione. Paghi
-in prevendita da 20 a 25 € a experience, oltre al biglietto del parco, perché
-degli sconosciuti ti trattino malissimo, e poi li ringrazi pure.
+promessa esplicita che qui ti _succederà_ qualcosa. Paghi in prevendita da
+20 a 25 € a experience, oltre al biglietto del parco, perché degli sconosciuti
+ti trattino malissimo.
 
 Prendiamo **The Clinic**. L’accettazione sembra una clinica normale, e poi ti
 legano a una barella e ti spingono sdraiato per tutto il resto, con lo sguardo
 esclusivamente al soffitto. Sopra di te sfrecciano neon tremolanti e piastrelle
 ammuffite, poi la luce accecante della sala operatoria, una siringa, lo stridere
 di una sega per ossa che si dedica al tuo torace, un monitor cardiaco fuori
-controllo, un’infermiera in preda al panico. Per concludere: il cartellino
-all’alluce e il tonfo pieno di un cassetto della cella frigorifera. Vivi, in
-breve, la tua operazione d’urgenza e il tuo decesso, legato, dal basso, senza la
-possibilità di dire “credo che me ne vada”.
+controllo, un’infermiera in preda al panico. Alla fine arrivano il cartellino
+all’alluce e il tonfo pieno di un cassetto della cella frigorifera.
 
 Oppure **Below**, in programma dal 2017 e, secondo Walibi all’apertura, la
 haunted house più esclusiva e intensa che il parco avesse mai costruito. Comincia con il fatto che ti togli scarpe e pantaloni e infili un
-paio di stivaloni da pesca. Sì, è il momento in cui ti rendi conto che non sarà
-una serata normale. Il motivo è piacevolmente banale e insieme raccapricciante:
-scendi in un sistema fognario e guadi in **acqua fino al ginocchio**,
-apparentemente a caccia di un’infestazione. Gli attori ti piombano addosso
-attraverso vere cascate d’acqua, con, citando un visitatore, notevoli “danni da
-schizzo”. Perdi completamente l’orientamento, ed è esattamente il punto.
+paio di stivaloni da pesca, perché scendi in un sistema fognario e guadi in
+**acqua fino al ginocchio**, apparentemente a caccia di un’infestazione. Gli
+attori ti piombano addosso attraverso vere cascate d’acqua, con, citando un
+visitatore, notevoli “danni da schizzo”. Perdi completamente l’orientamento.
 Togliersi i pantaloni in un parco divertimenti è, quella sera, la cosa più
 normale che ti capita.
 
-![Attore con maschera da saldatore e grembiule di cuoio davanti alla porta di un container | Il macellaio aspetta già. E no, non è un comitato di benvenuto. | left](/media/halloween-2026/beispiel-metzger.jpg)
+![Attore con maschera da saldatore e grembiule di cuoio davanti alla porta di un container | Il macellaio aspetta già. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 Dal 2022 c’è anche **Slaughterhouse**, uno stabilimento di lavorazione delle
 carni in cui assumi il ruolo della materia
 prima. Prima vieni
 “ispezionato” in una sala d’attesa in stile vagone bestiame, poi legato a un
-sedile appeso a una rotaia a soffitto. L’idea è il gancio da macellaio,
-l’effetto è la totale inermità: braccia inutili, gambe a comoda altezza di
+sedile appeso a una rotaia a soffitto. L’idea è il gancio da macellaio, e appeso
+lì sei del tutto inerme, con le braccia inutili e le gambe a comoda altezza di
 presa. Ti tosano, ti appoggiano una pistola a proiettile captivo sul petto, ci
-danno dentro, e alla fine ti imprimono il tuo **timbro**: “controllo qualità
-superato, carne premium”. Ecco perché nelle serate buone vedi gente uscire
-barcollando dall’uscita con il suo timbro, mezza traumatizzata, mezza
+danno dentro, e alla fine ti imprimono il tuo **timbro**, con scritto “controllo
+qualità superato, carne premium”. Ecco perché nelle serate buone vedi gente
+uscire barcollando dall’uscita con il suo timbro, mezza traumatizzata, mezza
 stranamente fiera, e con un discreto odore di pancetta affumicata.
-Volontariamente. A pagamento. Agli olandesi bisogna proprio voler bene.
 
-In breve: quando dici “Halloween a Walibi”, decidi prima di quale livello
-parli. La strada dagli Spooky Days a una experience è quella che va da
-“intagliare una zucca” a “appeso a un gancio da macellaio e timbrato”. Tutte e
-tre le experience tornano nel 2026, insieme a **The Unhappy Hour** e a un tour
-dietro le quinte. Le zone nuove sono due: **Camp Dead End**, un campeggio in
+Quando dici “Halloween a Walibi”, decidi quindi prima di quale livello parli.
+Tutte e tre le experience tornano nel 2026, insieme a **The Unhappy Hour** e a
+un tour dietro le quinte. Le zone nuove sono due: **Camp Dead End**, un campeggio in
 riva a un lago con uno slasher in libertà, e **Halloween Town**, dove la sera i
 mostri cantano, ballano e giocano col fuoco.
 
@@ -332,9 +318,8 @@ Line-up attuale e date: [walibi.nl/halloween](https://www.walibi.nl/halloween/en
 Il belga [Bobbejaanland](ref:bobbejaanland) ha inaugurato nel 2025 la sua casa
 degli orrori più grande di sempre, e prosegue anche nel 2026: **“Paranormal
 Activity: Next of Kin”**, costruita in collaborazione con lo studio
-cinematografico Paramount nelle vecchie “Forbidden Caves”. I numeri fanno
-effetto: **520 metri quadrati, diciassette scene, due piani** e 14 attori, dentro
-e fuori. La storia segue una documentarista in cerca della madre scomparsa, un
+cinematografico Paramount nelle vecchie “Forbidden Caves”. Sono **520 metri
+quadrati, diciassette scene, due piani** e 14 attori, dentro e fuori. La storia segue una documentarista in cerca della madre scomparsa, un
 villaggio amish e una famiglia che è meglio non invitare a una grigliata.
 Bobbejaanland arriva così a **sette case degli orrori**; accanto a quella
 Paramount girano classici come _Wrecked_, _Alice in Horrorland_ o _Texas
@@ -349,8 +334,8 @@ cinque sere: il 31 ottobre e il 2, 4, 6 e 7 novembre. Nuova è la scare zone
 **Deadbolt Creek**, un’ex città mineraria piena di fabbriche e condotte di
 vapore dove dopo il tramonto comanda uno sceriffo meccanico gigante.
 
-L’unico segno di vita halloweeniano dell’estate è finito invece con un passo
-indietro: la casa degli orrori **Bazaar Bizarre** doveva girare in via
+In estate, invece, Bobbejaanland ha dovuto fare un passo indietro. La casa degli
+orrori **Bazaar Bizarre** doveva girare in via
 eccezionale a luglio, ad agosto e nei fine settimana di settembre. Dopo nemmeno
 quattro settimane il parco l’ha richiusa il 26 luglio, perché si vendevano
 troppo pochi biglietti. Nel programma di Halloween torna dal 31 ottobre.
@@ -374,15 +359,14 @@ arti mozzati e fiumi di sangue.
 
 ![Attore con maschera a tentacoli e campanella davanti allo striscione delle Toverland Halloween Nights | Il guardiano notturno delle Toverland Halloween Nights. Faccia: trattabile. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
-La vera novità per il **2026** è cresciuta verso il cielo per tutta l’estate e
-non si trova nemmeno dentro il parco: **“Entwined: The
-Maze”**, un **campo di mais di sette ettari** con pareti alte metri dietro
-l’ottovolante Fenix, secondo il parco _grande il doppio dell’intera area
+La novità per il **2026** è **“Entwined: The Maze”**, un **campo di mais di sette
+ettari** cresciuto per tutta l’estate fuori dal parco, con pareti alte metri,
+dietro l’ottovolante Fenix, secondo il parco _grande il doppio dell’intera area
 Avalon_. Sostituisce il vecchio labirinto dei ratti “Trapped” (2018-2025);
 Toverland è quindi passata dai roditori direttamente a dieci campi da calcio di
 mais. La premessa la fornisce il parco stesso: _sei all’altezza del male che
-abita nei fitti campi di mais?_ E l’unica regola che conta: chi si ferma viene
-preso. Quindi avanti sempre, anche quando non sai più bene verso dove.
+abita nei fitti campi di mais?_ Chi si ferma viene preso, quindi avanti sempre,
+anche quando non sai più bene verso dove.
 
 Toverland promuove Entwined come la **“più grande experience di Halloween
 d’Europa”**. Così, nel giro di poco più di un’ora di macchina, ci sono due parchi
@@ -394,8 +378,8 @@ nessuno pesta i piedi all’altro.
 un accesso unico e più rapido a tutte e sei le experience, più un posto riservato
 per la parata che parte ogni sera alle 18. Singolarmente le experience costano
 da 6,50 a 13 € a fascia oraria, Entwined da sola 13 €, e ogni sera i Fear Pass
-sono in numero limitato. Nelle notti piene è la differenza tra “tre case fatte”
-e “tutte e sei, e per giunta usciti interi dal mais”.
+sono in numero limitato. Nelle notti piene fa la differenza fra tre case e tutte
+e sei.
 
 Per la giornata di apertura normale, Troy compreso, e per capire quando Sevenum
 è davvero vuoto, c’è la [guida a
@@ -408,14 +392,13 @@ Dettagli su experience, scare zone e Fear Pass:
 
 ### Walibi Belgium: “Ibilaw”
 
-![Clown con fez al banco del lancio dei coltelli, di giorno | Un clown. Al banco del lancio dei coltelli. Due paure al prezzo di una. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
+![Clown con fez al banco del lancio dei coltelli, di giorno | Un clown al banco del lancio dei coltelli, due paure al prezzo di una. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
-Ci si mette anche il secondo Walibi: [Walibi Belgium](ref:walibi-belgium) a
-Wavre trasforma il suo autunno in **“Ibilaw”**, e il nome è già il primo
-indizio: “Ibilaw” è “Walibi” al contrario. Dove “Walibi” è a sua volta una
-sigla, composta dai tre comuni vicini **Wa**vre, **Li**mal e **Bi**erges. A
-Halloween il parco viene quindi letteralmente rovesciato: un Walibi allo specchio
-in cui tutto funziona un po’ al contrario, messo in scena dal 2024 attorno alla
+Anche il secondo Walibi fa Halloween. [Walibi Belgium](ref:walibi-belgium) a
+Wavre trasforma il suo autunno in **“Ibilaw”**, cioè “Walibi” al contrario.
+“Walibi” è a sua volta una sigla, composta dai tre comuni vicini **Wa**vre,
+**Li**mal e **Bi**erges. A Halloween il parco viene quindi letteralmente
+rovesciato, un Walibi allo specchio in cui tutto funziona un po’ al contrario, messo in scena dal 2024 attorno alla
 mascotte **Bill** e al suo “regno arcigno”.
 
 In programma c’è tutto l’armamentario delle Fright Nights: quattro case degli
@@ -467,11 +450,11 @@ spettacoli e quando conviene il Nightmare Society Pass sono nella nostra
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
-## Adatto alle famiglie: brivido con rete di sicurezza
+## Halloween per famiglie
 
 Non tutti vogliono (o possono) finire su un gancio da macellaio. Per le
-famiglie con bambini c’è la versione depotenziata: il brivido come atmosfera,
-non come terapia d’urto.
+famiglie con bambini c’è una versione depotenziata, in cui il brivido resta
+atmosfera.
 
 ![Attrice come bambola di porcellana rotta davanti alla recinzione colorata del mondo dei bambini | Sono sempre le bambole. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
@@ -517,8 +500,8 @@ sia in agguato anche un cinghiale.
 
 ### Disneyland Paris: cattivi invece di motoseghe
 
-L’opposto di Bottrop va in scena dal **26 settembre al 1° novembre 2026** al
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park): il **Disney
+Al [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) va in scena
+dal **26 settembre al 1° novembre 2026** l’opposto di Bottrop, il **Disney
 Halloween Festival**, con zucche su Main Street, la parata Mickey's Halloween
 Celebration e cattivi con cui farsi fotografare, quest’anno di nuovo anche il
 Dr. Facilier. È tutto compreso nel biglietto normale, e di maze non ce ne sono.
@@ -534,9 +517,9 @@ Le altre novità sono nella nostra
 Due dei parchi più visitati della zona al circo di nebbia e motoseghe non
 partecipano affatto, e l’Efteling lo mette perfino per iscritto.
 
-### Phantasialand: niente. Proprio niente.
+### Phantasialand: nessun evento, poi il Wintertraum
 
-Per quanto faccia male ai tanti fan della regione: il
+Per quanto faccia male ai tanti fan della regione, il
 [Phantasialand](ref:phantasialand) di Brühl non offre **nessun evento di
 Halloween.** Nessun maze, nessuna scare night, nemmeno una zucca simbolica di
 cattivo umore. Per un parco che per il resto pratica la tematizzazione con la
@@ -546,7 +529,7 @@ alla festa che “Halloween in realtà non lo ama granché”, e che poi a novem
 spunta con il vin brulé e un intero paesaggio invernale e raduna di nuovo
 tutti.
 
-Perché Brühl accende la sua grande stagione semplicemente **più tardi**: dal
+Brühl accende la sua grande stagione semplicemente **più tardi**. Dal
 **14 novembre 2026** va in scena **Wintertraum** fino a gennaio (24 gennaio
 2027), con pista di ghiaccio, spettacoli invernali e illuminazione serale. Chi a
 ottobre spera nel brivido del Phantasialand deve quindi riorganizzarsi: o un
@@ -560,7 +543,7 @@ Pass, che dalla stagione 2025/26 funziona in modo completamente diverso.
 
 [Phantasialand](ref:phantasialand?full)
 
-### Efteling: troppo signorile per le motoseghe
+### Efteling: l’Herfst al posto di Halloween
 
 L’[Efteling](ref:efteling) nella località olandese di Kaatsheuvel lo mette
 addirittura nero su bianco: **“De Efteling viert geen Halloween”**, l’Efteling
@@ -580,13 +563,13 @@ l’Oscar del settore.
 Chi cerca la sensazione autunnale accogliente e inquietante invece dello shock
 di adrenalina, e chi ha bambini con sé, punti su Kaatsheuvel.
 
-Da tenere presente: **Danse Macabre è chiusa per manutenzione fino al 28
-settembre compreso, e poi di nuovo dal 26 ottobre al 6 novembre 2026.** Anche
+**Danse Macabre è chiusa per manutenzione fino al 28 settembre compreso, e poi
+di nuovo dal 26 ottobre al 6 novembre 2026.** Anche
 Max & Moritz e la Gondoletta sono chiuse dal 26 al 30 ottobre, Baron 1898 già
 dal 5 al 9 ottobre. Se vai a fine ottobre per Danse Macabre, meglio prima
 del 26. Quella settimana cade però nelle vacanze autunnali del centro e del sud dei
-Paesi Bassi, e il nostro calendario dell’affluenza prevede più gente che nella
-settimana dopo (al 25 settembre).
+Paesi Bassi, e nel nostro calendario dell’affluenza è prevista più gente che
+nella settimana dopo (al 25 settembre).
 
 Il tetto di cinque milioni di visitatori e il Winter Efteling sono nella [guida
 all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
@@ -612,12 +595,12 @@ all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
    è un minuto di panico in più per i tuoi soldi.
 
 Più di qualsiasi line-up, a decidere la serata è **quando ci vai.** I fine
-settimana e il 31 ottobre sono i più affollati, ed è anche ciò che prevede il
-nostro calendario dell’affluenza per quasi tutti i parchi di questa guida. Le
-nostre misurazioni però partono solo da fine dicembre 2025: al 25 settembre
-2026 non avevamo ancora misurato nessun ottobre di Halloween in nessuno di
-questi parchi, quindi è una previsione. Infrasettimana e nelle settimane di
-margine della stagione prevede percettibilmente meno gente (e gli attori hanno
+settimana e il 31 ottobre sono i più affollati, e così li dà anche il nostro
+calendario dell’affluenza per quasi tutti i parchi di questa guida. Le nostre
+misurazioni però partono solo da fine dicembre 2025, e al 25 settembre 2026 non
+avevamo ancora misurato nessun ottobre di Halloween in nessuno di questi parchi,
+quindi è una previsione. Per i giorni infrasettimanali e le settimane di
+margine della stagione la previsione è di percettibilmente meno gente (e gli attori hanno
 allora più tempo per occuparsi esclusivamente di _te_, a seconda dei punti di
 vista un vantaggio o uno svantaggio).
 
@@ -638,8 +621,8 @@ più tranquilli in arrivo** dal nostro calendario dell’affluenza con IA:
 
 ```
 
-Per il Movie Park il calendario non conosce ancora nessun autunno di Halloween
-misurato, quindi prendi con cautela la sua previsione per le serate horror.
+Per il Movie Park nel calendario non c’è ancora nessun autunno di Halloween
+misurato, quindi prendi con cautela la previsione per le serate horror.
 Quanto si riempie di solito Bottrop per giorno della settimana e per mese,
 secondo le nostre misurazioni: partono solo da fine dicembre 2025, al 25
 settembre 2026 non c’era ancora nessun ottobre misurato, e Halloween, per ora,
@@ -658,9 +641,9 @@ devi immaginartelo:
 ## Quando andarci
 
 Per quale tempra decidere è affar tuo. Solo che in coda non ti salta addosso
-_nessuno_, garantito, il che a questi prezzi dà fastidio. Quale giorno sia il più vuoto te lo dicono i
-tempi di attesa live e il calendario dell’affluenza su park.fan, per tutto
-l’autunno.
+_nessuno_, garantito, e a questi prezzi è quasi un peccato. Il giorno più vuoto
+lo trovi nei tempi di attesa live e nel calendario dell’affluenza su park.fan,
+per tutto l’autunno.
 
 Chi prenota Below si porta un cambio di calze. Io una volta non l’ho fatto.
 

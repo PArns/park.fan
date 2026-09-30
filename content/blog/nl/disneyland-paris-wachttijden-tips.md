@@ -110,8 +110,7 @@ de Mont-Saint-Michel, de vierkant gesnoeide bomen eromheen komen uit de
 tekenfilm van 1959, en in de galerij op de bovenverdieping vertellen
 glas-in-loodramen en wandtapijten het sprookje na. In de rotssokkel eronder ligt
 **La Tanière du Dragon**, een grot met een vastgeketende animatronic draak die
-beweegt en stoom uitstoot. Kinderen komen daar soms niet vrijwillig meer uit, en
-soms gaan ze er al niet naar binnen.
+beweegt en stoom uitstoot.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 is de grootste uitvoering van deze achtbaan in alle Disneyparken en de
@@ -124,13 +123,11 @@ allereerste dag van het park, minimale lengte 102 centimeter. In 2015 en
 en een paar effecten die ze in Californië hadden geleend.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-is de Parijse Haunted Mansion, met één verschil waarvoor fans speciaal
-afreizen: de versies in Florida en Californië vertellen bewust geen
-doorlopend verhaal. Parijs wel: Melanie Ravenswood wacht sinds haar
-mislukte bruiloft nog altijd in haar trouwjurk, en haar vader Henry heeft
-haar aanbidders een voor een vermoord (een schoonvader met nogal eigen ideeën
-over kennismaken), iets wat de renovatie van 2019 voor
-het eerst expliciet uitspreekt. Zes minuten in de Omnimover, 92
+is de Parijse Haunted Mansion, en anders dan de versies in Florida en
+Californië, die bewust zonder doorlopend verhaal werken, heeft hij er een.
+Melanie Ravenswood wacht sinds haar mislukte bruiloft nog altijd in haar
+trouwjurk, en haar vader Henry heeft haar aanbidders een voor een vermoord,
+wat pas sinds de renovatie van 2019 expliciet in de attractie zit. Zes minuten in de Omnimover, 92
 animatronics, plus de Engelse vertellersstem van Vincent Price, waarvan in
 2019 delen zijn teruggebracht in de attractie. Na bijna zestien maanden verbouwing reed de attractie vanaf 3 mei 2019 weer.
 
@@ -143,7 +140,7 @@ naar 71 km/u de berg op geschoten. Drie inversies, een kilometer traject, tot 5
 g. Van alle Space Mountains wereldwijd is dit de enige met launch en de enige
 met inversies. Michael Eisner, toen de baas van Disney, noemde haar de redder
 van het park, en in het boekjaar 1995 maakte Disneyland Paris voor het eerst
-winst. Lang heet ze niet meer zo: eind 2027 gaat de baan een paar maanden dicht
+winst. Eind 2027 gaat de baan een paar maanden dicht
 en komt ze terug als _Space Mountain – De la Terre à la Lune_, weer met Jules
 Verne en de originele muziek van Steve Bramson.
 
@@ -168,8 +165,7 @@ in Adventureland draait sinds de allereerste dag en duurt ruim tien minuten, lan
 opende op 30 juli 1993 als de eerste achtbaan in een Disneypark met een
 inversie, gebouwd door Intamin, 600 meter traject, 58 km/u. Van april 2000
 tot november 2004 reed de baan achterstevoren. De minimale lengte van 140
-centimeter is de hoogste van alle Disneyattracties wereldwijd, wat ter
-plekke regelmatig gezinnen uit elkaar haalt. En
+centimeter is de hoogste van alle Disneyattracties wereldwijd. En
 **[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
 is precies wat je vreest.
 
@@ -214,8 +210,8 @@ gereinigd, geschilderd en gerepareerd. De geplande terugkeer is **zomer 2027**.
 Zo'n tien maanden lang moet de Oost-Australische Stroom het dus zonder
 passagiers stellen.
 
-In onze data zie je dat zonder enig persbericht: de laatste live melding van
-deze attractie dateert van **6 september, 20:21 UTC**. Sindsdien komt er niets
+In onze data was dat al zonder persbericht te zien, want de laatste live
+melding van deze attractie dateert van **6 september, 20:21 UTC**. Sindsdien komt er niets
 meer van, terwijl de andere attracties van het park gewoon hun status blijven
 doorgeven. Op de parkpagina staat ze nu als gesloten, en tot de heropening telt
 ze niet meer mee als attractie van de dag.
@@ -224,11 +220,10 @@ ze niet meer mee als attractie van de dag.
 
 ```
 
-Voor een dag daar betekent dat: de attractie die tot nu toe een halve ochtend
-opslokte, valt weg, en haar bezoekers verspreiden zich over een park dat toch al
-weinig capaciteit heeft. In de tabel hierboven staat Crush's Coaster nog met
-haar cijfers uit de maanden voor de sluiting, een beetje zoals een gerecht dat
-nog op de kaart staat maar sinds september op is. Tot de zomer van 2027 is
+Voor een dag daar valt zo de attractie weg die tot nu toe een halve ochtend
+opslokte, en haar bezoekers verspreiden zich over een park dat toch al weinig
+capaciteit heeft. In de tabel hierboven staat Crush's Coaster nog met haar
+cijfers uit de maanden voor de sluiting. Tot de zomer van 2027 is
 Frozen Ever After de rij waar je je dag daar omheen plant.
 
 ## Hoe druk het echt is
@@ -237,7 +232,7 @@ Beide parken leveren ons sinds 26 december 2025 wachttijden, maar pas sinds eind
 maart 2026 bijna zonder gaten. Uit de winter daartussen hebben we alleen losse
 dagen in december en januari, en voor februari, oktober en november nog helemaal
 niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen, en
-hoeveel daarvan achter elke rij zitten, tonen de tabellen zelf.
+hoeveel daarvan achter elke rij zitten, staat in de tabellen zelf.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -246,8 +241,7 @@ hoeveel daarvan achter elke rij zitten, tonen de tabellen zelf.
 Het verschil tussen de twee parken zie je in elke gemeten maand. Alleen in
 december, waarvoor we alleen de laatste dagen van 2025 hebben, lagen de typische
 wachttijden gelijk, en zelfs toen lag het drukteniveau in Adventure World hoger.
-Dat heeft weinig met populariteit te maken en veel met rekenkunde: over 2024
-telde de TEA 10,2 miljoen bezoeken aan het Disneyland Park en 5,5 miljoen aan
+Dat verschil komt uit de bezoekersaantallen: over 2024 telde de TEA 10,2 miljoen bezoeken aan het Disneyland Park en 5,5 miljoen aan
 het tweede park. Elke bezoeker telt daarbij alleen mee in het park waar hij als
 eerste binnenkomt; wie 's middags overstapt, zit in het tweede getal dus
 helemaal niet. Meer dan een derde van alle bezoeken komt zo terecht in een park
@@ -279,8 +273,9 @@ Disney Adventure World: World of Frozen krijgt kerstversiering in Scandinavische
 stijl en eigen optredens van Anna, Elsa en Olaf. Op oudejaarsavond viert elk van
 de twee parken met een eigen programma.
 
-De weekdagcurve hierboven is vlak, en dat heeft een reden: een park dat 365 dagen per jaar open is en in een half dozijn
-landen wordt geadverteerd, heeft geen dode dinsdag om naar uit te wijken.
+De weekdagcurve hierboven is vlak, omdat een park dat 365 dagen per jaar open is
+en in een half dozijn landen wordt geadverteerd, geen dode dinsdag heeft om naar
+uit te wijken.
 Welke van de komende weken toch het rustigst zijn, staat hier, doorlopend
 opnieuw berekend:
 
@@ -328,8 +323,8 @@ Pan voor de avond. Het middaguur is voor geen van alle een goed moment: alle
 acht attracties in de uurtabel hebben hun langste rij tussen 12 en 14 uur.
 
 En boek je beide parken, draai dan de gebruikelijke volgorde om en begin in
-Adventure World, waar onze rope-drop-analyse voor Ratatouille en de Tower of
-Terror de grootste winst van een vroege start laat zien. Frozen Ever After hoort
+Adventure World, waar volgens onze rope-drop-analyse een vroege start bij
+Ratatouille en de Tower of Terror de meeste tijd scheelt. Frozen Ever After hoort
 daar niet bij: die attractie is 's avonds het kortst, en er is een
 single-riderrij.
 

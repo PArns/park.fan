@@ -124,13 +124,12 @@ tornata con freni nuovi, una bella mano di vernice e qualche effetto preso in
 prestito dalla California.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-è la Haunted Mansion di Parigi, con una differenza per cui i fan fanno apposta
-il viaggio: le versioni in Florida e in California non raccontano di proposito
+è la Haunted Mansion di Parigi, con una differenza: le versioni in Florida e in California non raccontano di proposito
 una storia continua. Quella di Parigi invece sì: Melanie Ravenswood aspetta in abito da
 sposa da quando il suo matrimonio è saltato, e suo padre Henry ha ucciso i
 pretendenti uno dopo l’altro (un suocero con idee tutte sue su come conoscere
-il fidanzato), cosa che la revisione del 2019 dice per la prima
-volta in modo esplicito. Sei minuti a bordo dell’Omnimover, 92 animatronic,
+il fidanzato), cosa che solo con la revisione del 2019 è diventata
+esplicita. Sei minuti a bordo dell’Omnimover, 92 animatronic,
 più la voce narrante inglese di Vincent Price, di cui nel 2019 sono tornate
 alcune parti nell’attrazione. Dopo quasi sedici mesi di lavori è tornata in funzione il 3 maggio 2019.
 
@@ -143,8 +142,8 @@ sistema di lancio. C’è ancora: il treno viene sparato su per la montagna da 0
 g. Fra tutte le Space Mountain del mondo è l’unica con un lancio ed è l’unica
 con inversioni. Michael Eisner, allora capo della Disney, la chiamò la
 salvatrice del parco, e nell’esercizio 1995 Disneyland Paris chiuse per la prima
-volta in utile. Come Hyperspace Mountain le resta poco: a fine 2027 chiude per
-alcuni mesi e tornerà come _Space Mountain – De la Terre à la Lune_, di nuovo
+volta in utile. A fine 2027 l’attrazione
+chiude per alcuni mesi e tornerà come _Space Mountain – De la Terre à la Lune_, di nuovo
 con Jules Verne e la musica originale di Steve Bramson.
 
 Eppure nella nostra classifica non è in cima.
@@ -153,12 +152,12 @@ Eppure nella nostra classifica non è in cima.
 
 ```
 
-La coda più lunga del parco appartiene a **Peter Pan's Flight**, una dark ride del 1992 che dura tre minuti. La popolarità spiega solo metà della storia.
-L’altra metà è una questione di portata oraria: Hyperspace Mountain fa
+La coda più lunga del parco appartiene a **Peter Pan's Flight**, una dark ride del 1992 che dura tre minuti. In parte è popolarità, in parte portata
+oraria: Hyperspace Mountain fa
 viaggiare quattro treni e smaltisce quasi 2.000 persone all’ora, quindi si
 libera della propria coda nel corso di tutta la giornata. Dei piccoli velieri
 volanti in cui entra giusto una famiglia non ce la fanno. Chi passa la mattina sulle montagne russe si
-ritrova il pomeriggio nella coda più lunga del parco, per tre minuti di dark ride.
+ritrova il pomeriggio nella coda più lunga del parco.
 
 Altre tre attrazioni fanno perdere tempo in quella mattinata.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**,
@@ -227,8 +226,7 @@ fino alla riapertura non conta più fra le attrazioni del giorno.
 Per una giornata lì vuol dire che l’attrazione che finora si mangiava mezza
 mattinata sparisce, e i suoi visitatori si distribuiscono su un parco che di
 capacità ne ha comunque poca. Nella tabella qui sopra Crush's Coaster compare
-ancora con i suoi valori dei mesi prima della chiusura, un po’ come un piatto
-ancora stampato sul menu che in cucina è finito a settembre. Fino all’estate
+ancora con i suoi valori dei mesi prima della chiusura. Fino all’estate
 2027 la coda attorno a cui organizzare la giornata lì è quella di Frozen Ever
 After.
 
@@ -247,7 +245,7 @@ ce ne sono dietro ogni riga lo indicano le tabelle stesse.
 Il divario fra i due parchi si vede in ogni mese misurato. Solo a dicembre, di
 cui abbiamo soltanto gli ultimi giorni del 2025, i tempi di attesa tipici si
 sono pareggiati, e anche allora il livello di affollamento era più alto ad
-Adventure World. C’entra poco la popolarità e molto l’aritmetica: per il 2024 la
+Adventure World. Per il 2024 la
 TEA ha contato 10,2 milioni di visite al Disneyland Park e 5,5 milioni al
 secondo parco. Ogni visitatore viene contato solo nel parco in cui entra per
 primo; chi cambia a mezzogiorno nel secondo numero non compare affatto. Più di
@@ -266,8 +264,9 @@ Ecco come si distribuisce una giornata al Disneyland Park nell’arco delle ore:
 
 ```
 
-Disneyland Paris è aperto tutto l’anno, ogni giorno, e quindi non conosce la
-classica domanda sulla bassa stagione che nei parchi stagionali decide tutto. A
+Disneyland Paris è aperto tutto l’anno, ogni giorno, e quindi qui la classica
+domanda sulla bassa stagione, che nei parchi stagionali decide tutto, non si
+pone. A
 determinare l’affollamento sono invece le vacanze scolastiche francesi, che
 cadono in periodi diversi da quelle tedesche e d’inverno e in primavera sono
 scaglionate su tre zone, più le settimane di half-term britanniche.
@@ -280,10 +279,10 @@ World: World of Frozen riceve addobbi natalizi in stile scandinavo e spettacoli
 propri con Anna, Elsa e Olaf. A Capodanno ciascuno dei due parchi festeggia con
 un programma suo.
 
-La curva dei giorni della settimana qui sopra è piatta, e c’è un motivo: un parco aperto 365 giorni all’anno e
-pubblicizzato in una mezza dozzina di paesi non ha un martedì morto su cui
-rifugiarsi. Quali fra le prossime settimane siano comunque le più tranquille,
-lo dice questo calendario, ricalcolato di continuo:
+La curva dei giorni della settimana qui sopra è piatta, perché un parco aperto
+365 giorni all’anno e pubblicizzato in una mezza dozzina di paesi non ha un martedì morto su cui
+rifugiarsi. Quali fra le prossime settimane siano comunque le più tranquille
+sta in questo calendario, ricalcolato di continuo:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -325,9 +324,8 @@ solito un’ora. Per questo Peter Pan ha già una coda lunga quando apre per tut
 e secondo la nostra tabella oraria si accorcia davvero solo nell’ultima ora
 prima della chiusura. Big Thunder Mountain, Hyperspace Mountain e Indiana Jones
 hanno invece code molto più corte subito dopo l’apertura che a mezzogiorno.
-Comincia quindi da lì e tieni Peter Pan per la sera. L’ora di pranzo non va bene
-per nessuna: tutte e otto le attrazioni della tabella oraria hanno la coda più
-lunga fra le 12 e le 14.
+Comincia quindi da lì e tieni Peter Pan per la sera. Fra le 12 e le 14 tutte
+e otto le attrazioni della tabella oraria hanno la coda più lunga.
 
 E se prenoti entrambi i parchi, inverti l’ordine consueto e parti da Adventure
 World, dove la nostra analisi del rope drop indica per Ratatouille e per il
@@ -378,7 +376,7 @@ mezzogiorno, non il contrario.
 
 A Disney Adventure World, e nei nostri dati (190 giorni misurati al 25
 settembre 2026) vale per ogni mese rilevato e ogni giorno della settimana. Il
-motivo è la capacità: il parco più piccolo riceve più della metà delle visite
+parco più piccolo riceve più della metà delle visite
 di quello grande, ma ha meno della metà delle sue attrazioni. I valori
 aggiornati per entrambi sono nella tabella di confronto più in alto.
 

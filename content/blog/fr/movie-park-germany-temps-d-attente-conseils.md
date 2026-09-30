@@ -91,8 +91,7 @@ Il est resté huit ans. En octobre 1999, Time Warner a vendu 97 pour cent à
 Américains ont cédé leur activité européenne au fonds **Palamon Capital
 Partners**, et cette vente a mis fin aux contrats de licence. Durant l’hiver
 2004/05, le parc a dû rebaptiser pratiquement tout ce qui portait un nom issu
-d’un film Warner, un déménagement où l’on garde les meubles et où l’on change
-seulement le nom sur la boîte aux lettres. En mars 2005, il a rouvert sous le nom de **Movie Park
+d’un film Warner. En mars 2005, il a rouvert sous le nom de **Movie Park
 Germany**. Cinq ans plus tard, le 17 mai 2010, l’exploitant espagnol **Parques
 Reunidos** a repris les rênes. Ce groupe madrilène appartient depuis 2019
 majoritairement au fonds suédois EQT, qui veut désormais le vendre d’un bloc,
@@ -127,8 +126,7 @@ baisse de fréquentation des parcs frères en Espagne et en Italie. Sur cette pe
 
 Cette histoire explique la réputation que le Movie Park garde aujourd’hui encore
 dans le milieu des amateurs de montagnes russes. Qui l’a visité entre 2012 et
-2016 a vu un parc où, à part The Lost Temple (2014), peu de choses bougeaient, un peu comme un cinéma qui affiche
-encore dans son hall les films qu’il n’a plus le droit de projeter.
+2016 a vu un parc où, à part The Lost Temple (2014), peu de choses bougeaient.
 
 ## L’histoire du cinéma qu’il raconte à la place
 
@@ -156,9 +154,8 @@ voie.
 Douze scènes racontent l’histoire du parc lui-même. On traverse des archives
 cinématographiques, le service des effets spéciaux, le service du son, un atelier
 de maquettes, et partout se cachent des clins d’œil à des attractions qui ont
-existé ici. King Kong happe le train au passage. Le parc l’a ouverte pour ses
-propres 25 ans : pour son anniversaire, il s’est offert une montagne russe sur
-lui-même.
+existé ici. King Kong happe le train au passage. Le parc l’a ouverte l’année
+de ses 25 ans.
 
 ![La maquette d’un parc sur un établi, à côté des plans enroulés et un mug de café | Une des douze scènes : l’atelier de maquettes, où le terrain du parc est posé sur la table, hall et parking compris. | wide](/media/movie-park-germany/movie-park-studio-tour.jpg)
 
@@ -240,8 +237,7 @@ en pin et en pin d’Oregon durant l’hiver 2015/16.
 
 Elle secoue. Après 27 ans, elle est bruyante et rude, un peu plus supportable à
 l’arrière du train qu’à l’avant, et chez moi le deuxième tour suffit à donner mal
-à la tête. Une fois, ça se fait quand même, comme la visite obligée à la grand-tante :
-elle compte trop dans l’histoire des montagnes russes allemandes pour qu’on
+à la tête. Une fois, ça se fait quand même, parce qu’elle compte trop dans l’histoire des montagnes russes allemandes pour qu’on
 fasse l’impasse. Qui prend Colossos au
 [Heide-Park](ref:heide-park) comme référence s’en tiendra à cette seule fois.
 
@@ -249,7 +245,7 @@ fasse l’impasse. Qui prend Colossos au
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** est
 l’attraction où l’on attend le plus longtemps dans ce parc, et sur le papier,
-ses chiffres ressemblent à ceux d’un manège pour goûter d’anniversaire. Ouverte le **18 juin 2011**, un bobsled coaster de
+ses chiffres sont ceux d’une attraction familiale. Ouverte le **18 juin 2011**, un bobsled coaster de
 **Gerstlauer** dans l’ancien hall des Gremlins, 3 000 mètres carrés, huit mètres
 de haut, 400 mètres de long, **36 km/h**. Le directeur du parc, Wouter Dekkers, a
 présenté l’idée aux nouveaux propriétaires un mois après la reprise, et Parques
@@ -261,8 +257,8 @@ Reunidos a débloqué cinq millions d’euros pour cela.
 
 On roule dans des voitures individuelles de quatre personnes, entièrement dans le
 noir, à travers l’atelier d’un chasseur de vampires dans un style années
-soixante. De l’extérieur, le bâtiment ressemble à un garage américain. Le rail
-est rempli, ce qui rend l’ensemble étonnamment silencieux à l’intérieur, et le
+soixante. De l’extérieur, le bâtiment ressemble à un garage américain. Comme le rail
+est rempli, l’ensemble est étonnamment silencieux à l’intérieur. Le
 deuxième lift tire avec des roues à friction, si bien que la voiture accélère en
 montant.
 
@@ -373,8 +369,7 @@ Les dix attractions où l’on attend le plus longtemps :
 
 ```
 
-Tout en haut, ce n’est pas une montagne russe à 90 km/h, mais un parcours en
-intérieur à 36. Van Helsing’s Factory a la médiane la plus élevée du parc, et
+Tout en haut se trouve un parcours en intérieur à 36 km/h. Van Helsing’s Factory a la médiane la plus élevée du parc, et
 derrière elle plusieurs attractions sont à égalité, dont la bûche de l’espace
 enfants. Star Trek, la plus grande attraction du parc, se situe dans le ventre
 du classement.
@@ -417,10 +412,10 @@ meilleur coaster de la région, mais un jour ordinaire on y fait plus
 d’attractions.
 
 > [!NOTE]
-> Une limite qui compte particulièrement pour ce parc. Notre historique commence
+> Notre historique commence
 > en décembre 2025, et au 25 septembre 2026 il ne contient **encore aucun jour
 > d’octobre ni de novembre**, ni aucune soirée du Halloween Horror Festival. Ce
-> que le calendrier plus bas montre pour l’automne est une prévision, pas une
+> qui figure pour l’automne dans le calendrier plus bas est une prévision, pas une
 > mesure.
 
 ## Quand y aller, et le calendrier à partir de septembre
@@ -441,8 +436,8 @@ deux sont mesurés à peu près aussi souvent chez nous, donc directement
 comparables. Sauf que le dimanche ne fait pas partie des jours chargés, et que le
 samedi n’est pas le jour le plus chargé de la semaine.
 
-Le lundi et le mardi, eux, ne se comparent pas ainsi, et le nombre de jours
-mesurés dit pourquoi. Hors vacances scolaires, le parc est le plus souvent fermé
+Le lundi et le mardi, eux, ne se comparent pas ainsi, et la raison tient au nombre de
+jours mesurés. Hors vacances scolaires, le parc est le plus souvent fermé
 ces jours-là, donc nos lundis et mardis proviennent presque exclusivement des
 vacances, surtout des vacances d’été, et les jours de vacances d’été sont les
 plus chargés de l’année. Sur la
@@ -459,8 +454,7 @@ en tête.
 À l’[Europa-Park](ref:europa-park), le dimanche est même le jour le plus vide,
 mais pour la raison inverse : Rust vit de clients d’hôtel qui arrivent le samedi
 et repartent le dimanche, comme on peut le lire dans le
-[guide Europa-Park](/blog/europa-park-temps-d-attente-conseils). Le même jour de
-la semaine, deux raisons différentes. Au [Heide-Park](ref:heide-park), qui
+[guide Europa-Park](/blog/europa-park-temps-d-attente-conseils). Au [Heide-Park](ref:heide-park), qui
 ressemble structurellement au Movie Park, la semaine a d’ailleurs presque la même
 allure, calculs à l’appui dans le
 [guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).
@@ -501,7 +495,7 @@ Les plus calmes des prochains jours d’ouverture selon notre calendrier :
 ```
 
 D’avril à juin, chaque mois porte une vingtaine à vingt-cinq jours mesurés,
-juillet et août quelques-uns de plus. Ces cinq mois sont solides, et ils disent
+juillet et août quelques-uns de plus. Ces cinq mois sont solides, et on y lit
 ce que devine quiconque a déjà cherché une place sur un parking en août :
 pendant les vacances d’été, c’est chargé.
 
@@ -542,8 +536,7 @@ placent publiquement, une journée, contre l’exclusion.
 
 Ce que tout cela vaut face à Traumatica, Walibi et Toverland, quelles maisons
 coûtent combien et où ça fait vraiment mal, c’est détaillé dans notre
-[guide Halloween 2026](/blog/halloween-parcs-attractions-2026). Ici seulement les
-deux points qui concernent la visite du parc elle-même.
+[guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
 
 **Premièrement :** les mazes ne sont pas comprises dans le billet journée et se
 réservent séparément, avec un créneau fixe. Qui veut faire les neuf compare au
@@ -557,8 +550,8 @@ sans tronçonneuse. À partir du début de soirée, les comédiens circulent dan
 parc, et les scare zones ne sont expressément pas faites pour des enfants de six
 ans. Qui est là avec des enfants de primaire prévoit le départ à l’avance.
 
-Une soirée d’Halloween vous offre par ailleurs presque la plus longue journée de
-parc de l’année. Le parc reste alors ouvert jusqu’à 22 heures le vendredi et le
+Un soir d’Halloween, la journée de parc est par ailleurs presque la plus longue
+de l’année. Le parc reste alors ouvert jusqu’à 22 heures le vendredi et le
 samedi, jusqu’à 21 heures le dimanche, le billet journée reste valable, et cela
 fait jusqu’à douze heures d’affilée. Seul le jour de l’anniversaire, en
 juillet, le parc est resté ouvert plus tard.
@@ -583,8 +576,8 @@ parce que les trois se remplissent en fin d’après-midi.
 **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** se
 gardent pour l’après-midi, toutes deux sont au plus court vers quinze heures.
 **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-et les spectacles se prennent entre deux, ils tournent à intervalles fixes et se
-moquent bien de l’affluence du moment.
+et les spectacles se prennent entre deux, ils tournent à intervalles fixes, quelle
+que soit l’affluence du moment.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** se fait si vous
 l’osez, et la dernière heure revient encore une fois à Star Trek, un soir
 d’Halloween dans le noir plus encore.
@@ -689,7 +682,7 @@ l’entrée principale. Rejoindre un parc d’attractions allemand sans
 voiture est autrement une affaire de toute une journée. Ici, c’est un train
 régional et cinq minutes à pied.
 
-**Restauration.** Je fais court : pizza et pâtes, depuis 2024 à volonté à la
+**Restauration.** Pizza et pâtes, depuis 2024 à volonté à la
 Trattoria Hollywood, plus des burgers, des frites et une boulangerie. Pour ce qui
 arrive dans l’assiette, je trouve les prix élevés, et je mange ici le plus vite
 possible.

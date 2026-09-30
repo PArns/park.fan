@@ -231,8 +231,8 @@ carries the reasoning, the measurements and the counter-examples.
 
 - **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md)** — see _Applies to every change_ above. The full rulebook is
   [docs/blog.md](docs/blog.md).
-- **[Blog writing style](docs/rules/blog-writing-style.md)** — never „ehrlich" in any form, no em dash in German running text, and check
-  the article before correcting one in (**das** Efteling).
+- **[Blog writing style](docs/rules/blog-writing-style.md)** — merged into [docs/blog.md](docs/blog.md); the page lists
+  where each of its old rules now lives.
 - **[A wait time is never typed into a post](docs/rules/a-wait-time-is-never-typed-into-a-post.md)** — every such table is a fence (`ride-waits-widget`,
   `hourly-profile-widget`). A sentence next to a widget must not name a figure the widget renders.
 - **[Park/Ride page ↔ blog link](docs/rules/parkride-page-and-blog-link.md)** — the relation is derived from the post itself; `parkLinks` and

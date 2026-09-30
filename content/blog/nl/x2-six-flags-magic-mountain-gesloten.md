@@ -172,8 +172,8 @@ parcours is 1.100 meter lang.
 
 ## De geschiedenis van X2
 
-Alan Schilke had het idee al als kind: een achtbaan die zijn passagiers over de
-kop laat gaan zoals de Zipper op de kermis, waarvan de gondels vrij om hun eigen
+Alan Schilke had al als kind het idee voor een achtbaan die zijn passagiers over
+de kop laat gaan zoals de Zipper op de kermis, waarvan de gondels vrij om hun eigen
 as draaien. Bij Arrow Dynamics, waar hij het tot hoofdingenieur schopte, maakte
 hij er een animatie van een wagen die een achterwaartse salto maakt. Collega’s
 vonden dat te extreem en niet te bouwen, en volgens Schilke lag de animatie
