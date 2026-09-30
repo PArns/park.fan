@@ -26,7 +26,7 @@
  * 217 strings across six locales carry an em dash, and the count may go down but never up. That
  * keeps a green check honest instead of quarantining the debt out of sight.
  *
- * What this cannot see, and what the read-aloud pass in docs/blog.md §7 is still for: whether a
+ * What this cannot see, and what the review pass in docs/blog.md §7.2 is still for: whether a
  * sentence claims anything (§1.7), whether a closer is decoration (§2.8), and whether six
  * captions in a row have the same skeleton (§5.2). Those are the expensive ones.
  */
@@ -47,6 +47,10 @@ const UI_EM_DASH_BASELINE = { de: 0, en: 27, es: 0, fr: 0, it: 0, nl: 0 };
 const MIN_BURSTINESS = 0.4;
 /** Negative parallelisms (`nicht … sondern`, `not just … but`) per 1,000 words. */
 const MAX_PARALLELISM_PER_1K = 1.5;
+/** Exclamation marks per 1,000 words of a post (§4.5). Enthusiasm comes from the words. */
+const MAX_EXCLAMATIONS_PER_1K = 1;
+/** A sentence this short, three times in a row inside one paragraph, is staccato (§2.10). */
+const STACCATO_MAX_WORDS = 5;
 
 const BLOG = 'content/blog';
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -101,7 +105,23 @@ const WATCH = [
   },
   {
     what: 'AI vocabulary (§3)',
-    re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora)\b/gi,
+    re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora|multifaceted|groundbreaking|game-?chang\w*|transformative|unprecedented|aforementioned|spearhead\w*|encompass\w*|endeavou?rs?|synerg\w*|in essence|rest assured|it goes without saying|thought leader\w*)\b/gi,
+  },
+  {
+    what: 'stock phrase (§3)',
+    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b/gi,
+  },
+  {
+    what: 'mechanical opener (§2.7)',
+    re: /(?<=^|[.!?]\s+)(?:(?:moreover|furthermore|additionally|interestingly|notably|importantly|indeed|certainly|absolutely),|(?:darüber hinaus|des weiteren|interessanterweise|bemerkenswerterweise|letztendlich)\b)/gim,
+  },
+  {
+    what: 'credential opener (§1.4)',
+    re: /(?<=^|[.!?]\s+)(?:als (?:langj[äa]hrige[rs]?|erfahrene[rs]?|leidenschaftliche[rs]?|begeisterte[rs]?) |as an? (?:long-?time|seasoned|passionate|lifelong|avid) )/gim,
+  },
+  {
+    what: 'question set-up (§2.12)',
+    re: /(?<=^|[.!?]\s+)(?:das ergebnis|die antwort|der grund|der haken|the result|the answer|the reason|the catch)\?/gim,
   },
 ];
 
@@ -127,13 +147,95 @@ function postBody(raw) {
     .replace(/[*_`]/g, '');
 }
 
-function sentences(text) {
+/*
+ * A German ordinal ends in a full stop that ends no sentence: `27. September`, `am 5. und am
+ * 11. Juli`, `auf einem geteilten 41. Platz`. Until 2026-09-30 every date in a post was split
+ * into two or three "sentences" of one word, which fed the burstiness figure fragments and made
+ * every event calendar read as staccato.
+ */
+const ORDINAL_FOLLOWERS =
+  'Januar|Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember|Jahrhundert|Platz|Mal|Geburtstag|Stock|Klasse';
+const ORDINAL = new RegExp(
+  `\\b(\\d{1,4})\\.(?=,|\\s+(?:[a-zäöü(–-]|(?:${ORDINAL_FOLLOWERS})\\b))`,
+  'g'
+);
+
+function splitSentences(text) {
   const t = text
     .replace(/\s+/g, ' ')
     .replace(/(\d)\.(\d)/g, '$1_$2')
+    .replace(ORDINAL, '$1_')
+    // Weekday abbreviations in a French, Spanish or Italian date list: `sam. 17, sáb. 24`.
+    .replace(/\b(lun|mar|mer|jeu|ven|sam|dim|mié|jue|vie|sáb|dom|gio|sab)\.(?=\s*\d)/gi, '$1')
     .replace(/\b([A-ZÄÖÜ])\./g, '$1_')
     .replace(/\b(z\. ?B|u\. ?a|ca|bzw|evtl|inkl|ggf|Nr|St|Mr|Mrs|Dr|vs|etc)\./gi, '$1');
-  return t.split(/(?<=[.!?])\s+/).filter((s) => s.trim().split(/\s+/).length >= 3);
+  return t.split(/(?<=[.!?])\s+/).filter((s) => s.trim());
+}
+
+function sentences(text) {
+  return splitSentences(text).filter((s) => s.trim().split(/\s+/).length >= 3);
+}
+
+/** Three or more very short sentences in a row, inside one paragraph of running prose (§2.10). */
+function staccatoRuns(body) {
+  const runs = [];
+  for (const paragraph of body.split(/\n\s*\n/)) {
+    const p = paragraph.trim();
+    // A list item or a quotation is not running prose, and someone else's rhythm is theirs.
+    if (!p || /^([-+]|\d+\.|>)\s/.test(p)) continue;
+    let run = [];
+    for (const s of splitSentences(p)) {
+      if (s.trim().split(/\s+/).length > STACCATO_MAX_WORDS) {
+        run = [];
+        continue;
+      }
+      run.push(s.trim());
+      if (run.length === 3) runs.push(run.join(' '));
+    }
+  }
+  return runs;
+}
+
+/** A `> [!QUOTE]` block whose last paragraph is not a source line (docs/rules/a-quote-names-its-source.md). */
+function unsourcedQuotes(raw) {
+  const out = [];
+  for (const block of raw.match(/(?:^>.*(?:\n|$))+/gm) ?? []) {
+    const text = block.replace(/^>[ \t]?/gm, '');
+    if (!/^\[!QUOTE\]/.test(text)) continue;
+    const paragraphs = text
+      .replace(/^\[!QUOTE\][ \t]*/, '')
+      .split(/\n\s*\n/)
+      .filter((p) => p.trim());
+    if (paragraphs.length < 2)
+      out.push((paragraphs[0] ?? '').replace(/\s+/g, ' ').trim().slice(0, 60));
+  }
+  return out;
+}
+
+/**
+ * The frontmatter strings that leave the page as plain text: the card, the feed item, the
+ * `<title>`, the search snippet, the cover's alt and caption (§4.5). Markdown there reaches the
+ * reader as asterisks.
+ */
+function plainTextFields(raw) {
+  const lines = (raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '').split('\n');
+  const out = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^(\s*)(title|excerpt|description|alt|caption):\s*(.*)$/);
+    if (!m) continue;
+    let value = m[3];
+    if (/^[>|]-?$/.test(value)) {
+      value = '';
+      while (
+        i + 1 < lines.length &&
+        lines[i + 1].trim() &&
+        lines[i + 1].match(/^\s*/)[0].length > m[1].length
+      )
+        value += ` ${lines[++i].trim()}`;
+    }
+    out.push([m[2], value.trim().replace(/^(['"])(.*)\1$/, '$2')]);
+  }
+  return out;
 }
 
 function burstiness(lengths) {
@@ -204,7 +306,35 @@ for (const locale of LOCALES) {
 
     scan(file, body);
 
+    for (const [field, value] of plainTextFields(raw)) {
+      if (value.includes('—')) fail(file, `${field}: em dash (§4.1)`);
+      if (/\*\*|__|`|\]\(|^#/.test(value))
+        fail(file, `${field}: Markdown in a plain-text field (§4.5) — "${value.slice(0, 60)}"`);
+    }
+
+    for (const quote of unsourcedQuotes(raw))
+      fail(
+        file,
+        `[!QUOTE] without a source line (docs/rules/a-quote-names-its-source.md): "${quote}"`
+      );
+
     const words = body.trim().split(/\s+/).length;
+
+    const ellipses = (body.replace(/\[(…|\.\.\.)\]/g, '').match(/…|\.\.\./g) ?? []).length;
+    if (ellipses > 1)
+      warn(file, `${ellipses} ellipses (§4.5, one per post; "[…]" in a quote is exempt)`);
+
+    const bangs = (body.replace(/\[![A-Z]+\]/g, '').match(/!/g) ?? []).length;
+    if ((bangs / words) * 1000 > MAX_EXCLAMATIONS_PER_1K)
+      warn(
+        file,
+        `${bangs} exclamation mark(s) in ${words} words (§4.5, budget ${MAX_EXCLAMATIONS_PER_1K}/1k)`
+      );
+
+    const staccato = staccatoRuns(body);
+    if (staccato.length)
+      warn(file, `staccato (§2.10), ${staccato.length}×: "${staccato[0].slice(0, 90)}"`);
+
     const parallel = (body.match(PARALLELISM) ?? []).length;
     const per1k = (parallel / words) * 1000;
     if (per1k > MAX_PARALLELISM_PER_1K)
