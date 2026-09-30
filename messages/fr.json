@@ -2030,6 +2030,7 @@
     "readingTime": "{minutes} min de lecture",
     "updatedOn": "Mis à jour le {date}",
     "correction": "Correction",
+    "quoteOriginal": "Version originale en {language}",
     "languageNotice": {
       "available": "Cet article est aussi disponible en {language}",
       "fallback": "Pas encore traduit – version en {language} affichée."

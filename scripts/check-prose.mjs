@@ -26,7 +26,7 @@
  * 217 strings across six locales carry an em dash, and the count may go down but never up. That
  * keeps a green check honest instead of quarantining the debt out of sight.
  *
- * What this cannot see, and what the read-aloud pass in docs/blog.md §7 is still for: whether a
+ * What this cannot see, and what the review pass in docs/blog.md §7.2 is still for: whether a
  * sentence claims anything (§1.7), whether a closer is decoration (§2.8), and whether six
  * captions in a row have the same skeleton (§5.2). Those are the expensive ones.
  */
@@ -47,6 +47,16 @@ const UI_EM_DASH_BASELINE = { de: 0, en: 27, es: 0, fr: 0, it: 0, nl: 0 };
 const MIN_BURSTINESS = 0.4;
 /** Negative parallelisms (`nicht … sondern`, `not just … but`) per 1,000 words. */
 const MAX_PARALLELISM_PER_1K = 1.5;
+/** Exclamation marks per 1,000 words of a post (§4.5). Enthusiasm comes from the words. */
+const MAX_EXCLAMATIONS_PER_1K = 1;
+/** A sentence this short, three times in a row inside one paragraph, is staccato (§2.10). */
+const STACCATO_MAX_WORDS = 5;
+/** The product as the subject of the text, per 1,000 words (§2.13). The planner page read 8.8. */
+const MAX_PRODUCT_SUBJECT_PER_1K = 6;
+/** Negations per 100 words (§2.14). The German median is 1.2; the planner page read 2.8. */
+const MAX_NEGATIONS_PER_100 = 2;
+/** `X heißt: …` / `X means: …` per text (§2.15). */
+const MAX_DEFINITION_COLONS = 2;
 
 const BLOG = 'content/blog';
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -73,7 +83,7 @@ const CHAT_RESIDUE =
 const WATCH = [
   {
     what: 'the sign at the entrance (§3.3)',
-    re: /\b(das schild|the sign|het bord|le panneau|el cartel|il cartello)\b/gi,
+    re: /\b((?:das|ein|dem|den|am|vom|beim) schild|the sign|het bord|le panneau|el cartel|il cartello)\b/gi,
   },
   {
     what: 'summary formula (§1.5)',
@@ -101,11 +111,167 @@ const WATCH = [
   },
   {
     what: 'AI vocabulary (§3)',
-    re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora)\b/gi,
+    re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora|multifaceted|groundbreaking|game-?chang\w*|transformative|unprecedented|aforementioned|spearhead\w*|encompass\w*|endeavou?rs?|synerg\w*|in essence|rest assured|it goes without saying|thought leader\w*)\b/gi,
+  },
+  {
+    what: 'stock phrase (§3)',
+    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b/gi,
+  },
+  {
+    what: 'mechanical opener (§2.7)',
+    re: /(?<=^|[.!?]\s+)(?:(?:moreover|furthermore|additionally|interestingly|notably|importantly|indeed|certainly|absolutely),|(?:darüber hinaus|des weiteren|interessanterweise|bemerkenswerterweise|letztendlich)\b)/gim,
+  },
+  {
+    what: 'credential opener (§1.4)',
+    re: /(?<=^|[.!?]\s+)(?:als (?:langj[äa]hrige[rs]?|erfahrene[rs]?|leidenschaftliche[rs]?|begeisterte[rs]?) |as an? (?:long-?time|seasoned|passionate|lifelong|avid) )/gim,
+  },
+  {
+    what: 'question set-up (§2.12)',
+    re: /(?<=^|[.!?]\s+)(?:das ergebnis|die antwort|der grund|der haken|the result|the answer|the reason|the catch)\?/gim,
   },
 ];
 
 const PARALLELISM = /\bsondern\b|\bnot (just|only|merely)\b[^.!?]{0,60}\bbut\b/gi;
+
+/** Our own features as grammatical subject: `der Planer kennt`, `the planner says` (§2.13). */
+const PRODUCT_SUBJECT =
+  /\b(?:der|dem|den|des) (?:planer|tagesplaners?|kompass|assistent\w*)\b|\bthe (?:planner|compass|assistant)\b/gi;
+const NEGATION = {
+  de: /\b(nicht|nichts|kein\w*|nie|niemals)\b/gi,
+  en: /\b(not|no|never|nothing|none|isn'?t|doesn'?t|don'?t|won'?t|can'?t)\b/gi,
+};
+const DEFINITION_COLON = /\b(hei(?:ß|ss)t|bedeutet|means)\s*:/gi;
+
+/**
+ * Three habits of explanatory copy that a regex can count but not judge (§2.13–§2.15): the
+ * product as protagonist, a text that keeps saying what something does not do, and a run of
+ * `X heißt: …` definitions. All three were measured on the planner page before they were rules.
+ */
+function explainerHabits(file, text, locale) {
+  const words = text.trim().split(/\s+/).length;
+  if (words < 300) return;
+  const product = (text.match(PRODUCT_SUBJECT) ?? []).length;
+  if ((product / words) * 1000 > MAX_PRODUCT_SUBJECT_PER_1K)
+    warn(
+      file,
+      `the product as protagonist (§2.13): ${product}× in ${words} words, budget ${MAX_PRODUCT_SUBJECT_PER_1K}/1k`
+    );
+  const negation = NEGATION[locale];
+  if (negation) {
+    const n = (text.match(negation) ?? []).length;
+    if ((n / words) * 100 > MAX_NEGATIONS_PER_100)
+      warn(
+        file,
+        `${((n / words) * 100).toFixed(1)} negations per 100 words (§2.14, budget ${MAX_NEGATIONS_PER_100})`
+      );
+  }
+  const definitions = (text.match(DEFINITION_COLON) ?? []).length;
+  if (definitions > MAX_DEFINITION_COLONS)
+    warn(file, `${definitions} "X heißt:" definitions (§2.15, at most ${MAX_DEFINITION_COLONS})`);
+}
+
+/*
+ * A heading and the line under it (§5.6). One tell is strong enough on its own: a heading that
+ * asks a question and then gives an order (`Welche Bahnen darf mein Kind fahren? Nach Körpergröße
+ * nachsehen`). The rest are weak and only count when two sit in the same group of strings:
+ * the reader's own voice in the heading, a dek that repeats the heading, copy that describes the
+ * site instead of the thing, a dek that opens on something everybody knows, and a qualifier
+ * tacked on after the sentence was finished. The homepage block that prompted this carried six.
+ */
+const HEADING_KEY = /(^|\.)(title|heading|headline)$/i;
+const DEK_KEY = /(^|\.)(lead|subtitle|intro|dek|teaser|tagline|body|text)$/i;
+/** A question, then a fragment that is not a sentence: `Sind 70 Minuten viel? Kommt drauf an …`. */
+const QUESTION_THEN_FRAGMENT = /\?\s+(\S[^?]*[^.?!:…])$/;
+/** …and the fragment is an order: a German infinitive at the end, or a call-to-action verb up front. */
+const ORDER_FIRST_WORD =
+  /^(check|find|see|discover|explore|look|plan|compare|browse|get|start|learn|try|bekijk|kijk|zoek|vind|ontdek|vergelijk|vérifiez|vérifier|voir|voyez|trouvez|trouver|découvrez|découvrir|consultez|consulter|comparez|consulta|consultar|mira|busca|buscar|descubre|descubrir|compara|controlla|controllare|guarda|vedi|trova|trovare|scopri|scoprire|confronta)\b/i;
+function headingTell(heading) {
+  const m = heading.trim().match(QUESTION_THEN_FRAGMENT);
+  if (!m) return null;
+  const words = m[1].trim().split(/\s+/);
+  const germanInfinitive = words.length <= 6 && /^[a-zäöüß]+en$/.test(words.at(-1));
+  // `À vérifier …`, `Da controllare …`, `Comprobarlo …`: the Romance infinitive of an instruction.
+  const romanceInfinitive =
+    /^(à|da)\s+\p{L}+(er|ir|re|are|ere|ire)\b/iu.test(m[1].trim()) ||
+    /^\p{L}+(ar|er|ir)(lo|la|los|las)$/iu.test(words[0]);
+  return germanInfinitive || romanceInfinitive || ORDER_FIRST_WORD.test(words[0])
+    ? 'order'
+    : 'answer';
+}
+/*
+ * The slogan heading (§4.3): two halves around a comma that mirror each other (`Parks ohne Zahlen,
+ * Tage ohne Wetter`, `Der Park macht um neun auf, die Bahn um zehn`), or a comparison where a name
+ * belongs (`Ein Block pro Bahn, so hoch wie ihre Schlange`). Measured on 2,565 headings on
+ * 2026-09-30: the only hits were the planner page's.
+ */
+const MIRROR_WORD =
+  /^(ohne|mit|um|pro|für|statt|vor|nach|bis|ab|von|aus|without|with|for|per|at|until|from|zonder|met|voor|sans|avec|pour|sin|con|para|senza|per)$/i;
+function sloganTell(heading) {
+  const text = heading.trim();
+  if (/\b(so|genauso|ebenso) \p{L}+ wie\b|\bas \p{L}+ as\b/iu.test(text)) return 'a comparison';
+  const halves = text.split(/,\s+/);
+  if (halves.length !== 2) return null;
+  const [a, b] = halves.map((half) => half.toLowerCase().split(/\s+/));
+  const mirrored = a.find((word) => MIRROR_WORD.test(word) && b.includes(word));
+  return mirrored ? `two halves mirrored on "${mirrored}"` : null;
+}
+
+const headingCheck = (file, where, heading) => {
+  const slogan = sloganTell(heading);
+  if (slogan) warn(file, `${where}: a slogan, not a heading (§4.3), ${slogan} — "${heading}"`);
+  const tell = headingTell(heading);
+  if (tell === 'order')
+    fail(file, `${where}: a question followed by an order (§5.6) — "${heading}"`);
+  else if (tell === 'answer')
+    warn(file, `${where}: a question the heading answers itself (§2.12) — "${heading}"`);
+};
+const READER_VOICE =
+  /\b(mein|meine|meinem|meinen|meiner|ich|my|I|mijn|mon|ma|mes|mi|mis|mio|mia)\b/;
+const SELF_PAGE =
+  /\b(auf einer seite|(?:steht|stehen) auf dieser seite|diese seite zeigt|on one page|this page (?:shows|lists))\b/i;
+const TRUISM_OPENER = /^(jede[rs]?|alle|every|each|all) \p{L}+ /iu;
+const TACKED_ON =
+  /,\s(?:in|mit|nach|bei|für|auf|on|with|by|at)\s[^,.]{2,40},\s(?:die|der|das|which|that)\s[^,.]{2,50}\.$/i;
+const STOPWORDS = new Set(
+  'aber alle auch dass dein deine deinem deinen deiner diese diesem diesen dieser dieses doch eine einem einen einer eines euch hier ihre immer jede jedem jeden jeder jedes kann kein keine mehr nach nicht noch oder ohne sich sind über unter welche welchem welchen welcher welches wenn wird darf soll muss sein your the and for with from that this which what when where each every have into than then them they their about just only also more most some such'.split(
+    ' '
+  )
+);
+const stems = (text) =>
+  new Set(
+    (text.toLowerCase().match(/\p{L}{4,}/gu) ?? [])
+      .filter((w) => !STOPWORDS.has(w))
+      .map((w) => w.slice(0, 4))
+  );
+
+function headingTells(file, groups) {
+  for (const [group, entries] of groups) {
+    if (/(^|\.)(seo|meta)(\.|$)/i.test(group)) continue;
+    const heading = entries.find(([k]) => HEADING_KEY.test(k));
+    const tells = [];
+    if (heading) {
+      const [, h] = heading;
+      headingCheck(file, heading[0], h);
+      if (h.includes('?') && READER_VOICE.test(h)) tells.push('the reader’s voice in the heading');
+      const hs = stems(h);
+      for (const [k, v] of entries) {
+        if (!DEK_KEY.test(k) || hs.size < 2) continue;
+        const shared = [...stems(v)].filter((x) => hs.has(x));
+        if (shared.length >= 3 && shared.length / hs.size >= 0.5)
+          tells.push(`${k.split('.').pop()} repeats the heading`);
+      }
+    }
+    for (const [k, v] of entries) {
+      const text = v.trim();
+      if (SELF_PAGE.test(text)) tells.push(`${k.split('.').pop()} describes the page`);
+      if (DEK_KEY.test(k) && TRUISM_OPENER.test(text))
+        tells.push(`${k.split('.').pop()} opens on a truism`);
+      if (TACKED_ON.test(text)) tells.push(`${k.split('.').pop()} ends on a tacked-on qualifier`);
+    }
+    if (tells.length >= 2)
+      warn(file, `${group}: ${tells.length} heading/dek tells (§5.6): ${tells.join('; ')}`);
+  }
+}
 
 const errors = [];
 const warnings = [];
@@ -127,13 +293,106 @@ function postBody(raw) {
     .replace(/[*_`]/g, '');
 }
 
-function sentences(text) {
+/*
+ * A German ordinal ends in a full stop that ends no sentence: `27. September`, `am 5. und am
+ * 11. Juli`, `auf einem geteilten 41. Platz`. Until 2026-09-30 every date in a post was split
+ * into two or three "sentences" of one word, which fed the burstiness figure fragments and made
+ * every event calendar read as staccato.
+ */
+const ORDINAL_FOLLOWERS =
+  'Januar|Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember|Jahrhundert|Platz|Mal|Geburtstag|Stock|Klasse';
+const ORDINAL = new RegExp(
+  `\\b(\\d{1,4})\\.(?=,|\\s+(?:[a-zäöü(–-]|(?:${ORDINAL_FOLLOWERS})\\b))`,
+  'g'
+);
+
+function splitSentences(text) {
   const t = text
     .replace(/\s+/g, ' ')
     .replace(/(\d)\.(\d)/g, '$1_$2')
+    .replace(ORDINAL, '$1_')
+    // Weekday abbreviations in a French, Spanish or Italian date list: `sam. 17, sáb. 24`.
+    .replace(/\b(lun|mar|mer|jeu|ven|sam|dim|mié|jue|vie|sáb|dom|gio|sab)\.(?=\s*\d)/gi, '$1')
     .replace(/\b([A-ZÄÖÜ])\./g, '$1_')
     .replace(/\b(z\. ?B|u\. ?a|ca|bzw|evtl|inkl|ggf|Nr|St|Mr|Mrs|Dr|vs|etc)\./gi, '$1');
-  return t.split(/(?<=[.!?])\s+/).filter((s) => s.trim().split(/\s+/).length >= 3);
+  return t.split(/(?<=[.!?])\s+/).filter((s) => s.trim());
+}
+
+function sentences(text) {
+  return splitSentences(text).filter((s) => s.trim().split(/\s+/).length >= 3);
+}
+
+/** Three or more very short sentences in a row, inside one paragraph of running prose (§2.10). */
+function staccatoRuns(body) {
+  const runs = [];
+  for (const paragraph of body.split(/\n\s*\n/)) {
+    const p = paragraph.trim();
+    // A list item or a quotation is not running prose, and someone else's rhythm is theirs.
+    if (!p || /^([-+]|\d+\.|>)\s/.test(p)) continue;
+    let run = [];
+    for (const s of splitSentences(p)) {
+      if (s.trim().split(/\s+/).length > STACCATO_MAX_WORDS) {
+        run = [];
+        continue;
+      }
+      run.push(s.trim());
+      if (run.length === 3) runs.push(run.join(' '));
+    }
+  }
+  return runs;
+}
+
+/**
+ * `> [!QUOTE]` blocks with a problem (docs/rules/a-quote-names-its-source.md): no source line at
+ * all, or a source line that says the words were translated and no `[en] …` paragraph with the
+ * original. The original's paragraphs are neither the words nor the source.
+ */
+const ORIGINAL_PARAGRAPH = /^\[[a-z]{2}(?:-[A-Z]{2})?\]\s/;
+const TRANSLATED =
+  /(?<!\p{L})(übersetzt|translated|vertaald|traduit|traducid[oa]|tradott[oa])(?!\p{L})/iu;
+function quoteProblems(raw) {
+  const out = [];
+  for (const block of raw.match(/(?:^>.*(?:\n|$))+/gm) ?? []) {
+    const text = block.replace(/^>[ \t]?/gm, '');
+    if (!/^\[!QUOTE\]/.test(text)) continue;
+    const paragraphs = text
+      .replace(/^\[!QUOTE\][ \t]*/, '')
+      .split(/\n\s*\n/)
+      .map((p) => p.trim())
+      .filter(Boolean);
+    const own = paragraphs.filter((p) => !ORIGINAL_PARAGRAPH.test(p));
+    const start = (own[0] ?? '').replace(/\s+/g, ' ').slice(0, 60);
+    if (own.length < 2) out.push({ kind: 'unsourced', start });
+    else if (TRANSLATED.test(own.at(-1)) && own.length === paragraphs.length)
+      out.push({ kind: 'no original', start });
+  }
+  return out;
+}
+
+/**
+ * The frontmatter strings that leave the page as plain text: the card, the feed item, the
+ * `<title>`, the search snippet, the cover's alt and caption (§4.5). Markdown there reaches the
+ * reader as asterisks.
+ */
+function plainTextFields(raw) {
+  const lines = (raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '').split('\n');
+  const out = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^(\s*)(title|excerpt|description|alt|caption):\s*(.*)$/);
+    if (!m) continue;
+    let value = m[3];
+    if (/^[>|]-?$/.test(value)) {
+      value = '';
+      while (
+        i + 1 < lines.length &&
+        lines[i + 1].trim() &&
+        lines[i + 1].match(/^\s*/)[0].length > m[1].length
+      )
+        value += ` ${lines[++i].trim()}`;
+    }
+    out.push([m[2], value.trim().replace(/^(['"])(.*)\1$/, '$2')]);
+  }
+  return out;
 }
 
 function burstiness(lengths) {
@@ -204,7 +463,51 @@ for (const locale of LOCALES) {
 
     scan(file, body);
 
+    for (const [field, value] of plainTextFields(raw)) {
+      if (value.includes('—')) fail(file, `${field}: em dash (§4.1)`);
+      if (/\*\*|__|`|\]\(|^#/.test(value))
+        fail(file, `${field}: Markdown in a plain-text field (§4.5) — "${value.slice(0, 60)}"`);
+    }
+
+    for (const { kind, start } of quoteProblems(raw))
+      if (kind === 'unsourced')
+        fail(
+          file,
+          `[!QUOTE] without a source line (docs/rules/a-quote-names-its-source.md): "${start}"`
+        );
+      else
+        warn(
+          file,
+          `[!QUOTE] says it is translated and carries no "[en] …" original (docs/rules/a-quote-names-its-source.md): "${start}"`
+        );
+
     const words = body.trim().split(/\s+/).length;
+
+    const ellipses = (body.replace(/\[(…|\.\.\.)\]/g, '').match(/…|\.\.\./g) ?? []).length;
+    if (ellipses > 1)
+      warn(file, `${ellipses} ellipses (§4.5, one per post; "[…]" in a quote is exempt)`);
+
+    const bangs = (body.replace(/\[![A-Z]+\]/g, '').match(/!/g) ?? []).length;
+    if ((bangs / words) * 1000 > MAX_EXCLAMATIONS_PER_1K)
+      warn(
+        file,
+        `${bangs} exclamation mark(s) in ${words} words (§4.5, budget ${MAX_EXCLAMATIONS_PER_1K}/1k)`
+      );
+
+    explainerHabits(file, body, locale);
+
+    for (const heading of [
+      ...plainTextFields(raw)
+        .filter(([f]) => f === 'title')
+        .map(([, v]) => v),
+      ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]),
+    ])
+      headingCheck(file, 'heading', heading);
+
+    const staccato = staccatoRuns(body);
+    if (staccato.length)
+      warn(file, `staccato (§2.10), ${staccato.length}×: "${staccato[0].slice(0, 90)}"`);
+
     const parallel = (body.match(PARALLELISM) ?? []).length;
     const per1k = (parallel / words) * 1000;
     if (per1k > MAX_PARALLELISM_PER_1K)
@@ -271,6 +574,14 @@ for (const locale of LOCALES) {
     );
 
   scan(file, strings.map(([, v]) => v).join('\n'), { subject: 'us' });
+
+  const groups = new Map();
+  for (const [key, value] of strings) {
+    const parent = key.split('.').slice(0, -1).join('.');
+    if (!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push([key, value]);
+  }
+  headingTells(file, groups);
 }
 
 /* ------------------------------------------------------------------ media sidecars */
@@ -392,6 +703,8 @@ for (const [file, locale] of CONTENT_PAGES) {
 
   // A page is us talking about ourselves, same as a catalog string.
   scan(file, text, { subject: 'us' });
+  explainerHabits(file, text, locale);
+  for (const m of raw.matchAll(/\btitle="([^"]+)"/g)) headingCheck(file, 'title', m[1]);
 }
 
 /* ------------------------------------------------------------------ report */

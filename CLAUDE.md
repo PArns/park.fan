@@ -39,7 +39,8 @@ three lines, the rest belongs in the page.
   nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
 - **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
   posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
-  `pnpm check:prose` decides the half a machine can. Rules:
+  `pnpm check:prose` decides the half a machine can, a separate review pass
+  ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
   [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
   and [docs/blog.md](docs/blog.md).
 - **Six locales.** A new UI string needs all of them.
@@ -252,6 +253,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
   news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
+- **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
+  a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
+  A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
 
 ---
 
