@@ -61,7 +61,7 @@ zweiten Teil dieses Satzes kannst du nichts damit anfangen.
 
 park.fan legt neben jede große Bahn eines Parks zwei Vergleichswerte, gerechnet
 über die letzten 365 Tage. **Typisch** ist der Median der Tagesspitzen: An der
-Hälfte aller gemessenen Tage war die längste Schlange kürzer als dieser Wert, an
+Hälfte aller gemessenen Tage war die längste Warteschlange kürzer als dieser Wert, an
 der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also
 ungefähr der eine Tag von zehn, an dem richtig was los war. Auf der Seite der
 Bahn stehen beide für den heutigen Wochentag, darunter die ganze Woche Tag für
@@ -89,7 +89,7 @@ einer Ferienwohnung.
 
 ## Der Tag hat eine Form
 
-Eine Bahn hat nicht den ganzen Tag dieselbe Schlange. Die Grundbewegung kennt
+Eine Bahn hat nicht den ganzen Tag dieselbe Warteschlange. Die Grundbewegung kennt
 jeder: Zur Öffnung ist es kurz, dann ist der Rest der Welt mit dem Frühstück
 fertig, und gegen Abend wird es wieder erträglich. Wo genau der Höchststand liegt, ist pro Bahn verschieden, und
 diese Abweichungen sind der nützliche Teil.
@@ -105,7 +105,7 @@ schlagen das nur vor, wenn die Tagesspitze an einem gewöhnlichen Tag der letzte
 spart. Alles darunter wäre ein Tipp, der
 überall stünde und deshalb nirgends etwas wert wäre.
 
-Die zweite ist die ruhigere Alternative: die Uhrzeit, zu der die Schlange an
+Die zweite ist die ruhigere Alternative: die Uhrzeit, zu der die Warteschlange an
 dieser Bahn typischerweise am kürzesten ist. Liegt sie am Abend, muss man dafür
 nicht um sieben aufstehen. Beide Angaben stehen auf der Seite jeder großen Bahn,
 für die genug Messtage da sind, mit konkreter Uhrzeit in Parkzeit.

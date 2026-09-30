@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine separate Warteschlangenspur für Besucher, die bereit sind, allein zu fahren, um freie Plätze zu füllen.',
     definition:
-      'Die Single-Rider-Spur ist für alle, die bereit sind, getrennt von ihrer Gruppe zu fahren, und füllt die einzelnen freien Plätze in den Zügen auf. Weil solche Fahrgäste in Lücken einsortiert werden, geht es dort schneller voran als in der normalen Schlange – oft 50–70 % kürzere Wartezeiten. Nicht alle Attraktionen bieten Einzelfahrerzugang an.',
+      'Die Single-Rider-Spur ist für alle, die bereit sind, getrennt von ihrer Gruppe zu fahren, und füllt die einzelnen freien Plätze in den Zügen auf. Weil solche Fahrgäste in Lücken einsortiert werden, geht es dort schneller voran als in der normalen Warteschlange – oft 50–70 % kürzere Wartezeiten. Nicht alle Attraktionen bieten Einzelfahrerzugang an.',
     alternateNames: ['Single Rider Lane', 'Einzelfahrer', 'Single-Spur'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein digitales Warteschlangensystem, bei dem Besucher eine Fahrzeit reservieren, anstatt physisch zu warten.',
     definition:
-      'Eine virtuelle Warteschlange (manchmal auch als Boarding-Gruppe oder Rückkehrzeit bezeichnet) ermöglicht es Besuchern, sich über eine App oder einen Kiosk für eine Attraktion anzumelden und eine Benachrichtigung zu erhalten, wenn ihre Runde naht. Statt in der Schlange zu stehen, kann man in dieser Zeit woanders im Park unterwegs sein und kommt zurück, wenn die Gruppe aufgerufen wird.',
+      'Eine virtuelle Warteschlange (manchmal auch als Boarding-Gruppe oder Rückkehrzeit bezeichnet) ermöglicht es Besuchern, sich über eine App oder einen Kiosk für eine Attraktion anzumelden und eine Benachrichtigung zu erhalten, wenn ihre Runde naht. Statt in der Warteschlange zu stehen, kann man in dieser Zeit woanders im Park unterwegs sein und kommt zurück, wenn die Gruppe aufgerufen wird.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Virtuelle Warteschlangen'],
   },
@@ -51,7 +51,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Angezeigte Wartezeit',
     shortDefinition: 'Die offizielle Wartezeit, die der Park am Eingang einer Attraktion anzeigt.',
     definition:
-      'Die angezeigte Wartezeit ist die offizielle Schätzung, die am Eingang einer Attraktion und in der Park-App steht. Die Parks berechnen sie aus der gemessenen Länge der Schlange, dem bisherigen Durchsatz der Bahn und dem Tempo, mit dem gerade beladen wird. park.fan führt die angezeigten Wartezeiten aus mehreren öffentlichen Quellen alle fünf Minuten zusammen.',
+      'Die angezeigte Wartezeit ist die offizielle Schätzung, die am Eingang einer Attraktion und in der Park-App steht. Die Parks berechnen sie aus der gemessenen Länge der Warteschlange, dem bisherigen Durchsatz der Bahn und dem Tempo, mit dem gerade beladen wird. park.fan führt die angezeigten Wartezeiten aus mehreren öffentlichen Quellen alle fünf Minuten zusammen.',
     relatedTermIds: ['crowd-level', 'wait-time'],
     aliases: ['Angezeigte Wartezeit', 'Angezeigte Wartezeiten'],
   },
@@ -61,7 +61,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Maß dafür, wie voll ein Freizeitpark an einem bestimmten Tag ist, von Sehr Niedrig bis Extrem.',
     definition:
-      'Die Besucherdichte beschreibt, wie voll ein Park an einem bestimmten Tag oder zu einer bestimmten Uhrzeit ist. park.fan rechnet sie aus den gemessenen Wartezeiten, der aktuellen Auslastung und der Prognose und gibt sie auf einer Skala von „sehr niedrig“ bis „extrem“ aus. Sehr niedrig heißt kurze Schlangen und freie Wege; extrem heißt lange Wartezeiten an fast jeder Attraktion.',
+      'Die Besucherdichte beschreibt, wie voll ein Park an einem bestimmten Tag oder zu einer bestimmten Uhrzeit ist. park.fan rechnet sie aus den gemessenen Wartezeiten, der aktuellen Auslastung und der Prognose und gibt sie auf einer Skala von „sehr niedrig“ bis „extrem“ aus. Sehr niedrig heißt kurze Warteschlangen und freie Wege; extrem heißt lange Wartezeiten an fast jeder Attraktion.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Besucherdichten', 'Besucherandrang', 'Crowd Level'],
     alternateNames: ['Crowd Level', 'Crowd Levels', 'Besucherandrang'],
@@ -126,7 +126,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Der Moment der Parköffnung, wenn die Absperrung fällt und die Warteschlangen für beliebte Attraktionen am kürzesten sind.',
     definition:
-      'Rope Drop bezeichnet den Moment, in dem ein Freizeitpark für den Tag öffnet – benannt nach dem buchstäblichen Seil (oder Absperrband), das Parkmitarbeiter absenken, um die ersten Besucher einzulassen. Unter Freizeitpark-Fans ist das frühe Ankommen beim Rope Drop eine beliebte Strategie, da beliebte Attraktionen morgens die kürzesten Schlangen haben, bevor die Massen einströmen. Viele Parks bieten Hotelgästen zusätzlich einen Early Entry an, um bestimmte Attraktionen noch vor dem regulären Einlass zu nutzen. Der Zeitplan von park.fan zeigt genaue Öffnungszeiten.',
+      'Rope Drop bezeichnet den Moment, in dem ein Freizeitpark für den Tag öffnet – benannt nach dem buchstäblichen Seil (oder Absperrband), das Parkmitarbeiter absenken, um die ersten Besucher einzulassen. Unter Freizeitpark-Fans ist das frühe Ankommen beim Rope Drop eine beliebte Strategie, da beliebte Attraktionen morgens die kürzesten Warteschlangen haben, bevor die Massen einströmen. Viele Parks bieten Hotelgästen zusätzlich einen Early Entry an, um bestimmte Attraktionen noch vor dem regulären Einlass zu nutzen. Der Zeitplan von park.fan zeigt genaue Öffnungszeiten.',
     aliases: ['Rope-Drop'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 're-ride', 'wait-time'],
@@ -137,7 +137,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein exklusiver Vorteil für Hotelgäste, der den Parkeintritt vor der regulären Öffnung erlaubt.',
     definition:
-      'Früheinlass (auch "Extra Zauberzeit" bei Disney oder "Early Park Entry") ist ein Vorteil, der Gästen von Partnerhotels oder bestimmten Ticketkategorien ermöglicht, den Park eine halbe bis eine Stunde früher zu betreten. In dieser Zeit sind die Warteschlangen deutlich kürzer, da der Großteil der Besucher noch nicht eingelassen wird. An Spitzentagen ist der Früheinlass die Stunde, in der die Schlangen an den beliebten Bahnen noch kurz sind.',
+      'Früheinlass (auch "Extra Zauberzeit" bei Disney oder "Early Park Entry") ist ein Vorteil, der Gästen von Partnerhotels oder bestimmten Ticketkategorien ermöglicht, den Park eine halbe bis eine Stunde früher zu betreten. In dieser Zeit sind die Warteschlangen deutlich kürzer, da der Großteil der Besucher noch nicht eingelassen wird. An Spitzentagen ist der Früheinlass die Stunde, in der die Warteschlangen an den beliebten Bahnen noch kurz sind.',
     alternateNames: ['Extra Magic Hours', 'Magic Hours', 'Early Park Entry', 'Extra Zauberzeit'],
 
     relatedTermIds: ['express-pass', 'peak-day', 'rope-drop'],
@@ -206,11 +206,11 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die normale Warteschlange einer Attraktion, ohne Reservierung oder besonderes Ticket.',
     definition:
-      'Die Standby-Warteschlange ist die reguläre physische Warteschlange, die alle Besucher ohne zusätzliches Ticket oder Upgrade nutzen können. Wer in der Standby-Schlange steht, wartet in der Reihenfolge des Eintreffens – die angezeigte Wartezeit spiegelt direkt die aktuelle Auslastung der Attraktion wider. An vollen Tagen können Standby-Zeiten bei Hauptattraktionen 90 Minuten und mehr erreichen. park.fan zeigt die Standby-Wartezeit jeder Attraktion neben den übrigen Warteschlangen-Arten.',
+      'Die Standby-Warteschlange ist die reguläre physische Warteschlange, die alle Besucher ohne zusätzliches Ticket oder Upgrade nutzen können. Wer in der Standby-Warteschlange steht, wartet in der Reihenfolge des Eintreffens – die angezeigte Wartezeit spiegelt direkt die aktuelle Auslastung der Attraktion wider. An vollen Tagen können Standby-Zeiten bei Hauptattraktionen 90 Minuten und mehr erreichen. park.fan zeigt die Standby-Wartezeit jeder Attraktion neben den übrigen Warteschlangen-Arten.',
     alternateNames: ['Normale Warteschlange', 'Reguläre Warteschlange', 'Standby-Warteschlange'],
 
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Standby', 'Standby-Schlange'],
+    aliases: ['Standby', 'Standby-Warteschlange'],
   },
   {
     id: 'lightning-lane',
@@ -218,7 +218,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disneys kostenpflichtiges Vorrangwarteschlangen-System als Nachfolger des früheren FastPass+-Programms.',
     definition:
-      'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Es gibt zwei Varianten: Individual Lightning Lane (ILL) für die gefragtesten Attraktionen, die separat erworben werden muss, und Lightning Lane Multi Pass (LLMP), ein tägliches Abo, das Rückkehrzeitfenster für eine Auswahl an Attraktionen ermöglicht. Da Lightning Lane ein vormals kostenloses Angebot in ein kostenpflichtiges umgewandelt hat, wird es in der Community kontrovers diskutiert. Der Besucherkalender von park.fan zeigt, an welchen Tagen mit langen Standby-Schlangen zu rechnen ist.',
+      'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Es gibt zwei Varianten: Individual Lightning Lane (ILL) für die gefragtesten Attraktionen, die separat erworben werden muss, und Lightning Lane Multi Pass (LLMP), ein tägliches Abo, das Rückkehrzeitfenster für eine Auswahl an Attraktionen ermöglicht. Da Lightning Lane ein vormals kostenloses Angebot in ein kostenpflichtiges umgewandelt hat, wird es in der Community kontrovers diskutiert. Der Besucherkalender von park.fan zeigt, an welchen Tagen mit langen Standby-Warteschlangen zu rechnen ist.',
     alternateNames: [
       'Lightning Lane Multi Pass',
       'Individual Lightning Lane',
@@ -295,7 +295,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Warteschlange ist der physische Raum – Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume –, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt die aktuelle Wartezeit jeder Attraktion eines Parks.',
     relatedTermIds: ['single-rider', 'standby-queue', 'wait-time'],
-    aliases: ['Warteschlangen', 'Schlange', 'Schlangen'],
+    aliases: ['Warteschlangen', 'Warteschlange', 'Warteschlangen'],
   },
   {
     id: 'opening-day',
@@ -303,7 +303,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Das offizielle Eröffnungsdatum eines neuen Parks, Themenbereichs oder einer neuen Attraktion.',
     definition:
-      'Der Eröffnungstag ist das offiziell angekündigte Datum, an dem ein neuer Park, eine Erweiterung oder eine Attraktion erstmals der Öffentlichkeit zugänglich gemacht wird. Eröffnungstage sind besondere Ereignisse in der Freizeitpark-Community: Sie ziehen in der Regel große Medienaufmerksamkeit, lange Schlangen und eine festliche Atmosphäre an. Parks veranstalten häufig Eröffnungszeremonien mit besonderen Unterhaltungsangeboten. Da Eröffnungstage besonders viele Besucher anziehen, sind sie selten der beste Zeitpunkt, um eine neue Attraktion mit kurzen Wartezeiten zu erleben. Soft Openings finden gelegentlich vor dem offiziellen Eröffnungstag statt.',
+      'Der Eröffnungstag ist das offiziell angekündigte Datum, an dem ein neuer Park, eine Erweiterung oder eine Attraktion erstmals der Öffentlichkeit zugänglich gemacht wird. Eröffnungstage sind besondere Ereignisse in der Freizeitpark-Community: Sie ziehen in der Regel große Medienaufmerksamkeit, lange Warteschlangen und eine festliche Atmosphäre an. Parks veranstalten häufig Eröffnungszeremonien mit besonderen Unterhaltungsangeboten. Da Eröffnungstage besonders viele Besucher anziehen, sind sie selten der beste Zeitpunkt, um eine neue Attraktion mit kurzen Wartezeiten zu erleben. Soft Openings finden gelegentlich vor dem offiziellen Eröffnungstag statt.',
     relatedTermIds: ['crowd-level', 'rope-drop', 'soft-opening'],
     aliases: ['Eröffnungstage'],
   },
@@ -313,7 +313,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'System, bei dem sich Erwachsene beim Fahren abwechseln, während der andere bei Kindern bleibt, die die Mindestgröße nicht erfüllen.',
     definition:
-      'Rider Switch (auch Kindertausch oder Child Swap genannt) ermöglicht Gruppen, sich bei einer Attraktion abzuwechseln, wenn ein Mitglied – in der Regel ein Kind, das die Mindestgröße nicht erfüllt – nicht mitfahren kann. Ein Erwachsener fährt, während der andere mit dem Kind am Eingang wartet. Wenn der erste zurückkommt, darf der zweite sofort einsteigen – ohne erneut in der Standby-Schlange zu warten. Bei Disney heißt das System offiziell Rider Switch, bei Universal Child Swap. An Spitzentagen ist das ein erheblicher Vorteil für Familien mit kleinen Kindern. Einfach das Personal am Attraktionseingang ansprechen.',
+      'Rider Switch (auch Kindertausch oder Child Swap genannt) ermöglicht Gruppen, sich bei einer Attraktion abzuwechseln, wenn ein Mitglied – in der Regel ein Kind, das die Mindestgröße nicht erfüllt – nicht mitfahren kann. Ein Erwachsener fährt, während der andere mit dem Kind am Eingang wartet. Wenn der erste zurückkommt, darf der zweite sofort einsteigen – ohne erneut in der Standby-Warteschlange zu warten. Bei Disney heißt das System offiziell Rider Switch, bei Universal Child Swap. An Spitzentagen ist das ein erheblicher Vorteil für Familien mit kleinen Kindern. Einfach das Personal am Attraktionseingang ansprechen.',
     alternateNames: ['Child Swap', 'Kindertausch', 'Baby Switch'],
 
     relatedTermIds: ['height-requirement', 'standby-queue', 'wait-time'],
@@ -378,7 +378,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein reserviertes Zeitfenster, in dem man mit einem Lightning Lane, einer virtuellen Warteschlange oder einem ähnlichen System zur Attraktion zurückkehren kann.',
     definition:
-      'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster – meist ein Ein-Stunden-Block –, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Schlange zu stehen. Wer das Zeitfenster verpasst – nach einer kurzen Toleranzzeit –, verliert die Reservierung. park.fan zeigt Live-Wartezeiten und Besucherdichte neben den Rückkehrzeiten eines Parks.',
+      'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster – meist ein Ein-Stunden-Block –, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Warteschlange zu stehen. Wer das Zeitfenster verpasst – nach einer kurzen Toleranzzeit –, verliert die Reservierung. park.fan zeigt Live-Wartezeiten und Besucherdichte neben den Rückkehrzeiten eines Parks.',
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     aliases: ['Rückkehrzeiten'],
     alternateNames: ['Returntime', 'Return Time', 'Rückkehrfenster', 'Rückkehrzeit'],
@@ -929,7 +929,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein detaillierter, optimierter Besuchsplan für einen Freizeitparkbesuch, der die Abfolge der Attraktionen so ordnet, dass Wartezeiten minimiert und möglichst viele Fahrten erreicht werden.',
     definition:
-      'Ein Touringplan ist eine vorbereitete Abfolge von Attraktionen, Mahlzeiten und Parkbewegungen, die darauf ausgelegt ist, die Gesamtwartezeit über den Tag zu minimieren. Effektive Touringpläne berücksichtigen Besuchermuster (welche Parkbereiche sich zuerst füllen), Attraktionskapazitäten, Schlangenverhalten, Showpläne und Wetter. Seiten wie TouringPlans.com veröffentlichen detaillierte Pläne für große Parks. Die Live-Wartezeiten und der Besucherkalender von park.fan sind komplementäre Werkzeuge: Echtzeit-Wartezeiten ermöglichen spontane Anpassungen des Plans.',
+      'Ein Touringplan ist eine vorbereitete Abfolge von Attraktionen, Mahlzeiten und Parkbewegungen, die darauf ausgelegt ist, die Gesamtwartezeit über den Tag zu minimieren. Effektive Touringpläne berücksichtigen Besuchermuster (welche Parkbereiche sich zuerst füllen), Attraktionskapazitäten, Warteschlangenverhalten, Showpläne und Wetter. Seiten wie TouringPlans.com veröffentlichen detaillierte Pläne für große Parks. Die Live-Wartezeiten und der Besucherkalender von park.fan sind komplementäre Werkzeuge: Echtzeit-Wartezeiten ermöglichen spontane Anpassungen des Plans.',
     aliases: ['Touringpläne'],
     alternateNames: ['Touring Plan', 'Besuchsplan', 'Parkplan', 'Besuchsstrategie'],
 
@@ -1112,7 +1112,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die Entwicklungsrichtung der Warteschlangenlänge in den letzten 30 Minuten – steigend, fallend oder stabil.',
     definition:
-      'Der Trend zeigt an, ob die Warteschlange einer Attraktion im Vergleich zu vor 30 Minuten länger, kürzer oder gleich geblieben ist. park.fan stellt dies als Pfeil dar: aufwärts (Warteschlange wächst), abwärts (Warteschlange schrumpft) oder horizontal (stabil).\n\nDer Trend ist oft aussagekräftiger als die reine Wartezeit. Eine Attraktion mit 45 Minuten und fallendem Trend ist eine bessere Wahl als eine mit 40 Minuten und stark steigendem Trend – bis man ankommt, kann die erste Schlange auf 30 Minuten gesunken sein, während die zweite bereits bei 55 Minuten liegt.\n\nTrend-Daten sind besonders wertvoll in den Übergangsphasen des Parks am späten Vormittag und frühen Nachmittag, wenn sich die Besucher schnell durch den Park verteilen.',
+      'Der Trend zeigt an, ob die Warteschlange einer Attraktion im Vergleich zu vor 30 Minuten länger, kürzer oder gleich geblieben ist. park.fan stellt dies als Pfeil dar: aufwärts (Warteschlange wächst), abwärts (Warteschlange schrumpft) oder horizontal (stabil).\n\nDer Trend ist oft aussagekräftiger als die reine Wartezeit. Eine Attraktion mit 45 Minuten und fallendem Trend ist eine bessere Wahl als eine mit 40 Minuten und stark steigendem Trend – bis man ankommt, kann die erste Warteschlange auf 30 Minuten gesunken sein, während die zweite bereits bei 55 Minuten liegt.\n\nTrend-Daten sind besonders wertvoll in den Übergangsphasen des Parks am späten Vormittag und frühen Nachmittag, wenn sich die Besucher schnell durch den Park verteilen.',
     alternateNames: ['Queue Trend', 'Wait Trend'],
 
     relatedTermIds: ['crowd-level', 'posted-wait-time', 'wait-time'],
@@ -1780,7 +1780,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'mobile-ordering',
     name: 'Mobile Bestellung',
     shortDefinition:
-      'App-Funktion, mit der Gäste Essen vorbestellen und bezahlen – ohne an der Theke Schlange stehen zu müssen.',
+      'App-Funktion, mit der Gäste Essen vorbestellen und bezahlen – ohne an der Theke anzustehen.',
     definition:
       'Die mobile Bestellung ermöglicht es Gästen, über die offizielle Park-App ein Restaurantmenü zu durchsuchen, eine Bestellung aufzugeben, zu bezahlen und ein Abholzeitfenster zu wählen – ohne an der Theke anstehen zu müssen. Disney hat das System in seinen Schnellrestaurants eingeführt; Universal, Six Flags, Merlin-Parks und viele weitere Betreiber haben inzwischen eigene Varianten entwickelt. Wenn das gewählte Zeitfenster erreicht ist, erhalten Gäste eine App-Benachrichtigung und holen ihre Bestellung am Mobile-Order-Abholschalter ab. Besonders zu Mittagsstoßzeiten spart die mobile Bestellung erheblich Zeit. Voraussetzung sind ein geladenes Smartphone und ausreichende Netzabdeckung im Park.',
     relatedTermIds: ['dining-reservation', 'quick-service'],
@@ -2427,7 +2427,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Ausgang direkt vor dem Einstieg für Besucher, die sich im letzten Moment gegen die Fahrt entscheiden.',
     definition:
-      "Der Chicken Exit (wörtlich 'Feiglings-Ausgang') ist ein spezieller Durchgang am Ende der Warteschlange eines Fahrgeschäfts. Er ermöglicht es Besuchern, den Wartebereich zu verlassen, ohne in das Fahrzeug steigen zu müssen. Dies ist besonders bei Thrill-Attraktionen wichtig für Personen, die während des Wartens Angst bekommen haben, oder für Eltern, die ihre Kinder durch die Schlange begleitet haben, aber selbst nicht mitfahren wollen.",
+      "Der Chicken Exit (wörtlich 'Feiglings-Ausgang') ist ein spezieller Durchgang am Ende der Warteschlange eines Fahrgeschäfts. Er ermöglicht es Besuchern, den Wartebereich zu verlassen, ohne in das Fahrzeug steigen zu müssen. Dies ist besonders bei Thrill-Attraktionen wichtig für Personen, die während des Wartens Angst bekommen haben, oder für Eltern, die ihre Kinder durch die Warteschlange begleitet haben, aber selbst nicht mitfahren wollen.",
     relatedTermIds: ['queue-line', 'rider-switch', 'single-rider', 'wait-time'],
     aliases: ['Angsthase-Ausgang', 'Letzter Ausgang'],
   },
@@ -2784,7 +2784,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Achterbahn, die Kinder und Erwachsene gemeinsam fahren können – moderate Kräfte, niedrige Mindestgröße, keine Inversionen.',
     definition:
-      'Eine Familienachterbahn richtet sich an das breitestmögliche Publikum statt an Thrill-Fans. Mindestgrößen beginnen typischerweise bei 100 bis 110 Zentimetern (darunter oft in Begleitung), die Geschwindigkeit bleibt unter etwa 60 km/h, und Layouts verzichten auf Inversionen und dauerhaft hohe G-Kräfte. Das ist eine Randbedingung, kein Mangel an Anspruch: Eine gute Familienachterbahn muss echte Airtime und sauberes Timing liefern, nur in einem viel engeren Rahmen.\n\nWirtschaftlich gehören sie zu den wertvollsten Bahnen, die ein Park kaufen kann, weil eine ganze Gruppe zusammen fahren kann und die Schlange nie leer wird. Vekomas Family Boomerang, Macks Youngstar und Zierers Tivoli sind die Arbeitspferde; [Pegasus](/de/parks/europe/germany/rust/europa-park/pegasus) im Europa-Park, [Raik](/de/parks/europe/germany/bruehl/phantasialand/raik) im Phantasialand und [Slinky Dog Dash](/de/parks/north-america/united-states/orlando/disneys-hollywood-studios/slinky-dog-dash) in Disney’s Hollywood Studios folgen genau diesem Auftrag.',
+      'Eine Familienachterbahn richtet sich an das breitestmögliche Publikum statt an Thrill-Fans. Mindestgrößen beginnen typischerweise bei 100 bis 110 Zentimetern (darunter oft in Begleitung), die Geschwindigkeit bleibt unter etwa 60 km/h, und Layouts verzichten auf Inversionen und dauerhaft hohe G-Kräfte. Das ist eine Randbedingung, kein Mangel an Anspruch: Eine gute Familienachterbahn muss echte Airtime und sauberes Timing liefern, nur in einem viel engeren Rahmen.\n\nWirtschaftlich gehören sie zu den wertvollsten Bahnen, die ein Park kaufen kann, weil eine ganze Gruppe zusammen fahren kann und die Warteschlange nie leer wird. Vekomas Family Boomerang, Macks Youngstar und Zierers Tivoli sind die Arbeitspferde; [Pegasus](/de/parks/europe/germany/rust/europa-park/pegasus) im Europa-Park, [Raik](/de/parks/europe/germany/bruehl/phantasialand/raik) im Phantasialand und [Slinky Dog Dash](/de/parks/north-america/united-states/orlando/disneys-hollywood-studios/slinky-dog-dash) in Disney’s Hollywood Studios folgen genau diesem Auftrag.',
     relatedTermIds: ['height-requirement', 'mine-train', 'wild-mouse', 'launch-coaster'],
     aliases: ['Familienachterbahnen', 'Family Coaster', 'Juniorachterbahn'],
     alternateNames: ['Family Coaster', 'Juniorachterbahn'],
@@ -2915,7 +2915,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Das kostenpflichtige Warteschlangen-Produkt im Phantasialand, das pro Attraktion gekauft wird.',
     definition:
-      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als bei den meisten Parks wird er nicht für den ganzen Tag gekauft, sondern pro Attraktion – für Bahnen wie Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nGekauft wird er in der Park-App oder im Park selbst; der Preis je Attraktion steht fest und schwankt nicht mit dem Andrang.\n\nDer Pass verkürzt die Wartezeit, er hebt sie nicht auf – auch der QUICK-Pass-Eingang hat eine Schlange, nur eine deutlich kürzere.',
+      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als bei den meisten Parks wird er nicht für den ganzen Tag gekauft, sondern pro Attraktion – für Bahnen wie Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nGekauft wird er in der Park-App oder im Park selbst; der Preis je Attraktion steht fest und schwankt nicht mit dem Andrang.\n\nDer Pass verkürzt die Wartezeit, er hebt sie nicht auf – auch der QUICK-Pass-Eingang hat eine Warteschlange, nur eine deutlich kürzere.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass', 'Quickpass'],
   },
@@ -2925,7 +2925,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die kostenlose virtuelle Warteschlange des Europa-Parks, reserviert in der Park-App.',
     definition:
-      'VirtualLine ist der kostenlose Reservierungsdienst des Europa-Parks: In der Europa-Park & Rulantica App buchst du für eine ausgewählte Attraktion ein Zeitfenster und betrittst sie in diesem Fenster über einen verkürzten Eingang. Bis dahin kannst du andere Attraktionen, Shows oder das Essen genießen.\n\nAngeboten wird der Dienst für blue fire Megacoaster, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac und WODAN – Timburcoaster. Die Zahl der Plätze pro Tag ist begrenzt.\n\nEr kostet nichts, und das ist der entscheidende Unterschied zu einem Fastpass: VirtualLine verkauft keinen Vorrang, sondern verlegt das Warten aus der Schlange heraus.',
+      'VirtualLine ist der kostenlose Reservierungsdienst des Europa-Parks: In der Europa-Park & Rulantica App buchst du für eine ausgewählte Attraktion ein Zeitfenster und betrittst sie in diesem Fenster über einen verkürzten Eingang. Bis dahin kannst du andere Attraktionen, Shows oder das Essen genießen.\n\nAngeboten wird der Dienst für blue fire Megacoaster, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac und WODAN – Timburcoaster. Die Zahl der Plätze pro Tag ist begrenzt.\n\nEr kostet nichts, und das ist der entscheidende Unterschied zu einem Fastpass: VirtualLine verkauft keinen Vorrang, sondern verlegt das Warten aus der Warteschlange heraus.',
     relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
     aliases: ['Virtual Line', 'Virtualline'],
   },
@@ -2933,7 +2933,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'fast-lane',
     name: 'Fast Lane',
     shortDefinition:
-      'Der kostenpflichtige Pass an der Schlange vorbei, meist für den ganzen Besuchstag gekauft.',
+      'Der kostenpflichtige Pass an der Warteschlange vorbei, meist für den ganzen Besuchstag gekauft.',
     definition:
       'Fast Lane heißt das Warteschlangen-Produkt in vielen Parks der Six-Flags- und Walibi-Familie, von Cedar Point bis Walibi Holland. Gekauft wird es für den Besuch, nicht für eine einzelne Fahrt: Ein Armband oder ein digitales Ticket öffnet den ganzen Tag über den Fast-Lane-Eingang der einbezogenen Attraktionen.\n\nEs gibt meist mehrere Stufen – bei Walibi Holland etwa Gold (unbegrenzt, rund 90 % weniger Wartezeit), Silber, Bronze sowie Einzel-Shots für eine oder vier Fahrten. Welche Bahnen dazugehören, legt der Park fest; Halloween-Häuser sind häufig ausgenommen.\n\nWeil der Preis für den Tag gilt und nicht pro Bahn, steht auf park.fan an solchen Bahnen ein „ab“-Preis statt eines festen.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
@@ -2952,7 +2952,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'fastrack',
     name: 'Fastrack',
     shortDefinition:
-      'Das kostenpflichtige Vorbeigehen an der Schlange in den Merlin-Parks, etwa Alton Towers.',
+      'Das kostenpflichtige Vorbeigehen an der Warteschlange in den Merlin-Parks, etwa Alton Towers.',
     definition:
       'Fastrack ist der Name, unter dem die britischen Merlin-Parks – Alton Towers, Thorpe Park, Chessington – ihren Zugang an der Warteschlange vorbei verkaufen. Es gibt ihn einzeln für eine Bahn oder als Paket: Bronze für eine Auswahl von Bahnen, Silber für je eine Fahrt an allen einbezogenen Attraktionen, Gold für unbegrenzte Nutzung.\n\nFastrack ist immer ein Zusatzticket: Der Parkeintritt ist darin nicht enthalten.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
@@ -2974,7 +2974,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die Attraktion, für die Leute den Park überhaupt erst ansteuern, meist die neueste oder größte Bahn.',
     definition:
-      'Ein Headliner ist die Attraktion, wegen der ein Park auf der Reiseliste steht: die neueste Achterbahn, der teuerste Dark Ride, das, was auf dem Plakat abgebildet ist. Parks bauen ungefähr alle fünf bis zehn Jahre einen, und im Eröffnungsjahr zieht er einen erheblichen Teil aller Besucher an sich.\n\nFür die Planung eines Tages ist er der wichtigste Einzelposten. Ein Headliner sammelt die längste Schlange des Parks und behält sie oft von der Öffnung bis zum Abend, während der Rest des Geländes am Vormittag noch leer ist. Deshalb steht er auf fast jeder Empfehlungsliste ganz vorn: erst der Headliner, dann alles andere. Die Ausnahme ist eine virtuelle Warteschlange, die ihn ohnehin auf eine Uhrzeit legt.\n\npark.fan markiert Headliner in der Attraktionsliste eines Parks und zieht sie in der Rangliste nach Wartezeit nach oben. Ob eine Bahn als Headliner gilt, ist eine kuratierte Angabe und keine Ableitung aus der Wartezeit: eine Bahn kann an einem einzelnen Tag lange Schlangen haben, ohne dass jemand ihretwegen anreist.',
+      'Ein Headliner ist die Attraktion, wegen der ein Park auf der Reiseliste steht: die neueste Achterbahn, der teuerste Dark Ride, das, was auf dem Plakat abgebildet ist. Parks bauen ungefähr alle fünf bis zehn Jahre einen, und im Eröffnungsjahr zieht er einen erheblichen Teil aller Besucher an sich.\n\nFür die Planung eines Tages ist er der wichtigste Einzelposten. Ein Headliner sammelt die längste Warteschlange des Parks und behält sie oft von der Öffnung bis zum Abend, während der Rest des Geländes am Vormittag noch leer ist. Deshalb steht er auf fast jeder Empfehlungsliste ganz vorn: erst der Headliner, dann alles andere. Die Ausnahme ist eine virtuelle Warteschlange, die ihn ohnehin auf eine Uhrzeit legt.\n\npark.fan markiert Headliner in der Attraktionsliste eines Parks und zieht sie in der Rangliste nach Wartezeit nach oben. Ob eine Bahn als Headliner gilt, ist eine kuratierte Angabe und keine Ableitung aus der Wartezeit: eine Bahn kann an einem einzelnen Tag lange Warteschlangen haben, ohne dass jemand ihretwegen anreist.',
     aliases: ['Headliner-Attraktion', 'Hauptattraktion'],
     relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 excerpt: >-
   Ein Kinderwagen am Märchensee, eine Gondelfahrt durch „1001 Nacht“, und
-  dreißig Jahre später sechzig Minuten Taron-Schlange mit der Frage, ob sich
+  dreißig Jahre später sechzig Minuten Taron-Warteschlange mit der Frage, ob sich
   das gerade lohnt. Wie aus einer Kindheit im Phantasialand eine Plattform
   wurde, die Parktage lesen kann, und warum auf meinem Schreibtisch ein
   Taron-Rad liegt.
@@ -32,7 +32,7 @@ coverImage:
 seo:
   title: 'Warum es park.fan gibt: Märchensee, Taron und Code'
   description: >-
-    Ein Kinderwagen am Märchensee, eine Stunde Taron-Schlange und viele Nächte
+    Ein Kinderwagen am Märchensee, eine Stunde Taron-Warteschlange und viele Nächte
     voller Code: wie park.fan entstand und wann sich dein Parkbesuch lohnt.
   keywords:
     - park.fan Blog
@@ -178,7 +178,7 @@ Die beiden hatten jahrzehntelang nichts miteinander zu tun. Im Büro ging es um
 Durchsatz und Latenz, im Park ums Anstehen, und dass das dieselbe Frage ist, ist
 mir erst sehr spät aufgefallen.
 
-## Der Moment in der Taron-Schlange
+## Der Moment in der Taron-Warteschlange
 
 ![Taron rast durch die Basaltsäulen des Themenbereichs Klugheim | Taron mitten im Kurs durch Klugheim. Vor dieser Bahn stand ich sechzig Minuten. | left](/media/phantasialand/taron-4x3.jpg)
 
@@ -191,7 +191,7 @@ schickt. Taron schafft rund 1200 Menschen in der Stunde, ich stand also grob
 tausend Leute von der Station entfernt und hätte mir das ausrechnen können.
 Stattdessen stand ich einfach da: ein Mensch, der beruflich Datenströme in
 Echtzeit verarbeitete und privat nicht die geringste Ahnung hatte, ob sich
-diese Schlange gerade lohnte oder ob ich schlicht Lebenszeit gegen ein Geländer
+diese Warteschlange gerade lohnte oder ob ich schlicht Lebenszeit gegen ein Geländer
 tauschte.
 
 > „Lass mich mal eben die Wartezeiten tracken.“ _Sagte ich. Es wurden drei
@@ -222,7 +222,7 @@ Kinderfahrzeug; diese Klarstellung braucht es erstaunlich oft, wenn Besucher
 davor stehen. Dieses Rad ist tausende Runden durch Klugheim gejagt, bevor es
 bei mir in Rente gehen durfte. Bei jeder nächtlichen Debugging-Session erinnert
 es mich daran, dass irgendwo gerade jemand vor einer echten Bahn steht und
-wissen will, ob sich die Schlange lohnt.
+wissen will, ob sich die Warteschlange lohnt.
 
 Heute stehen dahinter **210 Parks** mit zusammen rund **6.900 Attraktionen**
 (Stand 25. September 2026), und bei 209 davon holen wir alle fünf Minuten die
@@ -254,12 +254,12 @@ warm“. Ein Sonntag Ende
 November im Phantasialand ist eine andere Frage als ein Sonntag Anfang August im
 Europa-Park, und der Kalender beantwortet die Frage genau so: mit Park und
 Datum. Wenn du dann schon
-im Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade die
+im Park stehst, zeigen dir die Live-Daten, ob die Warteschlange vor dir gerade die
 Ausnahme ist oder die Regel.
 
 ## Was park.fan anders macht als die Anzeige am Eingang
 
-Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
+Es gibt gute Seiten, die dir zeigen, wie lang die Warteschlange jetzt gerade ist.
 Das können wir auch, alle fünf Minuten, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
@@ -272,7 +272,7 @@ Dazu Wartezeiten, Crowd-Level, Wetter am Parkeingang, Öffnungszeiten und
 Attraktions-Historien in sechs Sprachen. Seit September gibt es außerdem den
 [Tagesplaner](/blog/tagesplaner), der deine Bahnen gegen die Prognose auf eine
 Zeitleiste legt, und wer mag, lässt sich per Push-Nachricht Bescheid geben,
-sobald die Schlange an einer Bahn unter eine selbst gewählte Marke fällt. Kein
+sobald die Warteschlange an einer Bahn unter eine selbst gewählte Marke fällt. Kein
 Konzern, keine Paywall, keine Werbung, gebaut von jemandem, der selbst ansteht.
 
 ## Was dieser Blog werden soll

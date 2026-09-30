@@ -1,5 +1,44 @@
 # No text may read as AI-generated (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here. The full rulebook, with the measurements and the counter-examples, is **[docs/blog.md](../blog.md)**; this page is the short version and the list of what the machine checks.
 
-this covers **every** string a human ever sees, not just blog posts — and the tell that survives every other pass is **the aphoristic closer**: a short, symmetrical, abstract sentence parked at the end of a post, a section or a landing band, restating what was just said as a maxim. Three shipped and had to be pulled — „Sie ist nicht die Antwort. Sie ist die Frage.", „Such dir einen Park und lies eine Zahl." and a `title="…"` that was two imperatives joined by „und". Grep the closing sentence for `ist nicht … sondern`, for `Sie ist nicht X. Sie ist Y.`, and for a concrete thing (a wait time, a queue) standing in for an abstract one (an answer, a promise). The test: cover the last sentence and re-read — if only a _feeling of closure_ is lost, it was decoration. End on the concrete next action with its specifics, on a fact not yet stated, or simply stop. **Never narrate the sign at the entrance** — no `das Schild`, `the sign`, `het bord`, `le panneau`, `el cartel`, `il cartello`. It is a prop the copy kept reaching for to carry an argument, and it multiplies: by the guide's launch it stood in the hero caption, the scale legend, the figure's screen-reader summary, a chapter-01 paragraph and the companion post, six locales deep — one picture retold five times. Name what is actually there: `am Eingang stehen 70 Minuten`, `At the entrance it says 70 minutes`. Second rule from the same review: **copy must not describe the page's own layout** — „Links steht … Rechts …" was wrong on every phone, where the panels stack, and „die letzte Stufe rechts" sat beside a `flex-wrap` badge row. Vertical order is usually safe, horizontal order almost never — image `alt` and `caption` in the media sidecars, UI copy, PR bodies, commit messages, docs. The tells to avoid are structural, not just lexical: the same sentence skeleton repeated across a set (subject + participle clause + "behind it / in front of it"), an exhaustive inventory of everything in frame, mood adjectives nobody asked for (`bathed in`, `against a summer sky`, `sweeping the night sky`), and a caption that restates the alt text. Write what a person would write: **alt** is short and factual, for somebody who cannot see the picture; **caption** is what you would say pointing at it, and is allowed to be a fact, a joke or nothing. Vary the shape between neighbouring entries — six captions in a row starting with the ride name is itself the tell. The full rulebook — what the tells are, in German and English, where they come from and how to grep for them — is **[docs/blog.md](docs/blog.md)**, and it governs every surface: posts, UI strings, `alt`/`caption`, meta descriptions, empty states. **`pnpm check:prose`** is the half a machine can decide, and it is not decoration: on its first run it found `blog.intro` opening the blog index with „Ehrliche Reiseberichte“ / „Honest trip reports“ / „Resoconti onesti“ in **all six locales**, against a ban that had been in this file the whole time and had only ever been applied to posts. The catalogs are **ratcheted**, not judged — 217 strings carry an em dash and the count may fall but never rise — and the honesty family is an error in a catalog or a caption (the subject there is always us) and a candidate in a post body, because `eerlijke prijzen` and `prezzi onesti` mean _fair_ prices. What no check sees is whether a sentence claims anything: generated prose is fluent and empty, so the two tests that matter are the **deletion test** (cut it — did the paragraph lose a fact?) and the **transplant test** (would it sit unchanged in an article about another park?). Post-specific additions: [blog authoring guide](content/blog/README.md#8-writing-style-requirement); image text: [public/media/README.md](public/media/README.md).
+It covers **every string a human ever sees**: posts, UI strings, glossary definitions, `alt` and `caption`, meta titles and descriptions, FAQ answers, empty states, the changelog, the agent skills, commit messages and PR bodies. A reader who smells a language model stops trusting the numbers next to it, and the numbers are the product.
+
+## What slop is
+
+Merriam-Webster's word of 2025: "digital content of low quality that is produced usually in quantity by means of artificial intelligence". Wikipedia's field guide gives the mechanism: a model regresses to the most likely sentence, so its output drifts toward "advertisement-like writing, or … the prose of a travel guide". A theme-park site is a travel guide, which is why this rule is strict here. Every fix below puts back a specific fact the average sentence replaced.
+
+## Fixed on sight
+
+- **The aphoristic closer** and its sibling, **the wink**: a short line at the end of a post, section or paragraph that restates the point as a maxim or a joke (`Sie ist nicht die Antwort. Sie ist die Frage.`, `…, und genau das ist die Aussage.`). Cover the last sentence; if only a feeling of closure is lost, cut it. [§2.8, §2.17]
+- **`nicht X, sondern Y`** at the edge of a section, and its 2026 form, the contrast reframe (`It isn't a queue, it's a waiting room`). [§2.1]
+- **An honesty or authenticity claim**: `ehrlich` in any form, `echte Wartezeiten`, `real wait-time data`. Say where the numbers come from instead. [§3.3]
+- **An invented detail, a placeholder, or a gap with no owner**: a first-person visit that did not happen, `[Park Name]`, `nicht öffentlich dokumentiert`. `Six Flags sagt nicht, ob …` names who is silent; that is information. [§1.8, §1.9]
+- **A heading that asks and then gives an order**: `Welche Bahnen darf mein Kind fahren? Nach Körpergröße nachsehen`. [§5.6]
+
+## House rules
+
+1. Never `ehrlich`, and never announce the data as real. [§3.3]
+2. Never narrate the sign at the entrance (`das Schild`, `the sign`, …). Write `Am Eingang stehen 70 Minuten.` [§3.3]
+3. No coined metaphor-currencies (`Wartezeit-Währung`). [§3.3]
+4. Copy never describes the page's own layout: `links … rechts` is wrong on every phone. [§3.3]
+5. **Im Deutschen `Warteschlange`, nie `Schlange`**; the verb is `anstehen`. Only a proper name for the animal is exempt (`Schlange von Midgard`). [§3.3]
+6. **Things do not talk.** A queue shows nothing, a number says nothing, a calendar knows nothing: not `was die Warteschlangen gerade anzeigen`, not `zeigt der Kalender`, not `die Daten sagen`. Write what is there and where. [§2.13]
+7. No em dash in reader-facing prose; German takes `–`. House style, not a detection claim. [§4.1]
+
+## The tells that survive a vocabulary pass
+
+Sentence shape is what marks a text, not words: the participial tail (`…, making it`, `…, was den Nervenkitzel steigert`), the teaser (`Dann wurde es kurios.`), colon pivots, staccato, the product as protagonist, answering objections nobody raised, and in English a text that never contracts and therefore reads translated. Captions are judged as a series: six in a row with the same skeleton, or seven punchlines with the same beat, are a template. [§2, §5.2, §6]
+
+What no check sees is whether a sentence claims anything. Two tests settle it: the **deletion test** (cut it; did the paragraph lose a fact?) and the **transplant test** (would it sit unchanged in an article about another park?). [§1.7]
+
+## What the machine checks
+
+`pnpm check:prose` walks the posts, the six catalogs, every media sidecar, the glossary per term, the content pages and their `page.tsx` hero copy, the homepage announcement, the changelog, the agent skills and `/llms.txt`.
+
+- **Errors** (no exception exists): a non-signature `—` in a post or in German or Dutch prose, a catalog's em-dash count above its baseline, an honesty claim or chat register in a string that is about us, placeholder text, `Schlange` in German, a German quote closed with a straight `"`, Markdown or `—` in a plain-text frontmatter field, a `[!QUOTE]` without a source line.
+- **Warnings** (a person decides): everything else in docs/blog.md that a regex can count, reported with the rule's section number.
+
+It found its first real error on its first run (`Ehrliche Reiseberichte` in `blog.intro`, six languages), and the widened scope of 2026-09-30 found the next ones: three em dashes in the Dutch hero of the best-time page and eleven straight quotes in the legal pages. A green check is the floor. The review pass in [docs/blog.md §7.2](../blog.md#72-the-review-pass) is the rest.
+
+Related: [blog authoring guide](../../content/blog/README.md#8-writing-style-requirement), [image text](../../public/media/README.md), [blog writing style](blog-writing-style.md).

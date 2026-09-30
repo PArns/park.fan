@@ -217,7 +217,7 @@ Nachfolger der alten Pegasus und in unseren Daten die gefragteste Attraktion des
 Parks. Über sie habe ich im
 [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps) schon geschrieben, und
 zwar nicht besonders freundlich, weil siebzig Kilometer weiter südöstlich eine
-bessere GCI-Bahn mit weniger als der halben Schlange steht. Das bleibt so. Als Rennstrecke,
+bessere GCI-Bahn mit weniger als der halben Warteschlange steht. Das bleibt so. Als Rennstrecke,
 auf der du dem anderen Zug beim Verlieren zusehen kannst, macht Joris trotzdem
 etwas, das Troy nicht kann.
 
@@ -260,7 +260,7 @@ gehen auf dieses Modell zurück.
 **[Droomvlucht](ref:efteling/droomvlucht)** von 1993 ist die Elfenfahrt, bei der
 niederländische Erwachsene weich werden. Man schwebt in Gondeln durch Wälder,
 Feenschlösser und ein Nachtstück, in dem die Bahn kurz absackt. Wer sich fragt,
-warum vor einem Dark Ride ohne einen einzigen Schreckmoment so eine Schlange
+warum vor einem Dark Ride ohne einen einzigen Schreckmoment so eine Warteschlange
 steht, fährt einmal mit und fragt dann nicht mehr.
 
 ![Das Minarett von Fata Morgana in der blauen Stunde, dahinter die Kuppeln des Basars | Von außen sieht man nichts von der Attraktion. Sie liegt komplett hinter dieser Fassade. | left](/media/efteling/fata-morgana-4x3.jpg)
@@ -332,7 +332,7 @@ so, weil Kogeloog einer der sechs Diener aus genau diesem Märchen ist. An der
 Fassade hängen seine Büste und ovale Rahmen mit allen sechs. Den Stand gibt es
 seit 1967, 2002 machte er mangels Umsatz zu (Stroopwafels, die sich nicht verkaufen, das muss man in den Niederlanden erst einmal schaffen), seit dem 26. April 2019 ist er wieder offen.
 
-Nebenbei ist dieses Waldstück der beste Trick gegen Schlangen, den der Park hat.
+Nebenbei ist dieses Waldstück der beste Trick gegen Warteschlangen, den der Park hat.
 Es gibt keine Warteschlange, keine Kapazitätsgrenze und keine Fahrzeit. Wer hier
 unterwegs ist, fehlt vor den Fahrgeschäften, und am Eingang des Waldes muss nie
 eine Wartezeit ausgehängt werden. Genau das ist ein Grund, warum dieser Park mit
@@ -371,7 +371,7 @@ Fahrplan, und im Sommer viele Familien, für die am Nachmittag ein Zug mit Sitzb
 anderen (Spalte „Tage“), weil die Bahnhöfe nicht ganzjährig Wartezeiten melden. Ich würde die
 Reihenfolge dahinter nicht überstrapazieren, die Größenordnung passt aber.
 
-Zweitens ist selbst die längste Schlange des Parks, gemessen an fast sechs
+Zweitens ist selbst die längste Warteschlange des Parks, gemessen an fast sechs
 Millionen Besuchen, kurz. Zum Vergleich, gleiche Datenbasis,
 gleiche Rechenmethode. Die Besucherzahlen 2025 dazu: Europa-Park 7 Mio im ganzen
 Resort, Efteling 5,78 Mio, Toverland 1,14 Mio.
@@ -382,7 +382,7 @@ Resort, Efteling 5,78 Mio, Toverland 1,14 Mio.
 
 Das Phantasialand veröffentlicht seine Besucherzahl nicht, der TEA-Index führt
 für 2024 2,1 Millionen. Es hat damit einen Bruchteil des
-Efteling-Publikums und trotzdem die längsten Schlangen der Tabelle. Der Grund
+Efteling-Publikums und trotzdem die längsten Warteschlangen der Tabelle. Der Grund
 ist dieselbe Division, die ich in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens) durchgerechnet habe: Wartezeit
 ist Nachfrage geteilt durch Kapazität, und im Efteling steht der Zähler zwar hoch,
@@ -395,12 +395,12 @@ die doppelte Fläche.
 Und ein Detail aus der Tabelle finde ich besonders schön: **Voltron** im
 Europa-Park, 2024 eröffnet und im selben Jahr mit dem Golden Ticket Award als
 beste neue Achterbahn der Welt ausgezeichnet, steht in der Spalte mit der
-längsten Schlange etwa gleichauf mit **Joris en de Draak**, einer Holzachterbahn
+längsten Warteschlange etwa gleichauf mit **Joris en de Draak**, einer Holzachterbahn
 von 2010. In Rust würde ich das nicht laut sagen.
 
 ## Die Obergrenze von fünf Millionen
 
-Für die kurzen Schlangen gibt es noch einen zweiten Grund. Der steht in einer
+Für die kurzen Warteschlangen gibt es noch einen zweiten Grund. Der steht in einer
 Behördenakte statt im Prospekt.
 
 Das Efteling liegt zwischen Natura-2000-Gebieten. Als der Park **2016** die
@@ -545,7 +545,7 @@ Und der Andrang über die Monate, gerechnet aus allen gemessenen Öffnungstagen:
 
 ## Kein Fast Pass, dafür Dauerversuche an der Warteschlange
 
-Es gibt hier nichts zu kaufen, was dich an der Schlange vorbeibringt. Kein
+Es gibt hier nichts zu kaufen, was dich an der Warteschlange vorbeibringt. Kein
 Priority-Ticket, kein Express-Pass, auch keine dynamisch bepreiste Einzelfahrt,
 wie sie das Phantasialand seit dem letzten Wintertraum verkauft. Kostenlos gibt es
 Baby-Switch für Eltern mit kleinen Kindern und an sieben Attraktionen eine
@@ -553,7 +553,7 @@ Single-Rider-Spur, die der Park seit 2026 allerdings nur noch an sehr vollen Tag
 öffnet. Wer im Hotel schläft, darf **30 Minuten früher** rein.
 
 Was der Park stattdessen macht, ist deutlich interessanter: Er schraubt seit
-Jahren an der Schlange selbst herum. Am **15. September 2017** startete an Python
+Jahren an der Warteschlange selbst herum. Am **15. September 2017** startete an Python
 der **Efteling Boarding Pass**, geplant als Test für zwei Monate, am Ende lief er
 bis zum Frühjahr 2020. Du hast dir per App oder am Kiosk ein Viertelstundenfenster
 reserviert und danach höchstens noch fünfzehn Minuten vor Ort gewartet. Optional
@@ -567,13 +567,13 @@ Im **Sommer 2024** kam die freundlichere Variante, bei
 kostenlosen Efteling-App**. Du wählst die Gruppengröße, stellst dich digital an,
 bekommst eine Benachrichtigung aufs Handy und gehst dann über einen eigenen
 Eingang zum Scannen. Anders als 2017 war es diesmal freiwillig, die normale
-Schlange blieb daneben bestehen. Das ging so gut, dass
+Warteschlange blieb daneben bestehen. Das ging so gut, dass
 [Danse Macabre](ref:efteling/danse-macabre) seit dem **22. April 2025** dauerhaft
-eine solche virtuelle Schlange hat, Droomvlucht bekommt sie in den Schulferien.
+eine solche virtuelle Warteschlange hat, Droomvlucht bekommt sie in den Schulferien.
 
 Und dann kam der Frühsommer 2026 an **[Python](ref:efteling/python)**. Vom
 **18. bis 29. Mai 2026** ersetzte der Park die
-Single-Rider-Spur durch zwei Schlangen nach Gruppengröße: links gerade Gruppen
+Single-Rider-Spur durch zwei Warteschlangen nach Gruppengröße: links gerade Gruppen
 (zwei, vier, sechs, acht), rechts ungerade und Einzelfahrer, jede mit eigener
 Wartezeitanzeige. Der Gedanke dahinter ist simpel. Wer zu dritt kommt, lässt
 rechnerisch einen Platz frei, und über einen Tag summiert sich das zu einer Menge
@@ -584,9 +584,9 @@ mit einem Rad im Python-Schuppenmuster, auf dem die Ziffern eins bis acht stehen
 Zahl in den Ring legen, ein Pfeil zeigt die richtige Seite. Am Tag darauf hingen
 stattdessen farbige Schilder. Und am **21. Juni** stand am Eingang ein großes
 weißes Ei auf einem Holzsockel, auf das jedes Gruppenmitglied eine Hand legt,
-woraufhin je nach Anzahl der Hände eine Farbe aufleuchtet und die Schlange
+woraufhin je nach Anzahl der Hände eine Farbe aufleuchtet und die Warteschlange
 zuweist. Drei Verfahren in drei Tagen, ohne ein Wort offizieller Kommunikation.
-Looopings schrieb, das erinnere mittlerweile mehr an ein Kunstprojekt als an Kapazitätsoptimierung. Knapp daneben: Zwei Tage später erklärte der Park, die Versuche gehörten zur Abschlussarbeit eines Studenten der TU Delft. Die Untersuchung ist abgeschlossen, und Python hat wieder eine ganz normale Schlange.
+Looopings schrieb, das erinnere mittlerweile mehr an ein Kunstprojekt als an Kapazitätsoptimierung. Knapp daneben: Zwei Tage später erklärte der Park, die Versuche gehörten zur Abschlussarbeit eines Studenten der TU Delft. Die Untersuchung ist abgeschlossen, und Python hat wieder eine ganz normale Warteschlange.
 
 Für dich heißt das: nichts zu kaufen, an Danse Macabre lohnt der Blick in die App, und an Python machst du, was sich der Park an dem Tag gerade ausgedacht hat. Steht dort doch wieder ein Ei, Hand drauf.
 
@@ -598,18 +598,18 @@ kompakten Park.
 Geh bei Öffnung ins **Ruigrijk**, in die hintere Ecke. Der Weg dorthin ist lang, und genau deshalb ist sie morgens leer: Die meisten bleiben unterwegs an irgendetwas Hübschem hängen.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) ist unsere klarste
 Rope-Drop-Empfehlung für diesen Park: Sie hat in unseren Daten die längste
-Schlange des Parks, und die steht schon am späten Vormittag. Direkt daneben stehen [Baron 1898](ref:efteling/baron-1898),
+Warteschlange des Parks, und die steht schon am späten Vormittag. Direkt daneben stehen [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) und seit Mai
 [Hooghmoed](ref:efteling/hooghmoed): vier Attraktionen in Sichtweite, darunter drei,
 die in der Tabelle oben weit vorn stehen.
 
 Danach quer durchs Anderrijk zu [Danse Macabre](ref:efteling/danse-macabre) und
 [Piraña](ref:efteling/pirana). Bei [Symbolica](ref:efteling/symbolica) bleibt die
-Schlange in unseren Daten von Mittag bis in den Nachmittag fast gleich lang und
+Warteschlange in unseren Daten von Mittag bis in den Nachmittag fast gleich lang und
 wird erst gegen Abend kürzer, die kannst du dir aufheben.
 
 Die **Mittagsstunden gehören dem Märchenwald**. Er ist genau dann am
-angenehmsten, wenn überall sonst die Schlangen stehen, und er kostet dich keine
+angenehmsten, wenn überall sonst die Warteschlangen stehen, und er kostet dich keine
 Wartezeit, du gehst einfach hindurch. Nimm dir eine Stunde dafür, nicht zwanzig
 Minuten.
 
@@ -806,7 +806,7 @@ Single-Rider-Spuren, die seit 2026 aber nur an sehr vollen Tagen offen sind.
 einzige kaufbare Vorteil. Dazu kommt eine kostenlose virtuelle Warteschlange in
 der App, dauerhaft an [Danse Macabre](ref:efteling/danse-macabre) und in den
 Schulferien an [Droomvlucht](ref:efteling/droomvlucht). Im Mai und Juni 2026 hat
-der Park an [Python](ref:efteling/python) mit Schlangen nach Gruppengröße
+der Park an [Python](ref:efteling/python) mit Warteschlangen nach Gruppengröße
 experimentiert.
 
 ### Warum begrenzt das Efteling seine Besucherzahl?
@@ -854,14 +854,14 @@ Ob es in Kaatsheuvel gerade regnet, entscheidet über den halben Tag:
 
 ```
 
-Die längste Schlange hat Joris en de Draak, knapp dahinter liegt unter anderem
+Die längste Warteschlange hat Joris en de Draak, knapp dahinter liegt unter anderem
 Danse Macabre. Beide mit ihren aktuellen Zahlen:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)
 
 Wenn du hinfährst: Nimm dir die Stunde für den Märchenwald, auch wenn Joris
-gerade eine kurze Schlange hat. Und wirf im Vorbeigehen etwas in den gelben Kerl
+gerade eine kurze Warteschlange hat. Und wirf im Vorbeigehen etwas in den gelben Kerl
 mit dem offenen Mund. Er bedankt sich, seit 1959, bei jedem Einzelnen.
 
 — Patrick

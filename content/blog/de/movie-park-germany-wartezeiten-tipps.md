@@ -202,7 +202,7 @@ im Schnee die Einfahrt zur Tiefgarage hochwill. Danach kommen
 Immelmann, Heartline Roll und Korkenzieher. Der Soundtrack stammt von IMAscore,
 davor läuft eine Preshow mit Projektionen.
 
-Morgens hinzurennen bringt bei ihr wenig: Ihre Schlange ist in der zweiten
+Morgens hinzurennen bringt bei ihr wenig: Ihre Warteschlange ist in der zweiten
 Stunde am längsten, danach nie wieder so lang, und am kürzesten wird sie am
 Nachmittag.
 
@@ -336,7 +336,7 @@ genau deswegen sehenswert.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 schließlich ist die Wildwasserbahn im **Nickland**, gebaut für Grundschulkinder,
-und trotzdem eine der längsten Schlangen des Parks, weil an heißen Nachmittagen
+und trotzdem eine der längsten Warteschlangen des Parks, weil an heißen Nachmittagen
 der halbe Park gleichzeitig sein inneres Kind entdeckt.
 
 Die Bühnen gehören hier seit dem ersten Tag dazu: Ein
@@ -352,7 +352,7 @@ Geburtstag, an dem Tag mit Programm bis 23 Uhr.
 
 ```
 
-## Kurze Schlangen, bis auf eine
+## Kurze Warteschlangen, bis auf eine
 
 Unsere Wartezeit-Historie für Bottrop beginnt im **Dezember 2025**.
 
@@ -550,7 +550,7 @@ Juli.
 
 Lauf bei Öffnung direkt zu
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
-weil deren Schlange nur in der ersten Stunde kürzer ist als für den Rest des
+weil deren Warteschlange nur in der ersten Stunde kürzer ist als für den Rest des
 Tages, und danach gleich weiter zur
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
 die in der ersten Stunde nicht einmal halb so lang ansteht wie danach.
@@ -669,7 +669,7 @@ der Trattoria Hollywood, dazu Burger, Pommes und eine Bäckerei. Für das, was a
 den Teller kommt, finde ich die Preise hoch, und ich esse hier so schnell wie
 möglich.
 
-Ob es in Bottrop gerade regnet, entscheidet, wo sich die Schlangen stapeln:
+Ob es in Bottrop gerade regnet, entscheidet, wo sich die Warteschlangen stapeln:
 
 ```weather-widget slug=movie-park-germany
 
@@ -744,7 +744,7 @@ aufgehoben.
 
 Ich bin diesem Park lange nicht gerecht geworden. Aus dem Rheinland fährt man am
 Phantasialand vorbei, um nach Bottrop zu kommen, und wer das tut, will einen
-Grund. Kurze Schlangen sind erst mal keiner, die klingen nach einem Park, in dem
+Grund. Kurze Warteschlangen sind erst mal keiner, die klingen nach einem Park, in dem
 nichts los ist. Dabei ist genau das der Grund: Du fährst hier an einem
 normalen Tag mehr als im Phantasialand oder im Europa-Park, und sechs Wochen im
 Jahr steht in denselben Kulissen das nach eigener Zählung größte Halloween-Event

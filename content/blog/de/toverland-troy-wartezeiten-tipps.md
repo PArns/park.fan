@@ -39,7 +39,7 @@ seo:
   title: 'Toverland: Troy, Wartezeiten & Halloween ohne Fast Pass'
   description: >-
     Troy im Toverland: die größte Holzachterbahn des Benelux, und davor kaum
-    eine Schlange. Wartezeit-Daten, Fēnix, Tickets, Halloween Nights und was 2027 kommt.
+    eine Warteschlange. Wartezeit-Daten, Fēnix, Tickets, Halloween Nights und was 2027 kommt.
   keywords:
     - Toverland
     - Toverland Wartezeiten
@@ -70,7 +70,7 @@ voller Geschwindigkeit **durch das Stationsgebäude**, an den Wartenden vorbei,
 die sich reflexhaft ducken.
 
 Nach 110 Sekunden stehst du wieder da, wo du losgefahren bist, und drehst dich
-um. Hinter dir: niemand. Also raus, einmal durch die leere Schlange und
+um. Hinter dir: niemand. Also raus, einmal durch die leere Warteschlange und
 wieder rein.
 
 ![Das hölzerne trojanische Pferd in Ithaka, auf einem Wagen, im Herbstlicht | Das trojanische Pferd bewacht den Eingang zu Ithaka. Die Bahn selbst versteckt sich dahinter im Gehölz. | right](/media/toverland/troy-4x3.jpg)
@@ -87,7 +87,7 @@ dann noch eine gute Stunde vor sich, bis nach Kaatsheuvel, zum
 Siebzig Kilometer trennen die beiden Parks. In beiden steht eine Holzachterbahn
 vom selben amerikanischen Hersteller. Für die eine wartest du typischerweise
 rund eine Viertelstunde, für die andere mehr als doppelt so lang. Die kürzere
-Schlange steht in Sevenum.
+Warteschlange steht in Sevenum.
 
 Das [Toverland](ref:attractiepark-toverland) in
 Sevenum, das ich für einen der schönsten kleinen Parks Europas halte, wird
@@ -187,7 +187,7 @@ Dazu kommt etwas, das andere Parks längst eingebaut haben und das hier fehlt:
 **Das Toverland verkauft keinen Fast Pass und keinen Express-Pass.** Es gibt im
 ganzen Park genau eine Möglichkeit, Zeit gegen Geld zu tauschen, und die
 existiert nur an den 13 Halloween-Abenden im Oktober und Anfang November. An
-allen anderen Tagen ist die Schlange, die du siehst, die Schlange, die es gibt.
+allen anderen Tagen ist die Warteschlange, die du siehst, die Warteschlange, die es gibt.
 Eine Single-Rider-Spur gibt es seit 2023 übrigens auch, aber nur an einer
 einzigen Attraktion, dem Freifallturm Dragonwatch, und die kostet nichts extra.
 
@@ -405,7 +405,7 @@ Park.
 > [!TIP]
 > **Mein Tipp für die Halloween Nights: der Fear Pass.** Für 69,95 € bekommst
 > du einmaligen Zugang zu allen sechs Haunted Experiences, und zwar über einen
-> **eigenen Eingang** statt über die normale Schlange, dazu einen reservierten
+> **eigenen Eingang** statt über die normale Warteschlange, dazu einen reservierten
 > Bereich an der Parade. Das ist die einzige Abkürzung, die es hier zu kaufen
 > gibt, und an vollen Nächten der Unterschied zwischen „drei Häuser geschafft“
 > und „alle sechs, und dazu heil aus dem Mais gekommen“.
@@ -432,13 +432,13 @@ Das lag an einer Rechnung, die nie aufgehen konnte: In einen Wagen passten eine,
 höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushing,
 nahmen Paare regelmäßig zwei Wagen statt einem, damit jeder seine eigene Zeit
 fahren konnte. (Beziehungen sind schon an kleineren Fragen gescheitert.) Der Durchsatz brach genau an der Stelle ein, an der die Bahn am
-meisten Spaß machte. Eine lange Schlange für eine kurze Abfahrt, und die Leute standen
+meisten Spaß machte. Eine lange Warteschlange für eine kurze Abfahrt, und die Leute standen
 sie trotzdem, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
 man schlagen wollte.
 
 Der letzte Tag war dann kein stiller. Der Park hat sie mit einer richtigen Feier
 verabschiedet, mit Rahmenprogramm und eigens aufgelegten Souvenirs, und die
-Schlange war ein letztes Mal so lang wie in ihren besten Jahren. Die allerletzte
+Warteschlange war ein letztes Mal so lang wie in ihren besten Jahren. Die allerletzte
 Fahrt aber gehörte dem, dem die Bahn laut Hausgeschichte immer gehört hat,
 **Maximus Müller**, dem exzentrischen Erfinder, der den Wunderwald bewohnt. Er
 stieg selbst ein und fuhr seine eigene Konstruktion ein letztes Mal hinunter.
@@ -595,7 +595,7 @@ Für zwischendurch gibt es die **Waldstube** im Wunderwald (Pizza, Burger,
 Sandwiches, bei Regen ein Segen), **Hungry Harry** in Avalon für Wraps und warme
 Sandwiches, **Mañana** in Port Laguna für Pommes und Fish & Chips, und die
 **Snack-Automaten in Port Laguna**, an denen die
-meisten vorbeilaufen. Zu Unrecht: ohne Schlange, ohne Umweg, und für den Hunger
+meisten vorbeilaufen. Zu Unrecht: ohne Warteschlange, ohne Umweg, und für den Hunger
 zwischendurch die unkomplizierteste Lösung im Park. Iss früh oder spät, halb
 zwölf oder ab halb drei.
 
@@ -603,7 +603,7 @@ zwölf oder ab halb drei.
 
 ### Ist das Toverland einen Besuch wert?
 
-Ja, besonders für Achterbahnfans, die genug von Schlangen haben. Der Park ist mit
+Ja, besonders für Achterbahnfans, die genug von Warteschlangen haben. Der Park ist mit
 gut einer Million Gästen pro Jahr klein im Vergleich zum Efteling oder zum
 Europa-Park, hat aber mit [Troy](ref:attractiepark-toverland/troy) eine Holzachterbahn, die
 bei den Golden Ticket Awards 2026 als fünftbeste Europas abschnitt, und mit
@@ -641,7 +641,7 @@ Wildfire im schwedischen Kolmården auf 12, [Balder](ref:liseberg/balder) im
 [Colossos](ref:heide-park/colossos-kampf-der-giganten) im [Heide Park](ref:heide-park) auf 18.
 Troy kam auf Platz 24, fünf Plätze vor Joris en de Draak. Nach den Angaben des
 Parks ist sie mit 35 Metern Höhe, 1.077 Metern Länge und 90 km/h die höchste,
-längste und schnellste Holzachterbahn der Beneluxstaaten, und ihre Schlange ist
+längste und schnellste Holzachterbahn der Beneluxstaaten, und ihre Warteschlange ist
 deutlich kürzer als die ihrer GCI-Schwester im Efteling.
 
 ### Was ist 2026 neu im Toverland?
@@ -701,7 +701,7 @@ Und die zwei, um die es hier ging, mit ihren aktuellen Zahlen:
 [Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Fahr an der Ausfahrt Sevenum einmal raus statt vorbei. Und wenn du dann bei Troy
-sitzt und hinter dir wartet keiner: Steig aus, lauf durch die leere Schlange und fahr nochmal. Und
+sitzt und hinter dir wartet keiner: Steig aus, lauf durch die leere Warteschlange und fahr nochmal. Und
 danach noch einmal, bis dein Rücken sein Veto einlegt. An einem Dienstag im Juni klappt das hier. In den meisten
 anderen Parks Europas kannst du es vergessen.
 

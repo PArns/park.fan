@@ -66,7 +66,7 @@ deutschen Zeit: 21 Uhr dort ist 22 Uhr bei uns.
 ## Final Exhibit und die anderen Mazes
 
 In [Final Exhibit](ref:alton-towers/final-exhibit) gehst du durch die
-vergessene Sammlung eines Mannes, den der Park nur „The Curator" nennt. Jeder
+vergessene Sammlung eines Mannes, den der Park nur „The Curator“ nennt. Jeder
 Raum hat ein dunkles Geheimnis, und nicht jedes Ausstellungsstück ist so leblos,
 wie es aussieht. Hinter den Archivtüren geht es laut Parkseite nur noch in eine
 Richtung. Empfohlen ist das Maze **ab 12 Jahren**, wie alle vier Thrill-Mazes.

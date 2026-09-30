@@ -1,5 +1,5 @@
 ---
-title: 'Der Tagesplaner rechnet nach, bevor du in der falschen Schlange stehst'
+title: 'Der Tagesplaner rechnet nach, bevor du in der falschen Warteschlange stehst'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 updatedAt: '2026-09-25'
@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Ein Wartezeiten-Feed sagt dir, wie lang die Schlange gerade ist. Ob deine
+  Ein Wartezeiten-Feed sagt dir, wie lang die Warteschlange gerade ist. Ob deine
   Liste bis zum Parkschluss durchkommt, sagt er nicht, das merkst du selbst,
   meistens gegen zwei Uhr nachmittags. Dafür gibt es jetzt den
   Tagesplaner: deine Bahnen auf einer Zeitleiste, jeder Block so hoch wie seine
@@ -48,7 +48,7 @@ seo:
 ---
 
 Der Plan im Kopf hält bis ungefähr zwei Uhr nachmittags. Bis dahin hast du drei
-von acht Bahnen geschafft, stehst in der falschen Schlange und weißt, dass sich
+von acht Bahnen geschafft, stehst in der falschen Warteschlange und weißt, dass sich
 das nicht mehr ausgeht. Die Zahl über dem Eingang stimmt dabei die ganze Zeit.
 Über den Rest deiner Liste steht dort nichts.
 
@@ -132,7 +132,7 @@ lang genug ist, dass die Kurven weit auseinanderlaufen.
 Da stecken drei Muster drin, und jedes verlangt eine andere Antwort.
 [TRON](ref:magic-kingdom-park/tron-lightcycle-run) ist den ganzen Tag teuer und
 wird zum Abend hin noch teurer. Früh dranzugehen ist hier nie falsch, billiger
-wird es dadurch aber auch nicht: Es bleibt die längste Schlange, in der du an
+wird es dadurch aber auch nicht: Es bleibt die längste Warteschlange, in der du an
 diesem Tag stehst.
 [Jungle Cruise](ref:magic-kingdom-park/jingle-cruise) läuft andersherum und
 sackt zum späten Abend hin weg. Wer sich dort nachmittags anstellt, zahlt ein
@@ -176,12 +176,12 @@ Entscheidung.
 
 1. **Alles muss vor Parkschluss drankommen.** Ein Plan mit einer Bahn weniger,
    die wirklich stattfindet, schlägt einen mit einer Bahn mehr, die es nicht
-   mehr wird. Gezählt wird der Moment, in dem du dich anstellst: Eine Schlange,
+   mehr wird. Gezählt wird der Moment, in dem du dich anstellst: Eine Warteschlange,
    in die du eine Viertelstunde vor Schluss noch hineinkommst, gilt. Und wenn
    etwas rausfliegt, dann zuerst, was der Knopf gerade selbst dazugeholt hat,
    nicht das, was du dir vorher überlegt hast. Unter den dazugeholten Bahnen geht
    eine zweite Runde auf derselben Bahn vor jeder ersten, danach die mit der
-   kürzesten erwarteten Schlange. Die Bahnen, für die die meisten hinfahren,
+   kürzesten erwarteten Warteschlange. Die Bahnen, für die die meisten hinfahren,
    bleiben am längsten drin.
 2. **Die Summe der Wartezeiten.** Danach war ja gefragt.
 3. **Die Uhrzeit, zu der du dich das letzte Mal anstellst.** Wo zwei
@@ -208,14 +208,14 @@ Eine Folge daraus mag ich besonders, weil sie niemand einprogrammiert hat: Der
 Planer schickt dich manchmal Kaffee trinken. Wenn du jetzt fünfzig Minuten
 anstehen müsstest, eine halbe Stunde später aber nur noch fünfzehn, dann kosten
 Bummeln und Anstehen zusammen weniger als Anstehen allein. Dieselbe Bahn,
-weniger Schlange, und du bist trotzdem früher wieder frei.
+weniger Warteschlange, und du bist trotzdem früher wieder frei.
 
 Was der Sortierer nicht anfasst: deine Mittagspause, jede Bahn, die du schon
 abgehakt hast, und jeden Block, dessen Uhrzeit bereits angefangen hat. Der
 letzte Punkt hat uns eine Weile beschäftigt, denn er ist der Unterschied
 zwischen „ich sortiere deinen Nachmittag“ und „stell dich bitte hinten wieder
 an“. Wer um 14 Uhr auf den Knopf drückt, steht um 14 Uhr in irgendeiner
-Schlange, und die verschiebt niemand mehr.
+Warteschlange, und die verschiebt niemand mehr.
 
 Und weil so ein Knopfdruck aus drei Blöcken elf machen kann, gibt es zum
 Ergebnis ein Rückgängig. Nur eins, nicht beliebig viele, aber es reicht für den
@@ -227,7 +227,7 @@ Am längsten haben wir an vier Stellen gesessen, an denen der Planer absichtlich
 weniger behauptet, als er könnte.
 
 **Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
-steht, wie weit die Vorhersagen für eine so lange Schlange mit so viel Vorlauf in
+steht, wie weit die Vorhersagen für eine so lange Warteschlange mit so viel Vorlauf in
 den letzten 45 Tagen im Schnitt von dem entfernt lagen, was der Tag dann
 wirklich brachte. Das gibt es bis 60 Tage im Voraus, weiter reicht die Messung
 noch nicht. (Von der Wettervorhersage wünsche ich mir das seit Jahren.) Ein
@@ -252,7 +252,7 @@ ein Sortier-Knopf würde dort nur so tun, als ob.
 **Ein vergangener Tag bleibt.** Der Kalender lässt dich einen Tag wieder öffnen,
 an dem du etwas geplant hattest, und die automatischen Knöpfe sind dort weg.
 Alles von Hand geht weiter: verschieben, abhaken, löschen. Ein gelaufener Tag
-ist eine Aufzeichnung, und dass du um eins wirklich in dieser Schlange standst,
+ist eine Aufzeichnung, und dass du um eins wirklich in dieser Warteschlange standst,
 ist der Grund, warum er überhaupt aufbewahrt wird.
 
 ## Er liegt in deinem Browser

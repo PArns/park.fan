@@ -118,7 +118,7 @@ const SCALE_LABELS = {
 const SCALE_LEGEND = [
   {
     term: 'Typisch',
-    def: 'Median der Tagesspitzen. An der Hälfte der gemessenen Tage war die längste Schlange kürzer.',
+    def: 'Median der Tagesspitzen. An der Hälfte der gemessenen Tage war die längste Warteschlange kürzer.',
     swatch: 'bg-primary/45',
   },
   {
@@ -245,7 +245,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Statistik',
-    body: 'Die längsten Schlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Der Abschnitt nennt die Zahl der aufgezeichneten Tage, und die beiden Verteilungen führen sie als eigene Spalte.',
+    body: 'Die längsten Warteschlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Der Abschnitt nennt die Zahl der aufgezeichneten Tage, und die beiden Verteilungen führen sie als eigene Spalte.',
     example:
       'Die Rangliste aus Kapitel 02, dazu die Monate und Wochentage mit ihrer Zahl an Messtagen.',
     demo: (
@@ -315,7 +315,7 @@ const FAQ = [
   {
     question: 'Was heißt „typisch“ und „voll“ bei einer Wartezeit?',
     answer:
-      'Typisch ist der Median der Tagesspitzen: In der Hälfte aller gemessenen Tage war die längste Schlange kürzer, in der anderen Hälfte länger. Voll ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem es besonders voll war. Der absolute Rekord steht separat daneben, damit ein einzelner Ausreißer die beiden Werte nicht verschiebt.',
+      'Typisch ist der Median der Tagesspitzen: In der Hälfte aller gemessenen Tage war die längste Warteschlange kürzer, in der anderen Hälfte länger. Voll ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem es besonders voll war. Der absolute Rekord steht separat daneben, damit ein einzelner Ausreißer die beiden Werte nicht verschiebt.',
   },
   {
     question: 'Sind 70 Minuten Wartezeit viel?',
@@ -367,16 +367,16 @@ export function ContentDE() {
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan ist in einer Warteschlange entstanden. Taron, Nachmittag, die Anzeige sagte etwas
-          Dreistelliges, und keiner in der Schlange wusste, ob das jetzt Pech war oder einfach
+          Dreistelliges, und keiner in der Warteschlange wusste, ob das jetzt Pech war oder einfach
           Dienstag.
         </Lead>
         <P>
-          Die Frage ist geblieben, die Schlange zum Glück nicht. Eine aktuelle Wartezeit zu zeigen,
-          ist der leichte Teil: Die Parks veröffentlichen sie meist selbst, am Eingang und in ihren
-          eigenen Apps, die aber gern nur im Park-WLAN funktionieren, also erst, wenn du schon drin
-          bist. Interessant wird die Zahl erst, wenn daneben steht, wie ein normaler Tag an dieser
-          Bahn aussieht, wann die Schlange erfahrungsgemäß kürzer wird und ob heute überhaupt ein
-          guter Tag ist.
+          Die Frage ist geblieben, die Warteschlange zum Glück nicht. Eine aktuelle Wartezeit zu
+          zeigen, ist der leichte Teil: Die Parks veröffentlichen sie meist selbst, am Eingang und
+          in ihren eigenen Apps, die aber gern nur im Park-WLAN funktionieren, also erst, wenn du
+          schon drin bist. Interessant wird die Zahl erst, wenn daneben steht, wie ein normaler Tag
+          an dieser Bahn aussieht, wann die Warteschlange erfahrungsgemäß kürzer wird und ob heute
+          überhaupt ein guter Tag ist.
         </P>
         <P>
           Abfotografiert ist hier nichts. Jede Karte, jedes Badge und jede Tabelle weiter unten ist
@@ -414,11 +414,11 @@ export function ContentDE() {
         icon={Gauge}
       >
         <P>
-          Am Eingang von Taron stehen 70 Minuten, und das ist auch schon alles. Die Schlange staut
-          sich bis zur ersten Treppe zurück, auf dem Handy steht dieselbe Zahl, und keine der beiden
-          verrät dir, ob du dich jetzt anstellen solltest oder besser nach dem Mittagessen. Auf
-          park.fan stehen vier weitere Angaben daneben: eine Auslastungsstufe, ein Trend, die zweite
-          Warteschlange und die Mindestgröße.
+          Am Eingang von Taron stehen 70 Minuten, und das ist auch schon alles. Die Warteschlange
+          staut sich bis zur ersten Treppe zurück, auf dem Handy steht dieselbe Zahl, und keine der
+          beiden verrät dir, ob du dich jetzt anstellen solltest oder besser nach dem Mittagessen.
+          Auf park.fan stehen vier weitere Angaben daneben: eine Auslastungsstufe, ein Trend, die
+          zweite Warteschlange und die Mindestgröße.
         </P>
 
         <BareNumberVsCard
@@ -434,21 +434,21 @@ export function ContentDE() {
             „Sehr hoch&ldquo; ist dabei keine Geschmacksfrage. Taron liegt im Mittel bei{' '}
             {TARON_BASELINE} Minuten, {TARON_WAIT_NOW} sind davon rund 156 Prozent, und die Stufen
             wechseln bei 60, 89, 110, 150 und 200 Prozent. Ab 150 heißt sie „Sehr hoch&ldquo;. Der
-            kleine Pfeil daneben kommt aus den letzten Messungen und sagt, ob die Schlange gerade
-            wächst oder abgebaut wird.
+            kleine Pfeil daneben kommt aus den letzten Messungen und sagt, ob die Warteschlange
+            gerade wächst oder abgebaut wird.
           </P>
           <PG>
-            Der zweite Wert auf der Karte ist die Single-Rider-Schlange. Viele Bahnen führen mehrere
-            Warteschlangen parallel, und welche davon es gibt, erfährt man am Eingang oft erst, wenn
-            man schon in der falschen steht. Dazu die Mindestgröße, damit niemand mit einem 130
-            Zentimeter großen Kind quer durch den Park läuft, nur um an der Messlatte eine sehr
-            lange Diskussion anzufangen.
+            Der zweite Wert auf der Karte ist die Single-Rider-Warteschlange. Viele Bahnen führen
+            mehrere Warteschlangen parallel, und welche davon es gibt, erfährt man am Eingang oft
+            erst, wenn man schon in der falschen steht. Dazu die Mindestgröße, damit niemand mit
+            einem 130 Zentimeter großen Kind quer durch den Park läuft, nur um an der Messlatte eine
+            sehr lange Diskussion anzufangen.
           </PG>
         </div>
 
         <DemoFrame
           label="Zwei Bahnen, dieselbe Minute"
-          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Schlange wächst, die andere baut ab, und das nur ein paar Themenbereiche weiter. Auf der Parkseite stehen alle Bahnen des Parks so beisammen, gruppiert nach Bereichen."
+          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Warteschlange wächst, die andere baut ab, und das nur ein paar Themenbereiche weiter. Auf der Parkseite stehen alle Bahnen des Parks so beisammen, gruppiert nach Bereichen."
           href={PARK}
           hrefLabel="Phantasialand auf park.fan →"
         >
@@ -467,14 +467,15 @@ export function ContentDE() {
         >
           <IntroWithAside
             value={`${TARON_RECORD} Min.`}
-            label="Tarons längste gemessene Schlange"
+            label="Tarons längste gemessene Warteschlange"
             note="Am 16. Juli 2026, in den Sommerferien. Ein einziger Tag von 365, und deshalb rechnet die Skala mit Perzentilen statt mit dem Maximum."
           >
             <P>
               Um eine Zahl einzuordnen, braucht es zwei Vergleichswerte und die Angabe, worauf sie
               beruhen. Bei park.fan sind das der Median der Tagesspitzen und das 90. Perzentil
-              derselben Reihe. Übersetzt aus dem Statistischen: Wie lang ist die längste Schlange
-              des Tages normalerweise, und wie lang war sie an den vollsten zehn Prozent der Tage.
+              derselben Reihe. Übersetzt aus dem Statistischen: Wie lang ist die längste
+              Warteschlange des Tages normalerweise, und wie lang war sie an den vollsten zehn
+              Prozent der Tage.
             </P>
           </IntroWithAside>
 
@@ -589,7 +590,7 @@ export function ContentDE() {
             Diese Tabelle ist der Grund, warum wir jede Wartezeit aufheben, auch die langweiligen
             vom Dienstagvormittag. Eine Live-Zahl lässt sich abfragen, wenn jemand fragt. Einen
             Median über jeden gemessenen Dienstag rechnet niemand mal eben aus, während du in der
-            Schlange aufs Handy schaust.
+            Warteschlange aufs Handy schaust.
           </Highlight>
         </SectionShell>
       </Ambience>
@@ -604,14 +605,14 @@ export function ContentDE() {
       >
         <P>
           „Früh kommen&ldquo; ist der Rat, den jeder gibt, gern auch Leute, die selbst erst zum
-          Mittagessen eintreffen. Er stimmt nur, wenn die Schlange im Lauf des Tages überhaupt
+          Mittagessen eintreffen. Er stimmt nur, wenn die Warteschlange im Lauf des Tages überhaupt
           wächst, und das tut sie längst nicht überall. Sechs Bahnen aus demselben Park, dieselbe
           Tabelle, dasselbe Jahr:
         </P>
 
         <DemoFrame
           label="Das echte Stundenprofil, gerade eben"
-          note="Live aus dem Stundenprofil des Parks. Fett steht die stärkste Stunde jeder Bahn, und die liegt bei den sechs Bahnen keineswegs überall gleich. Eine Stunde wird erst zur Spalte, wenn sie mindestens zehn Messtage an dieser Bahn hat, mindestens 40 Prozent der bestgemessenen Stunde erreicht und von mindestens der Hälfte der Bahnen gemeldet wird. Das wirft die Randzeiten raus, in denen sonst eine einzige Hotelgäste-Schlange für den ganzen Morgen spräche."
+          note="Live aus dem Stundenprofil des Parks. Fett steht die stärkste Stunde jeder Bahn, und die liegt bei den sechs Bahnen keineswegs überall gleich. Eine Stunde wird erst zur Spalte, wenn sie mindestens zehn Messtage an dieser Bahn hat, mindestens 40 Prozent der bestgemessenen Stunde erreicht und von mindestens der Hälfte der Bahnen gemeldet wird. Das wirft die Randzeiten raus, in denen sonst eine einzige Hotelgäste-Warteschlange für den ganzen Morgen spräche."
           href={PARK}
           hrefLabel="Phantasialand auf park.fan →"
         >
@@ -780,7 +781,7 @@ export function ContentDE() {
         <P>
           Alles aus den ersten vier Kapiteln steht auf park.fan auf einer einzigen Seite pro Park,
           gebaut nach der Reihenfolge, in der man fragt: Hat der Park heute auf? Regnet es gleich?
-          Wie lang ist die Schlange? Und wann wäre ich besser gekommen?
+          Wie lang ist die Warteschlange? Und wann wäre ich besser gekommen?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -857,10 +858,10 @@ export function ContentDE() {
           <div className="space-y-4 pt-4">
             <P>
               Der zweite Teil passiert nachts, während die Parks zu haben. „Wie lang ist Tarons
-              Schlange an einem typischen Dienstag“ ist ein Median über jeden gemessenen Dienstag
-              des letzten Jahres. So etwas rechnet man nicht los, wenn jemand die Seite aufruft,
-              sonst stünde man vor der Seite gleich noch einmal an. Es muss fertig sein, bevor die
-              Frage kommt.
+              Warteschlange an einem typischen Dienstag“ ist ein Median über jeden gemessenen
+              Dienstag des letzten Jahres. So etwas rechnet man nicht los, wenn jemand die Seite
+              aufruft, sonst stünde man vor der Seite gleich noch einmal an. Es muss fertig sein,
+              bevor die Frage kommt.
             </P>
             <P>
               Sechs Schritte in fester Reihenfolge, jede Nacht neu. Jeder liest, was der vorige
@@ -977,7 +978,7 @@ export function ContentDE() {
           <PersonaBlock
             icon={BarChart3}
             who="Vielfahrer, drei Parks in einer Woche"
-            question="„Wo lohnt Rope Drop, und ist die Schlange gerade wirklich außergewöhnlich?“"
+            question="„Wo lohnt Rope Drop, und ist die Warteschlange gerade wirklich außergewöhnlich?“"
             steps={[
               <>
                 Auf der Parkseite die Übersicht der Rope-Drop-Bahnen, sortiert nach gesparten
@@ -1021,8 +1022,8 @@ export function ContentDE() {
                 Attraktionen mit Entfernung und aktueller Wartezeit.
               </>,
               <>
-                Trendpfeil beachten. Eine fallende Schlange in der letzten Stunde vor Schluss ist
-                oft der kürzeste Moment des ganzen Tages.
+                Trendpfeil beachten. Eine fallende Warteschlange in der letzten Stunde vor Schluss
+                ist oft der kürzeste Moment des ganzen Tages.
               </>,
             ]}
           />

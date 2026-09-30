@@ -9,6 +9,14 @@ It exists because of one hard requirement in [`CLAUDE.md`](../CLAUDE.md): **no t
 may read as AI-generated.** Not as a matter of taste. A reader who smells a language model stops
 trusting the numbers next to it, and the numbers are the entire product.
 
+**What slop is.** Merriam-Webster made it the word of 2025: "digital content of low quality that is
+produced usually in quantity by means of artificial intelligence". For prose, Wikipedia's field
+guide names the mechanism: a model "tends to regress to the mean; that is, the result tends toward
+the most statistically likely result that applies to the widest variety of cases", and so "their
+output will often tend toward advertisement-like writing, or like the prose of a travel guide". A
+theme-park site is a travel guide. Every rule below is a way of putting back the specific fact
+that the average sentence replaced.
+
 The rules below are derived from the field guides that professional editors actually use to spot
 generated text — Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
 and its German counterpart [Anzeichen für KI-generierte Inhalte](https://de.wikipedia.org/wiki/Wikipedia:Anzeichen_f%C3%BCr_KI-generierte_Inhalte),
@@ -26,7 +34,7 @@ Related, and narrower:
 
 ## 0. Read this before you start deleting words
 
-Two caveats, both from the people who wrote the field guides, and both load-bearing:
+Two caveats, both from the people who wrote the field guides, and both matter:
 
 **Detectors do not work, and neither do you.** GPTZero and its kind have non-trivial error rates,
 and humans asked to sort AI text from human text perform at close to chance. So this document is
@@ -34,9 +42,12 @@ a **writing** guide, not a detection guide. Never accuse a text of being generat
 trips one item here. A single sign is noise; a text is only in trouble when several land at once.
 
 **Some signs are strong enough on their own.** The humanizer skill (see Sources) splits its list
-in two, and we follow it. A **strong** tell is fixed on sight: the em dash in running text (§4.1),
-the aphoristic closer (§2.8), `nicht X, sondern Y` at the edge of a section (§2.1), an honesty
-claim (§3.3), an invented detail (§1.8), a heading that asks and then gives an order (§5.6).
+in two, and we follow it. A **strong** tell is fixed on sight: the aphoristic closer (§2.8),
+`nicht X, sondern Y` at the edge of a section (§2.1), an honesty or authenticity claim (§3.3), an
+invented detail or a placeholder (§1.8), a disclaimer that names nobody (§1.9), a heading that
+asks and then gives an order (§5.6). The em dash (§4.1) is banned as house style, not as a tell:
+the model this site is written with dropped from 12.9 to 0.05 per 1,000 words between two
+versions (Arize, September 2026).
 Everything else is **weak**: a transition word, a triad,
 a short sentence, a rhetorical question. A weak tell matters only when several sit in the same
 passage.
@@ -75,6 +86,12 @@ person would state a fact and move on.
 | `marks a pivotal moment for the park`         | `was the park's first new coaster since 2009` |
 | `stands as a testament to`                    | cut                                           |
 | `hinterlässt einen bleibenden Eindruck`       | say what a rider actually notices             |
+
+**Canned notability** is the 2025 form of it. Wikipedia lists `independent coverage`,
+`trade publications` and `cited/featured/profiled in` as phrases that "hit readers over the head
+with claims of notability". Ours would be `vielfach ausgezeichnet`, `preisgekrönt`, `in zahlreichen
+Medien`, `award-winning`, `consistently ranked among`. An award has a name and a year, or it is not
+in the sentence.
 
 Nothing on this site "reflects a broader trend". A ride is a ride, a queue is a number of
 minutes, and a park is a place with opening hours.
@@ -129,6 +146,10 @@ a fact or on the signature.
 optimism. If there is a real problem, name it with a date and a number; otherwise there is no
 paragraph here.
 
+The news version is the **send-off**: `Man darf gespannt sein.`, `Es bleibt spannend.`, `The future
+looks bright.`, `Exciting times ahead.` It ends a post on a mood because the facts ran out. End on
+the last fact, or on what is not yet known and who could say (§1.8).
+
 ### 1.7 The sentence that claims nothing
 
 This is the heart of it, and the reason the vocabulary lists in §3 are the least important part
@@ -164,7 +185,9 @@ them would have been fine on its own.
 `letztlich`, `tendenziell`, `durchaus`, `in many ways`, `arguably`, `it could be argued`. Written
 by a person, a hedge marks real uncertainty and belongs in the sentence. Written by a model, it
 is an apology for a claim it did not check. Ours name what is uncertain instead: not `die Zahl
-ist tendenziell höher` but `die Zahl steht auf 13 gemessenen Tagen`.
+ist tendenziell höher` but `die Zahl steht auf 13 gemessenen Tagen`. One hedge is often honest;
+the tell is the **stack**: `kann unter Umständen möglicherweise`, `könnte eventuell`, `could
+potentially`, `might arguably`. `pnpm check:prose` flags the stacks, not the single word.
 
 **Business verbs promise motion and deliver none.** `optimieren`, `ermöglichen`, `begleiten`,
 `abholen`, `revolutionieren`, `transformieren`, `skalieren`, and in English `leverage`, `unlock`,
@@ -199,6 +222,18 @@ zehn am Eingang`.
 What cannot be checked is left out. A gap in a news post becomes a sentence saying what is not
 known (`Six Flags sagt nicht, ob X2 abgerissen wird`), and that sentence is information.
 
+The same rule forbids **placeholder text**: `[Park Name]`, `2026-xx-xx`, `XX Minuten`, `TBD`,
+`(Add link here)`. `pnpm check:prose` fails on them in every file it reads.
+
+### 1.9 A gap has an owner
+
+The generated version of the sentence above is the **disclaimer that names nobody**: `Genaue
+Angaben sind nicht öffentlich dokumentiert.`, `Basierend auf den verfügbaren Informationen …`,
+`While specific details are limited …`, `not widely disclosed`. Wikipedia lists disclaimers about
+knowledge cutoffs and source availability among the signs of a chatbot's answer. The difference
+from ours is one word: who. `Six Flags sagt nicht, ob …` names the party that is silent, and a
+reader can go and ask. `nicht öffentlich dokumentiert` names nobody and cannot be checked.
+
 ---
 
 ## 2. Sentence shape — the tells that survive a vocabulary pass
@@ -213,6 +248,13 @@ The most recognisable cadence in both languages.
 - German: `nicht nur X, sondern auch Y` · `es geht nicht um X, sondern um Y` ·
   `X ist kein Y, sondern ein Z`
 - English: `not just X, but Y` · `it isn't X — it's Y` · `Y rather than X`
+- Dutch `niet alleen … maar ook`, French `non seulement … mais aussi` and `ce n'est pas …, c'est …`,
+  Spanish `no solo … sino`, Italian `non solo … ma anche` and `non è …, è …`, and the tourism
+  formula of every language: `Non è un hotel, è un'esperienza.`
+
+In 2026 the English shape has moved from `not just X but Y` to the **contrast reframe**, `It isn't
+a queue, it's a waiting room`, which Arize counted as one of the six habits of the model this site
+is written with. Same fix: say the second half and drop the first.
 
 Two or three in a long post is normal writing. Eight is a machine. Budget: **at most one per
 1,000 words**, and never as the opening or closing sentence of a section, where it does the most
@@ -349,7 +391,9 @@ September`) and counted the halves as sentences, which is why the German figure 
 Three very short sentences in a row: `Die Bahn ist zu. Für immer. Das war's.` It reads like an
 advert, and it is what a model writes when it wants punch; the anti-ai-slop-writing ruleset calls
 it parataxis and bans it. One short sentence after a long one is rhythm. Three in a row is a tic.
-Connect them with what relates them: `weil`, `aber`, `sodass`, a comma, a semicolon.
+Connect them with what relates them: `weil`, `aber`, `sodass`, a comma. Not a semicolon in German
+or French, where practitioners list the academic semicolon as a tell of its own; the Economist's
+finding that models use _fewer_ of them (§2.9) was measured on English.
 
 `pnpm check:prose` flags three sentences of five words or fewer in a row inside one paragraph.
 Lists and quotations are left out, because a list item is not a sentence and a quotation keeps
@@ -379,7 +423,24 @@ questions in a row are a triad (§2.2). `pnpm check:prose` flags `Das Ergebnis?`
 `Die Antwort?`, `Der Haken?` and their English twins, and a heading that asks and answers in one
 line (`Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist`) as a candidate.
 
-### 2.13 The product as protagonist
+### 2.13 Things that talk, and the product as protagonist
+
+**A queue shows nothing, a number says nothing, and a calendar knows nothing.** `Was die
+Warteschlangen gerade jetzt anzeigen`, `Welche Tage die ruhigsten sind, zeigt der Kalender`, `weil
+die Daten sagen, dass ich ihn nicht brauche`, `Was verrät die Wartezeit-Historie wirklich?`, `die
+Karte verschweigt das nicht`, `the data says`, `the numbers tell a different story`. Each hands a
+person's verb (sagen, zeigen, verraten, wissen, verschweigen, lügen) to an object, so that the
+sentence sounds like a scene instead of a statement. Write what is there and where: `Die
+aktuellen Wartezeiten stehen auf der Parkseite, alle fünf Minuten neu.` `Im Kalender sind die
+ruhigsten Tage grün.` `Nach unseren Messungen brauche ich ihn nicht.` A display or a board that
+literally shows a figure is fine (`Am Eingang stehen 70 Minuten`, §3.3); the queue itself never
+announces anything.
+
+The travel-guide version is **false agency**: `Der Park lädt zum Verweilen ein`, `Die Bahn sorgt
+für Nervenkitzel`, `the ride promises`, `delivers thrills`. Say what a visitor does or gets.
+`pnpm check:prose` flags both families.
+
+**The product as protagonist** is the same move with our own software as the subject:
 
 `Der Planer kennt die Öffnungszeit`, `Der Planer fragt zwei Dinge`, `Der Planer liest das als`,
 `ist dem Planer lieber`, `der Planer erfindet keine`: 27 times on the planner page. A feature
@@ -415,6 +476,10 @@ komisch.`, `Here's where it gets interesting.`, `The best part?` It is the self-
 one level down: not the text announcing its structure, but a paragraph announcing its own payoff.
 A person who has something odd to report reports it, and the reader decides whether it is odd.
 
+The colon version is the **set-up label**: `Das Beste:`, `Kurz gesagt:`, `Der Clou:`, `Die gute
+Nachricht:`, `Pro-Tipp:`, `Spoiler:`, `Pro tip:`, `Bottom line:`, `Here's why:`. A heading made of
+two words and a colon, in the middle of a paragraph.
+
 Cut the teaser and start with the fact. If the fact is not remarkable without the announcement,
 the announcement was covering for it. `pnpm check:prose` flags the common forms in German and
 English; the quieter ones (`Die Schienen waren das Problem.`, `Das Voletarium fällt aus der
@@ -445,6 +510,25 @@ that carries a fact the paragraph did not; turn the rest into the fact they were
 stop the paragraph a sentence earlier. `pnpm check:prose` flags the first two shapes; the third
 and the rate are for the review pass (§7.2).
 
+### 2.18 The register of the model that writes here
+
+The vocabulary lists in §3 were built from GPT-era studies. This site is written with Claude, and
+each model has its own idiolect (Rudnicka & Juzek 2026). Arize measured six habits in Claude's
+prose in September 2026 and named them. Four are covered elsewhere: signposts are the teaser
+(§2.16), contrast reframes §2.1, gotcha framing the question set-up (§2.12), and verdict
+intensifiers (`the honest answer is`, `die ehrliche Antwort`) the honesty family (§3.3). The other
+two:
+
+- **Salience flags**: telling the reader that something matters instead of showing why. `This
+matters.`, `Das ist wichtig, weil …`, `a fact worth internalising`, `deserves a moment`.
+- **Stock metaphors**: `load-bearing`, `earns its keep`, `earns its place`, `der Knackpunkt`,
+  `die Falle ist`, `verdient sich seinen Platz`, `tragende Rolle`.
+- Two adverbs that are fine alone and a tic in bulk: `quietly`, `genuinely` (`still`, `wirklich`).
+
+The same rules govern commit messages and PR bodies (CLAUDE.md). An edit summary that reads
+`refined for clarity and consistency while preserving the structure` is the Wikipedia example of
+a generated one; say what changed.
+
 ---
 
 ## 3. Vocabulary
@@ -474,6 +558,8 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 | Gesture nouns                    | `die Welt der …`, `Landschaft`, `Reise`, `Ökosystem`, `Raum`, plus abstract subjects: `Effizienz`, `Komplexität`, `Innovation`, `Vielfalt`, `das Erlebnis`                                                                                                                          |
 | Pseudo-wisdom                    | `am Ende des Tages`, `der Schlüssel liegt in`, `es kommt auf die richtige Balance an`, `die Zahlen sprechen für sich`, `die Tendenz ist steigend`, `ein nicht unerheblicher Teil`                                                                                                   |
 | Latinate where German has a word | `signifikant` → `deutlich`, `Parameter` → `Wert`, `Methodik` → `Verfahren`, `partizipieren` → `mitmachen` (Economist 2026: still the strongest single marker)                                                                                                                       |
+| Emphasis verbs and nouns         | `betonen`, `hervorheben`, `Bedeutung`, `Notwendigkeit`, `zunehmend`, `erheblich`, `innovativ`: the "emphasize" family is over-used by models in 24 of 34 languages (Juzek 2026)                                                                                                     |
+| Wikipedia's German extras        | `integraler Bestandteil`, `vielfältige Möglichkeiten`, `umfassender Leitfaden`, `bleibendes Vermächtnis`, `unerschütterlich`, `fasziniert weiterhin`, `festigt seinen Ruf`                                                                                                          |
 
 ### 3.2 English
 
@@ -500,8 +586,8 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Four house rules that predate this document and are not in anybody's research. They came out of
-real reviews of shipped text:
+Six house rules that are not in anybody's research. They came out of real reviews of shipped
+text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
    `um ehrlich zu sein`, no `honest` framing at all. It is the clearest tell we have found on our
@@ -517,6 +603,52 @@ real reviews of shipped text:
    phone, where the panels stack. Vertical order is usually safe (`weiter unten auf der
 Parkseite`); horizontal order almost never is; `daneben` only when the two things share a row
    at every breakpoint.
+5. **Im Deutschen heißt es `Warteschlange`, nie `Schlange`.** The product's word, used the same
+   way everywhere (§2.6): `die Warteschlange`, `die Single-Rider-Warteschlange`, `anstehen` for the
+   verb (`Schlange stehen` becomes `anstehen`, never `Warteschlange stehen`). The only exception is
+   a proper name that means the animal: `Schlange von Midgard`. 255 uses were changed on
+   2026-09-30; `pnpm check:prose` fails on a new one.
+6. **Our data is not announced as real.** `echte Wartezeiten`, `echte Messungen`, `real wait-time
+data`, `données réelles`, `datos reales`, `dati reali`: the same move as rule 1, a quality
+   claimed instead of shown. Say where the numbers come from and since when: `gemessene
+Wartezeiten seit Dezember 2025`, `measured every five minutes`. `real` stays where it contrasts
+   with something that is not (`die tatsächliche Wartezeit` against the forecast in R²).
+
+### 3.4 Travel-guide copy, in all six languages
+
+Wikipedia's line about "the prose of a travel guide" is the one that applies to us most, so the
+tourism register gets its own list. `pnpm check:prose` warns on every one of these:
+
+| Locale | Watch for                                                                                                                                                                                                                                                         |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| de     | `Nervenkitzel pur`, `pures Adrenalin`, `für Groß und Klein`, `für die ganze Familie`, `unvergesslich`, `ein echtes Highlight`, `Geheimtipp`, `Kronjuwel`, `Wow-Effekt`, `tauche ein`, `lass dich verzaubern`, `kommt jeder auf seine Kosten`, `liegt in der Luft` |
+| en     | `thrill-seekers`, `something for everyone`, `fun for the whole family`, `hidden gem`, `must-see`, `unforgettable`, `breathtaking`, `iconic`, `world-class`, `bustling`, `gleaming`, `towering`, `palpable`, `look no further`, `bucket list`                      |
+| nl     | `onvergetelijk`, `een echte aanrader`, `voor jong en oud`, `voor het hele gezin`, `voor ieder wat wils`, `verborgen parel`, `adembenemend`, `laat je betoveren`, `kloppend hart`                                                                                  |
+| fr     | `incontournable`, `inoubliable`, `à couper le souffle`, `pour toute la famille`, `petits et grands`, `au cœur de`, `plongez`, `laissez-vous emporter`, `à ne pas manquer`                                                                                         |
+| es     | `imprescindible`, `inolvidable`, `no te pierdas`, `sumérgete`, `para toda la familia`, `hay para todos los gustos`, `joya escondida`, `de visita obligada`, `déjate llevar`                                                                                       |
+| it     | `imperdibile`, `indimenticabile`, `immergiti`, `per tutta la famiglia`, `grandi e piccini`, `ce n'è per tutti i gusti`, `gemma nascosta`, `mozzafiato`, `tappa obbligata`                                                                                         |
+
+The **genre glitch** belongs here too: a sensory advert sentence inside a factual paragraph
+(`Der Duft gebrannter Mandeln liegt in der Luft`, `the air is thick with anticipation`). And the
+two openers every language has: the false range (`Von rasanten Achterbahnen bis hin zu
+gemütlichen Familienfahrten`) and the whether-opener (`Egal, ob du …`, `Of je nu …`, `Que vous
+soyez …`, `Ya seas …`, `Che tu sia …`). A French UI string that translates _headliner_ as
+`incontournable` is a judgement call; `attraction phare` says the same without the brochure.
+
+### 3.5 Dutch, French, Spanish and Italian
+
+No field guide exists for these four at the depth of the German and English ones. The lists
+below follow the same classes and are candidates, not verdicts:
+
+| Locale | Watch for                                                                                                                                                |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| nl     | `het is belangrijk om op te merken`, `in een snel veranderende wereld`, `de kracht van`, `naadloos`, `baanbrekend`, sentence-initial `Bovendien`         |
+| fr     | `il convient de souligner`, `dans un monde où`, `à l'ère du numérique`, `tirer parti de`, `mettre en avant`, sentence-initial `En outre`, `Qui plus est` |
+| es     | `es importante destacar`, `vale la pena señalar`, `en última instancia`, `profundizar en`, `embarcarse en`, `sin duda`                                   |
+| it     | `è importante sottolineare`, `vale la pena ricordare`, `una testimonianza di`, `epocale`, `vero e proprio` in bulk                                       |
+
+Italian schools teach avoiding repetition, so rotating synonyms (§2.6) is partly a native habit
+there: do not over-correct it.
 
 ---
 
@@ -535,6 +667,11 @@ a colon or a full stop. An em dash almost always marks a sentence that wanted to
 
 Two exceptions, both narrow: the `— Patrick` signature at the end of a post, and ranges or
 compounds that take an unspaced en dash (`90–140 cm`, `Venlo–Eindhoven`, `2007 – Ithaka`).
+
+Swapping the character does not swap the habit. German takes the spaced `–` for a parenthesis,
+and that is correct typography; a `–` that pivots a clause in every other paragraph is the same
+move as the em dash it replaced. The German posts averaged under one per 1,000 words on
+2026-09-30, which is fine.
 
 This applies to UI strings too, where `MAE — um wie viele Minuten …` should be
 `MAE: um wie viele Minuten …`. See the open backlog in §7.
@@ -607,7 +744,10 @@ shape reads generated even when its content is fine.
 ### 4.5 Emoji, quotes, separators
 
 - **No emoji as formatting** — never in front of a heading or a bullet.
-- **German quotes are `„…"`**, English `"…"`. Straight quotes in body copy are a paste artefact.
+- **German quotes are `„…“`**, English `"…"`. A German quote closed with the straight `"` is a
+  paste artefact, and mixing curly and straight quotes in one text is a tell Wikipedia lists on its
+  own. `pnpm check:prose` fails on `„…"`; it found four in three posts and eleven in the legal
+  pages on 2026-09-30.
 - **No `---` thematic breaks** between sections of a post. The heading is the break.
 - Watch for chat-export debris in anything pasted in: `contentReference`, `oaicite`,
   `turn0search0`, `[cite: 1]`, `:::writing`, `【…】`. If one of these reaches a file, the text was
@@ -635,6 +775,8 @@ The general rules apply everywhere. These are the additions per surface.
 - No cover image used twice among news posts ([media database](rules/media-database.md)).
 - A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
 - **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
+- **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it.
+- **No send-off** (§1.6): the post ends on its last fact or on the sources.
 
 ### 5.1 UI strings (`messages/*.json`)
 
@@ -675,7 +817,9 @@ the register looks like:
 They now answer the way the park-level ones do: the number, the source, the link
 (`liveDataA` names its three sources and says how disagreeing numbers are reconciled). One
 leftover to watch: five of the seven answers open on `Ja.`, which is right for a yes/no question
-and a tell the day a sixth one is added the same way.
+and a tell the day a sixth one is added the same way. An answer never opens by repeating its
+question (`Wann ist der Park am leersten? Der Park ist am leersten, wenn …`); `pnpm check:prose`
+compares each `…Q` key with the first sentence of its `…A` twin.
 
 ### 5.2 `alt` and `caption` (media sidecars)
 
@@ -713,7 +857,7 @@ generated: 210 parks, 42,756 attraction URLs, 5,820 calendar URLs (27,984 before
 sentence is not one text — it is tens of thousands of near-identical pages**, which is precisely
 what Google's spam policy calls scaled content abuse, whoever or whatever wrote it.
 
-So a template earns its place by carrying **per-entity facts** — the name, the park, the number,
+So a template is worth keeping only when it carries **per-entity facts** — the name, the park, the number,
 the date — and not adjectives that would be true of any of the 212. `Wartezeiten für {ride} im
 {park}: aktuelle Werte, typische Zeiten nach Wochentag.` is fine. `Erlebe die faszinierende Welt
 von {ride}` is forty-two thousand pages of the same sentence.
@@ -833,7 +977,7 @@ the rest is not:
 
 | Locale | Quotes      | Notes                                                                                  |
 | ------ | ----------- | -------------------------------------------------------------------------------------- |
-| de     | `„…"`       | Halbgeviertstrich `–` with spaces; `du`; no title case; decimal comma, `.` thousands   |
+| de     | `„…“`       | Halbgeviertstrich `–` with spaces; `du`; no title case; decimal comma, `.` thousands   |
 | en     | `"…"`       | No em dash (§4.1); decimal point, `,` thousands                                        |
 | nl     | `“…”`       | `je`; **never** the German `„` — 28 of them had been carried over; watch compounds too |
 | fr     | `« … »`     | Non-breaking space before `?` `!` `:` `;` and inside the guillemets                    |
@@ -854,6 +998,11 @@ else, contract. `pnpm check:prose` warns when fewer than a quarter of the forms 
 text of 500 words or more are contracted. It does not check the glossary, where a reference
 register is fine.
 
+This is a rule about sounding translated, not about sounding human. Contractions stopped being a
+human marker in 2026: the same cohort of models contracts at anywhere from 1,200 to over 30,000
+per million words (Rudnicka & Juzek 2026), and `it isn't X, it's Y` is now a model shape (§2.1).
+Contract where English speakers do; do not contract to look human.
+
 ---
 
 ## 7. The check before you publish
@@ -869,11 +1018,15 @@ pnpm check:prose --verbose    # every hit, not the first forty
 
 `scripts/check-prose.mjs` is the executable half of this document and holds the same lists, the
 way `attractionIsOutOfSeason()` is the SQL twin of the season rule: change one half and you
-change both. It walks the posts, the six message catalogs and every media sidecar, and it splits
-its output the way a regex can actually be trusted to:
+change both. It walks the posts, the six message catalogs, every media sidecar, the glossary
+(per term), the content pages and the hero copy in their `page.tsx`, the homepage announcement,
+the changelog, the three agent skills and `/llms.txt`, and it splits its output the way a regex
+can actually be trusted to:
 
-- **Errors** are rules with no legitimate exception — a `—` in a post body, a growing em-dash
-  count in a catalog, an honesty claim or chat register in a string that can only be about us.
+- **Errors** are rules with no legitimate exception: a `—` in a post body or in German or Dutch
+  prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that
+  can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
+  with a straight `"`.
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 
@@ -920,8 +1073,13 @@ grep -rnE "(^|[.!?] )(Darüber hinaus|Des Weiteren|Interessanterweise|Letztendli
 
 The heading and dek tells (§5.6), the product as protagonist (§2.13), the negation budget (§2.14),
 the definition colons (§2.15), staccato (§2.10), the ellipsis and exclamation budgets (§4.5), a
-`[!QUOTE]` without a source line
-and Markdown in a plain-text field are counted by the script itself; a grep cannot see paragraphs.
+`[!QUOTE]` without a source line, Markdown in a plain-text field, the participial tail in six
+languages (§2.3), colon pivots (§2.7), English without contractions (§6), quip series in a caption
+collection (§5.2) and an FAQ answer that repeats its question (§5.1) are counted by the script
+itself; a grep cannot see paragraphs.
+
+What it still cannot see is the wink at the end of a paragraph (§2.17), the quiet teaser
+(§2.16), and whether a sentence claims anything at all (§1.7). That is the review pass.
 
 ### 7.1 Measured state, 2026-09-10
 
@@ -1012,11 +1170,30 @@ German practice:
   [WortLiga: 20 Top-KI-Floskeln](https://wortliga.de/20-top-ki-floskeln-im-januar-2025/) (the
   German opener list in §1.7).
 
+Definitions and the model that writes here:
+
+- Merriam-Webster, [Word of the Year 2025: slop](https://www.merriam-webster.com/wordplay/word-of-the-year).
+- Arize, [Anthropic says it fixed Claude's writing](https://arize.com/blog/anthropic-says-it-fixed-claudes-writing/)
+  (September 2026): six measured habits (salience flags, verdict intensifiers, signposts,
+  contrast reframes, stock metaphors, gotcha framing) and the em-dash rate across two versions.
+  The source of §2.18 and of the contrast reframe in §2.1.
+- Rudnicka & Juzek, [Beyond "AI Language": the case for the idiolectal nature of LLM output](https://arxiv.org/abs/2608.06589)
+  (August 2026): each model has its own style; contraction rates within one 2026 cohort range from
+  1,200 to over 30,000 per million words (§6).
+- Juzek, [AI-associated lexical shifts across 34 languages](https://arxiv.org/abs/2605.25358)
+  (May 2026): "emphasize"-type verbs over-used in 24 of 34 languages (§3.1).
+- Paech et al., [Antislop](https://arxiv.org/abs/2510.15061) (2025): some patterns appear over
+  1,000 times as often in model output as in human text.
+
 Anti-slop rulesets:
 
 - jalaalrd, [anti-ai-slop-writing](https://github.com/jalaalrd/anti-ai-slop-writing) (MIT,
   directive v2, April 2026): the source of §1.8, §2.10, §2.11, the credential opener in §1.4, the
   budgets and the plain-text rule in §4.5, and the vocabulary and stock phrases added to §3 on
+  2026-09-30.
+- blader, [humanizer](https://github.com/blader/humanizer) and hardikpandya,
+  [stop-slop](https://github.com/hardikpandya/stop-slop): the colon set-ups in §2.16, the stacked
+  qualifier in §1.7, false agency in §2.13 and the send-off in §1.6 were taken from them on
   2026-09-30.
 - Flavio Copes, [Why I use anti-slop skills](https://flaviocopes.com/anti-slop/) (updated
   29 September 2026): the separate review pass in §7.2, the strong-versus-weak split from

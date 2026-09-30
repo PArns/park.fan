@@ -327,7 +327,7 @@ aber nur an der Kasse. Das 2-Tagesticket kostet 85 € beziehungsweise 65 € un
 Gesichtserkennung personalisiert.
 
 Der Online-Preis ist derselbe wie der Kassenpreis. In Soltau zahlst du an der Kasse bis zu 27 € mehr
-als online, hier sparst du mit dem Vorverkauf keinen Cent, nur die Schlange an der Kasse.
+als online, hier sparst du mit dem Vorverkauf keinen Cent, nur die Warteschlange an der Kasse.
 
 **Saisonkarte.** Die für 2026 kostete ab Saisonbeginn 135 €. Die für 2027 kostet **120 €** bis
 zum 24. März 2027, danach 140 €. Wer volljährig ist und bis zum 25. Oktober 2026 kauft, parkt 2027

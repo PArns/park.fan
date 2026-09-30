@@ -326,7 +326,7 @@ die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell.
 
 Bei Öffnung zuerst zu **Kondaa**, weil sie der Grund ist, aus dem die meisten
 überhaupt herkommen, und weil die erste Stunde in unseren Messungen (seit Ende
-Dezember 2025) die kürzeste Schlange des Tages hat. **Mecalodon** in Dock World
+Dezember 2025) die kürzeste Warteschlange des Tages hat. **Mecalodon** in Dock World
 zeigt bei uns dasselbe Muster, morgens und in der letzten Stunde kurz, gegen elf am vollsten: also
 direkt nach Kondaa oder erst am späten Nachmittag. **Turbine**, **Cobra** und
 **Calamity Mine** schwanken über den Tag kaum und passen in jede Lücke, während

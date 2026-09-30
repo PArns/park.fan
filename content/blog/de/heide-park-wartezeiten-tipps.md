@@ -35,7 +35,7 @@ seo:
   title: 'Heide Park 2026: Colossos, Wartezeiten und der beste Tag'
   description: >-
     Heide Park Soltau: echte Wartezeiten zu Colossos und Krake, dazu Halloween,
-    Express Ticket, Mindestgrößen und der Wochentag mit den kürzesten Schlangen.
+    Express Ticket, Mindestgrößen und der Wochentag mit den kürzesten Warteschlangen.
   keywords:
     - Heide Park
     - Heide Park Wartezeiten
@@ -231,7 +231,7 @@ die Fahrt nach Soltau auftauchen. Bei der Wildwasserbahn liegt es am Wetter,
 das zeigt das Tagesprofil weiter unten; für die Bobbahn gibt die Tabelle keinen
 Grund her.
 
-Mehr verrät, zu welcher Uhrzeit die Schlangen wachsen.
+Mehr verrät, zu welcher Uhrzeit die Warteschlangen wachsen.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -260,7 +260,7 @@ Die ruhigsten der kommenden Öffnungstage, live berechnet:
 
 ```
 
-Wenn der Tag doch einer von den vollen wird, lässt sich ein Teil der Schlangen
+Wenn der Tag doch einer von den vollen wird, lässt sich ein Teil der Warteschlangen
 kaufen. Das **Express Ticket** gibt es in vier Stufen: Bronze ab **25 €** für
 Wildwasserbahn, Big Loop und Bobbahn, Silber ab 39 € für fünf der großen
 Attraktionen, Gold ab 59 € für alle acht, Platin ab 99 € für alle acht ohne
@@ -399,7 +399,7 @@ elf Uhr gleichzeitig anziehen. **Flug der Dämonen** und **Desert Race** passen
 gut hinterher, und die letzte Stunde vor Betriebsschluss ist bei den großen
 Bahnen die zweitbeste Gelegenheit des Tages. Die Wasserbahnen hebst du dir für
 die wärmste Stunde auf, auch wenn die Wildwasserbahn genau dann ihre längste
-Schlange hat; nass wird man dort in der Hitze wenigstens gern. An den langen
+Warteschlange hat; nass wird man dort in der Hitze wenigstens gern. An den langen
 Herbsttagen fällt das weg, dann schließen die Wasserbahnen mit der Dämmerung.
 **Scream** und der **Big Loop** sind die Lückenfüller zwischen zwei großen
 Bahnen, und wer die Mazes gebucht hat, plant den Abend nicht weiter.
@@ -520,7 +520,7 @@ wie Rust. Er hat Bahnen, und bei vier davon war er in Deutschland der Erste.
 Dafür zahlst du mit 85 Hektar. Wenig Schatten, lange Wege zwischen den großen
 Bahnen, und an einem Augustsamstag merkst du jeden Meter. Wer das nicht will,
 nimmt einen Freitag im September statt eines Samstags im August, und diese
-Entscheidung fällt zu Hause, nicht erst in der Schlange vor Colossos.
+Entscheidung fällt zu Hause, nicht erst in der Warteschlange vor Colossos.
 
 Und wenn du im Oktober kommst: Die langen Samstage fangen erst um zwölf an. Wer
 um zehn vor dem Tor steht, wartet zwei Stunden auf einer Wiese.

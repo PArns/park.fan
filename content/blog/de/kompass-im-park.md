@@ -53,7 +53,7 @@ Fassaden, und nach jeder Ecke stehst du in einem anderen Land. Auf dem Parkplan
 ist Klugheim leicht zu finden. Schwerer ist es, dich selbst darauf zu finden,
 und dann noch die Richtung, in die du gerade schaust.
 
-Bisher hat dir park.fan im Park gesagt, wie lang die Schlange an
+Bisher hat dir park.fan im Park gesagt, wie lang die Warteschlange an
 [Black Mamba](ref:phantasialand/black-mamba?bare) gerade ist. Wo Black Mamba von
 dir aus liegt, stand nirgends. Seit dem 27. September steht es auf einem
 Kompass.
@@ -92,7 +92,7 @@ orangefarbene Warndreieck ist eine Störung, der Schraubenschlüssel eine
 Revision, und ein kleiner leerer Ring ist eine Bahn, die gerade zu hat. Daneben
 stehen so viele Namen, wie Platz haben, gekürzt, wo es eng wird.
 
-![Der Kompass im Disneyland Park: ein Kreis mit den Himmelsrichtungen, darin die Top-Attraktionen als Punkte mit Wartezeiten, ein blauer Kegel zeigt nach Westen. Darunter die Leiste „Vor dir“ mit Big Thunder Mountain Railroad. | Sonntagabend in Anaheim, der Blick geht nach Westen. Im Kegel liegen Big Thunder, eine Störung und die längste Schlange unter den Top-Attraktionen.](/media/kompass/kompass-blick-de.webp)
+![Der Kompass im Disneyland Park: ein Kreis mit den Himmelsrichtungen, darin die Top-Attraktionen als Punkte mit Wartezeiten, ein blauer Kegel zeigt nach Westen. Darunter die Leiste „Vor dir“ mit Big Thunder Mountain Railroad. | Sonntagabend in Anaheim, der Blick geht nach Westen. Im Kegel liegen Big Thunder, eine Störung und die längste Warteschlange unter den Top-Attraktionen.](/media/kompass/kompass-blick-de.webp)
 
 ## Vor dir, am nächsten, fixiert
 

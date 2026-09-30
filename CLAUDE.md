@@ -40,7 +40,8 @@ three lines, the rest belongs in the page.
 - **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
   posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
   `pnpm check:prose` decides the half a machine can, a separate review pass
-  ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
+  ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. German says `Warteschlange`,
+  never `Schlange`; a queue, a number or a calendar never „zeigt", „sagt" or „weiß" anything. Rules:
   [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
   and [docs/blog.md](docs/blog.md).
 - **Six locales.** A new UI string needs all of them.

@@ -121,7 +121,7 @@ Priority-Zugang ist schon weg.
 
 Wer den Tag davor im Park verbringt: Der
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) zeigt, an welchen
-Tagen die Schlangen kurz sind, und der
+Tagen die Warteschlangen kurz sind, und der
 [Halloween-Überblick](/blog/halloween-freizeitparks-2026) vergleicht Traumatica
 mit dem, was Movie Park, Walibi und Toverland in diesem Herbst machen.
 

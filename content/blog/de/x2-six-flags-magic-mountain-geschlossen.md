@@ -202,7 +202,7 @@ vorab fahren, offiziell eröffnete X am 12. Januar 2002. Am Ende hatte die Bahn
 45 Millionen Dollar gekostet. Was danach kam, beschrieb Theme Park Insider im
 Juni 2002: Die ersten Kritiken waren begeistert, doch nach wenigen Tagen
 öffnete X verspätet oder gar nicht. Wenn sie lief, schickte der Park oft nur
-einen Zug auf die Strecke, und die Schlange wuchs auf vier bis fünf Stunden. Im
+einen Zug auf die Strecke, und die Warteschlange wuchs auf vier bis fünf Stunden. Im
 Mai bot Six Flags an, Arrow die Baupläne für X und alle anderen Bahnen dieses
 Typs abzukaufen, für 10.000 Dollar in bar und den Verzicht auf die eigenen
 Forderungen. Anfang Juni nahm der Park X vom Netz. Ein Parksprecher nannte

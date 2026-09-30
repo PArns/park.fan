@@ -58,7 +58,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
     title: 'Beste Reisezeit für Freizeitparks',
     intro:
-      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 200 Parks, dazu Tricks für kurze Schlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
+      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 200 Parks, dazu Tricks für kurze Warteschlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
     kicker: 'park.fan · Reiseplanung',
     tagline:
       'Wann ein Park voll wird, ist kein Glücksspiel. Aus echten Wartezeiten von über 200 Parks zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',

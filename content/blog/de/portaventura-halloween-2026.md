@@ -41,7 +41,7 @@ seo:
 In [PortAventura Park](ref:portaventura-park) ist seit dem 19.
 September Halloween, und das bleibt so bis zum 15. November. Neu ist ein
 fünfter Horror-Pasaje, also ein Walkthrough mit Darstellern: **El Carnicero de
-Penitence**, auf Deutsch „der Metzger von Penitence". Im vergangenen Jahr gab es
+Penitence**, auf Deutsch „der Metzger von Penitence“. Im vergangenen Jahr gab es
 vier Pasajes.
 
 ## Worum es im neuen Pasaje geht
@@ -63,7 +63,7 @@ besser nach, bevor er ein Ticket kauft.
 ## Die fünf Pasajes und was sie kosten
 
 Keiner der Pasajes ist im Parkeintritt enthalten. Die Preise stehen auf der
-Ticketseite des Parks als „ab", je nach Tag kann es mehr werden.
+Ticketseite des Parks als „ab“, je nach Tag kann es mehr werden.
 
 | Ticket                    | Preis ab | Enthält                                             |
 | ------------------------- | -------- | --------------------------------------------------- |

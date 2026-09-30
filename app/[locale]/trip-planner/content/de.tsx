@@ -74,7 +74,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           35.
         </P>
         <P>
-          Zu jeder Zahl gehört ihr typischer Fehler, und der wächst mit der Schlange. Für die
+          Zu jeder Zahl gehört ihr typischer Fehler, und der wächst mit der Warteschlange. Für die
           Bahnen, deren Tageshöhe an diesem Samstag bei 35 Minuten oder darüber liegt, nennt die API
           15,4 Minuten, für die flacheren 10,9. An der Hälfte der Tage liegt die echte Wartezeit
           weiter daneben als dieser Wert. Am ausgewählten Block steht er deshalb als
@@ -203,11 +203,12 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           Manchmal schlägt der Planer vor, eine Runde zu warten, statt sich sofort anzustellen. Das
-          passiert, wenn die Schlange so weit einbricht, dass du mitsamt der Pause früher wieder
-          frei bist als beim sofortigen Anstellen; kürzer anzustehen allein reicht dafür nicht, denn
-          der Tag darf durch die Pause nicht später enden. Eine solche Pause dauert höchstens zwei
-          Stunden. An diese Grenze kommt sie kaum, denn sie lohnt sich nur, wenn sie kürzer ist als
-          die Schlange, die sie erspart, und dafür bräuchte es eine Schlange von über zwei Stunden.
+          passiert, wenn die Warteschlange so weit einbricht, dass du mitsamt der Pause früher
+          wieder frei bist als beim sofortigen Anstellen; kürzer anzustehen allein reicht dafür
+          nicht, denn der Tag darf durch die Pause nicht später enden. Eine solche Pause dauert
+          höchstens zwei Stunden. An diese Grenze kommt sie kaum, denn sie lohnt sich nur, wenn sie
+          kürzer ist als die Warteschlange, die sie erspart, und dafür bräuchte es eine
+          Warteschlange von über zwei Stunden.
         </P>
         <P>
           Eine Mittagspause um eins bleibt um eins, und eine abgehakte Bahn bleibt, wo sie ist;

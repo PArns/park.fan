@@ -413,7 +413,7 @@ veröffentlicht hat.
 ## Was die Zahlen sagen: gefühlt leer, gemessen voll
 
 Der Winter fühlt sich leer an. Es ist dunkel, es ist kalt, auf den Wegen steht
-Nebel, und der halbe Park ist beleuchtet statt bevölkert. Die Schlangen sind es
+Nebel, und der halbe Park ist beleuchtet statt bevölkert. Die Warteschlangen sind es
 nicht.
 
 Am deutlichsten steht das im Phantasialand. Der Dezember und der Januar liegen
@@ -465,7 +465,7 @@ Zwei andere Gründe bleiben übrig. Der erste ist die Kapazität: Die Parks
 veröffentlichen für den Winter eigene Attraktionslisten, Walibi Belgium und das
 Phantasialand nennen je drei geschlossene Bahnen, im Legoland steht bei den
 meisten Bahnen draußen „witterungsabhängig“. Weniger Bahnen bei gleicher
-Nachfrage ergeben längere Schlangen, und daran ändert die Temperatur nichts.
+Nachfrage ergeben längere Warteschlangen, und daran ändert die Temperatur nichts.
 
 Der zweite ist der Kalender. Walibi Winter hat 20 Betriebstage, Bobbejaanland
 18, Parc Astérix 16. Ein Sommerbesucher sucht sich aus fünf Monaten einen
@@ -552,7 +552,7 @@ Tagespreis drin, was in diesen Wochen im Park steht. Nach den Halloween-Wochen,
 in denen die Spukhäuser dort extra kosten, ist das eine Umstellung, an die man
 sich schnell gewöhnt.
 
-Was an deinem Wunschtag tatsächlich läuft und wie lang die Schlangen gerade
+Was an deinem Wunschtag tatsächlich läuft und wie lang die Warteschlangen gerade
 sind, steht den ganzen Winter über auf der jeweiligen Parkseite.
 
 — Patrick

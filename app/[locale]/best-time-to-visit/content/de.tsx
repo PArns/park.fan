@@ -65,7 +65,7 @@ const FAQ = [
   {
     question: 'Lohnt sich ein Besuch bei Regen?',
     answer:
-      'Oft ja. Schlechtes Wetter hält viele ab, und die Schlangen werden kürzer, gerade an Achterbahnen, die bei Regen weiterfahren. Der Geheimtipp funktioniert nur, solange nicht alle gleichzeitig darauf kommen. Deshalb rechnet unser Prognosemodell das Wetter gleich mit ein.',
+      'Oft ja. Schlechtes Wetter hält viele ab, und die Warteschlangen werden kürzer, gerade an Achterbahnen, die bei Regen weiterfahren. Der Geheimtipp funktioniert nur, solange nicht alle gleichzeitig darauf kommen. Deshalb rechnet unser Prognosemodell das Wetter gleich mit ein.',
   },
   {
     question: 'Wie finde ich den besten Tag für einen bestimmten Park?',
@@ -141,12 +141,12 @@ export function ContentDE() {
                   Zur Öffnung (<GlossaryTermLink termId="rope-drop">Rope Drop</GlossaryTermLink>)
                 </>
               ),
-              body: 'Die erste Stunde nach dem Einlass ist die beste des Tages. Wer pünktlich am Tor steht, fährt die großen Bahnen oft, bevor sich überhaupt Schlangen bilden.',
+              body: 'Die erste Stunde nach dem Einlass ist die beste des Tages. Wer pünktlich am Tor steht, fährt die großen Bahnen oft, bevor sich überhaupt Warteschlangen bilden.',
             },
             {
               icon: Users,
               title: 'Rund um die Mittagszeit',
-              body: 'Wenn alle beim Essen sitzen, werden die Schlangen kürzer. Nimm die Zeit für die beliebten Bahnen und iss später. Die Pommes schmecken um halb drei genauso.',
+              body: 'Wenn alle beim Essen sitzen, werden die Warteschlangen kürzer. Nimm die Zeit für die beliebten Bahnen und iss später. Die Pommes schmecken um halb drei genauso.',
             },
             {
               icon: Sun,
@@ -200,8 +200,8 @@ export function ContentDE() {
         >
           Ein Samstag in den Sommerferien bei bestem Wetter ist der Worst Case: alle haben frei,
           alle wollen raus, alle sind da. Wenn du flexibel bist, nimm lieber den Dienstag danach.
-          Derselbe Park wirkt dann, als hätte über Nacht jemand umgebaut und dabei die Schlangen
-          vergessen.
+          Derselbe Park wirkt dann, als hätte über Nacht jemand umgebaut und dabei die
+          Warteschlangen vergessen.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -234,7 +234,7 @@ export function ContentDE() {
         id="tactics"
         index="04"
         kicker="Clever spielen"
-        title="Tricks für kurze Schlangen"
+        title="Tricks für kurze Warteschlangen"
         icon={Sparkles}
       >
         <TouchpointGrid

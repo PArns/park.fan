@@ -209,7 +209,7 @@ nebelverhangene Gassen, in denen ganze Rudel von Darstellern gezielt Jagd auf
 Einzelne machen, dazu Pyro-Shows und eine Geräuschkulisse, die man auf der
 A5 Richtung Heimat noch im Ohr hat.
 
-Tagsüber ist Rust ein anderer Park, und einer mit erstaunlich kurzen Schlangen
+Tagsüber ist Rust ein anderer Park, und einer mit erstaunlich kurzen Warteschlangen
 für seine Größe. Der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps)
 rechnet das nach und erklärt nebenbei, warum ein Traumatica-Ticket im November
 die letzte Parkstunde kostet.
@@ -223,7 +223,7 @@ Programm, Termine und Altersregeln: [traumatica.com](https://traumatica.com/).
 Rund zwei Autostunden nordwestlich von Bottrop also, in Biddinghuizen:
 [Walibi Holland](ref:walibi-holland). Der Park betreibt eines der härtesten Halloween-Events der
 Niederlande und sortiert es so sauber nach Eskalationsstufen, dass sich
-Erstbesucher garantiert einmal in der falschen Schlange wiederfinden.
+Erstbesucher garantiert einmal in der falschen Warteschlange wiederfinden.
 
 Ganz unten stehen die **Halloween Spooky Days**: die Tagvariante, herbstlich
 dekoriert, harmlos, Kinder willkommen, Kürbis-Schnitzen-Niveau. Darüber die
@@ -437,7 +437,7 @@ Amun ablöst. Dazu kommen Scare Zones wie das clowneske **Psycho Circus**, der
 Fez-Clown oben lässt grüßen, 2026 als „The Final Act“ zum letzten Mal, oder
 **Arachnophobia** für alle, die Spinnen schon in Normalgröße nicht abkönnen. Bis
 auf Mine Blast kosten die Spukhäuser **extra**, als Zeitfenster-Ticket rund
-**6,50 bis 8,50 € pro Haus**; wer Schlangestehen hasst, nimmt den **Speedy
+**6,50 bis 8,50 € pro Haus**; wer Anstehen hasst, nimmt den **Speedy
 Pass** als Fast-Lane.
 
 ![Verrosteter alter Lastwagen mit Moos auf dem Blech, dahinter ein Gerüst mit Satellitenschüsseln | Ein echter Austin, kein Kulissenbau. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
@@ -685,7 +685,7 @@ Das Besucherlimit von fünf Millionen Gästen und der Winter Efteling stehen im
    [Toverlands](ref:attractiepark-toverland) **Fear Pass** oder
    [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** rechnen sich an vollen
    Halloween-Nächten ganz nüchtern: Ein Halloween-Abend ist kürzer als ein normaler Parktag, und jede Minute, die du
-   _nicht_ in der Schlange stehst, ist eine Minute mehr Panik fürs Geld.
+   _nicht_ in der Warteschlange stehst, ist eine Minute mehr Panik fürs Geld.
 
 Mehr als jedes Line-up entscheidet über den Abend aber, **wann du kommst.** Am
 vollsten wird es an den Wochenenden und am 31. Oktober, so sieht es auch unser
@@ -732,7 +732,7 @@ noch kein Oktober dabei, und Halloween musst du dir vorerst dazudenken:
 ## Wann du hingehst
 
 Für welche Nervenstärke du dich entscheidest, ist deine Sache. Nur springt dich
-in einer Schlange garantiert _niemand_ an, was bei diesen Preisen ärgerlich
+in einer Warteschlange garantiert _niemand_ an, was bei diesen Preisen ärgerlich
 ist. Welcher Tag der leerste ist, zeigen die Live-Wartezeiten und der
 Crowd-Kalender auf park.fan, den ganzen Herbst über.
 

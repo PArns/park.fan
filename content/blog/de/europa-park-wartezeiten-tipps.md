@@ -38,7 +38,7 @@ seo:
   title: 'Europa-Park Wartezeiten: kurz anstehen im vollsten Park'
   description: >-
     Europa-Park Wartezeiten, selbst gemessen: sonntags ist am wenigsten los,
-    samstags zahlst du an jeder Schlange drauf. Beste Reisezeit, Preise 2026, Anreise.
+    samstags zahlst du an jeder Warteschlange drauf. Beste Reisezeit, Preise 2026, Anreise.
   keywords:
     - Europa-Park Wartezeiten
     - Europa-Park Wartezeiten aktuell
@@ -68,7 +68,7 @@ stehst du in Rust kürzer an als im Phantasialand, das nur ein Drittel dieses
 Publikums hat. Das klingt nach einem Tippfehler in der Pressemappe.
 
 Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit dem 26.
-Dezember 2025, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
+Dezember 2025, Bahn für Bahn, und was gerade an den Warteschlangen steht, zeigt die
 [Parkseite](ref:europa-park?bare) alle fünf Minuten neu.
 
 Wer 2026 hinfährt, erwischt außerdem etwas zum letzten Mal. Am Eingang der
@@ -102,18 +102,18 @@ daneben:
 
 „Typisch“ ist dabei der Median aller Ablesungen, die „Spitze“ das 90. Perzentil,
 also der Wert, den nur jede zehnte Ablesung überschritten hat. Beides sagt nichts
-darüber, wie sich eine Schlange über den Tag bewegt.
+darüber, wie sich eine Warteschlange über den Tag bewegt.
 
 Das Voletarium fällt aus der Reihe. Sein Median ist der niedrigste der zehn
 längsten, seine Spitze reicht trotzdem an die der großen Achterbahnen heran. Ein
 Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
-jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
+jemand an, an einem vollen Vormittag reicht die Warteschlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
 
 Sonst ist die Liste unspektakulär, und genau das ist das Seltsame an ihr. Auf
 Voltron entfielen im ersten Jahr 3,25 Millionen Fahrten, er hat die längste
-Schlange im Park, und für einen Park mit über sechs Millionen Gästen ist **diese
-längste Schlange erstaunlich kurz**. Der Vergleich, gleiche Datenbasis, gleiche
+Warteschlange im Park, und für einen Park mit über sechs Millionen Gästen ist **diese
+längste Warteschlange erstaunlich kurz**. Der Vergleich, gleiche Datenbasis, gleiche
 Rechenmethode:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -133,15 +133,15 @@ Kinderachterbahn mit dünner Messbasis lassen wir nicht für einen ganzen Park
 sprechen, so gern sie das vielleicht täte.
 
 Mit rund einem Drittel des Publikums hat das Phantasialand im Parkschnitt
-spürbar längere Schlangen. Das liegt am Zuschnitt des Geländes, nicht an den
+spürbar längere Warteschlangen. Das liegt am Zuschnitt des Geländes, nicht an den
 Bahnen, nachgerechnet im [Phantasialand-Guide](/blog/phantasialand-tipps). Für
 das [Efteling](/blog/efteling-disney-der-niederlande) und das
 [Toverland](/blog/toverland-troy-wartezeiten-tipps) haben wir dieselbe Rechnung
 aufgemacht. Und in Paris, wo gut anderthalbmal so viele Gäste
 durchgehen, liegt der Parkschnitt ungefähr dort, wo in Rust die _längste_
-Schlange des Parks steht.
+Warteschlange des Parks steht.
 
-## Warum der größte Park die kürzesten Schlangen hat
+## Warum der größte Park die kürzesten Warteschlangen hat
 
 Wartezeit ist Nachfrage geteilt durch Kapazität, und die Beliebtheit einer Bahn
 steht dabei nur im Zähler. In der [Kunst des Wartens](/blog/die-kunst-des-wartens)
@@ -153,7 +153,7 @@ Achterbahnen, verteilt auf 95 Hektar. Ein Gast, der um zehn Uhr überlegt,
 was er als Nächstes macht, hat hier keine drei Optionen, sondern dreißig. Die
 Themenbereiche sind als Länder gebaut und liegen deshalb in einer langen Kette
 statt im Kreis um einen Hauptplatz. Der Weg von Kroatien nach Irland zieht sich wie
-ein Ikea-Samstag ohne Abkürzung. Das nervt in den Beinen und hilft gegen die Schlangen, weil es die Menschenmenge
+ein Ikea-Samstag ohne Abkürzung. Das nervt in den Beinen und hilft gegen die Warteschlangen, weil es die Menschenmenge
 über den Tag auseinanderzieht.
 
 Dazu kommt die Saisonlänge. Die Saison 2026 läuft vom 28. März bis zum 9. Januar 2027, durchgehend, mit zwei Ruhetagen an Weihnachten.
@@ -164,7 +164,7 @@ mit dieser Zahl werden 95 Hektar fertig, ohne ins Schwitzen zu kommen.
 
 ## Kein Fast Pass im Europa-Park, und was es stattdessen gibt
 
-Der Europa-Park verkauft keinen Warteschlangen-Pass. Du kannst an der Schlange
+Der Europa-Park verkauft keinen Warteschlangen-Pass. Du kannst an der Warteschlange
 mit der Kreditkarte wedeln, so viel du willst, vorbei kommst du damit nicht. Im
 [Phantasialand](ref:phantasialand?bare) klappt das mit dem
 [Quick Pass](/blog/phantasialand-tipps), in den
@@ -173,13 +173,13 @@ mit der Kreditkarte wedeln, so viel du willst, vorbei kommst du damit nicht. Im
 Das wiegt schwerer als die Fläche. Wo Vordrängeln verkauft wird, wandert
 Wartezeit von denen, die zahlen, zu denen, die nicht zahlen. Die
 Durchschnittswartezeit sinkt dadurch kein bisschen, sie verteilt sich nur
-ungleicher. In Rust kauft sich niemand an der normalen Schlange vorbei, und wer
+ungleicher. In Rust kauft sich niemand an der normalen Warteschlange vorbei, und wer
 über die VirtualLine kommt, hat seine Wartezeit nur woanders verbracht. Der
 Median, den wir messen, liegt deshalb nah an dem, was jeder erlebt.
 
 Vier Dinge gibt es trotzdem:
 
-**Single Rider.** An sechs Attraktionen gibt es eine eigene Schlange für Leute,
+**Single Rider.** An sechs Attraktionen gibt es eine eigene Warteschlange für Leute,
 die allein fahren und Restplätze auffüllen: [Arthur](ref:europa-park/arthur?bare),
 [blue fire](ref:europa-park/blue-fire-megacoaster?bare),
 [Eurosat](ref:europa-park/eurosat-cancan-coaster?bare),
@@ -190,11 +190,11 @@ eben nicht neben deiner Begleitung, was je nach Begleitung auch ein Vorteil sein
 kann. Welche Bahnen dabei sind, ändert der Park von Saison zu Saison.
 
 **Virtual Line.** Über die Park-App lässt sich für einzelne Attraktionen ein
-Zeitfenster reservieren, statt in der Schlange zu stehen. Im September 2026
+Zeitfenster reservieren, statt in der Warteschlange zu stehen. Im September 2026
 waren das sieben: blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium,
 Voltron und Wodan. Auch das kostet nichts, die Plätze sind aber knapp, und du
 kannst pro Ticket immer nur an einer Attraktion gleichzeitig virtuell anstehen.
-Bis dein Zeitfenster dran ist, darfst du woanders in der Schlange stehen.
+Bis dein Zeitfenster dran ist, darfst du woanders in der Warteschlange stehen.
 
 ```glossary-widget slug=single-rider
 
@@ -209,7 +209,7 @@ Aufpreis auf das Tagesticket.
 
 **Eurosat Coastiality.** Die VR-Variante der Eurosat hat einen eigenen Bahnhof
 und eigene Züge auf derselben Strecke. Wer 7 Euro für ein Zeitticket zahlt,
-fährt also die Eurosat mit VR-Brille, ohne sich in die normale Eurosat-Schlange
+fährt also die Eurosat mit VR-Brille, ohne sich in die normale Eurosat-Warteschlange
 zu stellen. Das ist das Nächste an einem gekauften Vorbeikommen, das der Park
 hat, und es gilt für genau diese eine Strecke. Der Alpenexpress Coastiality
 kostet 4 Euro pro Fahrt, das Kombiticket für alle drei VR-Angebote im Park
@@ -372,7 +372,7 @@ mehr, wo vorne ist. Daran ändert sich bis zur Schlussbremse nichts. Auf der Dre
 gelacht, weil niemand damit rechnet, dass eine Achterbahn mitten in der Fahrt
 stehen bleibt und sich dreht.
 
-Die Rekordliste ist so lang, dass sie eine eigene Schlange bräuchte. Längste Achterbahn mit Inversionen in
+Die Rekordliste ist so lang, dass sie eine eigene Warteschlange bräuchte. Längste Achterbahn mit Inversionen in
 Europa und sechstlängste weltweit, längste Katapultbahn Europas, weltweit die
 meisten Inversionen auf einer Katapultbahn, nach Parkangabe von 2024 gleichauf
 mit vier anderen. 2024 kam der Golden Ticket Award als beste neue Achterbahn der
@@ -451,7 +451,7 @@ von 1985, **[Pegasus](ref:europa-park/pegasus)** von 2006, der
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** von 1984, der
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Irland, sowie
 **[Arthur](ref:europa-park/arthur)**, eine hängende Antriebsbahn durch das
-Minimoys-Königreich, deren Schlange sich hinter keiner der großen Achterbahnen
+Minimoys-Königreich, deren Warteschlange sich hinter keiner der großen Achterbahnen
 verstecken muss. Und der
 **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dieselbe Strecke wie der
 Enzian, nur mit VR-Brille und bei uns als eigene Bahn geführt.
@@ -505,7 +505,7 @@ Bäuerin duzt einen, die Viecher tragen Strickschals, und irgendwann fällt eine
 auf, dass man in einer Dunkelfahrt grinst.
 **[Josefinas Kaiserliche Zauberreise](ref:europa-park/josefinas-magical-imperial-journey)**
 von 2022 ist die österreichische Antwort darauf, ruhiger, mit einer der kürzesten
-Schlangen im Park und damit die entspannteste Viertelstunde, die er zu bieten hat.
+Warteschlangen im Park und damit die entspannteste Viertelstunde, die er zu bieten hat.
 **[Jim Knopf](ref:europa-park/jim-button-journey-through-morrowland)** von 2018
 fährt durch Lummerland, und das
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** ist das
@@ -530,7 +530,7 @@ Bleiben die **Shows**, vom Eiskunstlauf über Akrobatik bis zu den
 Puppenspielen. Am 25. September 2026, dem letzten Tag der Sommersaison, führte
 unsere Datenbank für Rust 26 Shows mit zusammen über 170 Vorstellungen, die in
 Rulantica, in den Hotels und auf den Traumatica-Bühnen eingerechnet.
-Wartezeit-Statistiken erfassen davon nichts. Die Schlangen merken es trotzdem, denn wer gerade beim
+Wartezeit-Statistiken erfassen davon nichts. Die Warteschlangen merken es trotzdem, denn wer gerade beim
 Eiskunstlauf sitzt, steht so lange nirgends an.
 
 ## Euro-Mir: die letzte Saison
@@ -683,7 +683,7 @@ aussieht, zeigt der Kalender oben.
 Das klingt, als hätte ich die Liste falsch herum gelesen. Unsere Rope-Drop-Auswertung
 vergleicht für jede Attraktion die Wartezeit direkt zur Öffnung mit der
 höchsten Tagesspitze, die dort an einem vollen Tag gemessen wurde. Beim Voletarium
-ist die Schlange zur Öffnung nur ein Bruchteil dieser Spitze, und das ist mit
+ist die Warteschlange zur Öffnung nur ein Bruchteil dieser Spitze, und das ist mit
 Abstand die größte Ersparnis im ganzen Park.
 
 ```glossary-widget slug=rope-drop
@@ -705,7 +705,7 @@ seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 ![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel | Seit 2026 steht die Bahn im neuen Themenbereich Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
 Die Zeile, die mich beim ersten Mal überrascht hat, ist die von Silver Star. Um
-zehn und um elf steht dort die längste Schlange des Tages, ab zwölf wird sie
+zehn und um elf steht dort die längste Warteschlange des Tages, ab zwölf wird sie
 spürbar kürzer und zieht erst in den Abendstunden langer Sommertage wieder an.
 Eine 73-Meter-Bahn, die den ganzen Nachmittag unter ihren Möglichkeiten bleibt,
 weil alle schon morgens dort waren.
@@ -715,22 +715,22 @@ ihr Maximum um zehn oder um elf; nur Arthur, Atlantica und das Fjord-Rafting
 haben ihre Spitze erst am Nachmittag. Wer gemütlich frühstückt und um halb elf ankommt, läuft
 mit vollem Bauch exakt in die Tagesspitze.
 
-![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Zur Öffnung fast leer, um elf die längste Schlange des Tages. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
+![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Zur Öffnung fast leer, um elf die längste Warteschlange des Tages. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-Und dann die Wasserbahnen. Beide haben zur Öffnung kaum eine Schlange, Poseidon erreicht seine Spitze um elf, Atlantica
+Und dann die Wasserbahnen. Beide haben zur Öffnung kaum eine Warteschlange, Poseidon erreicht seine Spitze um elf, Atlantica
 erst am Nachmittag. Wer bereit ist, morgens nass zu
 werden und den Vormittag in feuchten Socken zu verbringen, fährt beide in der Zeit, die er mittags für eine bräuchte.
 
 Ein Tagesablauf, der daraus folgt:
 
 1. **Zur Öffnung ins Voletarium.** Deutschland liegt nah am Eingang, und um zehn
-   steht dort schon die längste Schlange des Tages.
+   steht dort schon die längste Warteschlange des Tages.
 2. **Danach direkt nach Kroatien zu Voltron.** In der ersten Stunde ist seine
-   Schlange so kurz wie sonst erst wieder am späten Nachmittag, um zehn ist sie
+   Warteschlange so kurz wie sonst erst wieder am späten Nachmittag, um zehn ist sie
    die längste des ganzen Parks.
 3. **Zwischen zehn und zwölf nichts erzwingen.** Das sind die zwei Stunden für
    ein zweites Frühstück, eine Show oder den Märchenwald. Fast alles, was jetzt
-   eine Schlange hat, hat sie am Nachmittag kürzer; bei Arthur und Wodan bleibt
+   eine Warteschlange hat, hat sie am Nachmittag kürzer; bei Arthur und Wodan bleibt
    sie ungefähr gleich.
 4. **Ab zwölf Silver Star**, dann Eurosat, Piraten in Batavia, Josefinas
    Kaiserliche Zauberreise und das Castello dei Medici. Drinnen ist es an heißen
@@ -757,7 +757,7 @@ nicht, und die Tagesspitze kann frühestens um elf kommen.
 
 **Den Samstag buchen, weil das Hotel am Samstag frei ist.** Der Samstag ist der
 vollste Tag der Woche, der Sonntag der leerste, und den Abstand zahlst du an
-jeder einzelnen Schlange. Bei zehn Attraktionen am Tag also zehnmal. Wenn du ohnehin zwei
+jeder einzelnen Warteschlange. Bei zehn Attraktionen am Tag also zehnmal. Wenn du ohnehin zwei
 Nächte bleibst, dreh die Reihenfolge um: Samstag ankommen, Rulantica oder den
 Ort ansehen, Sonntag in den Park.
 
@@ -912,8 +912,8 @@ blue-fire-Dome im Park und seit 2026 in der Silver Lake City.
 ### Wie lang sind die Wartezeiten im Europa-Park?
 
 Im Parkschnitt kürzer als im Phantasialand oder im Disneyland Park in Paris, den
-Vergleich zeigt die Tabelle oben. Die längste Schlange hat meist Voltron Nevera,
-dahinter liegen Arthur, Wodan und Eurosat dicht beieinander. Was heute an der Schlange steht, siehst du bei den
+Vergleich zeigt die Tabelle oben. Die längste Warteschlange hat meist Voltron Nevera,
+dahinter liegen Arthur, Wodan und Eurosat dicht beieinander. Was heute an der Warteschlange steht, siehst du bei den
 [aktuellen Europa-Park-Wartezeiten](ref:europa-park?bare), alle fünf Minuten
 aktualisiert und mit Prognose für die nächsten Tage.
 
@@ -927,13 +927,13 @@ stellt die meisten davon auf „niedrig“.
 ### Gibt es im Europa-Park einen Fast Pass?
 
 Nein. Der Park verkauft kein Produkt, mit dem man Warteschlangen überspringt.
-Kostenlos gibt es Single-Rider-Schlangen an Arthur, blue fire, Eurosat,
+Kostenlos gibt es Single-Rider-Warteschlangen an Arthur, blue fire, Eurosat,
 Voletarium, Voltron und Wodan sowie eine Virtual Line über die Park-App, im
 September 2026 für blue fire, Euro-Mir, Piraten in Batavia, Poseidon,
 Voletarium, Voltron und Wodan. Hotelgäste dürfen in der Sommer- und
 Halloweensaison 45 Minuten vor der offiziellen Öffnung hinein, in der HALLOWinter-
 und Wintersaison eine Stunde. Aufpreis kosten nur die VR-Fahrten: Eurosat
-Coastiality für 7 Euro, mit eigenem Bahnhof neben der Eurosat-Schlange, und der
+Coastiality für 7 Euro, mit eigenem Bahnhof neben der Eurosat-Warteschlange, und der
 Alpenexpress Coastiality für 4 Euro.
 
 ### Was kostet der Eintritt in den Europa-Park 2026?
@@ -992,7 +992,7 @@ elfmal so aufgeschrieben hat, zuletzt im September 2026. Mich überzeugt eine an
 
 Über sechs Millionen Menschen im Jahr, und du stehst trotzdem kürzer an als anderswo.
 Kein Kunststück, wenn man 96 Attraktionen auf 95 Hektar verteilt, 286 Tage im
-Jahr aufmacht und keinen Pass verkauft, mit dem man sich an der Schlange
+Jahr aufmacht und keinen Pass verkauft, mit dem man sich an der Warteschlange
 vorbeikauft.
 
 Man fährt für Voltron und Silver Star nach Rust. Dass man vor beiden so kurz

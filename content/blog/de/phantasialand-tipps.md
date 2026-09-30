@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Das Phantasialand ist mein Heimatpark, und park.fan ist in einer
-  Taron-Schlange entstanden, was einiges über diese Schlangen sagt. Der Guide
+  Taron-Warteschlange entstanden, was einiges über diese Warteschlangen sagt. Der Guide
   für 2026: die Bahnen, das Essen, die kleinen Wunder, und wie du die
   Phantasialand-Wartezeiten klein hältst, den besten Tag findest und beim Quick
   Pass richtig rechnest.
@@ -61,7 +61,7 @@ viele Kindheitsnachmittage in diesem Fleck Erde in Brühl. Es ist der Park, um
 dessen Märchensee mich meine Eltern im Kinderwagen geschoben haben, der Park der
 Gondelbahn „1001 Nacht“, in der ich mit meinem Vater durch ein aufgeschlagenes
 Märchenbuch geglitten bin, lange bevor sie abgerissen wurde, und es ist der Ort,
-an dem park.fan in einer sechzig Minuten langen Taron-Schlange erfunden wurde.
+an dem park.fan in einer sechzig Minuten langen Taron-Warteschlange erfunden wurde.
 
 Die ganze rührselige Vorgeschichte steht in
 [unserer Gründungsstory](/blog/willkommen-im-park-fan-blog); hier soll es um das
@@ -102,7 +102,7 @@ Diese Dichte hat eine Kehrseite. An einem vollen Tag will jeder zur selben Zeit
 auf dieselben zwei, drei Bahnen. In der [Kunst des Wartens](/blog/die-kunst-des-wartens) habe ich vorgerechnet, warum
 [Taron](ref:phantasialand/taron) an einem Ferien-Samstag genauso schnell in die
 Sättigung läuft wie Peter Pan’s Flight in Paris: Ein kleines Publikum schützt dich
-nicht vor langen Schlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
+nicht vor langen Warteschlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
 Andrang verteilen kann. Die Mathematik ist im Phantasialand unerbittlicher als im
 weitläufigen [Europa-Park](ref:europa-park) mit seinen vierzehn Achterbahnen.
 Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenenden
@@ -320,7 +320,7 @@ nachgesehen hast.
 
 ## Quick Pass: Einzelfahrt oder Ultimate, und was aus dem „dynamischen“ Preis wurde
 
-Ja, das Phantasialand hat einen **Quick Pass**, mit dem du die reguläre Schlange
+Ja, das Phantasialand hat einen **Quick Pass**, mit dem du die reguläre Warteschlange
 umgehst. Seit dem Wintertraum 2025/26 funktioniert er allerdings komplett neu, und
 das solltest du kennen, bevor du am Kaiserplatz Geld ausgibst. Es gibt jetzt zwei
 Varianten:
@@ -349,7 +349,7 @@ Varianten:
 Ein Detail, das viele überrascht (und das man vorher wissen sollte): **Selbst mit
 dem Quick Pass wartest du bei F.L.Y. noch, oben, in der Station.** Die Bahn braucht
 durch ihre aufwendigen Flieger-Bügel ewig fürs Beladen, und dieser Stau löst sich
-auch im Fast-Track nicht auf. Du überspringst die große Schlange, aber das letzte,
+auch im Fast-Track nicht auf. Du überspringst die große Warteschlange, aber das letzte,
 zähe Stück vor dem Einstieg legst du trotzdem im Stehen zurück.
 
 Gekauft wird nur vor Ort, beim Gästeservice am Kaiserplatz, und begrenzt heißt
@@ -362,7 +362,7 @@ Headliner mit kurzer Wartezeit, da ist jeder Euro Quick Pass verschenkt. An eine
 tiefroten Ferien-Samstag dagegen kann er den Tag retten. Schau vor dem Kauf einfach
 kurz auf die Live-Wartezeiten: Stehen die Zahlen niedrig, spar dir das Geld und gönn
 dir stattdessen ein zweites Stück Kuchen. (Neben dem Ultimate gibt es noch einen
-zweiten Weg zu F.L.Y. ohne lange Schlange, dazu gleich bei den Hotels.)
+zweiten Weg zu F.L.Y. ohne lange Warteschlange, dazu gleich bei den Hotels.)
 
 ## In welcher Reihenfolge du fährst, und warum der Wecker früh klingelt
 
@@ -370,7 +370,7 @@ Der wirksamste kostenlose Trick im Phantasialand heißt **früh da sein und
 antizyklisch fahren**. Einlass ist in der Sommersaison ab 9 Uhr, spätestens um
 10 laufen alle Bahnen. Es gibt kaum etwas Schöneres als diesen Park in der
 ersten Stunde: die Gassen noch leer, die Musik schon an, die Kulissen im
-Morgenlicht, und an den meisten Bahnen so kurze Schlangen wie den ganzen Tag
+Morgenlicht, und an den meisten Bahnen so kurze Warteschlangen wie den ganzen Tag
 nicht mehr. Diese Stunde ist im kompakten Phantasialand bares Geld wert, sie ist
 der Unterschied zwischen „drei Fahrten“ und „zehn“.
 
@@ -379,7 +379,7 @@ stündlichen Daten an einer Stelle umgebaut (gemessen seit Ende Dezember 2025,
 Stand 25. September 2026):
 
 1. **Direkt zu [Taron](ref:phantasialand/taron)** nach Klugheim. Der
-   Multi-Launch-Coaster hat die längste Schlange im Park, und sie ist schon in der
+   Multi-Launch-Coaster hat die längste Warteschlange im Park, und sie ist schon in der
    ersten Stunde so lang wie am Mittag. Der Vorsprung gehört also denen, die um
    Punkt 10 vorn stehen; wer erst um halb elf kommt, kann Taron genauso gut nach
    dem Mittagessen fahren. Dafür startest du den Tag mit dem breitesten Grinsen,
@@ -392,13 +392,13 @@ Stand 25. September 2026):
    ein nasser Vormittag nicht schreckt: Trocknen kannst du später beim Essen.
 3. **[F.L.Y.](ref:phantasialand/fly) am späten Nachmittag.** Die habe ich früher
    direkt nach Taron gefahren, weil die Station so gemächlich abfertigt. In
-   unseren Daten ist die Schlange aber um 11 Uhr am längsten und am späten
+   unseren Daten ist die Warteschlange aber um 11 Uhr am längsten und am späten
    Nachmittag am kürzesten. Wer von Taron direkt nach Rookburgh läuft, landet
    mitten im Hoch.
 4. **Shows und Essen in die Stoßzeit legen** (rund um die Mittagszeit), wenn die
-   Schlangen ohnehin am längsten sind. Und kennst du eine Show schon, nutz sie
+   Warteschlangen ohnehin am längsten sind. Und kennst du eine Show schon, nutz sie
    andersherum: Sie bindet auf einen Schlag einen ganzen Theatersaal voller
-   Leute, die dann nicht vor dir in der Schlange stehen.
+   Leute, die dann nicht vor dir in der Warteschlange stehen.
 
 Vorbeiziehen lassen musst du auch hier ein paar Leute, aber der Quick Pass ist
 streng begrenzt. Ein Heer von Express-Pass-Gästen, das dir wie
@@ -437,7 +437,7 @@ ganze Jahr über zu haben.
 
 Und der wichtigste Ess-Tipp ist derselbe wie beim Anstehen: **antizyklisch.** Iss
 gegen halb zwölf, bevor die Restaurants volllaufen. Dann sitzt du am Tisch,
-während draußen die Schlangen am längsten sind, und stehst nicht auch noch fürs
+während draußen die Warteschlangen am längsten sind, und stehst nicht auch noch fürs
 Essen an. (Und wenn du im Winter kommst, stellt der Park auf dem Kaiserplatz noch
 eine eigene Winterkarte dazu, mehr dazu beim Wintertraum.)
 
@@ -608,7 +608,7 @@ Shows). Die Live-Wartezeiten checkst du unterwegs auf der
 [F.L.Y.](ref:phantasialand/fly) gleichauf (gemessen seit Ende Dezember 2025,
 Stand 25. September 2026). Taron
 fährst du deshalb direkt zur Öffnung, Chiapas in der ersten Stunde und F.L.Y. am
-späten Nachmittag, wenn die Schlange dort am kürzesten ist.
+späten Nachmittag, wenn die Warteschlange dort am kürzesten ist.
 
 ### Braucht man im Phantasialand einen Quick Pass?
 

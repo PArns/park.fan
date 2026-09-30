@@ -91,9 +91,24 @@ const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
 const HONESTY = /\b(ehrlich\w*|honest\w*|eerlijk\w*|honnêt\w*|onest[oaie]\w*)\b/gi;
 const HONESTY_LABEL = 'honesty claim (docs/blog.md §3.3) — honesty is shown, not announced';
 
-/** Chat register that only ever arrives by paste. */
+/** Chat register that only ever arrives by paste, in all six languages. */
 const CHAT_RESIDUE =
-  /\b(gerne!|selbstverständlich!|kein problem!|great question|of course!|certainly!|i hope this helps|let me know|as an ai|as a large language model)/gi;
+  /\b(gerne!|selbstverständlich!|kein problem!|ich hoffe, (?:das|dies) hilft|möchtest du, dass ich|great question|of course!|certainly!|i hope this helps|let me know|would you like me to|want me to|as an ai|as a large language model|n['’]hésitez pas à|j['’]espère que cet|no dudes en|espero que (?:esto|te) (?:te )?(?:ayude|sirva)|non esitare a|spero che (?:questo|ti)|aarzel niet om|ik hoop dat dit)/gi;
+
+/*
+ * Placeholder text a template or a model left in (§1.8): `[Park Name]`, `2026-xx-xx`, `XX
+ * Minuten`, `TBD`. Never legitimate in anything a reader sees, so an error on every surface.
+ */
+const PLACEHOLDER =
+  /\[(?:park ?name|name des parks|parkname|ride ?name|attraktion|datum|date|link|url|quelle|source)\]|\b20\d\d-xx-xx\b|\bxx (?:min|minuten|minutes|minuti|minutos)\b|\btbd\b|lorem ipsum|\((?:add|insert|link) [^)]{1,30} here\)/gi;
+
+/**
+ * Hausregel (§3.3): im Deutschen heißt es Warteschlange, nie Schlange. Proper names that mean the
+ * animal are exempt (`Schlange von Midgard` in the Hansa-Park).
+ */
+const GERMAN_QUEUE = /(?<!\p{L})Schlange\p{L}*(?! von Midgard)/gu;
+/** `„…"`: a German opening quote closed by the straight ASCII one (§4.5). */
+const GERMAN_STRAIGHT_CLOSE = /„[^“”"„\n]{1,200}"/g;
 
 /** Warnings: a budget, a signal, or a candidate a person has to look at. */
 const WATCH = [
@@ -158,12 +173,63 @@ const WATCH = [
     re: /\bkein\w* [^,.]{1,30}, kein\w* [^,.]{1,30}, (?:nur|einfach|dafür)\b|\bno [^,.]{1,30}, no [^,.]{1,30}, (?:just|only|simply)\b/gi,
   },
   {
+    // `zeigt der Kalender`, `die Daten sagen`, `Was die Warteschlangen gerade anzeigen`: a queue,
+    // a number or a calendar as the one who speaks (§2.13).
+    what: 'things that talk (§2.13)',
+    re: /(?<!\p{L})(?:(?:der|die|das|den|dem|unsere?|diese[rs]?|jede[rs]?)\s+(?:\p{L}+\s+)?(?:warteschlangen?|schlangen?|zahl(?:en)?|daten|wartezeit(?:en)?|kurven?|tageskurve|(?:crowd-)?kalender|tabellen?|prognosen?|messwerte?|statistik(?:en)?|anzeigen?|karten?|diagramm|grafik|farben?|balken|median|spitze|liste|skala)\s+(?:dir\s+|dazu\s+|dann\s+|hier\s+|auch\s+|nur\s+|gerade\s+(?:jetzt\s+)?|jetzt\s+|schon\s+)?(?:zeigt|zeigen|sagt|sagen|verrät|verraten|erzählt|erzählen|weiß|wissen|kennt|kennen|lügt|lügen|spricht|sprechen|antwortet|verspricht|verschweigt|verschweigen|behauptet|anzeigen|zeigt an|zeigen an)|(?:zeigt|sagt|verrät|erzählt|weiß|kennt)\s+(?:dir\s+|dann\s+|hier\s+|auch\s+)?(?:der|die|das)\s+(?:\p{L}+\s+)?(?:warteschlange|schlange|zahl|kalender|tabelle|kurve|karte|prognose|statistik|anzeige|liste|parkseite)|the (?:queue|line|numbers?|data|calendar|chart|curve|table|forecast|median|figures?|sign|display) (?:(?:already|also|then|now) )?(?:tells?|says|knows?|reveals?|lies|speaks|shows you|tells you))(?!\p{L})/giu,
+  },
+  {
+    // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
+    what: 'authenticity claim (§3.3)',
+    re: /(?<!\p{L})(?:echte[nrms]? (?:wartezeiten|wartezeit|daten|messungen|messwerte|werte|warteschlangendaten|zahlen|ablesungen)|real (?:wait[- ]time |queue )?(?:data|wait times|numbers)|echte wachttijd\p{L}*|données réelles|datos reales|dati reali)(?!\p{L})/giu,
+  },
+  {
+    // The register the model this site is written with falls into (Arize, September 2026).
+    what: 'Claude register (§2.18)',
+    re: /(?<!\p{L})(?:this matters|that matters|here['’]s the (?:part|thing) that|the honest answer|load-bearing|earns? (?:its|their) (?:keep|place)|deserves a moment|worth internali[sz]ing|das ist wichtig, weil|der knackpunkt|die falle ist|verdient sich seinen platz|tragende[nr]? (?:rolle|teil))(?!\p{L})/giu,
+  },
+  {
+    what: 'colon set-up (§2.16)',
+    re: /(?<=^|[.!?]\s+)(?:das beste|kurz gesagt|der clou|die gute nachricht|die schlechte nachricht|pro-?tipp|profi-?tipp|spoiler|das problem|der knackpunkt|die falle|bottom line|pro tip|here['’]s why|plot twist|the good news|the bad news|the trap)\s*:/gim,
+  },
+  {
+    // A gap in the record with nobody named as its owner (§1.9).
+    what: 'disclaimer that names nobody (§1.9)',
+    re: /\b(?:nicht (?:öffentlich|allgemein) (?:dokumentiert|bekannt|verfügbar)|basierend auf (?:den )?verfügbaren (?:informationen|daten)|(?:obwohl|da) (?:spezifische|genaue) (?:details|angaben) (?:begrenzt|rar)|stand meines (?:letzten )?(?:updates|wissens)|not (?:widely|publicly) (?:documented|disclosed|available)|based on (?:the )?available information|(?:while|although) (?:specific )?details (?:are|remain) (?:limited|scarce)|as of my (?:last|latest) (?:update|knowledge))\b/gi,
+  },
+  {
+    what: 'send-off (§1.6)',
+    re: /\b(?:man darf gespannt sein|es bleibt spannend|die zukunft (?:sieht|wird) rosig|the future looks bright|exciting times ahead|a step in the right direction|watch this space|stay tuned)\b/gi,
+  },
+  {
+    what: 'notability claim (§1.1)',
+    re: /(?<!\p{L})(?:vielfach ausgezeichnet\p{L}*|preisgekrönt\p{L}*|in zahlreichen medien|international renommiert\p{L}*|award-winning|consistently ranked|widely recogni[sz]ed|critically acclaimed)(?!\p{L})/giu,
+  },
+  {
+    what: 'stacked qualifier (§1.7)',
+    re: /\b(?:could potentially|might possibly|may potentially|might arguably|kann (?:unter umständen )?möglicherweise|könnte (?:eventuell|möglicherweise|unter umständen))\b/gi,
+  },
+  {
+    // `Von rasanten Achterbahnen bis hin zu gemütlichen Familienfahrten`, `Egal, ob du …`.
+    what: 'range or whether opener (§3)',
+    re: /(?<!\p{L})(?:bis hin zu[rm]?|(?<=^|[.!?]\s+)(?:egal,? ob|ob du nun|of je nu|que (?:vous soyez|tu sois)|ya seas?|tanto si|che tu sia|sia che))(?!\p{L})/gimu,
+  },
+  {
+    // A park or a ride doing a person's verb (§2.13).
+    what: 'false agency (§2.13)',
+    re: /(?<!\p{L})(?:(?:lädt|laden) (?:\p{L}+ ){0,4}ein(?=[ ,.])|sorgt für (?:nervenkitzel|spaß|adrenalin|gänsehaut|stimmung|abwechslung|begeisterung)|(?:invites|promises) (?:you|visitors|guests|riders)|delivers (?:thrills|fun))(?!\p{L})/giu,
+  },
+  {
+    what: 'AI vocabulary, nl/fr/es/it (§3)',
+    re: /(?<!\p{L})(?:het is belangrijk om op te merken|in een snel veranderende wereld|de kracht van|naadloze?|baanbrekend\p{L}*|il convient de souligner|dans un monde où|à l['’]ère du numérique|tirer parti de|es importante destacar|vale la pena (?:señalar|destacar)|en última instancia|profundizar en|embarcarse en|è importante sottolineare|vale la pena (?:ricordare|sottolineare)|una testimonianza di|epocale)(?!\p{L})/giu,
+  },
+  {
     what: 'vague sentiment (§1.2)',
     re: /\b(?:enthusiasten|fans|kenner|puristen) (?:lieben|schätzen|bevorzugen|betrachten|feiern|halten|mögen|schwärmen)\b|\b(?:gilt|gelten) (?:als|unter)\b|\b(?:enthusiasts|fans|riders|purists) (?:love|prize|consider|regard|praise|celebrate|prefer|rave|adore)\b|\bis (?:widely|often|generally|commonly) (?:regarded|considered|seen|described)\b|\bwidely (?:regarded|considered|seen)\b/gi,
   },
   {
     what: 'ad copy (§3)',
-    re: /(?<!\p{L})(?:atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere)(?!\p{L})/giu,
+    re: /(?<!\p{L})(?:atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere|geheimtipp\p{L}*|kronjuwel|wow-effekt|tauch(?:e|t) (?:\p{L}+ )?ein|lass dich verzaubern|kommt jede[rs]? auf (?:seine|ihre) kosten|für jeden (?:geschmack )?etwas|liegt in der luft|erfüllt die luft|bustling|gleaming|towering|shimmering|palpable|look no further|bucket[- ]list|once[- ]in[- ]a[- ]lifetime|step into a world|voor ieder wat wils|verborgen parel|laat je betoveren|kloppend hart|il y en a pour tous les goûts|laissez-vous (?:emporter|séduire|transporter)|à ne pas manquer|immanquable|hay para todos los gustos|joya (?:escondida|oculta)|de visita obligada|déjate (?:llevar|sorprender)|ce n['’]è per tutti i gusti|gemma nascosta|lasciati (?:conquistare|trasportare)|tappa obbligata|mozzafiato)(?!\p{L})/giu,
   },
 ];
 
@@ -227,7 +293,12 @@ function colonPivots(body) {
   return { sentences, pivots };
 }
 
-const PARALLELISM = /\bsondern\b|\bnot (just|only|merely)\b[^.!?]{0,60}\bbut\b/gi;
+/**
+ * `nicht … sondern` and its twins (§2.1). Since 2026 the English shape is more often `it isn't X,
+ * it's Y` than `not just X but Y` (Arize's "contrast reframes").
+ */
+const PARALLELISM =
+  /\bsondern\b|\bnot (?:just|only|merely)\b[^.!?]{0,60}\bbut\b|\b(?:it|this|that)(?:['’]s not| isn['’]t| is not) [^.!?]{1,40}[,;—–] (?:it['’]s|it is|but)\b|\bniet alleen\b|\bnon seulement\b|\bce n['’]est pas [^.!?]{1,40}, c['’]est\b|\bno solo\b[^.!?]{0,60}\bsino\b|\bnon solo\b[^.!?]{0,60}\bma\b|\bnon è [^.!?]{1,40}, è\b/gi;
 
 /** Our own features as grammatical subject: `der Planer kennt`, `the planner says` (§2.13). */
 const PRODUCT_SUBJECT =
@@ -520,6 +591,32 @@ function filesUnder(dir, ext) {
 }
 
 /** `subject: 'us'` — a catalog string or a caption, where the honesty claim can only be about us. */
+/**
+ * Rules with no exception, on every surface: placeholder text (§1.8), and in German the house word
+ * `Warteschlange` (§3.3) and a closing quote that matches the opening one (§4.5). Dutch never
+ * takes the German `„` (§6).
+ */
+function hardRules(file, text, locale) {
+  const placeholder = text.match(PLACEHOLDER);
+  if (placeholder)
+    fail(file, `placeholder text (§1.8): ${[...new Set(placeholder)].slice(0, 5).join(', ')}`);
+  if (locale === 'de') {
+    const queue = text.match(GERMAN_QUEUE);
+    if (queue)
+      fail(
+        file,
+        `"Schlange" where the house word is "Warteschlange" (§3.3), ${queue.length}×: ${[...new Set(queue)].slice(0, 5).join(', ')}`
+      );
+    const straight = text.match(GERMAN_STRAIGHT_CLOSE);
+    if (straight)
+      fail(
+        file,
+        `German quote closed with a straight " (§4.5): ${straight.slice(0, 3).join(' · ')}`
+      );
+  }
+  if (locale === 'nl' && /„/.test(text)) warn(file, `German „ in Dutch text (§6), Dutch takes “…”`);
+}
+
 function scan(file, text, { subject } = {}) {
   const honesty = text.match(HONESTY);
   if (honesty) {
@@ -558,6 +655,7 @@ for (const locale of LOCALES) {
       );
 
     scan(file, body);
+    hardRules(file, raw.replace(/```[\s\S]*?```/g, ''), locale);
 
     for (const [field, value] of plainTextFields(raw)) {
       if (value.includes('—')) fail(file, `${field}: em dash (§4.1)`);
@@ -664,6 +762,24 @@ for (const locale of LOCALES) {
     if (CHAT_RESIDUE.test(value))
       fail(file, `${key}: chat register in a UI string (§5.1) — "${value.slice(0, 60)}"`);
     CHAT_RESIDUE.lastIndex = 0;
+    hardRules(`${file} › ${key}`, value, locale);
+  }
+
+  // An FAQ answer that opens by repeating its question (§5.1): `Wann ist der Park am leersten?
+  // Der Park ist am leersten, wenn …`.
+  const byKey = new Map(strings);
+  for (const [key, question] of strings) {
+    if (!/Q$/.test(key)) continue;
+    const answer = byKey.get(key.replace(/Q$/, 'A'));
+    if (!answer) continue;
+    const qs = stems(question.replace(/\{[^}]*\}/g, ''));
+    const first = splitSentences(answer.replace(/\{[^}]*\}/g, ''))[0] ?? '';
+    const shared = [...stems(first)].filter((x) => qs.has(x));
+    if (qs.size >= 3 && shared.length >= 3 && shared.length / qs.size >= 0.6)
+      warn(
+        file,
+        `${key}: the answer opens by repeating the question (§5.1) — "${first.slice(0, 70)}"`
+      );
   }
 
   // A UI string is a label, not a sales pitch: an exclamation mark is nearly always the tell.
@@ -709,6 +825,7 @@ for (const file of filesUnder('public/media', '.json')) {
       if (typeof text !== 'string' || !text.trim()) continue;
       if (text.includes('—')) fail(file, `${field}.${locale}: em dash (§4.1)`);
       scan(`${file} (${field}.${locale})`, text, { subject: 'us' });
+      hardRules(`${file} (${field}.${locale})`, text, locale);
       if (field === 'caption' && captions.has(locale)) captions.get(locale).push(text.trim());
       if (field === 'caption') {
         const key = `${file.split('/').slice(0, -1).join('/')} (${locale})`;
@@ -894,6 +1011,7 @@ function scanTerms(file, terms, locale) {
 }
 
 function checkPage(file, locale, text, raw) {
+  hardRules(file, text, locale);
   // German and Dutch take the en dash for a parenthetical; the em dash is the wrong
   // character before it is a tell (§4.1, §6).
   const dashes = (text.match(/—/g) ?? []).length;

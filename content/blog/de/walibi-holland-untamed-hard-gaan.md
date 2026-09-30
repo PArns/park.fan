@@ -374,7 +374,7 @@ Sie steckt nahezu baugleich im **Rock 'n' Roller Coaster** in Orlando (seit Mai
 2026 mit den Muppets statt Aerosmith) und in **Avengers Assemble: Flight Force**
 im Disneyland Paris. Bei Disney ist die Strecke etwas weiter gezogen, weil die
 Züge dort mit ihrer Musikanlage schwerer sind und schneller gestartet werden
-müssen. Dieselbe Bahn wie bei Disney, nur ohne die Disney-Schlange.
+müssen. Dieselbe Bahn wie bei Disney, nur ohne die Disney-Warteschlange.
 
 Eröffnet wurde sie im April 2000 als **Superman The Ride**, hieß ab 2005
 schlicht **Xpress** und trägt seit 2014 den Bahnhofsnamen.
@@ -479,10 +479,10 @@ Für die Bahnen einzeln sieht es so aus:
 
 ```
 
-Die beste Bahn im Park hat nicht die längste Schlange, die gehört der Neuheit.
+Die beste Bahn im Park hat nicht die längste Warteschlange, die gehört der Neuheit.
 Untamed liegt im Mittelfeld, in einer Reihe mit einem SLC von 1994 und einer
 Mack-Bahn mit 680 Metern Länge. Das ist keine Kritik an YOY. Eine Neuheit zieht immer, und halb Holland stellt sich aus Prinzip erst mal dort an, wo es noch nach frischer Farbe riecht.
-Aber es heißt eben: Wenn du morgens direkt ins Wilderness läufst, hast du Untamed hinter dir, bevor die YOY-Schlange nennenswert vorangekommen ist.
+Aber es heißt eben: Wenn du morgens direkt ins Wilderness läufst, hast du Untamed hinter dir, bevor die YOY-Warteschlange nennenswert vorangekommen ist.
 
 Interessanter wird es im Vergleich mit der Nachbarschaft. Gleiche Datenbasis,
 gleiche Rechenmethode, alle gemessenen Öffnungstage:
@@ -793,10 +793,10 @@ Lauf bei Öffnung an allem vorbei ins Wilderness zu
 **[Untamed](ref:walibi-holland/untamed?bare)** und fahr sie zwei- oder dreimal
 am Stück, solange die Masse noch bei YOY steht.
 **[Goliath](ref:walibi-holland/goliath?bare)** schiebst du ein, wo es passt,
-denn ihre Schlange bewegt sich über den Tag kaum, weil sie seit 2002 dasteht und
+denn ihre Warteschlange bewegt sich über den Tag kaum, weil sie seit 2002 dasteht und
 niemanden mehr aufregt.
 **[YOY](ref:walibi-holland/yoy-thrill?bare)** nimmst du gegen Ende des Tages,
-wenn die Schlange dort etwas kürzer wird als mittags, und fahr beide Strecken,
+wenn die Warteschlange dort etwas kürzer wird als mittags, und fahr beide Strecken,
 sonst hast du die Hälfte des Konzepts verpasst.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** und
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** passen in die

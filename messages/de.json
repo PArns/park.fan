@@ -182,7 +182,7 @@
       },
       "three": {
         "title": "Route planen",
-        "text": "Jede Attraktion hat eine Tageskurve aus ihren gemessenen Tagen. Daran siehst du, zu welcher Uhrzeit die Schlange meist am kürzesten ist.",
+        "text": "Jede Attraktion hat eine Tageskurve aus ihren gemessenen Tagen. Daran siehst du, zu welcher Uhrzeit die Warteschlange meist am kürzesten ist.",
         "tip": "Die Kurve ist ein Median über viele Tage. Steht eine Bahn am Vormittag still, sieht der Tag danach anders aus als die Kurve.",
         "caption": "Typischer Tagesverlauf einer Achterbahn, von der Öffnung bis zum Abend.",
         "best": "Die ruhigsten Fenster liegen früh und in der letzten Stunde."
@@ -201,7 +201,7 @@
       "kicker": "Live-Wartezeiten",
       "title": "Wartezeiten für jede Bahn, alle fünf Minuten neu",
       "lead": "Für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
-      "body": "95 Minuten sind an einem Dienstag im September viel und an einem Samstag im Oktober ein normaler Vormittag. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und wie lang die Schlange an vollen Tagen wird.",
+      "body": "95 Minuten sind an einem Dienstag im September viel und an einem Samstag im Oktober ein normaler Vormittag. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und wie lang die Warteschlange an vollen Tagen wird.",
       "ridesTitle": "Jede Attraktion hat ihre eigene Seite",
       "ridesText": "Auf der Seite einer Bahn stehen ihre Warteschlangen-Arten, der Tagesverlauf aus Messung und Prognose, typische Wartezeiten nach Wochentag, die Mindestgröße und ein Rope-Drop-Tipp.",
       "ridesLink": "Beispiel ansehen",
@@ -251,7 +251,7 @@
         "label": "Tage voraus"
       },
       "feedback": "Am Tag darauf wird jede Prognose gegen die tatsächlich gemessene Wartezeit gelegt. Die Differenz geht in das nächste Training ein, und deshalb ändert sich die Kalenderfarbe für denselben Tag, je näher er rückt.",
-      "body": "Die Farbe vergleicht den Tag mit einem üblichen Tag im selben Park. Grün heißt so voll wie sonst oder ruhiger, Orange und Rot heißen längere Schlangen als üblich. Ein roter Tag in einem kleinen Park kann deshalb immer noch kürzere Wartezeiten haben als ein grüner im Europa-Park.",
+      "body": "Die Farbe vergleicht den Tag mit einem üblichen Tag im selben Park. Grün heißt so voll wie sonst oder ruhiger, Orange und Rot heißen längere Warteschlangen als üblich. Ein roter Tag in einem kleinen Park kann deshalb immer noch kürzere Wartezeiten haben als ein grüner im Europa-Park.",
       "cta": "Crowd-Kalender eines Parks ansehen",
       "bestTimeLink": "Beste Reisezeit: die ruhigsten Wochentage und Monate"
     },
@@ -364,7 +364,7 @@
       "title": "Ein Entwickler, der zu oft angestanden hat",
       "name": "Patrick Arns",
       "role": "Gründer von park.fan",
-      "p1": "Hinter park.fan steht eine einzelne Person: Patrick, seit Kindertagen in Freizeitparks unterwegs und seit über 25 Jahren Softwareentwickler. Angefangen hat es mit 90 Minuten in der Schlange einer einzigen Bahn und dem Gefühl, dass sich das mit etwas Planung hätte vermeiden lassen.",
+      "p1": "Hinter park.fan steht eine einzelne Person: Patrick, seit Kindertagen in Freizeitparks unterwegs und seit über 25 Jahren Softwareentwickler. Angefangen hat es mit 90 Minuten in der Warteschlange einer einzigen Bahn und dem Gefühl, dass sich das mit etwas Planung hätte vermeiden lassen.",
       "p2": "Daraus wurde ein Tracker für Wartezeiten, dann eine Datenbank und schließlich das Prognosemodell, das jeden Tag neu trainiert wird. Datenimport, Modell und diese Website hat er selbst gebaut.",
       "b1": "25+ Jahre Software-Entwicklung",
       "b2": "Park-Nerd seit der Kindheit",
@@ -1094,13 +1094,13 @@
       "metaDescriptionNoCity": "Wie lange wartet man {inPark} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
       "leadBusiest": "Am vollsten ist es {inPark} im {months}, mit typisch {minutes} Minuten.",
       "leadQuietest": "{count, plural, =1 {Am ruhigsten bleibt es {days}, bei {minutes} Minuten.} other {Am ruhigsten bleibt es {days}, jeweils bei {minutes} Minuten.}}",
-      "leadLongest": "Die längste Schlange steht meist an {ride}: typisch {minutes} Minuten.",
+      "leadLongest": "Die längste Warteschlange steht meist an {ride}: typisch {minutes} Minuten.",
       "leadFallback": "Wartezeiten {inPark} nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
       "hourlyTitle": "Der typische Tag",
       "hourlyHint": "Aus {days} Öffnungstagen des letzten Jahres.",
       "nextTitle": "Weiter zu",
       "nextLive": "Aktuelle Wartezeiten",
-      "nextLiveBody": "Was die Schlangen gerade jetzt anzeigen, Bahn für Bahn.",
+      "nextLiveBody": "Was die Warteschlangen gerade jetzt anzeigen, Bahn für Bahn.",
       "nextCalendar": "Wartezeiten-Kalender",
       "nextCalendarBody": "Erwarteter Andrang Tag für Tag, mit Öffnungszeiten und Ferien.",
       "method": {
@@ -1143,7 +1143,7 @@
       },
       "nextTitle": "Weiter zu",
       "nextPark": "Aktuelle Wartezeiten",
-      "nextParkBody": "Welche Bahn gerade offen ist und wie lang die Schlange steht.",
+      "nextParkBody": "Welche Bahn gerade offen ist und wie lang die Warteschlange steht.",
       "nextCalendar": "Wartezeiten-Kalender",
       "nextCalendarBody": "Erwarteter Andrang Tag für Tag, mit Ferien und Öffnungszeiten.",
       "linkTitle": "Mit Kindern",
@@ -1781,7 +1781,7 @@
         "featuresQ": "Welche Informationen bietet park.fan neben Live-Wartezeiten?",
         "featuresA": "Neben den Live-Wartezeiten stehen auf jeder Parkseite die Öffnungszeiten, die Spielzeiten der Shows, die Restaurants mit Küche und Reservierungspflicht, die Wettervorhersage für den Tag, die gemessene Wartezeit-Historie und der Crowd-Kalender. Auf der Seite jeder Attraktion kommt ihr typischer Tagesverlauf dazu.",
         "mobileQ": "Funktioniert park.fan auch auf dem Smartphone?",
-        "mobileA": "Ja. park.fan läuft im Browser, auf Handy, Tablet und Rechner, eine App musst du nicht installieren. Im Park kannst du damit nachsehen, wo die Schlange gerade kurz ist. Erkennt die Seite, dass du im Park stehst, rücken die nächstgelegenen Attraktionen nach oben."
+        "mobileA": "Ja. park.fan läuft im Browser, auf Handy, Tablet und Rechner, eine App musst du nicht installieren. Im Park kannst du damit nachsehen, wo die Warteschlange gerade kurz ist. Erkennt die Seite, dass du im Park stehst, rücken die nächstgelegenen Attraktionen nach oben."
       }
     }
   },

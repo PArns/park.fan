@@ -107,7 +107,7 @@ export function ContentDE() {
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast ist unser eigenes Prognose-Modell, also der Teil von park.fan, der heute schon
-          wissen will, wie lang die Schlange am Samstag wird. Den Namen haben wir uns ohne
+          wissen will, wie lang die Warteschlange am Samstag wird. Den Namen haben wir uns ohne
           Werbeagentur ausgedacht, und man merkt es: <strong>fan</strong> wie park.
           <strong>fan</strong>, <strong>cast</strong> wie fore<strong>cast</strong>. Ein
           Wetterbericht für Warteschlangen, nur ohne Moderatorin vor der Karte.
@@ -235,9 +235,9 @@ export function ContentDE() {
           badge={<CrowdLevelBadge level="low" />}
         >
           Genau den Tag, den Bauchgefühl-Planer meiden, färbt Fancast grün: kaum Ferien, mieses
-          Wetter, kurze Schlangen. Nasse Socken gibt es gratis dazu. Der Haken an jedem Geheimtipp
-          ist, dass er nur hält, bis ihn alle gelesen haben. Deshalb rechnet das Modell die
-          Regenwahrscheinlichkeit für genau diesen Tag selbst mit ein, statt der Folklore zu
+          Wetter, kurze Warteschlangen. Nasse Socken gibt es gratis dazu. Der Haken an jedem
+          Geheimtipp ist, dass er nur hält, bis ihn alle gelesen haben. Deshalb rechnet das Modell
+          die Regenwahrscheinlichkeit für genau diesen Tag selbst mit ein, statt der Folklore zu
           glauben.
         </SplitFigure>
       </SectionShell>
@@ -284,7 +284,7 @@ export function ContentDE() {
           items={[
             {
               level: 'very_low',
-              text: 'Fast leer. Rope-Drop-Träume, Fahrten am Stück, Foto mit dem Maskottchen ohne Schlange.',
+              text: 'Fast leer. Rope-Drop-Träume, Fahrten am Stück, Foto mit dem Maskottchen ohne Warteschlange.',
             },
             {
               level: 'low',
@@ -300,7 +300,7 @@ export function ContentDE() {
             },
             {
               level: 'very_high',
-              text: 'Richtig was los. Lange Schlangen an den großen Bahnen, und wer spontan bleibt, verbringt den Tag im Zickzack-Gitter.',
+              text: 'Richtig was los. Lange Warteschlangen an den großen Bahnen, und wer spontan bleibt, verbringt den Tag im Zickzack-Gitter.',
             },
             {
               level: 'extreme',

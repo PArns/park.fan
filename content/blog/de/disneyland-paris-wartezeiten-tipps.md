@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: zwei Parks, und ausgerechnet der kleine hat die langen Schlangen'
+title: 'Disneyland Paris: zwei Parks, und ausgerechnet der kleine hat die langen Warteschlangen'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 updatedAt: '2026-09-25'
@@ -10,7 +10,7 @@ excerpt: >-
   Disney zählt im Disneyland Park 36 Attraktionen, in Disney Adventure World
   vierzehn, und trotzdem steht man im kleinen Park länger an. In keinem Monat
   und an keinem Wochentag, den wir gemessen haben, war es umgekehrt. Dazu:
-  warum sich die längste Schlange im großen Park vor drei Minuten Dunkelfahrt
+  warum sich die längste Warteschlange im großen Park vor drei Minuten Dunkelfahrt
   von 1992 bildet, was der zweite Park seit dem 29. März 2026 anders macht und
   welche Bahn seit dem 7. September zehn Monate Pause hat.
 tags:
@@ -33,10 +33,10 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Unter dem Felssockel schläft ein Drache, bei der Eröffnung 1992 die größte Animatronic-Figur, die je gebaut worden war.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris 2026: wo die Schlangen wirklich lang sind'
+  title: 'Disneyland Paris 2026: wo die Warteschlangen wirklich lang sind'
   description: >-
     Wartezeit-Daten aus beiden Pariser Parks: warum der kleinere die längeren
-    Schlangen hat, wann es ruhiger wird und mit welchem Park du den Tag besser
+    Warteschlangen hat, wann es ruhiger wird und mit welchem Park du den Tag besser
     anfängst.
   keywords:
     - Disneyland Paris
@@ -153,14 +153,14 @@ Trotzdem steht sie in unserer Rangliste nicht oben.
 
 ```
 
-Die längste Schlange des Parks gehört **Peter Pan's Flight**, einer Dunkelfahrt
+Die längste Warteschlange des Parks gehört **Peter Pan's Flight**, einer Dunkelfahrt
 von 1992, die nach drei Minuten vorbei ist. Beliebtheit erklärt davon nur
 die Hälfte. Die andere Hälfte ist Durchsatz: Hyperspace Mountain fährt vier Züge
-und schafft knapp 2.000 Personen in der Stunde, arbeitet ihre Schlange also den
+und schafft knapp 2.000 Personen in der Stunde, arbeitet ihre Warteschlange also den
 ganzen Tag über ab. Kleine fliegende Piratenschiffe, in die gerade eine
 Familie passt, schaffen das nicht. Wer den
 Morgen an den Achterbahnen verbringt, steht nachmittags für drei Minuten
-Dunkelfahrt in der längsten Schlange des Parks.
+Dunkelfahrt in der längsten Warteschlange des Parks.
 
 Drei weitere Bahnen kosten an diesem Vormittag Zeit.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
@@ -171,7 +171,7 @@ eröffnete am 30. Juli 1993 als erste Achterbahn in einem Disney-Park mit einem
 Überschlag, gebaut von Intamin, 600 Meter Strecke, 58 km/h. Von April 2000 bis
 November 2004 fuhr sie rückwärts. Ihre Mindestgröße von 140 Zentimetern ist die
 höchste aller Disney-Attraktionen weltweit, was vor Ort regelmäßig Familien
-trennt. Und **[„it's a small world"](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
+trennt. Und **[„it's a small world“](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
 ist genau das, was du befürchtest.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
@@ -205,7 +205,7 @@ Force](ref:disney-adventure-world/avengers-assemble-flight-force)** ist der Rock
 'n' Roller Coaster aus dem Eröffnungsjahr 2002, zum selben Termin neu gestaltet.
 
 **[Crush's Coaster](ref:disney-adventure-world/crushs-coaster)** hatte in
-unseren Daten die längste Schlange des Parks, knapp vor Frozen Ever After. Seit
+unseren Daten die längste Warteschlange des Parks, knapp vor Frozen Ever After. Seit
 dem **7. September 2026** fährt sie nicht mehr. Der Park hat sie für die größte
 Instandsetzung seit ihrer Eröffnung aus dem Betrieb genommen: Steuerungen,
 Sensoren, Kommunikationstechnik und Teile der Schienen werden ersetzt, dazu wird
@@ -227,7 +227,7 @@ gefressen hat, fällt weg, und ihre Gäste verteilen sich auf einen Park, der
 ohnehin wenig Kapazität hat. In der Tabelle darüber steht Crush's Coaster
 trotzdem noch mit ihren Werten aus den Monaten vor der Schließung, ungefähr wie
 ein Gericht, das noch auf der Karte steht und seit September aus ist. Bis zum
-Sommer 2027 ist Frozen Ever After die Schlange, um die herum du den Tag dort
+Sommer 2027 ist Frozen Ever After die Warteschlange, um die herum du den Tag dort
 planst.
 
 ## Wie voll es wirklich ist
@@ -286,7 +286,7 @@ hier, laufend neu berechnet:
 
 ```
 
-## Premier Access, und was eine Schlange dort kostet
+## Premier Access, und was eine Warteschlange dort kostet
 
 Die Fast-Lane heißt in Paris **Disney Premier Access** und kommt in zwei
 Varianten. **Premier Access One** gilt für eine Fahrt auf einer Bahn; du kaufst
@@ -306,32 +306,32 @@ Tag notiert.
 ```
 
 Bevor du das kaufst, lohnt ein Blick auf die Rangliste weiter oben. Der Preis
-richtet sich nach der Nachfrage, und die deckt sich nicht mit der Schlange: Am
+richtet sich nach der Nachfrage, und die deckt sich nicht mit der Warteschlange: Am
 selben Morgen kostete Hyperspace Mountain 12 Euro und Peter Pan 13, obwohl Peter
-Pan im Mittel die deutlich längere Schlange hat. Wer für Hyperspace Mountain
+Pan im Mittel die deutlich längere Warteschlange hat. Wer für Hyperspace Mountain
 bezahlt und sich danach bei Peter Pan hinten anstellt, hat das Geld an der
-falschen Schlange ausgegeben.
+falschen Warteschlange ausgegeben.
 
 ## Wie ich den Tag planen würde
 
 Wenn du nur einen Tag hast und nur einen Park nimmst, nimm den Disneyland Park:
-mehr Attraktionen, kürzere Schlangen, und das Schloss ist der Grund, aus dem die
+mehr Attraktionen, kürzere Warteschlangen, und das Schloss ist der Grund, aus dem die
 meisten überhaupt kommen. Rechne aber damit, dass zur regulären Öffnung schon
 Betrieb ist. Gäste der Disney-Hotels und von Les Villages Nature sowie Inhaber
 des Disneyland Pass Gold kommen mit der Extra Magic Time vorher in die Parks,
 meist eine Stunde. Peter Pan hat deshalb schon beim offiziellen Start eine lange
-Schlange und wird laut unserer Stundentabelle erst in der letzten Stunde vor
+Warteschlange und wird laut unserer Stundentabelle erst in der letzten Stunde vor
 Parkschluss deutlich kürzer. Big Thunder Mountain, Hyperspace Mountain und
 Indiana Jones sind morgens kurz nach der Öffnung dagegen deutlich kürzer als
 mittags. Fang also dort an und heb dir Peter Pan für den Abend auf. Die
 Mittagszeit taugt für keine davon: Alle acht Bahnen der Stundentabelle haben
-ihre längste Schlange zwischen 12 und 14 Uhr.
+ihre längste Warteschlange zwischen 12 und 14 Uhr.
 
 Und wenn du zwei Parks buchst, dreh die übliche Reihenfolge um und fang in
 Adventure World an, wo unsere Rope-Drop-Auswertung für Ratatouille und den Tower
 of Terror die größte Ersparnis des frühen Starts ausweist. Frozen Ever After
 gehört nicht dazu: Die Bahn ist abends am kürzesten, und sie hat eine
-Single-Rider-Schlange.
+Single-Rider-Warteschlange.
 
 ## Praktisches: Anreise, Tickets, Öffnungszeiten
 
@@ -361,7 +361,7 @@ beide (Stand September 2026). Die Preise für dein Datum stehen auf
 
 **Essen.** Beide Parks haben Tischrestaurants mit Reservierung und viel
 Schnellgastronomie dazwischen. Unsere Datenbank führt (Stand 25. September 2026)
-35 Gastronomiebetriebe im Disneyland Park und 19 in Adventure World. Mittags wandert die Schlange von den
+35 Gastronomiebetriebe im Disneyland Park und 19 in Adventure World. Mittags wandert die Warteschlange von den
 Bahnen an die Theken und macht die Pommesbude für eine Weile zur gefragtesten
 Attraktion im Park.
 
@@ -413,7 +413,7 @@ Umstieg realistisch.
 
 ## Zum Weiterlesen
 
-Wie das Wetter in den nächsten Tagen aussieht, und was das für die Schlangen an
+Wie das Wetter in den nächsten Tagen aussieht, und was das für die Warteschlangen an
 den Außenbahnen heißt:
 
 ```weather-widget slug=/parks/europe/france/paris/disneyland-park
