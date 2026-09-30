@@ -48,8 +48,7 @@ seo:
 ---
 
 Hay sitios que funcionan como un interruptor. Cruzas un torno y lo que te
-carcomía dos horas antes ha desaparecido. No aparcado: desaparecido de verdad.
-No conozco muchos lugares capaces de eso, y los pocos que lo consiguen están
+carcomía dos horas antes ha desaparecido. No conozco muchos lugares capaces de eso, y los pocos que lo consiguen están
 hechos, vistos a plena luz, de contrachapado y pintura, por gente a la que nunca
 llegas a ver.
 
@@ -65,8 +64,8 @@ de [Phantasialand](ref:phantasialand?bare). En aquella orilla había entonces
 unos cuarenta cuentos, cada uno un pequeño escenario con figuras que se movían
 mecánicamente. Caperucita Roja, Cenicienta, el pequeño Muck.
 
-Ese bosque de los cuentos era el corazón del parque. Cuando Phantasialand abrió
-el 30 de abril de 1967 ya estaba allí, construido con el fondo de marionetas del titiritero Richard Schmidt, que montó
+Cuando Phantasialand abrió el 30 de abril de 1967, el bosque de los cuentos ya
+estaba allí, construido con el fondo de marionetas del titiritero Richard Schmidt, que montó
 el parque junto al feriante Gottlieb Löffelhardt. Y como las marionetas por sí
 solas no cuentan una historia, cada escena tenía un botón. Una pulsación y una
 cinta narraba el cuento correspondiente.
@@ -101,11 +100,8 @@ estadounidenses que se echaban una carrera a través de una nave construida como
 un almacén, looping contra looping. Entonces la única duelling coaster de
 Alemania, desde 2005 en marcha como «Cop Car Chase», cerrada en agosto de 2006 y
 demolida a partir de octubre. En su terreno abrió en mayo de 2007 la zona Santa
-Monica Pier, con el Disk’O Coaster Crazy Surfer. La atracción ya no existe. El vicio que desató, sí. En rigor, entonces, mi madre tiene la
-culpa de todo lo que vino después.
-
-El reparto de papeles quedó claro: papá aportó los cuentos; mamá, las montañas
-rusas.
+Monica Pier, con el Disk’O Coaster Crazy Surfer. La atracción ya no existe; el vicio que
+desató, sí, y en rigor la culpa de todo lo que vino después la tiene mi madre.
 
 De vez en cuando alguien me pregunta por qué park.fan es gratis y va a seguir
 siéndolo. Estos parques me han dado más de lo que jamás les pagué en la taquilla,
@@ -119,7 +115,7 @@ Oskar Koslowski a librar de ratones la fábrica imperial de tartas Gustav E.
 Lehmann, armado con una manga pastelera, a lo largo de siete salas y unos siete
 minutos. Con una puntuación récord recién hecha sigo sonriendo como entonces
 con los botones del lago de los cuentos. Aunque mi novia tiene la notable costumbre de birlarme los
-ratones de 5000 puntos justo en el instante en que los apunto, dejándome sin el
+ratones de 5000 puntos justo en el instante en que los apunto, y así me deja sin el
 récord de la casa viaje tras viaje.
 
 Eso sí, un triunfo ya es solo mío. Después de lo que se sienten como cien
@@ -127,10 +123,9 @@ viajes, por fin lo encontré: el **ratón de 10.000 puntos de la segunda sala**.
 ¿Dónde está exactamente? Eso, con toda la comprensión del mundo por la pregunta,
 sigue siendo mi secreto.
 
-Hay algo que ignoré durante mucho tiempo y que aún hoy me deja callado un
-instante: la góndola funcionó hasta el 1 de noviembre de 2009, luego el parque
-allanó su terreno y volvió a construir, y en uno de esos edificios nuevos, en la
-actual Kaiserplatz, está Maus au Chocolat desde 2011. Cuando discuto allí por
+Durante mucho tiempo no supe que la góndola funcionó hasta el 1 de noviembre de
+2009, que luego el parque allanó su terreno y volvió a construir, y que en uno de
+esos edificios nuevos, en la actual Kaiserplatz, está Maus au Chocolat desde 2011. Cuando discuto allí por
 puntos con mi novia, estoy sentado más o menos donde de niño atravesaba las
 fauces del dragón con mi padre.
 
@@ -153,21 +148,21 @@ en la góndola. Por el medio,
 [Epic Universe](ref:universal-epic-universe?bare), un año después de su apertura
 en mayo de 2025, montañas
 rusas en [Islands of Adventure](ref:universal-islands-of-adventure?bare), orcas
-y Manta en [SeaWorld](ref:seaworld-orlando?bare). Dos semanas, y por fin ese
-punto de la lista tiene su marca.
+y Manta en [SeaWorld](ref:seaworld-orlando?bare). En total fueron dos
+semanas.
 
 Todavía estoy ordenando las fotos, y las crónicas no están terminadas.
-Aparecerán aquí mismo en el blog en cuanto lo estén. Un adelanto: mereció
-la pena cada uno de los años de espera.
+Aparecerán aquí mismo en el blog en cuanto lo estén. Mereció la pena cada uno
+de los años de espera.
 
-## El segundo yo: el desarrollador con demasiados proyectos paralelos
+## El desarrollador con demasiados proyectos paralelos
 
 En paralelo a todos esos años de parques hubo siempre un segundo yo, uno que
-lleva más de veinticinco años construyendo software. Muchos de esos años en el
-mundo de las VPN, primero como Head of Software Development en **CyberGhost** y
+lleva más de veinticinco años construyendo software. Muchos de esos años trabajando
+en VPN, primero como Head of Software Development en **CyberGhost** y
 hoy como Distinguished Software Engineer en **ExpressVPN**. Sistemas que
-millones de personas usan a la vez sin dedicarles jamás un pensamiento, y una
-infraestructura no puede aspirar a mayor elogio. A eso se suman open source, adaptadores de domótica y más proyectos paralelos de
+millones de personas usan a la vez sin dedicarles jamás un pensamiento. A eso se
+suman open source, adaptadores de domótica y más proyectos paralelos de
 los que me convienen; todo el material que se apila en
 [arns.dev](https://arns.dev) y [GitHub](https://github.com/PArns).
 
@@ -181,8 +176,8 @@ pregunta se me ocurrió muy tarde.
 
 Hasta aquella tarde que prácticamente cualquier fan de parques conoce en una u
 otra variante. Sesenta minutos de standby en
-[Taron](ref:phantasialand/taron?bare), una pantalla que te miente a la cara con
-estoica amabilidad diciendo «unos 45 minutos» y, dos estaciones más allá, una
+[Taron](ref:phantasialand/taron?bare), una pantalla que marcaba, con estoica
+amabilidad, «unos 45 minutos» y, dos estaciones más allá, una
 atracción familiar medio vacía mandando vagón tras vagón hacia la nada. Taron
 mueve unas 1200 personas por hora, así que yo estaba a grandes rasgos a mil
 personas de la estación y podría haberlo calculado. En lugar de eso me quedé
@@ -205,7 +200,7 @@ en el que un modelo predice bien por primera vez un sábado abarrotado, días
 antes de que ocurra.
 
 Nunca se trató de mostrar la cifra del momento. Esa la cuelga el parque mismo.
-La cosa se pone interesante un paso antes: un modelo propio tuvo que aprender
+Un paso antes, un modelo propio tuvo que aprender
 que un puente lluvioso de octubre es algo completamente distinto de un sábado
 soleado de vacaciones en julio. A quien haya viajado en coche con niños no hace
 falta explicárselo; a un ordenador, sí. Que los calendarios escolares, el tiempo,
@@ -249,18 +244,19 @@ leído el mismo truco de iniciados.
 «Los domingos hay mucha gente» es, por tanto, más o menos igual de útil que «en
 verano hace calor». Un domingo
 de finales de noviembre en el Phantasialand es otra pregunta que un domingo de
-principios de agosto en el Europa-Park, y así es como responde el
-calendario: con parque y fecha. Y si ya estás en el parque, los datos en directo
-te enseñan si la cola que tienes delante es la excepción o la regla.
+principios de agosto en el Europa-Park, y por eso en el
+calendario cada respuesta lleva parque y fecha. Y si ya estás en el parque, con
+los datos en directo ves si la cola que tienes delante es la excepción o la
+regla.
 
-## Qué hace park.fan que no hace el panel de la entrada
+## Lo que park.fan añade a la cifra de la entrada
 
 Hay buenas webs que te enseñan cuánta cola hay ahora mismo. Eso también sabemos
 hacerlo, cada cinco minutos, en todo el mundo. Pero park.fan se construyó para la
 pregunta anterior: _¿merece siquiera la pena ir?_
 
-Por eso el modelo mira unos seis meses hacia delante en lugar de solo al
-panel de la entrada, y el calendario de los mejores días lo convierte en una
+Por eso el modelo mira unos seis meses hacia delante en lugar de solo a la
+cifra de la entrada, y el calendario de los mejores días lo convierte en una
 respuesta: se va, o mejor no. Si acierta o no, no hace falta que me creas: está
 en la [página de Fancast](/fancast).
 
@@ -268,13 +264,12 @@ A eso se suman tiempos de espera, niveles de afluencia, tiempo en la entrada del
 parque, horarios e históricos de atracciones en seis idiomas. Desde septiembre
 está además el [planificador](/blog/planificador), que coloca tus atracciones en
 una línea de tiempo frente a la previsión, y si quieres, una notificación push te
-avisa cuando la cola de una atracción baja de un límite que tú eliges. Ni
-corporación ni muro de pago ni publicidad, hecho por alguien que también hace
-cola.
+avisa cuando la cola de una atracción baja de un límite que tú eliges. No hay
+muro de pago ni publicidad, y lo hace alguien que también hace cola.
 
 ## Qué quiere ser este blog
 
-Un tiempo de espera por sí solo no dice casi nada. La misma cifra significa algo
+Un tiempo de espera por sí solo sirve de poco. La misma cifra significa algo
 completamente distinto según la atracción y el día:
 
 - ¿**50 minutos** para un flat ride? Pura pérdida de tiempo. En ese hueco
@@ -293,22 +288,22 @@ completamente distinto según la atracción y el día:
 La cifra la pone el gráfico. Para la historia que hay detrás, a partir de ahora
 está este blog, en tres sabores.
 
-**Crónicas de viaje.** Largas, con criterio, con fotos y con datos reales
-justamente del parque visitado. Nada de «estuvo bien», sino:
+**Crónicas de viaje.** Largas, con criterio, con fotos y con los datos
+medidos en el parque visitado. Nada de «estuvo bien», sino:
 «[Magic Kingdom](ref:magic-kingdom-park?bare), 15 de mayo, rope drop a las
 09:08; ese era el plan, esto funcionó, esto se fue al traste.» El viaje a
 Orlando de más arriba tendrá justo una crónica así: Disney World, Universal y
 SeaWorld, con fotos incluidas.
 
-**Análisis de datos.** ¿Qué revela _de verdad_ el histórico de colas de un
+**Análisis de datos.** ¿Qué se puede leer en el histórico de colas de un
 parque? ¿Cuándo merece más la pena [Taron](ref:phantasialand/taron?bare)? ¿Y
-cumplen nuestras previsiones lo que prometen?
+cuánto aciertan nuestras previsiones?
 
 **Noticias.** Breves y sin rodeos. Desde el 25 de septiembre tienen su propia
 sección en [Noticias](/news), aparte de los artículos.
 
 Los gráficos, mapas y tiempos de espera de estas entradas salen directamente
-de park.fan, así que lo que lees es lo que el parque está haciendo de verdad.
+de park.fan, así que lo que lees es lo que el parque está haciendo ahora.
 Los dos protagonistas de esta historia, ahora mismo:
 
 [Taron](ref:phantasialand/taron?full)

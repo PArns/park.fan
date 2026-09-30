@@ -1,5 +1,5 @@
 ---
-title: 'Heide Park: Colossos, pura madera, y a su alrededor un estreno alemán tras otro'
+title: 'Heide Park: Colossos y los cuatro estrenos alemanes del parque'
 translationKey: heide-park-guide
 date: '2026-09-20'
 updatedAt: '2026-09-25'
@@ -34,7 +34,7 @@ rideLinks:
 seo:
   title: 'Heide Park 2026: Colossos, tiempos de espera y el mejor día'
   description: >-
-    Heide Park Soltau: esperas reales en Colossos y Krake, además de Halloween,
+    Heide Park Soltau: esperas medidas en Colossos y Krake, además de Halloween,
     Express Ticket, alturas mínimas y el día de la semana con menos cola.
   keywords:
     - Heide Park
@@ -75,9 +75,8 @@ fiesta nocturna solo para ganadores de un billete dorado.
 
 ## Lo que llegó aquí primero
 
-Por Colossos conducen los aficionados hasta Soltau. Lo que hay a su alrededor
-es más interesante. En cuatro tipos de atracción este parque fue el primero de
-Alemania, y los tres últimos llegaron en siete años.
+Por Colossos conducen los aficionados hasta Soltau. En cuatro tipos de
+atracción este parque fue el primero de Alemania, y los tres últimos llegaron en siete años.
 
 La serie empezó en **1999**, dos años antes que Colossos, con una atracción que
 entonces se llamaba Limit y que hoy se llama
@@ -102,8 +101,7 @@ primer dive coaster de Alemania, construido por Bolliger & Mabillard por
 41 metros de altura, seis personas en una sola fila y, arriba, el tren se
 detiene hasta que la primera fila queda colgando sobre el borde. Después baja a
 87 grados, casi en vertical, a **103 km/h**, atraviesa un splashdown y entra en
-un Immelmann. La espera en el borde dura unos segundos y se hace bastante más
-larga.
+un Immelmann. La espera en el borde dura unos segundos.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** fue, el **29 de marzo
 de 2014**, el primer wing coaster del país. En ese tipo de trazado nadie se
@@ -162,8 +160,8 @@ dos loopings y un sacacorchos doble, algo más de 700 metros de recorrido y
 terminado en menos de dos minutos. En él se lee cómo trata este parque lo que
 ya tiene: en 2010 recibió los trenes del Corkscrew demolido de Alton Towers, y
 para la temporada 2026 Vekoma entregó trenes nuevos, diseñados a imagen de los
-vagones originales de 1983. Segundo cambio de trenes en dieciséis años, para una
-atracción de 43.
+vagones originales de 1983. Es su segundo cambio de trenes en dieciséis
+años.
 
 Toxic Garden se llama así solo desde **mayo de 2023**. Vekoma sustituyó un
 tramo de vía durante la reforma, la entrada y la estación están desde entonces
@@ -218,7 +216,7 @@ las atracciones por las que han venido los padres.
 
 ```
 
-## Cuánta gente hay de verdad
+## Cuánta gente hay
 
 Nuestras mediciones empiezan a finales de diciembre de 2025. Como el Heide Park
 no abre hasta finales de marzo, en la tabla solo hay días de la temporada 2026
@@ -235,10 +233,10 @@ mucho en Soltau no espera necesariamente delante de la montaña rusa de madera:
 muy cerca, junto a Flug der Dämonen y Krake, están la Bobbahn de 1993 y el
 tronco de agua de 1980, dos atracciones que no aparecen en ninguna crónica de
 viaje como motivo para conducir hasta Soltau. En el tronco es cosa del tiempo,
-como muestra el perfil horario de más abajo; para la Bobbahn la tabla no da
-ninguna razón.
+como se ve en el perfil horario de más abajo; para la Bobbahn no hay ninguna
+razón en la tabla.
 
-Dice más la hora a la que crecen las colas.
+La hora a la que crecen las colas, atracción por atracción:
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -300,11 +298,11 @@ septiembre son días de cierre, y en octubre vuelve a abrir a diario. Un día de
 apertura corriente va de 10 a 17 horas, los domingos una hora más. Esos
 horarios son los de las atracciones; el parque en sí cierra una hora después.
 
-Los días largos de otoño no son un día normal alargado: empiezan a las 12 y las
-atracciones funcionan hasta las 21. El 19 y el 26 de septiembre y el 3 de
+Los días largos de otoño empiezan a las 12, y las atracciones funcionan hasta
+las 21. El 19 y el 26 de septiembre y el 3 de
 octubre se llaman Late Rides; los cinco siguientes son de Halloween. En todos
 ellos, las atracciones de agua y algunas otras cierran al anochecer, hacia las
-17 horas. Lo que está publicado de verdad para las próximas semanas aparece en
+17 horas. Lo que está publicado para las próximas semanas aparece en
 el calendario de la [página del parque](ref:heide-park).
 
 ### El día de la semana
@@ -347,8 +345,7 @@ eso frente a Toverland, Movie Park y Walibi está en la
 
 Heide Park abrió el **19 de agosto de 1978**, con seis atracciones y un
 fundador de familia feriante: **Hans-Jürgen Tiemann**. La compra del terreno
-llevaba una condición que no se adivina mirando un parque de atracciones: la
-**capilla del Heidenhof, de 1350**, tenía que seguir en pie, y había que seguir
+llevaba una condición: la **capilla del Heidenhof, de 1350**, tenía que seguir en pie, y había que seguir
 criando animales de la zona. El primer día vinieron 2.000 visitantes, y de
 aquellas seis atracciones salieron 85 hectáreas de parque.
 
@@ -393,8 +390,8 @@ ampliación, de 81 casas de madera con 536 camas en total. Las siete furgonetas
 VW T2 reformadas del **Bulli Camp**, en las que se podía dormir desde julio de
 2014, ya no existen desde 2025; el camping ahora solo reserva cabañas.
 
-La ventaja práctica no está en la cama. Está en plantarse a las diez delante de
-la entrada y no a las diez en la A7. En los días largos de otoño, los huéspedes
+La ventaja práctica es plantarse a las diez delante de la entrada y no a las
+diez en la A7. En los días largos de otoño, los huéspedes
 del hotel y del camping entran incluso a las 11, una hora antes que el resto, y
 algunas atracciones ya funcionan, entre ellas Krake.
 
@@ -435,7 +432,7 @@ plazas; eso sí, los 37 € solo valen en días seleccionados. La entrada sin fe
 para toda la temporada cuesta 52 €. Los niños de menos de 90 cm entran gratis,
 pero necesitan una entrada de 0 € de la tienda online.
 
-**Comer.** Nuestra página del parque cuenta 21 locales de restauración (a
+**Comer.** En nuestra página del parque hay 21 locales de restauración (a
 septiembre de 2026), desde la Schmalzkuchen-Schmiede, un puesto de buñuelos en
 la terraza de Colossos, hasta el Wirtshaus des Admirals.
 
@@ -485,7 +482,7 @@ Nueve, contando el Grottenblitz y el Indy-Blitz, los dos pensados para niños
 pequeños. Como «Big 7» el parque publicita siete grandes atracciones: seis de
 esas montañas rusas y la torre de caída Scream. La Bobbahn no está entre ellas.
 
-### ¿A partir de qué altura puede subir mi hijo?
+### ¿A partir de qué altura puede subir un niño?
 
 Colossos, Desert Race, Flug der Dämonen y Krake piden 140 cm, Toxic Garden y
 Scream 130 cm, Big Loop y Bobbahn 120 cm. En la aventura de dinosaurios de
@@ -520,8 +517,8 @@ leer una al lado de la otra.
 
 ## Lo que me llevo de Soltau
 
-El Heide Park no tiene un relato continuo como Brühl ni 18 países como Rust.
-Tiene atracciones, y con cuatro de ellas fue el primero de Alemania.
+Donde Brühl tiene un relato continuo y Rust 18 países, el Heide Park tiene
+atracciones, y con cuatro de ellas fue el primero de Alemania.
 
 Eso se paga en superficie. 85 hectáreas con poca sombra y trayectos largos
 entre las grandes atracciones, y un sábado de agosto se nota cada metro. Si
