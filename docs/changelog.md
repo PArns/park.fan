@@ -33,7 +33,9 @@ kam. Der öffentliche Eintrag ist `content/changelog/2.13.0.md`. Neueste Abschni
   Commits und PRs der jeweiligen Strecke, jede Zahl ist dort nachgelesen.
 - **2.12.0 neu geschrieben:** alle 16 Stichpunkte begannen mit einem fett gesetzten Satz, genau
   das Layout, das `docs/blog.md` §4.2 als Chat-Muster nennt, und die README der Sammlung schrieb es
-  vor. `pnpm check:prose` prüft `content/changelog/` jetzt mit (Fehler: Fettdruck am Anfang eines
+  vor. Dazu drei Starts aus der Periode, die der Eintrag nicht nannte: der Tagesplaner (#388,
+  4.9.), die Wartezeit-Alarme (#423, 8.9.) und `/favorites` (#488, 16.9.), außerdem die
+  Statistikseiten (#546, drei Minuten vor dem Schnitt gemergt). `pnpm check:prose` prüft `content/changelog/` jetzt mit (Fehler: Fettdruck am Anfang eines
   Listenpunkts, Gedankenstrich, Markdown in `title`/`summary`).
 - **Regeln für den Schnitt:** `pnpm check:changelog` (auch in der CI) prüft Dateiname gegen
   Version, Datumsfolge, `package.json` gegen den neuesten veröffentlichten Eintrag, die

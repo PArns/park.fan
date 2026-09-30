@@ -47,7 +47,7 @@ const HEADING = 'Changelog';
  */
 const TITLE = 'Changelog: versions and release dates | park.fan';
 const DESCRIPTION =
-  'Every park.fan version since June 2025 with its release date: new pages, new data on park and ride pages, and what was fixed.';
+  'Every park.fan version since June 2025 with its release date, from the first dashboard to the trip planner and the in-park compass.';
 
 export function generateStaticParams() {
   return [{ locale: 'en' }];
@@ -106,9 +106,8 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{HEADING}</h1>
         <p className="text-muted-foreground mt-3 max-w-2xl text-base leading-relaxed sm:text-lg">
           Every park.fan version since the first site in June 2025, newest first, with its release
-          date and what changed for visitors. A version collects everything that shipped since the
-          one before it. Blog and news posts are content, so you will find them in the feed and not
-          here.
+          date and what changed for visitors. Blog and news posts are content, so you will find them
+          in the feed and not here.
         </p>
         <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
           Entries marked &ldquo;Reconstructed&rdquo; were written in September 2026 from the commit
