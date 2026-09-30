@@ -27,11 +27,14 @@ kam. Der öffentliche Eintrag ist `content/changelog/2.13.0.md`. Neueste Abschni
 - **Sprungliste:** `ChangelogIndex` listet jede Version mit Datum, nach Jahr gruppiert; ab `lg`
   eine eigene Spalte, die beim Scrollen stehen bleibt, darunter ein Raster unter der Einleitung.
   `<title>` ist „Changelog: versions and release dates | park.fan“ statt nur „Changelog“.
-- **Historie (PAR-320):** neun rekonstruierte Einträge von 0.2.0 (Juni 2025) bis 2.11.0. Versionen
-  und Daten stammen aus den `package.json`-Bumps der Git-History bzw. aus den Überschriften dieses
-  Logs; wo die Version fast mit jedem Push stieg, deckt ein Eintrag die ganze Strecke
-  (`through`, z. B. 2.7.0–2.7.14). `reconstructed: true` zeigt ein Badge. Die Texte beruhen auf den
-  Commits und PRs der jeweiligen Strecke, jede Zahl ist dort nachgelesen.
+- **Historie (PAR-320):** 29 rekonstruierte Einträge von 0.2.0 (Juni 2025) bis 2.11.0, gruppiert wie
+  ein Release: ein bis drei Wochen, ein Thema, nur Funktionen und sichtbare Fixes, kein Blog- oder
+  News-Post. Versionen und Daten stammen aus den `package.json`-Bumps der Git-History bzw. aus den
+  Überschriften dieses Logs; ein Eintrag über mehrere Bumps nennt den letzten in `through`
+  (z. B. 2.7.11–2.7.14). Wo `package.json` wochenlang stehen blieb, sind Zwischenversionen
+  vergeben: 2.8.2 und 2.8.3 (Mai) und 2.10.2 bis 2.10.5 (11. Juni bis 2. August), sonst hätte ein
+  Eintrag zwei Monate umfasst. Die Seite sagt das unter der Einleitung. `reconstructed: true` zeigt
+  ein Badge; jede Zahl ist im Commit oder Log-Abschnitt nachgelesen.
 - **2.12.0 neu geschrieben:** alle 16 Stichpunkte begannen mit einem fett gesetzten Satz, genau
   das Layout, das `docs/blog.md` §4.2 als Chat-Muster nennt, und die README der Sammlung schrieb es
   vor. Dazu drei Starts aus der Periode, die der Eintrag nicht nannte: der Tagesplaner (#388,

@@ -43,7 +43,8 @@ export interface ChangelogFrontmatter {
   through?: string;
   /**
    * Written after the fact from the commit history (PAR-320), not when the version was current.
-   * The version numbers and dates are the ones the repository carried; the text is a summary.
+   * Most numbers and dates are the ones the repository carried; where it kept one number for
+   * weeks, the ones in between were assigned (docs/rules/a-version-is-a-unit-of-communication.md).
    */
   reconstructed?: boolean;
 }

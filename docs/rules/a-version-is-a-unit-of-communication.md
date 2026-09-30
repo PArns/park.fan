@@ -92,13 +92,20 @@ What neither can see is whether the entry says what a visitor gets. That is the 
 
 Versions were not cut before 2.12.0: the number in `package.json` moved with nearly every push,
 2.7.0 to 2.7.14 in five weeks. The entries up to 2.11.0 were written in September 2026 from the
-commit history (PAR-320) and carry `reconstructed: true`, which the page shows as a badge. Their
-versions and dates are the ones the repository carried: the `package.json` bumps, or the version
-headings of `docs/changelog.md` where it has them (2.9.0 to 2.11.0; its 2.10.x dates are the
-log's, 7 and 10 June, while `package.json` only reached 2.10.0 on 20 July). One entry covers a
-run of versions through `through`. 0.2.0 to 1.2.0 is the first site, which the December rebuild
-replaced file for file. A reconstructed entry is never extended with anything the history does not
-show.
+commit history (PAR-320) and carry `reconstructed: true`, which the page shows as a badge. They
+are grouped the way a release would have been: one to three weeks, one theme, features and the
+fixes a visitor noticed, never a blog or news post. 29 entries cover June 2025 to August 2026.
+
+Their versions and dates are, where one exists, the ones the repository carried: the
+`package.json` bumps, or the version headings of `docs/changelog.md` (2.9.0 to 2.11.0; its 2.10.x
+dates are the log's, 7 and 10 June, while `package.json` only reached 2.10.0 on 20 July). An entry
+that covers several bumps names the last in `through` (2.7.11 to 2.7.14). Where the code kept one
+number for weeks, the number was assigned when the history was written, so that no entry covers
+two months: 2.8.2 and 2.8.3 (May, `package.json` stayed at 2.8.1) and 2.10.2 to 2.10.5 (11 June to
+2 August, between the log's 2.10.1 and 2.11.0). The page says so under its intro. 0.2.0 to 1.2.0 is
+the first site, which the December rebuild replaced file for file. A reconstructed entry is never
+extended with anything the history does not show, and no number is assigned between 2.12.0 and a
+later cut: from 2.12.0 on, every version is a real one.
 
 ## The page
 
