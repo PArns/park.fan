@@ -1,0 +1,29 @@
+{
+  "title": "OzIris",
+  "park": "parc-asterix",
+  "ride": "oziris",
+  "area": "Égypte",
+  "tags": ["photo", "coaster", "day", "sunny", "outdoor", "summer"],
+  "alt": {
+    "de": "Ein Zug von OzIris hängt kopfüber im Scheitel einer Inversion vor blauem Himmel, im Vordergrund Baumkronen und eine beige Stütze.",
+    "en": "An OzIris train hangs upside down at the top of an inversion against a blue sky, treetops and a beige support column in front.",
+    "fr": "Un train d’OzIris passe la tête en bas au sommet d’une inversion sur fond de ciel bleu, avec des cimes d’arbres et un pilier beige au premier plan."
+  },
+  "caption": {
+    "de": "OzIris, ein Inverted Coaster von Bolliger & Mabillard, seit 2012 im Parc Astérix.",
+    "en": "OzIris, a Bolliger & Mabillard inverted coaster at Parc Astérix since 2012.",
+    "fr": "OzIris, un coaster inversé de Bolliger & Mabillard, au Parc Astérix depuis 2012."
+  },
+  "credit": {
+    "author": "Jules-leconnaisseurd'attraction",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oziris_2023.jpg",
+    "year": 2025
+  },
+  "shotAt": "2025-06-10",
+  "focus": {
+    "x": 0.55,
+    "y": 0.3
+  }
+}
