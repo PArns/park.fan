@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
+import { parseGlossaryRideHref } from '@/lib/blog/glossary-ride-href';
 import { resolveAttraction, resolvePark } from '@/lib/blog/park-resolver';
 import { BlogAttractionLink } from './blog-attraction-link';
-
-/** `/<locale>/parks/<continent>/<country>/<city>/<park>/<ride>`: five segments after `parks`. */
-const RIDE_HREF = /^\/[a-z]{2}\/parks\/([^/?#]+)\/([^/?#]+)\/([^/?#]+)\/([^/?#]+)\/([^/?#]+)\/?$/;
 
 const CHIP_ONLY = new Set(['chip']);
 
@@ -12,7 +10,8 @@ const CHIP_ONLY = new Set(['chip']);
  * live wait-time (or status) chip a `ref:` link carries.
  *
  * Definitions hold finished geo paths where `ref:` links hold a slug key, so the path is split
- * here and resolved the way `ref:` links are. A park link (four segments), an unknown ride or a
+ * (`parseGlossaryRideHref`) and resolved the way `ref:` links are. The chip carries no photos: the
+ * hover card falls back to its photo-less layout, which a `ref:` link also uses without an image. A park link (four segments), an unknown ride or a
  * failed lookup shows `fallback`, the plain anchor, instead of throwing.
  */
 export async function BlogGlossaryRideLink({
@@ -24,13 +23,14 @@ export async function BlogGlossaryRideLink({
   href: string;
   fallback: ReactNode;
 }) {
-  const m = RIDE_HREF.exec(href);
-  if (!m) return fallback;
-  const [, continent, country, city, parkSlug, rideSlug] = m;
-  const geoPath = `${continent}/${country}/${city}`;
+  const ref = parseGlossaryRideHref(href);
+  if (!ref) return fallback;
+  const { geoPath, parkSlug, rideSlug } = ref;
   const park = await resolvePark(parkSlug, geoPath);
-  const attraction = park ? await resolveAttraction(parkSlug, rideSlug, geoPath) : null;
-  if (!park || !attraction?.detail) return fallback;
+  // `resolvePark` falls back to a bare slug shared by another park; the chip must be this park's.
+  if (!park || park.href !== `/parks/${geoPath}/${parkSlug}`) return fallback;
+  const attraction = await resolveAttraction(parkSlug, rideSlug, geoPath);
+  if (!attraction?.detail) return fallback;
   return (
     <BlogAttractionLink
       attraction={attraction}
