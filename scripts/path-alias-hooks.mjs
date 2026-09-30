@@ -45,7 +45,7 @@ export async function resolve(specifier, context, nextResolve) {
     // PAR-372 looking at the alias instead of at the missing file. Generated
     // modules (`lib/blog/manifest-bodies.ts`, gitignored) are the usual cause.
     const error = new Error(
-      `Cannot resolve alias import '${specifier}' from ${context.parentURL ?? 'the entry point'}: no file at ${join(projectRoot, specifier.slice(2))}[.ts|.tsx|.js|/index.*]. If it is a generated module, run its generator first (see \`prebuild\` in package.json).`,
+      `Cannot resolve alias import '${specifier}' from ${context.parentURL ?? 'the entry point'}: no file at ${join(projectRoot, specifier.slice(2))}[.ts|.tsx|.js|/index.*]. If it is a generated module, run its generator first (see \`prebuild\` in package.json).`
     );
     error.code = 'ERR_MODULE_NOT_FOUND';
     throw error;
