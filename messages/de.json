@@ -518,6 +518,12 @@
       "intro": "Beiträge aus unserem Blog, in denen {park} vorkommt.",
       "viewAll": "Alle Beiträge lesen"
     },
+    "firstVisit": {
+      "title": "Erster Besuch: {park}",
+      "intro": "Der Guide zuerst, danach die Begriffe, die jedem Erstbesucher begegnen.",
+      "termsTitle": "Begriffe für den ersten Tag",
+      "termsIntro": "Schilder und Park-Apps setzen sie voraus."
+    },
     "title": "Mehr Loopings, weniger Stehen",
     "heroWelcome": "Herzlich willkommen im {parkName}",
     "heroNearPark": "{parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",

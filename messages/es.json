@@ -518,6 +518,12 @@
       "intro": "Artículos de nuestro blog en los que aparece {park}.",
       "viewAll": "Leer todos los artículos"
     },
+    "firstVisit": {
+      "title": "Primera visita: {park}",
+      "intro": "Empieza por la guía y sigue con los términos que encuentra todo visitante nuevo.",
+      "termsTitle": "Términos para tu primer día",
+      "termsIntro": "Los carteles y las apps de los parques los dan por sabidos."
+    },
     "title": "Más loopings, menos esperas",
     "heroWelcome": "Bienvenido a {parkName}",
     "heroNearPark": "{parkName} está cerca (a menos de 5 km). Abajo verás tiempos de espera en vivo, horarios y nivel de afluencia – o busca otro parque.",
