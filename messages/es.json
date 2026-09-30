@@ -1422,6 +1422,7 @@
         "park_never_reports": "La fuente de datos de este parque no notifica averías. Las detectamos por cierres durante el horario de apertura, pero no publicamos estadísticas.",
         "artefact_regime": "Para este parque los avisos de avería nos llegan solo a fragmentos. De ahí no se puede leer una frecuencia.",
         "no_schedule": "Este parque no publica horarios de apertura, por eso no mostramos cifras aquí.",
+        "outside_window": "Este parque no abrió en los últimos {days} días, por eso no mostramos cifras aquí.",
         "thin_events": "En los últimos {days} días se notificaron {count} averías. Son demasiado pocas para dar una cifra.",
         "thin_exposure": "Hemos visto funcionar {name} muy pocas veces en los últimos {days} días como para decir algo sobre averías.",
         "inhomogeneous": "Las dos mitades de los últimos {days} días son demasiado distintas para que una cifra describa ambas.",

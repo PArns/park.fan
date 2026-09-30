@@ -1422,6 +1422,7 @@
         "park_never_reports": "La fonte dati di questo parco non segnala guasti. Li riconosciamo dalle chiusure durante l'orario di apertura, ma non pubblichiamo statistiche.",
         "artefact_regime": "Per questo parco le segnalazioni di guasto ci arrivano solo a frammenti. Non se ne ricava una frequenza.",
         "no_schedule": "Questo parco non pubblica gli orari di apertura, quindi qui non mostriamo cifre.",
+        "outside_window": "Questo parco non è stato aperto negli ultimi {days} giorni, quindi qui non mostriamo cifre.",
         "thin_events": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Sono troppo pochi per ricavarne una cifra.",
         "thin_exposure": "Abbiamo visto {name} in funzione troppo di rado negli ultimi {days} giorni per dire qualcosa sui guasti.",
         "inhomogeneous": "Le due metà degli ultimi {days} giorni sono troppo diverse perché una cifra le descriva entrambe.",

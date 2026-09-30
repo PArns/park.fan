@@ -1422,6 +1422,7 @@
         "park_never_reports": "The data source for this park does not report outages. We spot them from closures during opening hours, but publish no statistics on them.",
         "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
         "no_schedule": "This park publishes no opening hours, so we show no figures here.",
+        "outside_window": "This park was not open in the last {days} days, so we show no figures here.",
         "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",
         "thin_exposure": "We have seen {name} running too rarely in the last {days} days to say anything about outages.",
         "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
