@@ -13,6 +13,25 @@ localized slug per language.
 | es     | `/es/como-funciona-park-fan`      |
 | it     | `/it/come-funziona-park-fan`      |
 
+Ten chapters, the same in every locale: the ride card, the scale (typical, busy,
+record), the best moment of the day, the right day, the trip planner, the park
+page top to bottom, where the numbers come from, what we leave blank, where to
+find what, and the FAQ.
+
+**The page tells a visitor what they see and can do; this document keeps the
+why.** Until 2026-09-30 the prose carried the crowd-level thresholds (60, 89,
+110, 150, 200 %), the three rules that decide which hours become columns in the
+hourly profile, the majority, median and mean chain for disagreeing sources, the
+reason the night jobs run in their order, the 330 observation days before a
+ride's season is named, and the planner's transfer formula. None of that helped
+anybody read a wait time. The rewrite dropped it from all six locales, together
+with the "Four visits" chapter, whose steps mostly repeated chapters 01 to 05;
+what only it said (the height slider on the Attractions tab, the nearby view in
+the park, favourites on the home page, the park guides) moved into the signposts
+grid. German prose went from about 4,000 words to about 2,200. When a behaviour
+needs explaining for the next person who changes it, it goes here or into the
+component's comment, not into the page.
+
 ---
 
 ## 1. The slug moved, and the mechanism is the one already in the repo

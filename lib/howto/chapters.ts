@@ -21,7 +21,7 @@ export interface Chapter {
  * an id the page does not render.
  *
  * It lived inside each content module until the menu became its second reader: importing six
- * content modules into the layout for eleven labels each would have been the wrong way round.
+ * content modules into the layout for ten labels each would have been the wrong way round.
  */
 export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
   de: [
@@ -33,9 +33,8 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'parkseite', index: '06', label: 'Die Parkseite von oben nach unten' },
     { id: 'nachtschicht', index: '07', label: 'Woher die Zahlen kommen' },
     { id: 'luecken', index: '08', label: 'Wenn wir nichts wissen' },
-    { id: 'besuche', index: '09', label: 'Vier Besuche' },
-    { id: 'wegweiser', index: '10', label: 'Wo was steht' },
-    { id: 'faq', index: '11', label: 'Häufige Fragen' },
+    { id: 'wegweiser', index: '09', label: 'Wo was steht' },
+    { id: 'faq', index: '10', label: 'Häufige Fragen' },
   ],
   en: [
     { id: 'number', index: '01', label: 'A number on its own' },
@@ -46,9 +45,8 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'park-page', index: '06', label: 'A park page, top to bottom' },
     { id: 'night-shift', index: '07', label: 'Where the numbers come from' },
     { id: 'gaps', index: '08', label: 'When we don’t know' },
-    { id: 'visits', index: '09', label: 'Four visits' },
-    { id: 'signposts', index: '10', label: 'Where to find what' },
-    { id: 'faq', index: '11', label: 'Common questions' },
+    { id: 'signposts', index: '09', label: 'Where to find what' },
+    { id: 'faq', index: '10', label: 'Common questions' },
   ],
   fr: [
     { id: 'chiffre', index: '01', label: 'Un chiffre tout seul' },
@@ -59,9 +57,8 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'page-parc', index: '06', label: 'Une page de parc, de haut en bas' },
     { id: 'nuit', index: '07', label: 'D’où viennent les chiffres' },
     { id: 'limites', index: '08', label: 'Quand nous ne savons pas' },
-    { id: 'visites', index: '09', label: 'Quatre visites' },
-    { id: 'reperes', index: '10', label: 'Où trouver quoi' },
-    { id: 'faq', index: '11', label: 'Questions fréquentes' },
+    { id: 'reperes', index: '09', label: 'Où trouver quoi' },
+    { id: 'faq', index: '10', label: 'Questions fréquentes' },
   ],
   es: [
     { id: 'cifra', index: '01', label: 'Una cifra sola' },
@@ -72,9 +69,8 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'pagina-parque', index: '06', label: 'Una página de parque de arriba abajo' },
     { id: 'noche', index: '07', label: 'De dónde salen las cifras' },
     { id: 'limites', index: '08', label: 'Cuando no lo sabemos' },
-    { id: 'visitas', index: '09', label: 'Cuatro visitas' },
-    { id: 'donde', index: '10', label: 'Dónde está cada cosa' },
-    { id: 'faq', index: '11', label: 'Preguntas frecuentes' },
+    { id: 'donde', index: '09', label: 'Dónde está cada cosa' },
+    { id: 'faq', index: '10', label: 'Preguntas frecuentes' },
   ],
   it: [
     { id: 'numero', index: '01', label: 'Un numero da solo' },
@@ -85,9 +81,8 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'pagina-parco', index: '06', label: 'Una pagina di parco dall’alto in basso' },
     { id: 'notte', index: '07', label: 'Da dove arrivano i numeri' },
     { id: 'limiti', index: '08', label: 'Quando non lo sappiamo' },
-    { id: 'visite', index: '09', label: 'Quattro visite' },
-    { id: 'dove', index: '10', label: 'Dove si trova cosa' },
-    { id: 'faq', index: '11', label: 'Domande frequenti' },
+    { id: 'dove', index: '09', label: 'Dove si trova cosa' },
+    { id: 'faq', index: '10', label: 'Domande frequenti' },
   ],
   nl: [
     { id: 'getal', index: '01', label: 'Eén getal alleen' },
@@ -98,8 +93,7 @@ export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'parkpagina', index: '06', label: 'Een parkpagina van boven naar beneden' },
     { id: 'nachtdienst', index: '07', label: 'Waar de cijfers vandaan komen' },
     { id: 'gaten', index: '08', label: 'Als we het niet weten' },
-    { id: 'bezoeken', index: '09', label: 'Vier bezoeken' },
-    { id: 'wegwijzer', index: '10', label: 'Waar je wat vindt' },
-    { id: 'faq', index: '11', label: 'Veelgestelde vragen' },
+    { id: 'wegwijzer', index: '09', label: 'Waar je wat vindt' },
+    { id: 'faq', index: '10', label: 'Veelgestelde vragen' },
   ],
 };
