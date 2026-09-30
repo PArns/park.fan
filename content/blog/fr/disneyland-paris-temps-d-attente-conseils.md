@@ -139,8 +139,8 @@ l’attraction en 2019. Après près de seize mois de travaux, elle a rouvert le
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 ne porte ce nom que depuis le 7 mai 2017. Elle a ouvert le 1er juin 1995 sous le
 nom de « Space Mountain : De la Terre à la Lune », d’après Jules Verne, avec un
-canon comme dispositif de lancement. Il est toujours là : le train est propulsé
-de 0 à 71 km/h en 1,8 seconde à l’assaut de la montagne. Trois inversions, un
+canon comme dispositif de lancement. Ce canon propulse toujours le
+train de 0 à 71 km/h en 1,8 seconde à l’assaut de la montagne. Trois inversions, un
 kilomètre de parcours, jusqu’à 5 g. De tous les Space Mountain dans le monde,
 c’est le seul avec un lancement et le seul avec des inversions. Michael Eisner,
 alors patron de Disney, l’a appelé le sauveur du parc, et c’est sur l’exercice
@@ -251,7 +251,7 @@ derrière chaque ligne figure directement dans les tableaux.
 L’écart entre les deux parcs se retrouve dans chaque mois mesuré. Ce n’est qu’en
 décembre, pour lequel nous n’avons que les derniers jours de 2025, que les temps
 d’attente typiques se sont rejoints, et même là, le niveau d’affluence
-d’Adventure World restait supérieur. C’est une question d’arithmétique : pour 2024, la TEA a compté 10,2
+d’Adventure World restait supérieur. Pour 2024, la TEA a compté 10,2
 millions de visites au Disneyland Park et 5,5 millions dans le second parc.
 Chaque visiteur n’y est compté que dans le premier parc où il entre ; qui change
 de parc à midi n’apparaît donc pas du tout dans le second chiffre. Plus d’un
@@ -384,9 +384,8 @@ l’inverse.
 ### Dans lequel des deux parcs attend-on le plus longtemps ?
 
 À Disney Adventure World, et dans nos données (190 jours mesurés au 25 septembre
-2026), ça vaut pour chaque mois enregistré et chaque jour de la semaine. La
-raison, c’est la capacité : le plus petit des deux parcs reçoit plus de la
-moitié des visites du grand, avec moins de la moitié de ses attractions. Les
+2026), ça vaut pour chaque mois enregistré et chaque jour de la semaine. Le plus
+petit des deux parcs reçoit plus de la moitié des visites du grand, avec moins de la moitié de ses attractions. Les
 valeurs actuelles pour les deux parcs figurent dans le tableau comparatif plus
 haut.
 

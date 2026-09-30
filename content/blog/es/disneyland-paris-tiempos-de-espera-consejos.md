@@ -137,13 +137,13 @@ Price, de la que en 2019 volvieron partes a la atracción. Tras casi dieciséis 
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 se llama así solo desde el 7 de mayo de 2017. Abrió el 1 de junio de 1995 como
 _Space Mountain: De la Terre à la Lune_, inspirada en Jules Verne, con un cañón
-como sistema de lanzamiento. Ese cañón sigue ahí: el tren pasa de 0 a 71 km/h en
-1,8 segundos mientras sube la montaña. Tres inversiones, un kilómetro de
+como sistema de lanzamiento. Ese cañón sigue lanzando el tren de 0 a 71 km/h
+en 1,8 segundos mientras sube la montaña. Tres inversiones, un kilómetro de
 recorrido, hasta 5 g. De todas las Space Mountain del mundo, es la única con
 lanzamiento y la única con inversiones. Michael Eisner, entonces jefe de Disney,
 la llamó la salvadora del parque, y en el ejercicio de 1995 Disneyland Paris
-tuvo sus primeros beneficios. Como Hyperspace Mountain no le queda mucho: a
-finales de 2027 cierra varios meses y volverá como _Space Mountain – De la Terre
+tuvo sus primeros beneficios. A finales de 2027, la
+atracción cierra varios meses y volverá como _Space Mountain – De la Terre
 à la Lune_, otra vez con Jules Verne y la música original de Steve Bramson.
 
 Aun así, no encabeza nuestra clasificación.
@@ -322,9 +322,8 @@ Time, normalmente una hora. Por eso Peter Pan ya tiene una cola larga cuando
 abre para todos, y según nuestra tabla por horas solo se acorta claramente en la
 última hora antes del cierre. Big Thunder Mountain, Hyperspace Mountain e
 Indiana Jones, en cambio, tienen colas mucho más cortas justo después de abrir
-que a mediodía. Empieza por ahí y deja Peter Pan para la noche. El mediodía no
-le va bien a ninguna: las ocho atracciones de la tabla por horas tienen su cola
-más larga entre las 12:00 y las 14:00.
+que a mediodía. Empieza por ahí y deja Peter Pan para la noche. Entre las 12:00 y las 14:00,
+las ocho atracciones de la tabla por horas tienen su cola más larga.
 
 Y si reservas los dos parques, invierte el orden habitual y empieza en Adventure
 World, donde nuestro análisis de rope drop marca en Ratatouille y en la Tower of
@@ -374,7 +373,7 @@ revés.
 
 En Disney Adventure World, y en nuestros datos (190 días medidos a 25 de
 septiembre de 2026) eso vale para todos los meses registrados y todos los días
-de la semana. La razón es la capacidad: el parque pequeño recibe más de la mitad
+de la semana. El parque pequeño recibe más de la mitad
 de visitas que el grande, pero tiene menos de la mitad de atracciones. Los
 valores actuales de ambos están en la tabla comparativa de arriba.
 

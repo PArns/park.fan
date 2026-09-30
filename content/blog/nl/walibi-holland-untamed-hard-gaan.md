@@ -103,9 +103,9 @@ omdoopte tot **Six Flags**, kochten in 1998 de hele Walibi-groep. Voor het
 seizoen 2000 gooiden ze geld op het terrein, dertig nieuwe attracties in één
 keer, en met kortingsacties en een gigantische reclamecampagne haalden ze ruim
 **1,3 miljoen bezoekers**, het hoogste aantal dat hier ooit is bereikt. In 2002
-zetten ze nog [Goliath](ref:walibi-holland/goliath) neer, in 2004 waren ze weer
-weg: Six Flags verkocht zijn Europese parken aan de Britse investeerder Palamon
-Capital Partners. Sinds **2006** is
+zetten ze nog [Goliath](ref:walibi-holland/goliath) neer, in 2004 verkocht Six
+Flags zijn Europese parken alweer aan de Britse investeerder Palamon Capital
+Partners. Sinds **2006** is
 het park eigendom van het Franse concern **Compagnie des Alpes**, dat ook
 [Walibi Belgium](ref:walibi-belgium) en [Parc Astérix](ref:parc-asterix) bezit.
 
@@ -375,8 +375,8 @@ rijdt na ruim dertig jaar nog steeds.
 Lang reed hij ook als 1994: **oorvijgen** links, rechts en nog eens links,
 omdat je hoofd tussen de harde schouderbeugels heen en weer sloeg. Sinds 2021
 rijdt Condor met nieuwe Vekoma-treinen met vestbeugels, die je hoofd uit de
-vuurlinie halen. Helemaal soepel is hij daarmee niet geworden: als prototype
-gaat hij krapper de eerste inversie in dan de latere seriemodellen. 31 meter,
+vuurlinie halen. Als prototype gaat hij nog
+altijd krapper de eerste inversie in dan de latere seriemodellen. 31 meter,
 80 km/u. Die nieuwe treinen ontwikkelde Vekoma voor precies deze bouwwijze, om
 de reputatie kwijt te raken die het zich ermee had verworven.
 
@@ -394,9 +394,9 @@ ThemeParks-EU op 4. De hoogste krachten in het park staan dus op een bouwklassie
 met boordgeluid, 35,5 meter hoog en 285 meter kort.
 
 Hij opende in april 2000 als **La Via Volta**, werd in 2007 stilgelegd en in
-2011 onder een nieuwe naam en met muziekthema teruggehaald. Uit die verbouwing
-stamt ook het station: dat zit sindsdien in een gebouw en is als opnamestudio
-ingericht, en de eerste lifthill zit in een buis die volgens het park eigenlijk
+2011 onder een nieuwe naam en met muziekthema teruggehaald. Sinds die
+verbouwing zit het station in een gebouw dat als opnamestudio is ingericht, en
+de eerste lifthill zit in een buis die volgens het park eigenlijk
 een waterglijbaan is. De baan zelf ligt in de open
 lucht.
 
@@ -681,8 +681,8 @@ gasten de lichtshow over, en een lichtshow draagt geen ticket. De Efteling vult 
 dat er in de regen zelfs beter uitziet. Walibi kan dat niet, en het heeft
 blijkbaar vier jaar geduurd om dat uit te spreken.
 
-De aankondiging trof ook het eigen huis onvoorbereid: medewerkers en acteurs
-hoorden het dezelfde ochtend als de fans. Een promovideo voor de komende winter
+Medewerkers en acteurs hoorden de aankondiging dezelfde ochtend als de fans. Een
+promovideo voor de komende winter
 was al opgenomen, en de Postcode Loterij had net vouchers met 45 % korting op
 de editie 2026/27 verstuurd. Wie een abonnement voor 2026 had gekocht waarin
 de kerstvakantie van 2026/27 zat, krijgt als compensatie twee gratis tickets om
@@ -725,8 +725,8 @@ feest- en vakantiedagen, van eind juni tot eind augustus dagelijks, in
 september bijna alleen nog in het weekend en in oktober in de weekenden en de
 herfstvakantie. Zo staat het in de kalender voor 2026.
 
-**Per maand** is het beeld rustig: over het seizoen verschillen de maanden
-nauwelijks. Iets drukker wordt het in april, als Pasen, Koningsdag en het begin
+**Per maand** loopt de drukte over het seizoen nauwelijks uiteen. Iets drukker
+wordt het in april, als Pasen, Koningsdag en het begin
 van de meivakantie samenvallen, en tot nu toe in de septemberweekenden. De
 zomervakantie valt in onze data nauwelijks op.
 

@@ -166,7 +166,7 @@ Turbine.
 **[Vampire](ref:walibi-belgium/vampire-2)** (1999) est un **SLC de Vekoma**
 (Suspended Looping Coaster, modèle 689) et, à son ouverture, le premier de ce
 type en Belgique. Le train est suspendu sous le rail, et les pieds battent l’air
-à chaque virage. Plus pour très longtemps : selon le parc, Vampire tourne
+à chaque virage. Selon le parc, Vampire tourne
 jusqu’en octobre 2027, puis sera démoli.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, baptisée
 « Colorado » à l’origine) est le train de la mine classique, 785 mètres de
@@ -236,8 +236,8 @@ près d’Ypres, et en 1992 le Flevohof aux Pays-Bas. En 1998, le groupe
 américain Premier Parks, rebaptisé Six Flags en 2000, rachète tout le groupe,
 et de 2001 à 2004 le site de Wavre
 s’appelle **Six Flags Belgium**, dans la même vague de rachats qui a donné à Six
-Flags l’actuel [Walibi Holland](ref:walibi-holland). Eddy Meeùs n’en a vu que le
-début : il est mort le **24 novembre 2001**, l’année où son parc a porté un
+Flags l’actuel [Walibi Holland](ref:walibi-holland). Eddy Meeùs est mort
+le **24 novembre 2001**, l’année où son parc a porté un
 autre nom pour la première fois.
 
 En 2004, Six Flags vend ses parcs européens au fonds londonien Palamon
@@ -289,9 +289,8 @@ après sa démolition, le parc ne l’a pas encore dit.
 
 ![Bâtiment en bois délabré portant l’enseigne Aquarium, éclairé en bleu-vert la nuit | La maison hantée Aquarium, en plein Dock World, là où Mecalodon roule en journée. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-Pour Halloween, le parc retourne son propre nom : **« Ibilaw »**, c’est
-« Walibi » à l’envers, le nom de l’événement depuis 2024, avec sa propre
-mascotte, **Bill**. En 2026, il se tient du 10 octobre au 11 novembre sur
+Depuis 2024, l’événement d’Halloween du parc s’appelle **« Ibilaw »**,
+soit « Walibi » à l’envers, et il a sa propre mascotte, **Bill**. En 2026, il se tient du 10 octobre au 11 novembre sur
 20 jours, dont dix jusqu’à 22 h, avec quatre maisons hantées (The Grand Hotel
 est nouvelle) et quatre scare zones, dont le cirque de clowns **Psycho Circus**
 et **Arachnophobia**. Pas de limite d’âge : les monstres restent dans le secteur
@@ -349,7 +348,7 @@ de Bruxelles à l’heure de pointe. En train, on descend à Bierges-Walibi, gar
 située selon le parc à 150 mètres de l’entrée.
 
 **Horaires.** La saison court de début avril jusqu’en novembre. Hors vacances
-d’été, le parc n’ouvre pas tous les jours : il suit un calendrier de saison.
+d’été, le parc suit un calendrier de saison et n’ouvre pas tous les jours.
 En octobre, il devient Ibilaw, en 2026 du 10 octobre au 11 novembre, et même
 alors il n’ouvre que certains jours. Depuis 2023 s’y
 ajoute une ouverture hivernale pendant les vacances de Noël, Walibi Winter, du

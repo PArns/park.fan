@@ -152,7 +152,7 @@ Hansa-Park a ajouté des ceintures supplémentaires aux arceaux.
 
 ```
 
-Pour les familles, le chiffre qui compte au Highlander est un autre : 1,40 mètre de taille minimale,
+Pour les familles, le chiffre qui compte au Highlander, c’est sa taille minimale de 1,40 mètre,
 la barre la plus haute de tout le parc.
 
 ## Un calendrier sans jour de fermeture
@@ -203,8 +203,8 @@ ferais la queue en premier.
 Trois horaires réorganisent une soirée pareille. La
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) et le
 [Super Splash](ref:hansa-park/super-splash) ferment dès **16 h**, ce dont les chaussettes se
-réjouiront surtout un soir d’octobre. Pour le Super Splash, ce sont de toute façon les derniers
-jours : après le 25 octobre, il ne roulera plus. Le [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare)
+réjouiront surtout un soir d’octobre. Le Super Splash, de toute façon, ne roulera plus
+après le 25 octobre. Le [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare)
 et [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) et [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) font leur **dernier tour à 19 h 30**, parce que le feu d’artifice se
 prépare. Et pendant la parade, onze autres attractions s’arrêtent, dont le [Highlander](ref:hansa-park/highlander?bare), [Nessie](ref:hansa-park/nessie?bare) et le
 [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
@@ -217,7 +217,7 @@ Le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026) couvre dix par
 proposent des labyrinthes ou des scare zones pendant ces semaines d’octobre, deux font l’impasse
 sur Halloween. Hansa-Park fait une troisième chose : les mêmes soirées, un programme complet,
 simplement sans frayeur. Avec des enfants de moins de dix ans, tu es donc mieux ici qu’à une soirée
-labyrinthes. Pas tout à fait sans frayeur pour autant : le spectacle du soir est bruyant, et le
+labyrinthes. Le spectacle du soir est tout de même bruyant, et le
 parc prévient lui-même qu’il peut effrayer les plus petits.
 
 ## Tailles minimales et âges
@@ -337,7 +337,7 @@ deux ans après le démontage de la Holsteinturm.
 
 Après le [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare), c’est la deuxième grande
 nouveauté en deux ans ; entre le Highlander et le Cornwall Coaster, il y a eu sept ans de nouveautés
-plus modestes. Une attraction s’en va en même temps : le
+plus modestes. Dans le même temps, le
 [Super Splash](ref:hansa-park/super-splash?bare) de 1986 sera démonté pendant l’hiver 2026/27, parce
 que le parc réaménage son secteur. Ce qui le remplacera n’a pas encore été annoncé.
 

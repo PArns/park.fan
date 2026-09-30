@@ -164,8 +164,8 @@ it the Turbine name back.
 **[Vampire](ref:walibi-belgium/vampire-2)** (1999) is a **Vekoma SLC**
 (Suspended Looping Coaster, model 689) and was the first ride of its type in
 Belgium when it opened. The train hangs under the rail, and your feet dangle
-free through every curve. It doesn’t have long left: the park says Vampire
-runs until October 2027 and will then be demolished.
+free through every curve. The park says Vampire runs until October 2027 and
+will then be demolished.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, originally
 christened “Colorado”) is the classic mine train over 785 metres of track,
 gentle pace, tight curves, ideal for easing into the day or for anyone who
@@ -282,8 +282,8 @@ Vampire once it’s demolished, the park hasn’t said yet.
 
 ![A derelict wooden building lettered Aquarium, lit blue and green at night | The haunted house Aquarium, inside Dock World, where Mecalodon runs by day. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-At Halloween the park turns its own name around: **“Ibilaw”** is “Walibi”
-backwards, the event’s name since 2024, and it has its own mascot, **Bill**. In
+Since 2024 the park’s Halloween event has been called **“Ibilaw”**, which is
+“Walibi” backwards, and it has its own mascot, **Bill**. In
 2026 it runs from 10 October to 11 November on 20 days, ten of them until
 10 p.m., with four haunted houses (The Grand Hotel is new) and four scare zones,
 among them the clown circus **Psycho Circus** and **Arachnophobia**. There’s

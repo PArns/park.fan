@@ -135,8 +135,8 @@ Nach knapp sechzehn Monaten Umbau lief sie ab dem 3. Mai 2019 wieder.
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 heißt erst seit dem 7. Mai 2017 so. Eröffnet wurde sie am 1. Juni 1995 als
 _Space Mountain: De la Terre à la Lune_, nach Jules Verne, mit einer Kanone als
-Startanlage. Die gibt es immer noch: Der Zug wird in 1,8 Sekunden von 0 auf 71
-km/h den Berg hinaufgeschossen. Drei Überschläge, ein Kilometer Strecke, bis zu
+Startanlage. Die Kanone schießt den Zug bis heute in 1,8 Sekunden von 0 auf 71
+km/h den Berg hinauf. Drei Überschläge, ein Kilometer Strecke, bis zu
 5 g. Von allen Space Mountains weltweit ist das die einzige mit Launch und die
 einzige mit Inversionen. Michael Eisner, damals Disney-Chef, nannte sie den
 Retter des Parks, und im Geschäftsjahr 1995 schrieb Disneyland Paris erstmals
@@ -370,8 +370,8 @@ World anfangen und mittags wechseln, nicht umgekehrt.
 
 In Disney Adventure World, und das gilt in unseren Daten (190 gemessene Tage,
 Stand 25. September 2026) für jeden erfassten Monat und jeden Wochentag. Der
-Grund ist die Kapazität: Der kleinere Park bekommt mehr als halb so viele
-Besuche wie der große, hat aber weniger als halb so viele Attraktionen. Die
+kleinere Park bekommt mehr als halb so viele Besuche wie der große, hat aber
+weniger als halb so viele Attraktionen. Die
 aktuellen Werte für beide stehen in der Vergleichstabelle oben.
 
 ### Warum heißt der Walt Disney Studios Park jetzt Disney Adventure World?

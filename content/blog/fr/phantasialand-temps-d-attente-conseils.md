@@ -162,9 +162,8 @@ Le Phantasialand est resté jusqu’à aujourd’hui **une affaire de
 famille**. En 1998, Robert Löffelhardt, le fils de Gottlieb, en a pris seul la
 direction, trois ans après avoir racheté les parts du cofondateur Richard
 Schmidt ; jamais le parc n’a eu au-dessus de lui un groupe international ou des
-actionnaires obnubilés par le trimestre. Comment cela peut tourner autrement, on
-le voit en ce moment à une heure de route plus au nord : le propriétaire de Movie
-Park Germany appartient à un fonds d’investissement, et ce fonds
+actionnaires obnubilés par le trimestre. À une heure de route plus au
+nord, en revanche, le propriétaire de Movie Park Germany appartient à un fonds d’investissement, et ce fonds
 [cherche un acheteur depuis septembre 2026](/blog/parques-reunidos-a-vendre-movie-park).
 Au Phantasialand, la famille se voit à des détails qu’un contrôleur de gestion
 aurait rayés : à l’atelier d’aviation devant F.L.Y., qu’on traverse sans qu’il
@@ -173,8 +172,8 @@ fasse passer quoi que ce soit.
 De la place pour grandir, la famille n’en a guère. Le parc se bat pour un
 agrandissement depuis 2003, et en juillet 2026 la commission d’urbanisme de Brühl
 a lancé la procédure de planification pour une quinzaine d’hectares autour de la
-réserve naturelle de l’Ententeich. Rien n’est autorisé pour autant : il faut
-d’abord des expertises sur la nature, la circulation et les crues, et un réseau
+réserve naturelle de l’Ententeich. Avant toute autorisation, il faut
+encore des expertises sur la nature, la circulation et les crues, et un réseau
 de défenseurs de la nature prépare une initiative citoyenne contre le projet. Le
 parc n’a pas annoncé ce qui y serait construit ; les opposants s’attendent à un
 parc aquatique, un complexe hôtelier et une salle d’événements.
@@ -249,8 +248,8 @@ le plus haut du calendrier de billetterie est à **78 €** (adultes dès 12 ans
 soit presque le triple pour exactement la même journée de parc. On peut aussi
 venir sur un coup de tête, mais seulement en ligne et seulement jusqu’à 14 h le
 jour même, au prix du jour et à condition que la date ne soit pas complète ; le
-25 septembre 2026, un billet pour le jour même coûtait 64 €. La règle est aussi
-simple que peu romantique : **qui réserve tôt paie moins.** Que le jour bon marché
+25 septembre 2026, un billet pour le jour même coûtait 64 €. **Qui réserve tôt paie
+moins.** Que le jour bon marché
 soit aussi le plus vide, c’est souvent vrai, mais pas toujours : ce même jour, le
 dimanche suivant coûtait 49 € et le lundi 64 €, alors que dans notre calendrier, le
 lundi est le plus calme des deux.
@@ -551,8 +550,8 @@ délibérément pas de festival de la frousse. En hiver, il enfile au contraire 
 tout autre costume, magnifique, le
 **[Wintertraum](https://www.phantasialand.de/fr/parc/wintertraum/)**.
 
-En 2026, il n’y a pas de pause entre l’été et l’hiver : la saison estivale court
-jusqu’au 13 novembre, et dès le 14 le parc rouvre en village d’hiver illuminé,
+En 2026, la saison estivale court jusqu’au 13 novembre, et dès le 14, sans
+pause, le parc rouvre en village d’hiver illuminé,
 avec selon lui des millions de lumières, un décor de neige (la neige est factice,
 le froid, lui, est bien réel), des sapins et une féerie de chalets, sept
 spectacles dont le final « Magic Symphony » chaque soir, et une patinoire devant

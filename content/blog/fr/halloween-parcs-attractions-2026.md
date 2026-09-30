@@ -140,8 +140,8 @@ jeudi au dimanche à partir de septembre, c’est dans le
 
 Bottrop a déjà ouvert cet été l’une de ses maisons d’Halloween en avance. **Slaughterhouse** a tourné sous le label
 « Summerween » tous les week-ends d’août, 5 € par personne.
-Une maison hantée en plein jour et en plein été a au moins un avantage : si
-vous en sortez trempé, personne ne peut prouver que c’était de la peur.
+Si vous sortez trempé d’une maison hantée en plein jour et en plein été,
+personne ne peut prouver que c’était de la peur.
 
 Dates, programmation des mazes et niveaux de billets sur la
 [page officielle du Halloween Horror Festival](https://www.movieparkgermany.de/en/halloween).
@@ -151,8 +151,8 @@ Dates, programmation des mazes et niveaux de billets sur la
 L’[Europa-Park](ref:europa-park) fait Halloween en deux équipes. En journée,
 du 26 septembre au 1er novembre : décor d’automne coloré avec plus de 180 000
 citrouilles, sans frayeur, familial, très instagrammable. Le
-soir, **Traumatica** prend le relais, le « Festival of Fear », qui souffle en
-2026 deux bougies à la fois : **20 ans d’horreur et 10 ans de Traumatica**.
+soir, **Traumatica** prend le relais, le « Festival of Fear », qui fête en
+2026 **20 ans d’horreur et 10 ans de Traumatica**.
 
 En 2007, Michael Mack, à
 la tête de l’Europa-Park, et le chanteur **Marc Terenzi** montent sur le modèle
@@ -219,8 +219,8 @@ Tout en bas, les **Halloween Spooky Days** : la version de jour, décorée à
 l’automnale, inoffensive, enfants bienvenus, niveau sculpture de citrouille.
 Au-dessus, les **Halloween Fright Nights**, l’événement du soir où les choses
 deviennent sérieuses (en 2026 avec quatre haunted houses, deux walkthroughs,
-quatre scare zones et deux fright areas). Et _là_, Walibi opère une nouvelle séparation : les
-**haunted houses** sont les maisons hantées classiques que l’on traverse en
+quatre scare zones et deux fright areas). Les
+**haunted houses** y sont les maisons hantées classiques que l’on traverse en
 groupe. Les **experiences**, elles, sont une invention maison : groupes
 minuscules ou seul, proximité maximale, et la promesse explicite qu’il va vous
 _arriver_ quelque chose. Vous y payez 20 à 25 € par
@@ -287,8 +287,8 @@ font économiser jusqu’à 10 € par billet. Âge conseillé : 16 ans et plus
 contrôle.
 
 La bande-annonce est en ligne depuis le 19 août, et elle est d’une gentillesse
-suspecte. « Back to Reality » montre pendant une minute un Eddie franchement
-gentil : le clown d’horreur glisse une peluche rose dans les mains d’un garçon
+suspecte. Dans « Back to Reality », pendant une minute, le clown
+d’horreur Eddie se montre franchement gentil, glisse une peluche rose dans les mains d’un garçon
 près de Speed of Sound, distribue des glaces et de la barbe à papa, pose en
 riant pour des photos et danse à travers le parc jusqu’à se retrouver au milieu
 d’une mer de peluches roses. Puis il se réveille en sueur dans son antre, la
@@ -385,9 +385,8 @@ vers où.
 
 Toverland commercialise Entwined comme la **« plus grande experience Halloween
 d’Europe »**. Voilà donc, à une bonne heure de route d’écart, deux parcs qui
-revendiquent « le plus grand d’Europe », avec un partage bien propre : Bottrop a
-le plus grand _événement_, Sevenum la plus grande _experience_, et personne ne
-marche sur les pieds de l’autre.
+revendiquent « le plus grand d’Europe », sans se marcher sur les pieds, puisque
+Bottrop a le plus grand _événement_ et Sevenum la plus grande _experience_.
 
 **Si vous payez un supplément à Toverland, que ce soit pour le Fear Pass.**
 Pour 69,95 €, vous obtenez un accès unique et plus rapide aux six experiences,
@@ -410,12 +409,12 @@ Détails sur les experiences, les scare zones et le Fear Pass :
 
 ![Clown au fez devant le stand de lancer de couteaux, de jour | Un clown au stand de lancer de couteaux : deux peurs pour le prix d’une. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
-Le second Walibi s’y met aussi : [Walibi Belgium](ref:walibi-belgium) à Wavre
-transforme son automne en **« Ibilaw »**, c’est-à-dire « Walibi » à
+À Wavre, [Walibi Belgium](ref:walibi-belgium), le second Walibi,
+transforme lui aussi son automne en **« Ibilaw »**, c’est-à-dire « Walibi » à
 l’envers. Sachant que « Walibi » est
 lui-même un sigle, formé des trois communes voisines **Wa**vre, **Li**mal et
-**Bi**erges. À Halloween, le parc est donc littéralement pris à rebours : un
-Walibi en miroir où tout tourne un peu à l’envers, mis en scène depuis 2024
+**Bi**erges. Ce Walibi en miroir, où tout tourne un peu à l’envers, est
+mis en scène depuis 2024
 autour de la mascotte **Bill** et de son « royaume sinistre ».
 
 Au programme, toute la panoplie Fright Nights : quatre maisons hantées à
@@ -431,8 +430,8 @@ comme file rapide.
 
 ![Vieux camion rouillé, de la mousse sur la carrosserie, derrière lui une structure avec des paraboles | Un vrai Austin, pas un décor. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
-Contrairement à Traumatica, strictement réservé aux 16 ans et plus, Ibilaw reste
-plus familial : il n’y a pas de limite d’âge, le parc déconseille seulement les
+Contrairement à Traumatica, strictement réservé aux 16 ans et plus, Ibilaw n’a
+pas de limite d’âge, le parc déconseille seulement les
 maisons hantées aux moins de 16 ans. Les monstres restent dans une zone
 délimitée entre le Wave Swinger et Buzzsaw, le reste du parc appartient aux
 familles, et les enfants de moins de 12 ans reçoivent à l’entrée un **badge
@@ -464,7 +463,7 @@ organise ses **Halloween Fright Nights** sur dix soirées, les vendredis et
 samedis du **2 au 31 octobre 2026**, jusqu’à 22 h. Deux de ses six maisons
 d’horreur sont nouvelles, **NEXUS AI** et **Lost: Deep in the Woods**. Les trois
 scare zones sont comprises dans l’entrée, les maisons non : à partir de 3 € la
-maison avec créneau, ou 49 € les six en forfait. L’âge conseillé est de 16 ans. Contrairement à Traumatica, ce n’est pas une limite stricte : les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal. Billets,
+maison avec créneau, ou 49 € les six en forfait. L’âge conseillé est de 16 ans. Contrairement à Traumatica, les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal. Billets,
 spectacles et le calcul du Nightmare Society Pass sont dans notre
 [actualité sur les Fright Nights](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
@@ -549,8 +548,8 @@ monde.
 Brühl allume sa grande saison tout simplement **plus tard**. À partir du
 **14 novembre 2026**, **Wintertraum** court jusqu’en janvier (24 janvier 2027),
 avec patinoire, spectacles d’hiver et illuminations en soirée. Qui espère
-frissonner au Phantasialand en octobre revoit donc son plan : soit un parc
-voisin pour la frayeur, soit quelques semaines de patience jusqu’au glaçage. Qui d’autre ouvre en
+frissonner au Phantasialand en octobre ira donc dans un parc voisin, ou
+patientera quelques semaines jusqu’au glaçage. Qui d’autre ouvre en
 Europe entre novembre et janvier est dans le
 [guide hiver](/blog/parcs-attractions-hiver-2026).
 

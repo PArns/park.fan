@@ -142,8 +142,8 @@ sistema di lancio. C’è ancora: il treno viene sparato su per la montagna da 0
 g. Fra tutte le Space Mountain del mondo è l’unica con un lancio ed è l’unica
 con inversioni. Michael Eisner, allora capo della Disney, la chiamò la
 salvatrice del parco, e nell’esercizio 1995 Disneyland Paris chiuse per la prima
-volta in utile. Come Hyperspace Mountain le resta poco: a fine 2027 chiude per
-alcuni mesi e tornerà come _Space Mountain – De la Terre à la Lune_, di nuovo
+volta in utile. A fine 2027 l’attrazione
+chiude per alcuni mesi e tornerà come _Space Mountain – De la Terre à la Lune_, di nuovo
 con Jules Verne e la musica originale di Steve Bramson.
 
 Eppure nella nostra classifica non è in cima.
@@ -245,7 +245,7 @@ ce ne sono dietro ogni riga lo indicano le tabelle stesse.
 Il divario fra i due parchi si vede in ogni mese misurato. Solo a dicembre, di
 cui abbiamo soltanto gli ultimi giorni del 2025, i tempi di attesa tipici si
 sono pareggiati, e anche allora il livello di affollamento era più alto ad
-Adventure World. C’entra poco la popolarità e molto l’aritmetica: per il 2024 la
+Adventure World. Per il 2024 la
 TEA ha contato 10,2 milioni di visite al Disneyland Park e 5,5 milioni al
 secondo parco. Ogni visitatore viene contato solo nel parco in cui entra per
 primo; chi cambia a mezzogiorno nel secondo numero non compare affatto. Più di
@@ -324,9 +324,8 @@ solito un’ora. Per questo Peter Pan ha già una coda lunga quando apre per tut
 e secondo la nostra tabella oraria si accorcia davvero solo nell’ultima ora
 prima della chiusura. Big Thunder Mountain, Hyperspace Mountain e Indiana Jones
 hanno invece code molto più corte subito dopo l’apertura che a mezzogiorno.
-Comincia quindi da lì e tieni Peter Pan per la sera. L’ora di pranzo non va bene
-per nessuna: tutte e otto le attrazioni della tabella oraria hanno la coda più
-lunga fra le 12 e le 14.
+Comincia quindi da lì e tieni Peter Pan per la sera. Fra le 12 e le 14 tutte
+e otto le attrazioni della tabella oraria hanno la coda più lunga.
 
 E se prenoti entrambi i parchi, inverti l’ordine consueto e parti da Adventure
 World, dove la nostra analisi del rope drop indica per Ratatouille e per il
@@ -377,7 +376,7 @@ mezzogiorno, non il contrario.
 
 A Disney Adventure World, e nei nostri dati (190 giorni misurati al 25
 settembre 2026) vale per ogni mese rilevato e ogni giorno della settimana. Il
-motivo è la capacità: il parco più piccolo riceve più della metà delle visite
+parco più piccolo riceve più della metà delle visite
 di quello grande, ma ha meno della metà delle sue attrazioni. I valori
 aggiornati per entrambi sono nella tabella di confronto più in alto.
 

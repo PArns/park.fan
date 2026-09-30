@@ -75,14 +75,14 @@ mois entier, alors que pendant 29 jours on n’en a rien senti. La médiane ne
 bronche même pas devant une journée pareille. Le record figure donc à part, avec sa
 date, pour qu’on le voie sans qu’il touche aux deux autres chiffres.
 
-Pour [Phantasialand](ref:phantasialand), le classement ressemble à ceci. La colonne des jours
-mesurés compte le plus : plus une ligne a de jours, plus elle pèse.
+Pour [Phantasialand](ref:phantasialand), le classement ressemble à ceci. Plus une ligne
+a de jours mesurés, plus elle pèse.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-Ce qui s’affiche ici est en direct. Relis cet article dans trois mois : le
+Ce qui s’affiche ici est en direct. Dans trois mois, le
 tableau contiendra d’autres chiffres, et le texte autour tiendra toujours. Dans quatre articles plus anciens,
 les chiffres étaient tapés à la main dans des tableaux Markdown, répartis sur
 six langues, et au bout de quelques semaines ils avaient discrètement divergé,
@@ -90,8 +90,9 @@ comme les horloges d’une location de vacances.
 
 ## La journée a une forme
 
-Le mouvement de fond, tout le monde le connaît : c’est court à l’ouverture, puis le reste du monde a fini
-son petit-déjeuner, et vers le soir ça redevient supportable. Où se situe exactement le point haut varie d’une
+Tout le monde sait que c’est court à l’ouverture, que ça s’allonge une fois que
+le reste du monde a fini son petit-déjeuner, et que ça redevient supportable
+vers le soir. Où se situe exactement le point haut varie d’une
 attraction à l’autre, et ces écarts sont la partie utile.
 
 ```hourly-profile-widget slug=phantasialand top=6
@@ -138,8 +139,7 @@ aussi calmes l’un que l’autre.
 ## À quoi sert une équipe de nuit
 
 Afficher un temps d’attente en direct, c’est une requête. Une médiane sur chaque
-mardi mesuré, c’est autre chose : elle doit être prête avant que quelqu’un la
-demande. Chaque nuit, une chaîne de tâches se déroule donc, dans un ordre fixe,
+mardi mesuré, elle, doit être prête avant que quelqu’un la demande. Chaque nuit, une chaîne de tâches se déroule donc, dans un ordre fixe,
 parce que chaque étape s’appuie sur la précédente. À 02:00 UTC les centiles par
 heure, à 03:00 les valeurs de référence par parc, à 04:30 l’agrégation de la
 veille, à 05:15 les recommandations rope drop, qui lisent précisément cette
@@ -148,11 +148,11 @@ agrégation, à 05:30 « habituel » et « chargé » pour les grandes attra
 d’attente de la veille, pendant que les adeptes du rope drop sont déjà sur
 l’autoroute.
 
-À cela s’ajoute l’autre moitié : nous ne jetons aucun relevé. Les périodes
-anciennes sont compressées, pas éclaircies. Jusqu’où une analyse remonte est une
-décision à part : « habituel » et « chargé » portent sur les 365 derniers jours,
-un tour d’année complet, la recommandation rope drop seulement sur les 70
-derniers, pour suivre la saison. Commencer à enregistrer la troisième année,
+Par ailleurs, nous ne jetons aucun relevé. Les périodes
+anciennes sont compressées, pas éclaircies. Chaque analyse fixe
+ensuite sa propre profondeur, 365 jours pour « habituel » et « chargé », soit
+un tour d’année complet, et 70 seulement pour la recommandation rope drop, pour
+suivre la saison. Commencer à enregistrer la troisième année,
 c’est avoir un an d’historique la troisième année, et les deux précédentes sont
 perdues pour de bon. Notre série de mesures commence le 26 décembre 2025, et la
 colonne des jours mesurés du tableau plus haut compte à partir de là.
@@ -169,12 +169,12 @@ fondée sur zéro observation. À la place, la page du parc porte une mention
 disant qu’il n’y a rien à lire ici. Ce que nous pouvons quand même dire du parc
 se trouve dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
 
-La même règle à plus petite échelle : la patinoire « Berliner Eislaufen », sur
-la Kaiserplatz du Phantasialand, n’existe que pendant le Wintertraum, cette fois
+La même règle vaut, à plus petite échelle, pour la patinoire « Berliner
+Eislaufen » sur la Kaiserplatz du Phantasialand, qui n’existe que pendant le Wintertraum, cette fois
 du 14 novembre 2026 au 24 janvier 2027. En août, personne ne remonte rien à son sujet, parce
 qu’il n’y a rien à remonter. Lire ce silence comme « ouvert » serait l’erreur
-commode, et c’est bel et bien ce qui a figuré une fois sur la page du parc :
-du patin à glace en plein été, avec notre bénédiction.
+commode, et la page du parc l’a bel et bien commise une fois en proposant du
+patin à glace en plein été, avec notre bénédiction.
 Quant aux mois d’exploitation que nous lisons dans nos propres mesures, nous ne
 les nommons qu’après 330 jours d’observation : avant cela, aucun mois n’y figure, parce que « fonctionne
 de décembre à avril » décrirait la période où nous avons mesuré par hasard.

@@ -356,8 +356,8 @@ gare. Ils la traversent au pas pendant que les visiteurs s’installent : une
 **rolling station**, en somme le principe de l’omnimover appliqué aux montagnes
 russes. Avec seulement huit places par train (les unes derrière les autres,
 comme sur un vélo très décidé), chaque seconde où le train ne s’arrête pas
-compte. Cela ne fait pas beaucoup pour autant : Freizeitpark-Welt compte pour
-YOY environ 800 passagers par heure.
+compte. Freizeitpark-Welt ne compte pourtant pour YOY
+qu’environ 800 passagers par heure.
 
 ## La loi de Little : la formule derrière chaque file
 
@@ -427,9 +427,9 @@ d’Orlando elle fait partie du peloton de tête. C’est ce que donne la média
 de tous les jours mesurés depuis le début de nos relevés, fin décembre 2025 (au
 25 septembre 2026). À Paris, la file dépasse dès la première heure
 après l’ouverture celle de toutes les autres attractions, comme s’il y avait
-une distribution gratuite de champagne au bout. Ce n’est pas le cas partout : à
-Anaheim, Tokyo et Shanghai, où l’attraction existe aussi, elle se classe dans
-le milieu de tableau dans nos données.
+une distribution gratuite de champagne au bout. À
+Anaheim, Tokyo et Shanghai, où l’attraction existe aussi, elle ne se classe
+qu’en milieu de tableau dans nos données.
 
 À Paris et à Orlando, cela tient peu à l’attraction et beaucoup à
 l’arithmétique :
@@ -553,7 +553,7 @@ de deux mètres s’ouvre devant vous. Votre corps avance,
 immédiatement, par réflexe, comme si quelqu’un d’autre allait sinon vous voler
 l’espace. Et c’est, sauf votre respect, parfaitement inutile.
 
-Car la loi de Little vue à l’instant le dit sans ambiguïté : votre attente
+D’après la loi de Little vue à l’instant, votre attente
 dépend du débit de la gare tout à l’avant, pas de la distance avec la personne
 devant vous. Que vous vous colliez à elle ou que vous laissiez deux mètres
 d’air, votre position dans la file change d’exactement zéro place. Vous avancez
@@ -592,7 +592,7 @@ Côté véhicules, en revanche, chaque arrêt coûte de la vraie capacité. C’
 pourquoi l’omnimover de la Haunted Mansion et la rolling station de YOY ne
 s’arrêtent pas du tout en fonctionnement normal. Dans la file devant eux, le
 stop-and-go ne coûte que de la patience. Ce qui raccourcit vraiment votre
-attente se décide avant la visite : un jour où moins de gens se trouvent devant
+attente, c’est de choisir avant la visite un jour où moins de gens se trouvent devant
 vous. Ce jour-là se trouve dans le calendrier des meilleurs jours.
 
 ## Files virtuelles et gares doubles
