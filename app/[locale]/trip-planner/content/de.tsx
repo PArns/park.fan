@@ -35,7 +35,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="01"
         icon={CalendarDays}
         kicker="Zeitleiste"
-        title="Ein Block pro Bahn, so hoch wie ihre Schlange"
+        title="Blöcke und Umstiege"
       >
         <P>
           Jede Bahn ist ein Block, und seine Höhe ist die Wartezeit, die für seine Stunde
@@ -98,7 +98,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="03"
         icon={Sunrise}
         kicker="Öffnungszeiten"
-        title="Der Park macht um neun auf, die Bahn um zehn"
+        title="Bahnen, die später öffnen als der Park"
       >
         <P>
           An diesem Samstag öffnet das Phantasialand um 9 Uhr. Taron, F.L.Y., beide Winja’s und Raik
@@ -118,7 +118,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="04"
         icon={Footprints}
         kicker="Umstiege"
-        title="Der Weg von Bahn zu Bahn"
+        title="Wegzeit zwischen zwei Bahnen"
       >
         <P>
           Ein Wartezeiten-Feed meldet 50 Minuten an Taron. Ob du es von Rookburgh aus rechtzeitig
@@ -230,7 +230,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="07"
         icon={Theater}
         kicker="Shows"
-        title="Spielzeiten vom Betreiber und hochgerechnete"
+        title="Hochgerechnete Spielzeiten"
       >
         <P>
           Für heute hat die API die Zeiten des Betreibers. Für jeden anderen Tag rechnet sie den
@@ -252,7 +252,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="08"
         icon={HelpCircle}
         kicker="Grenzen"
-        title="Parks ohne Zahlen, Tage ohne Wetter"
+        title="Fehlende Daten und wo der Plan gespeichert ist"
       >
         <P>
           Der <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> zeigt seine
