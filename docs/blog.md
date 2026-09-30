@@ -699,6 +699,16 @@ block says one thing in each line:
 The card line goes, or carries a figure the heading does not (how many rides at that park have a
 height limit).
 
+### 5.7 The public changelog (`content/changelog/`)
+
+English only, and every sentence in it is about us, so the honesty family is an error there, as in
+a catalog string. A list item never opens on bold: 2.12.0 shipped sixteen items shaped
+`- **A short claim.** The explanation`, the layout §4.2 names, because the collection's README
+showed it as the template. `title` and `summary` are plain-text fields (§4.5). A release note picks
+what a visitor would notice and says it with the number behind it; which changes belong in one at
+all is [a version is a unit of communication](rules/a-version-is-a-unit-of-communication.md).
+`pnpm check:changelog` runs the changelog half of `pnpm check:prose` in CI.
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -741,7 +751,8 @@ pnpm check:prose --verbose    # every hit, not the first forty
 
 `scripts/check-prose.mjs` is the executable half of this document and holds the same lists, the
 way `attractionIsOutOfSeason()` is the SQL twin of the season rule: change one half and you
-change both. It walks the posts, the six message catalogs and every media sidecar, and it splits
+change both. It walks the posts, the six message catalogs, every media sidecar, the content pages
+and the public changelog (`--only=changelog` for that surface alone), and it splits
 its output the way a regex can actually be trusted to:
 
 - **Errors** are rules with no legitimate exception — a `—` in a post body, a growing em-dash

@@ -4,6 +4,7 @@
  * Run: pnpm check:prose            (no network, no running site)
  *      pnpm check:prose --strict   (warnings become failures)
  *      pnpm check:prose --verbose  (print every hit, not the first few)
+ *      pnpm check:prose --only=changelog   (one surface: blog, catalogs, media, pages, changelog)
  *
  * docs/blog.md is the prose half of this and stays the source of truth; the lists below are its
  * executable twin, in the same sense as `attractionIsOutOfSeason()` is the SQL twin of the TS
@@ -36,6 +37,15 @@ import { join } from 'node:path';
 
 const STRICT = process.argv.includes('--strict');
 const VERBOSE = process.argv.includes('--verbose');
+/**
+ * `--only=changelog` (comma-separated) runs a subset of the surfaces below. `pnpm check:changelog`
+ * uses it to put the changelog's prose in CI without taking every other surface's warnings along.
+ */
+const ONLY = process.argv
+  .find((arg) => arg.startsWith('--only='))
+  ?.slice('--only='.length)
+  .split(',');
+const runs = (surface) => !ONLY || ONLY.includes(surface);
 
 /**
  * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/blog.md §7.1).
@@ -378,7 +388,7 @@ function plainTextFields(raw) {
   const lines = (raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '').split('\n');
   const out = [];
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^(\s*)(title|excerpt|description|alt|caption):\s*(.*)$/);
+    const m = lines[i].match(/^(\s*)(title|excerpt|description|alt|caption|summary):\s*(.*)$/);
     if (!m) continue;
     let value = m[3];
     if (/^[>|]-?$/.test(value)) {
@@ -440,7 +450,7 @@ function scan(file, text, { subject } = {}) {
 
 const metrics = [];
 
-for (const locale of LOCALES) {
+for (const locale of runs('blog') ? LOCALES : []) {
   let dir;
   try {
     dir = readdirSync(join(BLOG, locale));
@@ -529,7 +539,7 @@ for (const locale of LOCALES) {
 
 /* ------------------------------------------------------------------ message catalogs */
 
-for (const locale of LOCALES) {
+for (const locale of runs('catalogs') ? LOCALES : []) {
   const file = `messages/${locale}.json`;
   let strings;
   try {
@@ -587,7 +597,7 @@ for (const locale of LOCALES) {
 /* ------------------------------------------------------------------ media sidecars */
 
 const captions = new Map(LOCALES.map((l) => [l, []]));
-for (const file of filesUnder('public/media', '.json')) {
+for (const file of runs('media') ? filesUnder('public/media', '.json') : []) {
   let data;
   try {
     data = JSON.parse(readFileSync(file, 'utf8'));
@@ -684,7 +694,7 @@ const CONTENT_PAGES = [
   ...LOCALES.map((l) => [`content/home/announce.${l}.md`, l]),
 ];
 
-for (const [file, locale] of CONTENT_PAGES) {
+for (const [file, locale] of runs('pages') ? CONTENT_PAGES : []) {
   let raw;
   try {
     raw = readFileSync(file, 'utf8');
@@ -705,6 +715,77 @@ for (const [file, locale] of CONTENT_PAGES) {
   scan(file, text, { subject: 'us' });
   explainerHabits(file, text, locale);
   for (const m of raw.matchAll(/\btitle="([^"]+)"/g)) headingCheck(file, 'title', m[1]);
+}
+
+/* ------------------------------------------------------------------ public changelog */
+
+/*
+ * `content/changelog/<version>.md` is English, and every sentence in it is about us, so it is read
+ * the way a catalog string is: the honesty family is an error, not a candidate. One rule is the
+ * changelog's own. 2.12.0 shipped with every one of its twenty bullets opening on a bold phrase and
+ * a full stop (`- **The day ends when the park closes.** The grid read …`), the chat-window layout
+ * §4.2 names as the loudest formatting tell there is, and the collection's own README prescribed
+ * it. A list item here is a sentence; bold is for a name or a number inside it.
+ *
+ * The release structure (file names, versions, dates, `package.json`) is `pnpm check:changelog`.
+ */
+const CHANGELOG = 'content/changelog';
+const BOLD_LEAD = /^\s*(?:[-*+]|\d+\.)\s+\*\*/gm;
+
+let changelogFiles = [];
+try {
+  changelogFiles = readdirSync(CHANGELOG).filter((f) => f.endsWith('.md') && f !== 'README.md');
+} catch {
+  // no collection, nothing to read
+}
+
+for (const name of runs('changelog') ? changelogFiles : []) {
+  const file = join(CHANGELOG, name);
+  const raw = readFileSync(file, 'utf8');
+  const body = postBody(raw);
+
+  const dashes = (body.match(/—/g) ?? []).length;
+  if (dashes) fail(file, `${dashes} em dash(es) (§4.1); a range takes "–"`);
+
+  const boldLeads = (raw.replace(/^---\n[\s\S]*?\n---\n/, '').match(BOLD_LEAD) ?? []).length;
+  if (boldLeads)
+    fail(
+      file,
+      `${boldLeads} list item(s) open on bold (§4.2): write the sentence, bold only a name or a number`
+    );
+
+  scan(file, body, { subject: 'us' });
+
+  for (const [field, value] of plainTextFields(raw)) {
+    if (value.includes('—')) fail(file, `${field}: em dash (§4.1)`);
+    if (/\*\*|__|`|\]\(|^#/.test(value))
+      fail(file, `${field}: Markdown in a plain-text field (§4.5) — "${value.slice(0, 60)}"`);
+  }
+
+  for (const heading of [
+    ...plainTextFields(raw)
+      .filter(([f]) => f === 'title')
+      .map(([, v]) => v),
+    ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]),
+  ])
+    headingCheck(file, 'heading', heading);
+
+  explainerHabits(file, body, 'en');
+
+  const staccato = staccatoRuns(body);
+  if (staccato.length)
+    warn(file, `staccato (§2.10), ${staccato.length}×: "${staccato[0].slice(0, 90)}"`);
+
+  const words = body.trim().split(/\s+/).length;
+  const parallel = (body.match(PARALLELISM) ?? []).length;
+  if ((parallel / words) * 1000 > MAX_PARALLELISM_PER_1K)
+    warn(
+      file,
+      `negative parallelism ${((parallel / words) * 1000).toFixed(1)}/1k words (§2.1, budget ${MAX_PARALLELISM_PER_1K})`
+    );
+  const bangs = (body.match(/!/g) ?? []).length;
+  if (bangs)
+    warn(file, `${bangs} exclamation mark(s) (§4.5): a release note states, it does not cheer`);
 }
 
 /* ------------------------------------------------------------------ report */

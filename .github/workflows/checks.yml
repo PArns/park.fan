@@ -1,9 +1,10 @@
 name: lint and format
 
 # Blocking gate for the checks that need no build, no database and no browser:
-# ESLint, Prettier, the :has() guard (added for the 2026-09 INP report) and the two sitemap
-# `<lastmod>` guards (PAR-366). It runs on every pull request and on pushes to main, so a
-# red main is visible where it happened rather than as somebody else's bycatch.
+# ESLint, Prettier, the :has() guard (added for the 2026-09 INP report), the two sitemap
+# `<lastmod>` guards (PAR-366) and the changelog's release rules. It runs on every pull
+# request and on pushes to main, so a red main is visible where it happened rather than as
+# somebody else's bycatch.
 #
 # Why it exists: `pnpm format:check` went red on main twice within a month, both
 # times from a merged PR that had not run `pnpm format` (PF-68: 8 files, PF-101:
@@ -96,3 +97,12 @@ jobs:
       - name: pnpm test:content-changes
         if: ${{ !cancelled() }}
         run: pnpm test:content-changes
+
+      # A version is cut in one pull request that moves `package.json`, `docs/changelog.md` and
+      # `content/changelog/<version>.md` together, and no other pull request touches the first or
+      # the last (docs/rules/a-version-is-a-unit-of-communication.md). The first run of this check
+      # found 2.12.0 published without its heading in the internal log. The second half is the
+      # changelog's share of check:prose. Local files only, under a second.
+      - name: pnpm check:changelog
+        if: ${{ !cancelled() }}
+        run: pnpm check:changelog

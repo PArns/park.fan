@@ -1,6 +1,6 @@
 {
   "name": "park.fan",
-  "version": "2.12.0",
+  "version": "2.13.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
@@ -121,6 +121,7 @@
     "check:glossary-content-date": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-glossary-content-date.mjs",
     "check:card-framing": "node scripts/check-card-framing.mjs",
     "check:prose": "node scripts/check-prose.mjs",
+    "check:changelog": "node scripts/check-changelog.mjs && node scripts/check-prose.mjs --only=changelog",
     "check:planner": "node --experimental-strip-types scripts/check-planner.mjs",
     "check:agent-ready": "node scripts/check-agent-ready.mjs",
     "check:header-links": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-header-links.mjs",

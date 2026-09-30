@@ -2,9 +2,45 @@
 
 Short log of notable changes; details live in the linked docs.
 
+A pull request adds its section on top, as `## Unreleased – <title>`, and never touches the
+version in `package.json`. When the PO cuts a version, the open sections move under its heading as
+`###`, and `content/changelog/<version>.md` gets the public entry in the same pull request.
+`pnpm check:changelog` fails when the two halves disagree. Rules:
+[a-version-is-a-unit-of-communication.md](rules/a-version-is-a-unit-of-communication.md).
+
 ---
 
-## Unreleased – Größenstufen je Park auf einer eigenen Seite: „Mit Kindern“
+## 2.13.0 (2026-09-30) – Kompass im Park, News neben dem Blog, „Mit Kindern“ je Park
+
+Geschnitten am 2026-09-30 und umfasst alles, was nach PAR-319 (PR #531, 2026-09-21) auf `main`
+kam. Der öffentliche Eintrag ist `content/changelog/2.13.0.md`. Neueste Abschnitte zuerst.
+
+### Changelog: im Footer verlinkt, Sprungliste, Historie ab Juni 2025, Regeln für den Schnitt
+
+`/en/changelog` hatte keinen einzigen Link von einer anderen Seite und zeigte nur 2.12.0. Jetzt:
+
+- **Footer:** „Changelog“ in der Spalte Inhalte, in allen sechs Sprachen, mit `hrefLang="en"` und
+  dem Sprachhinweis im Label der fünf anderen (`footer.changelog`). Die Versionsnummer unter dem
+  Copyright verlinkt auf den Eintrag ihrer Version (`changelogHref()` in
+  `lib/changelog/paths.ts`).
+- **Sprungliste:** `ChangelogIndex` listet jede Version mit Datum, nach Jahr gruppiert; ab `lg`
+  eine eigene Spalte, die beim Scrollen stehen bleibt, darunter ein Raster unter der Einleitung.
+  `<title>` ist „Changelog: versions and release dates | park.fan“ statt nur „Changelog“.
+- **Historie (PAR-320):** neun rekonstruierte Einträge von 0.2.0 (Juni 2025) bis 2.11.0. Versionen
+  und Daten stammen aus den `package.json`-Bumps der Git-History bzw. aus den Überschriften dieses
+  Logs; wo die Version fast mit jedem Push stieg, deckt ein Eintrag die ganze Strecke
+  (`through`, z. B. 2.7.0–2.7.14). `reconstructed: true` zeigt ein Badge. Die Texte beruhen auf den
+  Commits und PRs der jeweiligen Strecke, jede Zahl ist dort nachgelesen.
+- **2.12.0 neu geschrieben:** alle 16 Stichpunkte begannen mit einem fett gesetzten Satz, genau
+  das Layout, das `docs/blog.md` §4.2 als Chat-Muster nennt, und die README der Sammlung schrieb es
+  vor. `pnpm check:prose` prüft `content/changelog/` jetzt mit (Fehler: Fettdruck am Anfang eines
+  Listenpunkts, Gedankenstrich, Markdown in `title`/`summary`).
+- **Regeln für den Schnitt:** `pnpm check:changelog` (auch in der CI) prüft Dateiname gegen
+  Version, Datumsfolge, `package.json` gegen den neuesten veröffentlichten Eintrag, die
+  Versionsüberschrift hier im Log und dass kein `Unreleased`-Abschnitt unter einer Version steht.
+  Dabei fiel auf, dass 2.12.0 hier nie eine Überschrift bekommen hatte; die steht jetzt.
+
+### Größenstufen je Park auf einer eigenen Seite: „Mit Kindern“
 
 Der Größenfilter der Parkseite ist ein Schieberegler, also Zustand und kein Text. Die Zahlen dahinter
 stehen jetzt unter einer eigenen URL: `/de/parks/…/mit-kindern`, in allen sechs Sprachen über einen
@@ -26,7 +62,7 @@ Seite. Die Parkseite verlinkt sie nur für Parks über der Grenze, die Sitemap e
 liefert darunter 404. ISR mit Tagesfenster wie die Statistikseite. `pnpm test:park-kids`. Konzept:
 [dedicated-landing-pages.md §12](seo/dedicated-landing-pages.md).
 
-## Unreleased – Homepage and trip planner: copy without the quips
+### Homepage and trip planner: copy without the quips
 
 The homepage bands and the trip-planner page read as generated, and not because of single words:
 nearly every lead ended on a joke or a simile („Die geht ganz ohne Anstehen“, „so dankbar wie eine
@@ -51,7 +87,7 @@ Five statements were wrong and are fixed with it:
 
 `UI_EM_DASH_BASELINE.en` in `scripts/check-prose.mjs` drops from 30 to 27.
 
-## Unreleased – Homepage on a phone: one band padding throughout, and a kicker that stands on its own
+### Homepage on a phone: one band padding throughout, and a kicker that stands on its own
 
 Below 768 px the park block under the hero (nearby, favourites, popular parks, open parks per
 continent) had a different gap at every band edge, measured on `/de` at 390 px from the last
@@ -81,7 +117,7 @@ Every story chapter below already ran 64 | 64 (`STORY_SECTION`, 72 from `sm`).
   `ThreeSteps` above it. On a phone the steps come after it, so the first thing under the hero
   was a „step 1“ nobody had met yet. It says „Dein Standort“ now, in all six locales.
 
-## Unreleased – Park page: the location control moves onto the title card's address line
+### Park page: the location control moves onto the title card's address line
 
 The park page's near-you row sat between the title card and „Heute im Park", outside both cards,
 so on a phone its line of muted text stood on the park's photo. With location on and the visitor
@@ -104,7 +140,7 @@ elsewhere it read „Du bist 55,7 km vom Park entfernt", under a badge two lines
 
 Rule: [location-is-asked-for-where-it-is-needed.md](rules/location-is-asked-for-where-it-is-needed.md).
 
-## Unreleased – INP: no `:has()` in the stylesheet, and a tab tap that only moves the highlight
+### INP: no `:has()` in the stylesheet, and a tab tap that only moves the highlight
 
 Search Console flagged 361 park pages on 2026-09-23 for INP over 200 ms on phones (group value
 203 ms, example Six Flags Great Adventure). Traced on that page against a production build at
@@ -135,7 +171,7 @@ for a change of its own. `pnpm measure:inp` prints the style probe and every tap
 [no-has-selector-in-the-stylesheet.md](rules/no-has-selector-in-the-stylesheet.md), the tab panels in
 [an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md](rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md).
 
-## Unreleased – Kompass: erscheint auch, wenn der Hero im Bildschirm endet
+### Kompass: erscheint auch, wenn der Hero im Bildschirm endet
 
 Der Kompass kam bisher nur, solange sein Platz unter dem Hero unterhalb des Bildschirms lag.
 Auf Englisch endet der Hero im Disneyland Anaheim bei 680 px („Welcome to Disneyland Park" hat
@@ -145,7 +181,7 @@ er jetzt immer. Das schiebt den Anschnitt des nächsten Kapitels aus dem Bild un
 0,30 Layout Shift, nur bei Aufrufen aus einem Park. Wer gescrollt hat, bleibt unberührt.
 Messungen: [park-compass.md](features/park-compass.md#where-it-appears-and-when).
 
-## Unreleased – Standort: fragen, wo er gebraucht wird, und nach einem Nein nicht mehr
+### Standort: fragen, wo er gebraucht wird, und nach einem Nein nicht mehr
 
 Wie lange ein Ja zum Standort gilt, entscheidet der Browser. Wie oft wir fragen, entscheiden wir.
 Gefragt wird auf der Startseite und den Parkseiten, denn nur dort braucht die Seite den genauen
@@ -183,7 +219,7 @@ Test: `pnpm test:geolocation-permission`.
 
 ---
 
-## Unreleased – Kompass: Umami zählt, ob er genutzt wird
+### Kompass: Umami zählt, ob er genutzt wird
 
 Fünf Events, vier davon ohne Property: gesehen (`compass_viewed`) und Handy-Kompass aktiv
 (`compass_heading_on`) je einmal pro Seitenaufruf, eine Bahn fixiert (`compass_ride_pinned`), zur
@@ -192,7 +228,7 @@ im Hero getippt (`compass_pill_clicked`). Nicht gezählt werden das Lösen einer
 Drehung und Besuche mit `?sim=`, also die eigenen Tests.
 Details: [analytics.md](development/analytics.md#the-in-park-compasss-five-events-sep-2026).
 
-## Unreleased – Kompass nach Design-, Architektur- und Usability-Review
+### Kompass nach Design-, Architektur- und Usability-Review
 
 Drei Prüfer haben den Kompass unter dem Hero durchgesehen, das hier ist umgesetzt:
 
@@ -227,7 +263,7 @@ Ring wäre.
 Bewusst nicht übernommen: die Lünette ganz zu entfernen und „Fixiert" in „Dein Ziel" umzubenennen.
 Details: [park-compass.md](features/park-compass.md).
 
-## Unreleased – Kompass: folgt dem Blick, Tippen fixiert, Pille im Hero
+### Kompass: folgt dem Blick, Tippen fixiert, Pille im Hero
 
 Die Leiste unter dem Kompass nennt jetzt immer die Bahn, in deren Richtung das Handy zeigt, und
 wechselt sofort beim Drehen. Vorher wurde sie erst nach 8° Drehung neu bestimmt, und ein einziger
@@ -238,7 +274,7 @@ der Seite ist, die Pille „Zum Kompass" an der Stelle des News-Chips und scroll
 erste, grobe Ortung per WLAN hatte sonst alle Entfernungen um den Sprung zum GPS-Fix verschoben.
 Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
 
-## Unreleased – improvement: die Startseite auf dem Handy (PAR-435)
+### improvement: die Startseite auf dem Handy (PAR-435)
 
 Unter 768 px Seitenbreite stehen die Park-Listen vor den erklärenden Kapiteln: Parks in der Nähe,
 Favoriten, beliebte Parks und die offenen Parks je Kontinent. Die Kapitel folgen darunter in der
@@ -254,7 +290,7 @@ jetzt `reserveStatusRow` an `ParkCard`. `LiveActivitySkeleton` reservierte sechs
 Kontinente und je Karte 12 px zu wenig. An der Stelle „Beliebte Parks" misst `measure:cls --late`
 jetzt 0,10 statt 0,34.
 
-## Unreleased – Der Kompass sieht aus wie ein Kompass
+### Der Kompass sieht aus wie ein Kompass
 
 Der Kompass unter dem Hero war eine flache Scheibe mit Strichen und sah aus wie jedes Radar. Jetzt
 hat er eine Lünette mit Gradzahlen alle 30°, Strichen alle 5° und einem Dreieck für Norden. Das
@@ -269,7 +305,7 @@ geschlossene Bahn zeigt ihr Abzeichen in der Leiste unter dem Namen, damit der N
 abgeschnitten wird. Das Foto kostet 2,9 KB.
 Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
 
-## Unreleased – Kompass-Demo zum Testen: `?sim=compass`
+### Kompass-Demo zum Testen: `?sim=compass`
 
 Den Kompass unter dem Hero kann man jetzt auch zu Hause auf dem Handy ausprobieren, auf park.fan
 selbst und nicht nur in einer Vorschau. `?sim=compass` legt Phantasialand mit seinen echten Wartezeiten um
@@ -281,7 +317,7 @@ Kompass sagt, dass es eine Demo ist; ohne Standortfreigabe steht man auf dem Pun
 kann die Freigabe dort mit „Standort nutzen" geben. Der Hero bleibt dabei unverändert.
 Details: [flags-and-debug.md](development/flags-and-debug.md#the-compass-demo-works-in-production-simcompass).
 
-## Unreleased – Startseite im Park: Kompass mit den Top-Attraktionen
+### Startseite im Park: Kompass mit den Top-Attraktionen
 
 Wer im Park steht, sieht unter dem Hero der Startseite einen Kompass. Norden ist oben, jede
 Top-Attraktion ist ein Punkt in ihrer Richtung, je weiter weg, desto weiter außen, mit der
@@ -294,7 +330,7 @@ eine neue, kleine Route (`/api/parks/…/positions`, 0,7 KB), weil die Antwort v
 keine enthält.
 Details: [homepage-hero.md](features/homepage-hero.md#under-the-hero-the-headliners-on-a-compass).
 
-## Unreleased – fix: Foto-Aufnahme kennt die Fotos im offenen Pull Request
+### fix: Foto-Aufnahme kennt die Fotos im offenen Pull Request
 
 Nach einem Neuladen von `/admin/capture` standen alle heute fotografierten Bahnen wieder unter
 „Fehlt noch", weil der Backlog nur `main` kannte und die Fotos bis zum Merge im Session-PR liegen.
@@ -305,7 +341,7 @@ in Phantasialand waren das 10 Bahnen und 12 Namen. Reservierte Namen gehen auf d
 beim Neuladen der Liste und für Fotos in der Warteschlange nicht mehr verloren.
 Details: [admin.md](features/admin.md#the-open-pull-request-counts).
 
-## Unreleased – Startseite im Park: „Heute planen", „Zum Park", Öffnungszeiten, Wetter
+### Startseite im Park: „Heute planen", „Zum Park", Öffnungszeiten, Wetter
 
 Steht man in einem Park oder in dessen Nähe, zeigt der Hero der Startseite unter der Begrüßung
 vier Felder. „Heute planen" öffnet den Assistenten des Tagesplaners mit diesem Park und dem
@@ -318,7 +354,7 @@ Wetter (zum Wetter-Kapitel). Den Link zum Park gab es im Park vorher gar nicht, 
 allgemeine Einleitungstext fällt in dieser Variante weg.
 Details: [homepage-hero.md](features/homepage-hero.md#in-a-park-or-next-to-one).
 
-## Unreleased – fix: Foto-Aufnahme im Admin erkennt den Park wieder und folgt dem Standort sofort
+### fix: Foto-Aufnahme im Admin erkennt den Park wieder und folgt dem Standort sofort
 
 `/admin/capture` fand nie einen Park, weil die `in_park`-Antwort von `/api/nearby` am Park
 keine URL mitliefert (0 von 210 Parks) und der Hook genau die verlangte. Kontinent, Land und
@@ -332,7 +368,7 @@ gecachter Fix darf höchstens 15 s alt sein. Die 10-m-Schwelle und der 60-s-Cach
 raus. Im Hintergrund bleibt die Ortung aus.
 Details: [admin.md](features/admin.md#which-park-and-how-fast-the-position-follows).
 
-## Unreleased – der Planer fragt, wenn der geplante Tag vorbei ist
+### der Planer fragt, wenn der geplante Tag vorbei ist
 
 Ein Klick auf den Planer (die Lasche am Rand, am Handy der Knopf im Kopf) öffnete immer den
 zuletzt angesehenen Tag, nach einem Parkbesuch also den Tag, der schon vorbei ist. Jetzt fragt er
@@ -342,7 +378,7 @@ in diesem Fall erst: „Dein geplanter Tag ist vorbei", mit Park und Datum, und 
 schon nennen (ein Tag im Kalender, „Tag im … planen"), fragen nicht.
 Details: [trip-planner.md](features/trip-planner.md#a-day-that-is-over-is-asked-about-not-opened).
 
-## Unreleased – Tagesplaner am Handy: Suche in einer Zeile, Verschieben im 5-Minuten-Raster
+### Tagesplaner am Handy: Suche in einer Zeile, Verschieben im 5-Minuten-Raster
 
 In der Handy-Ansicht unter einer Maus (ein schmales Browserfenster) stand „Eigener Block" als
 44 px hohe eigene Zeile unter dem Suchfeld, und die Trefferliste scrollte in einem Kasten, der selbst
@@ -356,7 +392,7 @@ Zug sind 50 Minuten, und kurze Züge bewegen den Block überhaupt erst: 18 px si
 blieb er stehen. Die Knöpfe ±15 Minuten in der Aktionsleiste bleiben.
 Details: [trip-planner.md](features/trip-planner.md).
 
-## Unreleased – fix: das Planer-Sheet auf dem Handy ist so hoch wie der sichtbare Bereich
+### fix: das Planer-Sheet auf dem Handy ist so hoch wie der sichtbare Bereich
 
 Das Sheet des Tagesplaners war so hoch wie der Layout-Viewport (`92svh`, `100svh`), auch wenn der
 Browser gerade weniger davon zeigte: hineingezoomt, mit Tastatur oder in einem Browser, dessen
@@ -368,7 +404,7 @@ damit, und das Sheet steht auf der Unterkante des sichtbaren Bereichs statt auf 
 Ohne Zoom misst alles wie vorher.
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
-## Unreleased – die Desktop-Leiste in der Reihenfolge des Handy-Menüs, mit dessen Icons
+### die Desktop-Leiste in der Reihenfolge des Handy-Menüs, mit dessen Icons
 
 Die Leiste oben am Desktop steht jetzt so wie das Handy-Menü: Backstage, News, Parks entdecken,
 „Mehr" (dort, wo das Handy-Menü Beste Reisezeit, Wörterbuch und So funktioniert's führt),
@@ -380,7 +416,7 @@ Im Handy-Menü ist „Meine Alarme · Fancast" jetzt ein echter Fuß: außerhalb
 direkt am unteren Rand. Und das Menü scrollt nicht mehr seitwärts: Wer Favoriten gespeichert hatte,
 bekam darunter einen horizontalen Scrollbalken, weil deren Zeilen 8 px über die Spalte hinausragten.
 
-## Unreleased – die News im Handy-Menü als kleine Karte, eine Achterbahn für „Parks entdecken"
+### die News im Handy-Menü als kleine Karte, eine Achterbahn für „Parks entdecken"
 
 Die neueste Meldung oben im Handy-Menü war ein Chip, und in der 300 px breiten Spalte blieben davon
 drei Wörter der Schlagzeile übrig. Jetzt ist sie eine kleine Karte: Label und Datum, die
@@ -396,7 +432,7 @@ Jede stand als `line-clamp-N block` im Code, und `.block` steht im erzeugten CSS
 Karte: 3 statt 2 Zeilen Schlagzeile, 5 statt 3 Zeilen Teaser. An allen acht Stellen ist das
 `block` jetzt weg, `line-clamp` ist selbst blockartig.
 
-## Unreleased – die neueste Meldung als Chip auf der Startseite und im Handy-Menü
+### die neueste Meldung als Chip auf der Startseite und im Handy-Menü
 
 Neben dem „Parks jetzt geöffnet"-Badge im Hero der Startseite steht die neueste News als Chip
 (`LatestNewsChip`): das News-Label in der Akzentfarbe, die Schlagzeile, ein Pfeil. Auf dem Handy war
@@ -409,7 +445,7 @@ News-Panel des Headers hat jede Meldung in der Zeitleiste rechts ihr Bild.
 
 Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md).
 
-## Unreleased – Blog und News sind getrennt, News hat einen eigenen Menüeintrag
+### Blog und News sind getrennt, News hat einen eigenen Menüeintrag
 
 `/blog` listete News weiter mit: im Kartenraster des Index, als Zweig „News" im Kategoriebaum, über
 Tags, die nur News tragen, auf der Autorenseite und im Vor/Zurück eines Artikels. Jetzt listet alles
@@ -430,7 +466,7 @@ misst die Enclosure-Länge auch für Titelbilder, die auf einen Zuschnitt zeigen
 Details: [news is set apart](rules/news-is-set-apart-from-the-articles.md),
 [news lives under `/news`](rules/news-live-under-news.md).
 
-## Unreleased – fix: der Tagesplaner nennt die Shows wieder (PAR-521, Nachtrag)
+### fix: der Tagesplaner nennt die Shows wieder (PAR-521, Nachtrag)
 
 Über einer Bahn stand von einer Show nur noch die Maske, man sah also nicht, welche Show läuft.
 Jetzt schreibt der Block die Shows, die in ihn fallen, selbst hin: neben die Zeiten oder, bei
@@ -440,7 +476,7 @@ dem Umstiegs-Chip.
 
 Details: [trip-planner.md](features/trip-planner.md).
 
-## Unreleased – fix: der Tagesplaner auf dem Desktop wie auf dem Handy (PAR-482, Nachtrag)
+### fix: der Tagesplaner auf dem Desktop wie auf dem Handy (PAR-482, Nachtrag)
 
 Jede Desktop-Spalte hat wieder eine Bahnsuche, in einer Zeile mit „Eigener Block"; die Treffer
 erscheinen beim Tippen und lassen sich anklicken oder auf die Achse ziehen. Der Fuß ist der des
@@ -458,7 +494,7 @@ Ziehen, die Drop-Linie und die gedimmten Zustände gleiten oder blenden weich.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
-## Unreleased – „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
+### „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
 
 Wer im Park steht und keinen Plan hat, sieht auf der Parkseite („In deiner Nähe“) und auf der
 Startseite (`InParkView`) bis zu drei Fahrten, deren Live-Wartezeit mindestens 10 Min. unter der
@@ -470,7 +506,7 @@ jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Eins
 `/plan/day` wird nur im Park geholt. Geprüft von
 `pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
 
-## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
+### Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
 
 Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
 40 px und das Band mit `pt-2.5 pb-3`. Die Startseiten-Variante (`tile`) hat eine 48-px-Plakette
@@ -481,7 +517,7 @@ ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen
 Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
 den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
 
-## Unreleased – Park-Karten sind auf dem Handy eine Zeile (PAR-432)
+### Park-Karten sind auf dem Handy eine Zeile (PAR-432)
 
 Unter `sm` rendert `ParkCard` keine Karte mehr, sondern eine Zeile mit vier festen Zeilen: Name mit
 Favoriten-Stern, Ort · Entfernung, `ParkStatusBadge` und `CrowdLevelBadge`, dann Schließ- oder
@@ -494,7 +530,7 @@ die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung
 bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
 Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
 
-## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
+### Header und Brotkrümel auf dem Handy (PAR-434)
 
 Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
 erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
@@ -507,7 +543,7 @@ Der Brotkrümel zeigt auf dem Handy nur noch einen Link eine Ebene nach oben sta
 dort sind Land (und Stadt, wenn sie eine Seite hat) bzw. der Park in der Titelkarte verlinkt. Die
 H1 steht dort bei 390 px jetzt bei y=105 statt 151, gemessen mit `pnpm measure:mobile-height`.
 
-## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
+### improvement: der Footer auf dem Handy (PAR-437)
 
 Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
 davon waren die drei Link-Spalten mit elf 44-px-Zeilen. Unter `sm` ist jede Spalte jetzt eine
@@ -518,7 +554,7 @@ in de/en/nl/it, 660 px in fr/es. Ab `sm` ist der Footer unverändert, der Screen
 byte-gleich. Der 562-px-Block, der im DOM vor dem Footer steht, ist `ParkBackground`: `position:
 fixed` hinter dem Seitenkopf, er belegt keine Höhe.
 
-## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
+### fix: der Tagesplaner auf dem Handy (PAR-482)
 
 Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
 16 px heran und nicht wieder heraus. Die Bahnsuche und der Name eines eigenen Blocks waren 14 px,
@@ -566,7 +602,7 @@ bei 390×664 jetzt 347 px, bei 360×640 323 px.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
-## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
+### feat: Google-News-Sitemap unter `/sitemap-news.xml`
 
 Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprache ein `<url>` mit
 `<news:news>` (Name `park.fan`, Sprache, Datum aus dem Frontmatter, Titel). Nur echte
@@ -574,7 +610,7 @@ Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprac
 geprüft von `pnpm test:news-sitemap` und `pnpm check:agent-ready`. Details:
 [sitemaps](seo/sitemaps.md#the-news-sitemap).
 
-## Unreleased – Ride-Karten sind auf dem Handy eine Zeile (PAR-431)
+### Ride-Karten sind auf dem Handy eine Zeile (PAR-431)
 
 Unter `sm` rendert die Ride-Liste der Park-Seite (`LandSection`) jede `AttractionCard` als Zeile:
 Name und Wartezeit oben, die Badges einzeilig darunter, kein unteres Panel. Die Zeile ist 72 px hoch,
@@ -584,7 +620,7 @@ ihre 34-px-Kreise mit 44-px-Trefferfläche. Die Prop heißt `phoneRow`, die ande
 Einbettungen der Karte und der Desktop bleiben gleich. `LazyMount` reserviert für eine Spalte jetzt
 80 px je Zeile (`phoneRowHeight`), das Tab-Skeleton hat dieselbe Zeilenform.
 
-## Unreleased – feat: `/news` sieht nicht mehr aus wie der Blog
+### feat: `/news` sieht nicht mehr aus wie der Blog
 
 Die Übersicht `/news` war bis hier die Kategorieseite des Blogs an neuer URL: Kartenraster,
 Kategoriebaum, Tag-Cloud. Jetzt ist sie ein Strom nach Tagen, neueste zuerst. Jeder Tag beginnt mit
@@ -600,7 +636,7 @@ und ist auf Patricks Wunsch wieder raus.
 Der Park einer Meldung ist der erste Eintrag in `parkLinks`, ohne Eintrag der bestbewertete Park,
 den der Beitrag erwähnt (`getNewsParkRef`). Siehe `docs/rules/news-live-under-news.md`.
 
-## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
+### fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
 
 „Wartezeiten-Kalender" passt in der Ersatzschrift („Geist Fallback") gerade noch in eine Zeile, in
 Geist nicht. Beim Erstbesuch malte die Kachelreihe deshalb mit 132 px und wuchs auf 148 px, sobald
@@ -611,7 +647,7 @@ selbst bleibt unverändert, weil er auch der Linktext zur Kalenderseite ist. Kos
 Reihe, wo kein Titel umbricht (Englisch überall). Die Kachelreihe der Attraktionsseite nutzt
 denselben Kachelinhalt, aber nicht dieses Grid, und bleibt wie sie ist.
 
-## Unreleased – fix: „Andrang jetzt" und „Prognose heute" stehen immer untereinander
+### fix: „Andrang jetzt" und „Prognose heute" stehen immer untereinander
 
 Die beiden Metriken lagen in einer `flex-wrap`-Reihe, ob sie nebeneinander passten, hing also an der
 Breite der Werte. Die Prognose lädt als letztes (~4,4 s) und wird dabei von einem 80-px-Platzhalter
@@ -623,7 +659,7 @@ haben die 22 px Zeilenhöhe des Badges. Damit die Zelle die Karte nicht streckt 
 gegen 213 px der Headliner-Spalte), sind die Abstände enger: `gap-2` zwischen den Metriken, `gap-1`
 und `leading-none` im Auslastungsblock. Jetzt 210 px.
 
-## Unreleased – fix: der Toast für neue Beiträge meldet News auch im offenen Tab
+### fix: der Toast für neue Beiträge meldet News auch im offenen Tab
 
 Der Toast aus PAR-444 zählte News schon immer mit, fragte aber nur einmal pro
 `sessionStorage`-Session nach. Die lebt so lange wie der Tab, und ein wiederhergestellter Tab oder
@@ -638,7 +674,7 @@ Stunden nach dem Deploy am meisten wert ist. Ein Toast, der beim Wechsel in den 
 kommt beim Verlassen nicht wieder. Tests: `pnpm test:new-posts`. Doku:
 [New-posts toast](features/new-posts-toast.md).
 
-## Unreleased – fix: keine leere Mitte mehr in „Heute im Park"
+### fix: keine leere Mitte mehr in „Heute im Park"
 
 Zwischen den vier Spalten und der Kachelreihe lag auf fast jedem Park ein 104 px hohes leeres Band
 (135 px auf dem Handy). Es war die Reservierung für den Regen-/Unwetter-Streifen aus dem Nowcast,
@@ -655,7 +691,7 @@ sonst blieb von „Gewitter in ca. 25 Min." nur „Gewitter in c…". `WeatherNo
 `/ui` und die Guide-Seite unverändert das ganze Banner. Regel:
 [A streamed section owes the page its height](rules/a-streamed-section-owes-the-page-its-height.md).
 
-## Unreleased – News stehen neben den Artikeln, nicht zwischen ihnen
+### News stehen neben den Artikeln, nicht zwischen ihnen
 
 Beiträge der Kategorie `news` laufen auf den Teaser-Flächen nicht mehr in derselben Liste wie die
 Artikel. Startseite (Band unter dem Hero und Blog-Kapitel), Blog-Panel im Header-Menü sowie Park-
@@ -665,7 +701,7 @@ Akzentfarbe. Ausgeblendet wird wegen des Alters nichts. Das Header-Menü zeigt d
 Artikel, damit das Panel nicht höher wird. Regel:
 [News is set apart from the articles](rules/news-is-set-apart-from-the-articles.md).
 
-## Unreleased – feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
+### feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
 
 Wer wiederkommt und neue Beiträge verpasst hat, bekommt einmal einen Toast mit dem neuesten davon,
 beim Erstbesuch nie. Die ganze Karte ist der Link auf den Beitrag (ein gestrecktes `::after`),
@@ -684,7 +720,7 @@ trägt dafür etwas im RSC-Payload. Verglichen wird über Translation-Keys plus 
 `blog_toast_opened` ohne Properties. Details:
 [features/new-posts-toast.md](features/new-posts-toast.md).
 
-## Unreleased – fix: die OG-Funktion trägt 18 MB Fotos statt 256
+### fix: die OG-Funktion trägt 18 MB Fotos statt 256
 
 Der Deploy scheiterte an `The Vercel Function "api/og/[...path]" is 290.96mb uncompressed`, zum
 zweiten Mal nach `2.11.0` und diesmal, ohne dass an der Route etwas geändert worden wäre. Lokal
@@ -748,7 +784,13 @@ Umbau, sondern war immer so – auch `next dev` hatte nie Crops, weil die git-ig
 fehlgeschlagener Render. Wer ihn wirklich reparieren will, müsste die Quelle baseline kodieren –
 eigene Aufgabe, hier nicht mitgemacht.
 
-## Unreleased – Eine öffentliche Changelog-Seite, und die Regel, wann eine Version geschnitten wird
+## 2.12.0 (2026-09-21) – Planer-Assistent, Ride-Seiten wie Parkseiten, das Menüband
+
+Geschnitten mit PAR-319 (PR #531). Die Überschrift kam erst beim Schnitt von 2.13.0 dazu; bis
+dahin standen die Abschnitte als `Unreleased` über 2.11.0. Der öffentliche Eintrag ist
+`content/changelog/2.12.0.md`. Neueste Abschnitte zuerst.
+
+### Eine öffentliche Changelog-Seite, und die Regel, wann eine Version geschnitten wird
 
 Diese Datei hier ist das interne Log: deutsch, ein Abschnitt pro PR, mit Dateinamen und Messwerten.
 Sie hatte seit `2.11.0 (2026-08-15)` **31** `## Unreleased`-Abschnitte, `package.json` stand bei
@@ -782,7 +824,7 @@ Abschnitten darunter, mit einem Highlight-Screenshot in der neuen Sammlung
 Oberfläche ist keine Parkaufnahme). Autorenanleitung:
 [content/changelog/README.md](../content/changelog/README.md).
 
-## Unreleased – Jeder Park mit genug Messtagen hat jetzt eine eigene Statistikseite
+### Jeder Park mit genug Messtagen hat jetzt eine eigene Statistikseite
 
 Die Parkseite rendert die Live-Tabelle serverseitig, die historische Hälfte aber nicht: der
 Statistik-Abschnitt wird bewusst client-seitig nachgeladen, und den typischen Tagesverlauf
@@ -810,7 +852,7 @@ nötig ist, steht in
 reicht nicht. Konzept und Messungen:
 [dedicated-landing-pages.md](seo/dedicated-landing-pages.md).
 
-## Unreleased – Die Parkkarte hing an OSMs eigenem Tile-Server
+### Die Parkkarte hing an OSMs eigenem Tile-Server
 
 `tile.openstreetmap.org` ist für OSM selbst und für Renderer-Tests gedacht, nicht zum Einbetten in
 eine produktive Drittanbieter-Seite — die [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/)
@@ -826,7 +868,7 @@ der anonyme, subdomain-gesharded Endpunkt aus dem ersten Fix — genau das, was 
 ohne Key sieht. Details in
 [map-tiles-are-carto-not-osms-own-tile-server.md](rules/map-tiles-are-carto-not-osms-own-tile-server.md).
 
-## Unreleased – Das „Mehr"-Panel sieht aus wie ein Menü
+### Das „Mehr"-Panel sieht aus wie ein Menü
 
 Beste Reisezeit, Wörterbuch und So funktioniert's standen im Panel als Überschrift plus Absatz:
 eine 16 px hohe Versalzeile trug den einzigen Link, die Zeile darunter lag außerhalb der
@@ -852,7 +894,7 @@ abgehängt. Blog und die vierte Kachel gehören nicht mehr hierher – siehe der
 unten, der das Panel wieder auf drei Karten gebracht hat. Details in
 [header-navigation.md](features/header-navigation.md#mehr-one-entry-for-everything-that-is-reading-material).
 
-## Unreleased – „Backstage": der Blog ist wieder ein eigener Eintrag in der Leiste
+### „Backstage": der Blog ist wieder ein eigener Eintrag in der Leiste
 
 Vier Einträge sind mit dem Sammel-Trigger „Mehr" aus der Navigationszeile verschwunden, weil sechs
 davon auf Französisch bei 1024 px 23,7 px über ihre Box liefen. Einer der vier ist der stärkste
@@ -875,7 +917,7 @@ lag nur am ersten Post an; die Zeile wird damit vierzeilig, also wächst ihr Vor
 
 ---
 
-## Unreleased – Planer im Querformat: das Chrome steht jetzt neben der Achse
+### Planer im Querformat: das Chrome steht jetzt neben der Achse
 
 Ein quer gehaltenes Handy bekam seit PAR-76 das Bottom-Sheet, den Griff und die 44-px-Ziele — und
 trotzdem keinen Tag. Bei 844 × 390 stapeln sich Griff, Sheet-Kopf, Kontextband, Optimize-Zeile,
@@ -900,7 +942,7 @@ bisher „nichts liegt darüber". Details in
 
 ---
 
-## Unreleased – Planer: die Leg-Pille rechnet gegen die Lücke, die man sieht
+### Planer: die Leg-Pille rechnet gegen die Lücke, die man sieht
 
 Gemeldet aus PAR-169: seit der Optimierer auf den Erwartungswert taktet, stehen die Blöcke dicht,
 und der Chip zwischen zweien wurde vom Block darunter angeschnitten. Gemessen an einem gepackten
@@ -930,7 +972,7 @@ ausgefiltert und gilt deshalb für Tage, in denen Zahlen stehen.
 
 ---
 
-## Unreleased – Planer: der Fit-Assistent nimmt sich nicht selbst vom Schirm
+### Planer: der Fit-Assistent nimmt sich nicht selbst vom Schirm
 
 Direkt nach dem Assistenten gemeldet: „wenn ich anfange, Bahnen abzuwählen, verschwindet die Liste
 komplett". Im Wizard stimmte das wörtlich — der ganze Block hing an `headlinerConflict`, also hat
@@ -955,7 +997,7 @@ wird jetzt die Dauer.
 
 ---
 
-## Unreleased – Planer: ein Tag, der nicht aufgeht, öffnet einen eigenen Assistenten
+### Planer: ein Tag, der nicht aufgeht, öffnet einen eigenen Assistenten
 
 Gemeldet mit Screenshot: „Alle Headliner einplanen" am Samstag im Phantasialand, Taron steht um
 **18:45** in einem Park, der um 18:00 schließt. Die App hat das gesagt — als Nebensatz in einer
@@ -1006,7 +1048,7 @@ Stellschraube. Neu: `pnpm test:planner-fit` (41 Prüfungen) und ein Durchlauf de
 
 ---
 
-## Unreleased – Planer: der Tag endet, wenn der Park schließt, und der Headliner ist keine Restgröße
+### Planer: der Tag endet, wenn der Park schließt, und der Headliner ist keine Restgröße
 
 Drei Fehler mit einer gemeinsamen Wurzel, gemeldet an einem Samstag im Phantasialand.
 
@@ -1049,7 +1091,7 @@ sobald `MAX_STOPS` schnitt — 26 Bahnen ließen den Tag bei jedem Druck neu wü
 
 ---
 
-## Unreleased – fix: der Favoritenstern sitzt wieder in seinem Ring
+### fix: der Favoritenstern sitzt wieder in seinem Ring
 
 Auf dem Telefon hing der Stern aus dem Kreis, in den ihn die Karte gezeichnet hat — auf jeder
 Park-, Bahn-, Show- und Restaurantkarte der Seite. Ursache war die 44-px-Touch-Stufe aus der
@@ -1072,7 +1114,7 @@ Restaurantkarte gegen 37 × 44 vorher. Sie ist größer geworden, weil sie um de
 statt an einer seiner Ecken zu hängen. Im Titelkopf der Parkseite schrumpft die Box von 44 auf
 24 px, was der `<h1>` daneben 20 px mehr gibt (248 → 268 px bei 390 px) und vertikal nichts bewegt.
 
-### Nachtrag: der Schließen-Knopf des Standort-Banners
+#### Nachtrag: der Schließen-Knopf des Standort-Banners
 
 Zweiter Fall derselben Regel, und er zeigt ihre andere Hälfte: eine gewachsene Trefferfläche muss
 auch daraufhin geprüft werden, worüber sie jetzt liegt. Der Knopf hängt `absolute top-2 right-2` in
@@ -1098,7 +1140,7 @@ Siehe [Design System](design/design-system.md#the-target-grows-the-box-does-not)
 
 ---
 
-## Unreleased – feat: the ride page opens the way its park page does
+### feat: the ride page opens the way its park page does
 
 A ride page and its park page are one click apart over the same photograph, and they opened as two
 different objects. The park's fold is a title card and then one header card: „Heute im Park" on
@@ -1150,7 +1192,7 @@ See [design system → the ride page is the park page's anatomy](design/design-s
 
 ---
 
-## Unreleased – feat: Größenfilter auf der Parkseite, und ein Panel für die drei Filter
+### feat: Größenfilter auf der Parkseite, und ein Panel für die drei Filter
 
 Wer mit Kind in einen Park fährt, hat eine Frage vor allen anderen: was darf es fahren. Die Antwort
 stand längst auf jeder Karte („Ab 120 cm"), aber nur einzeln – 40 Karten durchsehen und im Kopf
@@ -1198,7 +1240,7 @@ Regeln als reine Funktionen in `lib/utils/rider-height.ts` (`pnpm test:rider-hei
 
 ---
 
-## Unreleased – Der °C/°F-Schalter steht jetzt neben dem Theme-Schalter
+### Der °C/°F-Schalter steht jetzt neben dem Theme-Schalter
 
 Die Einheit steuert Temperaturen im Wetter-Kalender, in Blogartikeln und auf dem Reisezeit-Hub – der
 Schalter dafür saß in der Kopfzeile der Wetterkarte, also ausschließlich auf Parkseiten. Er steht
@@ -1251,7 +1293,7 @@ Pille (`.u-unit-btn`, `.u-unit-c`, `.u-unit-f`) sind mit den Segmenten weggefall
 
 ---
 
-## Unreleased – fix: Das Icon in der Google-Suche ist wieder lesbar
+### fix: Das Icon in der Google-Suche ist wieder lesbar
 
 In einem `google.de`-Treffer für „Phantasialand Wartezeiten" stand neben dem Ergebnis ein Fleck.
 Vier Fehler, jeder für sich ausreichend.
@@ -1320,7 +1362,7 @@ eigenem Takt, Tage bis Wochen, und ein Umzug kostet diese Wartezeit erneut. Deta
 
 ---
 
-## Unreleased – feat: Fastpass an der Bahn, im Glossar und im Admin
+### feat: Fastpass an der Bahn, im Glossar und im Admin
 
 Die API liefert pro Bahn ein kuratiertes `fastPass`-Objekt — `{ name, price, priceFrom, currency,
 termId }`. Auf der Bahnseite und auf der Ride-Karte steht dafür jetzt ein Badge in der Faktenzeile,
@@ -1352,7 +1394,7 @@ sind vierzig Revalidierungen für eine Entscheidung.
 
 ---
 
-## Unreleased – fix: die Kachelreihe bleibt beim Wechsel zwischen Parkseite und Kalender stehen
+### fix: die Kachelreihe bleibt beim Wechsel zwischen Parkseite und Kalender stehen
 
 Die sechs Einstiegskacheln stehen auf jeder Seite eines Parks, in derselben Reihenfolge und mit
 denselben Live-Hinweisen, damit Parkseite → Kalender → Parkseite sich wie eine Seite anfühlt.
@@ -1399,7 +1441,7 @@ Panelhintergrund in allen vier Ecken durchscheinen lassen.
 
 ---
 
-## Unreleased – feat: die Sitemap sagt jetzt, welche Seiten sich geändert haben
+### feat: die Sitemap sagt jetzt, welche Seiten sich geändert haben
 
 Von 42.756 Attraktions-URLs trug keine ein `<lastmod>`, im Hauptsitemap 1.662 von 3.480. Die
 beiden anderen Tags helfen dabei nicht weiter: Google liest `changefreq` und `priority` gar
@@ -1444,7 +1486,7 @@ Details: [Sitemaps](seo/sitemaps.md).
 
 ---
 
-## Unreleased – die Seite beantwortet auch Fragen, die keine Person stellt
+### die Seite beantwortet auch Fragen, die keine Person stellt
 
 Ein Agent, der nur den Hostnamen hat, fand bisher robots.txt, zwei Sitemaps und sonst nichts.
 Jetzt findet er `/llms.txt`, den API-Katalog nach RFC 9727 unter
@@ -1486,7 +1528,7 @@ Details: [Agent readiness](seo/agent-readiness.md)
 
 ---
 
-## Unreleased – feat: die Wartezeitentabellen im Blog holen sich ihre Zahlen selbst
+### feat: die Wartezeitentabellen im Blog holen sich ihre Zahlen selbst
 
 Vier Artikel trugen zweiundzwanzig handgepflegte Tabellen über sechs Sprachen:
 Top-Ten eines Parks, Bahnen quer über Parks hinweg, Wochentage, und das
@@ -1520,7 +1562,7 @@ Mittag etwa die Hälfte"). Das bleibt wahr, während die Zahl wandert.
 Details: [Blog-Widgets](../content/blog/README.md#6-live-widgets-code-fences) ·
 [API-Budget](architecture/api-budget.md#blog-widgets-what-a-post-may-fetch)
 
-## Unreleased – fix: die Parknamen waren abgeschnitten, der ruhigste Tag fehlte
+### fix: die Parknamen waren abgeschnitten, der ruhigste Tag fehlte
 
 Auf `/beste-reisezeit` las die Vergleichstabelle „Europa-P…", „Phantasia…",
 „Disneylan…". `table-layout: auto` gibt die Breite dem breitesten
@@ -1541,7 +1583,7 @@ achtzehn Parks, die diese Tabelle je zeigt, gemessen: **12 von 18 gefüllt vorhe
 andere. Der eine verbliebene Strich steht bei Disney Adventure World, wo vier
 Wochentage dieselben 39 Minuten messen – das ist ein Park ohne ruhigen Tag.
 
-## Unreleased – feat: das Menü wird ein Band, mit Flaggen und Fotos
+### feat: das Menü wird ein Band, mit Flaggen und Fotos
 
 Das Panel war eine schmale Box mit einer Kontinent-Schiene, die eine
 Länderliste gegen die nächste tauschte. Vier von fünf lagen dabei auf
@@ -1603,7 +1645,7 @@ See [header navigation](features/header-navigation.md).
 
 ---
 
-## Unreleased – feat: the menu band settles in instead of appearing
+### feat: the menu band settles in instead of appearing
 
 Its columns lift into place on open, and the detail row settles again each time
 it fills with a different country. Same split the header's own reveal uses: CSS
@@ -1638,7 +1680,7 @@ See [header navigation](features/header-navigation.md#motion).
 
 ---
 
-## Unreleased – fix: the menu's countries loaded once, if at all
+### fix: the menu's countries loaded once, if at all
 
 Four things, and the first two turned out to be one.
 
@@ -1685,7 +1727,7 @@ See [header navigation](features/header-navigation.md).
 
 ---
 
-## Unreleased – feat: a header that leads somewhere, and stops before it dilutes
+### feat: a header that leads somewhere, and stops before it dilutes
 
 The bar had four links. "Parks entdecken" pointed at `/parks/europe` — past
 the discovery index, into one of its five children — and the best-travel-time
@@ -1745,7 +1787,7 @@ See [header navigation](features/header-navigation.md).
 
 ---
 
-## Unreleased – fix: the header, and the two logos that were never the same logo
+### fix: the header, and the two logos that were never the same logo
 
 The bar is 48 px instead of 56, the search field 32 instead of 40, and the logo
 24 px everywhere instead of 28 on a phone and 36 on a desktop. It reads quieter,
@@ -1782,7 +1824,7 @@ See [design system → header geometry](design/design-system.md#header-geometry)
 
 ---
 
-## Unreleased – feat: the facts a park page could not state
+### feat: the facts a park page could not state
 
 A park page had a map, a forecast, a weather chart and no way to say where the
 park is. None of the three upstream feeds carries an address, a website, a
@@ -1820,7 +1862,7 @@ Facebook logos end up different sizes on one page.
 
 ---
 
-## Unreleased – feat: the admin is a different application
+### feat: the admin is a different application
 
 The old admin was a password box, a text field and a POST. It shared the site's
 layout, its i18n and its theme, and it could do exactly one thing per page. This
@@ -1856,7 +1898,7 @@ can revoke devices from.
 
 Details: `docs/features/admin.md`.
 
-## Unreleased – fix: seven layout shifts, two of which the harness had been unable to see
+### fix: seven layout shifts, two of which the harness had been unable to see
 
 `pnpm measure:cls` diffs a page's first-paint layout against its settled one. That is good at
 finding candidates and bad at two things, and both showed up here.
@@ -1949,7 +1991,7 @@ reader standing in the wrong band pays up to 1.0 for them — but the card heigh
 to reserve runs from 94 to 508 px inside a single park, and the swap exists to keep hydration off
 a 1017 ms long task. Trading CLS for INP there needs its own round.
 
-## Unreleased – feat: the weather day chart is built around the park's opening hours
+### feat: the weather day chart is built around the park's opening hours
 
 The hourly chart gave the hours a visitor came for whatever share of the width they happened to
 occupy. For the median park in the catalogue — 10 h of opening hours — that was 42 %, and the night
@@ -1988,7 +2030,7 @@ have been handed a desktop's worth of labels.
 
 Details, numbers and the two accepted costs: [weather day chart](features/weather-day-chart.md).
 
-## Unreleased – fix: four more blog widgets pointed at a park that had been renamed
+### fix: four more blog widgets pointed at a park that had been renamed
 
 `disney-magic-kingdom` was not the only one. The Toverland post carried `slug=toverland` on its
 map, best-days, stats and weather widget, in all six locales — 24 widgets rendering
@@ -2010,7 +2052,7 @@ watching it fail.
 answered, because the API's 308 is followed transparently, which is exactly what makes this class
 of rename so quiet.
 
-## Unreleased – fix: the blog's copy of the top-ten table gets its live column too
+### fix: the blog's copy of the top-ten table gets its live column too
 
 The stats widget renders the same `ParkStatsSection` as the park page, and on a blog post its live
 column was effectively never there: nothing on such a page subscribes to `['park-live', …]` unless
@@ -2032,7 +2074,7 @@ gefunden" in all six locales. The API renamed that park to `magic-kingdom-park`;
 never pulled along. Fixed, and it is what made the fallback testable — Magic Kingdom is open while
 every European park in those posts is shut for the night.
 
-## Unreleased – fix: the live column no longer disappears at opening time
+### fix: the live column no longer disappears at opening time
 
 The "now" column decided whether to exist by asking whether any of the ten rides in the table had a
 wait time. That looked equivalent to "is there live data" and is not. Phantasialand at 09:37 has 14
