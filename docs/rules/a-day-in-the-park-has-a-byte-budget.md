@@ -81,6 +81,12 @@ written up as a ticket body on PAR-421, to be filed in the project "Im Park".
    with every page before anyone opens it. Four chunks carry it (38.2, 17.2, 14.8 and 11.6 KB
    gzip); they load on `/de/parks` as well as on the park page, and 59–94 % of their functions are
    never called during load. At 3G's 400 kbit/s that is 1.6 s of transfer before `load`.
+   **Done (PAR-516):** `PlannerLauncher` loads `PlannerFlyoutHost` through `next/dynamic` and
+   starts the import beside the panel's messages once the panel is wanted. Two builds, cache
+   disabled, 360 × 780, script bytes on the wire: park page 569.3 → 512.3 KB (−57.0 KB, 43 → 41
+   scripts), `/de/parks` 385.1 → 306.6 KB (−78.5 KB, 29 → 25 scripts). `pnpm measure:cls --late`
+   is unchanged (0.0002 mobile, 0.0091 desktop at `y=0`). The budget table above still carries the
+   2026-09-24 figures, taken with a different harness; re-measure it before lowering a ceiling.
 2. **Day-stable fields in every live poll — 1.36 KB of 4.56 KB brotli, 30 %.** Each attraction in
    `LiveParkSnapshot` carries `name`, `slug`, `land`, `backgroundImage`, `backgroundPosition` and
    `park`, none of which can change between two polls. Over a day that is about 147 KB.
