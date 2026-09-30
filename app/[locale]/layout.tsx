@@ -20,7 +20,7 @@ import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
 import { getNewsMenu } from '@/lib/navigation/news-menu';
-import { getGlossaryMenu } from '@/lib/navigation/glossary-menu';
+import { getMoreMenu } from '@/lib/navigation/more-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
@@ -157,9 +157,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const newsMenu = showBlog ? getNewsMenu(locale as Locale) : undefined;
   const hasNews = (newsMenu?.items.length ?? 0) > 0;
   const featuredParks = getFeaturedParksMenu(locale);
-  // The dictionary's categories for the "more" menu. No I/O either — the term data is a module in
-  // this repo; the await is only `getTranslations` reaching for the labels.
-  const glossaryMenu = await getGlossaryMenu(locale as Locale);
+  // The "more" menu: the dictionary's categories, the chapters of the guide and of the best-time
+  // hub, and a photo for each. No I/O either — terms, chapters and the media catalog are modules
+  // in this repo; the await is only `getTranslations` reaching for the category labels.
+  const moreMenu = await getMoreMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
   // parks menu opens onto. Kept to twelve — eleven without news, ten where `showBlog` is false: this
   // is a hint about the primary navigation, and the country links are already in the rendered <nav>.
@@ -399,7 +400,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     blogMenu={blogMenu}
                     newsMenu={newsMenu}
                     featuredParks={featuredParks}
-                    glossaryMenu={glossaryMenu}
+                    moreMenu={moreMenu}
                   />
                 </Suspense>
                 <main className="flex-1">{children}</main>

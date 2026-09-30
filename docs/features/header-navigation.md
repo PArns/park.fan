@@ -275,29 +275,107 @@ PAR-434 a phone's row is lockup, search, planner, burger; the three preferences 
 sheet.)
 
 Four entries moved one level down, behind a trigger with no page of its own. Three of them are
-still there: **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's**, a heading and a line
-each. Their lists are separate tickets; the heading IS the link, which is what keeps all three hub
-URLs in the HTML of every page. The fourth, the blog, came back out — see below.
+still there: **Wörterbuch**, **Beste Reisezeit** and **So funktioniert's**, each with what it holds
+(see the next section). The fourth, the blog, came back out — see below.
 
-**Each of the three is a card** — icon tile, name, one line — and the whole card is the link,
-which is what keeps all three hub URLs in the HTML of every page.
+### Three hubs, each with what it holds (2026-09-30)
 
-**The three are one height, and they are grid items to get it (PAR-290).** A grid item stretches to
-its row by default, so they would have agreed all along; each sat in a wrapper `<div>` instead, and
-in the dictionary's cell that wrapper holds the card _and_ the category rows, which is why an
-`h-full` on the card is the wrong fix — it would stretch the card over the rows there. The wrapper
-is gone and the rows are a grid item of their own in the second row, at the column
-`sections.findIndex` puts them in. A card is 116.4 px while its hint fits one line and 137.5 px on
-two: German wrapped the guide's hint (116.4 / 116.4 / 137.5 at a 1440 px bar), French the
-dictionary's (116.4 / 137.5 / 116.4), English none of them, so which edge stuck out was a property
-of the translation. Measure this with the webfont loaded — "Geist Fallback" is wider, and a reading
-taken before `document.fonts.ready` wraps lines the built page does not. It costs the band 23.1 px
-at 1440 px, once, above a list that is ~330 px tall: the card row is the tallest card now, and the
-10 px margin over the category list became the grid's 12 px gap.
+Patrick, 2026-09-30: „Da fehlen Links, das Wörterbuch mit den einzelnen Sections sollte, statt in
+der Mitte, nach links, und generell sollte das optisch schöner sein. Die anderen Menüs geben
+einfach mehr her." The band was three cards of one line each, with the dictionary's twelve
+categories under the middle card. From a 1280 px bar two thirds of it were empty and its one list
+hung in the middle column; below 1280 the list was hidden and the band was the three cards alone,
+**231 px** against 455 (news), 530 (parks) and 595 px (blog) at a 1024 px bar.
 
-**One mark, two layouts.** The card's glyph sits in a tinted `size-9` tile above its title; the
-footer row's sits inline before the label, in the same accent, because a row is a line and has no
-block to hold a tile. The row's label stays muted, which is where its lower rank lives.
+Each hub is a column now, shaped like the other bands: a photo on top, a list under it.
+
+| column            | photo, which is the hub's link                             | list                                                           |
+| ----------------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
+| Wörterbuch        | Fenix (Toverland), with the name and the term count        | the 12 categories and their term counts, `/glossar#<category>` |
+| Beste Reisezeit   | Symbolica, the photo the hub's own hero opens with         | the 6 chapters, `/beste-reisezeit#<id>`, then the Fancast card |
+| So funktioniert's | Phantasialand's Wintertraum carousel, the guide's own hero | the 11 chapters, `/so-funktioniert-park-fan#<id>`              |
+
+- **The lists add no crawl target.** A category and a chapter are fragments on their hub, which a
+  crawler reads as the hub itself — the reason the categories were let in and the terms were not
+  (`lib/navigation/glossary-menu.ts`). The three hub URLs stay in the HTML of every page, as the
+  photos' links now, and `pnpm check:header-links` still finds them.
+- **The chapters come from the arrays the pages render.** The guide's list moved out of its six
+  content modules into `lib/howto/chapters.ts`, where the chapter list at the top of the page and
+  the rail down its edge read it as before. The best-time hub had no list; it has one now,
+  `lib/best-time/chapters.ts`, with the page's chapter titles cut to a menu row. Both are resolved
+  in the layout with the photos (`lib/navigation/more-menu.ts`), because the header is a Client
+  Component: only the one locale's labels and four URLs cross. `pnpm test:hub-chapters` compares
+  the two lists with the `<SectionShell id=… index=…>` calls of all twelve content modules — a
+  fragment that names no element is an error nowhere, the browser just opens the page at the top.
+- **Fancast is a card under the best-time chapters.** The crowd calendar chapter 05 explains is
+  Fancast's forecast, and that page closes on the model's own card. It was one word in the footer
+  row before, beside „Meine Alarme". The card also fills the short column: its foot stands
+  536.5 px down the page, the two lists' at 554 and 525. The footer row keeps „Meine Alarme",
+  „Meine Favoriten" and „Fotos hochladen", as pills now — the shape the blog panel's categories
+  take in the same place. The phone sheet keeps Fancast in its footer, having no card for it.
+- **One layout at every bar width.** The list was `hidden` below 1280 px because eleven rows under
+  one of three cards made a lopsided band; with a list under every column the columns share the
+  height. Measured on `/<locale>/parks/europe/germany` in all six locales at a 1024 and a 1440 px
+  bar: the band is **591 px** in every one (590 at 1440 before), the three columns end within one
+  row of each other, a row is 29 px in all three lists so the rows stand level across the band, no
+  label is cut, and the document is never wider than the window. The longest chapter label, „Een
+  parkpagina van boven naar beneden", is 259.6 px in a 281.3 px box at 1024.
+- **The text on the photos is measured, not trusted.** The name and a two-line hint sit on the
+  lower half of each photo. The first scrim, the photo tiles' `black/85` → `black/45` at the middle,
+  left the names at **3.23 : 1** over the lightest pixel of the carousel (3.37 on the Fenix sky,
+  3.89 on the Pagode's lights beside Symbolica). `via-black/65` at 45 % raised them to
+  **4.98–5.91 : 1** and the hints to 6.57–7.45 : 1, sampled off the rendered pixels with the text
+  hidden at both widths; the photos are the same in both themes, so are the numbers. Every hint
+  reserves two lines, so the three names stand on one line: „Meilleure période" at a 1024 px bar
+  stood 16.5 px below its two neighbours, whose hints wrap there.
+
+**What it costs is markup, and it was weighed.** Two production builds of the same commit, with and
+without the change, served side by side and fetched on cache-busted URLs, median of three:
+
+| page                                            | HTML br, before |    after |          Δ |
+| ----------------------------------------------- | --------------: | -------: | ---------: |
+| `/de/parks/europe/germany`                      |        31,086 B | 31,888 B | **+802 B** |
+| `/de/parks/europe/germany/bruehl/phantasialand` |        72,726 B | 73,563 B |     +837 B |
+| `/fr/parks/europe/france`                       |        31,457 B | 32,282 B |     +825 B |
+| `/en`                                           |        74,150 B | 74,969 B |     +819 B |
+
+About 0.8 KB brotli on every page (+11.6 KB raw on the German country listing): the header's markup
+is +606 B of it compressed on its own, the RSC props (the one locale's chapter labels, the hrefs,
+four photo URLs) +409 B. The links in `<nav aria-label="Main navigation">` go 79 → 96, the
+seventeen chapters, and the pages they point at stay **59** — the new links are fragments on three
+hubs the nav already linked. No photo is fetched on a page view: the band is `hidden` and
+`next/image` lazy, and the four photos load when the band first opens (measured on the German
+country listing, whose one matching request on load is its own Phantasialand card, there before as
+well).
+
+### The phone sheet opens the three hubs the way it opens the parks
+
+„Denk auch an mobile" (Patrick, same day). The band does not exist below a 1024 px bar, and the
+sheet listed the three hubs as plain links. They are `<details>` now, like „Parks entdecken"
+(`SheetDisclosure` in the header, which the parks disclosure uses too): the row opens the list, the
+first link is the hub itself — „Übersicht" (`navigation.overview`), with the term count on the
+dictionary's — and under it the categories or the chapters, with the band's numbers, in the band's
+order. The row is the toggle for all four, not a link beside a chevron: two targets in one row on a
+phone, and a sheet where one disclosure opens on its row and the next on its chevron is learnt
+twice. The sheet is a Radix dialog that unmounts when it closes, so none of this is in the HTML of
+a page. Measured at 360 and 390 px in German, Dutch and Italian: the list never scrolls sideways,
+and a chapter label that does not fit („Die Parkseite von oben nach unten") wraps under itself,
+not under its number.
+
+### A link to the page already showing closes the band
+
+The band closes when `pathname` moves, and its outside-click handler leaves clicks inside the
+band alone, so a link to the page the band was opened on changed nothing: a category clicked on
+the dictionary's own page scrolled that page under a band that stayed open — until the pointer
+left it, and after a tap or an Enter until Escape or a click elsewhere. With the chapters the band
+has twenty-nine such links, each of them same-page on its own hub.
+`useMenuTrigger().closeOnSamePageClick`, on the band's root in `MenuBand`, closes it on a plain
+click on a link whose path is the page's — the test the phone sheet already makes
+(`closeOnSamePageTap`), a modifier click or a new tab excepted.
+Checked on the guide page against a running site: a click on chapter 07, Enter on chapter 11 and a
+tap on chapter 07 in the sheet each close the menu and land the chapter 96 px down the window
+(`scroll-mt-24`); from another page, a chapter link loads the hub, closes the band and lands the
+same way.
 
 **The sections cost four strings in the chrome, and the chrome is serialized by every page.**
 `navigation.more` plus one hint per section, measured against the namespace without them when there
@@ -306,46 +384,50 @@ were four of each: **+103 B brotli** in English, +128 es, +143 nl, +146 it, +148
 `navigation` rather than in `bestTime`/`glossary`/`howto` for the reason `BlogMenuPanel` already
 carries in its own comment: one `useTranslations('blog')` in a header component once took the
 layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single label. A hint that grows
-into a paragraph belongs in a lazy namespace, not here.
+into a paragraph belongs in a lazy namespace, not here. Two more came with the chapters:
+`navigation.fancastHint` for the card and `navigation.overview` for the sheet's first rows. The
+chapter labels are not messages at all: they are data the layout resolves for one locale and hands
+the header as props (`lib/navigation/more-menu.ts`).
 
 Two decisions worth keeping:
 
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
-catch-all — `/alerts`, `/favorites`, `/fancast` and `/contribute` sit in here too, in the footer
-row below — so it is named after being one. It used to sit at the END of the row, where a
-catch-all belongs; since 2026-09-25 the row follows the phone sheet's order instead (see „The bar
-follows the sheet's order" near the top of this page).
+catch-all — `/alerts`, `/favorites` and `/contribute` sit in here too, in the footer row below,
+and `/fancast` on its card — so it is named after being one. It used to sit at the END of the row,
+where a catch-all belongs; since 2026-09-25 the row follows the phone sheet's order instead (see
+„The bar follows the sheet's order" near the top of this page).
 
 **The footer row is `MoreMenuLinks`, and it renders twice.** Three of those pages had no link from
 the header at all: measured before it was added, a grep over `components/layout/` found `/fancast`
 once (the footer) and `/alerts` once (the favorites panel), and `/contribute` **nowhere**. They are
 a row under the panel's closing rule rather than a column of their own, because a column would rank
-an upload form with the guide and the dictionary, and because the panel already switches column
-shape at 1280 px — a further member would have to be fitted into both layouts, a row is one element
-in either. No heading over it: a heading in this panel is a link to a hub page, and these have none
-above them.
+an upload form with the guide and the dictionary, and a fourth column would take a quarter of the
+band from three hubs whose lists need the width at a 1024 px bar. No heading over it: a heading in
+this panel is a link to a hub page, and these have none above them. In the band it is a row of
+pills, in the sheet a line of 44 px text links. `/fancast` left the band's row for its card
+(2026-09-30) and stays in the sheet's.
 
 The same component renders at the foot of the **burger sheet**, and that is not a second surface
 for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it
 `/alerts` and `/fancast` stay unreachable from the header on every phone. One definition,
-`variant="panel" | "sheet"`, differing in type scale and in which entries it carries — the next
-two paragraphs are the entries that differ.
+`variant="panel" | "sheet"`, differing in shape and in which entries it carries (each entry's
+`hosts`) — the next two paragraphs and the Fancast card above are the entries that differ.
 
 **`/contribute` is not in the sheet (Patrick, 2026-09-25).** The phone menu is the navigation of
-a visitor on the move, and „Fotos hochladen" was the one entry nobody opens it for. It carries
-`panelOnly` like `/favorites` below; the form stays one tap away on the banner of every park and
-ride page and in the desktop panel's row.
+a visitor on the move, and „Fotos hochladen" was the one entry nobody opens it for. Its `hosts` is
+the panel alone, like `/favorites` below; the form stays one tap away on the banner of every park
+and ride page and in the desktop panel's row.
 
 **`/favorites` is the fourth entry, and the one the sheet does not get (PAR-290).** It is labelled
 from `favorites.link` and marked with the `Star` that `FavoritesPageMenuLink` already gives that
-URL, so no new string ships. It carries `panelOnly`, because that panel links `/favorites` in every
-sheet state — including the empty one, where the branch adds it back deliberately — and an
-unconditional entry here would stand under it as a second "Meine Favoriten" in a 300 px column.
+URL, so no new string ships. Its `hosts` is the panel alone, because that panel links `/favorites`
+in every sheet state — including the empty one, where the branch adds it back deliberately — and
+an unconditional entry here would stand under it as a second "Meine Favoriten" in a 300 px column.
 That is the duplication the `/alerts` bullet below measured, solved from the same side. In the
 panel there is no such pair: this band and the favorites band are never open at once. Measured at
-360 px afterwards: `/favorites` appears once, and the panel's four entries stay on one line with
-≥525 px of slack at a 1024 px bar in all six locales.
+360 px afterwards: `/favorites` appears once, and the panel's four entries (three since Fancast got
+its card) stay on one line with ≥525 px of slack at a 1024 px bar in all six locales.
 
 Two things the second host cost, both measured rather than reasoned:
 
@@ -369,22 +451,18 @@ than a dead link beside a live one. The link graph does not notice, because the 
 and never unmounted — a crawler reads the destinations inside it exactly as it read the four
 entries in the bar.
 
-**The sections are a flat `grid-cols-3`, with no threshold under it.** They used to be a 256 px
+**The columns are a flat `grid-cols-3`, with no threshold under it.** They used to be a 256 px
 rail beside the blog block from a bar width of 1280 px, and that rail went out with the block: `w-64`
 and `border-r` describe a relationship to a neighbour, and with nothing beside them they draw a
 column and a rule into the empty half of a band up to 1280 px wide. The grid needs no breakpoint
 because this panel only ever renders inside the nav row, and that row is `@min-[1024px]:flex` on the
 same container — a one-column state has no width at which anybody could see it.
 
-**The icon sits above the text, not beside it — a decision made when these cards still lived in a
-256 px rail beside the blog block.** Beside the text, that rail's 231 px card left 157 px for a
-title and a line: "Beste Reisezeit" still fit, but its hint went to three lines and broke as "und
-Monate, Park / für Park." Above it, the text got the full 205 px, every title stayed on one line and
-every hint ran to two — the card went 112.6 → 137.5 px. The rail is gone (see "Backstage" below),
-but the shape it forced stayed, because it is still the better fit for a three-column grid.
-
 **The hover is the border and nothing else, and that is three measurements rather than a
-preference.** Sampled off the rendered pixels at 1024 and 1440 px in both themes:
+preference.** They were taken on the three cards the band had before its photos, and they hold for
+what carries a border in it now, the Fancast card and the footer pills; a photo scales under the
+pointer instead, as the parks panel's tiles do. Sampled off the rendered pixels at 1024 and
+1440 px in both themes:
 
 |                                            | light        | dark         |
 | ------------------------------------------ | ------------ | ------------ |

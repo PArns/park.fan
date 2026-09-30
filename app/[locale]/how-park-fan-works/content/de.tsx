@@ -16,6 +16,7 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
@@ -70,7 +71,7 @@ import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
-import { ChapterRail, type Chapter } from '../_chapter-rail';
+import { ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
   TARON_RECORD,
@@ -80,27 +81,8 @@ import {
   WAIT_SCALE_MAX,
 } from '../_fixtures';
 
-/**
- * Feeds both the chapter list at the top and the rail down the right edge, and
- * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
- * looks its sections up by id, so an entry that drifts silently stops
- * highlighting. Chapter 05 was inserted after the first draft and this list did
- * not follow, which left the rail one chapter short and every number after 04
- * pointing at the wrong heading.
- */
-const CHAPTERS: Chapter[] = [
-  { id: 'zahl', index: '01', label: 'Eine Zahl allein' },
-  { id: 'massstab', index: '02', label: 'Typisch, voll, Rekord' },
-  { id: 'moment', index: '03', label: 'Der beste Moment' },
-  { id: 'tag', index: '04', label: 'Der richtige Tag' },
-  { id: 'tagesplan', index: '05', label: 'Der Tag als Plan' },
-  { id: 'parkseite', index: '06', label: 'Die Parkseite von oben nach unten' },
-  { id: 'nachtschicht', index: '07', label: 'Woher die Zahlen kommen' },
-  { id: 'luecken', index: '08', label: 'Wenn wir nichts wissen' },
-  { id: 'besuche', index: '09', label: 'Vier Besuche' },
-  { id: 'wegweiser', index: '10', label: 'Wo was steht' },
-  { id: 'faq', index: '11', label: 'Häufige Fragen' },
-];
+/** See `HOWTO_CHAPTERS`: the ids there must match the `<SectionShell>` calls below. */
+const CHAPTERS = HOWTO_CHAPTERS.de;
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;

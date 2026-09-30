@@ -16,6 +16,7 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
@@ -70,7 +71,7 @@ import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
-import { ChapterRail, type Chapter } from '../_chapter-rail';
+import { ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
   TARON_RECORD,
@@ -80,25 +81,8 @@ import {
   WAIT_SCALE_MAX,
 } from '../_fixtures';
 
-/**
- * Feeds both the chapter list at the top and the rail down the right edge, and
- * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
- * looks its sections up by id, so an entry that drifts silently stops
- * highlighting.
- */
-const CHAPTERS: Chapter[] = [
-  { id: 'cifra', index: '01', label: 'Una cifra sola' },
-  { id: 'escala', index: '02', label: 'Típico, lleno, récord' },
-  { id: 'momento', index: '03', label: 'El mejor momento' },
-  { id: 'dia', index: '04', label: 'El día adecuado' },
-  { id: 'plan-del-dia', index: '05', label: 'El día como plan' },
-  { id: 'pagina-parque', index: '06', label: 'Una página de parque de arriba abajo' },
-  { id: 'noche', index: '07', label: 'De dónde salen las cifras' },
-  { id: 'limites', index: '08', label: 'Cuando no lo sabemos' },
-  { id: 'visitas', index: '09', label: 'Cuatro visitas' },
-  { id: 'donde', index: '10', label: 'Dónde está cada cosa' },
-  { id: 'faq', index: '11', label: 'Preguntas frecuentes' },
-];
+/** See `HOWTO_CHAPTERS`: the ids there must match the `<SectionShell>` calls below. */
+const CHAPTERS = HOWTO_CHAPTERS.es;
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;

@@ -16,6 +16,7 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
@@ -70,7 +71,7 @@ import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
-import { ChapterRail, type Chapter } from '../_chapter-rail';
+import { ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
   TARON_RECORD,
@@ -80,25 +81,8 @@ import {
   WAIT_SCALE_MAX,
 } from '../_fixtures';
 
-/**
- * Feeds both the chapter list at the top and the rail down the right edge, and
- * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
- * looks its sections up by id, so an entry that drifts silently stops
- * highlighting.
- */
-const CHAPTERS: Chapter[] = [
-  { id: 'number', index: '01', label: 'A number on its own' },
-  { id: 'scale', index: '02', label: 'Typical, busy, record' },
-  { id: 'moment', index: '03', label: 'The best moment' },
-  { id: 'day', index: '04', label: 'The right day' },
-  { id: 'day-plan', index: '05', label: 'The day as a plan' },
-  { id: 'park-page', index: '06', label: 'A park page, top to bottom' },
-  { id: 'night-shift', index: '07', label: 'Where the numbers come from' },
-  { id: 'gaps', index: '08', label: 'When we don’t know' },
-  { id: 'visits', index: '09', label: 'Four visits' },
-  { id: 'signposts', index: '10', label: 'Where to find what' },
-  { id: 'faq', index: '11', label: 'Common questions' },
-];
+/** See `HOWTO_CHAPTERS`: the ids there must match the `<SectionShell>` calls below. */
+const CHAPTERS = HOWTO_CHAPTERS.en;
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;
