@@ -231,7 +231,7 @@ pesava circa 770 chilogrammi in meno, e le barre di sicurezza meccaniche
 lasciarono il posto a barre che si aprono ad aria compressa. Si aggiunsero la musica a bordo,
 un effetto fuoco, la nebbia ai piedi della prima discesa e un getto d’aria
 fredda nell’ultima rotazione. Il 24 maggio 2008 l’attrazione riaprì, con il nome
-X2. Il giorno dell’inaugurazione Theme Park Insider scrisse che «la vera prova»
+X2. Dopo un giro di prova il 22 maggio, due giorni prima della riapertura, Theme Park Insider scrisse che «la vera prova»
 per X2 sarebbe stata capire se i treni alleggeriti avrebbero permesso di farne
 girare più d’uno per tutta l’estate. Anche Six Flags fa partire il conto da lì:
 i «quasi 20 anni» e i «più di 16 milioni di ospiti» della
