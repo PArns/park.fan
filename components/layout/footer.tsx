@@ -13,6 +13,7 @@ import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
+import { CHANGELOG_PATH } from '@/lib/changelog/paths';
 import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
@@ -43,7 +44,15 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
   const linkGroups: {
     key: string;
     heading: string;
-    items: { key: string; href: string; label: string; plain?: boolean; icon?: ReactNode }[];
+    items: {
+      key: string;
+      href: string;
+      label: string;
+      plain?: boolean;
+      icon?: ReactNode;
+      /** The target's language, where it is not the page's own. */
+      hrefLang?: string;
+    }[];
   }[] = [
     {
       key: 'content',
@@ -71,6 +80,19 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             ]
           : []),
         { key: 'glossary', href: glossaryPath, label: t('glossaryLink') },
+        /*
+          The changelog exists at `/en/changelog` only (`app/[locale]/changelog/page.tsx`), so
+          every locale links the English page, and the five other labels say so in their own
+          language. A plain <a> rather than the i18n `Link`: the target is in another locale,
+          and `/de/changelog` would only reach it through a 308.
+        */
+        {
+          key: 'changelog',
+          href: CHANGELOG_PATH,
+          label: t('changelog'),
+          plain: true,
+          hrefLang: 'en',
+        },
       ],
     },
     {
@@ -458,7 +480,12 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 <FooterLinkGroup key={group.key} heading={group.heading}>
                   {group.items.map((item) =>
                     item.plain ? (
-                      <a key={item.key} href={item.href} className={footerLinkClass}>
+                      <a
+                        key={item.key}
+                        href={item.href}
+                        hrefLang={item.hrefLang}
+                        className={footerLinkClass}
+                      >
                         {item.icon}
                         {item.label}
                       </a>
