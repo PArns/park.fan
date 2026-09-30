@@ -56,6 +56,15 @@ kam. Der öffentliche Eintrag ist `content/changelog/2.13.0.md`. Neueste Abschni
   Entwurf. `pnpm test:changelog-fragments` (22 Checks) führt einen ganzen Schnitt in einem
   Temp-Verzeichnis aus.
 
+### „Warteschlange“ auch in der Kapitelliste des Menüs (#686)
+
+- Das Header-Menü nannte Kapitel 04 der Beste-Zeit-Seite „Tricks für kurze Schlangen“, das Kapitel
+  selbst heißt „Tricks für kurze Warteschlangen“. Das Label steht in `lib/best-time/chapters.ts`,
+  eine Datei, die `check:prose` nie gelesen hat; ein Hinweis im Foto-Admin hatte dasselbe Wort.
+- `check:prose` sucht „Schlange“ jetzt in jedem String der getrackten `.ts`- und `.tsx`-Dateien
+  unter `app/`, `components/` und `lib/`, Kommentare vorher entfernt. Als eigene Fläche `source`
+  läuft der Durchlauf bei `--only=changelog` nicht mit.
+
 ### The "more" menu lists what its three hubs hold, and the phone menu does too
 
 „Mehr" was three cards of one line each, with the dictionary's twelve categories under the middle
