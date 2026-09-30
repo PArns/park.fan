@@ -490,8 +490,9 @@ async function openPushBell(page) {
  * at all and a guard reading it would press again into a press that had landed.
  *
  * The signal for "landed" is therefore `html[data-planner-open]`, which the
- * launcher's own effect sets off `open` alone, independent of the chunk. Both
- * halves are read: the attribute for the window before the sheet exists, and
+ * launcher's own effect sets off `panelVisible` (PAR-360), that is in the commit
+ * that mounts the sheet and not at the press. Both
+ * halves are read: the attribute for the frame the sheet is mounting in, and
  * `data-state="open"` on the content for the one after, since a sheet on its way
  * OUT is still visible for 300 ms while carrying `closed` — which is why the
  * success is waited for on `[data-state="open"]` too and not on visibility.
