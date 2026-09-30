@@ -64,8 +64,8 @@ Trente-sept ans plus tard, le parc de Plailly, dans l’Oise, à une trentaine d
 kilomètres au nord de Paris, compte 2,9 millions de visiteurs pour 2025, selon
 Wikipédia. C’est
 le troisième parc à thèmes de France, derrière les deux parcs de
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park). Ce guide
-dit où sont les files aujourd’hui, en commençant par
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park). Voici
+où sont les files aujourd’hui, en commençant par
 [Toutatis](ref:parc-asterix/toutatis), la plus récente et la plus attendue des
 têtes d’affiche.
 
@@ -112,7 +112,7 @@ Il a ouvert en 1997 sous le nom de Tonnerre de Zeus, construit par Custom
 Coasters International, et porte son nom actuel depuis 2021, avec The Gravity
 Group comme constructeur cité. C’est aussi la seule des dix têtes d’affiche du
 tableau pour laquelle notre analyse d’ouverture juge l’arrivée matinale
-rentable, on y revient plus bas.
+rentable.
 
 **[OzIris](ref:parc-asterix/oziris)** (Bolliger & Mabillard, 2012) est un
 coaster inversé à cinq inversions, avec un lift de 40 mètres et un passage sous
@@ -130,7 +130,7 @@ Rides, 2001) est un bobsleigh de 900 mètres de descente, à une vitesse proche 
 60 km/h. **[Discobélix](ref:parc-asterix/discobelix)** (Zamperla, 2016) est un
 Disk’O Coaster.
 
-Les deux dernières nouveautés sont les plus grosses :
+Les deux dernières nouveautés sont aussi les plus grosses.
 **[Toutatis](ref:parc-asterix/toutatis)** (Intamin, 2023) est un launch coaster
 de 51 mètres, 107 km/h et 101 degrés de descente, annoncé en 2018 pour 2021 puis
 repoussé deux fois, et **[Cétautomatix](ref:parc-asterix/cetautomatix)**
@@ -139,7 +139,7 @@ plusieurs mois de retard liés à des soucis de fabrication et de livraison.
 
 [Toutatis](ref:parc-asterix/toutatis?full)
 
-## Combien de monde il y a vraiment
+## Combien de monde il y a
 
 ```stats-widget slug=parc-asterix show=attractions
 
@@ -151,7 +151,7 @@ Les journées les plus calmes des prochaines semaines, calculées en direct :
 
 ```
 
-## Noël : la semaine où les files battent leurs records
+## Les records de files tombent la semaine de Noël
 
 Sur les douze derniers mois de notre mesure, cinq des dix têtes d’affiche du
 parc ont eu leur pire attente de l’année entre le 26 et le 30 décembre 2025 :
@@ -160,7 +160,7 @@ pour **Noël Gaulois** du 19 décembre 2026 au 3 janvier 2027, soit seize jours
 d’ouverture. Pour les cinq autres têtes d’affiche, le pire jour de
 l’année tombe entre avril et août.
 
-Nos données ne disent pas pourquoi. Une foule concentrée sur seize jours
+Nous ne savons pas pourquoi. Une foule concentrée sur seize jours
 d’ouverture est une explication, moins de trains en service par temps froid en
 est une autre, et rien dans nos mesures ne permet de trancher.
 
@@ -263,9 +263,6 @@ La météo à Plailly pour le jour où tu y vas :
 ```weather-widget slug=parc-asterix
 
 ```
-
-Le calendrier des jours calmes est plus haut, les horaires du jour sont sur la
-[page du parc](ref:parc-asterix).
 
 — Patrick
 
