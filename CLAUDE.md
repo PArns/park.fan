@@ -43,7 +43,8 @@ three lines, the rest belongs in the page.
   ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
   [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
   and [docs/blog.md](docs/blog.md).
-- **Six locales.** A new UI string needs all of them.
+- **Six locales.** A new UI string needs all of them, and so does a news post, in the same PR
+  ([docs/blog.md §5.0](docs/blog.md#50-news-posts-category-news)).
 - **Routing and i18n run through `proxy.ts`**, not `middleware.ts`. Server Components are the default.
 
 ## The rules

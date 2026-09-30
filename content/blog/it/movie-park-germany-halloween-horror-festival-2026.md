@@ -117,8 +117,11 @@ parco.
 ## Cosa resta a casa
 
 A differenza di Disney il 31 ottobre, il Movie Park non ammette **costumi,
-maschere e trucco horror propri** in nessuna delle serate. Nemmeno l’alcol può
-entrare, e all’ingresso controllano le borse.
+maschere e trucco horror propri** in nessuna delle serate. Solo i bambini alti
+fino a 1,40 metri possono indossare maschere, costumi o trucco, come si legge
+nelle [FAQ del parco](https://www.movieparkgermany.de/en/halloween/faq)
+(consultate il 29 settembre 2026). Nemmeno l’alcol può entrare, e all’ingresso
+controllano le borse.
 
 ## Quale sera
 
@@ -150,3 +153,6 @@ Date, case e biglietti:
 
 > [!CORRECTION]
 > 25 settembre 2026: la prima versione diceva che i biglietti a fascia oraria per le case si vendevano solo online. Secondo la mappa del parco, i biglietti rimasti si vendono anche nel parco, fino a esaurimento.
+
+> [!CORRECTION]
+> 29 settembre 2026: la prima versione diceva che costumi, maschere e trucco propri non erano ammessi in nessuna serata. Secondo le FAQ del parco, i bambini alti fino a 1,40 metri possono indossare maschere, costumi e trucco. Per tutti gli altri ospiti il divieto resta.
