@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 import { categoryPath } from '@/lib/blog/paths';
 
@@ -76,8 +77,8 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                 prefetch={false}
                 className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
               >
-                {lead.image && (
-                  <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+                <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+                  {lead.image ? (
                     <Image
                       src={lead.image}
                       alt=""
@@ -89,8 +90,13 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                       }
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                  </span>
-                )}
+                  ) : (
+                    <BlogCoverFallback
+                      slug={slugFromPostPath(lead.path)}
+                      className="transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                </span>
                 {lead.category && (
                   <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">
                     {lead.category}
@@ -127,8 +133,8 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                           Teaser, Datum). Auf 7 rem waren es 112×70 und drei Zeilen — die Kategorie
                           ist die vierte, und ein Bild, das kürzer ist als sein Text, fällt unten
                           aus der Zeile. 128×80 trifft die neue Texthöhe. */}
-                      {post.image && (
-                        <span className="bg-muted relative block aspect-[16/10] w-32 shrink-0 overflow-hidden rounded-lg">
+                      <span className="bg-muted relative block aspect-[16/10] w-32 shrink-0 overflow-hidden rounded-lg">
+                        {post.image ? (
                           <Image
                             src={post.image}
                             alt=""
@@ -141,8 +147,13 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                             }
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
-                        </span>
-                      )}
+                        ) : (
+                          <BlogCoverFallback
+                            slug={slugFromPostPath(post.path)}
+                            className="transition-transform duration-500 group-hover:scale-105"
+                          />
+                        )}
+                      </span>
                       <span className="min-w-0 flex-1">
                         {/* Dieselbe Optik wie der Opener links daneben: über dem Titel, klein,
                             versal, in der Akzentfarbe. Der Bezug ist bewusst der Opener und

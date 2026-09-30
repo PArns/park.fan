@@ -8,6 +8,7 @@ import { resolveAuthor } from '@/lib/blog/authors';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { OWN_PHOTO_AUTHOR } from '@/lib/media/types';
 import { PhotoCredit } from '@/components/media/photo-credit';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 
@@ -22,8 +23,8 @@ interface BlogPostBannerProps {
  * Full-bleed article hero: the cover photo runs edge-to-edge behind the header
  * bar (which floats transparent over it), with the title, excerpt and byline in
  * white on top and a theme-aware fade into the page at the bottom — the same
- * language as the Fancast page and the best-time hub. Covers without an image
- * fall back to a dark brand gradient so the floating header stays legible.
+ * language as the Fancast page and the best-time hub. A post without a cover
+ * gets `BlogCoverFallback`, with the pin to the right of the headline.
  */
 export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerProps) {
   const f = useFormatter();
@@ -77,7 +78,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           style={{ objectPosition: objectPositionForSrc(cover, '50% 50%') }}
         />
       ) : (
-        <div className="from-primary/15 via-background to-muted absolute inset-0 bg-gradient-to-br" />
+        <BlogCoverFallback slug={post.slug} mark="side" />
       )}
       {showCredit && <PhotoCredit credit={coverCredit} />}
       {/* Title/excerpt/byline sit directly on the cover (no panel). Readability

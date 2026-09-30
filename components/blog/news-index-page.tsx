@@ -18,6 +18,7 @@ import { resolveNewsPark, type NewsPark } from '@/lib/blog/news-park';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
 import { NewsAge } from '@/components/blog/news-age';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { NewsParkLabel } from '@/components/blog/news-park-label';
 import {
   NewsStream,
@@ -216,14 +217,14 @@ function NewsStreamEntry({ post, park }: { post: BlogListItem; park: NewsPark | 
           {post.frontmatter.excerpt}
         </p>
       </div>
-      {image && (
-        <Link
-          href={href}
-          prefetch={false}
-          tabIndex={-1}
-          aria-hidden="true"
-          className="bg-muted relative block aspect-[16/10] w-24 shrink-0 self-start overflow-hidden rounded-xl sm:w-40"
-        >
+      <Link
+        href={href}
+        prefetch={false}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="bg-muted relative block aspect-[16/10] w-24 shrink-0 self-start overflow-hidden rounded-xl sm:w-40"
+      >
+        {image ? (
           <Image
             src={image}
             alt=""
@@ -232,8 +233,10 @@ function NewsStreamEntry({ post, park }: { post: BlogListItem; park: NewsPark | 
             style={{ objectPosition: objectPositionForSrc(src, '50% 50%') }}
             className="object-cover"
           />
-        </Link>
-      )}
+        ) : (
+          <BlogCoverFallback slug={post.slug} />
+        )}
+      </Link>
     </article>
   );
 }
