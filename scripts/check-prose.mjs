@@ -31,6 +31,7 @@
  * captions in a row have the same skeleton (§5.2). Those are the expensive ones.
  */
 
+import { execSync } from 'node:child_process';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -1146,6 +1147,27 @@ for (const route of HEADER_ROUTES) {
     for (const m of block.matchAll(/\b(?:title|tagline|metaTitle): '([^']+)'/g))
       headingCheck(`${file} (${locale})`, 'heading', m[1]);
   }
+}
+
+/* ------------------------------------------ the house word in strings of the source */
+
+// Menus, chapter lists and the admin carry German copy inside `.ts` and `.tsx` files that no pass
+// above reads: „Tricks für kurze Schlangen" sat in the header menu's chapter list
+// (lib/best-time/chapters.ts) after the pass of 2026-09-30. Only tracked files, so generated
+// manifests stay out, and comments are stripped first: they are English and may quote an old label.
+const tracked = execSync('git ls-files -- app components lib', { encoding: 'utf8' })
+  .split('\n')
+  .filter((f) => /\.tsx?$/.test(f));
+for (const file of tracked) {
+  const code = readFileSync(file, 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/(^|[^:\\'"`])\/\/.*$/gm, '$1');
+  const queue = (code.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);
+  if (queue.length)
+    fail(
+      file,
+      `"Schlange" where the house word is "Warteschlange" (§3.3), ${queue.length}×: ${[...new Set(queue)].slice(0, 5).join(', ')}`
+    );
 }
 
 /* ------------------------------------------------------------------ report */

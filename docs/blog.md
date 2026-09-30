@@ -1068,8 +1068,9 @@ pnpm check:prose --verbose    # every hit, not the first forty
 way `attractionIsOutOfSeason()` is the SQL twin of the season rule: change one half and you
 change both. It walks the posts, the six message catalogs, every media sidecar, the glossary
 (per term), the content pages and the hero copy in their `page.tsx`, the homepage announcement,
-the changelog, the three agent skills and `/llms.txt`, and it splits its output the way a regex
-can actually be trusted to:
+the changelog, the three agent skills and `/llms.txt`; for `Warteschlange` alone also every
+string in the tracked `.ts` and `.tsx` files under `app/`, `components/` and `lib/`, where the
+menus keep their chapter lists. It splits its output the way a regex can actually be trusted to:
 
 - **Errors** are rules with no legitimate exception: a `—` in a post body or in German or Dutch
   prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that
