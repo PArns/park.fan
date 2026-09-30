@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { PlannerFlyoutHost } from './planner-launcher-button';
+import dynamic from 'next/dynamic';
 import { PlannerEdgeTab } from './planner-edge-tab';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -15,6 +15,15 @@ import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 // (`lib/i18n/route-namespaces.mjs`) — that list decides what the chunk carries,
 // this one what the provider declares to anything nested below it.
 const PLANNER_NAMESPACES = ['planner', 'parks.weather'] as const;
+
+const loadPlannerFlyoutHost = () =>
+  import('./planner-launcher-button').then((mod) => mod.PlannerFlyoutHost);
+
+// The panel's code (sheet, wizard, day column, ride search) is 82 KB gzip and
+// used to ride in the first load of every page. It is fetched once the panel is
+// wanted, in step with its messages (see `wanted` below), so by the time the
+// messages are ready this resolves from the module cache.
+const PlannerFlyoutHost = dynamic(loadPlannerFlyoutHost, { ssr: false });
 
 /**
  * The planner's way in, and the panel it opens.
@@ -128,6 +137,11 @@ export function PlannerLauncher() {
   // is what resets the wizard.
   const wanted = open || total > 0 || openRequests > 0;
   const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
+  // Fetched beside the messages rather than after them: the panel mounts only
+  // once both are there, and two requests in sequence would delay the first open.
+  useEffect(() => {
+    if (wanted) void loadPlannerFlyoutHost();
+  }, [wanted]);
   /**
    * The panel is on screen — which is NOT the same as `open`.
    *
