@@ -97,7 +97,7 @@ dazu später.
 
 ## Troy auf dem Papier und Troy im Zug
 
-Die technischen Daten sind ordentlich, aber nicht spektakulär, und sie hängen
+Die technischen Daten sind ordentlich, mehr nicht, und sie hängen
 ein wenig davon ab, wen man fragt. Der Park nennt 35 Meter Höhe und 90 km/h,
 der Hersteller GCI 31,9 Meter, die Roller Coaster DataBase knapp 87 km/h. Einig
 sind sich alle bei 1.077 Metern Strecke; dazu kommen gut 20.000 Quadratmeter
@@ -307,7 +307,7 @@ Hafenstil (**Port Laguna**) und der Artus-Welt **Avalon**, in der
 [Fēnix](ref:attractiepark-toverland/fenix) und [Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)
 stehen. Damals bekam der Park auch seinen heutigen Claim, „Discover your own
 magic“, der die alten Sprüche „Magisch mooi“ und „Feel the Magic“ ablöste. Im
-selben Jahr räumte Toverland bei den **European Star Awards** ab:
+selben Jahr räumte das Toverland bei den **European Star Awards** ab:
 bester Freizeitpark in der Kategorie bis eine Million Besucher, dazu Platz zwei
 für Fēnix als beste neue Achterbahn. Troy landete in der Kategorie beste
 Holzachterbahn knapp hinter dem Sieger, mit einer damals elf Jahre alten Bahn.
@@ -376,7 +376,7 @@ Die einzige Regel, die dort zählt: Wer stehen bleibt, wird geschnappt.
 
 ![Der Schriftzug am Eingang von Troy, zu „DesTROY – The Ride“ umdekoriert, darunter zwei Halloween-Nights-Banner | Aus Troy wird DesTROY. Der Park dekoriert dafür den Schriftzug am Eingang der Achterbahn um. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
-Für Troy-Fans kommt der beste Teil aber erst. Eine der Scare Zones heißt
+Eine der Scare Zones heißt
 **„DesTroy“** und liegt in **Ithaka**, also direkt an und unter der
 Holzachterbahn. Mutierte trojanische Soldaten bewachen die Ruinen der Stadtmauer,
 und Troy fährt mitten hindurch, an diesen Abenden bis 23 Uhr und damit im
@@ -387,8 +387,8 @@ Dunkeln. Homer hätte Fragen.
 Eine der sechs Experiences hat für mich noch einen zweiten Boden. Mit dem
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/) war ich in der
 **Maison de la Magie** hinter den Kulissen unterwegs, und wir durften dort selbst
-einmal die Seite der Erschrecker ausprobieren. Nicht im laufenden Betrieb, ohne echte Gäste, nur
-wir und ein leeres Haus. Ob ich jemanden erschreckt hätte, wird sich also nie
+einmal die Seite der Erschrecker ausprobieren. Der Betrieb lief dabei nicht, und
+außer uns war niemand im Haus. Ob ich jemanden erschreckt hätte, wird sich also nie
 klären lassen.
 
 ![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
@@ -433,7 +433,7 @@ höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushi
 nahmen Paare regelmäßig zwei Wagen statt einem, damit jeder seine eigene Zeit
 fahren konnte. (Beziehungen sind schon an kleineren Fragen gescheitert.) Der Durchsatz brach genau an der Stelle ein, an der die Bahn am
 meisten Spaß machte. Eine lange Warteschlange für eine kurze Abfahrt, und die Leute standen
-sie trotzdem, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
+trotzdem an, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
 man schlagen wollte.
 
 Der letzte Tag war dann kein stiller. Der Park hat sie mit einer richtigen Feier
@@ -478,8 +478,8 @@ durchgehend über die Weihnachtsferien. Die Attraktionen fahren auch dann,
 solange das Wetter mitspielt. Zum Jubiläum ist an den ersten drei Wochenenden
 und Mittwochen, bis zum 16. Dezember, der Eintritt frei: Wer vorher kostenlos
 reserviert, zahlt nur pro Fahrt, mit Streifen zu je 2 €, und Troy kostet drei
-davon. Normale Tagestickets gibt es parallel. Wunderschön, nur eben kein
-Geheimtipp mehr, sobald die Lichter an sind: Die letzten Tage des Jahres 2025, mit
+davon. Normale Tagestickets gibt es parallel. Wunderschön, nur eben nicht
+leer, sobald die Lichter an sind: Die letzten Tage des Jahres 2025, mit
 denen unsere Messung am 26. Dezember begann, waren so voll wie der
 August.
 
@@ -542,7 +542,7 @@ wenn der Park erst nach Sonnenuntergang schließt.
 
 - **Tageskarte:** Das Toverland arbeitet mit vier Preisstufen, Bronze, Silber,
   Gold und Platin, je nach Öffnungszeiten und Programm des Tages; welche gilt,
-  zeigt der Ticketkalender. Kinder unter 90 cm und Geburtstagskinder kommen frei
+  steht im Ticketkalender. Kinder unter 90 cm und Geburtstagskinder kommen frei
   rein, reservieren müssen aber auch sie.
 - **Online günstiger.** Wer mindestens sieben Tage vorher bucht, bekommt
   den **Early-Bird-Rabatt** von 7 € (ab 140 cm) bzw. 3,50 € (90–140 cm) auf den
@@ -584,8 +584,7 @@ Ferienparks. Wer die Region ohnehin bereist, kombiniert gut mit
 - **The Flaming Feather** (Avalon) ist die Adresse, wenn du einmal richtig sitzen
   willst: mittelalterliche Wirtshaus-Kulisse, burgundische Küche, Fleisch- und
   Fischgerichte, vegetarische Optionen, saisonale Specials. **Bestell die
-  Brot-Vorspeise**, das ist der eigentliche Geheimtipp des Hauses: sehr frisches
-  Brot mit einer ganzen Reihe Aufstriche. Nimm sie aber zu zweit oder zu dritt,
+  Brot-Vorspeise**: sehr frisches Brot mit einer ganzen Reihe Aufstriche. Nimm sie aber zu zweit oder zu dritt,
   allein isst du dich daran satt, bevor der Hauptgang kommt.
 - **Katara Plaza** (Magische Vallei) ist der Foodcourt mit der besten Aussicht:
   Burger, Pommes, Burritos und Nachos, Tische am Wasser, dazu die Wassershow
@@ -621,7 +620,7 @@ der [Toverland-Parkseite](ref:attractiepark-toverland).
 Unter den gut gemessenen Monaten war es bisher im September am ruhigsten, nach
 dem Ende der Sommerferien. April bis Juli liegen eng beieinander, der August und
 die Weihnachtsferien ragen heraus. Zwischen den Wochentagen gibt es kaum einen
-Unterschied. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
+Unterschied. Tag für Tag steht das im [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
 
 ### Braucht man im Toverland einen Fast Pass?
 
