@@ -773,7 +773,8 @@
       "CLOSED": "Fermé",
       "REFURBISHMENT": "Rénovation",
       "DOWN": "Panne",
-      "UNKNOWN": "Inconnu"
+      "UNKNOWN": "Inconnu",
+      "RETIRED": "Fermé définitivement"
     },
     "outage": {
       "since": "Panne signalée depuis {when}",
@@ -1190,6 +1191,10 @@
     },
     "overview": {
       "minutesUnit": "min"
+    },
+    "closedRides": {
+      "title": "Attractions fermées définitivement",
+      "since": "depuis {month}"
     }
   },
   "attractions": {
@@ -1435,6 +1440,14 @@
         "stale_data": "Ces chiffres ne sont pas à jour actuellement, nous ne les affichons donc pas."
       },
       "longestDetail": "Le maximum sur les {count} pannes signalées."
+    },
+    "retired": {
+      "h1Suffix": "Fermé définitivement",
+      "noticeTitle": "Fermé définitivement depuis le {date}",
+      "noticePost": "Notre article à ce sujet : <link>{title}</link>",
+      "noticeSource": "Source : <link>{host}</link>",
+      "noticePark": "Temps d’attente actuels des autres attractions : <link>{park}</link>",
+      "waitsTitle": "Temps d’attente avant la fermeture"
     }
   },
   "nearby": {
@@ -1701,7 +1714,11 @@
       "factBy": "{manufacturer}",
       "factOpened": "ouverture en {year}",
       "factMinHeight": "taille min. {height}",
-      "factLand": "zone {land}"
+      "factLand": "zone {land}",
+      "retiredTitleTemplate": "{attraction} à {park} – fermé définitivement",
+      "retiredTitleTemplateBare": "{attraction} – fermé définitivement",
+      "retiredLead": "{attraction} à {park} est fermé définitivement depuis le {date}.",
+      "retiredWaits": "Avant, l’attente montait jusqu’à {minutes} minutes un jour de semaine ordinaire."
     },
     "continent": {
       "titleTemplate": "Parcs d’Attractions en {location} : Attente & Carte",

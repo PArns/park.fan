@@ -773,7 +773,8 @@
       "CLOSED": "Cerrado",
       "REFURBISHMENT": "Mantenimiento",
       "DOWN": "Fuera de servicio",
-      "UNKNOWN": "Desconocido"
+      "UNKNOWN": "Desconocido",
+      "RETIRED": "Cerrado definitivamente"
     },
     "outage": {
       "since": "Avería notificada desde {when}",
@@ -1190,6 +1191,10 @@
     },
     "overview": {
       "minutesUnit": "min"
+    },
+    "closedRides": {
+      "title": "Atracciones cerradas definitivamente",
+      "since": "desde {month}"
     }
   },
   "attractions": {
@@ -1435,6 +1440,14 @@
         "stale_data": "Estas cifras no están actualizadas en este momento, por eso no las mostramos."
       },
       "longestDetail": "El máximo de las {count} averías notificadas."
+    },
+    "retired": {
+      "h1Suffix": "Cerrado definitivamente",
+      "noticeTitle": "Cerrado definitivamente desde el {date}",
+      "noticePost": "Nuestra noticia al respecto: <link>{title}</link>",
+      "noticeSource": "Fuente: <link>{host}</link>",
+      "noticePark": "Tiempos de espera actuales de las demás atracciones: <link>{park}</link>",
+      "waitsTitle": "Tiempos de espera antes del cierre"
     }
   },
   "nearby": {
@@ -1701,7 +1714,11 @@
       "factBy": "{manufacturer}",
       "factOpened": "apertura en {year}",
       "factMinHeight": "altura mín. {height}",
-      "factLand": "zona {land}"
+      "factLand": "zona {land}",
+      "retiredTitleTemplate": "{attraction} en {park} – cerrado definitivamente",
+      "retiredTitleTemplateBare": "{attraction} – cerrado definitivamente",
+      "retiredLead": "{attraction} en {park} está cerrado definitivamente desde el {date}.",
+      "retiredWaits": "Antes, la espera llegaba a {minutes} minutos en un día laborable normal."
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",

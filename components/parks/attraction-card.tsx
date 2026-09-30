@@ -41,6 +41,13 @@ interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
   parkPath?: string;
   parkStatus?: ParkStatus;
+  /**
+   * The ride closed for good. Its badge reads „Dauerhaft geschlossen" instead of the live status,
+   * and nothing that describes a running ride (wait, crowd level, best time) is drawn. Only the
+   * blog's ride references set it: every other card is built from the park payload, which carries
+   * no closed ride.
+   */
+  closedPermanently?: boolean;
   backgroundImage?: string | null;
   /**
    * Where the photo is cropped from — the image's focal point, resolved by the
@@ -137,6 +144,7 @@ export function AttractionCard({
   attraction,
   parkPath,
   parkStatus,
+  closedPermanently = false,
   backgroundImage: propBackgroundImage,
   objectPosition: propObjectPosition,
   distance,
@@ -149,7 +157,7 @@ export function AttractionCard({
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
 
-  const status = getLiveAttractionStatus(attraction, parkStatus);
+  const status = closedPermanently ? 'RETIRED' : getLiveAttractionStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
   const waitTime = isOperatingOrUnknown ? getWaitTime(attraction) : null;
   const effectiveTimezone =
@@ -505,7 +513,7 @@ export function AttractionCard({
                 'max-sm:mt-[6px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:shrink-0'
             )}
           >
-            <ParkStatusBadge status={status as ParkStatus} />
+            <ParkStatusBadge status={status} />
             {isOperatingOrUnknown && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
               // baseline it rated against — without one the badge stands alone.

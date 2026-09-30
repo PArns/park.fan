@@ -773,7 +773,8 @@
       "CLOSED": "Gesloten",
       "REFURBISHMENT": "Onderhoud",
       "DOWN": "Storing",
-      "UNKNOWN": "Onbekend"
+      "UNKNOWN": "Onbekend",
+      "RETIRED": "Definitief gesloten"
     },
     "outage": {
       "since": "Storing gemeld sinds {when}",
@@ -1190,6 +1191,10 @@
     },
     "overview": {
       "minutesUnit": "min."
+    },
+    "closedRides": {
+      "title": "Definitief gesloten attracties",
+      "since": "sinds {month}"
     }
   },
   "attractions": {
@@ -1435,6 +1440,14 @@
         "stale_data": "Deze cijfers zijn momenteel niet actueel, daarom tonen we ze niet."
       },
       "longestDetail": "Het maximum van de {count} gemelde storingen."
+    },
+    "retired": {
+      "h1Suffix": "Definitief gesloten",
+      "noticeTitle": "Definitief gesloten sinds {date}",
+      "noticePost": "Ons bericht hierover: <link>{title}</link>",
+      "noticeSource": "Bron: <link>{host}</link>",
+      "noticePark": "Actuele wachttijden van de andere attracties: <link>{park}</link>",
+      "waitsTitle": "Wachttijden voor de sluiting"
     }
   },
   "nearby": {
@@ -1701,7 +1714,11 @@
       "factBy": "gebouwd door {manufacturer}",
       "factOpened": "geopend in {year}",
       "factMinHeight": "min. lengte {height}",
-      "factLand": "gebied {land}"
+      "factLand": "gebied {land}",
+      "retiredTitleTemplate": "{attraction} in {park} – definitief gesloten",
+      "retiredTitleTemplateBare": "{attraction} – definitief gesloten",
+      "retiredLead": "{attraction} in {park} is sinds {date} definitief gesloten.",
+      "retiredWaits": "Daarvoor duurde het wachten op een gewone doordeweekse dag tot {minutes} minuten."
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",

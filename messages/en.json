@@ -773,7 +773,8 @@
       "CLOSED": "Closed",
       "REFURBISHMENT": "Refurbishment",
       "DOWN": "Down",
-      "UNKNOWN": "Unknown"
+      "UNKNOWN": "Unknown",
+      "RETIRED": "Closed permanently"
     },
     "outage": {
       "since": "Outage reported since {when}",
@@ -1190,6 +1191,10 @@
     },
     "overview": {
       "minutesUnit": "min"
+    },
+    "closedRides": {
+      "title": "Permanently closed attractions",
+      "since": "since {month}"
     }
   },
   "attractions": {
@@ -1435,6 +1440,14 @@
         "stale_data": "These figures are not current right now, so we are not showing them."
       },
       "longestDetail": "The maximum across the {count} reported outages."
+    },
+    "retired": {
+      "h1Suffix": "Closed Permanently",
+      "noticeTitle": "Closed permanently since {date}",
+      "noticePost": "Our report: <link>{title}</link>",
+      "noticeSource": "Source: <link>{host}</link>",
+      "noticePark": "Current wait times for the other attractions: <link>{park}</link>",
+      "waitsTitle": "Wait times before it closed"
     }
   },
   "nearby": {
@@ -1701,7 +1714,11 @@
       "factBy": "built by {manufacturer}",
       "factOpened": "opened {year}",
       "factMinHeight": "min. height {height}",
-      "factLand": "{land} area"
+      "factLand": "{land} area",
+      "retiredTitleTemplate": "{attraction} at {park} – Closed Permanently",
+      "retiredTitleTemplateBare": "{attraction} – Closed Permanently",
+      "retiredLead": "{attraction} at {park} has been closed permanently since {date}.",
+      "retiredWaits": "Before that, a normal weekday queue peaked at {minutes} minutes."
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",

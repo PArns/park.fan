@@ -121,6 +121,10 @@ carries the reasoning, the measurements and the counter-examples.
   has three values, and `null` must behave exactly as before. Test `!== false`, never `=== true`
   (`lib/utils/season.ts`). A live `OPERATING` row still beats the season. The SQL twin
   `attractionIsOutOfSeason()` changes with the TS rule or not at all.
+- **[A ride that closed for good keeps its page](docs/rules/a-closed-ride-keeps-its-page.md)** — only
+  `retiredKind === 'closed'` (never `retiredReason`); 200, indexable, in the sitemap, news post linked
+  (`lib/parks/closed-ride.ts`). The park page lists `closedAttractions` apart from `attractions`;
+  `retired_hidden` takes it off that list only. `pnpm test:closed-ride`.
 - **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
   catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
   (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
