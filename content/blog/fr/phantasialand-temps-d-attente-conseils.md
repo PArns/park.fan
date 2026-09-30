@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Le Phantasialand est mon parc de cœur, et park.fan est né dans une file de
-  Taron, ce qui en dit long sur ces files. Le guide 2026 : les attractions, la
+  Taron. Le guide 2026 : les attractions, la
   cuisine, les petits miracles, et comment garder courts les temps d’attente au
   Phantasialand, dénicher le meilleur jour et faire le bon calcul avec le Quick
   Pass.
@@ -65,17 +65,16 @@ ouvert, et c’est l’endroit où park.fan a été inventé, dans une file de T
 longue de soixante minutes.
 
 Toute la préhistoire à l’eau de rose est racontée dans
-[notre histoire fondatrice](/blog/une-poussette-une-gondole-et-park-fan) ; ici,
-il sera question de ce qui, au fil des années, en a été tiré de plus concret. Car
-autant j’aime ce parc, autant je dois, d’emblée, le défendre et le rappeler à ses
-devoirs : il a huit vraies têtes d’affiche pour un public qui en remplirait
+[notre histoire fondatrice](/blog/une-poussette-une-gondole-et-park-fan). Autant
+j’aime ce parc, autant je dois d’emblée le rappeler à ses devoirs, car il a huit
+vraies têtes d’affiche pour un public qui en remplirait
 vingt. Y aller sur un coup de tête et tomber sur le jour parfait, cela
 réussit ici à peu près aussi souvent que trouver une place assise dans le RER B
 à l’heure de pointe. Mais avec un peu de préparation, il
 devient ce qu’il est pour moi depuis plus de trente ans : la plus belle journée
 qu’un parc d’attractions puisse offrir en Europe. Et les **temps d’attente au
-Phantasialand**, tu les as en grande partie en main : tout se joue sur le choix
-du jour.
+Phantasialand**, tu les as en grande partie en main, parce que tout se joue sur le
+choix du jour.
 
 ![Un carrousel volant illuminé tourne, un arbre de lumière à gauche | Wintertraum, la saison d’hiver de Phantasialand. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -83,10 +82,9 @@ du jour.
 
 ![Taron dans le village de basalte de Klugheim | Taron file à travers le village de basalte de Klugheim, qui sert aussi de file d’attente. | right](/media/phantasialand/taron-4x3.jpg)
 
-Le Phantasialand porte le titre de « parc à thème le plus immersif d’Europe »
-comme un second prénom : il l’a remporté huit années de suite au Parkscout plus
-Award. À quoi cela se voit : la file de [Taron](ref:phantasialand/taron), c’est
-Klugheim, un village de basalte aux toits de guingois et aux murs patinés, et
+Au Parkscout plus Award, le Phantasialand a remporté huit années de suite le
+titre de « parc à thème le plus immersif d’Europe ». Cela se voit dès la file de
+[Taron](ref:phantasialand/taron), qui est Klugheim, un village de basalte aux toits de guingois et aux murs patinés, et
 entre l’attente et le décor il n’y a là aucune frontière visible. Depuis le
 village, on ne voit l’attraction elle-même que tard.
 
@@ -96,7 +94,7 @@ et ses huttes de torchis, le Mexico et ses ruines mayas, le Fantasy avec Wuze
 Town au bord du Mondsee, le Mystery avec le village de basalte de Klugheim et, le
 plus jeune, le Rookburgh victorien. Avec les parkings et les hôtels, le site
 couvre environ 28 hectares, le parc lui-même est nettement plus petit. Chaque
-univers a sa propre musique et sa propre odeur, ce qui se remarque davantage l’été
+univers a sa propre musique et sa propre odeur, et on le remarque davantage l’été
 devant le stand de churros du China Town que dans n’importe quel communiqué. Même
 sans monter dans une seule attraction, on a une journée bien remplie.
 
@@ -131,9 +129,7 @@ s’en sont remis.
 
 ![F.L.Y. à Rookburgh | Rookburgh avec F.L.Y. (2020), le premier flying-launch-coaster au monde. | left](/media/phantasialand/fly-4x3.jpg)
 
-Comment c’est devenu, au fil des décennies, un parc pour lequel les passionnés
-traversent l’Europe : une histoire de croissance lente, et d’une fin frôlée de
-près. Le parc a grandi, gagné en audace, en technique ; en 1996 est arrivé le
+Le parc a grandi, gagné en audace, en technique ; en 1996 est arrivé le
 train minier [Colorado Adventure](ref:phantasialand/colorado-adventure), et
 quelques semaines après l’ouverture, Michael Jackson en personne, oui, lui, l’a
 baptisé. Et puis, le **1er mai 2001**, l’incendie. Un défaut technique sur
@@ -148,8 +144,8 @@ Wuze Town et ses deux spinning coasters
 sont arrivés avec un an de retard. La même année, en 2002, les remplaçants de ce
 qui avait brûlé étaient prêts : la rivière de rafting
 [River Quest](ref:phantasialand/river-quest) et le madhouse Feng Ju Palace, qui
-existent tous deux encore aujourd’hui. Des cendres est née une nouvelle attitude :
-tant qu’à reconstruire, autant le faire pour de bon, thématisé jusqu’à la
+existent tous deux encore aujourd’hui. Des cendres est née une nouvelle attitude,
+celle de reconstruire pour de bon, thématisé jusqu’à la
 dernière vis.
 
 À quel point le parc était sérieux, cela s’est vu en 2006. Avec Deep in Africa
@@ -162,7 +158,7 @@ victorienne Rookburgh avec [F.L.Y.](ref:phantasialand/fly), premier
 flying-launch-coaster au monde selon le parc. Dans les deux cas, la zone
 thématique est venue d’abord et l’attraction a été bâtie dedans, pas l’inverse.
 
-Et une chose explique beaucoup : le Phantasialand est resté jusqu’à aujourd’hui **une affaire de
+Le Phantasialand est resté jusqu’à aujourd’hui **une affaire de
 famille**. En 1998, Robert Löffelhardt, le fils de Gottlieb, en a pris seul la
 direction, trois ans après avoir racheté les parts du cofondateur Richard
 Schmidt ; jamais le parc n’a eu au-dessus de lui un groupe international ou des
@@ -189,7 +185,7 @@ Les temps d’attente en direct sont collés juste à côté des noms, tu vois d
 la lecture ce qu’il en est :
 
 - **[Taron](ref:phantasialand/taron)**, la pièce maîtresse, et pour moi le
-  meilleur launch coaster d’Allemagne (on peut en débattre, moi je m’en abstiens).
+  meilleur launch coaster d’Allemagne.
   Deux lancements brutaux, de folles rencontres rapprochées avec les colonnes de
   basalte de Klugheim, et ce moment unique où le train reprend brièvement son
   souffle avant de te plaquer une seconde fois dans le siège. Si tu ne fais qu’une
@@ -207,8 +203,8 @@ la lecture ce qu’il en est :
   que tu n’arrives plus à te sortir de la tête pendant des jours (demande à ma
   copine, qui la fredonne désormais dans son sommeil).
 - **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, le train minier
-  de 1996 que Michael Jackson a baptisé en personne peu après son ouverture. Bon
-  pour toute la famille, mais avec une vitesse étonnante et ce charme
+  de 1996 que Michael Jackson a baptisé en personne peu après son ouverture. Un
+  coaster familial, mais avec une vitesse étonnante et ce charme
   merveilleusement suranné de Far West.
 - **[Talocan](ref:phantasialand/talocan)**, un top spin à effets de feu et d’eau,
   qui vu d’en bas ressemble à un décor de temple et se ressent, vu d’en haut, comme
@@ -241,9 +237,8 @@ fois, assez rapide pour la deuxième.
 
 ## Billets : en ligne uniquement, et la bataille des cartes annuelles
 
-Voilà pour le beau côté. Passons aux petits caractères, sur lesquels la plupart
-des sorties improvisées échouent avant même d’avoir commencé : **il n’y a plus
-de caisse à l’entrée.** Le Phantasialand ne vend que des **billets en ligne
+**Il n’y a plus de caisse à l’entrée**, et c’est là que la plupart des sorties
+improvisées échouent avant même d’avoir commencé. Le Phantasialand ne vend que des **billets en ligne
 datés**, tu réserves à l’avance un jour de visite précis, et sans cet e-billet
 sur ton téléphone, tu risques de te retrouver devant une porte close.
 
@@ -257,11 +252,11 @@ jour même, au prix du jour et à condition que la date ne soit pas complète 
 25 septembre 2026, un billet pour le jour même coûtait 64 €. La règle est aussi
 simple que peu romantique : **qui réserve tôt paie moins.** Que le jour bon marché
 soit aussi le plus vide, c’est souvent vrai, mais pas toujours : ce même jour, le
-dimanche suivant coûtait 49 € et le lundi 64 €, alors que notre calendrier attend
-le lundi comme le plus calme des deux.
+dimanche suivant coûtait 49 € et le lundi 64 €, alors que dans notre calendrier, le
+lundi est le plus calme des deux.
 
-Et puis il y a cette histoire qui ronge encore aujourd’hui les fans les plus
-fidèles : **il n’y a plus de cartes annuelles.** Le Phantasialand a retiré sa
+**Il n’y a plus de cartes annuelles**, et cela ronge encore aujourd’hui les fans
+les plus fidèles. Le Phantasialand a retiré sa
 Club-Karte de la vente pendant la pandémie et ne l’a jamais remise en vente ; les
 dernières ont expiré à l’été 2022. Parmi les grands parcs allemands, c’est
 l’exception : l’Europa-Park, par exemple, continue de vendre son ResortPass, même
@@ -269,12 +264,12 @@ si les contingents partent vite. Pour un lieu qui transforme tant de gens en
 récidivistes, c’est une gifle aux habitués. La grogne était (et reste) si forte
 qu’en 2022 des fans ont carrément lancé **plusieurs [pétitions pour leur
 rétablissement](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)**.
-Ce qui a changé jusqu’ici : rien. Qui aime le parc paie
+Rien n’a changé jusqu’ici. Qui aime le parc paie
 pour chaque visite un billet journalier daté au prix du jour, comme un habitué
 à qui l’on redemande ses papiers à chaque passage dans son propre bistrot. C’est
 l’un des rares points sur lesquels je suis en vrai désaccord avec mon parc préféré.
 
-Et une pensée qui, en tant que fan, me fait vraiment mal : **le prix détermine
+Ce qui me fait vraiment mal, en tant que fan, c’est que **le prix détermine
 aussi le public.** Depuis que les cartes annuelles ont disparu et que les billets
 sont tarifés de façon si agressive, quelque chose s’est visiblement déplacé dans
 le parc. Depuis un ou deux ans, j’ai remarqué nettement plus de **vandalisme** que
@@ -317,11 +312,11 @@ calmes pour le Phantasialand :
 
 ```
 
-Quels jours de la semaine et quels mois sont en général tranquilles, et lesquels
-éviter : l’**affluence par jour de la semaine et par mois**, mesurée sur les
-jours d’ouverture, te le montre. Nos mesures commencent fin décembre 2025 ; le
-tableau indique combien de jours se cachent derrière chaque mois, et l’hiver y est
-encore peu mesuré.
+Dans l’**affluence par jour de la semaine et par mois**, mesurée sur les jours
+d’ouverture, tu vois quels jours de la semaine et quels mois sont en général
+tranquilles, et lesquels éviter. Nos mesures commencent fin décembre 2025 ; le nombre
+de jours derrière chaque mois figure dans le tableau, et l’hiver y est encore peu
+mesuré.
 
 ```stats-widget slug=phantasialand
 
@@ -360,15 +355,15 @@ au Kaiserplatz. Il existe désormais deux variantes :
   coûtent 83 € en tout, l’Ultimate revient donc moins cher et ajoute F.L.Y. par-dessus.
   Il ne vaut le coup que si tu veux vraiment tout faire, cela dit.
 
-Un détail qui en surprend beaucoup (et qu’il faut connaître à l’avance) : **même
-avec le Quick Pass, tu attends encore à F.L.Y., en haut, dans la station.**
+Beaucoup sont surpris que, **même avec le Quick Pass, on attende encore à F.L.Y.,
+en haut, dans la station.**
 L’attraction met une éternité à embarquer à cause de ses harnais de vol
 sophistiqués, et cet embouteillage ne se dissout pas non plus en fast-track. Tu
 sautes la grande file, mais le dernier bout, le plus laborieux avant
 l’embarquement, tu le fais quand même debout.
 
-L’achat se fait uniquement sur place, au service client du Kaiserplatz, et limité
-veut vraiment dire limité : **pendant le Wintertraum surtout, les Quick Pass sont,
+L’achat se fait uniquement sur place, au service client du Kaiserplatz, et le contingent
+est limité. **Pendant le Wintertraum surtout, les Quick Pass sont,
 le week-end, souvent épuisés dès midi.** Qui en a besoin y est de bonne heure, ou
 repart bredouille.
 
@@ -379,8 +374,7 @@ est de l’argent jeté. Un samedi de vacances rouge écarlate, en revanche, il 
 sauver la journée. Avant d’acheter, jette simplement un coup d’œil aux temps
 d’attente en direct : si les chiffres sont bas, garde ton argent et offre-toi
 plutôt une deuxième part de gâteau. (À côté de l’Ultimate, il existe encore une
-seconde voie vers F.L.Y. sans longue file, j’y viens tout de suite, du côté des
-hôtels.)
+seconde voie vers F.L.Y. sans longue file, du côté des hôtels, plus bas.)
 
 ## Dans quel ordre tu roules, et pourquoi le réveil sonne tôt
 
@@ -390,8 +384,8 @@ au plus tard toutes les attractions tournent. Il y a peu de choses plus belles
 que ce parc dans la première heure : les ruelles encore désertes, la musique déjà
 en marche, les décors dans la lumière du matin, et sur la plupart des attractions
 des files plus courtes qu’elles ne le seront de toute la journée. Dans un parc
-aussi compact, cette heure-là vaut de l’or : c’est la différence entre « trois
-tours » et « dix ».
+aussi compact, cette heure-là fait la différence entre « trois tours » et
+« dix ».
 
 Mon ordre de passage, éprouvé au fil des ans, abandonné plusieurs fois et remanié
 sur un point grâce à nos données heure par heure (mesures depuis fin décembre
@@ -425,8 +419,8 @@ contrairement à la météo, tu le tiens entièrement en main.
 
 ## Manger : ici, ça vaut la peine de s’asseoir
 
-Je ne dirais cela d’aucun autre parc : le Phantasialand vaut aussi le voyage
-pour sa **cuisine**. Là où, dans bien des parcs, « manger » rime avec frites
+Le Phantasialand vaut aussi le voyage pour sa **cuisine**, et je ne dirais cela
+d’aucun autre parc. Là où, dans bien des parcs, « manger » rime avec frites
 tièdes à prix d’or, on cuisine ici avec un soin que je ne connais d’ordinaire
 que des vrais restaurants. Trois adresses, que je cite à tous ceux qui me le
 demandent, et à quelques-uns qui n’ont rien demandé :
@@ -452,11 +446,10 @@ demandent, et à quelques-uns qui n’ont rien demandé :
 Pour l’entre-deux, mon grand classique du snack : les **churros**, frais, à la
 cannelle et disponibles toute l’année.
 
-Et le conseil le plus important côté repas est le même que pour les files : **à
-contre-courant.** Mange vers 11 h 30, avant que les restaurants se remplissent. Tu
+Côté repas aussi, va **à contre-courant.** Mange vers 11 h 30, avant que les restaurants se remplissent. Tu
 es alors attablé pendant que les files dehors sont au plus long, et tu ne fais pas
-en plus la queue pour ton repas. (Et si tu viens en hiver, le parc ajoute sur le
-Kaiserplatz une carte d’hiver bien à lui, j’en reparle avec le Wintertraum.)
+en plus la queue pour ton repas. (En hiver, le parc ajoute sur le Kaiserplatz une
+carte d’hiver bien à lui, décrite plus bas avec le Wintertraum.)
 
 ## Les petites choses pour lesquelles je reviens toujours
 
@@ -493,8 +486,8 @@ pas grand-chose, alors que chacun serait, dans un autre parc, la tête d’affic
 Un tour dans la [Geister Rikscha](ref:phantasialand/geister-rikscha), qui sillonne
 China Town depuis 1981, et tu comprends ce que « immersif » veut vraiment dire.
 
-Mais mon moment préféré entre tous appartient à la fin de journée : **Klugheim à
-l’heure bleue.** Quand les lumières s’allument et que
+Mais mon moment préféré entre tous, c’est **Klugheim à l’heure bleue**, en fin
+de journée. Quand les lumières s’allument et que
 [Taron](ref:phantasialand/taron) gronde au-dessus de toi à travers les colonnes de
 basalte, tandis que le dernier soleil teinte les rochers d’orange et que les
 premières lanternes se mettent à briller chaleureusement, c’est la raison pour
@@ -510,8 +503,8 @@ Matamba (africain, contre Deep in Africa). Qui se réveille au Charles Lindbergh
 met un moment à savoir dans quel siècle il se trouve. Plus le grand
 dîner-spectacle Fantissima, si tu veux faire de la soirée une fête.
 
-Une précision importante, car beaucoup connaissent la chose autrement à
-l’[Europa-Park](ref:europa-park) : un hôtel du Phantasialand ne t’offre **aucune
+Contrairement à ce que beaucoup connaissent de
+l’[Europa-Park](ref:europa-park), un hôtel du Phantasialand ne donne **aucune
 entrée anticipée dans le parc**. L’avantage concret est ailleurs. Les clients du
 **Charles Lindbergh** ont, avec leur billet d’hôtel, **un accès rapide à
 [F.L.Y.](ref:phantasialand/fly) une fois par jour** par une entrée dédiée ; avec
@@ -555,7 +548,7 @@ milliers d’autres gens heureux.
 Dans mon [guide Halloween](/blog/halloween-parcs-attractions-2026), j’ai rangé
 avec tendresse le Phantasialand parmi les « réfractaires » : il ne fait
 délibérément pas de festival de la frousse. En hiver, il enfile au contraire un
-tout autre costume, magnifique : le
+tout autre costume, magnifique, le
 **[Wintertraum](https://www.phantasialand.de/fr/parc/wintertraum/)**.
 
 En 2026, il n’y a pas de pause entre l’été et l’hiver : la saison estivale court
@@ -569,15 +562,14 @@ de toi, c’est ma manière préférée de clore une année de parc.
 
 Et puis il y a la **cuisine qu’on ne trouve qu’en hiver.** Sur le Kaiserplatz, on
 sert alors du saumon flambé, une poêlée de chou frisé et un crumble chaud. Mon
-numéro un secret (enfin, plus tellement à partir de maintenant), ce sont pourtant
-les **Flat Croissants** du China Town : croustillants, pressés à plat et
+numéro un, ce sont pourtant les **Flat Croissants** du China Town : croustillants, pressés à plat et
 merveilleusement beurrés. Ce ne sont d’ailleurs pas des viennoiseries purement
 hivernales, le parc en vend aussi en dehors du Wintertraum.
 
 Et mon meilleur conseil Wintertraum : **Taron dans le noir.** En hiver, la nuit
 tombe tôt, et quand [Taron](ref:phantasialand/taron) fonce à travers le Klugheim
 illuminé et que les colonnes de basalte ne sont plus que des ombres sur le ciel
-nocturne, c’est comme ça que je le préfère. Le hic : c’est précisément là que
+nocturne, c’est comme ça que je le préfère. Sauf que c’est précisément là que
 tout le monde veut monter. Achète-toi le **Quick Pass dès le début de la
 journée** (le week-end, ils sont partis à midi), et fais ensuite Taron dans le
 noir, aussi souvent que tu peux.
@@ -596,7 +588,7 @@ un contingent de prévente dès 29 €. Trois choses encore :
   est fermé l’hiver, et par temps extrême n’importe quelle attraction en extérieur
   peut fermer au pied levé. Qui fait Chiapas en décembre emporte des vêtements de
   rechange.
-- **Prévoir les week-ends comme des jours de vacances.** Notre calendrier attend
+- **Prévoir les week-ends comme des jours de vacances.** Notre calendrier prévoit
   beaucoup de monde les premiers week-ends du Wintertraum et peu les jours de
   semaine de décembre. Nous n’avons encore mesuré le Wintertraum que sur une
   poignée de jours, entre fin décembre 2025 et janvier 2026, et ils étaient
@@ -615,9 +607,9 @@ En semaine, hors vacances scolaires de Rhénanie-du-Nord-Westphalie ; du lundi
 vendredi, les jours font jeu égal dans nos données, et le mois le plus calme que
 nous ayons mesuré est septembre, après les vacances d’été (mesures depuis fin
 décembre 2025, au 25 septembre 2026).
-Mais ne te fie pas à ton intuition : le
-[calendrier d’affluence du Phantasialand](ref:phantasialand?calendar) te dit quand
-s’attendre à peu de monde aussi loin que le parc a publié ses horaires ; en ce
+Mais ne te fie pas à ton intuition. Les jours calmes sont dans le
+[calendrier d’affluence du Phantasialand](ref:phantasialand?calendar), aussi loin
+que le parc a publié ses horaires ; en ce
 moment, jusqu’au 24 janvier 2027. Vert, c’est feu vert.
 
 ### Comment éviter les longs temps d’attente au Phantasialand ?
@@ -659,11 +651,11 @@ une petite fête).
 
 ## Ce que je te donne pour ta journée
 
-Le Phantasialand n’est pas un parc qu’on visite en passant. Il accueille environ
+Le Phantasialand accueille environ
 un tiers du public de l’Europa-Park, et pourtant, d’après nos données, on y fait
 plus longtemps la queue. Les bons jours, avec le bon ordre de passage et une pause
-à la Rutmor’s Taverne, c’est le parc où je retourne depuis trente ans. La bonne
-nouvelle : presque tout ce qui sépare une bonne journée d’une journée grandiose,
+à la Rutmor’s Taverne, c’est le parc où je retourne depuis trente ans. Presque
+tout ce qui sépare une bonne journée d’une journée grandiose,
 tu le décides **à l’avance**, en jetant un œil au calendrier.
 
 Avant de prendre la route, un dernier coup d’œil à la météo à Brühl, à l’instant
@@ -685,7 +677,7 @@ l’heure bleue, ne veut toujours pas rentrer.
 — Patrick
 
 _P.-S. : Non, un mardi vert, je n’achète pas de Quick Pass. Par principe, et parce
-que les données disent que je n’en ai pas besoin. Pour le samedi rouge, je l’aurais
+que, d’après nos données, je n’en ai pas besoin. Pour le samedi rouge, je l’aurais
 acheté. Ou j’aurais réservé à temps un jour vert et économisé les deux, le Quick
 Pass et le prix du samedi._
 
