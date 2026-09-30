@@ -57,6 +57,22 @@ const MAX_PRODUCT_SUBJECT_PER_1K = 6;
 const MAX_NEGATIONS_PER_100 = 2;
 /** `X heißt: …` / `X means: …` per text (§2.15). */
 const MAX_DEFINITION_COLONS = 2;
+/**
+ * Participial tails (`…, making it the tallest`) and their twins in the other five languages
+ * (`…, was die Bahn zur höchsten macht`), per 1,000 words (§2.3). Measured on 2026-09-30: the
+ * English posts carried 1 in 95,000 words, the English glossary 39 in 38,000.
+ */
+const MAX_TAILS_PER_1K = 1;
+/** Below this share of contracted forms, an English text of some length reads translated (§6). */
+const MIN_CONTRACTION_SHARE = 0.25;
+/**
+ * Colon pivots per 100 sentences of a post (§2.7): a clause, a colon, then the sentence that
+ * pays it off (`Acht davon sind Überlebende: …`). The German posts averaged 11.1 on 2026-09-30,
+ * the busiest three sat at 16 to 21.
+ */
+const MAX_COLON_PIVOTS_PER_100 = 15;
+/** Share of one caption series that may be quips before the series reads templated (§5.2). */
+const MAX_QUIP_SHARE = 0.4;
 
 const BLOG = 'content/blog';
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -129,7 +145,87 @@ const WATCH = [
     what: 'question set-up (§2.12)',
     re: /(?<=^|[.!?]\s+)(?:das ergebnis|die antwort|der grund|der haken|the result|the answer|the reason|the catch)\?/gim,
   },
+  {
+    what: 'teaser (§2.16)',
+    re: /(?<=^|[.!?]\s+)(?:(?:dann|jetzt|hier|da) (?:wird|wurde)(?:'s| es)? (?:\p{L}+ )?(?:kurios|spannend|interessant|lustig|absurd|verrückt)|und dann (?:das|der|die) \p{L}+ste\b|interessanter (?:ist|wird)|spannend(?:er)? wird|das beste(?: daran)?:|(?:here|this) is where (?:it|things) gets?|(?:then|now) (?:it|things) gets?(?: \p{L}+)? (?:weird|interesting|strange|tricky)|the best part[:?]|here'?s the (?:kicker|twist|catch)|and then the \p{L}+est\b)/gimu,
+  },
+  {
+    what: 'appended verdict (§2.17)',
+    re: /\b(?:und )?(?:genau )?das ist (?:genau )?(?:die aussage|der punkt|der trick|kein zufall|(?:vermutlich |wohl )?absicht)\b|\bthat'?s (?:exactly |precisely )?(?:the point|no accident|(?:probably )?deliberate|by design)\b|\bthat is (?:exactly |precisely )?the point\b/gi,
+  },
+  {
+    what: 'no X, no Y, just Z (§2.17)',
+    re: /\bkein\w* [^,.]{1,30}, kein\w* [^,.]{1,30}, (?:nur|einfach|dafür)\b|\bno [^,.]{1,30}, no [^,.]{1,30}, (?:just|only|simply)\b/gi,
+  },
+  {
+    what: 'vague sentiment (§1.2)',
+    re: /\b(?:enthusiasten|fans|kenner|puristen) (?:lieben|schätzen|bevorzugen|betrachten|feiern|halten|mögen|schwärmen)\b|\b(?:gilt|gelten) (?:als|unter)\b|\b(?:enthusiasts|fans|riders|purists) (?:love|prize|consider|regard|praise|celebrate|prefer|rave|adore)\b|\bis (?:widely|often|generally|commonly) (?:regarded|considered|seen|described)\b|\bwidely (?:regarded|considered|seen)\b/gi,
+  },
+  {
+    what: 'ad copy (§3)',
+    re: /(?<!\p{L})(?:atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere)(?!\p{L})/giu,
+  },
 ];
+
+/*
+ * The tail a model hangs on a finished sentence to say what the fact *does* (§2.3): `…, making
+ * it the tallest`, `…, was den Nervenkitzel steigert`, `…, ce qui rend`, `…, lo que convierte`.
+ * One is a sentence; one per paragraph is the template the English glossary was written from.
+ */
+const TAILS = {
+  en: /,\s(?:thus\s)?(?:making|creating|giving|adding|offering|allowing|providing|ensuring|highlighting|reflecting|showcasing|underscoring|emphasi[sz]ing|contributing to|resulting in|delivering|producing|enhancing|lending)\b/gi,
+  de: /,\s(?:was|wodurch|womit)\s[^,.;]{0,80}?\b(?:macht|erzeugt|verleiht|steigert|schafft|ermöglicht|verstärkt|bietet|sorgt|beiträgt|unterstreicht|verschafft)\b/gi,
+  nl: /,\s(?:wat|waardoor|waarmee)\s[^,.;]{0,80}?\b(?:maakt|zorgt|geeft|biedt|creëert|versterkt|oplevert)\b/gi,
+  fr: /,\s(?:ce qui|ce qu['’]|créant|offrant|donnant|rendant|permettant|ajoutant)\b/gi,
+  es: /,\s(?:lo que|lo cual|creando|ofreciendo|dando|haciendo|permitiendo|añadiendo|convirtiendo)\b/gi,
+  it: /,\s(?:il che|cosa che|creando|offrendo|dando|rendendo|permettendo|aggiungendo)\b/gi,
+};
+
+const EN_FULL =
+  /\b(?:do not|does not|did not|is not|are not|was not|were not|has not|have not|it is|that is|there is|you are|cannot|will not|you will|we are|they are)\b/gi;
+const EN_CONTRACTED =
+  /\b(?:don|doesn|didn|isn|aren|wasn|weren|hasn|haven|can|won)['’]t\b|\b(?:it|that|there)['’]s\b|\b(?:you|we|they)['’](?:re|ll)\b/gi;
+
+/**
+ * Habits a whole text can be measured for, whatever surface it came from: the participial
+ * tail (§2.3) and, in English, a text that never contracts (§6).
+ */
+function styleHabits(file, text, locale) {
+  const words = text.trim().split(/\s+/).length;
+  if (words < 300) return;
+  const tail = TAILS[locale];
+  if (tail) {
+    const hits = text.match(tail) ?? [];
+    if (hits.length >= 3 && (hits.length / words) * 1000 > MAX_TAILS_PER_1K)
+      warn(
+        file,
+        `participial tail (§2.3): ${hits.length}× in ${words} words, budget ${MAX_TAILS_PER_1K}/1k — ${[...new Set(hits.map((h) => h.trim()))].slice(0, 4).join(' ')}`
+      );
+  }
+  if (locale === 'en' && words >= 500) {
+    const full = (text.match(EN_FULL) ?? []).length;
+    const contracted = (text.match(EN_CONTRACTED) ?? []).length;
+    if (full >= 10 && contracted / (full + contracted) < MIN_CONTRACTION_SHARE)
+      warn(
+        file,
+        `${contracted} contraction(s) against ${full} full forms (§6): English that never says "don't" reads translated`
+      );
+  }
+}
+
+/** A clause, a colon, and the sentence that pays it off (§2.7). Lists and labels are not pivots. */
+const COLON_PIVOT = /(?:^|[.!?]\s+)(?:\S+\s+){2,}\S+?:\s+(?:\S+\s+){4,}\S+?[.!?](?=\s|$)/g;
+function colonPivots(body) {
+  let sentences = 0;
+  let pivots = 0;
+  for (const paragraph of body.split(/\n\s*\n/)) {
+    const p = paragraph.trim().replace(/\s+/g, ' ');
+    if (!p || /^([-+]|\d+\.|>|—)\s?/.test(p)) continue;
+    sentences += splitSentences(p).length;
+    pivots += (p.match(COLON_PIVOT) ?? []).length;
+  }
+  return { sentences, pivots };
+}
 
 const PARALLELISM = /\bsondern\b|\bnot (just|only|merely)\b[^.!?]{0,60}\bbut\b/gi;
 
@@ -495,6 +591,14 @@ for (const locale of LOCALES) {
       );
 
     explainerHabits(file, body, locale);
+    styleHabits(file, body, locale);
+
+    const { sentences: proseSentences, pivots } = colonPivots(body);
+    if (proseSentences >= 40 && (pivots / proseSentences) * 100 > MAX_COLON_PIVOTS_PER_100)
+      warn(
+        file,
+        `${pivots} colon pivots in ${proseSentences} sentences (§2.7, budget ${MAX_COLON_PIVOTS_PER_100}/100)`
+      );
 
     for (const heading of [
       ...plainTextFields(raw)
@@ -587,6 +691,8 @@ for (const locale of LOCALES) {
 /* ------------------------------------------------------------------ media sidecars */
 
 const captions = new Map(LOCALES.map((l) => [l, []]));
+/** Captions per collection directory and locale, for the series check below. */
+const series = new Map();
 for (const file of filesUnder('public/media', '.json')) {
   let data;
   try {
@@ -604,8 +710,42 @@ for (const file of filesUnder('public/media', '.json')) {
       if (text.includes('—')) fail(file, `${field}.${locale}: em dash (§4.1)`);
       scan(`${file} (${field}.${locale})`, text, { subject: 'us' });
       if (field === 'caption' && captions.has(locale)) captions.get(locale).push(text.trim());
+      if (field === 'caption') {
+        const key = `${file.split('/').slice(0, -1).join('/')} (${locale})`;
+        if (!series.has(key)) series.set(key, []);
+        series.get(key).push(text.trim());
+      }
     }
   }
+}
+
+/*
+ * A caption may be a joke (§5.2). A series of them is a template: the seven performer photos of
+ * the Halloween guide carried seven punchlines with the same beat (`… Und der ist tot.`, `Clown
+ * plus Kettensäge: was soll da schon schiefgehen?`). A quip here is a caption that turns on a
+ * colon into a fragment, ends on a short second sentence, opens on a one-word label sentence,
+ * asks, or contrasts `nicht X, sondern Y`.
+ */
+function isQuip(caption) {
+  const s = splitSentences(caption);
+  const len = (x) => x.trim().split(/\s+/).length;
+  return (
+    (s.length >= 2 && (len(s.at(-1)) <= 5 || len(s[0]) <= 2)) ||
+    /:\s+\p{Ll}/u.test(caption) ||
+    /\?\s*$/.test(caption) ||
+    /\bnicht (?:nur )?[^,.]{1,40}, sondern\b|\bman \p{L}+ nicht [^,.]{1,40}, man\b|, (?:nicht|not) [^,.]{1,40}\.$|\bnot (?:just )?[^,.]{1,40}, but\b|\byou(?:['’]re| are) not [^,.]{1,40}, you(?:['’]re| are)\b/iu.test(
+      caption
+    )
+  );
+}
+for (const [key, list] of series) {
+  if (list.length < 5) continue;
+  const quips = list.filter(isQuip);
+  if (quips.length / list.length > MAX_QUIP_SHARE)
+    warn(
+      key,
+      `${quips.length} of ${list.length} captions are quips (§5.2): one joke is a caption, a series of them is a template — "${quips[0].slice(0, 70)}"`
+    );
 }
 
 // Six captions in a row opening the same way is the set-level tell (§5.2).
@@ -676,13 +816,103 @@ const CONTENT_ROUTES = [
   'impressum',
 ];
 
+/*
+ * The hero and meta copy of the landing pages is not in `content/<locale>.tsx` but in a
+ * `PAGE_HEADERS` object in the route's `page.tsx`, all six locales in one file, and it is the
+ * first text on the page (`70 Minuten bei Taron. Viel? Normal? …`). Until 2026-09-30 nothing
+ * read it.
+ */
+const HEADER_ROUTES = ['how-park-fan-works', 'fancast', 'best-time-to-visit', 'trip-planner'];
+
 const CONTENT_PAGES = [
   ...LOCALES.map((l) => [`content/glossary/${l}.ts`, l]),
   ...CONTENT_ROUTES.flatMap((route) =>
     LOCALES.map((l) => [`app/[locale]/${route}/content/${l}.tsx`, l])
   ),
   ...LOCALES.map((l) => [`content/home/announce.${l}.md`, l]),
+  // English only, and public: the changelog at /en/changelog, the three published agent skills
+  // and /llms.txt. Machine-facing text is read by people when something breaks (§5.5).
+  ...filesUnder('content/changelog', '.md')
+    .filter((f) => !f.endsWith('README.md'))
+    .map((f) => [f, 'en']),
+  ...filesUnder('content/agent-skills', '.md').map((f) => [f, 'en']),
+  ['app/llms.txt/route.ts', 'en'],
 ];
+
+/** `{ de: {…}, en: {…} }` inside a `page.tsx`: the lines of each locale's block, joined. */
+function localeBlocks(src) {
+  const out = new Map();
+  let current = null;
+  for (const line of src.split('\n')) {
+    const open = line.match(/^ {2}(de|en|nl|fr|es|it): [{[]/);
+    if (open) current = open[1];
+    if (current) out.set(current, `${out.get(current) ?? ''}${line}\n`);
+    if (current && /^ {2}[}\]],?$/.test(line)) current = null;
+  }
+  return out;
+}
+
+/** Glossary terms: the `id`, and every prose literal until the next term. */
+function glossaryTerms(src) {
+  return src
+    .split(/^ {4}id: '/m)
+    .slice(1)
+    .map((part) => [part.slice(0, part.indexOf("'")), proseFromSource(part)]);
+}
+
+/*
+ * The glossary is 274 terms in one file per locale, and a file-level hit (`AI vocabulary:
+ * unprecedented`) does not say which of them to open. So it is scanned per term and reported per
+ * rule with the term ids. It is also where the participial tail lived: 39 in the English file on
+ * 2026-09-30, against one in all 22 English posts.
+ */
+function scanTerms(file, terms, locale) {
+  const byRule = new Map();
+  const note = (what, id, hits) => {
+    if (!byRule.has(what)) byRule.set(what, []);
+    byRule
+      .get(what)
+      .push(`${id} (${[...new Set(hits.map((h) => h.trim()))].slice(0, 2).join(', ')})`);
+  };
+  for (const [id, text] of terms) {
+    const honesty = text.match(HONESTY);
+    if (honesty) fail(file, `${id}: ${HONESTY_LABEL}: ${[...new Set(honesty)].join(', ')}`);
+    for (const { what, re } of WATCH) {
+      const hits = text.match(re);
+      if (hits) note(what, id, hits);
+    }
+    const tails = text.match(TAILS[locale]);
+    if (tails) note('participial tail (§2.3)', id, tails);
+  }
+  for (const [what, list] of byRule) {
+    const shown = VERBOSE ? list : list.slice(0, 6);
+    warn(
+      file,
+      `${what} in ${list.length} term(s): ${shown.join('; ')}${list.length > shown.length ? '; …' : ''}`
+    );
+  }
+}
+
+function checkPage(file, locale, text, raw) {
+  // German and Dutch take the en dash for a parenthetical; the em dash is the wrong
+  // character before it is a tell (§4.1, §6).
+  const dashes = (text.match(/—/g) ?? []).length;
+  if (dashes && (locale === 'de' || locale === 'nl'))
+    fail(file, `${dashes} em dash(es) in prose (§4.1) — ${locale} takes "–"`);
+  else if (dashes) warn(file, `${dashes} em dash(es) in prose (§4.1)`);
+
+  if (file.startsWith('content/glossary/')) {
+    // A reference text: no contraction budget, but every term on its own.
+    scanTerms(file, glossaryTerms(raw), locale);
+    explainerHabits(file, text, locale);
+    return;
+  }
+  // A page is us talking about ourselves, same as a catalog string.
+  scan(file, text, { subject: 'us' });
+  explainerHabits(file, text, locale);
+  styleHabits(file, text, locale);
+  for (const m of raw.matchAll(/\btitle="([^"]+)"/g)) headingCheck(file, 'title', m[1]);
+}
 
 for (const [file, locale] of CONTENT_PAGES) {
   let raw;
@@ -693,18 +923,25 @@ for (const [file, locale] of CONTENT_PAGES) {
   }
   const text = file.endsWith('.md') ? postBody(raw) : proseFromSource(raw);
   if (!text.trim()) continue;
+  checkPage(file, locale, text, raw);
+}
 
-  // German and Dutch take the en dash for a parenthetical; the em dash is the wrong
-  // character before it is a tell (§4.1, §6).
-  const dashes = (text.match(/—/g) ?? []).length;
-  if (dashes && (locale === 'de' || locale === 'nl'))
-    fail(file, `${dashes} em dash(es) in prose (§4.1) — ${locale} takes "–"`);
-  else if (dashes) warn(file, `${dashes} em dash(es) in prose (§4.1)`);
-
-  // A page is us talking about ourselves, same as a catalog string.
-  scan(file, text, { subject: 'us' });
-  explainerHabits(file, text, locale);
-  for (const m of raw.matchAll(/\btitle="([^"]+)"/g)) headingCheck(file, 'title', m[1]);
+for (const route of HEADER_ROUTES) {
+  const file = `app/[locale]/${route}/page.tsx`;
+  let raw;
+  try {
+    raw = readFileSync(file, 'utf8');
+  } catch {
+    continue;
+  }
+  for (const [locale, block] of localeBlocks(raw)) {
+    const text = proseFromSource(block);
+    if (!text.trim()) continue;
+    checkPage(`${file} (${locale})`, locale, text, block);
+    // The tagline is a heading in all but name: the same two tells apply (§2.12, §5.6).
+    for (const m of block.matchAll(/\b(?:title|tagline|metaTitle): '([^']+)'/g))
+      headingCheck(`${file} (${locale})`, 'heading', m[1]);
+  }
 }
 
 /* ------------------------------------------------------------------ report */

@@ -90,6 +90,14 @@ A superlative without a number or a source next to it is cut. Not softened — c
   and it is one of the loudest tells there is.
 - Thin data is stated as thin: `an vier gemessenen Tagen im Februar`, not a rounded average
   presented with the confidence of a full month.
+- **An opinion needs an owner.** `Enthusiasten lieben die rohe Natur`, `gilt als eine der
+intensivsten`, `enthusiasts prize ejector airtime`, `is widely regarded as` hand a taste to a
+  crowd nobody can ask. Wikipedia calls it a vague attribution of opinion; on this site it is the
+  glossary's favourite sentence: on 2026-09-30 the German file said `Enthusiasten` 49 times in
+  32,000 words, the German posts 5 times in 94,000. Name who said it (a poll with its year, a
+  reviewer with a link, the manufacturer's own brochure), say it yourself under the byline, or
+  describe what happens in the seat and let the reader decide whether they would like it.
+  `pnpm check:prose` flags the pattern.
 
 ### 1.3 Have a verdict
 
@@ -231,6 +239,19 @@ translated:
 Grep for `end,` at the end of a German clause and for `, ensuring` / `, highlighting` /
 `, reflecting` / `, showcasing` / `, contributing to` in English.
 
+**The tail.** The commonest form of it is a clause hung on a finished sentence to say what the
+fact _does_: `…, making it the tallest in Europe`, `…, creating a moment of weightlessness`. German
+has no participle for it and uses `was`: `…, was den Nervenkitzel des Manövers erheblich
+steigert`, `…, was den Typ zu einem der markantesten Achterbahntypen macht`. The other four have
+their own (`, ce qui rend`, `, créant`, `, lo que convierte`, `, creando`, `, il che rende`,
+`, wat … creëert`). The tail almost always carries an evaluation the sentence before it could not
+support, which is why it reads as a sales pitch even in a definition.
+
+Measured on 2026-09-30: 1 tail in the 95,000 words of the English posts, **39** in the 38,000 words
+of the English glossary, and the same share in its five translations (fr 40 terms, es 35, it 29,
+nl 17, de 12). Budget: one per 1,000 words. End the sentence, or make the effect its own sentence
+with a subject: `Der Zug hängt dabei zwei Sekunden kopfüber.`
+
 ### 2.4 Nominal style
 
 The same study finds nominalisations at 1.5–2× the human rate. German makes this easy to do by
@@ -258,7 +279,13 @@ product uses and repeat it. Repeating a noun is not a style error; rotating it i
 - **Vary sentence openings.** Three paragraphs starting with `Und` or `Das ist` reads like
   autocomplete.
 - **Do not pivot every paragraph on a colon.** `Behauptung: Erläuterung` is a fine list
-  introducer and an exhausting paragraph rhythm.
+  introducer and an exhausting paragraph rhythm. The pivot that reads generated withholds:
+  `Acht davon sind Überlebende: Piratenfiguren aus der alten Anlage`, `Ganz harmlos ist die
+Saison seit diesem Jahr nicht mehr: …`, `2027 geht es früher los: …`. The clause before the
+  colon is a trailer for the sentence after it. Say the sentence: `Acht Piratenfiguren aus der
+alten Anlage von 1987 sind restauriert worden und sitzen heute in einem Rettungsboot.` Measured
+  on 2026-09-30: 11 such pivots per 100 sentences across the German posts, 16 to 21 in the three
+  busiest. `pnpm check:prose` warns above 15.
 - **Do not stack transitions.** `Darüber hinaus`, `Zusätzlich`, `Außerdem`, `Ferner`,
   `Additionally` — one is normal, one per paragraph is mechanical.
 - **Do not build every paragraph from the same parts.** Topic sentence, explanation, example,
@@ -379,6 +406,44 @@ check warns above 2.
 `Typisch heißt: …`, `„Knapp“ bedeutet: …`. One definition is useful. Four on one page are a
 glossary written as prose. Put the meaning into the sentence that uses the word, or link the
 glossary term. The check warns above two per text.
+
+### 2.16 The teaser
+
+A sentence that tells the reader how to feel about the next one: `Dann wurde es kurios.`, `Und
+dann das Wichtigste.`, `Interessanter ist, was rundherum steht.`, `Die Zahlen dazu sind fast schon
+komisch.`, `Here's where it gets interesting.`, `The best part?` It is the self-reference of §1.4
+one level down: not the text announcing its structure, but a paragraph announcing its own payoff.
+A person who has something odd to report reports it, and the reader decides whether it is odd.
+
+Cut the teaser and start with the fact. If the fact is not remarkable without the announcement,
+the announcement was covering for it. `pnpm check:prose` flags the common forms in German and
+English; the quieter ones (`Die Schienen waren das Problem.`, `Das Voletarium fällt aus der
+Reihe.`) are fine when the next sentence explains them at once and a tell when every paragraph
+opens that way. On 2026-09-30, 27 % of the German paragraphs of three or more sentences opened on
+a sentence of eight words or fewer.
+
+### 2.17 The wink
+
+The aphoristic closer of §2.8 has a sibling that does not sound like a maxim, and so gets past
+the test for one: the **wry last line** of a paragraph. `Wer Holzachterbahnen mag, merkt das ab
+dem ersten Drop, und sein Rücken spätestens in der ersten Kurve.` `Ein Möbelhaus mit Probesitzen,
+nur eben für Achterbahnen.` `(Irgendwer muss die Churros ja frittieren.)` Each is fine alone. The
+tell is the rate: in the German posts on 2026-09-30, 23 % of all paragraphs of three or more
+sentences ended on a short sentence after a long one, and in the three busiest posts a third of
+them did. A text that winks at the end of every paragraph is performing a personality.
+
+Three shapes carry most of it and are worth grepping for:
+
+| Shape                     | Looks like                                                                                                           |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **The appended verdict**  | `…, und genau das ist die Aussage.` · `…, und das ist vermutlich Absicht.` · `…, and that's the point.`              |
+| **No X, no Y, just Z**    | `Kein Bildschirm, kein Projektor, seit 1952 einfach Mechanik.` · `No animatronics, no soundtrack, just …`            |
+| **The verbless fragment** | `Elf Papierkörbe mit Sprachausgabe.` · `Zweiter Zugwechsel in sechzehn Jahren, für eine Bahn, die 43 Jahre alt ist.` |
+
+Budget: one wink per section, and never two paragraphs in a row. Keep the one that is funniest or
+that carries a fact the paragraph did not; turn the rest into the fact they were decorating, or
+stop the paragraph a sentence earlier. `pnpm check:prose` flags the first two shapes; the third
+and the rate are for the review pass (§7.2).
 
 ---
 
@@ -593,11 +658,11 @@ Roughly 1,850 keys per locale, on every page, read a hundred times more often th
 validate:translations` keeps the six catalogs in sync, but it says nothing about whether the
   German sentence is any good.
 
-**The FAQ answers are the worst of it, and they are the most public prose we have.** The
-park-level ones are exemplary — `seo.faq.waitTimesA` is four placeholders and a pointer, and
-`seo.homepage.faq.liveDataA` names its three sources and says how the numbers are reconciled.
-The rest of `seo.homepage.faq` is the register this document exists to keep out, and it ships as
-`FAQPage` JSON-LD and as the visible FAQ band on the homepage in six languages:
+**The FAQ answers were the worst of it, and they are the most public prose we have.** They ship
+as `FAQPage` JSON-LD and as the visible FAQ band on the homepage in six languages. The park-level
+ones were exemplary from the start (`seo.faq.waitTimesA` is four placeholders and a pointer). The
+homepage set read like this until it was rewritten, and the table stays as the record of what
+the register looks like:
 
 | Shipped                                                                       | What is wrong                                                               |
 | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -607,8 +672,10 @@ The rest of `seo.homepage.faq` is the register this document exists to keep out,
 | `deine zentrale Plattform für …`                                              | Positioning, not an answer                                                  |
 | `… und viele mehr`                                                            | Vague expansion; give the count and link the list                           |
 
-Rewrite them the way the park-level ones are written: the number, the source, the link. This is
-open work, not something the check can do.
+They now answer the way the park-level ones do: the number, the source, the link
+(`liveDataA` names its three sources and says how disagreeing numbers are reconciled). One
+leftover to watch: five of the seven answers open on `Ja.`, which is right for a yes/no question
+and a tell the day a sixth one is added the same way.
 
 ### 5.2 `alt` and `caption` (media sidecars)
 
@@ -625,6 +692,17 @@ Two different jobs, and the second is not a longer version of the first. Full fo
   entry (subject, participle clause, `dahinter …`), an exhaustive inventory of everything in
   frame, decorative adjectives (`bathed in`, `against a summer sky`, `nestled`), and six captions
   in a row opening with the ride's name. Vary the shape between neighbours deliberately.
+- **One joke is a caption; a series of jokes is a template.** The seven performer photos of the
+  Halloween guide carried seven punchlines with the same beat: `Der Einzige mit Rhythmusgefühl an
+dem Abend. Und der ist tot.`, `Clown plus Kettensäge: was soll da schon schiefgehen?`, `Der
+steht da schon eine Weile. Und ja: er wartet auf dich.` The nine set photos did the same
+  (`„Us vs You“. Kleiner Spoiler: du bist in der Unterzahl.`). Keep the best one or two per
+  series and let the rest say where the photo was taken, what the figure is, or nothing. `pnpm
+check:prose` counts quips per collection directory (a colon into a lowercase fragment, a short
+  second sentence, a one-word label sentence first, a question, a `nicht X, sondern Y`) and warns
+  when more than 40 % of a series of five or more are quips.
+- A queue series is not an essay: `man wartet nicht auf eine Bahn, man besichtigt ein Gehege`
+  and `die das Warten in Story verwandeln, nicht in totes Stehen` are §2.1 in a caption.
 - Six locales are six sentences, not one sentence translated five times.
 
 ### 5.3 Meta titles, descriptions and template copy
@@ -699,6 +777,47 @@ block says one thing in each line:
 The card line goes, or carries a figure the heading does not (how many rides at that park have a
 height limit).
 
+### 5.7 The glossary (`content/glossary/*.ts`)
+
+274 terms in six languages, 1,600 URLs in the sitemap, and every `glossary-widget` fence in a post
+prints a definition verbatim. On 2026-09-30 it was the one surface where the whole of §1 and §2
+could be found in a single paragraph:
+
+> Suspended Coasters sind seltener als Inverted Coasters, bieten aber ein einzigartiges Erlebnis.
+> Die Schwingbewegung lässt selbst moderate Kurven dramatisch wirken, und das Gefühl des Fliegens
+> erzeugt eine spannende Exposition. […] manche Enthusiasten lieben sie für ihre rohe,
+> unvorhersagbare Natur, während andere sie weniger mögen.
+
+Measured against the posts in the same language, per 1,000 words:
+
+| Pattern                                                   | English glossary | English posts |
+| --------------------------------------------------------- | ---------------- | ------------- |
+| participial tail (`, making`, `, creating`, …)            | 1.0              | 0.01          |
+| `sensation`, `visceral`, `exhilarating`                   | 1.5              | 0             |
+| `signature`, `hallmark`, `centerpiece`, `showpiece`       | 0.7              | 0.02          |
+| `dramatic`, `spectacular`, `intense`, `intensity`         | 1.4              | 0.02          |
+| `enthusiast(s)`, mostly as the owner of an opinion (§1.2) | 1.4              | 0.06          |
+
+The German file, translated from the English one, carries the same shapes plus translation debris
+(`dank ihrer starken Schaukästen` for _showpiece_, `Whip-Sensation`, `navigiert durch Kurven`).
+
+A definition is reference text, so it gets a stricter version of the rules, not a looser one:
+
+- **What it is, how it works, one example with a place and a year.** `Ein Top Hat steigt senkrecht
+auf und fällt auf der anderen Seite senkrecht ab. Red Force in Ferrari Land (2017) hat einen.` That is the whole job.
+- **No feeling the reader has not had.** `einzigartiges Erlebnis`, `spannende Exposition`,
+  `ein unverwechselbares Gefühl` describe nothing; the physics does (`der Zug hängt am Scheitel
+zwei Sekunden kopfüber`, `negative G-Kräfte heben dich aus dem Sitz`).
+- **No tail** (§2.3), **no crowd opinion** (§1.2), **no significance** (`einer der markantesten
+Achterbahntypen des letzten Jahrzehnts`, `das dramatische Herzstück`).
+- **Write each locale from the facts, not from the English sentence** (§6). A German definition
+  that reads `Hersteller … werden für ihre robuste Technik und ihren extremen Nervenkitzel
+geschätzt` has kept the English skeleton and lost the German reader.
+- A changed definition changes `GLOSSARY_CONTENT_HASH` and `GLOSSARY_CONTENT_DATE`
+  (`lib/glossary/content-date.ts`); `pnpm check:glossary-content-date` prints the new hash.
+
+`pnpm check:prose` scans the glossary per term and reports each rule with the term ids.
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -725,6 +844,15 @@ English needs its own pass rather than a translation: the English tell list (§3
 better documented than the German one, and a German sentence rendered literally into English
 often lands squarely on it (`stellt dar` → `serves as`). Contractions are normal English
 (`don't`, `it's`); a post that writes `do not` and `it is` throughout reads translated.
+
+Measured on 2026-09-30, that was most of them: 16 of the 22 English posts carried two
+contractions or fewer, `efteling-disney-of-the-netherlands.md` none against 78 full forms, and
+the English guide page none against 65. The three that read naturally (`phantasialand`,
+`the-art-of-waiting`, `halloween-theme-parks`) sit between 60 and 85 % contracted. A full form
+stays where it carries stress (`it **is** open on Mondays`) or in the legal pages; everywhere
+else, contract. `pnpm check:prose` warns when fewer than a quarter of the forms in an English
+text of 500 words or more are contracted. It does not check the glossary, where a reference
+register is fine.
 
 ---
 

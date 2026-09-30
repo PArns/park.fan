@@ -133,10 +133,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   nl: {
     title: 'Beste tijd om pretparken te bezoeken',
     intro:
-      'Wanneer zijn pretparken het rustigst? De rustigste weekdagen en maanden — uit echte wachttijddata van 200+ parken — plus tips voor korte rijen en de kalender die de beste dag voor jouw park laat zien.',
+      'Wanneer zijn pretparken het rustigst? De rustigste weekdagen en maanden volgens de wachttijden van meer dan 200 parken, tips voor korte rijen en de kalender met de beste dag voor jouw park.',
     kicker: 'park.fan · reisplanner',
     tagline:
-      'Drukte is geen toeval. Uit echte wachttijddata van 200+ parken laten we de rustigste dagen zien — en hoe je de drukke ontwijkt.',
+      'De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen.',
     scrollLabel: 'Scroll',
     heroAlt: 'Pretparklandschap in het avondlicht',
     stats: [
