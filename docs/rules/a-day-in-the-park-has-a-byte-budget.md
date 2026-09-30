@@ -84,6 +84,11 @@ written up as a ticket body on PAR-421, to be filed in the project "Im Park".
 2. **Day-stable fields in every live poll — 1.36 KB of 4.56 KB brotli, 30 %.** Each attraction in
    `LiveParkSnapshot` carries `name`, `slug`, `land`, `backgroundImage`, `backgroundPosition` and
    `park`, none of which can change between two polls. Over a day that is about 147 KB.
+   PAR-517 counted the readers: `park` (`{ slug }`, the lookup key of `enrichAttractionsWithImages`)
+   has none and no longer leaves the proxy, 1,280 B raw and 27 B brotli on Phantasialand's 40 rides.
+   The other five stay. `backgroundImage` and `backgroundPosition` are missing from the server
+   render on purpose, and `name`, `slug` and `land` are what lets a ride that appeared since the
+   render draw at all. Dropping them costs that ride until the next reload.
 3. **The neighbouring parks' status, every 5 minutes — 108 requests, 54 KB a day.**
    `/api/parks/near` feeds the "parks nearby" overlay and polls as long as the tab is open. For
    someone inside a park it is the second most frequent request of the day, and on a phone each

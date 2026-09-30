@@ -118,6 +118,12 @@ while a ride has a live wait, so a shell written before opening has none, and th
 nothing until someone reaches for it, by which time the mount poll has landed. Cost on Epcot's 33
 rides, 2026-09-22: +498 B raw, **+39 B brotli** per poll.
 
+The proxy used to send each ride's `park: { slug }` as well, the key `enrichAttractionsWithImages`
+looks a photo up by. Nothing reads a park that carries only a slug (`attraction-card` wants its
+name, timezone or city), and the merge spreads the snapshot over the server render, so it could
+only replace a fuller `park`. It is stripped after the lookup (PAR-517): Phantasialand, 40 rides,
+41,432 → 40,152 B raw and 4,693 → 4,666 B brotli (quality 4, photo fields stubbed).
+
 ### The day-scoped block: shows and restaurant status
 
 "Does it change within five minutes" was the wrong question for two of those rows, and the site
