@@ -103,8 +103,9 @@ stehen für die ersten beiden Oktoberwochen donnerstags nur der Abend ab 18 Uhr,
 freitags und samstags 11 bis 24 Uhr und sonntags 11 bis 20 Uhr. Montags bis
 mittwochs ist zu.
 
-Ohio liegt sechs Stunden hinter der deutschen Zeit, ab dem 25. Oktober, wenn
-Europa die Uhren zurückstellt, sind es fünf.
+Ohio liegt sechs Stunden hinter der deutschen Zeit. Vom 25. bis 31. Oktober,
+nachdem Europa die Uhren zurückgestellt hat, sind es fünf. Am 1. November, dem
+letzten Tag, stellen auch die USA um, dann sind es wieder sechs.
 
 Die vier Scare Zones laufen donnerstags bis samstags ab 20 Uhr und sonntags gar
 nicht. Neu ist **Crystal Rock Massacre**, ein Sommerlager im Wald mit einem
@@ -140,6 +141,8 @@ Halloween in Movie Park, Europa-Park, Walibi und Toverland steht im
 [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 — Patrick
+
+> [!CORRECTION] 30. September 2026: In der ersten Fassung stand, ab dem 25. Oktober liege Ohio fünf Stunden hinter der deutschen Zeit. Das gilt nur bis zum 31. Oktober. Am 1. November stellen auch die USA die Uhren zurück, dann sind es wieder sechs Stunden.
 
 ---
 

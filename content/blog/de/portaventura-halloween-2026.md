@@ -54,12 +54,11 @@ und einen alten Schlachthof gehst. Der Diari de Tarragona beschreibt den Ton als
 ausdrücklich blutig. Der Park selbst schreibt nur, rund um die Metzgerei rieche
 etwas nicht richtig.
 
-Eine Altersgrenze nennt PortAventura für El Carnicero bisher nicht, weder im
-Halloween-Programm noch auf der Ticketseite. Für den älteren Pasaje Angkor steht
-eine da: ab 12 Jahren in Begleitung eines Erwachsenen, allein ab 14, und Menschen
-mit Herzproblemen, Bluthochdruck oder Epilepsie dürfen dort ebenso wenig hinein
-wie Schwangere. Wer mit einem Kind um die zwölf plant, fragt am Eingang von El Carnicero
-besser nach, bevor er ein Ticket kauft.
+Laut den Bedingungen auf der Ticketseite gilt für El Carnicero dieselbe
+Altersgrenze wie für die anderen vier Pasajes, ab 12 Jahren in Begleitung und
+allein ab 14. Ein Kind unter zwölf kommt also in keinen der fünf hinein. Beim
+älteren Pasaje Angkor dürfen außerdem Menschen mit Herzproblemen, Bluthochdruck
+oder Epilepsie nicht hinein, ebenso wenig Schwangere.
 
 ## Die fünf Pasajes und was sie kosten
 
@@ -123,3 +122,5 @@ und
 [Valencia Extra](https://www.valenciaextra.com/es/ocio/cinco-pasajes-nuevo-carnicero-dragon-khan-renovado-halloween-espera-en-portaventura_599011_102.html).
 
 — Patrick
+
+> [!CORRECTION] 30. September 2026: In der ersten Fassung stand, PortAventura nenne für El Carnicero keine Altersgrenze. Die Bedingungen auf der Ticketseite nennen dieselbe wie für alle anderen Pasajes: ab 12 Jahren in Begleitung, allein ab 14.
