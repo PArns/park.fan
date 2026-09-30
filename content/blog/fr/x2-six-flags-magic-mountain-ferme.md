@@ -64,11 +64,11 @@ visiteurs et ne fait état d’aucun constat technique.
 Le 5 juillet, une femme venue d’Hawaï a fait un tour sur X2. Elle était au parc
 avec sa famille pour fêter les 16 ans de sa fille. Selon son avocat, Gary
 Dordick, sa tête aurait cogné à répétition contre l’appui-tête pendant le tour.
-À l’arrivée en gare, selon sa plainte, elle est restée assise sur son siège, le
-regard vide, puis a perdu connaissance peu après. À l’hôpital, les médecins ont
-diagnostiqué un hématome sous-dural aigu, c’est-à-dire un saignement entre le
-cerveau et la dure-mère, et l’ont opérée en urgence. D’après la plainte, elle
-n’a repris connaissance qu’au bout de deux semaines.
+À l’arrivée en gare, d’après sa plainte, elle est restée assise sur son siège,
+le regard vide, puis a perdu connaissance peu après. À l’hôpital, les médecins
+ont diagnostiqué un hématome sous-dural aigu, c’est-à-dire un saignement entre
+le cerveau et la dure-mère, et l’ont opérée en urgence. La plainte précise
+qu’elle n’a repris connaissance qu’au bout de deux semaines.
 
 X2 a continué de tourner. Le 11 juillet, six jours plus tard, une femme de 25
 ans originaire de Los Angeles s’est effondrée peu après un tour. Les médecins
@@ -89,10 +89,9 @@ Les trois neurochirurgiens qui les ont soignées mettent en cause l’attraction
 >
 > Trois neurochirurgiens qui ont soigné les deux femmes, cités par [CNN](https://www.cnn.com/2026/08/27/us/six-flags-rollercoaster-brain-injury-invs) et [UPI](https://www.upi.com/Top_News/US/2026/09/29/six-flags-magic-mountain-to-retire-x2-coaster/3561790707127/), traduit de l’anglais
 
-Le parc a fermé X2 le 12 juillet au soir. Cal/OSHA, l’agence californienne de la
-sécurité au travail, qui est aussi chargée de la sécurité des attractions, a
-ouvert une enquête. Celle-ci est toujours en cours, et l’agence ne donne aucun
-détail.
+Le parc a fermé X2 le 12 juillet au soir. Cal/OSHA, l’agence californienne
+chargée de la sécurité au travail, et aussi de celle des attractions, a ouvert
+une enquête. Celle-ci est toujours en cours, et l’agence ne donne aucun détail.
 
 ## Les cas précédents
 
@@ -106,8 +105,8 @@ ne pouvait presque plus marcher, s’est plaint de violents maux de tête et s�
 effondré. Il est mort le lendemain d’une hémorragie cérébrale. Les services
 médico-légaux de Los Angeles ont conclu à un traumatisme contondant à la tête.
 Ses parents ont poursuivi en justice le parc et S&S Worldwide, le fabricant des
-trains. Selon [FOX 11 Los
-Angeles](https://www.foxla.com/news/six-flags-magic-mountain-x2-roller-coaster-death-lawsuit-settlement),
+trains. Selon
+[FOX 11 Los Angeles](https://www.foxla.com/news/six-flags-magic-mountain-x2-roller-coaster-death-lawsuit-settlement),
 les avocats de S&S ont fait valoir dans leurs écritures que les trains avaient
 fonctionné « exactement comme prévu et exactement comme ils avaient été conçus
 et construits ». Le procès devait s’ouvrir le 8 septembre. Le 26 août, les
@@ -127,11 +126,11 @@ hémorragie cérébrale massive ; il a subi deux opérations du crâne et ne pe
 plus exercer son métier d’avocat depuis. Les plaignants évoquent des problèmes
 de conception qui remonteraient au projet d’origine de 2002. L’une des plaintes
 accuse en outre Six Flags d’avoir délibérément empêché que des preuves de
-blessures et de problèmes de sécurité sur X2 soient rendues publiques. Selon
-Dordick, des mouvements saccadés pendant le tour projetteraient la tête contre
-l’appui-tête et provoqueraient ainsi les hémorragies. D’après le cabinet, plus
-de 100 autres personnes se sont manifestées entre-temps pour signaler des
-lésions cérébrales plus ou moins graves après un tour sur X2.
+blessures et de problèmes de sécurité sur X2 soient rendues publiques. Dordick
+affirme que des mouvements saccadés pendant le tour projettent la tête contre
+l’appui-tête et provoquent ainsi les hémorragies. D’après le cabinet, plus de
+100 autres personnes se sont manifestées entre-temps pour signaler des lésions
+cérébrales plus ou moins graves après un tour sur X2.
 
 > [!QUOTE]
 > La fermeture de l’attraction protège les futurs visiteurs, et nous nous en
@@ -231,16 +230,17 @@ La maintenance avait découvert un défaut dans la rotation des sièges. X a
 rouvert le 13 août 2002, et en octobre, S&S Worldwide a racheté ce qui restait
 d’Arrow.
 
-En novembre 2007, Six Flags a annoncé une transformation d’environ dix millions
-de dollars, et X a fermé à la fin de l’année. S&S a transformé les trains, dont
+En novembre 2007, Six Flags a annoncé des travaux d’environ dix millions de
+dollars, et X a fermé à la fin de l’année. S&S a transformé les trains, dont
 chaque wagon a perdu environ 770 kilos, et remplacé les harnais mécaniques par
 des harnais à ouverture pneumatique. S’y ajoutaient de la musique à bord, un
 effet de flammes, de la brume au pied de la première chute et un souffle d’air
 froid dans la dernière rotation. Le 24 mai 2008, l’attraction a rouvert sous le
-nom de X2. Le jour de l’ouverture, Theme Park Insider appelait « le vrai test »
-la question de savoir si les trains allégés suffiraient pour en faire circuler
-plusieurs tout l’été. C’est aussi de là que part le décompte de Six Flags : les
-« près de 20 ans » et les « plus de 16 millions de visiteurs » du
+nom de X2. Après un tour en avant-première le 22 mai, deux jours avant la
+réouverture, Theme Park Insider a présenté comme « le vrai test » la question de
+savoir si les trains allégés suffiraient pour en faire circuler plusieurs tout
+l’été. C’est aussi de là que part le décompte de Six Flags : les « près de 20
+ans » et les « plus de 16 millions de visiteurs » du
 [communiqué](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
 commencent en 2008, et non fin 2001.
 
@@ -269,7 +269,7 @@ trois semaines avant l’annonce de la fin de X2, Magic Mountain a présenté po
 2027 le Thrill Glider, une montagne russe Vekoma sur laquelle vous êtes suspendu
 à plat ventre sous le rail, dans un siège façon moto. Le parc la construira sur
 l’emplacement de l’ancien Golden Bear Theatre, entre Full Throttle et Lex
-Luthor: Drop of Doom, à un autre endroit du parc que X2.
+Luthor: Drop of Doom, et non sur celui de X2.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
@@ -279,22 +279,22 @@ Luthor: Drop of Doom, à un autre endroit du parc que X2.
 
 ### Sources & pour aller plus loin
 
-- Le communiqué du directeur du parc, Brian Oerding, et les 16 millions de visiteurs depuis 2008 : [Retiring X2 (Six Flags, 29 septembre 2026, en anglais)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
-- La femme de 25 ans toujours sous assistance respiratoire, les trois nouvelles plaintes de la semaine précédente, plus de 100 lésions cérébrales signalées, la citation de Gary Dordick : [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29 septembre 2026, en anglais)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)
-- Les trois nouvelles plaintes, Dordick sur l’appui-tête, l’accusation de preuves dissimulées, Six Flags qui ne commente pas les procédures en cours : [New lawsuits allege Six Flags Magic Mountain’s X2 roller coaster caused traumatic brain injuries (AP, 23 septembre 2026, en anglais)](https://www.wsls.com/business/2026/09/23/new-lawsuits-allege-six-flags-magic-mountains-x2-roller-coaster-caused-traumatic-brain-injuries/)
-- Le 5 juillet selon la plainte, deux semaines sans connaissance, Six Flags dans ses écritures antérieures, plus de 100 autres clients du cabinet : [Over 100 people sustained brain injuries on X2 roller coaster (NBC News, en anglais)](https://www.nbcnews.com/news/us-news/100-people-suffered-brain-injuries-x2-rollercoaster-six-flags-lawyers-rcna599482)
-- La plainte du troisième plaignant, les problèmes de conception depuis 2002, les tours des 5 et 11 juillet : [Additional lawsuits filed against Six Flags Magic Mountain (Hometown Station, 24 septembre 2026, en anglais)](https://www.hometownstation.com/santa-clarita-news/crime/court/additional-lawsuits-filed-against-six-flags-magic-mountain-allege-x2-caused-brain-injuries-611095)
-- L’accord dans l’affaire Hawley, déposé au tribunal un mercredi, le procès prévu le 8 septembre : [Settlement reached in X2 death lawsuit (Hometown Station, 28 août 2026, en anglais)](https://www.hometownstation.com/santa-clarita-news/community-news/settlement-reached-in-x2-death-lawsuit-two-new-brain-injuries-under-investigation-607618) · [Six Flags Magic Mountain reaches settlement in fatal X2 roller coaster lawsuit (FOX 11 Los Angeles, 27 août 2026, en anglais)](https://www.foxla.com/news/six-flags-magic-mountain-x2-roller-coaster-death-lawsuit-settlement)
-- La fermeture le 12 juillet au soir : [Six Flags Magic Mountain retires X2 roller coaster amid lawsuits (Spectrum News 1, en anglais)](https://spectrumnews1.com/ca/la/entertainment/2026/09/29/six-flags-magic-mountain-x2-roller-coaster)
-- L’enquête de CNN du 27 août, la citation des neurochirurgiens : [Six Flags rollercoaster lands two women in hospital (CNN, en anglais)](https://www.cnn.com/2026/08/27/us/six-flags-rollercoaster-brain-injury-invs) · [Résumé chez UPI (en anglais)](https://www.upi.com/Top_News/US/2026/09/29/six-flags-magic-mountain-to-retire-x2-coaster/3561790707127/)
-- Le décès de 2010, Cal/OSHA qui ne donne pas de détails : [Six Flags Magic Mountain permanently closing X2 roller coaster (WLOX, en anglais)](https://www.wlox.com/2026/09/29/six-flags-permanently-closes-x2-roller-coaster-accused-causing-more-than-100-brain-injuries-2-deaths/)
-- Les symptômes de Hawley après le tour, le décès de 2010 d’après les documents judiciaires : [X2 was Magic Mountain’s craziest roller coaster (News Tribune, en anglais)](https://www.newstribune.com/news/2026/sep/25/x2-was-magic-mountains-craziest-roller-coaster/)
-- L’idée de Schilke, le prototype pour Gary Story, l’annonce du 19 décembre 2000, le coût, le parcours, la fermeture de l’été 2002, la transformation de 2007/08, le Golden Ticket 2009 : [X2 (roller coaster) sur en.wikipedia (en anglais)](<https://en.wikipedia.org/wiki/X2_(roller_coaster)>)
-- Les trains, le débit, l’ouverture aux détenteurs de pass annuel le 24 décembre 2001 : [X2 dans la Roller Coaster DataBase (en anglais)](https://rcdb.com/750.htm)
-- Les débuts difficiles de 2002, les créances de Six Flags, l’offre de rachat des plans, la citation de Robert Niles : [X's Failure Threatens Many in Theme Park Industry (Theme Park Insider, 12 juin 2002, en anglais)](https://www.themeparkinsider.com/news/response.cfm?ID=533)
-- La réouverture sous le nom de X2, avec flammes, brume et air froid : [X2 launches at Six Flags Magic Mountain (Theme Park Insider, 22 mai 2008, en anglais)](https://www.themeparkinsider.com/flume/200805/767/) · [Six Flags Magic Mountain pulls the plug on X2 (Attractions Magazine, en anglais)](https://attractionsmagazine.com/six-flags-magic-mountain-x2-permanently-closing/)
-- Les Matterhorn Bobsleds, le Corkscrew, la faillite d’Arrow, la vente à S&S en octobre 2002 : [Arrow Dynamics sur en.wikipedia (en anglais)](https://en.wikipedia.org/wiki/Arrow_Dynamics)
-- Schilke chez Arrow et S&S, Ride Centerline, I-Box : [Alan Schilke sur en.wikipedia (en anglais)](https://en.wikipedia.org/wiki/Alan_Schilke)
-- La 41e place ex aequo aux Golden Ticket Awards 2025 : [2025 GTA Winners (Amusement Today, en anglais)](https://goldenticketawards.com/2025-gta-winners/)
-- La rotation commandée par des rails supplémentaires, Eejanaika : [Fourth-dimension roller coaster sur en.wikipedia (en anglais)](https://en.wikipedia.org/wiki/Fourth-dimension_roller_coaster) · Dinoconda : [RCDB (en anglais)](https://rcdb.com/9040.htm) · [Dinoconda sur en.wikipedia (en anglais)](https://en.wikipedia.org/wiki/Dinoconda)
-- Le Thrill Glider pour 2027 : [Six Flags Magic Mountain announces Thrill Glider (FOX 11 Los Angeles, en anglais)](https://www.foxla.com/news/six-flags-magic-mountain-thrill-glider-announcement-2027)
+- Le communiqué du directeur du parc, Brian Oerding, et les 16 millions de visiteurs depuis 2008 : [Retiring X2 (Six Flags, 29 septembre 2026)](https://www.sixflags.com/blog/retiring-x2-magic-mountain)
+- La femme de 25 ans toujours sous assistance respiratoire, les trois nouvelles plaintes de la semaine précédente, plus de 100 lésions cérébrales signalées, la citation de Gary Dordick : [Six Flags Magic Mountain retires X2 roller coaster amid brain injury lawsuits (AP, 29 septembre 2026)](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/)
+- Les trois nouvelles plaintes, Dordick sur l’appui-tête, l’accusation de preuves dissimulées, Six Flags qui ne commente pas les procédures en cours : [New lawsuits allege Six Flags Magic Mountain’s X2 roller coaster caused traumatic brain injuries (AP, 23 septembre 2026)](https://www.wsls.com/business/2026/09/23/new-lawsuits-allege-six-flags-magic-mountains-x2-roller-coaster-caused-traumatic-brain-injuries/)
+- Le 5 juillet selon la plainte, deux semaines sans connaissance, Six Flags dans ses écritures antérieures, plus de 100 autres clients du cabinet : [Over 100 people sustained brain injuries on X2 roller coaster (NBC News)](https://www.nbcnews.com/news/us-news/100-people-suffered-brain-injuries-x2-rollercoaster-six-flags-lawyers-rcna599482)
+- La plainte du troisième plaignant, les problèmes de conception depuis 2002, les tours des 5 et 11 juillet : [Additional lawsuits filed against Six Flags Magic Mountain (Hometown Station, 24 septembre 2026)](https://www.hometownstation.com/santa-clarita-news/crime/court/additional-lawsuits-filed-against-six-flags-magic-mountain-allege-x2-caused-brain-injuries-611095)
+- L’accord dans l’affaire Hawley, déposé au tribunal un mercredi, le procès prévu le 8 septembre : [Settlement reached in X2 death lawsuit (Hometown Station, 28 août 2026)](https://www.hometownstation.com/santa-clarita-news/community-news/settlement-reached-in-x2-death-lawsuit-two-new-brain-injuries-under-investigation-607618) · [Six Flags Magic Mountain reaches settlement in fatal X2 roller coaster lawsuit (FOX 11 Los Angeles, 27 août 2026)](https://www.foxla.com/news/six-flags-magic-mountain-x2-roller-coaster-death-lawsuit-settlement)
+- La fermeture le 12 juillet au soir : [Six Flags Magic Mountain retires X2 roller coaster amid lawsuits (Spectrum News 1)](https://spectrumnews1.com/ca/la/entertainment/2026/09/29/six-flags-magic-mountain-x2-roller-coaster)
+- L’enquête de CNN du 27 août, la citation des neurochirurgiens : [Six Flags rollercoaster lands two women in hospital (CNN)](https://www.cnn.com/2026/08/27/us/six-flags-rollercoaster-brain-injury-invs) · [Résumé chez UPI](https://www.upi.com/Top_News/US/2026/09/29/six-flags-magic-mountain-to-retire-x2-coaster/3561790707127/)
+- Le décès de 2010, Cal/OSHA qui ne donne pas de détails : [Six Flags Magic Mountain permanently closing X2 roller coaster (WLOX)](https://www.wlox.com/2026/09/29/six-flags-permanently-closes-x2-roller-coaster-accused-causing-more-than-100-brain-injuries-2-deaths/)
+- Les symptômes de Hawley après le tour, le décès de 2010 d’après les documents judiciaires : [X2 was Magic Mountain’s craziest roller coaster (News Tribune)](https://www.newstribune.com/news/2026/sep/25/x2-was-magic-mountains-craziest-roller-coaster/)
+- L’idée de Schilke, le prototype pour Gary Story, l’annonce du 19 décembre 2000, le coût, le parcours, la fermeture de l’été 2002, la transformation de 2007/08, le Golden Ticket 2009 : [X2 (roller coaster) sur en.wikipedia](<https://en.wikipedia.org/wiki/X2_(roller_coaster)>)
+- Les trains, le débit, l’ouverture aux détenteurs de pass annuel le 24 décembre 2001 : [X2 dans la Roller Coaster DataBase](https://rcdb.com/750.htm)
+- Les débuts difficiles de 2002, les créances de Six Flags, l’offre de rachat des plans, la citation de Robert Niles : [X's Failure Threatens Many in Theme Park Industry (Theme Park Insider, 12 juin 2002)](https://www.themeparkinsider.com/news/response.cfm?ID=533)
+- La réouverture sous le nom de X2, avec flammes, brume et air froid : [X2 launches at Six Flags Magic Mountain (Theme Park Insider, 22 mai 2008)](https://www.themeparkinsider.com/flume/200805/767/) · [Six Flags Magic Mountain pulls the plug on X2 (Attractions Magazine)](https://attractionsmagazine.com/six-flags-magic-mountain-x2-permanently-closing/)
+- Les Matterhorn Bobsleds, le Corkscrew, la faillite d’Arrow, la vente à S&S en octobre 2002 : [Arrow Dynamics sur en.wikipedia](https://en.wikipedia.org/wiki/Arrow_Dynamics)
+- Schilke chez Arrow et S&S, Ride Centerline, I-Box : [Alan Schilke sur en.wikipedia](https://en.wikipedia.org/wiki/Alan_Schilke)
+- La 41e place ex aequo aux Golden Ticket Awards 2025 : [2025 GTA Winners (Amusement Today)](https://goldenticketawards.com/2025-gta-winners/)
+- La rotation commandée par des rails supplémentaires, Eejanaika : [Fourth-dimension roller coaster sur en.wikipedia](https://en.wikipedia.org/wiki/Fourth-dimension_roller_coaster) · Dinoconda : [RCDB](https://rcdb.com/9040.htm) · [Dinoconda sur en.wikipedia](https://en.wikipedia.org/wiki/Dinoconda)
+- Le Thrill Glider pour 2027 : [Six Flags Magic Mountain announces Thrill Glider (FOX 11 Los Angeles)](https://www.foxla.com/news/six-flags-magic-mountain-thrill-glider-announcement-2027)
