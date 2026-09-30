@@ -23,9 +23,9 @@ rideLinks:
 seo:
   title: 'Six Flags schließt X2 nach Klagen wegen Hirnverletzungen'
   description: >-
-    Six Flags Magic Mountain legt X2 dauerhaft still. Die Bahn steht seit dem
-    12. Juli 2026, seitdem kamen ein CNN-Bericht und neue Klagen wegen
-    Hirnverletzungen.
+    Six Flags Magic Mountain legt X2 dauerhaft still, nach Klagen wegen
+    Hirnverletzungen. Dazu die Geschichte der ersten 4th-Dimension-Achterbahn
+    seit 2002.
   keywords:
     - X2 Six Flags Magic Mountain
     - X2 geschlossen
@@ -33,6 +33,8 @@ seo:
     - X2 Klage Six Flags
     - 4th Dimension Coaster
     - Cal/OSHA X2
+    - X2 Geschichte
+    - Arrow Dynamics X
 ---
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain) nördlich von Los
@@ -143,38 +145,99 @@ Ob die Bahn die Verletzungen verursacht hat, ist mit der Schließung nicht
 entschieden. Cal/OSHA hat noch kein Ergebnis vorgelegt, und die neuen Klagen
 sind nicht verhandelt.
 
-## Wie X2 funktioniert
+## Wie X2 fuhr
 
-Die Sitze hängen links und rechts neben der Schiene an Auslegern, die Füße in
-der Luft. Jeder Sitz dreht sich um 360 Grad vor- und rückwärts, aber nicht frei:
-Zwei zusätzliche Schienen steuern die Drehung über Zahnstange und Zahnrad, so
-kippt jeder Sitz immer an derselben Stelle der Strecke. Den Lifthill ging es
-rückwärts hinauf. Oben drehte sich der Sitz nach vorn, und du bist mit dem
-Gesicht voran in den ersten Abhang gestürzt, 66 Meter tief bei 88,5 Grad.
+Die Sitze hingen links und rechts neben der Schiene an Auslegern, je zwei
+nebeneinander, die Füße in der Luft. Ein Zug hatte sieben solcher Wagen für 28
+Fahrgäste, auf der Strecke waren bis zu drei Züge unterwegs, ausgelegt war die
+Bahn auf 1.600 Fahrgäste pro Stunde. Jeder Sitz drehte sich um 360 Grad vor-
+und rückwärts, aber nicht frei: Zwei zusätzliche Schienen steuerten die Drehung
+über Zahnstange und Zahnrad, so kippte jeder Sitz immer an derselben Stelle der
+Strecke.
+
+Hinter dem Bahnhof schwenkte der Zug über die Warteschlange und fuhr den
+53 Meter hohen Lifthill rückwärts hinauf. Oben kippte der Sitz nach vorn, und es
+ging mit dem Gesicht voran in den ersten Abhang, 66 Meter tief bei 88,5 Grad.
 Danach kamen zwei Raven Turns, halbe Loopings, die mitten in der Figur in einen
-senkrechten Fall übergehen. Die Bahn ist 53 Meter hoch und 1.100 Meter lang,
-die Züge erreichten 122 km/h.
+senkrechten Fall übergehen, und dazwischen ein Hügel, auf dem sich jeder Sitz
+einmal rückwärts überschlug. Die Züge erreichten 122 km/h, die Strecke ist
+1.100 Meter lang.
 
-Entworfen hat das Prinzip Alan Schilke für Arrow Dynamics, und X, wie die Bahn
-anfangs hieß, war die erste Achterbahn dieser Art. Arrow hatte sich bei den
-Kosten verschätzt und meldete Anfang Dezember 2001 Insolvenz an. Drei Wochen
-später, am Heiligabend, fuhr X die ersten Gäste. Offiziell eröffnet wurde sie
-am 12. Januar 2002, etwa ein halbes Jahr später als geplant. Im ersten Jahr
-stand sie wegen technischer Probleme lange still. Was von Arrow übrig war,
-kaufte im Oktober 2002 S&S Worldwide.
+## Die Geschichte von X2
 
-2007 ging X für einen Umbau vom Netz, der rund zehn Millionen Dollar kostete.
-S&S baute die Züge um, jeder Wagen wog danach etwa 770 Kilogramm weniger. Dazu
-kamen Bügel, die mit Druckluft öffnen, Musik an Bord und ein Tunnel mit
-Lichteffekten. Am 24. Mai 2008 fuhr die Bahn wieder, jetzt als X2. Ab da zählt
-auch Six Flags: Die „fast 20 Jahre“ und „mehr als 16 Millionen Gäste“ aus der
+Die Idee hatte Alan Schilke schon als Kind: eine Achterbahn, die ihre Fahrgäste
+überschlägt wie der Zipper von der Kirmes, dessen Gondeln sich frei um die
+eigene Achse drehen. Bei Arrow Dynamics, wo er es bis zum Chefingenieur brachte,
+machte er daraus die Animation eines Wagens, der einen Rückwärtssalto schlägt.
+Kollegen hielten das für zu extrem und nicht baubar, die Animation lag nach
+Schilkes Worten noch drei Jahre in seinem Schreibtisch. Ein Projekt wurde erst
+daraus, als der damalige Six-Flags-Präsident Gary Story einen verkleinerten
+Prototyp bestellte.
+
+Arrow war damals kein Neuling. Die 1946 in Kalifornien gegründete Firma hatte
+1959 mit den Matterhorn Bobsleds in Disneyland die erste Achterbahn mit
+Schienen aus Stahlrohr gebaut und 1975 mit dem Corkscrew in Knott's Berry Farm
+die erste moderne Achterbahn mit Überschlag. 1984 war Arrow schon einmal
+insolvent gewesen und hatte sich danach neu aufgestellt.
+
+Angekündigt wurde X am 19. Dezember 2000, zusammen mit Déjà Vu und Goliath Jr.
+als eine von drei neuen Achterbahnen für 2001. Mit ihnen wollte Magic Mountain
+Cedar Point in Ohio als Park mit den meisten Achterbahnen in den USA ablösen. X
+sollte im Sommer 2001 eröffnen, blieb aber bis in den Winter eine Baustelle. Am 3. Dezember 2001 meldete Arrow Insolvenz an. Laut Firmenchef Fred Bolingbroke
+hatte sich Arrow bei den Kosten von X verschätzt und Millionen verloren. Noch
+waren nicht alle Stahlteile gefertigt, den Rest musste Six Flags selbst
+fertigstellen. Laut Theme Park Insider meldete Six Flags im Insolvenzverfahren
+Forderungen von mehr als 5,8 Millionen Dollar gegen Arrow an, wegen der
+Verzögerungen und Probleme mit X.
+
+Ab dem 24. Dezember 2001 durften Jahreskarteninhaber an einzelnen Tagen
+vorab fahren, offiziell eröffnete X am 12. Januar 2002. Am Ende hatte die Bahn
+45 Millionen Dollar gekostet. Was danach kam, beschrieb Theme Park Insider im
+Juni 2002: Die ersten Kritiken waren begeistert, doch nach wenigen Tagen
+öffnete X verspätet oder gar nicht. Wenn sie lief, schickte der Park oft nur
+einen Zug auf die Strecke, und die Schlange wuchs auf vier bis fünf Stunden. Im
+Mai bot Six Flags an, Arrow die Baupläne für X und alle anderen Bahnen dieses
+Typs abzukaufen, für 10.000 Dollar in bar und den Verzicht auf die eigenen
+Forderungen. Anfang Juni nahm der Park X vom Netz. Ein Parksprecher nannte
+Probleme mit der Konstruktion und wollte nicht sagen, wann die Bahn wieder
+fährt.
+
+> [!QUOTE]
+> X sollte für seinen traditionsreichen Hersteller Arrow Dynamics die Rückkehr
+> zu altem Glanz bedeuten. Heute, ein Jahr nachdem die Achterbahn in Six Flags
+> Magic Mountain hätte eröffnen sollen, steht X für etwas anderes: einen
+> kolossalen Fehlschlag, der mindestens einen Hersteller von Fahrgeschäften mit
+> sich zu reißen droht, wenn nicht mehr.
+>
+> Robert Niles, [Theme Park Insider, 12. Juni 2002](https://www.themeparkinsider.com/news/response.cfm?ID=533), aus dem Englischen übersetzt
+
+Die Wartung hatte einen Fehler an der Sitzdrehung gefunden. Am 13. August 2002
+fuhr X wieder, im Oktober kaufte S&S Worldwide, was von Arrow übrig war.
+
+Im November 2007 kündigte Six Flags einen Umbau für rund zehn Millionen Dollar
+an, zum Jahresende ging X vom Netz. S&S baute die Züge um, jeder Wagen wog
+danach etwa 770 Kilogramm weniger, und die mechanischen Bügel wichen Bügeln,
+die mit Druckluft öffnen. Dazu kamen Musik an Bord, ein Feuereffekt, Nebel am
+Fuß des ersten Abhangs und ein Stoß kalter Luft in der letzten Drehung. Am 24. Mai 2008 fuhr die Bahn wieder, jetzt als X2. Ob die leichteren Züge
+reichen, damit den ganzen Sommer über mehrere Züge fahren können, nannte
+Theme Park Insider am Eröffnungstag „den eigentlichen Test“. Ab da zählt auch
+Six Flags: Die „fast 20 Jahre“ und „mehr als 16 Millionen Gäste“ aus der
 [Mitteilung](https://www.sixflags.com/blog/retiring-x2-magic-mountain) beginnen
 2008, nicht Ende 2001.
+
+Bei den Golden Ticket Awards der Fachzeitschrift Amusement Today stand X2 2009
+auf Platz 13 der besten Stahlachterbahnen, 2025 auf einem geteilten 41. Platz.
+
+Schilke ging nach der Pleite zu S&S und entwarf dort Eejanaika, die zweite Bahn
+dieser Art. 2006 gründete er mit Ned Hansen das Ingenieurbüro Ride Centerline,
+ab 2009 arbeitete er mit Rocky Mountain Construction und entwickelte mit
+Firmengründer Fred Grubb die I-Box-Schiene, die 2011 beim New Texas Giant in
+Six Flags Over Texas Premiere hatte.
 
 Weltweit gibt es jetzt noch zwei Achterbahnen mit diesem Sitzsystem:
 [Eejanaika](ref:fuji-q-highland/eejanaika-4th-dimension-hypercoaster?bare) im
 Fuji-Q Highland in Japan, 2006 von S&S gebaut, und Dinoconda im China Dinosaurs
-Park in Changzhou, seit 2012.
+Park in Changzhou, seit 2012, entworfen von Schilke und S&S.
 
 ## Was aus der Bahn wird
 
@@ -204,8 +267,13 @@ Park als X2.
 - Schließung am Abend des 12. Juli: [Six Flags Magic Mountain retires X2 roller coaster amid lawsuits (Spectrum News 1)](https://spectrumnews1.com/ca/la/entertainment/2026/09/29/six-flags-magic-mountain-x2-roller-coaster)
 - Die Recherche von CNN vom 27. August, Zitat der Neurochirurgen: [Six Flags rollercoaster lands two women in hospital (CNN)](https://www.cnn.com/2026/08/27/us/six-flags-rollercoaster-brain-injury-invs) · [Zusammenfassung bei UPI](https://www.upi.com/Top_News/US/2026/09/29/six-flags-magic-mountain-to-retire-x2-coaster/3561790707127/)
 - Der Todesfall 2010, Cal/OSHA nennt keine Details: [Six Flags Magic Mountain permanently closing X2 roller coaster (WLOX)](https://www.wlox.com/2026/09/29/six-flags-permanently-closes-x2-roller-coaster-accused-causing-more-than-100-brain-injuries-2-deaths/)
-- Verspätete Eröffnung 2002, Hawleys Beschwerden nach der Fahrt, der Todesfall 2010 laut Gerichtsakten: [X2 was Magic Mountain’s craziest roller coaster (News Tribune)](https://www.newstribune.com/news/2026/sep/25/x2-was-magic-mountains-craziest-roller-coaster/)
-- Technische Daten, Eröffnung, Umbau 2007/08: [X2 (roller coaster) auf en.wikipedia](<https://en.wikipedia.org/wiki/X2_(roller_coaster)>)
-- Insolvenz von Arrow, Verkauf an S&S im Oktober 2002: [Arrow Dynamics auf en.wikipedia](https://en.wikipedia.org/wiki/Arrow_Dynamics)
-- Die Drehung über zusätzliche Schienen, Eejanaika: [Fourth-dimension roller coaster auf en.wikipedia](https://en.wikipedia.org/wiki/Fourth-dimension_roller_coaster) · Dinoconda: [RCDB](https://rcdb.com/9040.htm)
+- Hawleys Beschwerden nach der Fahrt, der Todesfall 2010 laut Gerichtsakten: [X2 was Magic Mountain’s craziest roller coaster (News Tribune)](https://www.newstribune.com/news/2026/sep/25/x2-was-magic-mountains-craziest-roller-coaster/)
+- Schilkes Idee, der Prototyp für Gary Story, Ankündigung am 19. Dezember 2000, Kosten, Streckenablauf, Schließung im Sommer 2002, Umbau 2007/08, Golden Ticket 2009: [X2 (roller coaster) auf en.wikipedia](<https://en.wikipedia.org/wiki/X2_(roller_coaster)>)
+- Züge, Kapazität, Eröffnung für Jahreskarteninhaber am 24. Dezember 2001: [X2 in der Roller Coaster DataBase](https://rcdb.com/750.htm)
+- Die Anlaufprobleme 2002, Forderungen von Six Flags, das Angebot für die Baupläne, Zitat Robert Niles: [X's Failure Threatens Many in Theme Park Industry (Theme Park Insider, 12. Juni 2002)](https://www.themeparkinsider.com/news/response.cfm?ID=533)
+- Der Neustart als X2 mit Feuer, Nebel und kalter Luft: [X2 launches at Six Flags Magic Mountain (Theme Park Insider, 22. Mai 2008)](https://www.themeparkinsider.com/flume/200805/767/) · [Six Flags Magic Mountain pulls the plug on X2 (Attractions Magazine)](https://attractionsmagazine.com/six-flags-magic-mountain-x2-permanently-closing/)
+- Matterhorn Bobsleds, Corkscrew, Insolvenz von Arrow, Verkauf an S&S im Oktober 2002: [Arrow Dynamics auf en.wikipedia](https://en.wikipedia.org/wiki/Arrow_Dynamics)
+- Schilke bei Arrow und S&S, Ride Centerline, I-Box: [Alan Schilke auf en.wikipedia](https://en.wikipedia.org/wiki/Alan_Schilke)
+- Platz 41 (geteilt) bei den Golden Ticket Awards 2025: [2025 GTA Winners (Amusement Today)](https://goldenticketawards.com/2025-gta-winners/)
+- Die Drehung über zusätzliche Schienen, Eejanaika: [Fourth-dimension roller coaster auf en.wikipedia](https://en.wikipedia.org/wiki/Fourth-dimension_roller_coaster) · Dinoconda: [RCDB](https://rcdb.com/9040.htm) · [Dinoconda auf en.wikipedia](https://en.wikipedia.org/wiki/Dinoconda)
 - Thrill Glider für 2027: [Six Flags Magic Mountain announces Thrill Glider (FOX 11 Los Angeles)](https://www.foxla.com/news/six-flags-magic-mountain-thrill-glider-announcement-2027)
