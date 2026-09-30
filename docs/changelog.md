@@ -4,6 +4,22 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – A ride that closed for good keeps its page, and its park lists it
+
+X2 at Six Flags Magic Mountain was retired on 2026-07-13, and its page answered 404 from then on,
+while our news post about the closure linked to it and its inline reference read „Geschlossen". The
+ride page looked the ride up in the park payload only, which leaves retired rides out. It now asks
+the detail endpoint on that miss (`lib/parks/closed-ride.ts`), and a ride with `retiredKind:
+'closed'` renders `ClosedRidePage`: 200, indexable, a title and description of its own
+(„X2 in Six Flags Magic Mountain – dauerhaft geschlossen", with the date, the weekday peak before
+the closure and the builder), the news post in the reader's language where the retirement names
+one, the typical waits, the ride profile and the posts. A reclassified row (a show or a restaurant
+now) stays a 404. Blog references and their hover card read „Dauerhaft geschlossen"
+(`ParkStatusBadge status="RETIRED"`). The park page lists `closedAttractions` under the ride grid
+(`ClosedRidesList`), and the admin's Stilllegungen list can take a ride off that list without
+touching its page or its sitemap entry. Needs v4.api.park.fan PAR-607 deployed first. Rule:
+[a closed ride keeps its page](rules/a-closed-ride-keeps-its-page.md); `pnpm test:closed-ride`.
+
 ## Unreleased – The "more" menu lists what its three hubs hold, and the phone menu does too
 
 „Mehr" was three cards of one line each, with the dictionary's twelve categories under the middle

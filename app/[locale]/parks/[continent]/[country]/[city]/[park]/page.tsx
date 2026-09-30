@@ -12,6 +12,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
+import { ClosedRidesList } from '@/components/parks/closed-rides-list';
 import { hasParkStatsPage } from '@/lib/api/stats';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
@@ -569,6 +570,15 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               renderedAtMs={seedNowMs}
             />
           }
+        />
+        {/* The rides that closed for good, under the ride list and apart from it — the live
+          grid is the park today. From the full payload: the client snapshot above carries none of
+          it. Renders nothing for a park without one. */}
+        <ClosedRidesList
+          rides={parkFull?.closedAttractions}
+          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          locale={locale}
+          className="mt-8"
         />
         {kidsData && (
           <ParkKidsLink

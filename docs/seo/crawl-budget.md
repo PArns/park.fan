@@ -81,7 +81,9 @@ What the four drilldowns contained:
    row, while the ride page resolves a ride only from the park payload, which drops retired rides
    and deduplicates by name. Measured by fetching every park payload and diffing: 82 listed slugs
    404ed (492 URLs) — 70 retired (fixed in the backend query) and 12 name duplicates (PAR-498), 9
-   of which also kept the working `-2` page out of the sitemap.
+   of which also kept the working `-2` page out of the sitemap. Since PAR-607 a ride retired as
+   closed renders its own page again and is listed; only reclassified rows stay out — see
+   [a closed ride keeps its page](../rules/a-closed-ride-keeps-its-page.md).
 4. **A 404 for an outage.** Pages turned any failed API fetch into `notFound()`, which Cloudflare
    and ISR then cached. See "A negative cache may only hold a settled answer" in
    [caching-strategy](../architecture/caching-strategy.md).
