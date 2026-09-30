@@ -17,6 +17,18 @@
  * after a factual fix, set under the signature as a quiet grey box (see
  * content/blog/README.md, "Callouts, and the correction note"). Guides never
  * carry one. GitHub shows it as a plain quote.
+ *
+ * `[!QUOTE]` is ours too: somebody else's words, with who said them and where.
+ * The last paragraph is the source line and is renamed to `<figcaption>`, so
+ * `BlogQuote` can set it apart from the words themselves:
+ *
+ *     > [!QUOTE]
+ *     > The quoted words.
+ *     >
+ *     > Speaker, role, [where it was said](https://…)
+ *
+ * A `[!QUOTE]` with a single paragraph has no source line and renders without
+ * one. GitHub shows the whole thing as a plain quote, source line included.
  */
 
 export const CALLOUT_TYPES = [
@@ -26,16 +38,17 @@ export const CALLOUT_TYPES = [
   'warning',
   'caution',
   'correction',
+  'quote',
 ] as const;
 export type CalloutType = (typeof CALLOUT_TYPES)[number];
 
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION)\]\s*\n?/;
+const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|QUOTE)\]\s*\n?/;
 
 interface MdNode {
   type: string;
   value?: string;
   children?: MdNode[];
-  data?: { hProperties?: Record<string, string> };
+  data?: { hName?: string; hProperties?: Record<string, string> };
 }
 interface MdRoot {
   children: MdNode[];
@@ -76,6 +89,10 @@ export function remarkCallouts(): (tree: MdRoot) => void {
         ...(node.data.hProperties ?? {}),
         'data-callout': type,
       };
+      const last = node.children?.at(-1);
+      if (type === 'quote' && (node.children?.length ?? 0) >= 2 && last?.type === 'paragraph') {
+        last.data = { ...(last.data ?? {}), hName: 'figcaption' };
+      }
     });
   };
 }

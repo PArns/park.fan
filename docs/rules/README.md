@@ -94,3 +94,4 @@ _A blog post, UI strings, images, captions._
 - [Localized blog gallery captions](localized-blog-gallery-captions.md)
 - [A version is a unit of communication, not a build artifact (REQUIREMENT)](a-version-is-a-unit-of-communication.md)
 - [A news correction is shown, never silent (REQUIREMENT)](a-news-correction-is-shown-never-silent.md)
+- [A quote names its source, and a legal claim names its side (REQUIREMENT)](a-quote-names-its-source.md)

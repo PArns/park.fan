@@ -561,6 +561,29 @@ does. A guide or any other post that is not news never gets one: fix it in place
 and bump `updatedAt`. The rule behind it:
 [a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md).
 
+### Quotes
+
+A sentence somebody else said or wrote (a park's announcement, a lawyer, a court filing) is a
+`> [!QUOTE]` block. Its **last paragraph is the source line**: who, in what role, and where, with a
+link to the place you read it.
+
+```md
+> [!QUOTE]
+> Obwohl X2 durchweg eine Vielzahl von Sicherheitsprüfungen bestanden hat, haben wir entschieden,
+> die Bahn zu schließen, weil wir glauben, dass es das Richtige ist.
+>
+> Brian Oerding, Parkchef von Six Flags Magic Mountain, in der [Mitteilung vom 29. September 2026](https://www.sixflags.com/blog/retiring-x2-magic-mountain), aus dem Englischen übersetzt
+```
+
+It renders as `BlogQuote` (`components/blog/blog-quote.tsx`): a box with a quote mark, the words
+set larger, and the source line under them. `remarkCallouts` turns the last paragraph into the
+`<figcaption>`, so a block with a single paragraph renders without a source line, which a quote
+should never do. Leave out „…“ around the words: the box already says it is a quote. A translated
+quote says so in the source line. If the quote reached you through another outlet, name both. A
+fragment of a few words inside a sentence stays inline, in „…“, with the speaker in the same
+sentence. The rule behind it, and what it asks of anything legal:
+[a quote names its source](../../docs/rules/a-quote-names-its-source.md).
+
 ---
 
 ## 7. Niceties (automatic — nothing to write)

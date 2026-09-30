@@ -252,6 +252,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
   news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
+- **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
+  a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
+  A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
 
 ---
 

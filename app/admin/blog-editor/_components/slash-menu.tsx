@@ -217,6 +217,7 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
         ['warning', 'Warning callout', 'Amber caution box', AlertTriangle],
         ['caution', 'Caution callout', 'Red danger box', OctagonAlert],
         ['correction', 'Correction note', 'News only: dated fix under the signature', FilePenLine],
+        ['quote', 'Quote with source', "Somebody else's words, speaker and link", Quote],
       ] as const
     ).map<SlashItem>(([kind, title, description, icon]) => ({
       title,
@@ -230,7 +231,11 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
           .chain()
           .focus()
           .deleteRange(range)
-          .insertContent(`\n\n> [!${kind.toUpperCase()}]\n> Your text here\n\n`)
+          .insertContent(
+            kind === 'quote'
+              ? '\n\n> [!QUOTE]\n> The quoted words\n>\n> Speaker, role, [source](https://)\n\n'
+              : `\n\n> [!${kind.toUpperCase()}]\n> Your text here\n\n`
+          )
           .run();
       },
     })),

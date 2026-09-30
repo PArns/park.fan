@@ -443,6 +443,7 @@ The general rules apply everywhere. These are the additions per surface.
 - **`date` is the day the post goes live** (merge day, Europe/Berlin), not the day it was written. Set the PR's day; if the PR merges on a later day, correct `date` before the merge.
 - Titles: one fact, at most 60 characters, no two in a week with the same shape ([blog writing style](rules/blog-writing-style.md)).
 - No cover image used twice among news posts ([media database](rules/media-database.md)).
+- A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
 
 ### 5.1 UI strings (`messages/*.json`)
 
