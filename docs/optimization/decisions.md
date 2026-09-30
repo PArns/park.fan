@@ -865,29 +865,41 @@ message does not exist yet. Any commit without the marker builds as well — onl
 **The marker asks the question; the tip of `main` answers it.** A batch can end early — the
 closing merge conflicts, its checks turn red — and the marked commit is then the tip with
 nothing behind it. Skipping that one is the silent failure the allowlist is built to avoid, so
-the marker alone does not decide. The script polls `git ls-remote origin refs/heads/main` every
-15 s for up to 5 minutes (`IGNORE_BUILD_POLL_INTERVAL`, `IGNORE_BUILD_POLL_TIMEOUT`): a tip that
-has moved past this commit means the batch is still running and the newer build carries these
-files too, so this one skips; a tip that is still this commit after the timeout builds, and so
-does a failing `ls-remote`. The wait holds the container but burns no Active CPU, which is the
+the marker alone does not decide. The script polls `git ls-remote <repo URL> refs/heads/main`
+every 15 s for up to 5 minutes (`IGNORE_BUILD_POLL_INTERVAL`, `IGNORE_BUILD_POLL_TIMEOUT`): a tip
+that has moved past this commit means the batch is still running and the newer build carries
+these files too, so this one skips; a tip that is still this commit after the timeout builds, and
+so does a failing `ls-remote`. The wait holds the container but burns no Active CPU, which is the
 trade that makes it worth making. It replaced an unconditional skip and the manual escape that
 went with it — redeploying from the dashboard with **Use project's Ignore Build Step** unchecked
 ([Vercel docs](https://vercel.com/docs/monorepos#ignoring-the-build-step)) — because nobody is
 watching a merge batch at the moment it stalls.
 
+**The URL, not `origin` (2026-09-30).** Until then the script asked `origin`. Vercel's build
+checkout is a `git clone --depth=10` with no usable `origin` remote, so `ls-remote` printed
+nothing, the failure branch built, and from 2026-09-22 every marked merge shipped a full
+production build of its own: the batches saved nothing, and nothing said so, because a build
+that should have skipped looks exactly like a build. The script now asks
+`https://github.com/$VERCEL_GIT_REPO_OWNER/$VERCEL_GIT_REPO_SLUG.git` (the repository is public,
+no credentials needed) and fetches a previous SHA outside the 10-deep clone from there too; it
+falls back to `origin` only outside Vercel. The test had passed throughout because its checkout
+had an `origin`. It now runs the marker cases in a checkout without one and reaches the bare
+repository only through the URL, via git's `url.<base>.insteadOf`; against the old script 8 of
+its cases fail, the first being a marked commit with `main` already ahead of it, which built.
+
 **The asymmetry is the whole design, so it is pinned rather than argued.** A needless build
 costs minutes of Build CPU. A skipped build that should have run is silent: the deploy reports
 success, Vercel keeps the previous deployment aliased, and a published article stays invisible
-until somebody happens to push again. `pnpm test:ignore-build` (39 cases, part of
+until somebody happens to push again. `pnpm test:ignore-build` (41 cases, part of
 `release:check`) drives the real script against a throwaway git repository and asserts the
 answer for every input a build step reads — a post in each of the six locales, an author, the
 categories, an agent `SKILL.md` whose served bytes carry a build-time SHA-256, homepage content,
 a photo, a sidecar, a translation file, the lockfile, `.nvmrc` — plus the two shapes a careless
 allowlist gets wrong: a commit touching documentation AND a post (08764e8 is a real one, six
 posts alongside `CLAUDE.md`), and `content/blog/README.md`, which an unanchored `README.md`
-pattern would swallow. The marker gets a bare repository as `origin` and both answers the tip can
-give, against a commit the allowlist would have built: the tip already ahead, an unmarked commit
-in that same position, the tip still on the marked commit until the poll times out, and the tip
+pattern would swallow. The marker gets a bare repository standing in for GitHub and both answers
+the tip can give, against a commit the allowlist would have built: the tip already ahead, an
+unmarked commit in that same position, the tip still on the marked commit until the poll times out, and the tip
 moved by another process while the poll is running — that last one is the case the loop exists
 for, and a script that compared only on its first look passes every other one. The closing
 build's own file list is read to prove the skipped merges reached it. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,

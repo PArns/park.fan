@@ -30,6 +30,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cn } from '@/lib/utils';
+import { languageName } from '@/lib/utils/intl-format';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -51,6 +52,7 @@ import { BlogAttractionWidget } from './blog-attraction-widget';
 import { BlogYouTubeEmbed } from './blog-youtube-embed';
 import { BlogInstagramEmbed } from './blog-instagram-embed';
 import { BlogSunoEmbed } from './blog-suno-embed';
+import { BlogQuote } from './blog-quote';
 import { parseYouTube, parseInstagram, parseSuno } from '@/lib/blog/embeds';
 import { BlogMapWidget } from './blog-map-widget';
 import { BlogWeatherWidget } from './blog-weather-widget';
@@ -69,7 +71,7 @@ import { postPath } from '@/lib/blog/paths';
 /** Box / title classes + icon per GitHub-alert callout type. Kept as static
  *  class strings so Tailwind sees them at build time. */
 const CALLOUT_META: Record<
-  CalloutType,
+  Exclude<CalloutType, 'quote'>,
   { label: string; icon: typeof Info; box: string; title: string }
 > = {
   note: {
@@ -784,6 +786,16 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       // data-callout attribute — those render as coloured boxes instead of
       // the plain quote treatment.
       const callout = (rest as { 'data-callout'?: CalloutType })['data-callout'];
+      if (callout === 'quote')
+        return (
+          <BlogQuote
+            originalLabel={(lang) =>
+              tBlog('quoteOriginal', { language: languageName(locale, lang) })
+            }
+          >
+            {children}
+          </BlogQuote>
+        );
       if (callout && CALLOUT_META[callout]) {
         const meta = CALLOUT_META[callout];
         const Icon = meta.icon;

@@ -738,6 +738,15 @@ export type DowntimeBlock =
         | 'park_never_reports'
         | 'artefact_regime'
         | 'no_schedule'
+        /**
+         * The park publishes opening hours, but none of them falls inside the
+         * measured window, so there is no operating time to divide by.
+         *
+         * Seasonal parks between two seasons. Distinct from `no_schedule`
+         * (no hours at all) and from `thin_exposure` (the ride ran, too rarely).
+         * `outages` is 0 here and means "no operating day", not "no outage".
+         */
+        | 'outside_window'
         | 'thin_events'
         | 'thin_exposure'
         | 'inhomogeneous'
@@ -761,7 +770,7 @@ export type DowntimeBlock =
          * which is why this reason comes and goes without the ride changing.
          */
         | 'heavily_censored';
-      /** 0 for the three reasons above that are about us, where it means "we cannot see". */
+      /** 0 for the reasons above that are about us, where it means "we cannot see". */
       outages: number;
       windowDays: number;
     };

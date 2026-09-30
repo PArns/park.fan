@@ -474,6 +474,7 @@
     "menu": "Menu",
     "home": "Home",
     "parks": "Alle parken",
+    "overview": "Overzicht",
     "continents": "Continenten",
     "explore": "Ontdek parken",
     "search": "Zoek parken & attracties",
@@ -487,6 +488,7 @@
     "blog": "Backstage",
     "more": "Meer",
     "fancast": "Fancast",
+    "fancastHint": "Het voorspelmodel achter de druktekalender.",
     "contribute": "Foto’s uploaden",
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
@@ -1422,6 +1424,7 @@
         "park_never_reports": "De databron voor dit park meldt geen storingen. Wij herkennen ze aan sluitingen tijdens openingsuren, maar tonen daarover geen statistiek.",
         "artefact_regime": "Storingsmeldingen bereiken ons voor dit park slechts fragmentarisch. Daar valt geen frequentie uit af te lezen.",
         "no_schedule": "Voor dit park zijn geen openingstijden gepubliceerd, daarom tonen we hier geen cijfers.",
+        "outside_window": "Dit park was de afgelopen {days} dagen niet open, daarom tonen we hier geen cijfers.",
         "thin_events": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Dat zijn er te weinig voor een betrouwbaar cijfer.",
         "thin_exposure": "We hebben {name} de afgelopen {days} dagen te weinig zien draaien om iets over storingen te zeggen.",
         "inhomogeneous": "De twee helften van de afgelopen {days} dagen verschillen te veel om met één cijfer te beschrijven.",
@@ -2029,6 +2032,7 @@
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
     "correction": "Correctie",
+    "quoteOriginal": "Origineel in het {language}",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
       "fallback": "Nog niet vertaald – je ziet de {language}-versie."

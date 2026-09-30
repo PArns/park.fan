@@ -474,6 +474,7 @@
     "menu": "Menü",
     "home": "Startseite",
     "parks": "Alle Parks",
+    "overview": "Übersicht",
     "continents": "Kontinente",
     "explore": "Parks entdecken",
     "search": "Parks & Attraktionen suchen",
@@ -487,6 +488,7 @@
     "blog": "Backstage",
     "more": "Mehr",
     "fancast": "Fancast",
+    "fancastHint": "Das Prognosemodell hinter dem Crowd-Kalender.",
     "contribute": "Fotos hochladen",
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
@@ -1422,6 +1424,7 @@
         "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Wir erkennen sie an Schließungen während der Öffnungszeit, zeigen dazu aber keine Statistik.",
         "artefact_regime": "Für diesen Park liegen uns Störungsmeldungen nur bruchstückhaft vor. Eine Häufigkeit lässt sich daraus nicht ablesen.",
         "no_schedule": "Für diesen Park sind keine Öffnungszeiten veröffentlicht, deshalb zeigen wir hier keine Zahlen.",
+        "outside_window": "Dieser Park hatte in den letzten {days} Tagen nicht geöffnet, deshalb zeigen wir hier keine Zahlen.",
         "thin_events": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Für eine belastbare Zahl sind das zu wenige.",
         "thin_exposure": "Wir haben {name} in den letzten {days} Tagen zu selten laufen sehen, um etwas über Störungen zu sagen.",
         "inhomogeneous": "Die beiden Hälften der letzten {days} Tage sehen zu verschieden aus, als dass eine Zahl beide beschreiben könnte.",
@@ -2029,6 +2032,7 @@
     "readingTime": "{minutes} Min. Lesezeit",
     "updatedOn": "Aktualisiert {date}",
     "correction": "Korrektur",
+    "quoteOriginal": "Original auf {language}",
     "languageNotice": {
       "available": "Diesen Artikel gibt es auch auf {language}",
       "fallback": "Noch nicht übersetzt – du siehst die Version auf {language}."

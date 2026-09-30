@@ -17,7 +17,7 @@ import type { Node as PMNode } from '@tiptap/pm/model';
  * WYSIWYG with no hidden state.
  */
 
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION)\]/;
+const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|QUOTE)\]/;
 
 interface CalloutSpan {
   /** Blockquote node position. */

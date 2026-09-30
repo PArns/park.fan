@@ -474,6 +474,7 @@
     "menu": "Menu",
     "home": "Accueil",
     "parks": "Tous les parcs",
+    "overview": "Vue d’ensemble",
     "continents": "Continents",
     "explore": "Explorer les parcs",
     "search": "Recherche parcs & attractions",
@@ -487,6 +488,7 @@
     "blog": "Backstage",
     "more": "Plus",
     "fancast": "Fancast",
+    "fancastHint": "Le modèle de prévision derrière le calendrier d’affluence.",
     "contribute": "Téléverser des photos",
     "bestTime": "Meilleure période",
     "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc.",
@@ -1422,6 +1424,7 @@
         "park_never_reports": "La source de données de ce parc ne signale pas de pannes. Nous les repérons via les fermetures pendant les heures d'ouverture, sans publier de statistiques.",
         "artefact_regime": "Les signalements de pannes ne nous parviennent que par fragments pour ce parc. Impossible d'en tirer une fréquence.",
         "no_schedule": "Ce parc ne publie pas d'horaires d'ouverture, nous n'affichons donc aucun chiffre ici.",
+        "outside_window": "Ce parc n'a pas ouvert au cours des {days} derniers jours, nous n'affichons donc aucun chiffre ici.",
         "thin_events": "{count} pannes ont été signalées ces {days} derniers jours. C'est trop peu pour en tirer un chiffre.",
         "thin_exposure": "Nous avons vu {name} fonctionner trop rarement ces {days} derniers jours pour dire quoi que ce soit sur les pannes.",
         "inhomogeneous": "Les deux moitiés des {days} derniers jours sont trop différentes pour qu'un seul chiffre les décrive.",
@@ -2029,6 +2032,7 @@
     "readingTime": "{minutes} min de lecture",
     "updatedOn": "Mis à jour le {date}",
     "correction": "Correction",
+    "quoteOriginal": "Version originale en {language}",
     "languageNotice": {
       "available": "Cet article est aussi disponible en {language}",
       "fallback": "Pas encore traduit – version en {language} affichée."

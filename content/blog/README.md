@@ -561,6 +561,50 @@ does. A guide or any other post that is not news never gets one: fix it in place
 and bump `updatedAt`. The rule behind it:
 [a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md).
 
+### Quotes
+
+A sentence somebody else said or wrote (a park's announcement, a lawyer, a court filing) is a
+`> [!QUOTE]` block. Its **last paragraph is the source line**: who, in what role, and where, with a
+link to the place you read it.
+
+```md
+> [!QUOTE]
+> Obwohl X2 durchweg eine Vielzahl von Sicherheitsprüfungen bestanden hat, haben wir entschieden,
+> die Bahn zu schließen, weil wir glauben, dass es das Richtige ist.
+>
+> Brian Oerding, Parkchef von Six Flags Magic Mountain, in der [Mitteilung vom 29. September 2026](https://www.sixflags.com/blog/retiring-x2-magic-mountain), aus dem Englischen übersetzt
+```
+
+It renders as `BlogQuote` (`components/blog/blog-quote.tsx`): a box with a quote mark, the words
+set larger, and the source line under them. `remarkCallouts` turns the last paragraph into the
+`<figcaption>`, so a block with a single paragraph renders without a source line, which a quote
+should never do. Leave out „…“ around the words: the box already says it is a quote. A translated
+quote says so in the source line. If the quote reached you through another outlet, name both. A
+fragment of a few words inside a sentence stays inline, in „…“, with the speaker in the same
+sentence. The rule behind it, and what it asks of anything legal:
+[a quote names its source](../../docs/rules/a-quote-names-its-source.md).
+
+**A translated quote carries its original.** Put it in its own paragraph that starts with the
+language code in brackets, before the source line:
+
+```md
+> [!QUOTE]
+> Fahrsicherheit ist ein Grundpfeiler unseres Geschäfts.
+>
+> [en] Ride safety is a cornerstone of our business.
+>
+> Brian Oerding, [Mitteilung vom 29. September 2026](https://…), aus dem Englischen übersetzt
+```
+
+The original is never in the running text. It opens in a card when the reader hovers over the
+quote, taps it or focuses it with the keyboard (`BlogQuoteOriginal`, the site's `HoverCard`), with
+the label `blog.quoteOriginal` („Original auf Englisch") and `lang="en"` on the text; screen
+readers get a hidden copy. A small `EN` mark next to the quote sign says that there is one. Quote
+the original verbatim, with `[…]` for what you left out, and do the same in the translation.
+`pnpm check:prose` warns when a source line says the words were translated and no original is
+there. In the language of the original (the English post quoting Six Flags), there is nothing to
+add: the words are already the original.
+
 ---
 
 ## 7. Niceties (automatic — nothing to write)

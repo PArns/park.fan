@@ -33,6 +33,14 @@ and humans asked to sort AI text from human text perform at close to chance. So 
 a **writing** guide, not a detection guide. Never accuse a text of being generated because it
 trips one item here. A single sign is noise; a text is only in trouble when several land at once.
 
+**Some signs are strong enough on their own.** The humanizer skill (see Sources) splits its list
+in two, and we follow it. A **strong** tell is fixed on sight: the em dash in running text (§4.1),
+the aphoristic closer (§2.8), `nicht X, sondern Y` at the edge of a section (§2.1), an honesty
+claim (§3.3), an invented detail (§1.8), a heading that asks and then gives an order (§5.6).
+Everything else is **weak**: a transition word, a triad,
+a short sentence, a rhetorical question. A weak tell matters only when several sit in the same
+passage.
+
 **Over-correction is its own failure mode.** These are ineffective indicators — do not mangle a
 text to dodge them:
 
@@ -97,6 +105,8 @@ The text never talks about itself, its chapters, its thesis, or how it is organi
 - `Kommen wir nun zu`, `In diesem Abschnitt` → delete
 - `die These dieses Artikels` → name the claim instead
 - `Es ist wichtig zu beachten, dass X` → `X`. The importance is shown by the sentence existing.
+- `Als langjähriger Freizeitpark-Fan …`, `As a long-time coaster fan, I …` → the byline already
+  says who writes. Say the thing.
 
 ### 1.5 No summary blocks
 
@@ -159,6 +169,27 @@ ist tendenziell höher` but `die Zahl steht auf 13 gemessenen Tagen`.
 der Freizeitparks`, `Landschaft`, `Reise`, `Ökosystem`, `landscape`, `journey`, `space`,
 `ecosystem`, `tapestry`. A ride, a queue, a park and a visitor can all be the subject of a
 sentence; `die Vielfalt` cannot do anything.
+
+### 1.8 Never invent what somebody had to live, count or say
+
+Generated text fills a gap with a plausible detail, and a plausible detail is the most expensive
+lie a post can tell, because the reader has no way to see it. The anti-ai-slop-writing ruleset
+(see Sources) puts it plainly: fabricated specificity is worse than honest vagueness.
+
+- **No invented first-person experience.** The byline is Patrick. `Ich bin X2 dreimal gefahren`
+  is written when it happened, never to make a paragraph feel lived. A post written without a
+  visit says where its knowledge comes from.
+- **No hypothetical dressed as a memory.** A scenario says it is one: `Angenommen, du stehst um
+zehn am Eingang`.
+- **No invented number.** A figure has a source or a measurement next to it (§1.2), and an
+  estimate says it is one.
+- **No invented or tidied quote.** Somebody's words stay theirs, translated faithfully, marked as
+  translated and linked to where they were said
+  ([a quote names its source](rules/a-quote-names-its-source.md)). Reported speech is fine; a
+  sentence in quotation marks that nobody said is not.
+
+What cannot be checked is left out. A gap in a news post becomes a sentence saying what is not
+known (`Six Flags sagt nicht, ob X2 abgerissen wird`), and that sentence is information.
 
 ---
 
@@ -230,6 +261,9 @@ product uses and repeat it. Repeating a noun is not a style error; rotating it i
   introducer and an exhausting paragraph rhythm.
 - **Do not stack transitions.** `Darüber hinaus`, `Zusätzlich`, `Außerdem`, `Ferner`,
   `Additionally` — one is normal, one per paragraph is mechanical.
+- **Do not build every paragraph from the same parts.** Topic sentence, explanation, example,
+  transition, four paragraphs in a row, is the template showing through. Start one with the
+  number, let one be a single sentence, let one stop without a bridge to the next.
 
 ### 2.8 The aphoristic closer
 
@@ -272,12 +306,79 @@ Two of those are countable, and worth counting on a finished text:
 
 | Metric                                    | How                              | Signal            | Our German posts     | Our English posts    |
 | ----------------------------------------- | -------------------------------- | ----------------- | -------------------- | -------------------- |
-| **Sentence-length variance** (burstiness) | `stdev(sentence lengths) / mean` | under 0.4 is flat | **0.71** (0.50–1.19) | **1.01** (0.47–2.20) |
-| **Commas per 100 words**                  | `count(',') / words × 100`       | thin under ~4     | **8.7**              | **6.1**              |
+| **Sentence-length variance** (burstiness) | `stdev(sentence lengths) / mean` | under 0.4 is flat | **0.99** (0.39–2.57) | **1.08** (0.42–2.86) |
+| **Commas per 100 words**                  | `count(',') / words × 100`       | thin under ~4     | **8.3**              | **6.5**              |
 
 Both are supporting signals, never verdicts: a short reference text can be flat for good reasons.
 But a long post under 0.4 is a post where every sentence came out the same length, and that is
 worth a read-aloud pass before it ships. `pnpm check:prose` prints both (§7).
+
+Measured on 2026-09-30. Until that day the script cut every German date in two (`27. |
+September`) and counted the halves as sentences, which is why the German figure used to read
+0.71.
+
+### 2.10 Staccato
+
+Three very short sentences in a row: `Die Bahn ist zu. Für immer. Das war's.` It reads like an
+advert, and it is what a model writes when it wants punch; the anti-ai-slop-writing ruleset calls
+it parataxis and bans it. One short sentence after a long one is rhythm. Three in a row is a tic.
+Connect them with what relates them: `weil`, `aber`, `sodass`, a comma, a semicolon.
+
+`pnpm check:prose` flags three sentences of five words or fewer in a row inside one paragraph.
+Lists and quotations are left out, because a list item is not a sentence and a quotation keeps
+its speaker's rhythm. Its first run on 2026-09-30 found the Dutch and French versions of a joke in
+the Halloween guide and three rhetorical questions in a row in the Italian stroller post. Both are
+for a person to judge.
+
+### 2.11 The passive that hides who did it
+
+German news writing uses the passive for good reasons: `Die Bahn wurde 2002 eröffnet` needs no
+actor. The tell is the passive that leaves out an actor the text knows: `Es wurde entschieden,
+die Bahn zu schließen` when Six Flags decided, `Es wird berichtet` when AP reported. Name who did
+it.
+
+In anything legal the hidden actor is worse than a style fault, because it turns one side's
+claim into a fact. `Die Verletzungen wurden durch die Bahn verursacht` is a verdict nobody has
+reached; `Die Kläger führen die Verletzungen auf die Bahn zurück` is the report
+([a quote names its source](rules/a-quote-names-its-source.md)).
+
+### 2.12 The question set-up
+
+`Das Ergebnis? Ein voller Park.` · `The reason? …` A question the text answers itself one word
+later is a slide transition, not a question. stop-slop bans every sentence that opens with a
+question word, which is too blunt for German, where `Wann` and `Wie` open plenty of honest
+sentences. We ban the set-up. Ask a question only where the reader would ask it; three rhetorical
+questions in a row are a triad (§2.2). `pnpm check:prose` flags `Das Ergebnis?`, `Der Grund?`,
+`Die Antwort?`, `Der Haken?` and their English twins, and a heading that asks and answers in one
+line (`Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist`) as a candidate.
+
+### 2.13 The product as protagonist
+
+`Der Planer kennt die Öffnungszeit`, `Der Planer fragt zwei Dinge`, `Der Planer liest das als`,
+`ist dem Planer lieber`, `der Planer erfindet keine`: 27 times on the planner page. A feature
+written as a character that knows, asks, prefers and refuses turns an explanation into a
+portrait of the software. Say what the reader sees or does, or what the number is: `Ein Block
+rastet auf fünf Minuten ein`, `Du gibst an, wie groß die kleinste Person ist`.
+
+The planner page read 8.8 per 1,000 words; `pnpm check:prose` warns above 6. The two compass posts
+are over it as well.
+
+### 2.14 Saying what it does not do
+
+A negation is information when the reader expected the opposite: `Für den Hansa-Park kommt nie
+eine Zahl an`. A text that keeps answering objections nobody raised (`Die Antworten markieren und
+blenden nichts aus`, `Ein Verbot ist das nicht, und eine Freigabe auch nicht`, `Eine Regel über
+den frühen Morgen steckt darin nicht`) argues with a reader who has not said anything. Say what
+happens instead.
+
+The German posts sit at a median of 1.2 negations per 100 words; the planner page read 2.8. The
+check warns above 2.
+
+### 2.15 The definition colon
+
+`Typisch heißt: …`, `„Knapp“ bedeutet: …`. One definition is useful. Four on one page are a
+glossary written as prose. Put the meaning into the sentence that uses the word, or link the
+glossary term. The check warns above two per text.
 
 ---
 
@@ -297,7 +398,10 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 | Editorial commentary             | `es ist wichtig zu beachten/betonen`, `es ist entscheidend`, `bemerkenswert ist`, `an dieser Stelle sei erwähnt`, `denken Sie daran`                                                                                                                                                |
 | Time-filler openings             | `in der heutigen Zeit`, `im digitalen Zeitalter`, `in der heutigen schnelllebigen Welt`, `mehr denn je`, `immer mehr Menschen`                                                                                                                                                      |
 | Summary formulas                 | `zusammenfassend lässt sich sagen`, `abschließend`, `insgesamt`, `Fazit`                                                                                                                                                                                                            |
-| Mechanical connectives           | `darüber hinaus`, `zusätzlich`, `ferner`, `andererseits` (as a paragraph habit)                                                                                                                                                                                                     |
+| Mechanical connectives           | `darüber hinaus`, `zusätzlich`, `ferner`, `andererseits` (as a paragraph habit); as a sentence opener also `des Weiteren`, `interessanterweise`, `bemerkenswerterweise`, `letztendlich`, which `pnpm check:prose` flags                                                             |
+| Stock phrases                    | `hier kommt X ins Spiel`, `ohne Umschweife`, `schnall dich an`, `das nächste Level`, `was viele nicht wissen`                                                                                                                                                                       |
+| Volume adverbs                   | `wirklich`, `absolut`, `unglaublich`, `extrem`: stop-slop cuts every adverb; we cut the ones that only turn the volume up and keep the ones that carry a fact (`fast`, `kaum`, `erst`, `nur`)                                                                                       |
+| Credential openers               | `Als langjähriger Fan …`, `Als leidenschaftlicher Achterbahnfahrer …` (§1.4)                                                                                                                                                                                                        |
 | Vague authority                  | `Branchenberichte`, `Experten sind sich einig`, `viele Beobachter`, `Studien zeigen` (unsourced)                                                                                                                                                                                    |
 | Model verbs                      | `eintauchen` / `Lassen Sie uns eintauchen`, `beleuchten`, `aufzeigen`, `hervorheben`, `gewährleisten`                                                                                                                                                                               |
 | Hedging into mush                | `kann` used to soften every claim — count them, models over-use it badly                                                                                                                                                                                                            |
@@ -308,20 +412,26 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 
 ### 3.2 English
 
-| Category               | Watch for                                                                                                                                                                                                                                                                                                                                                            |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Core AI vocabulary     | `additionally` (sentence-initial), `align with`, `boasts`, `bolstered`, `crucial`, `deep dive`, `delve`, `emphasizing`, `enduring`, `enhance`, `fostering`, `garner`, `highlight` (verb), `interplay`, `intricate`, `key` (adj), `landscape` (abstract), `meticulous`, `pivotal`, `robust`, `showcase`, `tapestry`, `testament`, `underscore`, `valuable`, `vibrant` |
-| Puffery                | `nestled`, `in the heart of`, `breathtaking`, `must-see`, `rich history`, `diverse array`, `groundbreaking`, `renowned`, `commitment to`, `natural beauty`                                                                                                                                                                                                           |
-| Significance inflation | `stands as a testament`, `plays a vital role`, `underscores its importance`, `reflects broader`, `marking a pivotal moment`, `evolving landscape`, `indelible mark`, `deeply rooted`                                                                                                                                                                                 |
-| Editorial commentary   | `it's important to note`, `worth noting`, `no discussion would be complete without`                                                                                                                                                                                                                                                                                  |
-| Summary formulas       | `in conclusion`, `overall`, `in summary`, `key takeaways`                                                                                                                                                                                                                                                                                                            |
-| Vague authority        | `industry reports`, `experts argue`, `observers have noted`, `some critics argue`, `several sources`                                                                                                                                                                                                                                                                 |
-| Outline conclusions    | `despite its … faces several challenges`, `future outlook`, `challenges and legacy`                                                                                                                                                                                                                                                                                  |
-| Business verbs         | `leverage`, `unlock`, `empower`, `streamline`, `navigate`, `elevate`, `utilize`, `facilitate`, `foster`, `ignite`, `unleash`                                                                                                                                                                                                                                         |
-| Gesture nouns          | `landscape`, `journey`, `space`, `realm`, `ecosystem`, `tapestry`, `beacon`, `roadmap`, `the world of …`                                                                                                                                                                                                                                                             |
-| Pseudo-wisdom          | `at the end of the day`, `the key is`, `when the dust settles`, `something real is happening`, `the stakes couldn't be higher`                                                                                                                                                                                                                                       |
-| Hedges                 | `in many ways`, `at some level`, `arguably`, `it could be argued`, `while it is true`                                                                                                                                                                                                                                                                                |
-| Recyclable framing     | `a useful way to think about it is`, `the key idea is`, `picture this`, `let's dive in`, `here's the kicker`                                                                                                                                                                                                                                                         |
+| Category               | Watch for                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Core AI vocabulary     | `additionally` (sentence-initial), `align with`, `boasts`, `bolstered`, `crucial`, `deep dive`, `delve`, `emphasizing`, `enduring`, `enhance`, `fostering`, `garner`, `highlight` (verb), `interplay`, `intricate`, `key` (adj), `landscape` (abstract), `meticulous`, `pivotal`, `robust`, `showcase`, `tapestry`, `testament`, `underscore`, `valuable`, `vibrant`, `multifaceted`, `transformative`, `unprecedented`, `aforementioned`, `spearhead`, `encompass`, `endeavor`, `synergy`, `in essence`, `thought leader` |
+| Puffery                | `nestled`, `in the heart of`, `breathtaking`, `must-see`, `rich history`, `diverse array`, `groundbreaking`, `renowned`, `commitment to`, `natural beauty`                                                                                                                                                                                                                                                                                                                                                                 |
+| Significance inflation | `stands as a testament`, `plays a vital role`, `underscores its importance`, `reflects broader`, `marking a pivotal moment`, `evolving landscape`, `indelible mark`, `deeply rooted`                                                                                                                                                                                                                                                                                                                                       |
+| Editorial commentary   | `it's important to note`, `worth noting`, `no discussion would be complete without`                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Summary formulas       | `in conclusion`, `overall`, `in summary`, `key takeaways`                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Vague authority        | `industry reports`, `experts argue`, `observers have noted`, `some critics argue`, `several sources`                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Outline conclusions    | `despite its … faces several challenges`, `future outlook`, `challenges and legacy`                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Business verbs         | `leverage`, `unlock`, `empower`, `streamline`, `navigate`, `elevate`, `utilize`, `facilitate`, `foster`, `ignite`, `unleash`                                                                                                                                                                                                                                                                                                                                                                                               |
+| Gesture nouns          | `landscape`, `journey`, `space`, `realm`, `ecosystem`, `tapestry`, `beacon`, `roadmap`, `the world of …`                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Pseudo-wisdom          | `at the end of the day`, `the key is`, `when the dust settles`, `something real is happening`, `the stakes couldn't be higher`                                                                                                                                                                                                                                                                                                                                                                                             |
+| Hedges                 | `in many ways`, `at some level`, `arguably`, `it could be argued`, `while it is true`                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Recyclable framing     | `a useful way to think about it is`, `the key idea is`, `picture this`, `let's dive in`, `here's the kicker`                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Stock phrases          | `when it comes to`, `comes into play`, `this is where X comes in`, `whether you're an X or a Y`, `here's the thing`, `without further ado`, `in a nutshell`, `buckle up`, `to the next level`, `bridge the gap`, `move the needle`, `at its core`, `in the realm of`, `rest assured`, `it goes without saying`, `game-changer`                                                                                                                                                                                             |
+| Mechanical openers     | sentence-initial `Moreover`, `Furthermore`, `Additionally`, `Interestingly`, `Notably`, `Importantly`, `Indeed`, `Certainly`, `Absolutely`                                                                                                                                                                                                                                                                                                                                                                                 |
+
+`paramount` and `commence` are on the anti-ai-slop-writing list and not on ours: on this site one
+is a film studio and the other is French for "begins", and both matched dozens of legitimate
+sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
@@ -392,6 +502,12 @@ needs more than a dozen bold runs is a post that has not decided what matters.
   `<Thema>: So gelingt <Ergebnis>`, `Alles, was du über X wissen musst`, `X: Der ultimative
 Guide`, `<Zahl> Tipps, die du kennen solltest`, `Von X zu Y – wie man Z wählt`. A heading names
   what is under it: `Wann Taron am kürzesten ist`.
+- **A heading is not a slogan.** Two halves around a comma that mirror each other (`Parks ohne
+Zahlen, Tage ohne Wetter`, `Der Park macht um neun auf, die Bahn um zehn`) or a comparison where
+  a name belongs (`Ein Block pro Bahn, so hoch wie ihre Schlange`) is an advert's line. All three
+  were written for the planner page and read as clever; none of them says what the chapter
+  explains. Name it: `Blöcke und Umstiege`, `Bahnen, die später öffnen als der Park`. `pnpm
+check:prose` flags both shapes.
 - Do not fragment a text into a heading every three sentences. A section with two sentences under
   it should be a paragraph.
 - No title case in German. Sentence case, always.
@@ -431,6 +547,15 @@ shape reads generated even when its content is fine.
 - Watch for chat-export debris in anything pasted in: `contentReference`, `oaicite`,
   `turn0search0`, `[cite: 1]`, `:::writing`, `【…】`. If one of these reaches a file, the text was
   pasted, not written.
+- **One ellipsis per post at most**, and only where a thought really trails off. `[…]` marking a
+  cut inside a quote does not count.
+- **One exclamation mark per 1,000 words** in a post. Enthusiasm comes from the words. A line that
+  carries its own (`Ah, fresh meat!`) still counts against the budget, and a person decides
+  whether it stays.
+- **Plain-text fields carry no Markdown and no em dash.** `title`, `excerpt`, `seo.title`,
+  `seo.description` and the cover's `alt` and `caption` leave the page as plain text: the card,
+  the feed item, the `<title>`, the search snippet. `**fett**` arrives there as asterisks.
+  `pnpm check:prose` fails on either.
 
 ---
 
@@ -443,6 +568,8 @@ The general rules apply everywhere. These are the additions per surface.
 - **`date` is the day the post goes live** (merge day, Europe/Berlin), not the day it was written. Set the PR's day; if the PR merges on a later day, correct `date` before the merge.
 - Titles: one fact, at most 60 characters, no two in a week with the same shape ([blog writing style](rules/blog-writing-style.md)).
 - No cover image used twice among news posts ([media database](rules/media-database.md)).
+- A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
+- **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
 
 ### 5.1 UI strings (`messages/*.json`)
 
@@ -532,6 +659,46 @@ Voice reference for German: `content/blog/de/phantasialand-tipps.md` and
 too, when something breaks. Same rules, minus the voice: short, factual, no puffery, no
 significance claims.
 
+### 5.6 A heading and the line under it
+
+A section on the homepage opened like this, in six languages:
+
+> **Mit Kindern** · Welche Bahnen darf mein Kind fahren? Nach Körpergröße nachsehen
+>
+> Jeder Park nennt pro Bahn eine Mindestgröße. Für diese Parks steht auf einer Seite, was ein
+> Kind bei welcher Größe fahren darf, in den Stufen, die der Park selbst vorgibt.
+>
+> (card) Welche Bahn ab welcher Größe.
+
+Six tells in four lines, and each one is on the list below.
+
+1. **A question, then an order.** `…? Nach Körpergröße nachsehen` is a button label glued to a
+   question. A heading is one sentence or one noun phrase. This one is strong enough on its own,
+   and `pnpm check:prose` fails on it in every language: a German infinitive at the end, or a
+   call-to-action verb up front (`Check by height`, `Kijk het na`, `À vérifier`, `Comprobarlo`,
+   `Da controllare`).
+2. **The reader's voice.** `mein Kind` is the search box talking. The site says `du`, and a heading
+   in the first person imitates the query it wants to rank for.
+3. **The dek repeats the heading.** Kind, Bahn, fahren and Größe twice, and the card a third
+   time. The line under a heading says what the heading does not.
+4. **Copy that describes the site.** `steht auf einer Seite` tells the reader where something is
+   instead of what it is.
+5. **The truism opener.** `Jeder Park nennt pro Bahn eine Mindestgröße` is true of every park and
+   known to every parent. Cut it and nothing is missing (§1.7).
+6. **The tacked-on qualifier.** `…, in den Stufen, die der Park selbst vorgibt` arrives after the
+   sentence has ended, to fend off an objection.
+
+Tells 2 to 6 are weak and turn up alone in good copy too, so the check counts them per group of
+strings (a heading and its siblings in `messages/*.json`) and warns when two meet. Rewritten, the
+block says one thing in each line:
+
+> **Mit Kindern** · Ab welcher Größe dein Kind mitfahren darf
+>
+> Für jeden dieser Parks: alle Bahnen, sortiert nach der Mindestgröße, die der Park angibt.
+
+The card line goes, or carries a figure the heading does not (how many rides at that park have a
+height limit).
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -556,7 +723,8 @@ the rest is not:
 
 English needs its own pass rather than a translation: the English tell list (§3.2) is much
 better documented than the German one, and a German sentence rendered literally into English
-often lands squarely on it (`stellt dar` → `serves as`).
+often lands squarely on it (`stellt dar` → `serves as`). Contractions are normal English
+(`don't`, `it's`); a post that writes `do not` and `it is` throughout reads translated.
 
 ---
 
@@ -617,7 +785,15 @@ grep -rniE "in conclusion|overall,|it'?s important to note|worth noting" content
 # 6. Vocabulary sweep (spot-check, not a gate)
 grep -rniE "atemberaubend|nahtlos|maßgeschneidert|essenziell|ganzheitlich|eintauchen" content/blog/de
 grep -rniE "\b(delve|boasts|vibrant|nestled|pivotal|showcase|testament|underscore|tapestry)\b" content/blog/en
+
+# 7. Mechanical openers and question set-ups (§2.7, §2.12)
+grep -rnE "(^|[.!?] )(Darüber hinaus|Des Weiteren|Interessanterweise|Letztendlich|Das Ergebnis\?|Der Grund\?)" content/blog/de
 ```
+
+The heading and dek tells (§5.6), the product as protagonist (§2.13), the negation budget (§2.14),
+the definition colons (§2.15), staccato (§2.10), the ellipsis and exclamation budgets (§4.5), a
+`[!QUOTE]` without a source line
+and Markdown in a plain-text field are counted by the script itself; a grep cannot see paragraphs.
 
 ### 7.1 Measured state, 2026-09-10
 
@@ -645,6 +821,25 @@ Two notes on reading the output. `content/blog/README.md` matches most of the ba
 patterns because it documents them, which is why the script skips READMEs. And the Spanish Walibi
 post's `cartel «Speed Zone»` is a sign with a name painted on it, inside an image caption, which
 is the thing itself and not the prop §3.3 bans. A check produces candidates, not verdicts.
+
+### 7.2 The review pass
+
+`pnpm check:prose` settles what a regex can. The rest needs a second read, and Flavio Copes' point
+(see Sources) is that it works best as a **separate pass with its own instruction**, run on the
+finished text instead of folded into writing it. A session that wrote a post runs it before
+handing the post over, with this instruction:
+
+> Review the finished text against docs/blog.md. Keep every fact, number, source, quote and the
+> structure. Fix only the patterns the rules name. List each change with the rule it answers.
+
+- The pass produces **proposals**. A change that makes a sentence worse is dropped, whatever rule
+  it cites.
+- It does not flatten the voice. A first-person opinion, a deliberately short paragraph and a joke
+  stay.
+- It does not check facts, and it cannot supply a missing one. Sources, quotes and anything legal
+  are their own step ([a quote names its source](rules/a-quote-names-its-source.md)).
+- A correction that comes back becomes a rule here, with the example that caused it. A rule that
+  keeps producing worse sentences is changed or dropped. That is how every section above started.
 
 ---
 
@@ -688,6 +883,24 @@ German practice:
   [shribe: KI-Floskeln](https://shribe.de/ki-floskeln/),
   [WortLiga: 20 Top-KI-Floskeln](https://wortliga.de/20-top-ki-floskeln-im-januar-2025/) (the
   German opener list in §1.7).
+
+Anti-slop rulesets:
+
+- jalaalrd, [anti-ai-slop-writing](https://github.com/jalaalrd/anti-ai-slop-writing) (MIT,
+  directive v2, April 2026): the source of §1.8, §2.10, §2.11, the credential opener in §1.4, the
+  budgets and the plain-text rule in §4.5, and the vocabulary and stock phrases added to §3 on
+  2026-09-30.
+- Flavio Copes, [Why I use anti-slop skills](https://flaviocopes.com/anti-slop/) (updated
+  29 September 2026): the separate review pass in §7.2, the strong-versus-weak split from
+  humanizer (§0), stop-slop's question-word rule behind §2.12, and "open with the useful point"
+  in §5.0.
+
+Considered and left out, because they fit a chat answer or English, not our posts: stop-slop's
+ban on every adverb and on every sentence starting with a question word (narrowed to §2.12 and the
+volume adverbs in §3.1), anti-ai-slop-writing's ban on the passive (narrowed to §2.11), its budget
+of one em dash per 500 words (ours is zero), "keep paragraphs short" (ours must be uneven, §2.7),
+and the lists of first words by model, which describe chat replies. deslop's rules are about code
+and belong in the conventions, not here.
 
 Adjacent standards:
 
