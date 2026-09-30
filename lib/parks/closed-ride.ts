@@ -4,7 +4,9 @@ import { getAttractionByGeoPath } from '@/lib/api/parks';
 import { getListItemByLocaleSlug, hasPublishedPosts } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import type { AttractionResponse } from '@/lib/api/types';
+import { stripNewPrefix } from '@/lib/utils';
+import type { AttractionResponse, ClosedAttraction } from '@/lib/api/types';
+import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -122,4 +124,24 @@ export function closedRideSource(
     return { href: url.toString(), host };
   }
   return null;
+}
+
+/**
+ * The park's closed rides as its ride search takes them: name, slug, themed area and the month it
+ * closed as finished text, so the client tree formats nothing. `undefined` for a park without one,
+ * so the prop is simply absent from the payload.
+ */
+export function closedRidesForSearch(
+  rides: readonly ClosedAttraction[] | undefined,
+  locale: string,
+  since: (month: string) => string
+): ClosedRideSearchItem[] | undefined {
+  if (!rides?.length) return undefined;
+  return rides.map((ride) => ({
+    id: ride.id,
+    name: stripNewPrefix(ride.name),
+    slug: ride.slug,
+    land: ride.land ?? null,
+    since: since(formatClosedMonth(ride.retiredAt, locale)),
+  }));
 }

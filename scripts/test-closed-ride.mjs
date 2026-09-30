@@ -22,6 +22,7 @@ import {
   closedRidePost,
   closedRideSource,
   formatClosedMonth,
+  closedRidesForSearch,
   formatClosedOn,
   isClosedRide,
 } from '../lib/parks/closed-ride.ts';
@@ -118,6 +119,38 @@ test('the closing day is the day entered, not the evening before in California',
   assert.equal(formatClosedOn('2026-07-13T00:00:00.000Z', 'de'), '13. Juli 2026');
   assert.equal(formatClosedOn('2026-07-13T00:00:00.000Z', 'en'), 'July 13, 2026');
   assert.equal(formatClosedMonth('2026-07-13T00:00:00.000Z', 'de'), 'Juli 2026');
+});
+
+// ── The park page's ride search ──────────────────────────────────────────────
+
+test('the search gets each closed ride with the month it closed as finished text', () => {
+  const rides = closedRidesForSearch(
+    [
+      {
+        id: 'id-x2',
+        name: 'X2',
+        slug: 'x2',
+        land: 'Thrill Rides',
+        retiredAt: '2026-07-13T00:00:00.000Z',
+      },
+    ],
+    'de',
+    (month) => `seit ${month}`
+  );
+  assert.deepEqual(rides, [
+    { id: 'id-x2', name: 'X2', slug: 'x2', land: 'Thrill Rides', since: 'seit Juli 2026' },
+  ]);
+});
+
+test('a park without a closed ride ships no list at all', () => {
+  assert.equal(
+    closedRidesForSearch([], 'de', (m) => m),
+    undefined
+  );
+  assert.equal(
+    closedRidesForSearch(undefined, 'de', (m) => m),
+    undefined
+  );
 });
 
 // ── Title and description ────────────────────────────────────────────────────

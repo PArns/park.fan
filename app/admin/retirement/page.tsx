@@ -62,6 +62,11 @@ interface Retired {
   kind?: 'closed' | 'reclassified' | null;
   /** Auf der Parkseite ausgeblendet. Ride-Seite und Sitemap bleiben. */
   hidden?: boolean;
+  /**
+   * Steht gerade auf der Parkseite: eine Stilllegung, nicht ausgeblendet und jünger als ein Jahr.
+   * Nach einem Jahr fällt die Bahn von selbst heraus und ist nur noch über ihre URL erreichbar.
+   */
+  onParkPage?: boolean;
 }
 
 function day(value: string | null): string {
@@ -306,7 +311,13 @@ function RetiredRow({ entry, canRestore }: { entry: Retired; canRestore: boolean
           keiner Parkseite. Nur eine echte Stilllegung lässt sich dort aus- und einblenden. */}
       {entry.kind === 'reclassified' && <Chip>umklassifiziert</Chip>}
       {entry.kind === 'closed' && entry.hidden && <Chip tone="warning">auf Parkseite aus</Chip>}
-      {canRestore && entry.kind === 'closed' && (
+      {/* `onParkPage` fehlt bei einer API vor dem Jahres-Auto-Hide; dann gilt die alte Anzeige. */}
+      {entry.kind === 'closed' && !entry.hidden && entry.onParkPage === false && (
+        <Chip>nach 1 Jahr von der Parkseite genommen</Chip>
+      )}
+      {/* Nach einem Jahr gibt es nichts mehr auszublenden; eine ausgeblendete Bahn lässt sich
+          aber immer wieder zeigen, solange das Jahr nicht um ist. */}
+      {canRestore && entry.kind === 'closed' && (entry.hidden || entry.onParkPage !== false) && (
         <Button
           size="sm"
           variant="ghost"
