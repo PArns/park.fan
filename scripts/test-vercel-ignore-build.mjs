@@ -21,11 +21,18 @@
  *
  * The last section drives the `[skip deploy]` marker the PO puts on every
  * squash merge of a batch but the last one. It is the one skip that is not
- * about the files in the diff: the marker asks a question and the tip of
- * `origin/main` answers it, so that section gets a bare repository as `origin`
- * and drives both answers — the tip already ahead, and the tip still on the
- * marked commit, which must build once the poll times out. The closing build of
- * a batch is checked for the files of the merges it skipped.
+ * about the files in the diff: the marker asks a question and the tip of `main`
+ * on GitHub answers it, so that section gets a bare repository standing in for
+ * GitHub and drives both answers — the tip already ahead, and the tip still on
+ * the marked commit, which must build once the poll times out. The closing
+ * build of a batch is checked for the files of the merges it skipped.
+ *
+ * That section runs in a checkout with no `origin` remote, because Vercel's has
+ * no usable one. The first version asked `origin`, passed every case here against a
+ * repository that had one, and built every marked merge in production for a
+ * week. The script asks the URL that VERCEL_GIT_REPO_OWNER/SLUG name, and git's
+ * `url.<base>.insteadOf` sends that URL to the bare repository, so nothing
+ * leaves the machine.
  *
  * `pnpm test:ignore-build`
  */
@@ -108,8 +115,22 @@ const fail = (msg) => {
 const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'ignore-build-'));
 const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
 
-/** A bare repository to stand in for `origin`, created by the marker section. */
-let originRepo = null;
+/** A bare repository to stand in for GitHub, created by the marker section. */
+let githubRepo = null;
+
+/** A second, shallow checkout for the fetch case, created by the marker section. */
+let shallowRepo = null;
+
+/**
+ * What Vercel sets for this repository, and the URL the script builds from it.
+ * Every marker case runs with these, because every production build has them.
+ */
+const GITHUB_ENV = {
+  VERCEL_GIT_PROVIDER: 'github',
+  VERCEL_GIT_REPO_OWNER: 'PArns',
+  VERCEL_GIT_REPO_SLUG: 'park.fan',
+};
+const GITHUB_URL = 'https://github.com/PArns/park.fan.git';
 
 /**
  * Interval and timeout for the `[skip deploy]` poll, in seconds.
@@ -128,11 +149,11 @@ const POLL = { IGNORE_BUILD_POLL_INTERVAL: '0.2', IGNORE_BUILD_POLL_TIMEOUT: '2'
  * `env` adds to the environment — `VERCEL_ENV` is what the `[skip deploy]`
  * marker reads, and leaving it out is the shape every other case runs in.
  * Returns the exit code and what the script printed, because one case asserts
- * the file list and not just the answer.
+ * the file list and not just the answer. `cwd` is the checkout it runs in.
  */
-function runScript(base, env = {}) {
+function runScript(base, env = {}, cwd = repo) {
   const options = {
-    cwd: repo,
+    cwd,
     encoding: 'utf8',
     env: { ...process.env, VERCEL_GIT_PREVIOUS_SHA: base ?? '', ...env },
   };
@@ -192,58 +213,79 @@ try {
   console.log('\nvercel-ignore-build — the [skip deploy] marker on a merge batch\n');
 
   // The marker asks a question — "has the batch moved on?" — and the tip of
-  // `origin/main` answers it, so this section needs an `origin` to ask.
-  originRepo = fs.mkdtempSync(path.join(os.tmpdir(), 'ignore-build-origin-'));
-  execFileSync('git', ['init', '-q', '--bare', '-b', 'main', originRepo]);
-  git('remote', 'add', 'origin', originRepo);
+  // `main` on GitHub answers it, so this section needs a GitHub to ask. It gets
+  // a bare repository, and the checkout gets no `origin`, because Vercel's has
+  // no usable one: git's `insteadOf` sends the URL the script builds from GITHUB_ENV to
+  // the bare repository, and that URL is the only way this checkout reaches it.
+  githubRepo = fs.mkdtempSync(path.join(os.tmpdir(), 'ignore-build-github-'));
+  execFileSync('git', ['init', '-q', '--bare', '-b', 'main', githubRepo]);
+  git('config', `url.${githubRepo}.insteadOf`, GITHUB_URL);
   // A machine with `push.negotiate` on prints "push negotiation failed" for
   // every push over the file protocol. The pushes still land, but the noise
   // reads like a broken test, so this repository does not inherit the setting.
   git('config', 'push.negotiate', 'false');
-  git('push', '-q', 'origin', 'main');
+  const push = (...args) => git('push', '-q', githubRepo, ...args);
+  push('main');
+  if (git('remote') !== '')
+    fail(`the marker cases must run without a remote, found: ${git('remote')}`);
 
   // A marked merge in production, and then the next merge of the batch lands on
-  // `origin/main` while this build is still being decided. The Vercel checkout
-  // stays on the marked commit, so the worktree goes back to it after the push.
-  // The file the marked commit touches is a component, so the allowlist would
-  // have built it — the marker and the tip are what decide here, nothing else.
+  // `main` while this build is still being decided. The Vercel checkout stays on
+  // the marked commit, so the worktree goes back to it after the push. The file
+  // the marked commit touches is a component, so the allowlist would have built
+  // it — the marker and the tip are what decide here, nothing else.
   const marked = commitTouching(
     ['components/home/hero.tsx'],
     'PAR-1: the first of a batch [skip deploy]'
   );
-  git('push', '-q', 'origin', 'main');
+  push('main');
   const nextMerge = commitTouching(
     ['components/home/teaser.tsx'],
     'PAR-2: the next merge of the batch'
   );
-  git('push', '-q', 'origin', 'main');
+  push('main');
   git('reset', '-q', '--hard', marked.head);
 
-  const aheadEnv = { VERCEL_ENV: 'production', VERCEL_GIT_COMMIT_SHA: marked.head, ...POLL };
-  if (exitOf(marked.base, aheadEnv) === SKIP)
-    pass('skip  — a marked production commit that origin/main has already moved past');
-  else fail('a marked production commit must skip once origin/main is ahead of it');
+  // The case production never reached before the tip was asked by URL: with no
+  // `origin`, `ls-remote origin` printed nothing and every marked merge built.
+  const aheadEnv = {
+    VERCEL_ENV: 'production',
+    VERCEL_GIT_COMMIT_SHA: marked.head,
+    ...GITHUB_ENV,
+    ...POLL,
+  };
+  const ahead = runScript(marked.base, aheadEnv);
+  if (ahead.status === SKIP && ahead.output.includes(GITHUB_URL))
+    pass('skip  — a marked production commit that main has already moved past, asked by URL');
+  else fail(`a marked production commit must skip once main is ahead of it:\n${ahead.output}`);
 
   // The same commit as a preview. A preview belongs to its pull request, and
   // the marker in the eventual squash message is none of its business. The tip
-  // is still ahead here, so a preview that consulted it would skip.
-  if (exitOf(marked.base, { VERCEL_ENV: 'preview', ...POLL }) === BUILD)
+  // is still ahead here, so a preview that consulted it would skip. The log
+  // still says it saw the marker, so a build log can tell the two apart.
+  const preview = runScript(marked.base, { VERCEL_ENV: 'preview', ...GITHUB_ENV, ...POLL });
+  if (preview.status === BUILD && preview.output.includes('only applies to production'))
     pass('build — the same marked commit as a preview (the allowlist decides)');
-  else fail('a marked preview commit must fall through to the normal check');
+  else fail(`a marked preview commit must fall through to the normal check:\n${preview.output}`);
 
-  // An ordinary merge in the same shape: origin/main is ahead of it too, and
-  // without the marker that means nothing at all.
+  // An ordinary merge in the same shape: main is ahead of it too, and without
+  // the marker that means nothing at all.
   const unmarked = commitTouching(['components/home/badge.tsx'], 'PAR-3: an ordinary merge');
-  const unmarkedEnv = { VERCEL_ENV: 'production', VERCEL_GIT_COMMIT_SHA: unmarked.head, ...POLL };
+  const unmarkedEnv = {
+    VERCEL_ENV: 'production',
+    VERCEL_GIT_COMMIT_SHA: unmarked.head,
+    ...GITHUB_ENV,
+    ...POLL,
+  };
   if (exitOf(unmarked.base, unmarkedEnv) === BUILD)
-    pass('build — an unmarked production commit, even with origin/main ahead of it');
+    pass('build — an unmarked production commit, even with main ahead of it');
   else fail('an unmarked commit must never consult the tip');
   git('reset', '-q', '--hard', marked.head);
 
   // ...and a marked preview commit that only touches documentation still skips,
   // for the reason it always did. The marker changes nothing either way here.
   const markedDocs = commitTouching(['docs/changelog.md'], 'PAR-4: docs only [skip deploy]');
-  if (exitOf(markedDocs.base, { VERCEL_ENV: 'preview', ...POLL }) === SKIP)
+  if (exitOf(markedDocs.base, { VERCEL_ENV: 'preview', ...GITHUB_ENV, ...POLL }) === SKIP)
     pass('skip  — a marked preview commit that only changed documentation');
   else fail('the marker must not turn a documentation-only preview into a build');
   git('reset', '-q', '--hard', marked.head);
@@ -251,16 +293,17 @@ try {
   // The batch that ended early: the last merge conflicted, nothing followed,
   // and the marked commit is still the tip. Nobody is going to build it, so
   // this build has to — after the poll gives the rest of the batch its window.
-  git('push', '-q', '--force', 'origin', 'main');
+  push('--force', 'main');
   const startedAt = Date.now();
   const stuck = runScript(marked.base, {
     VERCEL_ENV: 'production',
     VERCEL_GIT_COMMIT_SHA: marked.head,
+    ...GITHUB_ENV,
     ...POLL,
   });
   const waited = Date.now() - startedAt;
-  if (stuck.status === BUILD && stuck.output.includes('still the tip of origin/main'))
-    pass('build — a marked commit that stays the tip of origin/main, once the poll times out');
+  if (stuck.status === BUILD && stuck.output.includes('still the tip of main'))
+    pass('build — a marked commit that stays the tip of main, once the poll times out');
   else fail(`a marked commit that stays the tip must build: exit ${stuck.status}\n${stuck.output}`);
   if (waited >= 900)
     pass(`      — and it polled for ${waited} ms first, rather than falling through`);
@@ -271,19 +314,20 @@ try {
   // the next merge of the batch lands a second later. A version that compared
   // only on its first look passes every case above this one.
   //
-  // `origin/main` is moved by a child process while the script blocks here, and
-  // it is moved to a commit `origin` already has under another ref, so the
+  // `main` is moved by a child process while the script blocks here, and it is
+  // moved to a commit the bare repository already has under another ref, so the
   // object cannot have been pruned by the force-push above.
-  git('push', '-q', 'origin', `${nextMerge.head}:refs/heads/rest-of-batch`);
+  push(`${nextMerge.head}:refs/heads/rest-of-batch`);
   const mover = spawn(
     'bash',
-    ['-c', `sleep 1 && git --git-dir="${originRepo}" update-ref refs/heads/main ${nextMerge.head}`],
+    ['-c', `sleep 1 && git --git-dir="${githubRepo}" update-ref refs/heads/main ${nextMerge.head}`],
     { stdio: 'ignore' }
   );
   const pollStartedAt = Date.now();
   const arriving = runScript(marked.base, {
     VERCEL_ENV: 'production',
     VERCEL_GIT_COMMIT_SHA: marked.head,
+    ...GITHUB_ENV,
     IGNORE_BUILD_POLL_INTERVAL: '0.3',
     IGNORE_BUILD_POLL_TIMEOUT: '20',
   });
@@ -296,18 +340,32 @@ try {
   if (polled >= 900) pass(`      — and it took ${polled} ms, so the answer came from a later look`);
   else fail(`the poll answered after ${polled} ms, before the tip could have moved`);
 
-  // No `origin` to ask. Same rule as everywhere else in this script: a question
+  // Nothing to ask: no VERCEL_GIT_* to build a URL from, and no `origin` to fall
+  // back on. This is what every marked production build did before the URL, and
+  // the answer is the same rule as everywhere else in this script: a question
   // that cannot be answered is a reason to build, not to guess.
-  git('remote', 'remove', 'origin');
   const blind = runScript(marked.base, {
     VERCEL_ENV: 'production',
     VERCEL_GIT_COMMIT_SHA: marked.head,
     ...POLL,
   });
   if (blind.status === BUILD && blind.output.includes('could not read the tip'))
-    pass('build — a marked commit whose ls-remote fails');
+    pass('build — a marked commit with nothing to ask (no VERCEL_GIT_*, no origin)');
   else
     fail(`a marked commit must build when ls-remote fails: exit ${blind.status}\n${blind.output}`);
+
+  // Outside Vercel, without VERCEL_GIT_*, a checkout that has `origin` still
+  // answers through it — a local run of the script behaves as it always did.
+  git('remote', 'add', 'origin', githubRepo);
+  const local = runScript(marked.base, {
+    VERCEL_ENV: 'production',
+    VERCEL_GIT_COMMIT_SHA: marked.head,
+    ...POLL,
+  });
+  git('remote', 'remove', 'origin');
+  if (local.status === SKIP && local.output.includes('asking origin'))
+    pass('skip  — the same commit outside Vercel, where origin answers instead');
+  else fail(`without VERCEL_GIT_*, origin must answer: exit ${local.status}\n${local.output}`);
 
   // The end of a batch: two marked merges, then an unmarked one. The unmarked
   // commit builds, and because the base is the last successful deployment, that
@@ -315,7 +373,7 @@ try {
   const batch = commitTouching(['components/a.tsx'], 'PAR-3: batch one [skip deploy]');
   commitTouching(['components/b.tsx'], 'PAR-4: batch two [skip deploy]');
   commitTouching(['components/c.tsx'], 'PAR-5: batch three, the last merge');
-  const last = runScript(batch.base, { VERCEL_ENV: 'production' });
+  const last = runScript(batch.base, { VERCEL_ENV: 'production', ...GITHUB_ENV });
   if (last.status === BUILD) pass('build — an unmarked commit on top of two marked ones');
   else fail('the unmarked commit that ends a batch must build');
 
@@ -325,9 +383,40 @@ try {
   if (carried.length === 3) pass('      — and that build sees all three commits of the batch');
   else
     fail(`the closing build must list all three files, listed ${carried.length}: ${last.output}`);
+
+  // A previous deployment older than the checkout is deep. Vercel clones 10
+  // commits, and a batch of ten merges puts VERCEL_GIT_PREVIOUS_SHA outside it.
+  // The script fetches that SHA — by URL too, since there is no `origin` to
+  // fetch from. The commit on top touches only documentation, so a fetch that
+  // fails shows up here as a build.
+  const deployed = commitTouching(['components/d.tsx'], 'PAR-6: the last deployed commit');
+  commitTouching(['docs/changelog.md'], 'PAR-7: documentation on top of it');
+  push('--force', 'HEAD:main');
+  shallowRepo = fs.mkdtempSync(path.join(os.tmpdir(), 'ignore-build-shallow-'));
+  execFileSync('git', ['clone', '-q', '--depth=1', `file://${githubRepo}`, shallowRepo]);
+  const inShallow = (...args) =>
+    execFileSync('git', args, { cwd: shallowRepo, encoding: 'utf8', stdio: 'pipe' }).trim();
+  inShallow('remote', 'remove', 'origin');
+  inShallow('config', `url.${githubRepo}.insteadOf`, GITHUB_URL);
+  let hadBase = true;
+  try {
+    inShallow('cat-file', '-e', `${deployed.head}^{commit}`);
+  } catch {
+    hadBase = false;
+  }
+  const deep = runScript(deployed.head, { VERCEL_ENV: 'production', ...GITHUB_ENV }, shallowRepo);
+  if (!hadBase && deep.status === SKIP)
+    pass(
+      'skip  — documentation on a shallow checkout that lacks the last deployment, fetched by URL'
+    );
+  else
+    fail(
+      `a previous deployment outside the checkout must be fetched by URL (had it: ${hadBase}): exit ${deep.status}\n${deep.output}`
+    );
 } finally {
   fs.rmSync(repo, { recursive: true, force: true });
-  if (originRepo) fs.rmSync(originRepo, { recursive: true, force: true });
+  if (githubRepo) fs.rmSync(githubRepo, { recursive: true, force: true });
+  if (shallowRepo) fs.rmSync(shallowRepo, { recursive: true, force: true });
 }
 
 if (failures > 0) {
