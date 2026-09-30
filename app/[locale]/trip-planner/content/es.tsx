@@ -1,13 +1,14 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
+import { CalendarDays, Clock, Footprints, Gauge, Users, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
+import { DEMO_PARTY_RIDES } from '../_fixtures';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerEntry } from '@/lib/planner/types';
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 
-/** El artículo de la página del planificador, español. Ver `content/de.tsx` para la convención. */
+/** The planner page's article, Spanish. See `content/de.tsx` for the convention. */
 export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntry[] }) {
   return (
     <>
@@ -16,108 +17,109 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="01"
         icon={CalendarDays}
         kicker="El día como línea de tiempo"
-        title="Bloques y traslados"
+        title="Bloques y enlaces"
       >
         <P>
-          Un bloque es una atracción, y su altura es la espera prevista para su hora. Arrastra el
-          mismo bloque a una hora con más gente y crece; colócalo en una más tranquila y encoge.
-          Entre dos bloques está el traslado: cuánto hay que andar y si queda tiempo para hacerlo.
-          Salir de la estación y el viaje en sí ya van incluidos en el traslado.
+          Cada atracción de tu plan es un bloque en la línea de tiempo del día, y mide tanto como la
+          cola que te espera a esa hora. Si lo arrastras a una hora más llena, crece; en una más
+          tranquila, encoge. Entre dos bloques está el enlace, con la distancia hasta la siguiente
+          atracción y si te da tiempo. «Justo» quiere decir que deja de salir en cuanto la espera
+          anterior se desvía tanto como suele hacerlo.
         </P>
         <P>
-          La línea de tiempo de abajo está hecha con las mismas piezas que el planificador y muestra
-          la respuesta que dio la API el 4 de septiembre de 2026 para el sábado 12 de septiembre en{' '}
-          <A href={PARK}>Phantasialand</A>. Arrastra un bloque a otra hora. Encaja en pasos de cinco
-          minutos, y su altura y los traslados de al lado se vuelven a calcular. Aquí no se guarda
-          nada.
+          Abajo hay un plan para <A href={PARK}>Phantasialand</A> el sábado 12 de septiembre de
+          2026, con las esperas que se preveían para ese día el 4 de septiembre. Arrastra un bloque
+          a otra hora y se recalculan su altura y los enlaces. Nada de esto llega a tu propio plan.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
-          En el bloque seleccionado aparece lo mismo en palabras: la hora, la espera prevista y
-          cuánto suele equivocarse la previsión en esa atracción.
+          En el bloque seleccionado aparecen la hora, la espera prevista y cuánto suele fallar la
+          previsión en esa atracción.
         </Note>
+        <P>
+          En una pantalla ancha caben dos días uno al lado del otro, por ejemplo sábado y domingo, o
+          dos parques. Cada uno lleva su tiempo de cola en total, así ves qué día haces menos cola.
+        </P>
       </Chapter>
 
       <Chapter
         id="de-donde-sale-el-numero"
         index="02"
         icon={Gauge}
-        kicker="El número del bloque"
-        title="De dónde salen los minutos y cuánto valen"
+        kicker="Previsión"
+        title="De dónde salen los tiempos de espera"
       >
         <P>
-          Para cada atracción la API devuelve una curva del día, hora a hora. Ese sábado Taron marca
-          45 minutos a las diez, 50 a las once, 40 a la una y otra vez 50 por la tarde; en todo el
-          día solo hay diez minutos de diferencia. Como para Taron no hay ninguna franja buena ese
-          día, acaba donde el resto del día deja hueco. Black Mamba baja de 35 minutos al mediodía a
-          20 a las seis, y Chiapas va al revés, de 20 a 35.
+          Cada atracción tiene una previsión para todo el día, hora a hora. Este sábado, Black Mamba
+          baja de 35 minutos a mediodía a 20 a última hora, mientras que Chiapas está en 20 minutos
+          a las diez y cuarto y en 35 por la tarde. Ese día, Black Mamba va mejor al final y Chiapas
+          por la mañana.
         </P>
         <P>
-          A eso se suma cuánto se suele desviar la cifra, y cuanto más larga la cola, mayor la
-          dispersión. Para las atracciones cuyo pico del día llega a 35 minutos o más, la API indica
-          ese sábado un error típico de 15,4 minutos, y de 10,9 para las más planas. En la mitad de
-          los días, la espera real se aleja más que eso. Por eso aparece como un más-menos en el
-          bloque seleccionado. Escrito como intervalo, parecería que la espera real cae con
-          seguridad dentro de él.
+          Cuánto suele fallar la previsión en una atracción aparece en su bloque, 15 minutos para{' '}
+          <A href={`${PARK}/taron`}>Taron</A> este sábado. Cuanto más lejos está el día, más
+          aproximada es la cifra, y al lado figura de dónde sale, de «Previsión por horas» a
+          «Estimación aproximada», pasando por «De la previsión del día».
         </P>
-        <Note>
-          Detrás de la curva de Taron hay 142 días medidos, detrás de Black Mamba 161. El número
-          está en <A href={`${PARK}/taron`}>la página de la atracción</A>.
-        </Note>
         <P>
-          Junto a la cifra consta además qué clase de previsión es. Si el modelo calcula el día hora
-          a hora, así se indica. Si la altura del día viene de la previsión y la forma de días
-          anteriores, como ese sábado, también se indica. Con bastante antelación esa altura ya es
-          incierta y queda una estimación aproximada. Para un día que nunca se ha medido no hay plan
-          con números.
+          <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> solo muestra sus
+          tiempos de espera en su propia app, con el wifi del parque, así que para él no hay cifras.
+          Puedes planificar un día allí igualmente, pero sin minutos y sin los botones de ordenar.
         </P>
       </Chapter>
 
       <Chapter
-        id="horarios-de-apertura"
+        id="quien-viene"
         index="03"
-        icon={Sunrise}
-        kicker="Apertura"
-        title="Atracciones que abren más tarde que el parque"
+        icon={Users}
+        kicker="Grupo"
+        title="Altura mínima y atracciones de agua"
       >
         <P>
-          Ese sábado Phantasialand abre a las 9. Taron, F.L.Y., las dos Winja&apos;s y Raik
-          funcionan a partir de las 10, y Chiapas desde las 10:15. Quien esté en el torno a las
-          nueve puede elegir entre Black Mamba y Maus au Chocolat. Un plan que llena la primera hora
-          con las atracciones principales no cuadra ese día.
+          Un día nuevo empieza con cuatro preguntas: qué parque, qué día, quién viene y qué
+          atracciones grandes entran en el plan. En el calendario del mes, cada día tiene el color
+          de la afluencia esperada, y el{' '}
+          <A href={`${PARK}/calendario-tiempos-espera`}>calendario de tiempos de espera</A> del
+          parque da más detalle.
         </P>
         <P>
-          Cada atracción tiene su propia hora de apertura, y un bloque solo se puede colocar a
-          partir de ella. Por la tarde falta ese límite, porque ningún feed informa de forma fiable
-          de cuándo cierra una atracción; la línea de tiempo termina en la hora de cierre del
-          parque.
+          Si vienen niños, indicas cuánto mide el más bajo y si preferís no mojaros. Las atracciones
+          con una altura mínima mayor y las de agua reciben entonces una marca y siguen en la lista,
+          porque solo vosotros sabéis si alguien esperará a la salida con las bolsas. En
+          Phantasialand, Taron pide {DEMO_PARTY_RIDES.taron.minimumHeight} cm y Chiapas{' '}
+          {DEMO_PARTY_RIDES.chiapas.minimumHeight} cm, y en Chiapas te mojas (a 29 de septiembre de
+          2026). Con un niño de 120 cm, las dos llevan la marca.
         </P>
+        <Note>
+          Donde no tenemos una altura mínima registrada, como en Moptis Monkey Depot, la atracción
+          no lleva marca. En la entrada de la atracción vale lo que diga el parque.
+        </Note>
       </Chapter>
 
       <Chapter
-        id="traslados"
+        id="el-dia"
         index="04"
-        icon={Footprints}
-        kicker="El camino intermedio"
-        title="Cuánto tardas de una atracción a otra"
+        icon={Clock}
+        kicker="El día"
+        title="Horarios, espectáculos y pausas"
       >
         <P>
-          Un feed de tiempos de espera da 50 minutos para Taron. Si desde Rookburgh llegas a tiempo,
-          eso lo calcula el traslado. Toma la distancia entre las coordenadas de ambas atracciones,
-          más tres minutos para salir de una estación y tres para embarcar y montar donde no consta
-          ninguna duración.
+          Este sábado, Phantasialand abre a las 9, pero Taron, F.L.Y. y la mayoría de las demás
+          atracciones grandes no funcionan hasta las 10. Si llegas a las nueve, empieza por Black
+          Mamba o Maus au Chocolat. Un bloque no se puede arrastrar a antes de que abra su
+          atracción.
         </P>
         <P>
-          Esa distancia es en línea recta, y así se nombra. Andando es más largo, porque los caminos
-          rodean el agua, las colas y los sentidos únicos y Phantasialand apila Rookburgh y Klugheim
-          uno encima del otro. Por eso la cota superior se calcula a ritmo de parque en lugar de
-          paso ligero, con dos tercios añadidos a la línea recta por el rodeo.
+          Los horarios de los espectáculos también aparecen en la línea de tiempo. Para hoy son los
+          del parque. Para días posteriores ninguna fuente los publica, así que tomamos los del
+          último día de la semana equivalente y añadimos «Previsto».
         </P>
-        <Note>
-          Un traslado es «justo» cuando deja de cuadrar en cuanto la previsión se equivoca tanto
-          como ella misma advierte. Si la API no da dispersión, el veredicto se queda en «bien», y
-          así consta en su título.
-        </Note>
+        <P>
+          Las pausas, la comida o un punto de encuentro van como bloque propio, tan largo como lo
+          necesites. Si al crear el día marcas «Reservar un rato para comer», ya tienes uno a las
+          12:30. Encima del día aparecen además las vacaciones escolares y los festivos y, hasta
+          unas dos semanas antes, el tiempo.
+        </P>
       </Chapter>
 
       <Chapter
@@ -125,102 +127,47 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="05"
         icon={Wand2}
         kicker="Ordenar"
-        title="Los botones que ordenan el día"
+        title="Dejar que se ordene el día"
       >
         <P>
-          Detrás de los dos corre el mismo cálculo. «Planificar todas las atracciones estrella»
-          añade las grandes del parque que aún faltan en el día y después ordena todo. «Optimizar el
-          día» solo reordena lo que ya está planificado. El primero es para cuando aún faltan
-          atracciones grandes; el segundo, para cuando solo quieres mejorar el orden.
+          Con dos botones ordenas el día sin mover cada bloque a mano. «Planificar todas las
+          atracciones estrella» añade las atracciones grandes que aún faltan y luego ordena todo el
+          día. «Optimizar el día» solo reordena lo que ya está en el plan. En los dos casos todo
+          cabe antes del cierre del parque y haces la menor cola posible.
         </P>
         <P>
-          Se ordena según cuatro reglas, de mayor a menor prioridad. La primera es la tuya: lo que
-          pones delante es lo último que se cae. Después, todo tiene que caber antes del cierre, y
-          una atracción menos que seguro se hace vale más que una más que llegaría tarde. Luego
-          cuenta la suma de las esperas, y a igual suma gana el orden que termina antes. No hay
-          ningún control deslizante para sopesar la cola frente al rato muerto, porque para esa
-          proporción no se puede justificar ningún valor.
+          La pausa para comer y las atracciones marcadas como hechas se quedan donde están. Después
+          ves cuántos minutos de cola te ahorras, y «Deshacer» recupera lo que tenías.
         </P>
         <P>
-          Para primera hora de la mañana no hay una regla propia, solo la curva horaria de cada
-          atracción. Si está en su punto más bajo justo después de abrir, «la grande primero» sale
-          del cálculo por sí solo; si es plana, sale otra cosa. En un día medido, Taron marca hora
-          tras hora 60, 60, 54, 53 y 59 minutos, mientras que Chiapas sube 22.
+          Si no cabe todo en el día, se abre un asistente. Primero propone cambios que hacen sitio
+          sin quitar ninguna atracción, como una pausa para comer más corta. Si no basta, ordenas
+          las atracciones por importancia y se recorta por abajo.
         </P>
-        <P>
-          A veces la propuesta es esperar un rato en lugar de ponerse ya en la cola. Eso ocurre
-          cuando la cola baja lo suficiente para que, contando la pausa, quedes libre antes que si
-          te hubieras puesto de inmediato. Hacer menos cola no basta, porque el día no puede
-          terminar más tarde por culpa de la pausa. Una pausa así dura como mucho dos horas, y casi
-          nunca llega a ese límite, ya que una pausa solo compensa si es más corta que la cola que
-          ahorra, y dos horas de pausa exigirían una cola de más de dos horas.
-        </P>
-        <P>
-          Una pausa para comer a la una se queda a la una, y una atracción marcada se queda donde
-          está; lo demás se ordena alrededor. Después del clic aparece lo que ha cambiado. «18 min
-          menos de cola» es la diferencia entre dos cuentas hechas igual, una antes del clic y otra
-          después. Si no hay nada que ganar, aparece que el orden ya es el bueno, y el plan se queda
-          como estaba. Tras el botón de las atracciones estrella, en lugar de un ahorro aparece
-          cuántas se han añadido y cuántas no encajan con el grupo, porque con las nuevas
-          atracciones el día se alarga. Lo que al final ya no cabe en el día se indica después de
-          cualquiera de los dos botones. «Deshacer» devuelve el estado anterior al clic mientras el
-          planificador siga abierto.
-        </P>
-        <Note>
-          Donde no llega ningún tiempo de espera, faltan los dos botones. En el Hansa-Park cada
-          atracción cuesta el mismo cero supuesto, así que un orden vale tanto como otro.
-        </Note>
       </Chapter>
 
       <Chapter
-        id="horarios-de-espectaculos"
+        id="en-el-parque"
         index="06"
-        icon={Theater}
-        kicker="Espectáculos"
-        title="De dónde salen los horarios de los espectáculos"
+        icon={Footprints}
+        kicker="En el parque"
+        title="El mismo día"
       >
         <P>
-          Para hoy la API tiene el horario del propio parque. Para cualquier otra fecha proyecta el
-          último día de la semana equivalente, porque ninguna fuente publica los horarios por
-          adelantado, e indica de qué fecha vienen y sobre cuántos días se apoyan. Una proyección
-          lleva una tilde delante de la hora y la palabra «previsto»; un horario del parque, ninguna
-          de las dos cosas.
+          En el parque marcas lo que ya has montado. El bloque lleva entonces la espera que figuraba
+          al marcarlo y cuánto se desvió la estimación. Si una atracción del plan figura como
+          cerrada en ese momento, también aparece en su bloque.
         </P>
         <P>
-          Ese sábado todos los horarios son proyecciones: los de Dragon Drago y Kroka&apos;s Lodge
-          vienen del 15 de agosto, los de Miji African Dancers del 29. El último pase de
-          Kroka&apos;s Lodge a las 19:00 no aparece en la línea de tiempo, porque el parque cierra a
-          las 18:00 y los horarios proyectados más allá se descartan.
-        </P>
-      </Chapter>
-
-      <Chapter
-        id="limites"
-        index="07"
-        icon={HelpCircle}
-        kicker="Límites"
-        title="Datos que faltan y dónde se guarda el plan"
-      >
-        <P>
-          <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> solo muestra sus
-          tiempos de espera en su propia aplicación dentro de la wifi del parque, así que nunca nos
-          llegará una cifra suya, y no nos la inventamos. La previsión del tiempo llega a unas dos
-          semanas; más allá, el panel lo dice en vez de dejar un hueco que se leería como «no
-          lloverá».
+          Con las notificaciones te avisamos cuando toca ir a la siguiente atracción, cuando una
+          atracción del plan cierra o vuelve a abrir y cuando una espera cambia mucho. También
+          puedes recibir los horarios de los espectáculos. Tú eliges qué te llega.
         </P>
         <P>
-          El mismo día, una atracción puede pararse, un espectáculo cancelarse o una tormenta
-          trastocar la tarde. El plan calcula si el día puede cuadrar con las esperas previstas. En
-          el parque vas marcando lo que has montado, y junto a cada atracción queda anotada la
-          espera que realmente había.
-        </P>
-        <P>
-          El plan está en tu navegador y no necesitas cuenta. Solo cuando activas las notificaciones
-          guardamos una copia en nuestro servidor, y se avisa en ese momento. Sin plan, empiezas por
-          el asistente y sus cuatro preguntas previas: qué parque, qué día, quién viene y qué
-          grandes atracciones entran en el día. El día adecuado se encuentra mejor en el{' '}
-          <A href={`${PARK}/calendario-tiempos-espera`}>calendario de tiempos de espera</A> del
-          parque.
+          El plan se guarda en tu navegador y no necesitas cuenta. Solo para las notificaciones
+          guardamos una copia en nuestro servidor, que se borra en cuanto las desactivas. Mientras
+          esté ahí, puedes mandar un enlace al plan, y quien lo abra puede quedárselo como copia
+          propia.
         </P>
       </Chapter>
     </>
