@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Seit dem 16. September fährt in Universal Studios Hollywood die erste
   Achterbahn des Parks unter freiem Himmel: 72 mph, vier Launches, drei
-  Inversionen und Autos, die sich um die eigene Achse drehen. Was die Bahn kann
-  und wer nicht mitfahren darf.
+  Inversionen und Autos, die sich um die eigene Achse drehen. Mitfahren darf, wer
+  mindestens 129,5 Zentimeter groß ist.
 tags:
   - news
   - universal-studios-hollywood
@@ -41,8 +41,8 @@ aufgemacht. Es ist die erste Achterbahn des Parks, die im Freien fährt, und
 laut Universal die schnellste im gesamten Portfolio von Universal Destinations
 & Experiences. Der Anlass ist das 25-jährige Jubiläum der Filmreihe.
 
-Ganz neu ist die Bahn nicht. Ein Soft Opening gab es schon am 27. Juli, die
-offizielle Eröffnung kam gut sieben Wochen später.
+Das Soft Opening war schon am 27. Juli, gut sieben Wochen vor der offiziellen
+Eröffnung.
 
 ## Was die Bahn kann
 
@@ -71,8 +71,6 @@ kommen in ein kostenloses Schließfach, und am Eingang der Bahn wird per
 Metalldetektor kontrolliert.
 
 ## Für den Besuch
-
-Die aktuelle Wartezeit steht auf der Seite der Bahn.
 
 [Fast & Furious: Hollywood Drift](ref:universal-studios-hollywood/fast-and-furious-hollywood-drift?full)
 
