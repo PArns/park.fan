@@ -11,7 +11,7 @@ is something to tell people. The authoring contract for the public entries is
 
 - The PO decides when a version is cut, its number and what goes into the public entry: at a
   cycle boundary (Monday) or when enough visible change has piled up, never more often than weekly
-  and never less often than monthly. 2.13.0 bundled 127 commits and 43 internal sections into 21
+  and never less often than monthly. 2.13.0 bundled 128 commits and 44 internal sections into 22
   public items.
 - The number follows what a visitor can see. MINOR (`x.Y.0`) once at least one new visible
   capability has landed since the last cut: a page, a flow, a behaviour somebody would notice.

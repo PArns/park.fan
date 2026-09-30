@@ -35,12 +35,33 @@ kam. Der öffentliche Eintrag ist `content/changelog/2.13.0.md`. Neueste Abschni
   das Layout, das `docs/blog.md` §4.2 als Chat-Muster nennt, und die README der Sammlung schrieb es
   vor. Dazu drei Starts aus der Periode, die der Eintrag nicht nannte: der Tagesplaner (#388,
   4.9.), die Wartezeit-Alarme (#423, 8.9.) und `/favorites` (#488, 16.9.), außerdem die
-  Statistikseiten (#546, drei Minuten vor dem Schnitt gemergt). `pnpm check:prose` prüft `content/changelog/` jetzt mit (Fehler: Fettdruck am Anfang eines
-  Listenpunkts, Gedankenstrich, Markdown in `title`/`summary`).
+  Statistikseiten (#546, drei Minuten vor dem Schnitt gemergt). `pnpm check:prose` prüft
+  `content/changelog/` jetzt mit (Fehler: Fettdruck am Anfang eines Listenpunkts, Gedankenstrich,
+  Markdown in `title`/`summary`).
 - **Regeln für den Schnitt:** `pnpm check:changelog` (auch in der CI) prüft Dateiname gegen
   Version, Datumsfolge, `package.json` gegen den neuesten veröffentlichten Eintrag, die
   Versionsüberschrift hier im Log und dass kein `Unreleased`-Abschnitt unter einer Version steht.
   Dabei fiel auf, dass 2.12.0 hier nie eine Überschrift bekommen hatte; die steht jetzt.
+
+### The "more" menu lists what its three hubs hold, and the phone menu does too
+
+„Mehr" was three cards of one line each, with the dictionary's twelve categories under the middle
+one: from a 1280 px bar two thirds of the band were empty, below it the band was the three cards
+alone (231 px, where the news, parks and blog bands open to 455–595 px at a 1024 px bar), and the
+one list in it hung in the middle column. Each hub is now a column with its photo and its contents
+— the dictionary's categories on the left, then the best-time hub's six chapters with a Fancast
+card, then the guide's eleven chapters — at every bar width, 591 px in all six locales. The
+chapters are fragment links on their hub, so they add no crawl target; their lists are the arrays
+the pages render (`lib/howto/chapters.ts`, moved out of the six content modules, and the new
+`lib/best-time/chapters.ts`), resolved in the layout with the photos (`lib/navigation/more-menu.ts`)
+and pinned by `pnpm test:hub-chapters`. The footer row is pills; Fancast moved from it to its card.
+
+On the phone the three hubs open like „Parks entdecken" (`SheetDisclosure`): „Übersicht" first,
+then the categories or chapters. A link to the page already showing now closes the band as it
+already closed the sheet, so a chapter clicked on its own hub no longer leaves the band over the
+page. New strings: `navigation.fancastHint`, `navigation.overview`. The measurements — contrast of
+the text on the photos, row alignment, label widths, byte cost — are in
+[header navigation](features/header-navigation.md#three-hubs-each-with-what-it-holds-2026-09-30).
 
 ### Größenstufen je Park auf einer eigenen Seite: „Mit Kindern“
 

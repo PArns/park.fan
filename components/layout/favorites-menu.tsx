@@ -44,7 +44,7 @@ export const FavoritesMenu = memo(function FavoritesMenu({ floating }: { floatin
   const t = useTranslations('favorites');
   const panelId = useId();
   const counts = useFavoriteCounts();
-  const { open, triggerProps, toggle } = useMenuTrigger();
+  const { open, triggerProps, toggle, closeOnSamePageClick } = useMenuTrigger();
 
   return (
     <div {...triggerProps}>
@@ -99,7 +99,7 @@ export const FavoritesMenu = memo(function FavoritesMenu({ floating }: { floatin
         />
       </button>
 
-      <MenuBand id={panelId} open={open}>
+      <MenuBand id={panelId} open={open} onClick={closeOnSamePageClick}>
         <FavoritesMenuPanel open={open} />
       </MenuBand>
     </div>

@@ -101,4 +101,4 @@ enforces the half a machine can. The ones this collection gets wrong most easily
 - Vary the items. Twenty bullets built the same way read generated even when each one is true.
 - No em dash anywhere; a range takes an unspaced en dash (`2.7.0–2.7.14`).
 - Blog and news posts never appear here. A post is content; the release is the product.
-- Pick. A release note is not the commit list: 2.13.0 turned 43 internal sections into 21 items.
+- Pick. A release note is not the commit list: 2.13.0 turned 44 internal sections into 22 items.
