@@ -398,9 +398,9 @@
     },
     "families": {
       "kicker": "With kids",
-      "title": "Which rides can your child ride? Check by height",
-      "lead": "Every park posts a minimum height per ride. For these parks, one page lists what a child may ride at each height, on the steps the park sets itself.",
-      "cardBody": "Which ride from which height."
+      "title": "Which rides can your child ride? Filter by height",
+      "lead": "For every ride, park.fan shows the minimum height the park gives. Before your visit you can check which rides you can all ride together and which ones your child is still too small for.",
+      "cardBody": "Every ride by minimum height."
     }
   },
   "footer": {

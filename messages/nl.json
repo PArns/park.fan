@@ -398,9 +398,9 @@
     },
     "families": {
       "kicker": "Met kinderen",
-      "title": "Welke attracties mag mijn kind in? Kijk het na op lengte",
-      "lead": "Elk park noemt per attractie een minimumlengte. Voor deze parken staat op één pagina wat een kind bij welke lengte mag, in de stappen die het park zelf hanteert.",
-      "cardBody": "Welke attractie vanaf welke lengte."
+      "title": "Welke attracties mag mijn kind in? Filter op lengte",
+      "lead": "Bij elke attractie toont park.fan de minimumlengte die het park opgeeft. Zo check je al voor je bezoek welke attracties jullie samen kunnen doen en voor welke je kind nog te klein is.",
+      "cardBody": "Alle attracties op minimumlengte."
     }
   },
   "footer": {

@@ -398,9 +398,9 @@
     },
     "families": {
       "kicker": "Con niños",
-      "title": "¿Qué atracciones puede subir mi hijo? Comprobarlo por estatura",
-      "lead": "Cada parque indica una estatura mínima por atracción. Para estos parques, una página muestra qué puede subir un niño con cada estatura, en los escalones que fija el propio parque.",
-      "cardBody": "Qué atracción desde qué estatura."
+      "title": "¿Qué atracciones puede subir mi hijo? Filtrar por estatura",
+      "lead": "De cada atracción, park.fan muestra la estatura mínima que indica el parque. Antes de la visita puedes comprobar cuáles podéis subir juntos y para cuáles tu hijo aún es demasiado pequeño.",
+      "cardBody": "Todas las atracciones por estatura mínima."
     }
   },
   "footer": {
