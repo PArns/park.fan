@@ -44,7 +44,7 @@ export async function GET(): Promise<Response> {
 park.fan collects what parks publish about their queues, keeps the history, and predicts the
 rest. Every park and every ride has a page; every page also answers \`Accept: text/markdown\`,
 so fetching one is a data request, not a scraping job. Pages exist in \`en\`, \`de\`, \`fr\`,
-\`it\`, \`nl\` and \`es\` under \`/{locale}/…\` — the numbers are the same in all six.
+\`it\`, \`nl\` and \`es\` under \`/{locale}/…\`, and the numbers are the same in all six.
 
 ## Start here
 
@@ -109,7 +109,7 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
 
 - Wait times are what the park posted, rounded to five minutes. They move on the order of
   minutes; re-fetching faster than every five minutes returns the same values.
-- Some parks publish no wait times at all — Hansa-Park shows them only in its own app on the
+- Some parks publish no wait times at all. Hansa-Park shows them only in its own app on the
   park WLAN. Those pages say so. An absent number is not a zero.
 - Out of season is not open: a ride that cannot run today is in neither the open nor the closed
   count.
@@ -124,12 +124,12 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
   api.park.fan.
 - Training on these pages is declined (\`Content-Signal: ai-train=no\` in robots.txt). Reading a
   page to answer a question is what the site is for (\`ai-input=yes\`). The same terms in
-  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0). The price is a credit — name
+  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0). The price is a credit: name
   park.fan and link the page a number came from.
 
 ## Contact
 
-Patrick Arns — ${EN}/impressum
+Patrick Arns: ${EN}/impressum
 `;
 
   return new Response(body, {

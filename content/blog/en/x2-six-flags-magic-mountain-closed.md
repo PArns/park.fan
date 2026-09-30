@@ -79,7 +79,7 @@ neurosurgeons who treated them see the ride as the cause:
 
 The park closed the ride on the evening of 12 July. Cal/OSHA, California’s
 workplace safety agency, which also oversees the safety of amusement rides, has
-opened an investigation. It is still running, and the agency hasn’t given any
+opened an investigation. It’s still running, and the agency hasn’t given any
 details.
 
 ## Earlier cases and new lawsuits
@@ -226,12 +226,12 @@ Dinosaurs Park in Changzhou, open since 2012 and designed by Schilke and S&S.
 
 ## What becomes of the ride
 
-That’s an open question. Six Flags hasn’t said whether X2 will be torn down or
+Six Flags hasn’t said whether X2 will be torn down or
 sold, or what will go on the site. The park’s next new ride is already known,
 but it has nothing to do with X2. On 10 September, just under three weeks before
 X2’s retirement, Magic Mountain announced Thrill Glider for 2027, a Vekoma
 coaster on which you hang face down beneath the track in a seat like a
-motorbike’s. It is being built on the site of the former Golden Bear Theatre,
+motorbike’s. It’s being built on the site of the former Golden Bear Theatre,
 between Full Throttle and Lex Luthor: Drop of Doom, in a different part of the
 park from X2.
 

@@ -58,11 +58,10 @@ seo:
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)** è alto **73 metri** e viaggia a
 **127 km/h**. Condivide entrambi i numeri con [Silver Star](ref:europa-park/silver-star?bare) dell’Europa-Park dal **2015**, così metà
-del record tedesco di altezza e velocità si trova in una località balneare del Baltico che la maggior
-parte dei visitatori non avrebbe saputo collocare.
+del record tedesco di altezza e velocità si trova in una località balneare del Baltico.
 
 Sierksdorf sta 24 chilometri in linea d’aria a nord di Lubecca. Il parco si definisce l’unico parco
-di divertimenti tedesco sul mare, e sul mare ci sta davvero: le case vacanza del resort accanto
+di divertimenti tedesco sul mare, e sul mare ci sta davvero. Le case vacanza del resort accanto
 danno direttamente sul Baltico, fra loro e il parco passa il treno regionale da Lubecca a Neustadt,
 e dall’alto dell’Highlander si vede tutta la baia di Lubecca.
 
@@ -114,8 +113,7 @@ fuga.
 
 Anton Schwarzkopf ha costruito **[Nessie](ref:hansa-park/nessie)** nel **1980**: 26 metri di altezza, 741 metri di
 tracciato, 80 km/h, un solo looping verticale e, all’epoca, il looping più grande d’Europa. Viaggia
-da 46 anni e nel 2019 si è regalato un’area ritematizzata, come altri alla sua
-età si rifanno la cucina.
+da 46 anni e nel 2019 si è regalato un’area ritematizzata.
 
 Seguono quattro più piccoli, e solo uno di questi non è da famiglia. **[Crazy Mine](ref:hansa-park/crazy-mine)** di Maurer
 viaggia dal 1997 come wild mouse in scenografia da miniera, 15 metri di altezza e finita dopo 70
@@ -150,15 +148,14 @@ aggiunto cinture supplementari alle barre di sicurezza.
 
 ```
 
-Per le famiglie, all’Highlander conta soprattutto un altro numero: 1,40 metri di statura minima,
-l’asticella più alta di tutto il parco.
+Per le famiglie, all’Highlander conta soprattutto la statura minima di 1,40 metri, l’asticella più
+alta di tutto il parco.
 
 ## Un calendario senza giorni di chiusura
 
 La stagione 2026 va dal **26 marzo al 25 ottobre**. Abbiamo interrogato il calendario di apertura del
 parco giorno per giorno, l’ultima volta il 25 settembre, e fra queste due date non c’è **nemmeno un
-giorno di chiusura**. Nessun lunedì saltato in primavera, nessun buco di martedì a ottobre, niente.
-Sono 214 giorni di apertura, nel calendario del parco come nel nostro feed del calendario.
+giorno di chiusura**. Sono 214 giorni di apertura, nel calendario del parco come nel nostro feed del calendario.
 
 Europa-Park e Phantasialand fanno lo stesso. Lo Heide Park invece toglie regolarmente il lunedì dal
 calendario in primavera e in autunno, il Movie Park fuori dall’alta stagione chiude per lo più dal
@@ -166,7 +163,7 @@ lunedì al mercoledì, e perfino il Legoland Deutschland di Günzburg ha nel 202
 chiusura a maggio, giugno e settembre. Chi a Sierksdorf cerca un giorno feriale tranquillo lo ottiene davvero come giorno di
 apertura e non come cancello chiuso.
 
-Gli orari sono quasi altrettanto monotoni, nel senso migliore: per organizzarsi qui non serve un
+Gli orari sono quasi altrettanto monotoni, nel senso migliore, e per organizzarsi qui non serve un
 calendario con le note a piè di pagina. Fino al **9 ottobre** il parco apre ogni giorno alle
 **10:00** e le attrazioni chiudono alle **18:00**. Esattamente tre giorni sono usciti dallo schema,
 e sono già tutti passati: il Venerdì Santo, il 3 aprile, le attrazioni sono partite solo alle 11:00.
@@ -217,7 +214,7 @@ sotto i dieci anni stai quindi meglio qui che a una serata di labirinti. Del tut
 però, non è nemmeno qui: lo spettacolo serale è rumoroso, e il parco stesso avverte che può
 spaventare i più piccoli.
 
-## Questo parco conta in anni, non solo in centimetri
+## Qui conta anche l’età
 
 Nella maggior parte dei parchi, all’ingresso di ogni attrazione c’è un numero di centimetri. Qui c’è
 spesso anche un’età, ed è lei a decidere se tuo figlio può salire da solo o soltanto con un adulto
@@ -272,7 +269,7 @@ vecchie Landungsbrücken e cresce facciata dopo facciata, in otto fasi documenta
 Holstentor come ingresso, nel 2010 Bruges, Visby, Lubecca, Amburgo e Rostock, nel 2011 Groninga e
 Parigi, nel 2012 Londra, Ribe e Bergen, nel 2013 altre sei da Copenaghen a Norimberga, nel 2018
 Danzica e Cracovia, e nel 2021 la fase più grande fino a quel momento, con 14 facciate da Cracovia,
-Stoccolma, Stralsunda, Helsinki, Riga e Venezia. Erano previsti vent’anni, tempi da cantiere autostradale. L’ultima fase, il Palacio
+Stoccolma, Stralsunda, Helsinki, Riga e Venezia. Erano previsti vent’anni. L’ultima fase, il Palacio
 de Braga, non è finita.
 
 Gli anni dal 2021 in poi si leggono di conseguenza in piccolo: Awildas Welt, il Peterhof von Novgorod

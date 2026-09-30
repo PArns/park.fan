@@ -7,8 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   Sur le plan du parc, tu trouves toutes les attractions. Dans quelle direction
-  tu regardes, il ne le dit pas. Si tu ouvres park.fan dans un parc, les
-  incontournables apparaissent désormais sur une boussole, sous le message de
+  tu regardes, il n’y figure pas. Si tu ouvres park.fan dans un parc, les
+  attractions phares apparaissent désormais sur une boussole, sous le message de
   bienvenue. Tourne sur toi-même, et juste en dessous tu lis laquelle est devant
   toi, à quelle distance elle se trouve et combien de temps tu y attendras.
 tags:
@@ -34,8 +34,8 @@ coverImage:
 seo:
   title: 'Boussole pour parc d’attractions : quelle attraction est devant toi ?'
   description: >-
-    Ouvre park.fan dans le parc et tourne-toi : la boussole montre les
-    incontournables autour de toi, avec direction, distance et temps d’attente.
+    Ouvre park.fan dans le parc et tourne-toi : la boussole place autour
+    de toi les attractions phares, avec direction, distance et temps d’attente.
     Sans appli et sans compte.
   keywords:
     - boussole parc d’attractions
@@ -53,16 +53,16 @@ des façades, et à chaque coin, tu changes d’univers. Sur le plan, Klugheim s
 trouve en deux secondes. Te trouver toi-même dessus est plus difficile, et
 savoir en plus dans quelle direction tu regardes, encore plus.
 
-Jusqu’ici, quand tu étais dans le parc, park.fan te disait combien de temps on
-attendait à [Black Mamba](ref:phantasialand/black-mamba?bare). Où se trouvait
-Black Mamba par rapport à toi, il ne le disait pas. Depuis le 27 septembre, une
+Jusqu’ici, quand tu étais dans le parc, tu lisais sur park.fan combien de temps
+on attendait à [Black Mamba](ref:phantasialand/black-mamba?bare), mais pas où se
+trouvait Black Mamba par rapport à toi. Depuis le 27 septembre, une
 boussole s’en charge.
 
 ## Quand la boussole apparaît
 
-Ouvre la page d’accueil pendant que tu es dans un parc : park.fan t’accueille
-avec le nom du parc, et sous ce message il y a maintenant une boussole avec les
-incontournables autour de toi. Dans l’encadré de bienvenue, un bouton « Vers la
+Ouvre la page d’accueil pendant que tu es dans un parc : le message de bienvenue
+porte le nom du parc, et sous ce message il y a maintenant une boussole avec les
+attractions phares autour de toi. Dans l’encadré de bienvenue, un bouton « Vers la
 boussole » t’y emmène si tu ne veux pas faire défiler la page.
 
 Pour le message de bienvenue et la boussole, la page a besoin de ta position, et
@@ -81,19 +81,19 @@ liste donne des points cardinaux au lieu de flèches.
 
 ## Ce que montre le cercle
 
-Tu es au centre, le nord en haut. Chaque incontournable est placé dans sa vraie
+Tu es au centre, le nord en haut. Chaque attraction phare est placée dans sa vraie
 direction, et plus il est loin du centre, plus il est loin de toi. L’anneau
 pointillé extérieur porte la distance que couvre le cercle. Le cône bleu, c’est
 ton regard, et il tourne quand tu tournes.
 
-Chaque point dit ce que fait l’attraction en ce moment. Un nombre, c’est
+Chaque point porte l’état actuel de l’attraction. Un nombre, c’est
 l’attente en minutes, dans les couleurs que park.fan utilise partout pour les
 temps d’attente. Un anneau vert avec un point veut dire ouvert, sans attente
 annoncée. Le triangle orange signale une panne, la clé une rénovation, et un
 petit anneau vide une attraction fermée. À côté, autant de noms que la place le
 permet, raccourcis quand elle manque.
 
-![La boussole à Disneyland Park : un cercle avec les points cardinaux, les incontournables sous forme de points avec leur attente, un cône bleu tourné vers l’ouest. En dessous, la barre « Devant toi » avec Big Thunder Mountain Railroad. | Dimanche soir à Anaheim, regard vers l’ouest. Dans le cône : Big Thunder, une panne et la plus longue file parmi les incontournables.](/media/kompass/kompass-blick-fr.webp)
+![La boussole à Disneyland Park : un cercle avec les points cardinaux, les attractions phares sous forme de points avec leur attente, un cône bleu tourné vers l’ouest. En dessous, la barre « Devant toi » avec Big Thunder Mountain Railroad. | Dimanche soir à Anaheim, regard vers l’ouest. Dans le cône : Big Thunder, une panne et la plus longue file parmi les attractions phares.](/media/kompass/kompass-blick-fr.webp)
 
 ## Devant toi, la plus proche, épinglée
 
@@ -151,10 +151,10 @@ Magnetic Model 2025, et la boussole l’ajoute à chaque mesure.
 La flèche indique la direction à vol d’oiseau, pas le chemin. Au Phantasialand,
 le chemin vers une attraction cachée derrière un mur part souvent d’abord dans
 l’autre sens, et aucune boussole n’y change rien. La flèche vise aussi le seul
-point que nos données connaissent pour une attraction. Où se trouve l’entrée de
-la file, ces données ne le disent pas.
+point que nous avons pour une attraction, et l’entrée de la file n’est pas dans
+nos données.
 
-Pour le reste, la boussole dit elle-même à quel point tu peux lui faire
+Pour le reste, la boussole affiche elle-même à quel point tu peux lui faire
 confiance.
 
 - Si ta position est imprécise de plus de 40 mètres, au-dessus du cercle
@@ -164,24 +164,24 @@ confiance.
   Au-delà de 25 degrés d’écart, tu lis : « Boussole imprécise. Fais quelques
   huit avec ton téléphone. »
 - À moins de 20 mètres d’une attraction, un peu plus si le GPS est imprécis, sa
-  ligne dit « Tu y es » au lieu d’afficher une flèche qui pourrait pointer
+  ligne affiche « Tu y es » au lieu d’une flèche qui pourrait pointer
   n’importe où.
 - Si tu tiens le téléphone debout devant toi, son bord supérieur pointe vers le
   ciel. Au-delà de 65 degrés d’inclinaison, la boussole prend donc le dos du
   téléphone comme direction du regard, comme l’appareil photo.
 
 Sans boussole, sur un ordinateur portable ou sur un iPhone avant de l’activer,
-il n’y a pas de flèches. Les lignes disent alors « direction sud-ouest », et le
+il n’y a pas de flèches. Les lignes affichent alors « direction sud-ouest », et le
 cône bleu disparaît du cercle. Une flèche, tout le monde la lit comme « par
-là », même si elle ne connaît que le nord et pas la façon dont tu tiens ton
-téléphone. Et personne ne sait si cet ordinateur est posé sur la table le
+là », alors que sans boussole elle ne tiendrait compte que du nord, pas de la façon
+dont tu tiens ton téléphone. Et personne ne sait si cet ordinateur est posé sur la table le
 clavier tourné vers le sud.
 
 ## Ce qui quitte ton téléphone
 
 La direction vers laquelle pointe ton téléphone reste sur ton téléphone. Ta
-position, la page d’accueil l’envoie à notre serveur, pour qu’il puisse dire
-dans quel parc tu es et à quoi ressemblent les files là-bas. Elle le fait déjà
+position, la page d’accueil l’envoie à notre serveur, qui en déduit dans
+quel parc tu es et renvoie les temps d’attente de ce parc. Elle le fait déjà
 depuis un moment pour le message de bienvenue. Les positions des attractions
 arrivent une fois par parc, pèsent moins d’un kilo-octet et valent pour la
 journée.
@@ -199,7 +199,7 @@ en haut. Sans position, sans direction, et sans savoir dans quel parc.
 
 C’est dans un parc que la boussole sert le plus, mais tu peux la regarder depuis
 ton canapé. Ajoute `?sim=compass` à l’adresse de la page d’accueil et park.fan
-pose le Phantasialand autour de toi, avec les vrais temps d’attente du jour :
+pose le Phantasialand autour de toi, avec les temps d’attente actuels :
 [park.fan/fr?sim=compass](/fr?sim=compass). Un bandeau au-dessus de la boussole
 précise que c’est une démo, avec un lien pour en sortir. Touche « Utiliser ma
 position » dans ce bandeau et le parc se place autour de ta vraie position,

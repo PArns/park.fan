@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Das Phantasialand ist mein Heimatpark, und park.fan ist in einer
-  Taron-Schlange entstanden, was einiges über diese Schlangen sagt. Der Guide
+  Taron-Warteschlange entstanden. Der Guide
   für 2026: die Bahnen, das Essen, die kleinen Wunder, und wie du die
   Phantasialand-Wartezeiten klein hältst, den besten Tag findest und beim Quick
   Pass richtig rechnest.
@@ -61,17 +61,16 @@ viele Kindheitsnachmittage in diesem Fleck Erde in Brühl. Es ist der Park, um
 dessen Märchensee mich meine Eltern im Kinderwagen geschoben haben, der Park der
 Gondelbahn „1001 Nacht“, in der ich mit meinem Vater durch ein aufgeschlagenes
 Märchenbuch geglitten bin, lange bevor sie abgerissen wurde, und es ist der Ort,
-an dem park.fan in einer sechzig Minuten langen Taron-Schlange erfunden wurde.
+an dem park.fan in einer sechzig Minuten langen Taron-Warteschlange erfunden wurde.
 
 Die ganze rührselige Vorgeschichte steht in
 [unserer Gründungsstory](/blog/willkommen-im-park-fan-blog); hier soll es um das
-gehen, was über die Jahre an handfestem Wissen abgefallen ist. Denn so sehr ich
-diesen Park liebe, muss ich ihn gleich zu Beginn in Schutz und in die Pflicht
-nehmen: Er hat acht echte Headliner für ein Publikum, das für zwanzig reichen
+gehen, was über die Jahre an handfestem Wissen abgefallen ist. So sehr ich diesen
+Park liebe, er hat acht echte Headliner für ein Publikum, das für zwanzig reichen
 würde. Einfach spontan hinfahren und den perfekten Tag erwischen, das
 gelingt hier ungefähr so oft wie ein Sitzplatz in der Kölner Straßenbahn am
 Samstagmittag. Aber mit ein bisschen Vorbereitung wird er zu
-dem, was er für mich seit über dreißig Jahren ist: der schönste Tag, den ein
+dem, was er für mich seit über dreißig Jahren ist, zum schönsten Tag, den ein
 Freizeitpark in Europa schenken kann. Und die **Phantasialand-Wartezeiten** hast
 du zum größten Teil selbst in der Hand, nämlich mit der Wahl des Tages.
 
@@ -83,7 +82,7 @@ du zum größten Teil selbst in der Hand, nämlich mit der Wahl des Tages.
 
 Das Phantasialand trägt „Europas immersivster Themenpark“ wie einen zweiten
 Vornamen, den Titel hat es beim Parkscout-plus-Award achtmal in Folge gewonnen.
-Woran sich das festmachen lässt: Die Warteschlange von [Taron](ref:phantasialand/taron) ist
+Festmachen lässt sich das an [Taron](ref:phantasialand/taron). Die Warteschlange ist
 Klugheim, ein Basaltdorf mit schiefen Dächern und verwitterten Mauern, und
 zwischen Anstehen und Kulisse liegt dort keine sichtbare Grenze. Die Bahn selbst
 sieht man aus dem Dorf heraus erst spät.
@@ -101,8 +100,8 @@ vollen Tag.
 Diese Dichte hat eine Kehrseite. An einem vollen Tag will jeder zur selben Zeit
 auf dieselben zwei, drei Bahnen. In der [Kunst des Wartens](/blog/die-kunst-des-wartens) habe ich vorgerechnet, warum
 [Taron](ref:phantasialand/taron) an einem Ferien-Samstag genauso schnell in die
-Sättigung läuft wie Peter Pan’s Flight in Paris: Ein kleines Publikum schützt dich
-nicht vor langen Schlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
+Sättigung läuft wie Peter Pan’s Flight in Paris. Ein kleines Publikum schützt dich
+nicht vor langen Warteschlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
 Andrang verteilen kann. Die Mathematik ist im Phantasialand unerbittlicher als im
 weitläufigen [Europa-Park](ref:europa-park) mit seinen vierzehn Achterbahnen.
 Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenenden
@@ -141,10 +140,10 @@ sein können.
 
 Wuze Town mit den beiden Spinning Coastern
 [Winja’s Fear](ref:phantasialand/winjas-fear) & Force sollte eigentlich schon
-2001 öffnen und kam mit einem Jahr Verspätung. Im selben Jahr 2002 standen die
-Ersatzbauten für das, was verbrannt war: die Rafting-Bahn
+2001 öffnen und kam mit einem Jahr Verspätung. Im selben Jahr 2002 standen als
+Ersatz für das, was verbrannt war, die Rafting-Bahn
 [River Quest](ref:phantasialand/river-quest) und das Mad House Feng Ju Palace,
-beide gibt es heute noch. Aus der Asche kam eine neue Haltung: Wenn schon neu
+beide gibt es heute noch. Aus der Asche kam eine neue Haltung. Wenn schon neu
 bauen, dann richtig, dann bis zur letzten Schraube durchthematisiert.
 
 Wie ernst es der Park damit meinte, zeigte sich 2006. Mit Deep in Africa und dem
@@ -157,22 +156,22 @@ Rookburgh mit [F.L.Y.](ref:phantasialand/fly), laut Park dem weltweit ersten
 Flying-Launch-Coaster. Bei beiden ist der Themenbereich zuerst da und die Bahn
 hineingebaut, nicht umgekehrt.
 
-Und noch etwas erklärt vieles: Das Phantasialand ist bis heute in Familienhand geblieben.
+Das Phantasialand ist außerdem bis heute in Familienhand geblieben.
 1998 übernahm Gottlieb Löffelhardts Sohn Robert die alleinige Geschäftsführung,
 nachdem er drei Jahre vorher die Anteile von Mitgründer Richard Schmidt gekauft
 hatte; einen internationalen Konzern oder Aktionäre, die aufs Quartal schauen,
 hat der Park nie über sich gehabt. Wie es anders laufen kann, sieht man gerade
-eine Autostunde weiter nördlich: Der Eigentümer des Movie Park Germany gehört
+eine Autostunde weiter nördlich. Der Eigentümer des Movie Park Germany gehört
 einem Finanzinvestor, und der
 [sucht seit September 2026 einen Käufer](/blog/parques-reunidos-verkauf-movie-park).
 Im Phantasialand sieht man die Familie an Details, die ein Controller gestrichen
-hätte: an der Fliegerwerkstatt vor F.L.Y., durch die man geht, ohne dass sie
+hätte, etwa an der Fliegerwerkstatt vor F.L.Y., durch die man geht, ohne dass sie
 irgendetwas abfertigt.
 
 Viel Platz zum Wachsen hat die Familie allerdings nicht. Um eine Erweiterung
 ringt der Park seit 2003, und im Juli 2026 hat der Brühler Planungsausschuss das
 Bauleitverfahren für rund 15 Hektar am Naturschutzgebiet Ententeich eingeleitet.
-Genehmigt ist damit nichts: Zuerst kommen Gutachten zu Natur, Verkehr und
+Genehmigt ist damit nichts. Zuerst kommen Gutachten zu Natur, Verkehr und
 Hochwasserschutz, und ein Netzwerk von Naturschützern bereitet ein Bürgerbegehren
 dagegen vor. Was dort entstehen soll, hat der Park nicht angekündigt; die Gegner
 rechnen mit Wasserpark, Hotelresort und Eventhalle.
@@ -182,7 +181,7 @@ rechnen mit Wasserpark, Hotelresort und Eventhalle.
 Die Live-Wartezeiten hängen direkt an den Namen, du siehst also beim Lesen, was
 gerade los ist:
 
-- **[Taron](ref:phantasialand/taron)**, das Herzstück, und für mich der beste
+- **[Taron](ref:phantasialand/taron)**, für mich der beste
   Launch-Coaster Deutschlands (darüber kann man streiten, ich tue es nicht). Zwei
   brachiale Abschüsse, wilde Nahbegegnungen mit den Basaltsäulen von Klugheim, und
   dieser eine Moment, in dem die Bahn kurz durchatmet, bevor sie dich ein zweites
@@ -233,9 +232,8 @@ fürs erste Mal, schnell genug fürs zweite.
 
 ## Tickets: nur online, und der Kampf um die Jahreskarten
 
-So weit die schöne Seite. Jetzt das Kleingedruckte, an dem die meisten spontanen
-Ausflüge scheitern, noch bevor sie begonnen haben: **Es gibt keine Tageskasse
-mehr.** Das Phantasialand verkauft ausschließlich **datierte Online-Tickets**, du
+**Es gibt keine Tageskasse mehr**, und daran scheitern die meisten spontanen
+Ausflüge, noch bevor sie begonnen haben. Das Phantasialand verkauft ausschließlich **datierte Online-Tickets**, du
 buchst vorab einen konkreten Besuchstag, und ohne dieses E-Ticket am Handy stehst
 du im Zweifel vor verschlossenem Tor.
 
@@ -247,25 +245,25 @@ exakt denselben Parktag. Spontan geht auch, aber nur online und nur bis 14 Uhr a
 Besuchstag, zum dann gültigen Tagespreis und nur, solange der Tag nicht
 ausverkauft ist; am 25. September 2026 kostete das Ticket für denselben Tag 64 €.
 Die Regel ist so simpel wie unromantisch: **Wer früh bucht, zahlt weniger.** Dass
-der günstige Tag auch der leerere ist, stimmt oft, aber nicht immer: Am selben
-Tag kostete der Sonntag darauf 49 €, der Montag 64 €, und unser Kalender
-erwartet den Montag als den ruhigeren der beiden.
+der günstige Tag auch der leerere ist, stimmt oft, aber nicht immer. Am selben
+Tag kostete der Sonntag darauf 49 €, der Montag 64 €, und in unserem Kalender
+ist der Montag der ruhigere der beiden.
 
-Dann ist da die Sache, die die treuesten Fans bis heute wurmt: **Jahreskarten
-gibt es keine mehr.** Das Phantasialand hat seine Club-Karte in der Pandemie aus
+Die treuesten Fans wurmt bis heute, dass es **keine Jahreskarten mehr**
+gibt. Das Phantasialand hat seine Club-Karte in der Pandemie aus
 dem Verkauf genommen und nie zurückgebracht, die letzten liefen im Sommer 2022
 aus. Unter den großen deutschen Parks ist das die Ausnahme; der Europa-Park etwa
 verkauft seinen ResortPass weiter, auch wenn die Kontingente schnell weg sind.
 Für einen Ort, der so viele Menschen zu Wiederholungstätern macht, ist das ein
 Schlag ins Gesicht der Stammgäste. Der Unmut war (und ist) so groß, dass Fans
 2022 gleich **mehrere [Petitionen zur Wiedereinführung](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)**
-starteten. Geändert hat sich bisher: nichts. Wer den
+starteten. Geändert hat sich bisher nichts. Wer den
 Park liebt, zahlt für jeden einzelnen Besuch ein datiertes Tagesticket zum
 Tagespreis, wie ein Stammgast, der in seiner Eckkneipe jedes Mal wieder nach dem
 Ausweis gefragt wird. Das ist einer der wenigen Punkte, an denen ich mit meinem
 Lieblingspark ernsthaft hadere.
 
-Ein Gedanke, der mir als Fan wirklich wehtut: **Der Preis bestimmt eben auch das
+Es tut mir als Fan weh, aber **der Preis bestimmt eben auch das
 Publikum.** Seit die Jahreskarten weg sind und die Tickets so aggressiv bepreist
 werden, hat sich im Park spürbar etwas verschoben. In den letzten ein, zwei Jahren ist mir deutlich mehr Vandalismus
 aufgefallen als in all den Jahren zuvor, an einem Ort, an dem man so etwas früher
@@ -283,8 +281,8 @@ Ein paar Faustregeln, die fast immer stimmen:
 
 - **Wochentags schlägt Wochenende.** Montag bis Freitag liegen in unseren
   Messungen gleichauf, Samstag und Sonntag darüber (gemessen seit Ende Dezember
-  2025, Stand 25. September 2026). Einen Geheimtipp-Wochentag gibt es hier also
-  nicht.
+  2025, Stand 25. September 2026). Einen Wochentag, der leerer ist als die
+  anderen, gibt es hier also nicht.
 - **NRW-Schulferien meiden**, besonders Sommer- und Herbstferien, das
   Einzugsgebiet Köln/Bonn/Ruhrgebiet ist gewaltig, und halb davon steht dann mit
   dir bei Taron.
@@ -304,7 +302,7 @@ ruhigsten kommenden Tage fürs Phantasialand:
 ```
 
 Welche Wochentage und Monate übers Jahr typischerweise entspannt sind und welche
-du meiden solltest, zeigt der **Andrang nach Wochentag und Monat**, gemessen an
+du meiden solltest, steht in der Übersicht **Andrang nach Wochentag und Monat**, gemessen an
 den Öffnungstagen. Unsere Messungen beginnen Ende Dezember 2025; wie viele Tage
 hinter einem Monat stehen, steht in der Tabelle dabei, und der Winter ist darin
 noch dünn gemessen:
@@ -320,7 +318,7 @@ nachgesehen hast.
 
 ## Quick Pass: Einzelfahrt oder Ultimate, und was aus dem „dynamischen“ Preis wurde
 
-Ja, das Phantasialand hat einen **Quick Pass**, mit dem du die reguläre Schlange
+Ja, das Phantasialand hat einen **Quick Pass**, mit dem du die reguläre Warteschlange
 umgehst. Seit dem Wintertraum 2025/26 funktioniert er allerdings komplett neu, und
 das solltest du kennen, bevor du am Kaiserplatz Geld ausgibst. Es gibt jetzt zwei
 Varianten:
@@ -346,23 +344,23 @@ Varianten:
   billiger und legt F.L.Y. obendrauf. Das lohnt sich aber nur, wenn du wirklich
   überall durchwillst.
 
-Ein Detail, das viele überrascht (und das man vorher wissen sollte): **Selbst mit
-dem Quick Pass wartest du bei F.L.Y. noch, oben, in der Station.** Die Bahn braucht
+**Selbst mit dem Quick Pass wartest du bei F.L.Y. noch, oben, in der
+Station.** Die Bahn braucht
 durch ihre aufwendigen Flieger-Bügel ewig fürs Beladen, und dieser Stau löst sich
-auch im Fast-Track nicht auf. Du überspringst die große Schlange, aber das letzte,
+auch im Fast-Track nicht auf. Du überspringst die große Warteschlange, aber das letzte,
 zähe Stück vor dem Einstieg legst du trotzdem im Stehen zurück.
 
-Gekauft wird nur vor Ort, beim Gästeservice am Kaiserplatz, und begrenzt heißt
-wirklich begrenzt: **Gerade im Wintertraum sind die Quick Pässe am Wochenende oft
+Gekauft wird nur vor Ort, beim Gästeservice am Kaiserplatz, und die Menge ist
+begrenzt. **Gerade im Wintertraum sind die Quick Pässe am Wochenende oft
 schon mittags ausverkauft.** Wer einen braucht, ist früh dort oder geht leer aus.
 
-Meine Meinung nach vielen, vielen Besuchen: **An einem grünen Tag brauchst du ihn
-schlicht nicht.** Wer früh da ist und eine sinnvolle Reihenfolge fährt, nimmt die
+Nach vielen, vielen Besuchen meine ich, dass du ihn **an einem grünen Tag
+schlicht nicht brauchst.** Wer früh da ist und eine sinnvolle Reihenfolge fährt, nimmt die
 Headliner mit kurzer Wartezeit, da ist jeder Euro Quick Pass verschenkt. An einem
 tiefroten Ferien-Samstag dagegen kann er den Tag retten. Schau vor dem Kauf einfach
-kurz auf die Live-Wartezeiten: Stehen die Zahlen niedrig, spar dir das Geld und gönn
-dir stattdessen ein zweites Stück Kuchen. (Neben dem Ultimate gibt es noch einen
-zweiten Weg zu F.L.Y. ohne lange Schlange, dazu gleich bei den Hotels.)
+kurz auf die Live-Wartezeiten, und wenn die Zahlen niedrig stehen, spar dir das
+Geld und gönn dir stattdessen ein zweites Stück Kuchen. (Neben dem Ultimate gibt es noch einen
+zweiten Weg zu F.L.Y. ohne lange Warteschlange, dazu gleich bei den Hotels.)
 
 ## In welcher Reihenfolge du fährst, und warum der Wecker früh klingelt
 
@@ -370,7 +368,7 @@ Der wirksamste kostenlose Trick im Phantasialand heißt **früh da sein und
 antizyklisch fahren**. Einlass ist in der Sommersaison ab 9 Uhr, spätestens um
 10 laufen alle Bahnen. Es gibt kaum etwas Schöneres als diesen Park in der
 ersten Stunde: die Gassen noch leer, die Musik schon an, die Kulissen im
-Morgenlicht, und an den meisten Bahnen so kurze Schlangen wie den ganzen Tag
+Morgenlicht, und an den meisten Bahnen so kurze Warteschlangen wie den ganzen Tag
 nicht mehr. Diese Stunde ist im kompakten Phantasialand bares Geld wert, sie ist
 der Unterschied zwischen „drei Fahrten“ und „zehn“.
 
@@ -379,7 +377,7 @@ stündlichen Daten an einer Stelle umgebaut (gemessen seit Ende Dezember 2025,
 Stand 25. September 2026):
 
 1. **Direkt zu [Taron](ref:phantasialand/taron)** nach Klugheim. Der
-   Multi-Launch-Coaster hat die längste Schlange im Park, und sie ist schon in der
+   Multi-Launch-Coaster hat die längste Warteschlange im Park, und sie ist schon in der
    ersten Stunde so lang wie am Mittag. Der Vorsprung gehört also denen, die um
    Punkt 10 vorn stehen; wer erst um halb elf kommt, kann Taron genauso gut nach
    dem Mittagessen fahren. Dafür startest du den Tag mit dem breitesten Grinsen,
@@ -387,18 +385,19 @@ Stand 25. September 2026):
 2. **Danach die Wasserbahnen**
    ([Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
    [River Quest](ref:phantasialand/river-quest)). Sie haben den größten
-   Morgenvorteil im Park: Chiapas hat in der ersten Stunde nur gut die Hälfte
-   seiner Mittagsschlange, River Quest ist nach elf nie wieder so kurz. Wenn dich
+   Morgenvorteil im Park: Bei Chiapas ist die Warteschlange in der ersten
+   Stunde nur gut halb so lang wie mittags, River Quest ist nach elf nie wieder
+   so kurz. Wenn dich
    ein nasser Vormittag nicht schreckt: Trocknen kannst du später beim Essen.
 3. **[F.L.Y.](ref:phantasialand/fly) am späten Nachmittag.** Die habe ich früher
    direkt nach Taron gefahren, weil die Station so gemächlich abfertigt. In
-   unseren Daten ist die Schlange aber um 11 Uhr am längsten und am späten
+   unseren Daten ist die Warteschlange aber um 11 Uhr am längsten und am späten
    Nachmittag am kürzesten. Wer von Taron direkt nach Rookburgh läuft, landet
    mitten im Hoch.
 4. **Shows und Essen in die Stoßzeit legen** (rund um die Mittagszeit), wenn die
-   Schlangen ohnehin am längsten sind. Und kennst du eine Show schon, nutz sie
+   Warteschlangen ohnehin am längsten sind. Und kennst du eine Show schon, nutz sie
    andersherum: Sie bindet auf einen Schlag einen ganzen Theatersaal voller
-   Leute, die dann nicht vor dir in der Schlange stehen.
+   Leute, die dann nicht vor dir in der Warteschlange stehen.
 
 Vorbeiziehen lassen musst du auch hier ein paar Leute, aber der Quick Pass ist
 streng begrenzt. Ein Heer von Express-Pass-Gästen, das dir wie
@@ -408,8 +407,8 @@ komplett selbst in der Hand.
 
 ## Essen: hier lohnt sich das Hinsetzen
 
-Bei keinem anderen Park würde ich das so hervorheben: Das Phantasialand ist auch
-wegen des **Essens** eine Reise wert. Während in vielen
+Das Phantasialand ist auch wegen des **Essens** eine Reise wert, und das würde
+ich über keinen anderen Park schreiben. Während in vielen
 Parks „Essen“ gleichbedeutend ist mit lauwarmen Pommes zum Mondpreis, wird hier
 mit einer Sorgfalt gekocht, die ich sonst nur aus richtigen Restaurants kenne. Drei Adressen, die ich jedem nenne, der mich fragt, und einigen, die gar nicht
 gefragt haben:
@@ -435,9 +434,9 @@ gefragt haben:
 Für zwischendurch mein Snack-Klassiker: die Churros, frisch, zimtig und das
 ganze Jahr über zu haben.
 
-Und der wichtigste Ess-Tipp ist derselbe wie beim Anstehen: **antizyklisch.** Iss
-gegen halb zwölf, bevor die Restaurants volllaufen. Dann sitzt du am Tisch,
-während draußen die Schlangen am längsten sind, und stehst nicht auch noch fürs
+Beim Essen gilt dasselbe wie beim Anstehen. Iss **antizyklisch**, gegen halb
+zwölf, bevor die Restaurants volllaufen. Dann sitzt du am Tisch,
+während draußen die Warteschlangen am längsten sind, und stehst nicht auch noch fürs
 Essen an. (Und wenn du im Winter kommst, stellt der Park auf dem Kaiserplatz noch
 eine eigene Winterkarte dazu, mehr dazu beim Wintertraum.)
 
@@ -476,7 +475,7 @@ wäre. Eine Fahrt mit der [Geister Rikscha](ref:phantasialand/geister-rikscha),
 die seit 1981 durch China Town fährt, und du verstehst, was „immersiv“ wirklich
 heißt.
 
-Mein allerliebster Moment aber gehört dem Feierabend: **Klugheim in der blauen
+Mein allerliebster Moment aber kommt zum Feierabend, **Klugheim in der blauen
 Stunde.** Wenn die Lichter angehen und [Taron](ref:phantasialand/taron) über dir
 durch die Basaltsäulen donnert, während die letzte Sonne die Felsen orange färbt und
 die ersten Laternen warm zu leuchten beginnen, das ist der Grund, warum ich diesen
@@ -492,8 +491,8 @@ Wer im Charles Lindbergh aufwacht, braucht morgens einen Moment, bis er weiß, i
 welchem Jahrhundert er ist. Dazu die große Dinnershow
 Fantissima, wenn du den Abend zum Fest machen willst.
 
-Ein wichtiger Hinweis, weil ihn viele vom [Europa-Park](ref:europa-park) anders
-kennen: Ein Phantasialand-Hotel bringt dir **keinen früheren Parkeintritt**. Der
+Anders, als viele es vom [Europa-Park](ref:europa-park) kennen, bringt dir ein
+Phantasialand-Hotel **keinen früheren Parkeintritt**. Der
 handfeste Vorteil steckt woanders. Gäste des **Charles Lindbergh** bekommen mit
 ihrem Hotelticket **einmal pro Tag schnelleren Zugang zu
 [F.L.Y.](ref:phantasialand/fly)** über einen eigenen Eingang; beim üblichen Paket
@@ -536,7 +535,7 @@ Gruselfestival. Stattdessen zieht es im Winter ein ganz anderes, wunderschönes
 Kostüm an: den
 **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
 
-2026 gibt es zwischen Sommer und Winter keine Pause: Der Sommerbetrieb läuft bis
+2026 gibt es zwischen Sommer und Winter keine Pause. Der Sommerbetrieb läuft bis
 zum 13. November, am 14. öffnet der Park als leuchtendes Winterdorf, laut Park mit
 Millionen Lichtern, dazu Schnee-Optik (der Schnee ist Deko, das Frieren ist
 echt), Tannen und Budenzauber, sieben Shows mit dem Finale „Magic Symphony“
@@ -551,10 +550,10 @@ jetzt nicht mehr so heimlich) sind trotzdem die Flat Croissants aus China Town:
 knusprig gepresst und herrlich buttrig. Ein reines Wintergebäck sind die
 allerdings nicht, der Park verkauft sie auch außerhalb des Wintertraums.
 
-Und dann mein bester Wintertraum-Tipp: **Taron im Dunkeln.** Im Winter wird es
+Mein bester Wintertraum-Tipp ist **Taron im Dunkeln.** Im Winter wird es
 früh finster, und wenn [Taron](ref:phantasialand/taron) durch das beleuchtete
 Klugheim jagt und die Basaltsäulen nur noch Schatten gegen den Nachthimmel sind,
-fahre ich die Bahn am liebsten. Der Haken: Genau dann will jeder drauf. Kauf dir
+fahre ich die Bahn am liebsten. Genau dann will aber jeder drauf. Kauf dir
 den **Quick Pass gleich früh am Tag** (am Wochenende sind sie mittags weg), und
 dann fahr Taron im Dunkeln, so oft du kannst.
 
@@ -571,9 +570,8 @@ Vorverkaufskontingent ab 29 €. Drei Dinge noch:
   [River Quest](ref:phantasialand/river-quest) dagegen hat im Winter zu, und bei
   extremem Wetter kann jede Außenbahn kurzfristig schließen. Wer im Dezember
   Chiapas fährt, packt Wechselsachen ein.
-- **Die Wochenenden wie Ferientage planen.** Unser Kalender erwartet für die
-  ersten Wintertraum-Wochenenden viel Andrang und für die Wochentage im Dezember
-  wenig. Gemessen haben wir den Wintertraum bisher nur an einer Handvoll Tagen
+- **Die Wochenenden wie Ferientage planen.** Für die ersten Wintertraum-Wochenenden
+  steht in unserem Kalender viel Andrang, für die Wochentage im Dezember wenig. Gemessen haben wir den Wintertraum bisher nur an einer Handvoll Tagen
   zwischen Ende Dezember 2025 und Januar 2026, und an denen war es voll. Für alles außer den
   Wochenenden gilt also: erst in den Crowd-Kalender von oben schauen.
 - **Warm anziehen.** Die Wartezeiten fühlen sich bei Minusgraden gleich doppelt so
@@ -588,8 +586,8 @@ An Wochentagen außerhalb der NRW-Schulferien; Montag bis Freitag liegen in
 unseren Daten gleichauf, und der ruhigste gemessene Monat war der September nach
 den Sommerferien (gemessen seit Ende Dezember 2025, Stand 25. September 2026).
 Verlass dich aber nicht aufs
-Bauchgefühl: Der [Crowd-Kalender fürs Phantasialand](ref:phantasialand?calendar)
-sagt dir so weit im Voraus, wie der Park seine Öffnungszeiten veröffentlicht hat,
+Bauchgefühl. Im [Crowd-Kalender fürs Phantasialand](ref:phantasialand?calendar)
+steht so weit im Voraus, wie der Park seine Öffnungszeiten veröffentlicht hat,
 wann mit wenig Andrang zu rechnen ist; im Moment reicht er bis
 zum 24. Januar 2027. Grün heißt hin.
 
@@ -608,7 +606,7 @@ Shows). Die Live-Wartezeiten checkst du unterwegs auf der
 [F.L.Y.](ref:phantasialand/fly) gleichauf (gemessen seit Ende Dezember 2025,
 Stand 25. September 2026). Taron
 fährst du deshalb direkt zur Öffnung, Chiapas in der ersten Stunde und F.L.Y. am
-späten Nachmittag, wenn die Schlange dort am kürzesten ist.
+späten Nachmittag, wenn die Warteschlange dort am kürzesten ist.
 
 ### Braucht man im Phantasialand einen Quick Pass?
 
@@ -636,7 +634,7 @@ Das Phantasialand ist kein Park, den man nebenbei mitnimmt. Er hat rund ein
 Drittel des Europa-Park-Publikums, und trotzdem stehst du hier laut unseren Daten
 länger an. An den richtigen Tagen, mit der richtigen Reihenfolge und einer Pause
 in Rutmor’s Taverne, ist er der Park, in den ich seit dreißig Jahren zurückgehe.
-Die gute Nachricht: Fast alles, was einen guten von einem großartigen Tag trennt,
+Fast alles, was einen guten von einem großartigen Tag trennt,
 entscheidest du **vorher**, beim Blick auf den Kalender.
 
 Bevor du losfährst, noch ein Blick aufs Wetter in Brühl, genau jetzt:
@@ -657,7 +655,7 @@ blauen Stunde immer noch nicht heimwill.
 — Patrick
 
 _P.S.: Nein, ich kaufe an einem grünen Dienstag keinen Quick Pass. Aus Prinzip, und
-weil die Daten sagen, dass ich ihn nicht brauche. Für den roten Samstag hätte ich
+weil ich ihn nach unseren Messungen nicht brauche. Für den roten Samstag hätte ich
 ihn gekauft. Oder rechtzeitig einen grünen Tag gebucht und mir beides gespart,
 den Quick Pass und den Samstagspreis._
 

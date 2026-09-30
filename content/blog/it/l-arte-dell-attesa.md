@@ -47,7 +47,7 @@ seo:
     - tempi di attesa Disney World
 ---
 
-Giri l’angolo verso la tua attrazione preferita ed ecco il tabellone, acceso:
+Giri l’angolo verso la tua attrazione preferita, e all’ingresso c’è scritto
 **“60 minuti di attesa.”** Certi giorni giri sui tacchi e spieghi a chi ti
 accompagna che quella giostra “è comunque sopravvalutata”. Altri giorni fai
 quegli stessi 60 minuti e giureresti poi che erano al massimo 25.
@@ -61,8 +61,8 @@ _davvero_ lunga la fila.
 Il tema non mi molla per un motivo piuttosto personale. park.fan è nato in una coda
 al Taron, per pura frustrazione davanti a un’eternità percepita ([la storia
 completa è qui](/blog/un-passeggino-una-gondola-e-park-fan)). Cosa mi stesse
-succedendo davvero quel pomeriggio, volevo poi saperlo con precisione. Entrano
-in gioco due formule, e stanno insieme sul retro di un sottobicchiere.
+succedendo davvero quel pomeriggio, volevo poi saperlo con precisione. Servono
+due formule, e stanno insieme sul retro di un sottobicchiere.
 
 ## Perché i minuti si allungano come una gomma da masticare
 
@@ -78,14 +78,13 @@ Maister ne ha messe per iscritto otto. Queste tre si vedono in ogni coda:
 
 - **Un’attesa incerta sembra più lunga di un’attesa di cui si conosce la
   durata.** Per questo la coda è punteggiata ogni pochi metri da indicazioni del
-  tempo residuo, e all’ingresso c’è il tabellone dell’attesa, che tra l’altro ti
-  mente volentieri. Tra poco ci torniamo.
+  tempo residuo, e all’ingresso c’è scritto il tempo di attesa, che tra l’altro
+  è spesso gonfiato.
 - **Un’attesa ingiusta sembra più lunga di un’attesa equa.** Niente rovina
   l’umore più in fretta della sensazione che altri ti superino. Per questo i
   parchi nascondono le corsie express meglio che possono, cioè di solito non
   granché bene.
-- **Aspettare per qualcosa di prezioso si sopporta più a lungo.** Più grande è
-  l’attesa, più paziente è la fila. Per una giostra da luna park non stiamo 20
+- **Aspettare per qualcosa di prezioso si sopporta più a lungo.** Per una giostra da luna park non stiamo 20
   minuti. Per il nuovo mega coaster ci convinciamo a starne 90.
 
 ### Il tuo senso del tempo esagera, di un buon terzo
@@ -102,8 +101,8 @@ titolo
 [“Entertain, Enlighten, and Engage”](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage).
 In una filiale bancaria verificarono che cosa cambiasse un pannello elettronico
 di notizie. La gente stimava la propria attesa appena più breve, ma la trovava
-più interessante e ne usciva più soddisfatta. Niente animatronica, niente
-colonna sonora: solo titoli di giornale sul muro.
+più interessante e ne usciva più soddisfatta. E si trattava soltanto di titoli di
+giornale su un muro.
 
 Maister cita a questo proposito il filosofo William James: la noia nasce quando
 si presta attenzione al passare del tempo in sé. Tutto ciò che vedi in una buona
@@ -121,7 +120,7 @@ A risolverlo più a fondo è il **pre-show**, che dichiara l’attesa parte
 dell’attrazione. L’esempio da manuale sta ai
 [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). Alla
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
-non ti trascini lungo un corridoio: attraversi la hall impolverata
+attraversi la hall impolverata
 dell’Hollywood Tower Hotel fino a una biblioteca dove un video in stile “Ai
 confini della realtà” racconta la storia dell’edificio. Fai in sostanza il
 check-in in un hotel dal quale più tardi farai il check-out in caduta libera.
@@ -146,8 +145,8 @@ finale conosce il principio.
 
 ## Quando la coda è essa stessa lo spettacolo
 
-Fin dove si possa spingere l’idea lo mostrano tre attrazioni di Orlando. Le
-loro code varrebbero una visita anche senza salire.
+Tre attrazioni di Orlando spingono l’idea fino in fondo. Le loro code
+varrebbero una visita anche senza salire.
 
 ### Avatar Flight of Passage: un museo come coda
 
@@ -169,8 +168,7 @@ vieni “scansionato” e “collegato” al tuo avatar.
 Dal punto di vista psicologico è doppiamente astuto. Le sale narrative
 cadenzano la folla in gruppi e trasformano l’ultimo quarto d’ora in parte
 dell’attrazione, cioè esattamente la fase che secondo la regola picco-fine
-viene ricordata con più forza. E sono al tempo stesso la spina dorsale della
-capacità: si vola in **link chamber** tipo sala teatrale con 16 posti per
+viene ricordata con più forza. E da loro dipende anche la capacità: si vola in **link chamber** tipo sala teatrale con 16 posti per
 livello, tre livelli sovrapposti, quattro sale in parallelo. Quasi 200 ospiti
 alla volta; con un ciclo di otto minuti, Coaster101 arriva a circa 1.440
 all’ora. Chi lì passa mezza mattinata in coda, dopo racconta comunque
@@ -210,8 +208,8 @@ a [Islands of Adventure](ref:universal-islands-of-adventure?bare), solo con i
 denti. La coda passa in mezzo al **recinto dei raptor** di _Jurassic World_:
 lungo recinzioni danneggiate e finestre affacciate sul percorso, fino a una
 sala visite dove due raptor animatronici con la museruola stanno dietro le
-sbarre. Non aspetti un coaster, fai una visita guidata a un recinto che per
-caso finisce su un coaster con due lanci. È ciò che Maister intende con
+sbarre. In pratica fai una visita guidata a un recinto che per caso finisce su
+un coaster con due lanci. È ciò che Maister intende con
 **“occupied time”**: il tempo occupato sembra più breve, e chi sta verificando
 se il raptor dietro le sbarre abbia davvero girato la testa non guarda il
 telefono ogni dieci secondi.
@@ -226,9 +224,9 @@ un gruppo di tre lascia libero in una vettura da quattro, accorcia la propria
 attesa e il parco riempie ogni vettura. Al VelociCoaster Universal ha chiuso
 questa fila nel dicembre 2025. Da allora il personale divide gli ospiti in
 gruppi con un numero pari o dispari di persone e riempie così le vetture senza
-passeggeri singoli. All’Hulk lì accanto la fila single rider c’è ancora. Il
-prezzo, lì: chi è con te siede qualche fila più avanti, e se ha urlato lo
-scopri solo all’uscita.
+passeggeri singoli. All’Hulk lì accanto la fila single rider c’è ancora, ma chi
+è con te siede qualche fila più avanti, e se ha urlato lo scopri solo
+all’uscita.
 
 ```glossary-widget slug=single-rider
 
@@ -245,10 +243,10 @@ persone che in quell’ora non sono in nessuna coda. L’anfiteatro di
 quasi 10.000 persone a rappresentazione. Sono quasi diecimila persone che per la
 prossima mezz’ora sono sedute da tutt’altra parte rispetto al tuo coaster
 preferito, e il resto del parco tira il fiato. Nel profilo orario degli
-Hollywood Studios su park.fan si vede: nelle ore serali in cui va in scena
-Fantasmic!, i tempi di attesa delle attrazioni di punta calano nettamente.
-Quanto dipenda dallo spettacolo e quanto dalla chiusura che si avvicina, i
-numeri non lo separano. Il 25 settembre 2026, per esempio, la prima
+Hollywood Studios su park.fan, nelle ore serali in cui va in scena Fantasmic!,
+i tempi di attesa delle attrazioni di punta calano nettamente. Quanto dipenda
+dallo spettacolo e quanto dalla chiusura che si avvicina, dai nostri numeri non
+si riesce a separarlo. Il 25 settembre 2026, per esempio, la prima
 rappresentazione comincia alle 20, un’ora prima che il parco chiuda. Chi lo
 spettacolo lo conosce già in quell’ora gira comunque al rapporto migliore della
 giornata. È per momenti così che rileggiamo i tempi di attesa ogni cinque
@@ -272,13 +270,12 @@ capacity), è semplice:
 > **Portata = posti per partenza × partenze all’ora**
 
 La parola “teorica” è intesa sul serio. Il calcolo presuppone che ogni sedile
-sia occupato e che nulla si inceppi; non conosce né la famiglia che decide solo
-al treno chi siede accanto a chi, né quella scarpa slacciata che ritarda una
-partenza. La portata reale, operativa, sta quindi praticamente sempre più in
+sia occupato e che nulla si inceppi, e non mette in conto né la famiglia che
+decide solo al treno chi siede accanto a chi, né quella scarpa slacciata che
+ritarda una partenza. La portata reale, operativa, sta quindi praticamente sempre più in
 basso. La formula diventa interessante perché i parchi combinano i due fattori
 in modi completamente diversi, secondo il principio del buffet o quello delle
-tapas. Due attrazioni di Orlando con numeri quasi identici sulla carta mostrano la
-differenza:
+tapas. Ecco due attrazioni di Orlando con numeri quasi identici sulla carta:
 
 ![Due strade verso una portata simile: pochi treni grandi sull’Hulk, molti vagoncini su Rip Ride Rockit | Stessa categoria, strategia completamente diversa: massa per treno contro frequenza. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
@@ -298,15 +295,14 @@ arrivare a **~1.850 persone l’ora** paragonabili c’erano **sette treni** in
 circolazione, e la stazione doveva smaltire quasi il triplo delle volte rispetto
 all’Hulk. Lo rendeva possibile una stazione in cui i treni non si fermavano mai
 del tutto: avanzavano piano e i passeggeri salivano da un tappeto mobile che
-scorreva con loro. Stesso risultato, concetto operativo completamente diverso.
-(Ormai l’attrazione è storia; sul suo terreno Universal costruisce la
+scorreva con loro. (Ormai l’attrazione è storia; sul suo terreno Universal costruisce la
 succeditrice _Fast & Furious: Hollywood Drift_, annunciata per il 2027.)
 
 ### Sezioni di blocco: perché non semplicemente “più treni”?
 
-Sette treni sullo stesso percorso fanno sorgere la domanda del perché non
-finiscano per tamponarsi. La risposta è il **sistema a blocchi**: il percorso è
-diviso in sezioni, e in ogni sezione può trovarsi sempre un solo treno. Solo
+Sette treni sullo stesso percorso non si tamponano grazie al **sistema a
+blocchi**. Il percorso è diviso in sezioni, e in ogni sezione può trovarsi
+sempre un solo treno. Solo
 quando il blocco davanti è libero il controllo rilascia il successivo. Ogni
 blocco ha quindi bisogno di un punto in cui un treno possa fermarsi del tutto in
 caso di necessità.
@@ -322,7 +318,7 @@ finale, i passeggeri salutano la stazione, la stazione risaluta, e nessuno si
 muove. A quel punto il collo di bottiglia è lo smistamento. Con che rapidità
 sono controllate tutte le barre e il treno è di nuovo fuori?
 
-Quanto sul serio lo prendano le attrazioni moderne lo mostra
+Le attrazioni moderne lo prendono sul serio, per esempio
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)
 all’[Europa-Park](ref:europa-park?bare). Secondo la scheda tecnica di Mack
 Rides l’attrazione ha **sette treni**, di cui tre o quattro in pista
@@ -333,7 +329,6 @@ treni grandi la metà.
 
 ### Treni che non si fermano
 
-Il passo successivo di questo ragionamento: treni che nemmeno si fermano.
 Voltron nasconde uno dei suoi blocchi in un lancio in corsa, sul fondo di una
 valle. Se la sezione successiva è libera, il treno viene accelerato al
 passaggio, senza fermarsi. Se è occupata, la spinta resta spenta, il treno
@@ -351,8 +346,7 @@ stazione. La attraversano a passo d’uomo mentre gli ospiti salgono: una
 **rolling station**, in pratica il principio dell’omnimover applicato alle
 montagne russe. Con soli otto posti per treno (uno dietro l’altro, come su una
 bicicletta molto decisa) conta ogni secondo in cui il treno non è fermo.
-Comunque non si va lontano: Freizeitpark-Welt stima per YOY circa 800
-passeggeri l’ora.
+Freizeitpark-Welt stima comunque per YOY solo circa 800 passeggeri l’ora.
 
 ## La legge di Little: la formula dietro ogni coda
 
@@ -371,9 +365,9 @@ tanti ospiti quanti l’attrazione ne smaltisce, quindi λ lì è la portata:
 
 Se davanti all’Hulk ci sono 640 persone e l’attrazione ne smaltisce 1.920
 l’ora, aspetti **20 minuti** (640 ÷ 1.920 = ⅓ di ora). Le stesse 640 persone
-davanti a un’attrazione con capacità 800, come YOY? **48 minuti.** Il bello
-della formula di Little è che vale per ogni coda stabile, per quanto
-irregolarmente arrivino gli ospiti, purché si parli di medie. I parchi usano
+davanti a un’attrazione con capacità 800, come YOY? **48 minuti.** La formula
+di Little vale per ogni coda stabile, per quanto irregolarmente arrivino gli
+ospiti, purché si parli di medie. I parchi usano
 proprio questo calcolo quando stimano il numero di persone in attesa e dividono
 per la portata attuale. Altri misurano il tempo direttamente, per esempio con
 schede di cronometraggio che un ospite riceve all’ingresso della coda e
@@ -384,27 +378,27 @@ attese completamente diverse in due giorni. Se oggi un’attrazione gira con due
 treni invece di tre, la portata scende e W sale immediatamente, senza che nel
 parco ci sia neanche un ospite in più.
 
-E il tabellone all’ingresso, quello che ti mente? A Disney World qualcuno l’ha
-misurato. TouringPlans confronta i tempi esposti con quelli che gli ospiti
-cronometrano da soli in coda, e in un’analisi del febbraio 2023 l’attesa reale
-risultava, a seconda del parco, tra il 60 e il 68 per cento di quella esposta.
-Nessuna attrazione superava in media il proprio tabellone. Se Disney inserisca
-quel margine apposta, l’azienda non lo dice. Si accorda però con la prima legge
-del servizio di Maister: la soddisfazione è percezione meno aspettativa. Un
-tabellone che sottostima produce all’uscita un mucchio di persone che si
-sentono fregate; uno che sovrastima manda via qualche ospite ma rende felici
-tutti gli altri. Come l’app delle consegne che annuncia quaranta minuti e poi il
-fattorino suona dopo trenta. Chi mette in conto 60 minuti e sale dopo 45 lascia
-la stazione da vincitore. Regola picco-fine, ricordi? L’ora finisce meglio del
-previsto, ed è così che viene archiviata.
+Quanto il tempo esposto all’ingresso si discosti da quello reale, a Disney World
+qualcuno l’ha misurato. TouringPlans confronta i tempi esposti con quelli che gli
+ospiti cronometrano da soli in coda, e in un’analisi del febbraio 2023 l’attesa
+reale risultava, a seconda del parco, tra il 60 e il 68 per cento di quella
+esposta. In nessuna attrazione l’attesa reale superava in media quella esposta.
+Se Disney inserisca quel margine apposta, l’azienda non lo dice. Si accorda però
+con la prima legge del servizio di Maister: la soddisfazione è percezione meno
+aspettativa. Se il tempo esposto è troppo basso, all’uscita c’è un mucchio di
+persone che si sentono fregate; se è troppo alto, qualche ospite rinuncia, ma
+tutti gli altri escono contenti. Come l’app delle consegne che annuncia quaranta
+minuti e poi il fattorino suona dopo trenta. Chi mette in conto 60 minuti e sale
+dopo 45 lascia la stazione da vincitore, e per la regola picco-fine è così che
+ricorderà quell’ora.
 
-park.fan in questo conto sta dall’altra parte del tabellone. Non contiamo teste
-in coda: ogni cinque minuti raccogliamo i tempi di attesa che i parchi stessi
-pubblicano, margine compreso. Nemmeno Fancast, il nostro modello di previsione,
+park.fan non conta teste in coda. Ogni cinque minuti raccogliamo i tempi di
+attesa che i parchi stessi pubblicano, margine compreso. Nemmeno Fancast, il nostro modello di previsione,
 calcola con numeri di persone o capacità dei treni. Impara dalla storia misurata
 dei tempi di attesa di un parco, dalle vacanze scolastiche e dai giorni festivi
 (anche quelli delle regioni vicine), dalle previsioni meteo, dagli orari di
-apertura e dagli eventi, e al momento guarda avanti di circa sei mesi. Domanda e
+apertura e dagli eventi, e al momento le sue previsioni arrivano a circa sei
+mesi. Domanda e
 portata stanno comunque dentro ognuno di quei numeri, perché ogni tempo di attesa
 è alla fine la legge di Little: la coda divisa per la portata. Quanto spesso le nostre previsioni colgano la
 realtà sta sulla [pagina di Fancast](/fancast).
@@ -446,9 +440,8 @@ A Parigi e a Orlando con l’attrazione c’entra poco, con l’aritmetica molto
    vacanza scegliamo il ristorante con la terrazza più piena. Così tutti si mettono in fila con ancora più
    convinzione, e l’attesa diventa una profezia che si autoavvera.
 
-Una precisazione: la nostra classifica si basa sui tempi esposti, e proprio per
-Peter Pan’s Flight al Magic Kingdom il tabellone esagera di più secondo
-TouringPlans. Gli ospiti vi hanno cronometrato in media il 45 per cento del
+La nostra classifica si basa sui tempi esposti, e secondo TouringPlans proprio
+per Peter Pan’s Flight al Magic Kingdom il tempo esposto è il più gonfiato. Gli ospiti vi hanno cronometrato in media il 45 per cento del
 tempo esposto (analisi del febbraio 2023).
 
 Ecco i tempi di attesa live della versione di Orlando, nel parco divertimenti
@@ -493,17 +486,17 @@ vacanza tutti vogliono il [Taron](ref:phantasialand/taron?bare) (saluti, per
 esperienza ne faccio parte), la saturazione arriva altrettanto in fretta che per
 Peter Pan a Parigi.
 
-I numeri sono quasi comici. Il Taron smaltisce circa **1.200 ospiti l’ora**
+Il Taron smaltisce circa **1.200 ospiti l’ora**
 secondo RCDB, più o meno quanto gli appassionati stimano per Peter Pan’s Flight
 a Parigi. La differenza sta nel denominatore, in tutto il resto su cui la
 domanda può distribuirsi. A Parigi Peter Pan sta in mezzo a decine di
 alternative. A Brühl, in un sabato di vacanza, sembra che mezzo parco abbia in
 testa la stessa singola attrazione. E Voltron all’Europa-Park, con 1.600 l’ora,
 sta solo un terzo più in alto, ma da fine dicembre 2025 ha avuto la coda
-mediana più corta delle due (al 25 settembre 2026). La mia spiegazione: gli
-altri coaster lì accanto drenano domanda.
+mediana più corta delle due (al 25 settembre 2026). Secondo me perché gli altri
+coaster lì accanto drenano domanda.
 
-Per questo ogni pagina di parco su park.fan mostra, accanto ai tempi di attesa
+Per questo ogni pagina di parco su park.fan mostra, oltre ai tempi di attesa
 live, anche le statistiche di lungo periodo. “Pieno” è relativo: la stessa
 attesa a Brühl è una brutta giornata e al Magic Kingdom una giornata normale.
 Guarda lo stesso insieme di dati per entrambi i parchi, i tempi di attesa
@@ -535,12 +528,12 @@ visita valga la pena.
 ## Avanzare non serve
 
 Piccolo esperimento per la prossima volta: sei in coda e davanti a te si apre
-un varco di due metri. Cosa fa il tuo corpo? Avanza. Subito, per riflesso, come
-se altrimenti qualcun altro ti rubasse il varco. Ed è, con rispetto, del tutto
+un varco di due metri. Il tuo corpo avanza, subito, per riflesso, come se
+altrimenti qualcun altro ti rubasse il varco. Ed è, con rispetto, del tutto
 inutile.
 
-Perché la legge di Little di poco fa lo dice chiarissimo: la tua attesa dipende
-dalla portata della stazione là davanti, non dalla distanza da chi ti precede.
+Per la legge di Little la tua attesa dipende dalla portata della stazione là
+davanti, non dalla distanza da chi ti precede.
 Che tu ti incolli a lui o lasci due metri d’aria, la tua posizione in fila
 cambia di esattamente zero posti. Ti muovi di due metri; davanti non arrivi
 neanche un secondo prima.
@@ -576,8 +569,8 @@ Sul lato dei veicoli, invece, ogni fermata costa capacità vera. Per questo
 l’omnimover della Haunted Mansion e la rolling station di YOY non si fermano
 affatto nel funzionamento normale. Nella coda davanti a loro lo stop-and-go
 costa solo pazienza. Quello che accorcia davvero la tua attesa si decide prima
-della visita: un giorno in cui davanti a te c’è meno gente. Qual è quel giorno
-te lo dice il calendario dei giorni migliori.
+della visita: un giorno in cui davanti a te c’è meno gente. Quel giorno lo trovi
+nel calendario dei giorni migliori.
 
 ## Virtual queue e stazioni doppie
 
@@ -598,9 +591,9 @@ solo con i **boarding group** dall’apertura nel dicembre 2019 fino a settembre
 2021, e Cosmic Rewind fino a febbraio 2025 (lì la Lightning Lane a pagamento
 era l’unico altro modo per entrare). Il principio è sempre lo stesso: stai in
 coda digitalmente mentre mangi, fai shopping o guardi uno spettacolo. La coda
-continua a esistere, semplicemente si svolge senza le tue gambe. L’attesa non
-sparisce, ma non ti divora più la giornata, e il parco distribuisce la domanda
-sulle ore in modo più controllato.
+continua a esistere, solo che si svolge senza le tue gambe e non ti divora più
+la giornata. Il parco, intanto, distribuisce la domanda sulle ore in modo più
+controllato.
 
 Per chi preferisce fare la fila con i piedi anziché con il pollice, i parchi
 lavorano in parallelo sulla stazione stessa:
@@ -614,8 +607,8 @@ lavorano in parallelo sulla stazione stessa:
   coaster De Vliegende Hollander.
 - **Addirittura due percorsi completi**: lo Space Mountain di Disney al Magic
   Kingdom è l’esempio più radicale. Nello stesso edificio corrono due percorsi
-  intrecciati e speculari (“Alpha” e “Omega”) con stazioni proprie, il che
-  raddoppia praticamente la capacità del sistema. Di fatto due montagne russe
+  intrecciati e speculari (“Alpha” e “Omega”) con stazioni proprie. La capacità
+  del sistema praticamente raddoppia. Di fatto due montagne russe
   che si spacciano per una. Il modello lo fornì nel 1959 il Matterhorn Bobsleds
   di Disneyland, il primo coaster al mondo con rotaie tubolari in acciaio,
   anch’esso a due percorsi.
@@ -638,7 +631,7 @@ diverso quando sai tre cose, e stanno su park.fan:
   tutto, aggiornati ogni cinque minuti. Sono i numeri che i parchi stessi
   espongono, margine compreso. Se salgono o scendono lo vedi comunque, senza
   doverti contare da solo le 640 persone davanti.
-- **È tanto o è normale?** Lo dicono le **statistiche di lungo periodo** di
+- **È tanto o è normale?** Si vede dalle **statistiche di lungo periodo** di
   ogni attrazione, perché lo stesso numero è, a seconda del parco, una
   seccatura o una vincita alla lotteria.
 - **E devo proprio mettermi in coda?** Di solito si decide già scegliendo il

@@ -1,5 +1,5 @@
 ---
-title: 'EQT wil Parques Reunidos verkopen, en Movie Park, Slagharen en Bobbejaanland gaan mee'
+title: 'EQT zet eigenaar van Slagharen en Bobbejaanland te koop'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
 author: patrick
@@ -113,7 +113,7 @@ en sinds april 2025 Belantis.
 
 Met Compagnie des Alpes als koper zouden Slagharen en Walibi Holland bij
 dezelfde eigenaar komen, en Bobbejaanland en Walibi Belgium ook. Voor Movie
-Park zou het een reünie zijn: van 1999 tot 2006 hadden Bottrop, Walibi Belgium
+Park zou het een reünie zijn, want van 1999 tot 2006 hadden Bottrop, Walibi Belgium
 en het huidige Walibi Holland dezelfde eigenaar, eerst Six Flags en daarna de
 investeerder Palamon. In 2006 kochten de Fransen de Walibi-parken van Palamon,
 dat Movie Park hield tot de verkoop aan Parques Reunidos.
@@ -128,7 +128,7 @@ moederbedrijf, en het park blijft het bedrijf waar je je kaartje kocht.
 
 Ook aan het seizoensabonnement verandert de verkoop niets. Goud en Platina gelden voor de rest van dit seizoen en het hele seizoen 2027, en op de site van Movie Park staat al wat het abonnement voor 2027 inhoudt: drie gratis bezoeken elk aan Bobbejaanland, Slagharen en Weltvogelpark Walsrode, één aan Tropical Islands en één per park aan andere Europese parken van de groep, met Mirabilandia en Parque Warner als voorbeeld. De overige aanbiedingen van de Bonus Club voor 2027 publiceert het park “bij het begin van het seizoen 2027”. Omdat het concern in zijn geheel verkocht wordt, blijven de parken van de groep ook na een verkoop zusterparken.
 
-Hoe het park omgaat met een eigenaarswissel midden in het seizoen, laat Belantis zien. Op de lijst voor 2025 stond het park bij Leipzig met drie gratis bezoeken, geldig tot 9 november, en de verkoop aan Compagnie des Alpes in april veranderde daar niets aan. Pas op de lijst voor 2026 staat Belantis bij de kortingen. Twijfel je over het Gold-abonnement voor 2027, dan hoef je vanwege de verkoop niet te wachten. Of er iets verandert aan de partnerparken, is op zijn vroegst een vraag voor 2028.
+Hoe Movie Park omgaat met een eigenaarswissel midden in het seizoen, is bij Belantis al eens gebleken. Op de lijst voor 2025 stond het park bij Leipzig met drie gratis bezoeken, geldig tot 9 november, en de verkoop aan Compagnie des Alpes in april veranderde daar niets aan. Pas op de lijst voor 2026 staat Belantis bij de kortingen. Twijfel je over het Gold-abonnement voor 2027, dan hoef je vanwege de verkoop niet te wachten. Of er iets verandert aan de partnerparken, is op zijn vroegst een vraag voor 2028.
 
 Parques Reunidos heeft sinds de overname in 2010 meer dan eens in Bottrop gebouwd. Een maand erna legde de parkdirecteur de nieuwe eigenaar het idee voor [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) voor, het concern gaf vijf miljoen euro vrij, en in 2011 ging de baan open. Een achtbaan van 45 meter op het grasveld vlak achter de ingang, in 2012 aan de gemeente gepresenteerd, stopte het park in september van datzelfde jaar, officieel vanwege “een wijziging in onze investeringsstrategie”. Op die plek opende in 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), de grootste achtbaan van het park. Daarna kwamen [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) (2018) en de [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) (2021). De hele geschiedenis van het park staat in de [gids over Movie Park](/blog/movie-park-germany-wachttijden-tips).
 

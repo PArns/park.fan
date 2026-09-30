@@ -39,7 +39,7 @@ seo:
   title: 'Toverland: Troy, Wartezeiten & Halloween ohne Fast Pass'
   description: >-
     Troy im Toverland: die größte Holzachterbahn des Benelux, und davor kaum
-    eine Schlange. Wartezeit-Daten, Fēnix, Tickets, Halloween Nights und was 2027 kommt.
+    eine Warteschlange. Wartezeit-Daten, Fēnix, Tickets, Halloween Nights und was 2027 kommt.
   keywords:
     - Toverland
     - Toverland Wartezeiten
@@ -70,7 +70,7 @@ voller Geschwindigkeit **durch das Stationsgebäude**, an den Wartenden vorbei,
 die sich reflexhaft ducken.
 
 Nach 110 Sekunden stehst du wieder da, wo du losgefahren bist, und drehst dich
-um. Hinter dir: niemand. Also raus, einmal durch die leere Schlange und
+um. Hinter dir: niemand. Also raus, einmal durch die leere Warteschlange und
 wieder rein.
 
 ![Das hölzerne trojanische Pferd in Ithaka, auf einem Wagen, im Herbstlicht | Das trojanische Pferd bewacht den Eingang zu Ithaka. Die Bahn selbst versteckt sich dahinter im Gehölz. | right](/media/toverland/troy-4x3.jpg)
@@ -87,7 +87,7 @@ dann noch eine gute Stunde vor sich, bis nach Kaatsheuvel, zum
 Siebzig Kilometer trennen die beiden Parks. In beiden steht eine Holzachterbahn
 vom selben amerikanischen Hersteller. Für die eine wartest du typischerweise
 rund eine Viertelstunde, für die andere mehr als doppelt so lang. Die kürzere
-Schlange steht in Sevenum.
+Warteschlange steht in Sevenum.
 
 Das [Toverland](ref:attractiepark-toverland) in
 Sevenum, das ich für einen der schönsten kleinen Parks Europas halte, wird
@@ -97,7 +97,7 @@ dazu später.
 
 ## Troy auf dem Papier und Troy im Zug
 
-Die technischen Daten sind ordentlich, aber nicht spektakulär, und sie hängen
+Die technischen Daten sind ordentlich, mehr nicht, und sie hängen
 ein wenig davon ab, wen man fragt. Der Park nennt 35 Meter Höhe und 90 km/h,
 der Hersteller GCI 31,9 Meter, die Roller Coaster DataBase knapp 87 km/h. Einig
 sind sich alle bei 1.077 Metern Strecke; dazu kommen gut 20.000 Quadratmeter
@@ -187,7 +187,7 @@ Dazu kommt etwas, das andere Parks längst eingebaut haben und das hier fehlt:
 **Das Toverland verkauft keinen Fast Pass und keinen Express-Pass.** Es gibt im
 ganzen Park genau eine Möglichkeit, Zeit gegen Geld zu tauschen, und die
 existiert nur an den 13 Halloween-Abenden im Oktober und Anfang November. An
-allen anderen Tagen ist die Schlange, die du siehst, die Schlange, die es gibt.
+allen anderen Tagen ist die Warteschlange, die du siehst, die Warteschlange, die es gibt.
 Eine Single-Rider-Spur gibt es seit 2023 übrigens auch, aber nur an einer
 einzigen Attraktion, dem Freifallturm Dragonwatch, und die kostet nichts extra.
 
@@ -307,7 +307,7 @@ Hafenstil (**Port Laguna**) und der Artus-Welt **Avalon**, in der
 [Fēnix](ref:attractiepark-toverland/fenix) und [Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)
 stehen. Damals bekam der Park auch seinen heutigen Claim, „Discover your own
 magic“, der die alten Sprüche „Magisch mooi“ und „Feel the Magic“ ablöste. Im
-selben Jahr räumte Toverland bei den **European Star Awards** ab:
+selben Jahr räumte das Toverland bei den **European Star Awards** ab:
 bester Freizeitpark in der Kategorie bis eine Million Besucher, dazu Platz zwei
 für Fēnix als beste neue Achterbahn. Troy landete in der Kategorie beste
 Holzachterbahn knapp hinter dem Sieger, mit einer damals elf Jahre alten Bahn.
@@ -376,7 +376,7 @@ Die einzige Regel, die dort zählt: Wer stehen bleibt, wird geschnappt.
 
 ![Der Schriftzug am Eingang von Troy, zu „DesTROY – The Ride“ umdekoriert, darunter zwei Halloween-Nights-Banner | Aus Troy wird DesTROY. Der Park dekoriert dafür den Schriftzug am Eingang der Achterbahn um. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
-Für Troy-Fans kommt der beste Teil aber erst. Eine der Scare Zones heißt
+Eine der Scare Zones heißt
 **„DesTroy“** und liegt in **Ithaka**, also direkt an und unter der
 Holzachterbahn. Mutierte trojanische Soldaten bewachen die Ruinen der Stadtmauer,
 und Troy fährt mitten hindurch, an diesen Abenden bis 23 Uhr und damit im
@@ -387,8 +387,8 @@ Dunkeln. Homer hätte Fragen.
 Eine der sechs Experiences hat für mich noch einen zweiten Boden. Mit dem
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/) war ich in der
 **Maison de la Magie** hinter den Kulissen unterwegs, und wir durften dort selbst
-einmal die Seite der Erschrecker ausprobieren. Nicht im laufenden Betrieb, ohne echte Gäste, nur
-wir und ein leeres Haus. Ob ich jemanden erschreckt hätte, wird sich also nie
+einmal die Seite der Erschrecker ausprobieren. Der Betrieb lief dabei nicht, und
+außer uns war niemand im Haus. Ob ich jemanden erschreckt hätte, wird sich also nie
 klären lassen.
 
 ![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
@@ -405,7 +405,7 @@ Park.
 > [!TIP]
 > **Mein Tipp für die Halloween Nights: der Fear Pass.** Für 69,95 € bekommst
 > du einmaligen Zugang zu allen sechs Haunted Experiences, und zwar über einen
-> **eigenen Eingang** statt über die normale Schlange, dazu einen reservierten
+> **eigenen Eingang** statt über die normale Warteschlange, dazu einen reservierten
 > Bereich an der Parade. Das ist die einzige Abkürzung, die es hier zu kaufen
 > gibt, und an vollen Nächten der Unterschied zwischen „drei Häuser geschafft“
 > und „alle sechs, und dazu heil aus dem Mais gekommen“.
@@ -432,13 +432,13 @@ Das lag an einer Rechnung, die nie aufgehen konnte: In einen Wagen passten eine,
 höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushing,
 nahmen Paare regelmäßig zwei Wagen statt einem, damit jeder seine eigene Zeit
 fahren konnte. (Beziehungen sind schon an kleineren Fragen gescheitert.) Der Durchsatz brach genau an der Stelle ein, an der die Bahn am
-meisten Spaß machte. Eine lange Schlange für eine kurze Abfahrt, und die Leute standen
-sie trotzdem, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
+meisten Spaß machte. Eine lange Warteschlange für eine kurze Abfahrt, und die Leute standen
+trotzdem an, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
 man schlagen wollte.
 
 Der letzte Tag war dann kein stiller. Der Park hat sie mit einer richtigen Feier
 verabschiedet, mit Rahmenprogramm und eigens aufgelegten Souvenirs, und die
-Schlange war ein letztes Mal so lang wie in ihren besten Jahren. Die allerletzte
+Warteschlange war ein letztes Mal so lang wie in ihren besten Jahren. Die allerletzte
 Fahrt aber gehörte dem, dem die Bahn laut Hausgeschichte immer gehört hat,
 **Maximus Müller**, dem exzentrischen Erfinder, der den Wunderwald bewohnt. Er
 stieg selbst ein und fuhr seine eigene Konstruktion ein letztes Mal hinunter.
@@ -478,8 +478,8 @@ durchgehend über die Weihnachtsferien. Die Attraktionen fahren auch dann,
 solange das Wetter mitspielt. Zum Jubiläum ist an den ersten drei Wochenenden
 und Mittwochen, bis zum 16. Dezember, der Eintritt frei: Wer vorher kostenlos
 reserviert, zahlt nur pro Fahrt, mit Streifen zu je 2 €, und Troy kostet drei
-davon. Normale Tagestickets gibt es parallel. Wunderschön, nur eben kein
-Geheimtipp mehr, sobald die Lichter an sind: Die letzten Tage des Jahres 2025, mit
+davon. Normale Tagestickets gibt es parallel. Wunderschön, nur eben nicht
+leer, sobald die Lichter an sind: Die letzten Tage des Jahres 2025, mit
 denen unsere Messung am 26. Dezember begann, waren so voll wie der
 August.
 
@@ -542,7 +542,7 @@ wenn der Park erst nach Sonnenuntergang schließt.
 
 - **Tageskarte:** Das Toverland arbeitet mit vier Preisstufen, Bronze, Silber,
   Gold und Platin, je nach Öffnungszeiten und Programm des Tages; welche gilt,
-  zeigt der Ticketkalender. Kinder unter 90 cm und Geburtstagskinder kommen frei
+  steht im Ticketkalender. Kinder unter 90 cm und Geburtstagskinder kommen frei
   rein, reservieren müssen aber auch sie.
 - **Online günstiger.** Wer mindestens sieben Tage vorher bucht, bekommt
   den **Early-Bird-Rabatt** von 7 € (ab 140 cm) bzw. 3,50 € (90–140 cm) auf den
@@ -584,8 +584,7 @@ Ferienparks. Wer die Region ohnehin bereist, kombiniert gut mit
 - **The Flaming Feather** (Avalon) ist die Adresse, wenn du einmal richtig sitzen
   willst: mittelalterliche Wirtshaus-Kulisse, burgundische Küche, Fleisch- und
   Fischgerichte, vegetarische Optionen, saisonale Specials. **Bestell die
-  Brot-Vorspeise**, das ist der eigentliche Geheimtipp des Hauses: sehr frisches
-  Brot mit einer ganzen Reihe Aufstriche. Nimm sie aber zu zweit oder zu dritt,
+  Brot-Vorspeise**: sehr frisches Brot mit einer ganzen Reihe Aufstriche. Nimm sie aber zu zweit oder zu dritt,
   allein isst du dich daran satt, bevor der Hauptgang kommt.
 - **Katara Plaza** (Magische Vallei) ist der Foodcourt mit der besten Aussicht:
   Burger, Pommes, Burritos und Nachos, Tische am Wasser, dazu die Wassershow
@@ -595,7 +594,7 @@ Für zwischendurch gibt es die **Waldstube** im Wunderwald (Pizza, Burger,
 Sandwiches, bei Regen ein Segen), **Hungry Harry** in Avalon für Wraps und warme
 Sandwiches, **Mañana** in Port Laguna für Pommes und Fish & Chips, und die
 **Snack-Automaten in Port Laguna**, an denen die
-meisten vorbeilaufen. Zu Unrecht: ohne Schlange, ohne Umweg, und für den Hunger
+meisten vorbeilaufen. Zu Unrecht: ohne Warteschlange, ohne Umweg, und für den Hunger
 zwischendurch die unkomplizierteste Lösung im Park. Iss früh oder spät, halb
 zwölf oder ab halb drei.
 
@@ -603,7 +602,7 @@ zwölf oder ab halb drei.
 
 ### Ist das Toverland einen Besuch wert?
 
-Ja, besonders für Achterbahnfans, die genug von Schlangen haben. Der Park ist mit
+Ja, besonders für Achterbahnfans, die genug von Warteschlangen haben. Der Park ist mit
 gut einer Million Gästen pro Jahr klein im Vergleich zum Efteling oder zum
 Europa-Park, hat aber mit [Troy](ref:attractiepark-toverland/troy) eine Holzachterbahn, die
 bei den Golden Ticket Awards 2026 als fünftbeste Europas abschnitt, und mit
@@ -621,7 +620,7 @@ der [Toverland-Parkseite](ref:attractiepark-toverland).
 Unter den gut gemessenen Monaten war es bisher im September am ruhigsten, nach
 dem Ende der Sommerferien. April bis Juli liegen eng beieinander, der August und
 die Weihnachtsferien ragen heraus. Zwischen den Wochentagen gibt es kaum einen
-Unterschied. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
+Unterschied. Tag für Tag steht das im [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
 
 ### Braucht man im Toverland einen Fast Pass?
 
@@ -641,7 +640,7 @@ Wildfire im schwedischen Kolmården auf 12, [Balder](ref:liseberg/balder) im
 [Colossos](ref:heide-park/colossos-kampf-der-giganten) im [Heide Park](ref:heide-park) auf 18.
 Troy kam auf Platz 24, fünf Plätze vor Joris en de Draak. Nach den Angaben des
 Parks ist sie mit 35 Metern Höhe, 1.077 Metern Länge und 90 km/h die höchste,
-längste und schnellste Holzachterbahn der Beneluxstaaten, und ihre Schlange ist
+längste und schnellste Holzachterbahn der Beneluxstaaten, und ihre Warteschlange ist
 deutlich kürzer als die ihrer GCI-Schwester im Efteling.
 
 ### Was ist 2026 neu im Toverland?
@@ -701,7 +700,7 @@ Und die zwei, um die es hier ging, mit ihren aktuellen Zahlen:
 [Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Fahr an der Ausfahrt Sevenum einmal raus statt vorbei. Und wenn du dann bei Troy
-sitzt und hinter dir wartet keiner: Steig aus, lauf durch die leere Schlange und fahr nochmal. Und
+sitzt und hinter dir wartet keiner: Steig aus, lauf durch die leere Warteschlange und fahr nochmal. Und
 danach noch einmal, bis dein Rücken sein Veto einlegt. An einem Dienstag im Juni klappt das hier. In den meisten
 anderen Parks Europas kannst du es vergessen.
 

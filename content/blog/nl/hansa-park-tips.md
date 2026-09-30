@@ -68,8 +68,8 @@ Neustadt, en vanaf de Highlander kijk je uit over de Lübecker Bucht.
 
 ## Korte afstanden, anderhalf record
 
-Hansa-Park doet het met **46 hectare**. Het Heide Park heeft er 85, en dat verschil merk je als
-eerste in je benen: twee achtbanen liggen hier zelden meer dan een paar minuten uit elkaar, en de
+Hansa-Park doet het met **46 hectare**. Het Heide Park heeft er 85, en dat verschil merk je in je
+benen, want twee achtbanen liggen hier zelden meer dan een paar minuten uit elkaar, en de
 elf themagebieden lopen in elkaar over in plaats van door weilanden gescheiden te zijn.
 
 Op die oppervlakte staat anderhalf record. De [Highlander](ref:hansa-park/highlander?bare) is de hoogste gyro drop tower ter wereld.
@@ -81,8 +81,8 @@ Legoland-tijd stamt en vier familie- en kinderachtbanen.
 Nieuwe achtbanen komen hier in golven. Tussen 2009 en 2017 waren het er vier, de Kärnan
 inbegrepen, daarna negen jaar geen enkele, tot in 2026 de Cornwall Coaster opende. In die pauze
 kwamen de Highlander en een paar kleinere themagebieden, en sinds 2008 bouwt het park stad voor
-stad aan één groot gebied, de “Hanse in Europa”. Wat intussen hetzelfde blijft: het park is elke dag
-van zijn seizoen open en hangt in oktober zo'n 2.000 lichtfiguren op, waar andere parken mazes
+stad aan één groot gebied, de “Hanse in Europa”. Hetzelfde gebleven is intussen dat het park elke dag
+van zijn seizoen open is en in oktober zo'n 2.000 lichtfiguren ophangt, waar andere parken mazes
 bouwen.
 
 [Hansa-Park](ref:hansa-park?full)
@@ -94,11 +94,10 @@ Gerstlauer bouwde hem als Infinity Coaster: **1.235 meter** baan, vanaf 1,30 met
 volledig in een **toren van 79 meter** die de trein verticaal omhoogtrekt, en de eerste afdaling valt
 67 meter.
 
-De echte truc gebeurt nog vóór die afdaling, binnen in de toren, waar niemand van buiten het ziet.
-Op weg naar boven, op je rug en in het donker, valt de trein op ruim 60 meter hoogte een stuk
-achteruit, voordat de lift hem verder naar de eerste afdaling trekt. Het park noemt dat wereldwijd uniek,
-maar vond het twee jaar na de opening kennelijk nog te tam: in 2017 verdubbelde het de valsnelheid
-ruimschoots, van ongeveer 5 naar ongeveer 11 meter per seconde.
+Binnen in de toren, waar niemand van buiten het ziet, valt de trein op weg naar boven, op je rug
+en in het donker, op ruim 60 meter hoogte een stuk achteruit, voordat de lift hem verder naar de
+eerste afdaling trekt. Het park noemt dat wereldwijd uniek, en in 2017, twee jaar na de opening,
+verdubbelde het de valsnelheid ruimschoots, van ongeveer 5 naar ongeveer 11 meter per seconde.
 
 ```glossary-widget slug=infinity-coaster
 
@@ -106,28 +105,27 @@ ruimschoots, van ongeveer 5 naar ongeveer 11 meter per seconde.
 
 De tweede grote rijdt sinds **2009**, tegenwoordig in het themagebied Peterhof von Novgorod.
 **[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod)** is ook van Gerstlauer, 40 meter hoog,
-**100 km/u**, en hij combineert twee dingen die elders gescheiden voorkomen: een LSM-launch, die je
-in het donker in 1,4 seconde naar 100 km/u schiet, en een verticale kettinglift in dezelfde baan. De
+**100 km/u**, en hij combineert in één baan een LSM-launch, die je in het donker in 1,4 seconde naar
+100 km/u schiet, met een verticale kettinglift, twee dingen die elders gescheiden voorkomen. De
 lift zit in het tweede, weer donkere deel van de rit, en de afdaling daarna gaat **97 graden**, dus
 voorbij verticaal. Tot 2020 heette hij Fluch von Novgorod, de vloek van
 Novgorod; in 2021 kwam er een t bij en werd de vloek een vlucht.
 
 **[Nessie](ref:hansa-park/nessie)** bouwde Anton Schwarzkopf in **1980**: 26 meter hoog, 741 meter lang, 80 km/u, met één verticale
 looping, destijds de grootste loopingbaan van Europa. Hij rijdt al 46 jaar en kreeg in 2019 een
-opnieuw gethematiseerd gebied, zoals anderen op die leeftijd een nieuwe keuken.
+opnieuw gethematiseerd gebied.
 
 Daarna volgen vier kleinere, en maar één daarvan is geen familiebaan. **[Crazy Mine](ref:hansa-park/crazy-mine)** van Maurer
 rijdt sinds 1997 als wilde muis in mijnschachtdecor, 15 meter hoog en na 70 seconden voorbij. De
 **[Royal Scotsman](ref:hansa-park/royal-scotsman)** is een Vekoma-juniorcoaster uit **1993** die tot
 2019 Rasender Roland heette en dwars door de looping van Nessie rijdt. De **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** staat sinds
 2011 in Wikingerland, **[Der kleine
-Zar](ref:hansa-park/the-little-tsar)** sinds 2017 op de Alter Jahrmarkt, met maar liefst drie meter hoogte. Allebei nemen ze kinderen vanaf 90 centimeter mee.
+Zar](ref:hansa-park/the-little-tsar)** sinds 2017 op de Alter Jahrmarkt, drie meter hoog. Allebei nemen ze kinderen vanaf 90 centimeter mee.
 
 De jongste kwam dit seizoen erbij. De **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opende op **23 mei 2026** in Bezauberndes
 Britannien, opnieuw Gerstlauer, 18 meter hoog, ruim 570 meter lang, 50 km/u, vanaf 90 centimeter. Het park telt **zeven launches** in één
-ronde, vooruit en achteruit. Zo vaak trek je anders alleen op in de file op de A1 bij Lübeck, op de
-eerste vakantiedag. Voor een familiebaan is dat veel, en je merkt het aan de rijtijd: ruim anderhalve minuut, een halve minuut langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) of de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
+ronde, vooruit en achteruit. Voor een familiebaan is dat veel, en je merkt het aan de rijtijd van ruim anderhalve minuut, een halve minuut langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) of de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
 ## De toren die Soltau het record afnam
 
@@ -146,24 +144,23 @@ na het ongeluk extra gordels aan de beugels laten aanbrengen.
 
 ```
 
-Voor gezinnen telt bij de Highlander vooral een ander getal: 1,40 meter minimumlengte, de hoogste
+Voor gezinnen telt bij de Highlander vooral de minimumlengte van 1,40 meter, de hoogste
 drempel in het hele park.
 
 ## Een kalender zonder sluitingsdag
 
 Het seizoen 2026 loopt van **26 maart tot en met 25 oktober**. We hebben de openingskalender van het
 park dag voor dag opgevraagd, voor het laatst op 25 september, en tussen die twee data staat
-**geen enkele sluitingsdag**. Geen overgeslagen maandag in het voorjaar, geen gat op dinsdag in
-oktober, niets. Dat zijn 214 openingsdagen, in de kalender van het park net zo goed als in onze
+**geen enkele sluitingsdag**. Dat zijn 214 openingsdagen, in de kalender van het park net zo goed als in onze
 kalenderfeed.
 
 Het Europa-Park en het Phantasialand doen het net zo. Het Heide Park daarentegen haalt de maandag in
 voor- en najaar regelmatig uit de kalender, het Movie Park sluit buiten het hoogseizoen meestal van
 maandag tot en met woensdag, en zelfs Legoland Deutschland in Günzburg heeft in 2026 een handvol
-sluitingsdagen in mei, juni en september. Wie in Sierksdorf een rustige doordeweekse dag zoekt, krijgt die dus ook echt als
-openingsdag en niet als gesloten poort.
+sluitingsdagen in mei, juni en september. Wie in Sierksdorf een rustige doordeweekse dag zoekt, staat dus nooit voor een gesloten
+poort.
 
-De tijden zijn bijna even eentonig, in de beste zin: wie hier plant, heeft geen
+De tijden zijn bijna even eentonig, en wie hier plant, heeft geen
 kalender met voetnoten nodig. Tot **9 oktober** opent het park dagelijks om **10.00 uur** en
 sluiten de attracties om **18.00 uur**. Precies drie dagen vielen uit de toon, en die zijn alle drie
 al voorbij: op Goede Vrijdag, 3 april, reden de attracties pas vanaf 11.00 uur. Op 11 augustus bleef
@@ -181,8 +178,8 @@ Het seizoen 2027 plant het park volgens de huidige stand van **25 maart tot en m
 ## Herbstzauber in plaats van Halloween
 
 Van **10 tot en met 25 oktober 2026** is het park open van **11.00 tot 21.00 uur**, en wat er in die
-periode draait heet “Herbstzauber am Meer”, herfsttovenarij aan zee. Geen mazes, geen scare zones,
-geen minimumleeftijd van 16. De “Zeit der Schattenwesen”, waarmee het park vroeger in de
+periode draait heet “Herbstzauber am Meer”, herfsttovenarij aan zee. Er zijn geen mazes en geen scare zones,
+en er geldt geen minimumleeftijd van 16. De “Zeit der Schattenwesen”, waarmee het park vroeger in de
 herfstweekenden griezelde, biedt het niet meer aan. In plaats daarvan hangt het zo'n
 **2.000 lichtfiguren** op en draait het twee programmaonderdelen:
 
@@ -198,7 +195,7 @@ voor in de rij zou gaan staan.
 
 Op zo'n avond zetten drie tijdstippen je dag om. De
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) en
-[Super Splash](ref:hansa-park/super-splash) sluiten al om **16.00 uur**, waar vooral je sokken op een oktoberavond blij mee zijn. Voor de Super Splash zijn het sowieso de laatste dagen: na 25 oktober rijdt hij niet meer. De [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) en [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) en [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) hebben hun **laatste rit om 19.30 uur**, omdat het vuurwerk
+[Super Splash](ref:hansa-park/super-splash) sluiten al om **16.00 uur**, waar vooral je sokken op een oktoberavond blij mee zijn. Voor de Super Splash zijn het sowieso de laatste dagen, want na 25 oktober rijdt hij niet meer. De [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) en [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) en [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) hebben hun **laatste rit om 19.30 uur**, omdat het vuurwerk
 wordt voorbereid. En tijdens de lichtparade staan elf andere attracties stil, waaronder [Highlander](ref:hansa-park/highlander?bare),
 [Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
@@ -207,12 +204,12 @@ dicht. De rest van het park draait door tot
 20.30 uur, met de pauze tijdens de parade.
 
 In de [halloweengids 2026](/blog/halloween-pretparken-2026) staan tien parken. Acht daarvan draaien
-in deze oktoberweken mazes of scare zones, twee slaan Halloween helemaal over. Hansa-Park doet
-iets derds: dezelfde avonden, vol programma, alleen zonder schrik. Met kinderen onder de tien zit je
-hier dus beter dan op een maze-avond. Helemaal zonder schrik gaat het hier ook niet: de avondshow is
-luid, en het park waarschuwt zelf voor schrikreacties bij de kleinsten.
+in deze oktoberweken mazes of scare zones, twee slaan Halloween helemaal over. Hansa-Park vult
+dezelfde avonden met een vol programma zonder griezelen. Met kinderen onder de tien zit je hier dus
+beter dan op een maze-avond, al is de avondshow luid, en het park waarschuwt zelf voor
+schrikreacties bij de kleinsten.
 
-## Dit park rekent in jaren, niet alleen in centimeters
+## Lengte en leeftijd per achtbaan
 
 Bij de meeste parken staat bij elke ingang een aantal centimeters. Hier staat er vaak ook een
 leeftijd bij, en die bepaalt of je kind zelfstandig mag of alleen met een volwassene ernaast.
@@ -224,7 +221,7 @@ centimeter en zonder begeleiding vanaf 6. [Der kleine Zar](ref:hansa-park/the-li
 
 Een kind van zeven met 1,25 meter komt daarmee in zeven van de acht achtbanen, maar in vier daarvan
 alleen met een volwassene ernaast. Ga je met één volwassene en twee kinderen, dan rijd je Nessie
-twee keer. Onder achtbaanniveau is er genoeg: onze catalogus telt **82 attracties** (stand
+twee keer. Onder achtbaanniveau is er genoeg. Onze catalogus telt **82 attracties** (stand
 25 september 2026), het park adverteert zelf met meer dan 125 en telt kennelijk ruimer.
 
 ## Van Legoland naar Hansa-Park
@@ -238,9 +235,8 @@ vennootschap werd geliquideerd, en de bank beheerde het terrein als trustee verd
 
 Rudolf Erich Leicht kocht het in het najaar van 1976, samen met twee investeerders. _Der Spiegel_
 schatte hun aandeel in 1977 op zo'n 10 miljoen mark. Met de eerste directeur Horst Hamelberg
-ontwierp Leicht een concept rond het thema van de maritieme Hanze, en daar hoorde een verandering bij
-die nu vanzelfsprekend lijkt: in het Legoland kostte elke attractie apart, in het Hansaland werd
-stapsgewijs een alles-inclusiefkaartje ingevoerd. Wie nu aan de kassa even
+ontwierp Leicht een concept rond het thema van de maritieme Hanze. In het Legoland had elke
+attractie apart gekost, in het Hansaland werd stapsgewijs een alles-inclusiefkaartje ingevoerd. Wie nu aan de kassa even
 slikt, mag zich voorstellen dat je voor elk rondje draaimolen opnieuw je
 portemonnee moest trekken.
 
@@ -258,16 +254,15 @@ Thoelke en Michael Schanze op hetzelfde podium.
 Daartussendoor groeide het attractieaanbod: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** de [Super Splash](ref:hansa-park/super-splash?bare), **1987** de
 naamswijziging in Hansa-Park bij het tienjarig bestaan, plus de 100 meter hoge Holsteinturm met zijn
 draaicabine. Die is sinds **januari 2025** weg, afgebroken wegens technische problemen die niet meer
-te repareren waren. De Metroliner uit 1989 verging het vergelijkbaar: een elektrische trein op een in
-elkaar geschoven acht, later rijdend als El Paso Express, gesloten na het seizoen 2015.
+te repareren waren. De Metroliner uit 1989, een elektrische trein op een in elkaar geschoven acht, later
+rijdend als El Paso Express, ging na het seizoen 2015 dicht.
 
-Het grootste bouwproject van het park is geen baan. **Hanse in Europa** vervangt sinds 2008 de oude
-Landungsbrücken en ontstaat gevel voor gevel, in acht gedocumenteerde bouwfasen: in 2008 het
+Het grootste bouwproject van het park is **Hanse in Europa**, dat sinds 2008 de oude
+Landungsbrücken vervangt en gevel voor gevel ontstaat, in acht gedocumenteerde bouwfasen: in 2008 het
 Holstentor als entree, in 2010 Brugge, Visby, Lübeck, Hamburg en Rostock, in 2011 Groningen en
 Parijs, in 2012 Londen, Ribe en Bergen, in 2013 zes andere van Kopenhagen tot Neurenberg, in 2018
 Gdańsk en Krakau, en in 2021 de tot dan grootste fase met 14 gevels uit Krakau, Stockholm, Stralsund,
-Helsinki, Riga en Venetië. Er was twintig jaar voor begroot, een planning die je verder vooral van
-wegwerkzaamheden kent. De laatste fase, het Palacio de Braga,
+Helsinki, Riga en Venetië. Er was twintig jaar voor begroot. De laatste fase, het Palacio de Braga,
 is nog niet af.
 
 De jaren sinds 2021 lezen navenant kleinschalig: Awildas Welt, de Peterhof von Novgorod in plaats van
@@ -279,8 +274,8 @@ Die kwam in 2026.
 
 Het **HANSA-PARK Resort am Meer** ligt aan de rand van Sierksdorf, tussen het vakantiepark en het
 pretpark loopt de spoorlijn. Boeken gaat via Landal of Ostseezeit, het minimumverblijf is **drie
-nachten**, twee nachten kan alleen op aanvraag. Vergeleken met de parkhotels in Rust of Brühl is dit een
-ander bouwwerk: vakantiehuis in plaats van themahotel, en de rekensom loopt eerder via de
+nachten**, twee nachten kan alleen op aanvraag. Anders dan bij de parkhotels in Rust of Brühl
+slaap je in een vakantiehuis en niet in een themahotel, en de rekensom loopt eerder via de
 Oostzeevakantie dan via de parkdag.
 
 Voor één parkdag zijn drie nachten zelden de moeite. Voor een week in juli waarin het park twee van de
@@ -323,8 +318,8 @@ Holsteinturm weer een uitkijktoren.
 
 Na de [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) is dat de tweede grote
 nieuwigheid in twee jaar; tussen de Highlander en de Cornwall Coaster zaten zeven jaar met kleinere.
-Tegelijk verdwijnt er een: de [Super Splash](ref:hansa-park/super-splash?bare) uit 1986 wordt in de
-winter van 2026/27 afgebroken, omdat het park dat deel van het terrein opnieuw inricht. Wat er komt,
+Tegelijk verdwijnt de [Super Splash](ref:hansa-park/super-splash?bare) uit 1986, die in de
+winter van 2026/27 wordt afgebroken, omdat het park dat deel van het terrein opnieuw inricht. Wat er komt,
 heeft het nog niet gezegd.
 
 ## Veelgestelde vragen over Hansa-Park
@@ -382,7 +377,7 @@ kilometer hemelsbreed naar het zuidwesten en past in dezelfde week.
 ## Waar het addertje zit
 
 Een toren van 79 meter met de Kärnan erin en een kanaalvaart uit de Legoland-tijd vol lichtfiguren
-staan hier op dezelfde 46 hectare. Het addertje is de ligging: Hamburg ligt 78 kilometer hemelsbreed verderop, alles ten zuiden
+staan hier op dezelfde 46 hectare. Hamburg ligt 78 kilometer hemelsbreed verderop, alles ten zuiden
 daarvan aanzienlijk verder, en wie alleen voor de acht achtbanen komt, is in de vroege middag klaar.
 Het park gaat ervan uit dat je toch al aan de Oostzee zit.
 

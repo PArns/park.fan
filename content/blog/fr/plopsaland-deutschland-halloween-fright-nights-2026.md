@@ -1,5 +1,5 @@
 ---
-title: 'Plopsaland Deutschland : dix Fright Nights, deux nouvelles maisons hantées et un schnitzel qu’on ne commande pas'
+title: 'Deux nouvelles maisons hantées à Plopsaland Deutschland'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -54,8 +54,7 @@ Les Fright Nights ont lieu **les vendredis et samedis du 2 au 31 octobre
 2026** : les 2, 3, 9, 10, 16, 17, 23, 24, 30 et 31 octobre. Ces jours-là, le
 parc ouvre de **10 h à 22 h** et, selon le parc, presque toutes les
 attractions tournent jusqu’à la fermeture. Il ne cite que les attractions
-aquatiques DinoSplash et Wickie Splash, qui s’arrêtent à 20 h, ce qui, en
-octobre, ne dérangera sans doute personne.
+aquatiques DinoSplash et Wickie Splash, qui s’arrêtent à 20 h.
 
 En journée se tient en parallèle la Fête d’automne Plopsa, pensée pour les
 enfants. Les monstres sortent le soir.
@@ -119,8 +118,8 @@ Plopsaland entrent aux Fright Nights sans
 supplément et reçoivent jusqu’au 30 septembre, dans la limite des stocks, un
 billet gratuit pour Mad Rat.
 
-Pour faire les six maisons, le calcul est vite fait : le billet le moins cher
-plus le forfait à 49 € reviennent à 88 € par personne ; le pass coûte 109 €, inclut le
+Pour faire les six maisons, le billet le moins cher plus le forfait à 49 €
+reviennent à 88 € par personne. Le pass coûte 109 €, inclut le
 parking et évite de réserver six créneaux. Si vous venez un samedi d’octobre bondé, prenez le pass.
 
 ## Pour qui
@@ -136,9 +135,8 @@ maquillage élaboré et déguisements sont interdits aux visiteurs de plus de
 
 Haßloch se situe entre l’A65 et la B9, et une navette relie la gare de Haßloch
 au parc. [Europa-Park](ref:europa-park) et Traumatica sont à un peu moins de
-deux heures de route au sud. Ce que font Traumatica, Movie Park, Walibi et
-Toverland cet automne est dans le
-[tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026).
+deux heures de route au sud. Le [tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026) compare
+les Fright Nights à Traumatica, au Movie Park, à Walibi et à Toverland.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

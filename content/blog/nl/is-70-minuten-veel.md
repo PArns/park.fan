@@ -1,13 +1,13 @@
 ---
-title: 'Is 70 minuten veel? Dat hangt ervan af of het dinsdag is'
+title: 'Hoe je ziet of 70 minuten wachten veel is'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
-  Bij de ingang van Taron staat een getal, en op zichzelf zegt het net zoveel
-  als een temperatuur zonder seizoen. Pas de vergelijking met elke gemeten
+  Bij de ingang van Taron staat een getal, en op zichzelf heb je er net zo
+  weinig aan als aan een temperatuur zonder seizoen. Pas de vergelijking met elke gemeten
   dinsdag maakt er een antwoord van. Waarom park.fan niets weggooit, wat er ’s
   nachts gebeurt en waarom we in augustus geen schaatsen meer aanraden.
 tags:
@@ -45,14 +45,14 @@ seo:
 ---
 
 Je staat voor [Taron](ref:phantasialand/taron), bij de ingang staat
-**70 minuten**, en je hoofd doet meteen het verkeerde: het vergelijkt dat getal met je herinnering. Vorige keer
+**70 minuten**, en je hoofd doet meteen het verkeerde en vergelijkt dat getal met je herinnering. Vorige keer
 was het 40, dus vandaag is het erger. De keer daarvoor 90, dus vandaag is het
 top. Twee bezoeken zijn geen basis, en je geheugen rondt sowieso in je nadeel af
 ([waarom, lees je hier](/blog/de-kunst-van-het-wachten)).
 
-Het getal zelf is niet het probleem. De parken schrijven het aan, het klopt
-meestal ongeveer, en het kost ons één aanvraag per vijf minuten. Het probleem is
-dat het er in zijn eentje staat, als een temperatuur zonder seizoen. Zeventig minuten op een dinsdag in mei is iets heel anders
+De parken schrijven het getal zelf aan, het klopt meestal ongeveer, en het kost
+ons één aanvraag per vijf minuten. Maar het staat er in zijn eentje, als een
+temperatuur zonder seizoen. Zeventig minuten op een dinsdag in mei is iets heel anders
 dan op een zaterdag in de zomervakantie, en zonder het tweede deel van die zin
 kun je er niets mee.
 
@@ -72,8 +72,9 @@ omhoog, terwijl er op 29 dagen niets van te merken was. De mediaan verroert zich
 bij zo’n dag niet eens. Daarom staat het record apart vermeld, met datum, zodat
 je het ziet zonder dat het de andere twee cijfers aanraakt.
 
-Voor [Phantasialand](ref:phantasialand) ziet de ranglijst er zo uit. De kolom
-met de meetdagen is de belangrijkste: die zegt hoeveel gewicht een regel draagt.
+Voor [Phantasialand](ref:phantasialand) ziet de ranglijst er zo uit. De
+belangrijkste kolom is die met de meetdagen, want daaraan zie je hoeveel gewicht
+een regel draagt.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
@@ -81,15 +82,14 @@ met de meetdagen is de belangrijkste: die zegt hoeveel gewicht een regel draagt.
 
 Wat hier staat, is live. Lees je dit artikel over drie maanden opnieuw, dan
 staan er andere cijfers in de tabel, en de tekst eromheen klopt nog steeds.
-Precies daarvoor zijn deze widgets er: in vier oudere artikelen stonden de
-cijfers met de hand getypt in markdowntabellen, verdeeld over zes talen, en na
-een paar weken waren ze stilletjes uit elkaar gelopen, zoals de klokken in een
+Deze widgets zijn er omdat in vier oudere artikelen de cijfers met de hand in
+markdowntabellen getypt stonden, verdeeld over zes talen, en die waren na een
+paar weken stilletjes uit elkaar gelopen, zoals de klokken in een
 vakantiehuisje.
 
 ## De dag heeft een vorm
 
-Een attractie heeft niet de hele dag dezelfde rij. De basisbeweging kent
-iedereen: bij de opening is het kort, dan is de rest van de wereld klaar met
+Een attractie heeft niet de hele dag dezelfde rij. Bij de opening is het kort, dan is de rest van de wereld klaar met
 ontbijten, en tegen de avond wordt het weer te doen. Waar precies het hoogtepunt ligt, verschilt per attractie, en
 die verschillen zijn het bruikbare deel.
 
@@ -100,11 +100,11 @@ die verschillen zijn het bruikbare deel.
 Uit die vorm ontstaan twee adviezen. Het eerste is **rope drop**: bij de opening
 meteen naar één bepaalde attractie, voordat de paden vollopen. Wij stellen dat
 alleen voor als de dagpiek op een gewone dag van de afgelopen 70 dagen minstens
-60 minuten haalt en de vroege start daarvan minstens 45 bespaart. Alles daaronder zou een tip zijn die overal zou gelden en
-daarom nergens iets waard is.
+60 minuten haalt en de vroege start daarvan minstens 45 bespaart. Onder die grens zou het advies bij bijna elke attractie
+gelden, en dan heb je er niets aan.
 
-Het tweede is het rustigere alternatief: het tijdstip waarop de rij bij die
-attractie meestal het kortst is. Valt dat in de avond, dan hoef je er niet om
+Het tweede advies is het tijdstip waarop de rij bij die attractie meestal het
+kortst is. Valt dat in de avond, dan hoef je er niet om
 zeven uur voor op te staan. Beide gegevens staan op de pagina van elke grote
 attractie met genoeg meetdagen, met een concrete tijd in parktijd.
 
@@ -119,7 +119,7 @@ Wat het verschil maakt:
 welke regio’s vrij hebben, of er een brugdag aan vastzit, of het regent en of
 er over de grens iets aan de hand is.
 
-Dat laatste punt wordt graag onderschat. Een park dicht bij de grens merkt het
+Een park dicht bij de grens merkt het
 meteen als de vakantie ernaast begint, meestal al aan de kentekens op de
 parkeerplaats. Dus rekenen we regio’s binnen ongeveer
 200 kilometer mee en markeren die apart in de kalender. Drie parken naast
@@ -136,7 +136,7 @@ vergelijken. Staan er twee dagen, dan zijn ze allebei even rustig.
 ## Waar een nachtdienst voor nodig is
 
 Een live wachttijd tonen is één aanvraag. Een mediaan over elke gemeten dinsdag
-is iets anders: die moet klaar zijn voordat iemand ernaar vraagt. Dus loopt er
+moet klaar zijn voordat iemand ernaar vraagt. Dus loopt er
 elke nacht een keten van taken, en hun volgorde ligt vast, omdat elke stap op de
 vorige rust. Om 02:00 UTC de percentielen per uur, om 03:00 de basiswaarden per
 park, om 04:30 de samenvatting van gisteren, om 05:15 de rope-dropadviezen, die
@@ -145,9 +145,9 @@ attracties. Om 06:00 traint het voorspelmodel zichzelf
 opnieuw met de wachttijden van de dag ervoor, terwijl de rope-dropploeg al op de
 snelweg staat.
 
-Daar komt de andere helft bij: we gooien geen meting weg. Oudere perioden worden
-gecomprimeerd, niet uitgedund. Hoe ver een analyse terugkijkt, is een eigen
-beslissing: “normaal” en “druk” rekenen over de afgelopen 365 dagen, een heel
+De andere helft is dat we geen meting weggooien. Oudere perioden worden
+gecomprimeerd, niet uitgedund. Hoe ver een analyse terugkijkt, verschilt per
+analyse. “Normaal” en “druk” rekenen over de afgelopen 365 dagen, een heel
 jaar rond, het rope-dropadvies alleen over de afgelopen 70, zodat het met het
 seizoen meegaat. Wie in het derde jaar begint met opslaan, heeft in het derde
 jaar één jaar historie, en de twee daarvoor zijn voorgoed weg. Onze meetreeks
@@ -160,26 +160,26 @@ vanaf daar.
 eigen app, en alleen voor apparaten op de wifi van het park. Er is geen openbare interface. In de
 ruwe data ziet dit park eruit als elk ander park om drie uur ’s nachts: geen
 enkele attractie meldt iets. Zouden we daar het voor de hand liggende uit
-afleiden, dan stonden alle attracties van het park op “zeer laag”, plus een gemiddelde van 0
-minuten en een voorspelling die op nul waarnemingen berust. Een droomdag voor elke
-bezoeker, en volledig verzonnen. In plaats daarvan
+afleiden, dan stonden alle attracties van het park op “zeer laag”, met een gemiddelde van 0
+minuten en een voorspelling die op nul waarnemingen berust. Geen van die getallen
+zou gemeten zijn. In plaats daarvan
 staat op de parkpagina een melding dat er hier niets te lezen valt. Wat we
 toch over het park kunnen zeggen, staat in de
 [Hansa-Park-gids](/blog/hansa-park-tips).
 
-Dezelfde regel op een kleinere plek: de schaatsbaan “Berliner Eislaufen” op de
-Kaiserplatz van Phantasialand is er alleen tijdens Wintertraum, dit keer van 14
+Dezelfde regel geldt voor de schaatsbaan “Berliner Eislaufen” op de
+Kaiserplatz van Phantasialand, die er alleen is tijdens Wintertraum, dit keer van 14
 november 2026 tot 24 januari 2027. In augustus meldt niemand er iets over, omdat er niets te
 melden is. Die stilte als “open” lezen zou de gemakkelijke fout zijn, en zo
 stond het ooit ook echt op de parkpagina: schaatsen in hartje zomer, met onze
 zegen. En bedrijfsmaanden die we uit onze eigen metingen aflezen, noemen we pas
-na 330 waarnemingsdagen: daarvoor staat er geen enkele
+na 330 waarnemingsdagen. Daarvoor staat er geen enkele
 maand bij, omdat “draait van december tot april” dan de periode beschrijft
 waarin we toevallig al hebben gemeten.
 
 ## Waar dit allemaal staat
 
-De lange versie, met de echte kaarten om mee te lezen, is nu een eigen pagina:
+De lange versie, met de echte kaarten om mee te lezen, staat nu op een eigen pagina,
 [Zo werkt park.fan](/nl/hoe-park-fan-werkt). Daar staat hoofdstuk voor
 hoofdstuk wat er op een attractiekaart te zien is, hoe de schaal onder “normaal”
 en “druk” werkt, hoe de kalender de vakanties verrekent, hoe de dagplanner daar

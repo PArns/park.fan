@@ -1,12 +1,12 @@
 ---
-title: 'Movie Park Germany : soirées d’horreur de samedi au 8 novembre, et Jason attend dans le nouveau maze'
+title: 'Le Movie Park fête Halloween jusqu’au 8 novembre'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Samedi 26 septembre, Bottrop lance son 28e Halloween Horror Festival : neuf
+  Samedi 26 septembre, Bottrop lance son 28e Halloween Horror Festival : neuf
   mazes d’horreur, dont le nouveau Jason Universe à partir de 16 ans, le
   spectacle PHOBIA et 22 soirées jusqu’au 8 novembre. Dates, billets et pourquoi
   votre déguisement reste à la maison.
@@ -22,14 +22,14 @@ rideLinks:
   - movie-park-germany/*
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
-  alt: 'L’entrée de Van Helsing’s Factory : une façade de station-service rouillée avec des lettres PETROL en biais, des visiteurs sur le trottoir devant.'
+  alt: 'L’entrée de Van Helsing’s Factory : une façade de station-service rouillée avec des lettres PETROL en biais, des visiteurs sur le trottoir devant.'
   caption: 'Van Helsing’s Factory début septembre. Dès samedi, le soir, le chasseur de monstres est nettement en infériorité numérique.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Movie Park Halloween Horror Festival 2026 : dates et billets'
+  title: 'Billets et dates du Halloween Horror Festival 2026 au Movie Park'
   description: >-
     Halloween Horror Festival au Movie Park Germany du 26 septembre au
-    8 novembre 2026 : les 22 soirées, le nouveau Jason Universe (16 ans et plus)
+    8 novembre 2026 : les 22 soirées, le nouveau Jason Universe (16 ans et plus)
     et PHOBIA, les billets des mazes, le S.I.K. Pass et la règle des déguisements.
   keywords:
     - Movie Park Halloween 2026
@@ -43,8 +43,8 @@ seo:
 
 Vendredi, le [Movie Park Germany](ref:movie-park-germany) ferme encore à 17 h.
 **Samedi 26 septembre**, il reste ouvert jusqu’à 22 h, et dès le début de
-soirée plus de 300 monstres rôdent à Bottrop-Kirchhellen : le **Halloween
-Horror Festival** entame sa 28e édition, sous la devise « Legends Never Die ».
+soirée plus de 300 monstres rôdent à Bottrop-Kirchhellen : le **Halloween
+Horror Festival** entame sa 28e édition, sous la devise « Legends Never Die ».
 
 Rien à voir avec la [fête familiale de Disney](/blog/disneyland-paris-halloween-2026),
 qui commence le même samedi. À Bottrop, le soir, c’est faux sang, tronçonneuses
@@ -71,8 +71,7 @@ Hate**. Bottrop a été le premier parc d’attractions à l’organiser, en 202
 
 **Jason Universe** remplace Secrets of St. Elmo – Last Hunt, en place depuis
 2020, et amène Jason Voorhees à Bottrop. Quatorze scènes et un pré-show
-reprennent les épisodes deux à six de _Vendredi 13_. Le premier manque pour une
-bonne raison : c’est encore sa mère qui tue. Le maze est **interdit aux moins
+reprennent les épisodes deux à six de _Vendredi 13_. Le premier manque, puisque c’est encore sa mère qui tue. Le maze est **interdit aux moins
 de 16 ans**, et une pièce d’identité est demandée à l’entrée des mazes.
 
 Deux mazes connus ont été remaniés. L’[Ahoj-Brause Horror Lab](ref:movie-park-germany/ahoj-brause-horror-lab)
@@ -88,7 +87,7 @@ camp de caravanes abandonné en bordure du Yosemite, sans réseau,
 [The Slaughterhouse](ref:movie-park-germany/the-slaughterhouse) et
 [Circus of Freaks](ref:movie-park-germany/circus-of-freaks).
 
-Nouveau sur scène : **PHOBIA – The Live Horror Game Show** au Studio 7, où le
+Nouveau sur scène : **PHOBIA – The Live Horror Game Show** au Studio 7, où le
 public joue au lieu de simplement regarder. Comme les mazes, le spectacle
 demande son propre créneau, et des limites d’âge s’appliquent.
 
@@ -103,7 +102,7 @@ billet à créneau horaire, à réserver en ligne. D’après le plan du parc, d
 restants sont aussi vendus sur place, au service clients, selon les disponibilités. Les pages Halloween du parc
 n’indiquent pas de prix par maze. On ne le trouve que dans la boutique en ligne.
 
-Si vous voulez les neuf, faites le calcul face au **S.I.K. Pass** : 215 € avec
+Si vous voulez les neuf, faites le calcul face au **S.I.K. Pass** : 215 € avec
 l’entrée du parc, 185 € si vous avez déjà un billet ou un pass annuel. Il donne
 accès une fois à chaque maze sans réserver de créneau, avec en plus une place
 réservée dans les premiers rangs de PHOBIA, deux boissons, un gobelet Coca-Cola
@@ -127,7 +126,7 @@ d’Halloween n’est encore dans les données. Dans ce que nous avons, on fait 
 queue le moins longtemps le vendredi et le dimanche, plus longtemps le samedi.
 En plus, la fête de l’Unité allemande du 3 octobre tombe un samedi, et les
 vacances d’automne de Rhénanie-du-Nord-Westphalie commencent le 17 octobre. Si
-vous pouvez, prenez un vendredi ou un dimanche avant : le 2, le 4, le 9, le 11
+vous pouvez, prenez un vendredi ou un dimanche avant : le 2, le 4, le 9, le 11
 ou le 16 octobre.
 
 **Movie Park Germany, les prochains jours les plus calmes**
@@ -136,15 +135,14 @@ ou le 16 octobre.
 
 ```
 
-Comment le festival se situe face à Traumatica, Walibi et Toverland, c’est dans
-le [tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026). Quel jour
-de la semaine est d’ordinaire le plus calme au Movie Park, et à quoi ressemble
-le calendrier d’automne, c’est dans le
+Le [tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026) met le
+festival à côté de Traumatica, Walibi et Toverland. Le jour de la semaine
+d’ordinaire le plus calme au Movie Park et le calendrier d’automne sont dans le
 [guide du Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-Dates, mazes et billets :
+Dates, mazes et billets :
 [movieparkgermany.de → Halloween](https://www.movieparkgermany.de/en/halloween).
 
 — Patrick

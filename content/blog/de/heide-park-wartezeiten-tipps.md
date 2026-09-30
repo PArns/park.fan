@@ -1,5 +1,5 @@
 ---
-title: 'Heide Park: Colossos aus Holz, und nebenan eine Deutschland-Premiere nach der anderen'
+title: 'Heide Park: Colossos aus Holz und vier Deutschland-Premieren'
 translationKey: heide-park-guide
 date: '2026-09-20'
 updatedAt: '2026-09-25'
@@ -10,8 +10,8 @@ excerpt: >-
   In Soltau steht die höchste reine Holzachterbahn Europas, und fast drei
   Jahre lang durfte sie niemand fahren. Eröffnet hat sie 2001. Drumherum
   hat der Park vier Bauarten als Erster nach Deutschland geholt, und sein
-  103 Meter hoher Turm hat als Aussichtsplattform angefangen. Dazu: wann es
-  voll wird, warum ein ruhiger Montag in Soltau meistens ein geschlossener ist
+  103 Meter hoher Turm hat als Aussichtsplattform angefangen. Dazu kommt, wann
+  es voll wird, warum ein ruhiger Montag in Soltau meistens ein geschlossener ist
   und wieso der Big Loop mit 43 Jahren Züge im Look von 1983 bekommen hat.
 tags:
   - heide-park
@@ -34,8 +34,8 @@ rideLinks:
 seo:
   title: 'Heide Park 2026: Colossos, Wartezeiten und der beste Tag'
   description: >-
-    Heide Park Soltau: echte Wartezeiten zu Colossos und Krake, dazu Halloween,
-    Express Ticket, Mindestgrößen und der Wochentag mit den kürzesten Schlangen.
+    Heide Park Soltau: gemessene Wartezeiten zu Colossos und Krake, dazu Halloween,
+    Express Ticket, Mindestgrößen und der Wochentag mit den kürzesten Warteschlangen.
   keywords:
     - Heide Park
     - Heide Park Wartezeiten
@@ -67,7 +67,7 @@ Zurückgekommen ist sie als Holzachterbahn, und das war keine
 Selbstverständlichkeit. Seit 2011 setzt die Firma Rocky Mountain Construction
 verschlissenen Holzbahnen Stahlschienen auf das alte Gerüst und macht Hybride
 daraus. Im selben Jahr, in dem Colossos wieder fuhr, eröffnete im Walibi Holland
-so ein Umbau: [Untamed](ref:walibi-holland/untamed?bare), vorher die Holzbahn
+[Untamed](ref:walibi-holland/untamed?bare), ein solcher Umbau der Holzbahn
 Robin Hood. Merlin hat sich für Soltau anders entschieden und neue Holzschienen
 einbauen lassen, neue Züge dazu. Am 13. April 2026 war die erste Fahrt
 **25 Jahre** her; gefeiert hat der Park am 12. September mit einer Abendparty,
@@ -75,15 +75,15 @@ zu der nur Gewinner eines Goldenen Tickets kamen.
 
 ## Was hier zuerst stand
 
-Wegen Colossos fahren Achterbahnfans nach Soltau. Interessanter ist, was
-rundherum steht. Bei vier Bauarten war dieser Park der erste in Deutschland, und
-die letzten drei davon kamen innerhalb von sieben Jahren.
+Wegen Colossos fahren Achterbahnfans nach Soltau. Bei vier Bauarten, die
+rundherum stehen, war dieser Park aber der erste in Deutschland, und die letzten
+drei davon kamen innerhalb von sieben Jahren.
 
 Angefangen hat die Reihe **1999**, zwei Jahre vor Colossos, mit einer Bahn, die
-damals Limit hieß und heute
-**[Toxic Garden](ref:heide-park/toxic-garden)**: der erste Suspended Looping
-Coaster des Landes, ein Vekoma-Modell, bei dem der Zug unter der Schiene hängt
-und die Füße frei baumeln. 33 Meter hoch, 689 Meter lang, fünf Überschläge.
+damals Limit hieß und heute **[Toxic Garden](ref:heide-park/toxic-garden)**. Es
+war der erste Suspended Looping Coaster des Landes, ein Vekoma-Modell, bei dem
+der Zug unter der Schiene hängt und die Füße frei baumeln. 33 Meter hoch, 689
+Meter lang, fünf Überschläge.
 
 **[Desert Race](ref:heide-park/desert-race)** kam am **15. Mai 2007** und war
 Deutschlands erster Launch Coaster. Statt eines Lifthills bringt eine
@@ -98,16 +98,16 @@ Diskussion gedauert hat, wer vorne sitzen darf.
 **[Krake](ref:heide-park/krake)** folgte am **16. April 2011** als Deutschlands
 erster Dive Coaster, gebaut von Bolliger & Mabillard für 12 Millionen Euro; die
 Station steht auf dem Gelände des früheren Delfinariums. 41 Meter hoch, sechs
-Leute nebeneinander in einer Reihe, und oben hält der Zug an, bis die erste
-Reihe über der Kante hängt. Dann geht es 87 Grad abwärts, also fast senkrecht,
-mit **103 km/h** durch einen Splashdown und in einen Immelmann. Das Warten an
-der Kante dauert nur ein paar Sekunden und fühlt sich deutlich länger an.
+Leute nebeneinander in einer Reihe, und oben hält der Zug ein paar Sekunden
+lang an, wenn die erste Reihe über der Kante hängt. Dann geht es 87 Grad
+abwärts, also fast senkrecht, mit **103 km/h** durch einen Splashdown und in
+einen Immelmann.
 
-**[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** war am
-**29. März 2014** der erste Wing Coaster des Landes. Bei dieser Bauart sitzt
-niemand über oder unter der Schiene, sondern links und rechts daneben, ohne
-etwas vor den Füßen. 40 Meter hoch, 772 Meter lang, 100 km/h, fünf Inversionen,
-drei Minuten Fahrzeit, 1.060 Gäste pro Stunde.
+**[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** war am **29. März
+2014** der erste Wing Coaster des Landes. Bei dieser Bauart sitzen die Fahrgäste
+links und rechts neben der Schiene, ohne etwas vor den Füßen. 40 Meter hoch, 772
+Meter lang, 100 km/h, fünf Inversionen, drei Minuten Fahrzeit, 1.060 Gäste pro
+Stunde.
 
 So steht der Park im Vergleich zu drei anderen großen deutschen Parks,
 tagesaktuell gerechnet:
@@ -153,12 +153,11 @@ das ab dem ersten Drop, und sein Rücken spätestens in der ersten Kurve.
 
 Die erste Achterbahn des Parks ist der **[Big Loop](ref:heide-park/big-loop)**
 von **1983**, ein Vekoma-Looper mit zwei Loopings und einem
-Doppel-Korkenzieher, gut 700 Meter lang und nach knapp zwei Minuten vorbei. An
-ihm lässt sich ablesen, wie dieser Park mit altem Bestand umgeht: 2010 bekam er
-die Züge der abgerissenen Corkscrew aus Alton Towers, und zur Saison 2026 hat
-Vekoma neue Züge geliefert, deren Design den Originalwagen von 1983
-nachempfunden ist. Zweiter Zugwechsel in sechzehn Jahren, für eine Bahn, die
-43 Jahre alt ist.
+Doppel-Korkenzieher, gut 700 Meter lang und nach knapp zwei Minuten vorbei.
+2010 bekam er die Züge der abgerissenen Corkscrew aus Alton Towers, und zur
+Saison 2026 hat Vekoma neue Züge geliefert, deren Design den Originalwagen von
+1983 nachempfunden ist. Damit hat die 43 Jahre alte Bahn in sechzehn Jahren
+zweimal neue Züge bekommen.
 
 Toxic Garden heißt erst seit **Mai 2023** so. Vekoma hat beim Umbau ein Stück
 Strecke ersetzt, Eingang und Station stehen seitdem in einem Garten aus
@@ -181,8 +180,8 @@ Turm 1992 als Aussichtsturm; Intamin baute ihn zwischen Oktober 2002 und April
 2003 für 7,5 Millionen Euro zum Gyro-Drop-Tower um. Lange warb der Park mit dem
 Titel des höchsten Gyro-Drop-Towers der Welt, bis 2019 im Hansa-Park der
 120 Meter hohe Highlander eröffnete. Das höchste Bauwerk auf dem Gelände ist
-Scream erst seit **März 2022**: Bis dahin stand daneben ein zweiter Turm von
-1985, der 104 Meter hohe Panoramaturm, dessen Gondel laut Park nicht mehr den
+Scream erst seit **März 2022**, denn bis dahin stand daneben ein zweiter Turm
+von 1985, der 104 Meter hohe Panoramaturm, dessen Gondel laut Park nicht mehr den
 Sicherheitsstandards entsprach. Drei Tage nach der Ankündigung begann der Abbau.
 
 Die jüngste Fahrattraktion steht in einem Gebäude, das dreizehn Jahre leer
@@ -192,21 +191,19 @@ Wildwasserbahn, die 2011 geschlossen wurde, rund drei Minuten lang. Wo die
 Wasserbahn fuhr, steht heute Flug der Dämonen; die Gebäude blieben stehen, und
 eines davon hat der Park jetzt wieder in Betrieb genommen.
 
-Dazu kommen zwei Anlagen, über die kaum jemand schreibt und die in unserer
-Wartezeitentabelle trotzdem weit oben stehen: die
-**[Wildwasserbahn](ref:heide-park/wildwasserbahn)** von 1980 und
+Die **[Wildwasserbahn](ref:heide-park/wildwasserbahn)** von 1980 und
 **[Ghostbusters 5D](ref:heide-park/ghostbusters-5d)**, das seit 2017 in der
-Halle steckt, in der früher Hallo Spencer wohnte. Nass wird man außerdem auf
-**[Mountain Rafting](ref:heide-park/mountain-rafting)** (1992, ein Rapid River
-von Intamin). Die Kleinsten haben mit dem Peppa Pig Land und dem Bereich
-„Drachenzähmen – Die Insel“ zwei eigene Ecken.
+Halle steckt, in der früher Hallo Spencer wohnte, stehen in unserer
+Wartezeitentabelle weit oben, obwohl kaum jemand über sie schreibt. Nass wird
+man außerdem auf **[Mountain Rafting](ref:heide-park/mountain-rafting)** (1992,
+ein Rapid River von Intamin). Die Kleinsten haben mit dem Peppa Pig Land und dem
+Bereich „Drachenzähmen – Die Insel“ zwei eigene Ecken.
 
-Wer mit Kindern plant, plant in Zentimetern. Die vier großen Bahnen fangen alle
-bei **140 cm** an, Toxic Garden und Scream bei 130, Big Loop und Bobbahn
-bei 120. Die niedrigste Hürde im Park liegt bei **86 cm**, an Schorschs
-Dino-Abenteuer im Peppa Pig Land. Zwischen 86 und 140 Zentimetern liegen ein
-paar Jahre, in denen ein Kind schon jede Menge fahren darf, aber eben keine der
-Bahnen, wegen derer die Eltern gekommen sind.
+Die vier großen Bahnen fangen alle bei **140 cm** an, Toxic Garden und Scream
+bei 130, Big Loop und Bobbahn bei 120. Die niedrigste Hürde im Park liegt bei
+**86 cm**, an Schorschs Dino-Abenteuer im Peppa Pig Land. Zwischen 86 und 140
+Zentimetern liegen ein paar Jahre, in denen ein Kind schon jede Menge fahren
+darf, aber eben keine der Bahnen, wegen derer die Eltern gekommen sind.
 
 ```map-widget slug=heide-park
 
@@ -224,14 +221,14 @@ März öffnet, stehen in der Tabelle nur Tage aus der Saison 2026
 
 Colossos steht oben, und der Abstand nach unten ist kleiner, als man ihn bei
 einem Park mit einer so bekannten Bahn erwarten würde. Wer in Soltau lange
-ansteht, steht dabei nicht zwangsläufig vor der Holzachterbahn: Knapp dahinter
-liegen neben Flug der Dämonen und der Krake auch die Bobbahn von 1993 und die
-Wildwasserbahn von 1980, zwei Anlagen, die in keinem Reisebericht als Grund für
-die Fahrt nach Soltau auftauchen. Bei der Wildwasserbahn liegt es am Wetter,
-das zeigt das Tagesprofil weiter unten; für die Bobbahn gibt die Tabelle keinen
-Grund her.
+ansteht, steht dabei nicht zwangsläufig vor der Holzachterbahn, denn knapp
+dahinter liegen neben Flug der Dämonen und der Krake auch die Bobbahn von 1993
+und die Wildwasserbahn von 1980, zwei Anlagen, die in keinem Reisebericht als
+Grund für die Fahrt nach Soltau auftauchen. Bei der Wildwasserbahn liegt es am
+Wetter, zu sehen im Tagesprofil weiter unten. Warum die Bobbahn so weit oben
+steht, können wir aus der Tabelle nicht ablesen.
 
-Mehr verrät, zu welcher Uhrzeit die Schlangen wachsen.
+So wachsen die Warteschlangen über den Tag:
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -240,12 +237,11 @@ Mehr verrät, zu welcher Uhrzeit die Schlangen wachsen.
 Bei den Achterbahnen liegen die fetten Zellen alle im selben Fenster, zwischen
 elf und zwei Uhr. Die Wildwasserbahn hat ihr Maximum erst am Nachmittag, wenn
 es warm geworden ist. Das passt zu einem Park, dessen Gäste überwiegend morgens
-mit dem Auto anreisen: Alle stehen zur selben Zeit vor denselben drei Bahnen,
+mit dem Auto anreisen. Alle stehen zur selben Zeit vor denselben drei Bahnen,
 wie samstags um elf im Baumarkt, und nachmittags zieht es sich auseinander.
 
-Für die Planung heißt das: Die erste Stunde gehört Colossos und der Krake, weil
-beide dann am kürzesten sind und ab elf gleichzeitig anziehen. Danach lohnt es
-mehr, in dem Bereich zu bleiben, in dem gerade niemand ist, als quer über das
+Die erste Stunde gehört also Colossos und der Krake, weil beide dann am
+kürzesten sind und ab elf gleichzeitig anziehen. Danach lohnt es mehr, in dem Bereich zu bleiben, in dem gerade niemand ist, als quer über das
 Gelände zur nächsten Hauptattraktion zu laufen.
 
 Die ruhigsten der kommenden Öffnungstage, live berechnet:
@@ -260,17 +256,17 @@ Die ruhigsten der kommenden Öffnungstage, live berechnet:
 
 ```
 
-Wenn der Tag doch einer von den vollen wird, lässt sich ein Teil der Schlangen
+Wenn der Tag doch einer von den vollen wird, lässt sich ein Teil der Warteschlangen
 kaufen. Das **Express Ticket** gibt es in vier Stufen: Bronze ab **25 €** für
 Wildwasserbahn, Big Loop und Bobbahn, Silber ab 39 € für fünf der großen
 Attraktionen, Gold ab 59 € für alle acht, Platin ab 99 € für alle acht ohne
-Limit. Welche fünf in Silber stecken, beantwortet die Seite des Parks zweimal
-verschieden: Die Vergleichstabelle nennt Colossos, Desert Race, Flug der
-Dämonen, Krake und Scream, die Liste darunter führt Colossos und Scream erst ab
-Gold. Toxic Garden ist in keiner Stufe dabei.
+Limit. Welche fünf in Silber stecken, steht auf der Seite des Parks zweimal
+verschieden. In der Vergleichstabelle sind es Colossos, Desert Race, Flug der
+Dämonen, Krake und Scream, in der Liste darunter stehen Colossos und Scream erst
+ab Gold. Toxic Garden ist in keiner Stufe dabei.
 
 Zwei Dinge übersieht man leicht. In den drei unteren Stufen ist **pro
-Attraktion eine Fahrt** enthalten, nicht beliebig viele: Wer mit Gold ein
+Attraktion eine Fahrt** enthalten, nicht beliebig viele. Wer mit Gold ein
 zweites Mal Colossos fahren will, stellt sich dafür ganz normal hinten an. Und
 es gibt das Ticket nur an ausgewählten Tagen, 2026 vor allem an Wochenenden und
 in den Ferien. Der Park rät, es vorab online zu buchen, denn ist es für den Tag
@@ -293,16 +289,16 @@ Ein gewöhnlicher Öffnungstag geht von 10 bis 17 Uhr, sonntags eine Stunde
 länger. Die Zeiten gelten für die Fahrgeschäfte, der Park selbst schließt
 jeweils eine Stunde später.
 
-Die langen Tage im Herbst sind kein verlängerter Normaltag: Sie fangen erst um
-12 Uhr an, gefahren wird bis 21 Uhr. Am 19. und 26. September und am 3. Oktober
-heißen sie Late Rides, die fünf danach gehören zu Halloween. An all diesen
-Tagen schließen die Wasserbahnen und ein paar andere Anlagen schon mit der
-Dämmerung, ab etwa 17 Uhr. Was für die nächsten Wochen tatsächlich
-veröffentlicht ist, steht im Kalender auf der [Parkseite](ref:heide-park).
+Die langen Tage im Herbst fangen erst um 12 Uhr an, gefahren wird bis 21 Uhr.
+Am 19. und 26. September und am 3. Oktober heißen sie Late Rides, die fünf danach
+gehören zu Halloween. An all diesen Tagen schließen die Wasserbahnen und ein
+paar andere Anlagen schon mit der Dämmerung, ab etwa 17 Uhr. Was für die
+nächsten Wochen tatsächlich veröffentlicht ist, steht im Kalender auf der
+[Parkseite](ref:heide-park).
 
 ### Der Wochentag
 
-Am Wochentag hängt hier weniger, als man denkt. Oben steht der Samstag, unten
+Am Wochentag hängt hier nicht viel. Oben steht der Samstag, unten
 der Freitag, und die Tage dazwischen liegen in der Tabelle darüber dicht
 beieinander. Der Montag steht auf nur etwa halb so vielen Messtagen wie die
 anderen, weil der Park ihn im Frühjahr und im September regelmäßig aus dem
@@ -338,12 +334,12 @@ Toverland, Movie Park und Walibi schlägt, steht im
 
 ## Vom Schaustellerbetrieb zum Merlin-Park
 
-Eröffnet hat der Heide Park am **19. August 1978**, mit sechs Fahrgeschäften
-und einem Gründer aus einer Schaustellerfamilie: **Hans-Jürgen Tiemann**. Zum
-Grundstückskauf gehörte eine Auflage, die man einem Freizeitpark nicht ansieht:
-Die **Heidenhofkapelle von 1350** musste stehen bleiben, und einheimische Tiere
-mussten weiter gehalten werden. Am ersten Tag kamen 2.000 Gäste, und aus den
-sechs Fahrgeschäften wurden 85 Hektar Park.
+Eröffnet hat der Heide Park am **19. August 1978**, mit sechs Fahrgeschäften.
+Gegründet hat ihn **Hans-Jürgen Tiemann**, der aus einer Schaustellerfamilie
+kam. Zum Grundstückskauf gehörte die Auflage, dass die **Heidenhofkapelle von
+1350** stehen bleiben und weiter einheimische Tiere gehalten werden mussten. Am
+ersten Tag kamen 2.000 Gäste, und aus den sechs Fahrgeschäften wurden 85 Hektar
+Park.
 
 Drei von diesen sechs fahren heute noch: die Floßfahrt, die Hochbahn (heute
 Panoramabahn) und die Westerneisenbahn, die seit 1997 Heide Park Express heißt.
@@ -359,7 +355,7 @@ Spätkarriere, die sich die Freiheit so wohl nicht vorgestellt hatte, und zur
 Wiedereröffnung 2019 wurde auch der Rest verschrottet.
 
 Am **31. Dezember 2001** kaufte die britische **Tussauds Group** den Park. Die
-besten Jahre lagen davor: In den Neunzigern zählte Soltau bis zu zwei Millionen
+besten Jahre lagen davor, denn in den Neunzigern zählte Soltau bis zu zwei Millionen
 Gäste, 2001 waren es 2,1 Millionen, 2023 noch **1,68 Millionen**. 2007 kaufte
 die Investmentgesellschaft Blackstone, der damals **Merlin Entertainments**
 gehörte, die Tussauds Group von Dubai International Capital und legte sie mit
@@ -387,8 +383,8 @@ Erweiterung aus 81 Holzhäusern mit zusammen 536 Betten. Die sieben umgebauten
 VW T2 des **Bulli Camps**, in denen man ab Juli 2014 schlafen konnte, gibt es
 seit 2025 nicht mehr; gebucht werden im Camp jetzt nur noch Hütten.
 
-Der praktische Vorteil liegt nicht im Bett. Er liegt darin, um zehn vor dem
-Eingang zu stehen und nicht um zehn auf der A7. An den langen Tagen im Herbst
+Der praktische Vorteil ist, um zehn vor dem Eingang zu stehen und nicht um zehn
+auf der A7. An den langen Tagen im Herbst
 dürfen Hotel- und Campgäste schon um 11 Uhr in den Park, eine Stunde vor allen
 anderen, und ein paar Attraktionen fahren dann bereits, darunter die Krake.
 
@@ -399,7 +395,7 @@ elf Uhr gleichzeitig anziehen. **Flug der Dämonen** und **Desert Race** passen
 gut hinterher, und die letzte Stunde vor Betriebsschluss ist bei den großen
 Bahnen die zweitbeste Gelegenheit des Tages. Die Wasserbahnen hebst du dir für
 die wärmste Stunde auf, auch wenn die Wildwasserbahn genau dann ihre längste
-Schlange hat; nass wird man dort in der Hitze wenigstens gern. An den langen
+Warteschlange hat; nass wird man dort in der Hitze wenigstens gern. An den langen
 Herbsttagen fällt das weg, dann schließen die Wasserbahnen mit der Dämmerung.
 **Scream** und der **Big Loop** sind die Lückenfüller zwischen zwei großen
 Bahnen, und wer die Mazes gebucht hat, plant den Abend nicht weiter.
@@ -456,15 +452,15 @@ selben Jahr mit Robin Hood vollzogen hat, gab es in Soltau nicht.
 
 Vom 28. März bis zum 31. Oktober 2026, dazu ein Vorfreude-Sonntag am 22. März.
 Im Frühjahr und im September bleiben einzelne Montage geschlossen, im Oktober
-ist täglich geöffnet, Winterbetrieb gibt es nicht. Den veröffentlichten
-Kalender zeigt die [Parkseite](ref:heide-park).
+ist täglich geöffnet, Winterbetrieb gibt es nicht. Der veröffentlichte
+Kalender steht auf der [Parkseite](ref:heide-park).
 
 ### Wann ist im Heide Park am wenigsten los?
 
 An einem Freitag im September, weit vor einem Samstag im August. Wochentag und
 Monat verschieben einzeln ungefähr gleich viel, zusammen mehr als jeder für
-sich. Welche der nächsten Öffnungstage am ruhigsten werden, rechnet das Widget
-weiter oben tagesaktuell aus.
+sich. Welche der nächsten Öffnungstage am ruhigsten werden, steht tagesaktuell im
+Widget weiter oben.
 
 ### Welche Achterbahnen im Heide Park sind deutsche Premieren?
 
@@ -479,7 +475,7 @@ kleine Kinder gebaut sind. Als „Big 7“ bewirbt der Park sieben
 Großattraktionen: sechs dieser Achterbahnen und den Freifallturm Scream. Die
 Bobbahn zählt er nicht dazu.
 
-### Ab welcher Größe darf mein Kind mitfahren?
+### Ab welcher Größe darf dein Kind mitfahren?
 
 Colossos, Desert Race, Flug der Dämonen und Krake verlangen 140 cm, Toxic
 Garden und Scream 130 cm, Big Loop und Bobbahn 120 cm. Am Schorschs
@@ -506,7 +502,7 @@ Wie das Wetter über dem Park aussieht, wenn du hinfährst:
 
 ```
 
-Und wer gerade den Norden plant: Auch im
+Auch im
 [Movie Park Germany](/blog/movie-park-germany-wartezeiten-tipps) fehlen
 außerhalb der Ferien einzelne Wochentage im Kalender, und auch dort gehört der
 Freitag zu den ruhigsten Tagen. Die beiden Guides lassen sich gut
@@ -514,15 +510,15 @@ nebeneinanderlegen.
 
 ## Was ich dir für Soltau mitgebe
 
-Der Heide Park hat keine durchgehende Erzählung wie Brühl und keine 18 Länder
-wie Rust. Er hat Bahnen, und bei vier davon war er in Deutschland der Erste.
+Bei vier Bauarten war der Heide Park in Deutschland der Erste, auch ohne
+durchgehende Erzählung wie in Brühl oder 18 Länder wie in Rust.
 
-Dafür zahlst du mit 85 Hektar. Wenig Schatten, lange Wege zwischen den großen
-Bahnen, und an einem Augustsamstag merkst du jeden Meter. Wer das nicht will,
+Die Bahnen verteilen sich auf 85 Hektar, mit wenig Schatten und langen Wegen
+dazwischen, und an einem Augustsamstag merkst du jeden Meter. Wer das nicht will,
 nimmt einen Freitag im September statt eines Samstags im August, und diese
-Entscheidung fällt zu Hause, nicht erst in der Schlange vor Colossos.
+Entscheidung fällt zu Hause, nicht erst in der Warteschlange vor Colossos.
 
-Und wenn du im Oktober kommst: Die langen Samstage fangen erst um zwölf an. Wer
+Im Oktober fangen die langen Samstage erst um zwölf an. Wer
 um zehn vor dem Tor steht, wartet zwei Stunden auf einer Wiese.
 
 — Patrick

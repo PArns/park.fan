@@ -61,9 +61,9 @@ The lift takes you up 50 metres, slowly enough to look out over the treetops
 towards Wavre. Then the train tips, 80 degrees down,
 113 km/h, and halfway through, the track twists into an element no coaster in
 the world had before: a cobra roll the train runs through without ever going
-upside down. Your seat stays the right way up. Your stomach does not.
+upside down. Your seat stays the right way up. Your stomach doesn’t.
 
-That is [Kondaa](ref:walibi-belgium/kondaa), and say “Walibi” out loud and
+That’s [Kondaa](ref:walibi-belgium/kondaa), and say “Walibi” out loud and
 almost nobody thinks of this ride first. Most people think of
 [Walibi Holland](ref:walibi-holland) and
 [Untamed](ref:walibi-holland/untamed). Yet Wavre is the original that everyone
@@ -71,7 +71,7 @@ takes for the copy: the very first Walibi, the one that gave the whole
 chain its name, and since May 2021 the home of the tallest and fastest coaster
 in the Benelux as well.
 
-## Two parks, one name
+## Walibi Belgium and Walibi Holland
 
 [Walibi Belgium](ref:walibi-belgium) sits in **Wavre**, about half an hour’s
 drive south-east of Brussels and under three hours from Cologne or Aachen. It
@@ -85,8 +85,8 @@ park does with that name at Halloween is in our
 
 Since 2006 both parks have belonged to the same group, the French
 **Compagnie des Alpes** (through its subsidiary Grévin & Cie), which also owns
-[Parc Astérix](ref:parc-asterix). You will still struggle to mix them up, at
-least once you are inside: Wavre is more compact, older in what it has built,
+[Parc Astérix](ref:parc-asterix). You’ll still struggle to mix them up, at
+least once you’re inside: Wavre is more compact, older in what it has built,
 and runs a completely different flagship. Typing one into the satnav is another
 matter.
 
@@ -105,10 +105,9 @@ against each other:
 
 **[Kondaa](ref:walibi-belgium/kondaa)** opened on 8 May 2021 as an
 **Intamin Mega Coaster**: 50 metres tall, 1,200 metres long, a top speed of
-113 km/h, no inversions at all. What it has instead is that cobra roll,
-the one that never turns you over, a world first at the
-time, plus a banked double down and, according to the park, fifteen airtime
-moments in a single ride.
+113 km/h, no inversions at all. Instead it has that cobra roll, the one that
+never turns you over, a world first at the time, plus a banked double down
+and, according to the park, fifteen airtime moments in a single ride.
 
 ```glossary-widget slug=airtime
 
@@ -122,13 +121,13 @@ been a little tense since) and the speed off
 [Fury](ref:bobbejaanland/fury) at Belgian
 [Bobbejaanland](ref:bobbejaanland). The park put 25 million euros into Kondaa
 and the new area around it in 2021, roughly half of that into the ride itself.
-Two trains of six cars, four to a car, put around 1,080 guests an hour through the minute
-and a half of ride time. You can ride if you are between 130 and 195 cm tall.
+Two trains of six cars, four to a car, put around 1,080 guests an hour through
+the minute and a half of ride time. You can ride if you’re between 130 and
+195 cm tall.
 
 I drive distances for individual coasters that other people reserve for
-weddings, and Kondaa is one of them. By the first pop of airtime you have
-stopped missing the loop. It hauls you up fifty metres
-and then refuses to let go for a minute and a half.
+weddings, and Kondaa is one of them. By the first pop of airtime you’ve
+stopped missing the loop.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -148,7 +147,7 @@ on the one Saturday half of Wallonia picked as well:
 ## The rest of the park, from vintage steel to a harbour
 
 Kondaa gets the headlines. The oldest coaster in the park is 39 years older
-and shows no interest in retiring.
+and still runs.
 
 **[Turbine](ref:walibi-belgium/turbine)** is that coaster, a
 **Schwarzkopf Shuttle Loop** from 1982. The train is fired
@@ -165,16 +164,16 @@ it the Turbine name back.
 **[Vampire](ref:walibi-belgium/vampire-2)** (1999) is a **Vekoma SLC**
 (Suspended Looping Coaster, model 689) and was the first ride of its type in
 Belgium when it opened. The train hangs under the rail, and your feet dangle
-free through every curve. It does not have long left: the park says Vampire
-runs until October 2027 and will then be demolished.
+free through every curve. The park says Vampire runs until October 2027 and
+will then be demolished.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, originally
 christened “Colorado”) is the classic mine train over 785 metres of track,
 gentle pace, tight curves, ideal for easing into the day or for anyone who
 needs “something calm first” after Kondaa.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) is a **Boomerang**: the train is
 hauled backwards up a lift hill, runs forwards through a cobra roll and a loop,
-three inversions in all, then does the whole track again in reverse. So the park has two cobra
-rolls: one that turns you upside down, and Kondaa’s, which doesn’t bother.
+three inversions in all, then does the whole track again in reverse. So the park has
+two cobra rolls: one that turns you upside down, and Kondaa’s, which doesn’t.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, also there since 2001, is a
 wooden structure by Vekoma, a manufacturer you tend to associate with steel.
 A wooden Vekoma is about as common as a Belgian ordering chips without mayo,
@@ -191,25 +190,23 @@ Zierer, for the smaller guests).
 The newest addition is **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
 Gerstlauer), a launch coaster the park files under its family rides: 925
 metres, three launches, 65 km/h, skimming just above the water. It sits in the
-completely new **Dock World** area. At its
-heart is the fictional harbour town of **Port Wavre**, with a lighthouse,
-jetties and stilt houses, and three older rides went into it rather than
-staying as they were: the log flume
+completely new **Dock World** area. In the middle is the fictional harbour
+town of **Port Wavre**, with a lighthouse, jetties and stilt houses, and three
+older rides became part of it: the log flume
 **[Flash Back](ref:walibi-belgium/flash-back)**, the splash shuttle **Pulsar**
 and **[Turbine](ref:walibi-belgium/turbine)**, back under its old name.
 **Kondaala**, the children’s ride that borrowed its name from Kondaa, is over
-in Exotic World, next to the coaster it is named after.
+in Exotic World, next to the coaster it’s named after.
 
 Of the two recent builds in the park, Mecalodon is the one that surprised me
-more. A family coaster next to a 50-metre ride is usually the support act
-everyone watches from the bar queue. Dock World gets people to look anyway. The
-harbour was built and not set down, with
-details you stand in front of for a while even where there is no ride attached.
+more. A family coaster next to a 50-metre ride is usually easy to walk past,
+but around Mecalodon the harbour has details you stand in front of for a while,
+even where there’s no ride attached.
 
 If you still have time after the coaster round and swimming things in the
 boot: **Aqualibi**, the water park
 attached to the site, with a wave pool and slides, charges its own
-admission and is not covered by the Walibi day ticket.
+admission and isn’t covered by the Walibi day ticket.
 
 ```map-widget slug=walibi-belgium
 
@@ -247,7 +244,7 @@ The hardest year so far arrived without a change of name. On **15 July 2021**
 the floods that devastated large parts of western and central Europe also hit
 the valley of the Dyle, the river the park sits on. The damage was enough for a
 closure of several months in the middle of the main season, ten weeks after
-Kondaa had opened. The park did not reopen until early October, for
+Kondaa had opened. The park didn’t reopen until early October, for
 Halloween.
 
 ## Worlds of Walibi: a hundred million euros for eight new themed worlds
@@ -260,36 +257,36 @@ plus ten new attractions. It was all meant to be done by 2023. Work started in
 2019, then **Kondaa** in 2021 and **Dock World** with Mecalodon in 2025. The
 park now counts four new worlds since 2016 (Exotic, Karma, Fun and Dock
 World), so half of the eight, and the latest arrived two years after the
-deadline. By the standards of Britain’s big rail projects, that is practically
+deadline. By the standards of Britain’s big rail projects, that’s practically
 early.
 
-The plan is still being carried out, and not only in Wavre: over the same
-period the **Compagnie des Alpes** gave the sister park
+The plan is still being carried out. Over the same period the
+**Compagnie des Alpes** also gave the sister park
 [Walibi Holland](ref:walibi-holland) two more major additions in
 [Untamed](ref:walibi-holland/untamed) (2019) and the YOY twin track (2025).
-Wavre, which hardly anybody in Germany has on their list, got two new coasters and a
-whole new area inside four years.
+Wavre, which hardly anybody in Germany has on their list, got two new coasters
+and a whole new area inside four years.
 
 The next world now has a name. On 1 June 2026 the park announced
 **Festival World**, an area themed on New Orleans, and its first step along
 with it: after Loup-Garou’s last ride on 3 January 2027, Rocky Mountain
-Construction will rebuild the wooden coaster as a hybrid with steel rails. It
-is due to open in 2028 at 49 metres tall, 106 km/h, with a 47-metre drop at
+Construction will rebuild the wooden coaster as a hybrid with steel rails. It’s
+due to open in 2028 at 49 metres tall, 106 km/h, with a 47-metre drop at
 89 degrees and 1,231 metres of track. That would make it the longest coaster in
 the Benelux, while Kondaa keeps height and speed. The 4D cinema goes to make
 room for the new station, and a second phase in 2030 is meant to add family
 drop towers, a water play area and a large themed restaurant. What replaces
-Vampire once it is demolished, the park has not said yet.
+Vampire once it’s demolished, the park hasn’t said yet.
 
 ## Ibilaw: Halloween read backwards
 
 ![A derelict wooden building lettered Aquarium, lit blue and green at night | The haunted house Aquarium, inside Dock World, where Mecalodon runs by day. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-At Halloween the park turns its own name around: **“Ibilaw”** is “Walibi”
-backwards, the event’s name since 2024, and it has its own mascot, **Bill**. In
+Since 2024 the park’s Halloween event has been called **“Ibilaw”**, which is
+“Walibi” backwards, and it has its own mascot, **Bill**. In
 2026 it runs from 10 October to 11 November on 20 days, ten of them until
 10 p.m., with four haunted houses (The Grand Hotel is new) and four scare zones,
-among them the clown circus **Psycho Circus** and **Arachnophobia**. There is
+among them the clown circus **Psycho Circus** and **Arachnophobia**. There’s
 no age limit: the monsters stay in the stretch between Wave Swinger and
 Buzzsaw, and children under twelve can pick up an anti-monster badge at the
 information desk. One of the haunted houses, **Aquarium**, sits in the
@@ -298,8 +295,7 @@ supposedly shut since the nineties. Best not to ask about the fish. Apart from
 Mine Blast, the haunted houses cost
 extra. The **Speedy Pass**, the park’s fast lane, comes in six Ibilaw packages
 covering rides and haunted houses, none of which includes park entry. Where all
-this lands against Toverland, Movie Park and the
-rest is in our
+this lands against Toverland, Movie Park and the rest is in our
 [Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
 ## When to go
@@ -309,18 +305,18 @@ rest is in our
 ```
 
 Outside the season and the Christmas holidays, Walibi Belgium is shut. Go
-looking for an empty Tuesday in February and you will find one, behind a locked
-gate. Within the season, Belgian school holidays mostly decide
-how busy it gets, and since the 2022/23 school year they no longer line up:
-in 2026 the French-speaking schools in Wallonia and Brussels have their autumn
+looking for an empty Tuesday in February and you’ll find one, behind a locked
+gate. Within the season, Belgian school holidays mostly decide how busy it
+gets, and since the 2022/23 school year they no longer line up: in 2026 the
+French-speaking schools in Wallonia and Brussels have their autumn
 break from 19 to 30 October, the Flemish ones from 2 to 8 November, and Ibilaw
-spans both. Add the weekdays outside the summer holidays, when the park does
-not open every day anyway. Which of the coming operating
-days are the quietest is in the calendar further up, updated daily.
+spans both. Add the weekdays outside the summer holidays, when the park doesn’t
+open every day anyway. Which of the coming operating days are the quietest is in
+the calendar further up, updated daily.
 
-## The perfect day, in four sentences
+## Planning the day
 
-At opening, go to **Kondaa** first, because it is the reason most people came
+At opening, go to **Kondaa** first, because it’s the reason most people came
 at all, and because in our measurements (since late December 2025) the first
 hour brings the shortest queue of the day. **Mecalodon** in Dock World follows
 the same pattern, short in the morning and in the last hour and busiest around
@@ -337,16 +333,16 @@ afternoon in the **Aqualibi**.
 
 **Getting there.** Walibi Belgium is in **Wavre** (province of Walloon
 Brabant), about half an hour’s drive from Brussels via the E411
-(Brussels–Namur), exit 6. From the German border region (Aachen, Cologne) it
-is well under three hours depending on the route, not counting the Brussels
+(Brussels–Namur), exit 6. From the German border region (Aachen, Cologne) it’s
+well under three hours depending on the route, not counting the Brussels
 ring road at rush hour. By train, get off at Bierges-Walibi; the park puts the
 station 150 metres from the entrance.
 
 **Opening hours.** The season runs from early April into November, and outside
 the summer holidays the park works to a season calendar rather than opening
 daily. In October it turns into Ibilaw, in 2026 from 10 October to 11 November,
-and even then it opens on selected days only. Since 2023 there has also been a winter opening
-over the Christmas holidays, as Walibi Winter from 5 December 2026 to
+and even then it opens on selected days only. Since 2023 there has also been a
+winter opening over the Christmas holidays, as Walibi Winter from 5 December 2026 to
 3 January 2027. The
 [park page](ref:walibi-belgium) has the current calendar and times, updated
 daily.
@@ -376,7 +372,7 @@ tallest and fastest coaster in the Benelux since 2021.
 [Walibi Holland](ref:walibi-holland) in Biddinghuizen, opened in 1971 as
 Flevohof and a Walibi since 1994, is the better known of the two, with
 [Untamed](ref:walibi-holland/untamed) and
-[Goliath](ref:walibi-holland/goliath). A ticket for one is not valid at the
+[Goliath](ref:walibi-holland/goliath). A ticket for one isn’t valid at the
 other.
 
 ### How fast and how tall is Kondaa?
@@ -427,9 +423,7 @@ What the weather in Wavre looks like when you go:
 
 ```
 
-The park that gave the whole chain its name has stood on the Dyle since
-1975, between Wavre, Limal and Bierges, and still sits in the shadow of its
-Dutch namesake. If you go, ride Kondaa twice: at the front, where
+If you go, ride Kondaa twice: at the front, where
 you watch the drop coming, and in the back row, where it has already got you
 before the train is even over the top.
 

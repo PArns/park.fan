@@ -35,8 +35,8 @@ coverImage:
 seo:
   title: 'Walibi Holland: Untamed, attese e horror nel polder'
   description: >-
-    Coaster su un ex fondale marino: Untamed e YOY con dati reali di attesa,
-    le Halloween Fright Nights che si pagano volentieri, prezzi e come
+    Coaster su un ex fondale marino: Untamed e YOY con le attese misurate da
+    noi, le Halloween Fright Nights che si pagano volentieri, prezzi e come
     arrivare.
   keywords:
     - Walibi Holland
@@ -74,16 +74,15 @@ giornata nei Paesi Bassi raramente si concede di sua volontà un’ora di polder
 sovrappiù.
 
 È un errore. Untamed da solo basterebbe già, ma la ragione migliore è
-un’idea che alla prima visita sembra del tutto insensata e che alla terza spiega
-tutto. Sta appiccicata in due parole su mezza Biddinghuizen:
-**hard gaan**.
+**hard gaan**, due parole appiccicate su mezza Biddinghuizen, un’idea che alla
+prima visita sembra del tutto insensata e alla terza spiega tutto.
 
 ## Prima il mare, poi le mucche, poi i coaster
 
 Qui è cominciato tutto con delle mucche.
 
 Il **21 maggio 1971** la principessa Beatrice inaugurò su quella terra di polder
-appena guadagnata la **Flevohof**, un parco agricolo di 150 ettari. L’idea: far
+appena guadagnata la **Flevohof**, un parco agricolo di 150 ettari. L’idea era far
 vedere ai bambini di città che il latte non cresce nei cartoni. C’erano stalle, serre, un
 caseificio, qualche gioco. Per due decenni è stata una gita per scolaresche e
 famiglie, poi i conti hanno smesso di tornare e all’inizio degli anni Novanta
@@ -153,17 +152,14 @@ guadagnarsi) e che ci si era «probabilmente rivolti a un pubblico troppo
 ristretto». Nel **2018** `#Hardgaan` era di ritorno, ed è da allora il marchio
 di fabbrica della casa.
 
-A farne qualcosa di più di uno slogan sono i vicini.
-
 Sull’area eventi accanto, che Walibi affitta, dal **2011** si tiene il
 **Defqon.1**: il più grande festival hardstyle del mondo, quattro
 giorni, ben oltre 50.000 persone da più di cento paesi. Sulla stessa area si
 tiene **Lowlands**. Chi a giugno sta in prima fila al Defqon.1 guarda oltre la
 recinzione lo stesso lift che risalirà ad agosto.
 
-Nessuna agenzia ha dovuto dunque inventarsi questo gergo giovanile. Il parco ha
-semplicemente adottato il vocabolario della gente che salta già sul suo
-terreno.
+Il parco ha quindi preso il suo gergo giovanile dalla gente che salta già sul
+suo terreno.
 
 Una volta capito questo, il resto trova all’improvviso un senso. Le aree si
 chiamano **Speed Zone** e **Zero Zone**. I coaster si chiamano Untamed, Lost
@@ -174,12 +170,11 @@ ha raccolto più reclami di qualunque altra pubblicità nei Paesi Bassi.
 
 L’Efteling ti racconta una fiaba, Phantasialand ti costruisce una scenografia
 senza crepe. Anche Walibi Holland sa fare scenografia, nei suoi punti migliori
-molto bene, solo che qui tutto punta ad altro: vuole che tu urli. Sei coaster con inversioni, quasi nessun edificio in
-cui ripararti dalla pioggia, in compenso musica su ogni vialetto e un volume che
-nessuno ha impostato per sbaglio.
+molto bene, solo che qui tutto è fatto perché tu urli. Sei coaster con inversioni, quasi nessun edificio in
+cui ripararti dalla pioggia, in compenso musica ad alto volume su ogni vialetto.
 
-Chi viene a cercare un secondo Efteling non troverà nessun bosco delle fiabe, ma
-un giro di basso che lo insegue fin nella coda delle patatine.
+Chi viene a cercare un secondo Efteling trova un giro di basso che lo insegue
+fin nella coda delle patatine.
 
 ### Quando il concetto va troppo oltre
 
@@ -239,8 +234,7 @@ ha aperto **Untamed**, secondo il parco il primo coaster ibrido d’Europa.
 I dati: **36,5 metri di altezza**, prima discesa di **35,4 metri**, **92 km/h**,
 **1.085 metri** di tracciato, **cinque inversioni**, secondo il costruttore **14
 momenti di airtime**, 1:46 di durata, capacità di 900 persone all’ora, altezza
-minima 120 cm. Sulla carta è un coaster di media taglia. Sul treno non ci
-crede nessuno.
+minima 120 cm. Sulla carta è un coaster di media taglia.
 
 La prima discesa scende a 80 gradi e, dopo una collinetta minuscola, arriva già
 il **Double Inverting 270 Degree Corner Stall**, due inversioni una dietro
@@ -264,9 +258,8 @@ sapere in che direzione stavi guardando.
 
 ```
 
-Su nessuna scheda tecnica compare la parte che solleva Untamed sopra un buon
-coaster: l’attrazione è messa in scena come una festa, e comincia già dalla
-coda.
+Untamed è messo in scena come una festa, che comincia già dalla coda, e questo
+lo solleva sopra un buon coaster più di qualsiasi dato tecnico.
 
 Il lift svetta ben visibile sopra il verde dell’area **Wilderness**, e in cima ci
 sono lettere alte quanto una persona ricoperte di lampadine. Lì **LOVE**
@@ -275,11 +268,10 @@ cascata e un suono di partenza costruito perché l’intero treno alzi le mani e
 applauda la partenza. Anche gente che due minuti prima non si era mai vista. Dopo
 il tramonto l’intera struttura resta immersa nel rosa e nel viola.
 
-Al mio primo giro ho iniziato a ridere da qualche parte a metà e non ho più
-smesso fino al freno. Non una risatina, una risata vera, con le lacrime agli
-occhi. In stazione mezzo treno si è girato verso di me, e in qualsiasi altra
-situazione mi sarebbe risultato imbarazzante. Lì no. In 106 secondi l’attrazione mi aveva tolto ogni
-vergogna. È per questo che si fa tutto questo giro.
+Al mio primo giro ho iniziato a ridere da qualche parte a metà, fino alle
+lacrime, e non ho più smesso fino al freno. In stazione mezzo treno si è girato
+verso di me, e in qualsiasi altra situazione mi sarebbe risultato imbarazzante.
+Lì no. In 106 secondi l’attrazione mi aveva tolto ogni vergogna.
 
 Da allora mi è successo esattamente un’altra volta, a maggio di quest’anno al
 mio primo giro sul
@@ -290,8 +282,8 @@ attraversare l’Atlantico.
 Ai Golden Ticket Awards, Untamed si è piazzato quinto tra le migliori novità
 della stagione 2019. Nella classifica mondiale dell’acciaio era 42º nel 2024 e
 48º nel 2025, e nella lista del 2026 non compare più. Io lo metterei
-nettamente più in alto, per una qualità difficile da misurare: dopo sette anni è ancora morbido,
-sulla stessa struttura di legno dove Robin Hood un tempo riordinava le vertebre.
+nettamente più in alto, anche perché dopo sette anni è ancora morbido, sulla
+stessa struttura di legno che reggeva Robin Hood.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -312,8 +304,7 @@ dietro l’altro come su una moto, senza niente a sinistra e a destra.
 
 ```
 
-La vera particolarità: Walibi ne ha costruiti subito **due**, **intrecciati
-fra loro**, e una cosa così non esisteva in nessuna parte del mondo.
+Walibi ne ha costruiti subito **due**, **intrecciati fra loro**, e una cosa così non esisteva in nessuna parte del mondo.
 **[YOY THRILL](ref:walibi-holland/yoy-thrill)** (verde) è lungo 655 metri, va a
 80 km/h, ha **sei inversioni** e tira fino a 4 g.
 **[YOY CHILL](ref:walibi-holland/yoy-chill)** (blu) sale agli stessi 29 metri,
@@ -344,16 +335,15 @@ pavimento nelle file esterne. L’area tematica attorno è una raccolta di cose 
 lì non c’entrano nulla, un container, un’auto ribaltata, vecchi segnali
 ferroviari, e il tracciato stesso ti manda giù con una discesa avvitata. È corto, e molto più cattivo di quanto sembri.
 
-E poi ci sono i tre vecchi, liquidati come contorno in ogni resoconto. Sono
-invece proprio loro a prendere il motto del parco più alla lettera.
+E poi ci sono i tre vecchi, che prendono il motto del parco più alla lettera di
+tutti.
 
 ### Xpress: Platform 13, il coaster che già conosci
 
 Aspetti in una stazione della metropolitana dismessa. Si chiama **Glenbrook
 Station**, dalla ristrutturazione del 2013 è completamente coperta e tenuta così
 buia che i visitatori scambiano regolarmente la coda per un walkthrough. Sul
-tabellone la prossima partenza è alle **06:66**. Il treno che aspetti non
-arriverà.
+tabellone la prossima partenza è alle **06:66**.
 
 ![Un cartello di stazione nella coda: «Next Departure 06:66», Platform 13 | Il tabellone delle partenze nella coda. Quel treno lo aspetti invano. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
@@ -362,8 +352,7 @@ serpent e un cavatappi, tre inversioni, fino a **5 g** secondo il parco, 996
 metri, e dopo 75
 secondi è tutto finito.
 
-Il vero colpo però non è scritto da nessuna parte all’ingresso. **Questo
-tracciato probabilmente lo conosci già.** Vekoma ha costruito lo stesso percorso
+**Questo tracciato probabilmente lo conosci già.** Vekoma ha costruito lo stesso percorso
 per Disney: si ritrova quasi identico nel **Rock 'n' Roller Coaster** di
 Orlando (da maggio 2026 con i Muppet al posto degli Aerosmith) e in **Avengers
 Assemble: Flight Force** a Disneyland Paris. Da Disney il tracciato è un po’ più
@@ -376,7 +365,7 @@ semplicemente **Xpress** e dal 2014 porta il nome della stazione.
 
 ### Condor, il prototipo
 
-**[Condor](ref:walibi-holland/condor)** pesa storicamente più di quanto sembri. Ha aperto nel 1994 come **El Condor** ed è stato il
+**[Condor](ref:walibi-holland/condor)** ha aperto nel 1994 come **El Condor** ed è stato il
 **primo Suspended Looping Coaster al mondo**, il tipo che Vekoma ha poi venduto
 a decine in tutto il pianeta. Del modello prototipo ne sono stati costruiti
 soltanto due. L’altro, T3 a Kentucky Kingdom, ha chiuso nel 2022, e questo gira
@@ -387,7 +376,7 @@ ancora dopo oltre trent’anni.
 A lungo si è fatto sentire anche come nel 1994: **schiaffi** a sinistra, a
 destra e poi ancora a sinistra, perché la testa sbatteva tra le rigide barre
 spalle. Dal 2021 Condor viaggia con nuovi treni Vekoma con imbracature a gilet,
-che tolgono la testa dalla linea di tiro. Del tutto morbido non è diventato: da
+che tolgono la testa dalla linea di tiro. Del tutto morbido non è diventato, perché da
 prototipo entra più stretto nella prima inversione rispetto ai modelli di serie
 successivi. 31 metri, 80 km/h. Quei treni nuovi Vekoma li ha sviluppati proprio
 per questo tipo, per liberarsi della reputazione che si era guadagnata con esso.
@@ -401,11 +390,9 @@ roll e il looping, su per la seconda torre, e poi lo stesso tracciato
 all’indietro fino al ritorno. Per questo il parco conta **sei inversioni**,
 anche se ne sono state costruite solo tre.
 
-Più interessante del suo anno di costruzione è un altro numero: tira **5,2 g**.
-Per inquadrarlo: Xpress arriva a 5 g secondo il parco, YOY THRILL a 4 secondo
-ThemeParks-EU. Le forze più alte del parco stanno quindi su un classico costruttivo
-del 2000, alto 35,5 metri e corto 285. Che ci sia anche una colonna sonora di
-bordo non lo rende più gentile.
+Tira **5,2 g**, mentre Xpress arriva a 5 g secondo il parco e YOY THRILL a 4
+secondo ThemeParks-EU. Le forze più alte del parco stanno quindi su un classico
+costruttivo del 2000, alto 35,5 metri e corto 285.
 
 Ha aperto nell’aprile 2000 come **La Via Volta**, è stato fermato nel 2007 e
 riportato nel 2011 con un nuovo nome e un tema musicale. Da quella conversione
@@ -422,7 +409,7 @@ meglio, perché con la conversione del 2011 ha ricevuto treni nuovi: bretelle
 sulle spalle al posto delle vecchie barre. Falli uno dietro l’altro e in un
 secondo saprai quanto conta un sistema di ritenuta.
 
-![L’insegna di Speed of Sound tra altoparlanti giganti e una chitarra | La facciata promette un concerto. Dietro aspetta un Boomerang del 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+![L’insegna di Speed of Sound tra altoparlanti giganti e una chitarra | La facciata è quella di un concerto. Dietro aspetta un Boomerang del 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### Il resto
 
@@ -477,13 +464,13 @@ Attrazione per attrazione si presenta così:
 
 La migliore attrazione del parco non ha la fila più lunga, quella spetta alla
 novità. Untamed sta a metà classifica, alla pari con un SLC del 1994 e con un
-Mack da 680 metri. Non è una critica a YOY. Una novità tira sempre, e mezza Olanda si mette in coda
-per principio là dove la vernice è ancora fresca. Ma significa questo: se
-la mattina vai dritto nella Wilderness, avrai fatto Untamed prima che
-la coda di YOY si sia davvero mossa.
+Mack da 680 metri. Una novità tira sempre, e mezza Olanda si mette in coda
+per principio là dove la vernice è ancora fresca. In pratica, se la mattina vai
+dritto nella Wilderness, avrai fatto Untamed prima che la coda di YOY si sia
+davvero mossa.
 
-Diventa più interessante nel confronto con il vicinato. Stessa base dati, stesso
-metodo di calcolo, tutti i giorni di apertura misurati:
+Il confronto con il vicinato, stessa base dati, stesso metodo di calcolo, tutti
+i giorni di apertura misurati:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -511,9 +498,9 @@ nove mesi, e Walibi apre solo da aprile a inizio novembre. Dietro i valori
 mensili da aprile ad agosto ci sono ogni volta da 25 a 30 giorni misurati, e
 questo regge. Settembre poggia per ora su nove giorni (al 25 settembre 2026), e
 le righe di dicembre, gennaio e marzo su uno a quattro giorni dell’ultimo
-inverno delle Bright Nights e su una giornata isolata. Se viaggi nella stagione
-giusta te lo dice anche un mese con nove giorni misurati. Cinque minuti su di
-lui non li scommetterei.
+inverno delle Bright Nights e su una giornata isolata. Per capire se viaggi
+nella stagione giusta basta anche un mese con nove giorni misurati, ma cinque
+minuti su di lui non li scommetterei.
 
 ## Halloween: Fright Nights e Spooky Days
 
@@ -573,7 +560,7 @@ dell’obitorio.
 **Below** comincia con te che ti togli scarpe e pantaloni e ti infili in un paio
 di stivali da pesca. Poi si entra, come presunta disinfestazione, in una rete
 fognaria, in acqua fino al ginocchio, mentre gli attori ti piombano addosso
-attraverso vere cascate. Orientamento: nessuno.
+attraverso vere cascate.
 
 Il parco ha presentato Below nel 2017 con un filmato dedicato, che è ancora oggi
 sul suo canale:
@@ -587,16 +574,14 @@ conversazioni che non volevi avere. E la **Backstage Tour** ti mostra la tecnica
 dietro le case stregate, la storia dell’evento e le aree costumi. Si svolge
 esclusivamente in olandese, costa 75 € e ha pochissimi posti.
 
-E poiché la domanda a questo punto arriva sempre: il «più grande evento di
-Halloween d’Europa» sta, a suo stesso dire, al
+Il «più grande evento di Halloween d’Europa» sta, a suo stesso dire, al
 [Movie Park](ref:movie-park-germany) di Bottrop, con nove maze e oltre 300
 mostri. Grande e duro sono però due discipline diverse. La roba davvero malata
 succede due ore d’auto più a nord, in un polder dove ti appendono a una rotaia a
 soffitto e ti timbrano.
 
-Per l’ordine di grandezza, la tabella dei prezzi della stagione 2025. Per il
-2026 il parco vende le case soprattutto in pacchetti, ne parlo subito dopo (prevendita / in
-cassa):
+Per il 2026 il parco vende le case soprattutto in pacchetti. Per l’ordine di
+grandezza, i prezzi della stagione 2025 (prevendita / in cassa):
 
 | Categoria                                               | Prezzo             |
 | ------------------------------------------------------- | ------------------ |
@@ -643,9 +628,8 @@ limiterei a due case e una experience.
 > parcheggio. Anche le case hanno contingenti giornalieri, e il giorno stesso
 > ogni biglietto costa qualche euro in più che in prevendita.
 
-**Per il 2026 cambia la regola più importante.** Finora Spooky Days e Fright
-Nights si svolgevano lo stesso giorno, zucca di giorno e motosega di sera. Da
-questa stagione il parco **separa i due eventi su giorni diversi**. La
+**Per il 2026 il parco separa Spooky Days e Fright Nights su giorni diversi.**
+Finora si svolgevano lo stesso giorno, zucca di giorno e motosega di sera. La
 motivazione da Biddinghuizen è di una prosaicità rinfrescante: nel pomeriggio il
 parco si riempiva di ospiti della sera, le famiglie con bambini piccoli
 restavano a casa e gli attori dovevano passare in poche ore dal registro adatto
@@ -653,7 +637,7 @@ ai bambini a quello senza compromessi. Per i visitatori delle Fright Nights, inv
 la prima casa apre già alle 13, e il nuovo spettacolo _Eddie Presents: Back to
 Reality_ va in scena sulla Main Stage alle 14 e alle 15.
 
-Ora il calendario c’è, e mostra la separazione nero su bianco. Le **Fright
+Ora il calendario c’è, e la separazione ci sta nero su bianco. Le **Fright
 Nights** si prendono tutti i fine settimana fra il **3 ottobre e il 1° novembre**,
 più venerdì 16, giovedì 22 e venerdì 23 ottobre, tredici serate in tutto.
 Halloween cade di sabato e c’è.
@@ -686,7 +670,7 @@ successore. Walibi Holland d’inverno resta di nuovo completamente chiuso.
 
 ![L’ingresso di Walibi Belgium decorato con palline di Natale, sopra l’insegna «Walibi Winter» | Walibi Winter a Wavre. Il parco gemello belga a dicembre continua, quello olandese non più. | wide](/media/walibi-belgium/background.jpg)
 
-Ufficialmente si dice che il breve periodo di apertura e la forte dipendenza dal
+Il parco ha spiegato che il breve periodo di apertura e la forte dipendenza dal
 tempo invernale rendessero difficile garantire in modo affidabile la qualità
 desiderata. L’amministratrice delegata **Mascha Taminiau** l’ha formulata così:
 Walibi è nella sostanza un’attività stagionale, e nei mesi estivi può offrire
@@ -709,15 +693,14 @@ con il 45 % di sconto sull’edizione 2026/27. Chi aveva comprato un abbonamento
 2026 che comprendeva le vacanze di Natale 2026/27 riceve come compensazione due
 biglietti gratuiti per portare qualcuno nella stagione estiva.
 
-Una consolazione resta: [Walibi Belgium](ref:walibi-belgium) a Wavre prosegue
+[Walibi Belgium](ref:walibi-belgium) a Wavre prosegue
 con il suo **Walibi Winter**, nel 2026/27 dal 5 dicembre al 3 gennaio. Da
 Biddinghuizen sono quasi tre ore di auto, e con i suoi capannoni il parco belga ha esattamente ciò che
 manca a quello olandese.
 
 ## #Lekkergaan e gli Zomerse Zaterdagen
 
-Ciò che Walibi fa dell’inverno liberato è la parte più interessante della
-notizia. Il parco sposta l’energia risparmiata sull’estate e sulla manutenzione,
+Il parco sposta l’energia risparmiata sull’estate e sulla manutenzione,
 che finora andava incastrata attorno all’esercizio natalizio.
 
 In concreto, nell’estate 2026 ci sono stati due formati serali, suddivisi come
@@ -746,15 +729,15 @@ La stagione va da **aprile a inizio novembre**, dopodiché il polder va in
 letargo. In primavera il parco apre dal mercoledì alla domenica e nei giorni
 festivi e di vacanza, da fine giugno a fine agosto tutti i giorni, a settembre
 quasi solo nel fine settimana e a ottobre nei fine settimana e durante le
-vacanze autunnali. Così dice il calendario 2026.
+vacanze autunnali, secondo il calendario 2026.
 
 **Per mese** il quadro è tranquillo: lungo la stagione i mesi si distinguono a
 malapena. C’è un po’ più di gente ad aprile, quando coincidono Pasqua, il Giorno
 del Re e l’inizio delle vacanze olandesi di maggio, e finora nei fine settimana
 di settembre. Le vacanze estive nei nostri dati si notano appena.
 
-**Per giorno della settimana** la cosa si fa curiosa. Il sabato non è più pieno del resto
-della settimana:
+**Per giorno della settimana** il sabato non è più pieno del resto della
+settimana:
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -832,8 +815,7 @@ giornaliero costa in modo diverso a seconda della data.
   abbonamento annuale. Per Untamed in un giorno normale non serve. In un giorno
   pieno, alle Fright Nights e per YOY, vale una riflessione.
 
-Un confronto che mi colpisce ogni volta: il
-[Toverland](ref:attractiepark-toverland), un centinaio abbondante di chilometri
+Il [Toverland](ref:attractiepark-toverland), un centinaio abbondante di chilometri
 più a sud, non vende alcun fast pass, mentre Walibi ne ha subito un intero
 scaffale, abbonamento annuale al saltafila compreso. Con le attese viste più sopra il parco vende così la soluzione a un problema che la maggior parte degli
 ospiti nella maggior parte dei giorni non ha.
@@ -855,7 +837,7 @@ pernottamento che comprende una giornata di parco. Soprattutto per le Fright
 Nights è la soluzione più rilassata, perché dopo una notte al mattatoio non ti
 restano anche due ore e mezza di autostrada.
 
-**Mangiare.** Qui sono diretto: la ristorazione è la parte più debole del parco.
+**Mangiare.** La ristorazione è la parte più debole del parco.
 Ci sono patatine, hamburger, pizza, dignitosa cucina da mensa, niente per cui si
 torni.
 Il ristorante **Flavors** vicino all’area YOY, con la terrazza sull’acqua,
@@ -886,8 +868,8 @@ o a [Phantasialand](ref:phantasialand).
 Letteralmente «andare forte», in pratica dare gas. Walibi Holland si promuove dal
 2014 con `#Hardgaan`, interrotto da un anno fallito con «Dare to get Real»
 (2017). L’espressione viene dalla scena olandese dei festival e dell’hardstyle,
-il che torna geograficamente: sull’area eventi del parco dal 2011 si tiene il
-Defqon.1, il più grande festival hardstyle del mondo.
+e sull’area eventi del parco dal 2011 si tiene il Defqon.1, il più grande
+festival hardstyle del mondo.
 
 ### Quanto si aspetta a Walibi Holland?
 
@@ -948,12 +930,12 @@ valerne la pena.
 Mi piacciono i parchi che sanno che cosa sono. L’[Efteling](ref:efteling) lo sa
 dal 1952, [Phantasialand](ref:phantasialand) se l’è conquistato a fatica, e
 Walibi Holland, dopo quattro nomi nuovi e uno slogan fallito, si è accorto a un
-certo punto che la risposta stava già sul proprio terreno. Tra un festival
+certo punto che la risposta stava già sul proprio terreno, tra un festival
 hardstyle e un campo dove qualche decennio fa nuotavano ancora i pesci.
 
 Questo parco non fa tutto bene. Il cibo è mediocre, alcune attrazioni sono
-soprattutto il proprio passato, e d’inverno l’intero concetto crolla, come ha
-mostrato l’aprile 2026.
+soprattutto il proprio passato, e d’inverno l’intero concetto crolla, come si è
+visto ad aprile 2026.
 
 Quello che sa fare, invece, lo fa bene. Nella Wilderness c’è un coaster che dopo
 la prima discesa va due volte di fila a testa in giù e poi non smette per

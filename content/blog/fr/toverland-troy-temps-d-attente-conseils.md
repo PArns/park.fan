@@ -92,7 +92,7 @@ courte est à Sevenum.
 Le [Toverland](ref:attractiepark-toverland) de Sevenum, que je tiens pour
 l’un des plus beaux petits parcs d’Europe, fête ses 25 ans cette année. Je m’y
 suis même retrouvé une fois de l’autre côté, en costume, avec pour mission de
-faire peur aux gens. Il n’y en avait pas, mais on y reviendra.
+faire peur aux gens. Il n’y en avait pas.
 
 ## Troy sur le papier, et Troy dans le train
 
@@ -107,9 +107,8 @@ chiffres expliquent peu de chose. Il existe de plus gros woodies qui ressemblent
 
 La différence tient à deux décisions.
 
-La première, c’est le tracé. Troy est un **twister**, pas un out-and-back avec
-des bosses alignées. Au lieu d’aller tout droit en montant et en descendant, le
-tracé change en permanence de direction et convertit chaque mètre de hauteur en
+La première, c’est le tracé. Troy est un **twister**. Au lieu d’aller tout droit en montant et en
+descendant comme un out-and-back aux bosses alignées, le tracé change en permanence de direction et convertit chaque mètre de hauteur en
 changement de direction. Sur le papier, la liste des éléments se lit comme une liste de courses :
 lift, first drop, airtime hill, overbanked turn, camelback, double down, freins.
 Dans le train, tu n’as jamais un instant de répit.
@@ -127,8 +126,7 @@ secouerait ses passagers. 24 personnes par train, deux trains, 850 personnes par
 heure.
 
 Reste le préjugé que traîne tout coaster en bois passé un certain âge : qu’il
-tape. (Chez ses habitués aussi, ça commence à grincer passé un certain âge,
-mais ce n’est pas le sujet.) Le parc s’y attaque hiver après hiver depuis
+tape. Le parc s’y attaque hiver après hiver depuis
 **2024**, avec un **retrack**, de nouvelles couches de rail en bois. Pendant
 l’hiver 2024/25, il a démonté environ 200 mètres de parcours, dont presque tout
 le first drop, et les a reconstruits sous un toit provisoire ; Troy est restée
@@ -150,9 +148,8 @@ mémoire comme « géniale, mais rude » : refais-la.
 
 Calculé à partir de plus de 150 jours d’exploitation avec données d’attente, le
 temps d’attente typique de Troy est d’**environ un quart d’heure** (médiane). Même
-le jour sur dix où il y a le plus de monde, il reste sous la demi-heure. Ce
-n’est pas le mardi mort de mars, c’est la moyenne sur tous les jours
-d’ouverture.
+le jour sur dix où il y a le plus de monde, il reste sous la demi-heure. Et
+cela vaut sur l’ensemble des jours d’ouverture, week-ends et vacances compris.
 
 Soixante-dix kilomètres plus au nord-ouest, l’[Efteling](ref:efteling) a
 **Joris en de Draak**, également signé GCI, de trois ans plus jeune, et un
@@ -184,8 +181,8 @@ en 2025 et les répartit sur cinq coasters, cinq attractions aquatiques et plus
 de quarante attractions au total. L’Efteling a compté la même année 5,78 millions
 de visites, environ cinq fois plus, et n’a pas cinq fois plus de coasters.
 
-À cela s’ajoute une chose que d’autres parcs ont intégrée depuis longtemps et
-qui manque ici : **Toverland ne vend ni coupe-file ni pass express.** Dans tout
+À cela s’ajoute que **Toverland ne vend ni coupe-file ni pass express**, alors
+que d’autres parcs en vendent depuis longtemps. Dans tout
 le parc, il existe exactement une façon d’échanger du temps contre de l’argent,
 et elle n’existe que pendant les 13 soirées d’Halloween, en octobre et début
 novembre. Tous les autres jours, la file que tu vois est la file qui existe.
@@ -196,8 +193,7 @@ attraction, la tour de chute Dragonwatch, et elle ne coûte rien de plus.
 
 ![Fēnix avec un train à l’envers sur la voie, rails bleus sur ciel d’été | Fēnix, le plus long wing coaster d’Europe. Les sièges sont à gauche et à droite du rail. | left](/media/toverland/fenix-4x3.jpg)
 
-Troy est la raison pour laquelle les passionnés prennent la sortie. Mais le parc ne vit
-pas d’une seule attraction.
+Troy est la raison pour laquelle les passionnés prennent la sortie.
 
 **[Fēnix](ref:attractiepark-toverland/fenix)** est le grand œuvre de 2018 : un wing coaster de
 **Bolliger & Mabillard**, 40 mètres de haut, 813 mètres de long, jusqu’à
@@ -207,7 +203,7 @@ long d’Europe. Wing coaster veut dire : tu es assis à gauche et à droite du
 rail, sans voie au-dessus ni en dessous de toi, et comme ton siège prend les
 virages plus à l’extérieur que le véhicule, chaque rotation paraît plus ample
 qu’elle ne l’est. Juste à la sortie de la gare, un phénix te vaporise de la
-brume, ce qui n’a rien à voir avec la physique et améliore quand même l’affaire.
+brume. Ça n’a rien à voir avec la physique et ça améliore quand même l’affaire.
 Attente : le même ordre de grandeur que pour Troy.
 
 ![La gare de Fēnix avec rail bleu, train de wing coaster et vasques de feu suspendues à des chaînes sous des poutres en bois | La gare de Fēnix : vasques de feu sur chaînes, poutres massives, et le train avec ses sièges à côté du rail. | wide](/media/toverland/background-16x9.jpg)
@@ -219,7 +215,7 @@ en avant, mains au guidon, un arceau appuyé dans le dos et deux autres sur les
 cuisses, quelque part entre le MotoGP et le fauteuil du dentiste, puis un
 lancement hydraulique te propulse à un peu plus de 70 km/h en trois secondes.
 Une attraction inconfortable, absurde, formidable. Avec sa médiane, c’est elle
-qui affiche le temps d’attente typique le plus long de tous les coasters du
+qui a le temps d’attente typique le plus long de tous les coasters du
 parc. Question de capacité : Booster Bike tourne avec un seul train de 16
 places, et le parc annonce 518 passagers par heure, à peine plus de la moitié
 de Fēnix.
@@ -227,8 +223,7 @@ de Fēnix.
 **[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** de Mack Rides est un spinning
 coaster qui serpente entre rochers et étangs à travers la Magische Vallei, avec
 des nacelles qui tournent librement et un son embarqué qu’aucun coaster de ce
-type n’avait auparavant. Sa
-date d’ouverture est une petite question piège. L’attraction était annoncée
+type n’avait auparavant. L’attraction était annoncée
 pour 2013, mais elle était prête bien avant le reste de la Magische Vallei, et
 plutôt que de la laisser à l’arrêt un an, le parc l’a avancée : quelques jours
 de préouverture dans la semaine du 24 septembre 2012, un tour de presse le 26,
@@ -248,7 +243,7 @@ Ce qui se trouve entre les coasters vaut mieux que sa réputation :
 - **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), une promenade en
   bateau de douze minutes signée Mack, à travers des grottes jusqu’à la
   bibliothèque de Merlin et ses livres volants, que d’autres parcs feraient
-  payer en supplément. La star discrète d’Avalon.
+  payer en supplément.
 - **[Djengu River](ref:attractiepark-toverland/djengu-river)** (2013), les rapides signés Hafema.
   La question n’est pas de savoir _si_ tu vas être mouillé.
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, autrefois Backstroke, un
@@ -329,8 +324,7 @@ visites.
 
 ![Le manège à chaînes Djinn illuminé dans la halle Land van Toos, les visiteurs en mouvement dans les nacelles | Djinn tourne au-dessus du marché oriental de Land van Toos, entièrement sous toit. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
-Les deux halles d’origine existent d’ailleurs toujours, et elles ne sont pas un
-plan B en cas d’averse. Land van Toos et Wunderwald forment un programme à part
+Les deux halles d’origine existent d’ailleurs toujours. Land van Toos et Wunderwald forment un programme à part
 entière, avec [Djinn](ref:attractiepark-toverland/djinn), le manège à chaînes au-dessus du
 marché oriental, comme plus bel exemple : 12,8 mètres de haut, entièrement
 couvert, et le soir une ambiance lumineuse pour laquelle d’autres parcs
@@ -354,10 +348,9 @@ et un feu d’artifice. Il fallait pour cela un billet à part, à 46,50 €.
 
 ![Le cheval de Troie en bois la nuit, éclairé en rouge et noyé de brume, une foule devant | Le même cheval que plus haut, six semaines après. En journée, les familles se photographient devant. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
-Dix-sept jours par automne, ce parc prend une seconde personnalité. Sa place
-dans le paysage européen est dans notre
-[guide Halloween](/blog/halloween-parcs-attractions-2026) ; voici la version
-Toverland.
+Dix-sept jours par automne, ce parc prend une seconde personnalité. La comparaison
+avec les autres parcs européens est dans notre
+[guide Halloween](/blog/halloween-parcs-attractions-2026).
 
 ![Comédien avec masque à tentacules et clochette devant la bannière Toverland Halloween Nights | Le veilleur de nuit des Halloween Nights. Le visage : à négocier. | right](/media/halloween-2026/toverland-cthulhu.jpg)
 
@@ -380,14 +373,13 @@ La nouveauté **2026** pousse au sens propre : **« Entwined: The Maze »**, 
 **champ de maïs de sept hectares** aux parois de plusieurs mètres, sur un
 terrain jusqu’ici fermé au public derrière Fēnix, deux fois plus grand que toute
 la zone Avalon selon le parc, et commercialisé comme la plus grande expérience
-Halloween d’Europe (nous ne l’avons pas mesuré, mais nous nous y perdrions tout
-de suite). Il remplace l’expérience « Trapped », installée depuis des années
-dans le labyrinthe du Dwaalhof. La seule règle qui compte là-dedans : celui qui
+Halloween d’Europe. Il remplace l’expérience « Trapped », installée depuis des années
+dans le labyrinthe du Dwaalhof. Là-dedans, celui qui
 s’arrête se fait attraper.
 
 ![Le lettrage d’entrée de Troy transformé en « DesTROY – The Ride », avec deux bannières Halloween Nights en dessous | Troy devient DesTROY. Le parc change pour cela le lettrage à l’entrée du coaster. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
-Pour les fans de Troy, le meilleur reste pourtant à venir. L’une des scare zones
+L’une des scare zones
 s’appelle **« DesTroy »** et se trouve à **Ithaka**, donc juste à côté et sous
 le coaster en bois. Des soldats troyens mutés gardent les ruines du rempart, et
 Troy leur passe au travers, ces soirs-là jusqu’à 23 h, donc dans le noir. Homère
@@ -399,8 +391,7 @@ L’une des six expériences a pour moi un double fond. Avec le
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/), une association
 allemande d’amateurs de fêtes foraines et de parcs, je suis passé en coulisses
 dans la **Maison de la Magie**, et nous avons pu y essayer nous-mêmes le rôle des
-effrayeurs. Pas en exploitation, sans vrais visiteurs, juste nous et une maison
-vide. Impossible, donc, de savoir si j’aurais fait peur à quelqu’un.
+effrayeurs. C’était hors exploitation, et dans la maison il n’y avait que nous. Impossible, donc, de savoir si j’aurais fait peur à quelqu’un.
 
 ![Une façade éclairée en rose avec balcon, figure de poupée et enseigne lumineuse « The Dollhouse » | « The Dollhouse », l’une des six haunted experiences. En journée, c’est Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
@@ -500,7 +491,7 @@ aussi chargés qu’août.
 
 ## Quand y aller
 
-La réponse est très détendue : presque toujours.
+Presque n’importe quand.
 
 **Par mois**, avril à juillet se tiennent de près, et ce qui dépasse, c’est
 **août** et **décembre**. Derrière décembre, nos données n’ont toutefois que les
@@ -530,7 +521,7 @@ calculée sur les jours d’ouverture mesurés :
 
 ```
 
-Une chose à garder en tête : deux calendriers scolaires comptent ici, celui de
+Deux calendriers scolaires comptent ici, celui de
 la région sud des Pays-Bas et celui de la Rhénanie-du-Nord-Westphalie. Garde-les
 tous les deux sous la main, aussi arides soient-ils.
 
@@ -546,8 +537,7 @@ attractions différentes. Ensuite **Fēnix** à Avalon, à quelques minutes à p
 vers le nord. En troisième **Booster Bike**, parce qu’elle a dans nos données le
 temps d’attente typique le plus long de tous les coasters (un seul train,
 16 places, tu te souviens). Les **attractions aquatiques**, tu les gardes pour la
-chaleur de midi, et tes chaussettes auront séché d’ici le retour, en général. Et
-la dernière heure revient à Ithaka : Troy file alors dans la gare audiblement
+chaleur de midi. Et la dernière heure revient à Ithaka : Troy file alors dans la gare audiblement
 plus vite que le matin. Dans le noir, tu ne la vis que les soirs d’Halloween et
 en hiver, quand le parc ferme après le coucher du soleil.
 
@@ -555,7 +545,7 @@ en hiver, quand le parc ferme après le coucher du soleil.
 
 **Billets.** Les prix suivent le calendrier.
 
-- **Billet journée :** Toverland travaille avec quatre niveaux de prix, bronze,
+- **Billet journée :** Toverland travaille avec quatre niveaux de prix, bronze,
   argent, or et platine, selon les horaires et le programme du jour ; le
   calendrier des billets indique lequel s’applique. Les enfants de moins de
   90 cm et les personnes dont c’est l’anniversaire entrent gratuitement, mais
@@ -564,19 +554,18 @@ en hiver, quand le parc ferme après le coucher du soleil.
   obtiens la **remise early bird** de 7 € (à partir de 140 cm) ou 3,50 €
   (90–140 cm) sur le tarif du jour ; plus tard, c’est encore 2 € ou 0,50 €. À la
   caisse, il n’y a aucune remise, donc aucune raison de l’utiliser.
-- **Parking :** 13,50 € par voiture et par jour, réservable en ligne à l’avance.
+- **Parking :** 13,50 € par voiture et par jour, réservable en ligne à l’avance.
   Les vélos se garent gratuitement à l’entrée.
-- **Summer Pass :** vendu pour la première fois en 2026, 79 € pour les adultes,
+- **Summer Pass :** vendu pour la première fois en 2026, 79 € pour les adultes,
   59 € pour les enfants de 90 à 140 cm, visites illimitées du 1er juillet au
   30 septembre, option parking 25 €. Le parc n’a pas encore dit s’il revient en 2027.
-- **Magic Member (abonnement annuel) :** 160 € pour les adultes, 120 € pour les
+- **Magic Member (abonnement annuel) :** 160 € pour les adultes, 120 € pour les
   enfants, 130 € à partir de 60 ans, ou au mois (14 € pour un adulte, douze mois
   minimum), parking 50 € par an en plus. Il comprend l’entrée illimitée **y
   compris les jours d’événement comme Halloween** et 5 % sur la restauration et
   les boutiques ; les haunted experiences restent payantes, même avec
   l’abonnement.
 
-Sur ce dernier point, un regard de l’autre côté de la frontière s’impose :
 Toverland vend un abonnement annuel tout à fait ordinaire, Halloween compris.
 Phantasialand a supprimé le sien après la pandémie et ne l’a pas rétabli malgré
 plusieurs pétitions de fans. Qui habite la région frontalière et va plusieurs
@@ -601,7 +590,7 @@ l’[Efteling](ref:efteling).
 - **The Flaming Feather** (Avalon), c’est l’adresse quand tu veux t’asseoir pour
   de bon : décor de taverne médiévale, cuisine bourguignonne, plats de viande et
   de poisson, options végétariennes, spécialités de saison. **Commande l’entrée
-  de pain**, c’est le vrai secret de la maison : du pain très frais avec toute
+  de pain**, du pain très frais avec toute
   une série de tartinades. Prends-la à deux ou à trois, seul tu te remplis avant
   l’arrivée du plat.
 - **Katara Plaza** (Magische Vallei) est le food court avec la meilleure vue :
@@ -612,8 +601,8 @@ Pour les creux, il y a la **Waldstube** dans le Wunderwald (pizza, burgers,
 sandwichs, une bénédiction sous la pluie), **Hungry Harry** à Avalon pour les
 wraps et sandwichs chauds, **Mañana** à Port Laguna pour les frites et le fish &
 chips, et les **distributeurs de snacks de Port Laguna**, devant lesquels la
-plupart passent sans s’arrêter. À tort : sans file, sans détour, et pour la faim
-entre deux, la solution la plus simple du parc. Mange tôt ou tard, à onze heures
+plupart passent sans s’arrêter, alors qu’on n’y fait pas la queue et qu’ils
+sont sur le chemin. Pour la faim entre deux, c’est la solution la plus simple du parc. Mange tôt ou tard, à onze heures
 et demie ou à partir de quatorze heures trente.
 
 ## Questions fréquentes sur Toverland
@@ -639,7 +628,7 @@ Toverland](ref:attractiepark-toverland).
 Parmi les mois bien mesurés, c’est septembre qui a été le plus calme jusqu’ici,
 après les vacances d’été. Avril à juillet se tiennent de près, août et les
 vacances de Noël ressortent. Entre les jours de la semaine, il n’y a presque pas
-de différence. Jour après jour, le [calendrier des temps d’attente](ref:attractiepark-toverland?calendar) le montre.
+de différence. Le détail jour par jour est dans le [calendrier des temps d’attente](ref:attractiepark-toverland?calendar).
 
 ### A-t-on besoin d’un coupe-file à Toverland ?
 
@@ -693,9 +682,8 @@ halles couvertes, on remplit toutefois sans peine deux jours.
 
 « Discover your own magic » est la signature du parc, et je sais bien qu’une
 phrase pareille sort d’un service marketing. Sauf qu’ici, elle est juste.
-Toverland ne t’impose rien. Il n’y a pas de coupe-file qu’il faudrait acheter
-pour suivre, pas d’attraction qui te prend deux heures de ta journée, pas
-d’ordre de passage à exécuter. Tu entres et tu cherches toi-même ce qui te
+Il n’y a pas de coupe-file qu’il faudrait acheter pour suivre, et aucune
+attraction ne te prend deux heures de ta journée. Tu entres et tu cherches toi-même ce qui te
 plaît. Chez moi, c’est Troy depuis des années. D’autres viennent pour la Maison
 de la Magie, pour le Djengu River par un après-midi chaud ou pour les Halloween
 Nights.
@@ -713,15 +701,14 @@ train au bout d’un quart d’heure.
 
 ```
 
-Et les deux dont il était question ici, avec leurs chiffres actuels :
+Troy et Fēnix, avec leurs chiffres actuels :
 
 [Troy](ref:attractiepark-toverland/troy?full)
 [Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Prends la sortie Sevenum une fois, au lieu de passer devant. Et quand tu seras
 assis dans Troy et que personne n’attendra derrière toi : descends, retraverse la
-file vide et refais un tour. Puis encore un, jusqu’à ce que ton dos pose son veto. Un mardi de juin, ça marche ici. Dans la
-plupart des autres parcs d’Europe, tu peux oublier.
+file vide et refais un tour. Puis encore un, jusqu’à ce que ton dos pose son veto. Un mardi de juin, ça marche ici.
 
 — Patrick
 

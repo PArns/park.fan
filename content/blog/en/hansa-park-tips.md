@@ -58,8 +58,8 @@ seo:
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)** stands **73 metres** tall and runs at
 **127 km/h**. It has shared both figures with [Silver Star](ref:europa-park/silver-star?bare) at Europa-Park since **2015**, which puts
-half of Germany's tallest and fastest coaster record in a Baltic seaside resort most visitors could
-not have placed on a map.
+half of Germany's tallest and fastest coaster record in a Baltic seaside resort most visitors
+couldn't have placed on a map.
 
 Sierksdorf sits 24 kilometres north of Lübeck as the crow flies. The park calls itself "Germany's
 only theme park by the sea", and it really is by the sea: the holiday houses of the resort next door
@@ -81,8 +81,8 @@ Legoland years and four family and kids' coasters.
 New coasters arrive here in bursts. Four came between 2009 and 2017, Kärnan among them, then none
 for nine years until the Cornwall Coaster opened in 2026. The gap went on the Highlander and a few
 smaller themed areas, and since 2008 the park has been building one big area, "Hanse in Europa",
-city by city. What stays the same through all of it: the park opens every day of its season and
-hangs up around 2,000 illuminated figures in October where other parks build mazes.
+city by city. The park still opens every day of its season and still hangs up around 2,000
+illuminated figures in October where other parks build mazes.
 
 [Hansa-Park](ref:hansa-park?full)
 
@@ -93,7 +93,7 @@ built it as an Infinity Coaster: **1,235 metres** of track, minimum height 1.30 
 sits entirely inside a **79-metre tower** that pulls the train straight up, and the first drop falls
 67 metres.
 
-The part that matters happens before that drop, inside the tower, where nobody outside can see it.
+The unusual bit happens before that drop, inside the tower, where nobody outside can see it.
 On the way up, lying on your back in the dark, the train falls backwards for a stretch at more than
 60 metres up, before the lift carries it on to the first drop. The park calls that a world first,
 and two years after opening it apparently still found it too leisurely: in 2017 it more than
@@ -112,11 +112,11 @@ second dark section of the ride, and the drop that follows goes **97 degrees**, 
 the curse into an escape.
 
 Anton Schwarzkopf built **[Nessie](ref:hansa-park/nessie)** in **1980**: 26 metres tall, 741 metres long, 80 km/h, one
-vertical loop, and at the time the largest looping coaster in Europe. It has been running for 46
+vertical loop, and at the time the largest looping coaster in Europe. It's been running for 46
 years and got a rethemed area in 2019, the way other people that age get a new
 kitchen.
 
-Four smaller ones follow, and only one of them is not a family ride. **[Crazy Mine](ref:hansa-park/crazy-mine)** by Maurer has run
+Four smaller ones follow, and only one of them isn't a family ride. **[Crazy Mine](ref:hansa-park/crazy-mine)** by Maurer has run
 as a wild mouse in mine-shaft dressing since 1997, 15 metres tall and over in 70 seconds. The
 **[Royal Scotsman](ref:hansa-park/royal-scotsman)** is a Vekoma junior coaster from **1993** that was
 called Rasender Roland until 2019 and runs straight through Nessie's loop. The **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** has
@@ -126,8 +126,8 @@ Zar](ref:hansa-park/the-little-tsar)** in the Alter Jahrmarkt since 2017, all th
 The newest arrived this season. The **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opened in the Beautiful Britain area on **23 May 2026**, Gerstlauer again, 18
 metres tall, roughly 570 metres long, 50 km/h, from 90 centimetres. The park counts **seven launches** on one
-circuit, forwards and backwards. That is more pulling away than a bank-holiday Friday on the
-M25, and a lot for a family coaster; you notice it in the ride time: a good minute and a half, half a minute more than [Crazy Mine](ref:hansa-park/crazy-mine?bare) or the [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
+circuit, forwards and backwards. That's a lot for a family coaster, and you notice it in the ride
+time: a good minute and a half, half a minute more than [Crazy Mine](ref:hansa-park/crazy-mine?bare) or the [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
 ## The tower that took the record off Soltau
 
@@ -137,7 +137,7 @@ metres** of free fall, 120 km/h, seats tilted 30 degrees forward, built by Funti
 belonged to [Scream](ref:heide-park/scream?bare) at [Heide Park](/blog/heide-park-wait-times-tips), 103 metres tall. Those exact
 103 metres are what [Highlander](ref:hansa-park/highlander?bare) drops you through, with another 17 stacked above.
 
-It has not held the record without a break. At the end of 2021 the 131-metre Orlando FreeFall opened
+It hasn't held the record without a break. At the end of 2021 the 131-metre Orlando FreeFall opened
 in Florida, another Funtime tower. After a fatal accident in March 2022 it was closed and then
 taken down in 2023, and since then the Highlander has been the tallest again. After the accident,
 Hansa-Park added extra belts to the Highlander's restraints.
@@ -146,29 +146,26 @@ Hansa-Park added extra belts to the Highlander's restraints.
 
 ```
 
-For families, the number that matters at the Highlander is a different one: a 1.40-metre minimum,
-the highest bar anywhere in the park.
+The Highlander's minimum height is 1.40 metres, the highest bar anywhere in the park.
 
 ## A calendar with no closing day
 
 The 2026 season runs from **26 March to 25 October**. We queried the park's opening calendar day by
-day, most recently on 25 September, and between those two dates there is **not one closed day**. No
-skipped Monday in spring, no Tuesday gap in October, nothing. That makes 214 opening days, in the
-park's own calendar and in our calendar feed alike.
+day, most recently on 25 September, and between those two dates there's **not one closed day**. That
+makes 214 opening days, in the park's own calendar and in our calendar feed alike.
 
 Europa-Park and Phantasialand do the same. Heide Park, on the other hand, regularly takes Monday out
 of the calendar in spring and autumn, Movie Park mostly closes Monday to Wednesday outside the high
 season, and even Legoland Deutschland in Günzburg has a handful of closed days in May, June and
-September 2026. So if you look for a quiet weekday in Sierksdorf, you get it as an opening day
-rather than a locked gate.
+September 2026. So a quiet weekday in Sierksdorf is always an opening day.
 
 The hours are nearly as monotonous, in the best sense: planning a day here needs no calendar with
 footnotes. Until **9 October** the park opens daily at **10:00** and the rides
 close at **18:00**. Exactly three days departed from that, all of them past now: on Good Friday,
-3 April, the attractions did not start until 11:00. On 11 August the grounds stayed open until 19:00
+3 April, the attractions didn't start until 11:00. On 11 August the grounds stayed open until 19:00
 and on 12 August until 18:30, but the rides still stopped at 18:00 on both evenings. If you come
 before the end of September, expect a changed show line-up on weekdays while the park gets
-Herbstzauber ready. Only the last 16 days of the season run differently, and that is down to
+Herbstzauber ready. Only the last 16 days of the season run differently, and that's down to
 Herbstzauber.
 
 For 2027 the park currently plans its season from **25 March to 24 October**.
@@ -180,9 +177,10 @@ For 2027 the park currently plans its season from **25 March to 24 October**.
 ## Herbstzauber instead of Halloween
 
 From **10 to 25 October 2026** the park opens **11:00 to 21:00**, and what runs in that window is
-called "Herbstzauber am Meer", the autumn magic by the sea. No mazes, no scare zones, no minimum age
-of 16. The park used to run a scare event on autumn weekends, "Zeit der Schattenwesen"; it no longer
-does. Instead it hangs up around **2,000 illuminated figures** and runs two set pieces:
+called "Herbstzauber am Meer", the autumn magic by the sea. There are no mazes, no scare zones and
+no minimum age of 16. The park used to run a scare event on autumn weekends, "Zeit der
+Schattenwesen"; it no longer does. Instead it hangs up around **2,000 illuminated figures** and runs
+two set pieces:
 
 - The **light parade** starts at about 19:30 in dry weather. It has run since **2002**, introduced
   for the park's 25th anniversary.
@@ -191,13 +189,13 @@ does. Instead it hangs up around **2,000 illuminated figures** and runs two set 
 
 On the [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), close to 1,000 illuminated
 figures dance to classical music once it gets dark. So the canal boat ride from the Legoland days,
-in summer more of a lunch-break ride, becomes in October the one I would queue for first.
+in summer more of a lunch-break ride, becomes in October the one I'd queue for first.
 
-Three times rearrange an evening like that. The
+An evening like that has to be planned around three times. The
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) and
 [Super Splash](ref:hansa-park/super-splash) close as early as **16:00**, which on an October
 evening mostly pleases your socks. For Super Splash these are the last days anyway: after 25 October
-it does not run again. [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare), [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) and [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) take their **last ride at 19:30**, because the fireworks
+it doesn't run again. [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare), [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) and [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) take their **last ride at 19:30**, because the fireworks
 need setting up. And during the light parade eleven further attractions stand still, among them [Highlander](ref:hansa-park/highlander?bare),
 [Nessie](ref:hansa-park/nessie?bare) and the [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
@@ -205,14 +203,14 @@ If you want those four rides, join the queue well before half past seven, becaus
 early. The rest of the park keeps running until 20:30, with the pause during the parade.
 
 The [Halloween guide 2026](/blog/halloween-theme-parks-2026) covers ten parks. Eight of them run
-mazes or scare zones through these October weeks, two skip Halloween entirely. Hansa-Park does a third
-thing: the same evenings, a full programme, just nothing frightening. With children under ten you are
-better off here than at a maze night. It is not entirely fright-free, though: the evening show is
+mazes or scare zones through these October weeks, two skip Halloween entirely. Hansa-Park opens
+the same evenings with a full programme and no scares. With children under ten you're better off
+here than at a maze night. It isn't entirely fright-free, though: the evening show is
 loud, and the park itself warns that it can startle the youngest visitors.
 
-## This park counts in years, not only in centimetres
+## Height limits and age limits
 
-At most parks every ride entrance gives you a figure in centimetres. Here there is often an age as
+At most parks every ride entrance gives you a figure in centimetres. Here there's often an age as
 well, and it decides whether your child may ride alone or only with an adult alongside.
 
 Only the big three set a hard minimum: [Highlander](ref:hansa-park/highlander?bare) 1.40 metres, [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) 1.30, [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) 1.25. On the other coasters less will do, as long as an adult sits next to the child. [Crazy Mine](ref:hansa-park/crazy-mine?bare) takes children from 1.10 metres, but alone only from **age 9**. [Nessie](ref:hansa-park/nessie?bare) and the [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) start at one metre, alone only **from
@@ -221,8 +219,8 @@ takes children from 90 centimetres on a child seat next to an adult; to ride alo
 
 A seven-year-old at 1.25 metres therefore gets onto seven of the eight coasters, but onto four of
 them only with an adult alongside. One adult with two children rides Nessie twice. Below coaster
-level there is plenty more: our catalogue counts **82 attractions** (as of 25 September 2026), the
-park itself advertises more than 125 and evidently counts more generously.
+level there's plenty more: our catalogue counts **82 attractions** (as of 25 September 2026), the
+park itself advertises more than 125.
 
 ## From Legoland to Hansa-Park
 
@@ -235,10 +233,9 @@ bank went on administering the site as trustee.
 
 Rudolf Erich Leicht bought it in the autumn of 1976 together with two investors. _Der Spiegel_ put
 their stake at about 10 million marks in 1977. With Horst Hamelberg as first managing director,
-Leicht drew up a concept around the theme of the maritime Hanseatic League, and it came with a change
-that looks obvious today: at Legoland every ride cost separately, at Hansaland an all-inclusive
-ticket was phased in. If the gate price makes you wince today, picture reaching for your wallet
-again before every turn on the carousel.
+Leicht drew up a concept around the theme of the maritime Hanseatic League. At Legoland every ride
+had cost separately; at Hansaland an all-inclusive ticket was phased in. If the gate price makes
+you wince today, picture reaching for your wallet again before every turn on the carousel.
 
 Plenty of Legoland attractions simply stayed where they were and got a new look. The
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), the one that turns into a channel of
@@ -253,30 +250,28 @@ same stage in the years after.
 
 The ride side grew alongside it: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** the [Super Splash](ref:hansa-park/super-splash?bare), **1987** the renaming to
 Hansa-Park for the tenth anniversary, along with the 100-metre Holsteinturm and its revolving cabin.
-That one has been gone since **January 2025**, taken down over technical problems that could not be
+That one has been gone since **January 2025**, taken down over technical problems that couldn't be
 repaired. The Metroliner of 1989 went a similar way, an electric train on a figure of eight folded
 into itself, later running as El Paso Express, closed after the 2015 season.
 
-The park's biggest building project is not a ride. **Hanse in Europa** has been replacing the old
+The park's biggest building project isn't a ride. **Hanse in Europa** has been replacing the old
 Landungsbrücken since 2008 and is going up façade by façade, in eight documented phases: the
 Holstentor as an entrance in 2008; Bruges, Visby, Lübeck, Hamburg and Rostock in 2010; Groningen and
 Paris in 2011; London, Ribe and Bergen in 2012; six more from Copenhagen to Nuremberg in 2013; Gdańsk
 and Kraków in 2018; and in 2021 the largest phase so far, 14 façades from Kraków, Stockholm,
-Stralsund, Helsinki, Riga and Venice. Twenty years was the estimate, a schedule you would normally expect from motorway roadworks. The
-last phase, the Palacio de
-Braga, is not finished.
+Stralsund, Helsinki, Riga and Venice. Twenty years was the estimate. The last phase, the Palacio de
+Braga, isn't finished.
 
 The years since 2021 read accordingly small-scale: Awildas Welt, the Peterhof von Novgorod in place
 of the old logging camp, New Lübeck in place of the western town Bonanza City, the Carrousel
 Baltique, the Lost Trails of Roanoke, Einars Fjordfahrt. None of those is a coaster. That came in 2026.
 
-## Where to stay: three nights or none
+## Where to stay
 
 The **HANSA-PARK Resort am Meer** sits at the edge of Sierksdorf, with the railway line running
 between the holiday park and the theme park. Booking goes through Landal or Ostseezeit, the minimum
-stay is **three nights**, and two nights are on request only. Compared with the park hotels at
-Rust or Brühl this is a different build: holiday house rather than themed hotel, and the sums work
-out over a Baltic holiday rather than over a park day.
+stay is **three nights**, and two nights are on request only. The park hotels at
+Rust and Brühl are themed hotels; here you get a holiday house.
 
 For a single park day, three nights rarely make sense. For a week in July where the park fills two of
 the seven days, they do.
@@ -284,13 +279,13 @@ the seven days, they do.
 ## Practicalities: getting there, tickets, parking
 
 **Getting there.** Am Fahrenkrog 1, 23730 Sierksdorf. Take the regional train from Lübeck towards
-Neustadt to Sierksdorf, then it is ten minutes on foot and signposted; with a pushchair or a
+Neustadt to Sierksdorf, then it's ten minutes on foot and signposted; with a pushchair or a
 wheelchair, take the waymarked route towards the beach at the station and you avoid the steps.
 
 **Parking.** **€7** per day for a car in the main car park, maximum entry height 2.30 metres.
 Motorbikes park free, motorhomes pay €15 per twelve hours started. Electric cars get their own EV
 car park with ten charging points: the electricity is free there, but the day costs **€16**, more
-than double the main car park, and the park asks you to move your car once it is charged. The
+than double the main car park, and the park asks you to move your car once it's charged. The
 drop-off zone is free for 30 minutes.
 
 **Tickets 2026.** **€53** from age 12, **€43** for children aged 4 to 11, free under 4, €43 from age 70. Come on your birthday up to and including your twelfth and you get in free, but only at the gate.
@@ -303,7 +298,7 @@ booking online; here booking ahead saves you nothing at all, only the queue at t
 until 24 March 2027 and €140 after that. Adults who buy it by 25 October 2026 park free in the main
 car park all through 2027; buy it by 24 March and parking is €1 a day.
 
-**Included in the ticket.** Every ride, show and hands-on attraction that is running. A few extras,
+**Included in the ticket.** Every ride, show and hands-on attraction that's running. A few extras,
 such as the gold panning, cost separately.
 
 ## What comes in 2027
@@ -319,8 +314,8 @@ After the [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare), tha
 attractions in two years; between the Highlander and the Cornwall Coaster there were seven years of
 smaller ones. One ride is leaving at the same time: the
 [Super Splash](ref:hansa-park/super-splash?bare) from 1986 comes down in the 2026/27 off-season
-because the park is replanning its corner of the grounds. What goes there instead has not been
-announced.
+because the park is replanning its corner of the grounds. Hansa-Park hasn't said what goes there
+instead.
 
 ## Frequently asked questions about Hansa-Park
 
@@ -357,20 +352,19 @@ at about 20:30. It has nothing to do with Halloween.
 
 ### Is Hansa-Park worth it for coaster fans?
 
-For Kärnan and Flucht von Novgorod definitely, and for Highlander. Coming from southern Germany, plan
-a Baltic holiday with a park day rather than a park trip with a beach visit.
+For Kärnan and Flucht von Novgorod definitely, and for Highlander. Coming from southern Germany, make
+it a Baltic holiday with a park day in it.
 
 ## Further reading
 
-Weather decides more on the Baltic than elsewhere, and in October it also decides whether the light
-parade and the evening show run at all. In rain or strong wind both are called off, and the park may
-then change its opening hours too:
+In rain or strong wind the light parade and the evening show are called off, and the park may then
+change its opening hours too:
 
 ```weather-widget slug=hansa-park
 
 ```
 
-And if you are planning the north right now: [Heide Park](/blog/heide-park-wait-times-tips) lies 131
+And if you're planning the north right now: [Heide Park](/blog/heide-park-wait-times-tips) lies 131
 kilometres southwest as the crow flies and fits into the same week.
 
 ## The catch
@@ -378,7 +372,7 @@ kilometres southwest as the crow flies and fits into the same week.
 A 79-metre tower with Kärnan inside it and a canal boat ride from the Legoland years, full of
 illuminated figures, share the same 46 hectares here. The catch is the location. Hamburg is
 78 kilometres away as the crow flies, everything south of it considerably further, and anyone coming
-only for the eight coasters is done by early afternoon. The park assumes you are on the Baltic anyway.
+only for the eight coasters is done by early afternoon. The park assumes you're on the Baltic anyway.
 
 — Patrick
 

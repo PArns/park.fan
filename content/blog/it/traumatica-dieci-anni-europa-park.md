@@ -1,5 +1,5 @@
 ---
-title: 'Traumatica compie dieci anni, e il regalo di compleanno è un hotel dove gli attori possono toccarti'
+title: 'Traumatica compie dieci anni a Europa-Park'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
 author: patrick
@@ -60,8 +60,7 @@ gli attori possono toccarti. Anche nel Murderdome, dice l’organizzatore, ti
 toccano, ma questa è l’unica casa che si attraversa da soli. Secondo lo
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html)
 non è accessibile in sedia a rotelle ed è riservata ai maggiorenni. Costa 29 €
-in più rispetto al biglietto di Traumatica. Quanto duri, il parco non lo dice,
-e probabilmente è voluto.
+in più rispetto al biglietto di Traumatica. Quanto duri, il parco non lo dice.
 
 Torna il **Vampire’s Club**, ma solo nei primi due weekend: 25 e 26 settembre,
 2 e 3 ottobre, dalle 23 alle 3, solo maggiorenni. In quelle sere prende il
@@ -117,12 +116,11 @@ horror funzionano dalle 19 alle 23:30.
 I prezzi «da» valgono per le date più economiche, e lo Shoxter Pass con
 accesso prioritario è già esaurito.
 
-Se prima passi la giornata nel parco, la
-[guida a Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) mostra in
-quali giorni le code sono corte, e la
-[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026) mette
-Traumatica accanto a quello che fanno quest’autunno Movie Park, Walibi e
-Toverland.
+Se prima passi la giornata nel parco, i giorni con le code più corte sono nella
+[guida a Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Per
+confrontare Traumatica con quello che fanno quest’autunno Movie Park, Walibi e
+Toverland c’è la
+[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026).
 
 [Europa-Park](ref:europa-park?full)
 

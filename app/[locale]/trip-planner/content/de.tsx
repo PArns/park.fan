@@ -74,11 +74,11 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           35.
         </P>
         <P>
-          Zu jeder Zahl gehört ihr typischer Fehler, und der wächst mit der Schlange. Für die
+          Zu jeder Zahl gehört ihr typischer Fehler, und der wächst mit der Warteschlange. Für die
           Bahnen, deren Tageshöhe an diesem Samstag bei 35 Minuten oder darüber liegt, nennt die API
-          15,4 Minuten, für die flacheren 10,9. An der Hälfte der Tage liegt die echte Wartezeit
-          weiter daneben als dieser Wert. Am ausgewählten Block steht er deshalb als
-          Plus-Minus-Angabe. Eine Spanne sähe aus, als läge die echte Wartezeit sicher darin.
+          15,4 Minuten, für die flacheren 10,9. An der Hälfte der Tage liegt die tatsächliche
+          Wartezeit weiter daneben als dieser Wert. Am ausgewählten Block steht er deshalb als
+          Plus-Minus-Angabe. Eine Spanne sähe aus, als läge die tatsächliche Wartezeit sicher darin.
         </P>
         <Note>
           Tarons Kurve beruht auf 142 gemessenen Tagen, die von Black Mamba auf 161. Die Zahl für
@@ -135,7 +135,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <Note>
           Als „knapp“ gilt ein Umstieg, der nicht mehr aufgeht, sobald die Prognose so weit
           danebenliegt, wie sie selbst angibt. Liefert die API keine Streuung, bleibt es bei „gut“,
-          und der Titel der Bewertung sagt das dazu.
+          und im Titel der Bewertung steht das dazu.
         </Note>
       </Chapter>
 
@@ -203,11 +203,12 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           Manchmal schlägt der Planer vor, eine Runde zu warten, statt sich sofort anzustellen. Das
-          passiert, wenn die Schlange so weit einbricht, dass du mitsamt der Pause früher wieder
-          frei bist als beim sofortigen Anstellen; kürzer anzustehen allein reicht dafür nicht, denn
-          der Tag darf durch die Pause nicht später enden. Eine solche Pause dauert höchstens zwei
-          Stunden. An diese Grenze kommt sie kaum, denn sie lohnt sich nur, wenn sie kürzer ist als
-          die Schlange, die sie erspart, und dafür bräuchte es eine Schlange von über zwei Stunden.
+          passiert, wenn die Warteschlange so weit einbricht, dass du mitsamt der Pause früher
+          wieder frei bist als beim sofortigen Anstellen; kürzer anzustehen allein reicht dafür
+          nicht, denn der Tag darf durch die Pause nicht später enden. Eine solche Pause dauert
+          höchstens zwei Stunden. An diese Grenze kommt sie kaum, denn sie lohnt sich nur, wenn sie
+          kürzer ist als die Warteschlange, die sie erspart, und dafür bräuchte es eine
+          Warteschlange von über zwei Stunden.
         </P>
         <P>
           Eine Mittagspause um eins bleibt um eins, und eine abgehakte Bahn bleibt, wo sie ist;
@@ -269,9 +270,9 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           Der Plan liegt in deinem Browser, ein Konto brauchst du nicht. Erst wenn du
-          Benachrichtigungen einschaltest, legen wir eine Kopie auf unseren Server, und der Planer
-          sagt das an dieser Stelle. Ohne Plan beginnt er mit vier Fragen: Park, Tag, wer mitkommt
-          und welche großen Bahnen in den Tag sollen. Den passenden Tag findest du im{' '}
+          Benachrichtigungen einschaltest, legen wir eine Kopie auf unseren Server, und das steht
+          beim Einschalten auch dabei. Ohne Plan beginnst du mit vier Fragen: Park, Tag, wer
+          mitkommt und welche großen Bahnen in den Tag sollen. Den passenden Tag findest du im{' '}
           <A href={`${PARK}/wartezeiten-kalender`}>Wartezeiten-Kalender</A> jedes Parks.
         </P>
       </Chapter>

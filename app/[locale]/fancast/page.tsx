@@ -56,7 +56,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   en: {
     kicker: 'park.fan · forecasting model',
     tagline:
-      'It reads millions of live wait times to predict how busy a park will be on every day it has published — and grades itself, in the open.',
+      'It reads millions of live wait times to predict how busy a park will be on every day it has published, and grades itself in public.',
     scrollLabel: 'Scroll',
     statLabels: {
       avgError: 'min avg error',
@@ -92,7 +92,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   it: {
     kicker: 'park.fan · modello di previsione',
     tagline:
-      "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco per ogni giorno già pubblicato, e si autovaluta in modo trasparente.",
+      "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco per ogni giorno già pubblicato, e si dà i voti in pubblico.",
     scrollLabel: 'Scorri',
     statLabels: {
       avgError: 'min errore medio',
@@ -104,7 +104,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   nl: {
     kicker: 'park.fan · voorspelmodel',
     tagline:
-      'Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt – en beoordeelt zichzelf, in het openbaar.',
+      'Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt, en beoordeelt zichzelf daarbij in het openbaar.',
     scrollLabel: 'Scroll',
     statLabels: {
       avgError: 'min gem. fout',
