@@ -45,7 +45,7 @@ della data ufficiale.
 
 ## Com’è fatto
 
-Il percorso è lungo 4100 piedi, circa 1250 metri, e le auto arrivano fino a
+Il percorso è lungo 4.100 piedi, circa 1.250 metri, e le auto arrivano fino a
 **72 mph**, circa 116 km/h. Universal parla di forze fino a 3,6 g. Ci sono
 quattro lanci e, lungo il tracciato, un inverted dive loop, un twisted pretzel
 loop e un inverted stall, quindi tre inversioni.
@@ -78,7 +78,7 @@ Florida. Dovrebbe aprire nel 2027, con un altro tracciato e una torre di 170
 piedi, circa 52 metri.
 
 Fonti: [comunicato stampa di NBCUniversal sull’apertura](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
-costruttore, veicoli e versione della Florida da
+tipo di attrazione, veicoli e versione della Florida da
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
 
 — Patrick

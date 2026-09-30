@@ -118,8 +118,8 @@ Contrairement à Disney le 31 octobre, le Movie Park n’autorise **ni
 déguisements, ni masques, ni maquillage d’horreur** apportés par les visiteurs,
 quelle que soit la soirée. Seuls les enfants mesurant jusqu’à 1,40 mètre peuvent
 porter masque, déguisement ou maquillage, d’après la
-[FAQ du parc](https://www.movieparkgermany.de/en/halloween/faq) (consultée le
-29 septembre 2026). On ne peut pas non plus entrer avec de l’alcool, et les sacs
+[FAQ du parc](https://www.movieparkgermany.de/en/halloween/faq) (au 29 septembre
+2026). On ne peut pas non plus entrer avec de l’alcool, et les sacs
 sont fouillés à l’entrée.
 
 ## Quelle soirée
@@ -151,7 +151,7 @@ Dates, mazes et billets :
 — Patrick
 
 > [!CORRECTION]
-> 25 septembre 2026 : la première version disait que les billets à créneau pour les mazes étaient vendus uniquement en ligne. D’après le plan du parc, des billets restants sont aussi vendus sur place, selon les disponibilités.
+> 25 septembre 2026 : la première version disait que les billets à créneau pour les mazes étaient vendus uniquement en ligne. D’après le plan du parc, des billets restants sont aussi vendus sur place, selon les disponibilités.
 
 > [!CORRECTION]
 > 29 septembre 2026 : la première version disait que les déguisements, masques et maquillages des visiteurs étaient interdits tous les soirs. D’après la FAQ du parc, les enfants mesurant jusqu’à 1,40 mètre peuvent porter masque, déguisement et maquillage. L’interdiction reste valable pour tous les autres visiteurs.

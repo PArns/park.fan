@@ -47,7 +47,7 @@ de siete semanas antes de la fecha oficial.
 
 ## Cómo es la atracción
 
-El recorrido mide 4100 pies, unos 1250 metros, y los coches llegan a **72 mph**,
+El recorrido mide 4.100 pies, unos 1.250 metros, y los coches llegan a **72 mph**,
 unos 116 km/h. Universal habla de fuerzas de hasta 3,6 g. Tiene cuatro
 lanzamientos y, por el camino, un inverted dive loop, un twisted pretzel loop y
 un inverted stall: tres inversiones en total.
@@ -80,7 +80,7 @@ Studios Florida. Debería abrir en 2027, con otro trazado y una torre de 170
 pies, unos 52 metros.
 
 Fuentes: [nota de prensa de NBCUniversal sobre la inauguración](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
-fabricante, vehículos y versión de Florida según
+tipo de atracción, vehículos y versión de Florida según
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
 
 — Patrick

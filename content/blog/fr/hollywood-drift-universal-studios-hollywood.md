@@ -55,7 +55,7 @@ twisted pretzel loop et un inverted stall, donc trois inversions.
 Intamin l’a construit sur des plans d’Universal Creative. Les lancements
 reposent sur des moteurs linéaires.
 
-Les véhicules reprennent des voitures des films : une Dodge Charger, une Mazda
+Les véhicules sont des voitures comme celles des films : une Dodge Charger, une Mazda
 RX-7, une Nissan Skyline GT-R et une Toyota Supra. Chaque voiture peut faire un
 tour complet de 360 degrés pendant le trajet et suit son propre programme. Un
 train compte quatre voitures de deux rangées de deux places, soit 16 passagers.
@@ -80,7 +80,7 @@ Florida. Elle doit ouvrir en 2027, avec un autre tracé et une tour de 170 pieds
 environ 52 mètres.
 
 Sources : [communiqué de NBCUniversal sur l’ouverture](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open) ;
-constructeur, véhicules et version floridienne d’après
+type d’attraction, véhicules et version floridienne d’après
 [Wikipédia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
 
 — Patrick

@@ -46,13 +46,13 @@ opening.
 
 ## Wat de baan kan
 
-De baan is 4100 voet lang, ongeveer 1250 meter, en haalt een topsnelheid van
+De baan is 4.100 voet lang, ongeveer 1.250 meter, en haalt een topsnelheid van
 **72 mph**, zo’n 116 km/u. Universal spreekt van krachten tot 3,6 g. Er zijn
 vier lanceringen, en onderweg zitten een inverted dive loop, een twisted
 pretzel loop en een inverted stall. Dat zijn drie inversies.
 
 Intamin heeft de baan gebouwd, het ontwerp komt van Universal Creative.
-Lineaire motoren zorgen voor de aandrijving.
+De baan wordt aangedreven door lineaire motoren.
 
 De karretjes zijn auto’s zoals in de films: een Dodge Charger, een Mazda RX-7,
 een Nissan Skyline GT-R en een Toyota Supra. Elke auto kan tijdens de rit
@@ -78,7 +78,7 @@ Die moet in 2027 opengaan, met een ander parcours en een toren van 170 voet,
 ongeveer 52 meter hoog.
 
 Bronnen: [persbericht van NBCUniversal over de opening](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
-bouwer, voertuigen en de versie in Florida volgens
+type baan, voertuigen en de versie in Florida volgens
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
 
 — Patrick

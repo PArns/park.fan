@@ -36,9 +36,9 @@ seo:
 
 **Fast & Furious: Hollywood Drift** officially opened at
 [Universal Studios Hollywood](ref:universal-studios-hollywood) on
-16 September 2026. It's the park's first roller coaster to run outdoors, and
-Universal says it's the fastest anywhere in the Universal Destinations &
-Experiences portfolio. The occasion is the film series' 25th anniversary.
+16 September 2026. It’s the park’s first roller coaster to run outdoors, and
+Universal says it’s the fastest anywhere in the Universal Destinations &
+Experiences portfolio. The occasion is the film series’ 25th anniversary.
 
 The soft opening had already started on 27 July, just over seven weeks before
 the official date.
@@ -64,7 +64,7 @@ see-through enclosure inside the queue.
 
 ## Who can ride
 
-The height requirement is **51 inches**, or 129.5 cm. There's a test seat where
+The height requirement is **51 inches**, or 129.5 cm. There’s a test seat where
 you can check that before you queue. Bags and loose items go into a free
 locker, and everyone walks through a metal detector before the platform.
 
@@ -73,11 +73,11 @@ locker, and everyone walks through a metal detector before the platform.
 [Fast & Furious: Hollywood Drift](ref:universal-studios-hollywood/fast-and-furious-hollywood-drift?full)
 
 Universal is building a second version of the ride for Universal Studios
-Florida. It's due to open in 2027, with a different layout and a 170-foot
+Florida. It’s due to open in 2027, with a different layout and a 170-foot
 (52 m) tower.
 
-Sources: [NBCUniversal's press release on the opening](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
-the builder, the vehicles and the Florida version from
+Sources: [NBCUniversal’s press release on the opening](https://www.nbcuniversal.com/article/fast-furious-hollywood-drift-now-open);
+the ride type, the vehicles and the Florida version from
 [Wikipedia](https://en.wikipedia.org/wiki/Fast_%26_Furious:_Hollywood_Drift).
 
 — Patrick
