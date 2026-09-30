@@ -4,8 +4,9 @@
  * Run: pnpm check:changelog   (no network; runs this, then the changelog half of check:prose)
  *
  * The policy is docs/rules/a-version-is-a-unit-of-communication.md: a merge is not a version, the
- * PO cuts one, and a cut is one pull request that moves three files together. This script checks
- * that they moved together:
+ * PO decides one, and a cut is one pull request that moves three files together. A pull request
+ * that is not a cut writes a fragment in `docs/changelog.d/` and touches none of the three. This
+ * script checks that they moved together:
  *
  *   1. Every `content/changelog/<version>.md` is named after the version in its frontmatter, has a
  *      title, a summary and a `YYYY-MM-DD` date, and a `through` (a run of versions in one entry)
@@ -16,9 +17,11 @@
  *      also what keeps the footer's version link (`components/common/build-info.tsx`) pointing at
  *      an anchor that exists.
  *   4. Every published entry that is not reconstructed has its `## <version> (<date>)` heading in
- *      `docs/changelog.md`, with the same date, and no `## Unreleased – …` section sits below the
- *      newest version heading: a cut moves every open section under the new heading.
- *   5. A highlight names a media database row that exists.
+ *      `docs/changelog.md`, with the same date, and the log has no `## Unreleased` section: that
+ *      is what a fragment is for (`scripts/lib/changelog-fragments.mjs`).
+ *   5. Every fragment in `docs/changelog.d/` is one the cut can fold in as it stands.
+ *   6. A highlight names a media database row that exists, and a published entry carries no
+ *      `TODO` left over from the skeleton `pnpm release:cut` writes.
  *
  * What it cannot see is whether the entry says what a visitor gets, and whether a blog post slipped
  * in as a release item. That is the PO's read of the pull request.
@@ -27,6 +30,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
+import { FRAGMENT_DIR, readFragments } from './lib/changelog-fragments.mjs';
 
 const DIR = 'content/changelog';
 const INTERNAL_LOG = 'docs/changelog.md';
@@ -55,7 +59,7 @@ function isoDate(value) {
 const entries = [];
 for (const name of readdirSync(DIR).filter((f) => f.endsWith('.md') && f !== 'README.md')) {
   const file = join(DIR, name);
-  const { data } = matter(readFileSync(file, 'utf8'));
+  const { data, content } = matter(readFileSync(file, 'utf8'));
   const version = data.version == null ? '' : String(data.version);
   const date = isoDate(data.date);
 
@@ -79,6 +83,9 @@ for (const name of readdirSync(DIR).filter((f) => f.endsWith('.md') && f !== 'RE
     if (!id || !existsSync(join('public/media', `${id}.json`)))
       fail(file, `highlight "${id}" is not in the media database (public/media/${id}.json)`);
   }
+
+  if (data.mode !== 'draft' && /\bTODO\b/.test(`${data.title} ${data.summary} ${content}`))
+    fail(file, 'published with a TODO from the release:cut skeleton still in it');
 
   entries.push({
     file,
@@ -141,13 +148,21 @@ for (const entry of published.filter((e) => !e.reconstructed)) {
     );
 }
 
-const firstVersion = Math.min(...[...versionHeadings.values()].map((h) => h.index));
-const stranded = headings.filter((h) => h.index > firstVersion && /^Unreleased\b/.test(h.text));
-if (stranded.length)
+const unreleased = headings.filter((h) => /^Unreleased\b/.test(h.text));
+if (unreleased.length)
   fail(
     INTERNAL_LOG,
-    `${stranded.length} "## Unreleased" section(s) below a version heading, first: "${stranded[0].text.slice(0, 70)}". New sections go on top; a cut moves them under the new version.`
+    `${unreleased.length} "## Unreleased" section(s), first: "${unreleased[0].text.slice(0, 70)}". ` +
+      `A pull request writes its section to ${FRAGMENT_DIR}/PAR-<n>.md instead (${FRAGMENT_DIR}/README.md); ` +
+      'the cut folds the fragments in here.'
   );
+
+/* ------------------------------------------------------------------ 5. fragments */
+
+// Undated: the order does not matter here, and `git log` per file would cost a process each.
+const fragments = readFragments(FRAGMENT_DIR, { dated: false });
+for (const fragment of fragments)
+  for (const message of fragment.errors) fail(fragment.path, message);
 
 /* ------------------------------------------------------------------ report */
 
@@ -156,6 +171,6 @@ if (errors.length) {
   for (const e of errors) console.log(`  ${e}`);
 }
 console.log(
-  `\n${errors.length} error(s). ${entries.length} entries, newest published ${newest?.version ?? 'none'}, package.json ${pkgVersion}. Rules: docs/rules/a-version-is-a-unit-of-communication.md`
+  `\n${errors.length} error(s). ${entries.length} entries, newest published ${newest?.version ?? 'none'}, package.json ${pkgVersion}, ${fragments.length} fragment(s) waiting for the next cut. Rules: docs/rules/a-version-is-a-unit-of-communication.md`
 );
 process.exit(errors.length ? 1 : 0);

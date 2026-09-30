@@ -108,10 +108,17 @@ jobs:
         run: pnpm test:hub-chapters
 
       # A version is cut in one pull request that moves `package.json`, `docs/changelog.md` and
-      # `content/changelog/<version>.md` together, and no other pull request touches the first or
-      # the last (docs/rules/a-version-is-a-unit-of-communication.md). The first run of this check
-      # found 2.12.0 published without its heading in the internal log. The second half is the
+      # `content/changelog/<version>.md` together (`pnpm release:cut`); every other pull request
+      # writes a fragment in `docs/changelog.d/` and touches none of the three
+      # (docs/rules/a-version-is-a-unit-of-communication.md). The first run of this check found
+      # 2.12.0 published without its heading in the internal log. The second half is the
       # changelog's share of check:prose. Local files only, under a second.
       - name: pnpm check:changelog
         if: ${{ !cancelled() }}
         run: pnpm check:changelog
+
+      # Runs a whole cut in a scratch directory, so a change to the fragment rules that the cut and
+      # the check no longer agree on fails here rather than on release day. No network.
+      - name: pnpm test:changelog-fragments
+        if: ${{ !cancelled() }}
+        run: pnpm test:changelog-fragments

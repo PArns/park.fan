@@ -19,8 +19,9 @@ is something to tell people. The authoring contract for the public entries is
   kept for a relaunch; the last one was 2.0 in December 2025, when the site was rebuilt from
   scratch, and a website has no breaking change to offer the people reading it.
 - Two files carry a release, and they are not two copies of one thing. `docs/changelog.md` is
-  the internal log: German, per pull request, naming components and measurements, written for
-  whoever touches the code next. `content/changelog/<version>.md` is the public entry: English,
+  the internal log: German, one section per pull request, naming components and measurements,
+  written for whoever touches the code next. Between cuts those sections wait as fragments in
+  `docs/changelog.d/`, one file each, so two open pull requests never edit the same lines. `content/changelog/<version>.md` is the public entry: English,
   written by hand for a visitor when the version is cut. Nothing parses one into the other, and
   nothing should; publishing the internal prose verbatim is how a changelog turns into a commit
   list.
@@ -29,28 +30,33 @@ is something to tell people. The authoring contract for the public entries is
 
 ## Who does what
 
-| Who                                      | Does                                                                                                                                                                   | Never                                                                                                       |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Any pull request (cloud or local runner) | Adds its section on top of `docs/changelog.md` as `## Unreleased – <title>`, in the house style of that file. A post, a photo or a news item needs none.               | Bumps `version` in `package.json`, adds a version heading, creates or edits a file in `content/changelog/`. |
-| The PO                                   | Decides the number and the items, and files them as a ticket `Release x.y.z` (frontend, Cloud, current cycle): one line per item with the section or PR it comes from. | Writes the pull request itself, lists a blog post, cuts a version per ticket.                               |
-| The runner that takes `Release x.y.z`    | Writes the cut below as one pull request, with exactly the items of the ticket.                                                                                        | Adds or drops an item on its own; a missing or doubtful one goes back to the PO as a question.              |
-| Anyone, correcting a published entry     | Fixes the wrong fact in `content/changelog/<version>.md` in an ordinary pull request.                                                                                  | Changes a published version number or date, other than to correct it to what the history shows.             |
+| Who                                      | Does                                                                                                                                                                    | Never                                                                                             |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Any pull request (cloud or local runner) | Writes its section as a fragment, `docs/changelog.d/PAR-<n>.md` ([format](../changelog.d/README.md)). A post, a photo or a news item needs none.                        | Writes into `docs/changelog.md`, bumps `version` in `package.json`, touches `content/changelog/`. |
+| The PO                                   | Decides the number and the items, and files them as a ticket `Release x.y.z` (frontend, Cloud, current cycle): one line per item with the fragment or PR it comes from. | Writes the pull request itself, lists a blog post, cuts a version per ticket.                     |
+| The runner that takes `Release x.y.z`    | Writes the cut below as one pull request, with exactly the items of the ticket.                                                                                         | Adds or drops an item on its own; a missing or doubtful one goes back to the PO as a question.    |
+| Anyone, correcting a published entry     | Fixes the wrong fact in `content/changelog/<version>.md` in an ordinary pull request.                                                                                   | Changes a published version number or date, other than to correct it to what the history shows.   |
 
 The PO reviews and merges the release pull request like any other, and checks the prose evidence
 of step 6 before it does.
 
 ## Cutting a version: one pull request
 
-1. Number: MINOR if the open sections contain one new visible capability, PATCH otherwise.
-2. In `docs/changelog.md`, write `## x.y.z (YYYY-MM-DD) – <title>` above the
-   open sections, one sentence under it saying what the version covers, and turn each
-   `## Unreleased – <title>` into `### <title>` (a `###` inside one becomes `####`).
-3. Write `content/changelog/x.y.z.md` from those sections for a visitor:
+1. Number: MINOR if the fragments contain one new visible capability, PATCH otherwise.
+2. Run `pnpm release:cut x.y.z --title "<German title>"` (`--dry-run` first to read it). It folds
+   every fragment under `## x.y.z (<today>) – <title>` at the top of `docs/changelog.md`, newest
+   first, deletes the fragment files, sets `version` in `package.json` and writes
+   `content/changelog/x.y.z.md` as a `mode: draft` skeleton. It refuses to run while a fragment is
+   malformed, and changes nothing then.
+3. Write `content/changelog/x.y.z.md` from the folded sections for a visitor:
    `## New`, `## Improved`, `## Fixed`. Leave out admin screens, CI and tooling, docs, refactors
    without a number a visitor would feel, and every blog or news post. Prefer a number to an
-   adjective, and look each one up in the section or commit it comes from.
-4. Set `version` in `package.json` to `x.y.z`. The footer's version links to this entry
-   (`components/common/build-info.tsx`), so the two have to agree.
+   adjective, and look each one up in the section or commit it comes from. Then set
+   `mode: published`. The footer's version links to this entry (`components/common/build-info.tsx`),
+   which is why `package.json` and the newest published entry have to agree.
+4. Merge `main` in before the release pull request is reviewed. A fragment that landed in the
+   meantime is folded in by hand under the same heading, as `### <title>` and its text, and its
+   file deleted; `pnpm check:changelog` lists what is still waiting.
 5. The date is the day the pull request merges, Europe/Berlin, the same rule as a news post. A pull
    request that merges a day later gets its date corrected before the merge, in both files.
 6. Run `pnpm check:changelog`, then the review pass of
@@ -68,9 +74,11 @@ because a picture of our own interface is not a photograph of a park.
 `scripts/check-changelog.mjs` checks the release structure: the file name matches the version,
 title, summary and date are there, a higher version is never older than a lower one, a `through`
 stays below the next entry, `package.json` equals the newest published entry, every published
-entry that is not reconstructed has its heading with the same date in `docs/changelog.md`, no
-`## Unreleased` section sits below a version heading, and each highlight exists in the media
-database.
+entry that is not reconstructed has its heading with the same date in `docs/changelog.md`, the log
+holds no `## Unreleased` section, every fragment is one the cut can fold in as it stands
+(`scripts/lib/changelog-fragments.mjs`), a published entry carries no `TODO` from the skeleton, and
+each highlight exists in the media database. `pnpm test:changelog-fragments` runs a whole cut in a
+scratch directory against the same code.
 
 `scripts/check-prose.mjs --only=changelog` applies the writing rules of
 [`docs/blog.md`](../blog.md) to the entries, with the honesty family as an error because every

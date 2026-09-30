@@ -123,6 +123,8 @@
     "check:card-framing": "node scripts/check-card-framing.mjs",
     "check:prose": "node scripts/check-prose.mjs",
     "check:changelog": "node scripts/check-changelog.mjs && node scripts/check-prose.mjs --only=changelog",
+    "test:changelog-fragments": "node scripts/test-changelog-fragments.mjs",
+    "release:cut": "node scripts/release-cut.mjs",
     "check:planner": "node --experimental-strip-types scripts/check-planner.mjs",
     "check:agent-ready": "node scripts/check-agent-ready.mjs",
     "check:header-links": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-header-links.mjs",

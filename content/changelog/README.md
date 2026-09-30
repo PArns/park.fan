@@ -11,10 +11,11 @@ code next. Nothing parses it into this page, and nothing should: the two describ
 same releases for two different readers. An entry here is written from the internal
 ones, by hand, and states what a visitor can now do.
 
-**Only a version cut writes here.** A pull request that ships a feature adds its section to
-`docs/changelog.md` and stops there. The PO decides when a version is cut, its number and its
-items, and files them as a ticket `Release x.y.z`; the runner that takes it writes this file in
-the same pull request that bumps `package.json`. When a version is cut, what
+**Only a version cut writes here.** A pull request that ships a feature writes its fragment,
+`docs/changelog.d/PAR-<n>.md`, and stops there. The PO decides when a version is cut, its number
+and its items, and files them as a ticket `Release x.y.z`; the runner that takes it runs
+`pnpm release:cut`, which folds the fragments into `docs/changelog.md`, bumps `package.json` and
+writes this file as a draft skeleton, and then writes the entry by hand. When a version is cut, what
 counts as a PATCH or a MINOR, and who does what:
 [`docs/rules/a-version-is-a-unit-of-communication.md`](../../docs/rules/a-version-is-a-unit-of-communication.md).
 

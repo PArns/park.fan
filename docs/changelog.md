@@ -2,10 +2,11 @@
 
 Short log of notable changes; details live in the linked docs.
 
-A pull request adds its section on top, as `## Unreleased – <title>`, and never touches the
-version in `package.json`. When the PO cuts a version, the open sections move under its heading as
-`###`, and `content/changelog/<version>.md` gets the public entry in the same pull request.
-`pnpm check:changelog` fails when the two halves disagree. Rules:
+**No pull request writes here.** A pull request writes its section as a fragment,
+`docs/changelog.d/PAR-<n>.md` ([format](changelog.d/README.md)), so two of them never edit the same
+lines. When the PO cuts a version, `pnpm release:cut` folds the fragments in under the version's
+heading, and the same pull request writes the public entry in `content/changelog/<version>.md`.
+`pnpm check:changelog` fails on an `## Unreleased` section here and on a cut done by half. Rules:
 [a-version-is-a-unit-of-communication.md](rules/a-version-is-a-unit-of-communication.md).
 
 ---
@@ -39,9 +40,18 @@ kam. Der öffentliche Eintrag ist `content/changelog/2.13.0.md`. Neueste Abschni
   `content/changelog/` jetzt mit (Fehler: Fettdruck am Anfang eines Listenpunkts, Gedankenstrich,
   Markdown in `title`/`summary`).
 - **Regeln für den Schnitt:** `pnpm check:changelog` (auch in der CI) prüft Dateiname gegen
-  Version, Datumsfolge, `package.json` gegen den neuesten veröffentlichten Eintrag, die
-  Versionsüberschrift hier im Log und dass kein `Unreleased`-Abschnitt unter einer Version steht.
-  Dabei fiel auf, dass 2.12.0 hier nie eine Überschrift bekommen hatte; die steht jetzt.
+  Version, Datumsfolge, `package.json` gegen den neuesten veröffentlichten Eintrag und die
+  Versionsüberschrift hier im Log. Dabei fiel auf, dass 2.12.0 hier nie eine Überschrift bekommen
+  hatte; die steht jetzt.
+- **Fragmente statt Abschnitten in dieser Datei:** Ein PR schreibt seinen Abschnitt ab jetzt als
+  `docs/changelog.d/PAR-<n>.md`, wie das Backend seit PAR-257. 54 der 309 Commits auf `main` im
+  September haben diese Datei angefasst, und dieser PR bekam hier innerhalb einer Stunde einen
+  Konflikt mit #684. `pnpm release:cut <version> --title …` faltet die Fragmente beim Schnitt ein,
+  löscht sie, setzt `package.json` und legt den öffentlichen Eintrag als Entwurf an.
+  `check:changelog` lehnt jeden `## Unreleased`-Abschnitt hier und jedes Fragment ab, das der
+  Schnitt nicht sauber einfalten könnte, und einen veröffentlichten Eintrag mit `TODO` aus dem
+  Entwurf. `pnpm test:changelog-fragments` (22 Checks) führt einen ganzen Schnitt in einem
+  Temp-Verzeichnis aus.
 
 ### The "more" menu lists what its three hubs hold, and the phone menu does too
 
