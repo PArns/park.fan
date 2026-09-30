@@ -433,8 +433,9 @@ person's verb (sagen, zeigen, verraten, wissen, verschweigen, lügen) to an obje
 sentence sounds like a scene instead of a statement. Write what is there and where: `Die
 aktuellen Wartezeiten stehen auf der Parkseite, alle fünf Minuten neu.` `Im Kalender sind die
 ruhigsten Tage grün.` `Nach unseren Messungen brauche ich ihn nicht.` A display or a board that
-literally shows a figure is fine (`Am Eingang stehen 70 Minuten`, §3.3); the queue itself never
-announces anything.
+literally shows a figure is fine (`Am Eingang stehen 70 Minuten`, §3.3), and so is a legend or a
+UI element that marks something on screen (`Der blaue Kegel zeigt, wohin du schaust`, `Die
+Rahmenfarbe zeigt den Andrang an`); the queue itself never announces anything.
 
 The travel-guide version is **false agency**: `Der Park lädt zum Verweilen ein`, `Die Bahn sorgt
 für Nervenkitzel`, `the ride promises`, `delivers thrills`. Say what a visitor does or gets.

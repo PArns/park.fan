@@ -41,7 +41,7 @@ const VERBOSE = process.argv.includes('--verbose');
  * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/blog.md §7.1).
  * Lower a number when you fix strings; never raise one.
  */
-const UI_EM_DASH_BASELINE = { de: 0, en: 27, es: 0, fr: 0, it: 0, nl: 0 };
+const UI_EM_DASH_BASELINE = { de: 0, en: 0, es: 0, fr: 0, it: 0, nl: 0 };
 
 /** Sentence-length variance under this reads as one flat rhythm. Supporting signal, not a verdict. */
 const MIN_BURSTINESS = 0.4;
@@ -774,6 +774,8 @@ for (const locale of LOCALES) {
     if (!answer) continue;
     const qs = stems(question.replace(/\{[^}]*\}/g, ''));
     const first = splitSentences(answer.replace(/\{[^}]*\}/g, ''))[0] ?? '';
+    // `park` is in half the questions and every park's name (`park.fan`, `Europa-Park`).
+    qs.delete('park');
     const shared = [...stems(first)].filter((x) => qs.has(x));
     if (qs.size >= 3 && shared.length >= 3 && shared.length / qs.size >= 0.6)
       warn(
