@@ -1,11 +1,18 @@
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { Clock, AlertTriangle, XCircle, Wrench } from 'lucide-react';
+import { Clock, AlertTriangle, XCircle, Wrench, Ban } from 'lucide-react';
 import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
 
+/**
+ * A ride that closed for good. Not a status the API sends in `status`: it comes from
+ * `retiredKind === 'closed'`, and the caller that knows that passes it here instead of the live
+ * reading, which for such a ride is a plain CLOSED — the one a ride comes back from.
+ */
+export type ClosedPermanentlyStatus = 'RETIRED';
+
 interface ParkStatusBadgeProps {
-  status: ParkStatus | AttractionStatus;
+  status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus;
   className?: string;
 }
 
@@ -18,6 +25,9 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
     CLOSED: { color: 'badge-status-closed', icon: XCircle },
     REFURBISHMENT: { color: 'badge-status-refurbishment', icon: Wrench },
     UNKNOWN: { color: 'badge-status-unknown', icon: Clock },
+    // The closed colour, because it is closed; its own icon, because it is not the CLOSED of
+    // tonight — the two stand side by side in a news post about the park.
+    RETIRED: { color: 'badge-status-closed', icon: Ban },
   };
 
   const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.CLOSED;

@@ -123,6 +123,8 @@ export function getChangelogEntries(): ChangelogEntry[] {
 
     entries.push({
       version: String(fm.version),
+      through: fm.through ? String(fm.through) : null,
+      reconstructed: fm.reconstructed === true,
       date,
       title: fm.title,
       summary: fm.summary ?? '',

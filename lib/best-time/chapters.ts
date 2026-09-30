@@ -20,7 +20,7 @@ export const BEST_TIME_CHAPTERS: Record<Locale, Chapter[]> = {
     { id: 'patterns', index: '01', label: 'Die ruhigsten Wochentage und Monate' },
     { id: 'times', index: '02', label: 'Die ruhigsten Tageszeiten' },
     { id: 'avoid', index: '03', label: 'Termine, die du meiden solltest' },
-    { id: 'tactics', index: '04', label: 'Tricks für kurze Schlangen' },
+    { id: 'tactics', index: '04', label: 'Tricks für kurze Warteschlangen' },
     { id: 'parks', index: '05', label: 'Der Crowd-Kalender' },
     { id: 'faq', index: '06', label: 'Häufige Fragen' },
   ],

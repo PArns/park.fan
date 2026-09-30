@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europas Freizeitparks: Kettensäge, Kürbis oder gar nichts'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-29'
+updatedAt: '2026-09-30'
 author: patrick
 mode: published
 excerpt: >-
@@ -582,10 +582,9 @@ helfen. Die anderen vier sind **La Isla Maldita** (ab 12 €, Geisterpiraten),
 **REC® Experience** (ab 8,90 €, nach der spanischen Filmreihe und nur in
 PortAventura), **La Muerte Viva** und **Angkor** (je ab 6,90 €). Wer mehr als
 einen will, rechnet mit dem Halloween Passport: Passport 2 (El Carnicero und REC)
-ab 11,90 €, Passport 5 mit allen fünf ab 30,90 €. Eine Altersgrenze nennt die
-Ticketseite nicht. Wer mit Kindern um die zwölf kommt, fragt am Eingang der
-Pasajes nach, bevor er kauft. Öffnungszeiten, Vergleich der Pässe und was sonst
-neu ist, steht in unserer
+ab 11,90 €, Passport 5 mit allen fünf ab 30,90 €. Laut Ticketseite gilt für
+alle fünf dieselbe Altersgrenze, ab 12 Jahren in Begleitung und allein ab 14.
+Öffnungszeiten, Vergleich der Pässe und was sonst neu ist, steht in unserer
 [Meldung zu PortAventura](/blog/portaventura-halloween-2026).
 
 [PortAventura Park](ref:portaventura-park?full)

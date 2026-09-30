@@ -143,6 +143,7 @@ sessions that need them.
 | [In-Park Compass](features/park-compass.md)                    | The homepage compass under the hero: when it may appear, the dial, the bar that follows the eyes, true north        |
 | [Trip Planner](features/trip-planner.md)                       | The visitor's own day: the wizard, the month grid, park-local time, the drag payload, and life without the endpoint |
 | [New-posts toast](features/new-posts-toast.md)                 | The "new on the blog since your last visit" toast: what counts as new, and why it costs a page nothing              |
+| [Blog cover fallback](features/blog-cover-fallback.md)         | What a post without `coverImage` shows in the banner, the card, the lists and the menus, and why it is CSS          |
 
 ### Product
 

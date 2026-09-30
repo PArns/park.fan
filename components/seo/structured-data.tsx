@@ -553,7 +553,8 @@ export function AttractionStructuredData({
   locale,
   ogImageUrl,
 }: {
-  attraction: ParkAttraction;
+  /** Name and slug are all this reads — a closed ride passes its detail response's pair. */
+  attraction: Pick<ParkAttraction, 'name' | 'slug'>;
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;

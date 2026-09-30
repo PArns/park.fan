@@ -33,6 +33,20 @@ export interface ChangelogFrontmatter {
    */
   mode?: 'published' | 'draft';
   highlights?: ChangelogHighlight[];
+  /**
+   * The last version this entry also covers, when one entry stands for a run of them.
+   *
+   * Before 2.12.0 the version in `package.json` moved with nearly every push: 2.7.0 to 2.7.14 is
+   * five weeks and fourteen versions (2.7.13 was skipped). The reconstructed entries keep the real numbers and give one
+   * entry to each run, `version` its first and `through` its last.
+   */
+  through?: string;
+  /**
+   * Written after the fact from the commit history (PAR-320), not when the version was current.
+   * Most numbers and dates are the ones the repository carried; where it kept one number for
+   * weeks, the ones in between were assigned (docs/rules/a-version-is-a-unit-of-communication.md).
+   */
+  reconstructed?: boolean;
 }
 
 /** A highlight with its image resolved out of the media database. */
@@ -49,6 +63,9 @@ export interface ResolvedHighlight {
 /** One entry, ready to render. */
 export interface ChangelogEntry {
   version: string;
+  /** Last version of the run this entry covers, if it covers more than one. */
+  through: string | null;
+  reconstructed: boolean;
   date: string;
   title: string;
   summary: string;

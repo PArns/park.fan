@@ -43,7 +43,8 @@ three lines, the rest belongs in the page.
   ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
   [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
   and [docs/blog.md](docs/blog.md).
-- **Six locales.** A new UI string needs all of them.
+- **Six locales.** A new UI string needs all of them, and so does a news post, in the same PR
+  ([docs/blog.md §5.0](docs/blog.md#50-news-posts-category-news)).
 - **Routing and i18n run through `proxy.ts`**, not `middleware.ts`. Server Components are the default.
 
 ## The rules
@@ -121,6 +122,10 @@ carries the reasoning, the measurements and the counter-examples.
   has three values, and `null` must behave exactly as before. Test `!== false`, never `=== true`
   (`lib/utils/season.ts`). A live `OPERATING` row still beats the season. The SQL twin
   `attractionIsOutOfSeason()` changes with the TS rule or not at all.
+- **[A ride that closed for good keeps its page](docs/rules/a-closed-ride-keeps-its-page.md)** — only
+  `retiredKind === 'closed'` (never `retiredReason`); 200, indexable, in the sitemap, news post linked
+  (`lib/parks/closed-ride.ts`). The park page lists `closedAttractions` apart from `attractions` and
+  its search finds them; a year after closing, or `retired_hidden`, takes it off both. `pnpm test:closed-ride`.
 - **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
   catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
   (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
@@ -246,10 +251,10 @@ carries the reasoning, the measurements and the counter-examples.
   (`CardPhotoFrame`), never the whole card. `pnpm check:card-framing`.
 - **[Localized blog gallery captions](docs/rules/localized-blog-gallery-captions.md)** — a gallery is a collection, and its captions live per image in
   the sidecar.
-- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no bump per merge; the PO cuts one, MINOR for a new
-  visible capability, PATCH for a bundle of fixes. `docs/changelog.md` is the internal log and
-  `content/changelog/<version>.md` the public entry at `/en/changelog`; never parse one into the
-  other, and a blog post is never a release.
+- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no version per merge or ticket; the PO bundles
+  them, MINOR for a new visible capability, PATCH for fixes. A PR writes a fragment,
+  `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, `package.json` or `content/changelog/`;
+  `pnpm release:cut` moves all three in one PR. A blog post is never a release. `pnpm check:changelog`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
   news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.

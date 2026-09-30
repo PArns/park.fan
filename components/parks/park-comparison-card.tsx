@@ -75,7 +75,7 @@ export function ParkComparisonCard({
         {title}
       </h3>
       {/* Eigener Scroll-Container. Die Zellen tragen `whitespace-nowrap` (der Ride-Name in der
-          Spalte „längste Schlange" ist bis zu 39 unumbrechbare Zeichen lang), also wird die Tabelle
+          Spalte „Längste Warteschlange" ist bis zu 39 unumbrechbare Zeichen lang), also wird die Tabelle
           unter ~410 px nicht schmaler — und schob auf `/beste-reisezeit` bei 390 px das ganze
           Dokument seitwärts: 441 px Scrollbreite in einem 390-px-Viewport. Breite Tabellen scrollen
           in sich, nie die Seite. */}

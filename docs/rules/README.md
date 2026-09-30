@@ -36,6 +36,7 @@ _Wait times, seasons, a park with no source._
 - [Parks we cannot read (REQUIREMENT)](parks-we-cannot-read.md)
 - [A ride out of season is closed, and is not one of the park's rides today (REQUIREMENT)](a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md)
 - [An API route passes only slugs upstream, and says a failure is one (REQUIREMENT)](an-api-route-passes-only-slugs-upstream.md)
+- [A ride that closed for good keeps its page (REQUIREMENT)](a-closed-ride-keeps-its-page.md)
 
 ## Features
 

@@ -7,6 +7,7 @@ import { isInSeason } from '@/lib/utils/season';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
+import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 
 /**
  * Shortest pattern Fuse can match, and therefore the shortest query worth running.
@@ -30,7 +31,15 @@ interface UseAttractionFilterOptions {
    * posted minima (`initialRiderHeightFromParam`), so it is always a stop of the slider.
    */
   initialRiderHeight?: number | null;
+  /**
+   * The park's rides that closed for good. Never part of the grid; the search looks through them
+   * too, so a name the park page no longer lists as a live ride still answers — see
+   * `ClosedRideMatches`.
+   */
+  closedRides?: readonly ClosedRideSearchItem[];
 }
+
+const NO_CLOSED_RIDES: readonly ClosedRideSearchItem[] = [];
 
 /**
  * Whether a ride counts as open for the "open now" toggle.
@@ -110,6 +119,7 @@ export function useAttractionFilter({
   activeTab,
   parkStatus,
   initialRiderHeight = null,
+  closedRides = NO_CLOSED_RIDES,
 }: UseAttractionFilterOptions) {
   const [searchQuery, setSearchQuery] = useState('');
   /** Rider height in cm, or `null` while the height filter is off. */
@@ -498,6 +508,34 @@ export function useAttractionFilter({
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
+  // The closed rides, searched with the grid's own options and its deferred term. None of the
+  // pills or the rider height apply: they narrow the rides you can board today, and none of these
+  // is one. A park without closed rides builds no index.
+  const closedFuse = useMemo(
+    () =>
+      closedRides.length > 0
+        ? new Fuse(closedRides, {
+            keys: [
+              { name: 'name', weight: 0.8 },
+              { name: 'slug', weight: 0.8 },
+              { name: 'land', weight: 0.5 },
+            ],
+            threshold: 0.3,
+            distance: 100,
+            ignoreLocation: true,
+            minMatchCharLength: MIN_QUERY_LENGTH,
+          })
+        : null,
+    [closedRides]
+  );
+  const closedRideMatches = useMemo(
+    () =>
+      isSearching && closedFuse
+        ? closedFuse.search(searchTerm).map((result) => result.item)
+        : NO_CLOSED_RIDES,
+    [isSearching, searchTerm, closedFuse]
+  );
+
   /**
    * Whether anything is currently cutting the grid down.
    *
@@ -525,6 +563,7 @@ export function useAttractionFilter({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    closedRideMatches,
     // Rider height
     /** The heights the slider may take, or `null` when the park publishes no minimum at all. */
     heightStops,

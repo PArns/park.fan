@@ -802,8 +802,9 @@ The general rules apply everywhere. These are the additions per surface.
 ### 5.0 News posts (`category: news`)
 
 - **`date` is the day the post goes live** (merge day, Europe/Berlin), not the day it was written. Set the PR's day; if the PR merges on a later day, correct `date` before the merge.
+- **All six languages ship in the same pull request.** A guide waits for the German to be approved before it is translated; news does not, because it is stale within days. On 2026-09-30 four news posts existed only in German, the oldest since 16 September, and `/en/news/…` showed the fallback notice all that time. Write the German first and derive the other five from it (§6), in the same PR, with the same `translationKey`, `date`, `parkLinks`, `rideLinks` and `coverImage.src`. A later `[!CORRECTION]` goes into all six as well.
 - **The title carries one fact, in at most 60 characters.** Not `<Park>: <Fakt>, und <Pointe>` (a park-name prefix, a colon, a comma, „und", a trailing gag): seven of the first eight news titles had that shape, and it is what reads as generated. No list of three news items and no punchline in a subordinate clause. The park name is in the title when it is the subject. Two news titles in the same week may not share a shape, and the same goes for `seo.title`. For the tone, not for copying: „HalloWeekends in Cedar Point: Neues Diablo-Labyrinth", „Traumatica im Europa-Park wird zehn Jahre alt". Read every title aloud before delivering: newspaper headline, or line from an advert?
-- **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover. The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
+- **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover, and the site draws its brand fallback there ([`BlogCoverFallback`](features/blog-cover-fallback.md)). The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
 - A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
 - **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
 - **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it: next to the prices, or at the first comparison with another park.
@@ -1008,6 +1009,16 @@ geschätzt` has kept the English skeleton and lost the German reader.
 
 `pnpm check:prose` scans the glossary per term and reports each rule with the term ids.
 
+### 5.8 The public changelog (`content/changelog/`)
+
+English only, and every sentence in it is about us, so the honesty family is an error there, as in
+a catalog string. A list item never opens on bold: 2.12.0 shipped sixteen items shaped
+`- **A short claim.** The explanation`, the layout §4.2 names, because the collection's README
+showed it as the template. `title` and `summary` are plain-text fields (§4.5). A release note picks
+what a visitor would notice and says it with the number behind it; which changes belong in one at
+all is [a version is a unit of communication](rules/a-version-is-a-unit-of-communication.md).
+`pnpm check:changelog` runs the changelog half of `pnpm check:prose` in CI.
+
 ---
 
 ## 6. German is the source; the other five are derived
@@ -1068,8 +1079,10 @@ pnpm check:prose --verbose    # every hit, not the first forty
 way `attractionIsOutOfSeason()` is the SQL twin of the season rule: change one half and you
 change both. It walks the posts, the six message catalogs, every media sidecar, the glossary
 (per term), the content pages and the hero copy in their `page.tsx`, the homepage announcement,
-the changelog, the three agent skills and `/llms.txt`, and it splits its output the way a regex
-can actually be trusted to:
+the changelog (§5.8; `--only=changelog` for that surface alone), the three agent skills and
+`/llms.txt`; for `Warteschlange` alone also every string in the tracked `.ts` and `.tsx` files
+under `app/`, `components/` and `lib/`, where the menus keep their chapter lists. It splits its
+output the way a regex can actually be trusted to:
 
 - **Errors** are rules with no legitimate exception: a `—` in a post body or in German or Dutch
   prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that

@@ -424,6 +424,7 @@
     "fancast": "Fancast",
     "bestTime": "Beste Reisezeit",
     "glossaryLink": "Wörterbuch",
+    "changelog": "Changelog (Englisch)",
     "blog": "Blog",
     "favorites": "Favoriten",
     "alerts": "Alarme",
@@ -538,7 +539,8 @@
       "CLOSED": "Geschlossen",
       "REFURBISHMENT": "In Wartung",
       "DOWN": "Störung",
-      "UNKNOWN": "Unbekannt"
+      "UNKNOWN": "Unbekannt",
+      "RETIRED": "Dauerhaft geschlossen"
     },
     "outage": {
       "since": "Störung gemeldet seit {when}",
@@ -1189,6 +1191,10 @@
     },
     "overview": {
       "minutesUnit": "Min."
+    },
+    "closedRides": {
+      "title": "Dauerhaft geschlossene Attraktionen",
+      "since": "seit {month}"
     }
   },
   "attractions": {
@@ -1434,6 +1440,14 @@
         "stale_data": "Diese Zahlen sind gerade nicht aktuell, deshalb zeigen wir sie nicht."
       },
       "longestDetail": "Das Maximum der {count} gemeldeten Störungen."
+    },
+    "retired": {
+      "h1Suffix": "Dauerhaft geschlossen",
+      "noticeTitle": "Dauerhaft geschlossen seit dem {date}",
+      "noticePost": "Unser Bericht dazu: <link>{title}</link>",
+      "noticeSource": "Quelle: <link>{host}</link>",
+      "noticePark": "Aktuelle Wartezeiten der anderen Attraktionen: <link>{park}</link>",
+      "waitsTitle": "Wartezeiten vor der Schließung"
     }
   },
   "nearby": {
@@ -1700,7 +1714,11 @@
       "factBy": "gebaut von {manufacturer}",
       "factOpened": "eröffnet {year}",
       "factMinHeight": "Mindestgröße {height}",
-      "factLand": "Bereich {land}"
+      "factLand": "Bereich {land}",
+      "retiredTitleTemplate": "{attraction} {inPark} – dauerhaft geschlossen",
+      "retiredTitleTemplateBare": "{attraction} – dauerhaft geschlossen",
+      "retiredLead": "{attraction} {inPark} ist seit dem {date} dauerhaft geschlossen.",
+      "retiredWaits": "Davor dauerte das Anstehen an normalen Wochentagen bis zu {minutes} Minuten."
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",

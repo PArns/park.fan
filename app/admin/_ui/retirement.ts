@@ -48,6 +48,20 @@ export function retireAttraction(input: {
   });
 }
 
+/**
+ * Eine dauerhaft geschlossene Bahn auf der Parkseite aus- oder wieder einblenden.
+ *
+ * Wirkt nur auf die Liste „Dauerhaft geschlossene Attraktionen" der Parkseite. Die Seite der
+ * Bahn und ihr Sitemap-Eintrag bleiben, weil die URL ihr Ranking behalten soll. Zurückholen
+ * setzt das Flag wieder zurück.
+ */
+export function setRetiredHidden(attractionId: string, hidden: boolean): Promise<unknown> {
+  return adminFetch(`/api/admin/retired-attractions/${attractionId}/hidden`, {
+    method: 'POST',
+    body: { hidden },
+  });
+}
+
 export function unretireAttraction(attractionId: string): Promise<unknown> {
   return adminFetch(`/api/admin/unretire-attraction/${attractionId}`, { method: 'POST' });
 }

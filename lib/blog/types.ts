@@ -13,6 +13,9 @@ export interface BlogAuthorLinks {
 
 export interface BlogAuthor {
   name: string;
+  /** Byline form of `name`, e.g. "Patrick" — shown in the post header and on cards.
+   *  Structured data, the feed and the profile page keep the full `name`. */
+  shortName?: string;
   avatar?: string;
   bio?: string;
   /** Primary website (also used as the author's rel=author URL). */

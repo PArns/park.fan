@@ -424,6 +424,7 @@
     "fancast": "Fancast",
     "bestTime": "Periodo migliore",
     "glossaryLink": "Dizionario",
+    "changelog": "Cronologia delle versioni (inglese)",
     "blog": "Blog",
     "favorites": "Preferiti",
     "alerts": "Avvisi",
@@ -772,7 +773,8 @@
       "CLOSED": "Chiuso",
       "REFURBISHMENT": "In manutenzione",
       "DOWN": "Fermo",
-      "UNKNOWN": "Sconosciuto"
+      "UNKNOWN": "Sconosciuto",
+      "RETIRED": "Chiuso definitivamente"
     },
     "outage": {
       "since": "Guasto segnalato da {when}",
@@ -1189,6 +1191,10 @@
     },
     "overview": {
       "minutesUnit": "min"
+    },
+    "closedRides": {
+      "title": "Attrazioni chiuse definitivamente",
+      "since": "dal {month}"
     }
   },
   "attractions": {
@@ -1434,6 +1440,14 @@
         "stale_data": "Questi dati non sono aggiornati al momento, quindi non li mostriamo."
       },
       "longestDetail": "Il massimo dei {count} guasti segnalati."
+    },
+    "retired": {
+      "h1Suffix": "Chiuso definitivamente",
+      "noticeTitle": "Chiuso definitivamente dal {date}",
+      "noticePost": "La nostra notizia: <link>{title}</link>",
+      "noticeSource": "Fonte: <link>{host}</link>",
+      "noticePark": "Tempi di attesa attuali delle altre attrazioni: <link>{park}</link>",
+      "waitsTitle": "Tempi di attesa prima della chiusura"
     }
   },
   "nearby": {
@@ -1700,7 +1714,11 @@
       "factBy": "{manufacturer}",
       "factOpened": "apertura nel {year}",
       "factMinHeight": "altezza min. {height}",
-      "factLand": "area {land}"
+      "factLand": "area {land}",
+      "retiredTitleTemplate": "{attraction} a {park} – chiuso definitivamente",
+      "retiredTitleTemplateBare": "{attraction} – chiuso definitivamente",
+      "retiredLead": "{attraction} a {park} è chiuso definitivamente dal {date}.",
+      "retiredWaits": "Prima, in un normale giorno feriale l’attesa arrivava a {minutes} minuti."
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",
