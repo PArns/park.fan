@@ -82,7 +82,7 @@ written up as a ticket body on PAR-421, to be filed in the project "Im Park".
    gzip); they load on `/de/parks` as well as on the park page, and 59–94 % of their functions are
    never called during load. At 3G's 400 kbit/s that is 1.6 s of transfer before `load`.
    **Done (PAR-516):** `PlannerLauncher` loads `PlannerFlyoutHost` through `next/dynamic` and
-   starts the import beside the panel's messages once the panel is wanted. Two builds, cache
+   starts the import beside the panel's messages once the panel is wanted (a saved plan counts as wanted, so a visitor with one still loads it after hydration). Two builds, cache
    disabled, 360 × 780, script bytes on the wire: park page 569.3 → 512.3 KB (−57.0 KB, 43 → 41
    scripts), `/de/parks` 385.1 → 306.6 KB (−78.5 KB, 29 → 25 scripts). `pnpm measure:cls --late`
    is unchanged (0.0002 mobile, 0.0091 desktop at `y=0`). The budget table above still carries the

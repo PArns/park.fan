@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import dynamic from 'next/dynamic';
 import { PlannerEdgeTab } from './planner-edge-tab';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -19,11 +18,7 @@ const PLANNER_NAMESPACES = ['planner', 'parks.weather'] as const;
 const loadPlannerFlyoutHost = () =>
   import('./planner-launcher-button').then((mod) => mod.PlannerFlyoutHost);
 
-// The panel's code (sheet, wizard, day column, ride search) is 82 KB gzip and
-// used to ride in the first load of every page. It is fetched once the panel is
-// wanted, in step with its messages (see `wanted` below), so by the time the
-// messages are ready this resolves from the module cache.
-const PlannerFlyoutHost = dynamic(loadPlannerFlyoutHost, { ssr: false });
+type PlannerFlyoutHostComponent = Awaited<ReturnType<typeof loadPlannerFlyoutHost>>;
 
 /**
  * The planner's way in, and the panel it opens.
@@ -137,11 +132,30 @@ export function PlannerLauncher() {
   // is what resets the wizard.
   const wanted = open || total > 0 || openRequests > 0;
   const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
-  // Fetched beside the messages rather than after them: the panel mounts only
-  // once both are there, and two requests in sequence would delay the first open.
+  // The panel's code (sheet, wizard, day column, ride search) is 82 KB gzip and
+  // used to ride in the first load of every page. It is fetched once the panel is
+  // wanted, beside the messages rather than after them. Held in state rather than
+  // behind `next/dynamic`, because `panelVisible` below has to know the code is
+  // THERE: a Suspense fallback of `null` would count a press as an opening while
+  // the chunk is still in flight, and a rejected import would throw into the
+  // nearest error boundary instead of leaving the tab alone.
+  const [Host, setHost] = useState<PlannerFlyoutHostComponent | null>(null);
   useEffect(() => {
-    if (wanted) void loadPlannerFlyoutHost();
-  }, [wanted]);
+    if (!wanted || Host) return;
+    let live = true;
+    loadPlannerFlyoutHost().then(
+      (component) => {
+        if (live) setHost(() => component);
+      },
+      () => {
+        // Like the messages, a failed fetch is not retried: the tab stays, the
+        // panel does not open, and the next page load asks again.
+      }
+    );
+    return () => {
+      live = false;
+    };
+  }, [wanted, Host]);
   /**
    * The panel is on screen — which is NOT the same as `open`.
    *
@@ -154,7 +168,7 @@ export function PlannerLauncher() {
    * did. The edge tab already draws its own state off this composite rather
    * than off `open`; the event now agrees with it.
    */
-  const panelVisible = wanted && messages.ready && open;
+  const panelVisible = wanted && messages.ready && Host !== null && open;
 
   const reported = useRef(false);
   useEffect(() => {
@@ -219,8 +233,8 @@ export function PlannerLauncher() {
   // its own close animation and the wizard resets by unmounting with the panel,
   // so tying this to `open` would cut both.
   const panel =
-    wanted && messages.ready ? (
-      <PlannerFlyoutHost
+    wanted && messages.ready && Host ? (
+      <Host
         open={open}
         onOpenChange={setOpen}
         askingPastDay={askingPastDay}
