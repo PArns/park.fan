@@ -9,6 +9,7 @@ A direct quote in a post, a sentence that a person, a company, a court filing or
 - Link where you read the quote. If it reached you through another outlet (a CNN quote read in UPI), name both.
 - A fragment of a few words inside a sentence may stay inline in „…“, with the speaker named in the same sentence and the source in the list under the post.
 - A `[!QUOTE]` block with a single paragraph renders without a source line. That is a quote without a source: add the line.
+- A translated quote carries the original, verbatim, in an `[en] …` paragraph. Readers see it on hover or tap; `check:prose` warns when a source line says "translated" and the original is missing.
 
 **Anything legal is attributed, never stated.** A lawsuit, an allegation, an injury a rider blames on a ride, a manufacturer's defence, an authority's investigation: each sentence says whose claim it is (`laut der Klage`, `die Anwälte von S&S hielten dagegen`, `laut AP`) until a court or the authority has decided it. Every such claim is checked against at least two sources, one of them as close to the record as possible: the filing, or local press that read the docket. Where sources disagree, use what the court record carries, or leave the detail out. Name a private person only where they went public themselves or a court case carries their name.
 

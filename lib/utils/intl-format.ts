@@ -63,6 +63,18 @@ export function getNumberFormat(
   return formatter;
 }
 
+const languageDisplayNames = new Map<string, Intl.DisplayNames>();
+
+/** A language's name in `locale`: `languageName('de', 'en')` → "Englisch". Cached like the rest. */
+export function languageName(locale: string, code: string): string {
+  let names = languageDisplayNames.get(locale);
+  if (!names) {
+    names = new Intl.DisplayNames([locale], { type: 'language' });
+    languageDisplayNames.set(locale, names);
+  }
+  return names.of(code) ?? code;
+}
+
 const relativeTimeFormatters = new Map<string, Intl.RelativeTimeFormat>();
 
 /** Cached {@link Intl.RelativeTimeFormat}. Same arguments → same instance. */

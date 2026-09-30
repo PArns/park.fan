@@ -584,6 +584,27 @@ fragment of a few words inside a sentence stays inline, in „…“, with the s
 sentence. The rule behind it, and what it asks of anything legal:
 [a quote names its source](../../docs/rules/a-quote-names-its-source.md).
 
+**A translated quote carries its original.** Put it in its own paragraph that starts with the
+language code in brackets, before the source line:
+
+```md
+> [!QUOTE]
+> Fahrsicherheit ist ein Grundpfeiler unseres Geschäfts.
+>
+> [en] Ride safety is a cornerstone of our business.
+>
+> Brian Oerding, [Mitteilung vom 29. September 2026](https://…), aus dem Englischen übersetzt
+```
+
+The original is never in the running text. It opens in a card when the reader hovers over the
+quote, taps it or focuses it with the keyboard (`BlogQuoteOriginal`, the site's `HoverCard`), with
+the label `blog.quoteOriginal` („Original auf Englisch") and `lang="en"` on the text; screen
+readers get a hidden copy. A small `EN` mark next to the quote sign says that there is one. Quote
+the original verbatim, with `[…]` for what you left out, and do the same in the translation.
+`pnpm check:prose` warns when a source line says the words were translated and no original is
+there. In the language of the original (the English post quoting Six Flags), there is nothing to
+add: the words are already the original.
+
 ---
 
 ## 7. Niceties (automatic — nothing to write)

@@ -502,6 +502,12 @@ needs more than a dozen bold runs is a post that has not decided what matters.
   `<Thema>: So gelingt <Ergebnis>`, `Alles, was du über X wissen musst`, `X: Der ultimative
 Guide`, `<Zahl> Tipps, die du kennen solltest`, `Von X zu Y – wie man Z wählt`. A heading names
   what is under it: `Wann Taron am kürzesten ist`.
+- **A heading is not a slogan.** Two halves around a comma that mirror each other (`Parks ohne
+Zahlen, Tage ohne Wetter`, `Der Park macht um neun auf, die Bahn um zehn`) or a comparison where
+  a name belongs (`Ein Block pro Bahn, so hoch wie ihre Schlange`) is an advert's line. All three
+  were written for the planner page and read as clever; none of them says what the chapter
+  explains. Name it: `Blöcke und Umstiege`, `Bahnen, die später öffnen als der Park`. `pnpm
+check:prose` flags both shapes.
 - Do not fragment a text into a heading every three sentences. A section with two sentences under
   it should be a paragraph.
 - No title case in German. Sentence case, always.

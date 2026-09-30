@@ -2029,6 +2029,7 @@
     "readingTime": "{minutes} min lezen",
     "updatedOn": "Bijgewerkt {date}",
     "correction": "Correctie",
+    "quoteOriginal": "Origineel in het {language}",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
       "fallback": "Nog niet vertaald – je ziet de {language}-versie."

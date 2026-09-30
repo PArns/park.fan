@@ -29,6 +29,17 @@
  *
  * A `[!QUOTE]` with a single paragraph has no source line and renders without
  * one. GitHub shows the whole thing as a plain quote, source line included.
+ *
+ * A translated quote carries its original in a paragraph that starts with the
+ * language code in brackets. It becomes a `<div data-quote-original="en">`,
+ * which `BlogQuote` shows on hover and on tap, never in the running text:
+ *
+ *     > [!QUOTE]
+ *     > Die übersetzten Worte.
+ *     >
+ *     > [en] The original words.
+ *     >
+ *     > Speaker, role, [where it was said](https://…), aus dem Englischen übersetzt
  */
 
 export const CALLOUT_TYPES = [
@@ -43,6 +54,23 @@ export const CALLOUT_TYPES = [
 export type CalloutType = (typeof CALLOUT_TYPES)[number];
 
 const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|QUOTE)\]\s*\n?/;
+/** `[en]`, `[pt-BR]`: the language of a quote's original, at the start of its paragraph. */
+const ORIGINAL_RE = /^\[([a-z]{2}(?:-[A-Z]{2})?)\]\s*/;
+
+/** Tags a `[en] …` paragraph as the quote's original and strips the marker; false if it is none. */
+function markOriginal(paragraph: MdNode): boolean {
+  const first = paragraph.children?.[0];
+  if (paragraph.type !== 'paragraph' || first?.type !== 'text') return false;
+  const m = ORIGINAL_RE.exec(first.value ?? '');
+  if (!m) return false;
+  first.value = (first.value ?? '').slice(m[0].length);
+  paragraph.data = {
+    ...(paragraph.data ?? {}),
+    hName: 'div',
+    hProperties: { 'data-quote-original': m[1] },
+  };
+  return true;
+}
 
 interface MdNode {
   type: string;
@@ -89,8 +117,11 @@ export function remarkCallouts(): (tree: MdRoot) => void {
         ...(node.data.hProperties ?? {}),
         'data-callout': type,
       };
-      const last = node.children?.at(-1);
-      if (type === 'quote' && (node.children?.length ?? 0) >= 2 && last?.type === 'paragraph') {
+      if (type !== 'quote') return;
+      // The original paragraphs are neither the words nor the source line.
+      const own = (node.children ?? []).filter((child) => !markOriginal(child));
+      const last = own.at(-1);
+      if (own.length >= 2 && last?.type === 'paragraph') {
         last.data = { ...(last.data ?? {}), hName: 'figcaption' };
       }
     });

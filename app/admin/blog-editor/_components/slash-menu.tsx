@@ -233,7 +233,7 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
           .deleteRange(range)
           .insertContent(
             kind === 'quote'
-              ? '\n\n> [!QUOTE]\n> The quoted words\n>\n> Speaker, role, [source](https://)\n\n'
+              ? '\n\n> [!QUOTE]\n> The quoted words\n>\n> [en] The original, if you translated them\n>\n> Speaker, role, [source](https://)\n\n'
               : `\n\n> [!${kind.toUpperCase()}]\n> Your text here\n\n`
           )
           .run();

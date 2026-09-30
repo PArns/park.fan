@@ -198,7 +198,27 @@ function headingTell(heading) {
     ? 'order'
     : 'answer';
 }
+/*
+ * The slogan heading (§4.3): two halves around a comma that mirror each other (`Parks ohne Zahlen,
+ * Tage ohne Wetter`, `Der Park macht um neun auf, die Bahn um zehn`), or a comparison where a name
+ * belongs (`Ein Block pro Bahn, so hoch wie ihre Schlange`). Measured on 2,565 headings on
+ * 2026-09-30: the only hits were the planner page's.
+ */
+const MIRROR_WORD =
+  /^(ohne|mit|um|pro|für|statt|vor|nach|bis|ab|von|aus|without|with|for|per|at|until|from|zonder|met|voor|sans|avec|pour|sin|con|para|senza|per)$/i;
+function sloganTell(heading) {
+  const text = heading.trim();
+  if (/\b(so|genauso|ebenso) \p{L}+ wie\b|\bas \p{L}+ as\b/iu.test(text)) return 'a comparison';
+  const halves = text.split(/,\s+/);
+  if (halves.length !== 2) return null;
+  const [a, b] = halves.map((half) => half.toLowerCase().split(/\s+/));
+  const mirrored = a.find((word) => MIRROR_WORD.test(word) && b.includes(word));
+  return mirrored ? `two halves mirrored on "${mirrored}"` : null;
+}
+
 const headingCheck = (file, where, heading) => {
+  const slogan = sloganTell(heading);
+  if (slogan) warn(file, `${where}: a slogan, not a heading (§4.3), ${slogan} — "${heading}"`);
   const tell = headingTell(heading);
   if (tell === 'order')
     fail(file, `${where}: a question followed by an order (§5.6) — "${heading}"`);
@@ -322,8 +342,15 @@ function staccatoRuns(body) {
   return runs;
 }
 
-/** A `> [!QUOTE]` block whose last paragraph is not a source line (docs/rules/a-quote-names-its-source.md). */
-function unsourcedQuotes(raw) {
+/**
+ * `> [!QUOTE]` blocks with a problem (docs/rules/a-quote-names-its-source.md): no source line at
+ * all, or a source line that says the words were translated and no `[en] …` paragraph with the
+ * original. The original's paragraphs are neither the words nor the source.
+ */
+const ORIGINAL_PARAGRAPH = /^\[[a-z]{2}(?:-[A-Z]{2})?\]\s/;
+const TRANSLATED =
+  /(?<!\p{L})(übersetzt|translated|vertaald|traduit|traducid[oa]|tradott[oa])(?!\p{L})/iu;
+function quoteProblems(raw) {
   const out = [];
   for (const block of raw.match(/(?:^>.*(?:\n|$))+/gm) ?? []) {
     const text = block.replace(/^>[ \t]?/gm, '');
@@ -331,9 +358,13 @@ function unsourcedQuotes(raw) {
     const paragraphs = text
       .replace(/^\[!QUOTE\][ \t]*/, '')
       .split(/\n\s*\n/)
-      .filter((p) => p.trim());
-    if (paragraphs.length < 2)
-      out.push((paragraphs[0] ?? '').replace(/\s+/g, ' ').trim().slice(0, 60));
+      .map((p) => p.trim())
+      .filter(Boolean);
+    const own = paragraphs.filter((p) => !ORIGINAL_PARAGRAPH.test(p));
+    const start = (own[0] ?? '').replace(/\s+/g, ' ').slice(0, 60);
+    if (own.length < 2) out.push({ kind: 'unsourced', start });
+    else if (TRANSLATED.test(own.at(-1)) && own.length === paragraphs.length)
+      out.push({ kind: 'no original', start });
   }
   return out;
 }
@@ -438,11 +469,17 @@ for (const locale of LOCALES) {
         fail(file, `${field}: Markdown in a plain-text field (§4.5) — "${value.slice(0, 60)}"`);
     }
 
-    for (const quote of unsourcedQuotes(raw))
-      fail(
-        file,
-        `[!QUOTE] without a source line (docs/rules/a-quote-names-its-source.md): "${quote}"`
-      );
+    for (const { kind, start } of quoteProblems(raw))
+      if (kind === 'unsourced')
+        fail(
+          file,
+          `[!QUOTE] without a source line (docs/rules/a-quote-names-its-source.md): "${start}"`
+        );
+      else
+        warn(
+          file,
+          `[!QUOTE] says it is translated and carries no "[en] …" original (docs/rules/a-quote-names-its-source.md): "${start}"`
+        );
 
     const words = body.trim().split(/\s+/).length;
 

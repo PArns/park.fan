@@ -50,6 +50,8 @@ Hirnblutungen in die Notaufnahme gekommen und notoperiert worden.
 > Fahrsicherheit ist ein Grundpfeiler unseres Geschäfts, und wenn wir sehen, dass
 > das Vertrauen der Gäste beeinträchtigt ist, nehmen wir das ernst.
 >
+> [en] While X2 consistently passed a multitude of safety tests, we have decided to close the ride because we believe it’s the right thing to do. Ride safety is a cornerstone of our business, and when we see guest confidence affected, we take it seriously.
+>
 > Brian Oerding, Parkchef von Six Flags Magic Mountain, in der [Mitteilung vom 29. September 2026](https://www.sixflags.com/blog/retiring-x2-magic-mountain), aus dem Englischen übersetzt
 
 Von Verletzungen, den Klagen oder der laufenden Untersuchung der Behörde steht in
@@ -80,6 +82,8 @@ die die Frauen behandelt haben, sehen die Ursache in der Bahn:
 > eine sofortige neurochirurgische Behandlung erforderten, die Folge eines
 > traumatischen, schnellen Beschleunigungs- und Abbremsvorgangs während der Fahrt
 > mit X2.
+>
+> [en] In our professional opinion, the severe brain injuries requiring emergent neurosurgical attention were the result of a traumatic rapid acceleration-deceleration event experienced while on the X2 ride.
 >
 > Drei behandelnde Neurochirurgen, zitiert von [CNN](https://www.cnn.com/2026/08/27/us/six-flags-rollercoaster-brain-injury-invs) und [UPI](https://www.upi.com/Top_News/US/2026/09/29/six-flags-magic-mountain-to-retire-x2-coaster/3561790707127/), aus dem Englischen übersetzt
 
@@ -130,14 +134,18 @@ unterschiedlicher Schwere klagen.
 > nichts für die Menschen, die schon verletzt wurden. Six Flags muss jetzt
 > Verantwortung für sie übernehmen.
 >
+> [en] Closing the ride protects future guests, and we welcome that. But it does nothing for the people who have already been hurt. Six Flags must now take responsibility for them.
+>
 > Gary Dordick, dessen Kanzlei die drei neuen Klagen führt, nach der Ankündigung gegenüber [AP](https://www.news4jax.com/news/national/2026/09/29/six-flags-magic-mountain-retires-x2-roller-coaster-amid-brain-injury-lawsuits/), aus dem Englischen übersetzt
 
 Zu laufenden Verfahren äußert sich Six Flags nicht. In früheren Verfahren hatte
 das Unternehmen vor Gericht erklärt, X2 werde täglich inspiziert.
 
 > [!QUOTE]
-> Ein Fahrgast, der normal sitzt und die Bahn wie angewiesen benutzt, sollte
-> keine traumatische Hirnverletzung erleiden.
+> […] ein Fahrgast, der normal sitzt und die Bahn wie angewiesen benutzt,
+> sollte keine traumatische Hirnverletzung erleiden […]
+>
+> [en] […] a rider seated normally and using the ride as instructed should not suffer a traumatic brain injury […]
 >
 > Six Flags in früheren Schriftsätzen vor Gericht, zitiert von [NBC News](https://www.nbcnews.com/news/us-news/100-people-suffered-brain-injuries-x2-rollercoaster-six-flags-lawyers-rcna599482), aus dem Englischen übersetzt
 
@@ -203,10 +211,12 @@ fährt.
 
 > [!QUOTE]
 > X sollte für seinen traditionsreichen Hersteller Arrow Dynamics die Rückkehr
-> zu altem Glanz bedeuten. Heute, ein Jahr nachdem die Achterbahn in Six Flags
+> zu altem Glanz bedeuten. […] Heute, ein Jahr nachdem die Achterbahn in Six Flags
 > Magic Mountain hätte eröffnen sollen, steht X für etwas anderes: einen
 > kolossalen Fehlschlag, der mindestens einen Hersteller von Fahrgeschäften mit
 > sich zu reißen droht, wenn nicht mehr.
+>
+> [en] X was supposed to mark a return to glory for its storied builder, Arrow Dynamics. […] Today, one year after the Six Flags Magic Mountain roller coaster was supposed to open, X stands for something else--a colossal failure that threatens to drag down at least one amusement ride company, if not more.
 >
 > Robert Niles, [Theme Park Insider, 12. Juni 2002](https://www.themeparkinsider.com/news/response.cfm?ID=533), aus dem Englischen übersetzt
 

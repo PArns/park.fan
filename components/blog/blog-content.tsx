@@ -30,6 +30,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cn } from '@/lib/utils';
+import { languageName } from '@/lib/utils/intl-format';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -785,7 +786,16 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       // data-callout attribute — those render as coloured boxes instead of
       // the plain quote treatment.
       const callout = (rest as { 'data-callout'?: CalloutType })['data-callout'];
-      if (callout === 'quote') return <BlogQuote>{children}</BlogQuote>;
+      if (callout === 'quote')
+        return (
+          <BlogQuote
+            originalLabel={(lang) =>
+              tBlog('quoteOriginal', { language: languageName(locale, lang) })
+            }
+          >
+            {children}
+          </BlogQuote>
+        );
       if (callout && CALLOUT_META[callout]) {
         const meta = CALLOUT_META[callout];
         const Icon = meta.icon;
