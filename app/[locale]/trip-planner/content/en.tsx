@@ -1,7 +1,8 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
+import { CalendarDays, Clock, Footprints, Gauge, Users, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
+import { DEMO_PARTY_RIDES } from '../_fixtures';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerEntry } from '@/lib/planner/types';
 
@@ -19,103 +20,105 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
         title="Blocks and transfers"
       >
         <P>
-          A block is a ride, and its height is the wait predicted for its hour. Drag the same block
-          into a busier hour and it grows; drop it in a quieter one and it shrinks. Between two
-          blocks sits the transfer: how far it is, and whether there’s time for it. Getting out of
-          the station and the ride itself are already counted in it.
+          Every ride in your plan is a block on the day’s timeline, and it’s as tall as the queue
+          you’re expected to stand in at that hour. Drag it into a busier hour and it grows; drop it
+          into a quieter one and it shrinks. Between two blocks sits the transfer, with the distance
+          to the next ride and whether there’s time for it. &ldquo;Tight&rdquo; means it stops
+          working as soon as the wait before it is off by as much as it usually is.
         </P>
         <P>
-          The timeline below is built from the same components as the planner and shows the answer
-          the API gave on 4 September 2026 for Saturday 12 September at{' '}
-          <A href={PARK}>Phantasialand</A>. Drag a block to another hour. It snaps to five minutes,
-          and its height and the transfers beside it are worked out again. Nothing here is saved.
+          Below is a plan for <A href={PARK}>Phantasialand</A> on Saturday 12 September 2026, with
+          the waits that were forecast for it on 4 September. Drag a block to another time and its
+          height and the transfers are worked out again. None of it ends up in your own plan.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
-          On the selected block the same is written out in words: the hour, the expected wait, and
-          how far the forecast for that ride is typically off.
+          The selected block carries the time, the expected wait and how far the forecast for that
+          ride is usually off.
         </Note>
+        <P>
+          On a wide screen two days fit side by side, say Saturday and Sunday, or two parks. Each
+          has its total queueing time next to it, so you can see which day costs you less standing
+          around.
+        </P>
       </Chapter>
 
       <Chapter
         id="where-the-number-comes-from"
         index="02"
         icon={Gauge}
-        kicker="The figure on a block"
-        title="Where the minutes come from, and how sure they are"
+        kicker="Forecast"
+        title="Where the wait times come from"
       >
         <P>
-          For every ride the API returns a curve across the day, hour by hour. On this Saturday
-          Taron reads 45 minutes at ten, 50 at eleven, 40 at one and 50 again in the evening, never
-          more than ten minutes apart across the whole day. With no good window for Taron that day,
-          it ends up wherever the rest of the day leaves room. Black Mamba falls from 35 minutes at
-          midday to 20 at six, and Chiapas runs the other way, from 20 to 35.
+          Every ride has a forecast for the whole day, hour by hour. On this Saturday Black Mamba
+          drops from 35 minutes at midday to 20 in the evening, while Chiapas is at 20 minutes at a
+          quarter past ten and 35 in the afternoon. So on this day Black Mamba belongs in the
+          evening and Chiapas in the morning.
         </P>
         <P>
-          Each figure also comes with how far it typically lands from the truth, and the longer the
-          queue, the wider that spread. For the rides whose day peaks at 35 minutes or more, the API
-          reports a typical error of 15.4 minutes on this Saturday, and 10.9 for the flatter ones.
-          On half of all days the real wait is further out than that. That’s why it’s shown as a
-          plus-minus on the selected block. A range would look as if the real wait were sure to fall
-          inside it.
+          How far the forecast for a ride is usually off is on its block, 15 minutes for{' '}
+          <A href={`${PARK}/taron`}>Taron</A> on this Saturday. The further away the day, the
+          rougher the figure, and next to it is how it was made, from &ldquo;Hourly forecast&rdquo;
+          through &ldquo;From the day forecast&rdquo; to &ldquo;Rough estimate&rdquo;.
         </P>
-        <Note>
-          Taron’s curve rests on 142 measured days, Black Mamba’s on 161. How many there are for any
-          ride is on <A href={`${PARK}/taron`}>the ride’s own page</A>.
-        </Note>
         <P>
-          Next to the figure is the kind of forecast behind it. Where the model works the day
-          through hour by hour, the label says so. Where the day’s height is predicted and the shape
-          comes from earlier days, as on this Saturday, it says that instead. Far enough ahead even
-          the height of the whole day is uncertain, and the label drops to a rough estimate. For a
-          day nobody has ever measured, there’s no plan with numbers in it at all.
+          <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> only shows its wait
+          times in its own app on the park’s Wi-Fi, so there are no figures for it. You can still
+          plan a day there, just without minutes and without the sorting buttons.
         </P>
       </Chapter>
 
       <Chapter
-        id="opening-hours"
+        id="who-is-coming"
         index="03"
-        icon={Sunrise}
-        kicker="Opening"
-        title="Rides that open later than the park"
+        icon={Users}
+        kicker="Your group"
+        title="Height limits and water rides"
       >
         <P>
-          Phantasialand opens at 9:00 on this Saturday. Taron, F.L.Y., both Winja’s and Raik run
-          from 10:00, Chiapas from 10:15. Anybody at the turnstile at nine can choose between Black
-          Mamba and Maus au Chocolat. A plan that fills the first hour with headliners doesn’t work
-          on this day.
+          A new day starts with four questions: which park, which day, who’s coming and which big
+          rides go into the plan. In the month view every day is coloured by how busy it’s expected
+          to be, and the park’s <A href={`${PARK}/wait-time-calendar`}>wait-time calendar</A> has
+          more detail.
         </P>
         <P>
-          Every ride has its own opening time, and its block can only be dragged to that time or
-          later. The evening has no such limit, because no feed reliably reports when a ride closes;
-          the axis stops at the park’s closing time.
+          If children are coming, you say how tall the smallest one is and whether you’d rather stay
+          dry. Rides with a higher minimum height and water rides then get a mark, and they stay in
+          the list anyway, because only you know whether someone will wait at the exit holding the
+          bags. At Phantasialand Taron needs {DEMO_PARTY_RIDES.taron.minimumHeight} cm and Chiapas{' '}
+          {DEMO_PARTY_RIDES.chiapas.minimumHeight} cm, and Chiapas gets you wet (as of 29 September
+          2026). With a child of 120 cm, both carry the mark.
         </P>
+        <Note>
+          Where we have no height limit on file, as with Moptis Monkey Depot, the ride gets no mark.
+          At the ride’s entrance, the park’s own rule applies.
+        </Note>
       </Chapter>
 
       <Chapter
-        id="transfers"
+        id="through-the-day"
         index="04"
-        icon={Footprints}
-        kicker="The way between"
-        title="How long it takes to get from ride to ride"
+        icon={Clock}
+        kicker="Through the day"
+        title="Opening times, shows and breaks"
       >
         <P>
-          A wait-time feed reports Taron at 50 minutes. Whether you can get there from Rookburgh in
-          time is what the transfer works out. It takes the distance between the two rides’
-          coordinates, plus three minutes to get out of a station and three for boarding and riding
-          where no duration is on file.
+          On this Saturday Phantasialand opens at 9:00, but Taron, F.L.Y. and most of the other big
+          rides don’t run until 10:00. If you’re there at nine, start with Black Mamba or Maus au
+          Chocolat. A block can’t be dragged to before its ride opens.
         </P>
         <P>
-          That distance is a straight line, and it’s labelled as one. On foot it’s further, because
-          paths bend around water, queues and one-way routing, and Phantasialand stacks Rookburgh
-          and Klugheim on top of each other. So the upper bound is worked at park pace rather than a
-          brisk walk, with two thirds added to the straight line for the detour.
+          Showtimes are on the timeline too. For today they’re the park’s own. No source publishes
+          them for later dates, so we carry over the times from the last matching weekday and mark
+          them &ldquo;Expected&rdquo;.
         </P>
-        <Note>
-          A transfer counts as &ldquo;tight&rdquo; when it stops working once the forecast is off by
-          as much as its own stated error. Where the API reports no spread, the verdict stays at
-          &ldquo;good&rdquo;, and its title adds that.
-        </Note>
+        <P>
+          Breaks, food or a meeting point go in as a block of your own, dragged to whatever length
+          you need. Tick &ldquo;Plan a lunch break&rdquo; when you set up the day and there’s
+          already one at 12:30. Above the day you’ll also find school and public holidays and, up to
+          about two weeks ahead, the weather.
+        </P>
       </Chapter>
 
       <Chapter
@@ -123,99 +126,48 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
         index="05"
         icon={Wand2}
         kicker="Sorting"
-        title="Two buttons that sort the day"
+        title="Having the day sorted for you"
       >
         <P>
-          Both run the same arithmetic. &ldquo;Plan every headliner&rdquo; pulls in whichever of the
-          park’s big rides the day still lacks and then orders the lot; &ldquo;Optimise the
-          day&rdquo; only reorders what’s already planned. Use the first when big rides are still
-          missing, and the second when only the order needs to improve.
+          Two buttons put the day in order, so you don’t have to move every block yourself.
+          &ldquo;Plan every headliner&rdquo; adds whichever big rides are still missing and then
+          orders the whole day; &ldquo;Optimise the day&rdquo; only rearranges what’s already there.
+          Either way, everything happens before the park closes and you spend as little time
+          queueing as possible.
         </P>
         <P>
-          It sorts by four rules, in this order. What matters to you comes first: whatever you pull
-          to the front is the last to fall out. Next, everything has to happen before the park
-          closes, and one ride fewer that will certainly happen beats one more that would come too
-          late. Then comes the total time spent queueing, and where two orders cost the same, the
-          one that finishes earlier wins. There’s no slider for weighing queueing against hanging
-          about, because no value for that trade-off could be justified.
+          A lunch break and rides you’ve ticked off stay where they are. Afterwards you see how many
+          minutes of queueing you’ve saved, and Undo brings back what you had.
         </P>
         <P>
-          There’s no separate rule for early mornings, only each ride’s own hourly curve. Where that
-          curve is lowest just after opening, &ldquo;the big ride first&rdquo; falls out of the
-          arithmetic by itself; where it’s flat, something else does. Across one measured day Taron
-          reads 60, 60, 54, 53 and 59 minutes hour by hour while Chiapas climbs 22 minutes.
+          If not everything fits, an assistant opens. First come the changes that make room without
+          dropping a ride, such as a shorter lunch break. If that isn’t enough, you rank the rides
+          by how much they matter to you, and cuts come from the bottom.
         </P>
-        <P>
-          Sometimes the suggestion is to wait a while rather than join a queue now. That happens
-          when the queue drops far enough that, break included, you’re free again earlier than if
-          you’d queued straight away. A shorter queue alone isn’t enough, because the break mustn’t
-          make the day end any later. Such a break lasts two hours at most, and it rarely gets near
-          that, since a break only pays if it’s shorter than the queue it saves, and a two-hour
-          break would need a queue of over two hours.
-        </P>
-        <P>
-          A lunch break at one stays at one, and a ride you’ve ticked off stays where it is; the
-          rest is arranged around both. After the press you see what changed. &ldquo;18 min less
-          queueing&rdquo; is the difference between two sums worked the same way, one before the
-          press and one after. Where there’s nothing to gain, you’re told the order is already
-          right, and the plan stays as it was. In place of a saving, the headliner button shows how
-          many rides came in and how many don’t suit the group, since the day gets longer with the
-          new rides in it. Anything that no longer fits before closing is listed after either
-          button. Undo puts back the state from before the press, for as long as the planner is
-          open.
-        </P>
-        <Note>
-          Where no wait times arrive, both buttons are missing. At Hansa-Park every ride costs the
-          same assumed zero, so one order is as good as another.
-        </Note>
       </Chapter>
 
       <Chapter
-        id="showtimes"
+        id="in-the-park"
         index="06"
-        icon={Theater}
-        kicker="Shows"
-        title="Where the showtimes come from"
+        icon={Footprints}
+        kicker="In the park"
+        title="On the day itself"
       >
         <P>
-          For today the API has the operator’s own listing. For any other date it carries the last
-          matching weekday forward, since no source publishes the times in advance, and gives the
-          date the times came from and how many days stand behind them. A projection gets a tilde in
-          front of the time and the word &ldquo;Expected&rdquo;; an operator’s listing gets neither.
+          In the park you tick off what you’ve ridden. The block then carries the wait that was
+          reported when you ticked it, and how far the estimate was from it. If a planned ride is
+          reporting closed right now, that’s on its block too.
         </P>
         <P>
-          Every showtime on this Saturday is a projection: Dragon Drago and Kroka’s Lodge from 15
-          August, Miji African Dancers from the 29th. Kroka’s Lodge’s last performance at 19:00 is
-          missing from the axis, because the park closes at 18:00 and projected times past closing
-          are dropped.
-        </P>
-      </Chapter>
-
-      <Chapter
-        id="limits"
-        index="07"
-        icon={HelpCircle}
-        kicker="Limits"
-        title="Missing data and where your plan is stored"
-      >
-        <P>
-          <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> shows its wait times
-          only in its own app on the park WLAN, so no number will ever arrive for it, and we don’t
-          invent one. The weather forecast reaches about two weeks; for later dates the panel says
-          so rather than leaving a gap that reads as &ldquo;dry all day&rdquo;.
+          With notifications on, we tell you when it’s time to head to the next ride, when a planned
+          ride closes or reopens, and when a wait changes a lot. Showtimes can be sent as well. You
+          choose which of these you get.
         </P>
         <P>
-          On the day itself a ride can break down, a show can be cancelled or a thunderstorm can
-          shift the afternoon. The plan works out whether the day can fit with the forecast waits.
-          In the park you tick off what you’ve ridden, and the wait that was actually there is noted
-          next to it.
-        </P>
-        <P>
-          The plan is stored in your browser, and you don’t need an account. Only when you switch on
-          notifications does a copy go to our server, and you’re told so at that point. Without a
-          plan, you start with a wizard and its four questions: which park, which day, who’s coming,
-          and which big rides belong in the day. The right day is easiest to find in a park’s{' '}
-          <A href={`${PARK}/wait-time-calendar`}>wait-time calendar</A>.
+          The plan is stored in your browser, and you don’t need an account. Only for notifications
+          do we keep a copy on our server, and it’s deleted as soon as you switch them off. While
+          it’s there, you can send someone a link to the plan, and they can take it over as their
+          own copy.
         </P>
       </Chapter>
     </>
