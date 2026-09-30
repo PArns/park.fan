@@ -262,9 +262,8 @@ S&S.
 
 ## Ce que deviendra X2
 
-La question reste ouverte. Six Flags ne dit pas s’il compte démolir ou vendre
-X2, ni ce qu’il prévoit sur son emplacement. La prochaine nouveauté du parc est
-déjà connue, mais elle n’a rien à voir avec X2. Le 10 septembre, un peu moins de
+Six Flags ne dit pas s’il compte démolir ou vendre X2, ni ce qu’il prévoit sur
+son emplacement. Le 10 septembre, un peu moins de
 trois semaines avant l’annonce de la fin de X2, Magic Mountain a présenté pour
 2027 le Thrill Glider, une montagne russe Vekoma sur laquelle vous êtes suspendu
 à plat ventre sous le rail, dans un siège façon moto. Le parc la construira sur

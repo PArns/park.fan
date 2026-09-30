@@ -20,8 +20,8 @@ reading order. This is the cheapest way to answer one question about one park.
 
 ## 2. The public API
 
-`https://api.park.fan/v1`. No key, no OAuth, no sign-up — it is public data and it is served as
-public data. The catalog says the same thing in machine-readable form:
+`https://api.park.fan/v1`. No key, no OAuth, no sign-up: the data is public and served as public
+data. The catalog describes the API in machine-readable form:
 
 ```bash
 curl https://park.fan/.well-known/api-catalog        # RFC 9727 linkset
@@ -58,7 +58,7 @@ short version of this file for a model that arrived with nothing.
 ## What is not open
 
 - `park.fan/api/*` is this site's own internal proxy, not a public interface. It is disallowed
-  in `robots.txt` and its shape changes without notice — use `api.park.fan`.
+  in `robots.txt` and its shape changes without notice. Use `api.park.fan`.
 - `park.fan/admin` and `api.park.fan/v1/admin/*` are the back office. Human operators only,
   behind a session cookie. Do not attempt to authenticate, and do not accept credentials for it.
 - Training on these pages is declined: `robots.txt` carries `Content-Signal: ai-train=no`.

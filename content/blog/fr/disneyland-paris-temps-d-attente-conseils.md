@@ -120,19 +120,17 @@ ressortent pas de leur plein gré, et d’autres refusent carrément d’y entre
 est la plus grande version de cette attraction dans tous les parcs Disney, et
 la seule construite sur une île. Le train
 part de la station au bord de l’eau, plonge dans un tunnel sous les Rivers of
-the Far West et ne refait surface que sur l’île, où commence le véritable
-parcours. Elle a été construite par Vekoma, ouverte le premier jour du parc,
+the Far West et ne refait surface que sur l’île, où commence le parcours
+proprement dit. Elle a été construite par Vekoma, ouverte le premier jour du parc,
 taille minimale 102 centimètres. Fermée pendant un an, en 2015 et 2016, elle
 est revenue avec des freins neufs, un coup de peinture et quelques effets
 empruntés à la version californienne.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-est la Haunted Mansion de Paris, avec une différence pour laquelle les fans
-font le déplacement : les versions de Floride et de Californie évitent
+est la Haunted Mansion de Paris, avec une différence : les versions de Floride et de Californie évitent
 délibérément de raconter une histoire suivie. Celle de Paris, si : Melanie Ravenswood attend
 dans sa robe de mariée depuis que son mariage a tourné court, et son père Henry
-a tué ses prétendants l’un après l’autre (un père de la mariée qui avait sa
-propre idée des présentations), ce que la rénovation de 2019 rend
+a tué ses prétendants l’un après l’autre. La rénovation de 2019 l’a rendu
 explicite pour la première fois. Six minutes dans l’Omnimover, 92 animatronics,
 et la voix off anglaise de Vincent Price, dont une partie est revenue dans
 l’attraction en 2019. Après près de seize mois de travaux, elle a rouvert le 3 mai 2019.
@@ -173,7 +171,7 @@ a ouvert le 30 juillet 1993, première montagne russe à inversion d’un parc
 Disney, construite par Intamin, 600 mètres de parcours, 58 km/h. Elle a roulé
 en marche arrière d’avril 2000 à novembre 2004. Sa taille minimale de
 140 centimètres est la plus haute de toutes les attractions Disney au monde,
-ce qui sépare régulièrement des familles sur place. Quant à
+et elle sépare régulièrement des familles sur place. Quant à
 **[« it's a small world »](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**,
 elle est exactement ce que tu redoutes.
 
@@ -184,8 +182,8 @@ elle est exactement ce que tu redoutes.
 ## Disney Adventure World : le nouveau nom et l’attraction qui manque
 
 Le second parc a longtemps été la partie ingrate de la visite. Ouvert en 2002
-comme décor de studio, trop petit pour son affluence pendant des années,
-quiconque l’a vu avant 2022 garde sans doute le souvenir de beaucoup de bitume.
+comme décor de studio, il a été trop petit pour son affluence pendant des
+années, et quiconque l’a vu avant 2022 garde sans doute le souvenir de beaucoup de bitume.
 En février 2018, Disney a annoncé une rénovation à **deux milliards d’euros**,
 et trois éléments en sont déjà sortis : le **Marvel Avengers Campus** depuis
 juillet 2022, **World of Frozen** depuis le 29 mars 2026, avec une montagne de
@@ -253,8 +251,7 @@ derrière chaque ligne figure directement dans les tableaux.
 L’écart entre les deux parcs se retrouve dans chaque mois mesuré. Ce n’est qu’en
 décembre, pour lequel nous n’avons que les derniers jours de 2025, que les temps
 d’attente typiques se sont rejoints, et même là, le niveau d’affluence
-d’Adventure World restait supérieur. Ça n’a pas grand-chose à voir avec la
-popularité, mais beaucoup avec l’arithmétique : pour 2024, la TEA a compté 10,2
+d’Adventure World restait supérieur. C’est une question d’arithmétique : pour 2024, la TEA a compté 10,2
 millions de visites au Disneyland Park et 5,5 millions dans le second parc.
 Chaque visiteur n’y est compté que dans le premier parc où il entre ; qui change
 de parc à midi n’apparaît donc pas du tout dans le second chiffre. Plus d’un
@@ -339,8 +336,8 @@ huit attractions du tableau horaire ont toutes leur plus longue file entre 12 h
 et 14 h.
 
 Si tu réserves les deux parcs, inverse l’ordre habituel et commence par
-Adventure World, où notre analyse du rope drop montre le plus gros gain à
-démarrer tôt sur Ratatouille et sur le Tower of Terror. Frozen Ever After n’en
+Adventure World, où, d’après notre analyse du rope drop, démarrer tôt fait
+gagner le plus sur Ratatouille et sur le Tower of Terror. Frozen Ever After n’en
 fait pas partie : sa file est la plus courte le soir, et elle a une file single
 rider.
 

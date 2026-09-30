@@ -1,12 +1,12 @@
 ---
-title: '70 minutes, c’est beaucoup ? Tout dépend si on est mardi'
+title: 'Ce que valent 70 minutes d’attente selon le jour'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
-  À l’entrée de Taron il y a un chiffre, et tout seul il en dit autant qu’une
+  À l’entrée de Taron il y a un chiffre, et tout seul il ne sert pas plus qu’une
   température sans saison. Seule la comparaison avec chaque mardi mesuré en fait
   une réponse. Pourquoi park.fan ne jette rien, ce qui se passe la nuit et
   pourquoi nous ne conseillons plus le patin à glace en août.
@@ -52,9 +52,9 @@ aujourd’hui c’est parfait. Deux visites ne font pas une base, et de toute fa
 ta mémoire arrondit à ton désavantage
 ([pourquoi, c’est ici](/blog/l-art-d-attendre)).
 
-Le chiffre lui-même n’est pas le problème. Les parcs l’affichent, il est
-généralement à peu près juste, et il nous coûte une requête toutes les cinq
-minutes. Le problème, c’est qu’il est seul, comme une température sans saison. Soixante-dix minutes un mardi de mai
+Les parcs affichent ce chiffre, il est généralement à peu près juste, et il nous
+coûte une requête toutes les cinq minutes. Seulement, il est seul, comme une
+température sans saison. Soixante-dix minutes un mardi de mai
 n’ont rien à voir avec 70 minutes un samedi des vacances d’été, et sans la
 seconde moitié de cette phrase, tu ne peux rien en faire.
 
@@ -76,23 +76,21 @@ bronche même pas devant une journée pareille. Le record figure donc à part, a
 date, pour qu’on le voie sans qu’il touche aux deux autres chiffres.
 
 Pour [Phantasialand](ref:phantasialand), le classement ressemble à ceci. La colonne des jours
-mesurés est la plus importante : elle dit le poids que porte une ligne.
+mesurés compte le plus : plus une ligne a de jours, plus elle pèse.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
 Ce qui s’affiche ici est en direct. Relis cet article dans trois mois : le
-tableau contiendra d’autres chiffres, et le texte autour tiendra toujours. C’est
-exactement à cela que servent ces widgets. Dans quatre articles plus anciens,
+tableau contiendra d’autres chiffres, et le texte autour tiendra toujours. Dans quatre articles plus anciens,
 les chiffres étaient tapés à la main dans des tableaux Markdown, répartis sur
 six langues, et au bout de quelques semaines ils avaient discrètement divergé,
 comme les horloges d’une location de vacances.
 
 ## La journée a une forme
 
-Une attraction n’a pas la même file toute la journée. Le mouvement de fond, tout
-le monde le connaît : c’est court à l’ouverture, puis le reste du monde a fini
+Le mouvement de fond, tout le monde le connaît : c’est court à l’ouverture, puis le reste du monde a fini
 son petit-déjeuner, et vers le soir ça redevient supportable. Où se situe exactement le point haut varie d’une
 attraction à l’autre, et ces écarts sont la partie utile.
 
@@ -104,8 +102,7 @@ De cette forme naissent deux recommandations. La première, c’est le **rope
 drop** : filer dès l’ouverture vers une attraction précise, avant que les allées
 ne se remplissent. Nous ne le proposons que si le pic d’une journée ordinaire
 des 70 derniers jours atteint au moins 60 minutes et si le départ matinal en
-fait gagner au moins 45. En dessous,
-ce serait un conseil valable partout et donc utile nulle part.
+fait gagner au moins 45.
 
 La seconde, c’est l’alternative plus calme : l’heure à laquelle la file de
 cette attraction est d’habitude la plus courte. Si elle tombe le soir, pas
@@ -120,13 +117,12 @@ gagner au moins trois quarts d’heure. La date décide de toute la journée.
 Pendant les vacances d’été 2026 de Rhénanie-du-Nord-Westphalie, le mardi 18
 août figurait au calendrier du Phantasialand en « Normal », le jeudi de la même
 semaine en « Très élevée » (état en septembre 2026), et un calendrier ordinaire
-n’en laisse rien voir. Ce qui fait la différence : quelles régions sont en vacances, s’il y a un pont
-accroché derrière, s’il pleut et s’il se passe quelque chose de l’autre côté de
-la frontière.
+n’en laisse rien voir. La différence vient des régions en vacances, d’un éventuel
+pont accroché derrière, de la pluie et de ce qui se passe de l’autre côté de la
+frontière.
 
-Ce dernier point est volontiers sous-estimé. Un parc proche d’une frontière
-sent tout de suite le début des vacances d’à côté, souvent dès les plaques
-d’immatriculation sur le parking. Alors nous comptons les
+Près d’une frontière, le début des vacances d’à côté se remarque tout de suite,
+souvent dès les plaques d’immatriculation sur le parking. Alors nous comptons les
 régions dans un rayon d’environ 200 kilomètres et les marquons séparément dans
 le calendrier. Trois parcs côte à côte, chacun avec son jour le plus calme :
 
@@ -169,8 +165,7 @@ n’existe aucune interface publique. Dans les données brutes, ce parc ressembl
 n’importe quel autre à trois heures du matin : aucune attraction ne remonte quoi
 que ce soit. Si nous en tirions la conclusion évidente, toutes les attractions du parc y
 seraient en « très faible », avec une moyenne de 0 minute et une prévision
-fondée sur zéro observation. Une journée de rêve pour n’importe quel visiteur,
-et entièrement inventée. À la place, la page du parc porte une mention
+fondée sur zéro observation. À la place, la page du parc porte une mention
 disant qu’il n’y a rien à lire ici. Ce que nous pouvons quand même dire du parc
 se trouve dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
 
@@ -186,7 +181,7 @@ de décembre à avril » décrirait la période où nous avons mesuré par hasa
 
 ## Où tout cela se trouve
 
-La version longue, avec les vraies fiches à lire en parallèle, est désormais une
+La version longue, avec les fiches du site à lire en parallèle, est désormais une
 page à part : [Comment fonctionne park.fan](/fr/comment-fonctionne-park-fan).
 Chapitre par chapitre, on y voit ce qu’affiche une fiche d’attraction, comment
 fonctionne l’échelle sous « habituel » et « chargé », comment le calendrier tient

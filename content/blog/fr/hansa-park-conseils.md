@@ -94,8 +94,8 @@ Gerstlauer l’a construit en Infinity Coaster : **1 235 mètres** de voie, à 
 lift se trouve entièrement dans une **tour de 79 mètres** qui hisse le train à la verticale, et la
 première descente tombe de 67 mètres.
 
-Le vrai tour de force a lieu avant cette descente, dans la tour, invisible de l’extérieur. Pendant
-la montée, couché sur le dos et dans le noir, le train chute en marche arrière sur quelques mètres à
+Pendant la montée dans la tour, invisible de l’extérieur, couché sur le dos et dans le noir, le
+train chute en marche arrière sur quelques mètres à
 plus de 60 mètres de haut, avant que le lift ne le hisse jusqu’à la première descente. Le parc présente
 cela comme une première mondiale, mais deux ans après l’ouverture, il trouvait visiblement encore ça
 trop tranquille : en 2017, il a plus que doublé la vitesse de chute, d’environ 5 à environ 11 mètres
@@ -116,8 +116,7 @@ la malédiction est devenue une fuite.
 
 Anton Schwarzkopf a construit **[Nessie](ref:hansa-park/nessie)** en **1980** : 26 mètres de haut, 741 mètres de long,
 80 km/h, un seul looping vertical, et à l’époque le plus grand looping d’Europe. Elle roule depuis
-46 ans et s’est offert en 2019 une zone rethématisée, comme d’autres à cet âge
-refont leur cuisine.
+46 ans et a reçu en 2019 une zone rethématisée.
 
 Suivent quatre plus petites, dont une seule n’est pas familiale. **[Crazy Mine](ref:hansa-park/crazy-mine)** de Maurer
 roule depuis 1997 en souris folle dans un décor de mine, 15 mètres de haut et terminée au bout
@@ -160,8 +159,7 @@ la barre la plus haute de tout le parc.
 
 La saison 2026 court du **26 mars au 25 octobre**. Nous avons interrogé le calendrier d’ouverture du
 parc jour après jour, la dernière fois le 25 septembre, et entre ces deux dates il n’y a **pas un
-seul jour de fermeture**. Aucun lundi sauté au printemps, aucun trou le mardi en octobre, rien. Cela
-fait 214 jours d’ouverture, dans le calendrier du parc comme dans notre flux de calendrier.
+seul jour de fermeture**. Cela fait 214 jours d’ouverture, dans le calendrier du parc comme dans notre flux de calendrier.
 
 Europa-Park et Phantasialand font de même. Le Heide Park, lui, retire régulièrement le lundi du
 calendrier au printemps et en automne, le Movie Park ferme le plus souvent du lundi au mercredi hors
@@ -187,8 +185,8 @@ Pour 2027, le parc prévoit à ce jour une saison du **25 mars au 24 octobre**.
 ## Herbstzauber plutôt qu’Halloween
 
 Du **10 au 25 octobre 2026**, le parc ouvre de **11 h à 21 h**, et ce qui s’y joue s’appelle
-« Herbstzauber am Meer », la magie d’automne au bord de la mer. Pas de labyrinthes, pas de scare
-zones, pas d’âge minimum de 16 ans. La « Zeit der Schattenwesen », avec laquelle le parc
+« Herbstzauber am Meer », la magie d’automne au bord de la mer. Il n’y a ni labyrinthes ni scare
+zones, et donc pas d’âge minimum de 16 ans. La « Zeit der Schattenwesen », avec laquelle le parc
 proposait autrefois des frissons certains week-ends d’automne, n’existe plus. Le parc accroche à la
 place quelque **2 000 figures lumineuses** et propose deux temps forts :
 
@@ -222,7 +220,7 @@ simplement sans frayeur. Avec des enfants de moins de dix ans, tu es donc mieux 
 labyrinthes. Pas tout à fait sans frayeur pour autant : le spectacle du soir est bruyant, et le
 parc prévient lui-même qu’il peut effrayer les plus petits.
 
-## Ce parc compte en années, pas seulement en centimètres
+## Tailles minimales et âges
 
 Dans la plupart des parcs, chaque entrée d’attraction affiche un nombre de centimètres. Ici, il y a
 souvent un âge en plus, et c’est lui qui décide si ton enfant peut monter seul ou uniquement avec un
@@ -288,7 +286,7 @@ Novgorod à la place de l’ancien camp de bûcherons, New Lübeck à la place d
 City, le Carrousel Baltique, les Lost Trails of Roanoke, Einars Fjordfahrt. Aucune de ces nouveautés
 n’est un coaster. Celui-là est arrivé en 2026.
 
-## Où dormir : trois nuits ou aucune
+## Dormir sur place
 
 Le **HANSA-PARK Resort am Meer** se trouve en bordure de Sierksdorf, la ligne de chemin de fer
 passant entre le village de vacances et le parc. La réservation se fait par Landal ou Ostseezeit, le
@@ -398,10 +396,10 @@ peut alors aussi modifier ses horaires :
 Et si tu planifies le nord en ce moment : le [Heide Park](/blog/heide-park-temps-d-attente-conseils)
 se trouve à 131 kilomètres à vol d’oiseau au sud-ouest et entre dans la même semaine.
 
-## Où est le hic
+## L’emplacement
 
 Une tour de 79 mètres avec le Kärnan dedans et une promenade en barque héritée du Legoland, pleine de
-figures lumineuses, se partagent ici les mêmes 46 hectares. Le hic, c’est la situation. Hambourg est à 78 kilomètres à vol d’oiseau, tout ce qui se trouve
+figures lumineuses, se partagent ici les mêmes 46 hectares. Mais Hambourg est à 78 kilomètres à vol d’oiseau, tout ce qui se trouve
 plus au sud nettement plus loin, et qui vient uniquement pour les huit coasters a fini en début
 d’après-midi. Le parc part du principe que tu es de toute façon sur la Baltique.
 
