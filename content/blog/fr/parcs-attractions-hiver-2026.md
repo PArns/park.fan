@@ -66,13 +66,12 @@ La plupart, non. Le gros des parcs allemands ferme fin octobre et rouvre au
 printemps, et un parc néerlandais a carrément renoncé en avril.
 
 Le 23 avril 2026, [Walibi Holland](ref:walibi-holland) a arrêté son exploitation
-hivernale. **Bright Nights**, quatre éditions durant : des coasters illuminés et
-un spectacle pyrotechnique baptisé « Light up the Night ». Terminé, sans
+hivernale. **Bright Nights** a eu quatre éditions, avec des coasters illuminés et
+un spectacle pyrotechnique baptisé « Light up the Night », et n’a pas de
 successeur. Le parc reste désormais fermé d’Halloween jusqu’en avril.
 
-L’argumentaire explique au passage presque toute la saison d’hiver. La
-directrice Mascha Taminiau a pointé la brièveté de la période d’ouverture
-pendant les vacances de Noël et la dépendance à la météo. Traduction : les
+La directrice Mascha Taminiau a pointé la brièveté de la période d’ouverture
+pendant les vacances de Noël et la dépendance à la météo. Concrètement, les
 montagnes russes ne tournent pas par gel, tempête ou pluie verglaçante, et
 Walibi Holland n’a presque rien de couvert. Quand la technique s’arrête, il
 reste aux visiteurs un spectacle de lumières, et un spectacle de lumières ne
@@ -86,7 +85,7 @@ hall entier rempli d’attractions, Walibi Belgium a des halls. Walibi Holland
 n’avait, en hiver, pas une seule grande attraction couverte.
 
 Ci-dessous, qui fait la saison 2026/27, avec les dates, les horaires et les
-tarifs. Plus un chiffre qui va à l’encontre de la sensation : entre Noël et le
+tarifs. Et entre Noël et le
 Nouvel An, quand la nuit tombe à seize heures trente, on attend plus longtemps
 qu’en mai.
 
@@ -128,7 +127,7 @@ autres se jouent dehors : **Tiempo de Fuego**, **Pulse of Rookburgh**,
 l’illumination de la Kaiserplatz et, pour finir, **MAGIC SYMPHONY** avec
 lumière, feu et feu d’artifice. Par vent fort, il est annulé et remplacé par un
 court « Good Night Wish » en musique et en lumière. On patine sur le
-**Berliner Eislaufen**, en plein cœur du parc.
+**Berliner Eislaufen**, dans la zone berlinoise du parc.
 
 Si Brühl tient le rythme, c’est grâce à sa construction. Une bonne partie des
 attractions tourne à l’intérieur :
@@ -161,9 +160,9 @@ avec nuitée part de 260 € par personne en chambre double, et les formules du
 Nouvel An vont de 455 € à plus de 1 200 € selon l’établissement. Cinq d’entre
 elles étaient déjà complètes fin septembre.
 
-Qui va à Rust ce décembre ou ce janvier attrape aussi quelque chose pour la
-dernière fois. L’[Euro-Mir](ref:europa-park/euro-mir) tourne depuis le 12 juin
-1997 et sera démonté après cette saison d’hiver. À son entrée se trouve un vrai
+Qui va à Rust ce décembre ou ce janvier peut encore monter dans
+l’[Euro-Mir](ref:europa-park/euro-mir), qui tourne depuis le 12 juin 1997 et
+sera démonté après cette saison d’hiver. À son entrée se trouve un vrai
 module d’entraînement de la station Mir, au parc depuis 1995, et trois
 cosmonautes formés dans ce module même étaient invités à la conférence de presse
 de l’inauguration. Le parc a annoncé un événement d’adieu pour le
@@ -193,7 +192,7 @@ de nouveau ouverts, de 11 h à 18 h.
 
 ## Les parcs à dark rides : construits pour le mauvais temps
 
-### Efteling : onze semaines d’hiver, et le parc est plus beau qu’en été
+### Efteling : Winter Efteling, du 16 novembre au 31 janvier
 
 [Efteling](ref:efteling) est le parc où l’on comprend à quoi servent les dark
 rides. [Droomvlucht](ref:efteling/droomvlucht),
@@ -276,8 +275,7 @@ couloirs, un spectacle sur glace à dix artistes, un film de Noël en 4D et un
 marché de Noël. Le parc ouvre 20 jours, de 11 h à 19 h, jusqu’à 18 h les 24 et
 31 décembre. Pas besoin de réserver une date : billets et abonnements valent
 pour n’importe quel jour de Walibi Winter. Trois attractions restent fermées :
-Radja River, Vampire et Flash Back. Pour une rivière rapide en décembre, cela
-n’étonnera personne.
+Radja River, Vampire et Flash Back.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -350,8 +348,7 @@ Au nord de Paris se trouve la fenêtre la plus courte de ce tour d’horizon. Le
 [Parc Astérix](ref:parc-asterix) ouvre du **19 décembre 2026 au 3 janvier
 2027**, les 16 jours, Noël et le jour de l’an compris, de 11 h à 20 h, jusqu’à
 19 h les 24 et 31 décembre. Depuis l’hiver dernier, il y a une patinoire dans la
-zone viking et un marché de Noël. Cela reste gaulois, y compris la question de
-ce qu’il advient du sanglier pendant ces semaines.
+zone viking et un marché de Noël.
 
 [Parc Astérix](ref:parc-asterix?full)
 
@@ -372,8 +369,7 @@ Un avertissement issu de nos propres mesures depuis fin décembre 2025 : à
 PortAventura, on attend en
 moyenne plus longtemps qu’à Brühl, nettement en hiver et au printemps. Il n’y a
 qu’en juillet et en août que Brühl est plus chargé. Le tableau plus bas les met
-côte à côte. Attendre une saison vide parce que c’est l’hiver chez soi, c’est
-planifier pour le mauvais pays.
+côte à côte.
 
 [PortAventura Park](ref:portaventura-park?full)
 
@@ -410,7 +406,7 @@ dans notre calendrier, les deux plannings ne vont que jusqu’à la seconde moit
 de novembre, parce que les parcs n’ont pas encore publié les jours suivants. Un
 jour n’apparaît sur park.fan qu’une fois que le parc l’a publié.
 
-## Ce que disent les chiffres : vide en apparence, plein en réalité
+## Les temps d’attente en hiver
 
 L’hiver donne une impression de vide. Il fait sombre, il fait froid, du
 brouillard traîne sur les allées et la moitié du parc est éclairée plutôt que
@@ -431,7 +427,7 @@ plusieurs fois plus. La colonne des jours indique pour chaque ligne sur quoi
 elle s’appuie. Et la ligne de décembre vient entièrement des vacances de Noël,
 parce que nos mesures ne commencent qu’à la fin de décembre 2025, entre Noël et
 le Nouvel An. C’est suffisant pour un ordre de grandeur entre Noël et le Nouvel
-An, et cela ne dit rien de l’Avent. À Efteling, décembre est même le mois le
+An, pas pour l’Avent. À Efteling, décembre est même le mois le
 plus chargé de tout le tableau, janvier non.
 
 **Efteling, temps d’attente typique par mois**
@@ -493,8 +489,8 @@ d’ouverture. L’hiver 2026/27 est donc le premier que nous enregistrons en
 entier, et après lui notre modèle disposera pour la première fois d’une année
 complète.
 
-Pour une tendance, ces quelques jours d’hiver suffisent quand même, et surtout
-ils montrent à quel point le jour compte en hiver. Entre Noël et le Nouvel An,
+Pour une tendance, ces quelques jours d’hiver suffisent quand même, et on y voit
+surtout à quel point le jour compte en hiver. Entre Noël et le Nouvel An,
 c’était plein partout : à Phantasialand, notre calendrier affichait « Élevée »
 chaque jour d’ouverture du 26 décembre au 5 janvier, et « Très élevée » le
 2 janvier. Après les vacances, tout a basculé. À partir du 7 janvier, tous les
@@ -517,9 +513,9 @@ Ne prenez pas le calendrier d’affluence au mot pour cet hiver-ci. Au
 25 septembre, il classe chaque jour de décembre à Brühl en « Faible » ou « Très
 faible », y compris les jours entre Noël et le Nouvel An qui étaient tous en
 « Élevée » l’hiver dernier. À Europa-Park et à Efteling, décembre a la même
-allure. Un modèle qui ne connaît de l’hiver que quelques jours de vacances le
-croit calme. Après cet hiver, il aura vu un mois de décembre entier pour la
-première fois.
+allure. Le modèle n’a été entraîné que sur quelques jours de vacances d’hiver, et il
+prévoit un hiver calme. Après cet hiver, il disposera pour la première fois d’un
+mois de décembre entier.
 
 ## La date, la liste des attractions, le gros manteau
 

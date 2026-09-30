@@ -34,7 +34,7 @@ rideLinks:
 seo:
   title: 'Heide Park 2026: Colossos, attese e il giorno giusto'
   description: >-
-    Heide Park Soltau: attese reali a Colossos e Krake, più Halloween, Express
+    Heide Park Soltau: attese misurate a Colossos e Krake, più Halloween, Express
     Ticket, altezze minime e il giorno della settimana con le code più corte.
   keywords:
     - Heide Park
@@ -75,9 +75,8 @@ riservata ai vincitori di un biglietto d’oro.
 
 ## Che cosa è arrivato qui per primo
 
-È per Colossos che gli appassionati guidano fino a Soltau. Quello che gli sta
-intorno è più interessante. Con quattro tipi di attrazione questo parco è stato
-il primo in Germania, e gli ultimi tre sono arrivati nel giro di sette anni.
+È per Colossos che gli appassionati guidano fino a Soltau. Intorno, però, con
+quattro tipi di attrazione questo parco è stato il primo in Germania, e gli ultimi tre sono arrivati nel giro di sette anni.
 
 La serie è cominciata nel **1999**, due anni prima di Colossos, con
 un’attrazione che allora si chiamava Limit e che oggi si chiama
@@ -89,8 +88,7 @@ cinque inversioni.
 **[Desert Race](ref:heide-park/desert-race)** è arrivato il **15 maggio 2007**
 come primo launch coaster della Germania. Niente salita di traino: una
 catapulta idraulica porta il treno a **102 km/h** in due secondi. Dopo 650 metri
-e 49 secondi è di nuovo in stazione, prima che finisca la discussione su chi si
-siede davanti.
+e 49 secondi è di nuovo in stazione.
 
 ```glossary-widget slug=launch-coaster
 
@@ -153,7 +151,7 @@ curva.
 
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## Il resto del parco: signore attempate e una torre
+## Il resto del parco
 
 La prima montagna russa del parco è il
 **[Big Loop](ref:heide-park/big-loop)** del **1983**, un looper Vekoma con due
@@ -161,8 +159,7 @@ looping e un doppio cavatappi, poco più di 700 metri di tracciato e finito in
 meno di due minuti. Su di lui si legge come questo parco tratta ciò che ha già:
 nel 2010 ha ricevuto i treni del Corkscrew demolito di Alton Towers, e per la
 stagione 2026 Vekoma ha consegnato treni nuovi, disegnati sul modello delle
-vetture originali del 1983. Secondo cambio di treni in sedici anni, per
-un’attrazione di 43.
+vetture originali del 1983.
 
 Toxic Garden si chiama così solo da **maggio 2023**. Vekoma ha sostituito un
 tratto di binario durante la trasformazione, ingresso e stazione stanno da
@@ -233,10 +230,10 @@ si aspetterebbe in un parco con un’attrazione così nota. Chi a Soltau aspetta
 lungo non aspetta per forza davanti alle montagne russe di legno: subito dietro,
 accanto a Flug der Dämonen e Krake, ci sono la Bobbahn del 1993 e la log flume
 del 1980, due attrazioni che in nessun racconto di viaggio compaiono come motivo
-per guidare fino a Soltau. Per la log flume è il tempo che fa, come mostra il
-profilo orario più sotto; per la Bobbahn la tabella non dà una ragione.
+per guidare fino a Soltau. Per la log flume è il tempo che fa, come si vede nel
+profilo orario più sotto; per la Bobbahn nella tabella una ragione non c’è.
 
-Dice di più l’ora in cui le file crescono.
+L’ora in cui crescono le file, attrazione per attrazione:
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -298,8 +295,8 @@ sono giorni di chiusura, e a ottobre si torna ad aprire ogni giorno. Una normale
 giornata di apertura va dalle 10 alle 17, la domenica un’ora in più. Gli orari
 valgono per le attrazioni; il parco vero e proprio chiude un’ora dopo.
 
-Le giornate lunghe d’autunno non sono una giornata normale allungata:
-cominciano solo alle 12, e le attrazioni girano fino alle 21. Il 19 e il
+Le giornate lunghe d’autunno cominciano solo alle 12, e le attrazioni girano
+fino alle 21. Il 19 e il
 26 settembre e il 3 ottobre si chiamano Late Rides, le cinque successive
 appartengono a Halloween. In tutti questi giorni le attrazioni acquatiche e
 alcune altre chiudono già al calare del buio, verso le 17. Quello che è davvero
@@ -346,8 +343,7 @@ Park e Walibi sta nella
 
 Heide Park ha aperto il **19 agosto 1978**, con sei attrazioni e un fondatore
 che veniva da una famiglia di giostrai: **Hans-Jürgen Tiemann**. L’acquisto del
-terreno portava con sé una condizione che in un parco divertimenti non si
-indovina: la **cappella dello Heidenhof, del 1350**, doveva restare in piedi, e
+terreno era legato a una condizione: la **cappella dello Heidenhof, del 1350**, doveva restare in piedi, e
 si dovevano continuare a tenere animali locali. Il primo giorno sono arrivati
 2.000 ospiti, e da quelle sei attrazioni sono nati 85 ettari di parco.
 
@@ -393,8 +389,8 @@ dopo un ampliamento, da 81 casette di legno con 536 posti letto in tutto. I
 sette VW T2 riadattati del **Bulli Camp**, in cui si poteva dormire da luglio
 2014, dal 2025 non ci sono più; nel campo ora si prenotano solo capanne.
 
-Il vantaggio pratico non sta nel letto. Sta nell’essere alle dieci davanti
-all’ingresso e non alle dieci sulla A7. Nelle giornate lunghe d’autunno gli
+Il vantaggio pratico è essere alle dieci davanti all’ingresso e non alle dieci
+sulla A7. Nelle giornate lunghe d’autunno gli
 ospiti dell’hotel e del campo entrano addirittura alle 11, un’ora prima di tutti
 gli altri, e alcune attrazioni girano già, fra cui Krake.
 
@@ -435,7 +431,7 @@ online, se ci sono posti; i 37 € però valgono solo in giornate selezionate. I
 biglietto senza data per tutta la stagione costa 52 €. I bambini sotto i 90 cm
 entrano gratis, ma serve un biglietto da 0 € dal negozio online.
 
-**Mangiare.** La nostra pagina del parco conta 21 punti di ristoro (dati a
+**Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro (dati a
 settembre 2026), dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
 terrazza di Colossos, fino al Wirtshaus des Admirals.
 
@@ -520,8 +516,8 @@ accanto all’altra.
 
 ## Che cosa mi porto via da Soltau
 
-L’Heide Park non ha un racconto continuo come Brühl né 18 paesi come Rust. Ha
-le attrazioni, e con quattro di queste è stato il primo in Germania.
+Brühl ha un racconto continuo, Rust ha 18 paesi. L’Heide Park ha le
+attrazioni, e con quattro di queste è stato il primo in Germania.
 
 Lo si paga in superficie. 85 ettari con poca ombra e lunghi tragitti fra le
 grandi attrazioni, e un sabato di agosto se ne sente ogni metro. Se vuoi

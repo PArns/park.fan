@@ -72,7 +72,7 @@ successore. Il parco ora resta chiuso da Halloween ad aprile.
 
 La motivazione spiega, già che c’è, quasi tutta la stagione invernale. La
 direttrice Mascha Taminiau ha indicato la brevità del periodo di apertura nelle
-vacanze di Natale e la dipendenza dal meteo. Tradotto: le montagne russe non
+vacanze di Natale e la dipendenza dal meteo. In pratica le montagne russe non
 girano con gelo, vento forte o pioggia gelata, e Walibi Holland non ha quasi
 nulla al coperto. Quando la tecnica si ferma, all’ospite resta uno spettacolo di
 luci, e uno spettacolo di luci non regge un biglietto.
@@ -84,9 +84,9 @@ stesse settimane con le dark ride e sotto la pioggia rende perfino meglio.
 attrazioni, e Walibi Belgium ha i capannoni. Walibi Holland d’inverno non aveva
 una sola grande attrazione al coperto.
 
-Qui sotto c’è chi fa la stagione 2026/27, con date, orari e prezzi. Più un dato
-che va contro la sensazione: tra Natale e Capodanno, quando alle quattro e mezza
-è già buio, si fa più coda che a maggio.
+Qui sotto c’è chi fa la stagione 2026/27, con date, orari e prezzi, e perché tra
+Natale e Capodanno, quando alle quattro e mezza è già buio, si fa più coda che a
+maggio.
 
 > **Sulle date:** questa è la situazione al 25 settembre 2026. I parchi spostano
 > il calendario invernale fino ad autunno inoltrato, e non tutti hanno già
@@ -167,8 +167,8 @@ comincia lo smontaggio. Il tema spaziale resta: al suo posto nasce un’area
 tematica a sé, con un nuovo coaster per famiglie di Mack Rides e l’ESA come
 partner, pronta secondo il parco per la stagione 2028.
 
-Quale giorno della settimana sia il più tranquillo a Rust e com’è novembre lì lo
-calcola la [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
+Quale giorno della settimana sia il più tranquillo a Rust e com’è novembre lì sta
+nella [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
 
 [Europa-Park](ref:europa-park?full)
 
@@ -270,8 +270,7 @@ a sei corsie, uno spettacolo sul ghiaccio con dieci artisti, un film di Natale
 in 4D e un mercatino. Il parco apre 20 giorni, dalle 11 alle 19, fino alle 18 il
 24 e il 31 dicembre. Non serve prenotare una data: biglietto e abbonamento
 valgono in qualsiasi giorno del Walibi Winter. Tre attrazioni restano chiuse:
-Radja River, Vampire e Flash Back. Trattandosi di rapide a dicembre, non stupisce
-nessuno.
+Radja River, Vampire e Flash Back.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -363,9 +362,8 @@ pubblicato. Il 5 gennaio 2027 la **Cabalgata de los Reyes Magos** attraversa
 l’area Mediterrània, la sfilata dei Re Magi, la sera in cui i bambini spagnoli
 ricevono i regali.
 
-Un avvertimento che viene dalle nostre misurazioni da fine dicembre 2025: a
-PortAventura si aspetta in
-media più che a Brühl, e d’inverno e in primavera nettamente di più. Solo a
+Secondo le nostre misurazioni da fine dicembre 2025, a PortAventura si aspetta
+in media più che a Brühl, e d’inverno e in primavera nettamente di più. Solo a
 luglio e agosto è più pieno Brühl. La tabella più in basso li mette uno accanto
 all’altro. Aspettarsi una stagione vuota perché a casa propria è inverno
 significa pianificare per il paese sbagliato.
@@ -404,7 +402,7 @@ parco sia chiuso. Disneyland Paris festeggia il Natale dal 7 novembre 2026 al
 seconda metà di novembre, perché i parchi non hanno ancora pubblicato i giorni
 successivi. Un giorno compare su park.fan solo quando il parco lo ha pubblicato.
 
-## Che cosa dicono i numeri: vuoto a sensazione, pieno a misurarlo
+## Quanta coda si fa d’inverno
 
 L’inverno dà l’impressione del vuoto. È buio, fa freddo, sui vialetti c’è
 nebbia e mezzo parco è illuminato invece che popolato. Le code non lo sono.
@@ -420,10 +418,10 @@ arrotondamento.
 ```
 
 I mesi invernali poggiano su una manciata di giorni misurati, quelli estivi su
-un multiplo. La colonna dei giorni dice riga per riga su che cosa si regge. E la
+un multiplo. Nella colonna dei giorni vedi riga per riga su che cosa si regge. E la
 riga di dicembre viene tutta dalle vacanze di Natale, perché le nostre
 misurazioni cominciano solo a fine dicembre 2025, tra Natale e Capodanno. Basta per l’ordine di grandezza tra Natale e Capodanno, ma
-sull’Avvento non dice nulla. All’Efteling dicembre è addirittura il mese più
+per l’Avvento non c’è nessun dato. All’Efteling dicembre è addirittura il mese più
 pieno di tutta la tabella, gennaio no.
 
 **Efteling, tempo di attesa tipico per mese**
@@ -482,8 +480,8 @@ quattro, di novembre neanche uno. Solo da aprile registriamo ogni giorno di
 apertura. L’inverno 2026/27 è quindi il primo che registriamo per intero, e dopo
 di esso il nostro modello avrà per la prima volta un anno intero.
 
-Per indicare una direzione, quei pochi giorni invernali bastano comunque, e
-soprattutto mostrano quanto d’inverno conti il giorno. Tra Natale e Capodanno
+Per indicare una direzione, quei pochi giorni invernali bastano comunque, e da
+loro si vede soprattutto quanto d’inverno conti il giorno. Tra Natale e Capodanno
 era pieno ovunque: al Phantasialand il nostro calendario segnava “Alta” in ogni
 giorno di apertura dal 26 dicembre al 5 gennaio, e “Molto alta” il 2 gennaio.
 Dopo le vacanze è cambiato tutto. Dal 7 gennaio tutti i sabati e le domeniche di
@@ -505,7 +503,7 @@ Il calendario dell’affluenza, per questo inverno, non prenderlo alla lettera. 
 25 settembre classifica ogni giorno di dicembre a Brühl come “Bassa” o “Molto
 bassa”, compresi i giorni tra Natale e Capodanno che l’inverno scorso erano tutti
 su “Alta”. All’Europa-Park e all’Efteling dicembre ha lo stesso aspetto. Un
-modello che dell’inverno conosce solo pochi giorni di vacanza lo prende per
+modello che dell’inverno ha visto solo pochi giorni di vacanza lo prende per
 tranquillo. Dopo quest’inverno avrà visto per la prima volta un dicembre intero.
 
 ## Data, elenco delle attrazioni, giaccone pesante

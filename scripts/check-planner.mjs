@@ -162,9 +162,11 @@ const PLAN = {
  * Three assertions below counted it separately and the number was written into
  * all three — so a seventh chapter turned two of them red and left the third
  * quietly passing, because it sliced at six and therefore stopped looking
- * exactly where the new one begins. The page will get more chapters.
+ * exactly where the new one begins. The count follows the article: it was 7
+ * while the German page had grown an eighth that no other locale carried, and
+ * the rewrite of 2026-09-30 brought all six locales down to the same six.
  */
-const CHAPTER_COUNT = 7;
+const CHAPTER_COUNT = 6;
 /** `010203…`, derived rather than typed, for the no-gap assertion. */
 const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
   String(i + 1).padStart(2, '0')

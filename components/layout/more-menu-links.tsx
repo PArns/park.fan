@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 
 /**
  * The destinations the header carries without giving them a section: `/alerts`, `/favorites`,
- * `/fancast` and `/contribute`.
+ * `/contribute`, and on the phone `/fancast`, which the desktop band draws as a card instead.
  *
  * Measured on `main` before they were added: a grep over `components/layout/` finds `/fancast`
  * once (the footer) and `/alerts` once (the favorites panel), and `/contribute` **not at all**, so
@@ -16,8 +16,9 @@ import { Link } from '@/i18n/navigation';
  * **One definition, two hosts**, which is the same call `PushAlertsMenuLink` one file over already
  * made: the row renders at the foot of the "more" panel above `@min-[1024px]` and at the foot of
  * the burger sheet below it, and two hand-kept copies of the list are two places for a new entry —
- * or a changed path — to land in only one of them. The two differ in type scale and in which
- * entries they carry (see `panelOnly` below), so `variant` is the whole parameter.
+ * or a changed path — to land in only one of them. The two differ in shape — a pill row in the
+ * band, 44 px text links in the sheet — and in which entries they carry (each entry's `hosts`
+ * below), so `variant` is the whole parameter.
  *
  * **Why the sheet gets it at all**, when the issue only named the panel: the nav row that carries
  * the panel is `@min-[1024px]:flex`, so without this row `/alerts` and `/fancast` stay
@@ -25,10 +26,9 @@ import { Link } from '@/i18n/navigation';
  * there.
  *
  * **It is a footer, not a column of its own.** A column would rank an upload form with the guide
- * and the dictionary, and the panel already switches column shape at a bar width of 1280 px, so a
- * fourth member would have to be fitted into both layouts. A row is one element in either. No
- * heading over it either: a heading in this panel is a link to a hub page, and these have none
- * above them.
+ * and the dictionary, and a fourth column would take a quarter of the band from three hubs whose
+ * lists need the width at a 1024 px bar. A row is one element under all three. No heading over it
+ * either: a heading in this panel is a link to a hub page, and these have none above them.
  *
  * **`/contribute` is not in the sheet either** (Patrick, 2026-09-25). The phone menu is the
  * navigation of a visitor on the move, and „Fotos hochladen" was the one entry in it nobody opens
@@ -42,15 +42,23 @@ import { Link } from '@/i18n/navigation';
  * duplication `favorites-menu-panel.tsx` measured for „Meine Alarme" (y = 104 and y = 547 at
  * 360 px) and solved there by dropping the link in the sheet rather than here. In the panel there
  * is no such pair: this band and the favorites band are never open at the same time.
+ *
+ * **`/fancast` is the one entry only the sheet carries** (Patrick, 2026-09-30). In the panel the
+ * forecasting model has a card of its own now, with its photo, under the chapters of the
+ * best-time hub whose crowd calendar it draws (`FancastCard` in `more-menu-panel.tsx`); a second
+ * „Fancast" in this row would be the same link twice in one band. The sheet has no such card, so
+ * it keeps the entry.
  */
 const LINKS = [
-  { href: '/alerts', Icon: Bell, key: 'alerts', panelOnly: false },
-  { href: '/favorites', Icon: Star, key: 'favorites', panelOnly: true },
-  { href: '/fancast', Icon: LineChart, key: 'fancast', panelOnly: false },
-  { href: '/contribute', Icon: Camera, key: 'contribute', panelOnly: true },
+  { href: '/alerts', Icon: Bell, key: 'alerts', hosts: ['panel', 'sheet'] },
+  { href: '/favorites', Icon: Star, key: 'favorites', hosts: ['panel'] },
+  { href: '/fancast', Icon: LineChart, key: 'fancast', hosts: ['sheet'] },
+  { href: '/contribute', Icon: Camera, key: 'contribute', hosts: ['panel'] },
 ] as const;
 
-export function MoreMenuLinks({ variant }: { variant: 'panel' | 'sheet' }) {
+type Variant = 'panel' | 'sheet';
+
+export function MoreMenuLinks({ variant }: { variant: Variant }) {
   const t = useTranslations('navigation');
   /*
    * The alerts label is NOT `navigation.alerts`, and there is deliberately no such key. The one it
@@ -87,31 +95,37 @@ export function MoreMenuLinks({ variant }: { variant: 'panel' | 'sheet' }) {
         // In the sheet the row is the sheet's footer: the header renders it outside the scrolling
         // list, on the sheet's bottom edge, so it needs no margin of its own and only a hairline
         // of space above its 44 px targets.
-        isSheet ? 'gap-x-5 gap-y-1 pt-1' : 'gap-x-6 gap-y-2 pt-3'
+        isSheet ? 'gap-x-5 gap-y-1 pt-1' : 'gap-2 pt-4'
       }`}
     >
-      {LINKS.filter((link) => !isSheet || !link.panelOnly).map(({ href, Icon, key }) => (
-        <Link
-          key={href}
-          href={href}
-          prefetch={false}
-          className={`text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors ${
-            isSheet ? 'min-h-11 text-sm' : 'text-[13px]'
-          }`}
-        >
-          {/* **One mark for the whole panel, two layouts for it (PAR-290).** The cards above put
-              their glyph in a tinted `size-9` tile over the title; a row puts the same accent
-              glyph before the label, inline, because a row is a line and has no block to hold a
-              tile. What was accidental is that this row held the only marks in the band with no
-              accent at all — a 14 px hairline in `text-muted-foreground` beside a card's 18 px
-              `text-primary`, while `FavoritesPageMenuLink` and `PushAlertsMenuLink` draw this same
-              `Star` and `Bell` in the accent one panel over. The label stays muted, which is where
-              the row's lower rank lives; the glyph is decorative and `aria-hidden`, so it carries
-              no contrast floor of its own. */}
-          <Icon className="text-primary size-3.5 shrink-0" aria-hidden="true" />
-          {labelFor(key)}
-        </Link>
-      ))}
+      {LINKS.filter((link) => (link.hosts as readonly Variant[]).includes(variant)).map(
+        ({ href, Icon, key }) => (
+          <Link
+            key={href}
+            href={href}
+            prefetch={false}
+            className={
+              isSheet
+                ? 'text-muted-foreground hover:text-foreground flex min-h-11 items-center gap-1.5 text-sm transition-colors'
+                : // A pill in the band, the shape the blog panel's categories take in the same
+                  // place — its foot row — so the bands end alike. The hover is the border at full
+                  // strength and the label going to `foreground`, not `text-primary`: the "more"
+                  // cards measured `border-primary/50`-weight hairlines at 1.60 : 1 against the
+                  // card, a state nobody can name, and `text-primary` under 4.5 : 1 on a 12 px
+                  // label.
+                  'border-border/70 text-muted-foreground hover:border-primary hover:text-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors'
+            }
+          >
+            {/* **One mark for the whole panel, two layouts for it (PAR-290).** The accent glyph
+                before the label, as `FavoritesPageMenuLink` and `PushAlertsMenuLink` draw this
+                same `Star` and `Bell` one panel over. The label stays muted, which is where the
+                row's lower rank lives; the glyph is decorative and `aria-hidden`, so it carries no
+                contrast floor of its own. */}
+            <Icon className="text-primary size-3.5 shrink-0" aria-hidden="true" />
+            {labelFor(key)}
+          </Link>
+        )
+      )}
     </div>
   );
 }

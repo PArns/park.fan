@@ -82,6 +82,7 @@ name/bio/url in every post. Each author also gets a profile page at
 ```md
 ---
 name: Patrick Arns
+shortName: Patrick # optional byline in post headers and cards; defaults to `name`
 role: Gründer von park.fan # short title, shown under the name
 location: Deutschland
 url: https://arns.dev # primary website / rel=author
@@ -101,6 +102,8 @@ Write as much as you like here — paragraphs, links, emphasis.
 ```
 
 - `author: patrick` → resolves to `authors/patrick.md`.
+- `shortName` is what the byline shows in a post header and on a card. The
+  full `name` stays in structured data, the feed and on the profile page.
 - `bio` (frontmatter) is the short one-liner used in post headers/cards; the
   **body** is the rich bio on the profile page.
 - `avatar` is optional — leave it `''` to fall back to the name initials.
@@ -111,7 +114,7 @@ Write as much as you like here — paragraphs, links, emphasis.
 **Translations.** `authors/<key>.md` is the base (default locale, `en`). Add
 `authors/<key>.<locale>.md` to translate — e.g. `patrick.de.md`. Locale files
 only need the translatable fields (`role`, `location`, `bio` + the body);
-language-neutral fields (`name`, `url`, `avatar`, `links`) are inherited from
+language-neutral fields (`name`, `shortName`, `url`, `avatar`, `links`) are inherited from
 the base, and any locale without a file falls back to it.
 
 ```md
@@ -561,6 +564,50 @@ does. A guide or any other post that is not news never gets one: fix it in place
 and bump `updatedAt`. The rule behind it:
 [a news correction is shown, never silent](../../docs/rules/a-news-correction-is-shown-never-silent.md).
 
+### Quotes
+
+A sentence somebody else said or wrote (a park's announcement, a lawyer, a court filing) is a
+`> [!QUOTE]` block. Its **last paragraph is the source line**: who, in what role, and where, with a
+link to the place you read it.
+
+```md
+> [!QUOTE]
+> Obwohl X2 durchweg eine Vielzahl von Sicherheitsprüfungen bestanden hat, haben wir entschieden,
+> die Bahn zu schließen, weil wir glauben, dass es das Richtige ist.
+>
+> Brian Oerding, Parkchef von Six Flags Magic Mountain, in der [Mitteilung vom 29. September 2026](https://www.sixflags.com/blog/retiring-x2-magic-mountain), aus dem Englischen übersetzt
+```
+
+It renders as `BlogQuote` (`components/blog/blog-quote.tsx`): a box with a quote mark, the words
+set larger, and the source line under them. `remarkCallouts` turns the last paragraph into the
+`<figcaption>`, so a block with a single paragraph renders without a source line, which a quote
+should never do. Leave out „…“ around the words: the box already says it is a quote. A translated
+quote says so in the source line. If the quote reached you through another outlet, name both. A
+fragment of a few words inside a sentence stays inline, in „…“, with the speaker in the same
+sentence. The rule behind it, and what it asks of anything legal:
+[a quote names its source](../../docs/rules/a-quote-names-its-source.md).
+
+**A translated quote carries its original.** Put it in its own paragraph that starts with the
+language code in brackets, before the source line:
+
+```md
+> [!QUOTE]
+> Fahrsicherheit ist ein Grundpfeiler unseres Geschäfts.
+>
+> [en] Ride safety is a cornerstone of our business.
+>
+> Brian Oerding, [Mitteilung vom 29. September 2026](https://…), aus dem Englischen übersetzt
+```
+
+The original is never in the running text. It opens in a card when the reader hovers over the
+quote, taps it or focuses it with the keyboard (`BlogQuoteOriginal`, the site's `HoverCard`), with
+the label `blog.quoteOriginal` („Original auf Englisch") and `lang="en"` on the text; screen
+readers get a hidden copy. A small `EN` mark next to the quote sign says that there is one. Quote
+the original verbatim, with `[…]` for what you left out, and do the same in the translation.
+`pnpm check:prose` warns when a source line says the words were translated and no original is
+there. In the language of the original (the English post quoting Six Flags), there is nothing to
+add: the words are already the original.
+
 ---
 
 ## 7. Niceties (automatic — nothing to write)
@@ -575,147 +622,13 @@ and bump `updatedAt`. The rule behind it:
 
 ## 8. Writing style (REQUIREMENT)
 
-> The base rulebook for **every** text on the site — where the tells come from, what they look
-> like in German and in English, and the greps that find them — is
-> [`docs/blog.md`](../../docs/blog.md). Read that first. This section is what is specific to a
-> blog post on top of it.
+Posts must not read as generated. The rules for that, for posts and for every other text on the
+site, live in one place: [`docs/blog.md`](../../docs/blog.md). Start at
+[the rule's index page](../../docs/rules/no-text-may-read-as-ai-generated.md), which says which
+section to open for what you are writing. Before handing a post over, run `pnpm check:prose` and
+the review pass in [docs/blog.md §7.2](../../docs/blog.md#72-the-review-pass).
 
-Posts must not read like they were generated. That is a hard requirement, not a
-preference — a reader who smells a language model stops trusting the numbers
-too. Write the way a person who actually stood in the queue would write.
-
-**Never use "ehrlich" and its whole family.** No `ehrlich gesagt`, no
-`der ehrlichste Coaster`, no `um ehrlich zu sein`, no "honest" framing at all.
-It is the single clearest tell. The same goes for the neighbouring register that
-performs sincerity instead of just saying the thing:
-
-| Don't write                           | Write instead                         |
-| ------------------------------------- | ------------------------------------- |
-| `der ehrlichste Woodie Europas`       | say what makes it good, with a number |
-| `Fairness-Hinweis in eigener Sache`   | `Eine Einschränkung dazu:`            |
-| `Was sie unbestreitbar ist:`          | `Eines ist sie auf jeden Fall:`       |
-| `bezahlte Vorfahrt`                   | `sich an der Schlange vorbeikaufen`   |
-| `ein weiterer Datenpunkt`             | `noch eine Zahl`                      |
-| `die These dieses Artikels`           | drop it, or name the claim            |
-| `in Wartezeit-Währung`                | `da stehst du am längsten an`         |
-| `ein weltweit erstmalig gebauter Typ` | `den es sonst nirgends gibt`          |
-| `Es ist ein schönes Muster.`          | cut, or say what it produced          |
-
-Further rules that keep German prose sounding human:
-
-- **Vary the sentence openings.** Three paragraphs in a row starting with
-  `Und` or `Das ist` reads like autocomplete.
-- **No coined metaphor-currencies** (`X-Währung`, `Lebenszeit-Konto`). One
-  figure of speech per section is plenty, and it should be a normal one.
-- **No em dash (`—`) in running text.** It is the most-recognised AI tell there
-  is, and in German it is also simply the wrong character: German typography
-  uses the Halbgeviertstrich `–` with spaces around it, not the Geviertstrich
-  `—`. Reach for a comma, a full stop or a colon instead — an em dash almost
-  always marks a sentence that wanted to be two. The **only** `—` in a post is
-  the signature line `— Patrick`. Ranges and compounds keep the en dash without
-  spaces (`90–140 cm`, `Venlo–Eindhoven`, `2007 – Ithaka`).
-  Check with `grep -c "—" <post>`: the answer should be `1`.
-- **Don't announce the structure** (`Und jetzt der Grund, warum dieses Kapitel
-hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
-- **Articles and prepositions matter, and check the gender before "fixing" one
-  in.** Dutch park names take the same neuter article the German ones do: it is
-  **das** Efteling, exactly like `das Toverland` and `das Phantasialand`. So
-  `zum Efteling`, `im Efteling`, `dem Efteling`, `das Efteling ist …` — never
-  `der Efteling` and never `zur Efteling`.
-- **Superlatives need a source or a number** right next to them, otherwise cut.
-- **Hedge thin data explicitly** rather than rounding it into confidence: if a
-  month has four measured days, say so.
-
-### The aphoristic closer — the one that keeps coming back
-
-The single most persistent tell, and it survives every other check: a short,
-symmetrical, abstract sentence parked at the end of a post, a section or a
-landing page, restating what was just said as a maxim. It contains no
-information. It exists only to sound like an ending.
-
-Real examples that were written and had to be removed:
-
-| Shipped                                                                                            | Why it fails                                                                                                                         |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `Und wenn du das nächste Mal vor einer Zahl stehst: Sie ist nicht die Antwort. Sie ist die Frage.` | Antithesis + the number turned into a metaphor. The whole text was about a concrete queue; the last line abandons it for philosophy. |
-| `Such dir einen Park und lies eine Zahl.`                                                          | Imperative two-parter with a symmetrical beat. Tells the reader nothing they cannot already see.                                     |
-| `Das ist die ganze Geschichte in einer Tabelle.`                                                   | Restates the section, adds nothing.                                                                                                  |
-| `X ist kein Y, sondern ein Z.`                                                                     | The antithesis frame itself.                                                                                                         |
-
-The shapes to grep for: `ist nicht … , sondern …` in a final sentence,
-`Sie ist nicht X. Sie ist Y.`, two imperatives joined by `und` as a heading,
-any sentence where a concrete thing (a wait time, a park, a queue) becomes a
-stand-in for an abstract one (an answer, a question, a promise).
-
-**What to do instead.** Three endings that work:
-
-1. **The concrete next action**, with the specifics kept: „Schau nach, was an
-   dieser Bahn an einem Dienstag normal ist." Not „Schau genauer hin."
-2. **A fact that has not been said yet** — a caveat, a number, a date.
-3. **Nothing.** Let the last real paragraph be the last paragraph. A section is
-   allowed to just stop.
-
-The test: cover the last sentence and read the text without it. If nothing is
-lost, it was decoration. If what is lost is only a _feeling of closure_, it was
-the antipattern.
-
-### The sign at the entrance — the prop the copy keeps reaching for
-
-Banned outright, in every language: `das Schild`, `the sign`, `het bord`,
-`le panneau`, `el cartel`, `il cartello`. It reads like a stage direction, and it
-multiplies: by the time the guide shipped it stood in the hero caption, the scale
-legend, the figure's screen-reader summary, a chapter-01 paragraph and the
-companion post — six locales deep, one picture retold five times.
-
-Name what is actually there instead.
-
-| Don't                           | Do                                      |
-| ------------------------------- | --------------------------------------- |
-| `Mehr sagt das Schild nicht.`   | `Mehr steht am Eingang nicht.`          |
-| `Was am Schild steht.`          | `Was am Eingang steht.`                 |
-| `steht selten am selben Schild` | `erfährt man am Eingang meistens nicht` |
-| `The sign says 70 minutes.`     | `At the entrance it says 70 minutes.`   |
-
-### Copy must not describe the page's own layout
-
-`Links steht, was am Eingang hängt. Rechts dieselbe Zahl …` was wrong on every
-phone, where the two panels stack. Same for „die letzte Stufe rechts" next to a
-`flex-wrap` badge row, and „Chiapas daneben" next to a table where Chiapas is a
-row _below_.
-
-Describe the thing, not where it sits. Vertical order is usually safe („weiter
-unten auf der Parkseite"), horizontal order almost never is, and „daneben" is
-only safe when the two things are in one row at every breakpoint.
-
-### Structural slop — the tells that survive a vocabulary pass
-
-Swapping out banned words is the easy half. What actually makes a text read as
-generated is its _rhythm_, and that survives any find-and-replace. Grep for
-these before publishing:
-
-- **`nicht X, sondern Y`.** The single most recognisable German LLM cadence.
-  Two or three per long post is normal writing; eight is a machine.
-  `grep -c "sondern"` — if it's above ~5 in 5.000 words, thin it out.
-- **The `Claim: elaboration` colon.** Fine as a list introducer, exhausting as a
-  paragraph rhythm. If most paragraphs pivot on a colon, rewrite half of them
-  into plain sentences.
-- **Triads everywhere** (`kompakt, begehrt und anstrengend`). One per section
-  lands; three per section is a tic.
-- **Paragraphs of uniform length.** Real writing has a two-line paragraph next
-  to an eight-line one. Even blocks are a generation artefact.
-- **Symmetrical closers** that restate the section in one tidy sentence
-  (`Das ist die ganze Geschichte in einer Tabelle.`). Let a section just end.
-- **Self-commentary of any kind** — the post referring to itself, its chapters,
-  its own thesis, or how well it is written.
-- **Both-sides hedging with no verdict** (`einerseits … andererseits`, `es kommt
-darauf an`). Have an opinion; the byline is a person.
-
-The check that catches the rest: read the finished post aloud. Anywhere the
-rhythm turns metronomic, break the pattern — a short sentence, a dropped
-connective, an aside.
-
-Voice reference: `de/phantasialand-tipps.md` and
-`de/toverland-troy-wartezeiten-tipps.md`.
+Voice reference: `de/phantasialand-tipps.md` and `de/toverland-troy-wartezeiten-tipps.md`.
 
 ---
 

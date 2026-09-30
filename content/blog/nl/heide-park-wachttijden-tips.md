@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Soltau staat de hoogste échte houten achtbaan van Europa, en bijna drie
+  In Soltau staat de hoogste volledig houten achtbaan van Europa, en bijna drie
   jaar lang mocht niemand erin. Hij opende in 2001. Daaromheen haalde
   het park vier bouwsoorten als eerste naar Duitsland, en zijn toren van 103
   meter begon als uitkijkpunt. Verder: wanneer het druk wordt, waarom een
@@ -34,7 +34,7 @@ rideLinks:
 seo:
   title: 'Heide Park 2026: Colossos, wachttijden en de beste dag'
   description: >-
-    Heide Park Soltau: echte wachttijden voor Colossos en Krake, plus Halloween,
+    Heide Park Soltau: gemeten wachttijden voor Colossos en Krake, plus Halloween,
     het Express Ticket, minimale lengtes en de weekdag met de kortste rijen.
   keywords:
     - Heide Park
@@ -75,9 +75,9 @@ een gouden ticket bij waren.
 
 ## Wat hier het eerst stond
 
-Voor Colossos rijden achtbaanfans naar Soltau. Wat eromheen staat is
-interessanter. Bij vier bouwsoorten was dit park de eerste in Duitsland, en de
-laatste drie daarvan kwamen binnen zeven jaar.
+Voor Colossos rijden achtbaanfans naar Soltau. Bij vier bouwsoorten die eromheen
+staan, was dit park de eerste in Duitsland, en de laatste drie daarvan kwamen
+binnen zeven jaar.
 
 De reeks begon in **1999**, twee jaar vóór Colossos, met een baan die toen
 Limit heette en vandaag **[Toxic Garden](ref:heide-park/toxic-garden)**: de
@@ -88,8 +88,7 @@ lang, vijf inversies.
 **[Desert Race](ref:heide-park/desert-race)** kwam op **15 mei 2007** als de
 eerste launch coaster van Duitsland. Een optakeling is er niet; een
 hydraulische katapult brengt de trein in twee seconden op **102 km/u**. Na 650
-meter en 49 seconden is hij terug in het station, sneller dan de discussie over
-wie voorin mag.
+meter en 49 seconden is hij terug in het station.
 
 ```glossary-widget slug=launch-coaster
 
@@ -155,11 +154,10 @@ merkt dat vanaf de eerste drop, en zijn rug uiterlijk in de eerste bocht.
 De eerste achtbaan van het park is de
 **[Big Loop](ref:heide-park/big-loop)** uit **1983**, een Vekoma-looper met
 twee loopings en een dubbele kurkentrekker, ruim 700 meter lang en in minder dan
-twee minuten voorbij. Aan hem lees je af hoe dit park met oud bezit omgaat: in
+twee minuten voorbij. In
 2010 kreeg hij de treinen van de gesloopte Corkscrew uit Alton Towers, en voor
 het seizoen 2026 leverde Vekoma nieuwe treinen, vormgegeven naar de originele
-wagens uit 1983. Tweede treinwissel in zestien jaar, voor een baan van 43 jaar
-oud.
+wagens uit 1983, de tweede treinwissel in zestien jaar.
 
 Toxic Garden heet pas sinds **mei 2023** zo. Vekoma verving bij de verbouwing
 een stuk spoor, ingang en station staan sindsdien in een tuin vol giftige
@@ -229,10 +227,9 @@ verwachten bij een park met zo’n bekende baan. Wie in Soltau lang aanstaat,
 staat niet per se voor de houten achtbaan: vlak daaronder liggen naast Flug der
 Dämonen en Krake ook de Bobbahn uit 1993 en de wildwaterbaan uit 1980, twee
 attracties die in geen enkel reisverslag als reden voor de rit naar Soltau
-opduiken. Bij de wildwaterbaan ligt het aan het weer, dat laat het dagprofiel
-hieronder zien; voor de Bobbahn geeft de tabel geen reden.
-
-Meer zegt het uur waarop de rijen groeien.
+opduiken. Bij de wildwaterbaan ligt het aan het weer, zoals je in het dagprofiel
+hieronder ziet; waarom de Bobbahn zo hoog staat, is uit de tabel niet op te
+maken.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -244,8 +241,8 @@ is. Dat past bij een park waarvan de gasten overwegend ’s ochtends met de auto
 aankomen: iedereen staat op hetzelfde moment voor dezelfde drie banen, zoals op
 zaterdagochtend bij de Gamma, en ’s middags trekt het uit elkaar.
 
-Voor je planning betekent dat: het eerste uur is voor Colossos en Krake, omdat
-ze dan allebei op hun kortst zijn en vanaf elf uur tegelijk oplopen. Daarna
+Het eerste uur is daarom voor Colossos en Krake, omdat ze dan allebei op hun
+kortst zijn en vanaf elf uur tegelijk oplopen. Daarna
 loont het meer om te blijven in het gebied waar op dat moment niemand is dan om
 dwars over het terrein naar de volgende hoofdattractie te lopen.
 
@@ -265,10 +262,10 @@ Wordt het toch een van de drukke dagen, dan kun je een deel van het aanstaan
 afkopen. Het **Express Ticket** bestaat in vier trappen: Bronze vanaf **€ 25**
 voor wildwaterbaan, Big Loop en Bobbahn, Silver vanaf € 39 voor vijf van de
 grote attracties, Gold vanaf € 59 voor alle acht, Platinum vanaf € 99 voor alle
-acht zonder limiet. Welke vijf er in Silver zitten, beantwoordt de site van het
-park op twee manieren: de vergelijkingstabel noemt Colossos, Desert Race, Flug
-der Dämonen, Krake en Scream, de lijst eronder zet Colossos en Scream pas bij
-Gold. Toxic Garden zit in geen enkele trap.
+acht zonder limiet. Welke vijf er in Silver zitten, staat op de site van het
+park op twee manieren: in de vergelijkingstabel staan Colossos, Desert Race,
+Flug der Dämonen, Krake en Scream, in de lijst eronder staan Colossos en Scream
+pas bij Gold. Toxic Garden zit in geen enkele trap.
 
 Twee dingen zie je er makkelijk overheen. In de drie onderste trappen zit
 **één rit per attractie**, niet zo veel als je wilt: wie met Gold een tweede
@@ -293,8 +290,8 @@ september zijn sluitingsdagen, in oktober is het weer dagelijks open. Een
 gewone openingsdag loopt van 10 tot 17 uur, op zondag een uur langer. Die tijden
 gelden voor de attracties; het park zelf sluit telkens een uur later.
 
-De lange dagen in het najaar zijn geen verlengde gewone dag: ze beginnen pas om
-12 uur, en er wordt gereden tot 21 uur. Op 19 en 26 september en 3 oktober
+De lange dagen in het najaar beginnen pas om 12 uur, en er wordt gereden tot
+21 uur. Op 19 en 26 september en 3 oktober
 heten ze Late Rides, de vijf daarna horen bij Halloween. Op al die dagen gaan de
 waterattracties en nog een paar andere al met de schemering dicht, vanaf
 ongeveer 17 uur. Wat er voor de komende weken daadwerkelijk gepubliceerd is,
@@ -307,8 +304,7 @@ onderaan de vrijdag, en de dagen daartussen liggen in de tabel hierboven dicht
 bij elkaar. De maandag staat op maar ongeveer half zoveel meetdagen als de
 andere dagen, omdat het park hem in het voorjaar en in september regelmatig uit
 de kalender haalt. Wat er aan maandagen meetelt, valt dus vooral in het
-hoogseizoen, en rustig zijn die niet. Een rustige maandag is in Soltau meestal
-een gesloten maandag.
+hoogseizoen, en rustig zijn die niet.
 
 ### De maand
 
@@ -349,7 +345,6 @@ Panoramabahn) en de westernspoorbaan, die sinds 1997 Heide Park Express heet.
 Een vierde, het oldtimercircuit met zijn replica’s van de Ford Model T, reed
 tot 2025; toen sloot het park hem zonder veel aankondiging.
 
-Het bouwwerk dat het vroege Heide Park het best beschrijft, bestaat niet meer.
 Van **1986** tot de winter van 2011/2012 stond hier een 35 meter hoge replica
 van het Vrijheidsbeeld, ingewijd op 4 juli 1986 voor de honderdste verjaardag
 van het origineel, met een felicitatie van Ronald Reagan. Na de afbraak stond
@@ -357,8 +352,7 @@ de bovenste helft nog een paar jaar als decoratie bij Colossos, een late
 carrière die de Vrijheid zich vast anders had voorgesteld, en bij de
 heropening in 2019 ging ook de rest naar de sloop.
 
-Op **31 december 2001** kocht de Britse **Tussauds Group** het park. De beste
-jaren lagen daarvoor: in de jaren negentig telde Soltau tot twee miljoen
+Op **31 december 2001** kocht de Britse **Tussauds Group** het park. In de jaren negentig telde Soltau tot twee miljoen
 gasten, in 2001 waren het er 2,1 miljoen, in 2023 nog **1,68 miljoen**. In 2007
 kocht investeerder Blackstone, toen eigenaar van **Merlin Entertainments**, de
 Tussauds Group van Dubai International Capital en voegde die bij Merlin. Sinds
@@ -384,8 +378,8 @@ uit 81 houten huisjes met samen 536 bedden. De zeven omgebouwde VW T2’s van he
 **Bulli Camp**, waarin je vanaf juli 2014 kon slapen, zijn er sinds 2025 niet
 meer; in het camp boek je nu alleen nog hutten.
 
-Het praktische voordeel zit niet in het bed. Het zit erin dat je om tien uur
-voor de ingang staat en niet om tien uur op de A7. Op de lange dagen in het
+Het praktische voordeel is dat je om tien uur voor de ingang staat en niet op
+de A7. Op de lange dagen in het
 najaar mogen hotel- en campgasten al om 11 uur het park in, een uur vóór
 iedereen, en dan rijden er al een paar attracties, Krake bijvoorbeeld.
 
@@ -413,8 +407,8 @@ Wolterdingen is het 20 minuten lopen, en vanuit Hamburg en Hannover rijdt een
 bus tot voor de poort. Die heet Heide Park Express, net als de parktrein, maar
 heeft daar niets mee te maken.
 
-**Openingstijden.** 28 maart tot en met 31 oktober 2026, in het hart van het
-seizoen en in oktober dagelijks, in het voorjaar en in september zonder een
+**Openingstijden.** 28 maart tot en met 31 oktober 2026, in het hoogseizoen en
+in oktober dagelijks, in het voorjaar en in september zonder een
 deel van de maandagen. De tijden gelden voor de attracties; het park sluit een
 uur later, en de tourniquets gaan ongeveer een half uur vóór de eerste rit
 open.
@@ -510,8 +504,8 @@ rustigste dagen. De twee gidsen kun je prima naast elkaar leggen.
 
 ## Wat ik je over Soltau meegeef
 
-Heide Park heeft geen doorlopend verhaal zoals Brühl en geen 18 landen zoals
-Rust. Het heeft banen, en bij vier daarvan was het de eerste in Duitsland.
+In Brühl loopt één verhaal door het hele park en in Rust staan 18 landen. In
+Soltau staan banen, en vier daarvan waren de eerste van hun soort in Duitsland.
 
 Daar betaal je voor met oppervlakte. 85 hectare met weinig schaduw en lange
 loopafstanden tussen de grote banen, en op een zaterdag in augustus voel je

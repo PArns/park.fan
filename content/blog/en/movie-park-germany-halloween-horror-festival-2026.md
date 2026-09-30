@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: horror nights from Saturday until 8 November, and Jason is waiting in the new maze'
+title: 'Movie Park Germany adds a Friday the 13th maze'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -26,7 +26,7 @@ coverImage:
   caption: 'Van Helsing’s Factory in early September. From Saturday the monster hunter is heavily outnumbered every evening.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Movie Park Halloween Horror Festival 2026: Dates & Tickets'
+  title: 'Movie Park Halloween Horror Festival 2026 from 26 September'
   description: >-
     Halloween Horror Festival at Movie Park Germany from 26 September to
     8 November 2026: all 22 nights, the new Jason Universe (16+) and PHOBIA,
@@ -41,15 +41,16 @@ seo:
     - Movie Park Halloween costumes
 ---
 
-On Friday, [Movie Park Germany](ref:movie-park-germany) still closes at 5 p.m.
-On **Saturday, 26 September**, it stays open until 10 p.m., and from early
-evening more than 300 monsters roam Bottrop-Kirchhellen: the **Halloween Horror
-Festival** opens its 28th edition under the motto "Legends Never Die".
+The **Halloween Horror Festival** at [Movie Park Germany](ref:movie-park-germany)
+opens its 28th edition on **Saturday, 26 September**, under the motto "Legends
+Never Die". On Friday the park still closes at 5 p.m.; on Saturday it stays open
+until 10 p.m., and from early evening more than 300 monsters roam
+Bottrop-Kirchhellen.
 
 It has little in common with the
 [family festival at Disney](/blog/disneyland-paris-halloween-2026) that starts
 the same Saturday. Bottrop does fake blood, chainsaws and fog after dark, and
-the scare zones are not made for primary-school children.
+the scare zones aren't made for primary-school children.
 
 ## When it runs
 
@@ -59,7 +60,7 @@ is a horror weekend, Friday to Sunday, up to the last day of the season on
 Thursday 22 and Thursday 29 October are added. That makes 22 nights.
 
 On those days the park is open until 10 p.m. on Fridays and Saturdays and until
-9 p.m. on Sundays. The horror areas usually open around 6 p.m. Until then it is
+9 p.m. on Sundays. The horror areas usually open around 6 p.m. Until then it's
 a normal park day, and Nickelodeon LAND runs **Halloween for Kids** during the
 day, with crafts instead of fake blood.
 
@@ -70,8 +71,8 @@ fifth time. Bottrop was the first theme park to run one, back in 2022.
 
 **Jason Universe** replaces Secrets of St. Elmo – Last Hunt, which had run since
 2020, and brings Jason Voorhees to Bottrop. Fourteen scenes and a preshow retell
-parts two to six of _Friday the 13th_. Part one is left out for a reason: in
-that one, his mother does the killing. The maze is **16 and up**, and ID is
+parts two to six of _Friday the 13th_. Part one is left out, because in that
+one his mother does the killing. The maze is **16 and up**, and ID is
 checked at the maze entrances.
 
 Two familiar mazes have been reworked.
@@ -96,12 +97,12 @@ its own time slot, and age limits apply.
 
 A normal park ticket covers the whole day and the evening, including the four
 scare zones and the March of the Monsters parade. Dated online tickets currently
-cost €38.90 according to the park. At the gate it is €59.90 for ages 12 and up.
+cost €38.90 according to the park. At the gate it's €59.90 for ages 12 and up.
 
 The mazes and PHOBIA are **not included**. Each maze needs its own timed ticket,
 booked online. According to the park map, leftover tickets are also sold at guest
-services in the park, subject to availability. The park's Halloween pages do not give a price per maze. It
-only shows up in the web shop.
+services in the park, subject to availability. The park's Halloween pages don't
+give a price per maze; it only shows up in the web shop.
 
 If you want all nine, do the sums against the **S.I.K. Pass**: €215 with park
 admission, €185 if you already have a ticket or a season pass. It gets you into
@@ -114,13 +115,16 @@ advance.
 
 ## What stays at home
 
-Unlike Disney on 31 October, Movie Park does not allow **your own costumes,
-masks or horror make-up** on any of the nights. You cannot bring alcohol either,
-and bags are checked at the entrance.
+Unlike Disney on 31 October, Movie Park doesn't allow **your own costumes,
+masks or horror make-up** on any of the nights. Only children up to 1.40 metres
+tall may wear masks, costumes or face paint, according to the
+[park's FAQ](https://www.movieparkgermany.de/en/halloween/faq) (as of
+29 September 2026). You can't bring alcohol either, and bags are checked at the
+entrance.
 
 ## Which night
 
-We have only been measuring Bottrop since December 2025, so no Halloween autumn
+We've only been measuring Bottrop since December 2025, so no Halloween autumn
 is in the data yet. In what we have, Friday and Sunday have the shortest queues
 and Saturday longer ones. On top of that, the German Unity Day holiday on
 3 October falls on a Saturday, and the autumn holidays in North Rhine-Westphalia
@@ -147,3 +151,6 @@ Dates, mazes and tickets:
 
 > [!CORRECTION]
 > 25 September 2026: The first version said timed maze tickets were sold online only. According to the park map, the park also sells leftover tickets on site, subject to availability.
+
+> [!CORRECTION]
+> 29 September 2026: The first version said your own costumes, masks and make-up weren't allowed on any night. According to the park's FAQ, children up to 1.40 metres tall may wear masks, costumes and face paint. The ban still applies to everyone else.

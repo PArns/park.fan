@@ -38,10 +38,13 @@ import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
 export function MenuBand({
   id,
   open,
+  onClick,
   children,
 }: {
   id: string;
   open: boolean;
+  /** `useMenuTrigger().closeOnSamePageClick`: a link to the page already showing closes it. */
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
   children: React.ReactNode;
 }) {
   // Motion for the band's contents. The glass surface below is never a target — see the hook.
@@ -54,6 +57,7 @@ export function MenuBand({
       // `bg-popover` and then `bg-popover/95`, and a test that keys on styling silently stops
       // testing anything the next time the design moves.
       data-nav-panel=""
+      onClick={onClick}
       className={`absolute inset-x-0 top-full z-50 ${open ? '' : 'hidden'}`}
     >
       {/* `whitespace-normal` is a RESET, and it is load-bearing. The triggers sit in the header's

@@ -4,10 +4,11 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from '
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { AnimatePresence, motion, useReducedMotion, type PanInfo } from 'framer-motion';
-import { ArrowRight, Newspaper, X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { LiveDot } from '@/components/common/live-dot';
+import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import type { LatestPost, LatestPostsLabels } from '@/lib/blog/new-posts';
 import { trackBlogToastOpened } from '@/lib/analytics/umami';
 
@@ -312,9 +313,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                       )}
                     />
                   ) : (
-                    <span className="text-primary flex h-full w-full items-center justify-center">
-                      <Newspaper className="h-6 w-6" />
-                    </span>
+                    <BlogCoverFallback slug={slugFromPostPath(lead.path)} />
                   )}
                 </span>
                 <span className="min-w-0 flex-1">

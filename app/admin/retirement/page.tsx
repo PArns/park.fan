@@ -2,7 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Archive, CheckCircle2, Loader2, RotateCcw, Search, Undo2 } from 'lucide-react';
+import {
+  Archive,
+  CheckCircle2,
+  Eye,
+  EyeOff,
+  Loader2,
+  RotateCcw,
+  Search,
+  Undo2,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
@@ -13,6 +22,7 @@ import {
   RETIREMENT_KEYS,
   RETIRE_REASON_REQUIRED,
   retireAttraction,
+  setRetiredHidden,
   today,
   unretireAttraction,
 } from '../_ui/retirement';
@@ -48,6 +58,15 @@ interface Retired {
   park: string | null;
   retiredAt: string | null;
   reason: string | null;
+  /** `closed`: von Hand stillgelegt. `reclassified`: vom Sync, weil die Quelle eine Show oder ein Restaurant daraus gemacht hat. */
+  kind?: 'closed' | 'reclassified' | null;
+  /** Auf der Parkseite ausgeblendet. Ride-Seite und Sitemap bleiben. */
+  hidden?: boolean;
+  /**
+   * Steht gerade auf der Parkseite: eine Stilllegung, nicht ausgeblendet und jünger als ein Jahr.
+   * Nach einem Jahr fällt die Bahn von selbst heraus und ist nur noch über ihre URL erreichbar.
+   */
+  onParkPage?: boolean;
 }
 
 function day(value: string | null): string {
@@ -252,6 +271,29 @@ function RetiredRow({ entry, canRestore }: { entry: Retired; canRestore: boolean
     }
   }
 
+  async function toggleHidden() {
+    const hidden = !entry.hidden;
+    setBusy(true);
+    try {
+      await setRetiredHidden(entry.id, hidden);
+      toast.push({
+        title: hidden
+          ? `${entry.name} auf der Parkseite ausgeblendet`
+          : `${entry.name} auf der Parkseite wieder sichtbar`,
+        tone: 'success',
+      });
+      invalidate(...RETIREMENT_KEYS);
+    } catch (err) {
+      toast.push({
+        title: 'Umschalten fehlgeschlagen',
+        description: err instanceof Error ? err.message : undefined,
+        tone: 'error',
+      });
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <div className="border-border/60 bg-card flex flex-wrap items-center gap-3 rounded-lg border px-3 py-2">
       <Link
@@ -264,6 +306,28 @@ function RetiredRow({ entry, canRestore }: { entry: Retired; canRestore: boolean
       <span className="text-muted-foreground text-xs">{day(entry.retiredAt)}</span>
       {entry.reason && (
         <span className="text-muted-foreground max-w-md truncate text-xs">{entry.reason}</span>
+      )}
+      {/* Umklassifiziert heißt: nichts ist geschlossen, die Bahn hat keine Seite und steht auf
+          keiner Parkseite. Nur eine echte Stilllegung lässt sich dort aus- und einblenden. */}
+      {entry.kind === 'reclassified' && <Chip>umklassifiziert</Chip>}
+      {entry.kind === 'closed' && entry.hidden && <Chip tone="warning">auf Parkseite aus</Chip>}
+      {/* `onParkPage` fehlt bei einer API vor dem Jahres-Auto-Hide; dann gilt die alte Anzeige. */}
+      {entry.kind === 'closed' && !entry.hidden && entry.onParkPage === false && (
+        <Chip>nach 1 Jahr von der Parkseite genommen</Chip>
+      )}
+      {/* Nach einem Jahr gibt es nichts mehr auszublenden; eine ausgeblendete Bahn lässt sich
+          aber immer wieder zeigen, solange das Jahr nicht um ist. */}
+      {canRestore && entry.kind === 'closed' && (entry.hidden || entry.onParkPage !== false) && (
+        <Button
+          size="sm"
+          variant="ghost"
+          onClick={toggleHidden}
+          disabled={busy}
+          title="Nur die Liste auf der Parkseite. Ride-Seite und Sitemap bleiben."
+        >
+          {entry.hidden ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+          {entry.hidden ? 'Auf Parkseite zeigen' : 'Auf Parkseite ausblenden'}
+        </Button>
       )}
       {canRestore && (
         <Button size="sm" variant="ghost" onClick={restore} disabled={busy}>

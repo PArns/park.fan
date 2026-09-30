@@ -60,16 +60,17 @@ Disney counts 36 attractions in the big park and fourteen in the small one. So
 almost everyone visiting Marne-la-Vallée for the first time plans the same day:
 the whole morning in [Disneyland
 Park](ref:/parks/europe/france/paris/disneyland-park), then a quick hop over to
-the second park sometime in the afternoon, on the assumption that there is not
+the second park sometime in the afternoon, on the assumption that there isn't
 much queuing there anyway.
 
-That is the wrong order. Our measurements start on 26 December 2025 and have run almost without a gap since late March 2026. In every single month
-we have data for, the crowd level in **Disney Adventure World** was higher than
-the big park's, and on every one of the seven weekdays. Never the other way
-round. The smaller park spreads its guests across fewer than half as many
-attractions, and you feel that at every barrier.
+That's the wrong order. Our measurements start on 26 December 2025 and have run
+almost without a gap since late March 2026. In every single month we have data
+for, the crowd level in **Disney Adventure World** was higher than the big
+park's, and on every one of the seven weekdays. The smaller park spreads its
+guests across fewer than half as many attractions, and you feel that at every
+barrier.
 
-## One resort, two parks, one train station
+## The resort and its two parks
 
 Disneyland Paris opened on **12 April 1992**, back then still as Euro Disney
 Resort, about 32 kilometres east of Paris in the new town of Marne-la-Vallée.
@@ -91,7 +92,7 @@ World of Frozen area opened.
 You pay for the two parks separately. A day ticket covers **one** of them, and
 switching between the two means buying the two-park variant.
 
-Here is how the two Paris parks compare, with two more parks for scale that
+Here's how the two Paris parks compare, with two more parks for scale that
 sit a similarly long trip from Germany:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,parc-asterix,europa-park show=quietest highlight=/parks/europe/france/paris/disneyland-park
@@ -109,8 +110,7 @@ illuminations of the _Très Riches Heures du Duc de Berry_ and Mont-Saint-Michel
 the square-clipped trees around it come from the 1959 film, and in the gallery
 upstairs stained-glass windows and tapestries retell the fairy tale. Underneath,
 in the rock base, sits **La Tanière du Dragon**, a cave with a chained
-animatronic dragon that moves and lets off steam. Some children do not want to
-leave. Others will not go in at all.
+animatronic dragon that moves and lets off steam.
 
 **[Big Thunder
 Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
@@ -124,15 +124,14 @@ a handful of effects borrowed from California.
 
 **[Phantom
 Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)** is the
-Paris Haunted Mansion, with one difference that fans make the trip for: the
-Florida and California versions deliberately tell no continuous story. Paris
-does:
-Melanie Ravenswood has been waiting in her wedding dress ever since her
-wedding fell apart, and her father Henry killed her suitors one after
-another (a father of the bride with firm views on meeting the family), a plot the 2019 refurbishment spelled out clearly for the first
-time. Six minutes in the Omnimover, 92 animatronics, plus Vincent Price's
-English narration, parts of which came back into the ride in 2019. After
-almost sixteen months of work, it reopened on 3 May 2019.
+Paris Haunted Mansion, and unlike the Florida and California versions, which
+deliberately tell no continuous story, it tells one. Melanie Ravenswood has been
+waiting in her wedding dress ever since her wedding fell apart, and her father
+Henry killed her suitors one after another, a plot the 2019 refurbishment
+spelled out clearly for the first time. Six minutes in the Omnimover, 92
+animatronics, plus Vincent Price's English narration, parts of which came back
+into the ride in 2019. After almost sixteen months of work, it reopened on
+3 May 2019.
 
 **[Star Wars Hyperspace
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
@@ -140,25 +139,25 @@ has only carried that name since 7 May 2017. It opened on 1 June 1995 as “Spac
 Mountain: De la Terre à la Lune”, after Jules Verne, with a cannon launch. That
 launch is still there: the train goes from 0 to 71 km/h up the mountain in 1.8
 seconds. Three inversions, a kilometre of track, up to 5 g. Of every Space
-Mountain worldwide, it is the only one with a launch and the only one with
+Mountain worldwide, it's the only one with a launch and the only one with
 inversions. Michael Eisner, Disney's boss at the time, called it the park's
 saviour, and in the 1995 financial year Disneyland Paris turned its first
-profit. It will not be Hyperspace Mountain for much longer: at the end of 2027
+profit. It won't be Hyperspace Mountain for much longer: at the end of 2027
 the ride closes for several months and comes back as “Space Mountain – De la
 Terre à la Lune”, with Jules Verne and Steve Bramson's original score.
 
-And yet it does not top our ranking.
+And yet it doesn't top our ranking.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
 ```
 
 The longest queue in the park belongs to **Peter Pan's Flight**, a 1992 dark
-ride that is over in three minutes. Popularity only explains half of
-that. The other half is throughput: Hyperspace Mountain runs four trains and
-pushes almost 2,000 people through per hour, so it works its queue down all
-day long. Little flying pirate ships with room for one family cannot do that. Spend the morning on
-the coasters and you will spend part of the afternoon in the park's longest
+ride that's over in three minutes. Popularity only explains half of that. The
+other half is throughput: Hyperspace Mountain runs four trains and pushes almost
+2,000 people through per hour, so it works its queue down all day long. Little
+flying pirate ships with room for one family can't do that. Spend the morning
+on the coasters and you'll spend part of the afternoon in the park's longest
 queue, for three minutes of dark ride.
 
 Three more rides cost you time that same morning. **[Pirates of the
@@ -173,7 +172,7 @@ from April 2000 to November 2004. Its minimum height of 140 centimetres is
 the highest of any Disney attraction worldwide, which regularly splits up
 families on site. And
 **[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
-is exactly what you are afraid it is.
+is exactly what you're afraid it is.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -193,7 +192,7 @@ Across from it, Wilderness Explorers Sky Swings, a swing ride themed to Pixar's
 _Up_, is due in 2027. On the lake shore next to World of Frozen, the **Lion
 King** area has been under construction since autumn 2025: more than 30,000
 square metres around a water ride with three drops, the biggest 16 metres down
-from Pride Rock. Disney has not given an opening date.
+from Pride Rock. Disney hasn't given an opening date.
 
 The rides that were already there are older than the renovation suggests. **[The
 Twilight Zone Tower of
@@ -212,8 +211,7 @@ queue in the park in our data, just ahead of Frozen Ever After. It has been out
 of service since **7 September 2026**. The park pulled it for its biggest
 refurbishment since it opened: controls, sensors, communications technology and
 sections of track are being replaced, alongside cleaning, painting and repairs.
-The planned return is **summer 2027**, which leaves the East Australian Current
-without passengers for around ten months.
+The planned return is **summer 2027**, around ten months after the closure.
 
 You can see it in our data without needing a press release: the last live
 reading for this ride is timestamped **6 September, 20:21 UTC**. Nothing has
@@ -234,10 +232,11 @@ queue to plan your day there around.
 
 ## How busy it really gets
 
-Both parks have fed us wait times since 26 December 2025, but only since late March 2026 almost without a gap. From the winter in between we only have scattered days in December and
-January, and none yet for February, October or November. As of 25 September
-2026, each park has 190 measured operating days behind it, and how many of them
-sit behind each row, the tables state themselves.
+Both parks have fed us wait times since 26 December 2025, but only since late
+March 2026 almost without a gap. From the winter in between we only have
+scattered days in December and January, and none yet for February, October or
+November. As of 25 September 2026, each park has 190 measured operating days
+behind it, and how many of them sit behind each row is in the tables.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -246,14 +245,14 @@ sit behind each row, the tables state themselves.
 The gap between the two parks shows up in every month we have measured. Only in
 December, for which we only have the last days of 2025, did typical wait
 times draw level, and even then the crowd level in Adventure World was higher.
-That has little to do with popularity and a lot to do with arithmetic: for 2024
-the TEA counted 10.2 million visits to Disneyland Park and 5.5 million to the
-second park. Each guest is counted only in the park they enter first, so anyone
-who switches over at lunchtime does not show up in the second number at all.
+The reason is arithmetic. For 2024 the TEA counted 10.2 million visits to
+Disneyland Park and 5.5 million to the second park. Each guest is counted only
+in the park they enter first, so anyone who switches over at lunchtime doesn't
+show up in the second number at all.
 More than a third of all visits therefore land in a park with half the space and
 fewer than half the attractions.
 
-Here is how a day at Disneyland Park spreads across the hours:
+Here's how a day at Disneyland Park spreads across the hours:
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -272,16 +271,17 @@ the German ones and, in winter and spring, are staggered across three zones,
 plus British half-term weeks.
 
 Then there are the seasons. From 26 September to 1 November, Disneyland Park
-runs the Disney Halloween Festival, and what is on is in our [Halloween news
+runs the Disney Halloween Festival, and what's on is in our [Halloween news
 piece](/blog/disneyland-paris-halloween-2026). From 7 November 2026 to 6 January
 2027 comes Disney Enchanted Christmas, for the first time in Disney Adventure
 World as well: World of Frozen gets Scandinavian-style Christmas decorations and
 its own shows with Anna, Elsa and Olaf. On New Year's Eve each park throws its
 own party.
 
-The weekday curve above is flat, and for a reason: a park open 365 days a year and advertised across half a dozen countries has
-no dead Tuesday to escape to. Which of the coming weeks is quietest anyway is
-right here, recalculated continuously:
+The weekday curve above is flat, because a park open 365 days a year and
+advertised across half a dozen countries has no dead Tuesday to escape to.
+Which of the coming weeks is quietest anyway is right here, recalculated
+continuously:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -291,7 +291,7 @@ right here, recalculated continuously:
 
 The fast lane in Paris is called **Disney Premier Access**, and it comes in two
 versions. **Premier Access One** covers one ride on one attraction; you buy it
-in the app once you are inside the park and get the next free time slot.
+in the app once you're inside the park and get the next free time slot.
 **Premier Access Ultimate** covers every participating ride once, with no time
 slots, and can be booked in advance. Neither has a fixed price: Disney charges
 different amounts depending on the ride, the date and demand, the same way
@@ -305,11 +305,11 @@ to over €200 per person per day.
 
 ```
 
-Before you buy it, it is worth glancing back at the ranking further up. The
-price tracks demand, and demand does not line up with the queue: that same
+Before you buy it, it's worth glancing back at the ranking further up. The
+price tracks demand, and demand doesn't line up with the queue: that same
 morning Hyperspace Mountain cost €12 and Peter Pan €13, even though Peter Pan's
 queue is typically much longer. Pay for Hyperspace Mountain, then join the back
-of the line for Peter Pan, and you have spent the money on the wrong queue.
+of the line for Peter Pan, and you've spent the money on the wrong queue.
 
 ## How I would plan the day
 
@@ -317,7 +317,7 @@ If you only have one day and one park, take Disneyland Park: more attractions,
 shorter queues, and the castle is the reason most people came in the first
 place. Expect it to be busy by the official opening time, though. Guests at the
 Disney hotels and Les Villages Nature, and Disneyland Pass Gold holders, get in
-early through Extra Magic Time, usually an hour. That is why Peter Pan already
+early through Extra Magic Time, usually an hour. That's why Peter Pan already
 has a long queue when the gates open to everyone else, and in our hourly table
 it only gets noticeably shorter in the last hour before closing. Big Thunder
 Mountain, Hyperspace Mountain and Indiana Jones, on the other hand, are much
@@ -325,10 +325,10 @@ shorter just after opening than at midday. So start there and save Peter Pan for
 the evening. Lunchtime suits none of them: all eight rides in the hourly table
 have their longest queue between 12:00 and 14:00.
 
-And if you are booking both parks, flip the usual order and start in Adventure
-World, where our rope-drop analysis shows Ratatouille and the Tower of Terror
-have the biggest payoff for an early start. Frozen Ever After is not one of
-them: it is shortest in the evening, and it has a single rider line.
+And if you're booking both parks, flip the usual order and start in Adventure
+World, where, according to our rope-drop analysis, Ratatouille and the Tower of
+Terror have the biggest payoff for an early start. Frozen Ever After is shortest
+in the evening, and it has a single rider line.
 
 ## Practical: getting there, tickets, opening hours
 
@@ -339,7 +339,7 @@ among others, plus the RER A line, about 40 minutes from Châtelet in central
 Paris. No ICE goes there, and since June 2023 the Eurostar from London only gets
 there with a change in Lille or Paris. From Cologne and Frankfurt, the fastest
 one-change connections take around four to four and a half hours; average travel
-times run noticeably longer. By car it is about 32 kilometres from Paris, and
+times run noticeably longer. By car it's about 32 kilometres from Paris, and
 parking costs extra.
 
 **Opening hours.** Year-round, daily. Hours shift a lot with the season and
@@ -351,16 +351,16 @@ page](ref:/parks/europe/france/paris/disneyland-park); on 25 September
 and, Disney says, can still change for the same date with demand, and undated
 ones valid for a year. Both come as one-park or two-park tickets. The ticket
 booths at the entrance only sell in exceptional cases: for cash,
-Chèques-Vacances or gift cards, and only while the park has not reached
+Chèques-Vacances or gift cards, and only while the park hasn't reached
 capacity. There, an adult day costs €129 for one park and €164 for both (as of
 September 2026). Prices for your date are on
 [disneylandparis.com](https://www.disneylandparis.com/).
 
 **Food.** Both parks have table-service restaurants that need a reservation,
-plus plenty of quick service in between. Our database lists (as of 25 September 2026)
-35 dining venues in Disneyland Park and 19 in Adventure World. At lunchtime the queue migrates
-from the rides to the counters, and for a while the chip stand is the most
-popular attraction in the park.
+plus plenty of quick service in between. Our database lists (as of
+25 September 2026) 35 dining venues in Disneyland Park and 19 in Adventure
+World. At lunchtime the queue migrates from the rides to the counters, and for
+a while the chip stand is the most popular attraction in the park.
 
 ## Frequently asked questions about Disneyland Paris
 
@@ -417,7 +417,7 @@ the queues at the outdoor rides:
 
 ```
 
-If you are looking for the comparison with parks that sit a similarly long
+If you're looking for the comparison with parks that sit a similarly long
 trip from Germany, we already have full write-ups on [Walibi
 Belgium](/blog/walibi-belgium-wait-times-tips) and on [the
 Efteling](/blog/efteling-disney-of-the-netherlands). And if your trip falls
@@ -434,7 +434,7 @@ reason to say yes.
 
 - Opening, name history, site size, first profit in 1995, employer, the two-billion-euro renovation: [Disneyland Paris on Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris on Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
 - Area and attraction count of both parks, employees: [Disneyland Paris Newsroom, The Company](https://news.disneylandparis.com/en/the-company/)
-- 2024 attendance (TEA) and how it is counted: [Pixie Dust DLP, 23 October 2025](https://pixiedustdlp.com/2025/10/23/disneyland-paris-attendance-down-2024/) · [Disneyland Park (Paris) on Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29)
+- 2024 attendance (TEA) and how it's counted: [Pixie Dust DLP, 23 October 2025](https://pixiedustdlp.com/2025/10/23/disneyland-paris-attendance-down-2024/) · [Disneyland Park (Paris) on Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29)
 - Castle (Tony Baxter, references, trees, gallery) and dragon: [Le Château de la Belle au Bois Dormant on Wikipedia (EN)](https://en.wikipedia.org/wiki/Le_Ch%C3%A2teau_de_la_Belle_au_Bois_Dormant) · [La Tanière du Dragon on Wikipedia (EN)](https://en.wikipedia.org/wiki/La_Tani%C3%A8re_du_Dragon)
 - Rename, Marvel Avengers Campus, World of Frozen, Adventure Way, opening years of the rides: [Disney Adventure World on Wikipedia (EN)](https://en.wikipedia.org/wiki/Disney_Adventure_World) · [Avengers Assemble: Flight Force on Wikipedia (EN)](https://en.wikipedia.org/wiki/Avengers_Assemble:_Flight_Force)
 - Lion King area, Wilderness Explorers Sky Swings: [Disneyland Paris Newsroom, 16 August 2026](https://news.disneylandparis.com/en/the-lion-king-themed-attraction-will-be-home-to-the-first-ever-audio-animatronics-figure-of-scar-the-emblematic-villain/)

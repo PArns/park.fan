@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { NewsAge } from '@/components/blog/news-age';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { cn } from '@/lib/utils';
 import { newsPostPath } from '@/lib/blog/paths';
 
@@ -9,7 +10,7 @@ export interface NewsListItem {
   title: string;
   /** Publication date, `YYYY-MM-DD`. */
   date: string;
-  /** Cover, already versioned. A post without one gets a text-only row. */
+  /** Cover, already versioned. A post without one gets `BlogCoverFallback` in its place. */
   image?: string | null;
   /** The cover's focal point as a CSS `object-position`, resolved on the server. */
   imagePosition?: string;
@@ -37,8 +38,8 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
             prefetch={false}
             className="group hover:bg-muted/60 -mx-2 flex items-center gap-3 rounded-xl px-2 py-2 transition-colors"
           >
-            {item.image && (
-              <span className="bg-muted relative block aspect-[16/10] w-28 shrink-0 overflow-hidden rounded-lg">
+            <span className="bg-muted relative block aspect-[16/10] w-28 shrink-0 overflow-hidden rounded-lg">
+              {item.image ? (
                 <Image
                   src={item.image}
                   alt=""
@@ -47,8 +48,13 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
                   style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </span>
-            )}
+              ) : (
+                <BlogCoverFallback
+                  slug={item.slug}
+                  className="transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
+            </span>
             <span className="min-w-0 flex-1">
               <NewsAge date={item.date} />
               <span className="text-foreground group-hover:text-primary mt-0.5 line-clamp-3 text-sm leading-snug font-semibold text-pretty transition-colors">

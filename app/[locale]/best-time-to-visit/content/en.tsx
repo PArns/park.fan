@@ -34,7 +34,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'The quietest weekdays',
   weekdaysBody:
-    'Every park counts the same here, Disneyland or small family park: we scale each one to its own average first and only then average across parks. The bar shows how busy a typical weekday is compared with the average. Saturday stands out; the other six days sit closer together than most people expect.',
+    'Every park counts the same here, Disneyland or small family park: we scale each one to its own average first and only then average across parks. The longer the bar, the busier a typical weekday is compared with the average. Saturday stands out; the other six days sit closer together than most people expect.',
   monthsTitle: 'The quietest months',
   monthsBody:
     'The same maths, spread across the year. December is the odd one out, because the only parks in it are the ones that open in winter at all, and those are running their Christmas programme.',
@@ -55,27 +55,27 @@ const FAQ = [
   {
     question: 'Which weekday is least crowded?',
     answer:
-      'Averaged across all parks, Tuesday, Wednesday and Thursday are the quietest. Only Saturday is exceptionally busy; Sunday sits closer to Tuesday than to Saturday. Individual parks can look different, and the crowd calendar on each park page shows that day by day.',
+      'Averaged across all parks, Tuesday, Wednesday and Thursday are the quietest. Only Saturday is exceptionally busy; Sunday sits closer to Tuesday than to Saturday. Individual parks can look different; you’ll find that day by day in the crowd calendar on each park page.',
   },
   {
     question: 'Which months are theme parks least crowded?',
     answer:
-      'It depends more on the park than the rule of thumb suggests. Averaged across all parks, the summer months are not the busiest, and December sticks out at the top, because in winter only the parks with a Christmas programme are open. The month overview further up shows it month by month. For a particular park, its own calendar is what counts.',
+      'It depends more on the park than the rule of thumb suggests. Averaged across all parks, the summer months aren’t the busiest, and December sticks out at the top, because in winter only the parks with a Christmas programme are open. It’s broken down month by month in the overview further up. For a particular park, its own calendar is what counts.',
   },
   {
     question: 'Is it worth visiting in the rain?',
     answer:
-      'Often, yes. Bad weather keeps a lot of people away and the queues get shorter, especially at coasters that keep running in the rain. The insider tip only works until everyone has the same idea, which is why our forecasting model folds the weather in directly.',
+      'Often, yes. Bad weather keeps a lot of people away and the queues get shorter, especially at coasters that keep running in the rain. That only works until everyone has the same idea, which is why our forecasting model folds the weather in directly.',
   },
   {
     question: 'How do I find the best day for a specific park?',
     answer:
-      'This page gives you the broad patterns. For a specific park, open its crowd calendar: it shows green, yellow or red for every published day, with that region’s school and public holidays included.',
+      'This page gives you the broad patterns. For a specific park, open its crowd calendar, where every published day is green, yellow or red, with that region’s school and public holidays included.',
   },
   {
     question: 'Where does this data come from?',
     answer:
-      'From the wait times we have recorded ourselves at more than 200 parks. So that the ranking is not decided by the biggest parks, each park is normalised to its own average first and only then averaged across all of them.',
+      'From the wait times we’ve recorded ourselves at more than 200 parks. So that the ranking isn’t decided by the biggest parks, each park is normalised to its own average first and only then averaged across all of them.',
   },
 ] as const;
 
@@ -93,14 +93,13 @@ export function ContentEN() {
         </Lead>
         <P>
           So we worked it out, from the wait times recorded at more than 200 parks. Further down are
-          the quietest weekdays and months, the calmest hours of the day and the dates on which the
-          sofa is the better option. The crowd calendar then picks the right day for the park you
-          have in mind.
+          the quietest weekdays and months, the calmest hours of the day and the dates you’re better
+          off avoiding. Then find the right day for the park you’ve got in mind in the crowd
+          calendar.
         </P>
         <Highlight>
-          Short version for the impatient: Tuesday to Thursday outside the school holidays, at the
-          gate for opening, and treat a mixed forecast as a gift, provided there is a rain jacket in
-          the bag.
+          Go Tuesday to Thursday outside the school holidays, be at the gate for opening, and treat
+          a mixed forecast as a gift, provided there’s a rain jacket in the bag.
         </Highlight>
       </div>
 
@@ -113,8 +112,8 @@ export function ContentEN() {
         icon={CalendarRange}
       >
         <PG>
-          Weekday and month move the most. We averaged both across all parks, from the wait times
-          that were actually measured:
+          Weekday and month move the most. We averaged both across all parks, from the measured wait
+          times:
         </PG>
         <BestTimesData locale="en" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="en" />
@@ -156,7 +155,7 @@ export function ContentEN() {
             {
               icon: Ticket,
               title: 'During the big evening show',
-              body: 'A parade or fireworks draws thousands of people at once. That is exactly when seats on the coasters suddenly come free.',
+              body: 'A parade or fireworks draws thousands of people at once. That’s exactly when seats on the coasters suddenly come free.',
             },
           ]}
         />
@@ -167,7 +166,7 @@ export function ContentEN() {
           title="Arriving early helps, but not at every ride"
         >
           At the big headliners the first hour after opening often buys more rides than two in the
-          afternoon. It does not hold everywhere: some rides stay equally busy all day, others only
+          afternoon. It doesn’t hold everywhere: some rides stay equally busy all day, others only
           wake up after lunch. Each ride’s own page carries its day curve, and says whether the
           earlier alarm pays off for it.
         </SplitFigure>
@@ -176,7 +175,7 @@ export function ContentEN() {
       {/* 03 — Dates to avoid */}
       <SectionShell id="avoid" index="03" kicker="Red days" title="Dates to avoid" icon={Ban}>
         <PG>
-          It is just as useful to know when not to go. On these dates the parks are packed. You can
+          It’s just as useful to know when not to go. On these dates the parks are packed. You can
           prepare for that with snacks and a lot of patience, or plan around it:
         </PG>
         <SplitFigure
@@ -192,8 +191,8 @@ export function ContentEN() {
           }
         >
           A Saturday in the summer holidays in perfect weather is the worst case: everyone is off,
-          everyone wants out, everyone is here. If you are flexible, take the Tuesday after. The
-          same park then looks as if someone rebuilt it overnight and forgot the queues.
+          everyone wants out, everyone is here. If you’re flexible, take the Tuesday after. The same
+          park then looks as if someone rebuilt it overnight and forgot the queues.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -239,7 +238,7 @@ export function ContentEN() {
             {
               icon: CloudRain,
               title: 'Use the weather cleverly',
-              body: 'A mixed forecast keeps a lot of people at home. If a bit of drizzle does not bother you, you queue noticeably less. A rain jacket beats an umbrella.',
+              body: 'A mixed forecast keeps a lot of people at home. If a bit of drizzle doesn’t bother you, you queue noticeably less. A rain jacket beats an umbrella.',
             },
             {
               icon: Ticket,
@@ -249,7 +248,7 @@ export function ContentEN() {
                   <GlossaryTermLink termId="virtual-queue">virtual queues</GlossaryTermLink>
                 </>
               ),
-              body: 'Fill empty seats as a single rider, or join the queue in the app while you eat or wander. You will not sit together, but you will sit sooner.',
+              body: 'Fill empty seats as a single rider, or join the queue in the app while you eat or wander. You won’t sit together, but you’ll sit sooner.',
             },
           ]}
         />
@@ -277,15 +276,15 @@ export function ContentEN() {
           src="/media/efteling/symbolica.jpg"
           alt="Symbolica palace ride at Efteling"
           kicker="Green, yellow, red"
-          title="One colour per day, as far as the schedule goes"
+          title="Local school holidays included"
           badge={
             <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
               <CrowdLevelBadge level="low" />
             </GlossaryTermLink>
           }
         >
-          Every park page carries a day-by-day forecast that knows the school and public holidays of
-          the right region, including the ones you have never heard of. Pick a green day and the
+          Every park page carries a day-by-day forecast with the school and public holidays of the
+          right region built in, including the ones you’ve never heard of. Pick a green day and the
           most important part of the planning is done before you buy a ticket.
         </SplitFigure>
         <P>A few popular parks to jump straight in:</P>

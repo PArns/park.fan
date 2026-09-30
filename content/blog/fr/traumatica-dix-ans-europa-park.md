@@ -1,5 +1,5 @@
 ---
-title: 'Traumatica fête ses dix ans, et le cadeau d’anniversaire est un hôtel où les acteurs ont le droit de vous toucher'
+title: 'Traumatica fête ses dix ans à Europa-Park'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
 author: patrick
@@ -24,7 +24,7 @@ rideLinks: false
 coverImage:
   src: /media/europa-park/blue-fire-megacoaster.jpg
   alt: 'Le looping de blue fire la nuit, éclairé en bleu'
-  caption: 'Europa-Park une fois la nuit tombée. Les photos de Traumatica 2026 attendront la première, et au moins ce looping ne mord pas.'
+  caption: 'Europa-Park une fois la nuit tombée. Les photos de Traumatica 2026 attendront la première.'
   credit: 'Patrick Arns'
 seo:
   title: 'Traumatica 2026 : 10 ans, THE HOTEL et le Vampire’s Club'
@@ -63,8 +63,7 @@ touché dans le Murderdome, mais c’est le seul endroit qu’on traverse seul d
 bout en bout. D’après le
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html),
 elle n’est pas accessible en fauteuil roulant et réservée aux 18 ans et plus.
-Elle coûte 29 € en plus du billet Traumatica. Combien de temps on y reste, le
-parc ne le dit pas, et c’est sans doute voulu.
+Elle coûte 29 € en plus du billet Traumatica. Combien de temps on y reste, le parc ne le dit pas.
 
 Le **Vampire’s Club** revient, mais seulement les deux premiers week-ends : les
 25 et 26 septembre, puis les 2 et 3 octobre, de 23 h à 3 h, 18 ans et plus. Ces

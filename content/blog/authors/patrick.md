@@ -1,5 +1,6 @@
 ---
 name: Patrick Arns
+shortName: Patrick
 role: Founder of park.fan
 location: Germany
 url: https://arns.dev

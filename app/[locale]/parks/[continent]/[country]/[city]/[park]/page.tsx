@@ -12,6 +12,8 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
+import { ClosedRidesList } from '@/components/parks/closed-rides-list';
+import { closedRidesForSearch as buildClosedRidesForSearch } from '@/lib/parks/closed-ride';
 import { hasParkStatsPage } from '@/lib/api/stats';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
@@ -325,6 +327,14 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
 
+  // The park's closed rides as the ride search finds them (`ClosedRideMatches`). A few rows at
+  // most, and nothing at all for a park without one — so this ships nothing on nearly every park.
+  const closedRidesForSearch = buildClosedRidesForSearch(
+    parkFull?.closedAttractions,
+    locale,
+    (month) => t('closedRides.since', { month })
+  );
+
   // Today in the PARK's timezone, decided here and handed down. What reads it is the curated
   // works period on the attraction cards, and they render inside a client tree that also renders
   // on the server — both sides of hydration since PAR-272: a `new Date()` down there would be
@@ -558,6 +568,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           landNames={landNames}
           attractionsByLand={attractionsByLand}
           otherAttractionsLabel={otherAttractionsLabel}
+          closedRides={closedRidesForSearch}
           todayPanel={
             <ParkTodayPanel
               initialData={park}
@@ -569,6 +580,15 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               renderedAtMs={seedNowMs}
             />
           }
+        />
+        {/* The rides that closed for good, under the ride list and apart from it — the live
+          grid is the park today. From the full payload: the client snapshot above carries none of
+          it. Renders nothing for a park without one. */}
+        <ClosedRidesList
+          rides={parkFull?.closedAttractions}
+          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          locale={locale}
+          className="mt-8"
         />
         {kidsData && (
           <ParkKidsLink

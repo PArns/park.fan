@@ -1,13 +1,4 @@
-import {
-  CalendarDays,
-  Footprints,
-  Gauge,
-  HelpCircle,
-  Sunrise,
-  Theater,
-  Users,
-  Wand2,
-} from 'lucide-react';
+import { CalendarDays, Clock, Footprints, Gauge, Users, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -18,14 +9,16 @@ import type { PlannerEntry } from '@/lib/planner/types';
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 
 /**
- * Der erklärende Teil der Planer-Seite, deutsch.
+ * The planner page's article, German. German is the source; the other five are
+ * derived from it (docs/blog.md §6).
  *
- * Eine Datei pro Sprache, wie bei der Guide-Seite und bei Fancast: Der Text
- * enthält Links und Auszeichnungen, und sechs Übersetzungen davon in eine
- * `messages`-Datei zu pressen macht aus jedem Absatz einen Schlüssel.
+ * One module per language, like the guide page and Fancast: the text carries
+ * links and markup, and pressing six translations of it into a `messages` file
+ * would turn every paragraph into a key.
  *
- * Jede Zahl hier steht so in `_fixtures.ts` und stammt aus einer echten Antwort
- * der API. Wer eine ändert, ändert beide.
+ * It describes what a visitor can do with the planner, not how the planner
+ * works inside. Every figure here is in `_fixtures.ts` and comes from a real
+ * API answer; whoever changes one changes both.
  */
 export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntry[] }) {
   return (
@@ -34,255 +27,154 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
         id="ein-geplanter-tag"
         index="01"
         icon={CalendarDays}
-        kicker="Der Tag als Zeitleiste"
-        title="Was der Planer aus einem Parktag macht"
+        kicker="Zeitleiste"
+        title="Blöcke und Umstiege"
       >
         <P>
-          Ein Block ist eine Bahn, und seine Höhe ist die Wartezeit, die für seine Stunde
-          vorhergesagt ist. Deshalb wächst derselbe Block, wenn du ihn in eine vollere Stunde
-          ziehst, und schrumpft in einer ruhigeren. Zwischen zwei Blöcken steht der Umstieg: wie
-          weit es ist und ob die Zeit dafür reicht. Der Weg aus der Station und die Fahrt selbst
-          sind im Umstieg eingerechnet.
+          Jede Bahn in deinem Plan ist ein Block auf der Zeitleiste des Tages, und er ist so hoch,
+          wie du zu dieser Uhrzeit voraussichtlich anstehst. Ziehst du ihn in eine vollere Stunde,
+          wächst er, in einer ruhigeren schrumpft er. Zwischen zwei Blöcken steht der Umstieg mit
+          der Entfernung zur nächsten Bahn und der Angabe, ob die Zeit reicht. „Knapp“ heißt, dass
+          es nicht mehr aufgeht, sobald die Wartezeit davor so weit danebenliegt wie üblich.
         </P>
         <P>
-          Die Zeitleiste unten besteht aus denselben Bauteilen wie der Planer und zeigt die Antwort,
-          die die API am 4. September 2026 für Samstag, den 12. September im{' '}
-          <A href={PARK}>Phantasialand</A> gegeben hat. Zieh einen Block auf eine andere Uhrzeit. Er
-          rastet auf fünf Minuten ein, und seine Höhe und die Umstiege daneben werden neu gerechnet.
-          Gespeichert wird hier nichts.
+          Unten liegt ein Plan für das <A href={PARK}>Phantasialand</A> am Samstag, 12. September
+          2026, mit den Wartezeiten, die am 4. September dafür vorhergesagt waren. Zieh einen Block
+          auf eine andere Uhrzeit, dann werden seine Höhe und die Umstiege neu gerechnet. In deinem
+          eigenen Plan landet davon nichts.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
-          Der ausgewählte Block sagt es in Worten: Uhrzeit, erwartete Wartezeit und wie weit die
-          Prognose für diese Bahn typischerweise danebenliegt.
+          Am ausgewählten Block stehen die Uhrzeit, die erwartete Wartezeit und wie weit die
+          Prognose für diese Bahn meist danebenliegt.
         </Note>
+        <P>
+          Auf einem breiten Bildschirm passen zwei Tage nebeneinander, etwa Samstag und Sonntag oder
+          zwei Parks. Zu jedem steht die Wartezeit zusammen da, und du siehst, an welchem Tag du
+          weniger anstehst.
+        </P>
       </Chapter>
 
       <Chapter
         id="woher-die-zahl-kommt"
         index="02"
         icon={Gauge}
-        kicker="Die Zahl am Block"
-        title="Woher die Minuten kommen und wie sicher sie sind"
+        kicker="Prognose"
+        title="Woher die Wartezeiten kommen"
       >
         <P>
-          Für jede Bahn liefert die API eine Kurve über den Tag, Stunde für Stunde. Taron steht an
-          diesem Samstag bei 45 Minuten um zehn, 50 um elf, 40 um eins und wieder 50 am Abend, über
-          den ganzen Tag liegen nur zehn Minuten dazwischen. Ein gutes Fenster gibt es für Taron an
-          diesem Tag nicht, also setzt der Planer die Bahn dorthin, wo der Rest des Tages Platz
-          lässt. Black Mamba dagegen fällt von 35 Minuten mittags auf 20 um sechs, und Chiapas läuft
-          andersherum, von 20 auf 35.
+          Für jede Bahn gibt es eine Prognose über den ganzen Tag, Stunde für Stunde. An diesem
+          Samstag fällt Black Mamba von 35 Minuten am Mittag auf 20 am Abend, Chiapas steht um
+          Viertel nach zehn bei 20 Minuten und am Nachmittag bei 35. Black Mamba gehört an diesem
+          Tag also in den Abend, Chiapas an den Morgen.
         </P>
         <P>
-          Dazu kommt, wie weit die Zahl typischerweise danebenliegt, und das hängt am Niveau: Je
-          länger eine Schlange, desto größer die Streuung. Für die Bahnen, deren Tageshöhe an diesem
-          Samstag bei 35 Minuten oder darüber liegt, nennt die API 15,4 Minuten typischen Fehler,
-          für die flacheren 10,9. Typisch heißt: Die Hälfte der Tage liegt weiter daneben. Deshalb
-          schreibt der Planer die Zahl als Plus-Minus-Angabe an den ausgewählten Block. Als Spanne
-          sähe sie so aus, als läge die echte Wartezeit sicher darin.
-        </P>
-        <Note>
-          Hinter Tarons Kurve stehen 142 gemessene Tage, hinter Black Mamba 161. Wie viele es sind,
-          steht in den <A href={`${PARK}/taron`}>Statistiken der Bahn</A>.
-        </Note>
-        <P>
-          Der Planer sagt außerdem, welcher Art die Prognose ist. Rechnet das Modell den Tag
-          stundengenau durch, steht dort „Stundenprognose“. Kommt die Tageshöhe aus der Vorhersage
-          und der Verlauf aus früheren Tagen, steht „Aus Tagesprognose“, so wie an diesem Samstag.
-          Weit im Voraus ist schon die Tageshöhe unsicher, und dann steht dort „Grobe Schätzung“.
-          Für Tage, an denen wir nie etwas gemessen haben, gibt es keinen Plan mit Zahlen.
-        </P>
-      </Chapter>
-
-      <Chapter
-        id="oeffnungszeiten"
-        index="03"
-        icon={Sunrise}
-        kicker="Öffnung"
-        title="Der Park macht um neun auf, die Bahn um zehn"
-      >
-        <P>
-          An diesem Samstag öffnet das Phantasialand um 9 Uhr. Taron, F.L.Y., beide Winja’s und Raik
-          laufen ab 10, Chiapas ab 10:15. Wer um neun am Drehkreuz steht, kann Black Mamba fahren
-          oder Maus au Chocolat, sonst nichts. Ein Plan, der die erste Stunde mit Headlinern füllt,
-          geht an diesem Tag also nicht auf.
+          Wie weit die Prognose für eine Bahn üblicherweise danebenliegt, steht am Block, bei{' '}
+          <A href={`${PARK}/taron`}>Taron</A> an diesem Samstag 15 Minuten. Je weiter der Tag
+          entfernt ist, desto grober wird die Zahl, und daneben steht, wie sie zustande kam: von
+          „Stundenprognose“ über „Aus Tagesprognose“ bis „Grobe Schätzung“.
         </P>
         <P>
-          Der Planer kennt die Öffnungszeit jeder einzelnen Bahn und lässt einen Block nicht davor
-          rutschen. Für den Abend geht das nicht, weil kein Feed verlässlich meldet, wann eine Bahn
-          schließt. Die Zeitleiste hört mit der Schließzeit des Parks auf.
+          Der <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> zeigt seine
+          Wartezeiten nur in der eigenen App im Park-WLAN, deshalb gibt es für ihn keine Zahlen.
+          Planen kannst du dort trotzdem, nur ohne Minuten und ohne die Knöpfe zum Sortieren.
         </P>
-      </Chapter>
-
-      <Chapter
-        id="umstiege"
-        index="04"
-        icon={Footprints}
-        kicker="Der Weg dazwischen"
-        title="Wie lange du von Bahn zu Bahn brauchst"
-      >
-        <P>
-          Ein Wartezeiten-Feed sagt, dass an Taron 50 Minuten stehen. Ob du es von Rookburgh aus
-          rechtzeitig dorthin schaffst, sagt er nicht, und das rechnet der Umstieg aus. Er nimmt die
-          Entfernung zwischen den Koordinaten der beiden Bahnen, plus drei Minuten für den Weg aus
-          der Station und drei für Einsteigen und Fahren, wo keine Fahrzeit hinterlegt ist.
-        </P>
-        <P>
-          Die Entfernung ist Luftlinie und wird auch so genannt. Zu Fuß ist es weiter: Wege biegen
-          um Wasser, Warteschlangen und Einbahnstraßen, und das Phantasialand stapelt Rookburgh und
-          Klugheim übereinander. Für die obere Grenze rechnet der Planer deshalb mit Parktempo statt
-          Schrittgeschwindigkeit und mit einem Umweg von zwei Dritteln auf die Luftlinie.
-        </P>
-        <Note>
-          „Knapp“ bedeutet: Dieser Umstieg geht nicht mehr auf, wenn die Prognose so weit
-          danebenliegt, wie sie selbst angibt. Wo die API keine Streuung liefert, bleibt es bei
-          „gut“ und die Bewertung sagt das im Titel dazu.
-        </Note>
       </Chapter>
 
       <Chapter
         id="wer-mitkommt"
-        index="05"
+        index="03"
         icon={Users}
-        kicker="Die Gruppe"
-        title="Was die kleinste Person fahren darf"
+        kicker="Gruppe"
+        title="Mindestgröße und Wasserbahnen"
       >
         <P>
-          Der Planer fragt zwei Dinge über die Gruppe, einmal pro Tag: wie groß die kleinste Person
-          ist und ob ihr möglichst trocken bleiben wollt. Die Größe gibt es in Zehnerschritten von
-          90 bis 140 cm, die Zeile öffnet bei 110 cm. Beide Antworten gehören zum Tag und nicht zum
-          Park oder zum Browser, denn dieselbe Familie kommt im Oktober vielleicht ohne das
-          Vierjährige wieder.
+          Einen neuen Tag legst du mit vier Fragen an: welcher Park, welcher Tag, wer mitkommt und
+          welche großen Bahnen in den Plan sollen. Im Monatskalender ist jeder Tag nach dem
+          erwarteten Andrang eingefärbt, ausführlicher steht es im{' '}
+          <A href={`${PARK}/wartezeiten-kalender`}>Wartezeiten-Kalender</A> des Parks.
         </P>
         <P>
-          Die Antworten markieren und blenden nichts aus. Liegt die Mindestgröße einer Bahn über
-          deiner Angabe, steht an ihr „Mindestgröße höher als die kleinste Person im Plan“. Eine
-          Wasserbahn trägt die Markierung „Wasserbahn“, sobald ihr trocken bleiben wollt. Beide
-          Bahnen bleiben in der Liste, weil nur die Gruppe weiß, ob jemand am Ausgang wartet und die
-          Taschen hält.
-        </P>
-        <P>
-          Im <A href={PARK}>Phantasialand</A> verlangt Taron laut API am 29. September 2026{' '}
-          {DEMO_PARTY_RIDES.taron.minimumHeight} cm, Chiapas{' '}
-          {DEMO_PARTY_RIDES.chiapas.minimumHeight} cm, und Chiapas macht nass. Steht die Zeile auf
-          den vorgeschlagenen 110 cm, tragen beide die Markierung zur Mindestgröße, und Chiapas
-          bekommt bei „trocken bleiben“ zusätzlich „Wasserbahn“. Bei 130 cm ist Chiapas nicht mehr
-          wegen der Größe markiert, Taron bleibt es.
+          Sind Kinder dabei, gibst du an, wie groß das kleinste ist und ob ihr möglichst trocken
+          bleiben wollt. Bahnen mit höherer Mindestgröße und Wasserbahnen bekommen dann ein Zeichen
+          und bleiben trotzdem in der Liste, denn ob jemand am Ausgang wartet und die Taschen hält,
+          entscheidet ihr. Im Phantasialand verlangt Taron {DEMO_PARTY_RIDES.taron.minimumHeight}{' '}
+          cm, Chiapas {DEMO_PARTY_RIDES.chiapas.minimumHeight} cm, und Chiapas macht nass (Stand 29.
+          September 2026). Mit einem Kind von 120 cm tragen beide das Zeichen.
         </P>
         <Note>
-          Für den Moptis Monkey Depot ist bei uns keine Mindestgröße hinterlegt. Der Planer liest
-          das als „nicht angegeben“ und markiert die Bahn nicht. Ein Verbot ist das nicht, und eine
-          Freigabe auch nicht: Ein Schild am Eingang gilt vor dem, was hier steht.
+          Wo bei uns keine Mindestgröße hinterlegt ist, etwa bei Moptis Monkey Depot, bleibt die
+          Bahn ohne Zeichen. Am Eingang der Bahn gilt, was der Park vorgibt.
         </Note>
       </Chapter>
 
       <Chapter
+        id="tagesablauf"
+        index="04"
+        icon={Clock}
+        kicker="Tagesablauf"
+        title="Öffnungszeiten, Shows und Pausen"
+      >
+        <P>
+          An diesem Samstag öffnet das Phantasialand um 9 Uhr, Taron, F.L.Y. und die meisten anderen
+          großen Bahnen fahren aber erst ab 10. Wer um neun da ist, fängt mit Black Mamba oder Maus
+          au Chocolat an. Vor die Öffnungszeit seiner Bahn lässt sich ein Block nicht ziehen.
+        </P>
+        <P>
+          Die Spielzeiten der Shows stehen mit in der Zeitleiste. Für heute sind es die Zeiten des
+          Parks. Für spätere Tage nennt keine Quelle die Zeiten, deshalb nehmen wir die vom letzten
+          gleichen Wochentag und schreiben „Voraussichtlich“ dazu.
+        </P>
+        <P>
+          Pausen, Essen oder einen Treffpunkt legst du als eigenen Block in den Tag und ziehst ihn
+          so lang, wie du ihn brauchst. Wer beim Anlegen „Mittagessen einplanen“ wählt, hat um 12:30
+          schon einen. Über dem Tag stehen außerdem Ferien und Feiertage und, bis etwa zwei Wochen
+          im Voraus, das Wetter.
+        </P>
+      </Chapter>
+
+      <Chapter
         id="reihenfolge"
-        index="06"
+        index="05"
         icon={Wand2}
         kicker="Sortieren"
         title="Den Tag sortieren lassen"
       >
         <P>
-          Zwei Knöpfe übernehmen das. „Alle Headliner einplanen“ holt die großen Bahnen des Parks
-          dazu, die noch nicht im Tag stehen, und sortiert anschließend den ganzen Tag. „Tag
-          optimieren“ ergänzt nichts und ordnet nur um, was schon geplant ist. Dahinter läuft beide
-          Male dieselbe Rechnung. Den ersten Knopf nimmst du, wenn noch große Bahnen fehlen, den
-          zweiten, wenn nur die Reihenfolge besser werden soll.
+          Mit zwei Knöpfen sortierst du den Tag, ohne jeden Block selbst zu schieben. „Alle
+          Headliner einplanen“ holt die großen Bahnen dazu, die noch fehlen, und ordnet dann den
+          ganzen Tag. „Tag optimieren“ stellt nur um, was schon im Plan steht. In beiden Fällen
+          kommt alles vor Parkschluss dran, und du stehst insgesamt so kurz wie möglich an.
         </P>
         <P>
-          Sortiert wird nach vier Regeln, in dieser Rangfolge. Zuerst zählt, was dir wichtig ist:
-          Was du nach vorn ziehst, fällt als Letztes raus. Danach zählt, dass alles vor Parkschluss
-          noch drankommt. Eine Bahn weniger, die sicher stattfindet, ist dem Planer lieber als eine
-          mehr, die nicht mehr klappt. Dann zählt die Summe der Wartezeiten. Und wo zwei
-          Reihenfolgen gleich viel kosten, gewinnt die, die früher fertig ist. Einen Regler, mit dem
-          du Anstehen gegen Herumstehen abwägst, gibt es nicht, weil sich für dieses Verhältnis kein
-          Wert begründen lässt.
+          Mittagspause und abgehakte Bahnen bleiben, wo sie sind. Danach steht da, wie viele Minuten
+          Anstehen du sparst, und „Rückgängig“ holt den alten Stand zurück.
         </P>
         <P>
-          Eine Regel über den frühen Morgen steckt darin nicht. Der Planer kennt nur die
-          Stundenkurve jeder einzelnen Bahn. Liegt sie kurz nach der Öffnung am tiefsten, kommt „die
-          große Bahn zuerst“ von selbst heraus; liegt sie flach, kommt etwas anderes heraus. An
-          einem gemessenen Tag steht Taron Stunde für Stunde bei 60, 60, 54, 53 und 59 Minuten,
-          während Chiapas um 22 Minuten steigt.
-        </P>
-        <P>
-          Manchmal lautet der Vorschlag, eine Runde zu warten, statt sich sofort anzustellen. Das
-          passiert unter einer einzigen Bedingung: Die Schlange muss so weit einbrechen, dass man
-          mitsamt der Pause früher wieder frei ist als beim sofortigen Anstellen. Kürzer anzustehen
-          reicht dafür nicht, der Tag darf durch die Pause nicht später enden. Länger als zwei
-          Stunden dauert so eine Pause nie. Die Grenze greift aber kaum, denn eine Pause zahlt sich
-          nur aus, wenn sie kürzer ist als die Schlange, die sie erspart, und zwei Stunden Pause
-          bräuchten dafür eine Schlange von über zwei Stunden.
-        </P>
-        <P>
-          Eine Mittagspause um eins bleibt um eins, und eine abgehakte Bahn ist gefahren und wird
-          nicht neu einsortiert; geplant wird um beide herum. Hinterher steht da, was passiert ist.
-          „18 Min. weniger Warten“ ist die Differenz zwischen zwei Rechnungen desselben Verfahrens,
-          einmal vor und einmal nach dem Klick; ist nichts zu holen, steht dort „Passt schon so“ und
-          der Plan bleibt, wie er war. Beim Headliner-Knopf fehlt die Ersparnis, weil der Tag mit
-          den neuen Bahnen länger wird; gezählt wird stattdessen, wie viele Bahnen dazugekommen sind
-          und wie viele nicht zur Gruppe passen. Was am Ende nicht mehr in den Tag passt, wird nach
-          beiden Knöpfen mitgezählt. Ein „Rückgängig“ gehört dazu und stellt den Stand von vor dem
-          Klick wieder her, solange der Planer offen ist.
-        </P>
-        <Note>
-          Wo keine Wartezeiten ankommen, erscheinen die beiden Knöpfe gar nicht erst. Im Hansa-Park
-          kostet jede Bahn dieselbe angenommene Null, damit ist jede Reihenfolge so gut wie jede
-          andere und es gibt nichts zu sortieren.
-        </Note>
-      </Chapter>
-
-      <Chapter
-        id="spielzeiten"
-        index="07"
-        icon={Theater}
-        kicker="Shows"
-        title="Woher die Spielzeiten kommen"
-      >
-        <P>
-          Für heute kennt die API die Zeiten des Betreibers. Für jeden anderen Tag gibt es keine
-          Quelle, die sie im Voraus wüsste, also rechnet sie den letzten gleichen Wochentag hoch und
-          sagt dazu, von welchem Datum die Zeiten stammen und aus wie vielen Tagen. Damit man beides
-          auseinanderhält, bekommt eine Hochrechnung eine Tilde vor die Uhrzeit und das Wort
-          „Voraussichtlich“. Eine Betreiberangabe steht ohne beides da.
-        </P>
-        <P>
-          An diesem Samstag sind alle Spielzeiten hochgerechnet, die von Dragon Drago und Kroka’s
-          Lodge aus dem 15. August, die von Miji African Dancers aus dem 29. Die letzte Vorstellung
-          von Kroka’s Lodge um 19 Uhr taucht auf der Zeitleiste nicht auf: Der Park schließt um 18
-          Uhr, und hochgerechnete Zeiten nach Feierabend fallen weg.
+          Passt nicht alles in den Tag, öffnet sich ein Assistent. Zuerst stehen dort Änderungen,
+          die Platz schaffen, ohne dass eine Bahn wegfällt, etwa eine kürzere Mittagspause. Reicht
+          das nicht, bringst du die Bahnen in eine Reihenfolge nach Wichtigkeit, und gestrichen wird
+          von unten.
         </P>
       </Chapter>
 
-      <Chapter
-        id="grenzen"
-        index="08"
-        icon={HelpCircle}
-        kicker="Grenzen"
-        title="Was der Planer nicht weiß"
-      >
+      <Chapter id="im-park" index="06" icon={Footprints} kicker="Im Park" title="Am Tag selbst">
         <P>
-          Nicht jeder Park veröffentlicht Wartezeiten. Der{' '}
-          <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> zeigt seine nur in
-          der eigenen App im Park-WLAN, also kommt für ihn nie eine Zahl an, und der Planer erfindet
-          keine. Für Tage, die zu weit weg sind, gibt es kein Wetter: Die Vorhersage reicht rund
-          zwei Wochen, danach steht dort, dass sie nicht reicht, statt einer Lücke, die wie „bleibt
-          trocken“ aussieht.
+          Im Park hakst du ab, was du gefahren bist. Am Block steht dann die Wartezeit, die beim
+          Abhaken gemeldet war, und wie weit die Schätzung davon entfernt lag. Meldet eine geplante
+          Bahn gerade geschlossen, steht das ebenfalls an ihrem Block.
         </P>
         <P>
-          Am Tag selbst kann eine Bahn stehenbleiben, eine Show ausfallen oder ein Gewitter den
-          Nachmittag verschieben. Der Plan rechnet nur aus, ob der Tag mit den vorhergesagten
-          Wartezeiten aufgehen kann. Im Park hakst du gefahrene Bahnen ab, und der Planer schreibt
-          die Wartezeit dazu, die wirklich anstand.
+          Mit Benachrichtigungen sagen wir Bescheid, wenn du zur nächsten Bahn losmusst, wenn eine
+          geplante Bahn schließt oder wieder öffnet und wenn sich eine Wartezeit deutlich ändert.
+          Auch die Spielzeiten der Shows kannst du dir schicken lassen. Was davon ankommt, wählst du
+          selbst.
         </P>
         <P>
-          Der Plan liegt in deinem Browser, ein Konto brauchst du nicht. Erst wenn du
-          Benachrichtigungen einschaltest, wird eine Kopie auf den Server gelegt, und der Planer
-          sagt das an dieser Stelle. Wer ihn ohne Plan öffnet, bekommt den Assistenten mit den vier
-          Fragen, die zuerst geklärt sein müssen: Park, Tag, wer mitkommt, und welche großen Bahnen
-          in den Tag sollen. Den passenden Tag findest du im{' '}
-          <A href={`${PARK}/wartezeiten-kalender`}>Wartezeiten-Kalender</A> jedes Parks.
+          Der Plan liegt in deinem Browser, ein Konto brauchst du nicht. Erst für die
+          Benachrichtigungen legen wir eine Kopie auf unseren Server, und sie ist wieder weg, sobald
+          du sie ausschaltest. Solange sie dort liegt, kannst du einen Link zum Plan verschicken.
+          Wer ihn öffnet, kann den Plan als eigene Kopie übernehmen.
         </P>
       </Chapter>
     </>

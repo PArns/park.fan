@@ -111,7 +111,7 @@
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
-      "intro": "park.fan shows the wait times at <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong>, updated every five minutes. For the coming days it also says how busy each park is likely to be.",
+      "intro": "park.fan shows the wait times at <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
@@ -128,9 +128,9 @@
       "rmseDesc": "RMSE: how bad the worst misses are, outliers weighted more",
       "mapeDesc": "MAPE: percentage error relative to actual wait time",
       "totalPredictions": "Predictions Made",
-      "totalPredictionsDesc": "verified against real recorded wait times",
+      "totalPredictionsDesc": "verified against recorded wait times",
       "coverage": "Verified Coverage",
-      "coverageDesc": "of all predictions cross-checked with actual data",
+      "coverageDesc": "of all predictions checked against measurements",
       "parksCoverage": "Coverage",
       "r2Score": "Model Fit",
       "r2ScoreDesc": "R²: how well the model explains wait time variance",
@@ -143,7 +143,7 @@
       "howText": "Three things go into every forecast: the park’s measured wait-time history; the weather forecast, school holidays and public holidays; and what is happening at the park that day, such as a special event or the start of the season. From those the model works out the expected wait per ride and per hour and combines them into the day’s crowd level, as far ahead as the park has published its schedule.",
       "fancastLink": "How Fancast, our forecasting model, works",
       "improvingTitle": "Every forecast is checked the day after",
-      "improvingText": "The day after a forecast, the system lays it next to the wait time actually measured and writes the difference into the next training run. The figures above come from that comparison with real days.",
+      "improvingText": "The day after a forecast, the system lays it next to the wait time actually measured and writes the difference into the next training run. The figures above come from that comparison.",
       "badge": {
         "excellent": "Excellent Accuracy",
         "good": "Good Accuracy",
@@ -182,7 +182,7 @@
       },
       "three": {
         "title": "Plan the route",
-        "text": "Every ride has a curve for the day, built from the days it was measured. It shows at what time the queue is usually shortest.",
+        "text": "Every ride has a curve for the day, built from the days it was measured. On it you can see what time of day the queue is usually shortest.",
         "tip": "The curve is a median over many days. If a ride breaks down in the morning, the rest of that day will look different from the curve.",
         "caption": "A coaster’s typical day, from opening to evening.",
         "best": "The quietest windows sit early and in the last hour."
@@ -201,7 +201,7 @@
       "kicker": "Live wait times",
       "title": "Wait times for every ride, refreshed every five minutes",
       "lead": "For every attraction and every queue type, plus opening hours and breakdowns.",
-      "body": "95 minutes is a lot on a Tuesday in September and an ordinary morning on a Saturday in October. That is why every ride page shows what is typical for that weekday and how long the queue gets on busy days.",
+      "body": "95 minutes is a lot on a Tuesday in September and an ordinary morning on a Saturday in October. That’s why every ride page lists the typical wait for that weekday and how long the queue gets on busy days.",
       "ridesTitle": "Every ride has its own page",
       "ridesText": "A ride’s page lists its queue types, its day as measured and as forecast, typical wait times by weekday, the height limit and a rope-drop tip.",
       "ridesLink": "See an example",
@@ -237,7 +237,7 @@
       },
       "p2": {
         "title": "Collect",
-        "text": "Every reading is stored with its timestamp, ride and park. Together they show how each ride’s wait time changes over a day, a week and a season.",
+        "text": "Every reading is stored with its timestamp, ride and park. From them you can follow how each ride’s wait time changes over a day, a week and a season.",
         "label": "Records"
       },
       "p3": {
@@ -260,12 +260,12 @@
       "title": "A forecast of our own, with the error printed next to it",
       "lead": "The forecasts come from Fancast, a model park.fan trains itself. It is retrained every day at 06:00 UTC on the previous day’s wait times.",
       "compareTitle": "How other wait-time sites forecast",
-      "compareLead": "Three approaches are common. None of them says how far off its forecasts turned out to be.",
+      "compareLead": "Three approaches are common. None of them publishes how far off its forecasts turned out to be.",
       "c1": {
         "kicker": "Approach 1",
         "title": "No forecast at all",
         "text": "One of the best-known German wait-time sites deliberately does without predictions: too many factors, and a wrong forecast could hurt parks and visitors alike. All it shows is how busy it was.",
-        "limit": "Looking back does not show which day next month will be busy."
+        "limit": "From a look back you can’t work out which day next month will be busy."
       },
       "c2": {
         "kicker": "Approach 2",
@@ -280,12 +280,12 @@
         "limit": "There is no figure for how often the level is right."
       },
       "answerTitle": "Fancast forecasts by the hour, ride by ride, and publishes its error.",
-      "answerText": "Alongside the day’s crowd level, every ride gets an expected wait for each hour. Each forecast is later compared with the real measurement, and the accuracy figures further down come from that comparison."
+      "answerText": "Alongside the day’s crowd level, every ride gets an expected wait for each hour. Each forecast is later compared with what was actually measured, and the accuracy figures further down come from that comparison."
     },
     "bestTime": {
       "kicker": "Best time to ride",
       "title": "Many rides have two quiet windows, in the morning and towards the evening",
-      "lead": "Rope drop does not help on every ride. Some are equally busy all day, others only fill up from midday. The curve shows a single ride, as the median of its measured days.",
+      "lead": "Rope drop does not help on every ride. Some are equally busy all day, others only fill up from midday. The curve is one ride’s median across its measured days.",
       "chartSubtitle": "Median of {days} measured days, sampled every 5 minutes",
       "legendToday": "measured today",
       "legendMedian": "median of past days",
@@ -319,7 +319,7 @@
       "favHint": "Parks, rides, shows, restaurants",
       "favText": "Tap the star and the park or ride shows up on your homepage, with its live wait time and opening status. Favourites are saved in your browser and need no account.",
       "mapTitle": "Map & in-park mode",
-      "mapText": "The park map shows rides, shows and restaurants as coloured markers. Tap one to see its status and wait time. When you are in the park, the map shows where you are and puts the nearest rides at the top."
+      "mapText": "Rides, shows and restaurants appear on the park map as coloured markers. Tap one to see its status and wait time. When you’re in the park, your position is marked on the map and the nearest rides move to the top."
     },
     "dictionary": {
       "kicker": "Dictionary · nerd knowledge",
@@ -342,15 +342,15 @@
       },
       "r3": {
         "title": "New wait times every five minutes",
-        "text": "park.fan reads three public sources and checks them against each other. When a ride goes down, its page shows that on the next update."
+        "text": "park.fan reads three public sources and checks them against each other. When a ride goes down, it’s marked on its page with the next update."
       },
       "r4": {
         "title": "Free, no account needed",
-        "text": "There is no paywall and no subscription tier with more data. What park.fan knows about a park is on that park’s page for anyone to see."
+        "text": "There is no paywall and no subscription tier with more data. Everything park.fan has on a park is on that park’s page for anyone to see."
       },
       "r5": {
         "title": "200+ parks, 23 countries, 6 languages",
-        "text": "Tokyo DisneySea, Efteling and Phantasialand are among them. Where a park publishes its wait times, they are here; where it does not, the park page says so."
+        "text": "Tokyo DisneySea, Efteling and Phantasialand are among them. Where a park publishes its wait times, they are here; where it doesn’t, there’s a note on the park page."
       },
       "r6": {
         "title": "Articles with measured data",
@@ -424,6 +424,7 @@
     "fancast": "Fancast",
     "bestTime": "Best time to visit",
     "glossaryLink": "Dictionary",
+    "changelog": "Changelog",
     "blog": "Blog",
     "favorites": "Favorites",
     "alerts": "Alerts",
@@ -436,7 +437,7 @@
       "label": "Find park.fan faster on Google",
       "aria": "Find park.fan faster on Google (opens in a new tab)",
       "promptTitle": "Enjoying park.fan?",
-      "promptText": "Make us a preferred source on Google in one click — park.fan wait times and guides then rank higher in your search results."
+      "promptText": "Make us a preferred source on Google in one click, and park.fan wait times and guides will rank higher in your search results."
     },
     "copyright": "© {year} park.fan. All rights reserved.",
     "poweredBy": "Powered by",
@@ -474,6 +475,7 @@
     "menu": "Menu",
     "home": "Home",
     "parks": "All Parks",
+    "overview": "Overview",
     "continents": "Continents",
     "explore": "Explore Parks",
     "search": "Search Parks & Attractions",
@@ -487,6 +489,7 @@
     "blog": "Backstage",
     "more": "More",
     "fancast": "Fancast",
+    "fancastHint": "The forecasting model behind the crowd calendar.",
     "contribute": "Upload photos",
     "bestTime": "Best Time to Visit",
     "bestTimeHint": "The quietest weekdays and months, park by park.",
@@ -605,7 +608,7 @@
     "startsIn": "Starts in",
     "ropeDropSection": {
       "title": "Rope Drop Tip",
-      "description": "Be there at opening — it pays off most for these attractions:",
+      "description": "Be there at opening. It pays off most for these attractions:",
       "save": "save ~{minutes} min",
       "eveningDescription": "Better saved for the evening:",
       "eveningWait": "evening ~{minutes} min"
@@ -776,7 +779,8 @@
       "CLOSED": "Closed",
       "REFURBISHMENT": "Refurbishment",
       "DOWN": "Down",
-      "UNKNOWN": "Unknown"
+      "UNKNOWN": "Unknown",
+      "RETIRED": "Closed permanently"
     },
     "outage": {
       "since": "Outage reported since {when}",
@@ -904,32 +908,32 @@
         "heading": "Rain expected",
         "bodyNow": "It’s raining at the park right now.",
         "bodyStartsInMin": "Rain expected in about {duration} ({intensity}).",
-        "bodyEndsInMin": "It’s raining — ends in about {duration}.",
-        "bodyEndsInMinIntensity": "It’s raining ({intensity}) — ends in about {duration}.",
+        "bodyEndsInMin": "It’s raining. Ends in about {duration}.",
+        "bodyEndsInMinIntensity": "It’s raining ({intensity}). Ends in about {duration}.",
         "bodyNowIntensity": "It’s raining at the park right now ({intensity}).",
         "bodyNowEndsAt": "It’s raining at the park right now. Ends around {time}.",
         "bodyNowEndsAtIntensity": "It’s raining at the park right now ({intensity}). Ends around {time}."
       },
       "thunderstorm": {
         "heading": "Thunderstorm warning",
-        "bodyNow": "Thunderstorm at the park right now — head to a sheltered area.",
+        "bodyNow": "Thunderstorm at the park right now. Head to a sheltered area.",
         "bodyInMin": "Thunderstorm expected in about {duration}.",
-        "bodyInMinSoon": "Thunderstorm in about {duration} — head to a sheltered area.",
-        "bodyEndsInMin": "Thunderstorm in progress — ends in about {duration}."
+        "bodyInMinSoon": "Thunderstorm in about {duration}. Head to a sheltered area.",
+        "bodyEndsInMin": "Thunderstorm in progress. Ends in about {duration}."
       },
       "hail": {
         "heading": "Hail warning",
-        "bodyNow": "Hail at the park right now — find a sheltered area.",
+        "bodyNow": "Hail at the park right now. Find a sheltered area.",
         "bodyInMin": "Hail expected in about {duration}.",
-        "bodyInMinSoon": "Hail in about {duration} — find a sheltered area.",
-        "bodyEndsInMin": "Hail in progress — ends in about {duration}."
+        "bodyInMinSoon": "Hail in about {duration}. Find a sheltered area.",
+        "bodyEndsInMin": "Hail in progress. Ends in about {duration}."
       },
       "storm": {
         "heading": "Storm warning",
         "bodyNow": "Strong wind gusts up to {gusts} right now.",
         "bodyInMin": "Strong wind gusts up to {gusts} expected in about {duration}.",
-        "bodyInMinSoon": "Strong wind gusts up to {gusts} in about {duration} — find a sheltered area.",
-        "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {duration}."
+        "bodyInMinSoon": "Strong wind gusts up to {gusts} in about {duration}. Find a sheltered area.",
+        "bodyEndsInMin": "Strong wind gusts up to {gusts}. Ends in about {duration}."
       },
       "precipTimeline": "Precipitation forecast until {until}, peak {max} mm per 15 min.",
       "precipProbability": "rain probability",
@@ -949,7 +953,7 @@
     "crowdTodayShort": "Today",
     "localTime": "local time",
     "influencingHolidays": "Holidays in nearby regions",
-    "influencingHolidaysBody": "School holidays are on there right now, sending plenty of day visitors this way. Expect bigger crowds and longer waits than usual.",
+    "influencingHolidaysBody": "It’s school holidays there right now, and plenty of day visitors come from that region. Expect bigger crowds and longer waits than usual.",
     "influencingHolidaysEffect": "School holidays there, so more day visitors than usual.",
     "influencingHolidaysShort": "Nearby regions",
     "stats": {
@@ -985,7 +989,7 @@
       "subtitle": "Based on AI crowd forecasts for the next 3 months",
       "quietestDaysTitle": "Quietest Days of the Week",
       "upcomingQuietTitle": "Upcoming Quiet Days",
-      "schoolHolidayWarning": "School holidays are typically much busier {inPark} — check the crowd calendar before booking.",
+      "schoolHolidayWarning": "School holidays are typically much busier {inPark}. Check the crowd calendar before booking.",
       "noUpcomingQuiet": "No particularly quiet days in the next 30 days.",
       "noData": "Not enough crowd forecast data available yet.",
       "bestWeekendDayTitle": "Best Weekend Day",
@@ -996,7 +1000,7 @@
     },
     "yearlyOutlook": {
       "title": "The next twelve months",
-      "hint": "What the forecast expects, day by day, gathered into months.",
+      "hint": "The forecast day by day, gathered into months.",
       "recommendedDays": "{count}/{total} recommended"
     },
     "weatherWarnings": {
@@ -1013,7 +1017,7 @@
       "instruction": "Advice",
       "source": "Source: {name}"
     },
-    "headlinerForecastTitle": "Expected waits (highlights)",
+    "headlinerForecastTitle": "Expected waits (headliners)",
     "crowdMeaning": {
       "very_low": "Barely any crowds – short waits, even on the big coasters.",
       "low": "Quiet day – waits below average.",
@@ -1106,14 +1110,14 @@
       "hourlyHint": "From {days} operating days over the past year.",
       "nextTitle": "Where to go next",
       "nextLive": "Live wait times",
-      "nextLiveBody": "What the queues are showing right now, ride by ride.",
+      "nextLiveBody": "The wait times right now, ride by ride.",
       "nextCalendar": "Wait-time calendar",
       "nextCalendarBody": "Expected crowds day by day, with opening hours and school holidays.",
       "method": {
         "title": "Where these numbers come from",
-        "measured": "Every figure on this page is measured, not estimated. The source is the <posted>posted wait time</posted> published {inPark}: park.fan reads it continuously and files every reading with a timestamp. This analysis covers {days} operating days across {years} years.",
-        "percentiles": "“Typical” is the median of all readings: half the <wait>wait times</wait> were below it, half above. “Peak” is the 90th percentile, the value only one reading in ten went past. The median says what to expect, the peak says what a full day looks like. A month’s <crowd>crowd level</crowd> sums up both across every ride.",
-        "hourly": "The day curve rests on a shorter window: {days} operating days since {from}. Hours in which a ride reported nothing stay empty. A gap is not a zero."
+        "measured": "Every figure on this page comes from measurements. The source is the <posted>posted wait time</posted> published {inPark}: park.fan reads it continuously and files every reading with a timestamp. This analysis covers {days} operating days across {years} years.",
+        "percentiles": "“Typical” is the median of all readings: half the <wait>wait times</wait> were below it, half above. “Peak” is the 90th percentile, the value only one reading in ten went past. The median is what to expect, the peak is what a full day looks like. A month’s <crowd>crowd level</crowd> sums up both across every ride.",
+        "hourly": "The day curve rests on a shorter window: {days} operating days since {from}. Hours in which a ride reported nothing stay empty and don’t count as zero minutes."
       },
       "dataset": {
         "name": "Wait-time statistics {forPark}",
@@ -1131,12 +1135,12 @@
       "metaTitleShort": "{park} with kids",
       "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
       "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} of {total} attractions post a minimum height, in {steps} steps. This page shows what a child may ride at each height.",
+      "lead": "{inParkLeading}, {withHeight} of {total} attractions post a minimum height, in {steps} steps.",
       "tiersTitle": "What fits at which height",
       "tiersHint": "{withHeight} of {total} attractions post a minimum height. Every step is a limit the park names itself.",
       "noLimitTitle": "No minimum height posted",
       "noLimitSummary": "{count, plural, =1 {The attraction without a limit} other {The {count} attractions without a limit}}",
-      "noLimitNote": "The park names no limit for these. The data does not say whether the ride is open to every height or the figure is missing. The sign at the ride entrance is what counts.",
+      "noLimitNote": "The park names no limit for these. Whether the ride is open to every height or the figure is just missing, we can’t tell. What’s posted at the ride entrance is what counts.",
       "rideableCount": "{rideable} of {total} attractions",
       "tierTitle": "From",
       "newAtTier": "New at this height:",
@@ -1145,7 +1149,7 @@
       "method": {
         "title": "Where the heights come from",
         "limits": "The limits are the minimum heights the park publishes for its attractions. park.fan estimates none. An attraction with no figure counts as rideable, as in the height filter on the park page. Maximum heights on children's rides count too: a taller child is not counted there.",
-        "stand": "The figures are read again every day. At the park, the sign at the ride entrance is what counts."
+        "stand": "The figures are read again every day. At the park, what’s posted at the ride entrance is what counts."
       },
       "nextTitle": "Go next to",
       "nextPark": "Live wait times",
@@ -1160,7 +1164,7 @@
     "dayComparison": {
       "compare": "Compare two days",
       "compareStop": "End comparison",
-      "hintNone": "Pick two days from the calendar — they can be in different months.",
+      "hintNone": "Pick two days from the calendar, even from different months.",
       "hintOne": "Pick one more day.",
       "hintTwo": "Two days picked.",
       "reopen": "Open comparison",
@@ -1193,6 +1197,10 @@
     },
     "overview": {
       "minutesUnit": "min"
+    },
+    "closedRides": {
+      "title": "Permanently closed attractions",
+      "since": "since {month}"
     }
   },
   "attractions": {
@@ -1311,15 +1319,15 @@
     "intro": "Current wait time for {attraction} {inPark} – live, refreshed every five minutes. Follow the live status, today’s history and typical peak hours to avoid long queues.",
     "headliner": {
       "title": "Headliner",
-      "description": "Must-see attraction at this park"
+      "description": "One of this park’s main attractions"
     },
     "ropeDrop": {
       "badge": "Rope Drop",
-      "badgeHint": "Worth riding right at park opening — saves about {savings} min",
+      "badgeHint": "Worth riding right at park opening: saves about {savings} min",
       "cardLine": "Rope drop: save ~{savings} min",
       "cardLineUntil": "Rope drop: save ~{savings} min (until ~<time></time>)",
       "title": "Rope Drop Tip",
-      "explainer": "Be at the gates when the park opens and head straight here — that’s when the wait is shortest.",
+      "explainer": "Be at the gates when the park opens and head straight here. That’s when the wait is shortest.",
       "strengthHigh": "Strong tip",
       "strengthModerate": "Good tip",
       "atOpening": "At opening",
@@ -1335,17 +1343,17 @@
       "bestSlotOffsetHours": "Quieter alternative: lowest waits ~{hours} h after opening",
       "byDaytype": "Typical savings: ~{weekend} min on weekends · ~{weekday} min on weekdays",
       "eveningBadge": "Better later",
-      "eveningBadgeHint": "Already ~{openWait} min at opening — typically shortest later in the day",
-      "eveningBadgeHintWait": "Already ~{openWait} min at opening — typically only ~{bestSlotWait} min later in the day",
+      "eveningBadgeHint": "Already ~{openWait} min at opening, typically shortest later in the day",
+      "eveningBadgeHintWait": "Already ~{openWait} min at opening, typically only ~{bestSlotWait} min later in the day",
       "eveningTitle": "Better later than at opening",
-      "eveningText": "<term>Rope drop</term> doesn’t pay off here — the line is already ~{openWait} min right at opening (day’s peak: ~{busyPeak} min).",
+      "eveningText": "<term>Rope drop</term> doesn’t pay off here: the line is already ~{openWait} min right at opening (day’s peak: ~{busyPeak} min).",
       "eveningBestAt": "Typically shortest around <time></time>",
       "eveningBestAtWait": "Typically only ~{wait} min around <time></time>",
       "eveningBestOffset": "Typically shortest ~{minutes} min after opening",
       "eveningBestOffsetHours": "Typically shortest ~{hours} h after opening",
       "eveningWait": "Evening",
-      "confidenceLow": "Based on limited data — treat as a rough guide",
-      "notWorth": "No need to rush here at opening — unlike other rides in this park.",
+      "confidenceLow": "Based on limited data: treat as a rough guide",
+      "notWorth": "No need to rush here at opening, unlike other rides in this park.",
       "bestTimeTitle": "When it’s quieter here",
       "bestTimeText": "At opening the line here runs ~{openWait} min, at the day’s peak ~{busyPeak} min.",
       "spread": "Difference",
@@ -1366,7 +1374,7 @@
       "todayMax": "Max.",
       "fancastLink": "How we predict this: Fancast",
       "aiBadge": "AI forecast",
-      "aiExplainer": "Past times are real measurements; upcoming values are AI predictions.",
+      "aiExplainer": "Past times are measured; upcoming values are AI predictions.",
       "legendRecorded": "Recorded",
       "legendForecast": "AI forecast",
       "legendTypical": "Typical range"
@@ -1428,6 +1436,7 @@
         "park_never_reports": "The data source for this park does not report outages. We spot them from closures during opening hours, but publish no statistics on them.",
         "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
         "no_schedule": "This park publishes no opening hours, so we show no figures here.",
+        "outside_window": "This park was not open in the last {days} days, so we show no figures here.",
         "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",
         "thin_exposure": "We have seen {name} running too rarely in the last {days} days to say anything about outages.",
         "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
@@ -1437,6 +1446,14 @@
         "stale_data": "These figures are not current right now, so we are not showing them."
       },
       "longestDetail": "The maximum across the {count} reported outages."
+    },
+    "retired": {
+      "h1Suffix": "Closed Permanently",
+      "noticeTitle": "Closed permanently since {date}",
+      "noticePost": "Our report: <link>{title}</link>",
+      "noticeSource": "Source: <link>{host}</link>",
+      "noticePark": "Current wait times for the other attractions: <link>{park}</link>",
+      "waitsTitle": "Wait times before it closed"
     }
   },
   "nearby": {
@@ -1444,7 +1461,7 @@
     "enableDescription": "Enable location access to find parks and attractions near you.",
     "enable": "Enable location",
     "loadingLocation": "Locating...",
-    "permissionDenied": "Location needed for the best experience",
+    "permissionDenied": "No nearby parks without your location",
     "permissionDeniedDescription": "Without your location we cannot show you the parks around you, and inside a park we cannot say what is next to you right now. You can grant access in your browser settings.",
     "locationUnavailable": "Location could not be determined",
     "locationUnavailableDescription": "Your location could not be determined. Enable location access, or try again later.",
@@ -1703,7 +1720,11 @@
       "factBy": "built by {manufacturer}",
       "factOpened": "opened {year}",
       "factMinHeight": "min. height {height}",
-      "factLand": "{land} area"
+      "factLand": "{land} area",
+      "retiredTitleTemplate": "{attraction} at {park} – Closed Permanently",
+      "retiredTitleTemplateBare": "{attraction} – Closed Permanently",
+      "retiredLead": "{attraction} at {park} has been closed permanently since {date}.",
+      "retiredWaits": "Before that, a normal weekday queue peaked at {minutes} minutes."
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
@@ -1737,7 +1758,7 @@
       "title": "Frequently Asked Questions",
       "waitTimesQ": "What are the wait times at {park} today?",
       "waitTimesA": "Right now the average wait at {park} is about {avg} minutes (peak {peak} minutes) across {operating} open attractions. Live wait times for every ride are shown above on this page.",
-      "waitTimesNoDataA": "Wait times at {park} vary by day, season and crowd level. Check the live wait times for every ride above, plus the crowd calendar to find the best time to visit.",
+      "waitTimesNoDataA": "Wait times at {park} vary by day and season. The live wait times for every ride are above, and the crowd calendar has the best time to visit.",
       "openingHoursQ": "What are the opening hours for {park} today?",
       "openingHoursA": "Today, {date}, {park} is open from {open} to {close}.",
       "openingHoursClosed": "Today, {date}, {park} is closed.",
@@ -1747,7 +1768,7 @@
       "attractionCountQ": "How many attractions are at {park}?",
       "attractionCountA": "There are {count} attractions at {park}.",
       "themedAreasQ": "Which themed areas are at {park}?",
-      "themedAreasA": "{park} features {count} themed areas:",
+      "themedAreasA": "{park} has {count} themed areas:",
       "showsQ": "Are there shows at {park}?",
       "showsA": "Yes, {park} offers {count} shows:",
       "diningQ": "What dining options are available at {park}?",
@@ -1755,7 +1776,7 @@
       "crowdCalendarQ": "Does {park} have a crowd calendar?",
       "crowdCalendarA": "Yes. The crowd calendar {forPark} rates every single day, and for parks that open year-round it reaches up to a year ahead. Green days mean short queues, red ones long.",
       "leastCrowdedQ": "When is {park} least crowded?",
-      "leastCrowdedA": "{park} is typically quietest on {days}. Check the <calendar>crowd calendar</calendar> above for upcoming low-crowd days and plan your visit accordingly.",
+      "leastCrowdedA": "{park} is typically quietest on {days}. The next quiet days are in the <calendar>crowd calendar</calendar> above.",
       "leastCrowdedNoDataA": "Check the <calendar>crowd calendar</calendar> on this page for upcoming quiet days. Green days signal short queues and smaller crowds.",
       "attraction": {
         "title": "Frequently Asked Questions",
@@ -1766,8 +1787,8 @@
         "waitTimeA": "Wait times for {attraction} vary by day and season. Check live wait times on park.fan.",
         "waitTimeStatsA": "Today the wait for {attraction} averages {avg} minutes, ranging from {min} to {max} minutes. The current live wait time is shown above on this page.",
         "singleRiderQ": "Does {attraction} have a Single Rider line?",
-        "singleRiderA": "Yes, {attraction} has a Single Rider line for individual guests to fill empty seats.",
-        "paidQueueQ": "Is there a fast pass options for {attraction}?",
+        "singleRiderA": "Yes. If you ride alone, you can use the single rider line at {attraction} and fill an empty seat.",
+        "paidQueueQ": "Is there a fast pass option for {attraction}?",
         "paidQueueA": "Yes, expedited access is available via {type}."
       }
     },
@@ -1784,7 +1805,7 @@
         "favoritesQ": "Can I save my favorite parks and attractions on park.fan?",
         "favoritesA": "Yes. Tap the star on a park, a ride, a show or a restaurant. Your favorites then appear on the homepage with their live wait time and opening status. They are saved in your browser, and you do not need an account.",
         "featuresQ": "What information does park.fan offer besides live wait times?",
-        "featuresA": "Besides the live wait times, every park page carries the opening hours, the show times, the restaurants with their cuisine and whether a table has to be booked, the day’s weather forecast, the measured wait-time history and the crowd calendar. Each ride’s own page adds the typical course of its day.",
+        "featuresA": "Every park page also carries the opening hours, the show times, the restaurants with their cuisine and whether a table has to be booked, the day’s weather forecast, the measured wait-time history and the crowd calendar. Each ride’s own page adds the typical course of its day.",
         "mobileQ": "Does park.fan work on smartphones?",
         "mobileA": "Yes. park.fan runs in the browser on a phone, a tablet or a computer, so there is no app to install. In the park you can use it to see where the queue is short right now. When the site can tell you are inside a park, the nearest rides move to the top."
       }
@@ -1916,7 +1937,7 @@
       "title": "{term} on the blog"
     },
     "overviewTitle": "Theme Park Dictionary",
-    "overviewDescription": "Over {count} theme park terms and definitions explained in plain language — wait times, crowd levels, Lightning Lanes, virtual queues, coaster elements, single rider, fast pass, soft openings, and more.",
+    "overviewDescription": "Over {count} theme park terms and definitions explained in plain language: wait times, crowd levels, Lightning Lanes, virtual queues, coaster elements, single rider, fast pass, soft openings, and more.",
     "overviewKeywords": "theme park dictionary, theme park definitions, wait time definition, crowd level meaning, Lightning Lane, virtual queue, roller coaster terms, theme park vocabulary, amusement park terms",
     "termTitleSuffix": "Theme Park Dictionary",
     "termH1Suffix": "Explained – Theme Park Definition",
@@ -1991,7 +2012,7 @@
   },
   "bestTime": {
     "title": "Best Time to Visit Theme Parks",
-    "description": "The quietest weekdays and months across 200+ theme parks, from real wait-time data, plus tactics for short queues and a crowd calendar for your park.",
+    "description": "The quietest weekdays and months across 200+ theme parks, from measured wait times, plus tactics for short queues and a crowd calendar for your park.",
     "quietestByPark": {
       "title": "The quietest day at each park",
       "intro": "The averages above cover every park at once. Taken one by one, each park marches to its own beat, set by school holidays, how far people travel and when the locals get a day off.",
@@ -2027,7 +2048,7 @@
     "title": "Blog",
     "heroTitle": "Stories and data from the parks",
     "badge": "park.fan Blog",
-    "description": "Trip reports, data dives and park guides from the park.fan team.",
+    "description": "Trip reports, wait-time analyses and park guides from the park.fan team.",
     "intro": "Trip reports, wait-time analyses and guides to the parks we cover. Written by someone who stands in the queues too.",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
@@ -2035,20 +2056,21 @@
     "readingTime": "{minutes} min read",
     "updatedOn": "Updated {date}",
     "correction": "Correction",
+    "quoteOriginal": "Original in {language}",
     "languageNotice": {
       "available": "This article is also available in {language}",
-      "fallback": "Not translated yet — showing the {language} version."
+      "fallback": "Not translated yet. Showing the {language} version."
     },
     "breadcrumbs": "Breadcrumbs",
     "categories": "Categories",
     "category": {
       "label": "Category",
-      "description": "All park.fan blog posts filed under {category} — trip reports, data deep-dives and park guides, newest first.",
+      "description": "All park.fan blog posts filed under {category}: trip reports, data analyses and park guides, newest first.",
       "postsCount": "{count, plural, =1 {# post} other {# posts}}"
     },
     "home": {
       "heading": "From the blog",
-      "intro": "Trip reports, data pieces and theme park news — the newest posts are at the top.",
+      "intro": "Trip reports, data pieces and theme park news, with the newest posts at the top.",
       "viewAll": "Read all posts"
     },
     "gallery": {
@@ -2120,7 +2142,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Every park.fan blog post tagged #{tag} — guides, wait-time analyses and park news on the topic, newest first.",
+      "description": "Every park.fan blog post tagged #{tag}: guides, wait-time analyses and park news on the topic, newest first.",
       "postsCount": "{count, plural, =1 {# post} other {# posts}}",
       "cloudTitle": "Topics"
     },
@@ -2230,7 +2252,7 @@
       "typeLabel": "Ride type",
       "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Track elements",
-      "elementsHint": "In ride order — tap a figure to see it in 3-D.",
+      "elementsHint": "In ride order. Tap a figure to see it in 3-D.",
       "has3d": "3-D",
       "manufacturer": "Manufacturer",
       "opened": "Opened",
@@ -2506,15 +2528,15 @@
       "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
       "introTitle": "Nothing planned yet",
-      "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get from one ride to the next, and whether that is enough.",
+      "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them you can see how long you have to get from one ride to the next, and whether that’s enough.",
       "browseParks": "Pick a park",
       "demo": {
-        "caption": "Real values: Phantasialand on Saturday 12 September 2026, read on 4 September. The day has passed; everything here still moves."
+        "caption": "Figures for Phantasialand on Saturday 12 September 2026, read on 4 September. The day has passed; everything here still moves."
       },
       "steps": {
         "find": {
           "title": "Pick a park and a day",
-          "body": "The wait-time calendar shows how busy a day will be. From there you go straight into a plan."
+          "body": "In the wait-time calendar you can see how busy a day will be. From there you go straight into a plan."
         },
         "add": {
           "title": "Add rides",

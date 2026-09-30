@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: serate horror da sabato all’8 novembre, e nella casa nuova aspetta Jason'
+title: 'Al Movie Park Germany serate horror fino all’8 novembre'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Sabato 26 settembre parte a Bottrop il 28° Halloween Horror Festival: nove
   case dell’orrore, tra cui la nuova Jason Universe dai 16 anni, lo spettacolo
-  PHOBIA e 22 serate fino all’8 novembre. Date, biglietti e perché il tuo
-  costume resta a casa.
+  PHOBIA e 22 serate fino all’8 novembre. Date, biglietti e il divieto di
+  costumi.
 tags:
   - notizie
   - movie-park
@@ -42,10 +42,10 @@ seo:
     - Movie Park Halloween costumi
 ---
 
-Venerdì il [Movie Park Germany](ref:movie-park-germany) chiude ancora alle 17.
-**Sabato 26 settembre** resta aperto fino alle 22, e da inizio serata oltre
-300 mostri girano per Bottrop-Kirchhellen: l’**Halloween Horror Festival** apre
-la sua 28ª edizione, con il motto «Legends Never Die».
+**Sabato 26 settembre** il [Movie Park Germany](ref:movie-park-germany) apre la
+28ª edizione dell’**Halloween Horror Festival**, con il motto «Legends Never
+Die». Quel giorno resta aperto fino alle 22, il venerdì prima chiude ancora alle
+17, e da inizio serata oltre 300 mostri girano per Bottrop-Kirchhellen.
 
 Con la [festa per famiglie di Disney](/blog/disneyland-paris-halloween-2026),
 che comincia lo stesso sabato, ha poco in comune. A Bottrop la sera ci sono
@@ -72,8 +72,8 @@ Hate**. Bottrop è stato il primo parco divertimenti a organizzarla, nel 2022.
 
 **Jason Universe** sostituisce Secrets of St. Elmo – Last Hunt, in funzione dal
 2020, e porta Jason Voorhees a Bottrop. Quattordici scene e un preshow
-ripercorrono i capitoli dal due al sei di _Venerdì 13_. Il primo manca per un
-buon motivo: lì a uccidere è ancora sua madre. La casa è **vietata ai minori di
+ripercorrono i capitoli dal due al sei di _Venerdì 13_. Il primo manca, perché
+lì a uccidere è ancora sua madre. La casa è **vietata ai minori di
 16 anni**, e all’ingresso delle case viene chiesto un documento.
 
 Due case note sono state rifatte. L’[Ahoj-Brause Horror Lab](ref:movie-park-germany/ahoj-brause-horror-lab)
@@ -117,8 +117,11 @@ parco.
 ## Cosa resta a casa
 
 A differenza di Disney il 31 ottobre, il Movie Park non ammette **costumi,
-maschere e trucco horror propri** in nessuna delle serate. Nemmeno l’alcol può
-entrare, e all’ingresso controllano le borse.
+maschere e trucco horror propri** in nessuna delle serate. Solo i bambini alti
+fino a 1,40 metri possono indossare maschere, costumi o trucco, come si legge
+nelle [FAQ del parco](https://www.movieparkgermany.de/en/halloween/faq)
+(al 29 settembre 2026). Nemmeno l’alcol può entrare, e all’ingresso
+controllano le borse.
 
 ## Quale sera
 
@@ -135,7 +138,7 @@ venerdì o una domenica prima: il 2, il 4, il 9, l’11 o il 16 ottobre.
 
 ```
 
-Come se la cava il festival rispetto a Traumatica, Walibi e Toverland lo dice la
+Il confronto con Traumatica, Walibi e Toverland è nella
 [panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026). Quale giorno
 della settimana è di solito il più tranquillo al Movie Park, e com’è il
 calendario autunnale, lo trovi nella
@@ -150,3 +153,6 @@ Date, case e biglietti:
 
 > [!CORRECTION]
 > 25 settembre 2026: la prima versione diceva che i biglietti a fascia oraria per le case si vendevano solo online. Secondo la mappa del parco, i biglietti rimasti si vendono anche nel parco, fino a esaurimento.
+
+> [!CORRECTION]
+> 29 settembre 2026: la prima versione diceva che costumi, maschere e trucco propri non erano ammessi in nessuna serata. Secondo le FAQ del parco, i bambini alti fino a 1,40 metri possono indossare maschere, costumi e trucco. Per tutti gli altri ospiti il divieto resta.

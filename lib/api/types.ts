@@ -738,6 +738,15 @@ export type DowntimeBlock =
         | 'park_never_reports'
         | 'artefact_regime'
         | 'no_schedule'
+        /**
+         * The park publishes opening hours, but none of them falls inside the
+         * measured window, so there is no operating time to divide by.
+         *
+         * Seasonal parks between two seasons. Distinct from `no_schedule`
+         * (no hours at all) and from `thin_exposure` (the ride ran, too rarely).
+         * `outages` is 0 here and means "no operating day", not "no outage".
+         */
+        | 'outside_window'
         | 'thin_events'
         | 'thin_exposure'
         | 'inhomogeneous'
@@ -761,7 +770,7 @@ export type DowntimeBlock =
          * which is why this reason comes and goes without the ride changing.
          */
         | 'heavily_censored';
-      /** 0 for the three reasons above that are about us, where it means "we cannot see". */
+      /** 0 for the reasons above that are about us, where it means "we cannot see". */
       outages: number;
       windowDays: number;
     };
@@ -1019,6 +1028,13 @@ export interface ParkWithAttractions extends ParkBase {
   currentLoad?: ParkLoad | null;
   weather?: WeatherData;
   attractions: ParkAttraction[];
+  /**
+   * The park's rides that closed for good, newest closure first — never part of `attractions`,
+   * so nothing that counts, filters or plans the park today sees them. The park page lists them
+   * under the ride list, each linking to its own page. Absent on an API that predates it
+   * (v4.api.park.fan PAR-607), and a ride an editor hid is left out.
+   */
+  closedAttractions?: ClosedAttraction[];
   /** Headliners worth rope-dropping (worth=true), sorted by minutes saved. */
   ropeDropHeadliners?: RopeDropHeadliner[];
   shows?: ParkShow[];
@@ -1199,7 +1215,40 @@ export interface AttractionResponse {
    * cannot survive a day.
    */
   outage?: AttractionOutage;
+  /**
+   * When the ride stopped operating for good (ISO 8601), or absent while it runs.
+   *
+   * Only this endpoint carries a retired ride — the park payload leaves it out — so a ride page
+   * that cannot find its slug in the park asks here before it answers 404. Read it together with
+   * {@link retiredKind}: a row can be retired without anything having closed.
+   */
+  retiredAt?: string | null;
+  /**
+   * Why it was retired and on whose authority: free English text, often just the URL of the
+   * source, and for X2 a park.fan news post. Never shown as it stands; see
+   * `lib/parks/closed-ride.ts` for what is read out of it.
+   */
+  retiredReason?: string | null;
+  /**
+   * `closed` — the ride stopped operating for good, and its page says so. `reclassified` — the
+   * source now lists the entity as a show or a restaurant, so nothing closed and the ride page
+   * stays a 404. Absent while not retired (v4.api.park.fan PAR-607).
+   */
+  retiredKind?: RetiredKind | null;
 }
+
+/** A ride of the park that closed for good, as the park payload lists it. */
+export interface ClosedAttraction {
+  id: string;
+  name: string;
+  slug: string;
+  land?: string | null;
+  /** The day it closed (ISO 8601, midnight UTC of that day). */
+  retiredAt: string;
+}
+
+/** Which of the two retirements `retiredAt` is — see {@link AttractionResponse.retiredKind}. */
+export type RetiredKind = 'closed' | 'reclassified';
 
 /**
  * The paid (or free) queue-jump product a ride sells.

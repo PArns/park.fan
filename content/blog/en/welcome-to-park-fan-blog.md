@@ -9,7 +9,7 @@ excerpt: >-
   A stroller by the Märchensee, a gondola ride through “1001 Nacht”, and thirty
   years later sixty minutes in the Taron queue wondering whether it was worth
   it. How a childhood at Phantasialand turned into a platform that can read a
-  park day, and why there is a Taron wheel on my desk.
+  park day, and why there’s a Taron wheel on my desk.
 tags:
   - park-fan
   - phantasialand
@@ -47,7 +47,7 @@ seo:
 ---
 
 Some places work like a switch. You walk through a turnstile and the stuff that
-was gnawing at you two hours ago is gone. Not pushed aside, actually gone. I
+was gnawing at you two hours ago is gone. I
 don’t know many places that manage that, and the few that do are, in the cold
 light of day, built out of plywood and paint by people you never get to see.
 
@@ -70,7 +70,7 @@ with showman Gottlieb Löffelhardt. Puppets alone don’t make a story, though, 
 every scene had a button. Press it once and a tape told you the fairy tale.
 
 I pressed those buttons, and when my parents were already two scenes ahead I ran
-back and pressed them again. It was never a park visit to me. It was an audio
+back and pressed them again. To me it was an audio
 drama where I got to work the play button. The fairy-tale forest is gone now:
 the park tore it down over the winter of 2007/2008 to build Baumbergen, and
 little more than the temple from “Little Muck” is left of it.
@@ -81,7 +81,7 @@ Then there was the **“1001 Nacht”** gondola ride, running from 1970 and the
 first stationary dark ride in Germany. By the late eighties it was a fixed part
 of every family visit. My parents and me in one of those gondolas, eight metres
 above the ground: in through the huge dragon’s mouth, past the scenes of Ali
-Baba and Sinbad, past the legendary Rok bird, into a dripstone cave you could
+Baba and Sinbad, past the mythical Rok bird, into a dripstone cave you could
 fall into the way you fall into an open book of fairy tales.
 
 My father died in 2019. Maybe that’s exactly why those shared rides have become
@@ -98,8 +98,7 @@ other through an enclosure built to look like a warehouse, loop against loop.
 At the time Germany’s only duelling coaster, running as “Cop Car Chase” from
 2005, closed in August 2006 and torn down from that October. Its plot became the
 Santa Monica Pier area, which opened in May 2007 around the Disk’O Coaster
-Crazy Surfer. The ride is gone. The addiction it triggered is not. Strictly
-speaking, my mother is to blame for everything that followed.
+Crazy Surfer.
 
 So the division of labour was settled: Dad supplied the fairy tales, Mum the
 roller coasters.
@@ -116,16 +115,16 @@ clear the mice out of the imperial Gustav E. Lehmann cake factory, armed with a
 piping bag, across seven rooms and about seven minutes. A fresh high score still makes me grin the
 way those buttons by the Märchensee did. Even though my girlfriend has the
 remarkable habit of snatching the 5000-point mice at precisely the moment I line
-them up, costing me the household record ride after ride.
+them up, and it costs me the household record ride after ride.
 
 One triumph is mine alone, though. After what feels like a hundred rides I
 finally found it, the **10,000-point mouse in the second room**. Where exactly
-it sits? That stays my secret, with all due respect to the question.
+it sits stays my secret.
 
-Here’s something I didn’t know for a long time, and it still stops me short
-every time: the gondola ride ran until 1 November 2009, then the park levelled
-its site and built on it again, and one of those new buildings on what is now
-the Kaiserplatz has housed Maus au Chocolat since 2011. When I’m in there
+The gondola ride ran until 1 November 2009. Then the park levelled its site and
+built on it again, and one of those new buildings on what is now the Kaiserplatz
+has housed Maus au Chocolat since 2011. I didn’t know that for a long time, and
+it still stops me short every time. When I’m in there
 arguing over points with my girlfriend, I’m sitting roughly where I rode
 through the dragon’s mouth with my father as a child.
 
@@ -133,14 +132,14 @@ Afterwards, as consolation for the lost 5000-pointers: pancakes and shakes at
 **Phenie’s** in Wuze Town, which beat anything else theme parks sell for
 breakfast.
 
-## Orlando, May 2026, once in a lifetime
+## Orlando, May 2026
 
 ![Animatronic velociraptor head in the red-lit raptor paddock of the VelociCoaster | Islands of Adventure: the raptor in the paddock, close enough to touch. | right](/media/velocicoaster/02-raptor-paddock.jpg)
 
 That left one big item on the life list with no tick next to it, and there had
 been no tick for years. In May 2026 we finally flew to Orlando: **Walt Disney
-World, Universal and SeaWorld**, the full programme, the once-in-a-lifetime trip
-I’d dreamed about since childhood. It is a strangely lovely feeling when the boy
+World, Universal and SeaWorld**, the full programme, the trip
+I’d dreamed about since childhood. It’s a strangely lovely feeling when the boy
 from the Märchensee stands in front of Cinderella Castle at the
 [Magic Kingdom](ref:magic-kingdom-park?bare) decades later. Everything bigger,
 everything louder, everything further from Brühl, and still exactly the same
@@ -152,17 +151,16 @@ Manta at [SeaWorld](ref:seaworld-orlando?bare). Two weeks, and that item on the
 list finally has its tick.
 
 I’m still sorting the pictures, and the reports aren’t finished. They’ll appear
-here on the blog once they are. One thing up front: it was worth every
-single year of looking forward to it.
+here on the blog once they are. It was worth every single year of looking
+forward to it.
 
 ## The second self: the developer with too many side projects
 
 Running alongside all those park years there was always a second self, one that
 has been building software for over twenty-five years. Many of those years in
 the VPN world, first as Head of Software Development at **CyberGhost**, today as
-Distinguished Software Engineer at **ExpressVPN**. Systems that millions of
-people use at the same time without ever sparing them a thought, and
-infrastructure gets no higher praise than that. Plus open source, smart home
+Distinguished Software Engineer at **ExpressVPN**. Those are systems millions of
+people use at the same time without ever sparing them a thought. Plus open source, smart home
 adapters and more side projects than are good for me; all the stuff piling up
 at [arns.dev](https://arns.dev) and [GitHub](https://github.com/PArns).
 
@@ -175,8 +173,8 @@ long time to notice that these are the same question.
 ![Taron racing through the basalt columns of the Klugheim themed area | Taron mid-course through Klugheim. I stood in front of this ride for sixty minutes. | left](/media/phantasialand/taron-4x3.jpg)
 
 Until that one afternoon that pretty much every park fan knows in some version
-or other. Sixty minutes of [Taron](ref:phantasialand/taron?bare) standby, a
-display lying to your face with stoic friendliness about “roughly 45 minutes”,
+or other. Sixty minutes of [Taron](ref:phantasialand/taron?bare) standby, the
+display stuck on “roughly 45 minutes” the whole time,
 and two stations away a half-empty family coaster sending car after car off into
 nothing. Taron handles around 1200 people an hour, so I was standing roughly a
 thousand people back from the station and could have worked that out. Instead I
@@ -197,8 +195,8 @@ park reported its data differently from everybody else. Debugging sessions that
 lasted longer than some park days. And then the moment a model correctly
 predicts a packed Saturday for the first time, days before it happens.
 
-The point was never displaying the current number. The park puts that up
-itself. It gets interesting one step earlier: a model of our own had to learn
+The park puts the current number up itself, so displaying it was never the
+point. A model of our own had to learn
 that a rainy bridge day in October is something completely different from a
 sunny holiday Saturday in July. Nobody who has ever sat in a car with children
 needs that explained; a computer does. That school holidays, weather, opening hours and
@@ -239,9 +237,9 @@ exactly as long as it takes everyone else to read the same insider tip.
 
 “Sundays are busy” is therefore about as useful as “summer is warm”. A Sunday in late November at
 Phantasialand is a different question from a Sunday in early August at
-Europa-Park, and that is how the calendar answers it: with a park and a date.
-Once you’re in the park, the live data tells you whether the queue in front of
-you is the exception or the rule.
+Europa-Park, which is why the calendar works with a park and a date.
+Once you’re in the park, the live data is where you see whether the queue in
+front of you is the exception or the rule.
 
 ## What park.fan does that the display at the entrance doesn’t
 
@@ -255,22 +253,22 @@ better not. Whether it gets that right, you don’t have to take my word for; it
 on the [Fancast page](/fancast).
 
 On top of that: wait times, crowd levels, weather at the park entrance, opening
-hours and attraction histories, in six languages. Since September there is also
+hours and attraction histories, in six languages. Since September there’s also
 the [trip planner](/blog/trip-planner), which lays your rides out on a timeline
 against the forecast, and if you like, a push notification tells you when the
-queue at a ride drops below a mark you set. No corporation, no paywall, no ads,
-built by somebody who queues up himself.
+queue at a ride drops below a mark you set. park.fan has no paywall and no ads,
+and the man who builds it queues up himself.
 
 ## What this blog is meant to be
 
-A wait time on its own says almost nothing. The same number means something
-completely different depending on the ride and the day:
+The same wait time means something completely different depending on the ride
+and the day:
 
 - **50 minutes** for a flat ride? A straight waste of time. Three proper
   coasters would have fitted into that window.
 - **50 minutes** for the
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  on a Saturday afternoon? Perfectly normal. That is what an ordinary afternoon
+  on a Saturday afternoon? Perfectly normal. That’s what an ordinary afternoon
   on this ride looks like, and nobody did anything wrong.
 - **20 minutes** for
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) two years
@@ -278,19 +276,19 @@ completely different depending on the ride and the day:
 
 ![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park, running since 2024. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
-The chart gives you the number. For the story behind it, there is now this
+The chart gives you the number. For the story behind it, there’s now this
 blog, in three flavours.
 
-**Trip reports.** Long, opinionated, with photos, and with real data from
-exactly the park being visited. Not “it was lovely”, but:
+**Trip reports.** Long, opinionated, with photos, and with our own measured
+wait times from exactly the park being visited. Along the lines of
 “[Magic Kingdom](ref:magic-kingdom-park?bare), 15 May, rope drop at 09:08, that
 was the plan, this worked, this went badly wrong.” The Orlando trip above gets
 exactly that kind of report: Disney World, Universal and SeaWorld, pictures
 included.
 
-**Data deep dives.** What does a park’s wait-time history _really_ tell you?
-When is [Taron](ref:phantasialand/taron?bare) most worth it? And do our
-forecasts live up to what they promise?
+**Data analyses.** What can you _actually_ read from a park’s wait-time
+history? When is [Taron](ref:phantasialand/taron?bare) most worth it? And how
+close do our forecasts come to what was measured?
 
 **News.** Short and to the point. Since 25 September they have their own
 section under [News](/news), separate from the articles.

@@ -84,6 +84,7 @@ const readRegistry = cache((): Map<string, AuthorRecord> => {
 function clean(author: Partial<BlogAuthor>): Partial<BlogAuthor> {
   return {
     ...(author.name ? { name: author.name } : {}),
+    ...(author.shortName ? { shortName: author.shortName } : {}),
     ...(author.url ? { url: author.url } : {}),
     ...(author.bio ? { bio: author.bio } : {}),
     ...(author.avatar ? { avatar: author.avatar } : {}),

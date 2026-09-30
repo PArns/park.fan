@@ -12,6 +12,7 @@ const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
 export interface AuthorOption {
   key: string;
   name: string;
+  shortName?: string;
   avatar?: string;
   role?: string;
   /** Full editable fields — read once upfront so the Edit modal can pre-fill
@@ -89,6 +90,7 @@ const getAuthors = cache((): AuthorOption[] => {
     out.push({
       key,
       name: a.name,
+      ...(a.shortName ? { shortName: a.shortName } : {}),
       ...(a.avatar ? { avatar: a.avatar } : {}),
       ...(a.role ? { role: a.role } : {}),
       ...(a.location ? { location: a.location } : {}),

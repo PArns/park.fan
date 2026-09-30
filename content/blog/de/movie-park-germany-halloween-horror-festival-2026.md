@@ -41,10 +41,11 @@ seo:
     - Movie Park Halloween Kostüm
 ---
 
-Am Freitag macht der [Movie Park Germany](ref:movie-park-germany) noch um
-17 Uhr zu. Am **Samstag, 26. September**, bleibt er bis 22 Uhr offen, und ab dem
-frühen Abend laufen über 300 Monster durch Bottrop-Kirchhellen: Das **Halloween
-Horror Festival** startet in seine 28. Ausgabe, Motto „Legends Never Die“.
+Am **Samstag, 26. September**, startet im
+[Movie Park Germany](ref:movie-park-germany) das **Halloween Horror Festival** in
+seine 28. Ausgabe, Motto „Legends Never Die“. Am Freitag davor macht der Park
+noch um 17 Uhr zu, am Samstag bleibt er bis 22 Uhr offen, und ab dem frühen
+Abend laufen über 300 Monster durch Bottrop-Kirchhellen.
 
 Mit dem [Familienfest bei Disney](/blog/disneyland-paris-halloween-2026), das am
 selben Samstag beginnt, hat das wenig gemein. In Bottrop gibt es abends
@@ -70,8 +71,8 @@ Hate** statt, den Bottrop 2022 als erster Freizeitpark veranstaltet hat.
 
 **Jason Universe** ersetzt Secrets of St. Elmo – Last Hunt, das seit 2020 lief,
 und holt Jason Voorhees nach Bottrop. 14 Szenen und eine Preshow erzählen die
-Teile zwei bis sechs von _Freitag der 13._ nach. Dass Teil eins fehlt, hat einen
-Grund, da mordet noch seine Mutter. Das Haus ist **ab 16**, und an den Eingängen
+Teile zwei bis sechs von _Freitag der 13._ nach. Teil eins fehlt, weil dort noch
+seine Mutter mordet. Das Haus ist **ab 16**, und an den Eingängen
 der Häuser wird ein Ausweis verlangt.
 
 Zwei bekannte Häuser wurden umgebaut. Das
@@ -138,7 +139,7 @@ den 2., 4., 9., 11. oder 16. Oktober.
 
 ```
 
-Wie sich das Festival gegen Traumatica, Walibi und Toverland schlägt, steht im
+Mit Traumatica, Walibi und Toverland vergleichen wir das Festival im
 [Halloween-Überblick](/blog/halloween-freizeitparks-2026). Welcher Wochentag im
 Movie Park sonst der ruhigste ist und wie der Herbstfahrplan aussieht, steht im
 [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).

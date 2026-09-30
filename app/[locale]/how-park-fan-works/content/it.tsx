@@ -16,6 +16,7 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
@@ -70,7 +71,7 @@ import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
-import { ChapterRail, type Chapter } from '../_chapter-rail';
+import { ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
   TARON_RECORD,
@@ -80,25 +81,8 @@ import {
   WAIT_SCALE_MAX,
 } from '../_fixtures';
 
-/**
- * Feeds both the chapter list at the top and the rail down the right edge, and
- * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
- * looks its sections up by id, so an entry that drifts silently stops
- * highlighting.
- */
-const CHAPTERS: Chapter[] = [
-  { id: 'numero', index: '01', label: 'Un numero da solo' },
-  { id: 'scala', index: '02', label: 'Tipico, pieno, record' },
-  { id: 'momento', index: '03', label: 'Il momento migliore' },
-  { id: 'giorno', index: '04', label: 'Il giorno giusto' },
-  { id: 'piano-del-giorno', index: '05', label: 'La giornata come piano' },
-  { id: 'pagina-parco', index: '06', label: 'Una pagina di parco dall’alto in basso' },
-  { id: 'notte', index: '07', label: 'Da dove arrivano i numeri' },
-  { id: 'limiti', index: '08', label: 'Quando non lo sappiamo' },
-  { id: 'visite', index: '09', label: 'Quattro visite' },
-  { id: 'dove', index: '10', label: 'Dove si trova cosa' },
-  { id: 'faq', index: '11', label: 'Domande frequenti' },
-];
+/** See `HOWTO_CHAPTERS`: the ids there must match the `<SectionShell>` calls below. */
+const CHAPTERS = HOWTO_CHAPTERS.it;
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;
@@ -131,7 +115,7 @@ const SCALE_LEGEND = [
   },
   {
     term: 'Record',
-    def: `${TARON_RECORD} minuti il 16 luglio 2026. Il giorno peggiore del periodo misurato, ed è proprio per questo che non fa da metro.`,
+    def: `${TARON_RECORD} minuti il 16 luglio 2026. Il giorno peggiore del periodo misurato, che per questo non fa da metro.`,
     swatch: 'bg-foreground/40',
   },
 ];
@@ -175,9 +159,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Radar della pioggia',
-    body: 'Le prossime ore a quarti d’ora. Dice se il rovescio sarà passato tra venti minuti o se resterà tutto il pomeriggio.',
+    body: 'Le prossime ore a quarti d’ora. Indica se il rovescio sarà passato tra venti minuti o se resterà tutto il pomeriggio.',
     example:
-      'Quarti d’ora invece di ore: un rovescio dalle 14:15 alle 14:30 sparisce dentro un valore orario; qui c’è.',
+      'Un rovescio dalle 14:15 alle 14:30 sparisce dentro un valore orario. A quarti d’ora resta visibile.',
     demo: <NowcastBannerDemo single />,
     onlyWhen: 'ci sono precipitazioni nel raggio.',
   },
@@ -228,7 +212,8 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Parchi nelle vicinanze',
     body: 'Cos’altro c’è a portata, con distanza e stato attuale.',
-    example: 'Dal Phantasialand: Toverland e Movie Park Germany, entrambi a un buon 90 chilometri.',
+    example:
+      'Dal Phantasialand: Toverland e Movie Park Germany, entrambi a 90 chilometri abbondanti.',
     demo: <AnatomyNearbyDemo />,
     onlyWhen: 'ci sono vicini. Per circa metà dei 212 parchi non ce ne sono.',
   },
@@ -259,7 +244,8 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Stagione, informazioni, domande',
     body: 'Periodi di apertura ed eventi annunciati, indirizzo e fuso orario, e le domande frequenti su questo parco in particolare.',
-    example: 'La pista di pattinaggio del capitolo 08 sta qui con novembre-gennaio.',
+    example:
+      'La pista di pattinaggio del capitolo 08 compare qui, con la sua stagione da novembre a gennaio.',
     demo: <AnatomySeasonDemo label="Pista di pattinaggio" />,
   },
 ];
@@ -318,7 +304,7 @@ const FAQ = [
   {
     question: 'Settanta minuti di attesa sono tanti?',
     answer:
-      'Dipende dall’attrazione e dal giorno della settimana. Taron, al Phantasialand, di lunedì arriva tipicamente a 55 minuti e in nove lunedì su dieci resta a 70 o sotto. Di sabato la mediana della stessa attrazione è proprio quei 70 minuti, quindi lo stesso numero è un lunedì decisamente pieno. Di sabato la mediana della stessa attrazione è esattamente 70 minuti, e allora lo stesso numero è del tutto nella media. Entrambi i valori di confronto stanno su park.fan, sulla pagina dell’attrazione, così non serve indovinarli.',
+      'Dipende dall’attrazione e dal giorno della settimana. Taron, al Phantasialand, di lunedì arriva tipicamente a 55 minuti e in nove lunedì su dieci resta a 70 o sotto, quindi un lunedì con 70 minuti è decisamente pieno. Di sabato la mediana della stessa attrazione è esattamente 70 minuti, e allora lo stesso numero è del tutto nella media. Entrambi i valori di confronto stanno su park.fan, sulla pagina dell’attrazione, così non serve indovinarli.',
   },
   {
     question: 'Da dove arrivano i tempi di attesa?',
@@ -407,13 +393,13 @@ export function ContentIT() {
         id="numero"
         index="01"
         kicker="Il punto di partenza"
-        title="Un numero da solo non dice niente"
+        title="Quattro informazioni accanto al tempo di attesa"
         icon={Gauge}
       >
         <P>
           All’ingresso di Taron c’è scritto 70 minuti, e lì finiscono le informazioni. La coda si
-          accalca fino alla prima scalinata, il telefono mostra lo stesso numero e nessuno dei due
-          ti dice se metterti in fila adesso o dopo pranzo. Su park.fan lo accompagnano altre
+          accalca fino alla prima scalinata, il telefono mostra lo stesso numero e da nessuno dei
+          due capisci se metterti in fila adesso o dopo pranzo. Su park.fan lo accompagnano altre
           quattro informazioni: un livello di affollamento, una tendenza, la seconda coda e
           l’altezza minima.
         </P>
@@ -431,7 +417,7 @@ export function ContentIT() {
             «Molto alta» qui non è una questione di gusti. Taron sta in media su {TARON_BASELINE}{' '}
             minuti, {TARON_WAIT_NOW} ne sono circa il 156 per cento, e i livelli cambiano al 60, 89,
             110, 150 e 200 per cento. Da 150 in su si chiama «Molto alta». La piccola freccia
-            accanto viene dalle ultime rilevazioni e dice se la fila sta crescendo o smaltendo.
+            accanto viene dalle ultime rilevazioni e indica se la fila sta crescendo o smaltendo.
           </P>
           <PG>
             Il secondo valore sulla card è la coda single rider. Molte attrazioni gestiscono più
@@ -463,7 +449,7 @@ export function ContentIT() {
           <IntroWithAside
             value={`${TARON_RECORD} min`}
             label="La fila più lunga misurata a Taron"
-            note="Il 16 luglio 2026, durante le vacanze estive. Un solo giorno su 365, ed è per questo che la scala ragiona per percentili invece che sul massimo."
+            note="Il 16 luglio 2026, durante le vacanze estive. Un solo giorno su 365, ed è per questo che la scala si basa sui percentili."
           >
             <P>
               Per collocare un numero servono due valori di confronto e l’indicazione di su cosa si
@@ -489,7 +475,7 @@ export function ContentIT() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                     {i === 0 && 'Per un lunedì, 70 minuti sono tanti'}
-                    {i === 1 && 'Di sabato è un sabato come tanti'}
+                    {i === 1 && 'Per un sabato, 70 minuti sono la norma'}
                     {i === 2 && 'E una volta sono stati 135'}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -542,9 +528,9 @@ export function ContentIT() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sulla pagina di un’attrazione"
-              note="Valori reali di Taron, rilevati il 10 settembre 2026."
+              note="Valori di Taron rilevati il 10 settembre 2026."
               href={TARON}
-              hrefLabel="Valori reali per Taron →"
+              hrefLabel="Valori attuali di Taron →"
             >
               <TypicalWaitsDemo />
             </DemoFrame>
@@ -603,8 +589,8 @@ export function ContentIT() {
         </P>
 
         <DemoFrame
-          label="Il profilo orario reale, in questo momento"
-          note="In diretta dal profilo orario del parco. In grassetto l’ora più forte di ogni attrazione, e tra queste sei non è affatto la stessa. Un’ora diventa colonna solo quando ha almeno dieci giorni misurati su quell’attrazione, raggiunge almeno il 40 per cento dell’ora meglio misurata e viene riportata da almeno metà delle attrazioni. Questo esclude le ore di bordo, in cui altrimenti una sola coda di ospiti dell’hotel parlerebbe per tutta la mattina."
+          label="Il profilo orario, in diretta"
+          note="In diretta dal profilo orario del parco. In grassetto l’ora più forte di ogni attrazione, e tra queste sei non è affatto la stessa. Un’ora diventa colonna solo quando ha almeno dieci giorni misurati su quell’attrazione, raggiunge almeno il 40 per cento dell’ora meglio misurata e viene riportata da almeno metà delle attrazioni. Questo esclude le ore di bordo, in cui altrimenti una sola coda di ospiti dell’hotel varrebbe per tutta la mattina."
           href={PARK}
           hrefLabel="Phantasialand su park.fan →"
         >
@@ -633,14 +619,14 @@ export function ContentIT() {
           <div className="space-y-4">
             <PG>
               La card indica tre numeri e un orario: il tempo di attesa tipico all’apertura, il
-              picco della giornata, la differenza e la finestra in cui il vantaggio tiene. Dopo il
-              vantaggio è finito, e la card non lo nasconde.
+              picco della giornata, la differenza e la finestra in cui il vantaggio tiene. Passata
+              quella finestra, il vantaggio è finito.
             </PG>
             <P>
               Si aggiunge il momento più tranquillo della giornata, ma solo se cade fuori dalla
               finestra mattutina. Per Taron entrambi stanno nella stessa ora, perciò qui non c’è un
               secondo orario. Per altre attrazioni è la sera, e allora la card indica quell’orario.
-              Per tutto il parco, il riepilogo delle attrazioni elenca quelle in cui la sveglia
+              Sulla pagina del parco, il riepilogo delle attrazioni elenca quelle in cui la sveglia
               rende di più, ordinate per minuti risparmiati.
             </P>
           </div>
@@ -691,8 +677,8 @@ export function ContentIT() {
           <P>
             Fin dove arrivi il calendario dipende dal parco. Un parco aperto tutto l’anno riceve una
             previsione circa undici mesi prima. In un parco stagionale si ferma dove finisce la
-            stagione pubblicata: per un martedì di marzo in cui il Phantasialand è dimostrabilmente
-            chiuso, nel calendario c’è scritto chiuso e nessun colore di affollamento.
+            stagione pubblicata: per un martedì di marzo in cui il Phantasialand è chiuso, nel
+            calendario c’è scritto chiuso e nessun colore di affollamento.
           </P>
         </div>
 
@@ -732,11 +718,11 @@ export function ContentIT() {
           dall’una all’altra.
         </P>
         <P>
-          L’esempio qui sotto non è un disegno. Sono gli stessi pezzi che girano nel pianificatore,
-          alimentati con la risposta che l’API ha dato il 4 settembre 2026 per sabato 12 settembre
-          al Phantasialand: aperto dalle 9 alle 18, poca gente, pioviggine. Trascina un blocco su un
+          L’esempio qui sotto è fatto degli stessi pezzi che girano nel pianificatore, alimentati
+          con la risposta che l’API ha dato il 4 settembre 2026 per sabato 12 settembre al
+          Phantasialand: aperto dalle 9 alle 18, poca gente, pioviggine. Trascina un blocco su un
           altro orario: ricalcola la sua altezza, e anche i trasferimenti accanto. Il tuo piano non
-          ne sa niente, quindi trascina pure a piacere.
+          cambia, quindi trascina pure a piacere.
         </P>
 
         <DemoFrame
@@ -749,10 +735,10 @@ export function ContentIT() {
         </DemoFrame>
 
         <Highlight>
-          Due cose il pianificatore le sa, e nessun tempo di attesa le riporta. Quel sabato il parco
-          apre alle 9, Taron solo alle 10, e prima di quell’ora il suo blocco non si lascia
+          Due informazioni del pianificatore che nessun tempo di attesa riporta. Quel sabato il
+          parco apre alle 9, Taron solo alle 10, e prima di quell’ora il suo blocco non si lascia
           trascinare. E il tragitto in mezzo si calcola dalla distanza in linea d’aria tra le due
-          stazioni, più i margini per l’uscita e per il giro stesso, e dice se il tempo basta.
+          stazioni, più i margini per l’uscita e per il giro stesso, e così vedi se il tempo basta.
         </Highlight>
         <PG>
           Sul blocco selezionato c’è inoltre di quanto la previsione per quell’attrazione sbaglia di
@@ -780,13 +766,13 @@ export function ContentIT() {
 
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
-              Metà di questi blocchi dipende da una condizione, ed è voluto. Un parco senza
+              Metà di questi blocchi compare solo a determinate condizioni. Un parco senza
               spettacoli non riceve una scheda spettacoli vuota, e circa metà dei 212 parchi non
               mostra alcuna sezione vicini, perché nel raggio non c’è nulla.
             </Highlight>
             <PG>
-              Le schede ricordano la scelta nell’indirizzo. Chi ha aperto il calendario e passa il
-              link, invia il calendario e non l’elenco delle attrazioni. Comodo quando la famiglia
+              Le schede ricordano la scelta nell’indirizzo. Se passi il link con il calendario
+              aperto, chi lo riceve arriva direttamente al calendario. Comodo quando la famiglia
               deve votare la data nella chat di gruppo.
             </PG>
             <div className="pt-1">
@@ -856,9 +842,8 @@ export function ContentIT() {
             </P>
             <P>
               Sei passi in ordine fisso, ogni notte. Ognuno legge quello che ha scritto il
-              precedente, quindi nessuno può saltare la fila, che su un sito dedicato alle code
-              sarebbe pure di cattivo gusto. Quando apri la pagina la mattina, tutto questo è già
-              calcolato.
+              precedente e parte solo quando questo ha finito. Quando apri la pagina la mattina,
+              tutto questo è già calcolato.
             </P>
           </div>
 
@@ -879,8 +864,8 @@ export function ContentIT() {
         icon={HelpCircle}
       >
         <P>
-          Alcune caselle qui restano vuote, ed è voluto. Tre casi in cui park.fan preferisce tacere
-          piuttosto che tirare a indovinare, anche quando un numero inventato farebbe più figura.
+          Nei tre casi qui sotto park.fan lascia la casella vuota, anche quando un numero inventato
+          farebbe più figura.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -900,12 +885,12 @@ export function ContentIT() {
 
           <DemoFrame
             label="Nessuna base di valutazione"
-            note="«Nessuna previsione» vale per i parchi che non sappiamo ancora valutare: sotto una trentina di giorni di esercizio manca il valore di riferimento. Un parco nuovo resta senza colore invece di averne uno indovinato."
+            note="«Nessuna previsione» vale per i parchi che non sappiamo ancora valutare: sotto una trentina di giorni di esercizio manca il valore di riferimento. Un parco nuovo resta quindi senza colore."
           >
             <BadgeRowDemo
               crowdLabel="Affollamento: quanto è pieno adesso"
               comparisonLabel="Confronto: più del solito?"
-              caption="Due scale, un esempio: a 70 minuti Taron segna «Molto alta» – questo è l’affollamento. Rispetto ai suoi tipici 45 minuti è «Molto più alto» – questo è il confronto con sé stesso. Un parco piccolo può stare su «Molto alta» ed essere comunque «Tipico»: lì 25 minuti sono la norma."
+              caption="Due scale, un esempio. A 70 minuti Taron segna «Molto alta» nell’affollamento. Rispetto ai suoi tipici 45 minuti, il confronto con sé stesso dà «Molto più alta». Un parco piccolo può stare su «Molto alta» ed essere comunque «Tipico»: lì 25 minuti sono la norma."
             />
           </DemoFrame>
         </div>
@@ -947,9 +932,9 @@ export function ContentIT() {
                 vacanza incidono quel giorno, anche quelle del paese confinante.
               </>,
               <>
-                Giornata di pioggia in programma? Il calendario la mostra come la più tranquilla
-                della settimana. Il giorno stesso, il radar della pioggia a 15 minuti in cima alla
-                pagina del parco dice quando smette.
+                Giornata di pioggia in programma? Nel calendario risulta la più tranquilla della
+                settimana. Il giorno stesso, il radar della pioggia a 15 minuti in cima alla pagina
+                del parco indica quando smette.
               </>,
               <>
                 Su ogni card di attrazione c’è l’altezza minima, dove il parco la pubblica. Taron
@@ -978,8 +963,8 @@ export function ContentIT() {
                 cui calcola, e un giorno della settimana senza base lì non riceve alcuna barra.
               </>,
               <>
-                Durante la visita guardare il badge di confronto: «molto più alta» significa davvero
-                eccezionale oggi, non semplicemente lunga.
+                Durante la visita guardare il badge di confronto: «molto più alta» significa che
+                oggi la fila è eccezionale rispetto ai suoi valori tipici.
               </>,
               <>
                 Ogni pagina di attrazione porta un voto sulla propria previsione, dal confronto tra

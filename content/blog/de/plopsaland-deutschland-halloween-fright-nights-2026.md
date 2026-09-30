@@ -40,12 +40,11 @@ seo:
     - Haßloch Halloween
 ---
 
-Aus Mannheim, Karlsruhe oder Kaiserslautern ist Bottrop weit, und bei
-Traumatica in Rust kommt unter 16 niemand rein. Näher liegt Haßloch: Das
-[Plopsaland Deutschland](ref:plopsaland-deutschland), bis Juni 2025 der
-Holiday Park, macht an **zehn Abenden im Oktober** die **Halloween Fright
-Nights**. Der Park selbst zählt sie zu den größten Halloween-Events in
-Deutschland.
+Das [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch, bis Juni
+2025 der Holiday Park, macht an **zehn Abenden im Oktober** die **Halloween
+Fright Nights**. Der Park selbst zählt sie zu den größten Halloween-Events in
+Deutschland. Aus Mannheim, Karlsruhe oder Kaiserslautern liegt Haßloch näher
+als Bottrop, und bei Traumatica in Rust kommt unter 16 niemand rein.
 
 ## Termine und Uhrzeiten
 
@@ -132,8 +131,9 @@ nicht erlaubt, damit am Abend klar bleibt, wer zum Personal gehört.
 
 Haßloch liegt zwischen A65 und B9, vom Bahnhof Haßloch fährt ein Shuttlebus zum
 Park. Der [Europa-Park](ref:europa-park) mit Traumatica liegt knapp zwei
-Autostunden südlich. Was Traumatica, Movie Park, Walibi und Toverland in diesem
-Herbst machen, steht im [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
+Autostunden südlich. Den Herbst von Traumatica, Movie Park, Walibi und Toverland
+haben wir im [Halloween-Überblick](/blog/halloween-freizeitparks-2026)
+zusammengetragen.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

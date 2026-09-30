@@ -1,5 +1,5 @@
 ---
-title: "Plopsaland Deutschland: dieci Fright Nights, due case dell'orrore nuove e una cotoletta che non vorrai ordinare"
+title: "Due nuove case dell'orrore al Plopsaland Deutschland"
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -40,11 +40,12 @@ seo:
     - Haßloch Halloween
 ---
 
-Il [Plopsaland Deutschland](ref:plopsaland-deutschland) di Haßloch, nel
-Palatinato, si chiamava Holiday Park fino a giugno 2025. È il fratello tedesco
-del [Plopsaland De Panne](ref:plopsaland-belgium) e in **dieci sere di
-ottobre** organizza le **Halloween Fright Nights**, che il parco stesso conta
-tra i più grandi eventi di Halloween in Germania. A differenza di Traumatica,
+In **dieci sere di ottobre** il
+[Plopsaland Deutschland](ref:plopsaland-deutschland) di Haßloch, nel
+Palatinato, organizza le **Halloween Fright Nights**, che il parco stesso conta
+tra i più grandi eventi di Halloween in Germania. Fino a giugno 2025 si chiamava
+Holiday Park, ed è il fratello tedesco del
+[Plopsaland De Panne](ref:plopsaland-belgium). A differenza di Traumatica,
 all'[Europa-Park](ref:europa-park), qui chi ha meno di 16 anni entra se è
 accompagnato da un genitore o da chi ne fa le veci.
 
@@ -54,8 +55,7 @@ Le Fright Nights si tengono **il venerdì e il sabato dal 2 al 31 ottobre
 2026**: il 2, 3, 9, 10, 16, 17, 23, 24, 30 e 31. In quei giorni il parco è
 aperto **dalle 10 alle 22** e, secondo il parco, quasi tutte le attrazioni
 girano fino alla chiusura. Le uniche che nomina sono quelle acquatiche,
-DinoSplash e Wickie Splash, che si fermano alle 20, cosa che a ottobre non darà
-fastidio a nessuno.
+DinoSplash e Wickie Splash, che si fermano alle 20.
 
 Di giorno c'è in parallelo la Festa d'autunno Plopsa, pensata per i bambini. I
 mostri escono la sera.
@@ -67,9 +67,8 @@ Due delle sei case dell'orrore sono nuove. In
 prossima generazione di emozioni forti, e l'esperimento diventa presto una
 lotta per capire chi controlla chi.
 [Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods)
-resta in zona: da qualche parte nella foresta del Palatinato c'è un luogo
-maledetto dove la gente sparisce senza lasciare traccia, e tu segui la leggenda
-nel buio.
+resta in zona, in un luogo maledetto della foresta del Palatinato dove la gente
+sparisce senza lasciare traccia, e tu segui la leggenda nel buio.
 
 Tornano [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 dove una direttrice di circo cerca nuovi talenti;
@@ -135,8 +134,8 @@ lavora lì.
 
 Haßloch si trova tra la A65 e la B9, e una navetta collega la stazione di
 Haßloch al parco. L'[Europa-Park](ref:europa-park) con Traumatica è a poco meno
-di due ore di auto verso sud. Cosa fanno quest'autunno Traumatica, Movie Park,
-Walibi e Toverland è nella
+di due ore di auto verso sud, e gli eventi di Traumatica, Movie Park, Walibi e
+Toverland sono messi a confronto nella
 [panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026).
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)

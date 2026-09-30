@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris : dès samedi, les méchants prennent le pouvoir, et le Dr Facilier revient après cinq ans'
+title: 'Le Dr Facilier revient à Disneyland Paris pour Halloween'
 translationKey: disneyland-paris-halloween-2026
 date: '2026-09-23'
 author: patrick
@@ -27,7 +27,7 @@ coverImage:
   caption: 'Encore sans épines. À partir de samedi, les méchants s’emparent des grilles du château.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Halloween 2026 à Disneyland Paris : dates, nouveautés, 31 octobre'
+  title: 'Halloween 2026 à Disneyland Paris et la soirée du 31 octobre'
   description: >-
     Festival Halloween Disney du 26 septembre au 1er novembre 2026 : nouveaux
     costumes, Dr Facilier, Jack et Sally, l’Unlucky Nugget Saloon et la soirée
@@ -44,7 +44,7 @@ seo:
 
 Si Halloween dans un parc d’attractions rime pour vous avec tronçonneuses et
 faux sang, le [Parc Disneyland](ref:/parks/europe/france/paris/disneyland-park)
-va vous décevoir, et c’est voulu. Le **Festival Halloween Disney** en est la
+va vous décevoir. Le **Festival Halloween Disney** en est la
 version familiale : des citrouilles, des méchants avec qui poser, une parade et
 un soir où les adultes aussi peuvent venir déguisés. Il commence le **samedi
 26 septembre** et dure jusqu’au **dimanche 1er novembre 2026**. Tout le
@@ -132,9 +132,8 @@ mois s’y ajoutent les vacances scolaires britanniques.
 
 Le prix du Premier Access, les jours plus calmes dans un parc ouvert toute
 l’année, et comment faire les deux parcs en une journée : tout est dans le
-[guide Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils). Ce
-que Movie Park, Traumatica, Walibi et Toverland proposent le même automne à
-ceux qui viennent sans enfants, c’est dans le
+[guide Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils). Pour une soirée d’horreur sans enfants, Movie Park, Traumatica, Walibi et
+Toverland sont dans le
 [tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026).
 
 [Parc Disneyland](ref:/parks/europe/france/paris/disneyland-park?full)

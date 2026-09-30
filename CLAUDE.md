@@ -39,10 +39,12 @@ three lines, the rest belongs in the page.
   nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
 - **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
   posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
-  `pnpm check:prose` decides the half a machine can. Rules:
+  `pnpm check:prose` decides the half a machine can, a separate review pass
+  ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
   [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
   and [docs/blog.md](docs/blog.md).
-- **Six locales.** A new UI string needs all of them.
+- **Six locales.** A new UI string needs all of them, and so does a news post, in the same PR
+  ([docs/blog.md §5.0](docs/blog.md#50-news-posts-category-news)).
 - **Routing and i18n run through `proxy.ts`**, not `middleware.ts`. Server Components are the default.
 
 ## The rules
@@ -120,6 +122,10 @@ carries the reasoning, the measurements and the counter-examples.
   has three values, and `null` must behave exactly as before. Test `!== false`, never `=== true`
   (`lib/utils/season.ts`). A live `OPERATING` row still beats the season. The SQL twin
   `attractionIsOutOfSeason()` changes with the TS rule or not at all.
+- **[A ride that closed for good keeps its page](docs/rules/a-closed-ride-keeps-its-page.md)** — only
+  `retiredKind === 'closed'` (never `retiredReason`); 200, indexable, in the sitemap, news post linked
+  (`lib/parks/closed-ride.ts`). The park page lists `closedAttractions` apart from `attractions` and
+  its search finds them; a year after closing, or `retired_hidden`, takes it off both. `pnpm test:closed-ride`.
 - **[An API route passes only slugs upstream, and says a failure is one](docs/rules/an-api-route-passes-only-slugs-upstream.md)** —
   catch-all segments go through `isSlugPath()` before a backend URL; a secret-gated route fails closed
   (`cronUnauthorized`); an upstream failure is a non-200 without cache headers, never `200 {}`.
@@ -147,7 +153,7 @@ carries the reasoning, the measurements and the counter-examples.
   The band is glass, positioned against the `<header>`. Card widths come from
   `lib/utils/favorites-band-plan.ts`. A row leaves only where the server let it go: API first,
   local mirror second. `pnpm check:header-links`, `pnpm test:favorites-band`,
-  `pnpm test:push-follow-delete`, `pnpm test:push-follow-read`.
+  `pnpm test:push-follow-delete`, `pnpm test:push-follow-read`, `pnpm test:hub-chapters`.
 - **[The guide page teaches the real cards with the ride's real numbers](docs/rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md)** — every block renders a
   production component, and every figure is a value the API returned, dated in `_fixtures.ts`.
   Audit before you claim. A displayed wait time is always a multiple of five; round only what is
@@ -230,8 +236,8 @@ carries the reasoning, the measurements and the counter-examples.
 
 - **[No text may read as AI-generated](docs/rules/no-text-may-read-as-ai-generated.md)** — see _Applies to every change_ above. The full rulebook is
   [docs/blog.md](docs/blog.md).
-- **[Blog writing style](docs/rules/blog-writing-style.md)** — never „ehrlich" in any form, no em dash in German running text, and check
-  the article before correcting one in (**das** Efteling).
+- **[Blog writing style](docs/rules/blog-writing-style.md)** — merged into [docs/blog.md](docs/blog.md); the page lists
+  where each of its old rules now lives.
 - **[A wait time is never typed into a post](docs/rules/a-wait-time-is-never-typed-into-a-post.md)** — every such table is a fence (`ride-waits-widget`,
   `hourly-profile-widget`). A sentence next to a widget must not name a figure the widget renders.
 - **[Park/Ride page ↔ blog link](docs/rules/parkride-page-and-blog-link.md)** — the relation is derived from the post itself; `parkLinks` and
@@ -245,13 +251,16 @@ carries the reasoning, the measurements and the counter-examples.
   (`CardPhotoFrame`), never the whole card. `pnpm check:card-framing`.
 - **[Localized blog gallery captions](docs/rules/localized-blog-gallery-captions.md)** — a gallery is a collection, and its captions live per image in
   the sidecar.
-- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no bump per merge; the PO cuts one, MINOR for a new
-  visible capability, PATCH for a bundle of fixes. `docs/changelog.md` is the internal log and
-  `content/changelog/<version>.md` the public entry at `/en/changelog`; never parse one into the
-  other, and a blog post is never a release.
+- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no version per merge or ticket; the PO bundles
+  them, MINOR for a new visible capability, PATCH for fixes. A PR writes a fragment,
+  `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, `package.json` or `content/changelog/`;
+  `pnpm release:cut` moves all three in one PR. A blog post is never a release. `pnpm check:changelog`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
   news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
+- **[A quote names its source, and a legal claim names its side](docs/rules/a-quote-names-its-source.md)** —
+  a direct quote is a `> [!QUOTE]` block whose last paragraph says who and where, linked (`BlogQuote`).
+  A lawsuit, an injury or a defence is attributed in every sentence and checked against two sources.
 
 ---
 

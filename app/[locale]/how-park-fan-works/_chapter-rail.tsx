@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import type { Chapter } from '@/lib/howto/chapters';
 
 /**
  * A fixed rail of chapter dots down the right edge, marking which chapter the
@@ -16,12 +17,6 @@ import { cn } from '@/lib/utils';
  * it renders every chapter as a plain anchor with the first one marked — still
  * a usable table of contents, just not a live one.
  */
-export interface Chapter {
-  id: string;
-  index: string;
-  label: string;
-}
-
 export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; ariaLabel: string }) {
   const [active, setActive] = useState(chapters[0]?.id ?? '');
 

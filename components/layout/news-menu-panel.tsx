@@ -7,6 +7,7 @@ import { ArrowRight, Megaphone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { NewsAge } from '@/components/blog/news-age';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { newsPostPath } from '@/lib/blog/paths';
 import type { NewsMenu } from '@/lib/navigation/news-menu';
 
@@ -16,13 +17,14 @@ import type { NewsMenu } from '@/lib/navigation/news-menu';
  * It is the blog panel's neighbour in the bar and deliberately does not look like it (see
  * `lib/navigation/news-menu.ts` for why the two are split). The blog panel sells an article by its
  * cover, its teaser and its reading time. A news item is picked by what happened and when, so here
- * only the lead keeps a cover and a teaser, and every item leads with its age (`NewsAge`, in the
+ * only the lead keeps a large cover and a teaser, and every item leads with its age (`NewsAge`, in the
  * accent colour for the first seven days) rather than a category, which would be "News" six times.
  *
  * The time line on the right is a border with a dot per item, not a list of cards: headlines one
  * under the other read as a sequence of events, which is what they are. Each carries its own cover
  * as a thumbnail at the right end of its row (Patrick, 2026-09-25), the side the `/news` stream
- * puts its covers on, so the time line keeps its left edge for the dots.
+ * puts its covers on, so the time line keeps its left edge for the dots. An item without a cover
+ * gets `BlogCoverFallback` there, lead included, so the rows keep one shape.
  *
  * `navigation` for the strings, never `blog` — see `BlogMenuPanel` for the 3 KB that one
  * `useTranslations('blog')` in the header chrome costs every page.
@@ -47,8 +49,8 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
             prefetch={false}
             className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
           >
-            {lead.image && (
-              <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+            <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+              {lead.image ? (
                 <Image
                   src={lead.image}
                   alt=""
@@ -58,12 +60,17 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                   style={lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="bg-background/90 text-primary absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-[0.12em] uppercase shadow-sm">
-                  <Megaphone className="h-3.5 w-3.5" aria-hidden="true" />
-                  {label}
-                </span>
+              ) : (
+                <BlogCoverFallback
+                  slug={lead.slug}
+                  className="transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
+              <span className="bg-background/90 text-primary absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold tracking-[0.12em] uppercase shadow-sm">
+                <Megaphone className="h-3.5 w-3.5" aria-hidden="true" />
+                {label}
               </span>
-            )}
+            </span>
             <NewsAge date={lead.date} className="text-xs" />
             <span className="text-foreground group-hover:text-primary mt-1 block text-lg leading-snug font-bold text-pretty transition-colors">
               {lead.title}
@@ -102,7 +109,7 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                         rather than `fill`, because this markup ships `hidden` on every page and
                         `fill` with a px `sizes` lists every configured width in its srcset; a
                         fixed one lists two (1x, 2x). */}
-                    {item.image && (
+                    {item.image ? (
                       <Image
                         src={item.image}
                         alt=""
@@ -113,6 +120,10 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                         }
                         className="bg-muted h-[55px] w-[88px] shrink-0 rounded-md object-cover"
                       />
+                    ) : (
+                      <span className="relative h-[55px] w-[88px] shrink-0 overflow-hidden rounded-md">
+                        <BlogCoverFallback slug={item.slug} />
+                      </span>
                     )}
                   </Link>
                 </li>

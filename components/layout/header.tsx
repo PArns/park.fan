@@ -46,7 +46,7 @@ import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 import type { NewsMenu } from '@/lib/navigation/news-menu';
-import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
+import type { MoreMenu } from '@/lib/navigation/more-menu';
 
 /** Stable fallback, so a missing list does not defeat `ParksMenuPanel`'s memo. */
 const NO_FEATURED_PARKS: FeaturedParkCard[] = [];
@@ -78,12 +78,14 @@ interface HeaderProps {
    */
   newsMenu?: NewsMenu;
   /**
-   * The dictionary's categories for the "more" menu, with their labels already translated.
-   * Resolved in the layout for the same reason `featuredParks` is: this is a Client Component,
-   * and `useTranslations('glossary')` in here would put the whole 2,402 B namespace into the
-   * chrome of every page for 358 B of labels.
+   * What the "more" menu lists: the dictionary's categories with their labels already translated,
+   * the chapters of the guide and of the best-time hub, and a photo per hub. Resolved in the
+   * layout for the same reason `featuredParks` is: this is a Client Component, and
+   * `useTranslations('glossary')` in here would put the whole 2,402 B namespace into the chrome of
+   * every page for 358 B of labels, while the chapters and the photos are six locales of labels
+   * and the 107 KB media catalog. See `lib/navigation/more-menu.ts`.
    */
-  glossaryMenu?: GlossaryMenu;
+  moreMenu?: MoreMenu;
   /**
    * The photo rail in the parks menu. Resolved in the layout because `@/lib/media` is the 107 KB
    * catalog and this is a Client Component — only four URLs cross the boundary.
@@ -115,13 +117,88 @@ function SheetNavLink({
   );
 }
 
+/**
+ * A destination in the phone sheet that opens onto what it holds: „Parks entdecken" onto the
+ * continents, and — since the "more" band lists them on the desktop (Patrick, 2026-09-30: „denk
+ * auch an mobile") — the dictionary onto its categories and the two hubs onto their chapters.
+ *
+ * A native `<details>`, so a list opens with no JavaScript at all and the disclosure state is the
+ * browser's, not ours. The whole row is the toggle, as it always was for the parks, so the first
+ * link inside is the destination itself; a label that navigated beside a chevron that toggled
+ * would be two targets in one 28 px row on a phone, and a sheet where one disclosure opens on the
+ * row and the next on its chevron is learnt twice.
+ *
+ * `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under the label's first
+ * letter — `NavEntryLabel`'s sheet size, a 20 px icon + 12 px gap.
+ */
+function SheetDisclosure({
+  icon,
+  label,
+  children,
+}: {
+  icon: LucideIcon;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <details className="group" data-sheet-stagger>
+      <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
+        <NavEntryLabel icon={icon} size="sheet">
+          {label}
+        </NavEntryLabel>
+        <ChevronDown
+          className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
+          aria-hidden="true"
+        />
+      </summary>
+      <div className="border-border/60 mt-2 ml-2.5 flex flex-col gap-2 border-l pl-5">
+        {children}
+      </div>
+    </details>
+  );
+}
+
+/**
+ * A link inside a `SheetDisclosure`, with the number the desktop band gives the same row: a
+ * chapter's place in its page before the label, a category's term count after it.
+ */
+function SheetSubLink({
+  href,
+  index,
+  count,
+  children,
+}: {
+  href: string;
+  index?: string;
+  count?: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href as '/'}
+      prefetch={false}
+      className="text-muted-foreground hover:text-foreground flex items-baseline gap-2 text-sm transition-colors"
+    >
+      {index && (
+        <span className="text-primary/70 w-5 shrink-0 text-xs font-semibold tabular-nums">
+          {index}
+        </span>
+      )}
+      <span className="min-w-0 flex-1 text-pretty">{children}</span>
+      {count != null && (
+        <span className="text-muted-foreground/70 text-xs tabular-nums">{count}</span>
+      )}
+    </Link>
+  );
+}
+
 export function Header({
   showBlog = true,
   geoMenu,
   blogMenu,
   newsMenu,
   featuredParks,
-  glossaryMenu,
+  moreMenu,
 }: HeaderProps) {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
@@ -561,8 +638,8 @@ export function Header({
               256 px wider. */}
           <HeaderNearbyPark variant="bar" />
           {/* The order is the phone menu's (Patrick, 2026-09-25): Backstage, News, Parks
-              entdecken, then „Mehr" where the sheet lists its three destinations (Beste
-              Reisezeit, Wörterbuch, So funktioniert's), then the planner. The homepage has no
+              entdecken, then „Mehr" where the sheet lists its three destinations (Wörterbuch,
+              Beste Reisezeit, So funktioniert's), then the planner. The homepage has no
               entry here, the logo is its link; the favourites stay on the far right. Every entry
               carries the icon it has in the sheet (`NavEntryLabel`), „Mehr" three dots, because
               the sheet has no „Mehr". */}
@@ -622,7 +699,8 @@ export function Header({
           {/* The catch-all, and the reason the three links in it no longer stand here: „Beste
               Reisezeit", „Wörterbuch" and „So funktioniert's" were entries of their own in a row
               that ran 23.7 px over its box in French at 1024 px and took the document to 1032 px.
-              They sit in the panel `MoreMenuPanel` describes now — in the HTML of every page,
+              They sit in the panel `MoreMenuPanel` describes now, each with what it holds — the
+              dictionary's categories, the chapters of the other two — in the HTML of every page,
               because `MenuBand` only hides the panel and never unmounts it. It stands where the
               phone menu lists those three, between „Parks entdecken" and the planner.
 
@@ -632,7 +710,7 @@ export function Header({
               bestTimeHref={bestTimePath}
               glossaryHref={glossaryPath}
               howtoHref={howtoPath}
-              glossary={glossaryMenu}
+              menu={moreMenu}
             />
           </NavMenu>
           {/* The planner, as the last entry before the favourites, as in the phone menu. It was
@@ -831,51 +909,75 @@ export function Header({
                     <SheetNavLink href="/" icon={House}>
                       {t('home')}
                     </SheetNavLink>
-                    {/* Discovery in the sheet: a native <details>, so the continents open with no
-                      JavaScript at all and the disclosure state is the browser's, not ours. The
-                      countries stay out of it — the sheet is a phone-sized column, and the
-                      continent hubs are one tap from the parks that matter. */}
-                    <details className="group" data-sheet-stagger>
-                      <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
-                        <NavEntryLabel icon={RollerCoaster} size="sheet">
-                          {t('explore')}
-                        </NavEntryLabel>
-                        <ChevronDown
-                          className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
-                          aria-hidden="true"
-                        />
-                      </summary>
-                      {/* `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under
-                        the label's first letter — `NavEntryLabel`'s sheet size, a 20 px icon + 12 px gap. */}
-                      <div className="border-border/60 mt-2 ml-2.5 flex flex-col gap-2 border-l pl-5">
-                        <Link
-                          href="/parks"
-                          prefetch={false}
-                          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-                        >
-                          {t('parks')}
-                        </Link>
-                        {(geoMenu ?? []).map((continent) => (
-                          <Link
-                            key={continent.slug}
-                            href={`/parks/${continent.slug}`}
-                            prefetch={false}
-                            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-                          >
-                            {translateContinent(tGeo, continent.slug, locale, continent.name)}
-                          </Link>
+                    {/* Discovery in the sheet. The countries stay out of it — the sheet is a
+                      phone-sized column, and the continent hubs are one tap from the parks that
+                      matter. */}
+                    <SheetDisclosure icon={RollerCoaster} label={t('explore')}>
+                      <SheetSubLink href="/parks">{t('parks')}</SheetSubLink>
+                      {(geoMenu ?? []).map((continent) => (
+                        <SheetSubLink key={continent.slug} href={`/parks/${continent.slug}`}>
+                          {translateContinent(tGeo, continent.slug, locale, continent.name)}
+                        </SheetSubLink>
+                      ))}
+                    </SheetDisclosure>
+                    {/* The three hubs of the desktop "more" band, in its column order — the
+                      dictionary first — and with what the band lists under each: the categories,
+                      the chapters. Each opens onto its own page as the first row („Übersicht"),
+                      the way „Parks entdecken" opens onto „Alle Parks". Without the lists (the
+                      layout stopped passing them) a hub is the plain link it used to be, not a
+                      disclosure holding one row. */}
+                    {moreMenu && moreMenu.glossary.categories.length > 0 ? (
+                      <SheetDisclosure icon={BookOpen} label={t('glossary')}>
+                        <SheetSubLink href={glossaryPath} count={moreMenu.glossary.termCount}>
+                          {t('overview')}
+                        </SheetSubLink>
+                        {moreMenu.glossary.categories.map((category) => (
+                          <SheetSubLink key={category.id} href={category.href}>
+                            {category.label}
+                          </SheetSubLink>
                         ))}
-                      </div>
-                    </details>
-                    <SheetNavLink href={bestTimePath} icon={CalendarRange}>
-                      {t('bestTime')}
-                    </SheetNavLink>
-                    <SheetNavLink href={glossaryPath} icon={BookOpen}>
-                      {t('glossary')}
-                    </SheetNavLink>
-                    <SheetNavLink href={howtoPath} icon={Compass}>
-                      {t('howto')}
-                    </SheetNavLink>
+                      </SheetDisclosure>
+                    ) : (
+                      <SheetNavLink href={glossaryPath} icon={BookOpen}>
+                        {t('glossary')}
+                      </SheetNavLink>
+                    )}
+                    {moreMenu && moreMenu.bestTime.chapters.length > 0 ? (
+                      <SheetDisclosure icon={CalendarRange} label={t('bestTime')}>
+                        <SheetSubLink href={bestTimePath}>{t('overview')}</SheetSubLink>
+                        {moreMenu.bestTime.chapters.map((chapter) => (
+                          <SheetSubLink
+                            key={chapter.href}
+                            href={chapter.href}
+                            index={chapter.index}
+                          >
+                            {chapter.label}
+                          </SheetSubLink>
+                        ))}
+                      </SheetDisclosure>
+                    ) : (
+                      <SheetNavLink href={bestTimePath} icon={CalendarRange}>
+                        {t('bestTime')}
+                      </SheetNavLink>
+                    )}
+                    {moreMenu && moreMenu.howto.chapters.length > 0 ? (
+                      <SheetDisclosure icon={Compass} label={t('howto')}>
+                        <SheetSubLink href={howtoPath}>{t('overview')}</SheetSubLink>
+                        {moreMenu.howto.chapters.map((chapter) => (
+                          <SheetSubLink
+                            key={chapter.href}
+                            href={chapter.href}
+                            index={chapter.index}
+                          >
+                            {chapter.label}
+                          </SheetSubLink>
+                        ))}
+                      </SheetDisclosure>
+                    ) : (
+                      <SheetNavLink href={howtoPath} icon={Compass}>
+                        {t('howto')}
+                      </SheetNavLink>
+                    )}
                     <SheetNavLink href={plannerPath} icon={CalendarPlus}>
                       {t('planner')}
                     </SheetNavLink>

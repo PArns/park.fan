@@ -4,6 +4,7 @@ import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 import { postPath } from '@/lib/blog/paths';
@@ -140,7 +141,8 @@ export function BlogPostCardView({
                 sizes={isFeature ? FEATURE_SIZES : CARD_SIZES}
               />
             ) : (
-              <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
+              // The ground only: the pin goes into the photo strip below, like a cover's frame.
+              <BlogCoverFallback slug={post.slug} mark="none" />
             )}
           </div>
 
@@ -239,16 +241,13 @@ export function BlogPostCardView({
             </p>
           </div>
 
-          {/* Photo spacer — opens the 1fr middle row when there's a cover image.
-            The featured tile gets a noticeably taller image area so it reads
-            as the page's headliner. */}
-          <div
-            className={cn(
-              'relative z-0',
-              cover && (isFeature ? 'sm:min-h-[360px]' : 'sm:min-h-[240px]')
-            )}
-          >
-            {cover && (
+          {/* Photo spacer — opens the 1fr middle row. A post without a cover opens it
+            too, for `BlogCoverFallback`'s pin: the strip between the panels is what a
+            visitor sees of the picture (docs/rules/card-photos-are-two-layers.md), so
+            that is where the pin is centred. The featured tile gets a noticeably taller
+            image area so it reads as the page's headliner. */}
+          <div className={cn('relative z-0', isFeature ? 'sm:min-h-[360px]' : 'sm:min-h-[240px]')}>
+            {cover ? (
               <CardPhotoFrame
                 src={cover}
                 hideOnMobile
@@ -256,6 +255,8 @@ export function BlogPostCardView({
                 objectPosition={coverPosition}
                 sizes={isFeature ? FEATURE_SIZES : CARD_SIZES}
               />
+            ) : (
+              <BlogCoverFallback ground={false} />
             )}
           </div>
 
@@ -385,8 +386,8 @@ function BlogPostRow({
         className
       )}
     >
-      {cover && (
-        <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-md">
+      <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-md">
+        {cover ? (
           <Image
             src={cover}
             alt={frontmatter.coverImage?.alt ?? frontmatter.title}
@@ -396,8 +397,10 @@ function BlogPostRow({
             style={{ objectPosition: coverPosition }}
             priority={priority}
           />
-        </div>
-      )}
+        ) : (
+          <BlogCoverFallback slug={post.slug} />
+        )}
+      </div>
       <div className="min-w-0 flex-1">
         {(categoryLabel || frontmatter.featured) && (
           <div className="mb-0.5 flex flex-wrap items-center gap-x-2 gap-y-1">

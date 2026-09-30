@@ -20,6 +20,7 @@ interface SavePayload {
   newAuthors?: Array<{
     key: string;
     name: string;
+    shortName?: string;
     role?: string;
     location?: string;
     url?: string;
@@ -57,6 +58,7 @@ const CATEGORY_PATH_RE = /^[a-z0-9](?:[a-z0-9-/]*[a-z0-9])?$/i;
 
 function buildAuthorFile(a: NonNullable<SavePayload['newAuthors']>[number]): string {
   const lines = ['---', `name: ${yamlString(a.name)}`];
+  if (a.shortName) lines.push(`shortName: ${yamlString(a.shortName)}`);
   if (a.role) lines.push(`role: ${yamlString(a.role)}`);
   if (a.location) lines.push(`location: ${yamlString(a.location)}`);
   if (a.url) lines.push(`url: ${a.url}`);
