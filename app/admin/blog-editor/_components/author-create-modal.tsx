@@ -10,6 +10,7 @@ import { ImagePicker } from './image-picker';
 export interface NewAuthorDraft {
   key: string;
   name: string;
+  shortName?: string;
   role?: string;
   location?: string;
   url?: string;
@@ -58,6 +59,7 @@ function AuthorForm({
 }) {
   const isEdit = !!initial;
   const [name, setName] = useState(initial?.name ?? '');
+  const [shortName, setShortName] = useState(initial?.shortName ?? '');
   const [key, setKey] = useState(initial?.key ?? '');
   const [keyTouched, setKeyTouched] = useState(!!initial);
   const [role, setRole] = useState(initial?.role ?? '');
@@ -79,6 +81,7 @@ function AuthorForm({
     onSubmit({
       key: derivedKey,
       name: trimmedName,
+      shortName: shortName.trim() || undefined,
       role: role.trim() || undefined,
       location: location.trim() || undefined,
       url: url.trim() || undefined,
@@ -198,6 +201,17 @@ function AuthorForm({
               />
             </Field>
           </div>
+          <Field
+            label="Short name (optional)"
+            hint="Byline in post headers and on cards. Empty shows the full name."
+          >
+            <input
+              value={shortName}
+              onChange={(e) => setShortName(e.target.value)}
+              placeholder="Patrick"
+              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
+            />
+          </Field>
           <div className="grid grid-cols-2 gap-3">
             <Field label="Role (optional)">
               <input

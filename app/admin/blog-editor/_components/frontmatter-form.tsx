@@ -122,6 +122,7 @@ export function FrontmatterForm({
                       initial: {
                         key: author.key,
                         name: author.name,
+                        shortName: author.shortName,
                         avatar: author.avatar,
                         role: author.role,
                         location: author.location,

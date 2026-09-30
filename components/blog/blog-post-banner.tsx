@@ -55,7 +55,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
         </AvatarFallback>
       </Avatar>
       <span className="text-foreground font-semibold underline-offset-4 [.group:hover_&]:underline">
-        {author.name}
+        {author.shortName ?? author.name}
       </span>
     </>
   );

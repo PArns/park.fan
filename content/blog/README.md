@@ -82,6 +82,7 @@ name/bio/url in every post. Each author also gets a profile page at
 ```md
 ---
 name: Patrick Arns
+shortName: Patrick # optional byline in post headers and cards; defaults to `name`
 role: Gründer von park.fan # short title, shown under the name
 location: Deutschland
 url: https://arns.dev # primary website / rel=author
@@ -101,6 +102,8 @@ Write as much as you like here — paragraphs, links, emphasis.
 ```
 
 - `author: patrick` → resolves to `authors/patrick.md`.
+- `shortName` is what the byline shows in a post header and on a card. The
+  full `name` stays in structured data, the feed and on the profile page.
 - `bio` (frontmatter) is the short one-liner used in post headers/cards; the
   **body** is the rich bio on the profile page.
 - `avatar` is optional — leave it `''` to fall back to the name initials.
@@ -111,7 +114,7 @@ Write as much as you like here — paragraphs, links, emphasis.
 **Translations.** `authors/<key>.md` is the base (default locale, `en`). Add
 `authors/<key>.<locale>.md` to translate — e.g. `patrick.de.md`. Locale files
 only need the translatable fields (`role`, `location`, `bio` + the body);
-language-neutral fields (`name`, `url`, `avatar`, `links`) are inherited from
+language-neutral fields (`name`, `shortName`, `url`, `avatar`, `links`) are inherited from
 the base, and any locale without a file falls back to it.
 
 ```md
