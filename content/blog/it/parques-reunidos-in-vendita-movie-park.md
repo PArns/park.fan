@@ -1,5 +1,5 @@
 ---
-title: 'EQT vuole vendere Parques Reunidos, e con il gruppo anche Movie Park e Mirabilandia'
+title: 'EQT vuole vendere Parques Reunidos, con Movie Park e Mirabilandia'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
 author: patrick
@@ -74,7 +74,7 @@ Germania.
 Nel 2025 il fatturato è stato di 550 milioni di euro, in calo del 4,7 % a
 perimetro costante, con un EBITDA sopra i 170 milioni. L’Italia vale 49
 milioni, ben dietro a Spagna (196) e Germania (172), che da sole fanno circa due
-terzi del totale. Per un compratore l’Italia vale quindi poco più di un quarto
+terzi del totale. In fatturato, quindi, l’Italia pesa poco più di un quarto
 della Germania.
 
 EQT ha comprato Parques Reunidos nel 2019 con un’offerta pubblica e lo ha
@@ -126,7 +126,7 @@ capogruppo, e il parco resta quello da cui hai comprato.
 
 La vendita non tocca nemmeno l’abbonamento di Movie Park. Gold e Platino valgono per il resto di questa stagione e per tutto il 2027, e fra i vantaggi dell’abbonamento 2027 il sito del parco elenca già tre ingressi gratuiti ciascuno a Bobbejaanland, Slagharen e al Weltvogelpark Walsrode, uno a Tropical Islands e uno in ciascuno degli altri parchi europei del gruppo, citando come esempi Mirabilandia e il Parque Warner. Il resto delle offerte del Bonus Club per il 2027 uscirà «all’inizio della stagione 2027». Visto che il gruppo viene venduto in blocco, dopo la vendita i suoi parchi restano parchi dello stesso gruppo.
 
-Belantis mostra come il parco gestisce un cambio di proprietà a stagione in corso. La lista 2025 dava tre ingressi gratuiti in quel parco vicino a Lipsia, validi fino al 9 novembre, e la vendita alla Compagnie des Alpes ad aprile non ha cambiato nulla. Solo nella lista 2026 Belantis passa fra gli sconti. Se stai pensando all’abbonamento Gold 2027, la vendita non è un motivo per aspettare. Se qualcosa cambierà per i parchi partner, sarà al più presto nel 2028.
+Per un cambio di proprietà a stagione in corso c’è già un precedente, Belantis. La lista 2025 dava tre ingressi gratuiti in quel parco vicino a Lipsia, validi fino al 9 novembre, e la vendita alla Compagnie des Alpes ad aprile non ha cambiato nulla. Solo nella lista 2026 Belantis passa fra gli sconti. Se stai pensando all’abbonamento Gold 2027, la vendita non è un motivo per aspettare. Se qualcosa cambierà per i parchi partner, sarà al più presto nel 2028.
 
 Dall’acquisto del 2010 Parques Reunidos ha costruito a Bottrop più di una volta. Un mese dopo il direttore del parco ha proposto ai nuovi proprietari l’idea di [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), il gruppo ha stanziato cinque milioni di euro e l’attrazione ha aperto nel 2011. Un ottovolante di 45 metri sul prato subito dietro l’ingresso, presentato al comune nel 2012, è stato fermato a settembre dello stesso anno, ufficialmente per «un cambiamento nella nostra strategia di investimento». Su quel terreno nel 2017 ha aperto [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), l’ottovolante più grande del parco. Poi sono arrivati [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) nel 2018 e il [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) nel 2021. Tutta la storia del parco è nella nostra [guida a Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli).
 

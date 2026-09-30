@@ -1,5 +1,5 @@
 ---
-title: 'Nel parco, la bussola ti dice quale attrazione hai davanti'
+title: 'Nel parco, con la bussola vedi quale attrazione hai davanti'
 translationKey: in-park-compass
 date: '2026-09-28'
 author: patrick
@@ -53,9 +53,9 @@ ogni angolo sei in un altro paese. Sulla mappa Klugheim si trova subito. Più
 difficile è capire dove sei tu su quella mappa, e poi capire in che direzione
 stai guardando.
 
-Finora park.fan ti diceva, dentro il parco, quanta coda c’era a
-[Black Mamba](ref:phantasialand/black-mamba?bare). Dove fosse Black Mamba
-rispetto a te, non lo diceva. Dal 27 settembre te lo dice una bussola.
+Finora, dentro il parco, su park.fan leggevi quanta coda c’era a
+[Black Mamba](ref:phantasialand/black-mamba?bare), ma non dove fosse Black
+Mamba rispetto a te. Per questo dal 27 settembre c’è una bussola.
 
 ## Quando compare la bussola
 
@@ -84,7 +84,7 @@ direzione reale, e più è verso l’esterno, più è lontana. Sull’anello
 tratteggiato esterno c’è scritto fin dove arriva. Il cono blu è il tuo sguardo,
 e gira quando ti giri.
 
-Ogni punto dice cosa sta facendo l’attrazione in questo momento. Un numero è
+Da ogni punto leggi cosa sta facendo l’attrazione in questo momento. Un numero è
 l’attesa in minuti, con i colori che park.fan usa per le attese ovunque. Un
 anello verde con un punto vuol dire aperta, ma senza attesa comunicata. Il
 triangolo arancione è un guasto, la chiave inglese una manutenzione, e un
@@ -146,10 +146,10 @@ World Magnetic Model 2025, e la bussola la aggiunge a ogni lettura.
 La freccia indica la linea d’aria, non il percorso. Al Phantasialand la strada
 verso un’attrazione dietro un muro spesso parte nella direzione opposta, e
 nessuna bussola ci può fare niente. Inoltre la freccia indica l’unico punto che
-i nostri dati conoscono per un’attrazione. Dove sia l’ingresso della coda, i
-dati non lo sanno.
+abbiamo per un’attrazione, e dove sia l’ingresso della coda nei nostri dati
+non c’è.
 
-Per il resto è la bussola stessa a dirti quanto fidarti.
+Per il resto, quanto fidarti sta scritto sulla bussola stessa.
 
 - Se la tua posizione ha un margine di più di 40 metri, sopra il cerchio c’è
   scritto per esempio «Posizione imprecisa (± 65 m). Le frecce possono
@@ -166,15 +166,15 @@ Per il resto è la bussola stessa a dirti quanto fidarti.
 
 Senza bussola, su un portatile o su un iPhone prima di attivarla, le frecce non
 ci sono. Le righe dicono allora «verso sud-ovest», e nel cerchio manca il cono
-blu. Chiunque legge una freccia come «di qua», anche quando la freccia conosce
+blu. Chiunque legge una freccia come «di qua», anche quando dietro la freccia c’è
 solo il nord e non come tieni il telefono. E nessuno sa se quel portatile stia
 sul tavolo con la tastiera rivolta a sud.
 
 ## Cosa esce dal tuo telefono
 
 La direzione in cui punta il telefono resta sul telefono. La home invece manda
-la tua posizione al nostro server, così il server sa dire in quale parco sei e
-come sono le code lì. Lo fa già da tempo per il messaggio di benvenuto. Le
+la tua posizione al nostro server, così il server trova il parco in cui sei e le
+sue code. Lo fa già da tempo per il messaggio di benvenuto. Le
 posizioni delle attrazioni arrivano una volta per parco, pesano meno di un
 kilobyte e valgono per tutta la giornata.
 
@@ -184,8 +184,8 @@ due.
 
 Quello che contiamo è se la bussola viene usata: se è stata sullo schermo, se si
 è accesa la bussola del telefono, se qualcuno ha fissato un’attrazione, ne ha
-aperta una dalla bussola o ha toccato «Vai alla bussola» in alto. Senza
-posizione, senza direzione e senza il parco.
+aperta una dalla bussola o ha toccato «Vai alla bussola» in alto. Nel
+conteggio non entrano né la posizione, né la direzione, né il parco.
 
 ## Provala da casa
 

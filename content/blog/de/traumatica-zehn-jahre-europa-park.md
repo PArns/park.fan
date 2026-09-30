@@ -42,16 +42,16 @@ seo:
     - Traumatica Altersgrenze
 ---
 
-Im Herbst 2007 ließ der [Europa-Park](ref:europa-park) zum ersten Mal abends
-Darsteller mit Kunstblut auf seine Gäste los. Das Ganze hieß „Terenzi Horror
-Nights“, nach dem Popsänger Marc Terenzi, der es bis 2012 zusammen mit Michael
-Mack veranstaltete. Seit 2017 trägt es den Namen Traumatica, anfangs noch als
-„Horror Nights – Traumatica“, und damit ist 2026 die zehnte Ausgabe unter
-diesem Namen. Das Motto rechnet beides
-zusammen: „20 Jahre Horror, 10 Jahre Traumatica“.
+Die Vorpremiere der zehnten Traumatica im [Europa-Park](ref:europa-park) läuft
+heute Abend, Mittwoch, 23. September. Die offizielle Premiere ist am Freitag,
+dem 25. September, und danach wird bis Samstag, 7. November, gespielt.
 
-Die Vorpremiere läuft heute Abend, Mittwoch, 23. September. Die offizielle
-Premiere ist am Freitag, dem 25. September, und danach wird bis Samstag, 7. November, gespielt.
+Im Herbst 2007 ließ der Park zum ersten Mal abends Darsteller mit Kunstblut auf
+seine Gäste los. Das Ganze hieß „Terenzi Horror Nights“, nach dem Popsänger
+Marc Terenzi, der es bis 2012 zusammen mit Michael Mack veranstaltete. Seit 2017
+trägt es den Namen Traumatica, anfangs noch als „Horror Nights – Traumatica“,
+und damit ist 2026 die zehnte Ausgabe unter diesem Namen. Im Motto stehen beide
+Zahlen: „20 Jahre Horror, 10 Jahre Traumatica“.
 
 ## Was zum Jubiläum neu ist
 
@@ -62,8 +62,7 @@ Veranstalter auch im Murderdome, allein durch ein ganzes Haus geht man aber nur
 hier. Laut
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html)
 ist es nicht barrierefrei und ausschließlich ab 18. Es kostet 29 € zusätzlich
-zum Traumatica-Ticket. Wie lange man drin ist, verrät der Park nicht, was
-vermutlich Absicht ist.
+zum Traumatica-Ticket. Wie lange man drin ist, sagt der Park nicht.
 
 Zurück ist der **Vampire's Club**, allerdings nur an den ersten beiden
 Wochenenden: 25. und 26. September sowie 2. und 3. Oktober, jeweils von 23 bis
@@ -80,7 +79,7 @@ zusätzlichen Hindernissen und neuen Streckenabschnitten.
 
 ## Die acht Horror-Attraktionen
 
-- Wakala's Wonderland, eine knallbunte Spielwelt, in der man lieber nicht spielt
+- Wakala's Wonderland, eine knallbunte Spielwelt
 - Day 1, der erste Tag der Apokalypse, und du suchst den Ausgang
 - Tarot-House – Last Descent, eine verfluchte Gruft, in der Madame Monroe neue
   Seelen sammelt
@@ -88,7 +87,7 @@ zusätzlichen Hindernissen und neuen Streckenabschnitten.
 - The Hill – Hide and Seek, Versteckspiel mit einer Hexe auf der Suche nach
   vermissten Kindern
 - Murderdome – Bonus Round, mit den neuen Hindernissen von oben
-- Studio-13 – Callback, ein Filmcasting, bei dem du die Rolle nicht willst
+- Studio-13 – Callback, ein Filmcasting
 - The Field, ein Abendspaziergang durch ein Maisfeld, bei dem du nicht allein bist
 
 THE HOTEL zählt nicht zu den acht, es kostet extra. Dazu gibt es für 6 € die
@@ -119,11 +118,11 @@ um 18 Uhr, die Horror-Attraktionen laufen von 19 bis 23:30 Uhr.
 Die „ab“-Preise gelten für die günstigsten Termine, und der Shoxter Pass mit
 Priority-Zugang ist schon weg.
 
-Wer den Tag davor im Park verbringt: Der
-[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) zeigt, an welchen
-Tagen die Warteschlangen kurz sind, und der
-[Halloween-Überblick](/blog/halloween-freizeitparks-2026) vergleicht Traumatica
-mit dem, was Movie Park, Walibi und Toverland in diesem Herbst machen.
+An welchen Tagen die Warteschlangen im Europa-Park kurz sind, falls du den Tag
+davor dort verbringst, steht im
+[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Neben Movie Park,
+Walibi und Toverland hat Traumatica einen eigenen Abschnitt im
+[Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 [Europa-Park](ref:europa-park?full)
 

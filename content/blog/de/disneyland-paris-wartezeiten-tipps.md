@@ -68,7 +68,7 @@ dem des großen Parks, und an jedem der sieben Wochentage. Umgekehrt war es nie.
 Der kleinere Park verteilt seine Gäste auf weniger als halb so viele
 Attraktionen, und das merkt man an jeder Absperrung.
 
-## Ein Resort, zwei Parks, ein Bahnhof
+## Das Resort und seine zwei Parks
 
 Disneyland Paris hat am **12. April 1992** eröffnet, damals noch als Euro Disney
 Resort, rund 32 Kilometer östlich von Paris in der Neustadt Marne-la-Vallée. Das
@@ -109,9 +109,7 @@ Heures du Duc de Berry_ und der Mont-Saint-Michel, die eckig geschnittenen Bäum
 rundherum stammen aus dem Zeichentrickfilm von 1959, und in der Galerie im
 Obergeschoss erzählen Buntglasfenster und Wandteppiche das Märchen nach. Im
 Sockel darunter liegt **La Tanière du Dragon**, eine Höhle mit einem
-angeketteten Animatronic-Drachen, der sich bewegt und Dampf ausstößt. Kinder
-kommen da manchmal nicht freiwillig wieder raus, und manchmal gar nicht erst
-rein.
+angeketteten Animatronic-Drachen, der sich bewegt und Dampf ausstößt.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 ist die größte Ausgabe dieser Bahn in allen Disney-Parks und die einzige, die
@@ -124,9 +122,8 @@ mit neuen Bremsen, frischer Farbe und ein paar Effekten zurück, die man sich in
 Kalifornien ausgeliehen hatte.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-ist die Pariser Haunted Mansion, mit einem Unterschied, für den Fans eigens
-anreisen: Die Fassungen in Florida und Kalifornien erzählen bewusst keine
-zusammenhängende Geschichte. Paris schon: Melanie Ravenswood wartet seit ihrer
+ist die Pariser Haunted Mansion. Die Fassungen in Florida und Kalifornien
+erzählen bewusst keine zusammenhängende Geschichte, Paris schon: Melanie Ravenswood wartet seit ihrer
 geplatzten Hochzeit im Brautkleid, und ihr Vater Henry hat die Bewerber der
 Reihe nach umgebracht (ein Brautvater mit sehr eigenen Vorstellungen vom
 Kennenlernen), was die Überarbeitung von 2019 zum ersten Mal eindeutig
@@ -170,8 +167,7 @@ als jede andere Dunkelfahrt im Park.
 eröffnete am 30. Juli 1993 als erste Achterbahn in einem Disney-Park mit einem
 Überschlag, gebaut von Intamin, 600 Meter Strecke, 58 km/h. Von April 2000 bis
 November 2004 fuhr sie rückwärts. Ihre Mindestgröße von 140 Zentimetern ist die
-höchste aller Disney-Attraktionen weltweit, was vor Ort regelmäßig Familien
-trennt. Und **[„it's a small world“](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
+höchste aller Disney-Attraktionen weltweit. Und **[„it's a small world“](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
 ist genau das, was du befürchtest.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
@@ -210,7 +206,6 @@ dem **7. September 2026** fährt sie nicht mehr. Der Park hat sie für die grö�
 Instandsetzung seit ihrer Eröffnung aus dem Betrieb genommen: Steuerungen,
 Sensoren, Kommunikationstechnik und Teile der Schienen werden ersetzt, dazu wird
 gereinigt, lackiert und repariert. Geplante Rückkehr ist der **Sommer 2027**.
-Rund zehn Monate lang muss der Ostaustralstrom also ohne Fahrgäste auskommen.
 
 In unseren Daten sieht man das ohne jede Pressemitteilung: Die letzte
 Live-Meldung dieser Bahn stammt vom **6. September, 20:21 UTC**. Seitdem kommt
@@ -222,15 +217,15 @@ Wiedereröffnung nicht mehr zu den Attraktionen des Tages.
 
 ```
 
-Für einen Tag dort heißt das: Die Bahn, die bisher den halben Vormittag
-gefressen hat, fällt weg, und ihre Gäste verteilen sich auf einen Park, der
+Für einen Tag dort fällt damit die Bahn weg, die bisher den halben Vormittag
+gefressen hat, und ihre Gäste verteilen sich auf einen Park, der
 ohnehin wenig Kapazität hat. In der Tabelle darüber steht Crush's Coaster
 trotzdem noch mit ihren Werten aus den Monaten vor der Schließung, ungefähr wie
 ein Gericht, das noch auf der Karte steht und seit September aus ist. Bis zum
 Sommer 2027 ist Frozen Ever After die Warteschlange, um die herum du den Tag dort
 planst.
 
-## Wie voll es wirklich ist
+## Wie voll die beiden Parks sind
 
 Beide Parks liefern uns Wartezeiten seit dem 26. Dezember 2025, fast ohne Lücke allerdings erst seit Ende März 2026. Aus dem Winter dazwischen haben wir nur einzelne Tage im Dezember und Januar,
 für Februar, Oktober und November noch gar keine. Stand 25. September 2026
@@ -244,8 +239,7 @@ davon hinter jeder Zeile stecken, führen die Tabellen selbst mit.
 Der Abstand zwischen den beiden Parks zeigt sich in jedem gemessenen Monat. Nur
 im Dezember, für den wir nur die letzten Tage des Jahres 2025 haben, lagen die
 typischen Wartezeiten gleichauf, und selbst da war das Andrangsniveau in
-Adventure World höher. Mit Beliebtheit hat das wenig zu tun, mit Arithmetik
-viel: 2024 zählte die TEA 10,2 Millionen Besuche im Disneyland Park und 5,5
+Adventure World höher. 2024 zählte die TEA 10,2 Millionen Besuche im Disneyland Park und 5,5
 Millionen im zweiten Park. Gezählt wird dabei jeder Gast nur in dem Park, den er
 zuerst betritt; wer mittags rüberwechselt, taucht in der zweiten Zahl gar nicht
 auf. Mehr als ein Drittel aller Besuche entfällt also auf einen Park mit halb so
@@ -263,9 +257,9 @@ So verteilt sich ein Tag im Disneyland Park über die Stunden:
 
 ```
 
-Disneyland Paris hat ganzjährig geöffnet, jeden Tag, und kennt damit die
-klassische Nebensaison-Frage nicht, die bei saisonalen Parks über alles
-entscheidet. Was den Andrang bestimmt, sind stattdessen die französischen
+Disneyland Paris hat ganzjährig geöffnet, jeden Tag. Die klassische
+Nebensaison-Frage, die bei saisonalen Parks über alles entscheidet, stellt sich
+hier nicht. Was den Andrang bestimmt, sind stattdessen die französischen
 Schulferien, die anders liegen als die deutschen und im Winter und Frühjahr nach
 drei Zonen gestaffelt sind, dazu die britischen Half-Term-Wochen.
 
@@ -277,9 +271,9 @@ ersten Mal auch in Disney Adventure World: World of Frozen bekommt
 Weihnachtsdeko im skandinavischen Stil und eigene Auftritte von Anna, Elsa und
 Olaf. An Silvester feiert jeder der beiden Parks mit eigenem Programm.
 
-Die Wochentagskurve darüber ist flach, und das hat einen Grund: Ein Park, der 365 Tage im Jahr aufhat und in einem halben
-Dutzend Ländern beworben wird, hat keinen toten Dienstag, auf den man
-ausweichen könnte. Welche der nächsten Wochen trotzdem die ruhigsten sind, steht
+Die Wochentagskurve darüber ist flach, weil ein Park, der 365 Tage im Jahr aufhat und in
+einem halben Dutzend Ländern beworben wird, keinen toten Dienstag hat, auf den
+man ausweichen könnte. Welche der nächsten Wochen trotzdem die ruhigsten sind, steht
 hier, laufend neu berechnet:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
@@ -361,9 +355,7 @@ beide (Stand September 2026). Die Preise für dein Datum stehen auf
 
 **Essen.** Beide Parks haben Tischrestaurants mit Reservierung und viel
 Schnellgastronomie dazwischen. Unsere Datenbank führt (Stand 25. September 2026)
-35 Gastronomiebetriebe im Disneyland Park und 19 in Adventure World. Mittags wandert die Warteschlange von den
-Bahnen an die Theken und macht die Pommesbude für eine Weile zur gefragtesten
-Attraktion im Park.
+35 Gastronomiebetriebe im Disneyland Park und 19 in Adventure World.
 
 ## Häufige Fragen zu Disneyland Paris
 
