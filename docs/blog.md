@@ -381,8 +381,8 @@ Two of those are countable, and worth counting on a finished text:
 
 | Metric                                    | How                              | Signal            | Our German posts     | Our English posts    |
 | ----------------------------------------- | -------------------------------- | ----------------- | -------------------- | -------------------- |
-| **Sentence-length variance** (burstiness) | `stdev(sentence lengths) / mean` | under 0.4 is flat | **0.99** (0.39–2.57) | **1.08** (0.42–2.86) |
-| **Commas per 100 words**                  | `count(',') / words × 100`       | thin under ~4     | **8.3**              | **6.5**              |
+| **Sentence-length variance** (burstiness) | `stdev(sentence lengths) / mean` | under 0.4 is flat | **0.57** (0.43–1.25) | **0.59** (0.41–1.37) |
+| **Commas per 100 words**                  | `count(',') / words × 100`       | thin under ~4     | **8.2**              | **6.4**              |
 
 Both are supporting signals, never verdicts: a short reference text can be flat for good reasons,
 and under 40 sentences one merged sentence moves the figure across the line, so the check only
@@ -390,9 +390,10 @@ warns on posts that long.
 But a long post under 0.4 is a post where every sentence came out the same length, and that is
 worth a read-aloud pass before it ships. `pnpm check:prose` prints both (§7).
 
-Measured on 2026-09-30. Until that day the script cut every German date in two (`27. |
-September`) and counted the halves as sentences, which is why the German figure used to read
-0.71.
+Measured on 2026-09-30, after the pass over every post. Until that day the script cut every
+German date in two (`27. | September`) and counted the halves as sentences, which is why the German
+figure once read 0.71; and it counted the source list at the end of a post as one sentence of a
+hundred words, which pushed every locale's mean to about 1.0. Neither was the prose.
 
 ### 2.10 Staccato
 
@@ -1122,16 +1123,31 @@ The heading and dek tells (§5.6), the product as protagonist (§2.13), the nega
 the definition colons (§2.15), staccato (§2.10), the ellipsis and exclamation budgets (§4.5), a
 `[!QUOTE]` without a source line, Markdown in a plain-text field, the participial tail in six
 languages (§2.3), colon pivots (§2.7), English without contractions (§6), quip series in a caption
-collection (§5.2) and an FAQ answer that repeats its question (§5.1) are counted by the script
-itself; a grep cannot see paragraphs.
+collection (§5.2), an FAQ answer that repeats its question (§5.1), things that talk and false
+agency (§2.13), crowd opinions (§1.2) and travel-guide copy (§3.4) in all six languages, and a
+news title over 60 characters or in the `<Park>: <Fakt>, und <Pointe>` shape (§5.0) are counted
+by the script itself; a grep cannot see paragraphs.
 
 What it still cannot see is the wink at the end of a paragraph (§2.17), the quiet teaser
 (§2.16), and whether a sentence claims anything at all (§1.7). That is the review pass.
 
-### 7.1 Measured state, 2026-09-10
+### 7.1 Measured state
 
-Where the repository actually stood when this file was written — the output of `pnpm check:prose`
-on that day, not impressions:
+On **2026-09-30**, after the pass over every text (posts, glossary, catalogs, captions, the
+landing pages, the guide page, the changelog and the skills):
+
+| Surface                        | Measured                                                                                          |
+| ------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Blog posts                     | 142 (de 27, the other five 23 each). Non-signature em dashes: **0**. Errors: **0**.               |
+| Sentence-length variance       | de 0.57, en 0.59, nl 0.58, fr, es and it 0.60. Lowest single post 0.40.                           |
+| Commas per 100 words           | de 8.2, en 6.4, nl 6.4, fr 7.7, es 6.7, it 6.7.                                                   |
+| Colon pivots per 100 sentences | Medians de 6.5, nl 7.8, es 9.6, en 10.3, it 11.4, fr 12.1. Every post under 15.                   |
+| English contractions           | Lowest post 60 %, median 94 %. None under the 25 % floor; that morning 16 of 22 had two or fewer. |
+| `Schlange` for `Warteschlange` | **0** (255 changed that day).                                                                     |
+| Em dashes in `messages/*.json` | **0** in all six catalogs; the ratchet in the script is at zero.                                  |
+
+On **2026-09-10**, when this file was first written — the output of `pnpm check:prose` on that
+day, not impressions:
 
 | Surface                       | Measured                                                                                                                    |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
