@@ -94,7 +94,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'day-plan', index: '05', label: 'The day as a plan' },
   { id: 'park-page', index: '06', label: 'A park page, top to bottom' },
   { id: 'night-shift', index: '07', label: 'Where the numbers come from' },
-  { id: 'gaps', index: '08', label: 'When we do not know' },
+  { id: 'gaps', index: '08', label: 'When we don’t know' },
   { id: 'visits', index: '09', label: 'Four visits' },
   { id: 'signposts', index: '10', label: 'Where to find what' },
   { id: 'faq', index: '11', label: 'Common questions' },
@@ -131,7 +131,7 @@ const SCALE_LEGEND = [
   },
   {
     term: 'Record',
-    def: `${TARON_RECORD} minutes on 16 July 2026. The worst day on record, which is exactly why it is not the yardstick.`,
+    def: `${TARON_RECORD} minutes on 16 July 2026, the worst day on record. A single day makes a poor yardstick.`,
     swatch: 'bg-foreground/40',
   },
 ];
@@ -168,18 +168,18 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Severe weather warning',
-    body: 'Official warnings from DWD and MeteoAlarm, passed through unchanged. We do not play weather forecaster ourselves.',
+    body: 'Official warnings from DWD and MeteoAlarm, passed through unchanged.',
     example: 'The DWD’s wording, unchanged. For parks outside Germany, MeteoAlarm’s.',
     demo: <WeatherWarningBannerDemo />,
     onlyWhen: 'a warning is active for the location.',
   },
   {
     title: 'Rain radar',
-    body: 'The next few hours in fifteen-minute steps. Tells you whether the shower is through in twenty minutes or whether it is the afternoon now.',
+    body: 'The next few hours in fifteen-minute steps. Enough to see whether the shower is through in twenty minutes or it’s set in for the afternoon.',
     example:
-      'Quarter hours, not hours: a shower from 14:15 to 14:30 disappears inside an hourly value; here it is there.',
+      'Quarter hours, not hours: a shower from 14:15 to 14:30 disappears inside an hourly value, and here it doesn’t.',
     demo: <NowcastBannerDemo single />,
-    onlyWhen: 'there is precipitation in range.',
+    onlyWhen: 'there’s precipitation in range.',
   },
   {
     title: 'Weather card',
@@ -213,7 +213,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Showtimes for the whole day, dining with opening hours.',
     example: 'Phantasialand has four shows and 46 restaurants, both with times.',
     demo: <AnatomyShowsDemo />,
-    onlyWhen: 'the park supplies them. Otherwise the tab is not there at all.',
+    onlyWhen: 'the park supplies them. Otherwise the tab isn’t there at all.',
   },
   {
     title: 'Best days',
@@ -311,7 +311,7 @@ const FAQ = [
   {
     question: 'What do “typical” and “busy” mean for a wait time?',
     answer:
-      'Typical is the median of the daily peaks: on half of all days measured the longest queue was shorter, on the other half it was longer. Busy is the 90th percentile of the same series, roughly the one day in ten when it was unusually full. The absolute record is shown separately so that a single outlier cannot move either value.',
+      'Typical is the median of the daily peaks: on half of all days measured the longest queue was shorter, on the other half it was longer. Busy is the 90th percentile of the same series, roughly the one day in ten when it was unusually full. The absolute record is shown separately so that a single outlier can’t move either value.',
   },
   {
     question: 'Is a 70-minute wait a lot?',
@@ -331,7 +331,7 @@ const FAQ = [
   {
     question: 'Why does Hansa-Park show no wait times?',
     answer:
-      'The park publishes its wait times only in its own app, and only for devices on the park’s Wi-Fi. There is no public interface we could read them from. Because a park with no source looks exactly like a park closed for the night in the data, this is a curated entry rather than something derived: the notice on park.fan says so, instead of listing 82 rides as apparently empty.',
+      'The park publishes its wait times only in its own app, and only for devices on the park’s Wi-Fi. There’s no public interface we could read them from. Because a park with no source looks exactly like a park closed for the night in the data, this is a curated entry rather than something derived: the notice on park.fan says so, instead of listing 82 rides as apparently empty.',
   },
   {
     question: 'What is rope drop?',
@@ -366,16 +366,16 @@ export function ContentEN() {
           digits, and nobody in the queue could tell whether that was bad luck or just a Tuesday.
         </Lead>
         <P>
-          The question stayed; the queue, thankfully, did not. Showing a current wait time is the
+          The question stayed; the queue, thankfully, didn’t. Showing a current wait time is the
           easy part: most parks publish it themselves, at the entrance and in their own apps, which
-          tend to work only on the park’s Wi-Fi, so only once you are already inside. The number
-          gets interesting when something beside it says what a normal day at this ride looks like,
-          when the queue tends to get shorter, and whether today is a good day at all.
+          tend to work only on the park’s Wi-Fi, so only once you’re already inside. The number gets
+          interesting once you can see next to it what a normal day at this ride looks like, when
+          the queue tends to get shorter, and whether today is a good day at all.
         </P>
         <P>
-          Nothing on this page is a picture of something. Every card, badge and table further down
-          is a real part of park.fan, just fed with fixed example numbers. You will have the same
-          cards on your phone an hour later in the park, with today’s numbers in them.
+          Nothing on this page is a screenshot. Every card, badge and table further down is a
+          working part of park.fan, just fed with fixed example numbers. You’ll have the same cards
+          on your phone an hour later in the park, with today’s numbers in them.
         </P>
 
         <Reveal>
@@ -408,32 +408,33 @@ export function ContentEN() {
         icon={Gauge}
       >
         <P>
-          At the entrance to Taron it says 70 minutes, and that is the whole briefing. The queue
-          backs up to the first flight of steps, your phone shows the same number, and neither of
-          them tells you whether to join now or after lunch. On park.fan four more readings stand
-          next to it: a crowd level, a trend, the second queue and the height requirement.
+          At the entrance to Taron it says 70 minutes, and that’s the whole briefing. The queue
+          backs up to the first flight of steps, your phone shows the same number, and you can’t
+          tell from either of them whether to join now or after lunch. On park.fan four more
+          readings stand next to it: a crowd level, a trend, the second queue and the height
+          requirement.
         </P>
 
         <BareNumberVsCard
           unit="minutes"
           signLabel="What the park posts"
-          signCaption="One number, no context. Whether that is good or bad today is only obvious to somebody who has worn out an annual pass here."
+          signCaption="One number, no context. Whether that’s good or bad today, you have to work out yourself."
           cardLabel="What park.fan makes of it"
-          cardCaption="The same 70 minutes, plus crowd level, trend, single-rider wait, height requirement and a note on when it is likely to ease off."
+          cardCaption="The same 70 minutes, plus crowd level, trend, single-rider wait, height requirement and a note on when it’s likely to ease off."
         />
 
         <div className="space-y-4 pt-2">
           <P>
-            “Very High” is not a matter of taste here. Taron averages {TARON_BASELINE} minutes,{' '}
+            “Very High” isn’t a matter of taste here. Taron averages {TARON_BASELINE} minutes,{' '}
             {TARON_WAIT_NOW} is about 156 percent of that, and the levels change at 60, 89, 110, 150
-            and 200 percent. From 150 upwards it is called “Very High”. The small arrow beside it
-            comes from the last few readings and says whether the queue is growing or being worked
-            off.
+            and 200 percent. From 150 upwards it’s called “Very High”. From the small arrow beside
+            it, worked out from the last few readings, you can see whether the queue is growing or
+            being worked off.
           </P>
           <PG>
             The second value on the card is the single-rider queue. Plenty of rides run several
-            queues in parallel, and which of them exists is often something you find out once you
-            are standing in the wrong one. Next to it, the height requirement, so nobody crosses the
+            queues in parallel, and which of them exists is often something you find out once you’re
+            standing in the wrong one. Next to it, the height requirement, so nobody crosses the
             whole park with a 130-centimetre child only to open a very long negotiation at the
             measuring post.
           </PG>
@@ -466,8 +467,8 @@ export function ContentEN() {
             <P>
               To place a number you need two reference values and a statement of what they rest on.
               On park.fan those are the median of the daily peaks and the 90th percentile of the
-              same series. Translated out of statistics: how long is the longest queue of the day
-              usually, and how long was it on the busiest ten percent of days.
+              same series. Between them you know how long the longest queue of the day usually is,
+              and how long it was on the busiest ten percent of days.
             </P>
           </IntroWithAside>
 
@@ -487,7 +488,7 @@ export function ContentEN() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                     {i === 0 && 'For a Monday, 70 minutes is a lot'}
-                    {i === 1 && 'On a Saturday, it is business as usual'}
+                    {i === 1 && 'On a Saturday, it’s business as usual'}
                     {i === 2 && 'And once it was 135'}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -503,19 +504,18 @@ export function ContentEN() {
                     {i === 1 && (
                       <>
                         On Saturdays {step.typical} minutes is the median. Same display, same ride,
-                        and on this day it is simply average. Being annoyed will not help, and
-                        neither will moving on: the rides next door are having the same Saturday,
-                        with the same people.
+                        and on this day it’s simply average. Being annoyed won’t help, and neither
+                        will moving on: the rides next door are having the same Saturday, with the
+                        same people.
                       </>
                     )}
                     {i === 2 && (
                       <>
                         Across all {step.sampleDays} weekdays measured, the peak typically sits at{' '}
                         {step.typical} minutes. The dashed line at the far end of the scale is the{' '}
-                        {TARON_RECORD}-minute day of 16 July, a day on which anywhere else would
-                        have been better. Days like that are exactly why “busy” is a percentile and
-                        not a maximum: one outlier would drag a mean along with it and make
-                        everything below it useless.
+                        {TARON_RECORD}-minute day of 16 July. Days like that are exactly why “busy”
+                        is a percentile and not a maximum: one outlier would drag a mean along with
+                        it and make everything below it useless.
                       </>
                     )}
                   </p>
@@ -541,7 +541,7 @@ export function ContentEN() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="On a ride’s own page"
-              note="Real values for Taron, fetched on 10 September 2026."
+              note="Taron’s values as the API returned them on 10 September 2026."
               href={TARON}
               hrefLabel="Live values for Taron →"
             >
@@ -581,8 +581,8 @@ export function ContentEN() {
           <Highlight>
             This table is why we keep every wait time, including the dull ones from Tuesday
             mornings. A live number can be fetched when somebody asks. A median across every Tuesday
-            on record is not something anyone works out on the spot while you look at your phone in
-            a queue.
+            on record isn’t something anyone works out on the spot while you look at your phone in a
+            queue.
           </Highlight>
         </SectionShell>
       </Ambience>
@@ -597,13 +597,13 @@ export function ContentEN() {
       >
         <P>
           “Get there early” is the advice everybody gives, including people who turn up in time for
-          lunch. It only holds if the queue grows over the course of the day, and that is far from
+          lunch. It only holds if the queue grows over the course of the day, and that’s far from
           true everywhere. Six rides from the same park, the same table, the same year:
         </P>
 
         <DemoFrame
-          label="The real hourly profile, right now"
-          note="Live from the park’s hourly profile. Each ride’s strongest hour is in bold, and across these six rides it is by no means the same one. An hour only becomes a column once it has at least ten days measured on that ride, reaches at least 40 percent of the best-measured hour and is reported by at least half the rides. That throws out the edges of the day, where a single hotel-guest queue would otherwise speak for the whole morning."
+          label="The hourly profile, right now"
+          note="Live from the park’s hourly profile. Each ride’s strongest hour is in bold, and across these six rides it’s by no means the same one. An hour only becomes a column once it has at least ten days measured on that ride, reaches at least 40 percent of the best-measured hour and is reported by at least half the rides. That throws out the edges of the day, where a single hotel-guest queue would otherwise stand for the whole morning."
           href={PARK}
           hrefLabel="Phantasialand on park.fan →"
         >
@@ -614,16 +614,16 @@ export function ContentEN() {
           <P>
             Taron is the case where the time of day barely matters: the row stays in a narrow band
             all day, and the ride is as popular in the morning as in the afternoon. What makes the
-            difference is the weekday from chapter 02. Chiapas is the opposite, climbing clearly
-            into the afternoon. A single rule for the whole park would be wrong for one of the two,
-            which is why it is computed per ride.
+            difference is the weekday from chapter 02. Chiapas is the opposite, and its values climb
+            clearly into the afternoon. A single rule for the whole park would be wrong for one of
+            the two, which is why it’s computed per ride.
           </P>
         </div>
 
         <div className="grid items-start gap-6 lg:grid-cols-2">
           <DemoFrame
             label="The recommendation that comes out of it"
-            note="It is only recommended when the daily peak reaches at least 60 minutes and the early start saves at least 45 of them. Colorado Adventure in the same park saves 40 minutes off a peak of 50 and therefore gets no tip."
+            note="It’s only recommended when the daily peak reaches at least 60 minutes and the early start saves at least 45 of them. Colorado Adventure in the same park saves 40 minutes off a peak of 50 and therefore gets no tip."
           >
             <RopeDropDemo />
           </DemoFrame>
@@ -632,14 +632,14 @@ export function ContentEN() {
             <PG>
               The card names three numbers and one time: the typical wait at opening, the daily
               peak, the difference between them, and the window in which the head start holds. After
-              that the head start is gone, and the card does not pretend otherwise.
+              that the head start is gone.
             </PG>
             <P>
               On top of that comes the quietest time of the day, but only when it falls outside the
-              early window. For Taron both land in the same hour, so there is no second time here.
-              For other rides it is the evening, and then that time is what the card shows. For the
-              whole park, the attractions overview lists the rides where setting an alarm pays off
-              most, sorted by minutes saved.
+              early window. For Taron both land in the same hour, so there’s no second time here.
+              For other rides it’s the evening, and then that time is on the card. For the whole
+              park, the attractions overview lists the rides where setting an alarm pays off most,
+              sorted by minutes saved.
             </P>
           </div>
         </div>
@@ -662,7 +662,7 @@ export function ContentEN() {
 
         <DemoFrame
           label="Four days from the autumn holidays"
-          note="15 October is the quietest of the four even though it falls in the middle of the holidays: it is raining, and rain keeps a surprising number of people at home. The 19th is grey because the park is closed that day. On park.fan the same calendar runs month by month, as far ahead as the forecast for that park reaches."
+          note="15 October is the quietest of the four even though it falls in the middle of the holidays: it’s raining, and rain keeps a surprising number of people at home. The 19th is grey because the park is closed that day. On park.fan the same calendar runs month by month, as far ahead as the forecast for that park reaches."
         >
           <CalendarDaysDemo />
         </DemoFrame>
@@ -675,9 +675,9 @@ export function ContentEN() {
           <P>
             The holiday calendars come from two public sources and cover four years each. The
             neighbours’ holidays often matter more than the local ones. An example from today: the
-            defining holiday entry for Phantasialand is not North Rhine-Westphalia but the summer
+            defining holiday entry for Phantasialand isn’t North Rhine-Westphalia but the summer
             holidays of the Dutch province of Gelderland. The park is 90 kilometres from the border,
-            and day guests do not recognise one. Regions within roughly 200 kilometres therefore
+            and day guests don’t recognise one. Regions within roughly 200 kilometres therefore
             count too, and get their own marker in the calendar.
           </P>
           <PG>
@@ -728,7 +728,7 @@ export function ContentEN() {
           wait predicted for its hour, and between two blocks stands the walk from one to the other.
         </P>
         <P>
-          The example below is not a drawing. These are the same parts that run in the planner, fed
+          The example below isn’t a drawing. These are the same parts that run in the planner, fed
           with the answer the API gave on 4 September 2026 for Saturday 12 September at
           Phantasialand: open from 9 to 18, quiet, drizzle. Drag a block to another time and it
           recomputes its height, and the transfers beside it as well. Your own plan stays untouched,
@@ -745,15 +745,15 @@ export function ContentEN() {
         </DemoFrame>
 
         <Highlight>
-          Two things the planner knows that no wait time carries. The park opens at 9 that Saturday,
-          Taron only at 10, and its block cannot be dragged before that hour. And the transfer
+          Two things go into the plan that no wait time carries. The park opens at 9 that Saturday,
+          Taron only at 10, and its block can’t be dragged before that hour. And the transfer
           between two rides is computed from the straight-line distance between the two stations,
-          plus allowances for the walk out and for the ride itself, and it says whether there is
-          time for it.
+          plus allowances for the walk out and for the ride itself. Whether there’s enough time for
+          it is marked on the transfer.
         </Highlight>
         <PG>
           The selected block also names how far the forecast for that ride typically lands off. For
-          Taron that Saturday it is 15 minutes. Typical means half the days land further off.
+          Taron that Saturday it’s 15 minutes. Typical means half the days land further off.
         </PG>
       </SectionShell>
 
@@ -776,9 +776,9 @@ export function ContentEN() {
 
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
-              Half of these blocks depend on a condition, and that is deliberate. A park with no
-              shows gets no empty shows tab, and roughly half of the 212 parks render no neighbours
-              section at all, because there is nothing within reach.
+              Half of these blocks depend on a condition. A park with no shows gets no empty shows
+              tab, and roughly half of the 212 parks render no neighbours section at all, because
+              there’s nothing within reach.
             </Highlight>
             <PG>
               The tabs remember your choice in the address. Open the calendar, pass the link on, and
@@ -846,14 +846,13 @@ export function ContentEN() {
             <P>
               The second half happens at night, while the parks are shut. “How long is Taron’s queue
               on a typical Tuesday” is a median across every measured Tuesday of the past year. You
-              do not kick that off when somebody opens a page, or they would be queueing for the
-              queue. It has to be ready before the question arrives.
+              don’t kick that off when somebody opens a page, or they’d be queueing for the queue.
+              It has to be ready before the question arrives.
             </P>
             <P>
               Six steps in a fixed order, every night. Each one reads what the previous one wrote,
-              so none of them gets to jump the queue, which on a site about queues would be poor
-              form anyway. By the time you open the page in the morning, all of it has been
-              computed.
+              so none of them gets to jump the queue. By the time you open the page in the morning,
+              all of it has been computed.
             </P>
           </div>
 
@@ -870,32 +869,32 @@ export function ContentEN() {
         id="gaps"
         index="08"
         kicker="The limits"
-        title="When we do not know"
+        title="When we don’t know"
         icon={HelpCircle}
       >
         <P>
-          Some fields here stay empty, and that is deliberate. Three cases in which park.fan would
-          rather say nothing than guess, even when a guessed number would look nicer.
+          We leave some fields empty. Three cases in which we’d rather show nothing than guess, even
+          when a guessed number would look nicer.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="A park with no readable source"
-            note="Hansa-Park publishes wait times only in its own app on the park Wi-Fi. In the data that looks like a park in the middle of the night, so it is a curated notice on park.fan. Without it, 82 rides would be sitting there at “very low”."
+            note="Hansa-Park publishes wait times only in its own app on the park Wi-Fi. In the data that looks like a park in the middle of the night, so it’s a curated notice on park.fan. Without it, 82 rides would be sitting there at “very low”."
           >
             <NoWaitTimesDemo />
           </DemoFrame>
 
           <DemoFrame
             label="A ride outside its season"
-            note="Nobody reports anything about an ice rink in August, because there is nothing to report. Reading that silence as “open” turns a missing report into an open ride. On that day the ride also does not count towards the “12 of 45 open” tally."
+            note="Nobody reports anything about an ice rink in August, because there’s nothing to report. Reading that silence as “open” turns a missing report into an open ride. On that day the ride also doesn’t count towards the “12 of 45 open” tally."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="No basis for a rating"
-            note="“No forecast” is for parks we cannot rate yet: under about 30 operating days the reference value is missing. A new park gets no colour rather than a guessed one."
+            note="“No forecast” is for parks we can’t rate yet: under about 30 operating days the reference value is missing. So a new park gets no colour at all."
           >
             <BadgeRowDemo
               crowdLabel="Crowd level: how busy is it right now"
@@ -915,8 +914,8 @@ export function ContentEN() {
       {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell id="visits" index="09" kicker="In practice" title="Four visits" icon={Users}>
         <P>
-          Same data, very different questions, depending on who is going to the park with whom. Four
-          examples, each with the route we would take ourselves.
+          Same data, very different questions, depending on who’s going to the park with whom. Four
+          examples, each with the route we’d take ourselves.
         </P>
 
         <div className="grid gap-5 lg:grid-cols-2">
@@ -934,9 +933,9 @@ export function ContentEN() {
                 acting on that day, including the ones from across the border.
               </>,
               <>
-                Planning around a rainy day? The calendar shows it as the quietest of the week. On
-                the day itself, the 15-minute rain radar at the top of the park page says when it
-                stops.
+                Planning around a rainy day? In the calendar it has the quietest colour of the week.
+                On the day itself, check the 15-minute rain radar at the top of the park page to see
+                when it stops.
               </>,
               <>
                 Every attraction card carries the height requirement where the park publishes it.
@@ -957,7 +956,7 @@ export function ContentEN() {
             steps={[
               <>
                 On the park page, the overview of rope-drop rides, sorted by minutes saved. Rides
-                with no real advantage do not appear there.
+                with no real advantage don’t appear there.
               </>,
               <>
                 Read the table from chapter 02 alongside each ride. It names the window it computes
@@ -969,7 +968,7 @@ export function ContentEN() {
               </>,
               <>
                 Every attraction page carries a score for its own forecast, from comparing past
-                predictions with the real times of the last 30 days. For Taron that is a few
+                predictions with the actual times of the last 30 days. For Taron that’s a few
                 thousand forecasts compared.
               </>,
               <>
@@ -1014,7 +1013,7 @@ export function ContentEN() {
               </>,
               <>
                 Work through the park’s rope-drop recommendation in the morning. The order rests on
-                measured days rather than on the instinct of the loudest person in the group.
+                measured days.
               </>,
               <>
                 From midday, decide by crowd level rather than by minutes. A “low” ride at 25
@@ -1026,9 +1025,8 @@ export function ContentEN() {
                 and parades empty the paths for about half an hour.
               </>,
               <>
-                Nobody has to guess the order: the trip planner from chapter 05 fills the day with
-                the park’s headliners at one press, sorts it by the hourly curves and counts the
-                walk between two rides.
+                The trip planner from chapter 05 fills the day with the park’s headliners at one
+                press, sorts it by the hourly curves and counts the walk between two rides.
               </>,
             ]}
           />
@@ -1060,8 +1058,8 @@ export function ContentEN() {
               title: 'Location',
               body: (
                 <>
-                  Granted, the homepage shows the parks near you. Inside a park it switches to the
-                  close-up view with distances.
+                  Once you allow it, the homepage shows the parks near you. Inside a park it
+                  switches to the close-up view with distances.
                 </>
               ),
             },
@@ -1080,8 +1078,8 @@ export function ContentEN() {
               title: 'Trip planner',
               body: (
                 <>
-                  Opens from every page. The plan lives in the browser, with no account. Chapter 05
-                  shows what it makes of a day in the park.
+                  Opens from every page. The plan lives in the browser, with no account. What it
+                  makes of a day in the park is in chapter 05.
                 </>
               ),
             },

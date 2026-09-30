@@ -131,7 +131,7 @@ const SCALE_LEGEND = [
   },
   {
     term: 'Record',
-    def: `${TARON_RECORD} minuten op 16 juli 2026. De drukste dag in de meetperiode, en precies daarom geen maatstaf.`,
+    def: `${TARON_RECORD} minuten op 16 juli 2026, de drukste dag in de meetperiode. Eén uitschieter is een slechte maatstaf.`,
     swatch: 'bg-foreground/40',
   },
 ];
@@ -168,7 +168,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Weerwaarschuwing',
-    body: 'Officiële waarschuwingen van DWD en MeteoAlarm, ongewijzigd overgenomen. Voor weerman spelen we zelf niet.',
+    body: 'Officiële waarschuwingen van DWD en MeteoAlarm, ongewijzigd overgenomen.',
     example:
       'De formulering van de DWD, onveranderd. Voor parken buiten Duitsland die van MeteoAlarm.',
     demo: <WeatherWarningBannerDemo />,
@@ -176,7 +176,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Buienradar',
-    body: 'De komende uren in stappen van een kwartier. Zegt of de bui over twintig minuten voorbij is of dat het de hele middag blijft.',
+    body: 'De komende uren in stappen van een kwartier. Zo zie je of de bui over twintig minuten voorbij is of dat het de hele middag blijft.',
     example:
       'Kwartieren in plaats van uren: een bui van 14:15 tot 14:30 verdwijnt in een uurwaarde, hier staat hij er wel in.',
     demo: <NowcastBannerDemo single />,
@@ -375,8 +375,8 @@ export function ContentNL() {
         </P>
         <P>
           Niets op deze pagina is nagemaakt. Elke kaart, elk badge en elke tabel verderop is een
-          echt onderdeel van park.fan, alleen gevuld met vaste voorbeeldcijfers. Een uur later heb
-          je dezelfde kaarten in het park op je telefoon, dan met de cijfers van vandaag.
+          werkend onderdeel van park.fan, alleen gevuld met vaste voorbeeldcijfers. Een uur later
+          heb je dezelfde kaarten in het park op je telefoon, dan met de cijfers van vandaag.
         </P>
 
         <Reveal>
@@ -410,15 +410,15 @@ export function ContentNL() {
       >
         <P>
           Bij de ingang van Taron staat 70 minuten, en daar houdt de informatie op. De rij staat
-          vast tot aan de eerste trap, op je telefoon staat hetzelfde getal, en geen van beide
-          vertelt je of je nu moet aansluiten of beter na de lunch. Op park.fan staan er vier
-          gegevens naast: een drukteniveau, een trend, de tweede wachtrij en de minimumlengte.
+          vast tot aan de eerste trap, op je telefoon staat hetzelfde getal, en aan geen van beide
+          zie je of je nu moet aansluiten of beter na de lunch. Op park.fan staan er vier gegevens
+          naast: een drukteniveau, een trend, de tweede wachtrij en de minimumlengte.
         </P>
 
         <BareNumberVsCard
           unit="minuten"
           signLabel="Wat het park aanschrijft"
-          signCaption="Eén getal, geen context. Of dat vandaag goed of slecht is, weet alleen wie hier een jaarkaart heeft versleten."
+          signCaption="Eén getal, geen context. Of dat vandaag goed of slecht is, moet je zelf inschatten."
           cardLabel="Wat park.fan ervan maakt"
           cardCaption="Dezelfde 70 minuten, plus drukteniveau, trend, single-ridertijd, minimumlengte en de aanwijzing wanneer het naar verwachting rustiger wordt."
         />
@@ -427,8 +427,8 @@ export function ContentNL() {
           <P>
             “Zeer hoog” is daarbij geen kwestie van smaak. Taron ligt gemiddeld op {TARON_BASELINE}{' '}
             minuten, {TARON_WAIT_NOW} is daarvan ruwweg 156 procent, en de niveaus wisselen bij 60,
-            89, 110, 150 en 200 procent. Vanaf 150 heet het “Zeer hoog”. Het pijltje ernaast komt
-            uit de laatste metingen en zegt of de rij groeit of wordt afgebouwd.
+            89, 110, 150 en 200 procent. Vanaf 150 heet het “Zeer hoog”. Aan het pijltje ernaast,
+            berekend uit de laatste metingen, zie je of de rij groeit of wordt afgebouwd.
           </P>
           <PG>
             De tweede waarde op de kaart is de single-riderrij. Veel attracties hebben meerdere
@@ -465,8 +465,8 @@ export function ContentNL() {
             <P>
               Om een getal te plaatsen zijn twee vergelijkingswaarden nodig en de vermelding waarop
               ze berusten. Bij park.fan zijn dat de mediaan van de dagpieken en het 90e percentiel
-              van dezelfde reeks. Vertaald uit het statistisch: hoe lang is de langste rij van de
-              dag meestal, en hoe lang was hij op de drukste tien procent van de dagen.
+              van dezelfde reeks. Daarmee weet je hoe lang de langste rij van de dag meestal is, en
+              hoe lang hij was op de drukste tien procent van de dagen.
             </P>
           </IntroWithAside>
 
@@ -511,10 +511,9 @@ export function ContentNL() {
                       <>
                         Over alle {step.sampleDays} gemeten doordeweekse dagen ligt de piek meestal
                         op {step.typical} minuten. De stippellijn helemaal achteraan op de schaal is
-                        de dag van {TARON_RECORD} minuten op 16 juli, een dag waarop je overal beter
-                        had kunnen zijn. Juist door zulke dagen is “druk” een percentiel en geen
-                        maximum: één uitschieter zou een gemiddelde verschuiven en alles eronder
-                        onbruikbaar maken.
+                        de dag van {TARON_RECORD} minuten op 16 juli. Juist door zulke dagen is
+                        “druk” een percentiel en geen maximum: één uitschieter zou een gemiddelde
+                        verschuiven en alles eronder onbruikbaar maken.
                       </>
                     )}
                   </p>
@@ -540,9 +539,9 @@ export function ContentNL() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Op de pagina van een attractie"
-              note="Echte waarden van Taron, opgehaald op 10 september 2026."
+              note="Waarden van Taron zoals de API ze op 10 september 2026 teruggaf."
               href={TARON}
-              hrefLabel="Echte waarden voor Taron →"
+              hrefLabel="Actuele waarden voor Taron →"
             >
               <TypicalWaitsDemo />
             </DemoFrame>
@@ -601,8 +600,8 @@ export function ContentNL() {
         </P>
 
         <DemoFrame
-          label="Het echte uurprofiel, van zojuist"
-          note="Live uit het uurprofiel van het park. Vet staat het sterkste uur van elke attractie, en dat ligt bij deze zes attracties bepaald niet overal gelijk. Een uur wordt pas een kolom als het minstens tien meetdagen bij die attractie heeft, minstens 40 procent van het best gemeten uur haalt en door minstens de helft van de attracties wordt gemeld. Dat gooit de randuren eruit, waarin anders één hotelgastenrij voor de hele ochtend zou spreken."
+          label="Het uurprofiel, van zojuist"
+          note="Live uit het uurprofiel van het park. Vet staat het sterkste uur van elke attractie, en dat ligt bij deze zes attracties bepaald niet overal gelijk. Een uur wordt pas een kolom als het minstens tien meetdagen bij die attractie heeft, minstens 40 procent van het best gemeten uur haalt en door minstens de helft van de attracties wordt gemeld. Dat gooit de randuren eruit, waarin anders één hotelgastenrij voor de hele ochtend zou staan."
           href={PARK}
           hrefLabel="Phantasialand op park.fan →"
         >
@@ -631,7 +630,7 @@ export function ContentNL() {
             <PG>
               De kaart noemt drie getallen en één tijdstip: de normale wachttijd bij opening, de
               dagpiek, het verschil en het venster waarin de voorsprong standhoudt. Daarna is de
-              voorsprong weg, en de kaart verzwijgt dat niet.
+              voorsprong weg.
             </PG>
             <P>
               Daarbij komt de rustigste tijd van de dag, maar alleen als die buiten het vroege
@@ -745,11 +744,11 @@ export function ContentNL() {
         </DemoFrame>
 
         <Highlight>
-          Twee dingen weet de planner die bij geen enkele wachttijd staan. Het park opent die
+          In de planner zitten twee dingen die bij geen enkele wachttijd staan. Het park opent die
           zaterdag om 9 uur, Taron pas om 10, en vóór dat uur laat zijn blok zich niet slepen. En de
           overstap ertussen rekent met de hemelsbrede afstand tussen beide stations, plus opslagen
-          voor de weg naar buiten en voor de rit zelf, en zegt erbij of de tijd daarvoor toereikend
-          is.
+          voor de weg naar buiten en voor de rit zelf. Of de tijd daarvoor toereikend is, staat bij
+          de overstap zelf.
         </Highlight>
         <PG>
           Bij het geselecteerde blok staat bovendien hoeveel de voorspelling voor die attractie er
@@ -777,9 +776,9 @@ export function ContentNL() {
 
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
-              De helft van deze blokken hangt aan een voorwaarde, en dat is opzet. Een park zonder
-              shows krijgt geen leeg showtabblad, en ongeveer de helft van de 212 parken rendert
-              helemaal geen burensectie, omdat er niets binnen bereik ligt.
+              De helft van deze blokken hangt aan een voorwaarde. Een park zonder shows krijgt geen
+              leeg showtabblad, en ongeveer de helft van de 212 parken rendert helemaal geen
+              burensectie, omdat er niets binnen bereik ligt.
             </Highlight>
             <PG>
               De tabbladen onthouden hun keuze in het adres. Wie de kalender open heeft en de link
@@ -793,7 +792,7 @@ export function ContentNL() {
                 className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
               >
                 <Activity className="h-4 w-4" />
-                Aan het levende object bekijken
+                Bekijken op een live parkpagina
               </Link>
             </div>
           </div>
@@ -839,7 +838,7 @@ export function ContentNL() {
             </IngredientCard>
             <IngredientCard icon={BarChart3} title="Voorspelmodellen" delay={120}>
               Gescheiden naar tijdshorizon: één voor de lopende dag, één voor de komende weken, één
-              voor de rest van het jaar. Elk wordt aan de echte tijden nagerekend.
+              voor de rest van het jaar. Elk wordt aan de werkelijke tijden nagerekend.
             </IngredientCard>
           </IngredientGrid>
 
@@ -852,8 +851,8 @@ export function ContentNL() {
             </P>
             <P>
               Zes stappen in een vaste volgorde, elke nacht opnieuw. Elke stap leest wat de vorige
-              heeft geschreven, dus geen enkele mag voordringen. Op een site over wachtrijen zou dat
-              ook slecht staan. Als je ’s ochtends de pagina opent, is dat allemaal al berekend.
+              heeft geschreven, dus geen enkele mag voordringen. Als je ’s ochtends de pagina opent,
+              is dat allemaal al berekend.
             </P>
           </div>
 
@@ -874,8 +873,8 @@ export function ContentNL() {
         icon={HelpCircle}
       >
         <P>
-          Sommige velden blijven hier leeg, en dat is met opzet. Drie gevallen waarin park.fan
-          liever zwijgt dan gokt, ook als een gegokt getal er mooier uit zou zien.
+          Sommige velden laten we leeg. Drie gevallen waarin we liever niets tonen dan gokken, ook
+          als een gegokt getal er mooier uit zou zien.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -895,7 +894,7 @@ export function ContentNL() {
 
           <DemoFrame
             label="Geen beoordelingsbasis"
-            note="“Geen voorspelling” is voor parken die we nog niet kunnen inschatten: onder ongeveer 30 bedrijfsdagen ontbreekt de vergelijkingswaarde. Een nieuw park krijgt liever geen kleur dan een gegokte."
+            note="“Geen voorspelling” is voor parken die we nog niet kunnen inschatten: onder ongeveer 30 bedrijfsdagen ontbreekt de vergelijkingswaarde. Een nieuw park krijgt daarom helemaal geen kleur."
           >
             <BadgeRowDemo
               crowdLabel="Drukte: hoe vol is het nu"
@@ -941,8 +940,9 @@ export function ContentNL() {
                 vakantieregio’s die dag meespelen, ook die uit het buurland.
               </>,
               <>
-                Regendag ingepland? De kalender toont hem als de rustigste van de week. Op de dag
-                zelf zegt de buienradar van 15 minuten bovenaan de parkpagina wanneer het ophoudt.
+                Regendag ingepland? In de kalender krijgt hij de rustigste kleur van de week. Op de
+                dag zelf zie je op de buienradar van 15 minuten bovenaan de parkpagina wanneer het
+                ophoudt.
               </>,
               <>
                 Op elke attractiekaart staat de minimumlengte, waar het park die publiceert. Taron
@@ -975,8 +975,8 @@ export function ContentNL() {
               </>,
               <>
                 Elke attractiepagina draagt een cijfer voor de eigen voorspelling, uit de
-                vergelijking van eerdere voorspellingen met de echte tijden van de laatste 30 dagen.
-                Bij Taron zijn dat er op dit moment een paar duizend.
+                vergelijking van eerdere voorspellingen met de werkelijke tijden van de laatste 30
+                dagen. Bij Taron zijn dat er op dit moment een paar duizend.
               </>,
               <>
                 Voor de reisplanning <A href={bestTime}>de beste reistijd</A> vergelijken. Daar
@@ -1020,7 +1020,7 @@ export function ContentNL() {
               </>,
               <>
                 ’s Ochtends het rope-dropadvies van het park afwerken. Die volgorde berust op
-                gemeten dagen in plaats van op het gevoel van de luidste in de groep.
+                gemeten dagen.
               </>,
               <>
                 Vanaf de middag op drukte beslissen in plaats van op minuten. Een “lage” attractie
@@ -1032,9 +1032,8 @@ export function ContentNL() {
                 maken de paden zo’n half uur leger.
               </>,
               <>
-                Niemand hoeft de volgorde te raden: de dagplanner uit hoofdstuk 05 vult de dag met
-                één druk met de grote attracties van het park, sorteert hem op de uurcurves en
-                rekent de weg tussen twee attracties mee.
+                De dagplanner uit hoofdstuk 05 vult de dag met één druk met de grote attracties van
+                het park, sorteert hem op de uurcurves en rekent de weg tussen twee attracties mee.
               </>,
             ]}
           />
@@ -1066,8 +1065,8 @@ export function ContentNL() {
               title: 'Locatie',
               body: (
                 <>
-                  Vrijgegeven toont de startpagina de parken bij jou in de buurt. In het park
-                  schakelt ze naar de nabijweergave met afstanden.
+                  Met locatietoestemming toont de startpagina de parken bij jou in de buurt. In het
+                  park schakelt ze naar de nabijweergave met afstanden.
                 </>
               ),
             },
@@ -1086,8 +1085,8 @@ export function ContentNL() {
               title: 'Dagplanner',
               body: (
                 <>
-                  Opent vanaf elke pagina. Het plan staat in de browser, zonder account. Hoofdstuk
-                  05 laat zien wat hij van een parkdag maakt.
+                  Opent vanaf elke pagina. Het plan staat in de browser, zonder account. Wat hij van
+                  een parkdag maakt, staat in hoofdstuk 05.
                 </>
               ),
             },
@@ -1139,7 +1138,7 @@ export function ContentNL() {
       <ClosingBand
         kicker="En nu?"
         title="Verder lezen"
-        body="Alles op park.fan is gratis, zonder account en zonder reclame te gebruiken. De parkpagina toont dit alles aan het levende object, de Fancast-pagina rekent openbaar voor hoe trefzeker de voorspellingen van de laatste 30 dagen waren, en de beste reistijd zet meerdere parken naast elkaar."
+        body="Alles op park.fan is gratis, zonder account en zonder reclame te gebruiken. De parkpagina toont dit alles live, de Fancast-pagina rekent openbaar voor hoe trefzeker de voorspellingen van de laatste 30 dagen waren, en de beste reistijd zet meerdere parken naast elkaar."
       >
         <Link
           href={PARK}
