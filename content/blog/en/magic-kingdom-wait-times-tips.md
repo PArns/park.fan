@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Magic Kingdom counted about 17.8 million visits in 2024, more than any other
   theme park in the world, and still has the shortest typical queues of the
-  four Disney parks in Florida. The crowd goes to one place instead: TRON
-  Lightcycle / Run in Tomorrowland. Also here: which headliner gets shorter in
+  four Disney parks in Florida. The crowd goes to TRON
+  Lightcycle / Run in Tomorrowland instead. Also here: which headliner gets shorter in
   the evening and which one does not, what Lightning Lane cost on 30 September,
   and what the Rivers of America closure took away.
 category: guides
@@ -57,7 +57,7 @@ seo:
 
 Wikipedia's attendance table puts Magic Kingdom at **17.8 million visits** in 2024. That made it the most visited theme park in the world for the eighteenth
 year running, and you would expect the longest queues on earth to come with a
-number like that. They do not. Of the four Disney parks in Florida, [Magic
+number like that. They don't. Of the four Disney parks in Florida, [Magic
 Kingdom](ref:magic-kingdom-park) has the lowest typical wait in our data, and
 EPCOT the highest.
 
@@ -65,10 +65,9 @@ EPCOT the highest.
 
 ```
 
-Why that is, our measurements cannot tell you. What they show is where the
-crowd goes instead, and the answer is short: it queues for a handful of rides.
+We can't say why. The crowd queues for a handful of rides instead.
 
-## Six lands, one second floor
+## The six lands and the utilidors
 
 The park opened on **1 October 1971** as the first part of Walt Disney World.
 It had 23 attractions, twenty of them copies of rides from Disneyland in
@@ -85,9 +84,9 @@ Underneath it all runs a second floor. Florida's water table is too high for
 tunnels, so the service corridors, called utilidors, were built at ground level
 and the park was piled on top with earth from the Seven Seas Lagoon. The park
 stands on its own second story, 33 metres above sea level, and staff can cross
-it without ever being seen. Main Street fakes its height too: the upper floors
-of its buildings are shorter than the ground floor, which makes the street
-look taller than it is.
+it without ever being seen. The upper floors
+of the buildings on Main Street are shorter than the ground floor, so the street
+looks taller than it is.
 
 ## The queue is in Tomorrowland
 
@@ -101,22 +100,22 @@ launched coaster from Vekoma that reaches 59 mph, about 95 km/h. The ride lasts
 around a minute. At that length the queue is the longer part of the
 experience, and the table shows how much longer.
 
-Second place goes to **[Seven Dwarfs Mine
+Near the top of the table sit **[Seven Dwarfs Mine
 Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, the 2014 coaster that
 completed New Fantasyland: 2:50 minutes, minimum height 97 centimetres, cars that
-tilt through the curves. Third is **[Tiana's Bayou
+tilt through the curves, and **[Tiana's Bayou
 Adventure](ref:magic-kingdom-park/tianas-bayou-adventure)**, the log flume that
 replaced Splash Mountain on 28 June 2024, with a 16-metre drop at the end.
 
-The older rides sit further down, and they are older than you may think.
+The older rides sit further down.
 **[Space Mountain](ref:magic-kingdom-park/space-mountain)** opened in January
 1975 and runs at 43 km/h, in the dark, which is all the speed it needs.
 **[Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean)**
 has been there since 1973 and **[Big Thunder Mountain
 Railroad](ref:magic-kingdom-park/big-thunder-mountain-railroad)** since 1980.
 
-The one that surprises is **[Peter Pan's
-Flight](ref:magic-kingdom-park/peter-pans-flight)**. It ranks fourth, ahead of
+**[Peter Pan's
+Flight](ref:magic-kingdom-park/peter-pans-flight)** sits ahead of
 Space Mountain.
 
 ```map-widget slug=magic-kingdom-park
@@ -125,19 +124,16 @@ Space Mountain.
 
 ## Rope drop, or the evening
 
-Rides do not queue the same way across the day, and that is where you can
-save the most time. This is how the eight longest queues move between 8:00 and
+This is how the eight longest queues move between 8:00 and
 22:00 local time:
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
 ```
 
-Three shapes stand out.
-
 **TRON does not get shorter.** Its queue is at its lowest in the first hour,
-grows through the afternoon and peaks at 20:00. If you missed it at opening,
-do not come back after dinner expecting a bargain. Our rope-drop analysis
+grows through the afternoon and peaks in the evening. If you missed it at opening,
+don't come back after dinner expecting a bargain. Our rope-drop analysis
 rates the payoff of an early start at TRON as high, the only ride in the park
 with that rating.
 
@@ -150,7 +146,7 @@ get a moderate rope-drop rating.
 midday into the evening and drops in the last hours before closing. If TRON and
 Tiana's fill your morning, this is the ride for the end of the day.
 
-That gives an order: TRON at opening, Tiana's directly after it, and the Mine
+Take TRON at opening, Tiana's directly after it and the Mine
 Train in the last hour. Space Mountain and the Jungle Cruise peak around
 midday and fall off toward closing.
 
@@ -181,16 +177,16 @@ the $19 competes with getting to the gate early.
 
 ```
 
-The monthly chart tells a clearer story than the weekday one. September is the
+The monthly chart is clearer than the weekday one. September is the
 quietest month we have measured, on 27 days. The winter months at the top of
 the scale rest on five days in January and eight in December, so treat them as
-a hint, not a finding. February, October and November are missing entirely:
-as of 28 September 2026 we have 196 measured days, most of them since April.
+a hint, not a finding. February, October and November are missing entirely.
+As of 28 September 2026 we have 196 measured days, most of them since April.
 
 The weekday chart is flat, with medians a single step apart. No day of the week
 is the one to pick.
 
-What matters more is the calendar. Magic Kingdom has closed temporarily for
+Magic Kingdom has closed temporarily for
 nine hurricanes since it opened, most recently Milton in October 2024. The park
 also runs Mickey's Not-So-Scary Halloween Party in autumn, and on 30 September
 our database lists its parade, its shows and the trick-or-treat locations.
@@ -213,7 +209,7 @@ On 30 September 2026 our data also lists both stations of the Walt Disney World
 Railroad and the Carousel of Progress as under refurbishment. The railroad
 loops around the park, so both stops are shut at the same time.
 
-## Practical: getting there, hours, food
+## Getting there, hours, tickets and food
 
 **Getting there.** The park is more than a mile from its parking lot, on the far
 side of the Seven Seas Lagoon. Imagineers chose that on purpose, to keep the
@@ -230,7 +226,7 @@ gates opened at 9:00 local time and closed at 22:00, and the next day the park
 closed at 18:00.
 
 **Tickets.** Disney sets the prices by date, and they are on
-[disneyworld.com](https://disneyworld.com/). We do not track admission, only
+[disneyworld.com](https://disneyworld.com/). We don't track admission, only
 what Lightning Lane costs on top of it.
 
 **Food.** Our database lists 23 places to eat in the park as of 30 September
@@ -243,18 +239,17 @@ since 2018.
 ### Does the most visited park have the longest queues?
 
 No. In the comparison above, Magic Kingdom has the lowest typical wait of the
-four Disney parks in Florida, and EPCOT the highest. Our data does not say why.
-It does show that one ride, TRON, has by far the longest queue in the park.
+four Disney parks in Florida, and EPCOT the highest. We can't say why.
+One ride, TRON, has by far the longest queue in the park.
 
 ### Which ride has the longest queue at Magic Kingdom?
 
-TRON Lightcycle / Run, in our data. Seven Dwarfs Mine Train is second, Tiana's
-Bayou Adventure third. The current ranking is in the table above.
+TRON Lightcycle / Run, in our data. The current ranking is in the table above.
 
 ### When is TRON shortest?
 
 In the first hour after the gates open. The queue then grows through the
-day and peaks around 20:00, so an evening visit is worse, not better.
+day and peaks in the evening, so an evening visit is worse.
 
 ### Is Splash Mountain still there?
 
