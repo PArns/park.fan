@@ -113,8 +113,9 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
           Entries marked &ldquo;Reconstructed&rdquo; were written in September 2026 from the commit
           history. Most of their version numbers and dates are the ones the code carried at the
           time, and where the version moved with almost every push, one entry covers a few of them.
-          Where the code kept one number for weeks, the numbers in between (2.8.2, 2.8.3 and 2.10.2
-          to 2.10.5) were assigned when the history was written.
+          Where the code kept one number for weeks, the numbers in between were assigned when the
+          history was written: 2.8.2, 2.8.3, 2.10.2 to 2.10.5, and 2.11.1 to 2.11.6 for the five
+          weeks before 2.12.0 was cut.
         </p>
       </header>
 
