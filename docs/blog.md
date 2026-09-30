@@ -592,11 +592,25 @@ text:
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
    `um ehrlich zu sein`, no `honest` framing at all. It is the clearest tell we have found on our
    own copy. Honesty is demonstrated, not announced. The neighbouring register goes with it:
-   `Fairness-Hinweis in eigener Sache`, `Kein Werbeflyer. Versprochen.`, `ohne SEO-Sermon`.
+   `Fairness-Hinweis in eigener Sache`, `Kein Werbeflyer. Versprochen.`, `ohne SEO-Sermon`,
+   and the phrases that perform precision instead of having it:
+
+   | Don't write                           | Write instead                            |
+   | ------------------------------------- | ---------------------------------------- |
+   | `der ehrlichste Woodie Europas`       | say what makes it good, with a number    |
+   | `Fairness-Hinweis in eigener Sache`   | `Eine Einschränkung dazu:`               |
+   | `Was sie unbestreitbar ist:`          | `Eines ist sie auf jeden Fall:`          |
+   | `bezahlte Vorfahrt`                   | `sich an der Warteschlange vorbeikaufen` |
+   | `ein weiterer Datenpunkt`             | `noch eine Zahl`                         |
+   | `in Wartezeit-Währung`                | `da stehst du am längsten an`            |
+   | `ein weltweit erstmalig gebauter Typ` | `den es sonst nirgends gibt`             |
+   | `Es ist ein schönes Muster.`          | cut, or say what it produced             |
+
 2. **Never narrate the sign at the entrance.** `das Schild`, `the sign`, `het bord`,
    `le panneau`, `el cartel`, `il cartello`. It is a stage direction, and it multiplies: it once
    stood in a hero caption, a scale legend, a screen-reader summary, a chapter paragraph and a
-   companion post, six locales deep. Write `Am Eingang stehen 70 Minuten.`
+   companion post, six locales deep. Write `Am Eingang stehen 70 Minuten.`, `Mehr steht am
+Eingang nicht.`, `At the entrance it says 70 minutes.`
 3. **No coined metaphor-currencies.** `Wartezeit-Währung`, `Lebenszeit-Konto`, `Datenpunkt` as a
    noun of art. One ordinary figure of speech per section is plenty.
 4. **Copy must not describe the page's own layout.** `Links steht … rechts …` is wrong on every
@@ -771,8 +785,8 @@ The general rules apply everywhere. These are the additions per surface.
 ### 5.0 News posts (`category: news`)
 
 - **`date` is the day the post goes live** (merge day, Europe/Berlin), not the day it was written. Set the PR's day; if the PR merges on a later day, correct `date` before the merge.
-- Titles: one fact, at most 60 characters, no two in a week with the same shape ([blog writing style](rules/blog-writing-style.md)).
-- No cover image used twice among news posts ([media database](rules/media-database.md)).
+- **The title carries one fact, in at most 60 characters.** Not `<Park>: <Fakt>, und <Pointe>` (a park-name prefix, a colon, a comma, „und", a trailing gag): seven of the first eight news titles had that shape, and it is what reads as generated. No list of three news items and no punchline in a subordinate clause. The park name is in the title when it is the subject. Two news titles in the same week may not share a shape, and the same goes for `seo.title`. For the tone, not for copying: „HalloWeekends in Cedar Point: Neues Diablo-Labyrinth", „Traumatica im Europa-Park wird zehn Jahre alt". Read every title aloud before delivering: newspaper headline, or line from an advert?
+- **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover. The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
 - A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
 - **The first sentence carries the news**: what happened, to what, when. No scene-setting paragraph in front of it.
 - **No bridge sentence copied from the last post.** `Welche Tage in … die ruhigsten sind, zeigt der Kalender.` and `Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht im Halloween-Überblick.` stood in five news posts in one week. A widget needs no sentence introducing it; a link to the overview goes where a reader would want it.
@@ -823,8 +837,19 @@ compares each `…Q` key with the first sentence of its `…A` twin.
 
 ### 5.2 `alt` and `caption` (media sidecars)
 
-Two different jobs, and the second is not a longer version of the first. Full format in
-[`public/media/README.md`](../public/media/README.md#alt-and-caption--and-they-must-not-read-as-ai-written).
+Two different jobs, and the second is not a longer version of the first. The sidecar format is
+in [`public/media/README.md`](../public/media/README.md#the-sidecar); the writing rules are here.
+
+```jsonc
+// no
+"alt":     "The wooden Trojan horse in Toverland's Ithaka area, guests queuing in
+            front of it against an autumn sky."
+"caption": "Troy: the wooden coaster by GCI in the Ithaka area."
+
+// yes
+"alt":     "Das hölzerne trojanische Pferd, davor die Warteschlange."
+"caption": "Troy im Themenbereich Ithaka, eine Holzachterbahn von GCI."
+```
 
 - **`alt`** is for somebody who cannot see the picture: one short factual sentence, what is in
   frame, in the order it matters. No mood, no atmosphere, no colour adjectives that carry no
@@ -867,10 +892,13 @@ strongest pages we have. Read them like body copy.
 
 ### 5.4 Blog posts
 
-Everything above, plus what is in the [blog authoring guide](../content/blog/README.md#8-writing-style-requirement):
-never type a wait time into a post (use the widget fences), a sentence next to a widget must not
-name a figure the widget renders, and articles matter — it is **das** Efteling, like
-`das Toverland` and `das Phantasialand`.
+Everything above, plus two things specific to a post: never type a wait time into a post, and a
+sentence next to a widget must not name a figure the widget renders
+([a wait time is never typed into a post](rules/a-wait-time-is-never-typed-into-a-post.md)).
+Frontmatter, `ref:` links and widget fences are in the
+[blog authoring guide](../content/blog/README.md). And articles matter: it is **das** Efteling,
+like `das Toverland` and `das Phantasialand` (`zum Efteling`, `im Efteling`, never `der Efteling`
+or `zur Efteling`).
 
 Voice reference for German: `content/blog/de/phantasialand-tipps.md` and
 `content/blog/de/toverland-troy-wartezeiten-tipps.md`.
