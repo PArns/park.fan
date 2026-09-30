@@ -255,6 +255,20 @@ park snapshot and held a day by the CDN. The client asks once per tab
 (`useRidePositions`, `staleTime: Infinity`), and only a visitor the nearby answer places inside a
 park ever mounts it.
 
+### Ride figures for the park map popups: on the map tab only
+
+The map's attraction popups show top speed, height and ride time. The park page's server render
+carries no `rideProfile` (`leanParkForParkShell` drops it: 3.61 KB on Phantasialand for a field the
+cards never read), and putting only the stats back would have made every park page pay for a tab
+most visitors never open. `/api/parks/<geo>/<park>/ride-stats` returns `{ stats }` keyed by
+attraction id with the three figures, for the rides that have at least one: **694 B raw, 338 B
+gzip** on Phantasialand (8 of 40 rides). `ParkMap` mounts only while its tab is on screen, and
+`useRideFigures` asks there (`staleTime: Infinity`), so a park page opened without the map makes
+no such request (checked in a browser: six `/api/parks/` calls, none of them `ride-stats`). The
+route has its own path rather than a `?stats=1` on the park route, because that route is
+`no-store` and a `headers()` rule matches a path, never a query string. It reads the day-cached
+park like `positions` and carries the same one-day CDN window in `next.config.ts`.
+
 ## Where the remaining weight is
 
 Two things measured large and were deliberately left alone.

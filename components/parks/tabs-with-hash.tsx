@@ -635,7 +635,16 @@ export const TabsWithHash = memo(function TabsWithHash({
           {...panelProps('map')}
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          {deferredTab === 'map' && <MemoParkMap park={park} focusShowSlug={mapShowSlug} />}
+          {deferredTab === 'map' && (
+            <MemoParkMap
+              park={park}
+              focusShowSlug={mapShowSlug}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+            />
+          )}
         </TabsContent>
 
         {/* Weather is a chapter behind a tile now, not a ~360px card wedged between the header

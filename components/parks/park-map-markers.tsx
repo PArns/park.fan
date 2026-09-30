@@ -13,6 +13,9 @@ import {
   restaurantIcon,
 } from '@/lib/utils/leaflet-icons';
 import { formatTime } from '@/lib/utils/intl-format';
+import { formatDuration } from '@/lib/utils/temperature';
+import { Speed, TrackLength } from '@/components/common/unit-display';
+import type { RideFigures } from '@/lib/api/ride-figures';
 
 // Returns the next future showtime as a Date, or null if none remain
 export function getNextShowtimeDate(show: ParkShow): Date | null {
@@ -29,6 +32,8 @@ export function getNextShowtimeDate(show: ParkShow): Date | null {
 
 interface AttractionMarkersProps {
   attractions: ParkAttraction[];
+  /** Speed, height and duration by attraction id; empty until the map's own fetch lands. */
+  figures?: Record<string, RideFigures>;
 }
 
 // Memoized: `attractions` is a `useMemo`-stable array in ParkMap, and nothing here is
@@ -37,6 +42,7 @@ interface AttractionMarkersProps {
 // park poll actually changes the attractions.
 export const AttractionMarkers = memo(function AttractionMarkers({
   attractions,
+  figures,
 }: AttractionMarkersProps) {
   const t = useTranslations('parks.mapMarkers');
   const tParks = useTranslations('parks');
@@ -50,6 +56,7 @@ export const AttractionMarkers = memo(function AttractionMarkers({
         // Get wait time from queues
         const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
         const waitTime = standbyQueue?.waitTime;
+        const ride = figures?.[attraction.id];
 
         return (
           <Marker
@@ -82,6 +89,28 @@ export const AttractionMarkers = memo(function AttractionMarkers({
                     <span className="font-semibold">
                       {tParks(`crowdLevels.${attraction.crowdLevel}`)}
                     </span>
+                  </div>
+                )}
+                {ride?.topSpeedKmh != null && (
+                  <div className="mt-1 text-xs">
+                    {t('topSpeed')}:{' '}
+                    <span className="font-semibold">
+                      <Speed kmh={ride.topSpeedKmh} />
+                    </span>
+                  </div>
+                )}
+                {ride?.heightM != null && (
+                  <div className="mt-1 text-xs">
+                    {t('height')}:{' '}
+                    <span className="font-semibold">
+                      <TrackLength meters={ride.heightM} />
+                    </span>
+                  </div>
+                )}
+                {ride?.durationSeconds != null && (
+                  <div className="mt-1 text-xs">
+                    {t('duration')}:{' '}
+                    <span className="font-semibold">{formatDuration(ride.durationSeconds)}</span>
                   </div>
                 )}
               </div>
