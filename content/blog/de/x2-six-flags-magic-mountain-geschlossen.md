@@ -106,7 +106,7 @@ hielten die Anwälte von S&S in Schriftsätzen dagegen, die Züge hätten „gen
 vorgesehen und genau so, wie sie entworfen und gebaut wurden“ funktioniert. Der
 Prozess sollte am 8. September beginnen. Am 26. August teilten die Anwälte dem
 Gericht mit, dass sich die Familie mit Magic Mountain geeinigt hatte, mit S&S
-schon kurz davor. Was gezahlt wird, ist vertraulich.
+schon kurz davor. Die Summen der Vergleiche sind vertraulich.
 
 2010 war eine 28-Jährige nach einer Fahrt an einer Hirnblutung gestorben. Ihre
 Ärzte gingen damals davon aus, dass eine bereits vorhandene Fehlbildung im
@@ -180,8 +180,7 @@ Schienen aus Stahlrohr gebaut und 1975 mit dem Corkscrew in Knott's Berry Farm
 die erste moderne Achterbahn mit Überschlag. 1984 war Arrow schon einmal
 insolvent gewesen und hatte sich danach neu aufgestellt.
 
-Angekündigt wurde X am 19. Dezember 2000, zusammen mit Déjà Vu und Goliath Jr.
-als eine von drei neuen Achterbahnen für 2001. Mit ihnen wollte Magic Mountain
+Magic Mountain kündigte X am 19. Dezember 2000 an, zusammen mit Déjà Vu und Goliath Jr. als eine von drei neuen Achterbahnen für 2001. Mit ihnen wollte Magic Mountain
 Cedar Point in Ohio als Park mit den meisten Achterbahnen in den USA ablösen. X
 sollte im Sommer 2001 eröffnen, blieb aber bis in den Winter eine Baustelle. Am 3. Dezember 2001 meldete Arrow Insolvenz an. Laut Firmenchef Fred Bolingbroke
 hatte sich Arrow bei den Kosten von X verschätzt und Millionen verloren. Noch
