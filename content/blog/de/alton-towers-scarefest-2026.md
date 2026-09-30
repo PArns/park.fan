@@ -40,8 +40,7 @@ seo:
     - The Smiler Nacht
 ---
 
-Wer im Oktober ohnehin nach England fliegt, kann in Staffordshire Halloween
-mitnehmen: [Alton Towers](ref:alton-towers) hat am Samstag, 26. September,
+[Alton Towers](ref:alton-towers) in Staffordshire hat am Samstag, 26. September,
 **Scarefest** eröffnet, das Halloween-Event des Parks. Neu ist in diesem Jahr
 das Scare Maze **Final Exhibit**. Dazu fahren abends die großen Achterbahnen im
 Dunkeln.
@@ -56,8 +55,8 @@ Scarefest läuft nicht jeden Tag. Laut Park sind es diese Termine:
 - 16. Oktober bis 1. November, täglich
 
 Bis Mitte Oktober sind das also die Wochenenden, im Oktober jeweils von
-Freitag bis Sonntag, danach durchgehend bis Allerheiligen. Die Kombitickets nennen
-Parkeintritt bis 21 Uhr, und der Parkkalender zeigt für die Wochenenden im
+Freitag bis Sonntag, danach durchgehend bis Allerheiligen. Bei den Kombitickets
+steht Parkeintritt bis 21 Uhr, und im Parkkalender stehen für die Wochenenden im
 Oktober **10 bis 21 Uhr** Ortszeit. An den Tagen dazwischen, etwa von Montag,
 5., bis Donnerstag, 8. Oktober, schließt der Park um 16 Uhr, und dann gibt es
 auch kein Scarefest. England liegt eine Stunde hinter der
@@ -66,9 +65,9 @@ deutschen Zeit: 21 Uhr dort ist 22 Uhr bei uns.
 ## Final Exhibit und die anderen Mazes
 
 In [Final Exhibit](ref:alton-towers/final-exhibit) gehst du durch die
-vergessene Sammlung eines Mannes, den der Park nur „The Curator" nennt. Jeder
-Raum hat ein dunkles Geheimnis, und nicht jedes Ausstellungsstück ist so leblos,
-wie es aussieht. Hinter den Archivtüren geht es laut Parkseite nur noch in eine
+vergessene Sammlung eines Mannes, den der Park nur „The Curator“ nennt. Laut
+Parkseite hat jeder Raum ein dunkles Geheimnis, nicht jedes Ausstellungsstück ist
+so leblos, wie es aussieht, und hinter den Archivtüren geht es nur noch in eine
 Richtung. Empfohlen ist das Maze **ab 12 Jahren**, wie alle vier Thrill-Mazes.
 
 Zurück sind [COMPOUND](ref:alton-towers/compound), ein Labor, in dem
@@ -112,8 +111,8 @@ weniger.
 | Tagesticket + 3 Mazes  | ab £80 | Eintritt plus drei Mazes, **ohne** Final Exhibit       |
 | Ultimate Thrills Combi | ab £95 | vier Thrill-Mazes beliebig oft, mit Fastrack           |
 
-Beim Kombiticket aus Eintritt und Mazes lohnt ein zweiter Blick. Es enthält nur
-COMPOUND, Edge of the Forest und Tiny's Revenge. Wer Final Exhibit sehen will,
+Das Kombiticket aus Eintritt und Mazes enthält nur COMPOUND, Edge of the Forest
+und Tiny's Revenge. Wer Final Exhibit sehen will,
 bucht das Tagesticket und die Thrills Combi getrennt und landet bei £80, also
 beim selben Preis, mit einem Maze mehr.
 
@@ -122,8 +121,8 @@ sich, sie vorher zu buchen.
 
 ## Neu auch am Tisch
 
-Das zweite neue Angebot ist ein Dinner: Bei **Dine with the Dead** sitzt du an
-der Tafel der Familie Vile, bekommst drei Gänge und Darsteller um den Tisch.
+Neu ist außerdem das Dinner **Dine with the Dead**. Du sitzt an der Tafel der
+Familie Vile und bekommst drei Gänge und Darsteller um den Tisch.
 Die Abendvorstellung beginnt um 19:30 Uhr und endet mit einer Party, die
 Matinee um 12:30 Uhr kommt ohne. Mitessen darf, wer mindestens 14 ist, unter 18
 nur mit einem Erwachsenen. Die Abendkarte kostet ab £99, die Matinee ab £69.
@@ -133,17 +132,13 @@ nur mit einem Erwachsenen. Die Abendkarte kostet ab £99, die Matinee ab £69.
 Alton Towers liegt in Staffordshire zwischen Manchester und Birmingham. Vom
 Flughafen Manchester bist du mit dem Auto gut eine Stunde unterwegs. Wer zwei
 Tage bleiben will, kann über den Park einen Short Break mit Übernachtung
-buchen, zur Auswahl stehen fünf Unterkünfte am Gelände.
-
-Welche der kommenden Tage in Alton Towers die ruhigsten sind, zeigt der
-Kalender.
+buchen, zur Auswahl stehen fünf Unterkünfte am Gelände. Wer es näher haben
+will, findet Movie Park, Plopsaland, Walibi und Toverland im
+[Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 ```best-days-widget slug=alton-towers
 
 ```
-
-Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht
-im [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 [Alton Towers](ref:alton-towers?full)
 

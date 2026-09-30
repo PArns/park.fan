@@ -1,5 +1,5 @@
 ---
-title: 'EQT quiere vender Parques Reunidos, y Movie Park Germany entra en el paquete'
+title: 'EQT quiere vender Parques Reunidos, dueño de Movie Park'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
 author: patrick
@@ -124,7 +124,7 @@ la empresa matriz, y el parque sigue siendo con quien firmaste la compra.
 
 La venta tampoco toca el pase anual de Movie Park. Oro y Platino valen para lo que queda de esta temporada y toda la de 2027, y la web del parque ya detalla lo que incluye el pase de 2027: tres entradas gratis a cada uno de Bobbejaanland, Slagharen y el Weltvogelpark Walsrode, una a Tropical Islands y una a cada uno de otros parques europeos del grupo, con Mirabilandia y el Parque Warner como ejemplos. El resto de ofertas del Bonus Club para 2027 se publicará «al comienzo de la temporada 2027». Como el grupo se vende entero, sus parques seguirán siendo hermanos después de la venta.
 
-Belantis muestra cómo trata el parque un cambio de dueño en plena temporada. La lista de 2025 daba tres entradas gratis a ese parque cerca de Leipzig, válidas hasta el 9 de noviembre, y la venta a Compagnie des Alpes en abril no cambió eso. Belantis pasa a los descuentos solo en la lista de 2026. Si estás pensando en el pase Oro de 2027, la venta no es motivo para esperar. Si algo cambia con los parques socios, será como pronto en 2028.
+Con Belantis ya se vio cómo trata el parque un cambio de dueño en plena temporada. La lista de 2025 daba tres entradas gratis a ese parque cerca de Leipzig, válidas hasta el 9 de noviembre, y la venta a Compagnie des Alpes en abril no cambió eso. Belantis pasa a los descuentos solo en la lista de 2026. Si estás pensando en el pase Oro de 2027, la venta no es motivo para esperar. Si algo cambia con los parques socios, será como pronto en 2028.
 
 Desde la compra de 2010, Parques Reunidos ha construido en Bottrop más de una vez. Un mes después, el director del parque presentó a los nuevos dueños la idea de [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), el grupo aprobó cinco millones de euros y la atracción abrió en 2011. Una montaña rusa de 45 metros en el prado justo detrás de la entrada, presentada al ayuntamiento en 2012, se paró en septiembre de ese mismo año, oficialmente por «un cambio en nuestra estrategia de inversión». En ese terreno abrió en 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), la montaña rusa más grande del parque. Después llegaron [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) en 2018 y el [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) en 2021. La historia completa del parque está en nuestra [guía de Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
 

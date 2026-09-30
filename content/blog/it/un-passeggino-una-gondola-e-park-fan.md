@@ -48,7 +48,7 @@ seo:
 ---
 
 Certi posti funzionano come un interruttore. Passi un tornello e la roba che
-due ore prima ti rodeva è sparita. Non accantonata: sparita sul serio. Non conosco
+due ore prima ti rodeva è sparita del tutto. Non conosco
 molti posti capaci di farlo, e i pochi che ci riescono sono fatti, a guardarli
 in piena luce, di compensato e vernice, da gente che non vedi mai.
 
@@ -71,8 +71,8 @@ da soli non fanno una storia, a ogni scena c’era un pulsante. Una pressione, e
 un nastro raccontava la fiaba corrispondente.
 
 Io quei pulsanti li ho premuti, e quando i miei genitori erano già due scene
-avanti tornavo indietro di corsa per premerli ancora. Per me quella non è mai
-stata una visita a un parco. Era un radiodramma self-service. Il bosco delle
+avanti tornavo indietro di corsa per premerli ancora. Per me era un radiodramma
+self-service. Il bosco delle
 fiabe non esiste più: il parco l’ha demolito nell’inverno 2007-2008 per
 costruire Baumbergen, e ne resta poco più del tempio de “Il piccolo Muck”.
 
@@ -101,8 +101,8 @@ americane che si sfidavano in una corsa dentro un capannone costruito come un
 magazzino, loop contro loop. All’epoca l’unico duelling coaster della Germania,
 dal 2005 in giro come “Cop Car Chase”, chiuso nell’agosto 2006 e demolito da
 ottobre. Sul suo terreno ha aperto nel maggio 2007 l’area Santa Monica Pier, con
-il Disk’O Coaster Crazy Surfer. L’attrazione non c’è più. La dipendenza che ha innescato sì. A rigore, quindi, la colpa di tutto
-quello che è venuto dopo è di mia madre.
+il Disk’O Coaster Crazy Surfer. L’attrazione non c’è più, la dipendenza che
+ha innescato sì.
 
 La divisione dei compiti era chiara: papà ha messo le fiabe, mamma le montagne
 russe.
@@ -124,14 +124,13 @@ punti esattamente nell’istante in cui li prendo di mira, costandomi il record 
 casa giro dopo giro.
 
 Un trionfo però ormai è solo mio. Dopo quelli che sembrano cento giri l’ho
-finalmente trovato, il **topo da 10.000 punti nella seconda sala**. Dove sta di
-preciso? Quello resta, con tutta la comprensione per la domanda, un mio
-segreto.
+finalmente trovato, il **topo da 10.000 punti nella seconda sala**. Dove stia
+di preciso resta un mio segreto.
 
-C’è una cosa che ho ignorato a lungo e che ancora oggi mi fa restare un attimo
-in silenzio: la gondola ha funzionato fino al 1° novembre 2009, poi il parco ha
-spianato la sua area e l’ha ricostruita, e in uno di quei nuovi edifici,
-sull’attuale Kaiserplatz, dal 2011 c’è Maus au Chocolat. Quando lì dentro litigo
+La gondola ha funzionato fino al 1° novembre 2009, poi il parco ha spianato la
+sua area e l’ha ricostruita, e in uno di quei nuovi edifici, sull’attuale
+Kaiserplatz, dal 2011 c’è Maus au Chocolat. L’ho scoperto tardi, e ancora oggi
+mi fa restare un attimo in silenzio. Quando lì dentro litigo
 per i punti con la mia ragazza, sono seduto più o meno dove da bambino
 attraversavo le fauci del drago con mio padre.
 
@@ -158,16 +157,15 @@ e Manta a [SeaWorld](ref:seaworld-orlando?bare). Due settimane, e adesso quel
 punto della lista ha finalmente la sua spunta.
 
 Le foto le sto ancora selezionando, e i resoconti non sono finiti. Usciranno
-proprio qui sul blog appena lo saranno. Solo un anticipo: valeva ognuno di quegli anni di attesa.
+proprio qui sul blog appena lo saranno. Valeva ognuno di quegli anni di attesa.
 
 ## Il secondo io: lo sviluppatore con troppi progetti collaterali
 
 Parallelamente a tutti quegli anni di parchi c’è sempre stato un secondo io,
 uno che costruisce software da oltre venticinque anni. Molti di quegli anni nel
-mondo delle VPN, prima come Head of Software Development da **CyberGhost**, oggi
+settore delle VPN, prima come Head of Software Development da **CyberGhost**, oggi
 come Distinguished Software Engineer da **ExpressVPN**. Sistemi che milioni di
-persone usano contemporaneamente senza dedicarci mai un pensiero, e per
-un’infrastruttura non esiste complimento più grande. E poi open source, adattatori per la domotica e più progetti collaterali di quanti
+persone usano contemporaneamente senza dedicarci mai un pensiero. E poi open source, adattatori per la domotica e più progetti collaterali di quanti
 mi facciano bene; tutta la roba che si accumula su [arns.dev](https://arns.dev)
 e [GitHub](https://github.com/PArns).
 
@@ -181,8 +179,8 @@ domanda me ne sono accorto molto tardi.
 
 Fino a quel pomeriggio che praticamente ogni fan di parchi conosce in una
 variante o nell’altra. Sessanta minuti di standby al
-[Taron](ref:phantasialand/taron?bare), un display che ti mente in faccia con
-stoica gentilezza dicendo “circa 45 minuti”, e due stazioni più in là
+[Taron](ref:phantasialand/taron?bare), un display che con stoica gentilezza
+continua a segnare “circa 45 minuti”, e due stazioni più in là
 un’attrazione per famiglie mezza vuota che manda vagone dopo vagone nel nulla.
 Il Taron smaltisce circa 1200 persone all’ora: stavo quindi grosso modo mille
 persone prima della stazione e avrei potuto farmi il conto. Invece me ne stavo
@@ -204,8 +202,8 @@ altri. Sessioni di debug più lunghe di certe giornate al parco. E poi quel
 momento in cui un modello prevede giusto per la prima volta un sabato
 strapieno, giorni prima che accada.
 
-Mostrare il numero del momento non è mai stato il punto. Quello lo espone il
-parco stesso. Diventa interessante un passo prima: un modello nostro ha dovuto
+Il numero del momento lo espone già il parco stesso. park.fan parte un passo
+prima: un modello nostro ha dovuto
 imparare che un ponte piovoso di ottobre è tutt’altra cosa rispetto a un sabato
 di vacanza assolato di luglio. A chiunque abbia viaggiato in macchina con dei
 bambini non serve spiegarlo, a un computer sì. Che calendari scolastici, meteo, orari di
@@ -230,9 +228,9 @@ e quello che ne esce sta sulla [pagina di Fancast](/fancast).
 
 ## Il giorno migliore raramente è quello che ci si aspetta
 
-Sono sempre le stesse tre domande che solleva una visita a un parco, molto prima
-che qualcuno salga in auto e chieda dal sedile posteriore quando si arriva. Qual è il giorno migliore? Vale la pena una
-domenica? E quanto sarà pieno davvero?
+Una visita a un parco solleva sempre le stesse tre domande, molto prima che
+qualcuno salga in auto e chieda dal sedile posteriore quando si arriva: qual è
+il giorno migliore, se valga la pena una domenica e quanto sarà pieno davvero.
 
 È esattamente per questo che park.fan è stato costruito. Ogni pagina di parco ha
 un calendario con l’affluenza prevista per ogni giorno, circa sei mesi in
@@ -246,8 +244,9 @@ tutti gli altri non hanno letto la stessa dritta segreta.
 
 “Le domeniche sono piene” è quindi utile più o meno quanto “d’estate fa caldo”. Una domenica
 di fine novembre al Phantasialand è un’altra domanda rispetto a una domenica di
-inizio agosto all’Europa-Park, ed è così che risponde il
-calendario: con parco e data. E se sei già nel parco, i dati live ti mostrano se la coda davanti a te è l’eccezione o la regola.
+inizio agosto all’Europa-Park, e nel calendario
+la risposta sta per parco e per data. E se sei già nel parco, con i dati live
+vedi se la coda davanti a te è l’eccezione o la regola.
 
 ## Cosa fa park.fan di diverso dal tabellone all’ingresso
 
@@ -264,13 +263,13 @@ Più tempi di attesa, livelli di affluenza, meteo all’ingresso del parco, orar
 storici delle attrazioni in sei lingue. Da settembre c’è anche il
 [pianificatore](/blog/pianificatore), che mette le tue attrazioni su una linea
 del tempo a confronto con la previsione, e se vuoi una notifica push ti avvisa
-quando la coda di un’attrazione scende sotto una soglia che scegli tu. Nessun
-gruppo, nessun paywall, nessuna pubblicità, costruito da uno che in coda ci sta
-di persona.
+quando la coda di un’attrazione scende sotto una soglia che scegli tu. park.fan
+non appartiene a nessun gruppo, non ha paywall né pubblicità, e lo costruisce
+uno che in coda ci sta di persona.
 
 ## Cosa vuole diventare questo blog
 
-Un tempo di attesa da solo non dice quasi niente. Lo stesso numero significa
+Da solo, un tempo di attesa serve a poco. Lo stesso numero significa
 qualcosa di completamente diverso a seconda della giostra e del giorno:
 
 - **50 minuti** per un flat ride? Puro spreco di tempo. In quella finestra ci
@@ -289,22 +288,22 @@ qualcosa di completamente diverso a seconda della giostra e del giorno:
 La cifra la fornisce il grafico. Per la storia che c’è dietro, da adesso c’è
 questo blog, in tre gusti.
 
-**Resoconti di viaggio.** Lunghi, con una posizione, con foto e con dati veri
-proprio dal parco appena visitato. Non “è stato bello”, ma:
+**Resoconti di viaggio.** Lunghi, con una posizione, con foto e con i dati
+misurati proprio nel parco appena visitato. Per esempio:
 “[Magic Kingdom](ref:magic-kingdom-park?bare), 15 maggio, rope drop alle 09:08,
 questo era il piano, questo ha funzionato, questo è andato a rotoli.” Il viaggio
 a Orlando di cui sopra avrà proprio un resoconto così: Disney World, Universal e
 SeaWorld, foto comprese.
 
-**Analisi dei dati.** Cosa rivela _davvero_ lo storico delle code di un parco?
-Quando conviene di più il [Taron](ref:phantasialand/taron?bare)? E le nostre
-previsioni mantengono quello che promettono?
+**Analisi dei dati.** Cosa c’è _davvero_ nello storico delle code di un parco?
+Quando conviene di più il [Taron](ref:phantasialand/taron?bare), e quanto ci
+azzeccano le nostre previsioni?
 
 **Notizie.** Brevi e senza giri di parole. Dal 25 settembre hanno una sezione
 tutta loro sotto [Notizie](/news), separata dagli articoli.
 
 Grafici, mappe e tempi di attesa di questi post arrivano direttamente da
-park.fan: quello che leggi è ciò che il parco sta facendo davvero. I due
+park.fan: quello che leggi è lo stato del parco in questo momento. I due
 protagonisti di questa storia, in questo momento:
 
 [Taron](ref:phantasialand/taron?full)

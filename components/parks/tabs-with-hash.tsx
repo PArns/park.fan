@@ -18,6 +18,10 @@ import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-fil
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
+import {
+  ClosedRideMatches,
+  type ClosedRideSearchItem,
+} from '@/components/parks/closed-ride-matches';
 
 import type {
   ParkWithAttractions,
@@ -157,6 +161,8 @@ interface TabsWithHashProps {
    *  the header card whose lower half is the entry-tile row — one card, so one component has to
    *  own its box, and that is this one. */
   todayPanel?: React.ReactNode;
+  /** The park's rides that closed for good, for the search only — see `ClosedRideMatches`. */
+  closedRides?: readonly ClosedRideSearchItem[];
 }
 
 // Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
@@ -179,6 +185,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   landNames,
   attractionsByLand,
   todayPanel,
+  closedRides,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
@@ -199,6 +206,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    closedRideMatches,
     heightStops,
     riderHeight,
     setRiderHeight,
@@ -236,6 +244,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     activeTab,
     parkStatus: park.status,
     initialRiderHeight,
+    closedRides,
   });
 
   // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the
@@ -407,7 +416,7 @@ export const TabsWithHash = memo(function TabsWithHash({
         />
       )}
 
-      {hasSearchResults ? (
+      {hasSearchResults || closedRideMatches.length > 0 ? (
         landNames.map((landName, index) => {
           const attractions = filteredAttractionsByLand[landName];
           if (!attractions) return null;
@@ -510,6 +519,14 @@ export const TabsWithHash = memo(function TabsWithHash({
           </div>
         </div>
       )}
+
+      {/* A search for a ride that closed for good: named under the live results, or in place
+          of „Keine Attraktionen gefunden" when it is the only match. Never in the grid. */}
+      <ClosedRideMatches
+        rides={closedRideMatches}
+        parkPath={parkPath}
+        className={hasSearchResults ? 'mt-6' : 'mt-4'}
+      />
     </div>
   );
 

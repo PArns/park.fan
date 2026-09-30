@@ -7,6 +7,7 @@ import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { useMemo } from 'react';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
+import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 
 interface LiveParkDataProps {
   initialData: ParkWithAttractions;
@@ -34,6 +35,9 @@ interface LiveParkDataProps {
   /** <ParkTodayPanel> as a slot — it is the top half of the header card whose bottom half is the
    *  entry-tile row, and that card is built inside <TabsWithHash>. */
   todayPanel?: React.ReactNode;
+  /** The park's rides that closed for good, for the ride search. Server-built, day-stable, and
+   *  absent for the parks without one. */
+  closedRides?: readonly ClosedRideSearchItem[];
 }
 
 /**
@@ -56,6 +60,7 @@ export function LiveParkData({
   attractionsByLand,
   otherAttractionsLabel,
   todayPanel,
+  closedRides,
 }: LiveParkDataProps) {
   const { data: park } = useLiveParkData({
     continent,
@@ -111,6 +116,7 @@ export function LiveParkData({
         landNames={currentLandNames}
         attractionsByLand={currentAttractionsByLand}
         todayPanel={todayPanel}
+        closedRides={closedRides}
       />
     </RideAlertParkProvider>
   );

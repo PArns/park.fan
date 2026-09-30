@@ -7,8 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   In PortAventura läuft Halloween noch bis 15. November. Neu ist El Carnicero
-  de Penitence, ein Horror-Pasaje in einer Metzgerei im Far West. Was er
-  kostet, welche Pässe sich lohnen und was Familien ohne Aufpreis bekommen.
+  de Penitence, ein Horror-Pasaje in einer Metzgerei im Far West. Einzeln
+  kostet er ab 10 €, zusammen mit REC ab 11,90 €.
 tags:
   - news
   - portaventura
@@ -41,29 +41,29 @@ seo:
 In [PortAventura Park](ref:portaventura-park) ist seit dem 19.
 September Halloween, und das bleibt so bis zum 15. November. Neu ist ein
 fünfter Horror-Pasaje, also ein Walkthrough mit Darstellern: **El Carnicero de
-Penitence**, auf Deutsch „der Metzger von Penitence". Im vergangenen Jahr gab es
+Penitence**, auf Deutsch „der Metzger von Penitence“. Im vergangenen Jahr gab es
 vier Pasajes.
 
 ## Worum es im neuen Pasaje geht
 
 Penitence ist das Westernstädtchen im Far West, dort, wo auch
-[Uncharted](ref:portaventura-park/uncharted) steht. Die Geschichte spielt im 19. Jahrhundert: Im Ort verschwinden Leute, und der Sheriff hat den Metzger im
-Verdacht. Du hilfst ihm bei den Ermittlungen und gehst dafür durch eine
-Metzgerei und einen alten Schlachthof. Der Diari de Tarragona beschreibt den
-Ton als ausdrücklich blutig. Der Park selbst hält sich kurz: Rund um die
-Metzgerei rieche etwas nicht richtig.
+[Uncharted](ref:portaventura-park/uncharted) steht, und die Geschichte spielt
+im 19. Jahrhundert. Im Ort verschwinden Leute. Der Sheriff hat den Metzger im
+Verdacht, und du hilfst ihm bei den Ermittlungen, wofür du durch eine Metzgerei
+und einen alten Schlachthof gehst. Der Diari de Tarragona beschreibt den Ton als
+ausdrücklich blutig. Der Park selbst schreibt nur, rund um die Metzgerei rieche
+etwas nicht richtig.
 
-Eine Altersgrenze nennt PortAventura für El Carnicero bisher nicht, weder im
-Halloween-Programm noch auf der Ticketseite. Für den älteren Pasaje Angkor steht
-eine da: ab 12 Jahren in Begleitung eines Erwachsenen, allein ab 14. Menschen
-mit Herzproblemen, Bluthochdruck oder Epilepsie und Schwangere dürfen dort nicht
-hinein. Wer mit einem Kind um die zwölf plant, fragt am Eingang von El Carnicero
-besser nach, bevor er ein Ticket kauft.
+Laut den Bedingungen auf der Ticketseite gilt für El Carnicero dieselbe
+Altersgrenze wie für die anderen vier Pasajes, ab 12 Jahren in Begleitung und
+allein ab 14. Ein Kind unter zwölf kommt also in keinen der fünf hinein. Beim
+älteren Pasaje Angkor dürfen außerdem Menschen mit Herzproblemen, Bluthochdruck
+oder Epilepsie nicht hinein, ebenso wenig Schwangere.
 
 ## Die fünf Pasajes und was sie kosten
 
 Keiner der Pasajes ist im Parkeintritt enthalten. Die Preise stehen auf der
-Ticketseite des Parks als „ab", je nach Tag kann es mehr werden.
+Ticketseite des Parks als „ab“, je nach Tag kann es mehr werden.
 
 | Ticket                    | Preis ab | Enthält                                             |
 | ------------------------- | -------- | --------------------------------------------------- |
@@ -81,7 +81,8 @@ Wer den neuen Pasaje sehen will, nimmt den Passport 2: Für 1,90 € mehr als E
 Carnicero allein ist REC dabei. Alle fünf einzeln kosten zusammen 44,70 €, der
 Passport 5 spart davon knapp 14 €. La Isla Maldita spielt im Caribe Aquatic
 Park. REC geht auf die spanische Horrorfilmreihe zurück, als Pasaje gibt es sie
-nur in PortAventura.
+nur in PortAventura. Was Horrorhäuser in anderen europäischen Parks kosten, steht
+im [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 ## Ohne Aufpreis
 
@@ -90,8 +91,8 @@ Halloween-Parade zurück, dazu neue Figuren, die durch den Park laufen. Im
 Saloon läuft mit **Resurrection** eine neue Show aus Mystery und Tanz. Abends
 öffnet die Scare Zone La Maldición del Emperador.
 
-Nicht mehr dabei ist der Wasserpark: Der Caribe Aquatic Park hat nur von Mai
-bis September offen und ist jetzt geschlossen.
+Der Wasserpark ist nicht mehr dabei. Der Caribe Aquatic Park hat nur von Mai bis
+September offen und ist jetzt geschlossen.
 
 Zwischen Januar und März 2026 hat [Dragon Khan](ref:portaventura-park/dragon-khan)
 im Looping und in der Cobra Roll neue Schienen bekommen. Laut Valencia Extra
@@ -99,18 +100,15 @@ vibriert sie seitdem weniger.
 
 ## Öffnungszeiten
 
-Der Kalender auf park.fan zeigt für Anfang Oktober unter der Woche **10:30 bis
-18 Uhr**. Am Samstag, 3. Oktober, und am Wochenende 10. und 11. Oktober hat der
-Park bis 23 Uhr offen, am Sonntag, 4. Oktober, und am spanischen Nationalfeiertag, 12. Oktober, bis 19 Uhr. Spanien hat dieselbe Uhrzeit wie Deutschland.
-
-Welche Tage in PortAventura die ruhigsten sind, zeigt der Kalender.
+Laut Kalender auf park.fan hat der Park Anfang Oktober unter der Woche von
+**10:30 bis 18 Uhr** offen. Am Samstag, 3. Oktober, und am Wochenende 10. und 11.
+Oktober ist bis 23 Uhr geöffnet, am Sonntag, 4. Oktober, und am spanischen
+Nationalfeiertag, 12. Oktober, bis 19 Uhr. Spanien hat dieselbe Uhrzeit wie
+Deutschland.
 
 ```best-days-widget slug=portaventura-park
 
 ```
-
-Was Movie Park, Plopsaland, Walibi und Toverland in diesem Herbst machen, steht
-im [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 [PortAventura Park](ref:portaventura-park?full)
 
@@ -124,3 +122,5 @@ und
 [Valencia Extra](https://www.valenciaextra.com/es/ocio/cinco-pasajes-nuevo-carnicero-dragon-khan-renovado-halloween-espera-en-portaventura_599011_102.html).
 
 — Patrick
+
+> [!CORRECTION] 30. September 2026: In der ersten Fassung stand, PortAventura nenne für El Carnicero keine Altersgrenze. Die Bedingungen auf der Ticketseite nennen dieselbe wie für alle anderen Pasajes: ab 12 Jahren in Begleitung, allein ab 14.

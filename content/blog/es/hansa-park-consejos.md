@@ -80,8 +80,9 @@ Legoland y cuatro montañas rusas familiares o infantiles.
 Aquí las montañas rusas nuevas llegan a rachas. Entre 2009 y 2017 fueron cuatro, el Kärnan entre
 ellas, y luego ninguna durante nueve años, hasta que en 2026 abrió el Cornwall Coaster. En la pausa
 llegaron el Highlander y varias zonas temáticas pequeñas, y desde 2008 el parque levanta ciudad a
-ciudad una sola zona grande, la «Hanse in Europa». Lo que no cambia: el parque abre todos los días
-de su temporada y cuelga unas 2.000 figuras luminosas en octubre, donde otros montan laberintos.
+ciudad una sola zona grande, la «Hanse in Europa». Lo que se mantiene es que el parque abre todos
+los días de su temporada y que en octubre cuelga unas 2.000 figuras luminosas, donde otros montan
+laberintos.
 
 [Hansa-Park](ref:hansa-park?full)
 
@@ -92,9 +93,9 @@ Gerstlauer lo construyó como Infinity Coaster: **1.235 metros** de recorrido, a
 metros. El lift está entero dentro de una **torre de 79 metros** que sube el tren en vertical, y la
 primera caída es de 67 metros.
 
-El truco de verdad llega antes de esa caída, dentro de la torre, y no se ve desde fuera. Durante la
-subida, tumbado boca arriba y a oscuras, el tren cae un tramo hacia atrás a más de 60 metros de
-altura, antes de que el lift lo siga subiendo hasta la primera caída. El parque lo presenta como algo
+Dentro de la torre, donde no se ve desde fuera, el tren cae durante la subida un tramo hacia atrás
+a más de 60 metros de altura, con los pasajeros tumbados boca arriba y a oscuras, antes de que el
+lift lo siga subiendo hasta la primera caída. El parque lo presenta como algo
 único en el mundo, pero dos años después de la apertura por lo visto aún le parecía demasiado
 tranquilo: en 2017 más que duplicó la velocidad de caída, de unos 5 a unos 11 metros por segundo.
 
@@ -112,8 +113,7 @@ maldición de Novgorod; en 2021 se le añadió una t y la maldición pasó a ser
 
 Anton Schwarzkopf construyó **[Nessie](ref:hansa-park/nessie)** en **1980**: 26 metros de altura, 741
 metros de recorrido, 80 km/h, un único looping vertical y, en su momento, el looping más grande de
-Europa. Lleva 46 años funcionando y en 2019 le cambiaron la zona entera, igual que otros
-a esa edad se hacen la cocina nueva.
+Europa. Lleva 46 años funcionando, y en 2019 le cambiaron la zona entera.
 
 Luego vienen cuatro más pequeñas, y solo una de ellas no es familiar. **[Crazy Mine](ref:hansa-park/crazy-mine)**, de Maurer,
 funciona desde 1997 como ratón loco con decorado de mina, 15 metros de altura y terminada en 70
@@ -127,8 +127,7 @@ La más nueva llegó esta temporada. El **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** abrió el **23 de mayo de 2026** en la zona
 Bezauberndes Britannien, de nuevo Gerstlauer, 18 metros de altura, unos 570 metros de recorrido,
 50 km/h, a partir de 90 centímetros. El parque
-cuenta **siete lanzamientos** en una vuelta, hacia delante y hacia atrás. Tantos arranques seguidos
-solo se ven en una operación salida de agosto. Para una atracción familiar son muchos, y se notan en
+cuenta **siete lanzamientos** en una vuelta, hacia delante y hacia atrás. Para una atracción familiar son muchos, y se notan en
 la duración: algo más de minuto y medio, medio minuto más que [Crazy Mine](ref:hansa-park/crazy-mine?bare) o el [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
 ## La torre que le quitó el récord a Soltau
@@ -149,21 +148,19 @@ Hansa-Park añadió cinturones adicionales a las barras de sujeción.
 
 ```
 
-Para las familias, en el Highlander cuenta sobre todo otra cifra: 1,40 metros de estatura mínima, el
+Para las familias, la cifra que cuenta en el Highlander es la estatura mínima de 1,40 metros, el
 listón más alto de todo el parque.
 
 ## Un calendario sin día de cierre
 
 La temporada 2026 va del **26 de marzo al 25 de octubre**. Hemos consultado el calendario de apertura
 del parque día por día, la última vez el 25 de septiembre, y entre esas dos fechas no hay **ni un
-solo día de cierre**. Ningún lunes saltado en primavera, ningún hueco en martes en octubre, nada. Son
-214 días de apertura, tanto en el calendario del parque como en nuestro feed de calendario.
+solo día de cierre**. Son 214 días de apertura, tanto en el calendario del parque como en nuestro feed de calendario.
 
 El Europa-Park y el Phantasialand hacen lo mismo. El Heide Park, en cambio, saca el lunes del
 calendario con regularidad en primavera y otoño, el Movie Park cierra casi siempre de lunes a
 miércoles fuera de temporada alta, e incluso el Legoland Deutschland de Günzburg tiene en 2026 algunos
-días de cierre en mayo, junio y septiembre. Quien busque en Sierksdorf un día tranquilo entre semana lo consigue de verdad como
-día de apertura y no como puerta cerrada.
+días de cierre en mayo, junio y septiembre. Quien busque en Sierksdorf un día tranquilo entre semana lo encuentra abierto.
 
 Los horarios son casi igual de monótonos, en el buen sentido: aquí se planifica sin calendario con
 notas a pie de página. Hasta el **9 de octubre** el parque abre todos los días a
@@ -219,7 +216,7 @@ niños de menos de diez años estás mejor aquí que en una noche de laberintos.
 sustos tampoco: el espectáculo nocturno es ruidoso, y el propio parque avisa de que puede asustar a
 los más pequeños.
 
-## Este parque cuenta en años, no solo en centímetros
+## Límites de estatura y de edad
 
 En la mayoría de los parques, cada entrada de atracción indica unos centímetros. Aquí suele indicar
 además una edad, y es la que decide si tu hijo puede subir sin acompañante o únicamente con un adulto al lado.
@@ -274,7 +271,7 @@ Landungsbrücken y crece fachada a fachada, en ocho fases documentadas: en 2008 
 entrada; en 2010 Brujas, Visby, Lübeck, Hamburgo y Rostock; en 2011 Groninga y París; en 2012
 Londres, Ribe y Bergen; en 2013 otras seis, de Copenhague a Núremberg; en 2018 Gdansk y Cracovia; y
 en 2021 la fase más grande hasta la fecha, con 14 fachadas de Cracovia, Estocolmo, Stralsund,
-Helsinki, Riga y Venecia. Se calcularon veinte años, un plazo digno de unas obras de autovía. La última fase, el Palacio de Braga, no está
+Helsinki, Riga y Venecia. Se calcularon veinte años. La última fase, el Palacio de Braga, no está
 terminada.
 
 Los años desde 2021 se leen en consecuencia a pequeña escala: Awildas Welt, el Peterhof von Novgorod
@@ -282,7 +279,7 @@ en lugar del antiguo campamento de leñadores, New Lübeck en lugar del pueblo d
 el Carrousel Baltique, los Lost Trails of Roanoke, Einars Fjordfahrt. Ninguna de esas novedades es
 una montaña rusa. Esa llegó en 2026.
 
-## Dónde dormir: tres noches o ninguna
+## Dónde dormir
 
 El **HANSA-PARK Resort am Meer** está a las afueras de Sierksdorf, con la línea de tren pasando entre
 el parque de vacaciones y el parque de atracciones. Se reserva a través de Landal u Ostseezeit, la
@@ -361,7 +358,7 @@ familiares o infantiles: [Royal Scotsman](ref:hansa-park/royal-scotsman?bare), [
 cuesta lo mismo que en taquilla. Aparcar cuesta 7 € al día, 16 € en el aparcamiento para eléctricos,
 con la carga gratis.
 
-### ¿A partir de qué estatura puede montar mi hijo?
+### ¿A partir de qué estatura puede montar un niño?
 
 [Highlander](ref:hansa-park/highlander?bare) desde 1,40 m, [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) desde 1,30 m, [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) desde 1,25 m. Con un adulto al lado: [Crazy Mine](ref:hansa-park/crazy-mine?bare) desde 1,10 m (sin acompañante a partir de 9 años), [Nessie](ref:hansa-park/nessie?bare) y [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) desde 1 m (sin acompañante a partir de 10), [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) desde 90 cm (sin acompañante a partir de 8), [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) desde 90 cm (sin acompañante a partir de 6), [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) desde 90 cm en asiento infantil (sin acompañante a partir de 1,20 m).
 
@@ -373,7 +370,7 @@ fuegos artificiales hacia las 20:30. No tiene nada que ver con Halloween.
 
 ### ¿Merece la pena el Hansa-Park para los aficionados a las montañas rusas?
 
-Por el Kärnan y la Flucht von Novgorod, sin duda, y por el Highlander. Si vienes del sur de Alemania,
+Sí, por el Kärnan y la Flucht von Novgorod, y por el Highlander. Si vienes del sur de Alemania,
 planifica antes unas vacaciones en el Báltico con un día de parque que un viaje al parque con visita
 a la playa.
 
@@ -387,7 +384,7 @@ y entonces el parque también puede cambiar su horario:
 
 ```
 
-Y si estás planificando el norte: el [Heide Park](/blog/heide-park-tiempos-de-espera-consejos) queda
+Si estás planificando el norte, el [Heide Park](/blog/heide-park-tiempos-de-espera-consejos) queda
 a 131 kilómetros en línea recta hacia el suroeste y cabe en la misma semana.
 
 ## Dónde está la pega

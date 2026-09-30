@@ -1,14 +1,13 @@
 ---
-title: 'Settanta minuti sono tanti? Dipende se è martedì'
+title: 'Quando settanta minuti di attesa sono tanti'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
-  All’ingresso di Taron c’è un numero, e da solo dice quanto una temperatura
-  senza la stagione. Solo il confronto con ogni martedì misurato lo trasforma in
-  una risposta. Perché park.fan non butta via niente, cosa succede di notte e
+  Il numero all’ingresso di Taron, da solo, vale quanto una temperatura senza
+  la stagione. Diventa una risposta solo accanto a ogni martedì misurato. Perché park.fan non butta via niente, cosa succede di notte e
   perché ad agosto non consigliamo più di pattinare.
 tags:
   - tempi-di-attesa
@@ -45,16 +44,15 @@ seo:
 ---
 
 Sei davanti a [Taron](ref:phantasialand/taron), il display segna
-**70 minuti**, e la tua testa fa subito la cosa sbagliata: confronta quel numero con il tuo ricordo. L’ultima
+**70 minuti**, e la tua testa fa subito la cosa sbagliata, cioè confronta quel numero con il tuo ricordo. L’ultima
 volta erano 40, quindi oggi va peggio. La volta prima 90, quindi oggi va
 benissimo. Due visite non sono una base, e la memoria arrotonda comunque a tuo
 sfavore ([il perché è qui](/blog/l-arte-dell-attesa)).
 
-Il numero in sé non è il problema. I parchi lo espongono, di solito è più o meno
-giusto e ci costa una richiesta ogni cinque minuti. Il problema è che sta da
-solo, come una temperatura senza la stagione. Settanta minuti di un martedì di maggio sono una cosa completamente
-diversa da 70 minuti di un sabato delle vacanze estive, e senza la seconda metà
-di questa frase non ci fai niente.
+I parchi espongono il numero, di solito è più o meno giusto e a noi costa una
+richiesta ogni cinque minuti. Però sta da solo, come una temperatura senza la
+stagione. Settanta minuti di un martedì di maggio sono una cosa completamente
+diversa da 70 minuti di un sabato delle vacanze estive.
 
 ## Cosa vogliono dire davvero «tipico» e «pieno»
 
@@ -73,24 +71,24 @@ questo il record sta a parte, con la data, così lo si vede senza che tocchi gli
 altri due numeri.
 
 Per il [Phantasialand](ref:phantasialand) la classifica è questa. La colonna
-dei giorni misurati è la più importante: dice quanto peso porta una riga.
+più importante è quella dei giorni misurati, perché più giorni ha una riga,
+più quella riga pesa.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
 Quello che c’è qui è in tempo reale. Se rileggi questo articolo tra tre mesi, in
-tabella ci saranno altri numeri, e il testo attorno starà ancora in piedi. È
-esattamente a questo che servono questi widget: in quattro articoli più vecchi i
+tabella ci saranno altri numeri, e il testo attorno starà ancora in piedi. Per
+questo esistono questi widget. In quattro articoli più vecchi i
 numeri erano digitati a mano in tabelle Markdown, distribuiti su sei lingue, e
 dopo qualche settimana si erano allontanati in silenzio, come gli orologi di una
 casa vacanze.
 
 ## La giornata ha una forma
 
-Un’attrazione non ha la stessa fila tutto il giorno. Il movimento di fondo lo
-conoscono tutti: all’apertura è corta, poi il resto del mondo finisce la
-colazione, e verso sera torna sopportabile.
+Un’attrazione non ha la stessa fila tutto il giorno. All’apertura è corta, poi
+il resto del mondo finisce la colazione, e verso sera torna sopportabile.
 Dove cada esattamente il massimo cambia da attrazione ad attrazione, e sono
 proprio quelle differenze la parte utile.
 
@@ -116,13 +114,11 @@ Su un’attrazione per cui proponiamo il rope drop, l’orario ti fa risparmiare
 almeno tre quarti d’ora. La data decide l’intera giornata. Nelle vacanze estive
 2026 della Renania Settentrionale-Vestfalia, martedì 18 agosto nel calendario
 del Phantasialand risultava «Normale» e il giovedì della stessa settimana «Molto
-alta» (dati di settembre 2026), e da un calendario normale non si vede. A fare
-la differenza: quali
-regioni sono in vacanza, se c’è un ponte attaccato, se piove e se oltre confine
+alta» (dati di settembre 2026), e da un calendario normale non si vede. La
+differenza la fanno quali regioni sono in vacanza, se c’è un ponte attaccato, se piove e se oltre confine
 sta succedendo qualcosa.
 
-L’ultimo punto viene volentieri sottovalutato. Un parco vicino al confine si
-accorge subito di quando iniziano le vacanze accanto, di solito già dalle targhe
+Un parco vicino al confine si accorge subito di quando iniziano le vacanze accanto, di solito già dalle targhe
 nel parcheggio. Per questo contiamo anche le
 regioni entro circa 200 chilometri e le contrassegniamo a parte nel calendario.
 Tre parchi a confronto, ciascuno con il suo giorno più tranquillo:
@@ -139,8 +135,7 @@ sono tranquilli allo stesso modo.
 ## A cosa serve un turno di notte
 
 Mostrare un tempo di attesa in tempo reale è una richiesta. Una mediana su ogni
-martedì misurato è un’altra cosa: deve essere pronta prima che qualcuno la
-chieda. Così ogni notte gira una catena di job, e il loro ordine è fissato,
+martedì misurato invece deve essere pronta prima che qualcuno la chieda. Così ogni notte gira una catena di job, e il loro ordine è fissato,
 perché ogni passo poggia sul precedente. Alle 02:00 UTC i percentili per ora,
 alle 03:00 i valori di riferimento per parco, alle 04:30 il riassunto di ieri,
 alle 05:15 i consigli rope drop, che leggono proprio quel riassunto, alle 05:30
@@ -148,7 +143,7 @@ alle 05:15 i consigli rope drop, che leggono proprio quel riassunto, alle 05:30
 il modello di previsione si riaddestra con i tempi di attesa del giorno prima,
 mentre i fan del rope drop sono già in coda in autostrada.
 
-Poi c’è l’altra metà: non buttiamo via nessuna rilevazione. I periodi più
+L’altra metà è che non buttiamo via nessuna rilevazione. I periodi più
 vecchi vengono compressi, non sfoltiti. Fin dove guarda indietro un’analisi è
 un’altra decisione: «tipico» e «pieno» contano gli ultimi 365 giorni, un giro
 d’anno completo, il consiglio rope drop solo gli ultimi 70, per seguire la
@@ -164,14 +159,14 @@ nella propria app, e soltanto per i dispositivi collegati al wi-fi del parco. No
 un’interfaccia pubblica. Nei dati grezzi questo parco somiglia a qualunque altro
 alle tre di notte: nessuna attrazione riporta niente. Se ne traessimo la
 conclusione ovvia, lì ci sarebbero tutte le attrazioni del parco su «molto bassa», più una media
-di 0 minuti e una previsione fondata su zero osservazioni. Il sogno di ogni
-visitatore, e completamente inventato. Al suo posto, sulla
+di 0 minuti e una previsione fondata su zero osservazioni, tutto inventato. Al
+suo posto, sulla
 pagina del parco c’è un avviso che qui non c’è niente da leggere. Quello che
 possiamo dire comunque sul parco sta nella
 [guida all’Hansa-Park](/blog/hansa-park-consigli).
 
-La stessa regola in un punto più piccolo: la pista di pattinaggio «Berliner
-Eislaufen», sulla Kaiserplatz del Phantasialand, c’è solo durante il
+La stessa regola vale in piccolo per la pista di pattinaggio «Berliner
+Eislaufen», sulla Kaiserplatz del Phantasialand, che c’è solo durante il
 Wintertraum, questa volta dal 14 novembre 2026 al 24 gennaio 2027. Ad agosto
 nessuno riporta niente su di essa, perché non c’è niente da riportare. Leggere quel silenzio come «aperta»
 sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco:
@@ -191,7 +186,7 @@ affermiamo nulla. Ci sono anche quattro situazioni di visita concrete, dalla
 famiglia nelle vacanze d’autunno alla prima volta in un grande parco, passando
 per l’abbonato annuale che si chiede se valga ancora la pena andarci stasera.
 
-E la prossima volta che sei all’ingresso a fissare il display: guarda cos’è
+E la prossima volta che sei all’ingresso a fissare il display, guarda cos’è
 normale su quell’attrazione di martedì.
 
 — Patrick

@@ -69,8 +69,11 @@ export function BlogAttractionLink({
 
   // Inline live badge: a wait-time badge while operating, a status badge when
   // the ride isn't running. Real badge components — not recoloured link text.
+  // A ride that closed for good says that, whatever the live reading is.
   const closed = isNotOperating(attraction.status);
-  const liveBadge = closed ? (
+  const liveBadge = attraction.closedPermanently ? (
+    <ParkStatusBadge status="RETIRED" className={INLINE_BADGE} />
+  ) : closed ? (
     <ParkStatusBadge status={attraction.status ?? 'CLOSED'} className={INLINE_BADGE} />
   ) : typeof attraction.currentWaitTime === 'number' ? (
     <Badge className={cn(waitTimeBadgeClass(attraction.currentWaitTime), INLINE_BADGE)}>

@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Es finales de septiembre y en el supermercado ya hay turrón. Pues miremos
   también hacia los parques: el 14 de noviembre se encienden las luces en
-  Phantasialand, Bottrop promete más de un millón, y en Wavre hay una pista de
+  Phantasialand, Bottrop anuncia más de un millón de luces, y en Wavre hay una pista de
   hielo bajo el techo de una nave. Doce parques que abren entre noviembre y
   enero: las fechas, los precios y la atracción de Europa-Park que funciona por
   última vez.
@@ -73,7 +73,7 @@ Se acabó, sin sucesor. El parque permanece cerrado desde Halloween hasta abril.
 
 El razonamiento explica de paso casi toda la temporada de invierno. La directora
 Mascha Taminiau señaló lo corto del periodo de apertura en las vacaciones de
-Navidad y la dependencia del tiempo. Traducido: las montañas rusas no funcionan
+Navidad y la dependencia del tiempo. Las montañas rusas no funcionan
 con heladas, temporal o lluvia helada, y Walibi Holland casi no tiene nada
 cubierto. Cuando la técnica se para, al visitante le queda un espectáculo de
 luces, y un espectáculo de luces no sostiene una entrada.
@@ -85,9 +85,9 @@ llena esas mismas semanas con dark rides y hasta luce mejor bajo la lluvia.
 atracciones, y Walibi Belgium tiene naves. Walibi Holland no tenía en invierno
 ni una sola atracción grande cubierta.
 
-Abajo está quién hace la temporada 2026/27, con fechas, horarios y precios. Y un
-dato que va a contracorriente de la sensación: entre Navidad y Año Nuevo, cuando
-anochece a las cuatro y media, se hace más cola que en mayo.
+Abajo está quién hace la temporada 2026/27, con fechas, horarios y precios. Y, contra
+lo que parece, entre Navidad y Año Nuevo, cuando anochece a las cuatro y media,
+se hace más cola que en mayo.
 
 > **Sobre las fechas:** esta es la situación a 25 de septiembre de 2026. Los
 > parques siguen moviendo su calendario de invierno hasta bien entrado el otoño,
@@ -148,7 +148,7 @@ Wintertraum los fines de semana suele agotarse a mediodía, está en la
 
 Fechas y entradas: [phantasialand.de → Wintertraum](https://www.phantasialand.de/en/theme-park/wintertraum/).
 
-### Europa-Park: temporada de invierno desde el 28 de noviembre, y una despedida
+### Europa-Park: temporada de invierno desde el 28 de noviembre y despedida del Euro-Mir
 
 [Europa-Park](ref:europa-park) ni siquiera cierra después de Halloween. Del 2 al
 27 de noviembre funciona HALLOWinter, una mezcla de calabazas y abetos, y desde
@@ -172,8 +172,8 @@ queda: en ese terreno surge una zona temática propia con una nueva montaña rus
 familiar de Mack Rides y la ESA como socia, prevista según el parque para la
 temporada 2028.
 
-Qué día de la semana es el más tranquilo en Rust y cómo es noviembre allí lo
-calcula la [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
+Qué día de la semana es el más tranquilo en Rust y cómo es noviembre allí está
+en la [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 
 [Europa-Park](ref:europa-park?full)
 
@@ -193,7 +193,7 @@ apertura, de 11 a 18 h.
 
 ## Los parques de dark rides: construidos para el mal tiempo
 
-### Efteling: once semanas de invierno, y el parque luce mejor que en verano
+### Efteling: Winter Efteling, del 16 de noviembre al 31 de enero
 
 [Efteling](ref:efteling) es el parque en el que se ve para qué sirven los dark
 rides. [Droomvlucht](ref:efteling/droomvlucht),
@@ -321,7 +321,7 @@ Experience, un viaje en tren al Polo Norte con suplemento.
 Movie Park y Bobbejaanland pertenecen a Parques Reunidos, que el fondo EQT
 quiere vender. Para el visitante no cambia nada por ahora, y
 [los detalles están aquí](/blog/eqt-venta-parques-reunidos-movie-park). Qué día
-de la semana es de verdad el más tranquilo en Bottrop, y en qué se equivocan los
+de la semana es el más tranquilo en Bottrop, y en qué se equivocan los
 consejos habituales, está en la
 [guía de Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
 
@@ -368,9 +368,8 @@ incluidos**. El parque aún no ha publicado cuándo empieza exactamente su
 programa de Navidad. El 5 de enero de 2027 la **Cabalgata de los Reyes Magos**
 recorre la zona de Mediterrània.
 
-Un aviso que sale de nuestras propias mediciones desde finales de diciembre de
-2025: en PortAventura se espera de
-media más que en Brühl, y claramente más en invierno y en primavera. Solo en
+Según nuestras propias mediciones desde finales de diciembre de 2025, en
+PortAventura se espera de media más que en Brühl, y claramente más en invierno y en primavera. Solo en
 julio y agosto hay más cola en Brühl. La tabla de más abajo los pone uno al lado
 del otro. Quien llegue en diciembre desde el norte contando con una temporada
 vacía porque en su casa es invierno, está planificando para el país equivocado.
@@ -410,7 +409,7 @@ hasta la segunda quincena de noviembre, porque los parques todavía no han
 publicado los días siguientes. Un día solo aparece en park.fan cuando el parque
 lo ha publicado.
 
-## Lo que dicen los números: vacío a la vista, lleno en las colas
+## Cuánta cola hay en invierno
 
 El invierno parece vacío. Está oscuro, hace frío, hay niebla en los caminos y
 medio parque está iluminado en lugar de poblado. Las colas no lo están.
@@ -429,8 +428,8 @@ Los meses de invierno se apoyan en un puñado de días medidos, los de verano en
 varias veces más. La columna de días indica en cada fila sobre qué se sostiene.
 Y la fila de diciembre sale entera de las vacaciones de Navidad, porque
 nuestras mediciones no empiezan hasta finales de diciembre de 2025, entre
-Navidad y Año Nuevo. Da para hablar del orden de magnitud entre Navidad y
-Año Nuevo, pero no dice nada del Adviento. En Efteling, diciembre es incluso el
+Navidad y Año Nuevo. Sirve para el orden de magnitud entre Navidad y
+Año Nuevo, pero sobre el Adviento no hay nada. En Efteling, diciembre es incluso el
 mes más lleno de toda la tabla, enero no.
 
 **Efteling, tiempo de espera típico por mes**
@@ -490,8 +489,8 @@ ni uno. Solo desde abril anotamos cada día de apertura. El invierno 2026/27 es,
 por tanto, el primero que registramos entero, y después nuestro modelo tendrá
 por primera vez un año completo.
 
-Para marcar una dirección, esos pocos días de invierno bastan, y sobre todo
-enseñan cuánto importa el día en invierno. Entre Navidad y Año Nuevo había gente
+Para marcar una dirección, esos pocos días de invierno bastan, y en ellos se ve
+lo mucho que cambia la afluencia de un día a otro. Entre Navidad y Año Nuevo había gente
 en todas partes: en Phantasialand nuestro calendario marcó «Alta» cada día de
 apertura del 26 de diciembre al 5 de enero, y «Muy alta» el 2 de enero. Después
 de las vacaciones todo cambió. Desde el 7 de enero, todos los sábados y

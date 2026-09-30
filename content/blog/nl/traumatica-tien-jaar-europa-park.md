@@ -1,5 +1,5 @@
 ---
-title: 'Traumatica wordt tien, en als verjaardagscadeau is er een hotel waar de acteurs je mogen aanraken'
+title: 'Traumatica, de horroravonden van Europa-Park, wordt tien'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
 author: patrick
@@ -41,16 +41,16 @@ seo:
     - Traumatica leeftijd
 ---
 
-In het najaar van 2007 liet [Europa-Park](ref:europa-park) voor het eerst
-'s avonds acteurs met nepbloed op zijn bezoekers los. Het heette toen “Terenzi
-Horror Nights”, naar popzanger Marc Terenzi, die het tot 2012 samen met Michael
-Mack organiseerde. Sinds 2017 draagt het de naam Traumatica, eerst nog als
-“Horror Nights – Traumatica”, en dus is 2026 de tiende editie onder die naam. Het motto telt beide bij elkaar op: “20 jaar
-horror, 10 jaar Traumatica”.
+De voorpremière van de tiende Traumatica in [Europa-Park](ref:europa-park) is
+vanavond, woensdag 23 september. De officiële première volgt op vrijdag
+25 september, en daarna loopt het seizoen tot en met zaterdag 7 november.
 
-De voorpremière is vanavond, woensdag 23 september. De officiële première
-volgt op vrijdag 25 september, en daarna loopt het seizoen tot en met zaterdag
-7 november.
+In het najaar van 2007 liet het park voor het eerst 's avonds acteurs met
+nepbloed op zijn bezoekers los. Het heette toen “Terenzi Horror Nights”, naar
+popzanger Marc Terenzi, die het tot 2012 samen met Michael Mack organiseerde.
+Sinds 2017 draagt het de naam Traumatica, eerst nog als “Horror Nights –
+Traumatica”, en dus is 2026 de tiende editie onder die naam. Het motto telt
+beide bij elkaar op: “20 jaar horror, 10 jaar Traumatica”.
 
 ## Nieuw in het jubileumjaar
 
@@ -60,8 +60,7 @@ de acteurs mogen je aanraken. Aangeraakt word je volgens de organisatie ook in
 de Murderdome, maar alleen hier ga je in je eentje door een heel huis. Volgens de
 [Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html)
 is het niet rolstoeltoegankelijk en alleen voor 18+. Het kost € 29 bovenop het
-Traumatica-ticket. Hoe lang je binnen bent, zegt het park niet, en dat is
-vermoedelijk de bedoeling.
+Traumatica-ticket. Hoe lang je binnen bent, zegt het park niet.
 
 De **Vampire's Club** is terug, maar alleen de eerste twee weekenden: 25 en 26
 september, 2 en 3 oktober, telkens van 23 tot 3 uur, 18+. Op die avonden
@@ -77,7 +76,7 @@ nieuwe stukken route.
 
 ## De acht horrorattracties
 
-- Wakala's Wonderland, een kleurrijke speelwereld waar je liever niet speelt
+- Wakala's Wonderland, een kleurrijke speelwereld
 - Day 1, de eerste dag van de apocalyps, en jij zoekt de uitgang
 - Tarot-House – Last Descent, een vervloekte crypte waar Madame Monroe nieuwe
   zielen verzamelt
@@ -85,7 +84,7 @@ nieuwe stukken route.
 - The Hill – Hide and Seek, verstoppertje met een heks terwijl je vermiste
   kinderen zoekt
 - Murderdome – Bonus Round, met de nieuwe obstakels van hierboven
-- Studio-13 – Callback, een filmcasting voor een rol die je niet wilt
+- Studio-13 – Callback, een filmcasting
 - The Field, een avondwandeling door een maïsveld waar je niet alleen bent
 
 THE HOTEL hoort niet bij de acht, dat kost extra. Daarnaast is er voor € 6 de
@@ -116,10 +115,10 @@ om 18 uur, en de horrorattracties draaien van 19 tot 23.30 uur.
 De vanaf-prijzen gelden voor de goedkoopste data, en de Shoxter Pass met
 voorrangstoegang is al weg.
 
-Ga je overdag eerst het park in, dan laat de
-[Europa-Park-gids](/blog/europa-park-wachttijden-tips) zien op welke dagen de
-rijen kort zijn, en het [halloweenoverzicht](/blog/halloween-pretparken-2026)
-zet Traumatica naast wat Movie Park, Walibi en Toverland dit najaar doen.
+Ga je overdag eerst het park in, kijk dan in de
+[Europa-Park-gids](/blog/europa-park-wachttijden-tips) op welke dagen de rijen
+kort zijn. In het [halloweenoverzicht](/blog/halloween-pretparken-2026) staan
+Traumatica, Movie Park, Walibi en Toverland naast elkaar.
 
 [Europa-Park](ref:europa-park?full)
 

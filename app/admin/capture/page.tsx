@@ -288,7 +288,7 @@ export default function CapturePage() {
               title="Fehlt noch"
               hint={
                 data.statsAvailable
-                  ? 'Headliner zuerst, dann was heute Schlange macht.'
+                  ? 'Headliner zuerst, dann die Bahnen mit den längsten Warteschlangen von heute.'
                   : data.waitTimesAvailable
                     ? 'Ohne historische Statistik: Headliner zuerst, dann die Tageswerte.'
                     : 'Dieser Park veröffentlicht keine Wartezeiten, die Reihenfolge ist alphabetisch.'

@@ -1,5 +1,5 @@
 ---
-title: 'En el parque, la brújula te dice qué atracción tienes delante'
+title: 'Con la brújula de park.fan ves qué atracción tienes delante'
 translationKey: in-park-compass
 date: '2026-09-28'
 author: patrick
@@ -28,7 +28,7 @@ rideLinks: false
 coverImage:
   src: /media/phantasialand/black-mamba-16x9.jpg
   alt: 'Un arco de roca y una cascada en Deep in Africa, y, detrás, el lift de Black Mamba'
-  caption: 'Black Mamba en el Phantasialand. Desde el camino ves un arco de roca y un trozo de la subida, ; del resto de la atracción, nada.'
+  caption: 'Black Mamba en el Phantasialand. Desde el camino ves un arco de roca y un trozo de la subida; del resto de la atracción, nada.'
   credit: 'Patrick Arns'
 seo:
   title: 'Brújula para parques temáticos: ¿qué atracción tienes delante?'
@@ -52,9 +52,9 @@ detrás de cada esquina estás en otro país. En el plano, Klugheim se encuentra
 enseguida. Lo difícil es encontrarte a ti en ese plano, y encima saber hacia
 dónde estás mirando.
 
-Hasta ahora, park.fan te decía dentro del parque cuánta cola había en
-[Black Mamba](ref:phantasialand/black-mamba?bare). Dónde quedaba Black Mamba
-desde donde estabas, eso no lo decía. Desde el 27 de septiembre te lo dice una
+Hasta ahora, dentro del parque veías en park.fan cuánta cola había en
+[Black Mamba](ref:phantasialand/black-mamba?bare), pero no hacia dónde quedaba
+Black Mamba desde donde estabas. Desde el 27 de septiembre eso lo marca una
 brújula.
 
 ## Cuándo aparece la brújula
@@ -84,7 +84,7 @@ dirección real, y cuanto más hacia fuera, más lejos queda. En el anillo
 discontinuo exterior pone hasta dónde llega. El cono azul es tu mirada, y gira
 cuando giras tú.
 
-Cada punto dice qué está haciendo la atracción ahora mismo. Un número es la
+En cada punto ves qué está haciendo la atracción ahora mismo. Un número es la
 espera en minutos, con los mismos colores que park.fan usa para las esperas en
 el resto de la web. Un anillo verde con un punto significa que está abierta,
 pero sin espera publicada. El triángulo naranja es una avería, la llave inglesa
@@ -145,10 +145,10 @@ Magnetic Model 2025, y la brújula la suma a cada lectura.
 La flecha marca la línea recta, no el camino. En el Phantasialand, el camino
 hacia una atracción que está detrás de un muro suele empezar en la dirección
 contraria, y eso no lo arregla ninguna brújula. Además, la flecha apunta al
-único punto que nuestros datos conocen de cada atracción. Dónde queda la entrada
-de la cola, eso los datos no lo saben.
+único punto que tenemos de cada atracción en nuestros datos. Dónde queda la
+entrada de la cola no está en ellos.
 
-Para lo demás, la propia brújula te dice hasta qué punto puedes fiarte de ella.
+Para lo demás, en la propia brújula ves hasta qué punto puedes fiarte de ella.
 
 - Si tu ubicación tiene un margen de más de 40 metros, encima del círculo pone,
   por ejemplo, «Ubicación imprecisa (± 65 m). Las flechas pueden fallar».
@@ -188,7 +188,7 @@ o tocó «Ir a la brújula» arriba. Sin ubicación, sin dirección y sin el par
 
 Donde más sirve la brújula es en un parque, pero puedes verla desde el sofá.
 Añade `?sim=compass` a la dirección de la página de inicio y park.fan coloca el
-Phantasialand a tu alrededor, con los tiempos de espera reales del día:
+Phantasialand a tu alrededor, con los tiempos de espera en directo:
 [park.fan/es?sim=compass](/es?sim=compass). Una franja encima de la brújula
 avisa de que es una demo y tiene un enlace para salir de ella. Si tocas «Usar mi
 ubicación» en ella, el parque se coloca alrededor de donde estás de verdad; si

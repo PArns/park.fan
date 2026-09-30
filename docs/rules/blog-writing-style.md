@@ -1,7 +1,9 @@
 # Blog writing style (REQUIREMENT)
 
-One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+Indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md). The rules this page used to carry now live in [docs/blog.md](../blog.md), the one rulebook for every text on the site:
 
-posts must not read as AI-generated. **Never use „ehrlich" in any form** (`ehrlich gesagt`, `der ehrlichste …`, `um ehrlich zu sein`) — it is the clearest tell — and avoid the register around it: no `bezahlte Vorfahrt`, `Datenpunkt`, `die These dieses Artikels`, `X-Währung`, `Fairness-Hinweis in eigener Sache`, no announcing the article's own structure, no unsourced superlatives, **no figure that moves in a title or a heading** (a counted or live number — `214 Öffnungstage`, `Ø 34 Min.` — is quoted into the card, the feed, the `<title>` and every shared link, none of which re-render when it changes; keep it in the body next to its source and date, and let the title carry something that stays true, see [docs/blog.md §4.3](../blog.md#43-headings)), and **no em dash `—` in running text** (wrong character in German anyway — use `–`, a comma or a full stop; the only `—` in a post is the `— Patrick` signature). German grammar counts too — check the article before "correcting" one in (it is **das** Efteling, like `das Toverland` and `das Phantasialand` → `bis zum Efteling`, `im Vergleich zum Efteling`, but `das Efteling ist …` — never `der`/`die`). Full do/don't table + voice reference in the [blog authoring guide](content/blog/README.md#8-writing-style-requirement); the rules underneath them, and the research they come from, in [docs/blog.md](docs/blog.md).
-
-**News titles carry one fact and stay within 60 characters.** Do not build `<Park>: <fact>, und <punchline>` (a park-name prefix, a colon, a comma, „und", a trailing gag): seven of the eight news titles had that shape and it is what reads as generated. No list of three items and no punchline in a subordinate clause. The park name is in the title when it is the subject. Two news titles in the same week may not share a shape; the same goes for `seo.title`. Read every title aloud before delivering: newspaper headline, or line from an advert?
+- never `ehrlich`, and the register around it: [§3.3](../blog.md#33-ours-and-non-negotiable)
+- no em dash in running text: [§4.1](../blog.md#41-the-em-dash)
+- no figure that moves in a title or a heading: [§4.3](../blog.md#43-headings)
+- news titles, dates and cover images: [§5.0](../blog.md#50-news-posts-category-news)
+- **das** Efteling, like `das Toverland` and `das Phantasialand`: [§5.4](../blog.md#54-blog-posts)

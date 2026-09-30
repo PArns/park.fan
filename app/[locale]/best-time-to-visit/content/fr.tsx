@@ -34,7 +34,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Les jours de semaine les plus calmes',
   weekdaysBody:
-    'Chaque parc compte ici pour autant, Disneyland comme un petit parc familial : nous le ramenons d’abord à sa propre moyenne, et nous moyennons ensuite. La barre montre à quel point un jour de semaine typique est fréquenté par rapport à la moyenne. Le samedi se détache ; les six autres jours sont plus resserrés que la plupart des gens ne l’imaginent.',
+    'Chaque parc compte ici pour autant, Disneyland comme un petit parc familial : nous le ramenons d’abord à sa propre moyenne, et nous moyennons ensuite. Plus la barre est longue, plus un jour de semaine typique est fréquenté par rapport à la moyenne. Le samedi se détache, les six autres jours sont plus resserrés que la plupart des gens ne l’imaginent.',
   monthsTitle: 'Les mois les plus calmes',
   monthsBody:
     'Le même calcul, cette fois réparti sur l’année. Décembre sort du lot, parce qu’il ne contient que les parcs qui ouvrent en hiver, et ceux-là tournent alors en programme de Noël.',
@@ -55,22 +55,22 @@ const FAQ = [
   {
     question: 'Quel jour de la semaine est le moins fréquenté ?',
     answer:
-      'En moyenne sur tous les parcs, le mardi, le mercredi et le jeudi sont les plus calmes. Un seul jour se détache vraiment : le samedi. Le dimanche, lui, est plus proche du mardi que du samedi. Les parcs peuvent différer ; la page de chaque parc porte un calendrier d’affluence qui le montre jour par jour.',
+      'En moyenne sur tous les parcs, le mardi, le mercredi et le jeudi sont les plus calmes. Un seul jour se détache vraiment : le samedi. Le dimanche, lui, est plus proche du mardi que du samedi. Les parcs peuvent différer. Jour par jour, cela se lit dans le calendrier d’affluence de la page de chaque parc.',
   },
   {
     question: 'Quels mois les parcs d’attractions sont-ils les moins fréquentés ?',
     answer:
-      'Cela dépend du parc plus que la règle empirique ne le laisse croire : sur l’ensemble des parcs, les mois d’été ne sont pas les plus chargés, et décembre ressort vers le haut, parce qu’en hiver seuls les parcs à programme de Noël sont ouverts. L’aperçu mensuel ci-dessus le montre mois par mois. Pour un parc précis, c’est son propre calendrier qui compte.',
+      'Cela dépend du parc plus que la règle empirique ne le laisse croire : sur l’ensemble des parcs, les mois d’été ne sont pas les plus chargés, et décembre ressort vers le haut, parce qu’en hiver seuls les parcs à programme de Noël sont ouverts. Mois par mois, tout est dans l’aperçu ci-dessus. Pour un parc précis, c’est son propre calendrier qui compte.',
   },
   {
     question: 'Est-ce que ça vaut le coup de venir sous la pluie ?',
     answer:
-      'Souvent oui : le mauvais temps décourage beaucoup de visiteurs et les files raccourcissent, surtout aux montagnes russes qui tournent sous la pluie. Mais l’astuce d’initié ne marche que tant que tout le monde n’a pas la même idée ; c’est pourquoi notre modèle de prévision intègre directement la météo.',
+      'Souvent oui : le mauvais temps décourage beaucoup de visiteurs et les files raccourcissent, surtout aux montagnes russes qui tournent sous la pluie. Mais cela ne marche que tant que tout le monde n’a pas la même idée, et c’est pourquoi notre modèle de prévision intègre directement la météo.',
   },
   {
     question: 'Comment trouver le meilleur jour pour un parc précis ?',
     answer:
-      'Cette page montre les tendances globales comme point de départ. Pour un parc précis, ouvrez son calendrier d’affluence : il affiche pour chaque journée publiée une prévision verte, jaune ou rouge, vacances scolaires et jours fériés de la région compris.',
+      'Cette page donne les tendances globales comme point de départ. Pour un parc précis, ouvrez son calendrier d’affluence, où chaque journée publiée a une prévision verte, jaune ou rouge, vacances scolaires et jours fériés de la région compris.',
   },
   {
     question: 'D’où viennent ces données ?',
@@ -94,12 +94,12 @@ export function ContentFR() {
         <P>
           Nous avons donc fait le calcul, avec les temps d’attente relevés dans plus de 200 parcs.
           Plus bas se trouvent les jours de semaine et les mois les plus calmes, les heures les plus
-          tranquilles de la journée et les dates où le canapé reste la meilleure option. Le
-          calendrier d’affluence vous sort ensuite le bon jour pour le parc de votre choix.
+          tranquilles de la journée et les dates à éviter. Le bon jour pour le parc de votre choix
+          se trouve ensuite dans le calendrier d’affluence.
         </P>
         <Highlight>
-          Version courte pour les pressés : du mardi au jeudi hors vacances scolaires, devant le
-          portail à l’ouverture, et une météo incertaine prise comme un cadeau, tant qu’il y a un
+          C’est du mardi au jeudi, hors vacances scolaires, et devant le portail dès l’ouverture que
+          l’on fait le moins la queue. Une météo incertaine est alors un cadeau, tant qu’il y a un
           imperméable dans le sac.
         </Highlight>
       </div>
@@ -114,7 +114,7 @@ export function ContentFR() {
       >
         <PG>
           Le jour de la semaine et le mois pèsent le plus. Nous avons fait la moyenne des deux sur
-          tous les parcs, à partir des temps d’attente réellement mesurés :
+          tous les parcs, à partir des temps d’attente mesurés :
         </PG>
         <BestTimesData locale="fr" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="fr" />
@@ -169,8 +169,8 @@ export function ContentFR() {
           Sur les grosses têtes d’affiche, la première heure après l’ouverture donne souvent plus de
           tours que deux heures l’après-midi. Ce n’est pas vrai partout : certaines attractions
           restent aussi chargées toute la journée, d’autres ne se réveillent qu’après le déjeuner.
-          La page de chaque attraction porte sa propre courbe de la journée, et elle dit aussi si le
-          réveil matinal en vaut la peine pour elle.
+          La page de chaque attraction porte sa propre courbe de la journée, et on y voit aussi si
+          le réveil matinal en vaut la peine pour elle.
         </SplitFigure>
       </SectionShell>
 
@@ -216,7 +216,7 @@ export function ContentFR() {
               title: (
                 <GlossaryTermLink termId="school-holiday">Vacances scolaires</GlossaryTermLink>
               ),
-              body: 'Dès que votre région ou la région voisine est en vacances, l’affluence grimpe. Les vacances d’été sont la haute saison par excellence.',
+              body: 'Dès que votre région ou la région voisine est en vacances, l’affluence grimpe. Les vacances d’été sont la haute saison.',
             },
             {
               icon: Sun,
@@ -279,23 +279,23 @@ export function ContentFR() {
         icon={Ticket}
       >
         <P>
-          Les tendances ci-dessus donnent le cadre. Le meilleur jour pour votre parc, c’est le{' '}
-          <GlossaryTermLink termId="crowd-calendar">calendrier d’affluence</GlossaryTermLink> de
-          chaque page de parc qui vous le donne : vert, jaune, rouge, aussi loin que le parc a
-          publié ses horaires, avec les vacances et jours fériés de la région concernée.
+          Les tendances ci-dessus donnent le cadre. Le meilleur jour pour votre parc se trouve dans
+          le <GlossaryTermLink termId="crowd-calendar">calendrier d’affluence</GlossaryTermLink> de
+          chaque page de parc : vert, jaune, rouge, aussi loin que le parc a publié ses horaires,
+          avec les vacances et jours fériés de la région concernée.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="L’attraction du palais Symbolica à Efteling"
           kicker="Vert, jaune, rouge"
-          title="Une couleur par jour, aussi loin que vont les horaires"
+          title="Avec les vacances et jours fériés de la région"
           badge={
             <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
               <CrowdLevelBadge level="low" />
             </GlossaryTermLink>
           }
         >
-          Chaque page de parc porte une prévision jour par jour qui connaît les vacances scolaires
+          Chaque page de parc porte une prévision jour par jour qui intègre les vacances scolaires
           et les jours fériés de la bonne région, y compris ceux dont vous n’avez jamais entendu
           parler. Choisissez un jour vert, et le plus important de la planification est fait avant
           d’acheter un billet.

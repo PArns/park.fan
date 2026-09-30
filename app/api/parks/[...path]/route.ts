@@ -142,9 +142,14 @@ export async function GET(
       // Attach each ride's photo and focal point here, on the server. The park page's
       // attraction grid is a Client Component fed by this poll, so resolving them in
       // the card instead would put the whole media catalog in the browser's bundle.
+      //
+      // `park: { slug }` is only the lookup key `enrichAttractionsWithImages` reads, and it is
+      // stripped again: no reader of the poll has ever used a park that carries just a slug
+      // (`attraction-card` wants its name, timezone or city), and the merge spreads the snapshot
+      // over the server render, so a `park` here would replace a fuller one.
       snapshot.attractions = enrichAttractionsWithImages(
         snapshot.attractions.map((a) => ({ ...a, park: { slug: park } }))
-      );
+      ).map(({ park: _lookupKey, ...ride }) => ride);
 
       // No caching - we want fresh live data
       return NextResponse.json(snapshot, {

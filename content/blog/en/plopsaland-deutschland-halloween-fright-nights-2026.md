@@ -1,5 +1,5 @@
 ---
-title: 'Plopsaland Deutschland: ten Fright Nights, two new horror houses and a schnitzel you do not want to order'
+title: 'Two new horror houses at Plopsaland Deutschland'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
 author: patrick
@@ -41,13 +41,14 @@ seo:
 ---
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch, in the
-Palatinate, was called Holiday Park until June 2025. It is the German sibling
+Palatinate, was called Holiday Park until June 2025. It's the German sibling
 of [Plopsaland De Panne](ref:plopsaland-belgium), and on **ten evenings in
 October** it runs the **Halloween Fright Nights**, which the park counts among
 the biggest Halloween events in Germany. For anyone near Mannheim,
-Heidelberg or Karlsruhe it is a much shorter drive than Movie Park in the Ruhr,
+Heidelberg or Karlsruhe it's a much shorter drive than Movie Park in the Ruhr,
 and unlike Traumatica at Europa-Park it lets under-16s in if they come with a
-parent or guardian.
+parent or guardian. Both are in the
+[Halloween overview](/blog/halloween-theme-parks-2026).
 
 ## Dates and hours
 
@@ -55,10 +56,10 @@ The Fright Nights run on **Fridays and Saturdays from 2 to 31 October 2026**:
 2, 3, 9, 10, 16, 17, 23, 24, 30 and 31 October. On those days the park is open
 from **10 a.m. to 10 p.m.** and, according to the park, almost every ride keeps
 running until closing. The two it names are the water rides, DinoSplash and
-Wickie Splash, which stop at 8 p.m., which in October will probably bother
+Wickie Splash, which stop at 8 p.m.; in October that will probably bother
 nobody.
 
-During the day there is a child-friendly Plopsa Autumn Festival. The monsters
+During the day there's a child-friendly Plopsa Autumn Festival. The monsters
 come out in the evening.
 
 ## New this year
@@ -122,7 +123,7 @@ you booking six time slots. On a busy October Saturday, take the pass.
 ## Who it is for
 
 The park recommends the Fright Nights **for ages 16 and up**. Unlike
-Traumatica, that is not a hard cut-off: according to the park's FAQ, younger
+Traumatica, that isn't a hard cut-off: according to the park's FAQ, younger
 guests get in with a parent or guardian. For younger or easily startled
 company, Majaland and the Plopsa Indoor hall stay monster-free, and on site,
 and only there, you can get a "Schreck-Stopp", which the park says keeps the
@@ -131,8 +132,7 @@ so that it stays clear in the dark who works there.
 
 Haßloch sits between the A65 and the B9, and a shuttle bus runs from Haßloch
 station to the park. [Europa-Park](ref:europa-park) and Traumatica are a little
-under two hours' drive south. What Traumatica, Movie Park, Walibi and Toverland
-do this autumn is in the [Halloween overview](/blog/halloween-theme-parks-2026).
+under two hours' drive south.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

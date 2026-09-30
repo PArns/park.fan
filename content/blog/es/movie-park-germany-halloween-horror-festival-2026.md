@@ -1,5 +1,5 @@
 ---
-title: 'Movie Park Germany: noches de terror del sábado al 8 de noviembre, y en el pasaje nuevo espera Jason'
+title: 'Movie Park Germany celebra Halloween hasta el 8 de noviembre'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
 author: patrick
@@ -9,7 +9,7 @@ excerpt: >-
   El sábado 26 de septiembre arranca en Bottrop el 28.º Halloween Horror
   Festival: nueve pasajes del terror (el nuevo es Jason Universe, para mayores de
   16), el espectáculo en directo PHOBIA y 22 noches hasta el 8 de noviembre.
-  Fechas, entradas y por qué tu disfraz se queda en casa.
+  Fechas, entradas y la prohibición de disfraces.
 tags:
   - noticias
   - movie-park
@@ -72,8 +72,8 @@ Hate**. Bottrop fue el primer parque de atracciones en organizarla, en 2022.
 
 **Jason Universe** sustituye a Secrets of St. Elmo – Last Hunt, que funcionaba
 desde 2020, y trae a Jason Voorhees a Bottrop. Catorce escenas y un preshow
-recorren las entregas dos a seis de _Viernes 13_. Que falte la primera tiene su
-motivo: en esa todavía mata su madre. El pasaje es **para mayores de 16**, y en
+recorren las entregas dos a seis de _Viernes 13_. La primera falta porque en
+ella todavía mata su madre. El pasaje es **para mayores de 16**, y en
 las entradas de los pasajes se pide un documento de identidad.
 
 Dos pasajes conocidos se han reformado. El
@@ -120,8 +120,12 @@ parque.
 ## Lo que se queda en casa
 
 A diferencia de Disney el 31 de octubre, el Movie Park no permite **disfraces,
-máscaras ni maquillaje de terror propios** en ninguna de las noches. Tampoco se
-puede entrar con alcohol, y en la entrada revisan los bolsos.
+máscaras ni maquillaje de terror propios** en ninguna de las noches. Solo los
+niños de hasta 1,40 metros de altura pueden llevar máscara, disfraz o
+maquillaje, según las
+[preguntas frecuentes del parque](https://www.movieparkgermany.de/en/halloween/faq)
+(a 29 de septiembre de 2026). Tampoco se puede entrar con alcohol,
+y en la entrada revisan los bolsos.
 
 ## Qué noche
 
@@ -138,8 +142,8 @@ o un domingo antes de esa fecha: el 2, 4, 9, 11 o 16 de octubre.
 
 ```
 
-Cómo queda el festival frente a Traumatica, Walibi y Toverland lo cuenta el
-[resumen de Halloween](/blog/halloween-parques-atracciones-2026). Qué día de la
+El [resumen de Halloween](/blog/halloween-parques-atracciones-2026) pone el
+festival al lado de Traumatica, Walibi y Toverland. Qué día de la
 semana suele ser el más tranquilo en el Movie Park y cómo es el calendario de
 otoño está en la
 [guía del Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
@@ -153,3 +157,6 @@ Fechas, pasajes y entradas:
 
 > [!CORRECTION]
 > 25 de septiembre de 2026: la primera versión decía que las entradas con franja horaria para los pasajes solo se vendían en línea. Según el plano del parque, también se venden entradas sobrantes en el propio parque, según disponibilidad.
+
+> [!CORRECTION]
+> 29 de septiembre de 2026: la primera versión decía que los disfraces, máscaras y maquillaje propios no estaban permitidos ninguna noche. Según las preguntas frecuentes del parque, los niños de hasta 1,40 metros pueden llevar máscara, disfraz y maquillaje. Para el resto de visitantes, la prohibición sigue vigente.

@@ -52,7 +52,7 @@ door, en om elke hoek sta je in een ander land. Klugheim is op de plattegrond zo
 gevonden. Lastiger is het om jezelf erop te vinden, en dan nog de richting
 waarin je op dat moment kijkt.
 
-Tot nu toe vertelde park.fan je in het park hoe lang de rij bij
+Tot nu toe zag je op park.fan in het park hoe lang de rij bij
 [Black Mamba](ref:phantasialand/black-mamba?bare) was. Waar Black Mamba vanaf
 jouw plek lag, stond nergens. Sinds 27 september staat het op een kompas.
 
@@ -101,7 +101,7 @@ dichtstbijzijnde attractie, met “Dichtstbij” erboven. Dat klinkt
 vanzelfsprekend. In de eerste versie stond “Voor je” nog boven een attractie die
 116 graden ernaast lag, met een pijl die over je schouder naar achteren wees.
 
-Moeilijker was het omgekeerde: te veel voor je. In Disneyland Paris liggen Buzz
+Moeilijker was het als er te veel voor je lag. In Disneyland Paris liggen Buzz
 Lightyear, Orbitron, Hyperspace Mountain en Autopia, gezien vanuit het midden
 van het park, binnen tien graden van elkaar. Een telefoon in je hand zwaait
 tijdens het lopen meer dan dat, en in een simulatie wisselde de balk in vijf
@@ -146,11 +146,11 @@ meting.
 
 De pijl wijst hemelsbreed, niet langs het pad. In het Phantasialand gaat de weg
 naar een attractie achter een muur vaak eerst de andere kant op, en daar
-verandert geen kompas iets aan. De pijl wijst bovendien naar dat ene punt dat
-onze gegevens voor een attractie kennen. Waar bij die attractie de ingang van de
-rij ligt, weten die gegevens niet.
+verandert geen kompas iets aan. De pijl wijst bovendien naar het ene punt dat we
+per attractie hebben opgeslagen. Waar bij die attractie de ingang van de rij
+ligt, staat niet in onze gegevens.
 
-Voor de rest vertelt het kompas zelf hoe betrouwbaar het op dat moment is.
+Hoe betrouwbaar de pijlen op dat moment zijn, lees je op het kompas zelf af.
 
 - Is je locatie meer dan 40 meter onnauwkeurig, dan staat er boven de cirkel
   bijvoorbeeld “Locatie onnauwkeurig (± 65 m). De pijlen kunnen ernaast zitten.”
@@ -165,15 +165,15 @@ Voor de rest vertelt het kompas zelf hoe betrouwbaar het op dat moment is.
   telefoon als kijkrichting, net als de camera.
 
 Zonder kompas, op een laptop of op een iPhone voordat je het aanzet, zijn er
-geen pijlen. De regels zeggen dan “richting zuidwesten”, en in de cirkel
+geen pijlen. In de regels staat dan “richting zuidwesten”, en in de cirkel
 ontbreekt de blauwe kegel. Een pijl leest iedereen als “die kant op”, ook als
-hij alleen weet waar het noorden ligt en niet hoe je de telefoon vasthoudt. En
+alleen het noorden vaststaat en niet hoe je de telefoon vasthoudt. En
 of die laptop met zijn toetsenbord naar het zuiden op tafel staat, weet niemand.
 
 ## Wat je telefoon verlaat
 
 De richting waarin je telefoon wijst, blijft op je telefoon. De startpagina
-stuurt je locatie naar onze server, zodat die kan zeggen in welk park je bent en
+stuurt je locatie naar onze server, zodat die kan bepalen in welk park je bent en
 hoe lang de rijen daar zijn. Dat doet ze voor de begroeting al langer. De
 posities van de attracties worden één keer per park geladen, zijn kleiner dan
 een kilobyte en gelden de hele dag.
@@ -184,15 +184,15 @@ van app, dan stoppen ze allebei.
 
 Wat we tellen, is of het kompas gebruikt wordt: of het op het scherm stond, of
 het kompas van de telefoon aanging, of iemand een attractie vastzette, er een
-via het kompas opende of bovenaan op “Naar het kompas” tikte. Zonder locatie,
-zonder richting en zonder het park.
+via het kompas opende of bovenaan op “Naar het kompas” tikte. Je locatie,
+je richting en het park sturen we daarbij niet mee.
 
 ## Thuis uitproberen
 
 In een park heb je het meest aan het kompas, maar bekijken kan ook vanaf de
 bank. Zet je `?sim=compass` achter het adres van de startpagina, dan legt
-park.fan het Phantasialand om je heen, met de echte wachttijden van die dag:
-[park.fan/nl?sim=compass](/nl?sim=compass). Een strook boven het kompas zegt dat
+park.fan het Phantasialand om je heen, met de actuele wachttijden van dat park:
+[park.fan/nl?sim=compass](/nl?sim=compass). In een strook boven het kompas staat dat
 het een demo is, met een link waarmee je hem stopt. Tik je daar op “Locatie
 gebruiken”, dan ligt het park om je echte locatie, anders sta je op één vaste
 plek in het park.

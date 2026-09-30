@@ -34,7 +34,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'De rustigste weekdagen',
   weekdaysBody:
-    'Elk park telt hier even zwaar, of het nu Disneyland is of een klein familiepark: we rekenen het eerst om naar zijn eigen gemiddelde en middelen daarna pas. De balk laat zien hoe druk een doorsnee weekdag is vergeleken met dat gemiddelde. De zaterdag springt eruit; de andere zes dagen liggen dichter bij elkaar dan de meeste mensen verwachten.',
+    'Elk park telt hier even zwaar, of het nu Disneyland is of een klein familiepark: we rekenen het eerst om naar zijn eigen gemiddelde en middelen daarna pas. Hoe langer de balk, hoe drukker een doorsnee weekdag is vergeleken met dat gemiddelde. De zaterdag springt eruit; de andere zes dagen liggen dichter bij elkaar dan de meeste mensen verwachten.',
   monthsTitle: 'De rustigste maanden',
   monthsBody:
     'Dezelfde rekensom, nu over het jaar verdeeld. December valt daarbij uit de toon, want daarin zitten alleen de parken die in de winter überhaupt opengaan, en die draaien dan kerstprogramma.',
@@ -55,12 +55,12 @@ const FAQ = [
   {
     question: 'Welke weekdag is het minst druk?',
     answer:
-      'Gemiddeld over alle parken zijn dinsdag, woensdag en donderdag het rustigst. Uitgesproken druk is alleen de zaterdag; de zondag ligt dichter bij de dinsdag dan bij de zaterdag. Afzonderlijke parken kunnen afwijken; de druktekalender op de parkpagina laat het dag voor dag zien.',
+      'Gemiddeld over alle parken zijn dinsdag, woensdag en donderdag het rustigst. Uitgesproken druk is alleen de zaterdag; de zondag ligt dichter bij de dinsdag dan bij de zaterdag. Afzonderlijke parken kunnen afwijken. Dag voor dag staat dat in de druktekalender op de parkpagina.',
   },
   {
     question: 'In welke maanden zijn pretparken het minst druk?',
     answer:
-      'Dat hangt sterker van het park af dan de vuistregel doet vermoeden: over alle parken gerekend zijn de zomermaanden niet de drukste, en december steekt naar boven uit, omdat in de winter alleen de parken met kerstprogramma open zijn. Het maandoverzicht hierboven laat het maand voor maand zien. Voor een concreet park telt zijn eigen kalender.',
+      'Dat hangt sterker van het park af dan de vuistregel doet vermoeden: over alle parken gerekend zijn de zomermaanden niet de drukste, en december steekt naar boven uit, omdat in de winter alleen de parken met kerstprogramma open zijn. Maand voor maand staat het in het overzicht hierboven. Voor een concreet park telt zijn eigen kalender.',
   },
   {
     question: 'Is een bezoek in de regen de moeite waard?',
@@ -70,7 +70,7 @@ const FAQ = [
   {
     question: 'Hoe vind ik de beste dag voor een specifiek park?',
     answer:
-      'Deze pagina toont de globale patronen als startpunt. Open voor een concreet park zijn druktekalender: die toont voor elke gepubliceerde dag een groene, gele of rode voorspelling, inclusief de school- en feestdagen van die regio.',
+      'Deze pagina geeft de globale patronen als startpunt. Open voor een concreet park zijn druktekalender. Daarin heeft elke gepubliceerde dag een groene, gele of rode voorspelling, met de school- en feestdagen van die regio meegerekend.',
   },
   {
     question: 'Waar komen deze gegevens vandaan?',
@@ -93,13 +93,12 @@ export function ContentNL() {
         <P>
           Dus hebben we het nagerekend, met de meegeschreven wachttijden uit ruim 200 parken.
           Hieronder staan de rustigste weekdagen en maanden, de beste uren van de dag en de dagen
-          waarop je beter op de bank blijft. De druktekalender zoekt daarna voor jouw park de
-          passende dag uit.
+          die je beter mijdt. De passende dag voor jouw park vind je daarna in de druktekalender.
         </P>
         <Highlight>
-          Korte versie voor wie haast heeft: dinsdag tot en met donderdag buiten de schoolvakanties,
-          bij opening aan de poort staan, en een wisselvallige weersvoorspelling zien als cadeautje,
-          zolang er een regenjas in de rugzak zit.
+          Het kortst sta je in de rij op dinsdag tot en met donderdag buiten de schoolvakanties, als
+          je bij opening aan de poort staat. Een wisselvallige weersvoorspelling is dan een
+          cadeautje, zolang er een regenjas in de rugzak zit.
         </Highlight>
       </div>
 
@@ -113,7 +112,7 @@ export function ContentNL() {
       >
         <PG>
           Weekdag en maand bewegen het meest. Allebei hebben we gemiddeld over alle parken, uit de
-          wachttijden die echt gemeten zijn:
+          gemeten wachttijden:
         </PG>
         <BestTimesData locale="nl" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="nl" />
@@ -210,7 +209,7 @@ export function ContentNL() {
             {
               icon: CalendarRange,
               title: <GlossaryTermLink termId="school-holiday">Schoolvakanties</GlossaryTermLink>,
-              body: 'Zodra bij jou of in een buurregio de vakantie begint, wordt het voller. De zomervakantie is het absolute hoogseizoen.',
+              body: 'Zodra bij jou of in een buurregio de vakantie begint, wordt het voller. De zomervakantie is het hoogseizoen.',
             },
             {
               icon: Sun,
@@ -275,7 +274,7 @@ export function ContentNL() {
         <P>
           De patronen hierboven zijn het grove kader. De beste dag voor jouw park vind je in de{' '}
           <GlossaryTermLink termId="crowd-calendar">druktekalender</GlossaryTermLink> op elke
-          parkpagina: die geeft elke afzonderlijke dag groen, geel of rood, zo ver als het park zijn
+          parkpagina, met voor elke afzonderlijke dag groen, geel of rood, zo ver als het park zijn
           openingstijden gepubliceerd heeft en passend bij de vakanties en feestdagen van de
           betreffende regio.
         </P>
@@ -283,16 +282,16 @@ export function ContentNL() {
           src="/media/efteling/symbolica.jpg"
           alt="De paleisrit Symbolica in de Efteling"
           kicker="Groen, geel, rood"
-          title="Eén kleur per dag, zo ver als de openingstijden reiken"
+          title="Met de vakanties en feestdagen van de regio"
           badge={
             <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
               <CrowdLevelBadge level="low" />
             </GlossaryTermLink>
           }
         >
-          Elke parkpagina heeft een dag-op-dag voorspelling die de school- en feestdagen van precies
-          die regio kent, ook die waar je nog nooit van gehoord hebt. Kies een groene dag en het
-          belangrijkste deel van de planning is klaar voordat je een ticket koopt.
+          Elke parkpagina heeft een dag-op-dag voorspelling waarin de school- en feestdagen van
+          precies die regio zitten, ook die waar je nog nooit van gehoord hebt. Kies een groene dag
+          en het belangrijkste deel van de planning is klaar voordat je een ticket koopt.
         </SplitFigure>
         <P>Een paar populaire parken om meteen in te duiken:</P>
         <PopularParksGrid />

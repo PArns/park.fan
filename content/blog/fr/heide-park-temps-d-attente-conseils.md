@@ -35,7 +35,7 @@ rideLinks:
 seo:
   title: 'Heide Park 2026 : Colossos, temps d’attente et le bon jour'
   description: >-
-    Heide Park Soltau : vrais temps d’attente pour Colossos et Krake, plus
+    Heide Park Soltau : temps d’attente mesurés pour Colossos et Krake, plus
     Halloween, l’Express Ticket, les tailles minimales et le jour aux files les
     plus courtes.
   keywords:
@@ -77,9 +77,8 @@ réservée aux gagnants d’un ticket doré.
 
 ## Ce qui est arrivé ici en premier
 
-C’est pour Colossos que les amateurs de coasters viennent à Soltau. Ce qui se
-dresse autour est plus intéressant. Pour quatre types d’attractions, ce parc a
-été le premier d’Allemagne, et les trois derniers sont arrivés en sept ans.
+C’est pour Colossos que les amateurs de coasters viennent à Soltau, mais pour
+quatre types d’attractions, ce parc a été le premier d’Allemagne, et les trois derniers sont arrivés en sept ans.
 
 La série a commencé en **1999**, deux ans avant Colossos, avec une attraction
 qui s’appelait alors Limit et porte aujourd’hui le nom de
@@ -91,8 +90,7 @@ inversions.
 **[Desert Race](ref:heide-park/desert-race)** est arrivé le **15 mai 2007**,
 premier launch coaster d’Allemagne. Pas de lift : une catapulte hydraulique
 emmène le train à **102 km/h** en deux secondes. Après 650 mètres et
-49 secondes, il est de retour en gare, plus vite que la discussion pour savoir
-qui s’assoit devant.
+49 secondes, il est de retour en gare.
 
 ```glossary-widget slug=launch-coaster
 
@@ -162,11 +160,11 @@ virage.
 
 Le premier coaster du parc est le **[Big Loop](ref:heide-park/big-loop)** de
 **1983**, un looper Vekoma avec deux loopings et un double tire-bouchon, un peu
-plus de 700 mètres de long et terminé en moins de deux minutes. Il montre
-comment ce parc traite son patrimoine : en 2010, il a reçu les trains du
+plus de 700 mètres de long et terminé en moins de deux minutes. Le parc
+l’entretient : en 2010, le coaster a reçu les trains du
 Corkscrew démoli d’Alton Towers, et pour la saison 2026 Vekoma a livré de
-nouveaux trains dessinés d’après les wagons d’origine de 1983. Deuxième
-changement de trains en seize ans, pour une attraction de 43 ans.
+nouveaux trains dessinés d’après les wagons d’origine de 1983. C’est le
+deuxième changement de trains en seize ans, pour une attraction de 43 ans.
 
 Toxic Garden ne porte ce nom que depuis **mai 2023**. Vekoma a remplacé une
 portion de voie lors de la transformation, l’entrée et la gare se dressent
@@ -223,7 +221,7 @@ les parents sont venus.
 
 ```
 
-## L’affluence réelle
+## L’affluence mesurée
 
 Nos mesures remontent à fin décembre 2025. Comme le Heide Park n’ouvre qu’à la
 fin mars, le tableau ne contient que des jours de la saison 2026 (état au
@@ -239,11 +237,11 @@ l’attendrait dans un parc doté d’une attraction aussi connue. Attendre
 longtemps à Soltau ne veut pas forcément dire attendre devant le coaster en
 bois : juste derrière, à côté de Flug der Dämonen et de Krake, se trouvent la
 Bobbahn de 1993 et la bûche de 1980, deux attractions qu’aucun récit de voyage
-ne cite comme motif du trajet jusqu’à Soltau. Pour la bûche, c’est la météo,
-comme le montre le profil horaire plus bas ; pour la Bobbahn, le tableau ne
-donne pas de raison.
+ne cite comme motif du trajet jusqu’à Soltau. Pour la bûche, c’est la météo
+(voir le profil horaire plus bas) ; pour la Bobbahn, nous n’avons pas
+d’explication.
 
-L’heure à laquelle les files grossissent en dit davantage.
+Pour planifier, l’heure à laquelle les files grossissent sert davantage.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -306,8 +304,8 @@ jours. Une journée d’ouverture ordinaire va de 10 h à 17 h, une heure de plu
 le dimanche. Ces horaires sont ceux des attractions ; le parc lui-même ferme une
 heure plus tard.
 
-Les longues journées d’automne ne sont pas une journée normale rallongée :
-elles ne commencent qu’à 12 h, et les attractions tournent jusqu’à 21 h. Les
+Les longues journées d’automne ne commencent qu’à 12 h, et les attractions
+tournent jusqu’à 21 h. Les
 19 et 26 septembre et le 3 octobre, elles s’appellent Late Rides ; les cinq
 suivantes appartiennent à Halloween. Ces jours-là, les attractions aquatiques
 et quelques autres ferment dès la tombée de la nuit, vers 17 h. Ce qui est
@@ -354,7 +352,7 @@ Movie Park et Walibi se trouve dans le
 
 Heide Park a ouvert le **19 août 1978**, avec six attractions et un fondateur
 issu d’une famille de forains : **Hans-Jürgen Tiemann**. L’achat du terrain
-était assorti d’une condition qu’on ne devine pas en visitant un parc : la
+était assorti d’une condition : la
 **chapelle du Heidenhof, datée de 1350**, devait rester debout, et l’élevage
 d’animaux locaux devait se poursuivre. Le premier jour, 2 000 visiteurs sont
 venus, et de ces six attractions sont nés 85 hectares de parc.
@@ -365,7 +363,7 @@ Park Express depuis 1997. Une quatrième, le circuit Oldtimer avec ses
 répliques de Ford T, a tourné jusqu’en 2025, avant que le parc ne la ferme sans
 grande annonce.
 
-La construction qui décrit le mieux le Heide Park des débuts n’existe plus. De
+La construction la plus typique du Heide Park des débuts n’existe plus. De
 **1986** à l’hiver 2011/2012 s’est dressée ici une réplique de 35 mètres de la
 statue de la Liberté, inaugurée le 4 juillet 1986 pour le centenaire de
 l’original, avec les félicitations de Ronald Reagan. Après le démontage, la
@@ -402,8 +400,8 @@ après une extension, de 81 maisons en bois totalisant 536 lits. Les sept VW T2
 aménagés du **Bulli Camp**, où l’on pouvait dormir à partir de juillet 2014,
 n’existent plus depuis 2025 ; le camp ne propose plus que des cabanes.
 
-L’avantage pratique n’est pas le lit. Il est d’être devant l’entrée à dix
-heures et non sur l’A7 à dix heures. Lors des longues journées d’automne, les
+L’avantage pratique, c’est d’être devant l’entrée à dix heures et non sur l’A7
+à dix heures. Lors des longues journées d’automne, les
 clients de l’hôtel et du camp entrent même dès 11 h, une heure avant tout le
 monde, et quelques attractions tournent déjà, dont Krake.
 
@@ -433,7 +431,7 @@ uniquement et plus cher, 16 € pour une voiture. En train, on descend à Soltau
 part de Hambourg et de Hanovre jusque devant les portes. Il s’appelle Heide
 Park Express, comme le petit train du parc, sans aucun rapport avec lui.
 
-**Horaires.** Du 28 mars au 31 octobre 2026, tous les jours au cœur de la
+**Horaires.** Du 28 mars au 31 octobre 2026, tous les jours en pleine
 saison et en octobre, au printemps et en septembre sans une partie des lundis.
 Les horaires sont ceux des attractions ; le parc ferme une heure plus tard, et
 les tourniquets ouvrent environ une demi-heure avant le premier tour.
@@ -534,8 +532,8 @@ guides côte à côte.
 
 ## Ce que je retiens de Soltau
 
-Le Heide Park n’a pas de récit continu comme Brühl ni 18 pays comme Rust. Il a
-des attractions, et pour quatre d’entre elles il a été le premier en Allemagne.
+Là où Brühl a un récit continu et Rust 18 pays, le Heide Park a des
+attractions, et pour quatre d’entre elles il a été le premier en Allemagne.
 
 Cela se paie en superficie. 85 hectares avec peu d’ombre et de longs trajets
 entre les grandes attractions, et un samedi d’août on en sent chaque mètre.

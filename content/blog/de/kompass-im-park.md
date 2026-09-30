@@ -53,7 +53,7 @@ Fassaden, und nach jeder Ecke stehst du in einem anderen Land. Auf dem Parkplan
 ist Klugheim leicht zu finden. Schwerer ist es, dich selbst darauf zu finden,
 und dann noch die Richtung, in die du gerade schaust.
 
-Bisher hat dir park.fan im Park gesagt, wie lang die Schlange an
+Bisher stand auf park.fan im Park, wie lang die Warteschlange an
 [Black Mamba](ref:phantasialand/black-mamba?bare) gerade ist. Wo Black Mamba von
 dir aus liegt, stand nirgends. Seit dem 27. September steht es auf einem
 Kompass.
@@ -65,8 +65,8 @@ park.fan mit dem Namen des Parks, und unter der Begrüßung liegt jetzt ein
 Kompass mit den Top-Attraktionen um dich herum. Oben im Kasten gibt es dazu den
 Knopf „Zum Kompass“, falls du nicht scrollen willst.
 
-Für Begrüßung und Kompass braucht die Seite deinen Standort, und sie fragt
-danach nur, wenn du auf „Standort aktivieren“ tippst. Hast du park.fan den
+Für Begrüßung und Kompass braucht die Seite deinen Standort. Die Abfrage kommt
+erst, wenn du auf „Standort aktivieren“ tippst. Hast du park.fan den
 Standort im Browser dauerhaft erlaubt, ist der Kompass sofort da. Safari auf dem
 iPhone fragt sonst nach jedem Neuladen neu, dauerhaft erlauben geht über aA und
 die Website-Einstellungen.
@@ -76,7 +76,7 @@ die Website-Einstellungen.
 In Chrome auf Android dreht sich der Kompass sofort mit. Auf dem iPhone steht
 zuerst „Kompass einschalten“. Tippst du darauf, fragt Safari einmal, ob park.fan
 Bewegung und Ausrichtung lesen darf. Bis du zustimmst, fehlt der blaue Kegel,
-und die Liste nennt Himmelsrichtungen statt Pfeilen.
+und in der Liste stehen Himmelsrichtungen statt Pfeilen.
 
 ## Was im Kreis steht
 
@@ -92,14 +92,14 @@ orangefarbene Warndreieck ist eine Störung, der Schraubenschlüssel eine
 Revision, und ein kleiner leerer Ring ist eine Bahn, die gerade zu hat. Daneben
 stehen so viele Namen, wie Platz haben, gekürzt, wo es eng wird.
 
-![Der Kompass im Disneyland Park: ein Kreis mit den Himmelsrichtungen, darin die Top-Attraktionen als Punkte mit Wartezeiten, ein blauer Kegel zeigt nach Westen. Darunter die Leiste „Vor dir“ mit Big Thunder Mountain Railroad. | Sonntagabend in Anaheim, der Blick geht nach Westen. Im Kegel liegen Big Thunder, eine Störung und die längste Schlange unter den Top-Attraktionen.](/media/kompass/kompass-blick-de.webp)
+![Der Kompass im Disneyland Park: ein Kreis mit den Himmelsrichtungen, darin die Top-Attraktionen als Punkte mit Wartezeiten, ein blauer Kegel zeigt nach Westen. Darunter die Leiste „Vor dir“ mit Big Thunder Mountain Railroad. | Sonntagabend in Anaheim, der Blick geht nach Westen. Im Kegel liegen Big Thunder, eine Störung und die längste Warteschlange unter den Top-Attraktionen.](/media/kompass/kompass-blick-de.webp)
 
 ## Vor dir, am nächsten, fixiert
 
 Unter dem Kreis steht die Bahn, auf die dein Handy zeigt, mit Entfernung und
 Wartezeit. Ein Tipp darauf öffnet ihre Seite. „Vor dir“ heißt: höchstens 30 Grad
-neben deiner Blickrichtung. Liegt dort nichts, zeigt die Leiste die nächste Bahn
-und schreibt „Am nächsten“ darüber. Das klingt selbstverständlich. In der ersten
+neben deiner Blickrichtung. Liegt dort nichts, steht in der Leiste die nächste
+Bahn, mit „Am nächsten“ darüber. Das klingt selbstverständlich. In der ersten
 Fassung stand „Vor dir“ noch über einer Bahn, die 116 Grad danebenlag, mit einem
 Pfeil, der nach hinten zeigte.
 
@@ -116,7 +116,7 @@ Sie trägt eine Nadel, eine gestrichelte Linie führt von dir zu ihr, und die
 Leiste bleibt bei ihr, wohin du dich auch drehst. Tippst du noch einmal auf sie
 oder auf das Kreuz in der Leiste, folgt die Leiste wieder deinem Blick.
 
-![Derselbe Kompass mit einer fixierten Bahn: Space Mountain trägt eine Nadel, eine gestrichelte Linie führt von der Mitte zu ihr, die Leiste sagt „Fixiert“. Darunter die ersten Zeilen der Liste mit Pfeil, Entfernung und Wartezeit. | Der Blick geht immer noch nach Westen. Die Leiste bleibt bei Space Mountain im Südosten, bis du die Nadel wieder löst.](/media/kompass/kompass-fixiert-de.webp)
+![Derselbe Kompass mit einer fixierten Bahn: Space Mountain trägt eine Nadel, eine gestrichelte Linie führt von der Mitte zu ihr, in der Leiste steht „Fixiert“. Darunter die ersten Zeilen der Liste mit Pfeil, Entfernung und Wartezeit. | Der Blick geht immer noch nach Westen. Die Leiste bleibt bei Space Mountain im Südosten, bis du die Nadel wieder löst.](/media/kompass/kompass-fixiert-de.webp)
 
 Darunter stehen dieselben Bahnen noch einmal als Liste, die nächste oben, jede
 mit einem Pfeil, der sich mitdreht. Beim Gehen springen die Zeilen nicht hin und
@@ -139,19 +139,19 @@ Im
 [Disneyland Park in Anaheim](ref:/parks/north-america/united-states/anaheim/disneyland-park?bare),
 wo die Bilder oben entstanden sind, sind es 11 Grad. Ein Pfeil, der 11 Grad
 danebenzeigt, verfehlt eine Bahn in 300 Metern Entfernung um fast 60 Meter. In
-Orlando geht es fast 7 Grad in die andere Richtung. park.fan schickt deshalb mit
-den Positionen der Bahnen die Missweisung des Parks mit, berechnet mit dem World
-Magnetic Model 2025, und der Kompass rechnet sie auf jeden Messwert drauf.
+Orlando geht es fast 7 Grad in die andere Richtung. Deshalb schicken wir mit den
+Positionen der Bahnen die Missweisung des Parks mit, berechnet mit dem World
+Magnetic Model 2025, und rechnen sie auf jeden Messwert des Handykompasses drauf.
 
-## Wenn das Handy es nicht genau weiß
+## Wie genau die Pfeile sind
 
 Der Pfeil zeigt die Luftlinie und nicht den Weg. Im Phantasialand führt der Weg
 zu einer Bahn hinter einer Mauer gern erst einmal in die andere Richtung, und
 daran ändert kein Kompass etwas. Der Pfeil zeigt außerdem auf den einen Punkt,
-den unsere Daten für eine Bahn kennen. Wo dort der Eingang zur Warteschlange
-ist, wissen die Daten nicht.
+den wir für eine Bahn gespeichert haben. Wo dort der Eingang zur Warteschlange
+ist, haben wir nicht erfasst.
 
-Für den Rest sagt der Kompass selbst, wie sehr du ihm gerade trauen kannst.
+Für den Rest steht am Kompass selbst, wie sehr du ihm gerade trauen kannst.
 
 - Ist dein Standort auf mehr als 40 Meter ungenau, steht über dem Kreis zum
   Beispiel „Standort ungenau (± 65 m). Die Pfeile können danebenliegen.“
@@ -162,20 +162,20 @@ Für den Rest sagt der Kompass selbst, wie sehr du ihm gerade trauen kannst.
   steht in ihrer Zeile „Du bist da“ statt eines Pfeils, der in jede Richtung
   zeigen könnte.
 - Hältst du das Handy hochkant vor dich, zeigt seine Oberkante in den Himmel. Ab
-  65 Grad Neigung nimmt der Kompass deshalb die Rückseite des Handys als
-  Blickrichtung, so wie die Kamera.
+  65 Grad Neigung gilt deshalb die Rückseite des Handys als Blickrichtung, so
+  wie bei der Kamera.
 
 Ohne Kompass, am Laptop oder auf dem iPhone vor dem Einschalten, gibt es keine
-Pfeile. Die Zeilen sagen dann „Richtung Südwesten“, und im Kreis fehlt der blaue
-Kegel. Einen Pfeil liest jeder als „da lang“, auch wenn der Pfeil nur weiß, wo
-Norden ist, und nicht, wie du das Handy hältst. Und ob ein Laptop gerade mit der
+Pfeile. In den Zeilen steht dann „Richtung Südwesten“, und im Kreis fehlt der blaue
+Kegel. Einen Pfeil liest jeder als „da lang“, auch wenn er ohne Kompass nur nach
+Norden ausgerichtet wäre und nicht danach, wie du das Handy hältst. Und ob ein Laptop gerade mit der
 Tastatur nach Süden auf dem Tisch steht, weiß niemand.
 
 ## Was dein Handy verlässt
 
 Die Richtung, in die dein Handy zeigt, bleibt auf dem Handy. Deinen Standort
-schickt die Startseite an unseren Server, damit der sagen kann, in welchem Park
-du bist und was dort gerade ansteht. Das tut sie für die Begrüßung schon länger.
+schickt die Startseite an unseren Server, und der ermittelt daraus, in welchem
+Park du bist und was dort gerade ansteht. Das tut sie für die Begrüßung schon länger.
 Die Positionen der Bahnen kommen einmal pro Park, sind kleiner als ein Kilobyte
 und gelten den ganzen Tag.
 
@@ -185,16 +185,16 @@ beide ab.
 
 Wir zählen, ob der Kompass benutzt wird: ob er auf dem Bildschirm war, ob der
 Kompass des Handys angesprungen ist, ob jemand eine Bahn fixiert, eine über den
-Kompass öffnet oder oben auf „Zum Kompass“ tippt. Ohne Standort, ohne Richtung
-und ohne den Park.
+Kompass öffnet oder oben auf „Zum Kompass“ tippt. Standort, Richtung und Park
+zählen wir dabei nicht mit.
 
 ## Von zu Hause ausprobieren
 
 Am meisten bringt der Kompass im Park, ansehen kannst du ihn aber auch vom Sofa
-aus. Hängst du `?sim=compass` an die Adresse der Startseite, legt park.fan das
-Phantasialand um dich herum, mit den echten Wartezeiten des Tages:
-[park.fan/de?sim=compass](/de?sim=compass). Ein Streifen über dem Kompass sagt,
-dass es eine Demo ist, und hat einen Link, der sie beendet. Tippst du darin auf
+aus. Hängst du `?sim=compass` an die Adresse der Startseite, liegt das
+Phantasialand um dich herum, mit den aktuellen Wartezeiten:
+[park.fan/de?sim=compass](/de?sim=compass). Ein Streifen über dem Kompass weist
+die Ansicht als Demo aus und hat einen Link, der sie beendet. Tippst du darin auf
 „Standort nutzen“, liegt der Park um deinen echten Standort, sonst stehst du an
 einem festen Punkt im Park.
 
