@@ -228,8 +228,7 @@ an, zum Jahresende ging X vom Netz. S&S baute die Züge um, jeder Wagen wog
 danach etwa 770 Kilogramm weniger, und die mechanischen Bügel wichen Bügeln,
 die mit Druckluft öffnen. Dazu kamen Musik an Bord, ein Feuereffekt, Nebel am
 Fuß des ersten Abhangs und ein Stoß kalter Luft in der letzten Drehung. Am 24. Mai 2008 fuhr die Bahn wieder, jetzt als X2. Ob die leichteren Züge
-reichen, damit den ganzen Sommer über mehrere Züge fahren können, nannte
-Theme Park Insider am Eröffnungstag „den eigentlichen Test“. Ab da zählt auch
+reichen, damit den ganzen Sommer über mehrere Züge fahren können, nannte Theme Park Insider nach einer Vorabfahrt am 22. Mai, zwei Tage vor dem Neustart, „den eigentlichen Test“. Ab da zählt auch
 Six Flags: Die „fast 20 Jahre“ und „mehr als 16 Millionen Gäste“ aus der
 [Mitteilung](https://www.sixflags.com/blog/retiring-x2-magic-mountain) beginnen
 2008, nicht Ende 2001.
