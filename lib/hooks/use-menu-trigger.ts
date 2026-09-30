@@ -121,5 +121,26 @@ export function useMenuTrigger() {
       clearTimer();
       setRequested(!open);
     },
+    /**
+     * For the band: a click on a link to the page already showing closes it.
+     *
+     * The band closes when `pathname` moves, and a link to the page it was opened on does not
+     * move it: the outside-click handler above leaves clicks inside the band alone, so a category
+     * clicked on the dictionary's own page scrolled that page under a band that stayed open —
+     * until the pointer left it, and after a tap or an Enter until Escape or a click elsewhere.
+     * Every band has a link or two like that, a heading on its own hub; the "more" band has
+     * twenty-nine since it lists the twelve categories and the seventeen chapters of the guide and
+     * the best-time hub, each a same-page link on its own hub. The phone sheet closes the same way
+     * (`closeOnSamePageTap` in the header): same test, a modifier click or a new tab excepted.
+     */
+    closeOnSamePageClick: (e: React.MouseEvent<HTMLElement>) => {
+      const link = (e.target as HTMLElement).closest('a');
+      if (!link || link.target === '_blank') return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (new URL(link.href).pathname === window.location.pathname) {
+        clearTimer();
+        setOpenedOn(null);
+      }
+    },
   };
 }

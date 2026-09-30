@@ -110,7 +110,7 @@ export function NavEntryLabel({
 
 export function NavMenu({ href, label, children, floating, icon }: NavMenuProps) {
   const panelId = useId();
-  const { open, triggerProps, toggle } = useMenuTrigger();
+  const { open, triggerProps, toggle, closeOnSamePageClick } = useMenuTrigger();
   const ink = headerNavInk(floating);
 
   const chevron = (
@@ -163,7 +163,7 @@ export function NavMenu({ href, label, children, floating, icon }: NavMenuProps)
         )}
       </div>
 
-      <MenuBand id={panelId} open={open}>
+      <MenuBand id={panelId} open={open} onClick={closeOnSamePageClick}>
         {children}
       </MenuBand>
     </div>
