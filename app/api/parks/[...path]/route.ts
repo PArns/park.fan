@@ -24,7 +24,7 @@ import {
   parseParkSimulation,
 } from '@/lib/parks/park-simulation';
 import { isSlugPath } from '@/lib/utils/servable-route';
-import type { RideFigures } from '@/lib/api/ride-figures';
+import { pickRideFigures } from '@/lib/api/ride-figures';
 
 /**
  * The shared-cache window for the two backend aggregates that are recomputed once a day.
@@ -387,18 +387,7 @@ export async function GET(
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
       }
 
-      // Keyed by attraction id, and only for rides that have at least one of the three figures.
-      // The API strips null keys, so a ride without a figure is absent rather than `null`.
-      const stats: Record<string, RideFigures> = {};
-      for (const a of parkData.attractions ?? []) {
-        const s = a.rideProfile?.stats;
-        if (!s) continue;
-        const figures: RideFigures = {};
-        if (s.topSpeedKmh != null) figures.topSpeedKmh = s.topSpeedKmh;
-        if (s.heightM != null) figures.heightM = s.heightM;
-        if (s.durationSeconds != null) figures.durationSeconds = s.durationSeconds;
-        if (Object.keys(figures).length > 0) stats[a.id] = figures;
-      }
+      const stats = pickRideFigures(parkData.attractions ?? []);
 
       return NextResponse.json({ stats }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });
     } catch (error) {
