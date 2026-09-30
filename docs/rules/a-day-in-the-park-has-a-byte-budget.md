@@ -59,13 +59,13 @@ plan has to cover.
 | First visit                                                    |    847 KB |      1 |       847 KB |
 | Lean live poll                                                 |    4.5 KB |     90 |       405 KB |
 | Full live poll (every 30 min)                                  |    5.9 KB |     18 |       106 KB |
-| `/api/parks/near` (neighbouring parks' status, every 5 min)    |    0.5 KB |    108 |        54 KB |
+| `/api/parks/near` (neighbouring parks' status, every 30 min)   |    0.5 KB |     18 |         9 KB |
 | `weather/nowcast` (every 15 min, the backend's `nextUpdateAt`) |    0.8 KB |     36 |        29 KB |
-| Coming back to the tab                                         |    8.5 KB |     18 |       153 KB |
-| **Total**                                                      |           |        | **1,594 KB** |
+| Coming back to the tab                                         |    8.0 KB |     18 |       144 KB |
+| **Total**                                                      |           |        | **1,540 KB** |
 
-Coming back to the tab after 25 minutes fires five requests: the park `?full=1`, the nowcast,
-`/api/parks/near`, `/api/nearby` and `/api/blog-latest/<locale>`. While the tab is hidden nothing
+Coming back to the tab after 25 minutes fires four requests: the park `?full=1`, the nowcast,
+`/api/nearby` and `/api/blog-latest/<locale>`. While the tab is hidden nothing
 is requested: React Query stops `refetchInterval` when `document.visibilityState` is `hidden`.
 
 A second page view the same day costs the document again (105 KB) and whatever JavaScript the new
@@ -84,10 +84,13 @@ written up as a ticket body on PAR-421, to be filed in the project "Im Park".
 2. **Day-stable fields in every live poll — 1.36 KB of 4.56 KB brotli, 30 %.** Each attraction in
    `LiveParkSnapshot` carries `name`, `slug`, `land`, `backgroundImage`, `backgroundPosition` and
    `park`, none of which can change between two polls. Over a day that is about 147 KB.
-3. **The neighbouring parks' status, every 5 minutes — 108 requests, 54 KB a day.**
-   `/api/parks/near` feeds the "parks nearby" overlay and polls as long as the tab is open. For
-   someone inside a park it is the second most frequent request of the day, and on a phone each
-   request wakes the radio.
+3. **The neighbouring parks' status, every 5 minutes — 108 requests, 54 KB a day. Done (PAR-518).**
+   `/api/parks/near` feeds the "parks nearby" overlay. It is fetched once on load, then every 30
+   minutes only while the section is on screen and the tab is in front (`useParkNeighbors(…, active)`
+   with `useActiveOnScreen`), and once when the section scrolls back into view with a status older
+   than 30 minutes. Returning to the tab or the network no longer refetches it. Over 35 minutes
+   (`page.clock`, desktop, dev server) the page went from 5 requests to 1 with the section off
+   screen and 2 with it in view; the table above is the upper bound, section in view all day.
 
 Fourth, and already written down: the `parks` translation namespace ships whole (23.7 KB raw of the
 route's messages, 11.6 KB brotli in the document), see
