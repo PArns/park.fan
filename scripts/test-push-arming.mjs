@@ -196,20 +196,25 @@ await test('resolve() asks the record and no longer the two local signals', () =
   assert.doesNotMatch(hook, /existing && getTripId\(\)/, 'the old guess is gone');
 });
 
+// `postSubscription` moved out of the hook so `adoptSharedPlan` can re-point a
+// row too (PAR-586); the write is still in that one helper.
+const repoint = readFileSync(new URL('../lib/planner/push-repoint.ts', import.meta.url), 'utf8');
+
 await test('the record is written after the POST answered, and only there', () => {
-  const writes = hook.match(/rememberArmedPush\(/g) ?? [];
+  assert.equal(hook.match(/rememberArmedPush\(/g), null, 'the hook writes nothing itself');
+  const writes = repoint.match(/rememberArmedPush\(/g) ?? [];
   assert.equal(writes.length, 1, 'exactly one write');
   // In `postSubscription`, on the 2xx only, so every caller that writes a row
   // (enable, the topics change, a re-pointed trip id) records the pair that was
   // sent and none records a refused one.
   assert.match(
-    hook,
+    repoint,
     /if \(response\.ok\) rememberArmedPush\(subscription\.endpoint, tripId\);/,
     'the pair that was sent, on the 2xx only'
   );
-  const helper = hook.indexOf('async function postSubscription');
-  const fetchAt = hook.indexOf("fetch('/api/push/subscriptions', {\n    method: 'POST'");
-  const write = hook.indexOf('rememberArmedPush(');
+  const helper = repoint.indexOf('export async function postSubscription');
+  const fetchAt = repoint.indexOf("fetch('/api/push/subscriptions', {\n    method: 'POST'");
+  const write = repoint.indexOf('rememberArmedPush(');
   assert.ok(helper !== -1 && fetchAt > helper && write > fetchAt, 'the write follows the POST');
 });
 

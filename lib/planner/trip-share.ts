@@ -12,8 +12,10 @@
  * sitemap, so there is nothing a translated slug would help rank.
  */
 
+import { forgetArmedPush } from './push-arming';
+import { repointPushSubscription } from './push-repoint';
 import { plannerStore } from './store';
-import { getTripId, syncTrip } from './trip-sync';
+import { forgetTrip, getTripId, syncTrip } from './trip-sync';
 import type { PlannerState } from './types';
 
 /** The page's path under the locale. */
@@ -60,8 +62,22 @@ export function tripIdFromHash(hash: string): string | null {
  * (the open panel or the planner page), and it reacts to edits made after it
  * subscribed. Without this call, the notification job would keep reading the
  * viewer's previous plan until their next edit.
+ *
+ * That sync can also find the viewer's own trip expired and start a new one
+ * (`replaced`). The subscription row still names the old id, and the auto-sync
+ * callback that re-points it is not mounted on this page, so it is done here:
+ * the same re-point, and the same answer when it fails as for a refused write
+ * (the plan taken back down and the switch off), so no row is left reading a
+ * trip that no longer exists.
  */
 export async function adoptSharedPlan(plan: PlannerState): Promise<void> {
   plannerStore.update((current) => ({ ...plan, version: current.version }));
-  if (getTripId() !== null) await syncTrip();
+  if (getTripId() === null) return;
+  const synced = await syncTrip();
+  if (!synced.ok || !synced.replaced) return;
+  if (await repointPushSubscription(synced.id)) return;
+  // Overtaken by a switch-off: the id is already gone, and so is the plan.
+  if (getTripId() !== synced.id) return;
+  await forgetTrip();
+  forgetArmedPush();
 }

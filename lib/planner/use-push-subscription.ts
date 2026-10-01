@@ -9,10 +9,11 @@ import {
   syncTrip,
   type TripSyncError,
 } from './trip-sync';
-import { forgetArmedPush, pushIsArmedFor, rememberArmedPush } from './push-arming';
+import { forgetArmedPush, pushIsArmedFor } from './push-arming';
+import { postSubscription, repointPushSubscription } from './push-repoint';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
-import { currentPushTimezone, rememberSentPushTimezone } from '../push/push-timezone';
+import { rememberSentPushTimezone } from '../push/push-timezone';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
 
 /**
@@ -52,45 +53,6 @@ interface PushAvailability {
   available: boolean;
   publicKey?: string;
   topics: string[];
-}
-
-/**
- * The one request that writes a subscription row: this endpoint, against this
- * trip, with these topics.
- *
- * Sent when push is switched on, when the visitor changes what they want, and
- * when the trip id the row names was replaced. Kept in one place because the
- * three used to be copies, and a fourth field added to two of them is the kind
- * of drift nobody sees.
- */
-async function postSubscription(
-  subscription: PushSubscription,
-  tripId: string,
-  topics: string[]
-): Promise<{ response: Response; timezone: string | null }> {
-  const json = subscription.toJSON();
-  const timezone = currentPushTimezone();
-  const response = await fetch('/api/push/subscriptions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      endpoint: subscription.endpoint,
-      p256dh: json.keys?.p256dh,
-      auth: json.keys?.auth,
-      tripId,
-      locale: document.documentElement.lang || 'en',
-      ...(timezone ? { timezone } : {}),
-      topics,
-    }),
-  });
-  // The one place this is written: the server has just accepted this endpoint
-  // against this trip, and that answer is what the next mount reads instead of
-  // guessing from two local signals (`push-arming.ts`). Only on the 2xx, and
-  // deliberately not cleared on a refusal — see `forgetArmedPush`. Here rather
-  // than at each caller because a re-pointed row is a new pair and the record
-  // has to follow it.
-  if (response.ok) rememberArmedPush(subscription.endpoint, tripId);
-  return { response, timezone };
 }
 
 export function usePushSubscription() {
@@ -406,32 +368,10 @@ export function usePushSubscription() {
     if (state !== 'on' || !availability) return;
     startTripAutoSync((tripId) => {
       void (async () => {
-        try {
-          const registration = await navigator.serviceWorker.getRegistration('/sw.js');
-          const subscription = await registration?.pushManager.getSubscription();
-          // Overtaken by a switch-off (`forgetTrip` clears the id): nothing is
-          // left to point at. Not the effect's cleanup, which also runs on a
-          // remount and would drop a replacement that is still in flight.
-          if (getTripId() !== tripId) return;
-          if (subscription) {
-            // Read now rather than captured: the visitor may have narrowed the
-            // topics since this effect ran.
-            const { response, timezone } = await postSubscription(
-              subscription,
-              tripId,
-              resolvePushTopics(availability.topics, plannerPushTopics.getSnapshot())
-            );
-            if (response.ok) {
-              if (timezone) rememberSentPushTimezone(subscription.endpoint, timezone);
-              return;
-            }
-          }
-        } catch {
-          // Falls through to the same answer as a refused write.
-        }
+        const repointed = await repointPushSubscription(tripId, availability.topics);
         // Not re-pointed, so the switch would be on and doing nothing. Off with
         // the teardown a press would run, and the plan taken back down with it.
-        if (getTripId() === tripId) void disable();
+        if (!repointed && getTripId() === tripId) void disable();
       })();
     });
     return () => stopTripAutoSync();
