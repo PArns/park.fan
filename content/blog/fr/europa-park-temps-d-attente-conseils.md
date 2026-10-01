@@ -595,11 +595,11 @@ repartent après le petit-déjeuner, et beaucoup ne remettent même plus les pie
 dans le parc, parce que la voiture est déjà chargée.
 
 C’est aussi pourquoi le calendrier des vacances allemandes ne suffit pas, à lui
-seul, à planifier une visite à Rust. Pour ce parc, notre calendrier intègre en
-plus les vacances de la région Grand Est, donc de l’Alsace, celles des cantons
-suisses d’Argovie, de Bâle-Ville et de Bâle-Campagne, et celles des Länder
-voisins de Bavière, de Hesse et de Rhénanie-Palatinat. Qui ne regarde que le
-Bade-Wurtemberg finira par s’étonner devant un mardi bondé.
+seul, à planifier une visite à Rust. Pour ce parc, nous intégrons en plus à
+notre calendrier les vacances de la région Grand Est, donc de l’Alsace, celles
+des cantons suisses d’Argovie, de Bâle-Ville et de Bâle-Campagne, et celles des
+Länder voisins de Bavière, de Hesse et de Rhénanie-Palatinat. Qui ne regarde que
+le Bade-Wurtemberg finira par s’étonner devant un mardi bondé.
 
 ### Le jour de pont
 
@@ -773,9 +773,9 @@ aller dans le parc le dimanche.
 ne vient pas d’Allemagne. Une journée de fin octobre peut être un jour d’école
 tout à fait ordinaire en Bade-Wurtemberg et se remplir quand même, parce qu’en
 France ce sont les vacances de la Toussaint ou, à Bâle-Ville, les vacances
-d’automne. Notre calendrier compte pour ce parc les vacances en Alsace et dans
-trois cantons suisses, le calendrier scolaire d’un seul Land allemand, lui, ne
-le fait pas.
+d’automne. Pour ce parc, nous intégrons à notre calendrier les vacances en
+Alsace et dans trois cantons suisses. Dans le calendrier scolaire d’un seul Land
+allemand, elles n’apparaissent pas.
 
 **Prendre le mardi pour un jour de semaine tranquille.** Dans nos données, c’est
 le jour de semaine le plus chargé, de justesse. Si de toute façon seul un jour de

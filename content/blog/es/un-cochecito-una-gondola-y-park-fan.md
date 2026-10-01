@@ -219,10 +219,9 @@ Detrás hay hoy **210 parques** con unas **6900 atracciones** en total (a 25 de
 septiembre de 2026), y de 209 de ellos recogemos los tiempos de espera cada
 cinco minutos. El que falta es el Hansa-Park, que solo publica los suyos en su propia
 app. A eso se suman previsiones que estiman la afluencia con unos seis meses de
-antelación. Y como por principio solo me fío de
-las cifras que tienen que demostrarse, el modelo se pone nota a sí mismo: cada
-previsión se contrasta después con el tiempo de espera realmente medido, y lo
-que sale de ahí está en la [página de Fancast](/fancast).
+antelación. Y como por principio solo me fío de las cifras que tienen que
+demostrarse, después contrastamos cada previsión con el tiempo de espera
+realmente medido, y lo que sale de ahí está en la [página de Fancast](/fancast).
 
 ## El mejor día casi nunca es el que imaginas
 
@@ -255,10 +254,10 @@ Hay buenas webs que te enseñan cuánta cola hay ahora mismo. Eso también sabem
 hacerlo, cada cinco minutos, en todo el mundo. Pero park.fan se construyó para la
 pregunta anterior: _¿merece siquiera la pena ir?_
 
-Por eso el modelo mira unos seis meses hacia delante en lugar de solo a la
-cifra de la entrada, y el calendario de los mejores días lo convierte en una
-respuesta: se va, o mejor no. Si acierta o no, no hace falta que me creas: está
-en la [página de Fancast](/fancast).
+Por eso miramos unos seis meses hacia delante en lugar de solo a la cifra de
+la entrada, y en el calendario de los mejores días eso se traduce, para cada
+día, en una respuesta: se va, o mejor no. Si el modelo acierta o no, no hace
+falta que me creas: está en la [página de Fancast](/fancast).
 
 A eso se suman tiempos de espera, niveles de afluencia, tiempo en la entrada del
 parque, horarios e históricos de atracciones en seis idiomas. Desde septiembre

@@ -295,10 +295,10 @@ Un par de reglas de oro que casi siempre se cumplen:
 
 La intuición es aquí un mal consejero en cuanto se solapan el calendario de
 vacaciones, el tiempo y los horarios de apertura. Justo para eso está hecho
-park.fan. El calendario de los mejores días de visita convierte todo eso, junto
-con el historial de tiempos de espera del parque, en un nivel de afluencia por
-día, de muy bajo a extremo. Aquí están los próximos días más tranquilos para el
-Phantasialand:
+park.fan. Con todo eso y el historial de tiempos de espera del parque
+calculamos un nivel de afluencia por día, de muy bajo a extremo, y lo ponemos en
+el calendario de los mejores días de visita. Aquí están los próximos días más
+tranquilos para el Phantasialand:
 
 ```best-days-widget slug=phantasialand
 

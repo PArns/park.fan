@@ -247,10 +247,10 @@ Er zijn goede sites die je laten zien hoe lang de rij op dit moment is. Dat
 kunnen wij ook, elke vijf minuten, wereldwijd. Maar park.fan is gebouwd voor de vraag
 die daaraan voorafgaat: _is het überhaupt de moeite om te gaan?_
 
-Daarom kijkt het model zo’n half jaar vooruit in plaats van alleen naar de
-aanduiding bij de ingang, en in de kalender van de beste dagen wordt dat één
-antwoord: gaan of liever niet. Of het model het goed heeft, hoef je mij niet te
-geloven, dat staat op de [Fancast-pagina](/fancast).
+Daarom rekenen we zo’n half jaar vooruit in plaats van alleen naar de
+aanduiding bij de ingang te kijken, en in de kalender van de beste dagen wordt
+dat per dag één antwoord: gaan of liever niet. Of het model het goed heeft,
+hoef je mij niet te geloven, dat staat op de [Fancast-pagina](/fancast).
 
 Daarbij wachttijden, drukteniveaus, weer bij de parkingang, openingstijden en
 attractiehistories in zes talen. Sinds september is er ook de

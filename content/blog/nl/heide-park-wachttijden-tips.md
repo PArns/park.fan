@@ -455,8 +455,8 @@ staat op de [parkpagina](ref:heide-park).
 
 Op een vrijdag in september, ruim vóór een zaterdag in augustus. Weekdag en
 maand verschuiven elk ongeveer evenveel, samen meer dan elk apart. Welke van de
-komende openingsdagen het rustigst worden, rekent de widget hierboven dagelijks
-uit.
+komende openingsdagen het rustigst worden, staat dagelijks bijgewerkt in de
+widget hierboven.
 
 ### Welke achtbanen in Heide Park waren Duitse primeurs?
 

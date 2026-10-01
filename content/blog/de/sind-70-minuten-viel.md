@@ -149,9 +149,9 @@ Autobahn steht.
 
 Außerdem werfen wir keine Messung weg. Ältere Zeiträume
 werden komprimiert, aber nicht ausgedünnt. Wie weit eine Auswertung
-zurückreicht, legen wir für jede einzeln fest. „Typisch“ und „voll“ rechnen über
-die letzten 365 Tage, also einen ganzen Jahreslauf, die Rope-Drop-Empfehlung nur
-über die letzten 70, damit sie der Saison folgt. Wer im dritten Jahr anfängt zu
+zurückreicht, legen wir für jede einzeln fest. Für „typisch“ und „voll“ nehmen
+wir die letzten 365 Tage, also einen ganzen Jahreslauf, für die Rope-Drop-Empfehlung
+nur die letzten 70, damit sie der Saison folgt. Wer im dritten Jahr anfängt zu
 speichern, hat im dritten Jahr ein Jahr Historie, und die beiden Jahre davor
 sind für immer weg. Unsere Messreihe beginnt am 26. Dezember 2025, und ab da
 zählt die Spalte mit den Messtagen in der Tabelle oben.

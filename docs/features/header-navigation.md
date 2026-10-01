@@ -220,6 +220,14 @@ container has neither the binary nor the module. The park page in the same pair 
 _smaller_ compressed, which is the re-chunking CLAUDE.md warns about rather than a saving, so the
 listing page is the number to read.)
 
+**The rows are in the order of the date they print.** `getBlogMenu` read `listArticlesByRecency`,
+the homepage's order, which sorts by `updatedAt` and puts `featured` first. The homepage cards show
+no date, so there it reads as "what changed lately"; in this panel every row prints its publication
+date, and on 2026-10-01 the German panel read 24 Jul, 17 Jul, 28 Sep, 22 Sep, 20 Sep, because the
+two July guides had been edited on 1 October and 30 September. It reads `listArticlesByDate` now: publication date,
+newest first, `featured` ignored. `pnpm test:news-split` compares the rows' dates with the newest
+articles in every locale.
+
 The blog holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes 1, news 1),
 **31 tags** and one author. So the categories are in, the six newest posts are in, and **the tags
 are out**. 31 tag pages over 7 posts means most of them are one post's teaser under a second URL;

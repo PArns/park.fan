@@ -145,8 +145,8 @@ already stuck on the motorway.
 
 We also throw no reading away. Older periods get
 compressed, not thinned out. How far back an analysis looks is a separate
-decision: “typical” and “busy” work over the last 365 days, one full turn of
-the year, the rope-drop advice over just the last 70, so it follows the season.
+decision: for “typical” and “busy” we take the last 365 days, one full turn of
+the year, for the rope-drop advice just the last 70, so it follows the season.
 Start storing in your third year and you have one year of history in your third
 year, and the two before it are gone for good. Our record starts on 26 December
 2025, and the column of days measured in the table above counts from there.
@@ -178,8 +178,8 @@ period we happen to have measured.
 The long version, with the real cards to read along with, is now a page of its
 own: [How park.fan works](/en/how-park-fan-works). Chapter by chapter it covers
 what an attraction card shows, how the scale under “typical” and “busy” works,
-how the calendar accounts for holidays, how the trip planner turns that into a
-day, and the three places where we deliberately claim nothing. Four concrete
+how the holidays go into the calendar, how that becomes a day in the trip
+planner, and the three places where we deliberately claim nothing. Four concrete
 visits are in there too, from the family in the autumn holidays via the annual
 pass holder deciding on an evening trip to a first time at a big park.
 

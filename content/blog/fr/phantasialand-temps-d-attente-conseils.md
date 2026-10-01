@@ -304,10 +304,10 @@ Quelques règles empiriques qui se vérifient presque toujours :
 
 L’intuition est ici mauvaise conseillère dès que se superposent calendrier
 scolaire, météo et horaires d’ouverture. C’est précisément pour cela que park.fan
-a été bâti. Le calendrier des meilleurs jours de visite calcule tout cela avec
-l’historique des temps d’attente du parc et en tire un niveau d’affluence par
-jour, de très faible à extrême. Voici les prochains jours les plus
-calmes pour le Phantasialand :
+a été bâti. Nous croisons tout cela avec l’historique des temps d’attente du
+parc pour en tirer un niveau d’affluence par jour, de très faible à extrême, que
+tu retrouves dans le calendrier des meilleurs jours de visite. Voici les
+prochains jours les plus calmes pour le Phantasialand :
 
 ```best-days-widget slug=phantasialand
 

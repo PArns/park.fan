@@ -585,8 +585,8 @@ zondag rijden ze na het ontbijt weer naar huis, en velen komen helemaal niet
 meer in het park, omdat de auto al ingepakt is.
 
 Daarom werkt voor Rust ook de Duitse vakantiekalender in zijn eentje niet als
-planningsbasis. Onze kalender rekent voor dit park daarnaast de vakanties van
-de Franse regio Grand Est mee, dus van de Elzas, die van de Zwitserse kantons
+planningsbasis. Voor dit park rekenen we in onze kalender daarnaast de vakanties
+van de Franse regio Grand Est mee, dus van de Elzas, die van de Zwitserse kantons
 Aargau, Basel-Stadt en Basel-Landschaft en die van de aangrenzende deelstaten
 Beieren, Hessen en Rijnland-Palts. Wie alleen naar Baden-Württemberg kijkt,
 verbaast zich op een gegeven moment over een volle dinsdag.
@@ -756,9 +756,9 @@ park in.
 **Alleen naar de Duitse vakanties kijken.** Ruim de helft van het publiek komt
 niet uit Duitsland. Een dag eind oktober kan in Baden-Württemberg een gewone
 schooldag zijn en toch vollopen, omdat in Frankrijk de Toussaint-vakantie loopt
-of in Basel-Stadt de herfstvakantie. Onze kalender rekent voor dit park de
-vakanties in de Elzas en in drie Zwitserse kantons mee, de vakantiekalender van
-één enkele deelstaat doet dat niet.
+of in Basel-Stadt de herfstvakantie. In onze kalender tellen voor dit park de
+vakanties in de Elzas en in drie Zwitserse kantons mee, in de vakantiekalender
+van één enkele deelstaat niet.
 
 **De dinsdag voor een rustige werkdag houden.** In onze data is hij de drukste
 werkdag, al is het krap. Als er toch maar één doordeweekse dag in aanmerking

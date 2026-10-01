@@ -1,5 +1,5 @@
 ---
-title: 'Il pianificatore fa i conti prima che tu finisca nella fila sbagliata'
+title: 'Pianificare la giornata al parco prima di finire nella fila sbagliata'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 updatedAt: '2026-09-25'
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Pianificare la giornata al parco: le file, prima di farle'
   description: >-
-    Il pianificatore mette le tue attrazioni su una linea del tempo e calcola
-    attese previste e percorsi: prima di partire vedi se la giornata sta in
-    piedi. Senza account.
+    Nel pianificatore metti le tue attrazioni su una linea del tempo, con le
+    attese previste e i percorsi fra l’una e l’altra, e prima di partire vedi se
+    la giornata sta in piedi. Senza account.
   keywords:
     - pianificare una giornata al parco
     - pianificatore parco divertimenti
@@ -64,8 +64,9 @@ Questo era il buco che park.fan aveva. A «Quanto si aspetta adesso?» rispondia
 dal primo giorno. «È tanto per un martedì?» da [fine agosto](/blog/70-minuti-sono-tanti).
 La terza domanda non c’era da nessuna parte: la mia giornata sta in piedi così?
 
-Da inizio settembre c’è. Il [pianificatore](/pianificatore) mette le tue
-attrazioni su una linea del tempo e calcola la giornata prima che tu parta.
+Da inizio settembre c’è. Nel [pianificatore](/pianificatore) metti le tue
+attrazioni su una linea del tempo, con le attese previste e i percorsi in mezzo,
+e prima di partire vedi se ci stanno tutte nella giornata.
 
 ## Blocchi e trasferimenti
 
@@ -101,10 +102,9 @@ registrata alcuna durata. La distanza è in linea d’aria, e nel pianificatore 
 scritto. È un limite inferiore e non un tempo a piedi: i percorsi girano intorno
 all’acqua, alle file e ai sensi unici, certi parchi impilano le loro aree, e in
 uno grande la linea retta attraversa volentieri un lago di cui bisogna fare
-tutto il giro. Per il
-limite superiore il pianificatore calcola quindi con il passo da parco, circa
-quattro chilometri all’ora tra folla e passeggini, e aggiunge il 60 per cento di
-deviazione alla linea d’aria.
+tutto il giro. Per il limite superiore si calcola quindi con il passo da parco,
+circa quattro chilometri all’ora tra folla e passeggini, e alla linea d’aria si
+aggiunge il 60 per cento di deviazione.
 
 In un parco compatto un trasferimento maldestro costa tre minuti e non se ne
 accorge nessuno. In uno grande costa un quarto d’ora. Farlo otto volte in una
@@ -187,8 +187,9 @@ In un parco con più attrazioni principali di quante ne stiano in una giornata,
 il punto uno è tutto il gioco, e dal 21 settembre il pianificatore non lo
 decide più in silenzio. Se non ci sta tutto, ciascuno dei due pulsanti apre
 prima un assistente in tre passi. Sotto «Modifiche» c’è quello che farebbe
-spazio, per esempio togliere la pausa pranzo o ridurla a mezz’ora, e ogni riga è
-calcolata: compare solo se porta davvero un’attrazione in più nella giornata.
+spazio, per esempio togliere la pausa pranzo o ridurla a mezz’ora. Per ogni
+riga ripianifichiamo l’intera giornata con quella modifica, e compare solo se
+porta davvero un’attrazione in più nella giornata.
 Sotto «Priorità» c’è l’elenco completo nell’ordine in cui si cancellerebbe, e
 porti in cima quello che non vuoi perdere per niente. Ci sono anche le attrazioni
 che avevi pianificato tu, perché qui decidi tu e non il pulsante. Sotto

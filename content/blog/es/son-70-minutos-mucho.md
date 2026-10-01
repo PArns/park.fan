@@ -147,12 +147,12 @@ mientras los del rope drop ya están en la autopista.
 
 La otra mitad es que no tiramos ninguna medición. Los periodos antiguos
 se comprimen, no se aclaran. Hasta dónde mira atrás cada análisis se decide
-aparte. «Típico» y «lleno» cuentan los últimos 365 días, una vuelta completa
-al año, y la recomendación de rope drop solo los últimos 70, para seguir la
-temporada. Quien empieza a guardar en el tercer año tiene en el tercer año un
-año de historial, y los dos anteriores se han perdido para siempre. Nuestra
-serie de mediciones empieza el 26 de diciembre de 2025, y la columna de días
-medidos de la tabla de arriba cuenta desde ahí.
+aparte. Para «típico» y «lleno» tomamos los últimos 365 días, una vuelta
+completa al año, y para la recomendación de rope drop solo los últimos 70, para
+seguir la temporada. Quien empieza a guardar en el tercer año tiene en el tercer
+año un año de historial, y los dos anteriores se han perdido para siempre.
+Nuestra serie de mediciones empieza el 26 de diciembre de 2025, y la columna de
+días medidos de la tabla de arriba cuenta desde ahí.
 
 ## Donde preferimos no decir nada
 
@@ -182,8 +182,8 @@ describiría el periodo en el que casualmente ya hemos medido.
 La versión larga, con las tarjetas reales para ir leyendo, es ahora una página
 propia: [Así funciona park.fan](/es/como-funciona-park-fan). Ahí está, capítulo
 a capítulo, qué se ve en una tarjeta de atracción, cómo funciona la escala bajo
-«típico» y «lleno», cómo entran las vacaciones en el calendario, cómo el
-planificador convierte todo eso en un día y en qué tres sitios no afirmamos nada
+«típico» y «lleno», cómo entran las vacaciones en el calendario, cómo sale de
+todo eso un día en el planificador y en qué tres sitios no afirmamos nada
 a propósito. También hay cuatro situaciones de visita concretas, desde la
 familia en las vacaciones de otoño hasta la primera vez en un parque grande,
 pasando por quien tiene pase anual y se pregunta si esa tarde aún merece la pena

@@ -49,8 +49,8 @@ In het najaar van 2007 liet het park voor het eerst 's avonds acteurs met
 nepbloed op zijn bezoekers los. Het heette toen “Terenzi Horror Nights”, naar
 popzanger Marc Terenzi, die het tot 2012 samen met Michael Mack organiseerde.
 Sinds 2017 draagt het de naam Traumatica, eerst nog als “Horror Nights –
-Traumatica”, en dus is 2026 de tiende editie onder die naam. Het motto telt
-beide bij elkaar op: “20 jaar horror, 10 jaar Traumatica”.
+Traumatica”, en dus is 2026 de tiende editie onder die naam. In het motto
+staan beide getallen: “20 jaar horror, 10 jaar Traumatica”.
 
 ## Nieuw in het jubileumjaar
 

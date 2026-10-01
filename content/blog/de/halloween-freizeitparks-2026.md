@@ -207,9 +207,9 @@ nebelverhangenen Gassen machen ganze Rudel von Darstellern gezielt Jagd auf
 Einzelne, dazu kommen Pyro-Shows.
 
 Tagsüber ist Rust ein anderer Park, und einer mit erstaunlich kurzen Warteschlangen
-für seine Größe. Der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps)
-rechnet das nach und erklärt nebenbei, warum ein Traumatica-Ticket im November
-die letzte Parkstunde kostet.
+für seine Größe. Im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps)
+habe ich das nachgerechnet, und dort steht auch, warum ein Traumatica-Ticket im
+November die letzte Parkstunde kostet.
 
 [Europa-Park](ref:europa-park?full)
 

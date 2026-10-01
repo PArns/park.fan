@@ -430,6 +430,7 @@ export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
 
 const ARTICLES = new Map<Locale, readonly BlogListItem[]>();
 const ARTICLES_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
+const ARTICLES_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
 const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
 
 /**
@@ -452,6 +453,25 @@ export function listArticlesByRecency(requestedLocale: Locale): readonly BlogLis
   if (memo) return memo;
   const frozen = Object.freeze(listPostsByRecency(requestedLocale).filter((p) => !isNewsPost(p)));
   ARTICLES_BY_RECENCY.set(requestedLocale, frozen);
+  return frozen;
+}
+
+/**
+ * The articles only, newest first by publication date, with `featured` ignored: the order a list
+ * that prints each post's `date` beside it has to be in. The header's blog panel reads it; under
+ * {@link listArticlesByRecency} an edit to two July guides put them above a post from 28 September,
+ * and the rows read 24 Jul, 17 Jul, 28 Sep. Frozen and memoised.
+ */
+export function listArticlesByDate(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = ARTICLES_BY_DATE.get(requestedLocale);
+  if (memo) return memo;
+  const frozen = Object.freeze(
+    // `sort` is stable, so two posts of one day keep the order `listArticles` gave them.
+    [...listArticles(requestedLocale)].sort((a, b) =>
+      b.frontmatter.date.localeCompare(a.frontmatter.date)
+    )
+  );
+  ARTICLES_BY_DATE.set(requestedLocale, frozen);
   return frozen;
 }
 

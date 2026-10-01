@@ -216,9 +216,8 @@ them (as of 25 September 2026), and for 209 of them we fetch fresh wait times
 every five minutes. The one missing is Hansa-Park, which publishes its waits only in its
 own app. On top of that, forecasts that estimate crowds roughly six months
 ahead. And because I only ever trust numbers that have to prove
-themselves, the model grades itself: every prediction is later held against the
-wait time actually measured, and whatever comes out of that is on the
-[Fancast page](/fancast).
+themselves, we later hold every prediction against the wait time actually
+measured, and whatever comes out of that is on the [Fancast page](/fancast).
 
 ## The best day is rarely the one you’d guess
 
@@ -237,7 +236,7 @@ exactly as long as it takes everyone else to read the same insider tip.
 
 “Sundays are busy” is therefore about as useful as “summer is warm”. A Sunday in late November at
 Phantasialand is a different question from a Sunday in early August at
-Europa-Park, which is why the calendar works with a park and a date.
+Europa-Park, which is why the calendar has one answer per park and per date.
 Once you’re in the park, the live data is where you see whether the queue in
 front of you is the exception or the rule.
 
@@ -247,10 +246,10 @@ There are good sites that show you how long the queue is right now. We do that
 too, every five minutes, worldwide. But park.fan was built for the question that
 comes before: _is it even worth going?_
 
-So the model looks roughly six months ahead instead of only at the board above
-the entrance, and the calendar of best days turns that into one answer: go, or
-better not. Whether it gets that right, you don’t have to take my word for; it’s
-on the [Fancast page](/fancast).
+So we forecast roughly six months ahead instead of only reading the board above
+the entrance, and in the calendar of best days that becomes one answer per day:
+go, or better not. Whether the model gets it right, you don’t have to take my
+word for; it’s on the [Fancast page](/fancast).
 
 On top of that: wait times, crowd levels, weather at the park entrance, opening
 hours and attraction histories, in six languages. Since September there’s also
