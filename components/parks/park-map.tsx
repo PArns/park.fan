@@ -9,6 +9,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useParkMapGeolocation } from '@/lib/hooks/use-park-map-geolocation';
+import { useRideFigures } from '@/lib/hooks/use-ride-figures';
 import { parkIcon, userIcon } from '@/lib/utils/leaflet-icons';
 import { cartoTileUrl } from '@/lib/utils/carto-tile-url';
 import {
@@ -122,10 +123,21 @@ interface ParkMapProps {
   park: ParkWithAttractions;
   /** Slug from a `#map-show-<slug>` deep link: that show gets the view and an open popup. */
   focusShowSlug?: string | null;
+  /**
+   * Where the park lives, for the ride figures in the popups. The blog's map widget has no geo
+   * path and leaves them out: its popups then carry no figures, as before.
+   */
+  continent?: string;
+  country?: string;
+  city?: string;
+  parkSlug?: string;
 }
 
-export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
+export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlug }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
+  // Mounted only while the map tab is the one on screen, so this is the fetch that "opens with the
+  // tab": a visitor who never opens it never pays for it.
+  const { data: figures } = useRideFigures({ continent, country, city, parkSlug });
   const tCommon = useTranslations('common');
   const [userHasZoomed, setUserHasZoomed] = useState(false);
   // Stable, so `ZoomTracker` does not re-bind its two map listeners on every render.
@@ -256,7 +268,7 @@ export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
           </Marker>
         )}
 
-        <AttractionMarkers attractions={validAttractions} />
+        <AttractionMarkers attractions={validAttractions} figures={figures} />
         <ShowMarkers shows={validShows} timezone={park.timezone} focusSlug={focusShowSlug} />
         <RestaurantMarkers restaurants={validRestaurants} />
       </MapContainer>

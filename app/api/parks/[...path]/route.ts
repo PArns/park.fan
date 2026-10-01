@@ -24,6 +24,7 @@ import {
   parseParkSimulation,
 } from '@/lib/parks/park-simulation';
 import { isSlugPath } from '@/lib/utils/servable-route';
+import { pickRideFigures } from '@/lib/api/ride-figures';
 
 /**
  * The shared-cache window for the two backend aggregates that are recomputed once a day.
@@ -85,6 +86,15 @@ const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-re
  * in that headers block: which of the two wins depends on where it runs, so they may never differ.
  */
 const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=300';
+
+/**
+ * The window for `…/ride-stats`, the map popups' speed, height and duration.
+ *
+ * Repeated verbatim in next.config.ts like every other cacheable /api route. The figures are
+ * curated or come from Wikidata and change when somebody edits a ride, so a day is generous.
+ */
+const RIDE_STATS_CACHE_CONTROL =
+  'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
 
 /**
  * On every failure, because a response without a Cache-Control of its own takes the window the
@@ -362,6 +372,33 @@ export async function GET(
       console.error('[Positions API] Error:', error);
       return NextResponse.json(
         { error: 'Failed to fetch ride positions' },
+        { status: 500, headers: NO_STORE }
+      );
+    }
+  }
+
+  // Handle ride figures: [continent, country, city, park, 'ride-stats'] (5 segments)
+  // Top speed, height and duration per ride, for the park map's popups and nothing else. The park
+  // page's server render leaves `rideProfile` out (`leanParkForParkShell`: 3.6 KB on Phantasialand,
+  // and the map is a tab most visitors never open), so the map asks for these when its tab opens.
+  // Day-stable like `positions`, so it reads the day-cached park and the CDN keeps the answer.
+  if (path && path.length === 5 && path[4] === 'ride-stats') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const parkData = await getParkByGeoPath(continent, country, city, park);
+
+      if (!parkData) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
+      const stats = pickRideFigures(parkData.attractions ?? []);
+
+      return NextResponse.json({ stats }, { headers: cdnCacheHeaders(RIDE_STATS_CACHE_CONTROL) });
+    } catch (error) {
+      console.error('[Ride-Stats API] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch ride figures' },
         { status: 500, headers: NO_STORE }
       );
     }
@@ -664,7 +701,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /stats, /stats/hourly, /stats/day, /wait-times, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, or /weather/nowcast',
     },
     { status: 400 }
   );
