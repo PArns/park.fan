@@ -281,6 +281,8 @@ async function build() {
       parkPath: sidecar.parkPath,
       ride: sidecar.ride,
       alsoRides: sidecar.alsoRides ?? [],
+      // Left out when empty, so a database without the field keeps its revision.
+      ...(sidecar.collections?.length ? { collections: sidecar.collections } : {}),
       area: sidecar.area,
       title: sidecar.title ?? base,
       tags: sidecar.tags,
@@ -845,7 +847,7 @@ checkBlogReferences(new Set(images.flatMap((i) => [i.src, ...i.variants])));
 const unlicensed = images.filter((i) => i.credit.license === 'unknown').length;
 const unassigned = images.filter((i) => !i.park).length;
 const awaitingReview = images.filter((i) => i.review).length;
-const collections = new Set(images.map((i) => i.collection)).size;
+const collections = new Set(images.flatMap((i) => [i.collection, ...(i.collections ?? [])])).size;
 
 console.log(
   `🖼️  Media database: ${images.length} images in ${collections} collections (rev ${revision}).`

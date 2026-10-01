@@ -69,10 +69,8 @@ function indexes() {
         if (list) list.push(image);
         else byPark.set(image.park, [image]);
       }
-      const collection = byCollection.get(image.collection);
-      if (collection) collection.push(image);
-      else byCollection.set(image.collection, [image]);
     }
+    byCollection = groupByCollection(MEDIA_IMAGES);
   }
   return {
     byId: byId!,
@@ -81,6 +79,38 @@ function indexes() {
     byPark: byPark!,
     byCollection: byCollection!,
   };
+}
+
+/** The folder an image sits in plus every collection its sidecar adds, each once. */
+export function imageCollections(image: MediaImage): string[] {
+  return image.collections?.length
+    ? [image.collection, ...image.collections.filter((c) => c !== image.collection)]
+    : [image.collection];
+}
+
+/**
+ * True when `image` is in `collection` or anywhere below it. `toverland` covers an
+ * image filed under `toverland/halloween`, the way a folder would.
+ */
+export function inCollection(image: MediaImage, collection: string): boolean {
+  return imageCollections(image).some((c) => c === collection || c.startsWith(`${collection}/`));
+}
+
+/**
+ * Images by collection id, each under every collection it belongs to and in the
+ * order of `images`. An image in two collections is one row listed twice, never a
+ * copy.
+ */
+export function groupByCollection(images: readonly MediaImage[]): Map<string, MediaImage[]> {
+  const groups = new Map<string, MediaImage[]>();
+  for (const image of images) {
+    for (const id of imageCollections(image)) {
+      const list = groups.get(id);
+      if (list) list.push(image);
+      else groups.set(id, [image]);
+    }
+  }
+  return groups;
 }
 
 // ─── lookup ──────────────────────────────────────────────────────────────────
@@ -132,9 +162,13 @@ export function getCollection(collection: string): MediaImage[] {
   return indexes().byCollection.get(key) ?? [];
 }
 
-/** Every collection id present in the database, sorted. */
+/**
+ * Every folder collection in the database, sorted. Collections that only a sidecar
+ * names are left out on purpose: the admin offers this list as the folder an image
+ * can be moved into, and a collection with no folder is not a place to move to.
+ */
 export function listCollections(): string[] {
-  return [...indexes().byCollection.keys()].sort();
+  return [...new Set(MEDIA_IMAGES.map((image) => image.collection))].sort();
 }
 
 // ─── park reference data ─────────────────────────────────────────────────────
@@ -340,12 +374,7 @@ export function searchMedia(query: MediaQuery = {}): MediaImage[] {
     // `ride: null` asks for the park-only tier; a slug matches alsoRides too.
     if (ride !== undefined && (ride === null ? image.ride !== null : !showsRide(image, ride)))
       return false;
-    if (
-      collection &&
-      image.collection !== collection &&
-      !image.collection.startsWith(`${collection}/`)
-    )
-      return false;
+    if (collection && !inCollection(image, collection)) return false;
     if (role && !image.roles.includes(role)) return false;
     if (license && image.credit.license !== license) return false;
     if (unlicensedOnly && image.credit.license !== 'unknown') return false;
@@ -383,7 +412,7 @@ export function listParks(): { park: string; count: number }[] {
 export function mediaStats() {
   return {
     total: MEDIA_IMAGES.length,
-    collections: indexes().byCollection.size,
+    collections: listCollections().length,
     parks: indexes().byPark.size,
     withGps: MEDIA_IMAGES.filter((i) => i.gps).length,
     unlicensed: MEDIA_IMAGES.filter((i) => i.credit.license === 'unknown').length,

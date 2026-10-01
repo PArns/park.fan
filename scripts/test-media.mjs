@@ -19,6 +19,9 @@ import {
   getParkImages,
   getRideImage,
   getRideImages,
+  groupByCollection,
+  inCollection,
+  listCollections,
   listTags,
   mediaStats,
   searchMedia,
@@ -213,6 +216,53 @@ checkThat(
 checkThat(
   'that image is reachable from its park',
   ids(getParkImages('attractiepark-toverland')).includes(cthulhu.id)
+);
+
+// A sidecar can file an image under further collections without moving the file.
+const multiColl = {
+  id: 'a/one',
+  collection: 'a',
+  collections: ['toverland/halloween', 'halloween'],
+};
+const plain = { id: 'a/two', collection: 'a' };
+const grouped = groupByCollection([multiColl, plain]);
+check('image with collections[] is in its folder', ids(grouped.get('a')), ['a/one', 'a/two']);
+check('…and in the nested collection', ids(grouped.get('toverland/halloween')), ['a/one']);
+check('…and in the flat one', ids(grouped.get('halloween')), ['a/one']);
+check(
+  'image without the field is only in its folder',
+  [...grouped.entries()].filter(([, list]) => list.includes(plain)).map(([id]) => id),
+  ['a']
+);
+check(
+  'a collection listed twice is one row once',
+  ids(groupByCollection([{ id: 'a/x', collection: 'a', collections: ['a', 'b', 'b'] }]).get('a')),
+  ['a/x']
+);
+checkThat(
+  'listCollections names folders only',
+  listCollections().every((c) => MEDIA_IMAGES.some((i) => i.collection === c))
+);
+checkThat('a parent path covers its children', inCollection(multiColl, 'toverland'));
+checkThat('a sibling prefix is not a parent', !inCollection(multiColl, 'tover'));
+checkThat('no field, no extra membership', !inCollection(plain, 'halloween'));
+
+const withCollections = normalizeSidecar({
+  collections: ['toverland/halloween', '/halloween/', 'halloween', 'Bad Path'],
+});
+check('collections: trimmed, deduplicated, invalid dropped', withCollections.sidecar.collections, [
+  'toverland/halloween',
+  'halloween',
+]);
+checkThat('collections: invalid path is reported', withCollections.issues.length === 1);
+check(
+  'collections round-trips through serializeSidecar',
+  JSON.parse(serializeSidecar(withCollections.sidecar, withCollections.text)).collections,
+  ['toverland/halloween', 'halloween']
+);
+checkThat(
+  'collections is omitted from the file when empty',
+  !('collections' in JSON.parse(serializeSidecar(normalizeSidecar({}).sidecar, {})))
 );
 
 console.log('\n── text & credit ────────────────────────────────────────────\n');
