@@ -38,7 +38,7 @@ export function troughWait(ropeDrop: RopeDropInfo): number | null {
   return ropeDrop.bestSlotWait != null && ropeDrop.bestSlotWait > 0 ? ropeDrop.bestSlotWait : null;
 }
 
-/** The figures `RopeDropCard` prints, on the grid a park posts its wait times on. */
+/** The figures the rope-drop card, badges and headliner strip print, on the grid a park posts its wait times on. */
 export interface RopeDropDisplayWaits {
   /** Typical wait at opening. */
   openWait: number;
