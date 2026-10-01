@@ -34,8 +34,8 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026: Where the Queues Are, and When'
   description: >-
-    Wait-time data for Magic Kingdom in Florida: why the most visited park
-    has the shortest queues of the four Disney parks, when TRON is shortest,
+    Wait-time data for Magic Kingdom in Florida: the shortest queues of the
+    four Disney parks in the most visited park on earth, when TRON is shortest,
     what Lightning Lane costs and which months are quiet.
   keywords:
     - Magic Kingdom
@@ -147,8 +147,9 @@ midday into the evening and drops in the last hours before closing. If TRON and
 Tiana's fill your morning, this is the ride for the end of the day.
 
 Take TRON at opening, Tiana's directly after it and the Mine
-Train in the last hour. Space Mountain and the Jungle Cruise peak around
-midday and fall off toward closing.
+Train in the last hour. Space Mountain peaks around midday, the Jungle Cruise
+holds its level from mid-morning into the early evening, and both fall off
+toward closing.
 
 ## Lightning Lane
 
