@@ -78,6 +78,9 @@ export async function adoptSharedPlan(plan: PlannerState): Promise<void> {
   if (await repointPushSubscription(synced.id)) return;
   // Overtaken by a switch-off: the id is already gone, and so is the plan.
   if (getTripId() !== synced.id) return;
+  // The plan is taken down and the switch reads off; the browser's own
+  // subscription stays, because ride alerts and followed shows share it. A
+  // refused DELETE keeps the id (`forgetTrip`), so the next switch-off retries.
   await forgetTrip();
   forgetArmedPush();
 }

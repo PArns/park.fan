@@ -268,6 +268,31 @@ await test('a refused re-point takes the new trip back down and clears the recor
   assert.equal(storage.get(ARMED_KEY), undefined);
 });
 
+await test('no subscription left in the browser: the new trip is taken back down', async () => {
+  seed({ ownTripId: OWN_ID });
+  answersByRoute = {
+    [`PUT /api/trips/${OWN_ID}`]: ok(404),
+    'POST /api/trips': ok(201, { id: NEW_ID }),
+  };
+  const original = globalThis.navigator;
+  Object.defineProperty(globalThis, 'navigator', {
+    configurable: true,
+    value: {
+      serviceWorker: {
+        getRegistration: async () => ({ pushManager: { getSubscription: async () => null } }),
+      },
+    },
+  });
+  try {
+    await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
+  } finally {
+    Object.defineProperty(globalThis, 'navigator', { configurable: true, value: original });
+  }
+
+  assert.ok(calls.some((call) => call.method === 'DELETE' && call.url === `/api/trips/${NEW_ID}`));
+  assert.equal(storage.get(TRIP_ID_KEY), undefined);
+});
+
 await test('a trip that survives the PUT is not re-pointed', async () => {
   seed({ ownTripId: OWN_ID });
 
