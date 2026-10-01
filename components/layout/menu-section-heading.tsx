@@ -16,7 +16,8 @@ import { Link } from '@/i18n/navigation';
  * would be a client reference of its own wherever a Server Component renders it. Everything that
  * imports it today is a client component itself — `ParksMenuPanel`, `BlogMenuPanel` (the "more"
  * panel drew cards instead from PAR-269) and the footer's `FooterLinkGroup`, which folds each
- * column on a phone (PAR-437) — so it compiles into their bundles without it.
+ * column on a phone (PAR-437) — so it compiles into their bundles without it. The footer's
+ * popular-parks columns (PAR-325) render it from a Server Component, which needs the same.
  */
 export function MenuSectionHeading({
   label,

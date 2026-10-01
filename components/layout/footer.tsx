@@ -4,6 +4,7 @@ import { ExternalLink, Rss } from 'lucide-react';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { Separator } from '@/components/ui/separator';
+import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { FooterLinkGroup } from '@/components/layout/footer-link-group';
 import { BuildInfo } from '@/components/common/build-info';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
@@ -39,6 +40,85 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
 
   const footerLinkClass =
     'hover:text-foreground inline-flex items-center gap-1 py-1 text-sm transition-colors max-sm:min-h-11';
+
+  /** The four countries of the popular-parks columns, in the order their columns stand. */
+  const popularParks: {
+    key: string;
+    label: string;
+    href: string;
+    parks: { href: string; label: string }[];
+  }[] = [
+    {
+      key: 'germany',
+      label: t('sections.germany'),
+      href: '/parks/europe/germany',
+      parks: [
+        { href: '/parks/europe/germany/rust/europa-park', label: 'Europa-Park' },
+        { href: '/parks/europe/germany/bruehl/phantasialand', label: 'Phantasialand' },
+        { href: '/parks/europe/germany/soltau/heide-park', label: 'Heide-Park' },
+        { href: '/parks/europe/germany/bottrop/movie-park-germany', label: 'Movie Park Germany' },
+        { href: '/parks/europe/netherlands/kaatsheuvel/efteling', label: 'Efteling' },
+      ],
+    },
+    {
+      key: 'usa',
+      label: t('sections.usa'),
+      href: '/parks/north-america/united-states',
+      parks: [
+        {
+          href: '/parks/north-america/united-states/orlando/magic-kingdom-park',
+          label: 'Magic Kingdom',
+        },
+        {
+          href: '/parks/north-america/united-states/orlando/universal-studios-florida',
+          label: 'Universal Studios',
+        },
+        {
+          href: '/parks/north-america/united-states/tampa/busch-gardens-tampa',
+          label: 'Busch Gardens Tampa',
+        },
+        {
+          href: '/parks/north-america/united-states/anaheim/disneyland-park',
+          label: 'Disneyland',
+        },
+        {
+          href: '/parks/north-america/united-states/santa-clarita/six-flags-magic-mountain',
+          label: 'Six Flags Magic Mountain',
+        },
+      ],
+    },
+    {
+      key: 'france',
+      label: tGeo('countries.france'),
+      href: '/parks/europe/france',
+      parks: [
+        { href: '/parks/europe/france/paris/disneyland-park', label: 'Disneyland Paris' },
+        { href: '/parks/europe/france/plailly/parc-asterix', label: 'Parc Asterix' },
+        {
+          href: '/parks/europe/france/paris/disney-adventure-world',
+          label: 'Disney Adventure World',
+        },
+        {
+          href: '/parks/europe/france/chasseneuil-du-poitou/futuroscope',
+          label: 'Futuroscope',
+        },
+        { href: '/parks/europe/france/dolancourt/nigloland', label: 'Nigloland' },
+      ],
+    },
+    {
+      key: 'japan',
+      label: tGeo('countries.japan'),
+      href: '/parks/asia/japan',
+      parks: [
+        { href: '/parks/asia/japan/tokyo/tokyo-disneyland', label: 'Tokyo Disneyland' },
+        { href: '/parks/asia/japan/tokyo/tokyo-disneysea', label: 'Tokyo DisneySea' },
+        {
+          href: '/parks/asia/japan/osaka/universal-studios-japan',
+          label: 'Universal Studios Japan',
+        },
+      ],
+    },
+  ];
 
   /** The groups the closing link list is drawn from, in the order their columns stand. */
   const linkGroups: {
@@ -217,223 +297,29 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             </nav>
           </section>
 
-          {/* Popular Parks - Germany */}
-          <section className="hidden space-y-4 md:block">
-            <div className="mb-3 text-sm font-semibold tracking-wide uppercase">
-              {t('sections.popularParks')}
-            </div>
-            <div className="space-y-3">
-              <div>
-                <Link
-                  href="/parks/europe/germany"
-                  prefetch={false}
-                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                >
-                  {t('sections.germany')}
-                </Link>
-                <nav
-                  className="flex flex-col gap-2 text-sm"
-                  aria-label={`${t('sections.popularParks')}: ${t('sections.germany')}`}
-                >
+          {/* Popular parks: one column per country, each under the same rule the link columns
+              below draw (`MenuSectionHeading`) and with the same link class. The heading is the
+              country's hub page. The „Beliebte Parks" label stays in each list's `aria-label`. */}
+          {popularParks.map((country) => (
+            <section key={country.key} className="hidden md:block">
+              <MenuSectionHeading label={country.label} href={country.href} />
+              <nav
+                className="flex flex-col"
+                aria-label={`${t('sections.popularParks')}: ${country.label}`}
+              >
+                {country.parks.map((park) => (
                   <Link
-                    href="/parks/europe/germany/rust/europa-park"
+                    key={park.href}
+                    href={park.href as '/'}
                     prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className={`text-muted-foreground ${footerLinkClass}`}
                   >
-                    Europa-Park
+                    {park.label}
                   </Link>
-                  <Link
-                    href="/parks/europe/germany/bruehl/phantasialand"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Phantasialand
-                  </Link>
-                  <Link
-                    href="/parks/europe/germany/soltau/heide-park"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Heide-Park
-                  </Link>
-                  <Link
-                    href="/parks/europe/germany/bottrop/movie-park-germany"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Movie Park Germany
-                  </Link>
-                  <Link
-                    href="/parks/europe/netherlands/kaatsheuvel/efteling"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Efteling
-                  </Link>
-                </nav>
-              </div>
-            </div>
-          </section>
-
-          {/* Popular Parks - USA */}
-          <section className="hidden space-y-4 md:block">
-            <div className="mb-3 text-sm font-semibold tracking-wide uppercase opacity-0">
-              {t('sections.popularParks')}
-            </div>
-            <div className="space-y-3">
-              <div>
-                <Link
-                  href="/parks/north-america/united-states"
-                  prefetch={false}
-                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                >
-                  {t('sections.usa')}
-                </Link>
-                <nav
-                  className="flex flex-col gap-2 text-sm"
-                  aria-label={`${t('sections.popularParks')}: ${t('sections.usa')}`}
-                >
-                  <Link
-                    href="/parks/north-america/united-states/orlando/magic-kingdom-park"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Magic Kingdom
-                  </Link>
-                  <Link
-                    href="/parks/north-america/united-states/orlando/universal-studios-florida"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Universal Studios
-                  </Link>
-                  <Link
-                    href="/parks/north-america/united-states/tampa/busch-gardens-tampa"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Busch Gardens Tampa
-                  </Link>
-                  <Link
-                    href="/parks/north-america/united-states/anaheim/disneyland-park"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Disneyland
-                  </Link>
-                  <Link
-                    href="/parks/north-america/united-states/santa-clarita/six-flags-magic-mountain"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Six Flags Magic Mountain
-                  </Link>
-                </nav>
-              </div>
-            </div>
-          </section>
-
-          {/* Popular Parks - France */}
-          <section className="hidden space-y-4 md:block">
-            <div className="mb-3 text-sm font-semibold tracking-wide uppercase opacity-0">
-              {t('sections.popularParks')}
-            </div>
-            <div className="space-y-3">
-              <div>
-                <Link
-                  href="/parks/europe/france"
-                  prefetch={false}
-                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                >
-                  {tGeo('countries.france')}
-                </Link>
-                <nav
-                  className="flex flex-col gap-2 text-sm"
-                  aria-label={`${t('sections.popularParks')}: ${tGeo('countries.france')}`}
-                >
-                  <Link
-                    href="/parks/europe/france/paris/disneyland-park"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Disneyland Paris
-                  </Link>
-                  <Link
-                    href="/parks/europe/france/plailly/parc-asterix"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Parc Asterix
-                  </Link>
-                  <Link
-                    href="/parks/europe/france/paris/disney-adventure-world"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Disney Adventure World
-                  </Link>
-                  <Link
-                    href="/parks/europe/france/chasseneuil-du-poitou/futuroscope"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Futuroscope
-                  </Link>
-                  <Link
-                    href="/parks/europe/france/dolancourt/nigloland"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Nigloland
-                  </Link>
-                </nav>
-              </div>
-            </div>
-          </section>
-
-          {/* Popular Parks - Japan */}
-          <section className="hidden space-y-3 md:block">
-            <div className="mb-3 text-sm font-semibold tracking-wide uppercase opacity-0">
-              {t('sections.popularParks')}
-            </div>
-            <div className="space-y-3">
-              <div>
-                <Link
-                  href="/parks/asia/japan"
-                  prefetch={false}
-                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
-                >
-                  {tGeo('countries.japan')}
-                </Link>
-                <nav
-                  className="flex flex-col gap-2 text-sm"
-                  aria-label={`${t('sections.popularParks')}: ${tGeo('countries.japan')}`}
-                >
-                  <Link
-                    href="/parks/asia/japan/tokyo/tokyo-disneyland"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Tokyo Disneyland
-                  </Link>
-                  <Link
-                    href="/parks/asia/japan/tokyo/tokyo-disneysea"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Tokyo DisneySea
-                  </Link>
-                  <Link
-                    href="/parks/asia/japan/osaka/universal-studios-japan"
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Universal Studios Japan
-                  </Link>
-                </nav>
-              </div>
-            </div>
-          </section>
+                ))}
+              </nav>
+            </section>
+          ))}
         </div>
 
         <Separator className="my-6 sm:my-8" />

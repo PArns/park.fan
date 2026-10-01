@@ -925,8 +925,7 @@ button is still the narrow one.
 requirement, with `max-sm:` at the call site and a comment naming the requirement.
 
 Two things the tier does not reach, both still open: controls that are not `<Button>` (the glossary
-filter pills, the blog tag cloud) and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
-apart). `Badge` is deliberately untouched — badges are overwhelmingly labels rather than targets, and
+filter pills, the blog tag cloud) and bare `<Link>`s with no padding (none in the footer since PAR-325: its park links take `footerLinkClass`, 44 px on a phone). `Badge` is deliberately untouched — badges are overwhelmingly labels rather than targets, and
 growing every status chip on every card would move layout the placeholders reserve for.
 
 ---
