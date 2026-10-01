@@ -11,9 +11,22 @@ const patchSchema = z.object({
   status: z.enum(['pending', 'approved', 'rejected']).optional(),
   caption: z.string().max(500).optional(),
   credit: z.string().max(120).optional(),
+  adopted: z
+    .array(
+      z.object({
+        key: z.string().min(1),
+        mediaId: z.string().min(1).max(200),
+        pullRequest: z.string().url().nullable(),
+      })
+    )
+    .max(50)
+    .optional(),
 });
 
-/** PATCH — moderate a submission: change status and/or edit caption/credit. */
+/**
+ * PATCH — moderate a submission: change status, edit caption/credit, and record
+ * which photos were moved into the media database.
+ */
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const unauthorized = await denyUnlessAdmin(request);
   if (unauthorized) return unauthorized;

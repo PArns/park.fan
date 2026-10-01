@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AlertTriangle, MapPin, Upload, X } from 'lucide-react';
+import { AlertTriangle, Loader2, MapPin, Upload, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { FIELD_CLASS } from '../../_ui/controls';
@@ -11,7 +11,8 @@ import {
   type PickerResult,
 } from '../../blog-editor/_components/park-ride-picker';
 import type { AnalyzedFile, Assignment, Vocabulary } from '../_lib/types';
-import { analyzePhoto, commitPhoto, toSlug } from '../../_lib/media-upload';
+import { analyzePhoto, commitPhoto, toSlug, type PhotoSidecar } from '../../_lib/media-upload';
+import { withoutMetadata } from '../../_lib/upload-transport';
 import { UploadWalkthrough } from './upload-walkthrough';
 
 /**
@@ -42,15 +43,45 @@ function extOf(fileName: string): string {
   return ext === 'jpeg' ? 'jpg' : ext;
 }
 
+/**
+ * A batch that arrives with its files instead of a drop, and with part of the
+ * answer already known — a visitor's submission names its park and ride, and
+ * says who took the photos. The walkthrough still runs: the focal point, the
+ * roles and the alt text need somebody to look at each picture either way.
+ */
+export interface UploadSeed {
+  files: File[];
+  /** Per file, laid over what the EXIF analysis proposed. */
+  assignments: Array<Partial<Assignment>>;
+  /** Written into every sidecar of the batch. */
+  credit: NonNullable<PhotoSidecar['credit']>;
+  /**
+   * Re-encode before committing so no EXIF reaches `public/media/`, and keep the
+   * GPS fix out of the sidecar. For photos somebody else took.
+   */
+  stripMetadata: boolean;
+  /** Title of the pull request, should this batch be the one that opens it. */
+  title: string;
+}
+
+/** One file of the batch that reached the media pull request. */
+export interface LandedPhoto {
+  /** Position in the batch, i.e. in `seed.files`. */
+  index: number;
+  /** `<collection>/<name>`. */
+  id: string;
+}
+
 interface Props {
   vocabulary: Vocabulary;
   /** Open a fresh pull request instead of joining the running session. */
   newSession?: boolean;
-  onDone: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
+  seed?: UploadSeed;
+  onDone: (pullRequestUrl: string | null, joinedSession?: boolean, landed?: LandedPhoto[]) => void;
   onClose: () => void;
 }
 
-export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) {
+export function MediaUpload({ vocabulary, newSession, seed, onDone, onClose }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [analysis, setAnalysis] = useState<AnalyzedFile[]>([]);
   const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -70,7 +101,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
   const blobUrls = useMemo(() => files.map((f) => URL.createObjectURL(f)), [files]);
   useEffect(() => () => blobUrls.forEach((url) => URL.revokeObjectURL(url)), [blobUrls]);
 
-  const analyze = useCallback(async (incoming: File[]) => {
+  const analyze = useCallback(async (incoming: File[], presets?: Array<Partial<Assignment>>) => {
     const images = incoming.filter((f) => f.type.startsWith('image/'));
     if (!images.length) return;
     setBusy(`Reading ${images.length} file${images.length === 1 ? '' : 's'}…`);
@@ -91,7 +122,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
       setCursor(0);
       setStage('walk');
       setAssignments(
-        (data.files as AnalyzedFile[]).map((f) => ({
+        (data.files as AnalyzedFile[]).map((f, index) => ({
           // The park is proposed as an answer; the ride deliberately is not.
           collection: f.suggestion.park?.slug ?? '',
           name: toSlug(f.name),
@@ -107,6 +138,9 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
           focus: null,
           skip: false,
           done: false,
+          // What the caller already knows beats what the coordinates suggest: a
+          // submission names its ride, and GPS only ranks candidates for one.
+          ...presets?.[index],
         }))
       );
     } catch (e) {
@@ -115,6 +149,16 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
       setBusy(null);
     }
   }, []);
+
+  // A seeded batch starts analyzing the moment the dialog opens. Once per
+  // mount: Strict Mode runs effects twice, and a second pass would read every
+  // file again and reset the walkthrough under the cursor.
+  const seeded = useRef(false);
+  useEffect(() => {
+    if (!seed || seeded.current) return;
+    seeded.current = true;
+    void analyze(seed.files, seed.assignments);
+  }, [seed, analyze]);
 
   const update = (index: number, patch: Partial<Assignment>) =>
     setAssignments((all) => all.map((a, i) => (i === index ? { ...a, ...patch } : a)));
@@ -170,6 +214,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
     let pullRequest: string | null = null;
     let joined = false;
     const shrunk: string[] = [];
+    const landedPhotos: LandedPhoto[] = [];
 
     try {
       // ONE REQUEST PER IMAGE, in order. A batch in a single body is what exceeded
@@ -185,13 +230,18 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
         let result;
         try {
           result = await commitPhoto({
-            file: files[index],
+            file: seed?.stripMetadata ? await withoutMetadata(files[index]) : files[index],
             collection: assignment.collection,
             name: assignment.name,
-            exif: analysis[index],
+            // A stripped file has no coordinates left to protect, so the fix must
+            // not come back in through the sidecar either. The capture date may.
+            exif: seed?.stripMetadata
+              ? { gps: null, shotAt: analysis[index].shotAt }
+              : analysis[index],
             // Only the FIRST image may start a new pull request; the rest join
             // whatever it opened, or the session that was already running.
             newSession: landed === 0 ? newSession : false,
+            title: seed?.title,
             sidecar: {
               park: assignment.park,
               ride: assignment.ride,
@@ -202,6 +252,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
               caption: assignment.caption ? { de: assignment.caption } : {},
               shotAt: assignment.shotAt,
               focus: assignment.focus,
+              ...(seed ? { credit: seed.credit } : {}),
             },
           });
         } catch (e) {
@@ -213,6 +264,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
         if (result.shrunk || result.transcoded) shrunk.push(assignment.name);
         pullRequest = result.pullRequest ?? pullRequest;
         joined = joined || result.joinedSession;
+        landedPhotos.push({ index, id: `${assignment.collection}/${assignment.name}` });
         landed++;
       }
 
@@ -221,7 +273,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
           `[media] resized to fit the upload limit: ${shrunk.join(', ')} — GPS and capture date were carried into the sidecar.`
         );
       }
-      onDone(pullRequest, joined);
+      onDone(pullRequest, joined, landedPhotos);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -252,7 +304,13 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
           </button>
         </header>
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-4 lg:overflow-hidden">
-          {analysis.length === 0 ? (
+          {analysis.length === 0 && seed ? (
+            // The files are already here; there is nothing to drop, only to wait for.
+            <div className="text-muted-foreground flex items-center justify-center gap-2 p-12 text-sm">
+              {!error && <Loader2 className="h-4 w-4 animate-spin" />}
+              {busy ?? (error ? null : 'Reading the photos…')}
+            </div>
+          ) : analysis.length === 0 ? (
             <div
               onDragOver={(e) => {
                 e.preventDefault();
@@ -468,7 +526,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
             </p>
           )}
 
-          {busy && analysis.length === 0 && (
+          {busy && analysis.length === 0 && !seed && (
             <p className="text-muted-foreground mt-3 text-center text-xs">{busy}</p>
           )}
         </div>

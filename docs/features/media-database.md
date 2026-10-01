@@ -499,6 +499,14 @@ silent: rewriting too little leaves a broken image, and rewriting too much
 repoints a _different_ picture — `taron-queue.jpg` starts with `taron`, and a
 pattern without a boundary would take it along.
 
+### Visitor submissions come in through the upload dialog
+
+`MediaUpload` takes an optional `seed` (files plus per-file presets, a credit for the batch, and
+`stripMetadata`), which is how `/admin/contributions` hands approved photos over: same walkthrough,
+same commit, with park, ride, caption and credit filled in from the submission. `onDone` reports
+which files landed as `<collection>/<name>`. See [contribute → into the media
+database](contribute.md#into-the-media-database).
+
 ### The blog editor is the second write path
 
 An image pasted or dropped into a post is committed by

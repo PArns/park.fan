@@ -26,6 +26,7 @@ import { activeNavItem, visibleGroups, type NavItem } from './nav';
 import { useSession } from './session';
 import { CommandPalette } from './command-palette';
 import { InspectorPanel, useInspector } from './inspector';
+import { NewContributionsNotice } from './new-contributions-notice';
 
 /**
  * The frame every admin page sits in.
@@ -234,6 +235,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
       <InspectorPanel />
       <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
+      <NewContributionsNotice />
     </div>
   );
 }

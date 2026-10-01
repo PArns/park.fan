@@ -79,7 +79,29 @@ export function needsTranscode(file: File): boolean {
  */
 export async function toDatabaseFormat(file: File): Promise<{ file: File; transcoded: boolean }> {
   if (!needsTranscode(file)) return { file, transcoded: false };
+  return { file: await reencodeAsJpeg(file), transcoded: true };
+}
 
+/**
+ * The same photo with nothing in it but pixels.
+ *
+ * For pictures somebody else took. A phone JPEG that fits under the size cap is
+ * committed byte for byte, and its EXIF goes with it into `public/media/`, where
+ * anyone can download the file: the GPS fix, the exact capture time, the camera's
+ * serial number and, on some cameras, the owner's name. Our own shoots can carry
+ * that; a visitor who sent a photo in did not agree to publish it. Re-encoding is
+ * the only way to drop it that keeps the picture upright, because the rotation of
+ * a portrait shot is one of the tags being dropped.
+ */
+export async function withoutMetadata(file: File): Promise<File> {
+  return reencodeAsJpeg(file);
+}
+
+/**
+ * Decode and re-encode as a full-resolution JPEG. Strips every metadata segment,
+ * which is the point for `withoutMetadata` and a side effect for the transcode.
+ */
+async function reencodeAsJpeg(file: File): Promise<File> {
   let bitmap: ImageBitmap;
   try {
     // `from-image` explicitly: a phone photo taken in portrait carries its rotation
@@ -112,10 +134,7 @@ export async function toDatabaseFormat(file: File): Promise<{ file: File; transc
     if (!blob) throw new Error(`${file.name}: die Umwandlung nach JPEG ist fehlgeschlagen.`);
 
     const baseName = file.name.replace(/\.[^.]+$/, '') || 'photo';
-    return {
-      file: new File([blob], `${baseName}.jpg`, { type: 'image/jpeg' }),
-      transcoded: true,
-    };
+    return new File([blob], `${baseName}.jpg`, { type: 'image/jpeg' });
   } finally {
     bitmap.close();
   }
