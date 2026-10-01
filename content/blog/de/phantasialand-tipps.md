@@ -2,7 +2,7 @@
 title: 'Phantasialand Wartezeiten & Tipps: der perfekte Tag, geplant von einem Wiederholungstäter'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-25'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false
@@ -172,9 +172,12 @@ Viel Platz zum Wachsen hat die Familie allerdings nicht. Um eine Erweiterung
 ringt der Park seit 2003, und im Juli 2026 hat der Brühler Planungsausschuss das
 Bauleitverfahren für rund 15 Hektar am Naturschutzgebiet Ententeich eingeleitet.
 Genehmigt ist damit nichts. Zuerst kommen Gutachten zu Natur, Verkehr und
-Hochwasserschutz, und ein Netzwerk von Naturschützern bereitet ein Bürgerbegehren
-dagegen vor. Was dort entstehen soll, hat der Park nicht angekündigt; die Gegner
-rechnen mit Wasserpark, Hotelresort und Eventhalle.
+Hochwasserschutz, und seit dem 28. September sammelt ein Netzwerk von
+Naturschützern Unterschriften für ein Bürgerbegehren dagegen. Geplant sind laut
+Park unter anderem ein Aquapark-Hotelresort, Fahrattraktionen und Theater. Was
+das Phantasialand dazu veröffentlicht hat und wie der Streit seit 2003 verlief,
+steht in [unserer News zum
+Bürgerbegehren](/news/phantasialand-erweiterung-buergerbegehren).
 
 ## Die Headliner, und was sie mit dir machen
 

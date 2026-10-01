@@ -2,7 +2,7 @@
 title: 'Phantasialand : temps d’attente, conseils et jour parfait, par un récidiviste'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-25'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false
@@ -170,13 +170,15 @@ aurait rayés : à l’atelier d’aviation devant F.L.Y., qu’on traverse san
 fasse passer quoi que ce soit.
 
 De la place pour grandir, la famille n’en a guère. Le parc se bat pour un
-agrandissement depuis 2003, et en juillet 2026 la commission d’urbanisme de Brühl
-a lancé la procédure de planification pour une quinzaine d’hectares autour de la
-réserve naturelle de l’Ententeich. Avant toute autorisation, il faut
-encore des expertises sur la nature, la circulation et les crues, et un réseau
-de défenseurs de la nature prépare une initiative citoyenne contre le projet. Le
-parc n’a pas annoncé ce qui y serait construit ; les opposants s’attendent à un
-parc aquatique, un complexe hôtelier et une salle d’événements.
+agrandissement depuis 2003, et en juillet 2026 la commission d’urbanisme de
+Brühl a lancé la procédure de planification pour une quinzaine d’hectares autour
+de la réserve naturelle de l’Ententeich. Avant toute autorisation, il faut
+encore des expertises sur la nature, la circulation et les crues, et depuis le
+28 septembre, un réseau de défenseurs de la nature collecte des signatures pour
+une pétition citoyenne contre le projet. Selon le parc, il est prévu entre
+autres un hôtel-resort avec aquaparc, des attractions et des théâtres. Ce que
+Phantasialand a publié à ce sujet et l’histoire du conflit depuis 2003 sont dans
+[notre actualité sur la pétition](/news/phantasialand-agrandissement-petition).
 
 ## Les têtes d’affiche, et ce qu’elles te font
 

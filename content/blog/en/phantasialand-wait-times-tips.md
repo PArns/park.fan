@@ -2,7 +2,7 @@
 title: 'Phantasialand Wait Times & Tips: the perfect day, planned by a repeat offender'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-25'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false
@@ -164,9 +164,11 @@ Room to grow is scarce, though. The park has been fighting for an expansion
 since 2003, and in July 2026 Brühl’s planning committee opened the formal
 planning procedure for about 15 hectares at the Ententeich nature reserve.
 Opening it approves nothing yet. Surveys on nature, traffic and flood protection
-come first, and a network of conservationists is preparing a citizens’
-initiative against it. The park hasn’t announced what would go there; the
-opponents expect a water park, a hotel resort and an event hall.
+come first, and since 28 September a network of conservationists has been
+collecting signatures for a citizens’ petition against it. According to the
+park, the plans include an aquapark hotel resort, rides and theatres. What
+Phantasialand has published about it, and how the fight has gone since 2003, is
+in [our news story on the petition](/news/phantasialand-expansion-petition).
 
 ## The headliners, and what they do to you
 
