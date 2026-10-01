@@ -25,13 +25,14 @@ import type { EntityContext } from './fingerprint';
  * timeout as a deletion.
  *
  * Which rides count is decided by `getAttractionPaths()` — the sitemap's own list
- * — rather than by re-reading the park payload's roster. The two disagree: the
- * payload for Paultons Park carries `raven-2` while `/v1/sitemap/attractions`
- * carries `raven` as well and therefore drops the variant as a noindex duplicate.
- * Seven rides came out on the wrong side of that, which is seven `<lastmod>`
- * values for URLs no sitemap lists and seven IndexNow pings at noindex pages. The
- * allowlist is one cached request and makes the disagreement structurally
- * impossible instead of a rule copied into two places.
+ * — rather than by re-reading the park payload's roster. The two used to disagree:
+ * the payload for Paultons Park carried `raven-2` while `/v1/sitemap/attractions`
+ * carried `raven` as well, and a slug rule dropped the variant as a noindex
+ * duplicate. Seven rides came out on the wrong side of that, which was seven
+ * `<lastmod>` values for URLs no sitemap listed and seven IndexNow pings at noindex
+ * pages. The backend now lists the row the payload serves (PAR-498), but the
+ * allowlist stays: it is one cached request and keeps the crawl on exactly the
+ * URLs the sitemap lists, whatever either side changes next.
  */
 
 /** Blog backlinks are locale-scoped; the fingerprint is not. */
