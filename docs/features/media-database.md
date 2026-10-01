@@ -301,6 +301,15 @@ landing on it forwarded that activation and tore the panel down mid-drop. And
 `dragleave` checks `relatedTarget`, or the highlight flickers off every time the
 pointer crosses the icon or the text inside the zone.
 
+**Replacing from the grid.** A file dropped on a grid tile takes the same path without
+opening the editor: `pickReplacement` (`app/admin/media/_lib/replace-drop.ts`, shared with
+the editor's bar) refuses a multi-file drop and anything that is not an image, the tile
+shows the dropped picture with a "New file · not saved" label, and a bar above the grid
+sends every staged tile with one **Save** as one commit of `replace` operations. The
+operations carry no sidecar payload, so the server rebuilds each sidecar from the manifest
+and alt texts, focal points and tags stay as they were. Only a dragged _file_ lights a
+tile up. A touch screen has no drag event, so the editor remains the way there.
+
 ### `review` — the field workflow's other half
 
 A photograph taken from `/admin/capture` arrives with what a phone standing in front

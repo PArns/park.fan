@@ -25,6 +25,7 @@ import { FocusEditor } from './focus-editor';
 import { Chip, Field, Notice, Section } from './panel-ui';
 import { OpenInEditor } from '../../_ui/open-in-editor';
 import { fitForCommit } from '../../_lib/upload-transport';
+import { pickReplacement, replacementExt } from '../_lib/replace-drop';
 
 /** Shared field styling — the admin has no form primitives of its own. */
 /** One look for every field in the admin — see `FIELD_CLASS`. */
@@ -292,8 +293,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
           reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
           reader.readAsDataURL(file);
         });
-        const raw = (file.name.split('.').pop() ?? 'jpg').toLowerCase();
-        ext = raw === 'jpeg' ? 'jpg' : raw;
+        ext = replacementExt(file);
       }
 
       const response = await fetch('/api/admin/media/commit', {
@@ -360,17 +360,13 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
    * is how the wrong photo ends up on a ride.
    */
   function replaceFrom(files: FileList | File[] | null) {
-    const list = Array.from(files ?? []);
-    if (list.length === 0) return;
-    if (list.length > 1) {
-      setError('Replacing swaps one file — drop a single image. Use “Add images” for a batch.');
+    const picked = pickReplacement(files);
+    if (!picked) return;
+    if ('error' in picked) {
+      setError(picked.error);
       return;
     }
-    const [file] = list;
-    if (!file.type.startsWith('image/')) {
-      setError(`${file.name} is not an image.`);
-      return;
-    }
+    const { file } = picked;
     setError(null);
     setResult(null);
     const url = URL.createObjectURL(file);

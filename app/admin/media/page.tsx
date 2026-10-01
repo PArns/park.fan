@@ -1,8 +1,16 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { AlertTriangle, Crosshair, GitPullRequest, ImageIcon, Plus, Search } from 'lucide-react';
+import {
+  AlertTriangle,
+  Crosshair,
+  GitPullRequest,
+  ImageIcon,
+  Plus,
+  Search,
+  Upload,
+} from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
@@ -12,6 +20,8 @@ import { MediaUpload } from './_components/media-upload';
 import type { FolderView } from './_lib/folders';
 import type { MediaRow, MediaStats, Vocabulary } from './_lib/types';
 import { AdminPage } from '../_ui/primitives';
+import { fitForCommit } from '../_lib/upload-transport';
+import { pickReplacement, replacementExt } from './_lib/replace-drop';
 
 /**
  * The media database browser.
@@ -47,6 +57,12 @@ interface SessionInfo {
   log: string[];
   /** The files the branch actually touches. Empty until a PR exists. */
   files: { path: string; status: string; additions: number; deletions: number }[];
+}
+
+/** A file dropped on a grid tile, waiting for the one Save that sends them all. */
+interface StagedFile {
+  file: File;
+  url: string;
 }
 
 type QuickFilter = 'review' | 'unlicensed' | 'unassigned' | 'lowres' | 'nofocus' | 'noalt';
@@ -116,6 +132,25 @@ export default function MediaAdminPage() {
   /** Whether the session bar is expanded to list what is already in the PR. */
   const [showSession, setShowSession] = useState(false);
 
+  // Files dropped on grid tiles, keyed by image id. Staged like the editor's
+  // replace bar: nothing is written until "Save", which sends every tile in ONE
+  // commit, so swapping twelve low-res photos is one entry in the session's PR.
+  const [staged, setStaged] = useState<Record<string, StagedFile>>({});
+  /** The tile a file is currently dragged over. */
+  const [dropTarget, setDropTarget] = useState<string | null>(null);
+  const [dropError, setDropError] = useState<string | null>(null);
+  const [savingStaged, setSavingStaged] = useState(false);
+  // Object URLs are revoked when a tile's file is replaced, discarded or the page
+  // goes away; minting one per render would leak one per frame of the preview.
+  const stagedRef = useRef(staged);
+  useEffect(() => {
+    stagedRef.current = staged;
+  }, [staged]);
+  useEffect(
+    () => () => Object.values(stagedRef.current).forEach((entry) => URL.revokeObjectURL(entry.url)),
+    []
+  );
+
   const query = useMemo(() => {
     const search = new URLSearchParams();
     if (q.trim()) search.set('q', q.trim());
@@ -182,6 +217,72 @@ export default function MediaAdminPage() {
   const onUploadDone = (pullRequestUrl: string | null, joined?: boolean) => {
     setUploading(false);
     onCommitted(pullRequestUrl, joined);
+  };
+
+  /** Take a drop on one tile and stage it, or say why it was refused. */
+  const stageOnTile = (id: string, files: FileList | File[] | null) => {
+    const picked = pickReplacement(files);
+    if (!picked) return;
+    if ('error' in picked) {
+      setDropError(picked.error);
+      return;
+    }
+    setDropError(null);
+    const url = URL.createObjectURL(picked.file);
+    setStaged((current) => {
+      if (current[id]) URL.revokeObjectURL(current[id].url);
+      return { ...current, [id]: { file: picked.file, url } };
+    });
+  };
+
+  const discardStaged = () => {
+    Object.values(staged).forEach((entry) => URL.revokeObjectURL(entry.url));
+    setStaged({});
+    setDropError(null);
+  };
+
+  /** Every staged tile as one `replace` each, in a single commit. No sidecar payload:
+   * the server rebuilds it from the manifest, so alt texts, focus and tags stay. */
+  const saveStaged = async () => {
+    const entries = Object.entries(staged);
+    if (entries.length === 0) return;
+    setSavingStaged(true);
+    setDropError(null);
+    try {
+      const operations = await Promise.all(
+        entries.map(async ([id, { file: original }]) => {
+          const { file } = await fitForCommit(original);
+          const contentBase64 = await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+            reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
+            reader.readAsDataURL(file);
+          });
+          return { op: 'replace', id, ext: replacementExt(file), contentBase64 };
+        })
+      );
+      const response = await fetch('/api/admin/media/commit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title:
+            operations.length === 1
+              ? `media: replace ${operations[0].id}`
+              : `media: replace ${operations.length} images`,
+          newSession,
+          operations,
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok && response.status !== 207) throw new Error(result.error ?? 'Save failed');
+      discardStaged();
+      onCommitted(result.pullRequest ?? null, result.joinedSession);
+      void load();
+    } catch (e) {
+      setDropError((e as Error).message);
+    } finally {
+      setSavingStaged(false);
+    }
   };
 
   if (error && !data) return <ErrorPanel message={error} />;
@@ -446,6 +547,43 @@ export default function MediaAdminPage() {
                 {loading ? 'Searching…' : `${total} image${total === 1 ? '' : 's'}`}
               </p>
 
+              {(Object.keys(staged).length > 0 || dropError) && (
+                // Staged tiles are the only unsaved state on this page, so they get
+                // the only bar with a Save in it.
+                <div className="border-border bg-muted/40 mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border px-3 py-2 text-sm">
+                  {dropError ? (
+                    <span className="flex items-start gap-1.5 text-xs text-amber-500">
+                      <AlertTriangle className="mt-px h-3.5 w-3.5 shrink-0" />
+                      {dropError}
+                    </span>
+                  ) : null}
+                  {Object.keys(staged).length > 0 && (
+                    <>
+                      <span className="text-xs">
+                        {Object.keys(staged).length} replacement
+                        {Object.keys(staged).length === 1 ? '' : 's'} not saved
+                      </span>
+                      <button
+                        type="button"
+                        onClick={saveStaged}
+                        disabled={savingStaged}
+                        className="bg-foreground text-background ml-auto rounded-md px-3 py-1 text-xs font-medium disabled:opacity-50"
+                      >
+                        {savingStaged ? 'Saving…' : 'Save'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={discardStaged}
+                        disabled={savingStaged}
+                        className="border-border hover:bg-muted rounded-md border px-2 py-1 text-xs"
+                      >
+                        Discard
+                      </button>
+                    </>
+                  )}
+                </div>
+              )}
+
               {images.length === 0 ? (
                 <EmptyPanel label="Nothing matches those filters." />
               ) : (
@@ -455,12 +593,38 @@ export default function MediaAdminPage() {
                       key={image.id}
                       type="button"
                       onClick={() => setDetailId(image.id)}
-                      className="border-border hover:border-foreground group overflow-hidden rounded-lg border text-left transition-colors"
+                      // Only a dragged FILE is a replacement; text or a link dragged
+                      // over the grid must not light a tile up.
+                      onDragOver={(e) => {
+                        if (!e.dataTransfer.types.includes('Files')) return;
+                        e.preventDefault();
+                        setDropTarget(image.id);
+                      }}
+                      onDragLeave={(e) => {
+                        // Crossing the image or the labels inside the tile fires
+                        // dragleave too; only leaving the tile itself counts.
+                        if (e.currentTarget.contains(e.relatedTarget as Node | null)) return;
+                        setDropTarget((current) => (current === image.id ? null : current));
+                      }}
+                      onDrop={(e) => {
+                        if (!e.dataTransfer.types.includes('Files')) return;
+                        e.preventDefault();
+                        setDropTarget(null);
+                        stageOnTile(image.id, e.dataTransfer.files);
+                      }}
+                      className={cn(
+                        'group overflow-hidden rounded-lg border text-left transition-colors',
+                        dropTarget === image.id
+                          ? 'border-primary ring-primary/40 bg-primary/10 ring-2'
+                          : staged[image.id]
+                            ? 'border-amber-500'
+                            : 'border-border hover:border-foreground'
+                      )}
                     >
                       <div className="bg-muted relative aspect-[4/3]">
                         {/* eslint-disable-next-line @next/next/no-img-element -- admin grid, the optimizer adds nothing here */}
                         <img
-                          src={image.src}
+                          src={staged[image.id]?.url ?? image.src}
                           alt={image.title}
                           loading="lazy"
                           className="h-full w-full object-cover"
@@ -470,6 +634,17 @@ export default function MediaAdminPage() {
                               : '50% 50%',
                           }}
                         />
+                        {dropTarget === image.id && (
+                          <span className="bg-primary/80 text-primary-foreground absolute inset-0 flex items-center justify-center gap-1.5 text-xs font-medium">
+                            <Upload className="h-4 w-4" />
+                            Drop to replace
+                          </span>
+                        )}
+                        {staged[image.id] && dropTarget !== image.id && (
+                          <span className="absolute inset-x-1 top-1 rounded bg-amber-500/95 px-1.5 py-0.5 text-[10px] font-medium text-black">
+                            <span className="truncate">New file · not saved</span>
+                          </span>
+                        )}
                         <div className="absolute top-1 right-1 flex gap-1">
                           {image.focus && (
                             <span
