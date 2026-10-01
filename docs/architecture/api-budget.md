@@ -18,24 +18,35 @@ roughly a seventh.
 
 ## Current budget
 
-| Page               | Calls | API bytes | Was       |
-| ------------------ | ----: | --------: | --------- |
-| home               |     5 |   13.9 KB | 7 / 24.7¹ |
-| parks hub          |     1 |    0.1 KB | unchanged |
-| continent          |     2 |    0.8 KB | unchanged |
-| country            |     2 |    4.0 KB | 2 / 7.4   |
-| city (multi-park)  |     2 |    4.1 KB | 2 / 7.4   |
-| park               |     8 |   69.3 KB | 8 / 119.0 |
-| park `#calendar`   |     9 |  120.6 KB | 9 / 170.4 |
-| attraction         |     2 |   27.0 KB | 2 / 58.3  |
-| search             |     1 |    0.1 KB | unchanged |
-| blog index         |     2 |    9.4 KB | 4 / 18.2  |
-| fancast            |     2 |    9.4 KB | 4 / 18.2  |
-| best-time-to-visit |     2 |    9.4 KB | 4 / 18.2  |
+| Page               | Calls | API bytes | Was         |
+| ------------------ | ----: | --------: | ----------- |
+| home               |     5 |   13.9 KB | 7 / 24.7¹   |
+| parks hub          |     1 |    0.1 KB | unchanged   |
+| continent          |     2 |    0.8 KB | unchanged   |
+| country            |     2 |    4.0 KB | 2 / 7.4     |
+| city (multi-park)  |     2 |    4.1 KB | 2 / 7.4     |
+| park               |     8 |   69.3 KB | 8 / 119.0   |
+| park `#calendar`   |     9 |   92.8 KB | 12 / 121.9² |
+| attraction         |     2 |   27.0 KB | 2 / 58.3    |
+| search             |     1 |    0.1 KB | unchanged   |
+| blog index         |     2 |    9.4 KB | 4 / 18.2    |
+| fancast            |     2 |    9.4 KB | 4 / 18.2    |
+| best-time-to-visit |     2 |    9.4 KB | 4 / 18.2    |
 
 ¹ `/api/analytics/realtime` measured 4.4 KB in the "was" run and 2.4 KB in the "is" run. That is
 the endpoint's own content moving (its most/least-crowded lists), not a change here — the part
 attributable to this work is the region batch, 18.2 KB → 9.3 KB.
+
+² The `#calendar` row is not a tab any more — it is a hop to the calendar page, and it used to be
+one the park page paid for. Its queries start with hydration; the hop sat behind `isMounted`, so
+three of them landed before it fired and the calendar page then fetched the same endpoints again
+(`weather/nowcast`, the park payload and `/api/nearby`, measured 12 calls / 121.9 KB on
+2026-10-01). `CalendarHashRedirect` forwards from an inline script instead, before the chunks that
+hydrate the page are parsed, and the row is now **the calendar page's own cost, to the byte**: 9
+calls / 92.8 KB measured both ways round. The two `calendar` calls in it are not a repeat — they
+are `?from=2026-10-01&to=2026-10-31` for the grid and `?from=2026-10-02&to=2026-10-02` for the
+forecast cell, and the table groups on the path. The month was never fetched twice; the grouping
+made it look that way.
 
 The park row's "was" is the stable figure. One run recorded 8 calls plus a ninth: the harness
 scrolls the page, which the browser can report as a focus event, and `useWeatherNowcast` has
