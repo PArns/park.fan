@@ -2,7 +2,6 @@
 title: 'Quando settanta minuti di attesa sono tanti'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -144,11 +143,11 @@ il modello di previsione si riaddestra con i tempi di attesa del giorno prima,
 mentre i fan del rope drop sono già in coda in autostrada.
 
 L’altra metà è che non buttiamo via nessuna rilevazione. I periodi più
-vecchi vengono compressi, non sfoltiti. Fin dove guarda indietro un’analisi è
-un’altra decisione: «tipico» e «pieno» contano gli ultimi 365 giorni, un giro
-d’anno completo, il consiglio rope drop solo gli ultimi 70, per seguire la
-stagione. Chi comincia a salvare al terzo anno, al terzo anno ha un anno di
-storico, e i due precedenti sono persi per sempre. La nostra serie di
+vecchi vengono compressi, non sfoltiti. Fin dove risale un’analisi lo
+decidiamo caso per caso: per «tipico» e «pieno» prendiamo gli ultimi 365 giorni,
+un giro d’anno completo, per il consiglio rope drop solo gli ultimi 70, per
+seguire la stagione. Chi comincia a salvare al terzo anno, al terzo anno ha un
+anno di storico, e i due precedenti sono persi per sempre. La nostra serie di
 rilevazioni comincia il 26 dicembre 2025, e la colonna dei giorni misurati nella
 tabella qui sopra conta da lì.
 
@@ -180,8 +179,8 @@ descriverebbe il periodo in cui per caso abbiamo già misurato.
 La versione lunga, con le card vere da leggere insieme, adesso è una pagina a
 sé: [Come funziona park.fan](/it/come-funziona-park-fan). Lì c’è, capitolo per
 capitolo, cosa si vede su una card di attrazione, come funziona la scala sotto
-«tipico» e «pieno», come il calendario conteggia le vacanze, come il
-pianificatore ne ricava una giornata e in quali tre punti di proposito non
+«tipico» e «pieno», come le vacanze entrano nel calendario, come nel
+pianificatore ne viene fuori una giornata e in quali tre punti di proposito non
 affermiamo nulla. Ci sono anche quattro situazioni di visita concrete, dalla
 famiglia nelle vacanze d’autunno alla prima volta in un grande parco, passando
 per l’abbonato annuale che si chiede se valga ancora la pena andarci stasera.

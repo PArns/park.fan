@@ -194,9 +194,9 @@ middernacht in bed liggen.
 pyroshows en een kabaal dat je op de A5 richting huis nog in je oren hebt.
 
 Overdag is Rust een ander park, en een met verrassend korte rijen voor zijn
-formaat. De [Europa-Park-gids](/blog/europa-park-wachttijden-tips) rekent dat na
-en legt meteen uit waarom een Traumatica-ticket in november je het laatste
-parkuur kost.
+formaat. In de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) heb ik dat
+nagerekend, en daar staat ook waarom een Traumatica-ticket in november je het
+laatste parkuur kost.
 
 [Europa-Park](ref:europa-park?full)
 

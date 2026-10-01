@@ -2,7 +2,6 @@
 title: 'Pretparken in de winter: wie in december opengaat en wie dat niet kan betalen'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -168,8 +167,8 @@ blijft, want op de plek komt een eigen themagebied met een nieuwe familieachtbaa
 Mack Rides, met ESA als partner, en volgens het park moet het klaar zijn voor
 het seizoen 2028.
 
-Welke weekdag in Rust het rustigst is en hoe november daar verloopt, rekent de
-[Europa-Park-gids](/blog/europa-park-wachttijden-tips) na.
+Welke weekdag in Rust het rustigst is en hoe november daar verloopt, hebben we
+in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) nagerekend.
 
 [Europa-Park](ref:europa-park?full)
 

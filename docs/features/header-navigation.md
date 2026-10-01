@@ -220,6 +220,16 @@ container has neither the binary nor the module. The park page in the same pair 
 _smaller_ compressed, which is the re-chunking CLAUDE.md warns about rather than a saving, so the
 listing page is the number to read.)
 
+**The rows are in the order of the date they print.** `getBlogMenu` reads `listArticlesByRecency`,
+the homepage's order: last change first (`lastTouched`, `updatedAt` where a post has one). Each row
+prints that day, as „Aktualisiert 30. Sept. 2026“ (`navigation.updatedOn`) when it is an update and
+as the bare date when it is the publication. Until 2026-10-01 the rows printed the publication date
+under the update order, so the German panel read 24 Jul, 17 Jul, 28 Sep, 22 Sep, 20 Sep. Sorting by
+publication date instead (#711) lasted a day: a guide with new content should move up. What was
+wrong was the field, which one change had moved on 89 posts at once; it now moves only for new
+content ([the rule](../rules/updated-at-is-for-new-content.md)). `pnpm test:news-split` checks the
+order and the printed day in every locale.
+
 The blog holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes 1, news 1),
 **31 tags** and one author. So the categories are in, the six newest posts are in, and **the tags
 are out**. 31 tag pages over 7 posts means most of them are one post's teaser under a second URL;

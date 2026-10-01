@@ -2,7 +2,6 @@
 title: 'Phantasialand wachttijden & tips: de perfecte dag, gepland door een herhalingsdader'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -161,14 +160,16 @@ In het Phantasialand zie je de familie aan details die een controller geschrapt
 zou hebben, zoals de vliegenierswerkplaats voor F.L.Y., waar je doorheen loopt
 zonder dat ze ook maar iets afhandelt.
 
-Veel ruimte om te groeien heeft de familie alleen niet. Het park strijdt al sinds
-2003 voor een uitbreiding, en in juli 2026 heeft de planningscommissie van Brühl
-de bestemmingsplanprocedure gestart voor zo’n 15 hectare bij het natuurgebied
-Ententeich. Goedgekeurd is daarmee nog niets: eerst komen onderzoeken naar natuur,
-verkeer en hoogwater, en een netwerk van natuurbeschermers bereidt een
-burgerinitiatief tegen de plannen voor. Wat er moet komen, heeft het park niet
-aangekondigd; de tegenstanders rekenen op een waterpark, een hotelresort en een
-evenementenhal.
+Veel ruimte om te groeien heeft de familie alleen niet. Het park strijdt al
+sinds 2003 voor een uitbreiding, en in juli 2026 heeft de planningscommissie van
+Brühl de bestemmingsplanprocedure gestart voor zo’n 15 hectare bij het
+natuurgebied Ententeich. Goedgekeurd is daarmee nog niets: eerst komen
+onderzoeken naar natuur, verkeer en hoogwater, en sinds 28 september verzamelt
+een netwerk van natuurbeschermers handtekeningen voor een burgerinitiatief tegen
+de plannen. Volgens het park komen er onder meer een aquapark-hotelresort,
+attracties en theaters. Wat Phantasialand daarover heeft gepubliceerd en hoe de
+strijd sinds 2003 verliep, staat in [ons nieuwsbericht over het
+burgerinitiatief](/news/phantasialand-uitbreiding-burgerinitiatief).
 
 ## De headliners, en wat ze met je doen
 

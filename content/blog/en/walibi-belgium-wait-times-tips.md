@@ -2,7 +2,6 @@
 title: 'Walibi Belgium: the Walibi nobody thinks of, with the tallest Benelux coaster'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

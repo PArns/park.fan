@@ -2,7 +2,6 @@
 title: 'Europa-Park: Germany’s biggest park, and where everybody went'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -738,9 +737,9 @@ Sunday.
 **Looking only at the German school holidays.** A good half of the crowd isn’t
 German. A day in late October can be an ordinary school day in
 Baden-Württemberg and still fill up, because France is on its Toussaint break or
-Basel-Stadt on its autumn holidays. Our calendar counts the holidays in Alsace
-and in three Swiss cantons for this park; the holiday calendar of a single
-German state doesn’t.
+Basel-Stadt on its autumn holidays. For this park we factor the holidays in
+Alsace and in three Swiss cantons into our calendar; the holiday calendar of a
+single German state leaves them out.
 
 **Taking Tuesday for a quiet weekday.** In our data it’s the busiest weekday
 of all, if only just. If only a weekday will do, take Friday, which comes closest

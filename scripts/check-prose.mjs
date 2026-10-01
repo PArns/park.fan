@@ -127,6 +127,22 @@ const isQueueSlip = (word) =>
   !/warteschlange|von\s+midgard|^(?:see|riesen|klapper|gift|wasser|ringel|königs)schlange|schlangen(?:artig|förmig|linie)/i.test(
     word
   );
+/**
+ * `Eines davon rechnet durch, was passiert, wenn der Ententeich verschwindet.` (§2.13): a report
+ * doing the sums, as the hook at the end of an excerpt. The report examined the effects; it does
+ * no arithmetic, and a document cannot. It shipped in the Phantasialand news post of 2026-10-01
+ * in all six languages (`works out what happens`, `rekent uit wat er gebeurt`, `calcule ce qui se
+ * passe`, `calcula qué pasa`, `calcola cosa succede`). An error: none of these has a reading that
+ * survives the rule. `ich rechne`, `wir rechnen` and `durchgerechnet habe` are a person and stay.
+ */
+const RECKONING = {
+  de: /\brechnet\b[^.!?,;:]{0,80}?\bdurch(?=\s*[,.!?;:)]|\s*$)|\bdurchrechnet\b/giu,
+  en: /\bworks? out what (?:would )?happens?\b|\b(?:runs|crunches) the numbers\b/giu,
+  nl: /\brekent\b[^.!?,;:]{0,80}?\bdoor(?=\s*[,.!?;:)]|\s*$)|\bdoorrekent\b|\brekent uit wat er\b/giu,
+  fr: /\bcalcule ce qui (?:se passe|se passerait|arrive|arriverait)\b/giu,
+  es: /\bcalcula (?:qué|lo que) (?:pasa|pasaría|ocurre|ocurriría|sucede|sucedería)\b/giu,
+  it: /\bcalcola (?:cosa|che cosa|quello che|ciò che) (?:succede|succederebbe|accade|accadrebbe)\b/giu,
+};
 /** `„…"`: a German opening quote closed by the straight ASCII one (§4.5). */
 const GERMAN_STRAIGHT_CLOSE = /„[^“”"„\n]{1,200}"/g;
 
@@ -204,6 +220,13 @@ const WATCH = [
     // The same in the four derived languages; every hit there was found by reading until 2026-09-30.
     what: 'things that talk, nl/fr/es/it (§2.13)',
     re: /(?<!\p{L})(?:(?:de|het) (?:\p{L}+ )?(?:data|cijfers|tabel|kalender|kolom|curve|kaart|voorspelling|mediaan|wachtrij)\s+(?:zegt|zeggen|vertelt|vertellen|laat zien|laten zien|verraadt|verraden|weet|weten|kent|kennen|belooft|liegt)|(?:les données|les chiffres|le tableau|le calendrier|la courbe|la carte|la prévision|la médiane|la file)\s+(?:(?:te|vous|nous|le|la)\s+)*(?:dit|disent|montre|montrent|révèle|révèlent|sait|savent|annonce|promet|ment)|(?:los datos|las cifras|la tabla|el calendario|la curva|el mapa|la previsión|la mediana|la cola|la fila)\s+(?:(?:te|os|nos|lo|la)\s+)*(?:dice|dicen|muestra|muestran|revela|revelan|sabe|saben|anuncia|promete|miente|enseña)|(?:i dati|i numeri|la tabella|il calendario|la curva|la mappa|la previsione|la mediana|la coda|la fila)\s+(?:(?:ti|vi|ci|lo|la)\s+)*(?:dice|dicono|mostra|mostrano|rivela|rivelano|sa|sanno|annuncia|promette|mente|racconta))(?!\p{L})/giu,
+  },
+  {
+    // `Der Europa-Park-Guide rechnet das nach`, `rekent de widget hierboven uit`: a page, a guide,
+    // a report or a calendar doing the sums (§2.13). Say who did them (`habe ich nachgerechnet`)
+    // or where the result is. A model computing a forecast is arithmetic and is not on the list.
+    what: 'things that calculate (§2.13)',
+    re: /(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer|übersicht)\s+(?:oben\s+|unten\s+|hierüber\s+|darunter\s+)?(?:rechnet|rechnen)\b|\b(?:rechnet|rechnen)\s+(?:der|die|das|unser\p{L}*)\s+(?:\p{L}+\s+)?(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer)\b|\b(?:eine[rs]?|eins) davon rechnet\b|(?:report|study|guide|article|post|page|widget|calendar|table|planner)s?\s+(?:works out|calculates|crunches|adds up|does the maths?)\b|(?:rapport|onderzoek|studie|gids|artikel|pagina|widget|kalender|tabel|planner)\s+(?:rekent|rekenen)\b|\brekent\s+(?:de|het|onze)\s+(?:\p{L}+\s+)?(?:gids|widget|kalender|planner|dagplanner|pagina|tabel)\b|(?:rapport|étude|guide|article|page|widget|calendrier|tableau|planificateur)s?\s+calcule\b|(?:informe|estudio|guía|artículo|página|widget|calendario|tabla|planificador)\s+calcula\b|(?:rapporto|studio|guida|articolo|pagina|widget|calendario|tabella|pianificatore)\s+calcola\b/giu,
   },
   {
     // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
@@ -656,6 +679,12 @@ function hardRules(file, text, locale) {
   const placeholder = text.match(PLACEHOLDER);
   if (placeholder)
     fail(file, `placeholder text (§1.8): ${[...new Set(placeholder)].slice(0, 5).join(', ')}`);
+  const reckoning = RECKONING[locale] && text.replace(/\s+/g, ' ').match(RECKONING[locale]);
+  if (reckoning)
+    fail(
+      file,
+      `a document that does the sums (§2.13), say who examined what: ${[...new Set(reckoning)].slice(0, 3).join(' · ')}`
+    );
   if (locale === 'de') {
     const queue = (text.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);
     if (queue.length)

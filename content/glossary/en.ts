@@ -833,7 +833,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A planned order of attractions for one day, drawn up to keep the total wait short and fit in as many rides as possible.',
     definition:
-      "A touring plan is a prepared sequence of attractions, meal breaks and movements around a park, put together to keep the total time spent queueing down. A workable plan accounts for which areas fill up first, how much each attraction can carry, how its queue behaves, the show schedule, the walking distances and the weather. TouringPlans.com and Thrill-Data both publish detailed plans for the major parks. park.fan's live wait times and crowd calendar work alongside such a plan: a ride that was pencilled in for the morning and posts a 15-minute standby at 2 PM is a reason to change the order on the spot.",
+      "A touring plan is a prepared sequence of attractions, meal breaks and movements around a park, put together to keep the total time spent queueing down. Anyone drawing up a workable plan has to allow for which areas fill up first, how much each attraction can carry, how its queue behaves, the show schedule, the walking distances and the weather. TouringPlans.com and Thrill-Data both publish detailed plans for the major parks. park.fan's live wait times and crowd calendar work alongside such a plan: a ride that was pencilled in for the morning and posts a 15-minute standby at 2 PM is a reason to change the order on the spot.",
     relatedTermIds: ['crowd-calendar', 'early-entry', 'rope-drop', 'wait-time'],
   },
   {

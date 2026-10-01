@@ -1,19 +1,27 @@
+import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { NearbyParkItem } from '@/lib/api/types';
+
+/** How old the neighbours' status may get while the section is in view. */
+const NEIGHBORS_STALE_MS = 30 * 60_000;
 
 /**
  * Batch-fetch live status for the parks near a given location, keyed by park id.
  *
  * Backs the park page's nearby-parks overlay: the cards' structure is prerendered status-free and
- * this hook layers live open/closed status + crowd on the client (no-store, 5-min poll). Mirrors
- * the other live hooks; client-only so the SSR shell stays status-free.
+ * this hook layers live open/closed status + crowd on the client (no-store). Fetched once on load;
+ * after that it refreshes 30 min after the last attempt, only while the section is on screen
+ * (`active`), and at once when it scrolls back into view with a status older than that. Someone
+ * standing in a park does not need the neighbours' status every 5 min, and each request wakes the
+ * phone's radio. Client-only so the SSR shell stays status-free.
  */
 export function useParkNeighbors(
   lat: number,
   lng: number,
   excludeParkId: string,
   limit = 3,
-  maxDistanceM = 100_000
+  maxDistanceM = 100_000,
+  active = false
 ) {
   // Plain object (not a Map) so React Query's structural sharing keeps the result identity
   // stable across polls when nothing changed (a Map would re-render consumers every poll).
@@ -34,13 +42,28 @@ export function useParkNeighbors(
       return map;
     },
     enabled: typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
+    staleTime: NEIGHBORS_STALE_MS,
+    gcTime: 2 * NEIGHBORS_STALE_MS,
+    // Coming back to the tab or the network is not a reason to ask: the section refreshes itself
+    // when it is on screen (below), and a hidden tab does not need the answer.
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     retry: 2,
   });
+
+  // One timer, set from the last attempt (a failed refresh counts, or an API outage would refetch
+  // in a loop): it fires 30 min after that attempt, or at once when the section comes back into
+  // view with an older one. Leaving the view clears it; no data yet is the initial fetch's job.
+  const { dataUpdatedAt, errorUpdatedAt, refetch } = query;
+  useEffect(() => {
+    if (!active || dataUpdatedAt === 0) return;
+    const lastAttempt = Math.max(dataUpdatedAt, errorUpdatedAt);
+    const timer = setTimeout(
+      () => void refetch(),
+      Math.max(0, lastAttempt + NEIGHBORS_STALE_MS - Date.now())
+    );
+    return () => clearTimeout(timer);
+  }, [active, dataUpdatedAt, errorUpdatedAt, refetch]);
 
   return { liveByParkId: query.data };
 }

@@ -13,29 +13,32 @@ shots still come through. Nothing is shown publicly until a moderator approves i
 
 ## Pieces
 
-| Concern                                           | File                                          |
-| ------------------------------------------------- | --------------------------------------------- |
-| Public page (hero + gallery + rights + form)      | `app/[locale]/contribute/page.tsx`            |
-| Form orchestrator (start → upload → finalize)     | `components/contribute/contribute-form.tsx`   |
-| Drag & drop multi-upload + previews               | `components/contribute/photo-dropzone.tsx`    |
-| Ride/park picker (cmdk + `/api/search`)           | `components/contribute/entity-picker.tsx`     |
-| Turnstile widget (shared with `/admin`)           | `components/common/turnstile-widget.tsx`      |
-| Rights / "what we do with your photos" notice     | `components/contribute/rights-notice.tsx`     |
-| Example gallery                                   | `components/contribute/example-gallery.tsx`   |
-| Reusable CTA banner (parks/rides link here)       | `components/contribute/contribute-banner.tsx` |
-| Begin (Turnstile + signed ticket)                 | `app/api/contribute/start/route.ts`           |
-| Proxy one photo to the private Blob store         | `app/api/contribute/file/route.ts`            |
-| Finalize (write moderation record)                | `app/api/contribute/finalize/route.ts`        |
-| Client-side downscale (fit the body limit)        | `components/contribute/compress.ts`           |
-| Turnstile server verify (shared with `/admin`)    | `lib/security/turnstile.ts`                   |
-| HMAC ticket                                       | `lib/contribute/ticket.ts`                    |
-| Storage driver resolution                         | `lib/contribute/driver.ts`                    |
-| Server-side image store (Blob `put` / local FS)   | `lib/contribute/storage.ts`                   |
-| Submissions repository (list/get/update/delete)   | `lib/contribute/submissions.ts`               |
-| Prefill helpers (park/ride → /contribute)         | `lib/contribute/prefill.ts`                   |
-| Admin moderation page                             | `app/admin/contributions/page.tsx`            |
-| Admin APIs (list / patch / delete / file preview) | `app/api/admin/contributions/**`              |
-| i18n                                              | `contribute` namespace in `messages/*.json`   |
+| Concern                                           | File                                                       |
+| ------------------------------------------------- | ---------------------------------------------------------- |
+| Public page (hero + gallery + rights + form)      | `app/[locale]/contribute/page.tsx`                         |
+| Form orchestrator (start → upload → finalize)     | `components/contribute/contribute-form.tsx`                |
+| Drag & drop multi-upload + previews               | `components/contribute/photo-dropzone.tsx`                 |
+| Ride/park picker (cmdk + `/api/search`)           | `components/contribute/entity-picker.tsx`                  |
+| Turnstile widget (shared with `/admin`)           | `components/common/turnstile-widget.tsx`                   |
+| Rights / "what we do with your photos" notice     | `components/contribute/rights-notice.tsx`                  |
+| Example gallery                                   | `components/contribute/example-gallery.tsx`                |
+| Reusable CTA banner (parks/rides link here)       | `components/contribute/contribute-banner.tsx`              |
+| Begin (Turnstile + signed ticket)                 | `app/api/contribute/start/route.ts`                        |
+| Proxy one photo to the private Blob store         | `app/api/contribute/file/route.ts`                         |
+| Finalize (write moderation record)                | `app/api/contribute/finalize/route.ts`                     |
+| Client-side downscale (fit the body limit)        | `components/contribute/compress.ts`                        |
+| Turnstile server verify (shared with `/admin`)    | `lib/security/turnstile.ts`                                |
+| HMAC ticket                                       | `lib/contribute/ticket.ts`                                 |
+| Storage driver resolution                         | `lib/contribute/driver.ts`                                 |
+| Server-side image store (Blob `put` / local FS)   | `lib/contribute/storage.ts`                                |
+| Submissions repository (list/get/update/delete)   | `lib/contribute/submissions.ts`                            |
+| Prefill helpers (park/ride → /contribute)         | `lib/contribute/prefill.ts`                                |
+| Admin moderation page                             | `app/admin/contributions/page.tsx`                         |
+| Hand-over into the media database                 | `app/admin/contributions/_components/adopt-into-media.tsx` |
+| "New submissions" toast after the login           | `app/admin/_app/new-contributions-notice.tsx`              |
+| Admin APIs (list / patch / delete / file preview) | `app/api/admin/contributions/**`                           |
+| Pending summary for the toast                     | `app/api/admin/contributions/summary/route.ts`             |
+| i18n                                              | `contribute` namespace in `messages/*.json`                |
 
 ## Upload flow (server proxy)
 
@@ -50,7 +53,54 @@ shots still come through. Nothing is shown publicly until a moderator approves i
    (the write token never reaches the browser).
 4. `POST /api/contribute/finalize` → verifies the ticket and writes ONE `pending`
    record referencing the stored blobs.
-5. A moderator reviews it in `/admin/contributions` and approves/rejects/edits/deletes.
+5. A moderator reviews it in `/admin/contributions` and approves/rejects/edits/deletes,
+   and moves the photos worth keeping into the media database (below).
+
+## Into the media database
+
+Approving a submission publishes nothing by itself: the bytes stay in the private store. A photo
+reaches a ride page by being moved into the [media database](media-database.md), which is the
+repository, so moving means committing it into the open media pull request.
+
+On the moderation card every photo not moved yet has a tick box, all of them ticked to start with.
+**N Fotos in die Mediengalerie** downloads the ticked ones through the admin file route and opens
+the media browser's own upload dialog (`MediaUpload`) with a `seed`: the files plus what the
+submission already says. Park and ride come from the entity's page path and slug and win over
+what the photo's GPS suggests; the caption goes into the German caption field; the credit is
+written into every sidecar of the batch. The walkthrough then runs as for any upload, because the
+focal point, the roles and the alt text need somebody to look at each picture. Unsaved edits to
+caption and credit on the card are what gets written, and they are saved with the adoption.
+
+Four rules in that hand-over:
+
+- **The credit is the visitor's or nobody's.** `credit.author` is set only when the visitor gave a
+  name, with `license: all-rights-reserved` (they keep the copyright, we hold the licence they
+  granted) and `source: contribution`. Without a name there is no author, so `getCreditLine()`
+  returns null and no credit is drawn. It is never filled with `OWN_PHOTO_AUTHOR`. The old hover
+  button wrote `credit.name`, a key the sidecar does not have, and lost the name every time.
+- **No visitor EXIF reaches `public/media/`.** A phone JPEG under the size cap used to be committed
+  byte for byte, with its GPS fix, capture time, camera serial and sometimes the owner's name, in
+  a file anyone can download. `withoutMetadata()` (`app/admin/_lib/upload-transport.ts`) re-encodes
+  with `imageOrientation: 'from-image'`, so a portrait shot stays upright after its rotation tag is
+  gone. The GPS fix is kept out of the sidecar as well; the capture date stays. The analysis still
+  reads the original, so the ride shortlist works.
+- **The file name is fixed:** `<entity slug>-<first six of the submission id>`, `-2`, `-3` after
+  it by the photo's place in the submission. A second attempt after a failed commit overwrites
+  what the first wrote instead of adding a copy.
+- **The submission records where each photo went.** `StoredImageRecord.adopted` holds the media
+  id, the pull request and the time; the card shows **In Galerie** with a link to the PR, and
+  adopting approves the submission. The photo is live once that PR is merged, and the media
+  browser finds it after the deploy, since it reads `main`.
+
+## New submissions are announced after the login
+
+`NewContributionsNotice`, mounted in the admin shell, asks
+`GET /api/admin/contributions/summary` (pending submissions only, newest first, no image
+references and no blob inventory) once the session stands, and again on a tab focus after five
+minutes. Pending submissions newer than the last one this browser was told about become one toast
+with **Ansehen**. "Told about" is a localStorage high-water mark, per browser, so a second moderator
+gets their own notice; landing on `/admin/contributions` counts as being told. Accounts below
+`author` do not ask, since the route would answer 403.
 
 ## Storage
 

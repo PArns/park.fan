@@ -162,17 +162,22 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     };
   }
 
-  // Numbered-suffix slugs (e.g. playground-2, behind-the-seams-3) are backend
-  // duplicates of the base attraction. Mark them noindex and point canonical at
-  // the base slug so Google consolidates signals on the primary page.
+  // A numbered-suffix slug (e.g. playground-2) is a backend duplicate of the base
+  // attraction only when the base slug exists in the same park AND carries the same
+  // name. Then it is noindex with canonical at the base slug, so Google consolidates
+  // signals on the primary page. The name check keeps distinct rides whose slug
+  // happens to end in a number indexable: "Main Train 2" next to "Main Train", or
+  // `midnight-2` renamed to "The Conjuring: Beyond Fear". The comparison is exact,
+  // like the backend's own name grouping, so "Dia de los Muertos" next to
+  // "Dia De Los Muertos" stays indexable too.
   const isVariantSlug = /^.+-\d+$/.test(attractionSlug);
   const baseSlug = isVariantSlug ? attractionSlug.replace(/-\d+$/, '') : attractionSlug;
-  const canonicalAttractionSlug = park?.attractions?.some((a) => a.slug === baseSlug)
-    ? baseSlug
-    : attractionSlug;
-  // Only noindex when we actually resolved a different canonical — avoids
-  // incorrectly noindexing legitimate slugs like "area-51" or "coaster-360".
-  const isDeduplicatedVariant = isVariantSlug && canonicalAttractionSlug !== attractionSlug;
+  const canonicalAttractionSlug =
+    isVariantSlug &&
+    park?.attractions?.some((a) => a.slug === baseSlug && a.name === attraction.name)
+      ? baseSlug
+      : attractionSlug;
+  const isDeduplicatedVariant = canonicalAttractionSlug !== attractionSlug;
 
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
   const tGlobal = await getTranslations({ locale, namespace: 'seo.global' });

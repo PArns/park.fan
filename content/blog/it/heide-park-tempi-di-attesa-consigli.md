@@ -2,7 +2,6 @@
 title: 'Heide Park: Colossos tutto in legno, e intorno è un debutto tedesco dopo l’altro'
 translationKey: heide-park-guide
 date: '2026-09-20'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -466,7 +465,7 @@ tutti i giorni, e non c’è apertura invernale. Il calendario pubblicato è sul
 Un venerdì di settembre, molto prima di un sabato di agosto. Il giorno della
 settimana e il mese spostano da soli all’incirca lo stesso, e insieme più di
 ciascuno dei due. Quali fra i prossimi giorni di apertura saranno i più
-tranquilli lo calcola ogni giorno il widget qui sopra.
+tranquilli lo trovi nel widget qui sopra, aggiornato ogni giorno.
 
 ### Quali montagne russe dell’Heide Park sono state le prime in Germania?
 

@@ -1,8 +1,7 @@
 ---
-title: 'Le planificateur calcule avant que tu sois dans la mauvaise file'
+title: 'Planifier ta journée au parc avant de te retrouver dans la mauvaise file'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -34,9 +33,9 @@ coverImage:
 seo:
   title: 'Journée au parc : compter les files avant de faire la queue'
   description: >-
-    Le planificateur pose tes attractions sur une frise, compte avec
-    les attentes prévues et les trajets, et tu sais d’avance si la journée tient.
-    Sans compte.
+    Dans le planificateur, tu poses tes attractions sur une frise, avec les
+    attentes prévues et les trajets entre elles, et tu vois d’avance si la
+    journée tient. Sans compte.
   keywords:
     - planifier une journée parc
     - planificateur parc attractions
@@ -66,8 +65,9 @@ moment », on y répond depuis le premier jour. « Est-ce beaucoup pour un m
 depuis [fin août](/blog/70-minutes-est-ce-beaucoup). La troisième question
 n’était nulle part : est-ce que ma journée tient debout ?
 
-Depuis début septembre, elle y est. Le [planificateur](/planificateur) pose tes
-attractions sur une frise et calcule la journée avant que tu partes.
+Depuis début septembre, elle y est. Dans le [planificateur](/planificateur), tu
+poses tes attractions sur une frise, avec les attentes prévues et les trajets
+entre elles, et tu vois avant de partir si elles tiennent dans la journée.
 
 ## Les blocs sur la frise
 
@@ -191,8 +191,9 @@ le point un est tout le jeu, et depuis le 21 septembre il n’est plus tranché 
 silence. Si tout ne tient pas, chacun des deux boutons ouvre
 d’abord un assistant en trois étapes. Sous « Ajustements » figure ce qui ferait
 de la place, par exemple supprimer la pause déjeuner ou la réduire à une
-demi-heure, et chaque ligne est calculée : elle n’apparaît que si elle fait
-vraiment entrer une attraction de plus dans la journée. Sous « Priorités », la
+demi-heure. Pour chaque ligne, nous replanifions toute la journée avec ce
+changement, et elle n’apparaît que si elle fait vraiment entrer une attraction
+de plus dans la journée. Sous « Priorités », la
 liste complète dans l’ordre où l’on rayerait, et tu remontes tout en haut ce que
 tu ne veux surtout pas manquer. Les attractions que tu avais planifiées toi-même
 y figurent aussi, parce qu’ici c’est toi qui décides, pas le bouton. Sous

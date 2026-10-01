@@ -2,7 +2,6 @@
 title: 'Theme parks in winter: who opens in December and who can’t afford to'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -164,8 +163,8 @@ in that very module. The park has announced a farewell event for **9 January
 with a new family coaster from Mack Rides is going up on the site, with ESA as a
 partner, and the park says it will be finished for the 2028 season.
 
-Which weekday is quietest in Rust and what November is like there is worked
-through in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
+We worked out which weekday is quietest in Rust and what November is like there
+in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
 
 [Europa-Park](ref:europa-park?full)
 

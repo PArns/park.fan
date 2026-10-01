@@ -2,7 +2,6 @@
 title: 'Heide Park: Colossos y los cuatro estrenos alemanes del parque'
 translationKey: heide-park-guide
 date: '2026-09-20'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -467,8 +466,8 @@ diario, y no hay temporada de invierno. El calendario publicado está en la
 
 Un viernes de septiembre, muy por delante de un sábado de agosto. El día de la
 semana y el mes mueven por separado más o menos lo mismo, y juntos más que cada
-uno por su cuenta. Cuáles de los próximos días de apertura serán los más
-tranquilos lo calcula a diario el widget de más arriba.
+uno por su cuenta. Los próximos días de apertura más tranquilos están en el
+widget de más arriba, actualizado a diario.
 
 ### ¿Qué montañas rusas del Heide Park fueron estrenos alemanes?
 

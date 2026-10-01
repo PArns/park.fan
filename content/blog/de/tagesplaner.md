@@ -1,8 +1,7 @@
 ---
-title: 'Der Tagesplaner rechnet nach, bevor du in der falschen Warteschlange stehst'
+title: 'Deinen Parktag planen, bevor du in der falschen Warteschlange stehst'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -34,9 +33,9 @@ coverImage:
 seo:
   title: 'Parktag planen: Wartezeiten einrechnen, bevor du anstehst'
   description: >-
-    Der Tagesplaner legt deine Bahnen auf eine Zeitleiste, rechnet mit
-    vorhergesagten Wartezeiten und Wegen und zeigt vorher, ob der Tag aufgeht.
-    Ohne Konto.
+    Im Tagesplaner legst du deine Bahnen auf eine Zeitleiste, mit den
+    vorhergesagten Wartezeiten und den Wegen dazwischen, und siehst vorher, ob
+    der Tag aufgeht. Ohne Konto.
   keywords:
     - Freizeitpark Tag planen
     - Tagesplaner Freizeitpark
@@ -65,8 +64,9 @@ beantworten wir seit dem ersten Tag. „Ist das viel für einen Dienstag“ seit
 [Ende August](/blog/sind-70-minuten-viel). Nirgends stand bisher die dritte
 Frage, ob der Tag so überhaupt aufgeht.
 
-Seit Anfang September steht sie da. Der [Tagesplaner](/tagesplaner) legt deine
-Bahnen auf eine Zeitleiste und rechnet den Tag durch, bevor du losfährst.
+Seit Anfang September steht sie da. Im [Tagesplaner](/tagesplaner) legst du
+deine Bahnen auf eine Zeitleiste, mit den vorhergesagten Wartezeiten und den
+Wegen dazwischen, und siehst vor der Abfahrt, ob sie in den Tag passen.
 
 ## Blöcke und Umstiege auf der Zeitleiste
 
@@ -186,9 +186,9 @@ In einem Park mit mehr Headlinern, als in einen Tag passen, ist Punkt eins das
 ganze Spiel, und seit dem 21. September siehst du vorher, was dabei
 herausfällt. Passt nicht alles hinein, öffnet jeder der beiden Knöpfe zuerst einen
 Assistenten mit drei Schritten. Unter „Stellschrauben“ steht, was Platz schaffen
-würde, etwa die Mittagspause weglassen oder auf eine halbe Stunde kürzen, und
-jede Zeile ist nachgerechnet und erscheint nur, wenn sie eine Bahn mehr
-in den Tag bringt. Unter „Wichtigkeit“ steht die ganze Liste in der Reihenfolge,
+würde, etwa die Mittagspause weglassen oder auf eine halbe Stunde kürzen. Für
+jede Zeile planen wir den ganzen Tag mit dieser Änderung neu, und sie erscheint
+nur, wenn sie wirklich eine Bahn mehr in den Tag bringt. Unter „Wichtigkeit“ steht die ganze Liste in der Reihenfolge,
 in der gestrichen würde, und du hebst nach oben, was du auf keinen Fall
 verpassen willst. In dieser Liste stehen auch die Bahnen, die du selbst
 eingeplant hast, denn hier entscheidest du. Unter

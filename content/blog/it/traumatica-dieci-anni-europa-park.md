@@ -46,8 +46,8 @@ volta, di sera, attori coperti di sangue finto in mezzo ai visitatori. Si
 chiamava «Terenzi Horror Nights», dal cantante Marc Terenzi, che ha
 organizzato l’evento insieme a Michael Mack fino al 2012. Dal 2017 porta il nome
 Traumatica, all’inizio come «Horror Nights – Traumatica», quindi il 2026 è la
-decima edizione con questo nome. Il motto somma le due
-cose: «20 anni di horror, 10 anni di Traumatica».
+decima edizione con questo nome. Nel motto ci sono tutti e due i numeri:
+«20 anni di horror, 10 anni di Traumatica».
 
 L’anteprima è stasera, mercoledì 23 settembre. La prima ufficiale è venerdì
 25 settembre, e la stagione va avanti fino a sabato 7 novembre.

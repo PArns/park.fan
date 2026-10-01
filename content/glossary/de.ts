@@ -926,7 +926,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Besuchsplan, der die Attraktionen so ordnet, dass man möglichst wenig wartet und möglichst viel fährt.',
     definition:
-      'Ein Touringplan legt vorab fest, in welcher Reihenfolge man Attraktionen besucht, wann man isst und welchen Weg man durch den Park nimmt, damit die Wartezeit über den Tag möglichst kurz bleibt. Ein guter Touringplan rechnet damit, welche Bereiche sich zuerst füllen, wie viele Fahrgäste eine Attraktion pro Stunde schafft, wie sich die Warteschlangen entwickeln, wann Shows sind und wie das Wetter wird. Seiten wie TouringPlans.com veröffentlichen ausführliche Pläne für große Parks. Mit den Live-Wartezeiten von park.fan lässt sich ein Plan unterwegs anpassen, im Besucherkalender sucht man vorher den Tag aus.',
+      'Ein Touringplan legt vorab fest, in welcher Reihenfolge man Attraktionen besucht, wann man isst und welchen Weg man durch den Park nimmt, damit die Wartezeit über den Tag möglichst kurz bleibt. Wer einen guten Touringplan aufstellt, plant ein, welche Bereiche sich zuerst füllen, wie viele Fahrgäste eine Attraktion pro Stunde schafft, wie sich die Warteschlangen entwickeln, wann Shows sind und wie das Wetter wird. Seiten wie TouringPlans.com veröffentlichen ausführliche Pläne für große Parks. Mit den Live-Wartezeiten von park.fan lässt sich ein Plan unterwegs anpassen, im Besucherkalender sucht man vorher den Tag aus.',
     aliases: ['Touringpläne'],
     alternateNames: ['Touring Plan', 'Besuchsplan', 'Parkplan', 'Besuchsstrategie'],
 

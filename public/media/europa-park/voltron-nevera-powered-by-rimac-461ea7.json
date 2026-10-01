@@ -1,0 +1,16 @@
+{
+  "park": "europa-park",
+  "ride": "voltron-nevera-powered-by-rimac",
+  "roles": ["ride-card"],
+  "tags": ["day", "photo", "sunny"],
+  "credit": {
+    "author": "Dominik",
+    "license": "all-rights-reserved",
+    "source": "contribution"
+  },
+  "shotAt": "2026-08-29",
+  "focus": {
+    "x": 0.2701,
+    "y": 0.2077
+  }
+}

@@ -3,9 +3,6 @@ import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getPopularParks } from '@/lib/api/parks';
 import { locales } from '@/i18n/config';
 
-/** Numbered-suffix slugs like "taron-2" MAY be noindex duplicates — see getAttractionPaths. */
-const VARIANT_SLUG_RE = /^(.+)-\d+$/;
-
 /**
  * Locale-agnostic content paths, shared by the IndexNow submitter and the
  * cache-prewarm crawler so both always cover the same URL set.
@@ -42,38 +39,22 @@ export async function getParkPaths(): Promise<string[]> {
 }
 
 /**
- * Attraction detail paths, excluding noindex variant slugs. Mirrors the
- * attraction page's rule exactly: a numbered-suffix slug (e.g. "playground-2")
- * is only a noindex duplicate when its base slug exists in the SAME park —
- * legitimate slugs like "area-51" or "spindeln-nyhet-2026" stay indexable.
- * Transforms the API url (`/v1/parks/.../attractions/<slug>`) to the frontend path.
+ * Attraction detail paths, one per `/v1/sitemap/attractions` entry. Transforms the
+ * API url (`/v1/parks/.../attractions/<slug>`) to the frontend path.
+ *
+ * No variant-slug filter here. The attraction page marks a numbered-suffix slug
+ * noindex only when the base slug in the same park carries the same name, and this
+ * list has no names to check that (the endpoint answers `{url, slug}`). It does not
+ * need them: since PAR-498 the backend lists exactly one row per attraction name,
+ * the row the park payload serves, so a same-name duplicate never reaches this
+ * list. What does reach it with a base slug beside it is a different ride
+ * ("Main Train 2" next to "Main Train"), and filtering by slug dropped those pages.
  */
 export async function getAttractionPaths(): Promise<string[]> {
   const attractions = await getSitemapAttractions();
-
-  const entries: { parkPath: string; slug: string }[] = [];
-  const slugsByPark = new Map<string, Set<string>>();
-  for (const attraction of attractions) {
-    const path = attraction.url
-      .replace(/^\/v1\/parks\//, '/parks/')
-      .replace(/\/attractions\//, '/');
-    const parkPath = path.slice(0, path.lastIndexOf('/'));
-    entries.push({ parkPath, slug: attraction.slug });
-    let slugs = slugsByPark.get(parkPath);
-    if (!slugs) {
-      slugs = new Set();
-      slugsByPark.set(parkPath, slugs);
-    }
-    slugs.add(attraction.slug);
-  }
-
-  const paths: string[] = [];
-  for (const { parkPath, slug } of entries) {
-    const variantMatch = VARIANT_SLUG_RE.exec(slug);
-    if (variantMatch && slugsByPark.get(parkPath)?.has(variantMatch[1])) continue;
-    paths.push(`${parkPath}/${slug}`);
-  }
-  return paths;
+  return attractions.map((attraction) =>
+    attraction.url.replace(/^\/v1\/parks\//, '/parks/').replace(/\/attractions\//, '/')
+  );
 }
 
 /** Expand locale-agnostic paths into absolute URLs for every locale. */

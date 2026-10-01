@@ -2,7 +2,6 @@
 title: 'De kunst van het wachten: waarom we voor sommige rides “graag” aanschuiven'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

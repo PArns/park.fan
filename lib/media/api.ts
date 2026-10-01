@@ -14,6 +14,8 @@ import type { MediaImage } from './types';
 export interface MediaApiImage {
   id: string;
   collection: string;
+  /** Further collections the image is filed under; empty when it is only in its folder. */
+  collections: string[];
   /** Content-versioned public URL; safe to cache as immutable. */
   url: string;
   width: number;
@@ -65,6 +67,7 @@ export function serializeMediaImage(image: MediaImage, locale: string): MediaApi
   return {
     id: image.id,
     collection: image.collection,
+    collections: image.collections ?? [],
     url: versionedSrc(image),
     width: image.width,
     height: image.height,

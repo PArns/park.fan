@@ -60,6 +60,8 @@ export function BlogAttractionLink({
   const { park, attraction } = useLiveBlogRide(resolvedPark, resolvedAttraction);
   const label = children ?? attraction?.attractionName ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;
+  // `chip`: the live badge without the "(Park, Country)" note, for prose that already names the park.
+  const chipOnly = options?.has('chip') ?? false;
 
   if (!attraction || !park) {
     // Geo data unavailable — render the label as plain text rather than a
@@ -92,9 +94,12 @@ export function BlogAttractionLink({
           {label}
           {!bare && (
             <span className="ml-1 inline-flex items-baseline gap-1 align-baseline no-underline">
-              <span className="text-muted-foreground text-[0.92em] font-normal">
-                ({park.name}, {translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country)})
-              </span>
+              {!chipOnly && (
+                <span className="text-muted-foreground text-[0.92em] font-normal">
+                  ({park.name},{' '}
+                  {translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country)})
+                </span>
+              )}
               {liveBadge && (
                 <span className="inline-flex translate-y-[1px] align-middle">{liveBadge}</span>
               )}

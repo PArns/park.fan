@@ -2,7 +2,6 @@
 title: 'Hoe je ziet of 70 minuten wachten veel is'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -147,8 +146,8 @@ snelweg staat.
 
 De andere helft is dat we geen meting weggooien. Oudere perioden worden
 gecomprimeerd, niet uitgedund. Hoe ver een analyse terugkijkt, verschilt per
-analyse. “Normaal” en “druk” rekenen over de afgelopen 365 dagen, een heel
-jaar rond, het rope-dropadvies alleen over de afgelopen 70, zodat het met het
+analyse. Voor “normaal” en “druk” nemen we de afgelopen 365 dagen, een heel
+jaar rond, voor het rope-dropadvies alleen de afgelopen 70, zodat het met het
 seizoen meegaat. Wie in het derde jaar begint met opslaan, heeft in het derde
 jaar één jaar historie, en de twee daarvoor zijn voorgoed weg. Onze meetreeks
 begint op 26 december 2025, en de kolom met meetdagen in de tabel hierboven telt
@@ -182,8 +181,8 @@ waarin we toevallig al hebben gemeten.
 De lange versie, met de echte kaarten om mee te lezen, staat nu op een eigen pagina,
 [Zo werkt park.fan](/nl/hoe-park-fan-werkt). Daar staat hoofdstuk voor
 hoofdstuk wat er op een attractiekaart te zien is, hoe de schaal onder “normaal”
-en “druk” werkt, hoe de kalender de vakanties verrekent, hoe de dagplanner daar
-een dag van maakt en op welke drie plekken we bewust niets beweren. Vier
+en “druk” werkt, hoe de vakanties in de kalender meetellen, hoe je daar in de
+dagplanner een dag van maakt en op welke drie plekken we bewust niets beweren. Vier
 concrete bezoeksituaties zitten er ook bij, van het gezin in de herfstvakantie
 via de jaarkaarthouder die ’s avonds nog even wil gaan tot een eerste keer in
 een groot park.

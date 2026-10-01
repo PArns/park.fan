@@ -2,7 +2,6 @@
 title: 'El arte de esperar: por qué hacemos cola «con gusto» para algunas atracciones'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

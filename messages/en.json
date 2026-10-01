@@ -500,6 +500,7 @@
     "categories": "Categories",
     "popularParks": "Popular parks",
     "readingTime": "{minutes} min",
+    "updatedOn": "Updated {date}",
     "nearby": "Near you",
     "preferences": "Settings"
   },
@@ -520,6 +521,12 @@
       "title": "{park} on the blog",
       "intro": "Posts from our blog that feature {park}.",
       "viewAll": "Read all posts"
+    },
+    "firstVisit": {
+      "title": "First visit: {park}",
+      "intro": "Start with our guide, then read up on the terms every new visitor runs into.",
+      "termsTitle": "Terms for your first day",
+      "termsIntro": "Signs and park apps use them without explaining them."
     },
     "title": "More Thrills, Less Waiting",
     "heroWelcome": "Welcome to {parkName}",
@@ -2002,7 +2009,7 @@
   },
   "fancast": {
     "title": "Fancast: our wait-time forecasting model",
-    "description": "Fancast forecasts crowds and wait times for every day a park already has in its calendar, then checks in public how far off it was."
+    "description": "Fancast forecasts crowds and wait times for every day a park already has in its calendar. Afterwards we check in public how far off it was."
   },
   "bestTime": {
     "title": "Best Time to Visit Theme Parks",
@@ -2541,7 +2548,7 @@
     "page": {
       "kicker": "Trip planner",
       "title": "Plan your park day ride by ride",
-      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser, and you need no account.",
+      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether the day adds up. Everything stays in your browser, and you need no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
       "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",

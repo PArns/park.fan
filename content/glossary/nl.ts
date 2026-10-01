@@ -372,7 +372,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een gedetailleerd dagschema voor een pretparkbezoek dat de attracties zo ordent dat je zo kort mogelijk wacht en zo vaak mogelijk rijdt.',
     definition:
-      'Een Touring Plan is een vooraf vastgelegde volgorde van attracties, maaltijden en looproutes door het park, bedoeld om de totale wachttijd van de dag zo klein mogelijk te houden. Een goed plan houdt rekening met de delen van het park die het eerst vollopen, de capaciteit van de attracties, het verloop van de rijen, de showtijden en het weer. Sites zoals TouringPlans.com publiceren gedetailleerde plannen voor grote parken. Met de live wachttijden en de druktekalender van park.fan kun je zo’n plan in de loop van de dag bijsturen.',
+      'Een Touring Plan is een vooraf vastgelegde volgorde van attracties, maaltijden en looproutes door het park, bedoeld om de totale wachttijd van de dag zo klein mogelijk te houden. Wie een goed plan opstelt, houdt rekening met de delen van het park die het eerst vollopen, de capaciteit van de attracties, het verloop van de rijen, de showtijden en het weer. Sites zoals TouringPlans.com publiceren gedetailleerde plannen voor grote parken. Met de live wachttijden en de druktekalender van park.fan kun je zo’n plan in de loop van de dag bijsturen.',
     aliases: ['Touring Plan'],
     alternateNames: ['Bezoeksplan', 'Parkplan', 'Bezoeksstrategie'],
 

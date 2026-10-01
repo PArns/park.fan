@@ -1,5 +1,6 @@
 'use client';
 
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 import { ParkCard } from '@/components/parks/park-card';
 import { useParkNeighbors } from '@/lib/hooks/use-park-neighbors';
 import type { ParkStatus } from '@/lib/api/types';
@@ -35,10 +36,14 @@ export function LiveNearbyParks({
   lng: number;
   parks: StaticNearbyPark[];
 }) {
-  const { liveByParkId } = useParkNeighbors(lat, lng, parkId);
+  const { ref, active } = useActiveOnScreen();
+  const { liveByParkId } = useParkNeighbors(lat, lng, parkId, 3, 100_000, active);
 
   return (
-    <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+    <ul
+      ref={ref}
+      className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3"
+    >
       {parks.map((park) => {
         const live = liveByParkId?.[park.id];
         return (

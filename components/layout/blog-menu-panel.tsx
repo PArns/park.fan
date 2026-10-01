@@ -59,6 +59,10 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
 
   const dateOf = (iso: string) =>
     format.dateTime(new Date(iso), { day: 'numeric', month: 'short', year: 'numeric' });
+  // A post that got new content sorts by that day, so the row says it was updated rather than
+  // passing the day off as its publication date.
+  const dayOf = (post: BlogMenu['recent'][number]) =>
+    post.updated ? t('updatedOn', { date: dateOf(post.date) }) : dateOf(post.date);
 
   return (
     <div className="flex flex-col gap-5">
@@ -111,7 +115,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                   </span>
                 )}
                 <span className="text-muted-foreground/80 mt-2 block text-xs">
-                  {dateOf(lead.date)} · {t('readingTime', { minutes: lead.readingTimeMinutes })}
+                  {dayOf(lead)} · {t('readingTime', { minutes: lead.readingTimeMinutes })}
                 </span>
               </Link>
             </div>
@@ -177,8 +181,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                           </span>
                         )}
                         <span className="text-muted-foreground/80 mt-1 block text-[11px]">
-                          {dateOf(post.date)} ·{' '}
-                          {t('readingTime', { minutes: post.readingTimeMinutes })}
+                          {dayOf(post)} · {t('readingTime', { minutes: post.readingTimeMinutes })}
                         </span>
                       </span>
                     </Link>

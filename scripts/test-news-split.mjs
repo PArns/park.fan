@@ -20,7 +20,14 @@
 
 import assert from 'node:assert/strict';
 import { locales } from '../i18n/config.ts';
-import { isNewsPost, listArticles, listNewsByDate, listPosts } from '../lib/blog/listing.ts';
+import {
+  isNewsPost,
+  lastTouched,
+  listArticles,
+  listArticlesByRecency,
+  listNewsByDate,
+  listPosts,
+} from '../lib/blog/listing.ts';
 import { buildCategoryTree } from '../lib/blog/categories.ts';
 import { listTags, normalizeTagSlug } from '../lib/blog/tags.ts';
 import { isNewsCategory, postPath } from '../lib/blog/paths.ts';
@@ -108,6 +115,18 @@ for (const locale of locales) {
     assert.deepEqual(
       menu.categories.filter((c) => isNewsCategory(c.path)).map((c) => c.path),
       []
+    );
+  });
+
+  test(`${locale}: the blog menu lists the last-changed articles and prints that day`, () => {
+    const menu = getBlogMenu(locale);
+    const expected = listArticlesByRecency(locale).slice(0, menu.recent.length);
+    assert.deepEqual(
+      menu.recent.map((post) => [post.date, post.updated]),
+      expected.map((p) => [
+        lastTouched(p.frontmatter),
+        lastTouched(p.frontmatter) !== p.frontmatter.date,
+      ])
     );
   });
 

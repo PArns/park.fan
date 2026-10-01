@@ -301,6 +301,16 @@ landing on it forwarded that activation and tore the panel down mid-drop. And
 `dragleave` checks `relatedTarget`, or the highlight flickers off every time the
 pointer crosses the icon or the text inside the zone.
 
+**Replacing from the grid.** A file dropped on a grid tile takes the same path without
+opening the editor: `pickReplacement` (`app/admin/media/_lib/replace-drop.ts`, shared with
+the editor's bar) refuses a multi-file drop and anything that is not an image, the tile
+shows the dropped picture with a "New file · not saved" label, and a bar above the grid
+sends every staged tile with one **Save**, one `replace` request per tile (a single body
+with several originals exceeds the host's request limit), all joining the session's PR. The
+operations carry no sidecar payload, so the server rebuilds each sidecar from the manifest
+and alt texts, focal points and tags stay as they were. Only a dragged _file_ lights a
+tile up. A touch screen has no drag event, so the editor remains the way there.
+
 ### `review` — the field workflow's other half
 
 A photograph taken from `/admin/capture` arrives with what a phone standing in front
@@ -498,6 +508,14 @@ Moving is the one that renames the file, and it is covered twice:
 silent: rewriting too little leaves a broken image, and rewriting too much
 repoints a _different_ picture — `taron-queue.jpg` starts with `taron`, and a
 pattern without a boundary would take it along.
+
+### Visitor submissions come in through the upload dialog
+
+`MediaUpload` takes an optional `seed` (files plus per-file presets, a credit for the batch, and
+`stripMetadata`), which is how `/admin/contributions` hands approved photos over: same walkthrough,
+same commit, with park, ride, caption and credit filled in from the submission. `onDone` reports
+which files landed as `<collection>/<name>`. See [contribute → into the media
+database](contribute.md#into-the-media-database).
 
 ### The blog editor is the second write path
 

@@ -2,7 +2,6 @@
 title: 'Une poussette, une gondole et un demi-million de lignes de code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -229,11 +228,10 @@ Derrière, il y a aujourd’hui **210 parcs** et quelque **6900 attractions** au
 total (au 25 septembre 2026), dont 209 parcs pour lesquels nous récupérons les
 temps d’attente toutes les cinq minutes. Celui qui manque est le Hansa-Park, qui ne
 publie ses temps que dans sa propre appli. S’y ajoutent des prévisions qui
-estiment l’affluence environ six mois à l’avance. Et comme
-je ne fais par principe confiance aux chiffres que lorsqu’ils doivent faire
-leurs preuves, le modèle se note lui-même : chaque prévision est ensuite
-confrontée au temps d’attente réellement mesuré, et ce qui en ressort figure sur
-la [page Fancast](/fancast).
+estiment l’affluence environ six mois à l’avance. Et comme je ne fais par
+principe confiance aux chiffres que lorsqu’ils doivent faire leurs preuves, nous
+confrontons ensuite chaque prévision au temps d’attente réellement mesuré, et ce
+qui en ressort figure sur la [page Fancast](/fancast).
 
 ## Le meilleur jour est rarement celui qu’on croit
 

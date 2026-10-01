@@ -500,6 +500,7 @@
     "categories": "Categorías",
     "popularParks": "Parques populares",
     "readingTime": "{minutes} min",
+    "updatedOn": "Actualizado el {date}",
     "nearby": "Cerca de ti",
     "preferences": "Ajustes"
   },
@@ -520,6 +521,12 @@
       "title": "{park} en el blog",
       "intro": "Artículos de nuestro blog en los que aparece {park}.",
       "viewAll": "Leer todos los artículos"
+    },
+    "firstVisit": {
+      "title": "Primera visita: {park}",
+      "intro": "Empieza por la guía y sigue con los términos que encuentra todo visitante nuevo.",
+      "termsTitle": "Términos para tu primer día",
+      "termsIntro": "Los carteles y las apps de los parques los dan por sabidos."
     },
     "title": "Más loopings, menos esperas",
     "heroWelcome": "Bienvenido a {parkName}",
@@ -2002,7 +2009,7 @@
   },
   "fancast": {
     "title": "Fancast: nuestro modelo de predicción de tiempos de espera",
-    "description": "Fancast predice la afluencia y los tiempos de espera de cada día que un parque ya tiene en su calendario, y después comprueba en público por cuánto se equivocó."
+    "description": "Fancast predice la afluencia y los tiempos de espera de cada día que un parque ya tiene en su calendario. Después comprobamos en público por cuánto se ha equivocado."
   },
   "bestTime": {
     "title": "Mejor época para visitar parques temáticos",
@@ -2541,7 +2548,7 @@
     "page": {
       "kicker": "Planificador",
       "title": "Planifica tu día en el parque atracción por atracción",
-      "lead": "Di qué atracciones quieres y el planificador calcula con los tiempos previstos si el día cuadra. Todo se queda en tu navegador, sin cuenta.",
+      "lead": "Di qué atracciones quieres. Con los tiempos de espera previstos ves si el día cuadra. Todo se queda en tu navegador, sin cuenta.",
       "metaTitle": "Planificar el día en el parque de atracciones | park.fan",
       "metaDescription": "Organiza tu día de parque con las esperas previstas: atracciones en una línea de tiempo, espectáculos y pausas, y un aviso donde tu peque no llega a la altura.",
       "yourPlans": "{count, plural, one {Un día planificado} other {# días planificados}}",

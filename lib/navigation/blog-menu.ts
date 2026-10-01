@@ -1,7 +1,7 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
-import { listArticlesByRecency } from '@/lib/blog/listing';
+import { lastTouched, listArticlesByRecency } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
@@ -74,8 +74,13 @@ export interface BlogMenuPost {
   /** Locale-relative URL of the post, from `postPath` (`lib/blog/paths.ts`). */
   path: string;
   title: string;
-  /** ISO date — the panel formats it in the reader's locale. */
+  /**
+   * When the post last changed, ISO — `updatedAt` where it has one, else its publication date
+   * (`lastTouched`). The panel formats it in the reader's locale.
+   */
   date: string;
+  /** True when `date` is an update rather than the publication date: the row says so. */
+  updated: boolean;
   readingTimeMinutes: number;
   /** The post's own teaser, cut on the server — longer for the opener than for a row. */
   excerpt?: string;
@@ -105,12 +110,16 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         postCount: node.totalPostCount,
       }))
       .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label)),
+    // By last change, like the homepage strips, and every row prints that date: a guide that got
+    // new content is new again. Only new content moves `updatedAt`, never a wording pass
+    // (docs/rules/updated-at-is-for-new-content.md).
     recent: listArticlesByRecency(locale)
       .slice(0, RECENT_LIMIT)
       .map((post, index) => ({
         path: postPath(post),
         title: post.frontmatter.title,
-        date: post.frontmatter.date,
+        date: lastTouched(post.frontmatter),
+        updated: lastTouched(post.frontmatter) !== post.frontmatter.date,
         readingTimeMinutes: post.readingTimeMinutes,
         excerpt: trimExcerpt(
           post.frontmatter.excerpt,

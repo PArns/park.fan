@@ -2,7 +2,6 @@
 title: 'Tu día de parque en una línea de tiempo, colas y caminos incluidos'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -34,8 +33,9 @@ coverImage:
 seo:
   title: 'Planifica tu día de parque: cuenta las colas antes de ir'
   description: >-
-    El planificador pone tus atracciones en una línea de tiempo, calcula con
-    esperas previstas y caminos y te enseña antes si el día sale. Sin cuenta.
+    En el planificador pones tus atracciones en una línea de tiempo, con las
+    esperas previstas y los caminos entre ellas, y ves antes de ir si el día
+    sale. Sin cuenta.
   keywords:
     - planificar un día de parque
     - planificador parque de atracciones
@@ -63,8 +63,9 @@ el primer día. «¿Es mucho para un martes?» desde
 [finales de agosto](/blog/son-70-minutos-mucho). La tercera pregunta no estaba en
 ninguna parte: ¿mi día sale así?
 
-Desde principios de septiembre está. El [planificador](/planificador) pone tus atracciones en
-una línea de tiempo y calcula el día antes de que salgas de casa.
+Desde principios de septiembre está. En el [planificador](/planificador) pones
+tus atracciones en una línea de tiempo, con las esperas previstas y los caminos
+entre ellas, y antes de salir de casa ves si te caben en el día.
 
 ## Bloques y traslados
 
@@ -101,9 +102,8 @@ donde no hay duración registrada. La distancia es en línea recta, y así
 figura en el planificador. Es una cota inferior y no un tiempo a pie: los caminos
 rodean el agua, las colas y los sentidos únicos, algunos parques apilan sus
 zonas, y en uno grande la línea recta suele cruzar un lago al que hay que dar la vuelta entera.
-Para la cota superior el planificador calcula con ritmo de parque, unos cuatro
-kilómetros por hora con gente y carritos, y añade un 60 % de rodeo a la línea
-recta.
+Para la cota superior se calcula con ritmo de parque, unos cuatro kilómetros
+por hora con gente y carritos, y a la línea recta se le suma un 60 % de rodeo.
 
 En un parque compacto un traslado torpe cuesta tres minutos y no lo nota nadie.
 En uno grande cuesta un cuarto de hora. Hazlo ocho veces al día y habrás tirado
@@ -183,8 +183,9 @@ Se ordena según tres cosas, por este orden.
 En un parque con más atracciones estrella de las que caben en un día, el punto
 uno lo decide todo, y desde el 21 de septiembre eso ya no pasa en silencio. Si no cabe todo, cualquiera de los dos botones abre primero
 un asistente de tres pasos. En «Ajustes» aparece lo que haría sitio, como quitar
-el rato para comer o dejarlo en media hora, y cada línea está calculada: solo
-aparece si mete una atracción más en el día. En «Prioridad» está la
+el rato para comer o dejarlo en media hora. Para cada línea volvemos a
+planificar el día entero con ese cambio, y solo aparece si de verdad mete una
+atracción más en el día. En «Prioridad» está la
 lista entera en el orden en que se tacharía, y subes arriba del todo lo que no
 te quieres perder. También salen ahí las atracciones que habías planificado tú,
 porque aquí decides tú y no el botón. En «Resultado» aparece con nombre lo que

@@ -1,0 +1,35 @@
+{
+  "title": "Main Street, U.S.A. mit Cinderella Castle am Ende",
+  "park": "magic-kingdom-park",
+  "parkPath": "north-america/united-states/orlando/magic-kingdom-park",
+  "area": "Main Street, U.S.A.",
+  "tags": ["photo", "day", "sunny", "outdoor", "park", "entrance", "crowd"],
+  "alt": {
+    "de": "Die Main Street vom Town Square aus gesehen: Blumenbeete, ein hoher Fahnenmast, Ladenfronten zu beiden Seiten und am Ende der Straße das Schloss.",
+    "en": "Main Street seen from the town square: flower beds, a tall flagpole, shopfronts on both sides and the castle at the far end of the street.",
+    "es": "Main Street vista desde la plaza del pueblo: parterres, un mástil alto, tiendas a ambos lados y el castillo al fondo de la calle.",
+    "fr": "Main Street vue depuis la place centrale : massifs de fleurs, un grand mât, des boutiques de chaque côté et le château au bout de la rue.",
+    "it": "Main Street vista dalla piazza: aiuole, un alto pennone, negozi su entrambi i lati e in fondo alla strada il castello.",
+    "nl": "Main Street gezien vanaf het stadsplein: bloembedden, een hoge vlaggenmast, winkelpuien aan beide kanten en aan het eind van de straat het kasteel."
+  },
+  "caption": {
+    "de": "Die Main Street ist mit erzwungener Perspektive gebaut: Die oberen Geschosse sind niedriger als das Erdgeschoss.",
+    "en": "Main Street is built in forced perspective: the upper floors are shorter than the ground floor.",
+    "es": "Main Street está construida con perspectiva forzada: los pisos superiores son más bajos que la planta baja.",
+    "fr": "Main Street est construite en perspective forcée : les étages sont moins hauts que le rez-de-chaussée.",
+    "it": "Main Street è costruita in prospettiva forzata: i piani superiori sono più bassi del piano terra.",
+    "nl": "Main Street is gebouwd in geforceerd perspectief: de bovenverdiepingen zijn lager dan de begane grond."
+  },
+  "credit": {
+    "author": "Jedi94",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Main_Street_USA,_Magic_Kingdom_Walt_Disney_World_(2024).jpg",
+    "year": 2024
+  },
+  "shotAt": "2024-02-20",
+  "focus": {
+    "x": 0.5,
+    "y": 0.5
+  }
+}

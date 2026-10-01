@@ -197,9 +197,9 @@ caccia ai singoli, più spettacoli pirotecnici e un frastuono che ti resta nelle
 orecchie per tutta l’A5, fino a casa.
 
 Di giorno Rust è un altro parco, e con code sorprendentemente corte per le sue
-dimensioni. La [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli)
-fa il conto e spiega anche perché un biglietto Traumatica a novembre ti costa
-l’ultima ora nel parco.
+dimensioni. Ho fatto i conti nella
+[guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli), e lì spiego
+anche perché un biglietto Traumatica a novembre ti costa l’ultima ora nel parco.
 
 [Europa-Park](ref:europa-park?full)
 

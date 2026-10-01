@@ -2,7 +2,6 @@
 title: 'Europa-Park: il parco più grande della Germania, e dove finisce tutta la gente'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
@@ -593,11 +592,12 @@ domenica dopo colazione riparte verso casa, e in molti nel parco non ci rimetton
 nemmeno piede, perché la macchina è già carica.
 
 Per questo, a Rust, il calendario delle vacanze scolastiche tedesche da solo non
-basta come base di pianificazione. Per questo parco il nostro calendario
-conteggia anche le vacanze della regione francese Grand Est, cioè dell’Alsazia,
-quelle dei cantoni svizzeri di Argovia, Basilea Città e Basilea Campagna e quelle
-dei Länder confinanti di Baviera, Assia e Renania-Palatinato. Chi guarda solo al
-Baden-Württemberg, prima o poi si stupisce davanti a un martedì pieno.
+basta come base di pianificazione. Per questo parco nel nostro calendario
+mettiamo in conto anche le vacanze della regione francese Grand Est, cioè
+dell’Alsazia, quelle dei cantoni svizzeri di Argovia, Basilea Città e Basilea
+Campagna e quelle dei Länder confinanti di Baviera, Assia e Renania-Palatinato.
+Chi guarda solo al Baden-Württemberg, prima o poi si stupisce davanti a un
+martedì pieno.
 
 ### Il ponte
 
@@ -767,9 +767,9 @@ sabato arrivo, Rulantica o un giro in paese, domenica al parco.
 **Guardare solo alle vacanze tedesche.** Una buona metà del pubblico non viene
 dalla Germania. Un giorno di fine ottobre in Baden-Württemberg può essere un
 normale giorno di scuola e riempirsi lo stesso, perché in Francia ci sono le
-vacanze di Ognissanti o a Basilea Città quelle d’autunno. Il nostro calendario per
-questo parco conteggia le vacanze dell’Alsazia e di tre cantoni svizzeri, il
-calendario di un singolo Land tedesco no.
+vacanze di Ognissanti o a Basilea Città quelle d’autunno. Per questo parco nel
+nostro calendario mettiamo in conto le vacanze dell’Alsazia e di tre cantoni
+svizzeri, che nel calendario di un singolo Land tedesco non ci sono.
 
 **Prendere il martedì per un tranquillo giorno feriale.** Nei nostri dati è il
 giorno feriale più pieno, anche se di poco. Se comunque l’unica opzione è un

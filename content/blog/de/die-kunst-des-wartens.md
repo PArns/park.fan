@@ -2,7 +2,6 @@
 title: 'Die Kunst des Wartens: Warum wir für manche Rides „gerne“ anstehen'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

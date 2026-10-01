@@ -2,7 +2,6 @@
 title: 'Hansa-Park: medio récord alemán de montaña rusa, a la orilla del Báltico'
 translationKey: hansa-park-guide
 date: '2026-09-22'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

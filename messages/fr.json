@@ -500,6 +500,7 @@
     "categories": "Catégories",
     "popularParks": "Parcs populaires",
     "readingTime": "{minutes} min",
+    "updatedOn": "Mis à jour le {date}",
     "nearby": "Près de chez vous",
     "preferences": "Préférences"
   },
@@ -520,6 +521,12 @@
       "title": "{park} sur le blog",
       "intro": "Articles de notre blog où il est question de {park}.",
       "viewAll": "Lire tous les articles"
+    },
+    "firstVisit": {
+      "title": "Première visite : {park}",
+      "intro": "Commencez par le guide, puis lisez les termes que rencontre tout nouveau visiteur.",
+      "termsTitle": "Les termes du premier jour",
+      "termsIntro": "Les panneaux et les applis des parcs les emploient sans les expliquer."
     },
     "title": "Plus de loopings, moins d’attente",
     "heroWelcome": "Bienvenue à {parkName}",
@@ -2541,7 +2548,7 @@
     "page": {
       "kicker": "Planificateur",
       "title": "Planifier sa journée au parc attraction par attraction",
-      "lead": "Indiquez les attractions que vous voulez faire : le planificateur calcule avec les temps d'attente prévus si la journée tient debout. Tout reste dans votre navigateur, sans compte.",
+      "lead": "Indiquez les attractions que vous voulez faire. Avec les temps d’attente prévus, vous voyez si la journée tient debout. Tout reste dans votre navigateur, sans compte.",
       "metaTitle": "Planifier sa journée au parc d’attractions | park.fan",
       "metaDescription": "Organisez votre journée au parc avec les attentes prévues : attractions sur une frise, spectacles et pauses, et un repère là où votre enfant est trop petit.",
       "yourPlans": "{count, plural, one {Une journée planifiée} other {# journées planifiées}}",

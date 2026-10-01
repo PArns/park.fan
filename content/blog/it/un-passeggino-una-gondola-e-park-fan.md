@@ -2,7 +2,6 @@
 title: 'Un passeggino, una gondola e mezzo milione di righe di codice'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-
@@ -221,10 +220,10 @@ davanti a un’attrazione vera e vuole sapere se la coda vale la pena.
 Dietro ci sono oggi **210 parchi** con circa **6900 attrazioni** in tutto (al 25
 settembre 2026), e per 209 di questi raccogliamo i tempi di attesa ogni cinque
 minuti. Quello che manca è l’Hansa-Park, che pubblica i suoi solo nella propria
-app. In più, previsioni che stimano l’affluenza con circa sei mesi di anticipo. E siccome per principio mi fido dei numeri
-solo se devono dimostrare qualcosa, il modello si dà un voto da sé: ogni
-previsione viene poi confrontata con il tempo di attesa effettivamente misurato,
-e quello che ne esce sta sulla [pagina di Fancast](/fancast).
+app. In più, previsioni che stimano l’affluenza con circa sei mesi di anticipo.
+E siccome per principio mi fido dei numeri solo se devono dimostrare qualcosa,
+ogni previsione la confrontiamo poi con il tempo di attesa effettivamente
+misurato, e quello che ne esce sta sulla [pagina di Fancast](/fancast).
 
 ## Il giorno migliore raramente è quello che ci si aspetta
 
@@ -254,10 +253,10 @@ Ci sono buoni siti che ti mostrano quanto è lunga la coda proprio adesso. Lo
 sappiamo fare anche noi, ogni cinque minuti, in tutto il mondo. Ma park.fan è
 stato costruito per la domanda che viene prima: _vale la pena andarci?_
 
-Per questo il modello guarda circa sei mesi avanti invece che al solo
-tabellone, e il calendario dei giorni migliori ne ricava una risposta: si va, o
-meglio di no. Se ci azzecca o no, non devi credermi sulla parola: sta sulla
-[pagina di Fancast](/fancast).
+Per questo guardiamo circa sei mesi avanti invece che al solo tabellone, e nel
+calendario dei giorni migliori per ogni giorno ne esce una risposta: si va, o
+meglio di no. Se il modello ci azzecca o no, non devi credermi sulla parola: sta
+sulla [pagina di Fancast](/fancast).
 
 Più tempi di attesa, livelli di affluenza, meteo all’ingresso del parco, orari e
 storici delle attrazioni in sei lingue. Da settembre c’è anche il

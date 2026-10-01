@@ -2,7 +2,6 @@
 title: 'Walibi Holland: "hard gaan", Untamed and a field where fish swam in 1957'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
