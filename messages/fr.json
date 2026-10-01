@@ -395,6 +395,12 @@
     "platform": {
       "kicker": "Chiffres",
       "statsKicker": "En direct de la plateforme"
+    },
+    "families": {
+      "kicker": "Avec enfants",
+      "title": "Quelles attractions mon enfant peut-il faire ? Filtrer par taille",
+      "lead": "Pour chaque attraction, park.fan affiche la taille minimale indiquée par le parc. Avant la visite, tu vois déjà lesquelles vous pouvez faire ensemble et pour lesquelles ton enfant est encore trop petit.",
+      "cardBody": "Toutes les attractions par taille minimale."
     }
   },
   "footer": {
