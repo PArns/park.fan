@@ -4,8 +4,9 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { cn, stripNewPrefix } from '@/lib/utils';
+import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
+import { isEveningBetter, ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
 import type { ParkAttraction, RopeDropHeadliner } from '@/lib/api/types';
 
 interface RopeDropHeadlinersProps {
@@ -48,7 +49,8 @@ export const RopeDropHeadliners = memo(function RopeDropHeadliners({
     .map((a) => ({
       id: a.id,
       name: a.name,
-      wait: troughWait(a.ropeDrop!),
+      wait: ropeDropDisplayWaits(a.ropeDrop!).trough,
+      // Sorts on the raw column: on the five-minute grid the order would gain ties the data lacks.
       savedVsPeak: a.ropeDrop!.endOfDaySavings ?? null,
       href: attractionHref(a, parkPath),
     }))
@@ -90,7 +92,7 @@ export const RopeDropHeadliners = memo(function RopeDropHeadliners({
               >
                 <span>{stripNewPrefix(item.name)}</span>
                 <span className="font-bold whitespace-nowrap tabular-nums">
-                  {t('save', { minutes: item.savings })}
+                  {t('save', { minutes: roundWaitDeltaTo5(item.savings) })}
                 </span>
               </Link>
             ))}

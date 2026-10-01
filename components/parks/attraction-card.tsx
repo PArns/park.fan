@@ -17,7 +17,7 @@ import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
-import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
+import { isEveningBetter, ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -195,6 +195,8 @@ export function AttractionCard({
   const ropeDropData = getRopeDrop(attraction);
   const ropeDrop = ropeDropData?.worth ? ropeDropData : null;
   const eveningBetter = ropeDropData !== null && !ropeDrop && isEveningBetter(ropeDropData);
+  // Gates above read the raw block; what the badges print is the five-minute figure the card shows.
+  const ropeDropShown = ropeDropData ? ropeDropDisplayWaits(ropeDropData) : null;
 
   // The bottom glass panel (wait time + sparkline) only exists when there is a
   // live wait time. Without it row 3 is empty rather than covered, so the photo
@@ -535,11 +537,13 @@ export function AttractionCard({
             <TransportSystemBadge attractionKind={attraction.attractionKind} />
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
-            {ropeDrop && <RopeDropBadge strength={ropeDrop.strength} savings={ropeDrop.savings} />}
+            {ropeDrop && (
+              <RopeDropBadge strength={ropeDrop.strength} savings={ropeDropShown!.savings} />
+            )}
             {eveningBetter && (
               <RopeDropEveningBadge
-                openWait={ropeDropData!.openWait}
-                bestSlotWait={troughWait(ropeDropData!)}
+                openWait={ropeDropShown!.openWait}
+                bestSlotWait={ropeDropShown!.trough}
               />
             )}
             {/* Beside the season badge, never instead of it: a ride can be out of season AND

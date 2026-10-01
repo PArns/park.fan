@@ -10,7 +10,7 @@ interface RopeDropBadgeProps {
   className?: string;
 }
 
-/** "Worth riding at park opening" badge for headliner attraction cards. */
+/** "Worth riding at park opening" badge for headliner attraction cards. `savings` is the displayed (five-minute) figure. */
 export function RopeDropBadge({ strength, savings, className }: RopeDropBadgeProps) {
   const t = useTranslations('attractions.ropeDrop');
 
@@ -33,8 +33,9 @@ export function RopeDropBadge({ strength, savings, className }: RopeDropBadgePro
 }
 
 interface RopeDropEveningBadgeProps {
+  /** Displayed (five-minute) wait at opening. */
   openWait: number;
-  /** Expected wait at the day's trough — shown in the hint when available. */
+  /** Displayed wait at the day's trough — shown in the hint when available. */
   bestSlotWait?: number | null;
   className?: string;
 }
