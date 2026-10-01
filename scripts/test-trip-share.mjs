@@ -9,7 +9,11 @@
  *   anything that is not a plan comes back as `null` or empty, never as a crash;
  * - taking a plan over writes only to THIS browser: the sender's id is not
  *   stored, and the only request that follows is a PUT to the viewer's own trip,
- *   and only while push is on.
+ *   and only while push is on;
+ * - when that PUT finds the viewer's trip expired and a new one starts
+ *   (`replaced`), the subscription row is re-pointed at the new id, and a
+ *   refused re-point takes the plan back down instead of leaving a row that
+ *   reads a dead trip (PAR-586).
  *
  * Run: `pnpm test:trip-share`
  */
@@ -20,6 +24,8 @@ const PLANNER_KEY = 'parkfan_planner';
 
 const storage = new Map();
 let calls = [];
+/** The last JSON body sent to each `METHOD url`. */
+let bodies = {};
 
 globalThis.window = {
   localStorage: {
@@ -32,10 +38,35 @@ globalThis.window = {
   dispatchEvent: () => true,
 };
 
+const ok = (status = 200, body = {}) => ({
+  ok: status >= 200 && status < 300,
+  status,
+  json: async () => body,
+});
+/** Per-test answers by `METHOD url`; anything unlisted is a plain 200. */
+let answersByRoute = {};
+
 globalThis.fetch = async (url, init) => {
-  calls.push({ url, method: init?.method ?? 'GET' });
-  return { ok: true, status: 200, json: async () => ({}) };
+  const method = init?.method ?? 'GET';
+  calls.push({ url, method });
+  if (init?.body) bodies[`${method} ${url}`] = JSON.parse(init.body);
+  return answersByRoute[`${method} ${url}`] ?? ok();
 };
+
+/** A browser with push on: one service worker registration, one subscription. */
+const SUBSCRIPTION = {
+  endpoint: 'https://push.example/endpoint-1',
+  toJSON: () => ({ keys: { p256dh: 'p', auth: 'a' } }),
+};
+globalThis.document = { documentElement: { lang: 'de' } };
+Object.defineProperty(globalThis, 'navigator', {
+  configurable: true,
+  value: {
+    serviceWorker: {
+      getRegistration: async () => ({ pushManager: { getSubscription: async () => SUBSCRIPTION } }),
+    },
+  },
+});
 
 const { tripIdFromHash, sharedTripUrl, adoptSharedPlan } =
   await import('../lib/planner/trip-share.ts');
@@ -154,6 +185,8 @@ function seed({ ownTripId }) {
   storage.clear();
   if (ownTripId) storage.set(TRIP_ID_KEY, ownTripId);
   calls = [];
+  bodies = {};
+  answersByRoute = {};
 }
 
 await test('push off: replaces the local plan and sends nothing', async () => {
@@ -181,6 +214,92 @@ await test('push on: one PUT to the viewer’s own trip, none to the sender’s'
   assert.equal(storage.get(TRIP_ID_KEY), OWN_ID);
   assert.equal(
     calls.some((call) => call.url.includes(SENDER_ID)),
+    false
+  );
+});
+
+const NEW_ID = 'NewTripId0000001';
+const ARMED_KEY = 'parkfan_push_armed';
+
+console.log('\nadoptSharedPlan · the viewer’s own trip had expired');
+
+await test('re-points the subscription row at the new trip id', async () => {
+  seed({ ownTripId: OWN_ID });
+  answersByRoute = {
+    [`PUT /api/trips/${OWN_ID}`]: ok(404),
+    'POST /api/trips': ok(201, { id: NEW_ID }),
+    'GET /api/push': ok(200, { topics: ['next-up', 'show-times'] }),
+  };
+
+  await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
+
+  assert.equal(storage.get(TRIP_ID_KEY), NEW_ID);
+  const body = bodies['POST /api/push/subscriptions'];
+  assert.ok(body, 'the subscription row was written');
+  assert.equal(body.tripId, NEW_ID);
+  assert.equal(body.endpoint, SUBSCRIPTION.endpoint);
+  assert.deepEqual(body.topics, ['next-up', 'show-times']);
+  // The switch reads the pair on the next mount, so the record has to follow.
+  assert.deepEqual(JSON.parse(storage.get(ARMED_KEY)), {
+    endpoint: SUBSCRIPTION.endpoint,
+    tripId: NEW_ID,
+  });
+  assert.equal(
+    calls.some((call) => call.method === 'DELETE'),
+    false
+  );
+});
+
+await test('a refused re-point takes the new trip back down and clears the record', async () => {
+  seed({ ownTripId: OWN_ID });
+  storage.set(ARMED_KEY, JSON.stringify({ endpoint: SUBSCRIPTION.endpoint, tripId: OWN_ID }));
+  answersByRoute = {
+    [`PUT /api/trips/${OWN_ID}`]: ok(404),
+    'POST /api/trips': ok(201, { id: NEW_ID }),
+    'GET /api/push': ok(200, { topics: ['next-up'] }),
+    'POST /api/push/subscriptions': ok(500),
+    [`DELETE /api/trips/${NEW_ID}`]: ok(204),
+  };
+
+  await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
+
+  assert.ok(calls.some((call) => call.method === 'DELETE' && call.url === `/api/trips/${NEW_ID}`));
+  assert.equal(storage.get(TRIP_ID_KEY), undefined);
+  assert.equal(storage.get(ARMED_KEY), undefined);
+});
+
+await test('no subscription left in the browser: the new trip is taken back down', async () => {
+  seed({ ownTripId: OWN_ID });
+  answersByRoute = {
+    [`PUT /api/trips/${OWN_ID}`]: ok(404),
+    'POST /api/trips': ok(201, { id: NEW_ID }),
+  };
+  const original = globalThis.navigator;
+  Object.defineProperty(globalThis, 'navigator', {
+    configurable: true,
+    value: {
+      serviceWorker: {
+        getRegistration: async () => ({ pushManager: { getSubscription: async () => null } }),
+      },
+    },
+  });
+  try {
+    await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
+  } finally {
+    Object.defineProperty(globalThis, 'navigator', { configurable: true, value: original });
+  }
+
+  assert.ok(calls.some((call) => call.method === 'DELETE' && call.url === `/api/trips/${NEW_ID}`));
+  assert.equal(storage.get(TRIP_ID_KEY), undefined);
+});
+
+await test('a trip that survives the PUT is not re-pointed', async () => {
+  seed({ ownTripId: OWN_ID });
+
+  await adoptSharedPlan(plan('phantasialand', [entry('s', 'taron', 600)]));
+
+  assert.equal(
+    calls.some((call) => call.url === '/api/push/subscriptions' || call.url === '/api/push'),
     false
   );
 });
