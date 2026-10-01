@@ -13,6 +13,7 @@ import { readFileSync } from 'node:fs';
 
 import {
   MEDIA_IMAGES,
+  collectionNodes,
   getCollection,
   getHeroImages,
   getParkBackground,
@@ -30,6 +31,12 @@ import { checkParkAssignment, distanceMeters, formatDistance } from '../lib/medi
 import { getCreditLine, resolveMediaImage } from '../lib/media/text.ts';
 import { normalizeSidecar, serializeSidecar } from '../lib/media/sidecar.mjs';
 import { pickReplacement, replacementExt } from '../app/admin/media/_lib/replace-drop.ts';
+import {
+  buildCollectionTree,
+  flattenTree,
+  parseCollectionPath,
+  visibleNodes,
+} from '../app/admin/media/_lib/folders.ts';
 
 let passed = 0;
 let failed = 0;
@@ -100,8 +107,8 @@ checkThat(
 check('nonsense query returns nothing', searchMedia({ q: 'zzzznope' }).length, 0);
 check('empty query returns everything', searchMedia({ q: '   ' }).length, stats.total);
 
-// Search spans locales — this string exists only in the English caption.
-checkThat('search covers non-German locales', searchMedia({ q: 'palm-sized' }).length > 0);
+// Search spans locales — this word exists only in an English caption.
+checkThat('search covers non-German locales', searchMedia({ q: 'griffin' }).length > 0);
 
 console.log('\n── filters ──────────────────────────────────────────────────\n');
 
@@ -247,6 +254,50 @@ checkThat(
 checkThat('a parent path covers its children', inCollection(multiColl, 'toverland'));
 checkThat('a sibling prefix is not a parent', !inCollection(multiColl, 'tover'));
 checkThat('no field, no extra membership', !inCollection(plain, 'halloween'));
+
+// The admin's tree: every node, each image once per node.
+const nodes = collectionNodes([
+  { id: 'toverland/a', collection: 'toverland', collections: ['toverland/halloween', 'halloween'] },
+  { id: 'toverland/b', collection: 'toverland/halloween' },
+  { id: 'efteling/c', collection: 'efteling', collections: ['news'] },
+]);
+check('collection nodes: parents and sidecar-only paths get a row, counted once', nodes, [
+  { collection: 'efteling', count: 1 },
+  { collection: 'halloween', count: 1 },
+  { collection: 'news', count: 1 },
+  { collection: 'toverland', count: 2 },
+  { collection: 'toverland/halloween', count: 2 },
+]);
+check(
+  'collection nodes agree with the filter the grid applies',
+  collectionNodes(MEDIA_IMAGES).every(
+    ({ collection, count }) => searchMedia({ collection }).length === count
+  ),
+  true
+);
+check(
+  'tree: a parent keeps the count it was given and children nest under it',
+  flattenTree(buildCollectionTree(nodes)).map((n) => `${'-'.repeat(n.depth)}${n.id}:${n.count}`),
+  ['efteling:1', 'halloween:1', 'news:1', 'toverland:2', '-toverland/halloween:2']
+);
+const flat = flattenTree(buildCollectionTree(nodes));
+check(
+  'tree: a collapsed parent hides its children',
+  visibleNodes(flat, new Set(['toverland']), '').map((n) => n.id),
+  ['efteling', 'halloween', 'news', 'toverland']
+);
+check(
+  'tree: the active folder stays drawn under a collapsed parent',
+  visibleNodes(flat, new Set(['toverland']), 'toverland/halloween').map((n) => n.id),
+  ['efteling', 'halloween', 'news', 'toverland', 'toverland/halloween']
+);
+check(
+  'collection path: capitals and stray slashes are cleaned',
+  parseCollectionPath(' Toverland/Halloween/ '),
+  'toverland/halloween'
+);
+check('collection path: spaces are refused', parseCollectionPath('bad path'), null);
+check('collection path: empty segment is refused', parseCollectionPath('a//b'), null);
 
 const withCollections = normalizeSidecar({
   collections: ['toverland/halloween', '/halloween/', 'halloween', 'Bad Path'],

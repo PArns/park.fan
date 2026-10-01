@@ -26,6 +26,7 @@ import { Chip, Field, Notice, Section } from './panel-ui';
 import { RideCardToggle } from './ride-card-toggle';
 import { OpenInEditor } from '../../_ui/open-in-editor';
 import { fitForCommit } from '../../_lib/upload-transport';
+import { parseCollectionPath } from '../_lib/folders';
 import { pickReplacement, replacementExt } from '../_lib/replace-drop';
 
 /** Shared field styling — the admin has no form primitives of its own. */
@@ -102,6 +103,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   const [error, setError] = useState<string | null>(null);
   /** "Discard the unsaved changes?" — asked in the page, never via `window.confirm`. */
   const [confirmingClose, setConfirmingClose] = useState(false);
+  const [newCollection, setNewCollection] = useState('');
+  const [collectionError, setCollectionError] = useState<string | null>(null);
 
   // One object URL per staged file, revoked when it is replaced or the editor
   // closes. Minting it in render would leak one per keystroke.
@@ -164,6 +167,33 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
 
   // The vocabulary arrives from the API as plain strings; it is generated from
   // MEDIA_ROLES, so narrowing here is a cast at the boundary rather than a guess.
+  const toggleCollection = (path: string) => {
+    const current = draft.collections ?? [];
+    set(
+      'collections',
+      current.includes(path) ? current.filter((c) => c !== path) : [...current, path]
+    );
+  };
+
+  const addTypedCollection = () => {
+    const path = parseCollectionPath(newCollection);
+    if (!path) {
+      setCollectionError(
+        'Pfad aus Kleinbuchstaben, Ziffern und „-“, Ebenen mit „/“ getrennt, z. B. toverland/halloween'
+      );
+      return;
+    }
+    if (path === draft.collection) {
+      setCollectionError('Dieser Pfad ist der Ordner des Bildes, es steht dort bereits.');
+      return;
+    }
+    setCollectionError(null);
+    setNewCollection('');
+    if (!(draft.collections ?? []).includes(path)) {
+      set('collections', [...(draft.collections ?? []), path]);
+    }
+  };
+
   const toggleRole = (role: MediaRole) => {
     const current = draft.roles ?? [];
     set('roles', current.includes(role) ? current.filter((r) => r !== role) : [...current, role]);
@@ -199,6 +229,17 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
     setPicker(null);
   };
 
+  // What the image is filed under first, then every other known path. A path typed
+  // for this draft that no image uses yet is a chip as well, so it can be taken off.
+  const chosenCollections = draft.collections ?? [];
+  const collectionChoices = [
+    ...[...chosenCollections].sort(),
+    ...vocabulary.collectionCounts
+      .map((c) => c.collection)
+      .filter((path) => path !== draft.collection && !chosenCollections.includes(path))
+      .sort(),
+  ];
+
   const currentName = row.id.split('/').pop()!;
   const movedTo = draft.collection !== row.collection ? draft.collection : null;
 
@@ -213,6 +254,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
       v.ride ?? null,
       v.area ?? null,
       v.collection ?? null,
+      [...(v.collections ?? [])].sort(),
       [...(v.roles ?? [])].sort(),
       [...(v.tags ?? [])].sort(),
       v.alt ?? {},
@@ -237,6 +279,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
       ['ride', draft.ride ?? null, row.ride ?? null],
       ['area', draft.area ?? null, row.area ?? null],
       ['focal point', draft.focus ?? null, row.focus ?? null],
+      ['collections', [...(draft.collections ?? [])].sort(), [...(row.collections ?? [])].sort()],
       ['roles', [...(draft.roles ?? [])].sort(), [...(row.roles ?? [])].sort()],
       ['tags', [...(draft.tags ?? [])].sort(), [...(row.tags ?? [])].sort()],
       ['alt text', draft.alt ?? {}, row.alt ?? {}],
@@ -316,6 +359,9 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 parkPath: draft!.parkPath ?? null,
                 ride: draft!.ride ?? null,
                 area: draft!.area ?? null,
+                // Always sent, `[]` included: omitted would keep the old list, and
+                // removing the last further collection is an edit like any other.
+                collections: draft!.collections ?? [],
                 title: draft!.title ?? null,
                 tags: draft!.tags ?? [],
                 roles: draft!.roles ?? [],
@@ -742,6 +788,46 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                   <option key={c} value={c} />
                 ))}
               </datalist>
+            </Field>
+
+            <Field label="Weitere Sammlungen — das Bild steht dort zusätzlich, die Datei bleibt liegen">
+              <div
+                className="flex max-h-40 flex-wrap gap-1.5 overflow-y-auto"
+                data-collections-editor=""
+              >
+                {collectionChoices.map((path) => (
+                  <Chip
+                    key={path}
+                    active={(draft.collections ?? []).includes(path)}
+                    onClick={() => toggleCollection(path)}
+                  >
+                    {path}
+                  </Chip>
+                ))}
+              </div>
+              <div className="mt-2 flex gap-1.5">
+                <input
+                  className={INPUT}
+                  placeholder="neuer Pfad, z. B. toverland/halloween"
+                  value={newCollection}
+                  onChange={(e) => setNewCollection(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key !== 'Enter') return;
+                    e.preventDefault();
+                    addTypedCollection();
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={addTypedCollection}
+                  className="border-border hover:bg-muted shrink-0 rounded-md border px-3 text-xs"
+                >
+                  Hinzufügen
+                </button>
+              </div>
+              {collectionError && (
+                <p className="mt-1 text-[11px] text-amber-500">{collectionError}</p>
+              )}
             </Field>
           </Section>
 

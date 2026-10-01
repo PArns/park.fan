@@ -29,13 +29,14 @@ export interface TagGroup {
 }
 
 /**
- * Collections as a tree, counted the way the API filters them.
+ * Collections as a tree.
  *
- * `searchMedia({ collection })` matches the collection itself and everything
- * under `<collection>/`, so a parent's count is its own images plus all of its
- * descendants' — the number the grid shows after the click. A parent that holds
- * no images of its own (only sub-collections) still gets a row, because it is a
- * filter the API accepts.
+ * `counts` is one row per node, parents included, each already holding the
+ * distinct images at or below it (`listCollectionNodes()`), which is what
+ * `searchMedia({ collection })` returns after the click. Summing children here
+ * would count an image twice when it is filed under a parent and one of its
+ * sub-collections. A parent that holds no images of its own (only
+ * sub-collections) still gets a row, because it is a filter the API accepts.
  */
 export function buildCollectionTree(counts: { collection: string; count: number }[]): FolderNode[] {
   const byId = new Map<string, FolderNode>();
@@ -52,7 +53,7 @@ export function buildCollectionTree(counts: { collection: string; count: number 
         byId.set(id, node);
         (parent ? parent.children : roots).push(node);
       }
-      node.count += count;
+      if (i === parts.length - 1) node.count = count;
       parent = node;
     }
   }
@@ -63,6 +64,45 @@ export function buildCollectionTree(counts: { collection: string; count: number 
   };
   sort(roots);
   return roots;
+}
+
+/**
+ * The rows to draw: every node except those under a collapsed parent.
+ *
+ * The active folder is always drawn, even under a collapsed parent. Otherwise
+ * folding its parent (or opening a link that selects a child) would leave the
+ * grid narrowed by a folder the rail no longer shows.
+ */
+export function visibleNodes(
+  nodes: FolderNode[],
+  collapsed: ReadonlySet<string>,
+  active: string
+): FolderNode[] {
+  return nodes.filter((node) => {
+    if (node.id === active) return true;
+    const parts = node.id.split('/');
+    for (let i = 1; i < parts.length; i++) {
+      if (collapsed.has(parts.slice(0, i).join('/'))) return false;
+    }
+    return true;
+  });
+}
+
+/** Slugs joined by `/`, the same shape `normalizeSidecar` and the commit route accept. */
+const COLLECTION_PATH_RE = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/;
+
+/**
+ * What a typed collection path becomes, or null when it is not one.
+ *
+ * Lowercased and trimmed of spaces and stray slashes first, so `Toverland/Halloween/`
+ * lands on `toverland/halloween` instead of being refused for its capitals.
+ */
+export function parseCollectionPath(input: string): string | null {
+  const path = input
+    .trim()
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, '');
+  return COLLECTION_PATH_RE.test(path) ? path : null;
 }
 
 /** Depth-first, parents before their children — the order rows and `<option>`s are drawn in. */

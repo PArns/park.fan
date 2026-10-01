@@ -144,8 +144,9 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
     // second ride's only photo again, which is the exact regression alsoRides exists
     // to undo (see MediaSidecar.alsoRides).
     alsoRides: payload.alsoRides ?? current?.alsoRides,
-    // Not editable here yet, only carried: a save that dropped it would take the image
-    // out of every collection beyond its folder (see MediaSidecar.collections).
+    // Sent by the media editor (`[]` clears it); a payload without the field keeps what
+    // the image has, so an upload or move from elsewhere cannot drop the image out of
+    // its further collections (see MediaSidecar.collections).
     collections: payload.collections ?? current?.collections,
     area: payload.area !== undefined ? payload.area : current?.area,
     title: payload.title !== undefined ? payload.title : current?.title,

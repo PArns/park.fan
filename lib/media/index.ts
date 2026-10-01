@@ -171,6 +171,40 @@ export function listCollections(): string[] {
   return [...new Set(MEDIA_IMAGES.map((image) => image.collection))].sort();
 }
 
+/**
+ * Every collection id the database knows, as a tree's nodes, with the number of
+ * distinct images at or below each one.
+ *
+ * Folder collections, collections only a sidecar names, and every parent path in
+ * between (`toverland` for `toverland/halloween`) each get a row. The count is
+ * what `searchMedia({ collection })` returns for that id, so an image filed under
+ * a parent and one of its children is counted once, not summed.
+ */
+export function listCollectionNodes(): { collection: string; count: number }[] {
+  return collectionNodes(MEDIA_IMAGES);
+}
+
+/** `listCollectionNodes` over any list of images — the part the tests can feed. */
+export function collectionNodes(
+  images: readonly MediaImage[]
+): { collection: string; count: number }[] {
+  const members = new Map<string, Set<string>>();
+  for (const image of images) {
+    for (const id of imageCollections(image)) {
+      const parts = id.split('/');
+      for (let i = 1; i <= parts.length; i++) {
+        const node = parts.slice(0, i).join('/');
+        const set = members.get(node);
+        if (set) set.add(image.id);
+        else members.set(node, new Set([image.id]));
+      }
+    }
+  }
+  return [...members]
+    .map(([collection, ids]) => ({ collection, count: ids.size }))
+    .sort((a, b) => a.collection.localeCompare(b.collection));
+}
+
 // ─── park reference data ─────────────────────────────────────────────────────
 
 /**

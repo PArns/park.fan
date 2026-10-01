@@ -5,8 +5,8 @@ import { getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import {
   MEDIA_REVISION,
-  getCollection,
   getMediaImage,
+  listCollectionNodes,
   listCollections,
   listParks,
   listTags,
@@ -133,10 +133,9 @@ export async function GET(req: Request) {
       licenses: MEDIA_LICENSES,
       parks: listParks(),
       collections: listCollections(),
-      collectionCounts: listCollections().map((collection) => ({
-        collection,
-        count: getCollection(collection).length,
-      })),
+      // Every node of the tree, parents included, each counted once — the number
+      // the grid shows after the click.
+      collectionCounts: listCollectionNodes(),
       lowResLongEdge: LOW_RES_LONG_EDGE,
     },
   });
