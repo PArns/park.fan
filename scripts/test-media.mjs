@@ -26,6 +26,7 @@ import {
 import { checkParkAssignment, distanceMeters, formatDistance } from '../lib/media/geo.ts';
 import { getCreditLine, resolveMediaImage } from '../lib/media/text.ts';
 import { normalizeSidecar, serializeSidecar } from '../lib/media/sidecar.mjs';
+import { pickReplacement, replacementExt } from '../app/admin/media/_lib/replace-drop.ts';
 
 let passed = 0;
 let failed = 0;
@@ -391,6 +392,28 @@ checkThat(
     '…and prettier agrees where it breaks',
     wide === (await prettier.format(wide, options))
   );
+}
+
+console.log('\n── replace by drop ──────────────────────────────────────────\n');
+
+{
+  const f = (name, type) => ({ name, type });
+  check('no files is not a drop', pickReplacement([]), null);
+  checkThat(
+    'two files are refused',
+    'error' in pickReplacement([f('a.png', 'image/png'), f('b.png', 'image/png')])
+  );
+  checkThat('a non-image is refused', 'error' in pickReplacement([f('a.txt', 'text/plain')]));
+  checkThat(
+    'an image the endpoint refuses is refused here',
+    'error' in pickReplacement([f('a.gif', 'image/gif')])
+  );
+  checkThat(
+    'a name without a dot is refused',
+    'error' in pickReplacement([f('photo', 'image/jpeg')])
+  );
+  checkThat('one jpg passes', 'file' in pickReplacement([f('A.JPG', 'image/jpeg')]));
+  check('.JPEG is stored as jpg', replacementExt(f('x.JPEG')), 'jpg');
 }
 
 console.log('\n' + '='.repeat(62));

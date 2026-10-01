@@ -221,6 +221,7 @@ export default function MediaAdminPage() {
 
   /** Take a drop on one tile and stage it, or say why it was refused. */
   const stageOnTile = (id: string, files: FileList | File[] | null) => {
+    if (savingStaged) return;
     const picked = pickReplacement(files);
     if (!picked) return;
     if ('error' in picked) {
@@ -228,11 +229,10 @@ export default function MediaAdminPage() {
       return;
     }
     setDropError(null);
+    const previous = stagedRef.current[id];
+    if (previous) URL.revokeObjectURL(previous.url);
     const url = URL.createObjectURL(picked.file);
-    setStaged((current) => {
-      if (current[id]) URL.revokeObjectURL(current[id].url);
-      return { ...current, [id]: { file: picked.file, url } };
-    });
+    setStaged((current) => ({ ...current, [id]: { file: picked.file, url } }));
   };
 
   const discardStaged = () => {
@@ -241,47 +241,59 @@ export default function MediaAdminPage() {
     setDropError(null);
   };
 
-  /** Every staged tile as one `replace` each, in a single commit. No sidecar payload:
-   * the server rebuilds it from the manifest, so alt texts, focus and tags stay. */
+  /**
+   * One `replace` request per staged tile, in order, each joining the session's PR.
+   * Sending them in one body is what exceeds the host's request limit once two or
+   * three originals are staged (see `upload-transport.ts`). No sidecar payload: the
+   * server rebuilds it from the manifest, so alt texts, focus and tags stay. A tile
+   * leaves the staging area as soon as its request landed, so a failure halfway
+   * keeps exactly the tiles that were not sent.
+   */
   const saveStaged = async () => {
     const entries = Object.entries(staged);
     if (entries.length === 0) return;
     setSavingStaged(true);
     setDropError(null);
+    let last: { pullRequest: string | null; joinedSession?: boolean } | null = null;
     try {
-      const operations = await Promise.all(
-        entries.map(async ([id, { file: original }]) => {
-          const { file } = await fitForCommit(original);
-          const contentBase64 = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
-            reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
-            reader.readAsDataURL(file);
-          });
-          return { op: 'replace', id, ext: replacementExt(file), contentBase64 };
-        })
-      );
-      const response = await fetch('/api/admin/media/commit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title:
-            operations.length === 1
-              ? `media: replace ${operations[0].id}`
-              : `media: replace ${operations.length} images`,
-          newSession,
-          operations,
-        }),
-      });
-      const result = await response.json();
-      if (!response.ok && response.status !== 207) throw new Error(result.error ?? 'Save failed');
-      discardStaged();
-      onCommitted(result.pullRequest ?? null, result.joinedSession);
-      void load();
+      for (const [index, [id, { file: original, url }]] of entries.entries()) {
+        const { file } = await fitForCommit(original);
+        const contentBase64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+          reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
+          reader.readAsDataURL(file);
+        });
+        const response = await fetch('/api/admin/media/commit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: `media: replace ${id}`,
+            // Only the first request may open a new PR; the rest join it.
+            newSession: newSession && index === 0,
+            operations: [{ op: 'replace', id, ext: replacementExt(file), contentBase64 }],
+          }),
+        });
+        const result = await response.json();
+        if (!response.ok && response.status !== 207) {
+          throw new Error(`${id}: ${result.error ?? 'Save failed'}`);
+        }
+        last = { pullRequest: result.pullRequest ?? null, joinedSession: result.joinedSession };
+        URL.revokeObjectURL(url);
+        setStaged((current) => {
+          const { [id]: sent, ...rest } = current;
+          void sent;
+          return rest;
+        });
+      }
     } catch (e) {
       setDropError((e as Error).message);
     } finally {
       setSavingStaged(false);
+      if (last) {
+        onCommitted(last.pullRequest, last.joinedSession);
+        void load();
+      }
     }
   };
 
@@ -550,13 +562,22 @@ export default function MediaAdminPage() {
               {(Object.keys(staged).length > 0 || dropError) && (
                 // Staged tiles are the only unsaved state on this page, so they get
                 // the only bar with a Save in it.
-                <div className="border-border bg-muted/40 mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border px-3 py-2 text-sm">
+                <div className="border-border bg-background/95 sticky top-2 z-10 mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border px-3 py-2 text-sm backdrop-blur">
                   {dropError ? (
                     <span className="flex items-start gap-1.5 text-xs text-amber-500">
                       <AlertTriangle className="mt-px h-3.5 w-3.5 shrink-0" />
                       {dropError}
                     </span>
                   ) : null}
+                  {dropError && Object.keys(staged).length === 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setDropError(null)}
+                      className="border-border hover:bg-muted ml-auto rounded-md border px-2 py-1 text-xs"
+                    >
+                      Dismiss
+                    </button>
+                  )}
                   {Object.keys(staged).length > 0 && (
                     <>
                       <span className="text-xs">

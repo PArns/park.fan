@@ -6,6 +6,8 @@
  * how the wrong photo ends up on a ride. Shared by the editor's replace bar and
  * the grid tiles, so both refuse the same things with the same words.
  */
+const ALLOWED_EXT = /^(jpg|jpeg|png|webp|avif|svg)$/;
+
 export type ReplaceDrop = { file: File } | { error: string } | null;
 
 export function pickReplacement(files: FileList | File[] | null): ReplaceDrop {
@@ -18,6 +20,10 @@ export function pickReplacement(files: FileList | File[] | null): ReplaceDrop {
   }
   const [file] = list;
   if (!file.type.startsWith('image/')) return { error: `${file.name} is not an image.` };
+  // The commit endpoint refuses anything else, and a refusal at Save would name no tile.
+  if (!ALLOWED_EXT.test(file.name.split('.').pop()?.toLowerCase() ?? '')) {
+    return { error: `${file.name}: use a jpg, png, webp, avif or svg file.` };
+  }
   return { file };
 }
 
