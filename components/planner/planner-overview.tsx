@@ -6,7 +6,7 @@ import { CalendarPlus, Check, MapPin, Trash2 } from 'lucide-react';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { cn } from '@/lib/utils';
 import { addDays, nextPlannedDay, todayInZone } from '@/lib/planner/park-time';
-import type { PlannerState } from '@/lib/planner/types';
+import { isPlannedDay, type PlannerState } from '@/lib/planner/types';
 
 interface PlannerOverviewProps {
   state: PlannerState;
@@ -74,7 +74,7 @@ export function PlannerOverview({
         today: todayInZone(park.timezone),
         tomorrow: addDays(todayInZone(park.timezone), 1),
         days: Object.values(park.days)
-          .filter((day) => day.entries.length > 0)
+          .filter(isPlannedDay)
           .sort((a, b) => a.date.localeCompare(b.date)),
       }))
       .filter((park) => park.days.length > 0)

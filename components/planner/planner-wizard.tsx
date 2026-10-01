@@ -49,7 +49,7 @@ import {
   type FitInput,
 } from '@/lib/planner/fit';
 import type { CalendarDay, PlanDay } from '@/lib/api/types';
-import type { PlannerDayPrefs } from '@/lib/planner/types';
+import { isPlannedDay, type PlannerDayPrefs } from '@/lib/planner/types';
 import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
 import { PlannerMonthCalendar } from './planner-month-calendar';
 import { PlannerFitLevers } from './planner-fit-levers';
@@ -1346,6 +1346,6 @@ function plannedDatesFor(
   const park = state.parks[parkSlug];
   if (!park) return [];
   return Object.values(park.days)
-    .filter((day) => day.entries.length > 0)
+    .filter(isPlannedDay)
     .map((day) => day.date);
 }

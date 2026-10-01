@@ -15,7 +15,7 @@ import { PlannerPlanParkCta } from './planner-plan-park-cta';
 import { PlannerDayFoot } from './planner-day-foot';
 import { PlannerRideSearch } from './planner-ride-search';
 import { usePlanner } from '@/lib/planner/use-planner';
-import { entriesFor, type PlannerEntry } from '@/lib/planner/types';
+import { entriesFor, isPlannedDay, type PlannerEntry } from '@/lib/planner/types';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
@@ -377,7 +377,7 @@ export function PlannerDayColumn({
 
   const plannedDates = park
     ? Object.values(park.days)
-        .filter((d) => d.entries.length > 0)
+        .filter(isPlannedDay)
         .map((d) => d.date)
     : [];
 

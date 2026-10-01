@@ -46,6 +46,8 @@ interface PlannerParkSearchProps {
    * named it.
    */
   onPick: (park: PlannerParkPick) => void;
+  /** Off where the search is one control among several, so a phone's keyboard does not open with the dialog. */
+  autoFocus?: boolean;
 }
 
 type ParkHit = PlannerParkPick;
@@ -65,7 +67,11 @@ type ParkHit = PlannerParkPick;
  * display names. "Netherlands" is not `netherlands` in every language, and
  * guessing would file the park under a path that 404s.
  */
-export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchProps) {
+export function PlannerParkSearch({
+  plannedSlugs,
+  onPick,
+  autoFocus = true,
+}: PlannerParkSearchProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
   const [query, setQuery] = useState('');
@@ -170,7 +176,7 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
           /* The first thing this dialog asks is which park, and the answer is
              typed. Without it Radix parks the focus on the dialog itself and
              the first keystroke goes nowhere. */
-          autoFocus
+          autoFocus={autoFocus}
           role="combobox"
           aria-expanded={results.length > 0}
           aria-controls={listId}

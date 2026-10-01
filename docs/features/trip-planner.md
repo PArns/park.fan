@@ -2086,10 +2086,35 @@ is what emptied the list, draws a notice in the crowd tint naming the reason (he
 water or both) and the way on: the rides can still be added one by one in the panel,
 where the search flags them rather than hiding them.
 
+## Which park on which day
+
+The button „Parks auf Tage verteilen" on the planner page opens `PlannerTripAssistant`, a dialog
+in the shape of the fit assistant. `lib/planner/assign.ts` is the pure part (`pnpm test:planner-assignment`).
+
+- **Nothing is stored except what is accepted.** Window and park choice live in the dialog. There
+  is no trip in the plan, so „several trips" means running it again for the next window. Days already
+  in the plan are occupied and never move.
+- **Ranking.** Quietest free day wins, a tie keeps the earlier day. `unknown` (no forecast, or a date
+  past the 90-day snapshot) ranks behind `extreme`, and the row says „Keine Prognose". `closed` is
+  never proposed.
+- **Countries are blocks.** Parks of one `geo.country` lie together; with the switch on, a change of
+  country needs a free day between, against the plan's own days as well. No distance: the plan stores
+  no coordinates.
+- **A second day** is offered beside a first day that is `high` or worse, on a free, open, forecast
+  neighbour that does not use up a travel gap. It is chosen after the first days, not with them.
+- **Accepting** writes `PlannerDay.reserved: true` on empty days. `isPlannedDay()` (entries or
+  reserved) is what the lists, the countdown, the share page and the calendar markers count; an empty
+  day from `openDay` stays invisible. The field is optional, so older plans and a tab on the previous
+  build read as before. Push and the notification job still key on entries.
+- **Limits.** 31 days and 8 parks; the search is exact over them (`MAX_ASSIGN_*`).
+- **Forecasts** come from the best-days snapshot through `parkBestDaysQueryOptions`, the same key the
+  park page uses.
+
 ## Checking it
 
 ```bash
 pnpm test:planner-actions      # the plan operations, pure
+pnpm test:planner-assignment   # which park on which day, and the `reserved` field
 pnpm test:planner-estimate     # what a block is expected to cost, and from which regime
 pnpm test:planner-grid         # minutes → pixels, and the axis
 pnpm test:planner-leg          # what the chip between two rides says
