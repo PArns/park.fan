@@ -522,6 +522,12 @@
       "intro": "Artikelen uit ons blog waarin {park} voorkomt.",
       "viewAll": "Alle artikelen lezen"
     },
+    "firstVisit": {
+      "title": "Eerste bezoek: {park}",
+      "intro": "Begin met de gids en lees daarna de begrippen die elke nieuwe bezoeker tegenkomt.",
+      "termsTitle": "Begrippen voor je eerste dag",
+      "termsIntro": "Bordjes en park-apps gaan ervan uit dat je ze kent."
+    },
     "title": "Meer loopings, minder wachten",
     "heroWelcome": "Welkom in {parkName}",
     "heroNearPark": "{parkName} is in de buurt (binnen 5 km). Hieronder vind je actuele wachttijden, openingstijden en drukte – of zoek een ander park.",

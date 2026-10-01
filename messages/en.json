@@ -522,6 +522,12 @@
       "intro": "Posts from our blog that feature {park}.",
       "viewAll": "Read all posts"
     },
+    "firstVisit": {
+      "title": "First visit: {park}",
+      "intro": "Start with our guide, then read up on the terms every new visitor runs into.",
+      "termsTitle": "Terms for your first day",
+      "termsIntro": "Signs and park apps use them without explaining them."
+    },
     "title": "More Thrills, Less Waiting",
     "heroWelcome": "Welcome to {parkName}",
     "heroNearPark": "{parkName} is nearby (within 5 km). Below you’ll find live wait times, opening hours and crowd levels – or search for another park.",

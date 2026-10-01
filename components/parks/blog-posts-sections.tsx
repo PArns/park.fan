@@ -7,7 +7,8 @@ import { PageSection } from '@/components/common/page-section';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { NewsRow } from '@/components/blog/news-row';
 import { hasPublishedPosts, isNewsPost } from '@/lib/blog/listing';
-import { getPostsForPark, getPostsForRide } from '@/lib/blog/backlinks';
+import { getGuideForPark, getPostsForPark, getPostsForRide } from '@/lib/blog/backlinks';
+import { ParkFirstVisitGuide } from '@/components/parks/park-first-visit-guide';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
 
@@ -75,12 +76,21 @@ export async function ParkBlogPostsSection({
   // nav link hidden, /blog 404s) must not link into one from a park page.
   if (!hasPublishedPosts(locale)) return null;
 
-  const { articles, news } = splitPosts(getPostsForPark(locale, parkSlug, { geoPath }), limit);
-  if (articles.length === 0 && news.length === 0) return null;
+  // The park's guide opens the page's blog part in a slot of its own, so it leaves the grid: the
+  // same post twice, a card apart, reads as a mistake.
+  const guide = getGuideForPark(locale, parkSlug, { geoPath });
+  const posts = getPostsForPark(locale, parkSlug, { geoPath }).filter(
+    (post) => post.translationKey !== guide?.translationKey
+  );
+  const { articles, news } = splitPosts(posts, limit);
+  const firstVisit = guide ? (
+    <ParkFirstVisitGuide locale={locale} parkName={parkName} guide={guide} className={className} />
+  ) : null;
+  if (articles.length === 0 && news.length === 0) return firstVisit;
 
   const t = await getTranslations('parks.blogPosts');
 
-  return (
+  const section = (
     <section className={className}>
       <ChapterHeading
         icon={Newspaper}
@@ -94,6 +104,15 @@ export async function ParkBlogPostsSection({
       <BlogPostsGrid posts={articles} />
       <NewsRow locale={locale} posts={news} boxed className={articles.length > 0 ? 'mt-4' : ''} />
     </section>
+  );
+
+  return guide ? (
+    <>
+      {firstVisit}
+      {section}
+    </>
+  ) : (
+    section
   );
 }
 

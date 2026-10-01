@@ -111,6 +111,7 @@
     "test:news-redirects": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-redirects.mjs",
     "test:news-sitemap": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-sitemap.mjs",
     "test:news-park": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-park.mjs",
+    "test:park-guide": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-guide.mjs",
     "test:closed-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-closed-ride.mjs",
     "test:glossary-ride-href": "node --experimental-strip-types scripts/test-glossary-ride-href.mjs",
     "test:news-split": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-split.mjs",

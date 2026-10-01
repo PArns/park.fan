@@ -272,11 +272,11 @@ export interface BacklinkOptions {
   limit?: number;
 }
 
-function resolveMentions(
+function resolveRanked(
   mentions: Mentioned[] | undefined,
   locale: Locale,
-  { geoPath, limit }: BacklinkOptions
-): BlogListItem[] {
+  { geoPath }: BacklinkOptions
+): { post: BlogListItem; score: number }[] {
   if (!mentions || mentions.length === 0) return [];
 
   const visible = new Map(listPosts(locale).map((post) => [post.translationKey, post]));
@@ -295,8 +295,18 @@ function resolveMentions(
         ? b.mention.score - a.mention.score
         : (b.post.frontmatter.date ?? '').localeCompare(a.post.frontmatter.date ?? '')
     )
-    .map(({ post }) => post);
+    .map(({ mention, post }) => ({ post, score: mention.score }));
 
+  return ranked;
+}
+
+function resolveMentions(
+  mentions: Mentioned[] | undefined,
+  locale: Locale,
+  options: BacklinkOptions
+): BlogListItem[] {
+  const ranked = resolveRanked(mentions, locale, options).map(({ post }) => post);
+  const { limit } = options;
   return limit && limit > 0 ? ranked.slice(0, limit) : ranked;
 }
 
@@ -314,6 +324,61 @@ export function getPostsForPark(
   return resolveMentions(buildIndex().parks.get(parkSlug), locale, options);
 }
 
+/** One post's translations, English first and the rest alphabetical — see {@link getNewsParkRef}. */
+function entriesOfPost(translationKey: string): ManifestPostMeta[] {
+  return BLOG_POSTS_META.filter(
+    (entry) => translationKeyOf(entry.slug, entry.frontmatter) === translationKey
+  ).sort((a, b) =>
+    a.locale === b.locale
+      ? 0
+      : a.locale === defaultLocale
+        ? -1
+        : b.locale === defaultLocale
+          ? 1
+          : a.locale.localeCompare(b.locale)
+  );
+}
+
+/**
+ * The park a visit guide is the primer for: the FIRST entry of its `parkLinks`, or `null`.
+ *
+ * Only configuration decides. The round-up guides (Halloween, winter) name a dozen parks in their
+ * tags and none in `parkLinks`, so every automatic signal would make them the "first visit guide"
+ * of each one. A guide that lists a second park (Toverland's names Efteling for the comparison)
+ * is the primer for the first only; the second still lists it among its posts.
+ */
+function guidePrimaryPark(translationKey: string): ManifestParkRef | null {
+  for (const entry of entriesOfPost(translationKey)) {
+    const links = entry.frontmatter.parkLinks;
+    if (!Array.isArray(links)) continue;
+    const first = links.map((value) => parseConfigured(String(value), 'park')).find(Boolean);
+    if (first) return first;
+  }
+  return null;
+}
+
+/**
+ * The visit guide for one park in the reader's locale, or `null` — the post the park page opens
+ * with instead of listing it among the others. See {@link guidePrimaryPark} for what makes a post
+ * one. Locale-scoped like every lookup here: a post that is not published in the reader's locale
+ * (or its English fallback) is not offered.
+ */
+export function getGuideForPark(
+  locale: Locale,
+  parkSlug: string,
+  options: BacklinkOptions = {}
+): BlogListItem | null {
+  const guide = resolveRanked(buildIndex().parks.get(parkSlug), locale, options).find(
+    ({ post }) => {
+      if ((post.frontmatter.category ?? '').split('/')[0] !== 'guides') return false;
+      const primary = guidePrimaryPark(post.translationKey);
+      if (primary?.slug !== parkSlug) return false;
+      return !primary.geo || !options.geoPath || primary.geo.includes(options.geoPath);
+    }
+  );
+  return guide?.post ?? null;
+}
+
 /**
  * The one park a news post is about, for its label and the park filter on `/news`.
  *
@@ -329,17 +394,7 @@ export function getPostsForPark(
  * happened to write the files in.
  */
 export function getNewsParkRef(translationKey: string): ManifestParkRef | null {
-  const entries = BLOG_POSTS_META.filter(
-    (entry) => translationKeyOf(entry.slug, entry.frontmatter) === translationKey
-  ).sort((a, b) =>
-    a.locale === b.locale
-      ? 0
-      : a.locale === defaultLocale
-        ? -1
-        : b.locale === defaultLocale
-          ? 1
-          : a.locale.localeCompare(b.locale)
-  );
+  const entries = entriesOfPost(translationKey);
   if (entries.length === 0) return null;
   const { suppressed, mentions } = collectMentions(entries, 'park');
   if (suppressed || mentions.size === 0) return null;
