@@ -1,6 +1,7 @@
 {
   "title": "Kürbisphönix",
   "park": "attractiepark-toverland",
+  "collections": ["halloween", "toverland/halloween"],
   "tags": ["fog", "halloween", "night", "outdoor", "photo", "theming"],
   "alt": {
     "de": "Ein Phönix aus hunderten leuchtenden Kürbissen mit ausgebreiteten Flügeln, davor eine Person am Geländer.",

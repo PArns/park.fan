@@ -1,6 +1,7 @@
 {
   "title": "Clown im Fez",
   "park": "walibi-belgium",
+  "collections": ["halloween", "walibi-belgium/halloween"],
   "tags": ["day", "halloween", "outdoor", "overcast", "performer", "photo"],
   "alt": {
     "de": "Ein Darsteller im Clownskostüm mit Fez und grün glitzerndem Bart sitzt am Rand einer Bühne, links eine blutverschmierte Zielscheibe.",

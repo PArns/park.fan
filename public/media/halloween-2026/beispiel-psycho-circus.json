@@ -1,6 +1,7 @@
 {
   "title": "Psycho Circus",
   "park": "walibi-belgium",
+  "collections": ["halloween", "walibi-belgium/halloween"],
   "tags": ["entrance", "halloween", "night", "outdoor", "photo", "signage", "theming"],
   "alt": {
     "de": "Ein beleuchtetes Torschild „Psycho Circus“ mit Clownsgesicht in der Mitte, darunter Besucher zwischen Imbissbuden.",

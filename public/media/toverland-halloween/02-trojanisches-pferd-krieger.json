@@ -1,6 +1,7 @@
 {
   "park": "attractiepark-toverland",
   "ride": "troy",
+  "collections": ["toverland/halloween", "halloween"],
   "tags": ["fog", "halloween", "night", "outdoor", "performer", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein Darsteller in Rüstung mit Speer steht im Nebel vor dem trojanischen Pferd.",

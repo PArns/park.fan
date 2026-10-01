@@ -1,6 +1,7 @@
 {
   "park": "epcot",
   "ride": "guardians-of-the-galaxy-cosmic-rewind",
+  "collections": ["epcot"],
   "tags": ["photo", "queue", "theming"],
   "alt": {
     "de": "Die Galaxarium-Kuppel im Wonders-of-Xandar-Pavillon mit projiziertem Sternenhimmel",

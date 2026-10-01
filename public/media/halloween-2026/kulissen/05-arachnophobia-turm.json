@@ -1,5 +1,6 @@
 {
   "park": "walibi-belgium",
+  "collections": ["halloween", "walibi-belgium/halloween"],
   "tags": ["halloween", "photo", "theming"],
   "alt": {
     "de": "Grün beleuchteter Turm mit Stacheldraht und Warnschildern, Schriftzug Arachnophobia",

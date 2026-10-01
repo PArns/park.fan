@@ -1,6 +1,7 @@
 {
   "title": "09-kettensaegen-clown-raupe",
   "park": "walibi-holland",
+  "collections": ["halloween", "walibi-holland/halloween"],
   "tags": ["halloween", "performer", "photo"],
   "alt": {
     "de": "Clown mit Kettensäge vor einem Raupenfahrgeschäft, grün-violett beleuchtet",

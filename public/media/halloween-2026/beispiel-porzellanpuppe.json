@@ -1,6 +1,7 @@
 {
   "title": "Porzellanpuppe",
   "park": "walibi-holland",
+  "collections": ["halloween", "walibi-holland/halloween"],
   "tags": ["autumn", "day", "halloween", "outdoor", "performer", "photo"],
   "alt": {
     "de": "Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys.",

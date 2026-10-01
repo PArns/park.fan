@@ -1,6 +1,7 @@
 {
   "title": "22-totengraeber-blau",
   "park": "walibi-holland",
+  "collections": ["halloween", "walibi-holland/halloween"],
   "tags": ["halloween", "performer", "photo"],
   "alt": {
     "de": "Totengräber-Darsteller mit Schaufel zwischen zwei Säulen, blau beleuchtet",

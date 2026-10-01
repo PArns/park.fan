@@ -1,6 +1,7 @@
 {
   "park": "disneys-animal-kingdom-theme-park",
   "ride": "avatar-flight-of-passage",
+  "collections": ["disney-animal-kingdom"],
   "tags": ["photo", "queue", "theming"],
   "alt": {
     "de": "Das runde Forschungslabor der Pandora Conservation Initiative mit Proben und Feldnotizen",
