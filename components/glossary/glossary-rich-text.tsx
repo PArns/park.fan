@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import type { Locale } from '@/i18n/config';
 import { GlossaryInject } from './glossary-inject';
 
@@ -24,16 +24,24 @@ import { GlossaryInject } from './glossary-inject';
  * card explaining one term would link that term's own name inside its own
  * definition, to the page its "more in the glossary" button already points at.
  * On the glossary page itself auto-linking is the only layer and stays on.
+ *
+ * `renderLink` lets a caller take over an internal link. It receives the plain anchor as
+ * `fallback`, so a caller only has to answer for the hrefs it recognises and shows the anchor for
+ * the rest. The blog widget uses it to put the
+ * live wait-time chip on a link to a ride; the glossary page passes nothing and stays a plain
+ * reference page.
  */
 
 export function GlossaryRichText({
   children,
   locale,
   autoLink = true,
+  renderLink,
 }: {
   children: string;
   locale: Locale;
   autoLink?: boolean;
+  renderLink?: (link: { label: string; href: string; fallback: ReactNode }) => ReactNode;
 }) {
   type Part = { text: string } | { label: string; href: string };
   const parts: Part[] = [];
@@ -53,9 +61,8 @@ export function GlossaryRichText({
       {parts.map((p, i) => {
         if ('href' in p) {
           const external = /^https?:\/\//.test(p.href);
-          return (
+          const anchor = (
             <a
-              key={i}
               href={p.href}
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className="text-primary decoration-primary/40 hover:decoration-primary font-medium underline underline-offset-2"
@@ -63,6 +70,8 @@ export function GlossaryRichText({
               {p.label}
             </a>
           );
+          if (external || !renderLink) return <Fragment key={i}>{anchor}</Fragment>;
+          return <Fragment key={i}>{renderLink({ ...p, fallback: anchor })}</Fragment>;
         }
         if (!autoLink) return <Fragment key={i}>{p.text}</Fragment>;
         return (

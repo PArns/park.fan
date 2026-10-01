@@ -5,6 +5,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { GlossaryRichText } from '@/components/glossary/glossary-rich-text';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BlogGlossaryRideLink } from './blog-glossary-ride-link';
 import type { Locale } from '@/i18n/config';
 
 interface BlogGlossaryWidgetProps {
@@ -61,8 +62,13 @@ export async function BlogGlossaryWidget({ slug, locale }: BlogGlossaryWidgetPro
               {/* Same renderer the glossary page uses, so an authored `[label](/href)` in a
                   definition arrives as a link here too — 25 of 274 terms carry one, and
                   printed raw they also put an unbreakable URL in a 278 px column. Auto-linking
-                  is off: see the `autoLink` docblock in glossary-rich-text.tsx. */}
-              <GlossaryRichText locale={locale} autoLink={false}>
+                  is off: see the `autoLink` docblock in glossary-rich-text.tsx. A link to a ride
+                  gets the live chip that a `ref:` link carries. */}
+              <GlossaryRichText
+                locale={locale}
+                autoLink={false}
+                renderLink={(link) => <BlogGlossaryRideLink {...link} />}
+              >
                 {para}
               </GlossaryRichText>
             </p>
