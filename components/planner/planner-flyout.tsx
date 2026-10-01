@@ -1295,7 +1295,7 @@ export function PlannerFlyout({
               inside this very row, so `pr-7` keeps the last control out from
               under a 16 px target. The phone used to need `max-sm:pr-14` for
               the same reason and one size up — there the button is
-              `max-sm:right-2 max-sm:size-11`, covering the rightmost 52 px
+              `planner-phone:right-2 planner-phone:size-11`, covering the rightmost 52 px
               against the 28 + 12 the desktop pair reserves, and 12 px of "einen
               Tag planen" sat under it. With `hideClose` there is nothing to
               clear on a phone, and holding the 56 px anyway would spend them on
