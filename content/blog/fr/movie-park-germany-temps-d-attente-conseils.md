@@ -2,7 +2,6 @@
 title: '30 ans de Movie Park Germany, et il ne reste aucune marque de 1996'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

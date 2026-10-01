@@ -2,7 +2,6 @@
 title: 'Disneyland Paris : deux parcs, et c’est justement le petit qui a les longues files'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

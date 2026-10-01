@@ -500,6 +500,7 @@
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
     "readingTime": "{minutes} min.",
+    "updatedOn": "Bijgewerkt {date}",
     "nearby": "Bij jou in de buurt",
     "preferences": "Instellingen"
   },

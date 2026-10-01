@@ -2,7 +2,6 @@
 title: 'Walibi Belgium: der Walibi, an den keiner denkt, mit der höchsten Bahn im Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

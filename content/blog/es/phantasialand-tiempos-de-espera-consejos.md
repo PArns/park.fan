@@ -2,7 +2,6 @@
 title: 'Phantasialand: tiempos de espera, consejos y el día perfecto, según un reincidente'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false

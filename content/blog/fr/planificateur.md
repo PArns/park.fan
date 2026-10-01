@@ -2,7 +2,6 @@
 title: 'Planifier ta journée au parc avant de te retrouver dans la mauvaise file'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

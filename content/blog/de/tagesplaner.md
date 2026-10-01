@@ -2,7 +2,6 @@
 title: 'Deinen Parktag planen, bevor du in der falschen Warteschlange stehst'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

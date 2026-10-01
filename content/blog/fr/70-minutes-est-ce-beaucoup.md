@@ -2,7 +2,6 @@
 title: 'Ce que valent 70 minutes d’attente selon le jour'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

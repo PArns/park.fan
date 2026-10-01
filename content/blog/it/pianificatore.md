@@ -2,7 +2,6 @@
 title: 'Pianificare la giornata al parco prima di finire nella fila sbagliata'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

@@ -2,7 +2,6 @@
 title: 'Hansa-Park: de snelste achtbaan van Duitsland staat half aan de Oostzee'
 translationKey: hansa-park-guide
 date: '2026-09-22'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

@@ -2,7 +2,6 @@
 title: 'Parques en invierno: quién abre en diciembre y quién no puede permitírselo'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

@@ -2,7 +2,6 @@
 title: 'Phantasialand Wait Times & Tips: the perfect day, planned by a repeat offender'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false

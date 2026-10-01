@@ -2,7 +2,6 @@
 title: 'Toverland : Troy, les montagnes russes en bois que tout le monde dépasse'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

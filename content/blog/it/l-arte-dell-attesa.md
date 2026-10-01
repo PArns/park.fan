@@ -2,7 +2,6 @@
 title: 'L’arte dell’attesa: perché per certe attrazioni facciamo la fila “volentieri”'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

@@ -500,6 +500,7 @@
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
     "readingTime": "{minutes} min",
+    "updatedOn": "Aggiornato il {date}",
     "nearby": "Vicino a te",
     "preferences": "Impostazioni"
   },

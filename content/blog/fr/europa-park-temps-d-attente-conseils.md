@@ -2,7 +2,6 @@
 title: 'Europa-Park : le plus grand parc d’Allemagne, mais où sont passés les gens'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

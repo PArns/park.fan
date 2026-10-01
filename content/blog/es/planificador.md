@@ -2,7 +2,6 @@
 title: 'Tu día de parque en una línea de tiempo, colas y caminos incluidos'
 translationKey: trip-planner-launch
 date: '2026-09-05'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

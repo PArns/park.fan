@@ -2,7 +2,6 @@
 title: 'Europa-Park: el parque más grande de Alemania, y dónde se mete la gente'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

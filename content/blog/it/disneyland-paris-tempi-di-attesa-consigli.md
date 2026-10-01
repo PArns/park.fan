@@ -2,7 +2,6 @@
 title: 'Disneyland Paris: due parchi, e le code lunghe se le prende proprio il piccolo'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

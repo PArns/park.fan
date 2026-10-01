@@ -2,7 +2,6 @@
 title: 'Walibi Belgium: el Walibi original, con la montaña rusa más alta del Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

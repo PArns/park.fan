@@ -2,7 +2,6 @@
 title: 'Hoe je ziet of 70 minuten wachten veel is'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

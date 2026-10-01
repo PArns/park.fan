@@ -2,7 +2,6 @@
 title: 'Un cochecito, una góndola y medio millón de líneas de código'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

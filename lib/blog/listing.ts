@@ -358,7 +358,12 @@ export function parsePageParam(value: unknown, totalPages: number = Infinity): n
 const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 
 /**
- * When a post was last touched, for the recency sort below.
+ * When a post was last touched, for the recency sort below and for the date the header's blog
+ * panel prints beside each post.
+ *
+ * `updatedAt` moves only when a post gets new content (new dates, new parks, new figures, a
+ * corrected fact), never for a wording or prose pass
+ * (docs/rules/updated-at-is-for-new-content.md): it is the order of the menu and the homepage.
  *
  * `updatedAt` is optional — a post that was never revised (most of them) sorts
  * by its publication `date`, exactly as it always did. The `max` is what makes
@@ -368,7 +373,7 @@ const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
  * is the opposite of what marking it updated is for. Both fields are ISO
  * `YYYY-MM-DD`, so string comparison is date comparison.
  */
-function lastTouched(fm: BlogFrontmatter): string {
+export function lastTouched(fm: BlogFrontmatter): string {
   const updated = fm.updatedAt?.trim();
   return updated && updated > fm.date ? updated : fm.date;
 }
@@ -430,7 +435,6 @@ export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
 
 const ARTICLES = new Map<Locale, readonly BlogListItem[]>();
 const ARTICLES_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
-const ARTICLES_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
 const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
 
 /**
@@ -453,25 +457,6 @@ export function listArticlesByRecency(requestedLocale: Locale): readonly BlogLis
   if (memo) return memo;
   const frozen = Object.freeze(listPostsByRecency(requestedLocale).filter((p) => !isNewsPost(p)));
   ARTICLES_BY_RECENCY.set(requestedLocale, frozen);
-  return frozen;
-}
-
-/**
- * The articles only, newest first by publication date, with `featured` ignored: the order a list
- * that prints each post's `date` beside it has to be in. The header's blog panel reads it; under
- * {@link listArticlesByRecency} an edit to two July guides put them above a post from 28 September,
- * and the rows read 24 Jul, 17 Jul, 28 Sep. Frozen and memoised.
- */
-export function listArticlesByDate(requestedLocale: Locale): readonly BlogListItem[] {
-  const memo = ARTICLES_BY_DATE.get(requestedLocale);
-  if (memo) return memo;
-  const frozen = Object.freeze(
-    // `sort` is stable, so two posts of one day keep the order `listArticles` gave them.
-    [...listArticles(requestedLocale)].sort((a, b) =>
-      b.frontmatter.date.localeCompare(a.frontmatter.date)
-    )
-  );
-  ARTICLES_BY_DATE.set(requestedLocale, frozen);
   return frozen;
 }
 

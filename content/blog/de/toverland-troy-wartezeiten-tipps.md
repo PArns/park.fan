@@ -2,7 +2,6 @@
 title: 'Toverland: Troy, die Holzachterbahn, an der alle vorbeifahren'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

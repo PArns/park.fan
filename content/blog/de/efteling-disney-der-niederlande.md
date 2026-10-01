@@ -2,7 +2,6 @@
 title: 'Efteling: das Disney der Niederlande, drei Jahre älter als das Original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

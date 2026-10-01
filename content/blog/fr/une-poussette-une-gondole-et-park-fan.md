@@ -2,7 +2,6 @@
 title: 'Une poussette, une gondole et un demi-million de lignes de code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

@@ -2,7 +2,6 @@
 title: 'Walibi Holland: „hard gaan“, Untamed und ein Acker, auf dem 1957 noch Fische schwammen'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
