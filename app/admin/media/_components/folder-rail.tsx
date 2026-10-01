@@ -1,11 +1,24 @@
 'use client';
 
-import { useMemo } from 'react';
-import { Folder, FolderOpen, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import {
+  ChevronDown,
+  ChevronRight,
+  Folder,
+  FolderOpen,
+  PanelLeftClose,
+  PanelLeftOpen,
+} from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { useLocalPreference } from '../../_lib/use-local-preference';
-import { buildCollectionTree, buildTagGroups, flattenTree, type FolderView } from '../_lib/folders';
+import {
+  buildCollectionTree,
+  buildTagGroups,
+  flattenTree,
+  visibleNodes,
+  type FolderView,
+} from '../_lib/folders';
 import type { Vocabulary } from '../_lib/types';
 
 /**
@@ -54,6 +67,18 @@ export function FolderRail({
     () => flattenTree(buildCollectionTree(vocabulary.collectionCounts)),
     [vocabulary.collectionCounts]
   );
+  // Collapsed parents, by collection id. Open is the default so a new folder is never hidden.
+  const [collapsed, setCollapsed] = useState<ReadonlySet<string>>(() => new Set());
+  const visibleCollections = useMemo(
+    () => visibleNodes(collections, collapsed, active.collection),
+    [collections, collapsed, active.collection]
+  );
+  const toggleCollapsed = (id: string) =>
+    setCollapsed((prev) => {
+      const next = new Set(prev);
+      if (!next.delete(id)) next.add(id);
+      return next;
+    });
   const tagGroups = useMemo(
     () => buildTagGroups(vocabulary.facets, vocabulary.tags),
     [vocabulary.facets, vocabulary.tags]
@@ -169,7 +194,7 @@ export function FolderRail({
               onClick={() => onSelect(view, '')}
             />
             {view === 'collection' &&
-              collections.map((node) => (
+              visibleCollections.map((node) => (
                 <FolderRow
                   key={node.id}
                   folder={`collection:${node.id}`}
@@ -179,6 +204,9 @@ export function FolderRail({
                   depth={node.depth}
                   active={active.collection === node.id}
                   onClick={() => onSelect('collection', node.id)}
+                  expandable={node.children.length > 0}
+                  expanded={!collapsed.has(node.id)}
+                  onToggle={() => toggleCollapsed(node.id)}
                 />
               ))}
             {view === 'park' &&
@@ -227,6 +255,9 @@ function FolderRow({
   depth = 0,
   active,
   onClick,
+  expandable = false,
+  expanded = true,
+  onToggle,
 }: {
   folder?: string;
   label: string;
@@ -235,17 +266,35 @@ function FolderRow({
   depth?: number;
   active: boolean;
   onClick: () => void;
+  /** A parent with sub-collections shows a chevron that folds them away. */
+  expandable?: boolean;
+  expanded?: boolean;
+  onToggle?: () => void;
 }) {
   const Icon = active ? FolderOpen : Folder;
+  const Chevron = expanded ? ChevronDown : ChevronRight;
   return (
-    <li>
+    <li className="relative">
+      {expandable && (
+        <button
+          type="button"
+          data-folder-toggle={folder}
+          onClick={onToggle}
+          aria-expanded={expanded}
+          aria-label={`${label} ${expanded ? 'einklappen' : 'ausklappen'}`}
+          style={{ left: `${0.125 + depth * 0.875}rem` }}
+          className="text-muted-foreground hover:text-foreground absolute top-1/2 z-10 -translate-y-1/2 rounded p-1"
+        >
+          <Chevron className="h-3 w-3" />
+        </button>
+      )}
       <button
         type="button"
         data-folder={folder}
         onClick={onClick}
         title={title ?? label}
         aria-current={active ? 'true' : undefined}
-        style={{ paddingLeft: `${0.5 + depth * 0.875}rem` }}
+        style={{ paddingLeft: `${(onToggle ? 1.25 : 0.5) + depth * 0.875}rem` }}
         className={cn(
           'flex w-full items-center gap-1.5 rounded-md py-1 pr-2 text-left transition-colors',
           active
