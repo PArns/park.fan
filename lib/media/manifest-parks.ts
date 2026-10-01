@@ -27,6 +27,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "france",
     "path": "europe/france/paris/disneyland-park"
   },
+  "europe/france/plailly/parc-asterix": {
+    "slug": "parc-asterix",
+    "name": "Parc Asterix",
+    "city": "Plailly",
+    "countrySlug": "france",
+    "path": "europe/france/plailly/parc-asterix"
+  },
   "europe/germany/bottrop/movie-park-germany": {
     "slug": "movie-park-germany",
     "name": "Movie Park Germany",
@@ -136,6 +143,7 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
   "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
   "disneyland-park": "europe/france/paris/disneyland-park",
+  "parc-asterix": "europe/france/plailly/parc-asterix",
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
   "phantasialand": "europe/germany/bruehl/phantasialand",
   "europa-park": "europe/germany/rust/europa-park",
