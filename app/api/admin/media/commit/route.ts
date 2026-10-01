@@ -61,6 +61,7 @@ interface SidecarPayload {
   parkPath?: string | null;
   ride?: string | null;
   alsoRides?: string[];
+  collections?: string[];
   area?: string | null;
   title?: string | null;
   tags?: string[];
@@ -131,6 +132,9 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
     // second ride's only photo again, which is the exact regression alsoRides exists
     // to undo (see MediaSidecar.alsoRides).
     alsoRides: payload.alsoRides ?? current?.alsoRides,
+    // Not editable here yet, only carried: a save that dropped it would take the image
+    // out of every collection beyond its folder (see MediaSidecar.collections).
+    collections: payload.collections ?? current?.collections,
     area: payload.area !== undefined ? payload.area : current?.area,
     title: payload.title !== undefined ? payload.title : current?.title,
     tags: payload.tags ?? current?.tags,

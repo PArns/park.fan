@@ -21,6 +21,7 @@ import {
   getRideImages,
   groupByCollection,
   inCollection,
+  listCollections,
   listTags,
   mediaStats,
   searchMedia,
@@ -237,6 +238,10 @@ check(
   'a collection listed twice is one row once',
   ids(groupByCollection([{ id: 'a/x', collection: 'a', collections: ['a', 'b', 'b'] }]).get('a')),
   ['a/x']
+);
+checkThat(
+  'listCollections names folders only',
+  listCollections().every((c) => MEDIA_IMAGES.some((i) => i.collection === c))
 );
 checkThat('a parent path covers its children', inCollection(multiColl, 'toverland'));
 checkThat('a sibling prefix is not a parent', !inCollection(multiColl, 'tover'));

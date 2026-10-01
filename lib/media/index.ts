@@ -162,9 +162,13 @@ export function getCollection(collection: string): MediaImage[] {
   return indexes().byCollection.get(key) ?? [];
 }
 
-/** Every collection id present in the database, sorted. */
+/**
+ * Every folder collection in the database, sorted. Collections that only a sidecar
+ * names are left out on purpose: the admin offers this list as the folder an image
+ * can be moved into, and a collection with no folder is not a place to move to.
+ */
 export function listCollections(): string[] {
-  return [...indexes().byCollection.keys()].sort();
+  return [...new Set(MEDIA_IMAGES.map((image) => image.collection))].sort();
 }
 
 // ─── park reference data ─────────────────────────────────────────────────────
@@ -408,7 +412,7 @@ export function listParks(): { park: string; count: number }[] {
 export function mediaStats() {
   return {
     total: MEDIA_IMAGES.length,
-    collections: indexes().byCollection.size,
+    collections: listCollections().length,
     parks: indexes().byPark.size,
     withGps: MEDIA_IMAGES.filter((i) => i.gps).length,
     unlicensed: MEDIA_IMAGES.filter((i) => i.credit.license === 'unknown').length,
