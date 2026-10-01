@@ -162,9 +162,11 @@ const PLAN = {
  * Three assertions below counted it separately and the number was written into
  * all three — so a seventh chapter turned two of them red and left the third
  * quietly passing, because it sliced at six and therefore stopped looking
- * exactly where the new one begins. The page will get more chapters.
+ * exactly where the new one begins. The count follows the article: it was 7
+ * while the German page had grown an eighth that no other locale carried, and
+ * the rewrite of 2026-09-30 brought all six locales down to the same six.
  */
-const CHAPTER_COUNT = 7;
+const CHAPTER_COUNT = 6;
 /** `010203…`, derived rather than typed, for the no-gap assertion. */
 const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
   String(i + 1).padStart(2, '0')
@@ -490,8 +492,9 @@ async function openPushBell(page) {
  * at all and a guard reading it would press again into a press that had landed.
  *
  * The signal for "landed" is therefore `html[data-planner-open]`, which the
- * launcher's own effect sets off `open` alone, independent of the chunk. Both
- * halves are read: the attribute for the window before the sheet exists, and
+ * launcher's own effect sets off `panelVisible` (PAR-360), that is in the commit
+ * that mounts the sheet and not at the press. Both
+ * halves are read: the attribute for the frame the sheet is mounting in, and
  * `data-state="open"` on the content for the one after, since a sheet on its way
  * OUT is still visible for 300 ms while carrying `closed` — which is why the
  * success is waited for on `[data-state="open"]` too and not on visibility.
