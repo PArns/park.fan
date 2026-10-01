@@ -71,7 +71,7 @@ passeggeri. Com’è il parco in inverno e quando conviene andarci lo trovi nell
 
 ## Cosa deve arrivare nel 2028
 
-Secondo il sito del parco è in preparazione un «​area a tema spaziale
+Secondo il sito del parco è in preparazione un’«area a tema spaziale
 indipendente» con una nuova montagna russa per famiglie di MACK Rides,
 obiettivo 2028. Anche l’ESA è coinvolta: l’8 giugno 2026 ESA e Europa-Park hanno
 firmato a Rust una lettera d’intenti. Rolf Densing, direttore delle Operazioni

@@ -71,7 +71,7 @@ der Park im Winter besucht ist und wann sich der Weg lohnt, steht im
 ## Was 2028 kommen soll
 
 Laut Parkseite entsteht ein „eigenständiger Weltraum-Themenbereich“ mit einer
-neuen Familienachterbahn von MACK Rides, Ziel ist 2028. Zur ESA: Am 8. Juni 2026 haben ESA und Europa-Park in Rust eine Absichtserklärung
+neuen Familienachterbahn von MACK Rides, Ziel ist 2028. Die ESA ist ebenfalls beteiligt: Am 8. Juni 2026 haben ESA und Europa-Park in Rust eine Absichtserklärung
 unterzeichnet, für die ESA unterschrieb Rolf Densing, Direktor für Operationen,
 für den Park Roland Mack. Sie betrifft laut
 [ESA](https://www.esa.int/Space_in_Member_States/Germany/ESA_und_Europa-Park_buendeln_ihre_Kraefte_um_Europas_Raumfahrtambitionen_zu_foerdern)
