@@ -336,6 +336,16 @@ export function UploadWalkthrough({
                 onChange={(e) => onChange({ alt: e.target.value })}
               />
             </Field>
+            {/* The commit has always written a caption; this is where it can be
+                seen. A visitor's submission arrives with theirs filled in. */}
+            <Field label="Caption (German)">
+              <textarea
+                className={cn(INPUT, 'min-h-[52px] resize-y')}
+                placeholder="Shown under the photo in a gallery"
+                value={assignment.caption}
+                onChange={(e) => onChange({ caption: e.target.value })}
+              />
+            </Field>
           </Section>
         </div>
       </div>

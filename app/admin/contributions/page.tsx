@@ -6,7 +6,9 @@ import {
   Check,
   Download,
   ExternalLink,
+  GitPullRequest,
   ImageIcon,
+  ImagePlus,
   Loader2,
   Trash2,
   Undo2,
@@ -20,6 +22,7 @@ import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
 import { AdoptIntoMedia } from './_components/adopt-into-media';
 import { AdminPage } from '../_ui/primitives';
+import { useToast } from '../_ui/toast';
 
 interface ListResponse {
   submissions: SubmissionRecord[];
@@ -134,10 +137,73 @@ export default function ContributionsPage() {
 
 function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
   const { triggerRefresh } = useAdmin();
+  const toast = useToast();
   const [caption, setCaption] = useState(submission.caption);
   const [credit, setCredit] = useState(submission.credit);
   const [busy, setBusy] = useState<null | string>(null);
   const dirty = caption !== submission.caption || credit !== submission.credit;
+
+  // Which photos go into the media database. Every photo not moved yet starts
+  // ticked — one photo, one click — and unticking is how a blurred one is left
+  // behind. Kept as the keys somebody chose, and narrowed to what is still
+  // movable at render, so a photo that has just landed drops out by itself.
+  const [selected, setSelected] = useState(
+    () => new Set(submission.images.filter((img) => !img.adopted).map((img) => img.key))
+  );
+  const [adopting, setAdopting] = useState(false);
+  const movable = submission.images.filter((img) => !img.adopted);
+  const chosen = movable.filter((img) => selected.has(img.key)).map((img) => img.key);
+
+  const toggle = (key: string) =>
+    setSelected((current) => {
+      const next = new Set(current);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+
+  async function onAdopted(
+    pullRequest: string | null,
+    landed: Array<{ key: string; mediaId: string }>
+  ) {
+    setAdopting(false);
+    if (!landed.length) return;
+    // Moving a photo into the database is the strongest approval there is, so
+    // it says so; and the caption and credit go with it, because those are the
+    // values that were just written into the sidecars.
+    const res = await fetch(`/api/admin/contributions/${submission.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        status: 'approved',
+        caption,
+        credit,
+        adopted: landed.map((photo) => ({ ...photo, pullRequest })),
+      }),
+    });
+    triggerRefresh();
+    toast.push({
+      title:
+        landed.length === 1
+          ? 'Foto in der Mediengalerie'
+          : `${landed.length} Fotos in der Mediengalerie`,
+      description: res.ok
+        ? 'Liegt im Media-Pull-Request und erscheint auf der Seite, sobald er gemergt ist.'
+        : 'Committet, aber die Einsendung konnte das nicht vermerken. Bitte neu laden.',
+      tone: res.ok ? 'success' : 'error',
+      ...(pullRequest
+        ? {
+            action: {
+              label: 'Pull Request öffnen',
+              icon: GitPullRequest,
+              onClick: () => {
+                window.open(pullRequest, '_blank', 'noopener');
+              },
+            },
+          }
+        : {}),
+    });
+  }
 
   // No credential in the URL any more: the session is an httpOnly cookie and
   // the browser sends it with the image request by itself. It used to carry
@@ -181,16 +247,14 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
       <div className="flex flex-col gap-4 md:flex-row">
         {/* Photos */}
         <div className="grid grid-cols-3 gap-2 md:w-72 md:shrink-0">
-          {submission.images.map((img, index) => (
+          {submission.images.map((img) => (
             <figure
               key={img.key}
-              className="bg-muted/40 group/thumb relative aspect-square overflow-hidden rounded-lg border"
-            >
-              {/* Approved and nowhere yet: the handover into the media
-                  database, which was the step that did not exist. */}
-              {submission.status === 'approved' && (
-                <AdoptIntoMedia submission={submission} image={img} index={index} />
+              className={cn(
+                'bg-muted/40 group/thumb relative aspect-square overflow-hidden rounded-lg border',
+                !img.adopted && selected.has(img.key) && 'ring-primary ring-2'
               )}
+            >
               <a
                 href={imgSrc(img.url)}
                 target="_blank"
@@ -213,6 +277,38 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
               >
                 <Download className="size-3.5" />
               </a>
+              {img.adopted ? (
+                <a
+                  href={img.adopted.pullRequest ?? undefined}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={`${img.adopted.mediaId} · übernommen ${new Date(img.adopted.at).toLocaleDateString('de-DE')}`}
+                  className="absolute inset-x-1 bottom-1 flex items-center justify-center gap-1 rounded-md bg-emerald-600/90 px-1.5 py-0.5 text-[10px] font-medium text-white shadow-sm"
+                >
+                  <Check className="size-3" />
+                  In Galerie
+                </a>
+              ) : (
+                submission.status !== 'rejected' && (
+                  // Always visible, not on hover: picking is the whole job of
+                  // this card, and a tablet has no hover to reveal it with.
+                  <button
+                    type="button"
+                    role="checkbox"
+                    aria-checked={selected.has(img.key)}
+                    aria-label={`${img.originalName} übernehmen`}
+                    onClick={() => toggle(img.key)}
+                    className={cn(
+                      'absolute top-1 left-1 flex size-6 items-center justify-center rounded-md border shadow-sm backdrop-blur-sm transition-colors',
+                      selected.has(img.key)
+                        ? 'border-primary bg-primary text-primary-foreground'
+                        : 'border-border bg-background/80 hover:text-muted-foreground text-transparent'
+                    )}
+                  >
+                    <Check className="size-3.5" />
+                  </button>
+                )
+              )}
             </figure>
           ))}
         </div>
@@ -285,6 +381,22 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
                 Approve
               </Button>
             )}
+            {submission.status !== 'rejected' && movable.length > 0 && (
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => setAdopting(true)}
+                disabled={busy !== null || chosen.length === 0}
+                className="gap-1.5"
+              >
+                <ImagePlus className="size-3.5" />
+                {chosen.length === 0
+                  ? 'Foto wählen'
+                  : chosen.length === 1
+                    ? '1 Foto in die Mediengalerie'
+                    : `${chosen.length} Fotos in die Mediengalerie`}
+              </Button>
+            )}
             {submission.status !== 'rejected' && (
               <Button
                 size="sm"
@@ -329,6 +441,17 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
           </div>
         </div>
       </div>
+
+      {adopting && (
+        <AdoptIntoMedia
+          submission={submission}
+          keys={chosen}
+          caption={caption}
+          credit={credit}
+          onClose={() => setAdopting(false)}
+          onAdopted={onAdopted}
+        />
+      )}
     </div>
   );
 }

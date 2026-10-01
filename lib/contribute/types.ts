@@ -36,6 +36,21 @@ export const contributionMetaSchema = z.object({
 
 export type ContributionMeta = z.infer<typeof contributionMetaSchema>;
 
+/**
+ * Where an approved photo went once a moderator moved it into the media database.
+ *
+ * The media database is the repository, so "moved" means committed to the open
+ * media pull request — the image is not live until that PR is merged. Recording
+ * the PR here is what lets the moderation card say so, and what keeps the same
+ * photo from being offered for adoption a second time.
+ */
+export interface AdoptedImage {
+  /** Media id, `<collection>/<name>` — what `/admin/media?image=` opens after the merge. */
+  mediaId: string;
+  pullRequest: string | null;
+  at: string;
+}
+
 /** One stored image within a persisted submission record. */
 export interface StoredImageRecord {
   key: string;
@@ -43,6 +58,8 @@ export interface StoredImageRecord {
   originalName: string;
   contentType: string;
   size: number;
+  /** Set once the photo has been committed into the media database. */
+  adopted?: AdoptedImage;
 }
 
 export type SubmissionStatus = 'pending' | 'approved' | 'rejected';
@@ -69,6 +86,18 @@ export interface SubmissionPatch {
   status?: SubmissionStatus;
   caption?: string;
   credit?: string;
+  /** Images that just landed in the media database, by storage key. */
+  adopted?: Array<{ key: string; mediaId: string; pullRequest: string | null }>;
+}
+
+/**
+ * The slice of the queue the admin shell polls for its "new submissions" toast.
+ *
+ * Pending only, and only what the toast says: the full list carries every image
+ * reference and the blob inventory, which is the moderation page's business.
+ */
+export interface SubmissionSummary {
+  pending: Array<{ id: string; createdAt: string; name: string; photos: number }>;
 }
 
 /**

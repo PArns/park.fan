@@ -10,7 +10,15 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { AlertTriangle, CheckCircle2, Info, Loader2, X, Undo2 } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle2,
+  Info,
+  Loader2,
+  X,
+  Undo2,
+  type LucideIcon,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
@@ -34,6 +42,12 @@ export type ToastTone = 'success' | 'error' | 'info' | 'pending';
 export interface ToastAction {
   label: string;
   onClick: () => void | Promise<void>;
+  /**
+   * Undo by default, because that is what the action was built for. A toast
+   * that leads somewhere instead — "new submissions", "open the pull request" —
+   * says so with its own icon rather than wearing an undo arrow.
+   */
+  icon?: LucideIcon;
 }
 
 export interface ToastInput {
@@ -197,6 +211,7 @@ function ToastCard({
 }) {
   const [busy, setBusy] = useState(false);
   const tone = TONE_STYLES[toast.tone ?? 'info'];
+  const ActionIcon = toast.action?.icon ?? Undo2;
 
   async function runAction() {
     if (!toast.action || busy) return;
@@ -239,7 +254,11 @@ function ToastCard({
             disabled={busy}
             className="text-primary hover:text-primary/80 mt-2 inline-flex items-center gap-1.5 text-xs font-semibold disabled:opacity-50"
           >
-            {busy ? <Loader2 className="h-3 w-3 animate-spin" /> : <Undo2 className="h-3 w-3" />}
+            {busy ? (
+              <Loader2 className="h-3 w-3 animate-spin" />
+            ) : (
+              <ActionIcon className="h-3 w-3" />
+            )}
             {toast.action.label}
           </button>
         )}

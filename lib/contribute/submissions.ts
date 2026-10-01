@@ -4,7 +4,7 @@ import path from 'path';
 import { put, list, del, get } from '@vercel/blob';
 import { resolveDriver } from './driver';
 import { deleteImagesLocal } from './storage';
-import type { SubmissionPatch, SubmissionRecord } from './types';
+import type { SubmissionPatch, SubmissionRecord, SubmissionSummary } from './types';
 
 /**
  * Moderation queue for user contributions: list / read / update / delete.
@@ -124,14 +124,39 @@ export async function updateSubmission(
   const d = driver();
   const existing = await d.get(id);
   if (!existing) return null;
+  const at = new Date().toISOString();
+  const adopted = new Map(patch.adopted?.map((a) => [a.key, a]));
   const next: SubmissionRecord = {
     ...existing,
     ...(patch.status !== undefined ? { status: patch.status } : {}),
     ...(patch.caption !== undefined ? { caption: patch.caption } : {}),
     ...(patch.credit !== undefined ? { credit: patch.credit } : {}),
+    // Matched by storage key, never by position: a key the record does not hold
+    // is ignored rather than attached to whichever image sits at that index.
+    images: existing.images.map((image) => {
+      const hit = adopted.get(image.key);
+      return hit
+        ? { ...image, adopted: { mediaId: hit.mediaId, pullRequest: hit.pullRequest, at } }
+        : image;
+    }),
   };
   await d.record(next);
   return next;
+}
+
+/** Pending submissions, newest first, cut down to what the admin toast prints. */
+export async function summarizeSubmissions(): Promise<SubmissionSummary> {
+  const records = await listSubmissions();
+  return {
+    pending: records
+      .filter((r) => r.status === 'pending')
+      .map((r) => ({
+        id: r.id,
+        createdAt: r.createdAt,
+        name: r.entity.name,
+        photos: r.images.length,
+      })),
+  };
 }
 
 export async function deleteSubmission(id: string): Promise<boolean> {
