@@ -1,6 +1,7 @@
 {
   "title": "Endzeit-Truck",
   "park": "walibi-belgium",
+  "collections": ["halloween", "walibi-belgium/halloween"],
   "tags": ["autumn", "day", "halloween", "outdoor", "overcast", "photo", "theming"],
   "alt": {
     "de": "Ein verrosteter alter Lastwagen mit Moos auf dem Blech steht auf dem Weg, dahinter ein Bühnengerüst.",

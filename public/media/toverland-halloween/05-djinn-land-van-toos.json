@@ -1,6 +1,7 @@
 {
   "park": "attractiepark-toverland",
   "ride": "djinn",
+  "collections": ["toverland/halloween", "halloween"],
   "tags": ["flat-ride", "indoor", "night", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein beleuchtetes Kettenkarussell in einer Halle dreht sich, die Gondeln sind verwischt.",

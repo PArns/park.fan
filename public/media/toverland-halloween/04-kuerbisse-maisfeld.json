@@ -1,5 +1,6 @@
 {
   "park": "attractiepark-toverland",
+  "collections": ["toverland/halloween", "halloween"],
   "tags": ["detail", "halloween", "night", "outdoor", "photo", "theming"],
   "alt": {
     "de": "Vier leuchtende Kürbisköpfe, zwei davon mit Hexenhut, hängen in einem Maisfeld.",

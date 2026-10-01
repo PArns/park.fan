@@ -2,6 +2,7 @@
   "park": "universal-islands-of-adventure",
   "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
   "ride": "jurassic-world-velocicoaster",
+  "collections": ["universal-islands-of-adventure"],
   "tags": ["photo", "queue", "theming"],
   "alt": {
     "de": "Eine Velociraptor-Figur im begrünten Atrium der VelociCoaster-Station",

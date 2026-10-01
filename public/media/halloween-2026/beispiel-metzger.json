@@ -1,6 +1,7 @@
 {
   "title": "Schlachter",
   "park": "walibi-holland",
+  "collections": ["halloween", "walibi-holland/halloween"],
   "tags": ["day", "halloween", "outdoor", "overcast", "performer", "photo"],
   "alt": {
     "de": "Ein Darsteller mit Schweißerhelm, blutiger Lederschürze und Gummihandschuhen steht vor einem Containertor.",

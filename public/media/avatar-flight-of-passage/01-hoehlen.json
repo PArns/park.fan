@@ -1,6 +1,7 @@
 {
   "park": "disneys-animal-kingdom-theme-park",
   "ride": "avatar-flight-of-passage",
+  "collections": ["disney-animal-kingdom"],
   "tags": ["photo", "queue", "theming"],
   "alt": {
     "de": "Biolumineszente Höhle mit leuchtenden Pflanzen in der Flight-of-Passage-Warteschlange",
