@@ -36,6 +36,7 @@ _Wait times, seasons, a park with no source._
 - [Parks we cannot read (REQUIREMENT)](parks-we-cannot-read.md)
 - [A ride out of season is closed, and is not one of the park's rides today (REQUIREMENT)](a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md)
 - [An API route passes only slugs upstream, and says a failure is one (REQUIREMENT)](an-api-route-passes-only-slugs-upstream.md)
+- [A ride that closed for good keeps its page (REQUIREMENT)](a-closed-ride-keeps-its-page.md)
 
 ## Features
 
@@ -94,3 +95,4 @@ _A blog post, UI strings, images, captions._
 - [Localized blog gallery captions](localized-blog-gallery-captions.md)
 - [A version is a unit of communication, not a build artifact (REQUIREMENT)](a-version-is-a-unit-of-communication.md)
 - [A news correction is shown, never silent (REQUIREMENT)](a-news-correction-is-shown-never-silent.md)
+- [A quote names its source, and a legal claim names its side (REQUIREMENT)](a-quote-names-its-source.md)

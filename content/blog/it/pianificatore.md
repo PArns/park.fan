@@ -7,9 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Un feed di tempi di attesa ti dice quanto è lunga la fila adesso. Se la tua
-  lista arriva fino alla chiusura non te lo dice, e te ne accorgi da solo, di
-  solito verso le due del pomeriggio. A questo serve il pianificatore: le
+  In un feed di tempi di attesa leggi quanto è lunga la fila adesso. Se la tua
+  lista arriva fino alla chiusura lì non c’è scritto, e te ne accorgi da solo,
+  di solito verso le due del pomeriggio. A questo serve il pianificatore: le
   tue attrazioni su una linea del tempo, ogni blocco alto quanto l’attesa
   prevista, e il cammino nel mezzo.
 tags:
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Pianificare la giornata al parco: le file, prima di farle'
   description: >-
-    Il pianificatore mette le tue attrazioni su una linea del tempo, calcola
-    attese previste e percorsi e ti dice prima se la giornata sta in piedi.
-    Senza account.
+    Il pianificatore mette le tue attrazioni su una linea del tempo e calcola
+    attese previste e percorsi: prima di partire vedi se la giornata sta in
+    piedi. Senza account.
   keywords:
     - pianificare una giornata al parco
     - pianificatore parco divertimenti
@@ -67,11 +67,10 @@ La terza domanda non c’era da nessuna parte: la mia giornata sta in piedi cos�
 Da inizio settembre c’è. Il [pianificatore](/pianificatore) mette le tue
 attrazioni su una linea del tempo e calcola la giornata prima che tu parta.
 
-## Una giornata è un ordine, e quell’ordine ha un orologio
+## Blocchi e trasferimenti
 
 Un blocco è un’attrazione, e la sua altezza è l’attesa prevista per quell’ora. Trascinalo in un’ora più piena e cresce.
-Trascinalo in una più tranquilla e si accorcia. La giornata non si allunga né si
-accorcia, si sposta, e si vede.
+Trascinalo in una più tranquilla e si accorcia.
 
 Fra due blocchi c’è il trasferimento: quanto dista e se il tempo basta. Il
 percorso fuori dalla stazione e il giro stesso stanno in quello spazio e non nel
@@ -92,14 +91,14 @@ calcolati con la stessa formula di prima.
 
 ## Fra due attrazioni c’è una strada, spesso intorno a un lago
 
-Un feed di tempi di attesa può dire che a un’attrazione ci sono cinquanta
-minuti. Quello che non può dire è che da dove sei adesso non ci arrivi più in
-tempo. A questo serve il trasferimento.
+In un feed di tempi di attesa trovi i cinquanta minuti di un’attrazione, ma
+non il fatto che da dove sei adesso non ci arrivi più in tempo. A questo serve
+il trasferimento.
 
 Il calcolo parte dalla distanza fra le coordinate delle due attrazioni, più tre
 minuti per uscire dalla stazione e tre per salire e fare il giro dove non è
-registrata alcuna durata. La distanza è in linea d’aria, e il pianificatore lo
-dice. È un limite inferiore e non un tempo a piedi: i percorsi girano intorno
+registrata alcuna durata. La distanza è in linea d’aria, e nel pianificatore c’è
+scritto. È un limite inferiore e non un tempo a piedi: i percorsi girano intorno
 all’acqua, alle file e ai sensi unici, certi parchi impilano le loro aree, e in
 uno grande la linea retta attraversa volentieri un lago di cui bisogna fare
 tutto il giro. Per il
@@ -112,9 +111,9 @@ accorge nessuno. In uno grande costa un quarto d’ora. Farlo otto volte in una
 giornata significa aver buttato due ore a camminare, che non compaiono in
 nessuna statistica delle attese e la sera si fanno sentire nei polpacci.
 
-«Stretto» su un trasferimento non è un’impressione, è un conto: quel
-trasferimento non torna più se la previsione sbaglia quanto dichiara lei stessa.
-L’API conosce quel margine per ogni attrazione.
+«Stretto» su un trasferimento è un conto: quel trasferimento non torna più se
+la previsione sbaglia quanto dichiara lei stessa. Quel margine l’API lo fornisce
+per ogni attrazione.
 
 ## «Arrivare presto» non vale per ogni attrazione
 
@@ -141,22 +140,22 @@ buchi che lasciano le altre due.
 
 Una regola generale non può dare quelle tre risposte, perché tratta le tre
 attrazioni allo stesso modo. Nel pianificatore non c’è quindi nessuna regola di
-rope drop; il codice non conosce nemmeno il termine.
+rope drop, e nel codice il termine non compare nemmeno.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Quello che conosce è la curva oraria di ogni singola attrazione. Dove quella
+C’è invece la curva oraria di ogni singola attrazione. Dove quella
 curva è più bassa subito dopo l’apertura, «prima la grande» esce da sé. Dove è
 piatta esce altro.
 
-Un’altra cosa che a mente si calcola di rado: la prima ora spesso non è tua.
+A mente si calcola di rado che la prima ora spesso non è tua.
 Molti parchi aprono i cancelli prima che una parte delle attrazioni giri, e le
 principali stanno volentieri fra quelle che partono più tardi. Riempire quella
 prima ora con loro significa aver pianificato un’ora che non esiste. Al
 Phantasialand i cancelli aprono alle nove, ma Taron, F.L.Y. e la maggior parte
-delle altre grandi attrazioni partono solo alle dieci. Dove l’API conosce
+delle altre grandi attrazioni partono solo alle dieci. Dove l’API fornisce
 l’orario di apertura proprio di un’attrazione, il pianificatore non lascia
 scivolare nessun blocco prima. Non esiste un corrispettivo al contrario:
 quando una singola attrazione chiude la sera non lo comunica in modo affidabile
@@ -197,26 +196,23 @@ che avevi pianificato tu, perché qui decidi tu e non il pulsante. Sotto
 nulla finché non lo applichi.
 
 Un cursore che bilanci fare la fila contro stare in giro non c’è, di proposito.
-Quel numero non lo saprebbe giustificare nessuno, e la prima persona a
-contestarlo avrebbe ragione.
+Quel numero non lo saprebbe giustificare nessuno.
 
-Una conseguenza mi piace in particolare, perché non l’ha programmata nessuno: il
-pianificatore ogni tanto ti manda a prendere un caffè. Se adesso dovessi
+Ogni tanto il pianificatore ti manda a prendere un caffè. Nessuno l’ha
+programmato, ed è la conseguenza che mi piace di più. Se adesso dovessi
 aspettare cinquanta minuti ma mezz’ora dopo solo quindici, allora girare e
-aspettare insieme costano meno che aspettare e basta. Stessa attrazione, meno
-fila, e sei comunque libero prima.
+aspettare insieme costano meno che aspettare e basta.
 
 Quello che l’ottimizzatore non tocca: la tua pausa pranzo, ogni attrazione che
 hai già spuntato e ogni blocco la cui ora è già cominciata. Quest’ultimo punto
 ci ha impegnati un po’, perché è la differenza fra «ti riordino il pomeriggio» e
-«rimettiti in fondo alla fila, per favore». Chi preme alle due è alle due in
-qualche fila, e quella non la sposta più nessuno.
+«rimettiti in fondo alla fila, per favore».
 
 E siccome una pressione può trasformare tre blocchi in undici, al risultato è
 abbinato un annulla. Un solo passo indietro, non una cronologia intera, ma basta
 per il momento in cui vedi gli undici blocchi e deglutisci.
 
-## Quello che il pianificatore non sa, lo dice
+## I limiti del pianificatore
 
 Ci abbiamo messo più tempo su quattro punti in cui il pianificatore afferma di
 proposito meno di quanto potrebbe.
@@ -254,13 +250,13 @@ quella fila è il motivo per cui viene conservata.
 
 ## Vive nel tuo browser
 
-Non ti registri da nessuna parte. Il tuo piano sta nel tuo browser, e questa è l’impostazione predefinita, non la versione ridotta. Se
+Non ti registri da nessuna parte. Il tuo piano sta nel tuo browser, per impostazione predefinita. Se
 pulisci i dati del browser, sparisce. Se apri park.fan sul telefono, è un altro
 piano, e meglio scoprirlo a colazione che ai tornelli.
 
 L’unica eccezione sono le notifiche push. Perché possiamo dirti che è ora di
-muoversi, il piano deve stare sul nostro server, e il pianificatore scrive che
-cosa significa: chi ha il link può leggerlo e modificarlo. Davanti non c’è
+muoversi, il piano deve stare sul nostro server, e nel pianificatore c’è scritto
+che cosa significa: chi ha il link può leggerlo e modificarlo. Davanti non c’è
 nessuna password. Se spegni di nuovo le notifiche, il piano viene cancellato dal
 server. Chi non vuole niente di tutto questo le lascia spente e non perde
 nient’altro. Su che cosa ti avvisiamo lo scegli tu: quando partire verso
@@ -295,18 +291,16 @@ Un piano viene archiviato sotto il percorso che restituisce l’API stessa, mai
 sotto uno costruito da noi a partire dal nome mostrato. «Paesi Bassi» non si
 scrive uguale in ogni lingua, e un percorso indovinato è un piano che punta a un 404.
 
-La seconda domanda è quella interessante: al posto di un elenco a discesa da
-sessanta righe ottieni un mese intero, e ogni giorno porta l’affluenza prevista
+Per la seconda domanda, al posto di un elenco a discesa da sessanta righe
+ottieni un mese intero, e ogni giorno porta l’affluenza prevista
 di quel parco. «Il sabato fra due settimane» diventa questione di un’occhiata, e
 il resto che sappiamo su quel giorno sta sotto la griglia.
 
 ![Secondo passo della procedura guidata: è scelto il Disneyland Park di Anaheim, ogni giorno della griglia mensile porta l’affluenza prevista, sabato 19 selezionato. | Un settembre previsto tranquillo per tutto il mese ad Anaheim. Sessanta righe di un elenco a discesa non lo mostrano.](/media/tagesplaner/planer-wizard-tag-it.webp)
 
-La terza domanda sembra un modulo e conta più di quanto sembri: prevedere il
-pranzo, se ci sono bambini, se volete restare asciutti. Il pranzo diventa un
-blocco nella giornata. Bambini e voglia di restare asciutti sono segnalazioni
-sull’elenco delle attrazioni e non filtri, e il pianificatore lo
-scrive sulla scheda: le attrazioni con statura minima più alta vengono
+La terza domanda riguarda il pranzo, i bambini e se volete restare asciutti. Il pranzo diventa un
+blocco nella giornata. Bambini e voglia di restare asciutti diventano segnalazioni
+sull’elenco delle attrazioni, e c’è scritto anche sulla scheda: le attrazioni con statura minima più alta vengono
 segnalate, non nascoste. Un filtro accorcerebbe il parco di nascosto, e se la
 nonna tiene gli zaini lo sai solo tu.
 

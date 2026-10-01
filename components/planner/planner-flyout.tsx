@@ -54,6 +54,7 @@ import { plannerPagePark } from '@/lib/planner/page-park';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { plannerPageDay } from '@/lib/planner/page-day';
+import { plannerPageHeight } from '@/lib/planner/page-height';
 import { cn } from '@/lib/utils';
 import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 
@@ -441,6 +442,12 @@ export function PlannerFlyout({
    * on a page the reader has since left.
    */
   const [wizardDate, setWizardDate] = useState<string | null>(null);
+  /**
+   * A rider height to open the wizard's "who is coming" step with — the hand-off a park's "with
+   * kids" page leaves (`plannerPageHeight`). Assigned by {@link startPagePark} alone and cleared
+   * with the wizard, so a height chosen on one page cannot seed a wizard started from another.
+   */
+  const [wizardHeight, setWizardHeight] = useState<number | null>(null);
 
   const {
     data: day,
@@ -565,6 +572,7 @@ export function PlannerFlyout({
     if (!unplannedPagePark) return;
     setWizardPark({ ...unplannedPagePark });
     setWizardDate(null);
+    setWizardHeight(plannerPageHeight.take(unplannedPagePark.slug));
     setWizardOpen(true);
   }, [unplannedPagePark]);
 
@@ -1978,12 +1986,14 @@ export function PlannerFlyout({
               // what page it is on.
               initialPark={wizardPark}
               initialDate={wizardDate}
+              initialRiderHeight={wizardHeight}
               onOpenChange={(next) => {
                 setWizardOpen(next);
                 if (!next) {
                   setShowOverview(false);
                   setWizardPark(null);
                   setWizardDate(null);
+                  setWizardHeight(null);
                 }
               }}
             />

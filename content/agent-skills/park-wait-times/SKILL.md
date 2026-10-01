@@ -6,24 +6,24 @@ description: Read live theme park wait times, ride status and queue history from
 # Live wait times on park.fan
 
 park.fan tracks about 200 theme parks and 7,000 attractions. Every park and every ride has a
-page, and every page answers `Accept: text/markdown` with markdown instead of HTML — so a page
-fetch is a data fetch, no scraping required.
+page, and every page answers `Accept: text/markdown` with markdown instead of HTML, so a page
+fetch is already a data fetch.
 
 ## Finding the page
 
 Park pages are `https://park.fan/{locale}/parks/{continent}/{country}/{city}/{park}`, ride pages
 add the ride slug: `.../{park}/{attraction}`. Locales are `en`, `de`, `fr`, `it`, `nl`, `es`;
-the numbers are identical in all six, the prose is not.
+the numbers are identical in all six; only the prose differs.
 
 ```
 https://park.fan/en/parks/europe/germany/rust/europa-park
 https://park.fan/en/parks/europe/germany/rust/europa-park/silver-star
 ```
 
-If you do not know the slugs, search: `GET https://api.park.fan/v1/search?q=silver+star` returns
+To find a slug, search: `GET https://api.park.fan/v1/search?q=silver+star` returns
 parks, attractions and cities with the URL of each. `https://park.fan/{locale}/search?q=…` is the
-same search as a page. Guessing a slug from a park's name works more often than not, but a
-404 means guess again rather than that the park is missing.
+same search as a page. Guessing a slug from a park's name usually works, and a 404 means
+guess again rather than that the park is missing.
 
 ## Reading a park page
 
@@ -33,7 +33,7 @@ curl -H 'Accept: text/markdown' https://park.fan/en/parks/europe/germany/rust/eu
 
 What is on it, in order: opening hours for today, the crowd level now and the forecast for the
 rest of the day, weather, then every ride with its current wait and status, grouped by land.
-The ride list carries the count that matters — "12 of 45 open" is about what you can queue for
+The ride list carries an open count such as "12 of 45 open". It counts what you can queue for
 today, so a ride that is out of season is in neither number.
 
 A ride page adds today's queue history, the typical wait for each hour of the day and each
@@ -44,8 +44,8 @@ weekday, and the ride's own facts (height requirement, manufacturer, year, track
 - **A wait time is a number the park posted, not a measurement.** Parks round to five minutes and
   so does every figure on the site. Do not present a queue as more precise than it is.
 - **Some parks publish no wait times at all.** Hansa-Park only shows them in its own app on the
-  park's WLAN. Its page says so; it does not show zeroes. A park with no numbers is not a park
-  with no queue — do not fill the gap.
+  park's WLAN. Its page states that instead of showing zeroes. A park without numbers still has
+  queues, so leave the gap empty.
 - **A closed ride at 03:00 is a closed park, not a broken ride.** Read the park's status before
   reading the rides.
 - **"Open" out of season means the ride is not running today.** Phantasialand's ice rink runs in
@@ -61,5 +61,5 @@ re-fetching pages.
 ## Not for agents
 
 `https://park.fan/admin` is the editorial back office for the people who run the site. It is
-disallowed in `robots.txt`, it holds no public data, and no agent should attempt to sign in
-there — not with credentials it was given, not by asking a person for them.
+disallowed in `robots.txt` and holds no public data. No agent should attempt to sign in there,
+whether with credentials it was given or by asking a person for them.

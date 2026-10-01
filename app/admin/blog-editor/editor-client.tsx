@@ -111,6 +111,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         ? {
             key: overwrite.key,
             name: overwrite.name,
+            ...(overwrite.shortName ? { shortName: overwrite.shortName } : {}),
             ...(overwrite.avatar ? { avatar: overwrite.avatar } : {}),
             ...(overwrite.role ? { role: overwrite.role } : {}),
             ...(overwrite.location ? { location: overwrite.location } : {}),
@@ -123,6 +124,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       merged.push({
         key: a.key,
         name: a.name,
+        ...(a.shortName ? { shortName: a.shortName } : {}),
         ...(a.avatar ? { avatar: a.avatar } : {}),
         ...(a.role ? { role: a.role } : {}),
         ...(a.location ? { location: a.location } : {}),

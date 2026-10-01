@@ -35,8 +35,8 @@ coverImage:
 seo:
   title: 'Walibi Holland: Untamed, esperas y terror en el pólder'
   description: >-
-    Montañas rusas en un antiguo fondo marino: Untamed y YOY con datos
-    reales de espera, las Halloween Fright Nights que se pagan con gusto,
+    Montañas rusas en un antiguo fondo marino: Untamed y YOY con tiempos
+    de espera medidos, las Halloween Fright Nights que se pagan con gusto,
     precios y cómo llegar.
   keywords:
     - Walibi Holland
@@ -72,15 +72,14 @@ No es raro que el parque pase tan a menudo desapercibido. El [Efteling](ref:efte
 los Países Bajos rara vez se apunta por gusto a una hora más de pólder.
 
 Es un error. Untamed por sí solo ya bastaría, pero la mejor razón es una
-idea que en la primera visita parece completamente absurda y que en la tercera
-lo explica todo. Está pegada en dos palabras por media Biddinghuizen: **hard gaan**.
+idea que está pegada en dos palabras por media Biddinghuizen: **hard gaan**.
 
 ## Primero mar, luego vacas, luego montañas rusas
 
 Aquí todo empezó con vacas.
 
 El **21 de mayo de 1971**, la princesa Beatriz inauguró sobre la tierra recién
-ganada al mar la **Flevohof**, un parque agrícola de 150 hectáreas. La idea:
+ganada al mar la **Flevohof**, un parque agrícola de 150 hectáreas. La idea era
 que los niños de ciudad vieran que la leche no crece en los bricks. Había establos,
 invernaderos, una quesería, algunos juegos. Durante dos décadas fue una
 excursión para colegios y familias, luego dejaron de salir las cuentas, y a
@@ -120,7 +119,7 @@ Tras los años de Six Flags, las cifras de visitantes oscilaron mucho tiempo ent
 700.000 y 900.000 y solo desde hace poco se acercan al millón: 936.000 en el ejercicio 2023, 919.000 en 2024 y últimamente **972.000** en el ejercicio de
 octubre de 2024 a septiembre de 2025, casi un seis por ciento más. El director
 de marketing Marc Guffens lo llamó «el mejor año de la historia, si no cuentas
-las cifras de la época de Six Flags» (un récord con asterisco), porque entonces quedaba mucho menos por
+las cifras de la época de Six Flags», porque entonces quedaba mucho menos por
 visitante. Para comparar: el Efteling contó unos 5,8 millones de visitas en
 2025, casi seis veces más, y eso es una buena noticia para cualquiera que haga
 cola en Biddinghuizen.
@@ -145,8 +144,7 @@ En **2017** el departamento de marketing tiró del freno de emergencia y cambió
 el eslogan por **«Dare to get Real»**. Aguantó exactamente una temporada. En un
 documento interno del otoño de 2017 se leía que el resultado había «quedado por
 debajo de las expectativas», que el mensaje era «demasiado complicado y
-demasiado profundo» (no cualquier eslogan de parque de atracciones se gana
-un reproche así) y que se había «apuntado probablemente a un público
+demasiado profundo» y que se había «apuntado probablemente a un público
 demasiado reducido». En **2018** `#Hardgaan` estaba de vuelta, y desde entonces es el sello de la
 casa.
 
@@ -171,12 +169,9 @@ quejas que cualquier otra publicidad en los Países Bajos.
 
 El Efteling te cuenta un cuento, Phantasialand te construye un decorado sin
 fisuras. Walibi Holland también sabe de decorados, y en sus mejores rincones muy
-bien, solo que aquí todo apunta a otra cosa: quiere que grites. Seis montañas rusas con inversiones, apenas un
-edificio donde refugiarse de la lluvia, y en cambio música en cada camino y un
-volumen que nadie ha ajustado por descuido.
-
-Quien viene buscando un segundo Efteling no encontrará ningún bosque de cuentos,
-pero sí un bajo que lo persigue hasta la cola de las patatas fritas.
+bien, solo que aquí todo apunta a otra cosa: quiere que grites. Hay seis montañas
+rusas con inversiones, apenas un edificio donde refugiarse de la lluvia, y música
+en cada camino, a un volumen que nadie ha ajustado por descuido.
 
 ### Cuando el concepto va demasiado lejos
 
@@ -261,33 +256,33 @@ estación sin idea de hacia dónde mirabas hace un momento.
 
 ```
 
-En ninguna ficha técnica figura la parte que eleva a Untamed por encima de una
-buena montaña rusa: la atracción está montada como una fiesta, y empieza ya en
-la cola.
+Lo que pone a Untamed por encima de una buena montaña rusa no figura en ninguna
+ficha técnica. La atracción está montada como una fiesta, y la fiesta empieza ya
+en la cola.
 
 El lift sobresale, visible desde lejos, del verde de la zona **Wilderness**, y
 sobre él se alzan letras a la altura de una persona cubiertas de bombillas. Ahí
 brilla **LOVE** hacia el cielo, y en la cola se lee **BE BRAVE**. La estación
 tiene una cascada y un sonido de salida construido para que el tren entero
-levante las manos y aplauda la salida. También gente que dos minutos antes no se había visto nunca. Al caer la noche toda la estructura queda en rosa y morado.
+levante las manos y aplauda la salida, también gente que dos minutos antes no
+se había visto nunca. Al caer la noche toda la estructura queda en rosa y morado.
 
 En mi primera vuelta empecé a reírme en algún punto del recorrido y no paré
-hasta el freno. No una risita, una risa de verdad, con lágrimas en los ojos. En
+hasta el freno, con lágrimas en los ojos. En
 la estación medio tren se giró hacia mí, y en cualquier otra situación me habría
 resultado incómodo. Allí no. En 106 segundos, la atracción me había quitado
-cualquier vergüenza. Para eso se monta uno en todo esto.
+cualquier vergüenza.
 
 Me ha vuelto a ocurrir exactamente una vez desde entonces, en mayo de este año
 en mi primera vuelta en el
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
-de Orlando. Dos atracciones en muchos años, y para la de Flevoland no hace falta
-cruzar el Atlántico.
+de Orlando.
 
 En los Golden Ticket Awards, Untamed quedó quinta entre las mejores novedades de
 la temporada 2019. En el ranking mundial de acero estuvo en el puesto 42 en 2024
 y en el 48 en 2025, y en la lista de 2026 ya no aparece. Yo la pondría
 claramente más arriba, por una cualidad difícil de medir: después de siete años sigue siendo suave,
-sobre la misma estructura de madera en la que Robin Hood reordenaba vértebras.
+sobre la misma estructura de madera por la que antes circulaba Robin Hood.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -308,8 +303,8 @@ detrás de otro como en una moto, sin nada a izquierda ni derecha.
 
 ```
 
-Lo realmente especial: Walibi construyó directamente **dos**,
-**entrelazadas**, y eso no existía en ninguna parte del mundo.
+Walibi construyó directamente **dos**, **entrelazadas**, y eso no existía en
+ninguna parte del mundo.
 **[YOY THRILL](ref:walibi-holland/yoy-thrill)** (verde) mide 655 metros, circula
 a 80 km/h, tiene **seis inversiones** y llega hasta 4 g.
 **[YOY CHILL](ref:walibi-holland/yoy-chill)** (azul) sube los mismos 29 metros,
@@ -346,7 +341,7 @@ Y luego están las tres veteranas, despachadas como acompañamiento en cualquier
 crónica. Son precisamente ellas las que se toman el lema del parque más al pie
 de la letra.
 
-### Xpress: Platform 13, la atracción que ya conoces
+### Xpress: Platform 13, el mismo trazado que en Disney
 
 Esperas en una estación de metro clausurada. Se llama **Glenbrook Station**,
 está totalmente cubierta desde la reforma de 2013 y se mantiene tan oscura que
@@ -359,14 +354,13 @@ Lo que sí llega es un lanzamiento LSM: **de 0 a 90 km/h en 2,8 segundos**,
 después un sea serpent y un sacacorchos, tres inversiones, hasta **5 g** según
 el parque, 996 metros, y a los 75 segundos se ha acabado todo.
 
-La verdadera clave, en cambio, no está escrita en ninguna parte de la entrada.
 **Este trazado probablemente ya lo conoces.** Vekoma construyó el mismo
 recorrido para Disney: está casi idéntico en el **Rock 'n' Roller Coaster** de
 Orlando (desde mayo de 2026 con los Muppets en lugar de Aerosmith) y en
 **Avengers Assemble: Flight Force** de Disneyland Paris. En Disney el trazado es
 algo más amplio, porque allí los trenes llevan el equipo de sonido, pesan más y
-necesitan un lanzamiento más rápido. La misma atracción que en Disney, pero sin
-la cola de Disney.
+necesitan un lanzamiento más rápido. Es la misma atracción que en Disney, pero
+sin la cola de Disney.
 
 Abrió en abril de 2000 como **Superman The Ride**, se llamó simplemente
 **Xpress** a partir de 2005 y lleva el nombre de la estación desde 2014.
@@ -398,19 +392,17 @@ por una torre, luego te sueltan: hacia delante por el cobra roll y el looping,
 arriba de la segunda torre y después el mismo recorrido marcha atrás de vuelta.
 Por eso el parque cuenta **seis inversiones**, aunque solo se construyeran tres.
 
-Más interesante que su año de construcción es otra cifra: llega a **5,2 g**.
-Para situarlo: Xpress alcanza 5 g según el parque, YOY THRILL 4 según
-ThemeParks-EU. Las
+Speed of Sound llega a **5,2 g**. Xpress alcanza 5 g según el parque, YOY
+THRILL 4 según ThemeParks-EU. Las
 fuerzas más altas del parque están, pues, en un clásico constructivo del año
-2000 que mide 35,5 metros de alto y 285 de largo. Que además suene música a
-bordo no lo hace más suave.
+2000 que mide 35,5 metros de alto y 285 de largo.
 
 Abrió en abril de 2000 como **La Via Volta**, se paró en 2007 y volvió en 2011
 con nuevo nombre y temática musical. De aquella reforma viene también la
 estación: desde entonces está dentro de un edificio y montada como estudio de
 grabación, y el primer lift va dentro de un tubo que, según el parque, en
 realidad es un tobogán acuático. El recorrido en sí está al aire
-libre, así que aquí solo te mantienes seco hasta la salida.
+libre.
 
 La misma atracción está, por cierto, en Wavre. **[Cobra](ref:walibi-belgium/cobra)**
 en [Walibi Belgium](ref:walibi-belgium) es el mismo Boomerang, un año más joven,
@@ -450,8 +442,8 @@ ninguna parte.
 
 Y luego está el **Walibi Play Land**, con temática australiana desde 2026 como
 hogar de la mascota canguro, que recorre el parque con su aspecto actual desde el
-año 2021. En el mismo recinto, los mismos días, para un público que no sabe qué
-hacer con `#Hardgaan`. Esa tensión atraviesa todo lo que el parque ha decidido
+año 2021. Está en el mismo recinto, abre los mismos días y es para un público que no
+sabe qué hacer con `#Hardgaan`. Esa tensión atraviesa todo lo que el parque ha decidido
 en los dos últimos años. Para 2027 hay prevista una nueva atracción infantil en
 el Play Land, según una solicitud de licencia presentada al municipio de
 Dronten; el propio parque aún no la ha anunciado.
@@ -477,12 +469,12 @@ La mejor atracción del parque no tiene la cola más larga, esa es la de la
 novedad. Untamed queda en la zona media, a la altura de un SLC de 1994 y de una
 Mack de 680 metros. No es una
 crítica a YOY. Una novedad siempre tira, y media Holanda hace cola por principio
-allí donde la pintura aún está fresca. Pero significa esto: si por la mañana
+allí donde la pintura aún está fresca. Para ti significa que, si por la mañana
 vas directo a la Wilderness, habrás montado en Untamed antes de que la
 cola de YOY haya avanzado de verdad.
 
-Se pone más interesante en comparación con la vecindad. Misma base de datos,
-mismo método de cálculo, todos los días de apertura medidos:
+La comparación con la vecindad, con la misma base de datos, el mismo método de
+cálculo y todos los días de apertura medidos:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -511,9 +503,9 @@ más de nueve meses, y Walibi solo abre de abril a principios de noviembre.
 Detrás de los valores mensuales de abril a agosto hay entre 25 y 30 días
 medidos cada uno, y eso aguanta. Septiembre se apoya por ahora en nueve días (a
 25 de septiembre de 2026), y las filas de diciembre, enero y marzo en uno a
-cuatro días del último invierno de Bright Nights y un día suelto. Si viajas en
-la estación correcta te lo dice incluso un mes con nueve días medidos. Yo no me
-jugaría cinco minutos por él.
+cuatro días del último invierno de Bright Nights y un día suelto. Para saber si
+viajas en la estación correcta basta incluso un mes con nueve días medidos; yo no
+me jugaría cinco minutos por él.
 
 ## Halloween: Fright Nights y Spooky Days
 
@@ -573,7 +565,7 @@ Como remate, la etiqueta en el dedo del pie y el golpe de un cajón de depósito
 **Below** empieza haciéndote quitar zapatos y pantalón y meterte en un vadeador.
 Después se entra, como supuesto control de plagas, en una red de alcantarillas,
 por agua hasta la rodilla, mientras los actores se te echan encima a través de
-cascadas reales. Orientación: ninguna.
+cascadas reales, y no hay manera de orientarse.
 
 El parque presentó Below en 2017 con un clip propio, y sigue estando hoy en su
 canal:
@@ -588,8 +580,7 @@ técnica detrás de las casas del terror, la historia del evento y las zonas de
 vestuario. Se hace únicamente en neerlandés, cuesta 75 € y tiene muy pocas
 plazas.
 
-Y como la pregunta siempre aparece aquí: el «mayor evento de Halloween de
-Europa» está, según su propia afirmación, en el
+El «mayor evento de Halloween de Europa» está, según su propia afirmación, en el
 [Movie Park](ref:movie-park-germany) de Bottrop, con nueve mazes y más de 300
 monstruos. Grande y duro son, sin embargo, dos disciplinas distintas. La mierda
 verdaderamente enferma pasa dos horas de coche más al norte, en un pólder donde
@@ -645,10 +636,10 @@ volvería a hacer cuentas y me quedaría con dos casas y una experience.
 > llegues al aparcamiento. Las casas también tienen cupos diarios, y el mismo
 > día cada entrada cuesta unos euros más que en venta anticipada.
 
-**Para 2026 cambia la regla más importante.** Hasta ahora, Spooky Days y Fright
+Hasta ahora, Spooky Days y Fright
 Nights transcurrían el mismo día, calabaza de día y motosierra de noche. A
 partir de esta temporada, el parque **separa ambos eventos en días distintos**.
-La justificación desde Biddinghuizen es refrescantemente prosaica: por la tarde
+Desde Biddinghuizen lo justifican así: por la tarde
 el parque se llenaba de visitantes de la noche, las familias con niños pequeños
 se quedaban fuera y los actores tenían que pasar en pocas horas de lo apto para
 niños a lo que no perdona. Para los visitantes de las Fright Nights, en
@@ -656,7 +647,7 @@ cambio, la primera casa abre ya a las 13 h, y el nuevo espectáculo _Eddie
 Presents: Back to Reality_ se representa en la Main Stage a las 14 h y a las
 15 h.
 
-Ya está el calendario, y enseña la separación negro sobre blanco. Las **Fright
+El calendario ya está publicado, y en él la separación está negro sobre blanco. Las **Fright
 Nights** se quedan con todos los fines de semana entre el **3 de octubre y el 1
 de noviembre**, más el viernes 16, el jueves 22 y el viernes 23 de octubre,
 trece noches en total. Halloween cae en sábado y entra. Los **Spooky Days** están en el **14, 15, 19, 20
@@ -687,7 +678,7 @@ sucesor. Walibi Holland vuelve a estar completamente cerrado en invierno.
 
 ![La entrada de Walibi Belgium, decorada con bolas de Navidad, encima el rótulo «Walibi Winter» | Walibi Winter en Wavre. El parque hermano belga sigue en diciembre; el neerlandés ya no. | wide](/media/walibi-belgium/background.jpg)
 
-Oficialmente se dice que el corto periodo de apertura y la fuerte dependencia
+El parque explicó que el corto periodo de apertura y la fuerte dependencia
 del tiempo invernal dificultaban garantizar la calidad deseada. La directora
 general **Mascha Taminiau** lo formuló así: Walibi es en esencia un negocio
 estacional, y en los meses de verano puede ofrecer la experiencia más completa.
@@ -701,8 +692,7 @@ engelante, y **Walibi Holland casi no tiene atracciones cubiertas**. Si falla la
 técnica, a los visitantes les queda el espectáculo de luz, y un espectáculo de
 luz no sostiene una entrada. El Efteling
 llena ese mismo periodo con dark rides y un parque que bajo la lluvia incluso se
-ve mejor. Walibi no puede hacer eso, y por lo visto hicieron falta cuatro años
-para decirlo en voz alta.
+ve mejor. Walibi no puede hacer eso.
 
 El anuncio pilló desprevenida también a la propia casa: empleados y actores se
 enteraron la misma mañana que los fans. Ya estaba rodado un vídeo promocional
@@ -711,19 +701,17 @@ para el invierno siguiente, y la Postcode Loterij acababa de enviar vales con un
 2026 que incluía las vacaciones de Navidad de 2026/27 recibe como compensación
 dos entradas gratuitas para llevar a alguien en la temporada de verano.
 
-Queda un consuelo: [Walibi Belgium](ref:walibi-belgium) en Wavre continúa con su
+[Walibi Belgium](ref:walibi-belgium), en Wavre, continúa con su
 **Walibi Winter**, en 2026/27 del 5 de diciembre al 3 de enero. Desde
 Biddinghuizen son casi tres horas de coche, y con sus naves cubiertas el parque belga tiene exactamente lo que le
 falta al neerlandés.
 
 ## #Lekkergaan y los Zomerse Zaterdagen
 
-Lo que Walibi hace con el invierno liberado es la parte más interesante de la
-noticia. El parque desplaza la energía ahorrada al verano y al mantenimiento,
+Lo que ahorra en invierno, Walibi lo pone en el verano y en el mantenimiento,
 que hasta ahora había que encajar alrededor de la operación navideña.
 
-En concreto, en el verano de 2026 hubo dos formatos de noche, repartidos como
-todo aquí:
+En el verano de 2026 hubo dos formatos de noche, en días distintos:
 
 **#Lekkergaan** se celebró seis miércoles, el **15, el 22 y el 29 de julio y el
 5, el 12 y el 19 de agosto de 2026**, siempre hasta las 22 h. Es la continuación
@@ -738,8 +726,7 @@ espectáculo familiar Walibi & Friends, por la noche el espectáculo **Summer
 Beats** con fuegos artificiales sobre la Main Stage. Esos días hubo una
 entrada **Half Day Half Price** con la que se podía entrar a partir de las 16 h.
 
-Los miércoles los graves, los sábados los fuegos. Detrás está la misma decisión
-que en la separación de Halloween y en el final de Bright Nights: el parque deja
+Detrás de ese reparto está la misma decisión que en la separación de Halloween y en el final de Bright Nights: el parque deja
 de querer ser dos cosas a la vez el mismo día. Después de doce años de
 `#Hardgaan` junto a una mascota para niños de seis años, ya tocaba.
 
@@ -757,8 +744,8 @@ Semana Santa, el Día del Rey y el comienzo de las vacaciones neerlandesas de
 mayo, y hasta ahora en los fines de semana de septiembre. Las vacaciones de
 verano apenas se notan en nuestros datos.
 
-**Por día de la semana** la cosa se vuelve curiosa. El sábado no está más lleno que el
-resto de la semana:
+**Por día de la semana**, el sábado no está más lleno que el resto de la
+semana:
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -766,7 +753,7 @@ resto de la semana:
 
 En la mediana no se mide ninguna diferencia entre los días de la semana: los
 siete están en el mismo valor. Aquí, pues, el fin de semana sencillamente no es
-un caso especial, y la razón es banal: fuera de vacaciones y festivos el parque
+un caso especial, porque fuera de vacaciones y festivos el parque
 casi siempre cierra los lunes y los martes, de modo que los pocos lunes y martes
 medidos son con más frecuencia de lo normal días de vacaciones. Quien pueda
 elegir, que coja un día laborable de junio fuera de vacaciones: en 2026, cada
@@ -859,7 +846,7 @@ alojamiento que incluye un día de parque. Para las Fright Nights en particular
 es la solución más relajada, porque después de una noche en el matadero no
 tienes además dos horas y media de autopista por delante.
 
-**Comida.** Aquí seré directo: la restauración es la parte más floja del parque.
+**Comida.** La restauración es la parte más floja del parque.
 Hay patatas fritas, hamburguesas, pizza, comida de comedor correcta, nada por lo
 que volver.
 El restaurante **Flavors**, junto a la zona de YOY y con terraza al agua,
@@ -953,7 +940,7 @@ YOY puede compensar.
 Me gustan los parques que saben lo que son. El [Efteling](ref:efteling) lo sabe
 desde 1952, [Phantasialand](ref:phantasialand) se lo ganó a pulso, y Walibi
 Holland, tras cuatro nombres nuevos y un eslogan fallido, acabó dándose cuenta
-de que la respuesta llevaba tiempo sobre su propio terreno. Entre un festival de
+de que la respuesta llevaba tiempo sobre su propio terreno, entre un festival de
 hardstyle y un campo donde hace unas pocas décadas todavía nadaban peces.
 
 Este parque no lo hace todo bien. La comida es mediocre, unas cuantas

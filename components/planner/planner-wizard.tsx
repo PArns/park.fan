@@ -97,6 +97,12 @@ interface PlannerWizardProps {
    * be asking one of them for the second time.
    */
   initialDate?: string | null;
+  /**
+   * A rider height to open the "who is coming" step with, in cm. Only counts together with
+   * {@link initialPark}, like the date. It comes from a park's "with kids" page, where the visitor
+   * has just picked the height they are planning for.
+   */
+  initialRiderHeight?: number | null;
 }
 
 type Step = 'park' | 'date' | 'setup' | 'headliners';
@@ -183,6 +189,7 @@ export function PlannerWizard({
   onOpenChange,
   initialPark = null,
   initialDate = null,
+  initialRiderHeight = null,
 }: PlannerWizardProps) {
   /** A date only counts where a park came with it — see `initialDate`. */
   const seededDate = initialPark ? initialDate : null;
@@ -199,7 +206,9 @@ export function PlannerWizard({
   // know — see `STEP_MOTION`.
   const [forward, setForward] = useState(true);
   const [date, setDate] = useState<string | null>(seededDate);
-  const [prefs, setPrefs] = useState<PlannerDayPrefs>({});
+  const [prefs, setPrefs] = useState<PlannerDayPrefs>(() =>
+    initialPark && initialRiderHeight !== null ? { riderHeightCm: initialRiderHeight } : {}
+  );
   const [lunch, setLunch] = useState(false);
   const [planHeadliners, setPlanHeadliners] = useState(false);
   /**

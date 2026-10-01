@@ -38,7 +38,13 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
   // the park is dead when it may be at capacity, so nothing wait-derived is rendered for it.
   // The crowd level is deliberately NOT gated here: the API sends `unknown` for these parks,
   // which the badge renders as "keine Prognose" — the honest answer, already.
-  const waitStats = hasReadableWaitTimes(park) ? analytics?.statistics : undefined;
+  //
+  // A park whose feed has been silent for 30 days is the case the curated flag cannot see: it
+  // stays `available`, and the API answers with `avgWaitTime: null` instead. The value itself is
+  // the only marker in the payload, so it is the second half of this gate; without it the unit
+  // is printed with no number in front of it.
+  const stats = hasReadableWaitTimes(park) ? analytics?.statistics : undefined;
+  const waitStats = stats && stats.avgWaitTime !== null ? stats : undefined;
   const tCommon = useTranslations('common');
   const t = useTranslations('parks');
 
@@ -98,7 +104,7 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
             {waitStats.avgWaitTime} {tCommon('minutes')} {tCommon('avgWait')}
           </Badge>
         )}
-        {waitStats?.peakWaitToday !== undefined && (
+        {waitStats?.peakWaitToday != null && (
           <Badge variant="outline" className="px-4 py-1 text-base backdrop-blur-md">
             <TrendingUp className="mr-2 h-4 w-4" />
             {t('peak')}: {waitStats.peakWaitToday} min
@@ -236,7 +242,7 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
                     />
                   </div>
                 )}
-                {stats.peakWaitToday !== undefined && (
+                {stats.peakWaitToday != null && (
                   <div className="flex items-center justify-between border-t pt-3">
                     <span className="text-muted-foreground text-sm font-medium">
                       {t('parkPeak')}

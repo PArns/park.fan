@@ -31,9 +31,10 @@
 # shapes a careless allowlist gets wrong: a commit touching documentation AND a
 # post (a real one did, 08764e8), and `content/blog/README.md`, which an
 # unanchored `README.md` pattern would swallow — plus the `[skip deploy]` marker
-# below against a bare repository standing in for `origin`: in production with
-# the tip ahead and with the tip unmoved, in preview, without the marker, and
-# with `ls-remote` failing. It is part of `release:check`.
+# below against a bare repository standing in for GitHub, from a checkout with
+# no `origin`, as Vercel's has no usable one: in production with the tip ahead
+# and with the tip unmoved, in preview, without the marker, and with `ls-remote`
+# failing. It is part of `release:check`.
 set -uo pipefail
 
 # A batch of merges. The PO squash-merges every PR of a batch but the last with
@@ -51,7 +52,7 @@ set -uo pipefail
 # commit stays the tip of `main` with nothing behind it. Skipping that one
 # serves the previous deployment until somebody happens to push again, which is
 # the silent failure this script exists to avoid. So the marker only asks a
-# question and the tip of `origin/main` answers it:
+# question and the tip of `main` on GitHub answers it:
 #
 #   tip is a newer commit   → the batch moved on and that build carries this
 #                             commit's files too → skip
@@ -67,8 +68,37 @@ set -uo pipefail
 #
 # `refs/heads/main` is written out rather than taken from VERCEL_GIT_COMMIT_REF,
 # because this block is about the production branch and about nothing else.
-if [ "${VERCEL_ENV:-}" = "production" ] &&
-  git log -1 --pretty=%B HEAD 2>/dev/null | grep -qF '[skip deploy]'; then
+#
+# The tip is asked of the repository's URL, not of `origin`. Vercel's build
+# checkout is a `git clone --depth=10` with no usable `origin` remote, so from
+# PAR-382 (2026-09-22) on, `git ls-remote origin` printed nothing, the failure
+# branch below built, and every marked merge of a batch shipped a full
+# production build of its own: the batches saved nothing. The repository is
+# public, so its URL answers without credentials, and VERCEL_GIT_REPO_OWNER and
+# VERCEL_GIT_REPO_SLUG name it. Outside Vercel the script falls back to
+# `origin`. GIT_TERMINAL_PROMPT=0 turns a credential prompt into a failure, and
+# so into a build, instead of a hang.
+export GIT_TERMINAL_PROMPT=0
+if [ "${VERCEL_GIT_PROVIDER:-}" = "github" ] && [ -n "${VERCEL_GIT_REPO_OWNER:-}" ] &&
+  [ -n "${VERCEL_GIT_REPO_SLUG:-}" ]; then
+  REMOTE="https://github.com/${VERCEL_GIT_REPO_OWNER}/${VERCEL_GIT_REPO_SLUG}.git"
+else
+  REMOTE="origin"
+fi
+
+MARKED=0
+if git log -1 --pretty=%B HEAD 2>/dev/null | grep -qF '[skip deploy]'; then
+  MARKED=1
+fi
+
+# A marked commit outside production is not an error, but a build log that says
+# nothing about the marker is how the bug above went unnoticed for a week. The
+# block below names the remote it asked for the same reason.
+if [ "$MARKED" = 1 ] && [ "${VERCEL_ENV:-}" != "production" ]; then
+  echo "ignore-build: HEAD is marked [skip deploy], but VERCEL_ENV is '${VERCEL_ENV:-}' — the marker only applies to production."
+fi
+
+if [ "${VERCEL_ENV:-}" = "production" ] && [ "$MARKED" = 1 ]; then
   SELF="${VERCEL_GIT_COMMIT_SHA:-$(git rev-parse HEAD 2>/dev/null || true)}"
   POLL_INTERVAL="${IGNORE_BUILD_POLL_INTERVAL:-15}"
   POLL_TIMEOUT="${IGNORE_BUILD_POLL_TIMEOUT:-300}"
@@ -78,23 +108,23 @@ if [ "${VERCEL_ENV:-}" = "production" ] &&
     # Without a SHA of our own there is nothing to compare the tip against.
     echo "ignore-build: HEAD is marked [skip deploy] but this commit's SHA is unknown — building."
   else
-    echo "ignore-build: HEAD is marked [skip deploy] — waiting up to ${POLL_TIMEOUT}s for the rest of the batch."
+    echo "ignore-build: HEAD is marked [skip deploy] — asking $REMOTE for main, for up to ${POLL_TIMEOUT}s."
     while :; do
-      TIP="$(git ls-remote origin refs/heads/main 2>/dev/null | awk 'NR == 1 { print $1 }')"
+      TIP="$(git ls-remote "$REMOTE" refs/heads/main 2>/dev/null | awk 'NR == 1 { print $1 }')"
 
       if [ -z "$TIP" ]; then
-        echo "ignore-build: could not read the tip of origin/main — building."
+        echo "ignore-build: could not read the tip of main from $REMOTE — building."
         break
       fi
 
       if [ "$TIP" != "$SELF" ]; then
-        echo "ignore-build: origin/main has moved on to $TIP — skipping this production build."
+        echo "ignore-build: main has moved on to $TIP — skipping this production build."
         echo "  that commit's build carries this one too (it diffs against the last successful deploy)."
         exit 0
       fi
 
       if [ "$(date +%s)" -ge "$POLL_DEADLINE" ]; then
-        echo "ignore-build: marked commit is still the tip of origin/main after ${POLL_TIMEOUT}s — building."
+        echo "ignore-build: marked commit is still the tip of main after ${POLL_TIMEOUT}s — building."
         break
       fi
 
@@ -114,10 +144,11 @@ if [ -z "$BASE" ]; then
   exit 1
 fi
 
-# A Vercel checkout may be shallow enough not to contain the previous SHA.
-# Fetching it is cheap; failing to is a reason to build, not to guess.
+# A Vercel checkout is 10 commits deep, and a batch of ten merges puts the
+# previous SHA outside it. Fetching it is cheap — from $REMOTE, for the same
+# reason as above; failing to is a reason to build, not to guess.
 if ! git cat-file -e "${BASE}^{commit}" 2>/dev/null; then
-  git fetch --quiet --depth=100 origin "$BASE" 2>/dev/null || true
+  git fetch --quiet --depth=100 "$REMOTE" "$BASE" 2>/dev/null || true
 fi
 if ! git cat-file -e "${BASE}^{commit}" 2>/dev/null; then
   echo "ignore-build: $BASE not in this checkout — building."

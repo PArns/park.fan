@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: dos parques, y justo el pequeño tiene las colas largas'
+title: 'Disneyland Paris: por qué se espera más en el parque pequeño'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 updatedAt: '2026-09-25'
@@ -34,7 +34,7 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Bajo su base de roca duerme un dragón que, cuando abrió el parque en 1992, era el animatrónico más grande jamás construido.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris 2026: dónde son de verdad largas las colas'
+  title: 'Disneyland Paris 2026: en qué parque son más largas las colas'
   description: >-
     Datos de espera de los dos parques de París: por qué el pequeño tiene las
     colas más largas, cuándo hay menos gente y con qué parque conviene empezar
@@ -70,7 +70,7 @@ encima del parque grande, y también en los siete días de la semana. Nunca al
 contrario. El parque pequeño reparte a sus visitantes entre menos de la mitad de
 atracciones, y eso se nota en cada cola.
 
-## Un resort, dos parques, una estación
+## Un resort con dos parques
 
 Disneyland Paris abrió el **12 de abril de 1992**, entonces todavía como Euro
 Disney Resort, unos 32 kilómetros al este de París, en la ciudad nueva de
@@ -125,12 +125,11 @@ frenos nuevos, una mano de pintura y algunos efectos que le tomó prestados a la
 versión californiana.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-es la Haunted Mansion de París, con una diferencia por la que los aficionados
-viajan hasta aquí: las versiones de Florida y California no cuentan, a
+es la Haunted Mansion de París, con una diferencia: las versiones de Florida y
+California no cuentan, a
 propósito, una historia continua. La de París sí: Melanie Ravenswood espera con su vestido de novia
 desde que su boda se rompió, y su padre Henry fue matando uno tras otro a sus
-pretendientes (un suegro con ideas muy particulares sobre cómo conocer al
-novio), algo que la reforma de 2019 dejó claro por primera vez. Seis
+pretendientes, algo que la reforma de 2019 dejó claro por primera vez. Seis
 minutos en el Omnimover, 92 animatronics y la narración en inglés de Vincent
 Price, de la que en 2019 volvieron partes a la atracción. Tras casi dieciséis meses de obras, volvió a funcionar el 3 de mayo de 2019.
 
@@ -138,13 +137,13 @@ Price, de la que en 2019 volvieron partes a la atracción. Tras casi dieciséis 
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 se llama así solo desde el 7 de mayo de 2017. Abrió el 1 de junio de 1995 como
 _Space Mountain: De la Terre à la Lune_, inspirada en Jules Verne, con un cañón
-como sistema de lanzamiento. Ese cañón sigue ahí: el tren pasa de 0 a 71 km/h en
-1,8 segundos mientras sube la montaña. Tres inversiones, un kilómetro de
+como sistema de lanzamiento. Ese cañón sigue lanzando el tren de 0 a 71 km/h
+en 1,8 segundos mientras sube la montaña. Tres inversiones, un kilómetro de
 recorrido, hasta 5 g. De todas las Space Mountain del mundo, es la única con
 lanzamiento y la única con inversiones. Michael Eisner, entonces jefe de Disney,
 la llamó la salvadora del parque, y en el ejercicio de 1995 Disneyland Paris
-tuvo sus primeros beneficios. Como Hyperspace Mountain no le queda mucho: a
-finales de 2027 cierra varios meses y volverá como _Space Mountain – De la Terre
+tuvo sus primeros beneficios. A finales de 2027, la
+atracción cierra varios meses y volverá como _Space Mountain – De la Terre
 à la Lune_, otra vez con Jules Verne y la música original de Steve Bramson.
 
 Aun así, no encabeza nuestra clasificación.
@@ -168,7 +167,7 @@ abrió el 30 de julio de 1993 como la primera montaña rusa de un parque Disney
 con una inversión, construida por Intamin, con 600 metros de recorrido y
 58 km/h de velocidad punta. Entre abril de 2000 y noviembre de 2004 funcionó
 marcha atrás. Su altura mínima de 140 centímetros es la más alta de todas
-las atracciones Disney del mundo, lo que allí mismo separa familias con cierta
+las atracciones Disney del mundo, y en la entrada separa familias con cierta
 frecuencia. Y **[«it's a small world»](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
 es exactamente lo que te temes.
 
@@ -226,11 +225,10 @@ reabra ya no cuenta entre las atracciones del día.
 Para un día allí, eso significa que desaparece la atracción que hasta ahora se
 comía media mañana, y sus visitantes se reparten por un parque que de por sí
 tiene poca capacidad. En la tabla de arriba, Crush's Coaster todavía aparece con
-sus valores de los meses anteriores al cierre, un poco como ese plato que sigue
-en la carta aunque en la cocina se acabó en septiembre. Hasta el verano de 2027,
+sus valores de los meses anteriores al cierre. Hasta el verano de 2027,
 la cola en torno a la que planificas el día allí es la de Frozen Ever After.
 
-## Cuánta gente hay en realidad
+## Cuánta gente hay
 
 Los dos parques nos envían datos de espera desde el 26 de diciembre de 2025,
 aunque casi sin huecos solo desde finales de marzo de 2026. Del invierno
@@ -246,8 +244,7 @@ tablas.
 La diferencia entre los dos parques aparece en todos los meses medidos. Solo en
 diciembre, del que tenemos únicamente los últimos días de 2025, se igualaron los
 tiempos de espera típicos, e incluso entonces el nivel de afluencia era mayor en
-Adventure World. Con la popularidad tiene poco que ver, con la aritmética mucho:
-para 2024, la TEA contó 10,2 millones de visitas al Disneyland Park y 5,5
+Adventure World. La razón es aritmética. Para 2024, la TEA contó 10,2 millones de visitas al Disneyland Park y 5,5
 millones al segundo parque. Cada visitante cuenta solo en el parque en el que
 entra primero; quien se cambia a mediodía ni siquiera aparece en la segunda
 cifra. Más de un tercio de las visitas va así a un parque con la mitad de
@@ -325,9 +322,8 @@ Time, normalmente una hora. Por eso Peter Pan ya tiene una cola larga cuando
 abre para todos, y según nuestra tabla por horas solo se acorta claramente en la
 última hora antes del cierre. Big Thunder Mountain, Hyperspace Mountain e
 Indiana Jones, en cambio, tienen colas mucho más cortas justo después de abrir
-que a mediodía. Empieza por ahí y deja Peter Pan para la noche. El mediodía no
-le va bien a ninguna: las ocho atracciones de la tabla por horas tienen su cola
-más larga entre las 12:00 y las 14:00.
+que a mediodía. Empieza por ahí y deja Peter Pan para la noche. Entre las 12:00 y las 14:00,
+las ocho atracciones de la tabla por horas tienen su cola más larga.
 
 Y si reservas los dos parques, invierte el orden habitual y empieza en Adventure
 World, donde nuestro análisis de rope drop marca en Ratatouille y en la Tower of
@@ -377,7 +373,7 @@ revés.
 
 En Disney Adventure World, y en nuestros datos (190 días medidos a 25 de
 septiembre de 2026) eso vale para todos los meses registrados y todos los días
-de la semana. La razón es la capacidad: el parque pequeño recibe más de la mitad
+de la semana. El parque pequeño recibe más de la mitad
 de visitas que el grande, pero tiene menos de la mitad de atracciones. Los
 valores actuales de ambos están en la tabla comparativa de arriba.
 

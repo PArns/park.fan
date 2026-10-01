@@ -162,9 +162,11 @@ const PLAN = {
  * Three assertions below counted it separately and the number was written into
  * all three — so a seventh chapter turned two of them red and left the third
  * quietly passing, because it sliced at six and therefore stopped looking
- * exactly where the new one begins. The page will get more chapters.
+ * exactly where the new one begins. The count follows the article: it was 7
+ * while the German page had grown an eighth that no other locale carried, and
+ * the rewrite of 2026-09-30 brought all six locales down to the same six.
  */
-const CHAPTER_COUNT = 7;
+const CHAPTER_COUNT = 6;
 /** `010203…`, derived rather than typed, for the no-gap assertion. */
 const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
   String(i + 1).padStart(2, '0')
@@ -490,8 +492,9 @@ async function openPushBell(page) {
  * at all and a guard reading it would press again into a press that had landed.
  *
  * The signal for "landed" is therefore `html[data-planner-open]`, which the
- * launcher's own effect sets off `open` alone, independent of the chunk. Both
- * halves are read: the attribute for the window before the sheet exists, and
+ * launcher's own effect sets off `panelVisible` (PAR-360), that is in the commit
+ * that mounts the sheet and not at the press. Both
+ * halves are read: the attribute for the frame the sheet is mounting in, and
  * `data-state="open"` on the content for the one after, since a sheet on its way
  * OUT is still visible for 300 ms while carrying `closed` — which is why the
  * success is waited for on `[data-state="open"]` too and not on visibility.
@@ -3864,7 +3867,7 @@ step: {
       .catch(() => '');
     check(
       'und die Suche beschreibt einen Tipp, keine Zieh-Geste',
-      /Tippe eine Bahn an/.test(hint) && !/[Zz]ieh/.test(hint),
+      /angetippte Bahn/.test(hint) && !/[Zz]ieh/.test(hint),
       hint.slice(0, 70)
     );
     await phone.close();
@@ -7804,6 +7807,112 @@ if (live) {
     check('die Resize-Kante bleibt in ihrem Mindestblock', false, 'Panel nicht geöffnet');
   }
   await tight.close();
+}
+
+// ── Blocks with no figure (PAR-227) ──────────────────────────────────────────
+//
+// A block whose hour is outside the park's opening hours has no wait: `estimateFor`
+// answers `outside-hours` and the block is drawn at `NO_FIGURE_PX` (40 px on the
+// desktop axis, 60 on the phone's). Lane packing used to count `MIN_BLOCK_MIN` —
+// 16.7 minutes — for it, so two of them 25 minutes apart shared one lane and were
+// DRAWN overlapping, and the leg chip between them sat inside the block above.
+// Two ride blocks at 05:00 and 05:25 and a third at 06:10, all before Phantasialand opens, are that
+// case on the desktop axis: 25 minutes is 30 px, and the box above is 40.
+//
+// Asserted on the rectangles and not on a lane number: what a reader sees is two
+// boxes that do not cover each other and a chip that does not lie on either.
+// Behind `live` for the reason the pass above is: with a 404 there are no opening
+// hours, so no axis and no block to measure.
+if (live) {
+  const bare = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  noteErrors(bare);
+  await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await bare.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'early-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 300 },
+            { id: 'early-2', attractionSlug: 'fly', attractionName: 'F.L.Y.', startMinute: 325 },
+            {
+              id: 'early-3',
+              attractionSlug: 'black-mamba',
+              attractionName: 'Black Mamba',
+              startMinute: 370,
+            },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+    },
+    [PLAN, DATE]
+  );
+  await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  if (await openSheet(bare, 'Blöcke ohne Zahl')) {
+    await bare.waitForTimeout(2500);
+    await bare.evaluate(() => {
+      document.querySelector('li[data-planner-block]')?.scrollIntoView({ block: 'center' });
+    });
+    await bare.waitForTimeout(600);
+
+    const drawn = await bare.evaluate(() => {
+      const rect = (el) => {
+        const r = el.getBoundingClientRect();
+        return { top: r.top, bottom: r.bottom, left: r.left, right: r.right };
+      };
+      const overlaps = (a, b) =>
+        a.left < b.right - 1 &&
+        b.left < a.right - 1 &&
+        a.top < b.bottom - 1 &&
+        b.top < a.bottom - 1;
+      const blocks = [...document.querySelectorAll('li[data-planner-block]')].map((el) => ({
+        text: (el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+        box: rect(el),
+      }));
+      const upper = blocks.find((b) => /Taron/.test(b.text));
+      const lower = blocks.find((b) => /F\.L\.Y\./.test(b.text));
+      const third = blocks.find((b) => /Black Mamba/.test(b.text));
+      if (!upper || !lower || !third) return null;
+      // The chip of the leg from the second block to the third: 45 minutes
+      // apart, which is 54 px of start-to-start against a 40 px box, so there IS
+      // a gap of 14 px and the chip has to sit in it. The first two overlap in
+      // time by construction (25 < 33.3 minutes) and no chip can be placed there.
+      const chips = [...document.querySelectorAll('li[data-planner-leg] [data-planner-leg-chip]')]
+        .map(rect)
+        .filter((c) => c.top >= lower.box.top + 20 && c.bottom <= third.box.top + 20);
+      return {
+        boxHeight: Math.round(upper.box.bottom - upper.box.top),
+        blocksOverlap: overlaps(upper.box, lower.box),
+        chipsOnBlocks: chips.filter((c) => overlaps(c, lower.box) || overlaps(c, third.box)).length,
+        chips: chips.length,
+      };
+    });
+
+    if (!drawn) {
+      check('Blöcke ohne Zahl überdecken sich nicht', false, 'die zwei Blöcke fehlen');
+    } else {
+      check(
+        'zwei Blöcke ohne Zahl im Abstand von 25 Minuten überdecken sich nicht',
+        !drawn.blocksOverlap,
+        `Boxhöhe ${drawn.boxHeight} px (erwartet 40)`
+      );
+      check(
+        'kein Leg-Chip liegt auf einem Block ohne Zahl',
+        drawn.chips === 1 && drawn.chipsOnBlocks === 0,
+        `${drawn.chipsOnBlocks} von ${drawn.chips} Chips auf einem der Blöcke`
+      );
+    }
+  } else {
+    check('Blöcke ohne Zahl überdecken sich nicht', false, 'Panel nicht geöffnet');
+  }
+  await bare.close();
 }
 
 // ── Landscape, 844×390 ───────────────────────────────────────────────────────

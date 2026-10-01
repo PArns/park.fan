@@ -182,6 +182,9 @@ export function ParkTodayPanel({
   // `liveWaitTimes` flag exists to close.
   const stats = waitsReadable ? park.analytics?.statistics : undefined;
   const occupancy = waitsReadable ? park.analytics?.occupancy : undefined;
+  // `null` on a park whose feed has gone silent (see `hasReadableWaitTimes`, which cannot tell).
+  const peakWait = stats?.peakWaitToday ?? 0;
+  const avgWait = stats?.avgWaitTime ?? 0;
   const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
 
@@ -418,6 +421,16 @@ export function ParkTodayPanel({
   // what the two halves can spare. The full-width columns under them keep the panel's own.
   const halfCell = cn(PANEL_CELL, 'max-sm:px-4');
   const fullCell = cn(PANEL_CELL, 'col-span-2 sm:col-span-1');
+  // Below `sm` the headliner column is the first thing in the panel, ahead of status and crowd,
+  // although it stays third in the markup. On a 360 × 780 phone it was the row that held the
+  // first live wait time, "Alle N Attraktionen" and the ride-alert bell, and it began 40 to 260 px
+  // below the fold, where the thumb does not reach until the page has been scrolled (PAR-564).
+  // Ahead of the status row it starts about 100 px into the panel. A grid `order` and not a second
+  // markup: the sizes are unchanged, so nothing shifts, the hairlines belong to the cells and
+  // follow them, and from `sm` up the columns keep their reading order. It is unconditional on
+  // purpose — a class that waited for `headlinersFolded` would swap the two rows after the
+  // browser clock mounts, which is a layout shift for every park that is closed.
+  const headlinersFirstOnPhone = 'max-sm:order-first';
   // The day is over, so below `sm` the show column is one line instead of four reserved rows with a
   // sentence centred over them; from `sm` up it sits beside columns of the same height, so the
   // reservation costs nothing there and stays. A performance still ahead after closing (a night
@@ -445,7 +458,17 @@ export function ParkTodayPanel({
         className="space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
       />
 
-      <div className="border-border/50 flex items-center gap-3 border-b px-5 py-3">
+      {/* Below `sm` the row is one line high (45 px: `py-3`, the 20 px heading, the 1 px border) and
+          wraps only so that a clock which does not fit beside the heading drops to a second line
+          that `overflow-hidden` cuts off, instead of overlapping it. Measured at 320/360/390 px in
+          six languages: only the French heading (204 px) leaves too little room at 320 px. A
+          warning takes the row over below `sm`, and it must not be clipped. */}
+      <div
+        className={cn(
+          'border-border/50 flex items-center gap-3 border-b px-5 py-3',
+          !nowcastAlert && 'max-sm:h-[45px] max-sm:flex-wrap max-sm:overflow-hidden'
+        )}
+      >
         {/* Below `sm` a warning takes the whole row: beside the heading it had ~120 px at 390 px
             and cut „Gewitter in ca. 25 Min." off before the minutes. The heading stays in the
             accessibility tree, so the card keeps its name for a screen reader. */}
@@ -485,10 +508,10 @@ export function ParkTodayPanel({
             it: the whole group is the anchor, so „Wetter & Stundenverlauf ›" needs no separate
             line either.
 
-            The description is the part that does not fit on a phone, so it is the part that goes
-            below `sm`; icon and temperature stay at every width. No `flex-wrap` on the row — it
-            would put the clock on a second line at some widths and not others, and this row is
-            what reserves the panel's header height. */}
+            Below `sm` the whole reading goes: heading, clock and temperature need 314–411 px on
+            a 286 px row (PAR-441), so it cannot sit beside them. The chapter link still carries
+            it. The row is a fixed one-line height there, so this row keeps reserving the
+            panel's header height. */}
         {weatherSummary && (
           <a
             href={chapterHref('weather')}
@@ -496,10 +519,8 @@ export function ParkTodayPanel({
                nothing about where the link goes, and below `sm` even the word is gone. */
             aria-label={t('weatherAndHourly')}
             className={cn(
-              'hover:text-primary flex min-w-0 items-center gap-2 transition-colors',
-              // With a warning in the row the reading keeps icon and temperature and gives the
-              // warning the room; below `sm` there is not room for both, and the warning wins.
-              nowcastAlert && 'hidden shrink-0 sm:flex'
+              'hover:text-primary flex min-w-0 items-center gap-2 transition-colors max-sm:hidden',
+              nowcastAlert && 'shrink-0'
             )}
           >
             {(() => {
@@ -555,8 +576,11 @@ export function ParkTodayPanel({
             {isFetching && (
               <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
             )}
-            {sched.currentTimeFormatted}
-            {tCommon('timeSuffix')} · {t('localTime')}
+            <span>
+              {sched.currentTimeFormatted}
+              {tCommon('timeSuffix')}
+              <span className="max-sm:hidden"> · {t('localTime')}</span>
+            </span>
           </span>
         )}
       </div>
@@ -758,9 +782,9 @@ export function ParkTodayPanel({
               {/* The last two figures off the "Ø Wartezeit" card that this panel replaced. They
                   belong beside the occupancy bar rather than in the headliner column: both are
                   park-wide readings about today, not about one queue. */}
-              {stats && (stats.peakWaitToday > 0 || (stats.peakHour && stats.peakHourSource)) && (
+              {stats && (peakWait > 0 || (stats.peakHour && stats.peakHourSource)) && (
                 <p className="text-muted-foreground text-xs">
-                  {stats.peakWaitToday > 0 && (
+                  {peakWait > 0 && (
                     <>
                       {t('parkPeak')}{' '}
                       <strong className="text-foreground font-semibold tabular-nums">
@@ -769,7 +793,7 @@ export function ParkTodayPanel({
                       {tCommon('minutes')}
                     </>
                   )}
-                  {stats.peakWaitToday > 0 && stats.peakHour && stats.peakHourSource && ' · '}
+                  {peakWait > 0 && stats.peakHour && stats.peakHourSource && ' · '}
                   {/* `peakHour` is an ISO timestamp, not an hour — printed raw it read
                       "Stoßzeit 2026-08-26T11:00:00+02:00". Same treatment the card this panel
                       replaced gave it, including the `≈` for a value that is predicted rather
@@ -791,11 +815,11 @@ export function ParkTodayPanel({
 
           {/* ── Headliner jetzt ── */}
           {headlinerSlots > 0 && (
-            <div className={fullCell}>
+            <div className={cn(fullCell, headlinersFirstOnPhone)}>
               <PanelMetric
                 caption={t('headlinersNow')}
                 action={
-                  stats && stats.avgWaitTime > 0 ? (
+                  stats && avgWait > 0 ? (
                     <span className="text-muted-foreground text-xs whitespace-nowrap">
                       Ø{' '}
                       <strong className="text-foreground font-bold tabular-nums">

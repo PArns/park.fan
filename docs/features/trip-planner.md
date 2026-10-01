@@ -1449,10 +1449,19 @@ delivered a notification. `.env.example` documents `VAPID_PUBLIC_KEY`,
 
 The planner page was a directory and three cards: nothing for a search engine to
 index, and nothing for a first-time reader to learn from. Under the directory
-now sit six numbered chapters — what a block's height is, where its minutes come
-from, that a ride opens later than its park, that the walk between two rides
-costs time, how a showtime differs from a projected one, and what the planner
-does not know.
+now sit six numbered chapters, the same six in every locale: blocks and
+transfers (with the demo), where the wait times come from, height limits and
+water rides, opening times with shows and breaks, the two sort buttons with the
+fit assistant, and the day itself in the park (ticking off, notifications,
+where the plan is stored).
+
+The article describes what a visitor can do and see, not how the planner
+computes it. Until 2026-09-30 it did the second: eight chapters in German and
+seven in the other five, with the transfer formula, the sort order's four rules,
+the two-hour cap on a suggested wait and why a projected 19:00 show was missing
+from an axis that ends at 18:00. The rewrite cut it nearly in half (German
+prose from 1,450 words to about 820). The reasoning behind each behaviour stays
+in this document, where the next person changing it will look.
 
 Two rules decide how the pictures in it are made, and they are the guide page's:
 

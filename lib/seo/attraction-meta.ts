@@ -2,6 +2,7 @@ import { fitWithin, MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH } from '@/lib/utils
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
 import { formatRiderHeight } from '@/lib/utils/temperature';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ParkAttraction } from '@/lib/api/types';
 
 /** The subset of next-intl's `t` these builders need. */
@@ -110,6 +111,70 @@ export function buildAttractionDescription(
     })
   );
   return fitWithin(MAX_DESCRIPTION_LENGTH, ...withFacts, plain);
+}
+
+/**
+ * The title of a ride that closed for good: its name, the park and that it is closed, and no
+ * promise of a live wait time the page cannot keep. Same ladder as {@link buildAttractionTitle}.
+ */
+export function buildClosedRideTitle(
+  attractionName: string,
+  parkName: string,
+  t: Translate,
+  phrase: { locale: Locale; articleDe?: string | null }
+): string {
+  const park = parkArgs(phrase.locale, parkName, phrase.articleDe);
+  return fitWithin(
+    MAX_TITLE_LENGTH,
+    t('retiredTitleTemplate', { attraction: attractionName, ...park }),
+    t('retiredTitleTemplateBare', { attraction: attractionName })
+  );
+}
+
+/**
+ * The description of a ride that closed for good: since when, what a normal weekday cost in the
+ * queue before that, and who built it and when. Every clause is a fact about THIS ride, so the
+ * ~70 closed rides do not share one sentence (docs/blog.md §5.3).
+ *
+ * The page prints the same text as its intro, so the snippet and the page cannot disagree.
+ *
+ * `weekdayPeak` is the typical weekday's peak (`typicalWaits.weekday.typical`, the median of the
+ * daily peaks), passed only when the API marks the figures `displayable`, and rounded to five
+ * minutes like every wait time this site shows.
+ */
+export function buildClosedRideDescription(
+  attractionName: string,
+  parkName: string,
+  closedOn: string,
+  input: {
+    weekdayPeak: number | null;
+    manufacturer?: string | null;
+    openedYear?: number | null;
+  },
+  t: Translate,
+  phrase: { locale: Locale; articleDe?: string | null }
+): string {
+  const park = parkArgs(phrase.locale, parkName, phrase.articleDe);
+  const lead = t('retiredLead', { attraction: attractionName, ...park, date: closedOn });
+  const waits =
+    input.weekdayPeak != null
+      ? t('retiredWaits', { minutes: String(roundWaitTo5(input.weekdayPeak)) })
+      : null;
+
+  const facts: string[] = [];
+  if (input.manufacturer) facts.push(t('factBy', { manufacturer: input.manufacturer }));
+  // String(): see buildAttractionFacts — ICU would print 2002 as "2.002".
+  if (input.openedYear != null) facts.push(t('factOpened', { year: String(input.openedYear) }));
+  const factSentence = facts.length ? `${endOfSentence(sentenceCase(facts.join(', ')))}.` : null;
+
+  const join = (...parts: (string | null)[]) => parts.filter(Boolean).join(' ');
+  return fitWithin(
+    MAX_DESCRIPTION_LENGTH,
+    join(lead, waits, factSentence),
+    join(lead, waits),
+    join(lead, factSentence),
+    lead
+  );
 }
 
 /**

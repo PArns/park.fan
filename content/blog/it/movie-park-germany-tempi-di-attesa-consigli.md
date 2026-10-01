@@ -66,7 +66,6 @@ un altro modo dal 2005, appartiene a un gruppo spagnolo dal 2010 e festeggia il
 suo trentesimo compleanno proprio con un’attrazione della Paramount. Un po’ come
 se sulla torta delle nozze di perla ci fosse scritto il nome del vicino di casa.
 
-A questo si aggiunge un numero che non c’entra nulla con la fama di questo parco.
 Su tutti i giorni di apertura misurati finora, al
 [Movie Park](ref:movie-park-germany) si sta in coda un buon terzo in meno che al
 [Phantasialand](ref:phantasialand), a poco meno di un’ora di macchina più a sud.
@@ -91,8 +90,7 @@ resta.
 americani hanno ceduto la loro attività europea al fondo **Palamon Capital
 Partners**, e con quella vendita sono scaduti i contratti di licenza.
 Nell’inverno 2004/05 il parco ha dovuto rinominare praticamente tutto ciò che
-portava un nome preso da un film Warner: un trasloco in cui i mobili restano dove
-sono e cambiano solo i nomi sul citofono. Nel marzo 2005 ha riaperto come **Movie
+portava un nome preso da un film Warner. Nel marzo 2005 ha riaperto come **Movie
 Park Germany**. Cinque anni dopo, il 17 maggio 2010, ha rilevato tutto
 l’operatore spagnolo **Parques Reunidos**. Il gruppo madrileno appartiene dal
 2019 in maggioranza al fondo svedese EQT, che ora vuole venderlo in blocco, Movie
@@ -117,8 +115,7 @@ ospitato dal 2005 al 2016 **Ice Age Adventure**, finché anche quella licenza no
 funzionato nessuna attrazione, e nel 2018 e nel 2019 il capannone è servito solo
 come casa dell’orrore per Halloween.
 
-La storia più bella degli anni Dieci è quella di montagne russe mai finite. Nel
-2012
+Negli anni Dieci ci sono poi delle montagne russe mai costruite. Nel 2012
 il parco ha presentato al comune di Bottrop i progetti per **montagne russe alte
 45 metri** subito dietro l’ingresso, dieci milioni di euro, apertura nel 2014.
 A settembre 2012 il parco ha fermato il progetto. Ufficialmente era cambiata la
@@ -127,8 +124,7 @@ come motivo il calo di visitatori nei parchi del gruppo in Spagna e in Italia. S
 
 Questa preistoria spiega la fama che il Movie Park ha ancora oggi nel mondo delle
 montagne russe. Chi l’ha visitato fra il 2012 e il 2016 ha visto un parco in cui,
-a parte The Lost Temple (2014), si muoveva poco, un po’ come un cinema che nell’atrio tiene ancora appese le
-locandine di film che non ha più il diritto di proiettare.
+a parte The Lost Temple (2014), si muoveva poco.
 
 ## La storia del cinema che racconta al posto loro
 
@@ -183,7 +179,7 @@ compenso per la comparsa: l’uscita passa per uno showroom Paramount.
 
 ## Le altre sette montagne russe
 
-Il parco ne ha otto, e una è già qui sopra. Ne restano sette.
+Il parco ne ha otto, la Studio Tour compresa.
 
 ### Star Trek™: Operation Enterprise
 
@@ -223,9 +219,8 @@ nel 2001 con quelli di Premier Rides.
 
 ```
 
-Il tracciato è un **twister** sul modello del Cyclone di Coney Island: non un
-lungo andata e ritorno, ma un percorso che si incrocia di continuo su poca
-superficie. Il parco l’ha messa dentro un boschetto, e nelle curve basse, dove va
+Il tracciato è un **twister** sul modello del Cyclone di Coney Island, un
+percorso che si incrocia di continuo su poca superficie. Il parco l’ha messa dentro un boschetto, e nelle curve basse, dove va
 più veloce, le si cambiano ancora regolarmente i binari. Nel più grande
 rifacimento dalla costruzione, dieci carpentieri, due dei quali garzoni in
 viaggio di apprendistato, hanno sostituito circa 200 metri di binario in pino e
@@ -310,8 +305,8 @@ mezzo.
 è uno speed rapid river di Intamin dell’anno di apertura che ha già avuto tre
 vite: nel 1996 come La storia infinita, dal 2005 come Mystery River, e dal 7
 maggio 2018 come leggenda arturiana con figure oscure, bosco incantato e un
-mostro lacustre alla fine. Delle tre versioni l’attuale è la migliore, e bagna, volentieri fino ai
-calzini.
+mostro lacustre alla fine. Delle tre versioni l’attuale è la migliore, e si esce
+bagnati fino ai calzini.
 
 ```glossary-widget slug=river-rapids
 
@@ -327,7 +322,7 @@ ancora quanti soldi sono stati messi qui nel 1996.
 **[The High Fall](ref:movie-park-germany/the-high-fall)** è la torre di caduta
 libera di Intamin, alta circa 60 metri, nell’area The Old West. La gondola ruota
 mentre sale, e poco prima della caduta i sedili si inclinano in avanti, così si
-aspetta guardando in basso. Il momento più sgradevole di tutto il parco.
+aspetta guardando in basso, ed è il momento più sgradevole di tutto il parco.
 
 ```glossary-widget slug=drop-tower
 
@@ -339,8 +334,8 @@ vale la pena vederlo.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
 infine, è il tronco nel **Nickland**, costruito per bambini delle elementari, e
-ciononostante una delle file più lunghe del parco, perché nei pomeriggi caldi
-mezzo parco riscopre all’improvviso il bambino che è in sé.
+ciononostante, nei pomeriggi caldi, una delle file più lunghe del parco, perché
+allora ci salgono anche gli adulti.
 
 I palchi fanno parte di questo posto dal primo giorno: un parco-studio senza show
 di stunt era impensabile nel 1996, così all’apertura andava in scena il Police
@@ -408,8 +403,8 @@ non ce le ha, ma in una giornata normale ci si sale su più cose.
 > Un limite che per questo parco pesa in modo particolare. Il nostro storico
 > comincia a dicembre 2025, e al 25 settembre 2026 **non contiene ancora nemmeno
 > un giorno di ottobre o di novembre**, né alcuna serata dell’Halloween Horror
-> Festival. Quello che il calendario più sotto mostra per l’autunno è una
-> previsione, non una misura.
+> Festival. I valori d’autunno nel calendario più sotto sono una previsione, non
+> una misura.
 
 ## Quando andarci, e il calendario da settembre
 
@@ -429,8 +424,8 @@ misurati più o meno con la stessa frequenza, quindi sono direttamente
 confrontabili. Solo che la domenica non è fra i giorni carichi, e il sabato non è
 il giorno più carico della settimana.
 
-Il lunedì e il martedì, invece, non si possono confrontare così, e il numero di
-giorni misurati dice perché. Fuori dalle vacanze il parco quei giorni è per lo più chiuso,
+Il lunedì e il martedì, invece, non si possono confrontare così, e il perché sta
+nel numero di giorni misurati. Fuori dalle vacanze il parco quei giorni è per lo più chiuso,
 quindi i nostri lunedì e martedì vengono quasi solo dalle vacanze, soprattutto da
 quelle estive, e i giorni delle vacanze estive sono i più pieni dell’anno. Nella
 [pagina del periodo migliore](/periodo-migliore-per-visitare) quei due giorni
@@ -445,8 +440,8 @@ gita è il sabato. La domenica molti hanno già la testa al lunedì.
 All’[Europa-Park](ref:europa-park) la domenica è addirittura il giorno più vuoto, ma lì
 per il motivo opposto: Rust vive di clienti d’albergo che arrivano il sabato e
 ripartono la domenica, come si legge nella
-[guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Lo stesso
-giorno della settimana, due ragioni diverse. Allo [Heide-Park](ref:heide-park),
+[guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Allo
+[Heide-Park](ref:heide-park),
 che assomiglia strutturalmente al Movie Park, la settimana ha del resto quasi la
 stessa forma, conti alla mano nella
 [guida dell’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
@@ -486,9 +481,9 @@ I più tranquilli fra i prossimi giorni di apertura secondo il nostro calendario
 ```
 
 Da aprile a giugno ogni mese porta una ventina o venticinque giorni misurati,
-luglio e agosto qualcuno in più. Quei cinque mesi sono solidi, e dicono quello
-che immagina chiunque abbia mai cercato un posto nel parcheggio ad agosto: nelle
-vacanze estive si riempie.
+luglio e agosto qualcuno in più. Quei cinque mesi sono solidi, e nelle vacanze
+estive il parco si riempie, come immagina chiunque abbia mai cercato un posto nel
+parcheggio ad agosto.
 
 Per gennaio, marzo e dicembre, invece, dietro al valore ci sono solo tre o
 quattro giorni misurati. L’ordine di grandezza è giusto, ma sul minuto non ci
@@ -517,7 +512,7 @@ scrivere), e la casa true crime **Murder Museum** una scena di anatomia patologi
 A questo si aggiunge **PHOBIA – The Live Horror Game Show** allo Studio 7, uno
 spettacolo in cui il pubblico gioca invece di guardare.
 
-C’è una data che segnerei a parte. Il **17 ottobre** si tiene per la quinta volta
+Il **17 ottobre**, una data che segnerei a parte, si tiene per la quinta volta
 la giornata **Haunters Against Hate**. Bottrop l’ha organizzata nel 2022, primo
 parco divertimenti al mondo a farlo, e l’idea che c’è dietro mi piace. Gente il
 cui lavoro per sei settimane consiste nello spaventare degli sconosciuti si
@@ -525,8 +520,8 @@ schiera per un giorno, pubblicamente, contro l’esclusione.
 
 Quanto vale tutto questo rispetto a Traumatica, Walibi e Toverland, quali case
 costano quanto e dove fa davvero male, è spiegato per esteso nella nostra
-[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026). Qui solo le
-due cose che riguardano la visita al parco in sé.
+[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026). Per la
+visita al parco in sé contano due cose.
 
 **Primo:** le case non sono comprese nel biglietto giornaliero e si prenotano a
 parte, con una fascia oraria fissa. Chi vuole farle tutte e nove faccia il
@@ -541,7 +536,7 @@ gli attori girano per il parco, e le scare zone non sono espressamente pensate p
 bambini di sei anni. Chi è lì con bambini delle elementari metta in conto in
 anticipo l’orario di partenza.
 
-Del resto una serata di Halloween ti regala quasi la giornata di parco più lunga
+Del resto con una serata di Halloween hai quasi la giornata di parco più lunga
 dell’anno. Il parco resta allora aperto fino alle 22 il venerdì e il sabato e fino
 alle 21 la domenica, il biglietto giornaliero continua a valere, e così si arriva
 a un massimo di dodici ore di fila. Più tardi ha chiuso solo il giorno
@@ -601,8 +596,7 @@ costa 19,90 € e si vende solo online. Il biglietto compleanno si compra solo i
 giorno stesso alla cassa informazioni, allo stesso prezzo anche per un
 accompagnatore.
 
-**Abbonamenti stagionali.** Qui sta il vero consiglio sul prezzo. Quattro
-livelli, allo stesso prezzo per adulti e bambini: Bronze 89,90 €, Silber
+**Abbonamenti stagionali.** Quattro livelli, allo stesso prezzo per adulti e bambini: Bronze 89,90 €, Silber
 135,90 €, Gold 155,90 € e Platin 179,90 €. Quello in vendita adesso è già
 l’abbonamento 2027, valido dal giorno dell’acquisto fino al **7 novembre 2027**.
 Chi compra ora ha quindi il resto di questa stagione, da Silber in su con tutte
@@ -629,8 +623,8 @@ vendere il gruppo in blocco, resterebbero parchi dello stesso gruppo anche dopo
 una vendita.
 
 A questo si aggiunge il **Bonus Club**, anch’esso riservato a Gold e Platin. Il
-parco pubblicherà le offerte 2027 solo all’inizio della stagione 2027. L’elenco
-del 2026 mostra cosa può contenere:
+parco pubblicherà le offerte 2027 solo all’inizio della stagione 2027.
+Nell’elenco del 2026 c’erano fra l’altro:
 
 - **Un ingresso gratuito** per anno solare all’[Efteling](ref:efteling). Un
   biglietto senza data lì costa 56 €, un buon terzo dell’abbonamento Gold.
@@ -670,7 +664,7 @@ Hauptbahnhof, che ferma alla fermata Movie Park, proprio all’ingresso principa
 Arrivare a un parco divertimenti tedesco senza automobile è altrimenti un impegno
 di un’intera giornata. Qui è un regionale e cinque minuti a piedi.
 
-**Mangiare.** Qui sarò breve: pizza e pasta, dal 2024 a volontà nella
+**Mangiare.** Pizza e pasta, dal 2024 a volontà nella
 Trattoria Hollywood, poi hamburger, patatine e un forno. Per quello che arriva nel
 piatto trovo i prezzi alti, e qui mangio il più in fretta possibile.
 
@@ -695,7 +689,7 @@ Park](ref:movie-park-germany?bare).
 **Il venerdì**, seguito da vicino dalla **domenica** e dal **giovedì**, è nei
 nostri dati il giorno più tranquillo, il martedì il più carico, e il sabato sta nettamente sopra la domenica. Da inizio
 settembre il parco apre comunque solo da giovedì a domenica, e tutti i giorni
-nelle vacanze autunnali dal 17 al 31 ottobre. Quale giorno di preciso lo dice il [calendario dei tempi di attesa](ref:movie-park-germany?calendar).
+nelle vacanze autunnali dal 17 al 31 ottobre. Il giorno preciso si trova nel [calendario dei tempi di attesa](ref:movie-park-germany?calendar).
 
 ### In che giorni il Movie Park è aperto in autunno?
 

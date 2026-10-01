@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: Ab Samstag übernehmen die Schurken, und Dr. Facilier ist nach fünf Jahren zurück'
+title: 'Dr. Facilier kehrt zu Halloween ins Disneyland Paris zurück'
 translationKey: disneyland-paris-halloween-2026
 date: '2026-09-23'
 author: patrick
@@ -9,7 +9,8 @@ excerpt: >-
   Vom 26. September bis 1. November läuft im Disneyland Park das Disney
   Halloween Festival: neue viktorianische Kostüme für Mickey und Co.,
   Dr. Facilier zum ersten Mal seit 2021, ein Saloon über zwei Etagen und ein
-  31. Oktober bis 23 Uhr. Alles im normalen Ticket, kein Maze, keine Kettensäge.
+  31. Oktober bis 23 Uhr. Alles steckt im normalen Ticket, Mazes und
+  Kettensägen gibt es dort nicht.
 tags:
   - news
   - disneyland-paris
@@ -41,13 +42,14 @@ seo:
     - Jack Skellington Disneyland Paris
 ---
 
-Wer bei Halloween im Freizeitpark an Kettensäge und Kunstblut denkt, wird im
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) enttäuscht,
-und zwar mit voller Absicht. Das **Disney Halloween Festival** ist die
-Familienvariante: Kürbisse, Schurken zum Fotografieren, eine Parade und ein
-Abend, an dem auch Erwachsene im Kostüm kommen dürfen. Es startet am
-**Samstag, 26. September**, und läuft bis **Sonntag, 1. November 2026**. Das
-Programm steckt komplett im normalen Parkticket.
+Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) startet am
+**Samstag, 26. September**, das **Disney Halloween Festival** und läuft bis
+**Sonntag, 1. November 2026**. Es ist die Familienvariante: Kürbisse, Schurken
+zum Fotografieren, eine Parade und ein Abend, an dem auch Erwachsene im Kostüm
+kommen dürfen. Das Programm steckt komplett im normalen Parkticket. Wer ohne
+Kinder im Schlepptau Kettensäge und Kunstblut sucht, wird hier enttäuscht und
+findet Movie Park, Traumatica, Walibi und Toverland im
+[Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 Von den beiden Parks wird nur der Disneyland Park dekoriert und bespielt,
 Herbstdeko gibt es außerdem in den Disney-Hotels. Nebenan in der [Disney
@@ -129,10 +131,7 @@ Half-Term-Ferien dazu.
 
 Was Premier Access kostet, an welchen Tagen der Park trotz ganzjähriger
 Öffnung ruhiger ist und wie man beide Parks an einem Tag schafft, steht im
-[Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten-tipps). Was
-Movie Park, Traumatica, Walibi und Toverland im selben Herbst für Leute ohne
-Kinder im Schlepptau machen, vergleicht der
-[Halloween-Überblick](/blog/halloween-freizeitparks-2026).
+[Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten-tipps).
 
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 

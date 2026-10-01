@@ -1,7 +1,7 @@
 ---
-title: 'Cedar Point: HalloWeekends mit einem Diablo-Labyrinth, und die Häuser kosten extra'
+title: 'HalloWeekends in Cedar Point: Neues Diablo-Labyrinth'
 translationKey: cedar-point-halloweekends-2026
-date: '2026-09-28'
+date: '2026-09-29'
 author: patrick
 mode: published
 featured: false
@@ -21,9 +21,9 @@ parkLinks:
 rideLinks:
   - cedar-point/*
 coverImage:
-  src: /media/halloween-2026/beispiel-metzger.jpg
-  alt: 'Darsteller mit Schweißerhelm und blutiger Lederschürze vor einem Containertor'
-  caption: 'Dieser Metzger arbeitet bei Walibi Holland. Aus Sandusky haben wir keine Fotos, ein Slaughter House gibt es dort aber auch.'
+  src: /media/halloween-2026/darsteller/22-totengraeber-blau.jpg
+  alt: 'Totengräber-Darsteller mit Schaufel zwischen zwei Säulen, blau beleuchtet'
+  caption: 'Ein Totengräber bei Walibi Holland. Aus Sandusky haben wir keine Fotos.'
   credit: 'Patrick Arns'
 seo:
   title: 'Cedar Point HalloWeekends 2026: Diablo, Termine & Haunted Pass'
@@ -43,8 +43,8 @@ seo:
 [Cedar Point](ref:cedar-point) in Sandusky, Ohio, feiert gerade zum 29. Mal
 **HalloWeekends**. Das Event hat am 17. September begonnen und läuft an
 ausgewählten Tagen bis **1. November**. Tagsüber gibt es ein Herbstfest für
-Familien, abends öffnen die Horrorhäuser. Eines davon ist neu und kommt aus
-einem Computerspiel: **Diablo: The Infernal Path**.
+Familien, abends öffnen die Horrorhäuser. Neu ist
+**Diablo: The Infernal Path**, ein Haus nach einem Computerspiel.
 
 Wer hinein will, braucht neben dem Eintritt einen eigenen Pass. Das gilt für
 jeden Besucher, auch mit Saisonkarte.
@@ -98,13 +98,14 @@ man trotzdem den Haunted Attractions Pass.
 ## Wann die Häuser offen sind
 
 Laut Event-Seite öffnen die Häuser donnerstags und freitags von 20 bis 24 Uhr,
-samstags von 18 bis 24 Uhr und sonntags von 17 bis 20 Uhr. Der Parkkalender
-zeigt für die ersten beiden Oktoberwochen donnerstags nur den Abend ab 18 Uhr,
+samstags von 18 bis 24 Uhr und sonntags von 17 bis 20 Uhr. Im Parkkalender
+stehen für die ersten beiden Oktoberwochen donnerstags nur der Abend ab 18 Uhr,
 freitags und samstags 11 bis 24 Uhr und sonntags 11 bis 20 Uhr. Montags bis
 mittwochs ist zu.
 
-Ohio liegt sechs Stunden hinter der deutschen Zeit, ab dem 25. Oktober, wenn
-Europa die Uhren zurückstellt, sind es fünf.
+Ohio liegt sechs Stunden hinter der deutschen Zeit. Vom 25. bis 31. Oktober,
+nachdem Europa die Uhren zurückgestellt hat, sind es fünf. Am 1. November, dem
+letzten Tag, stellen auch die USA um, dann sind es wieder sechs.
 
 Die vier Scare Zones laufen donnerstags bis samstags ab 20 Uhr und sonntags gar
 nicht. Neu ist **Crystal Rock Massacre**, ein Sommerlager im Wald mit einem
@@ -126,14 +127,9 @@ GateKreeper, [Rougarou](ref:cedar-point/rougarou) wird zu RougaBOO! und das
 [Ocean Motion](ref:cedar-point/ocean-motion) als Ocean Potion und die
 Holzachterbahn [Blue Streak](ref:cedar-point/blue-streak) als Boo Streak.
 
-Welche der kommenden Tage in Cedar Point die ruhigsten sind, zeigt der Kalender.
-
 ```best-days-widget slug=cedar-point
 
 ```
-
-Was Movie Park, Europa-Park, Walibi und Toverland in diesem Herbst machen, steht
-im [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 [Cedar Point](ref:cedar-point?full)
 
@@ -141,8 +137,12 @@ Termine, Häuser und Tickets:
 [sixflags.com → Cedar Point HalloWeekends](https://www.sixflags.com/cedarpoint/events/halloweekends/nighttime-frights),
 die Preise unter
 [HalloWeekends Add-Ons](https://www.sixflags.com/cedarpoint/halloweekends-add-ons).
+Halloween in Movie Park, Europa-Park, Walibi und Toverland steht im
+[Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 — Patrick
+
+> [!CORRECTION] 30. September 2026: In der ersten Fassung stand, ab dem 25. Oktober liege Ohio fünf Stunden hinter der deutschen Zeit. Das gilt nur bis zum 31. Oktober. Am 1. November stellen auch die USA die Uhren zurück, dann sind es wieder sechs Stunden.
 
 ---
 

@@ -12,6 +12,8 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
+import { ClosedRidesList } from '@/components/parks/closed-rides-list';
+import { closedRidesForSearch as buildClosedRidesForSearch } from '@/lib/parks/closed-ride';
 import { hasParkStatsPage } from '@/lib/api/stats';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
@@ -34,6 +36,8 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { ParkKidsLink } from '@/components/parks/park-kids-link';
+import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
 import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
@@ -199,7 +203,8 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 // behind the SSR content, so their cold/slow fetches never block this page's TTFB.
 export default async function ParkPage({ params, searchParams }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
-  const simScenarios = parseParkSimulation((await searchParams)?.state as string | undefined);
+  const query = await searchParams;
+  const simScenarios = parseParkSimulation(query?.state as string | undefined);
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
@@ -258,6 +263,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   const park = parkLean ? applyParkSimulation(parkLean, simScenarios) : parkLean;
   const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
 
+  // The "with kids" page: whether this park has one (the gate reads the attractions the page
+  // holds already, so it costs no fetch), and the `?height=` its steps link here with. The height
+  // is checked against the park's own posted minima before it reaches the client.
+  const attractionsForKids = parkFull?.attractions ?? [];
+  const kidsData = kidsPageData(attractionsForKids);
+  const initialRiderHeight = initialRiderHeightFromParam(query?.height, attractionsForKids);
+
   if (!park) {
     // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
     // If it exists under different geo segments, 308 to the canonical path so
@@ -314,6 +326,14 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
+
+  // The park's closed rides as the ride search finds them (`ClosedRideMatches`). A few rows at
+  // most, and nothing at all for a park without one — so this ships nothing on nearly every park.
+  const closedRidesForSearch = buildClosedRidesForSearch(
+    parkFull?.closedAttractions,
+    locale,
+    (month) => t('closedRides.since', { month })
+  );
 
   // Today in the PARK's timezone, decided here and handed down. What reads it is the curated
   // works period on the attraction cards, and they render inside a client tree that also renders
@@ -540,6 +560,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           initialData={park}
           todayIso={todayIso}
           statsAvailable={statsAvailable}
+          initialRiderHeight={initialRiderHeight}
           continent={continent}
           country={country}
           city={city}
@@ -547,6 +568,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           landNames={landNames}
           attractionsByLand={attractionsByLand}
           otherAttractionsLabel={otherAttractionsLabel}
+          closedRides={closedRidesForSearch}
           todayPanel={
             <ParkTodayPanel
               initialData={park}
@@ -559,6 +581,27 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             />
           }
         />
+        {/* The rides that closed for good, under the ride list and apart from it — the live
+          grid is the park today. From the full payload: the client snapshot above carries none of
+          it. Renders nothing for a park without one. */}
+        <ClosedRidesList
+          rides={parkFull?.closedAttractions}
+          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          locale={locale}
+          className="mt-8"
+        />
+        {kidsData && (
+          <ParkKidsLink
+            data={kidsData}
+            locale={locale as Locale}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            parkName={parkName}
+            articleDe={park.nameArticleDe}
+          />
+        )}
       </ParkPageShell>
     </RouteMessages>
   );

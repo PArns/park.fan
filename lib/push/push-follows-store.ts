@@ -204,6 +204,28 @@ export function setShowFollowedLocal(
   );
 }
 
+/**
+ * Bring this browser's entry for one show in line with the server's list.
+ *
+ * Only call this with the items of a list the server really returned
+ * (`PushListResult` with `ok: true`). A show missing from such a list is a
+ * follow the server does not hold, and its mirror entry goes; a show present
+ * takes the server's `startTime`, which is how a bare entry written before the
+ * column existed learns which performance it was about. Every other show's
+ * entry is left alone.
+ */
+export function reconcileShowFollowLocal(
+  showId: string,
+  remoteItems: ReadonlyArray<{ showId: string; startTime: string | null }>
+): void {
+  const remote = remoteItems.find((item) => item.showId === showId);
+  if (!remote) {
+    setShowFollowedLocal(showId, false);
+    return;
+  }
+  setShowFollowedLocal(showId, true, remote.startTime ?? null);
+}
+
 export function getRideAlertLocal(attractionId: string): RideAlertLocal | null {
   return readRideAlerts().find((entry) => entry.attractionId === attractionId) ?? null;
 }

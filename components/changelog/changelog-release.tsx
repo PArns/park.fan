@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { Badge } from '@/components/ui/badge';
+import { changelogAnchor } from '@/lib/changelog/paths';
 import type { ChangelogEntry } from '@/lib/changelog/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * One release on the public changelog.
@@ -17,7 +19,7 @@ import type { ChangelogEntry } from '@/lib/changelog/types';
 function formatReleaseDate(iso: string): string {
   const parsed = new Date(`${iso}T00:00:00Z`);
   if (Number.isNaN(parsed.getTime())) return iso;
-  return new Intl.DateTimeFormat('en-GB', {
+  return getDateTimeFormat('en-GB', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -28,17 +30,28 @@ function formatReleaseDate(iso: string): string {
 export function ChangelogRelease({ entry }: { entry: ChangelogEntry }) {
   return (
     <article
-      id={`v${entry.version}`}
+      id={changelogAnchor(entry.version)}
       className="scroll-mt-20 border-t pt-10 first:border-t-0 first:pt-0"
     >
       <header className="mb-6">
         <div className="mb-3 flex flex-wrap items-center gap-3">
           <Badge variant="default" className="px-3 py-1 text-sm tabular-nums">
-            {entry.version}
+            {/* A run of versions is one entry (see `through` in `lib/changelog/types.ts`), and
+                its badge names both ends with the unspaced en dash a range takes. */}
+            {entry.through ? `${entry.version}–${entry.through}` : entry.version}
           </Badge>
           <time dateTime={entry.date} className="text-muted-foreground text-sm">
             {formatReleaseDate(entry.date)}
           </time>
+          {entry.reconstructed && (
+            <Badge
+              variant="outline"
+              className="text-muted-foreground"
+              title="Written in September 2026 from the commit history"
+            >
+              Reconstructed
+            </Badge>
+          )}
         </div>
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{entry.title}</h2>
         {entry.summary && (

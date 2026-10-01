@@ -117,7 +117,6 @@ double-down-element en volgens het park vijftien airtimemomenten in één rit.
 Bij de opening pakte Kondaa meteen twee records. Hoogste en snelste achtbaan van
 de Benelux, waarmee ze uitgerekend [Goliath](ref:walibi-holland/goliath) in
 het eigen zusterpark [Walibi Holland](ref:walibi-holland) van de hoogte stootte
-(de personeelsborrels van het concern stel ik me sindsdien wat gespannen voor)
 en
 [Fury](ref:bobbejaanland/fury) in het Belgische
 [Bobbejaanland](ref:bobbejaanland) van de snelheid. Het park stak in 2021
@@ -128,8 +127,7 @@ gasten per uur door de anderhalve minuut rittijd. Meerijden mag wie tussen de
 
 Voor sommige achtbanen rijd ik afstanden die anderen alleen voor een bruiloft
 rijden, en Kondaa is er zo een. De ontbrekende looping mis je na de eerste
-airtime niet meer. Ze trekt je vijftig meter
-omhoog en laat je daarna anderhalve minuut niet meer los.
+airtime niet meer.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -148,8 +146,8 @@ op de zaterdag dat half Wallonië hetzelfde idee had:
 
 ## De rest van het park, van oldtimer tot haven
 
-Kondaa haalt de koppen. De oudste achtbaan van het park is 39 jaar ouder en
-denkt nog lang niet aan pensioen.
+Kondaa haalt de koppen, maar de oudste achtbaan van het park is 39 jaar ouder
+en rijdt nog altijd.
 
 **[Turbine](ref:walibi-belgium/turbine)** is die baan, een
 **Schwarzkopf Shuttle Loop** uit 1982. De
@@ -166,8 +164,8 @@ verbouwing tot Dock World heeft haar de naam Turbine teruggegeven.
 **[Vampire](ref:walibi-belgium/vampire-2)** (1999) is een **Vekoma SLC**
 (Suspended Looping Coaster, model 689) en was bij de opening de eerste baan van
 dit type in België. De trein hangt onder de rail, en je voeten bungelen in elke
-bocht vrij. Lang duurt dat niet meer: volgens het park rijdt Vampire nog tot
-oktober 2027 en wordt hij daarna afgebroken.
+bocht vrij. Volgens het park rijdt Vampire nog tot oktober 2027 en wordt hij daarna
+afgebroken.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, oorspronkelijk
 “Colorado” gedoopt) is de klassieke mijnachtbaan over 785 meter, rustig tempo,
 krappe bochten, ideaal om in te komen of voor iedereen die na Kondaa “eerst
@@ -176,8 +174,7 @@ even iets rustigs” nodig heeft.
 wordt achteruit een lifthill op getrokken, gaat vooruit door een cobra roll en
 een looping, samen drie keer over de kop, en rijdt daarna het hele traject nog
 eens achteruit. Het park heeft
-dus twee cobra rolls: een die je op je kop zet, en die van Kondaa, die daar
-geen zin in heeft.
+dus twee cobra rolls, en alleen die van Cobra zet je op je kop.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, eveneens uit 2001, is een
 houten constructie van Vekoma, een fabrikant die je eerder met staal verbindt.
 Een houten Vekoma kom je ongeveer net zo vaak tegen als een Belg die zijn
@@ -194,7 +191,7 @@ gelanceerde waterachtbaan), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
 De jongste nieuwigheid is **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
 Gerstlauer), een launch coaster die het park bij zijn familieattracties
 indeelt: 925 meter, drie lanceringen, 65 km/u, vlak boven het water. Hij staat
-in het volledig nieuw gebouwde gebied **Dock World**. Het hart daarvan is het
+in het volledig nieuw gebouwde gebied **Dock World**. Middenin ligt het
 fictieve havenplaatsje **Port Wavre**, met vuurtoren, steigers en paalwoningen,
 waarin het park meteen drie oudere banen heeft ingebouwd in plaats van ze
 gewoon te laten staan: de wildwaterbaan
@@ -235,8 +232,7 @@ Bellewaerde bij Ieper, in 1992 de Flevohof. In 1998 nam de Amerikaanse groep
 Premier Parks, die zich in 2000 omdoopte tot Six Flags, de hele groep over, en
 van 2001 tot 2004 heette de vestiging in Waver **Six Flags Belgium**, in dezelfde
 overnamegolf waarin Six Flags ook het huidige
-[Walibi Holland](ref:walibi-holland) kreeg. Eddy Meeùs maakte daar alleen het
-begin van mee: hij overleed op **24 november 2001**, in het jaar waarin zijn
+[Walibi Holland](ref:walibi-holland) kreeg. Eddy Meeùs overleed op **24 november 2001**, in het jaar waarin zijn
 park voor het eerst een andere naam droeg.
 
 In 2004 verkocht Six Flags zijn Europese parken aan de Londense investeerder
@@ -246,7 +242,7 @@ Franse **Compagnie des Alpes**, het park en daarmee alle andere
 Walibi-vestigingen behalve Walibi Lorraine. Sindsdien zijn Waver, Biddinghuizen en
 [Parc Astérix](ref:parc-asterix) van hetzelfde concern.
 
-Het zwaarste jaar tot nu toe kwam zonder enige naamswisseling. Op **15 juli 2021**
+Op **15 juli 2021**
 trof het hoogwater dat grote delen van West- en Midden-Europa verwoestte ook het
 dal van de Dijle, waar het park aan ligt. De schade was genoeg voor een sluiting
 van maanden midden in het hoogseizoen, tien weken na de opening van Kondaa.
@@ -254,9 +250,8 @@ Pas begin oktober, met halloween, ging het park weer open.
 
 ## Worlds of Walibi: honderd miljoen euro voor acht nieuwe themagebieden
 
-Op **22 juni 2017** presenteerde het park een investeringsplan waar in zijn
-geschiedenis niets aan voorafging: **“Worlds of Walibi”**, zo’n
-**100 miljoen euro**, waarmee 75 % van het terrein in acht nieuwe themagebieden
+Op **22 juni 2017** presenteerde het park het grootste investeringsplan uit zijn
+geschiedenis, **“Worlds of Walibi”**: zo’n **100 miljoen euro**, waarmee 75 % van het terrein in acht nieuwe themagebieden
 moest veranderen, plus tien nieuwe attracties. In 2023 moest alles af zijn. Het begon in 2018 met
 Tiki-Waka, in 2019 volgden de darkride Popcorn Revenge en Fun Pilot, in 2021
 **Kondaa** en in 2025 **Dock World** met Mecalodon. Het park telt sinds 2016
@@ -264,7 +259,7 @@ vier nieuwe werelden (Exotic, Karma, Fun en Dock World), de helft dus, en de
 laatste kwam twee jaar na de deadline. Bij de Noord/Zuidlijn hadden ze voor zo’n
 vertraging de vlag uitgehangen.
 
-Doorgezet wordt het plan wel, en niet alleen in Waver: in zusterpark
+Doorgezet wordt het plan wel, ook buiten Waver: in zusterpark
 [Walibi Holland](ref:walibi-holland) bouwde de **Compagnie des Alpes** in
 dezelfde periode met [Untamed](ref:walibi-holland/untamed) (2019) en de
 dubbelbaan YOY (2025) nog twee grote nieuwigheden. En Waver, dat bij de meesten
@@ -272,9 +267,9 @@ niet eens op het lijstje staat, kreeg binnen vier jaar twee nieuwe achtbanen en
 een compleet nieuw gebied.
 
 De volgende wereld heeft inmiddels een naam. Op 1 juni 2026 kondigde het park
-**Festival World** aan, een gebied in de sfeer van New Orleans, en meteen ook
-de eerste stap: na de laatste rit van Loup-Garou op 3 januari 2027 bouwt Rocky
-Mountain Construction de houten baan om tot hybride achtbaan met stalen rails.
+**Festival World** aan, een gebied in de sfeer van New Orleans. Als eerste stap
+bouwt Rocky Mountain Construction na de laatste rit van Loup-Garou op
+3 januari 2027 de houten baan om tot hybride achtbaan met stalen rails.
 Die moet in 2028 open, 49 meter hoog, 106 km/u, met een drop van 47 meter onder
 89 graden en 1.231 meter baan. Daarmee wordt het de langste achtbaan van de
 Benelux, hoogte en snelheid blijven bij Kondaa. Voor het nieuwe station moet de

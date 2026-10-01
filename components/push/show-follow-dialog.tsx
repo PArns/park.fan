@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell, BellRing, Clock } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -9,10 +9,16 @@ import { Button } from '@/components/ui/button';
 import { LocalTime } from '@/components/ui/local-time';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { trackShowFollowAdd, trackShowFollowRemove } from '@/lib/analytics/umami';
-import { followShow, unfollowShow, type PushWriteError } from '@/lib/push/push-follows';
+import {
+  fetchShowFollowsRemote,
+  followShow,
+  unfollowShow,
+  type PushWriteError,
+} from '@/lib/push/push-follows';
 import {
   getShowFollowLocal,
   isSameInstant,
+  reconcileShowFollowLocal,
   showFollowMatchesLocal,
 } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
@@ -63,6 +69,10 @@ interface ShowFollowDialogProps {
  * unique on (subscription, show) and its upsert overwrites `startTime`. So
  * arming a second performance MOVES the reminder, and the dialog says so
  * before the press rather than leaving it to be discovered.
+ *
+ * The mirror is only a cache, so opening the dialog asks the server what it
+ * holds for this show and takes that over (`reconcileShowFollowLocal`). A
+ * failed answer changes nothing: unknown is not the same as none.
  */
 export function ShowFollowDialog({
   open,
@@ -95,33 +105,35 @@ export function ShowFollowDialog({
     [showId]
   );
   const [pending, setPending] = useState(false);
+  // Set by any press, so an answer to the open-time lookup that was already in
+  // flight cannot overwrite what that press just wrote.
+  const pressedRef = useRef(false);
   const [error, setError] = useState<PushWriteError | null>(null);
   // The bell's failure is shown until this dialog produces one of its own.
   const shownError = error ?? initialError;
+
+  useEffect(() => {
+    if (!open) return;
+    pressedRef.current = false;
+    let cancelled = false;
+    void fetchShowFollowsRemote().then((result) => {
+      if (cancelled || pressedRef.current || !result.ok) return;
+      reconcileShowFollowLocal(showId, result.items);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [open, showId]);
 
   // Both outcomes close the dialog, the way the ride bell's own dialog used to
   // close on save: the press answered the only question this dialog asks, and
   // a form that stays open after succeeding reads as one that did not. Only a
   // FAILURE holds it open — that is when there is something left to read.
-  const handleToggle = async () => {
+  const arm = async (start: string | null | undefined) => {
+    pressedRef.current = true;
     setPending(true);
     setError(null);
-    if (following) {
-      // No optimistic `setFollowing(false)` before the call any more: `unfollowShow` writes the
-      // local mirror itself, and only once the server has confirmed. Flipping the bell first
-      // meant a refused DELETE left it dark over a reminder that would still arrive.
-      const result = await unfollowShow(showId);
-      setPending(false);
-      if (!result.ok) {
-        setError(result.error);
-        return;
-      }
-      setFollowing(false);
-      trackShowFollowRemove();
-      onOpenChange(false);
-      return;
-    }
-    const result = await followShow(showId, startTime);
+    const result = await followShow(showId, start);
     setPending(false);
     if (result.ok) {
       setFollowing(true);
@@ -132,12 +144,40 @@ export function ShowFollowDialog({
     setError(result.error);
   };
 
+  const handleToggle = async () => {
+    if (!active) {
+      await arm(startTime);
+      return;
+    }
+    pressedRef.current = true;
+    setPending(true);
+    setError(null);
+    // No optimistic `setFollowing(false)` before the call any more: `unfollowShow` writes the
+    // local mirror itself, and only once the server has confirmed. Flipping the bell first
+    // meant a refused DELETE left it dark over a reminder that would still arrive.
+    const result = await unfollowShow(showId);
+    setPending(false);
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
+    setFollowing(false);
+    trackShowFollowRemove();
+    onOpenChange(false);
+  };
+
   // Whether an instant is still ahead of the visitor's own clock. The mirror
   // is never swept, so an entry can name a performance that finished
   // yesterday — and `LocalTime` prints a clock time with no date, so an
   // expired one would read as tonight's.
   const isUpcoming = (iso: string) =>
     browserNow !== null && new Date(iso).getTime() >= browserNow.getTime();
+
+  // The performance the pin names has finished: the API compares the instant
+  // exactly, so that row never fires again. It is not an active reminder, and
+  // the dialog must not say it is or promise the next showtime on its account.
+  const armedExpired = armedStart !== null && browserNow !== null && !isUpcoming(armedStart);
+  const active = following && !armedExpired;
 
   // The performance a reminder from THIS dialog would be about: the tapped
   // showtime, else the one this browser already pinned, else the next
@@ -148,9 +188,13 @@ export function ShowFollowDialog({
   // whichever bell was pressed to get here — so a bell beside 16:00 must not
   // report "chosen performance 16:00" for a reminder that will also come
   // before the 18:00 one. Only the press that ARMS one names one.
-  const armedOpenEnded = following && armedStart === null;
+  const armedOpenEnded = active && armedStart === null;
   const chosenStart = armedOpenEnded ? null : (startTime ?? pinnedStart);
+  // An open-ended reminder can be narrowed to the performance this dialog was
+  // opened from. Until now it only offered to turn the whole thing off.
+  const canNarrow = armedOpenEnded && !!startTime && isUpcoming(startTime);
   const nextStart =
+    (canNarrow ? startTime : null) ??
     chosenStart ??
     (browserNow
       ? (showtimes ?? [])
@@ -183,7 +227,9 @@ export function ShowFollowDialog({
         <PushDialogHero
           icon={Bell}
           title={showName}
-          description={chosenStart ? t('explainChosen') : t('explain', { show: showName })}
+          description={
+            chosenStart || canNarrow ? t('explainChosen') : t('explain', { show: showName })
+          }
         >
           {late && (
             <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('explainLate')}</p>
@@ -192,14 +238,22 @@ export function ShowFollowDialog({
             <p className="mt-2 flex items-center gap-1.5 text-xs">
               <Clock className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
               <span className="text-muted-foreground">
-                {chosenStart ? t('chosenShowtime') : t('nextShowtime')}
+                {chosenStart || canNarrow ? t('chosenShowtime') : t('nextShowtime')}
               </span>
               <span className="font-semibold tabular-nums">
                 <LocalTime time={nextStart} timeZone={timezone} />
               </span>
             </p>
           )}
-          {replacedStart && !following && (
+          {armedExpired && armedStart && (
+            <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-xs">
+              <span>{t('expiredShowtime')}</span>
+              <span className="font-semibold tabular-nums">
+                <LocalTime time={armedStart} timeZone={timezone} />
+              </span>
+            </p>
+          )}
+          {replacedStart && !active && (
             <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-xs">
               <span>{t('replacesShowtime')}</span>
               <span className="font-semibold tabular-nums">
@@ -218,18 +272,24 @@ export function ShowFollowDialog({
           <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
             {t('viewAll')}
           </Link>
-          <div className="ml-auto flex shrink-0 items-center gap-2">
+          <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2">
             <Button type="button" variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
               {t('close')}
             </Button>
+            {canNarrow && (
+              <Button type="button" size="sm" onClick={() => arm(startTime)} disabled={pending}>
+                <Bell className="size-3.5 shrink-0" aria-hidden="true" />
+                {t('narrow')}
+              </Button>
+            )}
             <Button
               type="button"
               size="sm"
-              variant={following ? 'secondary' : 'default'}
+              variant={active ? 'secondary' : 'default'}
               onClick={handleToggle}
               disabled={pending}
             >
-              {following ? (
+              {active ? (
                 <>
                   <BellRing className="size-3.5 shrink-0" aria-hidden="true" />
                   {t('unfollow')}

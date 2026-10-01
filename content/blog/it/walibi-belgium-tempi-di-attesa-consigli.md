@@ -66,9 +66,9 @@ resta sopra. Lo stomaco no.
 Questa è [Kondaa](ref:walibi-belgium/kondaa), e quando si dice «Walibi» quasi
 nessuno pensa per prima cosa a questa attrazione. La maggior parte pensa a
 [Walibi Holland](ref:walibi-holland) e a [Untamed](ref:walibi-holland/untamed).
-Eppure Wavre è l’originale che tutti scambiano per la copia: il primissimo
-Walibi, quello che ha dato il nome a tutta la catena, e da maggio 2021, già
-che c’era, anche quello con il coaster più alto e più veloce del Benelux.
+Eppure Wavre è il primissimo Walibi, quello che ha dato il nome a tutta la
+catena, e da maggio 2021 anche quello con il coaster più alto e più veloce del
+Benelux.
 
 ## Due parchi, un nome
 
@@ -116,8 +116,7 @@ corsa.
 Con l’apertura Kondaa si è presa due record in un colpo solo. È diventata il
 coaster più alto e il più veloce del Benelux, togliendo l’altezza proprio a
 [Goliath](ref:walibi-holland/goliath) nel parco gemello
-[Walibi Holland](ref:walibi-holland) (da allora immagino le cene aziendali del
-gruppo un filo tese) e la velocità a
+[Walibi Holland](ref:walibi-holland) e la velocità a
 [Fury](ref:bobbejaanland/fury) al belga [Bobbejaanland](ref:bobbejaanland). Nel
 2021 il parco ha investito 25 milioni di euro in Kondaa e nella nuova area
 intorno, circa metà nell’attrazione stessa. Due treni da sei vetture per quattro
@@ -125,8 +124,8 @@ persone portano circa 1.080 ospiti all’ora attraverso il minuto e mezzo di
 corsa. Si sale fra i 130 e i 195 centimetri di altezza.
 
 Per certi coaster faccio strade che altri fanno solo per un matrimonio, e Kondaa
-è uno di questi. Il looping che manca, dopo il primo airtime, non lo rimpiange
-più nessuno. Ti tira su di
+è uno di questi. Il looping che manca, dopo il primo airtime, non l’ho più
+rimpianto. Ti tira su di
 cinquanta metri e poi non ti molla più per un minuto e mezzo.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
@@ -174,8 +173,7 @@ in clima o per chi dopo Kondaa ha bisogno di «qualcosa di tranquillo, prima».
 treno viene trainato all’indietro su un lift, percorre in avanti un cobra roll e
 un looping, tre inversioni in tutto, e poi rifà tutto il percorso
 all’indietro. Il parco ha
-quindi due cobra roll: uno che ti mette a testa in giù e quello di Kondaa, che
-non si prende il disturbo.
+quindi due cobra roll, e solo quello di Cobra ti mette a testa in giù.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, anch’essa dal 2001, è una
 costruzione in legno di Vekoma, un costruttore che si associa piuttosto
 all’acciaio. Un Vekoma di legno è più o meno raro quanto un belga che ordina le
@@ -267,8 +265,8 @@ Il piano va avanti comunque, e non solo a Wavre: nel parco gemello
 [Walibi Holland](ref:walibi-holland) la **Compagnie des Alpes** ha costruito
 nello stesso periodo altre due grosse novità,
 [Untamed](ref:walibi-holland/untamed) (2019) e la doppia pista YOY (2025). E
-Wavre, che quasi nessuno mette in lista, si è ritrovato in quattro anni con due
-coaster nuovi e un’area completamente nuova.
+Wavre si è ritrovato in quattro anni con due coaster nuovi e un’area
+completamente nuova.
 
 Il prossimo mondo ha ormai un nome. Il 1° giugno 2026 il parco ha annunciato
 **Festival World**, un’area ispirata a New Orleans, e insieme il primo passo:
@@ -321,7 +319,7 @@ giorni della settimana fuori dalle vacanze estive, quando comunque il parco non
 apre tutti i giorni. Quali dei prossimi giorni di apertura siano i più
 tranquilli sta nel calendario più in alto, aggiornato ogni giorno.
 
-## La giornata perfetta, in quattro frasi
+## Una giornata a Wavre
 
 All’apertura prima di tutto a **Kondaa**, perché è il motivo per cui i più
 vengono fin qui, e perché nelle nostre misurazioni (da fine dicembre 2025) la
@@ -430,9 +428,7 @@ Che tempo fa a Wavre quando ci vai:
 
 ```
 
-Il parco che ha dato il nome a tutta la catena sta dal 1975 sulla Dyle,
-fra Wavre, Limal e Bierges, e resta comunque all’ombra del suo omonimo
-olandese. Chi ci va dovrebbe fare Kondaa due volte: davanti, dove il
+Chi va a Wavre dovrebbe fare Kondaa due volte: davanti, dove il
 drop lo vedi arrivare, e nell’ultima fila, dove ti prende già prima che il treno
 sia arrivato del tutto in cima.
 

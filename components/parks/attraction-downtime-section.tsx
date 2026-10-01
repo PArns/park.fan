@@ -17,9 +17,9 @@ import type { DowntimeBlock } from '@/lib/api/types';
  * taking it back, six languages deep, on the second-highest-cardinality route in
  * the app. Where nothing publishes this renders one inline line instead.
  *
- * ## Four refusals, and three of them are about us
+ * ## Five refusals, and four of them are about us
  *
- * `not_down_capable`, `artefact_regime` and `no_schedule` say something about our
+ * `not_down_capable`, `artefact_regime`, `no_schedule` and `outside_window` say something about our
  * data and nothing about the ride. Collapsing them into "no outages" would turn
  * a park we cannot read into a park with a flawless safety record, which is the
  * single worst thing this feature could do. The wording keeps them apart.

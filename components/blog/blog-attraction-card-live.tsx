@@ -56,6 +56,7 @@ export function BlogAttractionCardLive({
         objectPosition={objectPosition}
         showParkName
         timezone={currentPark.timezone}
+        closedPermanently={currentAttraction.closedPermanently}
       />
     </div>
   );

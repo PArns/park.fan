@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
@@ -49,7 +50,7 @@ const LIVE_LABELS: FancastLiveLabels = {
   moreAccurate: 'nauwkeuriger',
   topTitle: 'Waar Fancast de laatste tijd het scherpst zat',
   topIntro:
-    'De attracties waarvan de recente voorspellingen het dichtst bij de echte wachttijd lagen. Je ziet de gemiddelde afwijking in minuten, live uit het model.',
+    'De attracties waarvan de recente voorspellingen het dichtst bij de gemeten wachttijd lagen. Je ziet de gemiddelde afwijking in minuten, live uit het model.',
   colAttraction: 'Attractie',
   colPark: 'Park',
   colError: 'Gem. fout',
@@ -80,7 +81,7 @@ const FAQ = [
   {
     question: 'Kan ik Fancast voor een specifiek park en een specifieke dag gebruiken?',
     answer:
-      'Ja. Elke parkpagina op park.fan heeft een druktekalender die je voor elke gepubliceerde dag een groene, gele of rode voorspelling laat zien, van Europa-Park via Phantasialand en de Efteling tot Walt Disney World. Daarnaast krijg je wachttijd-voorspellingen per uur voor de afzonderlijke attracties.',
+      'Ja. Elke parkpagina op park.fan heeft een druktekalender met een groene, gele of rode voorspelling voor elke gepubliceerde dag, van Europa-Park via Phantasialand en de Efteling tot Walt Disney World. Daarnaast krijg je wachttijd-voorspellingen per uur voor de afzonderlijke attracties.',
   },
   {
     question: 'Welke gegevens gebruikt Fancast?',
@@ -88,7 +89,7 @@ const FAQ = [
       'Live en historische wachttijden uit ruim 200 parken, school- en feestdagenkalenders (ook die van buurregio’s), weersverwachtingen, openingstijden, speciale evenementen en seizoenspatronen. Uit die mix ontstaan de dagelijkse drukteniveaus en de wachttijd-voorspellingen per uur.',
   },
   {
-    question: 'Waarom toont een park “Geen voorspelling”?',
+    question: 'Waarom staat er bij sommige parken “Geen voorspelling”?',
     answer:
       'Fancast beoordeelt een park pas als er genoeg operationele gegevens zijn, dus minstens zo’n 30 operationele dagen. Voor gloednieuwe of zelden geopende parken ontbreekt die basis nog. Dan staat er “Geen voorspelling” in plaats van een gegokt getal.',
   },
@@ -105,19 +106,19 @@ export function ContentNL() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Fancast is ons eigen voorspelmodel, het deel van park.fan dat vandaag al wil weten hoe
+          Fancast is ons eigen voorspelmodel, het deel van park.fan dat vandaag al uitrekent hoe
           lang de rij zaterdag wordt. De naam hebben we zonder reclamebureau bedacht, en dat zie je:{' '}
           <strong>fan</strong> als in park.
-          <strong>fan</strong>, <strong>cast</strong> als in fore<strong>cast</strong>. Een
-          weerbericht voor wachtrijen, alleen zonder weerman die voor de kaart staat te zwaaien.
+          <strong>fan</strong>, <strong>cast</strong> als in fore<strong>cast</strong>.
         </Lead>
         <P>
-          Voorspellingen die niemand controleert, kan elke horoscoop. Fancast moet elke dag op voor
-          zijn rapport, en dat rapport hangt openbaar op deze pagina.
+          Fancast moet elke dag op voor zijn rapport, en dat rapport hangt openbaar op deze pagina.
         </P>
         <Highlight>
           Elke voorspelling gaat de dag erna naast de gemeten wachttijd. Wat daaruit komt, staat in
-          het volgende blok als MAE, RMSE en MAPE, ook op slechte dagen.
+          het volgende blok als <GlossaryTermLink termId="mae">MAE</GlossaryTermLink>,{' '}
+          <GlossaryTermLink termId="rmse">RMSE</GlossaryTermLink> en{' '}
+          <GlossaryTermLink termId="mape">MAPE</GlossaryTermLink>, ook op slechte dagen.
         </Highlight>
       </div>
 
@@ -126,12 +127,12 @@ export function ContentNL() {
         id="note"
         index="01"
         kicker="Het rapportcijfer"
-        title="Hoe goed is Fancast echt?"
+        title="Hoe goed is Fancast?"
         icon={Gauge}
       >
         <P>
-          De cijfers hier komen live uit het model, niet uit een persmap. Met de volgende
-          trainingsronde morgenochtend veranderen ze, dus lijst ze liever niet in.
+          De cijfers hier komen live uit het model en veranderen met de volgende trainingsronde
+          morgenochtend, dus lijst ze liever niet in.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -148,9 +149,9 @@ export function ContentNL() {
         icon={Database}
       >
         <PG>
-          Wie vaak naar pretparken gaat, weet dat een regenachtige brugdag in oktober en een zonnige
-          vakantiezaterdag in juli twee verschillende sporten zijn. Een model moet dat eerst leren,
-          en daarvoor leest Fancast zes bronnen tegelijk:
+          Een regenachtige brugdag in oktober en een zonnige vakantiezaterdag in juli zijn twee
+          verschillende sporten. Een model moet dat eerst leren, en daarvoor leest Fancast zes
+          bronnen tegelijk:
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live wachttijden" delay={0}>
@@ -162,8 +163,7 @@ export function ContentNL() {
             dagjesmensen kijken nu eenmaal niet in de Duitse vakantiekalender.
           </IngredientCard>
           <IngredientCard icon={CloudSun} title="Weer" delay={120}>
-            Regenkans en temperatuur buigen de kortetermijnvoorspellingen bij. Zon lokt iedereen
-            naar buiten, aanhoudende regen stuurt ze terug naar de bank.
+            Regenkans en temperatuur buigen de kortetermijnvoorspellingen bij.
           </IngredientCard>
           <IngredientCard icon={PartyPopper} title="Evenementen & seizoen" delay={0}>
             Halloween, zomervakantie, lange weekenden, een publiekstrekker in zijn eerste zomer: de
@@ -179,9 +179,9 @@ export function ContentNL() {
           </IngredientCard>
         </IngredientGrid>
         <P>
-          Uit deze stamppot kookt het model twee dingen: een{' '}
-          <strong>wachttijd-voorspelling per uur</strong> voor afzonderlijke attracties en een{' '}
-          <strong>dagelijks druktecijfer</strong> voor het hele park.
+          Daaruit berekent het model een <strong>wachttijd-voorspelling per uur</strong> voor
+          afzonderlijke attracties en een <strong>dagelijks druktecijfer</strong> voor het hele
+          park.
         </P>
       </SectionShell>
 
@@ -219,21 +219,21 @@ export function ContentNL() {
           badge={<CrowdLevelBadge level="very_high" />}
         >
           Compact park, weinig publiekstrekkers, en iedereen wil naar Taron. Het is hier sneller vol
-          dan de kiosk het eerste biertje kan tappen. Fancast weet dat en kleurt de dag oranje tot
-          rood. De druktekalender op de parkpagina stelt je dan meteen een dinsdag voor, waarop je
-          Taron een paar keer achter elkaar rijdt in plaats van er vanaf het pad naar te smachten.
+          dan de kiosk het eerste biertje kan tappen, dus kleurt Fancast de dag oranje tot rood. In
+          de druktekalender op de parkpagina vind je dan meteen een dinsdag waarop je Taron een paar
+          keer achter elkaar rijdt.
         </SplitFigure>
         <SplitFigure
           src="/media/efteling/baron-1898.jpg"
           alt="Baron 1898 in de Efteling"
           kicker="Efteling · regenachtige dinsdag in november"
-          title="De geheime tip die het model al meerekent"
+          title="De regendag die het model al meerekent"
           badge={<CrowdLevelBadge level="low" />}
         >
           Precies de dag die planners op gevoel mijden, kleurt Fancast groen: weinig vakantie,
-          beroerd weer, korte rijen. Natte sokken krijg je er gratis bij. Het nadeel van elke
-          geheime tip is dat hij maar werkt tot iedereen hem gelezen heeft. Daarom rekent het model
-          de regenkans voor precies die dag zelf mee, in plaats van op folklore te vertrouwen.
+          beroerd weer, korte rijen. Zo’n tip werkt alleen maar tot iedereen hem gelezen heeft.
+          Daarom rekent het model de regenkans voor precies die dag zelf mee, in plaats van op
+          folklore te vertrouwen.
         </SplitFigure>
       </SectionShell>
 
@@ -246,9 +246,8 @@ export function ContentNL() {
         icon={RefreshCw}
       >
         <P>
-          De belangrijkste truc is ongeveer zo spannend als tandenpoetsen. Fancast traint zichzelf{' '}
-          <strong>één keer per dag</strong> opnieuw, om 06:00 UTC. Wat gisteren in het park is
-          gebeurd, zit vanaf de volgende ochtend in de voorspelling.
+          Fancast traint zichzelf <strong>één keer per dag</strong> opnieuw, om 06:00 UTC. Wat
+          gisteren in het park is gebeurd, zit vanaf de volgende ochtend in de voorspelling.
         </P>
         <P>
           Getest wordt alleen op dagen die het model <strong>nog nooit heeft gezien</strong>. Al het
@@ -257,8 +256,7 @@ export function ContentNL() {
         <P>
           Verder houdt Fancast in de gaten of het <strong>afdrijft</strong>, of de werkelijkheid het
           dus langzaam ontglipt. Een nieuwe modelversie gaat pas live als die de oude in een directe
-          vergelijking verslaat. Promotie krijgt hier alleen wie echt beter is, en dat kan niet elk
-          bedrijf zeggen.
+          vergelijking verslaat.
         </P>
       </SectionShell>
 
@@ -298,7 +296,7 @@ export function ContentNL() {
             },
             {
               level: 'extreme',
-              text: 'Alarmfase. Vakantiezaterdag in hartje zomer. Alleen met een strategie, uithoudingsvermogen en gevoel voor humor.',
+              text: 'Alarmfase, zoals op een vakantiezaterdag in hartje zomer. Alleen met een strategie, uithoudingsvermogen en gevoel voor humor.',
             },
           ]}
         />
@@ -329,8 +327,7 @@ export function ContentNL() {
         icon={MapPin}
       >
         <P>
-          Deze pagina is alleen het kantoor. Het echte werk doet Fancast overal elders op park.fan,
-          en het stelt zich daarbij zelden voor:
+          Deze pagina is alleen het kantoor. Het echte werk doet Fancast overal elders op park.fan:
         </P>
         <TouchpointGrid
           items={[
@@ -355,7 +352,7 @@ export function ContentNL() {
               title: 'Beste reistijd',
               body: (
                 <>
-                  de rustigste weekdagen en de aankomende geheime-tip-dagen, gehaald uit dezelfde
+                  de rustigste weekdagen en de komende dagen met weinig drukte, gehaald uit dezelfde
                   data. Bekijk de{' '}
                   <Link href={`/${BEST_TIME_SEGMENTS.nl}`}>beste tijd om te bezoeken</Link>.
                 </>
@@ -364,7 +361,7 @@ export function ContentNL() {
             {
               icon: LineChart,
               title: 'AI-voorspelling in de wachttijdgrafiek',
-              body: 'de stippellijn die de gunstigste tijdvensters van een attractie verraadt.',
+              body: 'de stippellijn waarop je de gunstigste tijdvensters van een attractie afleest.',
             },
             {
               icon: Sunrise,
@@ -376,8 +373,8 @@ export function ContentNL() {
               title: 'Geen voorspelling',
               body: (
                 <>
-                  niet gokken: parken met te weinig data krijgen <CrowdLevelBadge level="unknown" />{' '}
-                  in plaats van een verzonnen getal.
+                  parken met te weinig data krijgen <CrowdLevelBadge level="unknown" /> in plaats
+                  van een verzonnen getal.
                 </>
               ),
             },

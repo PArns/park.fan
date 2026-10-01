@@ -225,8 +225,11 @@ function leanAttractionForShell(a: ParkAttraction): ParkAttraction {
  * ({@link leanParkForAttractionShell}), where the pair costs ~1 KB rather than ~11 KB.
  */
 export function leanParkForParkShell(park: ParkWithAttractions): ParkWithAttractions {
+  // `closedAttractions` is rendered by the server from the full park (`ClosedRidesList`), so the
+  // client snapshot carries none of it.
+  const { closedAttractions: _closedAttractions, ...rest } = park;
   return {
-    ...park,
+    ...rest,
     // Rest destructuring, not spread + `delete` — see leanAttractionForLive.
     attractions: park.attractions.map(
       ({ typicalWaits: _typicalWaits, rideProfile: _rideProfile, ...lean }) => lean
@@ -239,6 +242,7 @@ export function leanParkForAttractionShell(
   attraction: ParkAttraction
 ): ParkWithAttractions {
   const lean: ParkWithAttractions = { ...park, attractions: [attraction] };
+  delete lean.closedAttractions;
   delete lean.schedule;
   delete lean.restaurants;
   delete lean.weather;

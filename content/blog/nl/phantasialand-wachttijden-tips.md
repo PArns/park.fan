@@ -7,9 +7,8 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Het Phantasialand is mijn thuispark, en park.fan is ontstaan in een rij voor
-  Taron, wat genoeg zegt over die rijen. De gids voor 2026: de banen, het eten,
-  de kleine wonderen, en hoe je de Phantasialand wachttijden klein houdt, de
+  Het Phantasialand is mijn thuispark, en park.fan is ontstaan in een lange rij
+  voor Taron. De gids voor 2026: de banen, het eten, de kleine dingen, en hoe je de Phantasialand wachttijden klein houdt, de
   beste dag vindt en bij de Quick Pass goed rekent.
 tags:
   - phantasialand
@@ -63,14 +62,12 @@ afgebroken, en park.fan is hier bedacht, in een rij van zestig minuten voor
 Taron.
 
 Het hele sentimentele voorverhaal staat in
-[ons ontstaansverhaal](/blog/welkom-bij-de-park-fan-blog); hier gaat het om wat er
-in de loop der jaren aan praktische kennis is blijven hangen. Want hoezeer ik dit
-park ook liefheb, ik moet het meteen aan het begin zowel in bescherming nemen als
-de les lezen: het heeft acht echte headliners voor een publiek dat er twintig
-zou vullen. Gewoon spontaan langsgaan en de perfecte dag treffen, dat lukt hier
-ongeveer even vaak als een zitplaats in de sprinter tijdens de spits. Maar met een beetje voorbereiding wordt het wat het voor mij
-al meer dan dertig jaar is: de mooiste dag die een pretpark in Europa cadeau kan
-doen. En de **Phantasialand wachttijden** heb je grotendeels zelf in de hand,
+[ons ontstaansverhaal](/blog/welkom-bij-de-park-fan-blog). Hoezeer ik dit park
+ook liefheb, het heeft acht echte headliners voor een publiek dat er twintig zou
+vullen. Gewoon spontaan langsgaan en de perfecte dag treffen, dat lukt hier
+ongeveer even vaak als een zitplaats in de sprinter tijdens de spits. Maar met
+een beetje voorbereiding wordt het de mooiste dag die een pretpark in Europa je
+kan geven, en dat is het voor mij al meer dan dertig jaar. En de **Phantasialand wachttijden** heb je grotendeels zelf in de hand,
 namelijk met de dag die je kiest.
 
 ![Een verlichte zweefmolen draait, links een lichtboom | Wintertraum, het winterseizoen van Phantasialand. | wide](/media/phantasialand/background-16x9.jpg)
@@ -80,9 +77,8 @@ namelijk met de dag die je kiest.
 ![Taron in het basaltdorp Klugheim | Taron raast door het basaltdorp Klugheim, en dat dorp is meteen ook de wachtrij. | right](/media/phantasialand/taron-4x3.jpg)
 
 Het Phantasialand draagt “Europa’s meest immersieve themapark” als een tweede
-voornaam: die titel won het acht jaar op rij bij de Parkscout-plus-Award. Waar
-dat aan af te lezen valt: de wachtrij van [Taron](ref:phantasialand/taron) is
-Klugheim, een basaltdorp met scheve daken en verweerde muren, en tussen
+voornaam. Die titel won het acht jaar op rij bij de Parkscout-plus-Award. De
+wachtrij van [Taron](ref:phantasialand/taron) is Klugheim, een basaltdorp met scheve daken en verweerde muren, en tussen
 aanschuiven en decor ligt daar geen zichtbare grens. De baan zelf zie je vanuit
 het dorp pas laat.
 
@@ -92,8 +88,8 @@ tempels, Deep in Africa met lemen hutten, Mexico met Maya-ruïnes, Fantasy met
 Wuze Town aan de Mondsee, Mystery met het basaltdorp Klugheim en als jongste het
 Victoriaanse Rookburgh. Met parkeerterreinen en hotels komt het terrein op zo’n
 28 hectare, het park zelf is een stuk kleiner. Elke wereld heeft zijn eigen
-muziek en zijn eigen geur, wat in de zomer voor de churroskraam in China Town
-duidelijker opvalt dan in welk persbericht ook. Wie geen enkele baan rijdt, heeft
+muziek en zijn eigen geur. Bij de churroskraam in China Town merk je dat in de
+zomer duidelijker dan in welk persbericht ook. Wie geen enkele baan rijdt, heeft
 toch een volle dag.
 
 Die dichtheid heeft een keerzijde. Op een volle dag wil iedereen tegelijk op
@@ -118,9 +114,8 @@ Twee mannen die elkaar na de oorlog in Berlijn hadden leren kennen, staken hier 
 geld en hun hart in: Gottlieb Löffelhardt, geboren Berlijner, en **Richard
 Schmidt**, die als artiest op het podium van het Berlijnse Wintergarten-Varieté
 had gestaan en talloze poppen-televisiespelen had verzorgd. Wat de twee van de
-uitgeputte groeve “Berggeist” wilden maken, was een **Märchenwald** in plaats van
-een kermisterrein: een sprookjesbos, een rustige plek voor gezinnen en grootouders,
-met poppen uit Schmidts collectie, zo’n veertig sprookjesscènes en veel groen. Op
+uitgeputte groeve “Berggeist” wilden maken, was een **Märchenwald**, een
+sprookjesbos en een rustige plek voor gezinnen en grootouders, met poppen uit Schmidts collectie, zo’n veertig sprookjesscènes en veel groen. Op
 30 april 1967 gingen de poorten open. Achtbanen waren er niet, de grootouders
 zullen het overleefd hebben.
 
@@ -135,16 +130,15 @@ de opening doopte Michael Jackson, ja, die, hem persoonlijk. En toen, op
 zette het kunstmatige gebergte in brand waarin ook de Gebirgsbahn reed, en het
 vuur sloeg over naar het Tanagra-theater en delen van de westernstad. Er waren
 die dag zo’n 20.000 bezoekers in het park, 63 raakten lichtgewond, de schade
-bedroeg 38 miljoen euro, en het park bleef 15 dagen dicht. Het had het einde
-kunnen zijn.
+bedroeg 38 miljoen euro, en het park bleef 15 dagen dicht.
 
 Wuze Town met de twee spinning coasters
 [Winja’s Fear](ref:phantasialand/winjas-fear) & Force zou eigenlijk al in 2001
 opengaan en kwam een jaar later. In datzelfde jaar 2002 stonden ook de
 vervangers voor wat er verbrand was: de raftingbaan
 [River Quest](ref:phantasialand/river-quest) en het madhouse Feng Ju Palace,
-allebei nog altijd te vinden. Uit de as kwam een nieuwe houding: als je dan toch
-nieuw bouwt, doe het dan goed, tot de laatste schroef doorgethematiseerd.
+allebei nog altijd te vinden. Wat na de brand nieuw gebouwd werd, is tot de
+laatste schroef doorgethematiseerd.
 
 Hoe serieus het park het daarmee meende, bleek in 2006. Met Deep in Africa en de
 inverted coaster [Black Mamba](ref:phantasialand/black-mamba), de eerste achtbaan
@@ -156,16 +150,15 @@ Rookburgh met [F.L.Y.](ref:phantasialand/fly), volgens het park de eerste
 flying-launch-coaster ter wereld. Bij allebei was het themagebied er eerst en is
 de baan erin gebouwd, niet andersom.
 
-En nog iets verklaart veel: het Phantasialand is tot op de dag van vandaag in **familiehanden**
-gebleven. In 1998 werd Robert Löffelhardt, de zoon van Gottlieb, enige directeur,
+Het Phantasialand is tot op de dag van vandaag in **familiehanden** gebleven. In 1998 werd Robert Löffelhardt, de zoon van Gottlieb, enige directeur,
 drie jaar nadat hij het aandeel van medeoprichter Richard Schmidt had overgenomen;
 een internationaal concern of aandeelhouders die op het kwartaal letten, heeft het
 park nooit boven zich gehad. Hoe het anders kan lopen, zie je nu een uur rijden
-noordelijker: de eigenaar van Movie Park Germany is in handen van een
+noordelijker. De eigenaar van Movie Park Germany is in handen van een
 investeringsmaatschappij, en die
 [zoekt sinds september 2026 een koper](/blog/parques-reunidos-te-koop-movie-park).
 In het Phantasialand zie je de familie aan details die een controller geschrapt
-zou hebben: aan de vliegenierswerkplaats voor F.L.Y., waar je doorheen loopt
+zou hebben, zoals de vliegenierswerkplaats voor F.L.Y., waar je doorheen loopt
 zonder dat ze ook maar iets afhandelt.
 
 Veel ruimte om te groeien heeft de familie alleen niet. Het park strijdt al sinds
@@ -214,10 +207,9 @@ wat er op dit moment aan de hand is:
   ritprogramma’s en een voorshow die de halve schrik levert, lang voordat het
   überhaupt naar boven gaat.
 
-En voor de kleintjes (of de jong-van-hart): [Raik](ref:phantasialand/raik), de
-familie-boomerang in Klugheim die vooruit en achteruit door de basaltkloof rijdt,
-is de perfecte eerste “echte” coaster, zacht genoeg voor de eerste keer, snel
-genoeg voor de tweede.
+Voor de kleintjes is er [Raik](ref:phantasialand/raik), de familie-boomerang in
+Klugheim die vooruit en achteruit door de basaltkloof rijdt, de perfecte eerste
+“echte” coaster.
 
 ```gallery-widget heading="De headliners in beeld"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | De waterbaan Chiapas | Chiapas, volgens het park de steilste afdaling van een waterbaan ter wereld.
@@ -232,8 +224,8 @@ genoeg voor de tweede.
 
 ## Tickets: alleen online, en de strijd om de jaarkaarten
 
-Tot zover de mooie kant. Nu de kleine lettertjes waarop de meeste spontane uitstapjes
-stranden nog voordat ze begonnen zijn: **er is geen dagkassa meer.** Het Phantasialand
+**Er is geen dagkassa meer**, en daarop stranden de meeste spontane uitstapjes
+nog voordat ze begonnen zijn. Het Phantasialand
 verkoopt uitsluitend **gedateerde online tickets**, je boekt vooraf een concrete
 bezoekdag, en zonder dat e-ticket op je telefoon sta je in het ergste geval voor een
 gesloten poort.
@@ -245,27 +237,27 @@ hoogste stap in de ticketkalender ligt op **78 €** (volwassenen vanaf 12), dus
 bijna het drievoudige voor exact dezelfde parkdag. Spontaan kan ook, maar alleen
 online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende dagprijs
 en alleen als de dag niet is uitverkocht; op 25 september 2026 kostte een ticket
-voor diezelfde dag 64 €. De regel is even simpel als onromantisch: **wie vroeg
-boekt, betaalt minder.** Dat de goedkope dag ook de legere is, klopt vaak, maar
-niet altijd: op diezelfde dag kostte de zondag erna 49 € en de maandag 64 €,
-terwijl onze kalender de maandag als de rustigste van de twee verwacht.
+voor diezelfde dag 64 €. **Wie vroeg boekt, betaalt minder.** Dat de goedkope
+dag ook de legere is, klopt vaak, maar niet altijd. Op diezelfde dag kostte de
+zondag erna 49 € en de maandag 64 €, terwijl in onze kalender de maandag de
+rustigste van de twee is.
 
-En dan is er nog die kwestie die de trouwste fans tot vandaag dwarszit: **jaarkaarten
-zijn er niet meer.** Het Phantasialand haalde zijn Club-Karte in de pandemie uit
-de verkoop en bracht hem nooit terug; de laatste liepen in de zomer van 2022 af.
-Onder de grote Duitse parken is dat de uitzondering: het Europa-Park verkoopt zijn
-ResortPass bijvoorbeeld gewoon door, ook al zijn de contingenten snel op. Voor een
-plek die zo veel mensen tot herhalingsdaders maakt, is dat een klap in het gezicht
-van de vaste gasten. De onvrede was (en is) zo groot dat fans in 2022 meteen **meerdere
+**Jaarkaarten zijn er niet meer**, en dat zit de trouwste fans tot vandaag dwars.
+Het Phantasialand haalde zijn Club-Karte in de pandemie uit de verkoop en bracht
+hem nooit terug; de laatste liepen in de zomer van 2022 af. Onder de grote Duitse
+parken is dat de uitzondering. Het Europa-Park verkoopt zijn ResortPass
+bijvoorbeeld gewoon door, ook al zijn de contingenten snel op. Voor een plek die
+zo veel mensen tot herhalingsdaders maakt, treft dat juist de vaste gasten. De
+onvrede was (en is) zo groot dat fans in 2022 meteen **meerdere
 [petities voor herinvoering](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)**
-startten. Wat er tot nu toe is veranderd: niets. Wie het
+startten. Veranderd is er tot nu toe niets. Wie het
 park liefheeft, betaalt voor elk afzonderlijk bezoek een gedateerd dagticket tegen
 dagprijs, als een vaste klant die in zijn eigen stamkroeg elke keer weer om zijn
 ID wordt gevraagd. Dat is een van de weinige punten waarop ik echt worstel met mijn
 lievelingspark.
 
-En een gedachte die me als fan echt pijn doet: **de prijs bepaalt nu eenmaal ook het
-publiek.** Sinds de jaarkaarten weg zijn en de tickets zo agressief beprijsd worden, is er
+**De prijs bepaalt nu eenmaal ook het publiek**, en als fan doet die gedachte me
+echt pijn. Sinds de jaarkaarten weg zijn en de tickets zo agressief beprijsd worden, is er
 in het park merkbaar iets verschoven. In de
 laatste een, twee jaar is me duidelijk meer **vandalisme** opgevallen dan in al de jaren
 ervoor, op een plek waar je zoiets vroeger simpelweg niet kende. Of dat direct samenhangt,
@@ -282,7 +274,8 @@ Een paar vuistregels die bijna altijd kloppen:
 
 - **Doordeweeks verslaat weekend.** Maandag tot en met vrijdag liggen in onze
   metingen gelijk op, zaterdag en zondag erboven (gemeten sinds eind december
-  2025, stand 25 september 2026). Een geheime tip-weekdag bestaat hier dus niet.
+  2025, stand 25 september 2026). Een doordeweekse dag die eruit springt, is er
+  dus niet.
 - **NRW-schoolvakanties mijden**, vooral zomer- en herfstvakantie. Het verzorgingsgebied
   Keulen/Bonn/Ruhrgebied is enorm, en de helft daarvan staat dan met je mee bij Taron.
 - **Brugdagen zijn bijna nooit een goed idee**: de vrije dag daarvoor heeft half
@@ -291,9 +284,9 @@ Een paar vuistregels die bijna altijd kloppen:
   ticketprijzen zijn ook zaterdagen buiten de vakanties vaak goed vol.
 
 Onderbuikgevoel is hier een slechte raadgever zodra vakantiekalender, weer en
-openingstijden over elkaar heen schuiven. Precies daarvoor is park.fan gebouwd. De kalender
-van de beste bezoekdagen rekent dat samen met de wachttijd-historie van het park om
-naar één drukteniveau per dag, van zeer laag tot extreem. Hier zijn de rustigste
+openingstijden over elkaar heen schuiven. Precies daarvoor is park.fan gebouwd. In
+de kalender van de beste bezoekdagen rekenen we dat samen met de wachttijd-historie
+van het park om naar één drukteniveau per dag, van zeer laag tot extreem. Hier zijn de rustigste
 komende dagen voor het Phantasialand:
 
 ```best-days-widget slug=phantasialand
@@ -340,22 +333,21 @@ de Kaiserplatz geld uitgeeft. Er zijn nu twee varianten:
   goedkoper en doet F.L.Y. er nog bovenop. Het loont alleen als je echt overal in
   wilt.
 
-Een detail dat velen verrast (en dat je vooraf moet weten): **zelfs met de Quick Pass wacht
-je bij F.L.Y. nog, boven, in het station.** De baan doet er door haar ingewikkelde
+**Zelfs met de Quick Pass wacht je bij F.L.Y. nog, boven, in het station.** De baan doet er door haar ingewikkelde
 vliegbeugels eindeloos over om te laden, en die opstopping lost ook in de fast track niet op.
 Je slaat de grote rij over, maar het laatste, taaie stuk voor het instappen leg je toch
 staand af.
 
-Kopen doe je alleen ter plekke, bij de gastenservice op de Kaiserplatz, en beperkt
-betekent echt beperkt: **juist tijdens de Wintertraum zijn de Quick Passes in het
+Kopen doe je alleen ter plekke, bij de gastenservice op de Kaiserplatz, en het
+aantal is beperkt. **Juist tijdens de Wintertraum zijn de Quick Passes in het
 weekend vaak al rond het middaguur uitverkocht.** Wie er een nodig heeft, is er
 vroeg bij of grijpt mis.
 
-Mijn mening na heel, heel veel bezoeken: **op een groene dag heb je hem gewoon niet nodig.**
-Wie vroeg present is en een verstandige volgorde ter harte neemt, rijdt de headliners met korte
+**Op een groene dag heb je hem gewoon niet nodig**, dat weet ik na heel, heel veel
+bezoeken. Wie vroeg present is en een verstandige volgorde ter harte neemt, rijdt de headliners met korte
 wachttijd, dan is elke euro Quick Pass weggegooid. Op een dieprode vakantiezaterdag
-daarentegen kan hij de dag redden. Kijk vóór de aankoop gewoon even naar de live wachttijden:
-staan de cijfers laag, hou dan je geld op zak en gun jezelf in plaats daarvan een tweede stuk
+daarentegen kan hij de dag redden. Kijk vóór de aankoop gewoon even naar de live
+wachttijden, en staan de cijfers laag, hou dan je geld op zak en gun jezelf in plaats daarvan een tweede stuk
 taart. (Naast de Ultimate is er nog een tweede weg naar F.L.Y. zonder lange rij, daarover zo
 meteen bij de hotels.)
 
@@ -400,8 +392,8 @@ timing, en die heb je, anders dan het weer, volledig zelf in de hand.
 
 ## Eten: hier loont het om te gaan zitten
 
-Bij geen enkel ander park zou ik dit zo uitlichten: het Phantasialand is ook vanwege
-het **eten** een reis waard. Terwijl in veel parken “eten” synoniem is met lauwe friet tegen
+Het Phantasialand is ook vanwege het **eten** een reis waard, en dat zou ik bij
+geen enkel ander park zo uitlichten. Terwijl in veel parken “eten” synoniem is met lauwe friet tegen
 woekerprijs, wordt hier gekookt met een zorg die ik anders alleen van echte restaurants ken. Drie adressen die ik iedereen noem die het
 me vraagt, en een paar mensen die het niet vroegen:
 
@@ -423,8 +415,8 @@ me vraagt, en een paar mensen die het niet vroegen:
 Voor tussendoor mijn snackklassieker: de **churros**, vers, kaneelig en het hele jaar door te
 krijgen.
 
-En de belangrijkste eettip is dezelfde als bij het aanschuiven: **anticyclisch.** Eet rond half twaalf,
-voordat de restaurants vollopen. Dan zit je aan tafel terwijl buiten de rijen het
+Ook bij het eten werkt **anticyclisch** het best. Eet rond half twaalf, voordat
+de restaurants vollopen. Dan zit je aan tafel terwijl buiten de rijen het
 langst zijn, en sta je niet ook nog eens in de rij voor je eten. (En als je in de
 winter komt, zet het park op de Kaiserplatz nog een eigen winterkaart neer, meer
 daarover bij de Wintertraum.)
@@ -462,7 +454,8 @@ bijzonders zijn, terwijl elk ervan in een ander park de headliner zou zijn. Eén
 ritje met de [Geister Rikscha](ref:phantasialand/geister-rikscha), die al sinds
 1981 door China Town rijdt, en je begrijpt wat “immersief” echt betekent.
 
-Maar mijn allerliefste moment is voor het einde van de dag: **Klugheim in het blauwe uur.** Wanneer de
+Maar mijn allerliefste moment is **Klugheim in het blauwe uur**, aan het einde van
+de dag. Wanneer de
 lichten aangaan en [Taron](ref:phantasialand/taron) boven je door de basaltzuilen dendert, terwijl de
 laatste zon de rotsen oranje kleurt en de eerste lantaarns warm beginnen te gloeien, dat is de reden
 waarom ik dit park liefheb, en waarom ik ’s avonds nooit naar huis wil.
@@ -477,8 +470,8 @@ Lindbergh wakker wordt, heeft ’s ochtends even nodig om te weten in welke eeuw
 is. Daarbij de grote dinnershow Fantissima, als je van de avond een feest wilt
 maken.
 
-Een belangrijke opmerking, omdat velen het van het [Europa-Park](ref:europa-park) anders kennen: een
-Phantasialand-hotel levert je **geen vroegere parktoegang** op. Het concrete
+Anders dan in het [Europa-Park](ref:europa-park) levert een Phantasialand-hotel je
+**geen vroegere parktoegang** op. Het concrete
 voordeel zit ergens anders. Gasten van het **Charles Lindbergh** krijgen met hun
 hotelticket **één keer per dag snellere toegang tot
 [F.L.Y.](ref:phantasialand/fly)** via een eigen ingang; bij het gebruikelijke
@@ -515,32 +508,32 @@ gelukkige mensen het parkeerterrein af te schuifelen.
 ## Wintertraum: glühwein, lichtjes en Taron in het donker
 
 In de [Halloween-gids](/blog/halloween-pretparken-2026) heb ik het Phantasialand
-liefdevol tot de “weigeraars” gerekend: het doet bewust geen griezelfestival. In
-plaats daarvan trekt het in de winter een heel ander, prachtig kostuum aan: de
+liefdevol tot de “weigeraars” gerekend, omdat het bewust geen griezelfestival
+doet. In plaats daarvan heeft het in de winter de
 **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
 
 In 2026 zit er geen pauze tussen zomer en winter: het zomerseizoen loopt tot 13
 november, op de 14e gaat het park open als lichtgevend winterdorp, volgens het
 park met miljoenen lichtjes, plus sneeuwlook (de sneeuw is decor, de kou is echt),
-dennen en kraampjesmagie, zeven shows met elke avond de finale “Magic Symphony”, en
+dennen en kraampjes, zeven shows met elke avond de finale “Magic Symphony”, en
 een ijsbaan voor de grote kerstboom op de Kaiserplatz. In de schemering, met een
 beker glühwein in de hand en [Taron](ref:phantasialand/taron) in de lichtzee boven
 je, is dat mijn favoriete manier om een parkjaar af te sluiten.
 
-En dan is er nog het **eten dat er alleen in de winter is.** Op de Kaiserplatz
+**Een deel van het eten is er alleen in de winter.** Op de Kaiserplatz
 staan dan vlammenzalm, een boerenkoolpan en hot crumble. Mijn stiekeme nummer één
 (vanaf nu niet meer zo stiekem) blijven toch de **Flat Croissants** uit China Town:
 knapperig geperst en heerlijk boterig. Puur wintergebak zijn het overigens niet,
 het park verkoopt ze ook buiten de Wintertraum.
 
-En dan mijn beste Wintertraum-tip: **Taron in het donker.** In de winter wordt het vroeg donker, en als
+Mijn beste Wintertraum-tip is **Taron in het donker.** In de winter wordt het vroeg donker, en als
 [Taron](ref:phantasialand/taron) door het verlichte Klugheim jaagt en de basaltzuilen nog maar schaduwen
-tegen de nachthemel zijn, rijd ik de baan het liefst. De adder onder het gras: precies dan wil iedereen erin.
+tegen de nachthemel zijn, rijd ik de baan het liefst. Alleen wil precies dan iedereen erin.
 Koop de **Quick Pass meteen vroeg op de dag** (in het weekend zijn ze rond het middaguur weg), en rijd dan
 Taron in het donker, zo vaak je kunt.
 
-**De data 2026/27:** van **14 november 2026 tot 24 januari 2027**, dagelijks van
-**11 tot 20 uur**. Gesloten op 24 en 25 december en op 1 januari, en volgens de
+De Wintertraum 2026/27 loopt van **14 november 2026 tot 24 januari 2027**,
+dagelijks van **11 tot 20 uur**. Gesloten op 24 en 25 december en op 1 januari, en volgens de
 Wintertraum-pagina van het park ook op 12 en 13 januari 2027; op oudjaarsdag alleen
 tot 18 uur. De tickets lopen net als in de zomer via gedateerde online dagtickets;
 eind september 2026 adverteerde het park met een voorverkoopcontingent vanaf 29 €.
@@ -552,7 +545,7 @@ Nog drie dingen:
   [River Quest](ref:phantasialand/river-quest) is in de winter daarentegen dicht,
   en bij extreem weer kan elke buitenbaan op korte termijn sluiten. Wie in december
   Chiapas rijdt, neemt droge kleren mee.
-- **Plan de weekenden als vakantiedagen.** Onze kalender verwacht voor de eerste
+- **Plan de weekenden als vakantiedagen.** In onze kalender staat voor de eerste
   Wintertraum-weekenden veel drukte en voor de doordeweekse dagen in december weinig.
   We hebben de Wintertraum tot nu toe maar op een handvol dagen gemeten, tussen
   eind december 2025 en januari 2026, en die waren druk. Voor alles buiten de weekenden geldt dus:
@@ -567,18 +560,17 @@ Nog drie dingen:
 Op weekdagen buiten de NRW-schoolvakanties; maandag tot en met vrijdag liggen in
 onze data gelijk op, en de rustigste gemeten maand was september, na de
 zomervakantie (gemeten sinds eind december 2025, stand 25 september 2026).
-Vertrouw echter niet op je
-onderbuikgevoel: de [druktekalender voor het Phantasialand](ref:phantasialand?calendar)
-vertelt je zo ver vooruit als het park zijn openingstijden heeft gepubliceerd
-wanneer je op weinig drukte kunt rekenen; op dit moment is dat tot
-24 januari 2027. Groen betekent gaan.
+Vertrouw echter niet op je onderbuikgevoel. In de
+[druktekalender voor het Phantasialand](ref:phantasialand?calendar) staat, zo ver
+vooruit als het park zijn openingstijden heeft gepubliceerd, wanneer je op weinig
+drukte kunt rekenen; op dit moment is dat tot 24 januari 2027. Groen betekent
+gaan.
 
 ### Hoe vermijd ik in het Phantasialand lange wachttijden?
 
-Drie hefbomen, in deze volgorde: **de juiste dag kiezen** (levert het meest op),
-**vroeg present zijn** (Taron om klokslag 10 uur, daarna de waterbanen), en
-**anticyclisch** op pad zijn (F.L.Y. aan het eind van de middag, coasters tijdens
-de shows). De live wachttijden check je onderweg op de
+Kies eerst **de juiste dag** (levert het meest op), wees dan **vroeg present**
+(Taron om klokslag 10 uur, daarna de waterbanen), en ga **anticyclisch** op pad
+(F.L.Y. aan het eind van de middag, coasters tijdens de shows). De live wachttijden check je onderweg op de
 [Phantasialand-parkpagina](ref:phantasialand).
 
 ### Welke attractie heeft de langste wachttijden?
@@ -593,9 +585,9 @@ middag, als de rij daar het kortst is.
 ### Heb je in het Phantasialand een Quick Pass nodig?
 
 Op een rustige (groene) dag niet, met een vroege aankomst rijd je alles met korte
-wachttijd. Op een volle dag kan hij Taron en F.L.Y. redden: Taron kost los 12 €,
+wachttijd. Op een volle dag kan hij Taron en F.L.Y. redden. Taron kost los 12 €,
 F.L.Y. zit alleen in de Ultimate van 80 € (stand 25 september 2026). Kijk vooraf
-naar de live wachttijden: staan de cijfers laag, hou dan je geld op zak.
+naar de live wachttijden, en staan de cijfers laag, hou dan je geld op zak.
 
 ### Zijn er in het Phantasialand nog jaarkaarten?
 
@@ -614,9 +606,8 @@ themahotels een klein feest) zijn twee dagen.
 Het Phantasialand is geen park dat je er even bij pakt. Het heeft zo’n derde van
 het publiek van het Europa-Park, en toch sta je hier volgens onze data langer in de
 rij. Op de juiste dagen, met de juiste volgorde en een pauze in Rutmor’s Taverne, is
-het het park waar ik al dertig jaar naar terugga. Het goede nieuws: bijna alles wat
-een goede van een geweldige dag scheidt, beslis je **vooraf**, bij de blik op de
-kalender.
+het het park waar ik al dertig jaar naar terugga. Bijna alles wat een goede van
+een geweldige dag scheidt, beslis je **vooraf**, bij de blik op de kalender.
 
 Voordat je vertrekt, nog even een blik op het weer in Brühl, precies nu:
 
@@ -634,8 +625,8 @@ pancakes bij Phenie’s verdwijnt, en ’s avonds in het blauwe uur nog steeds n
 
 — Patrick
 
-_P.S.: Nee, ik koop op een groene dinsdag geen Quick Pass. Uit principe, en omdat de data zeggen dat ik hem niet
-nodig heb. Voor de rode zaterdag had ik hem wél gekocht. Of op tijd een groene dag
+_P.S.: Nee, ik koop op een groene dinsdag geen Quick Pass. Uit principe, en omdat ik hem volgens onze metingen
+niet nodig heb. Voor de rode zaterdag had ik hem wél gekocht. Of op tijd een groene dag
 geboekt en me allebei bespaard, de Quick Pass en de zaterdagprijs._
 
 ---

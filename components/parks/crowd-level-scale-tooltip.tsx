@@ -3,6 +3,7 @@
 import { useRef, useState, type ReactNode, type Ref } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import {
@@ -195,7 +196,19 @@ export function CrowdLevelScaleTooltip({ level, children }: CrowdLevelScaleToolt
   ) as Record<ColoredCrowdLevel, string>;
 
   return (
-    <CrowdScaleTooltip level={level} title={t('title')} rows={rows} note={t('note')}>
+    <CrowdScaleTooltip
+      level={level}
+      title={t('title')}
+      rows={rows}
+      note={
+        <>
+          {t('note')}{' '}
+          <GlossaryTermLink termId="crowd-level" showTooltip={false} className="underline">
+            {t('glossaryLink')}
+          </GlossaryTermLink>
+        </>
+      }
+    >
       {children}
     </CrowdScaleTooltip>
   );

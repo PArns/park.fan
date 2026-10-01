@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: vanaf zaterdag nemen de schurken het over, en Dr. Facilier is na vijf jaar terug'
+title: 'Disneyland Paris viert Halloween tot en met 1 november'
 translationKey: disneyland-paris-halloween-2026
 date: '2026-09-23'
 author: patrick
@@ -9,7 +9,7 @@ excerpt: >-
   Van 26 september tot 1 november loopt in Disneyland Park het Disney Halloween
   Festival: nieuwe Victoriaanse kostuums voor Mickey en co, Dr. Facilier voor
   het eerst sinds 2021 terug, een saloon met twee verdiepingen en een 31 oktober tot 23 uur.
-  Alles in het gewone ticket. Geen maze, geen kettingzaag.
+  Alles zit in het gewone ticket, en horrormazes zijn er niet.
 tags:
   - nieuws
   - disneyland-paris
@@ -41,13 +41,12 @@ seo:
     - Jack Skellington Disneyland Paris
 ---
 
-Denk je bij Halloween in een pretpark aan kettingzagen en nepbloed, dan valt
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) tegen, en
-dat is precies de bedoeling. Het **Disney Halloween Festival** is de
-gezinsversie: pompoenen, schurken om mee op de foto te gaan, een parade en één
-avond waarop ook volwassenen verkleed binnen mogen. Het begint op **zaterdag
-26 september** en loopt tot **zondag 1 november 2026**. Alles zit in een
-gewoon parkticket.
+In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) begint op
+**zaterdag 26 september** het **Disney Halloween Festival**, dat loopt tot
+**zondag 1 november 2026**. Het is de gezinsversie: pompoenen, schurken om mee
+op de foto te gaan, een parade en één avond waarop ook volwassenen verkleed
+binnen mogen. Alles zit in een gewoon parkticket. Wie bij Halloween in een
+pretpark aan kettingzagen en nepbloed denkt, valt het hier tegen.
 
 Van de twee parken wordt alleen Disneyland Park aangekleed, en de Disney-hotels
 krijgen herfstversiering. In [Disney Adventure
@@ -112,8 +111,8 @@ alles wat op een wapen lijkt. Wie als Disneyfiguur komt, mag niet poseren voor
 foto's en geen handtekeningen uitdelen. Wie in een meerlaags pak van top tot
 teen komt, kan bij de ingang een extra controle verwachten.
 
-Zaterdag, Halloween, kostuums, avondprogramma voor iedereen met een ticket: dat
-wordt vol. Wie de kostuumavond kan missen, heeft meer aan de versiering op een
+Een zaterdag op Halloween, met kostuums en een avondprogramma voor iedereen met
+een ticket, wordt vol. Wie de kostuumavond kan missen, heeft meer aan de versiering op een
 doordeweekse dag eind september of begin oktober. Vanaf half oktober hebben de
 Franse scholen herfstvakantie, en in de laatste week van oktober komt de
 Britse half term erbij.
@@ -128,10 +127,9 @@ Britse half term erbij.
 
 Wat Premier Access kost, op welke dagen het rustiger is in een park dat het
 hele jaar open is, en hoe je beide parken op één dag doet, staat in de
-[gids voor Disneyland Paris](/blog/disneyland-paris-wachttijden-tips). Wat
-Movie Park, Traumatica, Walibi en Toverland dezelfde herfst doen voor wie
-zonder kinderen gaat, vergelijkt het
-[Halloween-overzicht](/blog/halloween-pretparken-2026).
+[gids voor Disneyland Paris](/blog/disneyland-paris-wachttijden-tips). Wie
+zonder kinderen gaat en wel nepbloed wil, vindt Movie Park, Traumatica, Walibi
+en Toverland in het [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 

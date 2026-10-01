@@ -34,6 +34,7 @@ const {
   countPushFollowsLocal,
   getShowFollowLocal,
   parseShowFollowEntry,
+  reconcileShowFollowLocal,
   setShowFollowedLocal,
   showFollowMatchesLocal,
 } = await import('../lib/push/push-follows-store.ts');
@@ -199,6 +200,28 @@ test('a corrupt list is an empty list, never a throw', () => {
   storage.set(KEY, JSON.stringify(['show-1', null, 7, { startTime: 'x' }]));
   assert.equal(showFollowMatchesLocal('show-1'), true);
   assert.equal(countPushFollowsLocal(), 1);
+});
+
+test('reconciling gives a bare entry the performance the server holds', () => {
+  seed(['show-1', 'show-2']);
+  reconcileShowFollowLocal('show-1', [{ showId: 'show-1', startTime: '2026-09-09T17:10:00.000Z' }]);
+  assert.deepEqual(stored(), [
+    { showId: 'show-2', startTime: null },
+    { showId: 'show-1', startTime: '2026-09-09T17:10:00.000Z' },
+  ]);
+});
+
+test('reconciling against a list without the show drops only that show', () => {
+  seed([{ showId: 'show-1', startTime: '2026-09-09T14:00:00.000Z' }, 'show-2']);
+  reconcileShowFollowLocal('show-1', [{ showId: 'show-2', startTime: null }]);
+  assert.deepEqual(stored(), [{ showId: 'show-2', startTime: null }]);
+});
+
+test('reconciling an already matching entry writes nothing', () => {
+  seed([{ showId: 'show-1', startTime: null }]);
+  const before = storage.get(KEY);
+  reconcileShowFollowLocal('show-1', [{ showId: 'show-1', startTime: null }]);
+  assert.equal(storage.get(KEY), before);
 });
 
 console.log(`\n${passed} assertions passed.`);

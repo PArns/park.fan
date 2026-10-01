@@ -7,6 +7,7 @@ import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { useMemo } from 'react';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
+import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 
 interface LiveParkDataProps {
   initialData: ParkWithAttractions;
@@ -21,6 +22,8 @@ interface LiveParkDataProps {
   /** Does this park have a wait-time record page? Server-resolved, since the flag is a fact about
    *  the park's aggregate and not about the live poll — see `ParkTileSource.statsAvailable`. */
   statsAvailable?: boolean;
+  /** The height the rider-height filter opens on, from the URL's `?height=`, already validated. */
+  initialRiderHeight?: number | null;
   continent: string;
   country: string;
   city: string;
@@ -32,6 +35,9 @@ interface LiveParkDataProps {
   /** <ParkTodayPanel> as a slot — it is the top half of the header card whose bottom half is the
    *  entry-tile row, and that card is built inside <TabsWithHash>. */
   todayPanel?: React.ReactNode;
+  /** The park's rides that closed for good, for the ride search. Server-built, day-stable, and
+   *  absent for the parks without one. */
+  closedRides?: readonly ClosedRideSearchItem[];
 }
 
 /**
@@ -45,6 +51,7 @@ export function LiveParkData({
   initialData,
   todayIso,
   statsAvailable,
+  initialRiderHeight,
   continent,
   country,
   city,
@@ -53,6 +60,7 @@ export function LiveParkData({
   attractionsByLand,
   otherAttractionsLabel,
   todayPanel,
+  closedRides,
 }: LiveParkDataProps) {
   const { data: park } = useLiveParkData({
     continent,
@@ -99,6 +107,7 @@ export function LiveParkData({
         restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
         weatherAvailable={!!currentPark.weather?.current}
         statsAvailable={statsAvailable}
+        initialRiderHeight={initialRiderHeight}
         park={currentPark}
         continent={continent}
         country={country}
@@ -107,6 +116,7 @@ export function LiveParkData({
         landNames={currentLandNames}
         attractionsByLand={currentAttractionsByLand}
         todayPanel={todayPanel}
+        closedRides={closedRides}
       />
     </RideAlertParkProvider>
   );

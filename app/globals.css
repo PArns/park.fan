@@ -1755,6 +1755,12 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   background: color-mix(in oklab, var(--muted) 40%, transparent);
   color: var(--muted-foreground);
 }
+.tiptap-canvas .editor-callout--quote {
+  border-color: color-mix(in oklab, var(--primary) 25%, transparent);
+  background: color-mix(in oklab, var(--primary) 5%, transparent);
+  color: var(--foreground);
+  font-weight: 500;
+}
 .tiptap-canvas .editor-callout-marker {
   display: inline-block;
   border-radius: 9999px;
@@ -1789,6 +1795,10 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 .tiptap-canvas .editor-callout-marker--correction {
   background: color-mix(in oklab, var(--muted-foreground) 15%, transparent);
   color: var(--muted-foreground);
+}
+.tiptap-canvas .editor-callout-marker--quote {
+  background: color-mix(in oklab, var(--primary) 15%, transparent);
+  color: var(--primary);
 }
 
 /* Empty-editor placeholder. */
@@ -2451,5 +2461,86 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   [data-planner-sheet] textarea,
   [data-planner-sheet] select {
     font-size: 16px;
+  }
+}
+
+/* ─── The cover of a post that has no photo (`BlogCoverFallback`) ────────────
+ *
+ * The brand's dark ground (#0F1E28 → #13293A) with four lights in the logo's
+ * colours and a faint white one behind the pin, then the pin itself as a
+ * background image. Everything lives here so each instance is one attribute-only
+ * `<span>`: the header's news and blog panels render these into every page.
+ *
+ * The ground is the same in both themes, like a photo is. `data-hue` swaps the
+ * four lights (the hue comes from the slug, see the component); `data-mark`
+ * places the pin, `data-ground="none"` drops the ground for the card's photo
+ * strip, which sits on the card's own ground. Every radial layer is sized from
+ * its box, so the same rule fills an 88 px thumbnail and a full-bleed banner.
+ *
+ * `side` is the article banner's: right of the headline column and only from
+ * `lg` (64rem, in rem like every breakpoint here) up. Below that the headline
+ * runs the full width, and on a phone the lower part of the banner is under the
+ * section that pulls up into it (`HERO_FLOW_INTO_PULL`). */
+.blog-cover-fallback {
+  --cover-a: #2191d3;
+  --cover-b: #12bef0;
+  --cover-c: #51cc64;
+  --cover-d: #1665e6;
+  --cover-glow-x: 50%;
+  background:
+    radial-gradient(circle at var(--cover-glow-x) 50%, rgb(255 255 255 / 0.1) 0%, transparent 30%),
+    radial-gradient(
+      circle at 16% 24%,
+      color-mix(in srgb, var(--cover-a) 85%, transparent) 0%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 76% 6%,
+      color-mix(in srgb, var(--cover-b) 60%, transparent) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 94% 98%,
+      color-mix(in srgb, var(--cover-c) 70%, transparent) 0%,
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at 2% 106%,
+      color-mix(in srgb, var(--cover-d) 80%, transparent) 0%,
+      transparent 48%
+    ),
+    linear-gradient(135deg, #0f1e28 0%, #13293a 100%);
+}
+.blog-cover-fallback[data-hue='green'] {
+  --cover-a: #2eaf5c;
+  --cover-b: #51cc64;
+  --cover-c: #12bef0;
+  --cover-d: #1e8c4a;
+}
+.blog-cover-fallback[data-hue='cyan'] {
+  --cover-a: #0fa3d6;
+  --cover-b: #3fd4f2;
+  --cover-c: #51cc64;
+  --cover-d: #0b6fa8;
+}
+.blog-cover-fallback[data-ground='none'] {
+  background: none;
+}
+.blog-cover-fallback[data-mark]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/logo-dark.svg') no-repeat center / auto 64%;
+}
+.blog-cover-fallback[data-mark='side'] {
+  --cover-glow-x: 84%;
+}
+.blog-cover-fallback[data-mark='side']::after {
+  background-position: right 8% center;
+  background-size: auto 56%;
+}
+@media (width < 64rem) {
+  .blog-cover-fallback[data-mark='side']::after {
+    content: none;
   }
 }

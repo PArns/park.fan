@@ -61,6 +61,13 @@ export interface ResolvedAttraction {
   status?: AttractionStatus;
   /** Current crowd level for the ride, if the API exposes one. */
   crowdLevel?: CrowdLevel;
+  /**
+   * The ride closed for good (`retiredKind === 'closed'` on the detail endpoint). Its badge says
+   * so instead of the live CLOSED, which is the one a ride comes back from: X2 read „Geschlossen"
+   * in the very post announcing that it will not reopen. A fact about the ride, not a reading, so
+   * the live overlay carries it through untouched.
+   */
+  closedPermanently?: boolean;
 }
 
 interface IndexedGeo {
@@ -111,7 +118,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
             href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
             status: park.status,
             crowdLevel: park.currentLoad?.crowdLevel ?? park.analytics?.statistics?.crowdLevel,
-            avgWaitTime: park.analytics?.statistics?.avgWaitTime,
+            avgWaitTime: park.analytics?.statistics?.avgWaitTime ?? undefined,
             operatingAttractions: park.analytics?.statistics?.operatingAttractions,
             totalAttractions: park.analytics?.statistics?.totalAttractions,
             // Schedule data flows straight from the geo API. ParkCard reads
@@ -249,6 +256,7 @@ export const resolveAttraction = cache(
       currentWaitTime,
       status,
       crowdLevel: detail?.currentLoad?.crowdLevel,
+      ...(detail?.retiredKind === 'closed' && { closedPermanently: true }),
     };
   }
 );

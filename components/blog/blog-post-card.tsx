@@ -31,7 +31,8 @@ export function BlogPostCard({
 }: BlogPostCardProps) {
   const locale = useLocale() as Locale;
 
-  const author = resolveAuthor(post.frontmatter.author, locale).name;
+  const { name: authorName, shortName } = resolveAuthor(post.frontmatter.author, locale);
+  const author = shortName ?? authorName;
   const categoryPath = post.frontmatter.category ?? '';
   const lastSegment = categoryPath.split('/').filter(Boolean).pop() ?? '';
   const categoryLabel = categoryPath

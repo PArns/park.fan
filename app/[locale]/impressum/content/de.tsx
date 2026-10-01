@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
@@ -81,7 +80,7 @@ export function ImpressumDE() {
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Externe Links</h2>
         <p className="mb-4">
-          Die Webseite enthält sogenannte „externe Links" (Verlinkungen) zu anderen Webseiten, auf
+          Die Webseite enthält sogenannte „externe Links“ (Verlinkungen) zu anderen Webseiten, auf
           deren Inhalt der Anbieter dieser Webseite keinen Einfluss hat. Für diese fremden Inhalte
           übernimmt der Anbieter keine Haftung oder Gewähr.
         </p>

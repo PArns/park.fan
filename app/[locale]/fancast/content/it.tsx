@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
@@ -49,7 +50,7 @@ const LIVE_LABELS: FancastLiveLabels = {
   moreAccurate: 'più preciso',
   topTitle: 'Dove Fancast è stato più preciso di recente',
   topIntro:
-    'Le attrazioni le cui previsioni recenti sono state più vicine al tempo di attesa reale: scostamento medio in minuti, in diretta dal modello.',
+    'Le attrazioni le cui previsioni recenti sono state più vicine al tempo di attesa misurato: scostamento medio in minuti, in diretta dal modello.',
   colAttraction: 'Attrazione',
   colPark: 'Parco',
   colError: 'Errore medio',
@@ -80,7 +81,7 @@ const FAQ = [
   {
     question: 'Posso usare Fancast per un parco e un giorno precisi?',
     answer:
-      'Sì. Ogni pagina di parco su park.fan ha un calendario di affluenza che ti mostra, per ogni giorno pubblicato, una previsione verde, gialla o rossa: da Europa-Park a Phantasialand, passando per Efteling e Walt Disney World. Ricevi inoltre previsioni orarie dei tempi di attesa per le singole attrazioni.',
+      'Sì. Ogni pagina di parco su park.fan ha un calendario di affluenza con una previsione verde, gialla o rossa per ogni giorno pubblicato: da Europa-Park a Phantasialand, passando per Efteling e Walt Disney World. Ricevi inoltre previsioni orarie dei tempi di attesa per le singole attrazioni.',
   },
   {
     question: 'Quali dati usa Fancast?',
@@ -88,7 +89,7 @@ const FAQ = [
       'Tempi di attesa in diretta e storici da oltre 200 parchi, calendari scolastici e dei giorni festivi (anche delle regioni vicine), previsioni meteo, orari di apertura, eventi speciali e andamenti stagionali. Da questo mix nascono i livelli di affluenza giornalieri e le previsioni orarie dei tempi di attesa.',
   },
   {
-    question: 'Perché un parco mostra «Nessuna previsione»?',
+    question: 'Perché alcuni parchi hanno «Nessuna previsione»?',
     answer:
       'Fancast valuta un parco solo quando ci sono abbastanza dati operativi: almeno una trentina di giorni di apertura. I parchi nuovissimi o aperti di rado non hanno ancora questa base. Allora lì compare «Nessuna previsione» invece di un numero tirato a indovinare.',
   },
@@ -105,20 +106,21 @@ export function ContentIT() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Fancast è il nostro modello di previsione, la parte di park.fan che vuole sapere già oggi
+          Fancast è il nostro modello di previsione, la parte di park.fan che calcola già oggi
           quanto sarà lunga la coda sabato. Il nome l’abbiamo trovato senza un’agenzia
           pubblicitaria, e si vede: <strong>fan</strong> come in park.
-          <strong>fan</strong>, <strong>cast</strong> come in fore<strong>cast</strong>. Un
-          bollettino meteo per le code, solo senza il colonnello davanti alla cartina.
+          <strong>fan</strong>, <strong>cast</strong> come in fore<strong>cast</strong>.
         </Lead>
         <P>
-          Previsioni che nessuno controlla le sa fare qualunque oroscopo. Fancast invece va
-          all’interrogazione ogni giorno, e la pagella è appesa su questa pagina, sotto gli occhi di
-          tutti.
+          Fancast va all’interrogazione ogni giorno, e la pagella è appesa su questa pagina, sotto
+          gli occhi di tutti.
         </P>
         <Highlight>
           Ogni previsione viene confrontata il giorno dopo con il tempo di attesa misurato. Il
-          risultato compare nella sezione successiva come MAE, RMSE e MAPE, anche nei giorni no.
+          risultato compare nella sezione successiva come{' '}
+          <GlossaryTermLink termId="mae">MAE</GlossaryTermLink>,{' '}
+          <GlossaryTermLink termId="rmse">RMSE</GlossaryTermLink> e{' '}
+          <GlossaryTermLink termId="mape">MAPE</GlossaryTermLink>, anche nei giorni no.
         </Highlight>
       </div>
 
@@ -127,12 +129,12 @@ export function ContentIT() {
         id="note"
         index="01"
         kicker="Il voto in pagella"
-        title="Quanto è bravo davvero Fancast?"
+        title="Quanto è bravo Fancast?"
         icon={Gauge}
       >
         <P>
-          Questi voti arrivano in diretta dal modello, non da una cartella stampa. Cambieranno con
-          il prossimo riaddestramento domattina, quindi meglio non incorniciarli.
+          Questi voti arrivano in diretta dal modello e cambieranno con il prossimo riaddestramento
+          domattina, quindi meglio non incorniciarli.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -149,9 +151,9 @@ export function ContentIT() {
         icon={Database}
       >
         <PG>
-          Chi frequenta i parchi lo sa: un ponte piovoso di ottobre e un sabato di vacanza assolato
-          di luglio sono due sport diversi. Un modello deve impararlo, e per questo Fancast legge
-          sei fonti contemporaneamente:
+          Un ponte piovoso di ottobre e un sabato di vacanza assolato di luglio sono due sport
+          diversi. Un modello deve impararlo, e per questo Fancast legge sei fonti
+          contemporaneamente:
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Tempi di attesa in diretta" delay={0}>
@@ -163,8 +165,7 @@ export function ContentIT() {
             I gitanti olandesi non consultano il calendario scolastico tedesco.
           </IngredientCard>
           <IngredientCard icon={CloudSun} title="Meteo" delay={120}>
-            La probabilità di pioggia e la temperatura piegano le previsioni a breve termine. Il
-            sole fa uscire tutti di casa, la pioggia continua li rimanda sul divano.
+            La probabilità di pioggia e la temperatura piegano le previsioni a breve termine.
           </IngredientCard>
           <IngredientCard icon={PartyPopper} title="Eventi e stagione" delay={0}>
             Halloween, vacanze estive, ponti, una novità alla sua prima estate: i soliti sospetti di
@@ -180,9 +181,8 @@ export function ContentIT() {
           </IngredientCard>
         </IngredientGrid>
         <P>
-          Da questo minestrone il modello ricava due piatti: una{' '}
-          <strong>previsione oraria dei tempi di attesa</strong> per le singole attrazioni e un{' '}
-          <strong>voto di affluenza giornaliero</strong> per l’intero parco.
+          Da qui il modello ricava una <strong>previsione oraria dei tempi di attesa</strong> per le
+          singole attrazioni e un <strong>voto di affluenza giornaliero</strong> per l’intero parco.
         </P>
       </SectionShell>
 
@@ -220,22 +220,21 @@ export function ContentIT() {
           badge={<CrowdLevelBadge level="very_high" />}
         >
           Parco compatto, poche attrazioni di punta, e tutti vogliono Taron. Si riempie prima che il
-          chiosco spilli la prima birra. Fancast lo sa e dipinge la giornata dall’arancione al
-          rosso. Il calendario di affluenza nella pagina del parco ti propone allora un martedì,
-          quando potrai fare Taron più volte di fila invece di sospirare guardandolo dal vialetto.
+          chiosco spilli la prima birra, e Fancast dipinge quindi la giornata dall’arancione al
+          rosso. Nel calendario di affluenza della pagina del parco trovi allora un martedì in cui
+          fare Taron più volte di fila.
         </SplitFigure>
         <SplitFigure
           src="/media/efteling/baron-1898.jpg"
           alt="Baron 1898 a Efteling"
           kicker="Efteling · martedì piovoso di novembre"
-          title="La dritta segreta che il modello già mette in conto"
+          title="Il giorno di pioggia che il modello già mette in conto"
           badge={<CrowdLevelBadge level="low" />}
         >
           Il giorno che chi pianifica a naso evita è proprio quello che Fancast colora di verde:
-          poche vacanze, tempo pessimo, code corte. I calzini bagnati sono in omaggio. Il guaio di
-          ogni dritta segreta è che funziona solo finché non l’hanno letta tutti. Per questo il
-          modello mette in conto da sé la probabilità di pioggia di quel giorno preciso, invece di
-          affidarsi al folklore.
+          poche vacanze, tempo pessimo, code corte. Una dritta così funziona solo finché non l’hanno
+          letta tutti. Per questo il modello mette in conto da sé la probabilità di pioggia di quel
+          giorno preciso, invece di affidarsi al folklore.
         </SplitFigure>
       </SectionShell>
 
@@ -248,9 +247,8 @@ export function ContentIT() {
         icon={RefreshCw}
       >
         <P>
-          Il trucco più importante è emozionante più o meno quanto lavarsi i denti. Fancast si
-          riaddestra <strong>una volta al giorno</strong>, alle 06:00 UTC. Quello che ieri è
-          successo nel parco, dal mattino dopo sta dentro la previsione.
+          Fancast si riaddestra <strong>una volta al giorno</strong>, alle 06:00 UTC. Quello che
+          ieri è successo nel parco, dal mattino dopo sta dentro la previsione.
         </P>
         <P>
           Viene messo alla prova soltanto su giorni che non ha <strong>mai visto</strong>. Tutto il
@@ -259,8 +257,7 @@ export function ContentIT() {
         <P>
           Fancast tiene anche d’occhio se sta <strong>andando alla deriva</strong>, cioè se la
           realtà gli sta lentamente sfuggendo. Una nuova versione del modello va in produzione solo
-          se batte la vecchia in un confronto diretto. Qui fa carriera solo chi è davvero più bravo,
-          cosa che non tutte le aziende possono dire.
+          se batte la vecchia in un confronto diretto.
         </P>
       </SectionShell>
 
@@ -300,7 +297,7 @@ export function ContentIT() {
             },
             {
               level: 'extreme',
-              text: 'Allerta massima. Sabato di vacanza in piena estate. Solo con strategia, resistenza e senso dell’umorismo.',
+              text: 'Allerta massima, come in un sabato di vacanza in piena estate. Solo con strategia, resistenza e senso dell’umorismo.',
             },
           ]}
         />
@@ -326,7 +323,7 @@ export function ContentIT() {
       >
         <P>
           Questa pagina è solo l’ufficio. Il lavoro vero Fancast lo fa in tutto il resto di
-          park.fan, e raramente si presenta:
+          park.fan:
         </P>
         <TouchpointGrid
           items={[
@@ -350,8 +347,8 @@ export function ContentIT() {
               title: 'Periodo migliore',
               body: (
                 <>
-                  i giorni feriali più tranquilli e i prossimi giorni-dritta, ricavati dagli stessi
-                  dati. Scopri il{' '}
+                  i giorni feriali più tranquilli e le prossime date con poca gente, ricavati dagli
+                  stessi dati. Scopri il{' '}
                   <Link href={`/${BEST_TIME_SEGMENTS.it}`}>periodo migliore per visitare</Link>.
                 </>
               ),
@@ -359,7 +356,7 @@ export function ContentIT() {
             {
               icon: LineChart,
               title: 'Previsione IA nel grafico dei tempi di attesa',
-              body: 'la linea tratteggiata che rivela le fasce orarie più convenienti di un’attrazione.',
+              body: 'la linea tratteggiata su cui leggi le fasce orarie più convenienti di un’attrazione.',
             },
             {
               icon: Sunrise,
@@ -371,8 +368,8 @@ export function ContentIT() {
               title: 'Nessuna previsione',
               body: (
                 <>
-                  invece di tirare a indovinare: i parchi con troppo pochi dati ricevono{' '}
-                  <CrowdLevelBadge level="unknown" /> invece di un numero inventato.
+                  i parchi con troppo pochi dati ricevono <CrowdLevelBadge level="unknown" /> invece
+                  di un numero inventato.
                 </>
               ),
             },

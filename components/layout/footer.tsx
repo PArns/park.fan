@@ -13,6 +13,7 @@ import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
+import { CHANGELOG_PATH } from '@/lib/changelog/paths';
 import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
@@ -43,7 +44,15 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
   const linkGroups: {
     key: string;
     heading: string;
-    items: { key: string; href: string; label: string; plain?: boolean; icon?: ReactNode }[];
+    items: {
+      key: string;
+      href: string;
+      label: string;
+      plain?: boolean;
+      icon?: ReactNode;
+      /** The target's language, where it is not the page's own. */
+      hrefLang?: string;
+    }[];
   }[] = [
     {
       key: 'content',
@@ -71,6 +80,19 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             ]
           : []),
         { key: 'glossary', href: glossaryPath, label: t('glossaryLink') },
+        /*
+          The changelog exists at `/en/changelog` only (`app/[locale]/changelog/page.tsx`), so
+          every locale links the English page, and the five other labels say so in their own
+          language. A plain <a> rather than the i18n `Link`: the target is in another locale,
+          and `/de/changelog` would only reach it through a 308.
+        */
+        {
+          key: 'changelog',
+          href: CHANGELOG_PATH,
+          label: t('changelog'),
+          plain: true,
+          hrefLang: 'en',
+        },
       ],
     },
     {
@@ -107,7 +129,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
       <div className="container mx-auto px-4 pt-8 pb-6 sm:py-12">
         <div className="grid gap-8 md:grid-cols-6">
           {/* Brand */}
-          <section className="space-y-3 sm:space-y-4 md:col-span-2">
+          <section className="@container space-y-3 sm:space-y-4 md:col-span-2">
             <Link
               href="/"
               /* Both halves are ink-tight artwork now, so the whole gap is in the class.
@@ -152,8 +174,12 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
               {t('description')}
             </p>
             <PreferredSourceButton />
+            {/* One row needs 293–313 px across the six locales (measured at 1280 px with the row
+                held to `nowrap`). Where the column is narrower than 20rem the links stack and the
+                bullets go: a wrapping row put a „•" at the end of a line at 320 px, and at 768 px
+                at the start of one. */}
             <nav
-              className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
+              className="text-muted-foreground flex flex-col items-start gap-1.5 text-sm max-sm:gap-0 @min-[20rem]:flex-row @min-[20rem]:flex-wrap @min-[20rem]:items-center @min-[20rem]:gap-1.5"
               aria-label={t('sections.resources')}
             >
               <a
@@ -166,7 +192,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
-              <span className="text-muted-foreground/60">•</span>
+              <span className="text-muted-foreground/60 hidden @min-[20rem]:inline">•</span>
               <a
                 href="https://github.com/PArns"
                 target="_blank"
@@ -177,7 +203,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
-              <span className="text-muted-foreground/60">•</span>
+              <span className="text-muted-foreground/60 hidden @min-[20rem]:inline">•</span>
               <a
                 href="https://arns.dev"
                 target="_blank"
@@ -454,7 +480,12 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 <FooterLinkGroup key={group.key} heading={group.heading}>
                   {group.items.map((item) =>
                     item.plain ? (
-                      <a key={item.key} href={item.href} className={footerLinkClass}>
+                      <a
+                        key={item.key}
+                        href={item.href}
+                        hrefLang={item.hrefLang}
+                        className={footerLinkClass}
+                      >
                         {item.icon}
                         {item.label}
                       </a>

@@ -7,7 +7,11 @@ import {
   buildAttractionTitle,
   buildAttractionDescription,
   buildAttractionFacts,
+  buildClosedRideDescription,
+  buildClosedRideTitle,
 } from '@/lib/seo/attraction-meta';
+import { formatClosedOn, getClosedRide, type ClosedRide } from '@/lib/parks/closed-ride';
+import { ClosedRidePage } from '@/components/parks/closed-ride-page';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
@@ -24,12 +28,14 @@ import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
+import { RideExposureLine } from '@/components/parks/ride-exposure-line';
 import { ChapterPanel } from '@/components/common/chapter-panel';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
+import type { ParkWithAttractions } from '@/lib/api/types';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { ParkBackground } from '@/components/parks/park-background';
@@ -107,6 +113,22 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   // API outage surfaces the maintenance page instead of a not-found title — same as the body.
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug);
+
+  // A ride that closed for good is not in the park payload but keeps its page — see
+  // `lib/parks/closed-ride.ts`. Same question the page body asks, answered once by `cache()`.
+  const closedRide =
+    park && !attraction
+      ? await catchNonFatal(getClosedRide(continent, country, city, parkSlug, attractionSlug))
+      : null;
+  if (park && closedRide) {
+    return closedRideMetadata({
+      locale: locale as Locale,
+      path: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      pathSegments: [locale, continent, country, city, parkSlug, attractionSlug],
+      park,
+      ride: closedRide,
+    });
+  }
 
   if (!attraction) {
     const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
@@ -221,6 +243,82 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
+/**
+ * Title, description and alternates for a ride that closed for good. Indexable like every ride
+ * page, with the canonical on itself: the point of keeping the page is to keep what the URL ranks
+ * for. The description is also the page's intro (`closedRideDescription`).
+ */
+async function closedRideMetadata({
+  locale,
+  path,
+  pathSegments,
+  park,
+  ride,
+}: {
+  locale: Locale;
+  path: string;
+  pathSegments: string[];
+  park: ParkWithAttractions;
+  ride: ClosedRide;
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'seo.attraction' });
+  const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
+  const attractionName = stripNewPrefix(ride.name);
+  const parkName = stripNewPrefix(park.name);
+  const phrase = { locale, articleDe: park.nameArticleDe };
+  const title = buildClosedRideTitle(attractionName, parkName, t, phrase);
+  const description = closedRideDescription(ride, park, locale, t);
+  const url = `${SITE_URL}/${locale}${path}`;
+
+  return {
+    title,
+    description,
+    ...buildOpenGraphMetadata({
+      locale,
+      title,
+      description,
+      url,
+      ogImageUrl: getOgImageUrl(pathSegments),
+      imageAlt: tImageAlt('attraction', {
+        ...parkArgs(locale, parkName, park.nameArticleDe),
+        attraction: attractionName,
+        park: parkName,
+      }),
+    }),
+    alternates: {
+      canonical: url,
+      languages: {
+        ...generateAlternateLanguages((l) => `/${l}${path}`),
+        'x-default': `${SITE_URL}/en${path}`,
+      },
+    },
+  };
+}
+
+/** The closed ride's description, shared by the metadata and the page's intro. */
+function closedRideDescription(
+  ride: ClosedRide,
+  park: ParkWithAttractions,
+  locale: Locale,
+  t: Parameters<typeof buildClosedRideDescription>[4]
+): string {
+  const weekdayPeak = ride.typicalWaits?.displayable
+    ? (ride.typicalWaits.weekday.typical ?? null)
+    : null;
+  return buildClosedRideDescription(
+    stripNewPrefix(ride.name),
+    stripNewPrefix(park.name),
+    formatClosedOn(ride.retiredAt, locale),
+    {
+      weekdayPeak,
+      manufacturer: ride.rideProfile?.manufacturer,
+      openedYear: ride.rideProfile?.openedYear,
+    },
+    t,
+    { locale, articleDe: park.nameArticleDe }
+  );
+}
+
 // FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write (the dominant
 // write-units source pre-#118 was prerendering every attraction × 6 locales). Cache Components is
 // off; this page reads the data-cached park snapshot (getParkByGeoPath, `fetch` next:revalidate,
@@ -275,7 +373,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     }
   }
 
-  if (!park || !attraction) {
+  if (!park) {
+    notFound();
+  }
+
+  // Not in the park payload: either a ride that closed for good, which keeps its page, or a 404.
+  // Asked only on this miss, so a live ride's render costs nothing extra.
+  const closedRide = attraction
+    ? null
+    : await getClosedRide(continent, country, city, parkSlug, attractionSlug);
+  if (!attraction && !closedRide) {
     notFound();
   }
 
@@ -283,7 +390,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
-  const attractionName = stripNewPrefix(attraction.name);
+  const attractionName = stripNewPrefix(attraction?.name ?? closedRide?.name ?? '');
   const parkName = stripNewPrefix(park.name);
 
   const tNav = await getTranslations('navigation');
@@ -303,6 +410,33 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   });
 
   const attractionUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
+
+  if (closedRide) {
+    return (
+      <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
+        <ClosedRidePage
+          locale={locale as Locale}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          attractionSlug={attractionSlug}
+          park={park}
+          ride={closedRide}
+          breadcrumbs={breadcrumbs}
+          currentPage={attractionCurrentPage}
+          url={attractionUrl}
+          ogImageUrl={getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug])}
+          description={closedRideDescription(closedRide, park, locale as Locale, tSeo)}
+        />
+      </RouteMessages>
+    );
+  }
+  // Unreachable — the two checks above leave a live attraction or a closed ride — but it is what
+  // narrows `attraction` for everything below.
+  if (!attraction) {
+    notFound();
+  }
 
   // The ride's own photo or nothing — `ParkBackground` renders null and the page
   // keeps its plain backdrop. Showing the park's picture here made a photo-less
@@ -569,6 +703,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     )}
                   </div>
                 )}
+                <RideExposureLine indoorOutdoor={attraction.indoorOutdoor} />
 
                 {/* Keyword-rich, server-rendered intro — crawlable topical text for
                   "{attraction} Wartezeit(en)" that the client-streamed live panel doesn't

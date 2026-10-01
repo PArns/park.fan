@@ -1,5 +1,5 @@
 ---
-title: 'EQT will Parques Reunidos verkaufen, und der Movie Park gehört dazu'
+title: 'EQT sucht einen Käufer für Parques Reunidos'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
 author: patrick
@@ -24,9 +24,9 @@ parkLinks:
   - parque-de-atracciones-de-madrid
 rideLinks: false
 coverImage:
-  src: /media/movie-park-germany/van-helsings-factory.jpg
-  alt: 'Die Tankstellenfassade von Van Helsing’s Factory im Movie Park. Links an der rostigen Wellblechwand steht, halb hinter Bäumen, „For Sale“.'
-  caption: 'Van Helsing’s Factory Anfang September. Das „For Sale“ an der Wellblechwand ist Kulisse, seit Donnerstag stimmt es trotzdem.'
+  src: /media/bobbejaanland/background.jpg
+  alt: 'Ein riesiger Gorilla mit roten Augen greift nach einem Bahnwagen voller Fahrgäste.'
+  caption: 'Bobbejaanland gehört wie der Movie Park zu Parques Reunidos. Der Park steht in Belgien.'
   credit: 'Patrick Arns'
 seo:
   title: 'Parques Reunidos wird verkauft: Movie Park, Bobbejaanland, Slagharen'
@@ -126,7 +126,7 @@ Mutterkonzern, dein Vertragspartner bleibt der Park.
 
 Auch am Saisonpass ändert der Verkauf nichts. Gold und Platin gelten für den Rest dieser Saison und die ganze Saison 2027, und in der Leistungsbeschreibung des Passes für 2027 stehen beim Movie Park schon je drei freie Eintritte in Bobbejaanland, Slagharen und im Weltvogelpark Walsrode, einer in Tropical Islands und je einer in weiteren europäischen Parks der Gruppe, genannt werden Mirabilandia und der Parque Warner. Die übrigen Angebote des Bonus Clubs für 2027 veröffentlicht der Park „zum Beginn der Saison 2027“. Weil der Konzern als Ganzes verkauft werden soll, bleiben die Parks der Gruppe auch nach einem Verkauf Schwesterparks.
 
-Wie der Park einen Eigentümerwechsel mitten in der Saison handhabt, zeigt Belantis. Die Liste für 2025 führte den Park bei Leipzig mit drei freien Eintritten, gültig bis 9. November, und daran änderte der Verkauf an die Compagnie des Alpes im April nichts. Erst auf der Liste für 2026 steht Belantis bei den Rabatten. Wer mit dem Gold-Pass für 2027 liebäugelt, muss wegen des Verkaufs also nicht warten. Ob sich bei den Partnerparks etwas ändert, ist frühestens eine Frage für 2028.
+Wie der Park einen Eigentümerwechsel mitten in der Saison handhabt, war 2025 bei Belantis zu sehen. Die Liste für 2025 führte den Park bei Leipzig mit drei freien Eintritten, gültig bis 9. November, und daran änderte der Verkauf an die Compagnie des Alpes im April nichts. Erst auf der Liste für 2026 steht Belantis bei den Rabatten. Wer mit dem Gold-Pass für 2027 liebäugelt, muss wegen des Verkaufs also nicht warten. Ob sich bei den Partnerparks etwas ändert, ist frühestens eine Frage für 2028.
 
 Seit der Übernahme 2010 hat Parques Reunidos in Bottrop mehrfach gebaut. Einen Monat danach legte der Parkchef den neuen Eigentümern die Idee für [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) vor, der Konzern gab fünf Millionen Euro frei, und 2011 eröffnete die Bahn. Eine 45 Meter hohe Achterbahn auf der Wiese direkt hinter dem Eingang, 2012 der Stadt vorgestellt, stoppte der Park im September desselben Jahres, offiziell wegen einer „Änderung in unserer Investitionsstrategie“. Auf dieser Fläche eröffnete 2017 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), die größte Bahn im Park. Danach kamen [Excalibur](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest) (2018) und die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) (2021). Die ganze Parkgeschichte steht im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
