@@ -2,7 +2,7 @@
 title: 'Phantasialand: tempi di attesa, consigli e il giorno perfetto, secondo un recidivo'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-25'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false
@@ -170,10 +170,12 @@ Di spazio per crescere, però, la famiglia ne ha poco. Il parco si batte per un
 ampliamento dal 2003, e a luglio 2026 la commissione urbanistica di Brühl ha
 avviato la procedura di pianificazione per circa 15 ettari presso la riserva
 naturale dell’Ententeich. Con questo non è approvato niente: prima arrivano le
-perizie su natura, traffico e protezione dalle piene, e una rete di ambientalisti
-prepara un’iniziativa popolare contro il progetto. Il parco non ha annunciato
-cosa ci costruirebbe; gli oppositori si aspettano un parco acquatico, un resort
-alberghiero e una sala eventi.
+perizie su natura, traffico e protezione dalle piene, e dal 28 settembre una
+rete di ambientalisti raccoglie firme per un’iniziativa popolare contro il
+progetto. Secondo il parco sono previsti tra l’altro un hotel resort con
+acquapark, attrazioni e teatri. Cosa ha pubblicato Phantasialand e com’è andata
+la disputa dal 2003 lo racconta [la nostra notizia sulla raccolta
+firme](/news/phantasialand-ampliamento-raccolta-firme).
 
 ## Gli headliner, e cosa ti fanno
 

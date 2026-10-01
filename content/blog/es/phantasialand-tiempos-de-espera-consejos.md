@@ -2,7 +2,7 @@
 title: 'Phantasialand: tiempos de espera, consejos y el día perfecto, según un reincidente'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-09-25'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false
@@ -166,13 +166,15 @@ tachado, como el taller de aviación delante de F.L.Y., por el que se pasa sin q
 despache nada.
 
 Sitio para crecer, eso sí, la familia tiene poco. El parque lleva desde 2003
-luchando por una ampliación, y en julio de 2026 la comisión de urbanismo de Brühl
-abrió el procedimiento urbanístico para unas 15 hectáreas junto a la reserva
-natural del Ententeich. Con eso no hay nada aprobado. Primero vienen estudios
-sobre naturaleza, tráfico y protección contra inundaciones, y una red de
-ecologistas prepara una iniciativa ciudadana en contra. El parque no ha anunciado
-qué construiría allí; los opositores cuentan con un parque acuático, un complejo
-hotelero y una sala de eventos.
+luchando por una ampliación, y en julio de 2026 la comisión de urbanismo de
+Brühl abrió el procedimiento urbanístico para unas 15 hectáreas junto a la
+reserva natural del Ententeich. Con eso no hay nada aprobado. Primero vienen
+estudios sobre naturaleza, tráfico y protección contra inundaciones, y desde el
+28 de septiembre una red de ecologistas recoge firmas para una iniciativa
+ciudadana en contra. Según el parque, se prevén entre otras cosas un hotel
+resort con aquapark, atracciones y teatros. Lo que Phantasialand ha publicado al
+respecto y cómo ha ido la disputa desde 2003 está en [nuestra noticia sobre la
+recogida de firmas](/news/phantasialand-ampliacion-recogida-de-firmas).
 
 ## Los headliners, y lo que te hacen
 
