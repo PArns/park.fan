@@ -67,7 +67,7 @@ Inhaber von Silber und Gold buchen über das ResortPass-Portal.
 ## Was offen ist und was nicht
 
 Der Park sagt selbst, dass nicht alle Attraktionen und Shows laufen, weil er
-sich noch auf den Saisonstart vorbereitet. Welche das sind, steht nirgends.
+sich noch auf den Saisonstart vorbereitet. Welche das sind, nennt der Park nicht.
 Die App zeigt die verfügbaren Attraktionen und die Showzeiten für den
 jeweiligen Tag, und für die zwei Wochen nennt die Seite keine eigenen
 Öffnungszeiten. An einzelnen Tagen bleibt der Park wegen Veranstaltungen

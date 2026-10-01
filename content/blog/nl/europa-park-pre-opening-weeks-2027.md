@@ -43,7 +43,7 @@ het seizoen: de Pre-Opening Weeks lopen van 7 tot en met 19 maart. Het
 zomerseizoen begint op 20 maart. Het park maakte dat op 17 september 2026
 bekend.
 
-Het voorbeeld is de Pre-Opening Day 2026, één zondag voor het seizoen. Die was
+Het park bouwt voort op de Pre-Opening Day 2026, één zondag voor het seizoen. Die was
 volgens het park een groot succes, en daarom zijn het nu twee weken.
 
 ## Wat een dag kost
@@ -66,7 +66,7 @@ houders van Silver en Gold boeken via het ResortPass-portaal.
 ## Wat open is en wat niet
 
 Het park zegt zelf dat niet alle attracties en shows draaien, omdat het zich nog
-op de seizoensstart voorbereidt. Welke dat zijn, staat nergens. De app toont per
+op de seizoensstart voorbereidt. Welke dat zijn, zegt het park niet. De app toont per
 dag de beschikbare attracties en showtijden, en voor de twee weken noemt de
 pagina geen eigen openingstijden. Op enkele dagen is het park door
 evenementen van derden helemaal dicht; de sluitingsdagen staan in de kalender op
@@ -87,15 +87,12 @@ de sluitingsdagen. In die twee weken valt maar één volledig weekend.
 
 ## Voor wie het loont
 
-Het park maakt reclame met kortere wachttijden. Gemeten hebben we in maart nog
-niets, dus hoe druk het wordt kunnen we niet zeggen.
+Het park maakt reclame met kortere wachttijden. In maart hebben we nog niets gemeten, dus we kunnen niet zeggen hoe druk het wordt.
 
 Het loont waarschijnlijk als je zonder een bepaalde attractie in gedachten komt
 en gewoon goedkoop naar het park wilt, doordeweeks of met overnachting. Zoek je
 in maart gericht één attractie of show, kijk dan eerst in de app of wacht tot
-20 maart. Tickets voor het zomerseizoen zijn te koop vanaf 10 november 2026. Hoe
-de wachttijden in het hoogseizoen eruitzien, staat in de
-[Europa-Park-gids](/blog/europa-park-wachttijden-tips).
+20 maart. Tickets voor het zomerseizoen zijn te koop vanaf 10 november 2026. De wachttijden in het hoogseizoen staan in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 [Europa-Park](ref:europa-park?full)
 

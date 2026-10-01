@@ -41,8 +41,7 @@ seo:
 first time in 2027: the Pre-Opening Weeks run from 7 to 19 March. The summer
 season begins on 20 March. The park announced it on 17 September 2026.
 
-The model is the Pre-Opening Day 2026, a single Sunday before the season. By the
-park's account it was a complete success, so now there are two weeks.
+It follows the Pre-Opening Day 2026, a single Sunday before the season. The park says it was a complete success, so now it's two weeks.
 
 ## What a day costs
 
@@ -62,8 +61,7 @@ through the ResortPass portal.
 
 ## What's open and what isn't
 
-The park says itself that not every attraction and show will run, because it's
-still getting ready for the season. Which ones is stated nowhere. The app shows
+The park itself says not every attraction and show will run, because it's still getting ready for the season. It doesn't say which. The app shows
 the available attractions and show times for each day, and the page gives no
 separate opening hours for the two weeks. On a few days the park is shut
 entirely for third-party events; the closing days are in the calendar on the
@@ -90,9 +88,7 @@ can't say how busy it will be.
 It should pay off if you arrive with no particular ride in mind and just want a
 cheap day in the park, on a weekday or with an overnight stay. If you're after
 one specific ride or show in March, check the app first or wait until 20 March.
-Tickets for the summer season go on sale on 10 November 2026. What waits look
-like in high season is in the
-[Europa-Park guide](/blog/europa-park-wait-times-tips).
+Tickets for the summer season go on sale on 10 November 2026. The [Europa-Park guide](/blog/europa-park-wait-times-tips) covers waits in high season.
 
 [Europa-Park](ref:europa-park?full)
 
