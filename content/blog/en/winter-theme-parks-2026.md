@@ -2,7 +2,6 @@
 title: 'Theme parks in winter: who opens in December and who can’t afford to'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

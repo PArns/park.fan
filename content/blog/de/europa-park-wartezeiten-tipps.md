@@ -2,7 +2,6 @@
 title: 'Europa-Park: Deutschlands größter Park, und wo all die Leute stecken'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

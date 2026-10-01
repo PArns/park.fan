@@ -2,7 +2,6 @@
 title: 'Disneyland Paris: two parks, and of course the small one has the long queues'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

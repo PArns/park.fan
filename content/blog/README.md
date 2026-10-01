@@ -45,7 +45,7 @@ YAML block at the very top of the file, between `---` fences.
 title: 'park.fan is live — and we're writing now, too'   # required
 translationKey: welcome-to-park-fan-blog                 # share across locales
 date: '2026-05-20'                                       # required, YYYY-MM-DD
-updatedAt: '2026-05-22'                                  # optional
+updatedAt: '2026-05-22'                                  # optional, only for new content (below)
 author: patrick                                          # key from authors.json (see §2.1)
 mode: published                                          # published | hidden | draft
 featured: true                                           # promote in listings/feeds
@@ -69,6 +69,12 @@ seo:
   canonical: 'https://…'                                 # optional override
 ---
 ```
+
+`updatedAt` is what the site calls new: the header's blog panel and the homepage strips sort by it,
+the panel prints it as „Aktualisiert …“, and it is `dateModified` and `<lastmod>`. Set it when the
+post gets new content (new dates, parks, figures, a corrected fact) and leave it alone for a wording
+pass, a prose-rule fix, a typo or a link. News never carries it. The rule:
+[`updatedAt` is for new content](../../docs/rules/updated-at-is-for-new-content.md).
 
 ### 2.1 Authors
 

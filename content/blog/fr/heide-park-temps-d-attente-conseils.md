@@ -2,7 +2,6 @@
 title: 'Heide Park : Colossos tout en bois, et autour les premières allemandes s’enchaînent'
 translationKey: heide-park-guide
 date: '2026-09-20'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

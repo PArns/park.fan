@@ -2,7 +2,6 @@
 title: 'L’art d’attendre : pourquoi on fait « volontiers » la queue pour certaines attractions'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

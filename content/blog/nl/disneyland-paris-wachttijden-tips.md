@@ -2,7 +2,6 @@
 title: 'Disneyland Paris: twee parken, en uitgerekend het kleine heeft de lange rijen'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

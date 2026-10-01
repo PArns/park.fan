@@ -2,7 +2,6 @@
 title: 'The Art of Waiting: Why We (Gladly) Queue for Some Rides'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

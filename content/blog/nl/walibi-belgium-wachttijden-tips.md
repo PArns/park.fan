@@ -2,7 +2,6 @@
 title: 'Walibi Belgium: de Walibi waar niemand aan denkt, en de hoogste van de Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

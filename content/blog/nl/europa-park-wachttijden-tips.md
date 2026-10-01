@@ -2,7 +2,6 @@
 title: 'Europa-Park: Duitslands grootste park, en waar al die mensen blijven'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

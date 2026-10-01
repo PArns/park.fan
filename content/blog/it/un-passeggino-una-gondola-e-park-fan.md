@@ -2,7 +2,6 @@
 title: 'Un passeggino, una gondola e mezzo milione di righe di codice'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

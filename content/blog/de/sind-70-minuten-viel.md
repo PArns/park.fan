@@ -2,7 +2,6 @@
 title: 'Wann 70 Minuten Wartezeit viel sind'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

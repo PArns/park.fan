@@ -2,7 +2,6 @@
 title: 'Een kinderwagen, een gondel en een half miljoen regels code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

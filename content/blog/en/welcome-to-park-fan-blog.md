@@ -2,7 +2,6 @@
 title: 'A Stroller, a Gondola and Half a Million Lines of Code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 excerpt: >-

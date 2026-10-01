@@ -2,7 +2,6 @@
 title: 'Walibi Holland : « hard gaan », Untamed et un champ où nageaient encore des poissons en 1957'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

@@ -2,7 +2,6 @@
 title: "Hansa-Park: half of Germany's fastest coaster lives on the Baltic"
 translationKey: hansa-park-guide
 date: '2026-09-22'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

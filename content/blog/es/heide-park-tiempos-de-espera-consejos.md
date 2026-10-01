@@ -2,7 +2,6 @@
 title: 'Heide Park: Colossos y los cuatro estrenos alemanes del parque'
 translationKey: heide-park-guide
 date: '2026-09-20'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false

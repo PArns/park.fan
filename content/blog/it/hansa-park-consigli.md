@@ -2,7 +2,6 @@
 title: 'Hansa-Park: le montagne russe più veloci della Germania stanno per metà sul Baltico'
 translationKey: hansa-park-guide
 date: '2026-09-22'
-updatedAt: '2026-09-25'
 author: patrick
 mode: published
 featured: false
