@@ -7,9 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Desde el 28 de septiembre, ecologistas de Brühl recogen firmas contra la
-  ampliación de Phantasialand en la reserva natural del Ententeich. El parque ha
-  publicado una página con lo que quiere construir y los estudios que paga. Uno
-  de ellos calcula qué pasa si el estanque desaparece.
+  ampliación de Phantasialand en la reserva natural del Ententeich. Ese mismo
+  día se descubrió en la web del parque una página con lo que quiere construir
+  allí y los estudios que paga. Entre ellos hay uno sobre las consecuencias para
+  el balance hídrico si el estanque desaparece.
 tags:
   - news
   - phantasialand
@@ -49,20 +50,29 @@ acuerdos con los que la comisión de urbanismo de la ciudad puso en marcha el 9
 de julio el procedimiento urbanístico para la ampliación. Para ello, la red
 necesita 2.536 firmas válidas antes del 9 de noviembre.
 
-El parque ha publicado en su web una página titulada «Standortsicherung»
-(asegurar el emplazamiento). No lleva fecha y está en la sección «Rechtliches»
-(aviso legal), junto a la declaración del parque sobre la ley alemana de
-diligencia en la cadena de suministro; desde la portada no hay ningún enlace.
-Usuarios del foro Coasterfriends la descubrieron el lunes por la tarde, el día
-en que empezó la recogida. En ella figura lo que el parque quiere construir y lo
-que deben examinar los expertos que paga. Según la WDR, Phantasialand no había
-respondido el lunes por la tarde a una consulta de la cadena sobre la
-iniciativa, y en la página de prensa del parque no hay ningún comunicado sobre
-la ampliación.
+Para quien vaya a visitar el parque, de momento no cambia nada. Phantasialand
+solo podrá construir en ese terreno cuando haya un plan urbanístico en vigor y
+el Land de Renania del Norte-Westfalia le haya transferido la parcela. Y la
+ciudad no empezó a trabajar en ese plan hasta julio.
 
 ## Qué quiere construir Phantasialand
 
-Así justifica la nueva página la ampliación:
+Lo que el parque tiene previsto está desde hace poco en su
+[propia web](https://www.phantasialand.de/de/), en una página titulada
+[«Standortsicherung»](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
+(asegurar el emplazamiento). Eso sí, hay que saber dónde buscarla. Está en la
+sección «Rechtliches» (aviso legal), justo al lado de la declaración del parque
+sobre la ley alemana de diligencia en la cadena de suministro. Desde la portada
+no hay ningún enlace a ella, y no lleva fecha. Usuarios del
+[foro Coasterfriends](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76)
+dieron con ella el lunes por la tarde, el primer día de la recogida de firmas.
+En la página de prensa del parque no hay ningún comunicado sobre la ampliación,
+y según la
+[WDR](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-erweiterung-bruehl-100.html),
+Phantasialand no había respondido el lunes por la tarde a una consulta de la
+cadena sobre la iniciativa.
+
+La justificación de la página es breve:
 
 > [!QUOTE]
 > En el futuro, solo seguirán siendo competitivos los parques de atracciones
@@ -76,77 +86,96 @@ Así justifica la nueva página la ampliación:
 >
 > Phantasialand en su página [«Standortsicherung»](https://www.phantasialand.de/de/rechtliches/standortsicherung/), consultada el 1 de octubre de 2026, traducido del alemán
 
-En unas 15 hectáreas al oeste del recinto actual, la página prevé «entre otras
-cosas un hotel resort con aquapark, atracciones, teatros, aparcamientos en
-altura y zonas verdes». Cuando el consejo regional de Colonia reservó el terreno
-para el parque en 2012, la memoria de la Bezirksregierung decía que «no están
-previstas nuevas atracciones en la zona de ampliación». Para la parte oeste se
-planeaban entonces un hotel resort con aquapark en 6,5 hectáreas, una sala de
-teatro y conciertos en 2,5, aparcamiento en 2,5 y jardines y zonas de juego en 3
-hectáreas. Ralf-Richard Kenter, apoderado de la dirección del parque, describió
-ese concepto en julio en el Kölner Stadt-Anzeiger como un «hotel resort con
-aquapark, incluidas atracciones clásicas de parque temático». En la nueva
-página, las atracciones aparecen como un punto propio.
+En unas 15 hectáreas al oeste del recinto actual está previsto construir «entre
+otras cosas un hotel resort con aquapark, atracciones, teatros, aparcamientos en
+altura y zonas verdes». Las atracciones no entraban en los planes cuando el
+consejo regional de Colonia reservó el terreno para el parque en 2012. En la
+memoria de la Bezirksregierung figura la frase «no están previstas nuevas
+atracciones en la zona de ampliación». Lo previsto entonces era un hotel resort
+con aquapark en 6,5 hectáreas, una sala de teatro y conciertos en 2,5,
+aparcamiento en 2,5 y jardines y zonas de juego en 3 hectáreas. En julio,
+Ralf-Richard Kenter, apoderado de la dirección del parque, describió el concepto
+en el
+[Kölner Stadt-Anzeiger](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-phantasialand-will-konkurrenz-keine-einblicke-liefern-1315097)
+como un «hotel resort con aquapark, incluidas atracciones clásicas de parque
+temático». En la nueva página, las atracciones tienen un punto propio.
 
-La mayor parte de la página trata de los estudios, siete áreas con extractos de
-los encargos: naturaleza, especies protegidas, ruido, clima local, tráfico,
-suelo y agua. Los paga el parque. La ciudad de Brühl dirige el procedimiento y
-comprueba que los estudios cumplan los requisitos legales. El estudio climático,
-por ejemplo, compara con el modelo FITNAH-3D cómo circula el aire fresco en un
-día de verano muy caluroso, una vez en el «estado actual (2026)» y otra con el
-proyecto construido. En el suelo se analiza también la contaminación, porque el
-terreno, como el del parque, fue antes zona minera. Para el estudio de especies
-está prevista una «visita a posibles terrenos externos de reforestación».
+La mayor parte de la página la ocupan los estudios, con extractos de los
+encargos para siete áreas: naturaleza, especies protegidas, ruido, clima local,
+tráfico, suelo y agua. Los paga el parque. La ciudad de Brühl dirige el
+procedimiento y es también quien comprueba que los estudios cumplan los
+requisitos legales. Para el clima local, el modelo FITNAH-3D comparará cómo
+circula el aire fresco en un día de verano caluroso, una vez en el «estado
+actual (2026)» y otra con el proyecto terminado. En el suelo se analiza también
+la contaminación, porque el terreno, como el del parque, fue antes zona minera.
+Y para las especies protegidas está prevista una «visita a posibles terrenos
+externos de reforestación», es decir, a terrenos situados en otro lugar donde
+podría crecer bosque nuevo como compensación.
 
-En el apartado del agua hay una línea que alguien señaló en el foro
-Coasterfriends ese mismo lunes. El estudio analiza el Ententeich (literalmente,
-«estanque de los patos») «como parte del sistema hídrico» y también «los efectos
-en caso de eliminar la masa de agua». La página no dice si el estanque se
-quedará. En marzo de 2025, el SPD de Brühl puso como condición que una
-ampliación no alterara el biotopo. El acuerdo de coalición que firmó después con
-la CDU establece que el plan urbanístico se elaborará «teniendo en cuenta el
-Ententeich».
+## La línea sobre el Ententeich
 
-Lo que falta en la página es un plan. No hay mapa del terreno, ni cifra de
-inversión, ni calendario. En julio, Kenter dijo que los planos detallados podían
-dar a la competencia «información valiosa», y que el parque podría presentar un
-calendario aproximado «cuando se haya iniciado el procedimiento urbanístico».
-Está iniciado desde el 9 de julio. La página sí promete publicar «cifras, datos
-y hechos» y actualizarlos «de forma continua». Sobre empleo, solo menciona los
-1.800 trabajadores y aprendices actuales. En su comunicado tras la votación de
-la comisión en julio, el parque habló de unos 830 empleos adicionales. La misma
-cifra ya aparece en la memoria de la Bezirksregierung de 2013, entonces con 600
-puestos para todo el año. Una cifra de inversión la dio la empresa en 2015 al
-General-Anzeiger: 100 millones de euros.
+En el apartado del agua está la línea que alguien señaló en el foro
+Coasterfriends ese mismo lunes. El estudio tiene que analizar el Ententeich
+(literalmente, «estanque de los patos») «como parte del sistema hídrico», y
+además «los efectos en caso de eliminar la masa de agua». Sobre si el estanque
+se quedará, en la página no hay nada.
+
+El SPD de Brühl solo aceptó en marzo de 2025 una ampliación con condiciones, y
+una de ellas era que el biotopo no se alterara. El acuerdo de coalición que
+firmó después con la CDU establece que el plan urbanístico se elaborará
+«teniendo en cuenta el Ententeich».
+
+## Lo que falta en la página
+
+No hay mapa del terreno, ni cifra de inversión, ni calendario. Lo que más me
+habría gustado ver es un mapa, para comprobar si el Ententeich sigue apareciendo
+en los planos. En julio, Kenter dijo que los planos detallados podían dar a la
+competencia «información valiosa», y que el parque podría presentar un
+calendario aproximado «cuando se haya iniciado el procedimiento urbanístico». Se
+inició el 9 de julio. Al menos, el parque anuncia en la página que publicará
+«cifras, datos y hechos» y que los actualizará «de forma continua».
+
+Sobre empleo, la página solo menciona los 1.800 trabajadores y aprendices
+actuales. En su comunicado tras la votación de la comisión, en julio, el parque
+había hablado de unos 830 puestos adicionales. La misma cifra aparece ya en la
+memoria de la Bezirksregierung de 2013, y entonces 600 de ellos eran puestos
+para todo el año. La única cifra de inversión que he encontrado la dio la
+empresa en 2015 al General-Anzeiger: 100 millones de euros.
 
 ## Qué votaría Brühl
 
-La hoja de firmas pregunta si deben anularse los acuerdos de la comisión del 9
-de julio «sobre el inicio del procedimiento urbanístico para la ampliación de
+En la
+[hoja de firmas](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf)
+figura la pregunta de si deben anularse los acuerdos de la comisión del 9 de
+julio «sobre el inicio del procedimiento urbanístico para la ampliación de
 Phantasialand en la zona de la reserva natural del Ententeich». Pueden firmar
-los alemanes y los demás ciudadanos de la UE mayores de 16 años con residencia
-principal en Brühl. Las 2.536 firmas son el siete por ciento del censo
-electoral. La red recoge firmas en puestos, en tiendas y puerta a puerta, y la
-propia hoja pide devolver los formularios rellenados antes del 6 de noviembre.
+los alemanes y los demás ciudadanos de la UE a partir de los 16 años que tengan
+su residencia principal en Brühl. Las 2.536 firmas son el siete por ciento del
+censo electoral. La red recoge firmas en puestos, en tiendas y puerta a puerta,
+y quien tenga en casa una hoja ya rellenada debe devolverla antes del 6 de
+noviembre, según pone en la propia hoja.
 
 Si se reúnen suficientes firmas, el pleno municipal decide si la iniciativa es
 admisible. Si lo es y el pleno no asume su petición, la ciudad tiene que
 celebrar un referéndum local en un plazo de tres meses. La WDR señala que podría
 caer el año que viene, cuando Renania del Norte-Westfalia elige nuevo parlamento
 regional. El referéndum solo prospera si gana el sí y esos votos suman al menos
-el 20 por ciento del censo. Con 36.227 electores, la red calcula 7.246 votos.
+el 20 por ciento del censo. Con 36.227 electores, según la red, hacen falta
+7.246 votos.
 
-Está por ver si la pregunta es siquiera admisible. Según el código municipal del
-Land, los planes urbanísticos no pueden ser objeto de una iniciativa ciudadana,
-con una excepción: la decisión de iniciar un procedimiento de ese tipo. Si la
-excepción incluye también anular esa decisión es algo que la red deja abierto
-expresamente en su web.
+Está por ver si la pregunta es siquiera admisible. Según el código municipal de
+Renania del Norte-Westfalia, los planes urbanísticos no pueden someterse a una
+iniciativa ciudadana, salvo la decisión de iniciar un procedimiento de ese tipo.
+Si eso vale también para anular un acuerdo de inicio es algo que la red deja
+expresamente abierto en [su web](https://nsg-ententeich.de/buegerbegehren.html).
 
 La hoja recoge además la estimación de costes de la ciudad. Anular los acuerdos
 no generaría costes directos. La pérdida de impuestos sobre bienes inmuebles,
 actividades económicas y alojamiento «no se puede prever de forma fiable», y
 tras una ampliación, el impuesto de actividades económicas «probablemente
 incluso bajaría» los primeros años por las amortizaciones.
+
+## Quién está a favor y quién en contra
 
 > [!QUOTE]
 > Ahora la palabra la tienen los vecinos de Brühl. El futuro de un espacio
@@ -158,9 +187,10 @@ incluso bajaría» los primeros años por las amortizaciones.
 >
 > Christine Hölzmann, del Netzwerk NSG Ententeich, al empezar la recogida de firmas, en el [Kölner Stadt-Anzeiger del 28 de septiembre de 2026](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212), traducido del alemán
 
-Según el Kölner Stadt-Anzeiger, una docena de grupos forman parte de la red,
-entre ellos los Verdes y Die Linke, las organizaciones conservacionistas NABU y
-BUND y el Klimabündnis Brühl. La Initiative 50Tausend Bäume (50.000 árboles),
+Según el Kölner Stadt-Anzeiger, alrededor de una docena de grupos forman parte
+de la red, entre ellos los Verdes y Die Linke, las organizaciones
+conservacionistas NABU y BUND y el Klimabündnis Brühl. La Initiative
+[50Tausend Bäume](https://www.50tausendbaeume.de/ueber-uns) (50.000 árboles),
 fundada en 2007 por los planes de entonces en el bosque de la Ville, no
 participa. Su asociación de apoyo está reconocida desde 2018 como asociación
 medioambiental y puede ir a los tribunales. La iniciativa cree que una votación
@@ -176,13 +206,15 @@ políticamente como un sí.
 >
 > Initiative 50Tausend Bäume en su [posición sobre la iniciativa, septiembre de 2026](https://www.50tausendbaeume.de/files/pdf/presse/27092026_PM_50TsB_Statement_Buergerbegehren.pdf), traducido del alemán
 
-Hölzmann dijo al Brühler Schlossbote que, aunque la iniciativa fracase, las
-organizaciones ecologistas podrían recurrir más adelante el plan urbanístico en
-los tribunales. NABU Rhein-Erft ya ha anunciado que se reserva una demanda.
+Hölzmann dijo al
+[Brühler Schlossbote](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293)
+que, aunque la iniciativa fracase, las organizaciones ecologistas podrían
+recurrir más adelante el plan urbanístico en los tribunales. NABU Rhein-Erft ya
+ha anunciado que se reserva una demanda.
 
-Phantasialand se posicionó contra una iniciativa ciudadana ya en julio, cuando
-la red solo la había anunciado. En su comunicado tras la votación del 9 de
-julio, citado por t-online, dice:
+Phantasialand se opuso a la iniciativa cuando todavía no existía. En julio la
+red solo la había anunciado, y en el comunicado del parque tras la votación de
+la comisión, que cita t-online, se lee:
 
 > [!QUOTE]
 > No entiendo que se quiera parar el procedimiento urbanístico con una
@@ -195,11 +227,14 @@ julio, citado por t-online, dice:
 >
 > Ralf-Richard Kenter en el comunicado de Phantasialand de julio de 2026, citado por [t-online el 14 de julio de 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html), traducido del alemán
 
-Desde julio también hay vecinos que hacen campaña a favor. Eberhard Meyer fundó
-el «Bürgerforum Phantasialand Erweiterung», un foro ciudadano, y ve el
-procedimiento como el lugar donde «todos los datos se pondrán sobre la mesa».
-Georg Frey, presidente comarcal de la patronal hostelera Dehoga, ve en la
-ampliación una oportunidad para los hoteles y restaurantes de la región.
+Desde julio también hay vecinos de Brühl que hacen campaña a favor. Eberhard
+Meyer fundó el
+[«Bürgerforum Phantasialand Erweiterung»](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586),
+un foro ciudadano, y ve el procedimiento urbanístico como el lugar donde «todos
+los datos se pondrán sobre la mesa». Georg Frey, presidente comarcal de la
+patronal hostelera Dehoga,
+[ve en la ampliación](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-dehoga-kreischef-frey-befuerwortet-phantasialand-ausbau-1341610)
+una oportunidad para los hoteles y restaurantes de la región.
 
 ## Qué se acordó el 9 de julio
 
@@ -212,13 +247,13 @@ debía decidir ya el 18 de mayo. Tras las protestas remitió el asunto a la
 comisión, y Phantasialand criticó entonces «un retraso adicional que
 consideramos innecesario».
 
-Con el acuerdo no se aprueba nada. La administración debe elaborar primero un
-anteproyecto con un estudio de planificación, el procedimiento incluye una
+Con el acuerdo no se aprueba nada. La administración elabora primero un
+anteproyecto con una consultora de urbanismo, el procedimiento incluye una
 evaluación ambiental y aún no hay fechas para la exposición pública. Al mismo
-tiempo, la comisión anuló un acuerdo del 27 de agosto de 2015 sobre el mismo
-plan, que la ciudad nunca había publicado.
+tiempo, la comisión anuló un acuerdo de inicio del 27 de agosto de 2015 que la
+ciudad nunca había publicado.
 
-En el tipo de plan, la CDU y el SPD se apartan de su propio acuerdo de
+En el tipo de plan, la CDU y el SPD se apartaron de su propio acuerdo de
 coalición, que establece que una ampliación se haría «exclusivamente sobre la
 base de un plan urbanístico vinculado al proyecto». Un plan así fija pronto el
 uso, la ubicación y el tamaño de los edificios y ata el proyecto a un plazo. La
@@ -234,9 +269,9 @@ Berggeiststraße, la Phantasialandstraße (L 194) y la autopista A 553, pero en 
 sureste incluye terrenos que ya tienen plan urbanístico desde 2005.
 Phantasialand habla de unas 15 hectáreas en su nueva página y de 14,5 en su
 comunicado de julio. La reserva natural en sí mide 14,17 hectáreas según el
-gobierno regional, de ellas unas 12 de bosque y 2 de agua. La cifra de 18,5
-hectáreas sale del plan regional, con una parte este de 4 hectáreas que ya no
-está prevista.
+gobierno regional, de ellas unas 12 de bosque y 2 de agua. Y quien lea en algún
+sitio 18,5 hectáreas tiene la cifra del plan regional, que incluía una parte
+este de 4 hectáreas que ya no está prevista.
 
 ## El estanque sigue siendo del Land
 
@@ -245,21 +280,23 @@ Norte-Westfalia. El 15 de diciembre de 2021, con la ley de presupuestos de 2022,
 el parlamento regional autorizó cederla sin licitación a Löffelhardt Grundbesitz
 GmbH & Co. KG, a cambio de otros terrenos. Votaron a favor la CDU, el FDP y la
 AfD, en contra los Verdes, y el SPD se abstuvo. En enero de 2022, el ministerio
-de Medio Ambiente describió al parlamento el borrador del contrato. El Land
-recibe 38,82 hectáreas de bosque colindantes con el bosque público, y la
-propiedad solo cambia de manos, en ambas direcciones, cuando entre en vigor el
-plan urbanístico 06.01. Entonces el Land cobra además al menos el 30 por ciento
-del valor de mercado, unos dos millones de euros según el cálculo de entonces, y
-el parque paga desde ese momento 20.000 euros al año durante 20 años para
-educación ambiental. También renuncia a crecer al oeste de la L 194. Según el
-ministerio, la retirada de la protección de la reserva se decidirá «en el marco
-del procedimiento urbanístico».
+de Medio Ambiente
+[describió](https://www.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV17-6282.pdf)
+al parlamento cómo sería el contrato. El Land recibe 38,82 hectáreas de bosque
+colindantes con el bosque público. Pero la propiedad solo cambia de manos, en
+ambas direcciones, cuando entre en vigor el plan urbanístico 06.01. Entonces el
+Land cobra además al menos el 30 por ciento del valor de mercado, unos dos
+millones de euros según la estimación de entonces, y el parque paga 20.000 euros
+al año durante 20 años para educación ambiental. También renuncia a crecer hacia
+el oeste más allá de la L 194. Si la reserva natural deja de serlo se decidirá,
+según el ministerio, «en el marco del procedimiento urbanístico».
 
 La posesión del terreno ya la tiene Phantasialand. NABU Rhein-Erft quiso hacer
 allí su propio inventario de especies en el invierno de 2025/26, y la autoridad
 de protección de la naturaleza del distrito dio su visto bueno. La
 administración forestal del Land, sin embargo, remitió a la asociación a la
-sociedad gestora de Phantasialand como poseedora, y esta se negó. Según NABU,
+sociedad gestora de Phantasialand como poseedora, y esta se negó. Según
+[NABU](https://www.nabu-rhein-erft.de/aktionen-und-projekte/quo-vadis-phantasialand-1/),
 solo puede hacer inventarios allí el Kölner Büro für Faunistik, la consultora
 que contrató el parque.
 
@@ -280,29 +317,33 @@ ampliación propiamente dicha, la ciudad pidió a la Bezirksregierung el 23 de
 octubre de 2003 que modificara el plan regional.
 
 En 2006 la prensa local publicó un mapa en el que el parque se adentraba mucho
-en el bosque de la Ville. Según la Initiative 50Tausend Bäume, eran 300.000
-metros cuadrados, unos 50.000 árboles de bosque público, y de ahí viene su
-nombre; el grupo se formó en 2007. También la Bezirksregierung escribe que la
-empresa aspiraba al principio a unas 30 hectáreas. El consejo regional inició un
-procedimiento el 19 de septiembre de 2008, pero el bosque era del Land, y el
-Land no quería desprenderse de él. En noviembre de 2009, el ministro de Medio
-Ambiente Eckhard Uhlenberg (CDU) dijo al Westdeutsche Zeitung que no se quería
-«vender más bosque público». En el mismo artículo, Kenter se quejaba de que el
-parque estaba «desde hace años con la espalda contra la pared».
+en el bosque de la Ville. Según 50Tausend Bäume, eran 300.000 metros cuadrados,
+unos 50.000 árboles de bosque público, y de ahí viene el nombre de la
+iniciativa. También la Bezirksregierung escribe que la empresa aspiraba al
+principio a unas 30 hectáreas. El consejo regional inició un procedimiento el 19
+de septiembre de 2008, pero el bosque era del Land, y el Land no quería
+desprenderse de él. En noviembre de 2009, el ministro de Medio Ambiente Eckhard
+Uhlenberg (CDU) dijo al diario
+[Westdeutsche Zeitung](https://www.wz.de/panorama/der-traum-des-phantasialands_aid-31365561)
+que no se quería «vender más bosque público». En el mismo artículo, Kenter se
+quejaba de que el parque estaba «desde hace años con la espalda contra la
+pared».
 
 El consejo regional volvió a empezar en 2011, con un proyecto en dos fases. La
 primera abarcaba unas 20 hectáreas, 15 de ellas en la reserva del Ententeich y 5
 al este; la segunda, otras 10 hectáreas de bosque al oeste de la L 194. En la
 exposición pública de principios de 2012 llegaron 223 alegaciones, 167 de ellas
 críticas, además de 1.854 firmas en contra. BUND, NABU y la federación regional
-LNU pidieron «manos fuera del bosque público». En la sesión de debate del 28 de
-junio de 2012, todas las partes acordaron eliminar el bosque más allá de la
-L 194. Sobre el Ententeich no hubo acuerdo. La agencia regional de medio ambiente,
-la oficina de las organizaciones conservacionistas y el parque natural de
-Renania consideraron inaceptable la intervención. El 14 de diciembre de 2012 el
-consejo regional aprobó la modificación, con 14,5 hectáreas al oeste y 4 al
-este, vigente desde abril de 2013. Kenter ve ahí la razón por la que ahora está
-en juego precisamente el estanque:
+LNU lanzaron la consigna
+[«manos fuera del bosque público»](https://www.bund-nrw.de/presse/detail/news/phantasialand-haende-weg-vom-staatswald/).
+En la sesión de debate del 28 de junio de 2012, todas las partes acordaron
+eliminar el bosque más allá de la L 194. Sobre el Ententeich no hubo acuerdo. La
+agencia regional de medio ambiente, la oficina de las organizaciones
+conservacionistas y el parque natural de Renania consideraron inaceptable la
+intervención. El 14 de diciembre de 2012 el consejo regional aprobó la
+modificación, con 14,5 hectáreas al oeste y 4 al este, vigente desde abril
+de 2013. Kenter ve ahí la razón por la que ahora está en juego precisamente el
+estanque:
 
 > [!QUOTE]
 > Originalmente estaban previstas unas 30 hectáreas de ampliación. En el
@@ -326,18 +367,20 @@ partes de él a otro lugar.
 
 Después, todo volvió a depender del terreno. Al dar el visto bueno a la
 modificación en 2013, la cancillería del Land añadió indicaciones de las que
-salió una mediación externa entre el parque y sus opositores. Duró de diciembre
-de 2014 a marzo de 2015, con pescadores, hortelanos, la asociación vecinal
-BOVIVO, la iniciativa ciudadana contra la ampliación este, BUND, NABU y
-50Tausend Bäume. BUND se retiró la víspera de la última sesión, y el documento
-final recoge que las organizaciones conservacionistas rechazaban la ampliación
-«en la forma prevista actualmente». Vecinos y la iniciativa anunciaron allí que
-llevarían la ampliación este a los tribunales. El parque habló entonces en el
-General-Anzeiger de 19 hectáreas y de 3.000 a 4.000 camas nuevas, además de las
-unas 1.200 que ya tenía. Wilbert Spitz, de NABU, calificó la mediación de
-«fracaso estrepitoso». Hubo conversaciones sobre una venta con el ministro de
-Medio Ambiente Johannes Remmel (Verdes), pero según el ministerio no habían
-concluido antes de las elecciones regionales de 2017.
+salió una mediación externa entre el parque y sus opositores. De diciembre de
+2014 a marzo de 2015 se sentaron a la mesa con el parque pescadores, hortelanos,
+la asociación vecinal BOVIVO, la iniciativa ciudadana contra la ampliación este,
+BUND, NABU y 50Tausend Bäume. BUND se retiró la víspera de la última sesión. El
+[documento final](https://www.50tausendbaeume.de/files/pdf/foerderverein/Ergebnisdarstellung_Moderationsverfahren_Phantasialand_final_20150601.pdf)
+recoge que las organizaciones conservacionistas rechazaban la ampliación «en la
+forma prevista actualmente», y los vecinos y la iniciativa anunciaron allí que
+llevarían la ampliación este a los tribunales. El parque habló en el
+[General-Anzeiger](https://ga.de/region/koeln-und-rheinland/Erweiterung-in-der-Warteschleife-article1675327.html)
+de 19 hectáreas y de 3.000 a 4.000 camas nuevas, además de las unas 1.200 que ya
+había. Wilbert Spitz, de NABU, calificó la mediación de «fracaso estrepitoso».
+Hubo conversaciones sobre una venta con el ministro de Medio Ambiente Johannes
+Remmel (Verdes), pero según el ministerio no habían concluido antes de las
+elecciones regionales de 2017.
 
 Para entonces, el parque ya había perdido ante sus vecinos en los tribunales.
 Unos vecinos, apoyados por BOVIVO, demandaron por el ruido de la atracción
@@ -358,24 +401,21 @@ de «más que decepcionante».
 
 Phantasialand siguió construyendo todos estos años, pero en su terreno de
 siempre, con Klugheim y [Taron](ref:phantasialand/taron) en 2016 y Rookburgh y
-[F.L.Y.](ref:phantasialand/fly) en 2020. Kenter dijo en julio que el parque solo
-puede crear oferta nueva «construyendo encima y densificando», es decir,
-derribando otra cosa.
+[F.L.Y.](ref:phantasialand/fly) en 2020. Cómo creció el parque hasta sus unas 28
+hectáreas actuales, de la mina al pueblo de basalto de Klugheim, se explica en
+[nuestra guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+Kenter dijo en julio que el parque ya solo puede crear oferta nueva
+«construyendo encima y densificando», es decir, derribando otra cosa para
+hacerle sitio.
 
 En marzo de 2025, los afiliados del SPD de Brühl votaron a favor de una
-ampliación con condiciones. Tras las elecciones municipales de septiembre de
-2025, en las que la CDU fue la más votada con el 36,5 por ciento, la CDU y el
-SPD acordaron estudiar la ampliación «en principio de forma abierta», pero sin
-los huertos. Según Kenter, con ello la parte este del plan regional queda
-descartada. El parque quería instalar allí edutainment, zonas de juego y de
-pícnic, edificios de servicio y una guardería para el personal; ahora no hay
-sitio para ello.
-
-Para una visita al parque no cambia nada de momento. Phantasialand solo podrá
-construir en el terreno cuando el plan urbanístico esté en vigor y el Land le
-haya transferido la parcela. Cómo creció el parque hasta sus unas 28 hectáreas
-actuales, de la mina al pueblo de basalto de Klugheim, está en [nuestra guía de
-Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+ampliación con la condición de no alterar el Ententeich. Tras las elecciones
+municipales de septiembre de 2025, en las que la CDU fue la más votada con el
+36,5 por ciento, la CDU y el SPD acordaron estudiar la ampliación «en principio
+de forma abierta», pero sin los huertos. Según Kenter, con ello queda descartada
+la parte este del plan regional. El parque quería instalar allí edutainment,
+zonas de juego y de pícnic, edificios de servicio y una guardería para el
+personal, y ahora le falta el sitio para todo eso.
 
 [Phantasialand](ref:phantasialand?full)
 

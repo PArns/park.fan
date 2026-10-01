@@ -41,6 +41,7 @@ seo:
     - Phantasialand Standortsicherung
     - Bebauungsplan 06.01 Brühl
 ---
+
 Seit Montag, dem 28. September, sammelt das Netzwerk NSG Ententeich in Brühl
 Unterschriften gegen die Erweiterung des [Phantasialands](ref:phantasialand).
 Das Bürgerbegehren heißt „Brühler Waldentscheid“. Es richtet sich gegen die
@@ -224,14 +225,14 @@ eine Chance für Hotels und Gastronomie in der Region.
 
 ## Was am 9. Juli beschlossen wurde
 
-Der Ausschuss für Planung und Stadtentwicklung hat zwei Verfahren begonnen, die
-39. Änderung des Flächennutzungsplans und den Bebauungsplan 06.01 „Erweiterung
-Freizeitpark Phantasialand – westlich Berggeiststraße“. Dafür stimmten CDU, SPD
-und FDP/Volt, dagegen Grüne und Linke, die AfD enthielt sich. Vor dem Rathaus
-standen vorher rund 250 Menschen und demonstrierten. Eigentlich hätte schon der
-Rat am 18. Mai entscheiden sollen. Nach Protesten gab er die Sache an den
-Ausschuss ab, und das Phantasialand sprach damals von einer „aus unserer Sicht
-unnötigen weiteren Verzögerung“.
+Der Ausschuss für Planung und Stadtentwicklung hat zwei Verfahren begonnen,
+die 39. Änderung des Flächennutzungsplans und den Bebauungsplan 06.01
+„Erweiterung Freizeitpark Phantasialand – westlich Berggeiststraße“. Dafür
+stimmten CDU, SPD und FDP/Volt, dagegen Grüne und Linke, die AfD enthielt
+sich. Vor dem Rathaus standen vorher rund 250 Menschen und demonstrierten.
+Eigentlich hätte schon der Rat am 18. Mai entscheiden sollen. Nach Protesten
+gab er die Sache an den Ausschuss ab, und das Phantasialand sprach damals von
+einer „aus unserer Sicht unnötigen weiteren Verzögerung“.
 
 Genehmigt ist damit nichts. Die Verwaltung arbeitet mit einem Planungsbüro
 zunächst einen Vorentwurf aus, das Verfahren läuft mit Umweltprüfung, und
