@@ -161,7 +161,19 @@ export function MediaUpload({ vocabulary, newSession, seed, onDone, onClose }: P
   }, [seed, analyze]);
 
   const update = (index: number, patch: Partial<Assignment>) =>
-    setAssignments((all) => all.map((a, i) => (i === index ? { ...a, ...patch } : a)));
+    setAssignments((all) => {
+      const next = all.map((a, i) => (i === index ? { ...a, ...patch } : a));
+      const me = next[index];
+      if (!me.roles.includes('ride-card') || all[index].roles.includes('ride-card')) return next;
+      // One card per ride inside the batch as well. The save takes the role from
+      // photos already in the database, but two photos of this batch would both
+      // arrive claiming it, and the switch should not show two cards meanwhile.
+      return next.map((a, i) =>
+        i !== index && a.park === me.park && a.ride === me.ride && a.roles.includes('ride-card')
+          ? { ...a, roles: a.roles.filter((r) => r !== 'ride-card') }
+          : a
+      );
+    });
 
   const goNext = useCallback(() => {
     setAssignments((all) => all.map((a, i) => (i === cursor ? { ...a, done: true } : a)));

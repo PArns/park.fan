@@ -120,6 +120,7 @@
     "audit:media": "node scripts/audit-media.mjs",
     "check:media-urls": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-media-urls.mjs",
     "test:media-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-session.mjs",
+    "test:media-unique-roles": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-unique-roles.mjs",
     "check:blog-slugs": "node scripts/check-blog-slugs.mjs",
     "check:glossary-slugs": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-glossary-slugs.mjs",
     "check:glossary-content-date": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-glossary-content-date.mjs",

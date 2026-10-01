@@ -23,6 +23,7 @@ import {
 } from '../../blog-editor/_components/park-ride-picker';
 import { FocusEditor } from './focus-editor';
 import { Chip, Field, Notice, Section } from './panel-ui';
+import { RideCardToggle } from './ride-card-toggle';
 import { OpenInEditor } from '../../_ui/open-in-editor';
 import { fitForCommit } from '../../_lib/upload-transport';
 import { pickReplacement, replacementExt } from '../_lib/replace-drop';
@@ -706,18 +707,27 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
 
           <Section
             title="How it is used"
-            hint="Roles are declared, never derived — a unique role can only belong to one image."
+            hint="Roles are declared, never derived — a unique role can only belong to one image, and saving takes it from the one that had it."
           >
+            <RideCardToggle
+              park={draft.park}
+              ride={draft.ride}
+              self={row.id}
+              active={(draft.roles ?? []).includes('ride-card')}
+              onChange={() => toggleRole('ride-card')}
+            />
             <div className="flex flex-wrap gap-1.5">
-              {vocabulary.roles.map((role) => (
-                <Chip
-                  key={role}
-                  active={(draft.roles ?? []).includes(role)}
-                  onClick={() => toggleRole(role)}
-                >
-                  {role}
-                </Chip>
-              ))}
+              {vocabulary.roles
+                .filter((role) => role !== 'ride-card')
+                .map((role) => (
+                  <Chip
+                    key={role}
+                    active={(draft.roles ?? []).includes(role)}
+                    onClick={() => toggleRole(role)}
+                  >
+                    {role}
+                  </Chip>
+                ))}
             </div>
 
             <Field label={`Collection${movedTo ? ' — will be moved' : ''}`}>

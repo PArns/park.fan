@@ -7,12 +7,20 @@ import {
   SESSION_PREFIX,
   mediaRepo,
   mediaToken,
+  readSessionJson,
   resolveSession,
   sessionChanges,
+  sessionFiles,
   type MediaSession,
 } from '@/lib/admin/media-session';
 import { postFilePath, postsReferencing, rewriteReferences } from '@/lib/admin/media-references';
-import { getMediaImage } from '@/lib/media';
+import {
+  handOverUniqueRoles,
+  idOfSidecarPath,
+  uniqueClaims,
+  type RoleHolder,
+} from '@/lib/admin/media-unique-roles';
+import { getMediaImage, searchMedia } from '@/lib/media';
 import { getMediaText } from '@/lib/media/text';
 import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
 
@@ -36,6 +44,10 @@ import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
  *   - `update`   sidecar fields only (tags, park/ride, focal point, credit, text)
  *   - `move`     re-file an image into another collection or rename it
  *   - `replace`  swap the bytes — with or without sidecar edits in the same pass
+ *
+ * And one that is implied: a sidecar that claims a unique role (`ride-card` for
+ * a ride, `park-background` for a park) takes it from the image that held it, in
+ * the same pull request — see `@/lib/admin/media-unique-roles`.
  */
 
 export const runtime = 'nodejs';
@@ -154,7 +166,7 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
   };
 
   const { sidecar, text, issues } = normalizeSidecar(merged);
-  return { content: serializeSidecar(sidecar, text), issues };
+  return { content: serializeSidecar(sidecar, text), sidecar, issues };
 }
 
 export async function POST(req: Request) {
@@ -182,6 +194,8 @@ export async function POST(req: Request) {
     fromRef?: { collection: string; name: string };
     toRef: { collection: string; name: string; ext: string };
     sidecarContent: string;
+    /** Unique roles this sidecar claims — what other images may have to give up. */
+    claims: string[];
     issues: string[];
   }[] = [];
 
@@ -205,7 +219,7 @@ export async function POST(req: Request) {
       return bad(`"${name}.${ext}" is larger than ${(MAX_BYTES / 1024 / 1024).toFixed(1)} MB`);
     }
 
-    const { content, issues } = buildSidecarFile(op.id, op.sidecar);
+    const { content, sidecar, issues } = buildSidecarFile(op.id, op.sidecar);
     planned.push({
       op,
       from: existing
@@ -217,6 +231,7 @@ export async function POST(req: Request) {
       to: pathsFor(collection, name, ext),
       toRef: { collection, name, ext },
       sidecarContent: content,
+      claims: uniqueClaims(sidecar),
       issues,
     });
   }
@@ -408,6 +423,75 @@ export async function POST(req: Request) {
     );
   }
 
+  // ─── hand unique roles over ───────────────────────────────────────────────
+  // After the batch, so a batch that failed half-way has taken nothing from
+  // anybody, and in a try of its own: the photos above have landed, and a
+  // GitHub hiccup here must not report them as failed. The current holder is
+  // looked for in two places: the build-time manifest (what `main` says) and
+  // the session branch (photos added or retagged earlier in this same pull
+  // request, which the manifest cannot see yet). The branch wins where both
+  // describe the same file.
+  let handoverWarning: string | null = null;
+  const claims = new Set(planned.flatMap((p) => p.claims));
+  if (claims.size) {
+    try {
+      const written = new Set(
+        planned.flatMap((p) => [p.to.sidecar, ...(p.from ? [p.from.sidecar] : [])])
+      );
+      const holders = new Map<string, RoleHolder>();
+      for (const image of searchMedia()) {
+        holders.set(`${MEDIA_ROOT}/${image.id}.json`, image);
+      }
+      if (session) {
+        const ref = { owner, repo, baseBranch };
+        for (const file of await sessionFiles(octokit, ref, session)) {
+          if (!file.filename.startsWith(`${MEDIA_ROOT}/`) || !file.filename.endsWith('.json')) {
+            continue;
+          }
+          if (file.status === 'removed') {
+            holders.delete(file.filename);
+            continue;
+          }
+          const raw = await readSessionJson(octokit, ref, session, file.filename);
+          if (raw) holders.set(file.filename, normalizeSidecar(raw).sidecar);
+        }
+      }
+
+      const handovers = await handOverUniqueRoles({
+        claimants: planned.map((p) => ({
+          id: `${p.toRef.collection}/${p.toRef.name}`,
+          claims: p.claims,
+        })),
+        holders,
+        skip: written,
+        // The file as it stands on the branch, never the manifest's version.
+        read: async (path) => {
+          const { data } = await octokit.repos.getContent({ owner, repo, path, ref: branch });
+          const file = data as { content?: string };
+          return file.content
+            ? JSON.parse(Buffer.from(file.content, 'base64').toString('utf8'))
+            : null;
+        },
+        write: (path, content, roles) =>
+          put(
+            path,
+            Buffer.from(content).toString('base64'),
+            `media: ${roles.join(', ')} moves from ${idOfSidecarPath(path)}`
+          ),
+      });
+      for (const { from, roles, to } of handovers) {
+        summary.push(
+          `${roles.map((role) => `\`${role}\``).join(', ')} moved from \`${from}\` to \`${to}\``
+        );
+      }
+    } catch (e) {
+      handoverWarning =
+        `Saved, but the previous holder of ${[...claims].join(', ')} could not be updated ` +
+        `and still claims it: ${(e as Error).message}`;
+      summary.push(`**not moved:** ${handoverWarning}`);
+    }
+  }
+
   const issues = planned.flatMap((p) => p.issues);
 
   const lines = [
@@ -452,6 +536,7 @@ export async function POST(req: Request) {
         summary,
         issues,
         changes,
+        ...(handoverWarning ? { warning: handoverWarning } : {}),
       });
     }
 
@@ -478,6 +563,7 @@ export async function POST(req: Request) {
       summary,
       issues,
       changes,
+      ...(handoverWarning ? { warning: handoverWarning } : {}),
     });
   } catch (e) {
     // The commits landed; only the PR did not. Report the branch so the work is
