@@ -3,7 +3,7 @@
   "park": "europa-park",
   "ride": "voltron-nevera-powered-by-rimac",
   "area": "Croatia",
-  "roles": ["ride-card", "hero"],
+  "roles": ["hero"],
   "tags": ["coaster", "night", "outdoor", "photo", "ride"],
   "alt": {
     "de": "Ein Zug von Voltron Nevera fährt kopfüber durch eine Inversion, pink und blau angeleuchtet.",

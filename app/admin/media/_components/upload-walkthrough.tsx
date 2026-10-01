@@ -15,6 +15,7 @@ import { cn } from '@/lib/utils';
 import { FIELD_CLASS } from '../../_ui/controls';
 import type { AnalyzedFile, Assignment, Vocabulary } from '../_lib/types';
 import { Chip, Field, Section } from './panel-ui';
+import { RideCardToggle } from './ride-card-toggle';
 
 /**
  * Photos, one at a time, in the order they were dropped.
@@ -256,6 +257,43 @@ export function UploadWalkthrough({
             </div>
           </Section>
 
+          <Section
+            title="Roles"
+            hint="A unique role can only belong to one image; saving takes it from the one that had it."
+          >
+            <RideCardToggle
+              park={assignment.park}
+              ride={assignment.ride}
+              active={assignment.roles.includes('ride-card')}
+              onChange={(on) =>
+                onChange({
+                  roles: on
+                    ? [...assignment.roles, 'ride-card']
+                    : assignment.roles.filter((r) => r !== 'ride-card'),
+                })
+              }
+            />
+            <div className="flex flex-wrap gap-1.5">
+              {vocabulary.roles
+                .filter((role) => role !== 'ride-card')
+                .map((role) => (
+                  <Chip
+                    key={role}
+                    active={assignment.roles.includes(role)}
+                    onClick={() =>
+                      onChange({
+                        roles: assignment.roles.includes(role)
+                          ? assignment.roles.filter((r) => r !== role)
+                          : [...assignment.roles, role],
+                      })
+                    }
+                  >
+                    {role}
+                  </Chip>
+                ))}
+            </div>
+          </Section>
+
           <Section title="Tags">
             {vocabulary.facets.map((facet) => (
               <div key={facet.id}>
@@ -288,26 +326,6 @@ export function UploadWalkthrough({
                 </div>
               </div>
             ))}
-          </Section>
-
-          <Section title="Roles" hint="A unique role can only belong to one image.">
-            <div className="flex flex-wrap gap-1.5">
-              {vocabulary.roles.map((role) => (
-                <Chip
-                  key={role}
-                  active={assignment.roles.includes(role)}
-                  onClick={() =>
-                    onChange({
-                      roles: assignment.roles.includes(role)
-                        ? assignment.roles.filter((r) => r !== role)
-                        : [...assignment.roles, role],
-                    })
-                  }
-                >
-                  {role}
-                </Chip>
-              ))}
-            </div>
           </Section>
 
           <Section title="Filing & words">

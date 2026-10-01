@@ -109,7 +109,11 @@ A bare string is accepted wherever a localized object is (`"alt": "…"` means G
 
 Roles are declared, never derived. In one shared pool `background.jpg` and a
 Halloween snapshot of the same park sit side by side, and only the sidecar can tell
-them apart. The generator errors loudly if two images claim the same unique role.
+them apart. The generator warns if two images claim the same unique role, and
+`getRideImage` then shows whichever comes first. Saving from the admin moves a
+unique role instead of copying it (see
+[media database → a unique role moves](../../docs/features/media-database.md#a-unique-role-moves-when-another-photo-claims-it));
+by hand, take it off the old sidecar in the same commit.
 
 A ride can have any number of photos; `ride-card` picks which one represents it.
 Everything else still shows up under that ride.

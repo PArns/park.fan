@@ -509,6 +509,29 @@ silent: rewriting too little leaves a broken image, and rewriting too much
 repoints a _different_ picture — `taron-queue.jpg` starts with `taron`, and a
 pattern without a boundary would take it along.
 
+### A unique role moves when another photo claims it
+
+`ride-card` is one photo per ride and `park-background` one per park. The admin used to treat
+them like tags: ticking `ride-card` on a new photo added it there and left it on the old one, the
+generator warned about two cards, and `getRideImage` went on showing the first, which was the old
+photo. The first visitor photo of Voltron sat behind the card it was meant to replace that way.
+
+Now a save that claims a unique role takes it from the image that held it, in the same pull
+request (`handOverUniqueRoles`, `lib/admin/media-unique-roles.ts`, called from the commit
+endpoint). The holder is looked for in the build-time manifest and among the sidecars the open
+session has already changed, since a card picked earlier in the same PR is not in the manifest
+yet; the branch's version wins. The holder's sidecar is rewritten from the branch, never from the
+manifest, so an edit to it earlier in the session survives, and only the role line changes. The
+keys are the generator's own (`auditRoles`): a card claims its ride and every `alsoRides` slug.
+The PR log says what moved, e.g. `` `ride-card` moved from `europa-park/voltron-nevera-powered-by-rimac`
+to `europa-park/voltron-nevera-powered-by-rimac-461ea7` ``. When rewriting the holder fails, the
+photo is still saved and the response carries a `warning`.
+
+In the UI the role is a switch of its own, **Als Ride-Bild setzen** (`RideCardToggle`), in the
+detail panel and in the upload walkthrough right under the ride choice. It shows the current card
+as a thumbnail and says it will be replaced before you save. Inside one upload batch the switch
+moves between photos of the same ride as well. `pnpm test:media-unique-roles`.
+
 ### Visitor submissions come in through the upload dialog
 
 `MediaUpload` takes an optional `seed` (files plus per-file presets, a credit for the batch, and
