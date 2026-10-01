@@ -82,6 +82,13 @@ export interface MediaSidecar {
   /** Attraction slug, when the image shows one specific ride. */
   ride?: string | null;
   /**
+   * Further collection paths the image belongs to, besides the folder it sits in
+   * (`["toverland/halloween", "halloween"]`). `/` separates tree levels. The folder
+   * stays the default collection: without this field an image is in its folder and
+   * nowhere else. Files never move for it, which is the point.
+   */
+  collections?: string[];
+  /**
    * Further attraction slugs the same photo shows, and should answer for.
    *
    * For the pairs the API lists as two rides but the park built as one structure:
@@ -180,6 +187,8 @@ export interface MediaImage {
   ride: string | null;
   /** Additional rides this photo shows — see `MediaSidecar.alsoRides`. Empty when none. */
   alsoRides: string[];
+  /** Further collections beyond `collection` — see `MediaSidecar.collections`. Omitted when none. */
+  collections?: string[];
   area: string | null;
   title: string;
   tags: string[];

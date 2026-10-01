@@ -69,10 +69,8 @@ function indexes() {
         if (list) list.push(image);
         else byPark.set(image.park, [image]);
       }
-      const collection = byCollection.get(image.collection);
-      if (collection) collection.push(image);
-      else byCollection.set(image.collection, [image]);
     }
+    byCollection = groupByCollection(MEDIA_IMAGES);
   }
   return {
     byId: byId!,
@@ -81,6 +79,38 @@ function indexes() {
     byPark: byPark!,
     byCollection: byCollection!,
   };
+}
+
+/** The folder an image sits in plus every collection its sidecar adds, each once. */
+export function imageCollections(image: MediaImage): string[] {
+  return image.collections?.length
+    ? [image.collection, ...image.collections.filter((c) => c !== image.collection)]
+    : [image.collection];
+}
+
+/**
+ * True when `image` is in `collection` or anywhere below it. `toverland` covers an
+ * image filed under `toverland/halloween`, the way a folder would.
+ */
+export function inCollection(image: MediaImage, collection: string): boolean {
+  return imageCollections(image).some((c) => c === collection || c.startsWith(`${collection}/`));
+}
+
+/**
+ * Images by collection id, each under every collection it belongs to and in the
+ * order of `images`. An image in two collections is one row listed twice, never a
+ * copy.
+ */
+export function groupByCollection(images: readonly MediaImage[]): Map<string, MediaImage[]> {
+  const groups = new Map<string, MediaImage[]>();
+  for (const image of images) {
+    for (const id of imageCollections(image)) {
+      const list = groups.get(id);
+      if (list) list.push(image);
+      else groups.set(id, [image]);
+    }
+  }
+  return groups;
 }
 
 // ─── lookup ──────────────────────────────────────────────────────────────────
@@ -340,12 +370,7 @@ export function searchMedia(query: MediaQuery = {}): MediaImage[] {
     // `ride: null` asks for the park-only tier; a slug matches alsoRides too.
     if (ride !== undefined && (ride === null ? image.ride !== null : !showsRide(image, ride)))
       return false;
-    if (
-      collection &&
-      image.collection !== collection &&
-      !image.collection.startsWith(`${collection}/`)
-    )
-      return false;
+    if (collection && !inCollection(image, collection)) return false;
     if (role && !image.roles.includes(role)) return false;
     if (license && image.credit.license !== license) return false;
     if (unlicensedOnly && image.credit.license !== 'unknown') return false;
