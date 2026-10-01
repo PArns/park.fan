@@ -19,7 +19,7 @@ category: news
 parkLinks:
   - gardaland
 seo:
-  title: 'Gardaland Magic Halloween 2026: Preda, fechas y precios'
+  title: 'Gardaland Magic Halloween 2026: el laberinto Preda'
   description: >-
     Magic Halloween en Gardaland del 12 de septiembre al 1 de noviembre de 2026:
     51 días, el nuevo laberinto Preda con su edad recomendada y su precio, los
@@ -55,7 +55,7 @@ está en el reglamento de la página de Preda del parque.
 ## Fechas y precios
 
 La entrada de un día cuesta desde 44 € durante Magic Halloween. Con la oferta
-«One more day», una entrada de 1 día incluye un segundo acceso al parque que
+«One more day», una entrada de 1 día incluye un segundo acceso gratuito al parque que
 puedes usar hasta el 1 de noviembre.
 
 | Evento           | Cuándo                                         | Entrada    |
@@ -67,10 +67,10 @@ Los cinco viernes por la noche, zonas de zombis y personajes de miedo toman
 parte del parque. En la Halloween Party actúan siete artistas, y Gardaland aún
 no ha dicho cuáles.
 
-El programa incluye además un espectáculo de bienvenida, «Gardaland Halloween
-Mania», y decoración por todo el parque. El 3 de octubre, Lorenzo De Pretto hace
-un encuentro con el público en el Camelot Shop. La Boo Bag cuesta 13,90 € y te
-manda a siete paradas a llenar una bolsa de golosinas, y un maquillaje a elegir
+Según Il Giornale, el programa incluye un espectáculo de bienvenida, «Gardaland
+Halloween Mania». El 3 de octubre, Lorenzo De Pretto recibe
+al público en el Camelot Shop. La Boo Bag cuesta 13,90 € y te
+manda a siete paradas a conseguir golosinas, y un maquillaje a elegir
 entre ocho diseños cuesta 12,90 €.
 
 Daniela Bricola, Vice President de Gardaland Resort, explica el comienzo

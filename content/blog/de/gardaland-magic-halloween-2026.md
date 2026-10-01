@@ -7,7 +7,7 @@ mode: published
 featured: false
 excerpt: >-
   Magic Halloween läuft in Gardaland vom 12. September bis 1. November, im
-  Vorjahr waren es 31 Tage. Neu ist das Labyrinth Preda, das du schweigend
+  Vorjahr laut Il Giornale 31 Tage. Neu ist das Labyrinth Preda, das du schweigend
   durchqueren musst. Es kostet extra und ist ab 14 Jahren empfohlen.
 tags:
   - news
@@ -18,7 +18,7 @@ category: news
 parkLinks:
   - gardaland
 seo:
-  title: 'Gardaland Magic Halloween 2026: Preda, Termine und Preise'
+  title: 'Gardaland Magic Halloween 2026: das Labyrinth Preda'
   description: >-
     Magic Halloween in Gardaland vom 12. September bis 1. November 2026:
     51 Tage, das neue Labyrinth Preda mit Altersempfehlung und Ticketpreis, die
@@ -53,7 +53,7 @@ auf der Preda-Seite des Parks.
 
 Der Tageseintritt kostet während Magic Halloween ab 44 €. Mit der Aktion „One
 more day“ bekommst du zu einem 1-Tages-Ticket einen zweiten Parkeintritt
-dazu, den du bis zum 1. November einlösen kannst.
+gratis dazu, den du bis zum 1. November einlösen kannst.
 
 | Termin           | Wann                                            | Ticket  |
 | ---------------- | ----------------------------------------------- | ------- |
@@ -61,11 +61,11 @@ dazu, den du bis zum 1. November einlösen kannst.
 | Halloween Party  | 31. Oktober, Musik bis Mitternacht              | 29 €    |
 
 An den fünf Freitagabenden übernehmen Zombie Areas und Gruselfiguren einzelne
-Bereiche des Parks. Auf der Halloween Party treten sieben Künstler auf, wer, hat
-Gardaland noch nicht bekannt gegeben.
+Bereiche des Parks. Auf der Halloween Party treten sieben Künstler auf, deren Namen
+Gardaland noch nicht genannt hat.
 
-Zum Programm gehören eine Welcome Show namens „Gardaland Halloween Mania“ und
-Dekoration im ganzen Park. Am 3. Oktober ist Lorenzo De Pretto im
+Laut Il Giornale gehört eine Welcome Show namens „Gardaland Halloween Mania“
+zum Programm. Am 3. Oktober ist Lorenzo De Pretto im
 Camelot Shop zum Meet & Greet. Für 13,90 € gibt es die Boo Bag, mit der du in
 sieben Stationen Süßigkeiten sammelst, und für 12,90 € eine Schminke aus acht
 Motiven.

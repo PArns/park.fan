@@ -7,7 +7,7 @@ mode: published
 featured: false
 excerpt: >-
   Magic Halloween runs at Gardaland from 12 September to 1 November, up from 31
-  days last year. New is the maze Preda, which you have to walk through in
+  days last year, per Il Giornale. New is the maze Preda, which you have to walk through in
   silence. It costs extra and is recommended from age 14.
 tags:
   - news
@@ -18,7 +18,7 @@ category: news
 parkLinks:
   - gardaland
 seo:
-  title: 'Gardaland Magic Halloween 2026: Preda, dates and prices'
+  title: 'Gardaland Magic Halloween 2026: the Preda maze'
   description: >-
     Magic Halloween at Gardaland from 12 September to 1 November 2026: 51 days,
     the new maze Preda with its age recommendation and ticket price, the Friday
@@ -52,7 +52,7 @@ and wheelchair users. The full list is in the rules on the park’s Preda page.
 ## Dates and prices
 
 A day ticket costs from €44 during Magic Halloween. With the “One more day”
-offer, a 1-day ticket comes with a second park entry that you can use up to
+offer, a 1-day ticket comes with a free second park entry that you can use up to
 1 November.
 
 | Event            | When                                       | Ticket   |
@@ -60,14 +60,14 @@ offer, a 1-day ticket comes with a second park entry that you can use up to
 | Venerdì da Paura | 2, 9, 16, 23 and 30 October, 5 pm to 10 pm | from €29 |
 | Halloween Party  | 31 October, music until midnight           | €29      |
 
-On the five Friday evenings, zombie areas and scare actors take over parts of
+On the five Friday evenings, zombie areas and creepy characters take over parts of
 the park. Seven artists play at the Halloween Party, and Gardaland hasn’t said
 who yet.
 
-The programme also has a welcome show called “Gardaland Halloween Mania” and
-decorations throughout the park. On 3 October Lorenzo De Pretto does a meet and
+According to Il Giornale, the programme includes a welcome show called
+“Gardaland Halloween Mania”. On 3 October Lorenzo De Pretto does a meet and
 greet at the Camelot Shop. The Boo Bag costs €13.90 and sends you to seven
-stops to collect sweets, and a make-up session with a choice of eight designs
+stops to collect sweets, and make-up with a choice of eight designs
 costs €12.90.
 
 Daniela Bricola, Vice President of Gardaland Resort, explains the earlier start

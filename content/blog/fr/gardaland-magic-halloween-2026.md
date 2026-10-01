@@ -18,7 +18,7 @@ category: news
 parkLinks:
   - gardaland
 seo:
-  title: 'Gardaland Magic Halloween 2026 : Preda, dates et prix'
+  title: 'Gardaland Magic Halloween 2026 : le labyrinthe Preda'
   description: >-
     Magic Halloween à Gardaland du 12 septembre au 1er novembre 2026 : 51 jours,
     le nouveau labyrinthe Preda avec son âge conseillé et son prix, les vendredis
@@ -55,22 +55,21 @@ page Preda du parc.
 ## Dates et prix
 
 Le billet d’une journée coûte à partir de 44 € pendant Magic Halloween. Avec
-l’offre « One more day », un billet 1 jour donne droit à une seconde entrée au
+l’offre « One more day », un billet 1 jour donne droit à une seconde entrée gratuite au
 parc, utilisable jusqu’au 1er novembre.
 
 | Événement        | Quand                                      | Billet           |
 | ---------------- | ------------------------------------------ | ---------------- |
-| Venerdì da Paura | 2, 9, 16, 23 et 30 octobre, de 17 h à 22 h | à partir de 29 € |
+| Venerdì da Paura | 2, 9, 16, 23 et 30 octobre, de 17 h à 22 h | à partir de 29 € |
 | Halloween Party  | 31 octobre, musique jusqu’à minuit         | 29 €             |
 
 Les cinq vendredis soir, des zones de zombies et des personnages effrayants
 investissent une partie du parc. À la Halloween Party, sept artistes se
 produisent, et Gardaland n’a pas encore dit lesquels.
 
-Le programme comprend aussi un spectacle d’accueil, « Gardaland Halloween
-Mania », et des décors dans tout le parc. Le 3 octobre, Lorenzo De Pretto fait
-une rencontre au Camelot Shop. La Boo Bag coûte 13,90 € et t’envoie dans sept
-étapes pour remplir un sac de bonbons, et un maquillage au choix parmi huit
+Selon Il Giornale, le programme comprend un spectacle d’accueil,
+« Gardaland Halloween Mania ». Le 3 octobre, Lorenzo De Pretto rencontre le public au Camelot Shop. La Boo Bag coûte 13,90 € et t’envoie dans sept
+étapes pour récupérer des bonbons, et un maquillage au choix parmi huit
 motifs coûte 12,90 €.
 
 Daniela Bricola, Vice President de Gardaland Resort, explique ce début anticipé

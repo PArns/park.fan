@@ -7,7 +7,7 @@ mode: published
 featured: false
 excerpt: >-
   Magic Halloween loopt in Gardaland van 12 september tot 1 november, vorig jaar
-  waren het 31 dagen. Nieuw is de doolhof Preda, die je in stilte moet
+  waren het volgens Il Giornale 31 dagen. Nieuw is de doolhof Preda, die je in stilte moet
   doorlopen. Hij kost extra en wordt aanbevolen vanaf 14 jaar.
 tags:
   - nieuws
@@ -18,7 +18,7 @@ category: news
 parkLinks:
   - gardaland
 seo:
-  title: 'Gardaland Magic Halloween 2026: Preda, data en prijzen'
+  title: 'Gardaland Magic Halloween 2026: de doolhof Preda'
   description: >-
     Magic Halloween in Gardaland van 12 september tot 1 november 2026: 51 dagen,
     de nieuwe doolhof Preda met leeftijdsadvies en ticketprijs, de
@@ -33,14 +33,14 @@ seo:
 
 In [Gardaland](ref:gardaland) duurt Magic Halloween dit jaar 51 dagen, van
 12 september tot 1 november. Vorig jaar waren het er volgens Il Giornale 31.
-Nieuw is **Preda**, een doolhof dat je in stilte moet doorlopen.
+Nieuw is **Preda**, een doolhof die je in stilte moet doorlopen.
 
 ## De doolhof Preda
 
 Volgens het verhaal van het park zijn de Ravages uit het Black Hole gekomen,
 snelle buitenaardse wezens die door elk geluid worden aangetrokken. De aarde is
 hun jachtgebied en jij bent de prooi, in het Italiaans “preda”. Wie erdoor wil,
-loopt zacht door de doolhof. Het park geeft je drie regels mee: blijf niet
+loopt stil door de doolhof. Het park geeft je drie regels mee: blijf niet
 staan, kijk niet om, schreeuw niet.
 
 Preda kost extra. Je hebt een apart ticket nodig vanaf € 5,90 per persoon, dat
@@ -54,7 +54,7 @@ van het park.
 ## Data en prijzen
 
 Een dagticket kost tijdens Magic Halloween vanaf € 44. Met de actie “One more
-day” krijg je bij een ticket voor 1 dag een tweede toegang tot het park, die je
+day” krijg je bij een ticket voor 1 dag een gratis tweede toegang tot het park, die je
 kunt gebruiken tot 1 november.
 
 | Evenement        | Wanneer                                         | Ticket     |
@@ -66,12 +66,12 @@ Op de vijf vrijdagavonden nemen zombiezones en griezelfiguren delen van het
 park over. Op de Halloween Party treden zeven artiesten op, wie dat zijn heeft
 Gardaland nog niet bekendgemaakt.
 
-Verder zijn er een welkomstshow “Gardaland Halloween Mania” en decoratie in het
-hele park. Op 3 oktober is er een meet-and-greet met Lorenzo De Pretto in de
+Volgens Il Giornale hoort een welkomstshow “Gardaland Halloween Mania” bij het
+programma. Op 3 oktober is er een meet-and-greet met Lorenzo De Pretto in de
 Camelot Shop. De Boo Bag kost € 13,90 en stuurt je langs zeven stops om
 snoep te verzamelen, en een make-up met keuze uit acht ontwerpen kost € 12,90.
 
-Daniela Bricola, Vice President van Gardaland Resort, legt de vroegere start uit
+Daniela Bricola, Vice President van Gardaland Resort, legt de vervroegde start uit
 met de trend “Summerween”: Halloween is meer dan 31 oktober, zegt ze, en het
 publiek wil de sfeer langer beleven.
 
