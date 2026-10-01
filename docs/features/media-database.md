@@ -305,7 +305,8 @@ pointer crosses the icon or the text inside the zone.
 opening the editor: `pickReplacement` (`app/admin/media/_lib/replace-drop.ts`, shared with
 the editor's bar) refuses a multi-file drop and anything that is not an image, the tile
 shows the dropped picture with a "New file · not saved" label, and a bar above the grid
-sends every staged tile with one **Save** as one commit of `replace` operations. The
+sends every staged tile with one **Save**, one `replace` request per tile (a single body
+with several originals exceeds the host's request limit), all joining the session's PR. The
 operations carry no sidecar payload, so the server rebuilds each sidecar from the manifest
 and alt texts, focal points and tags stay as they were. Only a dragged _file_ lights a
 tile up. A touch screen has no drag event, so the editor remains the way there.
