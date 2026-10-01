@@ -260,7 +260,7 @@ Es gibt gute Seiten, die dir zeigen, wie lang die Warteschlange jetzt gerade ist
 Das können wir auch, alle fünf Minuten, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
-Deshalb rechnet das Modell rund ein halbes Jahr voraus, und im Kalender der
+Deshalb rechnen wir rund ein halbes Jahr voraus, und im Kalender der
 besten Tage wird daraus pro Tag eine Antwort: hin oder lieber nicht. Ob das
 Modell dabei richtig liegt, musst du mir nicht glauben, das steht auf der
 [Fancast-Seite](/fancast).

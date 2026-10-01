@@ -1,5 +1,5 @@
 ---
-title: 'De dagplanner rekent mee voordat je in de verkeerde rij staat'
+title: 'Je parkdag plannen voordat je in de verkeerde rij staat'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 updatedAt: '2026-09-25'
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Pretparkdag plannen: wachttijden inrekenen vóór de rij'
   description: >-
-    De dagplanner legt je attracties op een tijdlijn, rekent met voorspelde
-    wachttijden en looproutes en laat vooraf zien of je dag uitkomt. Zonder
-    account.
+    In de dagplanner zet je je attracties op een tijdlijn, met de voorspelde
+    wachttijden en de looproutes ertussen, en zie je vooraf of je dag uitkomt.
+    Zonder account.
   keywords:
     - pretparkdag plannen
     - dagplanner pretpark
@@ -65,8 +65,9 @@ lag.
 een dinsdag” sinds [eind augustus](/blog/is-70-minuten-veel). Of je dag zo
 eigenlijk wel uitkomt, stond nergens.
 
-Sinds begin september legt de [dagplanner](/dagplanner) je attracties op
-een tijdlijn en rekent hij de dag door voordat je vertrekt.
+Sinds begin september zet je in de [dagplanner](/dagplanner) je attracties op
+een tijdlijn, met de voorspelde wachttijden en de looproutes ertussen, en zie je
+voor vertrek of ze in je dag passen.
 
 ## Een dag is een volgorde, en die heeft een klok
 
@@ -94,8 +95,8 @@ dezelfde formule als ervoor.
 ## Tussen twee attracties ligt een weg, vaak om een meer heen
 
 Uit een wachttijdenfeed haal je dat er bij een attractie vijftig minuten staat,
-niet dat je er vanaf waar je nu staat niet meer op tijd komt. Dat rekent de
-overstap uit.
+niet dat je er vanaf waar je nu staat niet meer op tijd komt. Daar is de
+overstap voor.
 
 Gerekend wordt met de afstand tussen de coördinaten van de twee attracties, plus
 drie minuten om het station uit te komen en drie voor instappen en rijden waar
@@ -186,10 +187,11 @@ In een park met meer headliners dan er in een dag passen, beslist punt één
 bijna alles, en sinds 21 september gebeurt dat niet meer stilletjes. Past
 niet alles, dan opent elk van de twee knoppen eerst een assistent met drie
 stappen. Onder “Aanpassingen” staat wat ruimte zou maken, zoals de lunchpauze
-weglaten of inkorten tot een halfuur, en elke regel is doorgerekend en
-verschijnt alleen als hij echt een attractie extra in de dag krijgt. Onder
-“Prioriteit” staat de hele lijst in de volgorde waarin geschrapt zou worden, en
-je zet bovenaan wat je beslist niet wilt missen. Ook de attracties die je zelf
+weglaten of inkorten tot een halfuur. Voor elke regel plannen we de hele dag
+opnieuw met die aanpassing, en de regel verschijnt alleen als hij echt een
+attractie extra in de dag krijgt. Onder “Prioriteit” staat de hele lijst in de
+volgorde waarin geschrapt zou worden, en je zet bovenaan wat je beslist niet
+wilt missen. Ook de attracties die je zelf
 had ingepland, staan in die lijst, want hier beslis jij en niet de knop. Onder
 “Resultaat” staat met naam wat erbuiten blijft. In het plan komt pas iets te
 staan als je het overneemt.

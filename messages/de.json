@@ -2002,7 +2002,7 @@
   },
   "fancast": {
     "title": "Fancast: unser Prognosemodell für Wartezeiten",
-    "description": "Fancast sagt Andrang und Wartezeiten für jeden Tag voraus, den ein Park schon im Kalender hat, und rechnet danach öffentlich nach, wie weit es danebenlag."
+    "description": "Fancast sagt Andrang und Wartezeiten für jeden Tag voraus, den ein Park schon im Kalender hat. Wie weit es danebenlag, rechnen wir danach öffentlich nach."
   },
   "bestTime": {
     "title": "Beste Reisezeit für Freizeitparks",
@@ -2517,7 +2517,7 @@
     "page": {
       "kicker": "Tagesplaner",
       "title": "Deinen Parktag Bahn für Bahn planen",
-      "lead": "Leg fest, welche Bahnen du fahren willst, und der Planer rechnet mit den vorhergesagten Wartezeiten aus, ob der Tag so aufgeht. Alles liegt in deinem Browser, kein Konto nötig.",
+      "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob der Tag so aufgeht. Alles liegt in deinem Browser, kein Konto nötig.",
       "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
       "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste, Shows und Pausen dazwischen, Hinweis, wo dein Kind zu klein ist.",
       "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",

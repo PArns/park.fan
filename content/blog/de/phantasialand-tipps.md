@@ -295,10 +295,10 @@ Ein paar Faustregeln, die fast immer stimmen:
   dynamischen Ticketpreise sind auch Samstage außerhalb der Ferien oft gut voll.
 
 Bauchgefühl ist hier ein schlechter Ratgeber, sobald sich Ferienkalender, Wetter
-und Öffnungszeiten überlagern. Genau dafür ist park.fan gebaut. Der Kalender der
-besten Besuchstage rechnet das zusammen mit der Wartezeit-Historie des Parks in
-eine Andrangsstufe pro Tag um, von sehr niedrig bis extrem. Hier sind die
-ruhigsten kommenden Tage fürs Phantasialand:
+und Öffnungszeiten überlagern. Genau dafür ist park.fan gebaut. Wir rechnen das
+zusammen mit der Wartezeit-Historie des Parks in eine Andrangsstufe pro Tag um,
+von sehr niedrig bis extrem, und die steht im Kalender der besten Besuchstage.
+Hier sind die ruhigsten kommenden Tage fürs Phantasialand:
 
 ```best-days-widget slug=phantasialand
 

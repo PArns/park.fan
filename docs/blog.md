@@ -461,6 +461,20 @@ rastet auf fünf Minuten ein`, `Du gibst an, wie groß die kleinste Person ist`.
 The planner page read 8.8 per 1,000 words; `pnpm check:prose` warns above 6. The two compass posts
 are over it as well.
 
+**A document does no sums.** `Eines davon rechnet durch, was passiert, wenn der Ententeich
+verschwindet` closed the excerpt of a news post on 2026-10-01, in all six languages. The report it
+meant examines the effects of filling in a pond; it does no arithmetic, and the verb turned one
+line of a tender into a cliffhanger. The same move with a page or a tool as the subject: `Der
+Europa-Park-Guide rechnet das nach`, `Der Tagesplaner rechnet den Tag durch`, `rekent de widget
+hierboven dagelijks uit`, `the planner works out whether the day adds up`. Say who did the sums
+(`habe ich nachgerechnet`, `rechnen wir`) or what the document examines and where the result is.
+`rechnet … durch` and the five translations of _calculates what happens if_ (`works out what
+happens`, `rekent uit wat er`, `calcule ce qui se passe`, `calcula qué pasa`, `calcola cosa
+succede`) are an error in `pnpm check:prose`; a guide, page, calendar, widget, report or the planner
+as the subject of `rechnen`, `calculate` or `work out` is a warning. A forecast model computing a
+forecast is arithmetic and stays (`Das Modell rechnet diesen Tag stundengenau`), and so does a
+person (`ich habe das durchgerechnet`).
+
 ### 2.14 Saying what it does not do
 
 A negation is information when the reader expected the opposite: `Für den Hansa-Park kommt nie
@@ -1136,10 +1150,11 @@ The heading and dek tells (§5.6), the product as protagonist (§2.13), the nega
 the definition colons (§2.15), staccato (§2.10), the ellipsis and exclamation budgets (§4.5), a
 `[!QUOTE]` without a source line, Markdown in a plain-text field, the participial tail in six
 languages (§2.3), colon pivots (§2.7), English without contractions (§6), quip series in a caption
-collection (§5.2), an FAQ answer that repeats its question (§5.1), things that talk and false
-agency (§2.13), crowd opinions (§1.2) and travel-guide copy (§3.4) in all six languages, and a
-news title over 60 characters or in the `<Park>: <Fakt>, und <Pointe>` shape (§5.0) are counted
-by the script itself; a grep cannot see paragraphs.
+collection (§5.2), an FAQ answer that repeats its question (§5.1), things that talk, false
+agency and a document that does the sums (§2.13), crowd opinions (§1.2) and travel-guide copy
+(§3.4) in all six languages, and a news title over 60 characters or in the
+`<Park>: <Fakt>, und <Pointe>` shape (§5.0) are counted by the script itself; a grep cannot see
+paragraphs.
 
 What it still cannot see is the wink at the end of a paragraph (§2.17), the quiet teaser
 (§2.16), and whether a sentence claims anything at all (§1.7). That is the review pass.

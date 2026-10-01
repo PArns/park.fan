@@ -367,7 +367,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un itinéraire de visite qui ordonne les attractions pour réduire l’attente et faire le plus de manèges possible dans la journée.',
     definition:
-      'Un Touring Plan est un ordre de visite établi à l’avance (attractions, repas, déplacements dans le parc) pour réduire le temps d’attente total de la journée. Un bon Touring Plan tient compte de la façon dont le parc se remplit (quelles zones d’abord), de la capacité des attractions, de l’évolution des files, des horaires des spectacles et de la météo. Des sites comme TouringPlans.com publient des plans détaillés pour les grands parcs. Avec les temps d’attente en direct et le calendrier d’affluence de park.fan, on peut ajuster son plan en cours de journée.',
+      'Un Touring Plan est un ordre de visite établi à l’avance (attractions, repas, déplacements dans le parc) pour réduire le temps d’attente total de la journée. Qui prépare un bon Touring Plan tient compte de la façon dont le parc se remplit (quelles zones d’abord), de la capacité des attractions, de l’évolution des files, des horaires des spectacles et de la météo. Des sites comme TouringPlans.com publient des plans détaillés pour les grands parcs. Avec les temps d’attente en direct et le calendrier d’affluence de park.fan, on peut ajuster son plan en cours de journée.',
     alternateNames: ['Plan de Visite', 'Itinéraire', 'Plan de visite optimisé'],
 
     relatedTermIds: ['crowd-calendar', 'early-entry', 'rope-drop', 'wait-time'],

@@ -45,8 +45,8 @@ In autumn 2007 [Europa-Park](ref:europa-park) let actors with fake blood loose
 on its evening guests for the first time. It was called "Terenzi Horror Nights",
 after the pop singer Marc Terenzi, who ran it with Michael Mack until 2012.
 Since 2017 it has carried the name Traumatica, at first as "Horror Nights –
-Traumatica", which makes 2026 the tenth edition under that name. The motto adds the two together: "20 years of horror,
-10 years of Traumatica".
+Traumatica", which makes 2026 the tenth edition under that name. Both numbers
+are in the motto: "20 years of horror, 10 years of Traumatica".
 
 The preview is tonight, Wednesday 23 September. The official premiere is on
 Friday 25 September, and the season runs until Saturday 7 November.

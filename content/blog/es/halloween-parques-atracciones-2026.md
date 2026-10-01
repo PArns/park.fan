@@ -195,9 +195,10 @@ cazan a individuos concretos, y entre espectáculos pirotécnicos hay un estruen
 que se te queda en el oído en la A5, de vuelta a casa.
 
 De día, Rust es otro parque, y uno con colas sorprendentemente cortas para su
-tamaño. La [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos)
-hace el cálculo y explica de paso por qué una entrada de Traumatica en noviembre
-te cuesta la última hora dentro del parque.
+tamaño. He hecho las cuentas en la
+[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos), y allí
+explico también por qué una entrada de Traumatica en noviembre te cuesta la
+última hora dentro del parque.
 
 [Europa-Park](ref:europa-park?full)
 

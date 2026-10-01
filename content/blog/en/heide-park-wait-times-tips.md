@@ -449,8 +449,8 @@ there’s no winter season. The published calendar is on the
 
 On a Friday in September, well ahead of a Saturday in August. Weekday and month
 each move about the same amount on their own, and together they move more than
-either one alone. Which of the next operating days will be quietest is
-calculated daily by the widget further up.
+either one alone. Which of the next operating days will be quietest is in the
+widget further up, updated daily.
 
 ### Which coasters at Heide Park were German firsts?
 

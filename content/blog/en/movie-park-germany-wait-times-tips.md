@@ -435,8 +435,8 @@ At [Europa-Park](ref:europa-park) Sunday is even the emptiest day of all, but th
 the opposite reason: Rust lives off hotel guests who arrive on Saturday and
 leave on Sunday, as covered in the
 [Europa-Park guide](/blog/europa-park-wait-times-tips). At [Heide-Park](ref:heide-park), which resembles Movie Park
-structurally, the week looks almost identical, by the way, as the
-[Heide Park guide](/blog/heide-park-wait-times-tips) works out.
+structurally, the week looks almost identical, by the way. I did the sums in
+the [Heide Park guide](/blog/heide-park-wait-times-tips).
 
 ### The timetable from 2 September
 

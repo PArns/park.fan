@@ -149,13 +149,14 @@ d’attente de la veille, pendant que les adeptes du rope drop sont déjà sur
 l’autoroute.
 
 Par ailleurs, nous ne jetons aucun relevé. Les périodes
-anciennes sont compressées, pas éclaircies. Chaque analyse fixe
-ensuite sa propre profondeur, 365 jours pour « habituel » et « chargé », soit
-un tour d’année complet, et 70 seulement pour la recommandation rope drop, pour
-suivre la saison. Commencer à enregistrer la troisième année,
-c’est avoir un an d’historique la troisième année, et les deux précédentes sont
-perdues pour de bon. Notre série de mesures commence le 26 décembre 2025, et la
-colonne des jours mesurés du tableau plus haut compte à partir de là.
+anciennes sont compressées, pas éclaircies. Jusqu’où remonte chaque analyse,
+nous le fixons au cas par cas : pour « habituel » et « chargé », nous prenons
+les 365 derniers jours, soit un tour d’année complet, et pour la recommandation
+rope drop seulement les 70 derniers, pour suivre la saison. Commencer à
+enregistrer la troisième année, c’est avoir un an d’historique la troisième
+année, et les deux précédentes sont perdues pour de bon. Notre série de mesures
+commence le 26 décembre 2025, et la colonne des jours mesurés du tableau plus
+haut compte à partir de là.
 
 ## Là où nous préférons ne rien dire
 
@@ -184,12 +185,12 @@ de décembre à avril » décrirait la période où nous avons mesuré par hasa
 La version longue, avec les fiches du site à lire en parallèle, est désormais une
 page à part : [Comment fonctionne park.fan](/fr/comment-fonctionne-park-fan).
 Chapitre par chapitre, on y voit ce qu’affiche une fiche d’attraction, comment
-fonctionne l’échelle sous « habituel » et « chargé », comment le calendrier tient
-compte des vacances, comment le planificateur en fait une journée et les trois
-endroits où nous n’affirmons délibérément rien. Quatre situations de visite
-concrètes s’y trouvent aussi, de la famille pendant les vacances d’automne à la
-première fois dans un grand parc, en passant par l’abonné annuel qui se demande
-s’il y va encore ce soir.
+fonctionne l’échelle sous « habituel » et « chargé », comment les vacances
+entrent dans le calendrier, comment on en tire une journée dans le planificateur
+et les trois endroits où nous n’affirmons délibérément rien. Quatre situations
+de visite concrètes s’y trouvent aussi, de la famille pendant les vacances
+d’automne à la première fois dans un grand parc, en passant par l’abonné annuel
+qui se demande s’il y va encore ce soir.
 
 Et la prochaine fois que tu seras devant l’entrée à fixer l’affichage : regarde
 ce qui est normal sur cette attraction un mardi.

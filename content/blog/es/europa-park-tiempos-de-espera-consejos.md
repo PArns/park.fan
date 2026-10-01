@@ -597,12 +597,12 @@ domingo se vuelve a casa después del desayuno, y muchos ya ni entran al parque,
 porque el coche ya está cargado.
 
 Por eso el calendario escolar alemán, por sí solo, tampoco sirve como base de
-planificación para Rust. Nuestro calendario suma para este parque las
-vacaciones de la región francesa de Grand Est, es decir, de Alsacia, las de los
-cantones suizos de Argovia, Basilea-Ciudad y Basilea-Campiña y las de los
-estados federados vecinos de Baviera, Hesse y Renania-Palatinado. Quien mira
-solo Baden-Wurtemberg acaba tarde o temprano sorprendiéndose ante un martes
-lleno.
+planificación para Rust. Para este parque, en nuestro calendario tenemos en
+cuenta además las vacaciones de la región francesa de Grand Est, es decir, de
+Alsacia, las de los cantones suizos de Argovia, Basilea-Ciudad y Basilea-Campiña
+y las de los estados federados vecinos de Baviera, Hesse y Renania-Palatinado.
+Quien mira solo Baden-Wurtemberg acaba tarde o temprano sorprendiéndose ante un
+martes lleno.
 
 ### El viernes puente
 
@@ -769,9 +769,9 @@ llegar el sábado, ver Rulantica o el pueblo, y el domingo al parque.
 **Mirar solo las vacaciones escolares alemanas.** Buena parte del público no viene
 de Alemania. Un día de finales de octubre puede ser un día lectivo normal en
 Baden-Wurtemberg y aun así llenarse, porque en Francia están las vacaciones de
-Todos los Santos o en Basilea-Ciudad las de otoño. Nuestro calendario cuenta para
-este parque las vacaciones de Alsacia y de tres cantones suizos; el calendario de
-vacaciones de un solo estado federado no lo hace.
+Todos los Santos o en Basilea-Ciudad las de otoño. Para este parque, en nuestro
+calendario tenemos en cuenta las vacaciones de Alsacia y de tres cantones
+suizos; en el calendario de vacaciones de un solo estado federado no aparecen.
 
 **Tomar el martes por un día laborable tranquilo.** En nuestros datos es el día
 laborable más lleno, aunque por poco. Si de todas formas solo te encaja un día

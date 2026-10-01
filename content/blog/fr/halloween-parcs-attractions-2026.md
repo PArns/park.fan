@@ -200,9 +200,10 @@ individus, spectacles pyrotechniques et un vacarme qui vous reste dans
 l’oreille jusque sur l’A5 du retour.
 
 De jour, Rust est un autre parc, et un parc aux files étonnamment courtes pour
-sa taille. Le [guide Europa-Park](/blog/europa-park-temps-d-attente-conseils)
-fait le calcul et explique au passage pourquoi un billet Traumatica en novembre
-vous coûte la dernière heure dans le parc.
+sa taille. J’ai fait le calcul dans le
+[guide Europa-Park](/blog/europa-park-temps-d-attente-conseils), et j’y explique
+aussi pourquoi un billet Traumatica en novembre vous coûte la dernière heure
+dans le parc.
 
 [Europa-Park](ref:europa-park?full)
 

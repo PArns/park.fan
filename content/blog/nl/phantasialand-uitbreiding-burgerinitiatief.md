@@ -7,9 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Sinds 28 september verzamelen natuurbeschermers in Brühl handtekeningen tegen
-  de uitbreiding van Phantasialand in het natuurgebied Ententeich. Het park heeft
-  een pagina online gezet over wat het wil bouwen en welke onderzoeken het
-  betaalt. Eén daarvan rekent uit wat er gebeurt als de vijver verdwijnt.
+  de uitbreiding van Phantasialand in het natuurgebied Ententeich. Dezelfde dag
+  werd op de website van het park een pagina ontdekt over wat het daar wil bouwen
+  en welke onderzoeken het betaalt. Eén daarvan gaat over de gevolgen voor de
+  waterhuishouding als de vijver verdwijnt.
 tags:
   - news
   - phantasialand
@@ -41,27 +42,34 @@ seo:
     - Phantasialand bestemmingsplan Brühl
 ---
 
-Sinds maandag 28 september verzamelt het Netzwerk NSG Ententeich, een
-samenwerking van lokale groepen in Brühl, handtekeningen tegen de uitbreiding
-van [Phantasialand](ref:phantasialand). Het burgerinitiatief heet “Brühler
-Waldentscheid” (het bosbesluit van Brühl). Het moet ervoor zorgen dat de
-besluiten worden ingetrokken waarmee de planningscommissie van de stad op 9 juli
-de bestemmingsplanprocedure voor de uitbreiding heeft gestart. Daarvoor heeft
-het netwerk tot 9 november 2.536 geldige handtekeningen nodig.
+Sinds maandag 28 september verzamelt het Netzwerk NSG Ententeich in Brühl
+handtekeningen tegen de uitbreiding van [Phantasialand](ref:phantasialand). Het
+burgerinitiatief heet “Brühler Waldentscheid” (het bosbesluit van Brühl) en
+is gericht tegen de besluiten van 9 juli waarmee de planningscommissie van de
+stad de bestemmingsplanprocedure voor de uitbreiding heeft gestart. Het netwerk
+heeft daarvoor tot 9 november 2.536 geldige handtekeningen nodig.
 
-Het park heeft op zijn website een pagina gezet met de titel “Standortsicherung”
-(het veiligstellen van de locatie). Er staat geen datum op, ze hangt in de
-rubriek “Rechtliches” (juridisch), naast de verklaring over de Duitse ketenwet,
-en vanaf de homepage linkt niets ernaartoe. Op het forum van Coasterfriends viel
-ze maandagmiddag op, op de eerste dag van de inzameling. Op de pagina staat wat
-het park op het terrein wil bouwen en wat de deskundigen die het betaalt moeten
-onderzoeken. Volgens de WDR had Phantasialand tot maandagmiddag niet gereageerd
-op een vraag van de omroep over het burgerinitiatief, en op de perspagina van
-het park staat geen bericht over de uitbreiding.
+Voor een dagje park verandert dat voorlopig niets. Phantasialand kan op het
+terrein pas bouwen als er een bestemmingsplan geldt en de deelstaat de grond aan
+het park heeft overgedragen. Met dat plan is de stad in juli net begonnen.
 
 ## Wat Phantasialand wil bouwen
 
-Zo onderbouwt de nieuwe pagina de uitbreiding:
+Wat het park van plan is, staat sinds kort op zijn
+[eigen website](https://www.phantasialand.de/de/), op een pagina met de titel
+[“Standortsicherung”](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
+(het veiligstellen van de locatie). Je moet alleen wel weten waar ze staat. In
+de rubriek “Rechtliches” (juridisch) hangt ze direct naast de verklaring over de
+Duitse ketenwet, vanaf de homepage linkt niets ernaartoe, en een datum staat er
+niet op. Ze werd maandagmiddag opgemerkt op het
+[forum van Coasterfriends](https://coasterfriends.de/freizeitparkforum/index.php?threads/alles-zur-geplanten-erweiterung-phantasialand.4157/page-76),
+op de eerste dag van de inzameling. Op de perspagina van het park staat geen
+bericht over de uitbreiding, en volgens de
+[WDR](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-erweiterung-bruehl-100.html)
+had Phantasialand tot maandagmiddag niet gereageerd op een vraag van de omroep
+over het burgerinitiatief.
+
+De onderbouwing op de pagina is kort:
 
 > [!QUOTE]
 > Op termijn blijven alleen pretparken concurrerend die een aantrekkelijke
@@ -75,79 +83,95 @@ Zo onderbouwt de nieuwe pagina de uitbreiding:
 >
 > Phantasialand op zijn pagina [“Standortsicherung”](https://www.phantasialand.de/de/rechtliches/standortsicherung/), geraadpleegd op 1 oktober 2026, vertaald uit het Duits
 
-Op ongeveer 15 hectare ten westen van het huidige terrein moeten “onder meer een
-aquapark-hotelresort, attracties, theaters, parkeerdekken en groen” komen. Toen
-de regioraad van Keulen het terrein in 2012 voor het park reserveerde, stond in
-de toelichting van de Bezirksregierung dat “nieuwe attracties op het
-uitbreidingsterrein niet gepland” waren. Voor het westelijke deel waren toen een
-aquapark-hotelresort op 6,5 hectare, een theater- en concertzaal op 2,5,
-parkeerplaatsen op 2,5 en tuinen en speelplaatsen op 3 hectare voorzien.
-Ralf-Richard Kenter, gevolmachtigde van de directie van het park, beschreef dat
-concept in juli in de Kölner Stadt-Anzeiger als een “aquapark-hotelresort
-inclusief klassieke pretparkattracties”. Op de nieuwe pagina staan de attracties
-als apart punt.
+Op ongeveer 15 hectare ten westen van het huidige terrein moeten “onder meer
+een aquapark-hotelresort, attracties, theaters, parkeerdekken en groen” komen.
+Attracties waren niet voorzien toen de regioraad van Keulen het terrein in 2012
+voor het park reserveerde. In de toelichting van de Bezirksregierung staat dat
+“nieuwe attracties op het uitbreidingsterrein weliswaar niet gepland” zijn.
+Voorzien waren toen een aquapark-hotelresort op 6,5 hectare, een theater- en
+concertzaal op 2,5, parkeerplaatsen op 2,5 en tuinen en speelplaatsen op 3
+hectare. In juli beschreef Ralf-Richard Kenter, gevolmachtigde van de directie,
+dat concept in de
+[Kölner Stadt-Anzeiger](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-phantasialand-will-konkurrenz-keine-einblicke-liefern-1315097)
+als een “aquapark-hotelresort inclusief klassieke pretparkattracties”. Op de
+nieuwe pagina hebben de attracties een eigen punt.
 
-Het grootste deel van de pagina gaat over de onderzoeken: zeven vakgebieden, met
-fragmenten uit de opdrachtomschrijvingen, namelijk natuur, beschermde soorten,
-geluid, lokaal klimaat, verkeer, bodem en water. De kosten draagt het park. De
-stad Brühl leidt de procedure en controleert ook of de rapporten aan de
-wettelijke eisen voldoen. Het klimaatonderzoek vergelijkt bijvoorbeeld met het
-model FITNAH-3D hoe op een hete zomerdag de koele lucht stroomt, een keer in de
-“huidige toestand (2026)” en een keer met het project erbij. Bij de bodem gaat
-het ook om vervuiling, omdat het terrein, net als het park zelf, vroeger
-mijngebied was. Voor het soortenonderzoek staat een “terreinbezoek van mogelijke
-externe herbebossingsgebieden” gepland.
+De meeste ruimte gaat naar de onderzoeken, met fragmenten uit de
+opdrachtomschrijvingen voor zeven vakgebieden: natuur, beschermde soorten,
+geluid, lokaal klimaat, verkeer, bodem en water. Het park betaalt ze. De stad
+Brühl leidt de procedure en controleert ook of de rapporten aan de wettelijke
+eisen voldoen. Voor het lokale klimaat moet het model FITNAH-3D vergelijken hoe
+op een hete zomerdag de koele lucht stroomt, een keer in de “huidige toestand
+(2026)” en een keer met het project erbij. Bij de bodem gaat het ook om oude
+vervuiling, omdat het terrein, net als het park zelf, vroeger een afgraving was.
+En voor de beschermde soorten staat een “terreinbezoek van mogelijke externe
+herbebossingsgebieden” gepland, dus van terreinen elders waar ter compensatie
+nieuw bos zou kunnen groeien.
 
-Bij de waterhuishouding staat een regel waar op het Coasterfriends-forum nog
-dezelfde maandag iemand op wees. Het rapport onderzoekt de Ententeich
-(letterlijk “eendenvijver”) “als onderdeel van het waterhuishoudingssysteem” en
-ook “de gevolgen als het water wordt verwijderd”. Of de vijver moet blijven,
-zegt de pagina niet. De SPD in Brühl stelde in maart 2025 als voorwaarde dat het
-biotoop door een uitbreiding niet verandert. In het coalitieakkoord dat de
-partij daarna met de CDU sloot, staat dat het bestemmingsplan “rekening houdend
-met de Ententeich” moet worden opgesteld.
+## De zin over de Ententeich
 
-Wat op de pagina ontbreekt, is een plan. Er is geen kaart van het terrein, geen
-investeringsbedrag en geen tijdschema. Kenter zei in juli dat gedetailleerde
-plannen concurrenten “waardevolle inzichten” konden geven, en dat het park een
-globale planning kon voorleggen “zodra de bestemmingsplanprocedure gestart is”.
-Die is sinds 9 juli gestart. De pagina belooft wel om “cijfers, gegevens en
-feiten” te publiceren en “doorlopend” bij te werken. Over banen noemt ze alleen
-de huidige 1.800 medewerkers en leerlingen. In zijn verklaring na het
-commissiebesluit in juli sprak het park van ongeveer 830 extra banen. Hetzelfde
-getal staat al in de toelichting van de Bezirksregierung uit 2013, toen met 600
-banen voor het hele jaar daaronder. Een investeringsbedrag noemde het bedrijf in
-2015 aan de General-Anzeiger: 100 miljoen euro.
+Bij de waterhuishouding staat de zin waar iemand op het Coasterfriends-forum nog
+dezelfde maandag op wees. Het onderzoek moet de Ententeich (letterlijk
+“eendenvijver”) bekijken “als onderdeel van het waterhuishoudingssysteem”, en
+daarnaast “de gevolgen als het water wordt verwijderd”. Of de vijver moet
+blijven, staat nergens op de pagina.
+
+De SPD in Brühl stemde in maart 2025 alleen onder voorwaarden in met een
+uitbreiding, en een daarvan was dat het biotoop daarbij niet verandert. In het
+coalitieakkoord dat de partij daarna met de CDU sloot, staat dat het
+bestemmingsplan “rekening houdend met de Ententeich” moet worden opgesteld.
+
+## Wat er op de pagina ontbreekt
+
+Er is geen kaart van het terrein, geen investeringsbedrag en geen tijdschema.
+Vooral een kaart had ik graag gehad, eentje waarop te zien is of de Ententeich
+nog in de plannen voorkomt. Kenter zei in juli dat gedetailleerde plannen
+concurrenten “waardevolle inzichten” konden geven, en dat het park een globale
+planning kon voorleggen “zodra de bestemmingsplanprocedure gestart is”. Die
+procedure loopt sinds 9 juli. Wel kondigt het park op de pagina aan dat het
+“cijfers, gegevens en feiten” zal publiceren en “doorlopend” zal bijwerken.
+
+Over banen staat op de pagina alleen het aantal van nu, 1.800 medewerkers en
+leerlingen. In zijn verklaring na het commissiebesluit had het park in juli
+gesproken van ongeveer 830 extra banen. Hetzelfde getal staat al in de
+toelichting van de Bezirksregierung uit 2013, en daar waren 600 van die banen
+voor het hele jaar. Het enige investeringsbedrag dat ik heb gevonden, noemde het
+bedrijf in 2015 tegenover de General-Anzeiger: 100 miljoen euro.
 
 ## Waarover Brühl zou stemmen
 
-Op de handtekeningenlijst staat de vraag of de besluiten van de commissie van 9
-juli “over het starten van de bestemmingsplanprocedure voor de uitbreiding van
-Phantasialand in het natuurgebied Ententeich” moeten worden ingetrokken. Tekenen
-mogen Duitsers en andere EU-burgers vanaf 16 jaar met hun hoofdverblijf in
-Brühl. De 2.536 handtekeningen zijn zeven procent van de kiesgerechtigden. Het
-netwerk verzamelt bij kraampjes, in winkels en aan de deur. Volgens de lijst
-zelf moeten ingevulde formulieren uiterlijk 6 november terug zijn.
+Op de
+[handtekeningenlijst](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf)
+staat de vraag of de besluiten van de commissie van 9 juli “over het starten van
+de bestemmingsplanprocedure voor de uitbreiding van Phantasialand in het
+natuurgebied Ententeich” moeten worden ingetrokken. Tekenen mogen Duitsers en
+andere EU-burgers vanaf 16 jaar die hun hoofdverblijf in Brühl hebben. De 2.536
+handtekeningen zijn zeven procent van de kiesgerechtigden. Het netwerk verzamelt
+bij kraampjes, in winkels en aan de deur, en wie thuis een ingevulde lijst heeft
+liggen, moet die volgens wat erop staat uiterlijk 6 november inleveren.
 
-Komen er genoeg handtekeningen, dan stelt de gemeenteraad vast of het initiatief
+Zijn er genoeg handtekeningen, dan stelt de gemeenteraad vast of het initiatief
 toelaatbaar is. Is het dat en neemt de raad de eis niet over, dan moet de stad
-binnen drie maanden een referendum houden. De WDR wijst erop dat dat in het
-volgende jaar kan vallen, wanneer Noordrijn-Westfalen een nieuw
-deelstaatparlement kiest. Het referendum slaagt alleen als een meerderheid ja
-stemt en die ja-stemmen samen minstens 20 procent van de kiesgerechtigden zijn.
-Bij 36.227 kiesgerechtigden komt het netwerk uit op 7.246 stemmen.
+binnen drie maanden een referendum houden. De WDR wijst erop dat dat volgend
+jaar kan vallen, wanneer Noordrijn-Westfalen een nieuw deelstaatparlement kiest.
+Het referendum slaagt alleen als een meerderheid ja stemt en die ja-stemmen samen
+minstens 20 procent van de kiesgerechtigden zijn. Bij 36.227 kiesgerechtigden
+komt het netwerk uit op 7.246 stemmen.
 
-Of de vraag überhaupt is toegestaan, is nog open. Volgens de gemeentewet van de
-deelstaat kunnen bestemmingsplannen geen onderwerp van een burgerinitiatief
-zijn; de enige uitzondering is het besluit om zo’n procedure te starten. Of dat
-ook geldt voor het intrekken van zo’n besluit, laat het netwerk op zijn website
-uitdrukkelijk open.
+Of de vraag überhaupt is toegestaan, staat nog niet vast. Volgens de gemeentewet
+van de deelstaat kunnen bestemmingsplannen geen onderwerp van een
+burgerinitiatief zijn, alleen het besluit om zo’n procedure te starten. Of dat
+ook geldt voor het intrekken van zo’n besluit, laat het netwerk
+[op zijn website](https://nsg-ententeich.de/buegerbegehren.html) uitdrukkelijk
+open.
 
 Op de lijst staat ook de kostenraming van de stad. Directe kosten zou het
 intrekken van de besluiten niet veroorzaken. Gemiste onroerendgoed-, bedrijfs-
 en toeristenbelasting zijn “niet betrouwbaar te voorspellen”, en de
 bedrijfsbelasting zou na een uitbreiding de eerste jaren door afschrijvingen
 “waarschijnlijk zelfs dalen”.
+
+## Wie voor is en wie tegen
 
 > [!QUOTE]
 > Nu hebben de mensen in Brühl zelf het woord. Over de toekomst van een
@@ -159,13 +183,14 @@ bedrijfsbelasting zou na een uitbreiding de eerste jaren door afschrijvingen
 >
 > Christine Hölzmann van het Netzwerk NSG Ententeich bij de start van het burgerinitiatief, in de [Kölner Stadt-Anzeiger van 28 september 2026](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212), vertaald uit het Duits
 
-Volgens de Kölner Stadt-Anzeiger horen zo’n twaalf groepen bij het netwerk,
-waaronder de Groenen en Die Linke, de natuurorganisaties NABU en BUND en het
-Klimabündnis Brühl. Het Initiative 50Tausend Bäume (50.000 bomen), dat in 2007
-ontstond vanwege de plannen in het Villewoud van toen, doet niet mee. De
-bijbehorende vereniging is sinds 2018 erkend als milieuorganisatie en mag naar
-de rechter stappen. Het initiatief vindt een stemming de verkeerde weg, ook
-omdat een verloren referendum politiek als instemming kan worden uitgelegd.
+Volgens de Kölner Stadt-Anzeiger staan er zo’n twaalf groepen achter het
+netwerk, waaronder de Groenen en Die Linke, de natuurorganisaties NABU en BUND en
+het Klimabündnis Brühl. Niet van de partij is het Initiative
+[50Tausend Bäume](https://www.50tausendbaeume.de/ueber-uns) (50.000 bomen), dat
+in 2007 ontstond vanwege de toenmalige plannen in het Villewoud. De bijbehorende
+vereniging is sinds 2018 erkend als milieuorganisatie en mag naar de rechter
+stappen. Een stemming vindt het initiatief de verkeerde weg, ook omdat een
+verloren referendum politiek als instemming kan worden uitgelegd.
 
 > [!QUOTE]
 > Wij zijn van mening dat het voortbestaan van een natuurgebied niet volgens het
@@ -176,13 +201,15 @@ omdat een verloren referendum politiek als instemming kan worden uitgelegd.
 >
 > Initiative 50Tausend Bäume in haar [verklaring over het burgerinitiatief, september 2026](https://www.50tausendbaeume.de/files/pdf/presse/27092026_PM_50TsB_Statement_Buergerbegehren.pdf), vertaald uit het Duits
 
-Hölzmann zei tegen de Brühler Schlossbote dat milieuorganisaties ook na een
-mislukt burgerinitiatief later tegen het bestemmingsplan kunnen procederen. NABU
-Rhein-Erft heeft al aangekondigd zich een rechtszaak voor te behouden.
+Hölzmann zei tegen de
+[Brühler Schlossbote](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293)
+dat milieuorganisaties ook na een mislukt burgerinitiatief later tegen het
+bestemmingsplan kunnen procederen. NABU Rhein-Erft heeft zich al het recht
+voorbehouden om dat te doen.
 
-Phantasialand keerde zich al in juli tegen een burgerinitiatief, toen het
-netwerk er alleen nog een had aangekondigd. In de verklaring na het besluit van
-9 juli, geciteerd door t-online, staat:
+Phantasialand keerde zich tegen het burgerinitiatief toen dat er nog helemaal
+niet was. In juli had het netwerk het pas aangekondigd, en in de verklaring van
+het park na het commissiebesluit, die t-online citeert, staat:
 
 > [!QUOTE]
 > Ik heb geen begrip voor het stoppen van de bestemmingsplanprocedure door een
@@ -195,31 +222,33 @@ netwerk er alleen nog een had aangekondigd. In de verklaring na het besluit van
 >
 > Ralf-Richard Kenter in de verklaring van Phantasialand van juli 2026, geciteerd door [t-online op 14 juli 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html), vertaald uit het Duits
 
-Sinds juli voeren ook inwoners campagne vóór de uitbreiding. Eberhard Meyer
-richtte het “Bürgerforum Phantasialand Erweiterung” op en ziet de procedure als
-de plek waar “alle feiten op tafel” komen. Georg Frey, districtsvoorzitter van
-horecabond Dehoga, ziet in de uitbreiding een kans voor hotels en restaurants in
-de regio.
+Sinds juli voeren in Brühl ook inwoners campagne vóór de uitbreiding. Eberhard
+Meyer richtte het
+[“Bürgerforum Phantasialand Erweiterung”](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586)
+op en ziet de procedure als de plek waar “alle feiten op tafel” komen. Georg
+Frey, districtsvoorzitter van horecabond Dehoga,
+[ziet in de uitbreiding](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-dehoga-kreischef-frey-befuerwortet-phantasialand-ausbau-1341610)
+een kans voor hotels en restaurants in de regio.
 
 ## Wat er op 9 juli is besloten
 
-De commissie voor planning en stadsontwikkeling heeft twee procedures gestart:
+De commissie voor planning en stadsontwikkeling heeft twee procedures gestart,
 de 39e wijziging van het structuurplan en bestemmingsplan 06.01 “Erweiterung
 Freizeitpark Phantasialand – westlich Berggeiststraße”. CDU, SPD en FDP/Volt
 stemden voor, de Groenen en Die Linke tegen, de AfD onthield zich. Vooraf
-demonstreerden zo’n 250 mensen voor het stadhuis. Eigenlijk had de voltallige
-raad al op 18 mei moeten beslissen. Na protesten verwees die de zaak naar de
-commissie, en Phantasialand bekritiseerde toen “de naar onze mening onnodige
-verdere vertraging”.
+stonden er zo’n 250 mensen te demonstreren voor het stadhuis. Eigenlijk had de
+voltallige raad al op 18 mei moeten beslissen. Na protesten schoof die de zaak
+door naar de commissie, en Phantasialand sprak toen van een “naar onze mening
+onnodige verdere vertraging”.
 
-Met het besluit is niets goedgekeurd. Het stadsbestuur moet eerst met een
-planbureau een voorontwerp maken, de procedure omvat een milieubeoordeling, en
-data voor de terinzagelegging zijn er nog niet. Tegelijk trok de commissie een
-besluit van 27 augustus 2015 over hetzelfde bestemmingsplan in, dat de stad
-nooit had bekendgemaakt.
+Daarmee is niets goedgekeurd. Het stadsbestuur werkt met een planbureau eerst
+een voorontwerp uit, de procedure omvat een milieubeoordeling, en data voor de
+terinzagelegging zijn er nog niet. Tegelijk trok de commissie een besluit van 27
+augustus 2015 in om een bestemmingsplan op te stellen. De stad had dat besluit
+nooit bekendgemaakt.
 
-Bij het type plan wijken CDU en SPD af van hun eigen coalitieakkoord. Daarin
-staat dat een uitbreiding “uitsluitend op basis van een projectgebonden
+Bij het type plan zijn CDU en SPD afgeweken van hun eigen coalitieakkoord.
+Daarin staat dat een uitbreiding “uitsluitend op basis van een projectgebonden
 bestemmingsplan” gebeurt. Zo’n plan legt gebruik, ligging en omvang van de
 gebouwen vroeg vast en bindt het project aan een termijn. Het stadsbestuur vond
 dat te krap voor een pretpark dat zijn attracties regelmatig vervangt. Daarom
@@ -231,11 +260,11 @@ Hoe groot het terrein is, hangt af van waar je kijkt. Volgens de stukken van het
 stadsbestuur beslaat het bestemmingsplan ongeveer 17,5 hectare tussen de
 Berggeiststraße, de Phantasialandstraße (L 194) en de A 553, maar in het
 zuidoosten zit daar grond bij waarvoor al sinds 2005 een bestemmingsplan geldt.
-Phantasialand noemt op de nieuwe pagina ongeveer 15 hectare, in de verklaring
-van juli 14,5. Het natuurgebied zelf is volgens de deelstaatregering 14,17
-hectare groot, waarvan ongeveer 12 hectare bos en 2 hectare water. Wie 18,5
-hectare leest, leest het getal uit het streekplan, met een oostelijk deel van 4
-hectare dat niet meer gepland is.
+Phantasialand houdt het op de nieuwe pagina op ongeveer 15 hectare, in de
+verklaring van juli was het 14,5. Het natuurgebied zelf is volgens de
+deelstaatregering 14,17 hectare groot, waarvan ongeveer 12 hectare bos en 2
+hectare water. En wie ergens 18,5 hectare leest, heeft het getal uit het
+streekplan, met een oostelijk deel van 4 hectare dat niet meer gepland is.
 
 ## De vijver is nog van de deelstaat
 
@@ -243,63 +272,67 @@ Het natuurgebied Ententeich is eigendom van de deelstaat Noordrijn-Westfalen. Op
 15 december 2021 gaf het deelstaatparlement met de begrotingswet 2022
 toestemming om het zonder aanbesteding aan Löffelhardt Grundbesitz GmbH & Co. KG
 over te dragen, in ruil voor andere grond. CDU, FDP en AfD stemden voor, de
-Groenen tegen, de SPD onthield zich. In januari 2022 beschreef het ministerie
-van Milieu het ontwerpcontract aan het parlement. De deelstaat krijgt 38,82
-hectare bos dat aan staatsbos grenst, en het eigendom wisselt in beide
-richtingen pas als bestemmingsplan 06.01 in werking treedt. Dan krijgt de
-deelstaat ook minstens 30 procent van de marktwaarde, toen ruwweg twee miljoen
-euro, en betaalt het park vanaf dat moment 20 jaar lang 20.000 euro per jaar
-voor natuureducatie. Het ziet ook af van uitbreiding ten westen van de L 194.
-Over het opheffen van het natuurgebied wordt volgens het ministerie “in het
-kader van de bestemmingsplanprocedure” beslist.
+Groenen tegen, de SPD onthield zich. Hoe het contract eruit moet zien, heeft het
+ministerie van Milieu in januari 2022 aan het parlement
+[beschreven](https://www.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV17-6282.pdf).
+De deelstaat krijgt 38,82 hectare bos dat aan staatsbos grenst. Het eigendom
+wisselt in beide richtingen echter pas als bestemmingsplan 06.01 in werking
+treedt. Dan krijgt de deelstaat ook minstens 30 procent van de marktwaarde, toen
+ruwweg twee miljoen euro, en betaalt het park 20 jaar lang 20.000 euro per jaar
+voor natuureducatie. Verder ziet het park af van uitbreiding ten westen van de
+L 194. Over het opheffen van het natuurgebied wordt volgens het ministerie “in
+het kader van de bestemmingsplanprocedure” beslist.
 
 In bezit heeft Phantasialand het terrein al. NABU Rhein-Erft wilde er in de
 winter van 2025/26 zelf soorten inventariseren, en de natuurbeschermingsdienst
-van de Kreis ging akkoord. De bosbeheerder van de deelstaat verwees de
-vereniging echter naar de beheermaatschappij van Phantasialand als bezitter, en
-die weigerde. Volgens NABU mag daar alleen het Kölner Büro für Faunistik
-inventariseren, het bureau dat het park heeft ingehuurd.
+van de Kreis ging akkoord. De bosbeheerder van de deelstaat stuurde de
+vereniging echter door naar de beheermaatschappij van Phantasialand als
+bezitter, en die weigerde. Volgens
+[NABU](https://www.nabu-rhein-erft.de/aktionen-und-projekte/quo-vadis-phantasialand-1/)
+mag daar alleen het Kölner Büro für Faunistik inventariseren, het bureau dat het
+park heeft ingehuurd.
 
 ## De mislukte pogingen sinds 2003
 
 Phantasialand ligt sinds 1967 in een uitgeputte bruinkoolgroeve aan de rand van
-Brühl, met woonhuizen direct aan het hek. Het bestemmingsplan nr. 70 dateert van
-1982, en volgens een standpunt dat het park in 2009 schreef, is het terrein
-sindsdien niet meer gegroeid.
+Brühl, en de woonhuizen staan direct aan het hek. Het bestemmingsplan nr. 70
+dateert van 1982, en volgens een standpunt dat het park in 2009 schreef, is het
+terrein sindsdien niet meer gegroeid.
 
 In het voorjaar van 2002 eindigde een bemiddeling tussen park, omwonenden en
-overheden. Op 22 april 2003 nam de gemeenteraad van Brühl met grote meerderheid
-een pakket aan voor de “Standortsicherung”, hetzelfde woord dat het park nu weer
-gebruikt. Daaruit zijn tot nu toe alleen twee kleine deelplannen in werking
-getreden, allebei in 2005. Een ervan geldt voor het hoofdparkeerterrein
+overheden, en op 22 april 2003 nam de gemeenteraad van Brühl met grote
+meerderheid een pakket aan voor de “Standortsicherung”, hetzelfde woord dat het
+park nu weer gebruikt. Daaruit zijn tot nu toe twee kleine deelplannen in
+werking getreden, allebei in 2005. Een ervan geldt voor het hoofdparkeerterrein
 tegenover de ingang, waar sindsdien ook attracties zijn toegestaan. Voor de
 eigenlijke uitbreiding vroeg de stad de Bezirksregierung op 23 oktober 2003 om
 het streekplan te wijzigen.
 
 In 2006 drukte de lokale pers een kaart af waarop het park diep het Villewoud in
-groeide. Volgens het Initiative 50Tausend Bäume ging het om 300.000 vierkante
-meter, ongeveer 50.000 bomen staatsbos, en daar komt de naam vandaan; de groep
-ontstond in 2007. Ook de Bezirksregierung schrijft dat het bedrijf
-oorspronkelijk ongeveer 30 hectare wilde. De regioraad startte op 19 september
-2008 een procedure, maar het bos was van de deelstaat, en die wilde het niet
-afstaan. Milieuminister Eckhard Uhlenberg (CDU) zei in november 2009 tegen de
-Westdeutsche Zeitung dat men “geen verder staatsbos wilde verkopen”. Kenter
-klaagde in hetzelfde artikel dat het park “al jaren met de rug tegen de muur”
-stond.
+groeide. Volgens 50Tausend Bäume ging het om 300.000 vierkante meter, ongeveer
+50.000 bomen staatsbos, en daar komt de naam van het initiatief vandaan. Ook de
+Bezirksregierung schrijft dat het bedrijf oorspronkelijk ongeveer 30 hectare
+wilde. De regioraad startte op 19 september 2008 een procedure, maar het bos was
+van de deelstaat, en die wilde het niet afstaan. Milieuminister Eckhard
+Uhlenberg (CDU) zei in november 2009 tegen de
+[Westdeutsche Zeitung](https://www.wz.de/panorama/der-traum-des-phantasialands_aid-31365561)
+dat men “geen verder staatsbos wilde verkopen”. Kenter klaagde in hetzelfde
+artikel dat het park “al jaren met de rug tegen de muur” stond.
 
 De regioraad begon in 2011 opnieuw, met een ontwerp in twee fasen. De eerste
 besloeg ongeveer 20 hectare, waarvan 15 in het natuurgebied Ententeich en 5 in
 het oosten, de tweede nog eens 10 hectare bos ten westen van de L 194. Toen het
 ontwerp begin 2012 ter inzage lag, kwamen er 223 reacties binnen, waarvan 167
 kritisch, plus 1.854 handtekeningen tegen de wijziging. BUND, NABU en de
-natuurkoepel LNU riepen op tot “handen af van het staatsbos”. Op de hoorzitting
-van 28 juni 2012 werden alle partijen het eens om het bos voorbij de L 194 te
-schrappen. Over de Ententeich kwam geen akkoord. Het milieuagentschap van de
-deelstaat, het bureau van de natuurorganisaties en het Naturpark Rheinland
-vonden de ingreep onaanvaardbaar. Op 14 december 2012 nam de regioraad de
-wijziging aan, met 14,5 hectare in het westen en 4 in het oosten, van kracht
-sinds april 2013. Kenter ziet daarin de reden dat nu juist de vijver ter
-discussie staat:
+natuurkoepel LNU riepen op tot
+[“handen af van het staatsbos”](https://www.bund-nrw.de/presse/detail/news/phantasialand-haende-weg-vom-staatswald/).
+Op de hoorzitting van 28 juni 2012 werden alle partijen het eens om het bos
+voorbij de L 194 te schrappen. Over de Ententeich kwam geen akkoord. Het
+milieuagentschap van de deelstaat, het bureau van de natuurorganisaties en het
+Naturpark Rheinland vonden de ingreep onaanvaardbaar. Op 14 december 2012 nam de
+regioraad de wijziging aan, met 14,5 hectare in het westen en 4 in het oosten,
+van kracht sinds april 2013. Voor Kenter is dat de reden dat nu juist de vijver
+ter discussie staat:
 
 > [!QUOTE]
 > Oorspronkelijk was ongeveer 30 hectare uitbreidingsgebied gepland. Tijdens de
@@ -317,25 +350,28 @@ discussie staat:
 > Ralf-Richard Kenter in een [interview met de Kölner Stadt-Anzeiger van 2 juli 2026](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-phantasialand-will-konkurrenz-keine-einblicke-liefern-1315097), vertaald uit het Duits
 
 Het ontwerp uit 2011 waarmee de regioraad de procedure begon, bevatte echter al
-allebei: de 15 hectare in het natuurgebied en het bos aan de overkant van de
-weg. Een verhuizing van het hele park of van delen ervan naar een andere plek
-had de Bezirksregierung in dezelfde procedure als alternatief verworpen.
+zowel de 15 hectare in het natuurgebied als het bos aan de overkant van de weg.
+Een verhuizing van het hele park of van delen ervan had de Bezirksregierung in
+dezelfde procedure als alternatief verworpen.
 
-Daarna hing alles weer aan de grond. De Staatskanzlei gaf de wijziging in 2013
+Daarna hing alles weer af van de grond. De Staatskanzlei gaf de wijziging in 2013
 aanwijzingen mee, waaruit een externe bemiddeling tussen park en tegenstanders
-voortkwam. Die liep van december 2014 tot maart 2015, met vissers,
-volkstuinders, bewonersvereniging BOVIVO, het burgerinitiatief tegen de
-oostelijke uitbreiding, BUND, NABU en 50Tausend Bäume. BUND stapte een dag voor
-de laatste zitting op, en in het eindverslag staat dat de natuurorganisaties de
-uitbreiding “in de nu geplande vorm” afwezen. Omwonenden en het burgerinitiatief
-kondigden daar aan de oostelijke uitbreiding door de rechter te laten toetsen.
-Het park sprak in de General-Anzeiger van 19 hectare en 3.000 tot 4.000 nieuwe
-bedden bovenop de ongeveer 1.200 die er al waren. Wilbert Spitz van NABU noemde
-de bemiddeling “grandioos mislukt”. Gesprekken over een verkoop liepen onder
-milieuminister Johannes Remmel (Groenen), maar kwamen volgens het ministerie tot
-de deelstaatverkiezingen van 2017 niet tot een einde.
+voortkwam. Van december 2014 tot maart 2015 zaten vissers, volkstuinders,
+bewonersvereniging BOVIVO, het burgerinitiatief tegen de oostelijke uitbreiding,
+BUND, NABU en 50Tausend Bäume met het park aan tafel. BUND stapte een dag voor
+de laatste zitting op. In het
+[eindverslag](https://www.50tausendbaeume.de/files/pdf/foerderverein/Ergebnisdarstellung_Moderationsverfahren_Phantasialand_final_20150601.pdf)
+staat dat de natuurorganisaties de uitbreiding “in de nu geplande vorm” afwezen,
+en omwonenden en het burgerinitiatief kondigden daarin aan de oostelijke
+uitbreiding door de rechter te laten toetsen. Het park sprak in de
+[General-Anzeiger](https://ga.de/region/koeln-und-rheinland/Erweiterung-in-der-Warteschleife-article1675327.html)
+van 19 hectare en 3.000 tot 4.000 nieuwe bedden bovenop de ongeveer 1.200 die er
+al waren. Wilbert Spitz van NABU noemde de bemiddeling “grandioos mislukt”.
+Gesprekken over een verkoop liepen onder milieuminister Johannes Remmel
+(Groenen), maar kwamen volgens het ministerie tot de deelstaatverkiezingen van
+2017 niet tot een einde.
 
-Tegen buren had het park toen al eens bij de rechter verloren. Omwonenden,
+Voor de rechter had het park toen al verloren van zijn buren. Omwonenden,
 gesteund door BOVIVO, procedeerden tegen het lawaai van de waterattractie
 Wakobato op het Phantasia-meer. De bestuursrechter in Keulen vernietigde op 7
 juli 2010 de bouwvergunning, omdat het geluid voor de buren niet zorgvuldig
@@ -352,24 +388,21 @@ park betreurde tegenover de Express dat het project “nogmaals op de lange baan
 werd geschoven, en noemde dat “meer dan teleurstellend”.
 
 Phantasialand bleef al die jaren toch bouwen, alleen op het oude terrein: in
-2016 Klugheim met [Taron](ref:phantasialand/taron) en in 2020 Rookburgh met
-[F.L.Y.](ref:phantasialand/fly). Nieuw aanbod kan het park alleen nog maken
-“door overbouwen en verdichten”, zei Kenter in juli, dus door iets anders af te
-breken.
+2016 Klugheim met [Taron](ref:phantasialand/taron), in 2020 Rookburgh met
+[F.L.Y.](ref:phantasialand/fly). Hoe het park uitgroeide tot de ongeveer 28
+hectare van nu, van groeve tot het basaltdorp Klugheim, staat in
+[onze Phantasialand-gids](/blog/phantasialand-wachttijden-tips). Nieuw aanbod
+kan het park alleen nog maken “door overbouwen en verdichten”, zei Kenter in
+juli, dus door daarvoor iets anders af te breken.
 
-In maart 2025 stemden de leden van de SPD in Brühl voor een uitbreiding onder
-voorwaarden. Na de gemeenteraadsverkiezingen van september 2025, waarin de CDU
-met 36,5 procent de grootste werd, spraken CDU en SPD af de uitbreiding “in
-principe open” te onderzoeken, zonder het volkstuincomplex. Daarmee is volgens
-Kenter het oostelijke deel uit het streekplan van tafel. Daar wilde het park
-edutainment, speel- en picknickzones, bedrijfsgebouwen en een kinderopvang voor
-personeel onderbrengen; daarvoor is nu geen plaats meer.
-
-Voor een dagje park verandert er voorlopig niets. Bouwen kan Phantasialand op
-het terrein pas als het bestemmingsplan geldt en de deelstaat het perceel heeft
-overgedragen. Hoe het park uitgroeide tot de ongeveer 28 hectare van nu, van
-groeve tot het basaltdorp Klugheim, staat in [onze
-Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
+In maart 2025 stemden de leden van de SPD in Brühl voor een uitbreiding, op
+voorwaarde dat de Ententeich niet verandert. Na de gemeenteraadsverkiezingen van
+september 2025, waarin de CDU met 36,5 procent de grootste werd, spraken CDU en
+SPD af de uitbreiding “in principe open” te onderzoeken, zonder het
+volkstuincomplex. Daarmee is volgens Kenter het oostelijke deel uit het
+streekplan van tafel. Daar wilde het park edutainment, speel- en picknickzones,
+bedrijfsgebouwen en een kinderopvang voor personeel onderbrengen, en daarvoor
+heeft het nu geen plaats meer.
 
 [Phantasialand](ref:phantasialand?full)
 

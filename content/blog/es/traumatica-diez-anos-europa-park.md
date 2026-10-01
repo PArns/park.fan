@@ -46,8 +46,8 @@ En otoño de 2007, [Europa-Park](ref:europa-park) soltó por primera vez, de
 noche, a actores con sangre falsa entre sus visitantes. Se llamaba «Terenzi
 Horror Nights», por el cantante Marc Terenzi, que lo organizó junto con Michael
 Mack hasta 2012. Desde 2017 lleva el nombre de Traumatica, al principio como
-«Horror Nights – Traumatica», así que 2026 es la décima edición con ese nombre. El lema suma las dos cosas: «20 años
-de terror, 10 años de Traumatica».
+«Horror Nights – Traumatica», así que 2026 es la décima edición con ese nombre.
+En el lema aparecen las dos cifras: «20 años de terror, 10 años de Traumatica».
 
 El preestreno es esta noche, miércoles 23 de septiembre. El estreno oficial
 llega el viernes 25 de septiembre, y la temporada sigue hasta el sábado 7 de

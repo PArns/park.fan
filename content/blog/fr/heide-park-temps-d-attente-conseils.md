@@ -479,8 +479,8 @@ figure sur la [page du parc](ref:heide-park).
 
 Un vendredi de septembre, loin devant un samedi d’août. Le jour de la semaine
 et le mois déplacent chacun à peu près autant, et ensemble davantage que chacun
-seul. Lesquels des prochains jours d’ouverture seront les plus calmes, le
-widget plus haut le calcule chaque jour.
+seul. Les prochains jours d’ouverture les plus calmes sont dans le widget plus
+haut, mis à jour chaque jour.
 
 ### Quels coasters du Heide Park ont été des premières allemandes ?
 

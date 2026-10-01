@@ -1,5 +1,5 @@
 ---
-title: 'The trip planner checks your day before you join the wrong queue'
+title: 'Plan your park day before you join the wrong queue'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 updatedAt: '2026-09-25'
@@ -34,8 +34,9 @@ coverImage:
 seo:
   title: 'Plan a theme park day: count the queues before you join them'
   description: >-
-    The trip planner lays your rides on a timeline, works with predicted waits
-    and walks, and shows before you go whether the day adds up. No account.
+    In the trip planner you lay your rides on a timeline, with the predicted
+    waits and the walks in between, and see before you go whether the day adds
+    up. No account.
   keywords:
     - plan a theme park day
     - theme park trip planner
@@ -64,8 +65,9 @@ since day one. “Is that a lot for a Tuesday” since
 [late August](/blog/is-70-minutes-a-long-wait). The third question was nowhere:
 does my day actually add up?
 
-Since early September it’s there. The [trip planner](/trip-planner) lays your rides
-on a timeline and works the day out before you set off.
+Since early September it’s there. In the [trip planner](/trip-planner) you lay
+your rides on a timeline, with the predicted waits and the walks in between, and
+see before you set off whether they fit into the day.
 
 ## Rides as blocks on a timeline
 
@@ -101,7 +103,7 @@ a lower bound, not a walking time: paths bend around water,
 around queue lines and around one-way routes, some parks stack their areas on
 top of each other, and at a large one the straight line often crosses a lake you
 have to walk all the way around. For the upper bound we therefore use
-park pace, about four kilometres an hour with crowds and pushchairs, and adds 60
+park pace, about four kilometres an hour with crowds and pushchairs, and add 60
 per cent of the straight line as a detour.
 
 At a compact park a clumsy transfer costs three minutes and nobody notices. At a
@@ -143,9 +145,9 @@ appear anywhere in its code.
 
 ```
 
-The planner works from the hourly curve of each individual ride instead. Where that curve
-is lowest shortly after opening, “the big one first” falls out on its own. Where
-it’s flat, something else falls out.
+Instead, the order comes from the hourly curve of each individual ride. Where
+that curve is lowest shortly after opening, “the big one first” falls out on its
+own. Where it’s flat, something else falls out.
 
 Hardly anybody works out in their head that the first hour often isn’t yours
 at all. Plenty of parks open their gates before some of the rides run, and
@@ -183,12 +185,12 @@ At a park with more headliners than fit into a day, point one is the whole game,
 and since 21 September you get a say in it. If not
 everything fits, either button first opens an assistant with three steps.
 “Adjustments” lists what would make room, such as dropping the lunch break or
-cutting it to half an hour, and every line is worked out: it only appears if it
-really gets one more ride into the day. “Priorities” shows the whole list in the
-order things would be cut, and you move to the top whatever you must not miss.
-The rides you planned yourself are on that list too, because here you decide,
-not the button. “Result” names what stays out. Nothing is written into the plan
-until you apply it.
+cutting it to half an hour. For every line we plan the whole day again with
+that change, and the line only appears if it really gets one more ride in.
+“Priorities” shows the whole list in the order things would be cut, and you
+move to the top whatever you must not miss. The rides you planned yourself are
+on that list too, because here you decide, not the button. “Result” names what
+stays out. Nothing is written into the plan until you apply it.
 
 There’s deliberately no slider that trades queueing against hanging about,
 because nobody could justify the number behind it.

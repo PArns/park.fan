@@ -111,6 +111,19 @@ for (const locale of locales) {
     );
   });
 
+  test(`${locale}: the blog menu lists the newest articles by the date each row prints`, () => {
+    const menu = getBlogMenu(locale);
+    const newest = [...articles]
+      .map((p) => p.frontmatter.date)
+      .sort()
+      .reverse()
+      .slice(0, menu.recent.length);
+    assert.deepEqual(
+      menu.recent.map((post) => post.date),
+      newest
+    );
+  });
+
   test(`${locale}: the news menu lists the newest news, newest first`, () => {
     const menu = getNewsMenu(locale);
     assert.equal(menu.total, news.length);

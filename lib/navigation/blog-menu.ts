@@ -1,7 +1,7 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
-import { listArticlesByRecency } from '@/lib/blog/listing';
+import { listArticlesByDate } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
@@ -105,7 +105,10 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         postCount: node.totalPostCount,
       }))
       .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label)),
-    recent: listArticlesByRecency(locale)
+    // By publication date, the date every row prints. The homepage strips order by last edit
+    // (`listArticlesByRecency`) and print no date; here that put two edited July guides on top
+    // of a post from 28 September.
+    recent: listArticlesByDate(locale)
       .slice(0, RECENT_LIMIT)
       .map((post, index) => ({
         path: postPath(post),

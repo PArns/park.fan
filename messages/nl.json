@@ -294,7 +294,7 @@
       "heatTitle": "Hittewaarschuwing",
       "heatText": "Op hete dagen staan er meer mensen in de rij bij de waterattracties. Daarom telt de weersverwachting mee in de kalender.",
       "historyTitle": "Historie",
-      "historyText": "Het model rekent elke attractie apart door, met haar eigen dagverloop en seizoen. Wat vandaag gemeten wordt, gaat morgenochtend mee in de training.",
+      "historyText": "Het model rekent voor elke attractie apart, met haar eigen dagverloop en seizoen. Wat vandaag gemeten wordt, gaat morgenochtend mee in de training.",
       "hubLink": "Beste reistijd voor ruim 200 parken",
       "peakAt": "Het drukst rond",
       "windowOpening": "Na de opening",
@@ -2517,7 +2517,7 @@
     "page": {
       "kicker": "Dagplanner",
       "title": "Je parkdag attractie voor attractie plannen",
-      "lead": "Zeg welke attracties je wilt, en de planner rekent met de voorspelde wachttijden uit of de dag klopt. Alles blijft in je browser, een account is niet nodig.",
+      "lead": "Zeg welke attracties je wilt. Met de voorspelde wachttijden erbij zie je of de dag klopt. Alles blijft in je browser, een account is niet nodig.",
       "metaTitle": "Pretparkdag plannen rond de wachttijden | park.fan",
       "metaDescription": "Plan je pretparkdag met de voorspelde wachttijden: attracties op een tijdlijn, shows en pauzes ertussen, en een markering waar je kind te klein voor is.",
       "yourPlans": "{count, plural, one {Eén geplande dag} other {# geplande dagen}}",

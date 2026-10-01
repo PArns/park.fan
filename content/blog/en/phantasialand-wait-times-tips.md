@@ -283,9 +283,10 @@ A few rules of thumb that almost always hold:
   ticket pricing, even Saturdays outside the holidays are often quite full.
 
 Gut feeling is a poor guide once holiday calendars, weather and opening hours
-start overlapping. The park.fan best-days calendar folds all of it together with the park’s wait-time history into one
-crowd level per day, from very low to extreme. Here are the
-quietest upcoming days for Phantasialand:
+start overlapping. We fold all of it together with the park’s wait-time history
+into one crowd level per day, from very low to extreme, and that level is what
+you see in the best-days calendar. Here are the quietest upcoming days for
+Phantasialand:
 
 ```best-days-widget slug=phantasialand
 
