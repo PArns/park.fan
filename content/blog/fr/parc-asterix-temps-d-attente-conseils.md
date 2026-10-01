@@ -2,6 +2,7 @@
 title: 'Parc Astérix : Toutatis, OzIris et les files de Noël'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false
@@ -35,7 +36,7 @@ seo:
   description: >-
     Toutatis, OzIris, Tonnerre 2 Zeus : quelles files sont longues au Parc
     Astérix, à quelle heure y aller, ce que la semaine de Noël change et
-    comment le parc a failli ne pas survivre à sa première année.
+    comment le parc a failli ne pas survivre à l’arrivée d’Euro Disney.
   keywords:
     - Parc Astérix
     - Parc Astérix temps d’attente
@@ -64,12 +65,12 @@ Trente-sept ans plus tard, le parc de Plailly, dans l’Oise, à une trentaine d
 kilomètres au nord de Paris, compte 2,9 millions de visiteurs pour 2025, selon
 Wikipédia. C’est
 le troisième parc à thèmes de France, derrière les deux parcs de
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park). Voici
-où sont les files aujourd’hui, en commençant par
-[Toutatis](ref:parc-asterix/toutatis), la plus récente et la plus attendue des
-têtes d’affiche.
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park). Ses
+coasters vont aujourd’hui de Goudurix, ouvert avec le parc, à
+[Toutatis](ref:parc-asterix/toutatis), le plus haut et le plus rapide de
+France.
 
-## Un parc qui a failli fermer avant d’avoir fêté ses trois ans
+## Un parc qui a failli ne pas survivre à Euro Disney
 
 Le [Parc Astérix](ref:parc-asterix) a ouvert au public le **30 avril 1989**,
 trois jours après l’inauguration par Jack Lang. Albert Uderzo imaginait
@@ -87,8 +88,8 @@ Tonnerre de Zeus.
 
 Le groupe qui l’exploite, la **Compagnie des Alpes**, possède aussi
 [Walibi Belgium](ref:walibi-belgium) et [Walibi Holland](ref:walibi-holland).
-Notre [guide de Wavre](/blog/walibi-belgium-temps-d-attente-conseils) raconte
-l’autre moitié du groupe.
+Le parc de Wavre a son propre
+[guide](/blog/walibi-belgium-temps-d-attente-conseils).
 
 Voilà où en sont, en ce moment, Plailly, Disneyland Paris, Wavre et
 l’Europa-Park :
@@ -130,10 +131,9 @@ Rides, 2001) est un bobsleigh de 900 mètres de descente, à une vitesse proche 
 60 km/h. **[Discobélix](ref:parc-asterix/discobelix)** (Zamperla, 2016) est un
 Disk’O Coaster.
 
-Les deux dernières nouveautés sont aussi les plus grosses.
-**[Toutatis](ref:parc-asterix/toutatis)** (Intamin, 2023) est un launch coaster
-de 51 mètres, 107 km/h et 101 degrés de descente, annoncé en 2018 pour 2021 puis
-repoussé deux fois, et **[Cétautomatix](ref:parc-asterix/cetautomatix)**
+**[Toutatis](ref:parc-asterix/toutatis)** (Intamin, 2023) est un launch
+coaster de 51 mètres, 107 km/h et 101 degrés de descente, annoncé en 2018 pour
+2021 puis repoussé deux fois. **[Cétautomatix](ref:parc-asterix/cetautomatix)**
 (Gerstlauer, 2025) est un spinning coaster, ouvert le 18 août 2025 après
 plusieurs mois de retard liés à des soucis de fabrication et de livraison.
 
