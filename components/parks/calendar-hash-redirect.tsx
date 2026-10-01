@@ -6,6 +6,23 @@ import {
   parkCalendarPath,
 } from '@/lib/parks/calendar-segments';
 
+/**
+ * A JSON string literal that is safe inside a `<script>` body.
+ *
+ * `JSON.stringify` alone is not: it leaves `<` and `>` as themselves, so a value containing
+ * `</script>` closes the tag and everything after it is markup. The values interpolated below come
+ * from the route's own segments and from `park.timezone` — neither is typed as hostile, and neither
+ * is validated against this either. Same escapes as `escapeJsonLd` in `components/seo/
+ * structured-data.tsx`, which exists for this exact hazard; it takes an object, this takes a string.
+ */
+const scriptLiteral = (value: string) =>
+  JSON.stringify(value)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+
 interface CalendarHashRedirectProps {
   locale: Locale | string;
   continent: string;
@@ -24,9 +41,10 @@ interface CalendarHashRedirectProps {
  * hop sits behind `isMounted`, which is set in an effect via `startTransition`, so the earliest it
  * can fire is two commits after hydration. The park page's client queries hang behind no such gate:
  * they start WITH hydration. So both documents fetched, and `#calendar` cost the live poll, the
- * nowcast, the neighbour list and the calendar month twice over — measured 12 calls / 121.9 KB
- * against the 8 the calendar page needs on its own (`node scripts/measure-api-calls.mjs --only
- * park`, 2026-10-01).
+ * nowcast and the neighbour list twice over — measured 12 calls / 121.9 KB against the 9 the
+ * calendar page costs when it is opened directly (`node scripts/measure-api-calls.mjs --only park`,
+ * 2026-10-01). The calendar MONTH was never fetched twice: the harness groups on the path, and the
+ * calendar page asks for the grid and for today separately.
  *
  * **It is an inline script, not an effect**, for the same reason `HeroEntranceGate` is one: parsed
  * inline it runs while the document is still being read, before the deferred chunks that carry
@@ -70,9 +88,9 @@ export function CalendarHashRedirect({
       dangerouslySetInnerHTML={{
         __html:
           `(function(){var h=location.hash.slice(1),m=/^calendar-(\\d{4})-(\\d{2})$/.exec(h);` +
-          `if(h!=="calendar"&&!m)return;var b=${JSON.stringify(hub)},t=b;` +
+          `if(h!=="calendar"&&!m)return;var b=${scriptLiteral(hub)},t=b;` +
           `if(m){var y=+m[1],o=+m[2];if(o>=1&&o<=12){try{` +
-          `var p=new Intl.DateTimeFormat("en-CA",{timeZone:${JSON.stringify(zone)},year:"numeric",month:"2-digit"}).formatToParts(new Date()),` +
+          `var p=new Intl.DateTimeFormat("en-CA",{timeZone:${scriptLiteral(zone)},year:"numeric",month:"2-digit"}).formatToParts(new Date()),` +
           `g=function(k){var e=p.find(function(x){return x.type===k});return e?+e.value:0},` +
           `d=y*12+o-1-(g("year")*12+g("month")-1);` +
           `if(d>=${minDelta}&&d<=${maxDelta})t=b+"/"+y+"/"+o}catch(e){}}}` +
