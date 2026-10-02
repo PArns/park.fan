@@ -1,7 +1,9 @@
 {
+  "title": "die-froehliche-bienchenjagd",
   "park": "phantasialand",
   "ride": "die-froehliche-bienchenjagd",
   "area": "Fantasy",
+  "roles": ["ride-card"],
   "tags": ["day", "photo", "ride"],
   "credit": {
     "author": "Patrick",
@@ -14,5 +16,8 @@
     "lat": 50.800475,
     "lon": 6.878908
   },
-  "review": true
+  "focus": {
+    "x": 0.1475,
+    "y": 0.7488
+  }
 }
