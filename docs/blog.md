@@ -576,7 +576,7 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 | Time-filler openings             | `in der heutigen Zeit`, `im digitalen Zeitalter`, `in der heutigen schnelllebigen Welt`, `mehr denn je`, `immer mehr Menschen`                                                                                                                                                      |
 | Summary formulas                 | `zusammenfassend lässt sich sagen`, `abschließend`, `insgesamt`, `Fazit`                                                                                                                                                                                                            |
 | Mechanical connectives           | `darüber hinaus`, `zusätzlich`, `ferner`, `andererseits` (as a paragraph habit); as a sentence opener also `des Weiteren`, `interessanterweise`, `bemerkenswerterweise`, `letztendlich`, which `pnpm check:prose` flags                                                             |
-| Stock phrases                    | `hier kommt X ins Spiel`, `ohne Umschweife`, `schnall dich an`, `das nächste Level`, `was viele nicht wissen`, `die Antwort auf`                                                                                                                                                    |
+| Stock phrases                    | `hier kommt X ins Spiel`, `ohne Umschweife`, `schnall dich an`, `das nächste Level`, `was viele nicht wissen`                                                                                                                                                                       |
 | Volume adverbs                   | `wirklich`, `absolut`, `unglaublich`, `extrem`: stop-slop cuts every adverb; we cut the ones that only turn the volume up and keep the ones that carry a fact (`fast`, `kaum`, `erst`, `nur`)                                                                                       |
 | Credential openers               | `Als langjähriger Fan …`, `Als leidenschaftlicher Achterbahnfahrer …` (§1.4)                                                                                                                                                                                                        |
 | Vague authority                  | `Branchenberichte`, `Experten sind sich einig`, `viele Beobachter`, `Studien zeigen` (unsourced)                                                                                                                                                                                    |
@@ -605,7 +605,7 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 | Pseudo-wisdom          | `at the end of the day`, `the key is`, `when the dust settles`, `something real is happening`, `the stakes couldn't be higher`                                                                                                                                                                                                                                                                                                                                                                                             |
 | Hedges                 | `in many ways`, `at some level`, `arguably`, `it could be argued`, `while it is true`                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Recyclable framing     | `a useful way to think about it is`, `the key idea is`, `picture this`, `let's dive in`, `here's the kicker`                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Stock phrases          | `when it comes to`, `comes into play`, `this is where X comes in`, `whether you're an X or a Y`, `here's the thing`, `without further ado`, `in a nutshell`, `buckle up`, `to the next level`, `bridge the gap`, `move the needle`, `at its core`, `in the realm of`, `rest assured`, `it goes without saying`, `game-changer`, `the answer to`                                                                                                                                                                            |
+| Stock phrases          | `when it comes to`, `comes into play`, `this is where X comes in`, `whether you're an X or a Y`, `here's the thing`, `without further ado`, `in a nutshell`, `buckle up`, `to the next level`, `bridge the gap`, `move the needle`, `at its core`, `in the realm of`, `rest assured`, `it goes without saying`, `game-changer`                                                                                                                                                                                             |
 | Mechanical openers     | sentence-initial `Moreover`, `Furthermore`, `Additionally`, `Interestingly`, `Notably`, `Importantly`, `Indeed`, `Certainly`, `Absolutely`                                                                                                                                                                                                                                                                                                                                                                                 |
 
 `paramount` and `commence` are on the anti-ai-slop-writing list and not on ours: on this site one
@@ -614,7 +614,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Six house rules that are not in anybody's research. They came out of real reviews of shipped
+Seven house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -658,6 +658,10 @@ data`, `données réelles`, `datos reales`, `dati reali`: the same move as rule 
    claimed instead of shown. Say where the numbers come from and since when: `gemessene
 Wartezeiten seit Dezember 2025`, `measured every five minutes`. `real` stays where it contrasts
    with something that is not (`die tatsächliche Wartezeit` against the forecast in R²).
+7. **Never `die Antwort auf`.** Nor `the answer to`, `het antwoord op`, `la réponse à`,
+   `la respuesta a`, `la risposta a`. The phrase announces an answer instead of giving it: write
+   the answer. It was a stock-phrase warning on the morning of 2026-10-02 and an error by the
+   afternoon; `pnpm check:prose` fails on it in every language and on every surface.
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -685,12 +689,12 @@ soyez …`, `Ya seas …`, `Che tu sia …`). A French UI string that translates
 No field guide exists for these four at the depth of the German and English ones. The lists
 below follow the same classes and are candidates, not verdicts:
 
-| Locale | Watch for                                                                                                                                                                |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| nl     | `het is belangrijk om op te merken`, `in een snel veranderende wereld`, `de kracht van`, `naadloos`, `baanbrekend`, sentence-initial `Bovendien`, `het antwoord op`      |
-| fr     | `il convient de souligner`, `dans un monde où`, `à l'ère du numérique`, `tirer parti de`, `mettre en avant`, sentence-initial `En outre`, `Qui plus est`, `la réponse à` |
-| es     | `es importante destacar`, `vale la pena señalar`, `en última instancia`, `profundizar en`, `embarcarse en`, `sin duda`, `la respuesta a`                                 |
-| it     | `è importante sottolineare`, `vale la pena ricordare`, `una testimonianza di`, `epocale`, `vero e proprio` in bulk, `la risposta a`                                      |
+| Locale | Watch for                                                                                                                                                |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| nl     | `het is belangrijk om op te merken`, `in een snel veranderende wereld`, `de kracht van`, `naadloos`, `baanbrekend`, sentence-initial `Bovendien`         |
+| fr     | `il convient de souligner`, `dans un monde où`, `à l'ère du numérique`, `tirer parti de`, `mettre en avant`, sentence-initial `En outre`, `Qui plus est` |
+| es     | `es importante destacar`, `vale la pena señalar`, `en última instancia`, `profundizar en`, `embarcarse en`, `sin duda`                                   |
+| it     | `è importante sottolineare`, `vale la pena ricordare`, `una testimonianza di`, `epocale`, `vero e proprio` in bulk                                       |
 
 Italian schools teach avoiding repetition, so rotating synonyms (§2.6) is partly a native habit
 there: do not over-correct it.
@@ -1103,7 +1107,7 @@ output the way a regex can actually be trusted to:
 - **Errors** are rules with no legitimate exception: a `—` in a post body or in German or Dutch
   prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that
   can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
-  with a straight `"`.
+  with a straight `"`, `die Antwort auf` in any of its six languages (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 

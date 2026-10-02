@@ -17,7 +17,7 @@
 
 import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
 import { headlinersToAdd } from '../lib/planner/optimize.ts';
-import { noRoomForRide } from '../lib/planner/add-ride-fit.ts';
+import { noRoomForRide, requestedRideChoice } from '../lib/planner/add-ride-fit.ts';
 import { dayClock } from '../lib/planner/park-time.ts';
 import {
   SHORT_BLOCK_MIN,
@@ -631,6 +631,68 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     '12k the second go is in the question, as an addition',
     lap?.wishes.some((wish) => wish.key === addWishKey('a') && wish.entryId === null) === true,
     JSON.stringify(lap?.wishes.map((wish) => wish.key))
+  );
+}
+
+// ── 13. The pressed ride opens pinned (PAR-637) ───────────────────────────────
+//
+// Unpinned, the ride the visitor just asked for was one wish among the rest,
+// and the plan the dialog proposed could leave exactly that ride out.
+
+{
+  const clock = dayClock('2026-09-12', 'Europe/Berlin', Date.UTC(2026, 8, 1, 8));
+  const full = day([...FIVE_LONG, ride('f', 60)]);
+  const planned = FIVE_LONG.map((r, i) => entry(`e${i}`, r.attractionSlug, (OPEN + i) * 60));
+  const conflict = noRoomForRide({ day: full, entries: planned, attractionSlug: 'f', clock });
+  const opening = requestedRideChoice('f');
+  const key = addWishKey('f');
+
+  check(
+    '13a the dialog opens with the pressed ride pinned and nothing else',
+    opening.priority.join() === key,
+    JSON.stringify(opening.priority)
+  );
+  check(
+    '13b and with everything ticked, nothing shortened',
+    opening.dropped.size === 0 && opening.droppedBlocks.size === 0 && opening.shortBlocks.size === 0
+  );
+  check(
+    '13c the pin is on a wish the question holds',
+    conflict?.wishes.some((wish) => wish.key === key) === true
+  );
+  check(
+    '13d the pinned ride heads the order the engine gives things up in',
+    conflict !== null && fitOrder(conflict, opening)[0]?.key === key
+  );
+  check(
+    '13e the proposed plan keeps the pressed ride',
+    conflict !== null && evaluateFit(conflict, opening).fitted.includes(key),
+    JSON.stringify(conflict && evaluateFit(conflict, opening).fitted)
+  );
+  check(
+    '13e2 where unpinned, this fixture gives up exactly the pressed ride',
+    conflict !== null && !evaluateFit(conflict, fitChoiceAll()).fitted.includes(key)
+  );
+  check(
+    '13f the day is still a question with the pin: something else has to go',
+    conflict !== null && needsFitHelp(conflict, opening) === true
+  );
+  check(
+    '13g the visitor can take the pin off again',
+    togglePin(opening, key).priority.length === 0
+  );
+
+  // A second go is pinned under the same key it is asked about.
+  const late = dayClock('2026-09-12', 'Europe/Berlin', Date.UTC(2026, 8, 12, 11, 10));
+  const three = day(['a', 'b', 'c'].map((slug) => ride(slug, 60)));
+  const once = [entry('e0', 'a', 13 * 60 + 15), entry('e1', 'b', 14 * 60 + 15)];
+  const lap = noRoomForRide({ day: three, entries: once, attractionSlug: 'a', clock: late });
+  check(
+    '13h a pressed lap is pinned and kept',
+    lap !== null &&
+      fitOrder(lap, requestedRideChoice('a'))[0]?.key === addWishKey('a') &&
+      evaluateFit(lap, requestedRideChoice('a')).fitted.includes(addWishKey('a')),
+    JSON.stringify(lap && evaluateFit(lap, requestedRideChoice('a')).fitted)
   );
 }
 

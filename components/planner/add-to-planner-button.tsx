@@ -87,6 +87,8 @@ export function AddToPlannerButton({
   const [fit, setFit] = useState<{
     date: string;
     input: FitInput;
+    /** What the dialog opens on: the pressed ride pinned (PAR-637). */
+    choice: FitChoice;
     nonce: number;
     Assistant: FitAssistant;
   } | null>(null);
@@ -136,7 +138,7 @@ export function AddToPlannerButton({
    */
   const probe = async (filingDate: string, now: number) => {
     try {
-      const [day, { noRoomForRide }] = await Promise.all([
+      const [day, { noRoomForRide, requestedRideChoice }] = await Promise.all([
         queryClient.fetchQuery(
           planDayQuery({
             continent: geo.continent,
@@ -161,7 +163,7 @@ export function AddToPlannerButton({
       });
       if (!input) return null;
       const { PlannerFitAssistant } = await import('./planner-fit-assistant');
-      return { input, Assistant: PlannerFitAssistant };
+      return { input, choice: requestedRideChoice(attractionSlug), Assistant: PlannerFitAssistant };
     } catch {
       return null;
     }
@@ -303,6 +305,7 @@ export function AddToPlannerButton({
           parkName={parkName}
           dateLabel={longDate(fit.date, locale)}
           input={fit.input}
+          initialChoice={fit.choice}
           requested={attractionName}
           onConfirm={(choice) => void confirm(fit.input, fit.date, choice)}
         />

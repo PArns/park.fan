@@ -39,10 +39,12 @@ interface PlannerFitAssistantProps {
   /** The visitor's answer: what to plan, in what order, with which blocks. */
   onConfirm: (choice: FitChoice) => void;
   /**
-   * The answer to start from. Absent on a fresh conflict, where everything is
-   * ticked; the answer given last time on „Anpassen", which reopens this on the
-   * same question so the visitor revises what they chose rather than choosing
-   * again from scratch.
+   * The answer to start from. Absent on a fresh conflict from the optimise
+   * row, where everything is ticked; the answer given last time on „Anpassen",
+   * which reopens this on the same question so the visitor revises what they
+   * chose rather than choosing again from scratch; and after one press on „In
+   * den Plan", everything ticked with that ride pinned (`requestedRideChoice`,
+   * PAR-637).
    */
   initialChoice?: FitChoice;
   /**
