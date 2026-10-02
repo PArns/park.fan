@@ -1,7 +1,9 @@
 {
+  "title": "wolkes-luftpost",
   "park": "phantasialand",
   "ride": "wolkes-luftpost",
   "area": "Fantasy",
+  "roles": ["ride-card"],
   "tags": ["day", "photo", "ride"],
   "credit": {
     "author": "Patrick",
@@ -13,6 +15,10 @@
   "gps": {
     "lat": 50.800444,
     "lon": 6.879569
+  },
+  "focus": {
+    "x": 0.4854,
+    "y": 0.7068
   },
   "review": true
 }
