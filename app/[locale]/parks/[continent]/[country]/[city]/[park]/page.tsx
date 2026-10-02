@@ -29,6 +29,7 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { CalendarHashRedirect } from '@/components/parks/calendar-hash-redirect';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
@@ -384,6 +385,17 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
+      {/* First in the tree on purpose: an old `#calendar` deep link has to be forwarded before the
+          chunks that hydrate this page are even parsed, or both documents pay for the live poll,
+          the nowcast and the calendar month. See the component. */}
+      <CalendarHashRedirect
+        locale={locale}
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        timezone={park.timezone}
+      />
       {/* Tells the planner which park this route is about — see
           `lib/planner/page-park.ts`. The panel lives in the layout and
           otherwise cannot tell one park's page from another's, which is how its
