@@ -26,11 +26,10 @@ exported from `day-grid.ts` now; `buildDayGrid` reads it where the old inline
 expression sat and `estimateFor` reads it in place of the hour test. Inclusive,
 like the field it reads.
 
-`estimateFor` looks a ride's curve up **twice**: first at the axis hour, then at
-the wall-clock hour, and the second lookup is restricted to `hour >= 24`. That is
-not belt and braces, it is an admission — see below. It can never be ambiguous:
-for a wrap park `[0…closeHour]` and `[openHour…23]` are disjoint, and for a
-normal park the second lookup is unreachable after the hour test.
+`estimateFor` looks a ride's curve up **once**, at the axis hour. Until
+2026-10-02 it looked twice — axis hour first, wall-clock hour (`hour - 24`) after
+it — because nothing established which one `hours[].hour` carried on a wrap day.
+The measurement below settled it (PAR-193).
 
 A park with normal hours behaves line for line as before, and that is the
 assertion the regression tests exist for: with the fix reverted, ten of the new
@@ -49,7 +48,11 @@ export. Grep for `closeHour \* 60` and for `> closeHour` before adding a fourth:
 what makes this class of bug survive review is that the wrong expression reads
 exactly like the right one, and the parks it is wrong for are three of 212.
 
-## The API half (open)
+## The API half (answered since)
+
+What follows is the state as first measured. By 2026-09-14 the API answered
+wrap days with curves, and on 2026-10-02 Cedar Point on 2026-10-31 (`11 → 0`)
+returned 15 rides — see the next section for what their hours carry.
 
 **`/plan/day` returns no ride curves at all for a wrap day.** Swept across all
 212 parks on three dates:
@@ -92,14 +95,25 @@ for (h = openHour; h <= closeHour; h++)
 
 runs zero times when `closeHour < openHour`.
 
-## What is not knowable yet, and why the frontend hedges
+## What `hours[].hour` carries on a wrap day
 
-Because no wrap day has ever carried a curve, **nothing establishes what
-`hours[].hour` would contain** for one: the wall-clock hour (`0` for 00:30, which
-is what `context.closeHour` itself reports) or the unfolded hour (`24`). That is
-the reason for the double lookup above. When the API starts answering, check a
-wrap day's `hours[]` against this and the second lookup can go — leave a note
-here when it does.
+Until the API answered wrap days, nothing established whether `hours[].hour`
+would carry the wall-clock hour (`0` for 00:30, which is what `context.closeHour`
+reports) or the unfolded hour (`24`). The frontend read both. It is settled now:
+
+| Measured   | Park               | Day        | `openHour → closeHour` | `hours[].hour` |
+| ---------- | ------------------ | ---------- | ---------------------- | -------------- |
+| 2026-09-14 | Parc Astérix       | 2026-10-16 | 19 → 1                 | 19…25          |
+| 2026-09-14 | Walibi Rhône-Alpes | 2026-10-31 | 19 → 1                 | 19…25          |
+| 2026-10-02 | Cedar Point        | 2026-10-31 | 11 → 0                 | 11…24          |
+
+**`hours[].hour` carries the unfolded hour** — 24 is midnight, 25 is 01:00 —
+while `context.closeHour` beside it stays the folded clock hour. On 2026-09-14,
+13 of 21 parks with a wrap schedule between 2026-09-01 and 2026-11-30 shipped
+hours above 23 (highest: 25), and none shipped a folded hour in `hours[]`. The
+wall-clock lookup was removed on 2026-10-02 (PAR-193); `scripts/test-planner-estimate.mjs`
+goes red if it comes back. By the 2026-10-02 re-check Parc Astérix no longer had
+a wrap schedule on 2026-10-16, which is why Cedar Point stands in for it.
 
 For a normal park the question is settled by measurement: Disneyland Park at
 `8 → 23` returns exactly `hours` 8…23, so the bound is inclusive, which is what

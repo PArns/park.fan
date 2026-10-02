@@ -296,16 +296,17 @@ const ride = (startMinute) => ({
     uncertaintyMinutes: 12,
     expectedError: 15.4,
   });
-  // Where `hours[].hour` counts the clock, which is how `context.closeHour`
-  // itself reports a midnight close.
+  // `hours[].hour` carries the unfolded hour past midnight (24, 25), while
+  // `context.closeHour` beside it reports the folded clock (1). Measured on
+  // 2026-09-14 and 2026-10-02 — see docs/api/parks-open-past-midnight.md.
   const clockNight = dayWith({
     context: { openHour: 16, closeHour: 1 },
     rides: [
       nightRide([
         { hour: 16, wait: 30 },
         { hour: 20, wait: 60 },
-        { hour: 0, wait: 20 },
-        { hour: 1, wait: 15 },
+        { hour: 24, wait: 20 },
+        { hour: 25, wait: 15 },
       ]),
     ],
   });
@@ -341,26 +342,30 @@ const ride = (startMinute) => ({
     'outside-hours'
   );
 
-  // Which of the two readings `hours[].hour` uses past midnight cannot be settled
-  // from the API — on a wrapping day `/plan/day` ships no curve at all (Cedar
-  // Point, 2026-09-12, 11:00–00:00: `rides: []`, against fourteen rides on
-  // 2026-09-13 at 11:00–20:00, same tier, same lead) — so both are read.
-  const axisNight = dayWith({
+  // The curve is looked up once, at the unfolded hour. A folded point (0, 1)
+  // is not a reading the API uses, so it must not answer for hour 24 or 25:
+  // a block there falls to the assumption. Restoring the old wall-clock
+  // fallback (`hour - 24`) turns both of these red.
+  const foldedNight = dayWith({
     context: { openHour: 16, closeHour: 1 },
     rides: [
       nightRide([
         { hour: 16, wait: 30 },
-        { hour: 24, wait: 20 },
-        { hour: 25, wait: 15 },
+        { hour: 0, wait: 20 },
+        { hour: 1, wait: 15 },
       ]),
     ],
   });
   test(
-    'eine entfaltete Stundennummer wird auch gelesen',
-    estimateFor(axisNight, ride(1470)).wait,
-    20
+    'eine gefaltete 0 antwortet nicht für Stunde 24',
+    estimateFor(foldedNight, ride(1470)).missing,
+    'assumed'
   );
-  test('und deren Schlussstunde ebenso', estimateFor(axisNight, ride(1500)).wait, 15);
+  test(
+    'eine gefaltete 1 antwortet nicht für Stunde 25',
+    estimateFor(foldedNight, ride(1500)).missing,
+    'assumed'
+  );
 
   // The visible symptom, in the one number a visitor reads off the panel's foot.
   const totals = totalsFor(clockNight, [ride(20 * 60), { ...ride(1470), id: 'e' }]);

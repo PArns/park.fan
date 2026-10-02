@@ -245,21 +245,14 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
 
   if (!ride) return readable ? assumed(day) : noSource(day);
 
-  // Past midnight the axis and the clock part company, and which of the two
-  // `hours[].hour` speaks cannot be settled from the API: on a day that wraps,
-  // `/plan/day` currently ships no curve at all. Cedar Point on 2026-09-12
-  // (11:00–00:00) answers `rides: []` where the same park on 2026-09-13
-  // (11:00–20:00) answers with fourteen, at the same tier and the same lead —
-  // the backend's own `h <= closeHour` loop never iterates. So the axis hour is
-  // asked for first because it is exact, and the wall-clock hour after it,
-  // which is the reading `context.closeHour` itself uses when it reports 0 for
-  // a midnight close. Betting on one of them would leave a real park without a
-  // figure the day the backend starts answering. Neither lookup can touch a
-  // park with ordinary hours: the test above has already capped `hour` at
-  // `closeHour` there, so it never reaches 24.
-  const point =
-    ride.hours.find((h) => h.hour === hour) ??
-    (hour >= 24 ? ride.hours.find((h) => h.hour === hour - 24) : undefined);
+  // Past midnight `hours[].hour` carries the UNFOLDED hour, the same axis the
+  // grid uses: 24 is midnight, 25 is 01:00. Measured on 2026-09-14 (Parc
+  // Astérix 2026-10-16 and Walibi Rhône-Alpes 2026-10-31, both 19 → 1, answer
+  // hours 19…25) and again on 2026-10-02 (Cedar Point 2026-10-31, 11 → 0,
+  // answers 11…24). `context.closeHour` beside it is still the folded wall-clock
+  // hour, so the two fields do not speak the same language — but the curve is
+  // only ever looked up here, at the axis hour.
+  const point = ride.hours.find((h) => h.hour === hour);
   if (!point) return readable ? assumed(day) : noSource(day);
 
   return {
