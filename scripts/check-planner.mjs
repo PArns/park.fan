@@ -209,6 +209,10 @@ function printBalance() {
         : '') +
       (sheetOpens.failed > 0 ? `, ${sheetOpens.failed}× gar nicht` : '')
   );
+  console.log(
+    `ℹ️  ${controlPresses.pressed} Klicks auf Bedienelemente angenommen` +
+      (controlPresses.failed > 0 ? `, ${controlPresses.failed} nicht` : '')
+  );
   const failed = results.filter((r) => !r.ok);
   console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
   if (failed.length > 0) {
@@ -423,6 +427,8 @@ const SHEET_ATTEMPTS = 3;
 
 /** Counted rather than asserted — see the last paragraph of {@link openSheet}. */
 const sheetOpens = { opened: 0, retried: 0, failed: 0 };
+/** Counted rather than asserted, like {@link sheetOpens} — see {@link press}. */
+const controlPresses = { pressed: 0, failed: 0 };
 
 /**
  * The query the flyout draws a MODAL sheet on (`modal={isPhone}`), read out of
@@ -458,7 +464,7 @@ if (!PLANNER_PHONE_QUERY) {
 async function openPushBell(page) {
   const bell = page.locator(`${SHEET} [data-planner-push-trigger]`).first();
   if ((await bell.count()) === 0) return false;
-  await bell.click();
+  if (!(await press(bell, 'die Benachrichtigungs-Glocke'))) return false;
   await page.waitForTimeout(400);
   return true;
 }
@@ -621,6 +627,52 @@ async function openSheet(page, where) {
   return false;
 }
 
+/**
+ * What a failed click says about itself, in one line.
+ *
+ * The interception lines name the element that is in the way, which is the
+ * whole diagnosis; the first line is the fallback for every other reason a
+ * click can fail (detached, disabled, not stable, timed out).
+ */
+function clickBlame(error) {
+  const lines = String(error?.message ?? error)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const blame = lines.filter((line) => /intercepts pointer events/.test(line)).slice(0, 2);
+  return (blame.length ? blame : lines.slice(0, 1)).join(' · ').slice(0, 200);
+}
+
+/**
+ * Click a control and answer whether it took the click. Never throws.
+ *
+ * {@link openSheet} made the press that OPENS the planner survivable (PAR-186);
+ * every press after it, on a control inside the open sheet or the wizard, was
+ * still a bare `await locator.click()`. Those throw for the same reasons the
+ * launcher did on a busy machine (a control painted before it is wired, or one
+ * that something else covers), and a throw ends the run at the balance with
+ * every block after it unmeasured (PAR-226).
+ *
+ * The timeout is Playwright's own default, exactly what the bare call had: this
+ * changes what a failure costs, not when one happens. A failure is a named ❌
+ * carrying the element that intercepted the press; the caller then leaves its
+ * block (`close()` + `break step`) so the blocks after it still run. A success
+ * is silent and only counted, so a green run reports the same balance as before.
+ */
+async function press(locator, name, options = {}) {
+  const failure = await locator
+    .click(options)
+    .then(() => null)
+    .catch(clickBlame);
+  if (failure === null) {
+    controlPresses.pressed += 1;
+    return true;
+  }
+  controlPresses.failed += 1;
+  check(`${name} nimmt den Klick an`, false, failure);
+  return false;
+}
+
 /** How long a tap waits before it is reported as unreachable. */
 const TAP_TIMEOUT_MS = 10_000;
 
@@ -746,17 +798,7 @@ async function tapBlock(page, locator, name, options = {}) {
   const failure = await target
     .click({ timeout: TAP_TIMEOUT_MS, ...options })
     .then(() => null)
-    .catch((error) => {
-      const lines = String(error.message)
-        .split('\n')
-        .map((line) => line.trim())
-        .filter(Boolean);
-      // The interception lines name the element that is in the way, which is the
-      // whole diagnosis; the first line is the fallback for every other reason a
-      // click can fail (detached, disabled, not stable).
-      const blame = lines.filter((line) => /intercepts pointer events/.test(line)).slice(0, 2);
-      return (blame.length ? blame : lines.slice(0, 1)).join(' · ').slice(0, 200);
-    });
+    .catch(clickBlame);
   const room = placement
     ? `${placement.free ? 'freigeräumt' : 'keine freie Stelle'} nach ${placement.tried} ` +
       `Versuch${placement.tried === 1 ? '' : 'en'}, ${placement.rest} px unter der Kante`
@@ -1106,8 +1148,7 @@ if (live) {
 const rowTick = rows.first().locator('button[aria-label="Als gefahren markieren"]');
 let tickPath = null;
 if (await rowTick.count()) {
-  await rowTick.click();
-  tickPath = 'Zeile';
+  if (await press(rowTick, 'der Abhaken-Knopf in der Zeile')) tickPath = 'Zeile';
 } else {
   // The grid: select the first block, then use the bar it raises.
   const firstBlock = page.locator('li[data-planner-block]');
@@ -1116,8 +1157,9 @@ if (await rowTick.count()) {
     await page.waitForTimeout(300);
     const barTick = page.locator('button[aria-label="Als gefahren markieren"]').first();
     if (await barTick.count()) {
-      await barTick.click();
-      tickPath = 'Aktionsleiste';
+      if (await press(barTick, 'der Abhaken-Knopf in der Aktionsleiste')) {
+        tickPath = 'Aktionsleiste';
+      }
     }
   }
 }
@@ -1154,8 +1196,8 @@ check('Ride-Suche vorhanden', (await sheet.locator('input[type="search"]').count
 // the park's name until it became "Meine Pläne".
 const toggle = sheet.locator('[data-planner-overview-toggle]').first();
 check('Übersicht ist erreichbar', (await toggle.count()) === 1);
-if (await toggle.count()) {
-  await toggle.click();
+step: if (await toggle.count()) {
+  if (!(await press(toggle, 'der Übersicht-Schalter'))) break step;
   await page.waitForTimeout(400);
   const overviewText = (await sheet.textContent()) ?? '';
   check(
@@ -1165,7 +1207,7 @@ if (await toggle.count()) {
   // Picking a day switches park AND date, and drops back to the timeline.
   const otherDay = sheet.locator('button[aria-current], button').filter({ hasText: /Bahnen/ });
   const target = otherDay.first();
-  await target.click();
+  if (!(await press(target, 'ein Tag in der Übersicht'))) break step;
   await page.waitForTimeout(600);
   const stored = await page.evaluate(() =>
     JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
@@ -1208,15 +1250,15 @@ const reopen = sheet.locator('button[data-planner-overview-toggle]');
 // Asserted, not merely branched on: a block that quietly skips itself when its
 // entry point is missing reports the same green as one that passed.
 check('die Übersicht hat einen benannten Schalter', (await reopen.count()) === 1);
-if (await reopen.count()) {
-  await reopen.click();
+step: if (await reopen.count()) {
+  if (!(await press(reopen, 'der Übersicht-Schalter vor dem Assistenten'))) break step;
   await page.waitForTimeout(300);
 
   const startWizard = sheet.locator('button[data-planner-new-day]');
   check('die Übersicht startet den Assistenten', (await startWizard.count()) === 1);
 
   if (await startWizard.count()) {
-    await startWizard.first().click();
+    if (!(await press(startWizard.first(), 'der Knopf für einen neuen Tag'))) break step;
     const wizard = page.locator('[data-slot="dialog-content"]');
     await wizard.waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
     check('der Assistent öffnet', await wizard.isVisible());
@@ -1278,7 +1320,7 @@ if (await reopen.count()) {
           )
           .then(() => true)
           .catch(() => false);
-        await hit.first().click();
+        if (!(await press(hit.first(), 'der Suchtreffer Toverland'))) break step;
         await page.waitForTimeout(2500);
 
         // Picking a park does NOT write to the plan any more, and that is the
@@ -1310,9 +1352,11 @@ if (await reopen.count()) {
         check('der Monatskalender bietet wählbare Tage', dayCount > 0, `${dayCount}`);
 
         if (dayCount > 0) {
-          await day.nth(Math.min(dayCount - 1, 5)).click();
+          if (!(await press(day.nth(Math.min(dayCount - 1, 5)), 'ein Tag im Monatskalender')))
+            break step;
           await page.waitForTimeout(400);
-          await wizard.locator('[data-planner-wizard-next]').click();
+          if (!(await press(wizard.locator('[data-planner-wizard-next]'), 'Weiter im Assistenten')))
+            break step;
           await page.waitForTimeout(400);
           // See `snapshot` above: the zone has to have ARRIVED before the wizard
           // writes the park into the plan, and waiting for it is the assertion.
@@ -1327,14 +1371,20 @@ if (await reopen.count()) {
           // is open.
           for (let guard = 0; guard < 3; guard++) {
             if ((await wizard.locator('[data-planner-wizard-next]').count()) === 0) break;
-            await wizard.locator('[data-planner-wizard-next]').click();
+            if (
+              !(await press(wizard.locator('[data-planner-wizard-next]'), 'Weiter im Assistenten'))
+            )
+              break step;
             await page.waitForTimeout(400);
           }
           check(
             'der letzte Schritt fragt nach den großen Bahnen',
             (await wizard.locator('[data-planner-wizard-finish]').count()) === 1
           );
-          await wizard.locator('[data-planner-wizard-finish]').click();
+          if (
+            !(await press(wizard.locator('[data-planner-wizard-finish]'), 'Fertig im Assistenten'))
+          )
+            break step;
           // Waited FOR rather than slept through: the wizard ends on the park's
           // own page, and under `next dev` that route is compiled on first
           // request — a fixed 1.2 s reported a navigation that had not committed
@@ -1710,15 +1760,19 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         `Ruhe ${restTop} px · beim Ziehen ${midTop} px · losgelassen ${halfTop} px (${detentNow}, Mitte ${half})`
       );
       const stripBox = await grab.boundingBox();
-      await grab.click({ position: { x: stripBox.width / 2, y: GRAB_STRIP_Y } });
-      await phone.waitForTimeout(700);
-      const backTop = await sheetTop();
-      check(
-        'und ein Tipp auf den Griff holt es wieder hoch',
-        (await grab.getAttribute('data-planner-sheet-detent')) === 'large' &&
-          Math.abs(backTop - restTop) <= 1,
-        `${backTop} px gegen ${restTop} px`
-      );
+      const tapped = await press(grab, 'der Griff des Bottom Sheets', {
+        position: { x: stripBox.width / 2, y: GRAB_STRIP_Y },
+      });
+      if (tapped) {
+        await phone.waitForTimeout(700);
+        const backTop = await sheetTop();
+        check(
+          'und ein Tipp auf den Griff holt es wieder hoch',
+          (await grab.getAttribute('data-planner-sheet-detent')) === 'large' &&
+            Math.abs(backTop - restTop) <= 1,
+          `${backTop} px gegen ${restTop} px`
+        );
+      }
     }
   }
 
@@ -1917,14 +1971,15 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
           `${Math.round(box?.height ?? 0)} px`
         );
         const before = await startOf(entryId);
-        await nudge.first().click();
-        await phone.waitForTimeout(400);
-        const after = await startOf(entryId);
-        check(
-          'und verschiebt um eine Viertelstunde',
-          before !== null && after === before + 15,
-          `${before} -> ${after}`
-        );
+        if (await press(nudge.first(), 'der Verschieben-Knopf')) {
+          await phone.waitForTimeout(400);
+          const after = await startOf(entryId);
+          check(
+            'und verschiebt um eine Viertelstunde',
+            before !== null && after === before + 15,
+            `${before} -> ${after}`
+          );
+        }
       }
 
       // The bar a selection docks, measured on the phone (PAR-492, PAR-332).
@@ -2438,7 +2493,7 @@ let month = await openDaysFromToday();
 // it this check is red on a DATE rather than on a change, which is the whole
 // failure mode it was rewritten to stop having.
 let stepped = false;
-if (month.candidates.length === 0) {
+step: if (month.candidates.length === 0) {
   const next = cal.getByRole('link', { name: 'Nächster Monat' });
   if (await next.count()) {
     // The first cell's label BEFORE the step, so the wait below has something
@@ -2448,7 +2503,7 @@ if (month.candidates.length === 0) {
         .first()
         .getAttribute('aria-label')
         .catch(() => null)) ?? '';
-    await next.first().click();
+    if (!(await press(next.first(), 'der Link zum nächsten Monat'))) break step;
     // A real route navigation with `keepPreviousData` behind it: for a moment
     // the grid still holds the old month, and a beat later it holds none at all
     // while the new one loads. `evaluateAll` does not auto-wait, so a fixed
@@ -2484,7 +2539,7 @@ if (month.candidates.length === 0) {
 let reachable = false;
 for (const cell of month.candidates.slice(0, 8)) {
   if (reachable) break;
-  await cells.nth(cell.index).click();
+  if (!(await press(cells.nth(cell.index), 'ein offener Kalendertag'))) break;
   await cal.waitForTimeout(1200);
   reachable = (await planButton.count()) > 0;
   if (!reachable) await cal.keyboard.press('Escape');
@@ -2500,8 +2555,7 @@ check(
       : `${Math.min(month.candidates.length, 8)} offene Tage ${where} angeklickt, keiner trug den Knopf (von ${month.count} Zellen)`
 );
 
-if (reachable) {
-  await planButton.first().click();
+if (reachable && (await press(planButton.first(), 'der Einplanen-Knopf im Kalendertag'))) {
   await cal
     .locator(SHEET)
     .waitFor({ state: 'visible', timeout: 10_000 })
@@ -2881,8 +2935,10 @@ step: {
     await grid.waitForTimeout(300);
     const actionRow = grid.locator(`${SHEET} button[aria-label="Als gefahren markieren"]`);
     check('Auswahl blendet die Aktionen ein', (await actionRow.count()) > 0);
-    if ((await actionRow.count()) > 0) {
-      await actionRow.first().click();
+    if (
+      (await actionRow.count()) > 0 &&
+      (await press(actionRow.first(), 'der Abhaken-Knopf in der Aktionsleiste'))
+    ) {
       await grid.waitForTimeout(400);
       const done = await grid.evaluate(() => {
         const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
@@ -2899,7 +2955,7 @@ step: {
       const undo = grid.locator(`${SHEET} button[aria-label="Doch noch nicht gefahren"]`);
       check('der Knopf benennt jetzt die Gegenaktion', (await undo.count()) > 0);
       if ((await undo.count()) > 0) {
-        await undo.first().click();
+        await press(undo.first(), 'der Knopf „Doch noch nicht gefahren“');
         await grid.waitForTimeout(300);
       }
     }
@@ -3186,7 +3242,19 @@ step: {
   }
   await cpu.waitForTimeout(2500);
   await cpu.keyboard.press('Escape');
-  await cpu.locator(SHEET).waitFor({ state: 'hidden', timeout: 10_000 });
+  // The counter-check to the open, so it fails loudly rather than ending the run
+  // (PAR-226): a sheet still up here leaves nothing to measure the second open
+  // against, which is a reason to leave the block, not the run.
+  const shut = await cpu
+    .locator(SHEET)
+    .waitFor({ state: 'hidden', timeout: 10_000 })
+    .then(() => true)
+    .catch(() => false);
+  if (!shut) {
+    check('Escape schließt den Planer (CPU, erster Aufbau)', false, 'nach 10 s noch sichtbar');
+    await cpu.close();
+    break step;
+  }
   await cpu.waitForTimeout(1500);
   const beforeOpen = await liveMinuteClocks();
 
@@ -3366,9 +3434,12 @@ step: {
   // row (PAR-521). It is not in a production build, so it is taken out of the
   // way rather than the coach moved for it.
   await drag.addStyleTag({ content: '.tsqd-parent-container { display: none !important; }' });
-  await drag.locator(`${SHEET} [data-planner-drag-coach] button`).click();
-  await drag.waitForTimeout(300);
-  check('ausgeblendet bleibt ausgeblendet', (await coach.count()) === 0);
+  if (
+    await press(drag.locator(`${SHEET} [data-planner-drag-coach] button`), 'das × des Hinweises')
+  ) {
+    await drag.waitForTimeout(300);
+    check('ausgeblendet bleibt ausgeblendet', (await coach.count()) === 0);
+  }
 
   // The card badge. `a.group`, not the `<article>` around the listing: the page
   // has one article and it contains every card, so hovering that measured the
@@ -4305,7 +4376,11 @@ step: {
       `${await chip.count()} Schalter · ${before} Linien`
     );
 
-    await chip.click();
+    if (!(await press(chip, 'der Show-Schalter auf dem Telefon'))) {
+      await phoneShows.close();
+      await shows.close();
+      break step;
+    }
     const hidden = await until(linesShown, (count) => count === 0);
     check(
       'der Schalter nimmt die Show-Linien aus dem Raster',
@@ -4313,7 +4388,11 @@ step: {
       `${before} → ${hidden} Linien`
     );
 
-    await chip.click();
+    if (!(await press(chip, 'der Show-Schalter auf dem Telefon'))) {
+      await phoneShows.close();
+      await shows.close();
+      break step;
+    }
     const back = await until(linesShown, (count) => count === before);
     check(
       'und derselbe Schalter holt sie zurück',
@@ -4333,7 +4412,7 @@ step: {
 // used it could not find it, could not link to it, and could not be sent to it.
 // The page is the answer, and its EMPTY state is the half that matters: it is
 // what somebody arriving from the menu sees.
-{
+step: {
   const page = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(page);
 
@@ -4395,8 +4474,10 @@ step: {
     'die Parksuche steht auf der leeren Seite noch nicht im Weg',
     (await page.locator('[data-planner-park-search]').count()) === 0
   );
-  if (await emptyStart.count()) {
-    await emptyStart.first().click();
+  if (
+    (await emptyStart.count()) > 0 &&
+    (await press(emptyStart.first(), 'der Knopf in den Assistenten'))
+  ) {
     const emptyWizard = page.locator('[data-slot="dialog-content"]');
     await emptyWizard.waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
     check(
@@ -4521,7 +4602,10 @@ step: {
   // The page is the DIRECTORY, not a second editor: picking a day sets the
   // active day and asks the panel to open, which is the same signal the park
   // calendar's "plan this day" already sends.
-  await days.first().click();
+  if (!(await press(days.first(), 'ein Tag auf der Planer-Seite'))) {
+    await page.close();
+    break step;
+  }
   await page.waitForTimeout(900);
   check('ein Klick auf einen Tag öffnet das Panel', (await page.locator(SHEET).count()) === 1);
   const active = await page.evaluate(() =>
@@ -4669,7 +4753,10 @@ step: {
 
   if (await toggle.count()) {
     // ── On ───────────────────────────────────────────────────────────────────
-    await toggle.click();
+    if (!(await press(toggle, 'der Benachrichtigungs-Schalter (an)'))) {
+      await push.close();
+      break step;
+    }
     await push.waitForTimeout(1500);
 
     check(
@@ -4734,7 +4821,10 @@ step: {
     );
 
     // ── Off ──────────────────────────────────────────────────────────────────
-    await push.locator(TOGGLE).click();
+    if (!(await press(push.locator(TOGGLE), 'der Benachrichtigungs-Schalter (aus)'))) {
+      await push.close();
+      break step;
+    }
     await push.waitForTimeout(1500);
 
     check('ausschalten geht auch', (await push.locator('[data-planner-push="off"]').count()) === 1);
@@ -4754,7 +4844,10 @@ step: {
 
     // ── And on again ─────────────────────────────────────────────────────────
     // A switch that only works once is the shape of bug that survives a demo.
-    await push.locator(TOGGLE).click();
+    if (!(await press(push.locator(TOGGLE), 'der Benachrichtigungs-Schalter (wieder aus)'))) {
+      await push.close();
+      break step;
+    }
     await push.waitForTimeout(1500);
     check('und wieder an', (await push.locator('[data-planner-push="on"]').count()) === 1);
   }
@@ -4802,7 +4895,15 @@ step: {
   }
   await past.waitForTimeout(1500);
 
-  await past.locator('button[data-planner-overview-toggle]').click();
+  if (
+    !(await press(
+      past.locator('button[data-planner-overview-toggle]'),
+      'der Übersicht-Schalter (begangene Pläne)'
+    ))
+  ) {
+    await past.close();
+    break step;
+  }
   await past.waitForTimeout(500);
 
   // A finished day is a record of what was actually queued — the ticked entries
@@ -4814,7 +4915,10 @@ step: {
 
   // Pick the oldest one and check the panel actually goes there.
   const oldest = rows.first();
-  await oldest.click();
+  if (!(await press(oldest, 'der älteste Tag in der Übersicht'))) {
+    await past.close();
+    break step;
+  }
   await past.waitForTimeout(800);
   const active = await past.evaluate(() =>
     JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}')
@@ -4887,12 +4991,16 @@ step: {
   const question = ask.locator(PAST_DAY_QUESTION);
   const openSheets = () => ask.locator(`${SHEET}[data-state="open"]`).count();
   const pressLauncher = async () => {
-    await ask.locator(LAUNCHER).first().click();
+    if (!(await press(ask.locator(LAUNCHER).first(), 'der Launcher vor der Frage'))) return false;
     await question.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => {});
     await ask.waitForTimeout(300);
+    return true;
   };
 
-  await pressLauncher();
+  if (!(await pressLauncher())) {
+    await ask.close();
+    break step;
+  }
   const asked = { question: await question.count(), sheets: await openSheets() };
   check(
     'ein vorbeigegangener Tag öffnet nicht, der Planer fragt',
@@ -4914,8 +5022,14 @@ step: {
     `Frage ${await question.count()} · offene Sheets ${await openSheets()}`
   );
 
-  await pressLauncher();
-  await question.locator('[data-confirm-cancel]').click();
+  if (!(await pressLauncher())) {
+    await ask.close();
+    break step;
+  }
+  if (!(await press(question.locator('[data-confirm-cancel]'), '„Vergangenen Tag ansehen“'))) {
+    await ask.close();
+    break step;
+  }
   await ask
     .locator(`${SHEET}[data-state="open"]`)
     .first()
@@ -4937,8 +5051,14 @@ step: {
 
   await ask.keyboard.press('Escape');
   await ask.waitForTimeout(800);
-  await pressLauncher();
-  await question.locator('[data-confirm-action]').click();
+  if (!(await pressLauncher())) {
+    await ask.close();
+    break step;
+  }
+  if (!(await press(question.locator('[data-confirm-action]'), '„Neuen Tag planen“'))) {
+    await ask.close();
+    break step;
+  }
   await ask.waitForTimeout(1500);
   // The wizard's FIRST step has no footer (picking a park is the advance), so
   // its „Weiter" is no sign of it here, on a page with no park behind it: the
@@ -4969,7 +5089,10 @@ step: {
   await seedWalked(phoneAsk);
   await phoneAsk.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await settleHydration(phoneAsk);
-  await phoneAsk.locator(LAUNCHER).first().click();
+  if (!(await press(phoneAsk.locator(LAUNCHER).first(), 'der Launcher am Handy vor der Frage'))) {
+    await phoneAsk.close();
+    break step;
+  }
   const phoneQuestion = phoneAsk.locator(PAST_DAY_QUESTION);
   await phoneQuestion.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => {});
   check(
@@ -5906,7 +6029,10 @@ step: {
   check('die Optimier-Leiste steht auf dem heutigen Tag', (await run.count()) === 1);
   if (await run.count()) {
     const before = await readToday();
-    await run.click();
+    if (!(await press(run, 'Optimieren auf dem heutigen Tag'))) {
+      await late.close();
+      break step;
+    }
     await late.waitForTimeout(1500);
     const after = await readToday();
 
@@ -5940,7 +6066,10 @@ step: {
     );
 
     if (await late.locator(`${SHEET} [data-planner-optimize-run]`).count()) {
-      await run.click();
+      if (!(await press(run, 'Optimieren auf dem heutigen Tag, zweiter Druck'))) {
+        await late.close();
+        break step;
+      }
       await late.waitForTimeout(1200);
       const twice = (await resultLine.count()) ? ((await resultLine.textContent()) ?? '') : '';
       check(
@@ -6415,7 +6544,10 @@ step: {
       (await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count()) === 1
   );
 
-  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  if (!(await press(opt.locator(`${SHEET} [data-planner-optimize-run]`), 'Optimieren'))) {
+    await opt.close();
+    break step;
+  }
   await opt.waitForTimeout(1200);
   const after = await readDay();
   check('ein Druck sortiert den Tag um', after !== before, `${before}  →  ${after}`);
@@ -6441,7 +6573,12 @@ step: {
 
   // Pressing it again must be a no-op, not a reshuffle with the same total —
   // which is the difference between an optimiser and a dice roll.
-  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  if (
+    !(await press(opt.locator(`${SHEET} [data-planner-optimize-run]`), 'Optimieren, zweiter Druck'))
+  ) {
+    await opt.close();
+    break step;
+  }
   await opt.waitForTimeout(900);
   check('ein zweiter Druck ändert nichts mehr', (await readDay()) === after);
   const twice = (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
@@ -6452,13 +6589,29 @@ step: {
     await opt.close();
     break step;
   }
-  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  if (
+    !(await press(
+      opt.locator(`${SHEET} [data-planner-optimize-run]`),
+      'Optimieren vor dem Rückgängig'
+    ))
+  ) {
+    await opt.close();
+    break step;
+  }
   await opt.waitForTimeout(1200);
   check(
     'nach dem Sortieren steht ein Rückgängig daneben',
     (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1
   );
-  await opt.locator(`${SHEET} [data-planner-optimize-undo]`).click();
+  if (
+    !(await press(
+      opt.locator(`${SHEET} [data-planner-optimize-undo]`),
+      'Rückgängig nach dem Optimieren'
+    ))
+  ) {
+    await opt.close();
+    break step;
+  }
   await opt.waitForTimeout(900);
   check('und es stellt den Tag exakt wieder her', (await readDay()) === before, await readDay());
   check(
@@ -6511,18 +6664,42 @@ step: {
    * is also what checks the rail: a step that failed to advance leaves the
    * apply button missing and every assertion after this one fails loudly rather
    * than passing over an unwritten day.
+   *
+   * Answers null when a control in the walk did not take its click (PAR-226),
+   * which the caller turns into leaving the block.
    */
   const pressHeadliners = async () => {
-    await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
+    if (
+      !(await press(
+        opt.locator(`${SHEET} [data-planner-optimize-headliners]`),
+        'der Headliner-Knopf'
+      ))
+    ) {
+      return null;
+    }
     await opt.waitForTimeout(900);
     const asked = await opt.locator('[data-planner-fit-count]').count();
     if (asked) {
       for (let guard = 0; guard < 4; guard++) {
         if ((await opt.locator('[data-planner-fit-next]').count()) === 0) break;
-        await opt.locator('[data-planner-fit-next]').click();
+        if (
+          !(await press(
+            opt.locator('[data-planner-fit-next]'),
+            'Weiter im Fit-Assistenten (Headliner)'
+          ))
+        ) {
+          return null;
+        }
         await opt.waitForTimeout(400);
       }
-      await opt.locator('[data-planner-fit-apply]').click();
+      if (
+        !(await press(
+          opt.locator('[data-planner-fit-apply]'),
+          'Übernehmen im Fit-Assistenten (Headliner)'
+        ))
+      ) {
+        return null;
+      }
       await opt.waitForTimeout(1200);
     }
     await opt.waitForTimeout(1200);
@@ -6530,6 +6707,10 @@ step: {
   };
 
   const askedFirst = await pressHeadliners();
+  if (askedFirst === null) {
+    await opt.close();
+    break step;
+  }
   /**
    * Whether a headliner is STILL missing after the press, which is the same
    * question the assistant exists to answer, read off the button rather than
@@ -6581,8 +6762,9 @@ step: {
   // goes in. What must be true either way is that nothing the day had room for
   // is still missing, and the press that proves it is the second one: it adds
   // nothing, because there is nothing left it can add.
-  if (stillOffered) {
-    await pressHeadliners();
+  if (stillOffered && (await pressHeadliners()) === null) {
+    await opt.close();
+    break step;
   }
   const twiceHeadliners = await readDay();
   check(
@@ -6622,7 +6804,15 @@ step: {
     'nach dem Einplanen steht ein Rückgängig da',
     (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1
   );
-  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  if (
+    !(await press(
+      opt.locator(`${SHEET} [data-planner-optimize-run]`),
+      'Optimieren auf dem zu vollen Tag'
+    ))
+  ) {
+    await opt.close();
+    break step;
+  }
   await opt.waitForTimeout(900);
   check(
     'und ein Druck, der nichts ändert, nimmt es nicht weg',
@@ -6685,7 +6875,15 @@ step: {
     }
     await opt.waitForTimeout(3000);
 
-    await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+    if (
+      !(await press(
+        opt.locator(`${SHEET} [data-planner-optimize-run]`),
+        'Optimieren vor dem Fit-Assistenten'
+      ))
+    ) {
+      await opt.close();
+      break step;
+    }
     await opt.waitForTimeout(1200);
 
     const count = opt.locator('[data-planner-fit-count]');
@@ -6721,7 +6919,10 @@ step: {
         leverText.trim().slice(0, 80)
       );
 
-      await lever.click();
+      if (!(await press(lever, 'ein Hebel im Fit-Assistenten'))) {
+        await opt.close();
+        break step;
+      }
       await opt.waitForTimeout(900);
       const pulled = (await count.textContent()) ?? '';
       check(
@@ -6732,7 +6933,10 @@ step: {
 
       // Step two: the list, in the order things are given up in. Take the last
       // one out by hand — that is the whole point of the screen.
-      await opt.locator('[data-planner-fit-next]').click();
+      if (!(await press(opt.locator('[data-planner-fit-next]'), 'Weiter im Fit-Assistenten'))) {
+        await opt.close();
+        break step;
+      }
       await opt.waitForTimeout(600);
       const rows = opt.locator('[data-planner-fit-row]');
       const rowCount = await rows.count();
@@ -6744,7 +6948,12 @@ step: {
       const droppedKey = (await rows.last().getAttribute('data-planner-fit-row')) ?? '';
       const seedIndex = Number(droppedKey.replace(/^e:seed-/, ''));
       const droppedSlug = Number.isInteger(seedIndex) ? heads[seedIndex]?.attractionSlug : null;
-      await rows.last().locator('input[type="checkbox"]').click();
+      if (
+        !(await press(rows.last().locator('input[type="checkbox"]'), 'eine Checkbox der Fit-Liste'))
+      ) {
+        await opt.close();
+        break step;
+      }
       await opt.waitForTimeout(900);
 
       /**
@@ -6762,7 +6971,15 @@ step: {
         if (await opt.locator('[data-planner-fit-solved]').count()) break;
         const marked = opt.locator('[data-planner-fit-row]:has([data-planner-fit-drops])');
         if ((await marked.count()) === 0) break;
-        await marked.last().locator('input[type="checkbox"]').click();
+        if (
+          !(await press(
+            marked.last().locator('input[type="checkbox"]'),
+            'eine markierte Checkbox der Fit-Liste'
+          ))
+        ) {
+          await opt.close();
+          break step;
+        }
         await opt.waitForTimeout(700);
       }
       check(
@@ -6776,13 +6993,26 @@ step: {
         `${await opt.locator('[data-planner-fit-row]').count()} von ${heads.length}`
       );
 
-      await opt.locator('[data-planner-fit-next]').click();
+      if (
+        !(await press(
+          opt.locator('[data-planner-fit-next]'),
+          'Weiter im Fit-Assistenten, zweiter Schritt'
+        ))
+      ) {
+        await opt.close();
+        break step;
+      }
       await opt.waitForTimeout(600);
       check(
         'der dritte Schritt schließt mit dem Übernehmen ab',
         (await opt.locator('[data-planner-fit-apply]').count()) === 1
       );
-      await opt.locator('[data-planner-fit-apply]').click();
+      if (
+        !(await press(opt.locator('[data-planner-fit-apply]'), 'Übernehmen im Fit-Assistenten'))
+      ) {
+        await opt.close();
+        break step;
+      }
       await opt.waitForTimeout(1500);
 
       const applied = await readDay();
@@ -6972,7 +7202,10 @@ step: {
   // `parkfan_planner_width`, because the stored number is capped against the
   // window on the way out (`fitToViewport`) and a check that believed storage
   // would pass on a panel nobody can see.
-  await toggle.click();
+  if (!(await press(toggle, 'der Übersicht-Schalter (Spalten)'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2500);
   const widenedPanel = await panelBox();
   check(
@@ -6984,7 +7217,10 @@ step: {
   // And closing it again leaves the width where the press put it. Somebody who
   // has a 681 px panel asked for one; snapping back to 448 would undo a gesture
   // nobody made.
-  await toggle.click();
+  if (!(await press(toggle, 'der Übersicht-Schalter (Spalten), zurück'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(800);
   const afterClose = await panelBox();
   check(
@@ -7009,7 +7245,10 @@ step: {
   );
 
   const widePanel = await panelBox();
-  await toggle.click();
+  if (!(await press(toggle, 'der Übersicht-Schalter (zweite Spalte)'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2500);
 
   // A panel that is ALREADY wide enough keeps the width it was dragged to. The
@@ -7152,12 +7391,16 @@ step: {
     firstActive === `${PARK.slug}:${DATE}`,
     String(firstActive)
   );
-  await cols
-    .locator(`${SHEET} [data-planner-column]`)
-    .nth(1)
-    .locator('[data-planner-grid]')
-    .first()
-    .click({ position: { x: 30, y: 30 } });
+  if (
+    !(await press(
+      cols.locator(`${SHEET} [data-planner-column]`).nth(1).locator('[data-planner-grid]').first(),
+      'das Raster der zweiten Spalte',
+      { position: { x: 30, y: 30 } }
+    ))
+  ) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
   const secondActive = await activeColumn();
   check(
@@ -7193,12 +7436,16 @@ step: {
     (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2
   );
   // Back, so the assertions below find the arrangement they were written for.
-  await cols
-    .locator(`${SHEET} [data-planner-column]`)
-    .first()
-    .locator('[data-planner-grid]')
-    .first()
-    .click({ position: { x: 30, y: 30 } });
+  if (
+    !(await press(
+      cols.locator(`${SHEET} [data-planner-column]`).first().locator('[data-planner-grid]').first(),
+      'das Raster der ersten Spalte',
+      { position: { x: 30, y: 30 } }
+    ))
+  ) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(400);
 
   // Only the second column may be closed. The first is the plan's active day and
@@ -7210,7 +7457,15 @@ step: {
 
   // The park chooser lists the plan's OWN parks — this one holds two — and the
   // wizard at the foot is where a new one comes from.
-  await cols.locator(`${SHEET} [data-planner-column-park]`).last().click();
+  if (
+    !(await press(
+      cols.locator(`${SHEET} [data-planner-column-park]`).last(),
+      'der Parkname der letzten Spalte'
+    ))
+  ) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(400);
   const popover = cols.locator('[data-slot="popover-content"]');
   const parkList = ((await popover.textContent().catch(() => '')) ?? '').replace(/\s+/g, ' ');
@@ -7264,7 +7519,10 @@ step: {
   // brings THAT day back — it does not open tomorrow. Opening tomorrow here
   // would quietly discard an arrangement somebody made, and the only sign of it
   // would be a date they did not choose.
-  await toggle.click();
+  if (!(await press(toggle, 'der Übersicht-Schalter (dritte Spalte)'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2500);
   const revivedWidth = await panelBox();
   const revived = await cols
@@ -7304,7 +7562,12 @@ step: {
   );
 
   // Closing it is the toggle's other half, and the switch has to report it.
-  await cols.locator(`${SHEET} [data-planner-column-close]`).click();
+  if (
+    !(await press(cols.locator(`${SHEET} [data-planner-column-close]`), 'das × der zweiten Spalte'))
+  ) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(600);
   check(
     'die zweite Spalte lässt sich wieder schließen',
@@ -7520,7 +7783,7 @@ step: {
 // press, on the screen whose whole job is pressing them. The mock below holds
 // each answer for 700 ms on purpose: that window IS the bug, and without it the
 // old code would pass.
-{
+step: {
   const wiz = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(wiz);
 
@@ -7580,7 +7843,10 @@ step: {
   // without the press, zero with this line.
   await settleHydration(wiz);
 
-  await link.first().click();
+  if (!(await press(link.first(), 'der Link in den Assistenten'))) {
+    await wiz.close();
+    break step;
+  }
   await wiz.waitForTimeout(1500);
 
   check('und der Klick navigiert nicht weg', wiz.url().startsWith(parkUrl), wiz.url());
@@ -7598,7 +7864,15 @@ step: {
     (await wizard.locator('[data-slot="dialog-title"], h2').first().textContent()) ?? '';
   check('auf dem Park, um den es auf der Seite geht', heroTitle.includes(PARK.name), heroTitle);
 
-  await wizard.locator(`button[data-planner-day="${dayFrom(1)}"]`).click();
+  if (
+    !(await press(
+      wizard.locator(`button[data-planner-day="${dayFrom(1)}"]`),
+      'morgen im Monatskalender'
+    ))
+  ) {
+    await wiz.close();
+    break step;
+  }
   await wizard
     .locator('img')
     .first()
@@ -7629,7 +7903,15 @@ step: {
   }, 40);
   const before = planDayCalls;
   for (const offset of [2, 3, 4]) {
-    await wizard.locator(`button[data-planner-day="${dayFrom(offset)}"]`).click();
+    if (
+      !(await press(
+        wizard.locator(`button[data-planner-day="${dayFrom(offset)}"]`),
+        'ein Tag im Monatskalender'
+      ))
+    ) {
+      await wiz.close();
+      break step;
+    }
     await wiz.waitForTimeout(350);
   }
   await wiz.waitForTimeout(1500);
@@ -7665,7 +7947,15 @@ step: {
       /* mid-render */
     }
   }, 40);
-  await wizard.locator(`button[data-planner-day="${dayFrom(5)}"]`).click();
+  if (
+    !(await press(
+      wizard.locator(`button[data-planner-day="${dayFrom(5)}"]`),
+      'der fünfte Tag im Monatskalender'
+    ))
+  ) {
+    await wiz.close();
+    break step;
+  }
   await wiz.waitForTimeout(1200);
   clearInterval(sampler2);
   check(
