@@ -1444,20 +1444,27 @@ export function PlannerFlyout({
                     than asking a question the route already answers.
 
                     NOT on a phone, and that is the decision this row cost.
-                    Measured at 390 px, against the row as it then was — 295 px
-                    (375 − twice the header's `px-3` − the 56 of
-                    `max-sm:pr-14`) —, the day picker took 176 and each 44 px
-                    target plus its gap 52. One of them left the park name
-                    63 px; two left it **11**, i.e. no park name. Something had
-                    to go, and of the four the
+                    Measured for PAR-202 with the "+" drawn and without it, at
+                    320, 360, 390 and 430 px in all six locales (the locale
+                    moved no number). The row is the window less the header's
+                    two `px-3`, 336 px at 360. The park name gets what the day
+                    picker, the bell, the ×, the gaps and its own button's
+                    chevron and padding leave: 84 px at 360, 114 at 390, 44 at
+                    320. The "+" costs 48 of that (44 plus its `gap-1`), which
+                    leaves 36 at 360, 66 at 390 and 0 at 320. „Phantasialand" needs 80, so with the "+" it
+                    truncates at every width below 430. „Universal Studios
+                    Florida", the longest name among the homepage's featured
+                    parks, needs 139 and truncates below 430 even without it.
+                    Something had to go, and of the row's controls the
                     "+" is the only one that closes no ROUTE. Two things reach
                     what it reached, and it is worth being exact about which:
                       · a second day at the park on screen is the day picker
                         beside this, one tap on `›` — measured: the same park
                         on an unplanned date, with axis, ride search and
                         optimise, which is fewer taps than the "+" ever was;
-                      · the WIZARD is behind the chevron, in the overview,
-                        where a new day stands next to the days that exist.
+                      · the WIZARD is in the overview (the park chooser's foot
+                        opens it, see `onShowOverview`), where a new day stands
+                        next to the days that exist.
                     What does not survive is the wizard arriving with the page's
                     park already filled in — the overview's start deliberately
                     asks that question, and seeding it would delete the park
@@ -1466,14 +1473,6 @@ export function PlannerFlyout({
                     That residue is PAR-181 rather than a decision taken here.
                     The day picker is the panel's most-pressed control and the
                     park name is what tells a reader which plan they are in.
-
-                    And the budget the paragraph above is measured against has
-                    since moved: dropping the × gave the row 351 px, i.e. 56
-                    more, so two 44 px targets leave the park name 67 rather
-                    than 11. That does not put the "+" back by itself — 67 is
-                    still under the 80 „Phantasialand" measures, and the two
-                    paths above still reach what it reached — but it does
-                    re-open the question this comment closed, which is PAR-202.
 
                     `!isPhone` rather than `!phoneHead`: it is gone on a phone
                     for good, not only while the head is up. The overview is
