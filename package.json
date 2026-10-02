@@ -137,6 +137,7 @@
     "check:header-links": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-header-links.mjs",
     "test:ignore-build": "node scripts/test-vercel-ignore-build.mjs",
     "check:webmcp": "node scripts/check-webmcp.mjs",
+    "check:header-reach": "node scripts/check-header-reach.mjs",
     "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
     "check:admin-login-form": "node scripts/check-admin-login-form.mjs",
     "probe:isr": "node scripts/isr-cache-probe.mjs",
