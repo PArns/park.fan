@@ -1,4 +1,5 @@
 {
+  "title": "wuermling-express",
   "park": "phantasialand",
   "ride": "wuermling-express",
   "area": "Fantasy",
@@ -10,5 +11,9 @@
     "year": 2026
   },
   "shotAt": "2026-09-27",
+  "focus": {
+    "x": 0.7066,
+    "y": 0.5176
+  },
   "review": true
 }

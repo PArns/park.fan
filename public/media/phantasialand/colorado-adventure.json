@@ -24,8 +24,9 @@
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
   },
+  "shotAt": "2026-04-19",
   "focus": {
-    "x": 0.33,
-    "y": 0.48
+    "x": 0.2719,
+    "y": 0.5688
   }
 }
