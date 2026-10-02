@@ -228,8 +228,8 @@ export async function ParkPageShell({
             before the first byte instead. The proximity fetch carries its own one-week
             `revalidate`, which `force-dynamic` does not override, so on these dynamic routes it is
             a Data Cache read and not an API call. Streamed with `fallback={null}`, the section
-            arrived after paint and pushed the calendar page down 528 px under a desktop reader at
-            y=3125 (CLS 0.2414, PAR-411). Live status is still layered on by the client. */}
+            arrived after paint and cost a desktop reader of the calendar page at y=3125 a CLS of
+            0.2472; inline it is 0.0058 (PAR-411). Live status is still layered on by the client. */}
           {park.latitude != null && park.longitude != null && (
             <NearbyParksSection
               parkId={park.id}
