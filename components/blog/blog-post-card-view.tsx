@@ -11,9 +11,21 @@ import { postPath } from '@/lib/blog/paths';
 
 /**
  * What the row below `sm` actually paints: a 96px thumbnail. The panelled card is
- * `display:none` there, so its own `sizes` has to say 96px too — otherwise a phone
- * preloads a full-width cover for an element nobody can see, and the two layers
- * then pick the same srcset candidate as the row, i.e. one request instead of two.
+ * `display:none` there, so its own `sizes` says 96px too, which keeps a phone from
+ * asking for a full-width cover for an element nobody can see.
+ *
+ * That alone does not make the row and the card share a request. next/image builds
+ * the srcset from `sizes`: with a `vw` term it keeps only widths of at least
+ * `deviceSizes[0]` (640) times the smallest share, so the card's `33vw` starts its
+ * list at 256, while the row's plain `96px` gets every width from 32 up. At DPR 1 the
+ * row picks 96 and the card 256; on a desktop the hidden row still fetches its 96.
+ *
+ * A lazy `<img>` under `display:none` is never fetched, so only a `priority` card
+ * pays for this: eager and preloaded, both layers load. Such a card hands its own
+ * `sizes` to the row (see `BlogPostCardView`). Same srcset and same `sizes` means the
+ * same URL at every width and DPR, and React merges the two preloads into one. The
+ * price is a 256 instead of a 96 for that one thumbnail on a DPR 1 phone; at DPR 2
+ * and 3 both layers already picked 256 and 384.
  */
 const ROW_THUMB_SIZES = '96px';
 const FEATURE_SIZES = '(max-width: 640px) 96px, (max-width: 1024px) 100vw, 1024px';
@@ -87,6 +99,7 @@ export function BlogPostCardView({
   }
 
   const isFeature = variant === 'feature';
+  const cardSizes = isFeature ? FEATURE_SIZES : CARD_SIZES;
 
   return (
     <>
@@ -109,6 +122,7 @@ export function BlogPostCardView({
         coverPosition={coverPosition}
         categoryLabel={categoryLabel}
         priority={priority}
+        sizes={priority ? cardSizes : ROW_THUMB_SIZES}
         className={cn('sm:hidden', className)}
       />
 
@@ -138,7 +152,7 @@ export function BlogPostCardView({
                 alt={frontmatter.coverImage?.alt ?? frontmatter.title}
                 hideOnMobile
                 objectPosition={coverPosition}
-                sizes={isFeature ? FEATURE_SIZES : CARD_SIZES}
+                sizes={cardSizes}
               />
             ) : (
               // The ground only: the pin goes into the photo strip below, like a cover's frame.
@@ -253,7 +267,7 @@ export function BlogPostCardView({
                 hideOnMobile
                 priority={priority}
                 objectPosition={coverPosition}
-                sizes={isFeature ? FEATURE_SIZES : CARD_SIZES}
+                sizes={cardSizes}
               />
             ) : (
               <BlogCoverFallback ground={false} />
@@ -344,6 +358,8 @@ interface BlogPostRowProps {
   coverPosition: string;
   categoryLabel: string | null;
   priority?: boolean;
+  /** `sizes` for the thumbnail; a `priority` card passes its own (see `ROW_THUMB_SIZES`). */
+  sizes?: string;
   className?: string;
 }
 
@@ -371,6 +387,7 @@ function BlogPostRow({
   coverPosition,
   categoryLabel,
   priority = false,
+  sizes = ROW_THUMB_SIZES,
   className,
 }: BlogPostRowProps) {
   const f = useFormatter();
@@ -392,7 +409,7 @@ function BlogPostRow({
             src={cover}
             alt={frontmatter.coverImage?.alt ?? frontmatter.title}
             fill
-            sizes={ROW_THUMB_SIZES}
+            sizes={sizes}
             className="object-cover"
             style={{ objectPosition: coverPosition }}
             priority={priority}
