@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
+import { dayStartMin, heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
 
 interface PlannerGridGroundProps {
   grid: DayGrid;
@@ -39,7 +39,7 @@ export function PlannerGridGround({
   const bandHeight = heightFor(grid, grid.closeMin - grid.openMin);
 
   const hours: number[] = [];
-  for (let h = Math.ceil(grid.openMin / 60); h * 60 <= grid.closeMin; h++) hours.push(h);
+  for (let h = Math.ceil(dayStartMin(grid) / 60); h * 60 <= grid.closeMin; h++) hours.push(h);
 
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -57,6 +57,22 @@ export function PlannerGridGround({
         )}
         style={{ top: bandTop, height: bandHeight }}
       />
+
+      {/* L1b — the early-entry window, above the band: open, but only for the
+          headliners, so it is drawn in the band's colour at half its strength
+          and shares the band's dashed top edge. `null` on every day the visitor
+          has not said they hold early entry, which is every day until PAR-200's
+          answer is wired in, and then nothing here renders. */}
+      {grid.earlyEntryOpenMin !== null && !loading && (
+        <div
+          data-early-entry-band=""
+          className="border-primary/40 bg-primary/[0.03] absolute inset-x-0 border-t border-dashed"
+          style={{
+            top: yFor(grid, grid.earlyEntryOpenMin),
+            height: heightFor(grid, grid.openMin - grid.earlyEntryOpenMin),
+          }}
+        />
+      )}
 
       {/* L2 — the truncation feather, and it sits BELOW the band rather than
           inside its last hour. The API reports the hour the closing time falls

@@ -75,9 +75,13 @@ export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchas
         month: 'short',
       }).format(new Date(`${entry.date}T12:00:00`));
 
+  // Below `sm` the card is tighter: it sits above the "Heute im Park" panel, and at its desktop
+  // padding it pushed the first headliner row under the fold at 360×780 (y=832, PAR-592). Every
+  // row and every price stays; only padding and row spacing shrink. The rows are not links, so
+  // they owe no touch-target height.
   return (
-    <GlassCard variant="medium" className={cn('border-primary/10', className)}>
-      <div className="mb-3 flex flex-wrap items-center gap-2">
+    <GlassCard variant="medium" className={cn('border-primary/10 max-sm:p-3', className)}>
+      <div className="mb-3 flex flex-wrap items-center gap-2 max-sm:mb-1.5">
         <Zap className="text-primary h-4 w-4 shrink-0" />
         <GlossaryTermLink termId="lightning-lane" tooltipOnly>
           <h2 className="text-sm font-semibold">{t('title')}</h2>
@@ -94,7 +98,7 @@ export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchas
             <li
               key={item.id ?? `${item.name}-${i}`}
               className={cn(
-                'flex items-center justify-between gap-3 py-1.5 text-sm',
+                'flex items-center justify-between gap-3 py-1.5 text-sm max-sm:py-0.5',
                 soldOut && 'opacity-60'
               )}
             >
@@ -107,7 +111,7 @@ export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchas
                 {item.name}
               </span>
               <span className="flex shrink-0 items-center gap-2">
-                {soldOut && <Badge className="badge-muted">{t('soldOut')}</Badge>}
+                {soldOut && <Badge className="badge-muted max-sm:py-0">{t('soldOut')}</Badge>}
                 {price && <span className="font-medium tabular-nums">{price}</span>}
               </span>
             </li>

@@ -2615,6 +2615,11 @@
         "label": "Restare asciutti se possibile",
         "hint": "Le attrazioni ad acqua vengono segnalate nell’elenco."
       },
+      "earlyEntry": {
+        "label": "Abbiamo l’ingresso anticipato",
+        "hint": "Qui gli ospiti degli hotel possono salire sulle grandi attrazioni prima dell’apertura ufficiale.",
+        "hintMinutes": "Qui gli ospiti degli hotel possono salire sulle grandi attrazioni {minutes} minuti prima dell’apertura ufficiale."
+      },
       "headliners": {
         "label": "Pianifica le attrazioni principali",
         "hint": "Mette le {count} attrazioni grandi nella giornata, secondo le curve orarie.",

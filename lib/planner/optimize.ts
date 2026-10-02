@@ -1,6 +1,6 @@
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
-import { type DayGrid, SNAP_MIN_FINE, rideFloor } from './day-grid';
+import { type DayGrid, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
 import { estimateFor, plannedMinutes } from './estimate';
 import { transferBetween } from './leg';
 import { partyFlags } from './party';
@@ -1006,7 +1006,9 @@ function earliestStart(
   transferMinutes: number
 ): number {
   const candidate = ctx.candidates[index];
-  const earliest = freeBefore === null ? ctx.grid.openMin : freeBefore + transferMinutes;
+  // `dayStartMin`: on an early-entry day a headliner's floor sits below the
+  // park's opening, and the floor decides. Without early entry it is `openMin`.
+  const earliest = freeBefore === null ? dayStartMin(ctx.grid) : freeBefore + transferMinutes;
   return snapUp(Math.max(earliest, candidate.floorMin), SNAP_MIN_FINE);
 }
 

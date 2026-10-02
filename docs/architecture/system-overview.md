@@ -186,11 +186,17 @@ will do.
 What is left is deliberate. The school-holiday warning under the best-days grid
 (46 px desktop / 86 px phone) depends on the data the boundary is waiting for and only
 appears on 6 of 27 sampled parks, so reserving it would leave an empty band on the
-other 21. "Parks in der Nähe" keeps its `fallback={null}` for the same kind of reason:
-**48 % of the 212 parks show no nearby section at all** (the API answers `in_park` for
-a big park, or has no neighbour inside 100 km), so a fixed three-card reservation would
-collapse ~500 px on half the catalog — a new shift to fix an old one. Its own fetch
-cannot start before `park.latitude` exists, so it cannot be overlapped either.
+other 21.
+
+"Parks in der Nähe" had a `fallback={null}` for a similar reason: **48 % of the 212
+parks show no nearby section at all** (the API answers `in_park` for a big park, or has
+no neighbour inside 100 km), so a fixed three-card reservation would collapse ~500 px on
+half the catalog. It is no longer streamed (PAR-411). Its proximity fetch has its own
+one-week `revalidate`, which `force-dynamic` does not override, so on these dynamic
+routes the boundary was waiting on a Data Cache read. `ParkPageShell` now renders the
+section inline, so it is in the first HTML at full height where it exists and absent
+where it does not. Phantasialand's calendar at `--late --scroll=3192` on desktop went
+from 0.2472 to 0.0058; Liseberg, with no neighbours, stayed at 0.0001.
 
 ---
 

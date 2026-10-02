@@ -655,12 +655,14 @@ export function setDayPrefs(
   const next: PlannerDayPrefs = {
     ...(height !== undefined ? { riderHeightCm: height } : {}),
     ...(merged.avoidWet ? { avoidWet: true } : {}),
+    ...(merged.earlyEntry ? { earlyEntry: true } : {}),
   };
   const empty = Object.keys(next).length === 0;
 
   if (
     (current?.riderHeightCm ?? undefined) === (empty ? undefined : next.riderHeightCm) &&
-    (current?.avoidWet ?? false) === (empty ? false : (next.avoidWet ?? false))
+    (current?.avoidWet ?? false) === (empty ? false : (next.avoidWet ?? false)) &&
+    (current?.earlyEntry ?? false) === (empty ? false : (next.earlyEntry ?? false))
   ) {
     // Same answers: the same object, so `useSyncExternalStore` skips the render
     // and no localStorage write happens.

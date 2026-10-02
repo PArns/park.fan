@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 
 import { SITE_URL } from '@/i18n/config';
@@ -223,16 +222,21 @@ export async function ParkPageShell({
             statistics keep their place further down. */}
           {statsAfterChildren ? stats : null}
 
-          {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
+          {/* Nearby Parks — rendered inline, NOT inside <Suspense>. Whether the section exists at
+            all is the whole layout question: 48 % of parks have fewer than two neighbours and get
+            nothing, so no fixed fallback fits both halves. Awaiting it here answers the question
+            before the first byte instead. The proximity fetch carries its own one-week
+            `revalidate`, which `force-dynamic` does not override, so on these dynamic routes it is
+            a Data Cache read and not an API call. Streamed with `fallback={null}`, the section
+            arrived after paint and cost a desktop reader of the calendar page at y=3125 a CLS of
+            0.2472; inline it is 0.0058 (PAR-411). Live status is still layered on by the client. */}
           {park.latitude != null && park.longitude != null && (
-            <Suspense fallback={null}>
-              <NearbyParksSection
-                parkId={park.id}
-                lat={park.latitude}
-                lng={park.longitude}
-                className="mt-8"
-              />
-            </Suspense>
+            <NearbyParksSection
+              parkId={park.id}
+              lat={park.latitude}
+              lng={park.longitude}
+              className="mt-8"
+            />
           )}
 
           {blogSection}

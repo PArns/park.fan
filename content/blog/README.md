@@ -17,7 +17,7 @@ content/blog/
   README.md                # this file
   en/<slug>.md             # English posts
   de/<slug>.md             # German posts
-  nl|fr|es|it/<slug>.md    # other locales (optional)
+  nl|fr|es|it/<slug>.md    # the other four locales
 ```
 
 - **The file name is the URL slug**: `de/willkommen-im-park-fan-blog.md`
@@ -25,8 +25,13 @@ content/blog/
 - **Translations of the same post share a `translationKey`** (see frontmatter).
   Slugs may differ per language; the `translationKey` links them for hreflang
   alternates and EN fallback.
-- Locales without their own file fall back to the English version with a
-  "translation not ready" notice.
+- **Every post ships in all six locales in the same PR**, and so does every
+  later update, with the same `updatedAt` in all six. No waiting for the German
+  to be approved, no follow-up translation ticket
+  ([the rule](../../docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md),
+  `pnpm check:blog-updated-at`).
+- A locale without its own file falls back to the English version with a
+  "translation not ready" notice. That is a safety net, not a way to publish.
 - **No year in the slug** unless the post really is about that one season
   (`halloween-freizeitparks-2026` is; a park guide that gets updated in place
   is not). A `-2026` in an evergreen URL just makes it look stale a year later.

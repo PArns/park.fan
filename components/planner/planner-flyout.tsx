@@ -25,7 +25,13 @@ import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
+import {
+  buildDayGrid,
+  earlyEntryOpenMin,
+  growGridForSpans,
+  nextFreeStart,
+  nowFloor,
+} from '@/lib/planner/day-grid';
 import {
   PLANNER_LANDSCAPE_QUERY,
   PLANNER_PHONE_QUERY,
@@ -501,13 +507,15 @@ export function PlannerFlyout({
   // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
+  // A number, so the memo below keys on a value and not on the context object.
+  const earlyOpen = earlyEntryOpenMin(day?.context);
   // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
   // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
   // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
   // grid itself when the plan fits, so the identity now moves only with the axis.
   const baseGrid = useMemo(
-    () => buildDayGrid(openHour, closeHour, pxPerMin),
-    [openHour, closeHour, pxPerMin]
+    () => buildDayGrid(openHour, closeHour, pxPerMin, earlyOpen),
+    [openHour, closeHour, pxPerMin, earlyOpen]
   );
   const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
@@ -1205,7 +1213,18 @@ export function PlannerFlyout({
             // `animate-in` reads too, so the slide in and out gets the same curve
             // (PAR-190). The desktop panel keeps its 300 ms: it is timed against
             // the page's own inset transition, which a phone does not have.
-            'planner-phone:transition-[height,max-height,bottom] planner-phone:duration-[400ms] planner-phone:ease-[cubic-bezier(0.32,0.72,0,1)]'
+            'planner-phone:transition-[height,max-height,bottom] planner-phone:duration-[400ms] planner-phone:ease-[cubic-bezier(0.32,0.72,0,1)]',
+            // A reader who asked for less motion gets a sheet that is there and
+            // gone, and a detent that snaps. `SheetContent` never honoured the
+            // preference, so on a phone the slide ran its 400 ms regardless
+            // (measured with `reducedMotion: 'reduce'`: `animation-name: enter`,
+            // one running animation). Radix unmounts at once when nothing is
+            // animating. The state variant is in the class because the
+            // `data-[state=open]:animate-in` above is one selector more specific
+            // than a bare `motion-reduce:animate-none` and wins over it. Here
+            // and not in `components/ui/sheet.tsx`: the header's burger sheet is
+            // not part of this change (PAR-190).
+            'motion-reduce:transition-none motion-reduce:data-[state=closed]:animate-none motion-reduce:data-[state=open]:animate-none'
           )}
           // The width is not a prop: `attachSheet` writes it, and leaves it off
           // on a phone.

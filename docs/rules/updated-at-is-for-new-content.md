@@ -17,7 +17,10 @@ season's event dates and new parks is an update. Nothing else is:
 - anything in the frontmatter but the facts
 
 Leave the field as it is in those changes, and never add one to a post that has none. When a change
-does carry new content, set `updatedAt` in every locale that got it, to the day it went live.
+does carry new content, it goes into all six locales in the same pull request, and `updatedAt` is
+set in all six to the day it went live
+([a post ships in six languages in one pull request](a-post-ships-in-six-languages-in-one-pull-request.md),
+`pnpm check:blog-updated-at`).
 
 A news post has no `updatedAt`: a changed fact there is a dated `[!CORRECTION]` note
 ([a news correction is shown, never silent](a-news-correction-is-shown-never-silent.md)), and news

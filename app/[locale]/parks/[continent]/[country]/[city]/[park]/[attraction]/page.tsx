@@ -532,7 +532,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
    * What this does NOT cover is a ride inside a wait-times park that has no measured day of its
    * own (2 of 8 non-headliners sampled at Phantasialand). Nothing in the shell can predict it —
    * `statistics` is null on every attraction of the park payload — so it is left alone rather
-   * than guessed at, the same call `NearbyParksSection` makes one page over.
+   * than guessed at. `NearbyParksSection` one page over is the opposite case: the server does
+   * know whether a park has neighbours, so that section renders inline (PAR-411).
    */
   const waitsReadable = hasReadableWaitTimes(park);
 

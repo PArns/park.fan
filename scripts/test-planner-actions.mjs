@@ -39,6 +39,7 @@ import {
   RIDER_HEIGHT_DEFAULT_CM,
 } from '../lib/planner/party.ts';
 import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
+import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { actualVsEstimate, estimateFor } from '../lib/planner/estimate.ts';
 
 const testCases = [];
@@ -767,6 +768,78 @@ test(
   test('no answers at all is not a party', hasPartyPrefs(undefined), false);
   test('an empty object is not a party', hasPartyPrefs({}), false);
   test('a height is', hasPartyPrefs({ riderHeightCm: 105 }), true);
+
+  // Early entry (PAR-200): a third answer on the same day, asked only at a park
+  // with the curated flag. It rides the same merge, the same no-op guard and
+  // the same parser as the other two, and it is not an answer about the party.
+  const early = setDayPrefs(both, PARK.parkSlug, PARK.date, { earlyEntry: true });
+  test(
+    'early entry joins the answers already there',
+    early.parks[PARK.parkSlug].days[PARK.date].prefs,
+    {
+      riderHeightCm: 105,
+      avoidWet: true,
+      earlyEntry: true,
+    }
+  );
+  test(
+    'writing early entry again changes nothing',
+    setDayPrefs(early, PARK.parkSlug, PARK.date, { earlyEntry: true }) === early,
+    true
+  );
+  test(
+    'switching it off drops the key',
+    setDayPrefs(early, PARK.parkSlug, PARK.date, { earlyEntry: undefined }).parks[PARK.parkSlug]
+      .days[PARK.date].prefs,
+    { riderHeightCm: 105, avoidWet: true }
+  );
+  test(
+    'it survives a block being moved',
+    moveEntry(
+      early,
+      PARK.parkSlug,
+      PARK.date,
+      early.parks[PARK.parkSlug].days[PARK.date].entries[0].id,
+      14 * 60
+    ).parks[PARK.parkSlug].days[PARK.date].prefs?.earlyEntry,
+    true
+  );
+  const onlyEarly = setDayPrefs(
+    openDay(
+      EMPTY_PLANNER_STATE,
+      { slug: PARK.parkSlug, name: PARK.parkName, geo: PARK.geo },
+      '2026-11-02'
+    ),
+    PARK.parkSlug,
+    '2026-11-02',
+    { earlyEntry: true }
+  );
+  test('early entry alone is stored', onlyEarly.parks[PARK.parkSlug].days['2026-11-02'].prefs, {
+    earlyEntry: true,
+  });
+  test('and is not a party', hasPartyPrefs({ earlyEntry: true }), false);
+  test(
+    'another day of the same park is not touched',
+    setDayPrefs(onlyEarly, PARK.parkSlug, '2026-11-03', { avoidWet: true }).parks[PARK.parkSlug]
+      .days['2026-11-02'].prefs,
+    { earlyEntry: true }
+  );
+  // The parser is the way back out of localStorage and a shared link.
+  const reread = parsePlannerPayload(JSON.stringify({ payload: early }));
+  test(
+    'early entry survives a round trip through the parser',
+    reread?.parks[PARK.parkSlug]?.days[PARK.date]?.prefs,
+    { riderHeightCm: 105, avoidWet: true, earlyEntry: true }
+  );
+  const junk = JSON.parse(JSON.stringify(onlyEarly));
+  junk.parks[PARK.parkSlug].days['2026-11-02'].prefs = { earlyEntry: 'yes' };
+  test(
+    'anything but true is no answer',
+    parsePlannerPayload(JSON.stringify({ payload: junk }))?.parks[PARK.parkSlug]?.days[
+      '2026-11-02'
+    ],
+    { date: '2026-11-02', entries: [] }
+  );
 }
 
 // ── What the answers flag ───────────────────────────────────────────────────

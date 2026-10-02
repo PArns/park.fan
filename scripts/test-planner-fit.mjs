@@ -15,7 +15,7 @@
  *     pnpm test:planner-fit
  */
 
-import { buildDayGrid } from '../lib/planner/day-grid.ts';
+import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
 import { headlinersToAdd } from '../lib/planner/optimize.ts';
 import {
   SHORT_BLOCK_MIN,
@@ -104,7 +104,12 @@ function entry(id, slug, startMinute, extra = {}) {
 
 /** The whole input in one call — the shape every call site builds. */
 function inputFor(payload, entries, add, clock) {
-  const grid = buildDayGrid(payload.context.openHour, payload.context.closeHour);
+  const grid = buildDayGrid(
+    payload.context.openHour,
+    payload.context.closeHour,
+    undefined,
+    earlyEntryOpenMin(payload.context)
+  );
   return {
     day: payload,
     grid,
@@ -501,6 +506,37 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     fitOrder(input, pinned)
       .map((wish) => wish.key)
       .join(', ')
+  );
+}
+
+// ── Early entry: the hour before the gates is room the assistant can use (PAR-199)
+
+{
+  const rides = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 70));
+  const early = { hasEarlyEntry: true, earlyEntryMinutesPeak: 60 };
+  const run = (context) => {
+    const payload = day(rides, context);
+    const add = headlinersToAdd(payload, [], undefined);
+    const input = inputFor(payload, [], add);
+    return { input, outcome: evaluateFit(input, fitChoiceAll()) };
+  };
+  const off = run(early);
+  const on = run({ ...early, earlyEntry: true });
+  check(
+    'EE1 five 70-minute headliners do not all fit a six-hour day',
+    off.outcome.fitted.length < 5,
+    `${off.outcome.fitted.length}`
+  );
+  check('EE2 so the assistant is needed', needsFitHelp(off.input, fitChoiceAll()) === true);
+  check(
+    'EE3 with early entry the hour before the gates holds one more',
+    on.outcome.fitted.length > off.outcome.fitted.length,
+    `${on.outcome.fitted.length} gegen ${off.outcome.fitted.length}`
+  );
+  check(
+    'EE4 and a stop of it is filed before the park opens',
+    on.outcome.stops.some((stop) => stop.startMinute < OPEN * 60),
+    JSON.stringify(on.outcome.stops.map((stop) => stop.startMinute))
   );
 }
 

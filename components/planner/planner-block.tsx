@@ -15,7 +15,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
-import { actualVsEstimate, type PlannerEstimate } from '@/lib/planner/estimate';
+import { actualVsEstimate, isAssumedWait, type PlannerEstimate } from '@/lib/planner/estimate';
 import type { PlanDayShowSource, PlanDayTier } from '@/lib/api/types';
 
 /**
@@ -245,7 +245,7 @@ export function PlannerBlock({
   const boxPx = drawnBoxPx(grid, custom ? custom.durationMinutes : wait);
 
   /** An assumed figure has no colour: a tint is a claim about how busy it is. */
-  const assumed = estimate.missing === 'assumed';
+  const assumed = isAssumedWait(estimate);
   const tone = !custom && hasFigure && !assumed ? waitTimeCrowdTier(wait) : null;
 
   // The tier's soft edge rotates from "to right" to "to bottom", and improves in

@@ -1,6 +1,6 @@
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
-import { unfoldedCloseHour } from './day-grid';
+import { earlyEntryOpenMin, opensEarly, unfoldedCloseHour } from './day-grid';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 
@@ -56,8 +56,31 @@ export interface PlannerEstimate {
    * surface can tell an assumption from a forecast — a block tints itself by
    * how busy it is, and a queue nobody measured has no business claiming a
    * colour.
+   *
+   * `early-entry` comes with a figure too, and the same one: a headliner filed
+   * before the park opens, on a day the visitor holds early entry. The API has
+   * no hour before the gates for any ride, so there is nothing measured to
+   * show; the assumption is stated instead (PAR-199, decision A). Read both
+   * through {@link isAssumedWait}.
    */
-  missing: 'none' | 'assumed' | 'no-day' | 'no-curve' | 'no-source' | 'outside-hours' | 'custom';
+  missing:
+    | 'none'
+    | 'assumed'
+    | 'early-entry'
+    | 'no-day'
+    | 'no-curve'
+    | 'no-source'
+    | 'outside-hours'
+    | 'custom';
+}
+
+/**
+ * Whether the figure is an assumption rather than a forecast — `assumed` or
+ * `early-entry`. Every surface that withholds a crowd tint or prints a `~` asks
+ * this, so a new assumed state cannot be tinted by one of them and not another.
+ */
+export function isAssumedWait(estimate: Pick<PlannerEstimate, 'missing'>): boolean {
+  return estimate.missing === 'assumed' || estimate.missing === 'early-entry';
 }
 
 /**
@@ -167,6 +190,29 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   // the grid's own rule rather than restated here: a second copy is what let
   // the two disagree in the first place.
   const hour = Math.floor(entry.startMinute / 60);
+
+  // Before the gates, on an early-entry day, for a ride that opens early: the
+  // assumption, marked as such. Asked per HOUR like everything else here, so the
+  // optimiser's hourly table (probed at :00) and a block at :45 in the same
+  // hour carry the same figure. A free block is still a free block.
+  if (hour < openHour && !entry.custom) {
+    const early = earlyEntryOpenMin(day.context);
+    if (
+      early !== null &&
+      hour >= Math.floor(early / 60) &&
+      entry.attractionSlug &&
+      opensEarly(rideOf(day, entry.attractionSlug), openHour * 60)
+    ) {
+      return {
+        wait: ASSUMED_WAIT_MIN,
+        uncertaintyMinutes: null,
+        expectedError: null,
+        tier: day.tier ?? null,
+        missing: 'early-entry',
+      };
+    }
+  }
+
   if (hour < openHour || hour > unfoldedCloseHour(openHour, closeHour)) {
     return {
       wait: null,

@@ -94,6 +94,7 @@ _A blog post, UI strings, images, captions._
 - [Card photos are two layers (REQUIREMENT)](card-photos-are-two-layers.md)
 - [Localized blog gallery captions](localized-blog-gallery-captions.md)
 - [A version is a unit of communication, not a build artifact (REQUIREMENT)](a-version-is-a-unit-of-communication.md)
+- [A post ships in six languages in one pull request (REQUIREMENT)](a-post-ships-in-six-languages-in-one-pull-request.md)
 - [A news correction is shown, never silent (REQUIREMENT)](a-news-correction-is-shown-never-silent.md)
 - [`updatedAt` is for new content (REQUIREMENT)](updated-at-is-for-new-content.md)
 - [A quote names its source, and a legal claim names its side (REQUIREMENT)](a-quote-names-its-source.md)

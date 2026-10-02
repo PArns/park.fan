@@ -816,7 +816,7 @@ The general rules apply everywhere. These are the additions per surface.
 ### 5.0 News posts (`category: news`)
 
 - **`date` is the day the post goes live** (merge day, Europe/Berlin), not the day it was written. Set the PR's day; if the PR merges on a later day, correct `date` before the merge.
-- **All six languages ship in the same pull request.** A guide waits for the German to be approved before it is translated; news does not, because it is stale within days. On 2026-09-30 four news posts existed only in German, the oldest since 16 September, and `/en/news/…` showed the fallback notice all that time. Write the German first and derive the other five from it (§6), in the same PR, with the same `translationKey`, `date`, `parkLinks`, `rideLinks` and `coverImage.src`. A later `[!CORRECTION]` goes into all six as well.
+- **All six languages ship in the same pull request**, for news as for every other post ([the rule](rules/a-post-ships-in-six-languages-in-one-pull-request.md)). Write the German first and derive the other five from it (§6), with the same `translationKey`, `date`, `parkLinks`, `rideLinks` and `coverImage.src`. A later `[!CORRECTION]` goes into all six as well.
 - **The title carries one fact, in at most 60 characters.** Not `<Park>: <Fakt>, und <Pointe>` (a park-name prefix, a colon, a comma, „und", a trailing gag): seven of the first eight news titles had that shape, and it is what reads as generated. No list of three news items and no punchline in a subordinate clause. The park name is in the title when it is the subject. Two news titles in the same week may not share a shape, and the same goes for `seo.title`. For the tone, not for copying: „HalloWeekends in Cedar Point: Neues Diablo-Labyrinth", „Traumatica im Europa-Park wird zehn Jahre alt". Read every title aloud before delivering: newspaper headline, or line from an advert?
 - **No cover image twice among news posts** ([media database](rules/media-database.md)). Check before writing: `grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`. If the photo is taken, pick another from `public/media/<park-slug>/` or `public/media/halloween-2026/`; if there is none, the post goes out without a cover, and the site draws its brand fallback there ([`BlogCoverFallback`](features/blog-cover-fallback.md)). The same image twice is worse than none. A photo whose caption says it is from another park is allowed only when there is nothing else and no other news post carries it.
 - A direct quote is a `> [!QUOTE]` block with a linked source line, and a lawsuit or an injury is attributed in every sentence ([a quote names its source](rules/a-quote-names-its-source.md)).
@@ -1037,7 +1037,9 @@ all is [a version is a unit of communication](rules/a-version-is-a-unit-of-commu
 
 ## 6. German is the source; the other five are derived
 
-German is written first and the other locales come from it. Two failure modes follow.
+German is written first and the other locales come from it, in the same pull request and with
+the same `updatedAt` ([a post ships in six languages in one pull request](rules/a-post-ships-in-six-languages-in-one-pull-request.md)).
+Two failure modes follow.
 
 **Mirror translation.** A sentence carried across word for word keeps German word order and
 German sentence length, and reads translated in all five targets. Write each locale as its own

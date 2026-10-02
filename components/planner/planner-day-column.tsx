@@ -22,10 +22,12 @@ import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import {
   buildDayGrid,
   clampStart,
+  earlyEntryOpenMin,
   growGridForSpans,
   nextFreeStart,
   nowFloor,
   rideFloor,
+  withEarlyEntry,
 } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { occupiedMinutes } from '@/lib/planner/estimate';
@@ -287,7 +289,7 @@ export function PlannerDayColumn({
   }, [reveal, selectedId, dragging, barHeight]);
 
   const {
-    data: day,
+    data: fetchedDay,
     isFetching,
     isError,
   } = usePlanDay({
@@ -298,6 +300,9 @@ export function PlannerDayColumn({
     date: date ?? undefined,
     enabled: open && Boolean(park && date),
   });
+  // The visitor's early-entry answer (PAR-200) folded into the day, so every
+  // reader of `day.context` sees it (PAR-199).
+  const day = withEarlyEntry(fetchedDay, date ? park?.days[date]?.prefs?.earlyEntry : undefined);
 
   // Keyed off `isFetching` rather than `isPending`: a disabled query is pending
   // forever, so with no park picked the band would pulse without a request ever
@@ -334,13 +339,15 @@ export function PlannerDayColumn({
   // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
+  // A number, so the memo below keys on a value and not on the context object.
+  const earlyOpen = earlyEntryOpenMin(day?.context);
   // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
   // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
   // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
   // grid itself when the plan fits, so the identity now moves only with the axis.
   const baseGrid = useMemo(
-    () => buildDayGrid(openHour, closeHour, pxPerMin),
-    [openHour, closeHour, pxPerMin]
+    () => buildDayGrid(openHour, closeHour, pxPerMin, earlyOpen),
+    [openHour, closeHour, pxPerMin, earlyOpen]
   );
   const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 

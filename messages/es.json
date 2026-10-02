@@ -2615,6 +2615,11 @@
         "label": "Mojarse lo menos posible",
         "hint": "Las atracciones de agua se marcan en la lista."
       },
+      "earlyEntry": {
+        "label": "Tenemos acceso anticipado",
+        "hint": "Aquí los huéspedes de los hoteles pueden subir a las grandes atracciones antes de la apertura oficial.",
+        "hintMinutes": "Aquí los huéspedes de los hoteles pueden subir a las grandes atracciones {minutes} minutos antes de la apertura oficial."
+      },
       "headliners": {
         "label": "Planificar las atracciones estrella",
         "hint": "Coloca las {count} atracciones grandes en el día, según sus curvas por hora.",

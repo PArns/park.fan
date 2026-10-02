@@ -27,6 +27,13 @@ interface ParkStatsAttractionsCardProps {
   labelNow: string;
   labelP50: string;
   labelP90: string;
+  /**
+   * Screen-reader prefixes for the land and ride-type line under a ride's name ("Area" / "Type").
+   * Sighted readers get the two values joined by a dot; a screen reader would otherwise read the
+   * land straight on from the ride name.
+   */
+  labelLand?: string;
+  labelType?: string;
   continent: string;
   country: string;
   city: string;
@@ -66,6 +73,8 @@ export function ParkStatsAttractionsCard({
   labelNow,
   labelP50,
   labelP90,
+  labelLand,
+  labelType,
   continent,
   country,
   city,
@@ -106,6 +115,7 @@ export function ParkStatsAttractionsCard({
           {attractions.map((a) => {
             const rankStyle = RANK_STYLES[a.rank] ?? 'bg-muted/40 text-muted-foreground';
             const current = currentWaits?.get(a.attractionSlug);
+            const hasMeta = Boolean(a.land || a.attractionType);
             return (
               <tr
                 key={a.attractionSlug}
@@ -124,14 +134,39 @@ export function ParkStatsAttractionsCard({
                 {/* max-w-0 in an auto-layout `w-full` table: the cell shrinks to nothing so the
                   numeric columns get their width first, then absorbs what is left — which is
                   what gives `truncate` below something finite to truncate against. */}
-                <td className="max-w-0 py-1.5 pr-3">
+                {/* With a land or ride type the cell holds two lines, 18 px + 14 px = 32 px, which is
+                  exactly the height of a one-line row (20 px name + 12 px padding, and the 20 px
+                  rank badge + padding beside it). So the table is as tall with the line as
+                  without, and the skeleton, which cannot know whether a park has lands, stays
+                  right. A row with neither value shows no second line. */}
+                <td className={cn('max-w-0 pr-3', hasMeta ? 'py-0' : 'py-1.5')}>
                   <Link
                     href={`/parks/${continent}/${country}/${city}/${parkSlug}/${a.attractionSlug}`}
                     prefetch={false}
-                    className="hover:text-primary block truncate font-medium transition-colors"
+                    className={cn(
+                      'hover:text-primary block truncate font-medium transition-colors',
+                      hasMeta && 'leading-[18px]'
+                    )}
                   >
                     {a.attractionName}
                   </Link>
+                  {hasMeta && (
+                    <span className="text-muted-foreground block truncate text-[11px] leading-[14px]">
+                      {a.land && (
+                        <>
+                          {labelLand && <span className="sr-only">{labelLand}: </span>}
+                          {a.land}
+                        </>
+                      )}
+                      {a.land && a.attractionType && <span aria-hidden="true"> · </span>}
+                      {a.attractionType && (
+                        <>
+                          {labelType && <span className="sr-only">{labelType}: </span>}
+                          {a.attractionType}
+                        </>
+                      )}
+                    </span>
+                  )}
                 </td>
                 {showCurrentWaits && (
                   <td className={cn(VALUE_CELL, 'hidden sm:table-cell')}>

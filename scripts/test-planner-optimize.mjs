@@ -28,7 +28,7 @@
  *     BENCH=1 pnpm test:planner-optimize   # plus the timing table for §16
  */
 
-import { buildDayGrid } from '../lib/planner/day-grid.ts';
+import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
 import { occupiedMinutes, plannedMinutes } from '../lib/planner/estimate.ts';
 import { transferBetween } from '../lib/planner/leg.ts';
 import { applyPlan } from '../lib/planner/actions.ts';
@@ -1709,6 +1709,75 @@ function benchInput(n) {
         )
       ),
     `Feierabend ${found.endMinute}`
+  );
+}
+
+// ── Early entry (PAR-199) ────────────────────────────────────────────────────
+// On a day the visitor holds early entry, a headliner may be filed before the
+// park opens and an ordinary ride may not. Without the visitor's answer nothing
+// moves: the same plan, minute for minute.
+{
+  const rides = [
+    ride('taron', flat(60), { headliner: true }),
+    ride('fly', flat(55), { headliner: true, lat: 50.801 }),
+    ride('maus', flat(10), { lat: 50.802 }),
+  ];
+  const early = { hasEarlyEntry: true, earlyEntryMinutesPeak: 30 };
+  const run = (context) => {
+    const payload = day(rides, context);
+    const g = buildDayGrid(
+      payload.context.openHour,
+      payload.context.closeHour,
+      undefined,
+      earlyEntryOpenMin(payload.context)
+    );
+    return optimizeDay({ day: payload, grid: g, entries: [], add: rides });
+  };
+  const on = run({ ...early, earlyEntry: true });
+  const off = run(early);
+  const plain = run({});
+  const openMin = OPEN * 60;
+  const firstStart = Math.min(...on.stops.map((s) => s.startMinute));
+  const first = on.stops.find((s) => s.startMinute === firstStart);
+  check(
+    'early entry: the first stop is filed before the park opens',
+    firstStart < openMin && firstStart >= openMin - 30,
+    `erster Start ${firstStart}`
+  );
+  check(
+    'early entry: and it is a headliner',
+    ['taron', 'fly'].includes(first?.attractionSlug),
+    first?.attractionSlug
+  );
+  check(
+    'early entry: it carries the assumed figure',
+    first?.waitMinutes === 5,
+    `Wartezeit ${first?.waitMinutes}`
+  );
+  check(
+    'early entry: the ordinary ride waits for the park',
+    on.stops.find((s) => s.attractionSlug === 'maus').startMinute >= openMin,
+    `maus ${on.stops.find((s) => s.attractionSlug === 'maus').startMinute}`
+  );
+  check(
+    'early entry: every stop of the early day fits',
+    on.stops.every((s) => s.fits),
+    JSON.stringify(on.stops)
+  );
+  check(
+    'early entry: it saves queueing against the same day without it',
+    on.totalWaitMinutes < off.totalWaitMinutes,
+    `${on.totalWaitMinutes} gegen ${off.totalWaitMinutes}`
+  );
+  check(
+    'early entry: without the visitor nothing starts before the opening',
+    off.stops.every((s) => s.startMinute >= openMin),
+    JSON.stringify(off.stops)
+  );
+  check(
+    'early entry: and the plan is the plan of a park without early entry',
+    JSON.stringify(off) === JSON.stringify(plain),
+    'Plan weicht ab'
   );
 }
 
