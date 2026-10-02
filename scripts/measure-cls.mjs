@@ -57,7 +57,7 @@
  *
  * Not every finding is a bug. A reservation can be deliberately absent because the
  * content is optional and reserving it would collapse the box on the pages that never
- * get it — see the nearby-parks note in docs/architecture/system-overview.md. Judge a
+ * get it — see the school-holiday note in docs/architecture/system-overview.md. Judge a
  * row by whether the content is predictable, not by its size.
  *
  * `--late` IS THE OTHER HALF: PROVING A FIX

@@ -63,8 +63,8 @@ export function AttractionHistorySections({
         exists only on the attraction detail — the park payload carries `typicalWaits` for the ten
         headliners of Phantasialand and for none of its thirty other rides — so it can only arrive
         client-side, and nothing in the shell predicts whether it will: 2 of 8 sampled
-        non-headliners get a displayable one. Reserving its 331 px for the other six would be the
-        `NearbyParksSection` mistake, so the box is not reserved and the position is what pays
+        non-headliners get a displayable one. Reserving its 331 px for the other six would collapse
+        a box on three rides in four, so the box is not reserved and the position is what pays
         instead. UNDER the calendar, where its arrival pushes the page's tail rather than the
         1064–2258 px grid a reader at this chapter is looking at (measured: most of Talocan's
         0.3264 on a phone). It sits well there for the same reason the park's crowd calendar puts
