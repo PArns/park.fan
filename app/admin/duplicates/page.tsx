@@ -312,6 +312,8 @@ function findParkPair(
 
 /** The detector's verdict on one pair: a chip, and for a review pair the reason. */
 function ParkPairVerdict({ pair }: { pair: DuplicateParkPair }) {
+  // An API older than PAR-247 sends no verdict; "prüfen" on every row would be a guess.
+  if (typeof pair.safe !== 'boolean') return null;
   if (pair.safe) return <Chip tone="success">sicher</Chip>;
   return (
     <span className="block space-y-1">
@@ -350,7 +352,9 @@ function ParkMergePanel() {
         setReport('Keine Parkduplikate gefunden.');
       } else {
         setReport(`${result.total} Paar(e) gefunden.`);
-        setCounts({ safe: result.safe, needsReview: result.needsReview });
+        if (typeof result.safe === 'number' && typeof result.needsReview === 'number') {
+          setCounts({ safe: result.safe, needsReview: result.needsReview });
+        }
       }
     } catch (err) {
       setReport(err instanceof Error ? err.message : 'Suche fehlgeschlagen');
@@ -408,7 +412,7 @@ function ParkMergePanel() {
       {confirming ? (
         <div className="border-destructive/40 bg-destructive/[0.06] space-y-3 rounded-lg border p-3">
           <p className="text-sm font-medium">Parks endgültig zusammenführen?</p>
-          {typedPair && !typedPair.safe && (
+          {typedPair?.safe === false && (
             <div className="space-y-1 rounded-md border border-amber-500/30 bg-amber-500/10 p-2 text-xs">
               <p className="flex items-center gap-2 font-medium text-amber-400">
                 <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
