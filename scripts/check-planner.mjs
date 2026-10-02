@@ -1809,39 +1809,31 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         const box = el.getBoundingClientRect();
         const x = Math.round(box.left + box.width / 2);
         const midY = Math.round(box.top + box.height / 2);
+        // `ok` when the grip owns the point, `covered` when another block does,
+        // `miss` for anything else. Only `miss` is a defect: below 44 px the
+        // target overhangs its block, and the block below paints over that
+        // overhang (PAR-204: 61 px at 08:15 UTC, 34 px at 08:5x, same commit).
+        // An overhang that lands on a neighbouring block is the documented
+        // normal case; one that lands on empty grid, or is clipped away by an
+        // ancestor, is the regression this check exists for.
         const at = (y) => {
           const hit = document.elementFromPoint(x, y);
-          return hit === el || Boolean(hit && el.contains(hit));
+          if (hit === el || Boolean(hit && el.contains(hit))) return 'ok';
+          const other = hit?.closest('li[data-planner-block]');
+          return other && other !== el.closest('li[data-planner-block]') ? 'covered' : 'miss';
         };
         // 21 rather than 22: half of 44 minus a pixel, so the sample sits inside
         // the target rather than exactly on its edge.
-        //
-        // CAPPED at the block's own half height. This is the first block of the
-        // day and its height is its occupied time x 1.8 px/min, which is the
-        // expected wait from `/plan/day` and moves through the day: 61 px at
-        // 08:15 UTC, 34 px at 08:5x, same commit (PAR-204). Below 44 px the
-        // target overhangs the block and the neighbour below paints over the
-        // overhang, so sampling 21 px past a 34 px block's middle asks about
-        // the next block and fails with nothing wrong at the grip. A block
-        // shorter than the target is the documented normal case; what holds
-        // there is the block's own height, and that is what is sampled.
-        const reach = Math.min(21, Math.max(1, Math.floor(box.height / 2) - 1));
         return {
           height: Math.round(box.height),
-          reach,
-          top: at(midY - reach),
-          bottom: at(midY + reach),
+          top: at(midY - 21),
+          bottom: at(midY + 21),
         };
       });
-      const fullTarget = gripReach.reach === 21;
       check(
-        fullTarget
-          ? 'die Trefferfläche des Griffs ist 44 px hoch'
-          : 'die Trefferfläche des Griffs deckt einen Block unter 44 px ab',
-        gripReach.top && gripReach.bottom,
-        `Blockhöhe ${gripReach.height} px · Abtastung ±${gripReach.reach} px · oben ${
-          gripReach.top ? 'ja' : 'nein'
-        } · unten ${gripReach.bottom ? 'ja' : 'nein'}`
+        'die Trefferfläche des Griffs ist 44 px hoch, ein Nachbarblock darf den Überhang decken',
+        gripReach.top !== 'miss' && gripReach.bottom !== 'miss',
+        `Blockhöhe ${gripReach.height} px · oben ${gripReach.top} · unten ${gripReach.bottom}`
       );
 
       // And the gesture itself, with a TOUCH pointer. Every drag assertion in
