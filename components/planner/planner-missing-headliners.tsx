@@ -7,7 +7,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
-import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
+import { buildDayGrid, earlyEntryOpenMin, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
 import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
@@ -84,7 +84,12 @@ export function PlannerMissingHeadliners({
     );
   }, [day, planned, prefs]);
 
-  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin);
+  const grid = buildDayGrid(
+    day?.context.openHour,
+    day?.context.closeHour,
+    pxPerMin,
+    earlyEntryOpenMin(day?.context)
+  );
   // Read on every render rather than once: this band is open for as long as the
   // panel is, and a pill pressed at 14:00 may not file into the morning because
   // the clock was read when the sheet opened. No subscription — nothing here

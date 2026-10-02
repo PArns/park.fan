@@ -1042,6 +1042,35 @@ the day: the cap beat the lower bound the function exists to impose, so at 17:58
 in a park shutting at 18:00 it answered **17:45** and "plan every headliner"
 filed a forty-minute queue thirteen minutes before the press.
 
+### Early entry is the open-side twin, and it moves only the headliners (PAR-199)
+
+`DayGrid.earlyEntryOpenMin` is the minute the early-entry rides open, below
+`openMin`, and `null` on every other day. `earlyEntryOpenMin(context)` in
+`lib/planner/day-grid.ts` answers it from three facts that must all hold: the
+park offers early entry (`hasEarlyEntry`, curated in PAR-197), it says how early
+(`earlyEntryMinutesPeak`), and the visitor holds it on this day
+(`context.earlyEntry`, set from their own answer through `withEarlyEntry()`; the
+API never sends it). A park flag alone moves nobody's morning, because a
+day-ticket holder queues at the turnstile with everyone else.
+
+Which rides open early is `opensEarly()`: the park's headliners, minus any whose
+own `opensAt` is later than the park's opening. For those, `rideFloor` takes the
+early minute as the hard floor and adds the gate walk on the soft one, and the
+measured curve may not lift it back to `openMin` (it starts at `openHour` by
+construction). Every other ride keeps `openMin`. The axis starts
+`PRE_PAD_MIN` before the early opening, and `PlannerGridGround` draws the window
+above the band at half the band's tint with the same dashed top edge.
+
+A block in that window carries `ASSUMED_WAIT_MIN` with `missing: 'early-entry'`
+(PO decision A): the API has no hour before the gates for any ride, so the
+figure is a stated assumption, read through `isAssumedWait()` like `assumed` —
+no crowd tint, a `~` in front. Asked per hour like every other figure, so the
+optimiser's hourly table and the block agree.
+
+Without the visitor's answer every function returns what it did before: the grid
+is the same object field for field, and the optimiser's plan is the same plan
+(`test:planner-grid`, `test:planner-optimize`, `test:planner-fit` pin both).
+
 ### Where it cannot choose for you, it asks — and it asks properly
 
 Ten headliners and room for nine is a decision, and the app can rank a catalogue

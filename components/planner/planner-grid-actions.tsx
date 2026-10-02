@@ -17,7 +17,7 @@ import {
   type PlannerEntry,
 } from '@/lib/planner/types';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
-import { actualVsEstimate, estimateFor } from '@/lib/planner/estimate';
+import { actualVsEstimate, estimateFor, isAssumedWait } from '@/lib/planner/estimate';
 import type { PlanDay } from '@/lib/api/types';
 
 interface PlannerGridActionsProps {
@@ -184,7 +184,7 @@ export function PlannerGridActions({
           )}
           {actual === null && estimate.wait !== null && (
             <span className="text-foreground">
-              · {estimate.missing === 'assumed' && '~'}
+              · {isAssumedWait(estimate) && '~'}
               {estimate.wait} {t('unit.min')}
             </span>
           )}

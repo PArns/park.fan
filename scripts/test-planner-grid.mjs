@@ -25,7 +25,9 @@ import {
   blockBoxFor,
   buildDayGrid,
   clampStart,
+  dayStartMin,
   drawnBoxPx,
+  earlyEntryOpenMin,
   growGridForSpans,
   heightFor,
   latestStart,
@@ -36,6 +38,7 @@ import {
   packLanes,
   packedSpanMinutes,
   nowFloor,
+  opensEarly,
   rideFloor,
   MAX_SHOW_LINES,
   showLinePositions,
@@ -44,6 +47,7 @@ import {
   SHOW_PILL_HALF_PX,
   snapTo,
   unfoldedCloseHour,
+  withEarlyEntry,
   yFor,
 } from '../lib/planner/day-grid.ts';
 
@@ -673,6 +677,163 @@ test(
     growGridForSpans(m, [{ startMinute: 1110, spanMinutes: 60 }]).heightPx,
     (20 * 60 - m.gridStartMin) * PX_PER_MIN_COARSE
   );
+}
+
+// ── Early entry (PAR-199) ────────────────────────────────────────────────────
+// The open-side twin of closeMin/closeSlackMin. Three facts must agree before
+// anybody's morning moves: the park offers it, it says how early, and the
+// visitor holds it. Without all three, every number below is the old one.
+{
+  const ctx = (extra) => ({
+    openHour: 9,
+    hasEarlyEntry: true,
+    earlyEntryMinutesPeak: 30,
+    ...extra,
+  });
+  test(
+    'early entry: all three facts give the early minute',
+    earlyEntryOpenMin(ctx({ earlyEntry: true })),
+    510
+  );
+  test('early entry: not without the visitor', earlyEntryOpenMin(ctx({})), null);
+  test(
+    'early entry: not when the visitor says no',
+    earlyEntryOpenMin(ctx({ earlyEntry: false })),
+    null
+  );
+  test(
+    'early entry: not without the park flag',
+    earlyEntryOpenMin(ctx({ earlyEntry: true, hasEarlyEntry: undefined })),
+    null
+  );
+  test(
+    'early entry: not without a minute value',
+    earlyEntryOpenMin(ctx({ earlyEntry: true, earlyEntryMinutesPeak: undefined })),
+    null
+  );
+  test(
+    'early entry: not on a zero',
+    earlyEntryOpenMin(ctx({ earlyEntry: true, earlyEntryMinutesPeak: 0 })),
+    null
+  );
+  test(
+    'early entry: not on a closed day',
+    earlyEntryOpenMin(ctx({ earlyEntry: true, openHour: null })),
+    null
+  );
+  test('early entry: no context, no answer', earlyEntryOpenMin(undefined), null);
+
+  // Pixel equality in the default case: the same grid, field for field.
+  const plain = buildDayGrid(9, 18);
+  const nulled = buildDayGrid(9, 18, PX_PER_MIN, null);
+  test(
+    'early entry: a null window builds the identical grid',
+    JSON.stringify(nulled),
+    JSON.stringify(plain)
+  );
+  test('early entry: the plain grid has no window', plain.earlyEntryOpenMin, null);
+  test(
+    'early entry: a window at the opening is no window',
+    buildDayGrid(9, 18, PX_PER_MIN, 540).earlyEntryOpenMin,
+    null
+  );
+
+  const eg = buildDayGrid(9, 18, PX_PER_MIN, 510);
+  test('early entry: the window is kept', eg.earlyEntryOpenMin, 510);
+  test('early entry: the axis starts a pad before the EARLY opening', eg.gridStartMin, 510 - 30);
+  test('early entry: the park still opens at openMin', eg.openMin, 540);
+  test('early entry: closing is untouched', eg.closeMin, plain.closeMin);
+  test(
+    'early entry: the canvas grows by the window',
+    eg.heightPx - plain.heightPx,
+    30 * PX_PER_MIN
+  );
+  test('early entry: dayStartMin is the early opening', dayStartMin(eg), 510);
+  test('early entry: dayStartMin is openMin without it', dayStartMin(plain), 540);
+  test(
+    'early entry: growGridForSpans keeps the window',
+    growGridForSpans(eg, [{ startMinute: 1140, spanMinutes: 60 }]).earlyEntryOpenMin,
+    510
+  );
+
+  const headliner = { ...ride([9, 10, 11], 400), isHeadliner: true };
+  const ordinary = ride([9, 10, 11], 400);
+  test('early entry: a headliner opens early', opensEarly(headliner, 540), true);
+  test('early entry: an ordinary ride does not', opensEarly(ordinary, 540), false);
+  test(
+    'early entry: a headliner opening after the park does not',
+    opensEarly({ ...headliner, opensAt: '10:00' }, 540),
+    false
+  );
+  test(
+    'early entry: a headliner opening with the park does',
+    opensEarly({ ...headliner, opensAt: '09:00' }, 540),
+    true
+  );
+
+  test(
+    'early entry: the headliner hard floor is the early opening',
+    rideFloor(eg, headliner).hardMin,
+    510
+  );
+  test(
+    'early entry: its soft floor adds the walk from the gate',
+    rideFloor(eg, headliner).softMin,
+    510 + GATE_TO_FIRST_RIDE_MIN
+  );
+  test('early entry: an ordinary ride keeps the park floor', rideFloor(eg, ordinary).hardMin, 540);
+  test('early entry: and its soft floor', rideFloor(eg, ordinary).softMin, GATE);
+  test(
+    'early entry: a later-opening headliner keeps its own opening',
+    rideFloor(eg, { ...headliner, opensAt: '10:00' }).hardMin,
+    600
+  );
+  test(
+    'early entry: a sixty-minute window is not lifted back by the curve',
+    rideFloor(buildDayGrid(9, 18, PX_PER_MIN, 480), headliner).softMin,
+    480 + GATE_TO_FIRST_RIDE_MIN
+  );
+  test(
+    'early entry: a curve starting two hours late still raises the soft floor',
+    rideFloor(eg, { ...ride([11, 12], 400), isHeadliner: true }).softMin,
+    660
+  );
+  test(
+    'early entry: without a window the headliner floor is the old one',
+    rideFloor(plain, headliner).softMin,
+    rideFloor(plain, ordinary).softMin
+  );
+  const today = (nowMinute) => ({ phase: 'today', nowMinute });
+  test(
+    'early entry: the clock still raises an early floor, and not to openMin',
+    rideFloor(buildDayGrid(9, 18, PX_PER_MIN, 480), headliner, today(500)).softMin,
+    510
+  );
+  test('early entry: nowFloor defaults to openMin', nowFloor(eg, today(500)), 540);
+  test(
+    'early entry: nowFloor takes the early start when asked',
+    nowFloor(eg, today(500), 510),
+    510
+  );
+  test(
+    'early entry: nextFreeStart honours an early floor',
+    nextFreeStart([], eg, 45, rideFloor(eg, headliner).softMin),
+    525
+  );
+  test('early entry: and is unchanged without one', nextFreeStart([], eg, 45), 540);
+
+  const day = { context: { openHour: 9, earlyEntry: undefined } };
+  test(
+    'early entry: withEarlyEntry returns the same day on no change',
+    withEarlyEntry(day, false),
+    day
+  );
+  test(
+    'early entry: withEarlyEntry sets the answer',
+    withEarlyEntry(day, true).context.earlyEntry,
+    true
+  );
+  test('early entry: withEarlyEntry passes null through', withEarlyEntry(null, true), null);
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

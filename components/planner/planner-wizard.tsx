@@ -33,7 +33,7 @@ import { loadMessageChunk } from '@/lib/i18n/message-chunk-loader';
 import type { Locale } from '@/i18n/config';
 import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM, partyFlags } from '@/lib/planner/party';
-import { buildDayGrid } from '@/lib/planner/day-grid';
+import { buildDayGrid, earlyEntryOpenMin } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { headlinersSkipped, headlinersToAdd } from '@/lib/planner/optimize';
 import {
@@ -334,7 +334,13 @@ export function PlannerWizard({
     ? dayPayload?.context.earlyEntryMinutesPeak
     : undefined;
   const wizardGrid = useMemo(
-    () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour, pxPerMin),
+    () =>
+      buildDayGrid(
+        dayPayload?.context.openHour,
+        dayPayload?.context.closeHour,
+        pxPerMin,
+        earlyEntryOpenMin(dayPayload?.context)
+      ),
     [dayPayload, pxPerMin]
   );
   const headliners = useMemo(() => headlinersToAdd(dayPayload, [], prefs), [dayPayload, prefs]);

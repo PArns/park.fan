@@ -17,6 +17,7 @@ import {
   SNAP_MIN_FINE,
   clampStart,
   drawnBoxPx,
+  dayStartMin,
   heightFor,
   latestStart,
   minuteAt,
@@ -38,7 +39,7 @@ import {
   subscribeToNothing,
 } from '@/lib/planner/minute-tick';
 import { lineSource, type PlannerShowLine } from '@/lib/planner/shows';
-import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
+import { bandCarriesFigure, estimateFor, isAssumedWait } from '@/lib/planner/estimate';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
 import {
   PLANNER_RIDE_MIME,
@@ -549,7 +550,7 @@ export function PlannerDayGrid({
       return clampStart(
         grid,
         snapTo(raw, DRAG_SNAP_MIN),
-        Math.max(grid.openMin, floorMin ?? grid.openMin)
+        Math.max(dayStartMin(grid), floorMin ?? grid.openMin)
       );
     },
     [grid]
@@ -937,7 +938,7 @@ export function PlannerDayGrid({
       : SNAP_MIN_FINE;
 
   const hours: number[] = [];
-  for (let h = Math.ceil(grid.openMin / 60); h * 60 <= grid.closeMin; h++) hours.push(h);
+  for (let h = Math.ceil(dayStartMin(grid) / 60); h * 60 <= grid.closeMin; h++) hours.push(h);
 
   // Which SHOWS each drawn line stands for. `showLinePositions` folds labels
   // closer than 14 px into one and records the rest in `collapsedWith` — a field
@@ -1345,7 +1346,7 @@ export function PlannerDayGrid({
               const band = bandGeometry(grid, row.entry, row.estimate, { live: row.live });
               if (!band) return null;
               const tone =
-                row.estimate.missing === 'assumed' || row.wait === null
+                isAssumedWait(row.estimate) || row.wait === null
                   ? null
                   : waitTimeCrowdTier(row.wait);
               if (!tone) return null;

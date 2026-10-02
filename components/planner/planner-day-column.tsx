@@ -22,6 +22,7 @@ import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import {
   buildDayGrid,
   clampStart,
+  earlyEntryOpenMin,
   growGridForSpans,
   nextFreeStart,
   nowFloor,
@@ -334,13 +335,15 @@ export function PlannerDayColumn({
   // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
+  // A number, so the memo below keys on a value and not on the context object.
+  const earlyOpen = earlyEntryOpenMin(day?.context);
   // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
   // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
   // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
   // grid itself when the plan fits, so the identity now moves only with the axis.
   const baseGrid = useMemo(
-    () => buildDayGrid(openHour, closeHour, pxPerMin),
-    [openHour, closeHour, pxPerMin]
+    () => buildDayGrid(openHour, closeHour, pxPerMin, earlyOpen),
+    [openHour, closeHour, pxPerMin, earlyOpen]
   );
   const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
