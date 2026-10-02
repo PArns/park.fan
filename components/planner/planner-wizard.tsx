@@ -794,6 +794,14 @@ export function PlannerWizard({
                 >
                   {prefs.riderHeightCm !== undefined && (
                     <div className="flex flex-wrap gap-1.5">
+                      {/* `max-sm:min-h-9` stays a width class and does not move to
+                          `planner-phone:` (PAR-213): the wizard is not part of
+                          PAR-76's sweep, and 36 px is not the 44 px a coarse
+                          pointer gets from the month calendar in this dialog.
+                          At 844x390 the chips therefore stay at their natural
+                          height beside 44 px calendar cells. Whether the wizard
+                          takes the coarse-pointer path in landscape is a
+                          separate decision. */}
                       {RIDER_HEIGHT_CHOICES.map((cm) => (
                         <button
                           key={cm}

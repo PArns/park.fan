@@ -354,8 +354,9 @@ façade.
 ## A sentence may only point at something that is there
 
 Three strings promised a ride search "unten". `PlannerRideSearch` has exactly one
-call site, behind `park && activeDate` **and** a `sm:hidden` wrapper — so it
-exists only below 640 px and only with a day open. Mapped against that:
+call site, behind `park && activeDate` **and** a `planner-wide:hidden` wrapper — so it
+exists only where `planner-phone` holds (a window under 40rem, or a flat one on a
+coarse pointer) and only with a day open. Mapped against that:
 
 - **`empty.body`** was the `sm:block` half, i.e. displayed at exactly the widths
   where the search does not exist. False in all six states that reach it.
@@ -1383,7 +1384,7 @@ smaller, and each of these found that out separately:
 - **The park hero** is `position: fixed`, which resolves against the viewport, so
   the padding never reached it: the photo spanned the full 1440 px behind a glass
   panel and read straight through it. Its right edge follows the same variable
-  now (`sm:right-[var(--planner-inset,0px)]`), which is `0px` while the planner
+  now (`planner-wide:right-[var(--planner-inset,0px)]`), which is `0px` while the planner
   is shut.
 - **The panel's own width** is capped so the page keeps `PAGE_MIN_PX` (360),
   measured off the header's least compressible row. At 768 px the stored 448
@@ -1531,7 +1532,7 @@ and a new page does not get the markup in order to try.
 A block's height is a queue and a queue can be twenty pixels, so the panel has
 always had one control that must not be measured by the block: the drag grip.
 It grows its touch target with an `after:` pseudo-element that deliberately
-reaches PAST the block — `max-sm:after:h-11`, 44 px around the middle of a box
+reaches PAST the block — `planner-phone:after:h-11`, 44 px around the middle of a box
 that may be shorter than that.
 
 It never worked, for one word. The block's bordered box carried
@@ -1585,10 +1586,15 @@ scaled by the axis in `minBlockPxFor`, or the box floor would quietly drop from
 packer can state the same floor in minutes and stop depending on the scale at
 all.
 
-The scale switch is `(width < 40rem)` and **never** `(max-width: 639px)` —
-Tailwind's breakpoints are rem, so `max-sm:` moves with the reader's default
-font size and a px query does not. At 20 px / 700 px the panel would lay itself
-out as a phone and get handed the desktop axis.
+The scale switch is `planner-phone` (`PLANNER_PHONE_QUERY` in
+`lib/planner/use-grid-scale.ts`): `(width < 40rem), (height < 31.25rem) and
+(pointer: coarse)`, so a narrow window or a flat window on a touch screen. Its
+complement is `planner-wide`, and the pair is never `(max-width: 639px)` —
+Tailwind's breakpoints are rem, so they move with the reader's default font size
+and a px query does not. At 20 px / 700 px the panel would lay itself out as a
+phone and get handed the desktop axis. The height term asks `(pointer: coarse)`
+and the width term does not, so a desktop window dragged flat (1440 × 480, fine
+pointer) stays wide. Both variants are defined in `app/globals.css`.
 
 A taller axis shows fewer hours unless something pays for it, so three things
 did, in the same change: the sheet opens at `92svh` instead of `85` (+59 px at
@@ -2181,7 +2187,7 @@ block zero minutes there and passed. **A dispatched touch pointer is not the sam
 thing as being a touch device** — the event says touch, `matchMedia` and CSS
 still say mouse. `isMobile` is deliberately left off beside it: it adds the mobile
 viewport meta and text autosizing, which move the very numbers this pass measures,
-and the planner's phone layout is `max-sm:` against the window rather than
+and the planner's phone layout is `planner-phone:` against the window rather than
 viewport scaling. The first assertion in the pass asks the browser what it is
 (`die Handy-Seite ist ein Grobzeiger`) rather than trusting the option.
 
