@@ -472,10 +472,11 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
   `p-3`, against „Zur Öffnung" and „Du sparst" wanting 75–78 px: they wrap to two lines while
   „Tagespeak" does not, and the three values then sit at three different heights. The threshold
   separates the two cases that must stay apart: 302.5 px stacks, the 430.5 px a 1024 px window
-  gives stays three-up. Above it the fit is not perfect in every language — a row in which no
-  label wraps in any of the six starts near 438 px (the French „Vous économisez" wants 114 px and
-  has 111.5 px at 1024 px; Italian and Spanish wrap between 380 and 430 px of row), which is
-  unchanged from the window rule and is its own decision.
+  gives stays three-up. Above it no label may wrap, and that is a limit on the strings: at 381 px
+  of row a tile has 93 px of content, icon included. PAR-218 shortened the three labels that
+  broke it instead of raising the threshold — French „Vous économisez" (114 px) to „Vous gagnez",
+  Italian „Picco del giorno" (105.5 px) to „Al picco", Spanish „En la apertura" (94.3 px) to
+  „Al abrir". The widest label in any locale is now 88.4 px.
 
 ### One colour rank per card, and a wash is not a boundary
 
