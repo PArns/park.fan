@@ -7178,6 +7178,11 @@ step: {
   // no valid target just as it would be in front of Toverland's page. Both
   // columns here are the SAME park on two dates, so one navigation settles it
   // and a second click is the no-op below.
+  // Waited for, not read after the 1.5 s above: on a dev server that had been
+  // up for hours the navigation landed later than that and this went red on a
+  // run where nothing was wrong (PAR-377). A real miss still times out and
+  // reports the last URL.
+  await cols.waitForURL(`**/${PARK.geo.city}/${PARK.slug}**`, { timeout: 45_000 }).catch(() => {});
   check(
     'und die Seite dahinter folgt dem Park der Spalte',
     cols.url().includes(`/${PARK.geo.city}/${PARK.slug}`),
