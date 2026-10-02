@@ -75,8 +75,8 @@ the A1. The 2024/25 season brought in 2.9 million visitors. Count the parks one
 by one and it's third in France, behind
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) and Disney
 Adventure World; the park calls itself second, because it counts Disneyland
-Paris as one destination. Its coasters run from Goudurix, which was already
-running on opening day, to [Toutatis](ref:parc-asterix/toutatis), the tallest
+Paris as one destination. Its coasters include Goudurix, which was already
+running on opening day, and [Toutatis](ref:parc-asterix/toutatis), the tallest
 coaster in France.
 
 What follows comes from our own wait-time measurements since Christmas 2025,
@@ -93,7 +93,7 @@ At the start of October 2026 the top of the table belongs to two family
 coasters, Cétautomatix and Pégase Express, with the headliner behind them.
 That's down to capacity. According to the Roller Coaster DataBase (RCDB),
 Toutatis handles 1,260 riders an hour and OzIris 1,600. Before Cétautomatix
-opened, the French site Androland worked out roughly 700 for it: nine cars of
+opened, the French site Androland put it at roughly 700: nine cars of
 four, one leaving every 20 seconds. A small ride with a low height limit, where
 the whole family can go together, fills its queue faster than a big one only
 half the group is allowed on.
@@ -128,11 +128,11 @@ In 1990 the park had 1.45 million visitors. Then Euro Disney opened in
 Marne-la-Vallée on 12 April 1992, and Parc Astérix dropped to 990,000, 30 per
 cent down on the year before, according to French Wikipedia. Revenue fell 19
 per cent to 170 million francs. Olivier de Bosredon, then head of operations,
-cut staff and budgets, and the park sold itself as the French answer to the
-American giant, the "exception culturelle française". In 1994 it made a profit
+cut staff and budgets, and the park pitched itself against the
+American giant as the "exception culturelle française". In 1994 it made a profit
 for the first time, 15 million francs, with a new Greek quarter.
 
-In 1997 a wooden coaster called Tonnerre de Zeus arrived, costing 7 million
+In 1997 the park added a wooden coaster, Tonnerre de Zeus, for 7 million
 euros, and attendance climbed to 1.9 million. That year the park capped
 admissions at 20,000 a day. In 1999 it merged with the Musée Grévin and France
 Miniature to form Grévin & Cie, and the first hotel opened. In June 2002 the
@@ -141,7 +141,7 @@ company, which also owns [Walibi Belgium](ref:walibi-belgium) and
 [Walibi Holland](ref:walibi-holland), still runs the park; Delphine Pons has
 been its director since May 2021.
 
-It has kept growing since. In 2012 came the Égypte area and OzIris, 20 million
+It's kept growing since. In 2012 came the Égypte area and OzIris, 20 million
 euros for the pair and the biggest investment in the park's history at that
 point. Pégase Express followed in 2017 for 16 million, Toutatis in 2023.
 Attendance, from the Themed Entertainment Association (TEA) index and the
@@ -157,7 +157,7 @@ executive François Fassier told franceinfo it was "a very complex and very
 ambitious project", meant only for the German market. How the sale came about
 is in our [Parques Reunidos story](/blog/parques-reunidos-sale-movie-park).
 
-## Five worlds, and Paris comes down
+## Five themed areas and the old Paris
 
 Officially the park has five themed areas. The entrance leads onto the Via
 Antiqua, a shopping street that stopped counting as an area of its own in 2012.
@@ -179,7 +179,7 @@ From there:
 The sixth area, À travers le temps, was Paris from the Middle Ages to the Belle
 Époque, with the Rue de Paris as a covered street. The park closed it in November
 2025, apart from the stunt show Main basse sur la Joconde, and is demolishing
-it. Londinium is due to replace it in 2028; more on that below.
+it. Londinium is due to replace it in 2028.
 
 ```map-widget slug=parc-asterix
 
@@ -195,7 +195,7 @@ adult.
 ### Toutatis
 
 **[Toutatis](ref:parc-asterix/toutatis)** opened on 8 April 2023. Intamin built
-the launch coaster: there's no chain lift, and linear motors push the train,
+the launch coaster. There's no chain lift, and linear motors push the train,
 several times and backwards too. Along the way it goes over a 101-degree drop,
 steeper than vertical.
 
@@ -208,9 +208,9 @@ km/h, Intamin 53 metres and also 107 km/h, the park 51 metres and 110 km/h,
 which is how it gets to call Toutatis "the fastest attraction in France". The
 number of launches depends on how you count: seven according to Intamin, five
 forwards and two backwards, four according to Wikipedia, three of them on the
-same launch track. RCDB measures 1,075 metres of track; since the train covers
-some of it twice, it travels a little over 1,360 metres, which is where the
-park's "more than 1,300 metres" comes from. Three inversions, just over two
+same launch track. RCDB gives 1,075 metres of track and, since the train
+covers some of it twice, 1,361 metres travelled, which is where the park's "more
+than 1,300 metres" comes from. Three inversions, just over two
 minutes. The park also claims 23 moments of airtime, which it calls a world
 record for a steel coaster. Height limit 130 cm.
 
@@ -223,15 +223,15 @@ according to the park.
 You don't need to run here at opening. The queue is already as long at ten as
 it is at midday, and by our analysis it's shortest about three and a half hours
 after opening. Hotel guests get into the Toutatis and Égypte areas half an hour
-before everyone else; whether that's the whole explanation, our data can't
-tell. If you can ride alone, use the single rider line, which only exists here
+before everyone else; whether that's the whole explanation, we can't tell
+from our data. If you can ride alone, use the single rider line, which only exists here
 and at OzIris.
 
 ### OzIris
 
 **[OzIris](ref:parc-asterix/oziris)** opened on 7 April 2012 along with the
 Égypte area. The park spent 20 million euros on the two, half of it on theming
-according to NewsParcs. Bolliger & Mabillard built the inverted coaster: the
+according to NewsParcs. Bolliger & Mabillard built the inverted coaster. The
 train hangs below the track and your legs dangle. A 40-metre lift, 1,000 metres
 of track, 90 km/h, five inversions. Which five is disputed. RCDB lists a dive
 loop, a vertical loop, an Immelmann and two zero-g rolls; Wikipedia has a
@@ -267,7 +267,7 @@ it'll be 530 metres by 2027, around 60 per cent of the layout according to
 Dimension Parcs. Height and speed vary by source between 30 and 33 metres and
 84 and 92 km/h. Children can ride alone from 120 cm; at Toutatis and OzIris it's 130.
 
-Tonnerre 2 Zeus is the one ride where our analysis says arriving at opening
+Tonnerre 2 Zeus is the one ride where, by our analysis, arriving at opening
 pays off. The queue is short for the first half hour, its worst hour is eleven
 o'clock, and the gap between the two is wider than at any other coaster in the
 park.
@@ -308,7 +308,7 @@ Height limit 100 and 130 cm.
 ### La Trace du Hourra
 
 **[La Trace du Hourra](ref:parc-asterix/la-trace-du-hourra)** (Mack Rides, 31
-March 2001, 70 million francs) is a bobsled coaster: the cars run in an open
+March 2001, 70 million francs) is a bobsled coaster. The cars run in an open
 trough instead of on rails and find their own line through the bends. 900
 metres, close to 60 km/h. The park calls it one of the tallest bobsleds in the
 world and the second-longest in Europe. Height limit 120 and 130 cm. The queue
@@ -365,7 +365,7 @@ run every summer since 1996. In summer 2026, from 11 July, several hundred
 drones flew over the lake in the evenings for a show called "Astérix et la
 potion d'étoiles".
 
-## The year's records fall in Christmas week
+## The year's records and Christmas week
 
 Of the ten rides in the table at the top, five had their longest wait of the
 last twelve months between 26 and 30 December 2025: Toutatis, OzIris,
@@ -374,8 +374,8 @@ day fell in summer 2026, between May and August (as of 2 October 2026).
 
 For Noël Gaulois the park opens this year from 19 December 2026 to 3 January
 2027, which is exactly the French Christmas school holiday, sixteen days in
-all. There are two explanations for the records, and our measurements can't
-choose between them. One is that everyone who wants to come over Christmas has
+all. There are two explanations for the records, and we can't tell from our
+measurements which one matters more. One is that everyone who wants to come over Christmas has
 those sixteen days to do it. The other is in the park's FAQ: in winter the water
 rides are closed, and in sub-zero temperatures some other rides are too, so the
 crowd spreads over fewer rides.
@@ -389,8 +389,7 @@ crowd spreads over fewer rides.
 ```
 
 In our measurements Saturday is the busiest day by a distance, and Wednesday
-the quietest. If you can choose between a weekday and the weekend, go on the
-weekday.
+the quietest. If you can pick the day, pick a Wednesday.
 
 ### Month
 
@@ -401,7 +400,7 @@ weekday.
 December and January come out on top, from only a few measured days, all in the
 2025/26 Christmas holidays. Of the months with plenty of data, May and June are
 the quietest, and August is busier than July. We don't have October or November
-yet: Peur sur le Parc 2025 ran before we started tracking the park. The forecast
+yet, because Peur sur le Parc 2025 ran before we started tracking the park. The forecast
 for the coming weeks is in the calendar:
 
 ```best-days-widget slug=parc-asterix
@@ -441,8 +440,8 @@ Next, La Descente du Nil. It stays short for about an hour after opening and is
 at its busiest in the early afternoon, when it's warm. OzIris is short in the
 first half hour as well; if you miss that, save it for late afternoon.
 
-The shows run around midday, and early afternoon is Toutatis time: by our
-analysis its best window is about three and a half hours after opening. If you
+The shows run around midday. Toutatis comes in the early afternoon, because by
+our analysis its best window is about three and a half hours after opening. If you
 can ride alone, take the single rider line.
 
 Towards evening, do La Trace du Hourra and OzIris again. In the last hour most
@@ -475,10 +474,9 @@ minutes with Filotomatix, and the number of passes per day is limited.
 ```
 
 On a weekday outside the school holidays I'd keep the money and stick to the
-order above. On a Saturday in August or between Christmas and New Year it's a
-different story. Then Or is the level most likely to pay for itself, because it
-covers the big rides except Toutatis, and you ride Toutatis in the single rider
-line. According to the park that line only exists at Toutatis and OzIris, and
+order above. On a Saturday in August or between Christmas and New Year, Or is the level
+most likely to pay for itself, because it covers the big rides except Toutatis,
+and you ride Toutatis in the single rider line. According to the park that line only exists at Toutatis and OzIris, and
 it may stay closed on busy days.
 
 ## Peur sur le Parc and Noël Gaulois
@@ -511,7 +509,7 @@ don't. An undated Christmas ticket costs 57 euros. What other parks open in
 winter is in our [winter guide](/blog/winter-theme-parks-2026).
 
 Between 9 November and 18 December 2026 the park is closed, and again from 4
-January until the season starts in spring. Since 2007 it has stayed open until
+January until the season starts in spring. Since 2007 it's stayed open until
 after the autumn holidays; before that it closed in September. It opened in
 winter from 2007 to 2010 and again since 2019.
 
@@ -538,7 +536,7 @@ and shops. RCDB already lists the coaster: an Intamin Multi Dimension Coaster
 with spinning cars, 17 metres tall, inside the building. Tonnerre 2 Zeus gets
 the second part of its new steel track over the winter of 2026/27.
 
-## Practical: tickets, getting there, hotels, food
+## Tickets, getting there, hotels and food
 
 ### Tickets and prices 2026
 

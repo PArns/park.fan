@@ -76,9 +76,9 @@ Ausfahrt an der A1. In der Saison 2024/25 kamen 2,9 Millionen Besucher. Wer die
 Parks einzeln zählt, findet ihn hinter dem
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und Disney
 Adventure World auf Platz drei in Frankreich; der Park selbst nennt sich den
-zweitgrößten, weil er Disneyland Paris als ein Ziel rechnet. Seine Achterbahnen
-reichen von Goudurix, die schon am Eröffnungstag fuhr, bis
-[Toutatis](ref:parc-asterix/toutatis), der höchsten Achterbahn Frankreichs.
+zweitgrößten, weil er Disneyland Paris als ein Ziel rechnet. Zu seinen Achterbahnen
+gehören Goudurix, die schon am Eröffnungstag fuhr, und
+[Toutatis](ref:parc-asterix/toutatis), die höchste Achterbahn Frankreichs.
 
 Was hier steht, kommt aus unseren Wartezeit-Messungen seit Weihnachten 2025,
 von den Seiten des Parks mit dem Stand vom 2. Oktober 2026 und aus den Artikeln
@@ -131,9 +131,8 @@ nach Le Parisien und der englischen Wikipedia am 30. April, dem Tag, an dem die
 Marne-la-Vallée, und der Parc Astérix fiel nach der französischen Wikipedia auf
 990.000 Besucher, 30 Prozent weniger als im Vorjahr. Der Umsatz sank
 um 19 Prozent auf 170 Millionen Francs. Der damalige Betriebsleiter Olivier de
-Bosredon entließ Personal und kürzte die Budgets, und der Park stellte sich als
-französische Antwort auf das amerikanische Disney auf, als „exception culturelle
-française“. 1994 schrieb er zum ersten Mal schwarze Zahlen, 15 Millionen Francs
+Bosredon entließ Personal und kürzte die Budgets, und der Park trat als
+„exception culturelle française“ gegen das amerikanische Disney an. 1994 schrieb er zum ersten Mal schwarze Zahlen, 15 Millionen Francs
 Gewinn, mit einem neuen griechischen Viertel.
 
 1997 kam eine Holzachterbahn namens Tonnerre de Zeus, für 7 Millionen Euro, und
@@ -154,15 +153,14 @@ Parks: 2.326.000 im Jahr 2019, 2.632.000 im Jahr 2022, 2.815.000 im Jahr 2023,
 2025 kündigte der Park 250 Millionen Euro an Investitionen bis 2030 an, für
 20 Prozent mehr Kapazität.
 
-Für Leser in Deutschland ist eine Ankündigung vom 2. Dezember 2025 interessant.
-Die Compagnie des Alpes hat im April 2025 Belantis bei Leipzig von Parques
-Reunidos gekauft und will daraus bis 2030 oder 2031 den ersten Parc Astérix
-außerhalb Frankreichs machen. Konzernchef François Fassier nannte das nach
+Am 2. Dezember 2025 hat die Compagnie des Alpes angekündigt, aus Belantis bei
+Leipzig bis 2030 oder 2031 den ersten Parc Astérix außerhalb Frankreichs zu
+machen. Gekauft hat sie den Park im April 2025 von Parques Reunidos. Konzernchef François Fassier nannte das nach
 franceinfo ein „sehr komplexes und sehr ambitioniertes Projekt“, gedacht nur für
 den deutschen Markt. Wie es zu dem Verkauf kam, steht in unserer
 [Meldung zu Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park).
 
-## Fünf Welten, und Paris wird abgerissen
+## Fünf Themenbereiche und das alte Paris
 
 Offiziell hat der Park fünf Themenbereiche. Durch den Eingang kommst du auf die
 Via Antiqua, eine Ladenstraße, die seit 2012 nicht mehr als eigener Bereich
@@ -184,7 +182,7 @@ zählt. Von dort aus:
 Der sechste Bereich, À travers le temps, war Paris vom Mittelalter bis zur
 Belle Époque, mit der Rue de Paris als überdachter Straße. Der Park hat ihn im
 November 2025 bis auf die Stuntshow Main basse sur la Joconde geschlossen und
-reißt ihn ab. 2028 soll dort Londinium stehen, dazu unten mehr.
+reißt ihn ab. 2028 soll dort Londinium stehen.
 
 ```map-widget slug=parc-asterix
 
@@ -199,7 +197,7 @@ Kinder allein. Wo nur eine steht, gibt es keine Ausnahme mit Begleitung.
 ### Toutatis
 
 **[Toutatis](ref:parc-asterix/toutatis)** hat am 8. April 2023 eröffnet. Intamin
-hat den Launch Coaster gebaut: Statt eines Kettenlifts beschleunigen
+hat den Launch Coaster gebaut. Statt eines Kettenlifts beschleunigen
 Linearmotoren den Zug, mehrmals und auch rückwärts, und auf dem Weg geht es
 einmal über eine Kante mit 101 Grad Neigung, also über die Senkrechte hinaus.
 
@@ -212,8 +210,8 @@ und 107 km/h, Intamin 53 Meter und ebenfalls 107 km/h, der Park 51 Meter und
 110 km/h, womit er Toutatis „die schnellste Attraktion Frankreichs“ nennt. Wie
 viele Abschüsse es sind, hängt vom Zählen ab: sieben laut Intamin, fünf vorwärts
 und zwei rückwärts, vier laut Wikipedia, drei davon auf derselben
-Abschussstrecke. RCDB misst 1.075 Meter Schiene; weil der Zug Teile
-davon zweimal fährt, legt er gut 1.360 Meter zurück, daher die „mehr als 1.300
+Abschussstrecke. RCDB nennt 1.075 Meter Schiene und, weil der Zug
+Teile davon zweimal fährt, 1.361 Meter Fahrstrecke; daher die „mehr als 1.300
 Meter“ auf der Seite des Parks. Drei Inversionen, gut zwei Minuten Fahrt. Der Park wirbt außerdem mit 23 Momenten Airtime und
 nennt das einen Weltrekord für Stahlachterbahnen. Mindestgröße 130 Zentimeter.
 
@@ -233,7 +231,7 @@ Single-Rider-Spur, die es nur hier und bei OzIris gibt.
 **[OzIris](ref:parc-asterix/oziris)** eröffnete am 7. April 2012 mit dem
 Bereich Égypte. Für beides zusammen gab der Park 20 Millionen Euro aus, nach
 einem Bericht von NewsParcs die Hälfte davon für die Kulisse. Bolliger &
-Mabillard hat den Inverted Coaster gebaut: Der Zug hängt unter der Schiene, die
+Mabillard hat den Inverted Coaster gebaut. Der Zug hängt unter der Schiene, die
 Beine baumeln frei. 40 Meter Lift, 1.000 Meter Strecke, 90 km/h, fünf
 Inversionen. Welche fünf, ist strittig. RCDB nennt Dive Loop, Looping, Immelmann
 und zwei Zero-G Rolls, die Wikipedia setzt einen Korkenzieher statt der ersten
@@ -272,8 +270,8 @@ Strecke. Für Höhe und Tempo findest du je nach Quelle 30 bis 33 Meter und 84 b
 92 km/h. Allein fahren darf, wer 120 Zentimeter groß ist; bei Toutatis und
 OzIris sind es 130.
 
-Tonnerre 2 Zeus ist die eine Bahn, bei der unsere Analyse die Ankunft zur
-Öffnung empfiehlt. In der ersten halben Stunde ist die Warteschlange kurz, um
+Tonnerre 2 Zeus ist die eine Bahn, bei der sich die Ankunft zur Öffnung nach
+unserer Analyse lohnt. In der ersten halben Stunde ist die Warteschlange kurz, um
 elf hat sie ihre längste Stunde, und der Unterschied ist größer als bei jeder
 anderen Achterbahn im Park.
 
@@ -314,7 +312,7 @@ Mindestgröße 100 und 130 Zentimeter.
 ### La Trace du Hourra
 
 **[La Trace du Hourra](ref:parc-asterix/la-trace-du-hourra)** (Mack Rides, 31.
-März 2001, 70 Millionen Francs) ist eine Bobbahn: Die Wagen fahren in einer
+März 2001, 70 Millionen Francs) ist eine Bobbahn. Die Wagen fahren in einer
 offenen Rinne statt auf einer Schiene und suchen sich ihre Linie durch die
 Kurven selbst. 900 Meter, knapp 60 km/h. Der Park nennt sie einen der höchsten
 Bobs der Welt und den zweitlängsten Europas. Mindestgröße 120 und 130
@@ -375,7 +373,7 @@ sur la Joconde, die dort seit 1996 läuft. Im Sommer 2026 flogen ab dem 11. Juli
 abends mehrere hundert Drohnen über dem See, für die Show „Astérix et la potion
 d'étoiles“.
 
-## Die Jahresrekorde fallen in die Weihnachtswoche
+## Die Jahresrekorde und die Weihnachtswoche
 
 Von den zehn Bahnen in der Tabelle oben hatten fünf ihre längste Wartezeit der
 letzten zwölf Monate zwischen dem 26. und 30. Dezember 2025: Toutatis, OzIris,
@@ -384,9 +382,10 @@ schlimmste Tag im Sommer 2026, zwischen Mai und August (Stand 2. Oktober 2026).
 
 Zu Noël Gaulois öffnet der Park dieses Jahr vom 19. Dezember 2026 bis zum 3.
 Januar 2027, genau in den französischen Weihnachtsferien, an sechzehn Tagen. Es
-gibt zwei Erklärungen für die Rekorde, und unsere Messungen entscheiden nicht
-zwischen ihnen. Die erste: Alle, die über Weihnachten kommen wollen, drängen sich
-auf diese sechzehn Tage. Die zweite steht in den FAQ des Parks: Im Winter sind
+gibt zwei Erklärungen für die Rekorde, und aus unseren Messungen lässt sich
+nicht ablesen, welche den Ausschlag gibt. Die eine ist, dass sich alle, die über
+Weihnachten kommen wollen, auf diese sechzehn Tage drängen. Die andere steht in
+den FAQ des Parks: Im Winter sind
 die Wasserbahnen zu, bei Minusgraden auch einzelne andere Attraktionen, und wer
 da ist, verteilt sich auf weniger Bahnen.
 
@@ -399,8 +398,8 @@ da ist, verteilt sich auf weniger Bahnen.
 ```
 
 Der Samstag ist in unseren Messungen der vollste Tag, mit Abstand, und der
-Mittwoch der ruhigste. Wenn du zwischen Wochentag und Wochenende wählen kannst,
-nimm den Wochentag.
+Mittwoch der ruhigste. Wenn du dir den Tag aussuchen kannst,
+nimm den Mittwoch.
 
 ### Der Monat
 
@@ -410,7 +409,7 @@ nimm den Wochentag.
 
 Dezember und Januar stehen ganz oben, auf wenigen gemessenen Tagen, alle in den
 Weihnachtsferien 2025/26. Unter den Monaten mit vielen Messtagen sind Mai und Juni
-die ruhigsten, und der August ist voller als der Juli. Für Oktober und November haben wir noch keine Messung: Peur sur le
+die ruhigsten, und der August ist voller als der Juli. Für Oktober und November haben wir noch keine Messung, weil Peur sur le
 Parc 2025 lief, bevor wir den Park erfasst haben. Die Prognose für die nächsten
 Wochen steht im Kalender:
 
@@ -453,7 +452,7 @@ Danach kommt die Descente du Nil an die Reihe. Sie ist bis etwa eine Stunde nach
 OzIris ist in der ersten halben Stunde ebenfalls kurz; wenn du die verpasst,
 heb sie dir für den späten Nachmittag auf.
 
-Mittags laufen die Shows, und am frühen Nachmittag ist Toutatis dran: Nach
+Mittags laufen die Shows. Toutatis kommt am frühen Nachmittag dran, denn nach
 unserer Analyse liegt das beste Fenster dort etwa dreieinhalb Stunden nach
 Öffnung. Wer allein fahren kann, nimmt die Single-Rider-Spur.
 
@@ -488,9 +487,8 @@ bis fünfzehn Minuten an, und die Zahl der Pässe pro Tag ist begrenzt.
 
 An einem Wochentag außerhalb der Ferien würde ich mir das Geld sparen und mit
 der Reihenfolge oben auskommen. An einem Samstag im August oder zwischen
-Weihnachten und Neujahr sieht es anders aus. Dann ist Or die Stufe, die sich am
-ehesten lohnt, weil sie die großen Bahnen außer Toutatis abdeckt, und Toutatis
-fährst du über die Single-Rider-Spur. Die gibt es laut Park nur an Toutatis und
+Weihnachten und Neujahr lohnt sich am ehesten die Stufe Or, weil sie die großen
+Bahnen außer Toutatis abdeckt, und Toutatis fährst du über die Single-Rider-Spur. Die gibt es laut Park nur an Toutatis und
 OzIris, und an vollen Tagen kann sie geschlossen bleiben.
 
 ## Peur sur le Parc und Noël Gaulois
@@ -554,7 +552,7 @@ Multi Dimension Coaster von Intamin mit drehbaren Wagen, 17 Meter hoch, in der
 Halle. Tonnerre 2 Zeus bekommt im Winter 2026/27 den zweiten Teil ihrer neuen
 Stahlschiene.
 
-## Praktisches: Tickets, Anreise, Hotels, Essen
+## Tickets, Anreise, Hotels und Essen
 
 ### Tickets und Preise 2026
 

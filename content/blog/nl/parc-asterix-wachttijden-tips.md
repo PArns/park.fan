@@ -67,7 +67,7 @@ moesten de eersten al rechtsomkeert maken. Volgens Le Parisien waren er op dat
 moment 12.000 mensen binnen en kwam er aan de kassa niemand meer door; de Franse
 Wikipedia noemt 20.000 voor de hele dag. Het park was gebouwd voor 15.000 per
 dag. In het eerste jaar stuurde het zo’n 150.000 bezoekers weg aan de poort,
-omdat het vol zat. Er werden twee miljoen gasten verwacht, het werden er 1,34
+omdat het vol zat. Het had twee miljoen gasten verwacht en kreeg er 1,34
 miljoen.
 
 Nu ligt het park op 37 hectare in Plailly, in het departement Oise, volgens het
@@ -76,8 +76,8 @@ afrit aan de A1. In het seizoen 2024/25 kwamen er 2,9 miljoen bezoekers. Tel je
 de parken los, dan staat het in Frankrijk op de derde plaats, achter het
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) en Disney
 Adventure World; het park noemt zichzelf de nummer twee, omdat het Disneyland
-Paris als één bestemming telt. De achtbanen lopen van Goudurix, die op de
-openingsdag al reed, tot [Toutatis](ref:parc-asterix/toutatis), de hoogste
+Paris als één bestemming telt. Tot de achtbanen horen Goudurix, die op de
+openingsdag al reed, en [Toutatis](ref:parc-asterix/toutatis), de hoogste
 achtbaan van Frankrijk.
 
 Wat hier staat, komt uit onze eigen wachttijdmetingen sinds kerst 2025, van de
@@ -94,8 +94,8 @@ staan beide getallen erbij.
 Begin oktober 2026 staan bovenaan twee familieachtbanen, Cétautomatix en Pégase
 Express, en pas daarachter de headliner. Dat heeft met capaciteit te maken.
 Volgens de Roller Coaster DataBase (RCDB) verwerkt Toutatis 1.260 rijders per
-uur en OzIris 1.600. Voor Cétautomatix rekende de Franse site Androland vóór de
-opening op zo’n 700: negen karretjes van vier, elke 20 seconden een vertrek. Een
+uur en OzIris 1.600. Voor Cétautomatix kwam de Franse site Androland vóór de
+opening uit op zo’n 700: negen karretjes van vier, elke 20 seconden een vertrek. Een
 kleine baan met een lage minimale lengte, waar het hele gezin samen in kan, loopt
 sneller vol dan een grote waar maar de helft van de groep in mag.
 
@@ -131,7 +131,7 @@ Disney open in Marne-la-Vallée, en volgens de Franse Wikipedia zakte Parc
 Astérix naar 990.000 bezoekers, 30 procent minder dan het jaar ervoor. De omzet
 daalde met 19 procent tot 170 miljoen frank. Olivier de Bosredon, toen hoofd
 van de exploitatie, ontsloeg personeel en kortte budgetten, en het park
-presenteerde zich als het Franse antwoord op de Amerikaanse reus, als
+presenteerde zich tegenover de Amerikaanse reus als
 “exception culturelle française”. In 1994 maakte het voor het eerst winst, 15
 miljoen frank, met een nieuwe Griekse wijk.
 
@@ -153,7 +153,8 @@ bezoekersaantallen volgens de index van de Themed Entertainment Association
 kondigde het park 250 miljoen euro aan investeringen tot 2030 aan, voor 20
 procent meer capaciteit.
 
-Op 2 december 2025 volgde het eerste Parc Astérix buiten Frankrijk. De
+Op 2 december 2025 kondigde het concern het eerste Parc Astérix buiten Frankrijk
+aan. De
 Compagnie des Alpes kocht in april 2025 Belantis bij Leipzig van Parques
 Reunidos en wil het tegen 2030 of 2031 ombouwen tot Parc Astérix. Topman
 François Fassier noemde het tegenover franceinfo “een heel complex en heel
@@ -161,7 +162,7 @@ ambitieus project”, alleen bedoeld voor de Duitse markt. Hoe die verkoop tot
 stand kwam, lees je in ons
 [bericht over Parques Reunidos](/blog/parques-reunidos-te-koop-movie-park).
 
-## Vijf werelden, en Parijs gaat tegen de vlakte
+## Vijf themagebieden en het oude Parijs
 
 Officieel heeft het park vijf themagebieden. Via de ingang kom je op de Via
 Antiqua, een winkelstraat die sinds 2012 niet meer als apart gebied telt. Van
@@ -183,7 +184,7 @@ daaruit:
 Het zesde gebied, À travers le temps, was Parijs van de middeleeuwen tot de
 belle époque, met de Rue de Paris als overdekte straat. Het park sloot het in
 november 2025, op de stuntshow Main basse sur la Joconde na, en breekt het af.
-In 2028 moet daar Londinium staan, daarover verderop meer.
+In 2028 moet daar Londinium staan.
 
 ```map-widget slug=parc-asterix
 
@@ -199,7 +200,7 @@ grens met begeleiding.
 ### Toutatis
 
 **[Toutatis](ref:parc-asterix/toutatis)** opende op 8 april 2023. Intamin bouwde
-deze launch coaster: in plaats van een kettinglift duwen lineaire motoren de
+deze launch coaster. In plaats van een kettinglift duwen lineaire motoren de
 trein vooruit, meerdere keren en ook achteruit. Onderweg gaat hij over een
 afdaling van 101 graden, steiler dan verticaal.
 
@@ -212,9 +213,9 @@ Over de cijfers zijn de bronnen het niet helemaal eens. RCDB noemt 51 meter en
 waarmee het Toutatis “de snelste attractie van Frankrijk” noemt. Hoeveel
 lanceringen het zijn, hangt af van hoe je telt: zeven volgens Intamin, vijf
 vooruit en twee achteruit, vier volgens Wikipedia, waarvan drie op hetzelfde
-lanceerspoor. RCDB meet 1.075 meter baan; omdat de trein delen daarvan twee keer
-rijdt, legt hij ruim 1.360 meter af, vandaar de “meer dan 1.300 meter” op de
-site van het park. Drie inversies, iets meer dan twee minuten. Het park belooft
+lanceerspoor. RCDB noemt 1.075 meter baan en, omdat de trein delen daarvan
+twee keer rijdt, 1.361 meter afgelegde weg; vandaar de “meer dan 1.300 meter” op
+de site van het park. Drie inversies, iets meer dan twee minuten. Het park belooft
 ook 23 momenten airtime en noemt dat een wereldrecord voor een stalen achtbaan.
 Minimale lengte 130 cm.
 
@@ -233,7 +234,7 @@ hier en bij OzIris is.
 
 **[OzIris](ref:parc-asterix/oziris)** opende op 7 april 2012, samen met het
 gebied Égypte. Het park gaf er samen 20 miljoen euro aan uit, volgens NewsParcs
-de helft daarvan aan decor. Bolliger & Mabillard bouwde de inverted coaster: de
+de helft daarvan aan decor. Bolliger & Mabillard bouwde de inverted coaster. De
 trein hangt onder de baan en je benen bungelen vrij. Een lift van 40 meter,
 1.000 meter baan, 90 km/u, vijf inversies. Welke vijf, daarover verschillen de
 bronnen. RCDB noemt een dive loop, een looping, een immelmann en twee zero-g
@@ -271,8 +272,8 @@ volgens RCDB 530 meter zijn, volgens Dimension Parcs ongeveer 60 procent van de
 baan. Voor hoogte en snelheid vind je afhankelijk van de bron 30 tot 33 meter en
 84 tot 92 km/u. Alleen rijden mag vanaf 120 cm; bij Toutatis en OzIris is dat 130.
 
-Tonnerre 2 Zeus is de enige baan waarvoor onze analyse aanraadt om er bij de
-opening te zijn. Het eerste halfuur is de wachtrij kort, om elf uur zit hij op
+Tonnerre 2 Zeus is de enige baan waarvoor het volgens onze analyse loont om er
+bij de opening te zijn. Het eerste halfuur is de wachtrij kort, om elf uur zit hij op
 zijn langst, en dat verschil is groter dan bij welke andere achtbaan in het park
 ook.
 
@@ -313,7 +314,7 @@ lengte 100 en 130 cm.
 ### La Trace du Hourra
 
 **[La Trace du Hourra](ref:parc-asterix/la-trace-du-hourra)** (Mack Rides, 31
-maart 2001, 70 miljoen frank) is een bobsleebaan: de karretjes rijden in een
+maart 2001, 70 miljoen frank) is een bobsleebaan. De karretjes rijden in een
 open goot in plaats van op rails en zoeken zelf hun lijn door de bochten. 900
 meter, bijna 60 km/u. Het park noemt hem een van de hoogste bobsleebanen ter
 wereld en de op één na langste van Europa. Minimale lengte 120 en 130 cm. In
@@ -371,7 +372,7 @@ sinds 1996 de stuntshow Main basse sur la Joconde. In de zomer van 2026 vlogen
 vanaf 11 juli ’s avonds honderden drones boven het meer, voor de show “Astérix
 et la potion d’étoiles”.
 
-## De jaarrecords vallen in de kerstweek
+## De jaarrecords en de kerstweek
 
 Van de tien attracties in de tabel bovenaan hadden er vijf hun langste wachttijd
 van de afgelopen twaalf maanden tussen 26 en 30 december 2025: Toutatis, OzIris,
@@ -381,9 +382,10 @@ slechtste dag in de zomer van 2026, tussen mei en augustus (stand 2 oktober
 
 Voor Noël Gaulois is het park dit jaar open van 19 december 2026 tot en met 3
 januari 2027, precies in de Franse kerstvakantie, zestien dagen in totaal. Er
-zijn twee verklaringen voor de records, en onze metingen kunnen er niet tussen
-kiezen. De eerste: iedereen die met kerst wil komen, heeft daar alleen die
-zestien dagen voor. De tweede staat in de FAQ van het park: in de winter zijn de
+zijn twee verklaringen voor de records, en uit onze metingen valt niet op te
+maken welke zwaarder weegt. De ene is dat iedereen die met kerst wil komen, daar
+alleen die zestien dagen voor heeft. De andere staat in de FAQ van het park: in
+de winter zijn de
 waterattracties dicht, bij vorst ook sommige andere, en wie er is, verdeelt zich
 over minder attracties.
 
@@ -396,8 +398,7 @@ over minder attracties.
 ```
 
 In onze metingen is zaterdag veruit de drukste dag en woensdag de rustigste.
-Kun je kiezen tussen een doordeweekse dag en het weekend, neem dan de
-doordeweekse dag.
+Kun je de dag zelf kiezen, neem dan de woensdag.
 
 ### De maand
 
@@ -408,7 +409,7 @@ doordeweekse dag.
 December en januari staan bovenaan, op maar een paar gemeten dagen, allemaal in
 de kerstvakantie van 2025/26. Van de maanden met veel meetdagen zijn mei en juni
 het rustigst, en augustus is drukker dan juli. Oktober en november hebben we nog
-niet: Peur sur le Parc 2025 liep voordat we het park volgden. De verwachting
+niet, omdat Peur sur le Parc 2025 liep voordat we het park volgden. De verwachting
 voor de komende weken staat in de kalender:
 
 ```best-days-widget slug=parc-asterix
@@ -449,8 +450,8 @@ na opening en is het drukst in het begin van de middag, als het warm is. OzIris
 is in het eerste halfuur ook kort; mis je dat, bewaar hem dan voor de late
 namiddag.
 
-Rond het middaguur lopen de shows, en in het begin van de middag is Toutatis
-aan de beurt: volgens onze analyse ligt het beste moment daar zo’n drie en een
+Rond het middaguur lopen de shows. Toutatis komt in het begin van de middag aan
+de beurt, want volgens onze analyse ligt het beste moment daar zo’n drie en een
 half uur na opening. Kun je alleen rijden, neem dan de single rider-rij.
 
 Tegen de avond volgen La Trace du Hourra en nog een keer OzIris. In het laatste
@@ -484,9 +485,8 @@ vijftien minuten in de rij, en het aantal passen per dag is beperkt.
 
 Op een doordeweekse dag buiten de schoolvakanties zou ik het geld houden en me
 aan de volgorde hierboven houden. Op een zaterdag in augustus of tussen kerst en
-oud en nieuw ligt dat anders. Dan is Or het niveau dat zich het eerst
-terugbetaalt, omdat het de grote banen dekt behalve Toutatis, en Toutatis doe je
-via de single rider-rij. Die is er volgens het park alleen bij Toutatis en
+oud en nieuw betaalt Or zich het eerst terug, omdat het de grote banen dekt
+behalve Toutatis, en Toutatis doe je via de single rider-rij. Die is er volgens het park alleen bij Toutatis en
 OzIris, en op drukke dagen kan hij dicht blijven.
 
 ## Peur sur le Parc en Noël Gaulois
@@ -550,7 +550,7 @@ Multi Dimension Coaster van Intamin met draaibare karretjes, 17 meter hoog,
 binnen in de hal. Tonnerre 2 Zeus krijgt in de winter van 2026/27 het tweede deel
 van zijn nieuwe stalen baan.
 
-## Praktisch: tickets, reis, hotels, eten
+## Tickets, bereikbaarheid, hotels en eten
 
 ### Tickets en prijzen 2026
 
@@ -564,7 +564,7 @@ kosten aan de kassa 125 en 109 euro. Online gekochte tickets gelden voor een
 vaste datum, en verder hoef je niets te reserveren. Op 2 oktober verkocht het
 park nog geen seizoenspassen voor 2027.
 
-### Reis
+### Bereikbaarheid
 
 Op de A1 richting Lille heeft het park een eigen afrit, tussen afrit 7 en 8.
 Vanaf de Porte de la Chapelle is het volgens het park 35 kilometer, ongeveer een
