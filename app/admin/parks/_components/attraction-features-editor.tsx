@@ -274,7 +274,9 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
             options={optionsFor('indoorOutdoor')}
             emptyLabel="— nicht geprüft —"
             className="w-40"
-            disabled={disabled || specs.isLoading}
+            // Without the option list a stored value shows as "—", and the only
+            // pick left would clear it.
+            disabled={disabled || !specs.isSuccess}
           />
         );
       case 'kind':
@@ -285,7 +287,9 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
             options={optionsFor('attractionKind')}
             emptyLabel="— nicht entschieden —"
             className="w-40"
-            disabled={disabled || specs.isLoading}
+            // Without the option list a stored value shows as "—", and the only
+            // pick left would clear it.
+            disabled={disabled || !specs.isSuccess}
           />
         );
     }
