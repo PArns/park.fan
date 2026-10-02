@@ -445,6 +445,11 @@
       "promptTitle": "Enjoying park.fan?",
       "promptText": "Make us a preferred source on Google in one click, and park.fan wait times and guides will rank higher in your search results."
     },
+    "install": {
+      "label": "Install park.fan as an app",
+      "dismiss": "Hide the install hint",
+      "iosHint": "Tap the Share button in Safari, then “Add to Home Screen”."
+    },
     "copyright": "© {year} park.fan. All rights reserved.",
     "poweredBy": "Powered by",
     "legalLinks": "Legal",

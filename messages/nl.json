@@ -445,6 +445,11 @@
       "promptTitle": "Vind je park.fan leuk?",
       "promptText": "Maak ons met één klik een voorkeursbron op Google – dan verschijnen park.fan-wachttijden en -gidsen hoger in je zoekresultaten."
     },
+    "install": {
+      "label": "park.fan als app installeren",
+      "dismiss": "Installatiehint verbergen",
+      "iosHint": "Tik in Safari op de knop Deel en kies “Zet op beginscherm”."
+    },
     "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
     "poweredBy": "Aangedreven door",
     "legalLinks": "Juridisch",

@@ -8,6 +8,7 @@ import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { FooterLinkGroup } from '@/components/layout/footer-link-group';
 import { BuildInfo } from '@/components/common/build-info';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
+import { InstallAppButton } from '@/components/common/install-app-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
@@ -254,6 +255,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
               {t('description')}
             </p>
             <PreferredSourceButton />
+            <InstallAppButton />
             {/* One row needs 293–313 px across the six locales (measured at 1280 px with the row
                 held to `nowrap`). Where the column is narrower than 20rem the links stack and the
                 bullets go: a wrapping row put a „•" at the end of a line at 320 px, and at 768 px

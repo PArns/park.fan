@@ -445,6 +445,11 @@
       "promptTitle": "¿Te gusta park.fan?",
       "promptText": "Márcanos como fuente preferida en Google con un clic: los tiempos de espera y las guías de park.fan aparecerán más arriba en tus resultados de búsqueda."
     },
+    "install": {
+      "label": "Instalar park.fan como app",
+      "dismiss": "Ocultar el aviso de instalación",
+      "iosHint": "En Safari, toca el botón Compartir y luego «Añadir a pantalla de inicio»."
+    },
     "copyright": "© {year} park.fan. Todos los derechos reservados.",
     "poweredBy": "Impulsado por",
     "legalLinks": "Legal",
