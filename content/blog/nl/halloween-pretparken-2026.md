@@ -527,10 +527,10 @@ Nieuw is de maze [Final Exhibit](ref:alton-towers/final-exhibit): de vergeten
 collectie van een man die het park alleen “The Curator” noemt, en niet elk
 tentoonstellingsstuk is zo levenloos als het eruitziet. Hij wordt aanbevolen
 vanaf 12 jaar, net als alle vier de thrill-mazes. De andere drie zijn COMPOUND,
-Edge of the Forest en Altonville Mine Tours: Tiny's Revenge. De mazes zitten niet
+Edge of the Forest en Altonville Mine Tours: Tiny’s Revenge. De mazes zitten niet
 bij de toegang en draaien met een tijdslot. Zonder tijdslot loop je door de
 scare zone Dark Hollow, en voor gezinnen zijn er twee walkthroughs vanaf 6 jaar:
-Trick O' Treat Town en Amigos in the Afterlife.
+Trick O’ Treat Town en Amigos in the Afterlife.
 
 De achtbanen draaien daarbij in het donker. Begin oktober gaat de zon in
 Staffordshire kort voor 19 uur onder, wie tot 21 uur blijft, rijdt dus ruim twee

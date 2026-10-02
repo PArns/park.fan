@@ -23,10 +23,9 @@ follow the same rule.
 ## How it is checked
 
 `pnpm check:blog-updated-at` (`scripts/check-blog-updated-at.mjs`) groups `content/blog/` by
-`translationKey` and fails when the files of a group disagree on `updatedAt`. It runs in
-`checks.yml` and in `prebuild`, next to `check:untranslated`, and prints how many groups it
-compared. A missing file is not caught by it; `pnpm generate:blog-manifest` and the count per
-`translationKey` before review are.
+`translationKey` and fails when a group has fewer than six files or its files disagree on
+`updatedAt`. It runs in `checks.yml` and in `prebuild`, next to `check:untranslated`, and prints how
+many groups it compared.
 
 ## Why
 

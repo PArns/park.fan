@@ -14,7 +14,8 @@
  * compares `date` but not `updatedAt`, and `check:untranslated` only reads `messages/`.
  *
  * A group where no file has `updatedAt` (every news post) passes. A group where some files have it
- * and some do not fails: that is the same gap, with the missing date standing for the old one.
+ * and some do not fails: that is the same gap, with the missing date standing for the old one. A
+ * group with fewer than six files fails too, because a missing locale has no date to disagree with.
  */
 
 import { readFileSync, readdirSync } from 'node:fs';
@@ -45,20 +46,31 @@ for (const locale of LOCALES) {
 }
 
 const mismatches = [];
+const incomplete = [];
 let withDate = 0;
 for (const [key, entries] of groups) {
+  const missing = LOCALES.filter((l) => !entries.some((e) => e.locale === l));
+  if (missing.length > 0) incomplete.push({ key, missing });
   const dates = new Set(entries.map((e) => e.updatedAt));
   if (dates.size > 1) mismatches.push({ key, entries });
   else if (!dates.has(null)) withDate += 1;
 }
 
-if (mismatches.length === 0) {
+if (mismatches.length === 0 && incomplete.length === 0) {
   console.log(
-    `✅ updatedAt agrees across translations in all ${groups.size} translationKey groups ` +
+    `✅ All ${groups.size} translationKey groups have six files and one updatedAt ` +
       `(${withDate} carry an updatedAt, ${groups.size - withDate} have none).`
   );
   process.exit(0);
 }
+
+if (incomplete.length > 0) {
+  console.error(`❌ ${incomplete.length} of ${groups.size} translationKey groups miss a locale:\n`);
+  for (const { key, missing } of incomplete)
+    console.error(`  ${key}   missing: ${missing.join(', ')}`);
+  console.error('');
+}
+if (mismatches.length === 0) process.exit(1);
 
 console.error(
   `❌ ${mismatches.length} of ${groups.size} translationKey groups disagree on updatedAt:\n`

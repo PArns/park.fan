@@ -527,9 +527,9 @@ Lo nuevo es el maze [Final Exhibit](ref:alton-towers/final-exhibit): la colecci�
 olvidada de un hombre al que el parque solo llama «The Curator», y no todas las
 piezas están tan muertas como parecen. Se recomienda a partir de 12 años, igual
 que los cuatro thrill mazes. Los otros tres son COMPOUND, Edge of the Forest y
-Altonville Mine Tours: Tiny's Revenge. Los mazes no van incluidos en la entrada
+Altonville Mine Tours: Tiny’s Revenge. Los mazes no van incluidos en la entrada
 y funcionan con franja horaria. Sin franja horaria entras en la scare zone Dark
-Hollow, y para las familias hay dos walkthroughs a partir de 6 años: Trick O'
+Hollow, y para las familias hay dos walkthroughs a partir de 6 años: Trick O’
 Treat Town y Amigos in the Afterlife.
 
 Las montañas rusas, además, funcionan a oscuras. A principios de octubre el sol

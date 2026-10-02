@@ -532,10 +532,10 @@ La novità è il maze [Final Exhibit](ref:alton-towers/final-exhibit): la
 collezione dimenticata di un uomo che il parco chiama soltanto “The Curator”, e
 non tutti i pezzi esposti sono inanimati come sembrano. È consigliato dai 12
 anni, come tutti e quattro i thrill maze. Gli altri tre sono COMPOUND, Edge of
-the Forest e Altonville Mine Tours: Tiny's Revenge. I maze non sono compresi nel
+the Forest e Altonville Mine Tours: Tiny’s Revenge. I maze non sono compresi nel
 biglietto d’ingresso e girano a fasce orarie. Senza fascia oraria si attraversa
 la scare zone Dark Hollow, e per le famiglie ci sono due walkthrough dai 6 anni:
-Trick O' Treat Town e Amigos in the Afterlife.
+Trick O’ Treat Town e Amigos in the Afterlife.
 
 Le montagne russe girano poi al buio. A inizio ottobre nello Staffordshire il
 sole tramonta poco prima delle 19, quindi chi resta fino alle 21 corre per un
@@ -569,7 +569,7 @@ sospetta il macellaio e tu attraversi macelleria e mattatoio per aiutarlo. Gli
 altri quattro sono **La Isla Maldita** (da 12 €, pirati fantasma), **REC®
 Experience** (da 8,90 €, ispirata alla serie di film spagnola e solo a
 PortAventura), **La Muerte Viva** e **Angkor** (da 6,90 € ciascuno). Chi ne
-vuole più di uno conviene che faccia i conti con l’Halloween Passport: il
+vuole più di uno fa meglio a fare i conti con l’Halloween Passport: il
 Passport 2 (El Carnicero e REC) da 11,90 €, il Passport 5 con tutti e cinque da
 30,90 €. Secondo la pagina dei biglietti vale per tutti e cinque lo stesso limite
 d’età, dai 12 anni se accompagnati e da soli dai 14. Orari, confronto dei pass e

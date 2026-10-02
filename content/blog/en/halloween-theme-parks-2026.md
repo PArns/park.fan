@@ -516,9 +516,9 @@ New this year is the maze [Final Exhibit](ref:alton-towers/final-exhibit): the
 forgotten collection of a man the park only calls “The Curator”, and not every
 exhibit is as lifeless as it looks. It’s recommended from 12, like all four
 thrill mazes. The other three are COMPOUND, Edge of the Forest and Altonville
-Mine Tours: Tiny's Revenge. The mazes aren’t included in admission and run with
+Mine Tours: Tiny’s Revenge. The mazes aren’t included in admission and run with
 timed slots. The Dark Hollow scare zone needs no slot, and for families there
-are two walkthroughs from age 6: Trick O' Treat Town and Amigos in the
+are two walkthroughs from age 6: Trick O’ Treat Town and Amigos in the
 Afterlife.
 
 The roller coasters run in the dark, too. In early October the sun sets in
