@@ -14,6 +14,7 @@ import {
   Search,
   Sliders,
   Sparkles,
+  ListChecks,
   Ticket,
   TriangleAlert,
 } from 'lucide-react';
@@ -41,7 +42,7 @@ import { useCan } from '../../_app/session';
 import { SeasonList } from '../_components/season-editor';
 import { LocationEditor } from '../_components/location-editor';
 import { PhotoCoverage } from '../_components/photo-coverage';
-import { FastPassEditor } from '../_components/fast-pass-editor';
+import { AttractionFeaturesEditor } from '../_components/attraction-features-editor';
 
 /**
  * One park, and everything about it that a person decides rather than a feed.
@@ -53,12 +54,12 @@ import { FastPassEditor } from '../_components/fast-pass-editor';
  * you are editing is how a correction lands on the wrong one.
  */
 
-type Tab = 'fields' | 'attractions' | 'fastpass' | 'seasons' | 'media' | 'history';
+type Tab = 'fields' | 'attractions' | 'features' | 'seasons' | 'media' | 'history';
 
 const TABS: Array<{ id: Tab; label: string; icon: typeof Sliders }> = [
   { id: 'fields', label: 'Stammdaten', icon: Sliders },
   { id: 'attractions', label: 'Fahrgeschäfte', icon: Rows3 },
-  { id: 'fastpass', label: 'Fastpass', icon: Ticket },
+  { id: 'features', label: 'Merkmale', icon: ListChecks },
   { id: 'seasons', label: 'Saisons', icon: CalendarRange },
   { id: 'media', label: 'Bilder', icon: Images },
   { id: 'history', label: 'Verlauf', icon: History },
@@ -150,7 +151,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
 
       {tab === 'fields' && <ParkFieldsTab park={data} />}
       {tab === 'attractions' && <ParkAttractionsTab parkId={id} />}
-      {tab === 'fastpass' && <FastPassEditor park={data} />}
+      {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
         <div id="seasons">
           <SeasonList parkId={id} seasons={data.seasons} canEdit={canEdit} />
