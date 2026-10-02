@@ -1,7 +1,9 @@
 {
+  "title": "pferdekarussell",
   "park": "phantasialand",
   "ride": "pferdekarussell",
   "area": "Berlin",
+  "roles": ["ride-card"],
   "tags": ["day", "photo", "ride"],
   "credit": {
     "author": "Patrick",
@@ -13,6 +15,10 @@
   "gps": {
     "lat": 50.799256,
     "lon": 6.87975
+  },
+  "focus": {
+    "x": 0.447,
+    "y": 0.669
   },
   "review": true
 }
