@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { cn } from '@/lib/utils';
+
 /**
  * The 34px frosted disc the attraction card's two corner controls sit on —
  * `FavoriteStar` and `RideAlertBell`.
@@ -11,16 +13,15 @@ import type { ReactNode } from 'react';
  * an alert on. `components/common/` and not `components/parks/` so the push
  * bell can reach it without a client component importing card chrome.
  *
- * It is NOT yet every disc on the site: `park-card.tsx` hard-codes a
- * byte-identical copy, because there the disc is also the positioned element
- * (`absolute top-3 right-3 z-[4]`) and this component takes no `className`.
- * So a change here does not reach park cards, which sit in the same grids —
- * closing that gap is PAR-130.
+ * It is every such disc on the site: `park-card.tsx` renders it too, and passes
+ * its positioning (`absolute top-3 right-3 z-[4]`) through `className`, because
+ * there the disc is itself the positioned element. `className` is for placement
+ * only; size, colour, border and shadow stay here (PAR-130).
  */
-export function GlassCircle({ children }: { children: ReactNode }) {
+export function GlassCircle({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className="h-[34px] w-[34px] rounded-full"
+      className={cn('h-[34px] w-[34px] rounded-full', className)}
       style={{
         background: 'var(--pk-fav-bg)',
         border: '1px solid var(--pk-fav-border)',

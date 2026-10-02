@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { GlassCircle } from '@/components/common/glass-circle';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -297,14 +298,7 @@ export function ParkCard({
 
         {/* Favorite button — z-4 */}
         {effectiveParkId && (
-          <div
-            className="absolute top-3 right-3 z-[4] h-[34px] w-[34px] rounded-full"
-            style={{
-              background: 'var(--pk-fav-bg)',
-              border: '1px solid var(--pk-fav-border)',
-              boxShadow: 'var(--pk-fav-shadow)',
-            }}
-          >
+          <GlassCircle className="absolute top-3 right-3 z-[4]">
             <FavoriteStar
               type="park"
               id={effectiveParkId}
@@ -314,7 +308,7 @@ export function ParkCard({
               variant="glass"
               className="h-full w-full"
             />
-          </div>
+          </GlassCircle>
         )}
 
         {/* Top glass panel — z-3 */}
