@@ -8362,6 +8362,66 @@ const landscapeRoom = (sel) => {
   await land.close();
 }
 
+// ── The ride search's head on a portrait phone (PAR-225) ───────────────────
+// PAR-189 cut this head down and PAR-313/482 cut it further; nothing measured
+// the result, so a padding class growing back left the run green. Measured
+// here is the HEAD — the block's top edge to the bottom of the tap hint —
+// and not the block's box: the box is whatever the sheet's flex row hands it
+// and moves with everything above it. The hint is drawn only while the day is
+// empty, so this seeds an empty day. It wraps to two lines in every locale,
+// which is why every locale is a case of its own and the detail names each.
+//
+// Measured 2026-10-02 at 390×844 with `hasTouch`: 71.25 px in all six locales
+// (6 px padding from `planner-phone:py-1.5`, the 32 px field, the 2 px gap,
+// a 30.25 px hint). The bound sits 0.75 px above that, so one padding step
+// back to `py-2` (73.25 px) turns this red.
+{
+  const SEARCH_HEAD_MAX_PX = 72;
+  const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
+  const emptyDay = {
+    parks: { [PARK.slug]: { ...PARK, days: { [DATE]: { date: DATE, entries: [] } } } },
+    activeParkSlug: PARK.slug,
+    activeDate: DATE,
+    version: 2,
+  };
+  const heads = [];
+  for (const locale of LOCALES) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
+    noteErrors(page);
+    await page.goto(`${BASE}/${locale}`, { waitUntil: 'domcontentloaded' });
+    await page.evaluate((plan) => {
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+    }, emptyDay);
+    // A missed `networkidle` is not this case's failure: `openSheet` waits for
+    // the launcher itself and reports a sheet that never opens as a ❌, where an
+    // uncaught timeout here would end the run before its balance.
+    await page.goto(`${BASE}/${locale}`, { waitUntil: 'networkidle' }).catch(() => {});
+    const head = (await openSheet(page, `Suchkopf ${locale}`))
+      ? await page
+          .locator(`${SHEET} [data-planner-ride-search]`)
+          .first()
+          .evaluate((el) => {
+            const hint = el.querySelector(':scope > p');
+            return hint
+              ? hint.getBoundingClientRect().bottom - el.getBoundingClientRect().top
+              : null;
+          })
+          .catch(() => null)
+      : null;
+    heads.push({ locale, head });
+    await page.close();
+  }
+  const measured = heads.filter((h) => h.head !== null);
+  check(
+    `der Kopf der Ride-Suche ist bei 390×844 höchstens ${SEARCH_HEAD_MAX_PX} px hoch, in jeder Sprache`,
+    measured.length === LOCALES.length && measured.every((h) => h.head <= SEARCH_HEAD_MAX_PX),
+    `${measured.length}/${LOCALES.length} Sprachen gemessen · ` +
+      heads
+        .map((h) => `${h.locale} ${h.head === null ? 'nicht gemessen' : `${h.head.toFixed(2)} px`}`)
+        .join(' · ')
+  );
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,
