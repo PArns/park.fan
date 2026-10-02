@@ -1,7 +1,9 @@
 {
+  "title": "talocan",
   "park": "phantasialand",
   "ride": "talocan",
   "area": "Mexico",
+  "roles": ["ride-card"],
   "tags": ["photo", "ride"],
   "credit": {
     "author": "Patrick",
@@ -13,6 +15,10 @@
   "gps": {
     "lat": 50.799217,
     "lon": 6.880892
+  },
+  "focus": {
+    "x": 0.6083,
+    "y": 0.6588
   },
   "review": true
 }
