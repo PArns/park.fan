@@ -42,9 +42,14 @@ function isIosSafari(): boolean {
   const ua = navigator.userAgent;
   // iPadOS 13+ reports a Mac; a Mac has no touch points.
   const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
-  // Chrome, Firefox, Edge and Opera on iOS carry their own token; only Safari has the Share-sheet
-  // route to the Home Screen that the hint describes.
-  return ios && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua);
+  // Only Safari has the Share-sheet route to the Home Screen that the hint describes. Chrome,
+  // Firefox, Edge and Opera on iOS carry their own token, and the in-app browsers (Facebook,
+  // Instagram, Line, Google app, Snapchat) have no such sheet at all.
+  return (
+    ios &&
+    /Safari\//.test(ua) &&
+    !/CriOS|FxiOS|EdgiOS|OPiOS|FBAN|FBAV|Instagram|Line\/|GSA\/|Snapchat/.test(ua)
+  );
 }
 
 function readDismissed(): boolean {
@@ -97,7 +102,11 @@ export async function promptInstall(): Promise<void> {
   if (!event) return;
   deferred = null;
   emit();
-  await event.prompt();
+  try {
+    await event.prompt();
+  } catch {
+    // The browser refused to show the dialog; the single-use event is spent either way.
+  }
 }
 
 export function dismissInstall(): void {
