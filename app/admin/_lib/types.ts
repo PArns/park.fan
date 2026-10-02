@@ -69,6 +69,17 @@ export interface CuratedField {
   hint?: string;
 }
 
+/**
+ * One entry of `GET /v1/admin/content/fields`: how a curated field is rendered,
+ * without any ride's values. Narrowed to what the admin reads from it.
+ */
+export interface CuratedFieldSpec {
+  key: string;
+  label: string;
+  type: CuratedFieldType;
+  options?: string[];
+}
+
 export interface AuditEntry {
   id: string;
   actorId: string | null;
@@ -138,6 +149,15 @@ export interface AdminAttractionListItem {
    * actually stored, not what the API would serve.
    */
   fastPass?: { has: boolean | null; name: string | null; price: number | null };
+  /**
+   * Raw columns too, null when nobody has checked. The features table writes
+   * them back, so a resolved value would turn "not looked at" into a "no".
+   */
+  hasVirtualLine?: boolean | null;
+  hasSingleRider?: boolean | null;
+  indoorOutdoor?: string | null;
+  /** Null is "nobody decided", never RIDE. */
+  attractionKind?: string | null;
   hasRideProfile: boolean;
   curatedFieldCount: number;
   updatedAt: string;
