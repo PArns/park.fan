@@ -421,6 +421,7 @@ export function PlannerBlock({
     <li
       data-planner-entry={entry.id}
       data-planner-block=""
+      data-planner-ghost={ghost ? '' : undefined}
       data-verdict-block={conflict ? 'broken' : undefined}
       // Clicking anywhere on the block selects it. The grip is 24 px on a fine
       // pointer, and requiring a hit on that strip to reach a block's own
