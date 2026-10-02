@@ -29,6 +29,7 @@ export function Row({
   href,
   title,
   subtitle,
+  subtitleValue,
   image,
   imagePosition,
   leading,
@@ -38,6 +39,13 @@ export function Row({
   href: string;
   title: string;
   subtitle?: string | null;
+  /**
+   * The part of the subtitle that must never be cut: an alert's threshold, a reminder's time. It
+   * sits after `subtitle` on the same line and outside its `truncate`, so the park name gives way
+   * and the value stays readable. Same line, so the row's height and the band's row count do not
+   * move (PAR-71).
+   */
+  subtitleValue?: string | null;
   image?: string | null;
   imagePosition?: string;
   /** Drawn in the picture box for a group whose rows never have a picture. */
@@ -76,8 +84,21 @@ export function Row({
         </span>
         <span className="min-w-0 flex-1">
           <span className="text-foreground block truncate text-sm font-medium">{title}</span>
-          {subtitle && (
-            <span className="text-muted-foreground block truncate text-xs">{subtitle}</span>
+          {subtitleValue ? (
+            <span className="text-muted-foreground flex min-w-0 text-xs">
+              {subtitle && (
+                <>
+                  <span className="truncate">{subtitle}</span>
+                  {/* No-break spaces, so the row's text reads "Park · value" exactly as before. */}
+                  <span className="shrink-0 whitespace-pre">{' · '}</span>
+                </>
+              )}
+              <span className="shrink-0 whitespace-nowrap tabular-nums">{subtitleValue}</span>
+            </span>
+          ) : (
+            subtitle && (
+              <span className="text-muted-foreground block truncate text-xs">{subtitle}</span>
+            )
           )}
         </span>
         {trailing && <span className="shrink-0 text-right">{trailing}</span>}

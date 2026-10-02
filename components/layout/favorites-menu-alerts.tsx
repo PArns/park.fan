@@ -38,6 +38,8 @@ interface AlertRow {
   href: string;
   title: string;
   detail: string;
+  /** Kept out of `detail`'s truncate — see `Row`'s `subtitleValue`. */
+  value: string | null;
   icon: React.ReactNode;
   remove: () => void;
 }
@@ -98,7 +100,10 @@ export function FavoritesMenuAlerts({
       // home: the overview page, which is where the rest of this group's rows lead anyway.
       href: alert.path ?? '/alerts',
       title: alert.attractionName,
-      detail: `${alert.parkName} · ${t('threshold', { minutes: alert.thresholdMinutes })}`,
+      // The threshold is what tells two alerts in one park apart, so it is the half that stays
+      // whole and the park name is the half that gives way (PAR-71).
+      detail: alert.parkName,
+      value: t('threshold', { minutes: alert.thresholdMinutes }),
       icon: <Bell className="text-muted-foreground size-4" aria-hidden="true" />,
       remove: () => void removal.removeRide(alert.attractionId),
     })),
@@ -106,11 +111,16 @@ export function FavoritesMenuAlerts({
       key: showRowKey(follow.showId),
       href: follow.path ?? '/alerts',
       title: follow.showName,
-      detail: `${follow.parkName} · ${
-        follow.startTime
-          ? t('showAt', { time: formatShowClock(follow.startTime, follow.timezone, locale) ?? '—' })
-          : t('showNextAny')
-      }`,
+      // A set time is a value like a threshold. "Next performance" is not, and in German it is
+      // wider than the column on its own, so it stays in the truncating half.
+      ...(follow.startTime
+        ? {
+            detail: follow.parkName,
+            value: t('showAt', {
+              time: formatShowClock(follow.startTime, follow.timezone, locale) ?? '—',
+            }),
+          }
+        : { detail: `${follow.parkName} · ${t('showNextAny')}`, value: null }),
       icon: <CalendarClock className="text-muted-foreground size-4" aria-hidden="true" />,
       remove: () => void removal.removeShow(follow.showId),
     })),
@@ -168,6 +178,7 @@ export function FavoritesMenuAlerts({
                     href={row.href}
                     title={row.title}
                     subtitle={row.detail}
+                    subtitleValue={row.value}
                     leading={row.icon}
                     action={
                       <button
