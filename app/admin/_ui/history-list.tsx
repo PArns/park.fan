@@ -23,11 +23,17 @@ import { useToast } from './toast';
  * Only curation entries can be undone. A job trigger has no previous state to
  * restore, and offering an undo that quietly does nothing is worse than not
  * offering one.
+ *
+ * A verification (`kind: 'verification'`, written by `park.verify`) changed
+ * nothing: `before` holds the values someone checked against `sourceUrl`, and
+ * `after` is null. It has the shape of a deletion, so it is drawn on its own
+ * branch, and it never gets an undo (the backend answers one with a 400).
  */
 
 const ACTION_LABELS: Record<string, string> = {
   'attraction.curate': 'Fahrgeschäft kuratiert',
   'park.curate': 'Park kuratiert',
+  'park.verify': 'Park geprüft',
   'park.season.create': 'Saison angelegt',
   'park.season.update': 'Saison geändert',
   'park.season.delete': 'Saison gelöscht',
@@ -82,7 +88,13 @@ export function HistoryList({
           entry={entry}
           invalidateKeys={invalidateKeys}
           compact={compact}
-          canUndo={canUndo && UNDOABLE.has(entry.action) && !entry.revertedBy && !!entry.before}
+          canUndo={
+            canUndo &&
+            entry.kind !== 'verification' &&
+            UNDOABLE.has(entry.action) &&
+            !entry.revertedBy &&
+            !!entry.before
+          }
           showEntity={showEntity}
         />
       ))}
@@ -107,6 +119,7 @@ function HistoryRow({
   const invalidate = useInvalidateAdmin();
   const [busy, setBusy] = useState(false);
 
+  const isVerification = entry.kind === 'verification';
   const changedKeys = Object.keys(entry.after ?? entry.before ?? {});
 
   async function undo() {
@@ -138,6 +151,7 @@ function HistoryRow({
         {showEntity && entry.entityLabel && (
           <span className="text-muted-foreground truncate text-xs">{entry.entityLabel}</span>
         )}
+        {isVerification && <Chip>Prüfung</Chip>}
         {entry.revertedBy && <Chip>zurückgenommen</Chip>}
         <span className="text-muted-foreground ml-auto text-xs whitespace-nowrap">
           {formatDistanceToNow(parseISO(entry.createdAt), { addSuffix: true, locale: de })}
@@ -152,7 +166,20 @@ function HistoryRow({
         )}
       </p>
 
-      {!compact && changedKeys.length > 0 && entry.before && entry.after && (
+      {!compact && isVerification && changedKeys.length > 0 && (
+        <div className="mt-2 space-y-1">
+          {changedKeys.map((key) => (
+            <div key={key} className="flex flex-wrap items-baseline gap-1.5 text-xs">
+              <span className="text-muted-foreground">{key}</span>
+              <code className="bg-muted rounded px-1 py-0.5">
+                {formatValue(entry.before?.[key])}
+              </code>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {!compact && !isVerification && changedKeys.length > 0 && entry.before && entry.after && (
         <div className="mt-2 space-y-1">
           {changedKeys.map((key) => (
             <div key={key} className="flex flex-wrap items-baseline gap-1.5 text-xs">
@@ -180,7 +207,10 @@ function HistoryRow({
             className="text-primary inline-flex items-center gap-1 truncate text-xs hover:underline"
           >
             <ExternalLink className="h-3 w-3 shrink-0" />
-            <span className="truncate">{entry.sourceUrl}</span>
+            <span className="truncate">
+              {isVerification && 'geprüft gegen '}
+              {entry.sourceUrl}
+            </span>
           </a>
         )}
         {showEntity && entry.entityId && entry.entityType === 'park' && (

@@ -85,6 +85,12 @@ export interface AuditEntry {
   actorId: string | null;
   actorEmail: string;
   action: string;
+  /**
+   * `verification` rows (`park.verify`) record values checked against a source
+   * without changing them: `before` holds the checked values, `after` is null.
+   * The backend refuses to undo them. Optional because older rows may lack it.
+   */
+  kind?: 'change' | 'verification';
   entityType: string;
   entityId: string | null;
   entityLabel: string | null;
