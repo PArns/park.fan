@@ -1970,14 +1970,15 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       // the scroller is 471 px and the bar never reaches the ghost, which is why
       // the precondition below is asserted and not assumed.
       const fullViewport = phone.viewportSize();
-      await phone.setViewportSize({ width: 360, height: 568 });
-      await phone.waitForTimeout(400);
-      const dragBlock = phone.locator(`li[data-planner-entry="${entryId}"]`);
-      await dragBlock.scrollIntoViewIfNeeded();
+      let held;
+      let aboveGhost;
       const pointerId = 9;
-      const held = await dragBlock
-        .locator('button[aria-label="Verschieben"]')
-        .evaluate((el, id) => {
+      try {
+        await phone.setViewportSize({ width: 360, height: 568 });
+        await phone.waitForTimeout(400);
+        const dragBlock = phone.locator(`li[data-planner-entry="${entryId}"]`);
+        await dragBlock.scrollIntoViewIfNeeded();
+        held = await dragBlock.locator('button[aria-label="Verschieben"]').evaluate((el, id) => {
           let scroller = el.parentElement;
           while (scroller && !/(auto|scroll)/.test(getComputedStyle(scroller).overflowY)) {
             scroller = scroller.parentElement;
@@ -2007,58 +2008,64 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
           window.__parfanDragHold = { el, x, y: y + 20, opts };
           return { scrollerHeight: Math.round(scroller.getBoundingClientRect().height) };
         }, pointerId);
-      // Two animation frames: the drag reads its target in a rAF loop, and the
-      // column hears `moved` in the frame that moves the ghost.
-      await phone.waitForTimeout(500);
-      const aboveGhost = await phone.evaluate(() => {
-        const ghost = document.querySelector('li[data-planner-ghost]');
-        const bar = document.querySelector('[data-planner-grid-actions]');
-        if (!ghost) return { ghost: false, bar: Boolean(bar) };
-        const box = ghost.getBoundingClientRect();
-        const x = box.left + box.width / 2;
-        const y = box.top + box.height / 2;
-        // The ghost is `pointer-events-none`, so `elementFromPoint` looks straight
-        // through it and always answers the block underneath. Made hittable for
-        // the one sample, so the question is who is painted on top of it.
-        ghost.style.pointerEvents = 'auto';
-        const hit = document.elementFromPoint(x, y);
-        ghost.style.pointerEvents = '';
-        const barBox = bar?.getBoundingClientRect();
-        return {
-          ghost: true,
-          bar: Boolean(bar),
-          // Would the bar cover the ghost's middle if it were visible? Without
-          // this the check could pass on a layout where it never could.
-          barOverGhost: Boolean(
-            barBox && y >= barBox.top && y <= barBox.bottom && x >= barBox.left && x <= barBox.right
-          ),
-          barVisibility: bar ? getComputedStyle(bar).visibility : null,
-          ownsPoint: Boolean(hit && ghost.contains(hit)),
-          hit: hit
-            ? `${hit.tagName.toLowerCase()}${[...hit.attributes]
-                .filter((a) => a.name.startsWith('data-'))
-                .map((a) => `[${a.name}]`)
-                .join(
-                  ''
-                )} in ${hit.closest('li[data-planner-block]') ? 'einem Block' : hit.closest('[data-planner-grid-actions]') ? 'der Aktionsleiste' : 'sonst'}`
-            : 'nichts',
-        };
-      });
-      await phone.evaluate((id) => {
-        const hold = window.__parfanDragHold;
-        if (!hold) return;
-        hold.el.dispatchEvent(
-          new PointerEvent('pointerup', {
-            ...hold.opts,
-            pointerId: id,
-            clientX: hold.x,
-            clientY: hold.y,
-          })
-        );
-        window.__parfanDragHold = undefined;
-      }, pointerId);
-      await phone.setViewportSize(fullViewport);
-      await phone.waitForTimeout(400);
+        // Two animation frames: the drag reads its target in a rAF loop, and the
+        // column hears `moved` in the frame that moves the ghost.
+        await phone.waitForTimeout(500);
+        aboveGhost = await phone.evaluate(() => {
+          const ghost = document.querySelector('li[data-planner-ghost]');
+          const bar = document.querySelector('[data-planner-grid-actions]');
+          if (!ghost) return { ghost: false, bar: Boolean(bar) };
+          const box = ghost.getBoundingClientRect();
+          const x = box.left + box.width / 2;
+          const y = box.top + box.height / 2;
+          // The ghost is `pointer-events-none`, so `elementFromPoint` looks straight
+          // through it and always answers the block underneath. Made hittable for
+          // the one sample, so the question is who is painted on top of it.
+          ghost.style.pointerEvents = 'auto';
+          const hit = document.elementFromPoint(x, y);
+          ghost.style.pointerEvents = '';
+          const barBox = bar?.getBoundingClientRect();
+          return {
+            ghost: true,
+            bar: Boolean(bar),
+            // Would the bar cover the ghost's middle if it were visible? Without
+            // this the check could pass on a layout where it never could.
+            barOverGhost: Boolean(
+              barBox &&
+              y >= barBox.top &&
+              y <= barBox.bottom &&
+              x >= barBox.left &&
+              x <= barBox.right
+            ),
+            barVisibility: bar ? getComputedStyle(bar).visibility : null,
+            ownsPoint: Boolean(hit && ghost.contains(hit)),
+            hit: hit
+              ? `${hit.tagName.toLowerCase()}${[...hit.attributes]
+                  .filter((a) => a.name.startsWith('data-'))
+                  .map((a) => `[${a.name}]`)
+                  .join(
+                    ''
+                  )} in ${hit.closest('li[data-planner-block]') ? 'einem Block' : hit.closest('[data-planner-grid-actions]') ? 'der Aktionsleiste' : 'sonst'}`
+              : 'nichts',
+          };
+        });
+      } finally {
+        await phone.evaluate((id) => {
+          const hold = window.__parfanDragHold;
+          if (!hold) return;
+          hold.el.dispatchEvent(
+            new PointerEvent('pointerup', {
+              ...hold.opts,
+              pointerId: id,
+              clientX: hold.x,
+              clientY: hold.y,
+            })
+          );
+          window.__parfanDragHold = undefined;
+        }, pointerId);
+        await phone.setViewportSize(fullViewport);
+        await phone.waitForTimeout(400);
+      }
       check(
         'ein bewegter Drag zeigt den Ghost',
         Boolean(held && !held.error) && aboveGhost.ghost,
