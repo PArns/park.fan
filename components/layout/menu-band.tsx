@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+import { registerOpenMenuBand } from '@/lib/hooks/use-menu-band-open';
 import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
 
 /**
@@ -49,6 +51,8 @@ export function MenuBand({
 }) {
   // Motion for the band's contents. The glass surface below is never a target — see the hook.
   const contentRef = useMenuReveal(open);
+  // The planner's edge tab steps aside while a band is open (PAR-70) — see the store.
+  useEffect(() => (open ? registerOpenMenuBand() : undefined), [open]);
 
   return (
     <div
