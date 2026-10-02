@@ -2,6 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris en de wachtrijen met kerst'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false

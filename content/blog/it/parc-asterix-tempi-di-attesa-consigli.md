@@ -2,6 +2,7 @@
 title: 'Parc Astérix: Toutatis, OzIris e le code di Natale'
 translationKey: parc-asterix-guide
 date: '2026-09-30'
+updatedAt: '2026-10-01'
 author: patrick
 mode: published
 featured: false

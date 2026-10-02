@@ -2,14 +2,15 @@
 title: 'Halloween 2026 in Europa’s pretparken: kettingzaag, pompoen of helemaal niks'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-25'
+updatedAt: '2026-09-30'
 author: patrick
 mode: published
 excerpt: >-
   Kettingzaag in Bottrop, slagershaak in Biddinghuizen, geduld met glühwein in
-  Brühl: Halloween 2026 in Duitsland, Nederland, België en Frankrijk, met alle
-  data, de twee topparken die de hele poppenkast uitzitten, en de vraag op
-  welke avonden je niet eindeloos in de rij staat.
+  Brühl: Halloween 2026 in Duitsland, Nederland, België, Frankrijk, het
+  Verenigd Koninkrijk en Spanje, met alle data, de twee topparken die de hele
+  poppenkast uitzitten, en de vraag op welke avonden je niet eindeloos in de
+  rij staat.
 tags:
   - halloween
   - pretpark
@@ -25,6 +26,8 @@ tags:
   - parc-asterix
   - phantasialand
   - efteling
+  - alton-towers
+  - portaventura
 category: guides
 coverImage:
   src: /media/halloween-2026/cover.jpg
@@ -33,9 +36,8 @@ coverImage:
 seo:
   title: 'Halloween pretparken 2026: data en durfproeven'
   description: >-
-    Halloween 2026: Movie Park met negen mazes, Traumatica, de slagershaak van
-    Walibi, het maïsveld van Toverland, twee weigeraars en de
-    leegste avonden.
+    Halloween 2026 in Europa: Movie Park, Traumatica, Walibi, Toverland, Alton
+    Towers, PortAventura, twee parken zonder Halloween en de leegste avonden.
   keywords:
     - Halloween pretpark 2026
     - Halloween Horror Festival Movie Park 2026
@@ -47,6 +49,8 @@ seo:
     - Heide-Park Halloween 2026 mazes
     - Phantasialand Halloween
     - Efteling Halloween
+    - Alton Towers Scarefest 2026
+    - PortAventura Halloween 2026
     - pretpark Halloween data 2026
     - Halloween pretpark wanneer het rustigst
 ---
@@ -67,12 +71,12 @@ avonden je die rookmachines in loopt zonder er eerst in de oktoberkou voor vast
 te vriezen.
 
 > [!NOTE]
-> **Bijgewerkt op 25 september 2026:** Alle data, leeftijdsgrenzen en prijzen
+> **Bijgewerkt op 29 september 2026:** Alle data, leeftijdsgrenzen en prijzen
 > hieronder hebben we die dag naast de officiële eventpagina’s gelegd, die bij
-> elk park gelinkt staan. Traumatica had op 23 september zijn voorpremière en op
-> de 25e zijn première, zaterdag 26 september volgen Movie Park en Disneyland
-> Paris, de rest begint in oktober. Veel prijzen hangen af van de avond en lopen
-> op naarmate die dichterbij komt.
+> elk park gelinkt staan. PortAventura draait sinds 19 september, Traumatica
+> sinds de voorpremière op 23 september, Movie Park, Disneyland Paris en Alton
+> Towers doen sinds 26 september mee. De rest begint in oktober. Veel prijzen
+> hangen af van de avond en lopen op naarmate die dichterbij komt.
 
 ## De grote horror-events ('s avonds, vaak vanaf 16)
 
@@ -122,7 +126,8 @@ Er wordt gespeeld op **22 geselecteerde avonden van 26 september tot 8 november
 2026**, overwegend vrijdag tot zondag; overdag is het park vanaf 10 uur gewoon
 open, de horrorzones starten in de vroege avond. De horroravond zit bij het
 gewone parkticket, de **mazes komen er apart bij**, en eigen kostuums of maskers
-zijn op geen enkele avond toegestaan. Alle 22 data, de prijzen en de S.I.K. Pass
+zijn op geen enkele avond toegestaan, alleen kinderen tot 1,40 m mogen zich
+verkleden. Alle 22 data, de prijzen en de S.I.K. Pass
 staan in ons
 [nieuwsbericht over de start](/blog/movie-park-germany-halloween-horror-festival-2026).
 Op **17 oktober** draait voor de vijfde keer de eventdag **Haunters Against
@@ -168,14 +173,14 @@ de beste puppyogen niets uithalen. Wie jonger is, komt er niet in
 pas vanaf 18). Daarvoor krijg je **acht horrorattracties**, een hoop acteurs,
 podiumshows en precies die club waarin je de doorstane schrik op vrijdag en
 zaterdag vanaf 23 uur kunt wegdansen. De voorpremière was op **woensdag 23
-september**, de première is op **vrijdag 25 september**. Daarna wordt er tot
+september**, de première was op **vrijdag 25 september**. Daarna wordt er tot
 **7 november 2026** van vrijdag tot en met zondag gespeeld (alleen zondag 27
 september niet), plus drie donderdagen: 22 en 29 oktober en 5 november.
 
 Het verloop is strak getimed: inloop 17.45 uur, food court vanaf 18 uur (het
 laatste avondmaal, zeg maar), horrorwerelden vanaf 19 uur, einde om 23.30 uur.
 De toegang loopt via gestaffelde passen, van de **Event Pass** (de prijs hangt
-af van de avond, op 25 september vanaf € 45) via de **Shoxter Pass** met
+af van de avond, op 29 september vanaf € 45) via de **Shoxter Pass** met
 priority-toegang (vanaf € 96, inmiddels uitverkocht) tot de **Psycho Pass**
 voor doorgewinterden met een ruime roodstand (vanaf 18, all-inclusive, € 349). Sommige extra prikkels
 kosten bovenop: de vollecontact-experience THE HOTEL (€ 29), de club THE
@@ -183,8 +188,8 @@ FORBIDDEN (€ 10) en een korte horror-VR (€ 6). Wat er in THE HOTEL gebeurt,
 voor zover het park het verklapt, staat in ons
 [jubileumbericht](/blog/traumatica-tien-jaar-europa-park).
 
-Voor het jubileum keert de **Vampire’s Club** terug, op precies vier nachten,
-25 en 26 september en 2 en 3 oktober. Op die avonden komt hij in de
+Voor het jubileum kwam de **Vampire’s Club** terug, op precies vier nachten,
+25 en 26 september (voorbij) en 2 en 3 oktober. Op die avonden komt hij in de
 plaats van THE FORBIDDEN, en staat Marc Terenzi er zelf op het podium. Na ruim
 een decennium afstand tussen hem en het event is dat het soort voetnoot waar
 vooral de mensen blij van worden die er in 2007 bij waren en nu liever voor
@@ -508,6 +513,70 @@ verder nieuw is, staat in ons
 
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
+### Alton Towers: Scarefest in Staffordshire
+
+Wie in oktober toch al naar Engeland vliegt, kan in Staffordshire Halloween
+meepakken. [Alton Towers](ref:alton-towers) houdt **Scarefest** op geselecteerde
+dagen van **26 september tot 1 november 2026**: 26 en 27 september, 2 tot en met
+4 oktober, 9 tot en met 11 oktober en daarna dagelijks van 16 oktober tot 1
+november. Op die dagen is het park tot 21 uur open, thuis is dat 22.00 uur.
+Ertussen, ongeveer van 5 tot 8 oktober, sluit het om 16 uur en is er geen
+Scarefest. Vanaf Manchester Airport ben je een goed uur met de auto onderweg.
+
+Nieuw is de maze [Final Exhibit](ref:alton-towers/final-exhibit): de vergeten
+collectie van een man die het park alleen “The Curator” noemt, en niet elk
+tentoonstellingsstuk is zo levenloos als het eruitziet. Hij wordt aanbevolen
+vanaf 12 jaar, net als alle vier de thrill-mazes. De andere drie zijn COMPOUND,
+Edge of the Forest en Altonville Mine Tours: Tiny's Revenge. De mazes zitten niet
+bij de toegang en draaien met een tijdslot. Zonder tijdslot loop je door de
+scare zone Dark Hollow, en voor gezinnen zijn er twee walkthroughs vanaf 6 jaar:
+Trick O' Treat Town en Amigos in the Afterlife.
+
+De achtbanen draaien daarbij in het donker. Begin oktober gaat de zon in
+Staffordshire kort voor 19 uur onder, wie tot 21 uur blijft, rijdt dus ruim twee
+uur na zonsondergang. Het park noemt uitdrukkelijk
+[The Smiler](ref:alton-towers/the-smiler),
+[Nemesis Reborn](ref:alton-towers/nemesis-reborn) en
+[Wicker Man](ref:alton-towers/wicker-man), de houten achtbaan die op een zes
+verdiepingen hoge, brandende figuur afrijdt. Prijzen, combitickets en het nieuwe
+diner “Dine with the Dead” staan in ons
+[nieuwsbericht over Scarefest](/blog/alton-towers-scarefest-2026).
+
+[Alton Towers](ref:alton-towers?full)
+
+Data, mazes en tickets:
+[altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
+
+### PortAventura: de slager van Penitence
+
+Het Spaanse [PortAventura Park](ref:portaventura-park) aan de Costa Dorada viert
+al sinds 19 september Halloween en gaat daar door tot **15 november 2026**, dus
+bijna twee maanden. Zonder toeslag zijn er de Halloween-parade, Truco o Trato, de
+Día de los Muertos, nieuwe figuren in het park, de nieuwe show **Resurrection**
+in de saloon en ’s avonds de scare zone **La Maldición del Emperador**. Dat is de
+gezinskant.
+
+De horrorkant zijn de **Pasajes del Terror**, walkthroughs met acteurs, en geen
+daarvan zit bij de parktoegang. Nieuw is de vijfde, **El Carnicero de Penitence**
+(vanaf € 10): in het westernstadje Penitence bij
+[Uncharted](ref:portaventura-park/uncharted) verdwijnen mensen, de sheriff
+verdenkt de slager, en jij loopt door slagerij en slachthuis om hem te helpen. De
+andere vier zijn **La Isla Maldita** (vanaf € 12, spookpiraten), **REC®
+Experience** (vanaf € 8,90, naar de Spaanse filmreeks en alleen in PortAventura),
+**La Muerte Viva** en **Angkor** (elk vanaf € 6,90). Wie er meer dan één wil,
+rekent met het Halloween Passport: Passport 2 (El Carnicero en REC) vanaf
+€ 11,90, Passport 5 met alle vijf vanaf € 30,90. Volgens de ticketpagina geldt
+voor alle vijf dezelfde leeftijdsgrens: vanaf 12 jaar onder begeleiding, alleen
+vanaf 14. Openingstijden, de vergelijking van de passen en wat er verder nieuw
+is, staan in ons
+[nieuwsbericht over PortAventura](/blog/portaventura-halloween-2026).
+
+[PortAventura Park](ref:portaventura-park?full)
+
+Programma en prijzen:
+[portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
+en [Halloween-Pasajes](https://www.portaventuraworld.com/en/tickets/halloween-passages).
+
 ## De weigeraars: twee topparken die Halloween uitzitten
 
 Twee van de best bezochte parken in de regio doen aan de hele
@@ -554,13 +623,17 @@ Entertainment Association, zeg maar de Oscar van de branche. Wie het
 gezellig-huiveringwekkende herfstgevoel zoekt in plaats van de adrenalineschok,
 en wie kinderen bij zich heeft, rijdt naar Kaatsheuvel.
 
-**Danse Macabre is tot en met 28 september dicht voor onderhoud, en daarna nog
+**Danse Macabre is tot en met 30 september dicht voor onderhoud, en daarna nog
 een keer van 26 oktober tot en met 6 november 2026.**
 Max & Moritz en de Gondoletta zijn van 26 tot en met 30 oktober ook dicht, Baron
-1898 al van 5 tot en met 9 oktober. Wie eind oktober gaat en voor Danse Macabre
-komt, kan dus beter vóór de 26e komen. Die week valt wel in de herfstvakantie
-van regio midden en zuid, en volgens onze druktekalender wordt het dan drukker
-dan in de week erna (stand 25 september).
+1898 al van 5 tot en met 9 oktober. De NRW-herfstvakantie (17 tot en met 31
+oktober) valt daarmee in twee weken met verschillende nadelen: in de eerste
+draait alles, maar in midden en zuid van Nederland is het ook vakantie, en onze
+druktekalender verwacht van 17 tot 25 oktober elke dag hoge drukte (stand 29
+september), in de eerste oktoberhelft verder dinsdag tot en met donderdag alleen
+gemiddelde. In de tweede week ontbreken drie attracties, waaronder Danse
+Macabre, en de kalender verwacht ook daar elke dag hoge drukte. Wie voor Danse
+Macabre komt, neemt toch de eerste.
 
 Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
 [Efteling-gids](/blog/efteling-disney-van-nederland).
@@ -586,7 +659,7 @@ Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
 Meer dan welke line-up ook beslist over de avond **wanneer je komt.** Het
 drukst wordt het in de weekenden en op 31 oktober, en zo staat het ook in onze
 druktekalender voor bijna alle parken in deze gids. Onze metingen beginnen
-alleen pas eind december 2025, en een Halloween-oktober hadden we op 25
+alleen pas eind december 2025, en een Halloween-oktober hadden we op 29
 september 2026 bij geen van die parken gemeten, dit is dus een prognose. Voor
 doordeweekse dagen en de randweken van het seizoen staat er merkbaar minder
 drukte in (en hebben de acteurs dan meer tijd om zich exclusief met
@@ -612,7 +685,7 @@ dagen** uit onze AI-druktekalender bekijken:
 Voor Movie Park zit er nog geen gemeten Halloween-herfst in de kalender, neem
 zijn prognose voor de horroravonden dus met een korrel zout. Hoe druk het in
 Bottrop per weekdag en maand doorgaans wordt, staat in de statistiek. We meten daar pas
-sinds eind december 2025, tot 25 september 2026 zat er nog geen oktober bij, en
+sinds eind december 2025, tot 29 september 2026 zat er nog geen oktober bij, en
 Halloween moet je er voorlopig zelf bij denken:
 
 **Movie Park Germany, typische wachttijden per weekdag & maand**

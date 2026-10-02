@@ -43,8 +43,8 @@ three lines, the rest belongs in the page.
   ([docs/blog.md §7.2](docs/blog.md#72-the-review-pass)) the rest. Rules:
   [the rule](docs/rules/no-text-may-read-as-ai-generated.md)
   and [docs/blog.md](docs/blog.md).
-- **Six locales.** A new UI string needs all of them, and so does a news post, in the same PR
-  ([docs/blog.md §5.0](docs/blog.md#50-news-posts-category-news)).
+- **Six locales.** A UI string, a post, a guide or a news post ships in all six in the same PR, with
+  no follow-up ticket ([the rule](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md)).
 - **Routing and i18n run through `proxy.ts`**, not `middleware.ts`. Server Components are the default.
 
 ## The rules
@@ -255,6 +255,9 @@ carries the reasoning, the measurements and the counter-examples.
   them, MINOR for a new visible capability, PATCH for fixes. A PR writes a fragment,
   `docs/changelog.d/PAR-<n>.md`, never `docs/changelog.md`, `package.json` or `content/changelog/`;
   `pnpm release:cut` moves all three in one PR. A blog post is never a release. `pnpm check:changelog`.
+- **[A post ships in six languages in one pull request](docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md)** —
+  every post, guide and news item and every later update to it: six files, one `translationKey`, one
+  `updatedAt`, no waiting for the German to be approved. `pnpm check:blog-updated-at`.
 - **[A news correction is shown, never silent](docs/rules/a-news-correction-is-shown-never-silent.md)** —
   news only: a changed fact gets a dated `> [!CORRECTION]` note under the `— Patrick` signature
   (grey box, label `blog.correction`), in every locale touched. Guides never carry one, only `updatedAt`.
