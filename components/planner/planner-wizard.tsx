@@ -12,6 +12,7 @@ import {
   Crown,
   Droplets,
   Ruler,
+  Sunrise,
   Utensils,
 } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription } from '@/components/ui/dialog';
@@ -321,6 +322,17 @@ export function PlannerWizard({
    * exactly the days that have nothing to offer.
    */
   const dayPending = Boolean(park && date) && planDay.data === undefined && !planDay.isError;
+  /**
+   * Whether this park lets hotel guests in before opening (PAR-197), which is
+   * the only case the early-entry question is asked in. Read off the same
+   * `/plan/day` payload as everything else on the day, and `=== true` because
+   * absent means "no" and "nobody checked" alike: on the other parks the step
+   * renders exactly what it did before.
+   */
+  const parkHasEarlyEntry = dayPayload?.context.hasEarlyEntry === true;
+  const earlyEntryMinutes = parkHasEarlyEntry
+    ? dayPayload?.context.earlyEntryMinutesPeak
+    : undefined;
   const wizardGrid = useMemo(
     () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour, pxPerMin),
     [dayPayload, pxPerMin]
@@ -469,8 +481,14 @@ export function PlannerWizard({
     // reason the date step fetches anything at all.
     const withZone: WizardPark = { ...park, timezone: facts.timezone ?? park.timezone };
     openDay(withZone, date);
-    if (prefs.riderHeightCm !== undefined || prefs.avoidWet) {
-      setDayPrefs(park.slug, date, prefs);
+    // The early-entry answer only counts where the question was on screen: a
+    // visitor who answered it and then stepped back to a day or park without
+    // early entry has not said anything about that one.
+    const dayPrefs: PlannerDayPrefs = parkHasEarlyEntry
+      ? prefs
+      : { ...prefs, earlyEntry: undefined };
+    if (dayPrefs.riderHeightCm !== undefined || dayPrefs.avoidWet || dayPrefs.earlyEntry) {
+      setDayPrefs(park.slug, date, dayPrefs);
     }
     /**
      * The break, as the last step left it.
@@ -799,6 +817,31 @@ export function PlannerWizard({
                     setPrefs((current) => ({ ...current, avoidWet: next ? true : undefined }))
                   }
                 />
+
+                {/* Only at a park that carries the curated flag, so the other
+                    parks get no question that has nothing behind it. It can
+                    arrive after the step opens (a seeded date opens here while
+                    `/plan/day` is in flight), hence the fade. */}
+                {parkHasEarlyEntry && (
+                  <div
+                    data-planner-wizard-early-entry=""
+                    className="transition-opacity duration-200 starting:opacity-0"
+                  >
+                    <WizardToggle
+                      icon={Sunrise}
+                      label={t('wizard.earlyEntry.label')}
+                      hint={
+                        earlyEntryMinutes !== undefined
+                          ? t('wizard.earlyEntry.hintMinutes', { minutes: earlyEntryMinutes })
+                          : t('wizard.earlyEntry.hint')
+                      }
+                      checked={prefs.earlyEntry === true}
+                      onChange={(next) =>
+                        setPrefs((current) => ({ ...current, earlyEntry: next ? true : undefined }))
+                      }
+                    />
+                  </div>
+                )}
               </div>
             )}
 

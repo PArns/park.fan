@@ -2615,6 +2615,11 @@
         "label": "Möglichst trocken bleiben",
         "hint": "Wasserbahnen bekommen ein Zeichen in der Liste."
       },
+      "earlyEntry": {
+        "label": "Wir haben Early Entry",
+        "hint": "Hotelgäste dürfen hier vor der offiziellen Öffnung auf die großen Bahnen.",
+        "hintMinutes": "Hotelgäste dürfen hier {minutes} Minuten vor der offiziellen Öffnung auf die großen Bahnen."
+      },
       "headliners": {
         "label": "Headliner einplanen",
         "hint": "Legt die {count} großen Bahnen in den Tag, sortiert nach ihren Stundenkurven.",

@@ -2615,6 +2615,11 @@
         "label": "Stay dry if possible",
         "hint": "Water rides get a mark in the list."
       },
+      "earlyEntry": {
+        "label": "We have early entry",
+        "hint": "Hotel guests can ride the big rides here before the park officially opens.",
+        "hintMinutes": "Hotel guests can ride the big rides here {minutes} minutes before the park officially opens."
+      },
       "headliners": {
         "label": "Plan the headliners",
         "hint": "Puts the {count} big rides into the day, ordered by their hourly curves.",
