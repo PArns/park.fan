@@ -177,14 +177,17 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
           </code>
         </p>
         <dl className="grid gap-3">
-          {TOOL_DESCRIPTORS.map((tool) => (
-            <Card key={tool.name} className="gap-1 px-5 py-4">
-              <dt className="font-mono text-sm font-semibold">{tool.name}</dt>
-              <dd className="text-muted-foreground text-sm">
-                {t(`mcp.tools.${TOOL_NOTE_KEYS[tool.name]}`)}
-              </dd>
-            </Card>
-          ))}
+          {TOOL_DESCRIPTORS.map((tool) => {
+            const noteKey = TOOL_NOTE_KEYS[tool.name];
+            // A fourth tool without copy fails the build instead of printing a missing key.
+            if (!noteKey) throw new Error(`developers page: no note for MCP tool ${tool.name}`);
+            return (
+              <Card key={tool.name} className="gap-1 px-5 py-4">
+                <dt className="font-mono text-sm font-semibold">{tool.name}</dt>
+                <dd className="text-muted-foreground text-sm">{t(`mcp.tools.${noteKey}`)}</dd>
+              </Card>
+            );
+          })}
         </dl>
       </section>
 
