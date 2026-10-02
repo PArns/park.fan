@@ -75,9 +75,7 @@ un’uscita tutta sua sulla A1. La stagione 2024/25 ha portato 2,9 milioni di
 visitatori. Contando i parchi uno per uno è il terzo in Francia, dopo il
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) e Disney
 Adventure World; il parco si definisce secondo perché conta Disneyland Paris come
-un’unica destinazione. Le sue montagne russe vanno da Goudurix, che funzionava
-già il giorno dell’apertura, a [Toutatis](ref:parc-asterix/toutatis), la più alta
-di Francia.
+un’unica destinazione. Tra le sue montagne russe ci sono Goudurix, che funzionava già il giorno dell’apertura, e [Toutatis](ref:parc-asterix/toutatis), la più alta di Francia.
 
 Quello che segue viene dalle nostre misurazioni dei tempi di attesa dal Natale
 2025, dal sito del parco com’era il 2 ottobre 2026 e dagli articoli e dalle banche
@@ -92,14 +90,12 @@ dati linkati in fondo. Dove due fonti non coincidono, ci sono entrambe le cifre.
 A inizio ottobre 2026 in cima alla tabella ci sono due montagne russe per
 famiglie, Cétautomatix e Pégase Express, e l’attrazione principale viene dopo. È
 una questione di capacità. Secondo la Roller Coaster DataBase (RCDB), Toutatis
-porta 1.260 persone all’ora e OzIris 1.600. Per Cétautomatix, il sito francese
-Androland aveva calcolato prima dell’apertura circa 700: nove vetture da quattro
+porta 1.260 persone all’ora e OzIris 1.600. Per Cétautomatix, il sito francese Androland aveva stimato prima dell’apertura circa 700: nove vetture da quattro
 posti, una partenza ogni 20 secondi. Un’attrazione piccola con un’altezza minima
 bassa, dove sale tutta la famiglia insieme, riempie la coda prima di una grande
 dove può salire solo metà del gruppo.
 
-Walibi Belgium fa parte dello stesso gruppo, ed Europa-Park è spesso il metro di
-paragone. La tabella viene ricalcolata di continuo:
+La tabella confronta il parco con il Disneyland Park, con Walibi Belgium, che fa parte dello stesso gruppo, e con Europa-Park. Viene ricalcolata di continuo:
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -129,8 +125,7 @@ Nel 1990 arrivarono 1,45 milioni di visitatori. Poi, il 12 aprile 1992, aprì
 Euro Disney a Marne-la-Vallée, e secondo la Wikipedia francese il Parc Astérix
 scese a 990.000 visitatori, il 30 % in meno dell’anno prima. Il fatturato calò
 del 19 %, a 170 milioni di franchi. Olivier de Bosredon, allora direttore delle
-operazioni, licenziò personale e tagliò i budget, e il parco si presentò come la
-risposta francese al gigante americano, la «exception culturelle française». Nel
+operazioni, licenziò personale e tagliò i budget, e il parco si presentò come la «exception culturelle française» di fronte al gigante americano. Nel
 1994 chiuse per la prima volta in utile, 15 milioni di franchi, con un nuovo
 quartiere greco.
 
@@ -145,8 +140,7 @@ dirige da maggio 2021.
 
 Da allora non ha smesso di crescere. Nel 2012 arrivarono il quartiere Égypte e
 OzIris, 20 milioni di euro in tutto, allora il più grande investimento nella
-storia del parco. Pégase Express seguì nel 2017 per 16 milioni, Toutatis nel 2023. Le presenze secondo l’indice della Themed Entertainment Association (TEA) e
-i dati del parco: 2.326.000 nel 2019, 2.632.000 nel 2022, 2.815.000 nel 2023,
+storia del parco. Pégase Express seguì nel 2017 per 16 milioni, Toutatis nel 2023. Secondo l’indice della Themed Entertainment Association (TEA) e i dati del parco, le presenze sono state 2.326.000 nel 2019, 2.632.000 nel 2022, 2.815.000 nel 2023,
 2.842.000 nel 2024 e 2,9 milioni nella stagione 2024/25. Il 20 ottobre 2025 il
 parco ha annunciato 250 milioni di euro di investimenti entro il 2030, per il 20 %
 di capacità in più.
@@ -159,7 +153,7 @@ il 2031. L’amministratore delegato François Fassier lo ha definito a francein
 tedesco. Come si è arrivati a quella vendita lo racconta il nostro
 [articolo su Parques Reunidos](/blog/parques-reunidos-in-vendita-movie-park).
 
-## Cinque mondi, e Parigi viene demolita
+## Le cinque aree e la vecchia Parigi
 
 Ufficialmente il parco ha cinque aree a tema. L’ingresso porta sulla Via
 Antiqua, una via di negozi che dal 2012 non conta più come area a sé. Da lì:
@@ -180,7 +174,7 @@ Antiqua, una via di negozi che dal 2012 non conta più come area a sé. Da lì:
 La sesta area, À travers le temps, attraversava Parigi dal Medioevo alla Belle
 Époque, con la Rue de Paris come strada coperta. Il parco l’ha chiusa a novembre
 2025, tranne lo spettacolo di stunt Main basse sur la Joconde, e la sta
-demolendo. Nel 2028 la sostituirà Londinium; se ne parla più sotto.
+demolendo. Nel 2028 la sostituirà Londinium.
 
 ```map-widget slug=parc-asterix
 
@@ -196,8 +190,7 @@ accompagnatore.
 ### Toutatis
 
 **[Toutatis](ref:parc-asterix/toutatis)** ha aperto l’8 aprile 2023. Intamin ha
-costruito questa montagna russa lanciata: niente catena, sono motori lineari a
-spingere il treno, più volte e anche all’indietro. Lungo il percorso c’è una
+costruito questa montagna russa lanciata senza catena. Il treno è spinto da motori lineari, più volte e anche all’indietro. Lungo il percorso c’è una
 discesa a 101 gradi, oltre la verticale.
 
 ```glossary-widget slug=launch-coaster
@@ -205,12 +198,9 @@ discesa a 101 gradi, oltre la verticale.
 ```
 
 Le fonti non concordano del tutto sui numeri. RCDB indica 51 metri e 107 km/h,
-Intamin 53 metri e sempre 107 km/h, il parco 51 metri e 110 km/h, con cui chiama
-Toutatis «l’attrazione più veloce di Francia». Il numero dei lanci dipende da come
+Intamin 53 metri e sempre 107 km/h, il parco 51 metri e 110 km/h; con quei 110 km/h il parco chiama Toutatis «l’attrazione più veloce di Francia». Il numero dei lanci dipende da come
 si conta: sette secondo Intamin, cinque in avanti e due indietro, quattro secondo
-Wikipedia, tre dei quali sullo stesso tratto di lancio. RCDB misura 1.075 metri di
-binario; siccome il treno ne percorre una parte due volte, fa poco più di 1.360
-metri, da cui i «più di 1.300 metri» indicati dal parco. Tre inversioni, poco più
+Wikipedia, tre dei quali sullo stesso tratto di lancio. RCDB indica 1.075 metri di binario e, siccome il treno ne percorre una parte due volte, 1.361 metri percorsi; da qui i «più di 1.300 metri» indicati dal parco. Tre inversioni, poco più
 di due minuti. Il parco vanta anche 23 momenti di airtime, secondo lui un record
 mondiale per una montagna russa in acciaio. Altezza minima 1,30 m.
 
@@ -222,16 +212,14 @@ Parisien, tutta l’area del Festival Toutatis 36 milioni secondo il parco.
 Qui non serve correre all’apertura. Alle dieci la coda è già lunga come a
 mezzogiorno, e secondo la nostra analisi è più corta circa tre ore e mezza dopo
 l’apertura. Gli ospiti degli hotel entrano mezz’ora prima degli altri nelle aree
-di Toutatis ed Égypte; se basti a spiegarlo, dalle nostre misurazioni non si
-capisce. Se puoi salire da solo, usa la fila single rider, che c’è solo qui e su
+di Toutatis ed Égypte. Dalle nostre misurazioni non si capisce se questa sia tutta la spiegazione. Se puoi salire da solo, usa la fila single rider, che c’è solo qui e su
 OzIris.
 
 ### OzIris
 
 **[OzIris](ref:parc-asterix/oziris)** ha aperto il 7 aprile 2012 insieme all’area
 Égypte. Il parco ha speso 20 milioni di euro per entrambe, metà per le scenografie
-secondo NewsParcs. Bolliger & Mabillard ha costruito questa montagna russa
-invertita: il treno è appeso sotto il binario e le gambe restano nel vuoto. Un
+secondo NewsParcs. In questa montagna russa invertita di Bolliger & Mabillard il treno è appeso sotto il binario e le gambe restano nel vuoto. Un
 lift di 40 metri, 1.000 metri di percorso, 90 km/h, cinque inversioni. Quali, non
 è chiaro. RCDB cita un dive loop, un looping, un Immelmann e due zero-g roll;
 Wikipedia mette un cavatappi al posto del primo zero-g roll. Secondo Wikipedia il
@@ -267,8 +255,7 @@ saranno 530 metri secondo RCDB, circa il 60 % del percorso secondo Dimension
 Parcs. Per altezza e velocità, a seconda della fonte, si trovano da 30 a 33 metri
 e da 84 a 92 km/h. Da soli si sale da 1,20 m; su Toutatis e OzIris serve 1,30 m.
 
-Tonnerre 2 Zeus è l’unica attrazione per cui la nostra analisi consiglia di
-esserci all’apertura. La coda è corta nella prima mezz’ora, l’ora peggiore sono le
+Tonnerre 2 Zeus è l’unica attrazione per cui, secondo la nostra analisi, conviene esserci all’apertura. La coda è corta nella prima mezz’ora, l’ora peggiore sono le
 undici, e la differenza tra le due è più grande che su qualsiasi altra montagna
 russa del parco.
 
@@ -367,7 +354,7 @@ estate dal 1996. Nell’estate 2026, dall’11 luglio, diverse centinaia di dron
 hanno volato la sera sopra il lago per lo spettacolo «Astérix et la potion
 d’étoiles».
 
-## I record dell’anno cadono nella settimana di Natale
+## I record dell’anno e la settimana di Natale
 
 Delle dieci attrazioni nella tabella in alto, cinque hanno avuto l’attesa più
 lunga degli ultimi dodici mesi tra il 26 e il 30 dicembre 2025: Toutatis, OzIris,
@@ -376,9 +363,7 @@ peggiore è caduto nell’estate 2026, tra maggio e agosto (dati al 2 ottobre 20
 
 Quest’anno il Noël Gaulois apre dal 19 dicembre 2026 al 3 gennaio 2027,
 esattamente le vacanze scolastiche di Natale in Francia, sedici giorni in tutto.
-Le spiegazioni dei record sono due, e le nostre misurazioni non permettono di
-scegliere. La prima: chi vuole andarci per le feste ha solo quei sedici giorni.
-La seconda si trova nelle FAQ del parco: d’inverno le attrazioni acquatiche sono
+Le spiegazioni dei record sono due, e dalle nostre misurazioni non si capisce quale pesi di più. Una è che chi vuole andarci per le feste ha solo quei sedici giorni. L’altra si trova nelle FAQ del parco: d’inverno le attrazioni acquatiche sono
 chiuse, e col gelo anche alcune altre, quindi la gente si distribuisce su meno
 attrazioni.
 
@@ -391,8 +376,7 @@ attrazioni.
 ```
 
 Nelle nostre misurazioni il sabato è di gran lunga il giorno più affollato e il
-mercoledì il più tranquillo. Se puoi scegliere tra un giorno feriale e il fine
-settimana, vai in settimana.
+mercoledì il più tranquillo. Se puoi scegliere il giorno, scegli il mercoledì.
 
 ### Il mese
 
@@ -402,8 +386,7 @@ settimana, vai in settimana.
 
 Dicembre e gennaio sono in cima, su pochi giorni misurati, tutti nelle vacanze di
 Natale 2025/26. Tra i mesi con molti dati, maggio e giugno sono i più tranquilli,
-e agosto è più affollato di luglio. Ottobre e novembre non li abbiamo ancora:
-Peur sur le Parc 2025 si è svolto prima che iniziassimo a seguire il parco. La
+e agosto è più affollato di luglio. Ottobre e novembre non li abbiamo ancora, perché Peur sur le Parc 2025 si è svolto prima che iniziassimo a seguire il parco. La
 previsione per le prossime settimane è nel calendario:
 
 ```best-days-widget slug=parc-asterix
@@ -420,7 +403,7 @@ dal 10 al 25 aprile, la zona B dal 17 aprile al 2 maggio. Le vacanze estive
 iniziano il 3 luglio 2027. A febbraio il parco è chiuso; secondo la Wikipedia
 francese la stagione di solito inizia a Pasqua.
 
-## Una giornata al Parc Astérix, in ordine
+## Una giornata al Parc Astérix, in questo ordine
 
 ```hourly-profile-widget slug=parc-asterix top=8
 
@@ -442,9 +425,7 @@ Poi tocca a La Descente du Nil. Resta corta fino a circa un’ora dopo l’apert
 ha il suo picco nel primo pomeriggio, quando fa caldo. Anche OzIris ha poca coda
 nella prima mezz’ora; se te la perdi, tienila per il tardo pomeriggio.
 
-A mezzogiorno ci sono gli spettacoli, e nel primo pomeriggio tocca a Toutatis:
-secondo la nostra analisi il momento migliore cade circa tre ore e mezza dopo
-l’apertura. Se puoi salire da solo, usa la fila single rider.
+A mezzogiorno ci sono gli spettacoli. Toutatis tocca nel primo pomeriggio, perché secondo la nostra analisi il momento migliore cade circa tre ore e mezza dopo l’apertura. Se puoi salire da solo, usa la fila single rider.
 
 Verso sera, La Trace du Hourra e un altro giro su OzIris. Nell’ultima ora quasi
 tutte le code tornano corte; solo Toutatis e Cétautomatix restano più o meno come
@@ -461,8 +442,7 @@ posto:
   passaggio per attrazione.
 - Argent, 35 euro (39): l’attesa si dimezza, un passaggio per attrazione.
 - Or, 49 euro (55): senza attesa, un passaggio per attrazione.
-- Illimité, 139 euro sul web: quante volte vuoi senza attesa, più posti migliori
-  agli spettacoli.
+- Illimité, 139 euro sul web: quante volte vuoi senza attesa, e posti migliori agli spettacoli.
 
 Bronze, Argent e Or valgono per dieci attrazioni: Tonnerre 2 Zeus, OzIris, La
 Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
@@ -476,8 +456,7 @@ quindici minuti, e il numero di pass al giorno è limitato.
 ```
 
 In un giorno feriale fuori dalle vacanze scolastiche io terrei i soldi in tasca e
-seguirei l’ordine qui sopra. Un sabato di agosto o tra Natale e Capodanno è
-un’altra storia. Allora l’Or è il livello che conviene di più, perché copre le
+seguirei l’ordine qui sopra. Un sabato di agosto o tra Natale e Capodanno l’Or è il livello che conviene di più, perché copre le
 grandi attrazioni tranne Toutatis, e Toutatis la fai con la fila single rider.
 Secondo il parco quella fila c’è solo su Toutatis e OzIris, e nei giorni di
 grande affluenza può restare chiusa.
@@ -490,7 +469,7 @@ L’Halloween del parco va dal 3 ottobre all’8 novembre 2026. Nei giorni norma
 aperto dalle 10 alle 19. In dodici giorni apre già alle 9, chiude alle 18 e
 riapre alle 19 fino all’1 di notte per una serata con biglietto a parte: 53 euro
 online, 58 alla cassa, il 10, 16, 17, 21, 22, 23, 24, 28, 29, 30 e 31 ottobre e il
-7 novembre. Al 2 ottobre il 31 ottobre era già esaurito. Nel 2025 il parco ha
+7 novembre. Il 31 ottobre era già esaurito il 2 ottobre. Nel 2025 il parco ha
 contato 557.500 visitatori in 20 giorni e dodici serate.
 
 Quest’anno ci sono tre case infestate: Le Tombeau des Dieux (sconsigliata sotto i
@@ -528,8 +507,7 @@ Festiland, secondo il parco, altri pezzi al Musée des Arts Forains di Parigi.
 Nel 2027 La Grèce si allarga. Il parco ha annunciato due attrazioni per famiglie,
 un’area giochi e un ristorante, La Table de Dionysos, da 450 posti. Secondo
 Androland e Parcs Actus il progetto si ispira all’isola greca di Symi; Androland
-parla di due piccole torri di caduta di Zierer e di un Go Go Bounce di Zamperla,
-cosa che il parco non ha confermato. Nello stesso anno deve aprire il quarto
+parla di due piccole torri di caduta di Zierer e di un Go Go Bounce di Zamperla. Il parco non l’ha confermato. Nello stesso anno deve aprire il quarto
 hotel, L’Odyssée, con 300 camere e quattro stelle.
 
 Nel 2028 arriva Londinium. Sul terreno della vecchia Parigi il parco costruisce
@@ -540,7 +518,7 @@ elenco: una Multi Dimension Coaster di Intamin con vetture girevoli, alta 17
 metri, dentro l’edificio. Tonnerre 2 Zeus riceverà la seconda parte del nuovo
 binario in acciaio nell’inverno 2026/27.
 
-## Informazioni pratiche: biglietti, come arrivare, hotel, cibo
+## Biglietti, come arrivare, hotel e cibo
 
 ### Biglietti e prezzi 2026
 
@@ -577,8 +555,7 @@ Il parco ha tre hotel: Les Trois Hiboux, del 1999, con 150 camere senza aria
 condizionata; La Cité Suspendue, del 2018, con 150 camere; e Les Quais de Lutèce,
 del 2020, con 149 camere e quattro stelle. Per una notte con un giorno di
 ingresso il parco indica da 99, 102 e 111 euro a persona, calcolati per due adulti
-e due bambini in alta stagione. Il parco è a meno di dieci minuti a piedi, il
-parcheggio è gratis ed entri mezz’ora prima.
+e due bambini in alta stagione. Gli hotel sono a meno di dieci minuti a piedi dal parco, il parcheggio è gratis ed entri mezz’ora prima.
 
 Nell’app si può prenotare un tavolo in tre ristoranti: Le Relais Gaulois
 (self-service, 28,90 euro, a pranzo Astérix e Obélix passano tra i tavoli), Les

@@ -77,14 +77,11 @@ sortie sur l’A1. La saison 2024-2025 a attiré 2,9 millions de visiteurs. Si l
 compte les parcs un par un, il arrive troisième en France, derrière le
 [Parc Disneyland](ref:/parks/europe/france/paris/disneyland-park) et Disney
 Adventure World ; le parc se dit deuxième, parce qu’il compte Disneyland Paris
-comme une seule destination. Ses montagnes russes vont de Goudurix, qui roulait
-déjà le jour de l’ouverture, à [Toutatis](ref:parc-asterix/toutatis), la plus
-haute de France.
+comme une seule destination. Parmi ses montagnes russes, il y a Goudurix, qui roulait déjà le jour de l’ouverture, et [Toutatis](ref:parc-asterix/toutatis), la plus haute de France.
 
 Ce qui suit vient de nos mesures de temps d’attente depuis Noël 2025, du site du
 parc tel qu’il était le 2 octobre 2026, et des articles et bases de données
-listés en fin d’article. Quand deux sources se contredisent, les deux chiffres
-sont donnés.
+listés en fin d’article. Quand deux sources se contredisent, nous donnons les deux chiffres.
 
 ## Temps d’attente au Parc Astérix, attraction par attraction
 
@@ -96,13 +93,12 @@ Début octobre 2026, le haut du tableau revient à deux montagnes russes
 familiales, Cétautomatix et Pégase Express, et la tête d’affiche arrive
 derrière. C’est une question de débit. Selon la Roller Coaster DataBase (RCDB),
 Toutatis embarque 1 260 personnes par heure et OzIris 1 600. Pour Cétautomatix,
-le site Androland calculait avant l’ouverture environ 700 : neuf chars de quatre
+le site Androland tablait avant l’ouverture sur environ 700 : neuf chars de quatre
 places, un départ toutes les 20 secondes. Une petite attraction avec une taille
 minimum basse, où toute la famille monte ensemble, remplit sa file plus vite
-qu’une grande où seule la moitié du groupe a le droit d’aller.
+qu’une grande où seule la moitié du groupe peut monter.
 
-Walibi Belgium appartient au même groupe, et Europa-Park sert souvent de
-référence. Le tableau est recalculé en continu :
+Le tableau compare le Parc Astérix au Parc Disneyland, à Walibi Belgium, qui appartient au même groupe, et à Europa-Park. Il est recalculé en continu :
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -130,10 +126,9 @@ Parisien et la Wikipédia anglophone, jour où le public entre.
 
 En 1990, le parc reçoit 1,45 million de visiteurs. Puis Euro Disney ouvre à
 Marne-la-Vallée le 12 avril 1992, et le Parc Astérix tombe à 990 000 visiteurs
-selon Wikipédia, 30 % de moins que l’année précédente. Le chiffre d’affaires
-baisse de 19 %, à 170 millions de francs. Olivier de Bosredon, alors directeur
-d’exploitation, licencie et serre les budgets, et le parc se présente comme
-l’« exception culturelle française » face au géant américain. En 1994, il
+selon Wikipédia, 30 % de moins que l’année précédente. Le chiffre d’affaires
+baisse de 19 %, à 170 millions de francs. Olivier de Bosredon, alors directeur
+d’exploitation, licencie et serre les budgets, et le parc se pose en « exception culturelle française » face au géant américain. En 1994, il
 gagne de l’argent pour la première fois, 15 millions de francs, avec un nouveau
 quartier grec.
 
@@ -149,11 +144,10 @@ le dirige depuis mai 2021.
 Depuis, il n’a pas cessé de grandir. En 2012 arrivent le quartier Égypte et
 OzIris, 20 millions d’euros pour l’ensemble, le plus gros investissement de
 l’histoire du parc à l’époque. Pégase Express suit en 2017 pour 16 millions,
-Toutatis en 2023. La fréquentation selon l’index de la Themed Entertainment
-Association (TEA) et les chiffres du parc : 2 326 000 en 2019, 2 632 000 en
+Toutatis en 2023. D’après l’index de la Themed Entertainment Association (TEA) et les chiffres du parc, la fréquentation a été de 2 326 000 en 2019, 2 632 000 en
 2022, 2 815 000 en 2023, 2 842 000 en 2024 et 2,9 millions sur la saison
 2024-2025. Le 20 octobre 2025, le parc annonce 250 millions d’euros
-d’investissements d’ici 2030, pour 20 % de capacité en plus.
+d’investissements d’ici 2030, pour 20 % de capacité en plus.
 
 Le 2 décembre 2025 vient l’annonce du premier Parc Astérix hors de France. La
 Compagnie des Alpes a racheté Belantis, près de Leipzig, à Parques Reunidos en
@@ -162,7 +156,7 @@ général, François Fassier, a parlé à franceinfo d’un « projet très com
 très ambitieux », destiné au seul marché allemand. Le contexte de cette vente est
 dans notre [article sur Parques Reunidos](/blog/parques-reunidos-a-vendre-movie-park).
 
-## Cinq univers, et Paris qu’on démolit
+## Les cinq univers et l’ancien Paris
 
 Officiellement, le parc compte cinq univers. L’entrée donne sur la Via Antiqua,
 une rue de boutiques qui ne compte plus comme un univers depuis 2012. De là :
@@ -183,7 +177,7 @@ une rue de boutiques qui ne compte plus comme un univers depuis 2012. De là :
 Le sixième univers, À travers le temps, faisait traverser Paris du Moyen Âge à
 la Belle Époque, avec la rue de Paris couverte. Le parc l’a fermé en novembre
 2025, sauf le spectacle de cascades Main basse sur la Joconde, et le démolit.
-Londinium doit le remplacer en 2028, on en reparle plus bas.
+Londinium doit le remplacer en 2028.
 
 ```map-widget slug=parc-asterix
 
@@ -199,9 +193,7 @@ bas avec un accompagnateur.
 ### Toutatis
 
 **[Toutatis](ref:parc-asterix/toutatis)** a ouvert le 8 avril 2023. Intamin a
-construit ce coaster lancé : pas de lift à chaîne, ce sont des moteurs linéaires
-qui propulsent le train, plusieurs fois et aussi en arrière. En chemin, il passe
-une descente à 101 degrés, au-delà de la verticale.
+construit ce coaster lancé sans lift à chaîne. Des moteurs linéaires propulsent le train, plusieurs fois et aussi en arrière. En chemin, il y a une descente à 101 degrés, au-delà de la verticale.
 
 ```glossary-widget slug=launch-coaster
 
@@ -209,12 +201,9 @@ une descente à 101 degrés, au-delà de la verticale.
 
 Les sources ne s’accordent pas tout à fait sur les chiffres. RCDB indique 51
 mètres et 107 km/h, Intamin 53 mètres et 107 km/h également, le parc 51 mètres
-et 110 km/h, ce qui lui permet d’appeler Toutatis « l’attraction la plus rapide
-de France ». Le nombre de lancements dépend de la façon de compter : sept selon
+et 110 km/h ; avec ces 110 km/h, le parc appelle Toutatis « l’attraction la plus rapide de France ». Le nombre de lancements dépend de la façon de compter : sept selon
 Intamin, cinq en avant et deux en arrière, quatre selon Wikipédia, dont trois
-sur la même section de lancement. RCDB mesure 1 075 mètres de rail ; comme le
-train en parcourt une partie deux fois, il fait un peu plus de 1 360 mètres,
-d’où les « plus de 1 300 mètres » annoncés par le parc. Trois inversions, un peu
+sur la même section de lancement. RCDB indique 1 075 mètres de rail et, comme le train en parcourt une partie deux fois, 1 361 mètres parcourus ; d’où les « plus de 1 300 mètres » annoncés par le parc. Trois inversions, un peu
 plus de deux minutes. Le parc revendique aussi 23 moments d’airtime, un record du
 monde pour une montagne russe en acier selon lui. Taille minimum 1,30 m.
 
@@ -226,16 +215,14 @@ le Festival Toutatis 36 millions selon le parc.
 Inutile de courir à l’ouverture. La file est déjà aussi longue à 10 h qu’à midi,
 et d’après notre analyse elle est au plus court environ trois heures et demie
 après l’ouverture. Les clients des hôtels entrent une demi-heure avant les
-autres dans les zones Toutatis et Égypte ; est-ce toute l’explication, nos
-mesures ne permettent pas de le dire. Si vous pouvez monter seul, prenez la file
+autres dans les zones Toutatis et Égypte. Nos mesures ne permettent pas de dire si c’est toute l’explication. Si vous pouvez monter seul, prenez la file
 single rider, qui n’existe qu’ici et à OzIris.
 
 ### OzIris
 
 **[OzIris](ref:parc-asterix/oziris)** a ouvert le 7 avril 2012 avec le quartier
 Égypte. Le parc a dépensé 20 millions d’euros pour l’ensemble, dont la moitié
-pour les décors selon NewsParcs. Bolliger & Mabillard a construit ce coaster
-inversé : le train est suspendu sous le rail et les jambes pendent dans le vide.
+pour les décors selon NewsParcs. Sur ce coaster inversé de Bolliger & Mabillard, le train est suspendu sous le rail et les jambes pendent dans le vide.
 Un lift de 40 mètres, 1 000 mètres de parcours, 90 km/h, cinq inversions.
 Lesquelles, c’est discuté. RCDB cite un dive loop, un looping, un Immelmann et
 deux zero-g rolls, Wikipédia un tire-bouchon à la place du premier zero-g roll.
@@ -246,7 +233,7 @@ trains de 32 places, 1 600 personnes par heure, taille minimum 1,30 m.
 
 ```
 
-OzIris est courte pendant la première demi-heure après l’ouverture, puis de
+La file d’OzIris est courte pendant la première demi-heure après l’ouverture, puis de
 nouveau en fin d’après-midi. Entre les deux, on y attend à peu près autant
 qu’aux autres grandes attractions.
 
@@ -257,7 +244,7 @@ qu’aux autres grandes attractions.
 Coasters International. Selon Wikipédia, elle a remporté un Ultimate European
 Theme Parks Award quatre années de suite, de 2002 à 2005. Pendant les hivers
 2019 à 2021, The Gravity Group l’a reconstruite. D’après la Wikipédia
-anglophone, 85 % du rail et de la structure ont été remplacés ; l’hélice a
+anglophone, 85 % du rail et de la structure ont été remplacés ; l’hélice a
 disparu, et de petites bosses ainsi qu’une bosse inclinée à 90 degrés sont
 apparues. Les nouveaux trains de Gravitykraft ont deux sièges tournés vers
 l’arrière au dernier rang. Elle a rouvert sous le nom de Tonnerre 2 Zeus le 9
@@ -269,13 +256,12 @@ avril 2022.
 
 Pendant l’hiver 2025-2026, Rocky Mountain Construction a remplacé environ 350
 mètres de rail en bois par son profil en acier, selon le parc ; d’ici 2027, ce
-seront 530 mètres d’après RCDB, environ 60 % du parcours d’après Dimension
+seront 530 mètres d’après RCDB, environ 60 % du parcours d’après Dimension
 Parcs. Pour la hauteur et la vitesse, on trouve selon les sources de 30 à 33
 mètres et de 84 à 92 km/h. On peut y monter seul dès 1,20 m ; à Toutatis et à
 OzIris, c’est 1,30 m.
 
-Tonnerre 2 Zeus est la seule attraction pour laquelle notre analyse conseille
-d’être là à l’ouverture. La file est courte pendant la première demi-heure, son
+Tonnerre 2 Zeus est la seule attraction pour laquelle, d’après notre analyse, il vaut mieux être là à l’ouverture. La file est courte pendant la première demi-heure, son
 heure la plus chargée est 11 h, et l’écart entre les deux est plus grand qu’à
 n’importe quelle autre montagne russe du parc.
 
@@ -376,7 +362,7 @@ spectacle de cascades Main basse sur la Joconde revient chaque été depuis 1996
 À l’été 2026, à partir du 11 juillet, plusieurs centaines de drones ont volé le
 soir au-dessus du lac pour le spectacle « Astérix et la potion d’étoiles ».
 
-## Les records de l’année tombent pendant la semaine de Noël
+## Les records de l’année et la semaine de Noël
 
 Sur les dix attractions du tableau en haut de page, cinq ont connu leur plus
 longue attente des douze derniers mois entre le 26 et le 30 décembre 2025 :
@@ -384,10 +370,7 @@ Toutatis, OzIris, Cétautomatix, Discobélix et La Trace du Hourra. Pour les cin
 autres, le pire jour tombe à l’été 2026, entre mai et août (au 2 octobre 2026).
 
 Cette année, le Noël Gaulois ouvre du 19 décembre 2026 au 3 janvier 2027, soit
-exactement les vacances de Noël, seize jours en tout. Il y a deux explications
-aux records, et nos mesures ne permettent pas de trancher. La première : tous
-ceux qui veulent venir pour les fêtes n’ont que ces seize jours. La seconde
-figure dans la FAQ du parc : en hiver, les attractions aquatiques sont fermées,
+exactement les vacances de Noël, seize jours en tout. Il y a deux explications aux records, et nos mesures ne permettent pas de dire laquelle pèse le plus. L’une est que tous ceux qui veulent venir pour les fêtes n’ont que ces seize jours. L’autre figure dans la FAQ du parc : en hiver, les attractions aquatiques sont fermées,
 et par temps de gel d’autres attractions aussi, si bien que la foule se répartit
 sur moins d’attractions.
 
@@ -400,8 +383,7 @@ sur moins d’attractions.
 ```
 
 Dans nos mesures, le samedi est de loin le jour le plus chargé et le mercredi le
-plus calme. Si vous avez le choix entre la semaine et le week-end, prenez la
-semaine.
+plus calme. Si vous pouvez choisir le jour, prenez le mercredi.
 
 ### Le mois
 
@@ -411,9 +393,7 @@ semaine.
 
 Décembre et janvier sont en tête, sur peu de jours mesurés, tous pendant les
 vacances de Noël 2025-2026. Parmi les mois bien mesurés, mai et juin sont les
-plus calmes, et août est plus chargé que juillet. Nous n’avons pas encore
-octobre ni novembre : Peur sur le Parc 2025 a eu lieu avant que nous suivions le
-parc. Les prévisions des prochaines semaines sont dans le calendrier :
+plus calmes, et août est plus chargé que juillet. Nous n’avons pas encore octobre ni novembre, parce que Peur sur le Parc 2025 a eu lieu avant que nous suivions le parc. Les prévisions des prochaines semaines sont dans le calendrier :
 
 ```best-days-widget slug=parc-asterix
 
@@ -436,7 +416,7 @@ la saison commence en général à Pâques.
 ```
 
 En haute saison, le parc ouvre à 10 h et le parking à 9 h. Peur sur le Parc et
-Noël ont d’autres horaires, ils sont plus bas.
+Noël ont d’autres horaires, indiqués plus bas.
 
 À 10 h, direction la Grèce. Trois attractions s’y trouvent côte à côte, avec des
 files courtes pendant la première demi-heure : Tonnerre 2 Zeus, Pégase Express
@@ -448,14 +428,12 @@ est perdue.
 
 ```
 
-Ensuite, La Descente du Nil. Elle reste courte jusqu’à environ une heure après
+Ensuite, La Descente du Nil. Sa file reste courte jusqu’à environ une heure après
 l’ouverture et atteint son pic en début d’après-midi, quand il fait chaud.
-OzIris est courte, elle aussi, pendant la première demi-heure ; si vous la ratez,
+La file d’OzIris est courte, elle aussi, pendant la première demi-heure ; si vous la ratez,
 gardez-la pour la fin d’après-midi.
 
-Les spectacles occupent le milieu de journée, et le début d’après-midi est pour
-Toutatis : d’après notre analyse, le meilleur créneau tombe environ trois heures
-et demie après l’ouverture. Si vous pouvez monter seul, prenez la file single
+Les spectacles occupent le milieu de journée. Toutatis vient en début d’après-midi, car d’après notre analyse son meilleur créneau tombe environ trois heures et demie après l’ouverture. Si vous pouvez monter seul, prenez la file single
 rider.
 
 En fin de journée, La Trace du Hourra et un second tour d’OzIris. Pendant la
@@ -479,7 +457,7 @@ sur place est entre parenthèses :
 
 Bronze, Argent et Or valent pour dix attractions : Tonnerre 2 Zeus, OzIris, La
 Trace du Hourra, La Revanche des Pirates, Goudurix, Pégase Express, La Descente
-du Nil, Romus et Rapidus, Menhir Express et Attention Menhir !. **Toutatis n’en
+du Nil, Romus et Rapidus, Menhir Express et Attention Menhir ! **Toutatis n’en
 fait pas partie**, pas plus que Cétautomatix, Discobélix et la tour. Elles ne
 sont accessibles qu’avec l’Illimité. Même avec Filotomatix, on attend encore dix
 à quinze minutes selon le parc, et le nombre de coupe-file par jour est limité.
@@ -489,8 +467,7 @@ sont accessibles qu’avec l’Illimité. Même avec Filotomatix, on attend enco
 ```
 
 Un jour de semaine hors vacances, je garderais mon argent et je suivrais l’ordre
-ci-dessus. Un samedi d’août ou entre Noël et le Nouvel An, c’est autre chose.
-L’Or est alors le niveau le plus rentable, parce qu’il couvre les grandes
+ci-dessus. Un samedi d’août ou entre Noël et le Nouvel An, l’Or est le niveau le plus rentable, parce qu’il couvre les grandes
 attractions sauf Toutatis, et Toutatis se fait par la file single rider. Selon
 le parc, celle-ci n’existe qu’à Toutatis et à OzIris, et elle peut rester fermée
 les jours d’affluence.
@@ -503,13 +480,12 @@ L’Halloween du parc a lieu du 3 octobre au 8 novembre 2026. Les jours normaux,
 le parc est ouvert de 10 h à 19 h. Douze jours, il ouvre dès 9 h, ferme à 18 h
 et rouvre à 19 h jusqu’à 1 h du matin pour une nocturne à billet séparé : 53
 euros en ligne, 58 sur place, les 10, 16, 17, 21, 22, 23, 24, 28, 29, 30 et 31
-octobre et le 7 novembre. Le 2 octobre, le 31 octobre affichait déjà complet. En
+octobre et le 7 novembre. Le 31 octobre affichait déjà complet le 2 octobre. En
 2025, le parc a compté 557 500 visiteurs sur 20 jours et douze nocturnes.
 
 Trois maisons hantées sont au programme : Le Tombeau des Dieux (déconseillé aux
 moins de 14 ans), Catacombes et Les Enfers de Pompéi (déconseillés aux moins de
-16 ans ; en nocturne, Pompéi coûte 6 euros avec un créneau réservé). Nouveautés :
-La Forêt sans Retour, un parcours en forêt réservé aux nocturnes, lui aussi
+16 ans ; en nocturne, Pompéi coûte 6 euros avec un créneau réservé). Les nouveautés sont La Forêt sans Retour, un parcours en forêt réservé aux nocturnes, lui aussi
 déconseillé aux moins de 16 ans, et Les Bas-Fonds du Souk, une zone de peur dans
 le quartier Égypte. La Colère d’Anubis a disparu avec la rue de Paris. Ce que
 font les autres parcs cet automne est dans notre
@@ -543,8 +519,7 @@ Arts Forains à Paris.
 En 2027, la Grèce s’agrandit. Le parc annonce deux attractions familiales, une
 aire de jeux et un restaurant, La Table de Dionysos, de 450 places. D’après
 Androland et Parcs Actus, le décor s’inspire de l’île grecque de Symi ; Androland
-cite deux petites tours de chute de Zierer et un Go Go Bounce de Zamperla, ce que
-le parc n’a pas confirmé. Un quatrième hôtel, L’Odyssée, 300 chambres et quatre
+cite deux petites tours de chute de Zierer et un Go Go Bounce de Zamperla. Le parc ne l’a pas confirmé. Un quatrième hôtel, L’Odyssée, 300 chambres et quatre
 étoiles, doit ouvrir la même année.
 
 En 2028 arrive Londinium. Sur le terrain de l’ancien Paris, le parc construit un
@@ -555,7 +530,7 @@ Multi Dimension Coaster d’Intamin à wagons pivotants, 17 mètres de haut, à
 l’intérieur du bâtiment. Tonnerre 2 Zeus recevra la deuxième partie de son
 nouveau rail en acier pendant l’hiver 2026-2027.
 
-## Infos pratiques : billets, accès, hôtels, restauration
+## Billets, accès, hôtels et restauration
 
 ### Billets et prix 2026
 
@@ -593,8 +568,7 @@ Le parc a trois hôtels : Les Trois Hiboux, de 1999, 150 chambres sans
 climatisation ; La Cité Suspendue, de 2018, 150 chambres ; et Les Quais de
 Lutèce, de 2020, 149 chambres et quatre étoiles. Pour une nuit avec une journée
 au parc, le parc annonce à partir de 99, 102 et 111 euros par personne, sur la
-base de deux adultes et deux enfants en haute saison. Le parc est à moins de dix
-minutes à pied, le parking est gratuit et vous entrez une demi-heure plus tôt.
+base de deux adultes et deux enfants en haute saison. Les hôtels sont à moins de dix minutes à pied du parc, le parking est gratuit et vous entrez une demi-heure plus tôt.
 
 Dans l’application, on peut réserver une table dans trois restaurants : Le
 Relais Gaulois (self-service, 28,90 euros, Astérix et Obélix passent entre les

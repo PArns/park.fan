@@ -100,8 +100,7 @@ Sekunden. Eine kleine Bahn mit niedriger Mindestgröße, auf die ganze Familien
 gemeinsam wollen, füllt ihre Warteschlange schneller als eine große, auf die nur
 die Hälfte der Gruppe darf.
 
-Walibi Belgium gehört demselben Konzern, und der Europa-Park ist für viele aus
-Deutschland der Maßstab. Die Tabelle wird laufend neu berechnet:
+Die Tabelle vergleicht den Parc Astérix mit dem Disneyland Park, mit Walibi Belgium, das demselben Konzern gehört, und mit dem Europa-Park. Sie wird laufend neu berechnet:
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -146,9 +145,7 @@ Direktorin ist seit Mai 2021 Delphine Pons.
 
 Seitdem ist er stetig gewachsen. 2012 kamen das Égypte-Viertel und OzIris, für
 zusammen 20 Millionen Euro, damals die größte Investition der Parkgeschichte.
-2017 folgte Pégase Express für 16 Millionen, 2023 Toutatis. Die Besucherzahlen
-nach dem Index der Themed Entertainment Association (TEA) und den Angaben des
-Parks: 2.326.000 im Jahr 2019, 2.632.000 im Jahr 2022, 2.815.000 im Jahr 2023,
+2017 folgte Pégase Express für 16 Millionen, 2023 Toutatis. Nach dem Index der Themed Entertainment Association (TEA) und den Angaben des Parks kamen 2.326.000 Besucher im Jahr 2019, 2.632.000 im Jahr 2022, 2.815.000 im Jahr 2023,
 2.842.000 im Jahr 2024 und 2,9 Millionen in der Saison 2024/25. Am 20. Oktober
 2025 kündigte der Park 250 Millionen Euro an Investitionen bis 2030 an, für
 20 Prozent mehr Kapazität.
@@ -207,7 +204,7 @@ einmal über eine Kante mit 101 Grad Neigung, also über die Senkrechte hinaus.
 
 Bei den Zahlen sind sich die Quellen nicht ganz einig. RCDB nennt 51 Meter Höhe
 und 107 km/h, Intamin 53 Meter und ebenfalls 107 km/h, der Park 51 Meter und
-110 km/h, womit er Toutatis „die schnellste Attraktion Frankreichs“ nennt. Wie
+110 km/h; mit diesen 110 km/h nennt er Toutatis „die schnellste Attraktion Frankreichs“. Wie
 viele Abschüsse es sind, hängt vom Zählen ab: sieben laut Intamin, fünf vorwärts
 und zwei rückwärts, vier laut Wikipedia, drei davon auf derselben
 Abschussstrecke. RCDB nennt 1.075 Meter Schiene und, weil der Zug

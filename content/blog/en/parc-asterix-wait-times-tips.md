@@ -98,8 +98,7 @@ four, one leaving every 20 seconds. A small ride with a low height limit, where
 the whole family can go together, fills its queue faster than a big one only
 half the group is allowed on.
 
-Walibi Belgium belongs to the same group, and Europa-Park is the usual
-yardstick. The table is recalculated as new data comes in:
+The table compares Parc Astérix with Disneyland Park, with Walibi Belgium, which belongs to the same group, and with Europa-Park. It's recalculated as new data comes in:
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -144,8 +143,7 @@ been its director since May 2021.
 It's kept growing since. In 2012 came the Égypte area and OzIris, 20 million
 euros for the pair and the biggest investment in the park's history at that
 point. Pégase Express followed in 2017 for 16 million, Toutatis in 2023.
-Attendance, from the Themed Entertainment Association (TEA) index and the
-park's own figures: 2,326,000 in 2019, 2,632,000 in 2022, 2,815,000 in 2023,
+According to the Themed Entertainment Association (TEA) index and the park's own figures, attendance was 2,326,000 in 2019, 2,632,000 in 2022, 2,815,000 in 2023,
 2,842,000 in 2024, and 2.9 million in the 2024/25 season. On 20 October 2025 the
 park announced 250 million euros of investment by 2030, for 20 per cent more
 capacity.
@@ -205,7 +203,7 @@ steeper than vertical.
 
 The sources don't quite agree on the numbers. RCDB gives 51 metres and 107
 km/h, Intamin 53 metres and also 107 km/h, the park 51 metres and 110 km/h,
-which is how it gets to call Toutatis "the fastest attraction in France". The
+and with those 110 km/h it calls Toutatis "the fastest attraction in France". The
 number of launches depends on how you count: seven according to Intamin, five
 forwards and two backwards, four according to Wikipedia, three of them on the
 same launch track. RCDB gives 1,075 metres of track and, since the train
@@ -487,7 +485,7 @@ The park's Halloween runs from 3 October to 8 November 2026. On normal days it's
 open from 10 am to 7 pm. On twelve days it opens at 9, closes at 6 pm and
 reopens at 7 pm until 1 am for a nocturne with its own ticket: 53 euros online,
 58 at the gate, on 10, 16, 17, 21, 22, 23, 24, 28, 29, 30 and 31 October and 7
-November. On 2 October, 31 October was already sold out. In 2025 the park says
+November. 31 October was already sold out on 2 October. In 2025 the park says
 557,500 people came over 20 days and twelve nocturnes.
 
 There are three haunted houses this year: Le Tombeau des Dieux (not recommended
@@ -525,8 +523,7 @@ Arts Forains in Paris.
 In 2027 La Grèce gets bigger. The park has announced two family rides, a
 playground and a restaurant, La Table de Dionysos, with 450 seats. Androland and
 Parcs Actus report that the design takes its cue from the Greek island of Symi;
-Androland mentions two small Zierer drop towers and a Zamperla Go Go Bounce,
-which the park hasn't confirmed. A fourth hotel, L'Odyssée, with 300 rooms and
+Androland mentions two small Zierer drop towers and a Zamperla Go Go Bounce. The park hasn't confirmed that. A fourth hotel, L'Odyssée, with 300 rooms and
 four stars, is due the same year.
 
 Londinium arrives in 2028. On the site of the old Paris, the park is building

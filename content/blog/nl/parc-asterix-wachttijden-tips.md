@@ -99,8 +99,7 @@ opening uit op zo’n 700: negen karretjes van vier, elke 20 seconden een vertre
 kleine baan met een lage minimale lengte, waar het hele gezin samen in kan, loopt
 sneller vol dan een grote waar maar de helft van de groep in mag.
 
-Walibi Belgium hoort bij hetzelfde concern, en Europa-Park is voor velen de
-maatstaf. De tabel wordt doorlopend opnieuw berekend:
+De tabel vergelijkt Parc Astérix met het Disneyland Park, met Walibi Belgium, dat bij hetzelfde concern hoort, en met Europa-Park. Hij wordt doorlopend opnieuw berekend:
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -146,9 +145,7 @@ is sinds mei 2021 Delphine Pons.
 
 Sindsdien is het blijven groeien. In 2012 kwamen de wijk Égypte en OzIris erbij,
 samen 20 miljoen euro, toen de grootste investering in de geschiedenis van het
-park. Pégase Express volgde in 2017 voor 16 miljoen, Toutatis in 2023. De
-bezoekersaantallen volgens de index van de Themed Entertainment Association
-(TEA) en het park zelf: 2.326.000 in 2019, 2.632.000 in 2022, 2.815.000 in 2023,
+park. Pégase Express volgde in 2017 voor 16 miljoen, Toutatis in 2023. Volgens de index van de Themed Entertainment Association (TEA) en het park zelf kwamen er 2.326.000 bezoekers in 2019, 2.632.000 in 2022, 2.815.000 in 2023,
 2.842.000 in 2024 en 2,9 miljoen in het seizoen 2024/25. Op 20 oktober 2025
 kondigde het park 250 miljoen euro aan investeringen tot 2030 aan, voor 20
 procent meer capaciteit.
@@ -210,7 +207,7 @@ afdaling van 101 graden, steiler dan verticaal.
 
 Over de cijfers zijn de bronnen het niet helemaal eens. RCDB noemt 51 meter en
 107 km/u, Intamin 53 meter en ook 107 km/u, het park 51 meter en 110 km/u,
-waarmee het Toutatis “de snelste attractie van Frankrijk” noemt. Hoeveel
+en met die 110 km/u noemt het Toutatis “de snelste attractie van Frankrijk”. Hoeveel
 lanceringen het zijn, hangt af van hoe je telt: zeven volgens Intamin, vijf
 vooruit en twee achteruit, vier volgens Wikipedia, waarvan drie op hetzelfde
 lanceerspoor. RCDB noemt 1.075 meter baan en, omdat de trein delen daarvan
@@ -498,7 +495,7 @@ gewone dagen is het park open van 10 tot 19 uur. Op twaalf dagen gaat het al om
 9 uur open, sluit het om 18 uur en gaat het om 19 uur opnieuw open tot 1 uur
 ’s nachts, voor een nocturne met een eigen ticket: 53 euro online, 58 euro aan
 de kassa, op 10, 16, 17, 21, 22, 23, 24, 28, 29, 30 en 31 oktober en 7
-november. Op 2 oktober was 31 oktober al uitverkocht. In 2025 kwamen er volgens
+november. 31 oktober was op 2 oktober al uitverkocht. In 2025 kwamen er volgens
 het park 557.500 bezoekers op 20 dagen en twaalf nocturnes.
 
 Er staan dit jaar drie spookhuizen op het programma: Le Tombeau des Dieux
@@ -539,7 +536,7 @@ In 2027 wordt La Grèce groter. Aangekondigd zijn twee familieattracties, een
 speeltuin en een restaurant, La Table de Dionysos, met 450 plaatsen. Volgens
 Androland en Parcs Actus is het ontwerp geïnspireerd op het Griekse eiland Symi;
 Androland noemt twee kleine valtorens van Zierer en een Go Go Bounce van
-Zamperla, wat het park niet heeft bevestigd. Datzelfde jaar moet het vierde
+Zamperla. Het park heeft dat niet bevestigd. Datzelfde jaar moet het vierde
 hotel opengaan, L’Odyssée, met 300 kamers en vier sterren.
 
 In 2028 komt Londinium. Op de plek van het oude Parijs bouwt het park een
