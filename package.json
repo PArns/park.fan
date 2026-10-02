@@ -119,6 +119,7 @@
     "test:glossary-ride-href": "node --experimental-strip-types scripts/test-glossary-ride-href.mjs",
     "test:news-split": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-split.mjs",
     "test:hub-chapters": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-hub-chapters.mjs",
+    "test:chapter-panel-padding": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-chapter-panel-padding.mjs",
     "test:widget-park-ref": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-widget-park-ref.mjs",
     "audit:media": "node scripts/audit-media.mjs",
     "check:media-urls": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-media-urls.mjs",
