@@ -7965,6 +7965,95 @@ if (live) {
  */
 const AXIS_MIN_LANDSCAPE_PX = 216;
 
+/**
+ * The landscape sheet, measured: its box, the axis inside it and how much of
+ * that axis is IN the sheet, whatever is painted over the axis' centre, and
+ * whether the ride search stands beside the axis or above it. Shared by the
+ * 844×390 and 568×320 passes (PAR-231), so the two sizes are asked the same
+ * question in the same words. Runs in the page; `sel` is {@link SHEET}.
+ */
+const landscapeRoom = (sel) => {
+  const sheet = document.querySelector(sel);
+  if (!sheet) return null;
+  const box = sheet.getBoundingClientRect();
+  const grid = sheet.querySelector('[data-planner-grid]');
+  const scroller = grid?.closest('.overflow-y-auto') ?? null;
+  const axis = scroller?.getBoundingClientRect() ?? null;
+  // Whatever is actually painted at the axis' centre. `getBoundingClientRect`
+  // cannot answer "is something over this" — two boxes overlap happily and
+  // both report their own geometry — so ask the browser what a finger would
+  // hit there instead.
+  let covers = null;
+  if (axis && axis.height > 0) {
+    const hit = document.elementFromPoint(
+      Math.round(axis.x + axis.width / 2),
+      Math.round(axis.y + axis.height / 2)
+    );
+    // The name of the ROW in the way, not the tag of whatever pixel the
+    // point happened to land on: `DIV` names nothing, and which row it is
+    // decides whose ticket it is — the optimize bar, the headliner band and
+    // the summary are three different sets of pixels. So walk up from the
+    // hit to the nearest element that carries a `data-planner-*` name and
+    // use that; the tag is only the fallback for a hit that has none above
+    // it at all.
+    if (hit && !scroller.contains(hit) && hit !== scroller) {
+      // `[data-planner-show-band]` is deliberately NOT in this list: the
+      // strip is a `sticky` CHILD of the scroller being measured, so the
+      // guard above (`!scroller.contains(hit)`) has already excluded it and
+      // listing it would only suggest a case this can report. It cannot —
+      // a band covering its own axis is invisible to this assertion, and
+      // that gap is real rather than closed here (see PAR-168).
+      const named = hit.closest(
+        '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary],[data-planner-add-custom],[data-planner-column-head]'
+      );
+      covers = named ? Object.keys(named.dataset)[0] : hit.tagName;
+    }
+  }
+  // How much of the axis is INSIDE the sheet, which is not the same as how
+  // tall it is: `min-h` on a box whose parent is `min-h-0 flex-1` makes it
+  // overflow rather than grow the parent, and an axis reported as 200 px can
+  // have 37 of them below the sheet's own bottom edge with four rows painted
+  // over the rest. `height - axis` as a stand-in for "chrome" is a lie in
+  // exactly that case, so both numbers are measured against the sheet.
+  const visible =
+    axis && axis.height > 0
+      ? Math.max(0, Math.min(axis.bottom, box.bottom) - Math.max(axis.top, box.top))
+      : 0;
+  // The ride search, because it is what says the sheet is a ROW rather than
+  // a stack: it is the one chrome row that is always drawn at this size
+  // (`planner-wide:hidden`, asserted on its own below), so "it is left of
+  // the axis and level with it" is the arrangement in two numbers. A test on
+  // the axis' own left edge alone would be a threshold nobody can derive —
+  // this one is a relation between two boxes and holds at any column width.
+  const search = document.querySelector('[data-planner-ride-search]');
+  const searchBox = search?.getBoundingClientRect() ?? null;
+  const beside =
+    axis && searchBox && searchBox.height > 0
+      ? {
+          searchRight: Math.round(searchBox.right),
+          searchTop: Math.round(searchBox.top),
+          searchBottom: Math.round(searchBox.bottom),
+          // Left of it, and overlapping it vertically. Stacked, the second
+          // half is false; side by side, both are true.
+          leftOfAxis: searchBox.right <= axis.left + 1,
+          levelWithAxis: searchBox.top < axis.bottom && searchBox.bottom > axis.top,
+        }
+      : null;
+  return {
+    width: Math.round(box.width),
+    height: Math.round(box.height),
+    left: Math.round(box.x),
+    bottom: Math.round(window.innerHeight - box.bottom),
+    axis: axis ? Math.round(axis.height) : null,
+    axisLeft: axis ? Math.round(axis.x) : null,
+    axisWidth: axis ? Math.round(axis.width) : null,
+    axisVisible: Math.round(visible),
+    covers,
+    beside,
+    handle: sheet.querySelector('[data-planner-sheet-handle]'),
+  };
+};
+
 {
   const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
   noteErrors(land);
@@ -7985,87 +8074,7 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
       `coarse ${pointer.coarse} · fine ${pointer.fine}`
     );
 
-    const room = await land.evaluate((sel) => {
-      const sheet = document.querySelector(sel);
-      if (!sheet) return null;
-      const box = sheet.getBoundingClientRect();
-      const grid = sheet.querySelector('[data-planner-grid]');
-      const scroller = grid?.closest('.overflow-y-auto') ?? null;
-      const axis = scroller?.getBoundingClientRect() ?? null;
-      // Whatever is actually painted at the axis' centre. `getBoundingClientRect`
-      // cannot answer "is something over this" — two boxes overlap happily and
-      // both report their own geometry — so ask the browser what a finger would
-      // hit there instead.
-      let covers = null;
-      if (axis && axis.height > 0) {
-        const hit = document.elementFromPoint(
-          Math.round(axis.x + axis.width / 2),
-          Math.round(axis.y + axis.height / 2)
-        );
-        // The name of the ROW in the way, not the tag of whatever pixel the
-        // point happened to land on: `DIV` names nothing, and which row it is
-        // decides whose ticket it is — the optimize bar, the headliner band and
-        // the summary are three different sets of pixels. So walk up from the
-        // hit to the nearest element that carries a `data-planner-*` name and
-        // use that; the tag is only the fallback for a hit that has none above
-        // it at all.
-        if (hit && !scroller.contains(hit) && hit !== scroller) {
-          // `[data-planner-show-band]` is deliberately NOT in this list: the
-          // strip is a `sticky` CHILD of the scroller being measured, so the
-          // guard above (`!scroller.contains(hit)`) has already excluded it and
-          // listing it would only suggest a case this can report. It cannot —
-          // a band covering its own axis is invisible to this assertion, and
-          // that gap is real rather than closed here (see PAR-168).
-          const named = hit.closest(
-            '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary],[data-planner-add-custom],[data-planner-column-head]'
-          );
-          covers = named ? Object.keys(named.dataset)[0] : hit.tagName;
-        }
-      }
-      // How much of the axis is INSIDE the sheet, which is not the same as how
-      // tall it is: `min-h` on a box whose parent is `min-h-0 flex-1` makes it
-      // overflow rather than grow the parent, and an axis reported as 200 px can
-      // have 37 of them below the sheet's own bottom edge with four rows painted
-      // over the rest. `height - axis` as a stand-in for "chrome" is a lie in
-      // exactly that case, so both numbers are measured against the sheet.
-      const visible =
-        axis && axis.height > 0
-          ? Math.max(0, Math.min(axis.bottom, box.bottom) - Math.max(axis.top, box.top))
-          : 0;
-      // The ride search, because it is what says the sheet is a ROW rather than
-      // a stack: it is the one chrome row that is always drawn at this size
-      // (`planner-wide:hidden`, asserted on its own below), so "it is left of
-      // the axis and level with it" is the arrangement in two numbers. A test on
-      // the axis' own left edge alone would be a threshold nobody can derive —
-      // this one is a relation between two boxes and holds at any column width.
-      const search = document.querySelector('[data-planner-ride-search]');
-      const searchBox = search?.getBoundingClientRect() ?? null;
-      const beside =
-        axis && searchBox && searchBox.height > 0
-          ? {
-              searchRight: Math.round(searchBox.right),
-              searchTop: Math.round(searchBox.top),
-              searchBottom: Math.round(searchBox.bottom),
-              // Left of it, and overlapping it vertically. Stacked, the second
-              // half is false; side by side, both are true.
-              leftOfAxis: searchBox.right <= axis.left + 1,
-              levelWithAxis: searchBox.top < axis.bottom && searchBox.bottom > axis.top,
-            }
-          : null;
-      return {
-        width: Math.round(box.width),
-        height: Math.round(box.height),
-        left: Math.round(box.x),
-        bottom: Math.round(window.innerHeight - box.bottom),
-        axis: axis ? Math.round(axis.height) : null,
-        axisLeft: axis ? Math.round(axis.x) : null,
-        axisWidth: axis ? Math.round(axis.width) : null,
-        axisVisible: Math.round(visible),
-        covers,
-        beside,
-        handle: sheet.querySelector('[data-planner-sheet-handle]'),
-      };
-    }, SHEET);
+    const room = await land.evaluate(landscapeRoom, SHEET);
 
     if (room) {
       // A bottom sheet, measured the way the portrait pass measures one: it spans
@@ -8283,6 +8292,67 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // (`planner-wide:flex`) and by the empty grid's two lines.
   } else {
     check('im Querformat liegt das Panel unten und nicht rechts', false, 'Panel nicht geöffnet');
+  }
+  await land.close();
+}
+
+// ── Landscape, 568×320 ───────────────────────────────────────────────────────
+//
+// The iPhone SE on its side, and the size the 844×390 pass above never saw.
+// Until PAR-231 `planner-landscape` started at 40rem, so this window stayed
+// stacked: measured on `main` @ `afc69ced`, 303 px of chrome in a 308 px sheet,
+// and the axis box 200 px tall (its `max-sm:min-h-[200px]` floor) with 191 of
+// them inside the sheet, clipped by a 3 px wrapper. On screen there was no day.
+//
+// The row starts at 35.5rem now, with a 16rem left column below 40rem, so the
+// axis keeps 312 px of width. The same three assertions as above, plus the
+// column width, because a 20rem column here would leave the axis 248 px.
+{
+  const land = await browser.newPage({ viewport: { width: 568, height: 320 }, hasTouch: true });
+  noteErrors(land);
+  await seed(land);
+  if (await openSheet(land, 'Querformat 568')) {
+    await land.waitForTimeout(2500);
+    const room = await land.evaluate(landscapeRoom, SHEET);
+    if (room && live) {
+      // `axisVisible === axis` for the reason the 844 pass gives at length: an
+      // axis pushed out of the sheet leaves `covers` at `null` and would pass.
+      const axisWhole = room.axis !== null && room.axis > 0 && room.axisVisible === room.axis;
+      check(
+        'bei 568×320 liegt die Achse ganz im Sheet und nichts darüber',
+        axisWhole && room.covers === null,
+        room.axis === null || room.axis === 0
+          ? 'keine Achse gefunden — nichts gemessen'
+          : `Achse ${room.axis} px, davon ${room.axisVisible} px im ${room.height} px hohen Sheet` +
+              (room.covers ? ` · ${room.covers} liegt darüber` : '')
+      );
+      check(
+        'die Achse zeigt bei 568×320 zwei Stunden des Tages',
+        room.axisVisible >= AXIS_MIN_LANDSCAPE_PX,
+        `${room.axisVisible} px sichtbar · nötig ${AXIS_MIN_LANDSCAPE_PX} px`
+      );
+      check(
+        'bei 568×320 steht das Chrome neben der Achse, nicht darüber',
+        Boolean(room.beside?.leftOfAxis && room.beside?.levelWithAxis),
+        room.beside === null
+          ? 'keine Ride-Suche mit Höhe gefunden — nichts gemessen'
+          : `Ride-Suche endet bei x=${room.beside.searchRight}, Achse beginnt bei x=${room.axisLeft}`
+      );
+      // 16rem, not the 20rem the wider row uses: 568 − 256 = 312 px of axis.
+      check(
+        'bei 568×320 ist die Achse mindestens 300 px breit',
+        room.axisWidth !== null && room.axisWidth >= 300,
+        `Achse ${room.axisWidth} px breit, beginnt bei x=${room.axisLeft}`
+      );
+    } else if (!room) {
+      check('bei 568×320 liegt die Achse ganz im Sheet und nichts darüber', false, 'kein Sheet');
+    }
+  } else {
+    check(
+      'bei 568×320 liegt die Achse ganz im Sheet und nichts darüber',
+      false,
+      'Panel nicht geöffnet'
+    );
   }
   await land.close();
 }

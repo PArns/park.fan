@@ -55,7 +55,9 @@ export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem) and (po
  * The CSS half is `planner-landscape:` in `app/globals.css`, written directly
  * under the pair it refines, and the two carry the same numbers for the same
  * reason the pair does: rem, so a raised default font size moves both halves or
- * neither.
+ * neither. The width is `35.5rem` (568 px), below the pair's `40rem`, so an
+ * iPhone SE on its side gets the row as well (PAR-231, reasoning in
+ * `globals.css`).
  *
  * Read by `planner-flyout.tsx` for the two things a class cannot decide — which
  * side of the panel draws the context band, and therefore what
@@ -65,7 +67,7 @@ export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem) and (po
  * it and is never server-rendered.
  */
 export const PLANNER_LANDSCAPE_QUERY =
-  '(width >= 40rem) and (height < 31.25rem) and (pointer: coarse)';
+  '(width >= 35.5rem) and (height < 31.25rem) and (pointer: coarse)';
 
 /**
  * How many pixels one minute of the day is worth, here and now.

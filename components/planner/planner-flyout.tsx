@@ -1832,10 +1832,15 @@ export function PlannerFlyout({
                     /* Same gate as the row above, and it has to be the same
                      expression: a column without the row around it would be a
                      320 px box inside a flex COLUMN, i.e. a narrow strip where
-                     the sheet used to be full width. */
+                     the sheet used to be full width.
+
+                     `w-64` below 40rem, `w-80` above (PAR-231): the row now
+                     starts at 35.5rem, and at 568 px a 320 px column would leave
+                     the axis 248. 256 leaves it 312, close to the 318 px an
+                     honest planner column is reckoned at. */
                     park &&
                       activeDate &&
-                      'planner-landscape:flex planner-landscape:order-first planner-landscape:w-80 planner-landscape:min-h-0 planner-landscape:shrink-0 planner-landscape:flex-col planner-landscape:overflow-y-auto planner-landscape:overscroll-y-contain planner-landscape:border-border/60 planner-landscape:border-r'
+                      'planner-landscape:flex planner-landscape:order-first planner-landscape:w-64 planner-landscape:sm:w-80 planner-landscape:min-h-0 planner-landscape:shrink-0 planner-landscape:flex-col planner-landscape:overflow-y-auto planner-landscape:overscroll-y-contain planner-landscape:border-border/60 planner-landscape:border-r'
                   )}
                 >
                   {/* The day's own head, and ONLY on a landscape phone — every other
