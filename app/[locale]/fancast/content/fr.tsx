@@ -368,7 +368,7 @@ export function ContentFR() {
             {
               icon: Sunrise,
               title: 'Recommandation rope-drop',
-              body: 'la réponse à « vaut-il la peine d’arriver tôt ? », avec les creux attendus.',
+              body: 's’il vaut la peine d’arriver tôt, avec les creux attendus.',
             },
             {
               icon: HelpCircle,

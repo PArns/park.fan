@@ -183,8 +183,10 @@ const WATCH = [
     re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora|multifaceted|groundbreaking|game-?chang\w*|transformative|unprecedented|aforementioned|spearhead\w*|encompass\w*|endeavou?rs?|synerg\w*|in essence|rest assured|it goes without saying|thought leader\w*)\b/gi,
   },
   {
+    // `die Antwort auf` and its five twins (Patrick, 2026-10-02): a sentence that announces the
+    // answer instead of giving it. `la respuesta austríaca` is not a hit, the `\b` sees to that.
     what: 'stock phrase (§3)',
-    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b/gi,
+    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b|\b(?:die antwort auf|the answer to|het antwoord op|la respuesta a|la risposta a)\b|\bla réponse à(?=\s)/gi,
   },
   {
     what: 'mechanical opener (§2.7)',

@@ -366,7 +366,7 @@ export function ContentES() {
             {
               icon: Sunrise,
               title: 'Recomendación de rope-drop',
-              body: 'la respuesta a «¿merece la pena llegar temprano?», con los mínimos esperados.',
+              body: 'si merece la pena llegar temprano, con los mínimos esperados.',
             },
             {
               icon: HelpCircle,

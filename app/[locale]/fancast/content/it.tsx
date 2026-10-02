@@ -361,7 +361,7 @@ export function ContentIT() {
             {
               icon: Sunrise,
               title: 'Consiglio sul rope-drop',
-              body: 'la risposta a «vale la pena arrivare presto?», con i minimi attesi.',
+              body: 'se vale la pena arrivare presto, con i minimi attesi.',
             },
             {
               icon: HelpCircle,

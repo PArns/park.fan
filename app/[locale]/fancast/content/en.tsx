@@ -362,7 +362,7 @@ export function ContentEN() {
             {
               icon: Sunrise,
               title: 'Rope-drop recommendation',
-              body: 'the answer to “is it worth arriving early?”, with the expected troughs.',
+              body: 'whether arriving early pays off, with the expected troughs.',
             },
             {
               icon: HelpCircle,
