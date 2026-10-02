@@ -89,9 +89,8 @@ export function Row({
               {subtitle && (
                 <>
                   <span className="truncate">{subtitle}</span>
-                  <span aria-hidden="true" className="shrink-0 px-1">
-                    ·
-                  </span>
+                  {/* No-break spaces, so the row's text reads "Park · value" exactly as before. */}
+                  <span className="shrink-0 whitespace-pre">{' · '}</span>
                 </>
               )}
               <span className="shrink-0 whitespace-nowrap tabular-nums">{subtitleValue}</span>
