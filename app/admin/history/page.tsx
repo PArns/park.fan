@@ -29,6 +29,7 @@ const ENTITY_TYPES = [
 const ACTION_PREFIXES = [
   { value: 'park.curate', label: 'Park kuratiert' },
   { value: 'attraction.curate', label: 'Fahrgeschäft kuratiert' },
+  { value: 'park.verify', label: 'Park geprüft' },
   { value: 'park.season', label: 'Saison' },
   { value: 'ride-profile', label: 'Ride-Profil' },
   { value: 'job.', label: 'Jobs' },
