@@ -72,14 +72,13 @@ ersten zehn:
 - Platz 9: [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) im Europa-Park
 
 Die Plätze 1 bis 9 sind laut Amusement Today dieselben wie 2025, Voltron
-Nevera behält also seinen Rang vom Vorjahr. Das Phantasialand ging ebenfalls
-nicht leer aus: Chiapas wurde zum vierten Mal als beste Wasserbahn in einem
-Park ausgezeichnet.
+Nevera behält also seinen Rang vom Vorjahr. Im Phantasialand wurde außerdem
+Chiapas zum vierten Mal als beste Wasserbahn in einem Park ausgezeichnet.
 
 [Europa-Park](ref:europa-park?full)
 
-Die Auszeichnungen des Parks im Überblick stehen auf der Seite
-[Auszeichnungen-Seite des Europa-Parks](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
+Seine eigenen Auszeichnungen listet der Park auf seiner
+[Preisseite](https://www.europapark.de/en/theme-park/info/award-winning-entertainment-europa-park).
 
 — Patrick
 

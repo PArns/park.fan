@@ -69,8 +69,7 @@ top dieci:
 - 9º posto: [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) a Europa-Park
 
 Secondo Amusement Today i posti dall’1 al 9 sono gli stessi del 2025, quindi
-Voltron Nevera conserva la posizione dell’anno scorso. Neanche Phantasialand è
-rimasto a mani vuote: Chiapas è stata eletta per la quarta volta migliore
+Voltron Nevera conserva la posizione dell’anno scorso. A Phantasialand, Chiapas è stata eletta per la quarta volta migliore
 attrazione acquatica in un parco.
 
 [Europa-Park](ref:europa-park?full)

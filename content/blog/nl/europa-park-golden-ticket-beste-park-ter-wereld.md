@@ -58,7 +58,7 @@ Experience”.
 In dezelfde maand noemde het tijdschrift Kirmes & Park Revue het park volgens
 Europa-Park opnieuw “Europe's Best Theme Park” bij de European Star Awards.
 
-## Drie banen uit de stalen lijst
+## Drie banen in de ranglijst van stalen achtbanen
 
 Naast de prijzen publiceert Amusement Today een ranglijst van de beste stalen
 achtbanen. Op plek 1 staat Fury 325 in Carowinds, voor het tiende jaar op rij.
@@ -69,9 +69,8 @@ Drie banen uit parken die op park.fan staan, zitten in de top tien:
 - Plek 9: [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) in Europa-Park
 
 Volgens Amusement Today zijn plek 1 tot en met 9 dezelfde als in 2025, dus
-Voltron Nevera houdt zijn plek van vorig jaar. Ook Phantasialand ging niet met
-lege handen naar huis: Chiapas werd voor de vierde keer uitgeroepen tot beste
-waterattractie in een park.
+Voltron Nevera houdt zijn plek van vorig jaar. In Phantasialand werd ook Chiapas
+voor de vierde keer uitgeroepen tot beste waterattractie in een park.
 
 [Europa-Park](ref:europa-park?full)
 

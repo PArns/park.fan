@@ -67,8 +67,8 @@ coasters from parks on park.fan made the top ten:
 - No. 9: [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) at Europa-Park
 
 According to Amusement Today, places 1 to 9 are the same as in 2025, so
-Voltron Nevera keeps last year's rank. Phantasialand didn't leave empty-handed
-either: Chiapas was named best water ride in a park for the fourth time.
+Voltron Nevera keeps last year's rank. At Phantasialand, Chiapas was also
+named best water ride in a park for the fourth time.
 
 [Europa-Park](ref:europa-park?full)
 

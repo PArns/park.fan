@@ -58,7 +58,7 @@ Tickets, le plus grand nombre de la soirée, dont « Most Beautiful Park » et
 Le même mois, le magazine Kirmes & Park Revue a de nouveau désigné le parc
 « Europe's Best Theme Park » aux European Star Awards, selon Europa-Park.
 
-## Trois attractions dans la liste de l’acier
+## Trois attractions au classement des montagnes russes en acier
 
 En plus des prix, Amusement Today publie un classement des meilleures
 montagnes russes en acier. Fury 325, à Carowinds, est première pour la
@@ -69,9 +69,8 @@ figurent dans le top dix :
 - 8e : [Taron](ref:phantasialand/taron) à Phantasialand
 - 9e : [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) à Europa-Park
 
-Selon Amusement Today, les places 1 à 9 sont les mêmes qu’en 2025 : Voltron
-Nevera garde donc son rang de l’an dernier. Phantasialand n’est pas reparti
-les mains vides non plus : Chiapas a été élue pour la quatrième fois meilleure
+Selon Amusement Today, les places 1 à 9 sont les mêmes qu’en 2025, et Voltron
+Nevera garde donc son rang de l’an dernier. À Phantasialand, Chiapas a aussi été élue pour la quatrième fois meilleure
 attraction aquatique dans un parc.
 
 [Europa-Park](ref:europa-park?full)
