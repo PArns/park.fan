@@ -631,17 +631,15 @@ export function PlannerDayColumn({
             all painted over it. Measured, both ways, on PAR-76's branch.
 
             **PAR-168 answered that size by moving the rows rather than the
-            floor.** Above 40 rem a landscape phone is a ROW now — the chrome
-            stands left of the axis, which gets 269 px — so `max-sm:` and
-            `planner-landscape:` no longer overlap at all and this floor is not
-            in that arrangement's way.
+            floor.** A landscape phone is a ROW now — the chrome stands left of
+            the axis, which gets 269 px at 844x390.
 
-            What it still governs is the landscape phone NARROWER than 40 rem
-            (568x320 and its neighbours), which stays stacked and where the same
-            overflow is to be expected: 92svh of 320 is 294 px, of which the
-            handle and the header take 89. That is unmeasured and open as
-            PAR-231; it is not made worse here, and it is not fixed here
-            either. */}
+            PAR-231 took the row down to 35.5 rem, because at 568x320 the stack
+            was 303 px of chrome in a 308 px sheet and this floor pushed the
+            axis out of a 3 px wrapper. Between 35.5 and 40 rem `max-sm:` and
+            `planner-landscape:` now overlap, and the floor stays out of the
+            way there for a measured reason: the row gives the axis 252 px at
+            568x320, more than the 200 asked for, so it never binds. */}
         <div ref={barBoxRef} className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}

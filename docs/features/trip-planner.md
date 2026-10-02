@@ -1740,7 +1740,7 @@ get.
 
 The switch is a third variant, `planner-landscape`, and it **refines
 `planner-phone` rather than standing beside it**: same two terms plus
-`(width >= 40rem)`, so everything the phone branch says still holds here and a
+`(width >= 35.5rem)` (40rem until PAR-231, see below), so everything the phone branch says still holds here and a
 `planner-landscape:` class only ever says something it left open. There is
 deliberately no complement — an arrangement that holds everywhere except one size
 is written unprefixed and the one size overrides it. The JS twin is
@@ -1799,6 +1799,14 @@ also be bought by deleting rows, and the check should be able to tell the two
 apart. The covering assertion also gained `axisVisible === axis`: without it an
 axis pushed past the sheet's own bottom edge reports "nothing is over me",
 because `elementFromPoint` answers `null` outside the window.
+
+**Below 40rem since PAR-231.** At 568 × 320 (an iPhone SE on its side) the sheet
+stayed stacked: 303 px of chrome in a 308 px sheet, the axis box at its 200 px
+`max-sm:` floor with 191 px inside the sheet and 3 px on screen. The row now
+starts at `35.5rem`, and below 40rem the left column is `16rem` instead of
+`20rem`, so the axis keeps 312 px of width (a 20rem column would leave 248).
+Measured at 568 × 320: axis 252 px tall, all of it in the sheet, nothing over
+it; the floor does not bind. `check:planner` runs this size as its own pass.
 
 ### The phone sheet, measured against an iPhone screenshot (PAR-482)
 

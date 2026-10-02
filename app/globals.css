@@ -162,12 +162,23 @@
  * being above the axis and start being beside it. See PAR-168, and
  * `PLANNER_LANDSCAPE_QUERY` for the JS half of exactly this question.
  *
- * `40rem` and `31.25rem` are the same two numbers the pair above uses, in rem
- * for the same reason it gives — a reader who raised the default font size must
- * not get one half of the switch.
+ * `31.25rem` is the same number the pair above uses, in rem for the same reason
+ * it gives — a reader who raised the default font size must not get one half of
+ * the switch.
+ *
+ * **The width term is `35.5rem` (568 px), not the pair's `40rem` (PAR-231).**
+ * At 40rem a landscape phone narrower than 640 px — 568x320, the iPhone SE on
+ * its side — stayed stacked, and there the stack is worse than at 844x390:
+ * measured on `main` @ `afc69ced`, 303 px of chrome in a 308 px sheet, the axis
+ * box 200 px tall in a 3 px wrapper, i.e. no day on screen at all. Below 40rem
+ * the left column is 16rem instead of 20rem (`planner-landscape:w-64` in
+ * `planner-flyout.tsx`), so at 568 px the axis keeps 312 px of width, close to
+ * the 318 px an honest planner column is reckoned at. Below 35.5rem there is no
+ * phone held sideways to serve, and a short portrait window (320x480) must not
+ * be split into two 160 px strips.
  */
 @variant planner-landscape {
-  @media (width >= 40rem) and (height < 31.25rem) and (pointer: coarse) {
+  @media (width >= 35.5rem) and (height < 31.25rem) and (pointer: coarse) {
     @slot;
   }
 }
