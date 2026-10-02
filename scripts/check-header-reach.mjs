@@ -63,7 +63,7 @@ async function heroPages(browser) {
   await page.goto(`${BASE}/${LOCALE}/blog`, { waitUntil: 'domcontentloaded' });
   const post = await page.evaluate((locale) => {
     const prefix = `/${locale}/blog/`;
-    const skip = ['category/', 'tag/', 'authors/'];
+    const skip = ['category/', 'tag/', 'authors/', 'page/'];
     for (const a of document.querySelectorAll(`main a[href^="${prefix}"]`)) {
       const rest = a.getAttribute('href').slice(prefix.length);
       if (rest && !skip.some((s) => rest.startsWith(s))) return a.getAttribute('href');
@@ -104,6 +104,8 @@ const inspect = (page, wide) =>
     const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
     const cs = getComputedStyle(target);
     return {
+      // next-themes puts the theme on <html> as a class (`attribute="class"`).
+      dark: document.documentElement.classList.contains('dark'),
       floating: homes.length >= 2 && Number.parseFloat(getComputedStyle(homes[0]).opacity) > 0.5,
       scrollY: window.scrollY,
       box: { x: r.x, y: r.y, width: r.width, height: r.height },
@@ -237,6 +239,7 @@ for (const [name, path] of pages) {
           problems.push(s.error);
         } else {
           if (s.scrollY !== 0) problems.push(`scrollY ${s.scrollY}, not 0`);
+          if (s.dark !== (theme === 'dark')) problems.push(`page is not in the ${theme} theme`);
           if (!s.floating) problems.push('bar is not in its floating state (not a hero page?)');
           if (s.box.width < 1 || s.box.height < 1) problems.push('target has no box');
           if (s.visibility !== 'visible') problems.push(`visibility ${s.visibility}`);
