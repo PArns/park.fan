@@ -1,7 +1,16 @@
 import type { PlanDay } from '@/lib/api/types';
 import { buildDayGrid, earlyEntryOpenMin, growGridForSpans, withEarlyEntry } from './day-grid';
 import { occupiedMinutes } from './estimate';
-import { addWishKey, fitBlocks, fitChoiceAll, fitWishes, needsFitHelp, type FitInput } from './fit';
+import {
+  addWishKey,
+  fitBlocks,
+  fitChoiceAll,
+  fitWishes,
+  needsFitHelp,
+  togglePin,
+  type FitChoice,
+  type FitInput,
+} from './fit';
 import { canOptimize } from './optimize';
 import type { DayClock } from './park-time';
 import type { PlannerEntry } from './types';
@@ -95,4 +104,20 @@ export function noRoomForRide(params: {
     clock,
   };
   return needsFitHelp(input, fitChoiceAll()) ? input : null;
+}
+
+/**
+ * The answer the assistant opens on after a press on „In den Plan": everything
+ * ticked, and the pressed ride pinned (PAR-637).
+ *
+ * Without the pin the ride the visitor just asked for was one wish among the
+ * rest, and the plan the dialog proposed could leave exactly that ride out.
+ * The pin moves it to the top of the order the engine gives things up in; it
+ * is an ordinary pin, so the row's pin button takes it off again. Its key is
+ * `a:<slug>` in both cases `noRoomForRide` builds, a first ride and a lap.
+ * Every hint the dialog shows is measured from this choice, the same way it is
+ * measured from any choice the visitor makes afterwards.
+ */
+export function requestedRideChoice(attractionSlug: string): FitChoice {
+  return togglePin(fitChoiceAll(), addWishKey(attractionSlug));
 }

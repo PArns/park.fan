@@ -143,6 +143,15 @@ const RECKONING = {
   es: /\bcalcula (?:qué|lo que) (?:pasa|pasaría|ocurre|ocurriría|sucede|sucedería)\b/giu,
   it: /\bcalcola (?:cosa|che cosa|quello che|ciò che) (?:succede|succederebbe|accade|accadrebbe)\b/giu,
 };
+/**
+ * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
+ * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
+ * Every language on every surface, because a translation keeps the habit of its source.
+ * `la respuesta austríaca` is not a hit, the `\b` sees to that; `à` is not a word character, so
+ * the French one ends on a lookahead instead.
+ */
+const ANSWER_TO =
+  /\b(?:die antwort auf|the answer to|het antwoord op|la respuesta a|la risposta a)\b|\bla réponse à(?=\s)/giu;
 /** `„…"`: a German opening quote closed by the straight ASCII one (§4.5). */
 const GERMAN_STRAIGHT_CLOSE = /„[^“”"„\n]{1,200}"/g;
 
@@ -183,10 +192,8 @@ const WATCH = [
     re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora|multifaceted|groundbreaking|game-?chang\w*|transformative|unprecedented|aforementioned|spearhead\w*|encompass\w*|endeavou?rs?|synerg\w*|in essence|rest assured|it goes without saying|thought leader\w*)\b/gi,
   },
   {
-    // `die Antwort auf` and its five twins (Patrick, 2026-10-02): a sentence that announces the
-    // answer instead of giving it. `la respuesta austríaca` is not a hit, the `\b` sees to that.
     what: 'stock phrase (§3)',
-    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b|\b(?:die antwort auf|the answer to|het antwoord op|la respuesta a|la risposta a)\b|\bla réponse à(?=\s)/gi,
+    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b/gi,
   },
   {
     what: 'mechanical opener (§2.7)',
@@ -681,6 +688,12 @@ function hardRules(file, text, locale) {
   const placeholder = text.match(PLACEHOLDER);
   if (placeholder)
     fail(file, `placeholder text (§1.8): ${[...new Set(placeholder)].slice(0, 5).join(', ')}`);
+  const answer = text.replace(/\s+/g, ' ').match(ANSWER_TO);
+  if (answer)
+    fail(
+      file,
+      `stock phrase (§3), give the answer instead of announcing it: ${[...new Set(answer)].slice(0, 3).join(' · ')}`
+    );
   const reckoning = RECKONING[locale] && text.replace(/\s+/g, ' ').match(RECKONING[locale]);
   if (reckoning)
     fail(
