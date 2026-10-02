@@ -2458,6 +2458,7 @@
     },
     "fit": {
       "title": "No cabe todo en el día",
+      "titleFor": "{ride} ya no cabe en el día",
       "subtitle": "{park}, {date}",
       "steps": {
         "levers": "Ajustes",

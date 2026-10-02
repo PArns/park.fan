@@ -17,6 +17,8 @@
 
 import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
 import { headlinersToAdd } from '../lib/planner/optimize.ts';
+import { noRoomForRide } from '../lib/planner/add-ride-fit.ts';
+import { dayClock } from '../lib/planner/park-time.ts';
 import {
   SHORT_BLOCK_MIN,
   addWishKey,
@@ -537,6 +539,65 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     'EE4 and a stop of it is filed before the park opens',
     on.outcome.stops.some((stop) => stop.startMinute < OPEN * 60),
     JSON.stringify(on.outcome.stops.map((stop) => stop.startMinute))
+  );
+}
+
+// ── 12. One press on „In den Plan" asks the same question (PAR-67) ──────────
+//
+// The ride-page button files without a minute. Where the day has no room for
+// the ride it must open the assistant on that question instead of filing past
+// closing, and where the question cannot be asked it must file as before.
+
+{
+  // Long before the fixture's date, so the clock floors nothing.
+  const clock = dayClock('2026-09-12', 'Europe/Berlin', Date.UTC(2026, 8, 1, 8));
+  const full = day([...FIVE_LONG, ride('f', 60)]);
+  const planned = FIVE_LONG.map((r, i) => entry(`e${i}`, r.attractionSlug, (OPEN + i) * 60));
+
+  const conflict = noRoomForRide({ day: full, entries: planned, attractionSlug: 'f', clock });
+  check('12a a full day plus one ride is a question', conflict !== null);
+  check(
+    '12b and the question names the requested ride as the one addition',
+    conflict?.wishes
+      .filter((wish) => wish.entryId === null)
+      .map((wish) => wish.key)
+      .join() === addWishKey('f'),
+    JSON.stringify(conflict?.wishes.map((wish) => wish.key))
+  );
+  check(
+    '12c and it is the question the optimise buttons ask',
+    conflict !== null && needsFitHelp(conflict, fitChoiceAll()) === true
+  );
+
+  const roomy = day([ride('a', 30), ride('b', 30), ride('c', 30)]);
+  check(
+    '12d a day with room files the ride as before',
+    noRoomForRide({
+      day: roomy,
+      entries: [entry('e0', 'a', 10 * 60)],
+      attractionSlug: 'b',
+      clock,
+    }) === null
+  );
+  check(
+    '12e a ride the payload does not list is not a conflict',
+    noRoomForRide({ day: full, entries: planned, attractionSlug: 'nope', clock }) === null
+  );
+  check(
+    '12f no payload is not a conflict',
+    noRoomForRide({ day: null, entries: planned, attractionSlug: 'f', clock }) === null
+  );
+  const walked = dayClock('2026-09-12', 'Europe/Berlin', Date.UTC(2026, 8, 20, 8));
+  check(
+    '12g a day already walked is not asked about',
+    noRoomForRide({ day: full, entries: planned, attractionSlug: 'f', clock: walked }) === null
+  );
+  const unread = day([...FIVE_LONG, ride('f', 60)], {
+    liveWaitTimes: { available: false, reason: 'not_published' },
+  });
+  check(
+    '12h a park whose waits nobody can read is not asked about',
+    noRoomForRide({ day: unread, entries: planned, attractionSlug: 'f', clock }) === null
   );
 }
 

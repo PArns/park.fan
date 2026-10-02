@@ -2458,6 +2458,7 @@
     },
     "fit": {
       "title": "Non ci sta tutto nella giornata",
+      "titleFor": "{ride} non ci sta più nella giornata",
       "subtitle": "{park}, {date}",
       "steps": {
         "levers": "Modifiche",

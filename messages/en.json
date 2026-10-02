@@ -2458,6 +2458,7 @@
     },
     "fit": {
       "title": "Not everything fits into the day",
+      "titleFor": "{ride} no longer fits into the day",
       "subtitle": "{park}, {date}",
       "steps": {
         "levers": "Adjustments",
