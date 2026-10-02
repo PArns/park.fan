@@ -103,10 +103,12 @@ function toPrefs(value: unknown): PlannerDayPrefs | null {
   const raw = value as Record<string, unknown>;
   const height = typeof raw.riderHeightCm === 'number' ? clampRiderHeight(raw.riderHeightCm) : null;
   const avoidWet = raw.avoidWet === true;
-  if (height === null && !avoidWet) return null;
+  const earlyEntry = raw.earlyEntry === true;
+  if (height === null && !avoidWet && !earlyEntry) return null;
   return {
     ...(height !== null ? { riderHeightCm: height } : {}),
     ...(avoidWet ? { avoidWet: true } : {}),
+    ...(earlyEntry ? { earlyEntry: true } : {}),
   };
 }
 

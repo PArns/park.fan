@@ -97,6 +97,15 @@ export interface PlannerDayPrefs {
   riderHeightCm?: number;
   /** The party would rather not get soaked. Water rides carry a flag. */
   avoidWet?: boolean;
+  /**
+   * The visitor said they hold early entry for this day (a hotel guest let in
+   * before the official opening). Only ever asked at a park whose `/plan/day`
+   * context carries `hasEarlyEntry`, and absent everywhere else, which reads
+   * as `false`. The day grid's pre-opening window (PAR-199) reads it as the
+   * day context's `earlyEntry`. Not a statement about the party, so
+   * `hasPartyPrefs` ignores it.
+   */
+  earlyEntry?: boolean;
 }
 
 /** One park's plan for one date. */

@@ -2615,6 +2615,11 @@
         "label": "Zo droog mogelijk blijven",
         "hint": "Waterattracties krijgen een markering in de lijst."
       },
+      "earlyEntry": {
+        "label": "We hebben early entry",
+        "hint": "Hotelgasten mogen hier vóór de officiële opening in de grote attracties.",
+        "hintMinutes": "Hotelgasten mogen hier {minutes} minuten vóór de officiële opening in de grote attracties."
+      },
       "headliners": {
         "label": "Headliners inplannen",
         "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves.",
