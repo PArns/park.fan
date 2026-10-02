@@ -149,10 +149,11 @@ const DESTRUCTIVE_ACTIONS: ActionDef[] = [
   },
   {
     key: 'cache-reset',
-    label: 'Redis komplett zurücksetzen',
+    label: 'Park-Cache zurücksetzen und neu aufbauen',
     icon: AlertTriangle,
     path: 'cache/reset?confirm=true',
-    description: 'FLUSHALL. Trifft auch Sitzungen und Rate-Limits.',
+    description:
+      'Löscht den Park-Cache wie „Cache leeren“ und stößt danach Sync und Wartezeiten neu an. Queues, Sitzungen und Rate-Limits bleiben.',
     minRole: 'owner',
     needsConfirm: true,
   },
