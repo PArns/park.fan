@@ -15,7 +15,7 @@
  * Run: pnpm test:menu-focus
  */
 
-import { focusLeftMenu } from '../lib/utils/menu-focus.ts';
+import { escapeRefocusesTrigger, focusLeftMenu } from '../lib/utils/menu-focus.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -38,6 +38,38 @@ test('focus moving into the page left the menu', focusLeftMenu(root, outside), t
 // blur on each hop, and every one of them stays in.
 test('focus moving within the menu stayed', focusLeftMenu(root, inside), false);
 test('focus landing on the wrapper itself stayed', focusLeftMenu(root, root), false);
+
+// ── Escape: where the focus goes after the band closes (PAR-77) ──────────────
+// Escape always closes the band; the trigger only gets the focus back when the focus was in the
+// band or nowhere. A field elsewhere on the page keeps it, because a band also opens on hover.
+const body = { name: 'body' };
+const html = { name: 'html' };
+const nowhere = [body, html];
+test(
+  'Escape with the focus in the band refocuses the trigger',
+  escapeRefocusesTrigger(root, inside, nowhere),
+  true
+);
+test(
+  'Escape with the focus on <body> refocuses the trigger',
+  escapeRefocusesTrigger(root, body, nowhere),
+  true
+);
+test(
+  'Escape with the focus on <html> refocuses the trigger',
+  escapeRefocusesTrigger(root, html, nowhere),
+  true
+);
+test(
+  'Escape with no active element refocuses the trigger',
+  escapeRefocusesTrigger(root, null, nowhere),
+  true
+);
+test(
+  'Escape with the focus in a field elsewhere leaves it there',
+  escapeRefocusesTrigger(root, outside, nowhere),
+  false
+);
 
 // ---------------------------------------------------------------------------
 

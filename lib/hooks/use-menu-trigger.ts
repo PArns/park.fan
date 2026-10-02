@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from '@/i18n/navigation';
-import { focusLeftMenu } from '@/lib/utils/menu-focus';
+import { escapeRefocusesTrigger, focusLeftMenu } from '@/lib/utils/menu-focus';
 
 /**
  * The open/close behaviour every entry in the header's mega-menu bar shares.
@@ -74,8 +74,19 @@ export function useMenuTrigger() {
         // dispatches a bubbling `focusin`, `onFocus` calls `setRequested(true)`, and the close
         // from the line above is overwritten in the same batch. The flag holds only for the
         // duration of that synchronous dispatch.
+        // Only when the focus is in this band or nowhere: Escape belongs to what has focus, and a
+        // hover-opened band must not pull it out of a field elsewhere on the page.
+        const root = rootRef.current;
+        if (
+          !root ||
+          !escapeRefocusesTrigger(root, document.activeElement, [
+            document.body,
+            document.documentElement,
+          ])
+        )
+          return;
         closingRef.current = true;
-        rootRef.current?.querySelector<HTMLElement>('a, button')?.focus();
+        root.querySelector<HTMLElement>('a, button')?.focus();
         closingRef.current = false;
       }
     };

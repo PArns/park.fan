@@ -28,3 +28,24 @@ export function focusLeftMenu(
 ): boolean {
   return next !== null && !root.contains(next);
 }
+
+/**
+ * Whether Escape, after closing a header band, may move the focus back onto its trigger.
+ *
+ * Yes when the focus is inside the band, and yes when it is nowhere (`<body>`, `<html>` or
+ * `null`) — the second is where removing an alert leaves it (see above), and a keyboard user needs
+ * the focus back on the bar from there. No when it sits on a real element elsewhere on the page:
+ * a band also opens on hover, so Escape pressed in the park page's ride filter used to clear the
+ * filter AND pull the focus into the header in the same keystroke. With two bands open, both
+ * handlers ran and the focus ended on whichever trigger came second.
+ *
+ * A plain `root.contains(active)` would lose the `<body>` case, which is why `nowhere` is asked
+ * separately. See `docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md`.
+ */
+export function escapeRefocusesTrigger(
+  root: { contains: (node: Node | null) => boolean },
+  active: Element | null,
+  nowhere: ReadonlyArray<Element | null>
+): boolean {
+  return active === null || nowhere.includes(active) || root.contains(active);
+}
