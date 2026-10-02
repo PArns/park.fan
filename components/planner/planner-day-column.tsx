@@ -638,7 +638,7 @@ export function PlannerDayColumn({
             was 303 px of chrome in a 308 px sheet and this floor pushed the
             axis out of a 3 px wrapper. Between 35.5 and 40 rem `max-sm:` and
             `planner-landscape:` now overlap, and the floor stays out of the
-            way there for a measured reason: the row gives the axis 254 px at
+            way there for a measured reason: the row gives the axis 252 px at
             568x320, more than the 200 asked for, so it never binds. */}
         <div ref={barBoxRef} className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
