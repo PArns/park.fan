@@ -366,7 +366,7 @@ export function ContentNL() {
             {
               icon: Sunrise,
               title: 'Rope-drop-advies',
-              body: 'het antwoord op “loont het om vroeg te zijn?”, met de verwachte dalen.',
+              body: 'of vroeg komen loont, met de verwachte dalen.',
             },
             {
               icon: HelpCircle,

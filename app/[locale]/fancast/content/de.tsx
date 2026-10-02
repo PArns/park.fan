@@ -365,7 +365,7 @@ export function ContentDE() {
             {
               icon: Sunrise,
               title: 'Rope-Drop-Empfehlung',
-              body: 'die Antwort auf „lohnt es sich, früh da zu sein?“, mit den erwarteten Tiefstwerten.',
+              body: 'ob es sich lohnt, früh da zu sein, mit den erwarteten Tiefstwerten.',
             },
             {
               icon: HelpCircle,

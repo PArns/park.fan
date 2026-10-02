@@ -11,6 +11,383 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.14.0 (2026-10-02) – Welcher Park an welchem Tag, und eine geschlossene Bahn behält ihre Seite
+
+Geschnitten am 2026-10-02 aus 33 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.14.0.md`. Neueste Abschnitte zuerst.
+
+### Tagesplaner: Early Entry legt Headliner vor die Parköffnung
+
+`lib/planner/day-grid.ts` kennt jetzt `DayGrid.earlyEntryOpenMin`, das Gegenstück zu
+`closeMin`/`closeSlackMin` auf der Öffnungsseite. Es ist nur gesetzt, wenn der Park
+`hasEarlyEntry` trägt, `earlyEntryMinutesPeak` nennt und der Besucher für den Tag Early Entry
+bestätigt hat (`context.earlyEntry`, die Eingabe kommt mit PAR-200). Dann dürfen die Headliner
+des Parks ab `openMin − earlyEntryMinutesPeak` liegen (`rideFloor`, `opensEarly`), alle anderen
+Bahnen weiter erst ab `openMin`. Die Achse beginnt 30 Minuten vor der frühen Öffnung, und
+`PlannerGridGround` zeichnet das Fenster über dem Öffnungsband. Ein Block darin trägt die Annahme
+von 5 Minuten mit `missing: 'early-entry'`, ohne Crowd-Farbe und mit `~`. Ohne bestätigte Early
+Entry ist das Raster Feld für Feld und der Optimizer-Plan Minute für Minute derselbe wie vorher
+(Tests in `test:planner-grid`, `test:planner-optimize`, `test:planner-fit`). Im Fixture mit 5
+Headlinern zu je 70 Minuten an einem Sechs-Stunden-Tag passt mit 60 Minuten Early Entry einer mehr.
+
+Die Antwort aus dem Wizard (`PlannerDayPrefs.earlyEntry`, PAR-200) fließt in `planner-day-column.tsx` über `withEarlyEntry()` in `day.context`, damit das Fenster auf der Seite tatsächlich erscheint.
+
+### Blog: alle sechs Sprachen in einem PR, und ein Check für `updatedAt`
+
+Blog, Guides und News kommen in allen sechs Sprachen im selben PR, ebenso jedes spätere Update. Die
+Regel hat jetzt eine eigene Seite, `docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md`;
+`docs/blog.md` §5.0 und §6, `content/blog/README.md` und `CLAUDE.md` verweisen darauf. Der alte Satz
+„A guide waits for the German to be approved“ ist gestrichen.
+
+Neu ist `pnpm check:blog-updated-at` (`scripts/check-blog-updated-at.mjs`), in `checks.yml` und im
+`prebuild` neben `check:untranslated`. Er gruppiert `content/blog/` nach `translationKey` und
+schlägt fehl, wenn einer Gruppe eine der sechs Sprachen fehlt oder ihre Fassungen verschiedene
+`updatedAt` tragen. Auf `main` vor
+diesem PR fand er 2 von 33 Gruppen: den Halloween-Guide (Deutsch 2026-09-30, die anderen fünf
+2026-09-25 ohne Alton Towers und PortAventura) und den Parc-Astérix-Guide (nur Französisch mit
+`updatedAt`). Beide sind im selben PR nachgezogen, danach 0 von 33.
+
+### Die Top-10-Liste nennt Bereich und Bauart einer Fahrt
+
+- `ParkStatsAttractionsCard` zeigt `land` und `attractionType` aus `/stats` als zweite Zeile unter
+  dem Fahrtnamen, getrennt durch einen Punkt. Eine Fahrt ohne beide Werte bekommt keine Zeile.
+- Die Zeile ist 14 px hoch, der Name rückt von 20 auf 18 px Zeilenhöhe, das Padding fällt weg: jede
+  Reihe bleibt 33 px hoch (Efteling, 360 und 1440 px, vorher wie nachher), das Skeleton passt weiter.
+- Screenreader lesen „Bereich:“ und „Bauart:“ davor, mit den vorhandenen Strings
+  `parks.stats.rideWaitsLand` / `rideWaitsType` aus allen sechs Sprachen.
+
+### Der Planer-Wizard fragt nach Early Entry, wo der Park es anbietet
+
+Der Schritt „Wer kommt mit" im `PlannerWizard` (`components/planner/planner-wizard.tsx`) zeigt einen
+vierten Schalter „Wir haben Early Entry", aber nur, wenn `/plan/day` für den Park
+`context.hasEarlyEntry: true` liefert (kuratiert seit PAR-197). Ist `earlyEntryMinutesPeak` gesetzt,
+nennt der Hinweis die Minuten. Die Antwort steht als `earlyEntry: true` in `PlannerDayPrefs` des
+Tages, läuft durch denselben Merge in `setDayPrefs` und denselben Parser in `store.ts` wie Größe und
+„trocken bleiben" und ist keine Angabe über die Gruppe (`hasPartyPrefs` bleibt unverändert). Am
+2026-10-02 trägt noch kein Park das Flag, also ändert sich bis zur Kuratierung kein Pixel. Die
+Platzierung vor der Öffnung kommt mit PAR-199. Drei neue Texte unter `planner.wizard.earlyEntry`
+in allen sechs Sprachen, neun neue Fälle in `pnpm test:planner-actions` (90 statt 81).
+
+### „Parks in der Nähe" steht im ersten HTML statt nachgestreamt
+
+`components/parks/park-page-shell.tsx`: `NearbyParksSection` sitzt nicht mehr in `<Suspense fallback={null}>`, sondern wird direkt gerendert. Ihr Fetch hat ein eigenes `revalidate` von einer Woche, das `force-dynamic` nicht überschreibt; die Boundary wartete also auf einen Data-Cache-Treffer. Jetzt ist die Sektion bei Parks mit Nachbarn von Anfang an in voller Höhe da, bei Parks ohne Nachbarn (48 %) fehlt sie wie bisher. Gemessen mit `pnpm measure:cls --late --scroll=3192` auf der Kalenderseite, Desktop: Phantasialand 0.2472 vorher, 0.0058 nachher; Liseberg (keine Nachbarn) 0.0001 vorher und nachher. TTFB im warmen Zustand 19.9 ms vorher, 19.5 ms nachher.
+
+### Skip-the-Line-Karte ist auf dem Handy kompakter, die Headliner stehen über dem Fall
+
+`ParkPurchasesCard` (`components/parks/park-purchases-card.tsx`) hat unter `sm` weniger Padding
+(`p-3` statt `p-6`), einen kleineren Abstand unter dem Titel und Zeilen mit `py-0.5` statt `py-1.5`.
+Der Abstand zum Panel „Heute im Park“ ist dort 16 statt 32 px. Alle Zeilen und Preise bleiben.
+Magic Kingdom bei 360×780: Karte 151 statt 217 px hoch, die erste Headliner-Zeile liegt bei y=750
+statt y=832 und damit ganz über dem Fall. Ab `sm` und auf Parks ohne die Karte ändert sich nichts.
+
+### Der Probelauf unter /admin/duplicates nennt die Zeilen, die der Merge löscht
+
+`app/admin/duplicates/page.tsx` liest jetzt `droppedCurations` aus der Antwort des Probelaufs (`DroppedCuration`: `table`, `from`, `row`). Trägt sie Einträge, erscheint unter der Vorschau ein Block „Verlust“ mit dem vollständigen Inhalt jeder Zeile, damit sich die Kuratierung von Hand zurückschreiben lässt. Bei `from: 'winner'` steht dabei, dass die Zeile der Bahn verloren geht, die bleibt. Fehlt das Feld oder ist es leer, bleibt die Darstellung unverändert. Die Admin-Oberfläche ist einsprachig Deutsch, es kommen keine Strings in `messages/` dazu.
+
+### check:planner prüft die Trefferfläche des Griffs auch an einem Block unter 44 px
+
+Die Zusicherung „die Trefferfläche des Griffs ist 44 px hoch“ tastete 21 px über und unter der Griffmitte ab. Der Griff sitzt im ersten Block des Tages, dessen Höhe von der erwarteten Wartezeit aus `/plan/day` abhängt (61 px um 08:15 UTC, 34 px um 08:5x, derselbe Commit). Unter 44 px überdeckt der Nachbarblock den Überhang des Ziels, der untere Punkt lag im Nachbarn und der Check wurde rot, ohne dass sich am Griff etwas geändert hatte. Die Abtastung bleibt bei ±21 px, zählt aber einen Treffer auf einem Nachbarblock nicht mehr als Fehlschlag (`scripts/check-planner.mjs`). Ein Treffer auf leerem Raster oder ein vom Vorfahren abgeschnittener Überhang bleibt rot. Ein Block unter 44 px ist der dokumentierte Normalfall.
+
+### Das Planer-Sheet respektiert `prefers-reduced-motion` auch auf dem Handy
+
+`SheetContent` hat die Einstellung nie gelesen: Gemessen bei 390 px mit `reducedMotion: 'reduce'` lief am Planer-Sheet weiter `animation-name: enter` über 0,4 s, eine Animation am Element. `components/planner/planner-flyout.tsx` setzt jetzt `motion-reduce:animate-none motion-reduce:transition-none`, das Sheet steht also sofort da und rastet ohne Übergang ein. Der Burger im Header nutzt dieselbe Komponente und bleibt unverändert.
+
+Der Blur der Sheet-Kante hält die Animation durch: Die Energie der Kantenverläufe in einem Streifen unter dem Sheet-Kopf liegt in 14 Frames der verlangsamten Öffnung zwischen 0,84 und 1,01 (Ruhe 0,84, ohne `backdrop-filter` 3,44), beim Schließen zwischen 0,75 und 1,03.
+
+### Ein alter `#calendar`-Deep-Link kostet die Parkseite nicht mehr mit
+
+`#calendar` und `#calendar-YYYY-MM` sind seit dem Umzug des Kalenders auf eine eigene Seite nur noch
+Weiterleitungen. Die lag in `useTabHashRouting` hinter `isMounted`, das ein Effect per
+`startTransition` setzt — also frühestens zwei Commits nach der Hydration. Die Client-Queries der
+Parkseite hängen hinter keinem solchen Gatter: drei von ihnen kamen durch, bevor die Weiterleitung
+fiel, und die Kalenderseite holte dieselben Endpunkte danach erneut.
+
+`CalendarHashRedirect` leitet jetzt aus einem Inline-Script weiter, nach dem Muster von
+`HeroEntranceGate` und aus demselben Grund: geparst läuft es, während das Dokument noch gelesen
+wird, vor den Chunks, die React laden. Gemessen mit `node scripts/measure-api-calls.mjs --only park`
+am 2026-10-01 gegen `pnpm build && next start`: **12 Calls / 121,9 KB auf 9 Calls / 92,8 KB**, und
+damit auf den Wert, den die Kalenderseite direkt aufgerufen kostet — byte- und callgleich.
+Weggefallen sind `weather/nowcast`, der Park-Payload und `/api/nearby`, jeder davon einmal.
+
+Das Monatsfenster rechnet das Script selbst, in der Zeitzone des Parks: „jetzt" serverseitig
+einzubacken würde den Wert auf den Render-Zeitpunkt einer prerenderten Seite einfrieren. Der
+Weiterleitungszweig in `useTabHashRouting` bleibt, weil das Script nur beim Dokument-Load greift —
+eine Client-Navigation mit `#calendar` und jedes spätere `hashchange` laufen weiter über den Hook.
+
+### Trip-Planer: welcher Park an welchem Tag
+
+Ein Assistent auf der Planer-Seite schlägt aus der Crowd-Prognose einen Park pro Tag vor: Länderblöcke, ein freier Reisetag beim Länderwechsel, ein zweiter Tag bei hoher Auslastung, `unknown` zuletzt. „Annehmen“ legt die Tage mit `PlannerDay.reserved` an. Siehe [Trip-Planer](features/trip-planner.md#which-park-on-which-day).
+
+### Kartenpopups zeigen Topspeed, Höhe und Fahrzeit
+
+`AttractionMarkers` (`components/parks/park-map-markers.tsx`) hängt an das Popup einer Attraktion bis zu
+drei Zeilen: Topspeed, Höhe und Fahrzeit, je nur dann, wenn die Zahl vorhanden ist. Auf Phantasialand
+haben 8 von 40 Attraktionen mindestens eine. Die Werte kommen nicht aus dem Server-Render der
+Parkseite (dort fehlt `rideProfile`, 3,61 KB), sondern aus `/api/parks/<geo>/<park>/ride-stats`: 694 B
+roh, 338 B gzip. `ParkMap` fragt erst an, wenn der Karten-Tab offen ist; eine Parkseite ohne Karte
+macht den Aufruf nicht. Die drei Beschriftungen stehen in allen sechs Sprachen unter
+`parks.mapMarkers`.
+
+### Admin-Medien: Sammlungsbaum zählt jedes Bild einmal, der Editor ordnet weitere Sammlungen zu
+
+`app/admin/media/_components/folder-rail.tsx`: Der Sammlungsbaum klappt je Elternknoten ein und aus (Chevron, `data-folder-toggle`). `lib/media/index.ts`: `listCollectionNodes()` liefert jeden Knoten samt Elternpfaden und den Bildern darunter, ein Bild je Knoten nur einmal. Vorher summierte der Browser die Kinder, ein Bild unter `toverland` und `toverland/halloween` zählte am Elternknoten doppelt. Der Zähler gleicht jetzt `searchMedia({ collection })` (Test in `pnpm test:media`).
+
+`media-detail.tsx`: Der Bild-Editor zeigt „Weitere Sammlungen“ als Chips (Mehrfachauswahl, neuer Pfad per Eingabefeld, `parseCollectionPath`). Gespeichert wird als `update` mit `sidecar.collections` in die Session-PR-Stufung. Ordner, Dateiname und URL bleiben unverändert.
+
+### Admin: „Als Ride-Bild setzen" verschiebt die Rolle, statt sie zu verdoppeln
+
+- Ein zweites Foto mit `ride-card` nahm dem alten die Rolle nicht weg. Der Generator warnte über
+  zwei Karten, und `getRideImage` zeigte weiter das alte Foto. So blieb die erste Einsendung zu
+  Voltron unsichtbar, obwohl sie beim Übernehmen als Ride-Bild markiert war.
+- Der Commit-Endpunkt (`/api/admin/media/commit`) nimmt eine eindeutige Rolle (`ride-card` pro
+  Ride, `park-background` pro Park) jetzt im selben Pull Request dem bisherigen Halter weg
+  (`handOverUniqueRoles` in `lib/admin/media-unique-roles.ts`). Gesucht wird im Manifest und in
+  den Sidecars der offenen Media-Session; umgeschrieben wird die Datei vom Branch, nur die
+  Rollen-Zeile ändert sich. Der PR-Log nennt beide Bilder.
+- In der Detailansicht der Mediengalerie und im Upload-Walkthrough ist das Ride-Bild ein eigener
+  Schalter (`RideCardToggle`) mit dem aktuellen Ride-Bild als Vorschaubild. Im Walkthrough steht
+  er direkt unter der Ride-Auswahl statt unter den Tags.
+- Daten: `europa-park/voltron-nevera-powered-by-rimac` gibt `ride-card` ab und bleibt Hero-Bild.
+  Damit ist das eingesandte Foto `…-461ea7` das Ride-Bild von Voltron, und der Build meldet keine
+  doppelte Karte mehr.
+- `pnpm test:media-unique-roles`: 13 Fälle, darunter der Voltron-Fall mit byte-gleichem Sidecar.
+- Doku: [media database → a unique role moves](../features/media-database.md#a-unique-role-moves-when-another-photo-claims-it).
+
+### Admin-Medien: Bild per Drag & Drop direkt auf der Raster-Kachel ersetzen
+
+Eine Bilddatei, die auf eine Kachel im Raster von `/admin/media` gezogen wird, ersetzt das Bild, ohne dass der Editor geöffnet werden muss. Die Kachel zeigt beim Drüberziehen „Drop to replace", danach das neue Bild mit dem Hinweis „New file · not saved". Ein Balken über dem Raster speichert alle vorgemerkten Kacheln mit einem Request je Kachel (ein gemeinsamer Body mit mehreren Originalen überschreitet das Request-Limit) als `replace`-Operation in der Session-PR; nichts wird vorher geschrieben. Mehrere Dateien auf einmal und Nicht-Bilder werden mit einer Meldung abgewiesen (`pickReplacement`, jetzt auch vom Editor genutzt). Die `replace`-Operation trägt kein Sidecar, der Server baut es aus dem Manifest, Alt-Texte, Fokuspunkt und Tags bleiben unverändert.
+
+### Medien: ein Sidecar-Feld `collections` legt ein Bild in mehrere Sammlungen
+
+Eine Sammlung war bisher der Ordnerpfad, ein Bild konnte also nur in einer liegen. Das Sidecar kennt jetzt `collections: string[]` mit Pfaden wie `toverland/halloween`, `/` trennt die Baumebenen. Der Ordner bleibt die Standardsammlung: ohne Feld liegt ein Bild nur dort, und das Manifest bleibt für alle bestehenden Sidecars byteweise gleich.
+
+`getCollection()`, `searchMedia({ collection })` und `/api/media?collection=` liefern ein Bild unter jeder seiner Sammlungen, `/api/media` zusätzlich als `collections` je Bild. `normalizeSidecar` kürzt Schrägstriche am Rand, entfernt Doppelte und meldet einen Pfad, der keine Slug-Segmente ist. `pnpm test:media` prüft ein Bild mit zwei Sammlungen und eines ohne Feld (12 neue Fälle).
+
+### Der Schließen-Knopf jedes Sheets ist im Querformat 44 px groß
+
+`components/ui/sheet.tsx`: Die vier Klassen des Schließen-Knopfs (`top-2`, `right-2`, `size-11`, `rounded-md`) hängen jetzt an `planner-phone:` statt an `max-sm:`. Ein Handy im Querformat (844×390, Grobzeiger) ist 844 px breit, `max-sm:` griff dort nicht, und der Knopf blieb bei 16 px. Gemessen mit `getBoundingClientRect` am Burger-Sheet der Kopfzeile: 844×390 mit Grobzeiger vorher 16×16, nachher 44×44. 360×740 bleibt 44×44, bei feinem Zeiger (700×900, 800×420) bleibt der Knopf 16×16.
+
+### Admin: eingesandte Fotos in die Mediengalerie übernehmen, und ein Hinweis auf neue Einsendungen
+
+- Auf `/admin/contributions` hat jedes Foto einer Einsendung ein Häkchen, vorausgewählt sind alle
+  noch nicht übernommenen. „N Fotos in die Mediengalerie" öffnet den Upload-Walkthrough aus
+  `/admin/media` (`MediaUpload`, neu mit `seed`), vorbefüllt mit Park, Ride, Caption und Credit
+  der Einsendung. Fokuspunkt, Rollen und Alt-Text setzt man dort wie bei jedem anderen Foto, der
+  Commit landet im offenen Media-Pull-Request.
+- Der alte Hover-Knopf (`AdoptIntoMedia`) schrieb den Credit als `credit.name`. Das Sidecar kennt
+  nur `credit.author`, der Name des Fotografen ging also verloren. Jetzt: `author` nur, wenn der
+  Besucher einen Namen angegeben hat, dazu `license: all-rights-reserved` und
+  `source: contribution`. Ohne Namen gibt es keine Credit-Zeile und keinen Fallback auf
+  `OWN_PHOTO_AUTHOR`.
+- Übernommene Fotos werden neu kodiert (`withoutMetadata` in `app/admin/_lib/upload-transport.ts`),
+  damit kein EXIF eines Besuchers unter `public/media/` landet: GPS, Kamera-Seriennummer,
+  Besitzername. Die Drehung eines Hochkantfotos bleibt erhalten, im Test kam ein 1024×768 mit
+  Orientation 6 als 768×1024 heraus. GPS steht auch nicht im Sidecar, das Aufnahmedatum schon.
+- Die Einsendung merkt sich pro Foto, wohin es ging (`StoredImageRecord.adopted`: Media-ID,
+  Pull Request, Zeitpunkt), zeigt „In Galerie" mit Link auf den PR und wird dabei freigegeben.
+  Der Dateiname ist fest (`<ride>-<id6>[-n]`), ein zweiter Versuch überschreibt statt zu doppeln.
+- Der Upload-Walkthrough hat ein Feld für die Bildunterschrift. Der Commit schrieb `caption`
+  schon immer, nur sehen konnte man sie vorher nirgends.
+- Nach dem Login zeigt der Admin einen Toast, wenn seit dem letzten Hinweis neue Einsendungen
+  eingegangen sind, mit „Ansehen" direkt in die Moderation (`NewContributionsNotice`, neuer
+  Endpunkt `GET /api/admin/contributions/summary`). Gemerkt wird pro Browser in localStorage, ein
+  Fokus auf den Tab nach mehr als fünf Minuten fragt erneut.
+- Doku: [contribute → into the media database](../features/contribute.md#into-the-media-database).
+
+### Das Backstage-Menü zeigt, wann ein Beitrag zuletzt neue Inhalte bekam, und „rechnet durch“ ist ein Prosa-Fehler
+
+- Das Blog-Panel im Header (`getBlogMenu`, `lib/navigation/blog-menu.ts`) sortiert nach letzter
+  Änderung (`listArticlesByRecency`, `lastTouched`) und druckt jetzt auch diesen Tag, als
+  „Aktualisiert 30. Sept. 2026“ (`navigation.updatedOn`, sechs Sprachen) oder als
+  Veröffentlichungsdatum. Vorher stand unter der Änderungs-Reihenfolge das Veröffentlichungsdatum,
+  am 01.10. auf Deutsch in der Folge 24. Jul, 17. Jul, 28. Sep. `pnpm test:news-split` prüft
+  Reihenfolge und gedruckten Tag in allen sechs Sprachen.
+- `updatedAt` bewegt sich nur noch bei neuen Inhalten (neue Termine, Parks, Zahlen, ein
+  korrigierter Fakt), nie bei einem Formulierungs- oder Prosa-Durchgang
+  (`docs/rules/updated-at-is-for-new-content.md`). Eine Änderung vom 25.09. hatte das Feld auf 89
+  Beiträgen gesetzt; es ist aus allen 90 Beiträgen außer dem Halloween-Guide entfernt (sechs
+  Sprachen), damit stimmen Menü, Startseite, `dateModified` und `<lastmod>` wieder.
+- `scripts/check-prose.mjs`: neuer Fehler „a document that does the sums“ für `rechnet … durch` und
+  die fünf Übersetzungen von „rechnet durch, was passiert, wenn“ (`works out what happens`,
+  `rekent uit wat er`, `calcule ce qui se passe`, `calcula qué pasa`, `calcola cosa succede`), dazu
+  die Warnung „things that calculate“ für einen Guide, eine Seite, einen Kalender, ein Widget, ein
+  Gutachten oder den Planer als Subjekt von rechnen. Regel in `docs/blog.md` §2.13. Der Lauf fand
+  8 Fehler und 17 Warnungen; alle Stellen sind in den betroffenen Sprachen umgeschrieben, darunter
+  Titel, SEO-Beschreibung und Einleitung des Tagesplaner-Beitrags, `planner.page.lead`,
+  `fancast.description` und die Touringplan-Definition im Glossar (`GLOSSARY_CONTENT_DATE`
+  2026-10-01).
+
+### Rope-Drop-Badge und Headliner-Leiste runden auf das Fünf-Minuten-Raster
+
+- `AttractionCard` reicht den Badges `RopeDropBadge` und `RopeDropEveningBadge` die Werte aus
+  `ropeDropDisplayWaits`, dieselbe Stelle wie `RopeDropCard`. `RopeDropHeadliners` rundet `savings`
+  mit `roundWaitDeltaTo5` und liest die Abend-Wartezeit aus `ropeDropDisplayWaits`.
+- Sortierung und Gatter lesen weiter den Rohwert. Gemessen am 2026-10-01 über 210 Parks: 56 von 336
+  `worth`-Empfehlungen (Badge-Hint und Headliner-Leiste) und 6 von 7 Abend-Empfehlungen
+  (3 mal `openWait`, 4 mal Trough) standen neben dem Raster, jetzt 0.
+
+### Parks in der Nähe fragt den Status nicht mehr alle 5 Minuten ab
+
+`useParkNeighbors` (`lib/hooks/use-park-neighbors.ts`) lädt `/api/parks/near` einmal beim Laden und danach alle 30 Minuten, und nur solange `LiveNearbyParks` im Viewport steht und der Tab vorne ist. Kommt der Abschnitt mit einem Stand über 30 Minuten wieder ins Bild, folgt ein Request. Rückkehr in den Tab und Wiederverbindung lösen keinen Request mehr aus. Über 35 Minuten mit `page.clock` sank die Zahl der Requests von 5 auf 1 (Abschnitt außerhalb des Viewports) bzw. 2 (im Viewport). Der Tag im Park rechnet in `docs/rules/a-day-in-the-park-has-a-byte-budget.md` mit 18 statt 108 Requests, 9 KB statt 54 KB, gesamt 1.540 KB statt 1.594 KB.
+
+### Ein geteilter Plan hält die Push-Zeile nicht mehr auf einer toten Trip-ID
+
+`adoptSharedPlan` (`lib/planner/trip-share.ts`) verwarf das `replaced` von `syncTrip`. Fand das PUT den eigenen Trip des Betrachters abgelaufen und startete einen neuen, nannte die Subscription-Zeile auf dem Server weiter die alte ID, und der Schalter las beim nächsten Mount `off`. Der Auto-Sync-Callback, der die Zeile sonst neu schreibt, hängt am gemounteten Push-Schalter und läuft auf der Seite `/trip-planner/shared` nicht. Das Neuschreiben liegt jetzt in `lib/planner/push-repoint.ts` (`repointPushSubscription`, zusammen mit `postSubscription` aus dem Hook gezogen) und wird vom Hook und von `adoptSharedPlan` benutzt. Scheitert es, wird der neue Trip zurückgenommen und der Schalter steht auf `off`, wie bei einem abgelehnten Write. `pnpm test:trip-share` deckt die drei Fälle ab (Zeile neu geschrieben, Zeile abgelehnt, Trip überlebt das PUT), `pnpm test:push-arming` liest `postSubscription` jetzt aus dem neuen Modul.
+
+### Ein Bahn-Link im Glossar-Widget zeigt die Live-Wartezeit
+
+- `BlogGlossaryRideLink` löst einen Bahn-Link aus einer Glossar-Definition (`/de/parks/<kontinent>/<land>/<stadt>/<park>/<bahn>`)
+  über `resolveAttraction` auf und rendert ihn mit `BlogAttractionLink`, demselben Chip wie ein `ref:`-Link: Wartezeit-Badge im Betrieb,
+  Status-Badge sonst, live nachgeladen über `useLiveBlogRide`. Die Option `chip` lässt die Park-Angabe in Klammern weg, weil die Definition
+  den Park meist schon nennt.
+- Ein Park-Link (vier Segmente), eine unbekannte Bahn oder ein fehlgeschlagener Abruf bleibt der bisherige Anker. Die Glossar-Seite selbst
+  übergibt kein `renderLink` und ändert sich nicht.
+- Im Europa-Park-Guide tragen die drei Bahn-Links der Karte `swing-launch` jetzt je ein Badge (Toutatis, The Ride to Happiness, Schwur des Kärnan).
+- `pnpm test:glossary-ride-href` pinnt, welche Links den Chip bekommen: ein Bahn-Pfad in allen sechs Sprachen, kein Park-Link, keine externe URL.
+
+### Footer: „Beliebte Parks" zieht mit den Link-Spalten gleich
+
+`components/layout/footer.tsx`: die vier Länder-Abschnitte waren handgeschriebene `<section>`-Blöcke mit rohem `<div>` als Überschrift, einer dritten Stilebene für die Länderzeile und Park-Links ohne Padding (20 px hohe Zeile). Sie laufen jetzt datengetrieben aus `popularParks` und nutzen `MenuSectionHeading` (Länderseite als `href`) und `footerLinkClass` mit `py-1` und `max-sm:min-h-11`, wie „Inhalte", „Werkzeuge" und „Rechtliches". Die Überschrift „Beliebte Parks" steht nur noch im `aria-label` der vier Listen. Die Links und ihre Reihenfolge bleiben gleich, ebenso die sechs Sprachen.
+
+### „So funktioniert park.fan“: kürzer, für Besucher statt über Interna
+
+- `app/[locale]/how-park-fan-works/content/<locale>.tsx` in allen sechs Sprachen überarbeitet.
+  Raus sind die Schwellen der Auslastungsstufen (60, 89, 110, 150, 200 %), die drei Regeln, nach
+  denen eine Stunde im Stundenprofil zur Spalte wird, die Kette Mehrheit, Median, Mittelwert für
+  widersprüchliche Quellen, die Begründung der Reihenfolge der Nachtjobs, die 330
+  Beobachtungstage vor einer Saisonangabe, die Umstiegsformel im Planer-Kapitel, der Absatz über
+  Messtage im Statistik-Abschnitt und die meisten Beispielzeilen im Rundgang über die Parkseite.
+- Das Kapitel „Vier Besuche“ ist gestrichen, seine Schritte wiederholten meist die Kapitel 01
+  bis 05. Was nur dort stand, steht jetzt im Wegweiser (neue Kachel „Körpergröße“, Nahansicht im
+  Park, Favoriten auf der Startseite, Parkführer im Blog). Zehn Kapitel statt elf,
+  `HOWTO_CHAPTERS` in `lib/howto/chapters.ts` entsprechend; `pnpm test:hub-chapters` grün.
+- Zwei Aussagen widersprachen sich: Kapitel 04 nannte Gelderland als bestimmenden
+  Ferieneintrag des Phantasialands, der Rundgang Nordrhein-Westfalen. Beides war ein Stand von
+  verschiedenen Tagen; jetzt steht dort, dass beide im Kalender vorkommen.
+- Deutscher Fließtext von rund 4.000 auf rund 2.200 Wörter.
+- Doku: [the guide page](../features/how-park-fan-works.md).
+
+### Tagesplaner-Seite: der Text beschreibt, was man mit dem Planer macht, nicht wie er rechnet
+
+- `app/[locale]/trip-planner/content/<locale>.tsx` in allen sechs Sprachen neu geschrieben. Der
+  Artikel erklärte die Innereien: die Umstiegsformel (Luftlinie, drei Minuten Ausstieg, zwei
+  Drittel Umweg), die vier Sortierregeln in ihrer Rangfolge, die Zwei-Stunden-Grenze einer
+  vorgeschlagenen Pause und warum eine hochgerechnete Show um 19 Uhr auf einer Zeitleiste fehlt,
+  die um 18 Uhr endet. Jetzt steht dort, was ein Besucher sieht und tun kann.
+- Sechs Kapitel statt acht (Deutsch) bzw. sieben (die anderen fünf): Blöcke und Umstiege mit der
+  Demo, woher die Wartezeiten kommen, Mindestgröße und Wasserbahnen, Öffnungszeiten mit Shows
+  und Pausen, die beiden Sortier-Knöpfe mit dem Assistenten für zu volle Tage, und der Tag im
+  Park (abhaken, Benachrichtigungen, wo der Plan liegt). Neu erwähnt sind der Assistent, zwei
+  Tage nebeneinander, eigene Blöcke, Warnungen bei geschlossenen Bahnen und der geteilte Link.
+- Das Kapitel „Gruppe“ gab es nur auf Deutsch; jetzt steht es in allen sechs Sprachen. Deutscher
+  Fließtext von rund 1.450 auf rund 820 Wörter.
+- `CHAPTER_COUNT` in `scripts/check-planner.mjs` von 7 auf 6. Mit dem achten deutschen Kapitel
+  war die Prüfung „die Seite erklärt sich in 7 Kapiteln“ auf `/de/tagesplaner` schon rot.
+- Doku: [trip planner → the page explains itself](../features/trip-planner.md#the-page-explains-itself-with-the-planners-own-components).
+
+### Der Tagesplaner lädt erst, wenn ihn jemand öffnet
+
+- `PlannerLauncher` bindet `PlannerFlyoutHost` über `next/dynamic` ein und holt den Chunk zusammen
+  mit den `planner`-Texten, sobald das Panel gebraucht wird (Öffnen, ein gespeicherter Plan, eine
+  Anfrage von außen; wer einen gespeicherten Plan hat, lädt ihn also weiter). Die Lasche am Fensterrand bleibt sofort da.
+- Script-Bytes des ersten Aufrufs ohne gespeicherten Plan, zwei Builds, Cache aus, 360 px: Parkseite 569,3 → 512,3 KB
+  (−57,0 KB), `/de/parks` 385,1 → 306,6 KB (−78,5 KB). CLS mit `pnpm measure:cls --late`
+  unverändert (0,0002 mobil, 0,0091 Desktop).
+
+### Der Live-Poll schickt kein `park` mehr je Attraktion
+
+`app/api/parks/[...path]/route.ts` hängte jeder Attraktion `park: { slug }` an, damit `enrichAttractionsWithImages` das Foto findet, und schickte den Schlüssel danach mit. Kein Leser nutzt einen `park` ohne Name, Zeitzone oder Stadt, und der Merge hätte damit einen vollständigeren `park` überschrieben. Der Schlüssel fällt nach dem Lookup weg: Phantasialand, 40 Attraktionen, 41.432 auf 40.152 B roh, 4.693 auf 4.666 B brotli je Poll. Die übrigen fünf Felder bleiben, Begründung in `docs/rules/a-day-in-the-park-has-a-byte-budget.md`.
+
+### Die Ride-Suche der Parkseite findet dauerhaft geschlossene Bahnen
+
+- „x2“ im Suchfeld auf der Parkseite von Six Flags Magic Mountain lieferte „Keine Attraktionen
+  gefunden“: Die Suche lief nur über das Live-Grid, und X2 steht dort seit der Stilllegung nicht
+  mehr. `useAttractionFilter` durchsucht jetzt auch die geschlossenen Bahnen des Parks, mit den
+  Fuse-Optionen des Grids und demselben verzögerten Suchbegriff (`closedRideMatches`). Ein Treffer
+  steht unter den Live-Ergebnissen oder an Stelle des Leerzustands, mit Badge „Dauerhaft
+  geschlossen“, Bereich und Monat der Schließung, und verlinkt die Seite der Bahn
+  (`ClosedRideMatches`). Pills und Mindestgröße wirken darauf nicht.
+- Die Liste baut der Server aus `closedAttractions` (`closedRidesForSearch`), mit dem Monat als
+  fertigem Text; ein Park ohne geschlossene Bahn schickt nichts davon an den Client.
+  `pnpm test:closed-ride` prüft sie mit.
+- Ein Jahr nach der Schließung verschwindet die Bahn von selbst aus Liste und Suche der Parkseite
+  (Backend: `CLOSED_RIDE_PARK_PAGE_DAYS`, `isOnParkPage()`); ihre Seite und ihr Sitemap-Eintrag
+  bleiben, danach ist sie nur noch über ihre URL erreichbar. Die Stilllegungsliste im Admin zeigt
+  „nach 1 Jahr von der Parkseite genommen“ und dann keinen Ausblenden-Knopf mehr.
+
+### Beiträge ohne Titelbild zeigen Logo und Verlauf statt einer leeren Stelle
+
+- Neue Komponente `BlogCoverFallback` (`components/blog/blog-cover-fallback.tsx`): dunkler Grund
+  mit vier Lichtern in den Logofarben, darauf der Pin aus `logo-dark.svg`. Sie steht überall, wo
+  sonst das Titelbild steht: Artikelkopf, Blog-Karte, Handy-Zeile, `NewsList`, `/news`-Übersicht,
+  News- und Blog-Panel im Header und der Toast für neue Beiträge. Vorher hatte jede dieser Stellen
+  ihren eigenen Ersatz (blasse Fläche, grauer Verlauf, Zeitungs-Icon) oder gar keinen, und eine
+  News ohne Bild war in der Liste eine Zeile ohne Vorschaubild zwischen Zeilen mit Bild.
+- Der Farbton (blau, grün, türkis) hängt am Slug (`coverFallbackHue`), damit zwei solche Beiträge
+  nebeneinander nicht dasselbe Bild zeigen.
+- Alles Visuelle steht in `.blog-cover-fallback` in `app/globals.css`, der Pin als `::after`. Pro
+  Beitrag bleibt ein `<span>` mit zwei Datenattributen: 119 B HTML und 137 B RSC, gegenüber 775 und
+  841 B für `<img>` plus Inline-Verlauf. Das zählt, weil die Header-Panels auf jeder Seite verborgen
+  mitgerendert werden.
+- Ein festes 1200×630-Bild war der erste Versuch und passte nirgends: Im Artikelkopf lag der Pin
+  hinter dem Anreißer, in der Karte blieb zwischen den Glasflächen nur seine Spitze, bei 88 px war
+  er nicht mehr zu erkennen. Deshalb setzt der Einsatzort den Pin (`mark`: `side` rechts neben der
+  Überschrift ab `lg`, sonst `center`). In der Karte liegt der Grund unter der ganzen Karte und der
+  Pin im Fotostreifen, wie bei `CardPhotoFrame`; eine Karte ohne Bild öffnet ihren Fotostreifen
+  jetzt wie jede andere (240 px).
+- Doku: [blog cover fallback](../features/blog-cover-fallback.md).
+
+### Eine dauerhaft geschlossene Bahn behält ihre Seite, und ihr Park nennt sie
+
+- X2 in Six Flags Magic Mountain wurde am 13.07.2026 stillgelegt, und ihre Seite antwortete seitdem
+  404, während unser News-Artikel zur Schließung auf sie verlinkte und die Inline-Referenz darin
+  „Geschlossen“ zeigte. Die Ride-Seite suchte die Bahn nur im Park-Payload, und dort fehlen
+  stillgelegte Bahnen. Jetzt fragt sie bei diesem Fehlgriff den Detail-Endpunkt
+  (`lib/parks/closed-ride.ts`). Eine Bahn mit `retiredKind: 'closed'` rendert `ClosedRidePage`: 200,
+  indexierbar, eigener Titel und eigene Description („X2 in Six Flags Magic Mountain – dauerhaft
+  geschlossen“, mit Datum, der Wochentags-Spitze vor der Schließung und dem Hersteller), der
+  News-Artikel in der Sprache der Seite, die typischen Wartezeiten, das Bahnprofil und die Beiträge.
+  Eine umklassifizierte Zeile (jetzt Show oder Restaurant) bleibt 404.
+- Blog-Referenzen und ihre Hover-Karte zeigen „Dauerhaft geschlossen“
+  (`ParkStatusBadge status="RETIRED"`, `closedPermanently` am `ResolvedAttraction`).
+- Die Parkseite listet `closedAttractions` unter dem Ride-Grid (`ClosedRidesList`), getrennt von
+  `attractions`, damit keine Zählung, kein Filter und kein Planer eine geschlossene Bahn mitzählt.
+  Im Admin (Stilllegungen) lässt sich eine Bahn dort ausblenden; ihre Seite und ihr Sitemap-Eintrag
+  bleiben.
+- Braucht v4.api.park.fan PAR-607 zuerst. Regel:
+  [a closed ride keeps its page](../rules/a-closed-ride-keeps-its-page.md); `pnpm test:closed-ride`.
+
+### Byline im Beitrags-Header und auf Karten: „Patrick" statt „Patrick Arns"
+
+- Autorendateien kennen ein optionales Feld `shortName` (`lib/blog/types.ts`). `BlogPostBanner` und
+  `BlogPostCard` zeigen es als Byline, sonst den vollen `name`. `content/blog/authors/patrick.md`
+  setzt `shortName: Patrick`.
+- JSON-LD, Meta-Autor, RSS-Feed, Autorenseite, Avatar-`alt` und das `aria-label` des Autorenlinks
+  behalten den vollen Namen.
+- Der Blog-Editor reicht das Feld beim Anlegen und Bearbeiten eines Autors durch
+  (`AuthorCreateModal`, `buildAuthorFile`), damit ein Speichern dort es nicht löscht.
+
+### Changelog: 2.12.0 in sechs Zwischenversionen aufgeteilt
+
+- Der öffentliche Eintrag 2.12.0 deckte fünf Wochen ab (16.08. bis 21.09.), vom Wetter-Chart über
+  den Tagesplaner und die Wartezeit-Alarme bis zu den Statistikseiten. Jetzt sind es sechs
+  rekonstruierte Einträge, 2.11.1 bis 2.11.6, je ein bis zwei Wochen und ein Thema, und ein echtes
+  2.12.0 mit dem, was am 20. und 21.09. landete. Die Seite zeigt 37 Einträge statt 31.
+- Die Nummern sind vergeben, nicht aus dem Code: `package.json` sprang am 27.08. mit #343 auf 2.12.0
+  und blieb dort bis zum Schnitt am 21.09. (#531). Seitennotiz und
+  `docs/rules/a-version-is-a-unit-of-communication.md` nennen den Lauf und den Grund.
+- Jeder Punkt trägt das Datum seines Commits oder des internen Abschnitts. Neu dazugekommen, weil
+  2.12.0 sie ausgelassen hatte: der Andrangskalender als eigene Seite (#343, #350), die Startseite
+  „Was ist park.fan?“ (#368), der Vergleich zweier Kalendertage (#438), die Stundenkurve im
+  Kalendertag (#472), die Unsicherheit der Prognose im Tagesdialog (#484), die gezeichnete
+  Störungsschätzung (#478), `/favorites` im Footer (#493), die Footer-Spalten (#502), Google- und
+  Apple-Maps-Links (#525), die Andrangsskala am Badge (#541), Umbaupause (PAR-288), Transport-Badge
+  (#534), Countdown und Soll-Ist im Planer (#540, PAR-10), Bildnachweise (#524).
+- Das Highlight-Bild der Ride-Seite wandert mit dem Punkt zu 2.11.4 (5.09.).
+- Zwei Korrekturen aus dem Prosa-Review: „Today at this ride“ aus dem alten 2.12.0 steht in keinem
+  englischen String, der Punkt beschreibt jetzt das Panel selbst. Und der Cache-Fehler vom 25.08.
+  (#340) traf jede Ride-Seite, nicht nur Hagrid; 2.11.1 sagt das (35 statt 60 Minuten, 53 Minuten
+  alt).
+
 ## 2.13.0 (2026-09-30) – Kompass im Park, News neben dem Blog, „Mit Kindern“ je Park
 
 Geschnitten am 2026-09-30 und umfasst alles, was nach PAR-319 (PR #531, 2026-09-21) auf `main`
