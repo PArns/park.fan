@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarPlus, GripVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useMenuBandOverEdgeTab } from '@/lib/hooks/use-menu-band-over-edge-tab';
 import { PANEL_WIDTH_DEFAULT, clampPanelWidth, plannerPanelWidth } from '@/lib/planner/panel-width';
 import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 
@@ -68,6 +69,7 @@ export function PlannerEdgeTab({
     plannerPanelWidth.getSnapshot,
     plannerPanelWidth.getServerSnapshot
   );
+  const bandOverTab = useMenuBandOverEdgeTab();
   const [dragging, setDragging] = useState(false);
   /**
    * Tear-down for a resize that is still running, reachable from outside it.
@@ -166,7 +168,13 @@ export function PlannerEdgeTab({
         'planner-phone:hidden',
         // One clock for the three things that move together — the panel, the
         // page's inset and this tab. See the note in `components/ui/sheet.tsx`.
-        !dragging && 'transition-[right] duration-300 ease-in-out'
+        !dragging && 'transition-[right,opacity,visibility] duration-300 ease-in-out',
+        // A header menu band is open whose column runs under this tab (PAR-70):
+        // at 1024 and 1280 px the tab, on `z-[60]` above the band, covered 14 px
+        // of the alerts' remove buttons. Faded and `invisible` rather than
+        // unmounted, so it fades back when the band closes and is not a focus
+        // stop meanwhile. Never mid-drag: the pointer is on the tab.
+        bandOverTab && !dragging && 'invisible opacity-0'
       )}
       // On the wide arrangement the panel is a side sheet of exactly this width,
       // so this puts the tab against its edge. On `planner-phone` it is a bottom
