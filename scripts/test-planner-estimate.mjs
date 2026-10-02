@@ -18,6 +18,7 @@ import {
   ASSUMED_WAIT_MIN,
   actualVsEstimate,
   estimateFor,
+  isAssumedWait,
   occupiedMinutes,
   totalsFor,
 } from '../lib/planner/estimate.ts';
@@ -485,6 +486,67 @@ const ride = (startMinute) => ({
     bandGeometry(grid, walked, estimateFor(day, walked)),
     null
   );
+}
+
+// ── Early entry: an assumption before the gates (PAR-199) ────────────────────
+// The API has no hour before `openHour` for any ride. A headliner filed there
+// on a day the visitor holds early entry carries the stated assumption, marked
+// `early-entry`; everything else keeps its old answer.
+{
+  const early = { hasEarlyEntry: true, earlyEntryMinutesPeak: 30, earlyEntry: true };
+  // `dayWith` spreads its overrides over the whole day, so the context is
+  // merged here rather than passed as `{ context }`.
+  const withContext = (context) => {
+    const d = dayWith();
+    d.context = { ...d.context, ...context };
+    return d;
+  };
+  const headlinerDay = (context) => {
+    const d = withContext(context);
+    d.rides[0].isHeadliner = true;
+    return d;
+  };
+  const on = estimateFor(headlinerDay(early), ride(8 * 60 + 45));
+  test('early entry: a headliner before opening gets the assumption', on.wait, ASSUMED_WAIT_MIN);
+  test('early entry: marked as early-entry', on.missing, 'early-entry');
+  test('early entry: an assumption, so no tint', isAssumedWait(on), true);
+  test('early entry: no band behind it', on.uncertaintyMinutes, null);
+  test(
+    'early entry: the hour is asked, so the table probe at 08:00 agrees',
+    estimateFor(headlinerDay(early), ride(8 * 60)).missing,
+    'early-entry'
+  );
+  test(
+    'early entry: an hour before the window is still closed',
+    estimateFor(headlinerDay(early), ride(7 * 60 + 45)).missing,
+    'outside-hours'
+  );
+  test(
+    'early entry: without the visitor it stays closed',
+    estimateFor(headlinerDay({ ...early, earlyEntry: undefined }), ride(8 * 60 + 45)).missing,
+    'outside-hours'
+  );
+  test(
+    'early entry: an ordinary ride stays closed',
+    estimateFor(withContext(early), ride(8 * 60 + 45)).missing,
+    'outside-hours'
+  );
+  test(
+    'early entry: after opening the curve answers as before',
+    estimateFor(headlinerDay(early), ride(9 * 60)).wait,
+    25
+  );
+  test(
+    'early entry: a free block is still a free block',
+    estimateFor(headlinerDay(early), {
+      id: 'f',
+      custom: { label: 'x', durationMinutes: 30 },
+      startMinute: 525,
+    }).missing,
+    'outside-hours'
+  );
+  test('early entry: assumed is still assumed', isAssumedWait({ missing: 'assumed' }), true);
+  test('early entry: a forecast is not', isAssumedWait({ missing: 'none' }), false);
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

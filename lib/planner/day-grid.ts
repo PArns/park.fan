@@ -1,4 +1,4 @@
-import type { PlanDayRide } from '@/lib/api/types';
+import type { PlanDay, PlanDayContext, PlanDayRide } from '@/lib/api/types';
 import type { DayClock } from './park-time';
 
 /**
@@ -244,6 +244,94 @@ export interface DayGrid {
    * True until the backend sends minutes.
    */
   closeIsTruncated: boolean;
+  /**
+   * The minute the early-entry rides open, below {@link openMin}, or `null` on a
+   * day without early entry — which is every day until the visitor says they
+   * hold it. See {@link earlyEntryOpenMin}.
+   *
+   * The open-side twin of {@link closeMin}/{@link closeSlackMin}, with one
+   * difference: it is a HARD start, because the park published it, but only
+   * for the rides {@link opensEarly} names. The rest of the park still opens at
+   * `openMin`, so nothing else in this file moves for it.
+   */
+  earlyEntryOpenMin: number | null;
+}
+
+/**
+ * The first minute anything on this day may be filed at: the early-entry
+ * opening where there is one, the park's opening otherwise.
+ *
+ * Only a LOWER bound for the helpers that clamp to the day. Whether a given ride
+ * may start there is {@link rideFloor}'s question, and for every ride but the
+ * headliners on an early-entry day the answer is still `openMin`.
+ */
+export function dayStartMin(grid: DayGrid): number {
+  return grid.earlyEntryOpenMin ?? grid.openMin;
+}
+
+/**
+ * Where the early-entry rides open on this day, in park-local minutes, or `null`.
+ *
+ * Three facts must agree and each one is necessary. The park lets guests in
+ * early (`hasEarlyEntry`, curated, PAR-197). It says how early
+ * (`earlyEntryMinutesPeak`, the value that holds now, PAR-199 decision A). And
+ * the VISITOR holds it on this day (`earlyEntry`, their own answer). A hotel
+ * guest is let in early; a day-ticket holder queues at the turnstile with
+ * everyone else, so a park flag alone must never move anybody's morning.
+ *
+ * `null` on any doubt, and `null` is the old behaviour byte for byte: every
+ * caller then builds the same grid, the same floors and the same figures it did
+ * before this field existed.
+ */
+export function earlyEntryOpenMin(
+  context:
+    | Pick<PlanDayContext, 'openHour' | 'hasEarlyEntry' | 'earlyEntryMinutesPeak' | 'earlyEntry'>
+    | null
+    | undefined
+): number | null {
+  if (!context || context.earlyEntry !== true || context.hasEarlyEntry !== true) return null;
+  if (context.openHour === null || context.openHour === undefined) return null;
+  const minutes = context.earlyEntryMinutesPeak;
+  if (typeof minutes !== 'number' || !Number.isFinite(minutes) || minutes <= 0) return null;
+  return context.openHour * 60 - Math.round(minutes);
+}
+
+/**
+ * The day payload with the visitor's early-entry answer folded into its
+ * context, so every reader of `day.context` sees the same day.
+ *
+ * Returns the SAME object when nothing changes, so a memo keyed on the day does
+ * not recompute for a park without early entry.
+ */
+export function withEarlyEntry<T extends PlanDay | null | undefined>(
+  day: T,
+  confirmed: boolean | undefined
+): T {
+  if (!day) return day;
+  const next = confirmed === true;
+  if ((day.context.earlyEntry === true) === next) return day;
+  return { ...day, context: { ...day.context, earlyEntry: next } };
+}
+
+/**
+ * Whether this ride opens before the park on an early-entry day.
+ *
+ * The park's headliners and nothing else: the API's own statement is that early
+ * entry covers them, and there is no per-ride list (a non-goal of PAR-199). A
+ * headliner whose own `opensAt` is later than the park's opening is not one of
+ * them — a ride that does not run at 09:00 does not run at 08:30 either.
+ *
+ * `openMin` rather than a grid so `estimate.ts` can ask the same question from
+ * the day payload alone; two copies of this rule is how a block and the
+ * optimiser's table would come to disagree.
+ */
+export function opensEarly(
+  ride: Pick<PlanDayRide, 'isHeadliner' | 'opensAt'> | undefined | null,
+  openMin: number
+): boolean {
+  if (ride?.isHeadliner !== true) return false;
+  const opens = opensAtMinute(ride.opensAt);
+  return opens === null || opens <= openMin;
 }
 
 /**
@@ -290,7 +378,8 @@ export function unfoldedCloseHour(openHour: number, closeHour: number): number {
 export function buildDayGrid(
   openHour: number | null | undefined,
   closeHour: number | null | undefined,
-  pxPerMin: number = PX_PER_MIN
+  pxPerMin: number = PX_PER_MIN,
+  earlyOpenMin: number | null = null
 ): DayGrid | null {
   if (openHour === null || openHour === undefined) return null;
   if (closeHour === null || closeHour === undefined) return null;
@@ -303,7 +392,14 @@ export function buildDayGrid(
   // for it. See {@link unfoldedCloseHour} and {@link CLOSE_SLACK_MIN}.
   const closeMin = unfoldedCloseHour(openHour, closeHour) * 60;
 
-  const gridStartMin = openMin - PRE_PAD_MIN;
+  // An early-entry window only counts where it is really earlier. A value at or
+  // past the opening is not early entry, and keeping it would draw a band of
+  // zero height or a negative one.
+  const early = earlyOpenMin !== null && earlyOpenMin < openMin ? earlyOpenMin : null;
+
+  // The pad is for the walk to the gate, and on an early-entry day that walk
+  // happens before the EARLY opening, so the axis starts that much sooner.
+  const gridStartMin = (early ?? openMin) - PRE_PAD_MIN;
   // The canvas is unchanged: it holds the slack the park might still be open
   // for AND the overrun of a queue joined at the end of it.
   const gridEndMin = closeMin + CLOSE_SLACK_MIN + POST_PAD_MIN;
@@ -317,6 +413,7 @@ export function buildDayGrid(
     heightPx: (gridEndMin - gridStartMin) * pxPerMin,
     pxPerMin,
     closeIsTruncated: true,
+    earlyEntryOpenMin: early,
   };
 }
 
@@ -566,12 +663,14 @@ export const GATE_TO_FIRST_RIDE_MIN = 15;
  * every caller needs: `placementsFrom` finds no option and leaves the ride out,
  * `nextFreeStart` files into the hatched hours where a reader can see it.
  */
-export function nowFloor(grid: DayGrid, clock?: DayClock): number {
-  if (clock?.phase !== 'today') return grid.openMin;
+export function nowFloor(grid: DayGrid, clock?: DayClock, startMin: number = grid.openMin): number {
+  // `startMin` is the day's start for the ride asking: `openMin`, or the
+  // early-entry opening for a ride that opens early (see {@link rideFloor}).
+  if (clock?.phase !== 'today') return startMin;
   // Snapped UP, not to the nearest: every start in this app sits on a quarter
   // hour, and rounding 14:03 down to 14:00 would file a block three minutes
   // into a past nobody can act on.
-  return Math.max(grid.openMin, Math.ceil(clock.nowMinute / SNAP_MIN_FINE) * SNAP_MIN_FINE);
+  return Math.max(startMin, Math.ceil(clock.nowMinute / SNAP_MIN_FINE) * SNAP_MIN_FINE);
 }
 
 /**
@@ -601,6 +700,14 @@ export function nowFloor(grid: DayGrid, clock?: DayClock): number {
  * clock, through {@link nowFloor}. A block filed before now is a queue nobody
  * can join. `clock` is optional and every other phase reduces to the expression
  * this function had before it existed.
+ *
+ * On an early-entry day (`grid.earlyEntryOpenMin`), a ride {@link opensEarly}
+ * names takes the early opening as its park opening: the hard floor is the
+ * published early start, the soft one adds the walk from the gate like any
+ * other morning. The measured curve may not lift it back to `openMin`, because
+ * the curve begins at `openHour` by construction — the API has no hour before
+ * the gates for anybody — so its first hour says nothing about whether the
+ * ride runs earlier. Every other ride is untouched.
  */
 export function rideFloor(
   grid: DayGrid,
@@ -609,12 +716,17 @@ export function rideFloor(
 ): RideFloor {
   const opens = opensAtMinute(ride?.opensAt);
   const knowsOpening = opens !== null && opens > grid.openMin;
-  const hardMin = Math.min(knowsOpening ? opens : grid.openMin, grid.closeMin - SNAP_MIN_FINE);
+  const early = grid.earlyEntryOpenMin !== null && opensEarly(ride, grid.openMin);
+  const startMin = early ? (grid.earlyEntryOpenMin as number) : grid.openMin;
+  const hardMin = Math.min(knowsOpening ? opens : startMin, grid.closeMin - SNAP_MIN_FINE);
 
   const first = ride?.hours?.[0]?.hour;
   const measuredEnough = (ride?.sampleDays ?? 0) >= SOFT_FLOOR_MIN_SAMPLE_DAYS;
+  // Measured against the park's own opening for an early ride, not against the
+  // early one: its curve starts at `openHour` whatever happens before it.
+  const measuredFrom = early ? grid.openMin : hardMin;
   const raised =
-    ride && first !== undefined && measuredEnough && first * 60 >= hardMin + 60
+    ride && first !== undefined && measuredEnough && first * 60 >= measuredFrom + 60
       ? first * 60
       : hardMin;
 
@@ -631,8 +743,11 @@ export function rideFloor(
     // and the clock is then allowed to raise it past that cap. At 17:58 in a
     // park shutting at 18:00 this is 18:00, which is no slot at all, which is
     // the true answer. See {@link nowFloor}.
-    softMin: Math.max(Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE), nowFloor(grid, clock)),
-    reason: raised > hardMin || knowsOpening ? 'ride' : 'park',
+    softMin: Math.max(
+      Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE),
+      nowFloor(grid, clock, startMin)
+    ),
+    reason: raised > hardMin || knowsOpening || early ? 'ride' : 'park',
   };
 }
 
@@ -752,7 +867,10 @@ export function nextFreeStart(
     .map((e) => ({ from: e.startMinute, to: e.startMinute + Math.max(e.spanMinutes, 15) }))
     .sort((a, b) => a.from - b.from);
 
-  const floor = snapTo(Math.max(grid.openMin, floorMin ?? grid.openMin), SNAP_MIN_FINE);
+  // `dayStartMin` and not `openMin`: an early ride's soft floor sits below the
+  // park's opening, and it is the floor that decides, not this clamp. Without
+  // early entry the two are the same minute.
+  const floor = snapTo(Math.max(dayStartMin(grid), floorMin ?? grid.openMin), SNAP_MIN_FINE);
   let candidate = floor;
   const last = grid.closeMin - SNAP_MIN_FINE;
 

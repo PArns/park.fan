@@ -2568,6 +2568,25 @@ export interface PlanDayContext {
    * available so a build predating the API's own is unchanged.
    */
   liveWaitTimes?: LiveWaitTimes;
+  /**
+   * Present only where a human confirmed that the park lets hotel guests in
+   * before opening (PAR-197). Absent means "no" and "nobody checked" alike, so
+   * test `=== true`. The rides it covers are the park's headliners.
+   */
+  hasEarlyEntry?: true;
+  /** Minutes before `openHour` the early-entry rides open, the value that holds now. Only with `hasEarlyEntry`. */
+  earlyEntryMinutesPeak?: number;
+  /** The park's second value, for its quieter weeks. Only with `hasEarlyEntry`. */
+  earlyEntryMinutesOffPeak?: number;
+  /**
+   * Whether the VISITOR holds early entry on this day. Never sent by the API:
+   * the planner sets it from the visitor's own answer (PAR-200's wizard
+   * question, `PlannerDayPrefs.earlyEntry`) through `withEarlyEntry()` in
+   * `lib/planner/day-grid.ts`. Absent reads as `false`, and then nothing in the
+   * planner differs from a park without early entry. Read it only through
+   * `earlyEntryOpenMin()`, which also checks {@link hasEarlyEntry}.
+   */
+  earlyEntry?: boolean;
 }
 
 export interface PlanDay {

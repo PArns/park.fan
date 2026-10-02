@@ -10,7 +10,7 @@ import { partyFlags } from '@/lib/planner/party';
 import { RiderHeight } from '@/components/common/unit-display';
 import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
-import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
+import { buildDayGrid, earlyEntryOpenMin, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { startRideDrag } from '@/lib/planner/ride-drag';
@@ -160,7 +160,12 @@ export function PlannerRideSearch({
   // second add after a first one lands after it, not on it — and PER RIDE,
   // because the floor is the ride's, not the park's: filing every ride at the
   // opening hour puts a block in hours the ride has no measured curve for.
-  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin);
+  const grid = buildDayGrid(
+    day?.context.openHour,
+    day?.context.closeHour,
+    pxPerMin,
+    earlyEntryOpenMin(day?.context)
+  );
   // Recomputed per render for the same reason the start is: this list stays
   // open, and a row tapped at 14:00 may not file into a morning that has gone.
   // `resolveTimeZone` here and not at the call site — the flyout hands this
