@@ -143,11 +143,12 @@ interface StatTile {
  * row, label left and value right — a long label costs height there instead of alignment, and
  * nothing overflows.
  *
- * It does not make every locale fit above the threshold. A row in which no label wraps in any of
- * the six starts near 438 px: the French „Vous économisez" wants 114 px and has 111.5 px at a
- * 1024 px window, and Italian and Spanish wrap as well between 380 and 430 px of row. Nothing
- * about that is new — the window rule was three-up there too — and raising the threshold that far
- * restacks 1024 px, which is a product decision rather than this bug: PAR-218.
+ * Above the threshold every label has to fit on one line, and that is a budget on the strings, not
+ * on this layout: at 381 px of row a tile has 93 px inside `p-3`, and a label with its icon may
+ * take no more. The three that did not fit were shortened rather than the threshold raised
+ * (PAR-218): „Vous économisez" (114 px) is „Vous gagnez", „Picco del giorno" (105.5 px) is
+ * „Al picco", „En la apertura" (94.3 px) is „Al abrir". The widest label left is the French
+ * „Vous gagnez" at 88.4 px. A new or retranslated label wider than 93 px wraps again here.
  */
 function StatTiles({ tone, stats }: { tone: 'emerald' | 'indigo' | 'primary'; stats: StatTile[] }) {
   const accent = {
