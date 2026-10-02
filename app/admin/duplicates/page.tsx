@@ -276,6 +276,53 @@ interface DuplicateParkPair {
   reason: string;
   winnerId: string | null;
   loserId: string | null;
+  /**
+   * `true` only where an upstream source holds one id for both rows and the
+   * names agree. For every other pair `reviewReason` says what it rests on:
+   * names and geometry alone, a shared id with names that disagree, or (the
+   * `attractionsAgree` branch) a shared ride list, with the distance and,
+   * above 10 km, that the wrong row needs `correct-location` before a merge.
+   */
+  safe: boolean;
+  reviewReason: string | null;
+}
+
+interface DuplicateParkReport {
+  total: number;
+  safe: number;
+  needsReview: number;
+  pairs: DuplicateParkPair[];
+}
+
+/** The listed pair for two typed ids, in either order. */
+function findParkPair(
+  pairs: DuplicateParkPair[] | null,
+  idA: string,
+  idB: string
+): DuplicateParkPair | null {
+  if (!pairs || !idA || !idB) return null;
+  return (
+    pairs.find(
+      (pair) =>
+        (pair.park1.id === idA && pair.park2.id === idB) ||
+        (pair.park1.id === idB && pair.park2.id === idA)
+    ) ?? null
+  );
+}
+
+/** The detector's verdict on one pair: a chip, and for a review pair the reason. */
+function ParkPairVerdict({ pair }: { pair: DuplicateParkPair }) {
+  // An API older than PAR-247 sends no verdict; "prüfen" on every row would be a guess.
+  if (typeof pair.safe !== 'boolean') return null;
+  if (pair.safe) return <Chip tone="success">sicher</Chip>;
+  return (
+    <span className="block space-y-1">
+      <Chip tone="warning">prüfen</Chip>
+      {pair.reviewReason && (
+        <span className="block break-words text-amber-400">{pair.reviewReason}</span>
+      )}
+    </span>
+  );
 }
 
 function ParkMergePanel() {
@@ -284,25 +331,31 @@ function ParkMergePanel() {
   const [park2Id, setPark2Id] = useState('');
   const [busy, setBusy] = useState(false);
   const [report, setReport] = useState<string | null>(null);
+  const [counts, setCounts] = useState<{ safe: number; needsReview: number } | null>(null);
   const [pairs, setPairs] = useState<DuplicateParkPair[] | null>(null);
   const [confirming, setConfirming] = useState(false);
+  const typedPair = findParkPair(pairs, park1Id.trim(), park2Id.trim());
 
   async function detect() {
     setBusy(true);
     setReport(null);
+    setCounts(null);
     setPairs(null);
     try {
       // A read. The POST this used to send (`autoDetect: false`, no ids) hits
       // the endpoint's own usage message and finds nothing, ever — and the one
       // flag that does detect (`autoDetect: true`) merges every pair it finds
       // in the same call, which is the opposite of a search.
-      const result = await adminFetch<{ total: number; pairs: DuplicateParkPair[] }>(
-        '/api/admin/duplicate-parks'
-      );
+      const result = await adminFetch<DuplicateParkReport>('/api/admin/duplicate-parks');
       setPairs(result.pairs);
-      setReport(
-        result.total === 0 ? 'Keine Parkduplikate gefunden.' : `${result.total} Paar(e) gefunden.`
-      );
+      if (result.total === 0) {
+        setReport('Keine Parkduplikate gefunden.');
+      } else {
+        setReport(`${result.total} Paar(e) gefunden.`);
+        if (typeof result.safe === 'number' && typeof result.needsReview === 'number') {
+          setCounts({ safe: result.safe, needsReview: result.needsReview });
+        }
+      }
     } catch (err) {
       setReport(err instanceof Error ? err.message : 'Suche fehlgeschlagen');
     } finally {
@@ -359,6 +412,17 @@ function ParkMergePanel() {
       {confirming ? (
         <div className="border-destructive/40 bg-destructive/[0.06] space-y-3 rounded-lg border p-3">
           <p className="text-sm font-medium">Parks endgültig zusammenführen?</p>
+          {typedPair?.safe === false && (
+            <div className="space-y-1 rounded-md border border-amber-500/30 bg-amber-500/10 p-2 text-xs">
+              <p className="flex items-center gap-2 font-medium text-amber-400">
+                <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                Die Suche meldet dieses Paar als „prüfen“.
+              </p>
+              {typedPair.reviewReason && (
+                <p className="break-words text-amber-400">{typedPair.reviewReason}</p>
+              )}
+            </div>
+          )}
           <p className="text-muted-foreground text-xs">
             Welche der beiden Zeilen bleibt, entscheidet das Backend nach Wiki-Id, Zahl der Quellen,
             Zahl der Kinder und Alter — nicht die Reihenfolge hier. Die andere verschwindet; ihre
@@ -397,7 +461,17 @@ function ParkMergePanel() {
         </div>
       )}
 
-      {report && <p className="text-muted-foreground font-mono text-xs break-words">{report}</p>}
+      {report && (
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="text-muted-foreground font-mono text-xs break-words">{report}</p>
+          {counts && (
+            <>
+              <Chip tone="success">{counts.safe} sicher</Chip>
+              <Chip tone="warning">{counts.needsReview} prüfen</Chip>
+            </>
+          )}
+        </div>
+      )}
 
       {pairs && pairs.length > 0 && (
         <ul className="space-y-2">
@@ -409,7 +483,7 @@ function ParkMergePanel() {
                 key={`${pair.park1.id}-${pair.park2.id}`}
                 className="border-border/60 flex flex-wrap items-center justify-between gap-2 rounded-md border p-2 text-xs"
               >
-                <span className="min-w-0">
+                <span className="min-w-0 flex-1 basis-64">
                   <span className="font-medium">{winner.name}</span>
                   {winner.city ? ` (${winner.city})` : ''} bleibt ·{' '}
                   <span className="text-muted-foreground">
@@ -417,6 +491,9 @@ function ParkMergePanel() {
                     {loser.city ? ` (${loser.city})` : ''} verschwindet
                   </span>
                   <span className="text-muted-foreground block">{pair.reason}</span>
+                  <span className="mt-1 block">
+                    <ParkPairVerdict pair={pair} />
+                  </span>
                 </span>
                 <Button
                   size="sm"
