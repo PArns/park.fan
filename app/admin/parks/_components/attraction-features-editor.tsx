@@ -78,8 +78,14 @@ function rowFrom(row: AdminAttractionListItem): RowState {
   };
 }
 
-function changedFields(a: RowState, b: RowState): FieldKey[] {
-  return FIELD_KEYS.filter((key) => a[key] !== b[key]);
+/**
+ * The fields an edit actually changed. Only keys somebody touched are
+ * compared: a refetch that brings in another editor's change to a different
+ * field of the same ride must not turn into a write of the old value.
+ */
+function changedFields(edit: Partial<RowState> | undefined, base: RowState): FieldKey[] {
+  if (!edit) return [];
+  return FIELD_KEYS.filter((key) => key in edit && edit[key] !== base[key]);
 }
 
 /** A flag counts when it says yes, a pick-one field when anybody picked. */
@@ -132,24 +138,28 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   }, [rows]);
 
   const [column, setColumn] = useState<Column>('fastPass');
-  const [overrides, setOverrides] = useState<Partial<Draft>>({});
+  const [overrides, setOverrides] = useState<Record<string, Partial<RowState>>>({});
   const [reason, setReason] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');
   const [bulkPrice, setBulkPrice] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const draft = useMemo(() => ({ ...base, ...overrides }) as Draft, [base, overrides]);
+  const draft = useMemo(() => {
+    const merged: Draft = {};
+    for (const [id, row] of Object.entries(base)) merged[id] = { ...row, ...overrides[id] };
+    return merged;
+  }, [base, overrides]);
 
   const changes = useMemo(() => {
     const out: Array<{ id: string; fields: FieldKey[] }> = [];
     for (const id of Object.keys(overrides)) {
       if (!base[id]) continue;
-      const fields = changedFields(draft[id]!, base[id]!);
+      const fields = changedFields(overrides[id], base[id]!);
       if (fields.length > 0) out.push({ id, fields });
     }
     return out;
-  }, [overrides, draft, base]);
+  }, [overrides, base]);
 
   const park_ = parkFastPass(park);
   const active = COLUMNS.find((entry) => entry.id === column)!;
@@ -160,7 +170,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   function setRow(id: string, next: Partial<RowState>) {
     setOverrides((current) => ({
       ...current,
-      [id]: { ...(current[id] ?? base[id]!), ...next },
+      [id]: { ...current[id], ...next },
     }));
   }
 
@@ -171,7 +181,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
     setOverrides((current) => {
       const next = { ...current };
       for (const [id, row] of Object.entries(draft)) {
-        if (row.hasFastPass === true) next[id] = { ...row, fastPassPrice: bulkPrice };
+        if (row.hasFastPass === true) next[id] = { ...next[id], fastPassPrice: bulkPrice };
       }
       return next;
     });
@@ -400,7 +410,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
           <ul className="divide-border/40 divide-y">
             {rows.map((row) => {
               const state = draft[row.id]!;
-              const dirty = changedFields(state, base[row.id]!).length > 0;
+              const dirty = changedFields(overrides[row.id], base[row.id]!).length > 0;
               return (
                 <li
                   key={row.id}
