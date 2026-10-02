@@ -2,14 +2,14 @@
 title: 'Halloween 2026 nei parchi d’Europa: motosega, zucca o niente del tutto'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-25'
+updatedAt: '2026-09-30'
 author: patrick
 mode: published
 excerpt: >-
   Motosega a Bottrop, gancio da macellaio a Biddinghuizen, vin brulè e pazienza
-  a Brühl: Halloween 2026 in Germania, Paesi Bassi, Belgio e Francia, con tutte
-  le date, i due grandi parchi che saltano il circo a piè pari e le serate in
-  cui non passi la notte in coda.
+  a Brühl: Halloween 2026 in Germania, Paesi Bassi, Belgio, Francia, Regno Unito
+  e Spagna, con tutte le date, i due grandi parchi che saltano il circo a piè
+  pari e le serate in cui non passi la notte in coda.
 tags:
   - halloween
   - parco-divertimenti
@@ -25,6 +25,8 @@ tags:
   - parc-asterix
   - phantasialand
   - efteling
+  - alton-towers
+  - portaventura
 category: guides
 coverImage:
   src: /media/halloween-2026/cover.jpg
@@ -33,9 +35,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 nei parchi: date e prove di coraggio'
   description: >-
-    Halloween 2026: Movie Park con nove maze, Traumatica, il gancio da macellaio
-    di Walibi, il mais di Toverland, due parchi che non ci stanno e le sere più
-    vuote.
+    Halloween 2026 in Europa: Movie Park, Traumatica, Walibi, Toverland, Alton
+    Towers, PortAventura, due parchi senza Halloween e le sere più vuote.
   keywords:
     - Halloween parco divertimenti 2026
     - Halloween Horror Festival Movie Park 2026
@@ -47,6 +48,8 @@ seo:
     - Heide-Park Halloween 2026 maze
     - Phantasialand Halloween
     - Efteling Halloween
+    - Alton Towers Scarefest 2026
+    - PortAventura Halloween 2026
     - parco divertimenti Halloween date 2026
     - Halloween parco divertimenti quando meno affollato
 ---
@@ -67,12 +70,13 @@ infila in queste macchine del fumo senza prima restare congelati in coda nel
 freddo di ottobre.
 
 > [!NOTE]
-> **Al 25 settembre 2026:** quel giorno abbiamo confrontato tutte le date, i
+> **Al 29 settembre 2026:** quel giorno abbiamo confrontato tutte le date, i
 > limiti d’età e i prezzi qui sotto con le pagine ufficiali degli eventi,
-> linkate nella sezione di ogni parco. Traumatica ha avuto l’anteprima il 23
-> settembre e la prima il 25, Movie Park e Disneyland Paris seguono sabato 26
-> settembre, e tutto il resto parte a ottobre. Molti prezzi dipendono dalla
-> serata e salgono man mano che si avvicina.
+> linkate nella sezione di ogni parco. PortAventura va avanti dal 19 settembre,
+> Traumatica dall’anteprima del 23 settembre, Movie Park, Disneyland Paris e
+> Alton Towers sono della partita dal 26 settembre. Tutto il resto parte a
+> ottobre. Molti prezzi dipendono dalla serata e salgono man mano che si
+> avvicina.
 
 ## I grandi eventi horror (di sera, spesso dai 16 anni)
 
@@ -124,7 +128,8 @@ Si gioca in **22 serate selezionate, dal 26 settembre all’8 novembre 2026**,
 prevalentemente dal venerdì alla domenica; di giorno il parco è aperto
 normalmente dalle 10, e le aree horror partono in prima serata. La serata horror
 è compresa nel normale biglietto del parco, i **maze si pagano a parte**, e
-costumi o maschere propri non sono ammessi in nessuna serata. Le 22 date, i
+costumi o maschere propri non sono ammessi in nessuna serata, solo i bambini
+fino a 1,40 m possono travestirsi. Le 22 date, i
 prezzi e il S.I.K. Pass sono nella nostra
 [notizia sull’apertura](/blog/movie-park-germany-halloween-horror-festival-2026).
 Segnerei a parte il **17 ottobre**, quando si tiene per la quinta volta la
@@ -170,7 +175,7 @@ experience come **THE HOTEL** e il club **THE
 FORBIDDEN** addirittura solo dai 18). In compenso ci sono **otto attrazioni
 horror**, attori a volontà, spettacoli dal vivo e proprio quel club in cui
 ballare via lo spavento superato il venerdì e il sabato a partire dalle 23.
-L’anteprima c’è stata **mercoledì 23 settembre**, la prima è **venerdì 25
+L’anteprima c’è stata **mercoledì 23 settembre**, la prima è stata **venerdì 25
 settembre**. Poi si gioca dal venerdì alla domenica fino al **7 novembre 2026**
 (tranne domenica 27 settembre), più tre giovedì: il 22 e il 29 ottobre e il 5
 novembre.
@@ -178,7 +183,7 @@ novembre.
 Lo svolgimento è cronometrato: ingresso alle 17:45, food court dalle 18, mondi
 horror dalle 19, chiusura alle 23:30.
 L’accesso passa da pass scaglionati, dall’**Event Pass** (il prezzo dipende
-dalla serata, al 25 settembre da 45 €) allo **Shoxter Pass** con accesso
+dalla serata, al 29 settembre da 45 €) allo **Shoxter Pass** con accesso
 prioritario (da 96 €, ormai esaurito) fino al **Psycho Pass** (dai 18, tutto
 incluso, 349 €). Alcuni brividi extra si pagano a
 parte: l’experience a contatto pieno THE HOTEL (29 €), il club THE FORBIDDEN
@@ -186,8 +191,8 @@ parte: l’experience a contatto pieno THE HOTEL (29 €), il club THE FORBIDDEN
 parco lo racconti, sta nella nostra
 [notizia sull’anniversario](/blog/traumatica-dieci-anni-europa-park).
 
-Per l’anniversario torna il **Vampire’s Club**, e per esattamente quattro notti:
-25 e 26 settembre, 2 e 3 ottobre. In quelle serate prende il posto di THE
+Per l’anniversario è tornato il **Vampire’s Club**, e per esattamente quattro
+notti: 25 e 26 settembre (passate), 2 e 3 ottobre. In quelle serate prende il posto di THE
 FORBIDDEN, e Marc Terenzi sale lui stesso sul palco. Mancava dall’evento da più
 di un decennio.
 
@@ -512,6 +517,71 @@ Le altre novità sono nella nostra
 
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
+### Alton Towers: Scarefest nello Staffordshire
+
+Se a ottobre voli comunque in Inghilterra, nello Staffordshire puoi portarti a
+casa anche Halloween. [Alton Towers](ref:alton-towers) organizza lo **Scarefest**
+in giorni selezionati dal **26 settembre al 1° novembre 2026**: 26 e 27
+settembre, dal 2 al 4 ottobre, dal 9 all’11 ottobre e poi ogni giorno dal 16
+ottobre al 1° novembre. In quei giorni il parco resta aperto fino alle 21, cioè
+le 22 in Europa centrale. Nel mezzo, per esempio dal 5 all’8 ottobre, chiude alle
+16 e lo Scarefest non c’è. Dall’aeroporto di Manchester sono una buona ora di
+auto.
+
+La novità è il maze [Final Exhibit](ref:alton-towers/final-exhibit): la
+collezione dimenticata di un uomo che il parco chiama soltanto “The Curator”, e
+non tutti i pezzi esposti sono inanimati come sembrano. È consigliato dai 12
+anni, come tutti e quattro i thrill maze. Gli altri tre sono COMPOUND, Edge of
+the Forest e Altonville Mine Tours: Tiny’s Revenge. I maze non sono compresi nel
+biglietto d’ingresso e girano a fasce orarie. Senza fascia oraria si attraversa
+la scare zone Dark Hollow, e per le famiglie ci sono due walkthrough dai 6 anni:
+Trick O’ Treat Town e Amigos in the Afterlife.
+
+Le montagne russe girano poi al buio. A inizio ottobre nello Staffordshire il
+sole tramonta poco prima delle 19, quindi chi resta fino alle 21 corre per un
+buon paio d’ore dopo il tramonto. Il parco cita
+espressamente [The Smiler](ref:alton-towers/the-smiler),
+[Nemesis Reborn](ref:alton-towers/nemesis-reborn) e
+[Wicker Man](ref:alton-towers/wicker-man), la montagna russa in legno che
+punta dritta contro una figura in fiamme alta sei piani. Prezzi, biglietti
+combinati e la nuova cena “Dine with the Dead” sono nella nostra
+[notizia sullo Scarefest](/blog/alton-towers-scarefest-2026).
+
+[Alton Towers](ref:alton-towers?full)
+
+Date, maze e biglietti:
+[altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
+
+### PortAventura: il macellaio di Penitence
+
+Lo spagnolo [PortAventura Park](ref:portaventura-park) sulla Costa Dorada
+festeggia Halloween già dal 19 settembre e va avanti fino al **15 novembre
+2026**, quindi per quasi due mesi. Senza supplemento ci sono la parata di
+Halloween, Truco o Trato, il Día de los Muertos, nuovi personaggi nel parco, il
+nuovo spettacolo **Resurrection** al saloon e la sera la scare zone **La
+Maldición del Emperador**. Questo è il lato per le famiglie.
+
+Il lato horror sono i **Pasajes del Terror**, walkthrough con attori, e nessuno
+è compreso nel biglietto del parco. Il quinto è nuovo, **El Carnicero de
+Penitence** (da 10 €): nella cittadina western di Penitence, vicino a
+[Uncharted](ref:portaventura-park/uncharted), la gente sparisce, lo sceriffo
+sospetta il macellaio e tu attraversi macelleria e mattatoio per aiutarlo. Gli
+altri quattro sono **La Isla Maldita** (da 12 €, pirati fantasma), **REC®
+Experience** (da 8,90 €, ispirata alla serie di film spagnola e solo a
+PortAventura), **La Muerte Viva** e **Angkor** (da 6,90 € ciascuno). Chi ne
+vuole più di uno fa meglio a fare i conti con l’Halloween Passport: il
+Passport 2 (El Carnicero e REC) da 11,90 €, il Passport 5 con tutti e cinque da
+30,90 €. Secondo la pagina dei biglietti vale per tutti e cinque lo stesso limite
+d’età, dai 12 anni se accompagnati e da soli dai 14. Orari, confronto dei pass e
+le altre novità sono nella nostra
+[notizia su PortAventura](/blog/portaventura-halloween-2026).
+
+[PortAventura Park](ref:portaventura-park?full)
+
+Programma e prezzi:
+[portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
+e [Pasajes di Halloween](https://www.portaventuraworld.com/en/tickets/halloween-passages).
+
 ## I renitenti: due parchi di punta che saltano Halloween
 
 Due dei parchi più visitati della zona al circo di nebbia e motoseghe non
@@ -563,13 +633,16 @@ l’Oscar del settore.
 Chi cerca la sensazione autunnale accogliente e inquietante invece dello shock
 di adrenalina, e chi ha bambini con sé, punti su Kaatsheuvel.
 
-**Danse Macabre è chiusa per manutenzione fino al 28 settembre compreso, e poi
+**Danse Macabre è chiusa per manutenzione fino al 30 settembre compreso, e poi
 di nuovo dal 26 ottobre al 6 novembre 2026.** Anche
 Max & Moritz e la Gondoletta sono chiuse dal 26 al 30 ottobre, Baron 1898 già
 dal 5 al 9 ottobre. Se vai a fine ottobre per Danse Macabre, meglio prima
 del 26. Quella settimana cade però nelle vacanze autunnali del centro e del sud dei
-Paesi Bassi, e nel nostro calendario dell’affluenza è prevista più gente che
-nella settimana dopo (al 25 settembre).
+Paesi Bassi, e nel nostro calendario dell’affluenza dal 17 al 25 ottobre
+c’è ogni giorno molta gente (al 29 settembre), mentre nella prima metà di
+ottobre, per il resto, solo da martedì a giovedì ce n’è una quantità media.
+Nella seconda settimana mancano tre attrazioni, Danse Macabre compresa, e anche
+lì il calendario segna ogni giorno molta gente.
 
 Il tetto di cinque milioni di visitatori e il Winter Efteling sono nella [guida
 all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
@@ -597,7 +670,7 @@ all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
 Più di qualsiasi line-up, a decidere la serata è **quando ci vai.** I fine
 settimana e il 31 ottobre sono i più affollati, e così li dà anche il nostro
 calendario dell’affluenza per quasi tutti i parchi di questa guida. Le nostre
-misurazioni però partono solo da fine dicembre 2025, e al 25 settembre 2026 non
+misurazioni però partono solo da fine dicembre 2025, e al 29 settembre 2026 non
 avevamo ancora misurato nessun ottobre di Halloween in nessuno di questi parchi,
 quindi è una previsione. Per i giorni infrasettimanali e le settimane di
 margine della stagione la previsione è di percettibilmente meno gente (e gli attori hanno
@@ -624,7 +697,7 @@ più tranquilli in arrivo** dal nostro calendario dell’affluenza con IA:
 Per il Movie Park nel calendario non c’è ancora nessun autunno di Halloween
 misurato, quindi prendi con cautela la previsione per le serate horror.
 Quanto si riempie di solito Bottrop per giorno della settimana e per mese,
-secondo le nostre misurazioni: partono solo da fine dicembre 2025, al 25
+secondo le nostre misurazioni: partono solo da fine dicembre 2025, al 29
 settembre 2026 non c’era ancora nessun ottobre misurato, e Halloween, per ora,
 devi immaginartelo:
 

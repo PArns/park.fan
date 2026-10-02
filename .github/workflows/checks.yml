@@ -84,6 +84,15 @@ jobs:
         if: ${{ !cancelled() }}
         run: pnpm check:no-has
 
+      # A post ships in six languages in one pull request, and so does every update to it
+      # (docs/rules/a-post-ships-in-six-languages-in-one-pull-request.md). On 2026-09-29 the German
+      # Halloween guide got two new parks and a new `updatedAt`, the other five kept the old date
+      # without either park, and every other check stayed green. Runs in `prebuild` too, next to
+      # `check:untranslated`. Reads content/blog/ only, under a second.
+      - name: pnpm check:blog-updated-at
+        if: ${{ !cancelled() }}
+        run: pnpm check:blog-updated-at
+
       # The glossary's `<lastmod>` (1,608 sitemap URLs) and `dateModified` come from a hand-kept date
       # and hash. Commit 08764e8 reworded a Spanish definition without bumping them, and only the
       # next weekly review caught it (PR #420). Pure local data, under a second, no network.
