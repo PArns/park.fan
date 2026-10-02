@@ -483,10 +483,12 @@ export function PlannerWizard({
     openDay(withZone, date);
     // The early-entry answer only counts where the question was on screen: a
     // visitor who answered it and then stepped back to a day or park without
-    // early entry has not said anything about that one.
-    const dayPrefs: PlannerDayPrefs = parkHasEarlyEntry
-      ? prefs
-      : { ...prefs, earlyEntry: undefined };
+    // early entry has not said anything about that one. The key is LEFT OUT
+    // rather than set to `undefined`: `setDayPrefs` merges, and an explicit
+    // `undefined` would erase an answer the day already holds whenever
+    // `/plan/day` has not arrived (or failed) at the moment of finishing.
+    const { earlyEntry: _earlyEntry, ...rest } = prefs;
+    const dayPrefs: PlannerDayPrefs = parkHasEarlyEntry ? prefs : rest;
     if (dayPrefs.riderHeightCm !== undefined || dayPrefs.avoidWet || dayPrefs.earlyEntry) {
       setDayPrefs(park.slug, date, dayPrefs);
     }
