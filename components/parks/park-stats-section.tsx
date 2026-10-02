@@ -352,6 +352,8 @@ function StatsContent({
                 labelNow={tParks('now')}
                 labelP50={t('p50')}
                 labelP90={t('p90')}
+                labelLand={t('rideWaitsLand')}
+                labelType={t('rideWaitsType')}
                 continent={continent}
                 country={country}
                 city={city}
