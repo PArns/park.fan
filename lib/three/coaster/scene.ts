@@ -73,6 +73,7 @@ export function createCoasterScene(
   // Captured out here: the narrowing from the guard above does not survive into
   // the nested builders below.
   const lsm = def.lsm;
+  const brake = def.brake;
 
   const track = new Tracker();
   const ctx = createCtx(track);
@@ -281,6 +282,32 @@ export function createCoasterScene(
             .addScaledVector(frames.ups[i], 0.04);
           fin.quaternion.setFromRotationMatrix(basis);
           world.add(fin);
+        }
+      }
+    }
+
+    // Brake run: caliper housings flanking the centreline, in a signal colour.
+    // Longer and more widely spaced than the stator fins, so a brake run and a
+    // launch run never read alike.
+    if (brake) {
+      const span = (v: number) => Math.round(Math.min(1, Math.max(0, v)) * N);
+      const caliperGeo = ctx.track.geo(new THREE.BoxGeometry(0.1, 0.2, 0.9));
+      const caliperMat = ctx.lit({ color: 0xe8573a, roughness: 0.5 }, 0.2);
+      const STEP = Math.max(4, Math.round(N / 20));
+      for (let i = span(brake.from); i <= span(brake.to); i += STEP) {
+        const basis = new THREE.Matrix4().makeBasis(
+          frames.rights[i],
+          frames.ups[i],
+          frames.tangents[i].clone().negate()
+        );
+        for (const side of [-1, 1]) {
+          const caliper = new THREE.Mesh(caliperGeo, caliperMat);
+          caliper.position
+            .copy(frames.points[i])
+            .addScaledVector(frames.rights[i], side * 0.13)
+            .addScaledVector(frames.ups[i], 0.05);
+          caliper.quaternion.setFromRotationMatrix(basis);
+          world.add(caliper);
         }
       }
     }

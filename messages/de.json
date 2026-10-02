@@ -2003,7 +2003,10 @@
         "launch": "Abschuss",
         "drop": "Schiene fällt",
         "overhang": "Überhang",
-        "hangtime": "Hangtime"
+        "hangtime": "Hangtime",
+        "brake": "Bremst",
+        "hold": "Gehalten",
+        "release": "Freigegeben"
       }
     },
     "overviewMetaDescription": "Über {count} Freizeitpark-Begriffe verständlich erklärt: Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlangen und mehr.",

@@ -2003,7 +2003,10 @@
         "launch": "Lancement",
         "drop": "La voie tombe",
         "overhang": "Surplomb",
-        "hangtime": "Hangtime"
+        "hangtime": "Hangtime",
+        "brake": "Freinage",
+        "hold": "Maintenu à l'arrêt",
+        "release": "Relâché"
       }
     },
     "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d’attente, affluence, Lightning Lane, files virtuelles et plus.",

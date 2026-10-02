@@ -97,6 +97,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "united-states",
     "path": "north-america/united-states/anaheim/disneyland-park"
   },
+  "north-america/united-states/los-angeles/universal-studios-hollywood": {
+    "slug": "universal-studios-hollywood",
+    "name": "Universal Studios Hollywood",
+    "city": "Los Angeles",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/los-angeles/universal-studios-hollywood"
+  },
   "north-america/united-states/orlando/disneys-animal-kingdom-theme-park": {
     "slug": "disneys-animal-kingdom-theme-park",
     "name": "Disney's Animal Kingdom Theme Park",
@@ -152,6 +159,7 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
   "efteling": "europe/netherlands/kaatsheuvel/efteling",
   "attractiepark-toverland": "europe/netherlands/sevenum/attractiepark-toverland",
+  "universal-studios-hollywood": "north-america/united-states/los-angeles/universal-studios-hollywood",
   "disneys-animal-kingdom-theme-park": "north-america/united-states/orlando/disneys-animal-kingdom-theme-park",
   "disneys-hollywood-studios": "north-america/united-states/orlando/disneys-hollywood-studios",
   "epcot": "north-america/united-states/orlando/epcot",
