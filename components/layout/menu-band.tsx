@@ -1,7 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
-import { registerOpenMenuBand } from '@/lib/hooks/use-menu-band-open';
+import {
+  columnReachesEdgeTab,
+  registerEdgeMenuBand,
+} from '@/lib/hooks/use-menu-band-over-edge-tab';
 import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
 
 /**
@@ -51,8 +54,13 @@ export function MenuBand({
 }) {
   // Motion for the band's contents. The glass surface below is never a target — see the hook.
   const contentRef = useMenuReveal(open);
-  // The planner's edge tab steps aside while a band is open (PAR-70) — see the store.
-  useEffect(() => (open ? registerOpenMenuBand() : undefined), [open]);
+  // The planner's edge tab steps aside while this band's column runs under it (PAR-70) — see
+  // the store. One layout read per opening, after the band is no longer `hidden`.
+  useEffect(() => {
+    const column = contentRef.current;
+    if (!open || !column || !columnReachesEdgeTab(column)) return;
+    return registerEdgeMenuBand();
+  }, [open, contentRef]);
 
   return (
     <div
