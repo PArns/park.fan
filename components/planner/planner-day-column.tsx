@@ -27,6 +27,7 @@ import {
   nextFreeStart,
   nowFloor,
   rideFloor,
+  withEarlyEntry,
 } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { occupiedMinutes } from '@/lib/planner/estimate';
@@ -288,7 +289,7 @@ export function PlannerDayColumn({
   }, [reveal, selectedId, dragging, barHeight]);
 
   const {
-    data: day,
+    data: fetchedDay,
     isFetching,
     isError,
   } = usePlanDay({
@@ -299,6 +300,9 @@ export function PlannerDayColumn({
     date: date ?? undefined,
     enabled: open && Boolean(park && date),
   });
+  // The visitor's early-entry answer (PAR-200) folded into the day, so every
+  // reader of `day.context` sees it (PAR-199).
+  const day = withEarlyEntry(fetchedDay, date ? park?.days[date]?.prefs?.earlyEntry : undefined);
 
   // Keyed off `isFetching` rather than `isPending`: a disabled query is pending
   // forever, so with no park picked the band would pulse without a request ever
