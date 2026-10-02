@@ -448,7 +448,8 @@
     "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
     "poweredBy": "Aangedreven door",
     "legalLinks": "Juridisch",
-    "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse."
+    "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse.",
+    "developers": "Ontwikkelaars"
   },
   "explore": {
     "title": "Attractiepark Wachttijden in {location}",
@@ -2689,6 +2690,77 @@
     "filter": {
       "label": "Filteren op park",
       "all": "Alle parken"
+    }
+  },
+  "developers": {
+    "meta": {
+      "title": "API en agenttoegang | park.fan",
+      "description": "De park.fan-API heeft geen sleutel nodig. Waar je de OpenAPI-beschrijving, de MCP-server, de agentvaardigheden en llms.txt vindt, en wat je met de data mag doen."
+    },
+    "hero": {
+      "title": "API en agenttoegang",
+      "lead": "park.fan publiceert wachttijden en drukteprognoses als open API en beschrijft zichzelf voor software die met een vraag binnenkomt. Deze pagina laat zien wat er is en waar."
+    },
+    "api": {
+      "heading": "De API",
+      "body": "De data achter elke pagina komt van api.park.fan. Het is een JSON-API, je hebt geen sleutel of account nodig.",
+      "items": {
+        "reference": {
+          "label": "API-referentie",
+          "note": "Alle endpoints met parameters en voorbeeldantwoorden."
+        },
+        "openapi": {
+          "label": "OpenAPI-beschrijving",
+          "note": "Dezelfde API als machineleesbaar document, om een client te genereren."
+        },
+        "catalog": {
+          "label": "API-catalogus",
+          "note": "Een linkset (RFC 9727) die naar de API, de beschrijving en de documentatie wijst."
+        }
+      }
+    },
+    "agents": {
+      "heading": "Voor agents en assistenten",
+      "body": "Documenten die een assistent vertellen wat park.fan is en hoe je het gebruikt. Ze staan als gewone bestanden klaar.",
+      "items": {
+        "llms": {
+          "label": "llms.txt",
+          "note": "De site op één pagina, voor een model dat alleen de hostnaam kent."
+        },
+        "skills": {
+          "label": "Agentvaardigheden",
+          "note": "Drie skills: wachttijden lezen, een dag kiezen en de data ophalen. De index noemt per bestand een SHA-256-hash."
+        },
+        "aiCatalog": {
+          "label": "Capability-manifest",
+          "note": "Alles uit deze lijst in één getypeerd document (ARD)."
+        },
+        "serverCard": {
+          "label": "MCP-servercard",
+          "note": "Waar de MCP-server staat en welke tools hij biedt."
+        },
+        "license": {
+          "label": "Gebruiksvoorwaarden (RSL)",
+          "note": "De voorwaarden hieronder in machineleesbare vorm."
+        }
+      }
+    },
+    "mcp": {
+      "heading": "MCP-server",
+      "body": "Op het adres hieronder antwoordt een MCP-server die alleen leest. Hij heeft drie tools en vraagt geen aanmelding.",
+      "tools": {
+        "search": "Een park, attractie, show of stad op naam vinden. Geeft de pagina-url van elke treffer.",
+        "waitTimes": "Actuele wachttijden van alle attracties in een park, met parkstatus en drukte.",
+        "bestDays": "De drukteprognose voor de komende 90 dagen, met openingsstatus en feestdagen."
+      }
+    },
+    "terms": {
+      "heading": "Wat je met de data mag doen",
+      "noKey": "De API en de documenten hierboven hebben geen sleutel nodig. Wachttijden veranderen ongeveer elke vijf minuten, vaker vragen geeft dezelfde waarden.",
+      "markdown": "Elke pagina beantwoordt ook een verzoek met Accept: text/markdown, dus je leest ze als data zonder HTML te parsen.",
+      "training": "Een pagina lezen om een vraag te beantwoorden mag. Een model op de pagina's trainen niet.",
+      "credit": "Toon je een getal, noem dan park.fan en link naar de pagina waar het vandaan komt.",
+      "admin": "De backoffice is voor de mensen die de site beheren. Hij hoort niet bij dit aanbod."
     }
   }
 }
