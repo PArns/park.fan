@@ -40,8 +40,30 @@ export function usePlanDay({
   enabled = true,
 }: UsePlanDayParams) {
   return useQuery<PlanDay | null>({
+    ...planDayQuery({ continent, country, city, parkSlug, date }),
+    enabled: enabled && typeof window !== 'undefined' && Boolean(parkSlug),
+    gcTime: 30 * 60_000,
+    refetchOnWindowFocus: true,
+    retry: 1,
+  });
+}
+
+/**
+ * The key and the fetch behind {@link usePlanDay}, for a caller that needs the
+ * day once, on a press, rather than subscribed (`AddToPlannerButton`, PAR-67).
+ * One definition, so `queryClient.fetchQuery` hits the same cache entry the
+ * flyout fills and the same 404-is-`null` rule.
+ */
+export function planDayQuery({
+  continent,
+  country,
+  city,
+  parkSlug,
+  date,
+}: Omit<UsePlanDayParams, 'enabled'>) {
+  return {
     queryKey: ['plan-day', continent, country, city, parkSlug, date ?? 'today'],
-    queryFn: async () => {
+    queryFn: async (): Promise<PlanDay | null> => {
       const query = date ? `?date=${encodeURIComponent(date)}` : '';
       const res = await fetch(
         `/api/parks/${continent}/${country}/${city}/${parkSlug}/plan/day${query}`,
@@ -51,10 +73,6 @@ export function usePlanDay({
       if (!res.ok) throw new Error(`plan day ${parkSlug}: ${res.statusText}`);
       return (await res.json()) as PlanDay;
     },
-    enabled: enabled && typeof window !== 'undefined' && Boolean(parkSlug),
     staleTime: 15 * 60_000,
-    gcTime: 30 * 60_000,
-    refetchOnWindowFocus: true,
-    retry: 1,
-  });
+  };
 }

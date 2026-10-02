@@ -2458,6 +2458,7 @@
     },
     "fit": {
       "title": "Nicht alles passt in den Tag",
+      "titleFor": "{ride} passt nicht mehr in den Tag",
       "subtitle": "{park}, {date}",
       "steps": {
         "levers": "Stellschrauben",

@@ -45,6 +45,13 @@ interface PlannerFitAssistantProps {
    * again from scratch.
    */
   initialChoice?: FitChoice;
+  /**
+   * The one ride whose press opened this, where it was one press for one ride
+   * (`AddToPlannerButton`, PAR-67). The title then names it, because that ride
+   * is the reason the dialog is on screen; the optimise buttons ask about a
+   * whole list and keep the general title.
+   */
+  requested?: string;
 }
 
 /**
@@ -91,6 +98,7 @@ export function PlannerFitAssistant({
   input,
   onConfirm,
   initialChoice,
+  requested,
 }: PlannerFitAssistantProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -166,7 +174,7 @@ export function PlannerFitAssistant({
         <div className="bg-crowd-high/10 border-crowd-high/30 shrink-0 border-b px-5 py-3 sm:px-6">
           <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
             <AlertTriangle className="text-crowd-high size-4 shrink-0" aria-hidden="true" />
-            {t('fit.title')}
+            {requested ? t('fit.titleFor', { ride: requested }) : t('fit.title')}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground mt-1 text-xs leading-snug">
             {t('fit.subtitle', { park: parkName, date: dateLabel })}

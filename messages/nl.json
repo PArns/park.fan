@@ -2458,6 +2458,7 @@
     },
     "fit": {
       "title": "Niet alles past in de dag",
+      "titleFor": "{ride} past niet meer in de dag",
       "subtitle": "{park}, {date}",
       "steps": {
         "levers": "Aanpassingen",
