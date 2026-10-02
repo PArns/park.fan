@@ -599,6 +599,39 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     '12h a park whose waits nobody can read is not asked about',
     noRoomForRide({ day: unread, entries: planned, attractionSlug: 'f', clock }) === null
   );
+
+  // Late on the day itself: 13:10 in a park shutting at 15:00 holds one
+  // hour-long queue, not three.
+  const late = dayClock('2026-09-12', 'Europe/Berlin', Date.UTC(2026, 8, 12, 11, 10));
+  const three = day(['a', 'b', 'c'].map((slug) => ride(slug, 60)));
+  check(
+    '12l the first press at 13:10 files',
+    noRoomForRide({ day: three, entries: [], attractionSlug: 'a', clock: late }) === null
+  );
+  check(
+    '12m the third press at 13:10 asks',
+    noRoomForRide({
+      day: three,
+      entries: [entry('e0', 'a', 13 * 60 + 15), entry('e1', 'b', 14 * 60 + 15)],
+      attractionSlug: 'c',
+      clock: late,
+    }) !== null
+  );
+
+  // „Nochmal": a second go on a planned ride is a wish of its own. Repeated
+  // presses on one ride are how the 25:00 stack was reached.
+  const once = [entry('e0', 'a', 13 * 60 + 15), entry('e1', 'b', 14 * 60 + 15)];
+  check(
+    '12i two hour-long queues from 13:15 fit on their own',
+    needsFitHelp(inputFor(three, once, [], late), fitChoiceAll()) === false
+  );
+  const lap = noRoomForRide({ day: three, entries: once, attractionSlug: 'a', clock: late });
+  check('12j and a second go on it does not', lap !== null);
+  check(
+    '12k the second go is in the question, as an addition',
+    lap?.wishes.some((wish) => wish.key === addWishKey('a') && wish.entryId === null) === true,
+    JSON.stringify(lap?.wishes.map((wish) => wish.key))
+  );
 }
 
 console.log(`\n${passed} passed, ${failures.length} failed`);

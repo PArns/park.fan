@@ -1,7 +1,7 @@
 import type { PlanDay } from '@/lib/api/types';
-import { buildDayGrid, earlyEntryOpenMin, growGridForSpans } from './day-grid';
+import { buildDayGrid, earlyEntryOpenMin, growGridForSpans, withEarlyEntry } from './day-grid';
 import { occupiedMinutes } from './estimate';
-import { fitBlocks, fitChoiceAll, fitWishes, needsFitHelp, type FitInput } from './fit';
+import { addWishKey, fitBlocks, fitChoiceAll, fitWishes, needsFitHelp, type FitInput } from './fit';
 import { canOptimize } from './optimize';
 import type { DayClock } from './park-time';
 import type { PlannerEntry } from './types';
@@ -30,19 +30,28 @@ import type { PlannerEntry } from './types';
  * not list. A press there is not a conflict the app can measure, so it is not
  * one it may refuse.
  *
- * A second go on a ride already in the day („Nochmal") is not represented: a
- * wish is keyed per ride, and `fitWishes` drops an addition whose slug is
- * already planned, as it does for the headliner button. The probe then asks
- * about the day as it stands, which still catches the evening where it is
- * already full.
+ * A second go on a ride already in the day („Nochmal") is a wish of its own.
+ * `fitWishes` drops an addition whose slug is already planned, which is right
+ * for the headliner button (it never adds a ride twice) and wrong here: the
+ * press asks for another lap, and repeated presses on one ride are exactly how
+ * the 25:00 stack was reached. So the lap is appended under its `a:<slug>` key,
+ * and the engine plans it as an add like any other second go (`fitOrder` puts
+ * laps last).
  */
 export function noRoomForRide(params: {
   day: PlanDay | null | undefined;
   entries: readonly PlannerEntry[];
   attractionSlug: string;
   clock: DayClock;
+  /**
+   * The visitor's early-entry answer for this day (`PlannerDay.prefs`), folded
+   * in with `withEarlyEntry` exactly as the day column folds it before the
+   * optimise buttons see the day, so both ask about the same opening.
+   */
+  earlyEntry?: boolean;
 }): FitInput | null {
-  const { day, entries, attractionSlug, clock } = params;
+  const { entries, attractionSlug, clock } = params;
+  const day = withEarlyEntry(params.day, params.earlyEntry);
   if (!day || clock.phase === 'past') return null;
   const ride = day.rides.find((candidate) => candidate.attractionSlug === attractionSlug);
   if (!ride) return null;
@@ -64,11 +73,24 @@ export function noRoomForRide(params: {
   );
   if (!grid || !canOptimize(day, grid)) return null;
 
+  const wishes = fitWishes(day, entries, [ride], clock);
+  const key = addWishKey(attractionSlug);
+  if (!wishes.some((wish) => wish.key === key)) {
+    wishes.push({
+      key,
+      entryId: null,
+      attractionSlug,
+      attractionName: ride.attractionName,
+      ride,
+      headliner: Boolean(ride.isHeadliner),
+    });
+  }
+
   const input: FitInput = {
     day,
     grid,
     entries,
-    wishes: fitWishes(day, entries, [ride], clock),
+    wishes,
     blocks: fitBlocks(entries),
     clock,
   };

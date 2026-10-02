@@ -10,7 +10,8 @@ import { plannerStore } from '@/lib/planner/store';
 import { dayClock, longDate, resolveTimeZone, todayInZone } from '@/lib/planner/park-time';
 import { planDayQuery } from '@/lib/hooks/use-plan-day';
 import type { FitChoice, FitInput } from '@/lib/planner/fit';
-import type { PlannerGeo } from '@/lib/planner/types';
+import type { PlannerEntry, PlannerGeo } from '@/lib/planner/types';
+import { trackPlanOptimized } from '@/lib/analytics/umami';
 
 type FitAssistant = typeof import('./planner-fit-assistant').PlannerFitAssistant;
 
@@ -89,6 +90,20 @@ export function AddToPlannerButton({
     nonce: number;
     Assistant: FitAssistant;
   } | null>(null);
+  /**
+   * What the assistant's answer did, with the day before it for one undo.
+   *
+   * The rule for the optimise row holds here too: where the answer leaves
+   * something out, it says so in a bordered line with a way back, and an
+   * answer that re-timed the whole day can be taken back in one press. It
+   * lives in component state, so it lasts as long as the page does.
+   */
+  const [result, setResult] = useState<{
+    date: string;
+    before: readonly PlannerEntry[];
+    text: string;
+    alert: boolean;
+  } | null>(null);
   // One press at a time: the probe can wait on the network, and a second press
   // in that window would file a ride the first one is still deciding about.
   const pending = useRef(false);
@@ -135,9 +150,15 @@ export function AddToPlannerButton({
       ]);
       // Read after the await, so a day edited while the request was out is the
       // day the question is asked about.
-      const entries = plannerStore.getSnapshot().parks[parkSlug]?.days[filingDate]?.entries ?? [];
+      const planned = plannerStore.getSnapshot().parks[parkSlug]?.days[filingDate];
       const clock = dayClock(filingDate, resolveTimeZone(timezone), now);
-      const input = noRoomForRide({ day, entries, attractionSlug, clock });
+      const input = noRoomForRide({
+        day,
+        entries: planned?.entries ?? [],
+        attractionSlug,
+        clock,
+        earlyEntry: planned?.prefs?.earlyEntry,
+      });
       if (!input) return null;
       const { PlannerFitAssistant } = await import('./planner-fit-assistant');
       return { input, Assistant: PlannerFitAssistant };
@@ -158,6 +179,9 @@ export function AddToPlannerButton({
     // one boundary a floor cannot see from inside the day it is given.
     const now = Date.now();
     const filingDate = date ?? todayInZone(timezone, now);
+    // A new press is a new question; the last answer's undo would restore a
+    // day this press is about to change.
+    setResult(null);
     try {
       const conflict = await probe(filingDate, now);
       if (conflict) {
@@ -184,6 +208,19 @@ export function AddToPlannerButton({
     setFit(null);
     const { evaluateFit } = await import('@/lib/planner/fit');
     const outcome = evaluateFit(input, choice);
+    // The answer re-times every movable ride of the day and drops what was
+    // unticked, so the day as it was is kept for one „Rückgängig", as in the
+    // optimise row. `input.entries` is that day: the dialog is modal.
+    const left = outcome.missed.length + choice.dropped.size;
+    setResult({
+      date: filingDate,
+      before: input.entries.map((entry) => ({ ...entry })),
+      text: [
+        t('fit.applied', { count: outcome.fitted.length }),
+        ...(left > 0 ? [t('fit.leftOut', { count: left })] : []),
+      ].join(' · '),
+      alert: left > 0,
+    });
     restoreDay(parkSlug, filingDate, outcome.entries);
     applyPlan({
       parkSlug,
@@ -198,7 +235,14 @@ export function AddToPlannerButton({
         startMinute: stop.startMinute,
       })),
     });
+    trackPlanOptimized(parkName);
     setActive(parkSlug, filingDate);
+  };
+
+  const undo = () => {
+    if (!result) return;
+    restoreDay(parkSlug, result.date, result.before);
+    setResult(null);
   };
 
   const button = (
@@ -221,23 +265,48 @@ export function AddToPlannerButton({
     </button>
   );
 
-  if (!fit) return button;
-  const { Assistant } = fit;
+  if (!fit && !result) return button;
+  const Assistant = fit?.Assistant;
   return (
-    <>
+    <span className="relative inline-flex">
       {button}
-      <Assistant
-        key={fit.nonce}
-        open
-        onOpenChange={(next) => {
-          if (!next) setFit(null);
-        }}
-        parkName={parkName}
-        dateLabel={longDate(fit.date, locale)}
-        input={fit.input}
-        requested={attractionName}
-        onConfirm={(choice) => void confirm(fit.input, fit.date, choice)}
-      />
-    </>
+      {result && (
+        // Hung below the button rather than in the row: the button sits in a
+        // header row beside the favourite star, and a line in that flow would
+        // push the row apart. Same colours as the optimise row's result line.
+        <span
+          role="status"
+          className={cn(
+            'bg-popover absolute top-full right-0 z-20 mt-1 flex w-max max-w-[min(18rem,calc(100vw-6rem))] items-center gap-2 rounded-md border px-2 py-1 text-xs shadow-sm transition-opacity starting:opacity-0',
+            result.alert
+              ? 'border-crowd-high/40 text-crowd-high'
+              : 'border-border text-muted-foreground'
+          )}
+        >
+          <span>{result.text}</span>
+          <button
+            type="button"
+            onClick={undo}
+            className="text-primary shrink-0 font-medium underline-offset-2 hover:underline"
+          >
+            {t('optimize.undo')}
+          </button>
+        </span>
+      )}
+      {fit && Assistant && (
+        <Assistant
+          key={fit.nonce}
+          open
+          onOpenChange={(next) => {
+            if (!next) setFit(null);
+          }}
+          parkName={parkName}
+          dateLabel={longDate(fit.date, locale)}
+          input={fit.input}
+          requested={attractionName}
+          onConfirm={(choice) => void confirm(fit.input, fit.date, choice)}
+        />
+      )}
+    </span>
   );
 }
