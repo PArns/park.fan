@@ -545,7 +545,11 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
       >
         {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
           without purchase data (currently everything non-Disney). */}
-        <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
+        <ParkPurchasesCard
+          schedule={park.schedule}
+          timezone={park.timezone}
+          className="mb-4 sm:mb-8"
+        />
 
         {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
           not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and
