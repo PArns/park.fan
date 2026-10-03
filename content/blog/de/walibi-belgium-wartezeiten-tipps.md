@@ -33,9 +33,9 @@ coverImage:
 seo:
   title: 'Walibi Belgium: Kondaa, Wartezeiten & Tipps vom Original'
   description: >-
-    Das erste Walibi steht in Wavre: Wartezeiten zu Kondaa, der höchsten
-    Achterbahn im Benelux, dazu Geschichte, Ibilaw und warum trotzdem alle
-    an Holland denken.
+    Das erste Walibi steht in Wavre. Wartezeiten zu Kondaa, der höchsten
+    Achterbahn im Benelux, dazu Ibilaw und warum trotzdem alle an Holland
+    denken.
   keywords:
     - Walibi Belgium
     - Walibi Belgium Wartezeiten

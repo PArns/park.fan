@@ -31,9 +31,8 @@ coverImage:
 seo:
   title: 'Parques Reunidos à vendre : Movie Park, Bobbejaanland, Slagharen'
   description: >-
-    EQT a confié à JPMorgan la vente de Parques Reunidos, valorisé autour de
-    1,7 milliard d’euros selon Expansión. Movie Park Germany, Bobbejaanland,
-    Slagharen et Tropical Islands en font partie. Pour les visiteurs et les détenteurs de pass, rien ne change pour l’instant.
+    EQT a chargé JPMorgan de vendre Parques Reunidos, valorisé vers 1,7 milliard
+    d’euros selon Expansión. Pour les visiteurs, rien ne change pour l’instant.
   keywords:
     - Parques Reunidos vente
     - Movie Park Germany à vendre

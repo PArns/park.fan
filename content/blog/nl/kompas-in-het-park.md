@@ -34,8 +34,8 @@ seo:
   title: 'Kompas voor het pretpark: welke attractie ligt voor je?'
   description: >-
     Open park.fan in het park en kijk om je heen: het kompas toont de
-    topattracties om je heen met richting, afstand en wachttijd. Zonder app en
-    zonder account.
+    topattracties met richting, afstand en wachttijd. Zonder app en zonder
+    account.
   keywords:
     - pretpark kompas
     - attractie vinden in het park

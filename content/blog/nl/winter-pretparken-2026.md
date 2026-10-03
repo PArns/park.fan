@@ -36,9 +36,8 @@ coverImage:
 seo:
   title: 'Pretparken in de winter 2026/27: wie is open, hoe druk'
   description: >-
-    IJsbanen, glühwein en lichtjes in de bomen: welke pretparken in winter
-    2026/27 open zijn, wat het kost en waarom je tussen kerst en oud en nieuw
-    langer in de rij staat dan in mei.
+    Welke pretparken in winter 2026/27 open zijn, wat het kost en waarom je
+    tussen kerst en oud en nieuw langer in de rij staat dan in mei.
   keywords:
     - pretparken open in de winter
     - pretpark kerst 2026

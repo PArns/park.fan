@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Walibi Holland: Untamed, Wait Times & Horror in a Polder'
   description: >-
-    Coasters on a former sea floor: Untamed and YOY with wait times we
-    measure ourselves, the Halloween Fright Nights people happily pay extra for, prices
-    and getting there.
+    Coasters on a former sea floor: measured wait times for Untamed and YOY, the
+    Fright Nights people happily pay extra for, prices and getting there.
   keywords:
     - Walibi Holland
     - Walibi Holland wait times

@@ -21,8 +21,9 @@ parkLinks:
 seo:
   title: 'Thrill Glider: nuova Vekoma a Magic Mountain'
   description: >-
-    Six Flags Magic Mountain costruisce il Thrill Glider di Vekoma: 3.380 piedi,
-    50 mph, cinque inversioni, più lanci. Apre nel 2027, altezza minima 48 pollici.
+    Il Thrill Glider di Vekoma è lungo 3.380 piedi, va a 50 mph, ha cinque
+    inversioni e più lanci. Apre nel 2027 a Six Flags Magic Mountain, da 48
+    pollici.
   keywords:
     - Thrill Glider Six Flags Magic Mountain
     - Thrill Glider Vekoma

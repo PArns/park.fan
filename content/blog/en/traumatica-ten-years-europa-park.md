@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: "What's new at Traumatica 2026 in Europa-Park"
   description: >-
-    Traumatica at Europa-Park runs 23 September to 7 November 2026: eight
-    horror attractions, the new THE HOTEL (18+), the Vampire's Club on two
-    weekends, entry from 16, and what it costs.
+    Traumatica runs 23 September to 7 November 2026 with eight horror
+    attractions and the new THE HOTEL (18+). Entry from 16, and what tickets
+    cost.
   keywords:
     - Traumatica 2026
     - Traumatica anniversary

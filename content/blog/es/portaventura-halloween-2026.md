@@ -27,10 +27,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 en PortAventura: El Carnicero de Penitence y precios'
   description: >-
-    Halloween en PortAventura del 19 de septiembre al 15 de noviembre de 2026:
-    el nuevo pasaje del terror El Carnicero de Penitence en el Far West, los
-    cinco pasajes con sus precios, los Halloween Passports, la Halloween Parade
-    y los horarios.
+    Halloween en PortAventura del 19 de septiembre al 15 de noviembre de 2026,
+    con el nuevo pasaje El Carnicero de Penitence. Precios de los cinco pasajes.
   keywords:
     - Halloween PortAventura 2026
     - El Carnicero de Penitence

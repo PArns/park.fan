@@ -27,9 +27,8 @@ coverImage:
 seo:
   title: 'Europa-Park Pre-Opening Weeks 2027 : du 7 au 19 mars'
   description: >-
-    Europa-Park ouvre pour la première fois du 7 au 19 mars 2027 : billets à
-    partir de 59,50 € en semaine, 70 € le week-end, toutes les attractions ne
-    sont pas ouvertes.
+    Du 7 au 19 mars 2027, Europa-Park ouvre avant la saison. Billets dès 59,50 €
+    en semaine, 70 € le week-end, et toutes les attractions ne tournent pas.
   keywords:
     - Europa-Park Pre-Opening Weeks
     - Europa-Park mars 2027

@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Europa-Park Pre-Opening Weeks 2027: del 7 al 19 de marzo'
   description: >-
-    Europa-Park abre por primera vez del 7 al 19 de marzo de 2027: entradas
-    desde 59,50 € entre semana, 70 € en fin de semana y no todas las
-    atracciones abiertas.
+    Del 7 al 19 de marzo de 2027 la entrada cuesta desde 59,50 € entre semana y
+    70 € en fin de semana. No todas las atracciones estarán abiertas.
   keywords:
     - Europa-Park Pre-Opening Weeks
     - Europa-Park marzo 2027

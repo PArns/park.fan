@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Walibi Belgium: Kondaa, wachttijden & tips van het origineel'
   description: >-
-    De oudste Walibi staat in Waver: wachttijden van Kondaa, hoogste achtbaan
-    van de Benelux, plus geschiedenis, Ibilaw en waarom iedereen aan
-    Biddinghuizen denkt.
+    De oudste Walibi staat in Waver: wachttijden van Kondaa, de geschiedenis,
+    Ibilaw en waarom iedereen aan Biddinghuizen denkt.
   keywords:
     - Walibi Belgium
     - Walibi Belgium wachttijden

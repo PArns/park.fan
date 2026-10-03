@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Parc Astérix: tempi di attesa, montagne russe e consigli'
   description: >-
-    Toutatis, OzIris, Tonnerre 2 Zeus: quando le code al Parc Astérix sono
-    corte, quanto costa Filotomatix, come arrivarci in RER e navetta, Peur sur le
-    Parc, il Noël Gaulois e cosa arriva entro il 2028.
+    Quando le code a Toutatis, OzIris e Tonnerre 2 Zeus sono corte, quanto costa
+    Filotomatix, come arrivare in RER e navetta e cosa apre entro il 2028.
   keywords:
     - Parc Astérix
     - Parc Astérix tempi di attesa

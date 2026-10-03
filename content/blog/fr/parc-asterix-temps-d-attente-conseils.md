@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Parc Astérix : temps d’attente, montagnes russes et conseils'
   description: >-
-    Toutatis, OzIris, Tonnerre 2 Zeus : quand les files du Parc Astérix sont
-    courtes, ce que coûte Filotomatix, comment venir en RER et en navette, Peur
-    sur le Parc, le Noël Gaulois et ce qui arrive d’ici 2028.
+    Quand les files sont courtes à Toutatis, OzIris et Tonnerre 2 Zeus, ce que
+    coûte Filotomatix, venir en RER, Peur sur le Parc et ce qui arrive d’ici
+    2028.
   keywords:
     - Parc Astérix
     - Parc Astérix temps d’attente

@@ -34,8 +34,8 @@ coverImage:
 seo:
   title: 'Walibi Holland : Untamed, attente et frissons dans le polder'
   description: >-
-    Des coasters sur un ancien fond marin : Untamed et YOY avec nos temps d’attente mesurés, les Halloween Fright Nights qu’on paie avec plaisir,
-    tarifs et accès.
+    Des coasters sur un ancien fond marin : Untamed et YOY avec nos temps
+    d’attente mesurés, les Halloween Fright Nights, les tarifs et l’accès.
   keywords:
     - Walibi Holland
     - Walibi Holland temps d’attente

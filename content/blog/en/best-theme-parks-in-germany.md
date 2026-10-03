@@ -33,9 +33,9 @@ coverImage:
 seo:
   title: 'The Best Theme Parks in Germany 2026: Ranking with Wait Times'
   description: >-
-    Europa-Park, Phantasialand, Heide Park, Hansa-Park, Movie Park, Plopsaland
-    and Legoland compared: one ranking for coaster fans, one for families, plus
-    measured wait times and the quietest weekday for each park.
+    Europa-Park, Phantasialand, Heide Park and four more, ranked for coaster
+    fans and for families, with measured wait times and each park's quietest
+    weekday.
   keywords:
     - best theme parks in Germany
     - best theme parks in Germany 2026

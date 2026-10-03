@@ -36,8 +36,8 @@ coverImage:
 seo:
   title: 'Toverland: Troy, attese e Halloween senza salta-fila'
   description: >-
-    Troy a Toverland: il più grande coaster in legno del Benelux, e davanti quasi
-    nessuna fila. Dati sulle attese, Fēnix, biglietti, Halloween Nights e cosa arriva nel 2027.
+    Il più grande coaster in legno del Benelux, e davanti quasi nessuna fila.
+    Attese di Troy e Fēnix, biglietti, Halloween Nights e le novità del 2027.
   keywords:
     - Toverland
     - Toverland tempi di attesa

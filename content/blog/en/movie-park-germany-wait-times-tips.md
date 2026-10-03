@@ -32,8 +32,8 @@ coverImage:
 seo:
   title: 'Movie Park Wait Times & Halloween 2026, minus Batman'
   description: >-
-    Movie Park with measured wait times: the weekday the tip sheets get wrong,
-    the autumn timetable, Halloween from 26 September and how to dodge the gate
+    Measured wait times at Movie Park: the weekday the tip sheets get wrong, the
+    autumn timetable, Halloween from 26 September and how to dodge the gate
     price.
   keywords:
     - Movie Park Germany

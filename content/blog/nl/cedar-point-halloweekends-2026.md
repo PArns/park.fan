@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Cedar Point HalloWeekends 2026: Diablo, data en Haunted Pass'
   description: >-
-    HalloWeekends in Cedar Point tot 1 november 2026: het nieuwe horrorhuis
-    Diablo: The Infernal Path, zes huizen, vier scare zones, openingstijden en
-    de prijzen van de Haunted Attractions Pass en The Conjuring.
+    HalloWeekends in Cedar Point loopt tot 1 november 2026, met het nieuwe
+    horrorhuis Diablo. De huizen kom je alleen in met de Haunted Attractions
+    Pass.
   keywords:
     - Cedar Point HalloWeekends 2026
     - Diablo The Infernal Path Cedar Point

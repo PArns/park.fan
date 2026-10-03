@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Golden Ticket Awards 2026: Europa-Park gana por 11.ª vez'
   description: >-
-    Europa-Park ganó el 12 de septiembre de 2026 el Golden Ticket Award al
-    mejor parque por undécima vez. Y el top 10 de montañas rusas de acero con
-    Taron, Voltron Nevera y Ride to Happiness.
+    El 12 de septiembre de 2026 Europa-Park volvió a ganar el Golden Ticket
+    Award. En el top 10 de acero están Taron, Voltron Nevera y Ride to
+    Happiness.
   keywords:
     - Golden Ticket Awards 2026
     - Europa-Park Golden Ticket Award

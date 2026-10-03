@@ -20,9 +20,9 @@ parkLinks:
 seo:
   title: 'Gardaland Magic Halloween 2026: de doolhof Preda'
   description: >-
-    Magic Halloween in Gardaland van 12 september tot 1 november 2026: 51 dagen,
-    de nieuwe doolhof Preda met leeftijdsadvies en ticketprijs, de
-    vrijdagavonden en de Halloween Party op 31 oktober.
+    Magic Halloween in Gardaland van 12 september tot 1 november 2026: de
+    doolhof Preda met prijs en leeftijdsadvies, en de Halloween Party op 31
+    oktober.
   keywords:
     - Gardaland Halloween 2026
     - Gardaland Magic Halloween

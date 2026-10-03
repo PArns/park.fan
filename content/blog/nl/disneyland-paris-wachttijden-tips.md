@@ -34,9 +34,8 @@ coverImage:
 seo:
   title: 'Disneyland Paris 2026: waar de rijen echt lang zijn'
   description: >-
-    Wachttijdcijfers uit beide Parijse parken: waarom het kleinere park de
-    langere rijen heeft, wanneer het rustiger wordt en met welk park je de dag
-    beter begint.
+    Wachttijdcijfers uit beide Parijse parken: waarom het kleine park de langere
+    rijen heeft, wanneer het rustiger is en met welk park je begint.
   keywords:
     - Disneyland Paris
     - Disneyland Paris wachttijden

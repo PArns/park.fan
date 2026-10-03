@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Ententeich: burgerinitiatief tegen uitbreiding Phantasialand'
   description: >-
-    Sinds 28 september loopt in Brühl een burgerinitiatief tegen de uitbreiding
-    van Phantasialand. Wat het park wil bouwen, welke onderzoeken het betaalt en
-    hoe de strijd om de Ententeich sinds 2003 verliep.
+    Sinds 28 september loopt in Brühl een burgerinitiatief. Wat het park wil
+    bouwen, welke onderzoeken het betaalt en de strijd om de Ententeich sinds
+    2003.
   keywords:
     - Phantasialand uitbreiding
     - Phantasialand uitbreiding Ententeich

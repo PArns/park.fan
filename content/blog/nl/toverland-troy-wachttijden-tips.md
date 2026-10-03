@@ -36,8 +36,8 @@ coverImage:
 seo:
   title: 'Toverland: Troy, wachttijden & halloween zonder fastpass'
   description: >-
-    Troy in Toverland: de grootste houten achtbaan van de Benelux, en er staat
-    amper een rij voor. Wachttijddata, Fēnix, tickets, Halloween Nights en wat er in 2027 komt.
+    De grootste houten achtbaan van de Benelux, en er staat amper een rij voor.
+    Wachttijddata, Fēnix, tickets, Halloween Nights en wat er in 2027 komt.
   keywords:
     - Toverland
     - Toverland wachttijden

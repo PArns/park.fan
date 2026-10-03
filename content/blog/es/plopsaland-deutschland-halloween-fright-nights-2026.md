@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Halloween Fright Nights 2026 en Plopsaland Deutschland: fechas y precios'
   description: >-
-    Halloween Fright Nights en Plopsaland Deutschland del 2 al 31 de octubre de
-    2026, viernes y sábados hasta las 22:00: novedades NEXUS AI y Lost, tres
-    scare zones, entradas por casa, Nightmare Society Pass y edad recomendada.
+    Halloween Fright Nights del 2 al 31 de octubre de 2026, viernes y sábados
+    hasta las 22:00. Las nuevas casas NEXUS AI y Lost, entradas y edad
+    recomendada.
   keywords:
     - Plopsaland Halloween 2026
     - Halloween Fright Nights 2026

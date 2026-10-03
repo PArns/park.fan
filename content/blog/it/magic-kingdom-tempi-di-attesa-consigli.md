@@ -34,9 +34,8 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026: dove e quando le code sono lunghe'
   description: >-
-    I dati sulle attese del Magic Kingdom in Florida: le code più corte dei
-    quattro parchi Disney nel parco più visitato del mondo, quando TRON ha
-    l’attesa più breve, quanto costa Lightning Lane e quali mesi sono tranquilli.
+    Il parco più visitato del mondo ha le attese più corte dei quattro parchi
+    Disney in Florida. Quando TRON ha meno coda e quanto costa Lightning Lane.
   keywords:
     - Magic Kingdom
     - Magic Kingdom tempi di attesa

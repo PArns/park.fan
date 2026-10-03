@@ -24,8 +24,8 @@ seo:
   title: 'Six Flags closes X2 coaster after brain injury lawsuits'
   description: >-
     Six Flags Magic Mountain has shut X2 for good after lawsuits over brain
-    injuries. Plus the history of the first 4th Dimension coaster, which opened
-    in 2002.
+    injuries. Plus the history of the first 4th Dimension coaster, opened in
+    2002.
   keywords:
     - X2 Six Flags Magic Mountain
     - X2 closed

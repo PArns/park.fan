@@ -36,9 +36,8 @@ coverImage:
 seo:
   title: 'Parques en invierno 2026/27: quién abre y cuánta cola hay'
   description: >-
-    Pistas de hielo, chocolate caliente y guirnaldas de luces: qué parques abren
-    en invierno 2026/27, cuánto cuestan y por qué entre Navidad y Año Nuevo se
-    hace más cola que en mayo.
+    Qué parques abren en invierno 2026/27, cuánto cuestan y por qué entre
+    Navidad y Año Nuevo se hace más cola que en mayo.
   keywords:
     - parques de atracciones abiertos en invierno
     - PortAventura Navidad 2026

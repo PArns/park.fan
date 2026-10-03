@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Parc Astérix: Wartezeiten, Achterbahnen und Tipps'
   description: >-
-    Toutatis, OzIris, Tonnerre 2 Zeus: wann die Warteschlangen im Parc Astérix
-    kurz sind, was Filotomatix kostet, wie du mit RER und Shuttle hinkommst,
-    Peur sur le Parc, Noël Gaulois und was bis 2028 neu kommt.
+    Wann die Warteschlangen kurz sind, was Filotomatix kostet und wie du mit RER
+    und Shuttle hinkommst, dazu Peur sur le Parc und was bis 2028 kommt.
   keywords:
     - Parc Astérix
     - Parc Astérix Wartezeiten

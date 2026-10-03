@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Walibi Belgium : Kondaa, attente et conseils de l’original'
   description: >-
-    Le plus ancien Walibi est à Wavre : l’attente sur Kondaa, le plus haut
-    coaster du Benelux, l’histoire, Ibilaw et pourquoi tout le monde pense
-    à la Hollande.
+    Le plus ancien Walibi est à Wavre : l’attente sur Kondaa, l’histoire du
+    parc, Ibilaw et pourquoi tout le monde pense à la Hollande.
   keywords:
     - Walibi Belgium
     - Walibi Belgium temps d’attente

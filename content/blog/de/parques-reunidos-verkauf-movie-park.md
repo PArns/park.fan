@@ -31,9 +31,9 @@ coverImage:
 seo:
   title: 'Parques Reunidos wird verkauft: Movie Park, Bobbejaanland, Slagharen'
   description: >-
-    EQT lässt JPMorgan einen Käufer für Parques Reunidos suchen, laut Expansión
-    für rund 1,7 Mrd. €. Betroffen sind Movie Park, Bobbejaanland, Slagharen und
-    Tropical Islands. Für Besucher und Saisonpass-Inhaber ändert sich vorerst nichts.
+    Laut Expansión ist Parques Reunidos mit Movie Park und Bobbejaanland rund
+    1,7 Mrd. € wert. Für Besucher und Saisonpass-Inhaber ändert sich vorerst
+    nichts.
   keywords:
     - Movie Park Verkauf
     - Movie Park Germany neuer Eigentümer

@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Movie Park Halloween Horror Festival 2026 from 26 September'
   description: >-
-    Halloween Horror Festival at Movie Park Germany from 26 September to
-    8 November 2026: all 22 nights, the new Jason Universe (16+) and PHOBIA,
-    maze tickets, the S.I.K. Pass and the costume rule.
+    The Halloween Horror Festival runs on 22 nights from 26 September to 8
+    November 2026, with Jason Universe (16+), PHOBIA and the S.I.K. Pass.
   keywords:
     - Movie Park Halloween 2026
     - Halloween Horror Festival 2026

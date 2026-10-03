@@ -34,9 +34,8 @@ coverImage:
 seo:
   title: 'Boussole pour parc d’attractions : quelle attraction est devant toi ?'
   description: >-
-    Ouvre park.fan dans le parc et tourne-toi : la boussole place autour
-    de toi les attractions phares, avec direction, distance et temps d’attente.
-    Sans appli et sans compte.
+    Ouvre park.fan dans le parc et tourne-toi : la boussole montre où sont les
+    attractions phares, à quelle distance et combien on y attend. Sans compte.
   keywords:
     - boussole parc d’attractions
     - trouver une attraction dans le parc

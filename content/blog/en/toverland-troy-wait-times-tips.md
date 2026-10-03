@@ -36,8 +36,8 @@ coverImage:
 seo:
   title: 'Toverland: Troy, Wait Times & Halloween, No Fast Pass'
   description: >-
-    Troy at Toverland is the biggest wooden coaster in the Benelux, with hardly
-    a queue in front of it. Wait-time data, Fēnix, tickets, Halloween Nights and what comes in 2027.
+    The biggest wooden coaster in the Benelux, and hardly a queue. Wait-time
+    data for Troy and Fēnix, tickets, Halloween Nights and what comes in 2027.
   keywords:
     - Toverland
     - Toverland wait times

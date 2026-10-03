@@ -31,9 +31,8 @@ coverImage:
 seo:
   title: 'Parques Reunidos te koop: Slagharen, Bobbejaanland en Movie Park'
   description: >-
-    EQT laat JPMorgan Parques Reunidos verkopen, volgens Expansión voor zo’n
-    1,7 miljard euro. Slagharen, Bobbejaanland, Movie Park Germany en Tropical
-    Islands horen erbij. Voor bezoekers en abonnementhouders verandert er voorlopig niets.
+    EQT laat JPMorgan Parques Reunidos verkopen, volgens Expansión voor zo’n 1,7
+    miljard euro. Voor bezoekers en abonnees verandert er voorlopig niets.
   keywords:
     - Parques Reunidos te koop
     - Slagharen te koop

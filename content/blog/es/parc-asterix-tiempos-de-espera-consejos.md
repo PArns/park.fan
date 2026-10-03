@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Parc Astérix: tiempos de espera, montañas rusas y consejos'
   description: >-
-    Toutatis, OzIris, Tonnerre 2 Zeus: cuándo son cortas las colas del Parc
-    Astérix, cuánto cuesta Filotomatix, cómo llegar en RER y lanzadera, Peur sur
-    le Parc, el Noël Gaulois y lo que llega de aquí a 2028.
+    Cuándo son cortas las colas de Toutatis, OzIris y Tonnerre 2 Zeus, cuánto
+    cuesta Filotomatix, cómo llegar en RER y lanzadera y qué llega de aquí a
+    2028.
   keywords:
     - Parc Astérix
     - Parc Astérix tiempos de espera

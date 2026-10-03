@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'De beste pretparken in Duitsland 2026: ranglijst met wachttijden'
   description: >-
-    Europa-Park, Phantasialand, Heide Park, Hansa-Park, Movie Park, Plopsaland
-    en Legoland vergeleken: een ranglijst voor achtbaanfans, een voor gezinnen,
-    plus gemeten wachttijden en de rustigste weekdag per park.
+    Zeven Duitse pretparken vergeleken met gemeten wachttijden: een ranglijst
+    voor achtbaanfans, een voor gezinnen en de rustigste weekdag per park.
   keywords:
     - beste pretparken Duitsland
     - beste pretparken Duitsland 2026

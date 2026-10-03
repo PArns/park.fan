@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Golden Ticket Awards 2026: Europa-Park voor de 11e keer eerste'
   description: >-
-    Europa-Park won op 12 september 2026 voor de elfde keer de Golden Ticket
-    Award voor beste park. Plus de top 10 van stalen achtbanen met Taron,
-    Voltron Nevera en Ride to Happiness.
+    Op 12 september 2026 won Europa-Park de Golden Ticket Award voor beste park.
+    Taron, Voltron Nevera en Ride to Happiness staan in de top 10 stalen banen.
   keywords:
     - Golden Ticket Awards 2026
     - Europa-Park Golden Ticket Award

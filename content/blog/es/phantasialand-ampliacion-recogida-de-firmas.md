@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Ententeich: firmas contra la ampliación de Phantasialand'
   description: >-
-    Desde el 28 de septiembre circula en Brühl una iniciativa ciudadana contra
-    la ampliación de Phantasialand. Qué quiere construir el parque, qué estudios
-    paga y cómo empezó en 2003 la disputa por el Ententeich.
+    Desde el 28 de septiembre se recogen firmas en Brühl. Qué quiere construir
+    Phantasialand, qué estudios paga y cómo empezó en 2003 la disputa.
   keywords:
     - Phantasialand ampliación
     - Phantasialand ampliación Ententeich

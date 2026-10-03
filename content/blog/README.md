@@ -68,7 +68,7 @@ coverImage:
   credit: 'park.fan'
 seo:
   title: 'Custom <title> (defaults to title)'
-  description: 'Meta description (defaults to excerpt)'
+  description: 'Meta description (defaults to excerpt), at most 155 characters' # pnpm test:meta-descriptions
   keywords: ['extra', 'seo', 'keywords']                 # string or array
   noindex: false                                         # opt out of indexing
   canonical: 'https://…'                                 # optional override

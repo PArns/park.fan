@@ -36,9 +36,9 @@ coverImage:
 seo:
   title: 'Toverland : Troy, attente & Halloween sans coupe-file'
   description: >-
-    Troy à Toverland, le plus grand coaster en bois du Benelux, et presque pas
-    de file devant : temps d’attente, Fēnix, billets, Halloween Nights et ce qui
-    arrive en 2027.
+    Le plus grand coaster en bois du Benelux, presque sans file : temps
+    d’attente sur Troy, Fēnix, billets, Halloween Nights et ce qui arrive en
+    2027.
   keywords:
     - Toverland
     - Toverland temps d’attente

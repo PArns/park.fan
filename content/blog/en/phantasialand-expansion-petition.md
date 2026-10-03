@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Ententeich: petition against Phantasialand expansion'
   description: >-
-    A citizens’ petition against Phantasialand’s expansion has been running in
-    Brühl since 28 September. What the park wants to build, which reports it’s
-    paying for, and how the fight over the Ententeich began in 2003.
+    A citizens’ petition in Brühl started on 28 September. What the park wants
+    to build, which reports it pays for, and the Ententeich fight since 2003.
   keywords:
     - Phantasialand expansion
     - Phantasialand expansion Ententeich

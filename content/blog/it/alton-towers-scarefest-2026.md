@@ -29,8 +29,7 @@ seo:
   title: 'Scarefest 2026 ad Alton Towers: date, Final Exhibit e biglietti'
   description: >-
     Scarefest ad Alton Towers in alcuni giorni dal 26 settembre al 1° novembre
-    2026, parco aperto fino alle 21: il nuovo maze Final Exhibit (dai 12 anni),
-    The Smiler e Nemesis Reborn di notte, biglietti dei maze e prezzi.
+    2026, aperto fino alle 21. Il nuovo maze Final Exhibit è dai 12 anni.
   keywords:
     - Alton Towers Scarefest 2026
     - Scarefest date

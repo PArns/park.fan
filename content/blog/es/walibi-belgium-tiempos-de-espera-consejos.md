@@ -34,9 +34,8 @@ coverImage:
 seo:
   title: 'Walibi Belgium: Kondaa, esperas y consejos del original'
   description: >-
-    El Walibi más antiguo está en Wavre: esperas de Kondaa, la montaña rusa más
-    alta del Benelux, su historia, Ibilaw y por qué todos siguen pensando en
-    Holanda.
+    El Walibi más antiguo está en Wavre. Esperas de Kondaa, la montaña rusa más
+    alta del Benelux, su historia, Ibilaw y por qué todos piensan en Holanda.
   keywords:
     - Walibi Belgium
     - Walibi Belgium tiempos de espera

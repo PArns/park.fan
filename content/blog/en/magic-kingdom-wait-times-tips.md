@@ -34,9 +34,8 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026: Where the Queues Are, and When'
   description: >-
-    Wait-time data for Magic Kingdom in Florida: the shortest queues of the
-    four Disney parks in the most visited park on earth, when TRON is shortest,
-    what Lightning Lane costs and which months are quiet.
+    Magic Kingdom has the shortest queues of Florida's four Disney parks. When
+    TRON is shortest, what Lightning Lane costs and which months are quiet.
   keywords:
     - Magic Kingdom
     - Magic Kingdom wait times

@@ -23,9 +23,9 @@ rideLinks:
 seo:
   title: 'Fast & Furious: Hollywood Drift apre a Universal Hollywood'
   description: >-
-    Fast & Furious: Hollywood Drift è aperto dal 16 settembre 2026: 116 km/h,
-    quattro lanci, tre inversioni, auto che ruotano. Altezza minima, posti a
-    sedere e la versione che aprirà in Florida nel 2027.
+    È aperto dal 16 settembre 2026 e arriva a 116 km/h, con quattro lanci e tre
+    inversioni. Altezza minima, posti e la versione che apre in Florida nel
+    2027.
   keywords:
     - Fast & Furious Hollywood Drift
     - Hollywood Drift Universal Studios Hollywood

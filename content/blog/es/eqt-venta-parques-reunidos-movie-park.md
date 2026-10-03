@@ -31,9 +31,9 @@ coverImage:
 seo:
   title: 'Parques Reunidos, en venta: Movie Park, Parque Warner, Bobbejaanland'
   description: >-
-    EQT ha encargado a JPMorgan la venta de Parques Reunidos, valorado en unos
-    1.700 millones según Expansión. Incluye Parque Warner, Movie Park Germany,
-    Bobbejaanland y Slagharen. Para visitantes y titulares de pase, de momento no cambia nada.
+    EQT ha encargado a JPMorgan la venta de Parques Reunidos, unos 1.700
+    millones según Expansión. Para quien va a Parque Warner, de momento nada
+    cambia.
   keywords:
     - venta Parques Reunidos
     - EQT Parques Reunidos

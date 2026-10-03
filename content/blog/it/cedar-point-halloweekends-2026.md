@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Cedar Point HalloWeekends 2026: Diablo, date e Haunted Pass'
   description: >-
-    HalloWeekends a Cedar Point fino al 1° novembre 2026: il nuovo labirinto
-    Diablo: The Infernal Path, sei case horror, quattro scare zone, orari e
-    prezzi dell’Haunted Attractions Pass e di The Conjuring.
+    HalloWeekends a Cedar Point fino al 1° novembre 2026, con il nuovo labirinto
+    Diablo: The Infernal Path. Orari e prezzi dell’Haunted Attractions Pass.
   keywords:
     - Cedar Point HalloWeekends 2026
     - Diablo The Infernal Path Cedar Point

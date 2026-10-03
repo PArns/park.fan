@@ -27,6 +27,50 @@ export function fitWithin(limit: number, ...candidates: string[]): string {
 }
 
 /**
+ * A sentence ends at `.`, `!`, `?` or `…` followed by a space and an upper-case letter (or an
+ * opening quote) — but not after a single letter or a known abbreviation, so "z. B. Taron",
+ * "Dr. Seuss" and "e.g. Taron" stay one sentence.
+ */
+const SENTENCE_BREAK = /(?<=[.!?…])\s+(?=[\p{Lu}„"«¿¡])/u;
+const ABBREVIATION_END =
+  /(?:^|[\s(])(?:\p{L}|Dr|Mr|Mrs|St|ca|bzw|usw|etc|e\.g|i\.e|z\.\s?B|d\.\s?h)\.$/iu;
+
+/** Below this, whole sentences lose to a clipped longer text in {@link fitSentences}. */
+const MIN_SENTENCE_DESCRIPTION = 70;
+
+function sentencesOf(text: string): string[] {
+  const parts = text.split(SENTENCE_BREAK);
+  const sentences: string[] = [];
+  for (const part of parts) {
+    const last = sentences.at(-1);
+    if (last !== undefined && ABBREVIATION_END.test(last))
+      sentences[sentences.length - 1] = `${last} ${part}`;
+    else sentences.push(part);
+  }
+  return sentences;
+}
+
+/**
+ * A description of at most `limit` characters cut from running text: as many whole sentences as
+ * fit, else the first sentence cut at a word boundary with an ellipsis. The glossary used to cut
+ * every first paragraph at 152 characters, so the snippet ended mid-clause ("It comes in two
+ * kinds:…", SEO run, 2026-10-03).
+ */
+export function fitSentences(text: string, limit: number = MAX_DESCRIPTION_LENGTH): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= limit) return clean;
+  let out = '';
+  for (const sentence of sentencesOf(clean)) {
+    const next = out ? `${out} ${sentence}` : sentence;
+    if (next.length > limit) break;
+    out = next;
+  }
+  // A lone short sentence ("Airtime is a feeling.") says less than a clipped longer one.
+  if (out.length >= MIN_SENTENCE_DESCRIPTION) return out;
+  return `${clean.slice(0, limit - 1).replace(/[\s,;:–-]+\S*$/, '')}…`;
+}
+
+/**
  * Builds the openGraph + twitter metadata objects that are identical across all pages.
  * Eliminates ~12 lines of boilerplate per page.
  */

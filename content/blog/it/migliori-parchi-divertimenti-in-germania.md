@@ -34,10 +34,8 @@ coverImage:
 seo:
   title: 'I migliori parchi divertimenti in Germania nel 2026: classifica con tempi di attesa'
   description: >-
-    Europa-Park, Phantasialand, Heide Park, Hansa-Park, Movie Park, Plopsaland
-    e Legoland a confronto: una classifica per gli appassionati di montagne
-    russe, una per le famiglie, più i tempi di attesa misurati e il giorno
-    della settimana più tranquillo per ogni parco.
+    Europa-Park, Phantasialand, Heide Park, Hansa-Park, Movie Park, Plopsaland e
+    Legoland in due classifiche, per chi ama i coaster e per le famiglie.
   keywords:
     - migliori parchi divertimenti Germania
     - migliori parchi divertimenti Germania 2026

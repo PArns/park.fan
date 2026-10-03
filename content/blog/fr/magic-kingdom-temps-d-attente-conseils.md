@@ -35,9 +35,9 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026 : où et quand les files sont longues'
   description: >-
-    Les temps d’attente du Magic Kingdom, en Floride : les files les plus
-    courtes des quatre parcs Disney dans le parc le plus visité du monde, quand
-    passer à TRON, ce que coûte Lightning Lane et quels mois sont calmes.
+    Le parc le plus visité du monde a les files les plus courtes des parcs
+    Disney de Floride. Quand aller à TRON, le prix de Lightning Lane, les mois
+    calmes.
   keywords:
     - Magic Kingdom
     - Magic Kingdom temps d’attente

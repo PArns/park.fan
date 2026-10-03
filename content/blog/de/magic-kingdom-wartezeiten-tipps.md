@@ -34,10 +34,8 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026: wo und wann die Warteschlangen lang sind'
   description: >-
-    Wartezeit-Daten aus dem Magic Kingdom in Florida: die kürzesten
-    Warteschlangen der vier Disney-Parks im meistbesuchten Park der Welt, wann
-    TRON am kürzesten ist, was Lightning Lane kostet und welche Monate ruhig
-    sind.
+    Das Magic Kingdom hat die kürzesten Warteschlangen der vier Disney-Parks in
+    Florida. Dazu TRON, Lightning Lane und die ruhigen Monate.
   keywords:
     - Magic Kingdom
     - Magic Kingdom Wartezeiten

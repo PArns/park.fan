@@ -33,8 +33,7 @@ seo:
   title: 'Hansa-Park 2026: Tips, Prices and Kärnan by the Sea'
   description: >-
     Hansa-Park Sierksdorf 2026: not one closed day, Herbstzauber in October,
-    ticket prices and parking, all eight coasters and the Buddenbrook-Turm
-    coming in 2027.
+    tickets and parking, eight coasters and the Buddenbrook-Turm due in 2027.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
