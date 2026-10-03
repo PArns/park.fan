@@ -1446,9 +1446,9 @@ const doubleDown: CoasterElementDef = {
 //    disc, so the train leaves along the track it arrived on. The cars turn
 //    about the disc centre as one rigid body, which is why the nose swings
 //    out and the rear swings in. ───────────────────────────────────────────────
-const TURNTABLE_LENGTH = 17; // x from −14 to 3
+const TURNTABLE_LENGTH = 16.5; // x from −14 to 2.5, inside the disc rim
 const TURNTABLE_CENTRE = 14 / TURNTABLE_LENGTH; // the disc centre, as a fraction of the curve
-const TURNTABLE_EDGE = 3 / TURNTABLE_LENGTH; // where the train stands when the run starts and ends
+const TURNTABLE_EDGE = 2.5 / TURNTABLE_LENGTH; // where the train stands when the run starts and ends
 const turntable: CoasterElementDef = {
   id: 'turntable',
   points: [
@@ -1457,7 +1457,7 @@ const turntable: CoasterElementDef = {
     [-6, 1, 0],
     [-2, 1, 0],
     [0, 1, 0], // disc centre
-    [3, 1, 0],
+    [2.5, 1, 0],
   ],
   turntable: {
     at: [0, 1, 0],
