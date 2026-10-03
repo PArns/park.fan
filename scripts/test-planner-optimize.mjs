@@ -1713,6 +1713,17 @@ function benchInput(n) {
       ),
     `Feierabend ${found.endMinute}`
   );
+  // Dieselbe Regel auf der anderen Seite: der Ist-Zustand rechnet das Ende wie
+  // die Suche, sonst meldet der Knopf einen Unterschied auf einem unveränderten Tag.
+  const applied = found.stops.map((stop, i) =>
+    entry(`p${i}`, stop.attractionSlug, stop.startMinute)
+  );
+  const current = scoreCurrent({ day: payload, grid: g, entries: applied });
+  check(
+    'scoreCurrent endet auf demselben Minutenwert wie die Suche',
+    current !== null && current.endMinute === found.endMinute,
+    `${current?.endMinute} gegen ${found.endMinute}`
+  );
 }
 
 // ── Early entry (PAR-199) ────────────────────────────────────────────────────
