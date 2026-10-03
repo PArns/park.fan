@@ -1313,6 +1313,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'trim-brake',
       es: 'trim-brake',
     },
+    player: { element: 'trim-brake' },
   },
   {
     id: 'rollback',
