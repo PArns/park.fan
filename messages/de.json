@@ -2568,7 +2568,7 @@
     "page": {
       "kicker": "Tagesplaner",
       "title": "Deinen Parktag Bahn für Bahn planen",
-      "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob der Tag so aufgeht. Alles liegt in deinem Browser, kein Konto nötig.",
+      "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob der Tag so aufgeht. Der Tagesplaner kostet nichts, liegt in deinem Browser und braucht kein Konto.",
       "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
       "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste, Shows und Pausen dazwischen, Hinweis, wo dein Kind zu klein ist.",
       "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",
