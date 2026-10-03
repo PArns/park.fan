@@ -1133,6 +1133,77 @@ const blockBrake: CoasterElementDef = {
   },
 };
 
+// ── Trim brake — a brake run on a hill crest that only bleeds speed. The train
+//    drops, climbs the next hill and meets the caliper housings at the top; the
+//    pads close part-way, so it slows (here to about a third of its speed) but is
+//    never held, then rolls on down the far side and gathers speed again. This is
+//    the difference from the block brake above: no standstill, no hold, and the
+//    run sits on a curve instead of a level stretch. Reference: Wikipedia "Brake
+//    (roller coaster)" — "Trim brakes are brake run sections that reduce the
+//    speed of the train but cannot stop the train completely", engineered in or
+//    retrofitted where trains run faster than intended. ──────────────────────
+// Relative speed at track position s (1 = free-rolling). Keyed to the position
+// of the caliper run (0.5..0.72), not to the clock: the train must already be
+// slowing when it meets the housings and speed up only once it has left them.
+const TRIM_SPEED = (s: number): number => {
+  const slow = 0.35;
+  if (s < 0.1) return 0.55 + 0.45 * smoothstep(0, 0.1, s); // rolling in off the drop
+  const slowed = 1 + (slow - 1) * smoothstep(0.46, 0.54, s); // pads close
+  return slowed + (1 - slow) * smoothstep(0.7, 0.86, s); // pads open, speed returns
+};
+// Time to reach each track position, integrated once; `pace` inverts it so the
+// timeline (t) maps to a position (s) that honours the speed profile above.
+const TRIM_PACE: number[] = (() => {
+  const n = 400;
+  const time = [0];
+  for (let i = 1; i <= n; i++) time.push(time[i - 1] + 1 / n / TRIM_SPEED((i - 0.5) / n));
+  const total = time[n];
+  const pace: number[] = [];
+  let j = 0;
+  for (let i = 0; i <= n; i++) {
+    const t = i / n;
+    while (j < n - 1 && time[j + 1] / total < t) j++;
+    const t0 = time[j] / total;
+    const t1 = time[j + 1] / total;
+    pace.push((j + (t1 > t0 ? (t - t0) / (t1 - t0) : 0)) / n);
+  }
+  pace[0] = 0;
+  pace[n] = 1;
+  return pace;
+})();
+const trimBrake: CoasterElementDef = {
+  id: 'trim-brake',
+  points: [
+    [-13, 8, 0],
+    [-11, 7.8, 0],
+    [-9, 6, 0],
+    [-7, 3.2, 0],
+    [-5, 1.4, 0], // valley
+    [-3, 1.5, 0],
+    [-1, 3, 0],
+    [1, 5.4, 0],
+    [3, 7.2, 0], // hill crest — brake run starts on the way up
+    [5, 7.9, 0],
+    [7, 7.4, 0],
+    [9, 5.8, 0],
+    [11, 3.4, 0],
+    [13, 2.2, 0],
+  ],
+  keyPoints: [
+    { t: 0.12, label: 'approach' },
+    { t: 0.5, label: 'brake' },
+    { t: 0.9, label: 'leave' },
+  ],
+  duration: 10,
+  brake: { from: 0.5, to: 0.72 },
+  pace: (t) => {
+    const n = TRIM_PACE.length - 1;
+    const x = Math.min(1, Math.max(0, t)) * n;
+    const i = Math.min(n - 1, Math.floor(x));
+    return TRIM_PACE[i] + (TRIM_PACE[i + 1] - TRIM_PACE[i]) * (x - i);
+  },
+};
+
 // ── Interlocking loops — two vertical loops whose planes lean opposite ways so
 //    they cross through each other (chain-link). The train rides both; each
 //    inverts via parallel transport. ──────────────────────────────────────────
@@ -1580,6 +1651,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   's-hill': sHill,
   lifthill,
   'block-brake': blockBrake,
+  'trim-brake': trimBrake,
   'interlocking-loops': interlockingLoops,
   launch,
   'vertical-lift': verticalLift,
