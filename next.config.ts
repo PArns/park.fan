@@ -1211,6 +1211,8 @@ const nextConfig: NextConfig = {
         // request, which is the transfer line rather than the compute one.
         ...plannerHeaderSegments,
         'fancast',
+        // Static copy and links, rebuilt with each deploy.
+        'developers',
       ].map((segment) => ({
         source: `/:locale/${segment}`,
         headers: edgeCache(CONTENT_WINDOW),

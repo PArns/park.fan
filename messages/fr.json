@@ -448,7 +448,8 @@
     "copyright": "© {year} park.fan. Tous droits réservés.",
     "poweredBy": "Propulsé par",
     "legalLinks": "Légal",
-    "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place."
+    "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place.",
+    "developers": "Développeurs"
   },
   "explore": {
     "title": "Temps d’attente des Parcs d’attractions à {location}",
@@ -2689,6 +2690,77 @@
     "filter": {
       "label": "Filtrer par parc",
       "all": "Tous les parcs"
+    }
+  },
+  "developers": {
+    "meta": {
+      "title": "API et accès pour agents | park.fan",
+      "description": "L'API park.fan ne demande aucune clé. Où trouver la description OpenAPI, le serveur MCP, les skills pour agents et llms.txt, et ce que vous pouvez faire des données."
+    },
+    "hero": {
+      "title": "API et accès pour agents",
+      "lead": "park.fan publie ses temps d'attente et ses prévisions d'affluence sous forme d'API ouverte, et se décrit aux logiciels qui arrivent avec une question. Cette page indique ce qui existe et où."
+    },
+    "api": {
+      "heading": "L'API",
+      "body": "Les données de chaque page viennent de api.park.fan. C'est une API JSON, sans clé ni compte.",
+      "items": {
+        "reference": {
+          "label": "Référence de l'API",
+          "note": "Tous les endpoints, avec paramètres et exemples de réponses."
+        },
+        "openapi": {
+          "label": "Description OpenAPI",
+          "note": "La même API sous forme de document lisible par machine, pour générer un client."
+        },
+        "catalog": {
+          "label": "Catalogue d'API",
+          "note": "Un linkset (RFC 9727) qui renvoie à l'API, à sa description et à sa documentation."
+        }
+      }
+    },
+    "agents": {
+      "heading": "Pour les agents et assistants",
+      "body": "Des documents qui disent à un assistant ce qu'est park.fan et comment l'utiliser. Ce sont de simples fichiers.",
+      "items": {
+        "llms": {
+          "label": "llms.txt",
+          "note": "Le site en une page, pour un modèle qui ne connaît que le nom d'hôte."
+        },
+        "skills": {
+          "label": "Skills pour agents",
+          "note": "Trois skills : lire les temps d'attente, choisir un jour, récupérer les données. L'index donne un hash SHA-256 par fichier."
+        },
+        "aiCatalog": {
+          "label": "Manifeste de capacités",
+          "note": "Tout ce qui figure dans cette liste dans un document typé (ARD)."
+        },
+        "serverCard": {
+          "label": "Carte du serveur MCP",
+          "note": "Où se trouve le serveur MCP et quels outils il propose."
+        },
+        "license": {
+          "label": "Conditions d'usage (RSL)",
+          "note": "Les conditions ci-dessous sous forme lisible par machine."
+        }
+      }
+    },
+    "mcp": {
+      "heading": "Serveur MCP",
+      "body": "Un serveur MCP en lecture seule répond à l'adresse ci-dessous. Il a trois outils et ne demande aucune authentification.",
+      "tools": {
+        "search": "Trouver un parc, une attraction, un spectacle ou une ville par son nom. Renvoie l'adresse de page de chaque résultat.",
+        "waitTimes": "Les temps d'attente actuels de toutes les attractions d'un parc, avec l'état du parc et l'affluence.",
+        "bestDays": "La prévision d'affluence pour les 90 prochains jours, avec l'état d'ouverture et les jours fériés."
+      }
+    },
+    "terms": {
+      "heading": "Ce que vous pouvez faire des données",
+      "noKey": "L'API et les documents ci-dessus ne demandent aucune clé. Les temps d'attente changent environ toutes les cinq minutes ; interroger plus souvent renvoie les mêmes valeurs.",
+      "markdown": "Chaque page répond aussi à une requête Accept: text/markdown : vous la lisez comme des données, sans analyser de HTML.",
+      "training": "Lire une page pour répondre à une question est autorisé. Entraîner un modèle sur ces pages ne l'est pas.",
+      "credit": "Si vous affichez un chiffre, citez park.fan et liez la page d'où il vient.",
+      "admin": "Le back-office est réservé aux personnes qui font tourner le site. Il ne fait pas partie de cette offre."
     }
   }
 }
