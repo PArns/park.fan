@@ -3187,6 +3187,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'draaischijf',
       es: 'plataforma-giratoria',
     },
+    player: { element: 'turntable' },
   },
   {
     id: 'treble-clef',

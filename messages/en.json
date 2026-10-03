@@ -448,7 +448,8 @@
     "copyright": "© {year} park.fan. All rights reserved.",
     "poweredBy": "Powered by",
     "legalLinks": "Legal",
-    "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site."
+    "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site.",
+    "developers": "Developers"
   },
   "explore": {
     "title": "Theme Park Wait Times in {location}",
@@ -1143,11 +1144,11 @@
       "h1Suffix": "with kids",
       "metaTitle": "{park} with kids: rides by height",
       "metaTitleShort": "{park} with kids",
-      "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
-      "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} of {total} attractions post a minimum height, in {steps} steps.",
+      "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
+      "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
+      "lead": "{inParkLeading}, {withHeight} of {total} attractions have a minimum height, in {steps} steps.",
       "tiersTitle": "What fits at which height",
-      "tiersHint": "{withHeight} of {total} attractions post a minimum height. Every step is a limit the park names itself.",
+      "tiersHint": "{withHeight} of {total} attractions have a minimum height. Every step is a limit the park sets itself.",
       "noLimitTitle": "No minimum height posted",
       "noLimitSummary": "{count, plural, =1 {The attraction without a limit} other {The {count} attractions without a limit}}",
       "noLimitNote": "The park names no limit for these. Whether the ride is open to every height or the figure is just missing, we can’t tell. What’s posted at the ride entrance is what counts.",
@@ -1168,7 +1169,8 @@
       "nextCalendarBody": "Expected crowds day by day, with holidays and opening hours.",
       "linkTitle": "With kids",
       "linkAnchor": "{park} with kids",
-      "linkBody": "{withHeight} of {total} attractions post a minimum height. Which ride from which height, in {steps} steps."
+      "linkBody": "{withHeight} of {total} attractions have a minimum height. Which ride from which height, in {steps} steps.",
+      "filterToList": "Go to the attractions list"
     },
     "planDayCta": "Plan a day at {park}",
     "dayComparison": {
@@ -2692,6 +2694,77 @@
     "filter": {
       "label": "Filter by park",
       "all": "All parks"
+    }
+  },
+  "developers": {
+    "meta": {
+      "title": "API and agent access | park.fan",
+      "description": "The park.fan API needs no key. Where to find the OpenAPI description, the MCP server, the agent skills and llms.txt, and what you may do with the data."
+    },
+    "hero": {
+      "title": "API and agent access",
+      "lead": "park.fan publishes its wait times and crowd forecasts as an open API, and it describes itself to software that arrives with a question. This page lists what exists and where."
+    },
+    "api": {
+      "heading": "The API",
+      "body": "The data behind every page comes from api.park.fan. It is a JSON API and needs no key or account.",
+      "items": {
+        "reference": {
+          "label": "API reference",
+          "note": "Every endpoint with parameters and example responses."
+        },
+        "openapi": {
+          "label": "OpenAPI description",
+          "note": "The same API as a machine-readable document, for generating a client."
+        },
+        "catalog": {
+          "label": "API catalog",
+          "note": "A linkset (RFC 9727) that points to the API, its description and its documentation."
+        }
+      }
+    },
+    "agents": {
+      "heading": "For agents and assistants",
+      "body": "Documents that tell an assistant what park.fan is and how to use it. They are served as plain files.",
+      "items": {
+        "llms": {
+          "label": "llms.txt",
+          "note": "The site in one page, for a model that has only the hostname."
+        },
+        "skills": {
+          "label": "Agent skills",
+          "note": "Three skills: reading wait times, picking a day, and fetching the data. The index lists a SHA-256 digest for each file."
+        },
+        "aiCatalog": {
+          "label": "Capability manifest",
+          "note": "Everything on this list in one typed document (ARD)."
+        },
+        "serverCard": {
+          "label": "MCP server card",
+          "note": "Where the MCP server is and which tools it offers."
+        },
+        "license": {
+          "label": "Usage terms (RSL)",
+          "note": "The terms below in machine-readable form."
+        }
+      }
+    },
+    "mcp": {
+      "heading": "MCP server",
+      "body": "A read-only MCP server answers on the address below. It has three tools and needs no authentication.",
+      "tools": {
+        "search": "Find a park, ride, show or city by name. Returns the page URL of each hit.",
+        "waitTimes": "Current wait times for every ride in a park, with the park status and the crowd level.",
+        "bestDays": "The crowd forecast for the next 90 days, with opening status and holidays."
+      }
+    },
+    "terms": {
+      "heading": "What you may do with the data",
+      "noKey": "The API and the documents above need no key. Wait times change about every five minutes, so asking more often returns the same values.",
+      "markdown": "Every page also answers a request with Accept: text/markdown, so you can read it as data without parsing HTML.",
+      "training": "Reading a page to answer a question is allowed. Training a model on the pages is not.",
+      "credit": "If you show a number, name park.fan and link the page it came from.",
+      "admin": "The back office is for the people who run the site. It is not part of this offer."
     }
   }
 }

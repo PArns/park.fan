@@ -67,6 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const searchAlternates = buildAlternates(() => '/search');
   const fancastAlternates = buildAlternates(() => '/fancast');
   const contributeAlternates = buildAlternates(() => '/contribute');
+  const developersAlternates = buildAlternates(() => '/developers');
 
   for (const locale of locales) {
     routes.push(
@@ -102,6 +103,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.4,
         alternates: contributeAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/developers`,
+        changeFrequency: 'monthly',
+        priority: 0.4,
+        alternates: developersAlternates,
       }
     );
   }

@@ -38,6 +38,9 @@ interface LiveParkDataProps {
   /** The park's rides that closed for good, for the ride search. Server-built, day-stable, and
    *  absent for the parks without one. */
   closedRides?: readonly ClosedRideSearchItem[];
+  /** What the page renders under the tabs, handed to <TabsWithHash> so the „Mit Kindern“ block in
+   *  it can read the rider-height filter — see `TabsWithHashProps.belowTabs`. */
+  belowTabs?: React.ReactNode;
 }
 
 /**
@@ -61,6 +64,7 @@ export function LiveParkData({
   otherAttractionsLabel,
   todayPanel,
   closedRides,
+  belowTabs,
 }: LiveParkDataProps) {
   const { data: park } = useLiveParkData({
     continent,
@@ -117,6 +121,7 @@ export function LiveParkData({
         attractionsByLand={currentAttractionsByLand}
         todayPanel={todayPanel}
         closedRides={closedRides}
+        belowTabs={belowTabs}
       />
     </RideAlertParkProvider>
   );
