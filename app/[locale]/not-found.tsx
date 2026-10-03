@@ -2,6 +2,13 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { GlassCard } from '@/components/common/glass-card';
 import { buttonLinkProps } from '@/components/ui/button';
+import { notFoundMetadata } from '@/lib/seo/not-found-metadata';
+import type { Metadata } from 'next';
+
+/** Its own head instead of the layout's homepage title and canonical; see `notFoundMetadata`. */
+export async function generateMetadata(): Promise<Metadata> {
+  return notFoundMetadata(await getLocale());
+}
 
 // Locale-scoped 404: renders inside the [locale] layout, so visitors keep the
 // full site chrome (header, search, footer) and crawlers get internal links

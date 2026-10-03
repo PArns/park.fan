@@ -16,6 +16,7 @@ import { AGENT_SKILLS_INDEX_PATH } from '@/lib/agents/skills';
 import { MCP_ENDPOINT_PATH, MCP_SERVER_CARD_PATH } from '@/lib/agents/mcp-server-card';
 import { RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { TOOL_DESCRIPTORS } from '@/lib/agents/tool-descriptors';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 
 /**
  * `/developers`: the human-readable front door to what `lib/agents/` serves to machines.
@@ -139,9 +140,19 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'developers' });
+  const tFooter = await getTranslations({ locale, namespace: 'footer' });
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:py-12">
+      {/* The page had no structured data at all (SEO run, 2026-10-03). The same two-step trail
+          Fancast emits, named the way the footer links the page. */}
+      <BreadcrumbStructuredData
+        breadcrumbs={[
+          { name: 'park.fan', url: '/' },
+          { name: tFooter('developers'), url: '/developers' },
+        ]}
+        locale={locale}
+      />
       <header className="mb-10">
         <h1 className="text-3xl font-bold sm:text-4xl">{t('hero.title')}</h1>
         <p className="text-muted-foreground mt-3 max-w-2xl text-base sm:text-lg">

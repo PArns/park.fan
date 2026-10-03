@@ -38,6 +38,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.rideDialog',
     'stats',
   ],
+  '/[...rest]': [],
   '/alerts': ['pushAlerts.overview', 'pushAlerts.pushErrors'],
   '/best-time-to-visit': ['nearby', 'parkCard'],
   '/blog': ['nearby', 'parkCard'],
