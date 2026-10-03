@@ -2558,7 +2558,7 @@
     "page": {
       "kicker": "Trip planner",
       "title": "Plan your park day ride by ride",
-      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether the day adds up. Everything stays in your browser, and you need no account.",
+      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether the day adds up. The trip planner is free, stays in your browser and needs no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
       "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
