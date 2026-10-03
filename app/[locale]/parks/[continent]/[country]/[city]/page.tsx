@@ -21,6 +21,7 @@ import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
+import { CitySummarySection } from '@/components/parks/city-summary-section';
 
 interface CityPageProps {
   params: Promise<{ locale: string; continent: string; country: string; city: string }>;
@@ -202,6 +203,12 @@ export default async function CityPage({ params }: CityPageProps) {
           currentPage={cityCurrentPage}
           title={t('parksIn', { location: city.name })}
           description={t('parkCount', { count: parks.length })}
+        />
+
+        <CitySummarySection
+          cityName={city.name}
+          parkNames={parks.map((park) => stripNewPrefix(park.name))}
+          locale={locale}
         />
 
         {/* Parks Grid — status-free shell (cacheable); live status overlaid client-side. */}
