@@ -614,7 +614,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Seven house rules that are not in anybody's research. They came out of real reviews of shipped
+Eight house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -662,6 +662,15 @@ Wartezeiten seit Dezember 2025`, `measured every five minutes`. `real` stays whe
    `la respuesta a`, `la risposta a`. The phrase announces an answer instead of giving it: write
    the answer. It was a stock-phrase warning on the morning of 2026-10-02 and an error by the
    afternoon; `pnpm check:prose` fails on it in every language and on every surface.
+8. **Never `nennen eine`.** `35 von 40 Attraktionen nennen eine Mindestgröße` hands a person's
+   verb to a ride (§2.13): a ride names nothing, the park sets a limit and it applies at the
+   entrance. Write where it applies: `Bei 35 von 40 Attraktionen gilt eine Mindestgröße.` It stood
+   in four strings of the „Mit Kindern“ page and on the park page's card that links to it; the PO
+   put it on the list on 2026-10-03. `pnpm check:prose` fails on `nennen eine` and on the Dutch
+   calque `noemen een` on every surface. Only the plural: `RCDB noemt een dive loop` is a source
+   naming a figure. French, Spanish, Italian and English wrote the same habit with verbs that have
+   plain uses too (`indiquent une`, `indican una`, `post a`); those strings were rewritten, and the
+   verbs stay off the list.
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -1107,7 +1116,8 @@ output the way a regex can actually be trusted to:
 - **Errors** are rules with no legitimate exception: a `—` in a post body or in German or Dutch
   prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that
   can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
-  with a straight `"`, `die Antwort auf` in any of its six languages (§3.3).
+  with a straight `"`, `die Antwort auf` in any of its six languages, `nennen eine` and its
+  Dutch twin (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 

@@ -66,6 +66,18 @@ export interface CoasterElementDef {
    * climb: past the point where the track lifts, the real hardware has stopped.
    */
   lsm?: { from: number; to: number };
+  /**
+   * Turntable: a rotating disc under the train at `at`, which must lie on the
+   * curve with a straight stretch of at least `radius` either side. The train
+   * rides in, stops with its centre on the disc and turns on the spot by
+   * `yaw(t)` radians about the vertical, then leaves the way it came, so
+   * `pace` runs back down the curve instead of staying monotonic.
+   *
+   * The track under the disc is not drawn as part of the curve; the disc
+   * carries its own rails and turns with the train. Put the curve's end inside
+   * the disc, one half-train past `at`, so the cars have track to stand on.
+   */
+  turntable?: { at: [number, number, number]; radius: number; yaw: (t: number) => number };
 }
 
 // — small easing helpers —
@@ -1424,6 +1436,49 @@ const doubleDown: CoasterElementDef = {
   duration: 7,
 };
 
+// ── Turntable — a piece of track on a rotating disc. The train rolls onto the
+//    disc and stops, the disc turns it through 180 degrees, and it rolls back
+//    off facing the other way. Reference: the turntable on Voltron Nevera at
+//    Europa-Park (Mack Rides, 2024), which turns the train between the boost
+//    launch and the halfpipe launch, and doubles as the switch to the
+//    maintenance barn; the same machine railways use to turn a locomotive
+//    round at a depot. Modelled as a spur: one straight lead-in ending on the
+//    disc, so the train leaves along the track it arrived on. The cars turn
+//    about the disc centre as one rigid body, which is why the nose swings
+//    out and the rear swings in. ───────────────────────────────────────────────
+const TURNTABLE_LENGTH = 16.5; // x from −14 to 2.5, inside the disc rim
+const TURNTABLE_CENTRE = 14 / TURNTABLE_LENGTH; // the disc centre, as a fraction of the curve
+const TURNTABLE_EDGE = 2.5 / TURNTABLE_LENGTH; // where the train stands when the run starts and ends
+const turntable: CoasterElementDef = {
+  id: 'turntable',
+  points: [
+    [-14, 1, 0],
+    [-10, 1, 0],
+    [-6, 1, 0],
+    [-2, 1, 0],
+    [0, 1, 0], // disc centre
+    [2.5, 1, 0],
+  ],
+  turntable: {
+    at: [0, 1, 0],
+    radius: 2.9,
+    yaw: (t) => Math.PI * smoothstep(0.4, 0.6, t),
+  },
+  pace: (t) => {
+    const ease = (u: number) => smoothstep(0, 1, u);
+    if (t < 0.36) return TURNTABLE_EDGE + (TURNTABLE_CENTRE - TURNTABLE_EDGE) * ease(t / 0.36);
+    if (t < 0.64) return TURNTABLE_CENTRE; // stopped on the disc while it turns
+    return TURNTABLE_CENTRE - (TURNTABLE_CENTRE - TURNTABLE_EDGE) * ease((t - 0.64) / 0.36);
+  },
+  keyPoints: [
+    { t: 0.2, label: 'approach' },
+    { t: 0.5, label: 'turn' },
+    { t: 0.82, label: 'leave' },
+  ],
+  duration: 10,
+  defaultView: 'follow',
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -1467,6 +1522,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'step-up-under-flip': stepUpUnderFlip,
   'twisted-horseshoe-roll': twistedHorseshoeRoll,
   'double-down': doubleDown,
+  turntable,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

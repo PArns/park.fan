@@ -448,7 +448,8 @@
     "copyright": "© {year} park.fan. Tutti i diritti riservati.",
     "poweredBy": "Powered by",
     "legalLinks": "Note legali",
-    "disclaimer": "Tutte le informazioni sono fornite senza garanzia. I tempi di attesa e le informazioni sullo stato visualizzati sono forniti automaticamente e possono differire dalla situazione reale sul posto."
+    "disclaimer": "Tutte le informazioni sono fornite senza garanzia. I tempi di attesa e le informazioni sullo stato visualizzati sono forniti automaticamente e possono differire dalla situazione reale sul posto.",
+    "developers": "Sviluppatori"
   },
   "explore": {
     "title": "Tempi di attesa dei Parchi a tema in {location}",
@@ -1143,11 +1144,11 @@
       "h1Suffix": "con i bambini",
       "metaTitle": "{park} con i bambini: attrazioni per altezza",
       "metaTitleShort": "{park} con i bambini",
-      "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? {withHeight} attrazioni su {total} indicano un'altezza minima, le prime da {low} cm.",
-      "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? {withHeight} attrazioni su {total} indicano un'altezza minima, le prime da {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} attrazioni su {total} indicano un'altezza minima, in {steps} gradini.",
+      "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
+      "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
+      "lead": "{inParkLeading} è richiesta un'altezza minima per {withHeight} attrazioni su {total}, in {steps} gradini.",
       "tiersTitle": "Cosa è possibile a quale altezza",
-      "tiersHint": "{withHeight} attrazioni su {total} indicano un'altezza minima. Ogni gradino è un limite che il parco indica da sé.",
+      "tiersHint": "Per {withHeight} attrazioni su {total} è richiesta un'altezza minima. Ogni gradino è un limite che il parco indica da sé.",
       "noLimitTitle": "Senza altezza minima indicata",
       "noLimitSummary": "{count, plural, =1 {L'attrazione senza indicazione} other {Le {count} attrazioni senza indicazione}}",
       "noLimitNote": "Il parco non indica alcun limite per queste. Non si capisce se l'attrazione sia aperta a ogni altezza o se il dato manchi. Vale l'altezza minima indicata all'ingresso dell'attrazione.",
@@ -1168,7 +1169,8 @@
       "nextCalendarBody": "Affluenza prevista giorno per giorno, con vacanze e orari.",
       "linkTitle": "Con i bambini",
       "linkAnchor": "{park} con i bambini",
-      "linkBody": "{withHeight} attrazioni su {total} indicano un'altezza minima. Quale attrazione da quale altezza, in {steps} gradini."
+      "linkBody": "Per {withHeight} attrazioni su {total} è richiesta un'altezza minima. Quale attrazione da quale altezza, in {steps} gradini.",
+      "filterToList": "Vai all'elenco delle attrazioni"
     },
     "planDayCta": "Pianifica una giornata a {park}",
     "dayComparison": {
@@ -2689,6 +2691,77 @@
     "filter": {
       "label": "Filtra per parco",
       "all": "Tutti i parchi"
+    }
+  },
+  "developers": {
+    "meta": {
+      "title": "API e accesso per agenti | park.fan",
+      "description": "L'API di park.fan non richiede chiavi. Dove trovare la descrizione OpenAPI, il server MCP, le skill per agenti e llms.txt, e cosa puoi fare con i dati."
+    },
+    "hero": {
+      "title": "API e accesso per agenti",
+      "lead": "park.fan pubblica tempi di attesa e previsioni di affollamento come API aperta e si descrive al software che arriva con una domanda. Questa pagina elenca cosa c'è e dove."
+    },
+    "api": {
+      "heading": "L'API",
+      "body": "I dati di ogni pagina arrivano da api.park.fan. È un'API JSON e non servono chiave né account.",
+      "items": {
+        "reference": {
+          "label": "Riferimento API",
+          "note": "Tutti gli endpoint con parametri ed esempi di risposta."
+        },
+        "openapi": {
+          "label": "Descrizione OpenAPI",
+          "note": "La stessa API come documento leggibile da macchina, per generare un client."
+        },
+        "catalog": {
+          "label": "Catalogo API",
+          "note": "Un linkset (RFC 9727) che rimanda all'API, alla sua descrizione e alla documentazione."
+        }
+      }
+    },
+    "agents": {
+      "heading": "Per agenti e assistenti",
+      "body": "Documenti che dicono a un assistente cos'è park.fan e come usarlo. Sono file semplici.",
+      "items": {
+        "llms": {
+          "label": "llms.txt",
+          "note": "Il sito in una pagina, per un modello che conosce solo il nome host."
+        },
+        "skills": {
+          "label": "Skill per agenti",
+          "note": "Tre skill: leggere i tempi di attesa, scegliere un giorno, recuperare i dati. L'indice riporta un hash SHA-256 per file."
+        },
+        "aiCatalog": {
+          "label": "Manifesto delle capacità",
+          "note": "Tutto ciò che è in questo elenco in un documento tipizzato (ARD)."
+        },
+        "serverCard": {
+          "label": "Scheda del server MCP",
+          "note": "Dove si trova il server MCP e quali strumenti offre."
+        },
+        "license": {
+          "label": "Condizioni d'uso (RSL)",
+          "note": "Le condizioni qui sotto in forma leggibile da macchina."
+        }
+      }
+    },
+    "mcp": {
+      "heading": "Server MCP",
+      "body": "Un server MCP di sola lettura risponde all'indirizzo qui sotto. Ha tre strumenti e non richiede autenticazione.",
+      "tools": {
+        "search": "Trovare un parco, un'attrazione, uno spettacolo o una città per nome. Restituisce l'indirizzo della pagina di ogni risultato.",
+        "waitTimes": "I tempi di attesa attuali di tutte le attrazioni di un parco, con lo stato del parco e l'affollamento.",
+        "bestDays": "La previsione di affollamento dei prossimi 90 giorni, con stato di apertura e festività."
+      }
+    },
+    "terms": {
+      "heading": "Cosa puoi fare con i dati",
+      "noKey": "L'API e i documenti qui sopra non richiedono chiavi. I tempi di attesa cambiano circa ogni cinque minuti; chiedere più spesso restituisce gli stessi valori.",
+      "markdown": "Ogni pagina risponde anche a una richiesta con Accept: text/markdown, così la leggi come dati senza analizzare HTML.",
+      "training": "Leggere una pagina per rispondere a una domanda è consentito. Addestrare un modello sulle pagine no.",
+      "credit": "Se mostri un numero, cita park.fan e collega la pagina da cui viene.",
+      "admin": "Il back-office è per le persone che gestiscono il sito. Non fa parte di questa offerta."
     }
   }
 }
