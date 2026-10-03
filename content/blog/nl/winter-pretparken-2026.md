@@ -2,6 +2,7 @@
 title: 'Pretparken in de winter: wie in december opengaat en wie dat niet kan betalen'
 translationKey: winter-parks-2026
 date: '2026-09-03'
+updatedAt: '2026-10-03'
 author: patrick
 mode: published
 featured: false
@@ -109,9 +110,10 @@ en met 13 november, er zit dus geen pauze tussen.
 Gesloten is het op vijf dagen: 24 en 25 december, 1 januari en 12 en
 13 januari 2027. Op oudejaarsavond stopt het om 18 uur, op tijd voor je eigen
 vuurwerk. Tickets zijn er alleen online en alleen voor een vaste datum, een
-kassa bij de ingang heeft het park niet. De voorverkooptickets vanaf **€29**
-verkoopt het park maar tot 28 september. Daarna geldt de dagprijs in de online
-kalender, en die kan volgens het park elke dag stijgen.
+kassa bij de ingang heeft het park niet. Voorverkooptickets zijn
+goedkoper dan de dagprijs, en het contingent per bezoekdag is beperkt. De online
+shop toont de actuele prijs, en de dagprijs in de kalender kan volgens het park
+elke dag stijgen.
 
 ![De toren van Mystery Castle in de mist, van onderen aangelicht | Mystery Castle laat je 65 meter vallen, helemaal binnen in de toren. Ijzel buiten maakt daar niets uit. | wide](/media/phantasialand/mystery-castle.jpg)
 
@@ -509,8 +511,8 @@ winter zit er voor het eerst een hele december in.
 ## Datum, attractielijst, dikke jas
 
 1. **De prijs hangt aan de datum, en aan de dag waarop je koopt.** Phantasialand
-   verkoopt alleen gedateerde online tickets; de €29 was een voorverkoopprijs tot
-   28 september, daarna geldt de dagprijs. Legoland verkoopt vroegboektickets tot
+   verkoopt alleen gedateerde online tickets; voorverkooptickets zijn goedkoper dan de
+   dagprijs, en het contingent per dag is beperkt. Legoland verkoopt vroegboektickets tot
    4 oktober en laat je de dag later kiezen, en Walibi Belgium vraagt helemaal
    geen datum.
 2. **Lees de attractielijst voordat je boekt.** In de zomer is de vraag hoe lang
@@ -549,7 +551,7 @@ ijsbaan staat weer in het Berlijnse deel van het park._
 
 ### Bronnen & verder lezen
 
-- Phantasialand, data, openingstijden, sluitingsdagen en voorverkoop tot 28 september: [Wintertraum (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/) · [Openingstijden (officieel)](https://www.phantasialand.de/nl/themapark/openingstijden/) · [Tickets (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/)
+- Phantasialand, data, openingstijden, sluitingsdagen en voorverkoop: [Wintertraum (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/) · [Openingstijden (officieel)](https://www.phantasialand.de/nl/themapark/openingstijden/) · [Tickets (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/)
 - Phantasialand, shows, rustdagen, MAGIC SYMPHONY bij harde wind, gesloten attracties: [Wintershows (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/wintershows/) · [Attracties in de winter (officieel)](https://www.phantasialand.de/nl/themapark/overzicht-winter/)
 - Europa-Park, seizoenen, HALLOWinter en winterseizoen: [Openingstijden en seizoenen (officieel)](https://www.europapark.de/nl/attractiepark/informatie/plan-je-bezoek/openingstijden-en-seizoenen-europa-park) · [Winterseizoen 2026/2027 met dinnershow en oudjaar (officieel)](https://www.europapark.de/nl/overnachten/arrangementen/winterseizoen-20262027)
 - Euro-Mir, afscheid op 9 januari 2027, de Mir-module, nieuw ruimtegebied in 2028: [Goodbye, Euro-Mir! (officieel)](https://www.europapark.de/nl/attractiepark/goodbye-euro-mir)
