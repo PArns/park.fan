@@ -32,8 +32,9 @@ coverImage:
 seo:
   title: 'Movie Park Wartezeiten & Halloween 2026, ohne Batman'
   description: >-
-    Movie Park mit gemessenen Wartezeiten: der Wochentag, bei dem Ratgeber irren,
-    der Herbst-Fahrplan, Halloween ab 26.9. und wie du den Kassenaufschlag sparst.
+    Movie Park mit gemessenen Wartezeiten: der Wochentag, bei dem Ratgeber
+    irren, Herbst-Fahrplan, Halloween ab 26.9. und wie du den Kassenaufschlag
+    sparst.
   keywords:
     - Movie Park Germany
     - Movie Park Wartezeiten

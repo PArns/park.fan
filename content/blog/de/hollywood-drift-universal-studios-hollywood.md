@@ -24,9 +24,9 @@ rideLinks:
 seo:
   title: 'Fast & Furious: Hollywood Drift eröffnet in Universal Hollywood'
   description: >-
-    Fast & Furious: Hollywood Drift ist seit dem 16. September 2026 offen:
-    72 mph, vier Launches, drei Inversionen, drehende Fahrzeuge. Größenlimit,
-    Sitzplatz-Layout und was zur Eröffnung noch fehlt.
+    Seit 16. September 2026 in den Universal Studios Hollywood offen: 72 mph,
+    vier Launches, drehende Fahrzeuge. Größenlimit, Sitzplätze und was noch
+    fehlt.
   keywords:
     - Fast & Furious Hollywood Drift
     - Hollywood Drift Universal Studios Hollywood

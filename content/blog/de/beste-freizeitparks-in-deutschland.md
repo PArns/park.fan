@@ -34,9 +34,8 @@ coverImage:
 seo:
   title: 'Die besten Freizeitparks in Deutschland 2026: Ranking mit Wartezeiten'
   description: >-
-    Europa-Park, Phantasialand, Heide Park, Hansa-Park, Movie Park, Plopsaland
-    und Legoland im Vergleich: eine Rangliste für Achterbahnfans, eine für
-    Familien, dazu gemessene Wartezeiten und der ruhigste Wochentag je Park.
+    Europa-Park, Phantasialand, Heide Park und vier weitere in zwei Ranglisten,
+    für Achterbahnfans und für Familien, mit gemessenen Wartezeiten je Park.
   keywords:
     - beste Freizeitparks Deutschland
     - beste Freizeitparks Deutschland 2026

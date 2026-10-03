@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Walibi Holland: Untamed, esperas y terror en el pólder'
   description: >-
-    Montañas rusas en un antiguo fondo marino: Untamed y YOY con tiempos
-    de espera medidos, las Halloween Fright Nights que se pagan con gusto,
-    precios y cómo llegar.
+    Montañas rusas sobre un antiguo fondo marino. Esperas medidas de Untamed y
+    YOY, las Halloween Fright Nights que se pagan con gusto, precios y cómo
+    llegar.
   keywords:
     - Walibi Holland
     - Walibi Holland tiempos de espera

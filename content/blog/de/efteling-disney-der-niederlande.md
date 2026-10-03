@@ -30,7 +30,8 @@ coverImage:
 seo:
   title: 'Efteling: Wartezeiten, Tipps und ein höflicher Mülleimer'
   description: >-
-    Selbst gemessene Wartezeiten fürs Efteling: wann es leer ist, was Tickets kosten, warum nur fünf Millionen im Jahr reindürfen und was ein Ei an Python sollte.
+    Gemessene Wartezeiten fürs Efteling: wann es leer ist, was Tickets kosten,
+    warum nur fünf Millionen im Jahr reindürfen und was ein Ei an Python sollte.
   keywords:
     - Efteling
     - Efteling Wartezeiten

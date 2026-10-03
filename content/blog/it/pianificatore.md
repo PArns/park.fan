@@ -33,9 +33,9 @@ coverImage:
 seo:
   title: 'Pianificare la giornata al parco: le file, prima di farle'
   description: >-
-    Nel pianificatore metti le tue attrazioni su una linea del tempo, con le
-    attese previste e i percorsi fra l’una e l’altra, e prima di partire vedi se
-    la giornata sta in piedi. Senza account.
+    Metti le tue attrazioni su una linea del tempo con le attese previste e i
+    percorsi, e prima di partire vedi se la giornata sta in piedi. Senza
+    account.
   keywords:
     - pianificare una giornata al parco
     - pianificatore parco divertimenti

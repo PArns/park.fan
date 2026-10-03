@@ -34,9 +34,8 @@ rideLinks:
 seo:
   title: 'Heide Park 2026 : Colossos, temps d’attente et le bon jour'
   description: >-
-    Heide Park Soltau : temps d’attente mesurés pour Colossos et Krake, plus
-    Halloween, l’Express Ticket, les tailles minimales et le jour aux files les
-    plus courtes.
+    Les temps d’attente mesurés à Colossos et Krake, le jour aux files les plus
+    courtes, Halloween, l’Express Ticket et les tailles minimales au Heide Park.
   keywords:
     - Heide Park
     - Heide Park temps d’attente

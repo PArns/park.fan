@@ -35,9 +35,9 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026: dónde y cuándo hay colas largas'
   description: >-
-    Datos de espera de Magic Kingdom, en Florida: las colas más cortas de los
-    cuatro parques Disney en el parque más visitado del mundo, cuándo hay menos
-    cola en TRON, cuánto cuesta Lightning Lane y qué meses son tranquilos.
+    El parque más visitado del mundo tiene las colas más cortas de los cuatro
+    parques Disney. Cuándo hay menos cola en TRON y cuánto cuesta Lightning
+    Lane.
   keywords:
     - Magic Kingdom
     - Magic Kingdom tiempos de espera

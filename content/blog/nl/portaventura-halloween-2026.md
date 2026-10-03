@@ -27,9 +27,8 @@ coverImage:
 seo:
   title: 'PortAventura Halloween 2026: El Carnicero de Penitence en prijzen'
   description: >-
-    Halloween in PortAventura van 19 september tot 15 november 2026: het nieuwe
-    horrorpasaje El Carnicero de Penitence in de Far West, alle vijf pasajes
-    met prijzen, de Halloween Passports, de parade en de openingstijden.
+    Halloween in PortAventura tot 15 november 2026: alle vijf horrorpasajes met
+    prijzen, de Halloween Passports, de parade en de openingstijden.
   keywords:
     - PortAventura Halloween 2026
     - El Carnicero de Penitence

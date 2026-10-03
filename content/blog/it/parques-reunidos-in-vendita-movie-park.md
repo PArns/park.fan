@@ -31,9 +31,9 @@ coverImage:
 seo:
   title: 'Parques Reunidos in vendita: Mirabilandia, Movie Park, Bobbejaanland'
   description: >-
-    EQT ha affidato a JPMorgan la vendita di Parques Reunidos, valutato circa
-    1,7 miliardi secondo Expansión. Nel gruppo ci sono Mirabilandia, Movie Park
-    Germany, Bobbejaanland e Slagharen. Per visitatori e abbonati, per ora non cambia nulla.
+    EQT ha affidato a JPMorgan la vendita di Parques Reunidos, circa 1,7
+    miliardi secondo Expansión. Per chi va a Mirabilandia, per ora non cambia
+    nulla.
   keywords:
     - Parques Reunidos vendita
     - Mirabilandia vendita

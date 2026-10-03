@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Ententeich: Bürgerbegehren gegen Phantasialand-Erweiterung'
   description: >-
-    Seit 28. September läuft in Brühl der „Brühler Waldentscheid“ gegen die
-    Erweiterung des Phantasialands. Was der Park bauen will, welche Gutachten er
-    bezahlt und wie es seit 2003 zum Streit um den Ententeich kam.
+    Seit 28. September läuft der „Brühler Waldentscheid“. Was der Park bauen
+    will, welche Gutachten er zahlt und wie 2003 der Streit um den Ententeich
+    begann.
   keywords:
     - Phantasialand Erweiterung
     - Phantasialand Erweiterung Ententeich

@@ -29,9 +29,9 @@ coverImage:
 seo:
   title: 'Traumatica 2026 : 10 ans, THE HOTEL et le Vampire’s Club'
   description: >-
-    Traumatica à Europa-Park du 23 septembre au 7 novembre 2026 : huit
-    attractions d’horreur, la nouveauté THE HOTEL (18 ans et plus), le
-    Vampire’s Club sur deux week-ends, entrée dès 16 ans, et les prix.
+    Du 23 septembre au 7 novembre 2026, huit attractions d’horreur dont THE
+    HOTEL, réservé aux 18 ans et plus. L’âge d’entrée, le Vampire’s Club et les
+    prix.
   keywords:
     - Traumatica 2026
     - Traumatica anniversaire

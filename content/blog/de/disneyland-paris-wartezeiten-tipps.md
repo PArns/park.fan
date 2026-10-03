@@ -35,8 +35,7 @@ seo:
   title: 'Disneyland Paris 2026: wo die Warteschlangen wirklich lang sind'
   description: >-
     Wartezeit-Daten aus beiden Pariser Parks: warum der kleinere die längeren
-    Warteschlangen hat, wann es ruhiger wird und mit welchem Park du den Tag besser
-    anfängst.
+    Warteschlangen hat, wann es ruhiger wird und womit du den Tag anfängst.
   keywords:
     - Disneyland Paris
     - Disneyland Paris Wartezeiten

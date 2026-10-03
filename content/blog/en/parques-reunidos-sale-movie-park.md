@@ -31,8 +31,7 @@ seo:
   title: 'Parques Reunidos up for sale: Movie Park, Bobbejaanland, Slagharen'
   description: >-
     EQT has hired JPMorgan to sell Parques Reunidos, valued at around €1.7bn
-    according to Expansión. Movie Park Germany, Bobbejaanland, Slagharen and
-    Tropical Islands are part of it. Nothing changes for visitors or pass holders yet.
+    according to Expansión. Nothing changes for visitors or pass holders yet.
   keywords:
     - Movie Park Germany sale
     - Movie Park Germany new owner

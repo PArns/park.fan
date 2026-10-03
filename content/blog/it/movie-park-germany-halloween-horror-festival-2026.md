@@ -28,10 +28,8 @@ coverImage:
 seo:
   title: 'Movie Park Halloween Horror Festival 2026: date e biglietti'
   description: >-
-    Halloween Horror Festival al Movie Park Germany dal 26 settembre
-    all’8 novembre 2026: tutte le 22 serate, la nuova Jason Universe (dai 16
-    anni) e PHOBIA, i biglietti delle case, il S.I.K. Pass e la regola sui
-    costumi.
+    L’Halloween Horror Festival dura 22 serate, dal 26 settembre all’8 novembre
+    2026. Con la nuova Jason Universe (dai 16 anni) e il S.I.K. Pass.
   keywords:
     - Movie Park Halloween 2026
     - Halloween Horror Festival 2026

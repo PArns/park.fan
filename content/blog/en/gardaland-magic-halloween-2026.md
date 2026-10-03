@@ -20,9 +20,8 @@ parkLinks:
 seo:
   title: 'Gardaland Magic Halloween 2026: the Preda maze'
   description: >-
-    Magic Halloween at Gardaland from 12 September to 1 November 2026: 51 days,
-    the new maze Preda with its age recommendation and ticket price, the Friday
-    evenings and the Halloween Party on 31 October.
+    Magic Halloween at Gardaland runs 12 September to 1 November 2026, with the
+    new maze Preda, Friday evenings and a Halloween Party on 31 October.
   keywords:
     - Gardaland Halloween 2026
     - Gardaland Magic Halloween

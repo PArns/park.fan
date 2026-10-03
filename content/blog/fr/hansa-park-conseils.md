@@ -33,9 +33,9 @@ rideLinks:
 seo:
   title: 'Hansa-Park 2026 : conseils, tarifs et le Kärnan à la mer'
   description: >-
-    Hansa-Park Sierksdorf 2026 : pas un seul jour de fermeture, Herbstzauber en
-    octobre, tarifs et parking, les huit coasters et la Buddenbrook-Turm prévue
-    pour 2027.
+    Le Hansa-Park n’a aucun jour de fermeture dans sa saison 2026. Herbstzauber
+    en octobre, tarifs, parking, les huit coasters et la Buddenbrook-Turm de
+    2027.
   keywords:
     - Hansa-Park
     - Hansa-Park conseils

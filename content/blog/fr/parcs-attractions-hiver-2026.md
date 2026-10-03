@@ -36,9 +36,8 @@ coverImage:
 seo:
   title: 'Parcs en hiver 2026/27 : qui ouvre, et quelle affluence'
   description: >-
-    Patinoires, vin chaud et guirlandes : quels parcs ouvrent en hiver 2026/27,
-    à quel prix, et pourquoi on attend plus longtemps entre Noël et le Nouvel An
-    qu’en mai.
+    Quels parcs ouvrent en hiver 2026/27 et à quel prix, et pourquoi on attend
+    plus longtemps entre Noël et le Nouvel An qu’en mai.
   keywords:
     - parcs d’attractions ouverts en hiver
     - Parc Astérix Noël 2026

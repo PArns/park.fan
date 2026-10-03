@@ -36,9 +36,8 @@ coverImage:
 seo:
   title: 'Freizeitparks im Winter 2026/27: wer geöffnet hat und wie voll es ist'
   description: >-
-    Eisbahnen, Glühwein und Lichterketten: welche Freizeitparks im Winter
-    2026/27 aufhaben, was es kostet und warum man zwischen den Jahren länger
-    ansteht als im Mai.
+    Eisbahnen, Glühwein und Lichterketten: was ein Wintertag im Park kostet und
+    warum man zwischen den Jahren länger ansteht als im Mai.
   keywords:
     - Freizeitparks im Winter
     - Freizeitpark Winter geöffnet

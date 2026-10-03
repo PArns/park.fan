@@ -21,9 +21,8 @@ parkLinks:
 seo:
   title: 'Gardaland Magic Halloween 2026: el laberinto Preda'
   description: >-
-    Magic Halloween en Gardaland del 12 de septiembre al 1 de noviembre de 2026:
-    51 días, el nuevo laberinto Preda con su edad recomendada y su precio, los
-    viernes por la noche y la Halloween Party del 31 de octubre.
+    Magic Halloween en Gardaland del 12 de septiembre al 1 de noviembre de 2026,
+    con el nuevo laberinto Preda y la Halloween Party del 31 de octubre.
   keywords:
     - Gardaland Halloween 2026
     - Gardaland Magic Halloween

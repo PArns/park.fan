@@ -34,9 +34,9 @@ rideLinks:
 seo:
   title: 'Magic Kingdom 2026: waar en wanneer de rijen lang zijn'
   description: >-
-    Wachttijdcijfers uit Magic Kingdom in Florida, het best bezochte park ter
-    wereld met de kortste rijen van de vier Disneyparken: wanneer TRON het
-    kortst is, wat Lightning Lane kost en welke maanden rustig zijn.
+    Magic Kingdom trekt de meeste bezoekers ter wereld en heeft toch de kortste
+    rijen van Disney in Florida. Wanneer TRON kort is en wat Lightning Lane
+    kost.
   keywords:
     - Magic Kingdom
     - Magic Kingdom wachttijden

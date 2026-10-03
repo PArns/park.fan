@@ -23,9 +23,8 @@ rideLinks:
 seo:
   title: 'Euro-Mir en Europa-Park: despedida el 9 de enero de 2027'
   description: >-
-    Euro-Mir se desmontará en Europa-Park tras la temporada de invierno 2026/27,
-    con un evento de despedida el 9 de enero de 2027. Qué la sustituye en 2028 y
-    qué no ha dicho aún el parque.
+    Euro-Mir se desmontará tras la temporada de invierno 2026/27. Qué la
+    sustituye en 2028 y qué no ha dicho aún Europa-Park.
   keywords:
     - Euro-Mir despedida
     - Euro-Mir último viaje

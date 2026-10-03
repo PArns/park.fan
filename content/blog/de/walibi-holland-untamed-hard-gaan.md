@@ -35,8 +35,8 @@ seo:
   title: 'Walibi Holland: Untamed, Wartezeiten & Horror im Polder'
   description: >-
     Achterbahnen auf altem Meeresboden: Untamed und YOY mit gemessenen
-    Wartezeiten, die Halloween Fright Nights, für die man gern extra zahlt,
-    Preise und Anreise.
+    Wartezeiten, die Fright Nights, für die man gern extra zahlt, Preise und
+    Anreise.
   keywords:
     - Walibi Holland
     - Walibi Holland Wartezeiten

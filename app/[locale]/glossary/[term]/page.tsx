@@ -3,7 +3,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { getGlossaryTerms, getTermBySlug, findTermByAnySlug } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { locales, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, fitSentences } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermRides } from '@/components/glossary/glossary-term-rides';
@@ -56,10 +56,8 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
 
   // Keyword-rich title: "Wait Time – Theme Park Glossary | park.fan"
   const title = `${term.name} – ${t('termTitleSuffix')} | park.fan`;
-  // Description: first paragraph of definition, capped at 155 chars
-  const rawDesc = term.definition.split('\n\n')[0];
-  const description =
-    rawDesc.length > 155 ? rawDesc.slice(0, 152).replace(/\s\S*$/, '') + '…' : rawDesc;
+  // Description: whole sentences of the definition's first paragraph, at most 155 characters
+  const description = fitSentences(term.definition.split('\n\n')[0], 155);
   // Keywords: term name + related IDs resolved to names + category label
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedNames = term.relatedTermIds

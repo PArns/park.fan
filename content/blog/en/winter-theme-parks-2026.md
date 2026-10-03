@@ -36,9 +36,8 @@ coverImage:
 seo:
   title: 'Theme Parks Open in Winter 2026/27: Who, When, How Busy'
   description: >-
-    Ice rinks, mulled wine and fairy lights: which theme parks open in winter
-    2026/27, what it costs, and why you queue longer between Christmas and New
-    Year than in May.
+    Which theme parks open in winter 2026/27, what a winter day costs, and why
+    you queue longer between Christmas and New Year than in May.
   keywords:
     - theme parks open in winter
     - theme park christmas 2026

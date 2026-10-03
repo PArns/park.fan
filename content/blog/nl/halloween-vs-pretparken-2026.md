@@ -32,9 +32,8 @@ rideLinks: false
 seo:
   title: 'Halloween 2026 VS: HHN, Scary Farm, Fright Fest'
   description: >-
-    Halloween 2026 in de Amerikaanse parken: Halloween Horror Nights Orlando,
-    Knott's Scary Farm, Six Flags Fright Fest, Mickey's Not-So-Scary Halloween
-    Party en Oogie Boogie Bash met data en prijzen.
+    Halloween Horror Nights in Orlando, Knott's Scary Farm, Six Flags Fright
+    Fest en de Disneyfeesten: wat tot 31 oktober nog loopt en wat het kost.
   keywords:
     - Halloween pretpark VS 2026
     - Halloween Horror Nights 2026 Orlando

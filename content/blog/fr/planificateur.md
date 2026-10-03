@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Journée au parc : compter les files avant de faire la queue'
   description: >-
-    Dans le planificateur, tu poses tes attractions sur une frise, avec les
-    attentes prévues et les trajets entre elles, et tu vois d’avance si la
-    journée tient. Sans compte.
+    Tu poses tes attractions sur une frise, avec les attentes prévues et la
+    marche entre elles, et tu vois d’avance si la journée tient. Sans compte.
   keywords:
     - planifier une journée parc
     - planificateur parc attractions

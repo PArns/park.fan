@@ -33,9 +33,9 @@ coverImage:
 seo:
   title: 'Parc Astérix: wachttijden, achtbanen en tips'
   description: >-
-    Toutatis, OzIris, Tonnerre 2 Zeus: wanneer de wachtrijen in Parc Astérix
-    kort zijn, wat Filotomatix kost, hoe je er met de RER en de shuttle komt,
-    Peur sur le Parc, Noël Gaulois en wat er tot 2028 bijkomt.
+    Wanneer de rijen bij Toutatis, OzIris en Tonnerre 2 Zeus kort zijn, wat
+    Filotomatix kost, met de RER erheen, Peur sur le Parc en wat er tot 2028
+    bijkomt.
   keywords:
     - Parc Astérix
     - Parc Astérix wachttijden

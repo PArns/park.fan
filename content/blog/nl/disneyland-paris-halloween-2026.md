@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Disneyland Paris Halloween 2026: data, wat er nieuw is, 31 oktober'
   description: >-
-    Disney Halloween Festival van 26 september tot 1 november 2026: nieuwe
-    kostuums, Dr. Facilier, Jack & Sally, de Unlucky Nugget Saloon en de
-    avond van 31 oktober tot 23 uur. Inbegrepen in het ticket.
+    Disney Halloween Festival van 26 september tot 1 november 2026, met Dr.
+    Facilier, Jack & Sally en op 31 oktober open tot 23 uur. In het ticket
+    inbegrepen.
   keywords:
     - Disneyland Paris Halloween 2026
     - Disney Halloween Festival 2026

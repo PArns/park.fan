@@ -33,9 +33,9 @@ coverImage:
 seo:
   title: 'Parc Astérix: Wait Times, Coasters & Tips'
   description: >-
-    Toutatis, OzIris, Tonnerre 2 Zeus: when the queues at Parc Astérix are
-    short, what Filotomatix costs, how to get there by RER and shuttle, Peur sur
-    le Parc, Noël Gaulois and what's coming by 2028.
+    When the queues at Parc Astérix are short, what Filotomatix costs and how to
+    get there by RER and shuttle, plus Peur sur le Parc and what's coming by
+    2028.
   keywords:
     - Parc Astérix
     - Parc Astérix wait times

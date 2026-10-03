@@ -29,9 +29,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 en Disneyland Paris: fechas, novedades, 31 de octubre'
   description: >-
-    Disney Halloween Festival del 26 de septiembre al 1 de noviembre de 2026:
-    trajes nuevos, Dr. Facilier, Jack y Sally, el Unlucky Nugget Saloon y la
-    noche del 31 de octubre hasta las 23:00. Incluido en la entrada.
+    El Disney Halloween Festival va del 26 de septiembre al 1 de noviembre de
+    2026 y está incluido en la entrada. El 31 de octubre abre hasta las 23:00.
   keywords:
     - Halloween Disneyland Paris 2026
     - Disney Halloween Festival 2026

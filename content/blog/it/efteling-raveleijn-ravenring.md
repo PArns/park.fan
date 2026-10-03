@@ -21,9 +21,8 @@ parkLinks:
 seo:
   title: 'Efteling: Raveleijn e Ravenring aprono il 1° dicembre 2026'
   description: >-
-    Efteling riapre Raveleijn il 1° dicembre 2026. Nuovo spettacolo con Puy du
-    Fou, Ravenring a 36 posti, da 1,00 m di altezza, 20 milioni di euro di
-    investimento e come si inserisce in Winter Efteling.
+    Il nuovo spettacolo di Raveleijn nasce con Puy du Fou, il Ravenring ha 36
+    posti e si entra da 1,00 m di altezza. Efteling investe 20 milioni di euro.
   keywords:
     - Efteling Raveleijn
     - Ravenring Efteling

@@ -37,8 +37,9 @@ coverImage:
 seo:
   title: 'Toverland: Troy, Wartezeiten & Halloween ohne Fast Pass'
   description: >-
-    Troy im Toverland: die größte Holzachterbahn des Benelux, und davor kaum
-    eine Warteschlange. Wartezeit-Daten, Fēnix, Tickets, Halloween Nights und was 2027 kommt.
+    Die größte Holzachterbahn des Benelux, und davor kaum eine Warteschlange.
+    Wartezeit-Daten zu Troy und Fēnix, Tickets, Halloween Nights und was 2027
+    kommt.
   keywords:
     - Toverland
     - Toverland Wartezeiten

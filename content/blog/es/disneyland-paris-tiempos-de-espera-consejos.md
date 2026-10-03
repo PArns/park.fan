@@ -35,9 +35,8 @@ coverImage:
 seo:
   title: 'Disneyland Paris 2026: en qué parque son más largas las colas'
   description: >-
-    Datos de espera de los dos parques de París: por qué el pequeño tiene las
-    colas más largas, cuándo hay menos gente y con qué parque conviene empezar
-    el día.
+    Con los datos de espera de los dos parques de París: cuándo hay menos gente
+    y con qué parque conviene empezar el día.
   keywords:
     - Disneyland Paris
     - Disneyland Paris tiempos de espera

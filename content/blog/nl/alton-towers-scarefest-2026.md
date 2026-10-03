@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Alton Towers Scarefest 2026: data, Final Exhibit en tickets'
   description: >-
-    Scarefest in Alton Towers op geselecteerde dagen van 26 september tot en met
-    1 november 2026, park open tot 21 uur: de nieuwe maze Final Exhibit (vanaf
-    12), The Smiler en Nemesis Reborn in het donker, mazetickets en prijzen.
+    Scarefest in Alton Towers op geselecteerde dagen tot en met 1 november 2026,
+    park open tot 21 uur. Nieuwe maze Final Exhibit vanaf 12, tickets en
+    prijzen.
   keywords:
     - Alton Towers Scarefest 2026
     - Scarefest data

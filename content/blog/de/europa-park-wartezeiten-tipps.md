@@ -36,8 +36,9 @@ coverImage:
 seo:
   title: 'Europa-Park Wartezeiten: kurz anstehen im vollsten Park'
   description: >-
-    Europa-Park Wartezeiten, selbst gemessen: sonntags ist am wenigsten los,
-    samstags zahlst du an jeder Warteschlange drauf. Beste Reisezeit, Preise 2026, Anreise.
+    Europa-Park-Wartezeiten, selbst gemessen: sonntags ist am wenigsten los,
+    samstags zahlst du an jeder Warteschlange drauf. Reisezeit, Preise 2026,
+    Anreise.
   keywords:
     - Europa-Park Wartezeiten
     - Europa-Park Wartezeiten aktuell

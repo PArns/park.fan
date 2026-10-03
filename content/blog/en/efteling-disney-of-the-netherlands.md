@@ -31,7 +31,8 @@ coverImage:
 seo:
   title: 'Efteling: wait times, tips and a very polite bin'
   description: >-
-    Efteling wait times we measured ourselves: when it’s quiet, what tickets cost, why only five million guests a year get in, and what an egg was doing at Python.
+    Efteling wait times we measured: when it’s quiet, what tickets cost, why
+    only five million guests a year get in, and what an egg was doing at Python.
   keywords:
     - Efteling
     - Efteling wait times

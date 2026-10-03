@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Pretparkdag plannen: wachttijden inrekenen vóór de rij'
   description: >-
-    In de dagplanner zet je je attracties op een tijdlijn, met de voorspelde
-    wachttijden en de looproutes ertussen, en zie je vooraf of je dag uitkomt.
-    Zonder account.
+    Zet je attracties op een tijdlijn, met de voorspelde wachttijden en de
+    looproutes ertussen, en zie vooraf of je dag uitkomt. Zonder account.
   keywords:
     - pretparkdag plannen
     - dagplanner pretpark

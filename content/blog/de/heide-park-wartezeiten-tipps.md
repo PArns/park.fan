@@ -33,8 +33,8 @@ rideLinks:
 seo:
   title: 'Heide Park 2026: Colossos, Wartezeiten und der beste Tag'
   description: >-
-    Heide Park Soltau: gemessene Wartezeiten zu Colossos und Krake, dazu Halloween,
-    Express Ticket, Mindestgrößen und der Wochentag mit den kürzesten Warteschlangen.
+    Gemessene Wartezeiten zu Colossos und Krake, dazu Halloween, Express Ticket,
+    Mindestgrößen und der Wochentag mit den kürzesten Warteschlangen.
   keywords:
     - Heide Park
     - Heide Park Wartezeiten

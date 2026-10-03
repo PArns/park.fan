@@ -31,9 +31,8 @@ coverImage:
 seo:
   title: 'Bien lire un temps d’attente : 70 minutes, c’est beaucoup ?'
   description: >-
-    Un temps d’attente sans comparaison, c’est une température sans saison. Ce
-    que « habituel » et « chargé » veulent dire, et comment park.fan en fait une
-    réponse.
+    Un temps d’attente seul ne dit pas s’il est long. Ce que « habituel » et
+    « chargé » veulent dire sur park.fan, et à quoi on compare le chiffre.
   keywords:
     - temps d’attente parc d’attractions
     - situer un temps d’attente

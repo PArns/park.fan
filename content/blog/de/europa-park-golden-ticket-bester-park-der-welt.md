@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Golden Ticket Awards 2026: Europa-Park zum 11. Mal vorn'
   description: >-
-    Europa-Park gewinnt am 12. September 2026 zum elften Mal den Golden Ticket
-    Award als bester Park. Dazu die Top 10 der Stahlachterbahnen mit Taron,
-    Voltron Nevera und Ride to Happiness.
+    Golden Ticket Award als bester Park am 12. September 2026, dazu die
+    Stahlachterbahn-Top-10 mit Taron, Voltron Nevera und Ride to Happiness.
   keywords:
     - Golden Ticket Awards 2026
     - Europa-Park Golden Ticket Award

@@ -23,9 +23,8 @@ rideLinks:
 seo:
   title: 'Six Flags chiude X2 dopo le cause per lesioni cerebrali'
   description: >-
-    Six Flags Magic Mountain ferma per sempre X2 dopo le cause per lesioni
-    cerebrali. In più, la storia delle prime montagne russe 4th Dimension dal
-    2002 a oggi.
+    Six Flags Magic Mountain chiude X2 dopo le cause per lesioni cerebrali. E la
+    storia delle montagne russe 4th Dimension, dalla prima del 2002 a oggi.
   keywords:
     - X2 Six Flags Magic Mountain
     - X2 chiusa

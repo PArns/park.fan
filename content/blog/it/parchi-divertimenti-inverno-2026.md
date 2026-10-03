@@ -36,9 +36,8 @@ coverImage:
 seo:
   title: 'Parchi aperti d’inverno 2026/27: chi apre e quanta coda c’è'
   description: >-
-    Piste di ghiaccio, vin brulé e luci sugli alberi: quali parchi aprono
-    nell’inverno 2026/27, quanto costano e perché tra Natale e Capodanno si fa
-    più coda che a maggio.
+    Quali parchi aprono nell’inverno 2026/27 e quanto costano, e perché tra
+    Natale e Capodanno si fa più coda che a maggio.
   keywords:
     - parchi divertimenti aperti in inverno
     - Gardaland Magic Winter 2026

@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Ententeich: firme contro l’ampliamento di Phantasialand'
   description: >-
-    Dal 28 settembre a Brühl è in corso una raccolta firme contro l’ampliamento
-    di Phantasialand. Cosa vuole costruire il parco, quali studi paga e come è
-    nata nel 2003 la disputa sull’Ententeich.
+    Dal 28 settembre a Brühl si raccolgono firme. Cosa vuole costruire
+    Phantasialand, quali studi paga e come è nata nel 2003 la disputa
+    sull’Ententeich.
   keywords:
     - Phantasialand ampliamento
     - Phantasialand ampliamento Ententeich

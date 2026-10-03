@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Ententeich : pétition contre l’agrandissement de Phantasialand'
   description: >-
-    Une pétition citoyenne contre l’agrandissement de Phantasialand circule à
-    Brühl depuis le 28 septembre. Ce que le parc veut construire, les études
-    qu’il finance et l’histoire du conflit autour de l’Ententeich depuis 2003.
+    À Brühl, une pétition circule depuis le 28 septembre. Ce que le parc veut
+    construire, les études qu’il paie et le conflit de l’Ententeich depuis 2003.
   keywords:
     - Phantasialand agrandissement
     - Phantasialand agrandissement Ententeich

@@ -33,9 +33,9 @@ coverImage:
 seo:
   title: 'Brújula para parques temáticos: ¿qué atracción tienes delante?'
   description: >-
-    Abre park.fan en el parque y gira sobre ti mismo: la brújula muestra las
-    atracciones estrella a tu alrededor con dirección, distancia y tiempo de
-    espera. Sin app y sin cuenta.
+    Abre park.fan en el parque y gira sobre ti mismo: la brújula te enseña las
+    atracciones estrella con dirección, distancia y espera. Sin app y sin
+    cuenta.
   keywords:
     - brújula parque de atracciones
     - encontrar una atracción en el parque

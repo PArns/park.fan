@@ -24,9 +24,8 @@ rideLinks:
 seo:
   title: 'Fast & Furious: Hollywood Drift abre en Universal Hollywood'
   description: >-
-    Fast & Furious: Hollywood Drift funciona desde el 16 de septiembre de 2026:
-    116 km/h, cuatro lanzamientos, tres inversiones y coches que giran. Altura
-    mínima, distribución de asientos y la versión que abrirá en Florida en
+    Funciona desde el 16 de septiembre de 2026 y llega a 116 km/h, con cuatro
+    lanzamientos y tres inversiones. Altura mínima y la versión de Florida de
     2027.
   keywords:
     - Fast & Furious Hollywood Drift

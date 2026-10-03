@@ -28,9 +28,9 @@ coverImage:
 seo:
   title: 'Alton Towers Scarefest 2026: Termine, Final Exhibit & Tickets'
   description: >-
-    Scarefest in Alton Towers vom 26. September bis 1. November 2026 an
-    ausgewählten Tagen, Park bis 21 Uhr: neues Maze Final Exhibit (ab 12),
-    Nachtfahrten auf The Smiler und Nemesis Reborn, Maze-Tickets und Preise.
+    Scarefest läuft an ausgewählten Tagen vom 26. September bis 1. November
+    2026, der Park hat bis 21 Uhr offen. Nachts fahren The Smiler und Nemesis
+    Reborn.
   keywords:
     - Alton Towers Scarefest 2026
     - Scarefest Termine

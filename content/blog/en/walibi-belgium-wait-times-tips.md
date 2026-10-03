@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Walibi Belgium: Kondaa, Wait Times & Tips from the Original'
   description: >-
-    The first Walibi is in Wavre: wait times for Kondaa, the tallest coaster
-    in the Benelux, plus history, Ibilaw and why everyone still thinks of
-    Holland first.
+    The first Walibi is in Wavre. Wait times for Kondaa, the tallest coaster in
+    the Benelux, plus Ibilaw and why everyone still thinks of Holland first.
   keywords:
     - Walibi Belgium
     - Walibi Belgium wait times

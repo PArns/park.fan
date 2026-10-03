@@ -32,9 +32,9 @@ rideLinks:
 seo:
   title: 'Hansa-Park 2026: consejos, precios y el Kärnan junto al mar'
   description: >-
-    Hansa-Park Sierksdorf 2026: ni un día de cierre, Herbstzauber en octubre,
-    precios y aparcamiento, las ocho montañas rusas y la Buddenbrook-Turm
-    prevista para 2027.
+    Hansa-Park Sierksdorf no cierra ni un día en 2026. Precios, aparcamiento,
+    sus ocho montañas rusas, Herbstzauber en octubre y la Buddenbrook-Turm de
+    2027.
   keywords:
     - Hansa-Park
     - Hansa-Park consejos
