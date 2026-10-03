@@ -3,7 +3,9 @@
  * `lib/blog/backlinks.ts`).
  *
  * The round-up guides (Halloween, winter) name a dozen parks in their tags and none in
- * `parkLinks`; a rule built on tags would offer them as the primer for each of those parks.
+ * `parkLinks`; a rule built on tags would offer them as the primer for each of those parks. The
+ * round-ups that do list their parks there (the Germany ranking, Halloween in the USA) list more
+ * than `MAX_PRIMER_PARK_LINKS` and are nobody's guide either.
  * So the test walks the real manifest:
  *
  *   - a `guides` post with `parkLinks` is the guide of its FIRST entry, and only of that one
@@ -18,7 +20,7 @@
 
 import assert from 'node:assert/strict';
 import { BLOG_POSTS_META } from '../lib/blog/manifest.ts';
-import { getGuideForPark } from '../lib/blog/backlinks.ts';
+import { getGuideForPark, MAX_PRIMER_PARK_LINKS } from '../lib/blog/backlinks.ts';
 import { parseRefKey } from '../lib/blog/derive.mjs';
 
 let failures = 0;
@@ -43,15 +45,17 @@ for (const entry of BLOG_POSTS_META.filter(isGuide)) {
   guides.set(keyOf(entry), group);
 }
 
+const parkLinksOf = (entries) =>
+  entries.map((e) => e.frontmatter.parkLinks).find((v) => Array.isArray(v) && v.length) ?? null;
 const firstPark = (entries) => {
-  const links = entries
-    .map((e) => e.frontmatter.parkLinks)
-    .find((v) => Array.isArray(v) && v.length);
+  const links = parkLinksOf(entries);
   return links ? parseRefKey(String(links[0])) : null;
 };
+const isRoundUp = (entries) => (parkLinksOf(entries)?.length ?? 0) > MAX_PRIMER_PARK_LINKS;
 
-const configured = [...guides].filter(([, entries]) => firstPark(entries));
+const configured = [...guides].filter(([, entries]) => firstPark(entries) && !isRoundUp(entries));
 const unconfigured = [...guides].filter(([, entries]) => !firstPark(entries));
+const listedRoundUps = [...guides].filter(([, entries]) => isRoundUp(entries));
 
 test('there are configured guides and round-ups to test against', () => {
   assert.ok(configured.length >= 5, `configured guides: ${configured.length}`);
@@ -72,6 +76,16 @@ for (const [translationKey, entries] of unconfigured) {
   test(`${translationKey}: has no parkLinks, so it is no park's guide`, () => {
     const seen = new Set(entries.flatMap((e) => e.parkRefs.map((ref) => ref.slug)));
     for (const slug of seen) {
+      const found = getGuideForPark('de', slug);
+      assert.notEqual(found?.translationKey, translationKey, `${slug} offers ${translationKey}`);
+    }
+  });
+}
+
+for (const [translationKey, entries] of listedRoundUps) {
+  test(`${translationKey}: lists more than ${MAX_PRIMER_PARK_LINKS} parks, so it is no park's guide`, () => {
+    for (const value of parkLinksOf(entries)) {
+      const slug = parseRefKey(String(value)).key.split('/')[0];
       const found = getGuideForPark('de', slug);
       assert.notEqual(found?.translationKey, translationKey, `${slug} offers ${translationKey}`);
     }
