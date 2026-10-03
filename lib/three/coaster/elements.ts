@@ -67,6 +67,17 @@ export interface CoasterElementDef {
    */
   lsm?: { from: number; to: number };
   /**
+   * Friction-brake hardware: caliper housings flanking the track centre over
+   * `from`..`to` of the run (progress 0..1). Real brake runs close hydraulic
+   * pads on a fin under the train, so the housings sit in the middle of the
+   * track like the stators do, but longer and in a signal colour so a brake
+   * section is never mistaken for a launch.
+   *
+   * Cover the whole stopping distance, train length included: the train must
+   * come to rest with its last car still inside the run.
+   */
+  brake?: { from: number; to: number };
+  /**
    * Turntable: a rotating disc under the train at `at`, which must lie on the
    * curve with a straight stretch of at least `radius` either side. The train
    * rides in, stops with its centre on the disc and turns on the spot by
@@ -1068,6 +1079,60 @@ const lifthill: CoasterElementDef = {
   duration: 9,
 };
 
+// ── Block brake — a level mid-course brake run after a drop. The caliper
+//    housings close on the fin under the train, which slows to a dead stop and
+//    is held there (the block ahead is occupied), then released into the next
+//    hill. `pace` is the whole point: a trim brake only bleeds speed, a block
+//    brake stops the train. Reference: Wikipedia "Brake (roller coaster)" and
+//    Coaster101 "Brakes, Blocks, and Sensors" — brake runs split into trim brakes
+//    (slow only) and block brakes (can stop and hold), one block per section
+//    between lift hill, mid-course brake and end brake. ──────────────────────
+const blockBrake: CoasterElementDef = {
+  id: 'block-brake',
+  points: [
+    [-13, 7, 0],
+    [-11, 6.9, 0],
+    [-9, 5.2, 0],
+    [-7, 2.6, 0],
+    [-5.2, 1.3, 0],
+    [-3.5, 1, 0], // level brake run starts
+    [-1, 1, 0],
+    [1.5, 1, 0],
+    [4, 1, 0], // level brake run ends
+    [6, 1.3, 0],
+    [8.4, 3, 0],
+    [10.6, 4.4, 0],
+    [13, 4.6, 0],
+  ],
+  keyPoints: [
+    { t: 0.12, label: 'approach' },
+    { t: 0.38, label: 'brake' },
+    { t: 0.55, label: 'hold' },
+    { t: 0.78, label: 'release' },
+    { t: 0.95, label: 'leave' },
+  ],
+  duration: 10,
+  // Track fractions: `brake` is the run, REST (below) is where the head of the
+  // train stops. Approach and braking speeds are matched at t = 0.3
+  // (A / 0.3 = 2D / 0.2) so the handover does not read as a jerk.
+  brake: { from: 0.34, to: 0.58 },
+  pace: (t) => {
+    const A = 0.4;
+    const REST = A + A / 3;
+    if (t < 0.3) return A * (t / 0.3);
+    // Pads closed: constant deceleration to a standstill.
+    if (t < 0.5) {
+      const u = (t - 0.3) / 0.2;
+      return A + (REST - A) * (1 - (1 - u) * (1 - u));
+    }
+    // Held: the train does not move.
+    if (t < 0.6) return REST;
+    // Released: ease out of the standstill, then roll on.
+    const u = Math.min(1, (t - 0.6) / 0.4);
+    return REST + (1 - REST) * Math.pow(u, 1.4);
+  },
+};
+
 // ── Interlocking loops — two vertical loops whose planes lean opposite ways so
 //    they cross through each other (chain-link). The train rides both; each
 //    inverts via parallel transport. ──────────────────────────────────────────
@@ -1514,6 +1579,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'quad-down': quadDown,
   's-hill': sHill,
   lifthill,
+  'block-brake': blockBrake,
   'interlocking-loops': interlockingLoops,
   launch,
   'vertical-lift': verticalLift,

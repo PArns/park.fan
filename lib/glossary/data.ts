@@ -866,6 +866,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'block-brake',
       es: 'block-brake',
     },
+    player: { element: 'block-brake' },
   },
   {
     id: 'brake-run',

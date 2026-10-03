@@ -2010,7 +2010,10 @@
         "launch": "Lancio",
         "drop": "Il binario cade",
         "overhang": "Strapiombo",
-        "hangtime": "Hangtime"
+        "hangtime": "Hangtime",
+        "brake": "Frenata",
+        "hold": "Trattenuto",
+        "release": "Rilasciato"
       }
     },
     "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro.",

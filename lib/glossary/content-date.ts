@@ -40,4 +40,4 @@ export const GLOSSARY_CONTENT_DATE = '2026-10-03';
  * a URL) does. Recomputed and checked by `scripts/check-glossary-content-date.mjs`, which prints the
  * replacement value when it fails.
  */
-export const GLOSSARY_CONTENT_HASH = '52eba3660aa4b666';
+export const GLOSSARY_CONTENT_HASH = 'd369c71089d8dc4a';
