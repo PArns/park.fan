@@ -1950,6 +1950,75 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         startBefore !== null && startAfter !== null && startAfter - startBefore === 50,
         `${startAfter - startBefore} Min. für 90 px`
       );
+      // The same question on a raw minute that is NOT a multiple of five (PAR-323,
+      // PO decision 2026-10-02: `DRAG_SNAP_MIN` is 5 under a finger as under a
+      // mouse). 90 px is 50.00 minutes on this axis, so the drag above lands on a
+      // five whatever the step is. 95 px is 52.78: on a five-minute grid it
+      // commits to the nearest five, on the old half-hour step it would have
+      // moved 60. The 30-minute step belongs to the arrow keys and is not asked
+      // about here.
+      const startMid = await startOf(entryId);
+      await grip.evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        const x = box.left + box.width / 2;
+        const y = box.top + box.height / 2;
+        const opts = {
+          bubbles: true,
+          button: 0,
+          pointerId: 8,
+          pointerType: 'touch',
+          isPrimary: true,
+        };
+        el.dispatchEvent(new PointerEvent('pointerdown', { ...opts, clientX: x, clientY: y }));
+        for (const dy of [47, 95]) {
+          el.dispatchEvent(
+            new PointerEvent('pointermove', { ...opts, clientX: x, clientY: y + dy })
+          );
+        }
+        el.dispatchEvent(new PointerEvent('pointerup', { ...opts, clientX: x, clientY: y + 95 }));
+      });
+      await phone.waitForTimeout(600);
+      const startEnd = await startOf(entryId);
+      const rawEnd = startMid === null ? null : startMid + 95 / 1.8;
+      check(
+        'ein Finger rastet auf ein Vielfaches von 5, auch bei einer krummen Rohminute',
+        startEnd !== null &&
+          rawEnd !== null &&
+          startEnd % 5 === 0 &&
+          Math.abs(startEnd - rawEnd) <= 2.5,
+        `${startMid} -> ${startEnd} Min. · Rohminute ${rawEnd?.toFixed(2)} · 95 px`
+      );
+      // Back where the day left it. The block would otherwise stand 55 minutes
+      // later for everything below, and a leg chip appears in the gap it leaves
+      // that the 44 px target sweep then (correctly) reports. 99 px is exactly 55
+      // minutes on this axis, so the way back is exact and not a second guess.
+      if (startEnd !== startMid) {
+        await grip.evaluate((el) => {
+          const box = el.getBoundingClientRect();
+          const x = box.left + box.width / 2;
+          const y = box.top + box.height / 2;
+          const opts = {
+            bubbles: true,
+            button: 0,
+            pointerId: 9,
+            pointerType: 'touch',
+            isPrimary: true,
+          };
+          el.dispatchEvent(new PointerEvent('pointerdown', { ...opts, clientX: x, clientY: y }));
+          for (const dy of [-50, -99]) {
+            el.dispatchEvent(
+              new PointerEvent('pointermove', { ...opts, clientX: x, clientY: y + dy })
+            );
+          }
+          el.dispatchEvent(new PointerEvent('pointerup', { ...opts, clientX: x, clientY: y - 99 }));
+        });
+        await phone.waitForTimeout(600);
+        check(
+          'und der Block steht danach wieder, wo der Tag ihn gelassen hat',
+          (await startOf(entryId)) === startAfter,
+          `${startAfter} -> ${startEnd} -> ${await startOf(entryId)}`
+        );
+      }
 
       // The bar stands down for the length of a drag (PAR-316, guarded here by
       // PAR-329). Docked, it covers 101 px of a 200 px scroller at 360 px and sat
@@ -3109,6 +3178,85 @@ step: {
       return Object.values(days)[0]?.entries?.find((e) => e.id === 'taron-1')?.startMinute ?? null;
     });
     check('eine abgebrochene Geste schreibt nichts', afterCancel === before, `${afterCancel}`);
+
+    // A real drag with a real mouse (PAR-323). Everything above moves a block with
+    // the keyboard or a dispatched event; `scripts/test-planner-grid.mjs` tests
+    // `snapTo` as a function. Neither sees where a release LANDS, nor which of the
+    // two blocks the drag draws is in front, and that was the defect of PAR-307:
+    // the class said `z-20`, the inline style computed 10, and a unit test reads
+    // no stylesheet.
+    //
+    // 62 px on the 1.2 px/min axis is 51.67 minutes, so the raw start is never a
+    // multiple of 5 whatever the block started on, and a quarter-hour grid would
+    // land up to 7.5 minutes away from it. The raw minute is printed with every
+    // result, so a green run says what it was green at.
+    const taronStart = () =>
+      grid.evaluate(() => {
+        const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+        const days = plan?.parks?.phantasialand?.days ?? {};
+        return (
+          Object.values(days)[0]?.entries?.find((e) => e.id === 'taron-1')?.startMinute ?? null
+        );
+      });
+    const mouseGrip = grid.locator(
+      'li[data-planner-entry="taron-1"] button[aria-label="Verschieben"]'
+    );
+    await mouseGrip.first().scrollIntoViewIfNeeded();
+    const gripBox = await mouseGrip.first().boundingBox();
+    if (gripBox) {
+      const startBefore = await taronStart();
+      const gx = gripBox.x + gripBox.width / 2;
+      const gy = gripBox.y + gripBox.height / 2;
+      await grid.mouse.move(gx, gy);
+      await grid.mouse.down();
+      await grid.mouse.move(gx, gy + 31, { steps: 6 });
+      await grid.mouse.move(gx, gy + 62, { steps: 6 });
+      await grid.waitForTimeout(300);
+      // Mid-drag, before the release: the block under the pointer and its ghost
+      // both carry the entry's id, and the ghost is the one that is inert and
+      // dashed. `zIndex` is read from `getComputedStyle`, which is the number the
+      // browser paints with, and not from the class a reader would trust.
+      const layers = await grid.evaluate(() => {
+        const both = [...document.querySelectorAll('li[data-planner-entry="taron-1"]')].map(
+          (el) => {
+            const cs = getComputedStyle(el);
+            return {
+              ghost: cs.outlineStyle === 'dashed' && cs.pointerEvents === 'none',
+              z: Number(cs.zIndex),
+            };
+          }
+        );
+        return {
+          count: both.length,
+          ghost: both.find((b) => b.ghost)?.z ?? null,
+          dragged: both.find((b) => !b.ghost)?.z ?? null,
+        };
+      });
+      check(
+        'mitten im Zug liegt der Ghost vor dem gezogenen Block',
+        layers.count === 2 &&
+          layers.ghost !== null &&
+          layers.dragged !== null &&
+          layers.ghost > layers.dragged,
+        `${layers.count} Blöcke · Ghost zIndex ${layers.ghost} · gezogener Block ${layers.dragged}`
+      );
+      await grid.mouse.up();
+      await grid.waitForTimeout(600);
+      const startAfter = await taronStart();
+      const rawStart = startBefore === null ? null : startBefore + 62 / 1.2;
+      check(
+        'ein Zug mit der Maus rastet auf ein Vielfaches von 5',
+        startAfter !== null && rawStart !== null && startAfter % 5 === 0,
+        `${startBefore} -> ${startAfter} Min. · Rohminute ${rawStart?.toFixed(2)}`
+      );
+      check(
+        'und auf die nächste Fünf, nicht auf die nächste Viertelstunde',
+        startAfter !== null && rawStart !== null && Math.abs(startAfter - rawStart) <= 2.5,
+        `Abstand ${startAfter === null || rawStart === null ? '?' : Math.abs(startAfter - rawStart).toFixed(2)} Min.`
+      );
+    } else {
+      check('der Griff des ersten Blocks hat eine Box', false, 'keine Box');
+    }
   }
 
   await grid.close();
