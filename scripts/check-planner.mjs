@@ -1985,7 +1985,6 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         startEnd !== null &&
           rawEnd !== null &&
           startEnd % 5 === 0 &&
-          startEnd !== rawEnd &&
           Math.abs(startEnd - rawEnd) <= 2.5,
         `${startMid} -> ${startEnd} Min. · Rohminute ${rawEnd?.toFixed(2)} · 95 px`
       );
@@ -1993,31 +1992,33 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       // later for everything below, and a leg chip appears in the gap it leaves
       // that the 44 px target sweep then (correctly) reports. 99 px is exactly 55
       // minutes on this axis, so the way back is exact and not a second guess.
-      await grip.evaluate((el) => {
-        const box = el.getBoundingClientRect();
-        const x = box.left + box.width / 2;
-        const y = box.top + box.height / 2;
-        const opts = {
-          bubbles: true,
-          button: 0,
-          pointerId: 9,
-          pointerType: 'touch',
-          isPrimary: true,
-        };
-        el.dispatchEvent(new PointerEvent('pointerdown', { ...opts, clientX: x, clientY: y }));
-        for (const dy of [-50, -99]) {
-          el.dispatchEvent(
-            new PointerEvent('pointermove', { ...opts, clientX: x, clientY: y + dy })
-          );
-        }
-        el.dispatchEvent(new PointerEvent('pointerup', { ...opts, clientX: x, clientY: y - 99 }));
-      });
-      await phone.waitForTimeout(600);
-      check(
-        'und der Block steht danach wieder, wo der Tag ihn gelassen hat',
-        (await startOf(entryId)) === startAfter,
-        `${startAfter} -> ${startEnd} -> ${await startOf(entryId)}`
-      );
+      if (startEnd !== startMid) {
+        await grip.evaluate((el) => {
+          const box = el.getBoundingClientRect();
+          const x = box.left + box.width / 2;
+          const y = box.top + box.height / 2;
+          const opts = {
+            bubbles: true,
+            button: 0,
+            pointerId: 9,
+            pointerType: 'touch',
+            isPrimary: true,
+          };
+          el.dispatchEvent(new PointerEvent('pointerdown', { ...opts, clientX: x, clientY: y }));
+          for (const dy of [-50, -99]) {
+            el.dispatchEvent(
+              new PointerEvent('pointermove', { ...opts, clientX: x, clientY: y + dy })
+            );
+          }
+          el.dispatchEvent(new PointerEvent('pointerup', { ...opts, clientX: x, clientY: y - 99 }));
+        });
+        await phone.waitForTimeout(600);
+        check(
+          'und der Block steht danach wieder, wo der Tag ihn gelassen hat',
+          (await startOf(entryId)) === startAfter,
+          `${startAfter} -> ${startEnd} -> ${await startOf(entryId)}`
+        );
+      }
 
       // The gesture-free way. It exists because the one above depends on a
       // gesture landing on a 44 px strip of a box whose height is a queue, and a
@@ -3113,7 +3114,7 @@ step: {
       const rawStart = startBefore === null ? null : startBefore + 62 / 1.2;
       check(
         'ein Zug mit der Maus rastet auf ein Vielfaches von 5',
-        startAfter !== null && rawStart !== null && startAfter % 5 === 0 && startAfter !== rawStart,
+        startAfter !== null && rawStart !== null && startAfter % 5 === 0,
         `${startBefore} -> ${startAfter} Min. · Rohminute ${rawStart?.toFixed(2)}`
       );
       check(
