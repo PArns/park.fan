@@ -58,6 +58,7 @@ export interface CoasterSceneHandle {
 }
 
 const DEG = Math.PI / 180;
+const TAU_SCENE = Math.PI * 2;
 const GAUGE = 0.36;
 const RAIL_R = 0.12;
 const CARS = 4;
@@ -73,6 +74,7 @@ export function createCoasterScene(
   // Captured out here: the narrowing from the guard above does not survive into
   // the nested builders below.
   const lsm = def.lsm;
+  const tt = def.turntable;
 
   const track = new Tracker();
   const ctx = createCtx(track);
@@ -216,7 +218,13 @@ export function createCoasterScene(
 
   // -- Track geometry ------------------------------------------------------
   function buildTrackGeometry(frames: CurveFrames) {
-    const N = frames.points.length - 1;
+    const total = frames.points.length - 1;
+    // A turntable carries its own rails, so the fixed track stops at the disc rim.
+    let N = total;
+    if (tt) {
+      const at = new THREE.Vector3(...tt.at);
+      while (N > 1 && frames.points[N].distanceTo(at) < tt.radius) N--;
+    }
     const left: THREE.Vector3[] = [];
     const right: THREE.Vector3[] = [];
     for (let i = 0; i <= N; i++) {
@@ -231,7 +239,7 @@ export function createCoasterScene(
       );
     }
     // spine (centre box rail) for a chunkier read
-    const sc = new THREE.CatmullRomCurve3(frames.points, false, 'catmullrom', 0.5);
+    const sc = new THREE.CatmullRomCurve3(frames.points.slice(0, N + 1), false, 'catmullrom', 0.5);
     world.add(
       new THREE.Mesh(ctx.track.geo(new THREE.TubeGeometry(sc, N, RAIL_R * 0.6, 6, false)), spineMat)
     );
@@ -331,6 +339,61 @@ export function createCoasterScene(
     tracks.push({ frames, cars: buildTrain(PAL.carLead) });
   }
   const mainFrames = tracks[0].frames;
+
+  // -- Turntable disc ------------------------------------------------------
+  // A rotating platform with its own rails, rim marks and hub. Everything on it
+  // turns with the train; the marks around the rim are what make the turn read
+  // from above, since the rails and the train are the same both ways round.
+  const disc = new THREE.Group();
+  if (tt) {
+    const R = tt.radius;
+    disc.position.set(tt.at[0], tt.at[1], tt.at[2]);
+    const slab = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(R, R, 0.3, 40)),
+      ctx.mat({ color: 0x58667f, roughness: 0.9 })
+    );
+    slab.position.y = -0.2; // top face sits just under the ties
+    disc.add(slab);
+    const hub = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(0.45, 0.45, 0.06, 20)),
+      ctx.mat({ color: 0x1c2433, roughness: 0.8 })
+    );
+    hub.position.y = -0.04;
+    disc.add(hub);
+    const markGeo = ctx.track.geo(new THREE.BoxGeometry(0.62, 0.05, 0.3));
+    const markA = ctx.lit({ color: 0xffc83d, roughness: 0.5 }, 0.25);
+    const markB = ctx.mat({ color: 0x1c2433, roughness: 0.8 });
+    const MARKS = 24;
+    for (let i = 0; i < MARKS; i++) {
+      const a = (i / MARKS) * TAU_SCENE;
+      const m = new THREE.Mesh(markGeo, i % 2 ? markB : markA);
+      m.position.set(Math.cos(a) * (R - 0.22), -0.035, -Math.sin(a) * (R - 0.22));
+      m.rotation.y = a;
+      disc.add(m);
+    }
+    // the rails across the disc, end to end with the fixed track at the rim
+    const chord = 2 * Math.sqrt(R * R - GAUGE * GAUGE);
+    const railGeo = ctx.track.geo(new THREE.CylinderGeometry(RAIL_R, RAIL_R, chord, 7));
+    for (const side of [-1, 1]) {
+      const rail = new THREE.Mesh(railGeo, railMat);
+      rail.rotation.z = Math.PI / 2;
+      rail.position.z = side * GAUGE;
+      disc.add(rail);
+    }
+    const spine = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(RAIL_R * 0.6, RAIL_R * 0.6, 2 * R - 0.4, 6)),
+      spineMat
+    );
+    spine.rotation.z = Math.PI / 2;
+    disc.add(spine);
+    for (let x = -R + 0.9; x < R - 0.5; x += 0.8) {
+      const tie = new THREE.Mesh(tieGeo, tieMat);
+      tie.rotation.y = Math.PI / 2;
+      tie.position.x = x;
+      disc.add(tie);
+    }
+    world.add(disc);
+  }
 
   // -- Bounding box (over every track) for camera framing -----------------
   const allPoints: THREE.Vector3[] = [];
@@ -436,11 +499,51 @@ export function createCoasterScene(
   // before the floor goes — supply a `pace` that remaps it.
   const pace = def.pace ?? ((t: number) => t);
 
+  // A turntable run spaces the cars by arc length (the track is short, so the
+  // fixed fraction would pile them on top of each other) and turns them as one
+  // rigid body about the disc centre while the train stands on it.
+  const gapT = tt ? 1.35 / mainFrames.length : CAR_GAP_T;
+  const ttCentre = tt ? new THREE.Vector3(...tt.at) : null;
+  const _yawQ = new THREE.Quaternion();
+  const _off = new THREE.Vector3();
+  let ttYaw = 0;
+
+  function placeTurntableTrain() {
+    const mid = pace(progress);
+    ttYaw = tt!.yaw(progress);
+    _yawQ.setFromAxisAngle(_wup, ttYaw);
+    // Before the turn the nose leads up the curve, after it the other end does.
+    const dir = ttYaw >= Math.PI ? -1 : 1;
+    const spinning = ttYaw > 0 && ttYaw < Math.PI;
+    const tb = tracks[0];
+    for (let k = 0; k < CARS; k++) {
+      const slot = (1.5 - k) * gapT;
+      const t = THREE.MathUtils.clamp(mid + dir * slot, 0, 1);
+      frameAt(tb.frames, t, f0);
+      carBasis.makeBasis(f0.right, f0.up, f0.tangent.clone().negate());
+      tb.cars[k].quaternion.setFromRotationMatrix(carBasis);
+      if (spinning || dir < 0) {
+        // The cars stand where they stood before the turn, swung round the centre.
+        if (spinning) {
+          _off.copy(f0.pos).sub(ttCentre!).applyQuaternion(_yawQ);
+          f0.pos.copy(ttCentre!).add(_off);
+        }
+        tb.cars[k].quaternion.premultiply(_yawQ);
+      }
+      tb.cars[k].position.copy(f0.pos);
+    }
+    disc.rotation.y = ttYaw;
+  }
+
   function placeTrain() {
+    if (tt) {
+      placeTurntableTrain();
+      return;
+    }
     const head = pace(progress);
     for (const tb of tracks) {
       for (let k = 0; k < CARS; k++) {
-        const t = THREE.MathUtils.clamp(head - k * CAR_GAP_T, 0, 1);
+        const t = THREE.MathUtils.clamp(head - k * gapT, 0, 1);
         frameAt(tb.frames, t, f0);
         tb.cars[k].position.copy(f0.pos);
         carBasis.makeBasis(f0.right, f0.up, f0.tangent.clone().negate());
@@ -452,6 +555,9 @@ export function createCoasterScene(
   function updateCamera(snap: boolean) {
     // lead car of the primary track drives follow / onboard
     frameAt(mainFrames, pace(progress), f0);
+    // The train's own heading. On a turntable run it is the curve's tangent turned
+    // by the disc, so the chase and onboard cameras swing round with the train.
+    if (tt) f0.tangent.applyAxisAngle(_wup, ttYaw);
     if (view === 'front') {
       desiredPos.copy(frontPos);
       desiredUp.set(0, 1, 0);
@@ -476,9 +582,19 @@ export function createCoasterScene(
       // follows the hill/twist instead of staring at the sky on a climb. Up
       // rolls with the frame so the horizon inverts through the figure.
       desiredUp.copy(f0.up);
-      desiredPos.copy(f0.pos).addScaledVector(f0.up, 0.95).addScaledVector(f0.tangent, 0.5);
-      frameAt(mainFrames, Math.min(pace(progress) + 0.12, 1), fLook);
-      lookTarget.copy(fLook.pos).addScaledVector(f0.up, 0.35);
+      if (tt) {
+        // from the nose car, looking along where the train is pointing
+        const nose = tracks[0].cars[0];
+        desiredPos
+          .copy(nose.position)
+          .addScaledVector(f0.up, 0.95)
+          .addScaledVector(f0.tangent, 0.5);
+        lookTarget.copy(desiredPos).addScaledVector(f0.tangent, 6).addScaledVector(f0.up, -0.6);
+      } else {
+        desiredPos.copy(f0.pos).addScaledVector(f0.up, 0.95).addScaledVector(f0.tangent, 0.5);
+        frameAt(mainFrames, Math.min(pace(progress) + 0.12, 1), fLook);
+        lookTarget.copy(fLook.pos).addScaledVector(f0.up, 0.35);
+      }
     }
     // Matrix4.lookAt uses the CAMERA convention (−z faces the target); building
     // the quaternion this way avoids the inverted facing a plain Object3D.lookAt
