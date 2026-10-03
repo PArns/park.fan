@@ -2,6 +2,7 @@
 title: 'Parchi d’inverno: chi apre a dicembre e chi non se lo può permettere'
 translationKey: winter-parks-2026
 date: '2026-09-03'
+updatedAt: '2026-10-03'
 author: patrick
 mode: published
 featured: false
@@ -110,9 +111,9 @@ dura fino al 13 novembre compreso, quindi in mezzo non c’è pausa.
 Chiude in cinque giorni: 24 e 25 dicembre, 1° gennaio e 12 e 13 gennaio 2027. A
 Capodanno si smette alle 18, in tempo per i botti di casa propria. I biglietti
 si comprano solo online e per una data fissa, all’ingresso non c’è biglietteria.
-I biglietti in prevendita da **29 €** sono in vendita solo fino al 28 settembre.
-Dopo vale il prezzo del giorno nel calendario online, che secondo il parco può
-salire ogni giorno.
+I biglietti in prevendita costano meno del prezzo del giorno, e il contingente
+per giorno di visita è limitato. Il prezzo attuale è nel negozio online, e il
+prezzo del giorno nel calendario può salire ogni giorno, secondo il parco.
 
 ![La torre del Mystery Castle nella nebbia, illuminata dal basso | Il Mystery Castle ti fa cadere per 65 metri, tutti dentro la torre. La pioggia gelata fuori non cambia niente. | wide](/media/phantasialand/mystery-castle.jpg)
 
@@ -508,8 +509,8 @@ tranquillo. Dopo quest’inverno avrà visto per la prima volta un dicembre inte
 ## Data, elenco delle attrazioni, giaccone pesante
 
 1. **Il prezzo dipende dalla data, e dal giorno in cui compri.** Phantasialand
-   vende solo biglietti online con data; i 29 € erano un prezzo di prevendita
-   fino al 28 settembre, poi vale il prezzo del giorno. Legoland vende biglietti
+   vende solo biglietti online con data; la prevendita costa meno del prezzo
+   del giorno, e il contingente per giorno è limitato. Legoland vende biglietti
    in prevendita fino al 4 ottobre e ti lascia scegliere il giorno più tardi, e
    Walibi Belgium non chiede proprio una data.
 2. **Leggi l’elenco delle attrazioni prima di prenotare.** D’estate la domanda è
@@ -550,7 +551,7 @@ novembre sarebbe arrivato il Wintertraum come risarcimento. Arriva il
 
 ### Fonti e approfondimenti
 
-- Phantasialand, date, orari, giorni di chiusura e prevendita fino al 28 settembre: [Wintertraum (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Orari (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Biglietti (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
+- Phantasialand, date, orari, giorni di chiusura e prevendita: [Wintertraum (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Orari (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Biglietti (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
 - Phantasialand, spettacoli, giorni di riposo, MAGIC SYMPHONY con vento forte, attrazioni chiuse: [Spettacoli invernali (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/wintershows/) · [Attrazioni d’inverno (ufficiale, inglese)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-wintertraum/)
 - Europa-Park, stagioni, HALLOWinter e stagione invernale: [Orari e stagioni (ufficiale)](https://www.europapark.de/it/parco-divertimenti/info/pianifica-la-tua-visita/orari-di-apertura-stagioni-delleuropa-park) · [Stagione invernale 2026/2027, cena spettacolo e Capodanno (ufficiale)](https://www.europapark.de/it/pernottamento/offerte-eventi/stagione-invernale-20262027)
 - Euro-Mir, addio il 9 gennaio 2027, il modulo Mir, la nuova area spaziale nel 2028: [Goodbye, Euro-Mir! (ufficiale)](https://www.europapark.de/it/parco-divertimenti/goodbye-euro-mir)

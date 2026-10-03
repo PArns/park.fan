@@ -2,6 +2,7 @@
 title: 'Theme parks in winter: who opens in December and who can’t afford to'
 translationKey: winter-parks-2026
 date: '2026-09-03'
+updatedAt: '2026-10-03'
 author: patrick
 mode: published
 featured: false
@@ -108,9 +109,9 @@ and including 13 November, so there’s no break in between.
 The park is closed on five days: 24 and 25 December, 1 January, and 12 and
 13 January 2027. On New Year’s Eve it stops at 18:00, in good time for your own
 fireworks. Tickets are sold online only and for a fixed date; there’s no box
-office at the gate. The advance tickets from **€29** are on sale only until
-28 September. After that the day price in the online calendar applies, and the
-park says it can rise any day.
+office at the gate. Advance tickets are cheaper than the day price, and the quota per
+visiting day is limited. The online shop shows the current price, and the park
+says the day price in the calendar can rise any day.
 
 ![The tower of Mystery Castle in fog, lit from below | Mystery Castle drops you 65 metres, all of it inside the tower. Freezing rain outside makes no difference. | wide](/media/phantasialand/mystery-castle.jpg)
 
@@ -498,8 +499,8 @@ have a whole December in its data for the first time.
 ## The date, the ride list and a warmer coat
 
 1. **The price hangs on the date, and on the day you buy.** Phantasialand only
-   sells dated online tickets; the €29 was an advance price until 28 September,
-   after which the day price applies. Legoland sells early-bird tickets until
+   sells dated online tickets; advance tickets are cheaper than the day
+   price, and the quota per day is limited. Legoland sells early-bird tickets until
    4 October and lets you pick the day later, and Walibi Belgium doesn’t ask
    for a date at all.
 2. **Read the ride list before you book.** In summer the question is how long
@@ -539,7 +540,7 @@ the rink is back in the Berlin area of the park._
 
 ### Sources & further reading
 
-- Phantasialand, dates, opening hours, closed days and the advance sale until 28 September: [Wintertraum (official)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Opening hours (official)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Tickets (official)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
+- Phantasialand, dates, opening hours, closed days and the advance sale: [Wintertraum (official)](https://www.phantasialand.de/en/theme-park/wintertraum/) · [Opening hours (official)](https://www.phantasialand.de/en/theme-park/opening-hours/) · [Tickets (official)](https://www.phantasialand.de/en/theme-park/tickets-offers/)
 - Phantasialand, shows, days off, MAGIC SYMPHONY in strong wind, closed rides: [Winter shows (official)](https://www.phantasialand.de/en/theme-park/wintertraum/wintershows/) · [Attractions during Wintertraum (official)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-wintertraum/)
 - Europa-Park, seasons, HALLOWinter and the winter season: [Opening hours & seasons (official)](https://www.europapark.de/en/theme-park/info/plan-your-visit/europa-park-opening-hours-seasons) · [Winter season 2026/2027 with dinner show and New Year’s Eve (official)](https://www.europapark.de/en/overnight/offers-events/winter-season-20262027)
 - Euro-Mir, farewell on 9 January 2027, the Mir module, the new space area for 2028: [Goodbye, Euro-Mir! (official)](https://www.europapark.de/en/theme-park/goodbye-euro-mir)
