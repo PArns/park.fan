@@ -8625,7 +8625,6 @@ const landscapeRoom = (sel) => {
     axisVisible: Math.round(visible),
     covers,
     beside,
-    handle: sheet.querySelector('[data-planner-sheet-handle]'),
   };
 };
 
@@ -8930,6 +8929,122 @@ const landscapeRoom = (sel) => {
     );
   }
   await land.close();
+}
+
+// ── A short desktop window, 1440×480 (PAR-212) ──────────────────────────────
+//
+// The one size the `(pointer: coarse)` term exists for, and until now nothing
+// asked about it. 480 px is under the 31.25rem height branch of
+// `PLANNER_PHONE_QUERY` and `@variant planner-phone`, so without the pointer
+// term this mouse window would get the modal bottom sheet, and the drag from a
+// ride card on the park page — the panel's whole reason to be non-modal — would
+// have nothing to land on. The two 844×390 passes above run with `hasTouch`
+// and cannot see it: remove the term from either half and every assertion
+// there stays green.
+//
+// No `hasTouch`, deliberately: this page is the mouse. The first assertion
+// reads the instrument, as the phone passes do, so a run in which the pointer
+// answers coarse says so instead of passing over the wrong device.
+//
+// Both halves are asked, because they are two copies of one rule:
+//   - the TS half decides `modal` and `side` (`useMediaQuery(PLANNER_PHONE_QUERY)`),
+//     read here as the absence of the overlay and of the scroll lock;
+//   - the CSS half decides `planner-phone:` against `planner-wide:`, read here
+//     as the border and the grab handle. Dropping the term from `planner-phone`
+//     alone applies BOTH borders; dropping it from both hides nothing, so the
+//     handle is drawn.
+{
+  const short = await browser.newPage({ viewport: { width: 1440, height: 480 } });
+  noteErrors(short);
+  await seed(short);
+  if (await openSheet(short, '1440×480')) {
+    await short.waitForTimeout(2500);
+
+    const pointer = await short.evaluate(
+      (query) => ({
+        coarse: matchMedia('(pointer: coarse)').matches,
+        fine: matchMedia('(pointer: fine)').matches,
+        // `null` when the constant could not be read, which the check below names.
+        phone: query ? matchMedia(query).matches : null,
+      }),
+      PLANNER_PHONE_QUERY
+    );
+    check(
+      'das kurze Desktop-Fenster ist eine Maus und kein Handy',
+      pointer.fine && !pointer.coarse && pointer.phone === false,
+      `fine ${pointer.fine} · coarse ${pointer.coarse} · PLANNER_PHONE_QUERY ${pointer.phone}`
+    );
+
+    const side = await short.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      if (!sheet) return null;
+      const box = sheet.getBoundingClientRect();
+      const style = getComputedStyle(sheet);
+      return {
+        left: Math.round(box.x),
+        width: Math.round(box.width),
+        height: Math.round(box.height),
+        bottom: Math.round(window.innerHeight - box.bottom),
+        borderTop: parseFloat(style.borderTopWidth),
+        borderLeft: parseFloat(style.borderLeftWidth),
+        radius: parseFloat(style.borderTopLeftRadius),
+        // What a MODAL Radix dialog adds: its shield, the scroll lock on <body>
+        // and `aria-hidden` on everything outside. Any one of them is the page
+        // behind the panel taken away.
+        overlays: document.querySelectorAll('[data-slot="sheet-overlay"]').length,
+        bodyPointerEvents: document.body.style.pointerEvents,
+        hiddenOutside: document.querySelectorAll('[data-aria-hidden]').length,
+      };
+    }, SHEET);
+
+    if (side) {
+      // A side panel on the right edge: full height, a width of its own, its
+      // left edge where `width` leaves it (992 = 1440 − 448 on the default
+      // width) and nothing on the bottom edge. A bottom sheet reports
+      // `left: 0`, `bottom: 0` and the whole window's width.
+      check(
+        'im kurzen Desktop-Fenster bleibt das Panel ein Seitenpanel rechts',
+        side.left > 0 && side.left + side.width === 1440 && side.width < 800 && side.height === 480,
+        `Sheet ${side.width}×${side.height} bei x=${side.left}, unten ${side.bottom} px`
+      );
+      check(
+        'und es ist nicht modal: kein Schild, keine Sperre, die Seite dahinter bleibt anfassbar',
+        side.overlays === 0 && side.bodyPointerEvents !== 'none' && side.hiddenOutside === 0,
+        `${side.overlays} Overlay · body pointer-events „${side.bodyPointerEvents}“ · ` +
+          `${side.hiddenOutside}× data-aria-hidden`
+      );
+      // `planner-wide:border-l` and `planner-phone:border-t` / `rounded-t-2xl`:
+      // the CSS half of the switch, in numbers. A sheet that matched BOTH
+      // variants has a 1 px border on two edges.
+      check(
+        'das Seitenpanel trägt die Kante links und keine eines Bottom Sheets',
+        side.borderLeft > 0 && side.borderTop === 0 && side.radius === 0,
+        `border-left ${side.borderLeft} px · border-top ${side.borderTop} px · Radius oben links ${side.radius} px`
+      );
+    } else {
+      check(
+        'im kurzen Desktop-Fenster bleibt das Panel ein Seitenpanel rechts',
+        false,
+        'kein Sheet'
+      );
+    }
+
+    // `:visible`, never `count()`: the handle is always in the DOM and
+    // `planner-wide:hidden` decides whether it is drawn.
+    const handles = await short.locator(`${SHEET} [data-planner-sheet-handle]:visible`).count();
+    check(
+      'ein Seitenpanel hat keinen Griff',
+      handles === 0,
+      `${handles}× sichtbar (der Griff gehört dem Bottom Sheet, planner-wide:hidden)`
+    );
+  } else {
+    check(
+      'im kurzen Desktop-Fenster bleibt das Panel ein Seitenpanel rechts',
+      false,
+      'Panel nicht geöffnet'
+    );
+  }
+  await short.close();
 }
 
 // ── The ride search's head on a portrait phone (PAR-225) ───────────────────
