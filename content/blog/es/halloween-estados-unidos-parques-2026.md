@@ -44,19 +44,11 @@ seo:
     - Oogie Boogie Bash 2026
 ---
 
-Cinco grandes eventos de Halloween siguen en marcha en Estados Unidos hasta el
-31 de octubre o el 1 de noviembre. En todos hay que pagar aparte por la noche, y
-cada uno tiene su propio programa: casas del terror en Orlando y Buena Park,
-Fright Fest en Six Flags, rutas de caramelos en Disney. El resumen para Europa
-está en la [guía de Halloween](/blog/halloween-freizeitparks-2026), y Cedar Point,
-en Ohio, tiene su propio artículo sobre los
-[HalloWeekends](/blog/cedar-point-halloweekends-2026).
+Cinco grandes eventos de Halloween siguen en marcha en Estados Unidos hasta el 31 de octubre o el 1 de noviembre. En todos se paga aparte por la noche, y cada uno tiene un programa distinto: casas del terror en Orlando y Buena Park, Fright Fest en Six Flags, rutas de caramelos en Disney. El panorama de Europa está en la [guía de Halloween](/blog/halloween-parques-atracciones-2026), y Cedar Point, en Ohio, tiene su propio artículo sobre [HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
 ## Halloween Horror Nights en Orlando
 
-Según el comunicado de prensa de Universal, [Universal Studios Florida](ref:universal-studios-florida)
-tiene **49 noches entre el 28 de agosto y el 1 de noviembre**. El programa
-incluye diez casas:
+[Universal Studios Florida](ref:universal-studios-florida) ofrece, según el comunicado de Universal, 49 noches entre el 28 de agosto y el 1 de noviembre. El programa incluye diez casas:
 
 - Stranger Things
 - Sinners
@@ -69,74 +61,33 @@ incluye diez casas:
 - MADLANDS: Caged Cannibals
 - Cybergoria
 
-A ellas se suman cuatro scare zones: Fortnitemares, Infernal Carnival of
-Nightmares, Downtown Clowntown y Sideshow of Decay. La entrada vale para una
-noche y es un billete aparte. Según los vendedores de entradas, los precios
-empiezan en 87,99 $ más impuestos y llegan a 129,99 $ en las noches más
-llenas. No hemos podido consultar la lista de precios del parque.
+Además hay cuatro scare zones: Fortnitemares, Infernal Carnival of Nightmares, Downtown Clowntown y Sideshow of Decay. El comunicado no da los precios de las entradas. Están en la web del parque.
 
 ## Scary Farm en Knott's Berry Farm
 
-[Knott's Berry Farm](ref:knotts-berry-farm), en Buena Park, cerca de Los
-Ángeles, celebra la 53.ª temporada de **Knott's Scary Farm**: 26 noches del 17 de
-septiembre al 31 de octubre, de jueves a domingo. Las puertas abren a las 19:00 y
-el evento termina a la 1:00 los jueves y domingos, y a las 2:00 los viernes y
-sábados.
-
-Hay diez mazes, y **Inked** y **Unearthed** son nuevos. Para **Origins: The Curse
-of Calico** y **The Chilling Chambers** es la última temporada. Se suman cinco
-scare zones y tres espectáculos, dos de ellos nuevos. La entrada para una noche
-cuesta desde 69 $, y el Scary Farm Pass para todas las noches, 164 $. El evento
-no se recomienda a menores de 13 años, y están prohibidos los disfraces que
-tapan la cara.
+[Knott's Berry Farm](ref:knotts-berry-farm), en Buena Park, cerca de Los Ángeles, celebra **Knott's Scary Farm** en noches seleccionadas del 17 de septiembre al 31 de octubre. Hay diez mazes, y **Inked** y **Unearthed** son nuevos. Además hay cinco scare zones y tres espectáculos, y el espectáculo de magia **Occultum** es nuevo. Según el parque, la entrada para una noche empieza en 65 $ y el Scary Farm Pass cuesta 164 $, ambos solo en línea. El parque no recomienda el evento para menores de 13 años.
 
 ## Fright Fest en Six Flags
 
-Fright Fest se celebra en varios parques de Six Flags del 18 de septiembre al
-1 de noviembre. Aquí van los dos parques que mide park.fan.
+Fright Fest se celebra en Magic Mountain y en Great Adventure del 18 de septiembre al 1 de noviembre, en noches seleccionadas.
 
-[Six Flags Magic Mountain](ref:six-flags-magic-mountain), en California, abre
-según el parque de viernes a domingo, y también los jueves a partir del 8 de
-octubre, siempre desde las 18:30. Los mazes cuestan desde 25 $ por una noche, el
-pase de toda la temporada desde 69 $ y el paquete con entrada al parque desde
-74 $. **Final Destination: Death's Playground** y **Wolves' Blood** son nuevos.
+[Six Flags Magic Mountain](ref:six-flags-magic-mountain), en California, abre el evento a las 18:30, de viernes a domingo, y desde el 8 de octubre también los jueves, según el parque. Los mazes cuestan desde 25 $ por una noche, el pase de toda la temporada desde 69 $ y el paquete con entrada al parque desde 74 $. **Final Destination: Death's Playground** y **Wolves' Blood** son nuevos.
 
-[Six Flags Great Adventure](ref:six-flags-great-adventure), en Nueva Jersey,
-tiene al menos nueve mazes, entre ellos los nuevos **JASON: Blood Reign** y
-**Final Destination: Death's Playground**. El paquete con entrada cuesta desde
-80 $ y el pase de temporada para los mazes desde 75 $. A partir del 8 de octubre,
-Fright Fest también abre los jueves.
+[Six Flags Great Adventure](ref:six-flags-great-adventure), en Nueva Jersey, presenta ocho mazes, entre ellos los nuevos **JASON: Blood Reign** y **Final Destination: Death's Playground**. El paquete con entrada empieza en 80 $ y el pase de temporada para los mazes en 75 $. Desde el 8 de octubre, Fright Fest también se celebra los jueves. Cada visitante necesita su propia entrada.
 
-Los dos parques desaconsejan Fright Fest a menores de 13 años. En ambos, los
-mazes requieren una entrada aparte, mientras que las scare zones y los
-espectáculos están incluidos en la entrada al parque.
+Ambos parques desaconsejan Fright Fest para menores de 13 años.
 
 ## Fiestas de Halloween en Disney
 
-Las fiestas de Disney van aparte del día en el parque. Quien quiera asistir
-compra una entrada propia.
+Las fiestas de Disney son independientes del día de parque. Quien quiera asistir compra una entrada aparte.
 
-[Magic Kingdom Park](ref:magic-kingdom-park), en Florida, organiza
-**Mickey's Not-So-Scary Halloween Party** en noches concretas entre el 7 de
-agosto y el 31 de octubre, siempre de 19:00 a 24:00. En octubre, según los
-calendarios de los portales de viajes, son los días 1, 2, 4, 6, 8, 9, 13, 15, 16,
-18, 22, 23, 25, 27, 29 y 31. No hemos podido comprobar las fechas en la propia
-web de Disney.
+[Magic Kingdom Park](ref:magic-kingdom-park), en Florida, celebra **Mickey's Not-So-Scary Halloween Party** en noches seleccionadas entre el 7 de agosto y el 31 de octubre. La fiesta empieza a las 19:00, y quienes tienen entrada pueden entrar al parque desde las 16:00. En octubre, según Disney, son los días 1, 2, 4, 6, 8, 9, 13, 15, 16, 18, 22, 23, 25, 27, 29 y 31.
 
-[Disney California Adventure Park](ref:disney-california-adventure-park), en
-Anaheim, celebra **Oogie Boogie Bash** durante 33 noches entre el 18 de agosto y
-el 31 de octubre, de 18:00 a 23:00. Con entrada se puede acceder al parque ya a
-partir de las 15:00. La novedad de este año es **Madame Leota's Swinging Wake**,
-una fiesta callejera dedicada a la Haunted Mansion.
-
-En el Oogie Boogie Bash se permiten disfraces y, según Disney, las colas son más
-cortas en algunas atracciones.
+[Disney California Adventure Park](ref:disney-california-adventure-park), en Anaheim, celebra **Oogie Boogie Bash** en 33 noches entre el 18 de agosto y el 31 de octubre, de 18:00 a 23:00. Con entrada se puede acceder al parque tres horas antes del inicio. La novedad de este año es **Madame Leota's Swinging Wake**, una fiesta callejera sobre la Haunted Mansion. Se permiten disfraces, y según Disney las esperas en algunas atracciones suelen ser más cortas.
 
 ## ¿Cuánta gente hay por la noche?
 
-No tenemos ninguna cifra para la noche del evento. Nuestra medición abarca el
-día entero y no separa la noche del evento del funcionamiento diurno. La curva
-por horas muestra cómo se reparten las colas a lo largo del día.
+No tenemos una cifra para la noche del evento. Nuestra medición cubre el día completo y no separa la noche del evento del funcionamiento normal. La curva horaria muestra las colas a lo largo del día.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
@@ -150,12 +101,12 @@ Los días más tranquilos de las próximas semanas están en el calendario:
 
 ## Fuentes
 
-- Fechas, casas y scare zones de Halloween Horror Nights: [Halloween Horror Nights 2026 Overview (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-2026-overview/)
-- Precios de entradas desde 87,99 $: [Halloween Horror Nights Orlando 2026 Tickets (Undercover Tourist)](https://www.undercovertourist.com/blog/halloween-horror-nights-orlando-2026-tickets/)
-- Periodo de Knott's Scary Farm: [Knott's Berry Farm Events (Six Flags)](https://www.sixflags.com/knotts/events)
-- Mazes, zonas, espectáculos, horarios, precios y normas de Knott's Scary Farm: [Knott's Scary Farm 2026 Guide (Haunted Attraction Network)](https://hauntedattractionnetwork.com/knotts-scary-farm-2026-guide/)
-- Fright Fest en Magic Mountain, fechas, pases y aviso de edad: [Fright Fest (Six Flags Magic Mountain)](https://www.sixflags.com/magicmountain/events/fright-fest)
+Todos los datos proceden de los parques y de los operadores, consultados el 3 de octubre de 2026.
+
+- Halloween Horror Nights, fechas, casas y scare zones: [Halloween Horror Nights 2026 Overview (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-2026-overview/)
+- Knott's Scary Farm, fechas, mazes, scare zones, espectáculos y aviso de edad: [Knott's Scary Farm (Six Flags)](https://www.sixflags.com/knotts/events/scary-farm)
+- Knott's Scary Farm, precios de entradas y pase: [Scary Farm Tickets (Six Flags)](https://www.sixflags.com/knotts/scary-farm-tickets)
+- Fright Fest en Magic Mountain, fechas, precios, mazes nuevos y aviso de edad: [Fright Fest (Six Flags Magic Mountain)](https://www.sixflags.com/magicmountain/events/fright-fest)
 - Fright Fest en Great Adventure, mazes, precios y aviso de edad: [Fright Fest (Six Flags Great Adventure)](https://www.sixflags.com/greatadventure/events/fright-fest)
-- Mazes nuevos en Magic Mountain, siete mazes: [Fright Fest 2026 (Haunted Attraction Network)](https://hauntedattractionnetwork.com/fright-fest-2026-six-flags-all-locations-guide/)
-- Oogie Boogie Bash, horarios, acceso y novedad: [Halloween and Fall Celebrations at Disneyland (Disney Parks Blog)](https://disneyparksblog.com/dlr/halloween-and-fall-celebrations-at-disneyland/)
-- Mickey's Not-So-Scary Halloween Party, fechas y horario: [Mickey's Not-So-Scary Halloween Party (Disney World)](https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-not-so-scary-halloween-party/) y [fechas en Attraction Tickets](https://www.attractiontickets.com/en/orlando-attraction-tickets/mickeys-not-so-scary-halloween-party-magic-kingdom-park)
+- Oogie Boogie Bash, fechas, horarios, acceso y novedad: [Halloween and Fall Celebrations at Disneyland (Disney Parks Blog)](https://disneyparksblog.com/dlr/halloween-and-fall-celebrations-at-disneyland/)
+- Mickey's Not-So-Scary Halloween Party, fechas y horarios: [2026 Mickey's Not-So-Scary Halloween Party Dates (Disney Parks Blog)](https://disneyparksblog.com/wdw/mickeys-not-so-scary-halloween-party-dates-teaser-treats/)
