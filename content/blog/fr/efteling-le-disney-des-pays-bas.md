@@ -505,7 +505,8 @@ septembre un peu plus de trois semaines, derrière décembre, janvier et mars
 seulement une poignée (pour décembre, ce sont les vacances de Noël à partir du 26),
 et pour février, octobre et novembre nous n’avons jusqu’ici aucun jour exploitable
 (au 25 septembre 2026). La tendance
-tient, le classement dans le détail non.
+tient, le classement dans le détail non. Les mois les plus calmes, tous parcs
+confondus, sont sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 **Par jour de la semaine**, le conseil habituel ne tient pas ici :
 

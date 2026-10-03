@@ -291,7 +291,9 @@ Derrière tout cela, un resort qui, selon ses propres chiffres, emploie plus de
 remporté le **Golden Ticket Award** du meilleur parc d’attractions du monde, en
 dernier lieu le 12 septembre 2026 à Austin, au Texas. La série a deux trous. En 2023, c’est Dollywood
 qui a gagné, l’Europa-Park a fini deuxième, et en 2020 il n’y a pas eu de
-cérémonie à cause de la pandémie.
+cérémonie à cause de la pandémie. Dans mon
+[classement des parcs allemands pour les fans de montagnes russes](/blog/meilleurs-parcs-d-attractions-en-allemagne), il
+arrive aussi en tête.
 
 Pour Mack Rides, le parc est resté la salle d’exposition qu’il devait être. Des
 quatorze montagnes russes qui s’y trouvent, **douze viennent de Waldkirch**
@@ -565,7 +567,7 @@ D’ici l’événement d’adieu du 9 janvier 2027, il n’y aura plus d’ét�
 ## Meilleure période : quand l’Europa-Park est le plus calme
 
 Le jour le plus calme de la semaine n’est pas le même à l’Europa-Park que dans
-les autres parcs que je relève.
+[les autres parcs que je relève](/meilleure-periode-pour-visiter).
 
 ### Le jour de la semaine
 

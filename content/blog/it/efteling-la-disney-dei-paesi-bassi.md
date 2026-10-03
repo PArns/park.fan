@@ -498,7 +498,8 @@ dietro settembre poco più di tre settimane, dietro dicembre, gennaio e marzo so
 una manciata (per dicembre, le vacanze di Natale dal 26 in poi), e per febbraio,
 ottobre e novembre finora non abbiamo alcun giorno utilizzabile (al 25 settembre
 2026). La direzione tiene, la
-classifica nel dettaglio no.
+classifica nel dettaglio no. I mesi più tranquilli di tutti i parchi stanno nella
+[pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 **Per giorno della settimana** il consiglio abituale qui vale poco:
 

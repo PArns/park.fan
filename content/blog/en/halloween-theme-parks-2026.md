@@ -566,6 +566,10 @@ Programme and prices:
 [portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
 and [Halloween passages](https://www.portaventuraworld.com/en/tickets/halloween-passages).
 
+Gardaland on Lake Garda has a new maze this autumn that you walk through in
+silence, and our [news piece on Gardaland](/blog/gardaland-magic-halloween-2026)
+has the dates and prices.
+
 ## The refuseniks: two top parks that sit Halloween out
 
 Two of the most visited parks in the region don’t join the whole
@@ -692,6 +696,10 @@ Which nerve level you choose is your business. Just know that in a queue
 nobody jumps out at you, guaranteed, which at these prices is annoying. The
 emptiest days are in the crowd calendar on park.fan, and the live wait times are
 there all autumn long.
+
+What’s on across the Atlantic is in the [US Halloween
+guide](/blog/halloween-usa-theme-parks-2026), and Cedar Point in Ohio has a post
+of its own on [HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
 If you book Below, pack spare socks. I once didn’t.
 

@@ -2047,7 +2047,8 @@
     "quietestByPark": {
       "title": "De rustigste dag per park",
       "intro": "De gemiddelden hierboven gelden voor alle parken samen. Per park ligt het anders, afhankelijk van schoolvakanties, reisafstand en de vraag wanneer de dagjesmensen uit de buurt vrij hebben.",
-      "colQuietest": "Rustigste dag"
+      "colQuietest": "Rustigste dag",
+      "guidesLead": "Onze gidsen voor deze parken:"
     }
   },
   "howto": {

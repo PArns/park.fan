@@ -243,7 +243,7 @@ the Monday €64, and our calendar expects the Monday to be the quieter of the t
 And **there are no more annual passes**, which still rankles the most loyal
 fans. Phantasialand took its Club-Karte off sale during the pandemic and never
 brought it back; the last ones expired in summer 2022. That makes it the
-exception among Germany’s big parks; Europa-Park, for one, still sells its
+exception among [Germany’s big parks](/blog/best-theme-parks-in-germany); Europa-Park, for one, still sells its
 ResortPass, even if the allocations go fast. For a place
 that turns so many people into repeat offenders, that’s a slap in the face of
 the regulars. The resentment was (and is) big enough that in 2022 fans
@@ -272,7 +272,8 @@ A few rules of thumb that almost always hold:
 
 - **Weekdays beat weekends.** Monday to Friday come out level in our
   measurements, with Saturday and Sunday above them (measured since late
-  December 2025, as of 25 September 2026). There’s no secret-tip weekday here.
+  December 2025, as of 25 September 2026). There’s no secret-tip weekday here. Which parks do have one is on the
+  [best time to visit page](/best-time-to-visit).
 - **Avoid NRW school holidays**, especially the summer and autumn breaks. The
   Cologne/Bonn/Ruhr catchment is enormous, and half of it will be standing with
   you at Taron.

@@ -593,6 +593,10 @@ Programm und Preise:
 [portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
 und [Halloween-Pasajes](https://www.portaventuraworld.com/en/tickets/halloween-passages).
 
+Gardaland am Gardasee hat diesen Herbst ein neues Labyrinth, durch das du
+schweigend gehen musst, und unsere [Meldung zu
+Gardaland](/blog/gardaland-magic-halloween-2026) hat Termine und Preise.
+
 ## Die Verweigerer: zwei Top-Parks, die Halloween aussitzen
 
 Zwei der meistbesuchten Parks der Region machen bei dem ganzen
@@ -722,6 +726,11 @@ Für welche Nervenstärke du dich entscheidest, ist deine Sache. Nur springt dic
 in einer Warteschlange garantiert _niemand_ an, was bei diesen Preisen ärgerlich
 ist. Welcher Tag der leerste ist, siehst du den ganzen Herbst über an den
 Live-Wartezeiten und im Crowd-Kalender auf park.fan.
+
+Was auf der anderen Seite des Atlantiks läuft, steht im [Halloween-Überblick für
+die USA](/blog/halloween-usa-freizeitparks-2026), und Cedar Point in Ohio hat
+einen eigenen Beitrag zu den
+[HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
 Wer Below bucht, packt Wechselsocken ein. Ich habe das einmal nicht getan.
 

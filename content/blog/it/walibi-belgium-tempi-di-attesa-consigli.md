@@ -316,7 +316,8 @@ Vallonia e Bruxelles hanno le vacanze d’autunno dal 19 al 30 ottobre, quelle
 fiamminghe dal 2 all’8 novembre, e Ibilaw le copre entrambe. Poi ci sono i
 giorni della settimana fuori dalle vacanze estive, quando comunque il parco non
 apre tutti i giorni. Quali dei prossimi giorni di apertura siano i più
-tranquilli sta nel calendario più in alto, aggiornato ogni giorno.
+tranquilli sta nel calendario più in alto, aggiornato ogni giorno. Come cadono
+mesi e giorni della settimana negli altri parchi sta nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 ## Una giornata a Wavre
 

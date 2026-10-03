@@ -486,7 +486,7 @@ mercoledì e nei fine settimana.
 
 **Per giorno della settimana** i numeri praticamente non si distanziano, nessun
 giorno spicca. A Phantasialand un sabato è sensibilmente più pieno di un
-martedì.
+martedì. La [pagina del periodo migliore](/periodo-migliore-per-visitare) mette i parchi uno accanto all’altro.
 
 Su questo non ci si può fidare non appena calendari scolastici olandesi e
 tedeschi, meteo e orari di apertura si sovrappongono, e nella zona di confine del

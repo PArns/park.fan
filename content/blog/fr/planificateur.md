@@ -307,7 +307,8 @@ toutes les langues, et un chemin deviné est un plan qui pointe vers une 404.
 Pour la deuxième question, au lieu d’une liste déroulante de soixante lignes, tu
 obtiens un mois entier, et chaque jour porte la fréquentation
 prévue de ce parc. « Le samedi en huit » devient affaire d’un coup d’œil, et ce
-que nous savons d’autre à son sujet est sous la grille.
+que nous savons d’autre à son sujet est sous la grille. Quels jours de la semaine et quels mois sont calmes dans un
+parc en général, c’est sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 ![Deuxième étape de l’assistant : le Disneyland Park d’Anaheim est choisi, chaque jour de la grille mensuelle porte la fréquentation prévue, samedi 19 sélectionné. | Un septembre annoncé calme d’un bout à l’autre à Anaheim. Soixante lignes d’une liste déroulante ne montrent jamais ça.](/media/tagesplaner/planer-wizard-tag-fr.webp)
 

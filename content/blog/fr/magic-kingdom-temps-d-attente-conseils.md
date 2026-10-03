@@ -203,7 +203,8 @@ Pour février, octobre et novembre, nous n’avons encore aucune valeur. Au 28
 septembre 2026, nous comptons 196 jours mesurés, pour la plupart depuis avril.
 
 La courbe des jours de la semaine est plate, et les médianes ne s’écartent que
-d’un cran. Il n’y a pas de jour de la semaine à viser en particulier.
+d’un cran. Il n’y a pas de jour de la semaine à viser en particulier. Dans
+certains autres parcs, il y en a un, et la [page des meilleures périodes](/meilleure-periode-pour-visiter) le nomme.
 
 Depuis son ouverture, le Magic Kingdom a fermé temporairement neuf fois à cause
 d’ouragans, la dernière fois en octobre 2024, pour l’ouragan Milton. À l’automne, le parc

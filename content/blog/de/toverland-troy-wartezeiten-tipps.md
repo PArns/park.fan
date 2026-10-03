@@ -497,7 +497,7 @@ Wochenende.
 
 **Nach Wochentag** gehen die Zahlen so gut wie gar nicht auseinander, kein Tag
 der Woche sticht heraus. Im Phantasialand ist ein Samstag spürbar voller als ein
-Dienstag.
+Dienstag. Die [Beste-Reisezeit-Seite](/beste-reisezeit) stellt die Parks nebeneinander.
 
 Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
 Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limburg

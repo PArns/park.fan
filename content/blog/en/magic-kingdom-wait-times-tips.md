@@ -185,7 +185,8 @@ a hint, not a finding. February, October and November are missing entirely.
 As of 28 September 2026 we have 196 measured days, most of them since April.
 
 The weekday chart is flat, with medians a single step apart. No day of the week
-is the one to pick.
+is the one to pick. At some other parks there is one, and the
+[best time to visit page](/best-time-to-visit) names it.
 
 Magic Kingdom has closed temporarily for
 nine hurricanes since it opened, most recently Milton in October 2024. The park

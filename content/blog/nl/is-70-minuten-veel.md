@@ -130,7 +130,8 @@ elkaar, elk met hun rustigste weekdag:
 
 Staat er in de laatste kolom een streepje, dan onderscheidt zich bij dit park
 geen weekdag betrouwbaar, of zijn de weekdagen te ongelijk gemeten om ze te
-vergelijken. Staan er twee dagen, dan zijn ze allebei even rustig.
+vergelijken. Staan er twee dagen, dan zijn ze allebei even rustig. Dezelfde tabel, met veel
+meer parken, staat op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 ## Waar een nachtdienst voor nodig is
 

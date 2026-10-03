@@ -311,7 +311,8 @@ French-speaking schools in Wallonia and Brussels have their autumn
 break from 19 to 30 October, the Flemish ones from 2 to 8 November, and Ibilaw
 spans both. Add the weekdays outside the summer holidays, when the park doesn’t
 open every day anyway. Which of the coming operating days are the quietest is in
-the calendar further up, updated daily.
+the calendar further up, updated daily. How the months and weekdays fall at
+other parks is on the [best time to visit page](/best-time-to-visit).
 
 ## Planning the day
 

@@ -107,7 +107,7 @@ below the track; the seats hang off its left and right sides, with nothing in
 front of your feet. 40 metres tall, 772 metres long, 100 km/h, five inversions,
 three minutes of ride time, 1,060 guests per hour.
 
-Here’s how the park compares with three other large German parks, calculated
+Here’s how the park compares with three other [large German parks](/blog/best-theme-parks-in-germany), calculated
 from today’s data:
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
@@ -299,7 +299,8 @@ Friday at the bottom, and the days in between sit close together in the table
 above. Monday rests on only about half as many measured days as the rest,
 because the park regularly takes it out of the calendar in spring and in
 September. So the Mondays that do get counted are mostly high-season ones, and
-those aren’t quiet. A quiet Monday in Soltau is usually a closed Monday.
+those aren’t quiet. A quiet Monday in Soltau is usually a closed Monday. For other parks, the
+quietest weekday is on the [best time to visit page](/best-time-to-visit).
 
 ### The month
 

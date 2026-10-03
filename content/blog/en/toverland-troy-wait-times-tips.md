@@ -470,6 +470,7 @@ the park only opens on Wednesdays and weekends anyway.
 
 **By weekday** the numbers barely spread out at all, and no day of the week
 stands out. At Phantasialand a Saturday is noticeably busier than a Tuesday.
+The [best time to visit page](/best-time-to-visit) puts the parks side by side.
 
 You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap

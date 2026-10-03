@@ -472,7 +472,7 @@ woensdag en in het weekend open.
 
 **Per weekdag** lopen de cijfers zo goed als niet uiteen, geen enkele dag van de
 week springt eruit. In Phantasialand is een zaterdag merkbaar drukker dan een
-dinsdag.
+dinsdag. De [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) zet de parken naast elkaar.
 
 Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg

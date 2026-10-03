@@ -245,8 +245,8 @@ rustigste van de twee is.
 
 **Jaarkaarten zijn er niet meer**, en dat zit de trouwste fans tot vandaag dwars.
 Het Phantasialand haalde zijn Club-Karte in de pandemie uit de verkoop en bracht
-hem nooit terug; de laatste liepen in de zomer van 2022 af. Onder de grote Duitse
-parken is dat de uitzondering. Het Europa-Park verkoopt zijn ResortPass
+hem nooit terug; de laatste liepen in de zomer van 2022 af. Onder de [grote Duitse
+parken](/blog/beste-pretparken-in-duitsland) is dat de uitzondering. Het Europa-Park verkoopt zijn ResortPass
 bijvoorbeeld gewoon door, ook al zijn de contingenten snel op. Voor een plek die
 zo veel mensen tot herhalingsdaders maakt, treft dat juist de vaste gasten. De
 onvrede was (en is) zo groot dat fans in 2022 meteen **meerdere
@@ -276,7 +276,8 @@ Een paar vuistregels die bijna altijd kloppen:
 - **Doordeweeks verslaat weekend.** Maandag tot en met vrijdag liggen in onze
   metingen gelijk op, zaterdag en zondag erboven (gemeten sinds eind december
   2025, stand 25 september 2026). Een doordeweekse dag die eruit springt, is er
-  dus niet.
+  dus niet. Welke parken er wel een hebben, staat op de
+  [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 - **NRW-schoolvakanties mijden**, vooral zomer- en herfstvakantie. Het verzorgingsgebied
   Keulen/Bonn/Ruhrgebied is enorm, en de helft daarvan staat dan met je mee bij Taron.
 - **Brugdagen zijn bijna nooit een goed idee**: de vrije dag daarvoor heeft half

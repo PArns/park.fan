@@ -291,7 +291,8 @@ Dietro c’è un resort che, secondo i propri dati, in stagione dà lavoro a olt
 **Golden Ticket Award** come miglior parco divertimenti del mondo, l’ultima il 12
 settembre 2026 ad Austin, in Texas. Nel 2023 però ha vinto Dollywood, con
 l’Europa-Park secondo, e nel 2020 per la pandemia non c’è stata nessuna
-premiazione.
+premiazione. Anche nella mia
+[classifica dei parchi tedeschi per chi ama le montagne russe](/blog/migliori-parchi-divertimenti-in-germania) è primo.
 
 Per Mack Rides il parco è rimasto la sala d’esposizione che doveva essere. Delle
 quattordici montagne russe che ci stanno, **dodici vengono da Waldkirch**,
@@ -562,8 +563,8 @@ all’evento d’addio del 9 gennaio 2027 non arriva più nessuna estate, solo v
 
 ## Miglior periodo per andare: quando all’Europa-Park c’è meno gente
 
-Sul giorno della settimana l’Europa-Park fa di testa sua, rispetto a tutto
-quello che registro altrove.
+Sul giorno della settimana l’Europa-Park fa di testa sua, rispetto a [tutto
+quello che registro altrove](/periodo-migliore-per-visitare).
 
 ### Il giorno della settimana
 

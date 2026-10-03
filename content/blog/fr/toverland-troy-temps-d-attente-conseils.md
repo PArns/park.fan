@@ -502,7 +502,7 @@ n’ouvre de toute façon que le mercredi et le week-end.
 
 **Par jour de la semaine**, les chiffres ne s’écartent pour ainsi dire pas, aucun
 jour ne se détache. À Phantasialand, un samedi est nettement plus chargé qu’un
-mardi.
+mardi. La [page des meilleures périodes](/meilleure-periode-pour-visiter) met les parcs côte à côte.
 
 On ne peut pas s’y fier dès que calendriers de vacances néerlandais et allemands,
 météo et horaires d’ouverture se superposent, et dans la région frontalière du

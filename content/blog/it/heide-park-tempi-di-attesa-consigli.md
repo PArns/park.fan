@@ -107,7 +107,7 @@ siede sopra o sotto il binario, ma a sinistra e a destra di esso, senza niente
 davanti ai piedi. 40 metri di altezza, 772 metri di tracciato, 100 km/h, cinque
 inversioni, tre minuti di percorso, 1.060 ospiti all’ora.
 
-Ecco come si colloca il parco rispetto ad altri tre grandi parchi tedeschi, con
+Ecco come si colloca il parco rispetto ad altri tre [grandi parchi tedeschi](/blog/migliori-parchi-divertimenti-in-germania), con
 i dati di oggi:
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
@@ -310,7 +310,8 @@ qui sopra. Il lunedì poggia su circa la metà dei giorni misurati degli altri,
 perché il parco in primavera e a settembre lo toglie regolarmente dal
 calendario. I lunedì che contano cadono quindi soprattutto in alta stagione, e
 quelli tranquilli non sono. Un lunedì tranquillo, a Soltau, di solito è un
-lunedì chiuso.
+lunedì chiuso. Il giorno più tranquillo degli altri parchi sta nella
+[pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 ### Il mese
 

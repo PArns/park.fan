@@ -68,6 +68,8 @@ Name des Nachbarn.
 Über alle Öffnungstage, die wir bisher gemessen haben, steht man im
 [Movie Park](ref:movie-park-germany) gut ein Drittel kürzer an als im
 [Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich.
+Wie sich die übrigen deutschen Parks einordnen, steht in meinem
+[Freizeitpark-Ranking für Deutschland](/blog/beste-freizeitparks-in-deutschland).
 
 Und der Sonntag, den die gängigen Ratgeber im Netz als vollen Wochenendtag
 abschreiben, gehört in unseren Daten zu den ruhigsten Tagen der Woche.

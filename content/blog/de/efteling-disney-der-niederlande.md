@@ -493,7 +493,8 @@ Dazu gehört eine Einschränkung, sonst liest sich das genauer, als es ist: Hint
 April bis August steht jeweils ein voller Monat an Messtagen, hinter dem September
 gut drei Wochen, hinter Dezember, Januar und März nur eine Handvoll (beim Dezember
 sind es die Weihnachtsferien ab dem 26.), und für
-Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Richtung stimmt, die Rangfolge im Detail nicht.
+Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Richtung stimmt, die Rangfolge im Detail nicht. Die ruhigsten Monate über alle Parks stehen auf der
+[Beste-Reisezeit-Seite](/beste-reisezeit).
 
 **Nach Wochentag** löst sich der übliche Rat hier auf:
 

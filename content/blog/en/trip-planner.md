@@ -285,7 +285,8 @@ language, and a guessed path is a plan pointing at a 404.
 For the second question you get a whole month instead of a dropdown with sixty
 rows, and every day carries that park’s crowd forecast.
 “The Saturday after next” is one glance away, and whatever else we know about
-it sits under the grid.
+it sits under the grid. Which weekdays and months are quiet at a park in
+general is on the [best time to visit page](/best-time-to-visit).
 
 ![Step two of the planner wizard: Disneyland Park in Anaheim is chosen, every day in the month grid carries the crowd forecast, and Saturday the 19th is picked. | A September forecast quiet throughout at Anaheim. Sixty rows in a dropdown never show you that.](/media/tagesplaner/planer-wizard-tag-en.webp)
 

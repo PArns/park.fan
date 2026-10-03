@@ -280,7 +280,8 @@ people in season, and a park on 95 hectares. Eleven times the park has won the
 **Golden Ticket Award** for best theme park in the world, most recently on
 12 September 2026 in Austin, Texas. Plenty of write-ups turn that into an
 unbroken run, except that Dollywood won in 2023 and Europa-Park came second, and
-there was no ceremony in 2020 because of the pandemic.
+there was no ceremony in 2020 because of the pandemic. It also comes first in
+my [ranking of German parks for coaster fans](/blog/best-theme-parks-in-germany).
 
 For Mack Rides the park is still the showroom it was meant to be. Of the fourteen
 coasters standing in it, **twelve come from Waldkirch** by the park’s count. The
@@ -540,7 +541,7 @@ no summer left before the farewell event on 9 January 2027, only mulled wine.
 
 ## Best time to visit: when Europa-Park is quietest
 
-On the day of the week, Europa-Park matches no other park I record.
+On the day of the week, Europa-Park matches [no other park I record](/best-time-to-visit).
 
 ### The day of the week
 

@@ -146,6 +146,9 @@ Les dates, les maisons et les billets sont sur
 [sixflags.com → Cedar Point HalloWeekends](https://www.sixflags.com/cedarpoint/events/halloweekends/nighttime-frights),
 les prix sur
 [HalloWeekends Add-Ons](https://www.sixflags.com/cedarpoint/halloweekends-add-ons).
+Les autres grands événements américains, d’Orlando à la Californie, sont dans le
+[tour d’horizon d’Halloween aux
+États-Unis](/blog/halloween-etats-unis-parcs-2026).
 Halloween au Movie Park, à Europa-Park, chez Walibi et à Toverland se trouve dans
 le [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
 

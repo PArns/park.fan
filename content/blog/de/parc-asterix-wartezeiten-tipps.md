@@ -396,7 +396,8 @@ da ist, verteilt sich auf weniger Bahnen.
 
 Der Samstag ist in unseren Messungen der vollste Tag, mit Abstand, und der
 Mittwoch der ruhigste. Wenn du dir den Tag aussuchen kannst,
-nimm den Mittwoch.
+nimm den Mittwoch. Andere Parks haben ihren eigenen ruhigen Tag, gesammelt auf der
+[Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ### Der Monat
 

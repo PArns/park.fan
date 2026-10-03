@@ -268,7 +268,8 @@ domanda sulla bassa stagione, che nei parchi stagionali decide tutto, non si
 pone. A
 determinare l’affollamento sono invece le vacanze scolastiche francesi, che
 cadono in periodi diversi da quelle tedesche e d’inverno e in primavera sono
-scaglionate su tre zone, più le settimane di half-term britanniche.
+scaglionate su tre zone, più le settimane di half-term britanniche. Il confronto
+mese per mese dei parchi stagionali sta nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 Poi ci sono le stagioni. Dal 26 settembre al 1° novembre il Disneyland Park
 ospita il Disney Halloween Festival; il programma è nella nostra [notizia su

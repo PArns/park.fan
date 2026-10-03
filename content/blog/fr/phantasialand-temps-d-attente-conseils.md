@@ -258,7 +258,7 @@ lundi est le plus calme des deux.
 **Il n’y a plus de cartes annuelles**, et cela ronge encore aujourd’hui les fans
 les plus fidèles. Le Phantasialand a retiré sa
 Club-Karte de la vente pendant la pandémie et ne l’a jamais remise en vente ; les
-dernières ont expiré à l’été 2022. Parmi les grands parcs allemands, c’est
+dernières ont expiré à l’été 2022. Parmi les [grands parcs allemands](/blog/meilleurs-parcs-d-attractions-en-allemagne), c’est
 l’exception : l’Europa-Park, par exemple, continue de vendre son ResortPass, même
 si les contingents partent vite. Pour un lieu qui transforme tant de gens en
 récidivistes, c’est une gifle aux habitués. La grogne était (et reste) si forte
@@ -291,7 +291,8 @@ Quelques règles empiriques qui se vérifient presque toujours :
 - **La semaine bat le week-end.** Du lundi au vendredi, les jours font jeu égal
   dans nos mesures, le samedi et le dimanche sont au-dessus (mesures depuis fin
   décembre 2025, au 25 septembre 2026). Il n’y a donc pas ici de jour de semaine
-  miracle.
+  miracle. Les parcs qui en ont un figurent sur la
+  [page des meilleures périodes](/meilleure-periode-pour-visiter).
 - **Éviter les vacances scolaires de Rhénanie-du-Nord-Westphalie**, surtout celles
   d’été et d’automne. Le bassin de population Cologne/Bonn/Ruhr est colossal, et
   la moitié se retrouve alors avec toi devant Taron.

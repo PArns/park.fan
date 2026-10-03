@@ -603,6 +603,10 @@ Programme et prix :
 [portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
 et [Pasajes d’Halloween](https://www.portaventuraworld.com/en/tickets/halloween-passages).
 
+Gardaland, au bord du lac de Garde, ouvre cet automne un nouveau labyrinthe à
+traverser en silence, et notre [actualité sur
+Gardaland](/blog/gardaland-magic-halloween-2026) en donne les dates et les prix.
+
 ## Les réfractaires : deux parcs de tête qui zappent Halloween
 
 Deux des parcs les plus visités de la région ne participent pas du tout à ce
@@ -738,6 +742,11 @@ Le niveau de nerfs que vous choisissez ne regarde que vous. Sachez seulement
 que dans une file, personne ne vous saute dessus, c’est garanti. À ces prix-là,
 c’est agaçant. Le jour le plus vide se trouve, tout l’automne, dans les temps
 d’attente en direct et le calendrier d’affluence sur park.fan.
+
+Ce qui se passe de l’autre côté de l’Atlantique est dans le [tour d’horizon
+d’Halloween aux États-Unis](/blog/halloween-etats-unis-parcs-2026), et Cedar
+Point, dans l’Ohio, a son propre article sur les
+[HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
 Qui réserve Below emporte des chaussettes de rechange. Une fois, je ne l’ai pas
 fait.

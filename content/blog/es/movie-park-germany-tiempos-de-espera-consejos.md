@@ -68,7 +68,8 @@ como si en la tarta de las bodas de perla apareciera el nombre del vecino.
 A lo largo de todos los días de apertura que hemos medido hasta ahora, en el
 [Movie Park](ref:movie-park-germany) se hace un buen tercio menos de cola que en el
 [Phantasialand](ref:phantasialand), a poco menos de una hora en coche hacia el
-sur.
+sur. Dónde quedan los demás parques alemanes está en mi
+[clasificación de parques de atracciones de Alemania](/blog/mejores-parques-de-atracciones-de-alemania).
 
 Y el domingo, que las guías habituales de internet dan por día lleno de fin de
 semana, está en nuestros datos entre los días más tranquilos de la semana.

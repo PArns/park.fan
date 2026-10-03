@@ -11,7 +11,10 @@ import { routing, type Locale } from '@/i18n/routing';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import {
+  BreadcrumbStructuredData,
+  WebApplicationStructuredData,
+} from '@/components/seo/structured-data';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
@@ -184,6 +187,12 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
       <BreadcrumbStructuredData
         breadcrumbs={[{ name: tNav('home'), url: '/' }]}
         currentPage={{ name: t('title'), url: path(locale) }}
+        locale={locale}
+      />
+      <WebApplicationStructuredData
+        name={t('title')}
+        description={t('metaDescription')}
+        path={path(locale)}
         locale={locale}
       />
       {/* The page opened on a kicker, an H1 and a lead standing on bare page

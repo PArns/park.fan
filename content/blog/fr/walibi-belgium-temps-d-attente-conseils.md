@@ -319,7 +319,8 @@ Bruxelles ont leur congé d’automne du 19 au 30 octobre, les écoles flamandes
 2 au 8 novembre, et Ibilaw couvre les deux. S’y ajoutent les jours de semaine
 hors vacances d’été, quand le parc n’ouvre de toute façon pas tous les jours.
 Les jours d’ouverture les plus calmes des prochaines semaines sont dans le
-calendrier plus haut, recalculés chaque jour.
+calendrier plus haut, recalculés chaque jour. Comment tombent les mois et les
+jours de la semaine dans les autres parcs, c’est sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 ## L’ordre de la journée
 

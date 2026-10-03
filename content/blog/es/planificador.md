@@ -290,7 +290,8 @@ idiomas, y una ruta adivinada es un plan que apunta a un 404.
 En la segunda pregunta, en lugar de una lista desplegable de sesenta filas
 tienes un mes entero, y cada día lleva la afluencia prevista de ese
 parque. «El sábado de dentro de dos semanas» pasa a ser cosa de un vistazo, y lo
-demás que sabemos de él está bajo la rejilla.
+demás que sabemos de él está bajo la rejilla. Qué días de la semana y qué meses suelen ser tranquilos en
+un parque está en la [página de la mejor época](/mejor-epoca-para-visitar).
 
 ![Segundo paso del asistente: el Disneyland Park de Anaheim está elegido, cada día de la rejilla mensual lleva la afluencia prevista y el sábado 19 está seleccionado. | Un septiembre que en Anaheim se prevé tranquilo de principio a fin. En sesenta filas de una lista desplegable eso no se ve.](/media/tagesplaner/planer-wizard-tag-es.webp)
 

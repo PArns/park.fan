@@ -194,7 +194,8 @@ we nog helemaal geen waarden. Op 28 september 2026 hadden we 196 gemeten dagen,
 de meeste daarvan sinds april.
 
 De weekdagcurve is vlak, de medianen liggen maar één stap uit elkaar. Een dag
-van de week die je speciaal moet uitkiezen, is er niet.
+van de week die je speciaal moet uitkiezen, is er niet. Bij sommige andere
+parken wel, en de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) noemt hem.
 
 Sinds de opening is Magic Kingdom negen keer tijdelijk dichtgegaan vanwege een
 orkaan, het laatst in oktober 2024 bij Milton. In de herfst loopt in het park

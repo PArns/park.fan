@@ -395,7 +395,8 @@ over minder attracties.
 ```
 
 In onze metingen is zaterdag veruit de drukste dag en woensdag de rustigste.
-Kun je de dag zelf kiezen, neem dan de woensdag.
+Kun je de dag zelf kiezen, neem dan de woensdag. Elk ander park heeft zijn eigen
+rustige dag, en de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) zet ze bij elkaar.
 
 ### De maand
 
