@@ -1,6 +1,6 @@
 'use client';
 
-import { getCookie, setCookie } from 'cookies-next';
+import { readCookie, writeCookie } from '@/lib/utils/browser-cookie';
 import { createContext, useContext, useMemo, useSyncExternalStore, type ReactNode } from 'react';
 import { detectDefaultUnit, type TemperatureUnit } from '@/lib/utils/temperature';
 
@@ -42,7 +42,7 @@ const listeners = new Set<() => void>();
 function readUnit(): TemperatureUnit {
   const attr = document.documentElement.getAttribute('data-temp-unit');
   if (attr === 'C' || attr === 'F') return attr;
-  const fromCookie = getCookie(COOKIE_NAME);
+  const fromCookie = readCookie(COOKIE_NAME);
   return fromCookie === 'C' || fromCookie === 'F' ? fromCookie : detectDefaultUnit();
 }
 
@@ -65,7 +65,7 @@ function writeUnit(next: TemperatureUnit): void {
   current = next;
   // Drives the CSS display toggle for every server-rendered dual-unit value.
   document.documentElement.setAttribute('data-temp-unit', next);
-  setCookie(COOKIE_NAME, next, { maxAge: COOKIE_MAX_AGE, sameSite: 'lax', path: '/' });
+  writeCookie(COOKIE_NAME, next, { maxAge: COOKIE_MAX_AGE, sameSite: 'lax', path: '/' });
   for (const listener of listeners) listener();
 }
 
