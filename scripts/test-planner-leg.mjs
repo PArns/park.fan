@@ -15,12 +15,12 @@ import {
   CROSS_LAND_CEIL_MIN,
   DETOUR_MAX,
   EXIT_MIN,
-  RIDE_FALLBACK_MIN,
   SAME_LAND_CEIL_MIN,
   earliestGoodStart,
   legBetween,
   legDeficit,
 } from '../lib/planner/leg.ts';
+import { RIDE_DURATION_MIN } from '../lib/planner/day-grid.ts';
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '../lib/planner/leg-chip.ts';
 
 const cases = [];
@@ -65,46 +65,46 @@ const to = (startMinute, ride = mamba) => ({ startMinute, wait: 30, ride });
   const leg = legBetween(from(600, 45), to(660), 10);
   test('the distance is measured, not guessed', Math.round(leg.metres), 124);
   test('a land change is noticed', leg.crossesLand, true);
-  // floor = exit 3 + ride 3 + ceil(124/100) 2 = 8
+  // floor = exit 3 + ride 5 + ceil(124/100) 2 = 10
   test(
     'the floor is exit + ride + the fastest walk',
     leg.floorMinutes,
-    EXIT_MIN + RIDE_FALLBACK_MIN + 2
+    EXIT_MIN + RIDE_DURATION_MIN + 2
   );
-  // ceiling = 3 + 3 + ceil(124 * 1.6 / 67) = 3 + 3 + 3 = 9
+  // ceiling = 3 + 5 + ceil(124 * 1.6 / 67) = 3 + 5 + 3 = 11
   test(
     'the ceiling assumes a detour and a park pace',
     leg.ceilingMinutes,
-    EXIT_MIN + RIDE_FALLBACK_MIN + 3
+    EXIT_MIN + RIDE_DURATION_MIN + 3
   );
   test('the gap is measured from the front of the first queue', leg.gapMinutes, 15);
 }
 
 // ── The ladder, at its boundaries ────────────────────────────────────────────
-// gap 15, ceiling 9 → slack 6. With u = 10, slack < u → knapp.
+// gap 15, ceiling 11 → slack 4. With u = 10, slack < u → knapp.
 test(
   'a gap inside the forecast error is knapp',
   legBetween(from(600, 45), to(660), 10).verdict,
   'tight'
 );
-// gap 30 → slack 21. 2u = 20, so 21 >= 20 → großzügig.
+// gap 31 → slack 20. 2u = 20, so 20 >= 20 → großzügig.
 test(
   'a gap past twice the error is großzügig',
-  legBetween(from(600, 45), to(675), 10).verdict,
+  legBetween(from(600, 45), to(676), 10).verdict,
   'generous'
 );
-// gap 20 → slack 11. u = 10 → 11 >= 10 but < 20 → gut.
-test('a gap between the two is gut', legBetween(from(600, 45), to(665), 10).verdict, 'good');
+// gap 21 → slack 10. u = 10 → 10 >= 10 but < 20 → gut.
+test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verdict, 'good');
 
 // ── broken is decided on the FLOOR, never the ceiling ────────────────────────
 {
-  // gap 5, floor 8, ceiling 9. Under the floor: certainly impossible.
+  // gap 5, floor 10, ceiling 11. Under the floor: certainly impossible.
   const impossible = legBetween(from(600, 45), to(650), 10);
   test('a gap under the certifiable floor is broken', impossible.verdict, 'broken');
-  test('…and the shortfall is reported against that floor', legDeficit(impossible), 3);
+  test('…and the shortfall is reported against that floor', legDeficit(impossible), 5);
 
-  // gap 9: at the ceiling, above the floor. Not broken — merely tight.
-  const squeezed = legBetween(from(600, 45), to(654), 10);
+  // gap 10: at the floor, below the ceiling. Not broken — merely tight.
+  const squeezed = legBetween(from(600, 45), to(655), 10);
   test('a gap above the floor is never called impossible', squeezed.verdict === 'broken', false);
 }
 
@@ -128,11 +128,11 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(665), 10).verd
     10
   );
   test('no coordinates means no distance', sameLand.metres, null);
-  test('…and no walk in the floor', sameLand.floorMinutes, EXIT_MIN + RIDE_FALLBACK_MIN);
+  test('…and no walk in the floor', sameLand.floorMinutes, EXIT_MIN + RIDE_DURATION_MIN);
   test(
     '…and an assumed same-land ceiling',
     sameLand.ceilingMinutes,
-    EXIT_MIN + RIDE_FALLBACK_MIN + SAME_LAND_CEIL_MIN
+    EXIT_MIN + RIDE_DURATION_MIN + SAME_LAND_CEIL_MIN
   );
 
   const crossLand = legBetween(
@@ -143,9 +143,9 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(665), 10).verd
   test(
     'a land change raises only the ceiling',
     crossLand.ceilingMinutes,
-    EXIT_MIN + RIDE_FALLBACK_MIN + CROSS_LAND_CEIL_MIN
+    EXIT_MIN + RIDE_DURATION_MIN + CROSS_LAND_CEIL_MIN
   );
-  test('…and the floor is unchanged', crossLand.floorMinutes, EXIT_MIN + RIDE_FALLBACK_MIN);
+  test('…and the floor is unchanged', crossLand.floorMinutes, EXIT_MIN + RIDE_DURATION_MIN);
 
   // The point of a zero walk floor: a guessed distance can never call a plan
   // impossible. Even a 1-minute gap is only broken by exit + ride, never by a walk.
@@ -158,7 +158,7 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(665), 10).verd
   test(
     '…by exactly the certain terms',
     legDeficit(tightNoCoords),
-    EXIT_MIN + RIDE_FALLBACK_MIN - 1
+    EXIT_MIN + RIDE_DURATION_MIN - 1
   );
 }
 
@@ -254,13 +254,13 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
     'tight'
   );
 
-  // Lücke 21, Ceiling 9 → 12 Minuten Slack, also 80 % des Bandes: über drei
+  // Lücke 23, Ceiling 11 → 12 Minuten Slack, also 80 % des Bandes: über drei
   // Vierteln (11,25) und unter dem ganzen. Genau hier entscheidet sich, gegen
   // WELCHEN Anteil geurteilt wird — ein Fall unterhalb jeder erwogenen Schwelle
   // wäre unter allen grün und pinnte nichts.
   test(
     'vier Fünftel des Bandes reichen nicht — gemessen wird gegen das ganze',
-    legBetween(from(600, 45), to(666), band).verdict,
+    legBetween(from(600, 45), to(668), band).verdict,
     'tight'
   );
 
@@ -268,12 +268,12 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
   // gut, zwei sind großzügig.
   test(
     'ein ganzes Band Slack ist gut',
-    legBetween(from(600, 45), to(645 + 9 + band), band).verdict,
+    legBetween(from(600, 45), to(645 + 11 + band), band).verdict,
     'good'
   );
   test(
     'zwei Bänder Slack sind großzügig',
-    legBetween(from(600, 45), to(645 + 9 + 2 * band), band).verdict,
+    legBetween(from(600, 45), to(645 + 11 + 2 * band), band).verdict,
     'generous'
   );
 }
