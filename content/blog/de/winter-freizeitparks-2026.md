@@ -2,6 +2,7 @@
 title: 'Welche Freizeitparks im Winter 2026/27 geöffnet haben'
 translationKey: winter-parks-2026
 date: '2026-09-03'
+updatedAt: '2026-10-03'
 author: patrick
 mode: published
 featured: false
@@ -108,9 +109,10 @@ November läuft die reguläre Saison, eine Pause dazwischen gibt es nicht.
 Geschlossen bleibt an fünf Tagen: am 24. und 25. Dezember, am 1. Januar sowie
 am 12. und 13. Januar 2027. An Silvester endet der Betrieb um 18 Uhr,
 rechtzeitig fürs eigene Feuerwerk. Tickets gibt es nur online und nur für ein
-festes Datum, eine Tageskasse hat der Park nicht. Die Vorverkaufstickets ab
-**29 €** verkauft er nur bis zum 28. September, danach gilt der Tagespreis im
-Online-Kalender, und der kann laut Park jeden Tag steigen.
+festes Datum, eine Tageskasse hat der Park nicht. Vorverkaufstickets
+sind günstiger als der Tagespreis, das Kontingent pro Besuchstag ist begrenzt.
+Den aktuellen Preis zeigt der Online-Shop, und der Tagespreis im Kalender kann
+laut Park jeden Tag steigen.
 
 ![Der Turm des Mystery Castle im Nebel, von unten angeleuchtet | Mystery Castle fällt 65 Meter tief, aber innen im Turm. Eisregen draußen stört dabei nicht. | wide](/media/phantasialand/mystery-castle.jpg)
 
@@ -512,8 +514,8 @@ Winter stecken zum ersten Mal Messungen aus einem ganzen Dezember darin.
 ## Datum, Attraktionsliste, dicke Jacke
 
 1. **Der Preis hängt am Datum, und am Tag, an dem du kaufst.** Das
-   Phantasialand verkauft nur datierte Online-Tickets, die 29 € gab es im
-   Vorverkauf bis zum 28. September, danach gilt der Tagespreis. Legoland
+   Phantasialand verkauft nur datierte Online-Tickets, der Vorverkauf ist
+   günstiger als der Tagespreis, das Kontingent pro Tag ist begrenzt. Legoland
    verkauft Frühbuchertickets bis zum 4. Oktober und lässt dich den Tag später
    wählen, Walibi Belgium verlangt gar kein Datum.
 2. **Lies die Attraktionsliste vor der Buchung.** Im Sommer ist die Frage, wie
@@ -555,7 +557,7 @@ und die Eisbahn steht wieder im Berliner Themenbereich._
 
 ### Quellen & Weiterlesen
 
-- Phantasialand, Termine, Öffnungszeiten, Schließtage und Vorverkauf bis 28. September: [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Öffnungszeiten (offiziell)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/) · [Tickets & Preise (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/)
+- Phantasialand, Termine, Öffnungszeiten, Schließtage und Vorverkauf: [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Öffnungszeiten (offiziell)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/) · [Tickets & Preise (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/)
 - Phantasialand, Shows, Ruhetage, MAGIC SYMPHONY bei Wind, geschlossene Bahnen: [Wintershows (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/wintershows/) · [Attraktionen im Winter (offiziell)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/)
 - Europa-Park, Saisons, HALLOWinter und Wintersaison: [Öffnungszeiten & Saisons (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [Wintersaison 2026/2027 mit Dinner-Show und Silvester (offiziell)](https://www.europapark.de/de/uebernachten/angebote-events/wintersaison-20262027)
 - Euro-Mir, Abschied am 9. Januar 2027, Mir-Modul, neuer Weltraum-Themenbereich 2028: [Goodbye, Euro-Mir! (offiziell)](https://www.europapark.de/de/freizeitpark/goodbye-euro-mir)

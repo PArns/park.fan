@@ -2,6 +2,7 @@
 title: 'Les parcs en hiver : qui ouvre en décembre et qui n’en a pas les moyens'
 translationKey: winter-parks-2026
 date: '2026-09-03'
+updatedAt: '2026-10-03'
 author: patrick
 mode: published
 featured: false
@@ -111,10 +112,10 @@ dure jusqu’au 13 novembre inclus, sans pause entre les deux.
 Le parc ferme cinq jours : les 24 et 25 décembre, le 1er janvier, puis les 12
 et 13 janvier 2027. Le 31 décembre, l’exploitation s’arrête à 18 h, à temps
 pour votre propre feu d’artifice. Les billets se vendent uniquement en ligne et
-pour une date fixe, il n’y a pas de caisse à l’entrée. Les billets en prévente à
-partir de **29 €** ne sont vendus que jusqu’au 28 septembre. Ensuite, c’est le
-prix du jour dans le calendrier en ligne qui s’applique, et selon le parc il
-peut augmenter chaque jour.
+pour une date fixe, il n’y a pas de caisse à l’entrée. Les billets en prévente sont
+moins chers que le prix du jour, et le contingent par jour de visite est limité.
+Le prix actuel s’affiche dans la boutique en ligne, et selon le parc le prix du
+jour dans le calendrier peut augmenter chaque jour.
 
 ![La tour du Mystery Castle dans le brouillard, éclairée par en dessous | Mystery Castle vous fait chuter de 65 mètres, entièrement à l’intérieur de la tour. La pluie verglaçante dehors n’y change rien. | wide](/media/phantasialand/mystery-castle.jpg)
 
@@ -519,8 +520,8 @@ mois de décembre entier.
 ## La date, la liste des attractions, le gros manteau
 
 1. **Le prix dépend de la date, et du jour où vous achetez.** Phantasialand ne
-   vend que des billets datés en ligne ; les 29 € étaient un tarif de prévente
-   jusqu’au 28 septembre, ensuite c’est le prix du jour. Legoland vend des
+   vend que des billets datés en ligne ; la prévente est moins chère que le
+   prix du jour, et le contingent par jour est limité. Legoland vend des
    billets en prévente jusqu’au 4 octobre et vous laisse choisir le jour plus
    tard, et Walibi Belgium ne demande pas de date du tout.
 2. **Lisez la liste des attractions avant de réserver.** L’été, la question est
@@ -562,7 +563,7 @@ que le Wintertraum arriverait en novembre en compensation. Il arrive le
 
 ### Sources & pour aller plus loin
 
-- Phantasialand, dates, horaires, jours de fermeture et prévente jusqu’au 28 septembre : [Wintertraum (officiel)](https://www.phantasialand.de/fr/parc/wintertraum/) · [Calendrier et horaires (officiel)](https://www.phantasialand.de/fr/parc/calendrier-horaires/) · [Billets (officiel)](https://www.phantasialand.de/fr/parc/billets-offres/)
+- Phantasialand, dates, horaires, jours de fermeture et prévente : [Wintertraum (officiel)](https://www.phantasialand.de/fr/parc/wintertraum/) · [Calendrier et horaires (officiel)](https://www.phantasialand.de/fr/parc/calendrier-horaires/) · [Billets (officiel)](https://www.phantasialand.de/fr/parc/billets-offres/)
 - Phantasialand, spectacles, jours de relâche, MAGIC SYMPHONY par vent fort, attractions fermées : [Spectacles d’hiver (officiel)](https://www.phantasialand.de/fr/parc/wintertraum/spectacle-dhiver/) · [Attractions en hiver (officiel)](https://www.phantasialand.de/fr/parc/attractions/apercu-des-attractions-hiver/)
 - Europa-Park, saisons, HALLOWinter et saison d’hiver : [Saisons et horaires (officiel)](https://www.europapark.de/fr/parc-de-loisirs/infos/planifiez-votre-sejour/les-saisons-les-horaires-douverture-deuropa-park) · [Saison d’hiver 2026/2027, dîner-spectacle et Nouvel An (officiel)](https://www.europapark.de/fr/sejourner/offres-et-evenements/saison-hivernale-20262027)
 - Euro-Mir, adieu le 9 janvier 2027, le module Mir, la nouvelle zone spatiale en 2028 : [Adieu, Euro-Mir ! (officiel)](https://www.europapark.de/fr/parc-de-loisirs/adieu-euro-mir)
