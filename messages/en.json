@@ -959,6 +959,14 @@
     "forecastToday": "Forecast today",
     "statusLabel": "Status",
     "crowdNow": "Crowds now",
+    "crowdVerdict": {
+      "very_low": "Hardly any crowds, waits are short.",
+      "low": "Quiet, waits are on the short side.",
+      "moderate": "Normal crowds, waits are typical for the park.",
+      "high": "Busy, expect longer waits.",
+      "very_high": "Very busy, expect much longer waits.",
+      "extreme": "Extremely busy, expect very long waits."
+    },
     "crowdToday": "Crowds today",
     "crowdTodaySoFar": "so far",
     "crowdTodayShort": "Today",

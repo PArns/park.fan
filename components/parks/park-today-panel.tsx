@@ -708,6 +708,14 @@ export function ParkTodayPanel({
                 ) : (
                   <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                 )}
+                {/* One sentence for the same level the badge shows. It reads `currentCrowd`, which the
+                    server render already has, so it is in the first HTML rather than added after
+                    hydration. `unknown` is no tier and has no sentence. */}
+                {isOpenish && currentCrowd && currentCrowd !== 'unknown' && (
+                  <p className="text-muted-foreground text-xs">
+                    {t(`crowdVerdict.${currentCrowd}`)}
+                  </p>
+                )}
               </PanelMetric>
               {/* Once today's full CalendarDay is loaded the value becomes a button (chevron =
                   affordance) opening the same day-detail dialog a click on today in the crowd
