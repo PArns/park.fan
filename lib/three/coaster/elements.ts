@@ -1142,21 +1142,34 @@ const blockBrake: CoasterElementDef = {
 //    (roller coaster)" — "Trim brakes are brake run sections that reduce the
 //    speed of the train but cannot stop the train completely", engineered in or
 //    retrofitted where trains run faster than intended. ──────────────────────
-const TRIM_SPEED = (t: number): number => {
-  // Relative speed at timeline position t (1 = free-rolling after the drop).
-  const free = 1;
+// Relative speed at track position s (1 = free-rolling). Keyed to the position
+// of the caliper run (0.5..0.72), not to the clock: the train must already be
+// slowing when it meets the housings and speed up only once it has left them.
+const TRIM_SPEED = (s: number): number => {
   const slow = 0.35;
-  const ease = (a: number, b: number, x: number) => smoothstep(a, b, x);
-  if (t < 0.12) return 0.55 + 0.45 * ease(0, 0.12, t); // rolling in off the drop
-  const slowed = free + (slow - free) * ease(0.3, 0.44, t); // pads close
-  return slowed + (free - slow) * ease(0.62, 0.9, t); // pads open, speed returns
+  if (s < 0.1) return 0.55 + 0.45 * smoothstep(0, 0.1, s); // rolling in off the drop
+  const slowed = 1 + (slow - 1) * smoothstep(0.46, 0.54, s); // pads close
+  return slowed + (1 - slow) * smoothstep(0.7, 0.86, s); // pads open, speed returns
 };
+// Time to reach each track position, integrated once; `pace` inverts it so the
+// timeline (t) maps to a position (s) that honours the speed profile above.
 const TRIM_PACE: number[] = (() => {
-  // Integrate the speed profile once; `pace` is its normalised running total.
   const n = 400;
-  const acc = [0];
-  for (let i = 1; i <= n; i++) acc.push(acc[i - 1] + TRIM_SPEED(i / n));
-  return acc.map((v) => v / acc[n]);
+  const time = [0];
+  for (let i = 1; i <= n; i++) time.push(time[i - 1] + 1 / n / TRIM_SPEED((i - 0.5) / n));
+  const total = time[n];
+  const pace: number[] = [];
+  let j = 0;
+  for (let i = 0; i <= n; i++) {
+    const t = i / n;
+    while (j < n - 1 && time[j + 1] / total < t) j++;
+    const t0 = time[j] / total;
+    const t1 = time[j + 1] / total;
+    pace.push((j + (t1 > t0 ? (t - t0) / (t1 - t0) : 0)) / n);
+  }
+  pace[0] = 0;
+  pace[n] = 1;
+  return pace;
 })();
 const trimBrake: CoasterElementDef = {
   id: 'trim-brake',
@@ -1178,7 +1191,7 @@ const trimBrake: CoasterElementDef = {
   ],
   keyPoints: [
     { t: 0.12, label: 'approach' },
-    { t: 0.45, label: 'brake' },
+    { t: 0.5, label: 'brake' },
     { t: 0.9, label: 'leave' },
   ],
   duration: 10,
