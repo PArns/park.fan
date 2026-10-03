@@ -1143,11 +1143,11 @@
       "h1Suffix": "met kinderen",
       "metaTitle": "{park} met kinderen: attracties per lengte",
       "metaTitleShort": "{park} met kinderen",
-      "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? {withHeight} van de {total} attracties noemen een minimumlengte, de eerste vanaf {low} cm.",
-      "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? {withHeight} van de {total} attracties noemen een minimumlengte, de eerste vanaf {low} cm.",
-      "lead": "{inParkLeading} noemen {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
+      "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
+      "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
+      "lead": "{inParkLeading} geldt bij {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
       "tiersTitle": "Wat kan bij welke lengte",
-      "tiersHint": "{withHeight} van de {total} attracties noemen een minimumlengte. Elke stap is een grens die het park zelf opgeeft.",
+      "tiersHint": "Bij {withHeight} van de {total} attracties geldt een minimumlengte. Elke stap is een grens die het park zelf opgeeft.",
       "noLimitTitle": "Geen minimumlengte opgegeven",
       "noLimitSummary": "{count, plural, =1 {De attractie zonder opgave} other {De {count} attracties zonder opgave}}",
       "noLimitNote": "Het park noemt voor deze attracties geen grens. Of ze voor elke lengte openstaan of de opgave ontbreekt, blijkt hier niet uit. Wat bij de ingang van de attractie staat, geldt.",
@@ -1168,7 +1168,8 @@
       "nextCalendarBody": "Verwachte drukte dag voor dag, met vakanties en openingstijden.",
       "linkTitle": "Met kinderen",
       "linkAnchor": "{park} met kinderen",
-      "linkBody": "{withHeight} van de {total} attracties noemen een minimumlengte. Welke attractie vanaf welke lengte, in {steps} stappen."
+      "linkBody": "Bij {withHeight} van de {total} attracties geldt een minimumlengte. Welke attractie vanaf welke lengte, in {steps} stappen.",
+      "filterToList": "Naar de lijst met attracties"
     },
     "planDayCta": "Een dag in {park} plannen",
     "dayComparison": {

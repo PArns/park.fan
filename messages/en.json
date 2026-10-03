@@ -1143,11 +1143,11 @@
       "h1Suffix": "with kids",
       "metaTitle": "{park} with kids: rides by height",
       "metaTitleShort": "{park} with kids",
-      "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
-      "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions post a minimum height, the first open from {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} of {total} attractions post a minimum height, in {steps} steps.",
+      "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
+      "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
+      "lead": "{inParkLeading}, {withHeight} of {total} attractions have a minimum height, in {steps} steps.",
       "tiersTitle": "What fits at which height",
-      "tiersHint": "{withHeight} of {total} attractions post a minimum height. Every step is a limit the park names itself.",
+      "tiersHint": "{withHeight} of {total} attractions have a minimum height. Every step is a limit the park sets itself.",
       "noLimitTitle": "No minimum height posted",
       "noLimitSummary": "{count, plural, =1 {The attraction without a limit} other {The {count} attractions without a limit}}",
       "noLimitNote": "The park names no limit for these. Whether the ride is open to every height or the figure is just missing, we can’t tell. What’s posted at the ride entrance is what counts.",
@@ -1168,7 +1168,8 @@
       "nextCalendarBody": "Expected crowds day by day, with holidays and opening hours.",
       "linkTitle": "With kids",
       "linkAnchor": "{park} with kids",
-      "linkBody": "{withHeight} of {total} attractions post a minimum height. Which ride from which height, in {steps} steps."
+      "linkBody": "{withHeight} of {total} attractions have a minimum height. Which ride from which height, in {steps} steps.",
+      "filterToList": "Go to the attractions list"
     },
     "planDayCta": "Plan a day at {park}",
     "dayComparison": {

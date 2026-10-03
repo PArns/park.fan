@@ -1143,11 +1143,11 @@
       "h1Suffix": "con i bambini",
       "metaTitle": "{park} con i bambini: attrazioni per altezza",
       "metaTitleShort": "{park} con i bambini",
-      "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? {withHeight} attrazioni su {total} indicano un'altezza minima, le prime da {low} cm.",
-      "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? {withHeight} attrazioni su {total} indicano un'altezza minima, le prime da {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} attrazioni su {total} indicano un'altezza minima, in {steps} gradini.",
+      "metaDescription": "Da quale altezza può salire un bambino {inPark} ({city})? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
+      "metaDescriptionNoCity": "Da quale altezza può salire un bambino {inPark}? Per {withHeight} attrazioni su {total} è richiesta un'altezza minima, le prime da {low} cm.",
+      "lead": "{inParkLeading} è richiesta un'altezza minima per {withHeight} attrazioni su {total}, in {steps} gradini.",
       "tiersTitle": "Cosa è possibile a quale altezza",
-      "tiersHint": "{withHeight} attrazioni su {total} indicano un'altezza minima. Ogni gradino è un limite che il parco indica da sé.",
+      "tiersHint": "Per {withHeight} attrazioni su {total} è richiesta un'altezza minima. Ogni gradino è un limite che il parco indica da sé.",
       "noLimitTitle": "Senza altezza minima indicata",
       "noLimitSummary": "{count, plural, =1 {L'attrazione senza indicazione} other {Le {count} attrazioni senza indicazione}}",
       "noLimitNote": "Il parco non indica alcun limite per queste. Non si capisce se l'attrazione sia aperta a ogni altezza o se il dato manchi. Vale l'altezza minima indicata all'ingresso dell'attrazione.",
@@ -1168,7 +1168,8 @@
       "nextCalendarBody": "Affluenza prevista giorno per giorno, con vacanze e orari.",
       "linkTitle": "Con i bambini",
       "linkAnchor": "{park} con i bambini",
-      "linkBody": "{withHeight} attrazioni su {total} indicano un'altezza minima. Quale attrazione da quale altezza, in {steps} gradini."
+      "linkBody": "Per {withHeight} attrazioni su {total} è richiesta un'altezza minima. Quale attrazione da quale altezza, in {steps} gradini.",
+      "filterToList": "Vai all'elenco delle attrazioni"
     },
     "planDayCta": "Pianifica una giornata a {park}",
     "dayComparison": {

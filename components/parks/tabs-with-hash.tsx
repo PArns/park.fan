@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useCallback, useDeferredValue } from 'react';
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
@@ -18,6 +18,10 @@ import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-fil
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
+import {
+  ParkHeightFilterContext,
+  type ParkHeightFilter,
+} from '@/components/parks/park-height-filter-context';
 import {
   ClosedRideMatches,
   type ClosedRideSearchItem,
@@ -37,6 +41,12 @@ const ATTRACTIONS_PANEL_ENTER = 'animate-in fade-in-0 slide-in-from-bottom-2 dur
 /** Stable fallbacks, so a park without either list does not defeat `RopeDropHeadliners`' memo. */
 const NO_HEADLINERS: RopeDropHeadliner[] = [];
 const NO_ATTRACTIONS: ParkAttraction[] = [];
+
+/** The ride list's top edge under the header, without the glide for a reader who asked for none. */
+function scrollToPanel(panel: HTMLElement | null) {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  panel?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+}
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
@@ -163,6 +173,12 @@ interface TabsWithHashProps {
   todayPanel?: React.ReactNode;
   /** The park's rides that closed for good, for the search only — see `ClosedRideMatches`. */
   closedRides?: readonly ClosedRideSearchItem[];
+  /**
+   * What the page renders under the tabs (the closed rides, the „Mit Kindern“ block), as a slot.
+   * It sits inside this component only so it can read the rider-height filter through
+   * `ParkHeightFilterContext`; the DOM is the same as when the page rendered it after the tabs.
+   */
+  belowTabs?: React.ReactNode;
 }
 
 // Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
@@ -186,6 +202,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   attractionsByLand,
   todayPanel,
   closedRides,
+  belowTabs,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
@@ -262,6 +279,63 @@ export const TabsWithHash = memo(function TabsWithHash({
   // changed. The old panel now stays on screen until the new one is ready, which also drops the
   // skeleton flash. docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
   const deferredTab = useDeferredValue(activeTab);
+
+  // The „Mit Kindern“ block's way back to the list (`ParkHeightFilter.showList`). Its button can
+  // be pressed with another tab open, and a hidden panel cannot be scrolled to, so the scroll then
+  // waits for the commit in which `deferredTab` shows the ride list again. Pending is a ref, not
+  // state: a tile tap to the list later must not replay an old request. The handler reads the tab
+  // through `latestTab` so it stays one function for the life of the page, and the context value
+  // below stays equal across renders that changed nothing about the filter.
+  const attractionsPanelRef = useRef<HTMLDivElement>(null);
+  const listScrollPending = useRef(false);
+  const latestTab = useRef({ activeTab, deferredTab, handleTabChange });
+  useEffect(() => {
+    latestTab.current = { activeTab, deferredTab, handleTabChange };
+  });
+  const showList = useCallback(() => {
+    const { activeTab: tab, deferredTab: shownTab, handleTabChange: changeTab } = latestTab.current;
+    if (tab === 'attractions' && shownTab === 'attractions') {
+      scrollToPanel(attractionsPanelRef.current);
+      return;
+    }
+    listScrollPending.current = true;
+    if (tab !== 'attractions') changeTab('attractions');
+  }, []);
+  useEffect(() => {
+    if (deferredTab !== 'attractions' || !listScrollPending.current) return;
+    listScrollPending.current = false;
+    scrollToPanel(attractionsPanelRef.current);
+  }, [deferredTab]);
+
+  const heightFilter = useMemo<ParkHeightFilter | null>(
+    () =>
+      heightStops && {
+        stops: heightStops,
+        value: riderHeight,
+        onChange: setRiderHeight,
+        rideableCount: rideableAttractionCount,
+        totalCount: totalAttractionCount,
+        showList,
+      },
+    [
+      heightStops,
+      riderHeight,
+      setRiderHeight,
+      rideableAttractionCount,
+      totalAttractionCount,
+      showList,
+    ]
+  );
+
+  // Both branches below end in this: the tabs, then the page's slot under them, inside the
+  // filter's context. Same elements in the same places on either side of the mount, so the slot is
+  // updated in place rather than mounted twice.
+  const withBelowTabs = (tabs: React.ReactNode) => (
+    <ParkHeightFilterContext value={heightFilter}>
+      {tabs}
+      {belowTabs}
+    </ParkHeightFilterContext>
+  );
 
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
 
@@ -543,7 +617,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   // one that does not run it reads the first land. The full ride list is machine-readable
   // either way through `containsPlace` in the page's structured data.
   if (!isMounted) {
-    return (
+    return withBelowTabs(
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
           {headerCard}
@@ -553,7 +627,11 @@ export const TabsWithHash = memo(function TabsWithHash({
               from `opacity: 0` and an 8 px slide over the ride list. CLS does not charge it
               (transform and opacity), a reader sees it. Here it runs once, with the first
               paint, and the mount finds the class already in place. */}
-          <TabsContent value={defaultValue} className={ATTRACTIONS_PANEL_ENTER}>
+          <TabsContent
+            ref={attractionsPanelRef}
+            value={defaultValue}
+            className={`${ATTRACTIONS_PANEL_ENTER} scroll-mt-20`}
+          >
             {filterPanel}
             {freshnessLine}
             {attractionsPanel}
@@ -581,15 +659,16 @@ export const TabsWithHash = memo(function TabsWithHash({
     'data-state': deferredTab === value ? 'active' : 'inactive',
   });
 
-  return (
+  return withBelowTabs(
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
         {headerCard}
 
         <TabsContent
+          ref={attractionsPanelRef}
           value="attractions"
           {...panelProps('attractions')}
-          className={ATTRACTIONS_PANEL_ENTER}
+          className={`${ATTRACTIONS_PANEL_ENTER} scroll-mt-20`}
         >
           {filterPanel}
           {freshnessLine}

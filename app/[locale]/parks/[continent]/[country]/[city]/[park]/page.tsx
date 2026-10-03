@@ -596,28 +596,35 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               renderedAtMs={seedNowMs}
             />
           }
+          // Server-rendered, and handed down only so the „Mit Kindern“ block's slider can be the
+          // same filter as the panel's: it reads the state `TabsWithHash` owns through a context.
+          // The DOM is what it was when these two followed `LiveParkData` here.
+          belowTabs={
+            <>
+              {/* The rides that closed for good, under the ride list and apart from it — the
+                live grid is the park today. From the full payload: the client snapshot above
+                carries none of it. Renders nothing for a park without one. */}
+              <ClosedRidesList
+                rides={parkFull?.closedAttractions}
+                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                locale={locale}
+                className="mt-8"
+              />
+              {kidsData && (
+                <ParkKidsLink
+                  data={kidsData}
+                  locale={locale as Locale}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  parkName={parkName}
+                  articleDe={park.nameArticleDe}
+                />
+              )}
+            </>
+          }
         />
-        {/* The rides that closed for good, under the ride list and apart from it — the live
-          grid is the park today. From the full payload: the client snapshot above carries none of
-          it. Renders nothing for a park without one. */}
-        <ClosedRidesList
-          rides={parkFull?.closedAttractions}
-          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-          locale={locale}
-          className="mt-8"
-        />
-        {kidsData && (
-          <ParkKidsLink
-            data={kidsData}
-            locale={locale as Locale}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            parkName={parkName}
-            articleDe={park.nameArticleDe}
-          />
-        )}
       </ParkPageShell>
     </RouteMessages>
   );
