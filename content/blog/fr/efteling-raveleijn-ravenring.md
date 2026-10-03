@@ -42,7 +42,7 @@ une nouvelle boutique. Le parc l’a annoncé dans un communiqué du 1er septemb
 Le nouveau spectacle s’appelle « Raveleijn: Battle for the City » et repose sur
 des cascades. Efteling l’a conçu avec le parc français Puy du Fou. L’histoire se
 passe dix ans après la victoire sur le dragon : pendant le mariage de Thomas et
-Samira, une force obscure se réveille et un combat éclate autour de la ville. Il
+Samira, une force obscure se réveille et un combat éclate pour la ville. Il
 est joué plusieurs fois par jour, et le parc n’a pas encore donné les horaires.
 
 ## Le Ravenring
@@ -78,7 +78,7 @@ spectacle, 5 millions dans la rénovation du secteur et 5 millions dans le
 Ravenring.
 
 Winter Efteling dure du 16 novembre 2026 au 31 janvier 2027. Raveleijn ouvre 15
-jours après le début, le secteur reste donc fermé pendant les deux premières
+jours après le début de Winter Efteling, le secteur reste donc fermé pendant les deux premières
 semaines. Les horaires et les dates de maintenance des autres attractions sont
 dans notre [aperçu de l’hiver](/blog/parcs-attractions-hiver-2026), et le reste
 du parc est présenté dans le [guide d’Efteling](/blog/efteling-le-disney-des-pays-bas).

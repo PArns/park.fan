@@ -22,7 +22,7 @@ seo:
   title: 'Efteling: Raveleijn e Ravenring aprono il 1° dicembre 2026'
   description: >-
     Efteling riapre Raveleijn il 1° dicembre 2026. Nuovo spettacolo con Puy du
-    Fou, Ravenring da 36 posti da 1,00 m, 20 milioni di euro di
+    Fou, Ravenring a 36 posti, da 1,00 m di altezza, 20 milioni di euro di
     investimento e come si inserisce in Winter Efteling.
   keywords:
     - Efteling Raveleijn
@@ -44,7 +44,7 @@ riapertura.
 Il nuovo spettacolo si chiama «Raveleijn: Battle for the City» ed è fatto di
 acrobazie. Efteling l’ha sviluppato con il parco francese Puy du Fou. La storia
 è ambientata dieci anni dopo la vittoria sul drago: durante il matrimonio di
-Thomas e Samira si risveglia una forza oscura e intorno alla città scoppia una
+Thomas e Samira si risveglia una forza oscura e per la città scoppia una
 battaglia. Va in scena più volte al giorno, e il parco non ha ancora comunicato
 gli orari.
 

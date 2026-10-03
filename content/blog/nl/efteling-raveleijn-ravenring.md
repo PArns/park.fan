@@ -35,8 +35,8 @@ seo:
 Op **1 december 2026** opent de [Efteling](ref:efteling) het themagebied
 Raveleijn weer, na bijna een jaar. Het gebied is volledig vernieuwd en krijgt een
 nieuwe parkshow, de attractie **Ravenring**, een nieuwe herberg en een nieuwe
-winkel. Het park maakte dat op 1 september 2026 bekend in een persbericht. Hoe de
-heropening wordt gevierd, laat het later weten.
+winkel. Het park maakte dat op 1 september 2026 bekend in een persbericht. Het park laat later weten hoe de
+heropening wordt gevierd.
 
 ## De show
 
@@ -44,7 +44,7 @@ De nieuwe show heet “Raveleijn: Battle for the City” en draait om stunts. De
 Efteling ontwikkelde hem samen met het Franse pretpark Puy du Fou. Het verhaal
 speelt tien jaar na de overwinning op de draak: tijdens de bruiloft van Thomas en
 Samira ontwaakt een duistere macht en om de stad breekt een gevecht uit. De show
-speelt meerdere keren per dag, speeltijden heeft het park nog niet genoemd.
+speelt meerdere keren per dag, maar de speeltijden heeft het park nog niet bekendgemaakt.
 
 ## De Ravenring
 

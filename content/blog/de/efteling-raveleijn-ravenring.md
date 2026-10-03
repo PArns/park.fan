@@ -44,8 +44,8 @@ will er später mitteilen.
 Die neue Show heißt „Raveleijn: Battle for the City“ und besteht aus Stunts. Das
 Efteling hat sie zusammen mit dem französischen Freizeitpark Puy du Fou
 entwickelt. Die Handlung spielt zehn Jahre nach dem Sieg über den Drachen: Beim
-Hochzeitsfest von Thomas und Samira erwacht eine dunkle Macht, und um die Stadt
-bricht ein Kampf aus. Gespielt wird mehrmals am Tag, Zeiten hat der Park noch
+Hochzeitsfest von Thomas und Samira erwacht eine dunkle Macht, und ein Kampf um die Stadt
+bricht aus. Gespielt wird mehrmals am Tag, Zeiten hat der Park noch
 nicht genannt.
 
 ## Die Ravenring

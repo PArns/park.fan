@@ -59,7 +59,7 @@ cinco metros. Al final descubres cuál de los cinco elementos mágicos te
 corresponde: agua (azul), fuego (rojo), madera (verde), tierra (marrón) o metal
 (morado).
 
-Las personas con discapacidad pueden subir si pueden pasar a la góndola. Con la
+Las personas con discapacidad pueden subir si logran pasar a la góndola. Con la
 SafeStrap, una correa de seguridad del parque, también pueden sentarse en ella
 las personas con una prótesis de pierna.
 
