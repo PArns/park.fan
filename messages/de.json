@@ -1144,12 +1144,12 @@
       "h1Suffix": "mit Kindern",
       "metaTitle": "{park} mit Kindern: Fahrten nach Größe",
       "metaTitleShort": "{park} mit Kindern",
-      "metaDescription": "Ab welcher Größe darf ein Kind {inPark} in {city} mitfahren? {withHeight} von {total} Attraktionen nennen eine Mindestgröße, ab {low} cm geht es los.",
-      "metaDescriptionNoCity": "Ab welcher Größe darf ein Kind {inPark} mitfahren? {withHeight} von {total} Attraktionen nennen eine Mindestgröße, ab {low} cm geht es los.",
-      "lead": "{inParkLeading} nennen {withHeight} von {total} Attraktionen eine Mindestgröße, verteilt auf {steps} Stufen.",
+      "metaDescription": "Ab welcher Größe darf ein Kind {inPark} in {city} mitfahren? Bei {withHeight} von {total} Attraktionen gilt eine Mindestgröße, ab {low} cm geht es los.",
+      "metaDescriptionNoCity": "Ab welcher Größe darf ein Kind {inPark} mitfahren? Bei {withHeight} von {total} Attraktionen gilt eine Mindestgröße, ab {low} cm geht es los.",
+      "lead": "{inParkLeading} gilt bei {withHeight} von {total} Attraktionen eine Mindestgröße, verteilt auf {steps} Stufen.",
       "tiersTitle": "Was bei welcher Größe geht",
-      "tiersHint": "{withHeight} von {total} Attraktionen nennen eine Mindestgröße. Jede Stufe ist eine Grenze, die der Park selbst angibt.",
-      "noLimitTitle": "Ohne genannte Mindestgröße",
+      "tiersHint": "Bei {withHeight} von {total} Attraktionen gilt eine Mindestgröße. Jede Stufe ist eine Grenze, die der Park selbst angibt.",
+      "noLimitTitle": "Ohne Angabe zur Mindestgröße",
       "noLimitSummary": "{count, plural, =1 {Die Attraktion ohne Angabe} other {Die {count} Attraktionen ohne Angabe}}",
       "noLimitNote": "Der Park nennt hier keine Grenze. Ob die Bahn für jede Größe frei ist oder die Angabe fehlt, geht daraus nicht hervor. Verbindlich ist, was am Eingang der Bahn steht.",
       "rideableCount": "{rideable} von {total} Attraktionen",
@@ -1169,7 +1169,8 @@
       "nextCalendarBody": "Erwarteter Andrang Tag für Tag, mit Ferien und Öffnungszeiten.",
       "linkTitle": "Mit Kindern",
       "linkAnchor": "{park} mit Kindern",
-      "linkBody": "{withHeight} von {total} Attraktionen nennen eine Mindestgröße. Welche Bahn ab welcher Größe, in {steps} Stufen."
+      "linkBody": "Bei {withHeight} von {total} Attraktionen gilt eine Mindestgröße. Welche Bahn ab welcher Größe, in {steps} Stufen.",
+      "filterToList": "Zur Liste der Attraktionen"
     },
     "planDayCta": "Tag im {park} planen",
     "dayComparison": {

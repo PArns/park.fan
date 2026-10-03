@@ -144,6 +144,19 @@ const RECKONING = {
   it: /\bcalcola (?:cosa|che cosa|quello che|ciò che) (?:succede|succederebbe|accade|accadrebbe)\b/giu,
 };
 /**
+ * `35 von 40 Attraktionen nennen eine Mindestgröße` (§3.3, rule 8): a ride naming its own limit,
+ * a person's verb handed to an object (§2.13). It stood in four strings of the „Mit Kindern“ page
+ * and the park page's card that links to it until 2026-10-03, when the PO put it on the list. An
+ * error in German and in the Dutch calque, which had carried the same four strings over word for
+ * word. Only the plural: `RCDB noemt een dive loop` is a source naming a figure, and stays. The
+ * other four languages wrote the habit with verbs that have plain uses too (`indiquent une`,
+ * `indican una`, `post a`), so those strings were rewritten and the verbs are not banned.
+ */
+const NAMES_A = {
+  de: /\bnennen eine\b/giu,
+  nl: /\bnoemen een\b/giu,
+};
+/**
  * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
  * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
  * Every language on every surface, because a translation keeps the habit of its source.
@@ -699,6 +712,12 @@ function hardRules(file, text, locale) {
     fail(
       file,
       `a document that does the sums (§2.13), say who examined what: ${[...new Set(reckoning)].slice(0, 3).join(' · ')}`
+    );
+  const names = NAMES_A[locale] && text.replace(/\s+/g, ' ').match(NAMES_A[locale]);
+  if (names)
+    fail(
+      file,
+      `a ride that names its own limit (§3.3), say where the limit applies: ${[...new Set(names)].slice(0, 3).join(' · ')}`
     );
   if (locale === 'de') {
     const queue = (text.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);

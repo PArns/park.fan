@@ -1144,11 +1144,11 @@
       "h1Suffix": "avec des enfants",
       "metaTitle": "{park} avec des enfants : attractions par taille",
       "metaTitleShort": "{park} avec des enfants",
-      "metaDescription": "Dès quelle taille un enfant peut-il monter {inPark} ({city}) ? {withHeight} attractions sur {total} indiquent une taille minimale, les premières dès {low} cm.",
-      "metaDescriptionNoCity": "Dès quelle taille un enfant peut-il monter {inPark} ? {withHeight} attractions sur {total} indiquent une taille minimale, les premières dès {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} attractions sur {total} indiquent une taille minimale, en {steps} paliers. Cette page montre ce qu'un enfant peut faire à chaque taille.",
+      "metaDescription": "Dès quelle taille un enfant peut-il monter {inPark} ({city}) ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
+      "metaDescriptionNoCity": "Dès quelle taille un enfant peut-il monter {inPark} ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
+      "lead": "{inParkLeading}, {withHeight} attractions sur {total} exigent une taille minimale, en {steps} paliers. Cette page montre ce qu'un enfant peut faire à chaque taille.",
       "tiersTitle": "Ce qui est possible à chaque taille",
-      "tiersHint": "{withHeight} attractions sur {total} indiquent une taille minimale. Chaque palier est une limite que le parc annonce lui-même.",
+      "tiersHint": "{withHeight} attractions sur {total} exigent une taille minimale. Chaque palier est une limite que le parc annonce lui-même.",
       "noLimitTitle": "Sans taille minimale indiquée",
       "noLimitSummary": "{count, plural, =1 {L'attraction sans indication} other {Les {count} attractions sans indication}}",
       "noLimitNote": "Le parc n'indique aucune limite pour celles-ci. On ne sait pas si l'attraction est ouverte à toutes les tailles ou si l'information manque. C'est la taille indiquée à l'entrée de l'attraction qui fait foi.",
@@ -1169,7 +1169,8 @@
       "nextCalendarBody": "Affluence attendue jour par jour, avec vacances et horaires.",
       "linkTitle": "Avec des enfants",
       "linkAnchor": "{park} avec des enfants",
-      "linkBody": "{withHeight} attractions sur {total} indiquent une taille minimale. Quelle attraction à partir de quelle taille, en {steps} paliers."
+      "linkBody": "{withHeight} attractions sur {total} exigent une taille minimale. Quelle attraction à partir de quelle taille, en {steps} paliers.",
+      "filterToList": "Aller à la liste des attractions"
     },
     "planDayCta": "Planifier une journée à {park}",
     "dayComparison": {

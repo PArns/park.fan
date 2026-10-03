@@ -1144,11 +1144,11 @@
       "h1Suffix": "con niños",
       "metaTitle": "{park} con niños: atracciones por altura",
       "metaTitleShort": "{park} con niños",
-      "metaDescription": "¿Desde qué altura puede subir un niño {inPark} ({city})? {withHeight} de {total} atracciones indican una altura mínima, las primeras desde {low} cm.",
-      "metaDescriptionNoCity": "¿Desde qué altura puede subir un niño {inPark}? {withHeight} de {total} atracciones indican una altura mínima, las primeras desde {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} de {total} atracciones indican una altura mínima, en {steps} escalones.",
+      "metaDescription": "¿Desde qué altura puede subir un niño {inPark} ({city})? En {withHeight} de {total} atracciones se exige una altura mínima, las primeras desde {low} cm.",
+      "metaDescriptionNoCity": "¿Desde qué altura puede subir un niño {inPark}? En {withHeight} de {total} atracciones se exige una altura mínima, las primeras desde {low} cm.",
+      "lead": "{inParkLeading} se exige una altura mínima en {withHeight} de {total} atracciones, en {steps} escalones.",
       "tiersTitle": "Qué se puede a cada altura",
-      "tiersHint": "{withHeight} de {total} atracciones indican una altura mínima. Cada escalón es un límite que el propio parque indica.",
+      "tiersHint": "En {withHeight} de {total} atracciones se exige una altura mínima. Cada escalón es un límite que el propio parque indica.",
       "noLimitTitle": "Sin altura mínima indicada",
       "noLimitSummary": "{count, plural, =1 {La atracción sin indicación} other {Las {count} atracciones sin indicación}}",
       "noLimitNote": "El parque no indica ningún límite para estas. No se sabe si la atracción está abierta a todas las alturas o si falta el dato. Vale la altura mínima indicada a la entrada de la atracción.",
@@ -1169,7 +1169,8 @@
       "nextCalendarBody": "Afluencia esperada día a día, con vacaciones y horarios.",
       "linkTitle": "Con niños",
       "linkAnchor": "{park} con niños",
-      "linkBody": "{withHeight} de {total} atracciones indican una altura mínima. Qué atracción desde qué altura, en {steps} escalones."
+      "linkBody": "En {withHeight} de {total} atracciones se exige una altura mínima. Qué atracción desde qué altura, en {steps} escalones.",
+      "filterToList": "Ir a la lista de atracciones"
     },
     "planDayCta": "Planificar un día en {park}",
     "dayComparison": {
