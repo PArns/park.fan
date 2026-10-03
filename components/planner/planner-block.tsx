@@ -668,7 +668,8 @@ export function PlannerBlock({
               // no arrangement gives a 30 px box a 44 px edge without taking the
               // pixels from its neighbour. The grip keeps its full 44 px; it is
               // centred and overhangs symmetrically, which is what makes the
-              // shortest block movable at all, and its own overhang is PAR-165.
+              // shortest block movable at all. Its own overhang was PAR-165 and
+              // is kept — the note on the grip below carries what it costs.
               //
               // **This was the one documented exception to the 44 px floor, and
               // `sweepSmallTargets` in `scripts/check-planner.mjs` knows about
@@ -764,6 +765,36 @@ export function PlannerBlock({
             // pseudo-element reaches past the edges without moving anything.
             // Which only works because the box no longer clips — see the note on
             // the bordered div above.
+            //
+            // **The overhang is KEPT, and this is what it costs** (PAR-165,
+            // decided 2026-10-02). Centred rather than capped, so on the 30 px
+            // minimum block of the coarse axis it reaches (44 − 30) / 2 = 7 px
+            // past each edge. Measured at 390x844 with `hasTouch`, two free
+            // blocks 1.8 px apart: **5.2 px** of that — the 7 less the gap —
+            // lands in the block ABOVE, and since both `<li>` carry the same
+            // `z-index` the later one wins, so a press there drags the SHORT
+            // block instead of selecting the long one.
+            //
+            // Those 5.2 px are the price of the shortest block's only control.
+            // Capping it the way the resize edge and the ✕ below are capped is
+            // what PAR-74 undid: at the block's own room this target is 28 px,
+            // and the grip is the one pointer path a finger has to a block this
+            // short. Anchoring the overhang downward instead does not remove it
+            // — it moves all 14 px onto the neighbour BELOW rather than
+            // splitting them 7 and 7, and that neighbour's body is a plain
+            // `onClick` that selects. Losing here is also the cheaper loss: a
+            // drag that started on the wrong block is visible and can be
+            // dragged back, where the ✕'s shared corner deletes.
+            //
+            // **And it does not land in this button's column.** No horizontal
+            // edge is set, so `left` resolves to the static position of a
+            // zero-width inline inside a button that centres its content: 22 px.
+            // Measured, the button is x +0…+44 and the target x +22…+66 — half
+            // the grip has 28 px of height on a minimum block, and the target
+            // reaches 22 px past the grip into the body. `check:planner` probes
+            // right of x +44 deliberately and says so in the name of its own
+            // assertion; probing the target's column there would go red for
+            // this, which is the thing that was decided rather than broken.
             'planner-phone:after:absolute planner-phone:after:top-1/2 planner-phone:after:h-11 planner-phone:after:w-11 planner-phone:after:-translate-y-1/2 planner-phone:after:content-[""]'
           )}
         />
