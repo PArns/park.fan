@@ -1951,6 +1951,138 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         `${startAfter - startBefore} Min. für 90 px`
       );
 
+      // The bar stands down for the length of a drag (PAR-316, guarded here by
+      // PAR-329). Docked, it covers 101 px of a 200 px scroller at 360 px and sat
+      // on top of the ghost, which is the one thing on screen that says where the
+      // drag lands. Nothing else notices if `standBack` or the `onDragChange`
+      // hand-off from the grid to the column goes missing.
+      //
+      // Held rather than released: the press is dispatched, the pointer moves,
+      // and the sample is taken while the pointer is still down. Two traps from
+      // PAR-316 shape it. A block's box is reported even when the grid has
+      // scrolled it out of the clipped scroller, so the grip is first brought to
+      // the scroller's middle; and the outer quarter at either end of the
+      // scroller autoscrolls while a drag is held, so the pointer stays in the
+      // band between them and moves 20 px only.
+      // On a short phone, because that is where it mattered: at 360 x 568 the
+      // scroller is 231 px and the bar about 100 of them, so the bar sits
+      // across the middle band the pointer stays in. On the 844 px page above
+      // the scroller is 471 px and the bar never reaches the ghost, which is why
+      // the precondition below is asserted and not assumed.
+      const fullViewport = phone.viewportSize();
+      let held;
+      let aboveGhost;
+      const pointerId = 9;
+      try {
+        await phone.setViewportSize({ width: 360, height: 568 });
+        await phone.waitForTimeout(400);
+        const dragBlock = phone.locator(`li[data-planner-entry="${entryId}"]`);
+        await dragBlock.scrollIntoViewIfNeeded();
+        held = await dragBlock.locator('button[aria-label="Verschieben"]').evaluate((el, id) => {
+          let scroller = el.parentElement;
+          while (scroller && !/(auto|scroll)/.test(getComputedStyle(scroller).overflowY)) {
+            scroller = scroller.parentElement;
+          }
+          if (!scroller) return { error: 'kein scrollbarer Vorfahre' };
+          const mid = (node) => {
+            const box = node.getBoundingClientRect();
+            return box.top + box.height / 2;
+          };
+          scroller.scrollTop += mid(el) - mid(scroller);
+          const box = el.getBoundingClientRect();
+          const x = box.left + box.width / 2;
+          const y = box.top + box.height / 2;
+          const opts = {
+            bubbles: true,
+            button: 0,
+            pointerId: id,
+            pointerType: 'touch',
+            isPrimary: true,
+          };
+          el.dispatchEvent(new PointerEvent('pointerdown', { ...opts, clientX: x, clientY: y }));
+          for (const dy of [10, 20]) {
+            el.dispatchEvent(
+              new PointerEvent('pointermove', { ...opts, clientX: x, clientY: y + dy })
+            );
+          }
+          window.__parfanDragHold = { el, x, y: y + 20, opts };
+          return { scrollerHeight: Math.round(scroller.getBoundingClientRect().height) };
+        }, pointerId);
+        // Two animation frames: the drag reads its target in a rAF loop, and the
+        // column hears `moved` in the frame that moves the ghost.
+        await phone.waitForTimeout(500);
+        aboveGhost = await phone.evaluate(() => {
+          const ghost = document.querySelector('li[data-planner-ghost]');
+          const bar = document.querySelector('[data-planner-grid-actions]');
+          if (!ghost) return { ghost: false, bar: Boolean(bar) };
+          const box = ghost.getBoundingClientRect();
+          const x = box.left + box.width / 2;
+          const y = box.top + box.height / 2;
+          // The ghost is `pointer-events-none`, so `elementFromPoint` looks straight
+          // through it and always answers the block underneath. Made hittable for
+          // the one sample, so the question is who is painted on top of it.
+          ghost.style.pointerEvents = 'auto';
+          const hit = document.elementFromPoint(x, y);
+          ghost.style.pointerEvents = '';
+          const barBox = bar?.getBoundingClientRect();
+          return {
+            ghost: true,
+            bar: Boolean(bar),
+            // Would the bar cover the ghost's middle if it were visible? Without
+            // this the check could pass on a layout where it never could.
+            barOverGhost: Boolean(
+              barBox &&
+              y >= barBox.top &&
+              y <= barBox.bottom &&
+              x >= barBox.left &&
+              x <= barBox.right
+            ),
+            barVisibility: bar ? getComputedStyle(bar).visibility : null,
+            ownsPoint: Boolean(hit && ghost.contains(hit)),
+            hit: hit
+              ? `${hit.tagName.toLowerCase()}${[...hit.attributes]
+                  .filter((a) => a.name.startsWith('data-'))
+                  .map((a) => `[${a.name}]`)
+                  .join(
+                    ''
+                  )} in ${hit.closest('li[data-planner-block]') ? 'einem Block' : hit.closest('[data-planner-grid-actions]') ? 'der Aktionsleiste' : 'sonst'}`
+              : 'nichts',
+          };
+        });
+      } finally {
+        await phone.evaluate((id) => {
+          const hold = window.__parfanDragHold;
+          if (!hold) return;
+          hold.el.dispatchEvent(
+            new PointerEvent('pointerup', {
+              ...hold.opts,
+              pointerId: id,
+              clientX: hold.x,
+              clientY: hold.y,
+            })
+          );
+          window.__parfanDragHold = undefined;
+        }, pointerId);
+        await phone.setViewportSize(fullViewport);
+        await phone.waitForTimeout(400);
+      }
+      check(
+        'ein bewegter Drag zeigt den Ghost',
+        Boolean(held && !held.error) && aboveGhost.ghost,
+        held?.error ??
+          (aboveGhost.ghost ? `Scroller ${held?.scrollerHeight} px` : 'kein li[data-planner-ghost]')
+      );
+      check(
+        'die Aktionsleiste ist im Drag vorhanden und läge über der Mitte des Ghosts',
+        aboveGhost.bar && aboveGhost.barOverGhost,
+        `Leiste ${aboveGhost.bar ? 'da' : 'fehlt'} · deckt Ghost-Mitte ${aboveGhost.barOverGhost}`
+      );
+      check(
+        'und nichts außer dem Ghost liegt über seiner Mitte, solange die Leiste zurücktritt',
+        aboveGhost.ownsPoint === true,
+        `getroffen: ${aboveGhost.hit} · Leiste ${aboveGhost.barVisibility}`
+      );
+
       // The gesture-free way. It exists because the one above depends on a
       // gesture landing on a 44 px strip of a box whose height is a queue, and a
       // plan may not depend on that. Selecting is a plain tap on the block, which
