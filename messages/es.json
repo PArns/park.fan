@@ -964,6 +964,14 @@
     "forecastToday": "Previsión de hoy",
     "statusLabel": "Estado",
     "crowdNow": "Afluencia ahora",
+    "crowdVerdict": {
+      "very_low": "Casi sin aglomeraciones, los tiempos de espera son cortos.",
+      "low": "Tranquilo, los tiempos de espera son más bien cortos.",
+      "moderate": "Afluencia normal, los tiempos de espera son los habituales del parque.",
+      "high": "Mucha gente, esperas más largas de lo normal.",
+      "very_high": "Muy concurrido, esperas mucho más largas.",
+      "extreme": "Extremadamente concurrido, esperas muy largas."
+    },
     "crowdToday": "Afluencia de hoy",
     "crowdTodaySoFar": "hasta ahora",
     "crowdTodayShort": "Hoy",

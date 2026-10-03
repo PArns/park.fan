@@ -964,6 +964,14 @@
     "forecastToday": "Prognose heute",
     "statusLabel": "Status",
     "crowdNow": "Andrang jetzt",
+    "crowdVerdict": {
+      "very_low": "Kaum Andrang, die Wartezeiten sind kurz.",
+      "low": "Wenig los, die Wartezeiten sind eher kurz.",
+      "moderate": "Normaler Betrieb, die Wartezeiten liegen im üblichen Bereich.",
+      "high": "Viel los, mit längeren Wartezeiten rechnen.",
+      "very_high": "Sehr voll, mit deutlich längeren Wartezeiten rechnen.",
+      "extreme": "Extrem voll, mit sehr langen Wartezeiten rechnen."
+    },
     "crowdToday": "Auslastung heute",
     "crowdTodaySoFar": "bisher",
     "crowdTodayShort": "Heute",

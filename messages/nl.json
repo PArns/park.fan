@@ -964,6 +964,14 @@
     "forecastToday": "Voorspelling vandaag",
     "statusLabel": "Status",
     "crowdNow": "Drukte nu",
+    "crowdVerdict": {
+      "very_low": "Nauwelijks drukte, de wachttijden zijn kort.",
+      "low": "Rustig, de wachttijden zijn eerder kort.",
+      "moderate": "Normale drukte, de wachttijden zijn gebruikelijk voor het park.",
+      "high": "Druk, reken op langere wachttijden.",
+      "very_high": "Heel druk, reken op veel langere wachttijden.",
+      "extreme": "Extreem druk, reken op zeer lange wachttijden."
+    },
     "crowdToday": "Drukte vandaag",
     "crowdTodaySoFar": "tot nu toe",
     "crowdTodayShort": "Vandaag",
