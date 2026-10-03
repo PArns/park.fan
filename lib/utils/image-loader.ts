@@ -55,3 +55,14 @@ export function backgroundImageLoader({ src, width }: ImageLoaderProps): string 
   const w = Math.min(width, MAX_USEFUL_WIDTH);
   return `/_next/image?url=${encodeURIComponent(src)}&w=${w}&q=${qualityForWidth(width)}`;
 }
+
+/**
+ * The optimizer URL for a photo painted as a CSS `background-image` (planner blocks and panels),
+ * where there is no `<img>` and so no srcset. Those surfaces are at most ~400 CSS px wide and draw
+ * the photo at 12–20 % opacity, so one w=828 rendition covers a 2× screen; the raw `/media/*.jpg`
+ * it replaces weighed 155–218 KB each, six of them on the trip-planner page (SEO run, 2026-10-03).
+ */
+export function backgroundPhotoUrl(src: string): string {
+  if (src.startsWith('data:') || src.startsWith('blob:') || !src.startsWith('/')) return src;
+  return backgroundImageLoader({ src, width: 828 });
+}
