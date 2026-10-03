@@ -1,5 +1,7 @@
 'use client';
 
+import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
+
 /**
  * The park's photo behind the panel — and, where there is none, a drawn ground.
  *
@@ -68,7 +70,10 @@ export function PlannerPanelPhoto({ src, position }: { src?: string | null; posi
     >
       <div
         className="absolute inset-0 bg-cover bg-no-repeat opacity-[0.12]"
-        style={{ backgroundImage: `url(${src})`, backgroundPosition: position ?? '50% 0%' }}
+        style={{
+          backgroundImage: `url(${backgroundPhotoUrl(src)})`,
+          backgroundPosition: position ?? '50% 0%',
+        }}
       />
       <div className="from-background/75 via-background/55 to-background/90 absolute inset-0 bg-gradient-to-b" />
     </div>

@@ -64,7 +64,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // and noindex URLs in a sitemap trigger Search Console errors.
   const homepageAlternates = buildAlternates(() => '');
   const parksAlternates = buildAlternates(() => '/parks');
-  const searchAlternates = buildAlternates(() => '/search');
   const fancastAlternates = buildAlternates(() => '/fancast');
   const contributeAlternates = buildAlternates(() => '/contribute');
   const developersAlternates = buildAlternates(() => '/developers');
@@ -83,12 +82,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly',
         priority: 0.8,
         alternates: parksAlternates,
-      },
-      {
-        url: `${BASE_URL}/${locale}/search`,
-        changeFrequency: 'monthly',
-        priority: 0.5,
-        alternates: searchAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/fancast`,

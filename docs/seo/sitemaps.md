@@ -55,7 +55,6 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 | `/{locale}/{glossary-segment}/{term}`                                   | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
 | `/{locale}/blog/{slug}` (**blog-live locales only**)                    | 0.6      | monthly         | `updatedAt ?? date`       |
 | `/{locale}/blog` + category/tag/author listings                         | 0.4–0.7  | daily–weekly    | newest post in the list   |
-| `/{locale}/search` (plain, no query)                                    | 0.5      | monthly         | –                         |
 | `/{locale}/{howto-segment}` (the guide, localized slug)                 | 0.8      | monthly         | –                         |
 | `/{locale}/{glossary-segment}` (index)                                  | 0.5      | weekly          | `GLOSSARY_CONTENT_DATE`   |
 
@@ -76,8 +75,8 @@ so 192 URLs. `app/sitemap.ts` asks `parksWithKidsPage()`, which reads the park p
 read anyway (one Data Cache entry per park per day); a failed probe leaves the park out. No
 `lastModified`, for the reason the record carries none. The main file grows by 192 URLs.
 
-The six URLs still marked `–` are `/`, `/search`, `/fancast`, `/contribute`, the guide and the
-best-time hub, ×6 locales — 36 in total. They are code, not content: nothing writes down when they
+The five URLs still marked `–` are `/`, `/fancast`, `/contribute`, the guide and the
+best-time hub, ×6 locales — 30 in total. They are code, not content: nothing writes down when they
 last changed, and the only honest option would be a hand-maintained constant per page that would
 be stale within two deploys. `GLOSSARY_CONTENT_DATE` earns its keep because the glossary really is
 reviewed as a body of text; these are not.
@@ -95,7 +94,7 @@ Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) fo
 | `/impressum`, `/datenschutz`    | **noindex** pages — listing them triggers Search Console errors                                                       |
 | Single-park city hubs           | The city page 308s to its only park (thin-duplicate rule) — a redirecting URL doesn't belong                          |
 | Same-name attraction duplicates | The backend lists one row per name (PAR-498); the page noindexes a numbered slug only when its base has the same name |
-| `/search?q=...`                 | noindex (duplicate content risk); only the plain `/search` is listed                                                  |
+| `/search`, `/search?q=...`      | noindex. The plain page is a search field and one hint line; with a query it duplicates the pages it links to         |
 | Blog EN-fallback URLs           | Canonicalize to EN original (see above)                                                                               |
 
 ---

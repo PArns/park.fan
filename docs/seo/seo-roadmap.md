@@ -41,7 +41,8 @@ Erstellt April 2026 auf Basis einer Ranking-Analyse gegen wartezeiten.app, queue
 
 **Datei:** `app/sitemap.ts`
 
-- `/[locale]/search` (ohne `?q=`) — priority 0.5, changeFrequency monthly ✅
+- ~~`/[locale]/search` (ohne `?q=`)~~ — seit 2026-10-03 wieder raus: die Seite ist `noindex`,
+  siehe [sitemaps.md](sitemaps.md).
 - ~~`/[locale]/impressum`, `/[locale]/datenschutz`~~ — **nicht** in die Sitemap:
   beide Seiten sind inzwischen `noindex`, und noindex-URLs in der Sitemap
   erzeugen Search-Console-Fehler. Siehe [sitemaps.md](sitemaps.md).

@@ -16,6 +16,7 @@ import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import { actualVsEstimate, isAssumedWait, type PlannerEstimate } from '@/lib/planner/estimate';
+import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
 import type { PlanDayShowSource, PlanDayTier } from '@/lib/api/types';
 
 /**
@@ -599,7 +600,7 @@ export function PlannerBlock({
             <div
               className={cn('absolute inset-0', PHOTO_OPACITY)}
               style={{
-                backgroundImage: `url(${photo.src})`,
+                backgroundImage: `url(${backgroundPhotoUrl(photo.src)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: photo.position,
               }}

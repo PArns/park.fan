@@ -190,7 +190,7 @@ export default async function CityPage({ params }: CityPageProps) {
       <PageContainer>
         <BreadcrumbStructuredData
           breadcrumbs={breadcrumbs}
-          currentPage={{ name: cityCurrentPage, url: `/parks/${continent}/${country}/${city}` }}
+          currentPage={{ name: cityCurrentPage, url: `/parks/${continent}/${country}/${citySlug}` }}
           locale={locale}
         />
         <ItemListStructuredData

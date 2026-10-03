@@ -35,7 +35,9 @@ export async function generateMetadata({
   return {
     title: q ? t('titleTemplate', { query: q }) : t('title'),
     description: t('metaDescriptionTemplate'),
-    robots: { index: !q, follow: true },
+    // Never indexed: without a query the page body is a search field and one hint line, and
+    // with one it duplicates the park and ride pages it links to.
+    robots: { index: false, follow: true },
     ...buildOpenGraphMetadata({
       locale,
       title: q ? t('titleTemplate', { query: q }) : t('title'),
