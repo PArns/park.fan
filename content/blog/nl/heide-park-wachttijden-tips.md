@@ -107,7 +107,7 @@ of onder de rails, maar links en rechts ernaast, met niets voor je voeten. 40
 meter hoog, 772 meter lang, 100 km/u, vijf inversies, drie minuten rijtijd,
 1.060 gasten per uur.
 
-Zo staat het park ten opzichte van drie andere grote Duitse parken, met de
+Zo staat het park ten opzichte van drie andere [grote Duitse parken](/blog/beste-pretparken-in-duitsland), met de
 cijfers van vandaag:
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
@@ -303,7 +303,8 @@ onderaan de vrijdag, en de dagen daartussen liggen in de tabel hierboven dicht
 bij elkaar. De maandag staat op maar ongeveer half zoveel meetdagen als de
 andere dagen, omdat het park hem in het voorjaar en in september regelmatig uit
 de kalender haalt. Wat er aan maandagen meetelt, valt dus vooral in het
-hoogseizoen, en rustig zijn die niet.
+hoogseizoen, en rustig zijn die niet. De rustigste weekdag van andere parken staat
+op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 ### De maand
 

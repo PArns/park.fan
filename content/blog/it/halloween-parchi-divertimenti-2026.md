@@ -582,6 +582,10 @@ Programma e prezzi:
 [portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
 e [Pasajes di Halloween](https://www.portaventuraworld.com/en/tickets/halloween-passages).
 
+Gardaland, sul lago di Garda, quest’autunno ha un nuovo labirinto da
+attraversare in silenzio, e date e prezzi sono nella nostra [notizia su
+Gardaland](/blog/gardaland-magic-halloween-2026).
+
 ## I renitenti: due parchi di punta che saltano Halloween
 
 Due dei parchi più visitati della zona al circo di nebbia e motoseghe non
@@ -717,6 +721,11 @@ Per quale tempra decidere è affar tuo. Solo che in coda non ti salta addosso
 _nessuno_, garantito, e a questi prezzi è quasi un peccato. Il giorno più vuoto
 lo trovi nei tempi di attesa live e nel calendario dell’affluenza su park.fan,
 per tutto l’autunno.
+
+Quello che succede dall’altra parte dell’Atlantico è nella [panoramica di
+Halloween negli USA](/blog/halloween-stati-uniti-parchi-2026), e Cedar Point, in
+Ohio, ha un articolo tutto suo sugli
+[HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
 Chi prenota Below si porta un cambio di calze. Io una volta non l’ho fatto.
 

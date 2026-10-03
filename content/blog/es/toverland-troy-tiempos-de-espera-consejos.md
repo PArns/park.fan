@@ -491,6 +491,7 @@ parque solo abre los miércoles y los fines de semana, de todos modos.
 
 **Por días de la semana** las cifras prácticamente no se separan, ningún día
 destaca. En Phantasialand un sábado está bastante más lleno que un martes.
+La [página de la mejor época](/mejor-epoca-para-visitar) pone los parques uno al lado del otro.
 
 No te puedes fiar de eso en cuanto se superponen los calendarios de vacaciones
 neerlandeses y alemanes, el tiempo y los horarios de apertura, y en la zona

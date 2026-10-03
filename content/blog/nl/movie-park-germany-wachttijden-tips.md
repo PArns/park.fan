@@ -67,6 +67,8 @@ taart voor de parelbruiloft de naam van de buurman staat.
 Over alle openingsdagen die we tot nu toe gemeten hebben, sta je in het
 [Movie Park](ref:movie-park-germany) ruim een derde korter aan dan in het
 [Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker.
+Waar de andere Duitse parken staan, lees je in mijn
+[ranglijst van pretparken in Duitsland](/blog/beste-pretparken-in-duitsland).
 
 En de zondag, die de gangbare tipsites afschrijven als drukke weekenddag, hoort
 in onze gegevens bij de rustigste dagen van de week.

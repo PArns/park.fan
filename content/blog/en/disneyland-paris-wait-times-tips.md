@@ -267,7 +267,8 @@ Disneyland Paris is open year-round, every single day, so it has none of the
 classic off-season question that decides everything at a seasonal park. What
 drives the crowds instead is French school holidays, which fall differently from
 the German ones and, in winter and spring, are staggered across three zones,
-plus British half-term weeks.
+plus British half-term weeks. How the seasonal parks compare month by month is
+on the [best time to visit page](/best-time-to-visit).
 
 Then there are the seasons. From 26 September to 1 November, Disneyland Park
 runs the Disney Halloween Festival, and what's on is in our [Halloween news

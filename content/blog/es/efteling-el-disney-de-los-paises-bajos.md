@@ -509,7 +509,8 @@ más de tres semanas, detrás de diciembre, enero y marzo solo un puñado (en
 diciembre, las vacaciones de Navidad a partir del 26), y para febrero, octubre y
 noviembre no tenemos hasta ahora ningún día aprovechable (a 25 de septiembre de
 2026). La dirección es correcta, el orden en
-detalle no.
+detalle no. Los meses más tranquilos de todos los parques están en la
+[página de la mejor época](/mejor-epoca-para-visitar).
 
 **Por día de la semana**, el consejo habitual aquí se disuelve:
 

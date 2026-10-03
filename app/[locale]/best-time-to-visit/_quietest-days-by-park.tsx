@@ -5,6 +5,11 @@ import { extractFeaturedParks } from '@/components/home/featured-parks-section';
 import { ParkComparisonCard } from '@/components/parks/park-comparison-card';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
 import { weekdayName } from '@/lib/utils/intl-format';
+import { getGuideForPark } from '@/lib/blog/backlinks';
+import { hasPublishedPosts } from '@/lib/blog/listing';
+import { postPath } from '@/lib/blog/paths';
+import { BlogPostLink } from '@/components/blog/blog-post-link';
+import type { Locale } from '@/i18n/config';
 
 /**
  * "The quietest day at each park" — the one section on this page that names parks.
@@ -44,6 +49,19 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
     };
   });
 
+  // The visit guide for each park in the table, in this locale. This hub page linked no post at
+  // all, while the guides' own "when to go" chapters point here (SEO run, 2026-10-03). Same
+  // lookup the park page opens its blog part with, so a park without a guide in this locale
+  // simply is not named, and a locale without a blog gets no line.
+  const guides = hasPublishedPosts(locale as Locale)
+    ? parks.flatMap((park) => {
+        const guide = getGuideForPark(locale as Locale, park.parkSlug, {
+          geoPath: `${park.continent}/${park.country}/${park.city}`,
+        });
+        return guide ? [{ name: park.name, href: postPath(guide) }] : [];
+      })
+    : [];
+
   const [t, tStats, tOverview] = await Promise.all([
     getTranslations('bestTime.quietestByPark'),
     getTranslations('parks.stats'),
@@ -72,6 +90,17 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
         labelQuietestDay={t('colQuietest')}
         weekdayNames={weekdayNames}
       />
+      {guides.length > 0 && (
+        <p className="text-muted-foreground mt-4 max-w-2xl text-sm">
+          {t('guidesLead')}{' '}
+          {guides.map((guide, i) => (
+            <span key={guide.href}>
+              {i > 0 && ' · '}
+              <BlogPostLink href={guide.href}>{guide.name}</BlogPostLink>
+            </span>
+          ))}
+        </p>
+      )}
     </section>
   );
 }

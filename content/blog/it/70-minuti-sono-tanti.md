@@ -129,7 +129,8 @@ Tre parchi a confronto, ciascuno con il suo giorno più tranquillo:
 Un trattino nell’ultima colonna vuol dire che in quel parco nessun giorno della
 settimana si stacca in modo affidabile, oppure che i suoi giorni sono stati
 misurati in modo troppo diseguale per confrontarli. Se compaiono due giorni,
-sono tranquilli allo stesso modo.
+sono tranquilli allo stesso modo. La stessa tabella, con molti più parchi, sta
+nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 ## A cosa serve un turno di notte
 

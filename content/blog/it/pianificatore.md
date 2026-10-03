@@ -294,7 +294,8 @@ scrive uguale in ogni lingua, e un percorso indovinato è un piano che punta a u
 Per la seconda domanda, al posto di un elenco a discesa da sessanta righe
 ottieni un mese intero, e ogni giorno porta l’affluenza prevista
 di quel parco. «Il sabato fra due settimane» diventa questione di un’occhiata, e
-il resto che sappiamo su quel giorno sta sotto la griglia.
+il resto che sappiamo su quel giorno sta sotto la griglia. Quali giorni della settimana e quali mesi sono di solito
+tranquilli in un parco sta nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 ![Secondo passo della procedura guidata: è scelto il Disneyland Park di Anaheim, ogni giorno della griglia mensile porta l’affluenza prevista, sabato 19 selezionato. | Un settembre previsto tranquillo per tutto il mese ad Anaheim. Sessanta righe di un elenco a discesa non lo mostrano.](/media/tagesplaner/planer-wizard-tag-it.webp)
 

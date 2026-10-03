@@ -387,7 +387,8 @@ crowd spreads over fewer rides.
 ```
 
 In our measurements Saturday is the busiest day by a distance, and Wednesday
-the quietest. If you can pick the day, pick a Wednesday.
+the quietest. If you can pick the day, pick a Wednesday. Other parks have
+their own quiet day, collected on the [best time to visit page](/best-time-to-visit).
 
 ### Month
 

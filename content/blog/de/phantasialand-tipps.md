@@ -254,7 +254,7 @@ ist der Montag der ruhigere der beiden.
 Die treuesten Fans wurmt bis heute, dass es **keine Jahreskarten mehr**
 gibt. Das Phantasialand hat seine Club-Karte in der Pandemie aus
 dem Verkauf genommen und nie zurückgebracht, die letzten liefen im Sommer 2022
-aus. Unter den großen deutschen Parks ist das die Ausnahme; der Europa-Park etwa
+aus. Unter den [großen deutschen Parks](/blog/beste-freizeitparks-in-deutschland) ist das die Ausnahme; der Europa-Park etwa
 verkauft seinen ResortPass weiter, auch wenn die Kontingente schnell weg sind.
 Für einen Ort, der so viele Menschen zu Wiederholungstätern macht, ist das ein
 Schlag ins Gesicht der Stammgäste. Der Unmut war (und ist) so groß, dass Fans
@@ -284,7 +284,8 @@ Ein paar Faustregeln, die fast immer stimmen:
 - **Wochentags schlägt Wochenende.** Montag bis Freitag liegen in unseren
   Messungen gleichauf, Samstag und Sonntag darüber (gemessen seit Ende Dezember
   2025, Stand 25. September 2026). Einen Wochentag, der leerer ist als die
-  anderen, gibt es hier also nicht.
+  anderen, gibt es hier also nicht. Welche Parks einen haben, steht auf der
+  [Beste-Reisezeit-Seite](/beste-reisezeit).
 - **NRW-Schulferien meiden**, besonders Sommer- und Herbstferien, das
   Einzugsgebiet Köln/Bonn/Ruhrgebiet ist gewaltig, und halb davon steht dann mit
   dir bei Taron.

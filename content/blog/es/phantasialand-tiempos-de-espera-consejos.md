@@ -252,8 +252,8 @@ pero no siempre. Ese mismo día, el domingo siguiente costaba 49 € y el lunes
 
 **Ya no hay abonos anuales**, y a los fans más fieles les sigue escociendo. El
 Phantasialand retiró su Club-Karte de la venta durante la pandemia y nunca la
-recuperó; las últimas caducaron en el verano de 2022. Entre los grandes parques
-alemanes es la excepción. El Europa-Park, por ejemplo, sigue vendiendo su
+recuperó; las últimas caducaron en el verano de 2022. Entre los [grandes parques
+alemanes](/blog/mejores-parques-de-atracciones-de-alemania) es la excepción. El Europa-Park, por ejemplo, sigue vendiendo su
 ResortPass, aunque los cupos vuelan. Para un lugar que
 convierte a tanta gente en reincidente, es una bofetada a los clientes
 habituales. El malestar fue (y es) tan grande que en 2022 los fans
@@ -282,7 +282,8 @@ Un par de reglas de oro que casi siempre se cumplen:
 - **Entre semana gana al fin de semana.** De lunes a viernes, los días quedan
   empatados en nuestras mediciones, y el sábado y el domingo por encima (medido
   desde finales de diciembre de 2025, a 25 de septiembre de 2026). Aquí no hay un
-  día laborable milagro.
+  día laborable milagro. Qué parques sí lo tienen está en la
+  [página de la mejor época](/mejor-epoca-para-visitar).
 - **Evita las vacaciones escolares de Renania del Norte-Westfalia**, sobre todo las
   de verano y otoño. El área de influencia Colonia/Bonn/cuenca del Ruhr es enorme,
   y la mitad de ella se planta contigo en la cola de Taron.

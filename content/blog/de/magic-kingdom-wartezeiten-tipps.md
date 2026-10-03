@@ -199,7 +199,8 @@ Stand 28. September 2026 sind es 196 gemessene Tage, die meisten davon seit
 April.
 
 Die Wochentagskurve ist flach, die Mediane liegen nur eine Stufe auseinander.
-Einen Wochentag, den du gezielt wählen solltest, gibt es nicht.
+Einen Wochentag, den du gezielt wählen solltest, gibt es nicht. Bei manchen
+anderen Parks gibt es ihn, und die [Beste-Reisezeit-Seite](/beste-reisezeit) nennt ihn.
 
 Wegen Hurrikans hat Magic Kingdom seit der Eröffnung neunmal vorübergehend
 geschlossen, zuletzt im Oktober 2024 wegen Milton. Im Herbst läuft im Park

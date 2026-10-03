@@ -314,7 +314,8 @@ mehr zusammen: Die französischsprachigen Schulen in Wallonien und Brüssel habe
 2026 vom 19. bis 30. Oktober Herbstferien, die flämischen vom 2. bis 8.
 November, und Ibilaw läuft über beide. Dazu kommen die Wochentage außerhalb
 der Sommerferien, an denen der Park ohnehin nicht täglich öffnet. Welche der kommenden Öffnungstage
-die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell.
+die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell. Wie Monate und
+Wochentage bei anderen Parks ausfallen, steht auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ## Die Reihenfolge für einen Tag
 

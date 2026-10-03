@@ -286,7 +286,8 @@ Leute beschäftigt, und ein Park auf 95 Hektar. Elfmal hat der Park den
 **Golden Ticket Award** als bester Freizeitpark der Welt gewonnen, zuletzt am 12.
 September 2026 in Austin, Texas. Ununterbrochen ist die Serie nicht, denn 2023
 hat Dollywood gewonnen, und der Europa-Park wurde Zweiter. 2020 fiel die
-Verleihung wegen der Pandemie aus.
+Verleihung wegen der Pandemie aus. Auch in meinem
+[Ranking der deutschen Parks für Achterbahnfans](/blog/beste-freizeitparks-in-deutschland) steht er vorn.
 
 Der Vorführraum ist er für Mack Rides bis heute. Von den vierzehn Achterbahnen,
 die dort stehen, kommen nach Angabe des Parks **zwölf aus Waldkirch**. Die
@@ -550,8 +551,8 @@ zum Abschiedsevent am 9. Januar 2027 kommt kein Sommer mehr, nur noch Glühwein.
 
 ## Beste Reisezeit: wann im Europa-Park am wenigsten los ist
 
-Beim Wochentag tanzt der Europa-Park aus der Reihe, gemessen an allem, was ich
-sonst so aufzeichne.
+Beim Wochentag tanzt der Europa-Park aus der Reihe, gemessen an [allem, was ich
+sonst so aufzeichne](/beste-reisezeit).
 
 ### Der Wochentag
 

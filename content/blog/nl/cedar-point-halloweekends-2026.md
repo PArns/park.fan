@@ -139,6 +139,8 @@ Data, huizen en tickets staan op
 [sixflags.com → Cedar Point HalloWeekends](https://www.sixflags.com/cedarpoint/events/halloweekends/nighttime-frights),
 de prijzen op
 [HalloWeekends Add-Ons](https://www.sixflags.com/cedarpoint/halloweekends-add-ons).
+De andere grote evenementen in de VS, van Orlando tot Californië, staan in het
+[halloweenoverzicht voor de VS](/blog/halloween-vs-pretparken-2026).
 Halloween in Movie Park, Europa-Park, Walibi en Toverland staat in het
 [halloweenoverzicht](/blog/halloween-pretparken-2026).
 

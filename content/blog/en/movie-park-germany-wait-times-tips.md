@@ -68,6 +68,8 @@ Rather like a pearl anniversary cake with the neighbour’s name iced on it.
 Across every operating day we’ve measured so far, you queue at
 [Movie Park](ref:movie-park-germany) a good third less than at
 [Phantasialand](ref:phantasialand), barely an hour’s drive further south.
+Where the other German parks stand is in my
+[German theme park ranking](/blog/best-theme-parks-in-germany).
 
 And the Sunday that the usual tip sheets online write off as a crowded weekend
 day is one of the quietest days of the week in our data.

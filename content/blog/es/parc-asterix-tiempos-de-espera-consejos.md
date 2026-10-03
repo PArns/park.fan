@@ -380,6 +380,8 @@ otras, así que el público se reparte entre menos atracciones.
 
 En nuestras mediciones el sábado es, con diferencia, el día con más gente, y el
 miércoles el más tranquilo. Si puedes elegir el día, elige el miércoles.
+Cada uno de los demás parques tiene su propio día tranquilo, y la
+[página de la mejor época](/mejor-epoca-para-visitar) los reúne.
 
 ### El mes
 

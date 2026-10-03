@@ -195,7 +195,8 @@ tenemos ningún valor. A 28 de septiembre de 2026 llevamos 196 días medidos, la
 mayoría desde abril.
 
 La curva por días de la semana es plana, con medianas a solo un escalón de
-distancia. No hay ningún día de la semana que te convenga elegir a propósito.
+distancia. No hay ningún día de la semana que te convenga elegir a propósito. En algunos
+otros parques sí lo hay, y la [página de la mejor época](/mejor-epoca-para-visitar) lo indica.
 
 Desde su apertura, Magic Kingdom ha cerrado temporalmente nueve veces por
 huracanes, la última en octubre de 2024 por Milton. En otoño el parque celebra

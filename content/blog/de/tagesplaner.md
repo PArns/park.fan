@@ -298,7 +298,8 @@ Bei der zweiten Frage bekommst du statt einer Auswahlliste mit sechzig Zeilen
 einen ganzen Monat, und jeder Tag trägt die
 Auslastungsprognose dieses Parks. „Der übernächste Samstag“ ist damit eine
 Sache von einem Blick, und was wir sonst noch über ihn wissen, steht unter dem
-Raster.
+Raster. Welche Wochentage und Monate in einem Park grundsätzlich ruhig sind,
+steht auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ![Schritt zwei des Planer-Assistenten: Disneyland Park in Anaheim ist gewählt, im Monatsraster trägt jeder Tag die Auslastungsprognose, Samstag der 19. ist markiert. | Ein September, der in Anaheim durchgehend ruhig vorhergesagt ist. In sechzig Zeilen einer Auswahlliste sieht man das nicht.](/media/tagesplaner/planer-wizard-tag-de.webp)
 

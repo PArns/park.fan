@@ -495,6 +495,46 @@ export function ItemListStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `WebApplication` for a page that IS a tool rather than a document about one (the trip planner).
+ * It runs in the browser, costs nothing and needs no account, and those are the three facts this
+ * node states. No `aggregateRating`: there are no ratings to report, so Google shows no software
+ * rich result for it, and that is the honest outcome. What the node buys is the entity: an answer
+ * engine reading the page learns it is a free web app by park.fan, not an article.
+ */
+export function WebApplicationStructuredData({
+  name,
+  description,
+  path,
+  locale,
+}: {
+  name: string;
+  description: string;
+  /** Locale-prefixed path, e.g. `/de/tagesplaner`. */
+  path: string;
+  locale: string;
+}) {
+  const url = `${SITE_URL}${path}`;
+  const data = {
+    '@context': 'https://schema.org' as const,
+    '@type': 'WebApplication' as const,
+    '@id': `${url}#app`,
+    name,
+    description,
+    url,
+    inLanguage: locale,
+    applicationCategory: 'TravelApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript.',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer' as const, price: '0', priceCurrency: 'EUR' },
+    publisher: { '@type': 'Organization', '@id': ORGANIZATION_ID },
+    isPartOf: { '@id': websiteId(locale) },
+  };
+
+  return <JsonLd data={data as WithContext<Thing>} />;
+}
+
 export function BreadcrumbStructuredData({
   breadcrumbs,
   currentPage,

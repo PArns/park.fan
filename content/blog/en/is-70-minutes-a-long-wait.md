@@ -128,7 +128,8 @@ side by side, each with its quietest weekday:
 
 A dash in the last column means no weekday reliably stands out at that park, or
 its weekdays were measured too unevenly to compare. Two days there means both
-are equally quiet.
+are equally quiet. The same table, with many more parks, is on the
+[best time to visit page](/best-time-to-visit).
 
 ## What a night shift is for
 

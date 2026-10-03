@@ -273,7 +273,8 @@ Disneyland Paris est ouvert toute l’année, tous les jours, et ne connaît don
 pas la question classique de la basse saison qui domine tout chez les parcs
 saisonniers. Ce qui détermine l’affluence, ce sont plutôt les vacances scolaires
 françaises, différentes des vacances allemandes et, en hiver et au printemps,
-réparties sur trois zones, ainsi que les semaines de half-term britanniques.
+réparties sur trois zones, ainsi que les semaines de half-term britanniques. La
+comparaison des parcs saisonniers mois par mois se trouve sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 Il y a aussi les saisons. Du 26 septembre au 1er novembre, le Disneyland Park
 accueille le Festival Halloween Disney ; le programme est dans notre [article

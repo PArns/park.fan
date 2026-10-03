@@ -156,7 +156,7 @@ makes 214 opening days, in the park's own calendar and in our calendar feed alik
 Europa-Park and Phantasialand do the same. Heide Park, on the other hand, regularly takes Monday out
 of the calendar in spring and autumn, Movie Park mostly closes Monday to Wednesday outside the high
 season, and even Legoland Deutschland in Günzburg has a handful of closed days in May, June and
-September 2026. So a quiet weekday in Sierksdorf is always an opening day.
+September 2026. So a [quiet weekday](/best-time-to-visit) in Sierksdorf is always an opening day.
 
 The hours are nearly as monotonous, in the best sense: planning a day here needs no calendar with
 footnotes. Until **9 October** the park opens daily at **10:00** and the rides
@@ -364,7 +364,8 @@ change its opening hours too:
 ```
 
 And if you're planning the north right now: [Heide Park](/blog/heide-park-wait-times-tips) lies 131
-kilometres southwest as the crow flies and fits into the same week.
+kilometres southwest as the crow flies and fits into the same week. How the two compare with the
+other parks in the country is in my [ranking of German theme parks](/blog/best-theme-parks-in-germany).
 
 ## The catch
 

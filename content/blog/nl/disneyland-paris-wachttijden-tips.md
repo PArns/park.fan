@@ -262,7 +262,8 @@ Disneyland Paris is het hele jaar open, elke dag, en kent daardoor niet de
 klassieke laagseizoenvraag die bij seizoensparken over alles beslist. Wat de
 drukte wel bepaalt, zijn de Franse schoolvakanties, die anders liggen dan de
 Duitse en in winter en voorjaar over drie zones zijn gespreid, plus de Britse
-half-termweken.
+half-termweken. Hoe de seizoensparken zich maand voor maand verhouden, staat op de
+[beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 Daar komen de seizoenen bij. Van 26 september tot 1 november loopt in het
 Disneyland Park het Disney Halloween Festival; wat er te zien is, staat in ons

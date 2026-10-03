@@ -156,7 +156,7 @@ kalenderfeed.
 Het Europa-Park en het Phantasialand doen het net zo. Het Heide Park daarentegen haalt de maandag in
 voor- en najaar regelmatig uit de kalender, het Movie Park sluit buiten het hoogseizoen meestal van
 maandag tot en met woensdag, en zelfs Legoland Deutschland in Günzburg heeft in 2026 een handvol
-sluitingsdagen in mei, juni en september. Wie in Sierksdorf een rustige doordeweekse dag zoekt, staat dus nooit voor een gesloten
+sluitingsdagen in mei, juni en september. Wie in Sierksdorf een [rustige doordeweekse dag](/beste-tijd-om-te-bezoeken) zoekt, staat dus nooit voor een gesloten
 poort.
 
 De tijden zijn bijna even eentonig, en wie hier plant, heeft geen
@@ -371,7 +371,9 @@ ook de openingstijden aanpassen:
 ```
 
 En als je net het noorden plant: het [Heide Park](/blog/heide-park-wachttijden-tips) ligt 131
-kilometer hemelsbreed naar het zuidwesten en past in dezelfde week.
+kilometer hemelsbreed naar het zuidwesten en past in dezelfde week. Hoe die twee het doen naast de
+andere parken in het land, staat in mijn
+[ranglijst van Duitse pretparken](/blog/beste-pretparken-in-duitsland).
 
 ## Waar het addertje zit
 

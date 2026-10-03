@@ -108,7 +108,7 @@ links und rechts neben der Schiene, ohne etwas vor den Füßen. 40 Meter hoch, 7
 Meter lang, 100 km/h, fünf Inversionen, drei Minuten Fahrzeit, 1.060 Gäste pro
 Stunde.
 
-So steht der Park im Vergleich zu drei anderen großen deutschen Parks,
+So steht der Park im Vergleich zu drei anderen [großen deutschen Parks](/blog/beste-freizeitparks-in-deutschland),
 tagesaktuell gerechnet:
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
@@ -303,7 +303,8 @@ beieinander. Der Montag steht auf nur etwa halb so vielen Messtagen wie die
 anderen, weil der Park ihn im Frühjahr und im September regelmäßig aus dem
 Kalender nimmt. Gezählt werden also vor allem Montage in der Hauptsaison, und
 ruhig sind die nicht. Ein ruhiger Montag ist in Soltau meistens ein
-geschlossener.
+geschlossener. Den ruhigsten Wochentag anderer Parks findest du auf der
+[Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ### Der Monat
 

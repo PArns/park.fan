@@ -163,7 +163,7 @@ Kalender-Feed.
 Europa-Park und Phantasialand halten es genauso. Der Heide Park dagegen nimmt im Frühjahr und im
 Herbst regelmäßig den Montag aus dem Kalender, der Movie Park schließt außerhalb der Hauptsaison
 meist montags bis mittwochs, und auch das Legoland in Günzburg hat 2026 einzelne Schließtage im
-Mai, Juni und September. Wer in Sierksdorf einen ruhigen Wochentag sucht, kann deshalb jeden
+Mai, Juni und September. Wer in Sierksdorf einen [ruhigen Wochentag](/beste-reisezeit) sucht, kann deshalb jeden
 nehmen, auch einen Montag im Oktober.
 
 Die Uhrzeiten sind fast genauso eintönig, im besten Sinn. Bis zum **9. Oktober** öffnet der Park täglich um **10 Uhr**, und die
@@ -412,7 +412,9 @@ und der Park kann dann auch die Öffnungszeiten ändern:
 ```
 
 Und wenn du gerade den Norden planst: Der [Heide Park](/blog/heide-park-wartezeiten-tipps) liegt
-131 Kilometer Luftlinie südwestlich und lässt sich in derselben Woche mitnehmen.
+131 Kilometer Luftlinie südwestlich und lässt sich in derselben Woche mitnehmen. Wie die beiden
+neben den übrigen Parks im Land abschneiden, steht in meinem
+[Ranking der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland).
 
 ## Wo der Haken liegt
 

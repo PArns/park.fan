@@ -196,7 +196,8 @@ ancora nessun valore. Al 28 settembre 2026 i giorni misurati sono 196, per lo pi
 da aprile in poi.
 
 La curva dei giorni della settimana è piatta, con mediane distanti un solo
-gradino. Un giorno della settimana da scegliere apposta non c’è.
+gradino. Un giorno della settimana da scegliere apposta non c’è. In alcuni altri parchi
+c’è, e la [pagina del periodo migliore](/periodo-migliore-per-visitare) lo indica.
 
 Dall’apertura il Magic Kingdom ha chiuso temporaneamente nove volte a causa di
 uragani, l’ultima a ottobre 2024 per Milton. In autunno nel parco c’è anche la

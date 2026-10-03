@@ -487,7 +487,8 @@ April through August each have a full month of measured days behind them,
 September a good three weeks, December, January and March only a handful (for
 December that means the Christmas holidays from the 26th), and for February,
 October and November we have no usable days at all so far (as of 25 September
-2026). So the direction holds, but not the ranking in detail.
+2026). So the direction holds, but not the ranking in detail. The quietest
+months across all parks are on the [best time to visit page](/best-time-to-visit).
 
 **By day of the week** the usual advice doesn’t hold here:
 

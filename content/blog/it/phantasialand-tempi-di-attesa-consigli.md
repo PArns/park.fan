@@ -254,7 +254,7 @@ lunedì è il più tranquillo dei due.
 **Gli abbonamenti annuali non esistono più**, e ai fan più fedeli brucia ancora
 oggi. Il Phantasialand ha tolto dalla vendita la sua
 Club-Karte durante la pandemia e non l’ha mai rimessa in vendita; le ultime sono
-scadute nell’estate 2022. Tra i grandi parchi tedeschi è l’eccezione: l’Europa-Park,
+scadute nell’estate 2022. Tra i [grandi parchi tedeschi](/blog/migliori-parchi-divertimenti-in-germania) è l’eccezione: l’Europa-Park,
 per esempio, continua a vendere il suo ResortPass, anche se i contingenti
 finiscono in fretta. Per un luogo che rende così tante persone dei recidivi, è uno
 schiaffo in faccia agli habitué. Il malumore era (ed è) così grande che nel 2022 i
@@ -286,7 +286,8 @@ Un paio di regole empiriche che valgono quasi sempre:
 - **Il giorno feriale batte il weekend.** Da lunedì a venerdì i giorni sono alla
   pari nelle nostre misurazioni, sabato e domenica stanno sopra (dati raccolti da
   fine dicembre 2025, aggiornati al 25 settembre 2026). Un giorno feriale segreto,
-  qui, non esiste.
+  qui, non esiste. Quali parchi ce l’hanno sta nella
+  [pagina del periodo migliore](/periodo-migliore-per-visitare).
 - **Evita le vacanze scolastiche della Renania Settentrionale-Vestfalia**,
   soprattutto quelle estive e autunnali. Il bacino d’utenza Colonia/Bonn/Ruhr è
   enorme, e metà di quello se ne sta poi con te in coda al Taron.

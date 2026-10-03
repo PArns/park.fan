@@ -325,7 +325,8 @@ vacaciones de otoño del 19 al 30 de octubre, los flamencos del 2 al 8 de
 noviembre, e Ibilaw abarca ambas. A eso se suman los días entre semana fuera
 del verano, cuando el parque no abre a diario de todos modos. Cuáles de los
 próximos días de apertura son los más tranquilos está en el calendario de más
-arriba, actualizado a diario.
+arriba, actualizado a diario. Cómo caen los meses y los días de la semana en
+otros parques está en la [página de la mejor época](/mejor-epoca-para-visitar).
 
 ## Cómo ordenar el día
 

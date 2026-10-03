@@ -2047,7 +2047,8 @@
     "quietestByPark": {
       "title": "Il giorno più tranquillo in ogni parco",
       "intro": "Le medie qui sopra valgono per tutti i parchi insieme. Presi uno per uno, ogni parco va per conto suo, a seconda delle vacanze scolastiche, delle distanze e di quando la gente della zona ha un giorno libero.",
-      "colQuietest": "Giorno più tranquillo"
+      "colQuietest": "Giorno più tranquillo",
+      "guidesLead": "Le nostre guide a questi parchi:"
     }
   },
   "howto": {

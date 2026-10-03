@@ -293,6 +293,8 @@ personas en temporada, y un parque de 95 hectáreas. Once veces ha ganado el
 parque el **Golden Ticket Award** al mejor parque de atracciones del mundo, la
 última el 12 de septiembre de 2026 en Austin, Texas. En 2023 ganó Dollywood y
 el Europa-Park quedó segundo, y en 2020 no hubo entrega por la pandemia.
+También va primero en mi
+[clasificación de parques alemanes para fans de las montañas rusas](/blog/mejores-parques-de-atracciones-de-alemania).
 
 Para Mack Rides, el parque sigue siendo la sala de exposición que iba a ser. De
 las catorce montañas rusas que hay allí, **doce vienen de Waldkirch**, según el
@@ -566,8 +568,8 @@ más, solo vino caliente.
 
 ## Mejor época para visitar: cuándo hay menos gente en el Europa-Park
 
-En el día de la semana, el Europa-Park va por libre, comparado con todo lo demás
-que registro.
+En el día de la semana, el Europa-Park va por libre, comparado con [todo lo demás
+que registro](/mejor-epoca-para-visitar).
 
 ### El día de la semana
 

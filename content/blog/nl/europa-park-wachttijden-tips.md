@@ -284,7 +284,8 @@ mensen in dienst heeft, en een park van 95 hectare. Elf keer heeft het park de
 **Golden Ticket Award** als beste pretpark ter wereld gewonnen, het laatst op
 12 september 2026 in Austin, Texas. Veel berichten maken daar een ononderbroken
 reeks van, alleen won in 2023 Dollywood en werd het Europa-Park tweede, en in
-2020 ging de uitreiking wegens de pandemie niet door.
+2020 ging de uitreiking wegens de pandemie niet door. Ook in mijn
+[ranglijst van Duitse parken voor achtbaanfans](/blog/beste-pretparken-in-duitsland) staat het bovenaan.
 
 Voor Mack Rides is het park nog altijd de showroom die het moest worden. Van de
 veertien achtbanen die er staan, komen er volgens het park **twaalf uit
@@ -555,8 +556,8 @@ Wie toch al overweegt om er in 2026 heen te gaan, moet het niet naar 2027 doorsc
 
 ## Beste reistijd: wanneer het in het Europa-Park het rustigst is
 
-Bij de weekdag loopt het Europa-Park uit de pas met alles wat ik verder
-registreer.
+Bij de weekdag loopt het Europa-Park uit de pas met [alles wat ik verder
+registreer](/beste-tijd-om-te-bezoeken).
 
 ### De weekdag
 

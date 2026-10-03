@@ -2047,7 +2047,8 @@
     "quietestByPark": {
       "title": "El día más tranquilo de cada parque",
       "intro": "Las medias de arriba cubren todos los parques a la vez. Uno por uno, cada parque va a su ritmo, según las vacaciones escolares, las distancias y cuándo tiene el día libre la gente de la zona.",
-      "colQuietest": "Día más tranquilo"
+      "colQuietest": "Día más tranquilo",
+      "guidesLead": "Nuestras guías de estos parques:"
     }
   },
   "howto": {

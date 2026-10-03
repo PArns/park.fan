@@ -68,6 +68,8 @@ se sulla torta delle nozze di perla ci fosse scritto il nome del vicino di casa.
 Su tutti i giorni di apertura misurati finora, al
 [Movie Park](ref:movie-park-germany) si sta in coda un buon terzo in meno che al
 [Phantasialand](ref:phantasialand), a poco meno di un’ora di macchina più a sud.
+Dove si collocano gli altri parchi tedeschi sta nella mia
+[classifica dei parchi divertimenti in Germania](/blog/migliori-parchi-divertimenti-in-germania).
 
 E la domenica, che le guide abituali in rete danno per giorno pieno del fine
 settimana, nei nostri dati è fra i giorni più tranquilli della settimana.

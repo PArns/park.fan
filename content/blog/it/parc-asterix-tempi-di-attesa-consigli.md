@@ -377,6 +377,8 @@ attrazioni.
 
 Nelle nostre misurazioni il sabato è di gran lunga il giorno più affollato e il
 mercoledì il più tranquillo. Se puoi scegliere il giorno, scegli il mercoledì.
+Ogni altro parco ha il suo giorno tranquillo, e la [pagina del periodo migliore](/periodo-migliore-per-visitare) li
+raccoglie.
 
 ### Il mese
 

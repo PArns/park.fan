@@ -108,7 +108,7 @@ sienta encima ni debajo de la vía, sino a izquierda y derecha de ella, sin nada
 delante de los pies. 40 metros de altura, 772 metros de recorrido, 100 km/h,
 cinco inversiones, tres minutos de viaje, 1.060 visitantes por hora.
 
-Así queda el parque frente a otros tres grandes parques alemanes, con los datos
+Así queda el parque frente a otros tres [grandes parques alemanes](/blog/mejores-parques-de-atracciones-de-alemania), con los datos
 de hoy:
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
@@ -312,7 +312,8 @@ arriba. El lunes descansa sobre más o menos la mitad de los días medidos que
 tienen los demás, porque el parque lo saca del calendario con regularidad en
 primavera y en septiembre. Los lunes que cuentan caen sobre todo en temporada
 alta, y esos no son tranquilos. Un lunes tranquilo en Soltau suele ser un lunes
-cerrado.
+cerrado. El día más tranquilo de los demás parques está en la
+[página de la mejor época](/mejor-epoca-para-visitar).
 
 ### El mes
 

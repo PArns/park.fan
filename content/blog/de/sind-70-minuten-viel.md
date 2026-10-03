@@ -131,7 +131,8 @@ Vergleich, jeweils mit ihrem ruhigsten Wochentag:
 
 Steht in der letzten Spalte ein Strich, hebt sich an diesem Park kein Wochentag
 verlässlich ab, oder die Wochentage sind zu ungleich gemessen, um sie zu
-vergleichen. Stehen dort zwei Tage, sind beide gleich ruhig.
+vergleichen. Stehen dort zwei Tage, sind beide gleich ruhig. Dieselbe Tabelle mit
+viel mehr Parks steht auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ## Wofür man eine Nachtschicht braucht
 

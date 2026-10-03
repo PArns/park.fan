@@ -159,7 +159,7 @@ giorno di chiusura**. Sono 214 giorni di apertura, nel calendario del parco come
 Europa-Park e Phantasialand fanno lo stesso. Lo Heide Park invece toglie regolarmente il lunedì dal
 calendario in primavera e in autunno, il Movie Park fuori dall’alta stagione chiude per lo più dal
 lunedì al mercoledì, e perfino il Legoland Deutschland di Günzburg ha nel 2026 qualche giorno di
-chiusura a maggio, giugno e settembre. Chi a Sierksdorf cerca un giorno feriale tranquillo lo ottiene davvero come giorno di
+chiusura a maggio, giugno e settembre. Chi a Sierksdorf cerca un [giorno feriale tranquillo](/periodo-migliore-per-visitare) lo ottiene davvero come giorno di
 apertura e non come cancello chiuso.
 
 Gli orari sono quasi altrettanto monotoni, nel senso migliore, e per organizzarsi qui non serve un
@@ -382,7 +382,9 @@ cambiare anche gli orari:
 ```
 
 E se stai pianificando il nord: lo [Heide Park](/blog/heide-park-tempi-di-attesa-consigli) sta a 131
-chilometri in linea d’aria a sud-ovest e ci sta nella stessa settimana.
+chilometri in linea d’aria a sud-ovest e ci sta nella stessa settimana. Come se la cavano i due
+rispetto agli altri parchi del paese sta nella mia
+[classifica dei parchi divertimenti tedeschi](/blog/migliori-parchi-divertimenti-in-germania).
 
 ## Il rovescio della medaglia
 

@@ -90,5 +90,7 @@ et
 [gardaland.it → Halloween Party](https://www.gardaland.it/esplora-gardaland/eventi-aperture-speciali/halloween-party/).
 Sur les 31 jours de l’an dernier et la tendance Summerween :
 [Il Giornale, 9 septembre 2026](https://www.ilgiornale.it/news/viaggi/gardaland-anticipa-halloween-51-giorni-di-brividi-con-il-nuovo-labirinto-preda/).
+Halloween au Movie Park, à Europa-Park, à PortAventura et chez Walibi se trouve
+dans le [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
 
 — Patrick

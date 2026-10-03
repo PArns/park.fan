@@ -492,7 +492,8 @@ april tot en met augustus staat elk een volle maand aan meetdagen, achter septem
 ruim drie weken, achter december, januari en maart maar een handvol (bij december
 is dat de kerstvakantie vanaf de 26e), en voor
 februari, oktober en november hebben we tot nu toe helemaal geen bruikbare dagen
-(stand 25 september 2026). De richting klopt, de rangorde in detail niet.
+(stand 25 september 2026). De richting klopt, de rangorde in detail niet. De rustigste
+maanden over alle parken staan op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 **Per weekdag** lost het gebruikelijke advies hier op:
 

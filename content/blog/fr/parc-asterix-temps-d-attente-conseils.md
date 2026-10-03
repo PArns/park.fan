@@ -384,6 +384,8 @@ sur moins d’attractions.
 
 Dans nos mesures, le samedi est de loin le jour le plus chargé et le mercredi le
 plus calme. Si vous pouvez choisir le jour, prenez le mercredi.
+Chaque autre parc a son propre jour calme, et la [page des meilleures périodes](/meilleure-periode-pour-visiter) les
+réunit.
 
 ### Le mois
 

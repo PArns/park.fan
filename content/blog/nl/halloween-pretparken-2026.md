@@ -577,6 +577,10 @@ Programma en prijzen:
 [portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
 en [Halloween-Pasajes](https://www.portaventuraworld.com/en/tickets/halloween-passages).
 
+Gardaland aan het Gardameer heeft dit najaar een nieuw doolhof waar je in stilte
+doorheen moet, en de data en prijzen staan in ons [nieuwsbericht over
+Gardaland](/blog/gardaland-magic-halloween-2026).
+
 ## De weigeraars: twee topparken die Halloween uitzitten
 
 Twee van de best bezochte parken in de regio doen aan de hele
@@ -704,6 +708,11 @@ Voor welke zenuwsterkte je kiest, is jouw zaak. Alleen springt er in een rij
 gegarandeerd _niemand_ op je af, en bij deze prijzen is dat vervelend. Welke dag
 het leegst is, staat de hele herfst door in de live wachttijden en de
 druktekalender op park.fan.
+
+Wat er aan de andere kant van de Atlantische Oceaan gebeurt, staat in het
+[halloweenoverzicht voor de VS](/blog/halloween-vs-pretparken-2026), en Cedar
+Point in Ohio heeft een eigen stuk over de
+[HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
 Wie Below boekt, stopt reservesokken in zijn tas. Ik heb dat één keer niet
 gedaan.

@@ -265,7 +265,8 @@ Disneyland Paris abre todo el año, todos los días, así que no tiene esa pregu
 clásica de temporada baja que en los parques estacionales lo decide todo. Lo que
 marca la afluencia son, en cambio, las vacaciones escolares francesas, que caen
 en fechas distintas a las alemanas y en invierno y primavera se escalonan en
-tres zonas, además de las semanas de half-term británicas.
+tres zonas, además de las semanas de half-term británicas. La comparación mes a
+mes de los parques estacionales está en la [página de la mejor época](/mejor-epoca-para-visitar).
 
 A eso se suman las temporadas. Del 26 de septiembre al 1 de noviembre, el
 Disneyland Park celebra el Disney Halloween Festival; qué hay está en nuestra

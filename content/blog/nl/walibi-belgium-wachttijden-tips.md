@@ -311,7 +311,8 @@ in Wallonië en Brussel hebben in 2026 herfstvakantie van 19 tot 30 oktober, de
 Vlaamse van 2 tot 8 november, en Ibilaw loopt over allebei. Daarbij komen de
 weekdagen buiten de zomervakantie, waarop het park toch al niet dagelijks
 opengaat. Welke van de komende openingsdagen de rustigste zijn, staat
-hierboven in de kalender, dag voor dag bijgewerkt.
+hierboven in de kalender, dag voor dag bijgewerkt. Hoe maanden en weekdagen bij
+andere parken uitvallen, staat op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 ## De perfecte dag, in vier zinnen
 

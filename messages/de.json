@@ -2047,7 +2047,8 @@
     "quietestByPark": {
       "title": "Die ruhigsten Tage je Park",
       "intro": "Die Mittelwerte oben gelten für alle Parks zusammen. Einzeln tanzt jeder Park aus der Reihe, je nach Schulferien, Anreiseweg und der Frage, wann die Tagesgäste aus der Umgebung frei haben.",
-      "colQuietest": "Ruhigster Tag"
+      "colQuietest": "Ruhigster Tag",
+      "guidesLead": "Unsere Guides zu diesen Parks:"
     }
   },
   "howto": {

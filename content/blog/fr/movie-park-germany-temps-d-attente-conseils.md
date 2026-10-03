@@ -69,6 +69,8 @@ S’y ajoute un chiffre qui ne colle pas du tout à la réputation de ce parc. S
 l’ensemble des jours d’ouverture mesurés jusqu’ici, on patiente au
 [Movie Park](ref:movie-park-germany) un bon tiers de moins qu’au
 [Phantasialand](ref:phantasialand), à une petite heure de route plus au sud.
+Où se situent les autres parcs allemands, c’est dans mon
+[classement des parcs d’attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne).
 
 Et le dimanche, que les guides habituels rangent parmi les jours de week-end
 chargés, compte dans nos données parmi les jours les plus calmes de la semaine.

@@ -293,7 +293,8 @@ elke taal hetzelfde, en een geraden pad is een plan dat naar een 404 wijst.
 Bij de tweede vraag krijg je in plaats van een keuzelijst met zestig regels een
 hele maand, en elke dag draagt de drukteverwachting van dat
 park. “De zaterdag over twee weken” is daarmee een kwestie van één blik, en wat
-we er verder over weten staat onder het rooster.
+we er verder over weten staat onder het rooster. Welke weekdagen en maanden in een park doorgaans rustig
+zijn, staat op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 ![Stap twee van de planner-wizard: Disneyland Park in Anaheim is gekozen, elke dag in het maandrooster draagt de drukteverwachting, zaterdag de 19e is gemarkeerd. | Een september die in Anaheim de hele maand rustig voorspeld is. In zestig regels van een keuzelijst zie je dat niet.](/media/tagesplaner/planer-wizard-tag-nl.webp)
 

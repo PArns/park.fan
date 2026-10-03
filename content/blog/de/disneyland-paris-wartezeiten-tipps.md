@@ -260,7 +260,8 @@ Disneyland Paris hat ganzjährig geöffnet, jeden Tag. Die klassische
 Nebensaison-Frage, die bei saisonalen Parks über alles entscheidet, stellt sich
 hier nicht. Was den Andrang bestimmt, sind stattdessen die französischen
 Schulferien, die anders liegen als die deutschen und im Winter und Frühjahr nach
-drei Zonen gestaffelt sind, dazu die britischen Half-Term-Wochen.
+drei Zonen gestaffelt sind, dazu die britischen Half-Term-Wochen. Wie die saisonalen Parks Monat für Monat
+abschneiden, steht auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 Dazu kommen die Saisons. Vom 26. September bis zum 1. November läuft im
 Disneyland Park das Disney Halloween Festival. Was es dort gibt, steht in

@@ -111,7 +111,7 @@ droite de celle-ci, sans rien devant les pieds. 40 mètres de haut, 772 mètres
 de long, 100 km/h, cinq inversions, trois minutes de parcours, 1 060 visiteurs
 par heure.
 
-Voici la place du parc face à trois autres grands parcs allemands, calculée sur
+Voici la place du parc face à trois autres [grands parcs allemands](/blog/meilleurs-parcs-d-attractions-en-allemagne), calculée sur
 les données du jour :
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
@@ -319,7 +319,8 @@ tableau ci-dessus. Le lundi ne repose que sur environ la moitié des jours
 mesurés des autres, parce que le parc le retire régulièrement du calendrier au
 printemps et en septembre. Les lundis comptés tombent donc surtout en haute
 saison, et ceux-là n’ont rien de calme. Un lundi calme, à Soltau, est le plus
-souvent un lundi fermé.
+souvent un lundi fermé. Le jour le plus calme des autres parcs se trouve sur la
+[page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 ### Le mois
 
