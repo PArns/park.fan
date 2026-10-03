@@ -474,6 +474,9 @@
       "crowdScoreLabel": "Ø Andrang",
       "introSingle": "{country} hat {parkCount} Freizeitpark auf park.fan.",
       "introPlural": "{country} hat {parkCount} Freizeitparks auf park.fan in {cityCount} Städten."
+    },
+    "citySummary": {
+      "intro": "{city} hat {parkCount} Freizeitparks auf park.fan: {parks}."
     }
   },
   "navigation": {

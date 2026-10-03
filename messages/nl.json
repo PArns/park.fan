@@ -474,6 +474,9 @@
       "crowdScoreLabel": "gem. drukte",
       "introSingle": "{country} heeft {parkCount} pretpark op park.fan.",
       "introPlural": "{country} heeft {parkCount} pretparken op park.fan in {cityCount} steden."
+    },
+    "citySummary": {
+      "intro": "{city} heeft {parkCount} pretparken op park.fan: {parks}."
     }
   },
   "navigation": {
