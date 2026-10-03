@@ -1,5 +1,4 @@
 import { getMarkdownContent } from '@/lib/markdown';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { objectPositionForSrc } from '@/lib/media/focus';
@@ -9,11 +8,10 @@ import { buttonLinkProps } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getServerNowMs } from '@/lib/utils/server-time';
+import { FlipClockLazy } from '@/components/home/flip-clock-lazy';
 
-// Code-split the countdown: FlipClock pulls in framer-motion (~40 KB gzip), but it
-// only renders when an announcement with `countdownTo` is live. A dynamic import keeps
-// framer-motion out of the homepage's initial bundle until a countdown is actually shown.
-const FlipClock = dynamic(() => import('@/components/ui/flip-clock').then((m) => m.FlipClock));
+// The countdown loads framer-motion only when it renders; see `FlipClockLazy` for why the split
+// has to happen in a client module.
 
 interface AnnounceSectionProps {
   locale: string;
@@ -102,7 +100,7 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
         )}
 
         <div className="mb-12 flex justify-center">
-          <FlipClock targetDate={countdownTo} labels={labels} />
+          <FlipClockLazy targetDate={countdownTo} labels={labels} />
         </div>
 
         <div className="prose prose-invert dark:prose-invert prose-gray mx-auto max-w-4xl">

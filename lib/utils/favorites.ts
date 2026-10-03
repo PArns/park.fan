@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from 'cookies-next';
+import { readCookie, writeCookie } from '@/lib/utils/browser-cookie';
 import { getFavorites } from '@/lib/api/favorites';
 
 export type FavoriteType = 'park' | 'attraction' | 'show' | 'restaurant';
@@ -73,7 +73,7 @@ export function getFavoritesFromCookies(): FavoritesData {
   }
 
   try {
-    const cookieValue = getCookie(FAVORITES_COOKIE_NAME);
+    const cookieValue = readCookie(FAVORITES_COOKIE_NAME);
     if (!cookieValue) {
       parseCache = null;
       return defaultData;
@@ -117,7 +117,7 @@ function saveFavoritesToCookies(favorites: FavoritesData): void {
   }
 
   try {
-    setCookie(FAVORITES_COOKIE_NAME, JSON.stringify(favorites), {
+    writeCookie(FAVORITES_COOKIE_NAME, JSON.stringify(favorites), {
       maxAge: FAVORITES_COOKIE_MAX_AGE,
       path: '/',
       sameSite: 'lax',
