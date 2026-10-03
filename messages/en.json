@@ -2005,7 +2005,10 @@
         "launch": "Launch",
         "drop": "Track drops",
         "overhang": "Overhang",
-        "hangtime": "Hangtime"
+        "hangtime": "Hangtime",
+        "brake": "Braking",
+        "hold": "Held",
+        "release": "Released"
       }
     },
     "overviewMetaDescription": "Over {count} theme park terms explained in plain language: wait times, crowd levels, Lightning Lane, virtual queues, single rider and more.",

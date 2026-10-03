@@ -2005,7 +2005,10 @@
         "launch": "Lancering",
         "drop": "Spoor zakt",
         "overhang": "Overhang",
-        "hangtime": "Hangtime"
+        "hangtime": "Hangtime",
+        "brake": "Remt",
+        "hold": "Vastgehouden",
+        "release": "Vrijgegeven"
       }
     },
     "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",

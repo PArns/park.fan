@@ -2005,7 +2005,10 @@
         "launch": "Lanzamiento",
         "drop": "La vía cae",
         "overhang": "Voladizo",
-        "hangtime": "Hangtime"
+        "hangtime": "Hangtime",
+        "brake": "Frena",
+        "hold": "Retenido",
+        "release": "Liberado"
       }
     },
     "overviewMetaDescription": "Más de {count} términos de parques temáticos explicados con claridad: tiempos de espera, afluencia, Lightning Lane, colas virtuales y más.",
