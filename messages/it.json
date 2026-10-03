@@ -445,6 +445,11 @@
       "promptTitle": "Ti piace park.fan?",
       "promptText": "Rendici la tua fonte preferita su Google con un clic: i tempi di attesa e le guide di park.fan appariranno più in alto nei tuoi risultati di ricerca."
     },
+    "install": {
+      "label": "Installa park.fan come app",
+      "dismiss": "Nascondi il suggerimento di installazione",
+      "iosHint": "In Safari tocca il pulsante Condividi, poi «Aggiungi alla schermata Home»."
+    },
     "copyright": "© {year} park.fan. Tutti i diritti riservati.",
     "poweredBy": "Powered by",
     "legalLinks": "Note legali",
