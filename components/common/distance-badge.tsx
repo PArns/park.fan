@@ -7,9 +7,15 @@ interface DistanceBadgeProps {
   distance: number | string;
   size?: 'sm' | 'md';
   className?: string;
+  /**
+   * Draw the label through CSS (`content: attr(…)`) instead of as text. For the invisible copy
+   * that reserves the badge's width: same box, but no "20000 km away" in the document text that
+   * crawlers, snippets and text extractors read (SEO run, 2026-10-03).
+   */
+  sizer?: boolean;
 }
 
-export function DistanceBadge({ distance, size = 'sm', className }: DistanceBadgeProps) {
+export function DistanceBadge({ distance, size = 'sm', className, sizer }: DistanceBadgeProps) {
   const label = typeof distance === 'number' ? formatDistance(distance) : distance;
 
   return (
@@ -21,7 +27,11 @@ export function DistanceBadge({ distance, size = 'sm', className }: DistanceBadg
       )}
     >
       <Navigation className={cn(size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4')} />
-      <span className="font-medium">{label}</span>
+      {sizer ? (
+        <span className="font-medium before:content-[attr(data-label)]" data-label={label} />
+      ) : (
+        <span className="font-medium">{label}</span>
+      )}
     </div>
   );
 }

@@ -28,6 +28,10 @@ const SITE_URL = 'https://park.fan';
  */
 const ORG = {
   '@type': 'Organization',
+  // The `@id` of the Organization node every page emits (`ORGANIZATION_ID` in
+  // `components/seo/structured-data.tsx`), so a crawler reads the publisher of a post and the
+  // site's Organization as one entity instead of two that happen to share a name.
+  '@id': `${SITE_URL}/#organization`,
   name: 'park.fan',
   url: SITE_URL,
   logo: {
@@ -77,18 +81,18 @@ function sizeOf(size: { width: number; height: number }): { width: string; heigh
 }
 /**
  * Frontmatter dates are calendar days (`2026-09-23`) without a clock, written in Germany.
- * `NewsArticle` wants a timestamp with an offset, so a news date is read as local midnight
- * there. Berlin switches DST at 02:00, so `T00:00:00` always exists (see G-39 for the zones
+ * Google asks for a timestamp with an offset on every Article type, so a post date is read as
+ * local midnight there; a bare day is otherwise read in whatever zone the crawler assumes. Berlin switches DST at 02:00, so `T00:00:00` always exists (see G-39 for the zones
  * where it does not).
  */
-const NEWS_TIME_ZONE = 'Europe/Berlin';
+const POST_TIME_ZONE = 'Europe/Berlin';
 
 /** `2026-09-23` → `2026-09-23T00:00:00+02:00`. Anything that is not a bare day passes through. */
 function withZoneOffset(date: string): string {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
   return formatInTimeZone(
-    fromZonedTime(`${date}T00:00:00`, NEWS_TIME_ZONE),
-    NEWS_TIME_ZONE,
+    fromZonedTime(`${date}T00:00:00`, POST_TIME_ZONE),
+    POST_TIME_ZONE,
     "yyyy-MM-dd'T'HH:mm:ssXXX"
   );
 }
@@ -195,8 +199,8 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
     description: frontmatter.seo?.description ?? frontmatter.excerpt,
     url: canonical,
     inLanguage: locale,
-    datePublished: isNews ? withZoneOffset(datePublished) : datePublished,
-    dateModified: isNews ? withZoneOffset(dateModified) : dateModified,
+    datePublished: withZoneOffset(datePublished),
+    dateModified: withZoneOffset(dateModified),
     keywords:
       frontmatter.tags && frontmatter.tags.length > 0 ? frontmatter.tags.join(', ') : undefined,
     wordCount: post.content ? post.content.split(/\s+/).filter(Boolean).length : undefined,
@@ -204,6 +208,8 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
     articleSection: frontmatter.category,
     author: {
       '@type': 'Person',
+      // One node per registry author across every post and locale.
+      ...(author.key ? { '@id': `${SITE_URL}/#person-${author.key}` } : {}),
       name: author.name,
       ...((authorProfile ?? author.url) ? { url: authorProfile ?? author.url } : {}),
       ...(authorSameAs.length > 0 ? { sameAs: authorSameAs } : {}),
@@ -255,8 +261,8 @@ export function BlogStructuredData({
       '@type': 'BlogPosting',
       headline: p.frontmatter.title,
       url: `${SITE_URL}/${locale}${postPath(p)}`,
-      datePublished: p.frontmatter.date,
-      dateModified: p.frontmatter.updatedAt ?? p.frontmatter.date,
+      datePublished: withZoneOffset(p.frontmatter.date),
+      dateModified: withZoneOffset(p.frontmatter.updatedAt ?? p.frontmatter.date),
       // Real cover photo preferred; generated OG card as fallback so every listed
       // post carries an image when linked.
       image: resolvePostImage(locale, p.slug, p.frontmatter),

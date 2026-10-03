@@ -59,7 +59,7 @@ function DistanceReservation({
   return (
     <span className={cn('relative inline-flex items-center align-middle', className)}>
       <span aria-hidden="true" className="invisible">
-        <DistanceBadge distance={sample} size={size} />
+        <DistanceBadge distance={sample} size={size} sizer />
       </span>
       {children}
     </span>
