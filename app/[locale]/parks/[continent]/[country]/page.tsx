@@ -22,6 +22,9 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { CountrySummarySection } from '@/components/parks/country-summary-section';
+import { BlogPostCard } from '@/components/blog/blog-post-card';
+import { getGuideForCountry } from '@/lib/blog/country-guide';
+import type { Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
 
@@ -109,6 +112,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
   }
 
   const cities = response.data;
+  const countryGuide = getGuideForCountry(locale as Locale, country);
 
   // Calculate totals
   const totalParks = cities.reduce((sum, c) => sum + c.parkCount, 0);
@@ -162,6 +166,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
         {/* Country summary — top parks + best months */}
         {summary && (
           <CountrySummarySection summary={summary} countryName={countryName} locale={locale} />
+        )}
+
+        {/* The country's ranking guide, when one is configured and readable in this locale */}
+        {countryGuide && (
+          <div className="mb-8 max-w-md">
+            <BlogPostCard post={countryGuide} variant="compact" />
+          </div>
         )}
 
         {/* Cities with Parks */}
