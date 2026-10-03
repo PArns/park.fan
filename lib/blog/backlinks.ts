@@ -340,17 +340,31 @@ function entriesOfPost(translationKey: string): ManifestPostMeta[] {
 }
 
 /**
+ * The most `parkLinks` a guide can carry and still be ONE park's primer. The park guides list one
+ * or two (Toverland's names Efteling for the comparison, Europa-Park's its Traumatica event); the
+ * round-ups that do list parks list six or more (the Germany ranking seven, Halloween in the USA
+ * six), so they can be offered on each of those park pages without becoming any one park's guide.
+ */
+export const MAX_PRIMER_PARK_LINKS = 3;
+
+/**
  * The park a visit guide is the primer for: the FIRST entry of its `parkLinks`, or `null`.
  *
  * Only configuration decides. The round-up guides (Halloween, winter) name a dozen parks in their
  * tags and none in `parkLinks`, so every automatic signal would make them the "first visit guide"
  * of each one. A guide that lists a second park (Toverland's names Efteling for the comparison)
  * is the primer for the first only; the second still lists it among its posts.
+ *
+ * A round-up that does list its parks in `parkLinks` (more than {@link MAX_PRIMER_PARK_LINKS}) is
+ * nobody's primer either. The Germany ranking lists Europa-Park first because it ranks first, and
+ * from the day it shipped the Europa-Park page opened with the ranking instead of the Europa-Park
+ * guide (SEO run, 2026-10-03; `pnpm test:park-guide` caught it).
  */
 function guidePrimaryPark(translationKey: string): ManifestParkRef | null {
   for (const entry of entriesOfPost(translationKey)) {
     const links = entry.frontmatter.parkLinks;
     if (!Array.isArray(links)) continue;
+    if (links.length > MAX_PRIMER_PARK_LINKS) return null;
     const first = links.map((value) => parseConfigured(String(value), 'park')).find(Boolean);
     if (first) return first;
   }
