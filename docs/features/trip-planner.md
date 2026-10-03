@@ -1043,6 +1043,24 @@ the day: the cap beat the lower bound the function exists to impose, so at 17:58
 in a park shutting at 18:00 it answered **17:45** and "plan every headliner"
 filed a forty-minute queue thirteen minutes before the press.
 
+### A ride takes five minutes, and that is an assumption (PAR-12)
+
+`RIDE_DURATION_MIN` (`lib/planner/day-grid.ts`, next to `CLOSE_SLACK_MIN`) is one static figure for
+every ride. The owner decided on 2026-09-10 against a table per ride type and against curated
+values: `PlanDayRide` carries no duration, and the curated `durationSeconds` covers 22 of 173 rides
+across three sampled parks, with a median of 117 s.
+
+It is spent in two places and drawn in none. `transferBetween` (`lib/planner/leg.ts`) counts it
+inside the transfer, so the search's clock, the leg chip's verdict and `fits = start < closeMin` read
+the same minutes; it was a private 3 there (`RIDE_FALLBACK_MIN`) and the ride before the last stop
+was the only one nobody counted. `endMinute` (`scoreCurrent` and the search) adds it once for the last
+stop, which has no transfer after it. A block's height stays the queue. The chip's title already
+says the transfer is estimated (`transfer.allowance`), so no new string asserts it as measured.
+
+Effect: every transfer is 2 minutes longer (floor 8 → 10, ceiling 9 → 11 on the worked example), so a
+day that fitted by under two minutes per leg can stop fitting, and the fit assistant names it like any
+other cause. `pnpm test:planner-leg` and `pnpm test:planner-optimize` carry the new figures.
+
 ### Early entry is the open-side twin, and it moves only the headliners (PAR-199)
 
 `DayGrid.earlyEntryOpenMin` is the minute the early-entry rides open, below

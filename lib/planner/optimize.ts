@@ -1,6 +1,6 @@
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
-import { type DayGrid, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
+import { type DayGrid, RIDE_DURATION_MIN, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
 import { estimateFor, plannedMinutes } from './estimate';
 import { transferBetween } from './leg';
 import { partyFlags } from './party';
@@ -1237,7 +1237,9 @@ function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
           overflowHeadliners: state.overflowHeadliners + tier.overflowHeadliners,
           dropWeight: state.dropWeight + tier.dropWeight,
           freeAt: placement.freeAt,
-          endMinute: placement.fits ? Math.max(state.endMinute, placement.freeAt) : state.endMinute,
+          endMinute: placement.fits
+            ? Math.max(state.endMinute, placement.freeAt + RIDE_DURATION_MIN)
+            : state.endMinute,
         });
       }
     }
@@ -2009,7 +2011,7 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
     }
     // The same rule the scheduler uses: a block the visitor dragged into the
     // night is not when their day ends, it is the thing being fixed.
-    if (fits) endMinute = Math.max(endMinute, freeAt);
+    if (fits) endMinute = Math.max(endMinute, freeAt + RIDE_DURATION_MIN);
     freeBefore = freeAt;
     previous = ride;
     stops.push({

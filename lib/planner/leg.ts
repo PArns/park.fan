@@ -1,5 +1,5 @@
 import { calculateDistance } from '@/lib/utils/distance-utils';
-import { SNAP_MIN_FINE } from './day-grid';
+import { RIDE_DURATION_MIN, SNAP_MIN_FINE } from './day-grid';
 import type { PlanDayRide } from '@/lib/api/types';
 
 /**
@@ -22,13 +22,6 @@ import type { PlanDayRide } from '@/lib/api/types';
 
 /** Out of the station, through the shop, onto the path. A judgement, not a measurement. */
 export const EXIT_MIN = 3;
-
-/**
- * Boarding plus the ride where no duration is known — which is 95 % of the
- * catalogue. A judgement, not a measurement; it is an allowance named as one in
- * the chip's title and it is never drawn as a height.
- */
-export const RIDE_FALLBACK_MIN = 3;
 
 /** A brisk walker, metres per minute. Used ONLY for the floor: a lower bound divided by a typical pace is not a lower bound. */
 export const WALK_FAST_M_PER_MIN = 100;
@@ -123,7 +116,7 @@ export function transferBetween(
   const rideMin =
     typeof rideSeconds === 'number' && rideSeconds > 0
       ? Math.ceil(rideSeconds / 60)
-      : RIDE_FALLBACK_MIN;
+      : RIDE_DURATION_MIN;
 
   // No coordinates → the floor's walk term is ZERO, so a guess can never produce
   // the one verdict that calls a plan impossible.

@@ -28,7 +28,7 @@
  *     BENCH=1 pnpm test:planner-optimize   # plus the timing table for §16
  */
 
-import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
+import { RIDE_DURATION_MIN, buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
 import { occupiedMinutes, plannedMinutes } from '../lib/planner/estimate.ts';
 import { transferBetween } from '../lib/planner/leg.ts';
 import { applyPlan } from '../lib/planner/actions.ts';
@@ -1701,11 +1701,14 @@ function benchInput(n) {
     `${found.totalWaitMinutes} gegen ${sumOfPlanned} über ${found.stops.length} Stopps`
   );
   check(
-    'und der Feierabend ist der der geplanten Bahnen',
+    'und der Feierabend ist der der geplanten Bahnen, die letzte Fahrt eingerechnet',
     found.endMinute ===
       Math.max(
         ...found.stops.map(
-          (s) => s.startMinute + plannedSpanOf(payload, s.attractionSlug, s.startMinute)
+          (s) =>
+            s.startMinute +
+            plannedSpanOf(payload, s.attractionSlug, s.startMinute) +
+            RIDE_DURATION_MIN
         )
       ),
     `Feierabend ${found.endMinute}`
