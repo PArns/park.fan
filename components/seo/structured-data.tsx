@@ -593,8 +593,12 @@ export function AttractionStructuredData({
   locale,
   ogImageUrl,
 }: {
-  /** Name and slug are all this reads — a closed ride passes its detail response's pair. */
-  attraction: Pick<ParkAttraction, 'name' | 'slug'>;
+  /**
+   * Name and slug, plus the ride's own coordinates when the caller has them. A closed ride passes
+   * its detail response's pair only.
+   */
+  attraction: Pick<ParkAttraction, 'name' | 'slug'> &
+    Partial<Pick<ParkAttraction, 'latitude' | 'longitude'>>;
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
@@ -604,19 +608,30 @@ export function AttractionStructuredData({
 }) {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
+  // The park page lists this ride in `containsPlace` under `@id: <ride URL>` and states itself as
+  // `@id: <park URL>`. Both ids here, so the two pages describe one ride inside one park instead
+  // of a second, unconnected ride next to an anonymous park (SEO run, 2026-10-03).
+  const parkUrl = url.split('/').slice(0, -1).join('/');
+  const { latitude, longitude } = attraction;
   const data: WithContext<TouristAttraction> = {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
+    '@id': url,
     name: attractionName,
     url: url,
     ...(locale && { inLanguage: locale }),
     description:
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
     image: buildStructuredImage(getAttractionImageSet(park.slug, attraction.slug), ogImageUrl),
+    ...(latitude != null &&
+      longitude != null && {
+        geo: { '@type': 'GeoCoordinates', latitude, longitude },
+      }),
     containedInPlace: {
       '@type': 'AmusementPark',
+      '@id': parkUrl,
       name: parkName,
-      url: url.split('/').slice(0, -1).join('/'), // Remove attraction slug to get park URL
+      url: parkUrl,
     },
     address:
       park.city || park.country

@@ -4,6 +4,7 @@ import { AtSign, Briefcase, Camera, Code2, Globe, MapPin } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { GlassCard } from '@/components/common/glass-card';
 import type { ResolvedAuthor } from '@/lib/blog/authors';
+import { avatarUrl } from '@/lib/utils/image-loader';
 
 const LINK_META: Record<
   keyof NonNullable<ResolvedAuthor['links']>,
@@ -27,7 +28,7 @@ export function BlogAuthorProfile({ author }: { author: ResolvedAuthor }) {
     <GlassCard variant="light" className="not-prose p-6 sm:p-8">
       <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
         <Avatar className="size-20 sm:size-24">
-          {author.avatar && <AvatarImage src={author.avatar} alt={author.name} />}
+          {author.avatar && <AvatarImage src={avatarUrl(author.avatar, 256)} alt={author.name} />}
           <AvatarFallback className="bg-primary/15 text-primary text-2xl font-semibold">
             {author.name.charAt(0).toUpperCase()}
           </AvatarFallback>

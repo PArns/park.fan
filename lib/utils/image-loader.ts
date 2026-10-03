@@ -66,3 +66,14 @@ export function backgroundPhotoUrl(src: string): string {
   if (src.startsWith('data:') || src.startsWith('blob:') || !src.startsWith('/')) return src;
   return backgroundImageLoader({ src, width: 828 });
 }
+
+/**
+ * The optimizer URL for a small square image drawn through a component that takes a plain `src`
+ * (the Radix `AvatarImage`). The author photo is a 76 KB WebP drawn at 36 px in the post banner
+ * and at 96 px on the author profile; it went out unoptimized on every post (SEO run,
+ * 2026-10-03). `width` must be one of `images.imageSizes` in next.config, q75 one of `qualities`.
+ */
+export function avatarUrl(src: string, width: 96 | 256): string {
+  if (src.startsWith('data:') || src.startsWith('blob:') || !src.startsWith('/')) return src;
+  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+}

@@ -11,6 +11,7 @@ import { PhotoCredit } from '@/components/media/photo-credit';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
+import { avatarUrl } from '@/lib/utils/image-loader';
 
 interface BlogPostBannerProps {
   post: BlogPost;
@@ -50,7 +51,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
   const authorInner = (
     <>
       <Avatar className="ring-border size-9 ring-2">
-        {author.avatar && <AvatarImage src={author.avatar} alt={author.name} />}
+        {author.avatar && <AvatarImage src={avatarUrl(author.avatar, 96)} alt={author.name} />}
         <AvatarFallback className="bg-primary/15 text-primary text-sm font-semibold">
           {author.name.charAt(0).toUpperCase()}
         </AvatarFallback>
