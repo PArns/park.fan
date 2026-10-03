@@ -474,6 +474,9 @@
       "crowdScoreLabel": "affluenza media",
       "introSingle": "{country} ha {parkCount} parco a tema su park.fan.",
       "introPlural": "{country} ha {parkCount} parchi a tema su park.fan in {cityCount} città."
+    },
+    "citySummary": {
+      "intro": "{city} ha {parkCount} parchi a tema su park.fan: {parks}."
     }
   },
   "navigation": {

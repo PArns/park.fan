@@ -474,6 +474,9 @@
       "crowdScoreLabel": "avg. crowd",
       "introSingle": "{country} has {parkCount} theme park tracked on park.fan.",
       "introPlural": "{country} has {parkCount} theme parks tracked on park.fan across {cityCount} cities."
+    },
+    "citySummary": {
+      "intro": "{city} has {parkCount} theme parks on park.fan: {parks}."
     }
   },
   "navigation": {
