@@ -101,6 +101,23 @@ export const POST_PAD_MIN = 30;
 export const CLOSE_SLACK_MIN = 60;
 
 /**
+ * How long one ride takes, boarding to the platform, for every ride alike.
+ *
+ * An ASSUMPTION, not a measurement (PAR-12, decided by the owner on
+ * 2026-09-10): one static figure, no table per ride type and no curated
+ * values. `PlanDayRide` carries no duration and the curated `durationSeconds`
+ * covers 22 of 173 rides across three sampled parks, so a per-ride figure would
+ * be a different number for one ride in eight and the same guess for the rest.
+ *
+ * It is spent in one place, the transfer between two stops (`transferBetween`
+ * in `leg.ts`), so the optimiser's clock, the leg chip's verdict and the
+ * `fits = start < closeMin` rule all read the same minutes. The end of the day
+ * adds it once more for the last stop, which has no transfer after it. It is
+ * never drawn: a block's height stays the queue.
+ */
+export const RIDE_DURATION_MIN = 5;
+
+/**
  * The quarter hour this app's own arithmetic sits on. 18 px here.
  *
  * Every start the app FILES lands on it: `nowFloor`, `rideFloor`, the optimiser's

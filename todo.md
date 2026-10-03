@@ -694,7 +694,7 @@ feature.
 
 **Ride duration is not in the block's height**, and that is a decision rather than an
 omission: the curated `durationSeconds` covers 22 of 173 rides across three parks and its
-median is 117 seconds — 2.3 px at 1.2 px/min. It lives in the leg's arithmetic instead.
+median is 117 seconds — 2.3 px at 1.2 px/min. It lives in the leg's arithmetic instead, as `RIDE_DURATION_MIN`: a flat 5 minutes per ride.
 
 ### 3.1 Data model
 
@@ -1043,9 +1043,10 @@ handled.
 
 ## 6. Open questions
 
-- [ ] Ride duration does not exist in the data. Without it a plan cannot say when you
-      are back out of the queue. Estimate per ride type from the glossary profile,
-      curate the headliners by hand, or leave it out and plan queue-to-queue?
+- [x] ~~Ride duration does not exist in the data.~~ — decided 2026-09-10: one static
+      `RIDE_DURATION_MIN` (5 minutes, an assumption), no per-type table, no curation. Spent in the
+      transfer between stops and once more at the end of the day, never drawn as a height. See
+      `docs/features/trip-planner.md`, "A ride takes five minutes".
 - [x] ~~How far ahead are showtimes genuinely known?~~ — answered by §2.5's frontend
       evidence: `/plan/day` marks each show line with a `source` (the operator's own
       listing vs. a projected "last matching weekday carried forward"), so the answer
