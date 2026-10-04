@@ -371,6 +371,10 @@ angefangen haben. Wer frei hat, wann er will, fährt im September. Die Brückent
 Himmelfahrt und Fronleichnam sind dagegen voll, in unseren Daten für den Europa-Park auch dann,
 wenn es regnet.
 
+In fünf der sechs gemessenen Parks war ein Werktag in den Ferien des eigenen Bundeslandes voller
+als ein durchschnittlicher Wochenendtag. Welche Bundesländer welchen Park füllen, steht im
+[Guide zu Schulferien und Andrang](/blog/schulferien-freizeitparks-deutschland).
+
 Den Kalender mit der Prognose für die nächsten Tage gibt es für jeden Park, hier den des
 Europa-Parks:
 

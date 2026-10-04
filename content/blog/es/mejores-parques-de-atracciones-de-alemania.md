@@ -384,6 +384,10 @@ han terminado y las de otoño todavía no han empezado. Si puedes elegir libreme
 septiembre. Los puentes de la Ascensión y del Corpus, en cambio, van llenos, y en nuestros datos del
 Europa-Park también cuando llueve.
 
+En cinco de los seis parques medidos, un día laborable dentro de las vacaciones escolares del
+propio estado estuvo más lleno que un día medio de fin de semana. Qué estados llenan qué parque
+está en la [guía de vacaciones escolares y afluencia](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
+
 El calendario con la previsión de los próximos días existe para cada parque, aquí el del
 Europa-Park:
 

@@ -369,6 +369,10 @@ omdat de zomervakantie in de meeste deelstaten voorbij is en de herfstvakantie n
 Wie vrij kan nemen wanneer hij wil, gaat in september. De brugdagen na Hemelvaart en Sacramentsdag
 (Fronleichnam) zijn daarentegen druk, in onze gegevens voor Europa-Park ook als het regent.
 
+In vijf van de zes gemeten parken was een werkdag in de schoolvakantie van de eigen deelstaat
+drukker dan een gemiddelde weekenddag. Welke deelstaten welk park vullen, staat in de
+[gids over schoolvakanties en drukte](/blog/schoolvakanties-pretparken-duitsland).
+
 De kalender met de prognose voor de komende dagen bestaat voor elk park, hier die van
 Europa-Park:
 
