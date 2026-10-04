@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { ParkCard } from '@/components/parks/park-card';
+import { FavoriteParkQuietestDay } from '@/components/parks/favorite-park-quietest-day';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
@@ -22,6 +23,9 @@ import { Star } from 'lucide-react';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
+
+/** A park row on `/favorites`: the card's 200 px plus the quietest-day line's 28 px. */
+const PARK_ROW_WITH_LINE_PX = 228;
 
 /**
  * `standalone` is what `/favorites` passes: there the band is the page's whole content, so the
@@ -221,32 +225,58 @@ export function FavoritesSection({
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
                 <LazyMount
-                  grid={{ count: sortedFavorites.parks.length, rowHeight: 200, headerHeight: 64 }}
+                  grid={{
+                    count: sortedFavorites.parks.length,
+                    rowHeight: standalone ? PARK_ROW_WITH_LINE_PX : 200,
+                    headerHeight: 64,
+                  }}
                 >
-                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                    {sortedFavorites.parks.map((park) => (
-                      <ParkCard
-                        key={park.id}
-                        id={park.id}
-                        slug={park.slug}
-                        name={stripNewPrefix(park.name)}
-                        city={park.city}
-                        country={park.country}
-                        distance={park.distance || 0}
-                        status={park.status as import('@/lib/api/types').ParkStatus}
-                        timezone={park.timezone}
-                        totalAttractions={park.totalAttractions}
-                        operatingAttractions={park.operatingAttractions}
-                        analytics={park.analytics}
-                        todaySchedule={park.todaySchedule}
-                        nextSchedule={park.nextSchedule}
-                        backgroundImage={park.backgroundImage}
-                        objectPosition={park.backgroundPosition}
-                        url={park.url}
-                        hasOperatingSchedule={park.hasOperatingSchedule}
-                        translateCountry
-                      />
-                    ))}
+                  <div
+                    className={cn(
+                      'grid gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3',
+                      // `/favorites` adds a fourth row per park for the quietest-day line.
+                      standalone
+                        ? '[grid-auto-rows:auto_1fr_auto_auto]'
+                        : '[grid-auto-rows:auto_1fr_auto]'
+                    )}
+                  >
+                    {sortedFavorites.parks.map((park) => {
+                      const card = (
+                        <ParkCard
+                          key={park.id}
+                          id={park.id}
+                          slug={park.slug}
+                          name={stripNewPrefix(park.name)}
+                          city={park.city}
+                          country={park.country}
+                          distance={park.distance || 0}
+                          status={park.status as import('@/lib/api/types').ParkStatus}
+                          timezone={park.timezone}
+                          totalAttractions={park.totalAttractions}
+                          operatingAttractions={park.operatingAttractions}
+                          analytics={park.analytics}
+                          todaySchedule={park.todaySchedule}
+                          nextSchedule={park.nextSchedule}
+                          backgroundImage={park.backgroundImage}
+                          objectPosition={park.backgroundPosition}
+                          url={park.url}
+                          hasOperatingSchedule={park.hasOperatingSchedule}
+                          translateCountry
+                        />
+                      );
+                      return standalone ? (
+                        <div key={park.id} className="row-span-4 grid [grid-template-rows:subgrid]">
+                          {card}
+                          <FavoriteParkQuietestDay
+                            slug={park.slug}
+                            url={park.url}
+                            timezone={park.timezone}
+                          />
+                        </div>
+                      ) : (
+                        card
+                      );
+                    })}
                   </div>
                 </LazyMount>
               </div>

@@ -1855,6 +1855,8 @@
     "opensIn": "Öffnet in",
     "closesIn": "Schließt in",
     "opensOn": "Öffnet am",
+    "quietestDay": "Ruhigster Tag: {date}",
+    "quietestDayTitle": "Niedrigster prognostizierter Andrang in den nächsten 14 Tagen, geschlossene Tage nicht mitgezählt",
     "howTo": {
       "findTitle": "Park oder Attraktion suchen",
       "findText": "Über die Suche oder über „Parks entdecken“.",

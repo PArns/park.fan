@@ -1855,6 +1855,8 @@
     "opensIn": "Opent over",
     "closesIn": "Sluit over",
     "opensOn": "Opent op",
+    "quietestDay": "Rustigste dag: {date}",
+    "quietestDayTitle": "Laagste verwachte drukte in de komende 14 dagen, gesloten dagen niet meegeteld",
     "howTo": {
       "findTitle": "Zoek een park of attractie",
       "findText": "Via de zoekbalk of via “Ontdek Parken”.",
