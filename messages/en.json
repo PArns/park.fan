@@ -2447,6 +2447,7 @@
     },
     "custom": {
       "add": "Own block",
+      "addShow": "Add a show",
       "defaultLabel": "Break",
       "label": "Label",
       "duration": "{minutes} min",
@@ -2809,7 +2810,7 @@
     },
     "fancast": {
       "kicker": "park.fan · forecasting model",
-      "tagline": "It reads millions of live wait times to predict how busy a park will be on every day it has published, and grades itself in public.",
+      "tagline": "It reads millions of live wait times to predict how busy a park will be on every day it has published. The next day, every forecast is checked against the measured wait, and the average error in minutes is published on this page.",
       "stats": {
         "avgError": "min avg error",
         "parks": "parks",

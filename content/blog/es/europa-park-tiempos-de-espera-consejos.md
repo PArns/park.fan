@@ -2,15 +2,15 @@
 title: 'Europa-Park: el parque más grande de Alemania, y dónde se mete la gente'
 translationKey: europa-park-guide
 date: '2026-08-21'
+updatedAt: '2026-10-04'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Ningún parque de Alemania vende más entradas, y aun así en Rust haces menos
-  cola que en el Phantasialand. Por qué el día más tranquilo es justamente el
-  domingo, por qué noviembre es de quien puede vivir sin atracciones
-  acuáticas, y por qué deberías montar en la Euro-Mir ahora o no montarte
-  nunca.
+  cola que en el Phantasialand. Cuándo está más vacío el parque, qué
+  vacaciones suizas y alsacianas lo llenan, y por qué deberías montar en la
+  Euro-Mir ahora o no montarte nunca.
 tags:
   - europa-park
   - voltron
@@ -35,10 +35,10 @@ coverImage:
   caption: 'Voltron Nevera en la zona temática croata. Siete elementos invertidos y el lanzamiento más empinado del mundo.'
   credit: 'park.fan'
 seo:
-  title: 'Europa-Park: colas cortas en el parque más lleno'
+  title: 'Tiempos de espera: ¿cuándo está más vacío el Europa-Park?'
   description: >-
-    Tiempos de espera del Europa-Park medidos por nosotros: el domingo es el día
-    más tranquilo y el sábado lo pagas en cada cola. Mejor época y precios 2026.
+    El Europa-Park está más vacío los domingos y jueves de mayo y junio, fuera de
+    las vacaciones escolares de Baden-Wurtemberg, Suiza y Alsacia.
   keywords:
     - tiempos de espera Europa-Park
     - tiempos de espera Europa-Park hoy
@@ -46,6 +46,7 @@ seo:
     - montañas rusas Europa-Park
     - consejos Europa-Park
     - Europa-Park cuándo hay menos gente
+    - cuándo está más vacío el Europa-Park
     - Europa-Park mejor época para visitar
     - Europa-Park fast pass
     - Europa-Park single rider
@@ -566,10 +567,19 @@ Si de todos modos le estás dando vueltas a ir en 2026, no lo dejes para 2027.
 Hasta el evento de despedida del 9 de enero de 2027 ya no llega ningún verano
 más, solo vino caliente.
 
-## Mejor época para visitar: cuándo hay menos gente en el Europa-Park
+## Cuándo está más vacío el Europa-Park
 
-En el día de la semana, el Europa-Park va por libre, comparado con [todo lo demás
-que registro](/mejor-epoca-para-visitar).
+El Europa-Park está más vacío un domingo o un jueves de mayo o junio, en una
+semana sin vacaciones escolares en Baden-Wurtemberg, Basilea, Argovia, Alsacia,
+Baviera, Hesse ni Renania-Palatinado. Evita el sábado, la semana después de
+Semana Santa, las vacaciones de verano de finales de junio a mediados de agosto
+y los días entre Navidad y Año Nuevo.
+
+Lo conté el 4 de octubre de 2026 en nuestro calendario, que registra para cada
+día de apertura desde el 26 de diciembre de 2025 la afluencia medida, de «muy
+bajo» a «muy alto», junto con las vacaciones escolares de esas ocho regiones.
+Las cifras de abajo se refieren a la temporada de verano, de abril a septiembre
+de 2026: 183 días.
 
 ### El día de la semana
 
@@ -577,11 +587,17 @@ que registro](/mejor-epoca-para-visitar).
 
 ```
 
-Los domingos es cuando menos gente hay en Rust, menos que cualquier día
-laborable y bastante menos que el sábado. En el
-[Phantasialand](ref:phantasialand?bare) los cinco días laborables van
-empatados y el domingo es, después del sábado, el más lleno; en el
-[Efteling](ref:efteling?bare) el más tranquilo es el jueves. Más detalles en la
+El sábado es, con diferencia, el día más lleno. De abril a septiembre no hubo en
+nuestro calendario ni un solo sábado en «bajo», y 18 de 26 estuvieron en «alto»
+o «muy alto». En el otro extremo, domingo, lunes y jueves van empatados en la
+tabla. Aun así, dejo el lunes fuera de mi consejo: tuvo nueve días en «alto», el
+domingo seis, y once domingos se quedaron en «bajo».
+
+Con eso el Europa-Park va por libre, comparado con [todo lo demás que
+registro](/mejor-epoca-para-visitar). En el
+[Phantasialand](ref:phantasialand?bare) el domingo es, después del sábado, el
+día más lleno; en el [Efteling](ref:efteling?bare), de martes a viernes se
+queda por debajo del fin de semana. Más detalles en la
 [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) y en la
 [guía del Efteling](/blog/efteling-el-disney-de-los-paises-bajos).
 
@@ -597,13 +613,75 @@ Un parque así vive de la escapada de fin de semana. El sábado la gente llega, 
 domingo se vuelve a casa después del desayuno, y muchos ya ni entran al parque,
 porque el coche ya está cargado.
 
-Por eso el calendario escolar alemán, por sí solo, tampoco sirve como base de
-planificación para Rust. Para este parque, en nuestro calendario tenemos en
-cuenta además las vacaciones de la región francesa de Grand Est, es decir, de
-Alsacia, las de los cantones suizos de Argovia, Basilea-Ciudad y Basilea-Campiña
-y las de los estados federados vecinos de Baviera, Hesse y Renania-Palatinado.
-Quien mira solo Baden-Wurtemberg acaba tarde o temprano sorprendiéndose ante un
-martes lleno.
+### El mes
+
+```stats-widget slug=europa-park show=months
+
+```
+
+El bloque de abril a septiembre es el fiable. Dentro de él, mayo y junio son los
+meses más tranquilos y agosto el más lleno, y eso cuadra con las vacaciones: en
+mayo y junio, de las ocho regiones solo Baden-Wurtemberg y Baviera tienen
+vacaciones, las de Pentecostés, y en agosto casi todas. Las semanas más
+tranquilas de 2026 cayeron entre el final de las vacaciones de Pentecostés y el
+comienzo de las de verano en Basilea, Hesse y Renania-Palatinado. Del 8 al 26
+de junio, once de quince días laborables estuvieron en «bajo».
+
+Enero, febrero y marzo no forman parte de la temporada. La temporada de invierno
+2025/26 terminó en enero, la de verano de 2026 empezó el 28 de marzo, y en
+febrero el parque estuvo cerrado. Lo que la tabla recoge para esos tres meses
+no sirve para compararlo con el verano. Diciembre, de momento, solo contiene los
+días entre Navidad y Nochevieja de 2025, la semana más llena del invierno.
+
+En 2027 se arranca antes: del 7 al 19 de marzo el parque abre por primera vez
+dos Pre-Opening Weeks, todavía no con todas las atracciones y espectáculos, pero
+con las entradas más baratas del año, y la temporada de verano empieza luego el
+20 de marzo. De octubre solo están en la tabla los primeros días, de noviembre
+ninguno. Hasta dónde han entrado ya Halloween y HALLOWinter lo ves en el número
+de días medidos.
+
+### Qué vacaciones llenan el parque
+
+Para Rust no basta con el calendario escolar de Baden-Wurtemberg. Para este
+parque, nuestro calendario tiene en cuenta además las vacaciones de la región
+francesa de Grand Est, es decir, de Alsacia, las de los cantones suizos de
+Argovia, Basilea-Ciudad y Basilea-Campiña y las de los estados federados vecinos
+de Baviera, Hesse y Renania-Palatinado.
+
+Cuánto pesa eso se ve en los días laborables. Entre abril y septiembre hubo 42
+días laborables sin vacaciones escolares en ninguna de las ocho regiones y sin
+festivo. Cuatro estuvieron en «alto» o más, 27 en «bajo». De los días
+laborables de las vacaciones de Argovia, 17 de 27 estuvieron en «alto», y ni uno
+solo en «bajo».
+
+Se llena cuando las vacaciones se amontonan. En la semana después de Semana
+Santa, Baden-Wurtemberg, Baviera, Hesse, Renania-Palatinado, Basilea y Argovia
+tenían vacaciones a la vez, y tres de los cuatro días laborables estuvieron en
+«alto». Basilea, Hesse y
+Renania-Palatinado empiezan a la vez las vacaciones de verano a finales de
+junio, y del 29 de junio al 3 de julio todos los días laborables estuvieron en
+«alto». Del 20 de julio, cuando se sumó Argovia, al 12 de agosto fueron 15 de 18. En la primera semana de agosto las ocho regiones tenían vacaciones a la vez,
+y los cinco días laborables estuvieron en «alto».
+
+Las vacaciones de una sola región, en cambio, llenan poco el
+parque. Baden-Wurtemberg y Baviera tuvieron en 2026 las vacaciones de Pentecostés
+a la vez, y de los nueve días laborables cinco estuvieron en «bajo». Solo el
+viernes puente después del Corpus Christi llegó a «alto».
+Adónde se va Baden-Wurtemberg en Pentecostés, no lo sé. Al Europa-Park, todos a
+la vez, no.
+
+En otoño las regiones se van turnando. En 2026, Basilea y Argovia tienen
+vacaciones de otoño desde finales de septiembre, Hesse y Renania-Palatinado en
+la primera quincena de octubre, Alsacia de mediados de octubre a Todos los
+Santos, Baden-Wurtemberg la última semana de octubre y Baviera la primera de
+noviembre. Entre finales de septiembre y el 6 de noviembre no hay ni una semana
+sin vacaciones escolares en alguna de las ocho regiones. De todo eso solo hemos
+medido el principio. El viernes 2 de octubre estuvo en «alto», y el sábado
+siguiente, Día de la Unidad Alemana, en «muy alto».
+
+Entre Navidad y Año Nuevo casi todas las ocho regiones tenían vacaciones a la
+vez, y del 26 de diciembre de 2025 al 4 de enero de 2026 siete de diez días
+estuvieron en «alto» o «muy alto».
 
 ### El viernes puente
 
@@ -628,28 +706,6 @@ https://www.youtube.com/watch?v=aRH5xvAKE_I
 Los dos son del auténtico [Parkfan95](https://parkfan95.de), o sea de Silas. Él
 tiene el nombre; yo solo compré antes el dominio, por casualidad.
 
-### El mes
-
-```stats-widget slug=europa-park show=months
-
-```
-
-Cuidado con enero, marzo y diciembre. Detrás hay solo entre tres y seis días de
-medición, y la tabla lo indica; diciembre se compone únicamente de los días entre
-Navidad y Nochevieja de 2025, la semana más llena del invierno. El orden de magnitud es
-correcto, pero yo no me jugaría el minuto exacto. Sólido es el bloque de abril a
-septiembre, y en él mayo y junio son los meses de verano más tranquilos y agosto
-el más lleno.
-
-Febrero falta porque el parque está cerrado, y marzo va escaso porque la
-temporada 2026 no empezó hasta el 28 de marzo. En 2027 se arranca antes: del 7
-al 19 de marzo el parque abre por primera vez dos Pre-Opening Weeks, todavía no
-con todas las atracciones y espectáculos, pero con las entradas más baratas del
-año, y la temporada de verano empieza luego el 20 de marzo. Cuando revisamos los
-datos por última vez, en septiembre de 2026, octubre y noviembre no tenían
-todavía ni un solo día de medición. Si la tabla ya tiene datos de Halloween y
-HALLOWinter, lo verás en el número de días medidos que aparece al lado.
-
 ### Las cuatro semanas que casi nadie conoce
 
 El parque encadena cuatro temporadas:
@@ -670,9 +726,11 @@ de transformación pueden cerrar alguna que otra zona. Casi nadie planifica su
 visita al parque para principios de noviembre; por esas fechas uno anda más bien
 buscando los guantes del invierno pasado.
 
-En nuestra previsión de afluencia, **la mayoría de
-los días laborables de las semanas de HALLOWinter están en «bajo»**, y donde más
-se llena es en sábado.
+De las ocho regiones, solo Baviera tiene vacaciones escolares en estas semanas,
+la primera de noviembre. Por todo lo que medimos de abril a septiembre, es el
+punto de partida para días laborables tranquilos. Aun así, el 4 de octubre
+nuestra previsión ponía muchos de esos días en «alto», y un noviembre en Rust
+todavía no lo hemos medido.
 
 ```best-days-widget slug=europa-park
 
@@ -680,10 +738,9 @@ se llena es en sábado.
 
 Gratis no sale. El parque no abre hasta las 11 h y cierra como pronto a las
 19 h, una hora menos que en verano, oscurece pronto y con las acuáticas no se
-puede contar. Si Poseidon y Atlantica te dan igual y quieres montar en Voltron
-un día que nuestra previsión pone en «bajo», ve un día entre semana de
-noviembre. Un noviembre en Rust no lo hemos medido todavía, eso sí; es una
-previsión. Qué día pinta mejor ahora mismo está en el calendario de arriba.
+puede contar. Si Poseidon y Atlantica te dan igual, un día entre semana de
+noviembre merece el intento. Qué días pintan más tranquilos ahora mismo está en
+el calendario de arriba.
 
 ## El día perfecto en el Europa-Park
 
@@ -763,21 +820,13 @@ existe, y el pico del día no puede llegar antes de las once.
 ## Cómo tirar el tiempo en el Europa-Park
 
 **Reservar el sábado porque el hotel tiene sitio el sábado.** El sábado es el día
-más lleno de la semana y el domingo el más tranquilo, y la diferencia la pagas en
+más lleno de la semana y el domingo uno de los más tranquilos, y la diferencia la pagas en
 cada cola. Con diez atracciones en un día, diez veces. Si de todos modos te quedas dos noches, dale la vuelta al orden:
 llegar el sábado, ver Rulantica o el pueblo, y el domingo al parque.
 
-**Mirar solo las vacaciones escolares alemanas.** Buena parte del público no viene
-de Alemania. Un día de finales de octubre puede ser un día lectivo normal en
-Baden-Wurtemberg y aun así llenarse, porque en Francia están las vacaciones de
-Todos los Santos o en Basilea-Ciudad las de otoño. Para este parque, en nuestro
-calendario tenemos en cuenta las vacaciones de Alsacia y de tres cantones
-suizos; en el calendario de vacaciones de un solo estado federado no aparecen.
-
 **Tomar el martes por un día laborable tranquilo.** En nuestros datos es el día
 laborable más lleno, aunque por poco. Si de todas formas solo te encaja un día
-entre semana, coge el viernes, el que más se acerca al domingo. Lunes, miércoles
-y jueves van detrás, empatados.
+entre semana, coge el jueves.
 
 ## Halloween, HALLOWinter, invierno
 
@@ -937,10 +986,12 @@ previsión para los próximos días.
 
 ### ¿Cuándo hay menos gente en el Europa-Park?
 
-El **domingo** es el día de la semana más tranquilo, el sábado el más lleno, y
-mayo y junio son los meses de verano más tranquilos. Tranquilos
-son también los días laborables de la temporada HALLOWinter en noviembre:
-[nuestra previsión](ref:europa-park?calendar) pone la mayoría en «bajo».
+Un **domingo o un jueves de mayo o junio**, fuera de las vacaciones escolares
+de Baden-Wurtemberg, Basilea, Argovia, Alsacia, Baviera, Hesse y
+Renania-Palatinado. El sábado es el día más lleno. Las semanas más llenas son
+la de después de Semana Santa, las vacaciones de verano de finales de junio a
+mediados de agosto y los días entre Navidad y Año Nuevo. Qué días pintan más
+tranquilos ahora mismo está en [nuestra previsión](ref:europa-park?calendar).
 
 ### ¿Hay fast pass en el Europa-Park?
 
@@ -999,9 +1050,8 @@ Sí, con una salvedad. La decoración de invierno, la pista de hielo y el mercad
 navideño solo existen entonces, pero anochece antes, el parque cierra como pronto
 a las 19 h y las atracciones acuáticas no funcionan de forma continua; Atlantica
 descansa en invierno. Entre Navidad y Nochevieja de 2025 los tiempos de espera
-quedaron más o menos al nivel de los de agosto, medidos en seis días. Para los
-días laborables de noviembre, en cambio, nuestra previsión pone casi siempre
-«bajo»; tiempos de espera medidos de noviembre todavía no tenemos.
+quedaron más o menos al nivel de los de agosto, medidos en seis días. Tiempos
+de espera medidos de noviembre todavía no tenemos.
 
 ## Por qué voy a volver por la Euro-Mir
 
@@ -1065,3 +1115,4 @@ vagoneta que gira.
 - Composición del público por país de origen (2017) y la parte suiza (2025): [Europa-Park en de.wikipedia, apartado Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [«50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort» (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Viernes puente: niveles de afluencia y meteorología de los días alrededor de la Ascensión y del Corpus Christi de 2026, sacados de nuestro propio calendario (medidos, no previstos), más la serie de vídeos [«BRÜCKENTAG im EUROPA-PARK 2025» (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la misma serie en 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera desde el 26 de diciembre de 2025, el perfil horario sobre todos los días medidos desde entonces, previsión de afluencia a 90 días, las regiones de vacaciones del calendario, el recuento de espectáculos del 25 de septiembre de 2026, [Europa-Park en park.fan](ref:europa-park)
+- Días de la semana, meses y vacaciones: afluencia medida por día de apertura y vacaciones escolares de Baden-Wurtemberg, Grand Est, Argovia, Basilea-Ciudad, Basilea-Campiña, Baviera, Hesse y Renania-Palatinado según nuestro calendario, analizado el 4 de octubre de 2026 para abril a septiembre de 2026, más las fechas de vacaciones hasta enero de 2027

@@ -2,14 +2,15 @@
 title: 'Europa-Park: Deutschlands größter Park, und wo all die Leute stecken'
 translationKey: europa-park-guide
 date: '2026-08-21'
+updatedAt: '2026-10-04'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Kein Park in Deutschland verkauft mehr Tickets, und trotzdem stehst du in
-  Rust kürzer an als im Phantasialand. Warum ausgerechnet der Sonntag der
-  ruhigste Tag ist, warum der November allen gehört, denen Wasserbahnen egal
-  sind, und warum du die Euro-Mir jetzt fahren solltest oder nie mehr.
+  Rust kürzer an als im Phantasialand. Wann der Park am leersten ist, welche
+  Ferien in der Schweiz und im Elsass ihn füllen, und warum du die Euro-Mir
+  jetzt fahren solltest oder nie mehr.
 tags:
   - europa-park
   - voltron
@@ -34,11 +35,10 @@ coverImage:
   caption: 'Voltron Nevera im kroatischen Themenbereich. Sieben Überkopfelemente, und der steilste Katapultstart der Welt.'
   credit: 'park.fan'
 seo:
-  title: 'Europa-Park Wartezeiten: kurz anstehen im vollsten Park'
+  title: 'Wartezeiten: Wann ist der Europa-Park am leersten?'
   description: >-
-    Europa-Park-Wartezeiten, selbst gemessen: sonntags ist am wenigsten los,
-    samstags zahlst du an jeder Warteschlange drauf. Reisezeit, Preise 2026,
-    Anreise.
+    Am leersten ist der Europa-Park sonntags und donnerstags im Mai und Juni,
+    außerhalb der Ferien in Baden-Württemberg, der Schweiz und im Elsass.
   keywords:
     - Europa-Park Wartezeiten
     - Europa-Park Wartezeiten aktuell
@@ -46,6 +46,7 @@ seo:
     - Europa-Park Achterbahnen
     - Europa-Park Tipps
     - Europa-Park wann am wenigsten los
+    - Europa-Park wann am leersten
     - Europa-Park beste Reisezeit
     - Europa-Park Fast Pass
     - Europa-Park Single Rider
@@ -550,10 +551,19 @@ unterschrieben, die auch im neuen Bereich eine Rolle spielen soll.
 Wer ohnehin überlegt, 2026 hinzufahren, sollte es nicht auf 2027 schieben. Bis
 zum Abschiedsevent am 9. Januar 2027 kommt kein Sommer mehr, nur noch Glühwein.
 
-## Beste Reisezeit: wann im Europa-Park am wenigsten los ist
+## Wann der Europa-Park am leersten ist
 
-Beim Wochentag tanzt der Europa-Park aus der Reihe, gemessen an [allem, was ich
-sonst so aufzeichne](/beste-reisezeit).
+Am leersten ist der Europa-Park an einem Sonntag oder Donnerstag im Mai oder
+Juni, in einer Woche ohne Schulferien in Baden-Württemberg, Basel, im Aargau,
+im Elsass, in Bayern, Hessen und Rheinland-Pfalz.
+Meiden solltest du den Samstag, die Woche nach Ostern, die Sommerferien von Ende
+Juni bis Mitte August und die Tage zwischen Weihnachten und Neujahr.
+
+Gezählt habe ich das am 4. Oktober 2026 in unserem Kalender. Er führt für jeden
+Betriebstag seit dem 26. Dezember 2025 den gemessenen Andrang, von „sehr
+niedrig“ bis „sehr hoch“, und daneben die Schulferien dieser acht Regionen. Die
+Zahlen unten beziehen sich auf die Sommersaison von April bis September 2026,
+183 Tage.
 
 ### Der Wochentag
 
@@ -561,11 +571,17 @@ sonst so aufzeichne](/beste-reisezeit).
 
 ```
 
-Sonntags ist in Rust am wenigsten los, weniger als an jedem Werktag und deutlich
-weniger als samstags. Im
-[Phantasialand](ref:phantasialand?bare) liegen die fünf Werktage gleichauf, und
-der Sonntag ist nach dem Samstag der vollste Tag; im [Efteling](ref:efteling?bare)
-ist der Donnerstag am ruhigsten. Mehr dazu im
+Der Samstag ist mit Abstand der vollste Tag. Von April bis September stand in
+unserem Kalender kein einziger Samstag auf „niedrig“, aber 18 von 26 auf „hoch“
+oder „sehr hoch“. Am anderen Ende liegen in der Tabelle Sonntag, Montag und
+Donnerstag gleichauf. Den Montag lasse ich in meiner Empfehlung trotzdem weg: Er
+hatte neun Tage auf „hoch“, der Sonntag sechs, und elf Sonntage standen auf
+„niedrig“.
+
+Damit tanzt der Europa-Park aus der Reihe, gemessen an [allem, was ich sonst so
+aufzeichne](/beste-reisezeit). Im [Phantasialand](ref:phantasialand?bare) ist
+der Sonntag nach dem Samstag der vollste Tag, im [Efteling](ref:efteling?bare)
+liegen Dienstag bis Freitag unter dem Wochenende. Mehr dazu im
 [Phantasialand-Guide](/blog/phantasialand-tipps) und im
 [Efteling-Guide](/blog/efteling-disney-der-niederlande).
 
@@ -581,12 +597,73 @@ So ein Park lebt vom Wochenendtrip. Samstags reisen die Leute an, sonntags
 fahren sie nach dem Frühstück wieder heim, und viele gehen gar nicht mehr in den
 Park, weil das Auto schon gepackt ist.
 
-Deshalb funktioniert für Rust auch der deutsche Ferienkalender allein nicht als
-Planungsgrundlage. In unserem Kalender sind für diesen Park zusätzlich die
-Ferien der französischen Region Grand Est, also des Elsass, und die der
-Schweizer Kantone Aargau, Basel-Stadt und Basel-Landschaft eingerechnet, dazu die der
-angrenzenden Bundesländer Bayern, Hessen und Rheinland-Pfalz. Wer nur auf Baden-Württemberg
-schaut, wundert sich irgendwann über einen vollen Dienstag.
+### Der Monat
+
+```stats-widget slug=europa-park show=months
+
+```
+
+Belastbar ist der Block April bis September. Darin sind Mai und Juni die
+ruhigsten Monate und der August der vollste, und das passt zu den Ferien: Im
+Mai und Juni haben von den acht Regionen nur Baden-Württemberg und Bayern frei,
+zu Pfingsten, im August fast alle. Die stillsten Wochen des Jahres lagen 2026
+zwischen dem Ende der Pfingstferien und dem Beginn der Sommerferien in Basel,
+Hessen und Rheinland-Pfalz. Vom 8. bis zum 26. Juni standen elf von fünfzehn
+Werktagen auf „niedrig“.
+
+Januar, Februar und März gehören nicht zur Saison. Die Wintersaison 2025/26
+endete im Januar, die Sommersaison 2026 begann am 28. März, und im Februar war
+der Park zu. Was die Tabelle für diese drei Monate führt, taugt nicht für einen
+Vergleich mit dem Sommer. Der Dezember besteht bislang nur aus den Tagen
+zwischen Weihnachten und Silvester 2025, der vollsten Woche des Winters.
+
+2027 öffnet der Park früher, vom 7. bis zum 19. März erstmals für zwei
+Pre-Opening Weeks, noch nicht mit allen Attraktionen und Shows, dafür mit den
+billigsten Tickets des Jahres. Die Sommersaison beginnt dann am 20. März. Für
+Oktober stehen erst die ersten Tage in der Tabelle, für November noch keiner.
+Wie weit Halloween und HALLOWinter inzwischen drinstecken, erkennst du an der
+Zahl der Messtage.
+
+### Welche Ferien den Park füllen
+
+Für Rust reicht der Ferienkalender von Baden-Württemberg nicht. In unserem
+Kalender sind für diesen Park zusätzlich die Ferien der französischen Region
+Grand Est eingerechnet, also des Elsass, dazu die der Schweizer Kantone Aargau,
+Basel-Stadt und Basel-Landschaft und die der angrenzenden Bundesländer Bayern,
+Hessen und Rheinland-Pfalz.
+
+Wie viel das ausmacht, sieht man an den Werktagen. Zwischen April und September
+gab es 42 Werktage, an denen in keiner der acht Regionen Schulferien waren und
+auch kein Feiertag lag. Vier davon standen auf „hoch“ oder höher, 27 auf
+„niedrig“. Von den Werktagen der Aargauer Ferien standen 17 von 27 auf „hoch“,
+und kein einziger auf „niedrig“.
+
+Voll wird es, wenn sich die Ferien stapeln. In der Woche nach Ostern hatten
+Baden-Württemberg, Bayern, Hessen, Rheinland-Pfalz, Basel und der Aargau
+zugleich frei, und drei der vier Werktage standen auf „hoch“. Ende Juni fangen Basel, Hessen und
+Rheinland-Pfalz gleichzeitig mit den Sommerferien an, und vom 29. Juni bis zum 3. Juli stand jeder Werktag auf „hoch“. Vom 20. Juli, als der Aargau dazukam,
+bis zum 12. August waren es 15 von 18 Werktagen. In der ersten Augustwoche
+hatten alle acht Regionen zugleich frei, und alle fünf Werktage standen auf
+„hoch“.
+
+Die Ferien eines einzelnen Landes füllen den Park dagegen wenig.
+Baden-Württemberg und Bayern hatten 2026 zur selben Zeit Pfingstferien, und
+von den neun Werktagen standen fünf auf „niedrig“. Auf „hoch“ kam nur der
+Brückenfreitag nach Fronleichnam. Wohin
+Baden-Württemberg in den Pfingstferien fährt, weiß ich nicht. In den
+Europa-Park jedenfalls nicht geschlossen.
+
+Im Herbst lösen sich die Regionen ab. 2026 haben Basel und der Aargau seit Ende
+September Herbstferien, Hessen und Rheinland-Pfalz in der ersten Oktoberhälfte,
+das Elsass von Mitte Oktober bis Allerheiligen, Baden-Württemberg in der letzten
+Oktoberwoche und Bayern in der ersten Novemberwoche. Eine Woche ganz ohne
+Ferien in einer der acht Regionen gibt es zwischen Ende September und dem 6. November nicht.
+Gemessen haben wir davon erst den Anfang. Freitag, der 2. Oktober, stand auf
+„hoch“, der Samstag darauf, der Tag der Deutschen Einheit, auf „sehr hoch“.
+
+Zwischen Weihnachten und Neujahr hatten fast alle acht Regionen zugleich frei,
+und vom 26. Dezember 2025 bis zum 4. Januar 2026 standen sieben von zehn Tagen
+auf „hoch“ oder „sehr hoch“.
 
 ### Der Brückentag
 
@@ -612,28 +689,6 @@ https://www.youtube.com/watch?v=aRH5xvAKE_I
 Beides vom echten [Parkfan95](https://parkfan95.de), also von Silas. Er hat den
 Namen, ich hatte nur zufällig vorher die Domain gekauft.
 
-### Der Monat
-
-```stats-widget slug=europa-park show=months
-
-```
-
-Vorsicht bei Januar, März und Dezember. Dahinter stehen nur drei bis sechs
-Messtage (die Zahl steht in der Tabelle), und der Dezember besteht ausschließlich aus
-den Tagen zwischen Weihnachten und Silvester 2025, der vollsten Woche des
-Winters. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
-nicht festlegen. Belastbar ist der Block April bis September, und darin sind Mai
-und Juni die ruhigsten Sommermonate, der August der vollste.
-
-Der Februar fehlt, weil der Park dann zu hat, und der März ist dünn, weil die
-Saison 2026 erst am 28. März begonnen hat. 2027 öffnet der Park früher, vom 7.
-bis zum 19. März erstmals für zwei Pre-Opening Weeks, noch nicht mit allen
-Attraktionen und Shows, dafür mit den billigsten Tickets des Jahres. Die
-Sommersaison beginnt dann am 20. März. Oktober und November hatten bei unserer
-letzten Durchsicht im September 2026 noch keinen einzigen Messtag. Ob
-Halloween und HALLOWinter inzwischen in der Tabelle stecken, erkennst du an der
-Zahl der Messtage für Oktober und November.
-
 ### Die vier Wochen, die kaum jemand kennt
 
 Der Park fährt vier Saisons hintereinander:
@@ -653,8 +708,11 @@ stehen im HALLOWinter-Plan, bei Kälte, Wind oder Eis bleiben sie aber auch mal
 zu, und wegen der Umbauten kann der eine oder andere Bereich gesperrt sein. Anfang November plant kaum jemand einen Parkbesuch, da sucht man eher die
 Handschuhe vom letzten Winter.
 
-In unserer Crowd-Prognose stehen **die meisten Werktage der HALLOWinter-Wochen
-auf „niedrig“**, voller wird es vor allem samstags.
+Schulferien hat in diesen Wochen von den acht Regionen nur Bayern, in der
+ersten Novemberwoche. Nach allem, was wir von April bis September gemessen
+haben, ist das die Ausgangslage für ruhige Werktage. In unserer Prognose standen
+am 4. Oktober trotzdem viele dieser Werktage auf „hoch“, und einen November in
+Rust haben wir noch nicht gemessen.
 
 ```best-days-widget slug=europa-park
 
@@ -662,10 +720,9 @@ auf „niedrig“**, voller wird es vor allem samstags.
 
 Umsonst ist das nicht. Der Park öffnet erst um 11 Uhr und schließt frühestens um
 19 Uhr, das ist eine Stunde weniger als im Sommer, es ist früh dunkel, und auf
-die Wasserbahnen ist kein Verlass. Wenn dir Poseidon und Atlantica egal sind und
-du Voltron an einem Tag fahren willst, den unsere Prognose auf „niedrig“ stellt,
-dann fahr im November unter der Woche. Gemessen haben wir einen November in Rust
-allerdings noch nicht, das ist eine Prognose.
+die Wasserbahnen ist kein Verlass. Wenn dir Poseidon und Atlantica egal sind,
+ist ein Werktag im November trotzdem einen Versuch wert. Welche Tage gerade am
+ruhigsten aussehen, steht im Kalender oben.
 
 ## Der perfekte Tag im Europa-Park
 
@@ -747,22 +804,14 @@ nicht, und die Tagesspitze kann frühestens um elf kommen.
 ## Wie man im Europa-Park Zeit verschenkt
 
 **Den Samstag buchen, weil das Hotel am Samstag frei ist.** Der Samstag ist der
-vollste Tag der Woche, der Sonntag der leerste, und den Abstand zahlst du an
+vollste Tag der Woche, der Sonntag einer der leersten, und den Abstand zahlst du an
 jeder einzelnen Warteschlange. Bei zehn Attraktionen am Tag also zehnmal. Wenn du ohnehin zwei
 Nächte bleibst, dreh die Reihenfolge um: Samstag ankommen, Rulantica oder den
 Ort ansehen, Sonntag in den Park.
 
-**Nur auf die deutschen Ferien schauen.** Gut die Hälfte des Publikums kommt
-nicht aus Deutschland. Ein Tag Ende Oktober kann in Baden-Württemberg ein
-gewöhnlicher Schultag sein und trotzdem voll werden, weil in Frankreich die
-Toussaint-Ferien laufen oder in Basel-Stadt die Herbstferien. In unserem
-Kalender sind für diesen Park die Ferien im Elsass und in drei Schweizer
-Kantonen eingerechnet, im Ferienkalender eines einzelnen Bundeslandes nicht.
-
 **Den Dienstag für einen ruhigen Werktag halten.** Unter den Werktagen ist er in
 unseren Daten der vollste, wenn auch knapp. Kommt ohnehin nur ein Werktag
-infrage, nimm den Freitag, der kommt dem Sonntag am nächsten. Montag, Mittwoch
-und Donnerstag liegen dahinter gleichauf.
+infrage, nimm den Donnerstag.
 
 ## Halloween, HALLOWinter, Winter
 
@@ -909,10 +958,12 @@ aktualisiert und mit Prognose für die nächsten Tage.
 
 ### Wann ist im Europa-Park am wenigsten los?
 
-Der **Sonntag** ist der ruhigste Wochentag, der Samstag der vollste, und Mai und
-Juni sind die ruhigsten Sommermonate. Ruhig sind außerdem die Werktage der
-HALLOWinter-Saison im November, die meisten davon stehen in
-[unserer Prognose](ref:europa-park?calendar) auf „niedrig“.
+An einem **Sonntag oder Donnerstag im Mai oder Juni**, außerhalb der
+Schulferien in Baden-Württemberg, Basel, im Aargau, im Elsass, in Bayern, Hessen
+und Rheinland-Pfalz. Der Samstag ist der vollste Tag. Am vollsten sind die
+Woche nach Ostern, die Sommerferien von Ende Juni bis Mitte August und die Tage
+zwischen Weihnachten und Neujahr. Welche Tage gerade am ruhigsten aussehen,
+steht in [unserer Prognose](ref:europa-park?calendar).
 
 ### Gibt es im Europa-Park einen Fast Pass?
 
@@ -971,9 +1022,8 @@ Ja, mit einer Einschränkung. Die Winterdekoration, die Eisbahn und den
 Weihnachtsmarkt gibt es nur dann, dafür ist es früher dunkel, der Park macht
 frühestens um 19 Uhr zu, und die Wasserbahnen laufen nicht durchgehend;
 Atlantica hat im Winter Pause. Zwischen Weihnachten und Silvester 2025 lagen
-die Wartezeiten etwa so hoch wie im August, gemessen an sechs Tagen. Die
-Werktage im November stehen in unserer Prognose dagegen meist auf „niedrig“,
-gemessene Wartezeiten aus dem November haben wir aber noch keine.
+die Wartezeiten etwa so hoch wie im August, gemessen an sechs Tagen. Gemessene
+Wartezeiten aus dem November haben wir noch keine.
 
 ## Warum ich für die Euro-Mir noch einmal hinfahre
 
@@ -1035,3 +1085,4 @@ dreht.
 - Gästestruktur nach Herkunftsland (2017) und der Schweizer Anteil (2025): [Europa-Park auf de.wikipedia, Abschnitt Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie seit dem 26. Dezember 2025, Stundenprofil über alle Messtage seit diesem Datum, Crowd-Prognose über 90 Tage, Ferienregionen des Kalenders, Show-Zahlen vom 25. September 2026, [Europa-Park auf park.fan](ref:europa-park)
+- Wochentage, Monate und Ferien: gemessener Andrang pro Betriebstag und Schulferien in Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Bayern, Hessen und Rheinland-Pfalz aus unserem Kalender, ausgewertet am 4. Oktober 2026 für April bis September 2026, dazu die Ferientermine bis Januar 2027

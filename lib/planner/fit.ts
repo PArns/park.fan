@@ -232,7 +232,7 @@ export function fitWishes(
 export function fitBlocks(entries: readonly PlannerEntry[]): FitBlock[] {
   return entries
     .filter((entry): entry is PlannerEntry & { custom: NonNullable<PlannerEntry['custom']> } =>
-      Boolean(entry.custom && !entry.done)
+      Boolean(entry.custom && !entry.showSlug && !entry.done)
     )
     .map((entry) => ({
       entryId: entry.id,

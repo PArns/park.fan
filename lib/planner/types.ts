@@ -61,6 +61,16 @@ export interface PlannerEntry {
    */
   custom?: PlannerCustomBlock;
   /**
+   * Set where this block is a SHOW — one performance picked from the day's
+   * showtimes. It always travels with a `custom` block (label = the show's name,
+   * icon `show`), so the optimiser, the fit assistant and the estimate treat it
+   * as the fixed block they already know. What `showSlug` adds is the identity
+   * the walking-time sum needs to find the show's position, and a lock: the time
+   * belongs to the performance, so the entry is not dragged, nudged, resized or
+   * shifted. Changing it means deleting it and picking another performance.
+   */
+  showSlug?: string;
+  /**
    * When the visit starts, as park-local minutes since midnight. Park-local
    * always: the reader's own offset never enters the planner, because this
    * value and the date it is filed under are what a plan IS.

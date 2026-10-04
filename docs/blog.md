@@ -671,13 +671,21 @@ Wartezeiten seit Dezember 2025`, `measured every five minutes`. `real` stays whe
    naming a figure. French, Spanish, Italian and English wrote the same habit with verbs that have
    plain uses too (`indiquent une`, `indican una`, `post a`); those strings were rewritten, and the
    verbs stay off the list.
-9. **Never `ob der Tag aufgeht`.** Nor `ob der Tag so aufgeht`, `geht der Tag auf`, or the
-   translations it picked up: `whether the day adds up`, `of de dag klopt`, `si la journée tient
+9. **Never `misst sich selbst`, `bewertet sich selbst` or `benotet sich selbst`.** Nor `grades
+itself`, `beoordeelt zichzelf`, `se note lui-même`, `se autoevalúa`, `si dà i voti`. A model
+   grades nothing; we compare its forecasts with the measured waits and publish the error. Write
+   that: `Am Tag darauf wird jede Prognose mit der gemessenen Wartezeit verglichen, und die
+durchschnittliche Abweichung in Minuten steht öffentlich auf dieser Seite.` It stood in the
+   Fancast tagline in all six languages until Patrick put it on the list on 2026-10-04.
+   `pnpm check:prose` fails on every inflection and on words between (`benotet sich dabei
+öffentlich selbst`), on every surface; `gemessen an sich selbst` is an idiom and stays.
+10. **Never `ob der Tag aufgeht`.** Nor `ob der Tag so aufgeht`, `geht der Tag auf`, or the
+    translations it picked up: `whether the day adds up`, `of de dag klopt`, `si la journée tient
 debout`, `si el día cuadra`, `se la giornata regge`. The image says nothing anyone could check.
-   Say what fits and by when: `ob alle vor Parkschluss drankommen`, `ob du deine acht Bahnen bis
+    Say what fits and by when: `ob alle vor Parkschluss drankommen`, `ob du deine acht Bahnen bis
 Parkschluss schaffst`. It stood in the planner's lead, the landing page's pointer to the planner
-   and the planner launch post in all six languages until the PO put it on the list on 2026-10-04.
-   `pnpm check:prose` fails on it in every language and on every surface. A sum stays: `a day that
+    and the planner launch post in all six languages until Patrick put it on the list on 2026-10-04.
+    `pnpm check:prose` fails on it in every language and on every surface. A sum stays: `a day that
 adds up to a lot of empty seats`, `el segundo día sale por 60 €`.
 
 ### 3.4 Travel-guide copy, in all six languages
@@ -1125,7 +1133,8 @@ output the way a regex can actually be trusted to:
   prose, a growing em-dash count in a catalog, an honesty claim or chat register in a string that
   can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
   with a straight `"`, `die Antwort auf` in any of its six languages, `nennen eine` and its
-  Dutch twin, `ob der Tag aufgeht` and its five translations (§3.3).
+  Dutch twin, a model that grades itself in any of its six languages, `ob der Tag aufgeht` and its
+  five translations (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 

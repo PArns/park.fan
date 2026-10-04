@@ -2447,6 +2447,7 @@
     },
     "custom": {
       "add": "Bloc personnel",
+      "addShow": "Ajouter un spectacle",
       "defaultLabel": "Pause",
       "label": "Intitulé",
       "duration": "{minutes} min",
@@ -2809,7 +2810,7 @@
     },
     "fancast": {
       "kicker": "park.fan · modèle de prévision",
-      "tagline": "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc pour chaque jour déjà publié, et se note lui-même en public.",
+      "tagline": "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc pour chaque jour déjà publié. Le lendemain, chaque prévision est confrontée au temps d'attente mesuré, et l'écart moyen en minutes est publié sur cette page.",
       "stats": {
         "avgError": "min d'erreur moy.",
         "parks": "parcs",
