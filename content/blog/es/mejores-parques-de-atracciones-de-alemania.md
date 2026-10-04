@@ -37,8 +37,8 @@ seo:
   title: 'Mejores parques de atracciones de Alemania 2026: ranking con tiempos de espera'
   description: >-
     Europa-Park, Phantasialand, Heide Park y otros cuatro en dos
-    clasificaciones, para fans de las montañas rusas y para familias, con los
-    tiempos de espera medidos en cada parque.
+    clasificaciones, para fans de montañas rusas y familias, con esperas medidas
+    en cada parque.
   keywords:
     - mejores parques de atracciones de Alemania
     - mejores parques de atracciones de Alemania 2026
