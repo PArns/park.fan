@@ -46,6 +46,7 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 - [A day that does not fit opens an assistant, not a footnote (REQUIREMENT)](a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md)
 - [Weather day chart is built around the park's hours (REQUIREMENT)](weather-day-chart-is-built-around-the-parks-hours.md)
 - [The admin holds no credential (REQUIREMENT)](the-admin-holds-no-credential.md)
+- [An admin list without an action is unfinished (REQUIREMENT)](an-admin-list-without-an-action-is-unfinished.md)
 - [The header menu is three kinds of content, and the split is about the link graph (REQUIREMENT)](the-header-menu-is-three-kinds-of-content-and-the-split-is.md)
 - [The guide page teaches the real cards with the ride's real numbers (REQUIREMENT)](the-guide-page-teaches-the-real-cards-with-the-rides-real.md)
 - [Ride ↔ Glossary link](ride-and-glossary-link.md)
