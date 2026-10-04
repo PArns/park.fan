@@ -312,6 +312,11 @@ petit des deux parcs qui a les files les plus longues. Les détails sont dans
 notre article sur
 [Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils).
 
+Et en décembre, le Magic Kingdom est un autre parc. La semaine entre Noël et le
+Nouvel An est la ligne la plus chargée de tout notre tableau annuel, et la Very
+Merry Christmas Party se tient 25 soirées. Les dates et les chiffres sont dans
+[Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+
 — Patrick
 
 ---

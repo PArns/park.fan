@@ -301,6 +301,10 @@ Dasselbe Unternehmen betreibt auch das Resort bei Paris, und dort hat der
 kleinere der beiden Parks die längeren Warteschlangen. Mehr dazu steht in unserem
 Text über [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps).
 
+Und im Dezember ist das Magic Kingdom ein anderer Park. Die Woche zwischen
+Weihnachten und Silvester ist die vollste Zeile unserer ganzen Jahrestabelle,
+und die Very Merry Christmas Party läuft an 25 Abenden: [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+
 — Patrick
 
 ---

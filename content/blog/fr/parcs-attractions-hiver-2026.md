@@ -552,6 +552,10 @@ peu, mais on s’y fait très vite.
 Ce qui tourne réellement le jour que vous visez et la longueur des files en ce
 moment, c’est sur la page de chaque parc, tout l’hiver.
 
+Hors d'Europe, décembre a un autre visage. À Orlando, la semaine entre Noël et
+le Nouvel An est la plus chargée de l'année mesurée dans les sept parcs, et à
+Paris elle ne l'est pas. Nous avons comparé les deux dans [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+
 — Patrick
 
 _P.S. : dans sa version de juillet, le guide Halloween se terminait sur la phrase

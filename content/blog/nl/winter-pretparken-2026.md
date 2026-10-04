@@ -540,6 +540,10 @@ spookhuizen apart betaalt, is dat even wennen, maar het went snel.
 Wat er op jouw wensdag daadwerkelijk rijdt en hoe lang de rijen op dit moment
 zijn, staat de hele winter op de pagina van het park zelf.
 
+Buiten Europa ziet december er anders uit. In Orlando is de week tussen Kerst
+en Nieuwjaar in alle zeven parken de drukste van het gemeten jaar, in Parijs
+niet: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+
 — Patrick
 
 _P.S.: de Halloween-gids eindigde in de versie van juli met de zin dat de

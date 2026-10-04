@@ -300,6 +300,10 @@ La stessa azienda gestisce anche il resort vicino a Parigi, dove le code più
 lunghe sono quelle del più piccolo dei due parchi. Ne parliamo nel nostro testo
 su [Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli).
 
+E a dicembre il Magic Kingdom è un altro parco. La settimana fra Natale e
+Capodanno è la riga più affollata di tutta la nostra tabella annuale, e la Very
+Merry Christmas Party si tiene 25 sere: [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
+
 — Patrick
 
 ---

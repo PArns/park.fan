@@ -280,6 +280,10 @@ The same company runs a park in France, where the smaller of the two parks is
 the one with the longer queues. That is in our write-up on [Disneyland
 Paris](/blog/disneyland-paris-wait-times-tips).
 
+And in December the Magic Kingdom is a different park. The week between
+Christmas and New Year is the busiest row in our whole yearly table, and the
+Very Merry Christmas Party runs on 25 nights: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
+
 — Patrick
 
 ---

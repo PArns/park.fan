@@ -417,6 +417,11 @@ World rijdt in deze maanden dertien attracties in plaats van veertien. Wie
 toch al twijfelde of het twee-parkenticket de meerprijs waard is, heeft
 daar nu een argument minder voor.
 
+Van 7 november tot 6 januari draait in beide parken het kerstseizoen, en de week
+tussen Kerst en Nieuwjaar ligt hier anders dan in Orlando: in de Adventure World
+zelfs de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de
+vergelijking staan hier: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+
 — Patrick
 
 ---

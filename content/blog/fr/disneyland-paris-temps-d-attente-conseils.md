@@ -437,6 +437,11 @@ sache qu’Adventure World tourne durant ces mois avec treize attractions au
 lieu de quatorze. Qui hésitait déjà à prendre le billet deux parcs a là un
 argument de moins pour le faire.
 
+Du 7 novembre au 6 janvier, les deux parcs vivent à l'heure de Noël, et la
+semaine entre Noël et le jour de l'an se présente autrement qu'à Orlando. À
+Adventure World, c'est même la plus calme de l'année mesurée. Vous trouverez les
+dates, le réveillon et la comparaison dans [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+
 — Patrick
 
 ---
