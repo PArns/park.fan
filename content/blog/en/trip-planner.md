@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Plan a theme park day: count the queues before you join them'
   description: >-
-    Lay your rides on a timeline with the predicted waits and the walks in
-    between, and see before you go whether they all fit in before closing. No
-    account needed.
+    Lay your rides on a timeline with predicted waits and the walks between, and
+    see before you go whether they all fit before closing. No account needed.
   keywords:
     - plan a theme park day
     - theme park trip planner

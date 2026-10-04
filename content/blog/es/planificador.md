@@ -34,8 +34,8 @@ seo:
   title: 'Planifica tu día de parque: cuenta las colas antes de ir'
   description: >-
     Pon tus atracciones en una línea de tiempo con las esperas previstas y los
-    caminos entre ellas, y comprueba antes de ir si te da tiempo a todas antes
-    del cierre. Sin cuenta.
+    caminos, y comprueba antes de ir si llegas a todas antes del cierre. Sin
+    cuenta.
   keywords:
     - planificar un día de parque
     - planificador parque de atracciones

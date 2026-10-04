@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Parktag planen: Wartezeiten einrechnen, bevor du anstehst'
   description: >-
-    Leg deine Bahnen auf eine Zeitleiste, mit den vorhergesagten Wartezeiten und
-    den Wegen dazwischen, und sieh vorher, ob alle vor Parkschluss drankommen.
-    Ohne Konto.
+    Leg deine Bahnen auf eine Zeitleiste, mit vorhergesagten Wartezeiten und
+    Wegen, und sieh vorher, ob alle vor Parkschluss drankommen. Ohne Konto.
   keywords:
     - Freizeitpark Tag planen
     - Tagesplaner Freizeitpark

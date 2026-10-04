@@ -36,8 +36,8 @@ seo:
   title: 'I migliori parchi divertimenti in Germania nel 2026: classifica con tempi di attesa'
   description: >-
     Europa-Park, Phantasialand, Heide Park e altri quattro in due classifiche,
-    per chi ama le montagne russe e per le famiglie, con i tempi di attesa
-    misurati parco per parco.
+    per fan delle montagne russe e famiglie, con le attese misurate in ogni
+    parco.
   keywords:
     - migliori parchi divertimenti Germania
     - migliori parchi divertimenti Germania 2026
