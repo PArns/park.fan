@@ -368,6 +368,10 @@ started yet. If you can take time off whenever you like, go in September. The lo
 Ascension Day and Corpus Christi, on the other hand, are packed, and in our data for Europa-Park
 that holds even when it rains.
 
+At five of the six measured parks, a weekday in the home state's school holidays was busier
+than an average weekend day. Which German states fill which park is in the
+[guide to school holidays and crowds](/blog/school-holidays-theme-parks-germany).
+
 Every park has a calendar with the forecast for the coming days; this is the one for
 Europa-Park:
 

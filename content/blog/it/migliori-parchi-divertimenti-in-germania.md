@@ -384,6 +384,10 @@ perché nella maggior parte dei Länder le vacanze estive sono finite e quelle d
 ancora cominciate. Chi è libero quando vuole va a settembre. I ponti dopo l'Ascensione e il Corpus
 Domini invece sono pieni, e nei nostri dati per l'Europa-Park lo sono anche quando piove.
 
+In cinque dei sei parchi misurati, un giorno feriale durante le vacanze scolastiche del proprio
+Land era più affollato di un giorno medio di fine settimana. Quali Länder riempiono quale parco
+è nella [guida a vacanze scolastiche e affluenza](/blog/vacanze-scolastiche-parchi-divertimenti-germania).
+
 Il calendario con la previsione per i prossimi giorni esiste per ogni parco, qui quello
 dell'Europa-Park:
 

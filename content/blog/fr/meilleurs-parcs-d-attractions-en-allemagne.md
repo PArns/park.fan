@@ -387,6 +387,10 @@ les vacances d’automne n’ont pas encore commencé. Si tu es libre quand tu v
 Les ponts de l’Ascension et de la Fête-Dieu sont en revanche bondés, et dans nos données pour
 Europa-Park, même quand il pleut.
 
+Dans cinq des six parcs mesurés, un jour de semaine pendant les vacances scolaires du Land du
+parc était plus chargé qu’un jour de week-end moyen. Quels Länder remplissent quel parc, c’est
+dans le [guide des vacances scolaires et de l’affluence](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
+
 Le calendrier avec la prévision des prochains jours existe pour chaque parc, voici celui
 d’Europa-Park :
 
