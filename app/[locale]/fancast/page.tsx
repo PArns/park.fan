@@ -233,7 +233,7 @@ export default async function FancastPage({ params }: FancastPageProps) {
         <div
           id="start"
           className={cn(
-            'relative space-y-16 pt-0 pb-14 sm:space-y-24 sm:py-20',
+            'relative space-y-16 pt-0 sm:space-y-24 sm:pt-20',
             HERO_FLOW_INTO_PULL
           )}
         >

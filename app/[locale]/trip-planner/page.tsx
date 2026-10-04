@@ -266,22 +266,21 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
       </div>
 
       {/* The closing band runs the full width like on the other hubs, so it stands outside the
-          container above. Its first destination is the head's action again. */}
-      <div className="pb-14 sm:pb-20">
-        <LandingNextSteps
-          title={tLanding('planner.next.title')}
-          body={tLanding('planner.next.body')}
-          destinations={[
-            action,
-            {
-              href: `/${BEST_TIME_SEGMENTS[locale as Locale]}`,
-              label: tNav('bestTime'),
-              icon: CalendarDays,
-            },
-            { href: '/parks', label: tNav('parks'), icon: Compass },
-          ]}
-        />
-      </div>
+          container above. Its first destination is the head's action again. It is the last
+          thing before the footer, with no gap under it: a gap reads as a dark bar. */}
+      <LandingNextSteps
+        title={tLanding('planner.next.title')}
+        body={tLanding('planner.next.body')}
+        destinations={[
+          action,
+          {
+            href: `/${BEST_TIME_SEGMENTS[locale as Locale]}`,
+            label: tNav('bestTime'),
+            icon: CalendarDays,
+          },
+          { href: '/parks', label: tNav('parks'), icon: Compass },
+        ]}
+      />
     </RouteMessages>
   );
 }

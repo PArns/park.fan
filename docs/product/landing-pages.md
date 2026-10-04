@@ -24,13 +24,13 @@ page only where the product meets the need and no page addresses it) and
 | ---------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | **Hub**                | a topic or an audience across all parks       | best time to visit, trip planner, how park.fan works, Fancast, blog index                                       | `LandingHero`: full-bleed photo                                        |
 | **Park audience page** | one audience × one park, under the park's URL | with kids (`/mit-kindern`), average wait times (`/durchschnittliche-wartezeiten`); later the next persona pages | the park chrome as today: `ParkTitleHeader` + `ParkHeaderCard`         |
-| **Tool page**          | the page is a tool, a list or a form          | developers, contribute, news index, glossary index                                                              | `LandingHero variant="compact"`: no photo, the same type and left edge |
+| **Tool page**          | the page is a tool, a list or a form          | contribute, news index, glossary index                                                                          | `LandingHero variant="compact"`: no photo, the same type and left edge |
 
 The homepage is none of these and keeps its own hero. A new landing page picks one of the three
 kinds before it is built; a fourth kind is a change to this page first.
 
-Decided for tool pages: the **compact** head, not the photo hero. On developers and news the
-content is the page (links, a filterable list), and a full-screen photo would push it one screen
+Decided for tool pages: the **compact** head, not the photo hero. On news the
+content is the page (a filterable list), and a full-screen photo would push it one screen
 down.
 
 ## 2. The anatomy
@@ -43,7 +43,7 @@ in the same order.
 2. **Intro** — one to three paragraphs (`Lead`, `P`), full section width as today.
 3. **Chapters** — `SectionShell` with `ChapterHeading`; numbered only where the sequence always
    renders ([a chapter opens the same way everywhere](../rules/a-chapter-opens-the-same-way-everywhere.md)).
-   No bare `<h2>` anywhere on a landing page (developers, glossary and the planner body have them
+   No bare `<h2>` anywhere on a landing page (glossary and the planner body have them
    today).
 4. **FAQ** — `FaqList`, which also emits the `FAQPage` beside the rendered array. Optional.
 5. **Next step** — one component, `LandingNextSteps`: one to three destinations, the first being
@@ -79,7 +79,6 @@ that place once, in the head (hubs) and again as the first next step.
 | blog index            | readers                             | — (the list is the action)               | —                                        |
 | with kids             | P1                                  | plan the day for this height (exists)    | exists                                   |
 | average wait times    | P2 / P6                             | the trip planner for this park           | first next step (PAR-680)                |
-| developers            | developers, agents                  | the API reference                        | link card further down                   |
 | contribute            | photo contributors                  | upload photos (exists)                   | exists                                   |
 | news index / glossary | readers / P4                        | the park filter / the search (exists)    | exists                                   |
 
@@ -108,7 +107,7 @@ Nothing here overrides a standing rule; the build tickets have to keep all of th
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | PAR-677 | `LandingHero` (compact variant, aside and action slots; `GuideHero` folded in) and `LandingNextSteps`; head copy and the scroll label into the messages                                         | —           |
 | PAR-678 | Hubs onto the anatomy: best time, trip planner, how it works, Fancast, blog index, with their primary actions; Fancast's H1 to the hub size                                                     | PAR-677     |
-| PAR-679 | Tool pages onto the compact head: developers, contribute, news index, glossary index                                                                                                            | PAR-677     |
+| PAR-679 | Tool pages onto the compact head: developers (removed since), contribute, news index, glossary index                                                                                            | PAR-677     |
 | PAR-680 | Park audience pages: one `LandingNextSteps` instead of two `NextStep` copies, the planner action on average wait times                                                                          | PAR-677     |
 | PAR-681 | A rule page for the anatomy under `docs/rules/` and a check that every landing page has one H1, the head component of its kind, one primary action, and an `FAQPage` only beside a rendered FAQ | PAR-678–680 |
 

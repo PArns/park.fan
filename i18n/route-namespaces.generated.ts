@@ -65,7 +65,6 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/contribute/thanks': [],
   '/datenschutz': ['datenschutz.analyticsOptOut'],
-  '/developers': [],
   '/fancast': ['home', 'nearby', 'parkCard'],
   '/favorites': [],
   '/glossary': ['glossary'],
