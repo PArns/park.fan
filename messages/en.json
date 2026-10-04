@@ -1856,6 +1856,8 @@
     "opensIn": "Opens in",
     "closesIn": "Closes in",
     "opensOn": "Opens on",
+    "quietestDay": "Quietest day: {date}",
+    "quietestDayTitle": "Lowest forecast crowd level in the next 14 days, closed days left out",
     "howTo": {
       "findTitle": "Find a park or a ride",
       "findText": "Use the search, or start from “Explore Parks”.",

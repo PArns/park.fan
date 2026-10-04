@@ -133,6 +133,18 @@ const THRESHOLD = flag('threshold', null);
  * Measuring the wrong one of those two is how a placeholder gets tuned backwards.
  */
 const CLIENT_IP = flag('ip', '91.64.1.1');
+/**
+ * `--cookie=name=value`, repeatable: cookies set in the browser before the page loads, for a page
+ * whose content is a cookie (`/favorites` reads `favorites={"parks":["<id>"],…}`). Without one the
+ * run measures the empty state. Only the `--late` replay sets them. The value is sent as it is
+ * written here, so a JSON value is written URL-encoded.
+ */
+const COOKIES = args
+  .filter((a) => a.startsWith('--cookie='))
+  .map((a) => {
+    const [name, ...rest] = a.slice('--cookie='.length).split('=');
+    return { name, value: rest.join('=') };
+  });
 
 /** `--late` / `--late=2500`: replay mode, and how long the streamed tail is held back. */
 const LATE_MS = has('late') ? 1500 : Number(flag('late', '0'));
@@ -601,6 +613,7 @@ async function scoreAt(browser, { viewport, position, origin, splitPath, url, co
     hasTouch: viewport.isMobile,
     extraHTTPHeaders: { 'x-forwarded-for': CLIENT_IP },
   });
+  if (COOKIES.length) await ctx.addCookies(COOKIES.map((c) => ({ ...c, url: origin })));
   const page = await ctx.newPage();
   await page.addInitScript(readShifts);
   await page.addInitScript(holdReader, { y: position.y, tailAtMs: LATE_MS });
