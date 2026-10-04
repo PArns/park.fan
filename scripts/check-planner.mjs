@@ -199,6 +199,36 @@ const check = (name, ok, detail = '') => {
  * figure that says whether the run got as far as the flows it reports on, which
  * a pass/fail row cannot (📚 G-72).
  */
+/**
+ * How often React's `Encountered a script tag while rendering React component`
+ * was waived, and why it is waived at all.
+ *
+ * The message is **development-only** — the string exists in
+ * `react-dom-client.development.js` and in no production build (grepped,
+ * react-dom 19.3.0) — and this script runs against `pnpm dev`, so it is the
+ * only place it can ever be seen.
+ *
+ * It is waived because it has no discriminating power left in this app.
+ * Measured on 2026-10-03 with a `MutationObserver` that timestamped every
+ * inserted `<script>`: the tags React creates when it fires are the FIVE the
+ * root layout renders — the `temp_unit` script (`app/[locale]/layout.tsx:232`),
+ * the three JSON-LD blocks (`:263`, `:267`, `:272`) and next-themes' own
+ * (`:278`). React reports the subtree once, not once per tag, so the message is
+ * pinned to "present" on every page whose layout subtree gets a client render,
+ * whatever else is in it. Turning any single one of those five into a
+ * `<template>` left the count at exactly 1, which is the proof: a new offender
+ * in a client component could not raise it and its absence could not lower it.
+ *
+ * None of the five is broken by not executing on a client render, and
+ * `layout.tsx:220-231` says so in advance for the one that is executable code:
+ * the attribute it sets is already on `<html>` from the server-parsed copy, and
+ * the JSON-LD is read off the server HTML by crawlers, not run.
+ *
+ * The count is printed instead of swallowed, because a waiver that prints
+ * nothing is indistinguishable from a check that stopped looking (📚 G-72).
+ */
+const scriptTagWaivers = { count: 0 };
+
 let balanceShown = null;
 function printBalance() {
   if (balanceShown !== null) return balanceShown;
@@ -212,6 +242,10 @@ function printBalance() {
   console.log(
     `ℹ️  ${controlPresses.pressed} Klicks auf Bedienelemente angenommen` +
       (controlPresses.failed > 0 ? `, ${controlPresses.failed} nicht` : '')
+  );
+  console.log(
+    `ℹ️  ${scriptTagWaivers.count}× Reacts Dev-Warnung über ein <script> im Baum erlassen` +
+      ' (Root-Layout, siehe scriptTagWaivers)'
   );
   const failed = results.filter((r) => !r.ok);
   console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
@@ -975,6 +1009,12 @@ const noteErrors = (page) =>
     if (!live && /404/.test(text) && /plan\/day|Failed to load resource/.test(text)) return;
     // …and the one a check asks for itself — see {@link allowPlanDay404}.
     if (allowPlanDay404.has(page) && /404|Failed to load resource/.test(text)) return;
+    // React's dev-only complaint about a `<script>` in the tree, waived with a
+    // count rather than a silence — see {@link scriptTagWaivers}.
+    if (/Encountered a script tag while rendering React component/.test(text)) {
+      scriptTagWaivers.count += 1;
+      return;
+    }
     // WHERE it happened, because this array is fed by every page in the run —
     // desktop, phone, the stubbed grid, the drag pair, the locale sweep — and a
     // failure that only prints the message sends the next reader hunting
@@ -5638,6 +5678,27 @@ step: {
   // 2. A configured deploy offers it, off.
   const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(push);
+  // The permission has to be stated, because this browser answers the question
+  // twice and differently. Measured on 2026-10-03, Playwright 1.63.0 with
+  // Chromium 153.0.8010.12: in the headless-shell that `chromium.launch()`
+  // starts, `Notification.permission` reads `denied` no matter what —
+  // `grantPermissions(['notifications'])` and `permissions: ['notifications']`
+  // both leave it there, while `navigator.permissions.query` on the same page
+  // reports `granted`. Only the full browser (`channel: 'chromium'`) lets the
+  // two agree. So the permission store is the wrong lever here; the value the
+  // app reads has to be set directly, the way the on/off walkthrough further
+  // down this file already does it.
+  //
+  // `default` rather than `granted`: this step is the visitor who has not been
+  // asked yet, which is the state in which a configured deploy owes them a
+  // switch. `usePushSubscription` only branches on `=== 'denied'`, and nothing
+  // here presses the button, so no prompt is reached.
+  await push.addInitScript(() => {
+    Object.defineProperty(Notification, 'permission', {
+      get: () => 'default',
+      configurable: true,
+    });
+  });
   await push.route('**/api/push', (route) =>
     route.fulfill({
       status: 200,
@@ -5683,6 +5744,13 @@ step: {
   await push.waitForTimeout(2000);
   await openPushBell(push);
 
+  // The state under test, read back instead of assumed. Without this row the
+  // three assertions below are free to describe one state and measure another:
+  // that is what they did until 2026-10-03, when the browser answered `denied`
+  // and `und er ist aus` went red at the control instead of at the browser.
+  const permission = await push.evaluate(() => Notification.permission);
+  check('die geprüfte Berechtigung ist "default"', permission === 'default', permission);
+
   const toggle = push.locator('[data-planner-push]');
   check('mit Schlüssel steht der Schalter da', (await toggle.count()) === 1);
   if (await toggle.count()) {
@@ -5704,8 +5772,12 @@ step: {
   // 3. A browser that has refused says so instead of offering. It is the only
   //    state where the visitor has to go somewhere else to change the answer.
   const context = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
-  // Playwright grants nothing by default; denying explicitly is what makes
-  // `Notification.permission` read "denied" rather than "default".
+  // `clearPermissions` puts the permission STORE in the refused state, which is
+  // what `navigator.permissions.query` reports. It is not what makes
+  // `Notification.permission` read "denied": in the headless-shell that reads
+  // "denied" either way, grant or no grant (measured 2026-10-03, see the note
+  // in step 2). The `addInitScript` below is what the app actually reads, and
+  // the row after it checks that it took.
   await context.clearPermissions();
   const push = await context.newPage();
   noteErrors(push);
@@ -5756,6 +5828,9 @@ step: {
   }
   await push.waitForTimeout(2000);
   await openPushBell(push);
+
+  const deniedPermission = await push.evaluate(() => Notification.permission);
+  check('die geprüfte Berechtigung ist "denied"', deniedPermission === 'denied', deniedPermission);
 
   const denied = push.locator('[data-planner-push="denied"]');
   check('ein abgelehnter Browser bekommt eine Erklärung', (await denied.count()) === 1);
