@@ -2447,6 +2447,7 @@
     },
     "custom": {
       "add": "Bloque propio",
+      "addShow": "Añadir un espectáculo",
       "defaultLabel": "Descanso",
       "label": "Etiqueta",
       "duration": "{minutes} min",

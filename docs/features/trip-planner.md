@@ -238,6 +238,16 @@ one rule, a projection anywhere in the group decides the treatment — the rule
 runs one way only, so the softer one is the only one that is not a promise about
 the shows it stands for.
 
+**A performance can be planned as an entry (PAR-642).** `PlannerShowPicker` sits
+beside „Eigener Block" and lists the lines the grid draws, so the clip and the
+`~` are the grid's own. A pick calls `addShowEntry`: a free block (`custom`, icon
+`show`, 30 minutes) that also carries `showSlug`, which is what lets the walking
+sum find the show's position later (PAR-102). The time belongs to the
+performance, so `moveEntry`, `setCustomBlock` and `shiftFrom` return a show entry
+untouched, the grid starts no drag or resize on it, the action bar offers
+neither nudge nor edit, and the fit assistant does not offer it as a lever.
+Changing it means deleting it and choosing another performance.
+
 **A projected time outside the park's published day is dropped.** The projection
 comes off a different date and that date is often the longer one: Phantasialand
 closed at 18:00 on 2026-09-03 and its projection came from 2026-08-13, a

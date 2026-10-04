@@ -699,7 +699,7 @@ export function PlannerDayGrid({
 
   const handleResizeStart = useCallback(
     (entry: PlannerEntry) => (event: React.PointerEvent<HTMLElement>) => {
-      if (event.button !== 0 || !entry.custom || !onResize) return;
+      if (event.button !== 0 || !entry.custom || entry.showSlug || !onResize) return;
       event.preventDefault();
       event.stopPropagation();
 
@@ -749,7 +749,9 @@ export function PlannerDayGrid({
 
   const handleDragStart = useCallback(
     (entry: PlannerEntry, floorMin: number) => (event: React.PointerEvent<HTMLElement>) => {
-      if (event.button !== 0) return;
+      // A show is bound to its performance: the grip still selects it (the
+      // button's click), and nothing about a press on it starts a drag.
+      if (event.button !== 0 || entry.showSlug) return;
       event.preventDefault();
 
       const block = event.currentTarget.closest('[data-planner-block]') as HTMLElement | null;
@@ -1484,7 +1486,11 @@ export function PlannerDayGrid({
                   onSelect={() => onSelect(row.entry.id)}
                   onRemove={onRemove ? () => onRemove(row.entry.id) : undefined}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
-                  onResizeStart={row.entry.custom ? handleResizeStart(row.entry) : undefined}
+                  onResizeStart={
+                    row.entry.custom && !row.entry.showSlug
+                      ? handleResizeStart(row.entry)
+                      : undefined
+                  }
                   onMove={(minute) => onMove(row.entry.id, minute)}
                   minMinute={floor.hardMin}
                   maxMinute={latestStart(grid)}

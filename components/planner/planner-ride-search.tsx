@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -43,6 +43,8 @@ interface PlannerRideSearchProps {
    * — and one of the answers is not in the catalogue.
    */
   onAddCustom?: () => void;
+  /** The show picker, drawn wherever the free block's button is. */
+  showPicker?: ReactNode;
   /**
    * The phone's search mode (PAR-482): the panel hides the axis and the foot
    * while it is on and hands this block the sheet, so the rows a query finds
@@ -119,6 +121,7 @@ export function PlannerRideSearch({
   timezone,
   prefs,
   onAddCustom,
+  showPicker,
   searching = false,
   onSearchingChange,
   compact = false,
@@ -298,6 +301,7 @@ export function PlannerRideSearch({
             <span className="whitespace-nowrap">{t('custom.add')}</span>
           </button>
         )}
+        {resting && showPicker}
       </div>
 
       {/* What a TAP does, because this component is mounted on phones alone
@@ -340,6 +344,7 @@ export function PlannerRideSearch({
           <span className="truncate">{t('custom.add')}</span>
         </button>
       )}
+      {!resting && showPicker && <div className="mt-1">{showPicker}</div>}
       {resting ? null : matches.length === 0 ? (
         <p className="text-muted-foreground mt-2 px-1 text-xs">
           {/* Three different silences, and they are not interchangeable: a

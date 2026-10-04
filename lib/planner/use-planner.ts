@@ -4,6 +4,8 @@ import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import { plannerStore } from './store';
 import {
   addCustomEntry,
+  addShowEntry,
+  type AddShowParams,
   addEntry,
   applyPlan as applyPlanAction,
   type ApplyPlanStop,
@@ -112,6 +114,11 @@ export function usePlanner() {
   const addCustom = useCallback((params: AddCustomRideParams) => {
     countFirstBlock(params.parkSlug, params.parkName, params.date);
     plannerStore.update((s) => addCustomEntry(s, params));
+  }, []);
+
+  const addShow = useCallback((params: AddShowParams) => {
+    countFirstBlock(params.parkSlug, params.parkName, params.date);
+    plannerStore.update((s) => addShowEntry(s, params));
   }, []);
 
   const editCustom = useCallback(
@@ -241,6 +248,7 @@ export function usePlanner() {
     reserveDays,
     learnTimezone,
     addCustom,
+    addShow,
     editCustom,
     setDayPrefs,
     clearDay,

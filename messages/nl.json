@@ -2447,6 +2447,7 @@
     },
     "custom": {
       "add": "Eigen blok",
+      "addShow": "Show inplannen",
       "defaultLabel": "Pauze",
       "label": "Label",
       "duration": "{minutes} min",

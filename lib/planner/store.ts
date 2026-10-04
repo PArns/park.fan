@@ -138,6 +138,9 @@ function toEntry(value: unknown): PlannerEntry | null {
     ...(typeof e.attractionSlug === 'string' ? { attractionSlug: e.attractionSlug } : {}),
     ...(typeof e.attractionName === 'string' ? { attractionName: e.attractionName } : {}),
     ...(custom ? { custom } : {}),
+    // Only ever with a `custom` block: a show entry stands on one, and a stray
+    // slug on a ride would claim a show position for a queue.
+    ...(custom && typeof e.showSlug === 'string' && e.showSlug ? { showSlug: e.showSlug } : {}),
     // The same ceiling `applyPlan` writes under, and not the drag's 1500. A stop
     // the optimiser could not fit before closing is filed PAST the gate on
     // purpose, where the axis grows to hold it and the minutes are hatched —
