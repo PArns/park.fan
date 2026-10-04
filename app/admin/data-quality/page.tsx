@@ -2,7 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { AlertTriangle, HeartPulse, Link2Off, ListX, ShieldCheck } from 'lucide-react';
+import {
+  AlertTriangle,
+  CalendarSearch,
+  HeartPulse,
+  Link2Off,
+  ListX,
+  ShieldCheck,
+} from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
@@ -34,10 +41,27 @@ interface FailingJob {
   lastFailedAt: string | null;
 }
 
+/**
+ * A ride the API retired because ThemeParks.wiki stopped listing it, while
+ * nobody has said whether it is seasonal. Answered by setting the season in the
+ * ride's editor — either way, the row leaves this list (API PAR-684).
+ */
+interface AbsenceRetiredUnreviewed {
+  attractionId: string;
+  name: string;
+  slug: string;
+  parkId: string;
+  parkName: string;
+  retiredAt: string;
+  lastReading: string | null;
+}
+
 interface DataQuality {
   windowDays: number;
   silencedClusters: SilencedCluster[];
   failingJobs: FailingJob[];
+  /** Absent until the API with PAR-684 is deployed. */
+  absenceRetiredUnreviewed?: AbsenceRetiredUnreviewed[];
 }
 
 interface BrokenTermId {
@@ -76,6 +100,11 @@ export default function DataQualityPage() {
   const clusters = quality.data?.silencedClusters ?? [];
   const jobs = quality.data?.failingJobs ?? [];
   const broken = audit.data?.broken ?? [];
+  const unreviewed = quality.data?.absenceRetiredUnreviewed ?? [];
+  const unreviewedByPark = unreviewed.reduce<Map<string, AbsenceRetiredUnreviewed[]>>(
+    (groups, row) => groups.set(row.parkId, [...(groups.get(row.parkId) ?? []), row]),
+    new Map()
+  );
 
   return (
     <AdminPage width="wide">
@@ -136,6 +165,55 @@ export default function DataQualityPage() {
                 >
                   Bahnen ansehen
                 </Link>
+              </div>
+            ))}
+          </div>
+        )}
+      </Section>
+
+      <Section icon={CalendarSearch} title="Saison oder weg?">
+        <p className="text-muted-foreground text-sm">
+          Bahnen, die ThemeParks.wiki nicht mehr listet und die deshalb stillgelegt wurden, ohne
+          dass jemand gesagt hat, ob sie saisonal sind. Eine Halloween-Maze im ersten Jahr landet
+          hier, weil die automatische Erkennung erst nach einem Jahr Beobachtung greift. Im Editor
+          der Bahn die Saison setzen: mit Monaten, wenn sie wiederkommt, oder „nicht saisonal“, wenn
+          sie wirklich weg ist. Danach verschwindet sie von dieser Liste.
+        </p>
+        {quality.error ? null : quality.loading && !quality.data ? (
+          <LoadingState />
+        ) : unreviewed.length === 0 ? (
+          <EmptyState
+            icon={ShieldCheck}
+            title="Nichts offen"
+            description="Jede stillgelegte Bahn hat eine Saison-Entscheidung."
+          />
+        ) : (
+          <div className="space-y-2">
+            {[...unreviewedByPark.values()].map((rows) => (
+              <div key={rows[0].parkId} className="border-border/60 bg-card rounded-lg border p-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link
+                    href={`/admin/parks/${rows[0].parkId}`}
+                    className="hover:text-primary font-medium transition-colors"
+                  >
+                    {rows[0].parkName}
+                  </Link>
+                  <Chip tone="warning">
+                    {rows.length} {rows.length === 1 ? 'Bahn' : 'Bahnen'}
+                  </Chip>
+                </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {rows.map((row) => (
+                    <Link
+                      key={row.attractionId}
+                      href={`/admin/attractions/${row.attractionId}`}
+                      title={`Stillgelegt am ${day(row.retiredAt)}, zuletzt gemessen: ${day(row.lastReading)}`}
+                      className="border-border/60 hover:border-primary/50 hover:text-primary rounded-md border px-2 py-1 text-xs transition-colors"
+                    >
+                      {row.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
