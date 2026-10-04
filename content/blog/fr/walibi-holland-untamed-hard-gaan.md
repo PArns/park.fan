@@ -513,8 +513,8 @@ parierais pas cinq minutes dessus.
 
 > [!NOTE]
 > **Au 25 septembre 2026 :** le calendrier, les maisons et les prix des
-> forfaits pour 2026 sont connus et intégrés à cette section. Tout commence le
-> 3 octobre.
+> forfaits pour 2026 sont connus et intégrés à cette section. Les Fright Nights
+> ont lieu depuis le 3 octobre, jusqu’au 1er novembre.
 
 Les soirs d’octobre, ce parc cesse d’être un parc d’attractions.
 

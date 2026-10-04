@@ -501,7 +501,7 @@ bespaarde minuten zou ik er niet op wedden.
 
 > [!NOTE]
 > **Stand 25 september 2026:** kalender, huizen en pakketprijzen voor 2026
-> liggen vast en zijn in dit hoofdstuk verwerkt. Het begint op 3 oktober.
+> liggen vast en zijn in dit hoofdstuk verwerkt. De Fright Nights lopen sinds 3 oktober, tot 1 november.
 
 Op de avonden in oktober houdt dit park op een pretpark te zijn.
 

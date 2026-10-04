@@ -542,7 +542,7 @@ intanto non è in fila da nessuna parte.
 
 L’**[Euro-Mir](ref:europa-park/euro-mir)** ha aperto il **12 giugno 1997** e
 gira per l’ultima volta nella stagione 2026/27, fino al 9 gennaio 2027. Poi verrà
-smontata.
+smontata. La [notizia sull’addio](/news/europa-park-saluta-euro-mir) riporta data e successore.
 
 L’attrazione è un oggetto strano, e lo dico come complimento. Quasi cinque minuti
 di corsa, di cui una buona parte attorno a due torri a specchi, e i vagoni lungo

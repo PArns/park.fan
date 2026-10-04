@@ -536,7 +536,7 @@ in de rij.
 
 De **[Euro-Mir](ref:europa-park/euro-mir)** opende op **12 juni 1997** en rijdt
 in het seizoen 2026/27 voor het laatst, tot 9 januari 2027. Daarna wordt ze
-afgebroken.
+afgebroken. Het [nieuwsbericht over het afscheid](/news/europa-park-neemt-afscheid-van-euro-mir) noemt datum en opvolger.
 
 De baan is een vreemd ding, en dat is als compliment bedoeld. Bijna vijf minuten
 rittijd, een flink deel ervan rond twee gespiegelde torens, en de wagens draaien

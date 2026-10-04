@@ -545,7 +545,7 @@ haciendo cola en ninguna parte.
 
 La **[Euro-Mir](ref:europa-park/euro-mir)** se inauguró el **12 de junio de 1997**
 y circula por última vez en la temporada 2026/27, hasta el 9 de enero de 2027.
-Después se desmonta.
+Después se desmonta. La [noticia sobre la despedida](/news/europa-park-despide-euro-mir) recoge la fecha y el sucesor.
 
 La atracción es un bicho raro. Casi cinco minutos de
 recorrido, buena parte de ellos alrededor de dos torres espejadas, y las

@@ -532,7 +532,7 @@ trotzdem, denn wer gerade beim Eiskunstlauf sitzt, steht so lange nirgends an.
 
 Die **[Euro-Mir](ref:europa-park/euro-mir)** eröffnete am **12. Juni 1997** und
 fährt in der Saison 2026/27 zum letzten Mal, bis zum 9. Januar 2027. Danach wird
-sie abgebaut.
+sie abgebaut. Die [Meldung zum Abschied](/news/europa-park-verabschiedet-euro-mir) nennt Datum und Nachfolger.
 
 Die Bahn ist auf eine liebenswerte Art seltsam. Knapp fünf Minuten Fahrzeit, ein guter Teil davon um zwei verspiegelte Türme herum,
 und die Wagen drehen sich unterwegs um die eigene Achse, sodass du nie weißt,
