@@ -428,7 +428,10 @@ async function loadAttractions(park) {
     });
     if (response.ok) {
       const body = await response.json();
-      slugs = new Set((body.attractions ?? []).map((a) => a.slug));
+      // A ride that closed for good keeps its page, so its photos are still valid.
+      slugs = new Set(
+        [...(body.attractions ?? []), ...(body.closedAttractions ?? [])].map((a) => a.slug)
+      );
     }
   } catch {
     // Leave null — a park we could not read simply isn't verified.
