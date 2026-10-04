@@ -193,7 +193,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
         */
         { key: 'favorites', href: '/favorites', label: t('favorites') },
         { key: 'alerts', href: '/alerts', label: t('alerts') },
-        { key: 'developers', href: '/developers', label: t('developers') },
       ],
     },
     {

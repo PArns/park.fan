@@ -65,7 +65,6 @@ const PAGES = [
   ['/en/how-park-fan-works', 'hub', true],
   ['/en/fancast', 'hub', true],
   ['/en/blog', 'hub', false],
-  ['/de/developers', 'tool'],
   ['/de/contribute', 'tool'],
   ['/de/news', 'tool'],
   ['/de/glossar', 'tool'],

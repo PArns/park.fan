@@ -164,7 +164,6 @@ export async function GET(
       howto: { namespace: 'howto', key: 'title' },
       'how-park-fan-works': { namespace: 'howto', key: 'title' },
       fancast: { namespace: 'fancast', key: 'title' },
-      developers: { namespace: 'developers', key: 'hero.title' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       ...glossaryEntries,
     };

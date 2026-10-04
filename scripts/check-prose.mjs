@@ -196,6 +196,39 @@ const SELF_GRADING = {
   it: /(?<!\p{L})(?:si (?:dà|da) (?:i |dei |un )?vot[oi]|si autovalut\p{L}*|si (?:misura|misurano|valuta|valutano|giudica|giudicano)\s+(?:\p{L}+\s+){0,2}?da (?:sol[oaie]|sé))(?!\p{L})/giu,
 };
 /**
+ * `eine Zahl zeigst` and its kin (§3.3, rule 11): a sentence where something "shows a number",
+ * "nennt eine Zahl", "spuckt eine Zahl aus". It says a number exists and not which one or what it
+ * counts. Patrick put it on the list on 2026-10-04. Say the number's name instead: `zeigt die
+ * vorhergesagte Wartezeit`, `nennt den Median der letzten 30 Tage`. Only the indefinite article is
+ * a hit, so `die Zahl steht im Diagramm` and `eine Zahl ist die Wartezeit` stay; `als dass eine
+ * Zahl beide beschreiben könnte` has none of the verbs. The five translations are matched on the
+ * same verb + `a number` shape (`shows you a number`, `toont een getal`, `affiche un chiffre`,
+ * `muestra un número`, `mostra un numero`).
+ */
+const A_NUMBER_SHOWN = {
+  de: /\b(?:(?:an)?zeig(?:e|en|st|t|te|test|ten)|nenn(?:e|en|st|t)|nannte|liefer(?:e|n|st|t|te|ten)|spuck(?:e|en|st|t|te))\s+(?:\p{L}+\s+){0,2}?eine\s+zahl\b|\beine\s+zahl\s+(?:\p{L}+\s+){0,2}?(?:(?:an)?zeig(?:e|en|st|t|te|test|ten)|nenn(?:en|st|t)|liefer(?:n|st|t)|ausspuck(?:en|st|t)?|ausgeb(?:en)?|aus)\b/giu,
+  en: /\b(?:shows?|showed|showing|gives?|gave|giving|spits?(?: out)?)\s+(?:you\s+|us\s+|them\s+)?a\s+(?:single\s+)?number\b(?!\s+of\b)/giu,
+  nl: /\b(?:toon(?:t|de|den)?|geeft|gaf|geven|noemt|noemde|noemen)\s+(?:je\s+|jou\s+|ons\s+|u\s+)?een\s+(?:getal|cijfer)\b|\blaat\s+(?:je\s+|jou\s+|ons\s+|u\s+)?een\s+(?:getal|cijfer)\s+zien\b/giu,
+  fr: /(?<!\p{L})(?:affich\p{L}*|montr\p{L}*|donn\p{L}*)\s+(?:(?:te|vous|nous)\s+)?un\s+(?:chiffre|nombre)(?!\p{L})(?!\s+d[e’'])/giu,
+  es: /(?<!\p{L})(?:muestr\p{L}*|enseñ\p{L}*|d(?:a|an|aba|aban))\s+(?:(?:te|nos|os|le|les)\s+)?(?:un\s+número|una\s+cifra)(?!\p{L})(?!\s+de\b)/giu,
+  it: /(?<!\p{L})(?:mostr\p{L}*|d(?:à|a|anno|ava))\s+(?:(?:ti|ci|vi|gli)\s+)?(?:un\s+numero|una\s+cifra)(?!\p{L})(?!\s+di\b)/giu,
+};
+/**
+ * The other half of the same habit, added the same day: the number as the one doing something.
+ * `die Zahl zeigt`, `die Zahlen sagen`, `die Zahl steht dafür`, `diese Zahl verrät`. A number
+ * shows nothing; say what was measured and what follows from it. `steht` is a hit only with
+ * `für`/`dafür`, so `die Zahl steht im Diagramm` stays. One adjective may sit in between
+ * (`die nackte Zahl zeigt`).
+ */
+const NUMBER_SPEAKS = {
+  de: /\b(?:die|diese|eine|jede|keine|unsere|deine|solche)\s+(?:\p{L}+\s+)?zahl(?:en)?\s+(?:zeig(?:t|en|te|ten)|sag(?:t|en|te|ten)|erzähl(?:t|en|te|ten)|sprechen|spricht|sprach(?:en)?|verrät|verraten|beleg(?:t|en)|beweis(?:t|en)|(?:steh(?:t|en)|stand(?:en)?)\s+(?:für|dafür))(?!\p{L})/giu,
+  en: /\b(?:the|this|that|these|those|each|every)\s+(?:\p{L}+\s+)?(?:number|numbers|figure|figures)\s+(?:shows?|showed|tells?|told|says?|said|speaks?|spoke|stands? for|stood for|reveals?|proves?)\b/giu,
+  nl: /\b(?:het|dit|dat|de|deze|die|elk)\s+(?:\p{L}+\s+)?(?:getal|getallen|cijfer|cijfers)\s+(?:toont|tonen|zegt|zeggen|vertelt|vertellen|spreekt|spreken|bewijst|bewijzen|laat\s+zien|laten\s+zien|sta(?:at|an)\s+(?:voor|ervoor))\b/giu,
+  fr: /(?<!\p{L})(?:le|ce|les|ces|chaque)\s+(?:\p{L}+\s+)?(?:chiffre|chiffres|nombre|nombres)\s+(?:montre(?:nt)?|disent|dit|raconte(?:nt)?|parle(?:nt)?|révèle(?:nt)?|prouve(?:nt)?)(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:el|este|ese|los|estos|esos|la|esta|esa|las|estas|esas|cada)\s+(?:\p{L}+\s+)?(?:número|números|cifra|cifras)\s+(?:muestran?|dicen?|cuentan?|hablan?|revelan?|demuestran?)(?!\p{L})/giu,
+  it: /(?<!\p{L})(?:il|questo|quel|i|questi|quei|la|questa|quella|le|queste|quelle|ogni)\s+(?:\p{L}+\s+)?(?:numero|numeri|cifra|cifre)\s+(?:mostra(?:no)?|dicono|dice|racconta(?:no)?|parla(?:no)?|rivela(?:no)?|dimostra(?:no)?)(?!\p{L})/giu,
+};
+/**
  * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
  * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
  * Every language on every surface, because a translation keeps the habit of its source.
@@ -769,6 +802,16 @@ function hardRules(file, text, locale) {
     fail(
       file,
       `a model that grades itself (§3.3), say what is compared and where the result is: ${[...new Set(selfGrading)].slice(0, 3).join(' · ')}`
+    );
+  const flat = text.replace(/\s+/g, ' ');
+  const numberShown = [
+    ...((A_NUMBER_SHOWN[locale] && flat.match(A_NUMBER_SHOWN[locale])) || []),
+    ...((NUMBER_SPEAKS[locale] && flat.match(NUMBER_SPEAKS[locale])) || []),
+  ];
+  if (numberShown.length)
+    fail(
+      file,
+      `"eine Zahl zeigen" (§3.3), name the number instead: ${[...new Set(numberShown)].slice(0, 3).join(' · ')}`
     );
   if (locale === 'de') {
     const queue = (text.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);

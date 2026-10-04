@@ -14,7 +14,7 @@ to the concept page first.
 | Kind               | Pages                                                                          | Head                                                  |
 | ------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------- |
 | Hub                | best time to visit, trip planner, how park.fan works, Fancast, blog            | `LandingHero` (`data-landing-hero="hub"`)             |
-| Tool page          | developers, contribute, news index, glossary index                             | `LandingHero variant="compact"` (`="compact"`)        |
+| Tool page          | contribute, news index, glossary index                                         | `LandingHero variant="compact"` (`="compact"`)        |
 | Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
 
 The homepage is none of these and keeps its own hero.
@@ -35,8 +35,8 @@ the parts that apply, without reordering them.
   (`data-chapter-heading`), inside a card, or in the `LandingNextSteps` band (`data-landing-next`).
   A card is `Card` (`data-slot="card"`), `GlassCard` (`data-glass-card`), or a box built by hand
   whose root says `data-card` (`ParkHeaderCard`, `ContributeBanner`, `PreferredSourcePrompt`,
-  `RightsNotice`). A bold line set by hand is the thing the anatomy replaced: developers, glossary
-  and contribute each had their own. A heading inside a chapter that is not a card is an `<h3>`
+  `RightsNotice`). A bold line set by hand is the thing the anatomy replaced: glossary and
+  contribute each had their own. A heading inside a chapter that is not a card is an `<h3>`
   (the accuracy band of `MLStatsSection` on Fancast).
 - **`FAQPage` only beside a rendered FAQ.** `FaqList` emits the structured data from the same
   array it renders and marks its list `data-faq-list`. Google wants structured data to describe

@@ -687,6 +687,17 @@ Parkschluss schaffst`. It stood in the planner's lead, the landing page's pointe
     and the planner launch post in all six languages until Patrick put it on the list on 2026-10-04.
     `pnpm check:prose` fails on it in every language and on every surface. A sum stays: `a day that
 adds up to a lot of empty seats`, `el segundo día sale por 60 €`.
+11. **Never `eine Zahl zeigen`, and never a number that does something.** Nor `zeigt dir eine
+Zahl`, `nennt eine Zahl`, `spuckt eine Zahl aus`, `die Zahl zeigt`, `die Zahlen sagen`,
+    `die Zahl steht für` / `dafür`, `diese Zahl verrät`, or the translations: `shows a number`,
+    `the number shows`, `this figure stands for`, `toont een getal`, `dit getal staat voor`,
+    `affiche un chiffre`, `ce chiffre montre`, `muestra un número`, `esta cifra dice`,
+    `mostra un numero`, `questo numero dice`. The first says a number exists and not which one;
+    the second hands the reader's conclusion to the number. Name the figure and say what follows
+    from it: `zeigt die vorhergesagte Wartezeit`, `im Schnitt 23 Prozent mehr als an einem
+Wochenendtag, also war der Dienstag voller`. Patrick put both on the list on 2026-10-04.
+    `pnpm check:prose` fails on them in every language and on every surface. A place stays
+    (`die Zahl steht im Diagramm`), and so does `a number of` in all its forms.
 
 ### 3.4 Travel-guide copy, in all six languages
 

@@ -354,7 +354,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
         <div
           id="start"
           className={cn(
-            'u-force-metric relative space-y-16 overflow-x-clip pt-0 pb-14 sm:space-y-24 sm:py-20',
+            'u-force-metric relative space-y-16 overflow-x-clip pt-0 sm:space-y-24 sm:pt-20',
             HERO_FLOW_INTO_PULL
           )}
         >
