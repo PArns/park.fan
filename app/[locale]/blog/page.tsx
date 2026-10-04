@@ -126,7 +126,7 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
           path="/blog"
         />
         <LandingHero
-          kicker={t('badge')}
+          kicker={tLanding('blog.kicker')}
           title={t('heroTitle')}
           tagline={t('intro')}
           imageSrc={BLOG_HERO_IMAGE}

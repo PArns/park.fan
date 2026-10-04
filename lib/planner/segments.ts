@@ -22,6 +22,13 @@ export const PLANNER_SEGMENTS: Record<Locale, string> = {
 /** The canonical route-folder segment (English), what the app router matches. */
 export const PLANNER_CANONICAL_SEGMENT = PLANNER_SEGMENTS.en;
 
+/**
+ * The anchor on the planner page where a plan is started — the hero's action jumps to it. It sits
+ * on the body's own „new day" controls, whichever of the two is showing, so the jump lands on the
+ * button that opens the wizard rather than on a second one.
+ */
+export const PLANNER_START_ID = 'plan';
+
 /** Localized path for a locale, e.g. `/tagesplaner`. */
 export function plannerPath(locale: Locale | string): string {
   return `/${PLANNER_SEGMENTS[locale as Locale] ?? PLANNER_CANONICAL_SEGMENT}`;

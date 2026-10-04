@@ -12,6 +12,7 @@ import { TARON_WAIT_NOW } from './_fixtures';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
+import { Compass } from 'lucide-react';
 
 // Lazy per-locale loaders so only the requested language's content module is
 // evaluated per render instead of all six.
@@ -318,6 +319,9 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
             label: tLanding(`howto.stats.${key}.label`),
           }))}
           scrollLabel={tLanding('scroll')}
+          // The page's one action (docs/product/landing-pages.md §4): open a park and read its
+          // numbers with what this page explains. It used to sit only in the closing band.
+          action={{ href: '/parks', label: tLanding('howto.action'), icon: Compass }}
           aside={
             <WaitSign
               value={TARON_WAIT_NOW}
