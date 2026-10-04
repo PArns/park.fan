@@ -63,7 +63,7 @@ media annuale, e a
 [Disney Adventure World](ref:disney-adventure-world) è la **riga più tranquilla
 dell'anno**.
 
-Questa distanza è il motivo della guida. Le due mete festeggiano il Natale più o
+Le due mete festeggiano il Natale più o
 meno per lo stesso tempo, tutte e due pubblicizzano le stesse settimane, e su
 cosa ti aspetta il 28 dicembre dicono cose molto diverse. Qui sotto prima le
 date, ognuna presa dal sito ufficiale del parco, poi la misurazione con i suoi
@@ -240,14 +240,12 @@ Disney lo vende a parte, fino a esaurimento.
 
 ## Quanta folla ci sarà davvero
 
-Passiamo ai numeri, e prima a quello che non sono.
-
 **La nostra riga di dicembre per questi nove parchi non è una media mensile.** Si
 regge su esattamente otto giorni di misurazione, dal 24 al 31 dicembre 2025, e
 prima di allora a Orlando e a Parigi non avevamo misurato niente. Da gennaio
 2026 la serie è continua, da 28 a 31 giorni al mese. **Di novembre 2025 non
-abbiamo un solo giorno di misurazione in nessuno dei nove parchi**, e quindi la
-nostra tabella non dice nulla sulla prima metà della stagione natalizia.
+abbiamo un solo giorno di misurazione in nessuno dei nove parchi**, e quindi non
+c'è nulla nella nostra tabella sulla prima metà della stagione natalizia.
 
 Quello che quegli otto giorni descrivono con molta precisione è invece la
 settimana fra Natale e Capodanno. Ed è di questo che parla la guida.
@@ -272,7 +270,7 @@ tutti e nove i parchi, che il nostro modello colloca nella fascia più alta.
 
 ```
 
-E adesso Parigi, stesso periodo, stessi otto giorni, stesso metodo.
+Per Parigi, stesso periodo, stessi otto giorni, stesso metodo.
 
 **Disneyland Park Parigi, tempo di attesa tipico per mese**
 
@@ -343,11 +341,11 @@ pagina natalizia. Disney elenca lì Magic Kingdom, Hollywood Studios, EPCOT,
 Animal Kingdom, Disney Springs, gli hotel e Blizzard Beach, e il 31 dicembre non
 compare in nessuna di quelle sezioni. Può ancora arrivare, Disney pubblica il
 Capodanno spesso solo a novembre. Fino ad allora è una lacuna che tocca a Disney
-colmare, non a noi.
+colmare.
 
 ## Cosa prenoterei al posto tuo
 
-**Se vuoi la decorazione completa e le code più corte, vai a novembre.** A
+**Novembre ti dà la decorazione completa e le code più corte.** A
 Orlando entrambe le serate partono prima dell'inizio ufficiale della stagione,
 Universal festeggia dal 14 e Parigi già dal 7 novembre. La settimana fra Natale e
 Capodanno a Orlando ti dà lo stesso programma con i tempi di attesa più alti
@@ -365,8 +363,7 @@ lo sconto per il pass annuale vale tutte le sere invece che solo alcune, e
 durano fino al 5 gennaio, cioè due settimane dopo la fine della festa al Magic
 Kingdom.
 
-**E una volta che hai una data in testa, guarda prima l'elenco delle serate e
-poi il prezzo.** La Very Merry Christmas Party si tiene 25 giorni sui 45 della
+**Con una data in testa, guarda prima l'elenco delle serate e poi il prezzo.** La Very Merry Christmas Party si tiene 25 giorni sui 45 della
 sua finestra, le Jollywood Nights 15 su 60. Tutte e due le finestre suonano come
 «quasi ogni sera», e nessuna delle due lo è.
 

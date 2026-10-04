@@ -64,7 +64,7 @@ jaargemiddelde, en in de
 [Disney Adventure World](ref:disney-adventure-world) is het de **rustigste regel
 van het jaar**.
 
-Dat verschil is de reden voor deze gids. Beide bestemmingen vieren ongeveer even
+Beide bestemmingen vieren ongeveer even
 lang Kerst, beide adverteren dezelfde weken, en op de vraag wat je op 28
 december te wachten staat geven ze een heel ander antwoord. Hieronder eerst de
 data, elk van de officiële pagina van het park, daarna de meting met haar
@@ -240,14 +240,12 @@ apart, zolang de voorraad strekt.
 
 ## Hoe druk het echt wordt
 
-Nu de cijfers, en eerst wat ze niet zijn.
-
 **Onze decemberregel voor deze negen parken is geen maandgemiddelde.** Hij staat
 op precies acht meetdagen, 24 tot en met 31 december 2025, en daarvoor hebben we
 in Orlando en Parijs niets gemeten. Vanaf januari 2026 is de reeks aaneengesloten,
 28 tot 31 dagen per maand. **Uit november 2025 hebben we voor geen van de negen
-parken ook maar één meetdag**, en daarmee zegt onze tabel niets over de eerste
-helft van het kerstseizoen.
+parken ook maar één meetdag**, en daardoor staat er in onze tabel niets over de
+eerste helft van het kerstseizoen.
 
 Wat die acht dagen wel heel precies beschrijven, is de week tussen Kerst en
 Nieuwjaar. Daar gaat het hier om.
@@ -272,7 +270,7 @@ regel in alle negen parken die ons model in de hoogste band zet.
 
 ```
 
-En dan Parijs, dezelfde periode, dezelfde acht dagen, dezelfde methode.
+Voor Parijs gelden dezelfde periode, dezelfde acht dagen, dezelfde methode.
 
 **Disneyland Park Parijs, typische wachttijd per maand**
 
@@ -339,13 +337,11 @@ staan niet op de pagina, en ook niet in het persbericht van 6 augustus.
 gepubliceerd. Disney noemt daar Magic Kingdom, Hollywood Studios, EPCOT, Animal
 Kingdom, Disney Springs, de hotels en Blizzard Beach, en 31 december komt in
 geen van die onderdelen voor. Het kan nog komen, Disney publiceert oudjaarsavond
-vaak pas in november. Tot dan is het een gat dat Disney moet dichten, niet een
-dat wij invullen.
+vaak pas in november. Tot dan is het een gat dat Disney moet dichten.
 
 ## Wat ik in jouw plaats zou boeken
 
-**Wil je de volle versiering en zo kort mogelijke wachttijden, ga dan in
-november.** In Orlando beginnen beide avondevenementen vóór de officiële
+**De volle versiering en de kortste wachttijden krijg je in november.** In Orlando beginnen beide avondevenementen vóór de officiële
 seizoensstart, Universal viert vanaf de 14e en Parijs al vanaf 7 november. De
 week tussen Kerst en Nieuwjaar levert je in Orlando hetzelfde programma bij de
 hoogste wachttijden van het jaar.
@@ -362,8 +358,8 @@ korting voor jaarkaarten geldt op alle avonden in plaats van op geselecteerde,
 en het loopt tot 5 januari, dus ook nog als het feest in het Magic Kingdom al
 twee weken voorbij is.
 
-**En heb je een datum in je hoofd, kijk dan eerst naar de lijst met avonden en
-daarna naar de prijs.** De Very Merry Christmas Party vindt plaats op 25 van de
+**Met een datum in je hoofd kijk je eerst naar de lijst met avonden, daarna naar
+de prijs.** De Very Merry Christmas Party vindt plaats op 25 van de
 45 dagen van haar venster, Jollywood Nights op 15 van de 60. Allebei de vensters
 klinken als “bijna elke dag”, en allebei zijn ze dat niet.
 

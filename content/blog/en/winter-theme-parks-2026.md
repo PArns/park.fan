@@ -529,7 +529,7 @@ you get used to very quickly.
 What’s actually running on the day you want, and how long the queues are right
 now, is on each park’s own page all winter.
 
-Outside Europe, December looks different. In Orlando the week between
+December behaves differently once you leave Europe. In Orlando the week between
 Christmas and New Year is the busiest of the measured year in all seven parks,
 and in Paris it isn't: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
 

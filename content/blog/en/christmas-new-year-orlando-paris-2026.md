@@ -36,7 +36,7 @@ seo:
   title: 'Christmas 2026 in Orlando and Paris: the dates and how busy it gets'
   description: >-
     Every date for Christmas and New Year at Walt Disney World, Universal Orlando
-    and Disneyland Paris, plus what we measured in the week between the years.
+    and Disneyland Paris, plus what we measured in the holiday week itself.
   keywords:
     - Christmas Orlando 2026
     - Mickey's Very Merry Christmas Party 2026
@@ -63,7 +63,7 @@ yearly average, and at
 [Disney Adventure World](ref:disney-adventure-world) it's the **quietest row of
 the year**.
 
-That gap is why this guide exists. Both destinations run a Christmas season of
+Both destinations run a Christmas season of
 roughly the same length, both advertise the same weeks, and when you ask what
 27 December actually looks like, they answer very differently. The dates come
 first, each one from the park's own site, and the measurement with its limits
@@ -233,13 +233,11 @@ separately, while they last.
 
 ## How busy it actually gets
 
-Now the numbers, and first what they aren't.
-
 **Our December row for these nine parks is not a monthly average.** It rests on
 exactly eight measured days, 24 to 31 December 2025, and before that we measured
 nothing at all in Orlando or Paris. From January 2026 the series is unbroken, 28
 to 31 days a month. **For November 2025 we have not one measured day in any of
-the nine parks**, so our table says nothing about the first half of the
+the nine parks**, so there's nothing in our table about the first half of the
 Christmas season.
 
 What those eight days do describe very precisely is the week between Christmas
@@ -265,7 +263,7 @@ all nine parks that our model puts in the top band.
 
 ```
 
-And now Paris, same period, same eight days, same method.
+Paris gets the same period, the same eight days and the same method.
 
 **Disneyland Park Paris, typical wait by month**
 
@@ -279,8 +277,8 @@ And now Paris, same period, same eight days, same method.
 
 ```
 
-At Disneyland Park the week between the years sits where an ordinary summer
-month sits. At Disney Adventure World it's the lowest row in the whole table,
+At Disneyland Park the week between Christmas and New Year sits where an ordinary
+summer month sits. At Disney Adventure World it's the lowest row in the whole table,
 below every month of the year.
 
 Two explanations suggest themselves, and both can be checked against other
@@ -310,7 +308,7 @@ Which days our calendar calls quiet over the coming weeks:
 
 Every park has the same calendar on its own page, day by day. Treat it carefully
 for December 2026: only those eight holiday days have gone into the model so
-far, and eight days between the years teach it very little about the second week
+far, and eight days of that week teach it very little about the second week
 of Advent.
 
 ## New Year's Eve
@@ -331,16 +329,16 @@ aren't on the page, and they aren't in the 6 August press release either.
 page. Disney lists Magic Kingdom, Hollywood Studios, EPCOT, Animal Kingdom,
 Disney Springs, the hotels and Blizzard Beach there, and 31 December appears in
 none of those sections. It may still come; Disney often publishes New Year's Eve
-in November. Until then it's a gap for Disney to close, not one for us to fill.
+in November. Until then it's a gap for Disney to close.
 
 ## What I'd book in your place
 
-**If you want the full decoration and the shortest queues, go in November.** In
+**November gets you the full decoration and the shortest queues.** In
 Orlando both evening events start before the season officially does, Universal
-celebrates from the 14th, and Paris from the 7th. The week between the years
-gets you the same programme at the highest waits of the year.
+celebrates from the 14th, and Paris from the 7th. The week between Christmas and New
+Year gets you the same programme at the highest waits of the year.
 
-**If you have to travel between the years, go to Paris.** That's the finding
+**If you have to travel between Christmas and New Year, go to Paris.** That's the finding
 above in one sentence: the same week is no outlier upwards there, and at Disney
 Adventure World it's the quietest point of the year. You get a Christmas parade
 twice a day, a 24-metre tree, and a New Year's Eve programme that's already
@@ -352,8 +350,7 @@ every date, the Passholder discount applies on all nights instead of selected
 ones, and it runs to 5 January, which is two weeks after the Magic Kingdom party
 has finished.
 
-**And once you have a date in mind, check the list of nights before you check
-the price.** Very Merry Christmas Party happens on 25 of the 45 days in its
+**With a date in mind, check the list of nights before the price.** Very Merry Christmas Party happens on 25 of the 45 days in its
 window, Jollywood Nights on 15 of 60. Both windows sound like "most nights", and
 neither is.
 

@@ -65,7 +65,7 @@ dem Jahresschnitt, und in der
 [Disney Adventure World](ref:disney-adventure-world) ist sie die **ruhigste
 Zeile des Jahres**.
 
-Das ist der Grund für diesen Guide. Beide Ziele feiern Weihnachten ähnlich lang,
+Beide Ziele feiern Weihnachten ähnlich lang,
 beide bewerben dieselben Wochen, und bei der Frage, was dich am 28. Dezember
 erwartet, liegen sie weit auseinander. Unten stehen zuerst die Termine, jeder
 von der offiziellen Seite des Parks, und danach die Messung mit ihren
@@ -81,8 +81,8 @@ Einschränkungen.
 Disney legt die Weihnachtssaison in Orlando auf **13. November 2026 bis 6. Januar 2027**. Zwei der vier Parks haben in diesen Wochen zusätzlich ein
 Abendevent mit eigenem Ticket, und beide beginnen vor dem offiziellen
 Saisonstart: die Very Merry Christmas Party am 8. November, die Jollywood
-Nights am 7. Diese fünf bis sechs Tage Vorlauf sind kein Versehen, sondern der
-Grund, warum die ersten Partyabende regelmäßig die günstigsten sind.
+Nights am 7. Diese fünf bis sechs Tage Vorlauf sind der Grund, warum die ersten
+Partyabende regelmäßig die günstigsten sind.
 
 ### Mickey's Very Merry Christmas Party: 25 Abende
 
@@ -239,14 +239,12 @@ Disney separat, solange der Vorrat reicht.
 
 ## Wie voll es wirklich wird
 
-Jetzt zu den Zahlen, und zuerst zu dem, was sie nicht sind.
-
 **Unsere Dezemberzeile für diese neun Parks ist kein Monatsmittel.** Sie steht
 auf genau acht Messtagen, dem 24. bis 31. Dezember 2025, und davor haben wir in
 Orlando und Paris nichts gemessen. Ab Januar 2026 ist die Reihe lückenlos, 28
 bis 31 Tage pro Monat. **Aus dem November 2025 haben wir für keinen dieser neun
-Parks einen einzigen Messtag**, und damit sagt unsere Tabelle über die erste
-Hälfte der Weihnachtssaison nichts.
+Parks einen einzigen Messtag**, und für die erste Hälfte der Weihnachtssaison
+steht in unserer Tabelle nichts.
 
 Was die acht Tage dafür sehr genau beschreiben, ist die Woche zwischen
 Weihnachten und Silvester. Genau darum geht es hier.
@@ -272,7 +270,7 @@ bewertet.
 
 ```
 
-Und jetzt Paris, derselbe Zeitraum, dieselben acht Tage, dieselbe Methode.
+Für Paris gelten derselbe Zeitraum, dieselben acht Tage, dieselbe Methode.
 
 **Disneyland Park Paris, typische Wartezeit nach Monat**
 
@@ -341,12 +339,11 @@ Preise stehen auf der Seite nicht, und auch nicht in der Pressemitteilung vom 6.
 veröffentlicht. Disney nennt dort Magic Kingdom, Hollywood Studios, EPCOT,
 Animal Kingdom, Disney Springs, die Hotels und Blizzard Beach, und der 31. Dezember kommt in keinem dieser Abschnitte vor. Das kann noch kommen, Disney
 veröffentlicht Silvester oft erst im November. Bis dahin ist es eine Lücke, die
-Disney schließen muss, keine, die wir füllen.
+Disney schließen muss.
 
 ## Was ich an deiner Stelle buchen würde
 
-**Willst du die volle Dekoration und möglichst kurze Wartezeiten, fahre im
-November.** In Orlando beginnen beide Abendevents vor dem offiziellen
+**Die volle Dekoration und die kürzesten Wartezeiten gibt es im November.** In Orlando beginnen beide Abendevents vor dem offiziellen
 Saisonstart, Universal feiert ab dem 14. und Paris schon ab dem 7. November. Die
 Woche zwischen den Jahren bringt dir in Orlando dasselbe Programm bei den
 höchsten Wartezeiten des Jahres.
@@ -363,8 +360,8 @@ der Rabatt für Jahreskarten gilt an allen Abenden statt an ausgewählten, und e
 läuft bis zum 5. Januar, also auch dann noch, wenn die Party im Magic Kingdom
 seit zwei Wochen vorbei ist.
 
-**Und wenn du ein Datum im Kopf hast, prüfe erst die Terminliste, dann den
-Preis.** Die Very Merry Christmas Party findet an 25 von 45 Tagen ihres Fensters
+**Mit einem Datum im Kopf lohnt sich zuerst ein Blick auf die Terminliste,
+danach auf den Preis.** Die Very Merry Christmas Party findet an 25 von 45 Tagen ihres Fensters
 statt, Jollywood Nights an 15 von 60. Beide Fenster klingen nach „fast täglich“,
 und beide sind es nicht.
 

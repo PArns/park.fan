@@ -551,7 +551,7 @@ al que uno se acostumbra enseguida.
 Qué funciona realmente el día que tienes pensado y cuánta cola hay ahora mismo
 está todo el invierno en la página de cada parque.
 
-Fuera de Europa, diciembre se ve distinto. En Orlando, la semana entre Navidad
+Sal de Europa y diciembre se comporta distinto. En Orlando, la semana entre Navidad
 y Año Nuevo es la más cargada del año medido en los siete parques; en París no:
 [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
 

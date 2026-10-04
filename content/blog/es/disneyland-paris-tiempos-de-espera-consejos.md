@@ -424,7 +424,7 @@ ya dudaba de si el ticket de dos parques merece el sobreprecio tiene ahora un
 argumento menos a favor.
 
 Del 7 de noviembre al 6 de enero los dos parques celebran la temporada navideña,
-y la semana entre Navidad y Año Nuevo aquí se comporta distinto que en Orlando:
+y la semana entre Navidad y Año Nuevo se comporta aquí distinto que en Orlando:
 en Adventure World es incluso la más tranquila del año medido. Las fechas, el
 programa de Nochevieja y la comparación están aquí: [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
 

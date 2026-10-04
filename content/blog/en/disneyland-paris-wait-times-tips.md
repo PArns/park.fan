@@ -427,7 +427,7 @@ about whether the two-park ticket is worth the extra cost now has one less
 reason to say yes.
 
 From 7 November to 6 January both parks run the Christmas season, and the week
-between the years looks different here than in Orlando: at Adventure World it's
+between Christmas and New Year looks different here than in Orlando: at Adventure World it's
 the quietest of the measured year. Dates, the New Year's Eve programme and the
 comparison are here: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
 
