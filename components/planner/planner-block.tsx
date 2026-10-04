@@ -788,16 +788,16 @@ export function PlannerBlock({
             // drag that started on the wrong block is visible and can be
             // dragged back, where the ✕'s shared corner deletes.
             //
-            // **And it does not land in this button's column.** No horizontal
-            // edge is set, so `left` resolves to the static position of a
-            // zero-width inline inside a button that centres its content: 22 px.
-            // Measured, the button is x +0…+44 and the target x +22…+66 — half
-            // the grip has 28 px of height on a minimum block, and the target
-            // reaches 22 px past the grip into the body. `check:planner` probes
-            // right of x +44 deliberately and says so in the name of its own
-            // assertion; probing the target's column there would go red for
-            // this, which is the thing that was decided rather than broken.
-            'planner-phone:after:absolute planner-phone:after:top-1/2 planner-phone:after:h-11 planner-phone:after:w-11 planner-phone:after:-translate-y-1/2 planner-phone:after:content-[""]'
+            // **Horizontally it is pinned to the button** (PAR-651, decided
+            // 2026-10-03). With no horizontal edge set, `left` resolved to the
+            // static position of a zero-width inline inside a button that
+            // centres its content: 22 px. The target was x +22…+66 on a button
+            // that is x +0…+44 — the left half of the grip had only the
+            // button's own 28 px of height on a minimum block, and the rail was
+            // 66 px wide, 22 px of it reaching into the body. `after:left-0`
+            // puts the 44 px target on the 44 px button, like the ✕ and the
+            // resize edge, which both set their horizontal edge.
+            'planner-phone:after:absolute planner-phone:after:top-1/2 planner-phone:after:left-0 planner-phone:after:h-11 planner-phone:after:w-11 planner-phone:after:-translate-y-1/2 planner-phone:after:content-[""]'
           )}
         />
 
