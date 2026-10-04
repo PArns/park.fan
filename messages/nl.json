@@ -1498,6 +1498,7 @@
     "locationHint": "Parken in de buurt zijn nauwkeuriger als je locatietoegang inschakelt.",
     "bannerHeadline": "Parken in de buurt hebben je locatie nodig",
     "bannerBody": "park.fan gebruikt je exacte positie alleen om parken in de buurt te tonen en om attracties en wachttijden om je heen te tonen wanneer je in een park bent.",
+    "bannerBodyShort": "Alleen voor parken in de buurt en de wachttijden om je heen in een park.",
     "bannerPrivacy": "We slaan deze gegevens niet op.",
     "youAreIn": "Je bent hier",
     "youAreInPark": "Je bent in {parkName}",
