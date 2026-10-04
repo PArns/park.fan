@@ -2810,7 +2810,7 @@
     },
     "fancast": {
       "kicker": "park.fan · voorspelmodel",
-      "tagline": "Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt, en beoordeelt zichzelf daarbij in het openbaar.",
+      "tagline": "Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt. De dag erna gaat elke voorspelling naast de gemeten wachttijd, en de gemiddelde afwijking in minuten staat openbaar op deze pagina.",
       "stats": {
         "avgError": "min gem. fout",
         "parks": "parken",

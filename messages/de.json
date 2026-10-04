@@ -2810,7 +2810,7 @@
     },
     "fancast": {
       "kicker": "park.fan · Prognosemodell",
-      "tagline": "Es liest Millionen Live-Wartezeiten und sagt für jeden veröffentlichten Tag vorher, wie voll ein Park wird – und benotet sich dabei öffentlich selbst.",
+      "tagline": "Es liest Millionen Live-Wartezeiten und sagt für jeden veröffentlichten Tag vorher, wie voll ein Park wird. Am Tag darauf wird jede Prognose mit der gemessenen Wartezeit verglichen, und die durchschnittliche Abweichung in Minuten steht öffentlich auf dieser Seite.",
       "stats": {
         "avgError": "Min. Ø-Fehler",
         "parks": "Parks",
