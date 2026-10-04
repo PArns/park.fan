@@ -425,6 +425,11 @@ mesi Adventure World fa funzionare tredici attrazioni invece di quattordici.
 Chi era già indeciso se il biglietto per due parchi valga il sovrapprezzo ha
 adesso un argomento in meno a favore.
 
+Dal 7 novembre al 6 gennaio i due parchi vivono la stagione natalizia, e la
+settimana fra Natale e Capodanno qui si comporta diversamente rispetto a Orlando: ad
+Adventure World è perfino la più tranquilla dell'anno misurato. Date, programma
+di Capodanno e confronto sono qui: [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
+
 — Patrick
 
 ---

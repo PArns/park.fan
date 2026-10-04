@@ -546,6 +546,10 @@ Umstellung, an die man sich schnell gewöhnt.
 Was an deinem Wunschtag tatsächlich läuft und wie lang die Warteschlangen gerade
 sind, steht den ganzen Winter über auf der jeweiligen Parkseite.
 
+Außerhalb Europas sieht der Dezember anders aus. In Orlando ist die Woche
+zwischen Weihnachten und Silvester in jedem der sieben Parks die vollste des
+gemessenen Jahres, in Paris nicht: [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+
 — Patrick
 
 _P.S.: Der Halloween-Guide endete in seiner Fassung vom Juli mit dem Satz, dass

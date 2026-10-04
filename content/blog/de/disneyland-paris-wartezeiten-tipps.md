@@ -419,6 +419,11 @@ Adventure World fährt in diesen Monaten dreizehn Attraktionen statt vierzehn.
 Wer ohnehin geschwankt hat, ob das Zwei-Park-Ticket den Aufpreis wert ist, hat
 gerade ein Argument weniger dafür.
 
+Zwischen dem 7. November und dem 6. Januar läuft in beiden Parks die
+Weihnachtssaison, und die Woche zwischen den Jahren ist hier anders als in
+Orlando: in der Adventure World sogar die ruhigste des gemessenen Jahres.
+Termine, Silvesterprogramm und der Vergleich stehen hier: [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+
 — Patrick
 
 ---

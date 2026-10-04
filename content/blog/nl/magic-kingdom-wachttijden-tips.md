@@ -300,6 +300,10 @@ Hetzelfde bedrijf runt ook het resort bij Parijs, en daar heeft het kleinere van
 de twee parken de langere rijen. Meer daarover staat in onze tekst over
 [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
 
+Het Magic Kingdom wordt in december een ander park. De week tussen Kerst en
+Nieuwjaar is de drukste regel van onze hele jaartabel, en de Very Merry
+Christmas Party draait op 25 avonden: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+
 — Patrick
 
 ---
