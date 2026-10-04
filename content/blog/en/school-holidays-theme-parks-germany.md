@@ -1,5 +1,5 @@
 ---
-title: 'Which School Holidays Fill Which Theme Park in Germany'
+title: 'Which school holidays fill which theme park in Germany'
 translationKey: school-holidays-germany
 date: '2026-10-04'
 author: patrick
