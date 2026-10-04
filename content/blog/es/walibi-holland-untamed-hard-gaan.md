@@ -510,8 +510,8 @@ me jugaría cinco minutos por él.
 
 > [!NOTE]
 > **A 25 de septiembre de 2026:** el calendario, las casas y los precios de los
-> paquetes de 2026 ya están publicados e incorporados en esta sección. Todo
-> empieza el 3 de octubre.
+> paquetes de 2026 ya están publicados e incorporados en esta sección. Las Fright Nights
+> se celebran desde el 3 de octubre hasta el 1 de noviembre.
 
 Las noches de octubre, este parque deja de ser un parque de atracciones.
 

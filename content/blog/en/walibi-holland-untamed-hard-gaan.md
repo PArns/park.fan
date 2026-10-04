@@ -485,7 +485,7 @@ right season; I wouldn’t bet five minutes on it.
 
 > [!NOTE]
 > **As of 25 September 2026:** the calendar, the houses and the package prices
-> for 2026 are out and worked into this section. It all starts on 3 October.
+> for 2026 are out and worked into this section. The Fright Nights have been running since 3 October, until 1 November.
 
 On October evenings this park stops being a theme park.
 

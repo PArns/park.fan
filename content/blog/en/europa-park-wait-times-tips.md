@@ -520,7 +520,7 @@ standing in a queue.
 ## Euro-Mir: the last season
 
 **[Euro-Mir](ref:europa-park/euro-mir)** opened on **12 June 1997** and runs for
-the last time in the 2026/27 season, until 9 January 2027. Then it comes down.
+the last time in the 2026/27 season, until 9 January 2027. Then it comes down. Our [news post on the farewell](/news/europa-park-euro-mir-farewell) covers the date and the successor.
 
 The ride is a strange machine, and that’s meant as a compliment. Just under
 five minutes of ride time, a good part of it spent circling two mirrored towers,

@@ -544,7 +544,7 @@ nulle part.
 
 L’**[Euro-Mir](ref:europa-park/euro-mir)** a ouvert le **12 juin 1997** et roule
 pour la dernière fois pendant la saison 2026/27, jusqu’au 9 janvier 2027. Ensuite,
-elle sera démontée.
+elle sera démontée. La [brève sur les adieux](/news/europa-park-adieu-euro-mir) donne la date et le successeur.
 
 C’est un drôle d’engin. Près de cinq minutes de
 parcours, dont une bonne partie autour de deux tours miroitantes, et les wagons
