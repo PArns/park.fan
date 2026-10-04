@@ -147,10 +147,11 @@ sessions that need them.
 
 ### Product
 
-| Doc                                                                   | Description                                                                              |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [Personas & Scenarios](product/personas-and-scenarios.md)             | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9), landing-page pilot order   |
-| [Attraction Metadata Sources](product/attraction-metadata-sources.md) | G1 research: where to get min-height/indoor/accessibility data, licenses, recommendation |
+| Doc                                                                   | Description                                                                                |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [Personas & Scenarios](product/personas-and-scenarios.md)             | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9), landing-page pilot order     |
+| [Landing Pages](product/landing-pages.md)                             | Three kinds of landing page, one anatomy, one primary action per page; build order PAR-676 |
+| [Attraction Metadata Sources](product/attraction-metadata-sources.md) | G1 research: where to get min-height/indoor/accessibility data, licenses, recommendation   |
 
 ### Other
 
