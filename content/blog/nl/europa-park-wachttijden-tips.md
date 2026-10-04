@@ -2,14 +2,15 @@
 title: 'Europa-Park: Duitslands grootste park, en waar al die mensen blijven'
 translationKey: europa-park-guide
 date: '2026-08-21'
+updatedAt: '2026-10-04'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Geen park in Duitsland verkoopt meer tickets, en toch sta je in Rust korter
-  in de rij dan in het Phantasialand. Waarom uitgerekend de zondag de rustigste
-  dag is, waarom november van iedereen is die zonder waterbanen kan, en waarom
-  je de Euro-Mir nu moet rijden of nooit meer.
+  in de rij dan in het Phantasialand. Wanneer het park het leegst is, welke
+  vakanties in Zwitserland en de Elzas het vullen, en waarom je de Euro-Mir nu
+  moet rijden of nooit meer.
 tags:
   - europa-park
   - voltron
@@ -34,10 +35,10 @@ coverImage:
   caption: 'Voltron Nevera in het Kroatische themagebied. Zeven overkopelementen, en de steilste lancering ter wereld.'
   credit: 'park.fan'
 seo:
-  title: 'Europa-Park wachttijden: korte rijen in het drukste park'
+  title: 'Wachttijden: wanneer is het Europa-Park het leegst?'
   description: >-
-    Europa-Park wachttijden, zelf gemeten: zondag is het rustigst, en op zaterdag
-    betaal je bij elke rij bij. Beste reistijd, prijzen 2026, route.
+    Het leegst is het Europa-Park op zondag en donderdag in mei en juni, buiten
+    de schoolvakanties in Baden-Württemberg, Zwitserland en de Elzas.
   keywords:
     - Europa-Park wachttijden
     - Europa-Park wachttijden nu
@@ -45,6 +46,7 @@ seo:
     - Europa-Park achtbanen
     - Europa-Park tips
     - Europa-Park wanneer het rustigst
+    - wanneer is het Europa-Park het leegst
     - Europa-Park beste reistijd
     - Europa-Park fast pass
     - Europa-Park single rider
@@ -554,10 +556,19 @@ gebied een rol moet spelen.
 
 Wie toch al overweegt om er in 2026 heen te gaan, moet het niet naar 2027 doorschuiven. Tot het afscheidsevent op 9 januari 2027 komt er geen zomer meer, alleen nog glühwein.
 
-## Beste reistijd: wanneer het in het Europa-Park het rustigst is
+## Wanneer het Europa-Park het leegst is
 
-Bij de weekdag loopt het Europa-Park uit de pas met [alles wat ik verder
-registreer](/beste-tijd-om-te-bezoeken).
+Het leegst is het Europa-Park op een zondag of donderdag in mei of juni, in een
+week waarin er in Baden-Württemberg, Bazel, Aargau, de Elzas, Beieren, Hessen
+en Rijnland-Palts geen schoolvakantie is. Blijf weg op zaterdag, in de week na
+Pasen, in de zomervakantie van eind juni tot half augustus en tussen Kerstmis en
+Nieuwjaar.
+
+Ik heb dat op 4 oktober 2026 nageteld in onze kalender. Die houdt voor elke
+openingsdag sinds 26 december 2025 de gemeten drukte bij, van “zeer laag” tot
+“zeer hoog”, en daarnaast de schoolvakanties van die acht regio’s. De getallen
+hieronder gaan over het zomerseizoen van april tot en met september 2026, 183
+dagen.
 
 ### De weekdag
 
@@ -565,11 +576,18 @@ registreer](/beste-tijd-om-te-bezoeken).
 
 ```
 
-Op zondag is het in Rust het rustigst, rustiger dan op elke werkdag en een stuk
-rustiger dan op zaterdag. In het [Phantasialand](ref:phantasialand?bare)
-liggen de vijf werkdagen gelijk en is de zondag na de zaterdag de drukste dag; in
-de [Efteling](ref:efteling?bare) is de donderdag het rustigst. Meer daarover in
-de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips) en de
+De zaterdag is met afstand de drukste dag. Van april tot en met september stond
+in onze kalender geen enkele zaterdag op “laag”, en 18 van de 26 op “hoog” of
+“zeer hoog”. Aan de andere kant liggen zondag, maandag en donderdag in de tabel
+gelijk. De maandag laat ik in mijn advies toch weg: die had negen dagen op
+“hoog”, de zondag zes, en elf zondagen stonden op “laag”.
+
+Daarmee loopt het Europa-Park uit de pas met [alles wat ik verder
+registreer](/beste-tijd-om-te-bezoeken). In het
+[Phantasialand](ref:phantasialand?bare) is de zondag na de zaterdag de drukste
+dag, in de [Efteling](ref:efteling?bare) liggen dinsdag tot en met vrijdag onder
+het weekend. Meer daarover in de
+[Phantasialand-gids](/blog/phantasialand-wachttijden-tips) en de
 [Efteling-gids](/blog/efteling-disney-van-nederland).
 
 De verklaring ligt bij de samenstelling van het publiek. Tot de Rijn en daarmee
@@ -584,12 +602,73 @@ Zo’n park leeft van het weekendtripje. Op zaterdag reizen de mensen aan, op
 zondag rijden ze na het ontbijt weer naar huis, en velen komen helemaal niet
 meer in het park, omdat de auto al ingepakt is.
 
-Daarom werkt voor Rust ook de Duitse vakantiekalender in zijn eentje niet als
-planningsbasis. Voor dit park rekenen we in onze kalender daarnaast de vakanties
-van de Franse regio Grand Est mee, dus van de Elzas, die van de Zwitserse kantons
-Aargau, Basel-Stadt en Basel-Landschaft en die van de aangrenzende deelstaten
-Beieren, Hessen en Rijnland-Palts. Wie alleen naar Baden-Württemberg kijkt,
-verbaast zich op een gegeven moment over een volle dinsdag.
+### De maand
+
+```stats-widget slug=europa-park show=months
+
+```
+
+Op het blok april tot en met september kun je bouwen. Daarin zijn mei en juni
+de rustigste maanden en is augustus de drukste, en dat klopt met de vakanties:
+in mei en juni zijn van de acht regio’s alleen Baden-Württemberg en Beieren
+vrij, met Pinksteren, in augustus bijna allemaal. De stilste weken van 2026
+lagen tussen het einde van de pinkstervakantie en het begin van de
+zomervakantie in Bazel, Hessen en Rijnland-Palts. Van 8 tot en met 26 juni
+stonden elf van de vijftien werkdagen op “laag”.
+
+Januari, februari en maart horen niet bij het seizoen. Het winterseizoen
+2025/26 eindigde in januari, het zomerseizoen 2026 begon op 28 maart, en in
+februari was het park dicht. Wat de tabel voor die drie maanden opgeeft, kun je
+niet naast de zomer leggen. December bestaat tot nu toe alleen uit de dagen
+tussen Kerstmis en oudejaarsavond 2025, de drukste week van de winter.
+
+In 2027 houdt het park van 7 tot 19 maart voor het eerst twee Pre-Opening
+Weeks, nog niet met alle attracties en shows, maar met de goedkoopste tickets
+van het jaar, en het zomerseizoen begint dan op 20 maart. Van oktober staan pas
+de eerste dagen in de tabel, van november nog geen enkele. Hoe ver Halloween en
+HALLOWinter er inmiddels in zitten, zie je aan het aantal meetdagen.
+
+### Welke vakanties het park vullen
+
+De vakantiekalender van Baden-Württemberg is voor Rust niet genoeg. Voor dit
+park rekenen we in onze kalender ook de vakanties mee van de Franse regio Grand
+Est, dus van de Elzas, van de Zwitserse kantons Aargau, Basel-Stadt en
+Basel-Landschaft, en van de aangrenzende deelstaten Beieren, Hessen en
+Rijnland-Palts.
+
+Hoeveel dat scheelt, zie je aan de werkdagen. Tussen april en september waren er
+42 werkdagen zonder schoolvakantie in een van de acht regio’s en zonder
+feestdag. Daarvan stonden er vier op “hoog” of hoger en 27 op “laag”. Van de
+werkdagen in de vakantie van Aargau stonden er 17 van de 27 op “hoog”, en geen
+enkele op “laag”.
+
+Vol wordt het als de vakanties zich opstapelen. In de week na Pasen waren
+Baden-Württemberg, Beieren, Hessen, Rijnland-Palts, Bazel en Aargau tegelijk
+vrij, en drie van de vier werkdagen stonden op “hoog”. Eind juni beginnen Bazel, Hessen
+en Rijnland-Palts tegelijk aan hun zomervakantie, en van 29 juni tot en met
+3 juli stond elke werkdag op “hoog”. Van 20 juli, toen Aargau erbij kwam, tot
+12 augustus waren het er 15 van de 18. In de eerste week van augustus waren alle
+acht regio’s tegelijk vrij, en alle vijf werkdagen stonden op “hoog”.
+
+De vakantie van één enkel land vult het park maar weinig. Baden-Württemberg
+en Beieren hadden in 2026 tegelijk pinkstervakantie, en van de negen werkdagen
+stonden er vijf op “laag”. Op “hoog” kwam alleen de brugvrijdag na
+Sacramentsdag. Waar Baden-Württemberg met
+Pinksteren heen gaat, weet ik niet. In elk geval niet met z’n allen naar het
+Europa-Park.
+
+In de herfst lossen de regio’s elkaar af. In 2026 hebben Bazel en Aargau sinds
+eind september herfstvakantie, Hessen en Rijnland-Palts in de eerste helft van
+oktober, de Elzas van half oktober tot Allerheiligen, Baden-Württemberg in de
+laatste week van oktober en Beieren in de eerste week van november. Tussen eind
+september en 6 november zit er geen week tussen zonder schoolvakantie in een van
+de acht regio’s. Gemeten hebben we daarvan pas het begin. Vrijdag 2 oktober
+stond op “hoog”, de zaterdag erna, de Dag van de Duitse Eenheid, op “zeer
+hoog”.
+
+Tussen Kerstmis en Nieuwjaar hadden bijna alle acht regio’s tegelijk vrij, en
+van 26 december 2025 tot en met 4 januari 2026 stonden zeven van de tien dagen
+op “hoog” of “zeer hoog”.
 
 ### De brugdag
 
@@ -614,28 +693,6 @@ https://www.youtube.com/watch?v=aRH5xvAKE_I
 Allebei van de echte [Parkfan95](https://parkfan95.de), oftewel Silas. Hij heeft
 de naam, ik had toevallig eerder het domein gekocht.
 
-### De maand
-
-```stats-widget slug=europa-park show=months
-
-```
-
-Voorzichtig met januari, maart en december. Daarachter staan maar drie tot zes
-meetdagen, en dat staat ook in de tabel; december bestaat alleen uit de dagen tussen
-Kerstmis en oudejaarsavond 2025, de drukste week van de winter. De orde van grootte klopt, op de losse
-minuut zou ik me daar niet vastleggen. Houdbaar is het blok april tot en met
-september, en daarin zijn mei en juni de rustigste zomermaanden en is augustus
-de drukste.
-
-Februari ontbreekt omdat het park dan dicht is, en maart is dun omdat het
-seizoen 2026 pas op 28 maart begon. In 2027 houdt het park van 7 tot 19 maart
-voor het eerst twee Pre-Opening Weeks, nog niet met alle
-attracties en shows, maar met de goedkoopste tickets van het jaar, en het
-zomerseizoen begint dan op 20 maart. Oktober en november hadden bij onze laatste
-controle, in september 2026, nog geen enkele meetdag. Of er inmiddels iets over
-Halloween en HALLOWinter in de tabel staat, zie je aan het aantal meetdagen
-ernaast.
-
 ### De vier weken die bijna niemand kent
 
 Het park draait vier seizoenen achter elkaar:
@@ -655,8 +712,11 @@ kou, wind of ijs blijven ze ook weleens dicht, en door de ombouw kan hier en daa
 een gebied afgesloten zijn. Bijna niemand plant zijn parkbezoek voor begin
 november; dan zoek je eerder de handschoenen van vorige winter.
 
-In onze druktevoorspelling staan **de meeste werkdagen in de HALLOWinter-weken op
-“laag”**, en voller wordt het vooral op zaterdag.
+Van de acht regio’s heeft in deze weken alleen Beieren schoolvakantie, in de
+eerste week van november. Na alles wat we van april tot en met september gemeten
+hebben, is dat de uitgangspositie voor rustige werkdagen. In onze voorspelling
+stonden op 4 oktober toch veel van die werkdagen op “hoog”, en een november in
+Rust hebben we nog niet gemeten.
 
 ```best-days-widget slug=europa-park
 
@@ -664,11 +724,9 @@ In onze druktevoorspelling staan **de meeste werkdagen in de HALLOWinter-weken o
 
 Gratis is dat niet. Het park opent pas om 11 uur en sluit op zijn vroegst om
 19 uur, dat is een uur minder dan in de zomer, het wordt vroeg donker, en op de
-waterbanen kun je niet rekenen. Als Poseidon en Atlantica je niets kunnen schelen
-en je Voltron wilt rijden op een dag die onze voorspelling op “laag” zet, ga dan
-in november door de week. Een november in Rust hebben we alleen nog niet gemeten,
-dit is een voorspelling. Welke dag er nu het best uitziet, staat in de kalender
-hierboven.
+waterbanen kun je niet rekenen. Als Poseidon en Atlantica je niets kunnen
+schelen, is een werkdag in november het proberen waard. Welke dagen er nu het
+rustigst uitzien, staat in de kalender hierboven.
 
 ## De perfecte dag in het Europa-Park
 
@@ -748,22 +806,14 @@ dagpiek kan op zijn vroegst om elf uur komen.
 ## Zo gooi je in het Europa-Park tijd weg
 
 **De zaterdag boeken omdat het hotel op zaterdag vrij is.** De zaterdag is de
-drukste dag van de week, de zondag de rustigste, en het verschil betaal je bij
+drukste dag van de week, de zondag een van de rustigste, en het verschil betaal je bij
 elke rij opnieuw. Bij tien attracties op een dag dus tien keer. Blijf je toch twee nachten, draai de
 volgorde dan om: zaterdag aankomen, Rulantica of het dorp bekijken, zondag het
 park in.
 
-**Alleen naar de Duitse vakanties kijken.** Ruim de helft van het publiek komt
-niet uit Duitsland. Een dag eind oktober kan in Baden-Württemberg een gewone
-schooldag zijn en toch vollopen, omdat in Frankrijk de Toussaint-vakantie loopt
-of in Basel-Stadt de herfstvakantie. In onze kalender tellen voor dit park de
-vakanties in de Elzas en in drie Zwitserse kantons mee, in de vakantiekalender
-van één enkele deelstaat niet.
-
 **De dinsdag voor een rustige werkdag houden.** In onze data is hij de drukste
 werkdag, al is het krap. Als er toch maar één doordeweekse dag in aanmerking
-komt, neem dan de vrijdag, die komt het dichtst bij de zondag. Maandag, woensdag
-en donderdag liggen daarachter gelijk.
+komt, neem dan de donderdag.
 
 ## Halloween, HALLOWinter, winter
 
@@ -912,10 +962,12 @@ met een voorspelling voor de komende dagen.
 
 ### Wanneer is het in het Europa-Park het rustigst?
 
-De **zondag** is de rustigste weekdag, de zaterdag de drukste, en mei en juni
-zijn de rustigste zomermaanden. Rustig zijn ook de werkdagen van het
-HALLOWinter-seizoen in november: in [onze voorspelling](ref:europa-park?calendar)
-staan de meeste daarvan op “laag”.
+Op een **zondag of donderdag in mei of juni**, buiten de schoolvakanties in
+Baden-Württemberg, Bazel, Aargau, de Elzas, Beieren, Hessen en Rijnland-Palts.
+De zaterdag is de drukste dag. Het drukst zijn de week na Pasen, de
+zomervakantie van eind juni tot half augustus en de dagen tussen Kerstmis en
+Nieuwjaar. Welke dagen er nu het rustigst uitzien, staat in
+[onze voorspelling](ref:europa-park?calendar).
 
 ### Is er in het Europa-Park een fast pass?
 
@@ -972,9 +1024,8 @@ Ja, met één kanttekening. De winterdecoratie, de ijsbaan en de kerstmarkt zijn
 er alleen dan, daar staat tegenover dat het eerder donker wordt, dat het park op
 zijn vroegst om 19 uur dichtgaat en dat de waterbanen niet doorlopend draaien;
 Atlantica heeft in de winter pauze. Tussen Kerstmis en oudejaarsavond 2025 lagen
-de wachttijden ongeveer even hoog als in augustus, gemeten op zes dagen. De
-werkdagen in november staan in onze voorspelling daarentegen meestal op “laag”;
-gemeten wachttijden uit november hebben we nog niet.
+de wachttijden ongeveer even hoog als in augustus, gemeten op zes dagen.
+Gemeten wachttijden uit november hebben we nog niet.
 
 ## Waarom ik voor de Euro-Mir nog een keer terugga
 
@@ -1038,3 +1089,4 @@ draait.
 - Samenstelling van het publiek naar herkomstland (2017) en het Zwitserse aandeel (2025): [Europa-Park op de.wikipedia, onderdeel Besucher](https://de.wikipedia.org/wiki/Europa-Park) · [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie sinds 26 december 2025, het uurprofiel over alle meetdagen sinds die datum, druktevoorspelling over 90 dagen, de vakantieregio’s in de kalender, de showcijfers van 25 september 2026, [Europa-Park op park.fan](ref:europa-park)
+- Weekdagen, maanden en vakanties: gemeten drukte per openingsdag en de schoolvakanties van Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Beieren, Hessen en Rijnland-Palts uit onze kalender, uitgewerkt op 4 oktober 2026 voor april tot en met september 2026, plus de vakantiedata tot januari 2027
