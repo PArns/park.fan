@@ -18,6 +18,7 @@ import {
 import { deriveParkStatsFindings, hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { parkStatsPath } from '@/lib/parks/stats-segments';
+import { plannerPath } from '@/lib/planner/segments';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import {
@@ -238,9 +239,10 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   // about the hourly window cannot describe a table this page did not draw.
   const showHourly = hasReadableHourlyProfile(profile);
 
-  const [seasons, t, tStats, tOverview, tDataset, tGeo, tCommon, tNav] = await Promise.all([
+  const [seasons, t, tParks, tStats, tOverview, tDataset, tGeo, tCommon, tNav] = await Promise.all([
     getParkSeasons(continent, country, city, parkSlug),
     getTranslations('parks.statsPage'),
+    getTranslations('parks'),
     getTranslations('parks.stats'),
     getTranslations('parks.overview'),
     getTranslations('parks.statsPage.dataset'),
@@ -465,6 +467,11 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
           headingId="stats-next-heading"
           title={t('nextTitle')}
           destinations={[
+            {
+              href: plannerPath(locale),
+              label: tParks('planDayCta', { park: parkName }),
+              parkPlanner: { locale },
+            },
             {
               href: parkPath,
               label: t('nextLive', parkPhrases),

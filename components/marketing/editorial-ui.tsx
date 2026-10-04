@@ -15,6 +15,7 @@ import { Reveal, ScrollCue } from './scroll-reveal';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlassCard } from '@/components/common/glass-card';
 import { buttonLinkProps } from '@/components/ui/button';
+import { ParkPlannerLink } from '@/components/parks/park-planner-link';
 
 // Shared editorial/marketing UI kit — the landing-page head, Almanac-style numbered
 // section shells, scroll-revealed figures and cards, and the closing next step.
@@ -279,6 +280,13 @@ export interface LandingDestination {
   description?: string;
   icon?: LucideIcon;
   prefetch?: boolean;
+  /**
+   * The press opens the trip planner's panel on the park the route is about instead of following
+   * `href` (which stays the planner's page, for a modified click and a crawler): the park header's
+   * `ParkPlannerLink`, drawn as this row's button, with its icon. Set `href` to
+   * `plannerPath(locale)`. The page needs a `PlannerPageParkBeacon` for the wizard to know the park.
+   */
+  parkPlanner?: { locale: string };
 }
 
 /**
@@ -316,24 +324,27 @@ export function LandingNextSteps({
 }) {
   const described = destinations.some((d) => d.description);
 
-  const links = destinations.map((d, i) => (
-    <Link
-      key={d.href}
-      href={d.href}
-      prefetch={d.prefetch}
-      {...buttonLinkProps({
-        variant: i === 0 ? 'default' : 'outline',
-        size: 'lg',
-        withIcon: !!d.icon,
-        // A label runs to 36 characters in Dutch; on a phone it wraps inside the button
-        // rather than pushing the button past the container.
-        className: 'h-auto min-h-10 max-w-full py-2 whitespace-normal max-sm:min-h-11',
-      })}
-    >
-      {d.icon && <d.icon aria-hidden />}
-      {d.label}
-    </Link>
-  ));
+  const links = destinations.map((d, i) => {
+    const look = buttonLinkProps({
+      variant: i === 0 ? 'default' : 'outline',
+      size: 'lg',
+      withIcon: !!d.icon || !!d.parkPlanner,
+      // A label runs to 36 characters in Dutch; on a phone it wraps inside the button
+      // rather than pushing the button past the container.
+      className: 'h-auto min-h-10 max-w-full py-2 whitespace-normal max-sm:min-h-11',
+    });
+    if (d.parkPlanner) {
+      return (
+        <ParkPlannerLink key={d.href} label={d.label} locale={d.parkPlanner.locale} button={look} />
+      );
+    }
+    return (
+      <Link key={d.href} href={d.href} prefetch={d.prefetch} {...look}>
+        {d.icon && <d.icon aria-hidden />}
+        {d.label}
+      </Link>
+    );
+  });
 
   const list = described ? (
     <ul className={cn('grid gap-5 sm:grid-cols-2', destinations.length === 3 && 'lg:grid-cols-3')}>

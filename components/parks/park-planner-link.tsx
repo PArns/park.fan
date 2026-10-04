@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { plannerPath } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
+import type { buttonLinkProps } from '@/components/ui/button';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -58,6 +59,7 @@ export function ParkPlannerLink({
   label,
   locale,
   className,
+  button,
 }: {
   /** The finished sentence, resolved on the server — see the note above. */
   label: string;
@@ -65,7 +67,21 @@ export function ParkPlannerLink({
   /** Merged with the button's own look rather than replacing it: the one caller
    * decides where the button sits in its row, never what it is. */
   className?: string;
+  /**
+   * The same press drawn as a button of the scale instead of the header's chip — the
+   * `buttonLinkProps` of the row it stands in. `LandingNextSteps` passes it for the first next
+   * step of the average-wait-times page (PAR-680). Without it the link is the header's, and only
+   * the header's carries `data-park-planner-link`, which `check:planner` counts on the park page.
+   */
+  button?: ReturnType<typeof buttonLinkProps>;
 }) {
+  const look = button ?? {
+    'data-park-planner-link': '',
+    className: cn(
+      'bg-primary/10 text-primary hover:bg-primary/20 inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors max-sm:min-h-11',
+      className
+    ),
+  };
   return (
     <Link
       href={plannerPath(locale) as '/trip-planner'}
@@ -75,7 +91,7 @@ export function ParkPlannerLink({
       // fetch the planner route 212 parks x 6 locales over for a navigation
       // that now only happens on a modified click.
       prefetch={false}
-      data-park-planner-link=""
+      {...look}
       onClick={(event) => {
         // Everything that is not a plain primary click is left alone. A
         // modified click is the reader asking for the planner's own page in a
@@ -88,10 +104,6 @@ export function ParkPlannerLink({
         event.preventDefault();
         plannerUi.requestOpen('park-header', 'page-park-wizard');
       }}
-      className={cn(
-        'bg-primary/10 text-primary hover:bg-primary/20 inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors max-sm:min-h-11',
-        className
-      )}
     >
       <CalendarPlus className="h-4 w-4 shrink-0" aria-hidden="true" />
       {label}
