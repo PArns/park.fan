@@ -16,7 +16,8 @@
  */
 
 import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
-import { headlinersToAdd } from '../lib/planner/optimize.ts';
+import { clashCount, headlinersToAdd, optimizeDay } from '../lib/planner/optimize.ts';
+import { entryPlace, transferBetween } from '../lib/planner/leg.ts';
 import { noRoomForRide, requestedRideChoice } from '../lib/planner/add-ride-fit.ts';
 import { dayClock } from '../lib/planner/park-time.ts';
 import {
@@ -693,6 +694,106 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
       fitOrder(lap, requestedRideChoice('a'))[0]?.key === addWishKey('a') &&
       evaluateFit(lap, requestedRideChoice('a')).fitted.includes(addWishKey('a')),
     JSON.stringify(lap && evaluateFit(lap, requestedRideChoice('a')).fitted)
+  );
+}
+
+// ── 14. A show with coordinates costs the walk to it and from it ───────────
+//
+// The same day twice, once with the show located 1.5 km from the rides and once
+// with the show carrying no coordinates, which is the normal case and must be
+// what it always was. Everything else is identical: five 55-minute headliners
+// in a six-hour day, a half-hour show as the first block of the morning.
+
+{
+  const SHOW_SLUG = 'sh';
+  const showEntry = {
+    id: 's',
+    showSlug: SHOW_SLUG,
+    custom: { label: 'Show', icon: 'show', durationMinutes: 30 },
+    startMinute: OPEN * 60,
+  };
+  const withShow = (lat) => {
+    const payload = day(['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 55)));
+    payload.shows = [
+      {
+        showSlug: SHOW_SLUG,
+        showName: 'Show',
+        times: ['09:00'],
+        source: 'scheduled',
+        ...(lat === null ? {} : { latitude: lat, longitude: 6.87 }),
+      },
+    ];
+    return payload;
+  };
+  const planFor = (payload) => {
+    const entries = [showEntry];
+    const add = headlinersToAdd(payload, entries, undefined);
+    const input = inputFor(payload, entries, add);
+    return { input, add, plan: optimizeDay({ day: payload, grid: input.grid, entries, add }) };
+  };
+
+  const none = planFor(withShow(null));
+  const far = planFor(withShow(50.8135));
+  const showEnds = showEntry.startMinute + 30;
+  const walk = transferBetween(
+    entryPlace(far.input.day, showEntry),
+    far.input.day.rides[0]
+  ).ceilingMinutes;
+
+  check(
+    '14a a show with no coordinates has no place and no walk',
+    entryPlace(none.input.day, showEntry) === null && none.plan.stops[0].startMinute === showEnds,
+    `${none.plan.stops[0].startMinute}`
+  );
+  check(
+    '14b a located show is a place, as a ride is',
+    entryPlace(far.input.day, showEntry)?.latitude === 50.8135
+  );
+  check(
+    '14b2 a position that is not on the globe is no place',
+    [Number.NaN, Infinity, 91].every((lat) => entryPlace(withShow(lat), showEntry) === null)
+  );
+  check(
+    '14c the first ride after it starts a walk later, not when the show ends',
+    far.plan.stops[0].startMinute >= showEnds + walk,
+    `${far.plan.stops[0].startMinute} against ${showEnds + walk}`
+  );
+  check(
+    '14d the same walk holds the other way round, in front of the show',
+    (() => {
+      const early = { ...showEntry, startMinute: 11 * 60 };
+      const payload = withShow(50.8135);
+      const input = inputFor(payload, [early], headlinersToAdd(payload, [early], undefined));
+      const plan = optimizeDay({
+        day: payload,
+        grid: input.grid,
+        entries: [early],
+        add: headlinersToAdd(payload, [early], undefined),
+      });
+      const before = plan.stops.filter((stop) => stop.startMinute < early.startMinute);
+      const last = before[before.length - 1];
+      return last !== undefined && last.startMinute + 55 + walk <= early.startMinute;
+    })()
+  );
+  check(
+    '14e the day that fitted without the walk no longer does, and the assistant is asked',
+    evaluateFit(none.input, fitChoiceAll()).missed.length === 0 &&
+      needsFitHelp(none.input, fitChoiceAll()) === false &&
+      evaluateFit(far.input, fitChoiceAll()).missed.length === 1 &&
+      needsFitHelp(far.input, fitChoiceAll()) === true,
+    `${evaluateFit(none.input, fitChoiceAll()).missed.length} / ${evaluateFit(far.input, fitChoiceAll()).missed.length}`
+  );
+
+  // The clash count reads the same walk: fifteen minutes between the end of a
+  // 55-minute queue and the show is enough with no position and not enough with one.
+  const ten = [
+    { id: 'ea', attractionSlug: 'a', attractionName: 'a', startMinute: 540 },
+    { ...showEntry, startMinute: 610 },
+  ];
+  check(
+    '14f a show fifteen minutes after the end of a queue is a clash with the walk and none without it',
+    clashCount(withShow(null), ten) === 0 && clashCount(withShow(50.8135), ten) === 1,
+    `${clashCount(withShow(null), ten)} / ${clashCount(withShow(50.8135), ten)}`
   );
 }
 

@@ -2698,6 +2698,13 @@ export type PlanDayShowSource = 'scheduled' | 'projected';
 export interface PlanDayShow {
   showSlug: string;
   showName: string;
+  /**
+   * Where the show is. Both are present on nearly every show (42 of 42 at
+   * Europa-Park on 2026-10-02) and absent on the rest, which is the normal case
+   * for a show nobody has located and not an error.
+   */
+  latitude?: number | null;
+  longitude?: number | null;
   /** Park-local `HH:mm`, ascending. */
   times: string[];
   source: PlanDayShowSource;
