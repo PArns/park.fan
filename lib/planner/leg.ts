@@ -108,8 +108,19 @@ export function entryPlace(
   }
   if (entry.showSlug) {
     const show = day?.shows?.find((s) => s.showSlug === entry.showSlug);
-    if (typeof show?.latitude === 'number' && typeof show.longitude === 'number') {
-      return { latitude: show.latitude, longitude: show.longitude, land: null };
+    const lat = show?.latitude;
+    const lng = show?.longitude;
+    // A finite pair on the globe. NaN or an out-of-range value would turn the
+    // walk into NaN, where every comparison is false and the show is ignored.
+    if (
+      typeof lat === 'number' &&
+      typeof lng === 'number' &&
+      Number.isFinite(lat) &&
+      Number.isFinite(lng) &&
+      Math.abs(lat) <= 90 &&
+      Math.abs(lng) <= 180
+    ) {
+      return { latitude: lat, longitude: lng, land: null };
     }
   }
   return null;

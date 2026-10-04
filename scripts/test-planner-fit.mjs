@@ -750,6 +750,10 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     entryPlace(far.input.day, showEntry)?.latitude === 50.8135
   );
   check(
+    '14b2 a position that is not on the globe is no place',
+    [Number.NaN, Infinity, 91].every((lat) => entryPlace(withShow(lat), showEntry) === null)
+  );
+  check(
     '14c the first ride after it starts a walk later, not when the show ends',
     far.plan.stops[0].startMinute >= showEnds + walk,
     `${far.plan.stops[0].startMinute} against ${showEnds + walk}`
