@@ -24,7 +24,8 @@ const LINE_HEIGHT_CLASS = 'h-7';
  *
  * Until the forecast has answered, an empty box of the line's height stands in its place, so the
  * cards below do not move when it lands. A park whose snapshot is empty, unrated or failed draws
- * no line: the box goes away once the answer is known.
+ * no text, and the box stays: collapsing it would pull everything below it up by the line's
+ * height and 16 px of grid gap after the page had settled.
  */
 export function FavoriteParkQuietestDay({
   slug,
@@ -58,9 +59,9 @@ export function FavoriteParkQuietestDay({
     }
   }, [data, now, timezone]);
 
-  if (geo === null || isError) return null;
-  if (!data) return <div className={LINE_HEIGHT_CLASS} aria-hidden="true" />;
-  if (!pick) return null;
+  if (geo === null || isError || !data || !pick) {
+    return <div className={LINE_HEIGHT_CLASS} aria-hidden="true" />;
+  }
 
   // The date is a plain calendar day, so it is formatted in UTC from its own midnight.
   const date = getDateTimeFormat(locale, {

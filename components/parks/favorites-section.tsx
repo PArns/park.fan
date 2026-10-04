@@ -24,8 +24,8 @@ import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
 
-/** A park row on `/favorites`: the card's 200 px plus the quietest-day line's 28 px. */
-const PARK_ROW_WITH_LINE_PX = 228;
+/** A park row on `/favorites`: the card's 200 px, the 16 px grid gap and the line's 28 px. */
+const PARK_ROW_WITH_LINE_PX = 244;
 
 /**
  * `standalone` is what `/favorites` passes: there the band is the page's whole content, so the
