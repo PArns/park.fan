@@ -4,11 +4,10 @@ import { useState, useMemo, useRef, useEffect, useDeferredValue } from 'react';
 import { useTranslations } from 'next-intl';
 import { Search, BookOpen, X, Tag, Rotate3d } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlossaryTermCard } from './glossary-term-card';
 import type { GlossaryTermListItem, GlossaryCategory } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
-import type { Breadcrumb } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 import { trackGlossaryCategoryFiltered, trackGlossarySearched } from '@/lib/analytics/umami';
 
@@ -24,10 +23,6 @@ interface GlossaryOverviewClientProps {
   rideCounts: Record<string, number>;
   locale: Locale;
   segment: string;
-  title: string;
-  h1: string;
-  description: string;
-  breadcrumbs: Breadcrumb[];
 }
 
 export function GlossaryOverviewClient({
@@ -35,10 +30,6 @@ export function GlossaryOverviewClient({
   rideCounts,
   locale,
   segment,
-  title,
-  h1,
-  description,
-  breadcrumbs,
 }: GlossaryOverviewClientProps) {
   const t = useTranslations('glossary');
   const [query, setQuery] = useState('');
@@ -123,22 +114,10 @@ export function GlossaryOverviewClient({
 
   return (
     <div>
-      {/* Breadcrumb outside panel */}
-      <div className="mb-4">
-        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={title} variant="pill" />
-      </div>
-
-      {/* ── Glass panel: title + description + search ── */}
+      {/* ── Glass panel: search + filters ──
+          The title and the intro moved out into the page's compact `LandingHero`, which the
+          server renders above this list; the search is the first control under it. */}
       <div className="bg-background/60 border-primary/15 mb-10 rounded-xl border shadow-sm backdrop-blur-md">
-        {/* Title + description */}
-        <div className="px-6 pt-5 pb-6">
-          <h1 className="mb-2 text-3xl font-bold">{h1}</h1>
-          <p className="text-muted-foreground">{description}</p>
-        </div>
-
-        {/* Divider */}
-        <div className="border-primary/10 border-t" />
-
         {/* Search + filters */}
         <div className="px-6 py-5">
           {/* Centered, constrained search input */}
@@ -240,7 +219,8 @@ export function GlossaryOverviewClient({
                 filter drops the other groups rather than renaming this one. */}
             {filtered.map(({ category, categoryLabel, terms }) => (
               <section key={category} id={category} className="scroll-mt-24">
-                <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
+                {/* Unnumbered: a filter drops groups, and a number must not skip. */}
+                <ChapterHeading title={categoryLabel} className="mb-4" />
                 <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                   {terms.map((term) => (
                     <GlossaryTermCard

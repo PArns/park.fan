@@ -2832,6 +2832,18 @@
           "label": "herberekend"
         }
       }
+    },
+    "developers": {
+      "kicker": "park.fan · voor ontwikkelaars"
+    },
+    "contribute": {
+      "kicker": "park.fan · jouw foto’s"
+    },
+    "news": {
+      "kicker": "park.fan · parknieuws"
+    },
+    "glossary": {
+      "kicker": "park.fan · begrippen"
     }
   }
 }

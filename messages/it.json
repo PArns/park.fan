@@ -2832,6 +2832,18 @@
           "label": "ricalcolato"
         }
       }
+    },
+    "developers": {
+      "kicker": "park.fan · per sviluppatori"
+    },
+    "contribute": {
+      "kicker": "park.fan · le tue foto"
+    },
+    "news": {
+      "kicker": "park.fan · notizie dai parchi"
+    },
+    "glossary": {
+      "kicker": "park.fan · glossario"
     }
   }
 }

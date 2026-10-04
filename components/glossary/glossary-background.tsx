@@ -25,7 +25,16 @@ function pickGlossaryHero(): string | null {
  * Random park background for glossary pages — server-rendered for a fast LCP.
  * No Ken Burns animation. Fades to the page background colour over the lower third.
  */
-export async function GlossaryBackground() {
+export async function GlossaryBackground({
+  headTint = false,
+}: {
+  /**
+   * A theme-aware tint over the top of the photo, for a page whose head sits on it as bare text
+   * — the overview's compact `LandingHero`. The term pages keep their head in a glass panel and
+   * do not need it. Light tint in light mode, dark in dark, as on the hub heroes.
+   */
+  headTint?: boolean;
+} = {}) {
   const imageSrc = pickGlossaryHero();
   if (!imageSrc) return null;
 
@@ -42,6 +51,9 @@ export async function GlossaryBackground() {
         <div className="via-background/20 to-background absolute inset-0 bg-gradient-to-b from-transparent" />
         {/* Second pass: stronger fade over the lower third */}
         <div className="via-background/60 to-background absolute inset-0 translate-y-1/2 bg-gradient-to-b from-transparent" />
+        {headTint && (
+          <div className="from-background/85 via-background/60 absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b to-transparent" />
+        )}
       </div>
     </div>
   );
