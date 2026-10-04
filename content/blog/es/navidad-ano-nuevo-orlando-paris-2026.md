@@ -35,9 +35,8 @@ rideLinks: false
 seo:
   title: 'Navidad 2026 en Orlando y París: fechas y cuánta gente habrá'
   description: >-
-    Todas las fechas de Navidad y Nochevieja en Walt Disney World, Universal
-    Orlando y Disneyland Paris, además de lo que medimos durante la semana entre
-    Navidad y Año Nuevo.
+    Las fechas de Navidad y Nochevieja en Walt Disney World, Universal Orlando y
+    Disneyland Paris, y lo que medimos entre Navidad y Año Nuevo.
   keywords:
     - Navidad Orlando 2026
     - Mickey's Very Merry Christmas Party 2026
@@ -110,9 +109,9 @@ iluminación interior, el Tomorrowland Speedway y el Mad Tea Party. El Jungle
 Cruise navega todo diciembre como Jingle Cruise, también de día y sin entrada de
 fiesta.
 
-La cabalgata y los fuegos se cancelan con viento y tormenta. En Florida, en
-diciembre, eso es raro, pero está en la letra pequeña de Disney, y aparece bajo
-cada uno de los tres por separado.
+La cabalgata, los fuegos y el espectáculo ante el castillo se cancelan los tres
+con viento y tormenta. En Florida, en diciembre, eso es raro, pero está en la
+letra pequeña de Disney, bajo cada uno de los tres por separado.
 
 ![Main Street U. S. A. en el Magic Kingdom, con el castillo de Cenicienta al fondo | En diciembre, Main Street recibe nieve de máquina. Las noches de fiesta a partir de las 19:00, el resto del tiempo no. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
 
@@ -218,10 +217,10 @@ enero de 2027.
 
 ## Disneyland Paris: del 7 de noviembre al 6 de enero
 
-París empieza antes que los otros dos. La **Encantadora Navidad Disney** va del
+París empieza antes que los otros dos. La **Navidad Encantada Disney** va del
 **7 de noviembre de 2026 al 6 de enero de 2027** en los dos parques.
 
-En el Disneyland Park, la **Deslumbrante Cabalgata de Navidad de Mickey** pasa
+En el Disneyland Park, la **Mickey's Dazzling Christmas Parade** pasa
 dos veces al día, el abeto de Town Square mide **24 metros** y se enciende varias
 veces al día, y en el escenario está el espectáculo para cantar «Let's Sing
 Christmas!» con Mickey, Minnie, Donald, Daisy, Goofy y Clarabella. Los personajes
@@ -385,7 +384,7 @@ tienes toda la temporada en la página de cada parque.
 - Disney Jollywood Nights, las 15 fechas, horarios y precios: [Disney Jollywood Nights (oficial)](https://disneyworld.disney.go.com/events-tours/hollywood-studios/jollywood-nights/)
 - EPCOT International Festival of the Holidays, los narradores y el calendario completo del Candlelight Processional: [Candlelight Processional & Holiday Festivities at EPCOT (oficial)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, del 14 de noviembre al 3 de enero, Grinchmas, Wizarding World, la cabalgata de Macy's, Epic Universe y el Holiday Tour: [nota de prensa del 6 de agosto de 2026 (oficial)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (oficial)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
-- Disneyland Paris, del 7 de noviembre al 6 de enero, la cabalgata, World of Frozen y la Nochevieja en los dos parques: [La Encantadora Navidad Disney 2026 (oficial)](https://www.disneylandparis.com/de-de/saison-veranstaltungen/weihnachten-in-disneyland-paris)
+- Disneyland Paris, del 7 de noviembre al 6 de enero, la cabalgata, World of Frozen y la Nochevieja en los dos parques: [La Navidad Encantada Disney 2026 (oficial)](https://www.disneylandparis.com/es-es/las-temporadas/navidad-en-disneyland-paris)
 - Tiempos de espera, calendario de afluencia y días de medición: mediciones propias, ventana del 2 de octubre de 2024 al 2 de octubre de 2026, consultadas el 4 de octubre de 2026
 - Los parques europeos en invierno, de Brühl al lago de Garda: [Qué parques de atracciones abren en invierno 2026/27](/blog/parques-atracciones-invierno-2026)
 - El Magic Kingdom el resto del año: [Magic Kingdom: tiempos de espera y consejos](/blog/magic-kingdom-tiempos-de-espera-consejos) · Disneyland Paris el resto del año: [Disneyland Paris: tiempos de espera y consejos](/blog/disneyland-paris-tiempos-de-espera-consejos)

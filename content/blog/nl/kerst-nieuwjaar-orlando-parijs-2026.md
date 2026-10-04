@@ -35,9 +35,8 @@ rideLinks: false
 seo:
   title: 'Kerst 2026 in Orlando en Parijs: de data en hoe druk het wordt'
   description: >-
-    Alle data voor Kerst en oud en nieuw in Walt Disney World, Universal Orlando
-    en Disneyland Paris, plus wat wij in de week tussen Kerst en Nieuwjaar
-    hebben gemeten.
+    Alle data voor Kerst en oud en nieuw in Walt Disney World, Universal Orlando en
+    Disneyland Paris, plus wat wij in de week tussen Kerst en Nieuwjaar maten.
   keywords:
     - Kerst Orlando 2026
     - Mickey's Very Merry Christmas Party 2026
@@ -111,9 +110,9 @@ ander binnenlicht, de Tomorrowland Speedway en de Mad Tea Party. De Jungle
 Cruise vaart heel december als Jingle Cruise, ook overdag en zonder
 feestkaartje.
 
-Parade en vuurwerk vervallen bij wind en onweer. In Florida is dat in december
-zeldzaam, maar het staat in Disney's eigen kleine lettertjes, en wel bij alle
-drie de programmaonderdelen apart.
+Parade, vuurwerk en de kasteelshow vervallen alle drie bij wind en onweer. In
+Florida is dat in december zeldzaam, maar het staat in Disney's eigen kleine
+lettertjes, en wel bij alle drie apart.
 
 ![Main Street U. S. A. in het Magic Kingdom, met zicht op Cinderella Castle | Main Street krijgt in december sneeuw uit de machine. Op feestavonden vanaf 19.00 uur, anders niet. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
 
@@ -217,10 +216,10 @@ januari 2027.
 
 ## Disneyland Paris: 7 november tot 6 januari
 
-Parijs begint van de drie het vroegst. Het **Betoverende Disney Kerstfeest**
+Parijs begint van de drie het vroegst. **Disney Betoverende Kerst**
 loopt van **7 november 2026 tot 6 januari 2027** in beide parken.
 
-In het Disneyland Park trekt **Mickey's Sprankelende Kerstparade** twee keer per
+In het Disneyland Park trekt **Mickey's Dazzling Christmas Parade** twee keer per
 dag over de route, de kerstboom op Town Square is **24 meter** hoog en wordt
 meerdere keren per dag ontstoken, en op het podium draait de meezingshow “Let's
 Sing Christmas!” met Mickey, Minnie, Donald, Katrien, Goofy en Clarabella. De
@@ -382,7 +381,7 @@ moment zijn, staat het hele seizoen op de betreffende parkpagina.
 - Disney Jollywood Nights, de 15 data, tijden en prijzen: [Disney Jollywood Nights (officieel)](https://disneyworld.disney.go.com/events-tours/hollywood-studios/jollywood-nights/)
 - EPCOT International Festival of the Holidays, de verhalenvertellers en het volledige vertellersschema van de Candlelight Processional: [Candlelight Processional & Holiday Festivities at EPCOT (officieel)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, 14 november tot 3 januari, Grinchmas, Wizarding World, de Macy's-parade, Epic Universe en de Holiday Tour: [persbericht van 6 augustus 2026 (officieel)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (officieel)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
-- Disneyland Paris, 7 november tot 6 januari, de kerstparade, World of Frozen en oudjaarsavond in beide parken: [Het Betoverende Disney Kerstfeest 2026 (officieel)](https://www.disneylandparis.com/de-de/saison-veranstaltungen/weihnachten-in-disneyland-paris)
+- Disneyland Paris, 7 november tot 6 januari, de kerstparade, World of Frozen en oudjaarsavond in beide parken: [Disney Betoverende Kerst 2026 (officieel)](https://www.disneylandparis.com/nl-nl/deseizoenen/kerst-in-disneyland-paris)
 - Wachttijden, drukte-kalender en meetdagen: eigen metingen, venster 2 oktober 2024 tot 2 oktober 2026, opgehaald op 4 oktober 2026
 - Europese parken in de winter, van Brühl tot het Gardameer: [Welke pretparken in de winter 2026/27 open zijn](/blog/winter-pretparken-2026)
 - Het Magic Kingdom de rest van het jaar: [Magic Kingdom: wachttijden en tips](/blog/magic-kingdom-wachttijden-tips) · Disneyland Paris de rest van het jaar: [Disneyland Paris: wachttijden en tips](/blog/disneyland-paris-wachttijden-tips)

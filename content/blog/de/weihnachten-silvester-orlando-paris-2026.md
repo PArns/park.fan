@@ -109,9 +109,9 @@ mit anderer Musik und anderem Innenlicht, der Tomorrowland Speedway und die
 Mad Tea Party. Die Jungle Cruise fährt den ganzen Dezember über als Jingle
 Cruise, auch tagsüber und ohne Partyticket.
 
-Parade und Feuerwerk fallen bei Wind und Gewitter aus. In Florida ist das im
-Dezember selten, aber es steht in Disneys eigenem Kleingedruckten, und zwar bei
-jedem einzelnen der drei Programmpunkte.
+Parade, Feuerwerk und die Bühnenshow am Schloss fallen alle drei bei Wind und
+Gewitter aus. In Florida ist das im Dezember selten, aber es steht in Disneys
+eigenem Kleingedruckten, bei jedem der drei einzeln.
 
 ![Die Main Street U. S. A. im Magic Kingdom mit Blick auf das Cinderella Castle | Die Main Street bekommt im Dezember Schneefall aus der Maschine. An Partyabenden ab 19 Uhr, sonst nicht. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
 

@@ -35,9 +35,8 @@ rideLinks: false
 seo:
   title: "Noël 2026 à Orlando et à Paris : les dates et l'affluence"
   description: >-
-    Toutes les dates de Noël et du Nouvel An à Walt Disney World, Universal
-    Orlando et Disneyland Paris, et ce que nous avons mesuré pendant la semaine
-    entre Noël et le jour de l''an.
+    Les dates de Noël et du Nouvel An à Walt Disney World, Universal Orlando et
+    Disneyland Paris, et ce que nous avons mesuré entre Noël et le jour de l'an.
   keywords:
     - Noël Orlando 2026
     - Mickey's Very Merry Christmas Party 2026
@@ -111,9 +110,9 @@ et un autre éclairage intérieur, le Tomorrowland Speedway et le Mad Tea Party.
 Le Jungle Cruise navigue tout décembre sous le nom de Jingle Cruise, y compris
 en journée et sans billet de soirée.
 
-La parade et le feu d'artifice sautent en cas de vent et d'orage. En Floride, en
-décembre, c'est rare, mais c'est écrit dans les petites lignes de Disney, et
-sous chacun des trois rendez-vous séparément.
+La parade, le feu d'artifice et le spectacle devant le château sautent tous les
+trois en cas de vent et d'orage. En Floride, en décembre, c'est rare, mais c'est
+écrit dans les petites lignes de Disney, sous chacun des trois séparément.
 
 ![Main Street U. S. A. au Magic Kingdom, vers le château de Cendrillon | Main Street reçoit en décembre de la neige artificielle. Les soirs de fête à partir de 19 h, pas autrement. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
 
@@ -222,10 +221,10 @@ choisies du 14 novembre 2026 au 2 janvier 2027.
 
 ## Disneyland Paris : du 7 novembre au 6 janvier
 
-Paris démarre le plus tôt des trois. Le **Féérique Noël Disney** se tient du
+Paris démarre le plus tôt des trois. Le **Noël Enchanté Disney** se tient du
 **7 novembre 2026 au 6 janvier 2027** dans les deux parcs.
 
-Au Disneyland Park, **la Parade de Noël Étincelante de Mickey** passe deux fois
+Au Disneyland Park, **Mickey et sa Parade Étincelante de Noël** passe deux fois
 par jour, le sapin de Town Square mesure **24 mètres** et s'allume plusieurs
 fois dans la journée, et sur scène se joue le spectacle participatif « Let's
 Sing Christmas ! » avec Mickey, Minnie, Donald, Daisy, Dingo et Clarabelle. Les
@@ -393,7 +392,7 @@ concerné.
 - Disney Jollywood Nights, les 15 dates, les horaires et les prix : [Disney Jollywood Nights (officiel)](https://disneyworld.disney.go.com/events-tours/hollywood-studios/jollywood-nights/)
 - EPCOT International Festival of the Holidays, les conteurs et le calendrier complet des lecteurs du Candlelight Processional : [Candlelight Processional & Holiday Festivities at EPCOT (officiel)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, du 14 novembre au 3 janvier, Grinchmas, Wizarding World, la parade Macy's, Epic Universe et le Holiday Tour : [communiqué du 6 août 2026 (officiel)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (officiel)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
-- Disneyland Paris, du 7 novembre au 6 janvier, la parade, World of Frozen et le réveillon dans les deux parcs : [Le Féérique Noël Disney 2026 (officiel)](https://www.disneylandparis.com/de-de/saison-veranstaltungen/weihnachten-in-disneyland-paris)
+- Disneyland Paris, du 7 novembre au 6 janvier, la parade, World of Frozen et le réveillon dans les deux parcs : [Le Noël Enchanté Disney 2026 (officiel)](https://www.disneylandparis.com/fr-fr/les-saisons/noel-a-disneyland-paris)
 - Temps d'attente, calendrier d'affluence et jours de mesure : nos propres mesures, fenêtre du 2 octobre 2024 au 2 octobre 2026, relevées le 4 octobre 2026
 - Les parcs européens en hiver, de Brühl au lac de Garde : [Quels parcs d'attractions sont ouverts l'hiver 2026/27](/blog/parcs-attractions-hiver-2026)
 - Le Magic Kingdom le reste de l'année : [Magic Kingdom : temps d'attente et conseils](/blog/magic-kingdom-temps-d-attente-conseils) · Disneyland Paris le reste de l'année : [Disneyland Paris : temps d'attente et conseils](/blog/disneyland-paris-temps-d-attente-conseils)

@@ -35,9 +35,8 @@ rideLinks: false
 seo:
   title: 'Christmas 2026 in Orlando and Paris: the dates and how busy it gets'
   description: >-
-    Every date for Christmas and New Year at Walt Disney World, Universal
-    Orlando and Disneyland Paris, plus what we measured during the week between
-    the years.
+    Every date for Christmas and New Year at Walt Disney World, Universal Orlando
+    and Disneyland Paris, plus what we measured in the week between the years.
   keywords:
     - Christmas Orlando 2026
     - Mickey's Very Merry Christmas Party 2026
@@ -107,9 +106,9 @@ different music and different interior lighting, the Tomorrowland Speedway and
 the Mad Tea Party. Jungle Cruise runs as Jingle Cruise all December, during the
 day as well, no party ticket needed.
 
-The parade and the fireworks are cancelled in wind and storms. That's rare in
-Florida in December, but it's in Disney's own small print, and it's there under
-each of the three separately.
+The parade, the fireworks and the castle stage show are all cancelled in wind
+and storms. That's rare in Florida in December, but it's in Disney's own small
+print, and it's there under each of the three separately.
 
 ![Main Street U. S. A. at the Magic Kingdom, looking towards Cinderella Castle | Main Street gets machine-made snowfall in December. On party nights from 7 p.m., not otherwise. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
 
@@ -167,8 +166,8 @@ Animal Kingdom has no evening event and the smallest programme of the four
 parks. On Discovery Island the **Merry Menagerie** sets out hand-built puppets
 of arctic animals, penguins, reindeer, foxes and polar bears. The Tree of Life
 gets a holiday edition of its Awakenings each evening. There's a Christmas tree
-of about 17 metres at the entrance, and the village of Harambe is hung with
-garlands made from recycled materials and traditional African textiles.
+of a little over 16 metres at the entrance, and the village of Harambe is hung
+with garlands made from recycled materials and traditional African textiles.
 
 Disney Springs runs the **Christmas Tree Stroll**, a walk past elaborately
 decorated trees, plus Santa for photos. Neither costs admission, because Disney
@@ -211,7 +210,7 @@ Islands, and it runs on selected dates from 14 November 2026 to 2 January 2027.
 
 ## Disneyland Paris: 7 November to 6 January
 
-Paris opens earliest of the three. **Disney's Enchanted Christmas** runs from
+Paris opens earliest of the three. **Disney Enchanted Christmas** runs from
 **7 November 2026 to 6 January 2027** across both parks.
 
 At Disneyland Park, **Mickey's Dazzling Christmas Parade** goes round twice a
@@ -372,7 +371,7 @@ right now, is on each park's page all season.
 - Disney Jollywood Nights, the 15 dates, times and prices: [Disney Jollywood Nights (official)](https://disneyworld.disney.go.com/events-tours/hollywood-studios/jollywood-nights/)
 - EPCOT International Festival of the Holidays, the storytellers and the full Candlelight Processional narrator schedule: [Candlelight Processional & Holiday Festivities at EPCOT (official)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, 14 November to 3 January, Grinchmas, the Wizarding World, the Macy's parade, Epic Universe and the Holiday Tour: [press release of 6 August 2026 (official)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (official)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
-- Disneyland Paris, 7 November to 6 January, the parade, World of Frozen and New Year's Eve in both parks: [Disney's Enchanted Christmas 2026 (official)](https://www.disneylandparis.com/de-de/saison-veranstaltungen/weihnachten-in-disneyland-paris)
+- Disneyland Paris, 7 November to 6 January, the parade, World of Frozen and New Year's Eve in both parks: [Disney Enchanted Christmas 2026 (official)](https://www.disneylandparis.com/en-gb/seasons/christmas-at-disneyland-paris)
 - Wait times, crowd calendar and measured days: our own measurements, window 2 October 2024 to 2 October 2026, retrieved 4 October 2026
 - European parks in winter, from Brühl to Lake Garda: [Which theme parks are open in winter 2026/27](/blog/winter-theme-parks-2026)
 - The Magic Kingdom for the rest of the year: [Magic Kingdom: wait times and tips](/blog/magic-kingdom-wait-times-tips) · Disneyland Paris for the rest of the year: [Disneyland Paris: wait times and tips](/blog/disneyland-paris-wait-times-tips)
