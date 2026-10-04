@@ -2843,6 +2843,18 @@
         "body": "Dans le planificateur, vous choisissez les attractions que vous voulez faire, et les temps d’attente prévus montrent si la journée tient debout. La précision des prévisions du calendrier d’affluence sur les 30 derniers jours se trouve sur la page Fancast."
       }
     },
+    "developers": {
+      "kicker": "park.fan · pour les développeurs"
+    },
+    "contribute": {
+      "kicker": "park.fan · vos photos"
+    },
+    "news": {
+      "kicker": "park.fan · actus des parcs"
+    },
+    "glossary": {
+      "kicker": "park.fan · lexique"
+    },
     "planner": {
       "kicker": "park.fan · planificateur",
       "action": "Planifier une journée",

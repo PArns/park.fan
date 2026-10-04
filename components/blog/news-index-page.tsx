@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Megaphone } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import {
   generateAlternateLanguages,
@@ -16,7 +15,7 @@ import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import { resolveNewsPark, type NewsPark } from '@/lib/blog/news-park';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
-import { BlogSectionHeader } from '@/components/blog/blog-section-header';
+import { LandingHero } from '@/components/marketing/editorial-ui';
 import { NewsAge } from '@/components/blog/news-age';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { NewsParkLabel } from '@/components/blog/news-park-label';
@@ -99,6 +98,7 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
   if (posts.length === 0) notFound();
 
   const t = await getTranslations('news');
+  const tLanding = await getTranslations('landing.news');
   const label = resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News');
 
   const withParks = await Promise.all(
@@ -170,27 +170,33 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
         breadcrumbs={[{ name: label, url: NEWS_INDEX_PATH }]}
         locale={locale}
       />
-      <div className="container mx-auto max-w-5xl px-4 py-10 sm:py-14">
-        <BlogSectionHeader
-          as="h1"
-          glass={false}
-          title={
-            <span className="inline-flex items-center gap-3">
-              <Megaphone className="text-primary h-8 w-8 sm:h-10 sm:w-10" aria-hidden="true" />
-              {label}
+      {/* A tool page: the compact head (docs/product/landing-pages.md §1). No action button in
+          it — the list is the page, and its park filter, the first control under the head, is
+          the one thing to operate (§4). The count stays a small line under the lead. */}
+      <LandingHero
+        variant="compact"
+        kicker={tLanding('kicker')}
+        title={label}
+        tagline={
+          <>
+            {t('intro')}
+            <span className="text-muted-foreground mt-2 block text-xs">
+              {t('count', { count: posts.length })}
             </span>
-          }
-          intro={t('intro')}
-          meta={t('count', { count: posts.length })}
-          className="mb-8"
-        />
+          </>
+        }
+      />
 
-        <NewsStream
-          groups={groups}
-          parks={parks}
-          filterLabel={t('filter.label')}
-          allLabel={t('filter.all')}
-        />
+      {/* The stream keeps `max-w-5xl` but starts at the `container` edge with the head. */}
+      <div className="container mx-auto px-4 pt-8 pb-10 sm:pt-10 sm:pb-14">
+        <div className="max-w-5xl">
+          <NewsStream
+            groups={groups}
+            parks={parks}
+            filterLabel={t('filter.label')}
+            allLabel={t('filter.all')}
+          />
+        </div>
       </div>
 
       <PageBottomSections locale={locale} />

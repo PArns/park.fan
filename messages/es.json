@@ -2843,6 +2843,18 @@
         "body": "En el planificador eliges las atracciones que quieres, y con los tiempos de espera previstos ves si el día cuadra. Lo bien que acertaron las predicciones del calendario de afluencia en los últimos 30 días está en la página de Fancast."
       }
     },
+    "developers": {
+      "kicker": "park.fan · para desarrolladores"
+    },
+    "contribute": {
+      "kicker": "park.fan · tus fotos"
+    },
+    "news": {
+      "kicker": "park.fan · noticias de parques"
+    },
+    "glossary": {
+      "kicker": "park.fan · glosario"
+    },
     "planner": {
       "kicker": "park.fan · planificador",
       "action": "Planificar un día",

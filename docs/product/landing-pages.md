@@ -78,7 +78,7 @@ that place once, in the head (hubs) and again as the first next step.
 | Fancast               | P2                                  | a park's crowd calendar                  | none                                     |
 | blog index            | readers                             | — (the list is the action)               | —                                        |
 | with kids             | P1                                  | plan the day for this height (exists)    | exists                                   |
-| average wait times    | P2 / P6                             | the trip planner for this park           | missing; the concept named it            |
+| average wait times    | P2 / P6                             | the trip planner for this park           | first next step (PAR-680)                |
 | developers            | developers, agents                  | the API reference                        | link card further down                   |
 | contribute            | photo contributors                  | upload photos (exists)                   | exists                                   |
 | news index / glossary | readers / P4                        | the park filter / the search (exists)    | exists                                   |

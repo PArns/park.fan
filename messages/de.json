@@ -2843,6 +2843,18 @@
         "body": "Im Tagesplaner legst du fest, welche Bahnen du fahren willst, und siehst mit den vorhergesagten Wartezeiten, ob der Tag aufgeht. Wie gut die Prognosen im Crowd-Kalender in den letzten 30 Tagen getroffen haben, steht bei Fancast."
       }
     },
+    "developers": {
+      "kicker": "park.fan · für Entwickler"
+    },
+    "contribute": {
+      "kicker": "park.fan · deine Fotos"
+    },
+    "news": {
+      "kicker": "park.fan · Meldungen"
+    },
+    "glossary": {
+      "kicker": "park.fan · Glossar"
+    },
     "planner": {
       "kicker": "park.fan · Tagesplaner",
       "action": "Einen Tag planen",

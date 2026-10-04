@@ -2843,6 +2843,18 @@
         "body": "In the trip planner you pick the rides you want, and the forecast waits show whether the day adds up. How well the crowd calendar’s forecasts did over the last 30 days is on the Fancast page."
       }
     },
+    "developers": {
+      "kicker": "park.fan · for developers"
+    },
+    "contribute": {
+      "kicker": "park.fan · your photos"
+    },
+    "news": {
+      "kicker": "park.fan · park news"
+    },
+    "glossary": {
+      "kicker": "park.fan · glossary"
+    },
     "planner": {
       "kicker": "park.fan · trip planner",
       "action": "Plan a day",

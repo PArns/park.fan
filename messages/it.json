@@ -2843,6 +2843,18 @@
         "body": "Nel pianificatore scegli le attrazioni che vuoi fare, e con le attese previste vedi se la giornata regge. Quanto hanno colto nel segno le previsioni del calendario dell’affluenza negli ultimi 30 giorni lo trovi nella pagina di Fancast."
       }
     },
+    "developers": {
+      "kicker": "park.fan · per sviluppatori"
+    },
+    "contribute": {
+      "kicker": "park.fan · le tue foto"
+    },
+    "news": {
+      "kicker": "park.fan · notizie dai parchi"
+    },
+    "glossary": {
+      "kicker": "park.fan · glossario"
+    },
     "planner": {
       "kicker": "park.fan · pianificatore",
       "action": "Pianifica una giornata",

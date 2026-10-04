@@ -17,6 +17,8 @@ import { MCP_ENDPOINT_PATH, MCP_SERVER_CARD_PATH } from '@/lib/agents/mcp-server
 import { RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { TOOL_DESCRIPTORS } from '@/lib/agents/tool-descriptors';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { LandingHero } from '@/components/marketing/editorial-ui';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 /**
  * `/developers`: the human-readable front door to what `lib/agents/` serves to machines.
@@ -26,7 +28,8 @@ import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
  * failure `pnpm check:agent-ready` guards on the machine side. Only the copy is translated.
  * The targets are route handlers and other origins, so they are plain `<a>`, not the i18n
  * `Link` (a client-side navigation to a route handler fetches an RSC payload that does not
- * exist). Nothing here is fetched: no API call, no client component, no `RouteMessages`.
+ * exist). Nothing here is fetched: no API call, no `RouteMessages`. The only client component is
+ * the head's `Reveal` fade, which reads no messages.
  */
 
 interface DevelopersPageProps {
@@ -141,9 +144,10 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'developers' });
   const tFooter = await getTranslations({ locale, namespace: 'footer' });
+  const tLanding = await getTranslations({ locale, namespace: 'landing.developers' });
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:py-12">
+    <>
       {/* The page had no structured data at all (SEO run, 2026-10-03). The same two-step trail
           Fancast emits, named the way the footer links the page. */}
       <BreadcrumbStructuredData
@@ -153,67 +157,73 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
         ]}
         locale={locale}
       />
-      <header className="mb-10">
-        <h1 className="text-3xl font-bold sm:text-4xl">{t('hero.title')}</h1>
-        <p className="text-muted-foreground mt-3 max-w-2xl text-base sm:text-lg">
-          {t('hero.lead')}
-        </p>
-      </header>
+      {/* A tool page, so the compact head (docs/product/landing-pages.md §1). Its one action is
+          the API reference (§4), the first card of the first chapter, which a phone only reached
+          after a screen of scrolling. */}
+      <LandingHero
+        variant="compact"
+        kicker={tLanding('kicker')}
+        title={t('hero.title')}
+        tagline={t('hero.lead')}
+        action={{
+          href: API_ITEMS[0].href,
+          label: t('api.items.reference.label'),
+          icon: ExternalLink,
+        }}
+      />
 
-      <section className="mb-10" aria-labelledby="developers-api">
-        <h2 id="developers-api" className="mb-2 text-xl font-semibold">
-          {t('api.heading')}
-        </h2>
-        <p className="text-muted-foreground mb-4 max-w-2xl">{t('api.body')}</p>
-        <DocLinks items={API_ITEMS} group="api" t={t} />
-      </section>
+      {/* The reading column keeps `max-w-4xl`, but it starts at the `container` edge where the
+          head's text starts instead of being centred in the window (concept §3). */}
+      <div className="container mx-auto px-4 pt-12 pb-16 sm:pt-16 sm:pb-24">
+        <div className="max-w-4xl space-y-16 sm:space-y-24">
+          <section aria-labelledby="developers-api">
+            <ChapterHeading id="developers-api" title={t('api.heading')} />
+            <p className="text-muted-foreground mb-4 max-w-2xl">{t('api.body')}</p>
+            <DocLinks items={API_ITEMS} group="api" t={t} />
+          </section>
 
-      <section className="mb-10" aria-labelledby="developers-agents">
-        <h2 id="developers-agents" className="mb-2 text-xl font-semibold">
-          {t('agents.heading')}
-        </h2>
-        <p className="text-muted-foreground mb-4 max-w-2xl">{t('agents.body')}</p>
-        <DocLinks items={AGENT_ITEMS} group="agents" t={t} />
-      </section>
+          <section aria-labelledby="developers-agents">
+            <ChapterHeading id="developers-agents" title={t('agents.heading')} />
+            <p className="text-muted-foreground mb-4 max-w-2xl">{t('agents.body')}</p>
+            <DocLinks items={AGENT_ITEMS} group="agents" t={t} />
+          </section>
 
-      <section className="mb-10" aria-labelledby="developers-mcp">
-        <h2 id="developers-mcp" className="mb-2 text-xl font-semibold">
-          {t('mcp.heading')}
-        </h2>
-        <p className="text-muted-foreground mb-4 max-w-2xl">
-          {t('mcp.body')}{' '}
-          <code className="font-mono text-sm">
-            {SITE_URL}
-            {MCP_ENDPOINT_PATH}
-          </code>
-        </p>
-        <dl className="grid gap-3">
-          {TOOL_DESCRIPTORS.map((tool) => {
-            const noteKey = TOOL_NOTE_KEYS[tool.name];
-            // A fourth tool without copy fails the build instead of printing a missing key.
-            if (!noteKey) throw new Error(`developers page: no note for MCP tool ${tool.name}`);
-            return (
-              <Card key={tool.name} className="gap-1 px-5 py-4">
-                <dt className="font-mono text-sm font-semibold">{tool.name}</dt>
-                <dd className="text-muted-foreground text-sm">{t(`mcp.tools.${noteKey}`)}</dd>
-              </Card>
-            );
-          })}
-        </dl>
-      </section>
+          <section aria-labelledby="developers-mcp">
+            <ChapterHeading id="developers-mcp" title={t('mcp.heading')} />
+            <p className="text-muted-foreground mb-4 max-w-2xl">
+              {t('mcp.body')}{' '}
+              <code className="font-mono text-sm">
+                {SITE_URL}
+                {MCP_ENDPOINT_PATH}
+              </code>
+            </p>
+            <dl className="grid gap-3">
+              {TOOL_DESCRIPTORS.map((tool) => {
+                const noteKey = TOOL_NOTE_KEYS[tool.name];
+                // A fourth tool without copy fails the build instead of printing a missing key.
+                if (!noteKey) throw new Error(`developers page: no note for MCP tool ${tool.name}`);
+                return (
+                  <Card key={tool.name} className="gap-1 px-5 py-4">
+                    <dt className="font-mono text-sm font-semibold">{tool.name}</dt>
+                    <dd className="text-muted-foreground text-sm">{t(`mcp.tools.${noteKey}`)}</dd>
+                  </Card>
+                );
+              })}
+            </dl>
+          </section>
 
-      <section aria-labelledby="developers-terms">
-        <h2 id="developers-terms" className="mb-2 text-xl font-semibold">
-          {t('terms.heading')}
-        </h2>
-        <ul className="text-muted-foreground list-disc space-y-2 pl-5">
-          <li>{t('terms.noKey')}</li>
-          <li>{t('terms.markdown')}</li>
-          <li>{t('terms.training')}</li>
-          <li>{t('terms.credit')}</li>
-          <li>{t('terms.admin')}</li>
-        </ul>
-      </section>
-    </div>
+          <section aria-labelledby="developers-terms">
+            <ChapterHeading id="developers-terms" title={t('terms.heading')} />
+            <ul className="text-muted-foreground list-disc space-y-2 pl-5">
+              <li>{t('terms.noKey')}</li>
+              <li>{t('terms.markdown')}</li>
+              <li>{t('terms.training')}</li>
+              <li>{t('terms.credit')}</li>
+              <li>{t('terms.admin')}</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </>
   );
 }
