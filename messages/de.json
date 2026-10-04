@@ -2444,6 +2444,7 @@
     },
     "custom": {
       "add": "Eigener Block",
+      "addShow": "Show einplanen",
       "defaultLabel": "Pause",
       "label": "Beschriftung",
       "duration": "{minutes} Min.",

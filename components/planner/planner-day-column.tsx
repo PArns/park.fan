@@ -14,6 +14,7 @@ import { PlannerHelpSteps } from './planner-help';
 import { PlannerPlanParkCta } from './planner-plan-park-cta';
 import { PlannerDayFoot } from './planner-day-foot';
 import { PlannerRideSearch } from './planner-ride-search';
+import { PlannerDayShowPicker } from './planner-show-picker';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { entriesFor, isPlannedDay, type PlannerEntry } from '@/lib/planner/types';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
@@ -869,6 +870,17 @@ export function PlannerDayColumn({
               prefs={prefs}
               entries={entries}
               onAddFreeBlock={addFreeBlock}
+              showPicker={
+                <PlannerDayShowPicker
+                  parkSlug={park.slug}
+                  parkName={park.name}
+                  geo={park.geo}
+                  timezone={timezone}
+                  date={date}
+                  day={day}
+                  entries={entries}
+                />
+              }
               search={
                 <PlannerRideSearch
                   parkSlug={park.slug}

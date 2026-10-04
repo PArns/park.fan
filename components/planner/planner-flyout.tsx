@@ -13,6 +13,7 @@ import { dayHasShowLines } from '@/lib/planner/shows';
 import { PlannerDayColumn } from './planner-day-column';
 import { PlannerColumnHead } from './planner-column-head';
 import { PlannerRideSearch } from './planner-ride-search';
+import { PlannerDayShowPicker } from './planner-show-picker';
 import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
@@ -1925,6 +1926,17 @@ export function PlannerFlyout({
                         timezone={day?.timezone ?? park?.timezone}
                         prefs={prefs}
                         onAddCustom={addFreeBlock}
+                        showPicker={
+                          <PlannerDayShowPicker
+                            parkSlug={park.slug}
+                            parkName={park.name}
+                            geo={park.geo}
+                            timezone={resolveTimeZone(day?.timezone ?? park.timezone)}
+                            date={activeDate}
+                            day={day}
+                            entries={activeEntries}
+                          />
+                        }
                         searching={searchMode}
                         onSearchingChange={setSearching}
                         compact={phoneSearch}

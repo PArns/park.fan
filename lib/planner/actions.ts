@@ -174,6 +174,54 @@ export function addCustomEntry(
   });
 }
 
+export interface AddShowParams {
+  parkSlug: string;
+  parkName: string;
+  geo: PlannerGeo;
+  timezone?: string;
+  date: string;
+  showSlug: string;
+  showName: string;
+  /** The performance's start, park-local minutes. */
+  startMinute: number;
+  durationMinutes?: number;
+}
+
+/** What a performance is assumed to take. `/plan/day` carries a start time and no length. */
+export const DEFAULT_SHOW_MINUTES = 30;
+
+/**
+ * One performance of a show, filed as a block that stays bound to it.
+ *
+ * It is a free block underneath (`custom`, icon `show`), so the day treats it
+ * as the fixed hour it is, with `showSlug` on top for the walking-time sum. The
+ * same performance is not filed twice: picking it again returns the state by
+ * identity. Two different performances of one show are two entries.
+ */
+export function addShowEntry(state: PlannerState, params: AddShowParams): PlannerState {
+  const { parkSlug, parkName, geo, timezone, date, showSlug, showName, startMinute } = params;
+  const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
+  const at = clampMinute(startMinute);
+  if (existing.some((e) => e.showSlug === showSlug && e.startMinute === at)) return state;
+
+  const entry: PlannerEntry = withHourMirror({
+    id: makeId(`show-${showSlug}`, existing),
+    startMinute: at,
+    showSlug,
+    custom: {
+      label: showName.slice(0, 60),
+      icon: 'show',
+      durationMinutes: clampDuration(params.durationMinutes ?? DEFAULT_SHOW_MINUTES),
+    },
+  });
+
+  return withDay(state, parkSlug, date, byStart([...existing, entry]), {
+    parkName,
+    geo,
+    timezone,
+  });
+}
+
 /** Retitle or re-icon a free block. A no-op, by identity, on a ride. */
 export function setCustomBlock(
   state: PlannerState,
@@ -185,7 +233,8 @@ export function setCustomBlock(
   const entries = state.parks[parkSlug]?.days[date]?.entries;
   if (!entries) return state;
   const target = entries.find((entry) => entry.id === entryId);
-  if (!target?.custom) return state;
+  // A show is bound to its performance: its name and length are not the visitor's to edit.
+  if (!target?.custom || target.showSlug) return state;
 
   const next: PlannerCustomBlock = {
     label: (patch.label ?? target.custom.label).slice(0, 60),
@@ -350,6 +399,8 @@ export function moveEntry(
   const target = clampMinute(startMinute);
   const current = existing.find((e) => e.id === entryId);
   if (!current) return state;
+  // The time of a show entry is the performance's own.
+  if (current.showSlug) return state;
   if (current.startMinute === target) return state;
 
   return withDay(
@@ -483,7 +534,7 @@ export function shiftFrom(
     date,
     byStart(
       ordered.map((e, index) =>
-        index >= from
+        index >= from && !e.showSlug
           ? withHourMirror({ ...e, startMinute: clampMinute(e.startMinute + deltaMinutes) })
           : e
       )

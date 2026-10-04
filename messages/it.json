@@ -2444,6 +2444,7 @@
     },
     "custom": {
       "add": "Blocco personale",
+      "addShow": "Aggiungi uno spettacolo",
       "defaultLabel": "Pausa",
       "label": "Etichetta",
       "duration": "{minutes} min",

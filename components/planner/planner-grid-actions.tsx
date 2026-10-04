@@ -90,12 +90,18 @@ export function PlannerGridActions({
   onToggleDone,
   onRemove,
   onClose,
-  onEditCustom,
-  onNudge,
+  onEditCustom: onEditCustomProp,
+  onNudge: onNudgeProp,
   standBack = false,
 }: PlannerGridActionsProps) {
   const t = useTranslations('planner');
   if (!entry) return null;
+
+  // A show is bound to its performance: no time to nudge, no name or length to
+  // edit. What is left is ticking it off and removing it.
+  const bound = Boolean(entry.showSlug);
+  const onEditCustom = bound ? undefined : onEditCustomProp;
+  const onNudge = bound ? undefined : onNudgeProp;
 
   const done = Boolean(entry.done);
   const custom = entry.custom ?? null;

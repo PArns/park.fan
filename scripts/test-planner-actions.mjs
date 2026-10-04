@@ -22,6 +22,7 @@
 import {
   addCustomEntry,
   addEntry,
+  addShowEntry,
   clearDay,
   moveEntry,
   openDay,
@@ -890,6 +891,84 @@ test(
     'the default height is one of the offered chips',
     RIDER_HEIGHT_CHOICES.includes(RIDER_HEIGHT_DEFAULT_CM),
     true
+  );
+}
+
+// ── A show picked from the day's showtimes (PAR-642) ─────────────────────────
+{
+  const SHOW = { ...PARK, showSlug: 'winter-gala', showName: 'Winter Gala', startMinute: 15 * 60 };
+  const withShow = addShowEntry(EMPTY_PLANNER_STATE, SHOW);
+  const entry = entriesFor(withShow, PARK.parkSlug, PARK.date)[0];
+
+  test('a show is filed as a block carrying its slug', entry?.showSlug, 'winter-gala');
+  test('at the performance’s own minute', entry?.startMinute, 15 * 60);
+  test(
+    'as a show-icon free block with the default length',
+    [entry?.custom?.icon, entry?.custom?.label, entry?.custom?.durationMinutes],
+    ['show', 'Winter Gala', 30]
+  );
+
+  test(
+    'picking the same performance again is the same state',
+    addShowEntry(withShow, SHOW) === withShow,
+    true
+  );
+  test(
+    'another performance of it is a second entry',
+    entriesFor(addShowEntry(withShow, { ...SHOW, startMinute: 17 * 60 }), PARK.parkSlug, PARK.date)
+      .length,
+    2
+  );
+
+  test(
+    'its time is not moveable',
+    moveEntry(withShow, PARK.parkSlug, PARK.date, entry.id, 16 * 60) === withShow,
+    true
+  );
+  test(
+    'nor its name or length editable',
+    setCustomBlock(withShow, PARK.parkSlug, PARK.date, entry.id, {
+      label: 'x',
+      durationMinutes: 90,
+    }) === withShow,
+    true
+  );
+  const shifted = shiftFrom(withShow, PARK.parkSlug, PARK.date, entry.id, 30);
+  test(
+    'nor shifted along with the rides after a fix',
+    entriesFor(shifted, PARK.parkSlug, PARK.date)[0]?.startMinute,
+    15 * 60
+  );
+
+  const roundTrip = parsePlannerPayload(JSON.stringify({ payload: withShow }));
+  test(
+    'the slug survives a read from storage',
+    entriesFor(roundTrip, PARK.parkSlug, PARK.date)[0]?.showSlug,
+    'winter-gala'
+  );
+  test(
+    'removing it works like any block',
+    entriesFor(removeEntry(withShow, PARK.parkSlug, PARK.date, entry.id), PARK.parkSlug, PARK.date)
+      .length,
+    0
+  );
+
+  const freeShow = addCustomEntry(EMPTY_PLANNER_STATE, {
+    ...PARK,
+    label: 'Parade',
+    icon: 'show',
+    startMinute: 14 * 60,
+  });
+  const free = entriesFor(freeShow, PARK.parkSlug, PARK.date)[0];
+  test('a free block with the show icon carries no slug', free?.showSlug, undefined);
+  test(
+    'and stays movable',
+    entriesFor(
+      moveEntry(freeShow, PARK.parkSlug, PARK.date, free.id, 16 * 60),
+      PARK.parkSlug,
+      PARK.date
+    )[0]?.startMinute,
+    16 * 60
   );
 }
 

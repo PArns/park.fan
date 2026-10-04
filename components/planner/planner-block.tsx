@@ -762,7 +762,8 @@ export function PlannerBlock({
           onClick={onSelect}
           aria-label={t('entry.dragHandle')}
           className={cn(
-            'planner-phone:w-11 absolute inset-y-0 left-0 z-40 w-6 cursor-grab touch-none active:cursor-grabbing',
+            'planner-phone:w-11 absolute inset-y-0 left-0 z-40 w-6 touch-none',
+            entry.showSlug ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing',
             // The target grows and the box does not: on a 20 px block a 44 px
             // pseudo-element reaches past the edges without moving anything.
             // Which only works because the box no longer clips — see the note on

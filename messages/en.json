@@ -2444,6 +2444,7 @@
     },
     "custom": {
       "add": "Own block",
+      "addShow": "Add a show",
       "defaultLabel": "Break",
       "label": "Label",
       "duration": "{minutes} min",

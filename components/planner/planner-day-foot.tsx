@@ -36,6 +36,8 @@ interface PlannerDayFootProps {
    * is the panel's own (`PlannerRideSearch` in `planner-flyout.tsx`).
    */
   search?: ReactNode;
+  /** The show picker, drawn beside the free block's button. Absent where the day has no showtimes. */
+  showPicker?: ReactNode;
 }
 
 /**
@@ -82,6 +84,7 @@ export function PlannerDayFoot({
   onAddFreeBlock,
   actionsTrailing,
   search,
+  showPicker,
 }: PlannerDayFootProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -132,6 +135,7 @@ export function PlannerDayFoot({
           <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
           <span className="truncate">{t('custom.add')}</span>
         </button>
+        {showPicker}
       </div>
 
       {/* Letting the day sort itself, directly above what the day adds up to

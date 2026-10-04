@@ -2444,6 +2444,7 @@
     },
     "custom": {
       "add": "Bloc personnel",
+      "addShow": "Ajouter un spectacle",
       "defaultLabel": "Pause",
       "label": "Intitulé",
       "duration": "{minutes} min",
