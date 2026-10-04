@@ -157,6 +157,24 @@ const NAMES_A = {
   nl: /\bnoemen een\b/giu,
 };
 /**
+ * `ob der Tag so aufgeht` (§3.3, rule 9): an image where the sentence should say what fits.
+ * Which rides, by what time, before the park closes: the planner shows exactly that, and the
+ * phrase says none of it. It stood in the planner's lead, the landing page's pointer to the
+ * planner and the planner launch post until 2026-10-04, when the PO put it on the list, and the
+ * five translations had carried it over as `whether the day adds up`, `of de dag klopt`, `si la
+ * journée tient debout`, `si el día cuadra`, `se la giornata regge`. An error on every surface.
+ * `a day that adds up to a lot of empty seats` and `el segundo día sale por 60 €` are sums and
+ * stay: the English rule stops before `to`, the Spanish one needs the article next to `día`.
+ */
+const DAY_WORKS_OUT = {
+  de: /\btag\b[^.!?,;:]{0,25}?\baufgeh(?:t|en)\b|\b(?:geht|ging)\s+(?:der|dein|euer|ihr|mein|unser)\s+tag\b[^.!?,;:]{0,25}?\bauf\b|\btag\s+(?:geht|ging)\s+(?:so\s+|nicht\s+|schon\s+|noch\s+)*auf\b/giu,
+  en: /\b(?:the|your|my|our) day (?:actually |really |still )?adds? up\b(?!\s+to\b)/giu,
+  nl: /\b(?:de|je|jouw|mijn|onze) dag\b[^.!?,;:]{0,25}?\b(?:uitkomt|klopt)(?!\p{L})/giu,
+  fr: /(?<!\p{L})(?:la|ta|votre|ma|notre) journée tient(?: debout)?(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:el|tu|mi|su|vuestro) día (?:sale|cuadra)(?!\s+(?:por|de|a)\b)(?!\p{L})/giu,
+  it: /(?<!\p{L})giornata (?:regge|sta in piedi)(?!\p{L})/giu,
+};
+/**
  * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
  * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
  * Every language on every surface, because a translation keeps the habit of its source.
@@ -718,6 +736,12 @@ function hardRules(file, text, locale) {
     fail(
       file,
       `a ride that names its own limit (§3.3), say where the limit applies: ${[...new Set(names)].slice(0, 3).join(' · ')}`
+    );
+  const dayWorks = DAY_WORKS_OUT[locale] && text.replace(/\s+/g, ' ').match(DAY_WORKS_OUT[locale]);
+  if (dayWorks)
+    fail(
+      file,
+      `"ob der Tag aufgeht" (§3.3), say what fits by when: ${[...new Set(dayWorks)].slice(0, 3).join(' · ')}`
     );
   if (locale === 'de') {
     const queue = (text.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);

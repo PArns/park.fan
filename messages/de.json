@@ -2582,7 +2582,7 @@
     },
     "page": {
       "title": "Deinen Parktag Bahn für Bahn planen",
-      "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob der Tag so aufgeht. Der Tagesplaner kostet nichts, liegt in deinem Browser und braucht kein Konto.",
+      "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob alle vor Parkschluss drankommen. Der Tagesplaner kostet nichts, liegt in deinem Browser und braucht kein Konto.",
       "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
       "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste, Shows und Pausen dazwischen, Hinweis, wo dein Kind zu klein ist.",
       "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",
@@ -2842,7 +2842,7 @@
       "action": "Zum Tagesplaner",
       "next": {
         "title": "Tag gefunden?",
-        "body": "Im Tagesplaner legst du fest, welche Bahnen du fahren willst, und siehst mit den vorhergesagten Wartezeiten, ob der Tag aufgeht. Wie gut die Prognosen im Crowd-Kalender in den letzten 30 Tagen getroffen haben, steht bei Fancast."
+        "body": "Im Tagesplaner legst du fest, welche Bahnen du fahren willst, und siehst mit den vorhergesagten Wartezeiten, ob alle vor Parkschluss drankommen. Wie gut die Prognosen im Crowd-Kalender in den letzten 30 Tagen getroffen haben, steht bei Fancast."
       }
     },
     "developers": {

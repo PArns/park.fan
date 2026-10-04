@@ -34,7 +34,8 @@ seo:
   title: 'Journée au parc : compter les files avant de faire la queue'
   description: >-
     Tu poses tes attractions sur une frise, avec les attentes prévues et la
-    marche entre elles, et tu vois d’avance si la journée tient. Sans compte.
+    marche entre elles, et tu vois d’avance si elles passent toutes avant la
+    fermeture. Sans compte.
   keywords:
     - planifier une journée parc
     - planificateur parc attractions
@@ -62,7 +63,7 @@ n’est pas cochée. Après coup, on accuse la foule, alors que c’est l’ordr
 C’est précisément le trou qu’avait park.fan. « Combien de temps d’attente en ce
 moment », on y répond depuis le premier jour. « Est-ce beaucoup pour un mardi »,
 depuis [fin août](/blog/70-minutes-est-ce-beaucoup). La troisième question
-n’était nulle part : est-ce que ma journée tient debout ?
+n’était nulle part : est-ce que mes huit attractions passent avant la fermeture ?
 
 Depuis début septembre, elle y est. Dans le [planificateur](/planificateur), tu
 poses tes attractions sur une frise, avec les attentes prévues et les trajets

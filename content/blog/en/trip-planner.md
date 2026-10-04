@@ -34,7 +34,8 @@ seo:
   title: 'Plan a theme park day: count the queues before you join them'
   description: >-
     Lay your rides on a timeline with the predicted waits and the walks in
-    between, and see before you go whether the day adds up. No account needed.
+    between, and see before you go whether they all fit in before closing. No
+    account needed.
   keywords:
     - plan a theme park day
     - theme park trip planner
@@ -61,7 +62,7 @@ you blame the crowds, when the real culprit was the order.
 That’s the gap park.fan had. “How long is the queue right now” we’ve answered
 since day one. “Is that a lot for a Tuesday” since
 [late August](/blog/is-70-minutes-a-long-wait). The third question was nowhere:
-does my day actually add up?
+do my eight rides fit in before the park closes?
 
 Since early September it’s there. In the [trip planner](/trip-planner) you lay
 your rides on a timeline, with the predicted waits and the walks in between, and

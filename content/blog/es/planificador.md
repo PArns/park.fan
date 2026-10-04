@@ -34,7 +34,8 @@ seo:
   title: 'Planifica tu día de parque: cuenta las colas antes de ir'
   description: >-
     Pon tus atracciones en una línea de tiempo con las esperas previstas y los
-    caminos entre ellas, y comprueba antes de ir si el día sale. Sin cuenta.
+    caminos entre ellas, y comprueba antes de ir si te da tiempo a todas antes
+    del cierre. Sin cuenta.
   keywords:
     - planificar un día de parque
     - planificador parque de atracciones
@@ -60,7 +61,7 @@ mucho andar, poco montar, y por la noche la mitad sin tachar.
 Ese hueco es el que tenía park.fan. «¿Cuánta cola hay ahora?» lo respondemos desde
 el primer día. «¿Es mucho para un martes?» desde
 [finales de agosto](/blog/son-70-minutos-mucho). La tercera pregunta no estaba en
-ninguna parte: ¿mi día sale así?
+ninguna parte: ¿me da tiempo a mis ocho atracciones antes del cierre?
 
 Desde principios de septiembre está. En el [planificador](/planificador) pones
 tus atracciones en una línea de tiempo, con las esperas previstas y los caminos
