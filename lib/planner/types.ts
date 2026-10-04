@@ -219,8 +219,3 @@ export function countAll(state: PlannerState): number {
  * of the longest queue on record can produce comes near it.
  */
 export const MAX_PLANNED_MINUTE = 48 * 60;
-
-/** A performance picked from the day's showtimes, as against a free block a visitor typed. */
-export function isShowEntry(entry: PlannerEntry): boolean {
-  return entry.showSlug !== undefined && entry.custom !== undefined;
-}

@@ -475,7 +475,8 @@ export function applyPlan(
   const next = [
     ...existing.map((entry) => {
       const minute = moved.get(entry.id);
-      return minute === undefined || minute === entry.startMinute
+      // A show keeps its performance's minute whatever a caller names.
+      return minute === undefined || minute === entry.startMinute || entry.showSlug
         ? entry
         : withHourMirror({ ...entry, startMinute: minute });
     }),
@@ -527,6 +528,9 @@ export function shiftFrom(
   const ordered = byStart(existing);
   const from = ordered.findIndex((e) => e.id === entryId);
   if (from === -1) return state;
+
+  // Nothing but shows after the anchor: nothing moves, so the state stays the same object.
+  if (!ordered.slice(from).some((e) => !e.showSlug)) return state;
 
   return withDay(
     state,

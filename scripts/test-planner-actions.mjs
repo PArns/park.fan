@@ -23,6 +23,7 @@ import {
   addCustomEntry,
   addEntry,
   addShowEntry,
+  applyPlan,
   clearDay,
   moveEntry,
   openDay,
@@ -40,6 +41,7 @@ import {
   RIDER_HEIGHT_DEFAULT_CM,
 } from '../lib/planner/party.ts';
 import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
+import { fitBlocks } from '../lib/planner/fit.ts';
 import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { actualVsEstimate, estimateFor } from '../lib/planner/estimate.ts';
 
@@ -940,6 +942,55 @@ test(
     15 * 60
   );
 
+  test('the fit assistant does not offer a show as a lever', fitBlocks([entry]).length, 0);
+  test(
+    'a shift that would only touch shows returns the same state',
+    shiftFrom(withShow, PARK.parkSlug, PARK.date, entry.id, 30) === withShow,
+    true
+  );
+  const applied = applyPlan(withShow, {
+    ...PARK,
+    stops: [{ entryId: entry.id, attractionSlug: 'x', attractionName: 'x', startMinute: 10 * 60 }],
+  });
+  test(
+    'applyPlan cannot move a show',
+    entriesFor(applied, PARK.parkSlug, PARK.date).find((e) => e.id === entry.id)?.startMinute,
+    15 * 60
+  );
+  test(
+    'a stray showSlug without a custom block is dropped on read',
+    entriesFor(
+      parsePlannerPayload(
+        JSON.stringify({
+          payload: {
+            ...withShow,
+            parks: {
+              [PARK.parkSlug]: {
+                ...withShow.parks[PARK.parkSlug],
+                days: {
+                  [PARK.date]: {
+                    date: PARK.date,
+                    entries: [
+                      {
+                        id: 'r-1',
+                        attractionSlug: 'taron',
+                        attractionName: 'Taron',
+                        showSlug: 'x',
+                        startMinute: 600,
+                      },
+                    ],
+                  },
+                },
+              },
+            },
+          },
+        })
+      ),
+      PARK.parkSlug,
+      PARK.date
+    )[0]?.showSlug,
+    undefined
+  );
   const roundTrip = parsePlannerPayload(JSON.stringify({ payload: withShow }));
   test(
     'the slug survives a read from storage',

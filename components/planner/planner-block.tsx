@@ -814,6 +814,9 @@ export function PlannerBlock({
           value={entry.startMinute}
           aria-label={`${custom ? custom.label : entry.attractionName} — ${range}`}
           onChange={(event) => onMove(Number(event.target.value))}
+          /* A show's time is its performance's: the slider is not offered. */
+          disabled={Boolean(entry.showSlug)}
+          tabIndex={entry.showSlug ? -1 : undefined}
           /* `pointer-events-none`, and that one word is the whole reason blocks
              could not be dragged. This input is invisible (`opacity-0`) and sits
              at z-20 over the grip button at z-10 in the SAME column, so every
