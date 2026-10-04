@@ -10,7 +10,7 @@ export interface FavoritesData {
   restaurants: string[];
 }
 
-const FAVORITES_COOKIE_NAME = 'favorites';
+export const FAVORITES_COOKIE_NAME = 'favorites';
 const FAVORITES_COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
 const SYNC_DEBOUNCE_MS = 400; // Batch rapid toggles into a single API call
 
@@ -62,6 +62,49 @@ function validateStringArray(arr: unknown): string[] {
 // object is treated as immutable — mutators below clone before changing it.
 let parseCache: { raw: string; data: FavoritesData } | null = null;
 
+export interface FavoriteCounts {
+  parks: number;
+  attractions: number;
+  shows: number;
+  restaurants: number;
+  total: number;
+}
+
+export function countFavorites(f: FavoritesData): FavoriteCounts {
+  return {
+    parks: f.parks.length,
+    attractions: f.attractions.length,
+    shows: f.shows.length,
+    restaurants: f.restaurants.length,
+    total: f.parks.length + f.attractions.length + f.shows.length + f.restaurants.length,
+  };
+}
+
+/**
+ * The cookie's value as `FavoritesData`, or `null` when it is missing or not the JSON object this
+ * module writes. Pure, so the server can read the same cookie: `/favorites` takes its counts from
+ * the request to render its first HTML at the size of the list (PAR-668).
+ */
+export function parseFavoritesCookie(raw: string | undefined): FavoritesData | null {
+  if (!raw) return null;
+  try {
+    // `document.cookie` hands back the URL-encoded form `writeCookie` stored; Next's cookie
+    // store has already decoded it.
+    const text = raw.startsWith('%') ? decodeURIComponent(raw) : raw;
+    const parsed = secureJsonParse(text);
+    if (typeof parsed !== 'object' || parsed === null) return null;
+    const safeParsed = parsed as Record<string, unknown>;
+    return {
+      parks: validateStringArray(safeParsed.parks),
+      attractions: validateStringArray(safeParsed.attractions),
+      shows: validateStringArray(safeParsed.shows),
+      restaurants: validateStringArray(safeParsed.restaurants),
+    };
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Get favorites from cookies
  */
@@ -83,24 +126,9 @@ export function getFavoritesFromCookies(): FavoritesData {
       return parseCache.data;
     }
 
-    const parsed = typeof cookieValue === 'string' ? secureJsonParse(cookieValue) : cookieValue;
-
-    // Ensure parsed is a non-null object to avoid crashes on parsed.parks etc.
-    if (typeof parsed !== 'object' || parsed === null) {
-      return defaultData;
-    }
-
-    const safeParsed = parsed as Record<string, unknown>;
-
-    const data: FavoritesData = {
-      parks: validateStringArray(safeParsed.parks),
-      attractions: validateStringArray(safeParsed.attractions),
-      shows: validateStringArray(safeParsed.shows),
-      restaurants: validateStringArray(safeParsed.restaurants),
-    };
-    if (typeof cookieValue === 'string') {
-      parseCache = { raw: cookieValue, data };
-    }
+    const data = parseFavoritesCookie(cookieValue);
+    if (!data) return defaultData;
+    parseCache = { raw: cookieValue, data };
     return data;
   } catch (error) {
     console.error('[Favorites] Error reading favorites from cookies:', error);

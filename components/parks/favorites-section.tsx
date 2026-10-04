@@ -20,7 +20,11 @@ import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn, stripNewPrefix } from '@/lib/utils';
-import { getFavoritesFromCookies } from '@/lib/utils/favorites';
+import {
+  countFavorites,
+  getFavoritesFromCookies,
+  type FavoriteCounts,
+} from '@/lib/utils/favorites';
 import { parkChapterUrl } from '@/lib/utils/url-utils';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
@@ -39,14 +43,22 @@ const PARK_ROW_WITH_LINE_PX = 244;
  * the homepage hands it the story's rhythm (`STORY_SECTION_Y`), and must hand the same to the
  * `FavoritesEmptyState` it uses as the dynamic-import fallback. `heading` likewise: `tile` on the
  * homepage, `watermark` (the default) everywhere else — see `FavoritesHeading`.
+ *
+ * `initialCounts` is the cookie as the server read it, and only `/favorites` has it: there the
+ * band is the page, so the page renders per request and the first HTML already holds the skeleton
+ * at the size of the list. Without it the page painted the empty state's box, swapped in a
+ * three-row skeleton at hydration and the cards after that — 136 px, then 436, then 616 on a
+ * phone, with the instructions and the footer under it jumping each time (PAR-668).
  */
 export function FavoritesSection({
   standalone = false,
   heading = 'watermark',
+  initialCounts = null,
   className,
 }: {
   standalone?: boolean;
   heading?: FavoritesHeadingVariant;
+  initialCounts?: FavoriteCounts | null;
   className?: string;
 }) {
   const t = useTranslations('favorites');
@@ -57,17 +69,10 @@ export function FavoritesSection({
 
   // Read cookie counts once after mount — avoids showing a skeleton for users with no favorites.
   // Returns -1 on the server (cookies not readable); after mount the real count is used.
-  const cookieCounts = useMemo(() => {
-    if (!mounted) return null;
-    const f = getFavoritesFromCookies();
-    return {
-      parks: f.parks.length,
-      attractions: f.attractions.length,
-      shows: f.shows.length,
-      restaurants: f.restaurants.length,
-      total: f.parks.length + f.attractions.length + f.shows.length + f.restaurants.length,
-    };
-  }, [mounted]);
+  const cookieCounts = useMemo(
+    () => (mounted ? countFavorites(getFavoritesFromCookies()) : null),
+    [mounted]
+  );
 
   // `ParkCard`/`AttractionCard` read the `parks` + `attractions` namespaces, which the editorial
   // routes deliberately keep out of their payload — this section is empty for almost everyone who
@@ -109,10 +114,61 @@ export function FavoritesSection({
     [favoritesData, sortByDistanceOrName]
   );
 
+  // One skeleton shape for every wait below, so whatever replaces it lands in the same box. The
+  // location hint and the group headings need no data, so they are the real ones: a grey 24 px bar
+  // stood in for the 28 px `<h3>`, and the 44 px hint arrived only with the cards. On `/favorites`
+  // each park also holds the 28 px line under its card that `FavoriteParkQuietestDay` fills.
+  const renderSkeleton = (parkCount: number, attractionCount: number) => (
+    <section className={cn('bg-muted/30 px-4 py-8', className)}>
+      <div className="container mx-auto">
+        {!standalone && <FavoritesHeading variant={heading} />}
+        {!position && (
+          <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>
+        )}
+        <div className="space-y-6">
+          {parkCount > 0 && (
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
+              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+                {Array.from({ length: parkCount }).map((_, i) =>
+                  standalone ? (
+                    <div key={i} className="flex flex-col gap-4">
+                      <ParkCardNearbySkeleton />
+                      <div className="h-7" aria-hidden="true" />
+                    </div>
+                  ) : (
+                    <ParkCardNearbySkeleton key={i} />
+                  )
+                )}
+              </div>
+            </div>
+          )}
+          {attractionCount > 0 && (
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">{t('attractions')}</h3>
+              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+                {Array.from({ length: attractionCount }).map((_, i) => (
+                  <AttractionCardSkeleton key={i} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+
   // Server / first hydration: cookies aren't readable, so we don't know yet which of the
   // three outcomes below this is. Hold the empty state's box anyway — it is the outcome
   // for the overwhelming majority, and the same box is this component's dynamic-import
   // fallback, so it stands from the first paint through hydration without moving.
+  //
+  // Unless the server read the cookie: then it is not a guess, and the skeleton is the box.
+  if (!mounted && initialCounts && initialCounts.total > 0)
+    return renderSkeleton(
+      initialCounts.parks,
+      initialCounts.attractions + initialCounts.shows + initialCounts.restaurants
+    );
   if (!mounted)
     return (
       <FavoritesEmptyState
@@ -132,43 +188,20 @@ export function FavoritesSection({
     return <FavoritesEmptyState standalone={standalone} heading={heading} className={className} />;
   }
 
-  // One skeleton shape for both waits below, so whatever replaces it lands in the same box.
-  const renderSkeleton = (parkCount: number, attractionCount: number) => (
-    <section className={cn('bg-muted/30 px-4 py-8', className)}>
-      <div className="container mx-auto">
-        {!standalone && <FavoritesHeading variant={heading} />}
-        <div className="space-y-6">
-          {parkCount > 0 && (
-            <div>
-              <div className="bg-muted mb-4 h-6 w-24 rounded" />
-              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                {Array.from({ length: parkCount }).map((_, i) => (
-                  <ParkCardNearbySkeleton key={i} />
-                ))}
-              </div>
-            </div>
-          )}
-          {attractionCount > 0 && (
-            <div>
-              <div className="bg-muted mb-4 h-6 w-24 rounded" />
-              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                {Array.from({ length: attractionCount }).map((_, i) => (
-                  <AttractionCardSkeleton key={i} />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-
   // Favorites exist in cookies (or count unknown) and API is still loading → show skeleton.
   // isPending covers the case where the query is disabled (geoLoading=true) but hasn't started yet —
   // isLoading alone misses this and would fall through to the empty state.
   if (loading || isPending) {
     const showParkSkeletons = !cookieCounts || cookieCounts.parks > 0;
     const showAttractionSkeletons = !cookieCounts || cookieCounts.attractions > 0;
+    // On `/favorites` the list is the page and every card renders, so the skeleton holds them all
+    // — the same counts the server-rendered one used.
+    if (standalone && cookieCounts) {
+      return renderSkeleton(
+        cookieCounts.parks,
+        cookieCounts.attractions + cookieCounts.shows + cookieCounts.restaurants
+      );
+    }
     return renderSkeleton(
       showParkSkeletons ? Math.min(cookieCounts?.parks ?? 3, 3) : 0,
       showAttractionSkeletons ? Math.min(cookieCounts?.attractions ?? 3, 3) : 0
@@ -229,7 +262,10 @@ export function FavoritesSection({
             <>
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
+                {/* `eager` on `/favorites`: the grid is the top of the page there, and the
+                    placeholder's 244 px rows are a frame of the wrong height before it mounts. */}
                 <LazyMount
+                  eager={standalone}
                   grid={{
                     count: sortedFavorites.parks.length,
                     rowHeight: standalone ? PARK_ROW_WITH_LINE_PX : 200,
@@ -297,6 +333,7 @@ export function FavoritesSection({
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('attractions')}</h3>
                 <LazyMount
+                  eager={standalone}
                   grid={{
                     count: sortedFavorites.attractions.length,
                     rowHeight: 340,

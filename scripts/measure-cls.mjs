@@ -138,6 +138,11 @@ const CLIENT_IP = flag('ip', '91.64.1.1');
  * whose content is a cookie (`/favorites` reads `favorites={"parks":["<id>"],…}`). Without one the
  * run measures the empty state. Only the `--late` replay sets them. The value is sent as it is
  * written here, so a JSON value is written URL-encoded.
+ *
+ * They go on the replay's own requests too — the document it captures and splits, and everything
+ * it proxies. `/favorites` reads the cookie on the server since PAR-668; a capture without it is
+ * the empty page, and the run would score the browser's cookie against a document that never saw
+ * it.
  */
 const COOKIES = args
   .filter((a) => a.startsWith('--cookie='))
@@ -145,6 +150,9 @@ const COOKIES = args
     const [name, ...rest] = a.slice('--cookie='.length).split('=');
     return { name, value: rest.join('=') };
   });
+const COOKIE_HEADER = COOKIES.length
+  ? { cookie: COOKIES.map((c) => `${c.name}=${c.value}`).join('; ') }
+  : {};
 
 /** `--late` / `--late=2500`: replay mode, and how long the streamed tail is held back. */
 const LATE_MS = has('late') ? 1500 : Number(flag('late', '0'));
@@ -466,7 +474,11 @@ function serveSplit(html, cut, delayMs, splitPath) {
     }
     try {
       const upstream = await fetch(BASE + req.url, {
-        headers: { accept: req.headers.accept || '*/*', 'x-forwarded-for': CLIENT_IP },
+        headers: {
+          accept: req.headers.accept || '*/*',
+          'x-forwarded-for': CLIENT_IP,
+          ...COOKIE_HEADER,
+        },
       });
       const body = Buffer.from(await upstream.arrayBuffer());
       res.writeHead(upstream.status, {
@@ -672,7 +684,7 @@ if (LATE_MS > 0) {
   for (const path of URLS) {
     const url = path.startsWith('http') ? path : BASE + path;
     const html = await fetch(url, {
-      headers: { accept: 'text/html', 'x-forwarded-for': CLIENT_IP },
+      headers: { accept: 'text/html', 'x-forwarded-for': CLIENT_IP, ...COOKIE_HEADER },
     }).then((r) => r.text());
     const cut = html.indexOf('<div hidden id="S:');
     console.log('\n' + '='.repeat(94));
