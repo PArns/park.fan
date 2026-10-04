@@ -404,6 +404,20 @@ export interface ForecastItem {
   trend?: TrendDirection;
 }
 
+/**
+ * One entry of an attraction's `hourlyForecast` (park.fan's own ML forecast). Not the external
+ * `forecasts` shape (`ForecastItem`): there is no `confidencePercentage` and no `source` here.
+ */
+export interface HourlyForecastItem {
+  predictedTime: string;
+  predictedWaitTime: number;
+  /** 0–100 */
+  confidence: number;
+  /** Half-width of the uncertainty band in minutes; absent or null when the model gives none. */
+  uncertaintyMinutes?: number | null;
+  trend: TrendDirection;
+}
+
 export interface ParkDailyPrediction {
   date: string;
   crowdLevel: CrowdLevel | 'closed';
@@ -880,7 +894,7 @@ export interface ParkAttraction {
   /** Precomputed P50/P90 peak-wait stats — present for displayable headliners (SSR). */
   typicalWaits?: TypicalWaits | null;
   // Only present on attraction detail page (merged from dedicated endpoint)
-  hourlyForecast?: ForecastItem[];
+  hourlyForecast?: HourlyForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
   /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
   rideProfile?: RideProfile | null;
@@ -1116,7 +1130,7 @@ export interface AttractionResponse {
   land: Land | null;
   queues?: QueueDataItem[];
   currentLoad?: ParkLoad | null;
-  hourlyForecast?: ForecastItem[];
+  hourlyForecast?: HourlyForecastItem[];
   forecasts?: ForecastItem[];
   latitude: number | null;
   longitude: number | null;

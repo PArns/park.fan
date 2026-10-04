@@ -7,7 +7,7 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkDayOf } from '@/lib/utils/park-day';
 import type {
   AttractionHistoryDay,
-  ForecastItem,
+  HourlyForecastItem,
   ScheduleItem,
   BestVisitSlot,
 } from '@/lib/api/types';
@@ -15,7 +15,7 @@ import { DailyWaitTimeChart, type DailyWaitTimeChartData } from './daily-wait-ti
 
 interface DailyWaitTimeChartClientProps {
   history?: AttractionHistoryDay[];
-  hourlyForecast?: ForecastItem[];
+  hourlyForecast?: HourlyForecastItem[];
   timezone: string;
   schedule?: ScheduleItem[];
   bestVisitTimes?: BestVisitSlot[] | null;

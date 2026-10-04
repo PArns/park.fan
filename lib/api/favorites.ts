@@ -9,6 +9,7 @@ import type {
   RopeDropInfo,
   LiveWaitTimes,
   AttractionKind,
+  HourlyForecastItem,
 } from '@/lib/api/types';
 
 export interface FavoritePark {
@@ -60,12 +61,7 @@ export interface FavoriteAttraction {
       formatted: string;
     };
   }>;
-  hourlyForecast?: Array<{
-    predictedTime: string;
-    predictedWaitTime: number;
-    confidence: number;
-    trend: string;
-  }>;
+  hourlyForecast?: HourlyForecastItem[];
   forecasts?: Array<{
     source: string;
     predictedTime: string;
