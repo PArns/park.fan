@@ -22,7 +22,10 @@ export async function RightsNotice() {
   ];
 
   return (
-    <section className="border-primary/15 bg-primary/[3%] mb-8 rounded-xl border p-5 sm:p-6">
+    <section
+      data-card=""
+      className="border-primary/15 bg-primary/[3%] mb-8 rounded-xl border p-5 sm:p-6"
+    >
       <h2 className="mb-1 text-base font-semibold">{t('title')}</h2>
       <p className="text-muted-foreground mb-4 text-sm">{t('intro')}</p>
       <ul className="space-y-3">

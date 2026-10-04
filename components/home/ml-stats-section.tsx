@@ -24,8 +24,8 @@ function getR2Color(r2: number | null | undefined) {
 interface MLStatsSectionProps {
   linkToFancast?: boolean;
   /**
-   * `section` (default) is the standalone band the homepage and `/fancast` have
-   * always rendered: its own `<section>`, its own H2 and intro.
+   * `section` (default) is the band `/fancast` renders inside its chapter 01: its own
+   * `<section>`, its own H3 (the chapter's `ChapterHeading` is the H2) and intro.
    *
    * `bare` drops all three and returns the metric grid alone, for a caller that
    * has already opened the chapter — the homepage story's AI chapter states the
@@ -69,9 +69,9 @@ export async function MLStatsSection({
           {/* Header */}
           <div className="mb-3 flex items-center gap-2">
             <Brain className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">
+            <h3 className="text-xl font-bold">
               <GlossaryInject noUnderline>{t('ai.title')}</GlossaryInject>
-            </h2>
+            </h3>
           </div>
           <p className="text-muted-foreground mb-10 text-sm leading-relaxed">
             <GlossaryInject>{t('ai.subtitle')}</GlossaryInject>

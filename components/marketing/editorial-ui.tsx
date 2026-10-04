@@ -363,7 +363,7 @@ export function LandingNextSteps({
 
   if (surface === 'chapter') {
     return (
-      <section className="mt-8" aria-labelledby={headingId}>
+      <section data-landing-next="" className="mt-8" aria-labelledby={headingId}>
         <ChapterHeading icon={ArrowRight} kicker={kicker} title={title} id={headingId} frosted />
         <GlassCard variant="tile">
           {body && <p className="text-muted-foreground mb-5 leading-relaxed">{body}</p>}
@@ -374,7 +374,7 @@ export function LandingNextSteps({
   }
 
   return (
-    <section className="relative isolate overflow-hidden border-y">
+    <section data-landing-next="" className="relative isolate overflow-hidden border-y">
       <div
         aria-hidden
         className="from-primary/12 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br via-transparent to-amber-500/10"
@@ -709,10 +709,13 @@ export function FaqList({ items }: { items: ReadonlyArray<{ question: string; an
   return (
     <>
       <FaqStructuredData items={items} />
-      <FaqAccordion
-        items={items.map((item) => ({ question: item.question, answer: item.answer }))}
-        padding="flush"
-      />
+      {/* `data-faq-list` is what `pnpm check:landing-pages` looks for beside a `FAQPage`. */}
+      <div data-faq-list="">
+        <FaqAccordion
+          items={items.map((item) => ({ question: item.question, answer: item.answer }))}
+          padding="flush"
+        />
+      </div>
     </>
   );
 }

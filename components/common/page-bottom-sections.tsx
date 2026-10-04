@@ -47,7 +47,9 @@ interface PageBottomSectionsProps {
  */
 export function PageBottomSections({ locale }: PageBottomSectionsProps) {
   return (
-    <>
+    // `data-page-bottom`: `pnpm check:landing-pages` reports the bare `<h2>`s in here as open
+    // rather than failing on them, until the module's headings are decided.
+    <div data-page-bottom="">
       {/* Separated from the page content by a rule and a tint, NOT by whitespace.
           This block used to be pushed down by ~100px of stacked padding (page
           container + section + the card's own hero gap) to make the break read,
@@ -68,6 +70,6 @@ export function PageBottomSections({ locale }: PageBottomSectionsProps) {
       <Suspense fallback={<FeaturedParksSkeleton />}>
         <FeaturedParksSlot locale={locale} />
       </Suspense>
-    </>
+    </div>
   );
 }

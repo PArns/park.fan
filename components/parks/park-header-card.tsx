@@ -26,6 +26,7 @@ export function ParkHeaderCard({
 }) {
   return (
     <div
+      data-card=""
       className={cn(
         'border-border/50 mb-4 overflow-hidden rounded-xl border shadow-sm',
         TILE_GLASS

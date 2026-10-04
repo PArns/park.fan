@@ -120,6 +120,7 @@ export function GlassCard({
   return (
     <div
       ref={ref}
+      data-glass-card=""
       className={cn('rounded-xl border p-6 shadow-sm', variantClasses[variant], className)}
       {...rest}
     >

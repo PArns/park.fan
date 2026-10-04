@@ -59,6 +59,7 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 _Layout, a component, a breakpoint, the header, a card, three.js._
 
 - [A chapter opens the same way everywhere (REQUIREMENT)](a-chapter-opens-the-same-way-everywhere.md)
+- [A landing page has one anatomy (REQUIREMENT)](a-landing-page-has-one-anatomy.md)
 - [A client-only preference may not decide server-rendered markup (REQUIREMENT)](a-client-only-preference-may-not-decide-server-rendered-markup.md)
 - [A cell is gated on its content, and a component that fills one may not return `null` — nor one line (REQUIREMENT)](a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md)
 - [Reuse existing components (REQUIREMENT)](reuse-existing-components.md)

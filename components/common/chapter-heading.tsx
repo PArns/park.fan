@@ -162,6 +162,7 @@ export function ChapterHeading({
 
   return (
     <div
+      data-chapter-heading=""
       className={cn(
         'border-border flex items-start border-b',
         // `flex-wrap` only in the aside case, where the control column has to be able to drop

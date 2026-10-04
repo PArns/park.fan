@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getTranslations } from 'next-intl/server';
 import { Sparkles } from 'lucide-react';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 /**
  * Decorative "get inspired" gallery shown on the contribution page. Uses real
@@ -45,15 +46,9 @@ export async function ExampleGallery() {
 
   return (
     <section className="mb-10">
-      <div className="mb-4 flex items-center gap-2.5">
-        <div className="bg-primary/15 text-primary flex size-8 items-center justify-center rounded-lg">
-          <Sparkles className="size-4" />
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold">{t('title')}</h2>
-          <p className="text-muted-foreground text-sm">{t('subtitle')}</p>
-        </div>
-      </div>
+      {/* A chapter, so it opens with the site's chapter header; no number, because the page
+          has no sequence (docs/rules/a-landing-page-has-one-anatomy.md). */}
+      <ChapterHeading icon={Sparkles} title={t('title')} hint={t('subtitle')} />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 @min-[1024px]/page:grid-cols-4">
         {EXAMPLES.map((ex) => (
