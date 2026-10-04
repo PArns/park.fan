@@ -2,7 +2,7 @@ import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { type DayGrid, RIDE_DURATION_MIN, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
 import { estimateFor, plannedMinutes } from './estimate';
-import { transferBetween } from './leg';
+import { entryPlace, transferBetween, type LegPlace } from './leg';
 import { partyFlags } from './party';
 import type { DayClock } from './park-time';
 import type { PlannerDayPrefs, PlannerEntry } from './types';
@@ -669,6 +669,34 @@ function rankHeadliners(
 interface FixedBlock {
   from: number;
   to: number;
+  /**
+   * Where the block is, when it is a show with coordinates. A ride filed before
+   * it has to walk there and one filed after it has to walk from it, so the
+   * block is wider than its minutes by that walk. `null` on everything else,
+   * which keeps exactly the width it always had.
+   */
+  place: LegPlace | null;
+}
+
+/**
+ * How far a ride's own minutes have to stay from a fixed block on each side.
+ *
+ * Both are zero for a block with no place. The ceiling is what the search
+ * builds against and the floor what {@link isExecutable} judges against, the
+ * same split `leg.ts` draws between a plan and a verdict, so a day the search
+ * files is never one the grid calls broken.
+ */
+function fixedPads(
+  ride: LegPlace | null,
+  block: FixedBlock,
+  bound: 'floor' | 'ceiling'
+): { before: number; after: number } {
+  if (!block.place) return { before: 0, after: 0 };
+  const key = bound === 'floor' ? 'floorMinutes' : 'ceilingMinutes';
+  return {
+    before: transferBetween(ride, block.place)[key],
+    after: transferBetween(block.place, ride)[key],
+  };
 }
 
 interface Candidate {
@@ -813,15 +841,17 @@ function tabulate(day: PlanDay, slug: string): Pick<Candidate, 'waitByHour' | 'o
 function clearFixed(
   start: number,
   spanAt: (minute: number) => number,
-  fixed: readonly FixedBlock[]
+  fixed: readonly FixedBlock[],
+  ride: LegPlace | null
 ): number {
   let at = start;
   for (let pass = 0; pass < fixed.length + 1; pass++) {
     const span = spanAt(at);
     let moved = false;
     for (const block of fixed) {
-      if (at < block.to && at + span > block.from) {
-        at = snapUp(block.to, SNAP_MIN_FINE);
+      const { before, after } = fixedPads(ride, block, 'ceiling');
+      if (at < block.to + after && at + span + before > block.from) {
+        at = snapUp(block.to + after, SNAP_MIN_FINE);
         moved = true;
       }
     }
@@ -881,7 +911,7 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
     // Waiting into a closed park is never the better option, so the delay loop
     // stops at the gate. Arriving there is a different matter — see below.
     if (raw >= grid.closeMin) break;
-    const start = clearFixed(raw, spanAt, ctx.fixed);
+    const start = clearFixed(raw, spanAt, ctx.fixed, candidate.ride);
     if (start >= grid.closeMin) break;
     // The push past a fixed block can land in another hour, and `clearFixed`
     // has already taken that into account; this reads the settled figures off
@@ -920,7 +950,12 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
     // measured at 13 of 300 random full days with a block at 18:00.
     const spanOutside = (minute: number) =>
       candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
-    const start = clearFixed(Math.max(first, grid.closeMin), spanOutside, ctx.fixed);
+    const start = clearFixed(
+      Math.max(first, grid.closeMin),
+      spanOutside,
+      ctx.fixed,
+      candidate.ride
+    );
     const hour = hourIndex(start);
     return [
       {
@@ -1508,6 +1543,7 @@ function buildContext(input: OptimizeInput): Context | null {
     .map((entry) => ({
       from: entry.startMinute,
       to: entry.startMinute + Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE),
+      place: entry.showSlug ? entryPlace(day, entry) : null,
     }))
     .sort((a, b) => a.from - b.from);
 
@@ -1845,13 +1881,17 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
   for (let i = 0; i < stops.length; i++) {
     const entry = stops[i];
     const span = Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE);
+    const there = ctx.candidates.find((c) => c.entryId === entry.id);
     for (const block of ctx.fixed) {
-      if (entry.startMinute < block.to && entry.startMinute + span > block.from) return false;
+      const { before, after } = fixedPads(there?.ride ?? null, block, 'floor');
+      if (entry.startMinute < block.to + after && entry.startMinute + span + before > block.from) {
+        return false;
+      }
     }
     if (i === 0) continue;
     const previous = stops[i - 1];
     const from = ctx.candidates.find((c) => c.entryId === previous.id);
-    const to = ctx.candidates.find((c) => c.entryId === entry.id);
+    const to = there;
     const occupied = Math.max(plannedMinutes(day, previous), SNAP_MIN_FINE);
     const floor = transferBetween(from?.ride ?? null, to?.ride ?? null).floorMinutes;
     if (entry.startMinute - (previous.startMinute + occupied) < floor) return false;
@@ -1933,10 +1973,7 @@ export function clashCount(
     .filter((entry) => !entry.done && !hasStarted(entry, clock))
     .filter((entry) => entry.custom || entry.attractionSlug)
     .sort((a, b) => a.startMinute - b.startMinute);
-  const rideOf = (entry: PlannerEntry) =>
-    entry.attractionSlug
-      ? (day.rides.find((ride) => ride.attractionSlug === entry.attractionSlug) ?? null)
-      : null;
+  const rideOf = (entry: PlannerEntry) => entryPlace(day, entry);
   let clashes = 0;
   for (let index = 1; index < ahead.length; index++) {
     const from = ahead[index - 1];

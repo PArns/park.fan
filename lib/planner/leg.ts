@@ -1,6 +1,7 @@
 import { calculateDistance } from '@/lib/utils/distance-utils';
 import { RIDE_DURATION_MIN, SNAP_MIN_FINE } from './day-grid';
-import type { PlanDayRide } from '@/lib/api/types';
+import type { PlanDay, PlanDayRide } from '@/lib/api/types';
+import type { PlannerEntry } from './types';
 
 /**
  * What happens between two rides, and whether the plan survives it.
@@ -64,20 +65,54 @@ export interface Leg {
   missing: 'none' | 'no-wait' | 'no-spread';
 }
 
+/**
+ * Where an end of a leg stands: a ride, or a show that has coordinates. Only
+ * the position and the land are read, so a show passes without being dressed
+ * up as a ride (it has no land, and a transfer with an unknown land is never a
+ * cross-land one).
+ */
+export type LegPlace = Pick<PlanDayRide, 'latitude' | 'longitude' | 'land'>;
+
 export interface LegEnd {
   startMinute: number;
   /** Expected wait, or null when the block carries no figure. */
   wait: number | null;
-  ride: PlanDayRide | null | undefined;
+  ride: LegPlace | null | undefined;
   /** Curated ride duration in seconds, where one exists. */
   rideSeconds?: number | null;
 }
 
-function coordsOf(ride: PlanDayRide | null | undefined): [number, number] | null {
+function coordsOf(ride: LegPlace | null | undefined): [number, number] | null {
   const lat = ride?.latitude;
   const lng = ride?.longitude;
   if (typeof lat !== 'number' || typeof lng !== 'number') return null;
   return [lat, lng];
+}
+
+/**
+ * Where an entry is, for the walk to it and from it.
+ *
+ * A ride is where `/plan/day` puts it. A show is where `/plan/day` puts the
+ * show, and only when it carries both coordinates: a show without them has no
+ * place, which is `null` and costs exactly what it cost before there was a
+ * position to read. No placeholder and no guess, because a guess is the one
+ * thing `leg.ts` may not feed its floor. Anything else (a lunch break, a
+ * meeting point) has no place either.
+ */
+export function entryPlace(
+  day: PlanDay | null | undefined,
+  entry: Pick<PlannerEntry, 'attractionSlug' | 'showSlug'>
+): LegPlace | null {
+  if (entry.attractionSlug) {
+    return day?.rides.find((ride) => ride.attractionSlug === entry.attractionSlug) ?? null;
+  }
+  if (entry.showSlug) {
+    const show = day?.shows?.find((s) => s.showSlug === entry.showSlug);
+    if (typeof show?.latitude === 'number' && typeof show.longitude === 'number') {
+      return { latitude: show.latitude, longitude: show.longitude, land: null };
+    }
+  }
+  return null;
 }
 
 export interface Transfer {
@@ -101,8 +136,8 @@ export interface Transfer {
  * calls this and then does the part that needs a start time.
  */
 export function transferBetween(
-  from: PlanDayRide | null | undefined,
-  to: PlanDayRide | null | undefined,
+  from: LegPlace | null | undefined,
+  to: LegPlace | null | undefined,
   rideSeconds?: number | null
 ): Transfer {
   const a = coordsOf(from);
