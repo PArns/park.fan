@@ -75,7 +75,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     // layout and stays out of the way. pointer-events are scoped to the card so the rest
     // of the floating strip stays click-through.
     <section
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 p-3 sm:inset-x-auto sm:right-4 sm:bottom-4"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 p-3 max-sm:p-2 sm:inset-x-auto sm:right-4 sm:bottom-4"
       aria-label={ariaLabel ?? tCommon('locationBannerLabel')}
       data-nosnippet
       data-noindex
@@ -94,7 +94,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
         // card. The other 15 are unchanged. It costs no layout shift — this toast is `fixed`, so
         // its height moves nothing on the page — and the alternative was leaving the button's
         // reach over the end of every headline line.
-        className="border-border/80 bg-card/95 pointer-events-auto relative mx-auto max-w-sm rounded-xl border p-4 pr-9 shadow-2xl ring-1 ring-black/5 backdrop-blur-md max-sm:pr-11 sm:mx-0 dark:ring-white/5"
+        className="border-border/80 bg-card/95 pointer-events-auto relative mx-auto max-w-sm rounded-xl border p-4 pr-9 shadow-2xl ring-1 ring-black/5 backdrop-blur-md max-sm:p-3 max-sm:pr-11 sm:mx-0 dark:ring-white/5"
         aria-live="polite"
       >
         <button
@@ -120,15 +120,24 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
         >
           <X className="h-4 w-4" />
         </button>
+        {/* Below `sm` the toast is the bottom 26–32 % of a 780 px phone screen (202–252 px over six
+            locales at 320–390 px, measured 2026-10-03), over the hero's search box. There it drops the
+            icon tile, takes a short body (`bannerBodyShort`, the same promise in half the words) and
+            tighter padding. The button keeps its 44 px and the close button its 44 px reach. */}
         <div className="flex items-start gap-3">
-          <div className="bg-primary/10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
+          <div className="bg-primary/10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg max-sm:hidden">
             <MapPin className="text-primary h-4 w-4" />
           </div>
           <div className="min-w-0 flex-1">
             <h2 className="text-foreground text-sm leading-tight font-semibold">
               {t('bannerHeadline')}
             </h2>
-            <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('bannerBody')}</p>
+            <p className="text-muted-foreground mt-1 text-xs leading-snug max-sm:hidden">
+              {t('bannerBody')}
+            </p>
+            <p className="text-muted-foreground mt-0.5 text-xs leading-snug sm:hidden">
+              {t('bannerBodyShort')}
+            </p>
           </div>
         </div>
         <Button
@@ -138,7 +147,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
           }}
           size="sm"
           disabled={loading}
-          className="mt-3 w-full"
+          className="mt-3 w-full max-sm:mt-2"
         >
           <Navigation className="mr-1.5 h-3.5 w-3.5" />
           {loading ? t('loadingLocation') : t('enable')}

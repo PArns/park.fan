@@ -1498,6 +1498,7 @@
     "locationHint": "I parchi nelle vicinanze sono più precisi se abiliti la posizione.",
     "bannerHeadline": "I parchi vicini hanno bisogno della tua posizione",
     "bannerBody": "park.fan utilizza la tua posizione esatta solo per mostrarti i parchi vicini e le attrazioni e i tempi di attesa intorno a te quando sei in un parco.",
+    "bannerBodyShort": "Solo per i parchi vicini e i tempi di attesa intorno a te in un parco.",
     "bannerPrivacy": "Non memorizziamo questi dati.",
     "youAreIn": "Sei qui",
     "youAreInPark": "Sei a {parkName}",
