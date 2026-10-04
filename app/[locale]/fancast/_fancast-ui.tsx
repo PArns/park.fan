@@ -3,7 +3,7 @@
 // the "best time to visit" hub read as one design system. Kept as a thin
 // re-export so existing Fancast content imports (`./_fancast-ui`) stay valid.
 export {
-  Hero,
+  LandingHero,
   HERO_FLOW_INTO_PULL,
   SectionShell,
   Lead,

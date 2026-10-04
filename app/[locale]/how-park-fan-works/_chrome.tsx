@@ -1,18 +1,12 @@
 import React from 'react';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { objectPositionForSrc } from '@/lib/media/focus';
-import { Reveal, ScrollCue } from '@/components/marketing/scroll-reveal';
+import { Reveal } from '@/components/marketing/scroll-reveal';
 
 /**
- * Page chrome specific to the guide: the hero that states its question, the
- * ambience behind a chapter, and the closing band.
- *
- * The shared `Hero` in `components/marketing/editorial-ui.tsx` puts a title over
- * a photo, which is right for the Fancast and best-travel-time pages because
- * their subject is a mood. This page's subject is an object — a number on a
- * number that means nothing on its own — so the hero shows that object and lets
- * the headline ask about it. Everything below is then an answer.
+ * Page chrome specific to the guide: the wait-time display its hero carries as
+ * the `aside` of the shared `LandingHero`, the ambience behind a chapter, and the
+ * park-page anatomy rail. The hero and the closing next step are the shared ones
+ * in `components/marketing/editorial-ui.tsx`.
  */
 
 // ── The wait-time display ─────────────────────────────────────────────────────────────────
@@ -98,116 +92,6 @@ export function WaitSign({
         <p className="text-muted-foreground mt-3 text-center text-xs leading-relaxed">{caption}</p>
       )}
     </div>
-  );
-}
-
-// ── Hero ─────────────────────────────────────────────────────────────────────
-
-export function GuideHero({
-  kicker,
-  title,
-  tagline,
-  imageSrc,
-  imageAlt,
-  stats,
-  scrollLabel,
-  display,
-}: {
-  kicker: string;
-  title: string;
-  tagline: React.ReactNode;
-  imageSrc: string;
-  imageAlt: string;
-  stats: Array<{ value: string; label: string }>;
-  scrollLabel: string;
-  display: { value: number; unit: string; caption: string };
-}) {
-  return (
-    <header className="relative isolate -mt-12 flex min-h-[86vh] items-start overflow-hidden sm:items-end">
-      {/* `quality={60}`: the LCP element, full-bleed under a tint and a headline. See the shared
-          `Hero` in components/marketing/editorial-ui.tsx for the measured numbers. */}
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        priority
-        quality={60}
-        sizes="100vw"
-        className="object-cover motion-safe:scale-105"
-        style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
-      />
-      {/* Theme-aware tint fading into the page background, so the photo keeps its
-          own colours in light mode and never fades dark→white. Same approach as
-          the shared hero; the extra bottom stop makes room for the stats row. */}
-      <div
-        aria-hidden
-        className="from-background via-background/80 to-background/25 pointer-events-none absolute inset-0 bg-gradient-to-t"
-      />
-      <div
-        aria-hidden
-        className="from-background/70 pointer-events-none absolute inset-0 bg-gradient-to-r via-transparent to-transparent"
-      />
-      {/* Mirror of the fade above, phones only: `flowInto` puts the headline at the
-          top, where that gradient is at its weakest. Top third only, so the middle
-          of the picture stays a picture. See `HERO_FLOW_INTO_PULL`. */}
-      <div
-        aria-hidden
-        className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b to-transparent sm:hidden"
-      />
-
-      <div className="text-foreground relative container mx-auto px-4 pt-28 pb-48 sm:pb-24">
-        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
-          <div>
-            <Reveal>
-              <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-                <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-                {kicker}
-              </p>
-              <h1 className="text-foreground text-4xl font-black tracking-tight text-balance sm:text-6xl">
-                {title}
-              </h1>
-              <p className="text-foreground/80 mt-5 text-lg leading-relaxed sm:text-2xl">
-                {tagline}
-              </p>
-            </Reveal>
-
-            {stats.length > 0 && (
-              <Reveal delay={150}>
-                <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
-                  {stats.map((s) => (
-                    <div key={s.label} className="min-w-[6rem]">
-                      <dt className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
-                        {s.value}
-                      </dt>
-                      <dd className="text-muted-foreground text-xs tracking-wide uppercase">
-                        {s.label}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </Reveal>
-            )}
-          </div>
-
-          {/* The object the page is about. Hidden below lg: at that width it would
-              push the headline off the first screen, and chapter 01 shows it
-              again at full size anyway. */}
-          <Reveal delay={100} className="hidden lg:block">
-            <WaitSign
-              value={display.value}
-              unit={display.unit}
-              caption={display.caption}
-              className="ml-auto w-fit"
-            />
-          </Reveal>
-        </div>
-      </div>
-
-      {/* The cue points at content that is already on screen once it flows in. */}
-      <div className="hidden sm:block">
-        <ScrollCue label={scrollLabel} />
-      </div>
-    </header>
   );
 }
 
@@ -370,38 +254,5 @@ export function ParkAnatomy({
         </li>
       ))}
     </ol>
-  );
-}
-
-// ── Closing band ─────────────────────────────────────────────────────────────
-
-export function ClosingBand({
-  kicker,
-  title,
-  body,
-  children,
-}: {
-  kicker: string;
-  title: string;
-  body: string;
-  children?: React.ReactNode;
-}) {
-  return (
-    <section className="relative isolate overflow-hidden border-y">
-      <div
-        aria-hidden
-        className="from-primary/12 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br via-transparent to-amber-500/10"
-      />
-      <div className="container mx-auto px-4 py-16 sm:py-24">
-        <Reveal>
-          <p className="text-primary mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
-            {kicker}
-          </p>
-          <h2 className="text-2xl font-bold text-balance sm:text-4xl">{title}</h2>
-          <p className="text-muted-foreground mt-4 leading-relaxed">{body}</p>
-          {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
-        </Reveal>
-      </div>
-    </section>
   );
 }

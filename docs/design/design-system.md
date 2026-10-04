@@ -263,8 +263,10 @@ because the hero's mobile bottom padding grows.
 | blog index       | `min-h-[78vh]`, shared `Hero`    | 658 → **482**         |
 | blog article     | `min-h-[58vh]`, `BlogPostBanner` | 594 → **554**         |
 
-The shared `Hero` takes it as a `flowInto` prop, because it is used by three pages; `GuideHero` and
-`BlogPostBanner` are one page each and carry it directly. Desktop is untouched everywhere — the
+The shared hero takes it as a `flowInto` prop; `BlogPostBanner` is one page and carries it
+directly. The guide's own `GuideHero` (the 86vh row above, measured before PAR-677) is gone: the
+guide now runs the shared `LandingHero` with its `WaitSign` as the `aside`, at the shared 78vh and
+the shared tint. Desktop is untouched everywhere — the
 alignment, the padding and the pull are all `sm`-gated, and the section after each hero still starts
 exactly at the hero's bottom edge.
 
@@ -287,6 +289,20 @@ Three things it has to do, and each fixed something real:
 
 The section doing the pulling needs `relative` — the hero is `isolate`, and without it the content
 renders under the photo.
+
+### One head and one next step for every landing page
+
+`LandingHero` and `LandingNextSteps` in `components/marketing/editorial-ui.tsx` are the two ends of
+every landing page ([concept](../product/landing-pages.md)). The hero has two variants: the hub's
+photo head (`-mt-12`, `pt-32`, `min-h-[78vh]`, H1 `text-4xl sm:text-6xl`) and `variant="compact"`
+for tool pages (no photo, no scroll cue, no minimum height, H1 `text-3xl sm:text-4xl`). The compact
+head stays in flow under the sticky 48 px header and carries no `-mt-12`, so there is nothing for
+the bar to cover; it starts `pt-8 sm:pt-12` below it. Both take an `aside` (a second column from
+`lg`, nothing below it) and an `action`, one primary button under the tagline. Both carry
+`data-landing-hero="hub|compact"`. Kicker, tagline, stats labels and the scroll label are messages
+(`landing.*`), not tables in the page files. `LandingNextSteps` takes one to three destinations,
+the first as the primary button, and stands either as a full-width band (hubs) or, with
+`surface="chapter"`, as a frosted chapter over a glass tile (park audience pages).
 
 ## Chapter headings
 

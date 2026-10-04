@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { ArrowRight, CalendarDays, Clock, Zap } from 'lucide-react';
+import { CalendarDays, Clock, Zap } from 'lucide-react';
 
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
-import { Link } from '@/i18n/navigation';
+import { LandingNextSteps } from '@/components/marketing/editorial-ui';
 import { RouteMessages } from '@/i18n/route-messages';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { catchNonFatal } from '@/lib/api/client';
@@ -46,7 +46,6 @@ import {
   ParkSubPageStructuredData,
 } from '@/components/seo/structured-data';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { GlassCard } from '@/components/common/glass-card';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { ParkHourlyProfileCard } from '@/components/parks/park-hourly-profile-card';
@@ -461,57 +460,27 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
           queues are doing right now, what a particular date looks like, and what to ride in which
           order. Each already has a page, and this is the only place on the site that arrives at
           them from the historical side. */}
-        <section className="mt-8" aria-labelledby="stats-next-heading">
-          <ChapterHeading
-            icon={ArrowRight}
-            title={t('nextTitle')}
-            id="stats-next-heading"
-            frosted
-          />
-          <GlassCard variant="tile">
-            <ul className="grid gap-4 sm:grid-cols-2">
-              <NextStep
-                icon={Zap}
-                href={parkPath}
-                title={t('nextLive', parkPhrases)}
-                body={t('nextLiveBody', parkPhrases)}
-              />
-              <NextStep
-                icon={CalendarDays}
-                href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-                title={t('nextCalendar', parkPhrases)}
-                body={t('nextCalendarBody', parkPhrases)}
-              />
-            </ul>
-          </GlassCard>
-        </section>
+        <LandingNextSteps
+          surface="chapter"
+          headingId="stats-next-heading"
+          title={t('nextTitle')}
+          destinations={[
+            {
+              href: parkPath,
+              label: t('nextLive', parkPhrases),
+              description: t('nextLiveBody', parkPhrases),
+              icon: Zap,
+            },
+            {
+              href: parkCalendarPath(locale, continent, country, city, parkSlug),
+              label: t('nextCalendar', parkPhrases),
+              description: t('nextCalendarBody', parkPhrases),
+              icon: CalendarDays,
+            },
+          ]}
+        />
       </ParkPageShell>
     </RouteMessages>
-  );
-}
-
-/** One card in "where to go next": an icon, the destination, and what it answers. */
-function NextStep({
-  icon: Icon,
-  href,
-  title,
-  body,
-}: {
-  icon: React.ComponentType<{ className?: string; 'aria-hidden'?: boolean }>;
-  href: string;
-  title: string;
-  body: string;
-}) {
-  return (
-    <li>
-      <Link href={href} className="group flex items-start gap-3">
-        <Icon className="text-primary mt-0.5 h-5 w-5 shrink-0" aria-hidden={true} />
-        <span className="min-w-0">
-          <span className="block font-medium group-hover:underline">{title}</span>
-          <span className="text-muted-foreground block text-sm leading-relaxed">{body}</span>
-        </span>
-      </Link>
-    </li>
   );
 }
 

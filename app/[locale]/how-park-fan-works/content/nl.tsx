@@ -10,6 +10,7 @@ import {
   IngredientCard,
   TouchpointGrid,
   FaqList,
+  LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -66,7 +67,7 @@ import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
-import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
+import { Ambience, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
 import { ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
@@ -910,36 +911,21 @@ export function ContentNL() {
         <FaqList items={FAQ} />
       </SectionShell>
 
-      <ClosingBand
+      <LandingNextSteps
         kicker="En nu?"
         title="Verder lezen"
         body="park.fan is gratis, zonder account en zonder reclame. Op de parkpagina staat alles met de cijfers van vandaag, op Fancast hoe goed de voorspellingen van de laatste 30 dagen uitkwamen, en met de beste reistijd vergelijk je meerdere parken."
-      >
-        <Link
-          href={PARK}
-          prefetch={false}
-          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
-        >
-          <Activity className="h-4 w-4" />
-          Voorbeeldparkpagina bekijken
-        </Link>
-        <Link
-          href={bestTime}
-          prefetch={false}
-          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
-        >
-          <CalendarDays className="h-4 w-4" />
-          Beste reistijd
-        </Link>
-        <Link
-          href="/fancast"
-          prefetch={false}
-          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
-        >
-          <Sparkles className="h-4 w-4" />
-          Trefzekerheid van de voorspellingen
-        </Link>
-      </ClosingBand>
+        destinations={[
+          { href: PARK, label: 'Voorbeeldparkpagina bekijken', icon: Activity, prefetch: false },
+          { href: bestTime, label: 'Beste reistijd', icon: CalendarDays, prefetch: false },
+          {
+            href: '/fancast',
+            label: 'Trefzekerheid van de voorspellingen',
+            icon: Sparkles,
+            prefetch: false,
+          },
+        ]}
+      />
     </>
   );
 }

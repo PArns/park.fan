@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { ArrowRight, CalendarDays, Ruler, Zap } from 'lucide-react';
+import { CalendarDays, Ruler, Zap } from 'lucide-react';
 
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
-import { Link } from '@/i18n/navigation';
+import { LandingNextSteps } from '@/components/marketing/editorial-ui';
 import { RouteMessages } from '@/i18n/route-messages';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { catchNonFatal } from '@/lib/api/client';
@@ -313,47 +313,22 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
           </GlassCard>
         </section>
 
-        <section className="mt-8" aria-labelledby="kids-next-heading">
-          <ChapterHeading icon={ArrowRight} title={t('nextTitle')} id="kids-next-heading" frosted />
-          <GlassCard variant="tile">
-            <ul className="grid gap-4 sm:grid-cols-2">
-              <NextStep icon={Zap} href={parkPath} title={t('nextPark')} body={t('nextParkBody')} />
-              <NextStep
-                icon={CalendarDays}
-                href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-                title={t('nextCalendar')}
-                body={t('nextCalendarBody')}
-              />
-            </ul>
-          </GlassCard>
-        </section>
+        <LandingNextSteps
+          surface="chapter"
+          headingId="kids-next-heading"
+          title={t('nextTitle')}
+          destinations={[
+            { href: parkPath, label: t('nextPark'), description: t('nextParkBody'), icon: Zap },
+            {
+              href: parkCalendarPath(locale, continent, country, city, parkSlug),
+              label: t('nextCalendar'),
+              description: t('nextCalendarBody'),
+              icon: CalendarDays,
+            },
+          ]}
+        />
       </ParkPageShell>
     </RouteMessages>
-  );
-}
-
-/** One card in "where to go next": an icon, the destination, and what it answers. */
-function NextStep({
-  icon: Icon,
-  href,
-  title,
-  body,
-}: {
-  icon: React.ComponentType<{ className?: string; 'aria-hidden'?: boolean }>;
-  href: string;
-  title: string;
-  body: string;
-}) {
-  return (
-    <li>
-      <Link href={href} className="group flex items-start gap-3">
-        <Icon className="text-primary mt-0.5 h-5 w-5 shrink-0" aria-hidden={true} />
-        <span className="min-w-0">
-          <span className="block font-medium group-hover:underline">{title}</span>
-          <span className="text-muted-foreground block text-sm leading-relaxed">{body}</span>
-        </span>
-      </Link>
-    </li>
   );
 }
 

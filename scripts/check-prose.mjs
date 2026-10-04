@@ -1093,7 +1093,8 @@ const CONTENT_ROUTES = [
  * The hero and meta copy of the landing pages is not in `content/<locale>.tsx` but in a
  * `PAGE_HEADERS` object in the route's `page.tsx`, all six locales in one file, and it is the
  * first text on the page (`70 Minuten bei Taron. Viel? Normal? …`). Until 2026-09-30 nothing
- * read it.
+ * read it. Since PAR-677 the kicker, tagline and stats of those heads are in `messages/*.json`
+ * (`landing.*`) and are read with the catalogs; what is left here is the title, meta and alt copy.
  */
 const HEADER_ROUTES = ['how-park-fan-works', 'fancast', 'best-time-to-visit', 'trip-planner'];
 

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { CalendarDays } from 'lucide-react';
 import {
   generateAlternateLanguages,
   locales,
@@ -17,7 +16,7 @@ import {
 } from '@/components/seo/structured-data';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
-import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
 import { cn } from '@/lib/utils';
 import { getParkBackground } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
@@ -70,22 +69,6 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType<ContentProps>>
  * `object-position`.
  */
 const HERO_PARK_SLUG = 'disneyland-park';
-
-/**
- * The scroll cue's label, one word per language.
- *
- * Beside its only consumer rather than in the message catalogue, exactly as the
- * blog index keeps it: it labels an affordance of this one hero, is never read
- * anywhere else, and `planner.page` carries the page's copy, not its chrome.
- */
-const SCROLL_LABELS: Record<Locale, string> = {
-  de: 'Scrollen',
-  en: 'Scroll',
-  es: 'Desliza',
-  fr: 'Défiler',
-  it: 'Scorri',
-  nl: 'Scroll',
-};
 
 interface PlannerPageProps {
   params: Promise<{ locale: string }>;
@@ -170,6 +153,7 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   const t = await getTranslations('planner.page');
   const tNav = await getTranslations('navigation');
   const tPlanner = await getTranslations('planner');
+  const tLanding = await getTranslations('landing');
   const photos = polaroidPhotos(locale);
   const hero = heroPhoto(locale);
   const Content = await (CONTENT_LOADERS[locale as Locale] ?? CONTENT_LOADERS.en)();
@@ -201,25 +185,30 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
           Fancast and the best-time hub use, and the same component rather than a
           fourth one — the guide and the blog article carry their own because
           each is a single page. The `-mt-12` that runs it under the
-          floating 48 px header is `Hero`'s own, so the number is not repeated
-          here. Kicker, headline and lead move into it — the H1 keeps the exact
-          text it had (`planner.page.title`), which is the page's strongest
-          on-page signal and is not a thing to redraft for a background. */}
-      {hero && (
-        <Hero
+          floating 48 px header is `LandingHero`'s own, so the number is not
+          repeated here. Kicker, headline and lead move into it — the H1 keeps the
+          exact text it had (`planner.page.title`), which is the page's strongest
+          on-page signal and is not a thing to redraft for a background.
+
+          No photograph in the database, no photo head — and then this page
+          still needs its heading, so it gets the compact head with the same
+          three strings. It stays in flow below the header (no `-mt-12`). */}
+      {hero ? (
+        <LandingHero
           kicker={t('kicker')}
           title={t('title')}
           tagline={t('lead')}
           imageSrc={hero.src}
           imageAlt={hero.alt}
-          stats={[]}
-          scrollLabel={SCROLL_LABELS[locale as Locale] ?? SCROLL_LABELS.en}
-          // The hub's and the blog's scale rather than the default `text-8xl`:
-          // this title is a whole sentence in all six languages and runs 41
-          // characters in German to 54 in French and Italian, against the five
-          // of "Fancast", which is what that scale was picked for.
-          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          scrollLabel={tLanding('scroll')}
           flowInto
+        />
+      ) : (
+        <LandingHero
+          variant="compact"
+          kicker={t('kicker')}
+          title={t('title')}
+          tagline={t('lead')}
         />
       )}
 
@@ -243,26 +232,11 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
           // `pb-48` (192 px): 192 − 176 = 16 px of clearance under the lead, in
           // every language at every width, because the hero is
           // `max(78vh, content + padding)` tall and the pull is measured from
-          // its bottom edge. With no photo there is no hero and no pull, or the
-          // heading below would slide up under the header.
+          // its bottom edge. With no photo there is no photo head and no pull,
+          // or the compact head above would slide up under the header.
           hero ? cn('pt-0 sm:pt-12', HERO_FLOW_INTO_PULL) : 'pt-8 sm:pt-12'
         )}
       >
-        {/* No photograph in the database, no hero — and then this page still
-            needs its heading. Exactly the block that stood here before. */}
-        {!hero && (
-          <header className="mb-8">
-            <p className="text-muted-foreground mb-2 flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-              <CalendarDays className="size-4" aria-hidden="true" />
-              {t('kicker')}
-            </p>
-            <h1 className="text-3xl font-bold sm:text-4xl">{t('title')}</h1>
-            {/* No measure of its own. Capping the lead at 2xl inside a
-                container-wide page is the same dead strip one element down. */}
-            <p className="text-muted-foreground mt-3 text-base leading-relaxed">{t('lead')}</p>
-          </header>
-        )}
-
         <PlannerPageBody photos={photos} />
 
         {/* What the thing actually does, with the planner's own components
@@ -284,12 +258,12 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
  * and the catalogue is 107 KB, the same reason the polaroids below are resolved
  * here rather than inside their Client Component.
  *
- * `null` is a real branch, not a formality: `Hero` requires an `imageSrc` and
+ * `null` is a real branch, not a formality: the photo head requires an `imageSrc` and
  * `next/image` throws on an empty one, so a retired photograph would take the
  * whole page down. The alternative the other heroes use — `?? '/media/<park>/…'`
  * — hard-codes a path that outlives the file it names and skips the content hash
  * with it, which is the one thing that lets a retargeted crop be cached hard. So
- * the caller draws its plain heading block instead and the page loses a picture,
+ * the caller draws the compact head instead and the page loses a picture,
  * not its H1.
  *
  * The alt text comes from the sidecar in the reader's language (`getMediaAlt`

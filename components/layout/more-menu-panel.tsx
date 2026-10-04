@@ -276,9 +276,9 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
 
 /**
  * Fancast, under the chapters of the hub it serves: the crowd calendar that chapter 05 of the
- * best-time page explains is Fancast's forecast, and that page closes on the model's own card
- * (`FancastCta`). It stood in the footer row before, one word among the personal pages, which
- * ranked the forecasting model with „Meine Alarme".
+ * best-time page explains is Fancast's forecast, and that page points at the model in a
+ * `LandingNextSteps` band with Fancast as its one destination. It stood in the footer row before,
+ * one word among the personal pages, which ranked the forecasting model with „Meine Alarme".
  *
  * **A photo strip on top, like the banners over it but a card.** Six chapters are 174 px against
  * the dictionary's twelve rows and the guide's eleven, and the column stood half empty; the card

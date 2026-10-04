@@ -10,15 +10,18 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
 import type { CrowdLevel } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
-import { ShieldCheck, type LucideIcon } from 'lucide-react';
+import { ArrowRight, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { GlassCard } from '@/components/common/glass-card';
+import { buttonLinkProps } from '@/components/ui/button';
 
-// Shared editorial/marketing UI kit — a full-bleed hero, Almanac-style numbered
-// section shells, scroll-revealed figures and cards. Used by the Fancast model
-// page and the "best time to visit" hub so both read as one design system.
+// Shared editorial/marketing UI kit — the landing-page head, Almanac-style numbered
+// section shells, scroll-revealed figures and cards, and the closing next step.
+// Used by every hub page so they read as one design system
+// (docs/product/landing-pages.md).
 
-// ── Full-bleed hero ──────────────────────────────────────────────────────────
+// ── Landing-page head ────────────────────────────────────────────────────────
 
 /**
  * What the section after a `flowInto` hero must carry, so it overlaps the lower
@@ -35,42 +38,163 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
  */
 export const HERO_FLOW_INTO_PULL = '-mt-44 sm:mt-0';
 
-export function Hero({
-  kicker,
-  title,
-  tagline,
-  imageSrc,
-  imageAlt,
-  stats,
-  scrollLabel,
-  titleClassName = 'text-6xl font-black tracking-tight sm:text-8xl',
-  flowInto = false,
-}: {
+/** The one primary action a landing page names in its head (docs/product/landing-pages.md §4). */
+export interface LandingAction {
+  href: string;
+  label: string;
+  icon?: LucideIcon;
+  prefetch?: boolean;
+}
+
+interface LandingHeroShared {
   kicker: string;
   title: string;
-  tagline: React.ReactNode;
-  imageSrc: string;
-  imageAlt: string;
-  stats: Array<{ value: string; label: string }>;
-  scrollLabel: string;
-  /** Override the h1 size — long titles (the hub) want a smaller scale than "Fancast". */
+  tagline?: React.ReactNode;
+  /** Override the h1 classes. The default is the size of the kind (concept §3); no caller needs it today. */
   titleClassName?: string;
   /**
-   * Let the page's own content flow into the hero below `sm`.
-   *
-   * `min-h-[78vh]` + `items-end` is 658px on a phone with the headline pinned to
-   * the bottom of it, so a listing page spends its whole first screen on one
-   * picture and a title. With this set the headline moves to the TOP on a phone
-   * and the page pulls its first section up over the lower half of the photo —
-   * the image keeps every pixel of its height, the empty part of it just stops
-   * being empty. The caller owns the pull (a negative margin) because only it
-   * knows what comes next; the hero's part is the alignment, the tint and the
-   * scroll cue.
+   * A second column from `lg` up, hidden below it — the guide's `WaitSign`. Below `lg` it would
+   * push the headline off the first screen, and the page shows the object again further down.
    */
-  flowInto?: boolean;
-}) {
+  aside?: React.ReactNode;
+  /** Exactly one primary button, under the tagline. A link styled by `buttonLinkProps`. */
+  action?: LandingAction;
+}
+
+type LandingHeroProps =
+  | (LandingHeroShared & {
+      /** Hub: the full-bleed photo head. */
+      variant?: 'hub';
+      imageSrc: string;
+      imageAlt: string;
+      stats?: Array<{ value: string; label: string }>;
+      scrollLabel: string;
+      /**
+       * Let the page's own content flow into the hero below `sm`.
+       *
+       * `min-h-[78vh]` + `items-end` is 658px on a phone with the headline pinned to
+       * the bottom of it, so a listing page spends its whole first screen on one
+       * picture and a title. With this set the headline moves to the TOP on a phone
+       * and the page pulls its first section up over the lower half of the photo —
+       * the image keeps every pixel of its height, the empty part of it just stops
+       * being empty. The caller owns the pull (a negative margin) because only it
+       * knows what comes next; the hero's part is the alignment, the tint and the
+       * scroll cue.
+       */
+      flowInto?: boolean;
+    })
+  | (LandingHeroShared & {
+      /**
+       * Tool page: no photo, no scroll cue, no minimum height. The same kicker, type system and
+       * left edge as the hub head, one size down.
+       */
+      variant: 'compact';
+      imageSrc?: never;
+      imageAlt?: never;
+      stats?: never;
+      scrollLabel?: never;
+      flowInto?: never;
+    });
+
+/** H1 per kind, concept §3: hub 36 / 60 px, park audience and tool pages 30 / 36 px. */
+const TITLE_CLASS = {
+  hub: 'max-w-4xl text-4xl font-black tracking-tight sm:text-6xl',
+  compact: 'max-w-4xl text-3xl font-black tracking-tight sm:text-4xl',
+} as const;
+
+/**
+ * The head of every hub and tool page — `LandingHero` in docs/product/landing-pages.md.
+ *
+ * One implementation for both kinds, so the kicker, the type and the left edge cannot drift
+ * between them: the hub draws it over a full-bleed photo, `variant="compact"` draws the same
+ * block on the page background. The guide's own `GuideHero` was folded into this one; its
+ * `WaitSign` is the `aside`.
+ *
+ * Geometry under the 48 px header: the hub runs UNDER it (`-mt-12`, one of the four places that
+ * height is written down, see docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)
+ * and clears it with `pt-32`. The compact head has no picture to slide under the bar, so it stays
+ * in flow below the sticky header and carries no `-mt-12`: its kicker starts 32 px (48 from `sm`)
+ * below the bar's bottom edge, the same `pt-8 sm:pt-12` the trip planner's photo-less head used.
+ */
+export function LandingHero(props: LandingHeroProps) {
+  const { kicker, title, tagline, titleClassName, aside, action } = props;
+  const variant = props.variant ?? 'hub';
+  const compact = variant === 'compact';
+
+  const text = (
+    <>
+      <Reveal>
+        <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
+          <span className="bg-primary inline-block h-2 w-2 rounded-full" />
+          {kicker}
+        </p>
+        <h1 className={cn('text-foreground', titleClassName ?? TITLE_CLASS[variant])}>{title}</h1>
+        {tagline && (
+          <p
+            className={cn(
+              'text-foreground/80 max-w-2xl leading-relaxed',
+              compact ? 'mt-3 text-base sm:text-lg' : 'mt-5 text-lg sm:text-2xl'
+            )}
+          >
+            {tagline}
+          </p>
+        )}
+        {action && (
+          <div className={compact ? 'mt-5' : 'mt-8'}>
+            <Link
+              href={action.href}
+              prefetch={action.prefetch}
+              data-landing-action=""
+              {...buttonLinkProps({ size: 'lg', withIcon: !!action.icon })}
+            >
+              {action.icon && <action.icon aria-hidden />}
+              {action.label}
+            </Link>
+          </div>
+        )}
+      </Reveal>
+
+      {!compact && props.stats && props.stats.length > 0 && (
+        <Reveal delay={150}>
+          <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
+            {props.stats.map((s) => (
+              <div key={s.label} className="min-w-[6rem]">
+                <dt className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
+                  {s.value}
+                </dt>
+                <dd className="text-muted-foreground text-xs tracking-wide uppercase">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      )}
+    </>
+  );
+
+  // The aside is a second column from `lg`, and nothing below it.
+  const body = aside ? (
+    <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+      <div>{text}</div>
+      <Reveal delay={100} className="hidden lg:block">
+        {aside}
+      </Reveal>
+    </div>
+  ) : (
+    text
+  );
+
+  if (props.variant === 'compact') {
+    return (
+      <header data-landing-hero="compact" className="container mx-auto px-4 pt-8 sm:pt-12">
+        {body}
+      </header>
+    );
+  }
+
+  const { imageSrc, imageAlt, scrollLabel, flowInto = false } = props;
   return (
     <header
+      data-landing-hero="hub"
       className={cn(
         'relative isolate -mt-12 flex min-h-[78vh] overflow-hidden',
         flowInto ? 'items-start sm:items-end' : 'items-end'
@@ -98,7 +222,11 @@ export function Hero({
       {/* Title/tagline sit directly on the photo (no panel). Readability comes from
           a theme-aware tint that fades into the page background — a dark tint in
           dark mode, a light tint in light mode — so the image never gets a dark
-          overlay in light mode and never fades dark→white. */}
+          overlay in light mode and never fades dark→white.
+
+          One set of stops for every hub. The guide carried stronger ones of its own
+          (`via-background/80`, `to-background/25`, `from-background/70`) for its stats
+          row; every hub has that row, so the guide takes the shared values. */}
       <div
         aria-hidden
         className="from-background via-background/70 to-background/20 pointer-events-none absolute inset-0 bg-gradient-to-t"
@@ -126,33 +254,7 @@ export function Hero({
           flowInto ? 'pb-48' : 'pb-16'
         )}
       >
-        <Reveal>
-          <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-            <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-            {kicker}
-          </p>
-          <h1 className={cn('text-foreground', titleClassName)}>{title}</h1>
-          <p className="text-foreground/80 mt-5 max-w-2xl text-lg leading-relaxed sm:text-2xl">
-            {tagline}
-          </p>
-        </Reveal>
-
-        {stats.length > 0 && (
-          <Reveal delay={150}>
-            <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
-              {stats.map((s) => (
-                <div key={s.label} className="min-w-[6rem]">
-                  <dt className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
-                    {s.value}
-                  </dt>
-                  <dd className="text-muted-foreground text-xs tracking-wide uppercase">
-                    {s.label}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-        )}
+        {body}
       </div>
 
       {/* The cue points at content that is already on screen once it flows in. */}
@@ -164,6 +266,121 @@ export function Hero({
         <ScrollCue label={scrollLabel} />
       )}
     </header>
+  );
+}
+
+// ── Next step ────────────────────────────────────────────────────────────────
+
+/** One place a landing page sends its reader on to. */
+export interface LandingDestination {
+  href: string;
+  label: string;
+  /** One line under the button: what the destination answers. */
+  description?: string;
+  icon?: LucideIcon;
+  prefetch?: boolean;
+}
+
+/**
+ * The closing "next step" of a landing page — `LandingNextSteps` in
+ * docs/product/landing-pages.md §2.
+ *
+ * One to three destinations; the first is the page's primary action and the only primary
+ * button, the rest are outline buttons. It replaced four components that each drew this
+ * differently: the guide's `ClosingBand`, the best-time hub's `FancastCta` card and the two
+ * `NextStep` copies on the park audience pages.
+ *
+ * `surface` is where it stands, not what it is. `band` is the full-width tinted band of the hub
+ * pages. `chapter` is a park audience page, which sits on the park's photo backdrop and opens
+ * every chapter with a frosted `ChapterHeading` over a `GlassCard` tile, so the next step opens
+ * the same way as the chapters above it.
+ */
+export function LandingNextSteps({
+  kicker,
+  title,
+  body,
+  destinations,
+  surface = 'band',
+  headingId,
+}: {
+  kicker?: string;
+  title: string;
+  body?: string;
+  destinations:
+    | [LandingDestination]
+    | [LandingDestination, LandingDestination]
+    | [LandingDestination, LandingDestination, LandingDestination];
+  surface?: 'band' | 'chapter';
+  /** `id` of the heading, for the section's `aria-labelledby`. Give it with `surface="chapter"`. */
+  headingId?: string;
+}) {
+  const described = destinations.some((d) => d.description);
+
+  const links = destinations.map((d, i) => (
+    <Link
+      key={d.href}
+      href={d.href}
+      prefetch={d.prefetch}
+      {...buttonLinkProps({
+        variant: i === 0 ? 'default' : 'outline',
+        size: 'lg',
+        withIcon: !!d.icon,
+        // A label runs to 36 characters in Dutch; on a phone it wraps inside the button
+        // rather than pushing the button past the container.
+        className: 'h-auto min-h-10 max-w-full py-2 whitespace-normal max-sm:min-h-11',
+      })}
+    >
+      {d.icon && <d.icon aria-hidden />}
+      {d.label}
+    </Link>
+  ));
+
+  const list = described ? (
+    <ul className={cn('grid gap-5 sm:grid-cols-2', destinations.length === 3 && 'lg:grid-cols-3')}>
+      {destinations.map((d, i) => (
+        <li key={d.href} className="flex flex-col items-start gap-2">
+          {links[i]}
+          {d.description && (
+            <p className="text-muted-foreground text-sm leading-relaxed">{d.description}</p>
+          )}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <div className="flex flex-wrap gap-3">{links}</div>
+  );
+
+  if (surface === 'chapter') {
+    return (
+      <section className="mt-8" aria-labelledby={headingId}>
+        <ChapterHeading icon={ArrowRight} kicker={kicker} title={title} id={headingId} frosted />
+        <GlassCard variant="tile">
+          {body && <p className="text-muted-foreground mb-5 leading-relaxed">{body}</p>}
+          {list}
+        </GlassCard>
+      </section>
+    );
+  }
+
+  return (
+    <section className="relative isolate overflow-hidden border-y">
+      <div
+        aria-hidden
+        className="from-primary/12 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br via-transparent to-amber-500/10"
+      />
+      <div className="container mx-auto px-4 py-16 sm:py-24">
+        <Reveal>
+          {kicker && (
+            <p className="text-primary mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
+              {kicker}
+            </p>
+          )}
+          <h2 className="text-2xl font-bold text-balance sm:text-4xl">{title}</h2>
+          {body && <p className="text-muted-foreground mt-4 leading-relaxed">{body}</p>}
+          <div className="mt-8">{list}</div>
+        </Reveal>
+      </div>
+    </section>
   );
 }
 
