@@ -14,7 +14,9 @@ name: lint and format
 #
 # `pnpm build` deliberately stays out: its prebuild generates image crops and the
 # media manifest, which is minutes of work that the Vercel deployment already does
-# on every pull request.
+# on every pull request. Only `pnpm generate:media` runs, in its own job at the bottom: it
+# is 1.6 s of the 34.9 s prebuild (the crops are 27.0 s, the OG cards 3.4 s), and a versioned
+# generated file that drifts from its generator turns nothing red otherwise (PAR-667).
 #
 # It runs `pnpm lint` as the repo defines it, and since PAR-110 that is
 # `eslint . --max-warnings=0`, so an ESLint **warning** fails this job the same way
@@ -131,3 +133,39 @@ jobs:
       - name: pnpm test:changelog-fragments
         if: ${{ !cancelled() }}
         run: pnpm test:changelog-fragments
+
+  # `lib/media/**` is generated from the media database and from the live catalog
+  # (`GET /v1/parks`, `/children`), then committed. This job regenerates it and fails on any
+  # diff. It is a job of its own and not a step of lint-and-format on purpose: an upstream
+  # rename (`fast-and-furious-hollywood-drift-2` -> `-drift`) turns it red on every open pull
+  # request, so it must not be a required check. Red here is information, not a block (PAR-699).
+  # When the catalog cannot be reached the generator keeps the committed table and the diff
+  # would be empty, so that case ends in a warning instead of a green that measured nothing.
+  media-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm generate:media
+        run: |
+          pnpm generate:media 2>&1 | tee "$RUNNER_TEMP/generate-media.log"
+
+      - name: lib/media matches the generator
+        run: |
+          if grep -q 'Catalog unavailable' "$RUNNER_TEMP/generate-media.log"; then
+            echo "::warning title=media drift not measured::The catalog at api.park.fan was unreachable, so the park reference table was kept as committed and this check compared nothing."
+            exit 0
+          fi
+          if ! git diff --exit-code --quiet -- lib/media; then
+            git diff --stat -- lib/media
+            echo "::error title=lib/media drifted::pnpm generate:media changed the files above. Run it locally and commit the result."
+            exit 1
+          fi
