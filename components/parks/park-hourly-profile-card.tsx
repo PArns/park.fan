@@ -103,9 +103,21 @@ export function ParkHourlyProfileCard({
           <Clock className="text-primary h-4 w-4" aria-hidden="true" />
           {labels.title}
         </h3>
-        <div className="space-y-1.5">
+        {/* The table's own rows, measured: a 28 px header over its 1 px rule, then 32 px per ride
+            (`py-1.5` around a `text-sm` line). The grey bars used to sit 22 px apart, and the
+            card grew 135 px on a phone when the query landed, under a reader of the guide's
+            chapters further down (PAR-683). */}
+        <div>
+          <div className="border-border/40 flex h-[29px] items-center gap-2 border-b">
+            <Skeleton className="h-3 w-16 shrink-0" />
+            <div className="flex flex-1 gap-1">
+              {Array.from({ length: SKELETON_HOURS }).map((_, c) => (
+                <Skeleton key={c} className="h-3 flex-1" />
+              ))}
+            </div>
+          </div>
           {Array.from({ length: topN }).map((_, r) => (
-            <div key={r} className="flex items-center gap-2">
+            <div key={r} className="flex h-8 items-center gap-2">
               <Skeleton className="h-4 w-28 shrink-0" />
               <div className="flex flex-1 gap-1">
                 {Array.from({ length: SKELETON_HOURS }).map((_, c) => (
@@ -115,6 +127,11 @@ export function ParkHourlyProfileCard({
             </div>
           ))}
         </div>
+        {/* The note under the table, held at the lines it wraps to. The day count is the one
+            figure in it only the query knows; three digits stand in for it. */}
+        <p className="text-muted-foreground/70 invisible text-xs" aria-hidden="true">
+          {labels.peakNote} {labels.footnote.replace('{days}', '000')}
+        </p>
       </GlassCard>
     );
   }

@@ -81,10 +81,19 @@ function todaySchedule(nowMs: number): ScheduleItem {
   };
 }
 
-/** 01 — the header's opening hours block. */
+/**
+ * 01 — the header's opening hours block.
+ *
+ * The countdown badge under the hours ("schließt in …") needs the browser clock and arrives after
+ * hydration, 30 px of it. The box holds it: 316 px at 360 to 1440 px in all six locales (PAR-683).
+ * From 17:00 UTC, when the fixture's park has closed, there is no badge and the box keeps those
+ * 30 px empty under the card rather than letting the page below jump for everyone else.
+ */
 export async function AnatomyHeaderDemo() {
   return (
-    <ParkTimeInfo timezone={DEMO_TIMEZONE} schedule={[todaySchedule(await getServerNowMs())]} />
+    <div className="min-h-[316px]">
+      <ParkTimeInfo timezone={DEMO_TIMEZONE} schedule={[todaySchedule(await getServerNowMs())]} />
+    </div>
   );
 }
 
@@ -111,32 +120,40 @@ export async function AnatomyHolidayDemo() {
   return <ParkHolidayRow initialData={park} country="germany" />;
 }
 
-/** 06 — paid skip-the-line day prices. Disney only, so the fixture is a Disney one. */
+/**
+ * 06 — paid skip-the-line day prices. Disney only, so the fixture is a Disney one.
+ *
+ * The card reads "today" off the browser clock and renders nothing before it, so its box is held
+ * here: 101 px below `sm`, where the card drops to its tighter padding, and 149 px from `sm` up,
+ * measured at 360 to 1440 px in all six locales (PAR-683).
+ */
 export async function AnatomyPurchasesDemo() {
   const schedule = todaySchedule(await getServerNowMs());
   return (
-    <ParkPurchasesCard
-      timezone={DEMO_TIMEZONE}
-      schedule={[
-        {
-          ...schedule,
-          purchases: [
-            {
-              name: 'Lightning Lane Single Pass',
-              type: 'ATTRACTION',
-              price: { amount: 1800, currency: 'USD', formatted: '$18.00' },
-              available: true,
-            },
-            {
-              name: 'Lightning Lane Multi Pass',
-              type: 'PACKAGE',
-              price: { amount: 3200, currency: 'USD', formatted: '$32.00' },
-              available: false,
-            },
-          ],
-        },
-      ]}
-    />
+    <div className="min-h-[101px] sm:min-h-[149px]">
+      <ParkPurchasesCard
+        timezone={DEMO_TIMEZONE}
+        schedule={[
+          {
+            ...schedule,
+            purchases: [
+              {
+                name: 'Lightning Lane Single Pass',
+                type: 'ATTRACTION',
+                price: { amount: 1800, currency: 'USD', formatted: '$18.00' },
+                available: true,
+              },
+              {
+                name: 'Lightning Lane Multi Pass',
+                type: 'PACKAGE',
+                price: { amount: 3200, currency: 'USD', formatted: '$32.00' },
+                available: false,
+              },
+            ],
+          },
+        ]}
+      />
+    </div>
   );
 }
 

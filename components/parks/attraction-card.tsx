@@ -754,9 +754,11 @@ export function AttractionCard({
                     </div>
                   )}
                   {/* Skeleton reserves the single-line "best time in X" row so the
-                      client-rendered value (needs current time) swaps in without shifting. */}
+                      client-rendered value (needs current time) swaps in without shifting.
+                      `h-4` is that row's `text-xs` line, 16 px; `h-3.5` was 2 px short per
+                      row, and the card grew 4 px when both rows landed (PAR-683). */}
                   {bestSlot && (
-                    <Suspense fallback={<Skeleton className="h-3.5 w-28" />}>
+                    <Suspense fallback={<Skeleton className="h-4 w-28" />}>
                       <AttractionCardBestTime
                         bestSlot={bestSlot}
                         effectiveTimezone={effectiveTimezone}
@@ -764,7 +766,7 @@ export function AttractionCard({
                     </Suspense>
                   )}
                   {ropeDrop && (
-                    <Suspense fallback={<Skeleton className="h-3.5 w-28" />}>
+                    <Suspense fallback={<Skeleton className="h-4 w-28" />}>
                       <AttractionCardRopeDrop
                         ropeDrop={ropeDrop}
                         effectiveTimezone={effectiveTimezone}
