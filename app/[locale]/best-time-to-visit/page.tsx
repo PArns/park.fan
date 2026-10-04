@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
 import { cn } from '@/lib/utils';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -47,11 +47,7 @@ interface PageHeader {
   title: string;
   /** Structured-data / meta fallback description (longer than the tagline). */
   intro: string;
-  kicker: string;
-  tagline: string;
-  scrollLabel: string;
   heroAlt: string;
-  stats: Array<{ value: string; label: string }>;
 }
 
 const PAGE_HEADERS: Record<Locale, PageHeader> = {
@@ -59,91 +55,37 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     title: 'Beste Reisezeit für Freizeitparks',
     intro:
       'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus gemessenen Wartezeiten von über 200 Parks, dazu Tricks für kurze Warteschlangen und der Kalender mit dem besten Tag für deinen Wunschpark.',
-    kicker: 'park.fan · Reiseplanung',
-    tagline:
-      'Wann ein Park voll wird, lässt sich vorhersagen. Aus den Wartezeiten, die wir seit Dezember 2025 in über 200 Parks messen, zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',
-    scrollLabel: 'Scrollen',
     heroAlt: 'Symbolica im Efteling bei Nacht, blau angeleuchtet',
-    stats: [
-      { value: '200+', label: 'Parks analysiert' },
-      { value: 'seit Dez. 2025', label: 'eigene Messungen' },
-      { value: 'täglich', label: 'neu gerechnet' },
-    ],
   },
   en: {
     title: 'Best Time to Visit Theme Parks',
     intro:
       'When are theme parks least crowded? The quietest weekdays and months, from wait times measured at 200+ parks, plus tactics for short queues and the calendar with the best day for your park.',
-    kicker: 'park.fan · trip planner',
-    tagline:
-      'Theme-park crowds follow a pattern. From the wait times we’ve measured at 200+ parks since December 2025, here are the quietest days and how to dodge the busy ones.',
-    scrollLabel: 'Scroll',
     heroAlt: 'Symbolica at Efteling by night, lit in blue',
-    stats: [
-      { value: '200+', label: 'parks analysed' },
-      { value: 'since Dec 2025', label: 'of our own readings' },
-      { value: 'daily', label: 'recalculated' },
-    ],
   },
   es: {
     title: 'Mejor época para visitar parques temáticos',
     intro:
       '¿Cuándo hay menos gente en los parques temáticos? Los días de la semana y los meses más tranquilos, a partir de los tiempos de espera medidos en más de 200 parques, con trucos para colas cortas y el calendario con el mejor día para tu parque.',
-    kicker: 'park.fan · planificador de visitas',
-    tagline:
-      'La afluencia sigue un patrón. Con los tiempos de espera que medimos desde diciembre de 2025 en más de 200 parques te mostramos los días más tranquilos y cómo esquivar los llenos.',
-    scrollLabel: 'Desliza',
     heroAlt: 'El palacio de Symbolica en Efteling, de noche e iluminado en azul',
-    stats: [
-      { value: '200+', label: 'parques analizados' },
-      { value: 'desde dic. 2025', label: 'de mediciones propias' },
-      { value: 'a diario', label: 'recalculado' },
-    ],
   },
   fr: {
     title: "Meilleure période pour visiter les parcs d'attractions",
     intro:
       "Quand les parcs d'attractions sont-ils les moins fréquentés ? Les jours de la semaine et les mois les plus calmes, à partir des temps d'attente mesurés dans plus de 200 parcs, avec des astuces pour des files courtes et le calendrier du meilleur jour pour votre parc.",
-    kicker: 'park.fan · planificateur de visite',
-    tagline:
-      "L'affluence suit des tendances. À partir des temps d'attente que nous mesurons depuis décembre 2025 dans plus de 200 parcs, voici les jours les plus calmes et comment éviter les pires.",
-    scrollLabel: 'Défiler',
     heroAlt: 'Le palais de Symbolica à Efteling, la nuit, éclairé en bleu',
-    stats: [
-      { value: '200+', label: 'parcs analysés' },
-      { value: 'depuis déc. 2025', label: 'de relevés propres' },
-      { value: 'chaque jour', label: 'recalculé' },
-    ],
   },
   it: {
     title: 'Periodo migliore per visitare i parchi divertimento',
     intro:
       'Quando i parchi divertimento sono meno affollati? I giorni della settimana e i mesi più tranquilli, dai tempi di attesa misurati in oltre 200 parchi, con trucchi per code brevi e il calendario con il giorno migliore per il tuo parco.',
-    kicker: 'park.fan · pianificatore di visite',
-    tagline:
-      "L'affluenza segue degli schemi. Dai tempi di attesa che misuriamo da dicembre 2025 in oltre 200 parchi, ecco i giorni più tranquilli e come evitare quelli pieni.",
-    scrollLabel: 'Scorri',
     heroAlt: 'Il palazzo di Symbolica a Efteling di notte, illuminato di blu',
-    stats: [
-      { value: '200+', label: 'parchi analizzati' },
-      { value: 'da dic. 2025', label: 'di rilevazioni proprie' },
-      { value: 'ogni giorno', label: 'ricalcolato' },
-    ],
   },
   nl: {
     title: 'Beste tijd om pretparken te bezoeken',
     intro:
       'Wanneer zijn pretparken het rustigst? De rustigste weekdagen en maanden volgens de wachttijden van meer dan 200 parken, tips voor korte rijen en de kalender met de beste dag voor jouw park.',
-    kicker: 'park.fan · reisplanner',
-    tagline:
-      'De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen.',
-    scrollLabel: 'Scroll',
     heroAlt: 'Het paleis van Symbolica in de Efteling bij nacht, blauw verlicht',
-    stats: [
-      { value: '200+', label: 'parken geanalyseerd' },
-      { value: 'sinds dec. 2025', label: 'eigen metingen' },
-      { value: 'dagelijks', label: 'herberekend' },
-    ],
   },
 };
 
@@ -253,7 +195,14 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
   const Content = await CONTENT_LOADERS[locale as Locale]();
   const header = PAGE_HEADERS[locale as Locale];
   const url = urlFor(locale as Locale);
-  const t = await getTranslations({ locale, namespace: 'common' });
+  const [t, tLanding] = await Promise.all([
+    getTranslations({ locale, namespace: 'common' }),
+    getTranslations({ locale, namespace: 'landing' }),
+  ]);
+  const stats = (['parks', 'since', 'daily'] as const).map((key) => ({
+    value: tLanding(`bestTime.stats.${key}.value`),
+    label: tLanding(`bestTime.stats.${key}.label`),
+  }));
 
   return (
     <RouteMessages route="/best-time-to-visit">
@@ -275,15 +224,14 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
           locale={locale}
         />
 
-        <Hero
-          kicker={header.kicker}
+        <LandingHero
+          kicker={tLanding('bestTime.kicker')}
           title={header.title}
-          tagline={header.tagline}
+          tagline={tLanding('bestTime.tagline')}
           imageSrc={HERO_IMAGE}
           imageAlt={header.heroAlt}
-          stats={header.stats}
-          scrollLabel={header.scrollLabel}
-          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          stats={stats}
+          scrollLabel={tLanding('scroll')}
           flowInto
         />
 

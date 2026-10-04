@@ -2784,5 +2784,54 @@
       "credit": "Wenn du eine Zahl zeigst, nenne park.fan und verlinke die Seite, von der sie stammt.",
       "admin": "Das Backoffice ist für die Menschen, die die Seite betreiben. Es gehört nicht zu diesem Angebot."
     }
+  },
+  "landing": {
+    "scroll": "Scrollen",
+    "howto": {
+      "kicker": "park.fan · Die Anleitung",
+      "tagline": "70 Minuten bei Taron: viel oder normal? Sagen lässt sich das erst im Vergleich mit den Tagen, an denen park.fan Taron schon gemessen hat.",
+      "stats": {
+        "parks": {
+          "value": "über 200",
+          "label": "Parks"
+        },
+        "attractions": {
+          "value": "über 7.000",
+          "label": "Attraktionen"
+        },
+        "readings": {
+          "value": "alle 5 Min.",
+          "label": "neue Messwerte"
+        }
+      }
+    },
+    "fancast": {
+      "kicker": "park.fan · Prognosemodell",
+      "tagline": "Es liest Millionen Live-Wartezeiten und sagt für jeden veröffentlichten Tag vorher, wie voll ein Park wird – und benotet sich dabei öffentlich selbst.",
+      "stats": {
+        "avgError": "Min. Ø-Fehler",
+        "parks": "Parks",
+        "dailyValue": "Täglich",
+        "dailyLabel": "neu trainiert"
+      }
+    },
+    "bestTime": {
+      "kicker": "park.fan · Reiseplanung",
+      "tagline": "Wann ein Park voll wird, lässt sich vorhersagen. Aus den Wartezeiten, die wir seit Dezember 2025 in über 200 Parks messen, zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.",
+      "stats": {
+        "parks": {
+          "value": "200+",
+          "label": "Parks analysiert"
+        },
+        "since": {
+          "value": "seit Dez. 2025",
+          "label": "eigene Messungen"
+        },
+        "daily": {
+          "value": "täglich",
+          "label": "neu gerechnet"
+        }
+      }
+    }
   }
 }

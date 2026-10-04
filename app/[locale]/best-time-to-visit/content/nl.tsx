@@ -25,9 +25,9 @@ import {
   SplitFigure,
   TouchpointGrid,
   FaqList,
+  LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
-import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
 
@@ -297,12 +297,6 @@ export function ContentNL() {
         <PopularParksGrid />
       </SectionShell>
 
-      {/* Powered by Fancast */}
-      <FancastCta
-        title="Aangedreven door Fancast"
-        body="Ons eigen voorspelmodel schat de drukte voor elke gepubliceerde dag en geeft zichzelf daarbij een cijfer."
-      />
-
       {/* 06 – FAQ */}
       <SectionShell
         id="faq"
@@ -313,6 +307,13 @@ export function ContentNL() {
       >
         <FaqList items={FAQ} />
       </SectionShell>
+
+      {/* Next step (LandingNextSteps closes the page, after the FAQ) */}
+      <LandingNextSteps
+        title="Aangedreven door Fancast"
+        body="Ons eigen voorspelmodel schat de drukte voor elke gepubliceerde dag en geeft zichzelf daarbij een cijfer."
+        destinations={[{ href: '/fancast', label: 'Fancast', icon: Sparkles }]}
+      />
     </>
   );
 }

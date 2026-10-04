@@ -14,7 +14,7 @@ import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
-import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -26,15 +26,6 @@ import { cn } from '@/lib/utils';
 // change which photo this is without the blog index knowing.
 const BLOG_HERO_IMAGE =
   getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
-
-const SCROLL_LABELS: Record<Locale, string> = {
-  de: 'Scrollen',
-  en: 'Scroll',
-  es: 'Desliza',
-  fr: 'Défiler',
-  it: 'Scorri',
-  nl: 'Scroll',
-};
 
 interface BlogIndexPageProps {
   params: Promise<{ locale: string }>;
@@ -105,7 +96,7 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
   if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
-  const t = await getTranslations('blog');
+  const [t, tLanding] = await Promise.all([getTranslations('blog'), getTranslations('landing')]);
   // Articles only. News has its own section at `/news` and is never listed under `/blog`.
   const allPosts = listArticles(locale as Locale);
 
@@ -134,15 +125,13 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
           posts={visiblePosts}
           path="/blog"
         />
-        <Hero
+        <LandingHero
           kicker={t('badge')}
           title={t('heroTitle')}
           tagline={t('intro')}
           imageSrc={BLOG_HERO_IMAGE}
           imageAlt={t('heroTitle')}
-          stats={[]}
-          scrollLabel={SCROLL_LABELS[locale as Locale]}
-          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          scrollLabel={tLanding('scroll')}
           flowInto
         />
 

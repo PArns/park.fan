@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { GuideHero } from './_chrome';
-import { HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { WaitSign } from './_chrome';
+import { HERO_FLOW_INTO_PULL, LandingHero } from '@/components/marketing/editorial-ui';
 import { cn } from '@/lib/utils';
 import { TARON_WAIT_NOW } from './_fixtures';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
@@ -35,11 +35,7 @@ interface PageHeader {
   title: string;
   /** Meta/structured-data description. Longer than the tagline. */
   intro: string;
-  kicker: string;
-  tagline: string;
-  scrollLabel: string;
   heroAlt: string;
-  stats: Array<{ value: string; label: string }>;
   /**
    * Document `<title>`. The H1 already ends in the brand, so the generic
    * `"{title} | park.fan"` doubled it ("So funktioniert park.fan | park.fan")
@@ -60,108 +56,54 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     metaTitle: 'Wartezeiten verstehen – so funktioniert park.fan',
     intro:
       '70 Minuten bei Taron: viel oder normal? Diese Anleitung zeigt an Beispielen aus dem Phantasialand, wie du eine Wartezeit einordnest, wann eine Bahn ihren ruhigsten Moment hat und woher die Zahlen kommen.',
-    kicker: 'park.fan · Die Anleitung',
-    tagline:
-      '70 Minuten bei Taron: viel oder normal? Sagen lässt sich das erst im Vergleich mit den Tagen, an denen park.fan Taron schon gemessen hat.',
-    scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand am Abend',
     signUnit: 'Minuten',
     signCaption: 'Taron im Phantasialand. Mehr steht am Eingang nicht.',
-    stats: [
-      { value: 'über 200', label: 'Parks' },
-      { value: 'über 7.000', label: 'Attraktionen' },
-      { value: 'alle 5 Min.', label: 'neue Messwerte' },
-    ],
   },
   en: {
     title: 'How park.fan works',
     metaTitle: 'Understanding wait times – how park.fan works',
     intro:
       '70 minutes at Taron: a lot, or normal? Using examples from Phantasialand, this guide shows how to place a wait time, when a ride has its quietest moment and where the numbers come from.',
-    kicker: 'park.fan · The guide',
-    tagline:
-      '70 minutes at Taron: a lot, or normal? You can only tell once it’s set against the days park.fan has already measured at Taron.',
-    scrollLabel: 'Scroll',
     heroAlt: 'Phantasialand in the evening',
     signUnit: 'minutes',
     signCaption: 'Taron at Phantasialand. Nothing else is posted at the entrance.',
-    stats: [
-      { value: '200+', label: 'parks' },
-      { value: '7,000+', label: 'attractions' },
-      { value: 'every 5 min', label: 'new readings' },
-    ],
   },
   es: {
     title: 'Así funciona park.fan',
     metaTitle: 'Entender los tiempos de espera – park.fan',
     intro:
       '70 minutos en Taron: ¿mucho o normal? Esta guía muestra con ejemplos de Phantasialand cómo situar un tiempo de espera, cuándo una atracción está más tranquila y de dónde salen las cifras.',
-    kicker: 'park.fan · La guía',
-    tagline:
-      '70 minutos en Taron: ¿mucho o normal? Solo se sabe comparándolos con los días que park.fan ya ha medido en Taron.',
-    scrollLabel: 'Desplazar',
     heroAlt: 'Phantasialand al anochecer',
     signUnit: 'minutos',
     signCaption: 'Taron, en Phantasialand. En la entrada no pone nada más.',
-    stats: [
-      { value: 'más de 200', label: 'parques' },
-      { value: 'más de 7.000', label: 'atracciones' },
-      { value: 'cada 5 min', label: 'mediciones nuevas' },
-    ],
   },
   fr: {
     title: 'Comment fonctionne park.fan',
     metaTitle: 'Comprendre les temps d’attente – park.fan',
     intro:
       '70 minutes à Taron : beaucoup, ou normal ? Ce guide montre sur des exemples pris à Phantasialand comment situer un temps d’attente, quand une attraction connaît son moment le plus calme et d’où viennent les chiffres.',
-    kicker: 'park.fan · Le guide',
-    tagline:
-      '70 minutes à Taron : beaucoup, ou normal ? On ne peut le dire qu’en les comparant aux jours que park.fan a déjà mesurés sur Taron.',
-    scrollLabel: 'Défiler',
     heroAlt: 'Phantasialand le soir',
     signUnit: 'minutes',
     signCaption: 'Taron, à Phantasialand. Rien de plus à l’entrée.',
-    stats: [
-      { value: 'plus de 200', label: 'parcs' },
-      { value: 'plus de 7 000', label: 'attractions' },
-      { value: 'toutes les 5 min', label: 'nouveaux relevés' },
-    ],
   },
   it: {
     title: 'Come funziona park.fan',
     metaTitle: 'Capire i tempi di attesa – park.fan',
     intro:
       '70 minuti a Taron: tanti o normali? Questa guida mostra con esempi da Phantasialand come collocare un tempo di attesa, quando un’attrazione ha il suo momento più tranquillo e da dove arrivano i numeri.',
-    kicker: 'park.fan · La guida',
-    tagline:
-      '70 minuti a Taron: tanti o normali? Si capisce solo confrontandoli con i giorni in cui park.fan ha già misurato Taron.',
-    scrollLabel: 'Scorri',
     heroAlt: 'Phantasialand di sera',
     signUnit: 'minuti',
     signCaption: 'Taron, al Phantasialand. All’ingresso non c’è altro.',
-    stats: [
-      { value: 'oltre 200', label: 'parchi' },
-      { value: 'oltre 7.000', label: 'attrazioni' },
-      { value: 'ogni 5 min', label: 'nuove rilevazioni' },
-    ],
   },
   nl: {
     title: 'Zo werkt park.fan',
     metaTitle: 'Wachttijden begrijpen – zo werkt park.fan',
     intro:
       '70 minuten bij Taron: veel of normaal? Deze gids laat aan voorbeelden uit Phantasialand zien hoe je een wachttijd plaatst, wanneer een attractie haar rustigste moment heeft en waar de cijfers vandaan komen.',
-    kicker: 'park.fan · De gids',
-    tagline:
-      '70 minuten bij Taron: veel of normaal? Dat zie je pas naast de dagen waarop park.fan Taron al gemeten heeft.',
-    scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand in de avond',
     signUnit: 'minuten',
     signCaption: 'Taron in Phantasialand. Meer staat er bij de ingang niet.',
-    stats: [
-      { value: 'ruim 200', label: 'parken' },
-      { value: 'ruim 7.000', label: 'attracties' },
-      { value: 'elke 5 min.', label: 'nieuwe metingen' },
-    ],
   },
 };
 
@@ -338,7 +280,10 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
   const Content = await CONTENT_LOADERS[typedLocale]();
   const header = PAGE_HEADERS[typedLocale];
   const url = urlFor(typedLocale);
-  const t = await getTranslations({ locale, namespace: 'common' });
+  const [t, tLanding] = await Promise.all([
+    getTranslations({ locale, namespace: 'common' }),
+    getTranslations({ locale, namespace: 'landing' }),
+  ]);
 
   return (
     <RouteMessages route="/how-park-fan-works">
@@ -359,19 +304,29 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           locale={locale}
         />
 
-        <GuideHero
-          kicker={header.kicker}
+        {/* The photo says where; the aside is the object the page is about — a number on a
+            sign that means nothing on its own — and the headline asks about it. Everything
+            below is then an answer. */}
+        <LandingHero
+          kicker={tLanding('howto.kicker')}
           title={header.title}
-          tagline={header.tagline}
+          tagline={tLanding('howto.tagline')}
           imageSrc={HERO_IMAGE}
           imageAlt={header.heroAlt}
-          stats={header.stats}
-          scrollLabel={header.scrollLabel}
-          display={{
-            value: TARON_WAIT_NOW,
-            unit: header.signUnit,
-            caption: header.signCaption,
-          }}
+          stats={(['parks', 'attractions', 'readings'] as const).map((key) => ({
+            value: tLanding(`howto.stats.${key}.value`),
+            label: tLanding(`howto.stats.${key}.label`),
+          }))}
+          scrollLabel={tLanding('scroll')}
+          aside={
+            <WaitSign
+              value={TARON_WAIT_NOW}
+              unit={header.signUnit}
+              caption={header.signCaption}
+              className="ml-auto w-fit"
+            />
+          }
+          flowInto
         />
 
         {/* One column at the container's width, no cap of its own.

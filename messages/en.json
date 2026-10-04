@@ -2784,5 +2784,54 @@
       "credit": "If you show a number, name park.fan and link the page it came from.",
       "admin": "The back office is for the people who run the site. It is not part of this offer."
     }
+  },
+  "landing": {
+    "scroll": "Scroll",
+    "howto": {
+      "kicker": "park.fan · The guide",
+      "tagline": "70 minutes at Taron: a lot, or normal? You can only tell once it’s set against the days park.fan has already measured at Taron.",
+      "stats": {
+        "parks": {
+          "value": "200+",
+          "label": "parks"
+        },
+        "attractions": {
+          "value": "7,000+",
+          "label": "attractions"
+        },
+        "readings": {
+          "value": "every 5 min",
+          "label": "new readings"
+        }
+      }
+    },
+    "fancast": {
+      "kicker": "park.fan · forecasting model",
+      "tagline": "It reads millions of live wait times to predict how busy a park will be on every day it has published, and grades itself in public.",
+      "stats": {
+        "avgError": "min avg error",
+        "parks": "parks",
+        "dailyValue": "Daily",
+        "dailyLabel": "retrained"
+      }
+    },
+    "bestTime": {
+      "kicker": "park.fan · trip planner",
+      "tagline": "Theme-park crowds follow a pattern. From the wait times we’ve measured at 200+ parks since December 2025, here are the quietest days and how to dodge the busy ones.",
+      "stats": {
+        "parks": {
+          "value": "200+",
+          "label": "parks analysed"
+        },
+        "since": {
+          "value": "since Dec 2025",
+          "label": "of our own readings"
+        },
+        "daily": {
+          "value": "daily",
+          "label": "recalculated"
+        }
+      }
+    }
   }
 }

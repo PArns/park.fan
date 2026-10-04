@@ -2784,5 +2784,54 @@
       "credit": "Si muestras una cifra, nombra park.fan y enlaza la página de la que procede.",
       "admin": "El back-office es para las personas que llevan el sitio. No forma parte de esta oferta."
     }
+  },
+  "landing": {
+    "scroll": "Desliza",
+    "howto": {
+      "kicker": "park.fan · La guía",
+      "tagline": "70 minutos en Taron: ¿mucho o normal? Solo se sabe comparándolos con los días que park.fan ya ha medido en Taron.",
+      "stats": {
+        "parks": {
+          "value": "más de 200",
+          "label": "parques"
+        },
+        "attractions": {
+          "value": "más de 7.000",
+          "label": "atracciones"
+        },
+        "readings": {
+          "value": "cada 5 min",
+          "label": "mediciones nuevas"
+        }
+      }
+    },
+    "fancast": {
+      "kicker": "park.fan · modelo de predicción",
+      "tagline": "Lee millones de tiempos de espera en directo para predecir la afluencia de un parque en cada día que ya ha publicado, y se autoevalúa en abierto.",
+      "stats": {
+        "avgError": "min error medio",
+        "parks": "parques",
+        "dailyValue": "A diario",
+        "dailyLabel": "reentrenado"
+      }
+    },
+    "bestTime": {
+      "kicker": "park.fan · planificador de visitas",
+      "tagline": "La afluencia sigue un patrón. Con los tiempos de espera que medimos desde diciembre de 2025 en más de 200 parques te mostramos los días más tranquilos y cómo esquivar los llenos.",
+      "stats": {
+        "parks": {
+          "value": "200+",
+          "label": "parques analizados"
+        },
+        "since": {
+          "value": "desde dic. 2025",
+          "label": "de mediciones propias"
+        },
+        "daily": {
+          "value": "a diario",
+          "label": "recalculado"
+        }
+      }
+    }
   }
 }

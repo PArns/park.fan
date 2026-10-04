@@ -2784,5 +2784,54 @@
       "credit": "Toon je een getal, noem dan park.fan en link naar de pagina waar het vandaan komt.",
       "admin": "De backoffice is voor de mensen die de site beheren. Hij hoort niet bij dit aanbod."
     }
+  },
+  "landing": {
+    "scroll": "Scroll",
+    "howto": {
+      "kicker": "park.fan · De gids",
+      "tagline": "70 minuten bij Taron: veel of normaal? Dat zie je pas naast de dagen waarop park.fan Taron al gemeten heeft.",
+      "stats": {
+        "parks": {
+          "value": "ruim 200",
+          "label": "parken"
+        },
+        "attractions": {
+          "value": "ruim 7.000",
+          "label": "attracties"
+        },
+        "readings": {
+          "value": "elke 5 min.",
+          "label": "nieuwe metingen"
+        }
+      }
+    },
+    "fancast": {
+      "kicker": "park.fan · voorspelmodel",
+      "tagline": "Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt, en beoordeelt zichzelf daarbij in het openbaar.",
+      "stats": {
+        "avgError": "min gem. fout",
+        "parks": "parken",
+        "dailyValue": "Dagelijks",
+        "dailyLabel": "hertraind"
+      }
+    },
+    "bestTime": {
+      "kicker": "park.fan · reisplanner",
+      "tagline": "De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen.",
+      "stats": {
+        "parks": {
+          "value": "200+",
+          "label": "parken geanalyseerd"
+        },
+        "since": {
+          "value": "sinds dec. 2025",
+          "label": "eigen metingen"
+        },
+        "daily": {
+          "value": "dagelijks",
+          "label": "herberekend"
+        }
+      }
+    }
   }
 }

@@ -11,7 +11,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getMLDashboard } from '@/lib/api/ml';
 import type { ComponentType } from 'react';
-import { Hero, HERO_FLOW_INTO_PULL } from './_fancast-ui';
+import { LandingHero, HERO_FLOW_INTO_PULL } from './_fancast-ui';
 import { cn } from '@/lib/utils';
 import { RouteMessages } from '@/i18n/route-messages';
 
@@ -26,94 +26,7 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   nl: () => import('./content/nl').then((m) => m.ContentNL),
 };
 
-interface PageHeader {
-  kicker: string;
-  tagline: string;
-  scrollLabel: string;
-  statLabels: {
-    avgError: string;
-    parks: string;
-    dailyValue: string;
-    dailyLabel: string;
-  };
-}
-
 const HERO_IMAGE = '/media/europa-park/voltron-nevera-powered-by-rimac.jpg';
-
-const PAGE_HEADERS: Record<Locale, PageHeader> = {
-  de: {
-    kicker: 'park.fan · Prognosemodell',
-    tagline:
-      'Es liest Millionen Live-Wartezeiten und sagt für jeden veröffentlichten Tag vorher, wie voll ein Park wird – und benotet sich dabei öffentlich selbst.',
-    scrollLabel: 'Scrollen',
-    statLabels: {
-      avgError: 'Min. Ø-Fehler',
-      parks: 'Parks',
-      dailyValue: 'Täglich',
-      dailyLabel: 'neu trainiert',
-    },
-  },
-  en: {
-    kicker: 'park.fan · forecasting model',
-    tagline:
-      'It reads millions of live wait times to predict how busy a park will be on every day it has published, and grades itself in public.',
-    scrollLabel: 'Scroll',
-    statLabels: {
-      avgError: 'min avg error',
-      parks: 'parks',
-      dailyValue: 'Daily',
-      dailyLabel: 'retrained',
-    },
-  },
-  es: {
-    kicker: 'park.fan · modelo de predicción',
-    tagline:
-      'Lee millones de tiempos de espera en directo para predecir la afluencia de un parque en cada día que ya ha publicado, y se autoevalúa en abierto.',
-    scrollLabel: 'Desliza',
-    statLabels: {
-      avgError: 'min error medio',
-      parks: 'parques',
-      dailyValue: 'A diario',
-      dailyLabel: 'reentrenado',
-    },
-  },
-  fr: {
-    kicker: 'park.fan · modèle de prévision',
-    tagline:
-      "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc pour chaque jour déjà publié, et se note lui-même en public.",
-    scrollLabel: 'Défiler',
-    statLabels: {
-      avgError: "min d'erreur moy.",
-      parks: 'parcs',
-      dailyValue: 'Chaque jour',
-      dailyLabel: 'réentraîné',
-    },
-  },
-  it: {
-    kicker: 'park.fan · modello di previsione',
-    tagline:
-      "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco per ogni giorno già pubblicato, e si dà i voti in pubblico.",
-    scrollLabel: 'Scorri',
-    statLabels: {
-      avgError: 'min errore medio',
-      parks: 'parchi',
-      dailyValue: 'Ogni giorno',
-      dailyLabel: 'riaddestrato',
-    },
-  },
-  nl: {
-    kicker: 'park.fan · voorspelmodel',
-    tagline:
-      'Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt, en beoordeelt zichzelf daarbij in het openbaar.',
-    scrollLabel: 'Scroll',
-    statLabels: {
-      avgError: 'min gem. fout',
-      parks: 'parken',
-      dailyValue: 'Dagelijks',
-      dailyLabel: 'hertraind',
-    },
-  },
-};
 
 const KEYWORDS: Record<Locale, string[]> = {
   de: [
@@ -248,30 +161,35 @@ export default async function FancastPage({ params }: FancastPageProps) {
 
   setRequestLocale(locale);
 
-  const [Content, dashboard, tFancast] = await Promise.all([
+  const [Content, dashboard, tFancast, tLanding] = await Promise.all([
     CONTENT_LOADERS[locale as Locale](),
     getMLDashboard().catch(() => null),
     getTranslations({ locale, namespace: 'fancast' }),
+    getTranslations({ locale, namespace: 'landing' }),
   ]);
 
-  const header = PAGE_HEADERS[locale as Locale];
   const live = dashboard?.performance?.live;
+  const tagline = tLanding('fancast.tagline');
 
+  // The values are the model's own figures, so they stay computed here; only the labels are copy.
   const stats: Array<{ value: string; label: string }> = [];
   if (live?.mae != null && isFinite(live.mae)) {
-    stats.push({ value: `±${live.mae.toFixed(1)}`, label: header.statLabels.avgError });
+    stats.push({ value: `±${live.mae.toFixed(1)}`, label: tLanding('fancast.stats.avgError') });
   }
   if (live?.uniqueParks) {
-    stats.push({ value: `${live.uniqueParks}+`, label: header.statLabels.parks });
+    stats.push({ value: `${live.uniqueParks}+`, label: tLanding('fancast.stats.parks') });
   }
-  stats.push({ value: header.statLabels.dailyValue, label: header.statLabels.dailyLabel });
+  stats.push({
+    value: tLanding('fancast.stats.dailyValue'),
+    label: tLanding('fancast.stats.dailyLabel'),
+  });
 
   return (
     <RouteMessages route="/fancast">
       <>
         <ArticleStructuredData
           title={`Fancast — park.fan`}
-          description={header.tagline}
+          description={tagline}
           url={`${SITE_URL}/${locale}/fancast`}
           locale={locale}
           image={getOgImageUrl([locale, 'fancast'])}
@@ -284,14 +202,14 @@ export default async function FancastPage({ params }: FancastPageProps) {
           locale={locale}
         />
 
-        <Hero
-          kicker={header.kicker}
+        <LandingHero
+          kicker={tLanding('fancast.kicker')}
           title="Fancast"
-          tagline={header.tagline}
+          tagline={tagline}
           imageSrc={HERO_IMAGE}
           imageAlt="Voltron Nevera powered by Rimac im Europa-Park"
           stats={stats}
-          scrollLabel={header.scrollLabel}
+          scrollLabel={tLanding('scroll')}
           flowInto
         />
 

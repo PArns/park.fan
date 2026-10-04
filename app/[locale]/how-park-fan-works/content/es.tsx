@@ -10,6 +10,7 @@ import {
   IngredientCard,
   TouchpointGrid,
   FaqList,
+  LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -66,7 +67,7 @@ import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
-import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
+import { Ambience, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
 import { ChapterRail } from '../_chapter-rail';
 import {
   TARON_BASELINE,
@@ -917,36 +918,31 @@ export function ContentES() {
         <FaqList items={FAQ} />
       </SectionShell>
 
-      <ClosingBand
+      <LandingNextSteps
         kicker="¿Y ahora?"
         title="Seguir leyendo"
         body="park.fan es gratuito, sin cuenta y sin publicidad. La página de un parque enseña todo esto con las cifras de hoy, Fancast calcula cuánto acertaron las previsiones de los últimos 30 días, y la mejor época compara varios parques."
-      >
-        <Link
-          href={PARK}
-          prefetch={false}
-          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
-        >
-          <Activity className="h-4 w-4" />
-          Ver una página de parque de ejemplo
-        </Link>
-        <Link
-          href={bestTime}
-          prefetch={false}
-          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
-        >
-          <CalendarDays className="h-4 w-4" />
-          Mejor época para visitar
-        </Link>
-        <Link
-          href="/fancast"
-          prefetch={false}
-          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
-        >
-          <Sparkles className="h-4 w-4" />
-          Acierto de las previsiones
-        </Link>
-      </ClosingBand>
+        destinations={[
+          {
+            href: PARK,
+            label: 'Ver una página de parque de ejemplo',
+            icon: Activity,
+            prefetch: false,
+          },
+          {
+            href: bestTime,
+            label: 'Mejor época para visitar',
+            icon: CalendarDays,
+            prefetch: false,
+          },
+          {
+            href: '/fancast',
+            label: 'Acierto de las previsiones',
+            icon: Sparkles,
+            prefetch: false,
+          },
+        ]}
+      />
     </>
   );
 }

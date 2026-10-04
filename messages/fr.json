@@ -2784,5 +2784,54 @@
       "credit": "Si vous affichez un chiffre, citez park.fan et liez la page d'où il vient.",
       "admin": "Le back-office est réservé aux personnes qui font tourner le site. Il ne fait pas partie de cette offre."
     }
+  },
+  "landing": {
+    "scroll": "Défiler",
+    "howto": {
+      "kicker": "park.fan · Le guide",
+      "tagline": "70 minutes à Taron : beaucoup, ou normal ? On ne peut le dire qu’en les comparant aux jours que park.fan a déjà mesurés sur Taron.",
+      "stats": {
+        "parks": {
+          "value": "plus de 200",
+          "label": "parcs"
+        },
+        "attractions": {
+          "value": "plus de 7 000",
+          "label": "attractions"
+        },
+        "readings": {
+          "value": "toutes les 5 min",
+          "label": "nouveaux relevés"
+        }
+      }
+    },
+    "fancast": {
+      "kicker": "park.fan · modèle de prévision",
+      "tagline": "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc pour chaque jour déjà publié, et se note lui-même en public.",
+      "stats": {
+        "avgError": "min d'erreur moy.",
+        "parks": "parcs",
+        "dailyValue": "Chaque jour",
+        "dailyLabel": "réentraîné"
+      }
+    },
+    "bestTime": {
+      "kicker": "park.fan · planificateur de visite",
+      "tagline": "L'affluence suit des tendances. À partir des temps d'attente que nous mesurons depuis décembre 2025 dans plus de 200 parcs, voici les jours les plus calmes et comment éviter les pires.",
+      "stats": {
+        "parks": {
+          "value": "200+",
+          "label": "parcs analysés"
+        },
+        "since": {
+          "value": "depuis déc. 2025",
+          "label": "de relevés propres"
+        },
+        "daily": {
+          "value": "chaque jour",
+          "label": "recalculé"
+        }
+      }
+    }
   }
 }
