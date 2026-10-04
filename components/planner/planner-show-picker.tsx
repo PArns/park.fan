@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { formatGridTime } from '@/lib/planner/park-time';
 import { showDayHours, showLinesFor, type PlannerShowLine } from '@/lib/planner/shows';
 import { usePlanner } from '@/lib/planner/use-planner';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerEntry, PlannerGeo } from '@/lib/planner/types';
 import { cn } from '@/lib/utils';
@@ -47,6 +48,9 @@ export function PlannerShowPicker({ lines, planned, onPick, className }: Planner
           data-planner-add-show=""
           className={cn(
             'text-muted-foreground hover:text-foreground hover:bg-accent/50 flex h-8 shrink-0 items-center gap-2 rounded-md px-2 text-left text-xs transition-colors',
+            // 32 px drawn, 44 px to the finger on a phone, like „Eigener Block" beside it
+            // (`check:planner`: every target in the sheet is 44 px high).
+            PHONE_TARGET_32,
             className
           )}
         >
