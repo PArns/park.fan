@@ -2,14 +2,14 @@
 title: 'Europa-Park: Germany’s biggest park, and where everybody went'
 translationKey: europa-park-guide
 date: '2026-08-21'
+updatedAt: '2026-10-04'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   No park in Germany sells more tickets, and yet you queue less in Rust than at
-  Phantasialand. Why Sunday of all days is the quietest, why November belongs
-  to anyone who can live without the water rides, and why you should ride
-  Euro-Mir now or never.
+  Phantasialand. When the park is quietest, which Swiss and Alsatian holidays
+  fill it, and why you should ride Euro-Mir now or never.
 tags:
   - europa-park
   - voltron
@@ -34,10 +34,10 @@ coverImage:
   caption: 'Voltron Nevera in the Croatian themed area. Seven inversions, and the steepest launch in the world.'
   credit: 'park.fan'
 seo:
-  title: 'Europa-Park Wait Times: short queues in Germany’s biggest park'
+  title: 'Wait times: when is Europa-Park least busy?'
   description: >-
-    Europa-Park wait times, measured ourselves: Sunday is the quietest day, and
-    on Saturday you pay extra at every queue. Best time to go, 2026 prices, travel.
+    Europa-Park is quietest on Sundays and Thursdays in May and June, outside
+    the school holidays in Baden-Württemberg, Switzerland and Alsace.
   keywords:
     - Europa-Park wait times
     - Europa-Park wait times today
@@ -45,6 +45,7 @@ seo:
     - Europa-Park roller coasters
     - Europa-Park tips
     - Europa-Park when least busy
+    - when is Europa-Park quietest
     - Europa-Park best time to visit
     - Europa-Park fast pass
     - Europa-Park single rider
@@ -539,9 +540,18 @@ new area too.
 If you’re already thinking about going in 2026, don’t push it to 2027. There’s
 no summer left before the farewell event on 9 January 2027, only mulled wine.
 
-## Best time to visit: when Europa-Park is quietest
+## When Europa-Park is quietest
 
-On the day of the week, Europa-Park matches [no other park I record](/best-time-to-visit).
+Europa-Park is at its emptiest on a Sunday or a Thursday in May or June, in a
+week when there are no school holidays in Baden-Württemberg, Basel, Aargau,
+Alsace, Bavaria, Hesse or Rhineland-Palatinate. Stay away on Saturdays, in the
+week after Easter, during the summer holidays from late June to mid-August, and
+between Christmas and New Year.
+
+I counted that on 4 October 2026 in our calendar, which records the measured
+crowd level for every operating day since 26 December 2025, from “very low” to
+“very high”, alongside the school holidays of those eight regions. The figures
+below cover the 2026 summer season from April to September, 183 days.
 
 ### The day of the week
 
@@ -549,11 +559,16 @@ On the day of the week, Europa-Park matches [no other park I record](/best-time-
 
 ```
 
-Sunday is the quietest day in Rust, quieter than any weekday and a good deal
-quieter than Saturday. At
-[Phantasialand](ref:phantasialand?bare) the five weekdays sit level and Sunday
-is the busiest day after Saturday; at the [Efteling](ref:efteling?bare) Thursday
-is the quietest. More on both in the
+Saturday is the busiest day by a distance. From April to September not one
+Saturday in our calendar was rated “low”, and 18 of 26 were “high” or “very
+high”. At the other end, Sunday, Monday and Thursday sit level in the table. I
+still leave Monday out of my advice: it had nine days rated “high”, Sunday had
+six, and eleven Sundays came out “low”.
+
+That puts Europa-Park out of step with [everything else I record](/best-time-to-visit).
+At [Phantasialand](ref:phantasialand?bare) Sunday is the busiest day after
+Saturday, and at the [Efteling](ref:efteling?bare) Tuesday to Friday run below
+the weekend. More on both in the
 [Phantasialand guide](/blog/phantasialand-wait-times-tips) and the
 [Efteling guide](/blog/efteling-disney-of-the-netherlands).
 
@@ -569,12 +584,75 @@ A park like this lives on the weekend trip. People travel in on Saturday, drive
 home again after breakfast on Sunday, and plenty of them never set foot in the
 park that morning, because the car is already packed and the boot only shuts with a knee.
 
-Which is also why the German school-holiday calendar on its own is no basis for
-planning a trip to Rust. For this park our calendar additionally takes in the
-holidays of the French region of Grand Est, which means Alsace, those of the
-Swiss cantons of Aargau, Basel-Stadt and Basel-Landschaft, and those of the
-neighbouring German states of Bavaria, Hesse and Rhineland-Palatinate. Look only
-at Baden-Württemberg and sooner or later a packed Tuesday will puzzle you.
+### The month
+
+```stats-widget slug=europa-park show=months
+
+```
+
+The April-to-September block is the part to trust. Within it, May and June are
+the quietest months and August the busiest, which fits the holidays: in May and
+June only Baden-Württemberg and Bavaria are off, for Whitsun, while in August
+nearly all eight regions are. The quietest stretch of 2026 fell between the end
+of the Whitsun holidays and the start of the summer holidays in Basel, Hesse and
+Rhineland-Palatinate. From 8 to 26 June, eleven of fifteen weekdays were rated
+“low”.
+
+January, February and March aren’t part of the season. The 2025/26 winter
+season ended in January, the 2026 summer season began on 28 March, and in
+February the park was shut. Whatever the table lists for those three months
+won’t stand comparison with summer. December so far is nothing but the days
+between Christmas and New Year’s Eve 2025, the busiest week of the winter.
+
+2027 starts earlier: from 7 to 19 March the park opens for two Pre-Opening Weeks
+for the first time, not yet with every ride and show, but with the cheapest
+tickets of the year, and the summer season then begins on 20 March. October has
+only its first few days in the table so far, November none. How far Halloween
+and HALLOWinter have made it in by now, you can tell from the count of measured
+days.
+
+### Which holidays fill the park
+
+Baden-Württemberg’s holiday calendar isn’t enough for Rust. For this park our
+calendar also takes in the holidays of the French region of Grand Est, which
+means Alsace, those of the Swiss cantons of Aargau, Basel-Stadt and
+Basel-Landschaft, and those of the neighbouring German states of Bavaria, Hesse
+and Rhineland-Palatinate.
+
+The weekdays make the difference plain. Between April and September there were
+42 weekdays with no school holiday in any of the eight regions and no public
+holiday either. Four of them were rated “high” or above, 27 “low”. Of the
+weekdays inside the Aargau holidays, 17 out of 27 were “high”, and not a single
+one was “low”.
+
+It fills up when the holidays pile on top of each other. In the week after
+Easter, Baden-Württemberg, Bavaria, Hesse, Rhineland-Palatinate, Basel and
+Aargau were all off at once, and three of the four weekdays were rated “high”.
+Basel, Hesse and
+Rhineland-Palatinate all start their summer holidays at the end of June, and
+from 29 June to 3 July every weekday was rated “high”. From 20 July, when Aargau
+joined in, to 12 August it was 15 of 18 weekdays. In the first week of August
+all eight regions were off at once, and all five weekdays were “high”.
+
+One region’s holidays on their own barely fill the park.
+Baden-Württemberg and Bavaria had their Whitsun holidays at the same time in
+2026, and five of those nine weekdays were rated “low”. The only “high” was the
+Friday after Corpus Christi. Where
+Baden-Württemberg goes for Whitsun, I don’t know. Not to Europa-Park, at least
+not all together.
+
+In autumn the regions take turns. In 2026 Basel and Aargau have had autumn
+holidays since late September, Hesse and Rhineland-Palatinate take the first
+half of October, Alsace runs from mid-October to All Saints’ Day,
+Baden-Württemberg takes the last week of October and Bavaria the first week of
+November. Between late September and 6 November there’s no week without a
+school holiday in one of the eight regions. We’ve measured only the start so
+far. Friday 2 October was rated “high”, and the Saturday after it, German Unity
+Day, “very high”.
+
+Between Christmas and New Year nearly all eight regions were off at once, and
+from 26 December 2025 to 4 January 2026 seven of ten days were rated “high” or
+“very high”.
 
 ### The Friday in between
 
@@ -599,28 +677,6 @@ https://www.youtube.com/watch?v=aRH5xvAKE_I
 Both from the real [Parkfan95](https://parkfan95.de), meaning Silas. He has the
 name; I just happened to buy the domain first.
 
-### The month
-
-```stats-widget slug=europa-park show=months
-
-```
-
-Careful with January, March and December. Behind them sit only three to six days
-of measurements each (the count is in the table), and December consists entirely of the
-days between Christmas and New Year’s Eve 2025, the busiest week of the winter. The order
-of magnitude holds, but I wouldn’t commit to the individual minute. The block
-from April to September is solid, and in it May and June are the quietest
-summer months and August the busiest.
-
-February is missing because the park is shut, and March is thin because the
-2026 season only started on 28 March. 2027 starts earlier: from 7 to 19 March
-the park opens for two Pre-Opening Weeks for the first time, not yet with every
-ride and show, but with the cheapest tickets of the year, and the summer season
-then begins on 20 March. When we last went through the data, in September 2026,
-October and November didn’t have a single day of measurements yet. Whether
-Halloween and HALLOWinter have made it into the table by now, you can see from
-the count of measured days beside it.
-
 ### The four weeks hardly anybody knows about
 
 The park runs four seasons back to back:
@@ -639,8 +695,11 @@ and Atlantica are on the HALLOWinter schedule, but in cold, wind or ice they may
 stay shut, and the rebuilding can close the odd area. Hardly anyone plans a park
 day for early November; most people are still looking for last winter’s gloves.
 
-In our crowd forecast **most weekdays in the HALLOWinter weeks are rated
-“low”**, and it only fills up noticeably on Saturdays.
+Of the eight regions, only Bavaria has school holidays in these weeks, in the
+first week of November. Going by everything we measured from April to
+September, that’s the starting point for quiet weekdays. Our forecast on 4 October
+still rated many of those weekdays “high”, and we haven’t measured a November
+in Rust yet.
 
 ```best-days-widget slug=europa-park
 
@@ -648,10 +707,9 @@ In our crowd forecast **most weekdays in the HALLOWinter weeks are rated
 
 There’s a price for it. The park doesn’t open until 11 a.m. and closes at 7
 p.m. at the earliest, an hour less than in summer, darkness comes early, and the
-water rides can’t be relied on. If Poseidon and Atlantica mean nothing to you
-and you want Voltron on a day our forecast rates “low”, go on a weekday in
-November. We haven’t measured a November in Rust yet, though; this is a
-forecast. Which day looks best right now is in the calendar above.
+water rides can’t be relied on. If Poseidon and Atlantica mean nothing to you, a
+weekday in November is worth a try all the same. Which days look quietest right
+now is in the calendar above.
 
 ## The perfect day at Europa-Park
 
@@ -730,21 +788,13 @@ then, and the day’s peak can’t come before eleven.
 ## How to throw away time at Europa-Park
 
 **Booking Saturday because the hotel has a room on Saturday.** Saturday is the
-busiest day of the week and Sunday the quietest, and you pay the difference at
+busiest day of the week and Sunday one of the quietest, and you pay the difference at
 every single queue. Ten attractions in a day, ten times over. If you’re staying two nights anyway, turn the order
 around: arrive on Saturday, see Rulantica or the village, go into the park on
 Sunday.
 
-**Looking only at the German school holidays.** A good half of the crowd isn’t
-German. A day in late October can be an ordinary school day in
-Baden-Württemberg and still fill up, because France is on its Toussaint break or
-Basel-Stadt on its autumn holidays. For this park we factor the holidays in
-Alsace and in three Swiss cantons into our calendar; the holiday calendar of a
-single German state leaves them out.
-
 **Taking Tuesday for a quiet weekday.** In our data it’s the busiest weekday
-of all, if only just. If only a weekday will do, take Friday, which comes closest
-to Sunday. Monday, Wednesday and Thursday sit level behind it.
+of all, if only just. If only a weekday will do, take Thursday.
 
 ## Halloween, HALLOWinter, winter
 
@@ -891,10 +941,12 @@ and with a forecast for the days ahead.
 
 ### When is Europa-Park least busy?
 
-**Sunday** is the quietest day of the week, Saturday the busiest, and May and
-June are the quietest summer months. The weekdays of the HALLOWinter season in
-November are quiet too: [our forecast](ref:europa-park?calendar) rates most
-of them “low”.
+On a **Sunday or Thursday in May or June**, outside the school holidays in
+Baden-Württemberg, Basel, Aargau, Alsace, Bavaria, Hesse and
+Rhineland-Palatinate. Saturday is the busiest day. The busiest weeks are the one
+after Easter, the summer holidays from late June to mid-August and the days
+between Christmas and New Year. Which days look quietest right now is in
+[our forecast](ref:europa-park?calendar).
 
 ### Is there a fast pass at Europa-Park?
 
@@ -950,9 +1002,8 @@ Yes, with one caveat. The winter decoration, the ice rink and the Christmas
 market exist only then, but it gets dark earlier, the park closes at 7 p.m. at
 the earliest, and the water rides don’t all run; Atlantica takes the winter
 off. Between Christmas and New Year’s Eve 2025 wait times came out at about
-August’s level, measured on six days. Most November weekdays, by contrast, are
-rated “low” in our forecast; measured wait times from November we don’t have
-yet.
+August’s level, measured on six days. Measured wait times from November we
+don’t have yet.
 
 ## Why I am going back once more for Euro-Mir
 
@@ -1015,3 +1066,4 @@ real Mir training module any more on their way into a car that spins.
 - Visitor mix by country of origin (2017) and the Swiss share (2025): [Europa-Park on de.wikipedia, visitors section](https://de.wikipedia.org/wiki/Europa-Park) · [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300)
 - The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wait-time, rope-drop and crowd data: our own wait-time history since 26 December 2025, the hourly profile across every measured day since then, the crowd forecast across 90 days, the holiday regions in the calendar, the show counts of 25 September 2026, [Europa-Park on park.fan](ref:europa-park)
+- Days of the week, months and holidays: measured crowd level per operating day and the school holidays of Baden-Württemberg, Grand Est, Aargau, Basel-Stadt, Basel-Landschaft, Bavaria, Hesse and Rhineland-Palatinate from our calendar, analysed on 4 October 2026 for April to September 2026, plus the holiday dates up to January 2027
