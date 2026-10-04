@@ -735,10 +735,9 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
   const none = planFor(withShow(null));
   const far = planFor(withShow(50.8135));
   const showEnds = showEntry.startMinute + 30;
-  const walk = transferBetween(
-    entryPlace(far.input.day, showEntry),
-    far.input.day.rides[0]
-  ).ceilingMinutes;
+  const walk = transferBetween(entryPlace(far.input.day, showEntry), far.input.day.rides[0], null, {
+    fromBlock: true,
+  }).ceilingMinutes;
 
   check(
     '14a a show with no coordinates has no place and no walk',
@@ -794,6 +793,36 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     '14f a show fifteen minutes after the end of a queue is a clash with the walk and none without it',
     clashCount(withShow(null), ten) === 0 && clashCount(withShow(50.8135), ten) === 1,
     `${clashCount(withShow(null), ten)} / ${clashCount(withShow(50.8135), ten)}`
+  );
+
+  // PAR-696: nothing is left behind after a show, so no exit and no ride are
+  // charged. A ride at the minute the show ends is no clash with no position,
+  // and with one it clashes by exactly the walk, not by the walk plus eight.
+  const afterShow = (startMinute) => [
+    { ...showEntry },
+    { id: 'ea', attractionSlug: 'a', attractionName: 'a', startMinute },
+  ];
+  const floor = transferBetween(
+    entryPlace(far.input.day, showEntry),
+    far.input.day.rides[0],
+    null,
+    { fromBlock: true }
+  ).floorMinutes;
+  check(
+    '14g a ride that starts when a show with no position ends is no clash',
+    clashCount(withShow(null), afterShow(showEnds)) === 0,
+    `${clashCount(withShow(null), afterShow(showEnds))}`
+  );
+  check(
+    '14h after a located show only the walk is charged, to the minute',
+    floor > 0 &&
+      clashCount(withShow(50.8135), afterShow(showEnds + floor)) === 0 &&
+      clashCount(withShow(50.8135), afterShow(showEnds + floor - 1)) === 1,
+    `${floor}`
+  );
+  check(
+    '14i optimiser and clash count agree on a show with no position: the plan has none',
+    clashCount(none.input.day, [showEntry, ...none.plan.stops.map((stop) => ({ ...stop }))]) === 0
   );
 }
 

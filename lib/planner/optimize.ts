@@ -2,7 +2,7 @@ import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { type DayGrid, RIDE_DURATION_MIN, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
 import { estimateFor, plannedMinutes } from './estimate';
-import { entryPlace, transferBetween, type LegPlace } from './leg';
+import { entryPlace, isBlockEntry, transferBetween, type LegPlace } from './leg';
 import { partyFlags } from './party';
 import type { DayClock } from './park-time';
 import type { PlannerDayPrefs, PlannerEntry } from './types';
@@ -694,8 +694,8 @@ function fixedPads(
   if (!block.place) return { before: 0, after: 0 };
   const key = bound === 'floor' ? 'floorMinutes' : 'ceilingMinutes';
   return {
-    before: transferBetween(ride, block.place)[key],
-    after: transferBetween(block.place, ride)[key],
+    before: transferBetween(ride, block.place, null, { toBlock: true })[key],
+    after: transferBetween(block.place, ride, null, { fromBlock: true })[key],
   };
 }
 
@@ -1979,7 +1979,10 @@ export function clashCount(
     const from = ahead[index - 1];
     const to = ahead[index];
     if (!from.custom && estimateFor(day, from).wait === null) continue;
-    const walk = transferBetween(rideOf(from), rideOf(to)).floorMinutes;
+    const walk = transferBetween(rideOf(from), rideOf(to), null, {
+      fromBlock: isBlockEntry(from),
+      toBlock: isBlockEntry(to),
+    }).floorMinutes;
     if (to.startMinute < from.startMinute + plannedMinutes(day, from) + walk) clashes++;
   }
   return clashes;
