@@ -11,9 +11,17 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
+import { useAdminQuery } from '../_lib/api';
 import { Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
+import {
+  DATA_QUALITY_KEY,
+  SilencedClusterCard,
+  UnreviewedParkCard,
+  type AbsenceRetiredUnreviewed,
+  type SilencedCluster,
+} from './season-actions';
 
 /**
  * What the backend already noticed and nobody could see.
@@ -25,35 +33,12 @@ import { Select } from '../_ui/controls';
  * whole point of this page is to be the place that person looks.
  */
 
-interface SilencedCluster {
-  parkId: string;
-  parkName: string;
-  attractionCount: number;
-  lastOperating: string;
-  sampleNames: string[];
-}
-
 interface FailingJob {
   queue: string;
   jobName: string;
   failures: number;
   lastReason: string;
   lastFailedAt: string | null;
-}
-
-/**
- * A ride the API retired because ThemeParks.wiki stopped listing it, while
- * nobody has said whether it is seasonal. Answered by setting the season in the
- * ride's editor — either way, the row leaves this list (API PAR-684).
- */
-interface AbsenceRetiredUnreviewed {
-  attractionId: string;
-  name: string;
-  slug: string;
-  parkId: string;
-  parkName: string;
-  retiredAt: string;
-  lastReading: string | null;
 }
 
 interface DataQuality {
@@ -94,7 +79,17 @@ function day(value: string | null): string {
 
 export default function DataQualityPage() {
   const [windowDays, setWindowDays] = useState('14');
-  const quality = useAdminFetch<DataQuality>(`/api/admin/data-quality?windowDays=${windowDays}`);
+  // A query rather than `useAdminFetch`: the cards below write, and an answered
+  // card has to disappear — which needs a cache that can be invalidated.
+  const qualityQuery = useAdminQuery<DataQuality>(
+    [...DATA_QUALITY_KEY, windowDays],
+    `/api/admin/data-quality?windowDays=${windowDays}`
+  );
+  const quality = {
+    data: qualityQuery.data ?? null,
+    error: qualityQuery.isError ? (qualityQuery.error?.message ?? 'Laden fehlgeschlagen') : null,
+    loading: qualityQuery.isLoading,
+  };
   const audit = useAdminFetch<TermAudit>('/api/admin/ride-profile-term-audit');
 
   const clusters = quality.data?.silencedClusters ?? [];
@@ -136,36 +131,11 @@ export default function DataQualityPage() {
         ) : (
           <div className="space-y-2">
             {clusters.map((cluster) => (
-              <div
-                key={cluster.parkId}
-                className="border-border/60 bg-card flex flex-wrap items-start justify-between gap-3 rounded-lg border p-3"
-              >
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Link
-                      href={`/admin/parks/${cluster.parkId}`}
-                      className="hover:text-primary font-medium transition-colors"
-                    >
-                      {cluster.parkName}
-                    </Link>
-                    <Chip tone="warning">{cluster.attractionCount} Bahnen</Chip>
-                  </div>
-                  <p className="text-muted-foreground mt-1 text-xs">
-                    Zuletzt in Betrieb: {day(cluster.lastOperating)}
-                  </p>
-                  {cluster.sampleNames.length > 0 && (
-                    <p className="text-muted-foreground mt-1 truncate text-xs">
-                      {cluster.sampleNames.join(', ')}
-                    </p>
-                  )}
-                </div>
-                <Link
-                  href={`/admin/parks/${cluster.parkId}?tab=attractions`}
-                  className="border-border/60 hover:border-primary/50 hover:text-primary shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors"
-                >
-                  Bahnen ansehen
-                </Link>
-              </div>
+              <SilencedClusterCard
+                key={`${cluster.parkId}:${cluster.lastOperating}`}
+                cluster={cluster}
+                lastOperatingLabel={day(cluster.lastOperating)}
+              />
             ))}
           </div>
         )}
@@ -175,9 +145,10 @@ export default function DataQualityPage() {
         <p className="text-muted-foreground text-sm">
           Bahnen, die ThemeParks.wiki nicht mehr listet und die deshalb stillgelegt wurden, ohne
           dass jemand gesagt hat, ob sie saisonal sind. Eine Halloween-Maze im ersten Jahr landet
-          hier, weil die automatische Erkennung erst nach einem Jahr Beobachtung greift. Im Editor
-          der Bahn die Saison setzen: mit Monaten, wenn sie wiederkommt, oder „nicht saisonal“, wenn
-          sie wirklich weg ist. Danach verschwindet sie von dieser Liste.
+          hier, weil die automatische Erkennung erst nach einem Jahr Beobachtung greift.{' '}
+          <strong className="text-foreground">Kommt wieder</strong>: Monate wählen, die Bahn wird
+          wieder aktiv, sobald der Feed sie listet.{' '}
+          <strong className="text-foreground">Ist weg</strong>: die Stilllegung bleibt.
         </p>
         {quality.error ? null : quality.loading && !quality.data ? (
           <LoadingState />
@@ -190,31 +161,7 @@ export default function DataQualityPage() {
         ) : (
           <div className="space-y-2">
             {[...unreviewedByPark.values()].map((rows) => (
-              <div key={rows[0].parkId} className="border-border/60 bg-card rounded-lg border p-3">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Link
-                    href={`/admin/parks/${rows[0].parkId}`}
-                    className="hover:text-primary font-medium transition-colors"
-                  >
-                    {rows[0].parkName}
-                  </Link>
-                  <Chip tone="warning">
-                    {rows.length} {rows.length === 1 ? 'Bahn' : 'Bahnen'}
-                  </Chip>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {rows.map((row) => (
-                    <Link
-                      key={row.attractionId}
-                      href={`/admin/attractions/${row.attractionId}`}
-                      title={`Stillgelegt am ${day(row.retiredAt)}, zuletzt gemessen: ${day(row.lastReading)}`}
-                      className="border-border/60 hover:border-primary/50 hover:text-primary rounded-md border px-2 py-1 text-xs transition-colors"
-                    >
-                      {row.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              <UnreviewedParkCard key={rows[0].parkId} rows={rows} dayLabel={day} />
             ))}
           </div>
         )}
@@ -248,6 +195,12 @@ export default function DataQualityPage() {
                   <span className="text-muted-foreground ml-auto text-xs">
                     {day(job.lastFailedAt)}
                   </span>
+                  <Link
+                    href="/admin/queues"
+                    className="border-border/60 hover:border-primary/50 hover:text-primary rounded-md border px-2 py-1 text-xs transition-colors"
+                  >
+                    Stack in Queues ansehen
+                  </Link>
                 </div>
                 <p className="text-muted-foreground mt-2 font-mono text-xs break-words">
                   {job.lastReason}

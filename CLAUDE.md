@@ -148,6 +148,9 @@ carries the reasoning, the measurements and the counter-examples.
   in that proxy are load-bearing. Turnstile is checked for **action and hostname**, not just
   `success: true`. The login asks for e-mail, password and code in **one** form and one request —
   `pnpm check:admin-login-form`.
+- **[An admin list without an action is unfinished](docs/rules/an-admin-list-without-an-action-is-unfinished.md)** — every card that
+  reports a problem names its question and answers it with a button on the card (inline input, audited
+  endpoint, `useAdminQuery` invalidated so the card disappears); a link is context, not an answer.
 - **[The header menu is three kinds of content, and the split is about the link graph](docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)** — the parks
   panel server-renders continents and countries only; cities and parks arrive per opened country.
   The band is glass, positioned against the `<header>`. Card widths come from
