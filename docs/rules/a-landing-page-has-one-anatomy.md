@@ -60,11 +60,18 @@ The kind of each URL is written in the script, not read off the page, so a page 
 head fails instead of passing as another kind. A new landing page joins that table in the same
 pull request.
 
-Two groups of bare `<h2>` wait for a design decision and sit in the script's `OPEN` list, printed
-as `open` on every run rather than failed: the `PageBottomSections` module under the blog and news
-indexes (nearby, favourites, popular parks; it also closes every post and glossary term), and the
-news timeline, which labels each day with an `<h2>`. An entry leaves the list when its headings
-are decided; nothing new joins it to get a page green.
+The one `<h2>` that needs none of these homes is a **news day label** (`data-news-day` in the
+news index): date headings structure a timeline; they are not chapters.
+
+`PageBottomSections`, the module under the blog and news indexes (nearby, favourites, popular
+parks; it also closes every post and glossary term), opens each of its three blocks with
+`ChapterHeading`, watermark variant, unnumbered, and so do their skeletons and empty states. The
+homepage stands the same three among its `tile` chapters and passes `heading="tile"` (favourites,
+popular parks) or `nested` (nearby, whose chapter `NearbyChapter` already opens).
+
+The script keeps an `OPEN` list, printed as `open` on every run rather than failed, for an `<h2>`
+that waits for a design decision. It is empty. An entry leaves it when its headings are decided;
+nothing new joins it to get a page green.
 
 It needs a running site: `pnpm build && pnpm start -p <port>`, then
 `pnpm check:landing-pages --base=http://localhost:<port>`.

@@ -1,8 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { MapPin } from 'lucide-react';
-import { GlassSectionTitle } from '@/components/parks/glass-section-title';
+import { NearbyHeading } from '@/components/parks/nearby-heading';
 import { ParkCard } from '@/components/parks/park-card';
 import { Button } from '@/components/ui/button';
 import { cn, stripNewPrefix } from '@/lib/utils';
@@ -22,11 +21,14 @@ const TOP_SPACING = 'mt-8';
 export function NearbyParksListView({
   data,
   className,
+  nested = false,
   isExpanded,
   setIsExpanded,
 }: {
   data: NearbyParksData;
   className?: string;
+  /** See `NearbyParksCard`. */
+  nested?: boolean;
   isExpanded: boolean;
   setIsExpanded: (expanded: boolean) => void;
 }) {
@@ -49,9 +51,7 @@ export function NearbyParksListView({
   if (parks.length === 0) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <GlassSectionTitle icon={MapPin} iconClassName="text-muted-foreground">
-          {t('title')}
-        </GlassSectionTitle>
+        <NearbyHeading nested={nested} title={t('title')} iconClassName="text-muted-foreground" />
         <p className="text-muted-foreground text-center text-sm">{t('noParksNearby')}</p>
       </div>
     );
@@ -59,19 +59,21 @@ export function NearbyParksListView({
 
   return (
     <section className={cn(TOP_SPACING, className)}>
-      <GlassSectionTitle icon={MapPin} iconClassName="text-park-primary">
-        {nearestOpenPark
-          ? t('nearestOpenTitle')
-          : hasNoOpenNearby
-            ? t('nearbyParksClosedTitle')
-            : t('nearbyParks')}{' '}
-        <span className="text-muted-foreground font-normal">({parks.length})</span>
-      </GlassSectionTitle>
-      {parks.length > 0 && (
-        <p className="text-muted-foreground mb-8 text-sm">
-          {t('nearParkSubtitle', { parkName: parks[0].name })}
-        </p>
-      )}
+      <NearbyHeading
+        nested={nested}
+        iconClassName="text-park-primary"
+        title={
+          <>
+            {nearestOpenPark
+              ? t('nearestOpenTitle')
+              : hasNoOpenNearby
+                ? t('nearbyParksClosedTitle')
+                : t('nearbyParks')}{' '}
+            <span className="text-muted-foreground font-normal">({parks.length})</span>
+          </>
+        }
+        hint={t('nearParkSubtitle', { parkName: parks[0].name })}
+      />
       {hasNoOpenNearby && (
         <p className="text-muted-foreground mb-4 text-sm">{t('noOpenNearbyFocus')}</p>
       )}

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { MapPin, Navigation } from 'lucide-react';
-import { GlassSectionTitle } from '@/components/parks/glass-section-title';
+import { Navigation } from 'lucide-react';
+import { NearbyHeading } from '@/components/parks/nearby-heading';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { InParkView } from '@/components/parks/nearby-in-park-view';
 import { NearbyParksListView } from '@/components/parks/nearby-parks-list-view';
@@ -20,7 +20,18 @@ import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 // only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
 const TOP_SPACING = 'mt-8';
 
-export function NearbyParksCard({ className }: { className?: string }) {
+/**
+ * `nested` is the homepage's: there `NearbyChapter` opens the chapter and the card's own heading
+ * is a pill under it. Without it (`PageBottomSections`) the card opens as a chapter of its own —
+ * see `NearbyHeading`.
+ */
+export function NearbyParksCard({
+  className,
+  nested = false,
+}: {
+  className?: string;
+  nested?: boolean;
+}) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
 
@@ -84,7 +95,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   // the list is 883 px from a German IP, 503 px from a US one and 250 px when geolocation
   // fails — but it is the bet on the outcome an actual visitor gets.
   if (!mounted || isLoading) {
-    return <NearbyParksCardSkeleton className={className} />;
+    return <NearbyParksCardSkeleton className={className} nested={nested} />;
   }
 
   // Prompt state: only when user hasn't granted location yet (or is still undecided).
@@ -92,9 +103,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   if (!permissionGranted && !permissionDenied && !geoLoading && !dataPending && !nearbyData) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <GlassSectionTitle icon={MapPin} iconClassName="text-muted-foreground">
-          {t('title')}
-        </GlassSectionTitle>
+        <NearbyHeading nested={nested} title={t('title')} iconClassName="text-muted-foreground" />
         <div className="flex flex-col items-center space-y-4 py-4 text-center">
           <p className="text-muted-foreground text-sm">{t('enableDescription')}</p>
           <Button onClick={refresh}>
@@ -112,9 +121,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   if (showErrorCard) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <GlassSectionTitle icon={MapPin} iconClassName="text-park-primary">
-          {t('loadError')}
-        </GlassSectionTitle>
+        <NearbyHeading nested={nested} title={t('loadError')} iconClassName="text-park-primary" />
         <div className="flex flex-col items-center space-y-4 py-4 text-center">
           <p className="text-muted-foreground mx-auto max-w-md text-sm">
             {t('loadErrorDescription')}
@@ -135,7 +142,13 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
   // User is IN a park - show park info and nearby attractions
   if (nearbyData.type === 'in_park') {
-    return <InParkView data={nearbyData.data as NearbyAttractionsData} className={className} />;
+    return (
+      <InParkView
+        data={nearbyData.data as NearbyAttractionsData}
+        className={className}
+        nested={nested}
+      />
+    );
   }
 
   if (nearbyData.type === 'nearby_parks') {
@@ -143,6 +156,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
       <NearbyParksListView
         data={nearbyData.data as NearbyParksData}
         className={className}
+        nested={nested}
         isExpanded={isExpanded}
         setIsExpanded={setIsExpanded}
       />

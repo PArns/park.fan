@@ -3,8 +3,11 @@
 import { useCallback, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
-import { GlassSectionTitle } from '@/components/parks/glass-section-title';
-import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
+import {
+  FavoritesEmptyState,
+  FavoritesHeading,
+  type FavoritesHeadingVariant,
+} from '@/components/parks/favorites-empty-state';
 import { ParkCard } from '@/components/parks/park-card';
 import { FavoriteParkQuietestDay } from '@/components/parks/favorite-park-quietest-day';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
@@ -19,7 +22,6 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
 import { parkChapterUrl } from '@/lib/utils/url-utils';
-import { Star } from 'lucide-react';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
@@ -35,13 +37,16 @@ const PARK_ROW_WITH_LINE_PX = 244;
  *
  * `className` goes onto the band in every state, the empty one included, and is for its padding:
  * the homepage hands it the story's rhythm (`STORY_SECTION_Y`), and must hand the same to the
- * `FavoritesEmptyState` it uses as the dynamic-import fallback.
+ * `FavoritesEmptyState` it uses as the dynamic-import fallback. `heading` likewise: `tile` on the
+ * homepage, `watermark` (the default) everywhere else — see `FavoritesHeading`.
  */
 export function FavoritesSection({
   standalone = false,
+  heading = 'watermark',
   className,
 }: {
   standalone?: boolean;
+  heading?: FavoritesHeadingVariant;
   className?: string;
 }) {
   const t = useTranslations('favorites');
@@ -109,7 +114,14 @@ export function FavoritesSection({
   // for the overwhelming majority, and the same box is this component's dynamic-import
   // fallback, so it stands from the first paint through hydration without moving.
   if (!mounted)
-    return <FavoritesEmptyState textHidden standalone={standalone} className={className} />;
+    return (
+      <FavoritesEmptyState
+        textHidden
+        standalone={standalone}
+        heading={heading}
+        className={className}
+      />
+    );
 
   // Cookies say no favorites, so the answer is already settled: render the empty state now
   // instead of waiting for a query whose result we can predict. It used to return null here
@@ -117,18 +129,14 @@ export function FavoritesSection({
   // gated on geolocation and answers `{parks: [], …}`, a TRUTHY empty result, so the guard
   // never held for long and the box arrived late instead of never.
   if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) {
-    return <FavoritesEmptyState standalone={standalone} className={className} />;
+    return <FavoritesEmptyState standalone={standalone} heading={heading} className={className} />;
   }
 
   // One skeleton shape for both waits below, so whatever replaces it lands in the same box.
   const renderSkeleton = (parkCount: number, attractionCount: number) => (
     <section className={cn('bg-muted/30 px-4 py-8', className)}>
       <div className="container mx-auto">
-        {!standalone && (
-          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
-            {t('title')}
-          </GlassSectionTitle>
-        )}
+        {!standalone && <FavoritesHeading variant={heading} />}
         <div className="space-y-6">
           {parkCount > 0 && (
             <div>
@@ -181,7 +189,7 @@ export function FavoritesSection({
     (sortedFavorites?.restaurants.length || 0);
 
   if (!hasAnyFavorites) {
-    return <FavoritesEmptyState standalone={standalone} className={className} />;
+    return <FavoritesEmptyState standalone={standalone} heading={heading} className={className} />;
   }
 
   // Favorites are here, their translations are not (yet). Hold the skeleton at the REAL counts so
@@ -208,12 +216,9 @@ export function FavoritesSection({
             {t('title')} ({totalFavorites})
           </h2>
         ) : (
-          // The same pill, with the same margin, as the skeleton and the empty state. A bare
-          // `<h2>` here took 28 px less than the heading it replaced (a 28 px line with `mb-2`
-          // against the 48 px pill with `mb-4`), so the grids under it jumped up as they landed.
-          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
-            {t('title')} ({totalFavorites})
-          </GlassSectionTitle>
+          // The same heading as the skeleton and the empty state, so the grids under it land
+          // where the skeleton's stood. Only the count is new, and it does not wrap the line.
+          <FavoritesHeading variant={heading} count={totalFavorites} />
         )}
         {!position && (
           <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>

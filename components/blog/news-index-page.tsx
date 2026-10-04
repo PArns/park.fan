@@ -128,8 +128,10 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
     if (!group || group.key !== day) {
       group = {
         key: day,
+        // `data-news-day`: a date heading structures the timeline and is not a chapter, so
+        // `pnpm check:landing-pages` lets it stand without a ChapterHeading.
         heading: (
-          <h2>
+          <h2 data-news-day="">
             <NewsAge date={day} className="text-sm sm:whitespace-normal" />
           </h2>
         ),

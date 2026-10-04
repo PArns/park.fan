@@ -1,9 +1,8 @@
 'use client';
 
-import { MapPin } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Skeleton } from '@/components/ui/skeleton';
-import { GlassSectionTitle } from '@/components/parks/glass-section-title';
+import { NearbyHeading } from '@/components/parks/nearby-heading';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { HOME_NEARBY_LIMIT } from '@/lib/hooks/use-nearby-parks';
 import { cn } from '@/lib/utils';
@@ -23,33 +22,32 @@ import { cn } from '@/lib/utils';
  * `pnpm measure:cls`, which sends a real `x-forwarded-for` — from localhost the API geolocates
  * nothing, the list comes back empty, and every placeholder here looks far too big.
  */
-export function NearbyParksCardSkeleton({ className }: { className?: string }) {
+export function NearbyParksCardSkeleton({
+  className,
+  nested = false,
+}: {
+  className?: string;
+  /** As on `NearbyParksCard`: the homepage, inside `NearbyChapter`. */
+  nested?: boolean;
+}) {
   const t = useTranslations('nearby');
 
   return (
     // mt-8 mirrors NearbyParksCard's TOP_SPACING so the swap to the live parks list keeps the
     // same gap under the hero (no layout shift). The in-park banner is full-bleed and exempt.
     <section className={cn('mt-8', className)} aria-hidden="true">
-      {/* The real heading is a frosted pill, not a bare h2: `px-4 py-2.5` around a `text-xl`
-          line is 48 px, where the bare row this used to draw was 24. Rendering the real
-          component is the only way that stays true when the pill's padding changes.
-
-          And the real TEXT, not a grey bar: the title needs no data, and a `<h2>` whose only
-          child was a `Skeleton` put an empty heading into the document outline — twice, since
-          the streamed HTML carries the fallback and the resolved copy side by side. The
-          project's own rule says a fallback renders whatever needs no data rather than a box
-          shaped like it; this one was the exception nobody had noticed. The height is
-          unchanged (a `text-xl` line is the 28 px the `h-7` bar reserved). */}
-      <GlassSectionTitle icon={MapPin} iconClassName="text-muted-foreground">
-        {t('title')}
-      </GlassSectionTitle>
-      {/* Subtitle line ("nearest open park: …") — present in the live layout, so reserve it.
-          A real <p> around a 20 px bar, not a bare 16 px block: the tag and the height both
-          have to match, or a diff of the two layouts pairs this with the grid wrapper below
-          and reports a 727 px insertion that nobody can find. */}
-      <p className="mb-8">
-        <Skeleton as="span" className="block h-5 w-64" />
-      </p>
+      {/* The real heading, and the real TEXT, not a grey bar: the title needs no data, and a
+          `<h2>` whose only child was a `Skeleton` put an empty heading into the document
+          outline — twice, since the streamed HTML carries the fallback and the resolved copy
+          side by side. Only the hint ("nearest open park: …") waits for data; its bar is a
+          `text-sm` line box (20 px) inside the same `<p>` the live hint renders, so tag and
+          height both match. `NearbyHeading` decides chapter or pill, here as in the card. */}
+      <NearbyHeading
+        nested={nested}
+        title={t('title')}
+        hint={<Skeleton as="span" className="block h-5 w-64" />}
+        iconClassName="text-muted-foreground"
+      />
       {/* The live view wraps its grid in a plain <div> (it holds the "show all" button too),
           so this one does as well — same depth, same nesting. */}
       <div>
@@ -62,6 +60,13 @@ export function NearbyParksCardSkeleton({ className }: { className?: string }) {
             </li>
           ))}
         </ul>
+        {/* The list's „Mehr anzeigen" button, on the same bet as the six cards: a German IP gets
+            more than two parks, and below 768 px of page the button stood under the two cards
+            unreserved, 60 px on a phone (`mt-4` + the `sm` button's 44 px there) landing under
+            the reader on every blog post. */}
+        <div className="mt-4 flex justify-center @min-[768px]/page:hidden">
+          <Skeleton className="h-8 w-full rounded-md max-sm:h-11" />
+        </div>
       </div>
     </section>
   );
