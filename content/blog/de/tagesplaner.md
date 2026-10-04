@@ -34,7 +34,8 @@ seo:
   title: 'Parktag planen: Wartezeiten einrechnen, bevor du anstehst'
   description: >-
     Leg deine Bahnen auf eine Zeitleiste, mit den vorhergesagten Wartezeiten und
-    den Wegen dazwischen, und sieh vorher, ob der Tag aufgeht. Ohne Konto.
+    den Wegen dazwischen, und sieh vorher, ob alle vor Parkschluss drankommen.
+    Ohne Konto.
   keywords:
     - Freizeitpark Tag planen
     - Tagesplaner Freizeitpark
@@ -61,7 +62,7 @@ Reihenfolge schuld.
 Genau diese Lücke hatte park.fan bisher. „Wie lang steht es gerade an“
 beantworten wir seit dem ersten Tag. „Ist das viel für einen Dienstag“ seit
 [Ende August](/blog/sind-70-minuten-viel). Nirgends stand bisher die dritte
-Frage, ob der Tag so überhaupt aufgeht.
+Frage, ob du deine acht Bahnen bis Parkschluss schaffst.
 
 Seit Anfang September steht sie da. Im [Tagesplaner](/tagesplaner) legst du
 deine Bahnen auf eine Zeitleiste, mit den vorhergesagten Wartezeiten und den

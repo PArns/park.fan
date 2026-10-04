@@ -2583,7 +2583,7 @@
     },
     "page": {
       "title": "Plan your park day ride by ride",
-      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether the day adds up. The trip planner is free, stays in your browser and needs no account.",
+      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether they all fit in before the park closes. The trip planner is free, stays in your browser and needs no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
       "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
@@ -2843,7 +2843,7 @@
       "action": "Open the trip planner",
       "next": {
         "title": "Found your day?",
-        "body": "In the trip planner you pick the rides you want, and the forecast waits show whether the day adds up. How well the crowd calendar’s forecasts did over the last 30 days is on the Fancast page."
+        "body": "In the trip planner you pick the rides you want, and the forecast waits show whether they all fit in before the park closes. How well the crowd calendar’s forecasts did over the last 30 days is on the Fancast page."
       }
     },
     "developers": {

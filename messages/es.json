@@ -2583,7 +2583,7 @@
     },
     "page": {
       "title": "Planifica tu día en el parque atracción por atracción",
-      "lead": "Di qué atracciones quieres. Con los tiempos de espera previstos ves si el día cuadra. El planificador es gratis, se queda en tu navegador y no pide cuenta.",
+      "lead": "Di qué atracciones quieres. Con los tiempos de espera previstos ves si te da tiempo a todas antes del cierre. El planificador es gratis, se queda en tu navegador y no pide cuenta.",
       "metaTitle": "Planificar el día en el parque de atracciones | park.fan",
       "metaDescription": "Organiza tu día de parque con las esperas previstas: atracciones en una línea de tiempo, espectáculos y pausas, y un aviso donde tu peque no llega a la altura.",
       "yourPlans": "{count, plural, one {Un día planificado} other {# días planificados}}",
@@ -2843,7 +2843,7 @@
       "action": "Abrir el planificador",
       "next": {
         "title": "¿Ya tienes el día?",
-        "body": "En el planificador eliges las atracciones que quieres, y con los tiempos de espera previstos ves si el día cuadra. Lo bien que acertaron las predicciones del calendario de afluencia en los últimos 30 días está en la página de Fancast."
+        "body": "En el planificador eliges las atracciones que quieres, y con los tiempos de espera previstos ves si te da tiempo a todas antes del cierre. Lo bien que acertaron las predicciones del calendario de afluencia en los últimos 30 días está en la página de Fancast."
       }
     },
     "developers": {

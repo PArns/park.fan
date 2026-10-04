@@ -34,7 +34,8 @@ seo:
   title: 'Pretparkdag plannen: wachttijden inrekenen vóór de rij'
   description: >-
     Zet je attracties op een tijdlijn, met de voorspelde wachttijden en de
-    looproutes ertussen, en zie vooraf of je dag uitkomt. Zonder account.
+    looproutes ertussen, en zie vooraf of ze allemaal vóór sluitingstijd aan de
+    beurt komen. Zonder account.
   keywords:
     - pretparkdag plannen
     - dagplanner pretpark
@@ -60,8 +61,8 @@ afgevinkt. Achteraf geef je de drukte de schuld, terwijl het aan de volgorde
 lag.
 
 “Hoe lang is de rij nu” beantwoordt park.fan sinds dag één, “is dat veel voor
-een dinsdag” sinds [eind augustus](/blog/is-70-minuten-veel). Of je dag zo
-eigenlijk wel uitkomt, stond nergens.
+een dinsdag” sinds [eind augustus](/blog/is-70-minuten-veel). Of je acht
+attracties vóór sluitingstijd aan de beurt komen, stond nergens.
 
 Sinds begin september zet je in de [dagplanner](/dagplanner) je attracties op
 een tijdlijn, met de voorspelde wachttijden en de looproutes ertussen, en zie je

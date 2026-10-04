@@ -2583,7 +2583,7 @@
     },
     "page": {
       "title": "Planifier sa journée au parc attraction par attraction",
-      "lead": "Indiquez les attractions que vous voulez faire. Avec les temps d’attente prévus, vous voyez si la journée tient debout. Le planificateur est gratuit, reste dans votre navigateur et ne demande pas de compte.",
+      "lead": "Indiquez les attractions que vous voulez faire. Avec les temps d’attente prévus, vous voyez si elles passent toutes avant la fermeture du parc. Le planificateur est gratuit, reste dans votre navigateur et ne demande pas de compte.",
       "metaTitle": "Planifier sa journée au parc d’attractions | park.fan",
       "metaDescription": "Organisez votre journée au parc avec les attentes prévues : attractions sur une frise, spectacles et pauses, et un repère là où votre enfant est trop petit.",
       "yourPlans": "{count, plural, one {Une journée planifiée} other {# journées planifiées}}",
@@ -2843,7 +2843,7 @@
       "action": "Ouvrir le planificateur",
       "next": {
         "title": "Vous avez trouvé votre jour ?",
-        "body": "Dans le planificateur, vous choisissez les attractions que vous voulez faire, et les temps d’attente prévus montrent si la journée tient debout. La précision des prévisions du calendrier d’affluence sur les 30 derniers jours se trouve sur la page Fancast."
+        "body": "Dans le planificateur, vous choisissez les attractions que vous voulez faire, et les temps d’attente prévus montrent si elles passent toutes avant la fermeture du parc. La précision des prévisions du calendrier d’affluence sur les 30 derniers jours se trouve sur la page Fancast."
       }
     },
     "developers": {

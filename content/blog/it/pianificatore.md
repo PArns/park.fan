@@ -34,8 +34,8 @@ seo:
   title: 'Pianificare la giornata al parco: le file, prima di farle'
   description: >-
     Metti le tue attrazioni su una linea del tempo con le attese previste e i
-    percorsi, e prima di partire vedi se la giornata sta in piedi. Senza
-    account.
+    percorsi, e prima di partire vedi se ci stanno tutte entro la chiusura del
+    parco. Senza account.
   keywords:
     - pianificare una giornata al parco
     - pianificatore parco divertimenti
@@ -61,7 +61,8 @@ colpa alla folla, e invece la colpa era dell’ordine.
 
 Questo era il buco che park.fan aveva. A «Quanto si aspetta adesso?» rispondiamo
 dal primo giorno. «È tanto per un martedì?» da [fine agosto](/blog/70-minuti-sono-tanti).
-La terza domanda non c’era da nessuna parte: la mia giornata sta in piedi così?
+La terza domanda non c’era da nessuna parte: le mie otto attrazioni ci stanno tutte
+prima della chiusura?
 
 Da inizio settembre c’è. Nel [pianificatore](/pianificatore) metti le tue
 attrazioni su una linea del tempo, con le attese previste e i percorsi in mezzo,
