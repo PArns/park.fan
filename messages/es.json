@@ -2809,7 +2809,7 @@
     },
     "fancast": {
       "kicker": "park.fan · modelo de predicción",
-      "tagline": "Lee millones de tiempos de espera en directo para predecir la afluencia de un parque en cada día que ya ha publicado, y se autoevalúa en abierto.",
+      "tagline": "Lee millones de tiempos de espera en directo para predecir la afluencia de un parque en cada día que ya ha publicado. Al día siguiente, cada predicción se compara con el tiempo de espera medido, y el error medio en minutos se publica en esta página.",
       "stats": {
         "avgError": "min error medio",
         "parks": "parques",

@@ -157,6 +157,27 @@ const NAMES_A = {
   nl: /\bnoemen een\b/giu,
 };
 /**
+ * `misst sich selbst`, `bewertet sich selbst`, `benotet sich dabei öffentlich selbst` (§3.3, rule
+ * 9): a model, a page or a product that grades itself. It stood in the Fancast tagline in all six
+ * languages until 2026-10-04, when Patrick put it on the list. Say what is published instead:
+ * every forecast is compared with the measured wait, and the error is on the page. An error on
+ * every surface. German allows a few words between the verb and `sich` and between `sich` and
+ * `selbst`, but never a punctuation mark, so `Wir messen, wie sich die Kurve selbst …` stays out;
+ * `die Werte selbst` has no `sich`, and the idiom `gemessen an sich selbst` is excluded. The other
+ * five languages are matched only with their reflexive pronoun (`a sí mismo`, `lui-même`, `da
+ * solo`, `zichzelf`, `itself`) or the fixed forms that shipped (`se autoevalúa`, `si dà i voti`),
+ * so `cela se mesure` and `lo que se mide hoy` are not hits. `benotet` and the shipped forms in the
+ * other languages were added beside Patrick's two German phrases because they are the same tell.
+ */
+const SELF_GRADING = {
+  de: /\b(?:misst|maß(?:en|t|st)?|gemessen|mess(?:e|en|t|te|ten|est)|bewert(?:e|en|et|est|ete|eten)|benot(?:e|en|et|est|ete|eten))\s+(?:\p{L}+\s+){0,3}?(?<!\ban\s)sich\s+(?:\p{L}+\s+){0,2}?selbst\b|\bsich\s+(?:\p{L}+\s+){0,2}?selbst\s+(?:zu\s+)?(?:misst|maß|messen|gemessen|bewertet|bewerten|bewertete|benotet|benoten|benotete)\b/giu,
+  en: /\b(?:measures|measured|measuring|grades|graded|grading|rates|rated|rating|scores|scored|scoring|marks|marked|marking) itself\b/giu,
+  nl: /\b(?:meet|mat|maten|beoordeelt|beoordeelde|beoordelen|becijfert|becijferde)\s+(?:\p{L}+\s+){0,2}?zichzelf\b/giu,
+  fr: /(?<!\p{L})(?:s['’]auto-?évalu\p{L}*|(?:s['’]évalu\p{L}*|se (?:not\p{L}*|mesur\p{L}*|jug\p{L}*))\s+(?:\p{L}+\s+){0,2}?(?:lui|elle|eux|elles)-mêmes?)(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:se autoeval\p{L}*|se (?:mide|miden|midió|evalúa|evalúan|evaluó|califica|califican|puntúa|puntúan)\s+(?:\p{L}+\s+){0,2}?a sí mism[oa]s?)(?!\p{L})/giu,
+  it: /(?<!\p{L})(?:si (?:dà|da) (?:i |dei |un )?vot[oi]|si autovalut\p{L}*|si (?:misura|misurano|valuta|valutano|giudica|giudicano)\s+(?:\p{L}+\s+){0,2}?da (?:sol[oaie]|sé))(?!\p{L})/giu,
+};
+/**
  * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
  * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
  * Every language on every surface, because a translation keeps the habit of its source.
@@ -718,6 +739,12 @@ function hardRules(file, text, locale) {
     fail(
       file,
       `a ride that names its own limit (§3.3), say where the limit applies: ${[...new Set(names)].slice(0, 3).join(' · ')}`
+    );
+  const selfGrading = SELF_GRADING[locale] && text.replace(/\s+/g, ' ').match(SELF_GRADING[locale]);
+  if (selfGrading)
+    fail(
+      file,
+      `a model that grades itself (§3.3), say what is compared and where the result is: ${[...new Set(selfGrading)].slice(0, 3).join(' · ')}`
     );
   if (locale === 'de') {
     const queue = (text.match(GERMAN_QUEUE) ?? []).filter(isQueueSlip);

@@ -2809,7 +2809,7 @@
     },
     "fancast": {
       "kicker": "park.fan · modello di previsione",
-      "tagline": "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco per ogni giorno già pubblicato, e si dà i voti in pubblico.",
+      "tagline": "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco per ogni giorno già pubblicato. Il giorno dopo ogni previsione viene confrontata con il tempo di attesa misurato, e l'errore medio in minuti è pubblicato su questa pagina.",
       "stats": {
         "avgError": "min errore medio",
         "parks": "parchi",
