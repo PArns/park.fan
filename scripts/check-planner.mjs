@@ -8341,8 +8341,9 @@ step: {
 // The grip is centred rather than bottom-anchored, so it overhangs a 30 px block
 // by 7 px in both directions and still takes the bottom corner of the block
 // above — deliberately, because that overhang is the only reason the shortest
-// block can be moved at all. That is PAR-165 and not this. Probing the grip's
-// column here would fail for a thing this ticket decided to keep.
+// block can be moved at all. That is PAR-165 and not this. The first assertion
+// after the edge's own does probe the grip's column, but for its WIDTH (PAR-651):
+// the same height in every column of the button, and none beside it.
 //
 // Behind `live`, like the two passes above it: with a 404 from `/plan/day` there
 // are no opening hours, so `buildDayGrid` answers `null`, the axis is never
@@ -8425,7 +8426,26 @@ if (live) {
         const hit = document.elementFromPoint(x, Math.round(upper.box.bottom - depth));
         return hit?.closest('li[data-planner-block]') === upper.el;
       };
+      // The grip's own columns (PAR-651). Its 44 px target hangs off a `::after`
+      // that used to start 22 px in, so the left half of the button had only the
+      // button's own 28 px of height and the target ran 22 px past it. Counted
+      // as the rows `elementFromPoint` hands to this block's grip, per column,
+      // over the block's middle row and 30 px either side.
+      const grip = lower.el.querySelector('button[aria-label="Verschieben"]');
+      const gripBox = grip?.getBoundingClientRect();
+      const gripRows = (dx) => {
+        if (!grip || !gripBox) return null;
+        const x = Math.round(gripBox.left + dx);
+        let rows = 0;
+        for (let y = Math.round(lower.box.top - 30); y <= Math.round(lower.box.bottom + 30); y++) {
+          if (document.elementFromPoint(x, y) === grip) rows++;
+        }
+        return rows;
+      };
       return {
+        gripWidth: gripBox ? Math.round(gripBox.width) : null,
+        gripColumns: [6, 25, 40].map((dx) => [dx, gripRows(dx)]),
+        gripBeside: gripRows(50),
         shortHeight: Math.round(lower.box.height),
         reach,
         overhang: edgeTop === null ? null : Math.round(lower.box.top - edgeTop),
@@ -8455,6 +8475,15 @@ if (live) {
         'die Resize-Kante ragt nicht über den Mindestblock hinaus',
         tiles.overhang !== null && tiles.overhang <= 0 && Math.round(tiles.reach) === entitled,
         `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px (erwartet ${entitled}) · Überhang ${tiles.overhang} px`
+      );
+      const rowsByColumn = tiles.gripColumns.map(([, rows]) => rows);
+      check(
+        'der Griff hat über seine volle Breite dieselbe Trefferhöhe, und keine Spalte rechts davon',
+        tiles.gripWidth === 44 &&
+          rowsByColumn.every((rows) => rows !== null && rows === rowsByColumn[0]) &&
+          rowsByColumn[0] >= 44 &&
+          tiles.gripBeside === 0,
+        `Griff ${tiles.gripWidth} px breit · Trefferzeilen bei x +6/+25/+40: ${rowsByColumn.join('/')} (erwartet je ≥ 44) · bei x +50: ${tiles.gripBeside} (erwartet 0)`
       );
       check(
         'die unteren 14 px des Blocks darüber gehören ihm, rechts vom Griff',
