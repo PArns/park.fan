@@ -28,6 +28,7 @@ export async function PreferredSourcePrompt({
 
   return (
     <section
+      data-card=""
       className={cn(
         'relative overflow-hidden rounded-2xl border backdrop-blur-md',
         compact ? 'p-4 sm:p-5' : 'p-6 sm:p-7',

@@ -187,6 +187,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A cell is gated on its content, and a component that fills one may not return `null` — nor one line](docs/rules/a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md)** — make the component total (`ropeDropCardVariant()`), or export the predicate so the count
   and the cell ask the same question. One colour rank in every place a number appears; a boundary
   that must be seen is a line, not a wash. `pnpm test:typical-waits`.
+- **[A landing page has one anatomy](docs/rules/a-landing-page-has-one-anatomy.md)** — hub, tool page or
+  park audience page, each with its head; one `<h1>`, one primary action on a hub, `FAQPage` only beside
+  a rendered `FaqList`, no `<h2>` outside a `ChapterHeading`, a card or `LandingNextSteps`. `pnpm check:landing-pages`.
 - **[The header is 48 px, and its height is written down in four places](docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)** — control heights come off
   the button scale in `components/ui/button.tsx`, not out of the air. Its breakpoints ask the **bar's**
   width (`@container` on `<header>`), not the window's. `BrandLockup` is one component rendered

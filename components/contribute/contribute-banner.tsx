@@ -25,6 +25,7 @@ export async function ContributeBanner({ href = '/contribute', className }: Cont
       // followable it drew 4 K requests / 154 MB a day, more traffic than the park pages. Visitors
       // are unaffected: nofollow only tells crawlers not to walk the link.
       rel="nofollow"
+      data-card=""
       className={cn(
         'group relative block overflow-hidden rounded-2xl border p-6 transition-all sm:p-8',
         // Semi-opaque themed base so the light text keeps its contrast in dark mode: on
