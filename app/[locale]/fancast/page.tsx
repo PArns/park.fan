@@ -11,7 +11,10 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getMLDashboard } from '@/lib/api/ml';
 import type { ComponentType } from 'react';
-import { LandingHero, HERO_FLOW_INTO_PULL } from './_fancast-ui';
+import { LandingHero, LandingNextSteps, HERO_FLOW_INTO_PULL } from './_fancast-ui';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { BookOpen, CalendarRange, Compass } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { RouteMessages } from '@/i18n/route-messages';
 
@@ -161,11 +164,12 @@ export default async function FancastPage({ params }: FancastPageProps) {
 
   setRequestLocale(locale);
 
-  const [Content, dashboard, tFancast, tLanding] = await Promise.all([
+  const [Content, dashboard, tFancast, tLanding, tNav] = await Promise.all([
     CONTENT_LOADERS[locale as Locale](),
     getMLDashboard().catch(() => null),
     getTranslations({ locale, namespace: 'fancast' }),
     getTranslations({ locale, namespace: 'landing' }),
+    getTranslations({ locale, namespace: 'navigation' }),
   ]);
 
   const live = dashboard?.performance?.live;
@@ -183,6 +187,16 @@ export default async function FancastPage({ params }: FancastPageProps) {
     value: tLanding('fancast.stats.dailyValue'),
     label: tLanding('fancast.stats.dailyLabel'),
   });
+
+  // The page's one action is "a park's crowd calendar" (docs/product/landing-pages.md §4). The
+  // calendar lives on every park page and this page names no single park (chapter 06 offers
+  // several), so the action goes to the best-time hub's chapter 05, which explains the calendar
+  // and lists the parks to open it on. `/parks` alone would be a park list, not a calendar.
+  const action = {
+    href: `/${BEST_TIME_SEGMENTS[locale as Locale]}#parks`,
+    label: tLanding('fancast.action'),
+    icon: CalendarRange,
+  };
 
   return (
     <RouteMessages route="/fancast">
@@ -210,6 +224,7 @@ export default async function FancastPage({ params }: FancastPageProps) {
           imageAlt="Voltron Nevera powered by Rimac im Europa-Park"
           stats={stats}
           scrollLabel={tLanding('scroll')}
+          action={action}
           flowInto
         />
 
@@ -218,11 +233,25 @@ export default async function FancastPage({ params }: FancastPageProps) {
         <div
           id="start"
           className={cn(
-            'relative space-y-20 pt-0 pb-16 sm:space-y-28 sm:py-24',
+            'relative space-y-16 pt-0 pb-14 sm:space-y-24 sm:py-20',
             HERO_FLOW_INTO_PULL
           )}
         >
           <Content />
+
+          <LandingNextSteps
+            title={tLanding('fancast.next.title')}
+            body={tLanding('fancast.next.body')}
+            destinations={[
+              action,
+              { href: '/parks', label: tNav('parks'), icon: Compass },
+              {
+                href: `/${HOWTO_SEGMENTS[locale as Locale]}`,
+                label: tNav('howto'),
+                icon: BookOpen,
+              },
+            ]}
+          />
         </div>
       </>
     </RouteMessages>

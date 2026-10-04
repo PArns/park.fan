@@ -2579,7 +2579,6 @@
       "shareTitle": "Mijn plan op park.fan"
     },
     "page": {
-      "kicker": "Dagplanner",
       "title": "Je parkdag attractie voor attractie plannen",
       "lead": "Zeg welke attracties je wilt. Met de voorspelde wachttijden erbij zie je of de dag klopt. De dagplanner is gratis, blijft in je browser en vraagt geen account.",
       "metaTitle": "Pretparkdag plannen rond de wachttijden | park.fan",
@@ -2803,7 +2802,8 @@
           "value": "elke 5 min.",
           "label": "nieuwe metingen"
         }
-      }
+      },
+      "action": "Kies een park"
     },
     "fancast": {
       "kicker": "park.fan · voorspelmodel",
@@ -2813,10 +2813,15 @@
         "parks": "parken",
         "dailyValue": "Dagelijks",
         "dailyLabel": "hertraind"
+      },
+      "action": "Druktekalender van jouw park",
+      "next": {
+        "title": "Jouw datum in de druktekalender",
+        "body": "Op elke parkpagina is elke gepubliceerde dag groen, geel of rood, met de schoolvakanties en feestdagen van de regio meegerekend."
       }
     },
     "bestTime": {
-      "kicker": "park.fan · reisplanner",
+      "kicker": "park.fan · reisplanning",
       "tagline": "De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen.",
       "stats": {
         "parks": {
@@ -2831,7 +2836,23 @@
           "value": "dagelijks",
           "label": "herberekend"
         }
+      },
+      "action": "Naar de dagplanner",
+      "next": {
+        "title": "Dag gevonden?",
+        "body": "In de dagplanner kies je welke attracties je wilt, en met de voorspelde wachttijden zie je of de dag klopt. Hoe goed de voorspellingen van de druktekalender de afgelopen 30 dagen klopten, staat op de pagina van Fancast."
       }
+    },
+    "planner": {
+      "kicker": "park.fan · dagplanner",
+      "action": "Een dag plannen",
+      "next": {
+        "title": "Nog geen datum?",
+        "body": "De rustigste weekdagen en maanden volgens de gemeten wachttijden van meer dan 200 parken, en op elke parkpagina een druktekalender met een voorspelling voor elke dag die het park heeft gepubliceerd."
+      }
+    },
+    "blog": {
+      "kicker": "park.fan · Blog"
     }
   }
 }

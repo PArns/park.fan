@@ -2579,7 +2579,6 @@
       "shareTitle": "My plan on park.fan"
     },
     "page": {
-      "kicker": "Trip planner",
       "title": "Plan your park day ride by ride",
       "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether the day adds up. The trip planner is free, stays in your browser and needs no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
@@ -2803,7 +2802,8 @@
           "value": "every 5 min",
           "label": "new readings"
         }
-      }
+      },
+      "action": "Pick a park"
     },
     "fancast": {
       "kicker": "park.fan · forecasting model",
@@ -2813,10 +2813,15 @@
         "parks": "parks",
         "dailyValue": "Daily",
         "dailyLabel": "retrained"
+      },
+      "action": "Crowd calendar for your park",
+      "next": {
+        "title": "Your date in the crowd calendar",
+        "body": "On every park page each published day is green, yellow or red, with the region’s school holidays and public holidays counted in."
       }
     },
     "bestTime": {
-      "kicker": "park.fan · trip planner",
+      "kicker": "park.fan · trip planning",
       "tagline": "Theme-park crowds follow a pattern. From the wait times we’ve measured at 200+ parks since December 2025, here are the quietest days and how to dodge the busy ones.",
       "stats": {
         "parks": {
@@ -2831,7 +2836,23 @@
           "value": "daily",
           "label": "recalculated"
         }
+      },
+      "action": "Open the trip planner",
+      "next": {
+        "title": "Found your day?",
+        "body": "In the trip planner you pick the rides you want, and the forecast waits show whether the day adds up. How well the crowd calendar’s forecasts did over the last 30 days is on the Fancast page."
       }
+    },
+    "planner": {
+      "kicker": "park.fan · trip planner",
+      "action": "Plan a day",
+      "next": {
+        "title": "No date yet?",
+        "body": "The quietest weekdays and months from wait times measured at over 200 parks, and on every park page a crowd calendar with a forecast for each day the park has published."
+      }
+    },
+    "blog": {
+      "kicker": "park.fan · Blog"
     }
   }
 }

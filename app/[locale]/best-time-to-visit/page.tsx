@@ -6,7 +6,13 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import {
+  LandingHero,
+  LandingNextSteps,
+  HERO_FLOW_INTO_PULL,
+} from '@/components/marketing/editorial-ui';
+import { plannerPath } from '@/lib/planner/segments';
+import { CalendarPlus, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -203,6 +209,13 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
     value: tLanding(`bestTime.stats.${key}.value`),
     label: tLanding(`bestTime.stats.${key}.label`),
   }));
+  // The page's one action (docs/product/landing-pages.md §4): a quiet day found here is planned
+  // in the trip planner. It opens the head and the closing band, so the two cannot disagree.
+  const action = {
+    href: plannerPath(locale),
+    label: tLanding('bestTime.action'),
+    icon: CalendarPlus,
+  };
 
   return (
     <RouteMessages route="/best-time-to-visit">
@@ -232,6 +245,7 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
           imageAlt={header.heroAlt}
           stats={stats}
           scrollLabel={tLanding('scroll')}
+          action={action}
           flowInto
         />
 
@@ -245,6 +259,14 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
           )}
         >
           <Content />
+
+          {/* Closes the page after the FAQ: the planner first, as in the head, then Fancast,
+              whose forecasts the crowd calendar in chapter 05 shows. */}
+          <LandingNextSteps
+            title={tLanding('bestTime.next.title')}
+            body={tLanding('bestTime.next.body')}
+            destinations={[action, { href: '/fancast', label: 'Fancast', icon: Sparkles }]}
+          />
         </div>
       </>
     </RouteMessages>

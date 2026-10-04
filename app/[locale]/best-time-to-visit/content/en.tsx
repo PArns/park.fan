@@ -25,7 +25,6 @@ import {
   SplitFigure,
   TouchpointGrid,
   FaqList,
-  LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
@@ -301,13 +300,6 @@ export function ContentEN() {
       >
         <FaqList items={FAQ} />
       </SectionShell>
-
-      {/* Next step (LandingNextSteps closes the page, after the FAQ) */}
-      <LandingNextSteps
-        title="Powered by Fancast"
-        body="Our own forecasting model estimates the crowds for every published day and grades itself as it goes."
-        destinations={[{ href: '/fancast', label: 'Fancast', icon: Sparkles }]}
-      />
     </>
   );
 }

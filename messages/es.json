@@ -2579,7 +2579,6 @@
       "shareTitle": "Mi plan en park.fan"
     },
     "page": {
-      "kicker": "Planificador",
       "title": "Planifica tu día en el parque atracción por atracción",
       "lead": "Di qué atracciones quieres. Con los tiempos de espera previstos ves si el día cuadra. El planificador es gratis, se queda en tu navegador y no pide cuenta.",
       "metaTitle": "Planificar el día en el parque de atracciones | park.fan",
@@ -2803,7 +2802,8 @@
           "value": "cada 5 min",
           "label": "mediciones nuevas"
         }
-      }
+      },
+      "action": "Elegir un parque"
     },
     "fancast": {
       "kicker": "park.fan · modelo de predicción",
@@ -2813,10 +2813,15 @@
         "parks": "parques",
         "dailyValue": "A diario",
         "dailyLabel": "reentrenado"
+      },
+      "action": "El calendario de afluencia de tu parque",
+      "next": {
+        "title": "Tu fecha en el calendario de afluencia",
+        "body": "En cada página de parque cada día publicado es verde, amarillo o rojo, con las vacaciones escolares y los festivos de la región incluidos."
       }
     },
     "bestTime": {
-      "kicker": "park.fan · planificador de visitas",
+      "kicker": "park.fan · preparar la visita",
       "tagline": "La afluencia sigue un patrón. Con los tiempos de espera que medimos desde diciembre de 2025 en más de 200 parques te mostramos los días más tranquilos y cómo esquivar los llenos.",
       "stats": {
         "parks": {
@@ -2831,7 +2836,23 @@
           "value": "a diario",
           "label": "recalculado"
         }
+      },
+      "action": "Abrir el planificador",
+      "next": {
+        "title": "¿Ya tienes el día?",
+        "body": "En el planificador eliges las atracciones que quieres, y con los tiempos de espera previstos ves si el día cuadra. Lo bien que acertaron las predicciones del calendario de afluencia en los últimos 30 días está en la página de Fancast."
       }
+    },
+    "planner": {
+      "kicker": "park.fan · planificador",
+      "action": "Planificar un día",
+      "next": {
+        "title": "¿Todavía sin fecha?",
+        "body": "Los días de la semana y los meses más tranquilos, a partir de los tiempos de espera medidos en más de 200 parques, y en cada página de parque un calendario de afluencia con una predicción para cada día que el parque ha publicado."
+      }
+    },
+    "blog": {
+      "kicker": "park.fan · Blog"
     }
   }
 }

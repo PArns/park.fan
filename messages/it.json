@@ -2579,7 +2579,6 @@
       "shareTitle": "Il mio piano su park.fan"
     },
     "page": {
-      "kicker": "Pianificatore",
       "title": "Pianifica la tua giornata al parco attrazione per attrazione",
       "lead": "Di' quali attrazioni vuoi fare. Con le attese previste vedi se la giornata regge. Il pianificatore è gratuito, resta nel tuo browser e non chiede un account.",
       "metaTitle": "Pianificare la giornata al parco divertimenti | park.fan",
@@ -2803,7 +2802,8 @@
           "value": "ogni 5 min",
           "label": "nuove rilevazioni"
         }
-      }
+      },
+      "action": "Scegli un parco"
     },
     "fancast": {
       "kicker": "park.fan · modello di previsione",
@@ -2813,10 +2813,15 @@
         "parks": "parchi",
         "dailyValue": "Ogni giorno",
         "dailyLabel": "riaddestrato"
+      },
+      "action": "Il calendario dell’affluenza del tuo parco",
+      "next": {
+        "title": "La tua data nel calendario dell’affluenza",
+        "body": "Su ogni pagina di parco ogni giorno pubblicato è verde, giallo o rosso, con le vacanze scolastiche e i festivi della regione già calcolati."
       }
     },
     "bestTime": {
-      "kicker": "park.fan · pianificatore di visite",
+      "kicker": "park.fan · organizzare la visita",
       "tagline": "L'affluenza segue degli schemi. Dai tempi di attesa che misuriamo da dicembre 2025 in oltre 200 parchi, ecco i giorni più tranquilli e come evitare quelli pieni.",
       "stats": {
         "parks": {
@@ -2831,7 +2836,23 @@
           "value": "ogni giorno",
           "label": "ricalcolato"
         }
+      },
+      "action": "Apri il pianificatore",
+      "next": {
+        "title": "Hai trovato il giorno?",
+        "body": "Nel pianificatore scegli le attrazioni che vuoi fare, e con le attese previste vedi se la giornata regge. Quanto hanno colto nel segno le previsioni del calendario dell’affluenza negli ultimi 30 giorni lo trovi nella pagina di Fancast."
       }
+    },
+    "planner": {
+      "kicker": "park.fan · pianificatore",
+      "action": "Pianifica una giornata",
+      "next": {
+        "title": "Non hai ancora una data?",
+        "body": "I giorni della settimana e i mesi più tranquilli, dai tempi di attesa misurati in oltre 200 parchi, e su ogni pagina di parco un calendario dell’affluenza con una previsione per ogni giorno che il parco ha pubblicato."
+      }
+    },
+    "blog": {
+      "kicker": "park.fan · Blog"
     }
   }
 }

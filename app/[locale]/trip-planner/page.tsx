@@ -9,14 +9,20 @@ import {
 import { routing, type Locale } from '@/i18n/routing';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
-import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { PLANNER_SEGMENTS, PLANNER_START_ID, plannerPath } from '@/lib/planner/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { CalendarPlus, CalendarDays, Compass } from 'lucide-react';
 import {
   BreadcrumbStructuredData,
   WebApplicationStructuredData,
 } from '@/components/seo/structured-data';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
-import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import {
+  LandingHero,
+  LandingNextSteps,
+  HERO_FLOW_INTO_PULL,
+} from '@/components/marketing/editorial-ui';
 import { cn } from '@/lib/utils';
 import { getParkBackground } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
@@ -160,6 +166,15 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   const day = demoPlanDay();
   // The free block's label is a word, and this page exists in six languages.
   const entries = demoEntries(tPlanner('custom.icon.food'));
+  // The page's one action (docs/product/landing-pages.md §4) is the tool on this same page, so it
+  // is an anchor and not a second way in: it lands on whichever of the body's own „plan a new
+  // day" controls is showing (the intro's when nothing is planned, the row over the list when
+  // something is), and the visitor presses that. The planner itself opens nowhere else.
+  const action = {
+    href: `${plannerPath(locale)}#${PLANNER_START_ID}`,
+    label: tLanding('planner.action'),
+    icon: CalendarPlus,
+  };
 
   return (
     <RouteMessages route="/trip-planner">
@@ -195,20 +210,22 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
           three strings. It stays in flow below the header (no `-mt-12`). */}
       {hero ? (
         <LandingHero
-          kicker={t('kicker')}
+          kicker={tLanding('planner.kicker')}
           title={t('title')}
           tagline={t('lead')}
           imageSrc={hero.src}
           imageAlt={hero.alt}
           scrollLabel={tLanding('scroll')}
+          action={action}
           flowInto
         />
       ) : (
         <LandingHero
           variant="compact"
-          kicker={t('kicker')}
+          kicker={tLanding('planner.kicker')}
           title={t('title')}
           tagline={t('lead')}
+          action={action}
         />
       )}
 
@@ -225,7 +242,7 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
       <div
         id="start"
         className={cn(
-          'relative container mx-auto px-4 pb-10 sm:pb-12',
+          'relative container mx-auto px-4 pb-16 sm:pb-24',
           // Below `sm` the hero pins its headline to the TOP and this section is
           // pulled up over the lower part of the photo. `HERO_FLOW_INTO_PULL`
           // owns that number — 176 px — and pairs with the hero's own mobile
@@ -243,9 +260,27 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
             drawing a real day. It sits BELOW the directory: somebody who
             already has a plan came here to open it, and the explanation is for
             the visit before that one. */}
-        <article className="mt-14 space-y-14 sm:mt-16 sm:space-y-16">
+        <article className="mt-16 space-y-16 sm:mt-24 sm:space-y-24">
           <Content day={day} entries={entries} />
         </article>
+      </div>
+
+      {/* The closing band runs the full width like on the other hubs, so it stands outside the
+          container above. Its first destination is the head's action again. */}
+      <div className="pb-14 sm:pb-20">
+        <LandingNextSteps
+          title={tLanding('planner.next.title')}
+          body={tLanding('planner.next.body')}
+          destinations={[
+            action,
+            {
+              href: `/${BEST_TIME_SEGMENTS[locale as Locale]}`,
+              label: tNav('bestTime'),
+              icon: CalendarDays,
+            },
+            { href: '/parks', label: tNav('parks'), icon: Compass },
+          ]}
+        />
       </div>
     </RouteMessages>
   );

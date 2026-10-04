@@ -14,6 +14,8 @@ import {
   Trash2,
 } from 'lucide-react';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
+import { ChapterHeading } from '@/components/common/chapter-heading';
+import { PLANNER_START_ID } from '@/lib/planner/segments';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { isPlannedDay } from '@/lib/planner/types';
@@ -92,8 +94,10 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
           asked which park and nothing else, so the two questions that decide
           whether a day works — which day, and who is coming — were left to be
           discovered in the panel afterwards. */}
+      {/* `PLANNER_START_ID` is what the hero's action jumps to. It sits here or on the intro
+          below, never on both: the two render for opposite states. */}
       {parks.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div id={PLANNER_START_ID} className="flex scroll-mt-20 flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setWizardFor({ park: null })}
@@ -124,10 +128,13 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 
       {parks.length > 0 && (
         <section>
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-            <CalendarDays className="size-5" aria-hidden="true" />
-            {t('page.yourPlans', { count: total })}
-          </h2>
+          {/* A chapter of the page like the article's below it, so it opens with the same
+              heading. No number: it renders only once something is planned. */}
+          <ChapterHeading
+            icon={CalendarDays}
+            title={t('page.yourPlans', { count: total })}
+            className="mb-5 pb-4"
+          />
 
           <div className="flex flex-col gap-4">
             {parks.map((park) => (
@@ -278,8 +285,8 @@ function PlannerPageIntro({ onStart }: { onStart: () => void }) {
   const t = useTranslations('planner');
 
   return (
-    <section data-planner-page-intro="">
-      <h2 className="mb-2 text-lg font-semibold">{t('page.introTitle')}</h2>
+    <section id={PLANNER_START_ID} data-planner-page-intro="" className="scroll-mt-20">
+      <ChapterHeading icon={CalendarPlus} title={t('page.introTitle')} className="mb-5 pb-4" />
       <p className="text-muted-foreground text-sm leading-relaxed">{t('page.introBody')}</p>
 
       <div className="mt-6">
