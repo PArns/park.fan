@@ -1919,6 +1919,7 @@
       "close": "Close",
       "entry": "Wait-time alerts",
       "entryWithCount": "Wait-time alerts ({count})",
+      "nudge": "We’ll notify you when a ride’s wait drops below the minutes you set.",
       "outOfSeason": "Winter only",
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
