@@ -232,10 +232,7 @@ export default async function FancastPage({ params }: FancastPageProps) {
             owns the number so it stays paired with the hero's bottom padding. */}
         <div
           id="start"
-          className={cn(
-            'relative space-y-16 pt-0 sm:space-y-24 sm:pt-20',
-            HERO_FLOW_INTO_PULL
-          )}
+          className={cn('relative space-y-16 pt-0 sm:space-y-24 sm:pt-20', HERO_FLOW_INTO_PULL)}
         >
           <Content />
 
