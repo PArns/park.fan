@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import nextDynamic from 'next/dynamic';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
+import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 
@@ -42,13 +43,19 @@ interface PageBottomSectionsProps {
  * term pages, which all previously hand-rolled the identical three sections —
  * so a spacing fix on one silently left the others behind.
  *
+ * Each of the three opens with `ChapterHeading`, watermark variant, unnumbered — the variant these
+ * pages' own chapters use on the plain page background (the homepage, where the same three stand
+ * among `tile` chapters, passes `tile` or `nested` instead). Every placeholder mounts the same
+ * heading, so a fallback is as tall as what replaces it.
+ *
  * Featured parks stream via FeaturedParksSlot (same pattern as the homepage),
  * so the geo fetch never blocks the host page from prerendering.
  */
-export function PageBottomSections({ locale }: PageBottomSectionsProps) {
+export async function PageBottomSections({ locale }: PageBottomSectionsProps) {
+  // Resolved here, not in the fallback: a fallback that awaits suspends, and is then no fallback.
+  const featuredParksLabels = await getFeaturedParksLabels();
+
   return (
-    // `data-page-bottom`: `pnpm check:landing-pages` reports the bare `<h2>`s in here as open
-    // rather than failing on them, until the module's headings are decided.
     <div data-page-bottom="">
       {/* Separated from the page content by a rule and a tint, NOT by whitespace.
           This block used to be pushed down by ~100px of stacked padding (page
@@ -67,7 +74,7 @@ export function PageBottomSections({ locale }: PageBottomSectionsProps) {
 
       <FavoritesSection />
 
-      <Suspense fallback={<FeaturedParksSkeleton />}>
+      <Suspense fallback={<FeaturedParksSkeleton labels={featuredParksLabels} />}>
         <FeaturedParksSlot locale={locale} />
       </Suspense>
     </div>

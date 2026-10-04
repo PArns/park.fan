@@ -1,5 +1,6 @@
 import { getTranslations, getLocale } from 'next-intl/server';
-import { ChevronRight, Star } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import { FeaturedParksHeading } from '@/components/home/section-headings';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -51,9 +52,12 @@ async function FeaturedParkCards({ parks }: { parks: FeaturedPark[] }) {
 export async function FeaturedParksSlot({
   locale,
   className,
+  heading = 'watermark',
 }: {
   locale: string;
   className?: string;
+  /** `tile` on the homepage, `watermark` under editorial pages — see {@link FeaturedParksHeading}. */
+  heading?: 'watermark' | 'tile';
 }) {
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
@@ -65,19 +69,15 @@ export async function FeaturedParksSlot({
   return (
     <section className={cn('px-4 py-12', className)}>
       <div className="container mx-auto">
-        {/* No frosted pill around the heading any more. It was `bg-background/70` on a band of
-            `bg-background` on every page that draws this section, so nobody ever saw the pill,
-            only its `px-4`: the star stood 16 px right of the cards' edge, the one heading on
-            the page that did not line up with its own content. */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2">
-            <Star className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{tHome('sections.featuredParks')}</h2>
-          </div>
-          <p className="text-muted-foreground mt-1 text-sm">
-            {tHome('sections.featuredParksIntro')}
-          </p>
-        </div>
+        {/* The same heading node `FeaturedParksSkeleton` mounts, so the fallback is as tall as
+            the section whichever way the title and the intro wrap. */}
+        <FeaturedParksHeading
+          variant={heading}
+          labels={{
+            title: tHome('sections.featuredParks'),
+            hint: tHome('sections.featuredParksIntro'),
+          }}
+        />
 
         <FeaturedParkCards parks={parks} />
 

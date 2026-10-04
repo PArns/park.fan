@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { MapPin, Clock, TrendingUp, ChevronRight, Star } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { BackgroundOverlayImage } from '@/components/common/background-overlay-image';
@@ -201,9 +202,12 @@ export function InParkRideLists({
 export function InParkView({
   data,
   className,
+  nested = false,
 }: {
   data: NearbyAttractionsData;
   className?: string;
+  /** See `NearbyParksCard`: on the homepage `NearbyChapter` holds the chapter's `<h2>`. */
+  nested?: boolean;
 }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
@@ -258,10 +262,20 @@ export function InParkView({
       )}
 
       <div className="relative z-10 container mx-auto px-4">
-        <h2 className="mb-6 flex items-center gap-2 text-xl font-bold">
-          <MapPin className="text-park-primary h-5 w-5" />
-          {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
-        </h2>
+        {nested ? (
+          <h3 className="mb-6 flex items-center gap-2 text-xl font-bold">
+            <MapPin className="text-park-primary h-5 w-5" />
+            {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
+          </h3>
+        ) : (
+          // A chapter of its own under editorial pages, and `frosted` because it stands over the
+          // park's photo, where a bare watermark is unreadable — the park page's reason.
+          <ChapterHeading
+            frosted
+            icon={MapPin}
+            title={t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
+          />
+        )}
         <div className="space-y-4">
           {/* Quick navigation: primary CTA to park page when user is in park */}
           {parkPageUrl && (

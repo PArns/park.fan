@@ -1,5 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import {
+  FeaturedParksHeading,
+  type FeaturedParksLabels,
   GlobalStatsHeading,
   LiveActivityHeading,
   PlatformStatsHeading,
@@ -105,19 +107,21 @@ export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }
 }
 
 /** `className` is the one `FeaturedParksSlot` gets, so the band's padding is the same box. */
-export function FeaturedParksSkeleton({ className }: { className?: string }) {
+export function FeaturedParksSkeleton({
+  className,
+  labels,
+  heading = 'watermark',
+}: {
+  className?: string;
+  labels: FeaturedParksLabels;
+  heading?: 'watermark' | 'tile';
+}) {
   return (
     <section className={cn('px-4 py-12', className)}>
       <div className="container mx-auto">
-        {/* Title row and intro line, as in FeaturedParksSlot: one child, same nesting, same
-            height. */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2">
-            <Skeleton className="h-5 w-5 rounded" />
-            <Skeleton className="h-7 w-44 max-w-[60%]" />
-          </div>
-          <Skeleton className="mt-1 h-5 w-64 max-w-full" />
-        </div>
+        {/* The real heading, not grey bars shaped like one: it needs no data, and its height
+            moves with how title and intro wrap per locale and breakpoint. */}
+        <FeaturedParksHeading labels={labels} variant={heading} />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <ParkCardNearbySkeleton key={i} />

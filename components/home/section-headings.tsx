@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { BarChart3, Database, Globe } from 'lucide-react';
+import { BarChart3, Database, Globe, Star } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 
 /**
@@ -90,4 +90,33 @@ export function LiveActivityHeading({ labels }: { labels: SectionHeadingLabels }
       id="parks-weltweit"
     />
   );
+}
+
+/** Title and intro of „Beliebte Parks" — the homepage and `PageBottomSections` both stream it. */
+export interface FeaturedParksLabels {
+  title: string;
+  hint: string;
+}
+
+export async function getFeaturedParksLabels(): Promise<FeaturedParksLabels> {
+  const tHome = await getTranslations('home');
+  return {
+    title: tHome('sections.featuredParks'),
+    hint: tHome('sections.featuredParksIntro'),
+  };
+}
+
+/**
+ * „Beliebte Parks", in the slot and in its fallback alike. `tile` on the homepage, where every
+ * chapter opens with the plate; `watermark` (the default) under blog, news and glossary pages,
+ * whose own chapters carry the watermark glyph on the plain page background. No kicker in either.
+ */
+export function FeaturedParksHeading({
+  labels,
+  variant = 'watermark',
+}: {
+  labels: FeaturedParksLabels;
+  variant?: 'watermark' | 'tile';
+}) {
+  return <ChapterHeading variant={variant} icon={Star} title={labels.title} hint={labels.hint} />;
 }

@@ -22,14 +22,17 @@ const LocationBanner = nextDynamic(
 const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
-  { loading: () => <FavoritesEmptyState textHidden className={STORY_SECTION_Y} />, ssr: true }
+  {
+    loading: () => <FavoritesEmptyState textHidden heading="tile" className={STORY_SECTION_Y} />,
+    ssr: true,
+  }
 );
 
 const NearbyParksCard = nextDynamic(
   () =>
     import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
   {
-    loading: () => <NearbyParksCardSkeleton />,
+    loading: () => <NearbyParksCardSkeleton nested />,
     ssr: true,
   }
 );
@@ -55,7 +58,10 @@ import {
   FeaturedParksSkeleton,
   LiveActivitySkeleton,
 } from '@/components/home/home-skeletons';
-import { getSectionHeadingLabels } from '@/components/home/section-headings';
+import {
+  getFeaturedParksLabels,
+  getSectionHeadingLabels,
+} from '@/components/home/section-headings';
 
 // The homepage story — "what is park.fan", chapter by chapter. Every one of these
 // is a Server Component whose copy is read server-side, so ~2 500 words of German
@@ -187,7 +193,10 @@ export default async function HomePage({ params }: HomePageProps) {
   // Resolved once, here, because the two streamed sections and their fallbacks
   // must mount the SAME heading node — and a fallback that awaits anything
   // suspends, so the skeleton cannot look these up itself.
-  const headingLabels = await getSectionHeadingLabels();
+  const [headingLabels, featuredParksLabels] = await Promise.all([
+    getSectionHeadingLabels(),
+    getFeaturedParksLabels(),
+  ]);
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
@@ -398,9 +407,9 @@ export default async function HomePage({ params }: HomePageProps) {
           hero, and with their own paddings every band edge in that block had a
           different gap on either side of it. */}
         <NearbyChapter>
-          <NearbyParksCard />
+          <NearbyParksCard nested />
         </NearbyChapter>
-        <FavoritesSection className={STORY_SECTION_Y} />
+        <FavoritesSection heading="tile" className={STORY_SECTION_Y} />
 
         {/* From here to the FAQ, everything is drawn after the parks on a phone — see
           PHONE_LATER. The wrappers are plain boxes in this flex column; the sections inside
@@ -435,8 +444,16 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
 
         {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
-        <Suspense fallback={<FeaturedParksSkeleton className={STORY_SECTION_Y} />}>
-          <FeaturedParksSlot locale={locale} className={STORY_SECTION_Y} />
+        <Suspense
+          fallback={
+            <FeaturedParksSkeleton
+              labels={featuredParksLabels}
+              heading="tile"
+              className={STORY_SECTION_Y}
+            />
+          }
+        >
+          <FeaturedParksSlot locale={locale} heading="tile" className={STORY_SECTION_Y} />
         </Suspense>
 
         {/* Live Activity - Parks Open Now — no pk-reveal: its cards are GlassCards, and the

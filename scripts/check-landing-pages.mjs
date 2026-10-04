@@ -20,7 +20,8 @@
  *      rendered `FaqList` only with its `FAQPage`;
  *   5. no bare `<h2>`: each one sits inside a `ChapterHeading` (`[data-chapter-heading]`), a card
  *      (`[data-slot="card"]`, `[data-glass-card]`, or `[data-card]` on a card built by hand) or the
- *      `LandingNextSteps` band (`[data-landing-next]`). Only `<main>` is read: header, footer and
+ *      `LandingNextSteps` band (`[data-landing-next]`), or is a news day label
+ *      (`[data-news-day]`). Only `<main>` is read: header, footer and
  *      dialogs are not the page. The ones listed in `OPEN` are printed, not failed.
  *
  * The German URL of every page in concept §1, plus the English URL of each hub. The kind of each
@@ -74,7 +75,8 @@ const PAGES = [
 
 /**
  * Where an `<h2>` may stand on a landing page: a `ChapterHeading`, a card (`Card`, `GlassCard`,
- * or a card built by hand whose root says so with `data-card`), or the `LandingNextSteps` band.
+ * or a card built by hand whose root says so with `data-card`), the `LandingNextSteps` band, or
+ * a day label of the news timeline.
  */
 const H2_HOMES = [
   '[data-chapter-heading]',
@@ -82,23 +84,21 @@ const H2_HOMES = [
   '[data-glass-card]',
   '[data-card]',
   '[data-landing-next]',
+  // The news index's day labels (`data-news-day`): date headings structure a timeline; they are
+  // not chapters.
+  '[data-news-day]',
 ].join(',');
 
 /**
  * Bare `<h2>`s that wait for a design decision rather than a heading swap. They are printed on
  * every run as `open`, never passed in silence; an entry goes when its headings are decided.
- * `:has()` is fine here: a Playwright selector is not a stylesheet (no-has-selector rule).
+ * Empty since PAR-688 (the bottom sections open with `ChapterHeading`, the news day labels are
+ * an allowed home). Each entry is `{ match, why }`; a Playwright selector may use `:has()`, it is
+ * not a stylesheet (no-has-selector rule).
+ *
+ * @type {{ match: string, why: string }[]}
  */
-const OPEN = [
-  {
-    match: '[data-page-bottom] h2',
-    why: 'PageBottomSections (nearby, favourites, popular parks), shared with posts and glossary terms',
-  },
-  {
-    match: 'h2:has(time[datetime])',
-    why: 'the news timeline labels each day with an <h2>',
-  },
-];
+const OPEN = [];
 
 const inspect = (page, homes, open) =>
   page.evaluate(
