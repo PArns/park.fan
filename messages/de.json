@@ -2832,6 +2832,18 @@
           "label": "neu gerechnet"
         }
       }
+    },
+    "developers": {
+      "kicker": "park.fan · für Entwickler"
+    },
+    "contribute": {
+      "kicker": "park.fan · deine Fotos"
+    },
+    "news": {
+      "kicker": "park.fan · Meldungen"
+    },
+    "glossary": {
+      "kicker": "park.fan · Glossar"
     }
   }
 }

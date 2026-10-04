@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Camera, ImageUp } from 'lucide-react';
+import { ImageUp } from 'lucide-react';
 import {
   locales,
   generateAlternateLanguages,
@@ -14,9 +13,8 @@ import { ContributeForm } from '@/components/contribute/contribute-form';
 import { RightsNotice } from '@/components/contribute/rights-notice';
 import { ExampleGallery } from '@/components/contribute/example-gallery';
 import { parseEntityFromParams } from '@/lib/contribute/prefill';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
-import { objectPositionForSrc } from '@/lib/media/focus';
 import { RouteMessages } from '@/i18n/route-messages';
+import { LandingHero } from '@/components/marketing/editorial-ui';
 
 interface ContributePageProps {
   params: Promise<{ locale: string }>;
@@ -83,50 +81,34 @@ export default async function ContributePage({ params, searchParams }: Contribut
   const initialEntity = parseEntityFromParams(await searchParams);
   const t = await getTranslations('contribute.hero');
   const tBanner = await getTranslations('contribute.banner');
-  const heroSrc = getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
+  const tLanding = await getTranslations('landing.contribute');
 
   return (
     <RouteMessages route="/contribute">
-      <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:py-12">
-        {/* Hero with a themed photo backdrop */}
-        <header className="relative mb-10 overflow-hidden rounded-3xl border shadow-sm">
-          <Image
-            src={heroSrc}
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover"
-            style={{ objectPosition: objectPositionForSrc(heroSrc, '50% 50%') }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/35" />
-          <div className="relative flex flex-col items-center px-6 py-14 text-center text-white sm:py-20">
-            <div className="mb-5 flex size-16 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-md">
-              <Camera className="size-8" />
-            </div>
-            <h1 className="max-w-2xl text-3xl font-bold drop-shadow-md sm:text-5xl">
-              {t('title')}
-            </h1>
-            <p className="mt-4 max-w-xl text-base text-white/85 drop-shadow sm:text-lg">
-              {t('subtitle')}
-            </p>
-            <a
-              href="#upload"
-              className="text-primary-foreground bg-primary mt-7 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium shadow-lg transition-transform hover:-translate-y-0.5"
-            >
-              <ImageUp className="size-4" />
-              {tBanner('cta')}
-            </a>
+      {/* A tool page: the compact head (docs/product/landing-pages.md §1), whose one action is
+          the upload form further down (§4). It replaces a centred photo card under a black
+          scrim that stayed black in the light theme. Its photo, Europa-Park's generic park
+          background, was not dropped into the example gallery: that gallery shows the kind of
+          picture a reader is asked for, and a stock park backdrop is not one. */}
+      <LandingHero
+        variant="compact"
+        kicker={tLanding('kicker')}
+        title={t('title')}
+        tagline={t('subtitle')}
+        action={{ href: '#upload', label: tBanner('cta'), icon: ImageUp }}
+      />
+
+      {/* Gallery and form keep their widths but start at the `container` edge with the head. */}
+      <div className="container mx-auto px-4 pt-12 pb-8 sm:pt-16 sm:pb-12">
+        <div className="max-w-5xl">
+          {/* Inspiration gallery */}
+          <ExampleGallery />
+
+          {/* Rights + form, in a narrower reading column */}
+          <div id="upload" className="max-w-3xl scroll-mt-24">
+            <RightsNotice />
+            <ContributeForm initialEntity={initialEntity} />
           </div>
-        </header>
-
-        {/* Inspiration gallery */}
-        <ExampleGallery />
-
-        {/* Rights + form, in a narrower reading column */}
-        <div id="upload" className="mx-auto max-w-3xl scroll-mt-8">
-          <RightsNotice />
-          <ContributeForm initialEntity={initialEntity} />
         </div>
       </div>
     </RouteMessages>

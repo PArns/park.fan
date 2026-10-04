@@ -16,6 +16,7 @@ import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
+import { LandingHero } from '@/components/marketing/editorial-ui';
 
 interface GlossaryPageProps {
   params: Promise<{ locale: string }>;
@@ -70,6 +71,7 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
 
   const t = await getTranslations('glossary');
   const tCommon = await getTranslations('common');
+  const tLanding = await getTranslations('landing.glossary');
 
   const terms = await getGlossaryTerms(locale as Locale);
   const termCount = Math.floor(terms.length / 10) * 10;
@@ -123,13 +125,20 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
     return [{ category, categoryLabel: t(`category.${category}`), terms: categoryTerms }];
   }).sort((a, b) => a.categoryLabel.localeCompare(b.categoryLabel, locale));
 
-  const breadcrumbs = [{ name: tCommon('home'), url: '/' }];
-
   return (
     <RouteMessages route="/glossary">
       <>
-        <GlossaryBackground />
-        <PageContainer>
+        <GlossaryBackground headTint />
+        {/* A tool page: the compact head (docs/product/landing-pages.md §1), rendered here rather
+            than in the client list so it reaches the browser as HTML and costs the client bundle
+            nothing. No action button: the search right under it is the page's one control (§4). */}
+        <LandingHero
+          variant="compact"
+          kicker={tLanding('kicker')}
+          title={t('overviewH1')}
+          tagline={t('overviewDescription', { count: termCount })}
+        />
+        <PageContainer className="pt-6 sm:pt-8">
           <GlossaryStructuredData
             terms={terms}
             locale={locale as Locale}
@@ -147,10 +156,6 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
             rideCounts={rideCounts}
             locale={locale as Locale}
             segment={segment}
-            title={t('overviewTitle')}
-            h1={t('overviewH1')}
-            description={t('overviewDescription', { count: termCount })}
-            breadcrumbs={breadcrumbs}
           />
         </PageContainer>
       </>
