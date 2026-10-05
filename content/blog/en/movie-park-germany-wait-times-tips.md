@@ -2,6 +2,7 @@
 title: '30 years of Movie Park Germany, and not one brand from 1996 is left'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -9,7 +10,7 @@ excerpt: >-
   Batman gone, Bugs Bunny gone, and ever since the park has been building rides
   about itself. For its 30th birthday: measured wait times, the weekday the usual
   tip sheets get wrong, the timetable from September and the Halloween
-  Horror Festival from 26 September.
+  Horror Festival, which runs until 8 November.
 tags:
   - movie-park
   - wait-times
@@ -33,7 +34,7 @@ seo:
   title: 'Movie Park Wait Times & Halloween 2026, minus Batman'
   description: >-
     Measured wait times at Movie Park: the weekday the tip sheets get wrong, the
-    autumn timetable, Halloween from 26 September and how to dodge the gate
+    autumn timetable, Halloween until 8 November and how to dodge the gate
     price.
   keywords:
     - Movie Park Germany
