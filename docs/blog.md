@@ -614,7 +614,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Eight house rules that are not in anybody's research. They came out of real reviews of shipped
+Twelve house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -698,6 +698,26 @@ Zahl`, `nennt eine Zahl`, `spuckt eine Zahl aus`, `die Zahl zeigt`, `die Zahlen 
 Wochenendtag, also war der Dienstag voller`. Patrick put both on the list on 2026-10-04.
     `pnpm check:prose` fails on them in every language and on every surface. A place stays
     (`die Zahl steht im Diagramm`), and so does `a number of` in all its forms.
+12. **Never `die Quelle` without a name, and never the day you opened the pages.** Nor `mit der
+Quelle, aus der es stammt`, `wie die Quelle sie nennt`, `nennt die Quelle keinen Hersteller`,
+    `laut Quelle`, `es nennt`, or `Alle Seiten habe ich am 5. Oktober 2026 aufgerufen` and `Die
+Website ließ sich am 5. Oktober nicht aufrufen`. The translations shipped with them: `the way the
+source gives them`, `with the source it came from`, `I opened every page on`, `zoals de bron ze
+geeft`, `heb ik op … bekeken`, `tels que la source les donne`, `J’ai consulté toutes ces pages
+le`, `tal como los da la fuente`, `Consulté todas las páginas el`, `come li dà la fonte`, `le ho
+aperte il`. A reader cannot look up `die Quelle`; the post links every page, so name whose page
+    it is: `wie Park oder Hersteller sie angeben`, `mehr als die Hälfte nennt keinen Hersteller`.
+    The access date is a bibliography's `abgerufen am` moved into the text, and with it the
+    author's routine. Say what the parks did by that date instead (`haben bis zum 5. Oktober keine
+Neuheit für 2027 bestätigt`) or leave it to `updatedAt` and a `Stand 5. Oktober 2026`. All of
+    it stood in the 2027 novelties post in six languages until Patrick put it on the list on
+    2026-10-05. `pnpm check:prose` fails on both in every language, in posts and news only: in the
+    admin a `Quelle` is the upstream feed. A named source stays (`Six Flags nennt sie die
+höchste`), so does a source as the object (`Six Flags nennt keine Quelle`), `nennt es`, and the
+    source line of a `[!QUOTE]`, which is a citation and may carry `abgerufen am`. `selon la
+source` and `según la fuente` mean "depending on the source" as often as "according to" and
+    are not matched. The research sentence without a page in it (`habe ich am 5. Oktober keine
+Neuheit gefunden`) is the same habit and is left to the review pass.
 
 ### 3.4 Travel-guide copy, in all six languages
 

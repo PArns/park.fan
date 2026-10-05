@@ -52,7 +52,7 @@ douzaines de nouveautés pour 2027. Parmi elles, un spinning coaster dans le New
 selon Six Flags le plus haut du monde, et un conte de l’Efteling qui se déroule dans une
 bibliothèque. Seul Plopsaland Belgium a déjà fixé une date pour une nouvelle attraction, le samedi
 13 mars 2027, jour d’ouverture de son Flying Cinema. Les autres s’en tiennent à l’année,
-quelques-uns à une saison, et pour plus de la moitié, la source ne nomme aucun constructeur.
+quelques-uns à une saison, et plus de la moitié ne nomment aucun constructeur.
 
 L’Allemagne connaît une année calme. Aucun des grands parcs du pays n’a annoncé de nouvelle montagne
 russe pour 2027, et Euro-Mir quitte Europa-Park. Les gros projets se trouvent en France, en
@@ -67,13 +67,12 @@ Le prochain grand rendez-vous des annonces est l’IAAPA Expo, le salon professi
 Une nouveauté entre dans la liste quand le parc, son exploitant ou le constructeur la mentionne sur
 son propre site ou dans son propre communiqué. Les rumeurs, les demandes de permis de construire et
 les photos de chantier ne comptent pas, même reprises par la presse spécialisée. Ce qui circule par
-ces canaux figure plus bas, sous « Ce qui n’est pas dans la liste », avec la source d’où cela vient.
+ces canaux figure plus bas, sous « Ce qui n’est pas dans la liste ».
 
-Date, constructeur et chiffres sont repris tels que la source les donne. « 2027 » veut dire 2027,
+Date, constructeur et chiffres sont repris tels que le parc ou le constructeur les donne. « 2027 » veut dire 2027,
 sans mois. Quand deux pages officielles se contredisent, j’indique les deux versions. J’ai converti
 et arrondi les pieds, les miles et les pouces en mètres, en kilomètres-heure et en centimètres.
-Chaque section renvoie à sa source, et la liste complète se trouve à la fin. J’ai consulté toutes
-ces pages le 5 octobre 2026.
+Chaque section renvoie à sa source, et la liste complète se trouve à la fin.
 
 ## Toutes les nouveautés d’un coup d’œil
 
@@ -147,10 +146,9 @@ prévu. Le parc écrit que « Nørd Havn ouvrira ses portes fin 2027 ».
 
 ### Phantasialand, Heide Park, Movie Park et les autres
 
-Pour [Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park
+[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park
 Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) et [Plopsaland
-Deutschland](ref:plopsaland-deutschland), je n’ai trouvé au 5 octobre aucune nouveauté confirmée
-pour 2027. À Phantasialand, tout projet d’envergure dépend de l’extension vers le terrain de
+Deutschland](ref:plopsaland-deutschland) n’avaient confirmé au 5 octobre aucune nouveauté pour 2027. À Phantasialand, tout projet d’envergure dépend de l’extension vers le terrain de
 l’Ententeich, pour laquelle il n’existe pas encore de plan d’urbanisme et contre laquelle des
 défenseurs de la nature recueillent des signatures depuis le 28 septembre. Ce que le parc prévoit
 d’y construire est expliqué dans [notre article sur la
@@ -565,8 +563,8 @@ jusqu’à la fin de la saison 2026.
 
 ## Ce qui n’est pas dans la liste
 
-Ne figurent pas dans la liste les projets pour lesquels je n’ai trouvé aucune page de parc,
-d’exploitant ou de constructeur mentionnant 2027 :
+Ne figurent pas dans la liste les projets que ni le parc, ni l’exploitant, ni le constructeur n’ont
+annoncés eux-mêmes pour 2027 :
 
 - À Toverland, une transformation de Port Laguna avec un dark ride pour fin 2027 provient d’un
   prospectus d’emprunt obligataire dont la presse spécialisée a parlé. Le parc a annoncé le bobsleigh
@@ -576,8 +574,7 @@ d’exploitant ou de constructeur mentionnant 2027 :
 - Un wing coaster de B&M pour Energylandia circule sur les forums et dans la presse spécialisée,
   mais rien n’en figure sur le site du parc.
 - En août, lors d’un événement professionnel, le patron de Caneva World, l’exploitant de Movieland
-  Park au bord du lac de Garde, a cité trois nouveautés pour ce parc. Le 5 octobre, le site de
-  l’exploitant était inaccessible.
+  Park au bord du lac de Garde, a cité trois nouveautés pour ce parc.
 - Pour Legoland Windsor, Alton Towers et Thorpe Park, il existe des demandes de permis et des
   documents d’urbanisme, mais aucune annonce des parcs.
 - Une nouvelle montagne russe à Cedar Point n’apparaît pour l’instant que dans un seul message

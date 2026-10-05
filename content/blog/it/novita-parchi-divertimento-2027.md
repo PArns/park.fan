@@ -50,8 +50,8 @@ Al 5 ottobre 2026 i parchi di Europa e Stati Uniti hanno confermato direttamente
 abbondanti di novità per il 2027. Tra queste ci sono una spinning coaster nel New Jersey che,
 secondo Six Flags, sarà la più alta del mondo e una fiaba dell’Efteling ambientata in una
 biblioteca. Finora solo Plopsaland Belgium ha fissato una data per una nuova attrazione, e il suo
-Flying Cinema apre sabato 13 marzo 2027. Gli altri scrivono l’anno, qualcuno la stagione, e per più
-della metà la fonte non dice chi costruisce.
+Flying Cinema apre sabato 13 marzo 2027. Gli altri scrivono l’anno, qualcuno la stagione, e più
+della metà non dice chi costruisce.
 
 In Germania sarà un anno tranquillo. Nessuno dei grandi parchi ha annunciato una nuova montagna
 russa per il 2027, e all’Europa-Park sparisce l’Euro-Mir. I progetti grandi stanno in Francia, in
@@ -66,12 +66,12 @@ al 20 novembre 2026. Se lì si aggiunge qualcosa, dopo lo trovi su questa pagina
 Una novità entra nell’elenco se il parco, il suo gestore o il costruttore la nomina sul proprio
 sito o in un proprio comunicato stampa. Voci di corridoio, domande di permesso di costruire e foto
 dei cantieri non contano, nemmeno quando le riprendono i media di settore. Quello che circola per
-queste vie è più in basso, in «Cosa non è nell’elenco», insieme alla fonte da cui viene.
+queste vie è più in basso, in «Cosa non è nell’elenco».
 
-Data, costruttore e numeri sono riportati come li dà la fonte. «2027» vuol dire 2027, senza mese.
+Data, costruttore e numeri sono riportati come li danno il parco o il costruttore. «2027» vuol dire 2027, senza mese.
 Dove due pagine ufficiali si contraddicono, riporto tutte e due le versioni. Ho convertito piedi,
 miglia e pollici in metri, chilometri orari e centimetri, e ho arrotondato. Ogni sezione ha il link
-alla sua fonte, l’elenco completo è in fondo. Tutte le pagine le ho aperte il 5 ottobre 2026.
+alla sua fonte, l’elenco completo è in fondo.
 
 ## Tutte le novità in breve
 
@@ -144,10 +144,10 @@ che Nørd Havn aprirà le sue porte alla fine del 2027.
 
 ### Phantasialand, Heide Park, Movie Park e gli altri
 
-Per il [Phantasialand](ref:phantasialand), l’[Heide Park](ref:heide-park), il
+Il [Phantasialand](ref:phantasialand), l’[Heide Park](ref:heide-park), il
 [Movie Park Germany](ref:movie-park-germany), il [Legoland Deutschland](ref:legoland-deutschland) e
-il [Plopsaland Deutschland](ref:plopsaland-deutschland) il 5 ottobre non ho trovato nessuna novità
-confermata per il 2027. Al Phantasialand qualunque progetto più grande dipende dall’ampliamento
+il [Plopsaland Deutschland](ref:plopsaland-deutschland) al 5 ottobre non avevano confermato nessuna
+novità per il 2027. Al Phantasialand qualunque progetto più grande dipende dall’ampliamento
 nella zona dell’Ententeich, per cui un piano urbanistico ancora non c’è e contro cui dal 28
 settembre gli ambientalisti raccolgono firme. Cosa vuole costruire lì il parco lo trovi nella
 [nostra notizia sulla raccolta firme](/blog/phantasialand-ampliamento-raccolta-firme). Il Movie Park
@@ -554,8 +554,8 @@ Sommerland fino alla fine della stagione 2026.
 
 ## Cosa non è nell’elenco
 
-Nell’elenco mancano i progetti per cui non ho trovato una pagina di parco, gestore o costruttore che
-indichi il 2027:
+Nell’elenco mancano i progetti che né il parco, né il gestore, né il costruttore hanno annunciato
+per il 2027:
 
 - A Toverland, la trasformazione di Port Laguna con un dark ride per la fine del 2027 viene dal
   prospetto di un prestito obbligazionario, di cui hanno scritto i media di settore. Il bob oscillante
@@ -565,7 +565,7 @@ indichi il 2027:
 - Una wing coaster di B&M per Energylandia gira nei forum e sui media di settore, mentre sulla
   pagina del parco non c’è niente.
 - Tre novità per il Movieland Park sul lago di Garda le ha nominate ad agosto, a un evento di
-  settore, il capo del gestore Caneva World. Il 5 ottobre il sito del gestore non si apriva.
+  settore, il capo del gestore Caneva World.
 - Per Legoland Windsor, Alton Towers e Thorpe Park ci sono domande di permesso e documenti di
   pianificazione, ma nessun annuncio dei parchi.
 - Una nuova montagna russa a Cedar Point compare finora solo in un singolo post su X.
