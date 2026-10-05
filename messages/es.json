@@ -813,8 +813,20 @@
         "recovery": "Alrededor del {percent} % se resolvió en una hora.",
         "recoveryOnly": "De las averías que ya habían durado tanto, alrededor del {percent} % volvió a estar en servicio en una hora."
       },
+      "estimateClosed": {
+        "range": "Las paradas como esta solían durar entre {from} y {to} más.",
+        "rangeOpen": "Las paradas como esta solían durar más de {from} más.",
+        "clockRange": "Las paradas como esta solían terminar entre {from} y {to}.",
+        "clockRangeOpen": "Las paradas como esta no solían terminar antes de {from}.",
+        "recovery": "Alrededor del {percent} % terminó en una hora.",
+        "recoveryOnly": "De las paradas que ya habían durado tanto, alrededor del {percent} % terminó en una hora."
+      },
       "sinceClosed": "Parada desde {when}",
       "startUnknownClosed": "Parada, inicio desconocido"
+    },
+    "notRunToday": {
+      "title": "Hoy aún no ha funcionado",
+      "lastRun": "Funcionó por última vez: {when}"
     },
     "noLiveWaitTimes": {
       "title": "No hay tiempos de espera disponibles",

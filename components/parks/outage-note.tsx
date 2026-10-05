@@ -1,13 +1,16 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
+import { TriangleAlert } from 'lucide-react';
 import type { AttractionOutage } from '@/lib/api/types';
 import { formatSpanDuration } from '@/lib/utils/duration';
 import { outageElapsedMinutes } from '@/lib/utils/outage';
+import { OutageEstimateNote } from './outage-estimate-note';
+import { formatWeekdayTime, RideStatusBlock, rideStatusFooterClass } from './ride-status-block';
 
 /**
  * "Störung gemeldet seit …" — the one sentence this site says about a ride that
- * is down right now.
+ * is down right now, and the block that carries it.
  *
  * It repeats in the present what the park's own feed is saying, which is what
  * makes it the only downtime figure that needs no methodology page, no event
@@ -69,22 +72,48 @@ import { outageElapsedMinutes } from '@/lib/utils/outage';
  * opening hours, and the sentence drops the attribution: „Steht seit … still."
  * We noticed it; nobody told us.
  *
+ * ## One block, in the outage colour, whichever signal placed it
+ *
+ * The sentence, the elapsed clause and the „wie lange noch" estimate
+ * (`OutageEstimateNote`) sit in one tinted box with a solid icon chip, on the
+ * ride card and in the ride page's live panel alike. As three loose grey lines
+ * they read as small print under the badges, and on a card they wrapped at the
+ * 92 px the corner circles reserve.
+ *
+ * Both signals get the same block: the DOWN badge's orange and its warning
+ * triangle. A `closed_gap` sits under a red CLOSED badge, and it was drawn in
+ * that red with a pause glyph at first; it looked like a different component
+ * next to the orange ones and was turned down in review. The difference between
+ * the two signals is a claim about who noticed, and the sentence carries it
+ * („gemeldet" or not). The chip is the DOWN badge's own fill
+ * (`--badge-status-down`), solid, with a white glyph like the badge's white
+ * label. The text stays on the surface's own text colours: `--status-down` as
+ * small text is 2.65 : 1 on a light surface, see `OutageEstimateNote`.
+ *
  * ## data-nosnippet
  *
- * On a `<span>`, which is one of the three elements Google honours it on. A
- * result answering "Taron Wartezeit" with "Störung gemeldet seit Sonntag" is a
- * result nobody clicks, and the sentence is true for as long as it is on the
- * page and false the moment the ride restarts. Same reasoning as the
+ * On the block's `<div>`, which is one of the three elements Google honours it
+ * on. A result answering "Taron Wartezeit" with "Störung gemeldet seit Sonntag"
+ * is a result nobody clicks, and the sentence is true for as long as it is on
+ * the page and false the moment the ride restarts. Same reasoning as the
  * no-wait-times notice.
  */
 export function OutageNote({
   outage,
   timezone,
+  variant = 'compact',
   className,
 }: {
-  outage: AttractionOutage | undefined;
+  /** `null` is what the five-minute poll sends for a ride that is not down. */
+  outage: AttractionOutage | null | undefined;
   /** The park's IANA timezone. A start is stated in the park's own clock. */
   timezone: string | undefined;
+  /**
+   * `compact` for a park page's ride card: card text colours, 11 to 12 px, and
+   * the estimate in its compact form. `full` for the ride page's live panel,
+   * which has the room for the probability and its meter.
+   */
+  variant?: 'compact' | 'full';
   className?: string;
 }) {
   const t = useTranslations('parks.outage');
@@ -93,7 +122,8 @@ export function OutageNote({
   if (!outage) return null;
 
   const started = new Date(outage.startedAt);
-  if (Number.isNaN(started.getTime())) return null;
+  // An unreadable start is a start we do not know, which is a sentence of its own.
+  const startKnown = outage.startObserved && !Number.isNaN(started.getTime());
 
   // The two signals get different sentences, and the difference is not
   // cosmetic. A `down` was reported by the park's own feed; a `closed_gap` is
@@ -110,46 +140,35 @@ export function OutageNote({
   // feed. That is the one claim this whole two-signal discipline exists to
   // prevent for anything nobody actually reported.
   const inferred = outage.signal !== 'down';
-  const label = outage.startObserved
+  const label = startKnown
     ? t(inferred ? 'sinceClosed' : 'since', {
-        when: formatStart(started, timezone, locale),
+        when: formatWeekdayTime(started, timezone, locale),
       })
     : t(inferred ? 'startUnknownClosed' : 'startUnknown');
 
   const elapsed = outageElapsedMinutes(outage);
 
   return (
-    <span className={className} data-nosnippet>
-      {label}
-      {elapsed !== null && (
-        <>
-          {' · '}
-          {t('elapsed', { duration: formatSpanDuration(elapsed, locale) })}
-        </>
-      )}
-    </span>
+    <RideStatusBlock
+      icon={TriangleAlert}
+      tone="outage"
+      title={label}
+      detail={
+        elapsed !== null ? t('elapsed', { duration: formatSpanDuration(elapsed, locale) }) : null
+      }
+      variant={variant}
+      className={className}
+    >
+      {/* Under a hairline in the block's own tint, so the estimate reads as the second half of
+          the same answer rather than as a note about something else. `OutageEstimateNote`
+          renders nothing where the curve cannot answer, and the rule goes with it. */}
+      <OutageEstimateNote
+        estimate={outage.estimate}
+        signal={outage.signal}
+        timezone={timezone}
+        variant={variant}
+        className={rideStatusFooterClass('outage', variant)}
+      />
+    </RideStatusBlock>
   );
-}
-
-/**
- * Weekday and clock time in the park's zone, in the reader's language.
- *
- * Falls back to the browser's zone rather than throwing: an unknown timezone
- * costs the sentence its precision, not the card its render.
- */
-function formatStart(started: Date, timezone: string | undefined, locale: string): string {
-  try {
-    return new Intl.DateTimeFormat(locale, {
-      weekday: 'long',
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: timezone,
-    }).format(started);
-  } catch {
-    return new Intl.DateTimeFormat(locale, {
-      weekday: 'long',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(started);
-  }
 }

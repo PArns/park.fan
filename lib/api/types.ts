@@ -601,6 +601,30 @@ export interface WorksPeriod {
  * `estimate.elapsedMinutes`, which the API measured on the park's operating
  * clock; `outageElapsedMinutes` in `lib/utils/outage.ts` is the only reader.
  */
+/**
+ * A ride that has not run yet today, and when it last did.
+ *
+ * Its own field beside `outage` and never a third signal: an outage claims that
+ * something stopped the ride, and this claims nothing about why. A water ride on
+ * a cold day, a maintenance day, a ride that opens later than its park and a
+ * fault from yesterday evening all read the same from the feed. So the page
+ * says only what is true of every one of them — „Heute noch nicht in Betrieb",
+ * last on Sunday at 18:00 — in a neutral block, never in the outage colour.
+ *
+ * Present only while the ride reads CLOSED, its park has been open for a
+ * quarter of an hour, and it has had no OPERATING reading since the park last
+ * closed; absent for a ride out of season, in a works period, beside an
+ * outage, and when the last run is more than seven days back. The API's
+ * `docs/frontend/not-run-today.md` has the edges.
+ */
+export interface NotRunToday {
+  /**
+   * ISO 8601 UTC, the end of the last run clipped to that day's close. Always
+   * within seven days, so a weekday names it unambiguously.
+   */
+  lastRunAt: string;
+}
+
 export interface AttractionOutage {
   /** ISO 8601 UTC. */
   startedAt: string;
@@ -827,6 +851,13 @@ export interface ParkAttraction {
    * there and nothing when it is not; never a "no outages" state.
    */
   outage?: AttractionOutage;
+  /**
+   * The ride reads CLOSED in an open park and has not run since the park last
+   * closed, with when it last did. `null` is what the five-minute poll sends
+   * for every other ride — see `LiveAttractionSnapshot.outage` for why the key
+   * travels as `null` rather than `undefined`. See {@link NotRunToday}.
+   */
+  notRunToday?: NotRunToday | null;
   /**
    * The curated rebuild window, or absent when nothing is curated — which is
    * nearly every ride in the catalogue.
@@ -1229,6 +1260,8 @@ export interface AttractionResponse {
    * cannot survive a day.
    */
   outage?: AttractionOutage;
+  /** Same field as on the park's ride list, overlaid by `useLiveAttractionData`. */
+  notRunToday?: NotRunToday | null;
   /**
    * When the ride stopped operating for good (ISO 8601), or absent while it runs.
    *
