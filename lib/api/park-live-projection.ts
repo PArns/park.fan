@@ -70,10 +70,14 @@ export interface LiveAttractionSnapshot {
    * the projection omits keeps whatever the server render had. For a ride that
    * has since recovered that means the line "Störung gemeldet seit 14:20 Uhr"
    * would stand under an OPERATING badge until the page is rebuilt, and a tab
-   * left open all day would never heal. Sending the key with `undefined` is what
-   * clears it.
+   * left open all day would never heal. Sending the key with `null` is what
+   * clears it — not `undefined`, which this said until 2026-10-05: the snapshot
+   * crosses JSON on its way to the browser and JSON drops an undefined key, so
+   * Crazy Bats read „Steht seit Sonntag, 16:10 still" under a GEÖFFNET badge.
    */
-  outage?: ParkAttraction['outage'];
+  outage?: ParkAttraction['outage'] | null;
+  /** Volatile the same way `outage` is, and on the wire as `null` for the same reason. */
+  notRunToday?: ParkAttraction['notRunToday'];
   queues?: ParkAttraction['queues'];
   statistics?: ParkAttraction['statistics'];
   bestVisitTimes?: ParkAttraction['bestVisitTimes'];
@@ -170,9 +174,14 @@ export function leanParkForLivePoll(
       // previous poll's baseline under a ride that is no longer rated.
       baseline: a.baseline ?? null,
       trend: a.trend,
-      // Always the key, never a conditional spread: an omitted key leaves the
-      // server render's outage in place forever. See LiveAttractionSnapshot.
-      outage: a.outage,
+      // Always the key, never a conditional spread, and `null` rather than
+      // `undefined` so it survives JSON: an omitted key leaves the server render's
+      // outage in place forever. See LiveAttractionSnapshot.
+      outage: a.outage ?? null,
+      // The same rule, and the same bug it was written down after: a ride that
+      // has run since the page was rendered must lose its „noch nicht" line on
+      // the next poll, and JSON drops an undefined key.
+      notRunToday: a.notRunToday ?? null,
       queues: a.queues,
       statistics: a.statistics,
       bestVisitTimes: a.bestVisitTimes,

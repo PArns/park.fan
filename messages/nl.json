@@ -813,8 +813,23 @@
         "recovery": "Ongeveer {percent}% was binnen een uur verholpen.",
         "recoveryOnly": "Van storingen die al zo lang duurden, draaide ongeveer {percent}% binnen een uur weer."
       },
+      "estimateClosed": {
+        "range": "Stilstanden zoals deze duurden meestal nog {from} tot {to}.",
+        "rangeOpen": "Stilstanden zoals deze duurden meestal nog meer dan {from}.",
+        "clockRange": "Stilstanden zoals deze waren meestal tussen {from} en {to} voorbij.",
+        "clockRangeOpen": "Stilstanden zoals deze waren meestal niet voor {from} voorbij.",
+        "recovery": "Ongeveer {percent}% was binnen een uur voorbij.",
+        "recoveryOnly": "Van stilstanden die al zo lang duurden, was ongeveer {percent}% binnen een uur voorbij."
+      },
       "sinceClosed": "Staat stil sinds {when}",
       "startUnknownClosed": "Staat stil, begin onbekend"
+    },
+    "notRunToday": {
+      "title": "Vandaag nog niet in bedrijf",
+      "lastRun": "Laatst in bedrijf: {when}"
+    },
+    "rideStatus": {
+      "weekdayTime": "{weekday} {time} uur"
     },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",

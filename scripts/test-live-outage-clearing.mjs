@@ -5,7 +5,13 @@
 // server-rendered ride. So a projection that omits the key when there is no outage leaves the
 // server render's copy in place forever — the line "Störung gemeldet seit Sonntag, 14:20 Uhr"
 // would stand under an OPERATING badge until the page is rebuilt, and a tab left open all day
-// would never heal. Sending the key with `undefined` is what clears it.
+// would never heal. Sending the key with `null` is what clears it.
+//
+// `null` and not `undefined`, because the snapshot reaches the browser as JSON
+// (`NextResponse.json` in `app/api/parks/[...path]/route.ts`) and JSON drops an undefined key.
+// These tests used to merge the projection object directly, where an undefined key does survive,
+// so they passed while Crazy Bats read „Steht seit Sonntag, 16:10 still" under a GEÖFFNET badge in
+// production (2026-10-05). `merged` now takes the same trip through JSON the poll does.
 //
 // This is the same trap `isCurrentlyInSeason` documents one field above it in the projection, and
 // it bites harder here: a stale season flag hides a ride, a stale outage accuses an operator of a
@@ -46,16 +52,15 @@ const SEED = {
   ],
 };
 
-/** A later poll in which Taron is running again. */
+/**
+ * A later poll in which Taron is running again. The API sends no `outage` key at all for a ride
+ * that is not down, so neither does this.
+ */
+const { outage: _taronOutage, ...TARON_UP } = SEED.attractions[0];
 const RECOVERED = {
   ...SEED,
   attractions: [
-    {
-      ...SEED.attractions[0],
-      status: 'OPERATING',
-      effectiveStatus: 'OPERATING',
-      outage: undefined,
-    },
+    { ...TARON_UP, status: 'OPERATING', effectiveStatus: 'OPERATING' },
     SEED.attractions[1],
   ],
 };
@@ -74,20 +79,45 @@ const BROKE = {
   ],
 };
 
-const merged = (base, poll) => mergeLiveParkSnapshot(base, leanParkForLivePoll(poll));
+/** The poll as the browser receives it: projected on the server, then through JSON. */
+const wire = (poll) => JSON.parse(JSON.stringify(leanParkForLivePoll(poll)));
+const merged = (base, poll) => mergeLiveParkSnapshot(base, wire(poll));
 const ride = (park, id) => park.attractions.find((a) => a.id === id);
 
+/** A ride that has not run yet today, as the server rendered it, and later running. */
+const NOT_RUN = { lastRunAt: '2026-09-05T16:00:00.000Z' };
+const IDLE_SEED = {
+  ...SEED,
+  attractions: [
+    SEED.attractions[0],
+    { ...SEED.attractions[1], status: 'CLOSED', effectiveStatus: 'CLOSED', notRunToday: NOT_RUN },
+  ],
+};
+const IDLE_OPENED = { ...SEED, attractions: [SEED.attractions[0], SEED.attractions[1]] };
+
 const testCases = [
+  {
+    name: 'a ride that has not run yet today keeps its line while it stays shut',
+    actual: () => ride(merged(IDLE_SEED, IDLE_SEED), 'a2').notRunToday?.lastRunAt ?? null,
+    expected: NOT_RUN.lastRunAt,
+  },
+  {
+    name: 'and loses it on the first poll after it opens, through JSON',
+    // The field travels on the same rule as `outage`, and fails the same way if it is sent as
+    // undefined: the line „Heute noch nicht in Betrieb" would stand under a GEÖFFNET badge.
+    actual: () => ride(merged(IDLE_SEED, IDLE_OPENED), 'a2').notRunToday ?? null,
+    expected: null,
+  },
   {
     name: 'the projection carries the outage of a ride that is down',
     actual: () => leanParkForLivePoll(SEED).attractions[0].outage?.startedAt ?? null,
     expected: OUTAGE.startedAt,
   },
   {
-    name: 'the projection sends the key even for a ride with no outage',
-    // `in`, not a truthiness check: the key has to be PRESENT and undefined for
-    // the spread in mergeLiveParkSnapshot to overwrite a stale value.
-    actual: () => 'outage' in leanParkForLivePoll(SEED).attractions[1],
+    name: 'the key survives JSON for a ride with no outage',
+    // `in`, not a truthiness check: the key has to be PRESENT on the wire for the
+    // spread in mergeLiveParkSnapshot to overwrite a stale value.
+    actual: () => 'outage' in wire(SEED).attractions[1],
     expected: true,
   },
   {

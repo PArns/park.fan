@@ -2,6 +2,7 @@
 title: 'Wann 70 Minuten Wartezeit viel sind'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
@@ -86,6 +87,21 @@ trotzdem noch. Die Widgets gibt es, weil in vier älteren Artikeln die Zahlen
 mal von Hand getippt in Markdown-Tabellen standen, über sechs Sprachen
 verteilt, und nach ein paar Wochen still auseinanderliefen, wie die Uhren in
 einer Ferienwohnung.
+
+## Dieselben 70 Minuten am Samstag und am Dienstag
+
+Für Taron stehen „typisch“ und „voll“ auf der Seite der Bahn für jeden Wochentag einzeln, und die
+Wochenenden heben sich deutlich ab. Samstag und Sonntag haben die höheren Werte, der Dienstag hat den niedrigsten. Dieselben 70 Minuten sind deshalb an einem Samstag ein gewöhnlicher
+Tag an dieser Bahn. An einem Dienstag liegen sie deutlich über dem, was dort normal ist.
+
+Die Monate verschieben die Zahl noch einmal. Über den ganzen Park gerechnet, nicht nur für Taron, sind Juli und August die vollen Monate, und der Dezember lag an den wenigen Tagen, die wir dort gemessen haben, ähnlich hoch. Der September ist der ruhigste Monat, den wir gemessen haben. Für den Oktober gibt es bisher nur ein paar Tage, weil unsere Reihe erst im Dezember 2025 begonnen hat und der Oktober 2026 gerade erst angefangen hat.
+
+```stats-widget slug=phantasialand show=months
+
+```
+
+Am Eingang steht nichts davon, nur die eine Zahl. Auf der Seite der Bahn stehen beide Werte für
+heute, und darunter die Woche Tag für Tag, sodass du die 70 Minuten selbst einordnen kannst.
 
 ## Der Tag hat eine Form
 
@@ -177,6 +193,22 @@ Betriebsmonate, die wir aus den eigenen Messungen ablesen, nennen wir
 überhaupt erst nach 330 Beobachtungstagen, und so lange steht bei ihr kein
 Monat. Ein „läuft von Dezember bis April“ würde bis dahin nur den Zeitraum
 beschreiben, in dem wir zufällig schon gemessen haben.
+
+## Was du mit 70 Minuten anfangen kannst
+
+Liegt die Zahl am Eingang auf oder unter dem typischen Wert für diesen Wochentag, stelle ich mich an. Liegt sie deutlich darüber, lohnt der Blick auf die Stundenkurve weiter oben.
+Steht dort für den späten Nachmittag oder den Abend ein niedrigerer Wert, fährst du erst etwas
+anderes und kommst wieder. An Taron steht auf der Seite der Bahn neben der Empfehlung für die
+Öffnung auch eine für das Ende des Tages, weil die Warteschlange dort kurz vor Schluss nach unseren
+Messungen wieder deutlich kürzer wird.
+
+Wer die Zeit lieber kauft, zahlt an Taron für eine Fahrt mit dem Quick Pass 12 €, so steht es auf
+der Infoseite des Phantasialands (Stand 5. Oktober 2026). Den Pass gibt es nur vor Ort am
+Gästeservice am Kaiserplatz, und die Menge ist begrenzt. Bei einer Zahl, die für den Wochentag
+ohnehin normal ist, rechnet sich das selten. Wie wir das sehen und wann sich der Quick Pass
+Ultimate lohnt, steht im [Phantasialand-Guide](/blog/phantasialand-tipps).
+
+Für einen ganzen Tag gibt es den [Tagesplaner](/blog/tagesplaner). Dort wählst du deine Bahnen aus und bekommst eine Reihenfolge nach den vorhergesagten Wartezeiten des Tages. Ob alle vor Parkschluss drankommen, siehst du dann schon vor der Abfahrt und nicht erst um fünf am Nachmittag vor der letzten Warteschlange.
 
 ## Wo das alles steht
 

@@ -229,6 +229,73 @@ const NUMBER_SPEAKS = {
   it: /(?<!\p{L})(?:il|questo|quel|i|questi|quei|la|questa|quella|le|queste|quelle|ogni)\s+(?:\p{L}+\s+)?(?:numero|numeri|cifra|cifre)\s+(?:mostra(?:no)?|dicono|dice|racconta(?:no)?|parla(?:no)?|rivela(?:no)?|dimostra(?:no)?)(?!\p{L})/giu,
 };
 /**
+ * `mit der Quelle, aus der es stammt`, `wie die Quelle sie nennt`, `nennt die Quelle keinen
+ * Hersteller`, `es nennt` (§3.3, rule 12): a source with no name, standing in for the park, the
+ * manufacturer or the press release that said it. A reader cannot look up `die Quelle`, and the
+ * post links every page anyway, so the sentence can say whose page it is. Patrick put it on the
+ * list on 2026-10-05, after the 2027 novelties post carried all three in six languages (`the way
+ * the source gives them`, `zoals de bron ze geeft`, `tels que la source les donne`, `tal como los
+ * da la fuente`, `come li dà la fonte`). Posts only: in the admin a `Quelle` is the upstream feed,
+ * and there the word is the right one. A named source stays (`Six Flags nennt sie die höchste`,
+ * `RCDB noemt een dive loop`), and so does a source as the object (`Six Flags nennt keine Quelle`,
+ * `es gibt keine Quelle dafür`); `nennt es` is `calls it` and stays, `es nennt` has nobody behind
+ * it. `selon la source` and `según la fuente` are left out: in the posts they mean "depending on
+ * the source" and go on to name both (`varie selon la source, 80 secondes dans le communiqué …`).
+ * English `it names` is left out too, because there `it` is the park of the sentence before.
+ */
+const ANONYMOUS_SOURCE = {
+  de: /(?<!\p{L})(?:(?:die|eine|keine|jede)\s+quellen?\s+(?:\p{L}+\s+){0,2}?(?:nennt|nennen|nannte|nannten|gibt|geben|gab|gaben|sagt|sagen|sagte|sagten|schreibt|schreiben|schrieb|meldet|melden|meldete|spricht|sprechen|sprach|zeigt|zeigen|verrät|verraten|liefert|liefern)|(?:sagt|sagte|schreibt|schrieb|meldet|meldete|verrät|verriet)\s+die\s+quelle|(?:nennt|nannte)\s+die\s+quelle\s+(?:kein\p{L}*|nur|auch|nichts)|quellen?,?\s+(?:aus der|von der|woher)\s+(?:\p{L}+\s+){0,2}?(?:stammt|stammen|kommt|kommen)|laut\s+(?:der\s+)?quelle|der\s+quelle\s+zufolge|es\s+nennt)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:(?:the|a|no|each|every) sources? (?:\p{L}+['’]?\p{L}* ){0,2}?(?:names?|named|gives?|gave|says?|said|states?|stated|lists?|listed|mentions?|mentioned|reports?|reported|tells?|told)|(?:the )?sources? (?:it|they|that|this|these) (?:came|come|comes) from|according to the sources?)(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:(?:de|een|geen|elke|iedere) bron(?:nen)? (?:\p{L}+ ){0,2}?(?:noemt|noemen|noemde|noemden|geeft|geven|gaf|gaven|zegt|zeggen|zei|zeiden|vermeldt|vermelden|vermeldde|meldt|melden|meldde)|(?:zegt|zei|vermeldt|meldt|meldde) de bron|(?:noemt|noemde) de bron (?:geen|niet|niets|alleen|ook)|bron(?:nen)? waar (?:\p{L}+ ){0,2}?vandaan (?:komt|komen|kwam|kwamen)|bron waaruit|volgens de bron|(?:staat|stond|staan|stonden) (?:er )?in de bron|in de bron (?:staat|stond|staan|stonden)|uit de bron (?:\p{L}+ ){0,2}?(?:te )?halen)(?!\p{L})/giu,
+  fr: /(?<!\p{L})(?:(?:la|les|une|aucune|chaque) sources? (?:\p{L}+ ){0,2}?(?:nomme|nomment|donne|donnent|dit|disent|indique|indiquent|cite|citent|mentionne|mentionnent|précise|précisent|annonce|annoncent)|(?:le |l['’])(?:dit|indique|précise|donne) la source|sources? d['’]où (?:\p{L}+ ){0,2}?(?:vient|viennent|provient|proviennent))(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:(?:la|las|una|ninguna|cada) fuentes? (?:\p{L}+ ){0,2}?(?:nombra|nombran|da|dan|dice|dicen|indica|indican|cita|citan|menciona|mencionan|precisa|precisan|señala|señalan|recoge|recogen)|(?:lo|la|los|las) (?:da|dice|indica|nombra|menciona|recoge|precisa) la fuente|como (?:dice|indica|señala) la fuente|fuentes? de (?:la )?(?:que|donde) (?:\p{L}+ ){0,2}?(?:procede|proceden|viene|vienen|sale|salen|proviene|provienen))(?!\p{L})/giu,
+  it: /(?<!\p{L})(?:(?:la|le|una|nessuna|ogni) font[ei] (?:\p{L}+ ){0,2}?(?:nomina|nominano|dà|danno|dice|dicono|indica|indicano|cita|citano|riporta|riportano|menziona|menzionano|precisa|precisano)|(?:lo|la|li|le) (?:dà|danno|dice|indica|nomina|riporta|menziona|precisa) la fonte|come (?:dice|indica|riporta) la fonte|font[ei] da cui (?:\p{L}+ ){0,2}?(?:viene|vengono|proviene|provengono|arriva|arrivano)|secondo la fonte)(?!\p{L})/giu,
+};
+/**
+ * `Alle Seiten habe ich am 5. Oktober 2026 aufgerufen` (§3.3, rule 12, the same day): the access
+ * date of a bibliography (`abgerufen am`) moved into running text, and with it the author's
+ * research routine. A post is dated by its `updatedAt` and by `Stand 5. Oktober 2026` where a
+ * fact needs one; which day somebody clicked through the links is not a fact about a park. It
+ * shipped in the 2027 novelties post with its five twins (`I opened every page on`, `heb ik op …
+ * bekeken`, `J’ai consulté toutes ces pages le`, `Consulté todas las páginas el`, `le ho aperte
+ * il`), next to a website that `ließ sich am 5. Oktober nicht aufrufen`. Matched per sentence: a
+ * page, a date and the person opening it (or the page that would not open) in one sentence. A
+ * park that calls for a vote on its website (`zur Abstimmung aufgerufen`) has no `habe ich`, and
+ * a ride that opened on 23 May has no first person, so neither is a hit.
+ */
+const ACCESS_DATE = {
+  de: {
+    page: /(?<!\p{L})(?:\p{L}*seiten?|websites?|homepage|quellen|links|pressemitteilungen)(?!\p{L})/iu,
+    date: /(?<!\p{L})\d{1,2}[._]\s*(?:januar|jänner|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember|\d{1,2}[._])/iu,
+    act: /(?<!\p{L})(?:(?:habe|hatte|hab) ich [^.!?]{0,80}?(?:aufgerufen|abgerufen|eingesehen|nachgesehen|nachgeschlagen)|ich (?:habe|hatte) [^.!?]{0,80}?(?:aufgerufen|abgerufen|eingesehen|nachgesehen|nachgeschlagen)|(?:ließ|lässt) sich [^!?]{0,40}?(?:aufrufen|abrufen|öffnen)|(?:war|ist|waren|sind) [^!?]{0,40}?nicht (?:aufzurufen|abzurufen|erreichbar)|(?:aufgerufen|abgerufen|eingesehen) am)(?!\p{L})/iu,
+  },
+  en: {
+    page: /(?<!\p{L})(?:pages?|sites?|websites?|sources|links|press releases?)(?!\p{L})/iu,
+    date: /(?<!\p{L})(?:\d{1,2}(?:st|nd|rd|th)? (?:january|february|march|april|may|june|july|august|september|october|november|december)|(?:january|february|march|april|may|june|july|august|september|october|november|december) \d{1,2}(?!\d))(?!\p{L})/iu,
+    act: /(?<!\p{L})(?:I (?:\p{L}+ )?(?:opened|accessed|retrieved|checked|consulted|looked at|read)|I (?:couldn['’]t|could not|can['’]t|cannot|wasn['’]t able to) (?:open|load|access|reach)|(?:couldn['’]t|could not|wouldn['’]t|didn['’]t) (?:be )?(?:open|opened|load|loaded|accessed|reached)|(?:accessed|retrieved|last checked|last accessed|last visited) on)(?!\p{L})/iu,
+  },
+  nl: {
+    page: /(?<!\p{L})(?:\p{L}*pagina['’]?s?|sites?|websites?|bronnen|links|persberichten)(?!\p{L})/iu,
+    date: /(?<!\p{L})\d{1,2} (?:januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)(?!\p{L})/iu,
+    act: /(?<!\p{L})(?:(?:heb|had) ik [^.!?]{0,80}?(?:bekeken|geraadpleegd|opgevraagd|gecontroleerd)|ik (?:heb|had) [^.!?]{0,80}?(?:bekeken|geraadpleegd|opgevraagd|gecontroleerd)|(?:was|is|waren|zijn) [^!?]{0,40}?niet (?:bereikbaar|te openen)|kon ik [^!?]{0,40}?niet (?:openen|bereiken)|(?:geraadpleegd|bekeken) op)(?!\p{L})/iu,
+  },
+  fr: {
+    page: /(?<!\p{L})(?:pages?|sites?|sources|liens|communiqués)(?!\p{L})/iu,
+    date: /(?<!\p{L})(?:1er|\d{1,2}) (?:janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)(?!\p{L})/iu,
+    act: /(?<!\p{L})(?:j['’]ai (?:\p{L}+ ){0,2}?(?:consulté|ouvert|vérifié)|(?:était|est|étaient|sont) (?:\p{L}+ )?(?:inaccessibles?|hors ligne)|n['’](?:était|étaient|est) pas (?:accessible|joignable)s?|ne s['’](?:ouvrait|ouvre) pas|consulté(?:e|s|es)? le)(?!\p{L})/iu,
+  },
+  es: {
+    page: /(?<!\p{L})(?:páginas?|webs?|sitios?|fuentes|enlaces|notas de prensa)(?!\p{L})/iu,
+    date: /(?<!\p{L})\d{1,2} de (?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)(?!\p{L})/iu,
+    act: /(?<!\p{L})(?:consulté|abrí|revisé|miré|he (?:consultado|abierto|revisado|mirado)|no se (?:podía|pudo|puede) abrir|no (?:abría|cargaba|cargó)|(?:estaba|está) (?:caída|inaccesible|fuera de línea)|consultad[oa]s? el)(?!\p{L})/iu,
+  },
+  it: {
+    page: /(?<!\p{L})(?:pagin[ae]|siti|sito|fonti|link|comunicati)(?!\p{L})/iu,
+    date: /(?<!\p{L})(?:1[º°]|\d{1,2}) (?:gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)(?!\p{L})/iu,
+    act: /(?<!\p{L})(?:(?:l['’]|le |li |la |lo )?ho (?:\p{L}+ ){0,2}?(?:apert[oaie]|consultat[oaie]|controllat[oaie])|non si (?:apriva|apre|caricava|è apert[oa])|(?:era|è) (?:irraggiungibile|offline|inaccessibile)|non era raggiungibile|consultat[oaie] il)(?!\p{L})/iu,
+  },
+};
+/**
  * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
  * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
  * Every language on every surface, because a translation keeps the habit of its source.
@@ -830,6 +897,37 @@ function hardRules(file, text, locale) {
   if (locale === 'nl' && /„/.test(text)) warn(file, `German „ in Dutch text (§6), Dutch takes “…”`);
 }
 
+/**
+ * §3.3 rule 12, for posts and news only: a source nobody can look up, and the day the author
+ * opened the pages. Both narrate the research instead of reporting what it found. A `> [!QUOTE]`
+ * block is someone else's words and its source line is the citation, where `abgerufen am 1.
+ * Oktober 2026` belongs (docs/rules/a-quote-names-its-source.md), so the blocks are left out.
+ */
+function researchNarration(file, raw, locale) {
+  const text = raw.replace(/(?:^>.*(?:\n|$))+/gm, (block) =>
+    /^>\s*\[!QUOTE\]/.test(block) ? '' : block
+  );
+  const anonymous =
+    ANONYMOUS_SOURCE[locale] && text.replace(/\s+/g, ' ').match(ANONYMOUS_SOURCE[locale]);
+  if (anonymous)
+    fail(
+      file,
+      `"die Quelle" with no name (§3.3), say whose page it is: ${[...new Set(anonymous)].slice(0, 3).join(' · ')}`
+    );
+  const rule = ACCESS_DATE[locale];
+  const visits = rule
+    ? splitSentences(text).filter((s) => rule.page.test(s) && rule.date.test(s) && rule.act.test(s))
+    : [];
+  if (visits.length)
+    fail(
+      file,
+      `the day the pages were opened (§3.3), the post's own date covers it: ${visits
+        .slice(0, 2)
+        .map((s) => `"${s.trim().replace(/(\d)_/g, '$1.').slice(0, 90)}"`)
+        .join(' · ')}`
+    );
+}
+
 function scan(file, raw, { subject, skip = [] } = {}) {
   // A phrase wrapped across two lines (`datos\n    reales` in YAML, a hard-wrapped paragraph)
   // is the same phrase: every list below is written with plain spaces.
@@ -881,6 +979,7 @@ for (const locale of runs('blog') ? LOCALES : []) {
       ...[...raw.matchAll(/!\[([^\]]+)\]\(/g)].map((m) => m[1]),
     ].join('\n');
     scan(`${file} (frontmatter and image text)`, frontAndImages, { skip: [SIGN_RULE] });
+    researchNarration(file, `${body}\n\n${frontAndImages}`, locale);
 
     if (/^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '')) {
       const title = plainTextFields(raw).find(([f]) => f === 'title')?.[1] ?? '';

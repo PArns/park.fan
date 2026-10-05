@@ -813,8 +813,23 @@
         "recovery": "Environ {percent} % étaient résolues en une heure.",
         "recoveryOnly": "Parmi les pannes durant déjà aussi longtemps, environ {percent} % étaient de nouveau signalées en service en une heure."
       },
+      "estimateClosed": {
+        "range": "Les arrêts de ce type duraient encore {from} à {to} en général.",
+        "rangeOpen": "Les arrêts de ce type duraient encore plus de {from} en général.",
+        "clockRange": "Les arrêts de ce type prenaient en général fin entre {from} et {to}.",
+        "clockRangeOpen": "Les arrêts de ce type ne prenaient en général pas fin avant {from}.",
+        "recovery": "Environ {percent} % avaient pris fin en une heure.",
+        "recoveryOnly": "Parmi les arrêts durant déjà aussi longtemps, environ {percent} % avaient pris fin en une heure."
+      },
       "sinceClosed": "À l'arrêt depuis {when}",
       "startUnknownClosed": "À l'arrêt, début inconnu"
+    },
+    "notRunToday": {
+      "title": "Pas encore en service aujourd'hui",
+      "lastRun": "En service pour la dernière fois : {when}"
+    },
+    "rideStatus": {
+      "weekdayTime": "{weekday} à {time}"
     },
     "noLiveWaitTimes": {
       "title": "Pas de temps d’attente disponibles",
