@@ -21,9 +21,9 @@ import {
  * "Wie lange dauert das noch?" — the one thing a visitor standing at a stopped
  * ride actually wants to know.
  *
- * Renders in both places a `DOWN` ride appears, from the same numbers: compact
- * under the badge on a park page's ride card, and in full in the ride page's
- * live panel.
+ * Renders in both places a `DOWN` ride appears, from the same numbers and
+ * always as the lower half of `OutageNote`'s block: compact on a park page's
+ * ride card, and in full in the ride page's live panel.
  *
  * ## Why this may be said when a forecast may not
  *
@@ -109,9 +109,16 @@ import {
  * runs green→red with the value, so a ride with a 77 % chance of being back
  * within the hour would be painted in the alarm colour of a full park.
  *
- * Both bars are `bg-primary` on a `bg-muted/40` track — the pair
- * `AttractionTypicalWaits` already uses, measured at 3.36 : 1 in light and
- * 5.24 : 1 in dark. The ride's own orange is not available for this: a solid
+ * Both bars are `bg-primary` on a white track, `bg-white/70` in light and
+ * `bg-white/10` in dark. They render inside `OutageNote`'s tinted block, and the
+ * `bg-muted/40` track `AttractionTypicalWaits` uses vanished there: sampled off
+ * the rendered card, it sat at 1.00 : 1 against the block in dark and 1.03 : 1 in
+ * light, so the meter was a blue stub with no visible end. A darker track is not
+ * the way out in light, where the fill only reaches 3.02 : 1 against the block
+ * itself. A lighter one is: measured on 2026-10-05 (Genting SkyWorlds card,
+ * Disneyland Park ride page), fill against track is 3.31 and 3.35 : 1 in light,
+ * 3.39 and 3.93 : 1 in dark, and the track stands off the block at 1.08 to
+ * 1.35 : 1. The ride's own orange is not available for the fill: a solid
  * `--status-down` on `--muted` computes to **2.65 : 1** in light, and its
  * ceiling against pure white is 2.89 : 1, so no lighter track brings it to the
  * 3 : 1 a graphical object owes.
@@ -261,7 +268,7 @@ function formatClock(
  * The quartile window on the fixed „jetzt … 4 Std." scale.
  *
  * The two ends of the scale are labelled on the same line as the track rather
- * than on one of their own: this block renders inside a ride card's badge row,
+ * than on one of their own: on a ride card this renders in `OutageNote`'s block,
  * where a second text line costs every card in the grid row the same height.
  * Three hairlines mark the hours in between, so the reader has four intervals
  * and two labels rather than five labels.
@@ -295,7 +302,7 @@ function RemainingBar({
   return (
     <span className="flex items-center gap-1.5 text-[10px] leading-none" aria-hidden="true">
       <span className="shrink-0">{nowLabel}</span>
-      <span className="bg-muted/40 relative h-1.5 min-w-0 flex-1 overflow-hidden rounded-full">
+      <span className="relative h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-white/70 dark:bg-white/10">
         {OUTAGE_BAR_TICKS_MIN.map((minutes) => (
           <span
             key={minutes}
@@ -328,7 +335,7 @@ function RemainingBar({
 function RecoveryMeter({ percent }: { percent: number }) {
   return (
     <span
-      className="bg-muted/40 block h-1.5 w-full overflow-hidden rounded-full"
+      className="block h-1.5 w-full overflow-hidden rounded-full bg-white/70 dark:bg-white/10"
       aria-hidden="true"
     >
       <span className="bg-primary block h-full rounded-full" style={{ width: `${percent}%` }} />

@@ -1,13 +1,17 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
+import { CirclePause, TriangleAlert } from 'lucide-react';
 import type { AttractionOutage } from '@/lib/api/types';
+import { cn } from '@/lib/utils';
 import { formatSpanDuration } from '@/lib/utils/duration';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { outageElapsedMinutes } from '@/lib/utils/outage';
+import { OutageEstimateNote } from './outage-estimate-note';
 
 /**
  * "Störung gemeldet seit …" — the one sentence this site says about a ride that
- * is down right now.
+ * is down right now, and the block that carries it.
  *
  * It repeats in the present what the park's own feed is saying, which is what
  * makes it the only downtime figure that needs no methodology page, no event
@@ -69,22 +73,45 @@ import { outageElapsedMinutes } from '@/lib/utils/outage';
  * opening hours, and the sentence drops the attribution: „Steht seit … still."
  * We noticed it; nobody told us.
  *
+ * ## One block, tinted in the status badge's colour
+ *
+ * The sentence, the elapsed clause and the „wie lange noch" estimate
+ * (`OutageEstimateNote`) sit in one tinted box with a solid icon chip, on the
+ * ride card and in the ride page's live panel alike. As three loose grey lines
+ * they read as small print under the badges, and on a card they wrapped at the
+ * 92 px the corner circles reserve.
+ *
+ * The tint follows the signal, which is also what the badge above it shows: a
+ * reported `down` is the ride's DOWN badge, orange; an inferred `closed_gap`
+ * only exists for a ride whose status is CLOSED, so it takes the closed red. The
+ * chip is the badges' own fill (`--badge-status-*`), solid, with a white glyph
+ * like the badges' white label. The text
+ * stays on the surface's own text colours: `--status-down` as small text is
+ * 2.65 : 1 on a light surface, see `OutageEstimateNote`.
+ *
  * ## data-nosnippet
  *
- * On a `<span>`, which is one of the three elements Google honours it on. A
- * result answering "Taron Wartezeit" with "Störung gemeldet seit Sonntag" is a
- * result nobody clicks, and the sentence is true for as long as it is on the
- * page and false the moment the ride restarts. Same reasoning as the
+ * On the block's `<div>`, which is one of the three elements Google honours it
+ * on. A result answering "Taron Wartezeit" with "Störung gemeldet seit Sonntag"
+ * is a result nobody clicks, and the sentence is true for as long as it is on
+ * the page and false the moment the ride restarts. Same reasoning as the
  * no-wait-times notice.
  */
 export function OutageNote({
   outage,
   timezone,
+  variant = 'compact',
   className,
 }: {
   outage: AttractionOutage | undefined;
   /** The park's IANA timezone. A start is stated in the park's own clock. */
   timezone: string | undefined;
+  /**
+   * `compact` for a park page's ride card: card text colours, 11 to 12 px, and
+   * the estimate in its compact form. `full` for the ride page's live panel,
+   * which has the room for the probability and its meter.
+   */
+  variant?: 'compact' | 'full';
   className?: string;
 }) {
   const t = useTranslations('parks.outage');
@@ -93,7 +120,8 @@ export function OutageNote({
   if (!outage) return null;
 
   const started = new Date(outage.startedAt);
-  if (Number.isNaN(started.getTime())) return null;
+  // An unreadable start is a start we do not know, which is a sentence of its own.
+  const startKnown = outage.startObserved && !Number.isNaN(started.getTime());
 
   // The two signals get different sentences, and the difference is not
   // cosmetic. A `down` was reported by the park's own feed; a `closed_gap` is
@@ -110,24 +138,78 @@ export function OutageNote({
   // feed. That is the one claim this whole two-signal discipline exists to
   // prevent for anything nobody actually reported.
   const inferred = outage.signal !== 'down';
-  const label = outage.startObserved
+  const label = startKnown
     ? t(inferred ? 'sinceClosed' : 'since', {
         when: formatStart(started, timezone, locale),
       })
     : t(inferred ? 'startUnknownClosed' : 'startUnknown');
 
   const elapsed = outageElapsedMinutes(outage);
+  const full = variant === 'full';
+  const Icon = inferred ? CirclePause : TriangleAlert;
 
   return (
-    <span className={className} data-nosnippet>
-      {label}
-      {elapsed !== null && (
-        <>
-          {' · '}
-          {t('elapsed', { duration: formatSpanDuration(elapsed, locale) })}
-        </>
+    <div
+      className={cn(
+        'rounded-xl border',
+        inferred
+          ? 'border-status-closed/25 bg-status-closed/10'
+          : 'border-status-down/25 bg-status-down/10',
+        full ? 'p-3' : 'px-2.5 py-2',
+        className
       )}
-    </span>
+      data-nosnippet
+    >
+      <div className={cn('flex items-center', full ? 'gap-3' : 'gap-2.5')}>
+        <span
+          className={cn(
+            'grid shrink-0 place-items-center rounded-full text-white shadow-sm',
+            inferred ? 'bg-badge-status-closed' : 'bg-badge-status-down',
+            full ? 'size-8' : 'size-6'
+          )}
+          aria-hidden="true"
+        >
+          <Icon className={full ? 'size-4' : 'size-3.5'} />
+        </span>
+        <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+          <span
+            className={cn(
+              'font-semibold tabular-nums',
+              full ? 'text-foreground text-sm leading-snug' : 'text-[12px] leading-tight'
+            )}
+            style={full ? undefined : { color: 'var(--pk-text-1)' }}
+          >
+            {label}
+          </span>
+          {elapsed !== null && (
+            <span
+              className={cn(
+                'tabular-nums',
+                full ? 'text-muted-foreground text-xs' : 'text-[11px] leading-tight'
+              )}
+              style={full ? undefined : { color: 'var(--pk-text-2)' }}
+            >
+              {t('elapsed', { duration: formatSpanDuration(elapsed, locale) })}
+            </span>
+          )}
+        </div>
+      </div>
+      {/* Under a hairline in the block's own tint, so the estimate reads as the second half of
+          the same answer rather than as a note about something else. `OutageEstimateNote`
+          renders nothing where the curve cannot answer, and the rule goes with it. */}
+      <OutageEstimateNote
+        estimate={outage.estimate}
+        timezone={timezone}
+        variant={variant}
+        className={cn(
+          'border-t tabular-nums',
+          inferred ? 'border-status-closed/20' : 'border-status-down/20',
+          full
+            ? 'text-muted-foreground mt-3 gap-1.5 pt-3 text-xs'
+            : 'mt-2 pt-2 text-[11px] leading-tight text-(--pk-text-2)'
+        )}
+      />
+    </div>
   );
 }
 
@@ -138,18 +220,14 @@ export function OutageNote({
  * costs the sentence its precision, not the card its render.
  */
 function formatStart(started: Date, timezone: string | undefined, locale: string): string {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+  };
   try {
-    return new Intl.DateTimeFormat(locale, {
-      weekday: 'long',
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: timezone,
-    }).format(started);
+    return getDateTimeFormat(locale, { ...options, timeZone: timezone }).format(started);
   } catch {
-    return new Intl.DateTimeFormat(locale, {
-      weekday: 'long',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(started);
+    return getDateTimeFormat(locale, options).format(started);
   }
 }

@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { OutageNote } from '@/components/parks/outage-note';
-import { OutageEstimateNote } from '@/components/parks/outage-estimate-note';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { formatPeakDate } from '@/components/parks/attraction-typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -259,21 +258,15 @@ export function RideNowPanel({
               )}
               {/* Inside the box the panel already reserves for the number, where
                   a ride with no wait shows its status label. A DOWN ride is
-                  exactly that case, so the sentence costs no height. */}
+                  exactly that case. The `full` block carries both estimate
+                  figures: the ride page has the room for the probability and
+                  its meter, and this is the page a visitor opens when they are
+                  standing in front of the ride wondering whether to wait. */}
               <OutageNote
                 outage={attraction.outage}
                 timezone={timezone}
-                className="text-muted-foreground text-xs"
-              />
-              {/* Both figures here: the ride page has the room for the
-                  probability and its meter, and this is the page a visitor
-                  opens when they are standing in front of the ride wondering
-                  whether to wait. */}
-              <OutageEstimateNote
-                estimate={attraction.outage?.estimate}
-                timezone={timezone}
                 variant="full"
-                className="text-muted-foreground text-xs"
+                className="my-1.5"
               />
               {mainQueue?.lastUpdated && (
                 <span className="text-muted-foreground text-xs">

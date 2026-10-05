@@ -35,7 +35,6 @@ import { TransportSystemBadge } from './transport-system-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
 import { OutageNote } from './outage-note';
-import { OutageEstimateNote } from './outage-estimate-note';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -598,28 +597,35 @@ export function AttractionCard({
                   />
                 ))}
           </div>
-          {/* Own lines under the badges, never beside one: a sentence whose
-              position depends on how many badges happen to be present is a
-              sentence whose card height nobody can predict. They sat in the
+          {/* A block of its own under the badges, never beside one: a sentence
+              whose position depends on how many badges happen to be present is
+              a sentence whose card height nobody can predict. It sat in the
               badge wrap as `w-full` items until PAR-431; a phone row's badge
-              line does not wrap, so they moved out. `mt-[6px]` and `gap-[6px]`
-              are the wrap's own row gap, and `empty:hidden` drops the margin
-              for the rides without an outage, which is nearly all of them. */}
-          <div className="relative mt-[6px] flex flex-col gap-[6px] empty:hidden">
+              line does not wrap, so it moved out. `mt-[9px]` is the gap above
+              the badges, and `empty:hidden` drops it for the rides without an
+              outage, which is nearly all of them.
+
+              The block runs past the right padding, which is there for the
+              corner circles and nothing below them: the circles end 46 px
+              down, the block starts under the title and the badges. 16 px is
+              left on the right as on the left. A phone row's padding is 12 px
+              below `sm` already, so there it stays inside.
+
+              "How much longer" sits inside it in the compact form: the range
+              and its bar, because the probability sentence would wrap on a
+              phone and every card in the row shares its height through the
+              subgrid. Same numbers as the ride page, fewer words. */}
+          <div
+            className={cn(
+              'relative mt-[9px] empty:hidden',
+              parkName ? 'mr-[-76px]' : 'mr-[-36px]',
+              phoneRow && 'max-sm:mt-2 max-sm:mr-0'
+            )}
+          >
             <OutageNote
               outage={'outage' in attraction ? attraction.outage : undefined}
               timezone={effectiveTimezone}
-              className="text-muted-foreground w-full text-[11px] leading-tight"
-            />
-            {/* "how much longer" on the card too, in the compact form: the
-                range and its bar, because the probability sentence would wrap
-                on a phone and every card in the row shares its height through
-                the subgrid. Same numbers as the ride page, fewer words. */}
-            <OutageEstimateNote
-              estimate={'outage' in attraction ? attraction.outage?.estimate : undefined}
-              timezone={effectiveTimezone}
               variant="compact"
-              className="text-muted-foreground w-full text-[11px] leading-tight"
             />
           </div>
         </div>
