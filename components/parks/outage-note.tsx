@@ -105,7 +105,8 @@ export function OutageNote({
   variant = 'compact',
   className,
 }: {
-  outage: AttractionOutage | undefined;
+  /** `null` is what the five-minute poll sends for a ride that is not down. */
+  outage: AttractionOutage | null | undefined;
   /** The park's IANA timezone. A start is stated in the park's own clock. */
   timezone: string | undefined;
   /**
@@ -168,10 +169,23 @@ export function OutageNote({
         >
           <TriangleAlert className={full ? 'size-4' : 'size-3.5'} />
         </span>
-        <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+        {/* Each line is cut to its cap height and baseline (`text-box`), so `items-center`
+            centres the letters on the chip rather than the line boxes. Geist reserves more room
+            under the baseline than over the caps, and a lone line sat visibly high in the
+            block: 24 px of block above the caps and 28 px below the baseline, measured off a
+            reader's screenshot. The gaps only open up where the trim applies; a browser without
+            `text-box` keeps the line boxes and the old gaps. */}
+        <div
+          className={cn(
+            'flex min-w-0 flex-1 flex-col gap-0.5',
+            full
+              ? 'supports-[text-box:trim-both_cap_alphabetic]:gap-2.5'
+              : 'supports-[text-box:trim-both_cap_alphabetic]:gap-2'
+          )}
+        >
           <span
             className={cn(
-              'font-semibold tabular-nums',
+              'font-semibold tabular-nums [text-box:trim-both_cap_alphabetic]',
               full ? 'text-foreground text-sm leading-snug' : 'text-[12px] leading-tight'
             )}
             style={full ? undefined : { color: 'var(--pk-text-1)' }}
@@ -181,7 +195,7 @@ export function OutageNote({
           {elapsed !== null && (
             <span
               className={cn(
-                'tabular-nums',
+                'tabular-nums [text-box:trim-both_cap_alphabetic]',
                 full ? 'text-muted-foreground text-xs' : 'text-[11px] leading-tight'
               )}
               style={full ? undefined : { color: 'var(--pk-text-2)' }}
@@ -201,8 +215,8 @@ export function OutageNote({
         className={cn(
           'border-status-down/20 border-t tabular-nums',
           full
-            ? 'text-muted-foreground mt-3 gap-1.5 pt-3 text-xs'
-            : 'mt-2 pt-2 text-[11px] leading-tight text-(--pk-text-2)'
+            ? 'text-muted-foreground mt-3 gap-1.5 pt-3 text-xs supports-[text-box:trim-both_cap_alphabetic]:gap-2.5'
+            : 'mt-2 pt-2 text-[11px] leading-tight text-(--pk-text-2) supports-[text-box:trim-both_cap_alphabetic]:mt-2.5 supports-[text-box:trim-both_cap_alphabetic]:gap-2 supports-[text-box:trim-both_cap_alphabetic]:pt-2.5'
         )}
       />
     </div>

@@ -210,7 +210,9 @@ export function OutageEstimateNote({
 
   return (
     <div className={cn('flex w-full flex-col gap-1', className)} data-nosnippet>
-      {range ? <span>{range}</span> : null}
+      {/* Cut to cap height and baseline like `OutageNote`'s own lines, so the block's last
+          line sits as far from its lower edge as the first one does from the top. */}
+      {range ? <span className="[text-box:trim-both_cap_alphabetic]">{range}</span> : null}
       {bar ? (
         <RemainingBar
           bar={bar}
@@ -220,7 +222,9 @@ export function OutageEstimateNote({
       ) : null}
       {recovery ? (
         <>
-          <span>{t(recovery.key, { percent: recovery.percent })}</span>
+          <span className="[text-box:trim-both_cap_alphabetic]">
+            {t(recovery.key, { percent: recovery.percent })}
+          </span>
           <RecoveryMeter percent={recovery.percent} />
         </>
       ) : null}
