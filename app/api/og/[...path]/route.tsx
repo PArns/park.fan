@@ -154,6 +154,7 @@ export async function GET(
     const genericPages: Record<string, { namespace: string; key: string } | { literal: string }> = {
       changelog: { literal: 'Changelog' },
       search: { namespace: 'common', key: 'search' },
+      compare: { namespace: 'compare', key: 'title' },
       datenschutz: { namespace: 'datenschutz', key: 'title' },
       privacy: { namespace: 'datenschutz', key: 'title' },
       impressum: { namespace: 'impressum', key: 'title' },

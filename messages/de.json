@@ -2794,5 +2794,28 @@
     "blog": {
       "kicker": "park.fan · Blog"
     }
+  },
+  "compare": {
+    "kicker": "park.fan · Parkvergleich",
+    "title": "Zwei Parks nebeneinander",
+    "subtitle": "Typische Wartezeit, längste Warteschlange und ruhigster Wochentag aus den letzten zwei Jahren. Du wählst zwei bis vier Parks, die Auswahl steht im Link.",
+    "action": "Parks wählen",
+    "meta": {
+      "title": "Parks vergleichen: Wartezeiten nebeneinander",
+      "description": "Wähle zwei bis vier Freizeitparks und sieh typische Wartezeit, längste Warteschlange und ruhigsten Wochentag in einer Tabelle."
+    },
+    "tool": {
+      "pickerTitle": "Parks wählen",
+      "count": "{count} von {max}",
+      "remove": "{park} entfernen",
+      "placeholder": "Park suchen …",
+      "searching": "Suche …",
+      "noResults": "Kein Park gefunden.",
+      "chosen": "gewählt",
+      "full": "Mehr als {max} Parks passen nicht in die Tabelle. Entferne einen, um einen anderen zu wählen.",
+      "empty": "Wähle zwei bis vier Parks, dann erscheint die Tabelle.",
+      "second": "Wähle einen zweiten Park für den Vergleich.",
+      "noStats": "{count, plural, one {Für {parks} liegt noch keine Messung vor.} other {Für {parks} liegen noch keine Messungen vor.}}"
+    }
   }
 }

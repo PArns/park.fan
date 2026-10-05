@@ -2794,5 +2794,28 @@
     "blog": {
       "kicker": "park.fan · Blog"
     }
+  },
+  "compare": {
+    "kicker": "park.fan · Confronto tra parchi",
+    "title": "Due parchi uno accanto all’altro",
+    "subtitle": "Attesa tipica, coda più lunga e giorno della settimana più tranquillo degli ultimi due anni. Scegli da due a quattro parchi; la scelta resta nel link.",
+    "action": "Scegli i parchi",
+    "meta": {
+      "title": "Confrontare i parchi: le attese a confronto",
+      "description": "Scegli da due a quattro parchi divertimento e leggi attesa tipica, coda più lunga e giorno più tranquillo in un’unica tabella."
+    },
+    "tool": {
+      "pickerTitle": "Scegli i parchi",
+      "count": "{count} su {max}",
+      "remove": "Rimuovi {park}",
+      "placeholder": "Cerca un parco …",
+      "searching": "Ricerca …",
+      "noResults": "Nessun parco trovato.",
+      "chosen": "scelto",
+      "full": "Più di {max} parchi non entrano nella tabella. Rimuovine uno per sceglierne un altro.",
+      "empty": "Scegli da due a quattro parchi e compare la tabella.",
+      "second": "Scegli un secondo parco da confrontare.",
+      "noStats": "{count, plural, one {Per {parks} non c’è ancora una misurazione.} other {Per {parks} non ci sono ancora misurazioni.}}"
+    }
   }
 }

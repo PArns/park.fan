@@ -2794,5 +2794,28 @@
     "blog": {
       "kicker": "park.fan · Blog"
     }
+  },
+  "compare": {
+    "kicker": "park.fan · Parkvergelijking",
+    "title": "Twee parken naast elkaar",
+    "subtitle": "Gebruikelijke wachttijd, langste rij en rustigste weekdag over de afgelopen twee jaar. Kies twee tot vier parken; de keuze staat in de link.",
+    "action": "Parken kiezen",
+    "meta": {
+      "title": "Parken vergelijken: wachttijden naast elkaar",
+      "description": "Kies twee tot vier pretparken en zie gebruikelijke wachttijd, langste rij en rustigste weekdag in één tabel."
+    },
+    "tool": {
+      "pickerTitle": "Parken kiezen",
+      "count": "{count} van {max}",
+      "remove": "{park} verwijderen",
+      "placeholder": "Park zoeken …",
+      "searching": "Zoeken …",
+      "noResults": "Geen park gevonden.",
+      "chosen": "gekozen",
+      "full": "Meer dan {max} parken passen niet in de tabel. Verwijder er een om een ander te kiezen.",
+      "empty": "Kies twee tot vier parken, dan verschijnt de tabel.",
+      "second": "Kies een tweede park om te vergelijken.",
+      "noStats": "{count, plural, one {Voor {parks} is er nog geen meting.} other {Voor {parks} zijn er nog geen metingen.}}"
+    }
   }
 }
