@@ -676,6 +676,11 @@ interface FixedBlock {
    * which keeps exactly the width it always had.
    */
   place: LegPlace | null;
+  /**
+   * A ticked-off or running ride, which has no place here. Kept at the width it
+   * always had: giving rides with a place is a non-goal of PAR-696.
+   */
+  ride: boolean;
 }
 
 /**
@@ -692,6 +697,7 @@ function fixedPads(
   block: FixedBlock,
   bound: 'floor' | 'ceiling'
 ): { before: number; after: number } {
+  if (block.ride) return { before: 0, after: 0 };
   const key = bound === 'floor' ? 'floorMinutes' : 'ceilingMinutes';
   return {
     before: transferBetween(ride, block.place, null, { toBlock: true })[key],
@@ -1544,6 +1550,7 @@ function buildContext(input: OptimizeInput): Context | null {
       from: entry.startMinute,
       to: entry.startMinute + Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE),
       place: entry.showSlug ? entryPlace(day, entry) : null,
+      ride: !isBlockEntry(entry),
     }))
     .sort((a, b) => a.from - b.from);
 
