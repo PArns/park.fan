@@ -30,7 +30,7 @@ import {
   type LanePlacement,
 } from '@/lib/planner/day-grid';
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '@/lib/planner/leg-chip';
-import { entryPlace, legBetween, earliestGoodStart } from '@/lib/planner/leg';
+import { entryPlace, isBlockEntry, legBetween, earliestGoodStart } from '@/lib/planner/leg';
 import { formatGridTime, parkMinuteNow, todayInZone } from '@/lib/planner/park-time';
 import {
   getMinuteTick,
@@ -343,8 +343,18 @@ export function PlannerDayGrid({
         fromEntry: from.entry,
         toEntry: to.entry,
         leg: legBetween(
-          { startMinute: from.entry.startMinute, wait: from.wait, ride: from.place },
-          { startMinute: to.entry.startMinute, wait: to.wait, ride: to.place },
+          {
+            startMinute: from.entry.startMinute,
+            wait: from.wait,
+            ride: from.place,
+            block: isBlockEntry(from.entry),
+          },
+          {
+            startMinute: to.entry.startMinute,
+            wait: to.wait,
+            ride: to.place,
+            block: isBlockEntry(to.entry),
+          },
           from.estimate.uncertaintyMinutes,
           day?.tier === 'observed'
         ),

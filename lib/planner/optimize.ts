@@ -2,7 +2,7 @@ import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { type DayGrid, RIDE_DURATION_MIN, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
 import { estimateFor, plannedMinutes } from './estimate';
-import { entryPlace, transferBetween, type LegPlace } from './leg';
+import { entryPlace, isBlockEntry, transferBetween, type LegPlace } from './leg';
 import { partyFlags } from './party';
 import type { DayClock } from './park-time';
 import type { PlannerDayPrefs, PlannerEntry } from './types';
@@ -676,12 +676,18 @@ interface FixedBlock {
    * which keeps exactly the width it always had.
    */
   place: LegPlace | null;
+  /**
+   * A ticked-off or running ride, which has no place here. Kept at the width it
+   * always had: giving rides with a place is a non-goal of PAR-696.
+   */
+  ride: boolean;
 }
 
 /**
  * How far a ride's own minutes have to stay from a fixed block on each side.
  *
- * Both are zero for a block with no place. The ceiling is what the search
+ * A block with no place has no walk, but a ride filed before it still pays
+ * for leaving the ride (PAR-696). The ceiling is what the search
  * builds against and the floor what {@link isExecutable} judges against, the
  * same split `leg.ts` draws between a plan and a verdict, so a day the search
  * files is never one the grid calls broken.
@@ -691,11 +697,11 @@ function fixedPads(
   block: FixedBlock,
   bound: 'floor' | 'ceiling'
 ): { before: number; after: number } {
-  if (!block.place) return { before: 0, after: 0 };
+  if (block.ride) return { before: 0, after: 0 };
   const key = bound === 'floor' ? 'floorMinutes' : 'ceilingMinutes';
   return {
-    before: transferBetween(ride, block.place)[key],
-    after: transferBetween(block.place, ride)[key],
+    before: transferBetween(ride, block.place, null, { toBlock: true })[key],
+    after: transferBetween(block.place, ride, null, { fromBlock: true })[key],
   };
 }
 
@@ -1544,6 +1550,7 @@ function buildContext(input: OptimizeInput): Context | null {
       from: entry.startMinute,
       to: entry.startMinute + Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE),
       place: entry.showSlug ? entryPlace(day, entry) : null,
+      ride: !isBlockEntry(entry),
     }))
     .sort((a, b) => a.from - b.from);
 
@@ -1979,7 +1986,10 @@ export function clashCount(
     const from = ahead[index - 1];
     const to = ahead[index];
     if (!from.custom && estimateFor(day, from).wait === null) continue;
-    const walk = transferBetween(rideOf(from), rideOf(to)).floorMinutes;
+    const walk = transferBetween(rideOf(from), rideOf(to), null, {
+      fromBlock: isBlockEntry(from),
+      toBlock: isBlockEntry(to),
+    }).floorMinutes;
     if (to.startMinute < from.startMinute + plannedMinutes(day, from) + walk) clashes++;
   }
   return clashes;

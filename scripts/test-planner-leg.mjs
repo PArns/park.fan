@@ -162,6 +162,88 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
   );
 }
 
+// ── After a show or a free block there is no ride to leave (PAR-696) ─────────
+{
+  const afterShow = legBetween(
+    { startMinute: 540, wait: 30, ride: taron, block: true },
+    to(570),
+    10
+  );
+  const afterRide = legBetween(from(540, 30), to(570), 10);
+  test(
+    'a show leaves no exit and no ride behind',
+    afterShow.floorMinutes,
+    afterRide.floorMinutes - EXIT_MIN - RIDE_DURATION_MIN
+  );
+  test(
+    '…in the ceiling too',
+    afterShow.ceilingMinutes,
+    afterRide.ceilingMinutes - EXIT_MIN - RIDE_DURATION_MIN
+  );
+  const show = { startMinute: 540, wait: 30, ride: taron, block: true };
+  test(
+    '…and only the walk is certain: one minute short is broken',
+    legBetween(show, to(570 + afterShow.floorMinutes - 1), 10).verdict,
+    'broken'
+  );
+  test(
+    '…and the floor itself is not',
+    legBetween(show, to(570 + afterShow.floorMinutes), 10).verdict === 'broken',
+    false
+  );
+
+  const placeless = legBetween(
+    { startMinute: 540, wait: 30, ride: null, block: true },
+    to(570),
+    10
+  );
+  test('a show with no position has a floor of 0', placeless.floorMinutes, 0);
+  test('…and a ceiling of 0', placeless.ceilingMinutes, 0);
+  test('…so a ride straight after it is not broken', placeless.verdict === 'broken', false);
+
+  const intoPlaceless = legBetween(
+    from(540, 30),
+    { startMinute: 570, wait: 30, ride: null, block: true },
+    10
+  );
+  test(
+    'a ride in front of a block with no position still spends exit and ride',
+    intoPlaceless.floorMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN
+  );
+  test(
+    '…and has no walk to add to it in the ceiling',
+    intoPlaceless.ceilingMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN
+  );
+  const rideToRide = legBetween(
+    { startMinute: 540, wait: 30, ride: bare('Berlin'), block: false },
+    { startMinute: 600, wait: 30, ride: bare('Berlin'), block: false },
+    10
+  );
+  test(
+    'ride to ride with block: false keeps its floor',
+    rideToRide.floorMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN
+  );
+  test(
+    '…and its ceiling',
+    rideToRide.ceilingMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN + SAME_LAND_CEIL_MIN
+  );
+
+  const intoLocated = legBetween(
+    from(540, 30),
+    { startMinute: 600, wait: 30, ride: mamba, block: true },
+    10
+  );
+  test(
+    'a ride before a located show still spends exit and ride',
+    intoLocated.floorMinutes >= EXIT_MIN + RIDE_DURATION_MIN,
+    true
+  );
+}
+
 // ── A curated ride duration sharpens both bounds ─────────────────────────────
 {
   const withDuration = legBetween(
