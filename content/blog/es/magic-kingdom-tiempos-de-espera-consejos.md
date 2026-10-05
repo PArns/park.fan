@@ -77,12 +77,12 @@ forman solo en un puñado de atracciones.
 
 El parque abrió el **1 de octubre de 1971** como la primera parte de Walt Disney
 World, el mismo día que los hoteles Contemporary y Polynesian, con 23 atracciones
-y seis tierras temáticas. Lo gestiona Disney Experiences, la división de parques
-de la compañía, y el 1 de octubre de 2026 el resort cumplió 55 años. Veinte de
-esas atracciones eran copias de otras de Disneyland, en California, y cinco de
-las tierras también existían en Anaheim: Main Street, Adventureland,
-Frontierland, Fantasyland y Tomorrowland. La sexta, Liberty Square, solo existe en Florida, y
-en ella está la Haunted Mansion.
+y seis tierras temáticas. Veinte de esas atracciones eran copias de otras de
+Disneyland, en California, y cinco de las tierras también existían en Anaheim:
+Main Street, Adventureland, Frontierland, Fantasyland y Tomorrowland. La sexta,
+Liberty Square, solo existe en Florida, y en ella está la Haunted Mansion.
+Magic Kingdom lo gestiona Disney Experiences, la división de parques de la
+compañía, y el 1 de octubre de 2026 el resort cumplió 55 años.
 
 Desde entonces solo se ha añadido una tierra más. Abrió en 1988 como Mickey's
 Birthdayland, acabó llamándose Mickey's Toontown Fair y cerró el 11 de febrero
@@ -130,12 +130,11 @@ de Space Mountain.
 
 ## Las cinco montañas rusas
 
-Magic Kingdom tiene cinco montañas rusas, y ninguna va especialmente deprisa. La
-más rápida, TRON, llega a 95 km/h, y las demás se quedan por debajo de 60. A
-cambio, un niño puede subir a la primera con 89 centímetros, y con 97 ya entra en
-tres de las cinco. Las alturas mínimas que siguen son las que figuran en las
-páginas de cada atracción en la web de Disney, y los datos técnicos vienen de la
-Roller Coaster DataBase.
+Magic Kingdom tiene cinco montañas rusas. La más rápida, TRON, llega a 95 km/h,
+y las demás se quedan por debajo de 60. A cambio, un niño puede subir a la más
+pequeña con 89 centímetros, y con 97 ya entra en tres de las cinco. Las alturas
+mínimas que siguen son las que figuran en las páginas de cada atracción en la
+web de Disney, y los datos técnicos vienen de la Roller Coaster DataBase.
 
 **[TRON Lightcycle / Run](ref:magic-kingdom-park/tron-lightcycle-run)**, en
 Tomorrowland, es la más nueva y la más grande. La construyó Vekoma, el recorrido
@@ -173,10 +172,10 @@ Circus, es la pequeña para empezar, una montaña rusa infantil de Vekoma de 199
 con 242 metros de recorrido, nueve metros de altura y 40 km/h. Puedes subir a
 partir de 89 centímetros.
 
-## La atracción de agua, las dark rides y los clásicos de 1971
+## La atracción de troncos, las dark rides y los clásicos de 1971
 
 [Tiana's Bayou Adventure](ref:magic-kingdom-park/tianas-bayou-adventure) es la
-única atracción de agua del parque. Los troncos recorren los pantanos de
+única atracción de troncos del parque. Las barcas recorren los pantanos de
 Luisiana hasta una fiesta sacada de la película _Tiana y el sapo_, y al final,
 según Disney, hay una caída de 50 pies, algo más de 15 metros. En otra página
 Disney habla de 55 pies, y Wikipedia da 16 metros. La altura mínima es de 102
@@ -198,19 +197,19 @@ arriba la Haunted Mansion suele ir de las primeras entre los clásicos.
 
 ## Desfiles, fuegos artificiales y espectáculos
 
-Por la noche, el día en Magic Kingdom termina con **Happily Ever After**, unos
+Por la noche, el día en Magic Kingdom termina con Happily Ever After, unos
 fuegos artificiales de 18 minutos con láseres y proyecciones sobre el castillo y
-las fachadas de Main Street. Antes o después pasa el desfile nocturno **Disney
-Starlight: Dream the Night Away**, que se estrenó el 20 de julio de 2025. De día,
-el **Disney Festival of Fantasy Parade** recorre el parque durante doce minutos,
+las fachadas de Main Street. Antes o después pasa el desfile nocturno Disney
+Starlight: Dream the Night Away, que se estrenó el 20 de julio de 2025. De día,
+el Disney Festival of Fantasy Parade recorre el parque durante doce minutos,
 y además están la Disney Adventure Friends Cavalcade, más corta, y Mickey's
 Magical Friendship Faire, delante del castillo.
 
-Los horarios cambian cada día y están en la app de Disney. También afectan a las
-colas, porque mientras pasan los desfiles y los fuegos artificiales mucha gente
-se queda junto al recorrido en vez de ir a las atracciones. Las noches de fiesta
-de Halloween o de Navidad se suspenden los fuegos artificiales normales, y en su
-lugar hay un espectáculo propio solo para quienes tienen entrada de la fiesta.
+Los horarios cambian cada día y están en la app de Disney. Durante los desfiles y
+los fuegos artificiales mucha gente espera junto al recorrido en vez de hacer
+cola. Las noches de fiesta de Halloween o de Navidad se suspenden los fuegos
+artificiales normales, y en su lugar hay un espectáculo propio solo para quienes
+tienen entrada de la fiesta.
 
 ## A primera hora o por la noche
 
@@ -244,14 +243,13 @@ la cola se acorta según se acerca el cierre.
 Si te alojas en un hotel Disney, puedes entrar al parque todos los días 30
 minutos antes que el resto, y según Disney será así hasta finales de 2027. En esa
 media hora funcionan en Magic Kingdom, entre otras, Seven Dwarfs Mine Train,
-Space Mountain, Peter Pan's Flight y The Barnstormer, pero no TRON, Tiana's, Big
-Thunder ni la Jungle Cruise. Para quien duerme en el hotel, la media hora es para
-el Mine Train, y a TRON vas en cuanto abre oficialmente.
+Space Mountain, Peter Pan's Flight y The Barnstormer. TRON, Tiana's, Big Thunder
+y la Jungle Cruise, en cambio, no funcionan.
 
-Los huéspedes de los hoteles Deluxe y de algunos otros tienen además, ciertas
-noches, Extended Evening Hours, hasta dos horas después del cierre. Esas noches
-funcionan también TRON, Space Mountain, Big Thunder y el Mine Train. Las fechas
-están en el calendario de Disney.
+Ciertas noches, los huéspedes de los hoteles Deluxe y de algunos otros que
+Disney enumera en su página tienen además Extended Evening Hours, hasta dos
+horas después del cierre. Esas noches funcionan también TRON, Space Mountain,
+Big Thunder y el Mine Train. Las fechas están en el calendario de Disney.
 
 ### Un día como yo lo planearía
 
@@ -264,9 +262,9 @@ directamente por TRON y dejas el Mine Train para la noche.
 El mediodía lo pasas en las dark rides de Adventureland y Liberty Square, en un
 restaurante con aire acondicionado o viendo el Festival of Fantasy Parade. Por la
 tarde, cuando las colas de las grandes atracciones son más largas, toca hacer los
-clásicos. Durante los fuegos artificiales Main Street es lo más lleno del parque,
-así que aprovecha ese rato para subir a otra de las grandes. La última hora
-antes del cierre es para el Mine Train, si por la mañana no pudo ser.
+clásicos. Durante los fuegos artificiales Main Street es donde más gente hay, así
+que en ese rato subes a otra de las grandes atracciones. La última hora antes
+del cierre es para el Mine Train, si por la mañana no pudo ser.
 
 Si apuntas tus atracciones en el [planificador](/blog/planificador), ves cuánto
 tiempo te lleva todo esto. Allí te sale un orden según los tiempos de espera
@@ -274,12 +272,12 @@ previstos para ese día.
 
 ## Con niños pequeños
 
-Para las familias con niños de menos de ocho años, el día transcurre en
-Fantasyland. Allí están Peter Pan's Flight, «it's a small world», el Mine Train,
-las tazas de Mad Tea Party y, en Storybook Circus, Dumbo the Flying Elephant,
-donde cada niño decide a qué altura vuela su elefante. Dumbo no tiene altura
-mínima. En The Barnstormer, justo al lado, se sube desde 89 centímetros, y para
-muchos niños es su primera montaña rusa.
+Para las familias con niños pequeños, el día transcurre en Fantasyland. Allí
+están Peter Pan's Flight, «it's a small world», el Mine Train, las tazas de Mad
+Tea Party y, en Storybook Circus, Dumbo the Flying Elephant, donde cada niño
+decide a qué altura vuela su elefante. Dumbo no tiene altura mínima. En The
+Barnstormer, justo al lado, se sube desde 89 centímetros, y para muchos niños es
+su primera montaña rusa.
 
 Si un niño no llega a la altura de una atracción, los padres no tienen que hacer
 la cola dos veces. Con Rider Switch sube un adulto mientras el otro espera con el
@@ -345,7 +343,14 @@ otros parques sí lo hay, y la [página de la mejor época](/mejor-epoca-para-vi
 Desde su apertura, Magic Kingdom ha cerrado temporalmente nueve veces por
 huracanes, la última en octubre de 2024 por Milton.
 
-### Halloween y Navidad
+Si tienes unas fechas concretas en mente, aquí están los días más tranquilos,
+recalculados cada día:
+
+```best-days-widget slug=magic-kingdom-park
+
+```
+
+## Halloween y Navidad
 
 Mickey's Not-So-Scary Halloween Party se celebra 38 noches entre el 7 de agosto
 y el 31 de octubre de 2026, y según Disney todas las fechas están agotadas. Esas
@@ -362,13 +367,6 @@ según la noche, y los niños de tres a nueve años pagan diez dólares menos.
 Incluye el desfile Mickey's Once Upon a Christmastime Parade y los fuegos
 artificiales Minnie's Wonderful Christmastime Fireworks Show. Esas noches el
 parque también cierra antes para todos los demás.
-
-Si tienes unas fechas concretas en mente, aquí están los días más tranquilos,
-recalculados cada día:
-
-```best-days-widget slug=magic-kingdom-park
-
-```
 
 ## Lo que ha cerrado y lo que viene
 
@@ -390,12 +388,11 @@ Bryan Cranston. Disney cuenta con reabrirlo a finales de la primavera de 2027.
 El Walt Disney World Railroad está cerrado por mantenimiento desde el 28 de
 septiembre de 2026 y debería volver a funcionar en noviembre. Desde la
 remodelación de Frontierland ya no da la vuelta al parque y solo circula entre
-Main Street y Fantasyland. En la primera versión de esta guía todavía aparecía la
-vuelta completa.
+Main Street y Fantasyland.
 
-Lo que ya se puede ver es el castillo, que en 2026 cambió de colores. Y para 2027
-Disney ha anunciado Disney After Hours, noches con entrada aparte después del
-cierre, en fechas concretas entre el 11 de enero y el 19 de julio.
+El castillo estrenó colores nuevos en 2026. Para 2027 Disney ha anunciado noches
+después del cierre del parque, Disney After Hours, con entrada propia, en fechas
+concretas entre el 11 de enero y el 19 de julio.
 
 ## Cómo llegar, horarios, entradas y comida
 
@@ -444,10 +441,9 @@ de Disney, algo que funciona en más de 60 sitios del resort.
 **Hoteles.** Los más cercanos son los tres hoteles del monorraíl: el
 Contemporary, por cuyo vestíbulo pasa el monorraíl, el Polynesian Village y el
 Grand Floridian, de 1988. El Bay Lake Tower forma parte del Contemporary. Los tres
-son hoteles Deluxe, así que tienen Early Entry y Extended Evening Hours. A orillas
-del Bay Lake abrirá en verano de 2027 Disney's Lakeshore Lodge, que se puede
-reservar desde el 8 de octubre de 2026. Sale más barato alojarse en los hoteles
-del resto del resort, que tienen conexión en autobús.
+son hoteles Deluxe, así que sus huéspedes tienen, además de Early Entry, las
+Extended Evening Hours. A orillas del Bay Lake abrirá en verano de 2027 Disney's
+Lakeshore Lodge, que se puede reservar desde el 8 de octubre de 2026.
 
 ## Preguntas frecuentes sobre Magic Kingdom
 
@@ -490,7 +486,7 @@ Los autobuses urbanos y los VTC paran en el Transportation and Ticket Center.
 
 A The Barnstormer desde 89 centímetros, a Seven Dwarfs Mine Train y Big Thunder
 Mountain desde 97, a Space Mountain desde 112 y a TRON desde 122. A la atracción
-de agua, Tiana's Bayou Adventure, desde 102. Las dark rides no tienen altura
+de troncos, Tiana's Bayou Adventure, desde 102. Las dark rides no tienen altura
 mínima.
 
 ### ¿Cuándo cierra antes Magic Kingdom?
