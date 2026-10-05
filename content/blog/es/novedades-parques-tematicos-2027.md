@@ -50,8 +50,8 @@ A 5 de octubre de 2026, parques de Europa y Estados Unidos han confirmado ellos 
 dos docenas de novedades para 2027. Entre ellas hay una montaña rusa giratoria en Nueva Jersey que,
 según Six Flags, será la más alta del mundo, y un cuento del Efteling ambientado en una biblioteca.
 La única fecha fija para una atracción nueva la ha dado Plopsaland Belgium, cuyo Flying Cinema abre
-el sábado 13 de marzo de 2027. Los demás ponen el año, algunos una estación, y en más de la mitad de
-los casos la fuente no dice quién fabrica la atracción.
+el sábado 13 de marzo de 2027. Los demás ponen el año, algunos una estación, y más de la mitad no dice
+quién fabrica la atracción.
 
 Para Alemania será un año tranquilo. Ninguno de los grandes parques ha anunciado una montaña rusa
 nueva para 2027, y la Euro-Mir del Europa-Park desaparece. Los proyectos grandes están en Francia,
@@ -64,12 +64,12 @@ La próxima gran ocasión para anuncios es la IAAPA Expo, la feria del sector qu
 Una novedad entra en la lista cuando el parque, su operador o el fabricante la menciona en su propia
 web o en una nota de prensa propia. Los rumores, las solicitudes de licencia de obra y las fotos de
 obras no cuentan, tampoco cuando los recogen los medios especializados. Lo que circula por esa vía
-aparece más abajo, en «Lo que no está en la lista», junto con la fuente de la que procede.
+aparece más abajo, en «Lo que no está en la lista».
 
-Fecha, fabricante y cifras aparecen tal como los da la fuente. «2027» quiere decir 2027, sin mes.
+Fecha, fabricante y cifras aparecen tal como los dan el parque o el fabricante. «2027» quiere decir 2027, sin mes.
 Donde dos páginas oficiales se contradicen, pongo las dos versiones. Los pies, las millas y las
 pulgadas los he pasado a metros, kilómetros por hora y centímetros, y he redondeado. Cada apartado
-enlaza su fuente, y la lista completa está al final. Consulté todas las páginas el 5 de octubre de 2026.
+enlaza su fuente, y la lista completa está al final.
 
 ## Todas las novedades de un vistazo
 
@@ -142,10 +142,10 @@ Nørd Havn abre sus puertas».
 
 ### Phantasialand, Heide Park, Movie Park y los demás
 
-Para el [Phantasialand](ref:phantasialand), el [Heide Park](ref:heide-park), el
+El [Phantasialand](ref:phantasialand), el [Heide Park](ref:heide-park), el
 [Movie Park Germany](ref:movie-park-germany), el [Legoland Deutschland](ref:legoland-deutschland) y
-el [Plopsaland Deutschland](ref:plopsaland-deutschland) no encontré el 5 de octubre ninguna novedad
-confirmada para 2027. En el Phantasialand, cualquier proyecto grande depende de la ampliación hacia
+el [Plopsaland Deutschland](ref:plopsaland-deutschland) no habían confirmado a 5 de octubre ninguna
+novedad para 2027. En el Phantasialand, cualquier proyecto grande depende de la ampliación hacia
 la zona del Ententeich, que todavía no tiene plan urbanístico y contra la que unos ecologistas
 recogen firmas desde el 28 de septiembre. Lo que el parque quiere construir allí está en
 [nuestra noticia sobre la recogida de firmas](/blog/phantasialand-ampliacion-recogida-de-firmas). El
@@ -548,8 +548,8 @@ noviembre de 2026, y Djurs Sommerland, hasta el final de la temporada 2026.
 
 ## Lo que no está en la lista
 
-Fuera de la lista se quedan los proyectos para los que no he encontrado ninguna página del parque,
-del operador o del fabricante que mencione 2027:
+Fuera de la lista se quedan los proyectos que ni el parque, ni el operador, ni el fabricante han
+anunciado ellos mismos para 2027:
 
 - En Toverland, una remodelación de Port Laguna con un dark ride para finales de 2027 sale del
   folleto de una emisión de bonos del que informaron medios especializados. El bobsleigh oscilante
@@ -559,7 +559,7 @@ del operador o del fabricante que mencione 2027:
 - En foros y medios especializados circula un Wing Coaster de B&M para Energylandia, pero en la web
   del parque no hay nada.
 - El director de Caneva World, el operador del Movieland Park del lago de Garda, mencionó en agosto
-  tres novedades en un evento del sector. La web del operador no se podía abrir el 5 de octubre.
+  tres novedades en un evento del sector.
 - De Legoland Windsor, Alton Towers y Thorpe Park hay solicitudes de licencia y documentos de
   planificación, pero ningún anuncio de los parques.
 - Una montaña rusa nueva en Cedar Point solo aparece, de momento, en una publicación suelta en X.

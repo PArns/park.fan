@@ -84,7 +84,7 @@ incluida en el Haunted Attractions Pass y tiene entrada propia.
 ## Precios
 
 Todos los precios salen de la página de extras del parque, en dólares
-estadounidenses, consultada el 28 de septiembre. A cada compra se suman hasta
+estadounidenses, a 28 de septiembre. A cada compra se suman hasta
 9,99 $ de gastos de gestión, más los impuestos.
 
 | Entrada                             | Precio     | Incluye                                          |

@@ -47,7 +47,7 @@ seo:
     - Loup-Garou Walibi Belgium ombouw
 ---
 
-Parken in Europa en de VS hebben tot 5 oktober 2026 zelf ruim twee dozijn nieuwigheden voor 2027 bevestigd. Daaronder zijn een spinning coaster in New Jersey die volgens Six Flags de hoogste ter wereld wordt, en een sprookje in de Efteling dat zich in een bibliotheek afspeelt. Alleen Plopsaland Belgium heeft al een vaste datum genoemd, het Flying Cinema opent op zaterdag 13 maart 2027. De andere parken houden het bij een jaartal, sommige met een jaargetijde erbij, en bij meer dan de helft staat in de bron geen fabrikant.
+Parken in Europa en de VS hebben tot 5 oktober 2026 zelf ruim twee dozijn nieuwigheden voor 2027 bevestigd. Daaronder zijn een spinning coaster in New Jersey die volgens Six Flags de hoogste ter wereld wordt, en een sprookje in de Efteling dat zich in een bibliotheek afspeelt. Alleen Plopsaland Belgium heeft al een vaste datum genoemd, het Flying Cinema opent op zaterdag 13 maart 2027. De andere parken houden het bij een jaartal, sommige met een jaargetijde erbij, en meer dan de helft noemt geen fabrikant.
 
 In Duitsland wordt het een rustig jaar. Geen van de grote parken heeft voor 2027 een nieuwe achtbaan aangekondigd, en in Europa-Park verdwijnt Euro-Mir. De grote projecten liggen in Frankrijk, Engeland en Denemarken, en in de VS wordt alleen al in zes parken van Six Flags gebouwd.
 
@@ -55,9 +55,9 @@ De volgende grote kans op aankondigingen is de vakbeurs IAAPA Expo, van 17 tot e
 
 ## Wat in de lijst komt
 
-Een nieuwigheid komt in de lijst als het park, de exploitant of de fabrikant haar op de eigen site of in een eigen persbericht noemt. Geruchten, bouwaanvragen en foto's van bouwplaatsen tellen niet mee, ook niet als vakmedia ze oppikken. Wat langs die weg rondgaat, staat verderop onder “Wat niet in de lijst staat”, samen met de bron waar het vandaan komt.
+Een nieuwigheid komt in de lijst als het park, de exploitant of de fabrikant haar op de eigen site of in een eigen persbericht noemt. Geruchten, bouwaanvragen en foto's van bouwplaatsen tellen niet mee, ook niet als vakmedia ze oppikken. Wat langs die weg rondgaat, staat verderop onder “Wat niet in de lijst staat”.
 
-Tijdstip, fabrikant en cijfers staan er zoals de bron ze geeft. “2027” betekent 2027, zonder maand. Waar twee officiële pagina's elkaar tegenspreken, staan ze er allebei. Voeten, mijlen en inches heb ik omgerekend naar meters, kilometers per uur en centimeters, en afgerond. Elk onderdeel linkt naar zijn bron, de volledige lijst staat onderaan. Alle pagina's heb ik op 5 oktober 2026 bekeken.
+Tijdstip, fabrikant en cijfers staan er zoals park of fabrikant ze geeft. “2027” betekent 2027, zonder maand. Waar twee officiële pagina's elkaar tegenspreken, staan ze er allebei. Voeten, mijlen en inches heb ik omgerekend naar meters, kilometers per uur en centimeters, en afgerond. Elk onderdeel linkt naar zijn bron, de volledige lijst staat onderaan.
 
 ## Alle nieuwigheden op een rij
 
@@ -108,7 +108,7 @@ In het waterpark [Rulantica](ref:rulantica) komt Nørd Havn, een gebouw met twee
 
 ### Phantasialand, Heide Park, Movie Park en de andere parken
 
-Voor [Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) en [Plopsaland Deutschland](ref:plopsaland-deutschland) heb ik op 5 oktober geen bevestigde nieuwigheid voor 2027 gevonden. Bij Phantasialand hangt alles wat groter is af van de uitbreiding naar het gebied bij de Ententeich. Daarvoor bestaat nog geen bestemmingsplan, en sinds 28 september worden er handtekeningen tegen verzameld. Wat het park daar wil bouwen, staat in [ons bericht over het burgerinitiatief](/blog/phantasialand-uitbreiding-burgerinitiatief). Movie Park staat samen met zijn moederbedrijf Parques Reunidos te koop, en een aankondiging voor 2027 is er van die kant niet.
+[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) en [Plopsaland Deutschland](ref:plopsaland-deutschland) hadden tot 5 oktober geen nieuwigheid voor 2027 bevestigd. Bij Phantasialand hangt alles wat groter is af van de uitbreiding naar het gebied bij de Ententeich. Daarvoor bestaat nog geen bestemmingsplan, en sinds 28 september worden er handtekeningen tegen verzameld. Wat het park daar wil bouwen, staat in [ons bericht over het burgerinitiatief](/blog/phantasialand-uitbreiding-burgerinitiatief). Movie Park staat samen met zijn moederbedrijf Parques Reunidos te koop, en een aankondiging voor 2027 is er van die kant niet.
 
 ## Benelux
 
@@ -130,7 +130,7 @@ Vóór de bibliotheek komt er in de Efteling nog iets anders. Op 1 december 2026
 
 ### Bobbejaanland: een nieuw themagebied
 
-[Bobbejaanland](ref:bobbejaanland) bouwt aan een nieuw themagebied voor 2027. Op de site van het park staat er tot nu toe één zin over, in een bericht voor wie met de auto komt. Door de werken aan de “nieuwe zone van 2027” zijn de laadpalen op het parkeerterrein buiten gebruik. Welke attracties erbij horen, wie ze bouwt en wat het gebied kost, heeft het park op zijn eigen pagina's nog niet gepubliceerd. Het gebied staat in de lijst omdat het park het voor 2027 noemt, meer valt er uit de bron niet te halen. Net als Movie Park hoort Bobbejaanland bij Parques Reunidos, en over de verkoop van die groep gaat [een apart artikel](/blog/parques-reunidos-te-koop-movie-park).
+[Bobbejaanland](ref:bobbejaanland) bouwt aan een nieuw themagebied voor 2027. Op de site van het park staat er tot nu toe één zin over, in een bericht voor wie met de auto komt. Door de werken aan de “nieuwe zone van 2027” zijn de laadpalen op het parkeerterrein buiten gebruik. Welke attracties erbij horen, wie ze bouwt en wat het gebied kost, heeft het park op zijn eigen pagina's nog niet gepubliceerd. Het gebied staat in de lijst omdat het park het voor 2027 noemt. Net als Movie Park hoort Bobbejaanland bij Parques Reunidos, en over de verkoop van die groep gaat [een apart artikel](/blog/parques-reunidos-te-koop-movie-park).
 
 ## Frankrijk
 
@@ -308,12 +308,12 @@ In de kalenders van de andere Europese parken staat nog 2026, en bij de Six Flag
 
 ## Wat niet in de lijst staat
 
-Niet in de lijst staan projecten waarvoor ik geen pagina van park, exploitant of fabrikant heb gevonden die 2027 noemt:
+Niet in de lijst staan projecten die park, exploitant of fabrikant niet zelf voor 2027 hebben aangekondigd:
 
 - In Toverland komt een verbouwing van Port Laguna met een darkride voor eind 2027 uit een prospectus voor een obligatielening, waarover vakmedia hebben bericht. De slingerende bobsleebaan van ETF Ride Systems heeft het park wel aangekondigd, maar zonder datum.
 - Voor Walibi Holland bestaat een nieuwe attractie in het gebied Playland tot nu toe alleen als bouwaanvraag bij de gemeente Dronten.
 - Een wing coaster van B&M voor Energylandia gaat rond op fora en in vakmedia, op de site van het park staat er niets over.
-- Drie nieuwigheden voor Movieland Park aan het Gardameer heeft de baas van exploitant Caneva World in augustus op een branche-evenement genoemd. De site van de exploitant was op 5 oktober niet bereikbaar.
+- Drie nieuwigheden voor Movieland Park aan het Gardameer heeft de baas van exploitant Caneva World in augustus op een branche-evenement genoemd.
 - Voor Legoland Windsor, Alton Towers en Thorpe Park liggen er bouwaanvragen en planningsdocumenten, maar geen aankondiging van de parken.
 - Een nieuwe achtbaan in Cedar Point staat tot nu toe alleen in één bericht op X.
 - De waterattractie in Canada's Wonderland was voor 2026 aangekondigd. In februari 2026 heeft het park haar uitgesteld, en sindsdien is er geen nieuw jaar genoemd.

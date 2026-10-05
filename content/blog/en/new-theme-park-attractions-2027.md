@@ -48,7 +48,7 @@ seo:
 As of 5 October 2026, parks in Europe and the USA had confirmed a good two dozen new attractions for
 2027 themselves, among them a spinning coaster in New Jersey that Six Flags says will be the world's tallest, and an Efteling fairytale set inside a library. So far only Plopsaland Belgium has put a firm date on a new
 attraction, and its Flying Cinema opens on Saturday, 13 March 2027. Everyone else gives the year,
-a few give a season, and for more than half of them the source doesn't say who's building the ride.
+a few give a season, and more than half don't say who's building the ride.
 
 Germany is having a quiet year. None of the big parks has announced a new coaster for 2027, and
 Europa-Park's Euro-Mir is going. The big projects are in France, England and Denmark, and in the
@@ -62,12 +62,12 @@ The next big chance for announcements is the IAAPA Expo, the industry trade show
 A new attraction goes on the list when the park, its operator or the manufacturer names it on
 their own site or in their own press release. Rumours, planning applications and photos of
 building sites don't count, even when the trade press picks them up. Whatever is doing the rounds
-that way sits further down under "What isn't on the list", with the source it came from.
+that way sits further down under "What isn't on the list".
 
-Timing, manufacturer and figures appear the way the source gives them. "2027" means 2027, with no
+Timing, manufacturer and figures appear the way the park or manufacturer gives them. "2027" means 2027, with no
 month. Where two official pages disagree, you'll find both figures here. For the American rides
 I've kept the feet, mph and inches the parks use and put rounded metric figures in brackets. Each
-section links its source, and the full list is at the end. I opened every page on 5 October 2026.
+section links its source, and the full list is at the end.
 
 ## Every new attraction at a glance
 
@@ -139,10 +139,10 @@ Havn will open its doors at the end of 2027.
 
 ### Phantasialand, Heide Park, Movie Park and the others
 
-For [Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park),
+[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park),
 [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland)
-and [Plopsaland Deutschland](ref:plopsaland-deutschland) I found no confirmed new attraction for
-2027 on 5 October. At Phantasialand anything bigger depends on the expansion into the land by the
+and [Plopsaland Deutschland](ref:plopsaland-deutschland) hadn't confirmed a new attraction for
+2027 by 5 October. At Phantasialand anything bigger depends on the expansion into the land by the
 Ententeich, the duck pond, which still has no development plan, and a petition against it has been
 collecting signatures since 28 September. What the park wants to build there is in
 [our report on the petition](/blog/phantasialand-expansion-petition). Movie Park is up for sale
@@ -198,8 +198,7 @@ suspended launch coaster. For how busy Efteling gets on which day, see the
 website has a single sentence about it, a note for drivers: the charging points in the car park
 are out of service because of work on the "nieuwe zone van 2027", the new zone of 2027. The park
 hasn't yet published on its own pages which attractions the area will have, who's building them or
-what it costs. It's on the list because the park names it for 2027, and the source
-has nothing more. Like Movie Park, Bobbejaanland belongs to Parques Reunidos, whose sale is covered
+what it costs. It's on the list because the park names it for 2027. Like Movie Park, Bobbejaanland belongs to Parques Reunidos, whose sale is covered
 in [a separate post](/blog/parques-reunidos-sale-movie-park).
 
 ## France
@@ -531,8 +530,8 @@ the end of the 2026 season.
 
 ## What isn't on the list
 
-Left out are projects for which I found no page from the park, operator or manufacturer that gives
-2027:
+Left out are projects that the park, the operator or the manufacturer hasn't announced for 2027
+itself:
 
 - At Toverland, a rebuild of Port Laguna with a dark ride for late 2027 comes from a bond
   prospectus the trade press reported on. The park has announced the swinging bobsled from ETF
@@ -542,7 +541,7 @@ Left out are projects for which I found no page from the park, operator or manuf
 - A B&M wing coaster for Energylandia is doing the rounds in forums and the trade press, but
   there's nothing about it on the park's site.
 - The head of the operator Caneva World named three new attractions for Movieland Park on Lake
-  Garda at an industry event in August. I couldn't open the operator's website on 5 October.
+  Garda at an industry event in August.
 - For Legoland Windsor, Alton Towers and Thorpe Park there are planning applications and planning
   documents, but no announcement from the parks.
 - A new coaster at Cedar Point appears so far in just one post on X.

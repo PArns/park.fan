@@ -49,8 +49,8 @@ Am 5. Oktober 2026 haben Parks in Europa und den USA gut zwei Dutzend Neuheiten 
 bestätigt, darunter eine Spinning-Achterbahn in New Jersey, die laut Six Flags die höchste der Welt
 wird, und ein Märchen im Efteling, das in einer Bibliothek spielt. Ein festes Datum für eine neue
 Attraktion hat bisher nur Plopsaland Belgium genannt, das Flying Cinema öffnet am Samstag, dem 13.
-März 2027. Alle anderen schreiben das Jahr, manche eine Jahreszeit, und bei mehr als der Hälfte
-nennt die Quelle keinen Hersteller.
+März 2027. Alle anderen schreiben das Jahr, manche eine Jahreszeit, und mehr als die Hälfte nennt keinen
+Hersteller.
 
 In Deutschland ist es ein ruhiges Jahr. Keiner der großen Parks hat für 2027 eine neue Achterbahn
 angekündigt, und die Euro-Mir im Europa-Park verschwindet. Die großen Projekte stehen in Frankreich,
@@ -63,13 +63,12 @@ Die nächste große Gelegenheit für Ankündigungen ist die Branchenmesse IAAPA 
 Aufgenommen ist eine Neuheit, wenn der Park, sein Betreiber oder der Hersteller sie auf der eigenen
 Seite oder in der eigenen Pressemitteilung nennt. Gerüchte, Bauanträge und Fotos von Baustellen
 zählen nicht, auch nicht, wenn Fachmedien sie aufgreifen. Was auf diesem Weg kursiert, steht weiter
-unten unter „Was nicht in der Liste steht“, mit der Quelle, aus der es stammt.
+unten unter „Was nicht in der Liste steht“.
 
-Zeitpunkt, Hersteller und Zahlen stehen so da, wie die Quelle sie nennt. „2027“ heißt 2027, ohne
+Zeitpunkt, Hersteller und Zahlen stehen so da, wie Park oder Hersteller sie angeben. „2027“ heißt 2027, ohne
 Monat. Wo sich zwei offizielle Seiten widersprechen, steht beides da. Fuß, Meilen und Zoll habe ich
 in Meter, Kilometer pro Stunde und Zentimeter umgerechnet und gerundet. Jeder Abschnitt verlinkt
-seine Quelle, die vollständige Liste steht am Ende. Alle Seiten habe ich am 5. Oktober 2026
-aufgerufen.
+seine Quelle, die vollständige Liste steht am Ende.
 
 ## Alle Neuheiten auf einen Blick
 
@@ -140,10 +139,10 @@ Wintergarten und auf Terrassen draußen. Eine Rutsche gehört nicht dazu. Der Pa
 
 ### Phantasialand, Heide Park, Movie Park und die anderen
 
-Für das [Phantasialand](ref:phantasialand), den [Heide Park](ref:heide-park), den [Movie Park
+Das [Phantasialand](ref:phantasialand), der [Heide Park](ref:heide-park), der [Movie Park
 Germany](ref:movie-park-germany), das [Legoland Deutschland](ref:legoland-deutschland) und das
-[Plopsaland Deutschland](ref:plopsaland-deutschland) habe ich am 5. Oktober keine bestätigte Neuheit
-für 2027 gefunden. Beim Phantasialand hängt alles Größere an der Erweiterung ins Gebiet am
+[Plopsaland Deutschland](ref:plopsaland-deutschland) haben bis zum 5. Oktober keine Neuheit für 2027
+bestätigt. Beim Phantasialand hängt alles Größere an der Erweiterung ins Gebiet am
 Ententeich, für die es noch keinen Bebauungsplan gibt und gegen die seit dem 28. September
 Naturschützer Unterschriften sammeln. Was der Park dort plant, steht in [unserer Meldung zum
 Bürgerbegehren](/blog/phantasialand-erweiterung-buergerbegehren). Der Movie Park steht mit seinem
@@ -544,8 +543,8 @@ zum Ende der Saison 2026.
 
 ## Was nicht in der Liste steht
 
-Nicht in der Liste stehen Projekte, für die ich keine Seite von Park, Betreiber oder Hersteller
-gefunden habe, die 2027 nennt:
+Nicht in der Liste stehen Projekte, die Park, Betreiber oder Hersteller nicht selbst für 2027
+angekündigt haben:
 
 - Im Toverland stammt ein Umbau von Port Laguna mit Dark Ride für Ende 2027 aus einem Prospekt für
   eine Anleihe, über den Fachmedien berichtet haben. Die schwingende Bobbahn von ETF Ride Systems
@@ -555,7 +554,7 @@ gefunden habe, die 2027 nennt:
 - Ein Wing Coaster von B&M für Energylandia kursiert in Foren und Fachmedien, auf der Seite des
   Parks steht nichts dazu.
 - Drei Neuheiten für den Movieland Park am Gardasee hat der Chef des Betreibers Caneva World im
-  August auf einer Branchenveranstaltung genannt. Die Website des Betreibers ließ sich am 5. Oktober nicht aufrufen.
+  August auf einer Branchenveranstaltung genannt.
 - Zu Legoland Windsor, Alton Towers und Thorpe Park gibt es Bauanträge und Planungsunterlagen,
   aber keine Ankündigung der Parks.
 - Eine neue Achterbahn im Cedar Point steht bisher nur in einem einzelnen Beitrag auf X.
