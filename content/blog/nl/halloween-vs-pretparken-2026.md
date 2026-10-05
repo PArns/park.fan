@@ -50,6 +50,11 @@ parkLinks:
   - legoland-california
   - knoebels-amusement-park
 rideLinks: false
+coverImage:
+  src: /media/halloween-2026/darsteller/01-fiesta-de-los-muertos-feuershow.jpg
+  alt: 'Día-de-los-Muertos-show met twee vuurzuilen en een bloemenaltaar aan het water bij nacht'
+  caption: 'De Día-de-los-Muertos-show van de Halloween Fright Nights in Walibi Holland. Uit de Amerikaanse parken hebben we geen eigen foto’s.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Halloween 2026 VS: HHN, Scary Farm, Fright Fest'
   description: >-
