@@ -159,8 +159,9 @@ carries the reasoning, the measurements and the counter-examples.
   `pnpm test:push-follow-delete`, `pnpm test:push-follow-read`, `pnpm test:hub-chapters`.
 - **[The guide page teaches the real cards with the ride's real numbers](docs/rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md)** — every block renders a
   production component, and every figure is a value the API returned, dated in `_fixtures.ts`.
-  Audit before you claim. A displayed wait time is always a multiple of five; round only what is
-  displayed, and send signed deltas through `roundWaitDeltaTo5`.
+  Audit before you claim. A displayed wait time is always a multiple of five, except Disney's
+  walk-on 13 (`WALK_ON_WAIT_MINUTES`), which is never rounded; round only what is displayed, and
+  send signed deltas through `roundWaitDeltaTo5`.
 - **[Ride ↔ Glossary link](docs/rules/ride-and-glossary-link.md)** — `rideProfile` figures are glossary term ids **in ride order**; repeats
   are intentional. Never dedupe or sort. This app is the only place a term id is defined.
 - **[Blog manifest is split](docs/rules/blog-manifest-is-split.md)** — import listings from `@/lib/blog/listing`; `@/lib/blog` drags every
