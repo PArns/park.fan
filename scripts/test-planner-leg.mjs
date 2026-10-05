@@ -206,7 +206,31 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
     { startMinute: 570, wait: 30, ride: null, block: true },
     10
   );
-  test('the same holds in front of a block with no position', intoPlaceless.floorMinutes, 0);
+  test(
+    'a ride in front of a block with no position still spends exit and ride',
+    intoPlaceless.floorMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN
+  );
+  test(
+    '…and has no walk to add to it in the ceiling',
+    intoPlaceless.ceilingMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN
+  );
+  const rideToRide = legBetween(
+    { startMinute: 540, wait: 30, ride: bare('Berlin'), block: false },
+    { startMinute: 600, wait: 30, ride: bare('Berlin'), block: false },
+    10
+  );
+  test(
+    'ride to ride with block: false keeps its floor',
+    rideToRide.floorMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN
+  );
+  test(
+    '…and its ceiling',
+    rideToRide.ceilingMinutes,
+    EXIT_MIN + RIDE_DURATION_MIN + SAME_LAND_CEIL_MIN
+  );
 
   const intoLocated = legBetween(
     from(540, 30),

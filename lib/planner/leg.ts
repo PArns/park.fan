@@ -134,9 +134,11 @@ export function entryPlace(
  * Decided by the PO on 2026-10-04 (PAR-696). `EXIT_MIN` and the ride's own
  * minutes are what it costs to leave a ride, so they are spent only when the
  * transfer starts at one. After a show or a free block there is no station to
- * leave and no ride to sit through. A block with no position has no walk at
- * all, on either side: the floor, the ceiling, the optimiser and the chip all
- * read 0, which is what the optimiser already filed it as.
+ * leave and no ride to sit through. A block with no position has no walk on
+ * either side. Leaving one costs 0. Arriving at one from a ride still costs
+ * `EXIT_MIN` + the ride's minutes, floor and ceiling alike, because the visitor
+ * is still in the queue or on the ride. The optimiser, `clashCount()` and the
+ * chip all read these same numbers.
  */
 export interface TransferEnds {
   fromBlock?: boolean;
@@ -174,8 +176,8 @@ export function transferBetween(
   rideSeconds?: number | null,
   ends: TransferEnds = {}
 ): Transfer {
-  const placeless = (ends.fromBlock && !from) || (ends.toBlock && !to);
-  if (placeless) {
+  // Leaving a block with no position: no station to leave, no ride, no walk.
+  if (ends.fromBlock && !from) {
     return { metres: null, crossesLand: false, floorMinutes: 0, ceilingMinutes: 0 };
   }
 
@@ -203,6 +205,12 @@ export function transferBetween(
       : Math.ceil((metres * DETOUR_MAX) / WALK_PARK_M_PER_MIN);
 
   const leaving = ends.fromBlock ? 0 : EXIT_MIN + rideMin;
+
+  // Walking to a block with no position: the visitor still leaves the ride, but
+  // there is no walk to count, so both bounds are what leaving costs.
+  if (ends.toBlock && !to) {
+    return { metres: null, crossesLand: false, floorMinutes: leaving, ceilingMinutes: leaving };
+  }
 
   return {
     metres,

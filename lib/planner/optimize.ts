@@ -681,7 +681,8 @@ interface FixedBlock {
 /**
  * How far a ride's own minutes have to stay from a fixed block on each side.
  *
- * Both are zero for a block with no place. The ceiling is what the search
+ * A block with no place has no walk, but a ride filed before it still pays
+ * for leaving the ride (PAR-696). The ceiling is what the search
  * builds against and the floor what {@link isExecutable} judges against, the
  * same split `leg.ts` draws between a plan and a verdict, so a day the search
  * files is never one the grid calls broken.
@@ -691,7 +692,6 @@ function fixedPads(
   block: FixedBlock,
   bound: 'floor' | 'ceiling'
 ): { before: number; after: number } {
-  if (!block.place) return { before: 0, after: 0 };
   const key = bound === 'floor' ? 'floorMinutes' : 'ceilingMinutes';
   return {
     before: transferBetween(ride, block.place, null, { toBlock: true })[key],

@@ -15,9 +15,9 @@
  *     pnpm test:planner-fit
  */
 
-import { buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
+import { RIDE_DURATION_MIN, buildDayGrid, earlyEntryOpenMin } from '../lib/planner/day-grid.ts';
 import { clashCount, headlinersToAdd, optimizeDay } from '../lib/planner/optimize.ts';
-import { entryPlace, transferBetween } from '../lib/planner/leg.ts';
+import { EXIT_MIN, entryPlace, transferBetween } from '../lib/planner/leg.ts';
 import { noRoomForRide, requestedRideChoice } from '../lib/planner/add-ride-fit.ts';
 import { dayClock } from '../lib/planner/park-time.ts';
 import {
@@ -793,6 +793,36 @@ const FIVE_LONG = ['a', 'b', 'c', 'd', 'e'].map((slug) => ride(slug, 60));
     '14f a show fifteen minutes after the end of a queue is a clash with the walk and none without it',
     clashCount(withShow(null), ten) === 0 && clashCount(withShow(50.8135), ten) === 1,
     `${clashCount(withShow(null), ten)} / ${clashCount(withShow(50.8135), ten)}`
+  );
+
+  // PAR-696 (PO, evening): the other direction keeps the exit and the ride, also
+  // for a show with no position. A show eight minutes after the queue ends is
+  // fine, one minute earlier clashes, and the optimiser files the same eight.
+  const beforeShow = (startMinute) => [
+    { id: 'ea', attractionSlug: 'a', attractionName: 'a', startMinute: 540 },
+    { ...showEntry, startMinute },
+  ];
+  check(
+    '14j a ride in front of a show with no position pays exit and ride, to the minute',
+    clashCount(withShow(null), beforeShow(595 + EXIT_MIN + RIDE_DURATION_MIN - 1)) === 1 &&
+      clashCount(withShow(null), beforeShow(595 + EXIT_MIN + RIDE_DURATION_MIN)) === 0,
+    `${clashCount(withShow(null), beforeShow(602))} / ${clashCount(withShow(null), beforeShow(603))}`
+  );
+  check(
+    '14k the optimiser leaves the same eight minutes in front of that show',
+    (() => {
+      const early = { ...showEntry, startMinute: 11 * 60 };
+      const payload = withShow(null);
+      const add = headlinersToAdd(payload, [early], undefined);
+      const input = inputFor(payload, [early], add);
+      const plan = optimizeDay({ day: payload, grid: input.grid, entries: [early], add });
+      const before = plan.stops.filter((stop) => stop.startMinute < early.startMinute);
+      const last = before[before.length - 1];
+      return (
+        last !== undefined &&
+        last.startMinute + 55 + EXIT_MIN + RIDE_DURATION_MIN <= early.startMinute
+      );
+    })()
   );
 
   // PAR-696: nothing is left behind after a show, so no exit and no ride are
