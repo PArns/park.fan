@@ -177,8 +177,7 @@ wie Fright Fest.
 [Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey zeigt neun Mazes, mehr als jeder andere Six-Flags-Park in diesem Überblick außer Knott's. Neu sind **JASON: Blood Reign** und **Final
 Destination: Death's Playground**. Dazu kommen The Conjuring Universe, Army of the Dead, Asylum,
 Twisted Holidays, Deadwood Cabin, Big Top Terror und The Witch's Reflection, außerdem fünf Scare
-Zones und fünf Shows. In der ersten Fassung dieses Beitrags standen acht Mazes, die Seite des
-Parks und sein Blog nennen neun.
+Zones und fünf Shows.
 
 Fright Fest läuft vom 18. September bis zum 1. November donnerstags bis sonntags. Das Paket mit
 Eintritt kostet ab 80 $, der Pass für alle Abende ab 75 $. Für Kinder gibt es tagsüber Kids Boo
@@ -273,12 +272,13 @@ jünger ist, braucht eine Begleitperson ab 21.
 ### Disney: zwei Partys, beide ausverkauft
 
 **Mickey's Not-So-Scary Halloween Party** im [Magic Kingdom](ref:magic-kingdom-park) läuft 2026 an 38 Abenden zwischen dem 7. August und dem 31. Oktober, im Oktober noch am 6., 8., 9., 13., 15., 16., 18., 22., 23., 25., 27., 29. und 31. Laut Disney sind alle Termine ausverkauft.
-Die Party geht von 19 Uhr bis Mitternacht, mit Ticket darfst du ab 16 Uhr in den Park. Zweimal am
-Abend läuft die Parade Mickey's Boo-To-You Halloween Parade, dazu das Feuerwerk Disney's
-Not-So-Spooky Spectacular und die Bühnenshow Hocus Pocus Villain Spelltacular vor dem Schloss. An
-mehr als einem Dutzend Stationen gibt es Süßigkeiten, auch für Erwachsene und ohne Kostüm. Neu
-sind A Masquerade with Stitch und ein Treffen mit Captain Jack Sparrow. Space Mountain fährt an
-diesen Abenden in völliger Dunkelheit.
+Die Party geht von 19 Uhr bis Mitternacht, mit Ticket darfst du ab 16 Uhr in den Park. Zum
+Programm gehören die Parade Mickey's Boo-To-You Halloween Parade, das Feuerwerk Disney's
+Not-So-Spooky Spectacular mit Lasern und die Bühnenshow Hocus Pocus Villain Spelltacular vor dem
+Schloss. Süßigkeiten gibt es an Stationen in allen Bereichen des Parks. Neu sind A Masquerade with
+Stitch, eine Tanzparty mit Stitch, Lilo und Angel in Tomorrowland, und Captain Jack Sparrow mit
+einem Piratenprogramm in Adventureland. Space Mountain fährt an diesen Abenden laut Disney in
+völliger Dunkelheit, mit Halloween-Musik.
 
 Der **Oogie Boogie Bash** in [Disney California Adventure](ref:disney-california-adventure-park) in
 Anaheim hat 33 Abende vom 18. August bis zum 31. Oktober, jeweils von 18 bis 23 Uhr, Einlass ab
@@ -308,12 +308,10 @@ bis etwa 17 Uhr, bevor das Abendprogramm beginnt.
 ### SeaWorld und Busch Gardens: Spooktacular
 
 Die vier United-Parks-Parks haben tagsüber ein Programm für Kinder, im normalen Eintritt. In Busch
-Gardens Tampa läuft das Halloween Spooktacular samstags und sonntags vom 12. September bis zum
-
-1. November, von 12 bis 16 Uhr, dazu ab dem 3. Oktober ein Sesamstraßen-Halloween. SeaWorld
-   Orlando hat sein Spooktacular an ausgewählten Tagen vom 29. August bis zum 1. November. In
-   Williamsburg richtet es sich an Kinder bis neun Jahre, in San Antonio gibt es neu eine Show mit
-   Baby Shark.
+Gardens Tampa läuft das Halloween Spooktacular samstags und sonntags vom 12. September bis zum 1. November, von 12 bis 16 Uhr, dazu ab dem 3. Oktober ein Sesamstraßen-Halloween. SeaWorld
+Orlando hat sein Spooktacular an ausgewählten Tagen vom 29. August bis zum 1. November. In
+Williamsburg richtet es sich an Kinder bis neun Jahre, in San Antonio gibt es neu eine Show mit
+Baby Shark.
 
 ### Dollywood und Silver Dollar City: Erntefeste mit Kürbissen
 
@@ -364,7 +362,7 @@ Die ruhigsten Tage der nächsten Wochen in Knott's Berry Farm stehen im Kalender
 ```
 
 Für die großen Parks mit einem Abend-Event haben wir die Wartezeiten der laufenden Saison, jeweils
-mit dem Wochentag, an dem die Warteschlangen dort am kürzesten sind. Bei den Preisen für die Abende ist das Muster überall gleich, die letzten Abende vor Halloween sind die teuersten. Beim Oogie Boogie Bash kostete der 31. Oktober 199 $, ein Abend im August 139 $.
+mit dem Wochentag, an dem die Warteschlangen dort am kürzesten sind. Wie stark der Preis am Datum hängt, sieht man am Oogie Boogie Bash: Der 31. Oktober kostete 199 $, ein Abend im August 139 $.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 
@@ -403,9 +401,7 @@ eigenes Ticket.
 
 ### Welches Event läuft am längsten?
 
-SCarowinds in Carowinds, bis zum 7. November. Fast alle anderen enden am 31. Oktober oder am
-
-1. November.
+SCarowinds in Carowinds, bis zum 7. November. Fast alle anderen enden am 31. Oktober oder am 1. November.
 
 ### Was gibt es für kleine Kinder?
 
