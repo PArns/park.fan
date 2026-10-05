@@ -576,6 +576,14 @@
         "recovery": "Rund {percent} % waren binnen einer Stunde behoben.",
         "recoveryOnly": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
       },
+      "estimateClosed": {
+        "range": "Stillstände wie dieser dauerten meist noch {from} bis {to}",
+        "rangeOpen": "Stillstände wie dieser dauerten meist noch über {from}",
+        "clockRange": "Stillstände wie dieser waren meist zwischen {from} und {to} Uhr vorbei",
+        "clockRangeOpen": "Stillstände wie dieser waren meist nicht vor {from} Uhr vorbei",
+        "recovery": "Rund {percent} % waren binnen einer Stunde vorbei.",
+        "recoveryOnly": "Von Stillständen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde vorbei."
+      },
       "sinceClosed": "Steht seit {when} still",
       "startUnknownClosed": "Steht still, Beginn unbekannt"
     },

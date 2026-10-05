@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import type { OutageEstimate } from '@/lib/api/types';
+import type { AttractionOutage, OutageEstimate } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 import { formatShortDuration, formatWholeHours } from '@/lib/utils/duration';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -138,11 +138,23 @@ import {
  */
 export function OutageEstimateNote({
   estimate,
+  signal,
   timezone,
   variant = 'compact',
   className,
 }: {
   estimate: OutageEstimate | undefined;
+  /**
+   * Which signal placed the outage, because the sentence depends on it. A
+   * reported DOWN reads „Störungen wie diese … waren … behoben"; an inferred
+   * `closed_gap` reads „Stillstände wie dieser … waren … vorbei", since nobody
+   * reported it and nothing says it was repaired — only that the ride ran
+   * again. The API reads each from its own curve.
+   *
+   * Anything that is not exactly `down` takes the closure sentences, the same
+   * weaker-claim default `OutageNote` applies to the line above.
+   */
+  signal: AttractionOutage['signal'] | undefined;
   /**
    * The park's IANA timezone. A clock time is stated in the park's own clock,
    * the way every other time on these two surfaces is; without one the block
@@ -159,7 +171,11 @@ export function OutageEstimateNote({
   variant?: 'compact' | 'full';
   className?: string;
 }) {
-  const t = useTranslations('parks.outage.estimate');
+  // Both namespaces carry the same six sentence keys; the scale's „jetzt" is
+  // the same word for either signal and lives only in the first.
+  const tReported = useTranslations('parks.outage.estimate');
+  const tStanding = useTranslations('parks.outage.estimateClosed');
+  const t = signal === 'down' ? tReported : tStanding;
   const locale = useLocale();
 
   if (!estimate) return null;
@@ -216,7 +232,7 @@ export function OutageEstimateNote({
       {bar ? (
         <RemainingBar
           bar={bar}
-          nowLabel={t('barNow')}
+          nowLabel={tReported('barNow')}
           endLabel={formatWholeHours(OUTAGE_BAR_HORIZON_MIN / 60, locale)}
         />
       ) : null}

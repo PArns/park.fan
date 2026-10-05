@@ -210,6 +210,7 @@ export function OutageNote({
           renders nothing where the curve cannot answer, and the rule goes with it. */}
       <OutageEstimateNote
         estimate={outage.estimate}
+        signal={outage.signal}
         timezone={timezone}
         variant={variant}
         className={cn(

@@ -466,15 +466,73 @@ const testCases = [
     expected: 'all resolve',
   },
   {
+    name: 'the closure sentences resolve too, every key the component can name for them',
+    // `OutageEstimateNote` switches namespace on the signal, so a `closed_gap` estimate names
+    // the same six sentence keys under `estimateClosed`. „jetzt" stays under `estimate` for
+    // both signals, which is why `barNow` is not asked for here.
+    actual: () => {
+      const keys = [
+        'recovery',
+        'recoveryOnly',
+        'range',
+        'rangeOpen',
+        'clockRange',
+        'clockRangeOpen',
+      ];
+      const missing = [];
+      for (const locale of LOCALES) {
+        const closed = readMessages(locale)?.parks?.outage?.estimateClosed ?? {};
+        for (const key of keys) {
+          if (typeof closed[key] !== 'string') missing.push(`${locale}.${key}`);
+        }
+      }
+      return missing.length === 0 ? 'all resolve' : missing.join(', ');
+    },
+    expected: 'all resolve',
+  },
+  {
+    name: 'a closure is never said to be repaired or reported, in any locale',
+    // The closure sentences exist because nobody reported a `closed_gap` and nothing says it
+    // was repaired. Each locale's reported-signal verb for „behoben" is checked against the
+    // closure sentences of the same locale.
+    actual: () => {
+      const forbidden = {
+        de: ['behoben', 'gemeldet', 'Störung'],
+        en: ['outage', 'reported', 'back'],
+        nl: ['verholpen', 'gemeld', 'storing'],
+        fr: ['résolu', 'panne', 'signalé'],
+        es: ['resuel', 'avería', 'notificad'],
+        it: ['risolt', 'guast', 'segnalat'],
+      };
+      const found = [];
+      for (const locale of LOCALES) {
+        const closed = readMessages(locale)?.parks?.outage?.estimateClosed ?? {};
+        for (const [key, text] of Object.entries(closed)) {
+          for (const word of forbidden[locale]) {
+            if (String(text).toLowerCase().includes(word.toLowerCase())) {
+              found.push(`${locale}.${key}: ${word}`);
+            }
+          }
+        }
+      }
+      return found.length === 0 ? 'none' : found.join(', ');
+    },
+    expected: 'none',
+  },
+  {
     name: 'the percent placeholder is in both probability sentences, in all six locales',
     // A sentence that resolves but drops `{percent}` is a probability line with no probability
     // in it, which no type and no lint rule sees.
     actual: () => {
       const missing = [];
       for (const locale of LOCALES) {
-        const estimate = readMessages(locale)?.parks?.outage?.estimate ?? {};
-        for (const key of ['recovery', 'recoveryOnly']) {
-          if (!String(estimate[key] ?? '').includes('{percent}')) missing.push(`${locale}.${key}`);
+        for (const ns of ['estimate', 'estimateClosed']) {
+          const estimate = readMessages(locale)?.parks?.outage?.[ns] ?? {};
+          for (const key of ['recovery', 'recoveryOnly']) {
+            if (!String(estimate[key] ?? '').includes('{percent}')) {
+              missing.push(`${locale}.${ns}.${key}`);
+            }
+          }
         }
       }
       return missing.length === 0 ? 'all carry it' : missing.join(', ');
@@ -491,12 +549,14 @@ const testCases = [
       const oneEnded = ['rangeOpen', 'clockRangeOpen'];
       const wrong = [];
       for (const locale of LOCALES) {
-        const estimate = readMessages(locale)?.parks?.outage?.estimate ?? {};
-        for (const key of [...twoEnded, ...oneEnded]) {
-          const text = String(estimate[key] ?? '');
-          const wantsTo = twoEnded.includes(key);
-          if (!text.includes('{from}') || text.includes('{to}') !== wantsTo) {
-            wrong.push(`${locale}.${key}`);
+        for (const ns of ['estimate', 'estimateClosed']) {
+          const estimate = readMessages(locale)?.parks?.outage?.[ns] ?? {};
+          for (const key of [...twoEnded, ...oneEnded]) {
+            const text = String(estimate[key] ?? '');
+            const wantsTo = twoEnded.includes(key);
+            if (!text.includes('{from}') || text.includes('{to}') !== wantsTo) {
+              wrong.push(`${locale}.${ns}.${key}`);
+            }
           }
         }
       }

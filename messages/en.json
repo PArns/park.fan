@@ -813,6 +813,14 @@
         "recovery": "About {percent}% were back within an hour.",
         "recoveryOnly": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
       },
+      "estimateClosed": {
+        "range": "Standstills like this one usually had {from} to {to} left.",
+        "rangeOpen": "Standstills like this one usually had more than {from} left.",
+        "clockRange": "Standstills like this one were usually over between {from} and {to}.",
+        "clockRangeOpen": "Standstills like this one were usually not over before {from}.",
+        "recovery": "About {percent}% were over within an hour.",
+        "recoveryOnly": "Of standstills that had already lasted this long, about {percent}% were over within an hour."
+      },
       "sinceClosed": "Not running since {when}",
       "startUnknownClosed": "Not running, start unknown"
     },
