@@ -86,8 +86,8 @@ hat einen eigenen Beitrag über [HalloWeekends](/blog/cedar-point-halloweekends-
 
 | Event und Park                                                                               | Letzter Abend | Ab                    | Für wen          |
 | -------------------------------------------------------------------------------------------- | ------------- | --------------------- | ---------------- |
-| Halloween Horror Nights, [Universal Studios Florida](ref:universal-studios-florida?bare)     | 1. November   | eigenes Ticket        | ab 13 empfohlen  |
-| Halloween Horror Nights, [Universal Studios Hollywood](ref:universal-studios-hollywood?bare) | 1. November   | eigenes Ticket        | ab 13 empfohlen  |
+| Halloween Horror Nights, [Universal Studios Florida](ref:universal-studios-florida?bare)     | 1. November   | 94,99 $               | ab 13 empfohlen  |
+| Halloween Horror Nights, [Universal Studios Hollywood](ref:universal-studios-hollywood?bare) | 1. November   | 84 $                  | ab 13 empfohlen  |
 | Knott's Scary Farm, [Knott's Berry Farm](ref:knotts-berry-farm?bare)                         | 31. Oktober   | 65 $                  | ab 13 empfohlen  |
 | Fright Fest, [Six Flags Magic Mountain](ref:six-flags-magic-mountain?bare)                   | 1. November   | 74 $ mit Eintritt     | ab 13 empfohlen  |
 | Fright Fest, [Six Flags Great Adventure](ref:six-flags-great-adventure?bare)                 | 1. November   | 80 $ mit Eintritt     | ab 13 empfohlen  |
@@ -115,22 +115,73 @@ stehen weiter unten in einem eigenen Teil.
 
 ### Universal Studios Florida: Halloween Horror Nights
 
-[Universal Studios Florida](ref:universal-studios-florida) in Orlando hat laut Presseinformation
-von Universal 49 Nächte zwischen dem 28. August und dem 1. November. Zehn Häuser stehen im Programm:
+[Universal Studios Florida](ref:universal-studios-florida) in Orlando hat laut Universal 49 Nächte
+zwischen dem 28. August und dem 1. November, mittwochs bis sonntags und zusätzlich am Montag,
+dem 12. Oktober. Die Tore zum Event öffnen um 18:30 Uhr, Hotelgäste von Universal haben bis 19:30 Uhr
+einen eigenen Eingang. Den Tagesbetrieb beendet der Park an diesen Abenden um 17 Uhr. Wer am
+Nachmittag schon da sein will, bucht Scream Early für ab 70 $ zusätzlich: Einlass ab 14 Uhr,
+spätestens um 17 Uhr, und dann bleibst du im Park, bis das Event beginnt.
 
-- Stranger Things
-- Sinners
-- Hellraiser
-- Ozzy Osbourne: Prince of Darkness
-- Evil Dead Burn
-- Jack and Oddfellow: Chaos & Control
-- INVASION: Alien Abduction
-- H.R. Bloodengutz Presents: A Halloween Fright-Tacular!
-- MADLANDS: Caged Cannibals
-- Cybergoria
+Zehn Häuser stehen im Programm. Fünf davon laufen in derselben Form auch in Hollywood:
 
-Dazu kommen vier Scare Zones: Fortnitemares, Infernal Carnival of Nightmares, Downtown Clowntown
-und Sideshow of Decay.
+- **Stranger Things**: die fünfte und letzte Staffel der Netflix-Serie
+- **Sinners**: nach dem Horrorfilm von 2025
+- **Hellraiser**: nach den ersten drei Filmen der Reihe
+- **Ozzy Osbourne: Prince of Darkness**: ein Haus über den Heavy-Metal-Musiker, eigens für die
+  Horror Nights entworfen
+- **Evil Dead Burn**: nach dem neuesten Film der Evil-Dead-Reihe
+
+Die anderen fünf hat Universal selbst erfunden:
+
+- **Jack & Oddfellow: Chaos & Control**: die Vorgeschichte von Jack the Clown
+- **INVASION: Alien Abduction**: ein Raumschiff entführt eine Familie samt Vieh
+- **H.R. Bloodengutz Presents: A Halloween Fright-Tacular!**: ein letztes Halloween-Special im
+  Fernsehsender WKNB
+- **MADLANDS: Caged Cannibals**: eine Ödnis nach dem Weltuntergang
+- **Cybergoria**: Menschen wachen Jahrtausende später aus dem Kälteschlaf auf
+
+Dazu kommen vier Scare Zones, alle neu: Fortnitemares, Infernal Carnival of Nightmares, Downtown
+Clowntown und Sideshow of Decay. Auf den Straßen laufen außerdem Mel's Die-In: Zombies, Club
+Horror und die Chainsaw Hordes. Zwei Shows gibt es, eine zu Stranger Things auf der Lagune und
+Nightmare Fuel: Blood Noir. Einige Bahnen fahren auch am Abend, darunter Revenge of the Mummy,
+Harry Potter and the Escape from Gringotts, TRANSFORMERS: The Ride-3D und MEN IN BLACK Alien Attack.
+
+Ein Abend kostet im Onlineshop von Universal ab 94,99 $, je nach Datum mehr: Für den 14. Oktober
+waren es am 5. Oktober 95 $, für den 31. Oktober 140 $. Für mehrere Nächte gibt es den Rush of
+Fear Pass für bis zu 18 Nächte und den Frequent Fear Pass für bis zu 31. Die Ticketseite nennt
+dafür an zwei Stellen verschiedene Preise, 229,99 $ und 274,99 $ in der einen Zeile, 239,99 $ und
+289,99 $ in der anderen. Der Express Pass, mit dem du jedes Haus einmal ohne die reguläre
+Warteschlange betrittst, kostet ab 279,99 $, die geführte R.I.P. Tour ab 529,99 $. Pässe für
+mehrere Nächte mit Express bietet Universal 2026 nicht mehr an.
+
+Universal empfiehlt das Event nicht für Kinder unter 13 Jahren. Kostüme und Kostümmasken sind
+verboten. Die einzige Ausnahme ist die Premium Scream Night am Montag, dem 19. Oktober, mit eigenem
+Ticket: An diesem Abend sind Kostüme erlaubt, Masken auch dann nicht.
+
+### Universal Studios Hollywood: Halloween Horror Nights
+
+[Universal Studios Hollywood](ref:universal-studios-hollywood) hat 2026 so viele Nächte wie noch
+nie, laut Universal 42, vom 3. September bis zum 1. November. Das Event beginnt um 19 Uhr, wann es
+endet, hängt vom Abend ab.
+
+Acht Häuser laufen. Fünf kennt man aus Orlando: Stranger Things, Sinners, Hellraiser, Ozzy
+Osbourne: Prince of Darkness und Evil Dead Burn. Nur in Hollywood gibt es **Killer Klowns from
+Outer Space** nach dem Film, **KILLceañera** mit Musik von Slash, in dem Lolas Quinceañera aus
+dem Ruder läuft, und **Dead, Deader, Deadest** in einem verlassenen Bestattungsinstitut.
+
+Was es nur in Hollywood gibt, ist die Terror Tram. Die Bahn, die tagsüber durch die Filmstudios
+fährt, kapert an diesen Abenden Art the Clown, mit Musik der Band Ice Nine Kills. Laut
+Pressemitteilung kommen eine Show, The Purge: Dangerous Waters, und fünf Scare Zones dazu:
+Fortnitemares, Hackerz, El Circo de la Muerte, Blood Bog und Murder of Crowz. Am Abend fahren
+Mario Kart: Bowser's Challenge bis 22 Uhr, Harry Potter and the Forbidden Journey bis 23:15 Uhr,
+dazu Flight of the Hippogriff, TRANSFORMERS, The Simpsons Ride und Revenge of the Mummy.
+
+Ein Abend kostet ab 84 $, je nach Datum bis 109 $. Der Frequent Fear Pass für bis zu 35 Nächte
+beginnt bei 179 $, der Ultimate Fear Pass bei 299 $, Universal Express bei 279 $. Wer schon ab
+14 Uhr in den Park will, nimmt das Tages- und Abendticket ab 124 $. Mit Early Access für 20 $
+kommst du vor dem Beginn in die ersten Häuser, die Website nennt dafür 17 Uhr, die
+Pressemitteilung 17:30 Uhr. Ein Mindestalter gibt es nicht, Universal empfiehlt das Event aber
+nicht für Kinder unter 13. Kostümmasken sind verboten.
 
 ### Knott's Berry Farm: Knott's Scary Farm
 
@@ -344,8 +395,9 @@ die Dark Nights kein Alter.
 
 Bei den Kostümen sind die Regeln strenger, als viele erwarten. Beim Oogie Boogie Bash sind Masken ab 14 Jahren verboten, Kostüme dürfen nicht über den Boden schleifen und keine Waffen enthalten, und
 wer sich als Figur verkleidet, darf sich nicht wie eine fotografieren lassen. SeaWorld Orlando
-verbietet beim Spooktacular Masken ab 13 Jahren, Hersheypark ebenso. Für die Halloween Horror Nights
-gilt bei Universal ein Verbot für Kostüme und Masken.
+verbietet beim Spooktacular Masken ab 13 Jahren, Hersheypark ebenso. Bei den Halloween Horror
+Nights in Orlando sind Kostüme und Kostümmasken verboten, außer an der Premium Scream Night, in
+Hollywood sind es die Kostümmasken.
 
 ## Wann du hingehst
 
@@ -362,7 +414,7 @@ Die ruhigsten Tage der nächsten Wochen in Knott's Berry Farm stehen im Kalender
 ```
 
 Für die großen Parks mit einem Abend-Event haben wir die Wartezeiten der laufenden Saison, jeweils
-mit dem Wochentag, an dem die Warteschlangen dort am kürzesten sind. Wie stark der Preis am Datum hängt, sieht man am Oogie Boogie Bash: Der 31. Oktober kostete 199 $, ein Abend im August 139 $.
+mit dem Wochentag, an dem die Warteschlangen dort am kürzesten sind. Wie stark der Preis am Datum hängt, sieht man am Oogie Boogie Bash: Der 31. Oktober kostete 199 $, ein Abend im August 139 $. Bei den Horror Nights in Orlando kostete der 31. Oktober am 5. Oktober 140 $, der 14. Oktober 95 $.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 
@@ -413,7 +465,8 @@ Am besten die Tage statt der Abende, etwa Knott's Spooky Farm, Tricks and Treats
 
 Alle Angaben stammen von den Parks und Betreibern, abgerufen am 5. Oktober 2026.
 
-- Halloween Horror Nights Orlando: [Halloween Horror Nights 2026 Overview (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-2026-overview/)
+- Halloween Horror Nights Orlando: [Halloween Horror Nights 2026 Overview (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-2026-overview/), [Eröffnung 2026 (Universal Parks USA)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-opens-the-gates-to-halloween-horror-nights-2026-082826/), [Event-Seite (Universal Orlando)](https://www.universalorlando.com/hhn/en/us), [Hausregeln (Universal Orlando)](https://www.universalorlando.com/web/en/us/plan-your-visit/hours-information/policies-restrictions), Preise je Datum: [Onlineshop (Universal Orlando)](https://store.universalorlando.com/en/us/store/c/uo_ice_default_pb_extras/)
+- Halloween Horror Nights Hollywood: [Eröffnung 2026 (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-opens-at-universal-studios-hollywood-kicking-off-southern-californias-most-extreme-halloween-event-over-42-terrifying-nights-from-thursday-september-3-to-sunday-nov/), [Terror Tram und Häuser (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-at-universal-studios-hollywood-completes-its-sinister-2026-line-up-with-terror-tram-starring-art-the-clown-the-return-of-cult-horror-classic-killer/), [Event-Seite (Universal Studios Hollywood)](https://www.universalstudioshollywood.com/hhn/en/us), Preise: [Onlineshop (Universal Studios Hollywood)](https://store.universalstudioshollywood.com/en/us/store/c/uh_ice_default_pb_events/)
 - Knott's Scary Farm: [Knott's Scary Farm (Six Flags)](https://www.sixflags.com/knotts/events/scary-farm), [Scary Farm Tickets (Six Flags)](https://www.sixflags.com/knotts/scary-farm-tickets), [Occultum (Six Flags)](https://www.sixflags.com/knotts/shows/occultum-curated-by-the-magic-castle), Spooky Farm: [Knott's Spooky Farm (Six Flags)](https://www.sixflags.com/knotts/events/spooky-farm)
 - Fright Fest Magic Mountain: [Fright Fest (Six Flags Magic Mountain)](https://www.sixflags.com/magicmountain/events/fright-fest), [Tricks and Treats](https://www.sixflags.com/magicmountain/events/tricks-and-treats)
 - Fright Fest Great Adventure: [Fright Fest (Six Flags Great Adventure)](https://www.sixflags.com/greatadventure/events/fright-fest), [Guide to Fright Fest (Six Flags)](https://www.sixflags.com/blog/six-flags-great-adventure-s-guide-to-fright-fest-presented-by-snickers-r), [Kids Boo Fest](https://www.sixflags.com/greatadventure/events/kids-boo-fest)
