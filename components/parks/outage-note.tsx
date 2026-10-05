@@ -3,11 +3,10 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { TriangleAlert } from 'lucide-react';
 import type { AttractionOutage } from '@/lib/api/types';
-import { cn } from '@/lib/utils';
 import { formatSpanDuration } from '@/lib/utils/duration';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { outageElapsedMinutes } from '@/lib/utils/outage';
 import { OutageEstimateNote } from './outage-estimate-note';
+import { formatWeekdayTime, RideStatusBlock, rideStatusFooterClass } from './ride-status-block';
 
 /**
  * "Störung gemeldet seit …" — the one sentence this site says about a ride that
@@ -143,68 +142,23 @@ export function OutageNote({
   const inferred = outage.signal !== 'down';
   const label = startKnown
     ? t(inferred ? 'sinceClosed' : 'since', {
-        when: formatStart(started, timezone, locale),
+        when: formatWeekdayTime(started, timezone, locale),
       })
     : t(inferred ? 'startUnknownClosed' : 'startUnknown');
 
   const elapsed = outageElapsedMinutes(outage);
-  const full = variant === 'full';
 
   return (
-    <div
-      className={cn(
-        'border-status-down/25 bg-status-down/10 rounded-xl border',
-        full ? 'p-3' : 'px-2.5 py-2',
-        className
-      )}
-      data-nosnippet
+    <RideStatusBlock
+      icon={TriangleAlert}
+      tone="outage"
+      title={label}
+      detail={
+        elapsed !== null ? t('elapsed', { duration: formatSpanDuration(elapsed, locale) }) : null
+      }
+      variant={variant}
+      className={className}
     >
-      <div className={cn('flex items-center', full ? 'gap-3' : 'gap-2.5')}>
-        <span
-          className={cn(
-            'bg-badge-status-down grid shrink-0 place-items-center rounded-full text-white shadow-sm',
-            full ? 'size-8' : 'size-6'
-          )}
-          aria-hidden="true"
-        >
-          <TriangleAlert className={full ? 'size-4' : 'size-3.5'} />
-        </span>
-        {/* Each line is cut to its cap height and baseline (`text-box`), so `items-center`
-            centres the letters on the chip rather than the line boxes. Geist reserves more room
-            under the baseline than over the caps, and a lone line sat visibly high in the
-            block: 24 px of block above the caps and 28 px below the baseline, measured off a
-            reader's screenshot. The gaps only open up where the trim applies; a browser without
-            `text-box` keeps the line boxes and the old gaps. */}
-        <div
-          className={cn(
-            'flex min-w-0 flex-1 flex-col gap-0.5',
-            full
-              ? 'supports-[text-box:trim-both_cap_alphabetic]:gap-2.5'
-              : 'supports-[text-box:trim-both_cap_alphabetic]:gap-2'
-          )}
-        >
-          <span
-            className={cn(
-              'font-semibold tabular-nums [text-box:trim-both_cap_alphabetic]',
-              full ? 'text-foreground text-sm leading-snug' : 'text-[12px] leading-tight'
-            )}
-            style={full ? undefined : { color: 'var(--pk-text-1)' }}
-          >
-            {label}
-          </span>
-          {elapsed !== null && (
-            <span
-              className={cn(
-                'tabular-nums [text-box:trim-both_cap_alphabetic]',
-                full ? 'text-muted-foreground text-xs' : 'text-[11px] leading-tight'
-              )}
-              style={full ? undefined : { color: 'var(--pk-text-2)' }}
-            >
-              {t('elapsed', { duration: formatSpanDuration(elapsed, locale) })}
-            </span>
-          )}
-        </div>
-      </div>
       {/* Under a hairline in the block's own tint, so the estimate reads as the second half of
           the same answer rather than as a note about something else. `OutageEstimateNote`
           renders nothing where the curve cannot answer, and the rule goes with it. */}
@@ -213,32 +167,8 @@ export function OutageNote({
         signal={outage.signal}
         timezone={timezone}
         variant={variant}
-        className={cn(
-          'border-status-down/20 border-t tabular-nums',
-          full
-            ? 'text-muted-foreground mt-3 gap-1.5 pt-3 text-xs supports-[text-box:trim-both_cap_alphabetic]:gap-2.5'
-            : 'mt-2 pt-2 text-[11px] leading-tight text-(--pk-text-2) supports-[text-box:trim-both_cap_alphabetic]:mt-2.5 supports-[text-box:trim-both_cap_alphabetic]:gap-2 supports-[text-box:trim-both_cap_alphabetic]:pt-2.5'
-        )}
+        className={rideStatusFooterClass('outage', variant)}
       />
-    </div>
+    </RideStatusBlock>
   );
-}
-
-/**
- * Weekday and clock time in the park's zone, in the reader's language.
- *
- * Falls back to the browser's zone rather than throwing: an unknown timezone
- * costs the sentence its precision, not the card its render.
- */
-function formatStart(started: Date, timezone: string | undefined, locale: string): string {
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-    hour: '2-digit',
-    minute: '2-digit',
-  };
-  try {
-    return getDateTimeFormat(locale, { ...options, timeZone: timezone }).format(started);
-  } catch {
-    return getDateTimeFormat(locale, options).format(started);
-  }
 }

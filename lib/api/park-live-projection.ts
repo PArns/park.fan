@@ -76,6 +76,8 @@ export interface LiveAttractionSnapshot {
    * Crazy Bats read „Steht seit Sonntag, 16:10 still" under a GEÖFFNET badge.
    */
   outage?: ParkAttraction['outage'] | null;
+  /** Volatile the same way `outage` is, and on the wire as `null` for the same reason. */
+  notRunToday?: ParkAttraction['notRunToday'];
   queues?: ParkAttraction['queues'];
   statistics?: ParkAttraction['statistics'];
   bestVisitTimes?: ParkAttraction['bestVisitTimes'];
@@ -176,6 +178,10 @@ export function leanParkForLivePoll(
       // `undefined` so it survives JSON: an omitted key leaves the server render's
       // outage in place forever. See LiveAttractionSnapshot.
       outage: a.outage ?? null,
+      // The same rule, and the same bug it was written down after: a ride that
+      // has run since the page was rendered must lose its „noch nicht" line on
+      // the next poll, and JSON drops an undefined key.
+      notRunToday: a.notRunToday ?? null,
       queues: a.queues,
       statistics: a.statistics,
       bestVisitTimes: a.bestVisitTimes,

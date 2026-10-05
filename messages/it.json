@@ -824,6 +824,10 @@
       "sinceClosed": "Ferma da {when}",
       "startUnknownClosed": "Ferma, inizio sconosciuto"
     },
+    "notRunToday": {
+      "title": "Oggi non ancora in funzione",
+      "lastRun": "In funzione l'ultima volta: {when}"
+    },
     "noLiveWaitTimes": {
       "title": "Nessun tempo di attesa disponibile",
       "reason": {

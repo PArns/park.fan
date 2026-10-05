@@ -824,6 +824,10 @@
       "sinceClosed": "Staat stil sinds {when}",
       "startUnknownClosed": "Staat stil, begin onbekend"
     },
+    "notRunToday": {
+      "title": "Vandaag nog niet in bedrijf",
+      "lastRun": "Laatst in bedrijf: {when}"
+    },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
       "reason": {

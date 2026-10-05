@@ -824,6 +824,10 @@
       "sinceClosed": "Not running since {when}",
       "startUnknownClosed": "Not running, start unknown"
     },
+    "notRunToday": {
+      "title": "Not running yet today",
+      "lastRun": "Last ran {when}"
+    },
     "noLiveWaitTimes": {
       "title": "No wait times available",
       "reason": {

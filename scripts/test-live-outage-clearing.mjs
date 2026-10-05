@@ -84,7 +84,30 @@ const wire = (poll) => JSON.parse(JSON.stringify(leanParkForLivePoll(poll)));
 const merged = (base, poll) => mergeLiveParkSnapshot(base, wire(poll));
 const ride = (park, id) => park.attractions.find((a) => a.id === id);
 
+/** A ride that has not run yet today, as the server rendered it, and later running. */
+const NOT_RUN = { lastRunAt: '2026-09-05T16:00:00.000Z' };
+const IDLE_SEED = {
+  ...SEED,
+  attractions: [
+    SEED.attractions[0],
+    { ...SEED.attractions[1], status: 'CLOSED', effectiveStatus: 'CLOSED', notRunToday: NOT_RUN },
+  ],
+};
+const IDLE_OPENED = { ...SEED, attractions: [SEED.attractions[0], SEED.attractions[1]] };
+
 const testCases = [
+  {
+    name: 'a ride that has not run yet today keeps its line while it stays shut',
+    actual: () => ride(merged(IDLE_SEED, IDLE_SEED), 'a2').notRunToday?.lastRunAt ?? null,
+    expected: NOT_RUN.lastRunAt,
+  },
+  {
+    name: 'and loses it on the first poll after it opens, through JSON',
+    // The field travels on the same rule as `outage`, and fails the same way if it is sent as
+    // undefined: the line „Heute noch nicht in Betrieb" would stand under a GEÖFFNET badge.
+    actual: () => ride(merged(IDLE_SEED, IDLE_OPENED), 'a2').notRunToday ?? null,
+    expected: null,
+  },
   {
     name: 'the projection carries the outage of a ride that is down',
     actual: () => leanParkForLivePoll(SEED).attractions[0].outage?.startedAt ?? null,

@@ -824,6 +824,10 @@
       "sinceClosed": "À l'arrêt depuis {when}",
       "startUnknownClosed": "À l'arrêt, début inconnu"
     },
+    "notRunToday": {
+      "title": "Pas encore en service aujourd'hui",
+      "lastRun": "En service pour la dernière fois : {when}"
+    },
     "noLiveWaitTimes": {
       "title": "Pas de temps d’attente disponibles",
       "reason": {

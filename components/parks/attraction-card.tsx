@@ -35,6 +35,7 @@ import { TransportSystemBadge } from './transport-system-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
 import { OutageNote } from './outage-note';
+import { NotRunTodayNote } from './not-run-today-note';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -627,6 +628,16 @@ export function AttractionCard({
               timezone={effectiveTimezone}
               variant="compact"
             />
+            {/* The neutral sibling, for a ride that has not run since the park last
+                closed. Never beside an outage line, which says more, and only under
+                a CLOSED badge — see `NotRunTodayNote`. */}
+            {status === 'CLOSED' && !('outage' in attraction && attraction.outage) && (
+              <NotRunTodayNote
+                notRunToday={'notRunToday' in attraction ? attraction.notRunToday : undefined}
+                timezone={effectiveTimezone}
+                variant="compact"
+              />
+            )}
           </div>
         </div>
 

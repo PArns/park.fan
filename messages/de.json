@@ -587,6 +587,10 @@
       "sinceClosed": "Steht seit {when} still",
       "startUnknownClosed": "Steht still, Beginn unbekannt"
     },
+    "notRunToday": {
+      "title": "Heute noch nicht in Betrieb",
+      "lastRun": "Zuletzt in Betrieb: {when}"
+    },
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
       "reason": {
