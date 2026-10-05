@@ -2,6 +2,7 @@
 title: 'Novedades de los parques temáticos en 2027: todo lo que parques y fabricantes han confirmado'
 translationKey: park-novelties-2027
 date: '2026-10-04'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -20,7 +21,12 @@ tags:
   - plopsaland
   - walibi-belgium
   - six-flags
-category: guides
+category: new-attractions
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'Un tren lleno de Voltron Nevera se inclina en una curva a gran altura, con soportes marrones y raíles grises debajo y el cielo azul detrás.'
+  caption: 'Voltron Nevera en Europa-Park, abierta en abril de 2024. La próxima montaña rusa nueva del parque será una familiar de Mack Rides prevista para 2028.'
+  credit: 'Dominik'
 seo:
   title: 'Novedades de parques temáticos 2027: lo confirmado'
   description: >-

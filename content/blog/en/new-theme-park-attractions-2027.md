@@ -2,6 +2,7 @@
 title: 'New theme park attractions 2027: everything parks and manufacturers have confirmed'
 translationKey: park-novelties-2027
 date: '2026-10-04'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -20,7 +21,12 @@ tags:
   - plopsaland
   - walibi-belgium
   - six-flags
-category: guides
+category: new-attractions
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'A full Voltron Nevera train banks into a turn high up, with brown supports and grey track below against a blue sky.'
+  caption: "Voltron Nevera at Europa-Park, open since April 2024. The park's next new coaster is a Mack Rides family coaster planned for 2028."
+  credit: 'Dominik'
 seo:
   title: 'New theme park attractions 2027: what is confirmed'
   description: >-

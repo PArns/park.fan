@@ -2,6 +2,7 @@
 title: 'Nouveautés 2027 des parcs d’attractions : tout ce que parcs et constructeurs ont confirmé'
 translationKey: park-novelties-2027
 date: '2026-10-04'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -21,7 +22,12 @@ tags:
   - plopsaland
   - walibi-belgium
   - six-flags
-category: guides
+category: new-attractions
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'Un train complet de Voltron Nevera s’incline dans un virage tout en haut, avec en dessous des pylônes marron et des rails gris sur un ciel bleu.'
+  caption: 'Voltron Nevera à Europa-Park, ouvert en avril 2024. Le prochain nouveau grand huit du parc est un coaster familial de Mack Rides prévu pour 2028.'
+  credit: 'Dominik'
 seo:
   title: 'Nouveautés 2027 des parcs : ce qui est confirmé'
   description: >-

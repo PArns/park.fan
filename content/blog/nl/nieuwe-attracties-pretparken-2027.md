@@ -2,6 +2,7 @@
 title: 'Nieuwe attracties in pretparken 2027: alles wat parken en fabrikanten hebben bevestigd'
 translationKey: park-novelties-2027
 date: '2026-10-04'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -20,7 +21,12 @@ tags:
   - plopsaland
   - walibi-belgium
   - six-flags
-category: guides
+category: new-attractions
+coverImage:
+  src: /media/europa-park/voltron-nevera-powered-by-rimac-461ea7-16x9.jpg
+  alt: 'Een volle trein van Voltron Nevera helt hoog boven de grond in een bocht, daaronder bruine steunen en grijze rails tegen een blauwe lucht.'
+  caption: 'Voltron Nevera in Europa-Park, open sinds april 2024. De volgende nieuwe achtbaan van het park is een familieachtbaan van Mack Rides voor 2028.'
+  credit: 'Dominik'
 seo:
   title: 'Nieuwigheden pretparken 2027: dit is bevestigd'
   description: >-
