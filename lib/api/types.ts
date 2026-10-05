@@ -411,8 +411,8 @@ export interface ForecastItem {
 export interface HourlyForecastItem {
   predictedTime: string;
   predictedWaitTime: number;
-  /** 0–100 */
-  confidence: number;
+  /** 0–100; `null` for a slot more than 24 h after the response (the API no longer serves the model's floor of 50 there). */
+  confidence: number | null;
   /** Half-width of the uncertainty band in minutes; absent or null when the model gives none. */
   uncertaintyMinutes?: number | null;
   trend: TrendDirection;

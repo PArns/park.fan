@@ -80,6 +80,8 @@ export interface LegEnd {
   ride: LegPlace | null | undefined;
   /** Curated ride duration in seconds, where one exists. */
   rideSeconds?: number | null;
+  /** A show or a free block, not a ride. See {@link TransferEnds}. */
+  block?: boolean;
 }
 
 function coordsOf(ride: LegPlace | null | undefined): [number, number] | null {
@@ -126,6 +128,28 @@ export function entryPlace(
   return null;
 }
 
+/**
+ * Which ends of a transfer are not rides: a show or a free block.
+ *
+ * Decided by the PO on 2026-10-04 (PAR-696). `EXIT_MIN` and the ride's own
+ * minutes are what it costs to leave a ride, so they are spent only when the
+ * transfer starts at one. After a show or a free block there is no station to
+ * leave and no ride to sit through. A block with no position has no walk on
+ * either side. Leaving one costs 0. Arriving at one from a ride still costs
+ * `EXIT_MIN` + the ride's minutes, floor and ceiling alike, because the visitor
+ * is still in the queue or on the ride. The optimiser, `clashCount()` and the
+ * chip all read these same numbers.
+ */
+export interface TransferEnds {
+  fromBlock?: boolean;
+  toBlock?: boolean;
+}
+
+/** True for an entry that is not a ride: a show, or a free block. */
+export function isBlockEntry(entry: Pick<PlannerEntry, 'attractionSlug'>): boolean {
+  return !entry.attractionSlug;
+}
+
 export interface Transfer {
   /** Straight-line metres, or null where either ride has no coordinates. */
   metres: number | null;
@@ -149,8 +173,14 @@ export interface Transfer {
 export function transferBetween(
   from: LegPlace | null | undefined,
   to: LegPlace | null | undefined,
-  rideSeconds?: number | null
+  rideSeconds?: number | null,
+  ends: TransferEnds = {}
 ): Transfer {
+  // Leaving a block with no position: no station to leave, no ride, no walk.
+  if (ends.fromBlock && !from) {
+    return { metres: null, crossesLand: false, floorMinutes: 0, ceilingMinutes: 0 };
+  }
+
   const a = coordsOf(from);
   const b = coordsOf(to);
   const metres = a && b ? calculateDistance(a[0], a[1], b[0], b[1]) : null;
@@ -174,11 +204,19 @@ export function transferBetween(
         : SAME_LAND_CEIL_MIN
       : Math.ceil((metres * DETOUR_MAX) / WALK_PARK_M_PER_MIN);
 
+  const leaving = ends.fromBlock ? 0 : EXIT_MIN + rideMin;
+
+  // Walking to a block with no position: the visitor still leaves the ride, but
+  // there is no walk to count, so both bounds are what leaving costs.
+  if (ends.toBlock && !to) {
+    return { metres: null, crossesLand: false, floorMinutes: leaving, ceilingMinutes: leaving };
+  }
+
   return {
     metres,
     crossesLand,
-    floorMinutes: EXIT_MIN + rideMin + walkFloorMin,
-    ceilingMinutes: EXIT_MIN + rideMin + walkCeilMin,
+    floorMinutes: leaving + walkFloorMin,
+    ceilingMinutes: leaving + walkCeilMin,
   };
 }
 
@@ -246,7 +284,8 @@ export function legBetween(
   const { metres, crossesLand, floorMinutes, ceilingMinutes } = transferBetween(
     from.ride,
     to.ride,
-    from.rideSeconds
+    from.rideSeconds,
+    { fromBlock: from.block, toBlock: to.block }
   );
 
   const base = { metres, crossesLand, floorMinutes, ceilingMinutes };
