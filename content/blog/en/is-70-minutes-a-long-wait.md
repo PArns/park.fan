@@ -2,6 +2,7 @@
 title: 'Is 70 Minutes a Long Wait?'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
@@ -82,6 +83,27 @@ will hold different numbers, while the text around it still holds. These widgets
 exist because four older articles had their figures typed by hand into
 Markdown tables, spread across six languages, and after a few weeks they had
 quietly drifted apart, like the clocks in a holiday rental.
+
+## The same 70 minutes on a Saturday and on a Tuesday
+
+On Taron’s page we list “typical” and “busy” for each weekday separately, and
+the weekends clearly stand out. Saturday and Sunday have the higher values,
+Tuesday the lowest. So the same 70 minutes is an ordinary day at this ride on a
+Saturday, and well above what’s normal there on a Tuesday.
+
+The month shifts the comparison again. Across the whole park (not Taron alone),
+July and August are the busy months, and December came out about as high on the
+few days we measured in it. September is the quietest month we’ve measured.
+October has just a few days so far, because our record began in December 2025
+and October 2026 has only just started.
+
+```stats-widget slug=phantasialand show=months
+
+```
+
+None of that is posted at the entrance, just the one number. The ride’s page has
+both values for today, with the week day by day underneath, so you can judge
+the 70 minutes for yourself.
 
 ## The day has a shape
 
@@ -172,6 +194,28 @@ high summer, with our blessing. And operating months that we read off our own
 measurements aren’t named until 330 days of observation. Before that it carries
 no months at all, because “runs from December to April” would describe the
 period we happen to have measured.
+
+## What you can do with 70 minutes
+
+If the number at the entrance is at or below the typical value for that weekday,
+I join the queue. When it’s well above, have a look at the hourly curve further
+up, and if that dips in the late afternoon or the evening, ride something else
+first and come back. On Taron’s page there’s a recommendation for the end of the
+day next to the one for opening time, because by our measurements the queue
+there gets a lot shorter again just before closing.
+
+If you’d rather buy the time, a Quick Pass for one ride on Taron costs €12,
+according to Phantasialand’s information page (as of 5 October 2026). You can
+only get it on the spot, at Guest Services on Kaiserplatz, and supply is
+limited. When the posted wait is normal for that weekday anyway, it rarely pays
+off. What we think of it, and when the Quick Pass Ultimate is worth it, is in
+the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
+
+For a whole day there’s the [trip planner](/blog/trip-planner). You pick your
+rides and get them in an order based on the day’s forecast wait times. That way
+you know before you set off whether you’ll get to all of them before the park
+closes, instead of finding out at five in the afternoon in front of the last
+queue.
 
 ## Where all of this lives
 
