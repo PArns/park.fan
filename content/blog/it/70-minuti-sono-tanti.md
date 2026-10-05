@@ -2,6 +2,7 @@
 title: 'Quando settanta minuti di attesa sono tanti'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
@@ -83,6 +84,27 @@ questo esistono questi widget. In quattro articoli più vecchi i
 numeri erano digitati a mano in tabelle Markdown, distribuiti su sei lingue, e
 dopo qualche settimana si erano allontanati in silenzio, come gli orologi di una
 casa vacanze.
+
+## Gli stessi 70 minuti di sabato e di martedì
+
+Per Taron, sulla pagina dell’attrazione «tipico» e «pieno» compaiono per ciascun giorno della
+settimana, e i fine settimana si staccano nettamente. Sabato e domenica hanno i valori più alti, il
+martedì quello più basso. Di sabato, quindi, gli stessi 70 minuti sono una giornata qualunque su
+questa attrazione. Di martedì stanno ben al di sopra di quello che lì è normale.
+
+Poi ci sono i mesi, che spostano il numero ancora una volta. Calcolati sull’intero parco e non sulla
+sola Taron, i mesi pieni sono luglio e agosto, e dicembre, nei pochi giorni in cui lo abbiamo
+misurato, era più o meno allo stesso livello. Settembre è il mese più tranquillo che abbiamo
+misurato. Di ottobre per ora abbiamo solo qualche giorno, perché la nostra serie è partita a
+dicembre 2025 e l’ottobre 2026 è appena cominciato.
+
+```stats-widget slug=phantasialand show=months
+
+```
+
+All’ingresso non c’è niente di tutto questo, c’è solo quel numero. Sulla pagina dell’attrazione
+trovi entrambi i valori per oggi e, sotto, la settimana giorno per giorno, così i 70 minuti li
+puoi giudicare da te.
 
 ## La giornata ha una forma
 
@@ -174,6 +196,27 @@ pattini ai piedi in pieno agosto, con la nostra benedizione. E i mesi di
 esercizio che ricaviamo dalle nostre rilevazioni li indichiamo solo dopo 330
 giorni di osservazione: prima non compare alcun mese, perché «va da dicembre ad aprile»
 descriverebbe il periodo in cui per caso abbiamo già misurato.
+
+## Cosa puoi fare con 70 minuti
+
+Se il numero all’ingresso è pari o sotto il valore tipico di quel giorno della settimana, io mi
+metto in fila. Quando è nettamente più alto, conviene guardare la curva oraria più sopra. Se lì il
+tardo pomeriggio o la sera hanno un valore più basso, prima sali su qualcos’altro e poi torni. Sulla
+pagina di Taron, oltre al consiglio per l’apertura, ce n’è anche uno per la fine della giornata,
+perché secondo le nostre rilevazioni poco prima della chiusura la fila lì torna ad accorciarsi di
+parecchio.
+
+Chi preferisce comprarsi il tempo paga 12 € per una corsa su Taron con il Quick Pass, così c’è
+scritto sulla pagina informativa del Phantasialand (aggiornato al 5 ottobre 2026). Il pass si
+compra solo sul posto, al servizio ospiti del Kaiserplatz, in numero limitato. Con un numero che
+per quel giorno della settimana è comunque normale, di rado ne vale la pena. Cosa ne pensiamo noi,
+e quando conviene il Quick Pass Ultimate, lo trovi nella
+[guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
+
+Per una giornata intera c’è il [pianificatore](/blog/pianificatore). Lì scegli le tue attrazioni e
+ricevi un ordine basato sui tempi di attesa previsti per quel giorno. Se riesci a salire su tutte
+prima della chiusura del parco lo sai già prima di partire, e non alle cinque del pomeriggio davanti
+all’ultima fila.
 
 ## Dove sta tutto questo
 
