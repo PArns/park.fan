@@ -23,6 +23,8 @@ import {
   roundOutageMinutes,
 } from '../lib/utils/outage.ts';
 import { formatSpanDuration, formatWholeHours } from '../lib/utils/duration.ts';
+import { formatShowClock } from '../lib/push/show-clock.ts';
+import { formatTime } from '../lib/utils/intl-format.ts';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
@@ -563,6 +565,46 @@ const testCases = [
       return wrong.length === 0 ? 'all carry their ends' : wrong.join(', ');
     },
     expected: 'all carry their ends',
+  },
+
+  // ── the weekday and time a block names ──
+  {
+    name: 'the weekday-and-time phrase carries both parts in all six locales',
+    // „Sonntag, 21:00 Uhr" is a message, not Intl's own format, because Intl writes neither the
+    // „Uhr" nor the „at". A locale that drops `{time}` names a day with no hour in it.
+    actual: () => {
+      const wrong = LOCALES.filter((locale) => {
+        const text = String(readMessages(locale)?.parks?.rideStatus?.weekdayTime ?? '');
+        return !text.includes('{weekday}') || !text.includes('{time}');
+      });
+      return wrong.length === 0 ? 'all carry both' : wrong.join(', ');
+    },
+    expected: 'all carry both',
+  },
+  {
+    name: "a block names the instant in the park zone, with the locale's word for the hour",
+    // 2026-10-04T19:00:00Z is Sunday 21:00 in Brühl and Sunday 15:00 in Orlando. Built the way
+    // `useWeekdayTime` builds it: `formatShowClock` for the time, the message around it.
+    actual: () => {
+      const iso = '2026-10-04T19:00:00Z';
+      const phrase = (locale, zone) =>
+        String(readMessages(locale).parks.rideStatus.weekdayTime)
+          .replace(
+            '{weekday}',
+            formatTime(new Date(iso), locale, { weekday: 'long', timeZone: zone })
+          )
+          .replace('{time}', formatShowClock(iso, zone, locale));
+      return [
+        phrase('de', BERLIN),
+        phrase('en', 'America/New_York'),
+        phrase('nl', BERLIN),
+        phrase('fr', BERLIN),
+        phrase('es', BERLIN),
+        phrase('it', BERLIN),
+      ].join(' | ');
+    },
+    expected:
+      'Sonntag, 21:00 Uhr | Sunday at 03:00 PM | zondag 21:00 uur | dimanche à 21:00 | el domingo a las 21:00 | domenica alle 21:00',
   },
 
   // ── elapsed ──

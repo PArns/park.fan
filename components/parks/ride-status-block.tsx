@@ -1,7 +1,9 @@
 import type { LucideIcon } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatShowClock } from '@/lib/push/show-clock';
+import { formatTime } from '@/lib/utils/intl-format';
 
 /**
  * The colours a block takes, each the colour of the status badge it sits under.
@@ -146,30 +148,32 @@ export function RideStatusBlock({
 }
 
 /**
- * Weekday and clock time in the park's zone, in the reader's language.
+ * Weekday and clock time in the park's zone, as a phrase in the reader's
+ * language: „Sonntag, 21:00 Uhr", „Sunday at 09:00 PM", „zondag 21:00 uur".
  *
- * Every instant a block names goes through here, so „seit Montag, 09:38" and
- * „zuletzt Sonntag, 18:00" are the same format on the same card. The weekday is
- * never relative („gestern"): which day is yesterday cannot be decided
- * identically on both sides of hydration, and the API keeps every instant it
- * sends a block inside seven days, where a weekday is unambiguous.
+ * Every instant a block names goes through here, so „seit Montag, 09:38 Uhr"
+ * and „zuletzt Sonntag, 18:00 Uhr" are the same format on the same card. The
+ * time is `formatShowClock`, the park-zone clock every other time on the site
+ * reads like. The phrase around it is a message (`parks.rideStatus.weekdayTime`)
+ * because `Intl` writes neither the „Uhr" nor the „at", and both belong to the
+ * time in the languages that use them — the same split as „um {time} Uhr" on
+ * the show alerts.
  *
- * Falls back to the runtime's zone rather than throwing: an unknown timezone
- * costs the sentence its precision, not the card its render.
+ * The weekday is never relative („gestern"): which day is yesterday cannot be
+ * decided identically on both sides of hydration, and the API keeps every
+ * instant it sends a block inside the last week, where a weekday is
+ * unambiguous.
+ *
+ * `null` for an instant or a zone `Intl` cannot read, which the caller renders
+ * as the sentence for an unknown start rather than a time in the wrong zone.
  */
-export function formatWeekdayTime(
-  instant: Date,
-  timezone: string | undefined,
-  locale: string
-): string {
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-    hour: '2-digit',
-    minute: '2-digit',
+export function useWeekdayTime(timezone: string | undefined): (iso: string) => string | null {
+  const t = useTranslations('parks.rideStatus');
+  const locale = useLocale();
+  return (iso) => {
+    const time = formatShowClock(iso, timezone ?? null, locale);
+    if (time === null) return null;
+    const weekday = formatTime(new Date(iso), locale, { weekday: 'long', timeZone: timezone });
+    return t('weekdayTime', { weekday, time });
   };
-  try {
-    return getDateTimeFormat(locale, { ...options, timeZone: timezone }).format(instant);
-  } catch {
-    return getDateTimeFormat(locale, options).format(instant);
-  }
 }

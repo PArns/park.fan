@@ -828,6 +828,9 @@
       "title": "Pas encore en service aujourd'hui",
       "lastRun": "En service pour la dernière fois : {when}"
     },
+    "rideStatus": {
+      "weekdayTime": "{weekday} à {time}"
+    },
     "noLiveWaitTimes": {
       "title": "Pas de temps d’attente disponibles",
       "reason": {
