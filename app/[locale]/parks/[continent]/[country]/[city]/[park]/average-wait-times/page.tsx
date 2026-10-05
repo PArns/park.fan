@@ -56,6 +56,7 @@ import { ParkStatsMethod } from '@/components/parks/park-stats-method';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface ParkStatsPageProps {
   params: Promise<{
@@ -418,7 +419,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
           value — when to walk to the headliner, not how long its queue is — and the only chapter
           here that no park URL rendered before. */}
         {showHourly && (
-          <section className="mt-8" aria-labelledby="stats-hourly-heading">
+          <section className={CHAPTER_GAP_COMPACT} aria-labelledby="stats-hourly-heading">
             <ChapterHeading
               icon={Clock}
               title={t('hourlyTitle')}

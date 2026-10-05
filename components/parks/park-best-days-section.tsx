@@ -19,6 +19,7 @@ import { ParkBestDaysHeader, localizedParkName } from '@/components/parks/park-b
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface ParkBestDaysSectionProps {
   continent: string;
@@ -320,7 +321,7 @@ function BestDaysContent({
   }
 
   return (
-    <section aria-labelledby="best-days-heading" className="mt-8 space-y-4">
+    <section aria-labelledby="best-days-heading" className={cn(CHAPTER_GAP_COMPACT, 'space-y-4')}>
       {/* Header and the three cards are ONE box, the way „Monat für Monat" and its month
         stepper are: the band squares off its bottom, the card underneath drops its top border
         and radius, and the chapter reads as one object instead of a lid resting on a gap of

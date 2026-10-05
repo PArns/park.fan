@@ -4,6 +4,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { AttractionHistoryPanel } from './attraction-history-panel';
 import { AttractionTypicalWaits } from './attraction-typical-waits';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface AttractionHistorySectionsProps {
   continent: string;
@@ -70,7 +71,7 @@ export function AttractionHistorySections({
         0.3264 on a phone). It sits well there for the same reason the park's crowd calendar puts
         the historical statistics under its grid — the same question, one grain coarser. */}
       {!suppressTypicalWaits && detail?.typicalWaits?.displayable && (
-        <section className="mt-8">
+        <section className={CHAPTER_GAP_COMPACT}>
           <AttractionTypicalWaits typicalWaits={detail.typicalWaits} />
         </section>
       )}
