@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { CirclePause, TriangleAlert } from 'lucide-react';
+import { TriangleAlert } from 'lucide-react';
 import type { AttractionOutage } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 import { formatSpanDuration } from '@/lib/utils/duration';
@@ -73,7 +73,7 @@ import { OutageEstimateNote } from './outage-estimate-note';
  * opening hours, and the sentence drops the attribution: „Steht seit … still."
  * We noticed it; nobody told us.
  *
- * ## One block, tinted in the status badge's colour
+ * ## One block, in the outage colour, whichever signal placed it
  *
  * The sentence, the elapsed clause and the „wie lange noch" estimate
  * (`OutageEstimateNote`) sit in one tinted box with a solid icon chip, on the
@@ -81,13 +81,15 @@ import { OutageEstimateNote } from './outage-estimate-note';
  * they read as small print under the badges, and on a card they wrapped at the
  * 92 px the corner circles reserve.
  *
- * The tint follows the signal, which is also what the badge above it shows: a
- * reported `down` is the ride's DOWN badge, orange; an inferred `closed_gap`
- * only exists for a ride whose status is CLOSED, so it takes the closed red. The
- * chip is the badges' own fill (`--badge-status-*`), solid, with a white glyph
- * like the badges' white label. The text
- * stays on the surface's own text colours: `--status-down` as small text is
- * 2.65 : 1 on a light surface, see `OutageEstimateNote`.
+ * Both signals get the same block: the DOWN badge's orange and its warning
+ * triangle. A `closed_gap` sits under a red CLOSED badge, and it was drawn in
+ * that red with a pause glyph at first; it looked like a different component
+ * next to the orange ones and was turned down in review. The difference between
+ * the two signals is a claim about who noticed, and the sentence carries it
+ * („gemeldet" or not). The chip is the DOWN badge's own fill
+ * (`--badge-status-down`), solid, with a white glyph like the badge's white
+ * label. The text stays on the surface's own text colours: `--status-down` as
+ * small text is 2.65 : 1 on a light surface, see `OutageEstimateNote`.
  *
  * ## data-nosnippet
  *
@@ -146,15 +148,11 @@ export function OutageNote({
 
   const elapsed = outageElapsedMinutes(outage);
   const full = variant === 'full';
-  const Icon = inferred ? CirclePause : TriangleAlert;
 
   return (
     <div
       className={cn(
-        'rounded-xl border',
-        inferred
-          ? 'border-status-closed/25 bg-status-closed/10'
-          : 'border-status-down/25 bg-status-down/10',
+        'border-status-down/25 bg-status-down/10 rounded-xl border',
         full ? 'p-3' : 'px-2.5 py-2',
         className
       )}
@@ -163,13 +161,12 @@ export function OutageNote({
       <div className={cn('flex items-center', full ? 'gap-3' : 'gap-2.5')}>
         <span
           className={cn(
-            'grid shrink-0 place-items-center rounded-full text-white shadow-sm',
-            inferred ? 'bg-badge-status-closed' : 'bg-badge-status-down',
+            'bg-badge-status-down grid shrink-0 place-items-center rounded-full text-white shadow-sm',
             full ? 'size-8' : 'size-6'
           )}
           aria-hidden="true"
         >
-          <Icon className={full ? 'size-4' : 'size-3.5'} />
+          <TriangleAlert className={full ? 'size-4' : 'size-3.5'} />
         </span>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span
@@ -202,8 +199,7 @@ export function OutageNote({
         timezone={timezone}
         variant={variant}
         className={cn(
-          'border-t tabular-nums',
-          inferred ? 'border-status-closed/20' : 'border-status-down/20',
+          'border-status-down/20 border-t tabular-nums',
           full
             ? 'text-muted-foreground mt-3 gap-1.5 pt-3 text-xs'
             : 'mt-2 pt-2 text-[11px] leading-tight text-(--pk-text-2)'
