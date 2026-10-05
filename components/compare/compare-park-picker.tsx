@@ -31,7 +31,7 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
   const locale = useLocale();
   const listId = useId();
   const [query, setQuery] = useState('');
-  const [hits, setHits] = useState<SearchParkHit[]>([]);
+  const [found, setFound] = useState<{ q: string; hits: SearchParkHit[] }>({ q: '', hits: [] });
   const [busy, setBusy] = useState(false);
 
   const needle = query.trim();
@@ -48,12 +48,12 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
       fetch(`/api/search?q=${encodeURIComponent(needle)}`, { signal: controller.signal })
         .then((response) => (response.ok ? response.json() : null))
         .then((data: unknown) => {
-          setHits(parkHits(data));
+          setFound({ q: needle, hits: parkHits(data) });
           setBusy(false);
         })
         .catch(() => {
           if (controller.signal.aborted) return;
-          setHits([]);
+          setFound({ q: needle, hits: [] });
           setBusy(false);
         });
     }, 250);
@@ -61,17 +61,20 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
     return () => {
       window.clearTimeout(timer);
       controller.abort();
+      setBusy(false);
     };
   }, [needle]);
 
-  const results = short ? [] : hits.slice(0, 6);
+  // Hits belong to the query they answered: while a newer one is in flight (250 ms debounce plus
+  // the request) the old list is neither shown nor pickable by Enter.
+  const results = short || found.q !== needle ? [] : found.hits.slice(0, 6);
   const keyOf = (p: SearchParkHit) => `${p.geo.continent}/${p.geo.country}/${p.geo.city}/${p.slug}`;
 
   const pick = (park: SearchParkHit) => {
     if (disabled || chosen.has(keyOf(park))) return;
     onPick(park);
     setQuery('');
-    setHits([]);
+    setFound({ q: '', hits: [] });
   };
 
   return (

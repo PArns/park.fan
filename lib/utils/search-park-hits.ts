@@ -11,6 +11,8 @@ export interface SearchParkHit {
   imagePosition?: string;
 }
 
+const SLUG = /^[a-z0-9-]+$/;
+
 /**
  * Park hits out of the search payload, with their geo read off the API's own URL.
  *
@@ -37,6 +39,8 @@ export function parkHits(data: unknown): SearchParkHit[] {
     if (parksAt === -1) continue;
     const geoParts = parts.slice(parksAt + 1);
     if (geoParts.length < 4) continue;
+    // Segments end up in API paths and in a comma-separated URL value; a slug is lowercase words.
+    if (!geoParts.slice(0, 3).every((part) => SLUG.test(part)) || !SLUG.test(hit.slug)) continue;
 
     out.push({
       slug: hit.slug,
