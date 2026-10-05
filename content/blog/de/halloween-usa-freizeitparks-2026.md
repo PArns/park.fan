@@ -2,6 +2,7 @@
 title: 'Halloween 2026 in den USA: Termine, Häuser und Preise'
 translationKey: halloween-usa-2026
 date: '2026-10-03'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -67,10 +68,10 @@ seo:
     - Halloween USA mit Kindern
 ---
 
-Anfang Oktober laufen in 25 der US-Parks auf park.fan Halloween-Events, und fast alle dauern bis zum 31. Oktober oder zum 1. November. SCarowinds in Charlotte macht als letztes zu, am 7. November. Für die bekanntesten Abende brauchst du ein eigenes Ticket. Bei einigen Parks steckt
+Anfang Oktober laufen in 25 der US-Parks auf park.fan Halloween-Events, und fast alle dauern bis zum 31. Oktober oder zum 1. November. SCarowinds in Charlotte macht als letztes zu, am 7. November. Für die Horror Nights, Knott's Scary Farm und Howl-O-Scream in Tampa und Orlando brauchst du ein eigenes Ticket. Bei einigen Parks steckt
 das Event im normalen Eintritt, und die beiden Disney-Partys sind für 2026 schon ausverkauft.
 
-Die Events teilen sich in zwei Gruppen. Abends gibt es Horrorhäuser, Scare Zones mit Darstellern
+Abends gibt es Horrorhäuser, Scare Zones mit Darstellern
 und Shows, und fast jeder Park rät davon ab, Kinder unter 13 Jahren mitzubringen. Tagsüber gibt es
 Süßigkeiten, Kürbisse und Kostüme, oft im selben Park, nur ein paar Stunden früher. Den Überblick
 für Europa haben wir im [Halloween-Guide](/blog/halloween-freizeitparks-2026), Cedar Point in Ohio
@@ -78,7 +79,7 @@ hat einen eigenen Beitrag über [HalloWeekends](/blog/cedar-point-halloweekends-
 
 > [!NOTE]
 > Stand 5. Oktober 2026: Termine, Häuser, Altersgrenzen und Preise unten stammen von den Seiten der
-> Parks und Betreiber, an diesem Tag abgerufen und bei jedem Abschnitt verlinkt. Die Preise sind
+> Parks und Betreiber, an diesem Tag abgerufen. Die Preise sind
 > Startpreise in US-Dollar ohne Steuer, sie hängen vom Abend ab und steigen meist, je näher er
 > rückt.
 
@@ -108,8 +109,7 @@ hat einen eigenen Beitrag über [HalloWeekends](/blog/cedar-point-halloweekends-
 
 „Mit Eintritt“ heißt, dass im Preis der Parkeintritt für den Tag steckt. Bei den Six-Flags-Parks
 außer Knott's kommst du in die Horrorhäuser nur mit dem Haunted Attractions Pass, der im Paket
-schon enthalten ist. Wer eine Saisonkarte hat, kauft ihn einzeln dazu. Die Events für Familien
-stehen weiter unten in einem eigenen Teil.
+schon enthalten ist. Wer eine Saisonkarte hat, kauft ihn einzeln dazu.
 
 ## Horror am Abend
 
@@ -124,21 +124,21 @@ spätestens um 17 Uhr, und dann bleibst du im Park, bis das Event beginnt.
 
 Zehn Häuser stehen im Programm. Fünf davon laufen in derselben Form auch in Hollywood:
 
-- **Stranger Things**: die fünfte und letzte Staffel der Netflix-Serie
-- **Sinners**: nach dem Horrorfilm von 2025
-- **Hellraiser**: nach den ersten drei Filmen der Reihe
-- **Ozzy Osbourne: Prince of Darkness**: ein Haus über den Heavy-Metal-Musiker, eigens für die
+- Stranger Things, die fünfte und letzte Staffel der Netflix-Serie
+- Sinners, nach dem Horrorfilm von 2025
+- Hellraiser, nach den ersten drei Filmen der Reihe
+- Ozzy Osbourne: Prince of Darkness, ein Haus über den Heavy-Metal-Musiker, eigens für die
   Horror Nights entworfen
-- **Evil Dead Burn**: nach dem neuesten Film der Evil-Dead-Reihe
+- Evil Dead Burn, nach dem neuesten Film der Evil-Dead-Reihe
 
 Die anderen fünf hat Universal selbst erfunden:
 
-- **Jack & Oddfellow: Chaos & Control**: die Vorgeschichte von Jack the Clown
-- **INVASION: Alien Abduction**: ein Raumschiff entführt eine Familie samt Vieh
-- **H.R. Bloodengutz Presents: A Halloween Fright-Tacular!**: ein letztes Halloween-Special im
+- Jack & Oddfellow: Chaos & Control, die Vorgeschichte von Jack the Clown
+- INVASION: Alien Abduction, ein Raumschiff entführt eine Familie samt Vieh
+- H.R. Bloodengutz Presents: A Halloween Fright-Tacular!, ein letztes Halloween-Special im
   Fernsehsender WKNB
-- **MADLANDS: Caged Cannibals**: eine Ödnis nach dem Weltuntergang
-- **Cybergoria**: Menschen wachen Jahrtausende später aus dem Kälteschlaf auf
+- MADLANDS: Caged Cannibals, eine Ödnis nach dem Weltuntergang
+- Cybergoria, Menschen wachen Jahrtausende später aus dem Kälteschlaf auf
 
 Dazu kommen vier Scare Zones, alle neu: Fortnitemares, Infernal Carnival of Nightmares, Downtown
 Clowntown und Sideshow of Decay. Auf den Straßen laufen außerdem Mel's Die-In: Zombies, Club
@@ -225,7 +225,7 @@ wie Fright Fest.
 
 ### Six Flags Great Adventure: Fright Fest
 
-[Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey zeigt neun Mazes, mehr als jeder andere Six-Flags-Park in diesem Überblick außer Knott's. Neu sind **JASON: Blood Reign** und **Final
+[Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey hat neun Mazes, mehr als jeder andere Six-Flags-Park in diesem Überblick außer Knott's. Neu sind **JASON: Blood Reign** und **Final
 Destination: Death's Playground**. Dazu kommen The Conjuring Universe, Army of the Dead, Asylum,
 Twisted Holidays, Deadwood Cabin, Big Top Terror und The Witch's Reflection, außerdem fünf Scare
 Zones und fünf Shows.
@@ -251,8 +251,7 @@ Shows sind 2026 neu. Pakete gibt es ab 55 $, den Haunted Attractions Pass ab 10 
 
 ### Carowinds: SCarowinds
 
-[Carowinds](ref:carowinds) an der Grenze zwischen North und South Carolina hat die längste Saison
-in diesem Überblick. SCarowinds läuft vom 11. September bis zum 7. November, donnerstags bis
+[Carowinds](ref:carowinds) an der Grenze zwischen North und South Carolina hat das Event, das in diesem Überblick als letztes endet. SCarowinds läuft vom 11. September bis zum 7. November, donnerstags bis
 samstags von 18 Uhr bis Mitternacht und sonntags bis 23 Uhr. Neu sind die Maze **JASON: Blood
 Reign**, drei der fünf Scare Zones und vier der sechs Shows. The Conjuring: Beyond Fear kostet auch
 hier extra. Das Paket mit Eintritt beginnt bei 55 $, der Haunted Attractions Pass bei 10 $.
@@ -333,7 +332,7 @@ völliger Dunkelheit, mit Halloween-Musik.
 
 Der **Oogie Boogie Bash** in [Disney California Adventure](ref:disney-california-adventure-park) in
 Anaheim hat 33 Abende vom 18. August bis zum 31. Oktober, jeweils von 18 bis 23 Uhr, Einlass ab
-15 Uhr. Die Preise lagen zwischen 139 $ und 199 $ am 31. Oktober, und auch hier sind alle Tickets
+15 Uhr. Die Preise lagen zwischen 139 $ für einen Abend im August und 199 $ für den 31. Oktober, und auch hier sind alle Tickets
 verkauft. Neu ist das Straßenfest Madame Leota's Swinging Wake zur Haunted Mansion. Ab 14 Jahren
 sind Masken nicht erlaubt, Umhänge nur, wenn sie nicht über den Boden schleifen.
 
@@ -341,12 +340,11 @@ Wer keine Party-Karte hat, bekommt die Dekoration trotzdem mit. Im Magic Kingdom
 Kürbiskränze über der Main Street, im Disneyland Resort läuft Halloween Time bis zum 31. Oktober im
 normalen Eintritt. Dort wird die Haunted Mansion zur Haunted Mansion Holiday, Cars Land abends zu
 Radiator Screams, und der Disneyland Park zeigt die Abendshow Halloween Screams, an einzelnen
-Abenden mit Feuerwerk. Wie man einen Tag im Magic Kingdom plant, steht im
-[Magic-Kingdom-Guide](/blog/magic-kingdom-wartezeiten-tipps).
+Abenden mit Feuerwerk. Einen Tag im Magic Kingdom planst du mit dem [Magic-Kingdom-Guide](/blog/magic-kingdom-wartezeiten-tipps).
 
 ### Knott's Spooky Farm und die Tage bei Six Flags
 
-Knott's Berry Farm macht tagsüber das Gegenteil seiner Nächte. Die Spooky Farm läuft donnerstags
+Die Spooky Farm in Knott's Berry Farm läuft tagsüber, donnerstags
 bis sonntags vom 24. September bis zum 31. Oktober, dazu am Columbus Day, dem 12. Oktober, mit dem
 Motto „All Fun. No Fear.“: Süßigkeiten in der Ghost Town, die Peanuts-Figuren, ein Kürbisfeld und
 Shows. Fürs Kürbisfeld und das Plätzchenverzieren zahlst du extra.
@@ -389,11 +387,11 @@ offen, freitags von 18 bis 22 Uhr, samstags von 14 bis 22 Uhr und sonntags von 1
 
 ## Mit Kindern: Altersgrenzen und Kostüme
 
-Fast alle Abend-Events empfehlen sich erst ab 13 Jahren. Six Flags schreibt das für jeden seiner
+Fast alle Parks empfehlen ihre Abend-Events erst ab 13 Jahren. Six Flags schreibt das für jeden seiner
 Parks, Busch Gardens Tampa und SeaWorld Orlando sprechen von einem erwachsenen Publikum, SeaWorld lässt Jugendliche unter 18 aber hinein. In Great America gilt die Empfehlung ab 18 Uhr, und in Kennywood braucht jeder bis 17 eine Begleitung ab 21 Jahren. Hersheypark nennt für
 die Dark Nights kein Alter.
 
-Bei den Kostümen sind die Regeln strenger, als viele erwarten. Beim Oogie Boogie Bash sind Masken ab 14 Jahren verboten, Kostüme dürfen nicht über den Boden schleifen und keine Waffen enthalten, und
+Beim Oogie Boogie Bash sind Masken ab 14 Jahren verboten, Kostüme dürfen nicht über den Boden schleifen und keine Waffen enthalten, und
 wer sich als Figur verkleidet, darf sich nicht wie eine fotografieren lassen. SeaWorld Orlando
 verbietet beim Spooktacular Masken ab 13 Jahren, Hersheypark ebenso. Bei den Halloween Horror
 Nights in Orlando sind Kostüme und Kostümmasken verboten, außer an der Premium Scream Night, in
@@ -414,7 +412,7 @@ Die ruhigsten Tage der nächsten Wochen in Knott's Berry Farm stehen im Kalender
 ```
 
 Für die großen Parks mit einem Abend-Event haben wir die Wartezeiten der laufenden Saison, jeweils
-mit dem Wochentag, an dem die Warteschlangen dort am kürzesten sind. Wie stark der Preis am Datum hängt, sieht man am Oogie Boogie Bash: Der 31. Oktober kostete 199 $, ein Abend im August 139 $. Bei den Horror Nights in Orlando kostete der 31. Oktober am 5. Oktober 140 $, der 14. Oktober 95 $.
+mit dem Wochentag, an dem die Warteschlangen dort am kürzesten sind. Der Oogie Boogie Bash kostete am 31. Oktober 199 $, an einem Abend im August 139 $. Bei den Horror Nights in Orlando kostete der 31. Oktober am 5. Oktober 140 $, der 14. Oktober 95 $.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 
@@ -451,7 +449,7 @@ Six Flags empfiehlt seine Abende ab 13 Jahren, Busch Gardens Tampa und SeaWorld 
 von einem erwachsenen Publikum. Verboten sind jüngere Kinder meist nicht, sie brauchen aber ein
 eigenes Ticket.
 
-### Welches Event läuft am längsten?
+### Welches Event endet als letztes?
 
 SCarowinds in Carowinds, bis zum 7. November. Fast alle anderen enden am 31. Oktober oder am 1. November.
 
