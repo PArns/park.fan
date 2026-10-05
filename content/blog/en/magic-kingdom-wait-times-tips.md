@@ -73,11 +73,13 @@ We can't say why. The crowd queues for a handful of rides instead.
 ## The six lands and the utilidors
 
 The park opened on **1 October 1971** as the first part of Walt Disney World, on
-the same day as the Contemporary and Polynesian hotels. It's run by Disney
-Experiences, the company's parks division, and the resort turned 55 on 1 October 2026. At opening the park had 23 attractions, twenty of them copies of rides
-from Disneyland in California, and six lands. Five of those lands were Anaheim's Main Street,
-Adventureland, Frontierland, Fantasyland and Tomorrowland. The sixth, Liberty
-Square, exists only in Florida, and it is where the Haunted Mansion sits.
+the same day as the Contemporary and Polynesian hotels. At opening it had 23
+attractions, twenty of them copies of rides from Disneyland in California, and
+six lands. Five of those lands were Anaheim's Main Street, Adventureland,
+Frontierland, Fantasyland and Tomorrowland. The sixth, Liberty Square, exists
+only in Florida, and it's where the Haunted Mansion sits. The park is run by
+Disney Experiences, the company's parks division, and the resort turned 55 on 1
+October 2026.
 
 Only one land was ever added. It opened in 1988 as Mickey's Birthdayland, ended
 up as Mickey's Toontown Fair, and closed on 11 February 2011 to make room for
@@ -124,10 +126,10 @@ Mountain.
 
 ## The five coasters
 
-Magic Kingdom has five roller coasters, and none of them is fast. TRON, the
-fastest, reaches 59 mph (95 km/h), and the other four stay under 60 km/h
-(37 mph). On the other hand, a child of 35 inches (89 cm) can already ride the first
-one, and at 38 inches (97 cm) three of the five. The height requirements below
+Magic Kingdom has five roller coasters. TRON, the fastest, reaches 59 mph
+(95 km/h), and the other four stay under 60 km/h (37 mph). On the other hand, a
+child of 35 inches (89 cm) can already ride the smallest one, and at 38 inches
+(97 cm) three of the five. The height requirements below
 are the ones on Disney's ride pages, and the technical figures come from the
 Roller Coaster DataBase.
 
@@ -167,10 +169,10 @@ Circus is the small one to start with, a Vekoma junior coaster from 1996. It's
 242 metres long and nine metres high, and it reaches 25 mph (40 km/h). Anyone
 35 inches (89 cm) or taller can ride.
 
-## The water ride, the dark rides and the 1971 classics
+## The log flume, the dark rides and the 1971 classics
 
 [Tiana's Bayou Adventure](ref:magic-kingdom-park/tianas-bayou-adventure) is the
-only water ride in the park. The boats float through the Louisiana bayou to a
+only log flume in the park. The boats float through the Louisiana bayou to a
 party from _The Princess and the Frog_, and at the end comes a drop Disney gives
 as 50 feet, a little over 15 metres. Elsewhere Disney says 55 feet, and
 Wikipedia has 16 metres. Minimum height 40 inches (102 cm), and you will get
@@ -191,17 +193,17 @@ Haunted Mansion usually ranks highest in the table above.
 
 ## Parades, fireworks and shows
 
-The day at Magic Kingdom ends with **Happily Ever After**, an 18-minute
-fireworks show with lasers and projections on the castle and the buildings of
-Main Street. Before or after it comes the nighttime parade **Disney Starlight:
-Dream the Night Away**, which premiered on 20 July 2025. During the day the
-**Disney Festival of Fantasy Parade** takes twelve minutes to pass through the
-park, the shorter Disney Adventure Friends Cavalcade runs as well, and Mickey's
-Magical Friendship Faire plays in front of the castle.
+The day at Magic Kingdom ends with Happily Ever After, an 18-minute fireworks
+show with lasers and projections on the castle and the buildings of Main Street.
+Before or after it comes the nighttime parade Disney Starlight: Dream the Night
+Away, which premiered on 20 July 2025. During the day the Disney Festival of
+Fantasy Parade takes twelve minutes to pass through the park, the shorter
+Disney Adventure Friends Cavalcade runs as well, and Mickey's Magical
+Friendship Faire plays in front of the castle.
 
-Show times change daily and are listed in Disney's app. They matter for the
-queues, because while a parade or the fireworks are on, a lot of guests are
-lining the route instead of the rides. On Halloween and Christmas party nights
+Show times change daily and are listed in Disney's app. During the parades and
+the fireworks, a lot of guests stand along the route instead of in the queues.
+On Halloween and Christmas party nights
 the regular fireworks are cancelled, and a separate show runs for party guests
 only.
 
@@ -237,15 +239,14 @@ toward closing.
 ### Early Entry and Extended Evening Hours
 
 If you're staying at a Disney hotel, you can get into the park 30 minutes ahead
-of everyone else every day, and Disney says that will continue until the end of 2027. At Magic Kingdom the rides running in that half hour include Seven Dwarfs
-Mine Train, Space Mountain, Peter Pan's Flight and The Barnstormer, while TRON,
-Tiana's, Big Thunder and the Jungle Cruise stay shut. For hotel guests that
-means the half hour belongs to the Mine Train, and TRON comes right at the
-official opening.
+of everyone else every day, and Disney says that will continue until the end
+of 2027. At Magic Kingdom the rides running in that half hour include Seven
+Dwarfs Mine Train, Space Mountain, Peter Pan's Flight and The Barnstormer.
+TRON, Tiana's, Big Thunder and the Jungle Cruise stay shut.
 
-Guests at the Deluxe hotels and a few others get Extended Evening Hours on
-selected nights, up to two hours after the park closes. TRON, Space Mountain,
-Big Thunder and the Mine Train all run then. Disney's calendar lists which
+Guests at the Deluxe hotels and a few others that Disney lists on its page get
+Extended Evening Hours on selected nights, up to two hours after the park
+closes. TRON, Space Mountain, Big Thunder and the Mine Train all run then. Disney's calendar lists which
 nights they are.
 
 ### A day the way I'd plan it
@@ -259,8 +260,8 @@ leave the Mine Train for the evening.
 Spend midday in the dark rides of Adventureland and Liberty Square, in an
 air-conditioned restaurant or at the Festival of Fantasy Parade. In the
 afternoon, when the queues at the big rides are at their longest, ride the
-classics. During the fireworks, stay away from Main Street, where the crowd is
-thickest, and use the time for one more big ride. The last hour before closing
+classics. Main Street is at its fullest during the fireworks, so that's the
+time for one more of the big rides. The last hour before closing
 is for the Mine Train, if it didn't work out in the morning.
 
 To see how long all of that takes, enter your rides in the [trip
@@ -269,7 +270,7 @@ forecast wait times.
 
 ## With small children
 
-For families with children under eight, the day happens in Fantasyland. That's
+For families with small children, the day happens in Fantasyland. That's
 where you'll find Peter Pan's Flight, "it's a small world", the Mine Train, the
 Mad Tea Party teacups and, in Storybook Circus, Dumbo the Flying Elephant, where
 each child decides how high their elephant flies. Dumbo has no height
@@ -334,7 +335,13 @@ is the one to pick. At some other parks there is one, and the
 Magic Kingdom has closed temporarily for
 nine hurricanes since it opened, most recently Milton in October 2024.
 
-### Halloween and Christmas
+If you have a date range in mind, this table is recalculated every day:
+
+```best-days-widget slug=magic-kingdom-park
+
+```
+
+## Halloween and Christmas
 
 Mickey's Not-So-Scary Halloween Party runs on 38 nights between 7 August and 31
 October 2026, and Disney lists every date as sold out. On those nights the park
@@ -350,12 +357,6 @@ $189 to $229 plus tax depending on the night, and children aged three to nine
 pay $10 less. The party has its own parade, Mickey's Once Upon a Christmastime
 Parade, and its own fireworks, Minnie's Wonderful Christmastime Fireworks Show.
 On these nights, too, the park closes early for everyone else.
-
-If you have a date range in mind, this table is recalculated every day:
-
-```best-days-widget slug=magic-kingdom-park
-
-```
 
 ## What is closed, and what is coming
 
@@ -376,12 +377,11 @@ Disney expects it to reopen in late spring 2027.
 
 The Walt Disney World Railroad has been closed for maintenance since 28
 September 2026 and is due back in November. Since the Frontierland rebuild it no
-longer circles the park and only runs between Main Street and Fantasyland. The
-first version of this guide still had it going all the way round.
+longer circles the park and only runs between Main Street and Fantasyland.
 
-The castle itself got new colours in 2026. And for 2027 Disney has announced
-Disney After Hours, separately ticketed nights after closing on selected dates
-from 11 January to 19 July.
+The castle got new colours in 2026. For 2027 Disney has announced evenings after
+park close, Disney After Hours, with their own ticket, on selected days from 11
+January to 19 July.
 
 ## Getting there, hours, tickets and food
 
@@ -425,9 +425,9 @@ Disney's app, which works at more than 60 locations across the resort.
 **Hotels.** The closest are the three hotels on the monorail: the Contemporary,
 with the monorail running through its main hall, the Polynesian Village, and the
 Grand Floridian from 1988. Bay Lake Tower belongs to the Contemporary. All three
-are Deluxe hotels, so they get Early Entry and Extended Evening Hours. Disney's
-Lakeshore Lodge opens on Bay Lake in summer 2027 and can be booked from 8
-October 2026. The hotels on the bus network elsewhere in the resort are cheaper.
+are Deluxe hotels, so their guests get the Extended Evening Hours on top of
+Early Entry. Disney's Lakeshore Lodge opens on Bay Lake in summer 2027 and can
+be booked from 8 October 2026.
 
 ## Frequently asked questions about Magic Kingdom
 
@@ -466,7 +466,7 @@ same center.
 
 The Barnstormer takes riders from 35 inches (89 cm), Seven Dwarfs Mine Train and
 Big Thunder Mountain from 38 inches (97 cm), Space Mountain from 44 inches (112
-cm) and TRON from 48 inches (122 cm). The water ride, Tiana's Bayou Adventure,
+cm) and TRON from 48 inches (122 cm). The log flume, Tiana's Bayou Adventure,
 needs 40 inches (102 cm). The dark rides have no height requirement.
 
 ### When does Magic Kingdom close early?

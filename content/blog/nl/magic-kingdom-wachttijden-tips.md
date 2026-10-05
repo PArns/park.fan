@@ -76,12 +76,12 @@ maar bij een handvol attracties.
 
 Het park ging op **1 oktober 1971** open als eerste deel van Walt Disney World,
 op dezelfde dag als de hotels Contemporary en Polynesian, met 23 attracties en
-zes themalanden. Het wordt gerund door Disney Experiences, de parkendivisie van
-het concern, en op 1 oktober 2026 bestond het resort 55 jaar. Twintig van de 23
-attracties waren kopieën van ritten uit Disneyland in Californië, en vijf van de
-landen bestonden ook in Anaheim: Main Street, Adventureland, Frontierland,
-Fantasyland en Tomorrowland. Het zesde, Liberty Square, bestaat alleen in
-Florida, en daar staat de Haunted Mansion.
+zes themalanden. Twintig van de 23 attracties waren kopieën van ritten uit
+Disneyland in Californië, en vijf van de landen bestonden ook in Anaheim: Main
+Street, Adventureland, Frontierland, Fantasyland en Tomorrowland. Het zesde,
+Liberty Square, bestaat alleen in Florida, en daar staat de Haunted Mansion. Het
+park wordt gerund door Disney Experiences, de parkendivisie van het concern, en
+op 1 oktober 2026 bestond het resort 55 jaar.
 
 Sindsdien is er maar één themaland bijgekomen. Het opende in 1988 als Mickey's
 Birthdayland, heette uiteindelijk Mickey's Toontown Fair en ging op 11 februari
@@ -129,9 +129,9 @@ twee dagen na het park openging, staat nog boven Space Mountain.
 
 ## De vijf achtbanen
 
-Magic Kingdom heeft vijf achtbanen, en snel is geen van de vijf. De snelste,
-TRON, haalt 95 km/u, de rest blijft onder de 60. Daar staat tegenover dat een
-kind vanaf 89 centimeter al in de eerste mag, en vanaf 97 centimeter in drie van
+Magic Kingdom heeft vijf achtbanen. De snelste, TRON, haalt 95 km/u, de rest
+blijft onder de 60. Daar staat tegenover dat een kind vanaf 89 centimeter al in
+de kleinste mag, en vanaf 97 centimeter in drie van
 de vijf. De minimale lengtes hieronder komen van de pagina's die Disney over de
 attracties heeft, de technische gegevens uit de Roller Coaster DataBase.
 
@@ -169,10 +169,10 @@ Circus is de kleine baan om mee te beginnen, een juniorachtbaan van Vekoma uit
 1996, 242 meter lang en negen meter hoog, met een topsnelheid van 40 km/u. Vanaf
 89 centimeter mag je mee.
 
-## Waterattractie, dark rides en de klassiekers uit 1971
+## Boomstamattractie, dark rides en de klassiekers uit 1971
 
 [Tiana's Bayou Adventure](ref:magic-kingdom-park/tianas-bayou-adventure) is de
-enige waterattractie in het park. De boten varen door de moerassen van Louisiana
+enige boomstamattractie in het park. De boten varen door de moerassen van Louisiana
 naar een feest uit de film “De prinses en de kikker”, en aan het eind gaat het
 volgens Disney 50 voet omlaag, ruim 15 meter. Elders houdt Disney het op 55 voet,
 en op Wikipedia staat 16 meter. Minimale lengte 102 centimeter, en je wordt nat.
@@ -193,17 +193,16 @@ Haunted Mansion meestal ver bovenaan tussen de klassiekers.
 
 ## Parades, vuurwerk en shows
 
-'s Avonds sluit Magic Kingdom de dag af met **Happily Ever After**, een
+'s Avonds sluit Magic Kingdom de dag af met Happily Ever After, een
 vuurwerkshow van 18 minuten met lasers en projecties op het kasteel en de huizen
-van Main Street. Ervoor of erna rijdt de avondparade **Disney Starlight: Dream
-the Night Away**, die op 20 juli 2025 in première ging. Overdag trekt de
-**Disney Festival of Fantasy Parade** twaalf minuten lang door het park, er is
+van Main Street. Ervoor of erna rijdt de avondparade Disney Starlight: Dream
+the Night Away, die op 20 juli 2025 in première ging. Overdag trekt de
+Disney Festival of Fantasy Parade twaalf minuten lang door het park, er is
 ook de kortere Disney Adventure Friends Cavalcade, en voor het kasteel speelt
 Mickey's Magical Friendship Faire.
 
 De tijden wisselen per dag en staan in de app van Disney. Tijdens de parades en
-het vuurwerk staan veel bezoekers langs de route in plaats van bij de
-attracties, en dat merk je aan de rijen. Op avonden met een Halloween- of
+het vuurwerk staan veel bezoekers langs de route in plaats van in de rijen. Op avonden met een Halloween- of
 kerstfeest vervalt het gewone vuurwerk en is er een eigen show alleen voor de
 gasten van het feest.
 
@@ -241,10 +240,10 @@ Wie in een Disneyhotel logeert, mag elke dag 30 minuten eerder het park in dan
 de rest, volgens Disney nog tot eind 2027. In dat halfuur draaien in Magic
 Kingdom onder meer Seven Dwarfs Mine Train, Space Mountain, Peter Pan's Flight
 en The Barnstormer. TRON, Tiana's, Big Thunder en de Jungle Cruise doen niet
-mee. Als hotelgast besteed je dat halfuur dus aan de Mine Train, en TRON pak je
-meteen bij de officiële opening.
+mee.
 
-Gasten van de deluxehotels en van een paar andere hotels krijgen op bepaalde
+Gasten van de deluxehotels en van een paar andere hotels die Disney op zijn
+pagina noemt, krijgen op bepaalde
 avonden Extended Evening Hours, tot twee uur na sluitingstijd. Dan zijn ook
 TRON, Space Mountain, Big Thunder en de Mine Train open. Om welke avonden het
 gaat, staat in de kalender van Disney.
@@ -270,7 +269,7 @@ voorspelde wachttijden van die dag.
 
 ## Met kleine kinderen
 
-Met kinderen onder de acht breng je de dag vooral in Fantasyland door. Daar staan
+Als gezin met kleine kinderen breng je de dag vooral in Fantasyland door. Daar staan
 Peter Pan's Flight, “it's a small world”, de Mine Train, de theekopjes van de
 Mad Tea Party en, in Storybook Circus, Dumbo the Flying Elephant, waar elk kind
 zelf bepaalt hoe hoog zijn olifant vliegt. Voor Dumbo geldt geen minimale
@@ -340,7 +339,14 @@ parken wel, en de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) noemt hem.
 Sinds de opening is Magic Kingdom negen keer tijdelijk dichtgegaan vanwege een
 orkaan, het laatst in oktober 2024 bij Milton.
 
-### Halloween en kerst
+Welke dagen in een bepaalde periode het rustigst zijn, staat hier, elke dag
+opnieuw berekend:
+
+```best-days-widget slug=magic-kingdom-park
+
+```
+
+## Halloween en kerst
 
 Op 38 avonden tussen 7 augustus en 31 oktober 2026 is er Mickey's Not-So-Scary
 Halloween Party, en volgens Disney zijn alle data uitverkocht. Op die avonden
@@ -357,13 +363,6 @@ mag vanaf 16 uur naar binnen. Een kaartje kost afhankelijk van de avond 189 tot
 dollar minder. Bij het feest horen de Mickey's Once Upon a Christmastime Parade
 en het vuurwerk Minnie's Wonderful Christmastime Fireworks Show. Ook op die
 avonden gaat het park voor alle anderen eerder dicht.
-
-Welke dagen in een bepaalde periode het rustigst zijn, staat hier, elke dag
-opnieuw berekend:
-
-```best-days-widget slug=magic-kingdom-park
-
-```
 
 ## Wat dicht is en wat er komt
 
@@ -385,12 +384,11 @@ Cranston. Disney verwacht de attractie eind voorjaar 2027 weer te openen.
 De Walt Disney World Railroad is sinds 28 september 2026 dicht voor onderhoud
 en moet in november weer rijden. Sinds de verbouwing van Frontierland maakt de
 trein geen rondje meer om het park en rijdt hij alleen nog tussen Main Street
-en Fantasyland. In de eerste versie van deze gids stond nog dat hij om het hele
-park heen reed.
+en Fantasyland.
 
-Het kasteel zelf heeft in 2026 nieuwe kleuren gekregen. En voor 2027 heeft
-Disney Disney After Hours aangekondigd, avonden na sluitingstijd met een eigen
-ticket, op bepaalde dagen van 11 januari tot 19 juli.
+Het kasteel heeft in 2026 nieuwe kleuren gekregen. Voor 2027 heeft Disney
+avonden na sluitingstijd aangekondigd, Disney After Hours, met een eigen ticket
+en op bepaalde dagen van 11 januari tot 19 juli.
 
 ## Route, openingstijden, tickets en eten
 
@@ -438,10 +436,9 @@ snelle restaurants bestel je vooraf in de app van Disney, en dat kan op meer dan
 **Hotels.** Het dichtstbij liggen de drie hotels aan de monorail: het
 Contemporary, waar de monorail dwars door de hal rijdt, het Polynesian Village en
 het Grand Floridian uit 1988. Bij het Contemporary hoort ook de Bay Lake Tower.
-Alle drie zijn het deluxehotels, dus hun gasten krijgen Early Entry en de
+Alle drie zijn het deluxehotels, dus hun gasten krijgen naast Early Entry ook de
 Extended Evening Hours. Aan het Bay Lake opent in de zomer van 2027 Disney's
-Lakeshore Lodge, te boeken vanaf 8 oktober 2026. Goedkoper slaap je in de hotels
-in de rest van het resort, die met de bus verbonden zijn.
+Lakeshore Lodge, te boeken vanaf 8 oktober 2026.
 
 ## Veelgestelde vragen over Magic Kingdom
 

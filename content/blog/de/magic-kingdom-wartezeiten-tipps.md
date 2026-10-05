@@ -152,7 +152,7 @@ Zentimeter. 847 Meter, 58 km/h.
 Bahn für den Einstieg, ein Junior-Coaster von Vekoma von 1996, 242 Meter lang, neun Meter hoch und
 40 km/h schnell. Ab 89 Zentimetern darfst du mit.
 
-## Wasserbahn, Dunkelfahrten und die Klassiker von 1971
+## Wildwasserbahn, Dunkelfahrten und die Klassiker von 1971
 
 [Tiana's Bayou Adventure](ref:magic-kingdom-park/tianas-bayou-adventure) ist die einzige
 Wildwasserbahn im Park. Die Boote fahren durch die Sümpfe Louisianas zu einer Party aus dem Film
