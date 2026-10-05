@@ -23,11 +23,30 @@ tags:
 category: guides
 parkLinks:
   - universal-studios-florida
+  - universal-studios-hollywood
   - knotts-berry-farm
   - six-flags-magic-mountain
   - six-flags-great-adventure
+  - kings-island
+  - kings-dominion
+  - carowinds
+  - six-flags-over-texas
+  - six-flags-fiesta-texas
+  - six-flags-great-america
+  - busch-gardens-tampa
+  - seaworld-orlando
+  - busch-gardens-williamsburg
+  - seaworld-san-antonio
+  - hersheypark
+  - kennywood
   - magic-kingdom-park
   - disney-california-adventure-park
+  - /parks/north-america/united-states/anaheim/disneyland-park
+  - dollywood
+  - silver-dollar-city
+  - legoland-florida
+  - legoland-california
+  - knoebels-amusement-park
 rideLinks: false
 seo:
   title: 'Halloween 2026 USA: HHN, Scary Farm, Fright Fest'
