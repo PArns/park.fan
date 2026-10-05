@@ -828,6 +828,9 @@
       "title": "Vandaag nog niet in bedrijf",
       "lastRun": "Laatst in bedrijf: {when}"
     },
+    "rideStatus": {
+      "weekdayTime": "{weekday} {time} uur"
+    },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
       "reason": {

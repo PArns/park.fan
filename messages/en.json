@@ -828,6 +828,9 @@
       "title": "Not running yet today",
       "lastRun": "Last ran {when}"
     },
+    "rideStatus": {
+      "weekdayTime": "{weekday} at {time}"
+    },
     "noLiveWaitTimes": {
       "title": "No wait times available",
       "reason": {

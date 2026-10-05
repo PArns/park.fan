@@ -591,6 +591,9 @@
       "title": "Heute noch nicht in Betrieb",
       "lastRun": "Zuletzt in Betrieb: {when}"
     },
+    "rideStatus": {
+      "weekdayTime": "{weekday}, {time} Uhr"
+    },
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
       "reason": {

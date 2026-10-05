@@ -1,9 +1,9 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { History } from 'lucide-react';
 import type { NotRunToday } from '@/lib/api/types';
-import { formatWeekdayTime, RideStatusBlock } from './ride-status-block';
+import { RideStatusBlock, useWeekdayTime } from './ride-status-block';
 
 /**
  * „Heute noch nicht in Betrieb" — and when the ride last ran.
@@ -17,9 +17,9 @@ import { formatWeekdayTime, RideStatusBlock } from './ride-status-block';
  * it claims no fault.
  *
  * The instant is named by weekday and clock time in the park's zone, like the
- * outage line's start, and never as „gestern": which day is yesterday cannot be
- * decided identically on both sides of hydration. The API keeps it inside seven
- * days, where a weekday is unambiguous.
+ * outage line's start („Sonntag, 18:00 Uhr"), and never as „gestern": which day
+ * is yesterday cannot be decided identically on both sides of hydration. See
+ * `useWeekdayTime`.
  *
  * Rendered only for a CLOSED ride. The API only sends the field then, but a
  * line saying the ride has not run under a badge saying it is open is the exact
@@ -39,21 +39,17 @@ export function NotRunTodayNote({
   className?: string;
 }) {
   const t = useTranslations('parks.notRunToday');
-  const locale = useLocale();
+  const weekdayTime = useWeekdayTime(timezone);
 
   if (!notRunToday) return null;
-  const lastRun = new Date(notRunToday.lastRunAt);
+  const when = weekdayTime(notRunToday.lastRunAt);
 
   return (
     <RideStatusBlock
       icon={History}
       tone="idle"
       title={t('title')}
-      detail={
-        Number.isNaN(lastRun.getTime())
-          ? null
-          : t('lastRun', { when: formatWeekdayTime(lastRun, timezone, locale) })
-      }
+      detail={when !== null ? t('lastRun', { when }) : null}
       variant={variant}
       className={className}
     />

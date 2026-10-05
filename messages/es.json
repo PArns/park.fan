@@ -828,6 +828,9 @@
       "title": "Hoy aún no ha funcionado",
       "lastRun": "Funcionó por última vez: {when}"
     },
+    "rideStatus": {
+      "weekdayTime": "el {weekday} a las {time}"
+    },
     "noLiveWaitTimes": {
       "title": "No hay tiempos de espera disponibles",
       "reason": {

@@ -6,7 +6,7 @@ import type { AttractionOutage } from '@/lib/api/types';
 import { formatSpanDuration } from '@/lib/utils/duration';
 import { outageElapsedMinutes } from '@/lib/utils/outage';
 import { OutageEstimateNote } from './outage-estimate-note';
-import { formatWeekdayTime, RideStatusBlock, rideStatusFooterClass } from './ride-status-block';
+import { RideStatusBlock, rideStatusFooterClass, useWeekdayTime } from './ride-status-block';
 
 /**
  * "Störung gemeldet seit …" — the one sentence this site says about a ride that
@@ -118,12 +118,12 @@ export function OutageNote({
 }) {
   const t = useTranslations('parks.outage');
   const locale = useLocale();
+  const weekdayTime = useWeekdayTime(timezone);
 
   if (!outage) return null;
 
-  const started = new Date(outage.startedAt);
   // An unreadable start is a start we do not know, which is a sentence of its own.
-  const startKnown = outage.startObserved && !Number.isNaN(started.getTime());
+  const when = outage.startObserved ? weekdayTime(outage.startedAt) : null;
 
   // The two signals get different sentences, and the difference is not
   // cosmetic. A `down` was reported by the park's own feed; a `closed_gap` is
@@ -140,11 +140,10 @@ export function OutageNote({
   // feed. That is the one claim this whole two-signal discipline exists to
   // prevent for anything nobody actually reported.
   const inferred = outage.signal !== 'down';
-  const label = startKnown
-    ? t(inferred ? 'sinceClosed' : 'since', {
-        when: formatWeekdayTime(started, timezone, locale),
-      })
-    : t(inferred ? 'startUnknownClosed' : 'startUnknown');
+  const label =
+    when !== null
+      ? t(inferred ? 'sinceClosed' : 'since', { when })
+      : t(inferred ? 'startUnknownClosed' : 'startUnknown');
 
   const elapsed = outageElapsedMinutes(outage);
 
