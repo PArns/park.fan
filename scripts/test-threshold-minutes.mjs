@@ -124,7 +124,8 @@ test('maxThresholdFor stays inside the API range for an absurd reading', () => {
 });
 
 test('a max always lands on the slider grid, so the top of the track is reachable', () => {
-  for (const wait of [12, 27, 44, 63, 118, 251, null]) {
+  // 13 is Disney's walk-on and stays 13 in `roundWaitTo5`; ten under it is 3, below the floor.
+  for (const wait of [12, 13, 27, 44, 63, 118, 251, null]) {
     const max = maxThresholdFor(wait);
     assert.equal((max - THRESHOLD_SLIDER_MIN) % THRESHOLD_STEP_MIN, 0, `${wait} -> ${max}`);
   }

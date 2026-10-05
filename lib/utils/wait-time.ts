@@ -1,8 +1,23 @@
 /**
- * Wait times are displayed in five-minute steps, always.
+ * Disney's walk-on: the one posted wait that is not on the five-minute grid, and stays off it.
+ *
+ * Disney posts 13 minutes for a ride you can walk straight onto. It is the park's own signal,
+ * not a queue length, and rounding it to 15 turns "walk on" into an ordinary short queue. The
+ * API keeps it the same way (`WALK_ON_WAIT_MINUTES` in `src/common/utils/wait-time.utils.ts`).
+ */
+export const WALK_ON_WAIT_MINUTES = 13;
+
+/** The plain five-minute grid, without the walk-on exception. */
+function snapWaitTo5(n: number): number {
+  return Math.floor((n + 2.5) / 5) * 5;
+}
+
+/**
+ * Wait times are displayed in five-minute steps, always — except Disney's 13, see
+ * {@link WALK_ON_WAIT_MINUTES}, which is returned as it is.
  *
  * Parks post them that way, so every raw observation in the database is already
- * a multiple of five. What breaks it is the maths on top: a percentile
+ * a multiple of five (or that 13). What breaks it is the maths on top: a percentile
  * interpolates between two stored values and an average across days blurs the
  * rest, which is how the park's hourly table came to print 51, 53 and 47 —
  * readings no park has ever put on a sign.
@@ -20,7 +35,8 @@
 export function roundWaitTo5(value: number): number {
   const n = typeof value === 'number' ? value : Number(value);
   if (!Number.isFinite(n) || n < 2.5) return 0;
-  return Math.floor((n + 2.5) / 5) * 5;
+  if (n === WALK_ON_WAIT_MINUTES) return n;
+  return snapWaitTo5(n);
 }
 
 /**
@@ -38,7 +54,10 @@ export function roundWaitTo5(value: number): number {
 export function roundWaitDeltaTo5(value: number): number {
   const n = typeof value === 'number' ? value : Number(value);
   if (!Number.isFinite(n)) return 0;
-  return n < 0 ? -roundWaitTo5(-n) : roundWaitTo5(n);
+  // The plain grid, never `roundWaitTo5`: a trend of +13 is not a walk-on.
+  const size = Math.abs(n);
+  const rounded = size < 2.5 ? 0 : snapWaitTo5(size);
+  return n < 0 ? -rounded : rounded;
 }
 
 /**
