@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef, startTransition } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 import { Moon, Sun } from 'lucide-react';
 import { runThemeWipe } from '@/lib/theme/theme-wipe';
 import { trackThemeToggled } from '@/lib/analytics/umami';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 
 /**
@@ -17,12 +18,8 @@ import { cn } from '@/lib/utils';
 export function ThemeToggle() {
   const { setTheme, resolvedTheme, theme } = useTheme();
   const t = useTranslations('theme');
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const iconRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    startTransition(() => setMounted(true));
-  }, []);
 
   // `system` is no longer a theme, so a browser still holding it from the old three-way menu is
   // moved to dark.

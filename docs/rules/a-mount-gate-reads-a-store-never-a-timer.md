@@ -56,8 +56,11 @@ setNow(...)`), which React re-runs before committing — no second paint.
 ## What is still fine
 
 `startTransition(() => setMounted(true))` in an effect, where the point is to keep a large flip off
-the hydration path (`use-tab-hash-routing.ts`, `theme-toggle.tsx`), is deliberate and documented at
-the call site. A `setTimeout(…, 0)` that re-syncs a clock when a component becomes visible again
+the hydration path (`use-tab-hash-routing.ts`), is deliberate and documented at the call site.
+`useSyncExternalStore` re-renders a store whose client snapshot differs from the server's at sync
+priority, so `useMounted()` there would turn the flip into a render a tap during hydration has to
+wait for. A flip as small as a switch's knob takes `useMounted()` (`theme-toggle.tsx`). A
+`setTimeout(…, 0)` that re-syncs a clock when a component becomes visible again
 (`weather-hourly-chart.tsx`, `nowcast-update-countdown.tsx`) runs once per visibility change, not
 once per mount.
 
