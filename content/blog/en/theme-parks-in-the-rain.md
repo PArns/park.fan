@@ -1,16 +1,15 @@
 ---
-title: 'Theme parks in the rain: six parks with indoor rides compared'
+title: 'Theme parks in the rain: covered rides at nine parks compared'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  On rain days the headliners have shorter waits than on dry days of the same
-  kind in twelve of twelve parks we analysed, by almost a third at Movie Park
-  and barely at all at Disneyland Paris. Plus the indoor rides of Europa-Park,
-  Phantasialand, Efteling, Movie Park, Plopsaland and Heide Park, trip planning
-  and the most common questions.
+  Theme park queues are shorter when it rains. At all twelve parks we analysed,
+  waits were shorter on rainy days than on dry ones, at Movie Park by almost a
+  third. Toverland has 22 covered attractions out of 44, Phantasialand 14 out
+  of 40 and Walibi Holland none.
 tags:
   - theme-park
   - rain
@@ -23,6 +22,8 @@ tags:
   - movie-park
   - plopsaland
   - heide-park
+  - toverland
+  - walibi
 category: guides
 coverImage:
   src: /media/europa-park/eurosat-cancan-coaster.jpg
@@ -30,19 +31,23 @@ coverImage:
   caption: 'The whole ride runs inside that sphere.'
   credit: 'park.fan'
 seo:
-  title: 'Theme Parks in the Rain: Six Parks Compared, with Wait Times'
+  title: 'Theme park in the rain: covered rides and wait times'
   description: >-
-    Six parks with indoor rides compared, plus our measurement of rain-day wait
-    times in twelve parks, trip planning and FAQ.
+    Theme park queues are shorter in the rain, by up to 31% in our measurement of
+    twelve parks. At Toverland, half of the 44 attractions are covered.
   keywords:
     - theme park in the rain
     - is a theme park worth it in the rain
     - theme park bad weather
     - indoor theme park rides
-    - theme park rain day wait times
+    - covered rides
     - covered roller coasters
+    - theme park rainy day wait times
     - Europa-Park in the rain
     - Phantasialand in the rain
+    - Efteling in the rain
+    - Toverland in the rain
+    - Walibi in the rain
 parkLinks:
   - europa-park
   - phantasialand
@@ -50,6 +55,9 @@ parkLinks:
   - movie-park-germany
   - plopsaland-deutschland
   - heide-park
+  - attractiepark-toverland
+  - walibi-belgium
+  - walibi-holland
 rideLinks:
   - europa-park/eurosat-cancan-coaster
   - europa-park/arthur
@@ -59,137 +67,122 @@ rideLinks:
   - efteling/symbolica
   - movie-park-germany/van-helsings-factory
   - heide-park/ghostbusters-5d
+  - attractiepark-toverland/toos-express
+  - walibi-belgium/turbine
+  - walibi-belgium/popcorn-revenge
 ---
 
-If you go to a theme park on a rain day, you queue less on average. In all
-twelve parks we analysed, the headliners had shorter waits on rain days than on
-dry days of the same kind: about 4% shorter at Disneyland Paris, about 31% at
-Movie Park. What’s left open is which rides are still worth it on a day like
-that, and the first answer is the ones inside a building.
+If you go to a theme park on a rainy day, you’ll queue for less time on average.
+At all twelve parks we analysed, waits at the headliners were shorter on rainy
+days than on dry days in the same month, weekday against weekday and weekend
+against weekend. At Disneyland Paris the difference was about 4%, at Movie Park
+about 31%. On a day like that, the covered attractions are usually the ones
+worth doing. At Toverland half of the 44 attractions are covered, at Walibi
+Holland none.
 
-For six parks we know, ride by ride, whether it sits in a building: Europa-Park,
-Phantasialand, Efteling, Movie Park Germany, Plopsaland Deutschland and Heide
-Park. For Toverland, Walibi, Parc Astérix, Legoland and Disneyland Paris that
-information is missing, so they get no ride list here. The gap is in our database and has nothing to do with the parks.
+We’ve gone ride by ride through nine parks and recorded which attractions are
+covered, going by what the parks themselves say: Europa-Park, Phantasialand,
+Efteling, Toverland, Movie Park Germany, Plopsaland Deutschland, Heide Park,
+Walibi Belgium and Walibi Holland.
 
-## How we measured rain days
+## How we measured rainy days
 
-The wait time comes from the calendar. For every past operating day it holds the
-average of the measured wait times across the park’s headliners, rounded to five
-minutes. We count as headliners the rides that belong to that group according to
-the park’s wait-time history. The rain comes from the daily values of
-[Open-Meteo](https://open-meteo.com/), which we store for every park, more
-precisely from the day’s total precipitation in millimetres.
+For every day a park was open, park.fan records the average wait at its
+headliners, rounded to five minutes. The headliners are the rides with the
+longest waits at that park. The rainfall figures for each park and each day come
+from [Open-Meteo](https://open-meteo.com/).
 
-A rain day is a day with at least 2 millimetres, a dry day one with less than
-0.2. Days in between are left out. We compared the period from 24 December 2025
-to 5 October 2026, and only days when the park was open.
+A rainy day is one with at least 2 millimetres of precipitation, which is two
+litres per square metre. A dry day had less than 0.2 millimetres, and we left
+out everything in between. The analysis covers every day the parks were open
+from 24 December 2025 to 5 October 2026.
 
-A rain day in May can’t be compared with a dry day in August. So we build groups
-from month, weekend or public holiday, and school holidays. Only groups with at
-least two rain days and two dry days enter the calculation, and the result is
-weighted by the number of rain days. What comes out for each park is a ratio of
-the wait time on rain days to the wait time on dry days of the same group.
+Comparing a wet Tuesday in May with a sunny Saturday in the summer holidays
+wouldn’t be fair, because a holiday Saturday is busier anyway. So we compared
+each rainy day only with dry days that match it on three counts: the same month,
+also a weekday or also a weekend day or public holiday, and also in the school
+holidays or also outside them. A rainy Saturday in July during the school
+holidays, for example, is set against dry weekend days and public holidays in
+July that also fell in the holidays. Where a combination had fewer than two rainy
+days or fewer than two dry ones, we dropped it, because one day on its own is too
+random. That gives each park one percentage, the amount by which waits were
+shorter on rainy days. Combinations with more rainy days carry more weight.
 
-Three limitations come with it. The precipitation total covers the whole day, so
-a downpour at three in the morning counts the same as one at noon. Cold rain
-days often coincide with fewer guests, and we haven’t removed the temperature
-from the figures. And the headliners are an average: a single ride in a building
-can be busier on a rain day than on any dry day while the average falls.
+The rainfall is the total for the whole day, so a shower at three in the morning
+counts the same as one at lunchtime. We haven’t adjusted for temperature, and
+cold rainy days are probably quieter partly because of the cold. The figure is
+also an average across the headliners. A single covered ride can be busier on a
+rainy day than on any dry one while the average goes down.
 
-## Rain days in twelve parks
+## Wait times on rainy days at twelve parks
 
-The table shows how much lower the headliner wait time is on rain days than on
-dry comparison days. It is current as of 6 October 2026.
+As of 6 October 2026:
 
-| Park                                                               | Rain days | Dry comparison days | Lower on rain days by |
-| ------------------------------------------------------------------ | --------: | ------------------: | --------------------: |
-| [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) |        49 |                  97 |                    4% |
-| [Europa-Park](ref:europa-park)                                     |        22 |                  59 |                    5% |
-| [Walibi Holland](ref:walibi-holland)                               |        27 |                  44 |                    6% |
-| [Efteling](ref:efteling)                                           |        59 |                  98 |                    9% |
-| [Phantasialand](ref:phantasialand)                                 |        36 |                  56 |                   11% |
-| [Heide Park](ref:heide-park)                                       |        37 |                  64 |                   12% |
-| [Walibi Belgium](ref:walibi-belgium)                               |        26 |                  46 |                   13% |
-| [Toverland](ref:attractiepark-toverland)                           |        45 |                  71 |                   13% |
-| [Plopsaland Deutschland](ref:plopsaland-deutschland)               |         9 |                  31 |                   16% |
-| [Legoland Deutschland](ref:legoland-deutschland)                   |        24 |                  54 |                   17% |
-| [Parc Astérix](ref:parc-asterix)                                   |        24 |                  65 |                   19% |
-| [Movie Park Germany](ref:movie-park-germany)                       |        21 |                  45 |                   31% |
+| Park                                                               | Rainy days | Dry days compared | Wait shorter on rainy days by |
+| ------------------------------------------------------------------ | ---------: | ----------------: | ----------------------------: |
+| [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) |         49 |                97 |                            4% |
+| [Europa-Park](ref:europa-park)                                     |         22 |                59 |                            5% |
+| [Walibi Holland](ref:walibi-holland)                               |         27 |                44 |                            6% |
+| [Efteling](ref:efteling)                                           |         59 |                98 |                            9% |
+| [Phantasialand](ref:phantasialand)                                 |         36 |                56 |                           11% |
+| [Heide Park](ref:heide-park)                                       |         37 |                64 |                           12% |
+| [Walibi Belgium](ref:walibi-belgium)                               |         26 |                46 |                           13% |
+| [Toverland](ref:attractiepark-toverland)                           |         45 |                71 |                           13% |
+| [Plopsaland Deutschland](ref:plopsaland-deutschland)               |          9 |                31 |                           16% |
+| [Legoland Deutschland](ref:legoland-deutschland)                   |         24 |                54 |                           17% |
+| [Parc Astérix](ref:parc-asterix)                                   |         24 |                65 |                           19% |
+| [Movie Park Germany](ref:movie-park-germany)                       |         21 |                45 |                           31% |
 
-The Disneyland Paris in this table is Disneyland Park, not Walt Disney Studios
-Park. The table only counts rain days that had dry comparison days in the same
-group, which is why there are fewer than in the next section. Plopsaland
-Deutschland stands on nine rain days and is the thinnest row.
+Disneyland Paris here means Disneyland Park, not Walt Disney Studios Park. Only
+rainy days with matching dry days are counted. The Plopsaland Deutschland row
+rests on just nine rainy days.
 
-With 5 millimetres as the threshold, the direction stays the same in all twelve
-parks. The size shifts a lot where there were few such days: at Europa-Park the
-figure jumps to about 23% on eight days, at Movie Park it is about 27% on six.
-So I wouldn’t read the order in the table as a ranking. What the data supports is
-that the gap didn’t turn the other way in any park.
+With the threshold at 5 millimetres, waits on rainy days are still shorter at all
+twelve parks. The size of the difference swings a lot, though, because there are
+far fewer such days. At Europa-Park it’s about 23% over eight days, at Movie Park
+about 27% over six. So I wouldn’t read the table as a ranking. Still, none of the
+twelve parks was busier on rainy days.
 
-The share of indoor rides doesn’t explain the gap. At Phantasialand 14 of 40
-entries are listed as indoor, and the gap is 11%. At Heide Park it’s three of 39,
-and the gap is 12. Europa-Park has the longest list of indoor entries and the
-second-smallest gap, while Movie Park, with its haunted houses, has the largest.
-It’s possible that attendance falls on rain days everywhere and the rest spreads
-over more or fewer rides under cover, depending on the park. The data doesn’t
-back this up, it’s a guess.
+The difference has little to do with how many attractions are covered. At
+Walibi Holland none of them is indoors, and waits on rainy days were 6% shorter
+there. At Toverland, where 22 of 44 are covered, waits were 13% shorter,
+and at Heide Park, with three of 39, 12% shorter. Europa-Park has the most
+covered attractions and the second-smallest difference, while Movie Park, with
+its haunted houses, has the largest. My guess is that fewer people come on rainy
+days everywhere, and the ones who do come spread out over more or fewer covered
+rides depending on the park. I can’t prove that with these figures.
 
-## How often it rained
+## How often it rains at theme parks
 
-The same weather data also shows how many operating days were wet. Of all days
-with operations between 24 December 2025 and 5 October 2026, 16% had at least 2
-millimetres of precipitation at Europa-Park, 15 at Parc Astérix, 15 at Plopsaland
-Deutschland, 18 at Legoland Deutschland, 21 at Disneyland Paris, 22 at
-Phantasialand, 23 at Movie Park, 24 at Heide Park and 26% at Efteling. So at
-Efteling about one operating day in four was a rain day, at Europa-Park about one
-in six.
+Between 24 December 2025 and 5 October 2026, at least 2 millimetres of rain fell
+on 15% of operating days at Parc Astérix and Plopsaland Deutschland. At
+Europa-Park it was 16%, at Legoland Deutschland 18, Disneyland Paris 21,
+Phantasialand 22, Movie Park 23, Heide Park 24 and Efteling 26. So about one
+operating day in four was wet at Efteling, and about one in six at Europa-Park.
 
-By month, the six parks of this guide together look like this:
+Month by month, for Europa-Park, Phantasialand, Efteling, Movie Park, Plopsaland
+and Heide Park together:
 
-| Month 2026 | Operating days of the six parks | Of those with at least 2 mm |
-| ---------- | ------------------------------: | --------------------------: |
-| April      |                             171 |                         12% |
-| May        |                             175 |                         30% |
-| June       |                             167 |                         32% |
-| July       |                             186 |                         10% |
-| August     |                             185 |                         18% |
-| September  |                             162 |                         16% |
+| Month 2026 | Operating days at the six parks | With at least 2 mm of rain |
+| ---------- | ------------------------------: | -------------------------: |
+| April      |                             171 |                        12% |
+| May        |                             175 |                        30% |
+| June       |                             167 |                        32% |
+| July       |                             186 |                        10% |
+| August     |                             185 |                        18% |
+| September  |                             162 |                        16% |
 
-That’s a single year and no climate statistic. July 2026 was dry, May and June
-weren’t, and another year will spread it differently. For planning, the table is
-good as an order of magnitude: in high season roughly one operating day in five
-was wet, in single months one in three.
-
-## How the indoor rides are recorded in our data
-
-In our data every attraction can carry one of three values: indoor, outdoor, or
-outdoor with a covered queue. We curate the values by hand, based on what the
-parks say. An attraction without a value has an unknown location, and it never
-counts as covered.
-
-On the park page this appears in three places. Each ride’s card has a line: indoor, outdoor or outdoor with a covered queue. The filter
-bar has a "Covered" filter. And when the short-term forecast announces rain, the
-park page carries a rain warning with the time until it starts, and below it the
-covered rides that are running right now, sorted by walking distance and wait
-time.
-
-Filter and list only appear if a park has a value for at least half of its
-in-season attractions and at least one of them is covered. On 6 October the six parks of this guide meet that
-condition.
+That’s a single year. In 2026 July was dry and May and June were wet, and 2027
+could look quite different. It’s still good enough as a rough guide. In the main
+season about one operating day in five was wet, and in some months one in three.
 
 ## Europa-Park
 
-[Europa-Park](ref:europa-park) in Rust opened on 12 July 1975. We have 97 entries
-for it: 34 indoor, 3 outdoor with a covered queue, 57 outdoor and 3 without a
-value.
-
-The 34 aren’t 34 rides. Fourteen of them are stations of the EP Express and the
-Panorama train, monorail stations, three mazes (Day Maze "Tartaros", Day Maze
-"Niflheim" and Queen’s Diamonds – Laser Maze) and a ball pit. Of the remaining 20,
-six are in this table, and the others are things like Snorri tours or Atlantis
-Adventure.
+At [Europa-Park](ref:europa-park) in Rust, 34 of the 97 attractions are covered,
+more than at any other park here. Ten of them are stations of the EP Express, the
+panorama train and the monorail, three are mazes (Day Maze “Tartaros”, Day Maze
+“Niflheim” and Queen’s Diamonds – Laser Maze), and one is a ball pit. The other
+20 include the six rides in the table, Snorri Touren and Atlantis Adventure.
 
 | Ride                                                               | Area             | Type                 | Manufacturer | Opened | Minimum height |
 | ------------------------------------------------------------------ | ---------------- | -------------------- | ------------ | ------ | -------------- |
@@ -197,24 +190,14 @@ Adventure.
 | [Arthur](ref:europa-park/arthur)                                   | Minimoys Kingdom | Dark ride coaster    | Mack Rides   | 2014   | 120 cm         |
 | Pirates in Batavia                                                 | Netherlands      | Boat ride, dark ride | Mack Rides   | 1987   | 130 cm         |
 | Madame Freudenreich Curiosités                                     | France           | Dark ride            | Mack Rides   | 2018   | 130 cm         |
-| Voletarium                                                         | Germany          | Flying theater       | Brogent      | 2017   | 130 cm         |
+| Voletarium                                                         | Germany          | Flying theatre       | Brogent      | 2017   | 130 cm         |
 | Fluch der Kassandra                                                | –                | Madhouse             | –            | –      | 130 cm         |
 
-A dash means we have no value for it. The details come from our database and the
-park’s own pages.
-
-**Eurosat** has run inside the silver sphere since 1989. In 2018 the park
-rethemed it from space to Paris, with a Moulin Rouge facade in front. The ride
-lasts 198 seconds in the dark.
+**Eurosat** has been running inside the silver sphere since 1989, and a ride
+lasts 198 seconds, all of it in the dark. In 2018 the park swapped the space
+theme for Paris and put a Moulin Rouge facade in front.
 
 ![Eurosat’s silver sphere above the Moulin Rouge facade. | The whole ride runs inside that sphere. | right](/media/europa-park/eurosat-cancan-coaster.jpg)
-
-We list three outdoor rides with a covered queue: the children’s carousel, the
-children’s carousel in Winterland and the Puppet Boat Ride. This is the only park
-in this guide where the value occurs. In the five others no entry has it, so for
-no single outdoor ride there can we say whether its queue has a roof.
-
-How the indoor rides stand today:
 
 ```ride-waits-widget rides=europa-park/eurosat-cancan-coaster|Eurosat|Indoor coaster;europa-park/arthur|Arthur|Dark ride coaster;europa-park/pirates-in-batavia|Pirates in Batavia|Boat ride;europa-park/madame-freudenreich-curiosites|Madame Freudenreich Curiosités|Dark ride columns=type,peak,days
 
@@ -224,11 +207,8 @@ More on the park in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
 
 ## Phantasialand
 
-[Phantasialand](ref:phantasialand) in Brühl opened in 1967. We have 40 entries
-for it, the park has a value for every one, 14 of them indoor and 26 outdoor. We
-list no outdoor ride with a covered queue.
-
-Seven of the 14 are in Fantasy, four in Berlin, two in China Town and one in
+At [Phantasialand](ref:phantasialand) in Brühl, 14 of the 40 attractions are
+covered. Seven are in Fantasy, four in Berlin, two in China Town and one in
 Mystery.
 
 | Ride                                                   | Area       | Type                  | Manufacturer     | Opened | Minimum height |
@@ -241,22 +221,20 @@ Mystery.
 | [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –      | 120 cm         |
 | [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride             | –                | 1982   | 130 cm         |
 
-Winja’s Fear and Force are in Wuze Town, a hall with a vertical lift and a spot
-where a piece of track and the car tip over, forward on Fear and sideways on
-Force. Crazy Bats ran as a space ride from 1988 and was relaunched with VR
-headsets in 2019. Mystery Castle is 65 metres tall and drops inside the tower.
-For the smaller ones there are also Bumper Klumpen, Wözl’s Duck Washer and Wupi’s
-Wabi Wipper from 100 centimetres and the Tittle Tattle Tree from 110, and in
-Berlin the horse carousel, Die 3 Mausketiere and the Verrücktes Hotel Tartüff.
+Winja’s Fear and Winja’s Force run in Wuze Town, a hall with a vertical lift. At
+one point a section of track tips with the car on it, forwards on Fear and
+sideways on Force. Crazy Bats has run in the same hall since 1988, with VR
+headsets since 2019. Mystery Castle is a 65-metre drop tower housed entirely inside a
+building. For smaller children there are also Bumper Klumpen, Wözl’s Duck Washer
+and Wupi’s Wabi Wipper from 100 centimetres, the Tittle Tattle Tree from 110, and
+in Berlin the horse carousel, Die 3 Mausketiere and the Verrücktes Hotel Tartüff.
 
 ![A giant clay pot with its lid open, a ladder leaning against it. | Inside the Winja’s Fear & Force building in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
-Taron, Black Mamba and the other big rides are outdoor rides with a landscape
-theme. In steady rain you have 14 indoor rides left in Brühl. If you’re a coaster
-fan, three of them are coasters: the two in Wuze Town and Crazy Bats. The rest
-are dark rides, madhouses, a drop tower and family rides.
-
-How the indoor rides stand today:
+Taron, Black Mamba and the other big coasters are outdoors. In steady rain you’re
+left with the 14 covered attractions in Brühl, three of them coasters: the two in
+Wuze Town and Crazy Bats. The rest are dark rides, madhouses, a drop tower and
+family rides.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor coaster columns=type,peak,days
 
@@ -266,10 +244,8 @@ More on the park in the [Phantasialand guide](/blog/phantasialand-wait-times-tip
 
 ## Efteling
 
-[Efteling](ref:efteling) in Kaatsheuvel opened in 1952. We have 37 entries for
-it: eleven indoor, 17 outdoor and nine without a value. For those nine the value
-is still missing: steam trains, monorail, play areas, Volk van Laaf and the post
-office.
+At [Efteling](ref:efteling) in Kaatsheuvel, eleven of the 37 attractions are
+covered.
 
 | Ride                                        | Area         | Type                 | Manufacturer     | Opened | Minimum height |
 | ------------------------------------------- | ------------ | -------------------- | ---------------- | ------ | -------------- |
@@ -280,17 +256,16 @@ office.
 | [Vogel Rok](ref:efteling/vogel-rok)         | Reizenrijk   | Indoor coaster       | Vekoma           | 1998   | 120 cm         |
 | [Danse Macabre](ref:efteling/danse-macabre) | Anderrijk    | Madhouse             | –                | 2024   | 120 cm         |
 
-There are also the Carnaval Festival, Fabula, the Diorama, the Stoomcarrousel and
-the Efteling Museum. For four of the six rides in the table we have no minimum
-height, for Vogel Rok and Danse Macabre it is 120 centimetres.
+Carnaval Festival, Fabula, the Stoomcarrousel, the Diorama and the Efteling
+Museum are covered too.
 
 ![The Droomvlucht entrance at night, lit pink and green. | In daylight this wall is white. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 and Python are outdoor rides. If you come for the
-coasters, take a jacket in the rain and ride what the park lets through. If you
-like dark rides, you don’t need an outdoor ride that day. Whether one of the
-indoor rides is down for maintenance is written on the ride’s page and in the
-park’s calendar, and if you’re coming because of the rain, check it beforehand.
+Joris en de Draak, Baron 1898 and Python are outdoors. If you’re coming for the
+coasters, pack a rain jacket and ride whatever’s open. If you like dark rides,
+you’ll get through a rainy day at Efteling fine without the outdoor rides.
+Whether a covered ride is closed for maintenance is on its page and in the park’s
+calendar, so if the dark rides are why you’re going, check the evening before.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Suspended ride;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor coaster columns=type,peak,days
 
@@ -299,24 +274,57 @@ park’s calendar, and if you’re coming because of the rain, check it beforeha
 More on the park in the article
 [Efteling, the Disney of the Netherlands](/blog/efteling-disney-of-the-netherlands).
 
+## Toverland
+
+[Toverland](ref:attractiepark-toverland) in Sevenum started out as a hall for
+rainy days. Founder Jean Gelissen came up with the idea when a downpour cut short
+a day out with his children, and on 19 May 2001 the first hall opened, today’s
+Land van Toos. The Wunderwald followed in 2004 as a second hall. Today 22 of the
+44 attractions are covered, exactly half and the largest share of any park here.
+Twelve are in Land van Toos, five in the Wunderwald, two in Port Laguna, one each
+in the Magische Vallei and Avalon, and the last is Morrels BOEderij.
+
+| Ride                                                     | Area          | Type           | Manufacturer     | Opened | Minimum height |
+| -------------------------------------------------------- | ------------- | -------------- | ---------------- | ------ | -------------- |
+| [Toos-Express](ref:attractiepark-toverland/toos-express) | Land van Toos | Family coaster | Vekoma           | 2001   | 90 cm          |
+| [Villa Fiasko](ref:attractiepark-toverland/villa-fiasko) | Wunderwald    | Funhouse       | Kumbak           | 2004   | 100 cm         |
+| [Wirbelbaum](ref:attractiepark-toverland/wirbelbaum)     | Wunderwald    | Ferris wheel   | Metallbau Emmeln | 2005   | –              |
+
+Nearly everything under a roof here is built for families with small children:
+carousels, kiddie rides, climbing and play areas. The only covered coaster
+is the Toos-Express, a Vekoma junior coaster from the year the park opened. Troy,
+Fēnix, Booster Bike and Dwervelwind are outdoors. On the Wirbelbaum, a 13-metre
+Ferris wheel, you decide yourself how wildly your basket spins. Djinn, a
+12.8-metre swing carousel with a minimum height of 100 centimetres, turns above
+the oriental market in Land van Toos.
+
+At Toverland, waits on rainy days were 13% shorter. With small children it’s a
+good choice for a day like that. If you’re coming for Troy and Fēnix, pack a rain
+jacket.
+
+```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Family coaster;attractiepark-toverland/villa-fiasko|Villa Fiasko|Funhouse;attractiepark-toverland/wirbelbaum|Wirbelbaum|Ferris wheel columns=type,peak,days
+
+```
+
+More on the park in the [Toverland guide](/blog/toverland-troy-wait-times-tips).
+
 ## Movie Park Germany
 
-[Movie Park Germany](ref:movie-park-germany) in Bottrop opened on 30 June 1996 as
-Warner Bros. Movie World and has had its current name since 19 March 2005. 38 of
-39 entries have a value, 12 of them indoor and 26 outdoor.
+At [Movie Park Germany](ref:movie-park-germany) in Bottrop, twelve of the 39
+attractions are covered, but eight of those are haunted houses for the Halloween
+Horror Festival, which runs on 22 evenings between 26 September and 8 November 2026. The houses only open in the evening, and not all of them are for every
+age. Jason Universe, for example, is 16 and over. During the day that leaves four
+covered rides: the Movie Park Studio Tour, Area 51 – Top Secret, Time Riders and
+**Van Helsing’s Factory**.
 
-Eight of the twelve indoor entries are haunted houses of the Halloween Horror
-Festival, which in 2026 runs on 22 evenings from 26 September to 8 November. They
-only open in the evening, and not every one is for every age, Jason Universe for
-example is 16 and over. Four stay during the day: the Movie Park Studio Tour,
-Area 51 – Top Secret, Time Riders and **Van Helsing’s Factory**.
+Van Helsing’s Factory is the only coaster among them. It’s a Gerstlauer bobsled
+coaster in the former Gremlins hall and has been running since 18 June 2011. It
+reaches 36 km/h, the track is about 400 metres long, and it can carry 848 riders an hour.
 
-Van Helsing’s Factory opened on 18 June 2011. It’s a Gerstlauer bobsled coaster
-in the former Gremlins hall, 36 km/h fast and about 400 metres long. Capacity is 848 people per hour. Of the four indoor rides it’s the only roller coaster.
-
-In our analysis Movie Park has the largest gap between rain days and dry days,
-31% on 21 rain days. With four indoor rides in the daytime, there’s little on
-offer in the rain. I’d pick another park for a rain day. In the evening, eight haunted houses are added in October.
+At Movie Park, waits on rainy days were 31% shorter, more than at any other park
+in the table (measured over 21 rainy days). With four covered rides in the daytime,
+though, there isn’t much to do there in the rain. For a wet day I’d pick a
+different park, unless it’s a Halloween Horror Festival evening.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
@@ -326,24 +334,22 @@ Everything about the park is in the [Movie Park guide](/blog/movie-park-germany-
 
 ## Plopsaland Deutschland
 
-[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch opened in 1971 as
-Holiday Park. The park has belonged to Studio 100 since November 2010 and got its
-current name on 28 June 2025. We have 57 entries for it, 52 with a value, 13 of
-them indoor and 39 outdoor.
+[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch was called
+Holiday Park until June 2025. Of its 57 attractions, 13 are covered, and five of
+those are haunted houses for the Halloween Fright Nights: NEXUS AI, Academy of
+Freaks, Titty Twister, Mad Rat and the Schnitzelhaus. The other eight are The
+Smurfs’ Adventure, a dark ride in a building of its own, and seven rides and play
+areas in the indoor hall that opened in 2018 as Holiday Indoor: Tabaluga’s
+Rollercoaster, Mia’s Elf Flight, a farm carousel, a giant slide, a ball pit, an
+adventure forest and Heidi’s Playground.
 
-Five of the 13 are haunted houses of the Halloween Fright Nights: NEXUS AI,
-Academy of Freaks, Titty Twister, Mad Rat and the Schnitzelhaus. The other eight
-are rides and play areas: Tabaluga’s Rollercoaster, Mia’s Elf Flight, The
-Smurfs’ Adventure, a farm carousel, a giant slide, a ball pit, an adventure
-forest and Heidi’s Playground. The indoor hall opened in 2018 as Holiday Indoor.
-We list no minimum height for any of these eight.
+The big coasters, including bigFM Expedition GeForce, are outdoors. With small
+children you’ll have plenty to do in the hall on a rainy day. For teenagers who’ve
+come for the coasters, the only one under a roof is Tabaluga’s Rollercoaster, a
+family coaster.
 
-The big coasters of Plopsaland Deutschland, among them the bigFM Expedition
-GeForce, are outdoors. With small children the park has eight rides and play areas in the hall on a rain day. If you come with teenagers who travel
-for the coasters, there’s a lot less in the rain.
-
-With nine rain days in our analysis, the figure for Plopsaland is the least
-certain. Whether the indoor rides explain the gap of 16% can’t be read from it.
+Nine rainy days are too few to tell whether the hall is the reason waits were 16%
+shorter.
 
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Family coaster;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Kiddie ride;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
@@ -351,20 +357,16 @@ certain. Whether the indoor rides explain the gap of 16% can’t be read from it
 
 ## Heide Park
 
-[Heide Park](ref:heide-park) in Soltau opened on 19 August 1978 and has belonged
-to Merlin Entertainments since 2007. Of 39 entries, three are indoor, 28 outdoor
-and eight without a value. That’s the smallest share of the six parks, and none
-of the three is a roller coaster.
+At [Heide Park](ref:heide-park) in Soltau, only three of the 39 attractions are
+covered, and none of them is a coaster. **Ghostbusters 5D** has been running
+since 2017 in the hall that used to be home to the Hallo Spencer puppet show.
+Since 2024, the **Dämonen Gruft** by Preston & Barbieri has taken riders on a trip
+of about three minutes through the old station of the second log flume, which
+closed in 2011. The third is the **Drachengrotte** in the Exploria area.
 
-**Ghostbusters 5D** has been in the hall that used to house Hallo Spencer since 2017. The **Dämonen Gruft** by Preston & Barbieri has run through the old station
-of the second water ride, which closed in 2011, since 2024, and lasts about three
-minutes. The **Drachengrotte** is in the Exploria area. Eight entries have no
-value: Panorama train, Heide-Park-Express, monorail, Peppas Ballonfahrt,
-Wüstenflitzer, Grottenblitz, Peppas Haus and a playground.
-
-Heide Park is worth it on a rain day mainly if you were coming anyway for
-Colossos and the other outdoor rides and are expecting a dry afternoon. For a day
-that’s wet from the start, three rides are under a roof.
+Go to Heide Park in the rain if you were coming for Colossos and the other
+outdoor rides anyway and are counting on a dry afternoon. If it rains all day,
+you have three covered attractions.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulator;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
@@ -372,122 +374,154 @@ that’s wet from the start, three rides are under a roof.
 
 More on the park, with Colossos, in the [Heide Park guide](/blog/heide-park-wait-times-tips).
 
-## The six parks side by side
+## Walibi Belgium
 
-As of 6 October 2026, from our database:
+At [Walibi Belgium](ref:walibi-belgium) in Wavre, seven of the 42 attractions are
+covered. Two of them are 4D films, “Wanted Alive” and, in December and January
+only, “Festive Adventure”.
 
-| Park                   | Entries | With a value | Indoor | Covered queue |
-| ---------------------- | ------: | -----------: | -----: | ------------: |
-| Europa-Park            |      97 |           94 |     34 |             3 |
-| Phantasialand          |      40 |           40 |     14 |             0 |
-| Efteling               |      37 |           28 |     11 |             0 |
-| Movie Park Germany     |      39 |           38 |     12 |             0 |
-| Plopsaland Deutschland |      57 |           52 |     13 |             0 |
-| Heide Park             |      39 |           31 |      3 |             0 |
+| Ride                                                                    | Type                  | Manufacturer     | Opened |
+| ----------------------------------------------------------------------- | --------------------- | ---------------- | ------ |
+| [Turbine](ref:walibi-belgium/turbine)                                   | Shuttle coaster       | Schwarzkopf      | 1982   |
+| [Popcorn Revenge](ref:walibi-belgium/popcorn-revenge)                   | Interactive dark ride | ETF Ride Systems | 2019   |
+| [Challenge of Tutankhamon](ref:walibi-belgium/challenge-of-tutankhamon) | Interactive dark ride | –                | –      |
 
-The "Indoor" column counts entries and not rides. At Europa-Park they are
-stations and mazes, at Movie Park and Plopsaland haunted houses that are only
-open at Halloween. At Phantasialand and Efteling, by contrast, they are rides
-throughout.
+**Turbine** is a Schwarzkopf Shuttle Loop. The train is launched out of the
+station at 85.3 km/h, goes through a loop and up a tower, then runs the same
+track backwards. It’s the only covered coaster in the park, while Kondaa, Vampire
+and Cobra are outdoors. The Palais du Génie and the Spinning Taxi are covered as
+well.
 
-The wait times of the six parks side by side, with Europa-Park as the reference
-point:
+At Walibi Belgium, waits on rainy days were 13% shorter.
 
-```park-comparison-widget slugs=europa-park,phantasialand,efteling,movie-park-germany,plopsaland-deutschland,heide-park highlight=europa-park
+```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
 
-My verdict for a pure rain day: Efteling if you like dark rides, Phantasialand if
-you also want a roller coaster indoors. Europa-Park has the longest list at 34
-entries, but many of them aren’t rides. For Movie Park and Heide Park I wouldn’t
-pick a rain day. With small children, Plopsaland would be my choice.
+More on the park in the [Walibi Belgium guide](/blog/walibi-belgium-wait-times-tips).
 
-## Parks where we don’t know the indoor rides
+## Walibi Holland
 
-For Toverland, Walibi Holland, Walibi Belgium, Parc Astérix, Legoland
-Deutschland, Disneyland Paris, Gardaland, Alton Towers and PortAventura, not a
-single attraction in our database carries a value. We don’t know there which
-rides are under a roof, and we don’t fill the gap with assumptions.
+At [Walibi Holland](ref:walibi-holland) in Biddinghuizen, none of the 39
+attractions is indoors. When the park dropped its winter opening in April
+2026, managing director Mascha Taminiau named its dependence on the weather as
+one of the reasons. On rainy days, waits there were 6% shorter. I wouldn’t go to
+Biddinghuizen on a day when it rains non-stop.
 
-Two notes from our guides. [Toverland](ref:attractiepark-toverland) opened on 19
-May 2001 as a covered park, in what is now Land van Toos, and Land van Toos and
-Wunderwald are still covered today. For [Walibi Holland](ref:walibi-holland) the
-guide says there’s hardly a building where you can take shelter from the rain.
-Managing director Mascha Taminiau gave dependence on the weather as one reason
-for ending winter operation in April 2026.
+More on the park in the [Walibi Holland guide](/blog/walibi-holland-untamed-hard-gaan).
 
-## Planning a trip in the rain
+## The nine parks compared
+
+As of 6 October 2026:
+
+| Park                   | Covered | Outdoor |
+| ---------------------- | ------: | ------: |
+| Europa-Park            |      34 |      60 |
+| Toverland              |      22 |      22 |
+| Phantasialand          |      14 |      26 |
+| Plopsaland Deutschland |      13 |      39 |
+| Movie Park Germany     |      12 |      26 |
+| Efteling               |      11 |      17 |
+| Walibi Belgium         |       7 |      35 |
+| Heide Park             |       3 |      28 |
+| Walibi Holland         |       0 |      39 |
+
+“Covered” counts attractions, not only rides. At Europa-Park it includes ten
+stations, three mazes and a ball pit, at Toverland a lot of climbing and play
+areas, at Movie Park and Plopsaland haunted houses that only open on Halloween
+evenings, and at Efteling the Diorama and the museum, among others.
+
+Typical wait times at the nine parks, with Europa-Park highlighted:
+
+```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
+
+```
+
+If it’s going to rain all day, I’d go to Efteling for the dark rides, or to
+Phantasialand if I wanted coasters too, since three of its coasters are covered.
+Even without the stations and mazes, Europa-Park has more covered attractions
+than either, but waits there were only 5% shorter on rainy days. With small
+children I’d head for Toverland or Plopsaland. I wouldn’t choose Movie Park,
+Heide Park or Walibi Holland for a rainy day.
+
+## Planning a rainy day
 
 ### The day before
 
-For every park the calendar lists the next few weeks with weather, opening hours
-and crowd level. By our measurement rain days are emptier on average, so a day
-of showers is no reason to cancel the visit. The weather over the park, here for
-Brühl:
+Each park’s calendar has the weather, opening hours and expected crowd level for
+the coming weeks. Parks are quieter on rainy days on average, so there’s no need
+to call off a visit because showers are forecast. Here’s the weather for Brühl:
 
 ```weather-widget slug=phantasialand
 
 ```
 
-The rain probability doesn’t say when it rains. When the
-weather is changeable, it pays to split the day in two halves: the indoor rides
-go into the hours when it rains, the outdoor rides into the gaps. When the next
-shower starts is written on the park page in the rain warning, with the time
-until it begins and its intensity.
+You can’t tell from the rain probability when the rain will come. On a
+changeable day, do the covered rides while it’s raining and save the outdoor ones
+for the dry spells in between.
 
 ### In the park
 
-On the park page the "Covered" filter hides everything that is outdoors and has
-no covered queue. Below the rain warning are the covered rides that are running right now. If your device has given the park access to your
-location, the list sorts by walking distance plus wait time, otherwise by wait
-time alone.
+The “Covered” filter on the park page leaves only the attractions where you stay
+dry while you queue. Rides where you might get soaked are marked “You may get
+wet” there, and each ride’s own page says whether it’s an indoor or an outdoor
+ride. When rain is forecast for the next few hours, a “Rain expected” warning
+appears on the park page with the time until it starts and how heavy it’ll be.
+Tap it, and up to four covered rides that are running right now appear under it.
+If you’ve shared your location, the ones with the shortest walk plus wait come
+first, and if not, the ones with the shortest wait.
 
-Each ride’s card also carries the marker "You may get wet" if you can get wet on
-the ride.
+So far the filter and the list under the rain warning only appear at parks where
+we know which attractions are covered, and every park above is one of them.
 
 ## Frequently asked questions
 
-### Is a theme park emptier in the rain?
+### Are theme parks quieter in the rain?
 
-By our measurement yes, in all twelve parks. The headliner wait time on rain days
-was on average between about 4% and 31% below dry days of the same group of
-month, weekend or public holiday, and school holidays. The period and thresholds
-are in the section at the top.
+By our measurement, yes. At all twelve parks we analysed, waits at the headliners
+were shorter on rainy days than on matching dry days, by about 4% to 31%
+depending on the park. Each rainy day was compared with dry days from the same
+month that were also weekdays or also weekends, and also in or also outside the
+school holidays. The analysis covers operating days from 24 December 2025 to 5
+October 2026, and a rainy day is one with at least 2 millimetres of
+precipitation.
 
-### Which theme parks have many indoor rides?
+### Which theme parks have the most indoor rides?
 
-In our data Phantasialand with 14 of 40 entries, Europa-Park with 34 of 97 and
-Efteling with eleven of 37. At Europa-Park these include stations and mazes.
-Heide Park has three.
+Of the nine parks we’ve gone through ride by ride, Europa-Park has the most
+covered attractions, 34, although 14 of them are stations, mazes and a ball pit.
+At Toverland 22 of the 44 attractions are covered, the largest share, and at
+Phantasialand 14 of 40. At Walibi Holland none of the attractions is indoors.
 
 ### Do roller coasters run in the rain?
 
-Each park decides that at short notice. At Phantasialand every outdoor ride can
-close in extreme weather, as our guide to the park says. Whether a ride is
-running is written on its page, refreshed every five minutes.
+Each park decides that for itself, often on the day. At Phantasialand any outdoor
+ride can close at short notice in extreme weather. Whether a ride is running
+right now is on its page at park.fan, updated every five minutes.
 
-### Which park is best in the rain with small children?
+### Which theme park is best in the rain with small children?
 
-Plopsaland Deutschland has eight rides and play areas in its indoor hall for
-which we list no minimum height. At Efteling, Droomvlucht, Symbolica, Villa Volta
-and Fata Morgana likewise have none in our data, while Vogel Rok and Danse
-Macabre set 120 centimetres. Each ride’s minimum height is on its page.
+Going by our figures, Toverland or Plopsaland Deutschland. At Toverland 22 of the
+44 attractions are covered, nearly all of them built for families with small
+children, and 17 of them are in the two halls, Land van Toos and Wunderwald. The
+Toos-Express, the only covered coaster, has a minimum height of 90 centimetres.
+At Plopsaland in Haßloch eight rides and play areas are covered, seven of them in
+the indoor hall, from Tabaluga’s Rollercoaster to the ball pit. Every ride’s
+minimum height is on its page at park.fan.
 
-### How often does it rain at a park?
+### How often does it rain at theme parks?
 
-In our period between 15% and 26% of operating days had at least 2 millimetres of
-precipitation, depending on the park. That is one year, not a climate statistic,
-and the table further up breaks it down by month.
+Between 24 December 2025 and 5 October 2026, at least 2 millimetres of rain fell
+on 15% to 26% of operating days, depending on the park. Across Europa-Park,
+Phantasialand, Efteling, Movie Park, Plopsaland and Heide Park, July was the
+driest month from April to September, with 10% of operating days wet, and June
+the wettest, with 32%. That’s one year, not a long-term average.
 
 ## Sources and further reading
 
-- Wait times on rain days and number of rain days: park.fan’s own measurement from calendar and daily weather values, 24 December 2025 to 5 October 2026, weather data from [Open-Meteo](https://open-meteo.com/)
-- Indoor rides, outdoor rides and covered queues per attraction, minimum heights, manufacturers and opening years of the rides: curated at park.fan based on the parks' own information, as of 6 October 2026
-- Europa-Park, opened 1975: [Europa-Park (Wikipedia)](https://en.wikipedia.org/wiki/Europa-Park)
-- Phantasialand, founded 1967: [Phantasialand (Wikipedia)](https://en.wikipedia.org/wiki/Phantasialand)
-- Efteling, opened 1952: [Efteling (Wikipedia)](https://en.wikipedia.org/wiki/Efteling)
-- Movie Park Germany, opened 1996 and renamed 2005: [Movie Park Germany (Wikipedia)](https://en.wikipedia.org/wiki/Movie_Park_Germany)
-- Plopsaland Deutschland, Holiday Park 1971, Studio 100 since 2010, renamed 2025 and the indoor hall: [Plopsaland Deutschland (Wikipedia)](https://en.wikipedia.org/wiki/Plopsaland_Deutschland)
-- Heide Park, opened 1978 and Merlin since 2007: [Heide Park Resort (Wikipedia)](https://en.wikipedia.org/wiki/Heide_Park_Resort)
-- Details on Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing’s Factory and Walibi Holland’s winter operation: our guides to [Phantasialand](/blog/phantasialand-wait-times-tips), [Heide Park](/blog/heide-park-wait-times-tips), [Movie Park](/blog/movie-park-germany-wait-times-tips) and [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus the [winter parks guide](/blog/winter-theme-parks-2026)
-- More guides: [Europa-Park](/blog/europa-park-wait-times-tips) · [Phantasialand](/blog/phantasialand-wait-times-tips) · [Efteling](/blog/efteling-disney-of-the-netherlands) · [Movie Park](/blog/movie-park-germany-wait-times-tips) · [Heide Park](/blog/heide-park-wait-times-tips) · [Toverland](/blog/toverland-troy-wait-times-tips) · [Winter parks](/blog/winter-theme-parks-2026)
+- Wait times on rainy days and the number of rainy days: park.fan’s own measurement from daily wait times and daily weather, 24 December 2025 to 5 October 2026, weather data from [Open-Meteo](https://open-meteo.com/)
+- Which attractions are covered, and the rides’ minimum heights, manufacturers and opening years: recorded by park.fan from the parks’ own information, as of 6 October 2026
+- Plopsaland Deutschland, formerly Holiday Park, the 2025 renaming and the indoor hall: [Plopsaland Deutschland (Wikipedia)](https://en.wikipedia.org/wiki/Plopsaland_Deutschland)
+- Turbine, a Schwarzkopf Shuttle Loop from 1982: [Turbine on RCDB](https://rcdb.com/921.htm)
+- Details on Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing’s Factory, Turbine, Toverland’s history, the weather at Phantasialand and Walibi Holland’s winter opening: our guides to [Phantasialand](/blog/phantasialand-wait-times-tips), [Heide Park](/blog/heide-park-wait-times-tips), [Movie Park](/blog/movie-park-germany-wait-times-tips), [Toverland](/blog/toverland-troy-wait-times-tips), [Walibi Belgium](/blog/walibi-belgium-wait-times-tips) and [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus the [winter parks guide](/blog/winter-theme-parks-2026)
+- More guides: [Europa-Park](/blog/europa-park-wait-times-tips) · [Phantasialand](/blog/phantasialand-wait-times-tips) · [Efteling](/blog/efteling-disney-of-the-netherlands) · [Movie Park](/blog/movie-park-germany-wait-times-tips) · [Heide Park](/blog/heide-park-wait-times-tips) · [Toverland](/blog/toverland-troy-wait-times-tips) · [Walibi Belgium](/blog/walibi-belgium-wait-times-tips) · [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan) · [Winter parks](/blog/winter-theme-parks-2026)

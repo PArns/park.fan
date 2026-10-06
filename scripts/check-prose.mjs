@@ -296,6 +296,85 @@ const ACCESS_DATE = {
   },
 };
 /**
+ * `in zwölf von zwölf ausgewerteten Parks` (§3.3, rule 13): completeness performed instead of
+ * stated, where `in allen zwölf` says the same. It opened the excerpt of the rain guide in all six
+ * languages (`twelve of twelve`, `twaalf van de twaalf`, `douze parcs sur douze`, `doce de doce`,
+ * `dodici su dodici`) until Patrick put it on the list on 2026-10-06. Only a number word counted
+ * against itself, with nothing in between, is a hit: `21 von 44`, a grade of `20 sur 20` and
+ * `two rows of two` stay.
+ */
+const COUNT_WORDS = {
+  de: 'zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf',
+  en: 'two|three|four|five|six|seven|eight|nine|ten|eleven|twelve',
+  nl: 'twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf',
+  fr: 'deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze',
+  es: 'dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce',
+  it: 'due|tre|quattro|cinque|sei|sette|otto|nove|dieci|undici|dodici',
+};
+const OF_ITSELF = {
+  de: 'von',
+  en: '(?:out )?of (?:the )?',
+  nl: 'van (?:de )?',
+  fr: 'sur',
+  es: 'de (?:los |las )?',
+  it: 'su',
+};
+const X_OF_X = Object.fromEntries(
+  LOCALES.map((l) => [
+    l,
+    new RegExp(`(?<!\\p{L})(${COUNT_WORDS[l]}) ${OF_ITSELF[l]}\\s*\\1(?!\\p{L})`, 'giu'),
+  ])
+);
+/**
+ * `die Headliner sind kürzer besetzt` (§3.3, rule 14): a verb that does not fit its noun. A ride
+ * is not "besetzt", short or long; the wait at it is shorter. It stood in the same excerpt, and the
+ * Dutch version had carried it over as `korter bezet`.
+ */
+const WRONG_NOUN = {
+  de: /(?<!\p{L})(?:kürzer|länger) besetzt(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:korter|langer) bezet(?!\p{L})/giu,
+};
+/**
+ * `Drei Einschränkungen gehören dazu.`, `Zwei Einordnungen aus unseren Guides.` (§2.16): a short
+ * sentence that counts what follows instead of saying it. Only the nouns of a text talking about
+ * its own caveats are matched; `Drei Dinge noch:` introduces a list in five posts and is left to
+ * the review pass.
+ */
+const COUNT_ANNOUNCEMENT = {
+  de: /(?<!\p{L})(?:zwei|drei|vier|fünf)\s+(?:\p{L}+\s+)?(?:einschränkungen|einordnungen|anmerkungen|vorbehalte)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:two|three|four|five)\s+(?:\p{L}+\s+)?(?:caveats|limitations|notes|remarks)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:twee|drie|vier|vijf)\s+(?:\p{L}+\s+)?(?:kanttekeningen|opmerkingen|beperkingen|inschattingen)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:deux|trois|quatre|cinq)\s+(?:\p{L}+\s+)?(?:réserves|remarques|limites|repères)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:dos|tres|cuatro|cinco)\s+(?:\p{L}+\s+)?(?:salvedades|limitaciones|apuntes|matices)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:due|tre|quattro|cinque)\s+(?:\p{L}+\s+)?(?:avvertenze|limiti|precisazioni|indicazioni)(?!\p{L})/iu,
+};
+/**
+ * Words for our database instead of the park (§2.19): `Einträge`, `ohne Wert`, `führen wir`, and
+ * `im Gebäude`, which is the field `indoor` read aloud where a reader says `überdacht`. The rain
+ * guide carried 18 per 1,000 words before its rewrite on 2026-10-06; no other German post reached
+ * two. `entrées`, `entradas` and `voci` are tickets and list items as often as records, so the
+ * Romance lists keep only the phrases about values and our data.
+ */
+const DATABASE_WORDS = {
+  de: /(?<!\p{L})(?:eintr(?:ag|äge|ägen|ages)|(?:ohne|mit|einen|keinen) wert|führen wir|in unseren daten|in unserer datenbank|im gebäude)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:entries|(?:a|no|without a|with a) value|in our data(?:base)?|inside (?:a|the) building)(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:(?:een|geen|zonder) waarde|in onze data(?:base)?|in gebouwen|in het gebouw)(?!\p{L})/giu,
+  fr: /(?<!\p{L})(?:(?:une|aucune|sans) valeur|dans nos données|dans notre base)(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:(?:un|ningún|sin) valor|en nuestros datos|en nuestra base)(?!\p{L})/giu,
+  it: /(?<!\p{L})(?:(?:un|nessun|senza) valore|nei nostri dati|nel nostro database)(?!\p{L})/giu,
+};
+const MAX_DATABASE_WORDS_PER_1K = 4;
+const DATA_HEADING =
+  /(?<!\p{L})(?:in unseren daten|in unserer datenbank|in our data(?:base)?|in onze data(?:base)?|dans nos données|en nuestros datos|nei nostri dati)(?!\p{L})/iu;
+/**
+ * An excerpt or a meta description that lists the post's chapters (§5.4): `Dazu die Bahnen im
+ * Gebäude …, die Reiseplanung und die häufigsten Fragen.` It is the search snippet, and a snippet
+ * that names an FAQ gives nobody a reason to click.
+ */
+const SNIPPET_TOC =
+  /(?<!\p{L})(?:(?:die )?häufigsten fragen|faq|reiseplanung|(?:the )?most common questions|frequently asked questions|trip planning|meest gestelde vragen|veelgestelde vragen|reisplanning|questions fréquentes|préparation du voyage|preguntas (?:más )?frecuentes|planificación del viaje|domande (?:più )?frequenti|pianificazione della visita)(?!\p{L})/iu;
+
+/**
  * `die Antwort auf` and its five twins (§3): a sentence that announces the answer instead of
  * giving it. A warning from 2026-10-02 morning, an error since the same afternoon (Patrick, PAR-637).
  * Every language on every surface, because a translation keeps the habit of its source.
@@ -388,6 +467,39 @@ const WATCH = [
     // or where the result is. A model computing a forecast is arithmetic and is not on the list.
     what: 'things that calculate (§2.13)',
     re: /(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer|übersicht)\s+(?:oben\s+|unten\s+|hierüber\s+|darunter\s+)?(?:rechnet|rechnen)\b|\b(?:rechnet|rechnen)\s+(?:der|die|das|unser\p{L}*)\s+(?:\p{L}+\s+)?(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer)\b|\b(?:eine[rs]?|eins) davon rechnet\b|(?:report|study|guide|article|post|page|widget|calendar|table|planner)s?\s+(?:works out|calculates|crunches|adds up|does the maths?)\b|(?:rapport|onderzoek|studie|gids|artikel|pagina|widget|kalender|tabel|planner)\s+(?:rekent|rekenen)\b|\brekent\s+(?:de|het|onze)\s+(?:\p{L}+\s+)?(?:gids|widget|kalender|planner|dagplanner|pagina|tabel)\b|(?:rapport|étude|guide|article|page|widget|calendrier|tableau|planificateur)s?\s+calcule\b|(?:informe|estudio|guía|artículo|página|widget|calendario|tabla|planificador)\s+calcula\b|(?:rapporto|studio|guida|articolo|pagina|widget|calendario|tabella|pianificatore)\s+calcola\b/giu,
+  },
+  {
+    // `Die Daten belegen das nicht`, `ein anderes Jahr verteilt das anders` (§2.13): data and a
+    // year as the actor. They stood in the rain guide in six languages until 2026-10-06.
+    what: 'data or a year as the actor (§2.13)',
+    re: /(?<!\p{L})(?:die daten (?:belegen|beweisen)|ein anderes jahr verteilt|the data (?:doesn['’]t|don['’]t|does not|do not) (?:prove|show)|another year (?:will )?spreads?|de data (?:bewijzen|tonen)|een ander jaar verdeelt|les données ne le (?:prouvent|montrent)|une autre année répartira|los datos no lo (?:demuestran|prueban)|otro año lo repartiría|i dati non lo (?:provano|dimostrano)|un altro anno distribuirebbe)(?!\p{L})/giu,
+  },
+  {
+    // `Offen bleibt, welche Bahnen …, und das sind zuerst die im Gebäude.` (§2.12): the question
+    // set-up folded into one sentence. A question that stays open (`Reste à savoir si la question
+    // est recevable.`) has no answer clause and is not a hit.
+    what: 'a question answered in the same sentence (§2.12)',
+    re: /(?<!\p{L})(?:(?:offen bleibt|bleibt die frage),? (?:welche|wie|was|ob|wann|wo)[^.!?]{0,120}, und (?:das|die|der|es) |what['’]s left (?:open )?is (?:which|how|what|whether)[^.!?]{0,120}, and |open blijft,? (?:welke|hoe|wat|of)[^.!?]{0,120}, en |reste à savoir (?:quel\p{L}*|si|comment)[^.!?]{0,120}, et |queda por saber (?:qué|cuál\p{L}*|cómo|si)[^.!?]{0,120}, y |resta da capire (?:quali|quale|come|se)[^.!?]{0,120}, e )/giu,
+  },
+  {
+    // `und füllen die Lücke nicht mit Annahmen`, `Die Lücke liegt in unserer Datenbank und hat mit
+    // den Parks nichts zu tun` (§2.14): an integrity pledge nobody asked for, about a gap the
+    // reader did not need to hear about.
+    what: 'a pledge about a gap (§2.14)',
+    re: /(?<!\p{L})(?:(?:füllen|füllt) [^.!?]{0,20}lücke nicht|nicht mit annahmen|hat mit den parks nichts zu tun|(?:don['’]t|do not|won['’]t|will not) fill (?:the|that|this) gap|vullen het gat niet|niet met aannames|ne comblons pas|avec des suppositions|no rellenamos|con suposiciones|non (?:lo )?riempiamo|con supposizioni)(?!\p{L})/giu,
+  },
+  {
+    // `so steht es in unserem Guide zum Park` (§1.2): our own post as the evidence for a claim.
+    // Link the guide where a reader wants more; the claim names the park or the operator.
+    what: 'our own guide as the source (§1.2)',
+    re: /(?<!\p{L})(?:so steht es in unserem|steht im guide, dass|laut unserem guide|as our guide (?:to [^.,]{1,40} )?says|our guide says|according to our guide|zo staat het in onze gids|volgens onze gids|c['’]est écrit dans notre guide|selon notre guide|así consta en nuestra guía|según nuestra guía|così c['’]è scritto nella nostra guida|secondo la nostra guida)(?!\p{L})/giu,
+  },
+  {
+    // `trockene Tage gleicher Art`, `derselben Gruppe` (§2.19): a comparison against a bucket the
+    // reader was never shown. Say what is compared. `the same group` is left out: in the Walibi and
+    // Parc Astérix posts it is the company.
+    what: 'an unnamed comparison (§2.19)',
+    re: /(?<!\p{L})(?:gleicher art|derselben gruppe|(?:days|ones) of the same kind|van (?:het|de)zelfde soort)(?!\p{L})/giu,
   },
   {
     // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
@@ -871,6 +983,18 @@ function hardRules(file, text, locale) {
       `a model that grades itself (§3.3), say what is compared and where the result is: ${[...new Set(selfGrading)].slice(0, 3).join(' · ')}`
     );
   const flat = text.replace(/\s+/g, ' ');
+  const selfCount = flat.match(X_OF_X[locale]);
+  if (selfCount)
+    fail(
+      file,
+      `"zwölf von zwölf" (§3.3), write "alle zwölf": ${[...new Set(selfCount)].slice(0, 3).join(' · ')}`
+    );
+  const wrongNoun = WRONG_NOUN[locale] && flat.match(WRONG_NOUN[locale]);
+  if (wrongNoun)
+    fail(
+      file,
+      `"kürzer besetzt" (§3.3), a ride is not besetzt, its wait is shorter: ${[...new Set(wrongNoun)].join(' · ')}`
+    );
   const numberShown = [
     ...((A_NUMBER_SHOWN[locale] && flat.match(A_NUMBER_SHOWN[locale])) || []),
     ...((NUMBER_SPEAKS[locale] && flat.match(NUMBER_SPEAKS[locale])) || []),
@@ -928,6 +1052,48 @@ function researchNarration(file, raw, locale) {
     );
 }
 
+/**
+ * A post that describes our database instead of the park (§2.19), and the furniture that came
+ * with it in the rain guide of 2026-10-06: a count announcement (§2.16), the same line
+ * introducing two widgets (§2.7), a heading about our data (§4.3) and an excerpt that lists the
+ * chapters (§5.4).
+ */
+function databaseProse(file, raw, body, locale) {
+  const words = body.trim().split(/\s+/).length;
+  const db = body.replace(/\s+/g, ' ').match(DATABASE_WORDS[locale]) ?? [];
+  if (db.length >= 8 && (db.length / words) * 1000 > MAX_DATABASE_WORDS_PER_1K)
+    warn(
+      file,
+      `our database instead of the park (§2.19): ${db.length}× in ${words} words, budget ${MAX_DATABASE_WORDS_PER_1K}/1k — ${[...new Set(db.map((w) => w.toLowerCase()))].slice(0, 5).join(', ')}`
+    );
+  const counts = splitSentences(body).filter(
+    (s) => s.trim().split(/\s+/).length <= 7 && COUNT_ANNOUNCEMENT[locale].test(s)
+  );
+  if (counts.length)
+    warn(
+      file,
+      `a count announcement (§2.16), say the things instead: ${counts
+        .slice(0, 2)
+        .map((s) => `"${s.trim()}"`)
+        .join(' · ')}`
+    );
+  // A date stamp (`Stand 6. Oktober 2026:`) above two tables is a date, not a template.
+  const intros = new Map();
+  for (const paragraph of body.split(/\n\s*\n/)) {
+    const p = paragraph.trim().replace(/\s+/g, ' ');
+    if (/:$/.test(p) && !/\d/.test(p) && p.split(' ').length >= 4)
+      intros.set(p, (intros.get(p) ?? 0) + 1);
+  }
+  for (const [line, n] of intros)
+    if (n > 1) warn(file, `the same line introduces ${n} things (§2.7) — "${line.slice(0, 70)}"`);
+  for (const m of raw.matchAll(/^#{2,3} (.+)$/gm))
+    if (DATA_HEADING.test(m[1]))
+      warn(file, `a heading about our data, not the park (§4.3) — "${m[1]}"`);
+  for (const [field, value] of plainTextFields(raw))
+    if ((field === 'excerpt' || field === 'description') && SNIPPET_TOC.test(value))
+      warn(file, `${field} lists the post's chapters (§5.4) — "${value.slice(0, 70)}…"`);
+}
+
 function scan(file, raw, { subject, skip = [] } = {}) {
   // A phrase wrapped across two lines (`datos\n    reales` in YAML, a hard-wrapped paragraph)
   // is the same phrase: every list below is written with plain spaces.
@@ -980,6 +1146,7 @@ for (const locale of runs('blog') ? LOCALES : []) {
     ].join('\n');
     scan(`${file} (frontmatter and image text)`, frontAndImages, { skip: [SIGN_RULE] });
     researchNarration(file, `${body}\n\n${frontAndImages}`, locale);
+    databaseProse(file, raw, body, locale);
 
     if (/^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '')) {
       const title = plainTextFields(raw).find(([f]) => f === 'title')?.[1] ?? '';
