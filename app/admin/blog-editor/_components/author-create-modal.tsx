@@ -148,7 +148,7 @@ function AuthorForm({
         <div className="border-border/40 bg-muted/20 flex items-center gap-3 border-b px-4 py-3">
           <div className="from-primary/25 to-primary/5 text-primary relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br text-base font-bold">
             {avatar ? (
-              // eslint-disable-next-line @next/next/no-img-element
+              // eslint-disable-next-line @next/next/no-img-element -- a typed URL may be on any host
               <img src={avatar} alt="" className="absolute inset-0 h-full w-full object-cover" />
             ) : (
               (trimmedName || '?').charAt(0).toUpperCase()

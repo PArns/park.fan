@@ -882,7 +882,7 @@ function ImageForm({
 
       <Section label="Preview">
         <div className="border-border/60 bg-muted/30 relative h-32 w-full overflow-hidden rounded-lg border">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- may be the blob: URL of an unsaved upload */}
           <img
             src={getPendingImage(selection.src)?.objectUrl ?? selection.src}
             alt={alt}
