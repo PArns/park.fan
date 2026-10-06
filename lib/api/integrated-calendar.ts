@@ -1,17 +1,7 @@
-import { getServerApiHeaders } from './client';
+import { getApiBaseUrl, getServerApiHeaders } from './client';
 import { parkCacheTag } from './park-live-projection';
 import { withSeedTimeout } from './seed-timeout';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
-
-// Use proxy for client-side, direct live URL for server-side
-const getApiBaseUrl = () => {
-  // Server-side: use live API directly
-  if (typeof window === 'undefined') {
-    return process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
-  }
-  // Client-side: use relative path to trigger Next.js proxy
-  return '';
-};
 
 /**
  * Which days of a calendar range carry an hourly crowd curve (`CalendarDay.hourly`).

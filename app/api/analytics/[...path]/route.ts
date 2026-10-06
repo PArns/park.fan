@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getTickerData } from '@/lib/api/analytics';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 /**
  * The three public analytics reads, and only those three.
@@ -57,7 +55,7 @@ export async function GET(
 
   // No query string goes upstream: none of the three takes one, and each distinct query would
   // miss the shared window and spend a keyed backend call.
-  const apiUrl = new URL(`${API_BASE}/v1/analytics/${upstream}`);
+  const apiUrl = new URL(`${getApiBaseUrl()}/v1/analytics/${upstream}`);
 
   try {
     const response = await fetch(apiUrl.toString(), {

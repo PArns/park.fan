@@ -1,10 +1,9 @@
-// API base configuration
-const getApiBaseUrl = () => {
-  // Server-side: go directly to the API to save round-trip/overhead
+/** Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser. */
+export const getApiBaseUrl = () => {
   if (typeof window === 'undefined') {
     return process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
   }
-  // Client-side: use relative path to trigger Next.js proxy (avoids CORS)
+  // Relative, so the browser goes through the Next.js proxy and needs no CORS.
   return '';
 };
 

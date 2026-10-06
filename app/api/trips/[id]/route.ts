@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 /**
@@ -11,7 +11,6 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
  * segment that is not that shape cannot be a trip, and refusing it here keeps
  * a scanner's `../` and its SQL out of an upstream request entirely.
  */
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
 
 /** What `TripsService.newId` produces: 12 random bytes as base64url. */
 const TRIP_ID = /^[A-Za-z0-9_-]{16}$/;
@@ -23,7 +22,7 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
   }
 
   try {
-    const response = await fetch(`${API_BASE}/v1/trips/${id}`, {
+    const response = await fetch(`${getApiBaseUrl()}/v1/trips/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         ...getForwardedForHeaders(request),
@@ -55,7 +54,7 @@ export async function PUT(request: NextRequest, context: { params: Promise<{ id:
   }
 
   try {
-    const response = await fetch(`${API_BASE}/v1/trips/${id}`, {
+    const response = await fetch(`${getApiBaseUrl()}/v1/trips/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -97,7 +96,7 @@ export async function DELETE(request: NextRequest, context: { params: Promise<{ 
   }
 
   try {
-    const response = await fetch(`${API_BASE}/v1/trips/${id}`, {
+    const response = await fetch(`${getApiBaseUrl()}/v1/trips/${id}`, {
       method: 'DELETE',
       headers: {
         ...getForwardedForHeaders(request),

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 
 /**
  * Whether push works, and the key to subscribe with.
@@ -13,10 +13,8 @@ import { getServerApiHeaders } from '@/lib/api/client';
  * after push was switched on.
  */
 export async function GET() {
-  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
-
   try {
-    const response = await fetch(`${apiBase}/v1/push`, {
+    const response = await fetch(`${getApiBaseUrl()}/v1/push`, {
       headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
       cache: 'no-store',
     });

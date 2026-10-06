@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { enrichParksWithImages, enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { stripUnreadableWaitStats } from '@/lib/utils/live-wait-times';
@@ -17,8 +17,7 @@ export async function GET(request: NextRequest) {
 
   try {
     // Build API URL
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
-    const apiUrl = new URL(`${apiBase}/v1/favorites`);
+    const apiUrl = new URL(`${getApiBaseUrl()}/v1/favorites`);
 
     // Add query parameters if provided
     if (parkIds) {

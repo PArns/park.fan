@@ -1,11 +1,5 @@
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import type { PlanDay } from '@/lib/api/types';
-
-// Same shape as `lib/api/stats.ts`: absolute on the server, relative in a
-// browser, so the one function works from a Server Component and from the proxy
-// route alike.
-const getApiBaseUrl = () =>
-  typeof window === 'undefined' ? process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan' : '';
 
 /**
  * One day of a park, ride by ride and hour by hour — the series the trip planner

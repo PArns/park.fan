@@ -1,4 +1,4 @@
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import type {
   ScheduleSummary,
   CrowdLevel,
@@ -234,8 +234,7 @@ export async function getFavorites(
   // Use local proxy route (like nearby) to avoid CORS and forward cookies
   if (typeof window === 'undefined') {
     // Server-side: call API directly
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
-    const apiUrl = new URL(`${apiBase}/v1/favorites`);
+    const apiUrl = new URL(`${getApiBaseUrl()}/v1/favorites`);
     Object.entries(params).forEach(([key, value]) => {
       apiUrl.searchParams.set(key, value);
     });

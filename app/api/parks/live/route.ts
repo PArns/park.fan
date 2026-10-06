@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 /**
  * Guardrail for a public route that fans out to the backend: refuse silly region lists.
@@ -63,7 +61,7 @@ export async function GET(request: NextRequest) {
   const responses = await Promise.all(
     regions.map(async (region) => {
       try {
-        const res = await fetch(`${API_BASE}/v1/discovery/continents/${region}`, {
+        const res = await fetch(`${getApiBaseUrl()}/v1/discovery/continents/${region}`, {
           // Always the backend's latest: this IS the live path. The CDN window below is what
           // keeps concurrent visitors off the origin.
           cache: 'no-store',

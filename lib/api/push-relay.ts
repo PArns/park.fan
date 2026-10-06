@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 /**
@@ -16,7 +16,6 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
  * mean different things to whatever called this, and collapsing them into
  * "failed" is how a visitor ends up retrying something that will never work.
  */
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
 
 /** `GET <apiPath>?endpoint=…` — the "list this browser's own rows" shape `ride-alerts`/`show-follows` both use. */
 export async function relayPushGet(request: NextRequest, apiPath: string): Promise<NextResponse> {
@@ -26,10 +25,13 @@ export async function relayPushGet(request: NextRequest, apiPath: string): Promi
   }
 
   try {
-    const response = await fetch(`${API_BASE}${apiPath}?endpoint=${encodeURIComponent(endpoint)}`, {
-      headers: { ...getForwardedForHeaders(request), ...getServerApiHeaders() },
-      cache: 'no-store',
-    });
+    const response = await fetch(
+      `${getApiBaseUrl()}${apiPath}?endpoint=${encodeURIComponent(endpoint)}`,
+      {
+        headers: { ...getForwardedForHeaders(request), ...getServerApiHeaders() },
+        cache: 'no-store',
+      }
+    );
     const text = await response.text();
     return new NextResponse(text || null, {
       status: response.status,
@@ -54,7 +56,7 @@ export async function relayPushWrite(
   }
 
   try {
-    const response = await fetch(`${API_BASE}${apiPath}`, {
+    const response = await fetch(`${getApiBaseUrl()}${apiPath}`, {
       method,
       headers: {
         'Content-Type': 'application/json',

@@ -1,10 +1,7 @@
 import { cache } from 'react';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import type { ParkHistoricalStats, ParkHourlyProfile, RideDayCurve } from '@/lib/api/types';
-
-const getApiBaseUrl = () =>
-  typeof window === 'undefined' ? process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan' : '';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

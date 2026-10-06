@@ -1,9 +1,7 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -57,7 +55,7 @@ export async function GET(
   const upstream = [...ML_PATHS].find((candidate) => candidate === requested)!;
 
   const incoming = new URL(request.url);
-  const apiUrl = new URL(`${API_BASE}/v1/ml/${upstream}`);
+  const apiUrl = new URL(`${getApiBaseUrl()}/v1/ml/${upstream}`);
   incoming.searchParams.forEach((value, key) => apiUrl.searchParams.set(key, value));
 
   try {

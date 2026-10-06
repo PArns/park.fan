@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 /**
@@ -14,7 +14,6 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
  * No `revalidate`, no CDN header: a trip is one visitor's and a shared edge copy
  * would hand the next reader somebody else's plan.
  */
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
 
 export async function POST(request: NextRequest) {
   let body: unknown;
@@ -25,7 +24,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const response = await fetch(`${API_BASE}/v1/trips`, {
+    const response = await fetch(`${getApiBaseUrl()}/v1/trips`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
