@@ -15,12 +15,12 @@ import {
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { Section, statusDot } from '../_lib/ui';
+import { Section } from '../_lib/ui';
 import { formatUptime } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
-import { AdminPage, ErrorState, LoadingState, Meta } from '../_ui/primitives';
+import { AdminPage, ErrorState, LoadingState, Meta, StatusDot } from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -442,7 +442,7 @@ export default function SystemPage() {
                   <Database className="text-primary h-4 w-4" /> PostgreSQL
                 </span>
                 <span className="flex items-center gap-1.5 text-sm font-normal">
-                  {statusDot(pgOk)}
+                  <StatusDot ok={pgOk} />
                   <span className={pgOk ? 'text-emerald-400' : 'text-red-400'}>
                     {pgOk ? 'Connected' : data.postgres.status}
                   </span>
@@ -478,7 +478,7 @@ export default function SystemPage() {
                   <Zap className="text-primary h-4 w-4" /> Redis
                 </span>
                 <span className="flex items-center gap-1.5 text-sm font-normal">
-                  {statusDot(redisOk)}
+                  <StatusDot ok={redisOk} />
                   <span className={redisOk ? 'text-emerald-400' : 'text-red-400'}>
                     {redisOk ? 'Connected' : data.redis.status}
                   </span>
@@ -519,7 +519,7 @@ export default function SystemPage() {
                     <Waves className="text-primary h-4 w-4" /> Wait Times
                   </span>
                   <span className="flex items-center gap-1.5 text-sm font-normal">
-                    {statusDot(queueStale != null && queueStale < 20)}
+                    <StatusDot ok={queueStale != null && queueStale < 20} />
                     <span className={queueClass}>
                       {queueStale != null ? `${queueStale} min ago` : 'no data'}
                     </span>
@@ -553,7 +553,7 @@ export default function SystemPage() {
                     <CloudSun className="text-primary h-4 w-4" /> Weather Forecast
                   </span>
                   <span className="flex items-center gap-1.5 text-sm font-normal">
-                    {statusDot(weatherDaysAhead != null && weatherDaysAhead > 0)}
+                    <StatusDot ok={weatherDaysAhead != null && weatherDaysAhead > 0} />
                     <span className={weatherClass}>
                       {weatherDaysAhead != null
                         ? weatherDaysAhead > 0

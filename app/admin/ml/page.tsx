@@ -21,10 +21,20 @@ import type {
   MlComparisonBoard,
   ShadowComparisonRow,
 } from '@/lib/api/admin';
-import { Section, SeverityBadge, StatCard, StatusBadge } from '../_lib/ui';
+import { Section, StatCard } from '../_lib/ui';
 import { formatAge, maeColor } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AdminPage, EmptyState, ErrorState, LoadingState, Meta } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Meta,
+  StatusDot,
+  severityTone,
+  statusTone,
+} from '../_ui/primitives';
 import type {
   MlAlert,
   MlAnomalyStats,
@@ -222,20 +232,13 @@ function VerdictBar({ label, items }: { label: string; items: VerdictItem[] }) {
       </span>
       <div className="flex flex-wrap gap-1.5">
         {sorted.map((v) => (
-          <span
-            key={v.segment}
-            className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium ${
-              v.wins
-                ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400'
-                : 'border-red-500/20 bg-red-500/10 text-red-400'
-            }`}
-          >
+          <Chip key={v.segment} tone={v.wins ? 'success' : 'danger'} className="gap-1.5 text-xs">
             <span className="font-mono uppercase">{SEGMENT_LABELS[v.segment] ?? v.segment}</span>
             <span className="tabular-nums">
               {v.delta > 0 ? '+' : ''}
               {v.delta.toFixed(1)}
             </span>
-          </span>
+          </Chip>
         ))}
       </div>
     </div>
@@ -734,6 +737,13 @@ export default function MlPage() {
     wins: v.challengerWins,
   }));
 
+  const driftTone = statusTone(perf.drift.status);
+  const driftChip = (
+    <Chip tone={driftTone}>
+      <StatusDot ok={driftTone === 'success'} /> {perf.drift.status}
+    </Chip>
+  );
+
   const cbTraining = !!(catboost?.training.is_training && catboost.training.started_at);
   const tftTraining = !!tft?.training.is_training;
   const tftError = tft?.training.error;
@@ -744,9 +754,7 @@ export default function MlPage() {
         <div className="space-y-3">
           <Card className="border-border/60">
             <CardContent className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
-              <StripCell label="Health">
-                <StatusBadge status={perf.drift.status} />
-              </StripCell>
+              <StripCell label="Health">{driftChip}</StripCell>
               <StripCell label="CatBoost">
                 <div className="space-y-0.5">
                   <TrainingStatusBadge state={cbState} label={model.current.version} />
@@ -975,7 +983,7 @@ export default function MlPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="space-y-1">
-                  <StatusBadge status={perf.drift.status} />
+                  {driftChip}
                   <p className="text-muted-foreground text-xs">
                     drift {perf.drift.currentDrift.toFixed(2)} / threshold {perf.drift.threshold}
                   </p>
@@ -1142,7 +1150,7 @@ export default function MlPage() {
                     <div className="flex flex-wrap gap-1.5">
                       {Object.entries(anomalies.data.bySeverity).map(([sev, n]) => (
                         <span key={sev} className="flex items-center gap-1">
-                          <SeverityBadge severity={sev} />
+                          <Chip tone={severityTone(sev)}>{sev}</Chip>
                           <span className="text-muted-foreground text-xs tabular-nums">{n}</span>
                         </span>
                       ))}
@@ -1174,7 +1182,7 @@ export default function MlPage() {
                     >
                       <div className="flex items-center justify-between gap-2">
                         <span className="text-sm font-medium">{a.title}</span>
-                        <SeverityBadge severity={a.severity} />
+                        <Chip tone={severityTone(a.severity)}>{a.severity}</Chip>
                       </div>
                       <p className="text-muted-foreground mt-1 text-xs">{a.message}</p>
                     </div>

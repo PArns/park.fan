@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { Activity, Globe, Radio } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { CrowdBadge, Section, StatCard } from '../_lib/ui';
+import { Section, StatCard } from '../_lib/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { AnalyticsGeoLive, AnalyticsRealtime, AnalyticsTicker } from '@/lib/api/admin-stats';
-import { AdminPage, ErrorState, LoadingState } from '../_ui/primitives';
+import { AdminPage, Chip, ErrorState, LoadingState, crowdChipClass } from '../_ui/primitives';
 
 const TREND_ICON: Record<string, string> = { rising: '▲', falling: '▼', stable: '·' };
 const TREND_COLOR: Record<string, string> = {
@@ -87,7 +87,9 @@ export default function AnalyticsPage() {
                   {item.waitTime}&apos;
                 </span>
                 <span className="hidden shrink-0 sm:block">
-                  <CrowdBadge level={item.crowdLevel} />
+                  <Chip className={crowdChipClass(item.crowdLevel)}>
+                    {item.crowdLevel?.replace(/_/g, ' ') ?? '—'}
+                  </Chip>
                 </span>
               </Link>
             ))}

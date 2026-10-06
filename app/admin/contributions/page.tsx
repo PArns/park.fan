@@ -21,7 +21,14 @@ import { useAdmin, useAdminFetch } from '../_lib/admin-context';
 import { Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
 import { AdoptIntoMedia } from './_components/adopt-into-media';
-import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  type ChipTone,
+} from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 
 interface ListResponse {
@@ -31,10 +38,10 @@ interface ListResponse {
   inventory: { metaBlobs: number; imageBlobs: number } | null;
 }
 
-const STATUS_STYLES: Record<SubmissionStatus, string> = {
-  pending: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
-  approved: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20',
-  rejected: 'bg-red-500/15 text-red-400 border-red-500/20',
+const STATUS_TONES: Record<SubmissionStatus, ChipTone> = {
+  pending: 'warning',
+  approved: 'success',
+  rejected: 'danger',
 };
 
 const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
@@ -311,17 +318,10 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
 
         <div className="min-w-0 flex-1 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span
-              className={cn(
-                'inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium capitalize',
-                STATUS_STYLES[submission.status]
-              )}
-            >
+            <Chip tone={STATUS_TONES[submission.status]} className="capitalize">
               {submission.status}
-            </span>
-            <span className="border-border/60 text-muted-foreground inline-flex items-center rounded-full border px-2 py-0.5 text-xs capitalize">
-              {submission.entity.type}
-            </span>
+            </Chip>
+            <Chip className="capitalize">{submission.entity.type}</Chip>
             <span className="font-semibold">{submission.entity.name}</span>
             {submission.entity.url && (
               <a

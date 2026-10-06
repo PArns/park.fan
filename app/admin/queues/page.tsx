@@ -6,7 +6,14 @@ import { useAdminFetch } from '../_lib/admin-context';
 import { adminFetch } from '../_lib/api';
 import { Section } from '../_lib/ui';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
-import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  type ChipTone,
+} from '../_ui/primitives';
 
 /**
  * A failed job with the message and stack Bull keeps in Redis, because a failure count alone says
@@ -20,26 +27,21 @@ interface QueueFailure {
   stack: string[];
 }
 
-function QueueBadge({
-  count,
-  variant,
-}: {
-  count: number;
-  variant: 'active' | 'pending' | 'failed' | 'delayed';
-}) {
+type QueueState = 'active' | 'pending' | 'failed' | 'delayed';
+
+const QUEUE_TONES: Record<QueueState, ChipTone> = {
+  active: 'primary',
+  pending: 'muted',
+  failed: 'danger',
+  delayed: 'warning',
+};
+
+function QueueBadge({ count, variant }: { count: number; variant: QueueState }) {
   if (count === 0) return null;
-  const colors: Record<typeof variant, string> = {
-    active: 'bg-blue-500/15 text-blue-400 border-blue-500/20',
-    pending: 'bg-zinc-500/15 text-zinc-400 border-zinc-500/20',
-    failed: 'bg-red-500/15 text-red-400 border-red-500/20',
-    delayed: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
-  };
   return (
-    <span
-      className={`inline-flex items-center rounded-full border px-1.5 py-0.5 font-mono text-xs tabular-nums ${colors[variant]}`}
-    >
+    <Chip tone={QUEUE_TONES[variant]} className="font-mono tabular-nums">
       {count} {variant}
-    </span>
+    </Chip>
   );
 }
 
