@@ -32,6 +32,7 @@ import {
   growGridForSpans,
   nextFreeStart,
   nowFloor,
+  withEarlyEntry,
 } from '@/lib/planner/day-grid';
 import {
   PLANNER_LANDSCAPE_QUERY,
@@ -462,7 +463,7 @@ export function PlannerFlyout({
   const [wizardHeight, setWizardHeight] = useState<number | null>(null);
 
   const {
-    data: day,
+    data: fetchedDay,
     isFetching,
     isError,
   } = usePlanDay({
@@ -473,6 +474,13 @@ export function PlannerFlyout({
     date: activeDate ?? undefined,
     enabled: open && Boolean(park && activeDate),
   });
+  /** Who is coming, for this day. The wizard writes it; the chips change it. */
+  const prefs = activeDate ? park?.days[activeDate]?.prefs : undefined;
+  // Folded exactly as the day column folds it, so the phone's search and foot
+  // plan against the same opening as the column. Memoised because a folded day
+  // is a new object, and the spans and the grid key on it.
+  const earlyEntry = prefs?.earlyEntry;
+  const day = useMemo(() => withEarlyEntry(fetchedDay, earlyEntry), [fetchedDay, earlyEntry]);
 
   // Four states, keyed off `isFetching` rather than `isPending`: a disabled query
   // is pending forever, so with no park picked yet the band would pulse without a
@@ -827,9 +835,6 @@ export function PlannerFlyout({
     if (!activeParkSlug || !zone) return;
     learnTimezone(activeParkSlug, zone);
   }, [activeParkSlug, day?.timezone, dayFacts.timezone, learnTimezone]);
-
-  /** Who is coming, for this day. The wizard writes it; the chips change it. */
-  const prefs = activeDate ? park?.days[activeDate]?.prefs : undefined;
 
   /**
    * What the head needs, where the PANEL draws it — see `phoneHead` below.

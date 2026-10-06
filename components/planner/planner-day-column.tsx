@@ -301,9 +301,12 @@ export function PlannerDayColumn({
     date: date ?? undefined,
     enabled: open && Boolean(park && date),
   });
-  // The visitor's early-entry answer (PAR-200) folded into the day, so every
-  // reader of `day.context` sees it (PAR-199).
-  const day = withEarlyEntry(fetchedDay, date ? park?.days[date]?.prefs?.earlyEntry : undefined);
+  const prefs = date ? park?.days[date]?.prefs : undefined;
+  // The visitor's early-entry answer folded into the day, so every reader of
+  // `day.context` sees it. Memoised because a folded day is a new object, and
+  // the spans, the grid and the optimiser key on it.
+  const earlyEntry = prefs?.earlyEntry;
+  const day = useMemo(() => withEarlyEntry(fetchedDay, earlyEntry), [fetchedDay, earlyEntry]);
 
   // Keyed off `isFetching` rather than `isPending`: a disabled query is pending
   // forever, so with no park picked the band would pulse without a request ever
@@ -353,7 +356,6 @@ export function PlannerDayColumn({
   const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
   const dayFacts = usePlannerDayFacts(park, open);
-  const prefs = date ? park?.days[date]?.prefs : undefined;
 
   // Gated on TODAY for two reasons that point the same way: a standby reading
   // describes this minute and says nothing about a Tuesday in November, and on a

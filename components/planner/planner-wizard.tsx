@@ -33,7 +33,7 @@ import { loadMessageChunk } from '@/lib/i18n/message-chunk-loader';
 import type { Locale } from '@/i18n/config';
 import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM, partyFlags } from '@/lib/planner/party';
-import { buildDayGrid, earlyEntryOpenMin } from '@/lib/planner/day-grid';
+import { buildDayGrid, earlyEntryOpenMin, withEarlyEntry } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { headlinersSkipped, headlinersToAdd } from '@/lib/planner/optimize';
 import {
@@ -333,15 +333,22 @@ export function PlannerWizard({
   const earlyEntryMinutes = parkHasEarlyEntry
     ? dayPayload?.context.earlyEntryMinutesPeak
     : undefined;
+  // The day the finish files, early-entry answer included, on the same terms
+  // `finish` writes it: only where the question was on screen.
+  const earlyEntryAnswer = parkHasEarlyEntry ? prefs.earlyEntry : undefined;
+  const probeDay = useMemo(
+    () => withEarlyEntry(dayPayload, earlyEntryAnswer),
+    [dayPayload, earlyEntryAnswer]
+  );
   const wizardGrid = useMemo(
     () =>
       buildDayGrid(
-        dayPayload?.context.openHour,
-        dayPayload?.context.closeHour,
+        probeDay?.context.openHour,
+        probeDay?.context.closeHour,
         pxPerMin,
-        earlyEntryOpenMin(dayPayload?.context)
+        earlyEntryOpenMin(probeDay?.context)
       ),
-    [dayPayload, pxPerMin]
+    [probeDay, pxPerMin]
   );
   const headliners = useMemo(() => headlinersToAdd(dayPayload, [], prefs), [dayPayload, prefs]);
   /**
@@ -396,15 +403,15 @@ export function PlannerWizard({
    * the same, so the step draws one sentence instead of a dead control.
    */
   const fitInput = useMemo<FitInput | null>(() => {
-    if (!dayPayload || !wizardGrid || headliners.length === 0) return null;
+    if (!probeDay || !wizardGrid || headliners.length === 0) return null;
     return {
-      day: dayPayload,
+      day: probeDay,
       grid: wizardGrid,
       entries: lunchEntries,
-      wishes: fitWishes(dayPayload, lunchEntries, headliners),
+      wishes: fitWishes(probeDay, lunchEntries, headliners),
       blocks: fitBlocks(lunchEntries),
     };
-  }, [dayPayload, wizardGrid, headliners, lunchEntries]);
+  }, [probeDay, wizardGrid, headliners, lunchEntries]);
 
   /**
    * The search, only on the step that reads it.
