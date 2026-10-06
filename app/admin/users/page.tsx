@@ -25,7 +25,7 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
-import { formatDisplayName } from '../_lib/ui';
+import { formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 

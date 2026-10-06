@@ -12,7 +12,8 @@ import {
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { useAdminQuery } from '../_lib/api';
-import { formatDay, Section } from '../_lib/ui';
+import { formatDay } from '../_lib/format';
+import { Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
 import {

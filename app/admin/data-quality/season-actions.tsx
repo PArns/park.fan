@@ -6,7 +6,7 @@ import { CalendarCheck2, Loader2, Trash2, Unplug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
-import { formatDay } from '../_lib/ui';
+import { formatDay } from '../_lib/format';
 import { Chip } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 

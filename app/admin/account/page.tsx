@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { AdminSessionInfo } from '../_lib/types';
 import { AdminPage, Chip, Panel, PanelBody, PanelHeader, SkeletonRows } from '../_ui/primitives';
-import { formatDisplayName } from '../_lib/ui';
+import { formatDisplayName } from '../_lib/format';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';

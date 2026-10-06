@@ -15,7 +15,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { formatDay, Section } from '../_lib/ui';
+import { formatDay } from '../_lib/format';
+import { Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import {

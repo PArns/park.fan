@@ -15,18 +15,11 @@ import {
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import {
-  ErrorPanel,
-  KeyVal,
-  LoadingPanel,
-  Section,
-  formatUptime,
-  isDisk,
-  statusDot,
-} from '../_lib/ui';
+import { ErrorPanel, KeyVal, LoadingPanel, Section, statusDot } from '../_lib/ui';
+import { formatUptime } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
-import type { SystemHealthResponse } from '@/lib/api/admin';
+import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
 import { AdminPage } from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
@@ -45,6 +38,9 @@ function chipLabel(chip: string): string {
 }
 function sensorTempClass(t: number): string {
   return t >= 85 ? 'text-red-400' : t >= 70 ? 'text-amber-400' : 'text-emerald-400';
+}
+function isDisk(d: HostDisk | { error: string }): d is HostDisk {
+  return 'usedPct' in d;
 }
 
 export default function SystemPage() {

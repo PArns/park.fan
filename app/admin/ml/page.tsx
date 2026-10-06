@@ -30,9 +30,8 @@ import {
   SeverityBadge,
   StatCard,
   StatusBadge,
-  formatAge,
-  maeColor,
 } from '../_lib/ui';
+import { formatAge, maeColor } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AdminPage } from '../_ui/primitives';
 import type {
