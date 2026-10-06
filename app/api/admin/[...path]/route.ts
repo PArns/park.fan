@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import {
   ADMIN_SESSION_COOKIE,
   forgetAllSessions,
@@ -12,8 +12,6 @@ import {
 } from '@/lib/admin/session';
 import { adminProxyPath } from '@/lib/admin/proxy-path';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -110,7 +108,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   }
 
   const incoming = new URL(request.url);
-  const target = new URL(`${API_BASE}/v1/admin/${upstreamPath}`);
+  const target = new URL(`${getApiBaseUrl()}/v1/admin/${upstreamPath}`);
   incoming.searchParams.forEach((value, key) => {
     // The deprecated shared pass is a full-privilege credential that the admin
     // UI has never sent. Relaying it would make this proxy the one place on the

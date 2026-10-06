@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { verifyTurnstile } from '@/lib/security/turnstile';
 import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { getClientIp } from '@/lib/utils/request-ip';
@@ -12,8 +12,6 @@ import {
   resolveAdminIdentity,
   sessionCookieOptions,
 } from '@/lib/admin/session';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -144,7 +142,7 @@ export async function POST(request: Request) {
   const serverHeaders = { ...getServerApiHeaders() };
   delete serverHeaders['User-Agent'];
 
-  const upstream = await fetch(`${API_BASE}/v1/admin/auth/login`, {
+  const upstream = await fetch(`${getApiBaseUrl()}/v1/admin/auth/login`, {
     method: 'POST',
     cache: 'no-store',
     headers: {
@@ -207,7 +205,7 @@ export async function DELETE(request: Request) {
     // Best effort. A backend that cannot be reached must not leave somebody
     // stuck in a session they asked to end — the cookie goes either way, and
     // the server-side session expires on its own.
-    await fetch(`${API_BASE}/v1/admin/auth/logout`, {
+    await fetch(`${getApiBaseUrl()}/v1/admin/auth/logout`, {
       method: 'POST',
       cache: 'no-store',
       headers: { Authorization: `Bearer ${token}`, ...getServerApiHeaders() },

@@ -1,10 +1,8 @@
 import 'server-only';
 import { cookies } from 'next/headers';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { readCookie } from './cookie';
 import { roleAtLeast, type AdminIdentity, type AdminRole } from './roles';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 /**
  * The admin session cookie.
@@ -90,7 +88,7 @@ export async function resolveAdminIdentity(
 
   let response: Response;
   try {
-    response = await fetch(`${API_BASE}/v1/admin/auth/me`, {
+    response = await fetch(`${getApiBaseUrl()}/v1/admin/auth/me`, {
       cache: 'no-store',
       headers: { Authorization: `Bearer ${token}`, ...getServerApiHeaders() },
     });
