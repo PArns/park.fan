@@ -34,6 +34,10 @@ interface SearchCommandProps {
   className?: string;
 }
 
+/**
+ * Trigger for the site search palette, as a button, an input or the hero field. Loads the dialog on
+ * first open; with `isGlobal`, Cmd/Ctrl+K toggles it.
+ */
 export function SearchCommand({
   trigger = 'button',
   label,

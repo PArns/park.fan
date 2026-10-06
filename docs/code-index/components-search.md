@@ -21,7 +21,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-bar.tsx`](../../components/search/search-bar.tsx)
 
-- `SearchCommand` _component_
+- `SearchCommand` _component_: Trigger for the site search palette, as a button, an input or the hero field. Loads the dialog on first open; with `isGlobal`, Cmd/Ctrl+K toggles it.
 
 ### [`search-browse-group.tsx`](../../components/search/search-browse-group.tsx)
 

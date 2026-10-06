@@ -18,6 +18,10 @@ interface WeatherForecastStripProps {
 
 const LOCALE_MAP: Record<string, Locale> = { de, es, fr, nl };
 
+/**
+ * Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a
+ * warning triangle for severe weather or heat. Renders nothing without a valid day.
+ */
 export function WeatherForecastStrip({ forecast, className }: WeatherForecastStripProps) {
   const locale = useLocale();
   const t = useTranslations('parks.weather');

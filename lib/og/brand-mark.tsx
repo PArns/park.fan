@@ -66,6 +66,10 @@ function brandAssetDataUri(file: BrandAsset): string {
   return dataUri;
 }
 
+/**
+ * The park.fan map-pin marker for OG images, inlined as a data URI at the given height with its
+ * width from the logo's aspect ratio.
+ */
 export function OgBrandMark({ height }: { height: number }) {
   const width = Math.round(height * MARKER_RATIO);
   return (

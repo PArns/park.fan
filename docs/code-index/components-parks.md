@@ -706,7 +706,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`weather-background.tsx`](../../components/parks/weather-background.tsx)
 
-- `WeatherBackground` _component_
+- `WeatherBackground` _component_: Animated weather scene behind a weather card (sky, sun or moon, clouds, rain or snow, lightning) for an Open-Meteo `weather_code`. Place it first in a `relative overflow-hidden` card; `glass` adds a frosted overlay so text stays readable.
 - Types: `WeatherBackgroundProps`
 
 ### [`weather-card-demo-data.ts`](../../components/parks/weather-card-demo-data.ts)
@@ -720,15 +720,15 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 ### [`weather-card-demo.tsx`](../../components/parks/weather-card-demo.tsx)
 
 - `ParkTimeInfoShowcase` _component_: Standalone ParkTimeInfo showcase: builds today's schedule with proper ISO timestamps so the live "opens in / closes in" countdown actually renders.
-- `WeatherCardShowcase` _component_
+- `WeatherCardShowcase` _component_: `WeatherCard` with generated offline data, for `/ui` and the guide page: next to `ParkTimeInfo` on a park photo (`glass-pair`), one card per condition (`conditions-grid`), or one rainy day.
 
 ### [`weather-card.tsx`](../../components/parks/weather-card.tsx)
 
-- `WeatherCard` _component_
+- `WeatherCard` _component_: Park page weather card on an animated weather scene: current conditions (live nowcast when the park has one), the hour-by-hour chart for today against the opening hours, and the forecast strip. Renders nothing without current weather.
 
 ### [`weather-forecast-strip.tsx`](../../components/parks/weather-forecast-strip.tsx)
 
-- `WeatherForecastStrip` _component_
+- `WeatherForecastStrip` _component_: Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a warning triangle for severe weather or heat. Renders nothing without a valid day.
 
 ### [`weather-hourly-chart.tsx`](../../components/parks/weather-hourly-chart.tsx)
 
@@ -755,7 +755,7 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 
 ### [`weather-warning-banner.tsx`](../../components/parks/weather-warning-banner.tsx)
 
-- `WeatherWarningBanner` _component_
+- `WeatherWarningBanner` _component_: Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card each. Polls the shared nowcast query, or shows the `warnings` it is given; client only.
 
 ### [`wind-compass.tsx`](../../components/parks/wind-compass.tsx)
 

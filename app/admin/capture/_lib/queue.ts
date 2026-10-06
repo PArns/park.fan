@@ -80,6 +80,7 @@ function run<T>(
   );
 }
 
+/** Stores or replaces a photo waiting for network in the capture queue (IndexedDB), keyed by id. */
 export function queuePhoto(photo: QueuedPhoto): Promise<IDBValidKey> {
   return run('readwrite', (store) => store.put(photo));
 }
@@ -90,6 +91,7 @@ export async function listQueued(): Promise<QueuedPhoto[]> {
   return all.sort((a, b) => a.queuedAt - b.queuedAt);
 }
 
+/** Removes a photo from the capture queue, called once its commit has gone through. */
 export function dropQueued(id: string): Promise<undefined> {
   return run('readwrite', (store) => store.delete(id));
 }

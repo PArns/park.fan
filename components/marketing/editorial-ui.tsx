@@ -396,6 +396,10 @@ export function LandingNextSteps({
 }
 
 // ── Numbered section shell (Almanac-style "01 / 02 / …") ─────────────────────
+/**
+ * Numbered chapter of an editorial page: a section with a scroll anchor, a large `ChapterHeading`
+ * (index, icon, kicker, title) and the content below it.
+ */
 export function SectionShell({
   id,
   index,
@@ -438,6 +442,7 @@ export function Lead({ children }: { children: React.ReactNode }) {
   return <p className="text-foreground/80 text-xl leading-relaxed font-medium">{children}</p>;
 }
 
+/** Body paragraph of an editorial page, in the muted text colour. */
 export function P({ children }: { children: React.ReactNode }) {
   return <p className="text-muted-foreground leading-relaxed">{children}</p>;
 }
@@ -483,6 +488,7 @@ export function A({
   );
 }
 
+/** Tinted callout box with a shield icon, setting one statement apart from the running text. */
 export function Highlight({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
@@ -495,10 +501,15 @@ export function Highlight({ children }: { children: React.ReactNode }) {
 }
 
 // ── Ingredient / feature cards ───────────────────────────────────────────────
+/** Responsive grid (one, two, then three columns by page width) for `IngredientCard`s. */
 export function IngredientGrid({ children }: { children: React.ReactNode }) {
   return <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">{children}</div>;
 }
 
+/**
+ * Feature card on an editorial page: an icon tile, a title and a short text, revealed on scroll
+ * with an optional delay.
+ */
 export function IngredientCard({
   icon: Icon,
   title,
@@ -532,6 +543,10 @@ const CROWD_SPECTRUM = `linear-gradient(90deg,${CROWD_LEVEL_ORDER.map(
   (level) => `var(--crowd-${level.replace('_', '-')})`
 ).join(',')})`;
 
+/**
+ * The crowd-level scale as a gradient bar in the site's crowd colours, followed by one card per
+ * level with its `CrowdLevelBadge` and an explanation.
+ */
 export function CrowdSpectrum({
   items,
 }: {
@@ -561,6 +576,10 @@ export function CrowdSpectrum({
 }
 
 // ── Alternating image/text row for editorial examples ────────────────────────
+/**
+ * Image beside text on an editorial page: a 4:3 photo and a kicker, title, paragraph and optional
+ * badge, side by side from 768 px of page width; `reverse` puts the photo on the right.
+ */
 export function SplitFigure({
   src,
   alt,
@@ -626,6 +645,7 @@ export function SplitFigure({
 }
 
 // ── Standalone captioned figure ──────────────────────────────────────────────
+/** A 16:9 photo with an optional caption on an editorial page, revealed on scroll. */
 export function Figure({
   src,
   alt,

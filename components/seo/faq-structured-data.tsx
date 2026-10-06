@@ -24,6 +24,11 @@ interface FAQStructuredDataProps {
   seedPromise?: Promise<BestDaysSnapshot | null> | null;
 }
 
+/**
+ * `FAQPage` JSON-LD for a park page: the `buildParkFaqItems` questions, the least crowded days once
+ * the best-days seed resolves, and the crowd calendar question. Rendered inside a Suspense
+ * boundary.
+ */
 export async function FAQStructuredData({
   park,
   locale,

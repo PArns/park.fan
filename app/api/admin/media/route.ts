@@ -35,6 +35,7 @@ import type { MediaImage, MediaLicense, MediaRole } from '@/lib/media/types';
 /** Long-edge target for a source photo — see docs/development/assets.md. */
 export const LOW_RES_LONG_EDGE = 2048;
 
+/** Whether a raster image's long edge is under `LOW_RES_LONG_EDGE` (2048 px); an SVG never is. */
 export function isLowRes(image: MediaImage): boolean {
   if (image.format === 'svg') return false; // resolution-independent
   return Math.max(image.width, image.height) < LOW_RES_LONG_EDGE;

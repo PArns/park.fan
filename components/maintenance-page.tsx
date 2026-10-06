@@ -6,6 +6,10 @@ import { useTranslations } from 'next-intl';
 /** How often to probe whether the API is reachable again. */
 const RECOVERY_POLL_MS = 15_000;
 
+/**
+ * Full-screen outage page shown while the API is down. Polls `/api/parks/popular` every 15 s and
+ * reloads `/` once it answers.
+ */
 export function MaintenancePage() {
   const t = useTranslations('common');
 

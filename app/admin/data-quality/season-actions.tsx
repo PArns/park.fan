@@ -140,6 +140,11 @@ export interface SilencedCluster {
   attractions?: { attractionId: string; name: string }[];
 }
 
+/**
+ * Data-quality card for a group of a park's rides that went silent together, asking "season ending
+ * or dropped feed?": sets the season months for all of them in one write, or explains the feed
+ * case.
+ */
 export function SilencedClusterCard({
   cluster,
   lastOperatingLabel,
@@ -348,6 +353,10 @@ function UnreviewedRide({
   );
 }
 
+/**
+ * Data-quality card for one park's rides retired for absence and not yet reviewed: per ride (or all
+ * at once) mark it as gone, or as seasonal with its months.
+ */
 export function UnreviewedParkCard({
   rows,
   dayLabel,

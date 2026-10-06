@@ -66,6 +66,11 @@ const STAR_GROUPS = [
   { duration: 5.1, delay: -2.6 },
 ] as const;
 
+/**
+ * Animated weather scene behind a weather card (sky, sun or moon, clouds, rain or snow, lightning)
+ * for an Open-Meteo `weather_code`. Place it first in a `relative overflow-hidden` card; `glass`
+ * adds a frosted overlay so text stays readable.
+ */
 export const WeatherBackground = memo(function WeatherBackground({
   code,
   isDay = true,

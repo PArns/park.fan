@@ -459,7 +459,7 @@ Which park this tab was photographing, kept across a reload.
 - `subscribeParkMemory` _function_: Subscribes to changes of the remembered capture park in this tab; returns the unsubscribe.
 - `parkMemorySnapshot` _function_: The raw entry. A string is compared by value, so it is a stable snapshot.
 - `parkMemoryServerSnapshot` _function_: Nothing is remembered on the server, and pretending otherwise would hydrate wrong.
-- `parseRememberedPark` _function_: Parses the stored entry into its park path and `manual` flag; `null` unless the path has 4 parts.
+- `parseRememberedPark` _function_: Parses the stored entry into its park path and `manual` flag. Returns `null` unless the path has four segments.
 - `rememberPark` _function_: Stores the capture park for this tab in sessionStorage and notifies subscribers.
 - `forgetPark` _function_: Clears the remembered capture park for this tab and notifies subscribers.
 - Types: `RememberedPark`
@@ -468,9 +468,9 @@ Which park this tab was photographing, kept across a reload.
 
 Photographs that have been taken but not yet committed.
 
-- `queuePhoto` _function_
+- `queuePhoto` _function_: Stores or replaces a photo waiting for network in the capture queue (IndexedDB), keyed by id.
 - `listQueued` _function_: Oldest first, so a drained queue commits in the order the photos were taken.
-- `dropQueued` _function_
+- `dropQueued` _function_: Removes a photo from the capture queue, called once its commit has gone through.
 - `markAttempt` _function_: Record that an attempt failed, so the row shows why instead of just sitting there.
 - `queueAvailable` _function_: Whether this browser can hold a queue at all — a private window may not.
 - Types: `QueuedPhoto`
@@ -481,7 +481,7 @@ Photographs that have been taken but not yet committed.
 
 ### [`capture/_lib/use-capture-uploads.ts`](../../app/admin/capture/_lib/use-capture-uploads.ts)
 
-- `useCaptureUploads` _hook_
+- `useCaptureUploads` _hook_: Runs the capture screen's uploads: reserves a free file name per photo, commits it into the open media pull request, and queues it in IndexedDB on failure.
 
 ### [`capture/_lib/use-park-location.ts`](../../app/admin/capture/_lib/use-park-location.ts)
 
@@ -499,7 +499,7 @@ Route `/admin/capture` (page).
 
 ### [`contributions/_components/adopt-into-media.tsx`](../../app/admin/contributions/_components/adopt-into-media.tsx)
 
-- `AdoptIntoMedia` _component_
+- `AdoptIntoMedia` _component_: Downloads the chosen photos of a visitor submission and opens the media upload dialog prefilled with park, ride, caption, credit and file names. Reports the pull request and media ids back.
 
 ### [`contributions/page.tsx`](../../app/admin/contributions/page.tsx)
 
@@ -515,8 +515,8 @@ Route `/admin/data-quality` (page).
 
 ### [`data-quality/season-actions.tsx`](../../app/admin/data-quality/season-actions.tsx)
 
-- `SilencedClusterCard` _component_
-- `UnreviewedParkCard` _component_
+- `SilencedClusterCard` _component_: Data-quality card for a group of a park's rides that went silent together, asking "season ending or dropped feed?": sets the season months for all of them in one write, or explains the feed case.
+- `UnreviewedParkCard` _component_: Data-quality card for one park's rides retired for absence and not yet reviewed: per ride (or all at once) mark it as gone, or as seasonal with its months.
 - `DATA_QUALITY_KEY` _const_: The answers to the two questions `/admin/data-quality` asks about rides (PAR-695): "season ending or dropped feed?" and "season or gone?".
 - Types: `SilencedCluster`, `AbsenceRetiredUnreviewed`
 

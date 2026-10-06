@@ -299,6 +299,10 @@ interface WeatherCardShowcaseProps {
   variant: 'glass-pair' | 'conditions-grid' | 'single';
 }
 
+/**
+ * `WeatherCard` with generated offline data, for `/ui` and the guide page: next to `ParkTimeInfo`
+ * on a park photo (`glass-pair`), one card per condition (`conditions-grid`), or one rainy day.
+ */
 export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
   const [{ today, mountedAt }] = useState(() => ({ today: new Date(), mountedAt: Date.now() }));
   // Same park-local day the hourly fixture is built for, so the band and the

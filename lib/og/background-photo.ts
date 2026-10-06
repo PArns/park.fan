@@ -92,6 +92,9 @@ function readAsDataUri(relPath: string): string | null {
 }
 
 /**
+ * Returns the photo an OG card paints behind its headline: the 16:9 rendition from `og-assets/` as
+ * a data URI, else the source file from there, else the absolute URL.
+ *
  * @param imagePath  Site-relative source image (`/media/…`), or null when the card has no
  *                   photo — e.g. what `getParkBackgroundImage` returns.
  * @param baseUrl    Absolute site origin, used only for the fallback URL.

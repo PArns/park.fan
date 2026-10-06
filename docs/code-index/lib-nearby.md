@@ -8,11 +8,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`nearby-cache.ts`](../../lib/nearby/nearby-cache.ts)
 
 - `isMeaningful` _function_: Only count results that are worth showing — in_park always qualifies, nearby_parks needs ≥1 park.
-- `haversineKm` _function_
+- `haversineKm` _function_: Great-circle distance in kilometres between two latitude/longitude points (haversine, Earth radius 6,371 km).
 - `sameLocationBasis` _function_: An entry answers a question, and the question is "where am I" asked either with real coordinates or without them.
 - `readCacheEntry` _function_: Read from localStorage. Returns undefined when: - No entry exists, or it is unreadable - The entry is older than CACHE_MAX_AGE_MS - The entry and the current query do not share a location basis (see sameLocationBasis) - Both carry …
-- `readCache` _function_
-- `writeCache` _function_
+- `readCache` _function_: Returns the cached nearby answer that still fits the current coordinates (see `readCacheEntry`), or undefined.
+- `writeCache` _function_: Stores a nearby answer in localStorage with the time and the coordinates it was asked with (null for a GeoIP answer); storage errors are ignored.
 - `CACHE_KEY` _const_: The last nearby answer, persisted so a returning visitor sees parks before the network does anything.
 - `CACHE_MAX_AGE_MS` _const_
 - `CACHE_COORD_MAX_DIST_KM` _const_: Skip a cached entry once the user has moved more than this far since it was written.

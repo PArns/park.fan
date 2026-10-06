@@ -152,7 +152,7 @@ Route `/api/admin/media/coverage` (route).
 
 Route `/api/admin/media` (route).
 
-- `isLowRes` _function_
+- `isLowRes` _function_: Whether a raster image's long edge is under `LOW_RES_LONG_EDGE` (2048 px); an SVG never is.
 - `GET` _function_
 - `LOW_RES_LONG_EDGE` _const_: Long-edge target for a source photo — see docs/development/assets.md.
 

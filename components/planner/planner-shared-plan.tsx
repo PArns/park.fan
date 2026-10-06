@@ -35,6 +35,10 @@ function subscribeHash(onChange: () => void): () => void {
   return () => window.removeEventListener('hashchange', onChange);
 }
 
+/**
+ * Page body for a shared planner link: loads the plan named in the URL fragment from `/api/trips`,
+ * shows it, and copies it into this browser's planner when the visitor presses the button.
+ */
 export function PlannerSharedPlan() {
   const t = useTranslations('planner');
   const locale = useLocale();

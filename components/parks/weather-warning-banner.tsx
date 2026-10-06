@@ -132,6 +132,10 @@ const SOURCE_LABEL: Record<string, string> = {
   meteogate: 'MeteoAlarm',
 };
 
+/**
+ * Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card
+ * each. Polls the shared nowcast query, or shows the `warnings` it is given; client only.
+ */
 export function WeatherWarningBanner({
   continent = '',
   country = '',

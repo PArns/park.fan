@@ -200,6 +200,10 @@ function normalizeCuisineType(cuisineType: string | null): string | undefined {
   return map[cuisineType.toLowerCase()] ?? cuisineType;
 }
 
+/**
+ * `Organization` JSON-LD for park.fan: name, logo, description, contact point and an optional
+ * image.
+ */
 export function OrganizationStructuredData({
   description,
   image,
@@ -274,6 +278,10 @@ export function WebSiteStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `ItemList` of `SiteNavigationElement` JSON-LD naming the main navigation's destinations, in the
+ * order the caller passes.
+ */
 export function SiteNavigationStructuredData({
   locale,
   items,
@@ -317,6 +325,10 @@ export function SiteNavigationStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `AmusementPark` JSON-LD for a park page (address, coordinates, opening hours, rides and
+ * restaurants) plus a `WebPage` node and the current wait times as `Observation` nodes.
+ */
 export function ParkStructuredData({
   park,
   url,
@@ -535,6 +547,10 @@ export function WebApplicationStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `BreadcrumbList` JSON-LD from the page's breadcrumbs, optionally ending with the current page,
+ * with locale-prefixed absolute URLs. Renders nothing for an empty trail.
+ */
 export function BreadcrumbStructuredData({
   breadcrumbs,
   currentPage,
@@ -585,6 +601,10 @@ export function BreadcrumbStructuredData({
   return <JsonLd data={data} />;
 }
 
+/**
+ * `TouristAttraction` JSON-LD for a ride page: name, description, image, coordinates and its park
+ * as `containedInPlace`, linked by the same `@id`s the park page uses.
+ */
 export function AttractionStructuredData({
   attraction,
   park,

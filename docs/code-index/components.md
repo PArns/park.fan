@@ -7,4 +7,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`maintenance-page.tsx`](../../components/maintenance-page.tsx)
 
-- `MaintenancePage` _component_
+- `MaintenancePage` _component_: Full-screen outage page shown while the API is down. Polls `/api/parks/popular` every 15 s and reloads `/` once it answers.

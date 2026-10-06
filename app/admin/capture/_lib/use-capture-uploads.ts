@@ -37,6 +37,11 @@ interface Options {
   author: string | null;
 }
 
+/**
+ * Runs the capture screen's uploads: reserves a free file name per photo, commits it into the open
+ * media pull request, and queues it in IndexedDB on failure. Drains the queue on `online` or on
+ * request; returns active uploads, the queue, the PR link and the actions.
+ */
 export function useCaptureUploads({ data, author }: Options) {
   const [active, setActive] = useState<ActiveUpload[]>([]);
   const [queued, setQueued] = useState<QueuedPhoto[]>([]);

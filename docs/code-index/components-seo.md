@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-faq-structured-data.tsx`](../../components/seo/attraction-faq-structured-data.tsx)
 
-- `AttractionFAQStructuredData` _component_
+- `AttractionFAQStructuredData` _component_: `FAQPage` JSON-LD for a ride page, built from the same `buildAttractionFaqItems` questions the visible FAQ shows.
 
 ### [`blog-structured-data.tsx`](../../components/seo/blog-structured-data.tsx)
 
@@ -17,24 +17,24 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`faq-structured-data.tsx`](../../components/seo/faq-structured-data.tsx)
 
-- `FAQStructuredData` _component_
+- `FAQStructuredData` _component_: `FAQPage` JSON-LD for a park page: the `buildParkFaqItems` questions, the least crowded days once the best-days seed resolves, and the crowd calendar question. Rendered inside a Suspense boundary.
 
 ### [`glossary-structured-data.tsx`](../../components/seo/glossary-structured-data.tsx)
 
-- `GlossaryStructuredData` _component_
+- `GlossaryStructuredData` _component_: Glossary JSON-LD: a `DefinedTermSet` of every term for the overview, or one `DefinedTerm` inside its set for a term page.
 
 ### [`structured-data.tsx`](../../components/seo/structured-data.tsx)
 
 - `ArticleStructuredData` _component_: Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo rich results in 2023, so a plain Article with publisher is the appropriate markup for long-form guide content.
 - `FaqStructuredData` _component_: FAQPage JSON-LD for guide pages that answer a set of recurring questions (e.g. the Fancast model page). Enables the FAQ rich result in Google when the page is eligible. Pass plain-text Q&A pairs — no markup inside answers.
-- `OrganizationStructuredData` _component_
+- `OrganizationStructuredData` _component_: `Organization` JSON-LD for park.fan: name, logo, description, contact point and an optional image.
 - `WebSiteStructuredData` _component_: WebSite schema with SearchAction – helps Google show sitelinks search box and understand site structure. Locale-aware so each language has correct search URL.
-- `SiteNavigationStructuredData` _component_
-- `ParkStructuredData` _component_
+- `SiteNavigationStructuredData` _component_: `ItemList` of `SiteNavigationElement` JSON-LD naming the main navigation's destinations, in the order the caller passes.
+- `ParkStructuredData` _component_: `AmusementPark` JSON-LD for a park page (address, coordinates, opening hours, rides and restaurants) plus a `WebPage` node and the current wait times as `Observation` nodes.
 - `ItemListStructuredData` _component_: ItemList schema for listing pages (Continent = countries, Country/City = parks). Helps search engines understand the page as a list of items.
 - `WebApplicationStructuredData` _component_: `WebApplication` for a page that IS a tool rather than a document about one (the trip planner). It runs in the browser, costs nothing and needs no account, and those are the three facts this node states.
-- `BreadcrumbStructuredData` _component_
-- `AttractionStructuredData` _component_
+- `BreadcrumbStructuredData` _component_: `BreadcrumbList` JSON-LD from the page's breadcrumbs, optionally ending with the current page, with locale-prefixed absolute URLs. Renders nothing for an empty trail.
+- `AttractionStructuredData` _component_: `TouristAttraction` JSON-LD for a ride page: name, description, image, coordinates and its park as `containedInPlace`, linked by the same `@id`s the park page uses.
 - `ParkSubPageStructuredData` _component_: The `WebPage` node for a park SUB-page — today the wait-time calendar and its months.
 - `ParkDatasetStructuredData` _component_: `Dataset` for a table of measurements about one park — the crowd calendar's month, or the wait-time record's two-year window.
 - `escapeJsonLd` _function_: Escapes JSON for safe use in script tags (prevents XSS in JSON-LD).

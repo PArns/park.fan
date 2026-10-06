@@ -56,6 +56,11 @@ interface WeatherCardProps {
   className?: string;
 }
 
+/**
+ * Park page weather card on an animated weather scene: current conditions (live nowcast when the
+ * park has one), the hour-by-hour chart for today against the opening hours, and the forecast
+ * strip. Renders nothing without current weather.
+ */
 export function WeatherCard({
   weather,
   forecast,

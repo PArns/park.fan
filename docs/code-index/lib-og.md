@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`background-photo.ts`](../../lib/og/background-photo.ts)
 
-- `ogBackgroundSrc` _function_
+- `ogBackgroundSrc` _function_: Returns the photo an OG card paints behind its headline: the 16:9 rendition from `og-assets/` as a data URI, else the source file from there, else the absolute URL.
 
 ### [`blog-og.tsx`](../../lib/og/blog-og.tsx)
 
@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`brand-mark.tsx`](../../lib/og/brand-mark.tsx)
 
-- `OgBrandMark` _component_
+- `OgBrandMark` _component_: The park.fan map-pin marker for OG images, inlined as a data URI at the given height with its width from the logo's aspect ratio.
 - `OgBrandLockup` _component_: Full brand lockup: marker icon + the `park.fan` wordmark asset (dark-bg variant — white "park", blue ".fan"). Uses the real wordmark PNG instead of styled text so the wordmark is never rendered as a flat single-colour word.
 
 ### [`glossary-og.tsx`](../../lib/og/glossary-og.tsx)

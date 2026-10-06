@@ -57,7 +57,10 @@ export function parkMemoryServerSnapshot(): null {
   return null;
 }
 
-/** Parses the stored entry into its park path and `manual` flag; `null` unless the path has 4 parts. */
+/**
+ * Parses the stored entry into its park path and `manual` flag. Returns `null` unless the path has
+ * four segments.
+ */
 export function parseRememberedPark(raw: string | null): RememberedPark | null {
   if (!raw) return null;
   try {

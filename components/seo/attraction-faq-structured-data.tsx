@@ -11,6 +11,10 @@ interface AttractionFAQStructuredDataProps {
   locale: string;
 }
 
+/**
+ * `FAQPage` JSON-LD for a ride page, built from the same `buildAttractionFaqItems` questions the
+ * visible FAQ shows.
+ */
 export function AttractionFAQStructuredData({
   attraction,
   park,

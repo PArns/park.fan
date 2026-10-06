@@ -86,7 +86,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-flyout.tsx`](../../components/planner/planner-flyout.tsx)
 
-- `PlannerFlyout` _component_
+- `PlannerFlyout` _component_: The trip planner panel: a right-hand sheet on desktop, a draggable bottom sheet with detents on phones, holding the day picker and one or two day columns. Asks what to open when the active day is already over.
 
 ### [`planner-grid-actions.tsx`](../../components/planner/planner-grid-actions.tsx)
 
@@ -102,7 +102,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-help.tsx`](../../components/planner/planner-help.tsx)
 
-- `PlannerHelpSteps` _component_
+- `PlannerHelpSteps` _component_: The planner's three steps (find a park, add rides, arrange the day), as cards on the planner page or as a numbered list in the empty panel.
 
 ### [`planner-in-park-cta.tsx`](../../components/planner/planner-in-park-cta.tsx)
 
@@ -184,7 +184,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-shared-plan.tsx`](../../components/planner/planner-shared-plan.tsx)
 
-- `PlannerSharedPlan` _component_
+- `PlannerSharedPlan` _component_: Page body for a shared planner link: loads the plan named in the URL fragment from `/api/trips`, shows it, and copies it into this browser's planner when the visitor presses the button.
 
 ### [`planner-show-band.tsx`](../../components/planner/planner-show-band.tsx)
 

@@ -69,6 +69,10 @@ async function download(image: StoredImageRecord): Promise<File> {
   return new File([blob], image.originalName, { type });
 }
 
+/**
+ * Downloads the chosen photos of a visitor submission and opens the media upload dialog prefilled
+ * with park, ride, caption, credit and file names. Reports the pull request and media ids back.
+ */
 export function AdoptIntoMedia({
   submission,
   keys,

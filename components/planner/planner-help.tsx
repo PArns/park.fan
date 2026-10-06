@@ -24,6 +24,10 @@ const STEPS = [
   { icon: MousePointerClick, key: 'arrange' },
 ] as const;
 
+/**
+ * The planner's three steps (find a park, add rides, arrange the day), as cards on the planner page
+ * or as a numbered list in the empty panel.
+ */
 export function PlannerHelpSteps({ layout }: { layout: 'cards' | 'list' }) {
   const t = useTranslations('planner');
   const cards = layout === 'cards';

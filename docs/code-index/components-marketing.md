@@ -9,17 +9,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `LandingHero` _component_: The head of every hub and tool page — `LandingHero` in docs/product/landing-pages.md.
 - `LandingNextSteps` _component_: The closing "next step" of a landing page — `LandingNextSteps` in docs/product/landing-pages.md §2.
-- `SectionShell` _component_
+- `SectionShell` _component_: Numbered chapter of an editorial page: a section with a scroll anchor, a large `ChapterHeading` (index, icon, kicker, title) and the content below it.
 - `Lead` _component_: Running text runs the full width of its section — the same edges as the headings, rules, figures and card grids around it. A narrower measure left a ragged column with a dead strip beside every paragraph.
-- `P` _component_
+- `P` _component_: Body paragraph of an editorial page, in the muted text colour.
 - `PG` _component_: Glossary-aware paragraph — auto-links known terms (string children only).
 - `A` _component_: An inline link inside editorial prose.
-- `Highlight` _component_
-- `IngredientGrid` _component_
-- `IngredientCard` _component_
-- `CrowdSpectrum` _component_
-- `SplitFigure` _component_
-- `Figure` _component_
+- `Highlight` _component_: Tinted callout box with a shield icon, setting one statement apart from the running text.
+- `IngredientGrid` _component_: Responsive grid (one, two, then three columns by page width) for `IngredientCard`s.
+- `IngredientCard` _component_: Feature card on an editorial page: an icon tile, a title and a short text, revealed on scroll with an optional delay.
+- `CrowdSpectrum` _component_: The crowd-level scale as a gradient bar in the site's crowd colours, followed by one card per level with its `CrowdLevelBadge` and an explanation.
+- `SplitFigure` _component_: Image beside text on an editorial page: a 4:3 photo and a kicker, title, paragraph and optional badge, side by side from 768 px of page width; `reverse` puts the photo on the right.
+- `Figure` _component_: A 16:9 photo with an optional caption on an editorial page, revealed on scroll.
 - `TouchpointGrid` _component_: `title` is a node, not a string, so a card can carry a glossary link on the term it is named after — the same thing `SectionHeading` does on the park pages. `body` was already one.
 - `FaqList` _component_: The editorial pages' FAQ — the same rows as the park and ride pages, plus its own `FAQPage`.
 - `HERO_FLOW_INTO_PULL` _const_: What the section after a `flowInto` hero must carry, so it overlaps the lower part of the photo on a phone and sits normally from `sm` up.

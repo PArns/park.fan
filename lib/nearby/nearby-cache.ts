@@ -30,6 +30,10 @@ export function isMeaningful(data: NearbyResponse): boolean {
   return false;
 }
 
+/**
+ * Great-circle distance in kilometres between two latitude/longitude points (haversine, Earth
+ * radius 6,371 km).
+ */
 export function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 6371;
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -119,6 +123,10 @@ export function readCacheEntry(
   }
 }
 
+/**
+ * Returns the cached nearby answer that still fits the current coordinates (see `readCacheEntry`),
+ * or undefined.
+ */
 export function readCache(
   currentLat: number | null,
   currentLng: number | null
@@ -126,6 +134,10 @@ export function readCache(
   return readCacheEntry(currentLat, currentLng)?.data;
 }
 
+/**
+ * Stores a nearby answer in localStorage with the time and the coordinates it was asked with (null
+ * for a GeoIP answer); storage errors are ignored.
+ */
 export function writeCache(data: NearbyResponse, lat: number | null, lng: number | null): void {
   try {
     const entry: CachedNearby = { data, cachedAt: Date.now(), lat, lng };

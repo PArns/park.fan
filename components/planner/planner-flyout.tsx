@@ -186,6 +186,11 @@ function nextDetentOnTap(current: SheetDetent, available: readonly SheetDetent[]
 const panelHoldsTwo = () => maxColumnsFor(plannerPanelWidth.getSnapshot()) === 2;
 const panelHoldsTwoOnServer = () => maxColumnsFor(plannerPanelWidth.getServerSnapshot()) === 2;
 
+/**
+ * The trip planner panel: a right-hand sheet on desktop, a draggable bottom sheet with detents on
+ * phones, holding the day picker and one or two day columns. Asks what to open when the active day
+ * is already over.
+ */
 export function PlannerFlyout({
   open,
   onOpenChange,

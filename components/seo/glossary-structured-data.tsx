@@ -43,6 +43,10 @@ interface GlossaryStructuredDataProps {
   term?: GlossaryTerm;
 }
 
+/**
+ * Glossary JSON-LD: a `DefinedTermSet` of every term for the overview, or one `DefinedTerm` inside
+ * its set for a term page.
+ */
 export function GlossaryStructuredData({
   locale,
   segment,
