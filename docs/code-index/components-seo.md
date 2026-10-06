@@ -26,7 +26,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`structured-data.tsx`](../../components/seo/structured-data.tsx)
 
 - `ArticleStructuredData` _component_: Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo rich results in 2023, so a plain Article with publisher is the appropriate markup for long-form guide content.
-- `FaqStructuredData` _component_: FAQPage JSON-LD for guide pages that answer a set of recurring questions (e.g. the Fancast model page). Enables the FAQ rich result in Google when the page is eligible. Pass plain-text Q&A pairs — no markup inside answers.
+- `FaqStructuredData` _component_: FAQPage JSON-LD for a page that renders the same questions, from plain-text Q&A pairs (no markup inside answers).
 - `OrganizationStructuredData` _component_: `Organization` JSON-LD for park.fan: name, logo, description, contact point and an optional image.
 - `WebSiteStructuredData` _component_: WebSite schema with SearchAction – helps Google show sitelinks search box and understand site structure. Locale-aware so each language has correct search URL.
 - `SiteNavigationStructuredData` _component_: `ItemList` of `SiteNavigationElement` JSON-LD naming the main navigation's destinations, in the order the caller passes.

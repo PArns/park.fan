@@ -64,7 +64,7 @@ Brand marks, in one place.
 
 ### [`favorite-star.tsx`](../../components/common/favorite-star.tsx)
 
-- `FavoriteStar` _component_: Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites, stays in sync through `favorites-changed` events and tracks the change in Umami.
+- `FavoriteStar` _component_: Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites, reads its state from the favourites store and tracks the change in Umami.
 
 ### [`geo-location-card.tsx`](../../components/common/geo-location-card.tsx)
 
