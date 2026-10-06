@@ -34,6 +34,10 @@ async function buildGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
 // 219-term array (+ translation map) on every request (glossary pages, search route, sitemap).
 const termsByLocale = new Map<Locale, Promise<GlossaryTerm[]>>();
 
+/**
+ * Returns every glossary term with its name, definitions and slug in the locale, built once per
+ * locale for the life of the process.
+ */
 export function getGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
   let terms = termsByLocale.get(locale);
   if (!terms) {
@@ -43,6 +47,7 @@ export function getGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
   return terms;
 }
 
+/** Returns the glossary term with this localized slug, or `null`. Per-render cached. */
 export const getTermBySlug = cache(
   async (locale: Locale, slug: string): Promise<GlossaryTerm | null> => {
     const terms = await getGlossaryTerms(locale);

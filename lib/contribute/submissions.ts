@@ -104,19 +104,29 @@ function driver() {
 
 // ─── public API ─────────────────────────────────────────────────────────────
 
+/**
+ * Writes a photo submission's metadata record to the active storage backend, replacing any record
+ * with the same id.
+ */
 export function recordSubmission(rec: SubmissionRecord): Promise<void> {
   return driver().record(rec);
 }
 
+/** Returns every photo submission in the moderation queue, newest first. */
 export async function listSubmissions(): Promise<SubmissionRecord[]> {
   const records = await driver().list();
   return records.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
+/** Reads one photo submission by id, or `null` when there is none. */
 export function getSubmission(id: string): Promise<SubmissionRecord | null> {
   return driver().get(id);
 }
 
+/**
+ * Applies a moderator's patch (status, caption, credit, adopted images matched by storage key) to a
+ * submission and returns it, or `null` when it does not exist.
+ */
 export async function updateSubmission(
   id: string,
   patch: SubmissionPatch
@@ -159,6 +169,7 @@ export async function summarizeSubmissions(): Promise<SubmissionSummary> {
   };
 }
 
+/** Deletes a submission's photos and metadata; returns false when there was no such submission. */
 export async function deleteSubmission(id: string): Promise<boolean> {
   const d = driver();
   const existing = await d.get(id);

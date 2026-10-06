@@ -95,6 +95,10 @@ const KINDS: Record<string, ElementKind> = {
   splashdown: 'brake',
 };
 
+/**
+ * Returns the colour group (launch, airtime, inversion, turn, brake) of a glossary track element
+ * id, or `other` for an unlisted one.
+ */
 export function getElementKind(termId: string): ElementKind {
   return KINDS[termId] ?? 'other';
 }

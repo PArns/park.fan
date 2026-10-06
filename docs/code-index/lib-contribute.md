@@ -7,8 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`config.ts`](../../lib/contribute/config.ts)
 
-- `isAcceptedMimeType` _function_
-- `formatBytes` _function_
+- `isAcceptedMimeType` _function_: Returns true when a file's MIME type is one of the photo formats the contribution upload accepts.
+- `formatBytes` _function_: Formats a byte count as `B`, `KB` (whole) or `MB` (one decimal) for the photo upload limits and file list.
 - `MAX_FILES` _const_: Max number of photos per single submission.
 - `MAX_FILE_SIZE` _const_: Per-file size cap for the request that reaches our proxy.
 - `MAX_ORIGINAL_FILE_SIZE` _const_: Limit for the ORIGINAL the user may pick (before client-side downscaling). We accept big high-res files here and shrink them to MAX_FILE_SIZE before upload.
@@ -18,8 +18,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`driver.ts`](../../lib/contribute/driver.ts)
 
-- `isBlobConfigured` _function_
-- `resolveDriver` _function_
+- `isBlobConfigured` _function_: Returns true when `BLOB_READ_WRITE_TOKEN` is set, i.e. a Vercel Blob store is linked.
+- `resolveDriver` _function_: Returns the contribution storage backend: `STORAGE_DRIVER` when set, else Vercel Blob when a token exists, else the local filesystem.
 - Types: `Driver`
 
 ### [`prefill.ts`](../../lib/contribute/prefill.ts)
@@ -37,20 +37,20 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`submissions.ts`](../../lib/contribute/submissions.ts)
 
-- `recordSubmission` _function_
-- `listSubmissions` _function_
-- `getSubmission` _function_
-- `updateSubmission` _function_
+- `recordSubmission` _function_: Writes a photo submission's metadata record to the active storage backend, replacing any record with the same id.
+- `listSubmissions` _function_: Returns every photo submission in the moderation queue, newest first.
+- `getSubmission` _function_: Reads one photo submission by id, or `null` when there is none.
+- `updateSubmission` _function_: Applies a moderator's patch (status, caption, credit, adopted images matched by storage key) to a submission and returns it, or `null` when it does not exist.
 - `summarizeSubmissions` _function_: Pending submissions, newest first, cut down to what the admin toast prints.
-- `deleteSubmission` _function_
+- `deleteSubmission` _function_: Deletes a submission's photos and metadata; returns false when there was no such submission.
 - `inventory` _function_: Diagnostic: raw blob counts (blob driver only). When `imageBlobs > 0` but the moderation list is empty, those images are ORPHANS from uploads that never reached the metadata step (e.g. a finalize failure). Null for the local driver.
 - `purgeOrphanImages` _function_: Delete image blobs under contributions/ that have no matching metadata record.
 - Types: `BlobInventory`
 
 ### [`ticket.ts`](../../lib/contribute/ticket.ts)
 
-- `signTicket` _function_
-- `verifyTicket` _function_
+- `signTicket` _function_: Signs a photo upload ticket with HMAC-SHA256 and an expiry (15 minutes by default), returned as `<body>.<signature>` in base64url.
+- `verifyTicket` _function_: Returns the payload of a valid, unexpired upload ticket, or `null` for a missing, forged or expired one.
 
 ### [`types.ts`](../../lib/contribute/types.ts)
 

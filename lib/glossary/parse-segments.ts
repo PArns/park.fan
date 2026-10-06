@@ -102,6 +102,10 @@ function getMatcher(terms: GlossaryMatchTerm[]): Matcher | null {
   return matcher;
 }
 
+/**
+ * Splits text into plain-text and glossary-term segments, linking only the first occurrence of each
+ * term name or alias; aliases of four characters or less match case-sensitively.
+ */
 export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]): GlossarySegment[] {
   const matcher = getMatcher(terms);
   if (!matcher) return [{ type: 'text', content: text }];

@@ -118,7 +118,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`daily-wait-time-chart-client.tsx`](../../components/parks/daily-wait-time-chart-client.tsx)
 
-- `DailyWaitTimeChartClient` _component_
+- `DailyWaitTimeChartClient` _component_: Builds `DailyWaitTimeChart` for today in the park's timezone from the ride's history, forecast, schedule and best visit times, and adds the P25 to P90 corridor once it loads (last). Renders `fallback` until mounted.
 
 ### [`daily-wait-time-chart-placeholder.tsx`](../../components/parks/daily-wait-time-chart-placeholder.tsx)
 
@@ -126,7 +126,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`daily-wait-time-chart.tsx`](../../components/parks/daily-wait-time-chart.tsx)
 
-- `DailyWaitTimeChart` _component_
+- `DailyWaitTimeChart` _component_: Bar chart of a ride's wait times today in 15-minute slots: measured up to now, AI forecast after, over the ride's usual P25 to P90 corridor, with the best slots named under it.
 - Types: `DailyWaitTimeChartData`
 
 ### [`fast-pass-badge.tsx`](../../components/parks/fast-pass-badge.tsx)
@@ -189,7 +189,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-attraction-data.tsx`](../../components/parks/live-attraction-data.tsx)
 
-- `LiveAttractionData` _component_
+- `LiveAttractionData` _component_: Live chapter of the ride page: today's wait-time chart and the ride's other queues (single rider, paid lanes, return windows, boarding groups), from the ride's detail query, polled every five minutes over the server-rendered park snapshot.
 
 ### [`live-country-cards.tsx`](../../components/parks/live-country-cards.tsx)
 
@@ -324,7 +324,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-grid.tsx`](../../components/parks/park-calendar-grid.tsx)
 
-- `ParkCalendarGrid` _component_
+- `ParkCalendarGrid` _component_: The park's crowd calendar for one month: a week grid on desktop, a two-column list on phones, a detail panel for the tapped day and a two-day comparison. Client only (`ssr: false`); the month comes from the URL.
 
 ### [`park-calendar-legend.tsx`](../../components/parks/park-calendar-legend.tsx)
 
@@ -345,7 +345,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-panel.tsx`](../../components/parks/park-calendar-panel.tsx)
 
-- `ParkCalendarPanel` _component_
+- `ParkCalendarPanel` _component_: Client half of the park's calendar page: chapter heading, month stepper links, legend, comparison toggle, the month grid (loaded client-side into a reserved height) and the month index.
 
 ### [`park-card-nearby-skeleton.tsx`](../../components/parks/park-card-nearby-skeleton.tsx)
 

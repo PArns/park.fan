@@ -71,6 +71,10 @@ interface ToastContextValue {
 
 const ToastContext = createContext<ToastContextValue | null>(null);
 
+/**
+ * Returns the admin toast API: `push` (returns an id), `update` and `dismiss`. Throws outside
+ * `<ToastHost>`.
+ */
 export function useToast(): ToastContextValue {
   const context = useContext(ToastContext);
   if (!context) throw new Error('useToast must be used inside <ToastHost>');
@@ -88,6 +92,10 @@ const DEFAULT_DURATION: Record<ToastTone, number | null> = {
 
 let nextId = 1;
 
+/**
+ * Provides admin toasts and renders the stack in the bottom-right corner, at most four at a time.
+ * Success and info toasts time out; error and pending stay until dismissed.
+ */
 export function ToastHost({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const timers = useRef(new Map<number, ReturnType<typeof setTimeout>>());

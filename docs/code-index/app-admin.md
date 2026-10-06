@@ -202,8 +202,8 @@ Crash protection for the curated-fields editor.
 
 ### [`_ui/toast.tsx`](../../app/admin/_ui/toast.tsx)
 
-- `ToastHost` _component_
-- `useToast` _hook_
+- `ToastHost` _component_: Provides admin toasts and renders the stack in the bottom-right corner, at most four at a time. Success and info toasts time out; error and pending stay until dismissed.
+- `useToast` _hook_: Returns the admin toast API: `push` (returns an id), `update` and `dismiss`. Throws outside `<ToastHost>`.
 - Types: `ToastTone`, `ToastAction`, `ToastInput`
 
 ### [`account/page.tsx`](../../app/admin/account/page.tsx)
@@ -236,7 +236,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`attractions/_components/ride-profile-editor.tsx`](../../app/admin/attractions/_components/ride-profile-editor.tsx)
 
-- `RideProfileEditor` _component_
+- `RideProfileEditor` _component_: Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats. Saves with PUT and can delete the profile.
 
 ### [`blog-editor/_components/author-create-modal.tsx`](../../app/admin/blog-editor/_components/author-create-modal.tsx)
 
@@ -312,7 +312,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_components/table-menu.tsx`](../../app/admin/blog-editor/_components/table-menu.tsx)
 
-- `TableMenu` _component_
+- `TableMenu` _component_: Bubble toolbar for the blog editor that appears while the caret is in a table: add or remove rows and columns, pick the header colour theme, delete the table. Only operations GFM tables can hold.
 
 ### [`blog-editor/_extensions/active-chip.ts`](../../app/admin/blog-editor/_extensions/active-chip.ts)
 
@@ -328,8 +328,8 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_extensions/image-preview.ts`](../../app/admin/blog-editor/_extensions/image-preview.ts)
 
-- `parseImageAlt` _function_
-- `serialiseImageAlt` _function_
+- `parseImageAlt` _function_: Splits a markdown image alt string `Alt | Caption | align | size` into its parts. Unknown align falls back to `center`, unknown size to none.
+- `serialiseImageAlt` _function_: Joins image alt parts back into `Alt | Caption | align | size`, dropping empty trailing parts.
 - `ImagePreview` _const_
 - Types: `ImageAlign`, `ImageSize`, `ParsedImageAlt`
 
@@ -361,15 +361,15 @@ Route `/admin/attractions/[id]` (page).
 - `reanchorPos` _function_: Re-resolve a chip's doc position right before writing to it. Positions are captured at click time; any edit above the chip shifts them, so a write at the captured pos could hit the wrong node (or out-of-bounds).
 - `eventToElement` _function_: Click targets in TipTap are often the deepest DOM node a click landed on — frequently a text node. `closest()` only exists on Elements, so plugins have to walk up one step before they can query.
 - `pickClosestByCoords` _function_: When a chip has multiple plausible spans in the doc (same park referenced twice, two attraction widgets sharing a slug, the same image used twice), pick the one whose anchor coordinate is closest to the chip rect. hypot combines X and Y so …
-- `createResolveCache` _function_
+- `createResolveCache` _function_: Creates a cache of `resolve-ref` lookups keyed by ref value, each entry loading, ready or failed and never refetched. Only the first `ensure` for a ref gets its `onResolve` called.
 - Types: `ResolveCache`
 
 ### [`blog-editor/_lib/draft-autosave.ts`](../../app/admin/blog-editor/_lib/draft-autosave.ts)
 
 - `isMeaningfulSnapshot` _function_: Does the snapshot contain anything worth restoring?
-- `loadDraftSnapshot` _function_
-- `saveDraftSnapshot` _function_
-- `clearDraftSnapshot` _function_
+- `loadDraftSnapshot` _function_: Reads the blog editor's autosaved working state (per-locale drafts, the post being edited, active locales) from localStorage. Returns `null` when there is none, the version differs or it fails.
+- `saveDraftSnapshot` _function_: Writes the blog editor's working state to localStorage with a version and timestamp.
+- `clearDraftSnapshot` _function_: Removes the blog editor's autosaved snapshot, after a save or an explicit discard.
 - Types: `DraftSnapshot`
 
 ### [`blog-editor/_lib/initial-data.ts`](../../app/admin/blog-editor/_lib/initial-data.ts)

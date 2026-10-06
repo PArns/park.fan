@@ -27,6 +27,10 @@ export function isMeaningfulSnapshot(s: DraftSnapshot): boolean {
   return Object.values(s.drafts).some((d) => !!d && (!!d.fm.title.trim() || !!d.body.trim()));
 }
 
+/**
+ * Reads the blog editor's autosaved working state (per-locale drafts, the post being edited, active
+ * locales) from localStorage. Returns `null` when there is none, the version differs or it fails.
+ */
 export function loadDraftSnapshot(): DraftSnapshot | null {
   try {
     const raw = window.localStorage.getItem(KEY);
@@ -39,6 +43,7 @@ export function loadDraftSnapshot(): DraftSnapshot | null {
   }
 }
 
+/** Writes the blog editor's working state to localStorage with a version and timestamp. */
 export function saveDraftSnapshot(s: Omit<DraftSnapshot, 'v' | 'savedAt'>): void {
   try {
     window.localStorage.setItem(
@@ -50,6 +55,7 @@ export function saveDraftSnapshot(s: Omit<DraftSnapshot, 'v' | 'savedAt'>): void
   }
 }
 
+/** Removes the blog editor's autosaved snapshot, after a save or an explicit discard. */
 export function clearDraftSnapshot(): void {
   try {
     window.localStorage.removeItem(KEY);

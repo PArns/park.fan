@@ -47,6 +47,10 @@ function StatCardRow({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Suspense fallback for the homepage's global and platform stats sections: the real headings over
+ * stat, park and ride card skeletons sized like the cards they stand in for.
+ */
 export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <>
@@ -136,6 +140,10 @@ export function FeaturedParksSkeleton({
   );
 }
 
+/**
+ * Suspense fallback for the homepage's live activity section: the real heading over five continent
+ * card skeletons.
+ */
 export function LiveActivitySkeleton({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <section className={STORY_SECTION_TINTED}>

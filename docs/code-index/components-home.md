@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`announce-section.tsx`](../../components/home/announce-section.tsx)
 
-- `AnnounceSection` _component_
+- `AnnounceSection` _component_: Homepage announcement band from `content/home/announce.<locale>.md`: background photo, title, flip-clock countdown to `countdownTo` and the markdown body. Renders nothing outside the `startAt`/`endAt` window or without a countdown.
 
 ### [`featured-park-cards-live.tsx`](../../components/home/featured-park-cards-live.tsx)
 
@@ -16,7 +16,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`featured-parks-section.tsx`](../../components/home/featured-parks-section.tsx)
 
-- `extractFeaturedParks` _function_
+- `extractFeaturedParks` _function_: Returns the locale's hand-picked featured parks from the geo structure, in `FEATURED_PARK_SLUGS` order, with day-stable fields only (no live data). Logs a warning for a slug the structure no longer has.
 - `FEATURED_PARK_SLUGS` _const_: Sources: TEA 2024 Global Experience Index + European attendance rankings. Ordered by wait-time search relevance for each language market. Note: 'disneyland-park' resolves to Paris (Europe traversed before North America).
 - Types: `FeaturedPark`
 
@@ -98,9 +98,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`home-skeletons.tsx`](../../components/home/home-skeletons.tsx)
 
-- `GlobalStatsSkeleton` _component_
+- `GlobalStatsSkeleton` _component_: Suspense fallback for the homepage's global and platform stats sections: the real headings over stat, park and ride card skeletons sized like the cards they stand in for.
 - `FeaturedParksSkeleton` _component_: `className` is the one `FeaturedParksSlot` gets, so the band's padding is the same box.
-- `LiveActivitySkeleton` _component_
+- `LiveActivitySkeleton` _component_: Suspense fallback for the homepage's live activity section: the real heading over five continent card skeletons.
 
 ### [`latest-blog-section.tsx`](../../components/home/latest-blog-section.tsx)
 
@@ -121,7 +121,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ml-sparkline-loader.tsx`](../../components/home/ml-sparkline-loader.tsx)
 
-- `MLSparklineLoader` _component_
+- `MLSparklineLoader` _component_: Renders `MLSparkline`, the chart of a model metric's history, on the client only (`next/dynamic` with `ssr: false`). Takes the same props.
 
 ### [`ml-sparkline.tsx`](../../components/home/ml-sparkline.tsx)
 
@@ -129,11 +129,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ml-stats-section.tsx`](../../components/home/ml-stats-section.tsx)
 
-- `MLStatsSection` _component_
+- `MLStatsSection` _component_: The prediction model's live scorecard: mean error with a sparkline, RMSE, MAPE, R², prediction count, coverage and the retraining countdown. Server Component; renders nothing when the ML dashboard API fails.
 
 ### [`ml-training-countdown.tsx`](../../components/home/ml-training-countdown.tsx)
 
-- `MLTrainingCountdown` _component_
+- `MLTrainingCountdown` _component_: Card with the model's age and a live countdown to the next daily retraining at 06:00 UTC, shown in the visitor's local time. Ticks only while the card is on screen.
 
 ### [`park-compass-dial.tsx`](../../components/home/park-compass-dial.tsx)
 
@@ -151,12 +151,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`section-headings.tsx`](../../components/home/section-headings.tsx)
 
-- `GlobalStatsHeading` _component_
-- `PlatformStatsHeading` _component_
-- `LiveActivityHeading` _component_
+- `GlobalStatsHeading` _component_: Chapter heading of the homepage's global stats section (anchor `#zahlen`). Synchronous, so a Suspense fallback can render it.
+- `PlatformStatsHeading` _component_: Chapter heading of the homepage's platform stats section. Synchronous, so a Suspense fallback can render it.
+- `LiveActivityHeading` _component_: Chapter heading of the homepage's live activity section (anchor `#parks-weltweit`). Synchronous, so a Suspense fallback can render it.
 - `FeaturedParksHeading` _component_: „Beliebte Parks", in the slot and in its fallback alike.
-- `getSectionHeadingLabels` _function_
-- `getFeaturedParksLabels` _function_
+- `getSectionHeadingLabels` _function_: Resolves the kicker, title and hint of the homepage's global stats, platform stats and live activity headings, once, for both the Suspense fallback and the section.
+- `getFeaturedParksLabels` _function_: Resolves the title and intro of the featured parks heading for `FeaturedParksHeading`.
 - Types: `SectionHeadingLabels`, `FeaturedParksLabels`
 
 ### [`story/best-time-grid.tsx`](../../components/home/story/best-time-grid.tsx)
@@ -240,7 +240,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`story/three-steps.tsx`](../../components/home/story/three-steps.tsx)
 
-- `ThreeSteps` _component_
+- `ThreeSteps` _component_: Homepage chapter that walks through a park day in three cards: pick a park (with a live park search), check the day on a crowd-colour month, plan the route on a ride's day curve.
 
 ### [`story/why-park-fan.tsx`](../../components/home/story/why-park-fan.tsx)
 

@@ -72,6 +72,10 @@ function StepCard({
   );
 }
 
+/**
+ * Homepage chapter that walks through a park day in three cards: pick a park (with a live park
+ * search), check the day on a crowd-colour month, plan the route on a ride's day curve.
+ */
 export async function ThreeSteps() {
   const [t, tCommon] = await Promise.all([
     getTranslations('homeStory.steps'),

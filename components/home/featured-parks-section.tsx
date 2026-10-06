@@ -82,6 +82,11 @@ interface FeaturedPark {
 export { FEATURED_PARK_SLUGS };
 export type { FeaturedPark };
 
+/**
+ * Returns the locale's hand-picked featured parks from the geo structure, in `FEATURED_PARK_SLUGS`
+ * order, with day-stable fields only (no live data). Logs a warning for a slug the structure no
+ * longer has.
+ */
 export function extractFeaturedParks(geoData: GeoStructure | null, locale: string): FeaturedPark[] {
   if (!geoData) return [];
 

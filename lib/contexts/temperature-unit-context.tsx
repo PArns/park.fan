@@ -89,6 +89,10 @@ export function TemperatureUnitProvider({ children }: TemperatureUnitProviderPro
   );
 }
 
+/**
+ * Returns the visitor's temperature unit (°C or °F) and its setter; outside the provider it answers
+ * °C and a no-op setter.
+ */
 export function useTemperatureUnit(): TemperatureUnitContextValue {
   const ctx = useContext(TemperatureUnitContext);
   if (!ctx) {

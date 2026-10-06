@@ -111,6 +111,11 @@ function getCurrentTimeSlotInTimezone(timezone: string): string {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
+/**
+ * Bar chart of a ride's wait times today in 15-minute slots: measured up to now, AI forecast
+ * after, over the ride's usual P25 to P90 corridor, with the best slots named under it.
+ * Scrolls the current slot into view; renders nothing without data.
+ */
 export function DailyWaitTimeChart({
   slots,
   timezone,

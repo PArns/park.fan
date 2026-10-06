@@ -8,13 +8,13 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`geolocation-context.tsx`](../../lib/contexts/geolocation-context.tsx)
 
 - `GeolocationProvider` _component_: Centralized geolocation provider (docs/rules/location-is-asked-for-where-it-is-needed.md). - Granted (Permissions API): read on mount, on every page, no banner. - Denied: remembered as denied, so no control offers a button that cannot …
-- `useGeolocation` _hook_
+- `useGeolocation` _hook_: Reads the shared geolocation state (position, accuracy, permission flags, in-park flag, refresh); throws outside a `GeolocationProvider`.
 - `useLocationNeeded` _hook_: Marks the calling component as a page part that uses location: the homepage banner and the park page's location line, the places that also offer the button.
-- `rememberLocationDeclined` _function_
-- `readLocationDeclinedAt` _function_
+- `rememberLocationDeclined` _function_: Stores now as the moment the visitor last said no to location, which keeps the location banner away for 30 days.
+- `readLocationDeclinedAt` _function_: Returns the epoch ms of the visitor's last no to location from localStorage, or `null` when there is none or storage is blocked.
 - Types: `GeolocationPosition`, `GeolocationContextValue`
 
 ### [`temperature-unit-context.tsx`](../../lib/contexts/temperature-unit-context.tsx)
 
 - `TemperatureUnitProvider` _component_: Centralized temperature-unit preference (°C / °F).
-- `useTemperatureUnit` _hook_
+- `useTemperatureUnit` _hook_: Returns the visitor's temperature unit (°C or °F) and its setter; outside the provider it answers °C and a no-op setter.

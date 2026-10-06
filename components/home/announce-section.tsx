@@ -26,6 +26,11 @@ interface AnnounceFrontmatter {
   subtitle?: string;
 }
 
+/**
+ * Homepage announcement band from `content/home/announce.<locale>.md`: background photo, title,
+ * flip-clock countdown to `countdownTo` and the markdown body. Renders nothing outside the
+ * `startAt`/`endAt` window or without a countdown.
+ */
 export async function AnnounceSection({ locale }: AnnounceSectionProps) {
   const data = getMarkdownContent<AnnounceFrontmatter>(`home/announce.${locale}.md`);
   const t = await getTranslations('common'); // Or specific namespace if you have one for time labels

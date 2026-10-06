@@ -36,6 +36,11 @@ interface MLStatsSectionProps {
   variant?: 'section' | 'bare';
 }
 
+/**
+ * The prediction model's live scorecard: mean error with a sparkline, RMSE, MAPE, R², prediction
+ * count, coverage and the retraining countdown. Server Component; renders nothing when the ML
+ * dashboard API fails.
+ */
 export async function MLStatsSection({
   linkToFancast = false,
   variant = 'section',

@@ -46,6 +46,10 @@ const THEME_SWATCH: Record<TableTheme, string> = {
   danger: 'bg-rose-500/60',
 };
 
+/**
+ * Bubble toolbar for the blog editor that appears while the caret is in a table: add or remove rows
+ * and columns, pick the header colour theme, delete the table. Only operations GFM tables can hold.
+ */
 export function TableMenu({ editor }: TableMenuProps) {
   const [themeOpen, setThemeOpen] = useState(false);
   // useEditor only re-renders on doc changes; pure selection moves (caret

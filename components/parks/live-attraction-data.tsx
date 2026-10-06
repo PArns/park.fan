@@ -51,6 +51,11 @@ interface LiveAttractionDataProps {
   parkSlug: string;
 }
 
+/**
+ * Live chapter of the ride page: today's wait-time chart and the ride's other queues (single
+ * rider, paid lanes, return windows, boarding groups), from the ride's detail query, polled every
+ * five minutes over the server-rendered park snapshot.
+ */
 export function LiveAttractionData({
   initialPark,
   attractionSlug,

@@ -106,6 +106,10 @@ export interface ResolveCache<T> {
   ensure(refValue: string, onResolve: () => void): void;
 }
 
+/**
+ * Creates a cache of `resolve-ref` lookups keyed by ref value, each entry loading, ready or failed
+ * and never refetched. Only the first `ensure` for a ref gets its `onResolve` called.
+ */
 export function createResolveCache<T>(
   parseResponse: (raw: unknown) => T = (raw) => raw as T
 ): ResolveCache<T> {

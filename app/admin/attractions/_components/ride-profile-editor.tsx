@@ -57,6 +57,11 @@ const MEASUREMENTS: Array<{
   { key: 'durationSeconds', label: 'Fahrzeit', unit: 's' },
 ];
 
+/**
+ * Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats
+ * kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats. Saves
+ * with PUT and can delete the profile.
+ */
 export function RideProfileEditor({
   attractionId,
   parkId,

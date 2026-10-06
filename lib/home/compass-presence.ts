@@ -13,6 +13,10 @@ export const PARK_COMPASS_ID = 'park-compass';
 let present = false;
 const listeners = new Set<() => void>();
 
+/**
+ * Records whether the in-park compass is mounted on the homepage and notifies `useCompassPresent`
+ * readers when it changes.
+ */
 export function setCompassPresent(value: boolean): void {
   if (present === value) return;
   present = value;
@@ -26,6 +30,10 @@ function subscribe(listener: () => void): () => void {
   };
 }
 
+/**
+ * Returns true while the in-park compass is mounted on the homepage, so the hero can show its pill;
+ * false on the server.
+ */
 export function useCompassPresent(): boolean {
   return useSyncExternalStore(
     subscribe,

@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-faq.ts`](../../lib/faq/attraction-faq.ts)
 
-- `buildAttractionFaqItems` _function_
+- `buildAttractionFaqItems` _function_: Builds a ride page's FAQ: where the ride is, its wait time (today's live figures when present), and single rider or paid queue questions when the ride has one.
 - Types: `AttractionFaqIconName`, `AttractionFaqItem`
 
 ### [`park-faq-terms.ts`](../../lib/faq/park-faq-terms.ts)
@@ -17,6 +17,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-faq.ts`](../../lib/faq/park-faq.ts)
 
 - `getParkArticleForms` _function_: The park name in the forms German sentences need.
-- `buildParkFaqItems` _function_
+- `buildParkFaqItems` _function_: Builds a park page's FAQ items (wait times, today's opening hours, location, ride count, themed areas, shows, dining), each only when the park has the data.
 - `getLeastCrowdedDays` _function_: Shared derivation for the "when is {park} least crowded?" FAQ entry — used by BOTH the server-rendered FAQPage JSON-LD and the visible FAQ section, so the structured data can never claim something the page doesn't show.
 - Types: `ParkFaqIconName`, `ParkFaqItem`, `ParkArticleForms`, `LeastCrowdedResult`

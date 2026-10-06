@@ -31,6 +31,10 @@ export interface ParsedImageAlt {
   size?: ImageSize;
 }
 
+/**
+ * Splits a markdown image alt string `Alt | Caption | align | size` into its parts. Unknown align
+ * falls back to `center`, unknown size to none.
+ */
 export function parseImageAlt(raw: string): ParsedImageAlt {
   const parts = (raw ?? '').split('|').map((s) => s.trim());
   const align = normaliseAlign(parts[2]);
@@ -43,6 +47,7 @@ export function parseImageAlt(raw: string): ParsedImageAlt {
   };
 }
 
+/** Joins image alt parts back into `Alt | Caption | align | size`, dropping empty trailing parts. */
 export function serialiseImageAlt(parts: ParsedImageAlt): string {
   // Trim trailing empty segments so we don't emit `Alt | | center` when the
   // caption is empty. Always keep at least `alt`.

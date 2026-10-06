@@ -29,6 +29,10 @@ export interface SectionHeadingLabels {
   liveActivity: { kicker: string; title: string; hint: string };
 }
 
+/**
+ * Resolves the kicker, title and hint of the homepage's global stats, platform stats and live
+ * activity headings, once, for both the Suspense fallback and the section.
+ */
 export async function getSectionHeadingLabels(): Promise<SectionHeadingLabels> {
   const [tStats, tHome, tStory] = await Promise.all([
     getTranslations('stats'),
@@ -54,6 +58,10 @@ export async function getSectionHeadingLabels(): Promise<SectionHeadingLabels> {
   };
 }
 
+/**
+ * Chapter heading of the homepage's global stats section (anchor `#zahlen`). Synchronous, so a
+ * Suspense fallback can render it.
+ */
 export function GlobalStatsHeading({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <ChapterHeading
@@ -67,6 +75,10 @@ export function GlobalStatsHeading({ labels }: { labels: SectionHeadingLabels })
   );
 }
 
+/**
+ * Chapter heading of the homepage's platform stats section. Synchronous, so a Suspense fallback can
+ * render it.
+ */
 export function PlatformStatsHeading({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <ChapterHeading
@@ -79,6 +91,10 @@ export function PlatformStatsHeading({ labels }: { labels: SectionHeadingLabels 
   );
 }
 
+/**
+ * Chapter heading of the homepage's live activity section (anchor `#parks-weltweit`). Synchronous,
+ * so a Suspense fallback can render it.
+ */
 export function LiveActivityHeading({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <ChapterHeading
@@ -98,6 +114,7 @@ export interface FeaturedParksLabels {
   hint: string;
 }
 
+/** Resolves the title and intro of the featured parks heading for `FeaturedParksHeading`. */
 export async function getFeaturedParksLabels(): Promise<FeaturedParksLabels> {
   const tHome = await getTranslations('home');
   return {

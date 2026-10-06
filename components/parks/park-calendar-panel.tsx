@@ -56,6 +56,10 @@ const ParkCalendarGrid = dynamic(
   }
 );
 
+/**
+ * Client half of the park's calendar page: chapter heading, month stepper links, legend,
+ * comparison toggle, the month grid (loaded client-side into a reserved height) and the month index.
+ */
 export function ParkCalendarPanel({
   park,
   continent,

@@ -44,6 +44,10 @@ function NumUnit({ n, u }: { n: string; u: string }) {
   );
 }
 
+/**
+ * Card with the model's age and a live countdown to the next daily retraining at 06:00 UTC, shown
+ * in the visitor's local time. Ticks only while the card is on screen.
+ */
 export function MLTrainingCountdown({ modelAge }: Props) {
   const t = useTranslations('home');
 

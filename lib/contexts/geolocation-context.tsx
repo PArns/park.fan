@@ -88,6 +88,10 @@ function hasGeoOptIn(): boolean {
  */
 const DECLINED_AT_KEY = 'pf_geo_banner_dismissed_at';
 
+/**
+ * Stores now as the moment the visitor last said no to location, which keeps the location banner
+ * away for 30 days.
+ */
 export function rememberLocationDeclined(): void {
   try {
     localStorage.setItem(DECLINED_AT_KEY, String(Date.now()));
@@ -96,6 +100,10 @@ export function rememberLocationDeclined(): void {
   }
 }
 
+/**
+ * Returns the epoch ms of the visitor's last no to location from localStorage, or `null` when there
+ * is none or storage is blocked.
+ */
 export function readLocationDeclinedAt(): number | null {
   try {
     const raw = localStorage.getItem(DECLINED_AT_KEY);
@@ -379,6 +387,10 @@ async function queryGeolocationPermission(): Promise<PermissionStatus | null> {
   }
 }
 
+/**
+ * Reads the shared geolocation state (position, accuracy, permission flags, in-park flag, refresh);
+ * throws outside a `GeolocationProvider`.
+ */
 export function useGeolocation() {
   const context = useContext(GeolocationContext);
 

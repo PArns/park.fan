@@ -236,6 +236,11 @@ function buildChartData(
   };
 }
 
+/**
+ * Builds `DailyWaitTimeChart` for today in the park's timezone from the ride's history, forecast,
+ * schedule and best visit times, and adds the P25 to P90 corridor once it loads (last).
+ * Renders `fallback` until mounted.
+ */
 export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
   const mounted = useMounted();
   const { corridor } = props;

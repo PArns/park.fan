@@ -61,6 +61,10 @@ export function getParkArticleForms(park: ParkWithAttractions, locale: string): 
   };
 }
 
+/**
+ * Builds a park page's FAQ items (wait times, today's opening hours, location, ride count, themed
+ * areas, shows, dining), each only when the park has the data.
+ */
 export function buildParkFaqItems(
   park: ParkWithAttractions,
   locale: string,

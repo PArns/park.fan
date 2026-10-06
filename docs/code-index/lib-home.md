@@ -7,6 +7,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`compass-presence.ts`](../../lib/home/compass-presence.ts)
 
-- `useCompassPresent` _hook_
-- `setCompassPresent` _function_
+- `useCompassPresent` _hook_: Returns true while the in-park compass is mounted on the homepage, so the hero can show its pill; false on the server.
+- `setCompassPresent` _function_: Records whether the in-park compass is mounted on the homepage and notifies `useCompassPresent` readers when it changes.
 - `PARK_COMPASS_ID` _const_: Whether the in-park compass is on the homepage right now, for the hero's pill that scrolls to it.

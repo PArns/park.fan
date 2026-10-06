@@ -53,6 +53,11 @@ interface ParkCalendarGridProps {
   nextMonth: ParkCalendarMonth | null;
 }
 
+/**
+ * The park's crowd calendar for one month: a week grid on desktop, a two-column list on phones, a
+ * detail panel for the tapped day and a two-day comparison. Client only (`ssr: false`); the month
+ * comes from the URL.
+ */
 export function ParkCalendarGrid({
   park,
   initialCalendarData,

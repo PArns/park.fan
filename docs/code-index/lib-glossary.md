@@ -28,12 +28,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`element-kinds.ts`](../../lib/glossary/element-kinds.ts)
 
-- `getElementKind` _function_
+- `getElementKind` _function_: Returns the colour group (launch, airtime, inversion, turn, brake) of a glossary track element id, or `other` for an unlisted one.
 - Types: `ElementKind`
 
 ### [`parse-segments.ts`](../../lib/glossary/parse-segments.ts)
 
-- `parseGlossarySegments` _function_
+- `parseGlossarySegments` _function_: Splits text into plain-text and glossary-term segments, linking only the first occurrence of each term name or alias; aliases of four characters or less match case-sensitively.
 - `filterMatchableTerms` _function_: Narrow a term list to the ones that can possibly match anywhere in `corpus`.
 - Types: `GlossaryMatchTerm`, `GlossarySegment`, `GlossaryTerm`
 
@@ -52,8 +52,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`translations.ts`](../../lib/glossary/translations.ts)
 
-- `getGlossaryTerms` _function_
-- `getTermBySlug` _function_
+- `getGlossaryTerms` _function_: Returns every glossary term with its name, definitions and slug in the locale, built once per locale for the life of the process.
+- `getTermBySlug` _function_: Returns the glossary term with this localized slug, or `null`. Per-render cached.
 - `findTermByAnySlug` _function_: Resolve a term slug from ANY locale to the requested locale's term.
 
 ### [`types.ts`](../../lib/glossary/types.ts)

@@ -51,10 +51,17 @@ export const ACCEPT_ATTR = [
 
 export type AcceptedMimeType = (typeof ACCEPTED_MIME_TYPES)[number];
 
+/**
+ * Returns true when a file's MIME type is one of the photo formats the contribution upload accepts.
+ */
 export function isAcceptedMimeType(type: string): boolean {
   return (ACCEPTED_MIME_TYPES as readonly string[]).includes(type);
 }
 
+/**
+ * Formats a byte count as `B`, `KB` (whole) or `MB` (one decimal) for the photo upload limits and
+ * file list.
+ */
 export function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
