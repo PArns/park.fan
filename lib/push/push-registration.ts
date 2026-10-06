@@ -4,18 +4,10 @@ import { urlBase64ToUint8Array } from './vapid-key';
 import { currentPushTimezone, rememberSentPushTimezone } from './push-timezone';
 
 /**
- * Subscribing a browser to push, without a trip — for a ride alert or a
- * followed show. `lib/planner/use-push-subscription.ts` does the same job
- * for the trip planner, but that hook uploads a trip plan before it
- * subscribes and hard-requires a trip id; this feature has neither, so it is
- * a separate, small file rather than a refactor of one that is already
- * shipped and tested.
- *
- * The backend tells them apart the same way both stay compatible on one
- * browser: `POST /v1/push/subscriptions` only sets `tripId`/`topics` when the
- * caller sends them, never on omission (see `SubscribeInput`'s docstring on
- * the API) — so a ride alert set up here never disturbs a trip-planner
- * subscription the same browser already has, and vice versa.
+ * Subscribing a browser to push without a trip, for a ride alert or a followed show;
+ * `lib/planner/use-push-subscription.ts` does the same for the trip planner and requires a trip.
+ * Both stay compatible on one browser: `POST /v1/push/subscriptions` only sets `tripId`/`topics`
+ * when the caller sends them, so neither disturbs the other's subscription.
  */
 
 interface PushAvailability {
@@ -30,11 +22,9 @@ export interface PushIdentity {
 }
 
 /**
- * Why a browser cannot be registered. Each one has a different remedy, and
- * telling them apart is the whole point: "that didn't work, please try again"
- * is a lie in front of `denied` (trying again does nothing until the visitor
- * changes a browser setting) and in front of `unsupported` (it will never
- * work here), and those two are exactly the cases a visitor hits most.
+ * Why a browser cannot be registered. Each has a different remedy: "please try again" is a lie
+ * in front of `denied` (only a browser setting helps) and `unsupported` (it never will), the two
+ * cases a visitor hits most.
  */
 export type PushUnavailableCause =
   /** No service worker / PushManager / Notification — an insecure origin, or a browser without them. */
@@ -56,16 +46,9 @@ export type PushRegistration =
 let availabilityPromise: Promise<PushAvailability | null> | null = null;
 
 /**
- * `GET /api/push`, memoized for the page's lifetime — every bell on a page
- * asks this.
- *
- * Only a SUCCESSFUL answer is memoized. Caching the failure too is what this
- * used to do (`??=` over a promise that resolved `{available:false}` on any
- * error), and it turned one unlucky request — a Cloudflare challenge on a
- * `no-store` fetch, a dropped connection, a cold start — into a page where
- * every bell was dead for as long as the tab stayed open: no further request,
- * no permission prompt, no error, nothing in the console. A visitor clicking
- * a second time got a silent no-op from a decision made once, invisibly.
+ * `GET /api/push`, memoized for the page's lifetime because every bell asks. Only a successful
+ * answer is memoized: a cached failure would leave every bell on the page silently dead for as
+ * long as the tab stays open.
  */
 function fetchAvailability(): Promise<PushAvailability | null> {
   availabilityPromise ??= fetch('/api/push', { cache: 'no-store' })
@@ -88,22 +71,13 @@ function supportsPush(): boolean {
 }
 
 /**
- * "There is no subscription" and "we could not find out" — a distinction the
- * write path can do without and everything else needs badly.
- *
- * A removal reads this to decide whether the server can be holding anything
- * for this browser: no subscription means the local mirror entry is stale and
- * clearing it IS the removal. But `getRegistration()` can reject (storage
- * access refused, a partitioned context), and folding that into the same
- * `null` would report a removal as confirmed over an alert that is still
- * armed — the exact failure the delete path was rebuilt to stop reporting.
- *
- * The list fetchers read it for the mirror image of that: `null` there means
- * "this browser has no alerts", and a lookup that threw would render as an
- * empty state in front of somebody whose alerts are all still armed.
+ * "There is no subscription" and "we could not find out", kept apart: a removal treats no
+ * subscription as nothing to delete and a list fetcher as no alerts, so a lookup that threw
+ * (storage access refused, a partitioned context) must read as neither.
  */
 export type PushIdentityLookup = { ok: true; identity: PushIdentity | null } | { ok: false };
 
+/** Reads this browser's push subscription without prompting; `{ ok: false }` when that fails. */
 export async function lookupExistingPushIdentity(): Promise<PushIdentityLookup> {
   // Not a failure: a browser without push cannot be holding a subscription.
   if (!supportsPush()) return { ok: true, identity: null };
@@ -123,13 +97,9 @@ export async function lookupExistingPushIdentity(): Promise<PushIdentityLookup> 
 }
 
 /**
- * This browser's existing subscription, without prompting for anything.
- * `null` covers "never subscribed", "browser cannot", "permission denied" and
- * "the lookup itself failed" alike — none of them are worth telling apart for
- * a WRITE, whose only use is deciding whether the action needs
- * `ensurePushRegistered` first or can call the API directly. Nothing else has
- * that fallback: the removals and the list fetchers all read
- * {@link lookupExistingPushIdentity} instead.
+ * This browser's existing subscription without prompting, `null` for every reason there is none,
+ * a failed lookup included. Only a write may use that fallback, to decide whether it must register
+ * first; removals and list fetchers read {@link lookupExistingPushIdentity}.
  */
 export async function getExistingPushIdentity(): Promise<PushIdentity | null> {
   const lookup = await lookupExistingPushIdentity();
@@ -159,16 +129,9 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
     if (permission === 'denied') return { ok: false, cause: 'denied' };
     if (permission !== 'granted') return { ok: false, cause: 'dismissed' };
 
-    // Registered only now, not on every page load — same reasoning as the
-    // trip planner's own registration: a worker installed for everybody
-    // would claim scope over the whole origin for a feature almost nobody
-    // turns on. It is the SAME file either way, generic to both features.
-    //
-    // `lib/push/push-timezone.ts` does run on every page load and does not
-    // break that: it reads an EXISTING registration to keep the stored zone
-    // current, and installs nothing. A browser that has never armed anything
-    // leaves it after two `localStorage` reads, so the rule above still holds
-    // — what is forbidden here is claiming scope, not looking.
+    // Registered only now, not on every page load: a worker installed for everybody would claim
+    // scope over the whole origin for a feature almost nobody turns on. `push-timezone.ts` runs on
+    // every load but only reads an existing registration.
     const registration = await navigator.serviceWorker.register('/sw.js');
     await navigator.serviceWorker.ready;
 
@@ -210,12 +173,7 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
       return { ok: false, cause: 'failed' };
     }
 
-    // The zone above is now the one the API holds for this endpoint. Recorded
-    // on the 2xx and nowhere else, so the next page load compares against
-    // something the server actually took — without this, every browser that
-    // just armed an alert would send the same zone again on its next load.
-    // Omitted above means nothing was sent, so there is nothing to record:
-    // the stored zone is then whatever it already was.
+    // Recorded only on a 2xx, so the next page load compares against a zone the server took.
     if (timezone) rememberSentPushTimezone(identity.endpoint, timezone);
 
     return { ok: true, identity };

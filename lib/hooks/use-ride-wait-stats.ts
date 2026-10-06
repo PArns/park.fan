@@ -16,17 +16,13 @@ export interface RideWaitPark extends ParkStatsTarget {
 }
 
 /**
- * A ride the post asks for by name, in `mode="rides"`.
- *
- * `label` and `type` are author-supplied and deliberately so. A coaster's layout does not change
- * between two page loads, so "Multi-Launch, Stahl" is a stable fact that belongs in the post; the
- * MINUTES are what drifts daily and what this hook exists to stop anyone from typing by hand.
+ * A ride the post asks for by name, in `mode="rides"`. `label` and `type` are author-supplied: a
+ * ride's type is a stable fact that belongs in the post, the minutes are what drift.
  */
 export interface RideWaitTarget {
   /**
    * The park's `basePath`, not its slug: a bare park slug is not unique (`disneyland-park` is
-   * Paris and Anaheim), so a table naming a ride in each would have drawn both rows from
-   * whichever park was resolved first — same name, same href, the wrong medians.
+   * Paris and Anaheim).
    */
   parkKey: string;
   rideSlug: string;
@@ -54,19 +50,10 @@ export interface RideWaitRow {
 }
 
 /**
- * How many measured days a ride needs before its numbers are set against another ride's.
- *
- * `rides` MODE ONLY, and the distinction is the whole point. The API applies its own floor of 20
- * to the ranking, which is what stopped a one-day average from leading a park's top ten. This
- * second, higher floor answers a different question: a table that puts Troy next to Joris en de
- * Draak invites the reader to subtract one from the other, and the thinner number carries the
- * argument. Toverlands Maximus' Blitz Bahn tops its park's list on 61 days against 135 for
- * everything else.
- *
- * In `park` mode it would do harm. A ranking is a claim about the park, the days column states
- * each row's basis, and the posts build on exactly that: the Efteling article spends a paragraph
- * on the steam train sitting seventh "with 32 and 41 measured days, a good deal thinner than the
- * rest". Blanking those two rows deletes the thing the paragraph is about.
+ * How many measured days a ride needs before its numbers are set against another ride's, in
+ * `rides` mode only: a side-by-side table invites subtraction, and the thinner number carries the
+ * argument. In `park` mode the API's own floor of 20 is enough, because a ranking states each
+ * row's days and posts discuss exactly those thin rows.
  */
 const MIN_COMPARABLE_SAMPLE_DAYS = 60;
 
@@ -104,18 +91,11 @@ function toRow(
 }
 
 /**
- * The rows behind every wait-time table that lists RIDES, in the two shapes posts actually write.
- *
- * `mode="park"` takes the top of one park's ranking — "the ten most-queued rides at the Efteling".
- * `mode="rides"` takes a hand-picked list that usually spans parks — "Troy against Joris en de
- * Draak". Both read the same `/stats` payload, so the two tables in one post agree with each other
- * and with the park-comparison table beside them; they used to be prose typed from a spreadsheet
- * and drifted apart within a season.
- *
- * A named ride is looked up in its park's ranking rather than fetched per ride, which is why
- * `mode="rides"` asks for the deep list: the ranking is by busiest queue, and a post comparing
- * mid-table rides would otherwise find nothing. Every ride in the four posts this replaced sits in
- * its park's top ten; 30 is the headroom for the next post that does not.
+ * The rows behind every wait-time table that lists rides: `mode="park"` takes the top of one
+ * park's ranking, `mode="rides"` a hand-picked list that usually spans parks. Both read the same
+ * `/stats` payload, so the tables in one post agree. A named ride is looked up in its park's
+ * ranking, which is why `rides` asks for the deep list. See
+ * docs/rules/a-wait-time-is-never-typed-into-a-post.md.
  */
 export function useRideWaitStats(
   parks: readonly RideWaitPark[],
@@ -148,10 +128,8 @@ export function useRideWaitStats(
       )
     );
   } else {
-    // Order is the post's, never the data's: the sentence under the table ("the two Toverland
-    // rides sit at the bottom, by a distance") is written against the sequence its author chose,
-    // and a table that re-sorts itself when a median moves by a minute breaks that sentence
-    // without touching a word of it.
+    // Order is the post's, never the data's: the sentence under the table is written against the
+    // sequence its author chose.
     rows = options.targets.flatMap((target) => {
       const entry = byParkKey.get(target.parkKey);
       if (!entry) return [];

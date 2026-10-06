@@ -3,17 +3,9 @@ import { getMediaImageBySrc, getMediaImageForPath } from './index';
 import type { MediaFocus, MediaImage } from './types';
 
 /**
- * Applying an image's focal point, in the one place every surface shares.
- *
- * A photo is almost never painted at its own aspect ratio: the ride card crops it
- * wide, the spotlight card crops it tall, the park background crops it to
- * whatever the viewport is. `object-fit: cover` then decides what to throw away,
- * and its default — dead centre — is what cuts the head off the Troy horse in the
- * wide card while leaving it intact in the tall one.
- *
- * The fix is one number pair per image, applied identically everywhere. Cards,
- * ride photos, backgrounds and the build-time crops all read the same `focus`,
- * so tuning an image once fixes it in every rendition instead of per component.
+ * Applying an image's focal point, in the one place every surface shares. A photo is almost never
+ * painted at its own aspect ratio, and `object-fit: cover` crops around the centre by default, so
+ * cards, ride photos, backgrounds and the build-time crops all read the same `focus`.
  */
 
 /** CSS `object-position` for an image, defaulting to centre. */
@@ -99,12 +91,9 @@ export function focusStyle(
 }
 
 /**
- * The props every `<Image fill>` / `<Image>` rendering a database image should
- * spread: the path, the intrinsic size that reserves the box, and the focal point.
- *
- * One helper instead of each card re-deriving them is the point — it is how the
- * cards, ride photos and backgrounds stay in agreement about how an image is
- * framed.
+ * The props every `<Image fill>` / `<Image>` rendering a database image should spread: the path,
+ * the intrinsic size that reserves the box, and the focal point, so every surface frames an image
+ * the same way.
  */
 export function mediaImageProps(image: MediaImage): {
   src: string;

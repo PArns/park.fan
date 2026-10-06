@@ -1,8 +1,7 @@
 import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import type { Locale } from '@/i18n/config';
 import { renderOgTextCard } from '@/lib/og/text-card';
-// Frontmatter-only lookup: the OG route must not pull the post bodies
-// (~900 KB) into its bundle — see lib/blog/listing.ts.
+// Frontmatter-only lookup: the OG route must not pull the post bodies into its bundle.
 import { getListItemByLocaleSlug } from '@/lib/blog/listing';
 import { findCanonicalTag } from '@/lib/blog/tags';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
@@ -52,8 +51,7 @@ export async function renderBlogOg({
   let palette: PaletteName = 'cyan';
 
   if (section === 'news') {
-    // /<locale>/news — the overview's own card. It used to be asked for as `blog/news`, which
-    // took the post branch below, found no post called "news" and printed the slug as the title.
+    // /<locale>/news: the overview's own card.
     title = resolveCategoryLabel(NEWS_CATEGORY, locale, 'News');
     subtitle = (await getTranslations({ locale, namespace: 'news' }))('intro');
     palette = paletteFromString(NEWS_CATEGORY);
@@ -77,7 +75,6 @@ export async function renderBlogOg({
     kicker = locale === 'de' ? 'Blog · Kategorie' : 'Blog · Category';
     palette = paletteFromString(fullPath);
   } else {
-    // Post slug
     const post = getListItemByLocaleSlug(first, locale);
     if (post) {
       title = post.frontmatter.title;
@@ -88,10 +85,8 @@ export async function renderBlogOg({
       // background. SVG covers fall through to the gradient — which still
       // produces a clean, branded OG card.
       if (coverSrc && !/\.svg(\?|$)/i.test(coverSrc)) {
-        // Read off disk when the cover ships with the deployment, exactly like the park/ride
-        // cards — otherwise Satori fetches it over the public internet on every render (a
-        // ~400 KB JPEG for the covers, now in the media database). Falls back to the absolute URL
-        // for anything not traced into this function's bundle, which is the old behaviour.
+        // Read off disk like the park and ride cards, so Satori does not fetch it over the
+        // internet on every render; the absolute URL covers anything not in this function's bundle.
         coverImage = ogBackgroundSrc(coverSrc, SITE_URL) ?? absoluteUrl(coverSrc);
       }
       const categoryPath = post.frontmatter.category ?? '';
@@ -123,7 +118,6 @@ function absoluteUrl(url: string): string {
   return `${SITE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
 }
 
-/** Deterministic palette pick from any input string (FNV-1a, 6-way). */
 type PaletteName = 'cyan' | 'amber' | 'emerald' | 'rose' | 'violet' | 'fuchsia';
 const PALETTES: Record<PaletteName, { kicker: string; glow: string }> = {
   cyan: { kicker: '#38bdf8', glow: 'rgba(56,189,248,0.35)' },
@@ -133,6 +127,7 @@ const PALETTES: Record<PaletteName, { kicker: string; glow: string }> = {
   violet: { kicker: '#a78bfa', glow: 'rgba(167,139,250,0.30)' },
   fuchsia: { kicker: '#e879f9', glow: 'rgba(232,121,249,0.30)' },
 };
+/** Deterministic palette pick from any input string (FNV-1a, 6-way). */
 function paletteFromString(s: string): PaletteName {
   if (!s) return 'cyan';
   let h = 0x811c9dc5;

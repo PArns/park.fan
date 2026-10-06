@@ -5,10 +5,9 @@ export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix: 'always',
-  // Explicitly enable locale detection from browser Accept-Language header
   localeDetection: true,
-  // Disable auto-generated Link headers — hreflang is managed via generateMetadata() on each page.
-  // The auto-generated headers would produce incorrect alternates for glossary pages (wrong segments).
+  // hreflang comes from each page's generateMetadata(); next-intl's Link headers would give the
+  // glossary pages wrong alternates.
   alternateLinks: false,
 });
 

@@ -1,17 +1,13 @@
 /**
- * The coaster-element registry: one entry per glossary term that has a 3-D
- * player. Each entry is pure data — a set of control points for the demo curve
- * (lead-in → element → lead-out), an optional `roll(t)` that banks/rolls the
- * train around the direction of travel, and the timeline key-points the player
- * marks on its scrubber.
+ * The coaster-element registry: one entry per glossary term that has a 3-D player, each pure data
+ * (the demo curve's control points, an optional `roll(t)` and the timeline key points).
  *
- * Geometry note: the scene builds a parallel-transport frame along these points
- * (see kit.ts) so PLANAR figures (loops, hills) invert/pitch correctly with no
- * extra data, while BARREL rolls (corkscrew, heartline, celestial) supply an
- * explicit `roll(t)`. Keep everything in a tidy box around the origin: travel is
- * broadly along +x, the frontal camera looks from +z, the mountain sits at −z.
+ * The scene builds a parallel-transport frame along the points (kit.ts), so planar figures (loops,
+ * hills) invert with no extra data and only barrel rolls supply `roll(t)`. Keep everything in a box
+ * around the origin: travel along +x, the frontal camera looks from +z, the mountain sits at -z.
  */
 
+/** A marker on the player's timeline scrubber. */
 export interface ElementKeyPoint {
   /** Progress along the run, 0..1. */
   t: number;
@@ -19,6 +15,7 @@ export interface ElementKeyPoint {
   label: string;
 }
 
+/** One element's demo run: the curve, how the train rolls and moves along it, and its hardware. */
 export interface CoasterElementDef {
   id: string;
   /** Control points of the full demo curve: [x, y, z]. */
@@ -26,30 +23,24 @@ export interface CoasterElementDef {
   /** Extra roll (radians) about the tangent at progress t∈[0,1]. Omit for planar figures. */
   roll?: (t: number) => number;
   /**
-   * Dual-track element (e.g. a celestial spin): `points` is then the shared
-   * CENTRELINE, and the scene builds TWO tracks orbiting it — offset by ±gap/2
-   * in the centreline's (right, up) plane, rotated by `twist(t)` so they wind
-   * around each other. Each track gets its own train.
+   * Dual-track element (e.g. a celestial spin): `points` is then the shared centreline, and the
+   * scene builds two tracks offset by ±gap/2 around it, rotated by `twist(t)` so they wind around
+   * each other. Each track gets its own train.
    */
   dual?: { gap: number; twist: (t: number) => number; roll?: (t: number) => number };
-  /** Timeline markers. */
   keyPoints: ElementKeyPoint[];
   /** Seconds for one pass of the run (default 9). */
   duration?: number;
   /**
-   * Speed profile: remaps linear timeline progress (0..1) to a position along
-   * the curve (0..1). The curve is arc-length parameterised, so leaving this
-   * out means constant speed — right for almost every figure. Supply it only
-   * when the speed change IS the element: a launch accelerating out of the
-   * station, a train hanging at the apex of a scorpion tail, a drop track
-   * standing dead still before the floor lets go. Must be monotonic, start at
-   * 0 and end at 1.
+   * Speed profile: maps timeline progress (0..1) to a position along the curve (0..1). The curve
+   * is arc-length parameterised, so without it the speed is constant, which suits almost every
+   * figure. Supply it only when the speed change is the element (a launch, a scorpion tail's hang,
+   * a drop track's stop). Must be monotonic, start at 0 and end at 1.
    */
   pace?: (t: number) => number;
   /**
-   * Initial camera the player opens with. Turn-based figures (helix, overbanked
-   * turn) read poorly head-on — they curve away into depth — so they default to
-   * `'follow'`. Omit for the usual `'front'`.
+   * Initial camera. Turn-based figures (helix, overbanked turn) curve away into depth and read
+   * poorly head-on, so they open in `'follow'`. Omit for the usual `'front'`.
    */
   defaultView?: 'front' | 'follow' | 'onboard';
   /**
@@ -91,18 +82,17 @@ export interface CoasterElementDef {
   turntable?: { at: [number, number, number]; radius: number; yaw: (t: number) => number };
 }
 
-// — small easing helpers —
 function smoothstep(a: number, b: number, x: number): number {
   const t = Math.max(0, Math.min(1, (x - a) / (b - a)));
   return t * t * (3 - 2 * t);
 }
 const TAU = Math.PI * 2;
 
-// ── Vertical loop — a near-circular loop in the x-y plane. A small, steady
-//    depth drift (z) means the entry and exit legs cross OVER/UNDER each other
-//    at the bottom (as a real loop does) instead of intersecting in-plane, so
-//    the track never appears to drive through itself. Parallel transport takes
-//    the train fully inverted at the apex with no explicit roll. ──────────────
+// Vertical loop: a near-circular loop in the x-y plane. A small, steady
+// depth drift (z) means the entry and exit legs cross OVER/UNDER each other
+// at the bottom (as a real loop does) instead of intersecting in-plane, so
+// the track never appears to drive through itself. Parallel transport takes
+// the train fully inverted at the apex with no explicit roll.
 const verticalLoop: CoasterElementDef = {
   id: 'vertical-loop',
   points: [
@@ -132,11 +122,11 @@ const verticalLoop: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Corkscrew — a true helix: the centreline itself spirals a full 360° around
-//    a horizontal axis along the travel direction (y and z trace a circle while
-//    x advances), and the train barrel-rolls in sync, so the two rails wind
-//    around each other like a screw thread. The spiralling PATH is what sets it
-//    apart from the banana roll (which only bows out flat to one side). ───────
+// Corkscrew, a true helix: the centreline itself spirals a full 360° around
+// a horizontal axis along the travel direction (y and z trace a circle while
+// x advances), and the train barrel-rolls in sync, so the two rails wind
+// around each other like a screw thread. The spiralling PATH is what sets it
+// apart from the banana roll (which only bows out flat to one side).
 const corkscrew: CoasterElementDef = {
   id: 'corkscrew',
   points: [
@@ -173,8 +163,8 @@ const corkscrew: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Airtime hill — a planar parabolic camelback; riders float at the crest. No
-//    roll, never inverts (the tangent stays well under vertical). ──────────────
+// Airtime hill: a planar parabolic camelback; riders float at the crest. No
+// roll, never inverts (the tangent stays well under vertical).
 const airtimeHill: CoasterElementDef = {
   id: 'airtime-hill',
   points: [
@@ -194,13 +184,9 @@ const airtimeHill: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Celestial Spin — Mack Rides' patented DUAL-TRACK element, the signature
-//    (and TALLEST, 41 m) move of Stardust Racers at Universal Epic Universe.
-//    Both trains climb a tall spire and their tracks invert AROUND each other
-//    while rising over the peak — a double-helix intertwine, both ascending
-//    (NOT a high-five, where the tracks merely bank side-by-side). Modelled as
-//    a tall, narrow centreline spire with two tracks orbiting it a full turn;
-//    no explicit roll — the helix itself rolls both trains as they wind. ──────
+// Celestial Spin: Mack Rides' patented dual-track element, the signature move of Stardust Racers
+// at Universal Epic Universe. The tracks invert around each other over the peak, a double-helix
+// intertwine (not a high-five, where the tracks only bank side by side).
 const celestialSpin: CoasterElementDef = {
   id: 'celestial-spin',
   points: [
@@ -214,10 +200,8 @@ const celestialSpin: CoasterElementDef = {
     [9, 2.4, 0],
     [13, 1.5, 0],
   ],
-  // A "do-si-do" over a rounded peak: the two tracks WIND a full turn around
-  // each other (a braid) while BOTH trains barrel-roll a full turn — so they
-  // twist over/under one another and both invert, one hanging upside-down just
-  // above the other. (Stardust Racers' signature element.)
+  // The two tracks wind a full turn around each other while both trains barrel-roll a full turn,
+  // so both invert, one hanging upside-down just above the other.
   dual: {
     gap: 1.9,
     twist: (t) => TAU * smoothstep(0.14, 0.86, t),
@@ -231,8 +215,8 @@ const celestialSpin: CoasterElementDef = {
   duration: 9,
 };
 
-// ── Heartline roll — a 360° roll on essentially LEVEL track, rotating the train
-//    around the riders' heart line (no hill, no lateral drift). ───────────────
+// Heartline roll: a 360° roll on essentially LEVEL track, rotating the train
+// around the riders' heart line (no hill, no lateral drift).
 const heartlineRoll: CoasterElementDef = {
   id: 'heartline-roll',
   points: [
@@ -255,8 +239,8 @@ const heartlineRoll: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Zero-G roll — a 360° roll timed to the crest of an airtime hill, so it
-//    happens in a weightless float (the roll axis ≈ the riders). ──────────────
+// Zero-G roll: a 360° roll timed to the crest of an airtime hill, so it
+// happens in a weightless float (the roll axis ≈ the riders).
 const zeroGRoll: CoasterElementDef = {
   id: 'zero-g-roll',
   points: [
@@ -277,8 +261,8 @@ const zeroGRoll: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Zero-G stall — like a zero-G roll, but the train rolls inverted at the
-//    crest and HANGS upside-down for a beat before rolling back upright. ──────
+// Zero-G stall: like a zero-G roll, but the train rolls inverted at the
+// crest and HANGS upside-down for a beat before rolling back upright.
 const zeroGStall: CoasterElementDef = {
   id: 'zero-g-stall',
   points: [
@@ -304,8 +288,8 @@ const zeroGStall: CoasterElementDef = {
   duration: 9,
 };
 
-// ── Bunny hops — a SERIES of small, low hills taken in quick succession, each
-//    popping a little ejector airtime. ───────────────────────────────────────
+// Bunny hops: a SERIES of small, low hills taken in quick succession, each
+// popping a little ejector airtime.
 const bunnyHop: CoasterElementDef = {
   id: 'bunnyhop',
   points: [
@@ -329,8 +313,8 @@ const bunnyHop: CoasterElementDef = {
   duration: 6,
 };
 
-// ── Top hat — a tall, near-vertical climb, a sharp crest and a near-vertical
-//    drop; the signature element of many launch coasters. ────────────────────
+// Top hat: a tall, near-vertical climb, a sharp crest and a near-vertical
+// drop; the signature element of many launch coasters.
 const topHat: CoasterElementDef = {
   id: 'top-hat',
   points: [
@@ -354,9 +338,9 @@ const topHat: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Immelmann — half a vertical loop (up and over, inverting via parallel
-//    transport) then a half-twist that rolls the train upright as it flies out
-//    in the OPPOSITE direction at height. ────────────────────────────────────
+// Immelmann: half a vertical loop (up and over, inverting via parallel
+// transport) then a half-twist that rolls the train upright as it flies out
+// in the OPPOSITE direction at height.
 const immelmann: CoasterElementDef = {
   id: 'immelmann',
   points: [
@@ -382,8 +366,8 @@ const immelmann: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Dive loop — the Immelmann reversed: the train twists up and over, then
-//    dives back toward the ground through a half vertical loop. ──────────────
+// Dive loop, the Immelmann reversed: the train twists up and over, then
+// dives back toward the ground through a half vertical loop.
 const diveLoop: CoasterElementDef = {
   id: 'dive-loop',
   points: [
@@ -409,8 +393,8 @@ const diveLoop: CoasterElementDef = {
   duration: 8,
 };
 
-// ── First drop — the big descent off the lift/launch crest: a steep, floaty
-//    plunge that levels out along the ground. ────────────────────────────────
+// First drop, the big descent off the lift/launch crest: a steep, floaty
+// plunge that levels out along the ground.
 const firstDrop: CoasterElementDef = {
   id: 'first-drop',
   points: [
@@ -432,8 +416,8 @@ const firstDrop: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Beyond-vertical drop — a drop steeper than 90°: the track tucks back under
-//    itself (overhangs) at the steepest point before levelling out. ──────────
+// Beyond-vertical drop, a drop steeper than 90°: the track tucks back under
+// itself (overhangs) at the steepest point before levelling out.
 const beyondVerticalDrop: CoasterElementDef = {
   id: 'beyond-vertical-drop',
   points: [
@@ -456,11 +440,11 @@ const beyondVerticalDrop: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Cobra roll — a double inversion that REVERSES direction: up into a first
-//    inverted head, over and down, straight into a mirrored second head, then
-//    out along the ground travelling the OPPOSITE way (exit leg parallel to the
-//    entry, offset sideways). The two heads lean the same way (the cobra hood);
-//    the z-drift carries the reversal and keeps the legs from overlapping. ─────
+// Cobra roll, a double inversion that REVERSES direction: up into a first
+// inverted head, over and down, straight into a mirrored second head, then
+// out along the ground travelling the OPPOSITE way (exit leg parallel to the
+// entry, offset sideways). The two heads lean the same way (the cobra hood);
+// the z-drift carries the reversal and keeps the legs from overlapping.
 const cobraRoll: CoasterElementDef = {
   id: 'cobra-roll',
   points: [
@@ -502,9 +486,9 @@ const cobraRoll: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Sea serpent — like a cobra roll's two inverted heads, but the corkscrews
-//    face OPPOSITE ways so the train exits the SAME direction it entered (it
-//    flows straight through instead of reversing). ───────────────────────────
+// Sea serpent: like a cobra roll's two inverted heads, but the corkscrews
+// face OPPOSITE ways so the train exits the SAME direction it entered (it
+// flows straight through instead of reversing).
 const seaSerpent: CoasterElementDef = {
   id: 'sea-serpent',
   points: [
@@ -549,10 +533,10 @@ const seaSerpent: CoasterElementDef = {
   duration: 9,
 };
 
-// ── Batwing — two inverted "wings": up and over a first inverted hood, a deep
-//    dive almost to the ground, then up and over a mirrored second hood. Wider
-//    and lower than a cobra roll (the spread-wing silhouette). Each hood is a
-//    real x-y loop so the train fully inverts. ────────────────────────────────
+// Batwing, two inverted "wings": up and over a first inverted hood, a deep
+// dive almost to the ground, then up and over a mirrored second hood. Wider
+// and lower than a cobra roll (the spread-wing silhouette). Each hood is a
+// real x-y loop so the train fully inverts.
 const batwing: CoasterElementDef = {
   id: 'batwing',
   points: [
@@ -599,8 +583,8 @@ const batwing: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Barrel-roll drop — a 360° barrel roll performed while plunging down a
-//    drop, so the inversion and the descent happen together. ─────────────────
+// Barrel-roll drop: a 360° barrel roll performed while plunging down a
+// drop, so the inversion and the descent happen together.
 const barrelRollDrop: CoasterElementDef = {
   id: 'barrel-roll-drop',
   points: [
@@ -623,8 +607,8 @@ const barrelRollDrop: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Banana roll — a 360° roll along a curved, arcing track (the path bows out
-//    to the side like a banana while the train rolls). ──────────────────────
+// Banana roll: a 360° roll along a curved, arcing track (the path bows out
+// to the side like a banana while the train rolls).
 const bananaRoll: CoasterElementDef = {
   id: 'banana-roll',
   points: [
@@ -645,10 +629,10 @@ const bananaRoll: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Horseshoe — a 180° turnaround perched on top of a hill: the train climbs,
-//    sweeps through a heavily-banked (≈90°) semicircle at the apex and comes
-//    back down, now travelling the opposite direction. A steady depth offset
-//    keeps the up-leg and down-leg from overlapping in view. ───────────────────
+// Horseshoe, a 180° turnaround perched on top of a hill: the train climbs,
+// sweeps through a heavily-banked (≈90°) semicircle at the apex and comes
+// back down, now travelling the opposite direction. A steady depth offset
+// keeps the up-leg and down-leg from overlapping in view.
 const horseshoe: CoasterElementDef = {
   id: 'horseshoe',
   points: [
@@ -674,9 +658,9 @@ const horseshoe: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Overbanked turn — a sweeping, near-level curve in which the track tilts
-//    PAST vertical (≈105°), so riders lean over beyond upside-down without ever
-//    fully inverting. Sustained left turn → one steady direction of bank. ──────
+// Overbanked turn: a sweeping, near-level curve in which the track tilts
+// PAST vertical (≈105°), so riders lean over beyond upside-down without ever
+// fully inverting. Sustained left turn → one steady direction of bank.
 const overbank: CoasterElementDef = {
   id: 'overbank',
   points: [
@@ -699,9 +683,9 @@ const overbank: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Wave turn — RMC's banked turnaround with an airtime crest: the train rolls
-//    to ≈90° on its side, floats over a camelback while fully banked, and exits
-//    the opposite direction. Like a horseshoe, but with airtime at the top. ────
+// Wave turn, RMC's banked turnaround with an airtime crest: the train rolls
+// to ≈90° on its side, floats over a camelback while fully banked, and exits
+// the opposite direction. Like a horseshoe, but with airtime at the top.
 const waveTurn: CoasterElementDef = {
   id: 'wave-turn',
   points: [
@@ -727,9 +711,9 @@ const waveTurn: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Outward-banked turn — the opposite of an overbank: the track banks the
-//    "wrong" way (tilting outward, ≈40°) so the curve throws riders to the
-//    OUTSIDE instead of cradling them into it. ────────────────────────────────
+// Outward-banked turn, the opposite of an overbank: the track banks the
+// "wrong" way (tilting outward, ≈40°) so the curve throws riders to the
+// OUTSIDE instead of cradling them into it.
 const outerbankedTurn: CoasterElementDef = {
   id: 'outerbanked-turn',
   points: [
@@ -751,10 +735,10 @@ const outerbankedTurn: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Raven turn — a half-inversion turnaround: the train climbs the front of a
-//    loop, rolls inverted over the top, then dives back down and levels out at
-//    its starting height, now travelling the opposite way. Planar (parallel
-//    transport inverts it); a small depth drift separates the climb and dive. ──
+// Raven turn, a half-inversion turnaround: the train climbs the front of a
+// loop, rolls inverted over the top, then dives back down and levels out at
+// its starting height, now travelling the opposite way. Planar (parallel
+// transport inverts it); a small depth drift separates the climb and dive.
 const ravenTurn: CoasterElementDef = {
   id: 'raven-turn',
   points: [
@@ -780,9 +764,9 @@ const ravenTurn: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Inclined loop — a vertical loop whose plane is tilted off-vertical, so it
-//    leans steadily to one side as it rises. Parallel transport still inverts
-//    the train over the top; the lean comes from a depth (z) drift. ────────────
+// Inclined loop: a vertical loop whose plane is tilted off-vertical, so it
+// leans steadily to one side as it rises. Parallel transport still inverts
+// the train over the top; the lean comes from a depth (z) drift.
 const inclinedLoop: CoasterElementDef = {
   id: 'inclined-loop',
   points: [
@@ -819,9 +803,9 @@ const inclinedLoop: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Non-inverting loop — a tall, loop-shaped hill where the track twists ≈180°
-//    over the crest so the train stays UPRIGHT (airtime) instead of going fully
-//    inverted. The roll bump cancels the loop's natural inversion at the apex. ─
+// Non-inverting loop: a tall, loop-shaped hill where the track twists ≈180°
+// over the crest so the train stays UPRIGHT (airtime) instead of going fully
+// inverted. The roll bump cancels the loop's natural inversion at the apex.
 const nonInvertingLoop: CoasterElementDef = {
   id: 'non-inverting-loop',
   points: [
@@ -854,10 +838,10 @@ const nonInvertingLoop: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Pretzel loop — the flying-coaster signature: the train dives steeply down
-//    the middle, loops around the bottom, and the loop body crosses back over
-//    the dive strand — the pretzel knot. A steady depth drift makes the
-//    crossing pass over/under, not through. ────────────────────────────────────
+// Pretzel loop, the flying-coaster signature: the train dives steeply down
+// the middle, loops around the bottom, and the loop body crosses back over
+// the dive strand — the pretzel knot. A steady depth drift makes the
+// crossing pass over/under, not through.
 const pretzelLoop: CoasterElementDef = {
   id: 'pretzel-loop',
   points: [
@@ -894,10 +878,10 @@ const pretzelLoop: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Sidewinder — half a vertical loop pulling up into an inverted top, then a
-//    half-corkscrew that rolls the train upright while turning ≈90° to the side
-//    (the building block of Vekoma's Boomerang). Compact: an inversion plus a
-//    sharp directional change. ─────────────────────────────────────────────────
+// Sidewinder: half a vertical loop pulling up into an inverted top, then a
+// half-corkscrew that rolls the train upright while turning ≈90° to the side
+// (the building block of Vekoma's Boomerang). Compact: an inversion plus a
+// sharp directional change.
 const sidewinder: CoasterElementDef = {
   id: 'sidewinder',
   points: [
@@ -925,9 +909,9 @@ const sidewinder: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Flat spin — a corkscrew laid almost on its side: the train barrel-rolls a
-//    full 360° while sweeping through a wide, nearly level horizontal arc, so
-//    the spiral reads flat and sweeping rather than rising over a hump. ────────
+// Flat spin, a corkscrew laid almost on its side: the train barrel-rolls a
+// full 360° while sweeping through a wide, nearly level horizontal arc, so
+// the spiral reads flat and sweeping rather than rising over a hump.
 const flatSpin: CoasterElementDef = {
   id: 'flat-spin',
   points: [
@@ -949,9 +933,9 @@ const flatSpin: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Zero-G winder — a zero-G roll with a built-in directional change: the train
-//    floats over an airtime crest, barrel-rolls a full 360° at the weightless
-//    apex, and curves away so it enters and exits on different headings. ───────
+// Zero-G winder, a zero-G roll with a built-in directional change: the train
+// floats over an airtime crest, barrel-rolls a full 360° at the weightless
+// apex, and curves away so it enters and exits on different headings.
 const zeroGWinder: CoasterElementDef = {
   id: 'zero-g-winder',
   points: [
@@ -973,8 +957,8 @@ const zeroGWinder: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Camelback — a series of rounded airtime hills in a row; riders float over
-//    each crest. Purely planar, never inverts. ─────────────────────────────────
+// Camelback: a series of rounded airtime hills in a row; riders float over
+// each crest. Purely planar, never inverts.
 const camelback: CoasterElementDef = {
   id: 'camelback',
   points: [
@@ -1000,8 +984,8 @@ const camelback: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Quad down — four successive DESCENDING airtime hops, each crest lower than
-//    the last, for rapid-fire airtime near the end of a layout. ────────────────
+// Quad down: four successive DESCENDING airtime hops, each crest lower than
+// the last, for rapid-fire airtime near the end of a layout.
 const quadDown: CoasterElementDef = {
   id: 'quad-down',
   points: [
@@ -1028,8 +1012,8 @@ const quadDown: CoasterElementDef = {
   duration: 7,
 };
 
-// ── S-hill — an airtime hill that weaves an S in plan as it lifts, so riders
-//    get a lateral kick on top of the float. The S is in the path (depth). ─────
+// S-hill: an airtime hill that weaves an S in plan as it lifts, so riders
+// get a lateral kick on top of the float. The S is in the path (depth).
 const sHill: CoasterElementDef = {
   id: 's-hill',
   points: [
@@ -1052,8 +1036,8 @@ const sHill: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Lift hill — the mechanically-powered straight climb to the highest point,
-//    cresting into the first drop. ────────────────────────────────────────────
+// Lift hill: the mechanically-powered straight climb to the highest point,
+// cresting into the first drop.
 const lifthill: CoasterElementDef = {
   id: 'lifthill',
   points: [
@@ -1079,14 +1063,14 @@ const lifthill: CoasterElementDef = {
   duration: 9,
 };
 
-// ── Block brake — a level mid-course brake run after a drop. The caliper
-//    housings close on the fin under the train, which slows to a dead stop and
-//    is held there (the block ahead is occupied), then released into the next
-//    hill. `pace` is the whole point: a trim brake only bleeds speed, a block
-//    brake stops the train. Reference: Wikipedia "Brake (roller coaster)" and
-//    Coaster101 "Brakes, Blocks, and Sensors" — brake runs split into trim brakes
-//    (slow only) and block brakes (can stop and hold), one block per section
-//    between lift hill, mid-course brake and end brake. ──────────────────────
+// Block brake: a level mid-course brake run after a drop. The caliper
+// housings close on the fin under the train, which slows to a dead stop and
+// is held there (the block ahead is occupied), then released into the next
+// hill. `pace` is the whole point: a trim brake only bleeds speed, a block
+// brake stops the train. Reference: Wikipedia "Brake (roller coaster)" and
+// Coaster101 "Brakes, Blocks, and Sensors" — brake runs split into trim brakes
+// (slow only) and block brakes (can stop and hold), one block per section
+// between lift hill, mid-course brake and end brake.
 const blockBrake: CoasterElementDef = {
   id: 'block-brake',
   points: [
@@ -1133,15 +1117,15 @@ const blockBrake: CoasterElementDef = {
   },
 };
 
-// ── Trim brake — a brake run on a hill crest that only bleeds speed. The train
-//    drops, climbs the next hill and meets the caliper housings at the top; the
-//    pads close part-way, so it slows (here to about a third of its speed) but is
-//    never held, then rolls on down the far side and gathers speed again. This is
-//    the difference from the block brake above: no standstill, no hold, and the
-//    run sits on a curve instead of a level stretch. Reference: Wikipedia "Brake
-//    (roller coaster)" — "Trim brakes are brake run sections that reduce the
-//    speed of the train but cannot stop the train completely", engineered in or
-//    retrofitted where trains run faster than intended. ──────────────────────
+// Trim brake: a brake run on a hill crest that only bleeds speed. The train
+// drops, climbs the next hill and meets the caliper housings at the top; the
+// pads close part-way, so it slows (here to about a third of its speed) but is
+// never held, then rolls on down the far side and gathers speed again. This is
+// the difference from the block brake above: no standstill, no hold, and the
+// run sits on a curve instead of a level stretch. Reference: Wikipedia "Brake
+// (roller coaster)" — "Trim brakes are brake run sections that reduce the
+// speed of the train but cannot stop the train completely", engineered in or
+// retrofitted where trains run faster than intended.
 // Relative speed at track position s (1 = free-rolling). Keyed to the position
 // of the caliper run (0.5..0.72), not to the clock: the train must already be
 // slowing when it meets the housings and speed up only once it has left them.
@@ -1204,9 +1188,9 @@ const trimBrake: CoasterElementDef = {
   },
 };
 
-// ── Interlocking loops — two vertical loops whose planes lean opposite ways so
-//    they cross through each other (chain-link). The train rides both; each
-//    inverts via parallel transport. ──────────────────────────────────────────
+// Interlocking loops: two vertical loops whose planes lean opposite ways so
+// they cross through each other (chain-link). The train rides both; each
+// inverts via parallel transport.
 const interlockingLoops: CoasterElementDef = {
   id: 'interlocking-loops',
   points: [
@@ -1252,9 +1236,9 @@ const interlockingLoops: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
-//    descending (a sustained, banked turn). Curves away into depth, so it opens
-//    in the follow view. ─────────────────────────────────────────────────────
+// Helix: the track spirals ~1¼ turns around a vertical axis while gently
+// descending (a sustained, banked turn). Curves away into depth, so it opens
+// in the follow view.
 const helixElement: CoasterElementDef = {
   id: 'helix',
   points: [
@@ -1284,12 +1268,12 @@ const helixElement: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Launch — the element is the ACCELERATION, so the geometry is deliberately
-//    plain: a dead-straight LSM stretch out of the station that rises into a
-//    speed hill. `pace` does the work — the train crawls out of the station,
-//    the launch fires, and it coasts over the hill. Reference: Intamin/Vekoma
-//    LSM launch tracks (Taron, TRON), which are level and straight so the fins
-//    can engage before the layout starts. ──────────────────────────────────────
+// Launch: the element is the ACCELERATION, so the geometry is deliberately
+// plain: a dead-straight LSM stretch out of the station that rises into a
+// speed hill. `pace` does the work — the train crawls out of the station,
+// the launch fires, and it coasts over the hill. Reference: Intamin/Vekoma
+// LSM launch tracks (Taron, TRON), which are level and straight so the fins
+// can engage before the layout starts.
 const launch: CoasterElementDef = {
   id: 'launch',
   points: [
@@ -1305,23 +1289,10 @@ const launch: CoasterElementDef = {
     [11.2, 9.7, 0],
     [13, 10, 0],
   ],
-  // Three phases, matching where the power actually is.
-  //
-  // The motors only act over the stator run, so that is the only stretch that
-  // accelerates — hard. Past the last fin the train is coasting, and a launch
-  // coaster bleeds most of that speed climbing. An even ease-in across the
-  // whole run (what this was) read as a train that keeps gaining speed uphill
-  // with nothing pushing it.
-  //
-  // The phase boundary at curve progress 0.34 is deliberately the same value as
-  // `lsm.to` below: the train stops accelerating exactly where the hardware
-  // ends. Exit and entry speeds are matched (0.32·1.7/0.30 ≈ 1.81 against
-  // 0.66·1.6/0.58 ≈ 1.82) so the handover does not read as a jerk.
-  //
-  // The peak is deliberately not pushed harder than this. The run-in is only a
-  // third of the curve and the climb is two thirds, so a more violent launch
-  // puts the train over the crest well before the timeline ends and leaves the
-  // onboard camera staring past the end of the track.
+  // The motors only act over the stator run, so only that stretch accelerates; past the last fin
+  // the train coasts and bleeds speed climbing. The phase boundary at 0.34 equals `lsm.to`, and
+  // exit and entry speeds are matched (0.32·1.7/0.30 ≈ 0.66·1.6/0.58) so the handover is no jerk.
+  // A harder launch would put the train over the crest before the timeline ends.
   pace: (t) => {
     // Crawl out of the station.
     if (t < 0.12) return 0.02 * (t / 0.12);
@@ -1331,9 +1302,8 @@ const launch: CoasterElementDef = {
       return 0.02 + 0.32 * Math.pow(u, 1.7);
     }
     // Off the motors: coasting, bleeding speed into the climb.
-    // Clamped: at t = 1 the division lands on 1.0000000000000002, and
-    // Math.pow(-2e-16, 1.6) is NaN — which would strand the train on the very
-    // last frame.
+    // Clamped: at t = 1 the division gives 1.0000000000000002, and Math.pow(-2e-16, 1.6) is NaN,
+    // which would strand the train on the last frame.
     const u = Math.min(1, (t - 0.42) / 0.58);
     return 0.34 + 0.66 * (1 - Math.pow(1 - u, 1.6));
   },
@@ -1349,10 +1319,10 @@ const launch: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Vertical lift — a 90° climb up the face of the tower, a short crest and a
-//    steep drop away. Reference: Gerstlauer Euro-Fighter / Infinity lifts
-//    (Takabisha, Kärnan), where the car is hauled by a catch-car on a vertical
-//    face. Kept slow on the way up so the climb reads, then released. ──────────
+// Vertical lift: a 90° climb up the face of the tower, a short crest and a
+// steep drop away. Reference: Gerstlauer Euro-Fighter / Infinity lifts
+// (Takabisha, Kärnan), where the car is hauled by a catch-car on a vertical
+// face. Kept slow on the way up so the climb reads, then released.
 const verticalLift: CoasterElementDef = {
   id: 'vertical-lift',
   points: [
@@ -1383,11 +1353,11 @@ const verticalLift: CoasterElementDef = {
   duration: 9,
 };
 
-// ── Drop track — the train rolls onto a level segment, stops dead, and the
-//    piece of track it is standing on falls away. Modelled as a level approach,
-//    a step down, and a level run-out: the `pace` hold at the top and the very
-//    fast transit of the step are what sell it. Reference: Verbolten and
-//    Hagrid's, where the drop is a few metres, straight down, in the dark. ─────
+// Drop track: the train rolls onto a level segment, stops dead, and the
+// piece of track it is standing on falls away. Modelled as a level approach,
+// a step down, and a level run-out: the `pace` hold at the top and the very
+// fast transit of the step are what sell it. Reference: Verbolten and
+// Hagrid's, where the drop is a few metres, straight down, in the dark.
 const dropTrack: CoasterElementDef = {
   id: 'drop-track',
   points: [
@@ -1419,14 +1389,14 @@ const dropTrack: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Scorpion tail — a launch spike that curls PAST vertical into an overhang,
-//    so the train climbs inverted and hangs there before falling back the way
-//    it came. Reference: Mack Rides' 105° spike on Voltron Nevera (2024) — the
-//    steepest launch section built. x moves BACK as y rises past ~10, which is
-//    what makes the overhang read; the pace stalls the train at the apex. The
-//    return leg is the SAME track in reality — it is drawn with a ~1.6 depth
-//    offset here for the same reason the vertical loop drifts in z: so the two
-//    legs cross over/under instead of appearing to drive through each other. ───
+// Scorpion tail: a launch spike that curls PAST vertical into an overhang,
+// so the train climbs inverted and hangs there before falling back the way
+// it came. Reference: Mack Rides' 105° spike on Voltron Nevera (2024) — the
+// steepest launch section built. x moves BACK as y rises past ~10, which is
+// what makes the overhang read; the pace stalls the train at the apex. The
+// return leg is the SAME track in reality — it is drawn with a ~1.6 depth
+// offset here for the same reason the vertical loop drifts in z: so the two
+// legs cross over/under instead of appearing to drive through each other.
 const scorpionTail: CoasterElementDef = {
   id: 'scorpion-tail',
   points: [
@@ -1465,12 +1435,12 @@ const scorpionTail: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Step-up under-flip — RMC's two-stage inversion: the train "steps up" a
-//    rising, heavily banked hill, then flips UNDER itself on the way down, so
-//    the roll happens in the descending half and the train falls out inverted
-//    into ejector airtime. Reference: Steel Vengeance / Zadra / Untamed. The
-//    roll is applied over the back half only, which is the whole distinction
-//    from an ordinary barrel roll over a crest. ──────────────────────────────
+// Step-up under-flip, RMC's two-stage inversion: the train "steps up" a
+// rising, heavily banked hill, then flips UNDER itself on the way down, so
+// the roll happens in the descending half and the train falls out inverted
+// into ejector airtime. Reference: Steel Vengeance / Zadra / Untamed. The
+// roll is applied over the back half only, which is the whole distinction
+// from an ordinary barrel roll over a crest.
 const stepUpUnderFlip: CoasterElementDef = {
   id: 'step-up-under-flip',
   points: [
@@ -1500,13 +1470,13 @@ const stepUpUnderFlip: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Twisted horseshoe roll — a 180° horseshoe turnaround with a barrel roll
-//    threaded into EACH leg, so the train inverts twice while reversing
-//    direction. Reference: RMC (Outlaw Run, Steel Vengeance, Zadra). The turn
-//    itself is carried in z (the exit leg runs back alongside the entry); the
-//    two rolls are explicit, one per leg, with the horseshoe crest between.
-//    The depth is kept under ~4 so the frontal camera does not have to pull
-//    back far enough to flatten the figure into a diagonal smear. ─────────────
+// Twisted horseshoe roll: a 180° horseshoe turnaround with a barrel roll
+// threaded into EACH leg, so the train inverts twice while reversing
+// direction. Reference: RMC (Outlaw Run, Steel Vengeance, Zadra). The turn
+// itself is carried in z (the exit leg runs back alongside the entry); the
+// two rolls are explicit, one per leg, with the horseshoe crest between.
+// The depth is kept under ~4 so the frontal camera does not have to pull
+// back far enough to flatten the figure into a diagonal smear.
 const twistedHorseshoeRoll: CoasterElementDef = {
   id: 'twisted-horseshoe-roll',
   points: [
@@ -1541,12 +1511,12 @@ const twistedHorseshoeRoll: CoasterElementDef = {
   defaultView: 'follow',
 };
 
-// ── Double down — one descent broken into two stages by a short level shelf,
-//    so a single hill delivers two separate hits of airtime instead of one long
-//    float. Reference: the classic wooden double dip (Kennywood's Jack Rabbit,
-//    1920) and its modern descendants on Colossos, Balder and Troy. The shelf
-//    is short and very slightly RISING — that tiny lift is what makes the
-//    second drop pop. ──────────────────────────────────────────────────────────
+// Double down: one descent broken into two stages by a short level shelf,
+// so a single hill delivers two separate hits of airtime instead of one long
+// float. Reference: the classic wooden double dip (Kennywood's Jack Rabbit,
+// 1920) and its modern descendants on Colossos, Balder and Troy. The shelf
+// is short and very slightly RISING — that tiny lift is what makes the
+// second drop pop.
 const doubleDown: CoasterElementDef = {
   id: 'double-down',
   points: [
@@ -1572,16 +1542,16 @@ const doubleDown: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Turntable — a piece of track on a rotating disc. The train rolls onto the
-//    disc and stops, the disc turns it through 180 degrees, and it rolls back
-//    off facing the other way. Reference: the turntable on Voltron Nevera at
-//    Europa-Park (Mack Rides, 2024), which turns the train between the boost
-//    launch and the halfpipe launch, and doubles as the switch to the
-//    maintenance barn; the same machine railways use to turn a locomotive
-//    round at a depot. Modelled as a spur: one straight lead-in ending on the
-//    disc, so the train leaves along the track it arrived on. The cars turn
-//    about the disc centre as one rigid body, which is why the nose swings
-//    out and the rear swings in. ───────────────────────────────────────────────
+// Turntable: a piece of track on a rotating disc. The train rolls onto the
+// disc and stops, the disc turns it through 180 degrees, and it rolls back
+// off facing the other way. Reference: the turntable on Voltron Nevera at
+// Europa-Park (Mack Rides, 2024), which turns the train between the boost
+// launch and the halfpipe launch, and doubles as the switch to the
+// maintenance barn; the same machine railways use to turn a locomotive
+// round at a depot. Modelled as a spur: one straight lead-in ending on the
+// disc, so the train leaves along the track it arrived on. The cars turn
+// about the disc centre as one rigid body, which is why the nose swings
+// out and the rear swings in.
 const TURNTABLE_LENGTH = 16.5; // x from −14 to 2.5, inside the disc rim
 const TURNTABLE_CENTRE = 14 / TURNTABLE_LENGTH; // the disc centre, as a fraction of the curve
 const TURNTABLE_EDGE = 2.5 / TURNTABLE_LENGTH; // where the train stands when the run starts and ends
@@ -1615,6 +1585,7 @@ const turntable: CoasterElementDef = {
   defaultView: 'follow',
 };
 
+/** Every element with a 3-D player, keyed by glossary term id. */
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -1663,10 +1634,12 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   turntable,
 };
 
+/** The 3-D player's element for a glossary term id, if it has one. */
 export function getCoasterElement(id: string): CoasterElementDef | undefined {
   return COASTER_ELEMENTS[id];
 }
 
+/** Whether a glossary term has a 3-D player. */
 export function hasCoasterElement(id: string): boolean {
   return id in COASTER_ELEMENTS;
 }

@@ -4,11 +4,9 @@ import type { AttractionStatistics } from '@/lib/api/types';
 import { waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 /**
- * Map the slim `AttractionStatistics` from the detail endpoint to the richer
- * shape `FavoriteAttraction.statistics` expects — missing fields stay null so
- * AttractionCard renders without claiming data it doesn't have. Some optional
- * fields are read best-effort via a Record cast, since the backend may include
- * more than the typed interface.
+ * Maps the slim `AttractionStatistics` from the detail endpoint to
+ * `FavoriteAttraction.statistics`; a missing field stays null so AttractionCard claims no data it
+ * does not have.
  */
 function buildFavoriteStats(
   stats: AttractionStatistics
@@ -53,12 +51,8 @@ export function buildAttractionPayload(
   };
 
   if (detail) {
-    // Surface the ride's crowd level so AttractionCard renders the same
-    // "Sehr niedrig … Extrem" CrowdLevelBadge it shows on the park page — both
-    // in the inline hover card and the `?full` spotlight card. Prefer the
-    // backend's per-ride level; fall back to the canonical wait-time tier (the
-    // same thresholds that colour the inline wait badge) so an open ride with a
-    // live wait always carries a level.
+    // The same CrowdLevelBadge as on the park page; the wait-time tier stands in when the backend
+    // has no per-ride level, so an open ride with a live wait always carries one.
     const crowdLevel =
       attraction.crowdLevel ??
       (typeof attraction.currentWaitTime === 'number'

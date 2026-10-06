@@ -5,40 +5,16 @@ import { hasAnyPushFollowsLocal } from './push-follows-store';
 import { readArmedPush } from '../planner/push-arming';
 
 /**
- * Keeping `push_subscriptions.timezone` pointed at where the phone IS, rather
- * than where it was when somebody armed an alert.
+ * Keeps `push_subscriptions.timezone` pointed at where the phone is, not where it was when an
+ * alert was armed: the API's quiet hours (23:00 to 07:00) run on this zone, so a subscription
+ * armed in Berlin and carried to Orlando would go quiet over the park evening. On a page load the
+ * current zone is compared with the one the API last accepted and sent only when they differ.
  *
- * The column is written by three calls — `ensurePushRegistered`, and the
- * planner's `enable` and `setTopics` — and every one of them runs because a
- * visitor pressed something. Nothing reads the zone again afterwards, so the
- * stored value is a snapshot of the moment the switch went on. That was
- * harmless while no reader existed. It stopped being harmless with PAR-215,
- * which suppresses every send between 23:00 and 07:00 BY THIS ZONE: a
- * subscription armed in Berlin and carried to Orlando has its quiet window
- * land on 17:00–01:00 local, over half the park evening, and the visitor gets
- * nothing from the moment the rides get interesting.
- *
- * What this module adds is the missing read: on a page load, compare the
- * browser's current zone against the one last accepted for this endpoint and
- * send a fresh one only when the two differ.
- *
- * Three properties are deliberate and each is load-bearing:
- *
- *   - **It costs nothing on a browser with nothing armed.** The gate is two
- *     `localStorage` reads, ahead of the service-worker lookup and far ahead
- *     of any request.
- *   - **A failed refresh changes nothing.** No record is written, so the next
- *     page load tries again; and the subscription itself is never torn down.
- *     `ensurePushRegistered` unsubscribes on a failed POST because the call
- *     had just created that subscription; here it pre-exists and is carrying
- *     armed alerts, and unsubscribing would answer a traveller's bad network
- *     by switching their alarms off.
- *   - **The POST names only the zone's row-mates.** No `tripId`, no `topics`,
- *     so the API leaves the trip-planner half of the row alone (see the
- *     module docstring of `push-registration.ts`). `locale` IS sent, because
- *     `PushService.subscribe` assigns it unconditionally while it guards the
- *     other three — a POST that omitted it would clear the subscriber's
- *     language to fix their clock.
+ * - A browser with nothing armed pays two `localStorage` reads and nothing else.
+ * - A failed refresh changes nothing and never unsubscribes: the subscription carries armed
+ *   alerts.
+ * - The POST sends no `tripId` or `topics`, so the trip-planner half of the row stays, but does
+ *   send `locale`, which the API assigns unconditionally.
  */
 
 const SENT_KEY = 'parkfan_push_timezone';
@@ -92,12 +68,8 @@ export function readSentPushTimezone(): SentTimezone | null {
 }
 
 /**
- * Remember that the API accepted this zone for this endpoint.
- *
- * Called on the 2xx of every POST that carried a zone — the two in
- * `use-push-subscription.ts` and the one in `push-registration.ts` as well as
- * this module's own. Leaving those three out would have the first page load
- * after somebody armed an alert send the very same zone a second time.
+ * Remembers that the API accepted this zone for this endpoint. Called on the 2xx of every POST
+ * that carried a zone, so the next page load does not send the same zone again.
  */
 export function rememberSentPushTimezone(endpoint: string, timezone: string): void {
   if (typeof window === 'undefined') return;

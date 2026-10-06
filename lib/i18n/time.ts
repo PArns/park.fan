@@ -1,8 +1,4 @@
-/**
- * Time Formatting Utilities
- *
- * Helper functions for formatting time with proper pluralization
- */
+/** Duration formatting with pluralized hour and minute labels. */
 
 /**
  * Format a duration from milliseconds into a human-readable "Xh Ym" string.

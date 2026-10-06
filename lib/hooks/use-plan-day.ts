@@ -13,23 +13,9 @@ interface UsePlanDayParams {
 }
 
 /**
- * One day's per-ride hourly plan.
- *
- * Deliberately NOT behind `useLoadLast`, unlike the stats hooks. That gate exists
- * so historical aggregates cannot race the live status and weather queries on a
- * park page; this request is the whole content of a panel the visitor opened on
- * purpose, and making them wait for the rest of the page to settle would be the
- * gate applied backwards.
- *
- * The stale window is FIFTEEN minutes, matching the proxy's `s-maxage`, so the
- * two do not disagree about how old an answer may be. It does not poll: a plan
- * for a day in November does not move, and the one for today is refetched when
- * the panel is reopened or the tab regains focus.
- *
- * A 404 is the settled answer "no plan for that park and day" and resolves to
- * `null` rather than retrying — the panel renders its empty state. A 502 is a
- * real failure and does retry, which is why the proxy route is careful to
- * distinguish the two rather than flattening both into a 404.
+ * One day's per-ride hourly plan. Not behind `useLoadLast`: it is the whole content of a panel the
+ * visitor opened on purpose. Fifteen minutes stale, the proxy's `s-maxage`, and no polling. A 404
+ * is "no plan for that park and day" and resolves to `null`; a 502 is a real failure and retries.
  */
 export function usePlanDay({
   continent,
@@ -50,7 +36,7 @@ export function usePlanDay({
 
 /**
  * The key and the fetch behind {@link usePlanDay}, for a caller that needs the
- * day once, on a press, rather than subscribed (`AddToPlannerButton`, PAR-67).
+ * day once, on a press, rather than subscribed (`AddToPlannerButton`).
  * One definition, so `queryClient.fetchQuery` hits the same cache entry the
  * flyout fills and the same 404-is-`null` rule.
  */

@@ -1,17 +1,10 @@
 /**
- * createCoasterScene — a small, self-contained three.js scene that runs ONE
- * coaster element (from the registry) on a meadow in front of a mountain, with
- * a transport-controlled train and three camera modes. Every glossary term that
- * has a player uses this exact factory, so the look stays consistent; only the
- * element data differs.
+ * The 3-D player for one coaster element from the registry: a meadow in front of a mountain, a
+ * train under transport controls and three camera modes. Every glossary term with a player uses
+ * this factory, so only the element data differs. A `dual` element builds two tracks around a
+ * shared centreline, each with its own train.
  *
- * Most elements are a single track; a `dual` element (e.g. the celestial spin)
- * builds two tracks that orbit a shared centreline, each with its own train.
- *
- * Public handle: resize / setTheme / dispose plus play / pause / seek(0..1) /
- * setView('front'|'follow'|'onboard') and an onTick callback driving the UI.
- *
- * Client-only (WebGL). Load behind a `ssr:false` dynamic import.
+ * Client-only (WebGL): load it behind an `ssr:false` dynamic import.
  */
 
 import * as THREE from 'three';
@@ -64,6 +57,7 @@ const RAIL_R = 0.12;
 const CARS = 4;
 const CAR_GAP_T = 0.014;
 
+/** Mounts the player for one coaster element on `canvas`. */
 export function createCoasterScene(
   canvas: HTMLCanvasElement,
   opts: CoasterSceneOptions
@@ -91,11 +85,10 @@ export function createCoasterScene(
   const nightFog = new THREE.Fog(0x101a36, 60, 190);
   scene.fog = dayFog;
 
-  // Tight near/far for solid depth precision (kills the z-fighting flicker the
-  // old 0.1 → 600 range produced); everything past the fog is invisible anyway.
+  // Tight near/far for depth precision against z-fighting; everything past the fog is invisible
+  // anyway.
   const camera = new THREE.PerspectiveCamera(50, 1, 0.25, 320);
 
-  // -- Lights --------------------------------------------------------------
   const hemi = new THREE.HemisphereLight(0xffffff, 0x6b7f55, 0.9);
   scene.add(hemi);
   const sun = new THREE.DirectionalLight(0xffffff, 2.0);
@@ -104,7 +97,6 @@ export function createCoasterScene(
   const ambient = new THREE.AmbientLight(0xffffff, 0.35);
   scene.add(ambient);
 
-  // -- Sky / environment ---------------------------------------------------
   const daySky = makeSkyTexture(track, false);
   const nightSky = makeSkyTexture(track, true);
   scene.background = daySky;
@@ -116,7 +108,6 @@ export function createCoasterScene(
   const clouds = buildClouds(ctx);
   world.add(clouds.group);
 
-  // -- Shared track + peep resources --------------------------------------
   const railMat = ctx.lit({ color: PAL.rail, roughness: 0.6 }, 0.22);
   const spineMat = ctx.mat({ color: 0x33415a, roughness: 0.8 });
   const tieMat = ctx.mat({ color: PAL.tie, roughness: 1 });
@@ -154,7 +145,6 @@ export function createCoasterScene(
     return g;
   }
 
-  // -- Car / train builders ------------------------------------------------
   // Local axes after orientation: +x = right, +y = up, +z = backward (so the
   // car's NOSE points at local −z, the travel direction). Everything is seated
   // ABOVE the rails (y > rail radius) so the train never z-fights the track.
@@ -196,7 +186,6 @@ export function createCoasterScene(
       g.add(nose);
     }
 
-    // two riders, hands up
     const p1 = buildPeep(leadCar ? 0 : 2, true);
     p1.position.set(-0.12, 0.7, 0.08);
     g.add(p1);
@@ -217,7 +206,6 @@ export function createCoasterScene(
     return cars;
   }
 
-  // -- Track geometry ------------------------------------------------------
   function buildTrackGeometry(frames: CurveFrames) {
     const total = frames.points.length - 1;
     // A turntable carries its own rails, so the fixed track stops at the disc rim.
@@ -244,7 +232,7 @@ export function createCoasterScene(
     world.add(
       new THREE.Mesh(ctx.track.geo(new THREE.TubeGeometry(sc, N, RAIL_R * 0.6, 6, false)), spineMat)
     );
-    // cross-ties
+
     for (let i = 0; i <= N; i += 4) {
       const mid = left[i].clone().add(right[i]).multiplyScalar(0.5);
       const tie = new THREE.Mesh(tieGeo, tieMat);
@@ -321,7 +309,6 @@ export function createCoasterScene(
     }
   }
 
-  // -- Build the track(s) + train(s) --------------------------------------
   interface TrackBuild {
     frames: CurveFrames;
     cars: THREE.Group[];
@@ -367,7 +354,6 @@ export function createCoasterScene(
   }
   const mainFrames = tracks[0].frames;
 
-  // -- Turntable disc ------------------------------------------------------
   // A rotating platform with its own rails, rim marks and hub. Everything on it
   // turns with the train; the marks around the rim are what make the turn read
   // from above, since the rails and the train are the same both ways round.
@@ -422,16 +408,14 @@ export function createCoasterScene(
     world.add(disc);
   }
 
-  // -- Bounding box (over every track) for camera framing -----------------
   const allPoints: THREE.Vector3[] = [];
   for (const tb of tracks) allPoints.push(...tb.frames.points);
   const box = new THREE.Box3().setFromPoints(allPoints);
   const center = box.getCenter(new THREE.Vector3());
   const size = box.getSize(new THREE.Vector3());
 
-  // -- Supports — vertical columns under EACH track where it sits low enough to
-  //    be supported (not up inside the figure), spaced by ARC LENGTH so the
-  //    density is independent of curve resolution. ─────────────────────────
+  // Supports: columns under each track where it sits low enough to be supported (not up inside
+  // the figure), spaced by arc length so the density does not depend on curve resolution.
   {
     const COL_SPACING = 3.2;
     // Every track sample, so a column can be rejected if it would spear through
@@ -466,7 +450,6 @@ export function createCoasterScene(
     }
   }
 
-  // -- Camera framing ------------------------------------------------------
   let view: CoasterView = opts.view ?? (def.defaultView as CoasterView | undefined) ?? 'front';
   const frontPos = new THREE.Vector3();
   const frontTarget = center.clone();
@@ -483,7 +466,6 @@ export function createCoasterScene(
   }
   computeFront(1.6);
 
-  // -- Animation state -----------------------------------------------------
   const reduced = !!opts.reducedMotion;
   let progress = 0;
   let playing = !reduced;
@@ -495,7 +477,6 @@ export function createCoasterScene(
     progress = apex ? apex.t : 0.5;
   }
 
-  // scratch
   const f0 = {
     pos: new THREE.Vector3(),
     tangent: new THREE.Vector3(),
@@ -639,7 +620,6 @@ export function createCoasterScene(
     }
   }
 
-  // -- Theme ----------------------------------------------------------------
   function applyTheme(theme: SceneTheme) {
     const night = theme === 'dark';
     scene.background = night ? nightSky : daySky;
@@ -654,7 +634,6 @@ export function createCoasterScene(
   }
   applyTheme(opts.theme);
 
-  // -- Render loop ----------------------------------------------------------
   let raf = 0;
   let last = performance.now();
   let disposed = false;
@@ -676,14 +655,11 @@ export function createCoasterScene(
       readyFired = true;
       opts.onReady?.();
     }
-    // Only re-arm while playing: the loop used to keep rendering at 60 fps while paused
-    // (so the IntersectionObserver/visibility "pause" saved nothing), and each pause→play
-    // cycle stacked an ADDITIONAL RAF chain because play() re-armed without the old chain
-    // ever stopping. pause() now cancels the pending frame; play() starts exactly one.
+    // Only re-arm while playing: a paused loop must not keep rendering, and play() must start
+    // exactly one chain. pause() cancels the pending frame.
     if (!disposed && !reduced && playing) raf = requestAnimationFrame(renderFrame);
   }
 
-  // initial placement + first render
   placeTrain();
   updateCamera(true);
   renderer.render(scene, camera);
@@ -693,7 +669,6 @@ export function createCoasterScene(
     raf = requestAnimationFrame(renderFrame);
   }
 
-  // -- Handle ---------------------------------------------------------------
   return {
     keyPoints: def.keyPoints,
     get view() {
@@ -706,8 +681,7 @@ export function createCoasterScene(
       computeFront(camera.aspect);
       if (view === 'front') updateCamera(true);
       // `setSize` clears the canvas, and with no loop running (reduced motion, or paused) nothing
-      // would draw it again until the next scrub: the player's first `resize()` right after
-      // creation left reduced-motion readers an empty stage. Same as `park-scene.ts`.
+      // would draw it again until the next scrub. Same as `park-scene.ts`.
       if (!playing || reduced) renderer.render(scene, camera);
     },
     setTheme(theme: SceneTheme) {
@@ -724,7 +698,7 @@ export function createCoasterScene(
       if (!playing) return;
       playing = false;
       cancelAnimationFrame(raf);
-      // The loop no longer ticks while paused — sync the UI (play button) once.
+      // The loop does not tick while paused, so sync the UI (play button) once.
       opts.onTick?.(progress, playing);
     },
     toggle() {

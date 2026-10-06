@@ -8,19 +8,10 @@ import { trimExcerpt } from '@/lib/navigation/blog-menu';
 
 /**
  * The news menu: its own bar entry beside "Backstage", and the only place in the header news
- * appears.
- *
- * It used to be a strip of three at the bottom of the blog panel, which filed news as one more
- * blog category — the same mistake `/blog` made by listing both. News has a section of its own
- * (`/news`), so it gets an entry of its own, and the blog panel lists articles only.
- *
- * Drawn differently from the blog panel on purpose. An article is chosen by its topic and its
- * length, so the blog panel is covers, teasers and reading times. A news item is chosen by what
- * happened and when, so this panel is one lead with its cover and teaser, and after it a column of
- * headlines on a time line, each led by its age (`NewsAge`) with a small cover on the right.
- * No image is fetched until the panel opens: the band is `hidden`, and `next/image` is lazy.
- *
- * No API call — the generated blog manifest, read synchronously, like the blog menu.
+ * appears. A news item is chosen by what happened and when, so the panel is one lead with its
+ * cover and teaser, then a time line of headlines each led by its age (`NewsAge`). No image loads
+ * until the panel opens: the band is `hidden` and `next/image` is lazy. See
+ * docs/rules/news-is-set-apart-from-the-articles.md.
  */
 
 /** The lead plus five headlines. Six links, and six is what the time line fits beside the lead. */
@@ -56,8 +47,8 @@ export interface NewsMenu {
 const NEWS_MENU = new Map<Locale, NewsMenu>();
 
 /**
- * Memoised per process, like the listings it reads: the manifest is fixed for the deployment, and
- * the layout (every page) and the homepage hero both ask for it.
+ * The header's news panel for a locale, memoised per process: the manifest is fixed for the
+ * deployment, and the layout and the homepage hero both ask for it.
  */
 export function getNewsMenu(locale: Locale): NewsMenu {
   const memo = NEWS_MENU.get(locale);

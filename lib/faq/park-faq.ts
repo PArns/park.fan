@@ -30,13 +30,8 @@ export interface ParkArticleForms {
 }
 
 /**
- * The park name in the forms German sentences need.
- *
- * The article now comes from the API (`nameArticleDe`), curated per park, and
- * only falls back to the name-based guess when that is absent. `parkLoc` used
- * to be `im ${parkName}` unconditionally — the same bug as everywhere else,
- * producing "im Cedar Point" and "im Toverland"; it goes through `parkPhrase`,
- * which knows that `in dem` contracts and `in der` does not.
+ * The park name in the forms German sentences need, through `parkPhrase`: the article is the
+ * curated `nameArticleDe`, and `in dem` contracts while `in der` does not.
  */
 export function getParkArticleForms(park: ParkWithAttractions, locale: string): ParkArticleForms {
   const parkName = stripNewPrefix(park.name);
@@ -48,8 +43,7 @@ export function getParkArticleForms(park: ParkWithAttractions, locale: string): 
     : parkName;
   const parkAcc =
     article === 'der' ? `den ${parkName}` : article === 'die' ? `die ${parkName}` : parkNom;
-  // Only German gets a preposition here; the other locales' FAQ sentences carry
-  // their own and always did.
+  // Only German gets a preposition here; the other locales' FAQ sentences carry their own.
   const parkLoc = locale === 'de' ? parkPhrase('de', 'in', parkName, article ?? null) : parkName;
   return {
     parkName,
@@ -71,11 +65,8 @@ export function buildParkFaqItems(
   t: T,
   tGeo: TGeo,
   /**
-   * Epoch ms for "now", or `null` for a TIME-INDEPENDENT build. The only time-dependent answer is
-   * Q1 (today's opening hours): with a `nowMs` it renders today's concrete hours, with `null` an
-   * evergreen "see the calendar" answer. The park page is force-dynamic (per-request render), so
-   * its callers pass the per-request server clock (SSR) or the browser clock (after mount);
-   * pass `null` from any statically-cached context that must not read a clock.
+   * Epoch ms for "now", or `null` for a time-independent build. Only Q1 (today's opening hours)
+   * depends on it; pass `null` from any statically cached context that must not read a clock.
    */
   nowMs: number | null
 ): ParkFaqItem[] {

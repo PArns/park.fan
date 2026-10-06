@@ -1,18 +1,11 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * The three strings the "this site is also available in X" banner needs, in EVERY locale.
- *
- * The banner is the one place that must render text in a locale OTHER than the page's, so it
- * can't use the page's `NextIntlClientProvider` messages. It used to do
- * `import(\`@/messages/${detected}.json\`)`, which makes the bundler emit an async chunk per
- * locale file and then pulled a full ~65 KB message bundle over the wire to read 3 strings —
- * for every visitor whose browser language differs from the page they landed on (i.e. exactly
- * the visitors the banner targets, and it happens on the first render after mount).
- *
- * These ~120 bytes per locale are inlined instead. `messages/<locale>.json → languageBanner`
- * stays the source of truth for translators; `scripts/validate-translations.cjs` fails the
- * release check if the two ever drift apart.
+ * The three strings the "this site is also available in X" banner needs, in every locale. The
+ * banner renders in a locale other than the page's, so it cannot use the page's messages, and
+ * loading a whole message file for three strings would cost every visitor it targets.
+ * `messages/<locale>.json → languageBanner` stays the source for translators;
+ * `scripts/validate-translations.cjs` fails if the two drift apart.
  */
 export interface LanguageBannerMessages {
   message: string;

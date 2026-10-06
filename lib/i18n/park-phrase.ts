@@ -1,27 +1,15 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * "im Phantasialand", "in der Efteling", "in Toverland" — the park name in a
- * sentence, with the article its name actually takes.
+ * "im Phantasialand", "in der Efteling", "in Toverland": the park name in a sentence, with the
+ * article its name takes. In German a proper noun inflects: most parks take no article ("in
+ * Cedar Point"), and a feminine one refuses the contraction ("in der Efteling"). The article
+ * comes from the API's curated `nameArticleDe`, in the nominative; the case is derived here,
+ * because it belongs to the sentence.
  *
- * German interpolation of a proper noun is not a substitution, it is an
- * inflection. The copy used to hard-code the preposition (`im {park}`), which
- * makes every park masculine or neuter: right for the Europa-Park and the
- * Phantasialand, wrong for the ~180 parks whose names take no article at all
- * ("im Cedar Point"), and wrong wherever the name is feminine, where German
- * refuses the contraction entirely ("in der …" and never "im …"). The calendar page showed the
- * other half of the same bug — "Ferien, die auf Phantasialand wirken", missing
- * the "das" that "auf" demands.
- *
- * The article comes from the API as `nameArticleDe` (a curated column), in the
- * nominative. Everything else is derived here, because the case is a property
- * of the sentence, not of the park.
- *
- * **Only German inflects.** The other five locales put a fixed preposition in
- * front of the name, which is what their strings did before — this function
- * keeps that behaviour so one call site serves all six. It is deliberately not
- * a gender field: the gender differs by language (die Efteling, *de* Efteling,
- * *l'*Efteling), so a second language needing this gets its own column.
+ * Only German inflects; the other locales put a fixed preposition in front, so one call site
+ * serves all six. Not a gender field: the gender differs by language (die Efteling, de Efteling,
+ * l'Efteling), so a second language needing this gets its own column.
  */
 
 /**

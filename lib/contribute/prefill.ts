@@ -1,11 +1,9 @@
 import { assignedEntitySchema, type AssignedEntity } from './types';
 
 /**
- * Helpers to pass a pre-selected park/ride to the contribution page via query
- * params, so the "Add your photos" button on a park or attraction page lands the
- * user on /contribute with that entity already assigned.
+ * The /contribute link with a park or ride already assigned through query params, for the "Add
+ * your photos" button on its page.
  */
-
 export function buildContributeHref(entity: AssignedEntity, locale?: string): string {
   const params = new URLSearchParams();
   params.set('type', entity.type);

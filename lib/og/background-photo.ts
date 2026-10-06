@@ -2,53 +2,17 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * Resolve the park/ride photo an OG card paints behind its headline — as a data URI read off the
- * deployment's own filesystem, not as a URL Satori has to fetch.
+ * Resolves the park or ride photo an OG card paints behind its headline, as a data URI read off
+ * the deployment's own filesystem rather than a URL Satori fetches over the internet on every
+ * render. The 16:9 rendition is preferred, since the card frame is 1200×630.
  *
- * This is the same fix `lib/og/brand-mark.tsx` already applies to the two brand PNGs, applied to
- * the asset that dwarfs them. The card referenced the photo by absolute URL
- * (`https://park.fan/images/parks/<park>/background.jpg`), so every place-card render sent Satori
- * back out over the public internet — through Cloudflare, through Vercel's own CDN — to pull a
- * **376 KB** JPEG (Phantasialand; several parks are over 400 KB), decode it at full resolution and
- * re-encode it into a 1200×630 PNG.
+ * The read is rooted at `og-assets/`, which prebuild fills with only what these cards paint: a
+ * runtime `join(process.cwd(), <root>, <variable>)` bundles the whole root into the function. See
+ * docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md.
  *
- * That round trip is most of what separated a place card from a photo-less one: a glossary card
- * renders in ~150 ms and 49 KB, while `/api/og` averaged 860 ms and 119 KB in production — a third
- * of the whole site's function time on 6 % of its requests. It also billed twice, once outbound to
- * fetch and once inbound to serve.
- *
- * ## The read is rooted at `og-assets/`, and that is the whole point
- *
- * A runtime `join(process.cwd(), <root>, <variable>)` is a path the function tracer cannot
- * resolve, and its answer to one is to bundle **the entire directory that path is rooted at**.
- * This used to read `join(process.cwd(), 'public', …)`, so the OG function carried all of
- * `/public` — the sources, the sidecars and all three crop ratios, 256 MB of photos for a card
- * that paints one — and the deploy failed at 290.96 MB against Vercel's 250 MB limit.
- *
- * `outputFileTracingIncludes` is not the lever: `next build --turbo` never calls
- * `collectBuildTraces`, the only place includes and excludes are applied, so under the build this
- * project ships every key in that map is inert (`outputFileTracingExcludes` was tried, and the
- * crops it named stayed in the trace). The lever is **where the read is rooted**. So the OG
- * function has its own asset directory, written by `scripts/generate-og-assets.mjs` in prebuild
- * and holding nothing but what these cards paint: one 1200×630 rendition per media photo, plus
- * the two brand PNGs. The sweep is then a feature — `og-assets/` **is** the list of what this
- * function carries, and it cannot grow past what somebody deliberately put in it.
- *
- * Two things still happen per render, and both predate that move:
- *
- *  1. **Read locally.** No network, no CDN miss, no DNS.
- *  2. **Prefer the 16:9 rendition.** The card frame IS 1200×630, so `objectFit: cover` has
- *     nothing to throw away.
- *
- * Falls back to the absolute URL when a rendition isn't on disk — a photo that never got one, or
- * any `next dev` run, which skips prebuild and therefore has no `og-assets/` at all. **That
- * fallback is best-effort and measured not to paint**: with `og-assets/` moved aside the park card
- * still renders, correctly, but with no photo behind it. The source is a *progressive* JPEG
- * (`/media/phantasialand/background.jpg`, 1024×768, 185 KB) and Satori quietly skips an image it
- * cannot decode. This predates the move — dev never had the `-16x9` crops either, since they are
- * git-ignored and cut in prebuild — so the fallback has always been "a card without its photo"
- * rather than "the photo over HTTP". It is left in place because a card without a photo beats a
- * failed render, not because it recovers the picture.
+ * Without a rendition on disk (or under `next dev`, which skips prebuild) it falls back to the
+ * absolute URL. That fallback usually paints no photo, because Satori skips the progressive
+ * source JPEG, but a card without its photo beats a failed render.
  */
 
 /** Read once per warm function instance. Keyed by the site-relative source path. */

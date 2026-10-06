@@ -3,28 +3,11 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * The polaroid stack settling onto the planner page.
- *
- * Follows the same three rules `use-menu-reveal.ts` arrived at, for the same
- * reasons:
- *
- * - **CSS owns the final state, GSAP owns the motion.** Every card's resting
- *   rotation and position is a CSS transform written by the component. The
- *   timeline animates `y` and `rotation` FROM an offset TO that resting state,
- *   so a failed chunk, a blocked import or a `prefers-reduced-motion` visitor
- *   gets the stack exactly as it is meant to end up — never an empty box that
- *   JavaScript forgot to reveal, and never a fade that could strand at
- *   `opacity: 0`.
- * - **Nothing here touches a backdrop.** No element in this stack carries
- *   `backdrop-blur`, so there is no glass to flatten — but the rule is worth
- *   restating, because a polaroid over a frosted card is an obvious next idea
- *   and it would go flat for the length of the animation.
- * - **It cannot cost layout shift.** The cards are absolutely positioned inside
- *   a box whose height is fixed by the component, so the reveal moves ink and
- *   never geometry.
- *
- * The chunk is fetched on mount of the page that uses it and shared with the
- * header's reveal, which has usually already fetched it.
+ * The polaroid stack settling onto the planner page, under the same rules as
+ * `use-menu-reveal.ts`: CSS writes each card's resting transform and GSAP only animates towards
+ * it, so without JavaScript or with reduced motion the stack is exactly as it ends up; nothing
+ * animated may carry `backdrop-blur`; and the cards sit in a fixed-height box, so the reveal costs
+ * no layout shift.
  */
 
 type Gsap = typeof import('gsap').gsap;

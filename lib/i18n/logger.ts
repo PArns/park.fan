@@ -1,15 +1,10 @@
 /**
- * Translation Logger
- *
- * Logs missing translation keys during build and runtime
- * to help identify translation issues across all pages.
+ * Logs missing translation keys: to the console in development, to `translation-missing.json`
+ * during the build.
  */
 
-// `fs`/`path` are loaded lazily (server-only) instead of via top-level imports: this module is
-// now reachable from Client Components (e.g. the client FAQ section → translateCountry), and a
-// static `import fs from 'fs'` makes the client bundle fail to resolve `fs` under Turbopack.
-// File logging only ever runs on the server in production, so requiring these on demand keeps
-// server behavior identical while staying client-bundle-safe.
+// `fs` and `path` load lazily, on the server only: this module is reachable from Client
+// Components, where a static `import fs` fails to resolve under Turbopack.
 type FsModule = typeof import('fs');
 type PathModule = typeof import('path');
 
@@ -24,11 +19,8 @@ function loadNodeModules(): { fs: FsModule; path: PathModule } | null {
 }
 
 /**
- * Whether missing keys go to `translation-missing.json`: during `next build` only.
- *
- * It used to be every production server, which put a synchronous `writeFileSync` of the whole log
- * on the render path the first time an instance met an unknown geo slug — and on Vercel's
- * read-only filesystem that write throws and logs an error each time.
+ * Whether missing keys go to `translation-missing.json`: during `next build` only, because a
+ * synchronous write on the render path is slow and throws on Vercel's read-only filesystem.
  */
 const LOGS_TO_FILE = process.env.NEXT_PHASE === 'phase-production-build';
 
@@ -51,7 +43,6 @@ class TranslationLogger {
     const node = loadNodeModules();
     this.logPath = node ? node.path.join(process.cwd(), 'translation-missing.json') : '';
 
-    // Load existing log if in build mode
     if (node && this.isServer && LOGS_TO_FILE) {
       try {
         if (node.fs.existsSync(this.logPath)) {
@@ -91,14 +82,12 @@ class TranslationLogger {
 
     this.missingKeys.set(uniqueKey, missing);
 
-    // Log to console in development
     if (process.env.NODE_ENV === 'development') {
       console.warn(
         `[Translation Missing] ${locale}/${namespace ? namespace + '.' : ''}${key} on page: ${missing.page}`
       );
     }
 
-    // Write to file during build
     if (this.isServer && LOGS_TO_FILE) {
       this.saveToFile();
     }
@@ -150,7 +139,7 @@ class TranslationLogger {
 
 const translationLogger = TranslationLogger.getInstance();
 
-// Export helper for use in translation functions
+/** Records a missing translation key for the build log and the development console. */
 export function logMissingTranslation(key: string, locale: string, namespace?: string): void {
   translationLogger.logMissingKey(key, locale, namespace);
 }

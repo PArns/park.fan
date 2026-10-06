@@ -231,6 +231,7 @@ function readResolved(entries: ScanEntry[], event: string): boolean {
   return flag === true;
 }
 
+/** The {@link NormalizedComment} for one Vercel comment webhook. */
 export function normalizeComment(envelope: VercelWebhookEnvelope): NormalizedComment {
   const event = envelope.type ?? 'comment.unknown';
   const payload = envelope.payload ?? envelope;

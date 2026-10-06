@@ -20,25 +20,16 @@ export interface UseNearbyParksOptions {
 }
 
 /**
- * Canonical params for the homepage nearby-parks query. All homepage consumers
- * (header, hero, nearby card) MUST share these so React Query dedupes them into a
- * single request (the query key is derived from these values). Use `useHomeNearbyParks`
- * rather than passing the literals inline so they can't silently drift apart.
+ * Canonical radius for the homepage nearby-parks query; every consumer must share the params so
+ * React Query dedupes them into one request, hence `useHomeNearbyParks`. It is the hero's in-park
+ * distance, so standing at the entrance still returns `in_park` with its rides.
  */
-// The backend classifies the user as "in park" (and returns the rides list) only when within
-// `radius` of a park. Match the hero's in-park distance so standing at the entrance/parking
-// (a few hundred metres from the park point) returns in_park with rides, instead of the
-// "nearest parks" list — keeping the hero welcome and the card in sync.
 export const HOME_NEARBY_RADIUS_M = IN_PARK_FALLBACK_DISTANCE_M; // 1 km
 export const HOME_NEARBY_LIMIT = 6;
 
 /**
- * Hook to fetch nearby parks using React Query.
- * - Shows last cached response immediately via placeholderData (no spinner on repeat visits).
- * - Fetches fresh data in the background and re-renders on update.
- * - If user allows geolocation: sends lat/lng for accurate results.
- * - If user denies or GPS times out: calls without lat/lng; backend uses GeoIP.
- * - On 400 (e.g. location could not be determined): error is set; show message or retry.
+ * Nearby parks for the visitor's position, or for the backend's GeoIP guess without one. The last
+ * good answer is kept in localStorage, shown at once and used when a request fails.
  */
 function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const opts: UseNearbyParksOptions =
@@ -62,14 +53,9 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const simMode = resolveCompassDemo(rawSim) ? null : rawSim;
 
   const hasCoords = position != null;
-  // Wait while a GPS lookup is pending (permission granted → coords imminent) instead of
-  // firing a throwaway IP-fallback request that the coords refetch would supersede ~1-2s
-  // later — that double-fire is what showed up as two backend requests per load. Once GPS
-  // resolves we run with coords; if it never starts (permission not granted) or fails
-  // (timeout/unavailable), `!geoLoading` lets us run with the GeoIP fallback. Cached
-  // results still show instantly via `placeholderData`, so waiting costs no perceived UX.
-  // A simulation overrides the location server-side, so it can run even before/without GPS
-  // (and bypasses the after-load gate so previews are immediate).
+  // Wait while a GPS lookup is pending instead of firing a GeoIP request the coordinates would
+  // supersede a second later; without permission, or after a GPS failure, the GeoIP fallback
+  // runs. A simulation overrides the location server-side, so it skips both gates.
   const canRun = !!simMode || ((hasCoords || (initialCheckDone && !geoLoading)) && afterLoad);
 
   return useQuery<NearbyResponse>({
@@ -120,30 +106,14 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
       return readCache(position?.lat ?? null, position?.lng ?? null) ?? data;
     },
     enabled: canRun,
-    // Show last cached response immediately while fresh data loads in the background.
-    // Prefer the previous query's in-memory data (`prev`) — it covers the key change when
-    // GPS coords arrive mid-session, where the localStorage entry may already be stale;
-    // without it every consumer (header pill, hero variant, search dialog) blanked out for
-    // the refetch and popped back in. Falls back to the persisted cache; the closure
-    // captures the current position so stale data from a different location (> 10 km away
-    // or > 5 min old) is silently dropped. Disabled while simulating.
+    // The previous in-memory answer first (it covers the key change when GPS arrives
+    // mid-session), else the persisted cache for this position. Off while simulating.
     placeholderData: (prev) =>
       simMode ? undefined : (prev ?? readCache(position?.lat ?? null, position?.lng ?? null)),
-    // …but `placeholderData` only PAINTS the cached result, it does not count as data, so
-    // React Query fetched again on every single page load — the persisted entry saved the
-    // spinner and nothing else. Seeding it as `initialData` makes `staleTime` apply to it, so
-    // a load within the 5-minute window renders from localStorage and sends no request at all.
-    //
-    // `initialDataUpdatedAt` is what makes that honest: without it React Query would treat a
-    // 4-minute-old entry as written just now and hold off the refresh for another five. With
-    // it the entry expires when it actually expires. Both stay off while simulating, same as
-    // the placeholder — a simulated location must never seed or read the real cache.
-    //
-    // When GPS coords arrive and the query key changes, readCacheEntry seeds the new query
-    // only from an entry that asked the same question: one written from coordinates, and from
-    // no further than 10 km away. The GeoIP entry the page just wrote seeds nothing, so the
-    // first request with real coordinates goes out immediately instead of waiting out
-    // `staleTime` — that wait is what kept the in-park hero from ever appearing.
+    // `placeholderData` only paints; seeding the persisted entry as `initialData`, with its real
+    // `cachedAt`, lets `staleTime` apply, so a load within the window sends no request. When GPS
+    // arrives, only an entry written from coordinates within 10 km seeds the new key, so the first
+    // request with real coordinates goes out at once. Off while simulating.
     initialData: simMode
       ? undefined
       : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.data,
@@ -153,14 +123,9 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
     refetchOnWindowFocus: true,
-    // Poll only when the answer can actually change. With real coordinates it can — the point
-    // of the poll is noticing that somebody walked into a park, which is what flips the hero
-    // and the header pill. Without them the backend geolocates the request IP, and that is
-    // city-level at best: it can never resolve the 1 km in-park radius, and it does not move
-    // while a tab sits open. So the IP case was re-asking the same question every five minutes
-    // for the whole life of the tab and getting the same answer back. `refetchOnWindowFocus`
-    // still covers the case where someone leaves the tab for an hour and comes back on a
-    // different network.
+    // Poll only with real coordinates, to notice somebody walking into a park. A GeoIP answer is
+    // city-level, cannot resolve the in-park radius and does not move while the tab is open;
+    // focus refetching covers a change of network.
     refetchInterval: hasCoords ? 5 * 60 * 1000 : false,
   });
 }

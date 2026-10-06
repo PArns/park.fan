@@ -3,56 +3,18 @@ import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 import type { ContentChangeEntry, ContentChangeSnapshot, FingerprintMap } from './types';
 
 /**
- * What a `<lastmod>` on a park or ride URL is allowed to claim.
- *
- * The API carries no per-entity content timestamp — `/v1/sitemap/attractions`
- * answers `{url, slug}`, and the park payload dates only its live readings
- * (`analytics.occupancy.updatedAt`, `typicalWaits.dataTo`). So the date has to be
- * *observed*: hash the part of a page that does not move, remember the hash, and
- * the day it first differs is the day the page changed. This file computes the
+ * What a `<lastmod>` on a park or ride URL is allowed to claim. The API carries no per-entity
+ * content timestamp (its `updatedAt` moves on every row each morning, because a nightly sync
+ * rewrites unchanged values), so the date is observed: hash the part of a page that does not
+ * move, and the day the hash first differs is the day the page changed. This file computes the
  * hash, `store.ts` remembers it.
  *
- * The value of the exercise is in what stays OUT of the hash. A park page
- * repaints every five minutes and an attraction page with it; feed those readings
- * in and all 44,000 URLs change every day, which is a build stamp with extra
- * steps. Google uses `lastmod` where it is "consistently and verifiably
- * accurate", and a date that is identical on every URL carries nothing to be
- * accurate about. So the fingerprint sees the editorial layer only: what the ride
- * is called, where it stands, how tall you have to be, which glossary elements
- * its layout hits, which photos and articles the page carries. Across the whole
- * catalog that moves a couple of hundred times a year, which is the set worth
- * pointing a crawler at.
- *
- * Excluded deliberately, and every one of them would otherwise change daily:
- * `queues`, `status`, `effectiveStatus`, `crowdLevel`, `trend`, `statistics`,
- * `history`, `typicalWaits`, `bestVisitTimes`, `ropeDrop`, `isHeadliner` (ranked
- * off live stats), `isCurrentlyInSeason` (a statement about today, unlike
- * `seasonMonths`, which describes the season), `weather`, `schedule`,
- * `analytics`, `currentLoad`.
- *
- * One exclusion is worth knowing about because it is not obvious: the localized
- * `alt`/`caption` text in the media sidecars. Swapping a photo moves
- * `mediaVersions`; rewording the caption under the same photo moves nothing, and
- * reaches Google on the crawler's own schedule.
- *
- * **Why the backend cannot just hand us the date, which is the first thing anyone
- * asks.** The `attractions` and `parks` tables do carry a TypeORM
- * `@UpdateDateColumn`, and exposing it would delete this whole file. It would also
- * be wrong: the children-metadata sync runs daily at 04:00 UTC and calls
- * `attractionRepository.update(id, {name, latitude, longitude})` for every matched
- * ride **unconditionally**. `Repository.update()` issues a raw UPDATE with no
- * diff, so `updatedAt` moves on all ~7,100 rows every morning even though the
- * values written are the ones already there. That is the identical-date-everywhere
- * pathology this file exists to avoid, arriving as a field that looks
- * authoritative. A content-scoped column on the API would be the better source,
- * but it would still miss half the question — the media versions and blog
- * backlinks below are frontend content the backend has never heard of.
- *
- * The cost is not the reason either. One pass is ~14 MB across 212 parks and the
- * fields read here are 24 % of it, so a lean backend projection would save ~10 MB
- * *per day*, against a prewarm cron in this same repo that renders 1,272 pages
- * every six hours. Measured crawl time for the whole catalog: 1.4 s warm, 5.4 s
- * cold.
+ * What stays out of the hash is the point. Every live reading (`queues`, `status`,
+ * `effectiveStatus`, `crowdLevel`, `trend`, `statistics`, `history`, `typicalWaits`,
+ * `bestVisitTimes`, `ropeDrop`, `isHeadliner`, `isCurrentlyInSeason`, `weather`, `schedule`,
+ * `analytics`, `currentLoad`) would change every URL every day, a build stamp with extra steps.
+ * Localized media captions stay out too; swapping a photo moves `mediaVersions`. See
+ * docs/rules/a-lastmod-is-observed-never-stamped.md.
  */
 
 /**
@@ -144,8 +106,8 @@ export function fingerprintAttraction(
  * A park's fingerprint. It carries the ride ROSTER — slug, name, land — but not
  * the rides' own fingerprints: the park page lists its attractions, so a ride
  * appearing, being renamed or moving to another land changes the park page too,
- * while a corrected height limit on one of 82 rides does not, and would otherwise
- * drag most parks in the catalog into "changed" on most days.
+ * while a corrected height limit on one ride does not, and would otherwise drag
+ * most parks in the catalog into "changed" on most days.
  */
 export function fingerprintPark(
   park: ParkWithAttractions,
@@ -216,9 +178,9 @@ export interface DiffOptions {
   today: string;
   /**
    * A previous key this run did not produce: `true` keeps it, `false` drops it.
-   * A park the API failed to answer for has to be KEPT — dropping it re-adds
-   * every one of its rides tomorrow, and a re-add reads as "changed", which is
-   * how one five-second timeout would turn into 82 false recrawl invitations.
+   * A park the API failed to answer for has to be kept: dropping it re-adds
+   * every one of its rides tomorrow, and a re-add reads as "changed", so one
+   * timeout would become a park's worth of false recrawl invitations.
    * Defaults to dropping, i.e. a key missing from a run that did cover it is
    * genuinely gone.
    */
@@ -283,18 +245,10 @@ export function diffSnapshot(
 }
 
 /**
- * Yesterday's schedule coverage plus whatever today's crawl saw — the sibling of
- * {@link diffSnapshot} for a value that is carried rather than compared.
- *
- * The one rule is the same one `retainUncovered` encodes for dates: **a park that did not answer
- * keeps what it had.** The crawl only records parks whose payload arrived, so a park missing from
- * `crawled` is a park we learned nothing about today, and dropping it would shorten its calendar
- * to the fixed span tomorrow morning — 212 parks are one API wobble away from that.
- *
- * A park that answered with no coverage at all reports `null`, and that IS an answer: it overwrites.
- * The consumer treats `null` as "no limit known" and falls back to the old span, so the two paths
- * converge on the same behaviour; the difference is only whether we are storing an observation or
- * a memory.
+ * Yesterday's schedule coverage plus whatever today's crawl saw, the sibling of
+ * {@link diffSnapshot} for a value that is carried rather than compared. A park that did not
+ * answer keeps what it had, or one API wobble would shorten its calendar tomorrow; a park that
+ * answered `null` overwrites, because that is an answer.
  */
 export function mergeScheduleCoverage(
   previous: ContentChangeSnapshot | null,

@@ -14,22 +14,10 @@ interface UseRideDayCurveParams {
 }
 
 /**
- * One ride's day curve.
- *
- * Same shape as `useParkHourlyProfile` and deferred behind the same
- * `useLoadLast` gate, because it is the same kind of thing: a historical
- * aggregate that must never race the live status and weather queries.
- *
- * The stale window is FIVE minutes rather than that hook's hour, and matches the
- * route's own `s-maxage`. Two thirds of this payload is today — the measured
- * hours and the forecast for the rest — so an hour-old copy is exactly the thing
- * a chart headed "today" must not draw. It still does not poll: a five-minute
- * stale window means the next mount refetches, not that a tab left open hammers
- * the route.
- *
- * A 404 is the settled answer "this park has no readable curve" (too few
- * measured days), so it resolves to `null` rather than retrying and the caller
- * renders nothing.
+ * One ride's day curve, deferred behind `useLoadLast` like `useParkHourlyProfile` because it is a
+ * historical aggregate. The stale window is five minutes, the route's own `s-maxage`, because most
+ * of the payload is today; it still does not poll. A 404 means the park has no readable curve and
+ * resolves to `null`.
  */
 export function useRideDayCurve({
   continent,

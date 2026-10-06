@@ -7,14 +7,9 @@ import { overlayAttraction, overlayPark, parkGeoParts } from '@/lib/blog/live-ov
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
 /**
- * Blog posts are statically generated, so every park/ride reference in them is a snapshot of
- * whenever the post was last built — which is how a guide to an open park ended up showing all
- * twelve of its coasters as "closed". These hooks re-fetch the live values in the browser and
- * lay them over that snapshot.
- *
- * Both are batch calls shared through React Query, so the cost is per *park* in the post, not per
- * reference: one `/api/parks/live?regions=<continent>/<country>` for park status, one lean
- * `/api/parks/.../wait-times` for every ride in that park.
+ * Blog posts are statically generated, so every park and ride reference in them is a build-time
+ * snapshot. These hooks lay the live values over it through batch calls shared by React Query, so
+ * the cost is per park in the post, not per reference.
  */
 
 /** Live park status/crowd/schedule over the build-time snapshot. `null` stays `null`. */

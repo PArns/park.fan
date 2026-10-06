@@ -1,26 +1,9 @@
 /**
- * The path guard for `/api/admin/[...path]`.
- *
- * Pure, and in its own file so it can be tested without a running Next: this is
- * the check that decides which upstream URL an unauthenticated request can
- * reach, and it was wrong in a way no type or lint rule can catch.
- *
- * The version it replaces rejected an empty, `.` or `..` segment on the
- * assumption that "Next decodes route params, so `%2e%2e` arrives as `..`".
- * True, and not the problem. Next's route matcher splits the raw pathname on
- * `/` and percent-decodes each piece **afterwards**, so `%2F` is not a
- * separator while the route is matched and arrives inside a single segment —
- * where `new URL()` then normalises it into one. `auth%2F..%2F..%2Fparks`
- * passed all three checks and resolved to `https://api.park.fan/v1/parks`,
- * which turned this handler into an anonymous proxy to every path on the API,
- * with the deployment's `x-auth-key` (a throttle bypass) attached.
- *
- * `%5C` did the same: WHATWG URL treats a backslash as a separator for special
- * schemes, and Next's own backslash normalisation tests the raw URL, which a
- * percent-encoded one does not match.
- *
- * So: check the decoded segment for anything that could become a separator or
- * start a query, and re-encode when joining.
+ * The path guard for `/api/admin/[...path]`, pure so it can be tested without Next. Next decodes
+ * each route segment after splitting, so a `%2F` or `%5C` arrives inside one segment and
+ * `new URL()` would turn it into a separator, reaching any API path with the deployment's
+ * `x-auth-key`. So the decoded segment is checked, and re-encoded on the join. See
+ * docs/rules/an-api-route-passes-only-slugs-upstream.md.
  */
 
 const UNSAFE_IN_SEGMENT = /[/\\?#]/;

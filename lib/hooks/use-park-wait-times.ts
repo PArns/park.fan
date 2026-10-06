@@ -38,12 +38,9 @@ function toSnapshot(data: ParkWaitTimesResponse): ParkWaitTimesSnapshot {
 }
 
 /**
- * Batch-fetch the live status + standby wait of every ride in a park, keyed by attraction slug.
- *
- * One request per park — React Query dedupes it across every ride reference in a blog post, so a
- * post naming a dozen Phantasialand coasters costs a single ~9 KB call, not one park-page-sized
- * payload per ride. Mirrors the `useRegionParks` contract: client-only (the prerendered shell has
- * no live data to seed), refetch on mount, 5-min poll, refetch on focus/reconnect.
+ * The live status and standby wait of every ride in a park, keyed by attraction slug: one request
+ * per park, shared by every ride reference in a blog post. Client-only, polling like
+ * `useRegionParks`.
  */
 export function useParkWaitTimes(
   continent: string,

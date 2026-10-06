@@ -6,17 +6,10 @@ import { resolveDriver } from './driver';
 import type { StoredImageRecord } from './types';
 
 /**
- * Server-side image storage for contributions. All bytes flow THROUGH our server
- * (one request per file, each under Vercel's ~4.5 MB body limit) — the browser
- * never talks to the Blob store directly, so the private store's write token never
- * leaves the server.
- *
- *  - **vercel-blob**: `put()` with the server-only BLOB_READ_WRITE_TOKEN into a
- *    PRIVATE store (`access: 'private'`) — the bytes are never publicly reachable;
- *    they're streamed back only through our own authenticated route.
- *  - **local**: writes under `.uploads/` for offline dev (Vercel's FS is ephemeral).
- *
- * Either way, the record's `url` points at our serve route, not a public blob URL.
+ * Server-side image storage for contributions. Every byte flows through this server, one request
+ * per file, so the private Blob store's write token never leaves it and the images are only
+ * served through our authenticated route. The local driver writes under `.uploads/` for offline
+ * dev.
  */
 
 export interface PutImageInput {

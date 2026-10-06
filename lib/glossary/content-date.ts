@@ -1,43 +1,17 @@
 /**
- * When the glossary was last reviewed — the one date two consumers must agree on.
- *
- * It feeds `dateModified` on the `DefinedTerm`/`DefinedTermSet` JSON-LD **and** `<lastmod>` on the
- * 1,608 glossary URLs in the sitemap (268 terms × 6 locales). Those are the same claim made to the
- * same crawler in two places, so they read one constant rather than each holding a copy.
- *
- * It lives here rather than next to the schema component because `app/sitemap.ts` also needs it,
- * and a sitemap importing from `components/seo/` would be the wrong direction.
- *
- * **Why this one is hand-maintained.** The API carries no per-entity content timestamp —
- * `/v1/sitemap/attractions` answers `{url, slug}`, and the park payloads only date their live
- * readings (`queues[].lastUpdated`, `typicalWaits.generatedAt`) — so park and ride URLs get their
- * `<lastmod>` from an *observed* one: a daily crawl fingerprints the stable half of each page and
- * the day the fingerprint moves is the day the page changed
- * (`lib/seo/content-changes/fingerprint.ts`). Stamping those 44,000 URLs with today's date instead
- * would be accurate and useless, since one moving value everywhere is indistinguishable from a
- * build stamp and is how a sitemap gets its lastmod discounted wholesale.
- *
- * The glossary needs none of that machinery: it is prerendered from files in this repo, so the
- * date it was last reviewed is simply known, and one constant beats fingerprinting 268 terms to
- * rediscover it.
- *
- * Update it when terms are added, removed or rewritten. A stale date here is worse than none:
- * it tells a crawler not to come back for content that did change.
- *
- * It went stale exactly that way once, and silently: it read `2026-03-17` while the glossary grew
- * from 133 terms to 267, so `pnpm check:glossary-content-date` now recomputes
- * `GLOSSARY_CONTENT_HASH` from the parsed term data and fails when the two disagree. Bump both
- * together, and use the date the content changed rather than the date you noticed.
+ * When the glossary was last reviewed: `dateModified` in its JSON-LD and `<lastmod>` on its
+ * sitemap URLs, one claim in two places, so one constant. Hand-maintained because the glossary is
+ * prerendered from files in this repo, unlike park and ride pages, whose `<lastmod>` is observed
+ * (`lib/seo/content-changes/fingerprint.ts`). A stale date tells a crawler not to come back for
+ * content that did change, so `pnpm check:glossary-content-date` fails when
+ * `GLOSSARY_CONTENT_HASH` moves without it. Bump both, with the date the content changed.
  */
 export const GLOSSARY_CONTENT_DATE = '2026-10-03';
 
 /**
  * SHA-256 (16 hex chars) over the glossary's reader-visible content: term ids, categories, player
- * elements, all six locales' slugs, and every name, definition, related id and alias.
- *
- * It hashes *values*, not their spelling — the 2026-08-18 pass that rewrote `"…"` to `'…'` across
- * all six locale files does not move it, while the Spanish slug rename on 2026-08-23 (which changed
- * a URL) does. Recomputed and checked by `scripts/check-glossary-content-date.mjs`, which prints the
- * replacement value when it fails.
+ * elements, all six locales' slugs, and every name, definition, related id and alias. It hashes
+ * values, not their spelling, so a quote-style pass does not move it.
+ * `scripts/check-glossary-content-date.mjs` prints the new value when it fails.
  */
 export const GLOSSARY_CONTENT_HASH = '33a87233c05fb2d1';

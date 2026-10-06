@@ -8,21 +8,11 @@ import type { ParkWithAttractions } from '@/lib/api/types';
 import type { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-context';
 
 /**
- * The glossary terms a park's FAQ can actually link, and the locale's glossary segment.
- *
- * Narrowed before it crosses the client boundary: `<ParkFAQSection>` is a Client Component, so
- * anything handed to it is serialized into the page. The full dictionary was 61.2 KB (18.0 KB
- * brotli, a quarter of the park page's transfer) so that a few paragraphs could link a handful of
- * terms. Same reasoning as `leanParkForParkShell` — pass what is read, not what is available.
- *
- * The corpus is every string the FAQ can render. Q0–Q6 are built here exactly as the client builds
- * them; Q7 (least crowded) only appears after the client's calendar fetch, so its RAW ICU
- * templates stand in — they carry all the literal text, and the values interpolated into them
- * (weekday names, the park name, hours) are covered by the items above. A superset is required: a
- * term missing from the corpus would silently stop being linked.
- *
- * Shared by every page of a park, because the shell renders the same FAQ on all of them and a
- * second copy of this derivation is a second copy that drifts.
+ * The glossary terms a park's FAQ can link, and the locale's glossary segment. Narrowed before it
+ * crosses the client boundary, because `<ParkFAQSection>` serializes everything it is handed and
+ * the full dictionary would be a large share of the park page. The corpus is every string the FAQ
+ * can render; Q7's raw ICU templates stand in for the text the client builds after its calendar
+ * fetch, since a term missing from the corpus would silently stop being linked.
  */
 export async function getParkFaqGlossary(
   park: ParkWithAttractions,

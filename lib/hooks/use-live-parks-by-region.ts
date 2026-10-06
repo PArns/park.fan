@@ -6,19 +6,10 @@ import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 export type { LiveParkFields };
 
 /**
- * Batch-fetch live park status for a set of regions, keyed by park id.
- *
- * ONE request per distinct region SET — `/api/parks/live?regions=…` fans the regions out
- * server-side and answers with the {@link LiveParkFields} projection, so a caller spanning three
- * countries (the featured strip) costs one request instead of three, and a single-region caller
- * (a hub grid, a blog park reference) gets the same nine fields at ~40% of the bytes the old
- * per-region discovery route sent.
- *
- * Regions are sorted before they reach the query key and the URL, so callers listing the same
- * countries in a different order share one cache entry and one CDN object.
- *
- * Mirrors the `useLiveParkData` contract: client-only (the SSR shell is status-free), refetch on
- * mount, 5-min poll, refetch on focus/reconnect.
+ * Live park status for a set of regions, keyed by park id: one request per distinct region set,
+ * answered with the {@link LiveParkFields} projection. Regions are sorted before the key and the
+ * URL, so callers listing the same countries in any order share one cache entry and CDN object.
+ * Client-only, polling like `useLiveParkData`.
  *
  * @param regions `"<continent>/<country>"` pairs. Empty entries are dropped, so a caller whose
  *   geo lookup hasn't resolved can keep the hook call unconditional.
@@ -50,9 +41,8 @@ export function useLiveParksByRegion(regions: string[]) {
     ...LIVE_POLL_QUERY_OPTIONS,
   });
 
-  // Expose ONLY the data. React Query v5 tracks which fields consumers read; returning
-  // `query.isFetching` here subscribed every card grid to its false→true→false flip on each
-  // 5-min poll and every window refocus — a full grid re-render for identity-stable data.
+  // Data only: React Query tracks which fields consumers read, so exposing `isFetching` would
+  // re-render every card grid on each poll and refocus for identity-stable data.
   return { liveByParkId: query.data };
 }
 

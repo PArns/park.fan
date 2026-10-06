@@ -5,7 +5,7 @@ import { createContext, useContext, useMemo, useSyncExternalStore, type ReactNod
 import { detectDefaultUnit, type TemperatureUnit } from '@/lib/utils/temperature';
 
 const COOKIE_NAME = 'temp_unit';
-const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year
+const COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
 
 /** What the server renders, and therefore what hydration has to see. */
 const SERVER_UNIT: TemperatureUnit = 'C';
@@ -21,19 +21,11 @@ interface TemperatureUnitProviderProps {
   children: ReactNode;
 }
 
-// ---------------------------------------------------------------------------
-// The unit as an external store.
-//
-// It has to be one. The value is read from the DOM (the pre-paint attribute) and
-// the cookie, i.e. from outside React, and every consumer has to see `C` for the
-// whole hydration pass because that is what the server put in the HTML. An effect
-// cannot promise that: effects fire per committed boundary, so the provider's ran
-// while a weather widget further down was still waiting to hydrate, and that
-// widget was then hydrated against `F` over server markup that said `C` — React
-// logged the subtree and patched nothing. `useSyncExternalStore` is the one hook
-// that takes a separate server snapshot, so hydration is `C` by construction and
-// the real unit arrives in the re-render right after it.
-// ---------------------------------------------------------------------------
+// The unit is an external store: it is read from the DOM attribute and the cookie, and every
+// consumer must see `C` for the whole hydration pass because that is what the server rendered. An
+// effect fires per committed boundary, so a widget hydrating later would see `F` over `C` markup;
+// `useSyncExternalStore` takes a separate server snapshot. See
+// docs/rules/a-client-only-preference-may-not-decide-server-rendered-markup.md.
 
 let current: TemperatureUnit | null = null;
 const listeners = new Set<() => void>();

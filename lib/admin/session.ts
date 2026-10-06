@@ -5,31 +5,15 @@ import { readCookie } from './cookie';
 import { roleAtLeast, type AdminIdentity, type AdminRole } from './roles';
 
 /**
- * The admin session cookie.
- *
- * httpOnly, so no script in the browser can read it — which is the point. The
- * previous admin kept a shared password in `sessionStorage` and attached it to
- * every request from client code, meaning any injected script on the admin
- * origin could read the one credential that unlocks every administrative
- * endpoint. The token now never reaches JavaScript at all: the browser sends
- * the cookie, this app's own route handlers read it server-side and forward it
- * to api.park.fan as a Bearer token.
- *
- * `SameSite=Strict` rather than Lax: the admin has no cross-site entry point
- * worth preserving — nobody links into it from anywhere — and Strict is the
- * one setting under which a cross-site request cannot carry it at all.
+ * The admin session cookie: httpOnly, so no script on the admin origin can read the token, and
+ * `SameSite=Strict`, since nothing links into the admin from another site. See
+ * docs/rules/the-admin-holds-no-credential.md.
  */
 export const ADMIN_SESSION_COOKIE = 'parkfan_admin_session';
 
 /**
- * Validated identities, briefly.
- *
- * Every admin request that reaches this app's own routes — the media upload,
- * the blog save, an image served to an `<img>` tag — would otherwise ask the
- * backend who the caller is before doing anything. A media commit alone makes
- * several of those in a row. The window is short because the backend can
- * revoke a session at any moment and this cache is what would keep a revoked
- * one alive.
+ * Validated identities, briefly, so a burst of admin requests does not ask the backend who the
+ * caller is each time. Short, because this cache is what would keep a revoked session alive.
  */
 const VALIDATION_TTL_MS = 60_000;
 const validated = new Map<string, { identity: AdminIdentity; until: number }>();
@@ -129,13 +113,8 @@ export function forgetSession(token: string | null): void {
 }
 
 /**
- * Drop every cached identity.
- *
- * For the revocations that do not name a token this process can see: a password
- * change ends every session of the account, "sign out everywhere" ends a list
- * of them, deactivating an account ends all of its. The map is a handful of
- * entries and refilling costs one `auth/me` per token, so clearing all of it is
- * cheaper than tracking which ones died.
+ * Drops every cached identity, for revocations that do not name a token this process can see (a
+ * password change, sign out everywhere, a deactivated account).
  */
 export function forgetAllSessions(): void {
   validated.clear();
@@ -151,27 +130,15 @@ export interface AdminGuardSuccess {
 }
 
 /**
- * Guard for this app's own admin route handlers.
- *
- * Returns a ready-to-return response on failure and the identity on success,
- * so a handler reads as `const { response, identity } = await requireAdmin(req);
- * if (response) return response;`.
- *
- * `minRole` defaults to `author` rather than `viewer`, because every route in
- * this app that uses this guard writes something — media, blog posts,
- * contributions. A read-only account has no business in any of them, and
- * defaulting to the weakest role would let one in by omission.
+ * Guard for this app's own admin route handlers: a ready-to-return response on failure, the
+ * identity on success. `minRole` defaults to `author` because every route behind it writes.
  */
 export async function requireAdmin(
   request: Request,
   minRole: AdminRole = 'author'
 ): Promise<AdminGuardFailure | AdminGuardSuccess> {
-  // A write never answers from cache. The cache exists so a page that makes
-  // six read calls does not make six `auth/me` calls behind them; a media
-  // commit or a blog save is rare, already costs several round trips, and is
-  // exactly what somebody revoking a session is trying to stop. Clearing the
-  // map on the revoking request is not enough on its own — each serverless
-  // instance holds its own — so the guard asks the backend instead.
+  // A write never answers from cache: each serverless instance holds its own map, so only the
+  // backend knows a session was just revoked.
   const method = (request.method ?? 'GET').toUpperCase();
   const writes = method !== 'GET' && method !== 'HEAD';
   const identity = await resolveAdminIdentity(request, { revalidate: writes });
@@ -215,16 +182,7 @@ export function sessionCookieOptions(maxAgeSeconds: number) {
   };
 }
 
-/**
- * The one-liner form of {@link requireAdmin}, for handlers that need the guard
- * but not the identity: `const denied = await denyUnlessAdmin(req); if (denied)
- * return denied;`
- *
- * It exists because that is the shape the fifteen existing admin route
- * handlers already use, and changing all of them to destructure a pair while
- * also changing what they authenticate against would have made one diff out of
- * two unrelated changes.
- */
+/** The one-line form of {@link requireAdmin}, for handlers that need no identity. */
 export async function denyUnlessAdmin(
   request: Request,
   minRole: AdminRole = 'author'

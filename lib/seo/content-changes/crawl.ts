@@ -11,28 +11,13 @@ import { fingerprintAttraction, fingerprintGeoHub, fingerprintPark } from './fin
 import type { EntityContext } from './fingerprint';
 
 /**
- * One pass over the catalog, producing the fingerprint of every URL a sitemap
- * emits a `<lastmod>` for.
- *
- * It costs 212 park fetches (~64–116 KB each, so ~20 MB) and runs once a day from
- * `/api/cron/content-changes`. Deliberately `getParkByGeoPathFresh`: the cached
- * variant would compare today's crawl against a six-hour-old snapshot of the
- * catalog and report the lag as a change tomorrow.
- *
- * Failure is per park and is not an error. A park that does not answer is left
- * out of the map and named in `failedParkPaths`, which `diffSnapshot`'s
- * `retainUncovered` uses to hold that park's existing dates instead of treating a
- * timeout as a deletion.
- *
- * Which rides count is decided by `getAttractionPaths()` — the sitemap's own list
- * — rather than by re-reading the park payload's roster. The two used to disagree:
- * the payload for Paultons Park carried `raven-2` while `/v1/sitemap/attractions`
- * carried `raven` as well, and a slug rule dropped the variant as a noindex
- * duplicate. Seven rides came out on the wrong side of that, which was seven
- * `<lastmod>` values for URLs no sitemap listed and seven IndexNow pings at noindex
- * pages. The backend now lists the row the payload serves (PAR-498), but the
- * allowlist stays: it is one cached request and keeps the crawl on exactly the
- * URLs the sitemap lists, whatever either side changes next.
+ * One daily pass over the catalog (`/api/cron/content-changes`), producing the fingerprint of
+ * every URL a sitemap gives a `<lastmod>`. It reads `getParkByGeoPathFresh`, because the cached
+ * variant would report its own lag as tomorrow's change. A park that does not answer is named in
+ * `failedParkPaths`, so `diffSnapshot` holds its existing dates instead of reading a timeout as a
+ * deletion. Which rides count is decided by `getAttractionPaths()`, the sitemap's own list, so the
+ * crawl covers exactly the URLs a sitemap lists. See
+ * docs/rules/a-lastmod-is-observed-never-stamped.md.
  */
 
 /** Blog backlinks are locale-scoped; the fingerprint is not. */
@@ -43,15 +28,9 @@ const CONCURRENCY = 8;
 export interface CrawlResult {
   fingerprints: Map<string, string>;
   /**
-   * Park path → `scheduleCoverage.to`, the last date the API holds a park-level OPERATING row for.
-   *
-   * It rides along on this crawl rather than getting one of its own because the crawl already
-   * fetches all 212 park payloads and this is one field on each. The consumer is the calendar
-   * sitemap, which otherwise knows only the geo structure and would have to repeat those 212
-   * fetches to learn how far each park's schedule reaches.
-   *
-   * `null` for a park that publishes no schedule at all, and for one whose payload came back
-   * without the field — both mean "no answer", and the reader must not shorten anything on them.
+   * Park path → `scheduleCoverage.to`, the last date the API holds a park-level OPERATING row for,
+   * for the calendar sitemap, which would otherwise repeat every park fetch. `null` means no
+   * answer, and the reader must not shorten anything on it.
    */
   scheduleCoverage: Map<string, string | null>;
   /** `/parks/<continent>/<country>/<city>/<park>` for every park the API did not answer for. */
@@ -65,9 +44,8 @@ function mediaVersions(images: MediaImage[]): string[] {
 }
 
 /**
- * The photos the park page itself carries: background, hero and gallery, but not
- * the ride cards — those belong to the ride pages, and a new photo of one of 82
- * rides is not a change to the park page's own content.
+ * The photos the park page itself carries: background, hero and gallery, but not the ride cards,
+ * which belong to the ride pages.
  */
 function parkContext(parkSlug: string, geoPath: string): EntityContext {
   const images = getParkImages(parkSlug).filter((image) => !image.ride);
@@ -86,6 +64,7 @@ function attractionContext(parkSlug: string, rideSlug: string, geoPath: string):
   };
 }
 
+/** Fingerprints every sitemap URL, with each park's schedule coverage and the parks that failed. */
 export async function crawlContentFingerprints(): Promise<CrawlResult> {
   const [geo, attractionPaths] = await Promise.all([
     getGeoStructure(CACHE_TTL.geoSitemap),
@@ -98,7 +77,6 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
   let parksCovered = 0;
   let attractionsCovered = 0;
 
-  // ── Geo hubs ──────────────────────────────────────────────────────────────
   // Single-park cities are skipped for the same reason the sitemap skips them:
   // the city page 308s to its only park.
   const allParks: { slug: string; name: string }[] = [];
@@ -124,7 +102,6 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
   }
   fingerprints.set('/parks', fingerprintGeoHub(allParks));
 
-  // ── Parks and their attractions ───────────────────────────────────────────
   const targets = geo.continents.flatMap((continent) =>
     continent.countries.flatMap((country) =>
       country.cities.flatMap((city) =>

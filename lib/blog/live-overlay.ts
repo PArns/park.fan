@@ -60,18 +60,10 @@ function effectiveStatus(
 }
 
 /**
- * Lay live data over a ride resolved at build time.
- *
- * `live` is the lean whole-park batch (status + queues, one request for every ride in the post);
- * `detail` is the full attraction payload — today's average/peak and the sparkline series, which
- * the batch doesn't carry — fetched only for the cards that render them, and only once they're
- * actually on screen or hovered. Either may be absent; whatever is missing falls back to the
- * resolved snapshot.
- *
- * Status and wait always come from the batch when it has the ride, even though `detail` also
- * carries them: the batch polls every 5 minutes where the detail fetch is deliberately lazy, and
- * reading both from one source is what keeps a card's badge equal to the inline badge beside it
- * in the prose.
+ * Lays live data over a ride resolved at build time. `live` is the lean whole-park batch,
+ * `detail` the full attraction payload fetched lazily for the cards that render its stats;
+ * whatever is missing falls back to the resolved snapshot. Status and wait come from the batch
+ * whenever it has the ride, so a card's badge always equals the inline badge beside it.
  */
 export function overlayAttraction(
   attraction: ResolvedAttraction,

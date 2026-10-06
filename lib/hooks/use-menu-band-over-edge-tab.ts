@@ -3,19 +3,11 @@
 import { useSyncExternalStore } from 'react';
 
 /**
- * Whether a header menu band (`MenuBand`) is open whose content column runs under the
- * planner's edge tab.
- *
- * The tab is `fixed` at the header's right edge on `z-[60]`, above the band. The band's column
- * is capped per container tier and centred, so whether it reaches the tab depends on how wide
- * the header is: at 1024 and 1280 px with the planner shut the column ends 16 px before the
- * edge, at 1440 px 96 px before it. With eight alerts in the favourites band at 1280 px the tab
- * covered 14 of the 32 px of three remove buttons (PAR-70). A band registers here only when its
- * column reaches the tab's strip, and the tab steps aside while one does; at 1440 and 1920 px
- * nothing registers and the tab stays.
- *
- * A count rather than a boolean: one band's close and the next one's open land in either order
- * when the pointer crosses from one trigger to its neighbour.
+ * Whether a header menu band (`MenuBand`) is open whose content column runs under the planner's
+ * edge tab, which sits `fixed` above the band at the header's right edge. Whether the capped,
+ * centred column reaches it depends on the header's width, so a band registers only when it does,
+ * and the tab steps aside meanwhile. A count rather than a boolean: one band's close and the next
+ * one's open land in either order when the pointer crosses between triggers.
  */
 let edgeBands = 0;
 const listeners = new Set<() => void>();

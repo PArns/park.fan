@@ -6,21 +6,9 @@ import type { MediaImage } from '@/lib/media/types';
 import type { BlogImage } from './types';
 
 /**
- * Blog galleries, served from the media database.
- *
- * A gallery used to be "every file in a folder under `/public`, plus whatever
- * `captions.json` and its five `captions.<locale>.json` siblings said". That
- * folder is now a **collection** in the media database and the captions live in
- * each image's sidecar, so a gallery is a query — and the same photos answer park
- * and ride queries at the same time. The Halloween shoot is a gallery in the post
- * *and* the source of Troy's Halloween photo on the ride page, without being
- * stored twice.
- *
- * No `server-only` any more: this reads the build-time manifest rather than the
- * filesystem, so it is safe anywhere.
- *
- * `BlogImage` is kept as the return shape, so the rendering components did not
- * have to change.
+ * Blog galleries, served from the media database: a gallery is a collection and its captions live
+ * in each image's sidecar, so the same photos also answer park and ride queries. Reads the
+ * build-time manifest, not the filesystem, so it is safe anywhere.
  */
 
 /** One database row, in the shape the blog components render. */
@@ -47,36 +35,27 @@ function normalizeCollection(folder: string): string {
 }
 
 /**
- * The images of a gallery, in order.
- *
- * Accepts a bare collection id as well as a `/media/<collection>` path, and still
- * strips the pre-migration `/blog/images/` and `/images/parks/` prefixes so a post
- * written against the old layout keeps resolving. An unknown collection returns an empty array — an author referencing
- * a renamed gallery gets no gallery, not a broken page.
+ * The images of a gallery, in order, from a collection id or a `/media/<collection>` path. An
+ * unknown collection gives no gallery rather than a broken page.
  */
 export function listFolderImages(folder: string, locale?: string): BlogImage[] {
   return getCollection(normalizeCollection(folder)).map((image) => toBlogImage(image, locale));
 }
 
 /**
- * Fill in what the database knows about a hand-listed image, without overriding
- * what the author wrote — a post may legitimately caption the same photo
- * differently from the database default, and two posts here already do.
+ * Fills in what the database knows about a hand-listed image without overriding what the author
+ * wrote, since a post may caption a photo differently from the database.
  */
 function enrich(image: BlogImage, locale?: string): BlogImage {
-  // Two questions, deliberately asked separately. `exact` is "is this row THIS
-  // file"; `owner` is "which row is this file part of", which also answers for a
-  // build-time crop. A hand-listed gallery routinely points at `…-16x9.jpg`, and
-  // asking only the first question left those with no caption, no credit — and no
-  // version token, which is the one that matters: a crop's bytes are rewritten
-  // under an unchanged URL the moment its focal point moves.
+  // `exact` is "is this row THIS file"; `owner` also answers for a build-time crop such as
+  // `…-16x9.jpg`, which needs the owner's version token because its bytes change under an
+  // unchanged URL when the focal point moves.
   const exact = getMediaImageBySrc(image.src);
   const owner = exact ?? getMediaImageForPath(image.src);
   if (!owner) return image;
   const fromDb = toBlogImage(owner, locale);
-  // A crop's dimensions are not the source's, but they are not unknown either: the same module
-  // the generator cuts them with can state them. Leaving them undefined is what made a hand-listed
-  // gallery render `width={0} height={0}` and reflow the article on every image.
+  // A crop's dimensions come from the module the generator cuts it with; left undefined, the
+  // image would reserve no box and reflow the article.
   const cropSize = exact ? null : cropDimensionsForPath(image.src, owner.width, owner.height);
   return {
     ...image,

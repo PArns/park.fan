@@ -22,8 +22,6 @@ const META_PREFIX = 'submissions/';
 const metaPath = (id: string) => `${META_PREFIX}${id}.json`;
 const LOCAL_DIR = path.join(process.cwd(), '.data', 'contributions');
 
-// ─── local driver ───────────────────────────────────────────────────────────
-
 const local = {
   async record(rec: SubmissionRecord): Promise<void> {
     await fs.mkdir(LOCAL_DIR, { recursive: true });
@@ -58,8 +56,6 @@ const local = {
     await deleteImagesLocal(rec.id);
   },
 };
-
-// ─── vercel blob driver ─────────────────────────────────────────────────────
 
 /** Read a private metadata JSON blob by pathname (public URLs don't work on a private store). */
 async function readMeta(pathname: string): Promise<SubmissionRecord | null> {
@@ -101,8 +97,6 @@ const blob = {
 function driver() {
   return resolveDriver() === 'vercel-blob' ? blob : local;
 }
-
-// ─── public API ─────────────────────────────────────────────────────────────
 
 /**
  * Writes a photo submission's metadata record to the active storage backend, replacing any record

@@ -29,22 +29,19 @@ export interface ChangelogFrontmatter {
   summary: string;
   /**
    * `draft` keeps an entry out of the page while a release is being written.
-   * Anything else is published, which mirrors the blog's frontmatter (G-5).
+   * Anything else is published, as in the blog's frontmatter.
    */
   mode?: 'published' | 'draft';
   highlights?: ChangelogHighlight[];
   /**
-   * The last version this entry also covers, when one entry stands for a run of them.
-   *
-   * Before 2.12.0 the version in `package.json` moved with nearly every push: 2.7.0 to 2.7.14 is
-   * five weeks and fourteen versions (2.7.13 was skipped). The reconstructed entries keep the real numbers and give one
-   * entry to each run, `version` its first and `through` its last.
+   * The last version this entry also covers, when one entry stands for a run of them: `version`
+   * is its first, `through` its last.
    */
   through?: string;
   /**
-   * Written after the fact from the commit history (PAR-320), not when the version was current.
-   * Most numbers and dates are the ones the repository carried; where it kept one number for
-   * weeks, the ones in between were assigned (docs/rules/a-version-is-a-unit-of-communication.md).
+   * Written after the fact from the commit history, not when the version was current; where the
+   * repository kept one number for weeks, the ones in between were assigned
+   * (docs/rules/a-version-is-a-unit-of-communication.md).
    */
   reconstructed?: boolean;
 }

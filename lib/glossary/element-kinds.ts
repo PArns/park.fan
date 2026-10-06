@@ -1,16 +1,8 @@
 /**
- * What a track figure DOES to you, used to colour the ride-profile rail.
- *
- * Deliberately NOT part of the API model: this is presentation. The API stores
- * glossary term ids and says nothing about how a figure feels — and it should
- * stay that way, so adding a colour never means a backend deploy.
- *
- * Only ids that actually turn up in a curated profile's `elements` need an
- * entry. Anything unlisted falls back to `other` and renders neutral, which is
- * the right outcome for the concept terms that share the `coaster-elements`
- * category (airtime, hangtime, g-force, grey-zone) — they describe a sensation,
- * not a piece of track, and colouring them would imply a place in the layout
- * they do not have.
+ * What a track figure does to you, used to colour the ride-profile rail. Presentation, so not part
+ * of the API model. An unlisted id falls back to `other` and renders neutral, which is right for
+ * the concept terms in `coaster-elements` (airtime, g-force): a sensation, not a place in the
+ * layout.
  */
 export type ElementKind = 'launch' | 'airtime' | 'inversion' | 'turn' | 'brake' | 'other';
 

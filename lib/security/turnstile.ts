@@ -2,53 +2,16 @@ import 'server-only';
 import type { TurnstileAction } from './turnstile-actions';
 
 /**
- * Server-side Cloudflare Turnstile verification.
+ * Server-side Cloudflare Turnstile verification for the contribution upload and the admin login,
+ * where it runs before the credentials reach the backend, so credential stuffing never triggers
+ * the account lockout. `success: true` is not enough: the token's `action` must match the form it
+ * was solved on (or the open upload form would vend tokens for the login), and its `hostname`
+ * must be in `TURNSTILE_HOSTNAMES` (comma-separated). See
+ * docs/rules/the-admin-holds-no-credential.md.
  *
- * The browser solves the Turnstile challenge and sends us the resulting token; we
- * then call Cloudflare's `siteverify` endpoint with our SECRET key to confirm it.
- * This is what stops drive-by bots from spamming an endpoint that is expensive,
- * or — in the admin's case — worth guessing at.
- *
- * Two callers, and they want the same thing for different reasons:
- *  - `/api/contribute/start` — an upload form open to anybody, so the cost of a
- *    bot is storage and a moderation queue full of junk.
- *  - `/api/admin/session` — the login. Here the challenge is solved **before**
- *    the credentials are forwarded to api.park.fan at all, so a credential-
- *    stuffing run never reaches the backend's own limiter and never counts
- *    against the lockout of the account it is guessing at. That last part is
- *    the point: a per-account lockout is a denial of service against the
- *    account holder if anyone can trigger it at will.
- *
- * `success: true` is not the whole answer, and treating it as one was the gap.
- * Cloudflare will happily confirm a token that is genuine and meant for
- * something else, so two more fields have to match:
- *
- *  - **action** — the label the widget was rendered with. Without it a token
- *    solved on the open upload form is a valid token for the admin login, and
- *    `/contribute` is a challenge anybody may solve as often as they like.
- *    Each call site names the action it expects; there is no default, because a
- *    default is what a new call site would silently inherit.
- *  - **hostname** — where the widget was solved. This is what stops a token
- *    farmed on a copy of the login page hosted somewhere else from being spent
- *    here. Checked against `TURNSTILE_HOSTNAMES`.
- *
- * Env:
- *  - TURNSTILE_SECRET_KEY  (server-only) — your Turnstile widget's secret.
- *  - TURNSTILE_HOSTNAMES   (server-only) — comma-separated allowlist, e.g.
- *    `park.fan,www.park.fan`. Preview deployments need their host too.
- *
- * Dev fallback: if no secret is configured we skip verification (and log a warning)
- * so the prototype runs locally without a Cloudflare account. In production
- * (NODE_ENV=production) a missing secret is treated as a hard failure — we never
- * silently accept unverified requests on the live site.
- *
- * `TURNSTILE_HOSTNAMES` deliberately does **not** work that way. Cloudflare's
- * own snippet refuses everything when the allowlist is empty, which is right
- * for a fresh integration where setting it is part of the same task, and wrong
- * here: an unset variable would take the upload form and the admin login down
- * on the deploy that shipped this, with no way in to fix it. An empty allowlist
- * skips the hostname check and says so in the log. The secret is what may not
- * be missing.
+ * Without `TURNSTILE_SECRET_KEY` verification is skipped in development and fails in production.
+ * An empty `TURNSTILE_HOSTNAMES` only skips the hostname check, with a warning, so an unset
+ * variable cannot lock everybody out of the admin.
  */
 
 const SITEVERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -82,6 +45,7 @@ function allowedHostnames(): Set<string> {
   );
 }
 
+/** Verifies a Turnstile token for the form it was solved on; a failure carries a reason to log. */
 export async function verifyTurnstile(
   token: string,
   { expectedAction, remoteIp }: TurnstileCheck

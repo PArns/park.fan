@@ -20,9 +20,8 @@ export interface RidePositions {
  * Every ride's coordinates in one park, keyed by slug — for pointing at rides, which the nearby
  * answer cannot do: it sends each ride's distance and wait, and no coordinates.
  *
- * `/api/parks/<geo>/<park>/positions` is ~0.7 KB brotli against the park's ~88 KB, and it is
- * day-stable on both ends (the proxy reads the day-cached park, the CDN holds the answer a day), so
- * the query is fetched once and never refetched while the tab lives.
+ * `/api/parks/<geo>/<park>/positions` is a small slice of the park and day-stable on both ends, so
+ * it is fetched once and never refetched while the tab lives.
  */
 export function useRidePositions(geo: PlannerGeo | null, parkSlug: string | null) {
   return useQuery({

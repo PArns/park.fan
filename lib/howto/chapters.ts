@@ -9,19 +9,11 @@ export interface Chapter {
 }
 
 /**
- * The guide's chapters, per locale.
- *
- * Three readers: the chapter list at the top of the page, the rail down its right edge, and the
- * header's "more" band, which links every chapter from every page. All three look a chapter up by
- * its `id`, so this list must match the `<SectionShell id=… index=…>` calls in
- * `app/[locale]/how-park-fan-works/content/<locale>.tsx` exactly: an entry that drifts silently
- * stops highlighting in the rail and sends the menu's link to the top of the page. Chapter 05 was
- * inserted after the first draft and this list did not follow, which left the rail one chapter
- * short and every number after 04 pointing at the wrong heading. `pnpm test:hub-chapters` fails on
- * an id the page does not render.
- *
- * It lived inside each content module until the menu became its second reader: importing six
- * content modules into the layout for ten labels each would have been the wrong way round.
+ * The guide's chapters, per locale, for the page's chapter list, its rail and the header's "more"
+ * band. All three look a chapter up by its `id`, so this list must match the
+ * `<SectionShell id=… index=…>` calls in `app/[locale]/how-park-fan-works/content/<locale>.tsx`;
+ * `pnpm test:hub-chapters` fails on an id the page does not render. Kept out of the content modules
+ * so the layout does not import all six.
  */
 export const HOWTO_CHAPTERS: Record<Locale, Chapter[]> = {
   de: [

@@ -1,12 +1,10 @@
 import { useSyncExternalStore } from 'react';
 
 /**
- * Whether the in-park compass is on the homepage right now, for the hero's pill that scrolls to it.
- *
- * The compass decides for itself whether it renders (in a park with headliners in season, or the
- * `?sim=compass` demo, where the hero stays on the device's real position and knows nothing of
- * the park), so the hero cannot work it out from its own nearby answer. The compass slot says so
- * here while it is mounted, and the hero reads it. The id is the anchor the pill scrolls to.
+ * Whether the in-park compass is on the homepage right now, for the hero's pill that scrolls to
+ * it. The compass decides for itself whether it renders (the `?sim=compass` demo included), so the
+ * hero cannot work it out from its own nearby answer; the compass slot reports it here while
+ * mounted. The id is the anchor the pill scrolls to.
  */
 export const PARK_COMPASS_ID = 'park-compass';
 

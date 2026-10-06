@@ -39,16 +39,9 @@ export async function getParkPaths(): Promise<string[]> {
 }
 
 /**
- * Attraction detail paths, one per `/v1/sitemap/attractions` entry. Transforms the
- * API url (`/v1/parks/.../attractions/<slug>`) to the frontend path.
- *
- * No variant-slug filter here. The attraction page marks a numbered-suffix slug
- * noindex only when the base slug in the same park carries the same name, and this
- * list has no names to check that (the endpoint answers `{url, slug}`). It does not
- * need them: since PAR-498 the backend lists exactly one row per attraction name,
- * the row the park payload serves, so a same-name duplicate never reaches this
- * list. What does reach it with a base slug beside it is a different ride
- * ("Main Train 2" next to "Main Train"), and filtering by slug dropped those pages.
+ * Attraction detail paths, one per `/v1/sitemap/attractions` entry. No variant-slug filter: the
+ * backend lists one row per attraction name, so a numbered slug beside its base slug here is a
+ * different ride ("Main Train 2" next to "Main Train"), and filtering by slug would drop its page.
  */
 export async function getAttractionPaths(): Promise<string[]> {
   const attractions = await getSitemapAttractions();

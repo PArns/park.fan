@@ -1,20 +1,10 @@
 import { useState, useSyncExternalStore } from 'react';
 
 /*
- * Hydration-safe client values, all read through `useSyncExternalStore` rather than
- * `useState` + a deferred `setState` in an effect.
- *
- * The deferred shape these hooks used to have (`setTimeout(() => setX(...), 0)` inside a
- * `useEffect`) cost a paint every time a consumer mounted, not only at hydration: the browser
- * painted the server-equivalent fallback (a skeleton, `null`, "--:--"), then the timeout fired
- * and a second commit painted the real value. On a client-side navigation to a park page that
- * was a skeleton flash and a second render in every gated section, and a gate nested inside
- * another gate (the daily chart inside the park stats) paid it once per level.
- *
- * `useSyncExternalStore` reads `getServerSnapshot` on the server and while hydrating, so the
- * first client render still matches the server markup, and React re-renders with the client
- * snapshot straight after hydration, in one batch for every consumer. A component mounted after
- * hydration reads the client snapshot on its first render and renders once.
+ * Hydration-safe client values, read through `useSyncExternalStore` instead of an effect that sets
+ * state: the server snapshot keeps the hydration render matching the server markup, and a
+ * component mounted later reads the client snapshot on its first render, with no extra paint. See
+ * docs/rules/a-mount-gate-reads-a-store-never-a-timer.md.
  */
 
 const subscribeToNothing = () => () => {};

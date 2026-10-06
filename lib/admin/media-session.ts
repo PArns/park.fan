@@ -5,28 +5,11 @@ import type { SessionFile } from '@/lib/media/session-photos';
 import type { RepoRef } from './github';
 
 /**
- * Which pull request a media save lands in.
- *
- * A session is not a token in the browser — it is **the branch carrying the
- * `media/session-` prefix**, and the pull request opened for it. Resolving it on
- * the server is what makes a reload, a second tab and a different machine all
- * land in the same PR, and it is why this lives in one module instead of being
- * re-derived by both the commit endpoint and the banner that reports it.
- *
- * The resolution deliberately looks in two places, in this order:
- *
- *  1. **The open pull request** with the prefix. The normal case.
- *  2. **A session branch with no open PR.** This is the hole that produced a
- *     pull request per image: if opening the PR failed after the commits landed
- *     (the endpoint answers 207 for exactly that), or somebody closed the PR
- *     without deleting the branch, then looking only at pull requests says "no
- *     session" and the next save forks a second branch. Every further save does
- *     the same, and a twelve-photo batch becomes twelve pull requests.
- *
- * A lookup that FAILS is not a session of zero. `resolveSession` throws in that
- * case rather than answering null, because answering null is what makes the
- * caller open a duplicate PR — the one outcome the whole mechanism exists to
- * prevent.
+ * Which pull request a media save lands in. A session is the branch with the `media/session-`
+ * prefix and its pull request, resolved on the server so a reload, a second tab or another
+ * machine all land in the same PR. A session branch whose PR could not be opened (the 207 case)
+ * still counts, or every further save would fork a branch of its own. A failed lookup throws
+ * instead of answering null, because null makes the caller open a duplicate PR.
  */
 
 export const SESSION_PREFIX = 'media/session-';
@@ -41,20 +24,12 @@ export interface MediaSession {
   body: string;
 }
 
-/**
- * The running session, or null when there genuinely is none.
- *
- * Throws when GitHub could not be asked — see the module note: a failed lookup
- * must not be reported as "no session running".
- */
+/** The running session, or null when there is none. Throws when GitHub could not be asked. */
 export async function resolveSession(
   octokit: Octokit,
   { owner, repo }: RepoRef
 ): Promise<MediaSession | null> {
-  // NOT filtered by base. A session pull request retargeted to another branch is
-  // still the session — filtering it out would report "none running" and the next
-  // save would open a second one, which is the failure this function exists to
-  // prevent.
+  // Not filtered by base: a session PR retargeted to another branch is still the session.
   const { data: open } = await octokit.pulls.list({
     owner,
     repo,
@@ -73,20 +48,10 @@ export async function resolveSession(
     };
   }
 
-  // No open pull request. A session branch may still exist, and whether it can be
-  // joined depends entirely on WHY it has no PR:
-  //
-  //   - never had one   → an earlier save committed but could not open it (207).
-  //                       Adopt it: the commits are real and belong in the session.
-  //   - had one, merged → the work shipped. The branch is behind `main` now, and
-  //                       committing onto it would open a pull request whose diff
-  //                       is "everything that changed on main since", inverted.
-  //   - had one, closed → somebody said no. Reviving it silently is worse than
-  //                       starting clean.
-  //
-  // Only the first is a session. The other two are spent branches that happen to
-  // still be there, which is the default on this repository — GitHub only deletes
-  // the head branch on merge when the setting is on.
+  // No open pull request. A session branch that never had one (an earlier save could not open
+  // it, 207) is adopted. One whose PR was merged or closed is spent: committing onto a merged
+  // branch would open an inverted diff of main, and a closed one was a no. This repository keeps
+  // head branches after merge, so spent ones are the normal case.
   const { data: refs } = await octokit.git.listMatchingRefs({
     owner,
     repo,
@@ -94,17 +59,13 @@ export async function resolveSession(
   });
   if (!refs.length) return null;
 
-  // Only the newest is a candidate — branch names carry a sortable
-  // `YYYYMMDDHHMMSS` stamp. An older branch behind a spent one is not a session
-  // somebody lost track of; it is history.
+  // Only the newest is a candidate: branch names carry a sortable `YYYYMMDDHHMMSS` stamp.
   const branch = refs
     .map((r) => r.ref.replace(/^refs\/heads\//, ''))
     .sort()
     .at(-1)!;
 
-  // Exact lookup by head ref rather than a scan: this answers "does THIS branch
-  // have a pull request", including the merged and closed ones the open list
-  // above cannot see by definition.
+  // By head ref, so this branch's merged and closed PRs count too.
   const { data: prs } = await octokit.pulls.list({
     owner,
     repo,
@@ -118,11 +79,8 @@ export async function resolveSession(
 }
 
 /**
- * The files a session changes against its base.
- *
- * The pull request's own file list when there is one. A session branch that
- * never got its pull request (an earlier save answered 207) is compared with the
- * base instead, which is the same diff by another door.
+ * The files a session changes against its base: the PR's file list, or a compare with the base
+ * for a session branch that never got its PR.
  */
 export async function sessionFiles(
   octokit: Octokit,
@@ -163,11 +121,8 @@ export async function readSessionJson(
 }
 
 /**
- * The `- ` lines of a session PR body: one per change, in the order they landed.
- *
- * The body is the session's log — every save appends to it — so this is also the
- * answer to "what is already in this pull request", which the admin shows before
- * you add the next thing to it.
+ * The `- ` lines of a session PR body, one per change in the order they landed: the body is the
+ * session's log, which the admin shows before the next save.
  */
 export function sessionChanges(body: string): string[] {
   return body

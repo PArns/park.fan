@@ -3,13 +3,8 @@
  *
  * It arrives base64url — no padding, `-` and `_` for `+` and `/` — and
  * `atob` understands neither, so this is a translation and not a formality:
- * skip it and `subscribe()` rejects with a key it cannot parse.
- *
- * Shared by `lib/planner/use-push-subscription.ts` (trip planner) and
- * `lib/push/push-registration.ts` (ride alerts, show follows) — both
- * subscribe the same browser to the same push service, and this is a pure,
- * feature-agnostic translation with nothing trip- or alert-specific in it,
- * unlike the rest of either file's subscribe flow.
+ * skip it and `subscribe()` rejects with a key it cannot parse. Shared by the
+ * trip planner's and the ride alerts' subscribe flows.
  */
 export function urlBase64ToUint8Array(base64: string): Uint8Array<ArrayBuffer> {
   const padding = '='.repeat((4 - (base64.length % 4)) % 4);

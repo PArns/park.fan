@@ -11,24 +11,12 @@ import type { MediaImage } from '@/lib/media/types';
 import { getGlossaryMenu, type GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
 /**
- * Everything the header's "more" band draws, resolved on the server.
- *
- * The band is three hubs side by side — the dictionary, the best-travel-time page, the guide —
- * each under a photo and each with what it contains: the dictionary's categories, and the
- * chapters of the other two. The phone sheet lists the same, in the same order. Until this the
- * guide and the best-time hub were a card each with one line under it, next to a dictionary card
- * with twelve rows, so two thirds of the band were empty and the one list in it hung in the middle
- * column.
- *
- * **What it adds to the link graph is nothing, and that is why the chapters are allowed in.** Every
- * chapter is a fragment on its hub (`/beste-reisezeit#times`), which a crawler reads as the hub
- * itself — the same reasoning that let the dictionary's categories in (`glossary-menu.ts`), and the
- * opposite of the parks panel's cities, which are pages of their own and therefore stay behind a
- * fetch. The markup is the cost, measured in `docs/features/header-navigation.md`.
- *
- * **Resolved here because the header is a Client Component.** The chapter lists are six locales
- * of labels and the photos come out of `@/lib/media`, the 107 KB catalog; only the one locale's
- * labels and four URLs cross the boundary. Same reason `featured-parks-menu.ts` exists.
+ * Everything the header's "more" band draws, resolved on the server: three hubs side by side (the
+ * dictionary, the best-travel-time page, the guide), each under a photo and with its categories or
+ * chapters. The chapters add nothing to the link graph, since a fragment on a hub
+ * (`/beste-reisezeit#times`) reads as the hub itself. Resolved here because the header is a Client
+ * Component and the photos come from the `@/lib/media` catalog. See
+ * docs/features/header-navigation.md.
  */
 
 /** A photo for the band, as the panel needs it: a versioned URL and, for an uncut source, where
@@ -60,18 +48,9 @@ export interface MoreMenu {
 }
 
 /**
- * Which photo stands over which hub.
- *
- * **A hub gets the photo its own page opens with**, so the picture a reader clicks is the picture
- * they land on, and it is asked for the way that page asks: the guide and the best-time hub by
- * their park's `park-background` (Phantasialand's Wintertraum carousel, Efteling's Symbolica),
- * Fancast by the path its page names. The dictionary has no hero of its own — its pages draw one
- * from the rotation pool per day — so it gets Fenix, a wing coaster shot from below with the track
- * running through the frame: the biggest of its twelve categories is the coaster elements, 77
- * terms.
- *
- * Taron was tried over the guide, the ride its whole text is told at, and dropped: the 16:9 crop
- * is the station's steelwork, and at 128 px tall the banner read as a dark grey tangle.
+ * Which photo stands over which hub: the photo its own page opens with, asked for the way that
+ * page asks, so the picture a reader clicks is the one they land on. The dictionary has no hero of
+ * its own, so it gets Fenix, a coaster for its biggest category, the coaster elements.
  */
 const PHOTOS = {
   glossary: () => getRideImage('attractiepark-toverland', 'fenix'),

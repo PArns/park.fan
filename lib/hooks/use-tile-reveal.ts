@@ -3,35 +3,12 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Motion for the entry-tile rows — the park page's tabs and the ride page's chapter row settling
- * in once on mount.
- *
- * Same three rules `use-menu-reveal.ts` arrived at, and the middle one is why this hook exists at
- * all rather than a class on the tile:
- *
- * - **CSS owns visibility, GSAP owns motion.** The tween animates `y` and nothing else. The tiles
- *   are in the document and visible with no JavaScript at all, so a failed chunk, a blocked
- *   import or a `prefers-reduced-motion` visitor gets a row that is simply there. There is no
- *   fade for the same reason as the menu: an `opacity: 0` from-state that is written without its
- *   tween following leaves the navigation invisible, and this row IS the navigation.
- * - **Nothing touches the glass.** Every tile carries `backdrop-blur-md`. A transform on that
- *   element — or on any ancestor — makes it a backdrop root for as long as the animation runs,
- *   so the blur would go flat exactly while somebody watches the row appear. The targets are
- *   therefore the tile's CONTENTS (`[data-tile-stagger]`, the icon chip and the label), never the
- *   tile box and never the row.
- * - **No ScrollTrigger.** The row sits at the top of the page; it is on screen when the page is.
- *
- * The stagger runs over chips and labels in DOM order, so it reads as a wave crossing the row
- * rather than each tile popping as a unit — at 6 px and 20 ms it is a settle, not an entrance.
- *
- * It runs ONCE, on mount, and nothing re-runs it on a tab click. A version that re-settled the
- * newly selected tile was written and removed: the row is navigation somebody clicks repeatedly,
- * and a flourish on every click is the fidget the header's old reveal hook had to be rewritten to
- * stop doing. The selected state is already carried by the border and the filled chip, which need no
- * animation to be read.
- *
- * Cost: the GSAP chunk is fetched on mount, and it is the same module the header's reveal already
- * shares. A visitor who prefers reduced motion never imports it.
+ * Motion for the entry-tile rows (the park page's tabs, the ride page's chapter row) settling in
+ * once on mount, under the same rules as `use-menu-reveal.ts`. CSS owns visibility and GSAP only
+ * animates `y`, so the row is there without JavaScript and never stranded at `opacity: 0`. The
+ * targets are the tiles' contents (`[data-tile-stagger]`), never the `backdrop-blur` tile or the
+ * row, because a transform there flattens the glass while it runs. Not re-run on a tab click: a
+ * flourish on navigation people click repeatedly is fidget.
  */
 
 type Gsap = typeof import('gsap').gsap;

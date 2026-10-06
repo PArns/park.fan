@@ -2,27 +2,11 @@ import { GLOSSARY_TERMS } from '@/lib/glossary/data';
 import type { GlossaryCategory } from '@/lib/glossary/types';
 
 /**
- * The order the glossary overview groups its terms in, and the only list of categories the site
- * renders anywhere.
- *
- * It lived in `app/[locale]/glossary/page.tsx` while the page was its one reader. The header's
- * "more" panel is the second, and a menu that offers a category the page does not draw sends its
- * reader to an anchor that is not in the document — so both read this array rather than each
- * keeping a copy.
- *
- * **It is a curated order and not the type's member list**, which is what makes it a list at all:
- * `GlossaryCategory` has 13 members and `ai` currently holds no term, so it stays out. Every
- * category that does hold a term must be listed: a term in a category missing here falls out of
- * the overview and its search alike (`logistics` did until PAR-264). `pnpm check:glossary-slugs`
- * fails when that happens. Adding a category here adds it to the menu with no change on that
- * side, which is the point of one list.
- *
- * **What the two readers share is this order, and they drop an empty category by asking different
- * questions.** The page groups the terms it loaded for one locale and skips a category its own map
- * has nothing under; the menu has no locale-specific set and reads `listGlossaryCategories()`
- * below, which counts `GLOSSARY_TERMS`. The two answers agree wherever a category is translated at
- * all, and where they could not — a category whose terms are missing in one language — the page is
- * the one that must decide, because it is the page that would render an empty heading.
+ * The order the glossary overview groups its terms in, and the one list of categories the site
+ * renders: the page and the header's "more" panel both read it, so the menu never offers an
+ * anchor the page lacks. A curated order, not the type's member list (`ai` holds no term), but
+ * every category that holds a term must be listed or its terms fall out of the overview and its
+ * search; `pnpm check:glossary-slugs` fails then.
  */
 export const GLOSSARY_CATEGORY_ORDER: GlossaryCategory[] = [
   'wait-times',
@@ -40,11 +24,8 @@ export const GLOSSARY_CATEGORY_ORDER: GlossaryCategory[] = [
 ];
 
 /**
- * Categories that hold at least one term, in the order above, with the size of each.
- *
- * The count comes from `GLOSSARY_TERMS` — the untranslated source — because a category holds the
- * same terms in every language, so this needs no locale and loads no translation file. The labels
- * do, and they are resolved by whoever renders them.
+ * Categories that hold at least one term, in the order above, with the size of each. Counted from
+ * the untranslated `GLOSSARY_TERMS`, since a category holds the same terms in every language.
  */
 export function listGlossaryCategories(): { category: GlossaryCategory; termCount: number }[] {
   const counts = new Map<GlossaryCategory, number>();

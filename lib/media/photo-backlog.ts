@@ -1,26 +1,9 @@
 /**
- * Which rides in a park still have no photograph, and which of them to shoot first.
- *
- * The question sounds like a sort and is mostly a question about what the API can
- * answer for EVERY ride rather than for ten of them. Three sources disagree about
- * how far they reach:
- *
- *  - `/stats` returns `topAttractions` with **exactly ten rows** (measured against
- *    Phantasialand), each carrying a rank and a P90. That is the best ordering
- *    there is, and it covers a quarter of a mid-sized park.
- *  - The park payload flags `isHeadliner` per ride, derived upstream from
- *    historical wait times. Ten per park at Phantasialand and Movie Park, largely
- *    the same ten, but it costs nothing extra and survives a cold `/stats`.
- *  - Everything else has only today: `statistics.peakWaitToday` and the current
- *    queue. At 09:00 that is near zero for the whole park, which is exactly why it
- *    ranks LAST and never first — a list that reshuffles itself between two coffee
- *    breaks is not a backlog.
- *
- * So the score is layered rather than blended, and each layer degrades into the
- * next: no `/stats` (cold compute, timeout) drops layer one and the headliners
- * still float; no headliner flag and today's numbers still separate Taron from a
- * carousel. Nothing here throws, and nothing here fetches — the route hands it
- * rows, this decides the order, and `pnpm test:photo-backlog` pins the rules.
+ * Which rides in a park still have no photograph, and which of them to shoot first. The score is
+ * layered rather than blended, and each layer degrades into the next: the ten rides `/stats`
+ * ranks, then headliners (which survive a cold `/stats`), then today's peak wait, which only
+ * orders the long tail because it is near zero in the morning. Nothing here fetches or throws;
+ * `pnpm test:photo-backlog` pins the rules.
  */
 
 import { isInSeason } from '@/lib/utils/season';
@@ -44,10 +27,8 @@ export interface BacklogRide {
   /** A curated ride profile exists — somebody has already spent time on this ride. */
   hasRideProfile: boolean;
   /**
-   * `false` only when the ride is definitively out of its season. `null` means
-   * "seasonal, nothing else known" and behaves exactly like in-season, per the
-   * project's `!== false` rule — most rides sit there, because the detector needs
-   * 330 observation days before it will name a month.
+   * `false` only when the ride is definitively out of its season. `null` means "seasonal, nothing
+   * else known" and behaves like in-season, per the `!== false` rule.
    */
   isCurrentlyInSeason: boolean | null;
   /**

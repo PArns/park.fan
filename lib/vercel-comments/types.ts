@@ -31,11 +31,9 @@ export interface NormalizedComment {
   threadId: string | null;
   /** Id of the individual comment inside the thread. */
   commentId: string | null;
-  /** The comment text itself. */
   text: string | null;
   /** Display name of whoever wrote it. */
   author: string | null;
-  /** Whether the thread is resolved. */
   resolved: boolean;
 
   /** Full URL of the page the comment sits on. */

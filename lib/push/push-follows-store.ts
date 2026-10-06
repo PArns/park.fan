@@ -1,19 +1,11 @@
 'use client';
 
 /**
- * A local mirror of a browser's ride alerts and show follows — the same
- * shape as `lib/utils/favorites.ts`: read/write `localStorage`, dispatch a
- * custom event so every mounted bell re-checks itself, and never touch the
- * network from here.
- *
- * This is a CACHE for instant, hydration-safe rendering, not the source of
- * truth — Postgres is (`ride_alerts`/`show_follows`). It can drift (a
- * subscription the backend dropped after repeated failures leaves stale
- * entries here), which is an accepted, pre-existing class of staleness: the
- * trip planner's own "on" check has the identical property today. The
- * dialog and the overview page reconcile against the server on open; the
- * bells do not need to, since their only job is rendering the right initial
- * state without a network round trip.
+ * A local mirror of a browser's ride alerts and show follows, shaped like
+ * `lib/utils/favorites.ts`: `localStorage`, a custom event so every mounted bell
+ * re-checks itself, and no network. A cache for instant, hydration-safe
+ * rendering, not the source of truth; it can drift, so the dialog and the
+ * overview page reconcile against the server on open.
  */
 
 const SHOW_FOLLOWS_KEY = 'parkfan_show_follows';
@@ -69,22 +61,14 @@ function dispatchChanged(): void {
   }
 }
 
-// Cached by the raw string each was parsed from — same shape as
-// `lib/utils/favorites.ts`'s `parseCache`. A park page mounts one
-// `RideAlertBell`/`ShowFollowBell` per card, and one `PUSH_FOLLOWS_CHANGED_EVENT`
-// makes every one of them re-read; without this, that was O(bells) JSON.parse
-// + re-validation of the whole list per toggle. The cached arrays are treated
-// as immutable — callers only ever read them or build a new array to write.
+// Cached by the raw string each was parsed from: one change event makes every bell on a park page
+// re-read. The cached arrays are treated as immutable; callers build a new array to write.
 let showFollowsCache: { raw: string; data: ShowFollowLocal[] } | null = null;
 let rideAlertsCache: { raw: string; data: RideAlertLocal[] } | null = null;
 
 /**
- * A stored entry, in either shape this key has ever held.
- *
- * Until the panel's bells learned which performance they are about, an entry
- * was a bare show id. Those are still in every returning browser's storage and
- * mean what they always meant — the open-ended follow — so they read as
- * `startTime: null` rather than being thrown away. Anything else is skipped.
+ * A stored entry in either shape this key has held: a bare show id (the older format, meaning the
+ * open-ended follow) or `{ showId, startTime }`. Anything else is skipped.
  */
 export function parseShowFollowEntry(entry: unknown): ShowFollowLocal | null {
   if (typeof entry === 'string') return { showId: entry, startTime: null };
@@ -142,32 +126,19 @@ function readRideAlerts(): RideAlertLocal[] {
 }
 
 /**
- * The follow this browser holds for a show, with the performance it is about.
- *
- * There is deliberately no `isShowFollowedLocal(showId)` beside this any more:
- * that question — "is this show followed at all" — is the one that lit every
- * row of an hourly show for a reminder about one of them, and a bare boolean
- * is what made it easy to ask by accident. `showFollowMatchesLocal(showId)`
- * still answers it for a caller that means the whole show.
+ * The follow this browser holds for a show, with the performance it is about. No boolean
+ * "is this show followed" sits beside it on purpose: that question lit every showtime's bell for
+ * a reminder about one of them. `showFollowMatchesLocal(showId)` asks it for the whole show.
  */
 export function getShowFollowLocal(showId: string): ShowFollowLocal | null {
   return readShowFollows().find((entry) => entry.showId === showId) ?? null;
 }
 
 /**
- * Whether the follow this browser holds is the one a given bell is about.
- *
- * `startTime` omitted asks the open-ended question a show card's bell asks —
- * "is this show followed at all" — and is what every caller meant before the
- * column existed. Passed, it asks about ONE performance: a park panel lists
- * an hourly show once per showtime, and lighting all four of those bells for
- * a reminder that can only be about one of them is the bug this answers.
- *
- * A follow that named no performance still answers yes to every one of them,
- * because that is what it does: the API notifies before whichever comes next,
- * so a bell beside 14:00 with an open-ended follow behind it really is armed.
- * That also keeps every browser holding the old bare-string format rendering
- * exactly as it did.
+ * Whether the follow this browser holds is the one a given bell is about. Without `startTime` it
+ * asks whether the show is followed at all; with it, about one performance, since a park panel
+ * lists an hourly show once per showtime. An open-ended follow answers yes for every performance,
+ * because the API notifies before whichever comes next.
  */
 export function showFollowMatchesLocal(showId: string, startTime?: string | null): boolean {
   const entry = getShowFollowLocal(showId);
@@ -177,14 +148,8 @@ export function showFollowMatchesLocal(showId: string, startTime?: string | null
 }
 
 /**
- * Whether two ISO strings name the same moment.
- *
- * Compared as instants and not as text, because one side has been sitting in
- * `localStorage` since some earlier visit and the other was just rendered: a
- * `+02:00` that comes back as `Z`, or a dropped `.000`, is the same
- * performance, and string equality would quietly unlight every stored pin the
- * day the API's serialization moves. An unparseable value matches nothing —
- * that is the honest answer for a mirror entry we cannot read.
+ * Whether two ISO strings name the same moment, compared as instants and not as text: a stored
+ * `+02:00` that comes back as `Z` is the same performance. An unparseable value matches nothing.
  */
 export function isSameInstant(a: string, b: string): boolean {
   const left = new Date(a).getTime();
@@ -192,6 +157,7 @@ export function isSameInstant(a: string, b: string): boolean {
   return Number.isFinite(left) && left === right;
 }
 
+/** Records or clears this browser's follow of a show, with the performance it is for. */
 export function setShowFollowedLocal(
   showId: string,
   followed: boolean,
@@ -215,14 +181,9 @@ export function setShowFollowedLocal(
 }
 
 /**
- * Bring this browser's entry for one show in line with the server's list.
- *
- * Only call this with the items of a list the server really returned
- * (`PushListResult` with `ok: true`). A show missing from such a list is a
- * follow the server does not hold, and its mirror entry goes; a show present
- * takes the server's `startTime`, which is how a bare entry written before the
- * column existed learns which performance it was about. Every other show's
- * entry is left alone.
+ * Brings this browser's entry for one show in line with a list the server really returned
+ * (`PushListResult` with `ok: true`): a missing show's entry goes, a present one takes the
+ * server's `startTime`. Every other show's entry is left alone.
  */
 export function reconcileShowFollowLocal(
   showId: string,
@@ -236,10 +197,12 @@ export function reconcileShowFollowLocal(
   setShowFollowedLocal(showId, true, remote.startTime ?? null);
 }
 
+/** This browser's alert for a ride in the local mirror, or null. */
 export function getRideAlertLocal(attractionId: string): RideAlertLocal | null {
   return readRideAlerts().find((entry) => entry.attractionId === attractionId) ?? null;
 }
 
+/** Every ride alert in this browser's local mirror. */
 export function listRideAlertsLocal(): RideAlertLocal[] {
   return readRideAlerts();
 }
@@ -263,6 +226,7 @@ export function setRideAlertLocal(
   writeJson(RIDE_ALERTS_KEY, next);
 }
 
+/** Removes a ride's alert from the local mirror. */
 export function removeRideAlertLocal(attractionId: string): void {
   const current = readRideAlerts();
   if (!current.some((entry) => entry.attractionId === attractionId)) return;

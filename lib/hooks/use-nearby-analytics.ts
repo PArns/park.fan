@@ -19,15 +19,9 @@ interface UseNearbyAnalyticsParams {
 }
 
 /**
- * Fires the nearby-card analytics events (parks/in-park loaded, permission granted/denied) and
- * keeps the geolocation context's in-park flag in sync. Extracted from NearbyParksCard; the
- * effects and their firing conditions are preserved so events neither double-fire nor go missing.
- *
- * These fire on *load*, not on a click, so they are the most expensive events on the site — every
- * property is billed as another event. `nearby_in_park_detected` was dropped for that reason: it
- * restated `nearby_parks_loaded` with `type: 'in_park'` and cost four billed rows to do it. So did
- * `in_park` (it is `type === 'in_park'`), `geo_allowed` (it is `source === 'gps'`) and `parkId`
- * (the same park as `parkName`). See `lib/analytics/umami.ts` for the property budget.
+ * Fires the nearby-card analytics events (parks or in-park loaded, permission granted or denied)
+ * and keeps the geolocation context's in-park flag in sync. They fire on load, not on a click, so
+ * every property is billed on a great many page views; see docs/rules/umami-event-budget.md.
  */
 export function useNearbyAnalytics({
   nearbyData,
@@ -42,7 +36,6 @@ export function useNearbyAnalytics({
   const seenCheck = useRef(false);
   const lastTrackedDataKey = useRef<string | null>(null);
 
-  // Track analytics when nearby data changes (once per result, include source: gps | ip)
   useEffect(() => {
     if (!nearbyData) return;
 
@@ -71,7 +64,6 @@ export function useNearbyAnalytics({
     }
   }, [nearbyData, setIsInPark, locationSource]);
 
-  // Track permission granted once when user grants location
   useEffect(() => {
     if (position && !permissionDenied && !hasTrackedGranted.current) {
       hasTrackedGranted.current = true;
@@ -80,10 +72,9 @@ export function useNearbyAnalytics({
     if (!position) hasTrackedGranted.current = false;
   }, [position, permissionDenied]);
 
-  // Track permission denied once when user denies location. The context also reports a denial
-  // the browser had stored from an earlier visit, as soon as its check has run; that one is not
-  // an answer given now, and counting it would bill an event on every page view of every visitor
-  // who ever said no. So the first state seen after the check is taken as already tracked.
+  // The context also reports a denial stored from an earlier visit once its check has run. That
+  // is not an answer given now, and counting it would bill an event on every page view of every
+  // visitor who ever said no, so the first state seen after the check counts as tracked.
   useEffect(() => {
     if (!initialCheckDone) return;
     if (!seenCheck.current) {

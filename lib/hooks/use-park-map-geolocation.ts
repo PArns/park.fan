@@ -32,13 +32,9 @@ export interface ParkMapGeolocation {
 
 /**
  * Geolocation for the park map: the visitor's position from the geolocation context, and
- * distance-to-park, in-park state and the five nearest entities while inside the park.
- *
- * The map never asks for location itself. It used to call `getCurrentPosition` on mount, so every
- * opened map tab (and every blog post with a park map) opened a native prompt nobody had tapped
- * for — and in Chrome three ignored prompts block the site for a week. On a park page the near-you
- * row above the tabs is what asks; the map shows whatever position the context holds
- * (docs/rules/location-is-asked-for-where-it-is-needed.md).
+ * distance-to-park, in-park state and the five nearest entities while inside the park. The map
+ * never asks for location itself: in Chrome, ignored prompts block the site for a week. See
+ * docs/rules/location-is-asked-for-where-it-is-needed.md.
  */
 export function useParkMapGeolocation(
   park: ParkWithAttractions,
@@ -147,13 +143,9 @@ export function useParkMapGeolocation(
     };
   }, [userLocation, park.latitude, park.longitude, validAttractions, validShows, validRestaurants]);
 
-  // When in-park, follow the visitor via watchPosition for responsive
-  // nearby-entity updates. Unlike the old 5s getCurrentPosition poll this lets
-  // the browser drive the geolocation hardware (callbacks only on movement) —
-  // no fixed-interval wakeups, far less battery/CPU on the device actually
-  // walking around a park. Outside the park the geolocation context already
-  // refreshes at 5-min intervals. Only while the grant holds: a watch started
-  // after a one-time grant ran out would open a prompt.
+  // In the park, follow the visitor with `watchPosition`, which calls back only on movement
+  // instead of waking the hardware on a timer. Only while the grant holds: a watch started after
+  // a one-time grant ran out would open a prompt.
   useEffect(() => {
     if (!isInPark || !permissionGranted) return;
     if (typeof navigator === 'undefined' || !navigator.geolocation) return;

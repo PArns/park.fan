@@ -4,27 +4,14 @@ import { getImagesByRole, getParkPagePath, getParkRefBySlug } from '@/lib/media'
 import { focusToObjectPosition } from '@/lib/media/focus';
 
 /**
- * The six photo cards in the parks menu, and why they are a fixed set rather than a thumbnail
- * per park.
- *
- * The media database holds a picture for **14 of 212 parks**, and a `park-background` for nine of
- * them. A photo on every park row in the menu would therefore be nine pictures and two hundred
- * empty boxes — so the panel carries a "beliebte Parks" rail instead: a handful of parks that are
- * genuinely worth looking at, all of which have a photo, and no gaps.
- *
- * Which parks: the homepage's per-locale list (`FEATURED_PARK_SLUGS`), intersected with the ones
- * that actually have a background image, in that order. A second curated list would be a second
- * thing to keep in sync — and the answer to "which parks does a German reader want" has already
- * been worked out once, with visitor numbers in the comments. Locales whose featured parks have no
- * photos yet (`en` leans on Orlando and Tokyo, none of which we have shot) fall back to the parks
- * that do, so the rail is never short.
- *
- * Runs on the server: `@/lib/media` is the 107 KB catalog and the header is a Client Component.
- * Only the six resolved URLs cross that boundary.
+ * The six photo cards in the parks menu: a fixed rail rather than a thumbnail per park, because
+ * few parks have a background photo and a picture per row would be mostly empty boxes. The parks
+ * are the homepage's per-locale `FEATURED_PARK_SLUGS` that have one, topped up with other
+ * photographed parks so the rail is never short. Server-side: `@/lib/media` is the whole catalog
+ * and the header is a Client Component, so only the resolved URLs cross.
  */
 
-/** Six cards, two by three beside five continent columns — the column is as tall as they are.
- *  Nine parks carry a `park-background`, so this is the shelf being filled, not stretched. */
+/** Six cards, two by three beside five continent columns: the column is as tall as they are. */
 const RAIL_SIZE = 6;
 
 export interface FeaturedParkCard {
@@ -43,9 +30,9 @@ export interface FeaturedParkCard {
 const FEATURED_PARKS_MENU = new Map<string, FeaturedParkCard[]>();
 
 /**
- * Memoised per process, like `getNewsMenu`: everything it reads is the generated media manifest
- * and a constant, so the answer is fixed for the deployment, and the layout asks for it on every
- * page. Callers share the array and must not mutate it.
+ * The parks menu's photo cards for a locale, memoised per process: everything it reads is fixed
+ * for the deployment, and the layout asks on every page. Callers share the array and must not
+ * mutate it.
  */
 export function getFeaturedParksMenu(locale: string): FeaturedParkCard[] {
   let menu = FEATURED_PARKS_MENU.get(locale);
