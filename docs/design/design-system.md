@@ -1007,10 +1007,15 @@ are paid in text width and in 3 of those 18 that is one more line (es at 320 and
 
 **Neighbouring targets meet, they do not overlap.** Where two overlap, the later element in the
 DOM takes the tap, so a finger closer to the left control fires the right one. A ride card's corner
-holds up to three 34 px circles (bell, ridden, star); on a phone they sit 6 px apart
-(`GLASS_CIRCLE_ROW`), and each target is 40 × 44 px (`GLASS_CIRCLE_HIT_AREA`), the circle plus the
-gap, so the targets tile the row. Before that the circles stood 12 px apart to keep 44 px squares
-from overlapping, and the empty glass between them came out of the width of the ride's name.
+holds up to three circles (bell, ridden, star); on a phone they are 30 px and sit 6 px apart
+(`GLASS_CIRCLE_ROW`), and each target is 36 × 40 px (`GLASS_CIRCLE_HIT_AREA`), the circle plus the
+gap, so the targets tile the row. Before that the circles were 34 px and stood 12 px apart to keep
+44 px squares from overlapping, and the empty glass between them came out of the width of the
+ride's name.
+
+That row is the one place below the 44 px floor, and it is a product decision (PAR-719 review):
+three controls share the first line of a 360 px row with the name and the wait time, and the name
+is what the row is for. The targets still clear WCAG 2.5.8's 24 px with room to spare.
 
 The same split is written out at three other call sites for their own reasons:
 `components/common/breadcrumb-nav.tsx` (a `min-h-11` there grew the crumb row ~24 px after paint,

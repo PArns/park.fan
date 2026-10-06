@@ -447,6 +447,23 @@ export const TabsWithHash = memo(function TabsWithHash({
     />
   );
 
+  // The rope-drop strip renders nothing when there are neither worth nor evening picks, and
+  // nothing while a filter is narrowing the list either. It reads `park.attractions` raw, so with
+  // "Nur mit Nässe" on it put a dry rope-drop tip above a grid of four water rides, and with a
+  // rider height set it recommended being at the gate for a coaster the child below it cannot
+  // board. Hidden for the same reason it is hidden while searching: it is advice about the whole
+  // park, and the visitor has just said they are asking about part of it. The off-season toggle
+  // is not in this list — it widens the grid rather than narrowing it.
+  const ropeDropStrip = (className: string) =>
+    !isNarrowing && (
+      <RopeDropHeadliners
+        headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
+        attractions={park.attractions ?? NO_ATTRACTIONS}
+        parkPath={parkPath}
+        className={className}
+      />
+    );
+
   // Attractions grouped by Land — ONE tree, rendered by both branches below.
   //
   // It used to be two: before the mount the tab showed `AttractionWaitOverview`, a compact row
@@ -465,22 +482,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     <div className="relative space-y-8">
       {/* Stays mounted when another tab is chosen — the mounted branch hides its panel instead
           (`forceMount` + `hidden`), so leaving the ride list and coming back rebuilds nothing. */}
-      {/* Renders nothing when there are neither worth nor evening picks — and
-                    nothing while a filter is narrowing the list either. It reads
-                    `park.attractions` raw, so with "Nur mit Nässe" on it put a dry
-                    rope-drop tip above a grid of four water rides, and with a rider
-                    height set it recommended being at the gate for a coaster the child
-                    below it cannot board. Hidden for the same reason it is hidden while
-                    searching: it is advice about the whole park, and the visitor has
-                    just said they are asking about part of it. The off-season toggle is
-                    not in this list — it widens the grid rather than narrowing it. */}
-      {!isNarrowing && (
-        <RopeDropHeadliners
-          headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
-          attractions={park.attractions ?? NO_ATTRACTIONS}
-          parkPath={parkPath}
-        />
-      )}
+      {ropeDropStrip('max-sm:hidden')}
 
       {headliners.length > 0 && !isSearching && (
         <LandSection
@@ -513,6 +515,10 @@ export const TabsWithHash = memo(function TabsWithHash({
             reopenAvailable
           />
         )}
+
+      {/* On a phone the headliners come first, the strip filled the first screen there. After
+          the nudge, which keeps its place one scroll down. */}
+      {ropeDropStrip('sm:hidden')}
 
       {hasSearchResults || closedRideMatches.length > 0 ? (
         landNames.map((landName, index) => {

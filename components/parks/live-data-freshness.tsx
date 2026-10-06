@@ -34,13 +34,16 @@ const DAY_AND_TIME: Intl.DateTimeFormatOptions = {
 
 /**
  * "As of 14:35" above the ride list, and a warning with a retry button when that is no longer
- * current.
+ * current. Below `sm` only the warning shows: on a phone the bare time sat on the hero photo,
+ * unreadable, between the filters and the rides, and a reader there needs to hear only when the
+ * numbers are off. The price is that a warning pushes the list down by the row on a phone.
  *
- * One line, one height, in every state: the warning and the button sit on the same `h-7` row the
- * time does, so a failed poll moves nothing below it. It subscribes to the park's live query
- * itself (same key as `LiveParkData`, so no extra fetch) because `TabsWithHash` is memoised so the
- * ride grid does not re-render on every `isFetching` flip; only this row does. Memoised itself for
- * the same reason as `ParkTabsList`: its props hold still while the filters move.
+ * From `sm` up, one line, one height, in every state: the warning and the button sit on the same
+ * `h-7` row the time does, so a failed poll moves nothing below it. It subscribes to the park's
+ * live query itself (same key as `LiveParkData`, so no extra fetch) because `TabsWithHash` is
+ * memoised so the ride grid does not re-render on every `isFetching` flip; only this row does.
+ * Memoised itself for the same reason as `ParkTabsList`: its props hold still while the filters
+ * move.
  */
 export const LiveDataFreshness = memo(function LiveDataFreshness({
   park,
@@ -82,7 +85,7 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
     <div
       className={cn(
         'mb-4 flex h-7 min-w-0 items-center gap-2 text-xs',
-        hint ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground'
+        hint ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground max-sm:hidden'
       )}
     >
       <p className="shrink-0 whitespace-nowrap tabular-nums" aria-live="polite">

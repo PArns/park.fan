@@ -286,7 +286,7 @@ export function AttractionCard({
             className={cn(
               'absolute top-3 right-3 z-[4]',
               GLASS_CIRCLE_ROW,
-              phoneRow && 'max-sm:top-[6px]'
+              phoneRow && 'max-sm:top-[8px]'
             )}
           >
             {/* On a blog fallback card `attraction.id` is the slug, not a UUID, and
@@ -374,15 +374,15 @@ export function AttractionCard({
             );
             if (!phoneRow) return heading;
             // A phone row's first line: name, wait time, then the room the corner circles take
-            // (34 px per circle and 6 px between them, plus an 8 px gap). The wait time sits
+            // (30 px per circle and 6 px between them, plus an 8 px gap). The wait time sits
             // outside the <h3> so the heading stays the ride's name. Its unit is left to screen
             // readers: the width goes to the name, and the figure is a wait time on every card.
             return (
               <div
                 className={cn(
                   'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
-                  parkName ? 'max-sm:pr-[82px]' : 'max-sm:pr-[42px]',
-                  rideLog && (parkName ? 'max-sm:pr-[122px]' : 'max-sm:pr-[82px]')
+                  parkName ? 'max-sm:pr-[74px]' : 'max-sm:pr-[38px]',
+                  rideLog && (parkName ? 'max-sm:pr-[110px]' : 'max-sm:pr-[74px]')
                 )}
               >
                 {heading}
