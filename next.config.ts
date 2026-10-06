@@ -865,7 +865,7 @@ const nextConfig: NextConfig = {
       // rendered to be read — a header is on the response whether or not anything renders, and
       // it is the only signal the JSON endpoints under /api/admin can carry at all. robots.txt
       // disallows the same three paths; this is the half that survives a crawler that ignores it.
-      ...['/admin', '/admin/:path*', '/api/admin/:path*', '/dev', '/dev/:path*'].map((source) => ({
+      ...['/admin', '/admin/:path*', '/api/admin/:path*'].map((source) => ({
         source,
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
       })),
@@ -1269,8 +1269,8 @@ const nextConfig: NextConfig = {
       //   /:locale/search          — answers `no-store` and must keep doing so; a query-keyed
       //                              page shared across readers is a privacy question, not a
       //                              cache question.
-      //   /admin, /api, /dev       — the Cloudflare rule excludes the first two by hand; giving
-      //                              any of them a window here would be the way to undo that.
+      //   /admin, /api             — the Cloudflare rule excludes both by hand; giving either a
+      //                              window here would be the way to undo that.
       // The RIDE page and the PARK page, the two highest-invocation routes in the app. Listed
       // BEFORE the calendar block below so the calendar's own, more specific sources win — the
       // hub `…/:park/<segment>` has the same segment count as `…/:park/:attraction` and would

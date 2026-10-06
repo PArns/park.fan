@@ -62,5 +62,5 @@ export default function proxy(request: NextRequest) {
 export const config = {
   // Every path except API, admin, dev, Next's own and files with an extension. Next reads this
   // statically, so the locale list is written out instead of taken from i18n/config.
-  matcher: ['/', '/(de|en|nl|fr|es|it)/:path*', '/((?!api|admin|dev|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/', '/(de|en|nl|fr|es|it)/:path*', '/((?!api|admin|_next|_vercel|.*\\..*).*)'],
 };

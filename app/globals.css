@@ -104,8 +104,8 @@
  * Tailwind's breakpoints, so the tiers keep agreeing with `sm:`/`lg:` for a reader who raised
  * the default font size.
  *
- * The media tiers stay and go first, for documents with no `page` container (`/admin`,
- * `/dev/blog-editor`), where a container query is false and every `.container` would go
+ * The media tiers stay and go first, for documents with no `page` container (`/admin`),
+ * where a container query is false and every `.container` would go
  * full-bleed. The container tiers come second and win wherever they match. With the panel shut
  * both halves answer the same number.
  */

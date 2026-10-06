@@ -1442,7 +1442,7 @@ so the page's own box wins wherever it is narrower. Measured on a park page,
 Every "after" is what the same number would get as a window width, and with the
 panel shut all three are unchanged (1536 / 1536 / 1280). The media tiers stay,
 and they go first, as the answer for a document with **no** `page` container:
-`/admin` and `/dev/blog-editor` render their own `<html>` outside
+`/admin` renders its own `<html>` outside
 `app/[locale]/layout.tsx`, and a container query with no matching container is
 false rather than unbounded — a container-only utility would put every
 `.container` there full-bleed. `rem` in both halves, because Tailwind's

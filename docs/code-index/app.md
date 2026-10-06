@@ -49,19 +49,6 @@ Route `/auth.md` (route).
 - `GET` _function_
 - `dynamic` _const_: `/auth.md`: where an agent looks for how to get credentials.
 
-### [`dev/blog-editor/layout.tsx`](../../app/dev/blog-editor/layout.tsx)
-
-Route `/dev/blog-editor` (layout).
-
-- `default (DevLayout)` _component_: No-auth dev layout for iterating on the editor UI in isolation. Keeps the same dark theme + Geist font as the admin shell so styling tests transfer faithfully.
-- `metadata` _const_
-
-### [`dev/blog-editor/page.tsx`](../../app/dev/blog-editor/page.tsx)
-
-Route `/dev/blog-editor` (page).
-
-- `default (BlogEditorDevTestPage)` _component_
-
 ### [`global-error.tsx`](../../app/global-error.tsx)
 
 Route `/` (global-error).

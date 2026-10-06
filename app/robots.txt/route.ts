@@ -18,7 +18,7 @@ import {
 export const dynamic = 'force-static';
 
 /** Never crawled, by anyone: the administrative UI and everything it talks to. */
-const PRIVATE_PATHS = ['/admin', '/api/admin/', '/dev'];
+const PRIVATE_PATHS = ['/admin', '/api/admin/'];
 
 /**
  * Crawlers whose stated purpose is collecting text to train on. `Content-Signal: ai-train=no`
