@@ -424,9 +424,9 @@ screen's real resolution, and a 32 px canvas blown up on a retina display is the
 one place the seam would show.
 
 **A source with no picture of its own has to ask before the gesture.** The
-headliner pill is a bare pill, so there is nothing decoded to copy — it warms the
-thumbnail on `pointerenter` (`warmRideDragThumb`), which always precedes the
-press that starts a mouse drag and costs nothing for a band nobody points at. The
+headliner pill is a bare pill, so there is nothing decoded to copy. The first drag
+from it finds no thumbnail and asks for one (`warmRideDragThumb`, private to
+`lib/planner/ride-drag.ts`), so the next drag from the same control has it. The
 URL is the optimizer's `w=96&q=75`, which is exactly what `PlannerRideThumb` asks
 for at `size={8}`, so a ride that is also a row in the list shares that
 rendition's cache entry. Where there is still nothing to draw — a card below
