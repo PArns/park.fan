@@ -47,14 +47,6 @@ export function generateAlternateLanguages(
 }
 
 /**
- * Generate locale matcher pattern for Next.js config/middleware
- * @returns Regex pattern like "(en|de|nl|fr|es)"
- */
-export function getLocalePattern(): string {
-  return `(${locales.join('|')})`;
-}
-
-/**
  * Check if a string is a valid locale
  */
 export function isValidLocale(locale: string): locale is Locale {

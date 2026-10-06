@@ -298,5 +298,5 @@ This ensures:
 ## Related
 
 - [Internationalization](internationalization.md) – Locales, namespaces, usage
-- [Pluralization](pluralization.md) – ICU plurals, `formatWaitTime`
+- [Pluralization](pluralization.md) – ICU plurals, duration helpers
 - [Development Scripts](../development/scripts.md) – Validation and crawler

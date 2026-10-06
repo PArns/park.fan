@@ -1,18 +1,4 @@
-import type { CrowdLevel } from '@/lib/api/types';
-import {
-  CROWD_BADGE_CLASS,
-  CROWD_TEXT_CLASS,
-  waitTimeCrowdTier,
-} from '@/lib/utils/crowd-level-styles';
-
-/**
- * Tailwind text-color class for a crowd level, matching the project-wide
- * `--crowd-*` palette used by CrowdLevelBadge and the calendar. Keeps the
- * inline blog annotations colour-consistent with the rest of the app.
- */
-export function crowdTextColorClass(level: CrowdLevel | undefined): string {
-  return level && level !== 'unknown' ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground';
-}
+import { CROWD_BADGE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 /** True when a park/attraction status string means "not currently operating". */
 export function isNotOperating(status: string | undefined): boolean {

@@ -195,6 +195,6 @@ Both `LocaleSwitcher` (`components/common/locale-switcher.tsx`) and `LanguageBan
 ## Related
 
 - [Translation System](translations.md) – Adding keys, validation, helpers, troubleshooting
-- [Pluralization](pluralization.md) – ICU plural format, `formatWaitTime`, migration
+- [Pluralization](pluralization.md) – ICU plural format, duration helpers, migration
 - [Translation Crawler](../development/scripts.md#translation-scripts)
 - [next-intl docs](https://next-intl-docs.vercel.app/)

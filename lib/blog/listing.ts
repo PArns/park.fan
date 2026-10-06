@@ -326,39 +326,6 @@ export function listAllUrlSlugsByLocale(
 /** Default number of posts per page on listing views. */
 export const BLOG_POSTS_PER_PAGE = 12;
 
-/**
- * Slice a posts list into a single page worth of items.
- * Pages are 1-based. Out-of-range pages return an empty array.
- */
-export function paginatePosts<T>(
-  items: readonly T[],
-  page: number,
-  perPage: number = BLOG_POSTS_PER_PAGE
-): { items: T[]; page: number; totalPages: number; totalItems: number } {
-  const totalItems = items.length;
-  const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
-  const clamped = Math.min(Math.max(1, page | 0), totalPages);
-  const start = (clamped - 1) * perPage;
-  return {
-    items: items.slice(start, start + perPage),
-    page: clamped,
-    totalPages,
-    totalItems,
-  };
-}
-
-/**
- * Parse a `?page=` search-param value into a clamped 1-based page number.
- * Returns 1 for missing, invalid, or out-of-range input.
- */
-export function parsePageParam(value: unknown, totalPages: number = Infinity): number {
-  const raw = Array.isArray(value) ? value[0] : value;
-  const n = typeof raw === 'string' ? Number.parseInt(raw, 10) : NaN;
-  if (!Number.isFinite(n) || n < 1) return 1;
-  if (Number.isFinite(totalPages) && n > totalPages) return totalPages;
-  return n;
-}
-
 const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 
 /**

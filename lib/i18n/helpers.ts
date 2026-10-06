@@ -58,32 +58,6 @@ export function translateContinent(
 }
 
 /**
- * Safely translate with fallback and logging
- */
-export function safeTranslate(
-  t: TranslationFunction,
-  key: string,
-  locale: string,
-  namespace?: string,
-  fallback?: string
-): string {
-  try {
-    const result = t(key);
-
-    // If result equals key, translation likely wasn't found
-    if (result === key || result === `${namespace}.${key}`) {
-      logMissingTranslation(key, locale, namespace);
-      return fallback || key;
-    }
-
-    return result;
-  } catch {
-    logMissingTranslation(key, locale, namespace);
-    return fallback || key;
-  }
-}
-
-/**
  * Format a slug into a readable string
  * Example: "north-america" -> "North America"
  */

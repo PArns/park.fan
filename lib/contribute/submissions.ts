@@ -118,11 +118,6 @@ export async function listSubmissions(): Promise<SubmissionRecord[]> {
   return records.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
-/** Reads one photo submission by id, or `null` when there is none. */
-export function getSubmission(id: string): Promise<SubmissionRecord | null> {
-  return driver().get(id);
-}
-
 /**
  * Applies a moderator's patch (status, caption, credit, adopted images matched by storage key) to a
  * submission and returns it, or `null` when it does not exist.
