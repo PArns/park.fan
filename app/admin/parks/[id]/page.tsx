@@ -19,8 +19,8 @@ import {
   TriangleAlert,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
-import type { AdminAttractionListItem, AdminParkDetail, CurationResponse } from '../../_lib/types';
+import { adminKeys, useAdminQuery } from '../../_lib/api';
+import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
 import {
   AdminPage,
   Chip,
@@ -28,14 +28,12 @@ import {
   ErrorState,
   Meta,
   Panel,
-  PanelBody,
   PanelHeader,
   SkeletonRows,
 } from '../../_ui/primitives';
 import { TextInput } from '../../_ui/controls';
-import { CuratedFieldsEditor, useCuratedForm, type FieldValues } from '../../_ui/curated-fields';
+import { CuratedFieldsPanel } from '../../_ui/curated-fields';
 import { HistoryList } from '../../_ui/history-list';
-import { useToast } from '../../_ui/toast';
 import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
@@ -149,7 +147,17 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
         ))}
       </div>
 
-      {tab === 'fields' && <ParkFieldsTab park={data} />}
+      {tab === 'fields' && (
+        <CuratedFieldsPanel
+          fields={data.fields}
+          endpoint={`/api/admin/content/parks/${data.id}`}
+          draftScope={`park:${data.id}`}
+          invalidateKeys={[adminKeys.park(data.id), ['admin', 'parks'], ['admin', 'history']]}
+          emptyHint="Nichts korrigiert. Der Park zeigt überall, was der Sync liefert."
+          savedDescription="Die Caches sind geleert, das Frontend wurde benachrichtigt."
+          canEdit={canEdit}
+        />
+      )}
       {tab === 'attractions' && <ParkAttractionsTab parkId={id} />}
       {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
@@ -268,97 +276,6 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
         </p>
       )}
     </header>
-  );
-}
-
-// ─── curated fields ───────────────────────────────────────────────────────────
-
-function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
-  const canEdit = useCan('editor');
-  const toast = useToast();
-  const invalidate = useInvalidateAdmin();
-  const form = useCuratedForm(park.fields, `park:${park.id}`);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const overridden = park.fields.filter((field) => field.overridden).length;
-
-  async function save(input: { fields: FieldValues; reason: string; sourceUrl: string }) {
-    setSaving(true);
-    setError(null);
-    try {
-      const result = await adminFetch<CurationResponse>(`/api/admin/content/parks/${park.id}`, {
-        method: 'PATCH',
-        body: {
-          fields: input.fields,
-          ...(input.reason ? { reason: input.reason } : {}),
-          ...(input.sourceUrl ? { sourceUrl: input.sourceUrl } : {}),
-        },
-      });
-
-      invalidate(adminKeys.park(park.id), ['admin', 'parks'], ['admin', 'history']);
-      form.applyServerFields(result.fields);
-
-      toast.push({
-        title: `${result.changed.length} Feld${result.changed.length === 1 ? '' : 'er'} gespeichert`,
-        description: 'Die Caches sind geleert, das Frontend wurde benachrichtigt.',
-        tone: 'success',
-        // The undo lives here because this is the moment it is wanted. Later it
-        // is in the history tab; a minute later nobody looks.
-        action: result.auditId
-          ? {
-              label: 'Rückgängig',
-              onClick: async () => {
-                await adminFetch(`/api/admin/content/history/${result.auditId}/undo`, {
-                  method: 'POST',
-                });
-                invalidate(adminKeys.park(park.id), ['admin', 'parks'], ['admin', 'history']);
-              },
-            }
-          : undefined,
-      });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Speichern fehlgeschlagen');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  return (
-    <Panel>
-      <PanelHeader
-        icon={Sliders}
-        title="Kuratierte Felder"
-        hint={
-          overridden === 0
-            ? 'Nichts korrigiert. Der Park zeigt überall, was der Sync liefert.'
-            : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
-        }
-        action={
-          overridden > 0 ? (
-            <Chip tone="primary">
-              <Sparkles className="h-3 w-3" />
-              {overridden}
-            </Chip>
-          ) : null
-        }
-      />
-      <PanelBody>
-        {!canEdit && (
-          <p className="text-muted-foreground mb-3 text-xs">
-            Dein Konto darf lesen, aber nicht kuratieren.
-          </p>
-        )}
-        <CuratedFieldsEditor
-          fields={park.fields}
-          form={form}
-          disabled={!canEdit}
-          saving={saving}
-          saveError={error}
-          onSave={save}
-        />
-      </PanelBody>
-    </Panel>
   );
 }
 

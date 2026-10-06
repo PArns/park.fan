@@ -1,17 +1,27 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowLeftRight, ExternalLink, Loader2, RotateCcw, Save, Sparkles } from 'lucide-react';
+import {
+  ArrowLeftRight,
+  ExternalLink,
+  Loader2,
+  RotateCcw,
+  Save,
+  Sliders,
+  Sparkles,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import type { CuratedField } from '../_lib/types';
+import { adminFetch, useInvalidateAdmin } from '../_lib/api';
+import type { CuratedField, CurationResponse } from '../_lib/types';
 
 /** ⌘S on a Mac, Strg+S everywhere else. Read once, in the browser. */
 function saveShortcutLabel(): string {
   if (typeof navigator === 'undefined') return 'Strg+S';
   return /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent) ? '⌘S' : 'Strg+S';
 }
-import { Chip } from './primitives';
+import { Chip, Panel, PanelBody, PanelHeader } from './primitives';
+import { useToast } from './toast';
 import {
   clearCuratedDraft,
   loadCuratedDraft,
@@ -48,7 +58,7 @@ import {
  * publishes and can be removed.
  */
 
-export type FieldValues = Record<string, unknown>;
+type FieldValues = Record<string, unknown>;
 
 const MONTH_NAMES = [
   'Jan',
@@ -335,7 +345,7 @@ function placeholderFor(field: CuratedField): string {
 
 // ─── the form ─────────────────────────────────────────────────────────────────
 
-export interface CuratedFormState {
+interface CuratedFormState {
   values: FieldValues;
   dirtyKeys: string[];
   setValue: (key: string, value: unknown) => void;
@@ -393,7 +403,7 @@ function dropConfirmed(overrides: FieldValues, server: FieldValues): FieldValues
  * as an unsaved change — pressing save again silently re-applied what had just
  * been taken back.
  */
-export function useCuratedForm(fields: CuratedField[], scope?: DraftScope): CuratedFormState {
+function useCuratedForm(fields: CuratedField[], scope?: DraftScope): CuratedFormState {
   const initial = useMemo(() => curatedValues(fields), [fields]);
 
   // Seeded from the draft, lazily so it runs once and never on the server.
@@ -470,7 +480,7 @@ export function useCuratedForm(fields: CuratedField[], scope?: DraftScope): Cura
  * and source. Binds ⌘S / Strg+S while there is something to save; state comes from
  * `useCuratedForm`.
  */
-export function CuratedFieldsEditor({
+function CuratedFieldsEditor({
   fields,
   form,
   disabled = false,
@@ -690,5 +700,115 @@ export function CuratedFieldsEditor({
         )}
       </div>
     </div>
+  );
+}
+
+type QueryPrefix = readonly unknown[];
+
+/** The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast. */
+export function CuratedFieldsPanel({
+  fields,
+  endpoint,
+  draftScope,
+  invalidateKeys,
+  undoInvalidateKeys = invalidateKeys,
+  emptyHint,
+  savedDescription,
+  canEdit,
+}: {
+  fields: CuratedField[];
+  endpoint: string;
+  draftScope: DraftScope;
+  invalidateKeys: ReadonlyArray<QueryPrefix>;
+  /** Defaults to `invalidateKeys`. */
+  undoInvalidateKeys?: ReadonlyArray<QueryPrefix>;
+  emptyHint: string;
+  savedDescription?: string;
+  canEdit: boolean;
+}) {
+  const toast = useToast();
+  const invalidate = useInvalidateAdmin();
+  const form = useCuratedForm(fields, draftScope);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const overridden = fields.filter((field) => field.overridden).length;
+
+  async function save(input: { fields: FieldValues; reason: string; sourceUrl: string }) {
+    setSaving(true);
+    setError(null);
+    try {
+      const result = await adminFetch<CurationResponse>(endpoint, {
+        method: 'PATCH',
+        body: {
+          fields: input.fields,
+          ...(input.reason ? { reason: input.reason } : {}),
+          ...(input.sourceUrl ? { sourceUrl: input.sourceUrl } : {}),
+        },
+      });
+
+      invalidate(...invalidateKeys);
+      form.applyServerFields(result.fields);
+
+      toast.push({
+        title: `${result.changed.length} Feld${result.changed.length === 1 ? '' : 'er'} gespeichert`,
+        description: savedDescription,
+        tone: 'success',
+        // The undo lives here because this is the moment it is wanted. Later it
+        // is in the history tab; a minute later nobody looks.
+        action: result.auditId
+          ? {
+              label: 'Rückgängig',
+              onClick: async () => {
+                await adminFetch(`/api/admin/content/history/${result.auditId}/undo`, {
+                  method: 'POST',
+                });
+                invalidate(...undoInvalidateKeys);
+              },
+            }
+          : undefined,
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Speichern fehlgeschlagen');
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <Panel>
+      <PanelHeader
+        icon={Sliders}
+        title="Kuratierte Felder"
+        hint={
+          overridden === 0
+            ? emptyHint
+            : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
+        }
+        action={
+          overridden > 0 ? (
+            <Chip tone="primary">
+              <Sparkles className="h-3 w-3" />
+              {overridden}
+            </Chip>
+          ) : null
+        }
+      />
+      <PanelBody>
+        {!canEdit && (
+          <p className="text-muted-foreground mb-3 text-xs">
+            Dein Konto darf lesen, aber nicht kuratieren.
+          </p>
+        )}
+        <CuratedFieldsEditor
+          fields={fields}
+          form={form}
+          disabled={!canEdit}
+          saving={saving}
+          saveError={error}
+          onSave={save}
+        />
+      </PanelBody>
+    </Panel>
   );
 }
