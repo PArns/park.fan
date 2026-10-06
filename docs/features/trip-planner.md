@@ -843,13 +843,16 @@ weight`, `MAX_STOPS` being 24) rather than added as Pareto axes, because a
    set aside appended, so `better` compares the rounds on exactly the terms it
    compares everything else. On a day that holds everything it never runs.
 
-2. **Total minutes queued.** That is what the visitor asked for.
-3. **The clock at which the last queue is joined.** Between two plans that cost
-   the same, the one that leaves the evening free wins.
-
-There is no tunable weight in that, deliberately. A λ trading "queue minutes"
-against "hanging about" would be a number nobody could defend, and the first
-person to disagree with it would be right.
+2. **What the day costs:** minutes queued plus `IDLE_WEIGHT` (0.5) times the
+   minutes of standing about that the optimiser itself chose, i.e. a deliberate
+   delay to let a queue fall. A free minute is still worth something to the
+   visitor, and less than one spent in a queue. Two cases in
+   `scripts/test-planner-optimize.mjs` pin the weight between 1/6 and 14/15
+   (§17: five queued minutes may not buy thirty idle ones; §11: seventy queued
+   minutes must outweigh seventy-five idle ones), and no order over queue and
+   clock alone gets both right.
+3. **The moment the last queue is left**, only to settle a tie: between two
+   plans that cost the same, the one that leaves the evening free wins.
 
 **The schedule is contiguous, so the ORDER is the only free variable.** A ride
 starts as soon as the one before it lets go: its start, plus what the block
