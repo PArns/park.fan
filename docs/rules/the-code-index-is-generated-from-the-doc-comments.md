@@ -40,12 +40,12 @@ no description at all; after counting route exports and component families as ab
 left, and that pull request wrote them. In the same audit jscpd found 44 exact clones across the
 code (2.1 % of the lines), several of them a second copy of a helper the author could not find.
 
-## Why one page per directory, and no counts in the README
+## Why one page per directory, and no counts
 
 Two open pull requests regenerate the index independently. With one page per directory, a pull
 request that changes `components/parks` rewrites one section of `components-parks.md`, and a pull
-request in `lib/planner` never touches that file. The README lists only the pages, so it changes
-when a directory appears, not when an export does. A count of described exports in the README
+request in `lib/planner` never touches that file. Neither the README nor a page carries a count, so a page
+changes only in the section of the file that changed. A count of described exports in the README
 would put every pull request on the same line, which is the merge conflict the changelog fragments
 in `docs/changelog.d/` were introduced to avoid.
 
