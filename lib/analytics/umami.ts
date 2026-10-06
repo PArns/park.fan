@@ -224,7 +224,7 @@ export function trackNearbyParksLoaded(props: NearbyParksLoadedProps): void {
 
 /**
  * Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens
- * (`SearchBar`).
+ * (`SearchCommand`).
  */
 export function trackSearchOpened(source: 'header' | 'hero' | 'keyboard'): void {
   trackEvent(UMAMI_EVENTS.SEARCH_OPENED, { source });

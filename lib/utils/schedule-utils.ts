@@ -7,8 +7,8 @@ import { parkDayOf } from '@/lib/utils/park-day';
 export type { ScheduleSummary };
 
 /**
- * The schedule line for a park card (opening soon, closing at, off season), shared by `ParkCard`
- * and `ParkCardNearby`.
+ * The schedule line for a park card (opening soon, closing at, off season), drawn by
+ * `ParkCardScheduleFooter`.
  */
 export function getScheduleMessage(
   todaySchedule: ScheduleSummary | undefined,
