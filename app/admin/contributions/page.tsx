@@ -46,7 +46,7 @@ const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
 
 export default function ContributionsPage() {
   const { triggerRefresh } = useAdmin();
-  const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions', true);
+  const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions');
   const [filter, setFilter] = useState<'all' | SubmissionStatus>('all');
   const [purging, setPurging] = useState(false);
 

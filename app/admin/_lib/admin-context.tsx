@@ -145,16 +145,8 @@ interface FetchState<T> {
   loading: boolean;
 }
 
-/**
- * Fetch an admin endpoint on mount and on every refresh tick.
- *
- * The `needsPass` parameter is gone: there is no pass any more, and every
- * request carries the session cookie without being asked. Call sites that
- * passed `true` keep working — the argument is simply ignored — so the
- * dashboards did not have to be edited to stop sending a credential they no
- * longer hold.
- */
-export function useAdminFetch<T>(endpoint: string | null, _needsPass = false): FetchState<T> {
+/** Fetch an admin endpoint on mount and on every refresh tick. */
+export function useAdminFetch<T>(endpoint: string | null): FetchState<T> {
   const { refreshTick } = useAdmin();
   const [state, setState] = useState<FetchState<T>>({
     data: null,

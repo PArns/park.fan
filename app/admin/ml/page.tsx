@@ -715,8 +715,8 @@ export default function MlPage() {
     topPerformers: MlPerformer[];
     bottomPerformers: MlPerformer[];
   }>('/api/ml/monitoring/tft/performers');
-  const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health', true);
-  const comparison = useAdminFetch<MlComparisonBoard>('/api/admin/ml-comparison', true);
+  const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
+  const comparison = useAdminFetch<MlComparisonBoard>('/api/admin/ml-comparison');
 
   if (dash.error) return <ErrorPanel message={`ML dashboard: ${dash.error}`} />;
   if (!dash.data) return <LoadingPanel label="Loading ML metrics…" />;

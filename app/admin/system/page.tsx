@@ -48,7 +48,7 @@ function sensorTempClass(t: number): string {
 }
 
 export default function SystemPage() {
-  const { data, error } = useAdminFetch<SystemHealthResponse>('/api/admin/system-health', true);
+  const { data, error } = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
 
   if (error) return <ErrorPanel message={error} />;
   if (!data) return <LoadingPanel label="Loading system metrics…" />;

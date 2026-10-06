@@ -147,7 +147,7 @@ function QueueRow({ q }: { q: QueueEntry }) {
 }
 
 export default function QueuesPage() {
-  const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status', true);
+  const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status');
 
   if (error) return <ErrorPanel message={error} />;
   if (!data) return <LoadingPanel label="Loading queues…" />;
