@@ -110,6 +110,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `leanParkForParkShell` _function_: Trim for the PARK page's serialized park snapshot.
 - `leanParkForAttractionShell` _function_
 - `getParkSeasons` _function_: A park's named seasons and events, for the public page.
+- `getParkSchedule` _function_: The park's opening days from `/v1/parks/<geo>/schedule` — about 64 rows, an `OPERATING` and an `EXTRA_HOURS` row per date — for the `.ics` export.
 - `getParkByGeoPath` _function_: Get parks by geographic path. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }` (stale-while-revalidate, 1-day window): the per-request `force-dynamic` park/attraction render reads this shared snapshot (keyed by the …
 - `getParkByGeoPathFresh` _function_: Live (no-store) variant of `getParkByGeoPath` for the client poll path.
 - `getAttractionByGeoPath` _function_: Get a specific attraction by geographic path with full data including history. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed client-side.

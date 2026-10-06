@@ -8,6 +8,7 @@ import { GLASS_CIRCLE_HIT_AREA, GlassCircle } from '@/components/common/glass-ci
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { hasUsableThresholdRange } from '@/lib/push/threshold-minutes';
+import { rideAlertKindsFor } from '@/lib/push/ride-alert-picker';
 import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-dialog';
 import {
   useRideAlertParkAttractions,
@@ -23,6 +24,11 @@ interface RideAlertBellProps {
   objectPosition?: string;
   /** The card's own current reading, if any — seeds the dialog's slider off the park page. */
   currentWaitTime?: number | null;
+  /**
+   * The card's live status. A ride that stands keeps its bell where the reopening can be told
+   * about, because that alert has no queue to fit under.
+   */
+  status?: string | null;
 }
 
 /**
@@ -39,6 +45,7 @@ export function RideAlertBell({
   backgroundImage,
   objectPosition,
   currentWaitTime,
+  status,
 }: RideAlertBellProps) {
   const [open, setOpen] = useState(false);
   const [alerted] = useLocalPushFollowsValue(false, () => !!getRideAlertLocal(attractionId), [
@@ -48,6 +55,8 @@ export function RideAlertBell({
   // dialog's own hooks (fetch effect, sorted picker rows) do not run once per card on the page.
   const [dialogMounted, setDialogMounted] = useState(false);
   const t = useTranslations('pushAlerts.rideBell');
+  // A constant context, set once per park page, so reading it here re-renders nothing on a poll.
+  const reopenAvailable = useRideAlertReopenAvailable();
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -58,8 +67,10 @@ export function RideAlertBell({
 
   // A queue this short has no alert left to offer: the threshold may not go under ten minutes,
   // nor within ten of the current reading. An alert already set keeps its bell, the only way to
-  // take it off, and so does an open dialog, which would otherwise unmount with it.
-  if (!alerted && !open && !hasUsableThresholdRange(currentWaitTime)) return null;
+  // take it off, and so does an open dialog, which would otherwise unmount with it. A stopped ride
+  // that offers the reopen alert keeps its bell too.
+  const offersReopen = rideAlertKindsFor({ status }, reopenAvailable).includes('reopen');
+  if (!alerted && !open && !offersReopen && !hasUsableThresholdRange(currentWaitTime)) return null;
 
   return (
     <>
@@ -106,6 +117,7 @@ export function RideAlertBell({
           backgroundImage={backgroundImage}
           objectPosition={objectPosition}
           currentWaitTime={currentWaitTime}
+          status={status}
         />
       )}
     </>
@@ -125,6 +137,7 @@ function RideAlertBellDialog({
   backgroundImage,
   objectPosition,
   currentWaitTime,
+  status,
 }: RideAlertBellProps & { open: boolean; onOpenChange: (open: boolean) => void }) {
   const parkAttractions = useRideAlertParkAttractions();
   const reopenAvailable = useRideAlertReopenAvailable();
@@ -137,6 +150,7 @@ function RideAlertBellDialog({
       id: attractionId,
       name: attractionName,
       currentWaitTime,
+      status,
       backgroundImage,
       backgroundPosition: objectPosition,
     };
@@ -147,6 +161,7 @@ function RideAlertBellDialog({
         ? {
             ...a,
             currentWaitTime,
+            status: status ?? a.status,
             backgroundImage: backgroundImage ?? a.backgroundImage,
             backgroundPosition: objectPosition ?? a.backgroundPosition,
           }
@@ -157,6 +172,7 @@ function RideAlertBellDialog({
     attractionId,
     attractionName,
     currentWaitTime,
+    status,
     backgroundImage,
     objectPosition,
   ]);

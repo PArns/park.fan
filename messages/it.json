@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Attrazioni chiuse definitivamente",
       "since": "dal {month}"
+    },
+    "hoursCalendar": {
+      "link": "Orari nel calendario",
+      "summary": "{park}: aperto",
+      "estimated": "Gli orari sono stimati."
     }
   },
   "attractions": {
@@ -1925,6 +1930,7 @@
       "remove": "Rimuovi {name}",
       "addTitle": "Aggiungi un avviso",
       "selectRide": "Scegli un’attrazione",
+      "otherRide": "Altra attrazione",
       "searchRide": "Cerca un’attrazione",
       "noRideFound": "Nessuna attrazione con questo nome.",
       "noQueueNow": "Nessuna attesa ora",
@@ -1937,6 +1943,7 @@
       "close": "Chiudi",
       "entry": "Avvisi sul tempo di attesa",
       "entryWithCount": "Avvisi sul tempo di attesa ({count})",
+      "nudge": "Ti avvisiamo appena l’attesa di un’attrazione scende sotto i minuti che scegli.",
       "outOfSeason": "Solo in inverno",
       "retired": "Dismessa",
       "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",

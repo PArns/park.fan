@@ -11,6 +11,375 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.15.0 (2026-10-06) – Shows im Tagesplaner, der ruhigste Tag je Favorit und die App im Footer
+
+Geschnitten am 2026-10-06 aus 61 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.15.0.md`. Neueste Abschnitte zuerst.
+
+### Planer: nach einer Show wird weder Ausgang noch Fahrt gerechnet, und eine Show ohne Koordinaten hat überall dieselbe Untergrenze
+
+`transferBetween()` (`lib/planner/leg.ts`) addierte `EXIT_MIN` und die Fahrtzeit auch dann, wenn das Leg an einer Show oder einem freien Block begann. Jetzt gilt der Aufschlag nur noch, wenn das Leg an einer Bahn beginnt (`TransferEnds`, `isBlockEntry`). Ein Block ohne Position hat keinen Weg: nach ihm gilt 0 Min Untergrenze und Obergrenze, vor ihm bleibt es bei `EXIT_MIN` + Fahrtzeit (8 Min Untergrenze, ebenfalls 8 Min Obergrenze). Optimizer, `clashCount()` und Leg-Chip lesen damit dieselbe Zahl.
+
+Gemessen am Paar Show ohne Koordinaten → Bahn: Untergrenze 8 → 0 Min, Obergrenze 11 → 0 Min. Show mit Position 1,5 km entfernt → Bahn: Untergrenze 25 → 17 Min, Obergrenze 49 → 41 Min. Bahn → Bahn bleibt bei 10 / 11 Min.
+
+### `HourlyForecastItem.confidence` ist `number | null`
+
+Die API liefert `hourlyForecast[].confidence` seit Backend-PR #408 als `null`, wenn der Slot mehr als 24 h nach der Antwort liegt. `HourlyForecastItem.confidence` in `lib/api/types.ts` stand auf `number`. Der Typ ist jetzt `number | null`, der Kommentar nennt die 24-h-Grenze. Kein Leser im Frontend, das Verhalten ändert sich nicht.
+
+### Eine Abweichung in `lib/media/**` fällt in der CI auf
+
+`lib/media/manifest-parks.ts` war über Wochen von seinem Generator abgewichen, ohne dass etwas rot
+wurde (PAR-667). `.github/workflows/checks.yml` hat jetzt den Job `media-drift`: Er führt
+`pnpm generate:media` aus (1,6 s, der Rest von `prebuild` bleibt draußen: Crops 27,0 s, OG-Karten
+3,4 s) und danach `git diff --exit-code -- lib/media`. Bei einer Abweichung nennt er die Dateien per
+`git diff --stat`. Der Job ist ein eigener Check und kein Teil von `lint-and-format`, damit eine
+Umbenennung upstream keinen fremden PR blockiert. Ist `api.park.fan` nicht erreichbar, endet er mit
+einer Warnung statt mit einem Grün, das nichts gemessen hat.
+
+### Tagesplaner: der Weg zu einer Show und von ihr weg zählt in die Rechnung
+
+Eine eingeplante Show mit Koordinaten (`PlanDayShow.latitude`/`longitude`, auf Europa-Park 40 von 40 Shows am 2026-10-10) geht in dieselbe Wegrechnung ein wie eine Bahn. `lib/planner/leg.ts` liest die Position über `entryPlace()` und rechnet mit `transferBetween()` wie zwischen zwei Bahnen. Die Leg-Chips im Raster (`planner-day-grid.tsx`), `clashCount()` und der Optimizer (`clearFixed()`, `isExecutable()` in `optimize.ts`) benutzen für Shows mit Koordinaten dieselbe Zahl. Der Optimizer plant gegen die Obergrenze, der Check gegen die Untergrenze.
+
+Gemessen an einem Tag mit fünf Headlinern à 55 Minuten und einer Show um 09:00, die 1,5 km von den Bahnen entfernt liegt: Die erste Bahn danach startet um 10:15 statt um 09:30 (44 Minuten Obergrenze: 3 Ausgang, 5 Fahrt, 36 Weg). Der Tag, der ohne Weg alle fünf Bahnen aufnahm, nimmt jetzt vier auf, und der Fit-Assistent öffnet sich.
+
+Eine Show ohne Koordinaten verhält sich unverändert. `pnpm test:planner-fit` deckt beide Fälle ab (14a bis 14f).
+
+### Die Entwicklerseite ist weg, und unter dem letzten Band steht kein dunkler Streifen mehr
+
+`/developers` gibt es nicht mehr. Alle sechs Sprachversionen leiten mit 308 auf die API-Referenz unter `api.park.fan/api` weiter, und die Seite steht weder in der Sitemap noch im Footer.
+
+Auf der besten Reisezeit, bei Fancast, im Tagesplaner und auf „So funktioniert park.fan“ hatte der Block um das Schlussband „Nächste Schritte“ noch 56 px (ab `sm` 80 px) Innenabstand nach unten. Zwischen Band und Footer stand dadurch ein leerer dunkler Streifen. Das Band schließt jetzt direkt an den Footer an.
+
+`pnpm check:prose` schlägt jetzt auch fehl, wenn etwas „eine Zahl zeigt“ oder eine Zahl selbst etwas tut („die Zahl zeigt“, „die Zahl steht dafür“), in allen sechs Sprachen.
+
+### Die Monatstabelle schneidet auf dem Handy keine Zahl mehr ab
+
+In `ParkStatsCrowdCard` (der `stats-widget show=months` im Blog, die Monats- und Wochentagstabellen auf der Parkseite) sind Monatsname, Badge und Werte alle `shrink-0`. Eine Zeile mit „SEHR NIEDRIG“ und „Spitze“ braucht bis zu 351 px, die Liste ist bei 320 px Fensterbreite 246 px breit, bei 360 px 286 und bei 390 px 316. Die Zeile lief aus der Zelle, und das `overflow-hidden` des Panels schnitt den Spitzenwert ab: im Europa-Park-Guide bei 360 px auf Deutsch um 48 px, bei 320 px in allen sechs Sprachen alle elf Zeilen, die längste um 54 bis 88 px.
+
+Die Liste ist jetzt selbst ein Container, und die Zeile richtet sich nach deren Breite statt nach der des Fensters. Unter 22rem stehen die Werte in einer zweiten Zeile unter dem Badge, „Typisch“ erscheint ab 30rem statt ab `sm:`, die Zahl der Messtage ab 34rem statt ab 768 px Seitenbreite. Auf der Parkseite liegen ab 640 px zwei dieser Listen nebeneinander, dort stand „Typisch“ vorher in einer 263 px breiten Liste. Gemessen mit Playwright gegen `pnpm build && pnpm start`: im Guide bei 320, 360 und 390 px in allen sechs Sprachen 0 überstehende Zeilen (vorher 11, 2 bis 5 und 0 bis 2), auf der Parkseite von 360 bis 1920 px ebenfalls 0.
+
+### „ob der Tag aufgeht“ ist ein Fehler in `pnpm check:prose`
+
+`scripts/check-prose.mjs` meldet „ob der Tag (so) aufgeht“, „geht der Tag auf“ und die fünf Übersetzungen, die die Floskel mitgenommen hatte (`whether the day adds up`, `of de dag klopt`/`uitkomt`, `si la journée tient debout`, `si el día cuadra`/`sale`, `se la giornata regge`/`sta in piedi`), als Fehler auf jeder Oberfläche (`DAY_WORKS_OUT` in `hardRules()`); `docs/blog.md` §3.3 führt sie als Regel 9. Der erste Lauf fand 18 Fehler: `planner.page.lead` und `landing.bestTime.next.body` in allen sechs Katalogen, dazu Beschreibung und Einleitung des Tagesplaner-Beitrags in sechs Sprachen. Sie sagen jetzt, was der Planer zeigt: ob alle Bahnen vor Parkschluss drankommen. Danach 0 Fehler und 18 Warnungen wie vorher. Summen bleiben frei (`a day that adds up to a lot of empty seats`, `el segundo día sale por 60 €`).
+
+### Meine Favoriten: die Seite steht ab dem ersten HTML in der Höhe der Liste
+
+`/favorites` war vorgerendert und kannte das Cookie nicht. Das erste HTML zeigte deshalb den Kasten des leeren Zustands (136 px), nach der Hydration kam ein Skelett mit drei Karten ohne die Zeile „ruhigster Tag“ darunter, ohne den Standorthinweis und mit einem 24-px-Balken statt der 28-px-Überschrift, dann die Karten über einen `LazyMount`-Platzhalter mit 244-px-Zeilen. Mit drei Parks wuchs der Bereich auf dem Handy 136 → 436 → 616 px, und die Anleitung darunter und der Footer sprangen jedes Mal mit.
+
+Die Seite liest das Cookie jetzt auf dem Server (`parseFavoritesCookie`, `countFavorites` in `lib/utils/favorites.ts`) und rendert pro Anfrage. `FavoritesSection` bekommt die Zahlen als `initialCounts` und zeichnet schon im ersten HTML das Skelett in der Größe der Liste. Das Skelett trägt die echte Gruppenüberschrift, den Standorthinweis und auf `/favorites` je Park die 28-px-Zeile, und `LazyMount` mountet dort sofort. Gemessen 616 px auf dem Handy und 562 px auf dem Desktop, im ersten HTML wie nach dem Laden. `measure-cls.mjs` schickt die `--cookie`-Werte jetzt auch mit den eigenen Anfragen des Replays, sonst misst es eine Seite, die das Cookie nie gesehen hat.
+
+`pnpm measure:cls --late` mit Heide Park, Phantasialand und Europa-Park, y=0: Handy 0,4214 → 0, Desktop 0,1902 → 0. Offen bleibt die Wette des Skeletts auf das Foto: Eine Liste nur aus Parks ohne Foto schrumpft auf dem Desktop einmal um 221 px (Heide Park allein: 0,0728).
+
+### Mitmachen: Schritt 4 hält den Platz für die Turnstile-Prüfung
+
+Auf `/de/contribute` war der Container von `TurnstileWidget` im ersten HTML leer. Das Turnstile-Skript setzt sein 300 × 65 px großes iframe erst nach der Hydration ein, auf der Grundlinie der Zeile sind das 72 px, und Schritt 4 wuchs mit Abstand um 84 px. Der Absenden-Block und der Footer rutschten bei etwa 1,7 s nach unten. `ContributeForm` gibt dem Widget jetzt `min-h-[72px]`; gemessen gleich im Fehler-, Test- und Challenge-Zustand bei 360, 390 und 1440 px.
+
+`pnpm measure:cls --late`: Handy bei y=2404 von 0,0124 auf 0, Desktop bei y=1569 von 0,0038 auf 0,0019 (der Rest ist eine frühe 20-px-Verschiebung bei 70 ms, die mit Turnstile nichts zu tun hat). Auf dem Stand vor PAR-688, als die Seite länger war, lag dieselbe Verschiebung bei 0,0837 (Handy, y=3015) und 0,0466 (Desktop, y=1612).
+
+### So funktioniert park.fan: die Parkseiten-Anatomie hält die Höhe ihrer Karten
+
+Kapitel 06 der Anleitung (`ParkAnatomy`) wuchs nach der Hydration um 696 px auf dem Handy und 714 px auf dem Desktop, weil vier Demos vor dem Mount nichts zeichnen: `WeatherWarningBanner` wartet auf `useMounted`, `WeatherNowcastBanner` auf die Minutenuhr, `ParkPurchasesCard` auf `useBrowserNow`, und in `ParkTimeInfo` kommt das Countdown-Badge erst mit der Uhr. Die Boxen sind jetzt an den echten Karten gemessen reserviert, bei 360 bis 1440 px in allen sechs Sprachen gleich: Unwetterwarnung 394 px, Regenradar 148 px unter `sm` und 117 px ab `sm`, Skip-the-line-Preise 101 und 149 px, Kopfbereich 316 px. Ab 17:00 UTC hat der Fixture-Park geschlossen, dann bleiben unter dem Kopfbereich 30 px leer. In `AttractionCard` war der Platzhalter der Zeilen „Beste Zeit" und „Rope Drop" `h-3.5` statt der 16 px einer `text-xs`-Zeile, jetzt `h-4`.
+
+Dazu Kapitel 03: Das Skelett von `ParkHourlyProfileCard` stand in 22-px-Abständen, die Tabelle hat einen 28-px-Kopf mit 1 px Linie und 32 px je Bahn, dazu die Fußnote. Das Skelett zeichnet jetzt genau diese Zeilen und hält die Fußnote unsichtbar mit drei Ziffern für die Messtage. Die Karte wuchs auf dem Handy um 135 px, jetzt um 0.
+
+`pnpm measure:cls --late` auf `/de/so-funktioniert-park-fan`: Handy bei y=15328 von 0,9882 auf 0,0118, Desktop bei y=12444 von 0,5507 auf 0,0070.
+
+### „misst sich selbst“ und „bewertet sich selbst“ sind verboten
+
+`scripts/check-prose.mjs` meldet ein Modell, das sich selbst bewertet, als Fehler auf jeder Oberfläche (`SELF_GRADING`, `docs/blog.md` §3.3, Regel 9). Im Deutschen jede Beugung von `messen`, `bewerten` und `benoten` vor `sich … selbst`, mit bis zu drei Wörtern zwischen Verb und `sich` und zwei zwischen `sich` und `selbst`, aber ohne Satzzeichen; dazu die Umstellung `sich selbst bewertet`. `gemessen an sich selbst` bleibt erlaubt. Die anderen fünf Sprachen nur mit ihrem Reflexivpronomen oder der Form, die ausgeliefert war: `measures/grades/rates itself`, `meet/beoordeelt zichzelf`, `se note/se mesure/s'évalue lui-même`, `se autoevalúa`, `se mide a sí mismo`, `si dà i voti`, `si misura da solo`. Der erste Lauf fand 6 Treffer, alle die Unterzeile der Fancast-Seite in sechs Sprachen („und benotet sich dabei öffentlich selbst“). Sie sagt jetzt, was passiert: Am Tag darauf wird jede Prognose mit der gemessenen Wartezeit verglichen, und die durchschnittliche Abweichung in Minuten steht öffentlich auf der Seite. Danach 0 Fehler und 18 Warnungen wie vorher.
+
+### Planer: eine Vorstellung lässt sich als eigener Eintrag einplanen
+
+Der Button „Show einplanen“ (`PlannerShowPicker`, neben „Eigener Block“) listet die Showtimes des Tages, so wie das Raster sie zeichnet, Projektionen mit `~`. Eine gewählte Vorstellung wird als Block mit `showSlug` abgelegt (`addShowEntry`): 30 Minuten, Icon `show`, Startzeit gleich Vorstellung. Der Eintrag ist an die Vorstellung gebunden und nicht ziehbar, nicht nudge- und nicht resizebar; `moveEntry`, `setCustomBlock` und `shiftFrom` lassen ihn liegen, der Optimizer behandelt ihn wie jeden `custom`-Block, und die Fit-Hilfe bietet ihn nicht als Hebel an. Ändern heißt löschen und eine andere Vorstellung wählen. Freie Blöcke mit Icon `show` bleiben unverändert. Die Laufwegsrechnung liest `showSlug` erst in PAR-102.
+
+### Nähe, Favoriten und Beliebte Parks öffnen mit `ChapterHeading`
+
+Die drei Blöcke von `PageBottomSections` unter Blog, News, Artikeln und Glossarbegriffen hatten jeder eine eigene Überschrift: die Glas-Pille `GlassSectionTitle` bei Nähe und Favoriten, ein nacktes `<h2 class="text-xl">` mit Stern bei den beliebten Parks. Alle drei öffnen jetzt mit `ChapterHeading` ohne Nummer, Variante `watermark` wie die Kapitel dieser Seiten, mit dem bisherigen Icon (`MapPin`, `Star`) und dem Einleitungssatz als `hint`. Die Platzhalter rendern dieselbe Überschrift: `NearbyHeading`, `FavoritesHeading` und `FeaturedParksHeading` stehen im Skeleton, im Leerzustand und in der fertigen Liste. Das Skeleton der beliebten Parks zeigt dafür den echten Titel statt grauer Balken; die Texte löst `getFeaturedParksLabels()` vor der Suspense-Grenze auf. Das Skeleton der Nähe-Karte reserviert außerdem den „Mehr anzeigen"-Button, den die Liste unter 768 px Seitenbreite unter zwei Karten zeigt: Am Handy wuchs der Block beim Laden um 80 px (CLS 0,083 am Blog-Index), jetzt um 20 px, die ein zweizeiliger Titel mehr braucht (0,012). Steht man in einem Park, öffnet die Nähe-Ansicht mit `ChapterHeading frosted`, weil sie über dem Parkfoto liegt.
+
+Auf der Startseite stehen Favoriten und Beliebte Parks mit `heading="tile"` zwischen den anderen Kapitel-Kacheln. Die Nähe-Karte bekommt `nested`: `NearbyChapter` öffnet dieses Kapitel schon, die Pille der Karte bleibt und ist dort jetzt ein `<h3>`.
+
+`pnpm check:landing-pages`: Die `OPEN`-Liste ist leer. Die Tagesüberschriften der News-Zeitleiste tragen `data-news-day` und gelten als erlaubter Ort für ein `<h2>`, weil sie eine Zeitleiste gliedern und keine Kapitel sind.
+
+### Favoriten: unter jedem Lieblingspark steht sein ruhigster Tag der nächsten 14 Tage
+
+`FavoriteParkQuietestDay` (`components/parks/favorite-park-quietest-day.tsx`) hängt unter jede Parkkarte auf `/favorites` eine Zeile mit Datum und `CrowdLevelBadge`. Gewählt wird in `quietestOpenDay` (`lib/utils/quietest-day.ts`) der offene Tag mit dem niedrigsten `predictedCrowdLevel` im Fenster heute bis heute + 13 in der Zeitzone des Parks; geschlossene und unbewertete Tage zählen nicht, bei Gleichstand gewinnt der frühere. Die Daten kommen aus `useParkBestDaysCalendar`, also hinter `useLoadLast` und aus demselben Query-Cache wie die Parkseite, ohne neues Backend-Feld. Ein leerer Kasten von 28 px hält die Höhe, bis die Antwort da ist; ein Park ohne bewertbaren Tag zeigt keinen Text, der Kasten bleibt, damit nach dem Laden nichts springt. Startseite und andere Bänder bleiben unverändert (`standalone`). `pnpm test:quietest-day` deckt Fenster, Gleichstand, geschlossene Tage und Jahreswechsel ab (11 Fälle).
+
+### Das Ziel des Planer-Griffs sitzt auf dem Griff statt 22 px daneben
+
+`components/planner/planner-block.tsx`: das 44-px-`::after` des Griffs hatte keine waagerechte Kante und begann bei `left: 22px`. Auf einem Mindestblock hatte die linke Griffhälfte nur 28 px Trefferhöhe, und die Zugleiste war 66 px breit statt 44. `after:left-0` setzt das Ziel auf den Button. `check:planner` zählt jetzt je Spalte (x +6, +25, +40) die Trefferzeilen des Griffs und verlangt dieselbe Höhe in allen drei und keine Zeile bei x +50.
+
+### `hourlyForecast` hat einen eigenen Typ statt `ForecastItem`
+
+`lib/api/types.ts` typisierte `hourlyForecast` als `ForecastItem[]`, die Form der externen Prognose mit `confidencePercentage` und `source`. Die API liefert dort `predictedTime`, `predictedWaitTime`, `confidence`, `uncertaintyMinutes` und `trend` (72 Einträge für Black Mamba, geprüft am Payload vom 2026-10-04). `HourlyForecastItem` nennt diese fünf Felder, `lib/api/favorites.ts` nutzt denselben Typ statt einer eigenen Deklaration, `ForecastItem` bleibt der Typ von `forecasts`. Kein Laufzeitverhalten ändert sich.
+
+### `pnpm check:landing-pages` prüft den Aufbau der Landingpages
+
+Neue Regel `docs/rules/a-landing-page-has-one-anatomy.md` und ein Check dazu, `scripts/check-landing-pages.mjs`. Er lädt die deutsche URL aller elf Seiten aus `docs/product/landing-pages.md` §1 und die englische jedes Hubs, wartet die Hydration ab und prüft je Seite: genau eine `<h1>`, den Kopf ihrer Art (`data-landing-hero="hub"`, `"compact"` oder keinen auf den Park-Unterseiten), genau eine `[data-landing-action]` im Hero eines Hubs (keine auf dem Blog-Index), ein `FAQPage` nur neben einer gerenderten `FaqList` (`data-faq-list`) und kein `<h2>` in `<main>` außerhalb von `ChapterHeading`, einer Karte oder `LandingNextSteps`. Dafür tragen `ChapterHeading`, `GlassCard`, `LandingNextSteps` und `FaqList` jetzt ein Datenattribut, handgebaute Karten (`ParkHeaderCard`, `ContributeBanner`, `PreferredSourcePrompt`, `RightsNotice`) `data-card`.
+
+Der erste Lauf fand acht von 16 Seiten rot. Behoben: Die Beispielgalerie auf Mitmachen öffnet mit `ChapterHeading` ohne Nummer statt mit einem eigenen `<h2>`, und die Überschrift „Wie genau unsere Vorhersagen sind" in `MLStatsSection` ist auf Fancast ein `<h3>`, weil sie im Kapitel 01 steht. Offen und im Check als `open` ausgegeben, weil sie eine Gestaltungsentscheidung brauchen: die drei `<h2>` von `PageBottomSections` unter Blog und News und die Tagesüberschriften der News-Zeitleiste.
+
+### Die Hub-Seiten nennen ihren nächsten Schritt im Kopf
+
+Jeder Hub hat jetzt im ersten Bildschirm genau einen primären Button (`LandingHero` mit `action`, Texte unter `landing.<seite>.action`):
+
+- Beste Reisezeit: „Zum Tagesplaner", auf die Seite des Tagesplaners.
+- Tagesplaner: „Einen Tag planen", ein Sprung auf derselben Seite zu `#plan`. Das Ziel ist der Einstieg, der gerade zu sehen ist: ohne Plan der Abschnitt „Noch nichts geplant" mit dem Button „Neuen Tag planen", mit Plänen die Button-Zeile über der Liste. Einen zweiten Weg in den Planer gibt es nicht.
+- So funktioniert's: „Park aussuchen", auf `/parks`. Bisher stand der Weg zu einem Park nur im Abschlussband, rund 7.000 px tiefer.
+- Fancast: „Crowd-Kalender für deinen Park", auf Kapitel 05 der besten Reisezeit (`#parks`). Fancast nennt keinen einzelnen Park, und dieses Kapitel erklärt den Kalender und listet die Parks, auf denen er steht.
+- Blog: kein Button, die Liste ist die Seite.
+
+Fancast und der Tagesplaner schließen jetzt mit `LandingNextSteps` (Fancast: Crowd-Kalender, Alle Parks, So funktioniert's; Tagesplaner: Einen Tag planen, Beste Reisezeit, Alle Parks). Auf der besten Reisezeit steht der Tagesplaner im Abschluss jetzt an erster Stelle, Fancast an zweiter; Titel und Text des Bands kommen aus `landing.bestTime.next` statt aus den sechs Inhaltsdateien.
+
+Der Kicker heißt auf jedem Hub `PARK.FAN · <THEMA>`: Tagesplaner und Blog hatten kein Präfix (`landing.planner.kicker`, `landing.blog.kicker`; `planner.page.kicker` ist entfallen). Die beste Reisezeit hieß im Kicker auf Englisch, Französisch, Italienisch, Niederländisch und Spanisch so wie der Tagesplaner („trip planner", „planificateur de visite" …) und heißt jetzt „trip planning", „préparer sa visite", „organizzare la visita", „reisplanning" und „preparar la visita".
+
+Kapitelabstand `space-y-16 sm:space-y-24` jetzt auch auf Fancast (vorher `space-y-20 sm:space-y-28`) und im Artikel des Tagesplaners (vorher `space-y-14 sm:space-y-16`). Die beiden `<h2>` im Kopf des Tagesplaners („Noch nichts geplant" und „Geplante Tage") laufen über `ChapterHeading`, ohne Nummer, weil sie je nach Zustand fehlen.
+
+### Werkzeugseiten bekommen den kompakten Kopf
+
+Entwickler, Mitmachen, News und Glossar beginnen jetzt mit `LandingHero variant="compact"`: Kicker `park.fan · …` (neu unter `landing.<seite>.kicker` in allen sechs Sprachen), die bisherige H1 und der bisherige Einleitungssatz. Die H1 misst auf allen vier Seiten 30 px auf dem Handy und 36 px ab `sm` und beginnt an der `container`-Kante, bei 1440 px also bei x=96 statt bei 288 (Entwickler) oder 224 (News). Die Inhaltsspalten behalten ihre Breite, sind aber nicht mehr zentriert, sondern beginnen an derselben Kante.
+
+Entwickler: Der Kopf führt mit einem Button zur API-Referenz, der Link, der bisher erst als erste Karte im ersten Abschnitt kam. Die vier `<h2>` mit `text-xl font-semibold` laufen über `ChapterHeading`, ohne Nummer.
+
+Mitmachen: Die Fotokarte mit dem schwarzen Verlauf, der auch im hellen Design schwarz blieb, ist weg, und mit ihr das Europa-Park-Hintergrundbild. In die Beispielgalerie ist es nicht gewandert, denn die zeigt Fotos der Art, um die die Seite bittet. Der Button „Fotos hochladen" springt weiter zu `#upload`, jetzt mit `scroll-mt-24` unter dem Header statt `scroll-mt-8`.
+
+News: Megafon-Symbol und `BlogSectionHeader` sind ersetzt, die Zahl der Meldungen steht als kleine Zeile unter der Einleitung. Einen Button gibt es nicht, der Parkfilter direkt darunter ist das Bedienelement der Seite.
+
+Glossar: Titel und Einleitung sind aus dem Glas-Panel in den Kopf gewandert, den jetzt die Server-Seite rendert; im Panel bleiben Suche und Filter. Die Pill-Brotkrume über dem Panel entfällt (die `BreadcrumbList` im strukturierten Datensatz bleibt). Damit der Kopf auf dem Hintergrundfoto lesbar ist, legt `GlossaryBackground headTint` oben eine Tönung in Hintergrundfarbe darüber, hell im hellen und dunkel im dunklen Design. Die Kategorieüberschriften laufen über `ChapterHeading`, ohne Nummer, weil der Filter Gruppen ausblendet.
+
+### Die Seite „Durchschnittliche Wartezeiten“ führt zuerst in den Tagesplaner
+
+Wer auf der Statistikseite eines Parks unten ankommt, bekam bisher die Live-Seite und den Kalender angeboten, aber nicht den Planer, für den die Seite laut Konzept (docs/product/landing-pages.md §4) da ist. Der erste Schritt in `LandingNextSteps` ist jetzt „Tag im Phantasialand planen“: derselbe `ParkPlannerLink` wie im Parkkopf, als Knopf der Zeile gezeichnet, mit demselben Text (`parks.planDayCta`) und derselben `planner_opened`-Quelle `park-header`. Ein Klick öffnet das Planer-Panel direkt im Assistenten für diesen Park, ein Klick mit Modifier den Planer in einem neuen Tab. Kein neues Umami-Event, kein neuer Text, `revalidate` der Seite unverändert bei 86400.
+
+### Ein Kopf und ein nächster Schritt für alle Landingpages
+
+`components/marketing/editorial-ui.tsx`: Der bisherige `Hero` heißt jetzt `LandingHero` und ist die einzige Kopf-Komponente der Hub-Seiten. Neu sind `variant="compact"` (kein Foto, kein Scroll-Hinweis, keine Mindesthöhe, H1 `text-3xl sm:text-4xl`, bleibt ohne `-mt-12` unter dem 48-px-Header), ein `aside`, das ab `lg` als zweite Spalte steht und darunter wegfällt, und ein `action` für genau einen primären Button unter der Unterzeile. Die H1 der Hubs ist überall `text-4xl sm:text-6xl`; das trifft Fancast, das bisher mit `text-6xl sm:text-8xl` lief. Jeder Kopf trägt `data-landing-hero="hub"` oder `"compact"`.
+
+`GuideHero` aus `app/[locale]/how-park-fan-works/_chrome.tsx` ist gelöscht. Die Anleitung nutzt `LandingHero` mit dem `WaitSign` als `aside` und übernimmt dabei die gemeinsamen Werte: 78vh statt 86vh, `pt-32` statt `pt-28` und die schwächere Tönung des gemeinsamen Kopfs. Die Überschrift oben auf dem Handy, die gespiegelte Tönung und `pb-48` gegen `HERO_FLOW_INTO_PULL` bleiben.
+
+`LandingNextSteps` ersetzt vier Bausteine: `ClosingBand` (Anleitung), `FancastCta` (beste Reisezeit, die Datei `_best-time-ui.tsx` ist weg) und die beiden `NextStep`-Kopien auf „Mit Kindern" und „Durchschnittliche Wartezeiten". Ein bis drei Ziele, das erste als primärer `Button`, die übrigen als Outline, alle über `buttonLinkProps` statt eigener Klassen. Auf den Parkseiten steht der Block mit `surface="chapter"` als Kapitel mit `ChapterHeading` und `GlassCard`. Ziele und Texte sind unverändert. Auf der Reisezeit-Seite stand die Fancast-Karte mitten zwischen Kapitel 05 und den FAQ; als Abschluss steht sie jetzt hinter den FAQ, wie es die Anatomie vorsieht.
+
+Kicker, Unterzeile und Kennzahlen der Köpfe von Anleitung, Fancast und bester Reisezeit kommen aus `messages/*.json` (`landing.*`) statt aus `PAGE_HEADERS` in den Seiten. Das Scroll-Label ist ein Schlüssel für alle fünf Seiten (`landing.scroll`); Spanisch sagt jetzt überall „Desliza", Niederländisch „Scroll" (die Anleitung hatte „Desplazar" und „Scrollen").
+
+### Standort-Banner auf dem Handy kleiner
+
+Der Standort-Toast unten auf der Startseite war unter `sm` 202–252 px hoch, 26–32 % eines 780 px hohen Bildschirms, und lag über dem Suchfeld des Hero. Unter `sm` fällt jetzt das Icon-Kästchen weg, der Text ist die kurze Fassung `nearby.bannerBodyShort` (sechs Sprachen, dieselbe Zusage in halb so vielen Worten), und das Padding ist enger. Gemessen über sechs Sprachen bei 320, 360 und 390 px: 147–181 px, 19–23 %. Button und Schließen-Knopf behalten ihre 44 px, ab `sm` ist der Toast unverändert.
+
+### `pnpm check:planner` ist wieder grün: 395/395 statt 390/393
+
+Drei Zusicherungen waren auf `main` rot, und keine davon beschrieb einen Fehler an der Seite.
+
+Zwei hingen an der Benachrichtigungs-Berechtigung. Der Headless-Shell, den `chromium.launch()`
+startet, antwortet auf dieselbe Frage zweimal verschieden: `navigator.permissions.query` meldet
+`granted`, `Notification.permission` meldet `denied` — und zwar auch dann, wenn
+`grantPermissions(['notifications'])` die Berechtigung ausdrücklich erteilt hat. Nur das volle
+Chromium (`channel: 'chromium'`) lässt beide übereinstimmen. `usePushSubscription` liest den Wert,
+der `denied` sagt, also zeigte der Prüflauf im Schritt „konfigurierter Deploy" den blockierten
+Hinweis statt des Schalters. Der Schritt setzt `Notification.permission` jetzt per `addInitScript`
+auf `default`, so wie der An-/Aus-Durchlauf 650 Zeilen weiter oben es schon tat, und **liest den
+Wert danach zurück**: zwei neue Zeilen, je eine in Schritt 2 und 3, damit ein Schritt nie wieder
+einen Zustand behauptet und einen anderen messen kann.
+
+Die dritte war Reacts Dev-Warnung `Encountered a script tag while rendering React component`. Sie
+betrifft die fünf `<script>`-Tags des Root-Layouts — `temp_unit`, drei JSON-LD-Blöcke und
+next-themes —, die React bei einem Client-Render des Layout-Teilbaums neu anlegt, gemessen mit
+einem `MutationObserver` auf dem Einfügezeitpunkt (389 ms, Warnung bei 197 ms). React meldet den
+Teilbaum **einmal**, nicht einmal je Tag: wird einer der fünf zum `<template>`, bleibt die Zahl bei
+
+1. Die Warnung kann deshalb keinen neuen Fall anzeigen und keinen abwesenden ausschließen, und sie
+   existiert ausschließlich in `react-dom-client.development.js`. Sie wird jetzt erlassen — mit einem
+   Zähler in der Bilanz, nicht stillschweigend.
+
+### Glossar: „Trim Brake" bekommt einen 3-D-Player
+
+Der Begriff `trim-brake` zeigt jetzt den Coaster-Player (`lib/three/coaster/elements.ts`, Eintrag `trimBrake`). Der Zug fährt nach einer Abfahrt auf einen Hügel, trifft auf der Kuppe auf die roten Bremssättel und verliert dort rund zwei Drittel seiner Geschwindigkeit, steht aber nie still und wird nicht gehalten. Das unterscheidet ihn vom Block Brake mit ebener Strecke, Stillstand und Haltephase. Die Bremsstrecke nutzt den `brake`-Baustein aus dem Scene-Builder, die Zeitleiste die vorhandenen Marken `approach`, `brake` und `leave`; neue Strings gibt es nicht.
+
+### Startseite ohne framer-motion, solange kein Countdown läuft
+
+`AnnounceSection` ist eine Server Component und lud `FlipClock` per `next/dynamic`. In einer Server Component splittet Next damit nichts (`node_modules/next/dist/docs/01-app/02-guides/lazy-loading.md`), also lud jede Startseite den framer-motion-Chunk, obwohl der Countdown seit dem 28. März vorbei ist. Der dynamische Import sitzt jetzt in `components/home/flip-clock-lazy.tsx`, einem Client-Modul. JS auf `/en` im Produktions-Build, 390 px: 373 → 333 KB brotli, 1.360 → 1.217 KB roh.
+
+**`cookies-next` raus.** Die Bibliothek lag mit 15 KB minifiziertem JS auf jeder Seite, für zwei Aufrufe im Browser (Favoriten und Temperatureinheit). `lib/utils/browser-cookie.ts` liest und schreibt mit derselben Kodierung, alte Cookies bleiben lesbar (in Chromium gegen `cookie.serialize` geprüft). Je Seite 4 KB brotli und 18 KB roh weniger; `/en` jetzt 329 KB brotli, `/en/parks` 251 KB.
+
+### Meta-Descriptions der Beiträge auf 155 Zeichen, Glossar schneidet am Satzende
+
+- **Blog:** 137 von 228 Beiträgen trugen ein `seo.description` über 160 Zeichen, das längste 268, und Google schnitt jedes davon mitten im Satz ab. Neu geschrieben sind alle 160 über 155 Zeichen (en 27, de 28, fr 29, nl 24, it 25, es 27), mit denselben Fakten. `updatedAt` bleibt, weil es eine Formulierung ist und kein neuer Inhalt.
+- **Glossar:** Die Description eines Begriffs war der erste Absatz der Definition, bei 152 Zeichen hart abgeschnitten („It comes in two kinds:…"). `fitSentences()` in `lib/utils/metadata.ts` nimmt jetzt so viele ganze Sätze, wie passen, und kürzt erst, wenn schon der erste Satz zu lang ist. Abkürzungen wie „z. B." oder „Dr." beenden keinen Satz. 405 von 548 Descriptions auf Englisch und Deutsch enden dadurch anders.
+- **Prüfung:** `pnpm test:meta-descriptions` prüft beides; die Grenze steht auch in `content/blog/README.md`.
+
+### 404-Seiten mit eigenem Kopf, Ride-Schema mit `@id` und `geo`, Breadcrumb auf `/developers`, Autorenfoto über den Optimizer
+
+- **404-Kopf:** `app/[locale]/not-found.tsx` und die neue Catch-all-Route setzen `notFoundMetadata()` (`lib/seo/not-found-metadata.ts`): Titel und Beschreibung aus `notFound`, `noindex, follow`, kein Canonical und kein hreflang (`alternates: null`). Vorher erbte die Seite Titel, Canonical `/en` und `index, follow` vom Layout.
+- **Unbekannte Pfade:** `app/[locale]/[...rest]/page.tsx` wirft `notFound()`, damit `/en/gibt-es-nicht` die Locale-404 mit Header, Footer und Links bekommt statt der nackten `app/not-found.tsx`. Status bleibt 404, keine echte Route wird verdeckt.
+- **Ride-Schema:** `AttractionStructuredData` setzt `@id` (die Ride-URL, wie im `containsPlace` der Parkseite), `geo` aus den Koordinaten der Bahn und `@id` des Parks in `containedInPlace`.
+- **`/developers`:** BreadcrumbList, wie auf Fancast.
+- **Autorenfoto:** Banner und Autorenprofil laden `/authors/patrick-arns.webp` (76 KB) über `/_next/image` (`avatarUrl()` in `lib/utils/image-loader.ts`, w=96 bzw. w=256).
+
+### Interne Links zwischen Guides, Halloween-Beiträgen und Reisezeit-Seite, `WebApplication` für den Tagesplaner
+
+Aus der Cluster-Analyse des SEO-Laufs vom 3. Oktober, in allen sechs Sprachen, ohne `updatedAt` zu bewegen:
+
+- **Reisezeit-Seite:** Zwölf Park-Guides sowie „Sind 70 Minuten lang?" und der Tagesplaner-Beitrag verlinken jetzt `/best-time-to-visit` (vorher nur der Movie-Park-Guide). Die Seite selbst verlinkt unter „Der ruhigste Tag je Park" die Guides der Parks, die ihre Tabelle zeigt (`getGuideForPark`, neuer Key `bestTime.quietestByPark.guidesLead`).
+- **Rangliste Deutschland:** Die Guides zu Europa-Park, Phantasialand, Heide Park, Hansa-Park und Movie Park verlinken „Die besten Freizeitparks in Deutschland 2026".
+- **Halloween:** Der Europa-Überblick verlinkt den USA-Überblick und die News zu Cedar Point und Gardaland. Die Gardaland-News verlinkt den Europa-Überblick, die Cedar-Point-News den USA-Überblick.
+- **Tagesplaner:** `/trip-planner` trägt neben der BreadcrumbList ein `WebApplication` (`WebApplicationStructuredData` in `components/seo/structured-data.tsx`): kostenlos, im Browser, Herausgeber `#organization`.
+
+### Sammel-Guides mit `parkLinks` sind kein Park-Guide mehr
+
+`getGuideForPark` (`lib/blog/backlinks.ts`) nahm als Guide eines Parks den Guide, dessen erster `parkLinks`-Eintrag der Park ist, und ging davon aus, dass Sammel-Guides keine `parkLinks` tragen. Die Deutschland-Rangliste (7 Einträge, erster `europa-park`) und Halloween in den USA (6, erster `universal-studios-florida`) tun das seit dem 3. Oktober, und die Europa-Park-Seite öffnete ihren Blog-Teil mit der Rangliste statt mit dem Europa-Park-Guide. Ein Guide mit mehr als `MAX_PRIMER_PARK_LINKS` (3) Einträgen ist jetzt niemandes Guide; die Park-Guides haben 1–2. `pnpm test:park-guide` war auf `main` rot und prüft die beiden Sammel-Guides jetzt mit.
+
+### Artikel-Schema mit Zeitzone und `@id`, „20000 km entfernt" raus aus dem Dokumenttext
+
+- **Artikel-Schema:** `components/seo/blog-structured-data.tsx` schreibt `datePublished` und `dateModified` jetzt für jeden Beitrag mit Berliner Offset (`2026-10-03T00:00:00+02:00`), bisher nur für News. `publisher` trägt `@id` `https://park.fan/#organization`, derselbe Knoten wie auf jeder Seite, und der Autor `@id` `https://park.fan/#person-<key>`.
+- **Breiten-Reservierung ohne Text:** `ParkDistance` reserviert die Breite des Entfernungs-Badges mit einer unsichtbaren Kopie, die bisher „20000 km entfernt" als Text ins Server-HTML jeder Park- und Ride-Seite schrieb. `DistanceBadge` hat dafür jetzt `sizer`: das Label kommt per `content: attr(data-label)`. Die Box ist gleich breit (360 px, Phantasialand: de 148,6, es 175,4, it 167, en 130,1 px, vorher wie nachher), der Text steht nicht mehr im Dokument.
+
+### Drei Befunde aus dem SEO-Lauf vom 3. Oktober
+
+- **Stadt-Breadcrumb:** Das `BreadcrumbList`-JSON-LD der Mehrpark-Stadtseiten trug als letztes `item` `…/germany/[object Object]`, weil `app/[locale]/parks/[continent]/[country]/[city]/page.tsx` das City-Objekt der API in die URL schrieb statt `citySlug`. Betroffen waren 103 Städte in 6 Sprachen.
+- **`/search` ist `noindex`:** Ohne Query besteht die Seite aus einem Suchfeld und einer Hinweiszeile. Sie ist jetzt in jeder Form `noindex, follow` und steht nicht mehr in `sitemap.xml` (6 URLs weniger). `docs/seo/sitemaps.md` ist angepasst.
+- **Planer-Fotos über den Optimizer:** `planner-block.tsx` und `planner-panel-photo.tsx` malten `/media/*.jpg` roh als `background-image`, auf `/en/trip-planner` sechs Dateien mit 155–218 KB. Beide gehen jetzt über `backgroundPhotoUrl()` (`lib/utils/image-loader.ts`, w=828, q50).
+
+### Die Länderseite Deutschland verlinkt den Ranking-Guide
+
+`lib/blog/country-guide.ts` ordnet einem Land per `translationKey` einen Guide zu, bisher `germany` dem Beitrag `best-theme-parks-germany`. Die Länderseite zeigt ihn als kompakte `BlogPostCard` über der Städteliste, in der Sprache des Besuchers oder in der englischen Fassung. Für jedes andere Land und für eine Sprache ohne veröffentlichten Beitrag rendert die Seite nichts. Der Beitrag selbst steht in allen sechs Sprachen im Blog: eine Rangliste für Achterbahnfans, eine für Familien und der Median je Park aus `park-comparison-widget`.
+
+### Stadtseiten mit mehreren Parks haben einen Intro-Satz wie die Länderseiten
+
+`components/parks/city-summary-section.tsx` rendert auf `/parks/[continent]/[country]/[city]` serverseitig einen Satz mit Stadt, Parkzahl und Park-Liste (`Intl.ListFormat`, `explore.citySummary.intro` in sechs Sprachen). Die Daten kommen aus `getCitiesWithParks`, den die Seite schon lädt, es gibt keinen neuen API-Call. Betroffen sind 103 Mehrpark-Städte in 6 Sprachen, also 618 Seiten, die bisher nur Titel und Parkzahl hatten. Einpark-Städte leiten weiter per 308 auf den Park.
+
+### Park page: one sentence under "Crowds now"
+
+`ParkTodayPanel` prints a short sentence under the "Crowds now" badge, written from the same crowd level the badge shows ("Busy, expect longer waits."). It reads the value the server render already holds, so the sentence is in the first HTML. Six locales, no new data source; a park with no level, a closed park and the `unknown` level show no sentence.
+
+### Planer: jede Fahrt kostet fünf Minuten, als benannte Annahme
+
+`RIDE_DURATION_MIN` (`lib/planner/day-grid.ts`) ersetzt die private 3 Minuten aus `leg.ts` und gilt für jede Fahrt gleich. Sie steckt im Übergang zwischen zwei Stopps, damit Suche, Leg-Pille und `fits = start < closeMin` dieselben Minuten lesen, und einmal am Tagesende für den letzten Stopp. Auf dem Rechenbeispiel steigt die Untergrenze des Übergangs von 8 auf 10 und die Obergrenze von 9 auf 11 Minuten. Die Blockhöhe bleibt die Warteschlange, und es gibt keinen neuen Text: die Pille nennt den Übergang schon geschätzt.
+
+### check:planner prüft das kurze Desktop-Fenster bei 1440×480
+
+`scripts/check-planner.mjs`: Der Pointer-Term in `PLANNER_PHONE_QUERY` und in `@variant planner-phone` hatte keine Zusicherung. Wer ihn aus einer der beiden Hälften entfernte, ließ alle Querformat-Passes grün, weil die mit `hasTouch` laufen. Ein neuer Pass öffnet den Planer bei 1440×480 ohne `hasTouch` und prüft fünf Dinge: das Fenster antwortet `pointer: fine`, das Panel ist ein 448×480-Seitenpanel bei x=992, es setzt weder Overlay noch Scroll-Sperre noch `data-aria-hidden`, es trägt `border-left` statt `border-top`, und der Griff ist nicht sichtbar. Gegenprobe gegen den Dev-Server: ohne den Term in `PLANNER_PHONE_QUERY` werden 4 von 10 Zusicherungen des Passes rot, ohne ihn in `planner-phone` 2 von 10, ohne ihn in beiden CSS-Varianten 3 von 10. Außerdem ist das Feld `handle` aus `landscapeRoom` entfernt: Playwright machte den DOM-Knoten zu einem String, und niemand las ihn. Kein Verhaltenswechsel im Planer.
+
+### Admin: „Redis komplett zurücksetzen“ heißt jetzt „Park-Cache zurücksetzen und neu aufbauen“
+
+`app/admin/actions/page.tsx`: Label und Beschreibung der Aktion `cache/reset` passen zum Backend nach PAR-636. Der Endpunkt löscht nur noch die Park-Cache-Patterns wie „Cache leeren“ und stößt den Rebuild an; Queues, Sitzungen und Rate-Limits bleiben erhalten. Vorher stand dort „FLUSHALL“.
+
+### Der Fit-Assistent pinnt die gedrückte Bahn, und „die Antwort auf" ist ein Fehler im Prosa-Check
+
+`components/planner/add-to-planner-button.tsx`, `lib/planner/add-ride-fit.ts`: Öffnet ein Druck auf „In den Plan" den `PlannerFitAssistant`, ist die gedrückte Bahn jetzt vorab gepinnt (`requestedRideChoice`, als `initialChoice`). Vorher stand sie ungepinnt in der Liste, und im Testtag aus `pnpm test:planner-fit` Abschnitt 13 gab der vorgeschlagene Plan genau diese Bahn auf. Der Pin ist ein normaler Pin und lässt sich in der Zeile lösen. Ein zweiter Druck auf dieselbe Bahn wird unter demselben Schlüssel `a:<slug>` gepinnt.
+
+`scripts/check-prose.mjs`: „die Antwort auf" und die fünf Gegenstücke (`the answer to`, `het antwoord op`, `la réponse à`, `la respuesta a`, `la risposta a`) sind keine Warnung „stock phrase (§3)" mehr, sondern ein Fehler auf jeder Oberfläche. `docs/blog.md` §3.3 hat dafür Hausregel 7; die Floskel-Tabellen in §3.1, §3.2 und §3.5 nennen sie nicht mehr. Das Repo hat danach 0 Fehler.
+
+### Admin: die History zeigt `park.verify`-Einträge als Prüfung, ohne Zurücknehmen
+
+Seit v4 #366 trägt jeder History-Eintrag `kind: "change" | "verification"`. Ein `park.verify`-Eintrag
+hat `before` mit den geprüften Werten und `after: null`. `HistoryList` (`app/admin/_ui/history-list.tsx`)
+zeigte ihn bisher als rohen Action-Namen ohne Werte. Jetzt heißt er „Park geprüft“, trägt den Chip
+„Prüfung“, listet die Werte aus `before` und davor „geprüft gegen“ die Quelle. Für `kind: "verification"`
+gibt es nie einen Zurücknehmen-Button, das Backend antwortet darauf mit 400. Der Filter auf
+`/admin/history` hat eine Option „Park geprüft“.
+
+### Admin: der Fastpass-Tab heißt Merkmale und kennt Virtual Line, Single Rider, Indoor/Outdoor und Typ
+
+Der Tab auf der Parkseite (`attraction-features-editor.tsx`, vorher `fast-pass-editor.tsx`) hat fünf
+Chips statt einer festen Fastpass-Spalte: Fast Pass, Virtual Line, Single Rider, Indoor/Outdoor und
+Typ (`attractionKind`). Die beiden Selects lesen ihre Optionen aus `GET /v1/admin/content/fields`.
+Der Sammel-Save schickt je Bahn nur die Felder, die sich geändert haben, mit Begründung und Quelle
+wie bisher. Die Tab-URL ist jetzt `?tab=features`.
+
+### Die Planer-Seite sagt im Lead, dass der Tagesplaner kostenlos ist
+
+`messages/*.json`, Schlüssel `planner.page.lead`, in allen sechs Sprachen: Der letzte Satz hieß „Alles liegt in deinem Browser, kein Konto nötig.“ und nennt jetzt zusätzlich, dass der Planer nichts kostet. Der Lead steht im Hero und in der Seitenbeschreibung der Tagesplaner-Seite, es kommt keine neue Fläche und kein neuer Key dazu. `pnpm check:client-messages` unverändert grün, `pnpm check:prose` unverändert bei 12 Warnungen, 0 Fehlern.
+
+### Glossar: Die Drehscheibe läuft als 3-D-Animation
+
+Der Begriff „Turntable" hat jetzt einen Coaster-Player (`lib/three/coaster/elements.ts`, Eintrag `turntable`). Der Zug fährt auf eine Scheibe mit 2,9 Einheiten Radius, steht dort still, dreht sich in 28 % der Laufzeit um 180° und fährt auf demselben Gleis zurück. Referenz ist die Drehscheibe der Voltron Nevera im Europa-Park. `createCoasterScene` kennt dafür das Feld `turntable`: Die Scheibe trägt eigene Schienen und 24 Randmarken, die Wagen drehen sich als ein Körper um die Scheibenmitte, Follow- und Onboard-Kamera drehen mit.
+
+### Glossar: „Block Brake" bekommt einen 3-D-Player
+
+Der Begriff `block-brake` zeigt jetzt den Coaster-Player (`lib/three/coaster/elements.ts`, Eintrag `blockBrake`). Der Zug rollt nach einer Abfahrt in eine ebene Bremsstrecke, bremst bis zum Stillstand, steht 10 % der Laufzeit und wird dann in den nächsten Hügel freigegeben. Die Bremsstrecke ist neu im Scene-Builder: rote Bremssättel (`brake` im Element) links und rechts der Mitte, anders als die weißen Stator-Finnen der Launch-Strecke. Die Zeitleiste trägt drei neue Marken (`brake`, `hold`, `release`) in allen sechs Sprachen.
+
+### check:planner bewacht, dass die Aktionsleiste im Drag zurücktritt
+
+`scripts/check-planner.mjs` hält auf einem 360 × 568 px Handy einen Touch-Drag an und fragt `elementFromPoint` an der Mitte des Ghosts. Die Aktionsleiste deckt dort die Mitte (Scroller 231 px), mit `standBack` ist sie `hidden` und der Ghost liegt oben; mit zurückgedrehtem `standBack` antwortet ein `p` in der Aktionsleiste und die Zusicherung wird rot. Der Ghost trägt dafür `data-planner-ghost`.
+
+### `check:planner` fährt echte Zieh-Gesten im Tagesplaner
+
+`scripts/check-planner.mjs` prüfte den Rastschritt nur als Funktion (`snapTo`) und die Ebene des Ghost-Blocks nur als Klasse. Drei Fälle fahren jetzt die Geste im Browser. Ein Mauszug von 62 px (Rohminute +51,67) landet von 585 auf 635 Min., also auf der nächsten Fünf. Ein Fingerzug von 95 px (Rohminute +52,78) landet von 650 auf 705 Min. Mitten im Mauszug hat der Ghost `zIndex` 40 und der gezogene Block 30, gelesen aus `getComputedStyle`. Jeder Fall meldet die gemessene Minute. Lauf gegen `pnpm build && pnpm start`: 385 von 385 Checks grün.
+
+### Eine Entwicklerseite unter `/developers` listet die API und die Agent-Dokumente
+
+`app/[locale]/developers/page.tsx` ist die lesbare Vorderseite von `lib/agents/`: die API-Referenz, die OpenAPI-Beschreibung, `/.well-known/api-catalog`, `llms.txt`, `agent-skills/index.json`, das Capability-Manifest, die MCP-Server-Card, `license.xml` und die drei MCP-Tools von `/api/mcp`. Jede URL kommt aus dem Modul, das sie ausliefert, nur die Texte sind übersetzt (`developers` in allen sechs Sprachen). Die Seite ruft nichts ab, hat keine Client-Komponente und keinen Eintrag in `ROUTE_MESSAGE_NAMESPACES` über `[]` hinaus. Erreichbar über den Footer (Gruppe Tools), in der Sitemap mit sechs Alternates und mit dem Edge-Cache der anderen statischen Seiten.
+
+### Der Footer bietet die Installation als App an
+
+`InstallAppButton` (`components/common/install-app-button.tsx`) steht im Footer unter dem Google-Button und zeichnet nichts, solange der Browser nichts anbietet. Chromium reicht `beforeinstallprompt` weiter, der Button öffnet dann den Installationsdialog des Browsers. Safari auf iOS und iPadOS hat kein Event, dort klappt der Button einen Hinweis zu „Teilen“ und „Zum Home-Bildschirm“ auf. Das Event fängt `lib/pwa/install-store.ts` beim Laden des Moduls ab und gibt es über `useSyncExternalStore` weiter, damit ein früh gefeuertes Event nicht verloren geht. Ein Klick auf das Kreuz blendet den Hinweis 30 Tage aus (`install-hint-dismissed` in `localStorage`). Eine installierte App (`display-mode: standalone`) sieht ihn nie. Drei neue Schlüssel unter `footer.install` in allen sechs Sprachen.
+
+### Blog: die erste Karte lädt ihr Cover nur noch einmal
+
+Auf `/de/blog` hat die erste Karte (`priority`) ihr Cover zweimal geladen, einmal für die Zeile
+unter `sm` und einmal für die Karte, weil beide eager sind und die versteckte Ebene trotzdem lädt.
+Eine `priority`-Karte gibt jetzt ihr `sizes` an die Zeile weiter (`blog-post-card-view.tsx`), alle
+drei `<img>` wählen dieselbe URL. Gemessen gegen `pnpm build && pnpm start`: Desktop 1440 px
+einmal 640 statt 640 + 96, bei DPR 2 einmal 1080 statt 1080 + 256; Handy 390 px bei DPR 1 einmal
+256 (3.836 B) statt 96 + 256 (4.888 B). Lazy-Karten bleiben unverändert.
+
+### Das Admin zeigt bei den Parkduplikaten, welches Paar geprüft werden muss
+
+`app/admin/duplicates/page.tsx` las aus `GET /v1/admin/duplicate-parks` nur `total` und die Paare ohne `safe` und `reviewReason`; die Suche meldete „N Paar(e) gefunden." und sonst nichts. Jetzt trägt `DuplicateParkPair` beide Felder. Jede Zeile der Trefferliste hat einen Chip „sicher" oder „prüfen", ein Paar zum Prüfen zeigt darunter den `reviewReason` des Backends. Das gilt auch für den Zweig `attractionsAgree` aus PAR-310: dort nennt der Grund die Entfernung und ab 10 km den Aufruf von `correct-location` vor dem Merge. Die Zusammenfassung nennt `safe` und `needsReview` neben `total`. Trägt man über „Ids übernehmen" oder von Hand ein Paar ein, das die letzte Suche als „prüfen" gemeldet hat, zeigt der Bestätigungsschritt des manuellen Merges den Grund in einem gelben Kasten über dem Button.
+
+### Planer: ein iPhone SE im Querformat zeigt die Zeitachse
+
+Bei 568 × 320 blieb das Planer-Sheet gestapelt, weil das Querformat-Layout erst ab 40rem galt. Kopfzeile, Kontextband, Ride-Suche, Headliner, Optimize und Summary brauchten 303 px des 308 px hohen Sheets, die Achse war auf dem Bildschirm 3 px hoch. `planner-landscape` (`app/globals.css`) und `PLANNER_LANDSCAPE_QUERY` gelten jetzt ab 35.5rem, die linke Spalte ist unter 40rem 16rem breit. Gemessen bei 568 × 320: Achse 252 px hoch und ganz im Sheet, 312 px breit, nichts darüber. 844 × 390 und 390 × 844 sind unverändert. `check:planner` prüft 568 × 320 mit einem eigenen Run.
+
+### Die drei Kacheln der Rope-Drop-Karte bleiben auch auf Französisch, Italienisch und Spanisch einzeilig
+
+Oberhalb der Stapel-Schwelle von 380 px Zeilenbreite hat eine Kachel in `StatTiles` 93 px Platz für Icon und Beschriftung. Drei Beschriftungen waren breiter und brachen um, die drei Werte standen dann auf zwei Höhen: „Vous économisez" (114 px), „Picco del giorno" (105,5 px) und „En la apertura" (94,3 px). Sie heißen jetzt „Vous gagnez", „Al picco" und „Al abrir". Die breiteste Beschriftung in allen sechs Sprachen ist jetzt 88,4 px breit. Gemessen auf Guide- und Ride-Seite bei 1024 px und zwischen 381 und 454 px Zeilenbreite: keine Beschriftung bricht um, die Werte stehen auf einer Linie. Die Schwelle bleibt bei 380 px.
+
+### Die Planer-Doku nennt den Schalter beim Namen, und der Wizard begründet seine Breiten-Klasse
+
+`docs/features/trip-planner.md` beschrieb den Skalen-Schalter als reine Breite (`(width < 40rem)`) und nannte `sm:hidden`, `max-sm:after:h-11` und `sm:right-[var(--planner-inset,0px)]`. Im Code stehen dort `planner-wide:hidden`, `planner-phone:after:h-11` und `planner-wide:right-[…]`. Der Absatz nennt jetzt `PLANNER_PHONE_QUERY` mit beiden Termen, `planner-wide` als Gegenstück und den Grund, warum nur der Höhen-Term `(pointer: coarse)` fragt. In `planner-wizard.tsx` steht an `max-sm:min-h-9` der Chips für die Körpergröße jetzt, warum sie auf der Breite bleiben: 36 px neben 44-px-Kalenderzellen bei 844 × 390, Wizard ausdrücklich nicht Teil von PAR-76. Kein sichtbares Verhalten ändert sich.
+
+### Der Planer liest die Kurve einer Bahn nach Mitternacht nur noch einmal
+
+`estimateFor` in `lib/planner/estimate.ts` suchte an einem Tag, der nach Mitternacht endet, die Wartezeit einer Bahn zweimal: erst an der Stunde der Achse (24, 25), dann an der Uhrzeit (0, 1). Die API liefert in `hours[].hour` die entfaltete Stunde, gemessen am 2026-09-14 (Parc Astérix und Walibi Rhône-Alpes, 19 → 1, Stunden 19 bis 25) und am 2026-10-02 (Cedar Point, 11 → 0, Stunden 11 bis 24). Die zweite Suche ist entfernt. `scripts/test-planner-estimate.mjs` prüft die Stunden 24 und 25 und schlägt fehl, wenn die Suche wieder auf die Uhrzeit zurückfällt. Für Besucher ändert sich nichts.
+
+### Der Überhang des Planer-Griffs ist dokumentiert statt gekappt
+
+`components/planner/planner-block.tsx`: Das 44-px-Ziel des Griffs bleibt mittig verankert und überhängt einen Mindestblock weiterhin um (44 − 30) / 2 = 7 px je Seite. Was das kostet, steht jetzt an der Stelle, die den Überhang setzt: bei 390×844 mit `hasTouch` und zwei freien Blöcken 1,8 px auseinander landen **5,2 px** davon im Block darüber, und weil beide `<li>` denselben `z-index` tragen, verschiebt ein Druck dort den kurzen Block, statt den langen auszuwählen. Gekappt wird nicht — bei der Raumhöhe des Blocks wäre das Ziel 28 px, und der Griff ist die einzige Bedienung, die ein so kurzer Block hat; ein Anker nach unten verschöbe alle 14 px auf den Nachbarn darunter, statt sie 7 und 7 zu teilen.
+
+Dazu die Geometrie, die vorher nirgends stand: das `::after` setzt keine waagerechte Kante, also löst `left` sich auf die statische Position in einem zentrierenden Button auf — 22 px. Gemessen liegt der Button auf x +0…+44 und das Ziel auf x +22…+66. `check:planner` probt deshalb rechts von x +44 und trägt das im Namen seiner Zusicherung.
+
+Kein Verhaltenswechsel: keine Klasse geändert, kein Pixel verschoben.
+
+### Die Parkkarte zeichnet ihren Favoriten-Kreis mit `GlassCircle`
+
+`components/parks/park-card.tsx` trug den 34-px-Glaskreis hinter dem Favoriten-Stern als eigene Kopie: dieselben Klassen und dieselben drei Variablen `--pk-fav-bg`, `--pk-fav-border`, `--pk-fav-shadow` wie `components/common/glass-circle.tsx`. Eine Änderung an `GlassCircle` kam deshalb nur auf den Ride-Karten an. `GlassCircle` nimmt jetzt ein `className` für die Platzierung, und die Parkkarte rendert es mit `absolute top-3 right-3 z-[4]`. Gemessen auf `/en/parks/europe/germany` bei 1280 px, hell und dunkel: Abstand 12 px oben und rechts, 34 × 34 px, `z-index: 4`, Hintergrund, Rand und Schatten gleich wie vorher. Die Screenshots der Karte sind vorher und nachher byte-gleich.
+
+### Escape im Menüband lässt den Fokus in einem Feld der Seite stehen
+
+Ein Menüband im Header öffnet auch per Hover. Stand der Zeiger auf einem Auslöser, während jemand im Ride-Filter einer Parkseite tippte, leerte Escape den Filter und zog den Fokus im selben Tastendruck in den Header. `useMenuTrigger` setzt den Fokus jetzt nur noch auf den Auslöser zurück, wenn er im Band oder nirgendwo (`<body>`) stand. Escape schließt das Band weiterhin in jedem Fall.
+
+### Die Alarm-Zeilen im Favoritenband zeigen die Schwelle wieder ganz
+
+`components/layout/favorites-menu-rows.tsx`, `components/layout/favorites-menu-alerts.tsx`: Die Textspalte einer Alarm-Zeile ist bei 1024 und 1280 px 112 px breit, weil der Entfernen-Button 44 px kostet. Der Untertitel „Phantasialand · unter 30 Min." braucht 165 px und wurde vor der Zahl abgeschnitten, zwei Alarme im selben Park waren so nicht zu unterscheiden. `Row` hat jetzt ein Feld `subtitleValue`, das in derselben Zeile hinter dem Untertitel steht, aber außerhalb seines `truncate`. Die Alarm-Gruppe legt dort die Schwelle und die Uhrzeit einer Show-Erinnerung ab, gekürzt wird nur noch der Parkname. „Jeweils nächste Vorstellung" ist kein Wert und kürzt weiter wie bisher. Kartenbreite und Zeilenhöhe bleiben gleich. Gemessen bei 1024/1280/1920 × de/fr gegen `next dev`: die Schwelle ist in allen 24 Zeilen vollständig sichtbar (vorher in 14 von 24 abgeschnitten), jede Zeile ist weiterhin 52 px hoch.
+
+### Der Planer-Reiter weicht einem Menüband aus, das unter ihn reicht
+
+`components/planner/planner-edge-tab.tsx`, `components/layout/menu-band.tsx`, `lib/hooks/use-menu-band-over-edge-tab.ts`: Der Reiter des Tagesplaners hängt `fixed` auf `z-[60]` am rechten Rand des Headers und lag damit über dem Menüband. Bei 1024 und 1280 px endet die Spalte des Bandes 16 px vor dem Rand, und mit acht Alarmen im Favoritenband lagen drei Entfernen-Buttons (x = 1232–1264) zu 14 von 32 px unter dem Reiter (x = 1250–1280); `elementFromPoint` bei 80 % der Buttonbreite traf in zwei Fällen den Reiter. Ein offenes `MenuBand` misst jetzt einmal beim Öffnen, ob seine Spalte näher an den Rand reicht, als der Reiter breit ist, und meldet sich dann bei einem kleinen Store. Der Reiter wird währenddessen über 300 ms `invisible opacity-0`, außer mitten in einem Resize. Bei 1440 und 1920 px endet die Spalte 96 bzw. 208 px vor dem Rand, dort bleibt der Reiter sichtbar. Gemessen gegen `pnpm build && pnpm start` bei 1024/1280/1440/1920 × de/fr: 0 verdeckte Buttons in allen acht Fällen (vorher 3 bei 1024 und 1280), nach dem Schließen steht der Reiter an derselben Stelle. Der zweite Teil des Tickets, die französische Navigationszeile bei 1024 px (1058 statt 1024), war auf `origin/main` schon behoben: `scrollWidth` 1024, 0 px Überhang im Header in allen acht Fällen.
+
+### „In den Plan" legt keine Bahn mehr hinter Parkschluss, sondern öffnet den Assistenten
+
+`components/planner/add-to-planner-button.tsx`, `lib/planner/add-ride-fit.ts`: Der Knopf auf der Bahnseite fragt vor dem Schreiben `noRoomForRide`, das mit `fitWishes`, `fitBlocks` und `needsFitHelp` dieselbe Prüfung macht wie die Optimieren-Knöpfe. Hat der Tag keinen Platz mehr für die Bahn, wird nichts angelegt und `PlannerFitAssistant` geht auf, mit der Bahn im Titel (`planner.fit.titleFor`, sechs Sprachen). Vorher ergaben acht Drücke um 20:10 Parkzeit `20:15 · 21:15 · 22:15 · 23:15 · 24:15 · 25:00 · 25:00 · 25:00`. Bricht man ab, bleibt der Tag unverändert. Ein zweiter Druck auf dieselbe Bahn zählt als eigene Fahrt. Nach dem Bestätigen steht unter dem Knopf eine Ergebniszeile mit „Rückgängig", das den Tag von vorher zurückschreibt. Ohne Tagesdaten, an einem vergangenen Tag und in Parks ohne lesbare Wartezeiten legt der Knopf die Bahn wie bisher an. Assistent und Prüfung werden erst beim Druck geladen. `pnpm test:planner-fit` Abschnitt 12, acht Fälle.
+
+### Der Größenregler steht auch im „Mit Kindern“-Block der Parkseite, und „nennen eine“ ist verboten
+
+`ParkKidsLink` zeigt unter dem Link zur Kinder-Seite den Größenregler ein zweites Mal (`ParkKidsHeightFilter`). Es ist derselbe Filter wie im Panel über der Liste und keine Kopie: `TabsWithHash` reicht den Zustand aus `useAttractionFilter` über `ParkHeightFilterContext` weiter, und die Parkseite übergibt `ClosedRidesList` und `ParkKidsLink` dafür als Slot `belowTabs`. Das DOM bleibt, wie es war. Auf dem Handy liegt der Regler des Panels hinter dem „Filter“-Button (PAR-430), und wer bis zum Kinder-Block gescrollt hatte, fand dort nur einen Link. Ein Button „Zur Liste der Attraktionen“ wechselt auf den Tab und scrollt zur gefilterten Liste.
+
+Der Regler liegt unter der Liste, die er filtert, also ändert jeder Schritt die Höhe über dem Daumen. Safari macht kein Scroll-Anchoring: In Chromium mit `overflow-anchor: none` stand der Block auf Phantasialand bei 390 px nach dem ersten Schritt 4.180 px weiter oben. Der erste Schritt startet deshalb einen Halt: Der Block merkt sich seine Lage, und ein `ResizeObserver` auf `<body>` scrollt nach jeder Größenänderung um das zurück, was er sich bewegt hat, noch vor dem Malen. Über vier Schritte bewegt er sich so um 0,0 px, mit und ohne Anchoring. Der Halt endet mit der nächsten Eingabe außerhalb des Reglers oder einem Scrollen, das nicht vom Block kam. CLS auf der Phantasialand-Seite, A/B im selben Stand: Handy 0,0001 / 0,0948, Desktop 0,0091 / 1,6426 gegen 1,6481 vorher (der Desktop-Wert bei y=7477 ist vorbestehend).
+
+`scripts/check-prose.mjs` meldet „nennen eine“ und das niederländische „noemen een“ als Fehler auf jeder Oberfläche (`docs/blog.md` §3.3, Regel 8). Der erste Lauf fand 8 Treffer, je vier Strings der Kinder-Seite auf Deutsch und Niederländisch. Dort steht jetzt „Bei 35 von 40 Attraktionen gilt eine Mindestgröße“; Englisch, Französisch, Spanisch und Italienisch hatten dieselbe Gewohnheit mit anderen Verben und sind mit umgeschrieben. Danach 0 Fehler und 12 Warnungen wie vorher.
+
+### „die Antwort auf" steht auf der Liste der Floskeln
+
+`scripts/check-prose.mjs` meldet „die Antwort auf" und die fünf Gegenstücke (`the answer to`, `het antwoord op`, `la réponse à`, `la respuesta a`, `la risposta a`) als Warnung „stock phrase (§3)"; `docs/blog.md` §3.1, §3.2 und §3.5 nennen sie in den Tabellen. Der erste Lauf über das ganze Repo fand 6 Treffer, alle derselbe Satz der Fancast-Seite in sechs Sprachen („die Antwort auf ‚lohnt es sich, früh da zu sein?'"). Er sagt jetzt, was die Karte beantwortet: „ob es sich lohnt, früh da zu sein". Danach 12 Warnungen wie vorher, 0 Fehler.
+
 ## 2.14.0 (2026-10-02) – Welcher Park an welchem Tag, und eine geschlossene Bahn behält ihre Seite
 
 Geschnitten am 2026-10-02 aus 33 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.14.0.md`. Neueste Abschnitte zuerst.

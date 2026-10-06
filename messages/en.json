@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Permanently closed attractions",
       "since": "since {month}"
+    },
+    "hoursCalendar": {
+      "link": "Opening hours to calendar",
+      "summary": "{park}: open",
+      "estimated": "Hours are estimated."
     }
   },
   "attractions": {
@@ -1925,6 +1930,7 @@
       "remove": "Remove {name}",
       "addTitle": "Add a new alert",
       "selectRide": "Choose a ride",
+      "otherRide": "Other ride",
       "searchRide": "Search rides",
       "noRideFound": "No ride by that name.",
       "noQueueNow": "No queue right now",
@@ -1937,6 +1943,7 @@
       "close": "Close",
       "entry": "Wait-time alerts",
       "entryWithCount": "Wait-time alerts ({count})",
+      "nudge": "We’ll notify you when a ride’s wait drops below the minutes you set.",
       "outOfSeason": "Winter only",
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",

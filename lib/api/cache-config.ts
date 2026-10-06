@@ -60,6 +60,7 @@ export const CACHE_TTL = {
 
   // Static data (still using revalidate)
   calendar: 900, // /v1/parks/:slug/calendar - API: 900s (past/today) / 1800s (future); the forecast under it only changes ~13h, and today's crowdLevel is patched client-side via a separate 5-min today-only fetch — so 5 min here was pure rebuild churn
+  schedule: 3600, // /v1/parks/:geo/schedule - API: 3600s; the .ics export of the opening days reads it
   weather: 300, // /v1/parks/:slug/weather - API: 3600s
   predictions: 86400, // /v1/parks/:slug/predictions/yearly - API: 86400s
   holidays: 86400, // Holiday data - API: 86400s

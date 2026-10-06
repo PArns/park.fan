@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { listRideAlertsLocal } from '@/lib/push/push-follows-store';
@@ -12,6 +13,13 @@ import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-di
 interface RideAlertsEntryButtonProps {
   parkName: string;
   attractions: RideAlertDialogAttraction[];
+  /**
+   * `link` is the text link in `ParkTodayPanel`. `nudge` is the card at the end of the park
+   * page's headliner section: one sentence on what an alert does and the same button, for a
+   * visitor who arrived from search and has not met the bell on a ride card. Both open the same
+   * dialog, so there is one way to set an alert.
+   */
+  variant?: 'link' | 'nudge';
   /** `hasReadableWaitTimes(park)` — see `RideAlertDialog`. */
   reopenAvailable: boolean;
 }
@@ -25,6 +33,7 @@ interface RideAlertsEntryButtonProps {
 export function RideAlertsEntryButton({
   parkName,
   attractions,
+  variant = 'link',
   reopenAvailable,
 }: RideAlertsEntryButtonProps) {
   const [open, setOpen] = useState(false);
@@ -46,19 +55,31 @@ export function RideAlertsEntryButton({
     [idsKey]
   );
 
+  const label = count > 0 ? t('entryWithCount', { count }) : t('entry');
+
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className={cn(
-          'text-primary flex items-center gap-1 text-xs whitespace-nowrap hover:underline',
-          PHONE_HIT_AREA
-        )}
-      >
-        <Bell className="size-3 shrink-0" aria-hidden="true" />
-        {count > 0 ? t('entryWithCount', { count }) : t('entry')}
-      </button>
+      {variant === 'nudge' ? (
+        <div className="bg-card flex flex-col gap-3 rounded-xl border p-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-muted-foreground text-sm">{t('nudge')}</p>
+          <Button variant="outline" size="sm" className="shrink-0" onClick={() => setOpen(true)}>
+            <Bell aria-hidden="true" />
+            {label}
+          </Button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={cn(
+            'text-primary flex items-center gap-1 text-xs whitespace-nowrap hover:underline',
+            PHONE_HIT_AREA
+          )}
+        >
+          <Bell className="size-3 shrink-0" aria-hidden="true" />
+          {label}
+        </button>
+      )}
       <RideAlertDialog
         open={open}
         onOpenChange={setOpen}
