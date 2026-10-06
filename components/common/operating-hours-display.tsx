@@ -12,6 +12,10 @@ interface OperatingHoursDisplayProps {
   className?: string;
 }
 
+/**
+ * Shows a park's opening and closing time as a range in the park's time zone, or the raw `HH:mm`
+ * from the ISO strings when no time zone is given.
+ */
 export function OperatingHoursDisplay({
   openingTime,
   closingTime,

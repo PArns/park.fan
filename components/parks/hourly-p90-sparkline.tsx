@@ -11,6 +11,7 @@ interface HourlyP90SparklineProps {
   yMax?: number;
 }
 
+/** Sparkline of one day's hourly P90 wait times for a ride, as a day cell of the ride's history calendar draws it. */
 export function HourlyP90Sparkline({ hourlyP90, className, yMax }: HourlyP90SparklineProps) {
   const points: SparklinePoint[] = useMemo(() => {
     if (!hourlyP90 || hourlyP90.length === 0) return [];

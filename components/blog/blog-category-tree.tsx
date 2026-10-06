@@ -77,6 +77,10 @@ function CategoryNodeView({
   );
 }
 
+/**
+ * Sidebar card with the blog category tree and post counts, the active branch expanded and
+ * highlighted. Server Component; renders nothing when there are no categories.
+ */
 export async function BlogCategoryTree({
   locale,
   activePath,

@@ -89,6 +89,10 @@ function visit(node: MdNode | MdRoot, fn: (n: MdNode) => void): void {
   }
 }
 
+/**
+ * Remark plugin that turns a blockquote starting with `[!NOTE]`, `[!CORRECTION]`, `[!QUOTE]` and
+ * the other markers into a callout tagged with `data-callout`.
+ */
 export function remarkCallouts(): (tree: MdRoot) => void {
   return (tree) => {
     visit(tree, (node) => {

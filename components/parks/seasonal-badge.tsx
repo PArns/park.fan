@@ -3,6 +3,10 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 
+/**
+ * Returns `winter` when every season month lies in November to February, `summer` when every one
+ * lies in May to September, otherwise `null`.
+ */
 export function getSeasonLabel(months: number[] | null): 'winter' | 'summer' | null {
   if (!months) return null;
   const winter = [11, 12, 1, 2];
@@ -18,6 +22,10 @@ interface SeasonalBadgeProps {
   className?: string;
 }
 
+/**
+ * Badge for a seasonal ride or show: "Winter", "Summer" or "Seasonal" in season, and "Winter only",
+ * "Summer only" or "Off-season", dimmed, out of it.
+ */
 export function SeasonalBadge({
   seasonMonths,
   isCurrentlyInSeason,

@@ -97,6 +97,11 @@ interface TurnstileWidgetProps {
   ref?: Ref<TurnstileHandle>;
 }
 
+/**
+ * Renders a Cloudflare Turnstile challenge and passes the solved token to `onVerify`; the ref's
+ * `reset()` asks for a fresh token after each attempt. Falls back to Cloudflare's test key without
+ * `NEXT_PUBLIC_TURNSTILE_SITE_KEY`.
+ */
 export function TurnstileWidget({
   onVerify,
   onExpire,

@@ -36,6 +36,10 @@ function keyFor(scope: DraftScope): string {
   return KEY_PREFIX + scope;
 }
 
+/**
+ * Reads the unsaved curated-field corrections stored for a park or ride from localStorage. Returns
+ * `null` when there are none, the version differs or storage fails.
+ */
 export function loadCuratedDraft(scope: DraftScope): CuratedDraft | null {
   if (typeof window === 'undefined') return null;
   try {
@@ -50,6 +54,7 @@ export function loadCuratedDraft(scope: DraftScope): CuratedDraft | null {
   }
 }
 
+/** Stores the editor's current corrections for a park or ride in localStorage, with a timestamp. */
 export function saveCuratedDraft(scope: DraftScope, values: Record<string, unknown>): void {
   if (typeof window === 'undefined') return;
   try {
@@ -62,6 +67,7 @@ export function saveCuratedDraft(scope: DraftScope, values: Record<string, unkno
   }
 }
 
+/** Removes the stored curated-fields draft for a park or ride. */
 export function clearCuratedDraft(scope: DraftScope): void {
   if (typeof window === 'undefined') return;
   try {

@@ -80,6 +80,11 @@ function isFaqListAnswer(
   );
 }
 
+/**
+ * FAQ chapter on a park page: hours, location, tickets and more from `buildParkFaqItems`, the least
+ * crowded days from the best-days calendar, and the crowd calendar question the `FAQPage` JSON-LD
+ * also carries. Client Component seeded by the server so the answers are in the first HTML.
+ */
 export function ParkFAQSection({
   park,
   locale,

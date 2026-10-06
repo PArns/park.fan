@@ -37,6 +37,10 @@ interface ParkBackgroundProps {
   contained?: boolean;
 }
 
+/**
+ * Park or ride photo behind the page: a full-screen backdrop when `fixed`, otherwise a strip under
+ * the header that fades into the page. `contained` keeps it inside its parent (admin preview).
+ */
 export function ParkBackground({
   imageSrc,
   alt,

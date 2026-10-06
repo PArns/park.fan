@@ -40,6 +40,10 @@ function formatRange(locale: string, start: string, end: string): string {
   return `${from.toLocaleDateString(locale, sameYear ? short : full)} – ${to.toLocaleDateString(locale, full)}`;
 }
 
+/**
+ * Park page card listing the park's seasons and events (Halloween, Christmas …) with dates, status
+ * badge, separate-ticket price and a link to the park's page. Renders nothing without seasons.
+ */
 export async function ParkSeasonsCard({
   seasons,
   locale,

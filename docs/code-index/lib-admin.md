@@ -47,21 +47,21 @@ Unique roles move; they are never shared.
 
 The path guard for `/api/admin/[...path]`.
 
-- `isSafeSegment` _function_
+- `isSafeSegment` _function_: Returns false for an empty, `.` or `..` segment, or one holding a decoded `/`, `\`, `?` or `#` that could move the upstream admin URL.
 - `adminProxyPath` _function_: `['content', 'parks', '<id>'] → 'content/parks/<id>'`, or null if unsafe.
 
 ### [`session.ts`](../../lib/admin/session.ts)
 
-- `roleAtLeast` _function_
+- `roleAtLeast` _function_: Returns true when an admin role ranks at or above the given minimum (owner &gt; editor &gt; author &gt; viewer).
 - `readSessionToken` _function_: The raw token from the request's cookie, or null. See `readCookie`.
-- `resolveAdminIdentity` _function_
+- `resolveAdminIdentity` _function_: Who this request is, according to the backend.
 - `forgetSession` _function_: Drop a token from the validation cache — called on logout.
 - `forgetAllSessions` _function_: Drop every cached identity.
 - `requireAdmin` _function_: Guard for this app's own admin route handlers.
 - `adminApiFetch` _function_: Call an admin endpoint on api.park.fan as the current session.
 - `sessionCookieOptions` _function_: The `Set-Cookie` attributes a session cookie is written with.
 - `denyUnlessAdmin` _function_: The one-liner form of `requireAdmin`, for handlers that need the guard but not the identity: `const denied = await denyUnlessAdmin(req); if (denied) return denied;`
-- `AdminBackendUnreachable` _class_: Who this request is, according to the backend.
+- `AdminBackendUnreachable` _class_: Thrown by `resolveAdminIdentity` in `strict` mode when the backend cannot be reached or answers with a 5xx, so the session probe can report an outage instead of a logout.
 - `ADMIN_SESSION_COOKIE` _const_: The admin session cookie.
 - `ADMIN_ROLES` _const_: Roles, most privileged first. Mirrors the backend's `ADMIN_ROLES`.
 - `SESSION_ABSOLUTE_TTL_SECONDS` _const_: The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one case where a cookie has to be written without an `expiresAt` to derive it from.

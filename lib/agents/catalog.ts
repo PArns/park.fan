@@ -32,6 +32,10 @@ function identifier(namespace: string, name: string): string {
   return `urn:air:park.fan:${namespace}:${name}`;
 }
 
+/**
+ * Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the
+ * API catalog and one per agent skill.
+ */
 export function aiCatalog() {
   const entries: CatalogEntry[] = [
     {

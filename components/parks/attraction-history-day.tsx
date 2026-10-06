@@ -298,4 +298,8 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
   );
 }
 
+/**
+ * One day cell of the ride's 30-day history calendar: crowd tile, signal bar, hourly P90 curve and
+ * the day's low and high wait. Memoised; the grid renders one per day.
+ */
 export const AttractionHistoryDay = memo(AttractionHistoryDayComponent);

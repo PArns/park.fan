@@ -17,6 +17,10 @@ interface WaitTimeSparklineCardProps {
   fallbackWaitTime?: number;
 }
 
+/**
+ * The attraction card's wait-time curve for today, with four time ticks, held flat up to now on
+ * the shared minute clock. With no history it draws `fallbackWaitTime` over the last hour.
+ */
 export function WaitTimeSparklineCard({
   history,
   timezone,

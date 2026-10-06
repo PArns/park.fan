@@ -7,8 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`changelog-index.tsx`](../../components/changelog/changelog-index.tsx)
 
-- `ChangelogIndex` _component_
+- `ChangelogIndex` _component_: Jump list of every release on the changelog page, grouped by year: a closed `<details>` below `lg`, a side column from `lg` up.
 
 ### [`changelog-release.tsx`](../../components/changelog/changelog-release.tsx)
 
-- `ChangelogRelease` _component_
+- `ChangelogRelease` _component_: One release on the public changelog: an `<article>` with the version, date and the release notes rendered from markdown. Server Component.

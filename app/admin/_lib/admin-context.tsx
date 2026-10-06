@@ -84,6 +84,11 @@ function ensureInterval() {
   }, REFRESH_INTERVAL_MS);
 }
 
+/**
+ * Returns the admin's shared refresh state: the 60 s tick counter (paused in a hidden tab, backed
+ * off after failures), whether anything is fetching, the last update time, `triggerRefresh` and
+ * `logout`.
+ */
 export function useAdmin(): AdminRuntime {
   const { signOut } = useSession();
   const client = useQueryClient();

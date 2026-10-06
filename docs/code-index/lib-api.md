@@ -38,10 +38,10 @@ by hand: change the comment in the code and re-run the script. -->
 API base configuration
 
 - `getServerApiHeaders` _function_: Headers every request that targets the backend (api.park.fan) DIRECTLY should carry: the auth key and the identifying User-Agent above.
-- `apiFetch` _function_
+- `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. On the server a 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can detect API outages and render the maintenance page.
-- `ApiError` _class_
+- `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
 - `API_MAINTENANCE_DIGEST` _const_: Digest forwarded to the error boundary so it can render the maintenance page. In production Next.js redacts `error.message` for server-thrown errors but preserves a custom `digest`, so this is the reliable cross-environment signal.
 - `api` _const_: Convenience methods
 - Types: `FetchOptions`
@@ -150,7 +150,7 @@ API base configuration
 - `getParkHourlyProfile` _function_: Fetch the park's hourly wait-time profile — median and busy wait per hour of the operating day, ride by ride.
 - `getParkHistoricalStatsSeed` _function_: Timeout-bounded, per-render-deduped wrapper around `getParkHistoricalStats` for the blog widgets' server seed.
 - `getRideDayCurve` _function_: One ride's day curve. `attraction` pins a ride; without it the backend picks the park's busiest ride that actually reported today, so the answer is not a closed or out-of-season one.
-- `getParkHourlyProfileSeed` _function_
+- `getParkHourlyProfileSeed` _function_: Timeout-bounded, per-render-deduped fetch of a park's hourly wait profile for the blog widget's server seed; resolves `null` on a miss or after 3 s.
 - `getParkStatsForPage` _function_: The park's historical aggregate, read for a PAGE rather than for a widget.
 - `getParkHourlyProfileForPage` _function_: The hourly profile for the same page, on the same terms as `getParkStatsForPage`.
 - `hasParkStatsPage` _function_: Does this park have a wait-time record page at all?

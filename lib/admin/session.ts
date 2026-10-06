@@ -33,6 +33,10 @@ const ROLE_RANK: Record<AdminRole, number> = {
   viewer: 0,
 };
 
+/**
+ * Returns true when an admin role ranks at or above the given minimum (owner > editor > author >
+ * viewer).
+ */
 export function roleAtLeast(role: AdminRole, minimum: AdminRole): boolean {
   return (ROLE_RANK[role] ?? -1) >= ROLE_RANK[minimum];
 }
@@ -89,13 +93,19 @@ export async function readSessionToken(request?: Request): Promise<string | null
 }
 
 /**
- * Who this request is, according to the backend.
- *
- * Returns null for absent, expired and revoked alike — the caller must not be
- * able to tell those apart, and does not need to.
+ * Thrown by `resolveAdminIdentity` in `strict` mode when the backend cannot be
+ * reached or answers with a 5xx, so the session probe can report an outage
+ * instead of a logout.
  */
 export class AdminBackendUnreachable extends Error {}
 
+/**
+ * Who this request is, according to the backend.
+ *
+ * Returns null for absent, expired and revoked alike — the caller must not be
+ * able to tell those apart, and does not need to. A validated identity is
+ * cached for 60 s unless `revalidate` is set.
+ */
 export async function resolveAdminIdentity(
   request?: Request,
   options: { revalidate?: boolean; strict?: boolean } = {}

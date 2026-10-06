@@ -23,6 +23,10 @@ interface ResolveResult {
   ambiguous: boolean;
 }
 
+/**
+ * Resolves a park slug (and optional ride and city slug) to admin ids and renders chip links to the
+ * park and ride editors. Renders nothing while resolving, when the slug is unknown or ambiguous.
+ */
 export function OpenInEditor({
   parkSlug,
   rideSlug,

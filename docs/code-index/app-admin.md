@@ -7,17 +7,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_app/admin-shell.tsx`](../../app/admin/_app/admin-shell.tsx)
 
-- `AdminShell` _component_
+- `AdminShell` _component_: Admin frame around every page: collapsible sidebar, topbar with title, search, refresh and account menu, then the page, the inspector column and the ⌘K command palette.
 
 ### [`_app/command-palette.tsx`](../../app/admin/_app/command-palette.tsx)
 
-- `CommandPalette` _component_
+- `CommandPalette` _component_: ⌘K dialog that searches parks and rides by upstream or curated name and lists the admin pages and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
 
 ### [`_app/inspector.tsx`](../../app/admin/_app/inspector.tsx)
 
-- `InspectorProvider` _component_
-- `InspectorPanel` _component_
-- `useInspector` _hook_
+- `InspectorProvider` _component_: Holds the inspector's content and open state, so any admin page can fill the right column.
+- `InspectorPanel` _component_: Right-hand inspector column showing what a page pushed with `show()`: docked beside the page from `xl`, a sheet with a scrim below it. Renders nothing while closed or empty.
+- `useInspector` _hook_: Returns the inspector slot: its current content and open state, plus `show`, `close` and `toggle`. Throws outside `<InspectorProvider>`.
 - Types: `InspectorContent`
 
 ### [`_app/login-screen.tsx`](../../app/admin/_app/login-screen.tsx)
@@ -31,14 +31,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_app/nav.ts`](../../app/admin/_app/nav.ts)
 
 - `activeNavItem` _function_: The nav entry a path belongs to.
-- `visibleGroups` _function_
+- `visibleGroups` _function_: Returns the navigation groups with the entries below the given role's rank removed, and empty groups dropped. A display filter only: the API enforces roles.
 - `NAV_GROUPS` _const_
 - `NAV_ITEMS` _const_
 - Types: `NavItem`, `NavGroup`
 
 ### [`_app/new-contributions-notice.tsx`](../../app/admin/_app/new-contributions-notice.tsx)
 
-- `NewContributionsNotice` _component_
+- `NewContributionsNotice` _component_: Shows one toast for visitor photo submissions this browser has not been told about yet, with a link to the moderation page. Renders nothing; only asked for accounts from `author` up.
 
 ### [`_app/providers.tsx`](../../app/admin/_app/providers.tsx)
 
@@ -46,24 +46,24 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_app/session.tsx`](../../app/admin/_app/session.tsx)
 
-- `SessionProvider` _component_
-- `useSession` _hook_
+- `SessionProvider` _component_: Provides the signed-in identity to the admin. Its `signOut` deletes the session, drops every cached query and reloads `/admin`, so nothing from the old account stays in the tab.
+- `useSession` _hook_: Returns the signed-in admin's identity, a `can(role)` check, `signOut` and `refresh`. Throws outside the session provider.
 - `useCan` _hook_: Convenience for the very common `can('editor')` guard around a control.
 - `useSessionQuery` _hook_: The session query, shared by the gate and anything that wants to re-read it.
 
 ### [`_lib/admin-context.tsx`](../../app/admin/_lib/admin-context.tsx)
 
-- `useAdmin` _hook_
+- `useAdmin` _hook_: Returns the admin's shared refresh state: the 60 s tick counter (paused in a hidden tab, backed off after failures), whether anything is fetching, the last update time, `triggerRefresh` and `logout`.
 - `useAdminFetch` _hook_: Fetch an admin endpoint on mount and on every refresh tick.
 - `adminKeys` _const_
 - `useAdminQuery` _const_
 
 ### [`_lib/api.ts`](../../app/admin/_lib/api.ts)
 
-- `useAdminQuery` _hook_
-- `useAdminMutation` _hook_
+- `useAdminQuery` _hook_: React Query hook that GETs an admin path through `adminFetch` under the given key. A `null` path disables the query, but an `enabled` passed in `options` overrides that.
+- `useAdminMutation` _hook_: React Query `useMutation` typed for admin writes, so errors arrive as `AdminApiError`.
 - `useInvalidateAdmin` _hook_: Drop every cached admin query under a prefix.
-- `adminFetch` _function_
+- `adminFetch` _function_: Same-origin fetch for admin API routes: sends `body` as JSON, returns the parsed payload (or `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
 - `AdminApiError` _class_: How the admin talks to everything.
 - `adminKeys` _const_: Namespaced so `invalidate('parks')` can drop a whole family at once.
 
@@ -85,22 +85,22 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/ui.tsx`](../../app/admin/_lib/ui.tsx)
 
-- `Section` _component_
-- `StatCard` _component_
-- `KeyVal` _component_
-- `SeverityBadge` _component_
-- `CrowdBadge` _component_
-- `StatusBadge` _component_
+- `Section` _component_: Dashboard section: icon, uppercase heading, an optional action on the right, content below.
+- `StatCard` _component_: Dashboard tile: an uppercase label, one large tabular figure and an optional line beneath.
+- `KeyVal` _component_: Small label above a bold tabular value, for figures inside a dashboard card.
+- `SeverityBadge` _component_: Pill coloured by severity (low, medium, high, critical); any other value is grey.
+- `CrowdBadge` _component_: Pill coloured by crowd level (`very_low` to `very_high`) for the monitoring dashboards, with underscores shown as spaces. The public site uses `CrowdLevelBadge`.
+- `StatusBadge` _component_: Pill with a status dot: green for statuses like healthy, ok or online, amber for warning, degraded or pending, red for anything else.
 - `LoadingPanel` _component_: The dashboards' names for the shared state panels.
-- `ErrorPanel` _component_
-- `EmptyPanel` _component_
+- `ErrorPanel` _component_: Dashboard name for `ErrorState`, showing the given error message.
+- `EmptyPanel` _component_: Dashboard name for `EmptyState`, with the label as its title.
 - `formatDisplayName` _function_: A person's name as a name.
-- `formatUptime` _function_
-- `formatCompact` _function_
-- `formatAge` _function_
-- `isDisk` _function_
-- `maeColor` _function_
-- `statusDot` _function_
+- `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
+- `formatCompact` _function_: Formats a count with a `K` (one decimal) or `M` (two decimals) suffix, e.g. `12.3K`.
+- `formatAge` _function_: Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`.
+- `isDisk` _function_: Type guard: true when a host disk entry carries usage figures rather than an `{ error }`.
+- `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
+- `statusDot` _function_: Renders a small round dot, green when `ok` and red otherwise.
 
 ### [`_lib/upload-transport.ts`](../../app/admin/_lib/upload-transport.ts)
 
@@ -120,17 +120,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/use-local-preference.ts`](../../app/admin/_lib/use-local-preference.ts)
 
-- `useLocalPreference` _hook_
+- `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
 
 ### [`_ui/controls.tsx`](../../app/admin/_ui/controls.tsx)
 
 - `Field` _component_: The form controls the admin edits with.
-- `TextInput` _component_
-- `TextArea` _component_
+- `TextInput` _component_: Text `<input>` in the admin field style: 44 px high, 16 px text on phones, `h-9` from `sm`.
+- `TextArea` _component_: `<textarea>` in the admin field style, at least `min-h-20` tall.
 - `NumberInput` _component_: A number input that can tell "empty" from "zero".
 - `TriSwitch` _component_: A three-state switch: true, false, and "nothing said".
 - `Switch` _component_: The ordinary two-state switch, for UI preferences rather than data.
-- `Checkbox` _component_
+- `Checkbox` _component_: Checkbox drawn as a `role="checkbox"` button, with an optional label and a dash for the indeterminate state (`aria-checked="mixed"`).
 - `Select` _component_: A select on the installed popover, with an explicit empty option.
 - `MonthPicker` _component_: The twelve months, as a grid.
 - `useFieldId` _hook_: A labelled input id, for the many places a Field wraps one control.
@@ -141,62 +141,62 @@ by hand: change the comment in the code and re-run the script. -->
 
 Crash protection for the curated-fields editor.
 
-- `loadCuratedDraft` _function_
-- `saveCuratedDraft` _function_
-- `clearCuratedDraft` _function_
+- `loadCuratedDraft` _function_: Reads the unsaved curated-field corrections stored for a park or ride from localStorage. Returns `null` when there are none, the version differs or storage fails.
+- `saveCuratedDraft` _function_: Stores the editor's current corrections for a park or ride in localStorage, with a timestamp.
+- `clearCuratedDraft` _function_: Removes the stored curated-fields draft for a park or ride.
 - Types: `DraftScope`, `CuratedDraft`
 
 ### [`_ui/curated-fields.tsx`](../../app/admin/_ui/curated-fields.tsx)
 
-- `CuratedFieldsEditor` _component_
+- `CuratedFieldsEditor` _component_: Form for a park's or ride's curated fields as the backend describes them: one tab per group, each row showing upstream's value beside the correction, and a sticky save bar asking for reason and source.
 - `useCuratedForm` _hook_: Three layers, and which one wins is the whole point.
-- `formatFieldValue` _function_
+- `formatFieldValue` _function_: Formats a curated field's value for display by field type: Ja/Nein, short German month names, number with unit, `DD.MM.YYYY`, or `—` when empty.
 - Types: `FieldValues`, `CuratedFormState`
 
 ### [`_ui/entity-media.tsx`](../../app/admin/_ui/entity-media.tsx)
 
-- `EntityMediaPanel` _component_
+- `EntityMediaPanel` _component_: Admin panel listing the media database photos for a park or ride, with roles, focus point and `alsoRides` matches, each linking into the media editor. Read-only; says so when a ride has none.
 
 ### [`_ui/entity-posts.tsx`](../../app/admin/_ui/entity-posts.tsx)
 
-- `EntityPostsPanel` _component_
+- `EntityPostsPanel` _component_: Admin panel listing the blog posts that reference a park or ride, each with links to the blog editor and the live post. Read-only: the list is derived from the posts, not set here.
 
 ### [`_ui/history-list.tsx`](../../app/admin/_ui/history-list.tsx)
 
-- `HistoryList` _component_
+- `HistoryList` _component_: Audit log list: action, actor, time, before → after values, reason and source per entry. With `canUndo`, unreverted park and ride curations get a button that undoes them.
 
 ### [`_ui/metrics.tsx`](../../app/admin/_ui/metrics.tsx)
 
-- `MetricTile` _component_
+- `MetricTile` _component_: Dashboard tile linking to the list it counts: a ring showing `value` as a share of `of`, the count beside it in German number format, and an optional note.
 - `CurationTrend` _component_: Thirty days of the admin's own work.
-- `BacklogBars` _component_
+- `BacklogBars` _component_: Backlog rows, each a link showing its count against the catalogue total and a bar for that share in the row's tone. Rows render in the order given.
 - Types: `MetricTone`
 
 ### [`_ui/open-in-editor.tsx`](../../app/admin/_ui/open-in-editor.tsx)
 
-- `OpenInEditor` _component_
+- `OpenInEditor` _component_: Resolves a park slug (and optional ride and city slug) to admin ids and renders chip links to the park and ride editors. Renders nothing while resolving, when the slug is unknown or ambiguous.
 
 ### [`_ui/primitives.tsx`](../../app/admin/_ui/primitives.tsx)
 
 - `AdminPage` _component_: One page's rhythm, in one place.
 - `Panel` _component_: A surface, and the reason it looks like one.
-- `PanelHeader` _component_
-- `PanelBody` _component_
+- `PanelHeader` _component_: Header row of a `Panel`: optional icon, a title with a muted hint, an action on the right.
+- `PanelBody` _component_: Padded content area of a `Panel`.
 - `Toolbar` _component_: A horizontal strip of controls above a list: search, filters, view switch.
 - `Kbd` _component_: A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are discoverable by looking rather than by reading documentation.
 - `Meta` _component_: Label above a value, the densest way to show a fact.
-- `Chip` _component_
-- `LoadingState` _component_
-- `ErrorState` _component_
-- `EmptyState` _component_
+- `Chip` _component_: Small rounded label in one of five tones: muted, primary, success, warning, danger.
+- `LoadingState` _component_: Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading.
+- `ErrorState` _component_: Red error box showing a message, with an `Erneut` retry button when `onRetry` is given.
+- `EmptyState` _component_: Centred empty-panel message: optional icon, title, description and an action below.
 - `SkeletonRows` _component_: Rows shaped like the rows they replace.
 
 ### [`_ui/retirement.ts`](../../app/admin/_ui/retirement.ts)
 
 - `today` _function_: Der Tag, den `<input type="date">` und die API gleichermaßen wollen.
-- `retireAttraction` _function_
+- `retireAttraction` _function_: Retires one ride as of `retiredAt` with the given reason, through the admin retire endpoint. The caller checks the reason first (`RETIRE_REASON_REQUIRED`) and invalidates `RETIREMENT_KEYS`.
 - `setRetiredHidden` _function_: Eine dauerhaft geschlossene Bahn auf der Parkseite aus- oder wieder einblenden.
-- `unretireAttraction` _function_
+- `unretireAttraction` _function_: Takes a ride's retirement back, so it counts as an active attraction again.
 - `RETIRE_REASON_REQUIRED` _const_: Grund und Quelle sind Pflicht.
 - `RETIREMENT_KEYS` _const_: Query-Präfixe, die eine Stilllegung ungültig macht.
 

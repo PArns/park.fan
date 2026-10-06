@@ -49,6 +49,11 @@ function RoundFlag({ locale }: { locale: Locale }) {
   );
 }
 
+/**
+ * Header dropdown that switches the site language: remembers the choice for `/`, then follows the
+ * page's hreflang link for the new locale, or replaces the locale in the current path when there is
+ * none.
+ */
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
   const t = useTranslations('navigation');

@@ -57,6 +57,10 @@ function actionLabel(action: string): string {
 
 const UNDOABLE = new Set(['attraction.curate', 'park.curate']);
 
+/**
+ * Audit log list: action, actor, time, before → after values, reason and source per entry. With
+ * `canUndo`, unreverted park and ride curations get a button that undoes them.
+ */
 export function HistoryList({
   entries,
   invalidateKeys = [],

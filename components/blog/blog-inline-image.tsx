@@ -46,6 +46,10 @@ const SIZE_OVERRIDE: Record<BlogImageSize, string> = {
   large: 'sm:max-w-[640px]',
 };
 
+/**
+ * An image inside a post body, centred, floated or full width per `align`, with an optional caption
+ * and a click-to-enlarge lightbox.
+ */
 export function BlogInlineImage({
   src,
   alt = '',

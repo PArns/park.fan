@@ -27,6 +27,10 @@ function formatReleaseDate(iso: string): string {
   }).format(parsed);
 }
 
+/**
+ * One release on the public changelog: an `<article>` with the version, date and the release notes
+ * rendered from markdown. Server Component.
+ */
 export function ChangelogRelease({ entry }: { entry: ChangelogEntry }) {
   return (
     <article

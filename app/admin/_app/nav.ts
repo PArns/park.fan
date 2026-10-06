@@ -239,6 +239,10 @@ const ROLE_RANK: Record<AdminRole, number> = {
   viewer: 0,
 };
 
+/**
+ * Returns the navigation groups with the entries below the given role's rank removed, and empty
+ * groups dropped. A display filter only: the API enforces roles.
+ */
 export function visibleGroups(role: AdminRole): NavGroup[] {
   return NAV_GROUPS.map((group) => ({
     ...group,

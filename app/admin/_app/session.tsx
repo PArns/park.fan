@@ -33,6 +33,10 @@ interface SessionContextValue {
 
 const SessionContext = createContext<SessionContextValue | null>(null);
 
+/**
+ * Returns the signed-in admin's identity, a `can(role)` check, `signOut` and `refresh`. Throws
+ * outside the session provider.
+ */
 export function useSession(): SessionContextValue {
   const context = useContext(SessionContext);
   if (!context) throw new Error('useSession must be used inside <SessionGate>');
@@ -44,6 +48,10 @@ export function useCan(role: AdminRole): boolean {
   return useSession().can(role);
 }
 
+/**
+ * Provides the signed-in identity to the admin. Its `signOut` deletes the session, drops every
+ * cached query and reloads `/admin`, so nothing from the old account stays in the tab.
+ */
 export function SessionProvider({
   identity,
   children,

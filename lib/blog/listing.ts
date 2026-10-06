@@ -192,6 +192,10 @@ export function getListItemByLocaleSlug(
  */
 const HAS_POSTS = new Map<string, boolean>();
 
+/**
+ * Returns true when the blog has at least one published post, in the given locale (with its
+ * English fallback) or, without one, in any locale. Memoised per process; see the note above.
+ */
 export function hasPublishedPosts(locale?: Locale): boolean {
   const cacheKey = locale ?? '*';
   const memo = HAS_POSTS.get(cacheKey);
@@ -429,6 +433,7 @@ export function listPostsByRecency(requestedLocale: Locale): readonly BlogListIt
  */
 export { NEWS_CATEGORY } from './paths';
 
+/** Returns true when a post's category is `news` or a subcategory of it. */
 export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
   return isNewsCategory(post.frontmatter.category);
 }

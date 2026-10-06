@@ -41,6 +41,10 @@ interface BacklinkPost {
   isFallback: boolean;
 }
 
+/**
+ * Admin panel listing the blog posts that reference a park or ride, each with links to the blog
+ * editor and the live post. Read-only: the list is derived from the posts, not set here.
+ */
 export function EntityPostsPanel({
   parkSlug,
   rideSlug,

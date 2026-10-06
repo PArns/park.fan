@@ -278,62 +278,114 @@ function isSimulatedVisit(): boolean {
 
 // Convenience functions for common events
 
+/**
+ * Sends `favorite_add` with the type and name when a favorite star is switched on (`FavoriteStar`).
+ */
 export function trackFavoriteAdd(type: FavoriteType, name?: string): void {
   trackEvent(UMAMI_EVENTS.FAVORITE_ADD, { type, ...(name && { name }) });
 }
 
+/**
+ * Sends `favorite_remove` with the type and name when a favorite star is switched off
+ * (`FavoriteStar`).
+ */
 export function trackFavoriteRemove(type: FavoriteType, name?: string): void {
   trackEvent(UMAMI_EVENTS.FAVORITE_REMOVE, { type, ...(name && { name }) });
 }
 
+/**
+ * Sends `nearby_permission_granted` once when the browser starts returning a position
+ * (`useNearbyAnalytics`).
+ */
 export function trackNearbyPermissionGranted(): void {
   trackEvent(UMAMI_EVENTS.NEARBY_PERMISSION_GRANTED);
 }
 
+/**
+ * Sends `nearby_permission_denied` when the visitor refuses location now, not for a refusal stored
+ * from an earlier visit (`useNearbyAnalytics`).
+ */
 export function trackNearbyPermissionDenied(): void {
   trackEvent(UMAMI_EVENTS.NEARBY_PERMISSION_DENIED);
 }
 
+/**
+ * Sends `nearby_parks_loaded` once per new nearby result, with its type, its source (GPS or IP)
+ * and, in a park, the park name.
+ */
 export function trackNearbyParksLoaded(props: NearbyParksLoadedProps): void {
   trackEvent(UMAMI_EVENTS.NEARBY_PARKS_LOADED, props);
 }
 
+/**
+ * Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens
+ * (`SearchBar`).
+ */
 export function trackSearchOpened(source: 'header' | 'hero' | 'keyboard'): void {
   trackEvent(UMAMI_EVENTS.SEARCH_OPENED, { source });
 }
 
+/**
+ * Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
+ */
 export function trackHeroSearchClicked(): void {
   trackEvent(UMAMI_EVENTS.HERO_SEARCH_CLICKED);
 }
 
+/**
+ * Sends `search_result_clicked` with the result type, position and query length (never the query)
+ * when a search result is opened.
+ */
 export function trackSearchResultClicked(props: SearchResultClickedProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_RESULT_CLICKED, props);
 }
 
+/**
+ * Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to
+ * `/search`.
+ */
 export function trackSearchViewAll(): void {
   trackEvent(UMAMI_EVENTS.SEARCH_VIEW_ALL);
 }
 
+/**
+ * Sends `language_switched` with the old and new locale when the visitor picks a language in
+ * `LocaleSwitcher`.
+ */
 export function trackLanguageSwitched(from: string, to: string): void {
   trackEvent(UMAMI_EVENTS.LANGUAGE_SWITCHED, { from, to });
 }
 
+/** Sends `theme_toggled` with the new theme once the theme toggle's transition has applied it. */
 export function trackThemeToggled(theme: ThemeToggledProps['theme']): void {
   trackEvent(UMAMI_EVENTS.THEME_TOGGLED, { theme });
 }
 
+/**
+ * Sends `tab_changed` with the tab and park name when a park page tab is switched
+ * (`useTabHashRouting`).
+ */
 export function trackTabChanged(props: TabChangedProps): void {
   trackEvent(UMAMI_EVENTS.TAB_CHANGED, props);
 }
 
+/**
+ * Sends `location_banner_clicked` when the location banner's button is pressed to ask for the
+ * visitor's position.
+ */
 export function trackLocationBannerClicked(): void {
   trackEvent(UMAMI_EVENTS.LOCATION_BANNER_CLICKED);
 }
 
+/** Sends `blog_toast_opened` when the new-posts toast is followed to its post (`NewPostsToast`). */
 export function trackBlogToastOpened(): void {
   trackEvent(UMAMI_EVENTS.BLOG_TOAST_OPENED);
 }
 
+/**
+ * Sends `search_no_results` with the query length (never the query) when a search of three or more
+ * characters returns nothing.
+ */
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
 }
@@ -515,14 +567,26 @@ export function trackCompassPillClicked(): void {
   trackEvent(UMAMI_EVENTS.COMPASS_PILL_CLICKED);
 }
 
+/**
+ * Sends `glossary_term_viewed` with the English term id once per glossary term page view
+ * (`GlossaryTermTracker`).
+ */
 export function trackGlossaryTermViewed(props: GlossaryTermViewedProps): void {
   trackEvent(UMAMI_EVENTS.GLOSSARY_TERM_VIEWED, props);
 }
 
+/**
+ * Sends `glossary_category_filtered` with the category slug, or `none` when the filter is cleared,
+ * on the glossary overview.
+ */
 export function trackGlossaryCategoryFiltered(props: GlossaryCategoryFilteredProps): void {
   trackEvent(UMAMI_EVENTS.GLOSSARY_CATEGORY_FILTERED, props);
 }
 
+/**
+ * Sends `glossary_searched` with the query length (never the query) 600 ms after the glossary
+ * search holds three or more characters.
+ */
 export function trackGlossarySearched(props: GlossarySearchedProps): void {
   trackEvent(UMAMI_EVENTS.GLOSSARY_SEARCHED, props);
 }

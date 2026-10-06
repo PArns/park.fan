@@ -26,6 +26,10 @@ export interface ParkHeightFilter {
 
 export const ParkHeightFilterContext = createContext<ParkHeightFilter | null>(null);
 
+/**
+ * Reads the park page's shared rider-height filter. `null` outside the park page and on a park that
+ * publishes no minimum heights.
+ */
 export function useParkHeightFilter(): ParkHeightFilter | null {
   return useContext(ParkHeightFilterContext);
 }

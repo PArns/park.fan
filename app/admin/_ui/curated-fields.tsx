@@ -65,6 +65,10 @@ const MONTH_NAMES = [
   'Dez',
 ];
 
+/**
+ * Formats a curated field's value for display by field type: Ja/Nein, short German month names,
+ * number with unit, `DD.MM.YYYY`, or `—` when empty.
+ */
 export function formatFieldValue(field: CuratedField, value: unknown): string {
   if (value === null || value === undefined || value === '') return '—';
   switch (field.type) {
@@ -460,6 +464,12 @@ export function useCuratedForm(fields: CuratedField[], scope?: DraftScope): Cura
   };
 }
 
+/**
+ * Form for a park's or ride's curated fields as the backend describes them: one tab per group,
+ * each row showing upstream's value beside the correction, and a sticky save bar asking for reason
+ * and source. Binds ⌘S / Strg+S while there is something to save; state comes from
+ * `useCuratedForm`.
+ */
 export function CuratedFieldsEditor({
   fields,
   form,

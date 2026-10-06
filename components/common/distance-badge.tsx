@@ -15,6 +15,10 @@ interface DistanceBadgeProps {
   sizer?: boolean;
 }
 
+/**
+ * Muted distance label with a navigation icon, formatted from metres or passed as a string. `sizer`
+ * draws the label through CSS so an invisible width reserve adds no text.
+ */
 export function DistanceBadge({ distance, size = 'sm', className, sizer }: DistanceBadgeProps) {
   const label = typeof distance === 'number' ? formatDistance(distance) : distance;
 

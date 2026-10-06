@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`analytics-opt-out.tsx`](../../components/common/analytics-opt-out.tsx)
 
-- `AnalyticsOptOut` _component_
+- `AnalyticsOptOut` _component_: Privacy-page box that shows whether this browser is counted by Umami and toggles the `umami.disabled` localStorage flag to opt out or back in.
 
 ### [`background-overlay-image.tsx`](../../components/common/background-overlay-image.tsx)
 
@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`background-overlay.tsx`](../../components/common/background-overlay.tsx)
 
-- `BackgroundOverlay` _component_
+- `BackgroundOverlay` _component_: Fills its positioned parent with a background photo under a bottom-up gradient of `light`, `medium` or `heavy` strength.
 
 ### [`brand-icons.tsx`](../../components/common/brand-icons.tsx)
 
@@ -33,7 +33,7 @@ Brand marks, in one place.
 
 ### [`build-info.tsx`](../../components/common/build-info.tsx)
 
-- `BuildInfo` _component_
+- `BuildInfo` _component_: Footer line with the build's version, linked to that release on the changelog, and the build date from `md` up. Reads `build-info.json`; English only.
 
 ### [`chapter-heading.tsx`](../../components/common/chapter-heading.tsx)
 
@@ -55,7 +55,7 @@ Brand marks, in one place.
 
 ### [`distance-badge.tsx`](../../components/common/distance-badge.tsx)
 
-- `DistanceBadge` _component_
+- `DistanceBadge` _component_: Muted distance label with a navigation icon, formatted from metres or passed as a string. `sizer` draws the label through CSS so an invisible width reserve adds no text.
 
 ### [`entry-tile.tsx`](../../components/common/entry-tile.tsx)
 
@@ -64,11 +64,11 @@ Brand marks, in one place.
 
 ### [`favorite-star.tsx`](../../components/common/favorite-star.tsx)
 
-- `FavoriteStar` _component_
+- `FavoriteStar` _component_: Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites, stays in sync through `favorites-changed` events and tracks the change in Umami.
 
 ### [`geo-location-card.tsx`](../../components/common/geo-location-card.tsx)
 
-- `GeoLocationCard` _component_
+- `GeoLocationCard` _component_: Linked card for a continent, country or city: its name, open parks out of total with a progress bar, and the distance to its nearest park once the visitor's location is known.
 
 ### [`glass-card.tsx`](../../components/common/glass-card.tsx)
 
@@ -84,9 +84,11 @@ Brand marks, in one place.
 
 ### [`icon-container.tsx`](../../components/common/icon-container.tsx)
 
-- `IconContainer` _component_
+- `IconContainer` _component_: A Lucide icon centred in a rounded, tinted square, in three sizes and six colour variants.
 
 ### [`icons/flags.tsx`](../../components/common/icons/flags.tsx)
+
+Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the caller. Used by the locale switcher, the language banners, the OG images and, through `CountryFlag`, the parks menu.
 
 - `FlagDE` _component_
 - `FlagGB` _component_
@@ -125,7 +127,7 @@ Why these dots carry `will-change`.
 
 ### [`locale-switcher.tsx`](../../components/common/locale-switcher.tsx)
 
-- `LocaleSwitcher` _component_
+- `LocaleSwitcher` _component_: Header dropdown that switches the site language: remembers the choice for `/`, then follows the page's hreflang link for the new locale, or replaces the locale in the current path when there is none.
 
 ### [`location-banner.tsx`](../../components/common/location-banner.tsx)
 
@@ -155,11 +157,11 @@ Why these dots carry `will-change`.
 
 ### [`open-status-progress.tsx`](../../components/common/open-status-progress.tsx)
 
-- `OpenStatusProgress` _component_
+- `OpenStatusProgress` _component_: Progress bar of open out of total (parks or rides), with an optional label and `open / total` count above it.
 
 ### [`operating-hours-display.tsx`](../../components/common/operating-hours-display.tsx)
 
-- `OperatingHoursDisplay` _component_
+- `OperatingHoursDisplay` _component_: Shows a park's opening and closing time as a range in the park's time zone, or the raw `HH:mm` from the ISO strings when no time zone is given.
 
 ### [`page-bottom-sections.tsx`](../../components/common/page-bottom-sections.tsx)
 
@@ -189,7 +191,7 @@ Why these dots carry `will-change`.
 
 ### [`preferred-source-button.tsx`](../../components/common/preferred-source-button.tsx)
 
-- `PreferredSourceButton` _component_
+- `PreferredSourceButton` _component_: Outlined pill linking to Google's Preferred Sources page pre-filled with park.fan, opened in a new tab; the click is tracked in Umami.
 
 ### [`preferred-source-prompt.tsx`](../../components/common/preferred-source-prompt.tsx)
 
@@ -230,7 +232,7 @@ Why these dots carry `will-change`.
 
 ### [`turnstile-widget.tsx`](../../components/common/turnstile-widget.tsx)
 
-- `TurnstileWidget` _component_
+- `TurnstileWidget` _component_: Renders a Cloudflare Turnstile challenge and passes the solved token to `onVerify`; the ref's `reset()` asks for a fresh token after each attempt. Falls back to Cloudflare's test key without `NEXT_PUBLIC_TURNSTILE_SITE_KEY`.
 - Types: `TurnstileHandle`
 
 ### [`unit-display.tsx`](../../components/common/unit-display.tsx)
@@ -249,4 +251,4 @@ Why these dots carry `will-change`.
 
 ### [`wait-time-value.tsx`](../../components/common/wait-time-value.tsx)
 
-- `WaitTimeValue` _component_
+- `WaitTimeValue` _component_: A wait time in minutes, coloured by its crowd tier, with an optional muted unit after it and a drop shadow for figures on a photo.

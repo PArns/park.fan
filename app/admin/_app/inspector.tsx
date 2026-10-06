@@ -35,12 +35,17 @@ interface InspectorContextValue {
 
 const InspectorContext = createContext<InspectorContextValue | null>(null);
 
+/**
+ * Returns the inspector slot: its current content and open state, plus `show`, `close` and
+ * `toggle`. Throws outside `<InspectorProvider>`.
+ */
 export function useInspector(): InspectorContextValue {
   const context = useContext(InspectorContext);
   if (!context) throw new Error('useInspector must be used inside <InspectorProvider>');
   return context;
 }
 
+/** Holds the inspector's content and open state, so any admin page can fill the right column. */
 export function InspectorProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<InspectorContent | null>(null);
   const [open, setOpen] = useState(false);
@@ -64,6 +69,10 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   return <InspectorContext.Provider value={value}>{children}</InspectorContext.Provider>;
 }
 
+/**
+ * Right-hand inspector column showing what a page pushed with `show()`: docked beside the page
+ * from `xl`, a sheet with a scrim below it. Renders nothing while closed or empty.
+ */
 export function InspectorPanel() {
   const { content, open, close } = useInspector();
   if (!content || !open) return null;

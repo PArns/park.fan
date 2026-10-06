@@ -19,6 +19,7 @@ export function CardFrame({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** `CardFrame` without the glass: only the heading-to-table spacing, for a card inside the stats panel. */
 export function BareFrame({ children }: { children: React.ReactNode }) {
   return <div className="space-y-2">{children}</div>;
 }

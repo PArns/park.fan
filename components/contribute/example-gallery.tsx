@@ -41,6 +41,10 @@ const EXAMPLES: Example[] = [
   { src: '/media/walibi-belgium/kondaa.jpg', ride: 'Kondaa', park: 'Walibi Belgium' },
 ];
 
+/**
+ * Grid of eight ride photos with ride and park captions on the contribution page, showing the kind
+ * of shot people can send in. Server Component.
+ */
 export async function ExampleGallery() {
   const t = await getTranslations('contribute.gallery');
 

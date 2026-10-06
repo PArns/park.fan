@@ -15,12 +15,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`catalog.ts`](../../lib/agents/catalog.ts)
 
-- `aiCatalog` _function_
+- `aiCatalog` _function_: Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the API catalog and one per agent skill.
 - `AI_CATALOG_PATH` _const_: The ARD capability manifest (agenticresourcediscovery.org, ai-catalog data model) — one document that says what park.fan can do for an agent, as opposed to which pages it has.
 
 ### [`http.ts`](../../lib/agents/http.ts)
 
-- `agentDocumentHeaders` _function_
+- `agentDocumentHeaders` _function_: Response headers for a machine-readable document: the given content type, `AGENT_DOC_CACHE_CONTROL` and open CORS.
 - `AGENT_DOC_CACHE_CONTROL` _const_: The response shape every machine-readable document on this site shares.
 
 ### [`licensing.ts`](../../lib/agents/licensing.ts)
@@ -38,7 +38,7 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 ### [`mcp-server-card.ts`](../../lib/agents/mcp-server-card.ts)
 
-- `mcpServerCard` _function_
+- `mcpServerCard` _function_: Builds the MCP server card served at `/.well-known/mcp/server-card.json`, listing the given tool names and the `/api/mcp` endpoint.
 - `MCP_PROTOCOL_VERSION` _const_: The MCP revision this server implements.
 - `MCP_SERVER_CARD_PATH` _const_
 - `MCP_ENDPOINT_PATH` _const_
@@ -51,9 +51,9 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 ### [`skills.ts`](../../lib/agents/skills.ts)
 
-- `skillArtifactPath` _function_
+- `skillArtifactPath` _function_: Returns the public path of an agent skill's `SKILL.md` under `/.well-known/agent-skills/`.
 - `readSkillArtifact` _function_: The bytes served at `skillArtifactPath(name)`. Throws when a skill has no file.
-- `skillDigest` _function_
+- `skillDigest` _function_: Returns the `sha256:` digest of the bytes served for an agent skill's `SKILL.md`, computed from the file on every call.
 - `agentSkillsIndex` _function_: The discovery document itself. Absolute URLs: an index can be mirrored, a relative URL cannot.
 - `AGENT_SKILLS_INDEX_PATH` _const_: Fixed by the Agent Skills Discovery RFC v0.2.0.
 - `AGENT_SKILLS` _const_: Three skills, because there are three questions people arrive with: what is the queue doing right now, which day should I go, and where do I get this as data.
@@ -61,6 +61,6 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 ### [`tool-descriptors.ts`](../../lib/agents/tool-descriptors.ts)
 
-- `toolDescriptor` _function_
+- `toolDescriptor` _function_: Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when there is none.
 - `TOOL_DESCRIPTORS` _const_
 - Types: `ToolDescriptor`

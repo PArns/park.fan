@@ -13,6 +13,10 @@
 export const AGENT_DOC_CACHE_CONTROL =
   'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800';
 
+/**
+ * Response headers for a machine-readable document: the given content type,
+ * `AGENT_DOC_CACHE_CONTROL` and open CORS.
+ */
 export function agentDocumentHeaders(contentType: string): HeadersInit {
   return {
     'Content-Type': contentType,

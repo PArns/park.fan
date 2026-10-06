@@ -37,6 +37,10 @@ export const RETIREMENT_KEYS = [
   ['admin', 'retired-attractions'] as const,
 ];
 
+/**
+ * Retires one ride as of `retiredAt` with the given reason, through the admin retire endpoint. The
+ * caller checks the reason first (`RETIRE_REASON_REQUIRED`) and invalidates `RETIREMENT_KEYS`.
+ */
 export function retireAttraction(input: {
   attractionId: string;
   retiredAt: string;
@@ -62,6 +66,7 @@ export function setRetiredHidden(attractionId: string, hidden: boolean): Promise
   });
 }
 
+/** Takes a ride's retirement back, so it counts as an active attraction again. */
 export function unretireAttraction(attractionId: string): Promise<unknown> {
   return adminFetch(`/api/admin/unretire-attraction/${attractionId}`, { method: 'POST' });
 }

@@ -30,8 +30,8 @@ Public entry for the glossary 3-D coaster player.
 
 ### [`glossary-inject-context.tsx`](../../components/glossary/glossary-inject-context.tsx)
 
-- `GlossaryInjectProvider` _component_
-- `useGlossaryInject` _hook_
+- `GlossaryInjectProvider` _component_: Provides the glossary terms, locale and glossary URL segment to client components that link terms in text (`GlossaryInjectClient`).
+- `useGlossaryInject` _hook_: Returns the glossary terms, locale and segment from the nearest `GlossaryInjectProvider`, or `null` outside one.
 - Types: `GlossaryInjectTerm`
 
 ### [`glossary-inject-term.tsx`](../../components/glossary/glossary-inject-term.tsx)
@@ -46,7 +46,7 @@ A client component on purpose, like its sibling GlossaryTermLink.
 
 ### [`glossary-overview-client.tsx`](../../components/glossary/glossary-overview-client.tsx)
 
-- `GlossaryOverviewClient` _component_
+- `GlossaryOverviewClient` _component_: The glossary overview: term cards grouped by category, with a search field, category pills and a filter for terms that have a 3-D player. Typing anywhere focuses the search.
 
 ### [`glossary-rich-text.tsx`](../../components/glossary/glossary-rich-text.tsx)
 
@@ -58,7 +58,7 @@ A client component on purpose, like its sibling GlossaryTermLink.
 
 ### [`glossary-term-detail.tsx`](../../components/glossary/glossary-term-detail.tsx)
 
-- `GlossaryTermDetail` _component_
+- `GlossaryTermDetail` _component_: A glossary term page: breadcrumb, name, alternate names, definition, the 3-D player when the term has one, related terms and the `rides` and `posts` slots. Model terms get a link to the Fancast page.
 
 ### [`glossary-term-link.tsx`](../../components/glossary/glossary-term-link.tsx)
 
@@ -66,7 +66,7 @@ A client component on purpose, like its sibling GlossaryTermLink.
 
 ### [`glossary-term-posts.tsx`](../../components/glossary/glossary-term-posts.tsx)
 
-- `GlossaryTermPosts` _component_
+- `GlossaryTermPosts` _component_: The blog posts that embed a term's `glossary-widget`, as cards under a heading naming the term. Renders nothing when no post covers it or the locale has no blog.
 
 ### [`glossary-term-rides.tsx`](../../components/glossary/glossary-term-rides.tsx)
 

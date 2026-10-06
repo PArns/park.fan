@@ -79,6 +79,7 @@ export function Panel({ className, ...props }: ComponentProps<'section'>) {
   );
 }
 
+/** Header row of a `Panel`: optional icon, a title with a muted hint, an action on the right. */
 export function PanelHeader({
   icon: Icon,
   title,
@@ -108,6 +109,7 @@ export function PanelHeader({
   );
 }
 
+/** Padded content area of a `Panel`. */
 export function PanelBody({ className, ...props }: ComponentProps<'div'>) {
   return <div className={cn('p-4', className)} {...props} />;
 }
@@ -155,6 +157,7 @@ export function Meta({
   );
 }
 
+/** Small rounded label in one of five tones: muted, primary, success, warning, danger. */
 export function Chip({
   children,
   tone = 'muted',
@@ -186,6 +189,7 @@ export function Chip({
 
 // ─── states ───────────────────────────────────────────────────────────────────
 
+/** Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading. */
 export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
   return (
     <div className="text-muted-foreground flex items-center justify-center gap-2 py-12 text-sm">
@@ -194,6 +198,7 @@ export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
   );
 }
 
+/** Red error box showing a message, with an `Erneut` retry button when `onRetry` is given. */
 export function ErrorState({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
     <div className="border-destructive/30 bg-destructive/10 text-destructive m-4 flex items-start gap-2 rounded-lg border px-3 py-2.5 text-sm">
@@ -212,6 +217,7 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
   );
 }
 
+/** Centred empty-panel message: optional icon, title, description and an action below. */
 export function EmptyState({
   icon: Icon,
   title,

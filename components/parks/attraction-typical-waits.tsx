@@ -64,6 +64,10 @@ export function formatPeakDate(date: string, locale: string): string {
   }).format(d);
 }
 
+/**
+ * A ride's typical (P50) and busy (P90) waits: weekday against weekend, a bar per day of the week
+ * and the record peak, rounded to five. Renders nothing unless the API marks the data displayable.
+ */
 export function AttractionTypicalWaits({
   typicalWaits,
   bare = false,

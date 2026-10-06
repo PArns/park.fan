@@ -69,6 +69,11 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
   };
 }
 
+/**
+ * Renders a blog category listing: breadcrumbs, the category's articles, the category tree and tag
+ * cloud, plus Blog and BreadcrumbList JSON-LD. 404s for an unknown or empty category; `news`
+ * redirects to `/news`.
+ */
 export async function BlogCategoryPageBody({ locale, path }: { locale: string; path: string[] }) {
   if (!routing.locales.includes(locale as Locale)) notFound();
   // `/blog/category/news` is `/news` now. The proxy 308s it before anything renders

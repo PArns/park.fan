@@ -41,6 +41,10 @@ function getLabels(): CategoryLabels {
   return (LABELS ??= readLabels());
 }
 
+/**
+ * Returns a blog category's label in the locale from `content/blog/categories.json`, falling back
+ * to English and then to the title-cased path segment.
+ */
 export function resolveCategoryLabel(
   fullPath: string,
   locale: Locale,

@@ -25,6 +25,10 @@ interface GlossaryOverviewClientProps {
   segment: string;
 }
 
+/**
+ * The glossary overview: term cards grouped by category, with a search field, category pills and a
+ * filter for terms that have a 3-D player. Typing anywhere focuses the search.
+ */
 export function GlossaryOverviewClient({
   groupedTerms,
   rideCounts,

@@ -19,6 +19,10 @@ interface FavoriteStarProps {
   variant?: 'default' | 'glass';
 }
 
+/**
+ * Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites,
+ * stays in sync through `favorites-changed` events and tracks the change in Umami.
+ */
 export function FavoriteStar({
   type,
   id,

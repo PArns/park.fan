@@ -40,6 +40,11 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
   );
 }
 
+/**
+ * The photo contribution form: drop photos, pick the park or ride, add caption and credit, consent,
+ * pass Turnstile. Submits in three steps (`/api/contribute/start`, one `file` upload per photo,
+ * `finalize`), then opens the thank-you page.
+ */
 export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
   const t = useTranslations('contribute.form');
   const tErr = useTranslations('contribute.error');

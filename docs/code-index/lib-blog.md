@@ -29,7 +29,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`categories.ts`](../../lib/blog/categories.ts)
 
-- `resolveCategoryLabel` _function_
+- `resolveCategoryLabel` _function_: Returns a blog category's label in the locale from `content/blog/categories.json`, falling back to English and then to the title-cased path segment.
 - `parseCategoryPath` _function_: Parse a slash-separated category path into normalized segments.
 - `categoryPathBreadcrumbs` _function_: Return [["a"], ["a","b"], ["a","b","c"]] from "a/b/c".
 - `buildCategoryTree` _function_: Build the blog's category tree from every visible ARTICLE.
@@ -37,7 +37,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`country-guide.ts`](../../lib/blog/country-guide.ts)
 
-- `getGuideForCountry` _function_
+- `getGuideForCountry` _function_: Returns the ranking guide post a country page links to, or `null` when the country has none or it is not published in this locale or English.
 
 ### [`embeds.ts`](../../lib/blog/embeds.ts)
 
@@ -83,7 +83,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `resolveEntryForLocale` _function_: Pick the entry to serve for a requested locale: that locale, else EN, else whichever translation exists.
 - `findTranslationKeyBySlug` _function_: Find a post's translationKey from a URL slug: the requested locale's slug first, then EN, then any other locale (which the post page turns into a redirect to the canonical URL).
 - `getListItemByLocaleSlug` _function_: A post's card data by URL slug, WITHOUT its body — for surfaces that only need frontmatter (the OG image route). Hidden posts resolve here just like they do by URL; drafts don't.
-- `hasPublishedPosts` _function_
+- `hasPublishedPosts` _function_: Returns true when the blog has at least one published post, in the given locale (with its English fallback) or, without one, in any locale. Memoised per process; see the note above.
 - `getTranslationIndex` _function_: Map from translationKey → { locale: slug } — kept for hreflang / canonical lookups.
 - `listPosts` _function_: List all published posts for the given locale, falling back to EN where needed. Sorted newest-first by `date`.
 - `buildPostAlternates` _function_: Return alternate hreflang URLs for a single post (per translationKey).
@@ -92,7 +92,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parsePageParam` _function_: Parse a `?page=` search-param value into a clamped 1-based page number. Returns 1 for missing, invalid, or out-of-range input.
 - `lastTouched` _function_: When a post was last touched, for the recency sort below and for the date the header's blog panel prints beside each post.
 - `listPostsByRecency` _function_: The same list as `listPosts`, but ordered by when a post last CHANGED (`lastTouched`: `updatedAt` where it exists, else the publication `date`) instead of by when it was first published.
-- `isNewsPost` _function_
+- `isNewsPost` _function_: Returns true when a post's category is `news` or a subcategory of it.
 - `listArticles` _function_: `listPosts` without the news posts: what the blog lists.
 - `listArticlesByRecency` _function_: `listPostsByRecency` without the news posts. Frozen and memoised.
 - `listNewsByDate` _function_: The news posts only, newest first by publication date — not by last edit: a corrected typo does not make an anniversary note news again. Frozen and memoised.
@@ -135,7 +135,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-resolver.ts`](../../lib/blog/park-resolver.ts)
 
 - `resolvePark` _function_: Resolve a park by slug. Pass `geoPath` (`continent/country/city`) to disambiguate slugs shared by multiple parks (e.g. Disneyland Paris vs. Anaheim); it wins over the bare-slug lookup and falls back to it when the path isn't found.
-- `resolveAttraction` _function_
+- `resolveAttraction` _function_: Resolves a `ref:park/ride` mention in a post to the ride's name, link, live wait time, status and a trimmed attraction payload, or `null` for an unknown park. Per-render cached.
 - `parseRefOptions` _function_: Parse the option flags from a `park:slug?flag1&flag2` or `attraction:.../slug?flag1` href into a Set.
 - `extractInlineRefs` _const_
 - `parseRefKey` _const_
@@ -143,7 +143,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`paths.ts`](../../lib/blog/paths.ts)
 
-- `isNewsCategory` _function_
+- `isNewsCategory` _function_: Returns true when a category path is `news` or starts with `news/`.
 - `postPath` _function_: Locale-relative path of a post: `/news/<slug>` for news, `/blog/<slug>` for everything else. Prefix `/${locale}` (or `${SITE_URL}/${locale}`) for an absolute URL.
 - `newsPostPath` _function_: `postPath` for a list that holds news only and carries no frontmatter.
 - `categoryPath` _function_: Locale-relative path of a category listing. The news category itself is the news overview; every other category keeps its `/blog/category/…` page.
@@ -152,7 +152,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`remark-callouts.ts`](../../lib/blog/remark-callouts.ts)
 
-- `remarkCallouts` _function_
+- `remarkCallouts` _function_: Remark plugin that turns a blockquote starting with `[!NOTE]`, `[!CORRECTION]`, `[!QUOTE]` and the other markers into a callout tagged with `data-callout`.
 - `CALLOUT_TYPES` _const_: GitHub-style alert callouts:
 - Types: `CalloutType`
 

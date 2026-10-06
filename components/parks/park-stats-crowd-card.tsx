@@ -32,6 +32,10 @@ interface ParkStatsCrowdCardProps {
   bare?: boolean;
 }
 
+/**
+ * Statistics table of crowd level, typical (P50) and peak (P90) wait per month or per weekday,
+ * with the measured days behind each row when `labelDays` is set. Waits are rounded to five.
+ */
 export function ParkStatsCrowdCard({
   iconType,
   title,

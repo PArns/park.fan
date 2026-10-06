@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`contribute-form.tsx`](../../components/contribute/contribute-form.tsx)
 
-- `ContributeForm` _component_
+- `ContributeForm` _component_: The photo contribution form: drop photos, pick the park or ride, add caption and credit, consent, pass Turnstile. Submits in three steps (`/api/contribute/start`, one `file` upload per photo, `finalize`), then opens the thank-you page.
 
 ### [`entity-picker.tsx`](../../components/contribute/entity-picker.tsx)
 
@@ -23,7 +23,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`example-gallery.tsx`](../../components/contribute/example-gallery.tsx)
 
-- `ExampleGallery` _component_
+- `ExampleGallery` _component_: Grid of eight ride photos with ride and park captions on the contribution page, showing the kind of shot people can send in. Server Component.
 
 ### [`photo-dropzone.tsx`](../../components/contribute/photo-dropzone.tsx)
 

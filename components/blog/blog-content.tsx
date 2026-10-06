@@ -359,6 +359,11 @@ function hastText(node: unknown): string {
   return (n.children ?? []).map(hastText).join('');
 }
 
+/**
+ * Renders a post's markdown body: GFM, callouts, numbered chapter headings, glossary terms, park,
+ * ride and post links, images, and every widget fence (wait tables, maps, weather, galleries,
+ * embeds). Server Component; resolves the parks and rides it names against the API first.
+ */
 export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
   const tBlog = await getTranslations({ locale, namespace: 'blog' });

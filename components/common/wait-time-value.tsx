@@ -16,6 +16,10 @@ interface WaitTimeValueProps {
   unitClassName?: string;
 }
 
+/**
+ * A wait time in minutes, coloured by its crowd tier, with an optional muted unit after it and a
+ * drop shadow for figures on a photo.
+ */
 export function WaitTimeValue({
   minutes,
   className,

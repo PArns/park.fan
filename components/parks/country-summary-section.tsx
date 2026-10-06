@@ -19,6 +19,10 @@ function MonthList({ months, locale }: { months: number[]; locale: string }) {
   return <span className="capitalize">{names.join(', ')}</span>;
 }
 
+/**
+ * Top of a country page: an intro sentence with the park and city count, the top parks with their
+ * yearly crowd level, and the quietest and busiest months. Server Component.
+ */
 export async function CountrySummarySection({
   summary,
   countryName,

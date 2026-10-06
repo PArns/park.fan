@@ -33,6 +33,10 @@ interface WaitTimeInfoCardProps {
   className?: string;
 }
 
+/**
+ * Card with a ride's current wait time in large type, today's low and high, a trend arrow and
+ * a faded sparkline of today underneath; shows a status icon and label when the ride is not open.
+ */
 export function WaitTimeInfoCard({
   waitTime,
   trend,

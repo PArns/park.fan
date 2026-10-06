@@ -7,4 +7,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`web-vitals-reporter.tsx`](../../components/analytics/web-vitals-reporter.tsx)
 
-- `WebVitalsReporter` _component_
+- `WebVitalsReporter` _component_: Sends non-good INP samples, and a tenth of non-good CLS samples, to Umami with the element and phase behind them. Renders nothing.

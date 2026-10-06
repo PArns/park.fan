@@ -93,10 +93,12 @@ const CONTROL_HEIGHT = 'h-11 sm:h-9';
  */
 export const FIELD_CLASS = `${CONTROL_BASE} py-2 sm:py-1.5`;
 
+/** Text `<input>` in the admin field style: 44 px high, 16 px text on phones, `h-9` from `sm`. */
 export function TextInput({ className, ...props }: ComponentProps<'input'>) {
   return <input className={cn(CONTROL_BASE, CONTROL_HEIGHT, className)} {...props} />;
 }
 
+/** `<textarea>` in the admin field style, at least `min-h-20` tall. */
 export function TextArea({ className, ...props }: ComponentProps<'textarea'>) {
   return (
     <textarea className={cn(CONTROL_BASE, 'min-h-20 py-2 leading-relaxed', className)} {...props} />
@@ -245,6 +247,10 @@ export function Switch({
   );
 }
 
+/**
+ * Checkbox drawn as a `role="checkbox"` button, with an optional label and a dash for the
+ * indeterminate state (`aria-checked="mixed"`).
+ */
 export function Checkbox({
   checked,
   indeterminate,

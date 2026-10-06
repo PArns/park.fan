@@ -87,6 +87,10 @@ function Ring({
   );
 }
 
+/**
+ * Dashboard tile linking to the list it counts: a ring showing `value` as a share of `of`, the
+ * count beside it in German number format, and an optional note.
+ */
 export function MetricTile({
   href,
   icon: Icon,
@@ -253,6 +257,10 @@ function areaPath(buckets: Array<{ count: number }>, max: number): string {
   return `${linePath(buckets, max)} L300,64 L0,64 Z`;
 }
 
+/**
+ * Backlog rows, each a link showing its count against the catalogue total and a bar for that share
+ * in the row's tone. Rows render in the order given.
+ */
 export function BacklogBars({
   rows,
   loading,

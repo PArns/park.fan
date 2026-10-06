@@ -62,6 +62,10 @@ interface BlogCoverFallbackProps {
   className?: string;
 }
 
+/**
+ * The cover drawn for a post or news item without a photo: one CSS-only element with the brand
+ * ground, a hue picked from the slug and the pin placed by `mark`.
+ */
 export function BlogCoverFallback({
   slug = '',
   mark = 'center',

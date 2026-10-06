@@ -31,7 +31,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-history-day.tsx`](../../components/parks/attraction-history-day.tsx)
 
-- `AttractionHistoryDay` _component_
+- `AttractionHistoryDay` _component_: One day cell of the ride's 30-day history calendar: crowd tile, signal bar, hourly P90 curve and the day's low and high wait. Memoised; the grid renders one per day.
 - Types: `DayDataProps`
 
 ### [`attraction-history-grid-placeholder.tsx`](../../components/parks/attraction-history-grid-placeholder.tsx)
@@ -56,17 +56,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-typical-waits-demo.tsx`](../../components/parks/attraction-typical-waits-demo.tsx)
 
-- `AttractionTypicalWaitsDemo` _component_
+- `AttractionTypicalWaitsDemo` _component_: `AttractionTypicalWaits` filled with fixed mock stats, for the `/ui` component showcase.
 
 ### [`attraction-typical-waits.tsx`](../../components/parks/attraction-typical-waits.tsx)
 
-- `AttractionTypicalWaits` _component_
+- `AttractionTypicalWaits` _component_: A ride's typical (P50) and busy (P90) waits: weekday against weekend, a bar per day of the week and the record peak, rounded to five. Renders nothing unless the API marks the data displayable.
 - `formatPeakDate` _function_: The record peak's date, in the reader's locale.
 
 ### [`blog-posts-sections.tsx`](../../components/parks/blog-posts-sections.tsx)
 
-- `ParkBlogPostsSection` _component_
-- `AttractionBlogPostsSection` _component_
+- `ParkBlogPostsSection` _component_: Park page chapter of blog articles and news that mention the park, preceded by the park's first-visit guide when it has one. Renders nothing in a locale without a published blog.
+- `AttractionBlogPostsSection` _component_: Ride page chapter of blog articles and news that mention the ride. Renders nothing when there are none or the locale has no published blog.
 
 ### [`calendar-hash-redirect.tsx`](../../components/parks/calendar-hash-redirect.tsx)
 
@@ -83,7 +83,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`city-summary-section.tsx`](../../components/parks/city-summary-section.tsx)
 
-- `CitySummarySection` _component_
+- `CitySummarySection` _component_: Intro paragraph of a city page: names the city and lists its parks, joined with the locale's own "and". Server Component; the sentence is indexable page copy.
 
 ### [`closed-ride-matches.tsx`](../../components/parks/closed-ride-matches.tsx)
 
@@ -100,15 +100,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`comparison-badge.tsx`](../../components/parks/comparison-badge.tsx)
 
-- `ComparisonBadge` _component_
+- `ComparisonBadge` _component_: Badge saying how busy a ride is compared with usual (`much_lower` to `much_higher`, or `closed`), in the crowd-level colours. Renders nothing for `null`; only `/ui` and the guide page use it.
 
 ### [`country-summary-section.tsx`](../../components/parks/country-summary-section.tsx)
 
-- `CountrySummarySection` _component_
+- `CountrySummarySection` _component_: Top of a country page: an intro sentence with the park and city count, the top parks with their yearly crowd level, and the quietest and busiest months. Server Component.
 
 ### [`crowd-level-badge.tsx`](../../components/parks/crowd-level-badge.tsx)
 
-- `CrowdLevelBadge` _component_
+- `CrowdLevelBadge` _component_: Badge for a crowd level (very low to extreme, plus `closed` and `unknown`), with a colour and an icon per tier. Renders nothing without a level; `withScale` wraps it in the crowd-scale tooltip.
 
 ### [`crowd-level-scale-tooltip.tsx`](../../components/parks/crowd-level-scale-tooltip.tsx)
 
@@ -172,7 +172,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hourly-p90-sparkline.tsx`](../../components/parks/hourly-p90-sparkline.tsx)
 
-- `HourlyP90Sparkline` _component_
+- `HourlyP90Sparkline` _component_: Sparkline of one day's hourly P90 wait times for a ride, as a day cell of the ride's history calendar draws it.
 
 ### [`kids-planner-button.tsx`](../../components/parks/kids-planner-button.tsx)
 
@@ -243,7 +243,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`nearby-parks-section.tsx`](../../components/parks/nearby-parks-section.tsx)
 
-- `NearbyParksSection` _component_
+- `NearbyParksSection` _component_: Chapter listing up to three other parks within 100 km, on the park and ride pages. Renders a status-free list that `LiveNearbyParks` overlays with live status; nothing with fewer than two.
 
 ### [`next-best-rides.tsx`](../../components/parks/next-best-rides.tsx)
 
@@ -288,7 +288,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-background.tsx`](../../components/parks/park-background.tsx)
 
-- `ParkBackground` _component_
+- `ParkBackground` _component_: Park or ride photo behind the page: a full-screen backdrop when `fixed`, otherwise a strip under the header that fades into the page. `contained` keeps it inside its parent (admin preview).
 
 ### [`park-best-days-header.tsx`](../../components/parks/park-best-days-header.tsx)
 
@@ -378,7 +378,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-favorite-button.tsx`](../../components/parks/park-favorite-button.tsx)
 
-- `ParkFavoriteButton` _component_
+- `ParkFavoriteButton` _component_: The large favorite star for a park, as the park page's title header shows it.
 
 ### [`park-first-visit-guide.tsx`](../../components/parks/park-first-visit-guide.tsx)
 
@@ -390,7 +390,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-height-filter-context.tsx`](../../components/parks/park-height-filter-context.tsx)
 
-- `useParkHeightFilter` _hook_
+- `useParkHeightFilter` _hook_: Reads the park page's shared rider-height filter. `null` outside the park page and on a park that publishes no minimum heights.
 - `ParkHeightFilterContext` _const_
 - Types: `ParkHeightFilter`
 
@@ -471,7 +471,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-seasons-card.tsx`](../../components/parks/park-seasons-card.tsx)
 
-- `ParkSeasonsCard` _component_
+- `ParkSeasonsCard` _component_: Park page card listing the park's seasons and events (Halloween, Christmas …) with dates, status badge, separate-ticket price and a link to the park's page. Renders nothing without seasons.
 
 ### [`park-simulation-notice.tsx`](../../components/parks/park-simulation-notice.tsx)
 
@@ -483,12 +483,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-stats-crowd-card.tsx`](../../components/parks/park-stats-crowd-card.tsx)
 
-- `ParkStatsCrowdCard` _component_
+- `ParkStatsCrowdCard` _component_: Statistics table of crowd level, typical (P50) and peak (P90) wait per month or per weekday, with the measured days behind each row when `labelDays` is set. Waits are rounded to five.
 
 ### [`park-stats-frame.tsx`](../../components/parks/park-stats-frame.tsx)
 
 - `CardFrame` _component_: The two shapes a statistics card can take.
-- `BareFrame` _component_
+- `BareFrame` _component_: `CardFrame` without the glass: only the heading-to-table spacing, for a card inside the stats panel.
 
 ### [`park-stats-header.tsx`](../../components/parks/park-stats-header.tsx)
 
@@ -510,7 +510,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-status-badge.tsx`](../../components/parks/park-status-badge.tsx)
 
-- `ParkStatusBadge` _component_
+- `ParkStatusBadge` _component_: Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED` for a ride that closed for good. An unrecognised status falls back to the closed style.
 - Types: `ClosedPermanentlyStatus`
 
 ### [`park-status.tsx`](../../components/parks/park-status.tsx)
@@ -544,11 +544,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`peak-hour-badge.tsx`](../../components/parks/peak-hour-badge.tsx)
 
-- `PeakHourBadge` _component_
+- `PeakHourBadge` _component_: Badge counting down to the peak hour ("in 1 hour 20 minutes"). Renders nothing before mount, for an invalid timestamp, or once the time has passed.
 
 ### [`queue-type-badge.tsx`](../../components/parks/queue-type-badge.tsx)
 
-- `QueueTypeBadge` _component_
+- `QueueTypeBadge` _component_: Badge for a ride's extra queue: single rider, virtual queue return window, boarding groups, Lightning Lane or Express price. Nothing for standby; most link to their glossary term.
 
 ### [`rcdb-badge.tsx`](../../components/parks/rcdb-badge.tsx)
 
@@ -556,11 +556,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`restaurant-card-skeleton.tsx`](../../components/parks/restaurant-card-skeleton.tsx)
 
-- `RestaurantCardSkeleton` _component_
+- `RestaurantCardSkeleton` _component_: Placeholder in the shape of `RestaurantCard`: title, park name, cuisine badge and distance.
 
 ### [`restaurant-card.tsx`](../../components/parks/restaurant-card.tsx)
 
-- `RestaurantCard` _component_
+- `RestaurantCard` _component_: Card for a park restaurant: name, cuisine, status, wait time while open, reservation badge and opening hours. With `href` the whole card is a link, as in the favorites section.
 
 ### [`ride-crowd-scale-tooltip.tsx`](../../components/parks/ride-crowd-scale-tooltip.tsx)
 
@@ -636,8 +636,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`seasonal-badge.tsx`](../../components/parks/seasonal-badge.tsx)
 
-- `SeasonalBadge` _component_
-- `getSeasonLabel` _function_
+- `SeasonalBadge` _component_: Badge for a seasonal ride or show: "Winter", "Summer" or "Seasonal" in season, and "Winter only", "Summer only" or "Off-season", dimmed, out of it.
+- `getSeasonLabel` _function_: Returns `winter` when every season month lies in November to February, `summer` when every one lies in May to September, otherwise `null`.
 
 ### [`show-card-showtimes.tsx`](../../components/parks/show-card-showtimes.tsx)
 
@@ -645,11 +645,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`show-card-skeleton.tsx`](../../components/parks/show-card-skeleton.tsx)
 
-- `ShowCardSkeleton` _component_
+- `ShowCardSkeleton` _component_: Placeholder in the shape of `ShowCard`: title, park name, distance, three showtime chips and a status badge.
 
 ### [`show-card.tsx`](../../components/parks/show-card.tsx)
 
-- `ShowCard` _component_
+- `ShowCard` _component_: Card linking to a show: name, seasonal badge, today's showtimes while it runs or its status badge when it does not, with a notification bell and a favorite star in the corner.
 
 ### [`single-rider-badge.tsx`](../../components/parks/single-rider-badge.tsx)
 
@@ -657,7 +657,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`sparkline.tsx`](../../components/parks/sparkline.tsx)
 
-- `Sparkline` _component_
+- `Sparkline` _component_: Step-line SVG sparkline with a hover tooltip, the chart under the wait-time and hourly-P90 sparklines. The baseline sits at zero unless `yDomain` is `fit`; `yMax` sets a shared scale.
 - Types: `SparklinePoint`
 
 ### [`tabs-with-hash.tsx`](../../components/parks/tabs-with-hash.tsx)
@@ -678,7 +678,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`trend-indicator.tsx`](../../components/parks/trend-indicator.tsx)
 
-- `TrendIndicator` _component_
+- `TrendIndicator` _component_: Up, down or flat trend arrow in the trend colours: a bare icon, or a pill with an optional label the caller has already translated.
 
 ### [`trend-pill.tsx`](../../components/parks/trend-pill.tsx)
 
@@ -690,19 +690,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wait-time-badge.tsx`](../../components/parks/wait-time-badge.tsx)
 
-- `WaitTimeBadge` _component_
+- `WaitTimeBadge` _component_: Clock icon and a wait time in minutes: large and bold (`lg`) for a ride card's main figure, small and muted (`sm`) for a park's average. Shows the number as given, without rounding.
 
 ### [`wait-time-info-card.tsx`](../../components/parks/wait-time-info-card.tsx)
 
-- `WaitTimeInfoCard` _component_
+- `WaitTimeInfoCard` _component_: Card with a ride's current wait time in large type, today's low and high, a trend arrow and a faded sparkline of today underneath; shows a status icon and label when the ride is not open.
 
 ### [`wait-time-sparkline-card.tsx`](../../components/parks/wait-time-sparkline-card.tsx)
 
-- `WaitTimeSparklineCard` _component_
+- `WaitTimeSparklineCard` _component_: The attraction card's wait-time curve for today, with four time ticks, held flat up to now on the shared minute clock. With no history it draws `fallbackWaitTime` over the last hour.
 
 ### [`wait-time-sparkline.tsx`](../../components/parks/wait-time-sparkline.tsx)
 
-- `WaitTimeSparkline` _component_
+- `WaitTimeSparkline` _component_: Sparkline of a ride's recent wait times from its statistics history, held flat up to now, with tooltip times in the park's timezone.
 
 ### [`weather-background.tsx`](../../components/parks/weather-background.tsx)
 

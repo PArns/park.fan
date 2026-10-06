@@ -80,6 +80,10 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
   },
 ];
 
+/**
+ * Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when
+ * there is none.
+ */
 export function toolDescriptor(name: string): ToolDescriptor {
   const descriptor = TOOL_DESCRIPTORS.find((candidate) => candidate.name === name);
   if (!descriptor) throw new Error(`No tool descriptor named ${name}`);

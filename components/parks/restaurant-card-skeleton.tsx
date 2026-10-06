@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
+/** Placeholder in the shape of `RestaurantCard`: title, park name, cuisine badge and distance. */
 export function RestaurantCardSkeleton() {
   return (
     <Card className="relative h-full overflow-hidden transition-all">

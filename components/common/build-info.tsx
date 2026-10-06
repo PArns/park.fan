@@ -1,6 +1,10 @@
 import buildInfo from '@/build-info.json';
 import { changelogHref } from '@/lib/changelog/paths';
 
+/**
+ * Footer line with the build's version, linked to that release on the changelog, and the build date
+ * from `md` up. Reads `build-info.json`; English only.
+ */
 export function BuildInfo() {
   if (!buildInfo) return null;
 

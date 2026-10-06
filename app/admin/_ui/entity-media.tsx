@@ -45,6 +45,10 @@ interface MediaRow {
   alt?: Record<string, string>;
 }
 
+/**
+ * Admin panel listing the media database photos for a park or ride, with roles, focus point and
+ * `alsoRides` matches, each linking into the media editor. Read-only; says so when a ride has none.
+ */
 export function EntityMediaPanel({
   parkSlug,
   rideSlug,

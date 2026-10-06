@@ -124,6 +124,10 @@ function reportCls(metric: {
   });
 }
 
+/**
+ * Sends non-good INP samples, and a tenth of non-good CLS samples, to Umami with the element and
+ * phase behind them. Renders nothing.
+ */
 export function WebVitalsReporter() {
   useEffect(() => {
     // Passive observers; both report their final value on page-hide by default, matching CrUX.

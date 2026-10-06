@@ -24,6 +24,10 @@ interface GeoLocationCardProps {
   className?: string;
 }
 
+/**
+ * Linked card for a continent, country or city: its name, open parks out of total with a progress
+ * bar, and the distance to its nearest park once the visitor's location is known.
+ */
 export function GeoLocationCard({
   name,
   href,

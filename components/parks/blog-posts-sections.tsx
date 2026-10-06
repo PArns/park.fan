@@ -64,6 +64,10 @@ interface AttractionBlogPostsSectionProps extends Omit<ParkBlogPostsSectionProps
   attractionName: string;
 }
 
+/**
+ * Park page chapter of blog articles and news that mention the park, preceded by the park's
+ * first-visit guide when it has one. Renders nothing in a locale without a published blog.
+ */
 export async function ParkBlogPostsSection({
   locale,
   parkSlug,
@@ -116,6 +120,10 @@ export async function ParkBlogPostsSection({
   );
 }
 
+/**
+ * Ride page chapter of blog articles and news that mention the ride. Renders nothing when there
+ * are none or the locale has no published blog.
+ */
 export async function AttractionBlogPostsSection({
   locale,
   parkSlug,

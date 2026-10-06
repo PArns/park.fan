@@ -6,6 +6,10 @@ interface CitySummarySectionProps {
   locale: string;
 }
 
+/**
+ * Intro paragraph of a city page: names the city and lists its parks, joined with the locale's own
+ * "and". Server Component; the sentence is indexable page copy.
+ */
 export async function CitySummarySection({ cityName, parkNames, locale }: CitySummarySectionProps) {
   const t = await getTranslations('explore.citySummary');
   // `Intl.ListFormat` joins with the locale's own conjunction („und", „en", „y").

@@ -203,6 +203,10 @@ function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
   };
 }
 
+/**
+ * Resolves a `ref:park/ride` mention in a post to the ride's name, link, live wait time, status and
+ * a trimmed attraction payload, or `null` for an unknown park. Per-render cached.
+ */
 export const resolveAttraction = cache(
   async (
     parkSlug: string,

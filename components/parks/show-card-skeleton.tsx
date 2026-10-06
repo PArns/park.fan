@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
+/** Placeholder in the shape of `ShowCard`: title, park name, distance, three showtime chips and a status badge. */
 export function ShowCardSkeleton() {
   return (
     <Card className="relative h-full transition-all">

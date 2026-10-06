@@ -32,6 +32,10 @@ interface SparklineProps {
   yMax?: number;
 }
 
+/**
+ * Step-line SVG sparkline with a hover tooltip, the chart under the wait-time and hourly-P90
+ * sparklines. The baseline sits at zero unless `yDomain` is `fit`; `yMax` sets a shared scale.
+ */
 export function Sparkline({
   points,
   className,

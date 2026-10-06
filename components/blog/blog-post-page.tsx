@@ -57,6 +57,11 @@ interface PostParams {
   slug: string;
 }
 
+/**
+ * Builds the metadata for a post page: title, description, canonical and hreflang across the post's
+ * translations, Open Graph and Twitter cards, robots. Returns `{}` for a post filed under the other
+ * section.
+ */
 export async function buildPostMetadata(
   { locale, slug }: PostParams,
   section: PostSection
@@ -184,6 +189,11 @@ export async function buildPostMetadata(
   };
 }
 
+/**
+ * Renders a blog or news post page: banner, body, table of contents, tags, references, related
+ * posts and JSON-LD. Redirects a news post asked for under `/blog` and a slug from another locale,
+ * 404s an article under `/news`.
+ */
 export async function BlogPostPageBody({
   locale,
   slug,

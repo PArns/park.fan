@@ -60,6 +60,10 @@ interface PaletteAction {
   keywords?: string;
 }
 
+/**
+ * ⌘K dialog that searches parks and rides by upstream or curated name and lists the admin pages
+ * and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
+ */
 export function CommandPalette({
   open,
   onOpenChange,

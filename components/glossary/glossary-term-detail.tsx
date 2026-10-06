@@ -58,6 +58,11 @@ interface GlossaryTermDetailProps {
   posts?: ReactNode;
 }
 
+/**
+ * A glossary term page: breadcrumb, name, alternate names, definition, the 3-D player when the term
+ * has one, related terms and the `rides` and `posts` slots. Model terms get a link to the Fancast
+ * page.
+ */
 export function GlossaryTermDetail({
   term,
   relatedTerms,

@@ -35,6 +35,10 @@ interface GlossaryTermPostsProps {
   limit?: number;
 }
 
+/**
+ * The blog posts that embed a term's `glossary-widget`, as cards under a heading naming the term.
+ * Renders nothing when no post covers it or the locale has no blog.
+ */
 export async function GlossaryTermPosts({
   termId,
   termName,

@@ -72,6 +72,7 @@ export const AGENT_SKILLS: AgentSkillDefinition[] = [
   },
 ];
 
+/** Returns the public path of an agent skill's `SKILL.md` under `/.well-known/agent-skills/`. */
 export function skillArtifactPath(name: AgentSkillName): string {
   return `/.well-known/agent-skills/${name}/SKILL.md`;
 }
@@ -81,6 +82,10 @@ export function readSkillArtifact(name: AgentSkillName): string {
   return fs.readFileSync(path.join(SKILLS_ROOT, name, 'SKILL.md'), 'utf8');
 }
 
+/**
+ * Returns the `sha256:` digest of the bytes served for an agent skill's `SKILL.md`, computed from
+ * the file on every call.
+ */
 export function skillDigest(name: AgentSkillName): string {
   return `sha256:${createHash('sha256').update(readSkillArtifact(name), 'utf8').digest('hex')}`;
 }

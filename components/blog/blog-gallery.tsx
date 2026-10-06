@@ -15,6 +15,10 @@ interface BlogGalleryProps {
   heading?: string;
 }
 
+/**
+ * Masonry photo gallery for a blog post, with a lightbox dialog that steps through the images by
+ * button or arrow key.
+ */
 export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
   const t = useTranslations('blog');
   const [openIndex, setOpenIndex] = useState<number | null>(null);

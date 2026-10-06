@@ -45,6 +45,10 @@ interface PreferredSourceButtonProps {
   className?: string;
 }
 
+/**
+ * Outlined pill linking to Google's Preferred Sources page pre-filled with park.fan, opened in a
+ * new tab; the click is tracked in Umami.
+ */
 export function PreferredSourceButton({ className }: PreferredSourceButtonProps) {
   const t = useTranslations('footer');
 

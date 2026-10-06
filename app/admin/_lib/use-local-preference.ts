@@ -34,6 +34,10 @@ function emit() {
   listeners.forEach((listener) => listener());
 }
 
+/**
+ * Returns a string preference kept in localStorage and its setter. The server and a failed read
+ * give `defaultValue`; a change in another admin tab updates this one too.
+ */
 export function useLocalPreference(
   key: string,
   defaultValue: string

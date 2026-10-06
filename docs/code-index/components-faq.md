@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-faq-section.tsx`](../../components/faq/attraction-faq-section.tsx)
 
-- `AttractionFAQSection` _component_
+- `AttractionFAQSection` _component_: FAQ chapter on a ride page: questions built by `buildAttractionFaqItems`, answers with glossary terms linked. Renders nothing when there are no questions.
 
 ### [`crowd-calendar-faq-link.tsx`](../../components/faq/crowd-calendar-faq-link.tsx)
 
@@ -20,4 +20,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-faq-section.tsx`](../../components/faq/park-faq-section.tsx)
 
-- `ParkFAQSection` _component_
+- `ParkFAQSection` _component_: FAQ chapter on a park page: hours, location, tickets and more from `buildParkFaqItems`, the least crowded days from the best-days calendar, and the crowd calendar question the `FAQPage` JSON-LD also carries.

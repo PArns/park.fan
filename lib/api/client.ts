@@ -81,6 +81,10 @@ function isCloudflareTunnelDown(body: string): boolean {
   return CLOUDFLARE_TUNNEL_ERROR_RE.test(body);
 }
 
+/**
+ * Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a
+ * Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
+ */
 export class ApiError extends Error {
   digest?: string;
   // Declared and assigned rather than written as constructor parameter properties.
@@ -120,6 +124,9 @@ const RETRYABLE_STATUS = new Set([429, 503, 504]);
 const RETRY_BACKOFF_MS = [300, 900];
 
 /**
+ * Fetches a park.fan API endpoint with query params and the server API headers. On the server a
+ * 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
+ *
  * @param read How a successful response becomes the result. `response.json()` unless the caller
  *   has a reason to look at the response first — `getContinents` reads the ETag and skips the body
  *   when it has already parsed that document.

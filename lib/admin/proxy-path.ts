@@ -25,6 +25,10 @@
 
 const UNSAFE_IN_SEGMENT = /[/\\?#]/;
 
+/**
+ * Returns false for an empty, `.` or `..` segment, or one holding a decoded `/`, `\`, `?` or `#`
+ * that could move the upstream admin URL.
+ */
 export function isSafeSegment(segment: string): boolean {
   return (
     segment.length > 0 && segment !== '.' && segment !== '..' && !UNSAFE_IN_SEGMENT.test(segment)

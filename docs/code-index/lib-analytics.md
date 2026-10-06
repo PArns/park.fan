@@ -10,21 +10,21 @@ by hand: change the comment in the code and re-run the script. -->
 The planner's own vocabulary, imported rather than declared here.
 
 - `trackEvent` _function_: Track an event in Umami Analytics
-- `trackFavoriteAdd` _function_: Convenience functions for common events
-- `trackFavoriteRemove` _function_
-- `trackNearbyPermissionGranted` _function_
-- `trackNearbyPermissionDenied` _function_
-- `trackNearbyParksLoaded` _function_
-- `trackSearchOpened` _function_
-- `trackHeroSearchClicked` _function_
-- `trackSearchResultClicked` _function_
-- `trackSearchViewAll` _function_
-- `trackLanguageSwitched` _function_
-- `trackThemeToggled` _function_
-- `trackTabChanged` _function_
-- `trackLocationBannerClicked` _function_
-- `trackBlogToastOpened` _function_
-- `trackSearchNoResults` _function_
+- `trackFavoriteAdd` _function_: Sends `favorite_add` with the type and name when a favorite star is switched on (`FavoriteStar`).
+- `trackFavoriteRemove` _function_: Sends `favorite_remove` with the type and name when a favorite star is switched off (`FavoriteStar`).
+- `trackNearbyPermissionGranted` _function_: Sends `nearby_permission_granted` once when the browser starts returning a position (`useNearbyAnalytics`).
+- `trackNearbyPermissionDenied` _function_: Sends `nearby_permission_denied` when the visitor refuses location now, not for a refusal stored from an earlier visit (`useNearbyAnalytics`).
+- `trackNearbyParksLoaded` _function_: Sends `nearby_parks_loaded` once per new nearby result, with its type, its source (GPS or IP) and, in a park, the park name.
+- `trackSearchOpened` _function_: Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens (`SearchBar`).
+- `trackHeroSearchClicked` _function_: Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
+- `trackSearchResultClicked` _function_: Sends `search_result_clicked` with the result type, position and query length (never the query) when a search result is opened.
+- `trackSearchViewAll` _function_: Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to `/search`.
+- `trackLanguageSwitched` _function_: Sends `language_switched` with the old and new locale when the visitor picks a language in `LocaleSwitcher`.
+- `trackThemeToggled` _function_: Sends `theme_toggled` with the new theme once the theme toggle's transition has applied it.
+- `trackTabChanged` _function_: Sends `tab_changed` with the tab and park name when a park page tab is switched (`useTabHashRouting`).
+- `trackLocationBannerClicked` _function_: Sends `location_banner_clicked` when the location banner's button is pressed to ask for the visitor's position.
+- `trackBlogToastOpened` _function_: Sends `blog_toast_opened` when the new-posts toast is followed to its post (`NewPostsToast`).
+- `trackSearchNoResults` _function_: Sends `search_no_results` with the query length (never the query) when a search of three or more characters returns nothing.
 - `trackPlannerOpened` _function_: The trip planner's panel came on screen.
 - `trackPlannerClosed` _function_: The panel closed and nothing was planned in that opening.
 - `trackPlanDayStarted` _function_: Somebody started planning a day, and which park it is for.
@@ -36,9 +36,9 @@ The planner's own vocabulary, imported rather than declared here.
 - `trackCompassRidePinned` _function_: A tap on a marker pinned a ride. Letting go of it is not tracked.
 - `trackCompassRideOpened` _function_: A ride page was opened from the compass. ONE property, `from`, because the bar under the dial and the list below it are two designs of the same link and which one people follow is a decision.
 - `trackCompassPillClicked` _function_: The hero's „Zum Kompass" pill was tapped.
-- `trackGlossaryTermViewed` _function_
-- `trackGlossaryCategoryFiltered` _function_
-- `trackGlossarySearched` _function_
+- `trackGlossaryTermViewed` _function_: Sends `glossary_term_viewed` with the English term id once per glossary term page view (`GlossaryTermTracker`).
+- `trackGlossaryCategoryFiltered` _function_: Sends `glossary_category_filtered` with the category slug, or `none` when the filter is cleared, on the glossary overview.
+- `trackGlossarySearched` _function_: Sends `glossary_searched` with the query length (never the query) 600 ms after the glossary search holds three or more characters.
 - `trackPreferredSourceClicked` _function_: Footer "mark park.fan as a preferred source on Google" click (no properties).
 - `trackRideAlertSet` _function_: A ride's wait-time alert was saved — the conversion this feature lives or dies on, not the dialog opening.
 - `trackRideAlertRemoved` _function_: An alert was removed — from the ride's own dialog, the central list, or the cross-park `/alerts` overview.

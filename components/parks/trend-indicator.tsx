@@ -23,6 +23,10 @@ interface TrendIndicatorProps {
   className?: string;
 }
 
+/**
+ * Up, down or flat trend arrow in the trend colours: a bare icon, or a pill with an optional label
+ * the caller has already translated.
+ */
 export function TrendIndicator({
   trend,
   variant = 'icon',

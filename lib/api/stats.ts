@@ -178,16 +178,6 @@ export const getParkHistoricalStatsSeed = cache(async function getParkHistorical
 });
 
 /**
- * The same seed for the hourly profile, which needed one for the same reason: the Europa-Park
- * guide shipped this table as 132 skeleton placeholders — twelve rides × ten hours of nothing —
- * in the post that replaced a hand-typed matrix with it.
- *
- * `topN` is part of the identity, not a detail: it reaches the API as a query parameter and the
- * client hook keys on it, so a seed fetched with a different one would be replaced by a
- * differently-sized table the moment the query settles. Callers pass the clamped value they give
- * the card.
- */
-/**
  * One ride's day curve. `attraction` pins a ride; without it the backend picks
  * the park's busiest ride that actually reported today, so the answer is not a
  * closed or out-of-season one.
@@ -226,6 +216,19 @@ export async function getRideDayCurve(
   return (await res.json()) as RideDayCurve;
 }
 
+/**
+ * Timeout-bounded, per-render-deduped fetch of a park's hourly wait profile for the blog widget's
+ * server seed; resolves `null` on a miss or after 3 s.
+ *
+ * The same seed for the hourly profile, which needed one for the same reason: the Europa-Park
+ * guide shipped this table as 132 skeleton placeholders — twelve rides × ten hours of nothing —
+ * in the post that replaced a hand-typed matrix with it.
+ *
+ * `topN` is part of the identity, not a detail: it reaches the API as a query parameter and the
+ * client hook keys on it, so a seed fetched with a different one would be replaced by a
+ * differently-sized table the moment the query settles. Callers pass the clamped value they give
+ * the card.
+ */
 export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfileSeed(
   continent: string,
   country: string,

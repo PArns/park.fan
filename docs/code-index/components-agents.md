@@ -7,4 +7,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`webmcp-tools.tsx`](../../components/agents/webmcp-tools.tsx)
 
-- `WebMcpTools` _component_
+- `WebMcpTools` _component_: Registers park.fan's WebMCP tools with `navigator.modelContext`: the MCP server's data tools, run through `/api/mcp`, plus one that navigates this tab and refuses `/admin`. Renders nothing; a no-op in browsers without the API.

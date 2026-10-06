@@ -38,6 +38,10 @@ interface CrowdLevelBadgeProps {
   withScale?: boolean;
 }
 
+/**
+ * Badge for a crowd level (very low to extreme, plus `closed` and `unknown`), with a colour and an
+ * icon per tier. Renders nothing without a level; `withScale` wraps it in the crowd-scale tooltip.
+ */
 export function CrowdLevelBadge({
   level,
   showLabel = true,

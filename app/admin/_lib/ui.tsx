@@ -38,6 +38,7 @@ export function formatDisplayName(name: string): string {
   );
 }
 
+/** Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`. */
 export function formatUptime(hours: number) {
   const h = Math.floor(hours);
   const m = Math.floor((hours - h) * 60);
@@ -45,22 +46,26 @@ export function formatUptime(hours: number) {
   return `${h}h ${m}m`;
 }
 
+/** Formats a count with a `K` (one decimal) or `M` (two decimals) suffix, e.g. `12.3K`. */
 export function formatCompact(n: number) {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(2)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
   return String(n);
 }
 
+/** Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`. */
 export function formatAge(age: { days: number; hours: number; minutes: number }) {
   if (age.days > 0) return `${age.days}d ${age.hours}h`;
   if (age.hours > 0) return `${age.hours}h ${age.minutes}m`;
   return `${age.minutes}m`;
 }
 
+/** Type guard: true when a host disk entry carries usage figures rather than an `{ error }`. */
 export function isDisk(d: HostDisk | { error: string }): d is HostDisk {
   return 'usedPct' in d;
 }
 
+/** Returns the text colour class for a model's MAE: green below 10, amber below 15, red above. */
 export function maeColor(mae: number) {
   if (mae < 10) return 'text-emerald-400';
   if (mae < 15) return 'text-amber-400';
@@ -69,12 +74,14 @@ export function maeColor(mae: number) {
 
 // ─── primitives ─────────────────────────────────────────────────────────────
 
+/** Renders a small round dot, green when `ok` and red otherwise. */
 export function statusDot(ok: boolean) {
   return (
     <span className={`inline-block h-2 w-2 rounded-full ${ok ? 'bg-emerald-500' : 'bg-red-500'}`} />
   );
 }
 
+/** Dashboard section: icon, uppercase heading, an optional action on the right, content below. */
 export function Section({
   icon: Icon,
   title,
@@ -100,6 +107,7 @@ export function Section({
   );
 }
 
+/** Dashboard tile: an uppercase label, one large tabular figure and an optional line beneath. */
 export function StatCard({
   icon: Icon,
   label,
@@ -124,6 +132,7 @@ export function StatCard({
   );
 }
 
+/** Small label above a bold tabular value, for figures inside a dashboard card. */
 export function KeyVal({
   label,
   value,
@@ -150,6 +159,7 @@ const SEVERITY_STYLES: Record<string, string> = {
   critical: 'bg-red-500/15 text-red-400 border-red-500/20',
 };
 
+/** Pill coloured by severity (low, medium, high, critical); any other value is grey. */
 export function SeverityBadge({ severity }: { severity: string }) {
   const style =
     SEVERITY_STYLES[severity.toLowerCase()] ?? 'bg-zinc-500/15 text-zinc-400 border-zinc-500/20';
@@ -170,6 +180,10 @@ const CROWD_STYLES: Record<string, string> = {
   very_high: 'bg-red-500/15 text-red-400',
 };
 
+/**
+ * Pill coloured by crowd level (`very_low` to `very_high`) for the monitoring dashboards, with
+ * underscores shown as spaces. The public site uses `CrowdLevelBadge`.
+ */
 export function CrowdBadge({ level }: { level: string }) {
   const style = CROWD_STYLES[level?.toLowerCase()] ?? 'bg-zinc-500/15 text-zinc-400';
   return (
@@ -181,6 +195,10 @@ export function CrowdBadge({ level }: { level: string }) {
   );
 }
 
+/**
+ * Pill with a status dot: green for statuses like healthy, ok or online, amber for warning,
+ * degraded or pending, red for anything else.
+ */
 export function StatusBadge({ status }: { status: string }) {
   const lower = status?.toLowerCase() ?? '';
   const warn = ['warning', 'degraded', 'pending'].some((k) => lower.includes(k));
@@ -216,10 +234,12 @@ export function LoadingPanel({ label = 'Lädt…' }: { label?: string }) {
   return <LoadingState label={label} />;
 }
 
+/** Dashboard name for `ErrorState`, showing the given error message. */
 export function ErrorPanel({ message }: { message: string }) {
   return <ErrorState message={message} />;
 }
 
+/** Dashboard name for `EmptyState`, with the label as its title. */
 export function EmptyPanel({ label }: { label: string }) {
   return <EmptyState title={label} />;
 }

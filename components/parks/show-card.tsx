@@ -27,6 +27,10 @@ interface ShowCardProps {
   isCurrentlyInSeason?: boolean | null;
 }
 
+/**
+ * Card linking to a show: name, seasonal badge, today's showtimes while it runs or its status
+ * badge when it does not, with a notification bell and a favorite star in the corner.
+ */
 export function ShowCard({
   id,
   name,

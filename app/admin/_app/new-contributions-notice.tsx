@@ -53,6 +53,10 @@ function describe(fresh: SubmissionSummary['pending']): string {
   return fresh.length > 3 ? `${named} und ${fresh.length - 3} weitere` : named;
 }
 
+/**
+ * Shows one toast for visitor photo submissions this browser has not been told about yet, with a
+ * link to the moderation page. Renders nothing; only asked for accounts from `author` up.
+ */
 export function NewContributionsNotice() {
   const pathname = usePathname();
   const router = useRouter();

@@ -60,6 +60,10 @@ function VersionList({ entries }: { entries: ChangelogEntry[] }) {
   );
 }
 
+/**
+ * Jump list of every release on the changelog page, grouped by year: a closed `<details>` below
+ * `lg`, a side column from `lg` up.
+ */
 export function ChangelogIndex({ entries }: { entries: ChangelogEntry[] }) {
   return (
     <>

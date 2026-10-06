@@ -1,3 +1,8 @@
+/**
+ * Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the
+ * caller. Used by the locale switcher, the language banners, the OG images and, through
+ * `CountryFlag`, the parks menu.
+ */
 import React from 'react';
 
 export function FlagDE(props: React.ComponentProps<'svg'>) {

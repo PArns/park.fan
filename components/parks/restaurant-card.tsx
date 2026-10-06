@@ -21,6 +21,10 @@ interface RestaurantCardProps {
   distance?: number; // Optional distance (for favorites section)
 }
 
+/**
+ * Card for a park restaurant: name, cuisine, status, wait time while open, reservation badge and
+ * opening hours. With `href` the whole card is a link, as in the favorites section.
+ */
 export function RestaurantCard({ restaurant, href, parkName, distance }: RestaurantCardProps) {
   const { id, name, cuisineType, status, waitTime, requiresReservation, operatingHours } =
     restaurant;

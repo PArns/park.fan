@@ -58,6 +58,11 @@ const JUMP_KEYS: Record<string, string> = {
   q: '/admin/queues',
 };
 
+/**
+ * Admin frame around every page: collapsible sidebar, topbar with title, search, refresh and
+ * account menu, then the page, the inspector column and the ⌘K command palette. It also binds the
+ * `g`-then-letter section jumps, which stay off while typing, under a dialog or with unsaved edits.
+ */
 export function AdminShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();

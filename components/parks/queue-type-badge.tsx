@@ -22,6 +22,10 @@ interface QueueTypeBadgeProps {
   timezone?: string;
 }
 
+/**
+ * Badge for a ride's extra queue: single rider, virtual queue return window, boarding groups,
+ * Lightning Lane or Express price. Nothing for standby; most link to their glossary term.
+ */
 export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
   const t = useTranslations('attractions');
   const locale = useLocale();

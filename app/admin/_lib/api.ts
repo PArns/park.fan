@@ -47,6 +47,10 @@ interface RequestOptions {
   signal?: AbortSignal;
 }
 
+/**
+ * Same-origin fetch for admin API routes: sends `body` as JSON, returns the parsed payload (or
+ * `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
+ */
 export async function adminFetch<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const response = await fetch(path, {
     method: options.method ?? 'GET',
@@ -125,6 +129,10 @@ export const adminKeys = {
   raw: (path: string) => ['admin', 'raw', path] as const,
 };
 
+/**
+ * React Query hook that GETs an admin path through `adminFetch` under the given key. A `null` path
+ * disables the query, but an `enabled` passed in `options` overrides that.
+ */
 export function useAdminQuery<T>(
   key: readonly unknown[],
   path: string | null,
@@ -138,6 +146,7 @@ export function useAdminQuery<T>(
   });
 }
 
+/** React Query `useMutation` typed for admin writes, so errors arrive as `AdminApiError`. */
 export function useAdminMutation<TResult, TInput = void>(
   mutation: (input: TInput) => Promise<TResult>,
   options?: Omit<UseMutationOptions<TResult, AdminApiError, TInput>, 'mutationFn'>

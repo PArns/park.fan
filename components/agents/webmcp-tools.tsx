@@ -68,6 +68,11 @@ async function callMcpTool(
   return body.result?.structuredContent ?? body.result;
 }
 
+/**
+ * Registers park.fan's WebMCP tools with `navigator.modelContext`: the MCP server's data tools, run
+ * through `/api/mcp`, plus one that navigates this tab and refuses `/admin`. Renders nothing; a
+ * no-op in browsers without the API.
+ */
 export function WebMcpTools({ locale }: { locale: string }) {
   const router = useRouter();
 

@@ -27,27 +27,27 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-category-page.tsx`](../../components/blog/blog-category-page.tsx)
 
-- `BlogCategoryPageBody` _component_
+- `BlogCategoryPageBody` _component_: Renders a blog category listing: breadcrumbs, the category's articles, the category tree and tag cloud, plus Blog and BreadcrumbList JSON-LD. 404s for an unknown or empty category; `news` redirects to `/news`.
 - `buildCategoryMetadata` _function_: A blog category listing at `/blog/category/[...path]`.
 
 ### [`blog-category-tree.tsx`](../../components/blog/blog-category-tree.tsx)
 
-- `BlogCategoryTree` _component_
+- `BlogCategoryTree` _component_: Sidebar card with the blog category tree and post counts, the active branch expanded and highlighted. Server Component; renders nothing when there are no categories.
 
 ### [`blog-content.tsx`](../../components/blog/blog-content.tsx)
 
-- `BlogContent` _component_
+- `BlogContent` _component_: Renders a post's markdown body: GFM, callouts, numbered chapter headings, glossary terms, park, ride and post links, images, and every widget fence (wait tables, maps, weather, galleries, embeds).
 
 ### [`blog-cover-fallback.tsx`](../../components/blog/blog-cover-fallback.tsx)
 
-- `BlogCoverFallback` _component_
+- `BlogCoverFallback` _component_: The cover drawn for a post or news item without a photo: one CSS-only element with the brand ground, a hue picked from the slug and the pin placed by `mark`.
 - `coverFallbackHue` _function_: FNV-1a over the slug, three ways.
 - `slugFromPostPath` _function_: The slug of a post from its locale-relative path (`/blog/<slug>`, `/news/<slug>`).
 - Types: `CoverFallbackHue`
 
 ### [`blog-gallery.tsx`](../../components/blog/blog-gallery.tsx)
 
-- `BlogGallery` _component_
+- `BlogGallery` _component_: Masonry photo gallery for a blog post, with a lightbox dialog that steps through the images by button or arrow key.
 
 ### [`blog-glossary-ride-link.tsx`](../../components/blog/blog-glossary-ride-link.tsx)
 
@@ -63,7 +63,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-inline-image.tsx`](../../components/blog/blog-inline-image.tsx)
 
-- `BlogInlineImage` _component_
+- `BlogInlineImage` _component_: An image inside a post body, centred, floated or full width per `align`, with an optional caption and a click-to-enlarge lightbox.
 - Types: `BlogImageAlign`, `BlogImageSize`
 
 ### [`blog-instagram-embed.tsx`](../../components/blog/blog-instagram-embed.tsx)
@@ -125,8 +125,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-post-page.tsx`](../../components/blog/blog-post-page.tsx)
 
-- `BlogPostPageBody` _component_
-- `buildPostMetadata` _function_
+- `BlogPostPageBody` _component_: Renders a blog or news post page: banner, body, table of contents, tags, references, related posts and JSON-LD. Redirects a news post asked for under `/blog` and a slug from another locale, 404s an article under `/news`.
+- `buildPostMetadata` _function_: Builds the metadata for a post page: title, description, canonical and hreflang across the post's translations, Open Graph and Twitter cards, robots. Returns `{}` for a post filed under the other section.
 - Types: `PostSection`
 
 ### [`blog-quote-original.tsx`](../../components/blog/blog-quote-original.tsx)
@@ -172,7 +172,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-tags.tsx`](../../components/blog/blog-tags.tsx)
 
-- `BlogTags` _component_
+- `BlogTags` _component_: Row of coloured `#tag` pills for a post, each linking to its tag archive unless `asLinks` is false.
 
 ### [`blog-toc-list.tsx`](../../components/blog/blog-toc-list.tsx)
 
