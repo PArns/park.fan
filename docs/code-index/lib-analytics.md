@@ -15,7 +15,7 @@ Type-safe wrapper for Umami event tracking: the event names and one function per
 - `trackNearbyPermissionGranted` _function_: Sends `nearby_permission_granted` once when the browser starts returning a position (`useNearbyAnalytics`).
 - `trackNearbyPermissionDenied` _function_: Sends `nearby_permission_denied` when the visitor refuses location now, not for a refusal stored from an earlier visit (`useNearbyAnalytics`).
 - `trackNearbyParksLoaded` _function_: Sends `nearby_parks_loaded` once per new nearby result, with its type, its source (GPS or IP) and, in a park, the park name.
-- `trackSearchOpened` _function_: Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens (`SearchBar`).
+- `trackSearchOpened` _function_: Sends `search_opened` with its source (header, hero or keyboard) when the search dialog opens (`SearchCommand`).
 - `trackHeroSearchClicked` _function_: Sends `hero_search_clicked` when the homepage hero's search field is clicked or first focused.
 - `trackSearchResultClicked` _function_: Sends `search_result_clicked` with the result type, position and query length (never the query) when a search result is opened.
 - `trackSearchViewAll` _function_: Sends `search_view_all` when the search panel's view-all button is pressed, before it goes to `/search`.

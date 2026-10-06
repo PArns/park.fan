@@ -377,7 +377,7 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`schedule-utils.ts`](../../lib/utils/schedule-utils.ts)
 
-- `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), shared by `ParkCard` and `ParkCardNearby`.
+- `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
 - Types: `ScheduleSummary`
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)

@@ -7,24 +7,24 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`add-to-planner-button.tsx`](../../components/planner/add-to-planner-button.tsx)
 
-- `AddToPlannerButton` _component_: Puts one ride into the plan.
+- `AddToPlannerButton` _component_: Puts one ride into the plan, from a ride card, a ride page or the mobile search alike, so it takes the park's identity as props rather than from a context.
 
 ### [`plan-day-button-lazy.tsx`](../../components/planner/plan-day-button-lazy.tsx)
 
-- `PlanDayButtonLazy` _component_: The lazy boundary around the calendar's "plan this day" button.
+- `PlanDayButtonLazy` _component_: The lazy boundary around the calendar's "plan this day" button, so the `planner` namespace is not in the payload of every park page and calendar URL for one label.
 
 ### [`plan-day-button.tsx`](../../components/planner/plan-day-button.tsx)
 
-- `PlanDayButton` _component_: "Plan this day" — the calendar's way into the planner.
+- `PlanDayButton` _component_: "Plan this day", the calendar's way into the planner.
 - Types: `PlanDayButtonProps`
 
 ### [`planner-bar.tsx`](../../components/planner/planner-bar.tsx)
 
-- `PlannerBar` _component_: One wait time, drawn.
+- `PlannerBar` _component_: One wait time, drawn. The tier changes the bar's edge, not just its colour: a measured bar ends hard and a composed one fades, softer the further out.
 
 ### [`planner-block-icons.tsx`](../../components/planner/planner-block-icons.tsx)
 
-- `PLANNER_BLOCK_ICON_COMPONENTS` _const_: The icons a free block may carry.
+- `PLANNER_BLOCK_ICON_COMPONENTS` _const_: The icons a free block may carry, mapped in one place, because the plan stores the key and not the component; `store.ts` falls back on an unknown key rather than dropping the block.
 
 ### [`planner-block.tsx`](../../components/planner/planner-block.tsx)
 
@@ -38,48 +38,48 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-column-head.tsx`](../../components/planner/planner-column-head.tsx)
 
-- `PlannerColumnHead` _component_: What a column says about itself: which park, which day.
+- `PlannerColumnHead` _component_: What a column says about itself: which park, which day. On the column rather than in the panel's header, because with two columns the header cannot say which one it means.
 
 ### [`planner-context-band.tsx`](../../components/planner/planner-context-band.tsx)
 
-- `PlannerContextBand` _component_: What kind of day this is, above the plan.
+- `PlannerContextBand` _component_: What kind of day this is, above the plan: facts about the date that explain the numbers below, such as a bridge day, a holiday next door, or rain at four.
 - Types: `PlannerDayState`
 
 ### [`planner-day-column.tsx`](../../components/planner/planner-day-column.tsx)
 
-- `PlannerDayColumn` _component_: One day of one park, with everything that is about THAT day.
+- `PlannerDayColumn` _component_: One day of one park, with everything about that day: head, context band, show strip, axis and the action row a selected block docks into. The foot and the photo behind the panel follow the primary column instead.
 
 ### [`planner-day-foot.tsx`](../../components/planner/planner-day-foot.tsx)
 
-- `PlannerDayFoot` _component_: Everything a day is filled and summed with: the missing headliners, a free block, optimise, and what it all comes to — optimise last but one, so it stands against the total it lowers (PAR-493).
+- `PlannerDayFoot` _component_: Everything a day is filled and summed with: the missing headliners, a free block, optimise, and what it all comes to, optimise last but one so it stands against the total it lowers.
 
 ### [`planner-day-grid.tsx`](../../components/planner/planner-day-grid.tsx)
 
-- `PlannerDayGrid` _component_: The day grid: the axis, the ground, the blocks and the legs between them.
+- `PlannerDayGrid` _component_: The day grid: the axis, the ground, the blocks and the legs between them. Everything positional comes from `lib/planner/day-grid.ts`; the grid owns the gesture and the DOM.
 
 ### [`planner-day-picker.tsx`](../../components/planner/planner-day-picker.tsx)
 
-- `PlannerDayPicker` _component_: Which day the plan is for.
+- `PlannerDayPicker` _component_: Which day the plan is for: a month grid in a popover, tinted with the park's crowd forecast like the park's own calendar, because people pick "the Saturday after next", not the 43rd day.
 
 ### [`planner-drag-coach.tsx`](../../components/planner/planner-drag-coach.tsx)
 
-- `PlannerDragCoach` _component_: How a ride gets into the day, said once.
+- `PlannerDragCoach` _component_: How a ride gets into the day, said once: dragging from the page behind the panel is a gesture nobody finds unless it is named.
 
 ### [`planner-drag-demo.tsx`](../../components/planner/planner-drag-demo.tsx)
 
-- `PlannerDragDemo` _component_: The empty day's drag, acted out (PAR-521: „können wir das animieren? Also ein Drag-&-Drop-Icon", „4–8 Frame Animation", then „man muss nur verstehen, dass man das von links nach rechts droppen kann").
+- `PlannerDragDemo` _component_: The empty day's drag, acted out: a hand lifts a ride from the park page's list on the left, carries it across the planner's edge and sets it on a slot of the axis, where it becomes a block.
 
 ### [`planner-edge-tab.tsx`](../../components/planner/planner-edge-tab.tsx)
 
-- `PlannerEdgeTab` _component_: The planner's tab, on the right edge of the window.
+- `PlannerEdgeTab` _component_: The planner's tab on the right edge of the window: closed it is the way in, open it is the panel's own edge and drags to resize.
 
 ### [`planner-entry-row.tsx`](../../components/planner/planner-entry-row.tsx)
 
-- `PlannerEntryRow` _component_: One planned ride.
+- `PlannerEntryRow` _component_: One planned ride, in a fixed 56 px row, so the list does not shift under a dragging finger when data arrives.
 
 ### [`planner-fit-assistant.tsx`](../../components/planner/planner-fit-assistant.tsx)
 
-- `PlannerFitAssistant` _component_: What to give up, asked as a walk-through rather than as a footnote.
+- `PlannerFitAssistant` _component_: What to give up, asked as a walk-through rather than as a footnote: measured levers (skipped where the day has no free block), the whole list with what falls out marked and a pin per row, and the result with what is left out by name.
 
 ### [`planner-fit-levers.tsx`](../../components/planner/planner-fit-levers.tsx)
 
@@ -87,7 +87,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-fit-list.tsx`](../../components/planner/planner-fit-list.tsx)
 
-- `PlannerFitList` _component_: The rides the day is being decided over, in the order they are given up in.
+- `PlannerFitList` _component_: The rides the day is being decided over, in the order they are given up in. The checkbox says whether a ride is wanted at all; the pin moves it up the order the engine reads as `OptimizeInput.priority`.
 
 ### [`planner-flyout.tsx`](../../components/planner/planner-flyout.tsx)
 
@@ -95,15 +95,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-grid-actions.tsx`](../../components/planner/planner-grid-actions.tsx)
 
-- `PlannerGridActions` _component_: Tick-off and remove for the selected block.
+- `PlannerGridActions` _component_: The actions for the selected block, docked under the grid rather than on the block: a block can be twenty pixels tall, and growing it to fit 44 px targets would make it lie about its duration.
 
 ### [`planner-grid-ground.tsx`](../../components/planner/planner-grid-ground.tsx)
 
-- `PlannerGridGround` _component_: The ground the day grid stands on.
+- `PlannerGridGround` _component_: The ground the day grid stands on: four layers, `aria-hidden`, no pointer events, and no `dark:` utility, since every colour is a token that flips with the theme.
 
 ### [`planner-header-button.tsx`](../../components/planner/planner-header-button.tsx)
 
-- `PlannerHeaderButton` _component_: The planner's way in on a phone, in the header instead of on the window's edge.
+- `PlannerHeaderButton` _component_: The planner's way in on a phone, in the header, where `PlannerEdgeTab` is `planner-phone:hidden`.
 
 ### [`planner-help.tsx`](../../components/planner/planner-help.tsx)
 
@@ -111,11 +111,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-in-park-cta.tsx`](../../components/planner/planner-in-park-cta.tsx)
 
-- `PlannerInParkCta` _component_: "You are at Phantasialand — plan today here."
+- `PlannerInParkCta` _component_: "You are at Phantasialand: plan today here." A second reader of `/api/nearby`'s `in_park` answer, through `useHomeNearbyParks` with its canonical radius and limit, so React Query dedupes it with the homepage's request.
 
 ### [`planner-launcher-button.tsx`](../../components/planner/planner-launcher-button.tsx)
 
-- `PlannerFlyoutHost` _component_: The panel, on the far side of the lazy-message import.
+- `PlannerFlyoutHost` _component_: The panel, on the far side of the lazy-message import: `planner-launcher` is a boundary, and the generator counts a boundary's own `useTranslations` calls, so everything that reads `planner` sits in this file.
 
 ### [`planner-launcher.tsx`](../../components/planner/planner-launcher.tsx)
 
@@ -123,7 +123,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-leg.tsx`](../../components/planner/planner-leg.tsx)
 
-- `PlannerLeg` _component_: The space between two planned rides — and the object this whole view is built around.
+- `PlannerLeg` _component_: The space between two planned rides, the object this view is built around: not leftover whitespace, but the distance, the allowance and the verdict.
 
 ### [`planner-missing-headliners.tsx`](../../components/planner/planner-missing-headliners.tsx)
 
@@ -131,15 +131,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-month-calendar.tsx`](../../components/planner/planner-month-calendar.tsx)
 
-- `PlannerMonthCalendar` _component_: A month at a time, which is how somebody picks a day for a trip.
+- `PlannerMonthCalendar` _component_: A month at a time, which is how somebody picks a day for a trip ("the Saturday after next"). The cells carry the park's forecast in `CROWD_TILE_CLASS` tints, as in the park's own calendar.
 
 ### [`planner-optimize-actions.tsx`](../../components/planner/planner-optimize-actions.tsx)
 
-- `PlannerOptimizeActions` _component_: The two buttons that let the day sort itself.
+- `PlannerOptimizeActions` _component_: The two buttons that let the day sort itself: one adds the park's headliners first, the other only re-orders. One engine (`lib/planner/optimize.ts`), two buttons, because "fill my day" and "is this the best order" are different questions.
 
 ### [`planner-overview.tsx`](../../components/planner/planner-overview.tsx)
 
-- `PlannerOverview` _component_: Every park and day in the plan, in one list.
+- `PlannerOverview` _component_: Every park and day in the plan, in one list, since the panel otherwise shows one day of one park. Past days are kept and greyed rather than swept up: a finished day records what was actually queued.
 
 ### [`planner-page-body.tsx`](../../components/planner/planner-page-body.tsx)
 
@@ -147,11 +147,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-page-park-beacon.tsx`](../../components/planner/planner-page-park-beacon.tsx)
 
-- `PlannerPageParkBeacon` _component_: Tells the planner which park the current route is about.
+- `PlannerPageParkBeacon` _component_: Tells the planner which park the current route is about. Renders nothing; mounted by every park-scoped page, since the layout's panel cannot otherwise tell one park's page from another's.
 
 ### [`planner-panel-photo.tsx`](../../components/planner/planner-panel-photo.tsx)
 
-- `PlannerPanelPhoto` _component_: The park's photo behind the panel — and, where there is none, a drawn ground.
+- `PlannerPanelPhoto` _component_: The park's photo behind the panel, or a drawn ground where there is none. The photo comes resolved on the `/plan/day` payload, because `@/lib/media` is too large for a Client Component in the layout.
 
 ### [`planner-park-search.tsx`](../../components/planner/planner-park-search.tsx)
 
@@ -160,32 +160,32 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-party-chips.tsx`](../../components/planner/planner-party-chips.tsx)
 
-- `PlannerPartyChips` _component_: Who is coming, in the panel, changeable.
+- `PlannerPartyChips` _component_: Who is coming, in the panel, changeable: the wizard's answers decide what the ride list flags all day, so they cannot be write-only. One chip when nothing is set, the common state.
 
 ### [`planner-plan-park-cta.tsx`](../../components/planner/planner-plan-park-cta.tsx)
 
-- `PlannerPlanParkCta` _component_: "Toverland jetzt planen" — the offer to plan the park the reader is standing in.
+- `PlannerPlanParkCta` _component_: "Toverland jetzt planen": the offer to plan the park the reader is standing in. Its own component because it appears in two places that never render together, the grid's empty overlay and the no-axis branch.
 
 ### [`planner-polaroids.tsx`](../../components/planner/planner-polaroids.tsx)
 
-- `PlannerPolaroids` _component_: A handful of park photos, laid out as polaroids.
+- `PlannerPolaroids` _component_: A handful of park photos, laid out as polaroids: the one place in this app where a photo is decoration rather than data.
 - Types: `PolaroidPhoto`
 
 ### [`planner-push-toggle.tsx`](../../components/planner/planner-push-toggle.tsx)
 
-- `PlannerPushToggle` _component_: The one control that turns notifications on.
+- `PlannerPushToggle` _component_: The one control that turns notifications on. It renders nothing while `checking`, `unsupported` or `unavailable`: a disabled switch would promise what the site cannot keep. `denied` renders and says the browser is refusing.
 
 ### [`planner-ride-search.tsx`](../../components/planner/planner-ride-search.tsx)
 
-- `PlannerRideSearch` _component_: Adding a ride without a ride card in reach.
+- `PlannerRideSearch` _component_: Adding a ride without a ride card in reach, which is the way in on a phone.
 
 ### [`planner-ride-thumb.tsx`](../../components/planner/planner-ride-thumb.tsx)
 
-- `PlannerRideThumb` _component_: A ride's picture in a fixed box — or the mark that stands in for one.
+- `PlannerRideThumb` _component_: A ride's picture in a fixed box, or the coaster mark that stands in for one. The fallback is the common case, so it has to look like a ride and fill the same box, or a list changes rhythm with the photos we happen to have.
 
 ### [`planner-share-link.tsx`](../../components/planner/planner-share-link.tsx)
 
-- `PlannerShareLink` _component_: "Link zum Plan teilen", under the push switch and only while it is on.
+- `PlannerShareLink` _component_: "Link zum Plan teilen", under the push switch and only while it is on: the link points at the server's copy, which exists only then.
 
 ### [`planner-shared-plan.tsx`](../../components/planner/planner-shared-plan.tsx)
 
@@ -193,8 +193,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-show-band.tsx`](../../components/planner/planner-show-band.tsx)
 
-- `PlannerShowBand` _component_: The shows above the grid.
-- `PlannerShowsButton` _component_: The phone's switch for the shows, at the end of the foot's optimise row.
+- `PlannerShowBand` _component_: The shows above the grid. It names the next one, never the day's cast list: the grid already draws each show, and what it cannot say is which one is next.
+- `PlannerShowsButton` _component_: The phone's switch for the shows, at the end of the foot's optimise row, since the phone does not draw `PlannerShowBand`. Same store as the desktop's.
 
 ### [`planner-show-picker.tsx`](../../components/planner/planner-show-picker.tsx)
 
@@ -202,16 +202,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-step-rail.tsx`](../../components/planner/planner-step-rail.tsx)
 
-- `PlannerStepRail` _component_: Where a stepped dialog is, in circles.
-- `STEP_MOTION` _const_: Which way a stepped dialog's step slides in from, keyed by `String(forward)`.
+- `PlannerStepRail` _component_: Where a stepped dialog is, in circles: one rail for the wizard and the fit assistant, so the geometry is written once. Steps are `{ key, label }` pairs named by each caller.
+- `STEP_MOTION` _const_: Which way a stepped dialog's step slides in from, keyed by `String(forward)`: literal class strings, since Tailwind's scanner never sees a templated one.
 
 ### [`planner-timeline.tsx`](../../components/planner/planner-timeline.tsx)
 
-- `PlannerTimeline` _component_: The day's plan as a flat list — the fallback for a day whose opening hours are unknown.
+- `PlannerTimeline` _component_: The day's plan as a flat list, the fallback for a day whose opening hours are unknown: without them there is no honest axis, neither 00:00–24:00 nor an invented 09:00–18:00. No reordering, as there is no time to drop onto.
 
 ### [`planner-trip-assistant.tsx`](../../components/planner/planner-trip-assistant.tsx)
 
-- `PlannerTripAssistant` _component_: Which park on which day, proposed from the crowd forecast (PAR-9).
+- `PlannerTripAssistant` _component_: Which park on which day, proposed from the crowd forecast. Like the fit assistant: the visitor sets the window and parks, reads a proposal, and nothing is written until "annehmen", as a whole.
 
 ### [`planner-weather-rail.tsx`](../../components/planner/planner-weather-rail.tsx)
 
@@ -219,5 +219,5 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-wizard.tsx`](../../components/planner/planner-wizard.tsx)
 
-- `PlannerWizard` _component_: Planning a day, one question at a time.
+- `PlannerWizard` _component_: Planning a day, one question at a time: which park, which day, who is coming, and which big rides. It ends on the park's own page with the panel open, because dragging a ride card into the day is the gesture the feature is built around.
 - Types: `WizardPark`
