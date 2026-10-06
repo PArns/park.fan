@@ -4,9 +4,18 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight, ListChecks, Loader2 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { adminFetch } from '../_lib/api';
-import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
-import { AdminPage } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  type ChipTone,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+} from '../_ui/primitives';
 
 /**
  * A failed job with the message and stack Bull keeps in Redis, because a failure count alone says
@@ -20,26 +29,21 @@ interface QueueFailure {
   stack: string[];
 }
 
-function QueueBadge({
-  count,
-  variant,
-}: {
-  count: number;
-  variant: 'active' | 'pending' | 'failed' | 'delayed';
-}) {
+type QueueState = 'active' | 'pending' | 'failed' | 'delayed';
+
+const QUEUE_TONES: Record<QueueState, ChipTone> = {
+  active: 'primary',
+  pending: 'muted',
+  failed: 'danger',
+  delayed: 'warning',
+};
+
+function QueueBadge({ count, variant }: { count: number; variant: QueueState }) {
   if (count === 0) return null;
-  const colors: Record<typeof variant, string> = {
-    active: 'bg-blue-500/15 text-blue-400 border-blue-500/20',
-    pending: 'bg-zinc-500/15 text-zinc-400 border-zinc-500/20',
-    failed: 'bg-red-500/15 text-red-400 border-red-500/20',
-    delayed: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
-  };
   return (
-    <span
-      className={`inline-flex items-center rounded-full border px-1.5 py-0.5 font-mono text-xs tabular-nums ${colors[variant]}`}
-    >
+    <Chip tone={QUEUE_TONES[variant]} className="font-mono tabular-nums">
       {count} {variant}
-    </span>
+    </Chip>
   );
 }
 
@@ -145,22 +149,23 @@ function QueueRow({ q }: { q: QueueEntry }) {
 export default function QueuesPage() {
   const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status');
 
-  if (error) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading queues…" />;
+  if (error) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading queues…" />;
 
   return (
     <AdminPage width="wide">
-      <Section icon={ListChecks} title="Queues">
+      <Panel>
+        <PanelHeader icon={ListChecks} title="Queues" />
         {data.queues.length === 0 ? (
-          <EmptyPanel label="No queues reported." />
+          <EmptyState title="No queues reported." />
         ) : (
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <PanelBody className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {data.queues.map((q) => (
               <QueueRow key={q.name} q={q} />
             ))}
-          </div>
+          </PanelBody>
         )}
-      </Section>
+      </Panel>
     </AdminPage>
   );
 }

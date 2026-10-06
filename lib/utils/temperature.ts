@@ -41,6 +41,11 @@ export function formatTemp(celsius: number, unit: TemperatureUnit): string {
   return `${Math.round(convertTemp(celsius, unit))}°`;
 }
 
+/** Format a Celsius value as a rounded "15 °C" / "59 °F" string, for text that names the scale. */
+export function formatTempWithUnit(celsius: number, unit: TemperatureUnit): string {
+  return `${Math.round(convertTemp(celsius, unit))} °${unit}`;
+}
+
 /** Convert km/h into the unit-system pairing (km/h for metric, mph for imperial). */
 export function convertWindSpeed(kmh: number, unit: TemperatureUnit): number {
   return unit === 'F' ? kmh * 0.621371 : kmh;

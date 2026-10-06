@@ -15,8 +15,17 @@ import {
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { formatDay, Section } from '../_lib/ui';
-import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { formatDay } from '../_lib/format';
+import {
+  AdminPage,
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+} from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import {
   RETIREMENT_KEYS,
@@ -336,41 +345,45 @@ export default function RetirementPage() {
   return (
     <AdminPage width="wide">
       <>
-        <Section icon={Search} title="Verdachtsfälle">
-          <p className="text-muted-foreground text-sm">
-            Fahrgeschäfte, deren Feed verstummt ist und die noch niemand beurteilt hat. Ein
-            verstummter Feed beschreibt die Quelle, nicht die Welt: abgerissen, im Umbau und
-            umbenannt sehen von außen gleich aus.
-          </p>
+        <Panel>
+          <PanelHeader icon={Search} title="Verdachtsfälle" />
+          <PanelBody className="space-y-3">
+            <p className="text-muted-foreground text-sm">
+              Fahrgeschäfte, deren Feed verstummt ist und die noch niemand beurteilt hat. Ein
+              verstummter Feed beschreibt die Quelle, nicht die Welt: abgerissen, im Umbau und
+              umbenannt sehen von außen gleich aus.
+            </p>
 
-          {candidates.isError ? (
-            <ErrorState message={candidates.error?.message ?? 'Laden fehlgeschlagen'} />
-          ) : candidates.isLoading ? (
-            <LoadingState label="Verdachtsfälle werden geladen…" />
-          ) : (candidates.data?.candidates?.length ?? 0) === 0 ? (
-            <EmptyState
-              icon={CheckCircle2}
-              title="Nichts offen"
-              description="Jeder Verdachtsfall ist entweder stillgelegt oder als geprüft vermerkt."
-            />
-          ) : (
-            <div className="space-y-2">
-              {candidates.data?.candidates?.map((candidate) => (
-                <CandidateRow
-                  key={candidate.attractionId}
-                  candidate={candidate}
-                  canRetire={canRetire}
-                />
-              ))}
-            </div>
-          )}
-        </Section>
+            {candidates.isError ? (
+              <ErrorState message={candidates.error?.message ?? 'Laden fehlgeschlagen'} />
+            ) : candidates.isLoading ? (
+              <LoadingState label="Verdachtsfälle werden geladen…" />
+            ) : (candidates.data?.candidates?.length ?? 0) === 0 ? (
+              <EmptyState
+                icon={CheckCircle2}
+                title="Nichts offen"
+                description="Jeder Verdachtsfall ist entweder stillgelegt oder als geprüft vermerkt."
+              />
+            ) : (
+              <div className="space-y-2">
+                {candidates.data?.candidates?.map((candidate) => (
+                  <CandidateRow
+                    key={candidate.attractionId}
+                    candidate={candidate}
+                    canRetire={canRetire}
+                  />
+                ))}
+              </div>
+            )}
+          </PanelBody>
+        </Panel>
 
-        <Section
-          icon={Archive}
-          title="Stillgelegt"
-          action={retired.data ? <Chip>{retired.data.total}</Chip> : undefined}
-        >
+        <Panel>
+          <PanelHeader
+            icon={Archive}
+            title="Stillgelegt"
+            action={retired.data ? <Chip>{retired.data.total}</Chip> : undefined}
+          />
           {retired.isError ? (
             <ErrorState message={retired.error?.message ?? 'Laden fehlgeschlagen'} />
           ) : retired.isLoading ? (
@@ -382,13 +395,13 @@ export default function RetirementPage() {
               description="Sobald etwas stillgelegt wird, steht es hier, mitsamt dem Weg zurück."
             />
           ) : (
-            <div className="space-y-1.5">
+            <PanelBody className="space-y-1.5">
               {retired.data?.attractions?.map((entry) => (
                 <RetiredRow key={entry.id} entry={entry} canRestore={canRetire} />
               ))}
-            </div>
+            </PanelBody>
           )}
-        </Section>
+        </Panel>
       </>
     </AdminPage>
   );

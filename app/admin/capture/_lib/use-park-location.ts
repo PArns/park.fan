@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 
 /**
@@ -30,6 +31,7 @@ export function useDevicePosition(enabled = true) {
   const [attempt, setAttempt] = useState(0);
   /** Whether the tab is in front. Only then is there a watch at all. */
   const [active, setActive] = useState(true);
+  const noGeolocation = useMounted() && !navigator.geolocation;
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -43,13 +45,8 @@ export function useDevicePosition(enabled = true) {
   useEffect(() => {
     if (!enabled || !active) return;
 
-    const geolocation = typeof navigator === 'undefined' ? undefined : navigator.geolocation;
-    if (!geolocation) {
-      // Deferred like any other callback: setting state straight from an effect body is the
-      // cascading render the lint rule stops.
-      const timer = setTimeout(() => setStatus('unavailable'), 0);
-      return () => clearTimeout(timer);
-    }
+    const geolocation = navigator.geolocation;
+    if (!geolocation) return;
 
     const watch = geolocation.watchPosition(
       (fix) => {
@@ -76,7 +73,7 @@ export function useDevicePosition(enabled = true) {
     setAttempt((n) => n + 1);
   }, []);
 
-  return { position, status, retry };
+  return { position, status: enabled && noGeolocation ? 'unavailable' : status, retry };
 }
 
 export interface NearbyPark {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
@@ -64,6 +64,20 @@ const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
  * set stays out of the DOM — see {@link InParkHeroImages}.
  */
 const PARK_LAYER_LOOKAHEAD = 1;
+
+let clientRandomHero: string | null | undefined;
+
+/** One random pick per page load: a store snapshot must not change between two reads. */
+function randomHeroSnapshot(): string | null {
+  if (clientRandomHero === undefined) {
+    const pool = heroImageSrcs();
+    clientRandomHero = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+  }
+  return clientRandomHero;
+}
+
+const subscribeToNothing = () => () => {};
+const noHero = () => null;
 
 /**
  * Alt text for a hero photo when the caller passed none, composed from `HERO_META` at no bundle
@@ -163,7 +177,12 @@ function InParkHeroImages({
  * pan once loaded, crossfading into the park's own photos when the visitor is inside a park.
  */
 export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL, alt }: RandomHeroImageProps) {
-  const [randomImage, setRandomImage] = useState<string | null>(null);
+  // With a server pick the client snapshot is the server's, so hydration has nothing to redo.
+  const randomImage = useSyncExternalStore(
+    subscribeToNothing,
+    imageSrc ? noHero : randomHeroSnapshot,
+    noHero
+  );
   // The ken-burns pan waits for two things. First the image itself: transforming the LCP element
   // during its initial render is a known LCP-delay anti-pattern, so it paints static and this
   // flips on load. Then the rest of the hero — see useHeroPanAllowed for why the photo must not
@@ -185,15 +204,6 @@ export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL, alt }: Ran
     setPrevHasParkImages(hasParkImages);
     if (!hasParkImages) setParkImageLoaded(false);
   }
-
-  useEffect(() => {
-    if (imageSrc) return;
-    const timer = setTimeout(() => {
-      const pool = heroImageSrcs();
-      if (pool.length) setRandomImage(pool[Math.floor(Math.random() * pool.length)]);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [imageSrc]);
 
   const finalImage = imageSrc || randomImage;
   const isServerImage = !!imageSrc;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Archive, Loader2, TriangleAlert, Undo2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useInvalidateAdmin, adminKeys } from '../../_lib/api';
-import { formatDay } from '../../_lib/ui';
+import { formatDay } from '../../_lib/format';
 import { Chip } from '../../_ui/primitives';
 import { Field, TextInput } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';

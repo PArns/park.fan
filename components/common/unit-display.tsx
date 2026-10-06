@@ -1,5 +1,6 @@
 import {
   formatTemp,
+  formatTempWithUnit,
   formatWindSpeed,
   formatPrecip,
   formatSpeed,
@@ -14,12 +15,13 @@ import {
  * Components can use them.
  */
 
-/** Temperature from a Celsius value, e.g. "15°" / "59°". */
-export function Temp({ celsius }: { celsius: number }) {
+/** Temperature from a Celsius value, e.g. "15°" / "59°", or "15 °C" / "59 °F" with `withUnit`. */
+export function Temp({ celsius, withUnit = false }: { celsius: number; withUnit?: boolean }) {
+  const format = withUnit ? formatTempWithUnit : formatTemp;
   return (
     <>
-      <span className="u-metric">{formatTemp(celsius, 'C')}</span>
-      <span className="u-imperial">{formatTemp(celsius, 'F')}</span>
+      <span className="u-metric">{format(celsius, 'C')}</span>
+      <span className="u-imperial">{format(celsius, 'F')}</span>
     </>
   );
 }

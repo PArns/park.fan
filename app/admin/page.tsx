@@ -17,7 +17,7 @@ import {
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from './_lib/use-hero-photo';
 import { adminKeys, useAdminQuery } from './_lib/api';
-import { formatDisplayName } from './_lib/ui';
+import { formatDisplayName } from './_lib/format';
 import type { AdminOverview, AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
 import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './_ui/primitives';
 import { BacklogBars, CurationTrend, MetricTile } from './_ui/metrics';

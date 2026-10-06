@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { pickHeroImage, type HeroImageMeta } from '@/lib/media/hero';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
 /**
  * How long one photo stays: long enough not to flicker between visits, and the shared window
@@ -20,12 +21,6 @@ export interface HeroPhoto {
  * media database.
  */
 export function useHeroPhoto(windowMs: number = HERO_WINDOW_MS): HeroPhoto | null {
-  const [photo, setPhoto] = useState<HeroPhoto | null>(null);
-
-  useEffect(() => {
-    const id = setTimeout(() => setPhoto(pickHeroImage(windowMs)), 0);
-    return () => clearTimeout(id);
-  }, [windowMs]);
-
-  return photo;
+  const now = useBrowserNow();
+  return useMemo(() => (now ? pickHeroImage(windowMs, now.getTime()) : null), [now, windowMs]);
 }

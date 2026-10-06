@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody } from '@/components/common/entry-tile';
+import { Temp } from '@/components/common/unit-display';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { TILE_ROW_ATTR, useTileRowAnchor } from '@/lib/hooks/use-tile-row-anchor';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
@@ -228,14 +229,19 @@ export function useParkTileItems({
       nowcast?.currentWeatherCode ?? w.now?.weatherCode ?? w.current.weatherCode,
       nowcast?.isDay ?? w.now?.isDay ?? true
     );
-    const summary = `${Math.round(temp)} °C · ${tWeather(label)}`;
     // An official warning outranks the conditions on a tile this small: it is the reason to open
     // the weather chapter at all.
+    const warning = (w.warnings?.length ?? 0) > 0;
     return {
       // The icon shows the conditions, from the same config as the label, so icon and text cannot
       // contradict each other.
       icon,
-      text: (w.warnings?.length ?? 0) > 0 ? `${summary} · ${t('severeWeatherWarning')}` : summary,
+      text: (
+        <>
+          <Temp celsius={temp} withUnit /> · {tWeather(label)}
+          {warning && ` · ${t('severeWeatherWarning')}`}
+        </>
+      ),
     };
   }, [park.weather, nowcast, tWeather, t]);
 

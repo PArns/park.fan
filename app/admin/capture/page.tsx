@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 import { distanceMeters } from '@/lib/media/geo';
 import type { RankedRide } from '@/lib/media/photo-backlog';
 import { adminFetch } from '../_lib/api';
-import { formatDisplayName } from '../_lib/ui';
+import { formatDisplayName } from '../_lib/format';
 import { useSession } from '../_app/session';
 import {
   AdminPage,

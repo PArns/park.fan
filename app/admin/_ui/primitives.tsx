@@ -3,6 +3,7 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { AlertTriangle, Loader2, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { CROWD_CHIP_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 
 /**
  * The admin's shared surfaces: page layout, panels, small parts and the loading, error and empty
@@ -90,6 +91,65 @@ export function PanelBody({ className, ...props }: ComponentProps<'div'>) {
   return <div className={cn('p-4', className)} {...props} />;
 }
 
+/**
+ * A bordered box inside a panel or a dialog: one machine, one model, one group of controls, under
+ * an optional title row and hint.
+ */
+export function Tile({
+  icon: Icon,
+  title,
+  hint,
+  action,
+  className,
+  children,
+}: {
+  icon?: LucideIcon;
+  title?: ReactNode;
+  hint?: ReactNode;
+  action?: ReactNode;
+  className?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <section
+      className={cn('border-border/60 bg-muted/20 space-y-2.5 rounded-lg border p-3', className)}
+    >
+      {(title || action) && (
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="flex min-w-0 items-center gap-2 text-[11px] font-semibold tracking-wider uppercase">
+            {Icon && <Icon className="text-muted-foreground h-3.5 w-3.5 shrink-0" />}
+            {title}
+          </h3>
+          {action}
+        </div>
+      )}
+      {hint && <p className="text-muted-foreground text-[11px]">{hint}</p>}
+      {children}
+    </section>
+  );
+}
+
+/** A `Tile` holding one large tabular figure under its label, with an optional line beneath. */
+export function StatTile({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: ReactNode;
+  sub?: ReactNode;
+}) {
+  return (
+    <Tile className="space-y-1">
+      <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+        {label}
+      </p>
+      <span className="block text-3xl font-bold tabular-nums">{value}</span>
+      {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
+    </Tile>
+  );
+}
+
 /** A horizontal strip of controls above a list: search, filters, view switch. */
 export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
   return (
@@ -118,46 +178,100 @@ export function Meta({
   label,
   value,
   className,
+  valueClassName,
 }: {
   label: ReactNode;
   value: ReactNode;
   className?: string;
+  /** Colours the value when the figure is a verdict (a hit rate, an error). */
+  valueClassName?: string;
 }) {
   return (
     <div className={cn('min-w-0', className)}>
       <p className="text-muted-foreground text-[11px] tracking-wide uppercase">{label}</p>
-      <p className="truncate text-sm font-medium tabular-nums">{value}</p>
+      <p className={cn('truncate text-sm font-medium tabular-nums', valueClassName)}>{value}</p>
     </div>
   );
 }
 
-/** Small rounded label in one of five tones: muted, primary, success, warning, danger. */
+/** The five colours a `Chip` comes in, by meaning rather than by hue. */
+export type ChipTone = 'muted' | 'primary' | 'success' | 'warning' | 'danger';
+
+const CHIP_TONES: Record<ChipTone, string> = {
+  muted: 'border-border/60 bg-muted/50 text-muted-foreground',
+  primary: 'border-primary/30 bg-primary/10 text-primary',
+  success: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+  warning: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+  danger: 'border-destructive/40 bg-destructive/10 text-destructive',
+};
+
+/** Small rounded label in one of the five `ChipTone`s, the admin's only pill. */
 export function Chip({
   children,
   tone = 'muted',
   className,
 }: {
   children: ReactNode;
-  tone?: 'muted' | 'primary' | 'success' | 'warning' | 'danger';
+  tone?: ChipTone;
   className?: string;
 }) {
-  const tones: Record<string, string> = {
-    muted: 'border-border/60 bg-muted/50 text-muted-foreground',
-    primary: 'border-primary/30 bg-primary/10 text-primary',
-    success: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
-    warning: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
-    danger: 'border-destructive/40 bg-destructive/10 text-destructive',
-  };
   return (
     <span
       className={cn(
         'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium whitespace-nowrap',
-        tones[tone],
+        CHIP_TONES[tone],
         className
       )}
     >
       {children}
     </span>
+  );
+}
+
+const SEVERITY_TONES: Record<string, ChipTone> = {
+  low: 'primary',
+  medium: 'warning',
+  high: 'danger',
+  critical: 'danger',
+};
+
+/** The chip tone for an alert or anomaly severity (`low` to `critical`); muted for anything else. */
+export function severityTone(severity: string): ChipTone {
+  return SEVERITY_TONES[severity.toLowerCase()] ?? 'muted';
+}
+
+/**
+ * The chip tone for a service status word: success for healthy, ok, online and the like, warning
+ * for degraded, pending or a warning, danger for anything else.
+ */
+export function statusTone(status: string): ChipTone {
+  const lower = status?.toLowerCase() ?? '';
+  if (['warning', 'degraded', 'pending'].some((k) => lower.includes(k))) return 'warning';
+  if (
+    ['healthy', 'connected', 'operational', 'active', 'good', 'online', 'ok'].some((k) =>
+      lower.includes(k)
+    )
+  ) {
+    return 'success';
+  }
+  return 'danger';
+}
+
+/**
+ * A `Chip` class in the public site's crowd palette, so `moderate` reads as the green "Normal" it is
+ * there; undefined (a muted chip) for a level without a colour.
+ */
+export function crowdChipClass(level: string): string | undefined {
+  const key = level?.toLowerCase() ?? '';
+  return isColoredCrowdLevel(key) ? CROWD_CHIP_CLASS[key] : undefined;
+}
+
+/** A small round dot, green when `ok` and red otherwise. */
+export function StatusDot({ ok }: { ok: boolean }) {
+  return (
+    <span
+      className={cn('inline-block h-2 w-2 rounded-full', ok ? 'bg-emerald-500' : 'bg-red-500')}
+    />
   );
 }
 

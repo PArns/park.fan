@@ -1,6 +1,6 @@
 'use client';
 
-import { createElement, useState } from 'react';
+import { createElement, useState, type ReactNode } from 'react';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
@@ -39,7 +39,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { DialogHero } from '@/components/common/dialog-hero';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkTimeRange } from '@/components/common/park-time';
-import { Temp } from '@/components/common/unit-display';
+import { Precip, Temp, Wind as WindValue } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { parkDayOf } from '@/lib/utils/park-day';
@@ -578,13 +578,13 @@ export function ParkCalendarDayDetail({
               </div>
               {(() => {
                 const w = day.weather!;
-                const metrics: { icon: typeof Wind; label: string; value: string }[] = [];
+                const metrics: { icon: typeof Wind; label: string; value: ReactNode }[] = [];
                 const precip = w.precipitationMm ?? w.rainChance;
                 if (precip != null && precip > 0) {
                   metrics.push({
                     icon: Droplets,
                     label: t('weather.precipLabel'),
-                    value: `${precip} mm`,
+                    value: <Precip mm={precip} />,
                   });
                 }
                 if (w.snowMm != null && w.snowMm > 0) {
@@ -598,7 +598,7 @@ export function ParkCalendarDayDetail({
                   metrics.push({
                     icon: Wind,
                     label: t('weather.windLabel'),
-                    value: `${Math.round(w.windMax)} km/h`,
+                    value: <WindValue kmh={w.windMax} />,
                   });
                 }
                 if (w.humidity != null) {

@@ -6,8 +6,16 @@ import { ArrowRight, CheckCircle2, GitMerge, Loader2, Repeat, XCircle } from 'lu
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { formatDay, Section } from '../_lib/ui';
-import { Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { formatDay } from '../_lib/format';
+import {
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+} from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { DroppedCurations, readDroppedCurations, type DroppedCuration } from './dropped-curations';
@@ -314,47 +322,50 @@ export function ReissueCandidatesSection({ canMerge }: { canMerge: boolean }) {
   const candidates = query.data?.candidates ?? [];
 
   return (
-    <Section
-      icon={Repeat}
-      title="Neu ausgegeben unter anderem Namen?"
-      action={
-        query.data ? (
-          <div className="flex items-center gap-2">
-            <Chip tone="success">{query.data.namesMatch} Name passt</Chip>
-            <Chip tone="muted">{query.data.total} in der Nähe</Chip>
-          </div>
-        ) : undefined
-      }
-    >
-      <p className="text-muted-foreground text-sm">
-        Stillgelegte Bahnen, neben denen innerhalb von 30 m eine jüngere Bahn läuft. ThemeParks.wiki
-        gibt Saison-Attraktionen jedes Jahr unter neuer Id aus und benennt sie dabei oft um, dann
-        erkennt der Sync sie nicht wieder. „Name passt“ ist nur ein Hinweis: Im selben Gebäude
-        stehen oft zwei verschiedene Dinge, und eine Übersetzung passt nie.
-      </p>
+    <Panel>
+      <PanelHeader
+        icon={Repeat}
+        title="Neu ausgegeben unter anderem Namen?"
+        action={
+          query.data ? (
+            <div className="flex items-center gap-2">
+              <Chip tone="success">{query.data.namesMatch} Name passt</Chip>
+              <Chip tone="muted">{query.data.total} in der Nähe</Chip>
+            </div>
+          ) : undefined
+        }
+      />
+      <PanelBody className="space-y-3">
+        <p className="text-muted-foreground text-sm">
+          Stillgelegte Bahnen, neben denen innerhalb von 30 m eine jüngere Bahn läuft.
+          ThemeParks.wiki gibt Saison-Attraktionen jedes Jahr unter neuer Id aus und benennt sie
+          dabei oft um, dann erkennt der Sync sie nicht wieder. „Name passt“ ist nur ein Hinweis: Im
+          selben Gebäude stehen oft zwei verschiedene Dinge, und eine Übersetzung passt nie.
+        </p>
 
-      {query.isError ? (
-        <ErrorState message={query.error?.message ?? 'Laden fehlgeschlagen'} />
-      ) : query.isLoading ? (
-        <LoadingState label="Kandidaten werden gesucht…" />
-      ) : candidates.length === 0 ? (
-        <EmptyState
-          icon={CheckCircle2}
-          title="Keine Kandidaten"
-          description="Neben keiner stillgelegten Bahn läuft eine jüngere."
-        />
-      ) : (
-        <div className="space-y-2">
-          {candidates.map((candidate) => (
-            <CandidateRow
-              key={`${candidate.previous.attractionId}:${candidate.current.attractionId}`}
-              candidate={candidate}
-              canMerge={canMerge}
-              canDismiss={canDismiss}
-            />
-          ))}
-        </div>
-      )}
-    </Section>
+        {query.isError ? (
+          <ErrorState message={query.error?.message ?? 'Laden fehlgeschlagen'} />
+        ) : query.isLoading ? (
+          <LoadingState label="Kandidaten werden gesucht…" />
+        ) : candidates.length === 0 ? (
+          <EmptyState
+            icon={CheckCircle2}
+            title="Keine Kandidaten"
+            description="Neben keiner stillgelegten Bahn läuft eine jüngere."
+          />
+        ) : (
+          <div className="space-y-2">
+            {candidates.map((candidate) => (
+              <CandidateRow
+                key={`${candidate.previous.attractionId}:${candidate.current.attractionId}`}
+                candidate={candidate}
+                canMerge={canMerge}
+                canDismiss={canDismiss}
+              />
+            ))}
+          </div>
+        )}
+      </PanelBody>
+    </Panel>
   );
 }

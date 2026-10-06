@@ -18,6 +18,7 @@ import { WeatherWarningBanner } from './weather-warning-banner';
 import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
 import { NowcastCoveredRides, coveredRowsOf } from './nowcast-covered-rides';
 import { ParkTimeRange } from '@/components/common/park-time';
+import { Temp } from '@/components/common/unit-display';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
@@ -324,15 +325,9 @@ export function ParkTodayPanel({
     return {
       icon,
       color,
-      temperature: `${Math.round(temp)} °C`,
-      description: [
-        tWeather(label),
-        Number.isFinite(apparent)
-          ? `${tWeather('feelsLike')} ${Math.round(apparent as number)} °C`
-          : null,
-      ]
-        .filter(Boolean)
-        .join(' · '),
+      temperatureC: temp,
+      label: tWeather(label),
+      feelsLikeC: Number.isFinite(apparent) ? (apparent as number) : null,
     };
   }, [park.weather, nowcast, tWeather]);
 
@@ -438,11 +433,17 @@ export function ParkTodayPanel({
               );
             })()}
             <span className="text-sm font-semibold whitespace-nowrap">
-              {weatherSummary.temperature}
+              <Temp celsius={weatherSummary.temperatureC} withUnit />
             </span>
-            {weatherSummary.description && !nowcastAlert && (
+            {!nowcastAlert && (
               <span className="text-muted-foreground hidden truncate text-sm sm:inline">
-                {weatherSummary.description}
+                {weatherSummary.label}
+                {weatherSummary.feelsLikeC !== null && (
+                  <>
+                    {' · '}
+                    {tWeather('feelsLike')} <Temp celsius={weatherSummary.feelsLikeC} withUnit />
+                  </>
+                )}
               </span>
             )}
           </a>

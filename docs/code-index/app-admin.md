@@ -62,6 +62,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `AdminApiError` _class_: A non-2xx answer from an admin route, with its status, message and payload.
 - `adminKeys` _const_: Namespaced so `invalidate('parks')` can drop a whole family at once.
 
+### [`_lib/format.ts`](../../app/admin/_lib/format.ts)
+
+- `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
+- `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
+- `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
+- `formatAge` _function_: Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`.
+- `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
+
 ### [`_lib/media-upload.ts`](../../app/admin/_lib/media-upload.ts)
 
 - `toSlug` _function_: `DSC_0042 (1).JPG` → `dsc-0042-1` — the id half of a media path.
@@ -77,25 +85,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_lib/types.ts`](../../app/admin/_lib/types.ts)
 
 - Types: `CuratedFieldType`, `CuratedField`, `CuratedFieldSpec`, `AuditEntry`, `AdminParkListItem`, `AdminParkDetail`, `AdminAttractionListItem`, `RideProfile`, `RideMeasurements`, `AdminAttractionDetail`, `ParkSeasonKind`, `ParkSeasonStatus`, `ParkSeason`, `CurationResponse`, `AdminSessionInfo`, `AdminOverview`
-
-### [`_lib/ui.tsx`](../../app/admin/_lib/ui.tsx)
-
-- `Section` _component_: Dashboard section: icon, uppercase heading, an optional action on the right, content below.
-- `StatCard` _component_: Dashboard tile: an uppercase label, one large tabular figure and an optional line beneath.
-- `KeyVal` _component_: Small label above a bold tabular value, for figures inside a dashboard card.
-- `SeverityBadge` _component_: Pill coloured by severity (low, medium, high, critical); any other value is grey.
-- `CrowdBadge` _component_: Pill coloured by crowd level (`very_low` to `very_high`) for the monitoring dashboards, with underscores shown as spaces. The public site uses `CrowdLevelBadge`.
-- `StatusBadge` _component_: Pill with a status dot: green for statuses like healthy, ok or online, amber for warning, degraded or pending, red for anything else.
-- `LoadingPanel` _component_: Dashboard name for `LoadingState`. The state panels stay aliases rather than a rename across every dashboard call site.
-- `ErrorPanel` _component_: Dashboard name for `ErrorState`, showing the given error message.
-- `EmptyPanel` _component_: Dashboard name for `EmptyState`, with the label as its title.
-- `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
-- `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
-- `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
-- `formatAge` _function_: Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`.
-- `isDisk` _function_: Type guard: true when a host disk entry carries usage figures rather than an `{ error }`.
-- `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
-- `statusDot` _function_: Renders a small round dot, green when `ok` and red otherwise.
 
 ### [`_lib/upload-transport.ts`](../../app/admin/_lib/upload-transport.ts)
 
@@ -169,14 +158,21 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `Panel` _component_: A card surface. `bg-card` on `bg-background` differs by two percent in lightness, so a drop shadow, an inset ring and a top highlight are what make it read as a card.
 - `PanelHeader` _component_: Header row of a `Panel`: optional icon, a title with a muted hint, an action on the right.
 - `PanelBody` _component_: Padded content area of a `Panel`.
+- `Tile` _component_: A bordered box inside a panel or a dialog: one machine, one model, one group of controls, under an optional title row and hint.
+- `StatTile` _component_: A `Tile` holding one large tabular figure under its label, with an optional line beneath.
 - `Toolbar` _component_: A horizontal strip of controls above a list: search, filters, view switch.
 - `Kbd` _component_: A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are discoverable by looking rather than by reading documentation.
 - `Meta` _component_: Label above a value, the densest way to show a fact.
-- `Chip` _component_: Small rounded label in one of five tones: muted, primary, success, warning, danger.
+- `Chip` _component_: Small rounded label in one of the five `ChipTone`s, the admin's only pill.
+- `StatusDot` _component_: A small round dot, green when `ok` and red otherwise.
 - `LoadingState` _component_: Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading.
 - `ErrorState` _component_: Red error box showing a message, with an `Erneut` retry button when `onRetry` is given.
 - `EmptyState` _component_: Centred empty-panel message: optional icon, title, description and an action below.
 - `SkeletonRows` _component_: Skeleton rows shaped like the rows they replace, so a loading list does not push the toolbar and the pagination around.
+- `severityTone` _function_: The chip tone for an alert or anomaly severity (`low` to `critical`); muted for anything else.
+- `statusTone` _function_: The chip tone for a service status word: success for healthy, ok, online and the like, warning for degraded, pending or a warning, danger for anything else.
+- `crowdChipClass` _function_: A `Chip` class in the public site's crowd palette, so `moderate` reads as the green "Normal" it is there; undefined (a muted chip) for a level without a colour.
+- Types: `ChipTone`
 
 ### [`_ui/retirement.ts`](../../app/admin/_ui/retirement.ts)
 
@@ -569,8 +565,6 @@ Route `/admin` (layout).
 
 ### [`media/_components/panel-ui.tsx`](../../app/admin/media/_components/panel-ui.tsx)
 
-- `Section` _component_: A titled group of related controls — the editor's unit of "one question".
-- `Field` _component_: The admin's shared labelled field, under the name the media editor uses.
 - `Chip` _component_: A toggle that looks like a chip, unlike the read-only label `Chip` in `_ui/primitives`.
 - `Notice` _component_: An info or warning box in the media editor.
 

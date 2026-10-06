@@ -416,6 +416,7 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 
 - `detectDefaultUnit` _function_: The default unit from the region of the browser's _primary_ language (`en-US` → `US`). The rest of `navigator.languages` is ignored, since it produces false positives. `'C'` on the server.
 - `formatTemp` _function_: Format a Celsius value as a rounded "15°" / "59°" string in the chosen unit.
+- `formatTempWithUnit` _function_: Format a Celsius value as a rounded "15 °C" / "59 °F" string, for text that names the scale.
 - `convertWindSpeed` _function_: Convert km/h into the unit-system pairing (km/h for metric, mph for imperial).
 - `formatWindSpeed` _function_: Format a km/h value as "20 km/h" or "12 mph" depending on the chosen unit.
 - `formatPrecip` _function_: Format a mm value as „0.8 mm" or „0.03 in"; two decimals, since most values are sub-inch.

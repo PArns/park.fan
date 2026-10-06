@@ -12,9 +12,10 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { FIELD_CLASS } from '../../_ui/controls';
+import { FIELD_CLASS, Field } from '../../_ui/controls';
+import { Tile } from '../../_ui/primitives';
 import type { AnalyzedFile, Assignment, Vocabulary } from '../_lib/types';
-import { Chip, Field, Section } from './panel-ui';
+import { Chip } from './panel-ui';
 import { RideCardToggle } from './ride-card-toggle';
 
 /**
@@ -177,7 +178,7 @@ export function UploadWalkthrough({
         <div className="min-h-0 space-y-3 lg:overflow-y-auto lg:pr-1">
           {/* Buttons, not a slug field: the nearest ride is right only about half the time, but
               the right one is nearly always in the shortlist. */}
-          <Section
+          <Tile
             title="Which ride?"
             hint={
               file.suggestion.rides.length
@@ -245,9 +246,9 @@ export function UploadWalkthrough({
                 </div>
               </Field>
             </div>
-          </Section>
+          </Tile>
 
-          <Section
+          <Tile
             title="Roles"
             hint="A unique role can only belong to one image; saving takes it from the one that had it."
           >
@@ -282,9 +283,9 @@ export function UploadWalkthrough({
                   </Chip>
                 ))}
             </div>
-          </Section>
+          </Tile>
 
-          <Section title="Tags">
+          <Tile title="Tags">
             {vocabulary.facets.map((facet) => (
               <div key={facet.id}>
                 <span className="text-muted-foreground mb-1.5 block text-[11px] font-medium tracking-wide uppercase">
@@ -316,9 +317,9 @@ export function UploadWalkthrough({
                 </div>
               </div>
             ))}
-          </Section>
+          </Tile>
 
-          <Section title="Filing & words">
+          <Tile title="Filing & words">
             <div className="grid grid-cols-2 gap-2">
               <Field label="Collection">
                 <input
@@ -353,7 +354,7 @@ export function UploadWalkthrough({
                 onChange={(e) => onChange({ caption: e.target.value })}
               />
             </Field>
-          </Section>
+          </Tile>
         </div>
       </div>
 
