@@ -27,7 +27,7 @@ const SHARED_WINDOW = 'public, s-maxage=60, stale-while-revalidate=120';
 /** Every other answer says so itself, or the rule in next.config.ts would share it. */
 const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
 ) {
   const { path } = await params;
@@ -55,9 +55,9 @@ export async function GET(
   }
   const upstream = [...ANALYTICS_PATHS].find((candidate) => candidate === requested)!;
 
-  const incoming = new URL(request.url);
+  // No query string goes upstream: none of the three takes one, and each distinct query would
+  // miss the shared window and spend a keyed backend call.
   const apiUrl = new URL(`${API_BASE}/v1/analytics/${upstream}`);
-  incoming.searchParams.forEach((value, key) => apiUrl.searchParams.set(key, value));
 
   try {
     const response = await fetch(apiUrl.toString(), {
