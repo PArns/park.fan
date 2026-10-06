@@ -3,20 +3,10 @@ import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 /**
- * The thin relay the trip and push routes share.
- *
- * Thin on purpose: the API owns every rule about what's valid here (that a
- * subscription exists, that a threshold is in range, that a topic is known).
- * Duplicating any of it would put the same check in two repositories, and
- * the copy that drifts is the one nothing tests. The status is passed
- * through rather than flattened for the same reason: 503, 404, 400 and 429
- * mean different things to whatever called this, and collapsing them into
- * "failed" is how a visitor ends up retrying something that will never work.
- *
- * The visitor's own address goes along because the API rate-limits these
- * writes per address. Without it every request from this site keys on one
- * function's IP: one bucket for the whole world, which is either no limit at
- * all or a limit that locks everybody out together.
+ * The thin relay the trip and push routes share. Thin on purpose: the API owns every validity rule,
+ * and a copy here would drift untested. The status passes through unflattened, since 503, 404, 400
+ * and 429 mean different things to the caller. The visitor's address goes along because the API
+ * rate-limits these writes per address; without it the whole site shares one bucket.
  */
 
 const JSON_NO_STORE = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
@@ -30,7 +20,7 @@ interface RelayInit {
   json?: boolean;
   /** The error a 502 carries when the backend cannot be reached. */
   unreachable: string;
-  /** Answers an empty upstream body; when absent or returning nothing, it is passed on with the JSON headers. */
+  /** Answers an empty upstream body; without it (or when it returns nothing) the body passes on. */
   answerEmpty?: (status: number) => NextResponse | undefined;
 }
 
@@ -61,7 +51,7 @@ export async function relayToApi(
   }
 }
 
-/** Relays a write with the request's JSON body forwarded as-is, or answers 400 when it is not JSON. */
+/** Relays a write with the request's JSON body forwarded as-is, or answers 400 when not JSON. */
 export async function relayJsonWrite(
   request: NextRequest,
   apiPath: string,
@@ -78,7 +68,7 @@ export async function relayJsonWrite(
 
 const PUSH_UNREACHABLE = 'Push service unreachable';
 
-/** Relays `GET <apiPath>?endpoint=…`, the "list this browser's own rows" read of `ride-alerts` and `show-follows`. */
+/** Relays `GET <apiPath>?endpoint=…`, the „this browser's own rows" read of alerts and follows. */
 export async function relayPushGet(request: NextRequest, apiPath: string): Promise<NextResponse> {
   const endpoint = request.nextUrl.searchParams.get('endpoint');
   if (!endpoint) {

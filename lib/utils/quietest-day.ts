@@ -11,16 +11,10 @@ function addDays(date: string, n: number): string {
 }
 
 /**
- * The open day with the lowest forecast crowd level in the window `today … today + 13`.
- *
- * `today` is the park's own date (`parkDayOf`), because `CalendarDay.date` is too, and both
- * compare as strings. The basis is `predictedCrowdLevel`: it is the forward prediction on every
- * day, where `crowdLevel` is a measurement on a past one. A day counts only when the park opens
- * (`status === 'OPERATING'`) and the level is one of the six that rate a day — a closed day, an
- * `unknown` and a missing prediction are not quiet, they are unrated. On a tie the earlier day
- * wins, which is the one the visitor can still plan for.
- *
- * `null` when no day in the window qualifies; the caller draws no line then.
+ * The open day with the lowest forecast crowd level in the window `today … today + 13`, or `null`.
+ * `today` is the park's own date, like `CalendarDay.date`. Rated on `predictedCrowdLevel`, the
+ * forward prediction; a closed, `unknown` or unpredicted day is unrated, not quiet. A tie goes to
+ * the earlier day.
  */
 export function quietestOpenDay(
   days: readonly CalendarDay[],

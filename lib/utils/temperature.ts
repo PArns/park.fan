@@ -1,31 +1,18 @@
 /**
- * Unit-system switch for the whole site. We surface this as a "C / F" toggle
- * to the user, but the choice also drives every secondary unit:
- *   - C → metric (km/h, mm, m, cm)
- *   - F → imperial (mph, in, ft)
- * so a user that picks Fahrenheit also gets the rest of the US-style units
- * they'd expect alongside it — including a coaster's speed and length and the
- * height you must be to ride it. One toggle, one system; a page that mixed
- * "59°" with "140 cm" would be nobody's convention.
+ * The site's unit system, shown as a „C / F" toggle: C is metric (km/h, mm, m, cm), F imperial
+ * (mph, in, ft), including ride speed, length and rider height. One toggle, one system.
  */
 export type TemperatureUnit = 'C' | 'F';
 
 /**
- * ISO 3166-1 alpha-2 region codes whose country uses Fahrenheit for
- * everyday weather. Anything else (incl. locales with no region tag
- * like plain "en" or "de") falls back to Celsius.
+ * ISO 3166-1 alpha-2 regions that use Fahrenheit for everyday weather. Anything else, including a
+ * locale with no region („en", „de"), gets Celsius.
  */
 const FAHRENHEIT_REGIONS = new Set(['US', 'MM', 'LR', 'BS', 'KY', 'PW']);
 
 /**
- * Pick a sensible default temperature unit based on the region tag of the
- * user's *primary* browser language. We parse the region from the locale
- * (`en-US` → `US`) and only flip to Fahrenheit when that region is in the
- * known-Fahrenheit list. A locale without a region (`en`, `de`) and the
- * rest of `navigator.languages` are ignored on purpose — using the full
- * preference list produces too many false positives.
- *
- * SSR-safe: returns 'C' when navigator is unavailable.
+ * The default unit from the region of the browser's *primary* language (`en-US` → `US`). The rest
+ * of `navigator.languages` is ignored, since it produces false positives. `'C'` on the server.
  */
 export function detectDefaultUnit(): TemperatureUnit {
   if (typeof navigator === 'undefined') return 'C';
@@ -44,8 +31,6 @@ export function detectDefaultUnit(): TemperatureUnit {
   return region && FAHRENHEIT_REGIONS.has(region.toUpperCase()) ? 'F' : 'C';
 }
 
-// ---- Temperature ----------------------------------------------------------
-
 /** Convert a Celsius value into the user's chosen unit. */
 function convertTemp(celsius: number, unit: TemperatureUnit): number {
   return unit === 'F' ? (celsius * 9) / 5 + 32 : celsius;
@@ -55,8 +40,6 @@ function convertTemp(celsius: number, unit: TemperatureUnit): number {
 export function formatTemp(celsius: number, unit: TemperatureUnit): string {
   return `${Math.round(convertTemp(celsius, unit))}°`;
 }
-
-// ---- Wind speed -----------------------------------------------------------
 
 /** Convert km/h into the unit-system pairing (km/h for metric, mph for imperial). */
 export function convertWindSpeed(kmh: number, unit: TemperatureUnit): number {
@@ -69,17 +52,12 @@ export function formatWindSpeed(kmh: number, unit: TemperatureUnit): string {
   return unit === 'F' ? `${value} mph` : `${value} km/h`;
 }
 
-// ---- Precipitation --------------------------------------------------------
-
 /** Convert mm into mm (metric) or inches (imperial). */
 function convertPrecip(mm: number, unit: TemperatureUnit): number {
   return unit === 'F' ? mm * 0.0393701 : mm;
 }
 
-/**
- * Format a mm value as "0.8mm" (metric) or "0.03in" (imperial).
- * Imperial uses 2 decimals since most live weather values are sub-inch.
- */
+/** Format a mm value as „0.8 mm" or „0.03 in"; two decimals, since most values are sub-inch. */
 export function formatPrecip(mm: number, unit: TemperatureUnit): string {
   if (unit === 'F') {
     return `${convertPrecip(mm, unit).toFixed(2)} in`;
@@ -87,17 +65,12 @@ export function formatPrecip(mm: number, unit: TemperatureUnit): string {
   return `${mm} mm`;
 }
 
-// ---- Ride measurements ----------------------------------------------------
-
 const M_TO_FT = 3.28084;
 const CM_TO_IN = 0.393701;
 
 /**
- * Top speed from a km/h value: "80 km/h" / "50 mph".
- *
- * Same conversion as {@link formatWindSpeed} but its own function on purpose —
- * a ride's top speed and a gust are not the same quantity, and one of them
- * changing precision later should not silently change the other.
+ * Top speed from a km/h value: „80 km/h" or „50 mph". Separate from {@link formatWindSpeed} so a
+ * precision change to one does not silently change the other.
  */
 export function formatSpeed(kmh: number, unit: TemperatureUnit): string {
   const value = Math.round(unit === 'F' ? kmh * 0.621371 : kmh);
@@ -105,16 +78,12 @@ export function formatSpeed(kmh: number, unit: TemperatureUnit): string {
 }
 
 /**
- * Track length or height from a metres value: "768 m" / "2520 ft".
- *
- * Deliberately NOT the km/mi switch `Distance` uses: that one is for how far
- * away a park is, where kilometres are the readable unit. A coaster is
- * measured in metres and feet however long it is.
+ * Track length or height from metres: „768 m" or „2520 ft". Not the km/mi switch `Distance` uses
+ * for how far away a park is: a coaster is measured in metres and feet however long it is.
  */
 export function formatTrackLength(meters: number, unit: TemperatureUnit): string {
   const value = unit === 'F' ? meters * M_TO_FT : meters;
-  // One decimal only when the number is small enough for it to mean anything:
-  // "26.2 m" is a real figure, "2519.7 ft" is false precision.
+  // One decimal only below 100: „26.2 m" is a figure, „2519.7 ft" false precision.
   const rounded = value >= 100 ? Math.round(value) : Math.round(value * 10) / 10;
   return unit === 'F' ? `${rounded} ft` : `${rounded} m`;
 }
@@ -124,10 +93,7 @@ export function formatRiderHeight(cm: number, unit: TemperatureUnit): string {
   return unit === 'F' ? `${Math.round(cm * CM_TO_IN)} in` : `${cm} cm`;
 }
 
-/**
- * Ride duration from seconds: "2:20". Unit-independent — no country rides a
- * coaster in anything but minutes and seconds.
- */
+/** Ride duration from seconds: „2:20", the same in every unit system. */
 export function formatDuration(seconds: number): string {
   const minutes = Math.floor(seconds / 60);
   const rest = seconds % 60;

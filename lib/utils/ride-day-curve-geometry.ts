@@ -1,59 +1,39 @@
 /**
- * Geometry for the ride day curve (`components/parks/ride-day-curve.tsx`) and
- * for the quiet windows the card marks on it.
+ * Geometry for the ride day curve (`components/parks/ride-day-curve.tsx`) and the quiet windows
+ * the card marks on it. Pure so `pnpm test:ride-day-curve` can run it: a chart's maths can be
+ * wrong without looking wrong.
  *
- * Pure and out of the component for the reason the weather day chart's axis is:
- * a chart's maths is the part that can be wrong without looking wrong, and the
- * only way to find that out is to run it. Two real bugs shipped in the first
- * draft of this chart and both are now pinned below — an axis whose labels were
- * spaced evenly while the plot placed hours linearly, and a band that could
- * close its polygon across a gap.
- *
- * Everything here works in PARK-LOCAL HOURS, the same units `/stats/hourly`
- * answers in, and never in an index: `hours` may start at 11 and it may skip.
- *
- * Run: pnpm test:ride-day-curve
+ * Everything works in PARK-LOCAL HOURS, the units `/stats/hourly` answers in, never in an index:
+ * `hours` may start at 11 and it may skip.
  */
 
+/** viewBox width of the plot. */
 export const VIEW_W = 720;
 /**
- * 720×200 rather than 720×260.
- *
- * The y axis starts at zero, which is right for a magnitude, but it means a ride
- * whose day runs 28–46 minutes on a 0–50 axis only ever uses the top half of the
- * plot. At the taller ratio the other half was a large empty rectangle inside
- * the card. 3.6 : 1 is the mock's own proportion and gives the curve the room it
- * deserves without truncating the scale to fake a steeper day.
+ * viewBox height. The y axis starts at zero, so a ride running 28–46 minutes uses only the top
+ * half of the plot; a taller box left a large empty rectangle in the card.
  */
 export const VIEW_H = 200;
+/** Left inner padding of the plot, in viewBox units. */
 export const PAD_L = 8;
+/** Right inner padding. */
 export const PAD_R = 8;
+/** Top inner padding. */
 export const PAD_T = 12;
+/** Bottom inner padding. */
 export const PAD_B = 8;
 
 /**
- * A quiet hour is one sitting in the lowest part of the ride's OWN daily range:
- * at or under `min + QUIET_BAND × (max − min)`.
- *
- * Relative to the ride, never an absolute number of minutes — 25 minutes is a
- * quiet hour on a headliner and the busiest hour of the day on a carousel.
- *
- * Against the RANGE rather than against the peak, which is the correction that
- * matters on real data. A share-of-peak threshold assumes the day drops towards
- * zero, and most rides' days do not: Voltron Nevera runs 28–46 minutes, so 55 %
- * of its 46-minute peak is 25 and NOTHING in its day qualified — a chapter
- * headed "two perfect windows" drew a curve with neither marked. Measuring from
- * the day's own floor finds the morning and the evening on a flat day and a
- * peaky one alike.
+ * A quiet hour sits at or under `min + QUIET_BAND × (max − min)` of the ride's OWN day.
+ * Relative to the ride, because 25 minutes is quiet on a headliner and peak on a carousel; and
+ * against the range rather than the peak, because most days never drop toward zero and a
+ * share-of-peak threshold then marks nothing.
  */
 export const QUIET_BAND = 0.35;
 
 /**
- * How much a day has to move before "quiet" means anything.
- *
- * A ride that sits at 30 minutes from open to close has no quiet window — it has
- * a flat day — and marking one would point at an hour no better than its
- * neighbours. Expressed against the peak so it scales with the ride.
+ * How much a day has to move, as a share of its peak, before „quiet" means anything. A ride at 30
+ * minutes all day has a flat day, not a quiet window.
  */
 export const MIN_RANGE_SHARE = 0.15;
 
@@ -66,17 +46,9 @@ export function niceMax(value: number): number {
 }
 
 /**
- * Horizontal guide values for the plot, top first.
- *
- * Two lines (the top and the half) is what this chart shipped with, and reading
- * a value off it meant estimating against a 50-minute gap. Four or five is what
- * a reader can actually count against.
- *
- * The step has to stay a round number, though, or the guides read worse than
- * none: a 50-minute axis split four ways is 12.5, 25, 37.5, 50. So the divisor
- * is chosen rather than fixed — the first of 5, 4, 3, 2 whose step lands on a
- * multiple of five. {@link niceMax} only ever returns 20, 50, 100 or a multiple
- * of 50, so one of them always does: 20 → 5s, 50 → 10s, 100 → 20s, 150 → 30s.
+ * Horizontal guide values for the plot, top first. The divisor is the first of 5, 4, 3, 2 whose
+ * step is a multiple of five, because 12.5 / 25 / 37.5 reads worse than no guides;
+ * {@link niceMax}'s values always allow one.
  */
 export function gridValues(yMax: number): number[] {
   const divisor = [5, 4, 3, 2].find((n) => {
@@ -89,11 +61,8 @@ export function gridValues(yMax: number): number[] {
 }
 
 /**
- * The plot's scales.
- *
- * `yMax` is clamped to at least 1 so a ride whose every reading is zero (a
- * walk-on all day, which the catalogue does contain) scales instead of dividing
- * by zero and writing `NaN` into every path.
+ * The plot's scales. `yMax` is clamped to at least 1 so a ride that is a walk-on all day does not
+ * divide by zero and write `NaN` into every path.
  */
 export function makeScales(hours: number[], yMax: number) {
   const firstHour = hours[0];
@@ -109,12 +78,8 @@ export function makeScales(hours: number[], yMax: number) {
 }
 
 /**
- * Which hours get a tick.
- *
- * Always the two ends, plus every third hour between them. The ends are added
- * explicitly and excluded from the middle pass, so a day whose length is a
- * multiple of three does not tick its last hour twice — a duplicate here is a
- * duplicate React key and two labels stacked on one pixel column.
+ * Which hours get a tick: the two ends, plus every third hour between them. The ends are excluded
+ * from the middle pass so the last hour cannot tick twice (a duplicate React key).
  */
 export function axisHours(hours: number[]): number[] {
   if (hours.length < 2) return hours.slice();
@@ -124,16 +89,9 @@ export function axisHours(hours: number[]): number[] {
 }
 
 /**
- * Monotone cubic interpolation (Fritsch–Carlson) through a set of points.
- *
- * Returns one tangent per point. The whole reason for this variant rather than a
- * plain Catmull-Rom is OVERSHOOT: a natural spline through 29, 44, 46 bulges
- * above 46 between the last two, and this chart's y axis is minutes of queue —
- * a curve that rises to 49 where nothing ever measured more than 46 is drawing a
- * wait time that did not happen. Fritsch–Carlson clamps the tangents so the
- * interpolant stays monotone on every segment the data is monotone on, which
- * means the curve can round a corner but can never leave the interval its two
- * neighbours define.
+ * Monotone cubic interpolation (Fritsch–Carlson): one tangent per point. Used instead of
+ * Catmull-Rom because a natural spline overshoots, and a curve rising to 49 where nothing measured
+ * over 46 draws a wait that did not happen.
  */
 function monotoneTangents(xs: number[], ys: number[]): number[] {
   const n = xs.length;
@@ -149,8 +107,7 @@ function monotoneTangents(xs: number[], ys: number[]): number[] {
   m[0] = slopes[0];
   m[n - 1] = slopes[n - 2];
   for (let i = 1; i < n - 1; i++) {
-    // A local extremum gets a flat tangent — that is what keeps the curve from
-    // sailing past a peak or a trough.
+    // A local extremum gets a flat tangent, which keeps the curve from sailing past it.
     m[i] = slopes[i - 1] * slopes[i] <= 0 ? 0 : (slopes[i - 1] + slopes[i]) / 2;
   }
 
@@ -172,13 +129,8 @@ function monotoneTangents(xs: number[], ys: number[]): number[] {
 }
 
 /**
- * One contiguous run of points as a smooth cubic path segment.
- *
- * Emitted as `C` curves rather than `L` lines because a queue does not turn
- * corners on the hour: the readings are hourly samples of something continuous,
- * and a polyline draws the sampling grid as if it were the shape. The
- * interpolation is monotone (see {@link monotoneTangents}), so rounding the
- * corners never invents a value outside the measured range.
+ * One contiguous run of points as a smooth cubic path segment. A queue does not turn corners on
+ * the hour, and the monotone interpolation never invents a value outside the measured range.
  */
 export function smoothSegment(points: Array<{ x: number; y: number }>): string {
   if (points.length === 0) return '';
@@ -219,11 +171,8 @@ export function runsOf(
 }
 
 /**
- * A positional series as an SVG path, broken at every gap.
- *
- * `null` is "the ride reported nothing in that hour", which is not a zero and is
- * not a value to interpolate across: a straight line over the hole is an
- * invented measurement.
+ * A positional series as an SVG path, broken at every gap. `null` means the ride reported nothing
+ * that hour; a line across the hole would be an invented measurement.
  */
 export function linePath(
   hours: number[],
@@ -238,12 +187,8 @@ export function linePath(
 }
 
 /**
- * The filled spread band, one closed subpath per contiguous run.
- *
- * A run of fewer than two points is dropped rather than drawn: a one-hour
- * island has no area, and emitting it produced a degenerate `M…L…Z` that some
- * renderers show as a hairline spike. Flushing per run is what stops the
- * polygon closing straight across a gap and claiming a spread nothing measured.
+ * The filled spread band, one closed subpath per contiguous run, so the polygon never closes
+ * across a gap. A run under two points has no area and is dropped.
  */
 export function bandPath(
   hours: number[],
@@ -252,8 +197,7 @@ export function bandPath(
   x: (h: number) => number,
   y: (v: number) => number
 ): string {
-  // Both edges are smoothed with the same interpolation as the median line, or
-  // the fill would part company with the curve it is supposed to wrap.
+  // Both edges use the median line's interpolation, or the fill would part from the curve.
   const paired: Array<number | null> = hours.map((_, i) =>
     upper[i] == null || lower[i] == null ? null : 1
   );
@@ -265,17 +209,17 @@ export function bandPath(
     const bottomPts = [...idx].reverse().map((i) => ({ x: x(hours[i]), y: y(lower[i] as number) }));
     const bottom = smoothSegment(bottomPts);
     if (!top || !bottom) continue;
-    // The bottom edge is appended as a curve of its own, so its leading `M`
-    // becomes an `L`: one closed subpath, not two open ones.
+    // The bottom edge's leading `M` becomes an `L`: one closed subpath, not two open ones.
     d += `${top}L${bottom.slice(1)}Z `;
   }
   return d.trim();
 }
 
+/** A quiet run at the start or end of the ride's day. */
 export interface QuietWindow {
   /** Park-local hour the window opens at. */
   fromHour: number;
-  /** Park-local hour it closes at — the last quiet hour plus one, clamped to the day. */
+  /** The last quiet hour plus one, clamped to the day. */
   toHour: number;
   /** Mean of the median curve across the window, for the caller to round and label. */
   averageWait: number;
@@ -283,16 +227,9 @@ export interface QuietWindow {
 }
 
 /**
- * The quiet run the day opens with and the quiet run it ends with.
- *
- * Derived from the median curve rather than from the API's `ropeDrop`, because
- * the curve is what the reader is looking at: a window that came from a
- * different computation would sooner or later contradict the line it sits on.
- *
- * Either can be absent, and that is a real answer — a ride busy from opening has
- * no morning window, and a day too flat to have a quiet part gets neither. The
- * two can never overlap: the trailing run has to start strictly after the
- * leading one ends.
+ * The quiet run the day opens with and the one it ends with, derived from the median curve rather
+ * than the API's `ropeDrop` so a window cannot contradict the line it sits on. Either can be
+ * absent; the two never overlap.
  */
 export function quietWindows(hours: number[], p50: Array<number | null>): QuietWindow[] {
   const known = p50
@@ -304,7 +241,6 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
   const peak = Math.max(...values);
   const floor = Math.min(...values);
   if (peak <= 0) return [];
-  // A day that barely moves has no window worth pointing at.
   if ((peak - floor) / peak < MIN_RANGE_SHARE) return [];
   const threshold = floor + QUIET_BAND * (peak - floor);
   const quiet = (v: number) => v <= threshold;
@@ -316,15 +252,9 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
 
   let lead = 0;
   while (lead < known.length && quiet(known[lead].value)) lead++;
-  // ONE hour is enough at the edges, and that is the point: rope drop is often a
-  // single hour. Voltron Nevera dips to 29 minutes at 09:00 and is at 44 by
-  // 10:00 — requiring two consecutive quiet hours threw away the very window the
-  // chapter is about. Noise is not the risk here, because a day too flat to have
-  // a quiet part was already rejected above, and an interior dip cannot reach
-  // this branch: only a run touching the first or last measured hour does.
-  //
-  // `lead < known.length` still holds the other end: a ride quiet at EVERY hour
-  // has no distinguishing window, and marking the whole plot says nothing.
+  // One hour is enough at the edges: rope drop is often a single hour. A flat day was rejected
+  // above, and only a run touching the first or last hour reaches this. A ride quiet at every hour
+  // has no distinguishing window.
   if (lead >= 1 && lead < known.length) {
     const slice = known.slice(0, lead);
     windows.push({
@@ -343,12 +273,8 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
     const from = slice[0].hour;
     windows.push({
       fromHour: from,
-      // A window is at least one hour wide. The `lastHour` clamp keeps a window
-      // from claiming time the plot does not draw, but for the CLOSING window
-      // the run ends on the last hour by definition, so the clamp collapsed it:
-      // Big Thunder Mountain's evening window rendered as "22:00–22:00". The
-      // hour bucket labelled 22:00 covers 22:00 to 23:00 like every other one,
-      // so a single-hour window ends an hour after it starts.
+      // At least one hour wide: the closing run ends on the last hour, so the `lastHour` clamp
+      // alone would collapse it to „22:00–22:00".
       toHour: Math.max(from + 1, Math.min(lastHour, slice[slice.length - 1].hour + 1)),
       averageWait: mean(slice),
       which: 'closing',

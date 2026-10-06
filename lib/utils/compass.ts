@@ -1,8 +1,7 @@
 /**
  * The arithmetic behind the in-park compass (`ParkCompass`): which way a ride lies, which way the
- * phone points, and where on the ring a marker may sit without covering its neighbour.
- *
- * Pure functions, no DOM, so `scripts/test-compass.mjs` can hold them to the numbers.
+ * phone points, and where on the ring a marker may sit. Pure and DOM-free so
+ * `scripts/test-compass.mjs` can hold them to the numbers. See docs/features/park-compass.md.
  */
 
 const toRad = (deg: number) => (deg * Math.PI) / 180;
@@ -14,12 +13,9 @@ export function normalizeDegrees(deg: number): number {
 }
 
 /**
- * The initial bearing from the first point to the second, in degrees clockwise from true north
- * (0 north, 90 east), in [0, 360).
- *
- * The great-circle formula. Over the few hundred metres inside a park it is indistinguishable from
- * a straight line on the map, and it stays right at the edges a flat-earth `atan2(dLng, dLat)`
- * gets wrong: a degree of longitude is 71 km at Phantasialand and 111 km on the equator.
+ * The initial great-circle bearing from the first point to the second, in degrees clockwise from
+ * true north, in [0, 360). A flat `atan2(dLng, dLat)` is wrong away from the equator, where a
+ * degree of longitude is much shorter than a degree of latitude.
  */
 export function bearingBetween(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const φ1 = toRad(lat1);
@@ -57,16 +53,10 @@ const STEEP_BETA = 65;
  * Which way the top of the phone points, in degrees clockwise from north, or `null` where the
  * event cannot say.
  *
- * Two sources, because the two engines never agreed:
- *
- * - **Safari** sends `webkitCompassHeading`, already clockwise from magnetic north. Its `alpha` is
- *   relative to wherever the phone was pointing when the page loaded, and useless for this.
- * - **Chrome and Firefox** send `alpha` on `deviceorientationabsolute`, counter-clockwise from
- *   north, so the heading is `360 - alpha`. A plain `deviceorientation` counts only when it says
- *   `absolute`; otherwise its zero is arbitrary and a ring drawn from it would point anywhere.
- *
- * `screenAngle` is the screen's rotation (`screen.orientation.angle`): turned to landscape, the
- * top of the SCREEN is 90° away from the top of the phone, and the reader holds the screen.
+ * Safari sends `webkitCompassHeading` (clockwise from magnetic north); its `alpha` is relative to
+ * the load-time pose and useless here. Chrome and Firefox send `alpha` counter-clockwise from
+ * north, so the heading is `360 - alpha`, and only an `absolute` event has a meaningful zero.
+ * `screenAngle` corrects for landscape, where the top of the screen is 90° from the phone's top.
  */
 export function headingFromOrientation(event: OrientationReading, screenAngle = 0): number | null {
   if (
@@ -78,11 +68,9 @@ export function headingFromOrientation(event: OrientationReading, screenAngle = 
   if (event.absolute && typeof event.alpha === 'number' && Number.isFinite(event.alpha)) {
     const beta = event.beta ?? 0;
     const gamma = event.gamma ?? 0;
-    // Held up towards upright, the top edge points at the sky and its heading stops meaning
-    // anything; what the reader faces is where the back of the phone points (the W3C spec's
-    // compass-heading formula). Below the threshold the two agree for a phone held level
-    // side to side, so the hand-over does not jump. Portrait only: turned to landscape, the axes
-    // the tilt is measured on are not the ones this reads.
+    // Held near upright, the top edge points at the sky; what the reader faces is where the back of
+    // the phone points (the W3C compass-heading formula). The two agree below the threshold, so
+    // the hand-over does not jump. Portrait only, since landscape swaps the tilt axes.
     if (screenAngle === 0 && Math.abs(beta) > STEEP_BETA) {
       const a = toRad(event.alpha);
       const b = toRad(beta);
@@ -97,9 +85,8 @@ export function headingFromOrientation(event: OrientationReading, screenAngle = 
 }
 
 /**
- * Whether the magnetometer says itself that it is off. Safari reports its error in degrees and a
- * negative number when it is uncalibrated; next to the steel of a coaster that is common, and the
- * reader should be told to wave the phone in a figure eight rather than trust the arrow. Chrome
+ * Whether the magnetometer reports itself as off: Safari gives a negative or large error near the
+ * steel of a coaster, and the reader should recalibrate rather than trust the arrow. Chrome
  * reports nothing, so `false` there.
  */
 export function compassUnreliable(event: OrientationReading): boolean {
@@ -108,11 +95,8 @@ export function compassUnreliable(event: OrientationReading): boolean {
 }
 
 /**
- * One step of an exponential filter over a heading, taking the short way round.
- *
- * A magnetometer jitters by a few degrees at rest, and a ring that follows every sample shivers.
- * Averaging the raw numbers breaks at north: 359 and 1 average to 180, the ring spins half a turn.
- * So the step is taken along `angleDelta`, and 359 → 1 is two degrees, not 358.
+ * One step of an exponential filter over a heading, taking the short way round: averaging raw
+ * numbers turns 359 and 1 into 180 and spins the ring half a turn.
  */
 export function smoothHeading(previous: number | null, next: number, factor = 0.25): number {
   if (previous === null) return normalizeDegrees(next);
@@ -123,8 +107,8 @@ export function smoothHeading(previous: number | null, next: number, factor = 0.
 const RANGE_STEPS = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000, 3000, 5000];
 
 /**
- * The radar's outer ring for a set of distances: the next round number at or above the farthest,
- * so the ring can carry a label a reader takes in at a glance („500 m"), never „402 m".
+ * The radar's outer ring for a set of distances: the next round step at or above the farthest, so
+ * the label reads „500 m", never „402 m".
  */
 export function niceRange(maxDistance: number): number {
   for (const step of RANGE_STEPS) if (maxDistance <= step) return step;
@@ -132,10 +116,9 @@ export function niceRange(maxDistance: number): number {
 }
 
 /**
- * The outer ring for a reader on the move: it grows at once when a ride falls outside it, and
- * shrinks only when the farthest ride is well inside the step below (three quarters of it).
- * Walking with the farthest ride near a step flipped the ring between 300 and 400 m every few
- * fixes, and every flip moved every marker.
+ * The outer ring for a reader on the move: it grows at once, and shrinks only when the farthest
+ * ride is well inside the step below, so walking near a step does not flip the ring (and every
+ * marker) back and forth.
  */
 export function stableRange(previous: number | null, maxDistance: number): number {
   const fresh = niceRange(maxDistance);
@@ -157,18 +140,11 @@ export interface RadarPoint {
  * Where each marker sits inside the bezel: at its true bearing, at a radius that grows with its
  * distance, then nudged apart where two would overlap.
  *
- * Distance is the radius so that two rides in the same direction do not collide at all — which is
- * most rides in a park, standing at its edge. The first version put every marker on the ring
- * itself and spread neighbours round it; on Phantasialand, seven headliners lie east of the
- * simulation point within 35°, and spreading them moved Taron's marker 45° off its arrow.
- *
- * `inner` is where a ride at 0 m would sit (the reader's own dot is inside it), `outer` is the
- * ring `range` metres away. A ride farther than `range` stays on the outer ring. What is left to
- * separate is the rare true pile — Winja's Fear and Winja's Force, 3 m apart — and pairs closer
- * than `minGap` are pushed apart along the line between them, both halves of the way, a few
- * passes over the set. Coincident points are parted along the tangent, so the push has a
- * direction. Displayed positions move by as little as that needs; every arrow and every figure
- * still reads the true bearing and distance.
+ * Distance as radius keeps rides in the same direction (most of a park, seen from its edge) from
+ * colliding at all; spreading them around one ring moved markers far off their arrows. `inner` is
+ * where 0 m sits, `outer` is `range` metres. Pairs closer than `minGap` are pushed apart along the
+ * line between them (coincident ones along the tangent); arrows and figures still read the true
+ * bearing and distance.
  */
 export function placeMarkers(
   items: readonly { bearing: number; distance: number }[],
@@ -214,12 +190,8 @@ const METRES_PER_DEGREE = 111_320;
 
 /**
  * A point moved along with its park: where `point` would be if the park's `from` stood at `to`.
- *
- * The compass demo uses it to lay a real park out around the reader. The offset is carried in
- * METRES, east and north, not in degrees: a degree of longitude is 70 km at Phantasialand and
- * 111 km at the equator, so shifting the raw numbers from Brühl to Lisbon would stretch the park
- * east to west by a quarter. Over a park's few hundred metres the flat approximation is exact to
- * well under a metre.
+ * Used by the compass demo. The offset is carried in metres, not degrees, because a degree of
+ * longitude shrinks with latitude and shifting raw degrees would stretch the park east to west.
  */
 export function relocate(
   point: { lat: number; lng: number },
@@ -238,13 +210,9 @@ export function relocate(
 const TRAILING_FILLERS = new Set(['the', 'of', 'and', 'a', 'der', 'die', 'das', 'de', 'la', 'le']);
 
 /**
- * A ride's name short enough to stand next to its marker on the dial: „Chiapas" for „Chiapas -
- * DIE Wasserbahn", „Autopia" for „Autopia, presented by Avis", „Big Thunder…" for „Big Thunder
- * Mountain". The list under the dial carries the full name.
- *
- * What comes after a dash, a colon or a comma is a subtitle or a sponsor and goes first; a name
- * still longer than `max` is cut at a word and gets an ellipsis, and a filler word left at the
- * end is dropped with it.
+ * A ride's name short enough to stand next to its marker: „Chiapas" for „Chiapas - DIE
+ * Wasserbahn", „Big Thunder…" for „Big Thunder Mountain". A subtitle or sponsor after a dash, colon
+ * or comma goes first; a name still over `max` is cut at a word, dropping a trailing filler word.
  */
 export function dialLabel(name: string, max = 14): string {
   let label = name.replace(/[™®©]/g, '').trim();
@@ -272,17 +240,11 @@ export interface LabelBox {
 /**
  * Where each marker's name goes, or `null` where there is no room.
  *
- * `radius` per marker, where markers differ in size (a closed ride's is a small ring); the shared
- * `markerRadius` otherwise.
- *
- * The way a map labels its pins: every label tries the eight places around its marker, the one
- * facing away from the centre first (rides spread outwards, so outwards is where the room is), and
- * takes the first that covers no marker, no label already placed and not the reader in the middle,
- * and stays inside the face. Where all eight are taken it tries them again `reach` further out;
- * the dial draws a hairline from every marker to its label, so a label a step away is still
- * plainly its marker's. `order` is who chooses first — the ride in focus, then the nearest —
- * and a label that finds no place is left out rather than laid over another: the bar under the
- * dial names any marker that is tapped.
+ * Map-pin labelling: each label tries the eight places around its marker, outward-facing first
+ * (that is where the room is), and takes the first that covers no marker, no placed label and not
+ * the centre, inside the face; then the same eight `reach` further out, joined by a hairline.
+ * `order` decides who chooses first. A label with no place is left out rather than overlapped; the
+ * bar under the dial names a tapped marker. `radius` per marker overrides `markerRadius`.
  */
 export function placeLabels(
   markers: readonly { x: number; y: number; width: number; radius?: number }[],
@@ -326,8 +288,7 @@ export function placeLabels(
     const own = m.radius ?? markerRadius;
     const w = m.width;
     const h = height;
-    // The eight places right beside the marker first, then the same eight one step further out,
-    // which the hairline to the label makes as readable as the near ones.
+    // The eight places beside the marker first, then the same eight one step further out.
     const candidates = [gap, gap + reach].flatMap((g) => {
       const off = own + g;
       const diag = own * 0.72 + g;
@@ -364,16 +325,9 @@ export function placeLabels(
 
 /**
  * The ride the reader is facing: the one whose bearing lies nearest the heading, within `reach`
- * degrees either side; `null` when none is, or none has a bearing.
- *
- * `reach` is the view cone the dial draws (±26°) with a little give. Without it the bar said
- * „vor dir" about whichever ride was least far off, 116° off at Phantasialand facing south-west,
- * with its own arrow pointing backwards.
- *
- * `current` is the ride chosen the last time, and it keeps its place until another is nearer by
- * more than `hold` degrees, or it leaves the cone. Without that, two rides a few degrees apart
- * would trade the bar back and forth on the magnetometer's jitter alone, with the phone held
- * still; the caller also waits a moment before taking a change (see `ParkCompass`).
+ * degrees either side (the dial's view cone with a little give), or `null`.
+ * `current` keeps its place until another is nearer by more than `hold` degrees or it leaves the
+ * cone, so magnetometer jitter alone cannot trade the bar between two close rides.
  */
 export function rideAhead(
   items: readonly { id: string; bearing: number | null }[],
@@ -395,6 +349,7 @@ export function rideAhead(
 
 /** The eight points of the compass, clockwise from north, as message keys. */
 export const COMPASS_POINTS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'] as const;
+/** One of the eight compass points. */
 export type CompassPoint = (typeof COMPASS_POINTS)[number];
 
 /** The point of the compass a bearing falls in, 45° each, north from 337.5° to 22.5°. */
@@ -404,11 +359,8 @@ export function compassPoint(bearing: number): CompassPoint {
 
 /**
  * The rides nearest first, but a row only overtakes the one above it when it is nearer by more
- * than `tolerance` metres. A reader walking with GPS jitter of a few metres otherwise saw the
- * list reorder a quarter of the fixes, rows jumping under the thumb, and a row is a link.
- *
- * Starts from the order the reader last saw (`previous`; rides new to the list come after, by
- * distance) and lets rows bubble up past neighbours they are clearly nearer than.
+ * than `tolerance` metres, so GPS jitter does not reorder rows (links) under the thumb. Starts from
+ * the order last shown (`previous`); rides new to the list follow by distance.
  */
 export function stableOrder<T extends { id: string; distance: number }>(
   items: readonly T[],

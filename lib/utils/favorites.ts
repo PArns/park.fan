@@ -1,8 +1,10 @@
 import { readCookie, writeCookie } from '@/lib/utils/browser-cookie';
 import { getFavorites } from '@/lib/api/favorites';
 
+/** The four kinds of thing a visitor can star. */
 export type FavoriteType = 'park' | 'attraction' | 'show' | 'restaurant';
 
+/** The favorites cookie's contents: starred ids per kind. */
 export interface FavoritesData {
   parks: string[];
   attractions: string[];
@@ -10,9 +12,10 @@ export interface FavoritesData {
   restaurants: string[];
 }
 
+/** Name of the cookie that holds the visitor's favorites. */
 export const FAVORITES_COOKIE_NAME = 'favorites';
-const FAVORITES_COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
-const SYNC_DEBOUNCE_MS = 400; // Batch rapid toggles into a single API call
+const FAVORITES_COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year
+const SYNC_DEBOUNCE_MS = 400; // batches rapid toggles into one API call
 
 let syncTimeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -34,9 +37,7 @@ function scheduleSyncToApi(): void {
   }, SYNC_DEBOUNCE_MS);
 }
 
-/**
- * Securely parse JSON to prevent prototype pollution
- */
+/** Parses JSON, dropping `__proto__`, `constructor` and `prototype` keys (prototype pollution). */
 function secureJsonParse(str: string): unknown {
   return JSON.parse(str, (key, value) => {
     if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
@@ -46,9 +47,7 @@ function secureJsonParse(str: string): unknown {
   });
 }
 
-/**
- * Validates that the input is an array containing only strings
- */
+/** The input if it is an array, with anything that is not a string dropped. */
 function validateStringArray(arr: unknown): string[] {
   if (!Array.isArray(arr)) {
     return [];
@@ -56,12 +55,12 @@ function validateStringArray(arr: unknown): string[] {
   return arr.filter((item): item is string => typeof item === 'string');
 }
 
-// Cache the parsed cookie by its raw value: one `favorites-changed` event makes EVERY mounted
-// FavoriteStar re-check its state, which used to re-parse the whole cookie once per star
-// (O(stars) JSON.parse per toggle — a real INP cost on park pages with 100+ cards). The cached
-// object is treated as immutable — mutators below clone before changing it.
+// The parsed cookie, cached by its raw value: one `favorites-changed` event makes every mounted
+// star re-check, and re-parsing per star costs INP on park pages with many cards. Treated as
+// immutable; the mutators clone before changing it.
 let parseCache: { raw: string; data: FavoritesData } | null = null;
 
+/** How many favorites of each kind, and in total. */
 export interface FavoriteCounts {
   parks: number;
   attractions: number;
@@ -70,6 +69,7 @@ export interface FavoriteCounts {
   total: number;
 }
 
+/** Counts a favorites set per kind and in total. */
 export function countFavorites(f: FavoritesData): FavoriteCounts {
   return {
     parks: f.parks.length,
@@ -82,14 +82,14 @@ export function countFavorites(f: FavoritesData): FavoriteCounts {
 
 /**
  * The cookie's value as `FavoritesData`, or `null` when it is missing or not the JSON object this
- * module writes. Pure, so the server can read the same cookie: `/favorites` takes its counts from
- * the request to render its first HTML at the size of the list (PAR-668).
+ * module writes. Pure, so the server can read the same cookie and render `/favorites` at the size
+ * of the list.
  */
 export function parseFavoritesCookie(raw: string | undefined): FavoritesData | null {
   if (!raw) return null;
   try {
-    // `document.cookie` hands back the URL-encoded form `writeCookie` stored; Next's cookie
-    // store has already decoded it.
+    // `document.cookie` returns the URL-encoded form `writeCookie` stored; Next's cookie store has
+    // already decoded it.
     const text = raw.startsWith('%') ? decodeURIComponent(raw) : raw;
     const parsed = secureJsonParse(text);
     if (typeof parsed !== 'object' || parsed === null) return null;
@@ -105,9 +105,7 @@ export function parseFavoritesCookie(raw: string | undefined): FavoritesData | n
   }
 }
 
-/**
- * Get favorites from cookies
- */
+/** The visitor's favorites from the cookie, empty on the server or when there is none. */
 export function getFavoritesFromCookies(): FavoritesData {
   const defaultData: FavoritesData = { parks: [], attractions: [], shows: [], restaurants: [] };
 
@@ -136,9 +134,7 @@ export function getFavoritesFromCookies(): FavoritesData {
   }
 }
 
-/**
- * Save favorites to cookies
- */
+/** Writes the favorites cookie. */
 function saveFavoritesToCookies(favorites: FavoritesData): void {
   if (typeof window === 'undefined') {
     return;
@@ -155,9 +151,7 @@ function saveFavoritesToCookies(favorites: FavoritesData): void {
   }
 }
 
-/**
- * Dispatch custom event for reactive updates
- */
+/** Announces a change so every subscriber re-reads the cookie. */
 function dispatchFavoritesChanged(): void {
   if (typeof window === 'undefined') {
     return;
@@ -176,10 +170,7 @@ export function subscribeToFavorites(onChange: () => void): () => void {
   return () => window.removeEventListener('favorites-changed', onChange);
 }
 
-/**
- * Add a favorite.
- * Updates cookies and dispatches immediately; API sync runs in background.
- */
+/** Add a favorite: the cookie and listeners update at once, the API sync runs in the background. */
 function addFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
@@ -189,7 +180,7 @@ function addFavorite(type: FavoriteType, id: string): void {
   const key = `${type}s` as keyof FavoritesData;
 
   if (!current[key].includes(id)) {
-    // Clone before changing — `current` may be the shared parse cache.
+    // Clone: `current` may be the shared parse cache.
     const favorites: FavoritesData = { ...current, [key]: [...current[key], id] };
     saveFavoritesToCookies(favorites);
     dispatchFavoritesChanged();
@@ -197,10 +188,7 @@ function addFavorite(type: FavoriteType, id: string): void {
   }
 }
 
-/**
- * Remove a favorite.
- * Updates cookies and dispatches immediately; API sync runs in background.
- */
+/** Remove a favorite: cookie and listeners update at once, the API sync runs in the background. */
 function removeFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
@@ -210,7 +198,7 @@ function removeFavorite(type: FavoriteType, id: string): void {
   const key = `${type}s` as keyof FavoritesData;
 
   if (current[key].includes(id)) {
-    // Clone before changing — `current` may be the shared parse cache.
+    // Clone: `current` may be the shared parse cache.
     const favorites: FavoritesData = { ...current, [key]: current[key].filter((f) => f !== id) };
     saveFavoritesToCookies(favorites);
     dispatchFavoritesChanged();
@@ -218,9 +206,7 @@ function removeFavorite(type: FavoriteType, id: string): void {
   }
 }
 
-/**
- * Toggle a favorite. Returns the new state immediately (optimistic).
- */
+/** Toggle a favorite and return the new state at once (optimistic). */
 export function toggleFavorite(type: FavoriteType, id: string): boolean {
   if (typeof window === 'undefined') {
     return false;
@@ -236,9 +222,7 @@ export function toggleFavorite(type: FavoriteType, id: string): boolean {
   }
 }
 
-/**
- * Check if an item is favorited
- */
+/** Whether an item is a favorite. */
 export function isFavorite(type: FavoriteType, id: string): boolean {
   if (typeof window === 'undefined') {
     return false;
@@ -249,9 +233,7 @@ export function isFavorite(type: FavoriteType, id: string): boolean {
   return favorites[key].includes(id);
 }
 
-/**
- * Get all favorite IDs for a specific type
- */
+/** All favorite ids of one kind. */
 export function getFavoriteIds(type: FavoriteType): string[] {
   const favorites = getFavoritesFromCookies();
   const key = `${type}s` as keyof FavoritesData;

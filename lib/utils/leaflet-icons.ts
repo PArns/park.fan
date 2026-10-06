@@ -2,7 +2,7 @@
 
 import L from 'leaflet';
 
-// Fix for default marker icons in Next.js.
+// Leaflet's default marker icons do not resolve under Next's bundling, so they point at the CDN.
 // Runs once at module scope, before any importer renders a marker.
 delete (L.Icon.Default.prototype as { _getIconUrl?: unknown })._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -11,7 +11,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
 });
 
-// Custom marker icons for different entity types
 const createIcon = (color: string) => {
   return L.divIcon({
     className: 'custom-marker',
@@ -22,13 +21,18 @@ const createIcon = (color: string) => {
   });
 };
 
+/** Map marker for a park. */
 export const parkIcon = createIcon('#3b82f6'); // blue
+/** Map marker for an operating attraction. */
 export const attractionOperatingIcon = createIcon('#10b981'); // green
+/** Map marker for a closed attraction. */
 export const attractionClosedIcon = createIcon('#ef4444'); // red
+/** Map marker for a show. */
 export const showIcon = createIcon('#a855f7'); // purple
+/** Map marker for a restaurant. */
 export const restaurantIcon = createIcon('#f97316'); // orange
 
-// Custom eye-catching user location icon with pulsing animation
+/** The visitor's own position on the map, with a pulsing ring. */
 export const userIcon = L.divIcon({
   className: 'custom-user-marker',
   html: `<div style="position: relative; width: 40px; height: 40px; z-index: 1000;">

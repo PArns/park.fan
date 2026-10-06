@@ -1,19 +1,8 @@
 /**
- * Whether a seasonal entity counts as running right now.
- *
- * The API answers this per attraction and per show (`isCurrentlyInSeason`), and
- * the answer has three values, not two. `false` means we know it cannot open —
- * either its operating months are on file and this is not one of them, or the
- * backend's detector recorded the last day it ran. `null` means "seasonal, and
- * nothing else known", which must NOT be read as closed: it would hide a ride
- * nobody has understood yet. `undefined` is an older payload.
- *
- * So the predicate is `!== false`, in that exact shape, and it lives here
- * because several surfaces ask it. It was written when the park page had two:
- * the card grid hid off-season rides behind its "N außer Saison" toggle while
- * the pre-mount wait-time overview listed them all, right under a counter that
- * leaves them out. The overview is gone (PAR-272) and the grid renders on both
- * sides of hydration, so that particular pair cannot disagree any more.
+ * Whether a seasonal entity counts as running right now. `isCurrentlyInSeason` has three values:
+ * `false` is known closed, `null` is „seasonal, nothing else known" and must not hide the ride,
+ * and `undefined` is an older payload. So the test is `!== false`, in exactly that shape.
+ * See docs/rules/a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md.
  */
 export const isInSeason = (entity: { isCurrentlyInSeason?: boolean | null }): boolean =>
   entity.isCurrentlyInSeason !== false;

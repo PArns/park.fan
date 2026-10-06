@@ -1,10 +1,8 @@
 /**
  * Human-readable names for the holiday-source regions the API returns as ISO codes
- * (e.g. `{ countryCode: 'DE', regionCode: 'RP' }` → "Rheinland-Pfalz"). Used to spell out the
- * NEIGHBOURING-region holidays that drive a park's crowds — the header panel and the crowd calendar.
- *
- * Region names are proper nouns kept in their native/local form across locales (like the German
- * states). Regions not covered here fall back to their COUNTRY name via `Intl.DisplayNames`.
+ * (`{ countryCode: 'DE', regionCode: 'RP' }` → „Rheinland-Pfalz"), for the neighbouring-region
+ * holidays in the park header and the crowd calendar. Region names stay in their native form in
+ * every locale; regions not covered fall back to their country name via `Intl.DisplayNames`.
  */
 
 /** ISO 3166-2:DE region code → German federal state name. */
@@ -29,8 +27,7 @@ export const DE_STATES: Record<string, string> = {
 
 /**
  * `${countryCode}-${shortRegionCode}` → native region name, for the European neighbours whose
- * school holidays realistically drive cross-border crowds. Key uses the SHORT region code the API
- * emits (e.g. NL-LI → key "NL-LI"). Anything not listed falls back to the country name.
+ * school holidays drive cross-border crowds. Keys use the SHORT region code the API emits.
  */
 export const SUBDIVISION_NAMES: Record<string, string> = {
   // Netherlands (provinces)
@@ -92,10 +89,7 @@ export const SUBDIVISION_NAMES: Record<string, string> = {
 
 const regionDisplayNames = new Map<string, Intl.DisplayNames>();
 
-/**
- * Localised country name for a 2-letter ISO code via `Intl.DisplayNames`
- * (falls back to the raw code). Covers every locale the app ships.
- */
+/** Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code. */
 export function getCountryName(countryCode: string, locale: string): string {
   try {
     let names = regionDisplayNames.get(locale);
@@ -121,9 +115,8 @@ export function countryFlagEmoji(countryCode: string): string {
 }
 
 /**
- * Localised label for a holiday-source region: German federal states and the
- * mapped European subdivisions keep their native name; anything else collapses
- * to its COUNTRY name (so an unmapped region never leaks a raw code).
+ * Localised label for a holiday-source region: German states and the mapped subdivisions keep
+ * their native name; anything else becomes its country name, so a raw code never leaks.
  */
 export function getRegionLabel(
   countryCode: string,
@@ -141,17 +134,10 @@ export function getRegionLabel(
 }
 
 /**
- * Country URL slug → ISO 3166-1 alpha-2, for the 23 countries the catalogue covers.
- *
- * The park payload names its country ("Germany") and its state ("Nordrhein-Westfalen", `NW`) but
- * carries no country code, and the code is what {@link countryFlagEmoji} and every holiday-source
- * comparison are keyed by. The code IS available from `/v1/discovery/continents` — which is a
- * fetch, served to the header from the data cache, and not something a park page should acquire a
- * dependency on to draw one flag.
- *
- * Generated from that endpoint rather than typed by hand, and it is a closed set: a park in a new
- * country reaches this table via `parks/<continent>/<country>/…`, so an unlisted slug returns null
- * and the caller drops the flag instead of rendering a wrong one.
+ * Country URL slug → ISO 3166-1 alpha-2, for the countries in the catalogue. The park payload
+ * carries no country code, and fetching the continents document to draw one flag is not worth
+ * it. A closed set: an unlisted slug returns null and the caller drops the flag rather than
+ * showing a wrong one.
  */
 const COUNTRY_SLUG_CODES: Record<string, string> = {
   australia: 'AU',

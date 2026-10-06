@@ -1,21 +1,11 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * Locale → localized URL segment for a park's "with kids" page.
- *
- * The page lists a park's rides by the height a child has to reach, with the park's own limits as
- * the steps. The park page keeps the same numbers behind a slider (`RiderHeightFilter`) that no
- * crawler moves, so this URL is where they are printed. Decided on 2026-09-29 (PAR-356, PO answer
- * to the open question of the ticket); the words are the phrase a parent types.
- *
- * Same mechanism as the wait-time record and the calendar: the canonical route folder is the
- * English slug and the other five locales are served on it by a rewrite in `next.config.ts`.
- * The segment sits in the `[attraction]` position, so a ride slugged like one of these would be
- * shadowed by the route — the rule `stats-segments.ts` states applies unchanged, and the six
- * phrases were checked against the ride slugs of the catalogue before the build.
- *
- * Three places move together, as for the record: this module, the rewrite block in
- * `next.config.ts` and the cache-header block above it.
+ * Locale → localized URL segment for a park's „with kids" page, which prints the rides by the
+ * height a child must reach (the park page keeps the same numbers behind a slider no crawler
+ * moves). The words are the phrase a parent types. As with the wait-time record, the English slug
+ * is the route folder and the others are rewritten onto it; this module, the rewrite block in
+ * `next.config.ts` and the cache-header block above it move together.
  */
 export const PARK_KIDS_SEGMENTS: Record<Locale, string> = {
   en: 'with-kids',
@@ -30,11 +20,7 @@ export const PARK_KIDS_SEGMENTS: Record<Locale, string> = {
 export const PARK_KIDS_CANONICAL_SEGMENT = PARK_KIDS_SEGMENTS.en;
 
 /**
- * Locale-relative path to a park's "with kids" page, e.g.
- * `/parks/europe/germany/bruehl/phantasialand/mit-kindern`.
- *
- * Locale-RELATIVE because every link to it goes through `@/i18n/navigation`'s `Link`, which
- * prefixes the locale itself.
+ * Locale-relative path to a park's „with kids" page; `@/i18n/navigation`'s `Link` adds the locale.
  */
 export function parkKidsPath(
   locale: Locale | string,

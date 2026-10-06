@@ -1,28 +1,12 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * Locale → localized URL segment for a park's wait-time record.
- *
- * The page behind it draws what the park page keeps client-side and what nothing draws at all:
- * crowd by month and weekday over two years, the typical day hour by hour, and the rides ranked
- * by the queue they normally carry. The park page server-renders today's table already, so a
- * second page showing that table would be a duplicate with its own URL competing with the page it
- * copied — see `docs/seo/dedicated-landing-pages.md` §2. A new park URL earns its place by
- * server-rendering something no existing URL server-renders, and the historical half is the only
- * thing left that qualifies.
- *
- * Same mechanism as the calendar, the glossary and the guide: the canonical route folder is the
- * English slug and the other five locales are served on it via a rewrite in `next.config.ts`.
- *
- * The words are the phrase a visitor types, not the word a competitor's URL uses. „Wartezeiten-
- * Statistik" reads as a section name; „durchschnittliche Wartezeiten" is a question somebody asks.
- * The alternative set is written down in §4 of the concept and was decided against on 2026-09-21.
- *
- * The segment sits in the same position as an attraction slug, so a ride slugged
- * `durchschnittliche-wartezeiten` would be shadowed by this route — Next matches the static
- * segment before `[attraction]`. No ride in the catalogue is, and these six phrases are not ride
- * names in any language; the rule is written down here because it is the second park sub-page to
- * depend on it.
+ * Locale → localized URL segment for a park's wait-time record: crowd by month and weekday, the
+ * typical day hour by hour, and rides ranked by their usual queue, the historical half nothing else
+ * server-renders. The words are the phrase a visitor types („durchschnittliche Wartezeiten").
+ * As with the calendar, the English slug is the route folder and the other locales are rewritten
+ * onto it; and as with the calendar, a ride slugged like a segment would be shadowed.
+ * See docs/seo/dedicated-landing-pages.md.
  */
 export const PARK_STATS_SEGMENTS: Record<Locale, string> = {
   en: 'average-wait-times',
@@ -37,11 +21,7 @@ export const PARK_STATS_SEGMENTS: Record<Locale, string> = {
 export const PARK_STATS_CANONICAL_SEGMENT = PARK_STATS_SEGMENTS.en;
 
 /**
- * Locale-relative path to a park's wait-time record, e.g.
- * `/parks/europe/germany/bruehl/phantasialand/durchschnittliche-wartezeiten`.
- *
- * Locale-RELATIVE because every link to it goes through `@/i18n/navigation`'s `Link`, which
- * prefixes the locale itself. Pass the same geo segments the park page was rendered with.
+ * Locale-relative path to a park's wait-time record; `@/i18n/navigation`'s `Link` adds the locale.
  */
 export function parkStatsPath(
   locale: Locale | string,

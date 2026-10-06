@@ -3,16 +3,12 @@ import { canRideAtHeight, riderHeightThresholds } from '@/lib/utils/rider-height
 import type { RiderHeightLimits } from '@/lib/utils/rider-height';
 
 /**
- * Which parks get a "with kids" page, and what it says. One place, because three readers ask:
- * the route (404 below the line), the sitemap, and the park page's link.
+ * Which parks get a „with kids" page, and what it says; one place for the route (404 below the
+ * line), the sitemap and the park page's link.
  *
- * The gate is the PO's decision of 2026-09-29 on PAR-356 (option C, a pilot on few parks): at
- * least 20 rides with a `minimumHeight` **and** at least half of the park's attractions with one.
- * Measured against the catalogue on the day of the build that is 32 of 203 parks with attractions
- * (the decision text says 41, which is the count for either condition on its own: 41 parks have 20
- * or more, and 41 have 10 or more that make up half). Hansa-Park (0 of 83) and
- * Efteling (8 of 37) are below it. The value is loosened after the four-week re-measurement, not
- * before; a page that has been published is not easily taken back.
+ * The gate is a pilot on few parks: at least 20 rides with a `minimumHeight` and at least half of
+ * the park's attractions with one. It is loosened only after re-measurement, because a published
+ * page is not easily taken back. See docs/seo/dedicated-landing-pages.md §12.
  */
 export const KIDS_PAGE_GATE = {
   /** Attractions with a `minimumHeight`, absolute. */
@@ -27,6 +23,7 @@ export interface KidsPageAttraction extends RiderHeightLimits {
   slug: string;
 }
 
+/** A ride as the kids page lists it. */
 export interface KidsTierRide {
   name: string;
   slug: string;
@@ -36,18 +33,19 @@ export interface KidsTierRide {
 export interface KidsTier {
   /** The height in cm at which these rides open up. Always one of the park's posted minima. */
   cm: number;
-  /** How many of the park's attractions this height may ride — the park page's "23 of 40". */
+  /** How many of the park's attractions this height may ride: the park page's „23 of 40". */
   rideable: number;
-  /** The rides whose minimum is exactly `cm`, i.e. what this step adds over the one below. */
+  /** The rides whose minimum is exactly `cm`: what this step adds over the one below. */
   newRides: KidsTierRide[];
 }
 
+/** Everything the kids page prints for one park. */
 export interface KidsPageData {
-  /** Every attraction the park lists — the denominator of the park page's height readout. */
+  /** Every attraction the park lists: the denominator of the park page's height readout. */
   total: number;
   /** Attractions that post a `minimumHeight`. */
   withHeight: number;
-  /** Attractions that post none. The list does not say whether that means "nobody" or "unknown". */
+  /** Attractions that post none; the list does not say whether that means „nobody" or „unknown". */
   withoutHeight: KidsTierRide[];
   /** How many of the park's attractions have no limit posted and a height cannot rule out. */
   rideableAtZero: number;
@@ -98,11 +96,8 @@ export function hasKidsPage(attractions: readonly KidsPageAttraction[]): boolean
 }
 
 /**
- * The `?height=` a park page opens with, or `null`.
- *
- * Only a height the park's own slider can stand on is accepted — one of its posted minima — so a
- * hand-edited URL cannot switch the filter on at a value with no stop under it, where the thumb
- * would rest between two positions and the readout would describe a height nobody can select.
+ * The `?height=` a park page opens with, or `null`. Only one of the park's posted minima is
+ * accepted, so a hand-edited URL cannot put the slider thumb between two stops.
  */
 export function initialRiderHeightFromParam(
   raw: string | string[] | undefined,

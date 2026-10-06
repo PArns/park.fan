@@ -7,8 +7,8 @@ import { parkDayOf } from '@/lib/utils/park-day';
 export type { ScheduleSummary };
 
 /**
- * Computes a human-readable schedule message for a park card.
- * Shared between ParkCard and ParkCardNearby.
+ * The schedule line for a park card (opening soon, closing at, off season), shared by `ParkCard`
+ * and `ParkCardNearby`.
  */
 export function getScheduleMessage(
   todaySchedule: ScheduleSummary | undefined,
@@ -37,9 +37,8 @@ export function getScheduleMessage(
   const effectiveStatus =
     status || (todaySchedule?.scheduleType === 'OPERATING' ? 'OPERATING' : 'CLOSED');
   const tzOptions = timezone ? { timeZone: timezone } : {};
-  // Cached formatters (`lib/utils/intl-format.ts`). This runs twice per ParkCard (the phone row and
-  // the card) and hub pages re-render 40–70 cards on every live refresh; `toLocale*String` with
-  // options built a new formatter on each call, up to three per call here.
+  // Cached formatters: this runs twice per ParkCard, and hub pages re-render dozens of cards on
+  // every live refresh.
   const parkDay = (at: Date) => parkDayOf(at, timezone);
   const clockTime = (at: Date) =>
     formatTime(at, locale, { hour: '2-digit', minute: '2-digit', ...tzOptions });
@@ -68,7 +67,7 @@ export function getScheduleMessage(
             if (timezone) {
               const openingTimeFormatted = clockTime(opening);
 
-              // Check if it's "tomorrow" in the park's timezone
+              // „Tomorrow" in the park's timezone.
               const todayInParkTz = parkDay(now);
               const openingInParkTz = parkDay(opening);
               const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
@@ -81,7 +80,7 @@ export function getScheduleMessage(
                 remainingText: remaining,
               };
             } else {
-              // No timezone available — show only relative time to avoid displaying wrong UTC time
+              // No timezone: relative time only, rather than a wrong UTC clock time.
               return { message: remaining, icon: 'opening' };
             }
           }
@@ -103,7 +102,7 @@ export function getScheduleMessage(
             if (timezone) {
               const openingTimeFormatted = clockTime(nextOpening);
 
-              // Check if it's "tomorrow" in the park's timezone
+              // „Tomorrow" in the park's timezone.
               const todayInParkTz = parkDay(now);
               const openingInParkTz = parkDay(nextOpening);
               const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
@@ -116,7 +115,7 @@ export function getScheduleMessage(
                 remainingText: remaining,
               };
             } else {
-              // No timezone available — show only relative time to avoid displaying wrong UTC time
+              // No timezone: relative time only, rather than a wrong UTC clock time.
               return { message: remaining, icon: 'opening' };
             }
           } else if (totalDays < 7) {

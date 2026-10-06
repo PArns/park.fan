@@ -2,20 +2,17 @@ import type { Metadata } from 'next';
 import { locales, localeToOpenGraphLocale } from '@/i18n/config';
 
 /**
- * Google truncates the SERP title around 60 characters and the snippet around 160 — past that
- * the tail is replaced by an ellipsis, so the keyword sitting there stops being visible.
- * Our templates are written for typical names; a long one ("Fantawild Oriental Heritage
- * Mianyang", "Vereinigtes Königreich") pushes them over on its own.
+ * Google truncates the SERP title around 60 characters, and a keyword past that disappears behind
+ * an ellipsis. Templates fit typical names; a long name pushes them over on its own.
  */
 export const MAX_TITLE_LENGTH = 60;
+/** Google's snippet length, past which the description is cut. */
 export const MAX_DESCRIPTION_LENGTH = 160;
 
 /**
- * Picks the first candidate that fits, else the shortest one — never truncates mid-word.
- *
- * Pass candidates richest-first: the full template, then progressively shorter fallbacks.
- * When even the shortest overruns (a park whose name alone is 60+ characters) the shortest
- * still wins, because a clipped tail on a bare name costs less than a clipped template.
+ * Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass
+ * candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name
+ * costs less than a clipped template.
  */
 export function fitWithin(limit: number, ...candidates: string[]): string {
   const usable = candidates.filter((c) => c && c.trim().length > 0);
@@ -52,9 +49,8 @@ function sentencesOf(text: string): string[] {
 
 /**
  * A description of at most `limit` characters cut from running text: as many whole sentences as
- * fit, else the first sentence cut at a word boundary with an ellipsis. The glossary used to cut
- * every first paragraph at 152 characters, so the snippet ended mid-clause ("It comes in two
- * kinds:…", SEO run, 2026-10-03).
+ * fit, else the first sentence cut at a word boundary with an ellipsis, so a snippet never ends
+ * mid-clause.
  */
 export function fitSentences(text: string, limit: number = MAX_DESCRIPTION_LENGTH): string {
   const clean = text.replace(/\s+/g, ' ').trim();
@@ -70,10 +66,7 @@ export function fitSentences(text: string, limit: number = MAX_DESCRIPTION_LENGT
   return `${clean.slice(0, limit - 1).replace(/[\s,;:–-]+\S*$/, '')}…`;
 }
 
-/**
- * Builds the openGraph + twitter metadata objects that are identical across all pages.
- * Eliminates ~12 lines of boilerplate per page.
- */
+/** Builds the openGraph and twitter metadata that are the same on every page. */
 export function buildOpenGraphMetadata({
   locale,
   title,
@@ -87,7 +80,7 @@ export function buildOpenGraphMetadata({
   description: string;
   url: string;
   ogImageUrl: string;
-  /** Defaults to title when omitted */
+  /** Defaults to the title. */
   imageAlt?: string;
 }): Pick<Metadata, 'openGraph' | 'twitter'> {
   const alt = imageAlt ?? title;

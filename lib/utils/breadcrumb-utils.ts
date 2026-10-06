@@ -5,9 +5,7 @@ interface BreadcrumbResult {
   currentPage: string;
 }
 
-/**
- * Generate breadcrumbs for continent pages
- */
+/** Breadcrumbs for a continent page. */
 export function generateContinentBreadcrumbs({
   homeLabel,
   continentsLabel,
@@ -26,9 +24,7 @@ export function generateContinentBreadcrumbs({
   };
 }
 
-/**
- * Generate breadcrumbs for country pages
- */
+/** Breadcrumbs for a country page. */
 export function generateCountryBreadcrumbs({
   continent,
   continentName,
@@ -52,9 +48,7 @@ export function generateCountryBreadcrumbs({
   };
 }
 
-/**
- * Generate breadcrumbs for city pages
- */
+/** Breadcrumbs for a city page. */
 export function generateCityBreadcrumbs({
   continent,
   country,
@@ -84,11 +78,9 @@ export function generateCityBreadcrumbs({
 }
 
 /**
- * The city crumb, or nothing when the city has no page of its own.
- *
- * A city with a single park answers with a 308 to that park, so linking it sends the reader, and
- * every crawler walking the trail or its BreadcrumbList JSON-LD, to a redirect that lands on the
- * park they came from. `cityHasPage` comes from `cityHasOwnPage()` in `./redirect-utils`.
+ * The city crumb, or nothing when the city has no page of its own: a single-park city 308s to that
+ * park, so linking it would send readers and crawlers through a redirect back to where they were.
+ * `cityHasPage` comes from `cityHasOwnPage()` in `./redirect-utils`.
  */
 function cityCrumb(
   continent: string,
@@ -100,9 +92,7 @@ function cityCrumb(
   return cityHasPage ? [{ name: cityName, url: `/parks/${continent}/${country}/${city}` }] : [];
 }
 
-/**
- * Generate breadcrumbs for park pages
- */
+/** Breadcrumbs for a park page. */
 export function generateParkBreadcrumbs({
   continent,
   country,
@@ -139,9 +129,7 @@ export function generateParkBreadcrumbs({
   };
 }
 
-/**
- * Generate breadcrumbs for attraction pages
- */
+/** Breadcrumbs for an attraction page. */
 export function generateAttractionBreadcrumbs({
   continent,
   country,

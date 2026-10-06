@@ -12,6 +12,7 @@ import type {
   HourlyForecastItem,
 } from '@/lib/api/types';
 
+/** A favorite park as `/v1/favorites` returns it. */
 export interface FavoritePark {
   id: string;
   name: string;
@@ -21,7 +22,7 @@ export interface FavoritePark {
   country: string;
   status: string;
   totalAttractions: number;
-  /** Absent for a park whose wait times are unreadable — see `LiveWaitTimes`. */
+  /** Absent for a park whose wait times are unreadable (see `LiveWaitTimes`). */
   operatingAttractions?: number;
   analytics?: {
     avgWaitTime?: number;
@@ -39,6 +40,7 @@ export interface FavoritePark {
   nextSchedule?: ScheduleSummary;
 }
 
+/** A favorite attraction as `/v1/favorites` returns it. */
 export interface FavoriteAttraction {
   id: string;
   name: string;
@@ -104,8 +106,8 @@ export interface FavoriteAttraction {
   } | null;
   crowdLevel?: CrowdLevel;
   /**
-   * Not yet delivered by /v1/favorites: the service rates against the P50 but does not return it.
-   * Typed so the ride card's crowd-scale tooltip lights up here once the API ships it.
+   * Not yet delivered by /v1/favorites (the service rates against the P50 but does not return it);
+   * typed so the crowd-scale tooltip lights up here once the API ships it.
    */
   baseline?: number | null;
   currentLoad?: {
@@ -123,16 +125,16 @@ export interface FavoriteAttraction {
   /** Focal point as a CSS `object-position`, attached by the same proxy route. */
   backgroundPosition?: string;
   bestVisitTimes?: BestVisitSlot[] | null;
-  /** Not yet delivered by /v1/favorites — typed so cards light up once the API ships it. */
+  /** Not yet delivered by /v1/favorites; typed so cards light up once the API ships it. */
   ropeDrop?: RopeDropInfo | null;
   /**
-   * Also not yet delivered by /v1/favorites, like every other curated fact —
-   * the response carries none of `hasSingleRider`, `hasVirtualLine` or this.
-   * Typed so the card's transport badge lights up here once the API ships it.
+   * Not yet delivered by /v1/favorites either; typed so the card's transport badge lights up once
+   * the API ships it.
    */
   attractionKind?: AttractionKind | null;
 }
 
+/** A favorite show as `/v1/favorites` returns it. */
 export interface FavoriteShow {
   id: string;
   name: string;
@@ -156,6 +158,7 @@ export interface FavoriteShow {
   };
 }
 
+/** A favorite restaurant as `/v1/favorites` returns it. */
 export interface FavoriteRestaurant {
   id: string;
   name: string;
@@ -176,6 +179,7 @@ export interface FavoriteRestaurant {
   };
 }
 
+/** The `/v1/favorites` answer, one list per kind. */
 export interface FavoritesResponse {
   parks: FavoritePark[];
   attractions: FavoriteAttraction[];
@@ -188,8 +192,9 @@ export interface FavoritesResponse {
 }
 
 /**
- * Get favorites with full information from API
- * The API reads favorites from cookies if no query parameters are provided
+ * Get favorites with full details: the API directly on the server, the `/api/favorites` proxy in
+ * the browser. The API needs the ids as query parameters, so no ids means an empty answer without
+ * a request.
  */
 export async function getFavorites(
   parkIds: string[] = [],
@@ -201,7 +206,6 @@ export async function getFavorites(
 ): Promise<FavoritesResponse> {
   const params: Record<string, string> = {};
 
-  // Only add params if provided (API will read from cookies if empty)
   if (parkIds.length > 0) {
     params.parkIds = parkIds.join(',');
   }
@@ -219,10 +223,7 @@ export async function getFavorites(
     params.lng = String(lng);
   }
 
-  // Only call API if we have at least one favorite ID
-  // API requires query parameters - it does not read from cookies
   if (Object.keys(params).length === 0) {
-    // No favorites, return empty response
     return {
       parks: [],
       attractions: [],
@@ -231,9 +232,7 @@ export async function getFavorites(
     };
   }
 
-  // Use local proxy route (like nearby) to avoid CORS and forward cookies
   if (typeof window === 'undefined') {
-    // Server-side: call API directly
     const apiUrl = new URL(`${getApiBaseUrl()}/v1/favorites`);
     Object.entries(params).forEach(([key, value]) => {
       apiUrl.searchParams.set(key, value);
@@ -244,7 +243,7 @@ export async function getFavorites(
         'Content-Type': 'application/json',
         ...getServerApiHeaders(),
       },
-      cache: 'no-store', // User-specific (cookies/context), do not cache
+      cache: 'no-store', // per visitor
     });
 
     if (!response.ok) {
@@ -254,10 +253,9 @@ export async function getFavorites(
     return response.json() as Promise<FavoritesResponse>;
   }
 
-  // Client-side: use proxy route
+  // Browser: the same-origin proxy, which forwards cookies.
   const url = new URL('/api/favorites', window.location.origin);
 
-  // Add query parameters
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.set(key, value);
   });
@@ -267,7 +265,7 @@ export async function getFavorites(
       'Content-Type': 'application/json',
     },
     credentials: 'include', // Include cookies
-    cache: 'no-store', // Like nearby, don't cache on client
+    cache: 'no-store',
   });
 
   if (!response.ok) {
