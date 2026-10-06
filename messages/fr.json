@@ -2809,5 +2809,28 @@
     "blog": {
       "kicker": "park.fan · Blog"
     }
+  },
+  "compare": {
+    "kicker": "park.fan · Comparatif de parcs",
+    "title": "Deux parcs côte à côte",
+    "subtitle": "Attente habituelle, file la plus longue et jour de semaine le plus calme sur les deux dernières années. Choisissez deux à quatre parcs ; le choix figure dans le lien.",
+    "action": "Choisir des parcs",
+    "meta": {
+      "title": "Comparer des parcs : les attentes côte à côte",
+      "description": "Choisissez deux à quatre parcs d’attractions et lisez l’attente habituelle, la file la plus longue et le jour le plus calme dans un seul tableau."
+    },
+    "tool": {
+      "pickerTitle": "Choisir des parcs",
+      "count": "{count} sur {max}",
+      "remove": "Retirer {park}",
+      "placeholder": "Chercher un parc …",
+      "searching": "Recherche …",
+      "noResults": "Aucun parc trouvé.",
+      "chosen": "choisi",
+      "full": "Plus de {max} parcs ne tiennent pas dans le tableau. Retirez-en un pour en choisir un autre.",
+      "empty": "Choisissez deux à quatre parcs et le tableau apparaît.",
+      "second": "Choisissez un deuxième parc pour comparer.",
+      "noStats": "{count, plural, one {Il n’y a pas encore de mesure pour {parks}.} other {Il n’y a pas encore de mesures pour {parks}.}}"
+    }
   }
 }

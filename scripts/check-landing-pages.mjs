@@ -67,6 +67,7 @@ const PAGES = [
   ['/en/blog', 'hub', false],
   ['/de/contribute', 'tool'],
   ['/de/news', 'tool'],
+  ['/de/compare', 'tool'],
   ['/de/glossar', 'tool'],
   [`${PARK}/mit-kindern`, 'park'],
   [`${PARK}/durchschnittliche-wartezeiten`, 'park'],

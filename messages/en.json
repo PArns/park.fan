@@ -2809,5 +2809,28 @@
     "blog": {
       "kicker": "park.fan · Blog"
     }
+  },
+  "compare": {
+    "kicker": "park.fan · Park comparison",
+    "title": "Two parks side by side",
+    "subtitle": "Typical wait, longest queue and quietest weekday from the last two years. Pick two to four parks; the choice is kept in the link.",
+    "action": "Pick parks",
+    "meta": {
+      "title": "Compare parks: wait times side by side",
+      "description": "Pick two to four theme parks and see typical wait, longest queue and quietest weekday in one table."
+    },
+    "tool": {
+      "pickerTitle": "Pick parks",
+      "count": "{count} of {max}",
+      "remove": "Remove {park}",
+      "placeholder": "Search for a park …",
+      "searching": "Searching …",
+      "noResults": "No park found.",
+      "chosen": "chosen",
+      "full": "More than {max} parks do not fit in the table. Remove one to pick another.",
+      "empty": "Pick two to four parks and the table appears.",
+      "second": "Pick a second park to compare.",
+      "noStats": "{count, plural, one {There is no measurement for {parks} yet.} other {There are no measurements for {parks} yet.}}"
+    }
   }
 }
