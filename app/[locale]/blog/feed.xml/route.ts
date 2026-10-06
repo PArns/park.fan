@@ -8,6 +8,7 @@ import { getMediaImageForPath } from '@/lib/media';
 import { WEBSUB_HUB } from '@/lib/websub';
 import { BLOG_FEED_DESCRIPTION, BLOG_FEED_TITLE, blogFeedUrl } from '@/lib/blog/feed';
 import { postPath } from '@/lib/blog/paths';
+import { xmlEscape } from '@/lib/seo/sitemap-xml';
 
 /**
  * How many items a feed carries. Items hold the excerpt, not the article, so
@@ -19,15 +20,6 @@ const MAX_ITEMS = 15;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
-}
-
-function escapeXml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
 }
 
 function escapeCData(value: string): string {
@@ -68,7 +60,7 @@ function coverEnclosure(coverAbs: string, coverPath: string): string {
   const extension = clean.split('.').pop()?.toLowerCase() ?? '';
   const type = MIME_BY_EXTENSION[extension] ?? 'image/jpeg';
   const length = getMediaImageForPath(clean)?.bytes ?? 0;
-  return `    <enclosure url="${escapeXml(coverAbs)}" type="${type}" length="${length}" />`;
+  return `    <enclosure url="${xmlEscape(coverAbs)}" type="${type}" length="${length}" />`;
 }
 
 /**
@@ -154,14 +146,14 @@ export async function GET(
           : `${SITE_URL}${coverPath}`
         : null;
       const categories = (frontmatter.tags ?? [])
-        .map((tag) => `    <category>${escapeXml(tag)}</category>`)
+        .map((tag) => `    <category>${xmlEscape(tag)}</category>`)
         .join('\n');
       const enclosure = coverAbs && coverPath ? coverEnclosure(coverAbs, coverPath) : '';
 
       return `  <item>
-    <title>${escapeXml(frontmatter.title)}</title>
-    <link>${escapeXml(url)}</link>
-    <guid isPermaLink="true">${escapeXml(url)}</guid>
+    <title>${xmlEscape(frontmatter.title)}</title>
+    <link>${xmlEscape(url)}</link>
+    <guid isPermaLink="true">${xmlEscape(url)}</guid>
     <pubDate>${pubDate}</pubDate>
     <dc:creator><![CDATA[${escapeCData(author)}]]></dc:creator>
     <description><![CDATA[${escapeCData(frontmatter.excerpt)}]]></description>
@@ -176,13 +168,13 @@ ${enclosure}
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
-  <title>${escapeXml(channelTitle)}</title>
-  <link>${escapeXml(channelLink)}</link>
-  <description>${escapeXml(channelDescription)}</description>
+  <title>${xmlEscape(channelTitle)}</title>
+  <link>${xmlEscape(channelLink)}</link>
+  <description>${xmlEscape(channelDescription)}</description>
   <language>${locale}</language>
   <lastBuildDate>${rfc822(lastBuild)}</lastBuildDate>
-  <atom:link href="${escapeXml(feedSelf)}" rel="self" type="application/rss+xml" />
-  <atom:link href="${escapeXml(WEBSUB_HUB)}" rel="hub" />
+  <atom:link href="${xmlEscape(feedSelf)}" rel="self" type="application/rss+xml" />
+  <atom:link href="${xmlEscape(WEBSUB_HUB)}" rel="hub" />
   <generator>park.fan</generator>
 ${items}
 </channel>
