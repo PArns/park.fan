@@ -316,6 +316,7 @@ const FAQ = [
   },
 ];
 
+/** The guide page's article, French. */
 export function ContentFR() {
   const glossary = `/${GLOSSARY_SEGMENTS.fr}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.fr}`;
@@ -325,7 +326,6 @@ export function ContentFR() {
     <>
       <ChapterRail chapters={CHAPTERS} ariaLabel="Chapitres" />
 
-      {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan est né dans une file d’attente. Taron, milieu d’après-midi, l’affichage indiquait
@@ -364,7 +364,6 @@ export function ContentFR() {
         </Reveal>
       </div>
 
-      {/* ── 01 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="chiffre"
         index="01"
@@ -410,7 +409,6 @@ export function ContentFR() {
         </DemoFrame>
       </SectionShell>
 
-      {/* ── 02 ──────────────────────────────────────────────────────────── */}
       <Ambience>
         <SectionShell
           id="echelle"
@@ -492,9 +490,8 @@ export function ContentFR() {
             </WaitScaleStage>
           </div>
 
-          {/* Card left, prose right. The card is a park-page sidebar component and
-              looks absurd stretched across a 1500 px column, so it keeps its own
-              width and the text takes the rest instead of leaving a hole. */}
+          {/* Card left, prose right: the card is a park-page sidebar component, so it keeps
+              its own width and the text takes the rest. */}
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sur la page d’une attraction"
@@ -530,7 +527,6 @@ export function ContentFR() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 03 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="moment"
         index="03"
@@ -583,7 +579,6 @@ export function ContentFR() {
         </div>
       </SectionShell>
 
-      {/* ── 04 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="jour"
         index="04"
@@ -604,10 +599,8 @@ export function ContentFR() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column, full width, like every other chapter on this page. As two
-            prose columns this band put a third text edge under the paragraph above
-            it: a run of copy, then a 604 px column ending short of it, then a
-            second column starting where that paragraph still had words. */}
+        {/* One column, full width, like every other chapter on this page: two prose
+            columns would put a third text edge under the paragraph above. */}
         <div className="space-y-4 pt-2">
           <P>
             Les vacances des régions voisines comptent souvent autant que celles de la région du
@@ -648,7 +641,6 @@ export function ContentFR() {
         </div>
       </SectionShell>
 
-      {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="plan-journee"
         index="05"
@@ -683,7 +675,6 @@ export function ContentFR() {
         </P>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="page-parc"
         index="06"
@@ -723,7 +714,6 @@ export function ContentFR() {
         </div>
       </SectionShell>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="nuit"
@@ -780,7 +770,6 @@ export function ContentFR() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="limites"
         index="08"
@@ -820,7 +809,6 @@ export function ContentFR() {
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell id="reperes" index="09" kicker="Repères" title="Où trouver quoi" icon={Search}>
         <TouchpointGrid
           items={[
@@ -910,7 +898,6 @@ export function ContentFR() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
         index="10"

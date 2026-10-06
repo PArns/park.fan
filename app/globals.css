@@ -8,25 +8,11 @@
 
 /*
  * The window in which the homepage hero has a free bottom line for the Parkfan95 signpost to
- * share with the image attribution. Both numbers are measured, not chosen — see the call site in
- * `app/[locale]/page.tsx`: 1440 is the width at which a 497 px centred pill clears the widest
- * caption in the rotation (428 px, `right-4`), and 980 is the height below which the 784 px
- * plate plus the section's own padding leaves nothing for the pill to sit on but the plate.
- *
- * That second number falls out of the layout rather than being tried: the section centres its
- * content in `min-h-dvh`, so the plate's lower edge is `80 + (H - 912) / 2 + 784` and the pill's
- * upper edge is `H - 64`, which clears by `(H - 944) / 2`. 980 is what buys ~18 px of it and
- * still catches the 14-inch laptop at 1512x982; at 900 the plate fills the section and the pill
- * lands on the nearby-park bubbles.
- *
- * The WIDTH half asks `@container/page` (app/[locale]/layout.tsx) and the HEIGHT half stays a
- * media query, because the two questions have different subjects: the pill and the caption share
- * a line inside the hero section, whose width the trip planner takes from — while the height they
- * clear in is the window's, which no panel changes. Measured with a 900 px panel on a 2000 px
- * window: the media query still matched, so the pill went absolute and centred over a 1100 px
- * section at x=301.3..798.6 while the caption sat at x=762.5..1084 — 36.1 px of the German pill
- * under the image credit, on the same baseline. At 1100 px as a window the pill stays in flow and
- * they never meet. Nesting is what expresses "both": Tailwind's block form wraps `@slot` in each.
+ * share with the image attribution (see the call site in `app/[locale]/page.tsx`). 1440 is the
+ * width at which the centred pill clears the widest caption in the rotation; below a height of
+ * 980 the 784 px plate leaves the pill nothing to sit on but the plate. The width asks
+ * `@container/page` because the trip planner narrows the hero without moving the window; the
+ * height stays a media query because no panel changes it.
  */
 @variant hero-bottom-line {
   @container page (min-width: 1440px) {
@@ -37,26 +23,15 @@
 }
 
 /*
- * The phone sheet's detents, as CSS so the resting heights need no script
- * beyond the one number below.
+ * The phone sheet's detents, as CSS so the resting heights need no script. `large` is where the
+ * sheet opens (everything under the 48 px header, or 92 % of the screen where that is more);
+ * `medium` is half the screen. The drag measures these values with a probe
+ * (`sheetDetentHeights()` in `planner-flyout.tsx`), so this is the only place they are written.
  *
- * `large` is where the sheet opens: everything under the 48 px site header, or
- * 92 % of the screen where that is more (see the note on the class list in
- * `planner-flyout.tsx`), and on a short window nearly the whole screen (below).
- * `medium` is half the screen, reached by dragging the grabber down; the sheet
- * keeps its `large` box there and slides down with `bottom`. The drag measures
- * these very values with a probe (`sheetDetentHeights()` in the same file), so
- * this is the only place they are written down.
- *
- * All of them are written in `--planner-viewport`, the height the browser
- * actually shows, and not in `svh`. The sheet is fixed to the layout viewport,
- * and a zoom, the keyboard or a browser whose units are not its window leaves
- * less than that on screen; iOS then cuts the difference off the top, where
- * the grabber and the × are. `useSheetViewport()` (`lib/planner/`) sets the
- * number from `window.visualViewport` while the sheet is open, and with it
- * `--planner-viewport-lift`, the gap between the bottom of what is on screen
- * and the bottom of the layout viewport, which the sheet stands on. `100svh`
- * and `0px` are the fallbacks for a browser without `visualViewport`.
+ * Written in `--planner-viewport`, not `svh`: the sheet is fixed to the layout viewport, and a
+ * zoom or the keyboard leaves less than that on screen, which iOS cuts off the top where the
+ * grabber is. `useSheetViewport()` sets it and `--planner-viewport-lift` from
+ * `window.visualViewport`; `100svh` and `0px` are the fallbacks.
  */
 :root {
   --planner-viewport: 100svh;
@@ -67,13 +42,9 @@
   );
   --planner-sheet-medium: calc(var(--planner-viewport) * 0.5);
 }
-/* A short window gives the day the header's strip too: `large` opens 12 px
-   under the top edge, over the site header, and the sheet reads as a sheet by
-   the sliver of dimmed page above it. `SHEET_SHORT_QUERY` in
-   `planner-flyout.tsx` repeats the query for the one thing CSS cannot answer:
-   whether the grabber still has a second detent to toggle to. The query asks
-   the window and the 12 px are counted from the top of what is on screen, so
-   a keyboard or a zoom moves the edge with the view. */
+/* A short window gives the day the header's strip too: `large` opens 12 px under the top edge.
+   `SHEET_SHORT_QUERY` in `planner-flyout.tsx` repeats the query for the one thing CSS cannot
+   answer: whether the grabber still has a second detent to toggle to. */
 @media (height < 50rem) {
   :root {
     --planner-sheet-large: calc(var(--planner-viewport) - 0.75rem);
@@ -81,46 +52,16 @@
 }
 
 /*
- * What the PLANNER means by "phone", in CSS — the other half of
- * `PLANNER_PHONE_QUERY` in `lib/planner/use-grid-scale.ts`.
+ * What the planner means by "phone", in CSS: the other half of `PLANNER_PHONE_QUERY` in
+ * `lib/planner/use-grid-scale.ts`. Not `max-sm:`, because a landscape phone (844x390) is over
+ * `sm` and would get the desktop arrangement in a 390 px tall window; and `max-sm:` itself cannot
+ * change, since the rest of the site reads it as "narrow window". In rem, like Tailwind's
+ * breakpoints, so it moves with the reader's default font size.
  *
- * The panel used to ask Tailwind's built-in `max-sm:` for this, and a width
- * breakpoint is exactly the question a landscape phone answers wrong: 844x390
- * is the same device as 390x844 with the same thumb, but 844 is over `sm`, so
- * the panel drew the DESKTOP arrangement into a 390 px tall window. Measured on
- * `main` @ `9e37710a`: a 448x390 side panel at x=396, of which the time axis got
- * **16 px** — and the "Alle Headliner einplanen / Tag optimieren" row (top 179,
- * bottom 220) covered all sixteen. Portrait on the same build gives the axis 211.
- *
- * So the question grows a second term and stays ONE question, asked in two
- * languages. Redefining `max-sm:` itself was the other way and is not available:
- * it is Tailwind's own, and over sixty files outside the planner — header,
- * footer, blog, search, admin — read it as "narrow window". Widening it there
- * would move the whole site to fix one panel.
- *
- * **31.25rem, not 500px**, and rem for the same reason `PLANNER_PHONE_QUERY` and
- * the `container` tiers below already give at length: Tailwind's breakpoints are
- * rem, so `planner-wide:` moves with the reader's default font size while a px
- * query would not, and the two halves of a pair would stop agreeing for exactly
- * the readers who raised that default. 500 px is the number the ticket named
- * (PAR-76); it clears a 390 px landscape phone by 110 px and leaves a 1512x982
- * laptop and every desktop window on the wide side.
- *
- * **The two are complements and have to stay complements.** Every `planner-phone:`
- * in the panel has a `planner-wide:` counterpart or none at all; a pair that
- * disagreed — say a leftover `sm:border-l` beside a moved `planner-phone:border-t`
- * — would apply BOTH at 844x390 and the winner would be whatever order the
- * compiler happened to emit. `or` on one side, `and` on the other, and nothing
- * between them.
- *
- * **The height term asks `(pointer: coarse)` and the width term does not**, and
- * the complement below carries the negation rather than `(pointer: fine)` —
- * `fine` is not the opposite of `coarse`, `pointer: none` is neither, and a
- * device that answers neither would fall out of BOTH variants and get whatever
- * the unprefixed class said. A short window on a fine pointer is a desktop
- * browser dragged flat (1440x480), not a phone: it stays wide, which is what
- * keeps the panel non-modal and the ride-card drag alive. See the note on
- * `PLANNER_PHONE_QUERY`.
+ * `planner-phone` and `planner-wide` are complements and must stay so: a class pair that
+ * disagreed would apply both, and the winner would be emit order. The complement negates
+ * `(pointer: coarse)` rather than asking `(pointer: fine)`, because `pointer: none` is neither. A
+ * short window on a fine pointer is a desktop browser and stays wide.
  */
 @variant planner-phone {
   @media (width < 40rem) {
@@ -140,42 +81,15 @@
 }
 
 /*
- * A landscape phone, which is the one size where the sheet lays itself out in
- * two columns.
+ * A landscape phone, the one size where the sheet lays itself out in two columns. It refines
+ * `planner-phone` (its second branch plus a width), so everything `planner-phone:` says still
+ * applies and there is no complement. Stacked in one column, the sheet's chrome leaves the time
+ * axis almost nothing at 844x390, so the rows have to sit beside the axis instead. See
+ * `PLANNER_LANDSCAPE_QUERY` for the JS half.
  *
- * **This is not a third member of the pair above — it REFINES `planner-phone`.**
- * The terms are the second branch of `planner-phone` plus a width: a window
- * shorter than 31.25rem on a coarse pointer, wide enough that two columns of it
- * are worth having. Everything `planner-phone:` says therefore still applies
- * here — the bottom sheet, the 44 px targets, the 1.8 px per minute — and a
- * `planner-landscape:` class only ever says something `planner-phone:` left
- * open. There is deliberately no complement: an arrangement that holds
- * everywhere except one size is written unprefixed, and the one size overrides
- * it.
- *
- * Why it exists at all is arithmetic, measured on `main` @ `1a0c17d7` at
- * 844x390 with the panel open: handle 44, sheet header 45, context band 61,
- * optimize row 61, headliner band 96, summary 37, push toggle 30 — 343 px of
- * chrome stacked in a 359 px sheet, which leaves the axis **16 px**, all of them
- * under the optimize row. Two hours of day is 216 px at `PX_PER_MIN_COARSE`, so
- * no rearrangement of a single column can pay for it: the rows have to stop
- * being above the axis and start being beside it. See PAR-168, and
- * `PLANNER_LANDSCAPE_QUERY` for the JS half of exactly this question.
- *
- * `31.25rem` is the same number the pair above uses, in rem for the same reason
- * it gives — a reader who raised the default font size must not get one half of
- * the switch.
- *
- * **The width term is `35.5rem` (568 px), not the pair's `40rem` (PAR-231).**
- * At 40rem a landscape phone narrower than 640 px — 568x320, the iPhone SE on
- * its side — stayed stacked, and there the stack is worse than at 844x390:
- * measured on `main` @ `afc69ced`, 303 px of chrome in a 308 px sheet, the axis
- * box 200 px tall in a 3 px wrapper, i.e. no day on screen at all. Below 40rem
- * the left column is 16rem instead of 20rem (`planner-landscape:w-64` in
- * `planner-flyout.tsx`), so at 568 px the axis keeps 312 px of width, close to
- * the 318 px an honest planner column is reckoned at. Below 35.5rem there is no
- * phone held sideways to serve, and a short portrait window (320x480) must not
- * be split into two 160 px strips.
+ * The width term is `35.5rem` (568 px), not `40rem`, so the iPhone SE on its side (568x320) gets
+ * two columns too. Below it there is no sideways phone, and a short portrait window must not be
+ * split into two strips.
  */
 @variant planner-landscape {
   @media (width >= 35.5rem) and (height < 31.25rem) and (pointer: coarse) {
@@ -184,59 +98,21 @@
 }
 
 /*
- * Tailwind's `container`, asked of the PAGE instead of the window.
+ * Tailwind's `container`, asked of the page instead of the window: the trip planner insets the
+ * page (the `@container/page` div in app/[locale]/layout.tsx) without the window moving, so the
+ * stock media tiers would size every `container` for a page wider than it is. In rem, like
+ * Tailwind's breakpoints, so the tiers keep agreeing with `sm:`/`lg:` for a reader who raised
+ * the default font size.
  *
- * The utility ships as a MEDIA query — `width: 100%` plus a max-width tier picked from how wide
- * the WINDOW is — and the trip planner made those two different numbers: it insets the page
- * (`planner-wide:pr-[var(--planner-inset,0px)]` on the `@container/page` div in app/[locale]/layout.tsx)
- * without the window moving a pixel. 69 call sites read the wrong one, all of them the bare class
- * and nearly all `container mx-auto`, so it is answered here rather than at each of them.
- *
- * Measured: a park page at window 2179 with a 900 px panel leaves 1279 px of page, the 2xl tier
- * (96rem) never binds, and the box runs the full 1279 — 255 px past the 1024 it should take. At
- * window 1720 with the default 448 px panel, 248 px over. At window 1920 / panel 900 the box is
- * 1000 px and runs edge to edge, where the same 1000 px as a WINDOW caps at 768 and centres: a
- * 232 px difference, and every `lg:` grid nested inside then splits in the wrong place — card
- * columns at 345 px instead of 320, a blog text column at 780 instead of 704, a ride page's
- * seven-day strip 712 px tall instead of 867.
- *
- * `rem` in both halves, never `px`. Tailwind's breakpoints are rem, so they move with the reader's
- * default font size; an `@min-[1024px]` does not, and for somebody who has raised that default the
- * tiers here would quietly stop agreeing with the `sm:`/`lg:` utilities beside them.
- *
- * The media tiers stay, and they go FIRST, as the answer for a document with no `page` container:
- * `/admin` and `/dev/blog-editor` render their own `<html>` outside app/[locale]/layout.tsx, and a
- * container query with no matching container is false rather than unbounded — so a container-only
- * utility would put every `.container` there full-bleed, which is the kind of breakage nobody
- * reports. The container tiers come second and win wherever they match: same specificity, later
- * declaration. The one state where only the media half matches — a page narrower than 40rem inside
- * a wide window — cannot bind, because `width: 100%` already resolves against the page column and
- * a max-width of 96rem is not a width that box could reach.
- *
- * With the panel shut the two halves answer the same number, so no public page moves: `@media
- * (width >= …)` is evaluated against `documentElement.clientWidth`, scrollbar excluded, and this
- * div's content box IS that number — body carries no margin or padding and the scrollbar gutter is
- * only reserved while a Radix popup holds the scroll lock.
- *
- * Tailwind emits its own `.container` ahead of this one rather than replacing it (verified through
- * the compiler's Node API, and the emission order does not follow the order candidates are found
- * in), so the media half travels twice. Reading the fallback off that duplicate instead of writing
- * it down is a bet on an undocumented ordering, and the bet is worth 300 B raw / 15 B brotli.
- * Whole utility against no utility at all: +681 B raw, +35 B brotli on the compiled sheet.
- *
- * The rejected alternative was a second `@container/page` on the admin shell. It fixes two call
- * sites that do not need fixing: both are blog-editor shells, both pin their own `max-w-`
- * (`min(1800px,98vw)` and 1400 px), and Tailwind emits `max-w-*` after `.container`, so those
- * already win at every width. What it costs is a second `container-type: inline-size` — style and
- * inline-size containment plus an independent formatting context — over a shell with a sticky
- * topbar, a fixed backdrop and a fixed command palette, and that is only provable in a browser;
- * it would then have to be repeated in app/dev/blog-editor/layout.tsx, and again on the next
- * top-level route somebody adds. The fallback covers all three without anybody remembering.
+ * The media tiers stay and go first, for documents with no `page` container (`/admin`,
+ * `/dev/blog-editor`), where a container query is false and every `.container` would go
+ * full-bleed. The container tiers come second and win wherever they match. With the panel shut
+ * both halves answer the same number.
  */
 @utility container {
   width: 100%;
 
-  /* No `page` container above us: the old behaviour, unchanged. */
+  /* For a document without a `page` container. */
   @media (width >= 40rem) {
     max-width: 40rem;
   }
@@ -275,10 +151,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  /* Geist_Mono was dropped to save a ~30 KB render-blocking font preload on every
-     route. `font-mono` is intentionally aliased to Geist Sans so existing utility
-     usages keep rendering (in Geist) without touching every call site. Number-heavy
-     live spots add `tabular-nums` for fixed-width digits. */
+  /* `font-mono` is aliased to Geist Sans, so no second font is preloaded on every route.
+     Number-heavy spots add `tabular-nums` for fixed-width digits. */
   --font-mono: var(--font-geist-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -338,22 +212,9 @@
   --color-element-inversion: var(--element-inversion);
   --color-element-turn: var(--element-turn);
   --color-element-brake: var(--element-brake);
-  /* Park accent and the semantic pair, as Tailwind colors rather than as
-     hand-written utility classes.
-
-     They were the latter, and the difference is invisible until somebody writes
-     an opacity modifier: a `.bg-park-primary` rule in `@utility` is a class
-     name, so `bg-park-primary/5` matches nothing at all and compiles to no
-     declaration — no error, no warning, a `div` with no background. Four call
-     sites had been shipping that way. `bg-park-primary/5` on the nearby-parks
-     band (`nearby-in-park-view`), `from-park-primary/10` on the hero wash and on
-     the homepage's announce band — where a gradient stop that resolves to
-     nothing takes the whole `radial-gradient` with it — and `bg-success/10`,
-     `bg-error/10` and `bg-warning/10` on every `IconContainer` in those three
-     tones, which drew their icon on the panel's own ground.
-
-     Registered here, Tailwind generates the whole family — `bg-`, `text-`,
-     `border-`, the gradient stops and every `/opacity` — from one line each. */
+  /* Park accent and the semantic pair, as theme colors so Tailwind generates the whole family,
+     including `/opacity`. A hand-written utility class has no `bg-park-primary/5`: it compiles
+     to nothing, without a warning. */
   --color-park-primary: var(--park-primary);
   --color-park-primary-foreground: var(--park-primary-foreground);
   --color-success: var(--success);
@@ -450,12 +311,8 @@
   --sidebar-ring: oklch(0.628 0.137 241.275);
 }
 
-/* Force the scrollbar colours to follow the SITE theme in dark mode. Some platforms
-   (notably macOS) colour the native scrollbar from the OS appearance, not the page,
-   and `color-scheme: dark` does NOT reliably override that — so a dark site on a light
-   (or auto) macOS shows a light/white scrollbar. Setting `scrollbar-color` explicitly
-   wins. Driven by the `.dark` class (applied before first paint by next-themes), so it
-   matches the chosen theme with no flash. Light mode keeps the native scrollbar. */
+/* The scrollbar follows the site theme in dark mode: macOS colours it from the OS appearance,
+   and `color-scheme: dark` does not reliably override that. Light mode keeps the native one. */
 .dark {
   scrollbar-color: color-mix(in oklab, var(--foreground) 28%, transparent) transparent;
 }
@@ -464,18 +321,10 @@
   * {
     @apply border-border outline-ring/50;
   }
-  /* When a Radix popup (language switcher, dialog, popover, command palette, mobile
-     sheet) opens, react-remove-scroll hides the scrollbar — which would make the page
-     width jump (flicker). Reserve the scrollbar's space for exactly that moment so the
-     layout stays put. We do this ONLY while a popup is open (not permanently): during
-     normal scrolling the browser's native scrollbar renders as-is — correct theme
-     colour, no forced always-visible bar.
-
-     The lock lands on <body> and the gutter belongs on <html>, and this used to bridge
-     them with `html:has(body[data-scroll-locked])`. `ScrollLockGutter` copies the
-     attribute up instead: any `:has()` rule in the stylesheet made every DOM change on
-     the page restyle the whole document, a 400-700 ms tap on a throttled phone
-     (docs/rules/no-has-selector-in-the-stylesheet.md). */
+  /* While a Radix popup is open react-remove-scroll hides the scrollbar, so its gutter is
+     reserved for exactly that moment and the page width does not jump. `ScrollLockGutter`
+     copies the lock attribute from <body> to <html>, because a `:has()` bridge would restyle
+     the whole document on every DOM change (docs/rules/no-has-selector-in-the-stylesheet.md). */
   html[data-scroll-locked] {
     scrollbar-gutter: stable;
   }
@@ -483,10 +332,8 @@
     @apply bg-background text-foreground;
     overflow-x: clip;
   }
-  /* Prevent background scroll when a Radix popup is open. react-remove-scroll also
-     adds margin-/padding-right to <body> to compensate for the scrollbar it removes —
-     but with the gutter above that space is already reserved, so the extra offset
-     would shift the page the other way. Cancel it to keep the page perfectly still. */
+  /* No background scroll while a Radix popup is open. react-remove-scroll also pads <body> for
+     the scrollbar it removes, which the gutter above already reserves, so that offset goes. */
   body[data-scroll-locked] {
     overflow: hidden !important;
     margin-right: 0 !important;
@@ -495,65 +342,31 @@
 }
 
 /*
- * Resting height of the hero's search dropdown — the open list of the three nearest parks
- * (group heading + 3 rows + footer hint + the card's top margin).
- *
- * The dropdown itself is absolutely positioned so a growing result list never moves the hero;
- * this reserves its RESTING height in the flow instead, so the nearby pills sit below the open
- * list rather than underneath it. Typing past three rows grows the card over the pills, which
- * fade out on focus anyway.
- *
- * Tied to HERO_BROWSE_LIMIT (3) in hero-inline-search-panel.tsx — changing one means
- * re-measuring the other.
+ * Resting height of the hero's search dropdown (the three nearest parks), reserved in the flow so
+ * the nearby pills sit below the open list; the dropdown itself is absolute so a longer result
+ * list never moves the hero. Tied to HERO_BROWSE_LIMIT (3) in hero-inline-search-panel.tsx:
+ * changing one means re-measuring the other.
  */
 :root {
   --hero-search-rest-h: 282px;
 
   /*
-   * Resting height of the whole left plate, reserved on the plate itself from `md` up.
-   *
-   * This is a STREAMING fix, not a layout one. The plate's later children — the search block and
-   * the pill row — arrive in a later chunk of the HTML response than its opening tag does, and on
-   * a slow link the browser paints the half-parsed plate in between. It came up 328 px tall and
-   * then grew 456 px when the rest of the markup landed: measured at up to 0.10 CLS on a
-   * 1.6 Mbps / 4× CPU profile, in two runs out of five. Nothing that happens after hydration can
-   * prevent that — only markup that is already there can, so the reservation has to sit on an
-   * element the browser sees early.
-   *
-   * 784px is what the plate settles at in ALL SIX locales at every width from 768 px up (only
-   * fr at 1440 goes to 803, where the headline takes a third line). It is deliberately the
-   * measured height and not a padded one: a min-height at or below the real height changes no
-   * finished layout anywhere, it only stops the box from starting out short.
-   *
-   * It follows --hero-search-rest-h — that dropdown is 282 px of it. Re-measure both together.
+   * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later
+   * children arrive in a later HTML chunk, and a half-parsed plate painted short and then grew.
+   * 784px is the settled height in all six locales from 768 px up, not a padded one, so it
+   * changes no finished layout. It includes --hero-search-rest-h: re-measure both together. See
+   * docs/rules/a-streamed-section-owes-the-page-its-height.md.
    */
   --hero-plate-min-h: 784px;
 }
 
 /*
- * Hero entrance.
+ * Hero entrance: the panels never animate (see the stagger rules below), their content does, one
+ * line at a time from the outside edge (`--hero-in-x`, opposite signs per column) out of a blur.
+ * The search block's glass dropdown loses its blur for the length of its item's animation.
  *
- * The panels themselves never animate — see the note on the stagger rules below for why. What
- * arrives is their content: one line at a time, drifting in from the outside edge, rising,
- * growing the last 3.5 % into place and resolving out of a heavy blur. Long travel on a
- * near-flat expo curve, so most of the distance is covered in the first third and the rest is a
- * settle — that is the difference between "cinematic" and "slow".
- *
- * The horizontal component comes from `--hero-in-x`, which the two columns set to opposite
- * signs: the left plate's content arrives from the left, the map's from the right, and the hero
- * closes toward its own centre instead of everything sliding the same way.
- *
- * The blur sits on CONTENT, which has no backdrop-filter of its own, so the panels' glass is
- * untouched by it. One thing it does touch: the search block's resting dropdown IS glass, and it
- * is a descendant of an animating item, so its blur is inert for the length of that item's
- * animation. The alternative is a search field that does not arrive with the rest of the hero,
- * which looks worse than three quarters of a second of flat glass on a skeleton.
- *
- * `backwards`, NOT `both`. Both fill modes hide the element correctly before its turn — that is
- * the whole reason this is CSS rather than a lazily-loaded library — but `both` also RETAINS the
- * final keyframe forever, which would leave `transform: translateY(0)` and `filter: blur(0)` on
- * the element. An identity transform is still a transform, and a `filter` is a containing block
- * too: either would isolate that subtree's backdrop for good.
+ * `backwards`, not `both`: `both` would retain the final keyframe's identity transform and
+ * `filter`, and either isolates the subtree's backdrop for good.
  */
 @keyframes hero-item-in {
   from {
@@ -569,13 +382,9 @@
 }
 
 /*
- * The world map's landmasses. They come up in a west-to-east sweep (the delay is derived from
- * each continent's anchor, not from the array order), so the map draws itself rather than
- * switching on, and the bubbles then land on continents that are already there.
- *
- * `scale`, plus `transform-box: fill-box` on the path so each landmass grows about its own
- * bounding box instead of the SVG's origin — without it they slide in from the top left corner
- * of the viewBox.
+ * The world map's landmasses, in a west-to-east sweep (the delay comes from each continent's
+ * anchor). `transform-box: fill-box` on the path makes each grow about its own box instead of the
+ * SVG's origin.
  */
 @keyframes hero-map-in {
   from {
@@ -589,15 +398,9 @@
 }
 
 /*
- * The map's continent bubbles: they belong to the map, so they arrive by growing out of it.
- *
- * Animates the standalone `scale` property, NOT `transform`. Tailwind v4 centres these bubbles
- * on their anchor with `-translate-x-1/2 -translate-y-1/2`, which it compiles to the standalone
- * `translate` property — so a keyframe touching `transform` composes ON TOP of that instead of
- * replacing it. Restating the translate inside the keyframe therefore moved every bubble a
- * second time: they faded in half a bubble to the upper left and snapped into place when the
- * animation class came off. `scale` and `translate` are independent properties and stack
- * correctly.
+ * The map's continent bubbles grow out of it. Animates the standalone `scale`, not `transform`:
+ * Tailwind's `-translate-x-1/2 -translate-y-1/2` compiles to the standalone `translate`, and a
+ * keyframe on `transform` would compose on top of it and move the bubble twice.
  */
 @keyframes hero-pop-in {
   from {
@@ -611,12 +414,8 @@
 }
 
 /*
- * The map locking on to the selected continent once the sweep has passed it: the highlight
- * blooms in and settles back, so the eye is told where it is rather than finding a shape that
- * was already coloured in.
- *
- * `fill-opacity` multiplies the alpha that is already in `fill-primary/35`, so this stays a
- * pure animation of the existing colour — no second fill value to keep in sync with the class.
+ * The selected continent's highlight blooms once the sweep has passed it. `fill-opacity`
+ * multiplies the alpha already in `fill-primary/35`, so there is no second fill value to sync.
  */
 @keyframes hero-map-lock {
   0% {
@@ -646,16 +445,10 @@
 
 @media (prefers-reduced-motion: no-preference) {
   /*
-   * NOTHING animates the panels themselves — not transform, not opacity, not filter. Each of
-   * those establishes a backdrop root for as long as it is applied, so an animated panel has
-   * no working glass WHILE it animates: the blur visibly switched on at the moment the
-   * entrance finished, a beat after the panel had already arrived. The panels are therefore in
-   * place and blurring from the first frame, and the entrance is carried by their contents.
-   *
-   * The plate's own children, staggered by position rather than by a class per element: the
-   * left plate's direct children are exactly the badge, the headline, the intro, the search
-   * and the pill row (HeroWithNearby returns a fragment, so its three land here too). Keying
-   * off nth-child means no component has to know its place in the sequence.
+   * Nothing animates the panels themselves: transform, opacity and filter each establish a
+   * backdrop root while applied, so an animating panel has no glass. The plate's direct children
+   * (HeroWithNearby returns a fragment, so its three land here too) are staggered by nth-child,
+   * so no component has to know its place in the sequence.
    */
   .hero-entering .hero-in-stagger > * {
     animation: hero-item-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
@@ -727,14 +520,9 @@
 }
 
 /*
- * Applied as a CLASS, not an inline `style={{animation}}` — an inline animation cannot be
- * overridden by `motion-reduce:` utilities or by a media query, which is how this ran for
- * visitors who had asked for no motion.
- *
- * It is also the hero's single biggest rendering cost: every frame of a transform on the
- * backdrop invalidates every `backdrop-filter` layered over it (the search field, the world
- * panel), and those get re-blurred at animation rate. Reduced motion therefore buys those
- * visitors a still photo AND a hero that costs nothing to composite.
+ * A class, not an inline `style={{animation}}`, so a media query can switch it off. Every frame
+ * of it re-blurs each `backdrop-filter` over the photo, so reduced motion also gets a hero that
+ * costs nothing to composite.
  */
 @media (prefers-reduced-motion: no-preference) {
   .hero-ken-burns {
@@ -742,14 +530,9 @@
   }
 
   /*
-   * Parked while the hero is scrolled away or the tab is in the background.
-   *
-   * `animation-play-state`, not removing the class: the pan holds wherever it is and resumes
-   * from there, whereas dropping the animation would snap the photo back to `scale(1)` — a
-   * visible jump for anyone scrolling back up to it.
-   *
-   * The class is set on the background WRAPPER, so it covers the base photo and every in-park
-   * layer at once (they carry the animation on different elements).
+   * Parked while the hero is scrolled away or the tab is hidden. `animation-play-state` holds the
+   * pan where it is; removing the class would snap the photo back. Set on the background wrapper,
+   * so it covers the base photo and every in-park layer.
    */
   .hero-motion-paused .hero-ken-burns {
     animation-play-state: paused;
@@ -781,15 +564,10 @@
 }
 
 /*
- * Planner: the empty day's drag, acted out (`PlannerDragDemo`, PAR-521). The screen in little,
- * left to right: a ride list, the planner's edge, its axis. Seven poses over 3.6 s: the hand
- * comes down on the middle ride (12 %), closes (18 %), lifts a copy (26 %), carries it across
- * the edge (50 %), sets it on the slot as a block (58 %), opens (64 %) and draws back (78 %);
- * the block fades out and the copy fades in at the list. Eased between poses, never cut, and
- * the two hands and the row/block looks crossfade.
- *
- * The transforms outside the media query are the pose reduced motion holds: the fist carrying
- * the card across the edge, which still says which way the gesture goes.
+ * Planner: the empty day's drag, acted out (`PlannerDragDemo`): a hand lifts a ride from the list
+ * and sets it on the axis as a block, eased between poses, never cut. The transforms outside the
+ * media query are the pose reduced motion holds: the fist carrying the card across the edge,
+ * which still says which way the gesture goes.
  */
 .planner-drag-card,
 .planner-drag-hand {
@@ -973,7 +751,6 @@
   }
 }
 
-/* Theme Park Specific Colors */
 :root {
   /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */
   --crowd-very-low: oklch(0.58 0.13 192);
@@ -983,12 +760,9 @@
   --crowd-very-high: oklch(0.58 0.22 52);
   --crowd-extreme: oklch(0.55 0.24 25);
 
-  /* The same six tiers as TEXT. The fills above sit at L 0.55 … 0.62, which is right for a tile
-     or a dot and wrong for a number: as text on white they measured 3.3 … 3.9:1, and a wait time
-     in the headliner list is 14 px. These are darkened until each clears 4.5:1 on a ground as
-     dark as a light photo under glass (luminance 0.75), which puts them at about 6:1 on white.
-     Only text reads these; the fills keep theirs, because `CROWD_SCALE_CLASS` sets near-black on
-     them and darker fills would cost that contrast instead. */
+  /* The same six tiers as text. The fills above are too light for a number on white; these
+     clear 4.5:1 on a ground as dark as a light photo under glass. The fills keep their lightness
+     because `CROWD_SCALE_CLASS` sets near-black text on them. */
   --crowd-ink-very-low: oklch(0.47 0.13 192);
   --crowd-ink-low: oklch(0.46 0.18 162);
   --crowd-ink-moderate: oklch(0.47 0.2 145);
@@ -1005,19 +779,15 @@
   --element-turn: oklch(0.6 0.13 195);
   --element-brake: oklch(0.55 0.02 240);
 
-  /* Status Colors */
-  /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white, so every small "N offen" set in it
-     missed AA by a hair (measured 4.33:1 on the hero pill, 4.37:1 on a country chip). 0.53 is
-     4.74:1 and visually the same green. */
+  /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white and small text in it misses AA; 0.53
+     is 4.74:1 and visually the same green. */
   --status-operating: oklch(0.53 0.21 142.136);
   --status-down: oklch(0.705 0.213 47.604);
   --status-closed: oklch(0.577 0.245 27.325); /* red – same as destructive */
   --status-refurbishment: oklch(0.623 0.214 259.815);
 
-  /* Badge background colors. The status and crowd badges carry white text, and in light mode they
-     used to be the status/crowd colours at /60 — on white that measured 2.1 … 3.2:1 (PAR-422).
-     They now take the darker fills dark mode already had, fully opaque (`--badge-fill`), which
-     puts white at 5.4 … 7.9:1 whatever is underneath. */
+  /* Badge backgrounds carry white text, so in light mode they are dark fills at full opacity
+     (`--badge-fill`), which keeps white at 5.4:1 or better whatever is underneath. */
   --badge-fill: 100%;
   --badge-status-operating: oklch(0.46 0.17 142);
   --badge-status-down: oklch(0.5 0.18 47);
@@ -1035,29 +805,25 @@
   --badge-trend-down: var(--trend-down);
   --badge-trend-stable: var(--trend-stable);
 
-  /* Accent - Theme Park Purple/Blue */
   --park-primary: oklch(90.1% 0.058 230.902);
   --park-primary-foreground: oklch(0.985 0 0);
 
-  /* Semantic Colors */
-  --success: oklch(0.55 0.21 142.136); /* Green - same as status-operating */
+  --success: oklch(0.55 0.21 142.136); /* Green */
   --success-foreground: oklch(0.145 0 0);
   --error: oklch(0.577 0.245 27.325); /* Red - same as destructive */
   --error-foreground: oklch(1 0 0);
   --warning: oklch(0.795 0.184 86.047); /* Yellow */
   --warning-foreground: oklch(0.145 0 0);
 
-  /* Trend Colors */
   --trend-up: oklch(0.577 0.245 27.325); /* Red for increasing */
   --trend-down: oklch(0.723 0.219 142.136); /* Green for decreasing */
   --trend-stable: oklch(0.556 0 0); /* Muted for stable */
 
-  /* Park Card v2 — glass panel tokens */
+  /* Park card glass panel tokens */
   --pk-panel: rgba(235, 245, 255, 0.48);
   --pk-panel-border: rgba(255, 255, 255, 0.52);
   --pk-panel-shine: rgba(255, 255, 255, 0.85);
-  /* Light mode: dark-tinted highlight (emboss effect).
-     Top panel: anchored top-left. Footer: anchored bottom-right. */
+  /* Light mode: a dark-tinted highlight, for an emboss effect. */
   --pk-panel-highlight-top: radial-gradient(
     120% 100% at 0% 0%,
     rgba(13, 30, 55, 0.22) 0%,
@@ -1111,8 +877,8 @@
   --status-closed: oklch(0.704 0.191 22.216); /* red – same as dark destructive */
   --status-refurbishment: oklch(0.707 0.165 254.624);
 
-  /* Badge background colors — darker for dark mode (white text on near-black panels). Translucent
-     here: over a near-black panel the /60 fill still leaves white at 9.9:1 or better. */
+  /* Translucent in dark mode: over a near-black panel the /60 fill still leaves white text at
+     9.9:1 or better. */
   --badge-fill: 60%;
   --badge-status-operating: oklch(0.46 0.17 142);
   --badge-status-down: oklch(0.5 0.18 47);
@@ -1130,7 +896,6 @@
   --badge-trend-down: oklch(0.48 0.16 142);
   --badge-trend-stable: oklch(0.46 0.02 238);
 
-  /* Accent */
   --park-primary: oklch(39.1% 0.09 240.876);
   --park-primary-foreground: oklch(0.145 0 0);
 
@@ -1147,12 +912,11 @@
   --trend-down: oklch(0.792 0.209 151.711); /* Brighter green */
   --trend-stable: oklch(0.708 0 0); /* Lighter muted */
 
-  /* Park Card v2 — dark theme glass panel tokens */
+  /* Park card glass panel tokens */
   --pk-panel: rgba(7, 10, 18, 0.42);
   --pk-panel-border: rgba(255, 255, 255, 0.12);
   --pk-panel-shine: rgba(255, 255, 255, 0.14);
-  /* Dark mode: light (white) highlight.
-     Top panel: anchored top-left. Footer: anchored bottom-right. */
+  /* Dark mode: a white highlight. */
   --pk-panel-highlight-top: radial-gradient(
     120% 100% at 0% 0%,
     rgba(255, 255, 255, 0.22) 0%,
@@ -1176,9 +940,7 @@
   --pk-text-3: rgba(255, 255, 255, 0.38);
 }
 
-/* Utilities */
 @layer utilities {
-  /* Glassmorphism Utilities - Standardized opacity levels */
   .glass-light {
     @apply bg-background/40 border-border/30 border backdrop-blur-sm;
   }
@@ -1195,7 +957,6 @@
     @apply bg-background/90 border-border/60 border shadow-xl backdrop-blur-xl;
   }
 
-  /* Glass Card Variants */
   .glass-card-light {
     @apply bg-card/40 border-border/30 border backdrop-blur-sm;
   }
@@ -1208,30 +969,21 @@
     @apply bg-card/80 border-border/50 border shadow-xl backdrop-blur-lg;
   }
 
-  /* Glass Header (kept for backwards compatibility) */
   .glass-header {
     @apply bg-background/80 border-border/50 border-b backdrop-blur-md;
   }
 
-  /* Interactive Card Utilities - Hover effects */
   .interactive-card {
     @apply hover:border-primary/50 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
   }
 
   /*
-   * Section reveal on scroll — CSS only, no observer, no JavaScript.
+   * Section reveal on scroll, CSS only. Not `<Reveal>`, which hides content until an
+   * IntersectionObserver brings it back, so with JavaScript blocked the section stays invisible;
+   * a browser without `view()` timelines just shows the section.
    *
-   * Deliberately NOT the existing `<Reveal>`: that one renders `opacity-0` and relies on an
-   * IntersectionObserver in an effect to bring it back, so with JavaScript blocked the section
-   * stays invisible. Hiding content that only JS can reveal is the one thing this codebase does
-   * not do. A `view()` timeline degrades the other way round — a browser without it just shows
-   * the section, unanimated, with nothing hidden.
-   *
-   * `backwards`, never `both`. After the range the element returns to its own styles and leaves
-   * no transform behind; a retained one would make the section a backdrop root and flatten every
-   * frosted panel inside it. That is also why this only goes on sections with NO glass in them:
-   * during the range the transform is real, and a card grid underneath would lose its panels for
-   * the length of the reveal. Card grids get their pointer effects instead.
+   * `backwards`, never `both`: a retained transform would make the section a backdrop root and
+   * flatten every frosted panel in it. For the same reason it only goes on sections with no glass.
    */
   @keyframes pk-reveal-in {
     from {
@@ -1254,22 +1006,11 @@
   }
 
   /*
-   * Pointer highlight on a card, driven by CardPointerFx.
-   *
-   * A pseudo-element and two custom properties: nothing is added to the DOM, nothing relayouts,
-   * and a card that never gets hovered pays nothing (--fx-o defaults to 0). It sits above the
-   * glass panels on purpose — the light has to cross the frosted strips too, or it looks like it
-   * is trapped under them.
-   *
-   * And NO blend mode. `mix-blend-mode: overlay` looked richer and was the effect's entire cost:
-   * with it, sweeping a card measured 43.6 ms a frame against a 40.5 ms baseline at 1× CPU and
-   * 44.3 against 36.6 at 4×. Without it, all three configurations sit inside each other's noise
-   * (38.3 / 38.9 / 39.4 at 1×), because a plain translucent gradient composites while a blended
-   * one has to re-read what it sits on — here, two frosted panels — every frame.
-   *
-   * Measure this from INSIDE the page if you touch it. Driving the pointer with Playwright's
-   * `mouse.move` puts a CDP round trip between every frame and inflated every number in the
-   * first run, to the point of inventing a 20 ms regression that was not there.
+   * Pointer highlight on a card, driven by CardPointerFx: a pseudo-element and two custom
+   * properties, so a card that is never hovered pays nothing. It sits above the glass panels so
+   * the light crosses the frosted strips too. No blend mode: a blended layer re-reads the two
+   * frosted panels under it every frame, a plain translucent gradient only composites. Measure it
+   * from inside the page; Playwright's `mouse.move` adds a CDP round trip to every frame.
    */
   .pk-card-fx::after {
     content: '';
@@ -1293,24 +1034,10 @@
   }
 
   /*
-   * The top glass panel's lower edge, on a card whose only seat for it is the photo.
-   *
-   * A card is two frosted sheets over a picture, and the panel's border-bottom plus its inset
-   * shadow are the seam where the upper sheet meets whatever is under it. A ride that is DOWN
-   * renders no bottom panel, so the picture is all there is — and the picture is `hidden sm:block`
-   * (cards collapse onto their panels on phones). Below `sm` the seam would therefore rule a
-   * hairline across the card with nothing but the gradient placeholder beneath it, which is the
-   * line PF-58 reported one breakpoint up, where the ride also had no photo.
-   *
-   * It lives here rather than in the component's inline style because it is a breakpoint, and an
-   * inline `box-shadow` cannot be switched off by a class — so the class owns both halves of the
-   * edge for this one case. The top shine is not part of the seam: it is the sheet catching the
-   * light, and it stays at every width.
-   *
-   * `40rem` and never `640px`, the rule the `.container` tiers above state at length: Tailwind's
-   * breakpoints are rem, so the `hidden sm:block` on the photo moves with the reader's default
-   * font size and a px query does not. At 20px/700px the photo would still be hidden while this
-   * drew the border — the orphaned hairline back, for exactly the readers who raised the default.
+   * The top glass panel's lower edge on a card whose only seat for it is the photo (a ride that
+   * is down renders no bottom panel). The photo is `hidden sm:block`, so below `sm` the seam would
+   * rule a hairline across the placeholder. A class owns the edge because an inline `box-shadow`
+   * cannot be switched off at a breakpoint; `40rem`, not `640px`, so it moves with `sm:`.
    */
   .pk-panel-seam-sm {
     box-shadow: inset 0 1px 0 var(--pk-panel-shine);
@@ -1324,7 +1051,7 @@
     }
   }
 
-  /* Park card v2 — photo zoom on card hover */
+  /* Park card photo zoom on card hover */
   .pk-photo-zoom {
     transition:
       transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -1333,13 +1060,9 @@
   .pk-photo-zoom.pk-photo-closed {
     filter: grayscale(1);
   }
-  /* Both hover rules are gated, and the second is why it matters: greyscale is how a card says
-     the park is closed. A mobile browser applies `:hover` to a tapped element and LEAVES it
-     applied until something else is tapped, so a stray touch while scrolling un-greyed a closed
-     park's card and left it that way — the card then claims the opposite of what it means. The
-     JS half of this effect has always known the right query: `card-pointer-fx.tsx` bails on
-     `!matchMedia('(hover: hover) and (pointer: fine)')`, with the reason in a comment. Only the
-     CSS half was missing it. */
+  /* Gated on a real hover: greyscale is how a card says the park is closed, and a mobile browser
+     keeps `:hover` on a tapped element, which would un-grey a closed park's card.
+     `card-pointer-fx.tsx` asks the same query. */
   @media (hover: hover) and (pointer: fine) {
     .group:hover .pk-photo-zoom {
       transform: scale(1.04);
@@ -1374,12 +1097,6 @@
     @apply min-h-[44px] min-w-[44px];
   }
 
-  /* `.bg-park-primary`, `.bg-success`, `.bg-error`, `.bg-warning` and their
-     `text-`/`border-` twins used to be written out here by hand. They are
-     generated from `@theme inline` now — see the note there for what the
-     hand-written version silently could not do. */
-
-  /* Trend Colors */
   .text-trend-up {
     color: var(--trend-up);
   }
@@ -1390,12 +1107,7 @@
     color: var(--trend-stable);
   }
 
-  /* ── Badge utility classes ───────────────────────────────────────────────
-     Each class bundles bg/border/text-white/font so badge components only
-     need a single class name. The inline trend pill in attraction-card uses
-     its own sizing and does NOT use these classes. */
-
-  /* Status */
+  /* Each badge class bundles bg/border/text-white/font, so a badge component needs one class. */
   .badge-status-operating {
     @apply bg-badge-status-operating/(--badge-fill) border-status-operating/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
@@ -1412,7 +1124,6 @@
     @apply bg-badge-muted/(--badge-fill) border-muted-foreground/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
 
-  /* Crowd level */
   .badge-crowd-very-low {
     @apply bg-badge-crowd-very-low/(--badge-fill) border-crowd-very-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
@@ -1432,12 +1143,10 @@
     @apply bg-badge-crowd-extreme/(--badge-fill) border-crowd-extreme/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
 
-  /* Primary / Queue */
   .badge-primary {
     @apply bg-badge-primary/60 border-primary/25 border font-bold tracking-wide text-white uppercase;
   }
 
-  /* Trend */
   .badge-trend-up {
     @apply bg-badge-trend-up/60 border-trend-up/25 border font-bold tracking-wide text-white uppercase;
   }
@@ -1460,12 +1169,11 @@
   }
 }
 
-/* Unit system (°C / °F) — pure-CSS display toggle so weather/calendar values can be
-   server-rendered in BOTH units and the active one shown without a hydration flash.
-   The active unit is written to <html data-temp-unit> by an inline script before paint
-   (see app/[locale]/layout.tsx), so this works on statically cached (edge) pages too.
-   Default (attribute absent or "C") = metric; imperial is revealed only when F is active.
-   display:none keeps the hidden unit out of the a11y tree (screen readers read one unit). */
+/* °C / °F: values are server-rendered in both units and CSS shows one, so there is no hydration
+   flash, also on statically cached pages. An inline script in app/[locale]/layout.tsx writes
+   <html data-temp-unit> before paint; metric is the default. `display: none` keeps the hidden
+   unit out of the accessibility tree. See
+   docs/rules/a-client-only-preference-may-not-decide-server-rendered-markup.md. */
 .u-imperial {
   display: none;
 }
@@ -1476,19 +1184,12 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
-/* The header's °C/°F button reads its own label off the same two classes: it renders
-   both "°C" and "°F" and lets the attribute pick one, so the control agrees with every
-   temperature around it from the first frame, JS or no JS. It carried three classes of
-   its own while it was a two-segment pill (.u-unit-btn / .u-unit-c / .u-unit-f); the
-   single button needs none. */
+/* The header's °C/°F button renders both labels with the same two classes, so it agrees with
+   every temperature around it from the first frame, JS or no JS. */
 
-/* Pin a subtree to metric, whatever the visitor's unit is. The guide page needs
-   this: it teaches with the production cards, and its prose names centimetres
-   ("ein 130 Zentimeter großes Kind", "Taron verlangt 140 Zentimeter", "un mètre
-   trente"). A reader on imperial got that sentence beside a card reading
-   "From 55 in" — the card and the paragraph explaining it disagreed. The
-   html[data-temp-unit] prefix is load-bearing: without it these lose on
-   specificity to the html[data-temp-unit='F'] rules above and nothing changes. */
+/* Pin a subtree to metric whatever the visitor's unit: the guide page's prose names centimetres
+   next to production cards. The html[data-temp-unit] prefix is load-bearing: without it these
+   lose on specificity to the html[data-temp-unit='F'] rules above. */
 html[data-temp-unit] .u-force-metric .u-metric {
   display: inline;
 }
@@ -1496,10 +1197,9 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   display: none;
 }
 
-/* ─── Blog code highlighting (rehype-highlight / highlight.js tokens) ──────
-   Compact dark token palette scoped to the published blog so we don't ship a
-   full hljs theme stylesheet. Tuned for the site's dark surface; in light
-   mode the muted pre background keeps contrast acceptable. */
+/* Blog code highlighting (highlight.js tokens): a compact palette scoped to the published blog,
+   so no full hljs theme stylesheet ships. Tuned for the dark surface; in light mode the muted
+   pre background keeps contrast acceptable. */
 .blog-content .hljs-comment,
 .blog-content .hljs-quote {
   color: color-mix(in oklab, var(--muted-foreground) 85%, transparent);
@@ -1565,11 +1265,8 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   background: color-mix(in oklab, var(--foreground) 30%, transparent);
 }
 
-/* Sticky blog ToC / sidebar. Swaps the browser's heavy default scrollbar for a
-   thin, theme-aware one (matching the editor panes) and reserves its gutter so
-   the sidebar doesn't shift a few px sideways the moment a long ToC starts to
-   overflow. Pairs with BlogTocList, which keeps the active entry scrolled into
-   view inside this box as the reader moves through the article. */
+/* Sticky blog ToC / sidebar: a thin, theme-aware scrollbar, and a reserved gutter so the sidebar
+   does not shift sideways the moment a long ToC starts to overflow. */
 .blog-sidebar-scroll {
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklab, var(--foreground) 16%, transparent) transparent;
@@ -1588,8 +1285,6 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 .blog-sidebar-scroll::-webkit-scrollbar-thumb:hover {
   background: color-mix(in oklab, var(--foreground) 28%, transparent);
 }
-
-/* ─── Blog editor (TipTap) canvas ──────────────────────────────────────────── */
 
 .tiptap-canvas {
   font-size: 1rem;
@@ -1812,7 +1507,6 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   color: var(--primary);
 }
 
-/* Empty-editor placeholder. */
 .tiptap-canvas p.is-editor-empty:first-child::before,
 .tiptap-canvas h1.is-editor-empty::before,
 .tiptap-canvas h2.is-editor-empty::before,
@@ -1839,9 +1533,6 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 .tiptap-canvas > *:first-child {
   margin-top: 0;
 }
-/* Editor links should look obviously interactive but stay subtle in the
-   author view. ref:/park:/attraction: hrefs aren't real URLs so we don't
-   want a hand cursor on them — they're just visual cues. */
 /* Inline image — alignment + size driven by data-attrs the image-preview
    plugin parses out of the markdown alt string (`alt | caption | align | size`). */
 .tiptap-canvas .editor-img {
@@ -2370,8 +2061,6 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   color: oklch(0.82 0.18 200);
 }
 
-/* ─── TipTap menus (tippy popovers) ───────────────────────────────────────── */
-
 /* Slash-menu tippy: kill the default white box so our own card shows. */
 .tippy-box[data-theme~='tiptap-popup'] {
   background: transparent;
@@ -2381,29 +2070,12 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   padding: 0;
 }
 
-/* ─── Das Glas des Supermenü-Bandes ───────────────────────────────────────────
- *
- * Warum das eine eigene Regel ist und nicht drei Tailwind-Klassen: der Blur war bis hierher
- * **wirkungslos**, und zwar aus zwei voneinander unabhängigen Gründen.
- *
- * 1. **Der Header war ein Backdrop-Root.** `<header>` trug selbst `backdrop-blur-md`. Ein Element
- *    mit `backdrop-filter` bildet nach der Filter-Effects-Spezifikation einen Backdrop Root, und
- *    ein Nachfahre mit eigenem `backdrop-filter` sieht dann nur noch, was INNERHALB dieses Roots
- *    gemalt wurde. Das Band hängt im DOM unter dem Header, liegt aber unterhalb seiner Box — dort
- *    hat der Root nichts gemalt. Es hat also 24 px weit nichts weichgezeichnet. Gemessen im
- *    Browser: Band `blur(24px)`, Header `blur(12px)`, Band ist Nachfahre. Behoben, indem das
- *    Material der Leiste in eine eigene, absolut positionierte Schicht IM Header gewandert ist:
- *    die Schicht ist jetzt Geschwister des Bandes statt sein Vorfahr, der Header selbst trägt
- *    keinen Filter mehr, und die Höhe von 48 px bleibt unverändert dort, wo sie war.
- *
- * 2. **Bei 95 % Deckkraft ist Glas kein Glas.** Die alte Fläche war `bg-popover/95`; selbst mit
- *    funktionierendem Blur wäre davon nichts zu sehen gewesen. Der Grund für die 95 % war
- *    Lesbarkeit: bei `/80` las man Überschrift, Badges und einen Absatz Fließtext durch das Menü
- *    hindurch. Die Antwort darauf ist aber nicht mehr Deckkraft, sondern mehr Blur plus eine
- *    Helligkeitsverschiebung — genau das, was ein echtes Glasmaterial macht. 40 px zerstören
- *    Fließtext zuverlässig, `saturate` hält die Farbe des Fotos dahinter am Leben (sonst sieht
- *    Glas aus wie Milch), und `brightness` zieht den Untergrund zur Flächenfarbe hin, sodass
- *    Buchstabenformen nicht als Geister stehen bleiben.
+/*
+ * The glass of the header's menu band. The header itself carries no `backdrop-filter`: an
+ * ancestor with one is a backdrop root, and the band, which hangs below the header's box, would
+ * blur nothing; the bar's material is a sibling layer inside the header. Legibility comes from
+ * blur, not opacity: 40 px breaks up body text behind it, `saturate` keeps the photo's colour from
+ * going milky, and `brightness` pulls the ground toward the surface so letterforms do not ghost.
  */
 .pk-menu-glass {
   background: color-mix(in oklab, var(--popover) 62%, transparent);
@@ -2412,14 +2084,14 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 }
 .dark .pk-menu-glass {
   background: color-mix(in oklab, var(--popover) 55%, transparent);
-  /* Dunkel muss abdunkeln statt aufhellen: der Untergrund ist hier heller als die Fläche, und
-     eine Aufhellung ließe helle Schrift durchscheinen statt sie zu schlucken. */
+  /* Dark darkens instead: the ground is lighter than the surface here, and brightening would let
+     light text show through. */
   -webkit-backdrop-filter: blur(40px) saturate(150%) brightness(0.5);
   backdrop-filter: blur(40px) saturate(150%) brightness(0.5);
 }
 
-/* Ohne `backdrop-filter` gibt es kein Glas, nur ein halbdurchsichtiges Menü über einer Parkseite —
- * unlesbar. Dort geht die Fläche auf die alten 95 % zurück. */
+/* Without `backdrop-filter` there is no glass, only a see-through menu over a park page, so the
+ * surface goes to 95 %. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .pk-menu-glass,
   .dark .pk-menu-glass {
@@ -2427,22 +2099,9 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   }
 }
 
-/* ─── Der Admin auf einem Telefon ────────────────────────────────────────────
- *
- * iOS Safari zoomt die Seite heran, sobald ein fokussiertes Eingabefeld kleiner
- * als 16 px rendert – und zoomt beim Verlassen nicht zurück. Ein Tipp ins
- * Suchfeld ließ den Admin also auf 1,3× stehen, mit horizontaler Scrollleiste,
- * und nur eine Zwei-Finger-Geste kam da wieder raus.
- *
- * Der geteilte Baukasten (`app/admin/_ui/controls.tsx`) sagt das inzwischen
- * selbst, samt 44-px-Trefferfläche. Diese Regel ist für den Rest: knapp vierzig
- * handgeschriebene Felder quer durch Medienbrowser, Blog-Editor und Dialoge, von
- * denen einige in fremdem Markup stecken. Eine Klasse pro Feld hieße, beim
- * nächsten neuen Feld wieder eine zu vergessen – und der Fehler wäre erst auf
- * einem echten iPhone zu sehen.
- *
- * Nur der Admin: `data-admin` sitzt auf dessen eigenem `<html>`, die öffentliche
- * Seite hat ihre eigene Typografie und ist davon nicht betroffen. */
+/* The admin on a phone: iOS Safari zooms in on a focused field under 16 px and does not zoom
+ * back out. `app/admin/_ui/controls.tsx` sets this itself; this rule covers the hand-written
+ * fields, so a new one cannot forget it. Only the admin: `data-admin` sits on its own `<html>`. */
 @media (max-width: 639px) {
   [data-admin] input,
   [data-admin] textarea,
@@ -2451,22 +2110,10 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   }
 }
 
-/* ─── The planner sheet on a touch screen (PAR-485, PAR-483) ─────────────────
- *
- * The same iOS zoom as above, and in the planner it was worse than a scrollbar.
- * The ride search and a free block's label are `text-sm` fields, so one tap into
- * either left the page at 16/14 = 1.14×. The bottom sheet is `position: fixed`
- * against the layout viewport, so at that zoom its right edge ran past the
- * screen (every row cut off mid-word) and its top, where the grab handle and the
- * header sit, above it. The field report read "Buttons außerhalb der View" and
- * "der Planer lässt sich nicht schließen", and both were this.
- *
- * Keyed on the pointer, not on the width: the zoom is a touch-screen behaviour
- * and hits an iPad as much as a phone, while a narrow desktop window has no
- * reason to change. Only fields somebody types into; a checkbox or a range has
- * no text to zoom to. Scoped to the sheet by its own attribute, so the rest of
- * the public site keeps its typography — the house `Input` already renders at
- * 16 px below `md`. */
+/* The planner sheet on a touch screen: the same iOS zoom pushes the fixed bottom sheet past the
+ * screen, with its grab handle above it. Keyed on the pointer, not the width, because the zoom
+ * hits an iPad as much as a phone; only fields somebody types into; scoped to the sheet so the
+ * rest of the site keeps its typography. */
 @media (pointer: coarse) {
   [data-planner-sheet] input:not([type='checkbox'], [type='radio'], [type='range']),
   [data-planner-sheet] textarea,
@@ -2475,23 +2122,12 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   }
 }
 
-/* ─── The cover of a post that has no photo (`BlogCoverFallback`) ────────────
- *
- * The brand's dark ground (#0F1E28 → #13293A) with four lights in the logo's
- * colours and a faint white one behind the pin, then the pin itself as a
- * background image. Everything lives here so each instance is one attribute-only
- * `<span>`: the header's news and blog panels render these into every page.
- *
- * The ground is the same in both themes, like a photo is. `data-hue` swaps the
- * four lights (the hue comes from the slug, see the component); `data-mark`
- * places the pin, `data-ground="none"` drops the ground for the card's photo
- * strip, which sits on the card's own ground. Every radial layer is sized from
- * its box, so the same rule fills an 88 px thumbnail and a full-bleed banner.
- *
- * `side` is the article banner's: right of the headline column and only from
- * `lg` (64rem, in rem like every breakpoint here) up. Below that the headline
- * runs the full width, and on a phone the lower part of the banner is under the
- * section that pulls up into it (`HERO_FLOW_INTO_PULL`). */
+/* The cover of a post that has no photo (`BlogCoverFallback`): the brand's dark ground in both
+ * themes, four lights in the logo's colours and the pin as a background image. Everything lives
+ * here so each instance is one attribute-only `<span>`, since the header panels render them on
+ * every page. `data-hue` swaps the lights, `data-mark` places the pin, `data-ground="none"` drops
+ * the ground. `side` is the article banner's, only from `lg` up: below that the headline runs the
+ * full width. */
 .blog-cover-fallback {
   --cover-a: #2191d3;
   --cover-b: #12bef0;

@@ -10,40 +10,23 @@ import { ChangelogIndex } from '@/components/changelog/changelog-index';
 import { ChangelogRelease } from '@/components/changelog/changelog-release';
 
 /**
- * The public changelog, at `/en/changelog`.
+ * The public changelog, at `/en/changelog`. English only by decision, so `generateStaticParams`
+ * yields `en` alone and `dynamicParams` is off. It sits under `[locale]` for the chrome; the other
+ * spellings and the bare `/changelog` are redirected in `next.config.ts`, which runs before the
+ * proxy that would otherwise send a German visitor to a route that does not exist.
  *
- * ## Why one locale, and why it still lives under `[locale]`
- *
- * The page is English only by decision: a release note is read by the handful
- * of people who follow the project, and five translations of it would be five
- * more things to keep true. `generateStaticParams` therefore yields `en`
- * alone and `dynamicParams` is off, so no other locale can build this route.
- *
- * It still sits under `[locale]` because that is where the chrome is: the
- * header, the footer and the locale provider are the segment's layout. A
- * sibling of `[locale]` would have to rebuild all three. The other five
- * spellings of the URL, and the bare `/changelog`, are redirected here in
- * `next.config.ts` rather than left to 404: `localePrefix: 'always'` means the
- * proxy would otherwise resolve `/changelog` against Accept-Language and land a
- * German visitor on a route that does not exist. `redirects()` runs before the
- * proxy (step 2 against step 3 in
- * `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md`),
- * so it gets the request first.
- *
- * No `<RouteMessages>`: everything on the page is either content or an English
- * label, so the route's namespace delta is empty and `pnpm check:client-messages`
+ * No `<RouteMessages>`: the route's namespace delta is empty, and `pnpm check:client-messages`
  * fails on a wrapper that ships nothing.
  */
 
 export const dynamicParams = false;
 
 const PAGE_PATH = CHANGELOG_PATH;
-/** The heading on the page. */
 const HEADING = 'Changelog';
 /**
  * The `<title>` and the shared card. The locale layout's template is a bare `%s`, so a page that
  * wants the brand in its tab says so itself, the way `/blog` and `/fancast` do with
- * `{ absolute }`. It was the single word "Changelog" until 2.13.0.
+ * `{ absolute }`.
  */
 const TITLE = 'Changelog: versions and release dates | park.fan';
 const DESCRIPTION =
@@ -93,10 +76,9 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
 
   return (
     /*
-      One column below `lg`: intro, the version index, the releases. From `lg` the index moves
-      into a column of its own on the left and stays in view (`ChangelogIndex`), so a reader far
-      down the page can still jump to a version. The article column keeps the 48 rem it had as
-      the whole page, which is the measure the blog reads at.
+      One column below `lg`. From `lg` the version index gets a sticky column of its own on the
+      left, so a reader far down the page can still jump to a version; the article column keeps
+      the 48 rem measure the blog reads at.
     */
     <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-10 sm:py-14 lg:grid-cols-[12rem_minmax(0,48rem)] lg:justify-center lg:gap-x-12 lg:gap-y-14">
       <header className="lg:col-start-2">

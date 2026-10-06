@@ -2,6 +2,7 @@
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { AnalyticsOptOut } from '@/components/common/analytics-opt-out';
 
+/** The privacy policy in English, shown on every locale but `de`. */
 export function DatenschutzEN() {
   return (
     <>

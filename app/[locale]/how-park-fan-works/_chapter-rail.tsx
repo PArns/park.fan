@@ -5,17 +5,10 @@ import { cn } from '@/lib/utils';
 import type { Chapter } from '@/lib/howto/chapters';
 
 /**
- * A fixed rail of chapter dots down the right edge, marking which chapter the
- * reader is in.
- *
- * Only above `xl`. Narrower than that there is no gutter to put it in without
- * either overlapping the measure or squeezing it, and the chapter list at the
- * top of the page already covers orientation on a phone.
- *
- * It is `position: fixed` and therefore out of flow, so it cannot contribute
- * layout shift however late it decides which dot is active. Without JavaScript
- * it renders every chapter as a plain anchor with the first one marked — still
- * a usable table of contents, just not a live one.
+ * A fixed rail of chapter dots down the right edge, marking the chapter the reader is in. Only
+ * above `xl`, where there is a gutter for it; the chapter list at the top covers a phone. Fixed,
+ * so it cannot shift layout however late it picks the active dot, and without JavaScript it is
+ * still a plain table of contents.
  */
 export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; ariaLabel: string }) {
   const [active, setActive] = useState(chapters[0]?.id ?? '');
@@ -57,12 +50,9 @@ export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; aria
                 aria-current={isActive ? 'true' : undefined}
                 className="group flex items-center justify-end gap-2 py-1"
               >
-                {/* The label rides in on hover/focus only. Width is animated, not
-                    display, so the row height never changes and the rail cannot
-                    nudge anything — it is fixed anyway, but the same rule keeps
-                    the dots from jumping against each other. */}
-                {/* aria-hidden: the sr-only span below carries the same index and
-                    label, and without this a screen reader announced both. */}
+                {/* The label rides in on hover or focus. Width is animated, not display, so the
+                    dots never jump against each other. aria-hidden: the sr-only span below carries
+                    the same text. */}
                 <span
                   aria-hidden
                   className={cn(

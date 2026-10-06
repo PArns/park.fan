@@ -3,6 +3,7 @@ import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 
+/** The legal notice (Impressum) in German, shown on the `de` locale. */
 export function ImpressumDE() {
   return (
     <>

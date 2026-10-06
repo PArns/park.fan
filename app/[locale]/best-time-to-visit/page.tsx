@@ -19,12 +19,8 @@ import { RouteMessages } from '@/i18n/route-messages';
 
 /**
  * When this page's copy was first published and last revised, for the `Article` node.
- *
- * Hand-maintained, because nothing else here knows: the page is six locale content modules and a
- * header table, not a feed, so there is no timestamp to read. The initial values are the dates
- * git has for `app/[locale]/best-time-to-visit`. Bump `MODIFIED` when the prose or the figures in
- * it change — an undated page that quotes measurements reads as stale to the engines most likely
- * to quote it.
+ * Hand-maintained, because nothing here carries a timestamp: bump `MODIFIED` when the prose or
+ * its figures change, since an undated page that quotes measurements reads as stale.
  */
 const CONTENT_PUBLISHED = '2026-07-22';
 const CONTENT_MODIFIED = '2026-09-10';
@@ -39,13 +35,8 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
 };
 
 /**
- * Scenic, calm establishing shot — sets the "plan the perfect day" tone.
- *
- * Asked of the database rather than hard-coded. The path it used to name was a
- * byte-for-byte copy of `efteling/symbolica.jpg` kept only so the park had a file
- * called `background`; deduplicating those left this the one reference that broke.
- * Going through the role means the park can change which photo that is without
- * anything here knowing.
+ * The hero photo, asked of the media database by role so the park can change which photo it is
+ * without anything here knowing.
  */
 const HERO_IMAGE = getParkBackgroundImage('efteling') ?? '/media/efteling/symbolica.jpg';
 

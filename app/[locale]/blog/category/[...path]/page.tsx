@@ -11,10 +11,8 @@ interface CategoryPageProps {
   params: Promise<{ locale: string; path: string[] }>;
 }
 
-// Statically generated for every category in every locale. See the index
-// page for the pagination plan when post counts grow past one page. The news
-// category is not one of them: its listing is `/news` (`lib/blog/paths.ts`),
-// and `buildCategoryTree` no longer carries it at all (articles only).
+// Every category in every locale. News is not a category: its listing is `/news`
+// (`lib/blog/paths.ts`).
 
 export async function generateStaticParams() {
   const out: Array<{ locale: string; path: string[] }> = [];

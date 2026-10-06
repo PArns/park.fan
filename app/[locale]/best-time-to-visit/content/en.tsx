@@ -78,10 +78,10 @@ const FAQ = [
   },
 ] as const;
 
+/** The best-time-to-visit hub's article, English. */
 export function ContentEN() {
   return (
     <>
-      {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           When a theme park fills up is surprisingly predictable, and certainly more predictable
@@ -102,7 +102,6 @@ export function ContentEN() {
         </Highlight>
       </div>
 
-      {/* 01 — Data: quietest weekdays + months (live) */}
       <SectionShell
         id="patterns"
         index="01"
@@ -118,7 +117,6 @@ export function ContentEN() {
         <QuietestDaysByPark locale="en" />
       </SectionShell>
 
-      {/* 02 — Times of day */}
       <SectionShell
         id="times"
         index="02"
@@ -171,7 +169,6 @@ export function ContentEN() {
         </SplitFigure>
       </SectionShell>
 
-      {/* 03 — Dates to avoid */}
       <SectionShell id="avoid" index="03" kicker="Red days" title="Dates to avoid" icon={Ban}>
         <PG>
           It’s just as useful to know when not to go. On these dates the parks are packed. You can
@@ -219,7 +216,6 @@ export function ContentEN() {
         />
       </SectionShell>
 
-      {/* 04 — Tactics */}
       <SectionShell
         id="tactics"
         index="04"
@@ -257,7 +253,6 @@ export function ContentEN() {
         </P>
       </SectionShell>
 
-      {/* 05 — Crowd calendar for your park */}
       <SectionShell
         id="parks"
         index="05"
@@ -290,7 +285,6 @@ export function ContentEN() {
         <PopularParksGrid />
       </SectionShell>
 
-      {/* 06 — FAQ */}
       <SectionShell
         id="faq"
         index="06"

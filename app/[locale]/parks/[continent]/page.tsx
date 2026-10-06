@@ -21,7 +21,6 @@ interface ContinentPageProps {
   params: Promise<{ locale: string; continent: string }>;
 }
 
-// Generate static params for all continents
 export async function generateStaticParams() {
   const continents = await getContinents().catch(() => []);
   return continents.map((c) => ({ continent: c.slug }));
@@ -74,11 +73,10 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   const t = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
-  // Fetch countries in this continent. Live open-park counts are NOT fetched here anymore — they
-  // are layered on the client (<LiveCountryCards> / <LiveOpenCount> → useGeoLiveStats), so this
-  // shell stays status-free and cacheable instead of revalidating every 10 min to refresh counts.
-  // `nullOnNotFound`, not `catchNonFatal`: only the API's own 404 may become `notFound()`, which
-  // this prerendered page would otherwise keep for its whole `revalidate`.
+  // Live open-park counts are layered on the client (<LiveCountryCards> / <LiveOpenCount>), so
+  // this shell stays status-free and cacheable. `nullOnNotFound`, not `catchNonFatal`: only the
+  // API's own 404 may become `notFound()`, which this prerendered page would otherwise keep for
+  // its whole `revalidate`.
   const rawCountries = await nullOnNotFound(getCountriesInContinent(continent));
 
   if (!rawCountries) {
@@ -91,14 +89,10 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   rawCountries.forEach((country) => {
     const resolvedName = translateCountry(t, country.slug, locale, country.name);
 
-    // If we haven't seen this name yet, or if this entry has more parks (prefer the "main" entry), use it
     const existing = uniqueCountries.get(resolvedName);
     if (!existing || country.parkCount > existing.parkCount) {
-      // Drop the nested cities→parks→attractions tree – this page only needs
-      // country-level aggregate fields, and the full tree can be hundreds of
-      // thousands of bytes (e.g. all US attraction data) in the RSC payload.
-      // The park coordinates are kept as bare [lat, lng] tuples first (a few bytes per park)
-      // so the card can show the distance to the country's nearest park.
+      // Drop the nested cities→parks→attractions tree, which can be hundreds of kilobytes in the
+      // RSC payload; the park coordinates stay as bare [lat, lng] tuples for the card's distance.
       const { cities: _, ...countryData } = country;
       uniqueCountries.set(resolvedName, {
         ...countryData,
@@ -110,13 +104,12 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
   const countries = Array.from(uniqueCountries.values());
 
-  // Calculate totals (static structure only — the live "open" total is overlaid client-side).
+  // Static structure only: the live "open" total is overlaid client-side.
   const totalParks = countries.reduce((sum, c) => sum + c.parkCount, 0);
   const totalCities = countries.reduce((sum, c) => sum + c.cityCount, 0);
 
   const continentName = translateContinent(t, continent, locale);
 
-  // Create breadcrumbs for continent page
   const tCommon = await getTranslations('common');
   const tNav = await getTranslations('navigation');
   const { breadcrumbs, currentPage: continentCurrentPage } = generateContinentBreadcrumbs({

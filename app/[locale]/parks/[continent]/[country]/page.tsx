@@ -100,7 +100,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const tCommon = await getTranslations('common');
   const tExplore = await getTranslations('explore');
 
-  // Fetch cities and summary in parallel — summary failure is non-fatal
   const [response, summary] = await Promise.all([
     // Only the API's own 404 may end in `notFound()` — see the continent page.
     nullOnNotFound(getCitiesWithParks(continent, country)),
@@ -114,13 +113,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const cities = response.data;
   const countryGuide = getGuideForCountry(locale as Locale, country);
 
-  // Calculate totals
   const totalParks = cities.reduce((sum, c) => sum + c.parkCount, 0);
 
   const continentName = translateContinent(t, continent, locale);
   const countryName = translateCountry(t, country, locale);
 
-  // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
   const { breadcrumbs, currentPage: countryCurrentPage } = generateCountryBreadcrumbs({
     continent,
@@ -163,7 +160,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
           }
         />
 
-        {/* Country summary — top parks + best months */}
         {summary && (
           <CountrySummarySection summary={summary} countryName={countryName} locale={locale} />
         )}
@@ -175,7 +171,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </div>
         )}
 
-        {/* Cities with Parks */}
         <div className="space-y-8">
           {cities.map((city) => (
             <div key={city.slug}>
@@ -188,8 +183,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 }
               />
 
-              {/* Status-free shell (cacheable); live status overlaid client-side. All cities on
-                the page share one underlying /api/parks/live call (React Query dedupe). */}
+              {/* Status-free shell; live status is overlaid client-side, and all cities on the
+                page share one /api/parks/live call (React Query dedupe). */}
               <LiveParkGrid
                 continent={continent}
                 country={country}

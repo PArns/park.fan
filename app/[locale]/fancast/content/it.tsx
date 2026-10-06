@@ -100,10 +100,10 @@ const FAQ = [
   },
 ] as const;
 
+/** The Fancast page's article, Italian. */
 export function ContentIT() {
   return (
     <>
-      {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast è il nostro modello di previsione, la parte di park.fan che calcola già oggi
@@ -124,7 +124,6 @@ export function ContentIT() {
         </Highlight>
       </div>
 
-      {/* 01 – Scorecard (live) */}
       <SectionShell
         id="note"
         index="01"
@@ -142,7 +141,6 @@ export function ContentIT() {
         <FancastLive labels={LIVE_LABELS} />
       </SectionShell>
 
-      {/* 02 – What it reads */}
       <SectionShell
         id="ingredients"
         index="02"
@@ -186,7 +184,6 @@ export function ContentIT() {
         </P>
       </SectionShell>
 
-      {/* 03 – Concrete park examples */}
       <SectionShell
         id="examples"
         index="03"
@@ -238,7 +235,6 @@ export function ContentIT() {
         </SplitFigure>
       </SectionShell>
 
-      {/* 04 – How it learns */}
       <SectionShell
         id="training"
         index="04"
@@ -261,7 +257,6 @@ export function ContentIT() {
         </P>
       </SectionShell>
 
-      {/* 05 – Crowd levels */}
       <SectionShell
         id="levels"
         index="05"
@@ -303,7 +298,6 @@ export function ContentIT() {
         />
       </SectionShell>
 
-      {/* 06 – Try a real park */}
       <SectionShell id="parks" index="06" kicker="Provaci tu" title="Scegli un parco" icon={Ticket}>
         <P>
           Fancast gira su ogni pagina di parco. Eccone alcuni popolari per provarlo: entra in uno,
@@ -313,7 +307,6 @@ export function ContentIT() {
         <PopularParksGrid />
       </SectionShell>
 
-      {/* 07 – Where you meet it */}
       <SectionShell
         id="where"
         index="07"
@@ -382,7 +375,6 @@ export function ContentIT() {
         </P>
       </SectionShell>
 
-      {/* 08 – FAQ */}
       <SectionShell
         id="faq"
         index="08"

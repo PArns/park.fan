@@ -1,7 +1,4 @@
-// The editorial UI kit (hero, numbered section shells, split figures, crowd
-// spectrum, …) now lives in the shared marketing module so the Fancast page and
-// the "best time to visit" hub read as one design system. Kept as a thin
-// re-export so existing Fancast content imports (`./_fancast-ui`) stay valid.
+// The shared editorial UI kit, re-exported for the Fancast page and content modules.
 export {
   LandingHero,
   LandingNextSteps,

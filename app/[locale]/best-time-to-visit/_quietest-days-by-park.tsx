@@ -12,22 +12,11 @@ import { BlogPostLink } from '@/components/blog/blog-post-link';
 import type { Locale } from '@/i18n/config';
 
 /**
- * "The quietest day at each park" — the one section on this page that names parks.
- *
- * Everything above it is averaged across the whole catalogue, which is honest but answers a
- * question almost nobody types. The demand is park-qualified ("beste Zeit Europa-Park besuchen"),
- * and every competitor ranking for that shape is a park-specific page. This closes part of that
- * gap with data no one else has.
- *
- * It renders {@link ParkComparisonCard}, the same component the `park-comparison-widget` fence
- * puts inside blog posts, rather than a table of its own: the numbers drift daily, so they are
- * fetched client-side through the CDN-cached `/api/parks/.../stats` and shared with any
- * `stats-widget` for the same park on the page, instead of being frozen into a prerender. This
- * page only picks the parks and hands over the labels.
- *
- * The list is `FEATURED_PARK_SLUGS`, the same per-locale six the homepage and the header rail use
- * — curated by search volume, so the German page names Europa-Park and Phantasialand while the
- * French one names Parc Astérix and Futuroscope.
+ * The quietest day at each featured park: the one section on this hub that names parks, for the
+ * park-qualified searches ("beste Zeit Europa-Park besuchen") an average cannot answer. It
+ * renders {@link ParkComparisonCard}, the component the `park-comparison-widget` fence uses, so
+ * the numbers that drift daily are fetched client-side instead of frozen into a prerender. The
+ * parks are the locale's `FEATURED_PARK_SLUGS`.
  */
 export async function QuietestDaysByPark({ locale }: { locale: string }) {
   const geo = await getGeoStructure().catch(() => null);
@@ -49,10 +38,8 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
     };
   });
 
-  // The visit guide for each park in the table, in this locale. This hub page linked no post at
-  // all, while the guides' own "when to go" chapters point here (SEO run, 2026-10-03). Same
-  // lookup the park page opens its blog part with, so a park without a guide in this locale
-  // simply is not named, and a locale without a blog gets no line.
+  // The visit guide for each park in the table, by the lookup the park page uses; a park without
+  // a guide in this locale is not named, and a locale without a blog gets no line.
   const guides = hasPublishedPosts(locale as Locale)
     ? parks.flatMap((park) => {
         const guide = getGuideForPark(locale as Locale, park.parkSlug, {

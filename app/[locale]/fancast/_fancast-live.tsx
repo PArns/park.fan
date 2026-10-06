@@ -6,6 +6,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import { formatCompact } from '@/lib/utils/number-utils';
 import { Reveal } from './_fancast-motion';
 
+/** The translated strings `FancastLive` renders, one set per content module. */
 export interface FancastLiveLabels {
   /** e.g. "Aktuelle Edition" */
   edition: string;
@@ -33,11 +34,9 @@ export interface FancastLiveLabels {
 }
 
 /**
- * Almanac-style "edition + revision + scorecard" block, live from
- * `/v1/ml/dashboard`. Complements the reused {@link MLStatsSection} (which shows
- * the aggregate MAE/RMSE/R²) with the current model edition, how it compares to
- * the previous version, and the attractions Fancast currently predicts best —
- * real parks, real numbers. Renders nothing if the dashboard is unreachable.
+ * The model's current edition, its gain over the previous version and the attractions Fancast
+ * predicts best, live from `/v1/ml/dashboard`; `MLStatsSection` shows the aggregate errors. Renders
+ * nothing if the dashboard is unreachable.
  */
 export async function FancastLive({ labels }: { labels: FancastLiveLabels }) {
   const [locale, dashboard] = await Promise.all([getLocale(), getMLDashboard().catch(() => null)]);

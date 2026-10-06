@@ -6,15 +6,10 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerSharedPlan } from '@/components/planner/planner-shared-plan';
 
 /**
- * Where a shared-plan link lands (`lib/planner/trip-share.ts`).
- *
- * The page itself is the same for every link. The trip id is in the fragment,
- * which the server never sees, so everything that depends on it happens in
- * `PlannerSharedPlan` in the browser, and this route can be static.
- *
- * `noindex`, no canonical, no sitemap entry and no localized segment: the same
- * choices `/favorites` makes, for the same reason. Without the fragment the
- * page is an error message.
+ * Where a shared-plan link lands (`lib/planner/trip-share.ts`). The trip id is in the fragment,
+ * which the server never sees, so `PlannerSharedPlan` does the work in the browser and this route
+ * is static. `noindex`, no canonical and no sitemap entry, like `/favorites`: without the
+ * fragment the page is an error message.
  */
 interface SharedPlanPageProps {
   params: Promise<{ locale: string }>;

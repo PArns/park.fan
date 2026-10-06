@@ -188,10 +188,9 @@ export default async function FancastPage({ params }: FancastPageProps) {
     label: tLanding('fancast.stats.dailyLabel'),
   });
 
-  // The page's one action is "a park's crowd calendar" (docs/product/landing-pages.md §4). The
-  // calendar lives on every park page and this page names no single park (chapter 06 offers
-  // several), so the action goes to the best-time hub's chapter 05, which explains the calendar
-  // and lists the parks to open it on. `/parks` alone would be a park list, not a calendar.
+  // The page's one action is "a park's crowd calendar" (docs/product/landing-pages.md §4). This
+  // page names no single park, so it goes to the best-time hub's `#parks` chapter, which explains
+  // the calendar and lists the parks; `/parks` alone would be a park list, not a calendar.
   const action = {
     href: `/${BEST_TIME_SEGMENTS[locale as Locale]}#parks`,
     label: tLanding('fancast.action'),

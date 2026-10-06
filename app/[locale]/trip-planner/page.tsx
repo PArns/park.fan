@@ -33,10 +33,8 @@ import type { PlanDay } from '@/lib/api/types';
 import type { PlannerEntry } from '@/lib/planner/types';
 
 /**
- * The article under the directory, one module per language.
- *
- * Lazy loaders so a render evaluates the requested locale's prose and not all
- * six, which is the guide page's arrangement and for the same reason.
+ * The article under the directory, one module per language, loaded lazily so a render evaluates
+ * only the requested locale's prose.
  */
 type ContentProps = { day: PlanDay; entries: PlannerEntry[] };
 const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType<ContentProps>>> = {
@@ -49,30 +47,10 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType<ContentProps>>
 };
 
 /**
- * The park whose photograph runs behind the hero.
- *
- * `disneyland-park` — the Sleeping Beauty castle — for two reasons that were
- * measured and one about the subject. It is the only park background in the
- * catalogue wider than 1024 px (2048×1536 against 1024×768 for the six other
- * landscape ones), and this photo is the LCP element of a `sizes="100vw"` hero:
- * it covers a 1440 px desktop at 1:1 and still has headroom, where every other
- * candidate is already stretched 1.4× there and 1.9× on a 1920 px window. And it
- * is a wide establishing shot of a park on an open day, which is the sentence
- * this page opens with — and it survives the crop that costs the most: on a
- * 390×658 phone `object-cover` keeps the middle 44.5 % of the frame and the
- * castle sits at x = 0.66, inside the 0.28–0.72 band that is left. It has to be
- * checked rather than assumed, because the shared `Hero` aims nothing: the
- * sidecar's focal point reaches the polaroids below and not this photo.
- *
- * Two alternatives were weighed and lost. `movie-park-germany` (Iron Claw) is the
- * only landscape background no other hero and no polaroid below already uses, but
- * it is a night shot taken from the car park after closing, which is the wrong
- * picture over a page about planning a day. The two remaining backgrounds,
- * `bobbejaanland` and `walibi-belgium`, are portrait (768×1024) and lose twice:
- * 768 px of source across a full-bleed desktop hero, and `object-cover` on a 0.75
- * source in a ~2.06 box (1440×700) scales it 1.875× and shows a 36 % horizontal
- * band of the frame, centred, with nothing to aim it — the shared `Hero` sets no
- * `object-position`.
+ * The park whose photograph runs behind the hero. `disneyland-park` is the only park background
+ * wider than 1024 px, and this photo is the LCP element of a `sizes="100vw"` hero. It is a wide
+ * shot of a park on an open day, and the castle survives the centred phone crop, which matters
+ * because the shared `Hero` sets no `object-position`.
  */
 const HERO_PARK_SLUG = 'disneyland-park';
 
@@ -80,21 +58,13 @@ interface PlannerPageProps {
   params: Promise<{ locale: string }>;
 }
 
+/**
+ * Six URLs, all prerendered: nothing here reads a request, and the plan itself lives in the
+ * visitor's browser.
+ */
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-/**
- * Six URLs, all prerendered, and nothing here reads a request.
- *
- * It was `force-dynamic` for exactly one reason — a Flags-SDK kill switch, whose
- * evaluation reads headers and cookies — so the route rendered on every hit for
- * a page whose only moving part lives in the visitor's own browser. The flag is
- * gone with the feature shipped, and the page is what it always was: six
- * translations, a handful of build-time photos out of the media database, and a
- * Client Component that reads localStorage after mount. The plan itself never
- * touches the server, so there is nothing per-request to keep out of the cache.
- */
 
 /** The localized path for this locale, which is what every link and canonical uses. */
 function path(locale: string): string {
@@ -139,18 +109,9 @@ export async function generateMetadata({ params }: PlannerPageProps): Promise<Me
 }
 
 /**
- * The trip planner's own page.
- *
- * The feature had no URL. Its launcher appears only once something is planned
- * and its panel is opened from a floating button, so a visitor who had not
- * already used it could not find it, could not link to it, and could not be sent
- * to it — and a search engine had nothing to index for it at all. This is the
- * page a menu entry can point at, and the one place that explains what the thing
- * is for before there is anything in it.
- *
- * It renders the DIRECTORY, never the editor. Picking a day here opens the same
- * panel the launcher opens; a page-sized second copy of the day grid would be
- * two implementations of one thing.
+ * The trip planner's own page: the URL a menu entry, a link or a search engine can point at, and
+ * the place that explains the planner before there is anything in it. It renders the directory,
+ * never the editor: picking a day opens the same panel the launcher opens.
  */
 export default async function PlannerPage({ params }: PlannerPageProps) {
   const { locale } = await params;
@@ -167,9 +128,8 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   // The free block's label is a word, and this page exists in six languages.
   const entries = demoEntries(tPlanner('custom.icon.food'));
   // The page's one action (docs/product/landing-pages.md §4) is the tool on this same page, so it
-  // is an anchor and not a second way in: it lands on whichever of the body's own „plan a new
-  // day" controls is showing (the intro's when nothing is planned, the row over the list when
-  // something is), and the visitor presses that. The planner itself opens nowhere else.
+  // is an anchor to whichever of the body's „plan a new day" controls is showing. The planner
+  // itself opens nowhere else.
   const action = {
     href: `${plannerPath(locale)}#${PLANNER_START_ID}`,
     label: tLanding('planner.action'),
@@ -178,11 +138,8 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
 
   return (
     <RouteMessages route="/trip-planner">
-      {/* The trail, and the leaf with it. The guide and Fancast both publish one
-          and this page — reachable from four places in the chrome — published
-          none, so a result for it had nothing under the title. `currentPage`
-          rather than stopping at Home: Google's examples end the list with the
-          page being rendered, and the URL is the one the canonical points at. */}
+      {/* The trail ends with this page itself (`currentPage`), as in Google's examples, at
+          the URL the canonical points at. */}
       <BreadcrumbStructuredData
         breadcrumbs={[{ name: tNav('home'), url: '/' }]}
         currentPage={{ name: t('title'), url: path(locale) }}
@@ -194,20 +151,10 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
         path={path(locale)}
         locale={locale}
       />
-      {/* The page opened on a kicker, an H1 and a lead standing on bare page
-          background — the one editorial page on the site with nothing over it,
-          straight into the polaroid band. Same full-bleed hero the blog index,
-          Fancast and the best-time hub use, and the same component rather than a
-          fourth one — the guide and the blog article carry their own because
-          each is a single page. The `-mt-12` that runs it under the
-          floating 48 px header is `LandingHero`'s own, so the number is not
-          repeated here. Kicker, headline and lead move into it — the H1 keeps the
-          exact text it had (`planner.page.title`), which is the page's strongest
-          on-page signal and is not a thing to redraft for a background.
-
-          No photograph in the database, no photo head — and then this page
-          still needs its heading, so it gets the compact head with the same
-          three strings. It stays in flow below the header (no `-mt-12`). */}
+      {/* The full-bleed hero the blog index, Fancast and the best-time hub use. The H1 is
+          `planner.page.title`, the page's strongest on-page signal. Without a photo in the
+          database it gets the compact head with the same three strings, in flow below the
+          header. */}
       {hero ? (
         <LandingHero
           kicker={tLanding('planner.kicker')}
@@ -229,28 +176,17 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
         />
       )}
 
-      {/* The container's width, like every other page on the site. It was a
-          `max-w-3xl` column, which is a reasonable measure for an article and
-          the wrong box for this page: the directory at the top is a grid of
-          park cards and the chapters below it draw the planner's own
-          components at their real size, so a 768 px cap left a dead strip
-          beside both at any desktop width. Same decision the guide page wrote
-          down — one column at the container's width, no cap of its own.
-
-          `relative` puts it above the hero's stacking context, and `id="start"`
-          is what the hero's scroll cue points at. */}
+      {/* The container's width, with no cap of its own: the directory is a grid of park cards
+          and the chapters draw the planner's components at their real size. `relative` puts it
+          above the hero's stacking context, and `id="start"` is what the hero's scroll cue
+          points at. */}
       <div
         id="start"
         className={cn(
           'relative container mx-auto px-4 pb-16 sm:pb-24',
-          // Below `sm` the hero pins its headline to the TOP and this section is
-          // pulled up over the lower part of the photo. `HERO_FLOW_INTO_PULL`
-          // owns that number — 176 px — and pairs with the hero's own mobile
-          // `pb-48` (192 px): 192 − 176 = 16 px of clearance under the lead, in
-          // every language at every width, because the hero is
-          // `max(78vh, content + padding)` tall and the pull is measured from
-          // its bottom edge. With no photo there is no photo head and no pull,
-          // or the compact head above would slide up under the header.
+          // Below `sm` this section is pulled up over the photo by `HERO_FLOW_INTO_PULL`, which
+          // pairs with the hero's mobile `pb-48`. With no photo there is no pull, or the compact
+          // head would slide up under the header.
           hero ? cn('pt-0 sm:pt-12', HERO_FLOW_INTO_PULL) : 'pt-8 sm:pt-12'
         )}
       >
@@ -286,24 +222,11 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
 }
 
 /**
- * The hero's photograph and its description, or `null` when the database has none.
- *
- * Resolved through `@/lib/media` on the server — this page is a Server Component
- * and the catalogue is 107 KB, the same reason the polaroids below are resolved
- * here rather than inside their Client Component.
- *
- * `null` is a real branch, not a formality: the photo head requires an `imageSrc` and
- * `next/image` throws on an empty one, so a retired photograph would take the
- * whole page down. The alternative the other heroes use — `?? '/media/<park>/…'`
- * — hard-codes a path that outlives the file it names and skips the content hash
- * with it, which is the one thing that lets a retargeted crop be cached hard. So
- * the caller draws the compact head instead and the page loses a picture,
- * not its H1.
- *
- * The alt text comes from the sidecar in the reader's language (`getMediaAlt`
- * falls back de → en → whatever it has). A photo nobody has described gets `''`
- * rather than a sentence assembled from the slug — an empty alt is the honest
- * answer, and reading a park out of a filename is what the media rules forbid.
+ * The hero's photograph and its description, or `null` when the database has none, resolved on
+ * the server so the media catalogue stays out of the client. `null` is a real branch: `next/image`
+ * throws on an empty source, so the caller draws the compact head instead. The alt is the
+ * sidecar's in the reader's language, or `''` for a photo nobody has described, never a sentence
+ * built from the slug.
  */
 function heroPhoto(locale: string): { src: string; alt: string } | null {
   const image = getParkBackground(HERO_PARK_SLUG);
@@ -312,32 +235,15 @@ function heroPhoto(locale: string): { src: string; alt: string } | null {
 }
 
 /**
- * The three photos the empty state lays out as polaroids.
- *
- * Resolved HERE, on the server, because `@/lib/media` is the 107 KB catalogue
- * and `PlannerPolaroids` is a Client Component — importing it there would ship
- * the whole thing to every visitor of this page.
- *
- * A fixed, hand-picked three rather than "the first three with a picture": the
- * database holds a background for nine of 212 parks, so a derived list would be
- * whatever the iteration order happens to be, and these are the three this
- * project's own homepage already leads with. Any that has lost its photo simply
- * drops out — the component draws what it is given and nothing if that is empty,
- * so a picture disappearing from the catalogue cannot leave a hole here.
- *
- * The LOCALE is threaded through for the alt text alone. `getMediaAlt` answers in
- * the reader's language and falls back de → en → whatever the sidecar has, and a
- * photo it has nothing for gets `''` — an empty alt is the honest answer for a
- * picture nobody has described, and the alternative would be a sentence built out
- * of the slug, which is exactly what the media rules say never to read a park, a
- * ride or a role out of.
+ * The photos the empty state lays out as polaroids, resolved here on the server because
+ * `@/lib/media` is the whole catalogue and `PlannerPolaroids` is a Client Component. A fixed,
+ * hand-picked list; one that has lost its photo drops out. The locale is for the alt text alone,
+ * as for the hero.
  */
 function polaroidPhotos(locale: string): PolaroidPhoto[] {
-  // Every park the media database has a background for, in the order they are
-  // laid down. Nine exist, the hero takes one and six are drawn (see `SLOTS`),
-  // and naming all of them means the fan stays full if one picture is retired
-  // rather than silently losing a card. Slugs are the API's, which is why two of
-  // them do not look like their labels.
+  // Every park the media database has a background for, more than the fan's `SLOTS`, so it
+  // stays full if one picture is retired. Slugs are the API's, which is why two of them do
+  // not look like their labels.
   const picks: Array<{ slug: string; label: string }> = [
     { slug: 'phantasialand', label: 'Phantasialand' },
     { slug: 'europa-park', label: 'Europa-Park' },
@@ -352,11 +258,8 @@ function polaroidPhotos(locale: string): PolaroidPhoto[] {
 
   const out: PolaroidPhoto[] = [];
   for (const pick of picks) {
-    // The hero's own park sits this one out. Its photograph already runs
-    // full-bleed above, and the same picture twice in one screen — once across
-    // the viewport, once as a ~175 px square in the band under it — reads as a
-    // mistake rather than as a motif. Nine candidates against six slots, so
-    // dropping one still fills the fan; the seventh moves up into the gap.
+    // The hero's own park sits this one out: the same picture twice in one screen reads as a
+    // mistake rather than a motif.
     if (pick.slug === HERO_PARK_SLUG) continue;
     const image = getParkBackground(pick.slug);
     if (!image) continue;

@@ -9,8 +9,6 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
  * in `components/marketing/editorial-ui.tsx`.
  */
 
-// ── The wait-time display ─────────────────────────────────────────────────────────────────
-
 /**
  * A park's wait-time display, near enough to be recognised: amber on near-black
  * behind a dot mask, with the glow such a panel throws in daylight.
@@ -41,9 +39,8 @@ export function WaitSign({
 }) {
   return (
     <div className={cn('relative flex flex-col', fill && 'h-full', className)}>
-      {/* The glow. Out of flow and behind, so it can never affect layout. Kept
-          tight to the panel — at `-inset-6` on a wide box it stopped reading as
-          a lit panel and became an amber smear across the column. */}
+      {/* The glow, out of flow and behind. Kept tight to the panel: on a wide box a
+          wider one reads as an amber smear rather than a lit panel. */}
       <div
         aria-hidden
         className="absolute -inset-2 -z-10 rounded-[1.75rem] bg-amber-500/25 blur-2xl"
@@ -95,16 +92,9 @@ export function WaitSign({
   );
 }
 
-// ── Chapter intro with an aside ──────────────────────────────────────────────
-
 /**
- * A chapter's opening paragraph with one fact parked beside it.
- *
- * Running text is capped at a readable measure while the section head rules the
- * full width, which leaves two thirds of the band empty right under the biggest
- * horizontal line on the page — the emptiest-looking spot in the layout. This
- * puts a single number there. One, not a panel of them: the point is to fill
- * the band with something worth reading, not to build a dashboard.
+ * A chapter's opening paragraph with one fact parked beside it, in the band the capped text
+ * leaves empty under the section head's full-width rule. One number, not a dashboard.
  */
 export function IntroWithAside({
   children,
@@ -133,8 +123,6 @@ export function IntroWithAside({
   );
 }
 
-// ── Ambience ─────────────────────────────────────────────────────────────────
-
 /**
  * A soft tint behind a chapter, so nine sections in a row do not read as one
  * long grey column.
@@ -160,11 +148,9 @@ export function Ambience({
         ? 'bg-emerald-500/[0.07]'
         : 'bg-primary/[0.07]';
   return (
-    // `overflow-x-clip`, not `overflow-hidden`: the glow is 1152 px wide and hangs
-    // 381 px off each side of a phone, which gave the document a horizontal
-    // scrollbar. `hidden` would fix that and break the sticky figure inside — it
-    // makes the element a scroll container, and `position: sticky` sticks to the
-    // nearest one. `clip` cuts the overflow without creating that container.
+    // `overflow-x-clip`, not `overflow-hidden`: the glow hangs off both sides of a phone, and
+    // `hidden` would make this a scroll container, which the sticky figure inside would then
+    // stick to. `clip` cuts the overflow without creating one.
     <div className={cn('relative isolate overflow-x-clip', className)}>
       <div
         aria-hidden
@@ -179,23 +165,19 @@ export function Ambience({
   );
 }
 
-// ── Park page anatomy ────────────────────────────────────────────────────────
-
+/** One block of the park page in `ParkAnatomy`'s walk-through. */
 export interface AnatomyStep {
   title: string;
   body: string;
   /**
    * What the block actually says on one real park, so the description has
    * something to land on. Every value here is one the API returned for
-   * Phantasialand — the walk-through was a list of abstractions before.
+   * Phantasialand.
    */
   example?: string;
   /**
-   * The real component, for the blocks a reader has not met in an earlier
-   * chapter. The three weather ones are the abstract end of this list — "the
-   * next few hours in quarter-hour steps" describes nothing you can picture —
-   * so they show the production component instead, as everything else on this
-   * page does.
+   * The production component, for the blocks a reader has not met in an earlier
+   * chapter and cannot picture from a sentence, such as the weather ones.
    */
   demo?: React.ReactNode;
   /** Rendered as a muted "only when…" line. Absent = the block is always there. */

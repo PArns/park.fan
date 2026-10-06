@@ -317,6 +317,7 @@ const FAQ = [
   },
 ];
 
+/** The guide page's article, Italian. */
 export function ContentIT() {
   const glossary = `/${GLOSSARY_SEGMENTS.it}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.it}`;
@@ -326,7 +327,6 @@ export function ContentIT() {
     <>
       <ChapterRail chapters={CHAPTERS} ariaLabel="Capitoli" />
 
-      {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan è nato in una coda. Taron, pomeriggio, il display segnava qualcosa a tre cifre, e
@@ -364,7 +364,6 @@ export function ContentIT() {
         </Reveal>
       </div>
 
-      {/* ── 01 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="numero"
         index="01"
@@ -410,7 +409,6 @@ export function ContentIT() {
         </DemoFrame>
       </SectionShell>
 
-      {/* ── 02 ──────────────────────────────────────────────────────────── */}
       <Ambience>
         <SectionShell
           id="scala"
@@ -490,9 +488,8 @@ export function ContentIT() {
             </WaitScaleStage>
           </div>
 
-          {/* Card left, prose right. The card is a park-page sidebar component and
-              looks absurd stretched across a 1500 px column, so it keeps its own
-              width and the text takes the rest instead of leaving a hole. */}
+          {/* Card left, prose right: the card is a park-page sidebar component, so it keeps
+              its own width and the text takes the rest. */}
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sulla pagina di un’attrazione"
@@ -528,7 +525,6 @@ export function ContentIT() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 03 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="momento"
         index="03"
@@ -581,7 +577,6 @@ export function ContentIT() {
         </div>
       </SectionShell>
 
-      {/* ── 04 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="giorno"
         index="04"
@@ -602,10 +597,8 @@ export function ContentIT() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column, full width, like every other chapter on this page. As two
-            prose columns this band put a third text edge under the paragraph above
-            it: a run of copy, then a 604 px column ending short of it, then a
-            second column starting where that paragraph still had words. */}
+        {/* One column, full width, like every other chapter on this page: two prose
+            columns would put a third text edge under the paragraph above. */}
         <div className="space-y-4 pt-2">
           <P>
             Spesso le vacanze dei vicini contano quanto le proprie, perché i visitatori in giornata
@@ -645,7 +638,6 @@ export function ContentIT() {
         </div>
       </SectionShell>
 
-      {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="piano-del-giorno"
         index="05"
@@ -680,7 +672,6 @@ export function ContentIT() {
         </P>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="pagina-parco"
         index="06"
@@ -720,7 +711,6 @@ export function ContentIT() {
         </div>
       </SectionShell>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="notte"
@@ -774,7 +764,6 @@ export function ContentIT() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="limiti"
         index="08"
@@ -815,7 +804,6 @@ export function ContentIT() {
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="dove"
         index="09"
@@ -910,7 +898,6 @@ export function ContentIT() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
         index="10"
