@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2, GitMerge, Loader2, Repeat, XCircle } from 'lu
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { Section } from '../_lib/ui';
+import { formatDay, Section } from '../_lib/ui';
 import { Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
@@ -53,13 +53,6 @@ interface ReissueReport {
 
 const QUERY_KEY = ['admin', 'reissue-candidates'];
 
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
-}
-
 function Side({ label, side }: { label: string; side: CandidateSide }) {
   return (
     <div className="min-w-0 flex-1">
@@ -72,7 +65,7 @@ function Side({ label, side }: { label: string; side: CandidateSide }) {
       </Link>
       <p className="text-muted-foreground truncate font-mono text-xs">{side.slug}</p>
       <p className="text-muted-foreground text-xs">
-        angelegt {day(side.createdAt)} · zuletzt gemessen {day(side.lastReading)}
+        angelegt {formatDay(side.createdAt)} · zuletzt gemessen {formatDay(side.lastReading)}
       </p>
       <p
         className="text-muted-foreground truncate font-mono text-[11px]"

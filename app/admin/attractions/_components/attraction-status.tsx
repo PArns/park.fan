@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Archive, Loader2, TriangleAlert, Undo2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useInvalidateAdmin, adminKeys } from '../../_lib/api';
+import { formatDay } from '../../_lib/ui';
 import { Chip } from '../../_ui/primitives';
 import { Field, TextInput } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
@@ -22,13 +23,6 @@ interface AttractionStatusProps {
   retiredReason: string | null;
   /** Stilllegen und Zurückholen verlangen `owner` — sonst nur die Anzeige. */
   canRetire: boolean;
-}
-
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
 /**
@@ -132,7 +126,7 @@ export function AttractionStatus({
         <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
           <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span>
-            Stillgelegt am {day(retiredAt)}
+            Stillgelegt am {formatDay(retiredAt)}
             {retiredReason ? ` — ${retiredReason}` : ''}. Die Seite antwortet weiter, die Bahn
             taucht aber in keiner Liste mehr auf.
           </span>

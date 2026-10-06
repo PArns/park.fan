@@ -15,7 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { Section } from '../_lib/ui';
+import { formatDay, Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import {
@@ -67,13 +67,6 @@ interface Retired {
    * Nach einem Jahr fällt die Bahn von selbst heraus und ist nur noch über ihre URL erreichbar.
    */
   onParkPage?: boolean;
-}
-
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
 /** Three months out — the default for "look at this again later". */
@@ -161,7 +154,7 @@ function CandidateRow({ candidate, canRetire }: { candidate: Candidate; canRetir
             <span className="text-muted-foreground text-xs">{candidate.park}</span>
           </div>
           <p className="text-muted-foreground mt-1 text-xs">
-            Still seit {day(candidate.wentSilent)} · zuletzt {candidate.maxWait} min Wartezeit
+            Still seit {formatDay(candidate.wentSilent)} · zuletzt {candidate.maxWait} min Wartezeit
           </p>
         </div>
         {mode === 'idle' && (
@@ -303,7 +296,7 @@ function RetiredRow({ entry, canRestore }: { entry: Retired; canRestore: boolean
         {entry.name}
         {entry.park && <span className="text-muted-foreground"> · {entry.park}</span>}
       </Link>
-      <span className="text-muted-foreground text-xs">{day(entry.retiredAt)}</span>
+      <span className="text-muted-foreground text-xs">{formatDay(entry.retiredAt)}</span>
       {entry.reason && (
         <span className="text-muted-foreground max-w-md truncate text-xs">{entry.reason}</span>
       )}

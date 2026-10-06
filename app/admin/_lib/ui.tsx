@@ -1,19 +1,13 @@
 import { type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { HostDisk } from '@/lib/api/admin';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 
 /**
- * What the monitoring dashboards render with.
- *
- * Everything here is specific to those pages — an MAE colour ramp, a disk
- * type guard, the crowd-level palette — and belongs beside them. What used to
- * ALSO live here, and no longer does, is the generic half: `Section`,
- * `LoadingPanel`, `ErrorPanel` and `EmptyPanel` were one of three competing
- * definitions of the same four things in this admin (the media panel kit and
- * the blog editor's form fields had the others), which is exactly the drift the
- * reuse rule exists to prevent. They are re-exported from `_ui/primitives` so
- * the dashboards did not need editing, and there is now one implementation.
+ * Formatters and the section, tile and badge components the admin's dashboards
+ * render with. The loading, error and empty panels at the end are aliases of
+ * the ones in `_ui/primitives`, the kit the rest of the admin uses.
  */
 
 // ─── formatting ───────────────────────────────────────────────────────────────
@@ -51,6 +45,16 @@ export function formatCompact(n: number) {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(2)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
   return String(n);
+}
+
+/** A timestamp as a German calendar day for admin lists, `—` when there is none. */
+export function formatDay(value: string | null): string {
+  if (!value) return '—';
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return value;
+  return getDateTimeFormat('de-DE', { day: '2-digit', month: 'short', year: 'numeric' }).format(
+    parsed
+  );
 }
 
 /** Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`. */

@@ -6,6 +6,7 @@ import { CalendarCheck2, Loader2, Trash2, Unplug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
+import { formatDay } from '../_lib/ui';
 import { Chip } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 
@@ -272,13 +273,7 @@ export interface AbsenceRetiredUnreviewed {
   lastReading: string | null;
 }
 
-function UnreviewedRide({
-  row,
-  dayLabel,
-}: {
-  row: AbsenceRetiredUnreviewed;
-  dayLabel: (v: string | null) => string;
-}) {
+function UnreviewedRide({ row }: { row: AbsenceRetiredUnreviewed }) {
   const { write, busy } = useSeasonWrite();
   const [picking, setPicking] = useState(false);
   const [months, setMonths] = useState<number[]>([]);
@@ -293,7 +288,7 @@ function UnreviewedRide({
           {row.name}
         </Link>
         <span className="text-muted-foreground text-xs">
-          zuletzt gemessen {dayLabel(row.lastReading)}
+          zuletzt gemessen {formatDay(row.lastReading)}
         </span>
         {!picking && (
           <div className="flex gap-1.5">
@@ -357,13 +352,7 @@ function UnreviewedRide({
  * Data-quality card for one park's rides retired for absence and not yet reviewed: per ride (or all
  * at once) mark it as gone, or as seasonal with its months.
  */
-export function UnreviewedParkCard({
-  rows,
-  dayLabel,
-}: {
-  rows: AbsenceRetiredUnreviewed[];
-  dayLabel: (v: string | null) => string;
-}) {
+export function UnreviewedParkCard({ rows }: { rows: AbsenceRetiredUnreviewed[] }) {
   const { write, busy } = useSeasonWrite();
   const [confirmAll, setConfirmAll] = useState(false);
   const park = rows[0];
@@ -419,7 +408,7 @@ export function UnreviewedParkCard({
       </div>
       <ul className="mt-2 space-y-1.5">
         {rows.map((row) => (
-          <UnreviewedRide key={row.attractionId} row={row} dayLabel={dayLabel} />
+          <UnreviewedRide key={row.attractionId} row={row} />
         ))}
       </ul>
     </div>
