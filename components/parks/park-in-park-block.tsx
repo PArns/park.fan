@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin } from 'lucide-react';
 import { InParkRideLists, splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { NextBestRides } from '@/components/parks/next-best-rides';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
-import { useInParkBlock } from '@/lib/hooks/use-in-park-block';
+import { useInParkBlock, useRideCoordinates } from '@/lib/hooks/use-in-park-block';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -41,15 +41,7 @@ export function ParkInParkBlock({
   const t = useTranslations('nearby');
   const { setIsInPark } = useGeolocation();
 
-  const rideCoordinates = useMemo(() => {
-    const map = new Map<string, { lat: number; lng: number }>();
-    for (const a of park.attractions ?? []) {
-      if (a.latitude != null && a.longitude != null) {
-        map.set(a.id, { lat: a.latitude, lng: a.longitude });
-      }
-    }
-    return map;
-  }, [park.attractions]);
+  const rideCoordinates = useRideCoordinates(park.attractions);
 
   const state = useInParkBlock(park, rideCoordinates);
 

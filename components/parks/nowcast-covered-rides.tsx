@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Umbrella } from 'lucide-react';
 import { trackCoveredRideOpened } from '@/lib/analytics/umami';
 import { InParkAttractionRow } from '@/components/parks/nearby-in-park-view';
-import { useInParkBlock } from '@/lib/hooks/use-in-park-block';
+import { useInParkBlock, useRideCoordinates } from '@/lib/hooks/use-in-park-block';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { rankCoveredRides, type CoveredCandidate } from '@/lib/utils/covered-rides';
@@ -63,15 +63,7 @@ export function NowcastCoveredRides({ park }: { park: ParkWithAttractions }) {
   const t = useTranslations('parks.weatherNowcast.covered');
   const tNearby = useTranslations('nearby');
 
-  const rideCoordinates = useMemo(() => {
-    const map = new Map<string, { lat: number; lng: number }>();
-    for (const a of park.attractions ?? []) {
-      if (a.latitude != null && a.longitude != null) {
-        map.set(a.id, { lat: a.latitude, lng: a.longitude });
-      }
-    }
-    return map;
-  }, [park.attractions]);
+  const rideCoordinates = useRideCoordinates(park.attractions);
   const state = useInParkBlock(park, rideCoordinates);
   const showDistance = state.kind === 'inPark' && state.showDistances;
 
