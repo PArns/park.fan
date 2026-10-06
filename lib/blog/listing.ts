@@ -29,7 +29,7 @@ import { isNewsCategory, postPath } from './paths';
  * current caller already does.
  */
 
-export function isValidSlug(slug: string): boolean {
+function isValidSlug(slug: string): boolean {
   return /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(slug);
 }
 
@@ -368,7 +368,7 @@ export function lastTouched(fm: BlogFrontmatter): string {
  *
  * Frozen and memoised like every list here — copy before sorting.
  */
-export function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
   const memo = POSTS_BY_RECENCY.get(requestedLocale);
   if (memo) return memo;
 

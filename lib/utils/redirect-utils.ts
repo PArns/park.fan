@@ -112,7 +112,7 @@ export const cityHasOwnPage = cache(
  * Find all locations a park slug exists at — O(1) via index.
  * Usually one entry; duplicates happen (disneyland-park: Paris + Anaheim).
  */
-export async function findParkLocationsBySlug(parkSlug: string): Promise<ParkLookupResult[]> {
+async function findParkLocationsBySlug(parkSlug: string): Promise<ParkLookupResult[]> {
   const index = await getParkSlugIndex();
   return index[parkSlug] ?? [];
 }

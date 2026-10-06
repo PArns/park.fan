@@ -180,7 +180,7 @@ export function subscribeToFavorites(onChange: () => void): () => void {
  * Add a favorite.
  * Updates cookies and dispatches immediately; API sync runs in background.
  */
-export function addFavorite(type: FavoriteType, id: string): void {
+function addFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
   }
@@ -201,7 +201,7 @@ export function addFavorite(type: FavoriteType, id: string): void {
  * Remove a favorite.
  * Updates cookies and dispatches immediately; API sync runs in background.
  */
-export function removeFavorite(type: FavoriteType, id: string): void {
+function removeFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
   }

@@ -47,7 +47,7 @@ export function detectDefaultUnit(): TemperatureUnit {
 // ---- Temperature ----------------------------------------------------------
 
 /** Convert a Celsius value into the user's chosen unit. */
-export function convertTemp(celsius: number, unit: TemperatureUnit): number {
+function convertTemp(celsius: number, unit: TemperatureUnit): number {
   return unit === 'F' ? (celsius * 9) / 5 + 32 : celsius;
 }
 
@@ -72,7 +72,7 @@ export function formatWindSpeed(kmh: number, unit: TemperatureUnit): string {
 // ---- Precipitation --------------------------------------------------------
 
 /** Convert mm into mm (metric) or inches (imperial). */
-export function convertPrecip(mm: number, unit: TemperatureUnit): number {
+function convertPrecip(mm: number, unit: TemperatureUnit): number {
   return unit === 'F' ? mm * 0.0393701 : mm;
 }
 

@@ -19,7 +19,7 @@ export * from './listing';
  * Load a single post by translationKey for the requested locale, falling back to EN.
  * Returns null when the post does not exist in EN either, or when its mode is not visible.
  */
-export const getPostByTranslationKey = cache(
+const getPostByTranslationKey = cache(
   (translationKey: string, requestedLocale: Locale): BlogPost | null => {
     const resolved = resolveEntryForLocale(translationKey, requestedLocale);
     if (!resolved) return null;

@@ -12,7 +12,7 @@ import 'server-only';
 export type Driver = 'vercel-blob' | 'local';
 
 /** Returns true when `BLOB_READ_WRITE_TOKEN` is set, i.e. a Vercel Blob store is linked. */
-export function isBlobConfigured(): boolean {
+function isBlobConfigured(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 

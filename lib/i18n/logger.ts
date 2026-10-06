@@ -148,8 +148,7 @@ class TranslationLogger {
   }
 }
 
-// Export singleton instance
-export const translationLogger = TranslationLogger.getInstance();
+const translationLogger = TranslationLogger.getInstance();
 
 // Export helper for use in translation functions
 export function logMissingTranslation(key: string, locale: string, namespace?: string): void {

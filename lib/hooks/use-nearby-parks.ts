@@ -40,7 +40,7 @@ export const HOME_NEARBY_LIMIT = 6;
  * - If user denies or GPS times out: calls without lat/lng; backend uses GeoIP.
  * - On 400 (e.g. location could not be determined): error is set; show message or retry.
  */
-export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
+function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const opts: UseNearbyParksOptions =
     typeof options === 'number' ? { radiusInMeters: options } : options;
   const radiusInMeters = opts.radiusInMeters ?? 1000;

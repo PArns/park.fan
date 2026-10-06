@@ -24,7 +24,7 @@ import type { BlogImage } from './types';
  */
 
 /** One database row, in the shape the blog components render. */
-export function toBlogImage(image: MediaImage, locale?: string): BlogImage {
+function toBlogImage(image: MediaImage, locale?: string): BlogImage {
   const lang = locale ?? 'de';
   return {
     // Content-versioned so a retargeted focal point can't be served stale.

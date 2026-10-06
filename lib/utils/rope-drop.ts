@@ -34,7 +34,7 @@ export function isEveningBetter(ropeDrop: RopeDropInfo): boolean {
  * default of recommendations stored before the field existed — real waits are
  * recorded in 5-minute steps, so a positive value is the "filled in" signal.
  */
-export function troughWait(ropeDrop: RopeDropInfo): number | null {
+function troughWait(ropeDrop: RopeDropInfo): number | null {
   return ropeDrop.bestSlotWait != null && ropeDrop.bestSlotWait > 0 ? ropeDrop.bestSlotWait : null;
 }
 

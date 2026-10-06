@@ -10,7 +10,7 @@ import { waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
  * fields are read best-effort via a Record cast, since the backend may include
  * more than the typed interface.
  */
-export function buildFavoriteStats(
+function buildFavoriteStats(
   stats: AttractionStatistics
 ): NonNullable<FavoriteAttraction['statistics']> {
   const extra = stats as unknown as Record<string, unknown>;

@@ -115,7 +115,7 @@ export function rememberSentPushTimezone(endpoint: string, timezone: string): vo
  * rotates the endpoint leaves a record describing a subscription this browser
  * no longer has, and the new one's row may carry any zone or none.
  */
-export function pushTimezoneNeedsSend(endpoint: string, timezone: string): boolean {
+function pushTimezoneNeedsSend(endpoint: string, timezone: string): boolean {
   const sent = readSentPushTimezone();
   return sent === null || sent.endpoint !== endpoint || sent.timezone !== timezone;
 }
