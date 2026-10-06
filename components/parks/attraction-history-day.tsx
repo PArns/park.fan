@@ -13,6 +13,7 @@ import { HourlyP90Sparkline } from './hourly-p90-sparkline';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -54,28 +55,28 @@ function daySignals(
   if (s.isSchoolHoliday || s.isSchoolVacation) {
     signals.push({
       key: 'school',
-      className: 'bg-yellow-500 dark:bg-yellow-400',
+      className: DAY_SIGNAL_CLASS.school,
       label: labels.school,
     });
   }
   if ((s.influencingHolidays?.length ?? 0) > 0 && day.attractionStatus !== 'PARK_CLOSED') {
     signals.push({
       key: 'neighbor',
-      className: 'bg-amber-600 dark:bg-amber-500',
+      className: DAY_SIGNAL_CLASS.neighbor,
       label: labels.neighbor,
     });
   }
   if (s.isPublicHoliday) {
     signals.push({
       key: 'holiday',
-      className: 'bg-red-500 dark:bg-red-400',
+      className: DAY_SIGNAL_CLASS.holiday,
       label: labels.holiday,
     });
   }
   if (s.isBridgeDay) {
     signals.push({
       key: 'bridge',
-      className: 'bg-blue-500 dark:bg-blue-400',
+      className: DAY_SIGNAL_CLASS.bridge,
       label: labels.bridge,
     });
   }

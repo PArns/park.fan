@@ -31,6 +31,7 @@ import {
   CROWD_TILE_CLASS,
 } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
@@ -312,10 +313,10 @@ export function ParkCalendarDayDetail({
    * it. Order matches the legend, so two dialogs never split the bar the other way round.
    */
   const signalBars = [
-    day.isSchoolHoliday || day.isSchoolVacation ? 'bg-yellow-500 dark:bg-yellow-400' : null,
-    showNeighbor ? 'bg-amber-600 dark:bg-amber-500' : null,
-    day.isHoliday || day.isPublicHoliday ? 'bg-red-500 dark:bg-red-400' : null,
-    day.isBridgeDay ? 'bg-blue-500 dark:bg-blue-400' : null,
+    day.isSchoolHoliday || day.isSchoolVacation ? DAY_SIGNAL_CLASS.school : null,
+    showNeighbor ? DAY_SIGNAL_CLASS.neighbor : null,
+    day.isHoliday || day.isPublicHoliday ? DAY_SIGNAL_CLASS.holiday : null,
+    day.isBridgeDay ? DAY_SIGNAL_CLASS.bridge : null,
   ].filter((c): c is string => c !== null);
 
   // The level the panel is TINTED by — the forecast on today (where `crowdLevel` carries the live

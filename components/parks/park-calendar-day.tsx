@@ -13,6 +13,7 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
@@ -57,11 +58,6 @@ export interface ParkCalendarDayProps {
  * the cell showed one. A bar splits into as many segments as there are signals, so the same cell
  * says all of it in three pixels — and the border is free to carry the crowd level instead, which
  * is the thing the reader came for.
- *
- * Colours are deliberately not the `--crowd-*` palette: these are categories, not a scale, and
- * borrowing the scale's amber for „Ferien in Nachbarregionen" would put a legend colour next to a
- * tier colour that means something else entirely. Red for a public holiday follows the calendar
- * convention every German wall calendar already taught the reader.
  */
 function daySignals(day: CalendarDay, locale: string) {
   const signals: { key: string; className: string; label: string }[] = [];
@@ -70,23 +66,23 @@ function daySignals(day: CalendarDay, locale: string) {
     const name = day.events?.find((e) => e.type === 'school-holiday')?.name;
     signals.push({
       key: 'school',
-      className: 'bg-yellow-500 dark:bg-yellow-400',
+      className: DAY_SIGNAL_CLASS.school,
       label: translateHolidayName(name, locale) || '',
     });
   }
   if ((day.neighborHolidays?.length ?? 0) > 0 && day.status !== 'CLOSED') {
-    signals.push({ key: 'neighbor', className: 'bg-amber-600 dark:bg-amber-500', label: '' });
+    signals.push({ key: 'neighbor', className: DAY_SIGNAL_CLASS.neighbor, label: '' });
   }
   if (day.isHoliday || day.isPublicHoliday) {
     const name = day.events?.find((e) => e.type === 'holiday')?.name;
     signals.push({
       key: 'holiday',
-      className: 'bg-red-500 dark:bg-red-400',
+      className: DAY_SIGNAL_CLASS.holiday,
       label: translateHolidayName(name, locale) || '',
     });
   }
   if (day.isBridgeDay) {
-    signals.push({ key: 'bridge', className: 'bg-blue-500 dark:bg-blue-400', label: '' });
+    signals.push({ key: 'bridge', className: DAY_SIGNAL_CLASS.bridge, label: '' });
   }
 
   return signals;
