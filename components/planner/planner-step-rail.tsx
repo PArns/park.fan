@@ -13,6 +13,17 @@ import { cn } from '@/lib/utils';
 const RAIL_DOT_CLEARANCE = 18;
 
 /**
+ * Which way a stepped dialog's step slides in from, keyed by `String(forward)`.
+ *
+ * Two literal class strings because Tailwind's scanner never sees a class built
+ * from a `slide-in-from-${side}` template.
+ */
+export const STEP_MOTION: Record<string, string> = {
+  true: 'motion-safe:slide-in-from-right-4 motion-safe:fade-in-0 motion-safe:duration-200',
+  false: 'motion-safe:slide-in-from-left-4 motion-safe:fade-in-0 motion-safe:duration-200',
+};
+
+/**
  * Where a stepped dialog is, in circles.
  *
  * One component for both of the planner's assistants — the wizard that opens a

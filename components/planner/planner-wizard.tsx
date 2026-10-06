@@ -55,7 +55,7 @@ import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
 import { PlannerMonthCalendar } from './planner-month-calendar';
 import { PlannerFitLevers } from './planner-fit-levers';
 import { PlannerFitList } from './planner-fit-list';
-import { PlannerStepRail } from './planner-step-rail';
+import { PlannerStepRail, STEP_MOTION } from './planner-step-rail';
 
 /**
  * A park as the wizard holds it.
@@ -1072,18 +1072,6 @@ export function PlannerWizard({
     </Dialog>
   );
 }
-
-/**
- * Which way a step slides in from.
- *
- * Keyed by the stringified direction so the two literal class strings are both
- * visible to Tailwind's scanner — a `slide-in-from-${side}` template is a class
- * that never gets generated.
- */
-const STEP_MOTION: Record<string, string> = {
-  true: 'motion-safe:slide-in-from-right-4 motion-safe:fade-in-0 motion-safe:duration-200',
-  false: 'motion-safe:slide-in-from-left-4 motion-safe:fade-in-0 motion-safe:duration-200',
-};
 
 /**
  * The band across the top: the park, its place, and the day once there is one.

@@ -22,7 +22,7 @@ import {
 } from '@/lib/planner/fit';
 import { PlannerFitLevers } from './planner-fit-levers';
 import { PlannerFitList } from './planner-fit-list';
-import { PlannerStepRail } from './planner-step-rail';
+import { PlannerStepRail, STEP_MOTION } from './planner-step-rail';
 import { cn } from '@/lib/utils';
 
 type FitStep = 'levers' | 'rides' | 'result';
@@ -347,9 +347,3 @@ function ResultRow({ label, value }: { label: string; value: string }) {
     </li>
   );
 }
-
-/** Which way a step slides in from — the wizard's own two class strings. */
-const STEP_MOTION: Record<string, string> = {
-  true: 'motion-safe:slide-in-from-right-4 motion-safe:fade-in-0 motion-safe:duration-200',
-  false: 'motion-safe:slide-in-from-left-4 motion-safe:fade-in-0 motion-safe:duration-200',
-};
