@@ -15,7 +15,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
-import type { AttractionWithDistance, NearbyAttractionsData } from '@/types/nearby';
+import type { AttractionWithDistance, NearbyAttractionsData, NearbyParkInfo } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 
 // All headliners are shown (no cap). The "nearest" list below shows the next non-headliner rides so
@@ -90,7 +90,7 @@ export function InParkAttractionRow({
                     {attraction.waitTime} min
                   </Badge>
                 )}
-                {attraction.crowdLevel && attraction.crowdLevel !== null && (
+                {attraction.crowdLevel && (
                   <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
                 )}
               </>
@@ -195,6 +195,36 @@ export function InParkRideLists({
   );
 }
 
+function ParkAnalyticsRow({
+  analytics,
+  className,
+}: {
+  analytics: NonNullable<NearbyParkInfo['analytics']>;
+  className?: string;
+}) {
+  const tCommon = useTranslations('common');
+  return (
+    <div className={cn(className, 'flex items-center gap-4 text-sm')}>
+      {analytics.avgWaitTime !== undefined && (
+        <div className="flex items-center gap-1">
+          <Clock className="text-muted-foreground h-4 w-4" />
+          <span>
+            {analytics.avgWaitTime} {tCommon('minutes')} Ø
+          </span>
+        </div>
+      )}
+      {analytics.operatingAttractions !== undefined && (
+        <div className="flex items-center gap-1">
+          <TrendingUp className="text-muted-foreground h-4 w-4" />
+          <span>
+            {analytics.operatingAttractions} {tCommon('operating')}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /**
  * "You are in a park" view: full-bleed park banner with headliners and the nearest attractions.
  * Rendered when the nearby response classifies the user as inside a park.
@@ -210,7 +240,6 @@ export function InParkView({
   nested?: boolean;
 }) {
   const t = useTranslations('nearby');
-  const tCommon = useTranslations('common');
   const tStatus = useTranslations('parks.status');
 
   if (!data || !data.park) {
@@ -309,27 +338,7 @@ export function InParkView({
                   )}
               </article>
 
-              {/* Park Analytics - Inside Link */}
-              {park.analytics && (
-                <div className="mt-4 flex items-center gap-4 text-sm">
-                  {park.analytics.avgWaitTime !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <Clock className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
-                      </span>
-                    </div>
-                  )}
-                  {park.analytics.operatingAttractions !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <TrendingUp className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.operatingAttractions} {tCommon('operating')}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
+              {park.analytics && <ParkAnalyticsRow analytics={park.analytics} className="mt-4" />}
             </Link>
           ) : (
             <>
@@ -344,27 +353,7 @@ export function InParkView({
                   )}
               </article>
 
-              {/* Park Analytics */}
-              {park.analytics && (
-                <div className="flex items-center gap-4 text-sm">
-                  {park.analytics.avgWaitTime !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <Clock className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
-                      </span>
-                    </div>
-                  )}
-                  {park.analytics.operatingAttractions !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <TrendingUp className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.operatingAttractions} {tCommon('operating')}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
+              {park.analytics && <ParkAnalyticsRow analytics={park.analytics} />}
             </>
           )}
 
