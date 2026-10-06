@@ -35,12 +35,5 @@ export async function renderGlossaryTermOg({ locale, term }: GlossaryOgParams): 
     subtitle: { text: subtitle, fontSize: 28, maxWidth: 1000 },
     colors: { kicker: KICKER, glow: GLOW },
     flexText: true,
-    headers: {
-      // 30 days, matching the park/geo cards. This one is even safer: a term card is built
-      // entirely from `lib/glossary/data.ts`, so it cannot change until the next deploy — and a
-      // deploy purges the CDN anyway. The 5-minute window it used to carry expired long before
-      // a term URL was requested a second time, so effectively every hit paid a full render.
-      'Cache-Control': 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
-    },
   });
 }

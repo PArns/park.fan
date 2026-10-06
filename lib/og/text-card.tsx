@@ -5,6 +5,13 @@ import { OgBrandLockup } from '@/lib/og/brand-mark';
 const WIDTH = 1200;
 const HEIGHT = 630;
 
+// 30 days, as the park and geo cards. Everything a text card shows ships with the deployment
+// (post frontmatter, glossary data, translations), so it cannot change before the next deploy,
+// and a deploy purges the CDN anyway.
+const CACHE_HEADERS = {
+  'Cache-Control': 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
+};
+
 /** What one text card shows, and the sizes its kind of page sets it in. */
 interface OgTextCard {
   /** The section label; an empty one leaves its row blank. Cut to `limit` characters. */
@@ -17,7 +24,6 @@ interface OgTextCard {
   coverImage?: string | null;
   /** Lays the title and subtitle out as flex boxes. */
   flexText?: boolean;
-  headers?: Record<string, string>;
 }
 
 /** Renders the text OG card of the blog and glossary pages: kicker, title and subtitle over a tinted gradient, with the brand lockup. */
@@ -28,7 +34,6 @@ export function renderOgTextCard({
   colors,
   coverImage,
   flexText = false,
-  headers,
 }: OgTextCard): Promise<Response> {
   const textDisplay = flexText ? { display: 'flex' as const } : {};
 
@@ -158,7 +163,7 @@ export function renderOgTextCard({
           <OgBrandLockup markerHeight={46} />
         </div>
       </div>,
-      { width: WIDTH, height: HEIGHT, headers }
+      { width: WIDTH, height: HEIGHT, headers: CACHE_HEADERS }
     )
   );
 }
