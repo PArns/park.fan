@@ -311,8 +311,7 @@ export function ParkTodayPanel({
   // a new array + new objects each time, for a list that only actually changes when the poll
   // replaces `park.attractions`.
   const rideAlertAttractions = useMemo(
-    () => rideAlertAttractionsFor(park),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    () => rideAlertAttractionsFor({ attractions: park.attractions, status: park.status }),
     [park.attractions, park.status]
   );
 
