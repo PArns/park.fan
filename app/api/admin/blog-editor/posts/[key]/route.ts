@@ -5,10 +5,9 @@ import matter from 'gray-matter';
 import { NextResponse, type NextRequest } from 'next/server';
 import { fromFrontmatter } from '@/app/admin/blog-editor/_lib/types';
 import { denyUnlessAdmin } from '@/lib/admin/session';
+import { BLOG_LOCALE_RE, BLOG_SLUG_RE } from '@/lib/admin/blog-paths';
 
 const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
-const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
-const SAFE_KEY = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 
 const WIDGET_NAMES = new Set([
   'park-widget',
@@ -67,7 +66,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ key:
   if (unauthorized) return unauthorized;
 
   const { key } = await params;
-  if (!key || !SAFE_KEY.test(key)) {
+  if (!key || !BLOG_SLUG_RE.test(key)) {
     return NextResponse.json({ error: 'invalid key' }, { status: 400 });
   }
   if (!fs.existsSync(BLOG_ROOT)) {
@@ -84,7 +83,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ key:
   > = {};
 
   for (const entry of fs.readdirSync(BLOG_ROOT, { withFileTypes: true })) {
-    if (!entry.isDirectory() || !LOCALE_RE.test(entry.name)) continue;
+    if (!entry.isDirectory() || !BLOG_LOCALE_RE.test(entry.name)) continue;
     const localeDir = path.join(BLOG_ROOT, entry.name);
     for (const file of fs.readdirSync(localeDir)) {
       if (!file.endsWith('.md')) continue;

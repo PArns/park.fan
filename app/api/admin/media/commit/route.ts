@@ -3,10 +3,9 @@ import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 
 import { denyUnlessAdmin } from '@/lib/admin/session';
+import { adminGithubToken, adminRepo } from '@/lib/admin/github';
 import {
   SESSION_PREFIX,
-  mediaRepo,
-  mediaToken,
   readSessionJson,
   resolveSession,
   sessionChanges,
@@ -239,7 +238,7 @@ export async function POST(req: Request) {
 
   // ─── open a branch and commit ─────────────────────────────────────────────
 
-  const token = mediaToken();
+  const token = adminGithubToken();
   if (!token) {
     return bad(
       'No GitHub token configured. Set BLOG_EDITOR_GITHUB_TOKEN on the deployment — ' +
@@ -249,7 +248,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const { owner, repo, baseBranch } = mediaRepo();
+  const { owner, repo, baseBranch } = adminRepo();
   const octokit = new Octokit({ auth: token });
 
   let baseSha: string;

@@ -4,9 +4,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { NextResponse } from 'next/server';
 import { denyUnlessAdmin } from '@/lib/admin/session';
+import { BLOG_LOCALE_RE } from '@/lib/admin/blog-paths';
 
 const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
-const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
 
 interface PostLocaleSummary {
   slug: string;
@@ -47,7 +47,7 @@ export async function GET(req: Request) {
   };
   const records: MdRecord[] = [];
   for (const entry of fs.readdirSync(BLOG_ROOT, { withFileTypes: true })) {
-    if (!entry.isDirectory() || !LOCALE_RE.test(entry.name)) continue;
+    if (!entry.isDirectory() || !BLOG_LOCALE_RE.test(entry.name)) continue;
     const localeDir = path.join(BLOG_ROOT, entry.name);
     for (const file of fs.readdirSync(localeDir)) {
       if (!file.endsWith('.md')) continue;

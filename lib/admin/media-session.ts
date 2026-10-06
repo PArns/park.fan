@@ -2,6 +2,7 @@ import 'server-only';
 import type { Octokit } from '@octokit/rest';
 
 import type { SessionFile } from '@/lib/media/session-photos';
+import type { RepoRef } from './github';
 
 /**
  * Which pull request a media save lands in.
@@ -38,24 +39,6 @@ export interface MediaSession {
   title: string | null;
   draft: boolean;
   body: string;
-}
-
-interface RepoRef {
-  owner: string;
-  repo: string;
-  baseBranch: string;
-}
-
-/** The repository and base branch every media write targets. */
-export function mediaRepo(): RepoRef {
-  const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
-  const [owner = 'PArns', repo = 'park.fan'] = repoEnv.split('/');
-  return { owner, repo, baseBranch: process.env.BLOG_EDITOR_BASE_BRANCH ?? 'main' };
-}
-
-/** The token the media admin writes with, or null when none is configured. */
-export function mediaToken(): string | null {
-  return process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN ?? null;
 }
 
 /**

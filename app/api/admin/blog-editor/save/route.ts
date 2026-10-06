@@ -4,6 +4,8 @@ import type { BlogFrontmatter } from '@/lib/blog/types';
 import { buildPostFile } from '@/app/admin/blog-editor/_lib/serialize';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { sidecarForUpload } from '@/lib/admin/blog-image-sidecar';
+import { BLOG_LOCALE_RE, BLOG_SLUG_RE } from '@/lib/admin/blog-paths';
+import { adminGithubToken, adminRepo, forkFromBase, MISSING_TOKEN_HINT } from '@/lib/admin/github';
 
 interface SavePayload {
   baseSlug: string;
@@ -53,7 +55,6 @@ const IMAGE_PATH_RE = /^\/media\/[a-z0-9][a-z0-9/._-]*\.(png|jpe?g|webp|gif|avif
 /** ~3MB raw ≈ 4MB base64 — matches the client-side cap. */
 const MAX_IMAGE_BASE64 = 4 * 1024 * 1024;
 
-const AUTHOR_KEY_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 const CATEGORY_PATH_RE = /^[a-z0-9](?:[a-z0-9-/]*[a-z0-9])?$/i;
 
 function buildAuthorFile(a: NonNullable<SavePayload['newAuthors']>[number]): string {
@@ -78,12 +79,6 @@ function yamlString(s: string): string {
   return s;
 }
 
-const REQUIRED_TOKEN_HINT =
-  'Set BLOG_EDITOR_GITHUB_TOKEN (PAT with repo scope) on the deployment to enable saving.';
-
-const SLUG_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
-
 /**
  * Commit one .md per filled locale on a single branch + open one PR back to
  * the base branch. Token comes from BLOG_EDITOR_GITHUB_TOKEN (or GITHUB_TOKEN).
@@ -92,8 +87,8 @@ const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
 export async function POST(req: Request) {
   const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
-  const token = process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
-  if (!token) return NextResponse.json({ error: REQUIRED_TOKEN_HINT }, { status: 500 });
+  const token = adminGithubToken();
+  if (!token) return NextResponse.json({ error: MISSING_TOKEN_HINT }, { status: 500 });
 
   let payload: SavePayload;
   try {
@@ -103,13 +98,13 @@ export async function POST(req: Request) {
   }
   const { baseSlug, sourceLocale, perLocale } = payload;
 
-  if (!SLUG_RE.test(baseSlug)) {
+  if (!BLOG_SLUG_RE.test(baseSlug)) {
     return NextResponse.json(
       { error: 'Invalid base slug — lowercase letters, digits, hyphens' },
       { status: 400 }
     );
   }
-  if (!LOCALE_RE.test(sourceLocale) || !perLocale?.[sourceLocale]) {
+  if (!BLOG_LOCALE_RE.test(sourceLocale) || !perLocale?.[sourceLocale]) {
     return NextResponse.json(
       { error: 'sourceLocale must be filled and match a locale draft' },
       { status: 400 }
@@ -120,10 +115,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'No locales to save' }, { status: 400 });
   }
   for (const [locale, draft] of entries) {
-    if (!LOCALE_RE.test(locale)) {
+    if (!BLOG_LOCALE_RE.test(locale)) {
       return NextResponse.json({ error: `Invalid locale: ${locale}` }, { status: 400 });
     }
-    if (!SLUG_RE.test(draft.slug)) {
+    if (!BLOG_SLUG_RE.test(draft.slug)) {
       return NextResponse.json(
         { error: `${locale}: slug "${draft.slug}" is invalid` },
         { status: 400 }
@@ -138,43 +133,15 @@ export async function POST(req: Request) {
     }
   }
 
-  const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
-  const [owner = 'PArns', repo = 'park.fan'] = repoEnv.split('/');
-  const baseBranch = process.env.BLOG_EDITOR_BASE_BRANCH ?? 'main';
-
+  const target = adminRepo();
+  const { owner, repo, baseBranch } = target;
   const octokit = new Octokit({ auth: token });
 
-  // 1. Resolve the base branch head SHA so we can fork a branch from it.
-  let baseSha: string;
-  try {
-    const { data: baseRef } = await octokit.git.getRef({
-      owner,
-      repo,
-      ref: `heads/${baseBranch}`,
-    });
-    baseSha = baseRef.object.sha;
-  } catch (e) {
-    return NextResponse.json(
-      { error: `Could not read base branch ${baseBranch}: ${(e as Error).message}` },
-      { status: 500 }
-    );
-  }
-
+  // 1. Fork a branch off the base branch's head.
   const stamp = new Date().toISOString().slice(0, 10);
   const branch = payload.editing ? `blog/edit-${baseSlug}-${stamp}` : `blog/${baseSlug}-${stamp}`;
-  try {
-    await octokit.git.createRef({
-      owner,
-      repo,
-      ref: `refs/heads/${branch}`,
-      sha: baseSha,
-    });
-  } catch (e) {
-    return NextResponse.json(
-      { error: `Could not create branch ${branch}: ${(e as Error).message}` },
-      { status: 500 }
-    );
-  }
+  const forkError = await forkFromBase(octokit, target, branch);
+  if (forkError) return NextResponse.json({ error: forkError }, { status: 500 });
 
   // 2. Commit one file per locale on that branch (each is a separate commit so
   //    the PR diff reads naturally).
@@ -226,7 +193,7 @@ export async function POST(req: Request) {
   if (payload.editing) {
     for (const [locale, originalSlug] of Object.entries(payload.editing.originalSlugs)) {
       const draft = perLocale[locale];
-      if (!draft || !LOCALE_RE.test(locale) || !SLUG_RE.test(originalSlug)) continue;
+      if (!draft || !BLOG_LOCALE_RE.test(locale) || !BLOG_SLUG_RE.test(originalSlug)) continue;
       if (draft.slug === originalSlug) continue;
       const stalePath = `content/blog/${locale}/${originalSlug}.md`;
       try {
@@ -266,7 +233,7 @@ export async function POST(req: Request) {
   ];
   for (const { list, mode } of authorRuns) {
     for (const author of list) {
-      if (!AUTHOR_KEY_RE.test(author.key) || !author.name?.trim()) continue;
+      if (!BLOG_SLUG_RE.test(author.key) || !author.name?.trim()) continue;
       const path = `content/blog/authors/${author.key}.md`;
       let existingSha: string | undefined;
       try {

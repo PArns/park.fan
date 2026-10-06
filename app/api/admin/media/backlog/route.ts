@@ -2,13 +2,8 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 
-import {
-  mediaRepo,
-  mediaToken,
-  readSessionJson,
-  resolveSession,
-  sessionFiles,
-} from '@/lib/admin/media-session';
+import { adminGithubToken, adminRepo } from '@/lib/admin/github';
+import { readSessionJson, resolveSession, sessionFiles } from '@/lib/admin/media-session';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { getParkByGeoPathFresh } from '@/lib/api/parks';
 import { getParkHistoricalStats } from '@/lib/api/stats';
@@ -85,9 +80,9 @@ const MAX_SIDECAR_READS = 40;
 async function sessionPhotos(
   parkSlug: string
 ): Promise<{ names: string[]; rides: Set<string> } | null> {
-  const token = mediaToken();
+  const token = adminGithubToken();
   if (!token) return null;
-  const repoRef = mediaRepo();
+  const repoRef = adminRepo();
   const octokit = new Octokit({ auth: token });
   const session = await resolveSession(octokit, repoRef);
   if (!session) return { names: [], rides: new Set() };

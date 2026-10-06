@@ -5,6 +5,8 @@ import { cache } from 'react';
 import matter from 'gray-matter';
 import { locales, type Locale } from '@/i18n/config';
 import { listAuthorKeys, getAuthor } from '@/lib/blog/authors';
+import { BLOG_LOCALE_RE } from '@/lib/admin/blog-paths';
+import { adminRepo } from '@/lib/admin/github';
 
 const CATEGORIES_PATH = path.resolve(process.cwd(), 'content', 'blog', 'categories.json');
 const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
@@ -65,7 +67,7 @@ const getAllTags = cache((): string[] => {
   if (!fs.existsSync(BLOG_ROOT)) return [];
   const tags = new Set<string>();
   for (const dir of fs.readdirSync(BLOG_ROOT, { withFileTypes: true })) {
-    if (!dir.isDirectory() || !/^[a-z]{2}(-[a-z]{2})?$/i.test(dir.name)) continue;
+    if (!dir.isDirectory() || !BLOG_LOCALE_RE.test(dir.name)) continue;
     const localeDir = path.join(BLOG_ROOT, dir.name);
     for (const file of fs.readdirSync(localeDir)) {
       if (!file.endsWith('.md')) continue;
@@ -106,16 +108,14 @@ const getAuthors = cache((): AuthorOption[] => {
  * authors, categories, every tag in use, and the GitHub repo and base branch posts are saved to.
  */
 export function getInitialEditorData(): EditorInitialData {
-  // Defaults: parse owner/repo from env (set by Vercel) or fall back to ours.
-  const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
-  const [repoOwner = 'PArns', repoName = 'park.fan'] = repoEnv.split('/');
+  const { owner, repo, baseBranch } = adminRepo();
   return {
     locales,
     authors: getAuthors(),
     categories: getCategories(),
     tags: getAllTags(),
-    repoOwner,
-    repoName,
-    baseBranch: process.env.BLOG_EDITOR_BASE_BRANCH ?? 'main',
+    repoOwner: owner,
+    repoName: repo,
+    baseBranch,
   };
 }

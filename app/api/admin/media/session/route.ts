@@ -3,7 +3,8 @@ import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 
 import { denyUnlessAdmin } from '@/lib/admin/session';
-import { mediaRepo, mediaToken, resolveSession, sessionChanges } from '@/lib/admin/media-session';
+import { adminGithubToken, adminRepo } from '@/lib/admin/github';
+import { resolveSession, sessionChanges } from '@/lib/admin/media-session';
 
 /**
  * Is a media session running, where is it, and what is already in it?
@@ -34,10 +35,10 @@ export async function GET(req: Request) {
   const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
 
-  const token = mediaToken();
+  const token = adminGithubToken();
   if (!token) return NextResponse.json({ session: null, tokenMissing: true });
 
-  const { owner, repo, baseBranch } = mediaRepo();
+  const { owner, repo, baseBranch } = adminRepo();
 
   try {
     const octokit = new Octokit({ auth: token });
