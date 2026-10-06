@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-menu-panel.tsx`](../../components/layout/blog-menu-panel.tsx)
 
-- `BlogMenuPanel` _component_: Memoised for the same reason as `ParksMenuPanel`.
+- `BlogMenuPanel` _component_: The blog menu: the newest article as the opener, the rest as rows with a small cover, date, reading time and teaser, and the categories as a pill row along the bottom.
 
 ### [`brand-lockup.tsx`](../../components/layout/brand-lockup.tsx)
 
@@ -25,18 +25,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `Row` _component_: The sheet's shape, and the shape of every group in the band that has no picture and no figure: a 40 px box, two lines, something on the right.
 - `GroupHeading` _component_: Small uppercase heading of a group in the favourites band, with the group's count on the right.
-- `RowSkeletons` _component_: `max` is the caller's own cap, not the sheet's: a group that slices its rows at `MAX_CARDS` would otherwise reserve five and grow by three when the request lands.
-- `RowGroupSkeleton` _component_: A row group's box before its content exists: the heading it is going to have, and as many skeleton rows as it expects to fill.
-- `MoreLine` _component_: „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is — `/favorites` for favorites, `/alerts` for the alerts group.
+- `RowSkeletons` _component_: Skeleton rows for a group still loading. `max` is the caller's own cap, not the sheet's, or a group capped at `MAX_CARDS` would reserve five rows and then grow.
+- `RowGroupSkeleton` _component_: A row group's box before its content exists: its heading and as many skeleton rows as it expects.
+- `MoreLine` _component_: „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is: `/favorites` for favorites, `/alerts` for the alerts group.
 - `MAX_ROWS` _const_: Rows per group in the sheet, where they are cheaper.
 
 ### [`favorites-menu.tsx`](../../components/layout/favorites-menu.tsx)
 
-- `FavoritesMenu` _component_: Memoised for the same reason as `ParksMenuPanel`: its one prop is a boolean.
+- `FavoritesMenu` _component_: The favorites entry in the header's nav row, opening the same full-width band as the others, on hover with the same hysteresis (`useMenuTrigger`).
 
 ### [`footer-link-group.tsx`](../../components/layout/footer-link-group.tsx)
 
-- `FooterLinkGroup` _component_: One column of the footer's link list: a plain column from `sm` up, a collapsed row below it.
+- `FooterLinkGroup` _component_: One column of the footer's link list: a plain column from `sm` up, a collapsed row below it, so the footer does not take most of a phone screen.
 
 ### [`footer.tsx`](../../components/layout/footer.tsx)
 
@@ -44,7 +44,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`header-nearby-park.tsx`](../../components/layout/header-nearby-park.tsx)
 
-- `HeaderNearbyPark` _component_: The header's "you are near &lt;park&gt;" link: a pin in the bar (`bar`), a full row in the burger sheet (`sheet`).
+- `HeaderNearbyPark` _component_: The header's "you are near &lt;park&gt;" link: a pin in the bar (`bar`), a full row in the burger sheet (`sheet`). Its own component so the geolocation context, after-load flag and query it reads re-render only the pin, not the whole bar.
 
 ### [`header.tsx`](../../components/layout/header.tsx)
 
@@ -57,7 +57,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-image-info-panel.tsx`](../../components/layout/hero-image-info-panel.tsx)
 
-- `HeroImageInfoPanel` _component_: Presentational hero image attribution panel (bottom-right, desktop only).
+- `HeroImageInfoPanel` _component_: Hero photo attribution panel (bottom-right, desktop only), pure markup shared by the server caption and the client in-park caption. Bottom-right because the hero's left column runs the full height of the section.
 
 ### [`hero-image-info-switch.tsx`](../../components/layout/hero-image-info-switch.tsx)
 
@@ -74,6 +74,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-three-park.tsx`](../../components/layout/hero-three-park.tsx)
 
+Owns the WebGL lifecycle of the hero's three.js park; the scene itself is `lib/three/park-scene.ts`.
+
 - `HeroThreePark` _component_: Mounts the three.js amusement park scene into a full-bleed canvas behind the homepage hero and reports load progress and readiness. Client-only through a dynamic import; follows the theme and draws one static frame under reduced motion.
 
 ### [`language-banner.tsx`](../../components/layout/language-banner.tsx)
@@ -82,11 +84,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`menu-band.tsx`](../../components/layout/menu-band.tsx)
 
-- `MenuBand` _component_: The full-bleed glass band the header's menus open into.
+- `MenuBand` _component_: The full-bleed glass band the header's menus open into, one surface whichever trigger opened it.
 
 ### [`menu-section-heading.tsx`](../../components/layout/menu-section-heading.tsx)
 
-- `MenuSectionHeading` _component_: The rule above a column in one of the header's menu bands.
+- `MenuSectionHeading` _component_: The rule above a column in one of the header's menu bands, in one definition so the bands read as one surface. `href` and `count` are optional: not every column has a hub or a number.
 
 ### [`more-menu-links.tsx`](../../components/layout/more-menu-links.tsx)
 
@@ -98,17 +100,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`nav-menu.tsx`](../../components/layout/nav-menu.tsx)
 
-- `NavEntryLabel` _component_: The icon-plus-label of a header destination, in both menus: the entries of the nav row (the `NavMenu` triggers and the row's plain links) and the phone sheet's destinations.
+- `NavEntryLabel` _component_: The icon-plus-label of a header destination, in the nav row and the phone sheet, so the two cannot drift in how a glyph sits before its word.
 - `NavMenu` _component_: Header nav entry that is both a link and the trigger of a dropdown panel. The panel is always in the HTML and hidden until opened, so crawlers see its links.
-- `headerNavInk` _function_: The ink of every entry in the header's nav row, in the bar's two states — one definition, because the row has three kinds of entry (a plain link, this trigger pair, the favorites button) and a row where one of them is a different grey is a …
+- `headerNavInk` _function_: The ink of every entry in the header's nav row, in the bar's two states, in one definition so the three kinds of entry cannot drift apart.
 
 ### [`navigation-progress.tsx`](../../components/layout/navigation-progress.tsx)
 
-- `NavigationProgress` _component_: Thin top-of-viewport progress bar shown during client-side navigations — so a click feels acknowledged instantly (the way GitHub/YouTube do it), even while the next route is still being fetched/streamed.
+- `NavigationProgress` _component_: Thin top-of-viewport progress bar for client-side navigations, so a click feels acknowledged while the next route streams.
 
 ### [`news-menu-panel.tsx`](../../components/layout/news-menu-panel.tsx)
 
-- `NewsMenuPanel` _component_: Memoised for the same reason as `ParksMenuPanel`.
+- `NewsMenuPanel` _component_: The news menu: one lead with a cover and teaser, then the headlines on a time line, each with its age (`NewsAge`) rather than a category and a thumbnail on the right, so the dots keep the left edge.
 
 ### [`parks-menu-panel.tsx`](../../components/layout/parks-menu-panel.tsx)
 

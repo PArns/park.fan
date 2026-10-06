@@ -19,7 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`brand-icons.tsx`](../../components/common/brand-icons.tsx)
 
-Brand marks, in one place.
+Brand marks in one place, as plain paths since lucide-react dropped its brand set, so every Facebook logo on a page is the same size. `fill="currentColor"` on a 24×24 viewBox, so they size and colour like the lucide icons beside them.
 
 - `WhatsAppIcon` _component_
 - `FacebookIcon` _component_
@@ -29,7 +29,7 @@ Brand marks, in one place.
 
 ### [`breadcrumb-nav.tsx`](../../components/common/breadcrumb-nav.tsx)
 
-- `BreadcrumbNav` _component_: Breadcrumb navigation component.
+- `BreadcrumbNav` _component_: Breadcrumb trail that collapses middle items into a "…" button only when the width is too narrow, furthest from the current page first; "…" reveals the full path.
 
 ### [`build-info.tsx`](../../components/common/build-info.tsx)
 
@@ -37,7 +37,7 @@ Brand marks, in one place.
 
 ### [`chapter-heading.tsx`](../../components/common/chapter-heading.tsx)
 
-- `ChapterHeading` _component_: The site's chapter header: an oversized translucent glyph, an optional kicker, the title, and the rule that closes it.
+- `ChapterHeading` _component_: The site's chapter header: an oversized translucent glyph, an optional kicker, the title, and the rule that closes it. The one implementation, so a reader can tell a chapter's opening from a card's label.
 
 ### [`chapter-panel.tsx`](../../components/common/chapter-panel.tsx)
 
@@ -54,8 +54,8 @@ Brand marks, in one place.
 
 ### [`dialog-hero.tsx`](../../components/common/dialog-hero.tsx)
 
-- `DialogHeroClose` _component_: The close button of a band that brings its own (the dialog then passes `showCloseButton={false}`): `DialogHero` and the push dialogs' `PushDialogHero`.
-- `DialogHero` _component_: The band across the top of a full-dress dialog: a title, a line under it, and either a photograph or a tinted field with an oversized translucent glyph.
+- `DialogHeroClose` _component_: The close button of a band that brings its own (the dialog then passes `showCloseButton={false}`), shared by `DialogHero` and `PushDialogHero`.
+- `DialogHero` _component_: The band across the top of a full-dress dialog: a title, a line under it, and either a photograph or a tinted field with an oversized translucent glyph (`ChapterHeading`'s), so two dialogs opened from the same calendar read as one product.
 - `DIALOG_HERO_TINT` _const_: The tinted field behind a band without a photograph, shared with `PushDialogHero`.
 
 ### [`distance-badge.tsx`](../../components/common/distance-badge.tsx)
@@ -64,7 +64,7 @@ Brand marks, in one place.
 
 ### [`entry-tile.tsx`](../../components/common/entry-tile.tsx)
 
-- `EntryTileBody` _component_: Icon chip + label, with the optional count inside the label rather than on a line of its own: it is the only figure that belongs on the same line as the name.
+- `EntryTileBody` _component_: Icon chip and label, with the optional count inside the label.
 - `entryTileChip` _const_: The icon chip. Square, so the row is scannable by shape before any label is read.
 
 ### [`favorite-star.tsx`](../../components/common/favorite-star.tsx)
@@ -77,15 +77,15 @@ Brand marks, in one place.
 
 ### [`glass-card.tsx`](../../components/common/glass-card.tsx)
 
-- `GlassCard` _component_: Glassmorphism card component with standardized glass effects Used for headers and content cards with backdrop blur
-- `HEAVY_GLASS` _const_: The `heavy` recipe as a bare class string, for the surfaces that are not a `GlassCard`.
+- `GlassCard` _component_: Glass card for headers and content cards over a photo. `heavy` is the homepage hero's glass, lighter in light mode and markedly darker in dark mode, so a panel over the hero photo reads as one pane.
+- `HEAVY_GLASS` _const_: The `heavy` recipe as a bare class string, for surfaces that are not a `GlassCard`: the park page's stacked title card and „Heute im Park" panel take one material because they are one object.
 - `TILE_GLASS` _const_: The same glass one grade more solid, for the entry tiles.
-- `PHOTO_GLASS_FILL` _const_: `TILE_GLASS`'s fill without its blur, for a panel that lays its own photograph behind itself and blurs the image instead of the backdrop.
+- `PHOTO_GLASS_FILL` _const_: `TILE_GLASS`'s fill without its blur, for a panel that blurs its own photograph instead of the backdrop: the homepage compass, whose moving arrows would make a `backdrop-filter` flicker. 75 % for the tile's reason, since its list is small …
 - `PANEL_FLAT` _const_: The same panel where there is no photograph behind it.
 
 ### [`glass-circle.tsx`](../../components/common/glass-circle.tsx)
 
-- `GlassCircle` _component_: The 34px frosted disc the attraction card's two corner controls sit on — `FavoriteStar` and `RideAlertBell`.
+- `GlassCircle` _component_: The 34 px frosted disc the card corner controls sit on (`FavoriteStar`, `RideAlertBell`). A control that can render nothing draws its own disc, or a `null` would leave an empty circle.
 
 ### [`icon-container.tsx`](../../components/common/icon-container.tsx)
 
@@ -126,9 +126,9 @@ Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidde
 
 ### [`live-dot.tsx`](../../components/common/live-dot.tsx)
 
-Why these dots carry `will-change`.
+These dots carry `will-change` because they animate forever inside cards with `backdrop-filter`: with its own layer the compositor animates `opacity` and `transform` without repainting the blurred region.
 
-- `LiveDot` _component_: Small animated "live" indicator, previously copy-pasted across the live ticker, ML badge, weather nowcast pill and training-status badge. See the `variant` doc for the two shapes.
+- `LiveDot` _component_: Small animated "live" indicator in two shapes; see `variant`.
 
 ### [`locale-switcher.tsx`](../../components/common/locale-switcher.tsx)
 
@@ -149,16 +149,16 @@ Why these dots carry `will-change`.
 
 ### [`mobile-more.tsx`](../../components/common/mobile-more.tsx)
 
-- `MobileMore` _component_: The part of a section a phone reader only gets on request.
+- `MobileMore` _component_: The part of a section a phone reader gets only on request: below a 768 px page the children are `display: none` until the button is pressed, and from 768 px up nothing changes.
 
 ### [`obfuscated-email.tsx`](../../components/common/obfuscated-email.tsx)
 
-- `ObfuscatedEmail` _component_: Client component that obfuscates email addresses to prevent spam bots from scraping them. Uses ROT13 encryption during hydration - the plain text email is only assembled client-side.
-- `rot13` _function_: ROT13-like encryption for email obfuscation Shifts characters by 13 positions in the ASCII range
+- `ObfuscatedEmail` _component_: An email address kept from scrapers: the server HTML carries a ROT13-shifted string, and the clickable mailto link is assembled on the client after hydration.
+- `rot13` _function_: ROT13-style shift that keeps an address out of the server HTML.
 
 ### [`obfuscated-phone.tsx`](../../components/common/obfuscated-phone.tsx)
 
-- `ObfuscatedPhone` _component_: Client component that obfuscates phone numbers to prevent spam bots from scraping them. Uses ROT13 encryption during hydration - the plain text number is only assembled client-side.
+- `ObfuscatedPhone` _component_: A phone number kept from scrapers: the server HTML carries a ROT13-shifted string, and the tel link is assembled on the client after hydration.
 
 ### [`open-status-progress.tsx`](../../components/common/open-status-progress.tsx)
 
@@ -170,15 +170,15 @@ Why these dots carry `will-change`.
 
 ### [`page-bottom-sections.tsx`](../../components/common/page-bottom-sections.tsx)
 
-- `PageBottomSections` _component_: The shared "context module" below an editorial page's own content: Nearby → Favorites → Featured Parks.
+- `PageBottomSections` _component_: The shared context module below an editorial page's own content: nearby, favorites, featured parks.
 
 ### [`page-container.tsx`](../../components/common/page-container.tsx)
 
-- `PageContainer` _component_: Standard page container wrapper with consistent spacing Provides: container mx-auto px-4 py-8
+- `PageContainer` _component_: Page container with the standard spacing (`container mx-auto px-4 py-8`).
 
 ### [`page-header.tsx`](../../components/common/page-header.tsx)
 
-- `PageHeader` _component_: Standard page header with breadcrumb, title, and optional description Used across all geo pages (continent, country, city)
+- `PageHeader` _component_: Geo page header (continent, country, city): breadcrumb, title and an optional description.
 
 ### [`page-section.tsx`](../../components/common/page-section.tsx)
 
@@ -200,7 +200,7 @@ Why these dots carry `will-change`.
 
 ### [`preferred-source-prompt.tsx`](../../components/common/preferred-source-prompt.tsx)
 
-- `PreferredSourcePrompt` _component_: Contextual "make park.fan a preferred source on Google" band: a short heading + pitch wrapped around the shared PreferredSourceButton, for the high-visibility spots (end of blog articles, homepage) where the footer link alone goes unseen.
+- `PreferredSourcePrompt` _component_: "Make park.fan a preferred source on Google" band around `PreferredSourceButton`, for spots where the footer link goes unseen (the end of blog articles, the homepage). Strings live in `footer.preferredSource` with the button's.
 
 ### [`scroll-to-top.tsx`](../../components/common/scroll-to-top.tsx)
 
@@ -208,7 +208,7 @@ Why these dots carry `will-change`.
 
 ### [`section-heading.tsx`](../../components/common/section-heading.tsx)
 
-- `SectionHeading` _component_: Labeled section header used to split pages into clear chapters ("Jetzt im Park", "Beste Besuchszeit", city sections on country pages, …) instead of anonymous `<Separator>` dividers.
+- `SectionHeading` _component_: Labeled section header that splits a page into chapters instead of anonymous `<Separator>` dividers. Server-compatible, so it renders into the static shell.
 
 ### [`share-buttons.tsx`](../../components/common/share-buttons.tsx)
 
@@ -216,19 +216,19 @@ Why these dots carry `will-change`.
 
 ### [`stats-card.tsx`](../../components/common/stats-card.tsx)
 
-- `StatsCard` _component_: Standardized statistics card with title, large value, and optional description Used on homepage and park status pages
+- `StatsCard` _component_: Statistics card with a title, a large value, and an optional description and icon.
 
 ### [`status-info-card.tsx`](../../components/common/status-info-card.tsx)
 
-- `StatusInfoCard` _component_: Card component with icon in title and flexible content Used for wait time, status, and prediction accuracy displays
+- `StatusInfoCard` _component_: Card with an icon in its title and free content (wait time, status, prediction accuracy).
 
 ### [`temperature-unit-toggle.tsx`](../../components/common/temperature-unit-toggle.tsx)
 
-- `TemperatureUnitToggle` _component_: °C ⇄ °F, as one button in the header beside the theme switch.
+- `TemperatureUnitToggle` _component_: °C ⇄ °F as one button in the header beside the theme switch, the one row on every page. It shows the active unit and switches on click, because the 360 px bar has no room for a two-segment pill.
 
 ### [`theme-toggle.tsx`](../../components/common/theme-toggle.tsx)
 
-- `ThemeToggle` _component_: Dark ⇄ light, as a switch.
+- `ThemeToggle` _component_: Dark ⇄ light, as a switch. Dark is the default for everyone and light is opt-in, so there is no "system" option.
 
 ### [`training-status-badge.tsx`](../../components/common/training-status-badge.tsx)
 
@@ -252,7 +252,7 @@ Why these dots carry `will-change`.
 
 ### [`userback-feedback.tsx`](../../components/common/userback-feedback.tsx)
 
-- `UserbackFeedback` _component_: Floating "Feedback" button that loads Userback on demand.
+- `UserbackFeedback` _component_: Floating "Feedback" button that loads Userback on demand: nothing is fetched and no personal data is processed until the visitor clicks it, so Umami stays the only script that loads by itself.
 
 ### [`wait-time-value.tsx`](../../components/common/wait-time-value.tsx)
 

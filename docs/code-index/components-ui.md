@@ -10,7 +10,7 @@ by hand: change the comment in the code and re-run the script. -->
 Avatar primitives (shadcn/ui on Radix Avatar): the round frame, the photo cropped from the top, and the fallback shown until the photo loads.
 
 - `Avatar` _component_
-- `AvatarImage` _component_: The photo inside the circle.
+- `AvatarImage` _component_: The photo inside the circle. Without `object-fit` a portrait stretches to fill the square, and `cover` alone crops to the middle of a tall picture, which is the chest; `object-top` keeps the face, and a square source is unchanged.
 - `AvatarFallback` _component_
 
 ### [`badge.tsx`](../../components/ui/badge.tsx)
@@ -18,7 +18,7 @@ Avatar primitives (shadcn/ui on Radix Avatar): the round frame, the photo croppe
 Badge primitive (shadcn/ui, with Radix Slot and class-variance-authority): a small rounded pill in four variants, plus `badgeLinkProps` for a link drawn as a badge.
 
 - `Badge` _component_
-- `badgeLinkProps` _function_: The exact presentation props `<Badge>` applies, for a link that should _look_ like a badge.
+- `badgeLinkProps` _function_: The exact presentation props `<Badge>` applies, for a link that should _look_ like a badge. Server components use it instead of `asChild` around a client component, for the reason on `buttonLinkProps`.
 - `badgeVariants` _const_
 
 ### [`button.tsx`](../../components/ui/button.tsx)
@@ -57,7 +57,7 @@ Command palette primitives (shadcn/ui on cmdk): input, list, empty state, groups
 
 ### [`confirm-dialog.tsx`](../../components/ui/confirm-dialog.tsx)
 
-- `ConfirmDialog` _component_: Ask before doing something that cannot be taken back.
+- `ConfirmDialog` _component_: Asks before doing something that cannot be taken back, in place of `window.confirm`, which an embedded view or a "prevent additional dialogs" tick turns into a silent `false`.
 - Types: `ConfirmTone`, `ConfirmDialogProps`
 
 ### [`dialog.tsx`](../../components/ui/dialog.tsx)
@@ -115,8 +115,8 @@ Text input primitive (shadcn/ui): a styled `<input>` with focus and invalid stat
 
 ### [`local-time.tsx`](../../components/ui/local-time.tsx)
 
-- `LocalTime` _component_: Client component for displaying times in user's local format Prevents hydration mismatches and respects user's 12h/24h preference Wraps output in semantic &lt;time&gt; tag with datetime attribute for SEO
-- `LocalTimeRange` _component_: Display a time range (e.g., opening hours) Uses semantic &lt;time&gt; tags via LocalTime component
+- `LocalTime` _component_: A time in the reader's own 12/24 h format, rendered on the client to avoid a hydration mismatch, inside a `<time datetime>`.
+- `LocalTimeRange` _component_: A time range such as opening hours, as two `LocalTime`s.
 
 ### [`popover.tsx`](../../components/ui/popover.tsx)
 

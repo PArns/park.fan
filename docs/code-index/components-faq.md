@@ -11,11 +11,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`crowd-calendar-faq-link.tsx`](../../components/faq/crowd-calendar-faq-link.tsx)
 
-- `CrowdCalendarFaqLink` _component_: Link to this park's crowd calendar, from the FAQ answers and the best-days section header.
+- `CrowdCalendarFaqLink` _component_: Link to this park's crowd calendar, from the FAQ answers and the best-days section header: an ordinary `Link`, with middle-click and back button.
 
 ### [`faq-accordion.tsx`](../../components/faq/faq-accordion.tsx)
 
-- `FaqAccordion` _component_: One list of questions, for every FAQ on the site.
+- `FaqAccordion` _component_: One list of questions, for every FAQ on the site. The whole summary is the click target, the chevron turns 180°, and the answer sits under a hairline. The icon is optional: the editorial FAQ arrays carry none.
 - Types: `FaqRow`
 
 ### [`park-faq-section.tsx`](../../components/faq/park-faq-section.tsx)

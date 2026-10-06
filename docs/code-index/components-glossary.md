@@ -22,7 +22,7 @@ Public entry for the glossary 3-D coaster player.
 
 ### [`glossary-background.tsx`](../../components/glossary/glossary-background.tsx)
 
-- `GlossaryBackground` _component_: Random park background for glossary pages — server-rendered for a fast LCP. No Ken Burns animation. Fades to the page background colour over the lower third.
+- `GlossaryBackground` _component_: Park background for glossary pages, server-rendered for a fast LCP, without the ken-burns pan, fading to the page background over the lower third.
 
 ### [`glossary-inject-client.tsx`](../../components/glossary/glossary-inject-client.tsx)
 
@@ -36,13 +36,13 @@ Public entry for the glossary 3-D coaster player.
 
 ### [`glossary-inject-term.tsx`](../../components/glossary/glossary-inject-term.tsx)
 
-A client component on purpose, like its sibling GlossaryTermLink.
+A client component on purpose, like GlossaryTermLink: rendered from the server, `next/link` reaches `<TooltipTrigger asChild>` as a lazy client reference, and once the chunk has resolved Radix's Slot throws "Primitive.button failed to slot …
 
 - `GlossaryInjectTerm` _component_
 
 ### [`glossary-inject.tsx`](../../components/glossary/glossary-inject.tsx)
 
-- `GlossaryInject` _component_: Async server component — fetches glossary terms for the given (or current) locale and replaces the first occurrence of each term (or alias) with a dashed-underline tooltip link. No provider or wrapper needed.
+- `GlossaryInject` _component_: Async server component that links the first occurrence of each glossary term or alias in its text to a dashed-underline tooltip. `locale` defaults to the request's locale.
 
 ### [`glossary-overview-client.tsx`](../../components/glossary/glossary-overview-client.tsx)
 
@@ -58,7 +58,7 @@ A client component on purpose, like its sibling GlossaryTermLink.
 
 ### [`glossary-term-card.tsx`](../../components/glossary/glossary-term-card.tsx)
 
-- `GlossaryTermCard` _component_: Memoised: the overview renders all ~270 of these, and every one of its props is either a string or a term object that stays put while the visitor types, so a filter change re-renders only the cards it adds.
+- `GlossaryTermCard` _component_: A glossary term as a card in the overview grid, with its player and ride-count badges. Memoised: the overview renders all of them, and its props stay put while the visitor types.
 
 ### [`glossary-term-detail.tsx`](../../components/glossary/glossary-term-detail.tsx)
 
@@ -66,7 +66,7 @@ A client component on purpose, like its sibling GlossaryTermLink.
 
 ### [`glossary-term-link.tsx`](../../components/glossary/glossary-term-link.tsx)
 
-- `GlossaryTermLink` _component_: Lightweight client component for rendering a glossary term link with optional tooltip. Use this in client component trees where async GlossaryInject is not available.
+- `GlossaryTermLink` _component_: Glossary term link with an optional tooltip, for client trees where the async `GlossaryInject` is not available. Until the per-locale term data loads, the children render as plain text.
 
 ### [`glossary-term-posts.tsx`](../../components/glossary/glossary-term-posts.tsx)
 
@@ -74,8 +74,8 @@ A client component on purpose, like its sibling GlossaryTermLink.
 
 ### [`glossary-term-rides.tsx`](../../components/glossary/glossary-term-rides.tsx)
 
-- `GlossaryTermRides` _component_: The glossary → rides half of the link: the curated rides that feature this term, whether as a track figure, a ride type, or its builder.
+- `GlossaryTermRides` _component_: The glossary-to-rides half of the link: the curated rides that feature this term as a figure, a ride type or its builder, led by the rides worth recognising rather than alphabetical order.
 
 ### [`glossary-term-tracker.tsx`](../../components/glossary/glossary-term-tracker.tsx)
 
-- `GlossaryTermTracker` _component_: Fires a glossary_term_viewed event once on mount. Renders nothing — purely for client-side analytics.
+- `GlossaryTermTracker` _component_: Fires a glossary_term_viewed event once on mount, with the term id only: the locale is already in the URL Umami records, and each property is billed as another event (docs/rules/umami-event-budget.md).

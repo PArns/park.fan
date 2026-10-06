@@ -7,11 +7,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-attraction-card-live.tsx`](../../components/blog/blog-attraction-card-live.tsx)
 
-- `BlogAttractionCardLive` _component_: `AttractionCard` for a blog ride reference, kept live in the browser.
+- `BlogAttractionCardLive` _component_: `AttractionCard` for a blog ride reference, kept live in the browser, shared by the hover preview and the `?full` spotlight.
 
 ### [`blog-attraction-link.tsx`](../../components/blog/blog-attraction-link.tsx)
 
-- `BlogAttractionLink` _component_: Inline reference to an attraction inside blog content.
+- `BlogAttractionLink` _component_: Inline reference to an attraction inside blog content: a real link whose hover card is the full `AttractionCard`, as `BlogParkLink` does for parks.
 
 ### [`blog-attraction-widget.tsx`](../../components/blog/blog-attraction-widget.tsx)
 
@@ -28,7 +28,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`blog-category-page.tsx`](../../components/blog/blog-category-page.tsx)
 
 - `BlogCategoryPageBody` _component_: Renders a blog category listing: breadcrumbs, the category's articles, the category tree and tag cloud, plus Blog and BreadcrumbList JSON-LD. 404s for an unknown or empty category; `news` redirects to `/news`.
-- `buildCategoryMetadata` _function_: A blog category listing at `/blog/category/[...path]`.
+- `buildCategoryMetadata` _function_: Metadata for a blog category listing at `/blog/category/[...path]`. Articles only: the news category's posts live under `/news` (`NewsIndexPageBody`). Canonical, hreflang and breadcrumbs come from `categoryPath` (`lib/blog/paths.ts`).
 
 ### [`blog-category-tree.tsx`](../../components/blog/blog-category-tree.tsx)
 
@@ -92,7 +92,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-park-link.tsx`](../../components/blog/blog-park-link.tsx)
 
-- `BlogParkLink` _component_: Inline reference to a park inside blog content.
+- `BlogParkLink` _component_: Inline reference to a park inside blog content: a real `<Link>` to the park page, whose hover card is the same `ParkCard` used on favorites and featured parks.
 
 ### [`blog-park-widget.tsx`](../../components/blog/blog-park-widget.tsx)
 
@@ -104,7 +104,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-post-card-view.tsx`](../../components/blog/blog-post-card-view.tsx)
 
-- `BlogPostCardView` _component_: The presentational blog post card.
+- `BlogPostCardView` _component_: The presentational blog post card, split from `BlogPostCard` so it can render in a client tree (the admin's focal-point previews): it takes the author and category label as props and imports nothing server-only.
 - Types: `BlogPostCardViewProps`
 
 ### [`blog-post-card.tsx`](../../components/blog/blog-post-card.tsx)
@@ -139,7 +139,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-reading-progress.tsx`](../../components/blog/blog-reading-progress.tsx)
 
-- `BlogReadingProgress` _component_: Thin fixed bar at the top of the viewport tracking how far the reader has scrolled through the article body.
+- `BlogReadingProgress` _component_: Thin fixed bar at the top of the viewport tracking how far the reader has scrolled through the article body, reaching 100% at the `#blog-progress-end` marker rather than the end of the page.
 
 ### [`blog-references.tsx`](../../components/blog/blog-references.tsx)
 
@@ -148,7 +148,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-related-posts.tsx`](../../components/blog/blog-related-posts.tsx)
 
-- `BlogRelatedPosts` _component_: "Keep reading" under a post, from the post's own section: an article is followed by articles, a news post by news. The two sections are kept apart everywhere a list of posts appears (see `docs/rules/news-is-set-apart-from-the-articles.md`).
+- `BlogRelatedPosts` _component_: "Keep reading" under a post, from the post's own section: an article is followed by articles, a news post by news (docs/rules/news-is-set-apart-from-the-articles.md). The cards are the blog's on both.
 
 ### [`blog-ride-waits-widget.tsx`](../../components/blog/blog-ride-waits-widget.tsx)
 
@@ -188,7 +188,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-youtube-embed.tsx`](../../components/blog/blog-youtube-embed.tsx)
 
-- `BlogYouTubeEmbed` _component_: Responsive 16:9 YouTube embed (privacy-enhanced nocookie host), behind a facade.
+- `BlogYouTubeEmbed` _component_: Responsive 16:9 YouTube embed (privacy-enhanced nocookie host), behind a facade: `loading="lazy"` defers the player but does not shrink it, and a post can carry several.
 
 ### [`latest-news-chip.tsx`](../../components/blog/latest-news-chip.tsx)
 
@@ -211,7 +211,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`news-index-page.tsx`](../../components/blog/news-index-page.tsx)
 
 - `NewsIndexPageBody` _component_: The news overview at `/news`: a stream of dated notes, newest day first, not the blog's card grid. Each day opens with its date and age (`NewsAge`); each note carries its park, its title, one line of teaser and a small cover.
-- `buildNewsIndexMetadata` _function_: The overview's own metadata. It used to borrow the blog category's, which titled it "News | Blog · park.fan", described it as "all blog posts in the category News" and asked the OG route for a card at `blog/news` — a post slug that does …
+- `buildNewsIndexMetadata` _function_: The news overview's own metadata: a title carrying the search phrase ("Freizeitpark-News"), the card from `/api/og/<locale>/news`, and a canonical of `/news` whatever `?park=` says (the filter adds no URLs, see `NewsStream`).
 
 ### [`news-list.tsx`](../../components/blog/news-list.tsx)
 
@@ -224,10 +224,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-row.tsx`](../../components/blog/news-row.tsx)
 
-- `NewsRow` _component_: The news posts as one row of their own, under the articles.
+- `NewsRow` _component_: The news posts as one row of their own, under the articles: news is published far more often than the guides, so it gets a line of its own and the articles keep their space.
 - `toNewsListItem` _function_: A listing item as `NewsList` draws it — cover versioned, like every other card.
 
 ### [`news-stream.tsx`](../../components/blog/news-stream.tsx)
 
-- `NewsStream` _component_: The news overview's stream, newest day first, with a filter by park.
+- `NewsStream` _component_: The news overview's stream, newest day first, with a filter by park. Every entry is rendered on the server, so the full list is in the static page.
 - Types: `NewsStreamItem`, `NewsStreamGroup`, `NewsStreamPark`

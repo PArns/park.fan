@@ -7,19 +7,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`alerts-overview.tsx`](../../components/push/alerts-overview.tsx)
 
-- `AlertsOverview` _component_: Every ride alert and followed show this browser has, across every park — the parkübergreifend counterpart to the per-park `RideAlertDialog`.
+- `AlertsOverview` _component_: Every ride alert and followed show this browser has, across every park, read straight from the server: the local mirror is a cache for bells, not the truth for a page that exists to show it.
 
 ### [`push-dialog-hero.tsx`](../../components/push/push-dialog-hero.tsx)
 
-- `PushDialogHero` _component_: The head every push-alert dialog opens with, drawn the way the trip planner's wizard draws its own: a tinted gradient ground carrying an oversized translucent glyph, with the title and a line of explanation beside it.
+- `PushDialogHero` _component_: The head every push-alert dialog opens with: a tinted ground carrying an oversized translucent glyph, with the title and a line of explanation beside it, as `ChapterHeading` does, since a surface about itself shows the app rather than a …
 
 ### [`push-timezone-sync.tsx`](../../components/push/push-timezone-sync.tsx)
 
-- `PushTimezoneSync` _component_: The one reader of the browser's current time zone, mounted once per page load.
+- `PushTimezoneSync` _component_: The one reader of the browser's current time zone, mounted once per page load in the layout: the visitor it exists for travels, and their bells are already on, so nothing they touch would run the write.
 
 ### [`ride-alert-bell.tsx`](../../components/push/ride-alert-bell.tsx)
 
-- `RideAlertBell` _component_: "Notify me when this ride's wait drops below X minutes" — a card corner icon in the same style as `FavoriteStar`/`ShowFollowBell`, opening `RideAlertDialog` with this ride picked rather than toggling anything itself: a threshold needs a …
+- `RideAlertBell` _component_: "Notify me when this ride's wait drops below X minutes": a card corner icon like `FavoriteStar`, opening `RideAlertDialog` with this ride picked, since a threshold needs a number a click cannot supply.
 
 ### [`ride-alert-dialog.tsx`](../../components/push/ride-alert-dialog.tsx)
 
@@ -39,15 +39,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`show-follow-bell.tsx`](../../components/push/show-follow-bell.tsx)
 
-- `ShowFollowBell` _component_: "Notify me 30 minutes before this show starts" — the same interaction shape as `FavoriteStar` (hydration-safe: renders "off" on the server, a mount-only effect reads the real state, a window event keeps every bell on the page in sync with …
+- `ShowFollowBell` _component_: "Notify me 30 minutes before this show starts", in the same corner as `FavoriteStar` and hydration-safe the same way.
 
 ### [`show-follow-dialog.tsx`](../../components/push/show-follow-dialog.tsx)
 
-- `ShowFollowDialog` _component_: Every way of asking for a show reminder ends here: the corner bell, and a tap on any showtime badge.
+- `ShowFollowDialog` _component_: Every way of asking for a show reminder ends here: the corner bell and a tap on any showtime badge, so the visitor sees which show and when.
 
 ### [`threshold-minutes-input.tsx`](../../components/push/threshold-minutes-input.tsx)
 
-- `ThresholdMinutesInput` _component_: The "notify below N minutes" control both ride-alert dialogs render — a slider, not a spinner: the whole point of the value is where it sits between "almost nothing" and "barely worth waiting for", which a dragged position shows and a …
+- `ThresholdMinutesInput` _component_: The "notify below N minutes" control both ride-alert dialogs render: a slider, because the value is about where it sits between "almost nothing" and "barely worth waiting for".
 - `DEFAULT_THRESHOLD_MIN` _const_
 - `MIN_THRESHOLD_MIN` _const_
 - `MAX_THRESHOLD_MIN` _const_
@@ -60,4 +60,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-push-error-message.ts`](../../components/push/use-push-error-message.ts)
 
-- `usePushErrorMessage` _hook_: One sentence per way a push write can fail, shared by both ride-alert dialogs and the show bell so the three surfaces cannot drift apart.
+- `usePushErrorMessage` _hook_: One sentence per way a push write can fail, shared by both ride-alert dialogs and the show bell so the three cannot drift apart.

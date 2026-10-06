@@ -11,11 +11,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-inline-search.tsx`](../../components/search/hero-inline-search.tsx)
 
-- `HeroInlineSearch` _component_: The hero search: in-place floating results on desktop, palette popup on mobile.
+- `HeroInlineSearch` _component_: The hero search: in-place floating results from `md` up, the `SearchCommand` palette on phones. Nothing here is on the critical path: the panel chunk is fetched only after load and idle, on viewports that render it.
 
 ### [`hero-search-field.tsx`](../../components/search/hero-search-field.tsx)
 
-- `HeroSearchShell` _component_: The hero search field before the search chunk exists: a REAL input, not a placeholder div.
+- `HeroSearchShell` _component_: The hero search field before the search chunk exists: a real input, so focus and keystrokes are captured and handed to the panel, with the text already typed, the instant it mounts.
 - `HERO_SEARCH_INPUT_CLASS` _const_: Shared look of the hero search input — the lazy panel's real input mirrors these classes.
 
 ### [`search-bar.tsx`](../../components/search/search-bar.tsx)
@@ -41,9 +41,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-results-panel.tsx`](../../components/search/search-results-panel.tsx)
 
-- `SearchResultsPanel` _component_: The body of both search surfaces — the hero's floating dropdown and the header's palette: skeleton → results (or glossary-only, or "no results") once a query runs, and the browse list before that. Only the shell around it differs.
+- `SearchResultsPanel` _component_: The body of both search surfaces, the hero's floating dropdown and the header's palette: skeleton, then results (or glossary-only, or "no results") once a query runs, and the browse list before that.
 
 ### [`search-skeleton-list.tsx`](../../components/search/search-skeleton-list.tsx)
 
-- `SearchSkeletonList` _component_: Heading + rows, i.e. everything inside a pending dropdown above its footer.
+- `SearchSkeletonList` _component_: Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's text gives it.
 - `HERO_SKELETON_ROW_CLASS` _const_: Hero row padding — matches `[&_[cmdk-item]]:py-2.5` on that panel's cmdk root at every width (the `sm:` half is what keeps the palette's `sm:py-3.5` default from winning back).

@@ -10,7 +10,7 @@ by hand: change the comment in the code and re-run the script. -->
 Route `/[locale]/[...rest]` (page).
 
 - `default (UnmatchedLocalePath)` _component_
-- `generateMetadata` _function_: Any path under a locale that no route matches (`/en/nonexistent`). Without this segment Next answered those with the root `app/not-found.tsx`: a bare document with no `<title>`, no site chrome and no internal links (SEO run, 2026-10-03).
+- `generateMetadata` _function_: Any path under a locale that no route matches (`/en/nonexistent`).
 
 ### [`alerts/page.tsx`](../../app/%5Blocale%5D/alerts/page.tsx)
 
@@ -22,36 +22,36 @@ Route `/[locale]/alerts` (page).
 
 ### [`best-time-to-visit/_best-times-data.tsx`](../../app/%5Blocale%5D/best-time-to-visit/_best-times-data.tsx)
 
-- `BestTimesData` _component_: Global best-time charts: relative busyness by weekday and by month, live from `/v1/analytics/best-times`. Weekday/month names are localised via `Intl`.
+- `BestTimesData` _component_: Relative busyness by weekday and by month across the catalogue, live from `/v1/analytics/best-times`. A "warming up" panel stands in while the aggregate is unreachable or not yet displayable, so the section never renders empty.
 - Types: `BestTimesLabels`, `CrowdLevel`
 
 ### [`best-time-to-visit/_quietest-days-by-park.tsx`](../../app/%5Blocale%5D/best-time-to-visit/_quietest-days-by-park.tsx)
 
-- `QuietestDaysByPark` _component_: "The quietest day at each park" — the one section on this page that names parks.
+- `QuietestDaysByPark` _component_: The quietest day at each featured park: the one section on this hub that names parks, for the park-qualified searches ("beste Zeit Europa-Park besuchen") an average cannot answer.
 
 ### [`best-time-to-visit/content/de.tsx`](../../app/%5Blocale%5D/best-time-to-visit/content/de.tsx)
 
-- `ContentDE` _component_
+- `ContentDE` _component_: The best-time-to-visit hub's article, German.
 
 ### [`best-time-to-visit/content/en.tsx`](../../app/%5Blocale%5D/best-time-to-visit/content/en.tsx)
 
-- `ContentEN` _component_
+- `ContentEN` _component_: The best-time-to-visit hub's article, English.
 
 ### [`best-time-to-visit/content/es.tsx`](../../app/%5Blocale%5D/best-time-to-visit/content/es.tsx)
 
-- `ContentES` _component_
+- `ContentES` _component_: The best-time-to-visit hub's article, Spanish.
 
 ### [`best-time-to-visit/content/fr.tsx`](../../app/%5Blocale%5D/best-time-to-visit/content/fr.tsx)
 
-- `ContentFR` _component_
+- `ContentFR` _component_: The best-time-to-visit hub's article, French.
 
 ### [`best-time-to-visit/content/it.tsx`](../../app/%5Blocale%5D/best-time-to-visit/content/it.tsx)
 
-- `ContentIT` _component_
+- `ContentIT` _component_: The best-time-to-visit hub's article, Italian.
 
 ### [`best-time-to-visit/content/nl.tsx`](../../app/%5Blocale%5D/best-time-to-visit/content/nl.tsx)
 
-- `ContentNL` _component_
+- `ContentNL` _component_: The best-time-to-visit hub's article, Dutch.
 
 ### [`best-time-to-visit/page.tsx`](../../app/%5Blocale%5D/best-time-to-visit/page.tsx)
 
@@ -66,7 +66,7 @@ Route `/[locale]/best-time-to-visit` (page).
 Route `/[locale]/blog/[slug]` (page).
 
 - `default (BlogPostPage)` _component_
-- `generateStaticParams` _function_: All blog routes are statically generated at build time. Geo + glossary data is fetched in cached server helpers, so the markup is produced once per build (re-generated every `revalidate` window).
+- `generateStaticParams` _function_: News posts are not listed here: they live under `/news/[slug]` (`lib/blog/paths.ts`).
 - `generateMetadata` _function_
 
 ### [`blog/authors/[author]/page.tsx`](../../app/%5Blocale%5D/blog/authors/%5Bauthor%5D/page.tsx)
@@ -82,7 +82,7 @@ Route `/[locale]/blog/authors/[author]` (page).
 Route `/[locale]/blog/category/[...path]` (page).
 
 - `default (BlogCategoryPage)` _component_
-- `generateStaticParams` _function_: Statically generated for every category in every locale. See the index page for the pagination plan when post counts grow past one page.
+- `generateStaticParams` _function_: Every category in every locale. News is not a category: its listing is `/news` (`lib/blog/paths.ts`).
 - `generateMetadata` _function_
 
 ### [`blog/feed.xml/route.ts`](../../app/%5Blocale%5D/blog/feed.xml/route.ts)
@@ -90,14 +90,14 @@ Route `/[locale]/blog/category/[...path]` (page).
 Route `/[locale]/blog/feed.xml` (route).
 
 - `generateStaticParams` _function_
-- `GET` _function_: Per-locale RSS 2.0 feed for the blog.
+- `GET` _function_: Per-locale RSS 2.0 feed for the blog. Items are in strict publication order (`listPosts` puts featured posts first, which is right for a page and wrong for a feed), carry the excerpt rather than the article (the body would pull every post …
 
 ### [`blog/page.tsx`](../../app/%5Blocale%5D/blog/page.tsx)
 
 Route `/[locale]/blog` (page).
 
 - `default (BlogIndexPage)` _component_
-- `generateStaticParams` _function_: Statically generated at build time. Pagination via `?page=N` would force a dynamic render — when the post count grows past one page we'll add a path-based `/blog/page/[n]` route, generateStaticParams for it, and keep this index static.
+- `generateStaticParams` _function_: Static: pagination via `?page=N` would force a dynamic render, so a second page of posts means a path-based `/blog/page/[n]` route.
 - `generateMetadata` _function_
 
 ### [`blog/tag/[tag]/page.tsx`](../../app/%5Blocale%5D/blog/tag/%5Btag%5D/page.tsx)
@@ -105,7 +105,7 @@ Route `/[locale]/blog` (page).
 Route `/[locale]/blog/tag/[tag]` (page).
 
 - `default (BlogTagPage)` _component_
-- `generateStaticParams` _function_: Pre-generate one page per (locale × tag) so every tag in every post becomes an indexable archive. Tag slugs are normalised to lowercase + hyphens.
+- `generateStaticParams` _function_: One page per (locale × tag).
 - `generateMetadata` _function_
 
 ### [`changelog/page.tsx`](../../app/%5Blocale%5D/changelog/page.tsx)
@@ -115,7 +115,7 @@ Route `/[locale]/changelog` (page).
 - `default (ChangelogPage)` _component_
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
-- `dynamicParams` _const_: The public changelog, at `/en/changelog`.
+- `dynamicParams` _const_: The public changelog, at `/en/changelog`. English only by decision, so `generateStaticParams` yields `en` alone and `dynamicParams` is off.
 
 ### [`compare/page.tsx`](../../app/%5Blocale%5D/compare/page.tsx)
 
@@ -143,11 +143,11 @@ Route `/[locale]/contribute/thanks` (page).
 
 ### [`datenschutz/content/de.tsx`](../../app/%5Blocale%5D/datenschutz/content/de.tsx)
 
-- `DatenschutzDE` _component_
+- `DatenschutzDE` _component_: The privacy policy in German, shown on the `de` locale.
 
 ### [`datenschutz/content/en.tsx`](../../app/%5Blocale%5D/datenschutz/content/en.tsx)
 
-- `DatenschutzEN` _component_
+- `DatenschutzEN` _component_: The privacy policy in English, shown on every locale but `de`.
 
 ### [`datenschutz/page.tsx`](../../app/%5Blocale%5D/datenschutz/page.tsx)
 
@@ -165,44 +165,44 @@ Route `/[locale]` (error).
 
 ### [`fancast/_fancast-live.tsx`](../../app/%5Blocale%5D/fancast/_fancast-live.tsx)
 
-- `FancastLive` _component_: Almanac-style "edition + revision + scorecard" block, live from `/v1/ml/dashboard`.
+- `FancastLive` _component_: The model's current edition, its gain over the previous version and the attractions Fancast predicts best, live from `/v1/ml/dashboard`; `MLStatsSection` shows the aggregate errors. Renders nothing if the dashboard is unreachable.
 - Types: `FancastLiveLabels`
 
 ### [`fancast/_fancast-motion.tsx`](../../app/%5Blocale%5D/fancast/_fancast-motion.tsx)
 
-Motion primitives now live in the shared marketing kit so the Fancast page and the "best time to visit" hub share one implementation. Kept as a thin re-export so existing Fancast content imports (`./_fancast-motion`) stay valid.
+The shared marketing kit's `Reveal`, re-exported for the Fancast modules.
 
 - Re-exports: `@/components/marketing/scroll-reveal`
 
 ### [`fancast/_fancast-ui.tsx`](../../app/%5Blocale%5D/fancast/_fancast-ui.tsx)
 
-The editorial UI kit (hero, numbered section shells, split figures, crowd spectrum, …) now lives in the shared marketing module so the Fancast page and the "best time to visit" hub read as one design system.
+The shared editorial UI kit, re-exported for the Fancast page and content modules.
 
 - Re-exports: `@/components/marketing/editorial-ui`
 
 ### [`fancast/content/de.tsx`](../../app/%5Blocale%5D/fancast/content/de.tsx)
 
-- `ContentDE` _component_
+- `ContentDE` _component_: The Fancast page's article, German.
 
 ### [`fancast/content/en.tsx`](../../app/%5Blocale%5D/fancast/content/en.tsx)
 
-- `ContentEN` _component_
+- `ContentEN` _component_: The Fancast page's article, English.
 
 ### [`fancast/content/es.tsx`](../../app/%5Blocale%5D/fancast/content/es.tsx)
 
-- `ContentES` _component_
+- `ContentES` _component_: The Fancast page's article, Spanish.
 
 ### [`fancast/content/fr.tsx`](../../app/%5Blocale%5D/fancast/content/fr.tsx)
 
-- `ContentFR` _component_
+- `ContentFR` _component_: The Fancast page's article, French.
 
 ### [`fancast/content/it.tsx`](../../app/%5Blocale%5D/fancast/content/it.tsx)
 
-- `ContentIT` _component_
+- `ContentIT` _component_: The Fancast page's article, Italian.
 
 ### [`fancast/content/nl.tsx`](../../app/%5Blocale%5D/fancast/content/nl.tsx)
 
-- `ContentNL` _component_
+- `ContentNL` _component_: The Fancast page's article, Dutch.
 
 ### [`fancast/page.tsx`](../../app/%5Blocale%5D/fancast/page.tsx)
 
@@ -251,12 +251,12 @@ Route `/[locale]/glossary` (page).
 
 ### [`how-park-fan-works/_chapter-rail.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_chapter-rail.tsx)
 
-- `ChapterRail` _component_: A fixed rail of chapter dots down the right edge, marking which chapter the reader is in.
+- `ChapterRail` _component_: A fixed rail of chapter dots down the right edge, marking the chapter the reader is in. Only above `xl`, where there is a gutter for it; the chapter list at the top covers a phone.
 
 ### [`how-park-fan-works/_chrome.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_chrome.tsx)
 
 - `WaitSign` _component_: A park's wait-time display, near enough to be recognised: amber on near-black behind a dot mask, with the glow such a panel throws in daylight.
-- `IntroWithAside` _component_: A chapter's opening paragraph with one fact parked beside it.
+- `IntroWithAside` _component_: A chapter's opening paragraph with one fact parked beside it, in the band the capped text leaves empty under the section head's full-width rule. One number, not a dashboard.
 - `Ambience` _component_: A soft tint behind a chapter, so nine sections in a row do not read as one long grey column.
 - `ParkAnatomy` _component_: The park page walked top to bottom, in the order the sections actually render.
 - Types: `AnatomyStep`
@@ -272,7 +272,7 @@ Route `/[locale]/glossary` (page).
 - `OffSeasonDemo` _component_: The ride that is out of season, and the badge that says so in three words.
 - `NoWaitTimesDemo` _component_: What a park with no readable feed gets instead of invented numbers.
 - `BadgeRowDemo` _component_: The two badges that turn a reading into a statement. Rendered as the real components so their colours match the ones on a park page exactly.
-- `PlannerDayFigure` _component_: A whole planned day, drawn by the planner's own components.
+- `PlannerDayFigure` _component_: A whole planned day, drawn by the planner's own components: `PlannerDayDemo` and its fixture are imported from the planner's page rather than rebuilt, so there is one day grid and one dated payload to keep honest.
 - `LiveHourlyProfile` _component_: The park's real hourly table: one row per ride, each ride's peak hour bold.
 - `LiveTopAttractions` _component_: The park's real ranking: rank, ride, the live wait where there is one, typical and busy.
 
@@ -285,7 +285,7 @@ Route `/[locale]/glossary` (page).
 - `TARON_BASELINE` _const_: The median Taron's live crowd level is measured against (`baseline` on the attraction payload, 45 minutes on 2026-09-10). 70 ÷ 45 is about 156 %, and the tier boundaries are 60 / 89 / 110 / 150 / 200 — which is why the demo card reads …
 - `TARON_RECORD` _const_: Taron's highest measured wait in the window, and the day it happened.
 - `TARON_RECORD_DATE` _const_
-- `TARON_WEEKDAY_DAYS` _const_: Days behind the two summary buckets on the ride's card. Read off the fixture above rather than typed: they were 97 and 38 from an older fetch while the card beside the prose said 107 and 39.
+- `TARON_WEEKDAY_DAYS` _const_: Days behind the two summary buckets on the ride's card, read off the fixture above so the prose and the card cannot disagree.
 - `TARON_WEEKEND_DAYS` _const_
 - `WAIT_SCALE_MAX` _const_: Upper end of the scale the figure draws. Above Taron's record, so nothing clips.
 - `OFF_SEASON_CARD` _const_: A ride that is shut for a reason no live feed states: it runs from November to January, and in August nobody reports anything about it at all. The seasonal fields are what keeps that silence from being read as "open".
@@ -305,27 +305,27 @@ Route `/[locale]/glossary` (page).
 
 ### [`how-park-fan-works/content/de.tsx`](../../app/%5Blocale%5D/how-park-fan-works/content/de.tsx)
 
-- `ContentDE` _component_
+- `ContentDE` _component_: The guide page's article, German.
 
 ### [`how-park-fan-works/content/en.tsx`](../../app/%5Blocale%5D/how-park-fan-works/content/en.tsx)
 
-- `ContentEN` _component_
+- `ContentEN` _component_: The guide page's article, English.
 
 ### [`how-park-fan-works/content/es.tsx`](../../app/%5Blocale%5D/how-park-fan-works/content/es.tsx)
 
-- `ContentES` _component_
+- `ContentES` _component_: The guide page's article, Spanish.
 
 ### [`how-park-fan-works/content/fr.tsx`](../../app/%5Blocale%5D/how-park-fan-works/content/fr.tsx)
 
-- `ContentFR` _component_
+- `ContentFR` _component_: The guide page's article, French.
 
 ### [`how-park-fan-works/content/it.tsx`](../../app/%5Blocale%5D/how-park-fan-works/content/it.tsx)
 
-- `ContentIT` _component_
+- `ContentIT` _component_: The guide page's article, Italian.
 
 ### [`how-park-fan-works/content/nl.tsx`](../../app/%5Blocale%5D/how-park-fan-works/content/nl.tsx)
 
-- `ContentNL` _component_
+- `ContentNL` _component_: The guide page's article, Dutch.
 
 ### [`how-park-fan-works/page.tsx`](../../app/%5Blocale%5D/how-park-fan-works/page.tsx)
 
@@ -337,11 +337,11 @@ Route `/[locale]/how-park-fan-works` (page).
 
 ### [`impressum/content/de.tsx`](../../app/%5Blocale%5D/impressum/content/de.tsx)
 
-- `ImpressumDE` _component_
+- `ImpressumDE` _component_: The legal notice (Impressum) in German, shown on the `de` locale.
 
 ### [`impressum/content/en.tsx`](../../app/%5Blocale%5D/impressum/content/en.tsx)
 
-- `ImpressumEN` _component_
+- `ImpressumEN` _component_: The legal notice (Impressum) in English, shown on every locale but `de`.
 
 ### [`impressum/page.tsx`](../../app/%5Blocale%5D/impressum/page.tsx)
 
@@ -365,14 +365,14 @@ Route `/[locale]/maintenance` (page).
 
 - `default (Maintenance)` _component_
 - `generateStaticParams` _function_
-- `metadata` _const_: Maintenance page must never be indexed.
+- `metadata` _const_
 
 ### [`news/[slug]/page.tsx`](../../app/%5Blocale%5D/news/%5Bslug%5D/page.tsx)
 
 Route `/[locale]/news/[slug]` (page).
 
 - `default (NewsPostPage)` _component_
-- `generateStaticParams` _function_: News posts, statically generated like the blog posts they used to sit among. The page is the blog post page; only the section differs (`lib/blog/paths.ts`, `docs/rules/news-live-under-news.md`).
+- `generateStaticParams` _function_: The blog post page with `section="news"`. See lib/blog/paths.ts and docs/rules/news-live-under-news.md.
 - `generateMetadata` _function_
 
 ### [`news/page.tsx`](../../app/%5Blocale%5D/news/page.tsx)
@@ -380,7 +380,7 @@ Route `/[locale]/news/[slug]` (page).
 Route `/[locale]/news` (page).
 
 - `default (NewsIndexPage)` _component_
-- `generateStaticParams` _function_: The news overview, which was `/blog/category/news`: a dated stream with a park filter (`NewsIndexPageBody`).
+- `generateStaticParams` _function_: The park filter is a query parameter read in the browser, so it adds no URLs and the canonical stays `/news`.
 - `generateMetadata` _function_
 
 ### [`not-found.tsx`](../../app/%5Blocale%5D/not-found.tsx)
@@ -396,7 +396,7 @@ Route `/[locale]` (page).
 
 - `default (HomePage)` _component_
 - `generateMetadata` _function_
-- `revalidate` _const_: Regenerate WEEKLY. Vercel bills every shell regeneration as size-weighted ISR writes (~600 KB HTML+RSC ≈ ~75 write units per locale), so the 5-min window this shipped with cost ~50k write units/day across 6 locales — the dominant ISR-write …
+- `revalidate` _const_: A static shell per locale, served from the CDN.
 
 ### [`parks/[continent]/[country]/[city]/[park]/[attraction]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/%5Bpark%5D/%5Battraction%5D/page.tsx)
 
@@ -404,7 +404,7 @@ Route `/[locale]/parks/[continent]/[country]/[city]/[park]/[attraction]` (page).
 
 - `default (AttractionPage)` _component_
 - `generateMetadata` _function_
-- `dynamic` _const_: FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write (the dominant write-units source pre-#118 was prerendering every attraction × 6 locales).
+- `dynamic` _const_: Rendered per request, so there is no ISR shell write per attraction × locale.
 
 ### [`parks/[continent]/[country]/[city]/[park]/average-wait-times/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/%5Bpark%5D/average-wait-times/page.tsx)
 
@@ -428,15 +428,15 @@ Route `/[locale]/parks/[continent]/[country]/[city]/[park]` (page).
 Route `/[locale]/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]` (page).
 
 - `default (ParkCalendarPage)` _component_
-- `generateMetadata` _function_: A park's crowd calendar, on its own URL.
-- `dynamic` _const_: Same posture as the park page: rendered per request, no per-URL ISR shell across 212 parks × 6 locales.
+- `generateMetadata` _function_: A park's crowd calendar on its own URL, so the "wann ist es leer" answer can be crawled, carry its own title and be shared as a link; the best-days section, which the calendar is the evidence for, lives here too.
+- `dynamic` _const_: Same posture as the park page: rendered per request, no per-URL ISR shell. The best-days seed streams inside its own boundary so a cold `/best-days` compute never gates first byte; the month grid is client-fetched per visible month.
 
 ### [`parks/[continent]/[country]/[city]/[park]/with-kids/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/%5Bpark%5D/with-kids/page.tsx)
 
 Route `/[locale]/parks/[continent]/[country]/[city]/[park]/with-kids` (page).
 
 - `default (ParkKidsPage)` _component_: A park's height ladder for parents: which rides a child may take at which height.
-- `generateStaticParams` _function_: Empty on purpose: registers the route for ISR without building 192 pages at deploy time.
+- `generateStaticParams` _function_: Empty on purpose: registers the route for ISR without building every park's page at deploy.
 - `generateMetadata` _function_
 - `revalidate` _const_: ISR with a one-day window, on the terms `average-wait-times` documents: nothing here is live, and the park payload this page reads is data-cached for a day (`getParkByGeoPath`), so a day is the data's own cadence.
 
@@ -446,7 +446,7 @@ Route `/[locale]/parks/[continent]/[country]/[city]` (page).
 
 - `default (CityPage)` _component_
 - `generateMetadata` _function_
-- `generateStaticParams` _function_: Only the cities that HAVE a page — i.e. the ones with more than one park.
+- `generateStaticParams` _function_: Only the cities that have a page, the ones with more than one park; a single-park city 308s to its park, and prerendering it would build a redirect. The URL still renders on demand (`dynamicParams`) and still 308s.
 
 ### [`parks/[continent]/[country]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/page.tsx)
 
@@ -461,7 +461,7 @@ Route `/[locale]/parks/[continent]/[country]` (page).
 Route `/[locale]/parks/[continent]` (page).
 
 - `default (ContinentPage)` _component_
-- `generateStaticParams` _function_: Generate static params for all continents
+- `generateStaticParams` _function_
 - `generateMetadata` _function_
 
 ### [`parks/page.tsx`](../../app/%5Blocale%5D/parks/page.tsx)
@@ -480,7 +480,7 @@ Route `/[locale]/search` (page).
 
 ### [`trip-planner/_chrome.tsx`](../../app/%5Blocale%5D/trip-planner/_chrome.tsx)
 
-- `Chapter` _component_: A chapter of the planner page's article.
+- `Chapter` _component_: A chapter of the planner page's article. `ChapterHeading` directly rather than the guide's `SectionShell`, whose own `container mx-auto px-4` would inset every chapter inside this page's container.
 - `Note` _component_: A short aside beside the prose — the sentence a reader would otherwise have to take on trust, with the figure that backs it.
 
 ### [`trip-planner/_demos.tsx`](../../app/%5Blocale%5D/trip-planner/_demos.tsx)
@@ -498,7 +498,7 @@ Route `/[locale]/search` (page).
 
 ### [`trip-planner/content/de.tsx`](../../app/%5Blocale%5D/trip-planner/content/de.tsx)
 
-- `ContentDE` _component_: The planner page's article, German. German is the source; the other five are derived from it (docs/blog.md §6).
+- `ContentDE` _component_: The planner page's article, German: the source the other five are derived from (docs/blog.md §6). One module per language because the text carries links and markup.
 
 ### [`trip-planner/content/en.tsx`](../../app/%5Blocale%5D/trip-planner/content/en.tsx)
 
@@ -524,8 +524,8 @@ Route `/[locale]/search` (page).
 
 Route `/[locale]/trip-planner` (page).
 
-- `default (PlannerPage)` _component_: The trip planner's own page.
-- `generateStaticParams` _function_
+- `default (PlannerPage)` _component_: The trip planner's own page: the URL a menu entry, a link or a search engine can point at, and the place that explains the planner before there is anything in it.
+- `generateStaticParams` _function_: Six URLs, all prerendered: nothing here reads a request, and the plan itself lives in the visitor's browser.
 - `generateMetadata` _function_
 
 ### [`trip-planner/shared/page.tsx`](../../app/%5Blocale%5D/trip-planner/shared/page.tsx)
