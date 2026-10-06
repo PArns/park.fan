@@ -1910,7 +1910,7 @@
       "viewAll": "Mes alertes"
     },
     "rideBell": {
-      "setAlert": "Configurer une alerte de temps d’attente pour {name}",
+      "setAlert": "Configurer une alerte pour {name}",
       "alerted": "Alerte active pour {name} – toucher pour modifier"
     },
     "rideDialog": {
@@ -1938,7 +1938,12 @@
       "retired": "Démonté",
       "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
       "todayOnly": "Valable pour aujourd’hui seulement – à configurer de nouveau pour un autre jour de visite.",
-      "loadError": "Impossible de charger vos alertes."
+      "loadError": "Impossible de charger vos alertes.",
+      "kindLabel": "Que doit signaler l’alerte ?",
+      "kindWait": "Attente sous un seuil",
+      "kindReopen": "Me prévenir à la réouverture",
+      "reopenLabel": "à la réouverture",
+      "reopenHint": "Un message dès que l’attraction refonctionne après une fermeture ou une panne."
     },
     "overview": {
       "title": "Mes alertes",
@@ -1954,7 +1959,8 @@
       "retired": "Démonté",
       "loadError": "Impossible de charger la liste. Veuillez recharger la page.",
       "showAt": "à {time}",
-      "showNextAny": "prochaine séance"
+      "showNextAny": "prochaine séance",
+      "reopenLabel": "à la réouverture"
     },
     "menu": {
       "link": "Mes alertes",
@@ -1965,7 +1971,8 @@
       "remove": "{name} : supprimer l’alerte",
       "removeError": "Impossible de supprimer l’alerte, elle est toujours active. Merci de réessayer.",
       "removeRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
-      "loadError": "Impossible de charger vos alertes."
+      "loadError": "Impossible de charger vos alertes.",
+      "reopen": "à la réouverture"
     },
     "pushErrors": {
       "generic": "Ça n’a pas fonctionné. Merci de réessayer.",

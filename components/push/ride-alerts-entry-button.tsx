@@ -12,6 +12,8 @@ import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-di
 interface RideAlertsEntryButtonProps {
   parkName: string;
   attractions: RideAlertDialogAttraction[];
+  /** `hasReadableWaitTimes(park)` — see `RideAlertDialog`. */
+  reopenAvailable: boolean;
 }
 
 /**
@@ -20,7 +22,11 @@ interface RideAlertsEntryButtonProps {
  * than in the panel's own tightly-measured header strip (see that file's own
  * comment on why nothing new goes there).
  */
-export function RideAlertsEntryButton({ parkName, attractions }: RideAlertsEntryButtonProps) {
+export function RideAlertsEntryButton({
+  parkName,
+  attractions,
+  reopenAvailable,
+}: RideAlertsEntryButtonProps) {
   const [open, setOpen] = useState(false);
   const t = useTranslations('pushAlerts.rideDialog');
 
@@ -58,6 +64,7 @@ export function RideAlertsEntryButton({ parkName, attractions }: RideAlertsEntry
         onOpenChange={setOpen}
         parkName={parkName}
         attractions={attractions}
+        reopenAvailable={reopenAvailable}
       />
     </>
   );

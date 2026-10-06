@@ -34,6 +34,8 @@ export function rideAlertAttractionsFor(park: {
 }
 
 const RideAlertParkContext = createContext<readonly RideAlertDialogAttraction[] | null>(null);
+/** Outside a park page nothing says the park is unreadable, and the API refuses it if it is. */
+const RideAlertReopenContext = createContext(true);
 
 /**
  * Hands the park's ride list to every `RideAlertBell` below it, so a bell opens the full dialog
@@ -43,9 +45,15 @@ const RideAlertParkContext = createContext<readonly RideAlertDialogAttraction[] 
  */
 export function RideAlertParkProvider({
   park,
+  reopenAvailable,
   children,
 }: {
   park: { attractions?: ParkAttraction[] | null; status?: ParkStatus };
+  /**
+   * `hasReadableWaitTimes` of the server-rendered park. Not of the polled one: the flag is
+   * day-stable and rides on the server render, and an absent field reads as readable.
+   */
+  reopenAvailable: boolean;
   children: ReactNode;
 }) {
   const attractions = useMemo(
@@ -54,11 +62,20 @@ export function RideAlertParkProvider({
     [park.attractions, park.status]
   );
   return (
-    <RideAlertParkContext.Provider value={attractions}>{children}</RideAlertParkContext.Provider>
+    <RideAlertParkContext.Provider value={attractions}>
+      <RideAlertReopenContext.Provider value={reopenAvailable}>
+        {children}
+      </RideAlertReopenContext.Provider>
+    </RideAlertParkContext.Provider>
   );
 }
 
 /** The park's rides, or `null` outside a park page (favorites, homepage, blog). */
 export function useRideAlertParkAttractions(): readonly RideAlertDialogAttraction[] | null {
   return useContext(RideAlertParkContext);
+}
+
+/** Whether the park's wait times can be read, so a ride's reopening can be told about. */
+export function useRideAlertReopenAvailable(): boolean {
+  return useContext(RideAlertReopenContext);
 }
