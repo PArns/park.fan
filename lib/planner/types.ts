@@ -176,6 +176,22 @@ export function hasAnyPlan(state: PlannerState): boolean {
   return Object.values(state.parks).some((park) => Object.values(park.days).some(isPlannedDay));
 }
 
+/** The parks that hold a planned day, by name in the reader's language, each with those days in date order. */
+export function plannedParks(
+  parks: PlannerState['parks'],
+  locale: string
+): Array<Omit<PlannerPark, 'days'> & { days: PlannerDay[] }> {
+  return Object.values(parks)
+    .map((park) => ({
+      ...park,
+      days: Object.values(park.days)
+        .filter(isPlannedDay)
+        .sort((a, b) => a.date.localeCompare(b.date)),
+    }))
+    .filter((park) => park.days.length > 0)
+    .sort((a, b) => a.name.localeCompare(b.name, locale));
+}
+
 /** Entries for one park and date, in plan order. Never `undefined`. */
 export function entriesFor(
   state: PlannerState,

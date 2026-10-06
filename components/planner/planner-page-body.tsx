@@ -13,12 +13,11 @@ import {
   Route,
   Trash2,
 } from 'lucide-react';
-import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { PLANNER_START_ID } from '@/lib/planner/segments';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
-import { isPlannedDay } from '@/lib/planner/types';
+import { plannedParks } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerPushToggle } from './planner-push-toggle';
@@ -26,6 +25,7 @@ import { PlannerHelpSteps } from './planner-help';
 import { PlannerPolaroids, type PolaroidPhoto } from './planner-polaroids';
 import { PlannerTripAssistant } from './planner-trip-assistant';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
+import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confirm';
 
 /**
  * The planner's own page: a directory of what is planned, and an explanation
@@ -55,23 +55,19 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
    * The day whose bin was pressed, or `null` — same shape and same reason as the
    * panel's overview: one dialog under the whole list rather than one per row.
    */
-  const [pendingClear, setPendingClear] = useState<{ parkSlug: string; date: string } | null>(null);
+  const [pendingClear, setPendingClear] = useState<ClearDayTarget | null>(null);
   // Mounted only while open, so every opening starts from its defaults.
   const [assistantOpen, setAssistantOpen] = useState(false);
 
-  const parks = useMemo(() => {
-    return Object.values(state.parks)
-      .map((park) => ({
+  const parks = useMemo(
+    () =>
+      plannedParks(state.parks, locale).map((park) => ({
         ...park,
         today: todayInZone(park.timezone),
         tomorrow: addDays(todayInZone(park.timezone), 1),
-        days: Object.values(park.days)
-          .filter(isPlannedDay)
-          .sort((a, b) => a.date.localeCompare(b.date)),
-      }))
-      .filter((park) => park.days.length > 0)
-      .sort((a, b) => a.name.localeCompare(b.name, locale));
-  }, [state.parks, locale]);
+      })),
+    [state.parks, locale]
+  );
 
   const open = (parkSlug: string, date: string) => {
     setActive(parkSlug, date);
@@ -237,20 +233,10 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
         </section>
       )}
 
-      <ConfirmDialog
-        open={pendingClear !== null}
-        onOpenChange={(next) => {
-          if (!next) setPendingClear(null);
-        }}
-        tone="destructive"
-        icon={Trash2}
-        title={t('clearDayTitle')}
-        description={t('clearDayBody')}
-        confirmLabel={t('clearDayAction')}
-        cancelLabel={t('cancel')}
-        onConfirm={() => {
-          if (pendingClear) clearDay(pendingClear.parkSlug, pendingClear.date);
-        }}
+      <ClearDayConfirm
+        pending={pendingClear}
+        onDismiss={() => setPendingClear(null)}
+        onConfirm={clearDay}
       />
 
       {assistantOpen && <PlannerTripAssistant onOpenChange={setAssistantOpen} />}

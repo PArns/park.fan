@@ -3,10 +3,10 @@
 import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, MapPin, Trash2 } from 'lucide-react';
-import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { cn } from '@/lib/utils';
 import { addDays, nextPlannedDay, todayInZone } from '@/lib/planner/park-time';
-import { isPlannedDay, type PlannerState } from '@/lib/planner/types';
+import { plannedParks, type PlannerState } from '@/lib/planner/types';
+import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confirm';
 
 interface PlannerOverviewProps {
   state: PlannerState;
@@ -25,7 +25,6 @@ interface PlannerOverviewProps {
   onClearDay: (parkSlug: string, date: string) => void;
 }
 
-/** Today in the visitor's own reading, which is what "past" is measured against. */
 /**
  * Every park and day in the plan, in one list.
  *
@@ -61,25 +60,21 @@ export function PlannerOverview({
    * the `map` would mount one Radix portal per planned day, all but one of them
    * closed, for a question only one row can be asking.
    */
-  const [pendingClear, setPendingClear] = useState<{ parkSlug: string; date: string } | null>(null);
+  const [pendingClear, setPendingClear] = useState<ClearDayTarget | null>(null);
   // There is no single "today" in this list. A plan may hold Phantasialand and
   // Magic Kingdom at once, and at 23:00 in Berlin those two parks are on
   // different dates — so "Heute" and the greying-out of past days are decided
   // per park, against that park's own zone.
 
-  const parks = useMemo(() => {
-    return Object.values(state.parks)
-      .map((park) => ({
+  const parks = useMemo(
+    () =>
+      plannedParks(state.parks, locale).map((park) => ({
         ...park,
         today: todayInZone(park.timezone),
         tomorrow: addDays(todayInZone(park.timezone), 1),
-        days: Object.values(park.days)
-          .filter(isPlannedDay)
-          .sort((a, b) => a.date.localeCompare(b.date)),
-      }))
-      .filter((park) => park.days.length > 0)
-      .sort((a, b) => a.name.localeCompare(b.name, locale));
-  }, [state.parks, locale]);
+      })),
+    [state.parks, locale]
+  );
 
   /**
    * The one day the panel counts down to — the nearest planned day still ahead,
@@ -212,24 +207,10 @@ export function PlannerOverview({
         ))}
       </div>
 
-      {/* Not `window.confirm`: an embedded view or a visitor who once ticked
-          "prevent this page from creating additional dialogs" gets `false` back
-          without seeing anything, and the bin then does nothing with no
-          explanation. See `ConfirmDialog`. */}
-      <ConfirmDialog
-        open={pendingClear !== null}
-        onOpenChange={(next) => {
-          if (!next) setPendingClear(null);
-        }}
-        tone="destructive"
-        icon={Trash2}
-        title={t('clearDayTitle')}
-        description={t('clearDayBody')}
-        confirmLabel={t('clearDayAction')}
-        cancelLabel={t('cancel')}
-        onConfirm={() => {
-          if (pendingClear) onClearDay(pendingClear.parkSlug, pendingClear.date);
-        }}
+      <ClearDayConfirm
+        pending={pendingClear}
+        onDismiss={() => setPendingClear(null)}
+        onConfirm={onClearDay}
       />
     </div>
   );

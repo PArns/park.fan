@@ -6,7 +6,7 @@ import { CalendarCheck, Loader2, MapPin, RotateCw, TriangleAlert } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
 import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
-import { hasAnyPlan, isPlannedDay, type PlannerState } from '@/lib/planner/types';
+import { hasAnyPlan, plannedParks, type PlannerState } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 
 /**
@@ -107,19 +107,7 @@ export function PlannerSharedPlan() {
           ? loaded.load
           : { kind: 'loading' };
 
-  const parks =
-    load.kind !== 'ready'
-      ? []
-      : Object.values(load.plan.parks)
-          .map((park) => ({
-            slug: park.slug,
-            name: park.name,
-            days: Object.values(park.days)
-              .filter(isPlannedDay)
-              .sort((a, b) => a.date.localeCompare(b.date)),
-          }))
-          .filter((park) => park.days.length > 0)
-          .sort((a, b) => a.name.localeCompare(b.name, locale));
+  const parks = load.kind !== 'ready' ? [] : plannedParks(load.plan.parks, locale);
 
   const adopt = (id: string, plan: PlannerState) => {
     void adoptSharedPlan(plan);
