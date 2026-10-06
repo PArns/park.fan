@@ -2427,6 +2427,25 @@
     "loading": "Loading the plan",
     "error": "The plan could not be loaded.",
     "noPlan": "There is no forecast for this day.",
+    "unavailable": {
+      "park_closed": "The park is closed on this day. Try another day.",
+      "hours_unknown": "We don't know the opening hours for this day yet, so there are no curves.",
+      "no_rides_on_file": "We have no rides on file for this park yet.",
+      "no_wait_time_source": {
+        "in_park_app_only": "The park only publishes its wait times through its own app on the park Wi-Fi, so there are no curves here.",
+        "not_published": "The park doesn't publish its wait times anywhere, so there are no curves here.",
+        "unknown": "The park publishes no readable wait times, so there are no curves here."
+      },
+      "never_measured": "We have not received any wait times from this park yet, so there are no curves.",
+      "feed_stale": "We haven't received this park's wait times for {days, plural, one {# day} other {# days}}. The fault is on our side, so the park is not simply quiet.",
+      "feed_stale_unknown": "We are not receiving this park's wait times at the moment. The fault is on our side, so the park is not simply quiet.",
+      "rides_cannot_open": "On this day every ride is out of season or closed for works. Try another day.",
+      "insufficient_history": "We don't have enough measured days for this park to draw curves yet. Try another day.",
+      "no_hourly_shape": "This park's rides run on hours that differ too much to build one day shape from them yet.",
+      "no_forecast": "The model has not produced a forecast for this day yet. Check back after the next model run.",
+      "no_observations": "We have no measurements for this park on that past day.",
+      "data_unavailable": "A service behind the plan did not answer. We don't know right now why there are no curves. Try again in a moment."
+    },
     "overview": {
       "empty": "No days planned yet.",
       "countdown": "in {count, plural, one {# day} other {# days}}"

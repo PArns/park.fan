@@ -407,6 +407,11 @@ The link that hands a stored plan to somebody else, and how it is read back.
 - `plannerUi` _const_: The planner's open signal: request counters to subscribe to, and who asked last.
 - Types: `PlannerOpenedSource`, `PlannerOpenIntent`
 
+### [`unavailable.ts`](../../lib/planner/unavailable.ts)
+
+- `unavailableNote` _function_: What to tell the visitor when the API sent no ride curves for this day, or `null` when it sent some.
+- Types: `UnavailableNote`
+
 ### [`use-assign-facts.ts`](../../lib/planner/use-assign-facts.ts)
 
 - `useParksBestDays` _hook_: The best-days snapshot of several parks at once, for the trip assistant, under `usePlannerDayFacts`'s query key so an open park is a cache hit.

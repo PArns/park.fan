@@ -2427,6 +2427,25 @@
     "loading": "Cargando el plan",
     "error": "No se pudo cargar el plan.",
     "noPlan": "No hay previsión para este día.",
+    "unavailable": {
+      "park_closed": "El parque está cerrado ese día. Prueba con otro día.",
+      "hours_unknown": "Todavía no conocemos el horario de ese día, así que no hay curvas.",
+      "no_rides_on_file": "Todavía no tenemos atracciones registradas para este parque.",
+      "no_wait_time_source": {
+        "in_park_app_only": "El parque solo publica sus tiempos de espera en su propia app con el wifi del parque. Por eso aquí no hay curvas.",
+        "not_published": "El parque no publica sus tiempos de espera en ningún sitio. Por eso aquí no hay curvas.",
+        "unknown": "El parque no publica tiempos de espera legibles. Por eso aquí no hay curvas."
+      },
+      "never_measured": "Todavía no hemos recibido ningún tiempo de espera de este parque, así que aún no hay curvas.",
+      "feed_stale": "Los tiempos de espera de este parque no nos llegan desde hace {days, plural, one {# día} other {# días}}. El fallo está de nuestro lado, así que el parque no está simplemente tranquilo.",
+      "feed_stale_unknown": "Ahora mismo no nos llegan los tiempos de espera de este parque. El fallo está de nuestro lado, así que el parque no está simplemente tranquilo.",
+      "rides_cannot_open": "Ese día todas las atracciones están fuera de temporada o cerradas por obras. Prueba con otro día.",
+      "insufficient_history": "Todavía no tenemos suficientes días medidos de este parque para dibujar curvas. Prueba con otro día.",
+      "no_hourly_shape": "Las atracciones de este parque tienen horarios demasiado distintos para construir ya un perfil del día.",
+      "no_forecast": "El modelo todavía no ha calculado una previsión para este día. Vuelve después de la próxima ejecución del modelo.",
+      "no_observations": "No tenemos mediciones de este parque para ese día pasado.",
+      "data_unavailable": "Un servicio detrás del plan no ha respondido. Ahora mismo no sabemos por qué no hay curvas. Inténtalo de nuevo en un momento."
+    },
     "overview": {
       "empty": "Aún no hay días planificados.",
       "countdown": "en {count, plural, one {# día} other {# días}}"
