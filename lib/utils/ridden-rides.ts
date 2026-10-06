@@ -74,8 +74,9 @@ export function toggleRidden(id: string): boolean {
   try {
     localStorage.setItem(RIDDEN_RIDES_KEY, JSON.stringify([...next]));
   } catch {
-    // Private mode or a full quota: the mark lasts until the page is left.
-    cachedRaw = null;
+    // Private mode or a full quota: the mark lasts until the page is left. Pinning the raw that is
+    // stored now keeps `next` as the snapshot until the stored value changes under it.
+    cachedRaw = readRaw();
     cachedSet = next;
   }
   for (const listener of listeners) listener();

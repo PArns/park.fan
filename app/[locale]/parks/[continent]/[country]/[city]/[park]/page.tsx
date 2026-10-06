@@ -27,7 +27,7 @@ import {
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
-import { stripNewPrefix } from '@/lib/utils';
+import { isUuid, stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { CalendarHashRedirect } from '@/components/parks/calendar-hash-redirect';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
@@ -545,7 +545,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           >
             {/* The rides the list below offers a „ridden" switch on; `closedAttractions` are a
                 separate list and stay out of the total. */}
-            <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id)} />
+            <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
           </ParkTitleHeader>
         }
       >

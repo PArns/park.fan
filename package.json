@@ -122,6 +122,7 @@
     "test:meta-descriptions": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-meta-descriptions.mjs",
     "test:closed-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-closed-ride.mjs",
     "test:glossary-ride-href": "node --experimental-strip-types scripts/test-glossary-ride-href.mjs",
+    "test:ridden-rides": "node --experimental-strip-types scripts/test-ridden-rides.mjs",
     "test:news-split": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-split.mjs",
     "test:hub-chapters": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-hub-chapters.mjs",
     "test:chapter-panel-padding": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-chapter-panel-padding.mjs",
