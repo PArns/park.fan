@@ -1939,6 +1939,7 @@
       "close": "Chiudi",
       "entry": "Avvisi sul tempo di attesa",
       "entryWithCount": "Avvisi sul tempo di attesa ({count})",
+      "nudge": "Ti avvisiamo appena l’attesa di un’attrazione scende sotto i minuti che scegli.",
       "outOfSeason": "Solo in inverno",
       "retired": "Dismessa",
       "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",

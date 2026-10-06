@@ -1939,6 +1939,7 @@
       "close": "Sluiten",
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
+      "nudge": "We melden het zodra de wachttijd van een attractie onder het aantal minuten komt dat je instelt.",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
