@@ -1927,6 +1927,7 @@
       "remove": "Quitar {name}",
       "addTitle": "Añadir un aviso",
       "selectRide": "Elegir una atracción",
+      "otherRide": "Otra atracción",
       "searchRide": "Buscar atracción",
       "noRideFound": "Ninguna atracción con ese nombre.",
       "noQueueNow": "Ahora sin espera",

@@ -38,6 +38,7 @@ import {
   filterRideAlertPickerRows,
   isReopenAlert,
   resolveRideAlertSelection,
+  rideAlertKindsFor,
   rideAlertPickerRows,
   type RideAlertPickerKind,
 } from '@/lib/push/ride-alert-picker';
@@ -50,6 +51,11 @@ export interface RideAlertDialogAttraction {
   slug?: string;
   /** Seeds the add-form's slider when this ride is selected — see `defaultThresholdFor`. */
   currentWaitTime?: number | null;
+  /**
+   * The ride's live status. A running ride offers the wait-time alert only; a stopped one
+   * (`DOWN`, `CLOSED`, `REFURBISHMENT`) also offers the reopening — see `rideAlertKindsFor`.
+   */
+  status?: string | null;
   /** The ride's photo for its row in the picker — the same fields `PlannerRideThumb` reads. */
   backgroundImage?: string | null;
   backgroundPosition?: string;
@@ -63,8 +69,9 @@ interface RideAlertDialogProps {
   attractions: RideAlertDialogAttraction[];
   /**
    * The ride to pick on open — set by a ride's own bell (`RideAlertBell`). When that ride already
-   * has an alert it is not in the picker; its alert is in the list above, and the picker falls
-   * back to the first ride that can take one.
+   * has an alert it is not in the picker; its alert is in the list above, and no form is drawn
+   * until the visitor asks for another ride. The picker itself stays closed too, so nothing takes
+   * the focus on open and no phone keyboard comes up.
    */
   initialAttractionId?: string;
   /**
@@ -104,8 +111,13 @@ export function RideAlertDialog({
   const [thresholdRaw, setThresholdRaw] = useState('');
   const threshold = parseThresholdMinutes(thresholdRaw);
   // A ride has one alert, of one kind: the API replaces the other kind on a write.
-  const [pickedKind, setPickedKind] = useState<RideAlertPickerKind>('wait');
-  const kind: RideAlertPickerKind = reopenAvailable ? pickedKind : 'wait';
+  // Kept with the ride it was picked for, so choosing another ride returns to that ride's default.
+  const [pickedKind, setPickedKind] = useState<{
+    id: string;
+    kind: RideAlertPickerKind;
+  } | null>(null);
+  /** The visitor pressed "other ride": the search and the list are open. */
+  const [changing, setChanging] = useState(false);
   const [adding, setAdding] = useState(false);
   /**
    * The rides being removed, as a set, with their failures keyed the same way, for the reason
@@ -129,6 +141,8 @@ export function RideAlertDialog({
     setAddError(null);
     setRemoveErrors({});
     setQuery('');
+    setChanging(false);
+    setPickedKind(null);
     if (initialAttractionId) setRawSelectedId(initialAttractionId);
     void fetchRideAlertsRemote().then((result) => {
       if (cancelled) return;
@@ -150,8 +164,8 @@ export function RideAlertDialog({
     [alerts]
   );
   const rows = useMemo(
-    () => rideAlertPickerRows(attractions, alertedIds, locale, kind),
-    [attractions, alertedIds, locale, kind]
+    () => rideAlertPickerRows(attractions, alertedIds, locale, reopenAvailable),
+    [attractions, alertedIds, locale, reopenAvailable]
   );
   const visibleRows = useMemo(() => filterRideAlertPickerRows(rows, query), [rows, query]);
 
@@ -163,6 +177,18 @@ export function RideAlertDialog({
     () => resolveRideAlertSelection(rows, rawSelectedId),
     [rows, rawSelectedId]
   );
+
+  // A bell's dialog shows its own ride and nothing else until "other ride" is pressed. When that
+  // ride has an alert already (it is in the list above) or its queue has become too short, there
+  // is no ride to fill a form for, so none is drawn.
+  const rideLocked = !!initialAttractionId && !changing;
+  const formRideId = rideLocked && selectedId !== initialAttractionId ? '' : selectedId;
+  const formAttraction = attractions.find((a) => a.id === formRideId);
+  const kinds = rideAlertKindsFor(formAttraction, reopenAvailable);
+  // The reopening is the default wherever it is offered: that is why a visitor presses the bell of
+  // a ride that is not running.
+  const kind: RideAlertPickerKind =
+    kinds.length > 1 && pickedKind?.id === formRideId ? pickedKind.kind : kinds[0];
 
   // The slider itself CANNOT be derived the same way: it is also the
   // visitor's own input, so re-deriving it on every render would overwrite a
@@ -182,17 +208,17 @@ export function RideAlertDialog({
   // so on that first run the list is not in the DOM yet.
   const listRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!open || !initialAttractionId || selectedId !== initialAttractionId) return;
+    if (!open || !changing || !initialAttractionId || selectedId !== initialAttractionId) return;
     const frame = requestAnimationFrame(() => {
       listRef.current
         ?.querySelector<HTMLElement>('[aria-current="true"]')
         ?.scrollIntoView({ block: 'nearest' });
     });
     return () => cancelAnimationFrame(frame);
-  }, [open, initialAttractionId, selectedId, alerts]);
+  }, [open, changing, initialAttractionId, selectedId, alerts]);
 
   const handleAdd = async () => {
-    const attraction = attractions.find((a) => a.id === selectedId);
+    const attraction = formAttraction;
     // Defensive, not the real gate — the button below is already disabled
     // while `threshold` is null, but a cleared field must never reach the
     // API as the `Number('') === 0` it would otherwise silently become.
@@ -249,6 +275,17 @@ export function RideAlertDialog({
       <DialogContent
         showCloseButton={false}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+        // A bell's dialog opens on its ride, not on a search field: the first field would take the
+        // focus and bring the phone keyboard up. The dialog itself holds it instead, so Tab and
+        // Escape still work from inside.
+        onOpenAutoFocus={
+          rideLocked
+            ? (event) => {
+                event.preventDefault();
+                (event.currentTarget as HTMLElement).focus();
+              }
+            : undefined
+        }
       >
         <PushDialogHero
           icon={Bell}
@@ -326,10 +363,44 @@ export function RideAlertDialog({
                 )}
               >
                 <p className="text-xs font-medium">{t('addTitle')}</p>
-                {reopenAvailable && (
+                {rideLocked && formAttraction && (
+                  <div className="flex items-center gap-2.5">
+                    <PlannerRideThumb
+                      src={formAttraction.backgroundImage}
+                      position={formAttraction.backgroundPosition}
+                      size={8}
+                    />
+                    <span className="min-w-0 flex-1 truncate text-sm font-medium">
+                      {formAttraction.name}
+                    </span>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="shrink-0"
+                      onClick={() => setChanging(true)}
+                    >
+                      {t('otherRide')}
+                    </Button>
+                  </div>
+                )}
+                {rideLocked && !formAttraction && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="self-start"
+                    onClick={() => setChanging(true)}
+                  >
+                    {t('otherRide')}
+                  </Button>
+                )}
+                {kinds.length > 1 && (
                   <Tabs
                     value={kind}
-                    onValueChange={(value) => setPickedKind(value as RideAlertPickerKind)}
+                    onValueChange={(value) =>
+                      setPickedKind({ id: formRideId, kind: value as RideAlertPickerKind })
+                    }
                   >
                     <TabsList
                       aria-label={t('kindLabel')}
@@ -344,82 +415,91 @@ export function RideAlertDialog({
                     </TabsList>
                   </Tabs>
                 )}
-                {/* The list filters itself (`shouldFilter={false}`): cmdk's own
-                    matcher scores fuzzy subsequences, so "tar" would also find
-                    rides that merely contain a t, an a and an r in that order. */}
-                {/* `defaultValue` puts cmdk's own highlight on the bell's ride. Left to
-                    itself it highlights the first row, which then looks picked. */}
-                <Command
-                  shouldFilter={false}
-                  defaultValue={initialAttractionId}
-                  label={t('selectRide')}
-                  className="border-input border bg-transparent **:data-[slot=command-input-wrapper]:h-11 **:data-[slot=command-input-wrapper]:gap-2 **:data-[slot=command-input-wrapper]:px-3 sm:**:data-[slot=command-input-wrapper]:h-10 [&_[data-slot=command-input-wrapper]_svg]:size-4"
-                >
-                  <CommandInput
-                    value={query}
-                    onValueChange={setQuery}
-                    placeholder={t('searchRide')}
-                    className="h-11 py-0 sm:h-10"
-                  />
-                  <CommandList ref={listRef} className="max-h-44 sm:max-h-56">
-                    <CommandEmpty className="text-muted-foreground px-3 py-4 text-center text-xs">
-                      {t('noRideFound')}
-                    </CommandEmpty>
-                    {visibleRows.map(({ attraction, selectable }) => {
-                      const wait =
-                        attraction.currentWaitTime == null
-                          ? null
-                          : roundWaitTo5(attraction.currentWaitTime);
-                      const picked = attraction.id === selectedId;
-                      return (
-                        <CommandItem
-                          key={attraction.id}
-                          value={attraction.id}
-                          disabled={!selectable}
-                          onSelect={() => setRawSelectedId(attraction.id)}
-                          aria-current={picked ? 'true' : undefined}
-                          className={cn('m-1 gap-2.5 rounded-md', picked && 'bg-primary/10')}
-                        >
-                          <PlannerRideThumb
-                            src={attraction.backgroundImage}
-                            position={attraction.backgroundPosition}
-                            size={8}
-                          />
-                          <span className="min-w-0 flex-1 truncate">{attraction.name}</span>
-                          {/* A row that cannot be picked still says what the queue
-                              reads — "no queue" only where it really is zero. The
-                              greyed row is what says it cannot be picked. */}
-                          {wait === 0 ? (
-                            <span className="text-muted-foreground shrink-0 text-xs">
-                              {t('noQueueNow')}
-                            </span>
-                          ) : !selectable && wait !== null ? (
-                            <span className="text-muted-foreground shrink-0 text-xs tabular-nums">
-                              {wait} {t('minutes')}
-                            </span>
-                          ) : wait !== null ? (
-                            <WaitTimeValue
-                              minutes={wait}
-                              shadow={false}
-                              unit={t('minutes')}
-                              className="shrink-0 text-sm font-semibold tabular-nums"
-                            />
-                          ) : null}
-                          {picked && <Check className="text-primary size-4" aria-hidden="true" />}
-                        </CommandItem>
-                      );
-                    })}
-                  </CommandList>
-                </Command>
+                {!rideLocked && (
+                  <>
+                    {/* The list filters itself (`shouldFilter={false}`): cmdk's own
+                        matcher scores fuzzy subsequences, so "tar" would also find
+                        rides that merely contain a t, an a and an r in that order. */}
+                    {/* `defaultValue` puts cmdk's own highlight on the bell's ride. Left to
+                        itself it highlights the first row, which then looks picked. */}
+                    <Command
+                      shouldFilter={false}
+                      defaultValue={initialAttractionId}
+                      label={t('selectRide')}
+                      className="border-input border bg-transparent **:data-[slot=command-input-wrapper]:h-11 **:data-[slot=command-input-wrapper]:gap-2 **:data-[slot=command-input-wrapper]:px-3 sm:**:data-[slot=command-input-wrapper]:h-10 [&_[data-slot=command-input-wrapper]_svg]:size-4"
+                    >
+                      <CommandInput
+                        value={query}
+                        onValueChange={setQuery}
+                        placeholder={t('searchRide')}
+                        className="h-11 py-0 sm:h-10"
+                        // The search is only open on a bell's dialog after "other ride", so a
+                        // visitor who pressed that wants to type.
+                        autoFocus={changing}
+                      />
+                      <CommandList ref={listRef} className="max-h-44 sm:max-h-56">
+                        <CommandEmpty className="text-muted-foreground px-3 py-4 text-center text-xs">
+                          {t('noRideFound')}
+                        </CommandEmpty>
+                        {visibleRows.map(({ attraction, selectable }) => {
+                          const wait =
+                            attraction.currentWaitTime == null
+                              ? null
+                              : roundWaitTo5(attraction.currentWaitTime);
+                          const picked = attraction.id === selectedId;
+                          return (
+                            <CommandItem
+                              key={attraction.id}
+                              value={attraction.id}
+                              disabled={!selectable}
+                              onSelect={() => setRawSelectedId(attraction.id)}
+                              aria-current={picked ? 'true' : undefined}
+                              className={cn('m-1 gap-2.5 rounded-md', picked && 'bg-primary/10')}
+                            >
+                              <PlannerRideThumb
+                                src={attraction.backgroundImage}
+                                position={attraction.backgroundPosition}
+                                size={8}
+                              />
+                              <span className="min-w-0 flex-1 truncate">{attraction.name}</span>
+                              {/* A row that cannot be picked still says what the queue
+                                  reads — "no queue" only where it really is zero. The
+                                  greyed row is what says it cannot be picked. */}
+                              {wait === 0 ? (
+                                <span className="text-muted-foreground shrink-0 text-xs">
+                                  {t('noQueueNow')}
+                                </span>
+                              ) : !selectable && wait !== null ? (
+                                <span className="text-muted-foreground shrink-0 text-xs tabular-nums">
+                                  {wait} {t('minutes')}
+                                </span>
+                              ) : wait !== null ? (
+                                <WaitTimeValue
+                                  minutes={wait}
+                                  shadow={false}
+                                  unit={t('minutes')}
+                                  className="shrink-0 text-sm font-semibold tabular-nums"
+                                />
+                              ) : null}
+                              {picked && (
+                                <Check className="text-primary size-4" aria-hidden="true" />
+                              )}
+                            </CommandItem>
+                          );
+                        })}
+                      </CommandList>
+                    </Command>
+                  </>
+                )}
                 {/* No slider while no ride is picked — which happens only when
                     every ride left in the list is too short a queue for an alert.
                     A track drawn for nothing would read as a choice. */}
-                {selectedId && kind === 'reopen' && (
+                {formRideId && kind === 'reopen' && (
                   <p className="text-muted-foreground text-[11px] leading-snug">
                     {t('reopenHint')}
                   </p>
                 )}
-                {selectedId && kind === 'wait' && (
+                {formRideId && kind === 'wait' && (
                   <div className="flex flex-col gap-1.5">
                     <span className="text-muted-foreground text-xs">{t('thresholdInput')}</span>
                     <ThresholdMinutesInput
@@ -430,9 +510,7 @@ export function RideAlertDialog({
                       // The cap follows the picker: each ride in the list carries
                       // its own reading, so switching from a 20-minute ride to a
                       // 120-minute one re-opens the top of the track.
-                      max={maxThresholdFor(
-                        attractions.find((a) => a.id === selectedId)?.currentWaitTime
-                      )}
+                      max={maxThresholdFor(formAttraction?.currentWaitTime)}
                     />
                     <p className="text-muted-foreground text-[11px] leading-snug">
                       {t('todayOnly')}
@@ -442,7 +520,7 @@ export function RideAlertDialog({
                 <Button
                   type="button"
                   onClick={handleAdd}
-                  disabled={!selectedId || adding || (kind === 'wait' && threshold === null)}
+                  disabled={!formRideId || adding || (kind === 'wait' && threshold === null)}
                   size="sm"
                   className="self-start"
                 >

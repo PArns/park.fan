@@ -93,6 +93,13 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkMapsLinks` _function_: Both map URLs for a coordinate pair, or `null` when the pair is missing, non-finite, out of range, or `0,0` (Null Island is what an ungeocoded row looks like).
 - Types: `ParkMapsLinks`
 
+### [`park-hours-ics.ts`](../../lib/parks/park-hours-ics.ts)
+
+- `openingDays` _function_: One row per date, and with `now` only those that have not ended yet. The park page calls it without a clock — it never reads one in the shell path — and the route, which does, passes it.
+- `hasOpeningDays` _function_: Whether the park page offers the calendar link: the schedule has an opening day at all.
+- `buildParkHoursIcs` _function_: The park's coming opening days as an iCalendar file: one event per day, in UTC (`…Z`), so the file needs no `VTIMEZONE` and every calendar app shows the times in the visitor's own zone.
+- Types: `HoursScheduleItem`, `HoursIcsInput`
+
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 
 - `parseParkSimulation` _function_: Parse `?state=` into the scenarios to apply. Empty when simulation is off, the param is absent or nothing in it is known, so callers apply the result unconditionally and a typo degrades to the real park.

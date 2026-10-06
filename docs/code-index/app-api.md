@@ -326,6 +326,12 @@ Route `/api/parks/backgrounds` (route).
 
 - `GET` _function_: Every park and ride photo the site ships, as a flat list of paths from the media manifest. Paths are content-versioned, so a client can cache each one indefinitely.
 
+### [`parks/hours/[continent]/[country]/[city]/[park]/route.ts`](../../app/api/parks/hours/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/%5Bpark%5D/route.ts)
+
+Route `/api/parks/hours/[continent]/[country]/[city]/[park]` (route).
+
+- `GET` _function_
+
 ### [`parks/live/route.ts`](../../app/api/parks/live/route.ts)
 
 Route `/api/parks/live` (route).

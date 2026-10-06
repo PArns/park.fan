@@ -24,6 +24,7 @@ import {
   filterRideAlertPickerRows,
   isReopenAlert,
   resolveRideAlertSelection,
+  rideAlertKindsFor,
   rideAlertPickerRows,
 } from '../lib/push/ride-alert-picker.ts';
 import { roundWaitTo5 } from '../lib/utils/wait-time.ts';
@@ -230,28 +231,40 @@ test('no selection at all when no ride can take an alert', () => {
   assert.equal(resolveRideAlertSelection(rows, 'a'), '');
 });
 
-test('a reopen alert can be set on a ride whose queue is too short, or closed', () => {
+test('a stopped ride can be picked for its reopening, a running one with a short queue cannot', () => {
   const park = [
-    { id: 'a', name: 'A', currentWaitTime: 0 },
-    { id: 'b', name: 'B', currentWaitTime: 5 },
-    { id: 'c', name: 'C', currentWaitTime: null },
+    { id: 'a', name: 'A', currentWaitTime: 0, status: 'OPERATING' },
+    { id: 'b', name: 'B', currentWaitTime: 5, status: 'DOWN' },
+    { id: 'c', name: 'C', currentWaitTime: null, status: 'CLOSED' },
+    { id: 'd', name: 'D', currentWaitTime: 40, status: 'OPERATING' },
   ];
-  const wait = rideAlertPickerRows(park, new Set(), 'en');
+  const noReopen = rideAlertPickerRows(park, new Set(), 'en');
   assert.deepEqual(
-    wait.map((r) => r.selectable),
-    [false, false, true]
+    noReopen.map((r) => r.selectable),
+    [false, false, true, true]
   );
-  const reopen = rideAlertPickerRows(park, new Set(), 'en', 'reopen');
+  const reopen = rideAlertPickerRows(park, new Set(), 'en', true);
   assert.deepEqual(
     reopen.map((r) => r.selectable),
-    [true, true, true]
+    [false, true, true, true]
   );
-  assert.equal(resolveRideAlertSelection(reopen, 'a'), 'a');
-  assert.equal(resolveRideAlertSelection(reopen, ''), 'a');
+  assert.equal(resolveRideAlertSelection(reopen, 'b'), 'b');
+  assert.equal(resolveRideAlertSelection(reopen, 'a'), 'b');
+});
+
+test('only a stopped ride offers both kinds, and only where reopening can be told', () => {
+  for (const status of ['DOWN', 'CLOSED', 'REFURBISHMENT']) {
+    assert.deepEqual(rideAlertKindsFor({ status }, true), ['reopen', 'wait']);
+    assert.deepEqual(rideAlertKindsFor({ status }, false), ['wait']);
+  }
+  for (const status of ['OPERATING', 'UNKNOWN', undefined, null]) {
+    assert.deepEqual(rideAlertKindsFor({ status }, true), ['wait']);
+  }
+  assert.deepEqual(rideAlertKindsFor(undefined, true), ['wait']);
 });
 
 test('a ride that already has an alert stays out of the picker, whichever kind it is', () => {
-  const rows = rideAlertPickerRows(PARK, new Set(['fly']), 'de', 'reopen');
+  const rows = rideAlertPickerRows(PARK, new Set(['fly']), 'de', true);
   assert.ok(!rows.some((r) => r.attraction.id === 'fly'));
 });
 
