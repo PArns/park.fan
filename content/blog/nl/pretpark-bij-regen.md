@@ -1,16 +1,15 @@
 ---
-title: 'Pretpark bij regen: zes parken met binnenbanen vergeleken'
+title: 'Pretpark bij regen: overdekte attracties in negen parken vergeleken'
 translationKey: theme-parks-in-the-rain
 date: '2026-10-06'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Op regendagen zijn de headliners in twaalf van de twaalf onderzochte parken
-  korter bezet dan op droge dagen van hetzelfde soort, in Movie Park bijna een
-  derde, in Disneyland Paris nauwelijks. Daarbij de banen in gebouwen van
-  Europa-Park, Phantasialand, Efteling, Movie Park, Plopsaland en Heide Park,
-  de reisplanning en de meest gestelde vragen.
+  Bij regen sta je in een pretpark korter in de rij. In alle twaalf parken die
+  we hebben onderzocht, waren de wachttijden op regendagen korter, in Movie Park
+  met bijna een derde. In Toverland zijn 22 van de 44 attracties overdekt, in
+  Phantasialand 14 van de 40 en in Walibi Holland geen enkele.
 tags:
   - pretpark
   - regen
@@ -23,6 +22,8 @@ tags:
   - movie-park
   - plopsaland
   - heide-park
+  - toverland
+  - walibi
 category: guides
 coverImage:
   src: /media/europa-park/eurosat-cancan-coaster.jpg
@@ -30,19 +31,23 @@ coverImage:
   caption: 'De hele baan loopt binnen in die bol.'
   credit: 'park.fan'
 seo:
-  title: 'Pretpark bij regen: zes parken vergeleken, met wachttijden'
+  title: 'Pretpark bij regen: overdekte attracties en wachttijden'
   description: >-
-    Zes parken met banen in gebouwen vergeleken, onze meting van de wachttijden
-    op regendagen in twaalf parken, reisplanning en veelgestelde vragen.
+    Volgens onze meting is de wachttijd in een pretpark bij regen tot 31 procent
+    korter. In Toverland is de helft van de 44 attracties overdekt.
   keywords:
     - pretpark bij regen
-    - pretpark regen de moeite waard
-    - pretpark bij slecht weer
-    - pretpark indoor
-    - pretpark regendag wachttijden
+    - naar een pretpark als het regent
+    - pretpark slecht weer
+    - indoor pretpark
+    - overdekte attracties
     - overdekte achtbanen
+    - wachttijden pretpark regendag
     - Europa-Park bij regen
     - Phantasialand bij regen
+    - Efteling bij regen
+    - Toverland bij regen
+    - Walibi bij regen
 parkLinks:
   - europa-park
   - phantasialand
@@ -50,6 +55,9 @@ parkLinks:
   - movie-park-germany
   - plopsaland-deutschland
   - heide-park
+  - attractiepark-toverland
+  - walibi-belgium
+  - walibi-holland
 rideLinks:
   - europa-park/eurosat-cancan-coaster
   - europa-park/arthur
@@ -59,167 +67,147 @@ rideLinks:
   - efteling/symbolica
   - movie-park-germany/van-helsings-factory
   - heide-park/ghostbusters-5d
+  - attractiepark-toverland/toos-express
+  - walibi-belgium/turbine
+  - walibi-belgium/popcorn-revenge
 ---
 
-Wie op een regendag naar een pretpark gaat, staat gemiddeld korter in de rij.
-In alle twaalf parken die we hiervoor hebben bekeken, lagen de headliners op
-regendagen onder het niveau van droge dagen van hetzelfde soort, in Disneyland
-Paris ongeveer 4 % en in Movie Park ongeveer 31 %. Wat overblijft is de vraag
-welke banen er op zo'n dag nog de moeite waard zijn, en dat zijn eerst de banen
-in een gebouw.
+Wie op een regendag naar een pretpark gaat, staat gemiddeld korter in de rij. In
+alle twaalf parken die we hebben onderzocht, was de wachttijd bij de headliners
+op regendagen korter dan op vergelijkbare droge dagen, in Disneyland Paris met
+ongeveer 4 procent en in Movie Park met ongeveer 31 procent. Op zo'n dag heb je
+vooral wat aan de overdekte attracties. In Toverland is de helft van de 44
+attracties overdekt, in Walibi Holland geen enkele.
 
-Voor zes parken weten we per attractie of die in een gebouw staat: Europa-Park,
-Phantasialand, Efteling, Movie Park Germany, Plopsaland Deutschland en Heide
-Park. Bij Toverland, Walibi, Parc Astérix, Legoland en Disneyland Paris
-ontbreekt die informatie, daarom krijgen ze hier geen lijst met banen. Het gat
-zit in onze database en heeft niets met de parken zelf te maken.
+Voor negen parken hebben we attractie voor attractie uitgezocht welke overdekt
+zijn, aan de hand van wat de parken zelf opgeven. Het gaat om Europa-Park,
+Phantasialand, de Efteling, Toverland, Movie Park Germany, Plopsaland
+Deutschland, Heide Park, Walibi Belgium en Walibi Holland.
 
 ## Hoe we regendagen hebben gemeten
 
-De wachttijd komt uit de kalender. Voor elke afgelopen openingsdag staat daar
-het gemiddelde van de gemeten wachttijden over de headliners van het park,
-afgerond op vijf minuten. Als headliner nemen we per park de banen die volgens
-de wachttijdhistorie erbij horen. De regen komt uit de dagwaarden van
-[Open-Meteo](https://open-meteo.com/), die we voor elk park opslaan, om precies
-te zijn uit de neerslagsom van de dag in millimeters.
+Voor elke dag waarop een park open was, slaan we op hoe lang je gemiddeld bij
+de headliners in de rij stond (afgerond op vijf minuten). Headliners zijn de
+attracties waar je in een park het langst in de rij staat. De neerslagcijfers per
+park en per dag komen van [Open-Meteo](https://open-meteo.com/).
 
-Een regendag is een dag met minstens 2 millimeter, een droge dag een dag met
-minder dan 0,2. Dagen daartussen laten we weg. We vergeleken de periode van 24
-december 2025 tot en met 5 oktober 2026, en alleen dagen waarop het park open
+Als regendag telt een dag met minstens 2 millimeter neerslag, dat is twee liter
+per vierkante meter. Een droge dag heeft minder dan 0,2 millimeter, en de dagen
+daartussen hebben we weggelaten. Meegeteld zijn alle openingsdagen van 24
+december 2025 tot en met 5 oktober 2026.
+
+Een natte dinsdag in mei vergelijken met een zonnige zaterdag in de
+zomervakantie zegt weinig, want op een zaterdag in de vakantie is het hoe dan
+ook drukker. Daarom hebben we elke regendag alleen vergeleken met droge dagen
+uit dezelfde maand die er verder op lijken. Een doordeweekse regendag zetten we
+naast droge doordeweekse dagen, een regendag in het weekend of op een feestdag
+naast droge weekend- en feestdagen. Valt de regendag in de schoolvakantie, dan
+tellen alleen droge vakantiedagen mee, en valt hij erbuiten, dan alleen droge
+dagen buiten de vakantie. Een natte zaterdag in juli tijdens de zomervakantie
+vergelijken we dus met droge weekend- en feestdagen in juli die ook in de
+vakantie vielen. Zaten er in zo'n vergelijking minder dan twee regendagen of
+minder dan twee droge dagen, dan hebben we die weggelaten, omdat één losse dag
+te veel van het toeval afhangt. Per park levert dat één percentage op, namelijk
+hoeveel korter de wachttijd op regendagen was. Vergelijkingen met veel
+regendagen tellen daarbij zwaarder mee.
+
+De hoeveelheid regen geldt voor de hele dag, dus een bui om drie uur 's nachts
+telt even zwaar als een bui rond het middaguur. Met de temperatuur hebben we
+geen rekening gehouden, en koude regendagen zijn waarschijnlijk ook door de kou
+rustiger. Verder is het percentage een gemiddelde over de headliners. Eén
+overdekte attractie kan op een regendag drukker zijn dan op welke droge dag ook,
+terwijl het gemiddelde daalt.
+
+## Wachttijden op regendagen in twaalf parken
+
+Stand van 6 oktober 2026:
+
+| Park                                                               | Regendagen | Droge vergelijkingsdagen | Kortere wachttijd op regendagen |
+| ------------------------------------------------------------------ | ---------: | -----------------------: | ------------------------------: |
+| [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) |         49 |                       97 |                             4 % |
+| [Europa-Park](ref:europa-park)                                     |         22 |                       59 |                             5 % |
+| [Walibi Holland](ref:walibi-holland)                               |         27 |                       44 |                             6 % |
+| [Efteling](ref:efteling)                                           |         59 |                       98 |                             9 % |
+| [Phantasialand](ref:phantasialand)                                 |         36 |                       56 |                            11 % |
+| [Heide Park](ref:heide-park)                                       |         37 |                       64 |                            12 % |
+| [Walibi Belgium](ref:walibi-belgium)                               |         26 |                       46 |                            13 % |
+| [Toverland](ref:attractiepark-toverland)                           |         45 |                       71 |                            13 % |
+| [Plopsaland Deutschland](ref:plopsaland-deutschland)               |          9 |                       31 |                            16 % |
+| [Legoland Deutschland](ref:legoland-deutschland)                   |         24 |                       54 |                            17 % |
+| [Parc Astérix](ref:parc-asterix)                                   |         24 |                       65 |                            19 % |
+| [Movie Park Germany](ref:movie-park-germany)                       |         21 |                       45 |                            31 % |
+
+Met Disneyland Paris bedoelen we hier het Disneyland Park en niet het Walt
+Disney Studios Park. Meegeteld zijn alleen regendagen waarvoor er passende droge
+dagen waren. Het cijfer voor Plopsaland Deutschland berust op maar negen regendagen.
+
+Leg je de grens bij 5 millimeter, dan zijn de wachttijden op regendagen nog
+steeds in alle twaalf parken korter. Hoeveel korter ze zijn, loopt dan sterk
+uiteen, omdat er nog maar weinig van zulke dagen overblijven. In Europa-Park is
+het verschil dan ongeveer 23 procent, gemeten op acht dagen, in Movie Park
+ongeveer 27 procent op zes dagen. Ik zou de tabel daarom niet als ranglijst
+lezen. Wel staat vast dat het in geen van de twaalf parken op regendagen drukker
 was.
 
-Een regendag in mei is niet te vergelijken met een droge dag in augustus. Daarom
-vormen we groepen van maand, weekend of feestdag en schoolvakanties. Alleen
-groepen met minstens twee regendagen en twee droge dagen tellen mee in de
-berekening, en de uitkomst wordt gewogen naar het aantal regendagen. Per park
-houden we uiteindelijk een quotiënt over: de wachttijd op regendagen gedeeld
-door de wachttijd op droge dagen van dezelfde groep.
+Met het aantal overdekte attracties heeft het verschil weinig te maken. In
+Walibi Holland staat geen enkele attractie in een hal, en op regendagen was de
+wachttijd er 6 procent korter. In Toverland zijn 22 van de 44 attracties
+overdekt, bij een verschil van 13 procent, in Heide Park drie van de 39, bij 12
+procent. Europa-Park heeft de meeste overdekte attracties en het op één na
+kleinste verschil, Movie Park met zijn horrorhuizen het grootste. Ik vermoed dat
+er op regendagen overal minder mensen komen en dat de rest zich per park over
+meer of minder overdekte attracties verdeelt. Met deze cijfers kan ik dat niet
+aantonen.
 
-Er horen drie kanttekeningen bij. De neerslagsom geldt voor de hele dag, een bui
-om drie uur 's nachts telt even zwaar als een bui om twaalf uur. Koude regendagen
-vallen vaak samen met minder gasten, en de temperatuur hebben we er niet
-uitgerekend. En de headliners zijn een gemiddelde: één enkele baan in een
-gebouw kan op een regendag voller zijn dan op elke droge dag, terwijl het
-gemiddelde daalt.
+## Hoe vaak het regent in pretparken
 
-## Regendagen in twaalf parken
+Tussen 24 december 2025 en 5 oktober 2026 viel in Parc Astérix en in Plopsaland
+Deutschland op 15 procent van de openingsdagen minstens 2 millimeter regen. In
+Europa-Park was dat 16 procent, in Legoland Deutschland 18, in Disneyland Paris
+21, in Phantasialand 22, in Movie Park 23, in Heide Park 24 en in de Efteling 26.
+In de Efteling was dus ongeveer één op de vier openingsdagen een regendag, in
+Europa-Park ongeveer één op de zes.
 
-In de tabel staat hoeveel lager de wachttijd van de headliners op regendagen
-ligt dan op droge vergelijkingsdagen. Stand is 6 oktober 2026.
+Voor Europa-Park, Phantasialand, de Efteling, Movie Park, Plopsaland en Heide
+Park samen ziet dat er per maand zo uit:
 
-| Park                                                               | Regendagen | Droge vergelijkingsdagen | Op regendagen lager met |
-| ------------------------------------------------------------------ | ---------: | -----------------------: | ----------------------: |
-| [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) |         49 |                       97 |                     4 % |
-| [Europa-Park](ref:europa-park)                                     |         22 |                       59 |                     5 % |
-| [Walibi Holland](ref:walibi-holland)                               |         27 |                       44 |                     6 % |
-| [Efteling](ref:efteling)                                           |         59 |                       98 |                     9 % |
-| [Phantasialand](ref:phantasialand)                                 |         36 |                       56 |                    11 % |
-| [Heide Park](ref:heide-park)                                       |         37 |                       64 |                    12 % |
-| [Walibi Belgium](ref:walibi-belgium)                               |         26 |                       46 |                    13 % |
-| [Toverland](ref:attractiepark-toverland)                           |         45 |                       71 |                    13 % |
-| [Plopsaland Deutschland](ref:plopsaland-deutschland)               |          9 |                       31 |                    16 % |
-| [Legoland Deutschland](ref:legoland-deutschland)                   |         24 |                       54 |                    17 % |
-| [Parc Astérix](ref:parc-asterix)                                   |         24 |                       65 |                    19 % |
-| [Movie Park Germany](ref:movie-park-germany)                       |         21 |                       45 |                    31 % |
+| Maand 2026 | Openingsdagen van de zes parken | Daarvan met minstens 2 mm regen |
+| ---------- | ------------------------------: | ------------------------------: |
+| april      |                             171 |                            12 % |
+| mei        |                             175 |                            30 % |
+| juni       |                             167 |                            32 % |
+| juli       |                             186 |                            10 % |
+| augustus   |                             185 |                            18 % |
+| september  |                             162 |                            16 % |
 
-Het Disneyland Paris in deze tabel is Disneyland Park, niet Walt Disney Studios
-Park. In de tabel tellen alleen regendagen waarvoor de groep ook droge
-vergelijkingsdagen had, daarom zijn het er minder dan in de volgende paragraaf.
-Plopsaland Deutschland staat op negen regendagen en is de dunste rij.
-
-Met 5 millimeter als drempel blijft de richting in alle twaalf parken dezelfde.
-De omvang verschuift flink waar er weinig zulke dagen waren: in Europa-Park
-springt de waarde op acht dagen naar ongeveer 23 %, in Movie Park ligt ze op zes
-dagen rond de 27. De volgorde in de tabel zou ik daarom niet als ranglijst
-lezen. Vast staat dat het verschil in geen enkel park omgekeerd uitviel.
-
-Het aandeel gebouwen verklaart het verschil niet. In Phantasialand staan 14 van
-de 40 vermeldingen als indoor geregistreerd, en het verschil is 11 %. In Heide
-Park zijn het er drie van 39, en het verschil is 12. Europa-Park heeft de langste
-lijst met gebouwen en het op één na kleinste verschil, Movie Park met zijn
-horrorhuizen het grootste. Mogelijk daalt het aantal gasten op regendagen
-overal, en verdeelt de rest zich per park over meer of minder banen in de
-droogte. De data bewijzen dat niet, het is een vermoeden.
-
-## Hoe vaak het heeft geregend
-
-Uit dezelfde weerdata blijkt ook hoeveel openingsdagen nat waren. Van alle dagen
-met bedrijf tussen 24 december 2025 en 5 oktober 2026 hadden in Europa-Park 16 %
-minstens 2 millimeter neerslag, in Parc Astérix 15, in Plopsaland Deutschland
-15, in Legoland Deutschland 18, in Disneyland Paris 21, in Phantasialand 22, in
-Movie Park 23, in Heide Park 24 en in Efteling 26 %. In Efteling was dus ruwweg
-elke vierde openingsdag een regendag, in Europa-Park ruwweg elke zesde.
-
-Per maand ziet het er voor de zes parken van deze gids samen zo uit:
-
-| Maand 2026 | Openingsdagen van de zes parken | Daarvan met minstens 2 mm |
-| ---------- | ------------------------------: | ------------------------: |
-| april      |                             171 |                      12 % |
-| mei        |                             175 |                      30 % |
-| juni       |                             167 |                      32 % |
-| juli       |                             186 |                      10 % |
-| augustus   |                             185 |                      18 % |
-| september  |                             162 |                      16 % |
-
-Dit is één enkel jaar en geen klimaatstatistiek. Juli 2026 was droog, mei en juni
-waren dat niet, en een ander jaar verdeelt het anders. Voor de planning dient de
-tabel als orde van grootte: in het hoogseizoen was ongeveer elke vijfde
-openingsdag nat, in enkele maanden elke derde.
-
-## Hoe de gebouwen in onze data staan
-
-Elke attractie kan bij ons drie waarden dragen: in een gebouw, buiten, of buiten
-met overdekte wachtrij. We stellen de waarden met de hand samen, op basis van de
-gegevens van de parken. Bij een attractie zonder waarde is de ligging onbekend,
-en die telt nooit als overdekt.
-
-Op de parkpagina komt dit op drie plekken terug. De kaart van elke baan heeft een regel: in een gebouw, buiten of buiten met overdekte wachtrij. De filterbalk heeft een filter “Overdekt”. En als de kortetermijnvoorspelling
-regen aankondigt, staat op de parkpagina een regenwaarschuwing met de tijd tot
-het begin (“Regen in het park”), en daaronder de overdekte attracties die nu
-draaien, gesorteerd op loopafstand en wachttijd.
-
-Filter en lijst verschijnen alleen als een park minstens de helft van zijn
-attracties in het seizoen met een waarde heeft staan en minstens één daarvan
-overdekt is. Op 6 oktober voldoen de
-zes parken van deze gids daaraan.
+Dit is maar één jaar. In 2026 was juli droog en waren mei en juni nat, en in
+2027 kan dat er heel anders uitzien. Als grove indicatie kun je er wel mee
+werken. In het hoogseizoen was ongeveer één op de vijf openingsdagen een
+regendag, in sommige maanden één op de drie.
 
 ## Europa-Park
 
-[Europa-Park](ref:europa-park) in Rust opende op 12 juli 1975. Bij ons staan 97
-vermeldingen: 34 in een gebouw, 3 buiten met overdekte wachtrij, 57 buiten en 3
-zonder waarde.
+In [Europa-Park](ref:europa-park) in Rust zijn 34 van de 97 attracties overdekt,
+meer dan in elk van de andere acht parken. Tien daarvan zijn stations van de
+EP-Express, de Panoramabahn en de monorail, drie zijn doolhoven (Day Maze
+“Tartaros”, Day Maze “Niflheim” en Queen's Diamonds – Laser Maze) en één is een
+ballenbad. Bij de overige twintig horen de zes attracties uit de tabel, Snorri
+Touren en Atlantis Adventure.
 
-Die 34 zijn geen 34 banen. Veertien daarvan zijn stations van de EP-Express en de
-Panoramabahn, monorailstations, drie doolhoven (Day Maze “Tartaros”, Day Maze
-“Niflheim” en Queen's Diamonds – Laser Maze) en een ballenbad. Van de overige 20
-staan er zes in deze tabel, de andere zijn bijvoorbeeld de Snorri-tochten of
-Atlantis Adventure.
+| Attractie                                                          | Gebied           | Type                | Fabrikant  | Opening | Minimumlengte |
+| ------------------------------------------------------------------ | ---------------- | ------------------- | ---------- | ------- | ------------- |
+| [Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) | Frankrijk        | Indoorcoaster       | Mack Rides | 1989    | 130 cm        |
+| [Arthur](ref:europa-park/arthur)                                   | Minimoys Kingdom | Darkridecoaster     | Mack Rides | 2014    | 120 cm        |
+| Pirates in Batavia                                                 | Nederland        | Boottocht, darkride | Mack Rides | 1987    | 130 cm        |
+| Madame Freudenreich Curiosités                                     | Frankrijk        | Darkride            | Mack Rides | 2018    | 130 cm        |
+| Voletarium                                                         | Duitsland        | Flying theater      | Brogent    | 2017    | 130 cm        |
+| Fluch der Kassandra                                                | –                | Madhouse            | –          | –       | 130 cm        |
 
-| Baan                                                               | Gebied           | Type                 | Fabrikant  | Opening | Minimumlengte |
-| ------------------------------------------------------------------ | ---------------- | -------------------- | ---------- | ------- | ------------- |
-| [Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) | Frankrijk        | Indoorcoaster        | Mack Rides | 1989    | 130 cm        |
-| [Arthur](ref:europa-park/arthur)                                   | Minimoys Kingdom | Darkridecoaster      | Mack Rides | 2014    | 120 cm        |
-| Pirates in Batavia                                                 | Nederland        | Boottocht, dark ride | Mack Rides | 1987    | 130 cm        |
-| Madame Freudenreich Curiosités                                     | Frankrijk        | Dark ride            | Mack Rides | 2018    | 130 cm        |
-| Voletarium                                                         | Duitsland        | Flying theater       | Brogent    | 2017    | 130 cm        |
-| Fluch der Kassandra                                                | –                | Madhouse             | –          | –       | 130 cm        |
+**Eurosat** rijdt sinds 1989 in de zilveren bol, 198 seconden lang in het
+donker. In 2018 heeft het park het ruimtethema vervangen door Parijs en er een
+Moulin-Rouge-gevel voor gezet.
 
-Een streepje betekent dat wij daarvoor geen waarde hebben staan. De gegevens
-komen uit onze database en van de pagina's van het park.
-
-**Eurosat** rijdt sinds 1989 in de zilveren bol. In 2018 bouwde het park het
-thema om van de ruimte naar Parijs, met een Moulin-Rouge-gevel ervoor. De rit
-duurt 198 seconden in het donker.
-
-![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel. | De hele baan loopt binnen in die bol. | right](/media/europa-park/eurosat-cancan-coaster.jpg)
-
-Drie ritten buiten voeren we met overdekte wachtrij: de kindercarrousel, de
-kindercarrousel in Winterland en de Puppet Boat Ride. Het is het enige park in
-deze gids waar die waarde voorkomt. Bij de vijf andere staat geen enkele
-vermelding zo, en voor geen enkele buitenbaan daar zeggen we dus of de wachtrij
-een dak heeft.
-
-Hoe de banen in gebouwen er nu voor staan:
+![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel | De hele baan loopt binnen in die bol. | right](/media/europa-park/eurosat-cancan-coaster.jpg)
 
 ```ride-waits-widget rides=europa-park/eurosat-cancan-coaster|Eurosat|Indoor-coaster;europa-park/arthur|Arthur|Darkridecoaster;europa-park/pirates-in-batavia|Pirates in Batavia|Boottocht;europa-park/madame-freudenreich-curiosites|Madame Freudenreich Curiosités|Dark Ride columns=type,peak,days
 
@@ -229,130 +217,154 @@ Meer over het park staat in de [Europa-Park-gids](/blog/europa-park-wachttijden-
 
 ## Phantasialand
 
-[Phantasialand](ref:phantasialand) in Brühl opende in 1967. Bij ons staan 40
-vermeldingen, bij elk daarvan heeft het park een waarde, 14 liggen in een gebouw
-en 26 buiten. Een overdekte wachtrij buiten voeren we niet.
+In [Phantasialand](ref:phantasialand) in Brühl zijn 14 van de 40 attracties
+overdekt. Zeven daarvan staan in Fantasy, vier in Berlin, twee in China Town en
+één in Mystery.
 
-Zeven van de 14 staan in Fantasy, vier in Berlin, twee in China Town, één in
-Mystery.
+| Attractie                                              | Gebied     | Type                  | Fabrikant        | Opening | Minimumlengte |
+| ------------------------------------------------------ | ---------- | --------------------- | ---------------- | ------- | ------------- |
+| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster      | Maurer           | 2002    | 140 cm        |
+| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster      | Maurer           | 2002    | 140 cm        |
+| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoorcoaster, VR     | Vekoma           | 1988    | 120 cm        |
+| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interactieve darkride | ETF Ride Systems | 2011    | 120 cm        |
+| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Droptower             | Intamin          | 1998    | 130 cm        |
+| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –       | 120 cm        |
+| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Darkride              | –                | 1982    | 130 cm        |
 
-| Baan                                                   | Gebied     | Type                   | Fabrikant        | Opening | Minimumlengte |
-| ------------------------------------------------------ | ---------- | ---------------------- | ---------------- | ------- | ------------- |
-| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster       | Maurer           | 2002    | 140 cm        |
-| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster       | Maurer           | 2002    | 140 cm        |
-| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoorcoaster, VR      | Vekoma           | 1988    | 120 cm        |
-| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Interactieve dark ride | ETF Ride Systems | 2011    | 120 cm        |
-| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop tower             | Intamin          | 1998    | 130 cm        |
-| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse               | Vekoma           | –       | 120 cm        |
-| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride              | –                | 1982    | 130 cm        |
+Winja's Fear en Winja's Force rijden in Wuze Town, een hal met een verticale
+lift. Op één plek kantelt een stuk rails met de wagen erop, bij Fear naar voren
+en bij Force opzij. Crazy Bats rijdt sinds 1988 in dezelfde hal, sinds 2019 met
+VR-brillen. Mystery Castle is een droptower van 65 meter die helemaal binnen in
+een toren zit. Voor kleinere kinderen zijn er verder Bumper Klumpen, Wözl's
+Duck Washer en Wupi's Wabi Wipper vanaf 100 centimeter, de Tittle Tattle Tree
+vanaf 110 en in Berlin de paardencarrousel, Die 3 Mausketiere en het Verrückte
+Hotel Tartüff.
 
-Winja's Fear en Force staan in Wuze Town, een hal met een verticale lift en een
-plek waar een stuk rails met de wagen erop kantelt, bij Fear naar voren, bij
-Force opzij. Crazy Bats reed vanaf 1988 als ruimtebaan en kreeg in 2019 een
-nieuwe opzet met VR-brillen. Mystery Castle is 65 meter hoog en valt binnenin
-de toren. Voor de kleineren komen daar Bumper Klumpen, Wözl's Duck Washer en
-Wupi's Wabi Wipper bij vanaf 100 centimeter en de Tittle Tattle Tree vanaf 110,
-in Berlin de paardencarrousel, Die 3 Mausketiere en het Verrückte Hotel
-Tartüff.
+![Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan | In de hal van Winja’s Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
-![Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan. | In de hal van Winja’s Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
-
-Taron, Black Mamba en de andere grote banen zijn buitenbanen met een landschapsthema.
-Bij aanhoudende regen houd je in Brühl 14 banen in een hal over. Als
-achtbaanfan rijd je daarvan drie coasters: de twee in Wuze Town en Crazy Bats.
-De rest zijn dark rides, madhouses, een drop tower en familieritten.
-
-Hoe de banen in gebouwen er nu voor staan:
+Taron, Black Mamba en de andere grote achtbanen rijden buiten. Bij aanhoudende
+regen heb je in Brühl de 14 overdekte attracties, met daarbij drie achtbanen: de
+twee in Wuze Town en Crazy Bats. De rest zijn darkrides, madhouses, een
+droptower en attracties voor gezinnen.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor-coaster columns=type,peak,days
 
 ```
 
-Meer over het park staat in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
+Meer over Phantasialand lees je in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
 
 ## Efteling
 
-[Efteling](ref:efteling) in Kaatsheuvel opende in 1952. Bij ons staan 37
-vermeldingen: elf in een gebouw, 17 buiten en negen zonder waarde. Bij die negen
-ontbreekt de waarde nog: stoomtreinen, monorail, speelgebieden, Volk van Laaf en
-het postkantoor.
+In de [Efteling](ref:efteling) in Kaatsheuvel zijn elf van de 37 attracties
+overdekt.
 
-| Baan                                        | Gebied       | Type                 | Fabrikant        | Opening | Minimumlengte |
-| ------------------------------------------- | ------------ | -------------------- | ---------------- | ------- | ------------- |
-| [Droomvlucht](ref:efteling/droomvlucht)     | Marerijk     | Hangbaan, dark ride  | –                | 1993    | –             |
-| [Symbolica](ref:efteling/symbolica)         | Fantasierijk | Trackless ride       | ETF Ride Systems | 2017    | –             |
-| [Villa Volta](ref:efteling/villa-volta)     | Marerijk     | Madhouse             | Vekoma           | 1996    | –             |
-| [Fata Morgana](ref:efteling/fata-morgana)   | Anderrijk    | Boottocht, dark ride | –                | 1986    | –             |
-| [Vogel Rok](ref:efteling/vogel-rok)         | Reizenrijk   | Indoorcoaster        | Vekoma           | 1998    | 120 cm        |
-| [Danse Macabre](ref:efteling/danse-macabre) | Anderrijk    | Madhouse             | –                | 2024    | 120 cm        |
+| Attractie                                   | Gebied       | Type                | Fabrikant        | Opening | Minimumlengte |
+| ------------------------------------------- | ------------ | ------------------- | ---------------- | ------- | ------------- |
+| [Droomvlucht](ref:efteling/droomvlucht)     | Marerijk     | Hangbaan, darkride  | –                | 1993    | –             |
+| [Symbolica](ref:efteling/symbolica)         | Fantasierijk | Trackless ride      | ETF Ride Systems | 2017    | –             |
+| [Villa Volta](ref:efteling/villa-volta)     | Marerijk     | Madhouse            | Vekoma           | 1996    | –             |
+| [Fata Morgana](ref:efteling/fata-morgana)   | Anderrijk    | Boottocht, darkride | –                | 1986    | –             |
+| [Vogel Rok](ref:efteling/vogel-rok)         | Reizenrijk   | Indoorcoaster       | Vekoma           | 1998    | 120 cm        |
+| [Danse Macabre](ref:efteling/danse-macabre) | Anderrijk    | Madhouse            | –                | 2024    | 120 cm        |
 
-Daarbij komen het Carnaval Festival, Fabula, het diorama, de Stoomcarrousel en
-het Efteling Museum. Bij vier van de zes banen in de tabel staat bij ons geen
-minimumlengte, bij Vogel Rok en Danse Macabre is het 120 centimeter.
+Verder zijn Carnaval Festival, Fabula, de Stoomcarrousel, het Diorama en het
+Efteling Museum overdekt.
 
-![De ingang van Droomvlucht bij nacht, roze en groen aangelicht. | Overdag is deze muur wit. | right](/media/efteling/droomvlucht.jpg)
+![De ingang van Droomvlucht bij nacht, roze en groen aangelicht | Overdag is deze muur wit. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 en Python zijn buitenbanen. Wie voor de achtbanen
-komt, neemt bij regen een jas mee en rijdt wat het park vrijgeeft. Wie van dark
-rides houdt, heeft op die dag geen buitenbaan nodig. Of een van de banen in een
-gebouw op dit moment in onderhoud is, staat op de pagina van de baan en in de
-kalender van het park, en wie vanwege de regen komt, kijkt dat beter van tevoren
-na.
+Joris en de Draak, Baron 1898 en Python rijden buiten. Kom je voor de
+achtbanen, dan neem je een regenjas mee en stap je in wat er op dat moment
+rijdt. Hou je van darkrides, dan kom je in de Efteling ook zonder de
+buitenattracties goed een regendag door. Of een overdekte attractie op dit
+moment voor onderhoud dicht is, staat op de pagina van die attractie en in de
+kalender van het park. Ga je speciaal voor de darkrides, kijk dat dan de avond
+ervoor na.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hangbaan;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-coaster columns=type,peak,days
 
 ```
 
-Meer over het park staat in het artikel
-[Efteling, het Disney van Nederland](/blog/efteling-disney-van-nederland).
+Meer over het park lees je in
+[Efteling, de Disney van Nederland](/blog/efteling-disney-van-nederland).
+
+## Toverland
+
+[Toverland](ref:attractiepark-toverland) in Sevenum is begonnen als hal voor
+regendagen. Oprichter Jean Gelissen kwam op het idee toen een regenbui een eind
+maakte aan een uitstapje met zijn kinderen, en op 19 mei 2001 ging de
+eerste hal open, het huidige Land van Toos. In 2004 kwam het Wunderwald erbij
+als tweede hal. Vandaag zijn 22 van de 44 attracties overdekt. Dat is precies
+de helft en daarmee het grootste aandeel van de negen parken. Twaalf daarvan
+staan in Land van Toos, vijf in het Wunderwald, twee in Port Laguna en telkens
+één in de Magische Vallei en in Avalon. De 22e is Morrels BOEderij.
+
+| Attractie                                                | Gebied        | Type            | Fabrikant        | Opening | Minimumlengte |
+| -------------------------------------------------------- | ------------- | --------------- | ---------------- | ------- | ------------- |
+| [Toos-Express](ref:attractiepark-toverland/toos-express) | Land van Toos | Familieachtbaan | Vekoma           | 2001    | 90 cm         |
+| [Villa Fiasko](ref:attractiepark-toverland/villa-fiasko) | Wunderwald    | Funhouse        | Kumbak           | 2004    | 100 cm        |
+| [Wirbelbaum](ref:attractiepark-toverland/wirbelbaum)     | Wunderwald    | Reuzenrad       | Metallbau Emmeln | 2005    | –             |
+
+Bijna alles onder een dak is gebouwd voor gezinnen met kleine kinderen, zoals
+draaimolens, kinderattracties en klim- en speelplekken. De enige overdekte
+achtbaan is de Toos-Express, een juniorachtbaan van Vekoma die er al sinds het
+openingsjaar staat. Troy, Fēnix, Booster Bike en Dwervelwind rijden buiten. In
+de Wirbelbaum, een reuzenrad van 13 meter hoog, bepaal je zelf hoe wild je
+mandje ronddraait. In Land van Toos draait Djinn, een zweefmolen van 12,8 meter
+hoog, zijn rondjes boven de oosterse markt. Je mag erin vanaf 100 centimeter.
+
+Op regendagen waren de wachttijden in Toverland 13 procent korter. Met kleine
+kinderen zit je er op zo'n dag goed. Voor Troy en Fēnix heb je een regenjas
+nodig.
+
+```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Familieachtbaan;attractiepark-toverland/villa-fiasko|Villa Fiasko|Funhouse;attractiepark-toverland/wirbelbaum|Wirbelbaum|Reuzenrad columns=type,peak,days
+
+```
+
+Meer over Toverland lees je in de [Toverland-gids](/blog/toverland-troy-wachttijden-tips).
 
 ## Movie Park Germany
 
-[Movie Park Germany](ref:movie-park-germany) in Bottrop opende op 30 juni 1996
-als Warner Bros. Movie World en heet sinds 19 maart 2005 zo. Van de 39
-vermeldingen hebben er 38 een waarde, 12 daarvan in een gebouw en 26 buiten.
+In [Movie Park Germany](ref:movie-park-germany) in Bottrop zijn twaalf van de 39
+attracties overdekt, maar acht daarvan zijn horrorhuizen van het Halloween
+Horror Festival. Dat loopt in 2026 op 22 avonden tussen 26 september en 8
+november. De huizen gaan pas 's avonds open en zijn niet allemaal voor elke
+leeftijd bedoeld, Jason Universe bijvoorbeeld pas vanaf 16 jaar. Overdag blijven
+er vier overdekte ritten over: de Movie Park Studio Tour, Area 51 – Top Secret,
+Time Riders en **Van Helsing's Factory**.
 
-Van de twaalf vermeldingen in een gebouw zijn er acht horrorhuizen van het
-Halloween Horror Festival, dat in 2026 op 22 avonden loopt van 26 september tot
-8 november. Ze gaan pas 's avonds open, en niet elk is voor elke leeftijd, Jason
-Universe bijvoorbeeld pas vanaf 16. Overdag blijven er vier: de Movie Park
-Studio Tour, Area 51 – Top Secret, Time Riders en **Van Helsing's Factory**.
+Van Helsing's Factory is de enige achtbaan van de vier, een bobsled coaster van
+Gerstlauer in de vroegere Gremlins-hal, in bedrijf sinds 18 juni 2011. Hij rijdt
+36 km/u, is ongeveer 400 meter lang en vervoert 848 bezoekers per uur.
 
-Van Helsing's Factory opende op 18 juni 2011. Het is een bobsled coaster van
-Gerstlauer in de voormalige Gremlins-hal, 36 km/u snel en ongeveer 400 meter
-lang. De capaciteit ligt op 848 personen per uur. Van de vier banen in een gebouw is
-het de enige achtbaan.
-
-Movie Park heeft in onze meting het grootste verschil tussen regendagen en droge
-dagen, 31 % op 21 regendagen. Met overdag vier banen in een gebouw is het aanbod
-bij regen klein. Voor een regendag zou ik een ander park kiezen. 's avonds komen er in oktober acht horrorhuizen bij.
+In Movie Park waren de wachttijden op regendagen 31 procent korter, meer dan in
+elk ander park in de tabel (gemeten op 21 regendagen). Met overdag maar vier
+overdekte ritten heb je er bij regen weinig te doen. Voor een regendag zou ik
+een ander park kiezen, tenzij het een avond van het Halloween Horror Festival
+is.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
 ```
 
-Alles over het park staat in de [Movie-Park-gids](/blog/movie-park-germany-wachttijden-tips).
+Alles over het park staat in de [Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).
 
 ## Plopsaland Deutschland
 
-[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch opende in 1971 als
-Holiday Park. Sinds november 2010 hoort het park bij Studio 100, op 28 juni 2025
-kreeg het de huidige naam. Bij ons staan 57 vermeldingen, 52 met een waarde, 13
-daarvan in een gebouw en 39 buiten.
+[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch heette tot juni
+2025 Holiday Park. Van de 57 attracties zijn er 13 overdekt, en vijf daarvan zijn
+horrorhuizen van de Halloween Fright Nights: NEXUS AI, Academy of Freaks, Titty
+Twister, Mad Rat en het Schnitzelhaus. De andere acht zijn de darkride The
+Smurfs' Adventure, die in een eigen gebouw staat, en zeven ritten en
+speelplekken in de indoorhal die in 2018 als Holiday Indoor openging:
+Tabaluga's Rollercoaster, Mia's Elf Flight, een boerderijcarrousel, een
+reuzenglijbaan, een ballenbad, een avonturenbos en Heidi's Playground.
 
-Vijf van de 13 zijn horrorhuizen van de Halloween Fright Nights: NEXUS AI,
-Academy of Freaks, Titty Twister, Mad Rat en het Schnitzelhaus. De overige acht
-zijn ritten en speelgebieden: Tabaluga's Rollercoaster, Mia's Elf Flight, The
-Smurfs' Adventure, een boerderijcarrousel, een reuzenglijbaan, een ballenbad, een
-avonturenbos en Heidi's Playground. De indoorhal opende in 2018 als Holiday
-Indoor. Een minimumlengte voeren we voor geen van deze acht.
+De grote achtbanen, waaronder bigFM Expedition GeForce, rijden buiten. Met
+kleine kinderen heb je op een regendag in de hal genoeg te doen. Voor tieners
+die voor de achtbanen komen, blijft onder een dak alleen Tabaluga's
+Rollercoaster over, een familieachtbaan.
 
-De grote achtbanen van Plopsaland Deutschland, onder meer de bigFM Expedition
-GeForce, staan buiten. Met jonge kinderen heeft het park op een regendag acht ritten en speelgebieden in de hal. Wie met tieners komt die voor de
-achtbanen reizen, heeft bij regen duidelijk minder.
-
-Met negen regendagen in onze meting is de waarde voor Plopsaland de onzekerste.
-Of de hallen het verschil van 16 % verklaren, is daaruit niet af te lezen.
+Of de hal de 16 procent verklaart, valt met negen regendagen niet te zeggen.
 
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Familieachtbaan;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Kinderrit;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
@@ -360,147 +372,183 @@ Of de hallen het verschil van 16 % verklaren, is daaruit niet af te lezen.
 
 ## Heide Park
 
-[Heide Park](ref:heide-park) in Soltau opende op 19 augustus 1978 en hoort sinds
-2007 bij Merlin Entertainments. Van 39 vermeldingen zijn er drie in een gebouw,
-28 buiten en acht zonder waarde. Dat is het kleinste aandeel van de zes parken,
-en geen van de drie is een achtbaan.
+In [Heide Park](ref:heide-park) in Soltau zijn maar drie van de 39 attracties
+overdekt, en geen daarvan is een achtbaan. **Ghostbusters 5D** draait sinds 2017
+in de hal waar vroeger Hallo Spencer woonde. De **Dämonen Gruft** van Preston &
+Barbieri rijdt sinds 2024 in ongeveer drie minuten door het oude station van de
+tweede wildwaterbaan, die in 2011 dichtging. De derde is de **Drachengrotte** in
+het themagebied Exploria.
 
-**Ghostbusters 5D** zit sinds 2017 in de hal waar vroeger Hallo Spencer woonde.
-De **Dämonen Gruft** van Preston & Barbieri rijdt sinds 2024 door het oude
-station van de tweede wildwaterbaan, die in 2011 sloot, en duurt ongeveer drie
-minuten. De **Drachengrotte** ligt in het gebied Exploria. Bij acht vermeldingen
-ontbreekt de waarde: Panoramabahn, Heide-Park-Express, monorail, Peppas
-Ballonfahrt, Wüstenflitzer, Grottenblitz, Peppas Haus en een speeltuin.
-
-Heide Park is op een regendag vooral de moeite waard als je sowieso voor Colossos
-en de andere banen buiten komt en op een droge middag rekent. Voor een dag die
-van begin af aan nat is, staan er drie banen onder dak.
+Naar Heide Park ga je bij regen het best als je toch al voor Colossos en de
+andere buitenattracties komt en op een droge middag hoopt. Regent het van 's
+ochtends tot 's avonds, dan heb je er drie overdekte attracties.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulator;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
 ```
 
-Meer over het park, met Colossos, in de [Heide-Park-gids](/blog/heide-park-wachttijden-tips).
+Meer over het park en over Colossos lees je in de
+[Heide Park-gids](/blog/heide-park-wachttijden-tips).
 
-## De zes parken naast elkaar
+## Walibi Belgium
 
-Stand 6 oktober 2026, uit onze database:
+In [Walibi Belgium](ref:walibi-belgium) in Waver zijn zeven van de 42 attracties
+overdekt. Twee daarvan zijn 4D-films, “Wanted Alive” en, alleen in december en
+januari, “Festive Adventure”.
 
-| Park                   | Vermeldingen | Met waarde | In gebouw | Overdekte wachtrij |
-| ---------------------- | -----------: | ---------: | --------: | -----------------: |
-| Europa-Park            |           97 |         94 |        34 |                  3 |
-| Phantasialand          |           40 |         40 |        14 |                  0 |
-| Efteling               |           37 |         28 |        11 |                  0 |
-| Movie Park Germany     |           39 |         38 |        12 |                  0 |
-| Plopsaland Deutschland |           57 |         52 |        13 |                  0 |
-| Heide Park             |           39 |         31 |         3 |                  0 |
+| Attractie                                                               | Type                  | Fabrikant        | Opening |
+| ----------------------------------------------------------------------- | --------------------- | ---------------- | ------- |
+| [Turbine](ref:walibi-belgium/turbine)                                   | Shuttle coaster       | Schwarzkopf      | 1982    |
+| [Popcorn Revenge](ref:walibi-belgium/popcorn-revenge)                   | Interactieve darkride | ETF Ride Systems | 2019    |
+| [Challenge of Tutankhamon](ref:walibi-belgium/challenge-of-tutankhamon) | Interactieve darkride | –                | –       |
 
-De kolom “In gebouw” telt vermeldingen en geen ritten. Bij Europa-Park zijn dat
-stations en doolhoven, bij Movie Park en Plopsaland horrorhuizen die alleen met
-Halloween open zijn. In Phantasialand en Efteling zijn het daarentegen
-helemaal ritten.
+**Turbine** is een Shuttle Loop van Schwarzkopf. De trein wordt met 85,3 km/u
+het station uit geschoten, neemt een looping, klimt een toren op en rijdt
+hetzelfde traject achteruit terug. Van de achtbanen in het park is alleen
+Turbine overdekt, Kondaa, Vampire en Cobra rijden buiten. Verder zijn het Palais
+du Génie en de Spinning Taxi overdekt.
 
-De wachttijden van de zes parken naast elkaar, met Europa-Park als
-referentiepunt:
+Op regendagen waren de wachttijden in Walibi Belgium 13 procent korter.
 
-```park-comparison-widget slugs=europa-park,phantasialand,efteling,movie-park-germany,plopsaland-deutschland,heide-park highlight=europa-park
+```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
 
-Mijn oordeel voor een pure regendag: Efteling als je van dark rides houdt,
-Phantasialand als je ook een achtbaan in een gebouw wilt. Europa-Park heeft met
-34 vermeldingen de langste lijst, maar veel daarvan zijn geen ritten. Voor Movie
-Park en Heide Park zou ik geen regendag uitkiezen. Met jonge kinderen zou
-Plopsaland mijn keuze zijn.
+Meer over het park lees je in de [Walibi Belgium-gids](/blog/walibi-belgium-wachttijden-tips).
 
-## Parken waarvan we de gebouwen niet kennen
+## Walibi Holland
 
-Bij Toverland, Walibi Holland, Walibi Belgium, Parc Astérix, Legoland
-Deutschland, Disneyland Paris, Gardaland, Alton Towers en PortAventura heeft
-geen enkele attractie in onze database een waarde. We weten daar niet welke
-banen onder dak liggen, en vullen het gat niet met aannames.
+In [Walibi Holland](ref:walibi-holland) in Biddinghuizen staat geen van de 39
+attracties in een hal. Toen het park in april 2026 zijn winteropenstelling
+schrapte, noemde algemeen directeur Mascha Taminiau de afhankelijkheid van het
+weer als een van de redenen. Op regendagen waren de wachttijden er 6 procent
+korter. Voor een dag waarop het blijft regenen, zou ik niet naar Biddinghuizen
+rijden.
 
-Twee kanttekeningen uit onze gidsen. [Toverland](ref:attractiepark-toverland)
-opende op 19 mei 2001 als overdekt park, in het huidige Land van Toos, en Land
-van Toos en Wunderwald zijn tot vandaag overdekt. Voor [Walibi
-Holland](ref:walibi-holland) staat in de gids dat er nauwelijks een gebouw is
-waarin je voor de regen kunt schuilen. Directeur Mascha Taminiau noemde als een
-reden om het winterbedrijf in april 2026 op te geven de afhankelijkheid van het
-weer.
+Meer over het park lees je in de [Walibi Holland-gids](/blog/walibi-holland-untamed-hard-gaan).
 
-## Reisplanning bij regen
+## De negen parken vergeleken
+
+Stand van 6 oktober 2026:
+
+| Park                   | Overdekt | Buiten |
+| ---------------------- | -------: | -----: |
+| Europa-Park            |       34 |     60 |
+| Toverland              |       22 |     22 |
+| Phantasialand          |       14 |     26 |
+| Plopsaland Deutschland |       13 |     39 |
+| Movie Park Germany     |       12 |     26 |
+| Efteling               |       11 |     17 |
+| Walibi Belgium         |        7 |     35 |
+| Heide Park             |        3 |     28 |
+| Walibi Holland         |        0 |     39 |
+
+In de kolom “Overdekt” tellen alle attracties mee, ook die waarin je niet rijdt.
+Bij Europa-Park zijn dat tien stations, drie doolhoven en een ballenbad, bij
+Toverland veel klim- en speelplekken, bij Movie Park en Plopsaland horrorhuizen
+die alleen rond Halloween 's avonds opengaan, en bij de Efteling onder meer het
+Diorama en het museum.
+
+In deze vergelijking van de typische wachttijden in de negen parken is
+Europa-Park gemarkeerd:
+
+```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
+
+```
+
+Regent het de hele dag, dan zou ik naar de Efteling gaan voor de darkrides en
+naar Phantasialand als ik ook in een achtbaan wil. Daar zijn drie achtbanen
+overdekt. Europa-Park heeft ook zonder de stations en doolhoven meer overdekte
+attracties dan die twee, maar op regendagen waren de wachttijden daar maar 5
+procent korter. Met kleine kinderen zou ik naar Toverland of Plopsaland gaan.
+Movie Park, Heide Park en Walibi Holland zou ik niet uitkiezen voor een
+regendag.
+
+## Je bezoek plannen bij regen
 
 ### De dag ervoor
 
-De kalender toont voor elk park de komende weken met weer, openingstijd en crowd
-level. Volgens onze meting zijn regendagen gemiddeld rustiger, een dag met buien
-is dus geen reden om je bezoek af te zeggen. Het weer boven het park, hier voor
-Brühl:
+In de kalender van elk park staan voor de komende weken het weer, de
+openingstijden en de verwachte drukte. Op regendagen is het gemiddeld rustiger,
+dus voorspelde buien zijn geen reden om je bezoek af te zeggen. Het weer voor
+Brühl, waar Phantasialand ligt:
 
 ```weather-widget slug=phantasialand
 
 ```
 
-Uit de regenkans blijkt niet wanneer het regent. Bij wisselvallig
-weer loont het om de dag in twee helften te delen: de banen in gebouwen komen in
-de uren waarin het regent, de buitenbanen in de pauzes. Wanneer de volgende bui
-begint, staat op de parkpagina in de regenwaarschuwing, met de tijd tot het begin
-en de intensiteit.
+Uit de regenkans kun je niet opmaken wanneer het regent. Bij wisselvallig weer
+doe je de overdekte attracties als het regent en de buitenattracties in de droge
+momenten daartussen.
 
 ### In het park
 
-Op de parkpagina verbergt het filter “Overdekt” alles wat buiten ligt en geen
-overdekte wachtrij heeft. Onder de regenwaarschuwing staan de overdekte attracties die nu draaien (“Overdekte attracties”). Heeft je apparaat
-de locatie in het park vrijgegeven, dan sorteert de lijst op loopafstand plus
-wachttijd, anders alleen op wachttijd.
+Met het filter “Overdekt” op de parkpagina zie je alleen nog de attracties waar
+je droog in de rij staat. Bij wildwaterbanen en andere natte attracties staat
+daar “Je kunt nat worden”, en op de pagina van elke attractie staat of ze binnen
+onder een dak is of buiten zonder dak. Wordt er voor de komende uren regen
+voorspeld, dan verschijnt op de parkpagina de melding “Regen in het park” met de
+tijd tot de regen begint en hoe hard het gaat regenen. Tik je erop, dan zie je
+eronder tot vier overdekte attracties die op dat moment draaien. Deel je je locatie, dan staan de attracties met de kortste looptijd
+plus wachttijd bovenaan, anders die met de kortste wachttijd.
 
-De kaart van elke baan draagt bovendien de markering “Je kunt nat worden”, als je
-tijdens de rit nat kunt worden.
+Het filter “Overdekt” en de lijst onder de regenmelding zijn er voorlopig alleen
+in parken waarvan we weten welke attracties overdekt zijn, waaronder alle parken
+hierboven.
 
 ## Veelgestelde vragen
 
 ### Is een pretpark bij regen rustiger?
 
-Volgens onze meting ja, in alle twaalf parken. De wachttijd van de headliners lag
-op regendagen gemiddeld tussen ongeveer 4 en 31 % onder die van droge dagen van
-dezelfde groep van maand, weekend of feestdag en schoolvakanties. Periode en
-drempelwaarden staan in de paragraaf helemaal bovenaan.
+Volgens onze meting wel. In alle twaalf parken die we hebben onderzocht, was de
+wachttijd bij de headliners op regendagen korter dan op droge dagen, afhankelijk
+van het park met ongeveer 4 tot 31 procent. We vergeleken elke regendag met
+droge dagen uit dezelfde maand, doordeweekse dagen met doordeweekse dagen,
+weekend- en feestdagen met weekend- en feestdagen, en dagen in de schoolvakantie
+met dagen in de schoolvakantie. Meegeteld zijn de openingsdagen van 24 december
+2025 tot en met 5 oktober 2026, en een regendag is een dag met minstens 2
+millimeter neerslag.
 
-### Welke pretparken hebben veel banen in een gebouw?
+### Welke pretparken hebben veel overdekte attracties?
 
-In onze data Phantasialand met 14 van 40 vermeldingen, Europa-Park met 34 van 97
-en Efteling met elf van 37. Bij Europa-Park zitten daar stations en doolhoven
-bij. Heide Park heeft er drie.
+Van de negen parken waarvoor we attractie voor attractie hebben uitgezocht wat
+overdekt is, heeft Europa-Park er met 34 de meeste, al zijn 14 daarvan stations,
+doolhoven en een ballenbad. In Toverland zijn 22 van de 44 attracties overdekt,
+het grootste aandeel, en in Phantasialand 14 van de 40. In Walibi Holland staat
+geen enkele attractie in een hal.
 
 ### Rijden achtbanen bij regen?
 
-Dat beslist elk park op korte termijn. In Phantasialand kan bij extreem weer
-elke buitenbaan sluiten, zo staat het in onze gids over het park. Of een baan
-nu rijdt, staat op de pagina van de baan, elke vijf minuten vernieuwd.
+Dat beslist elk park voor zich, vaak pas op de dag zelf. In Phantasialand kan
+bij extreem weer elke buitenattractie op korte termijn dichtgaan. Of een
+attractie nu rijdt, staat op de pagina van die attractie op park.fan, en die
+status wordt elke vijf minuten bijgewerkt.
 
-### Welk park is bij regen het beste met kleine kinderen?
+### Welk pretpark is bij regen het best voor kleine kinderen?
 
-Plopsaland Deutschland heeft in de indoorhal acht ritten en speelgebieden
-waarvoor we geen minimumlengte voeren. In Efteling hebben Droomvlucht,
-Symbolica, Villa Volta en Fata Morgana in onze data er ook geen, Vogel Rok en
-Danse Macabre stellen 120 centimeter. De minimumlengte van elke baan staat op de
-pagina van de baan.
+Afgaande op onze cijfers Toverland of Plopsaland Deutschland. In Toverland zijn
+22 van de 44 attracties overdekt, bijna allemaal voor gezinnen met kleine
+kinderen, en 17 daarvan staan in de hallen Land van Toos en Wunderwald. Voor de
+Toos-Express, de enige overdekte achtbaan, geldt een minimumlengte van 90
+centimeter. In Plopsaland in Haßloch zijn acht ritten en speelplekken
+overdekt, zeven daarvan in de indoorhal, van Tabaluga's Rollercoaster tot het
+ballenbad. De minimumlengte van elke attractie staat op de pagina van die
+attractie op park.fan.
 
-### Hoe vaak regent het in een park?
+### Hoe vaak regent het in een pretpark?
 
-In onze periode hadden tussen 15 en 26 % van de openingsdagen minstens 2
-millimeter neerslag, afhankelijk van het park. Dat is één jaar, geen
-klimaatstatistiek, en de tabel hierboven splitst het uit per maand.
+Tussen 24 december 2025 en 5 oktober 2026 viel er, afhankelijk van het park, op
+15 tot 26 procent van de openingsdagen minstens 2 millimeter regen. Voor
+Europa-Park, Phantasialand, de Efteling, Movie Park, Plopsaland en Heide Park
+samen was juli de droogste maand van april tot en met september (10 procent van
+de openingsdagen) en juni de natste (32 procent). Het gaat om één jaar, een
+gemiddelde over meerdere jaren hebben we nog niet.
 
 ## Bronnen & verder lezen
 
-- Wachttijden op regendagen en aantal regendagen: eigen meting van park.fan uit kalender en weerdagwaarden, 24 december 2025 tot 5 oktober 2026, weerdata van [Open-Meteo](https://open-meteo.com/)
-- Gebouwen, buitenbanen en overdekte wachtrijen per attractie, minimumlengtes, fabrikanten en openingsjaren van de banen: samengesteld bij park.fan op basis van de gegevens van de parken, stand 6 oktober 2026
-- Europa-Park, opening 1975: [Europa-Park (Wikipedia)](https://nl.wikipedia.org/wiki/Europa-Park)
-- Phantasialand, oprichting 1967: [Phantasialand (Wikipedia)](https://nl.wikipedia.org/wiki/Phantasialand)
-- Efteling, opening 1952: [Efteling (Wikipedia)](https://nl.wikipedia.org/wiki/Efteling)
-- Movie Park Germany, opening 1996 en hernoeming 2005: [Movie Park Germany (Wikipedia)](https://nl.wikipedia.org/wiki/Movie_Park_Germany)
-- Plopsaland Deutschland, Holiday Park 1971, Studio 100 sinds 2010, hernoeming 2025 en indoorhal: [Plopsaland Deutschland (Wikipedia)](https://nl.wikipedia.org/wiki/Plopsaland_Deutschland)
-- Heide Park, opening 1978 en Merlin sinds 2007: [Heide Park Resort (Wikipedia)](https://de.wikipedia.org/wiki/Heide_Park_Resort)
-- Details over Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory en de winteropenstelling van Walibi Holland: onze gidsen over [Phantasialand](/blog/phantasialand-wachttijden-tips), [Heide Park](/blog/heide-park-wachttijden-tips), [Movie Park](/blog/movie-park-germany-wachttijden-tips) en [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus de [gids over parken in de winter](/blog/winter-pretparken-2026)
-- Meer gidsen: [Europa-Park](/blog/europa-park-wachttijden-tips) · [Phantasialand](/blog/phantasialand-wachttijden-tips) · [Efteling](/blog/efteling-disney-van-nederland) · [Movie Park](/blog/movie-park-germany-wachttijden-tips) · [Heide Park](/blog/heide-park-wachttijden-tips) · [Toverland](/blog/toverland-troy-wachttijden-tips) · [Winterparken](/blog/winter-pretparken-2026)
+- Wachttijden op regendagen en aantal regendagen: eigen meting van park.fan uit de dagcijfers van wachttijden en weer, 24 december 2025 tot en met 5 oktober 2026, weergegevens van [Open-Meteo](https://open-meteo.com/)
+- Welke attracties overdekt zijn, minimumlengtes, fabrikanten en openingsjaren: door park.fan vastgelegd op basis van de gegevens van de parken, stand van 6 oktober 2026
+- Plopsaland Deutschland, voorheen Holiday Park, naamswijziging in 2025 en indoorhal: [Plopsaland Deutschland (Wikipedia)](https://nl.wikipedia.org/wiki/Plopsaland_Deutschland)
+- Turbine, Shuttle Loop van Schwarzkopf uit 1982: [Turbine op RCDB](https://rcdb.com/921.htm)
+- Details over Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, de geschiedenis van Toverland, het weer in Phantasialand en de winteropenstelling van Walibi Holland: onze gidsen over [Phantasialand](/blog/phantasialand-wachttijden-tips), [Heide Park](/blog/heide-park-wachttijden-tips), [Movie Park](/blog/movie-park-germany-wachttijden-tips), [Toverland](/blog/toverland-troy-wachttijden-tips), [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus de [gids over pretparken in de winter](/blog/winter-pretparken-2026)
+- Meer gidsen: [Europa-Park](/blog/europa-park-wachttijden-tips) · [Phantasialand](/blog/phantasialand-wachttijden-tips) · [Efteling](/blog/efteling-disney-van-nederland) · [Movie Park](/blog/movie-park-germany-wachttijden-tips) · [Heide Park](/blog/heide-park-wachttijden-tips) · [Toverland](/blog/toverland-troy-wachttijden-tips) · [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) · [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan) · [Winterparken](/blog/winter-pretparken-2026)
