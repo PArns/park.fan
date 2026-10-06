@@ -35,6 +35,7 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { hasOpeningDays } from '@/lib/parks/park-hours-ics';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
@@ -525,6 +526,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             }
             countryHref={breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}`)?.url}
             locale={locale}
+            // Offered only where the schedule has a coming opening day; the route answers 404
+            // for a park without one, so a link for it would download an error.
+            hoursIcsHref={
+              hasOpeningDays(park.schedule)
+                ? `/api/parks/hours/${continent}/${country}/${city}/${park.slug}?locale=${locale}`
+                : undefined
+            }
             suffix={t('h1Suffix')}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid

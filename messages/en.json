@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Permanently closed attractions",
       "since": "since {month}"
+    },
+    "hoursCalendar": {
+      "link": "Opening hours to calendar",
+      "summary": "{park}: open",
+      "estimated": "Hours are estimated."
     }
   },
   "attractions": {

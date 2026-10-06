@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Attractions fermées définitivement",
       "since": "depuis {month}"
+    },
+    "hoursCalendar": {
+      "link": "Horaires dans l’agenda",
+      "summary": "{park} : ouvert",
+      "estimated": "Les horaires sont estimés."
     }
   },
   "attractions": {

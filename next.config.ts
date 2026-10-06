@@ -996,6 +996,12 @@ const nextConfig: NextConfig = {
         ),
       },
       {
+        // The `.ics` of a park's coming opening days. The handler's own value, and it sends it on
+        // a successful answer only: its 404 and 502 carry `no-store` themselves.
+        source: '/api/parks/hours/:continent/:country/:city/:park',
+        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=7200'),
+      },
+      {
         // The park map popups' speed, height and duration per ride. Day-stable; the handler's own
         // value (RIDE_STATS_CACHE_CONTROL in app/api/parks/[...path]/route.ts), kept identical.
         source: '/api/parks/:continent/:country/:city/:park/ride-stats',
