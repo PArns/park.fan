@@ -56,15 +56,11 @@ export function getLiveAttractionStatus(
  * STANDBY wait of an attraction in minutes, or null when it has no standby queue.
  *
  * Says nothing about whether the ride is open — pair it with `getAttractionDisplayStatus`, or a
- * closed ride reports the last number its queue carried. It lived inside the wait-time overview
- * until the header's headliner strip needed the same reading; two copies of "which queue is the
- * one people mean" is how two surfaces on one page start disagreeing.
- *
- * The third reader is `buildWaitTimeObservations`, and it is the one that made this worth
- * exporting: the `Observation` markup has to mirror the visible overview reading for reading, so
- * a copy that drifted there would put the structured data at odds with the page it describes.
+ * closed ride reports the last number its queue carried. Every surface reads the wait here,
+ * because two copies of "which queue is the one people mean" is how two surfaces on one page
+ * start disagreeing.
  */
-export function getStandbyWait(attraction: ParkAttraction): number | null {
+export function getStandbyWait(attraction: ParkAttraction | FavoriteAttraction): number | null {
   const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
   return standby && 'waitTime' in standby ? standby.waitTime : null;
 }

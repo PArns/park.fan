@@ -18,7 +18,7 @@ import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { isEveningBetter, ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
-import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
+import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { RideCrowdScaleTooltip } from './ride-crowd-scale-tooltip';
@@ -94,12 +94,6 @@ interface AttractionCardProps {
 
 // ---------- helpers ----------
 
-function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | null {
-  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  if (!standby) return null;
-  return 'waitTime' in standby ? (standby.waitTime ?? null) : null;
-}
-
 function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
   if ('crowdLevel' in attraction) return attraction.crowdLevel;
   if ('currentLoad' in attraction && attraction.currentLoad?.crowdLevel) {
@@ -159,7 +153,7 @@ export function AttractionCard({
 
   const status = closedPermanently ? 'RETIRED' : getLiveAttractionStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
-  const waitTime = isOperatingOrUnknown ? getWaitTime(attraction) : null;
+  const waitTime = isOperatingOrUnknown ? getStandbyWait(attraction) : null;
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);

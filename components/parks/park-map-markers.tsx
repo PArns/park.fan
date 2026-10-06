@@ -6,6 +6,7 @@ import { Marker, Popup } from 'react-leaflet';
 import type { Marker as LeafletMarker } from 'leaflet';
 import type { ParkAttraction, ParkShow, ParkRestaurant } from '@/lib/api/types';
 import { stripNewPrefix } from '@/lib/utils';
+import { getStandbyWait } from '@/lib/utils/park-utils';
 import {
   attractionOperatingIcon,
   attractionClosedIcon,
@@ -53,9 +54,7 @@ export const AttractionMarkers = memo(function AttractionMarkers({
         const isOperating = attraction.status === 'OPERATING';
         const icon = isOperating ? attractionOperatingIcon : attractionClosedIcon;
 
-        // Get wait time from queues
-        const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-        const waitTime = standbyQueue?.waitTime;
+        const waitTime = getStandbyWait(attraction);
         const ride = figures?.[attraction.id];
 
         return (
@@ -78,7 +77,7 @@ export const AttractionMarkers = memo(function AttractionMarkers({
                     </span>
                   </div>
                 )}
-                {waitTime !== null && waitTime !== undefined && (
+                {waitTime !== null && (
                   <div className="mt-1 text-xs">
                     {t('waitTime')}: <span className="font-semibold">{waitTime} min</span>
                   </div>

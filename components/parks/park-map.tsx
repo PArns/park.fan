@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import type L from 'leaflet';
 import type { ParkWithAttractions, ParkAttraction, ParkShow } from '@/lib/api/types';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useParkMapGeolocation } from '@/lib/hooks/use-park-map-geolocation';
@@ -95,12 +96,6 @@ function MapViewController({ center, zoom, userHasZoomed }: MapViewControllerPro
   }, [map, center, zoom, userHasZoomed]);
 
   return null;
-}
-
-// Helper function to get wait time for an attraction
-function getWaitTime(attraction: ParkAttraction): number | null {
-  const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standbyQueue?.waitTime ?? null;
 }
 
 // Returns the next show time as a relative string (e.g. "45 min"), used in the in-park panel
@@ -291,7 +286,7 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
                 {nearbyEntities.map((entity) => {
                   const waitTime =
                     entity.type === 'attraction'
-                      ? getWaitTime(entity.data as ParkAttraction)
+                      ? getStandbyWait(entity.data as ParkAttraction)
                       : null;
                   const nextShow =
                     entity.type === 'show' ? getNextShowTime(entity.data as ParkShow) : null;
