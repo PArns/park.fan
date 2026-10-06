@@ -8,7 +8,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`blog-menu.ts`](../../lib/navigation/blog-menu.ts)
 
 - `trimExcerpt` _function_: Cut on a word boundary, never mid-word, and only when there is something to cut.
-- `getBlogMenu` _function_
+- `getBlogMenu` _function_: Builds the header's blog panel for a locale: the article categories by post count and the five most recently touched articles with trimmed excerpts and covers.
 - Types: `BlogMenuCategory`, `BlogMenuPost`, `BlogMenu`
 
 ### [`featured-parks-menu.ts`](../../lib/navigation/featured-parks-menu.ts)
@@ -23,7 +23,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`glossary-menu.ts`](../../lib/navigation/glossary-menu.ts)
 
-- `getGlossaryMenu` _function_
+- `getGlossaryMenu` _function_: Builds the glossary section of the header's "more" panel: each category with its translated label, `#category` link and term count, sorted by label.
 - Types: `GlossaryMenuCategory`, `GlossaryMenu`
 
 ### [`history-navigation.ts`](../../lib/navigation/history-navigation.ts)
@@ -35,7 +35,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`more-menu.ts`](../../lib/navigation/more-menu.ts)
 
-- `getMoreMenu` _function_
+- `getMoreMenu` _function_: Builds the header's "more" band for a locale: the glossary, guide and best-time hubs with their photos and chapters, plus the Fancast card.
 - Types: `MoreMenuPhoto`, `MoreMenuChapter`, `MoreMenuHub`, `MoreMenu`
 
 ### [`news-menu.ts`](../../lib/navigation/news-menu.ts)

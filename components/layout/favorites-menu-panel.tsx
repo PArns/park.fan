@@ -360,6 +360,11 @@ function useBandWidth(active: boolean) {
   return { ref, width };
 }
 
+/**
+ * Contents of the header's favourites menu: favourite parks, rides, shows and restaurants as cards
+ * in the full-width band or as rows in the phone sheet, the alerts group, and nearby parks to star
+ * while the list is empty. Fetches nothing until opened.
+ */
 export function FavoritesMenuPanel({
   open,
   variant = 'band',

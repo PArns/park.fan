@@ -121,6 +121,7 @@ export function emptyFrontmatter(): EditorFrontmatter {
   };
 }
 
+/** Returns a blank locale draft: empty frontmatter, body and slug, slug not yet edited by hand. */
 export function emptyDraft(): LocaleDraft {
   return { fm: emptyFrontmatter(), body: '', slug: '', slugTouched: false };
 }

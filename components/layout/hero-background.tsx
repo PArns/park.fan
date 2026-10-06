@@ -188,6 +188,10 @@ function InParkHeroImages({
   );
 }
 
+/**
+ * The hero photo: the server-picked image (or a random one), with a blurred preview and a ken-burns
+ * pan once loaded, crossfading into the park's own photos when the visitor is inside a park.
+ */
 export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL, alt }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
   // The ken-burns pan waits for two things. First the image itself: transforming the LCP element

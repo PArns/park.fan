@@ -33,6 +33,10 @@ import { escapeRefocusesTrigger, focusLeftMenu } from '@/lib/utils/menu-focus';
 const OPEN_DELAY_MS = 90;
 const CLOSE_DELAY_MS = 180;
 
+/**
+ * Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and
+ * closes after 180 ms, click toggles, and navigating closes the panel.
+ */
 export function useMenuTrigger() {
   const pathname = usePathname();
   const [openedOn, setOpenedOn] = useState<string | null>(null);

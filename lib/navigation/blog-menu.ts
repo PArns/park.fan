@@ -99,6 +99,10 @@ export interface BlogMenu {
   recent: BlogMenuPost[];
 }
 
+/**
+ * Builds the header's blog panel for a locale: the article categories by post count and the five
+ * most recently touched articles with trimmed excerpts and covers.
+ */
 export function getBlogMenu(locale: Locale): BlogMenu {
   const { root } = buildCategoryTree(locale);
 

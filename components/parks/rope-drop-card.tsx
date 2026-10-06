@@ -202,6 +202,11 @@ function StatTiles({ tone, stats }: { tone: 'emerald' | 'indigo' | 'primary'; st
   );
 }
 
+/**
+ * Ride page card on when to ride: the minutes saved at park opening (`worth`), a later evening
+ * trough (`evening`), or the ride's own readings and quietest weekday (`bestTime`). Always
+ * returns an element; `ropeDropCardVariant` picks the state.
+ */
 export function RopeDropCard({
   ropeDrop,
   timezone,

@@ -27,6 +27,11 @@ import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/p
 
 const DEFAULT_SOURCE: Locale = 'en';
 
+/**
+ * Blog editor workspace: one draft per locale with frontmatter form, rich-text or source view,
+ * properties panel, translation from the source locale, and saving or deleting a post as a GitHub
+ * pull request. Autosaves to localStorage and opens `?post=<key>` on load.
+ */
 export function BlogEditorClient({ initialData }: { initialData: EditorInitialData }) {
   const [sourceLocale, setSourceLocale] = useState<Locale>(DEFAULT_SOURCE);
   const [activeLocale, setActiveLocale] = useState<Locale>(DEFAULT_SOURCE);

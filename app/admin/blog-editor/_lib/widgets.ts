@@ -159,6 +159,7 @@ export const WIDGET_NAMES = new Set(WIDGETS.map((w) => w.name));
 
 export const WIDGET_BY_NAME = new Map(WIDGETS.map((w) => [w.name, w]));
 
+/** Returns the widget definition for a fence name such as `park-widget`, or `undefined`. */
 export function getWidget(name: string): WidgetDef | undefined {
   return WIDGET_BY_NAME.get(name);
 }

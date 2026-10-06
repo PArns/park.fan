@@ -127,6 +127,10 @@ function staticPart(locale: Locale): StaticPart {
   return part;
 }
 
+/**
+ * Builds the header's "more" band for a locale: the glossary, guide and best-time hubs with their
+ * photos and chapters, plus the Fancast card.
+ */
 export async function getMoreMenu(locale: Locale): Promise<MoreMenu> {
   const part = staticPart(locale);
   const glossary = await getGlossaryMenu(locale);

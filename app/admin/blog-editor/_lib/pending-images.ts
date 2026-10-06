@@ -31,6 +31,7 @@ const pending = new Map<string, PendingImage>();
  *  draft without a title yet). */
 let uploadFolder = 'uploads';
 
+/** Sets the `/media/<folder>/` for new uploads from the post slug; `uploads` while it is blank. */
 export function setUploadFolder(slug: string): void {
   const safe = slug
     .toLowerCase()
@@ -64,6 +65,10 @@ function sanitizeName(name: string): string {
   );
 }
 
+/**
+ * Stages a pasted or dropped image until the post is saved: checks type and the 3 MB limit, picks
+ * a free `/media/<folder>/<name>.<ext>` path, and keeps base64 bytes plus a preview object URL.
+ */
 export async function addPendingImage(file: File): Promise<PendingImage> {
   if (!EXT_BY_MIME[file.type]) {
     throw new Error(`Unsupported image type: ${file.type || 'unknown'}`);
@@ -102,14 +107,17 @@ export async function addPendingImage(file: File): Promise<PendingImage> {
   return entry;
 }
 
+/** Returns the staged image for a public path, if it has not been saved yet. */
 export function getPendingImage(path: string): PendingImage | undefined {
   return pending.get(path);
 }
 
+/** Returns every staged image, for the save flow to commit. */
 export function listPendingImages(): PendingImage[] {
   return [...pending.values()];
 }
 
+/** Drops every staged image and revokes their preview object URLs. */
 export function clearPendingImages(): void {
   for (const p of pending.values()) URL.revokeObjectURL(p.objectUrl);
   pending.clear();

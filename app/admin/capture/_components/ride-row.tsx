@@ -48,6 +48,10 @@ interface RideRowProps {
   featured?: boolean;
 }
 
+/**
+ * Capture-screen row for one ride: name, why it is ranked there, land and distance, upload states
+ * and the camera and library inputs. `featured` makes it the larger, highlighted row.
+ */
 export function RideRow({ ride, distanceM, states, onFiles, featured }: RideRowProps) {
   return (
     <li

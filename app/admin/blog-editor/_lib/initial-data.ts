@@ -101,6 +101,10 @@ const getAuthors = cache((): AuthorOption[] => {
   return out;
 });
 
+/**
+ * Server-only: returns what the blog editor needs up front, read from `content/blog`: locales,
+ * authors, categories, every tag in use, and the GitHub repo and base branch posts are saved to.
+ */
 export function getInitialEditorData(): EditorInitialData {
   // Defaults: parse owner/repo from env (set by Vercel) or fall back to ours.
   const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';

@@ -29,6 +29,11 @@ interface FooterProps {
   newsLabel?: string;
 }
 
+/**
+ * The site footer: popular parks by country, tools, content and legal links, feed, preferred-source
+ * and install buttons, copyright and the build version. Server Component; the blog and news links
+ * show only when those sections have posts.
+ */
 export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];

@@ -22,6 +22,10 @@ const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>
   it: FlagIT,
 };
 
+/**
+ * Banner offering to switch to the browser's language when it differs from the page's, worded in
+ * that language. Dismissal is remembered per language pair in localStorage.
+ */
 export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
   const [browserLocale, setBrowserLocale] = useState<Locale | null>(null);
   const [isDismissed, setIsDismissed] = useState(true);

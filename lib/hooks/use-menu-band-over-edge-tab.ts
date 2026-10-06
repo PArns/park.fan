@@ -63,6 +63,10 @@ function subscribe(listener: () => void) {
 const getSnapshot = () => edgeBands > 0;
 const getServerSnapshot = () => false;
 
+/**
+ * Returns true while an open header menu band reaches the planner's edge tab, so `PlannerEdgeTab`
+ * steps aside; false on the server.
+ */
 export function useMenuBandOverEdgeTab(): boolean {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

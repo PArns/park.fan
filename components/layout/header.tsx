@@ -192,6 +192,11 @@ function SheetSubLink({
   );
 }
 
+/**
+ * The 48 px site header: brand lockup, the parks, blog, news and more menus, favourites, nearby
+ * park, planner, search, language, unit and theme controls, and the burger sheet on phones. Floats
+ * transparent over full-bleed heroes until the page scrolls.
+ */
 export function Header({
   showBlog = true,
   geoMenu,

@@ -33,7 +33,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parse-segments.ts`](../../lib/glossary/parse-segments.ts)
 
-- `parseGlossarySegments` _function_: Splits text into plain-text and glossary-term segments, linking only the first occurrence of each term name or alias; aliases of four characters or less match case-sensitively.
+- `parseGlossarySegments` _function_: Splits text into plain-text and glossary-term segments, linking only the first occurrence of each term name or alias; a name or alias of four characters or less must match its exact case.
 - `filterMatchableTerms` _function_: Narrow a term list to the ones that can possibly match anywhere in `corpus`.
 - Types: `GlossaryMatchTerm`, `GlossarySegment`, `GlossaryTerm`
 

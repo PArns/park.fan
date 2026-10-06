@@ -108,6 +108,9 @@ export function Row({
   );
 }
 
+/**
+ * Small uppercase heading of a group in the favourites band, with the group's count on the right.
+ */
 export function GroupHeading({ title, count }: { title: string; count: number }) {
   return (
     <div className="text-foreground border-border/60 mb-2.5 flex items-center justify-between gap-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">

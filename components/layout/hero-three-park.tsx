@@ -24,6 +24,11 @@ import { useTheme } from 'next-themes';
 import { createParkScene, type ParkSceneHandle, type SceneTheme } from '@/lib/three/park-scene';
 import { cn } from '@/lib/utils';
 
+/**
+ * Mounts the three.js amusement park scene into a full-bleed canvas behind the homepage hero and
+ * reports load progress and readiness. Client-only through a dynamic import; follows the theme and
+ * draws one static frame under reduced motion.
+ */
 export function HeroThreePark({
   className,
   onReady,

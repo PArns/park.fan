@@ -4,6 +4,10 @@ const INDEXNOW_KEY = 'f179c6a9d9f0022913e75fae2dcaa75a';
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
 const BASE_URL = SITE_URL;
 
+/**
+ * Submits park.fan URLs to the IndexNow API with the site key; throws when the endpoint answers
+ * with an error status.
+ */
 export async function submitUrlsToIndexNow(urls: string[]): Promise<void> {
   if (urls.length === 0) return;
 

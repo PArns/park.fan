@@ -108,6 +108,10 @@ export function NavEntryLabel({
   );
 }
 
+/**
+ * Header nav entry that is both a link and the trigger of a dropdown panel. The panel is always in
+ * the HTML and hidden until opened, so crawlers see its links.
+ */
 export function NavMenu({ href, label, children, floating, icon }: NavMenuProps) {
   const panelId = useId();
   const { open, triggerProps, toggle, closeOnSamePageClick } = useMenuTrigger();

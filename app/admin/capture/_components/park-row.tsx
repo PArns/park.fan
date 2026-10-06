@@ -34,6 +34,10 @@ interface ParkRowProps {
   onFiles: (files: FileList | null, tags: string[]) => void;
 }
 
+/**
+ * Capture-screen row for park photos that belong to no ride: camera and library inputs, upload
+ * states, and toggles for the `season` tags sent along with every file.
+ */
 export function ParkRow({ parkName, states, onFiles }: ParkRowProps) {
   // Held here rather than by the page: the selection outlives one upload on
   // purpose — an evening at a Halloween event is a dozen photographs, not one —

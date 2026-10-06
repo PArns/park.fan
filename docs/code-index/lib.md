@@ -13,11 +13,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`indexnow.ts`](../../lib/indexnow.ts)
 
-- `submitUrlsToIndexNow` _function_
+- `submitUrlsToIndexNow` _function_: Submits park.fan URLs to the IndexNow API with the site key; throws when the endpoint answers with an error status.
 
 ### [`markdown.ts`](../../lib/markdown.ts)
 
-- `getMarkdownContent` _function_
+- `getMarkdownContent` _function_: Reads a Markdown file under `content/` and returns its frontmatter and body, or `null` when it is missing, unreadable or outside `content/`.
 - Types: `MarkdownContent`
 
 ### [`nearby-simulation.ts`](../../lib/nearby-simulation.ts)

@@ -28,6 +28,11 @@ interface ParkStatusProps {
   todayCrowdLevel?: CrowdLevel | null;
 }
 
+/**
+ * A park's live status in four sizes: status and crowd badges (`compact`), plus average wait and
+ * open rides (`card`), large header badges (`hero`), or the crowd, wait-time and ride cards
+ * (`detailed`). Wait figures are left out for a park whose wait times cannot be read.
+ */
 export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkStatusProps) {
   const analytics = 'analytics' in park ? park.analytics : null;
   const currentLoad = 'currentLoad' in park ? park.currentLoad : null;

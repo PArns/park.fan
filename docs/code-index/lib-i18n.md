@@ -32,7 +32,7 @@ Enhanced Translation Helpers with Logging
 
 ### [`park-phrase.ts`](../../lib/i18n/park-phrase.ts)
 
-- `parkPhrase` _function_
+- `parkPhrase` _function_: Puts a park name into a phrase of the given kind (`in`, `for`, `subject`) for the locale, with the German article and contraction: "im Phantasialand", "in der Efteling".
 - `parkArgs` _function_: The interpolation arguments a message needs to name a park.
 - Types: `ParkArticle`, `ParkPhraseKind`
 

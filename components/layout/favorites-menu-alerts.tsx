@@ -44,6 +44,10 @@ interface AlertRow {
   remove: () => void;
 }
 
+/**
+ * Group in the header's favourites band listing this browser's wait-time alerts and show reminders,
+ * each with a button to remove it. Loaded lazily; fetches only while the band is open.
+ */
 export function FavoritesMenuAlerts({
   open,
   cap,

@@ -82,6 +82,11 @@ interface ParkCardProps {
   reserveStatusRow?: boolean;
 }
 
+/**
+ * Link card for a park: photo, name, city and distance, status and crowd badges, an opening or
+ * closing countdown and a favorite star. Below `sm` it renders a four-line row instead
+ * (`data-park-card-row`). Photo and crop come from the caller, so it is safe in Client Components.
+ */
 export function ParkCard({
   name,
   slug: _slug,

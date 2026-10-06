@@ -61,6 +61,10 @@ const OTHER: Record<Exclude<Locale, 'de'>, Record<ParkPhraseKind, string>> = {
   it: { in: 'a', for: 'per', subject: '' },
 };
 
+/**
+ * Puts a park name into a phrase of the given kind (`in`, `for`, `subject`) for the locale, with
+ * the German article and contraction: "im Phantasialand", "in der Efteling".
+ */
 export function parkPhrase(
   locale: Locale,
   kind: ParkPhraseKind,

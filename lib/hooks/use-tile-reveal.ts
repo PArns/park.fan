@@ -49,6 +49,10 @@ function prefersReducedMotion() {
   );
 }
 
+/**
+ * Returns a ref for an entry-tile row whose `[data-tile-stagger]` children slide up 6 px in a GSAP
+ * stagger once on mount; nothing runs under reduced motion.
+ */
 export function useTileReveal<T extends HTMLElement>() {
   const rowRef = useRef<T>(null);
 

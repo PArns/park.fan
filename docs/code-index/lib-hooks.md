@@ -19,7 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-attraction-filter.ts`](../../lib/hooks/use-attraction-filter.ts)
 
-- `useAttractionFilter` _hook_
+- `useAttractionFilter` _hook_: Filters the park page's attractions and shows by search, rider height, the five pills and season, and returns the filtered lists, counts, headliners and every filter's state and setter. See the notes above.
 - `nextWetMode` _function_: The cycle the pill walks: off → the water rides → everything but them → off.
 - Types: `WetMode`
 
@@ -84,7 +84,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-live-park-data.ts`](../../lib/hooks/use-live-park-data.ts)
 
-- `useLiveParkData` _hook_
+- `useLiveParkData` _hook_: Polls a park's live snapshot every 5 minutes with React Query and merges it onto the server-rendered park, so consumers read a complete `ParkWithAttractions`. See the notes above.
 
 ### [`use-live-parks-by-region.ts`](../../lib/hooks/use-live-parks-by-region.ts)
 
@@ -108,7 +108,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-menu-band-over-edge-tab.ts`](../../lib/hooks/use-menu-band-over-edge-tab.ts)
 
-- `useMenuBandOverEdgeTab` _hook_
+- `useMenuBandOverEdgeTab` _hook_: Returns true while an open header menu band reaches the planner's edge tab, so `PlannerEdgeTab` steps aside; false on the server.
 - `columnReachesEdgeTab` _function_: True when the band's content (the column minus its right padding) ends closer to the band's right edge than the tab is wide.
 - `registerEdgeMenuBand` _function_: Called by a band that opened over the tab's strip; the returned function is its close.
 
@@ -120,7 +120,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-menu-trigger.ts`](../../lib/hooks/use-menu-trigger.ts)
 
-- `useMenuTrigger` _hook_
+- `useMenuTrigger` _hook_: Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and closes after 180 ms, click toggles, and navigating closes the panel.
 
 ### [`use-minute-now.ts`](../../lib/hooks/use-minute-now.ts)
 
@@ -226,7 +226,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-tile-reveal.ts`](../../lib/hooks/use-tile-reveal.ts)
 
-- `useTileReveal` _hook_
+- `useTileReveal` _hook_: Returns a ref for an entry-tile row whose `[data-tile-stagger]` children slide up 6 px in a GSAP stagger once on mount; nothing runs under reduced motion.
 
 ### [`use-tile-row-anchor.ts`](../../lib/hooks/use-tile-row-anchor.ts)
 

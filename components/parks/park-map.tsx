@@ -133,6 +133,11 @@ interface ParkMapProps {
   parkSlug?: string;
 }
 
+/**
+ * Leaflet map of a park (CARTO tiles) with markers for in-season rides, shows and restaurants, the
+ * visitor's position and, when located, a panel of what is nearby. Used by the map tab and the
+ * blog's map widget.
+ */
 export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlug }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
   // Mounted only while the map tab is the one on screen, so this is the fetch that "opens with the

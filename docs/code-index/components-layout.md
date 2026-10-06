@@ -12,20 +12,20 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`brand-lockup.tsx`](../../components/layout/brand-lockup.tsx)
 
 - `BrandPin` _component_: The pin on its own, at whatever height the caller's class sets.
-- `BrandLockup` _component_
+- `BrandLockup` _component_: The park.fan lockup, pin and wordmark at the header's size (26 px and 19 px), with light and dark artwork switched by theme or forced light. The header renders it twice and cross-fades the pair.
 
 ### [`favorites-menu-alerts.tsx`](../../components/layout/favorites-menu-alerts.tsx)
 
-- `FavoritesMenuAlerts` _component_
+- `FavoritesMenuAlerts` _component_: Group in the header's favourites band listing this browser's wait-time alerts and show reminders, each with a button to remove it. Loaded lazily; fetches only while the band is open.
 
 ### [`favorites-menu-panel.tsx`](../../components/layout/favorites-menu-panel.tsx)
 
-- `FavoritesMenuPanel` _component_
+- `FavoritesMenuPanel` _component_: Contents of the header's favourites menu: favourite parks, rides, shows and restaurants as cards in the full-width band or as rows in the phone sheet, the alerts group, and nearby parks to star while the list is empty.
 
 ### [`favorites-menu-rows.tsx`](../../components/layout/favorites-menu-rows.tsx)
 
 - `Row` _component_: The sheet's shape, and the shape of every group in the band that has no picture and no figure: a 40 px box, two lines, something on the right.
-- `GroupHeading` _component_
+- `GroupHeading` _component_: Small uppercase heading of a group in the favourites band, with the group's count on the right.
 - `RowSkeletons` _component_: `max` is the caller's own cap, not the sheet's: a group that slices its rows at `MAX_CARDS` would otherwise reserve five and grow by three when the request lands.
 - `RowGroupSkeleton` _component_: A row group's box before its content exists: the heading it is going to have, and as many skeleton rows as it expects to fill.
 - `MoreLine` _component_: „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is — `/favorites` for favorites, `/alerts` for the alerts group.
@@ -41,7 +41,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`footer.tsx`](../../components/layout/footer.tsx)
 
-- `Footer` _component_
+- `Footer` _component_: The site footer: popular parks by country, tools, content and legal links, feed, preferred-source and install buttons, copyright and the build version. Server Component; the blog and news links show only when those sections have posts.
 
 ### [`header-nearby-park.tsx`](../../components/layout/header-nearby-park.tsx)
 
@@ -49,11 +49,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`header.tsx`](../../components/layout/header.tsx)
 
-- `Header` _component_
+- `Header` _component_: The 48 px site header: brand lockup, the parks, blog, news and more menus, favourites, nearby park, planner, search, language, unit and theme controls, and the burger sheet on phones.
 
 ### [`hero-background.tsx`](../../components/layout/hero-background.tsx)
 
-- `RandomHeroImage` _component_
+- `RandomHeroImage` _component_: The hero photo: the server-picked image (or a random one), with a blurred preview and a ken-burns pan once loaded, crossfading into the park's own photos when the visitor is inside a park.
 - `HeroBackground` _component_: The homepage hero background, behind the `HERO_3D_ENABLED` feature flag (default OFF): when off it's the classic rotating park photo; when on it's the animated three.js park the camera flies through.
 
 ### [`hero-image-info-panel.tsx`](../../components/layout/hero-image-info-panel.tsx)
@@ -66,21 +66,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-image-info.tsx`](../../components/layout/hero-image-info.tsx)
 
-- `HeroImageInfo` _component_
+- `HeroImageInfo` _component_: Server wrapper for the hero photo caption: translates the country name and renders `HeroImageInfoPanel`.
 
 ### [`hero-rotation-context.tsx`](../../components/layout/hero-rotation-context.tsx)
 
 - `HeroRotationProvider` _component_: Owns the in-park hero rotation in one place so the background images and the image attribution stay perfectly in sync (a single interval, a single index).
-- `useHeroRotation` _hook_
+- `useHeroRotation` _hook_: Returns the in-park hero rotation from `HeroRotationProvider`: the park's images, the active index and its image (empty outside a park).
 
 ### [`hero-three-park.tsx`](../../components/layout/hero-three-park.tsx)
 
-- `HeroThreePark` _component_
-- `default (HeroThreePark)` _component_
+- `HeroThreePark` _component_: Mounts the three.js amusement park scene into a full-bleed canvas behind the homepage hero and reports load progress and readiness. Client-only through a dynamic import; follows the theme and draws one static frame under reduced motion.
+- `default (HeroThreePark)` _component_: Mounts the three.js amusement park scene into a full-bleed canvas behind the homepage hero and reports load progress and readiness. Client-only through a dynamic import; follows the theme and draws one static frame under reduced motion.
 
 ### [`language-banner.tsx`](../../components/layout/language-banner.tsx)
 
-- `LanguageBanner` _component_
+- `LanguageBanner` _component_: Banner offering to switch to the browser's language when it differs from the page's, worded in that language. Dismissal is remembered per language pair in localStorage.
 
 ### [`menu-band.tsx`](../../components/layout/menu-band.tsx)
 
@@ -92,7 +92,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`more-menu-links.tsx`](../../components/layout/more-menu-links.tsx)
 
-- `MoreMenuLinks` _component_
+- `MoreMenuLinks` _component_: Row of header links to alerts, favourites, Fancast and the photo upload, as pills at the foot of the more panel or as text links in the phone sheet; each `variant` carries its own subset.
 
 ### [`more-menu-panel.tsx`](../../components/layout/more-menu-panel.tsx)
 
@@ -101,7 +101,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`nav-menu.tsx`](../../components/layout/nav-menu.tsx)
 
 - `NavEntryLabel` _component_: The icon-plus-label of a header destination, in both menus: the entries of the nav row (the `NavMenu` triggers and the row's plain links) and the phone sheet's destinations.
-- `NavMenu` _component_
+- `NavMenu` _component_: Header nav entry that is both a link and the trigger of a dropdown panel. The panel is always in the HTML and hidden until opened, so crawlers see its links.
 - `headerNavInk` _function_: The ink of every entry in the header's nav row, in the bar's two states — one definition, because the row has three kinds of entry (a plain link, this trigger pair, the favorites button) and a row where one of them is a different grey is a …
 
 ### [`navigation-progress.tsx`](../../components/layout/navigation-progress.tsx)

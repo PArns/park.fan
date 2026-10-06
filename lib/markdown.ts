@@ -7,6 +7,10 @@ export interface MarkdownContent<T = Record<string, unknown>> {
   content: string;
 }
 
+/**
+ * Reads a Markdown file under `content/` and returns its frontmatter and body, or `null` when it is
+ * missing, unreadable or outside `content/`.
+ */
 export function getMarkdownContent<T = Record<string, unknown>>(
   relativePath: string
 ): MarkdownContent<T> | null {

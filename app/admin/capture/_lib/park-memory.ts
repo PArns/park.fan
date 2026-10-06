@@ -36,6 +36,7 @@ export interface RememberedPark {
   manual: boolean;
 }
 
+/** Subscribes to changes of the remembered capture park in this tab; returns the unsubscribe. */
 export function subscribeParkMemory(onChange: () => void): () => void {
   window.addEventListener(CHANGED, onChange);
   return () => window.removeEventListener(CHANGED, onChange);
@@ -56,6 +57,7 @@ export function parkMemoryServerSnapshot(): null {
   return null;
 }
 
+/** Parses the stored entry into its park path and `manual` flag; `null` unless the path has 4 parts. */
 export function parseRememberedPark(raw: string | null): RememberedPark | null {
   if (!raw) return null;
   try {
@@ -71,10 +73,12 @@ export function parseRememberedPark(raw: string | null): RememberedPark | null {
   }
 }
 
+/** Stores the capture park for this tab in sessionStorage and notifies subscribers. */
 export function rememberPark(entry: RememberedPark): void {
   write(JSON.stringify(entry));
 }
 
+/** Clears the remembered capture park for this tab and notifies subscribers. */
 export function forgetPark(): void {
   write(null);
 }

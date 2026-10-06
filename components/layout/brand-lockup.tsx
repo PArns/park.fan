@@ -82,6 +82,10 @@ export function BrandPin({
   );
 }
 
+/**
+ * The park.fan lockup, pin and wordmark at the header's size (26 px and 19 px), with light and dark
+ * artwork switched by theme or forced light. The header renders it twice and cross-fades the pair.
+ */
 export function BrandLockup({
   /** Force the light-ink artwork regardless of theme — for a lockup over a permanently dark hero. */
   forceLight = false,

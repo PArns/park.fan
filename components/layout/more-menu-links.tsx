@@ -58,6 +58,10 @@ const LINKS = [
 
 type Variant = 'panel' | 'sheet';
 
+/**
+ * Row of header links to alerts, favourites, Fancast and the photo upload, as pills at the foot of
+ * the more panel or as text links in the phone sheet; each `variant` carries its own subset.
+ */
 export function MoreMenuLinks({ variant }: { variant: Variant }) {
   const t = useTranslations('navigation');
   /*

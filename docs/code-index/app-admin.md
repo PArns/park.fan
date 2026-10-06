@@ -374,16 +374,16 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_lib/initial-data.ts`](../../app/admin/blog-editor/_lib/initial-data.ts)
 
-- `getInitialEditorData` _function_
+- `getInitialEditorData` _function_: Server-only: returns what the blog editor needs up front, read from `content/blog`: locales, authors, categories, every tag in use, and the GitHub repo and base branch posts are saved to.
 - Types: `AuthorOption`, `CategoryOption`, `EditorInitialData`
 
 ### [`blog-editor/_lib/pending-images.ts`](../../app/admin/blog-editor/_lib/pending-images.ts)
 
-- `setUploadFolder` _function_
-- `addPendingImage` _function_
-- `getPendingImage` _function_
-- `listPendingImages` _function_
-- `clearPendingImages` _function_
+- `setUploadFolder` _function_: Sets the `/media/<folder>/` for new uploads from the post slug; `uploads` while it is blank.
+- `addPendingImage` _function_: Stages a pasted or dropped image until the post is saved: checks type and the 3 MB limit, picks a free `/media/<folder>/<name>.<ext>` path, and keeps base64 bytes plus a preview object URL.
+- `getPendingImage` _function_: Returns the staged image for a public path, if it has not been saved yet.
+- `listPendingImages` _function_: Returns every staged image, for the save flow to commit.
+- `clearPendingImages` _function_: Drops every staged image and revokes their preview object URLs.
 - `MAX_UPLOAD_BYTES` _const_: ~3MB raw — keeps a multi-image save under typical serverless body limits.
 - Types: `PendingImage`
 
@@ -403,14 +403,14 @@ Route `/admin/attractions/[id]` (page).
 - `toFrontmatter` _function_: Convert the form state into the final blog frontmatter shape we serialise to YAML.
 - `fromFrontmatter` _function_: Inverse of `toFrontmatter` — hydrate a parsed YAML frontmatter back into the form-state shape so an existing post can be loaded into the editor.
 - `emptyFrontmatter` _function_: Sensible defaults for a fresh post.
-- `emptyDraft` _function_
+- `emptyDraft` _function_: Returns a blank locale draft: empty frontmatter, body and slug, slug not yet edited by hand.
 - `slugify` _function_: Slugify a title into a URL-safe post slug.
 - `isDraftFilled` _function_: True when a locale's draft has enough content to be saved (and validated).
 - Types: `EditorFrontmatter`, `LocaleDraft`, `SavePayload`
 
 ### [`blog-editor/_lib/widgets.ts`](../../app/admin/blog-editor/_lib/widgets.ts)
 
-- `getWidget` _function_
+- `getWidget` _function_: Returns the widget definition for a fence name such as `park-widget`, or `undefined`.
 - `widgetLabel` _function_: "park-widget" → "Park widget" — used in the PropertiesPanel header.
 - `widgetTagLabel` _function_: "park-widget" → "Park" — short form for the in-canvas chip tag.
 - `WIDGETS` _const_
@@ -420,7 +420,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/editor-client.tsx`](../../app/admin/blog-editor/editor-client.tsx)
 
-- `BlogEditorClient` _component_
+- `BlogEditorClient` _component_: Blog editor workspace: one draft per locale with frontmatter form, rich-text or source view, properties panel, translation from the source locale, and saving or deleting a post as a GitHub pull request.
 
 ### [`blog-editor/page.tsx`](../../app/admin/blog-editor/page.tsx)
 
@@ -431,16 +431,16 @@ Route `/admin/blog-editor` (page).
 
 ### [`capture/_components/park-row.tsx`](../../app/admin/capture/_components/park-row.tsx)
 
-- `ParkRow` _component_
+- `ParkRow` _component_: Capture-screen row for park photos that belong to no ride: camera and library inputs, upload states, and toggles for the `season` tags sent along with every file.
 
 ### [`capture/_components/photo-inputs.tsx`](../../app/admin/capture/_components/photo-inputs.tsx)
 
 - `PhotoInputs` _component_: The two ways to hand this screen a picture, and what happened to it afterwards.
-- `StateLine` _component_
+- `StateLine` _component_: Status line for one capture upload: reading, uploading, waiting for network, in the pull request, or the reason it failed.
 
 ### [`capture/_components/ride-row.tsx`](../../app/admin/capture/_components/ride-row.tsx)
 
-- `RideRow` _component_
+- `RideRow` _component_: Capture-screen row for one ride: name, why it is ranked there, land and distance, upload states and the camera and library inputs. `featured` makes it the larger, highlighted row.
 
 ### [`capture/_components/upload-bar.tsx`](../../app/admin/capture/_components/upload-bar.tsx)
 
@@ -456,12 +456,12 @@ Route `/admin/blog-editor` (page).
 
 Which park this tab was photographing, kept across a reload.
 
-- `subscribeParkMemory` _function_
+- `subscribeParkMemory` _function_: Subscribes to changes of the remembered capture park in this tab; returns the unsubscribe.
 - `parkMemorySnapshot` _function_: The raw entry. A string is compared by value, so it is a stable snapshot.
 - `parkMemoryServerSnapshot` _function_: Nothing is remembered on the server, and pretending otherwise would hydrate wrong.
-- `parseRememberedPark` _function_
-- `rememberPark` _function_
-- `forgetPark` _function_
+- `parseRememberedPark` _function_: Parses the stored entry into its park path and `manual` flag; `null` unless the path has 4 parts.
+- `rememberPark` _function_: Stores the capture park for this tab in sessionStorage and notifies subscribers.
+- `forgetPark` _function_: Clears the remembered capture park for this tab and notifies subscribers.
 - Types: `RememberedPark`
 
 ### [`capture/_lib/queue.ts`](../../app/admin/capture/_lib/queue.ts)

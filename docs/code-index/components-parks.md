@@ -357,7 +357,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-card.tsx`](../../components/parks/park-card.tsx)
 
-- `ParkCard` _component_
+- `ParkCard` _component_: Link card for a park: photo, name, city and distance, status and crowd badges, an opening or closing countdown and a favorite star. Below `sm` it renders a four-line row instead (`data-park-card-row`).
 
 ### [`park-comparison-card.tsx`](../../components/parks/park-comparison-card.tsx)
 
@@ -441,7 +441,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-map.tsx`](../../components/parks/park-map.tsx)
 
-- `ParkMap` _component_
+- `ParkMap` _component_: Leaflet map of a park (CARTO tiles) with markers for in-season rides, shows and restaurants, the visitor's position and, when located, a panel of what is nearby. Used by the map tab and the blog's map widget.
 
 ### [`park-nav-tiles.tsx`](../../components/parks/park-nav-tiles.tsx)
 
@@ -515,7 +515,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-status.tsx`](../../components/parks/park-status.tsx)
 
-- `ParkStatus` _component_
+- `ParkStatus` _component_: A park's live status in four sizes: status and crowd badges (`compact`), plus average wait and open rides (`card`), large header badges (`hero`), or the crowd, wait-time and ride cards (`detailed`).
 
 ### [`park-tabs-list.tsx`](../../components/parks/park-tabs-list.tsx)
 
@@ -536,7 +536,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-yearly-outlook-section.tsx`](../../components/parks/park-yearly-outlook-section.tsx)
 
 - `YearlyOutlookFrame` _component_: The chapter's box: the heading band and the twelve rows under it.
-- `ParkYearlyOutlookSection` _component_
+- `ParkYearlyOutlookSection` _component_: Park page chapter forecasting the next twelve months: a crowd badge, a day strip and the count of recommended days per month, fetched on the server with a 3 s timeout.
 
 ### [`park-yearly-outlook-skeleton.tsx`](../../components/parks/park-yearly-outlook-skeleton.tsx)
 
@@ -628,7 +628,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`rope-drop-card.tsx`](../../components/parks/rope-drop-card.tsx)
 
-- `RopeDropCard` _component_
+- `RopeDropCard` _component_: Ride page card on when to ride: the minutes saved at park opening (`worth`), a later evening trough (`evening`), or the ride's own readings and quietest weekday (`bestTime`). Always returns an element; `ropeDropCardVariant` picks the state.
 
 ### [`rope-drop-headliners.tsx`](../../components/parks/rope-drop-headliners.tsx)
 

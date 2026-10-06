@@ -231,6 +231,11 @@ export async function YearlyOutlookFrame({
   );
 }
 
+/**
+ * Park page chapter forecasting the next twelve months: a crowd badge, a day strip and the count of
+ * recommended days per month, fetched on the server with a 3 s timeout. On a timeout it renders the
+ * empty frame; with no rated day at all, nothing.
+ */
 export async function ParkYearlyOutlookSection({
   continent,
   country,

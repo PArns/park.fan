@@ -113,6 +113,11 @@ function nothingFocused(active: Element | null): boolean {
   return active === null || active === document.body || active === document.documentElement;
 }
 
+/**
+ * Filters the park page's attractions and shows by search, rider height, the five pills and season,
+ * and returns the filtered lists, counts, headliners and every filter's state and setter. See the
+ * notes above.
+ */
 export function useAttractionFilter({
   attractionsByLand,
   shows,

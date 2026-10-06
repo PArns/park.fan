@@ -41,6 +41,10 @@ export interface GlossaryMenu {
   termCount: number;
 }
 
+/**
+ * Builds the glossary section of the header's "more" panel: each category with its translated
+ * label, `#category` link and term count, sorted by label.
+ */
 export async function getGlossaryMenu(locale: Locale): Promise<GlossaryMenu> {
   const t = await getTranslations({ locale, namespace: 'glossary' });
   const segment = GLOSSARY_SEGMENTS[locale] ?? 'glossary';

@@ -60,6 +60,10 @@ const DAILY_BLOCK_INTERVAL_MS = 30 * 60_000;
  */
 const dailyBlockPolls = new Map<string, { lastFullAt: number; status?: string }>();
 
+/**
+ * Polls a park's live snapshot every 5 minutes with React Query and merges it onto the
+ * server-rendered park, so consumers read a complete `ParkWithAttractions`. See the notes above.
+ */
 export function useLiveParkData({
   continent,
   country,

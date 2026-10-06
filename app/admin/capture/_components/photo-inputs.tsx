@@ -79,6 +79,10 @@ export function PhotoInputs({
   );
 }
 
+/**
+ * Status line for one capture upload: reading, uploading, waiting for network, in the pull request,
+ * or the reason it failed.
+ */
 export function StateLine({ state }: { state: UploadState }) {
   if (state.kind === 'reading')
     return (
