@@ -13,13 +13,13 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { EmptyPanel, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
+import { Section, StatCard } from '../_lib/ui';
 import { FolderRail } from './_components/folder-rail';
 import { MediaDetail } from './_components/media-detail';
 import { MediaUpload } from './_components/media-upload';
 import type { FolderView } from './_lib/folders';
 import type { MediaRow, MediaStats, Vocabulary } from './_lib/types';
-import { AdminPage } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { fitForCommit } from '../_lib/upload-transport';
 import { pickReplacement, replacementExt } from './_lib/replace-drop';
 
@@ -274,8 +274,8 @@ export default function MediaAdminPage() {
     }
   };
 
-  if (error && !data) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading the media database…" />;
+  if (error && !data) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading the media database…" />;
 
   const { stats, vocabulary, images, total } = data;
 
@@ -578,7 +578,7 @@ export default function MediaAdminPage() {
               )}
 
               {images.length === 0 ? (
-                <EmptyPanel label="Nothing matches those filters." />
+                <EmptyState title="Nothing matches those filters." />
               ) : (
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                   {images.map((image) => (

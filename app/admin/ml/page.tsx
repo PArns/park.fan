@@ -21,19 +21,10 @@ import type {
   MlComparisonBoard,
   ShadowComparisonRow,
 } from '@/lib/api/admin';
-import {
-  EmptyPanel,
-  ErrorPanel,
-  KeyVal,
-  LoadingPanel,
-  Section,
-  SeverityBadge,
-  StatCard,
-  StatusBadge,
-} from '../_lib/ui';
+import { KeyVal, Section, SeverityBadge, StatCard, StatusBadge } from '../_lib/ui';
 import { formatAge, maeColor } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AdminPage } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import type {
   MlAlert,
   MlAnomalyStats,
@@ -715,8 +706,8 @@ export default function MlPage() {
   const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
   const comparison = useAdminFetch<MlComparisonBoard>('/api/admin/ml-comparison');
 
-  if (dash.error) return <ErrorPanel message={`ML dashboard: ${dash.error}`} />;
-  if (!dash.data) return <LoadingPanel label="Loading ML metrics…" />;
+  if (dash.error) return <ErrorState message={`ML dashboard: ${dash.error}`} />;
+  if (!dash.data) return <LoadingState label="Loading ML metrics…" />;
 
   const d = dash.data;
   const { model, performance: perf, insights } = d;
@@ -1174,7 +1165,7 @@ export default function MlPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 {activeAlerts.length === 0 ? (
-                  <EmptyPanel label="No active alerts." />
+                  <EmptyState title="No active alerts." />
                 ) : (
                   activeAlerts.map((a) => (
                     <div

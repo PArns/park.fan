@@ -1,12 +1,7 @@
 import { type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 
-/**
- * The section, tile and badge components the admin's dashboards render with. The loading, error
- * and empty panels at the end are aliases of the ones in `_ui/primitives`, the kit the rest of the
- * admin uses.
- */
+/** The section, tile and badge components the admin's dashboards render with. */
 
 /** Renders a small round dot, green when `ok` and red otherwise. */
 export function statusDot(ok: boolean) {
@@ -151,22 +146,4 @@ export function StatusBadge({ status }: { status: string }) {
       {statusDot(ok)} {status}
     </span>
   );
-}
-
-/**
- * Dashboard name for `LoadingState`. The state panels stay aliases rather than a rename across
- * every dashboard call site.
- */
-export function LoadingPanel({ label = 'Lädt…' }: { label?: string }) {
-  return <LoadingState label={label} />;
-}
-
-/** Dashboard name for `ErrorState`, showing the given error message. */
-export function ErrorPanel({ message }: { message: string }) {
-  return <ErrorState message={message} />;
-}
-
-/** Dashboard name for `EmptyState`, with the label as its title. */
-export function EmptyPanel({ label }: { label: string }) {
-  return <EmptyState title={label} />;
 }

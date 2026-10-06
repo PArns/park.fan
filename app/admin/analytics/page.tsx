@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { Activity, Globe, Radio } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { CrowdBadge, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
+import { CrowdBadge, Section, StatCard } from '../_lib/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { AnalyticsGeoLive, AnalyticsRealtime, AnalyticsTicker } from '@/lib/api/admin-stats';
-import { AdminPage } from '../_ui/primitives';
+import { AdminPage, ErrorState, LoadingState } from '../_ui/primitives';
 
 const TREND_ICON: Record<string, string> = { rising: '▲', falling: '▼', stable: '·' };
 const TREND_COLOR: Record<string, string> = {
@@ -20,8 +20,8 @@ export default function AnalyticsPage() {
   const ticker = useAdminFetch<AnalyticsTicker>('/api/analytics/ticker');
   const geo = useAdminFetch<AnalyticsGeoLive>('/api/analytics/geo-live');
 
-  if (realtime.error) return <ErrorPanel message={`Realtime: ${realtime.error}`} />;
-  if (!realtime.data) return <LoadingPanel label="Loading analytics…" />;
+  if (realtime.error) return <ErrorState message={`Realtime: ${realtime.error}`} />;
+  if (!realtime.data) return <LoadingState label="Loading analytics…" />;
 
   const c = realtime.data.counts;
 

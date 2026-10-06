@@ -18,10 +18,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useAdmin, useAdminFetch } from '../_lib/admin-context';
-import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
+import { Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
 import { AdoptIntoMedia } from './_components/adopt-into-media';
-import { AdminPage } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 
 interface ListResponse {
@@ -50,8 +50,8 @@ export default function ContributionsPage() {
   const [filter, setFilter] = useState<'all' | SubmissionStatus>('all');
   const [purging, setPurging] = useState(false);
 
-  if (error) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading contributions…" />;
+  if (error) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading contributions…" />;
 
   const visible =
     filter === 'all' ? data.submissions : data.submissions.filter((s) => s.status === filter);
@@ -122,7 +122,7 @@ export default function ContributionsPage() {
         )}
 
         {visible.length === 0 ? (
-          <EmptyPanel label="No contributions in this view." />
+          <EmptyState title="No contributions in this view." />
         ) : (
           <div className="space-y-4">
             {visible.map((s) => (

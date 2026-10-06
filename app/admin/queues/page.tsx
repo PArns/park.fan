@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight, ListChecks, Loader2 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { adminFetch } from '../_lib/api';
-import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
+import { Section } from '../_lib/ui';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
-import { AdminPage } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 
 /**
  * A failed job with the message and stack Bull keeps in Redis, because a failure count alone says
@@ -145,14 +145,14 @@ function QueueRow({ q }: { q: QueueEntry }) {
 export default function QueuesPage() {
   const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status');
 
-  if (error) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading queues…" />;
+  if (error) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading queues…" />;
 
   return (
     <AdminPage width="wide">
       <Section icon={ListChecks} title="Queues">
         {data.queues.length === 0 ? (
-          <EmptyPanel label="No queues reported." />
+          <EmptyState title="No queues reported." />
         ) : (
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {data.queues.map((q) => (

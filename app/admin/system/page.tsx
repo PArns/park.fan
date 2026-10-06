@@ -15,12 +15,12 @@ import {
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { ErrorPanel, KeyVal, LoadingPanel, Section, statusDot } from '../_lib/ui';
+import { KeyVal, Section, statusDot } from '../_lib/ui';
 import { formatUptime } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
-import { AdminPage } from '../_ui/primitives';
+import { AdminPage, ErrorState, LoadingState } from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -46,8 +46,8 @@ function isDisk(d: HostDisk | { error: string }): d is HostDisk {
 export default function SystemPage() {
   const { data, error } = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
 
-  if (error) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading system metrics…" />;
+  if (error) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading system metrics…" />;
 
   const disk = data.host.disk;
   const diskValid = isDisk(disk);
