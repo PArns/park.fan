@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
-import { locales, localeNames, type Locale } from '@/i18n/config';
+import { localeNames, type Locale } from '@/i18n/config';
 import { LANGUAGE_BANNER_MESSAGES } from '@/lib/i18n/language-banner-messages';
 import { rememberLocale } from '@/lib/i18n/remember-locale';
+import { useBrowserLocale } from '@/lib/hooks/use-browser-locale';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 
 interface LanguageBannerProps {
@@ -21,13 +22,42 @@ const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>
   it: FlagIT,
 };
 
+const dismissalListeners = new Set<() => void>();
+
+function subscribeToDismissals(listener: () => void): () => void {
+  dismissalListeners.add(listener);
+  window.addEventListener('storage', listener);
+  return () => {
+    dismissalListeners.delete(listener);
+    window.removeEventListener('storage', listener);
+  };
+}
+
+function wasDismissed(key: string): boolean {
+  try {
+    return localStorage.getItem(key) === 'true';
+  } catch {
+    // Storage blocked: a banner that could not be dismissed for good is not shown at all.
+    return true;
+  }
+}
+
+const dismissedOnServer = () => true;
+
 /**
  * Banner offering to switch to the browser's language when it differs from the page's, worded in
  * that language. Dismissal is remembered per language pair in localStorage.
  */
 export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
-  const [browserLocale, setBrowserLocale] = useState<Locale | null>(null);
-  const [isDismissed, setIsDismissed] = useState(true);
+  const browserLocale = useBrowserLocale({ firstChoiceOnly: true });
+  const dismissKey = browserLocale
+    ? `language-banner-dismissed-${browserLocale}-${currentLocale}`
+    : null;
+  const isDismissed = useSyncExternalStore(
+    subscribeToDismissals,
+    () => dismissKey === null || wasDismissed(dismissKey),
+    dismissedOnServer
+  );
   const router = useRouter();
 
   // Banner copy in the detected language (not the page's), from the inlined per-locale map, so the
@@ -44,42 +74,10 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
     };
   }, [browserLocale]);
 
-  useEffect(() => {
-    const detectBrowserLanguage = (): Locale | null => {
-      if (typeof window === 'undefined') return null;
-
-      const browserLang = navigator.language.toLowerCase();
-
-      // Try to match exact locale (e.g., "de-DE" -> "de")
-      const langCode = browserLang.split('-')[0] as Locale;
-
-      if (locales.includes(langCode)) {
-        return langCode;
-      }
-
-      return null;
-    };
-
-    const detected = detectBrowserLanguage();
-    setTimeout(() => {
-      setBrowserLocale(detected);
-    }, 0);
-
-    if (detected && detected !== currentLocale) {
-      const dismissKey = `language-banner-dismissed-${detected}-${currentLocale}`;
-      const wasDismissed = localStorage.getItem(dismissKey) === 'true';
-      setTimeout(() => {
-        setIsDismissed(wasDismissed);
-      }, 0);
-    }
-  }, [currentLocale]);
-
   const handleDismiss = () => {
-    if (browserLocale) {
-      const dismissKey = `language-banner-dismissed-${browserLocale}-${currentLocale}`;
-      localStorage.setItem(dismissKey, 'true');
-      setIsDismissed(true);
-    }
+    if (!dismissKey) return;
+    localStorage.setItem(dismissKey, 'true');
+    dismissalListeners.forEach((listener) => listener());
   };
 
   const handleSwitch = () => {
