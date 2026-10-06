@@ -33,9 +33,8 @@ coverImage:
 seo:
   title: 'Movie Park: tempi di attesa e Halloween 2026, senza Batman'
   description: >-
-    Movie Park con tempi di attesa misurati: il giorno in cui i consigli
-    sbagliano, gli orari d’autunno, Halloween fino all’8/11 e come evitare il
-    rincaro in cassa.
+    Movie Park con attese misurate: il giorno in cui i consigli sbagliano, gli
+    orari d’autunno, Halloween fino all’8/11 e come evitare il rincaro in cassa.
   keywords:
     - Movie Park Germany
     - Movie Park tempi di attesa
