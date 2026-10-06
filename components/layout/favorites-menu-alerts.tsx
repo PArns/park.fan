@@ -8,6 +8,7 @@ import { usePushFollowsList } from '@/lib/push/use-push-follows-list';
 import type { PushWriteError } from '@/lib/push/push-follows';
 import { rideRowKey, showRowKey, usePushFollowRemoval } from '@/lib/push/use-push-follow-removal';
 import { formatShowClock } from '@/lib/push/show-clock';
+import { isReopenAlert } from '@/lib/push/ride-alert-picker';
 import { cn } from '@/lib/utils';
 
 /**
@@ -107,7 +108,10 @@ export function FavoritesMenuAlerts({
       // The threshold is what tells two alerts in one park apart, so it is the half that stays
       // whole and the park name is the half that gives way (PAR-71).
       detail: alert.parkName,
-      value: t('threshold', { minutes: alert.thresholdMinutes }),
+      value:
+        isReopenAlert(alert) || alert.thresholdMinutes === null
+          ? t('reopen')
+          : t('threshold', { minutes: alert.thresholdMinutes }),
       icon: <Bell className="text-muted-foreground size-4" aria-hidden="true" />,
       remove: () => void removal.removeRide(alert.attractionId),
     })),

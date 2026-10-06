@@ -7,6 +7,7 @@ import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { useMemo } from 'react';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
+import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 
 interface LiveParkDataProps {
@@ -97,7 +98,7 @@ export function LiveParkData({
   // The park's ride list for every ride-alert bell in the tabs below: a bell opens the full
   // alert dialog with this ride picked and the park's other rides in the list.
   const tabsWithHash = (
-    <RideAlertParkProvider park={currentPark}>
+    <RideAlertParkProvider park={currentPark} reopenAvailable={hasReadableWaitTimes(initialData)}>
       <TabsWithHash
         defaultValue="attractions"
         todayIso={todayIso}

@@ -23,6 +23,7 @@ import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface ParkStatsSectionProps {
   continent: string;
@@ -301,7 +302,7 @@ function StatsContent({
     <section
       aria-labelledby={hideHeading ? undefined : 'stats-heading'}
       aria-label={hideHeading ? t('title') : undefined}
-      className="mt-8"
+      className={CHAPTER_GAP_COMPACT}
     >
       <ParkStatsHeader
         hidden={hideHeading}

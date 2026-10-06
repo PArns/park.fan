@@ -14,11 +14,12 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { useNearbyAnalytics } from '@/lib/hooks/use-nearby-analytics';
 import { cn } from '@/lib/utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 // Top spacing that separates the card from the hero above. The in-park full-bleed banner
 // is intentionally exempt: it must sit flush under the hero (see app/[locale]/page.tsx), so
 // only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
-const TOP_SPACING = 'mt-8';
+const TOP_SPACING = CHAPTER_GAP_COMPACT;
 
 /**
  * `nested` is the homepage's: there `NearbyChapter` opens the chapter and the card's own heading

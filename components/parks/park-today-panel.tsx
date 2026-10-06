@@ -902,7 +902,11 @@ export function ParkTodayPanel({
                   {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
                 </a>
                 {rideAlertAttractions.length > 0 && (
-                  <RideAlertsEntryButton parkName={park.name} attractions={rideAlertAttractions} />
+                  <RideAlertsEntryButton
+                    parkName={park.name}
+                    attractions={rideAlertAttractions}
+                    reopenAvailable={waitsReadable}
+                  />
                 )}
               </div>
             </div>

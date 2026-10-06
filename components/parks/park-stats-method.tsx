@@ -10,6 +10,7 @@ import { parkArgs } from '@/lib/i18n/park-phrase';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { Locale } from '@/i18n/config';
 import type { ParkHistoricalStats, ParkHourlyProfile } from '@/lib/api/types';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 /**
  * Glossary terms this section links, in the order the prose reaches them.
@@ -108,7 +109,7 @@ export async function ParkStatsMethod({
       : null;
 
   return (
-    <section className="mt-8" aria-labelledby="stats-method-heading">
+    <section className={CHAPTER_GAP_COMPACT} aria-labelledby="stats-method-heading">
       <ChapterHeading icon={Ruler} title={t('title')} id="stats-method-heading" frosted />
       <GlassCard variant="tile">
         <div className="text-muted-foreground max-w-3xl space-y-4 text-sm leading-relaxed">

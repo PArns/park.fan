@@ -2,6 +2,7 @@
 title: '30 anni di Movie Park Germany, e non resta neanche un marchio del 1996'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -9,7 +10,7 @@ excerpt: >-
   Via Batman, via Bugs Bunny, e da allora il parco costruisce attrazioni su sé
   stesso. Per i trent’anni: tempi di attesa misurati, il giorno della settimana
   su cui sbagliano le guide abituali, il calendario da settembre e
-  l’Halloween Horror Festival dal 26 settembre.
+  l’Halloween Horror Festival, in corso fino all’8 novembre.
 tags:
   - movie-park
   - tempi-di-attesa
@@ -33,7 +34,7 @@ seo:
   title: 'Movie Park: tempi di attesa e Halloween 2026, senza Batman'
   description: >-
     Movie Park con tempi di attesa misurati: il giorno in cui i consigli
-    sbagliano, gli orari d’autunno, Halloween dal 26/9 e come evitare il
+    sbagliano, gli orari d’autunno, Halloween fino all’8/11 e come evitare il
     rincaro in cassa.
   keywords:
     - Movie Park Germany

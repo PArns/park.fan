@@ -1910,7 +1910,7 @@
       "viewAll": "I miei avvisi"
     },
     "rideBell": {
-      "setAlert": "Imposta un avviso sul tempo di attesa per {name}",
+      "setAlert": "Imposta un avviso per {name}",
       "alerted": "Avviso attivo per {name} – tocca per modificarlo"
     },
     "rideDialog": {
@@ -1938,7 +1938,12 @@
       "retired": "Dismessa",
       "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",
       "todayOnly": "Vale solo per oggi: per un altro giorno di visita va impostato di nuovo.",
-      "loadError": "Impossibile caricare i tuoi avvisi."
+      "loadError": "Impossibile caricare i tuoi avvisi.",
+      "kindLabel": "Su cosa deve avvisare l’avviso?",
+      "kindWait": "Attesa sotto una soglia",
+      "kindReopen": "Avvisami alla riapertura",
+      "reopenLabel": "alla riapertura",
+      "reopenHint": "Un messaggio non appena l’attrazione riparte dopo una chiusura o un guasto."
     },
     "overview": {
       "title": "I miei avvisi",
@@ -1954,7 +1959,8 @@
       "retired": "Dismessa",
       "loadError": "Impossibile caricare l'elenco. Ricarica la pagina.",
       "showAt": "alle {time}",
-      "showNextAny": "prossimo spettacolo"
+      "showNextAny": "prossimo spettacolo",
+      "reopenLabel": "alla riapertura"
     },
     "menu": {
       "link": "I miei avvisi",
@@ -1965,7 +1971,8 @@
       "remove": "{name}: rimuovi avviso",
       "removeError": "Non è stato possibile rimuovere l’avviso, che resta attivo. Riprova.",
       "removeRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",
-      "loadError": "Impossibile caricare i tuoi avvisi."
+      "loadError": "Impossibile caricare i tuoi avvisi.",
+      "reopen": "alla riapertura"
     },
     "pushErrors": {
       "generic": "Non ha funzionato. Riprova.",
@@ -2808,6 +2815,29 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    }
+  },
+  "compare": {
+    "kicker": "park.fan · Confronto tra parchi",
+    "title": "Due parchi uno accanto all’altro",
+    "subtitle": "Attesa tipica, coda più lunga e giorno della settimana più tranquillo degli ultimi due anni. Scegli da due a quattro parchi; la scelta resta nel link.",
+    "action": "Scegli i parchi",
+    "meta": {
+      "title": "Confrontare i parchi: le attese a confronto",
+      "description": "Scegli da due a quattro parchi divertimento e leggi attesa tipica, coda più lunga e giorno più tranquillo in un’unica tabella."
+    },
+    "tool": {
+      "pickerTitle": "Scegli i parchi",
+      "count": "{count} su {max}",
+      "remove": "Rimuovi {park}",
+      "placeholder": "Cerca un parco …",
+      "searching": "Ricerca …",
+      "noResults": "Nessun parco trovato.",
+      "chosen": "scelto",
+      "full": "Più di {max} parchi non entrano nella tabella. Rimuovine uno per sceglierne un altro.",
+      "empty": "Scegli da due a quattro parchi e compare la tabella.",
+      "second": "Scegli un secondo parco da confrontare.",
+      "noStats": "{count, plural, one {Per {parks} non c’è ancora una misurazione.} other {Per {parks} non ci sono ancora misurazioni.}}"
     }
   }
 }
