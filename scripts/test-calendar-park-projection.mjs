@@ -227,12 +227,18 @@ const testCases = [
     expected: 'taron',
   },
   {
-    name: 'the poll does not smuggle comparison/baseline back in either',
+    name: 'the poll does not smuggle comparison back in either',
     actual: () => {
       const merged = mergeLiveParkSnapshot(cal, leanParkForLivePoll(PARK));
-      return 'comparison' in merged.attractions[0] || 'baseline' in merged.attractions[0];
+      return 'comparison' in merged.attractions[0];
     },
     expected: false,
+  },
+  {
+    // The crowd tooltip turns the badge into minutes with it, so the poll sends it on purpose.
+    name: 'the poll carries baseline',
+    actual: () => mergeLiveParkSnapshot(cal, leanParkForLivePoll(PARK)).attractions[0].baseline,
+    expected: 32,
   },
 
   // ---- the source park is never mutated ----
