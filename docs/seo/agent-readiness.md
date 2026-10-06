@@ -107,7 +107,7 @@ Three placement decisions:
 `/admin` is fenced off four times, on purpose, because each fence covers a different kind of
 visitor:
 
-1. `Disallow: /admin`, `/api/admin/`, `/dev` in robots.txt — for crawlers that obey it.
+1. `Disallow: /admin` and `/api/admin/` in robots.txt — for crawlers that obey it.
 2. `X-Robots-Tag: noindex, nofollow, noarchive` in `next.config.ts` — on the response itself, so
    it holds for the JSON endpoints under `/api/admin` that render no meta tag at all.
 3. The layout's `robots: { index: false, follow: false }` metadata, which was already there.
