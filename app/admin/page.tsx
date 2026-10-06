@@ -376,11 +376,3 @@ function QuickLink({
     </Link>
   );
 }
-
-/**
- * One count, and where to go with it.
- *
- * The box keeps its height while the query is in flight — a tile that grows
- * from nothing when the number lands pushes the two lists under it down, and
- * these three resolve at three different moments.
- */
