@@ -9,6 +9,7 @@ import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { MobileMore } from '@/components/common/mobile-more';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /** Author slug the blog already publishes a page for. */
 const AUTHOR_SLUG = 'patrick';
@@ -59,7 +60,7 @@ export async function FounderSection({ locale }: { locale: Locale }) {
     : `/blog/authors/${AUTHOR_SLUG}`;
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

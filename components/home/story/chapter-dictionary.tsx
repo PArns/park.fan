@@ -7,6 +7,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { hasCoasterElement } from '@/lib/three/coaster/elements';
 import type { Locale } from '@/i18n/config';
 import { CoasterFigurePicker, type PickableFigure } from './coaster-figure-picker';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /** How many figures the picker offers. Six fills the rail beside the player without scrolling. */
 const FIGURE_COUNT = 6;
@@ -58,7 +59,7 @@ export async function ChapterDictionary({ locale }: { locale: Locale }) {
   };
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

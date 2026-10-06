@@ -8,6 +8,7 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { NewsRow } from '@/components/blog/news-row';
 import type { Locale } from '@/i18n/config';
+import { STORY_SECTION_RULED } from './section-chrome';
 
 /**
  * The editorial chapter: the blog, plus the two evergreen hubs a reader who got
@@ -39,7 +40,7 @@ export async function BlogChapter({
   ]);
 
   return (
-    <section className="border-border border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_RULED}>
       {/* On a phone the posts come first and the two hub cards open on request, under the
           news (`order`), so the button does not sit between the heading and the posts. */}
       <div className="container mx-auto @max-[768px]/page:flex @max-[768px]/page:flex-col">

@@ -4,6 +4,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { STORY_SECTION } from './section-chrome';
 
 /**
  * Chapter: the two things that matter once you are through the gate.
@@ -21,7 +22,7 @@ export async function ChapterInPark() {
   ]);
 
   return (
-    <section className="px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

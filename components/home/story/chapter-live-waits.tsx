@@ -10,6 +10,7 @@ import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { Locale } from '@/i18n/config';
 import { getLeadPark } from './lead-park';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
  * Chapter: live wait times.
@@ -36,7 +37,7 @@ export async function ChapterLiveWaits({ locale }: { locale: string }) {
     // `overflow-x-clip`, not `overflow-hidden`: the exhibit runs past the
     // container edge and an unclipped overhang gives the document a horizontal
     // scrollbar, while `hidden` would make this a scroll container.
-    <section className="border-border bg-muted/30 overflow-x-clip border-t px-4 py-16 sm:py-18">
+    <section className={`overflow-x-clip ${STORY_SECTION_TINTED}`}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

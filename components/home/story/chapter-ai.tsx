@@ -5,6 +5,7 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
+import { STORY_SECTION } from './section-chrome';
 
 /**
  * Chapter: the forecast, and what the rest of the market does instead.
@@ -51,7 +52,7 @@ export async function ChapterAI() {
   ];
 
   return (
-    <section className="px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION}>
       {/* On a phone the chapter is its claim and its evidence: the heading, then the live
           error numbers. The comparison and the answer card sit behind "show more", drawn under
           the numbers (`order`), since a button between the heading and the numbers would read

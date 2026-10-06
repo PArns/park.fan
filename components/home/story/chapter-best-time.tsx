@@ -9,6 +9,7 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
 import { getCurveCandidates } from './lead-park';
+import { STORY_SECTION } from './section-chrome';
 
 /**
  * Chapter: when a ride is actually quiet.
@@ -36,7 +37,7 @@ export async function ChapterBestTime({ locale }: { locale: string }) {
   ]);
 
   return (
-    <section className="px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION}>
       <div className="container mx-auto">
         {/* `containsGlass`: `variant="tile"` is TILE_GLASS, i.e. `backdrop-blur-2xl`. */}
         <Reveal containsGlass>

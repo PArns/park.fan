@@ -3,6 +3,7 @@ import { CircleHelp } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { FaqList } from '@/components/marketing/editorial-ui';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
  * The homepage FAQ — visible, and the page's only `FAQPage` markup.
@@ -40,7 +41,7 @@ export async function FaqSection() {
   ];
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

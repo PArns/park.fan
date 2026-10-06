@@ -7,6 +7,7 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { CROWD_DOT_CLASS, CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
+import { STORY_SECTION } from './section-chrome';
 
 /**
  * A month of crowd colours, as a shape rather than a claim.
@@ -88,7 +89,7 @@ export async function ThreeSteps() {
     // and therefore paints ON TOP of it — the results ended up behind the next
     // chapter's heading. Below the header's z-50, which must stay above
     // everything.
-    <section className="relative z-30 px-4 py-16 sm:py-18">
+    <section className={`relative z-30 ${STORY_SECTION}`}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

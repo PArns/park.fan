@@ -16,6 +16,7 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { Locale } from '@/i18n/config';
+import { STORY_SECTION_RULED } from './section-chrome';
 
 /**
  * The six differentiators, and the two pages that back them up.
@@ -59,7 +60,7 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
   };
 
   return (
-    <section className="border-border border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_RULED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading
