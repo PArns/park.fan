@@ -425,6 +425,10 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 - `formatDuration` _function_: Ride duration from seconds: „2:20", the same in every unit system.
 - Types: `TemperatureUnit`
 
+### [`text-fold.ts`](../../lib/utils/text-fold.ts)
+
+- `foldRideName` _function_: A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
+
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)
 
 - `PHONE_HIT_AREA` _const_: A 44 × 44 px target below `sm` for a control whose box has to stay smaller: a centred pseudo-element grows instead of the control, so the layout does not move (the pattern `FavoriteStar` uses). 44 px is the button scale's phone tier.

@@ -31,6 +31,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlannerBlock` _component_: One planned ride, as a block in the day grid.
 - Types: `PlannerBlockShow`
 
+### [`planner-clear-day-confirm.tsx`](../../components/planner/planner-clear-day-confirm.tsx)
+
+- `ClearDayConfirm` _component_: The question a planned day's bin asks before the day is deleted.
+- Types: `ClearDayTarget`
+
 ### [`planner-column-head.tsx`](../../components/planner/planner-column-head.tsx)
 
 - `PlannerColumnHead` _component_: What a column says about itself: which park, which day.
@@ -193,13 +198,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-show-picker.tsx`](../../components/planner/planner-show-picker.tsx)
 
-- `PlannerShowPicker` _component_: Files one performance of one of the day's shows into the plan.
 - `PlannerDayShowPicker` _component_: `PlannerShowPicker` wired to one day of one park: the lines are the ones the grid draws (same clip, same projections), and a pick files the performance under that day.
-- `showLineKey` _function_: The key `planned` is built from, so the caller and the list agree on what "taken" means.
 
 ### [`planner-step-rail.tsx`](../../components/planner/planner-step-rail.tsx)
 
 - `PlannerStepRail` _component_: Where a stepped dialog is, in circles.
+- `STEP_MOTION` _const_: Which way a stepped dialog's step slides in from, keyed by `String(forward)`.
 
 ### [`planner-timeline.tsx`](../../components/planner/planner-timeline.tsx)
 

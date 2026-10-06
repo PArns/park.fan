@@ -54,7 +54,6 @@ A local mirror of a browser's ride alerts and show follows — the same shape as
 
 - `isReopenAlert` _function_: Whether a stored or fetched alert is the reopen kind; an absent `kind` is a wait-time alert.
 - `rideAlertPickerRows` _function_: Every ride the add-form may offer, by name. Rides that already carry an alert stay out, as they always have — that alert is edited in the list above the form, not added twice.
-- `foldRideName` _function_: Diacritics and punctuation folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
 - `filterRideAlertPickerRows` _function_: The rows whose name contains the typed text. An empty query keeps every row.
 - `resolveRideAlertSelection` _function_: Which ride the form is set to: the visitor's own pick while it is still on offer and selectable, otherwise the first selectable row, otherwise none.
 - Types: `RideAlertPickerAttraction`, `RideAlertPickerKind`, `RideAlertPickerRow`

@@ -24,9 +24,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `setDayPrefs` _function_: Record who is coming, for one day.
 - `clearDay` _function_: Drop a whole day. An empty park is dropped with it rather than lingering.
 - `DEFAULT_SHOW_MINUTES` _const_: What a performance is assumed to take. `/plan/day` carries a start time and no length.
-- `MIN_CUSTOM_MINUTES` _const_: Five minutes is a block you can still read; twelve hours is a whole day.
-- `MAX_CUSTOM_MINUTES` _const_
-- `DEFAULT_CUSTOM_MINUTES` _const_
 - Types: `AddShowParams`, `ApplyPlanStop`
 
 ### [`add-ride-fit.ts`](../../lib/planner/add-ride-fit.ts)
@@ -80,6 +77,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `opensAtMinute` _function_: `HH:mm` in the park's own clock, as minutes since midnight. `null` on anything that is not that shape — the field is optional and comes from an API, so a bad value must degrade to "not known" rather than to minute zero.
 - `nowFloor` _function_: The earliest minute a block may be FILED at today, and `openMin` on every other date.
 - `rideFloor` _function_: The two floors under a ride, and the difference between them is the point.
+- `laneBox` _function_: A lane's horizontal box as CSS, so a block, its band and its leg cannot drift apart.
 - `packLanes` _function_: Which column each block sits in, Outlook-style.
 - `nextFreeStart` _function_: Where a newly added ride goes.
 - `showLinePositions` _function_: Show lines with labels closer than `SHOW_LABEL_MIN_GAP_PX` folded together — and no more than `MAX_SHOW_LINES` of them, whatever that takes.
@@ -92,6 +90,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `CLOSE_SLACK_MIN` _const_: How much later than `DayGrid.closeMin` the park might really shut.
 - `RIDE_DURATION_MIN` _const_: How long one ride takes, boarding to the platform, for every ride alike.
 - `SNAP_MIN_FINE` _const_: The quarter hour this app's own arithmetic sits on. 18 px here.
+- `DEFAULT_OCCUPIED_MINUTES` _const_: The default a placement falls back to when nothing measured says otherwise.
 - `SNAP_MIN_COARSE` _const_: The arrow-key step of a block on a coarse pointer, and nothing else since the drag stopped using it (see `DRAG_SNAP_MIN`). 54 px on the phone's axis.
 - `DRAG_SNAP_MIN` _const_: What a drag commits to, under a mouse and under a finger. Five minutes, 6 px here and 9 px on the phone's axis.
 - `MIN_BLOCK_PX` _const_: The smallest BOX a block may occupy — not a claim about its height.
@@ -105,6 +104,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `NO_FIGURE_PX` _const_: A block with no figure gets a stated box rather than a height it cannot back.
 - `NO_FIGURE_MIN` _const_: `NO_FIGURE_PX` in minutes, 33.3 of them: the span lane packing counts for a block with no figure.
 - `GATE_TO_FIRST_RIDE_MIN` _const_: How long after the gates open somebody can actually be queueing.
+- `NO_LANE` _const_: The lane of a block that shares its time with nothing: the full width.
 - `SHOW_PILL_HALF_PX` _const_: Half a show pill's drawn height, rounded up: one `text-[10px]` line at the pill's leading, its 1 px padding and its border, 19 px measured at 1280×900.
 - Types: `DayGrid`, `RideFloor`, `LaneInput`, `LanePlacement`, `ShowLinePosition`, `ShowLineObstacle`, `ShowLineCover`, `ShowLineHostCandidate`
 
@@ -123,8 +123,8 @@ Whether the drag gesture has been explained once.
 - `bandCarriesFigure` _function_: Whether the band may carry a figure at this distance.
 - `occupiedMinutes` _function_: How long an entry occupies the visitor, for placement arithmetic.
 - `plannedMinutes` _function_: The same length with the band left off — what a plan is BUILT on.
+- `spansFor` _function_: Where each entry starts and how long it is drawn, the shape the grid's placement and growth read.
 - `ASSUMED_WAIT_MIN` _const_: What a ride with no curve is taken to cost.
-- `DEFAULT_OCCUPIED_MINUTES` _const_: The default a placement falls back to when nothing measured says otherwise.
 - Types: `PlannerEstimate`, `PlannerTotals`, `PlannerActualDelta`
 
 ### [`fit.ts`](../../lib/planner/fit.ts)
@@ -188,6 +188,8 @@ Whether the drag gesture has been explained once.
 - `getZero` _function_: Snapshot that is always 0, paired with `subscribeToNothing` for a reader with no clock to watch, and as the server snapshot.
 
 ### [`month-grid.ts`](../../lib/planner/month-grid.ts)
+
+The month grid the planner picks a day on.
 
 - `monthOf` _function_: The month one date belongs to.
 - `firstOfMonth` _function_: The first of a month, as a date. What a month's own header points at.
@@ -307,7 +309,6 @@ Which kinds of notification this browser wants.
 
 - `resolvePushTopics` _function_: The topics to subscribe with: the deploy's list, narrowed by the visitor's.
 - `plannerPushTopics` _const_
-- `KNOWN_PUSH_TOPICS` _const_: Topic ids this app has copy for. Anything else is rendered by its id.
 
 ### [`ride-drag.ts`](../../lib/planner/ride-drag.ts)
 
@@ -319,7 +320,6 @@ Which kinds of notification this browser wants.
 - `parseRideDrag` _function_: The payload, or `null` where it is not one.
 - `buildRideDragPayload` _function_: The payload for one dragged ride card, or `null` when the element is not one.
 - `startRideDrag` _function_: Start a ride drag from a control that is NOT a link.
-- `warmRideDragThumb` _function_: Ask for a ride's thumbnail now, so a drag that starts later has one.
 - `setRideDragImage` _function_: What a dragged ride looks like while it is in the air.
 - `coverOffset` _function_: `object-position` as a pair of fractions of the leftover space.
 - `PLANNER_RIDE_MIME` _const_: A private type, so nothing else on the web can pretend to be a ride and the browser's own "here is a URL" cannot be mistaken for one.
@@ -388,10 +388,14 @@ The link that hands a stored plan to somebody else, and how it is read back.
 
 - `isPlannedDay` _function_: A day the lists, the countdown, the share link and the sync show: it holds entries or was reserved.
 - `hasAnyPlan` _function_: True when there is anything at all worth opening the flyout for.
+- `plannedParks` _function_: The parks that hold a planned day, by name in the reader's language, each with those days in date order.
 - `entriesFor` _function_: Entries for one park and date, in plan order. Never `undefined`.
-- `countForPark` _function_: How many entries a park has across every planned day.
 - `countAll` _function_: Total across all parks — what the trigger badge shows.
 - `PLANNER_BLOCK_ICONS` _const_: The icons a free block may carry. A closed set, so a plan never stores a class name.
+- `MAX_CUSTOM_LABEL_LENGTH` _const_: The longest label a free block keeps, wherever it is typed, stored or read back.
+- `MIN_CUSTOM_MINUTES` _const_: Five minutes is a block you can still read; twelve hours is a whole day.
+- `MAX_CUSTOM_MINUTES` _const_: The longest a free block may be dragged to.
+- `DEFAULT_CUSTOM_MINUTES` _const_: How long a free block is when nobody said.
 - `EMPTY_PLANNER_STATE` _const_
 - `MAX_PLANNED_MINUTE` _const_: The latest minute a PLANNED stop may carry.
 - Types: `PlannerGeo`, `PlannerBlockIcon`, `PlannerCustomBlock`, `PlannerEntry`, `PlannerDayPrefs`, `PlannerDay`, `PlannerPark`, `PlannerState`
@@ -422,7 +426,6 @@ The link that hands a stored plan to somebody else, and how it is read back.
 ### [`use-planner.ts`](../../lib/planner/use-planner.ts)
 
 - `usePlanner` _hook_: The planner's state and everything that changes it.
-- `useIsPlanned` _hook_: Whether one ride is already in a given day's plan — for the "add" control on a ride card, which shows a different state once the ride is in.
 - `usePlannedCount` _hook_: How many times this ride is in that day's plan.
 
 ### [`use-push-subscription.ts`](../../lib/planner/use-push-subscription.ts)
