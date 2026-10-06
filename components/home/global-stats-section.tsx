@@ -13,6 +13,7 @@ import { GlobalStatsLiveCounts } from '@/components/home/global-stats-live-count
 import { ParkCard } from '@/components/parks/park-card';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
@@ -111,7 +112,7 @@ export async function GlobalStatsSection() {
             {stats.counts.totalWaitTime != null && (
               <StatsCard
                 title={t('totalWaitTime')}
-                value={stats.counts.totalWaitTime.toLocaleString()}
+                value={getNumberFormat(locale).format(stats.counts.totalWaitTime)}
                 description={
                   <>
                     {tCommon('minutes')} · ~{Math.round(stats.counts.totalWaitTime / 60)}{' '}
