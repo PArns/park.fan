@@ -316,7 +316,7 @@ only open in the evening, and not every one is for every age, Jason Universe for
 example is 16 and over. Four stay during the day: the Movie Park Studio Tour,
 Area 51 – Top Secret, Time Riders and **Van Helsing’s Factory**.
 
-Van Helsingâs Factory opened on 18 June 2011. It’s a Gerstlauer bobsled coaster
+Van Helsing’s Factory opened on 18 June 2011. It’s a Gerstlauer bobsled coaster
 in the former Gremlins hall, 36 km/h fast and about 400 metres long. Capacity is
 848 people per hour, which is tight for a park with well over a million guests a
 year. Of the four indoor rides it’s the only roller coaster.

@@ -203,14 +203,14 @@ Maze «Niflheim» e Queen's Diamonds – Laser Maze) e una piscina di palline. D
 altre 20 sei stanno in questa tabella, le altre sono per esempio i tour di Snorri
 o Atlantis Adventure.
 
-| Attrazione                                                         | Area             | Tipo                         | Costruttore | Apertura | Altezza minima |
-| ------------------------------------------------------------------ | ---------------- | ---------------------------- | ----------- | -------- | -------------- |
-| [Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) | Francia          | Indoor coaster               | Mack Rides  | 1989     | 130 cm         |
-| [Arthur](ref:europa-park/arthur)                                   | Minimoys Kingdom | Dark ride coaster            | Mack Rides  | 2014     | 120 cm         |
-| Pirates in Batavia                                                 | Paesi Bassi      | Giro in barca, dark ride     | Mack Rides  | 1987     | 130 cm         |
-| Madame Freudenreich Curiosités                                     | Francia          | Dark ride                    | Mack Rides  | 2018     | 130 cm         |
-| Voletarium                                                         | Germania         | Flying theater               | Brogent     | 2017     | 130 cm         |
-| Fluch der Kassandra                                                | –                | Madhouse                     | –           | –        | 130 cm         |
+| Attrazione                                                         | Area             | Tipo                     | Costruttore | Apertura | Altezza minima |
+| ------------------------------------------------------------------ | ---------------- | ------------------------ | ----------- | -------- | -------------- |
+| [Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) | Francia          | Indoor coaster           | Mack Rides  | 1989     | 130 cm         |
+| [Arthur](ref:europa-park/arthur)                                   | Minimoys Kingdom | Dark ride coaster        | Mack Rides  | 2014     | 120 cm         |
+| Pirates in Batavia                                                 | Paesi Bassi      | Giro in barca, dark ride | Mack Rides  | 1987     | 130 cm         |
+| Madame Freudenreich Curiosités                                     | Francia          | Dark ride                | Mack Rides  | 2018     | 130 cm         |
+| Voletarium                                                         | Germania         | Flying theater           | Brogent     | 2017     | 130 cm         |
+| Fluch der Kassandra                                                | –                | Madhouse                 | –           | –        | 130 cm         |
 
 Un trattino significa che da noi per quella voce non c’è nessun valore. I dati
 vengono dal nostro database e dalle pagine del parco.
@@ -244,15 +244,15 @@ coda coperta all’aperto non la registriamo.
 Sette delle 14 stanno a Fantasy, quattro a Berlin, due a China Town, una a
 Mystery.
 
-| Attrazione                                             | Area       | Tipo                   | Costruttore      | Apertura | Altezza minima |
-| ------------------------------------------------------ | ---------- | ---------------------- | ---------------- | -------- | -------------- |
-| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster       | Maurer           | 2002     | 140 cm         |
-| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster       | Maurer           | 2002     | 140 cm         |
-| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoor coaster, VR     | Vekoma           | 1988     | 120 cm         |
-| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Dark ride interattivo  | ETF Ride Systems | 2011     | 120 cm         |
-| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop tower             | Intamin          | 1998     | 130 cm         |
-| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse               | Vekoma           | –        | 120 cm         |
-| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride              | –                | 1982     | 130 cm         |
+| Attrazione                                             | Area       | Tipo                  | Costruttore      | Apertura | Altezza minima |
+| ------------------------------------------------------ | ---------- | --------------------- | ---------------- | -------- | -------------- |
+| [Winja's Fear](ref:phantasialand/winjas-fear)          | Fantasy    | Spinning coaster      | Maurer           | 2002     | 140 cm         |
+| [Winja's Force](ref:phantasialand/winjas-force)        | Fantasy    | Spinning coaster      | Maurer           | 2002     | 140 cm         |
+| [Crazy Bats](ref:phantasialand/crazy-bats)             | Fantasy    | Indoor coaster, VR    | Vekoma           | 1988     | 120 cm         |
+| [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) | Berlin     | Dark ride interattivo | ETF Ride Systems | 2011     | 120 cm         |
+| [Mystery Castle](ref:phantasialand/mystery-castle)     | Mystery    | Drop tower            | Intamin          | 1998     | 130 cm         |
+| [Feng Ju Palace](ref:phantasialand/feng-ju-palace)     | China Town | Madhouse              | Vekoma           | –        | 120 cm         |
+| [Geister Rikscha](ref:phantasialand/geister-rikscha)   | China Town | Dark ride             | –                | 1982     | 130 cm         |
 
 Winja's Fear e Force stanno a Wuze Town, in un padiglione con un ascensore
 verticale e un punto in cui un tratto di binario con il carrello si ribalta, in
@@ -288,14 +288,14 @@ voci: undici al chiuso, 17 all’aperto e nove senza valore. Per queste nove il
 valore manca ancora: treni a vapore, monorotaia, aree giochi, Volk van Laaf e
 l’ufficio postale.
 
-| Attrazione                                  | Area         | Tipo                         | Costruttore      | Apertura | Altezza minima |
-| ------------------------------------------- | ------------ | ---------------------------- | ---------------- | -------- | -------------- |
-| [Droomvlucht](ref:efteling/droomvlucht)     | Marerijk     | Giro sospeso, dark ride      | –                | 1993     | –              |
-| [Symbolica](ref:efteling/symbolica)         | Fantasierijk | Trackless ride               | ETF Ride Systems | 2017     | –              |
-| [Villa Volta](ref:efteling/villa-volta)     | Marerijk     | Madhouse                     | Vekoma           | 1996     | –              |
-| [Fata Morgana](ref:efteling/fata-morgana)   | Anderrijk    | Giro in barca, dark ride     | –                | 1986     | –              |
-| [Vogel Rok](ref:efteling/vogel-rok)         | Reizenrijk   | Indoor coaster               | Vekoma           | 1998     | 120 cm         |
-| [Danse Macabre](ref:efteling/danse-macabre) | Anderrijk    | Madhouse                     | –                | 2024     | 120 cm         |
+| Attrazione                                  | Area         | Tipo                     | Costruttore      | Apertura | Altezza minima |
+| ------------------------------------------- | ------------ | ------------------------ | ---------------- | -------- | -------------- |
+| [Droomvlucht](ref:efteling/droomvlucht)     | Marerijk     | Giro sospeso, dark ride  | –                | 1993     | –              |
+| [Symbolica](ref:efteling/symbolica)         | Fantasierijk | Trackless ride           | ETF Ride Systems | 2017     | –              |
+| [Villa Volta](ref:efteling/villa-volta)     | Marerijk     | Madhouse                 | Vekoma           | 1996     | –              |
+| [Fata Morgana](ref:efteling/fata-morgana)   | Anderrijk    | Giro in barca, dark ride | –                | 1986     | –              |
+| [Vogel Rok](ref:efteling/vogel-rok)         | Reizenrijk   | Indoor coaster           | Vekoma           | 1998     | 120 cm         |
+| [Danse Macabre](ref:efteling/danse-macabre) | Anderrijk    | Madhouse                 | –                | 2024     | 120 cm         |
 
 Ci sono poi il Carnaval Festival, Fabula, il Diorama, lo Stoomcarrousel e
 l’Efteling Museum. Per quattro delle sei attrazioni della tabella da noi non c’è
