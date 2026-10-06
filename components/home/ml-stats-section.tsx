@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Brain, Database, RefreshCw, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -9,10 +9,7 @@ import { MLTrainingCountdown } from './ml-training-countdown';
 import { cn } from '@/lib/utils';
 import { LiveDot } from '@/components/common/live-dot';
 import { accuracyStyle } from '@/lib/utils/accuracy-styles';
-
-function formatCompact(n: number): string {
-  return new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
-}
+import { formatCompact } from '@/lib/utils/number-utils';
 
 function getR2Color(r2: number | null | undefined) {
   if (r2 == null || !isFinite(r2)) return 'text-foreground';
@@ -45,7 +42,11 @@ export async function MLStatsSection({
   linkToFancast = false,
   variant = 'section',
 }: MLStatsSectionProps = {}) {
-  const [t, tCommon] = await Promise.all([getTranslations('home'), getTranslations('common')]);
+  const [t, tCommon, locale] = await Promise.all([
+    getTranslations('home'),
+    getTranslations('common'),
+    getLocale(),
+  ]);
 
   const [dashboard, metricsHistory] = await Promise.all([
     getMLDashboard().catch(() => null),
@@ -160,7 +161,9 @@ export async function MLStatsSection({
               <p className="text-muted-foreground mb-1.5 text-sm font-medium">
                 {t('ai.totalPredictions')}
               </p>
-              <div className="text-3xl font-bold">{formatCompact(live.totalPredictions)}</div>
+              <div className="text-3xl font-bold">
+                {formatCompact(live.totalPredictions, locale)}
+              </div>
               <p className="text-muted-foreground mt-0.5 text-xs">{t('ai.totalPredictionsDesc')}</p>
             </div>
           </Card>
