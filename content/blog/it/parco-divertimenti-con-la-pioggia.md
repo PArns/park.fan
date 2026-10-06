@@ -338,8 +338,8 @@ l’unica montagna russa.
 Nella nostra analisi il Movie Park ha la differenza più grande tra giorni di
 pioggia e giorni asciutti, il 31 % su 21 giorni di pioggia. Con quattro
 attrazioni al chiuso di giorno, l’offerta con la pioggia è piccola. Per un giorno
-di pioggia sceglierei un altro parco. In ottobre questo vale fino alla sera,
-quando aprono le case horror.
+di pioggia sceglierei un altro parco. La sera è diverso, appena aprono
+le case horror a ottobre.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulatore;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 

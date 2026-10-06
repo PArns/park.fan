@@ -330,7 +330,7 @@ vier Bahnen im Gebäude ist sie die einzige Achterbahn.
 Der Movie Park hat in unserer Auswertung den größten Abstand zwischen Regentagen
 und trockenen Tagen, 31 Prozent auf 21 Regentagen. Mit vier Bahnen im Gebäude am
 Tag ist das Angebot bei Regen klein. Ich würde für einen Regentag einen anderen
-Park wählen. Im Oktober gilt das erst ab dem Abend nicht mehr, wenn die
+Park wählen. Am Abend sieht das anders aus, sobald im Oktober die
 Horrorhäuser öffnen.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days

@@ -330,8 +330,8 @@ het de enige achtbaan.
 
 Movie Park heeft in onze meting het grootste verschil tussen regendagen en droge
 dagen, 31 % op 21 regendagen. Met overdag vier banen in een gebouw is het aanbod
-bij regen klein. Voor een regendag zou ik een ander park kiezen. In oktober
-geldt dat pas niet meer vanaf de avond, als de horrorhuizen opengaan.
+bij regen klein. Voor een regendag zou ik een ander park kiezen. 's avonds ziet dat er anders uit, zodra in oktober de
+horrorhuizen opengaan.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 

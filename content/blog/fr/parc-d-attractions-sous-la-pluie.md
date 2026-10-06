@@ -338,8 +338,8 @@ attractions en intérieur, c’est la seule montagne russe.
 Movie Park a dans notre analyse le plus grand écart entre jours de pluie et jours
 secs, 31 pour cent sur 21 jours de pluie. Avec quatre attractions en intérieur de
 jour, l’offre est mince quand il pleut. Pour un jour de pluie, je choisirais un
-autre parc. En octobre, cela ne vaut plus qu’à partir du soir, quand les maisons
-hantées ouvrent.
+autre parc. Le soir, c’est différent dès que les maisons
+hantées ouvrent en octobre.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsleigh coaster;movie-park-germany/time-riders|Time Riders|Simulateur;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 

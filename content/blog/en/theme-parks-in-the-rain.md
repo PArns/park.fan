@@ -323,8 +323,8 @@ year. Of the four indoor rides it’s the only roller coaster.
 
 In our analysis Movie Park has the largest gap between rain days and dry days,
 31% on 21 rain days. With four indoor rides in the daytime, there’s little on
-offer in the rain. I’d pick another park for a rain day. In October that stops
-being true only from the evening on, when the haunted houses open.
+offer in the rain. I’d pick another park for a rain day. In the evening that changes, once the haunted
+houses open in October.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 

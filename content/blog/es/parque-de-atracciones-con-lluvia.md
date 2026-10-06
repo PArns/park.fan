@@ -333,8 +333,8 @@ interior, es la única montaña rusa.
 En nuestro análisis, Movie Park tiene la mayor diferencia entre días de lluvia y
 días secos: un 31 % sobre 21 días de lluvia. Con cuatro atracciones en interior
 durante el día, la oferta con lluvia es pequeña. Para un día de lluvia yo
-elegiría otro parque. En octubre eso deja de valer solo a partir de la noche,
-cuando abren las casas del terror.
+elegiría otro parque. Por la noche es distinto en cuanto abren, en octubre,
+las casas del terror.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulador;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
