@@ -21,7 +21,7 @@ Route `/api/admin/[...path]` (route).
 
 Route `/api/admin/backlinks` (route).
 
-- `GET` _function_: Which blog posts are about this park or this ride.
+- `GET` _function_: Which blog posts are about this park or ride, from the index the public pages use, in German like the admin. The relation is derived from the posts, so it changes by editing the post. See docs/rules/parkride-page-and-blog-link.md.
 - `runtime` _const_
 
 ### [`admin/blog-editor/delete/route.ts`](../../app/api/admin/blog-editor/delete/route.ts)
@@ -34,13 +34,13 @@ Route `/api/admin/blog-editor/delete` (route).
 
 Route `/api/admin/blog-editor/images` (route).
 
-- `GET` _function_: The image picker's backing list, served from the media database.
+- `GET` _function_: The image picker's backing list: every image in the media database, with what it shows, who took it, its size and its caption in this locale. Takes the same filters as `/api/media`.
 
 ### [`admin/blog-editor/posts/[key]/route.ts`](../../app/api/admin/blog-editor/posts/%5Bkey%5D/route.ts)
 
 Route `/api/admin/blog-editor/posts/[key]` (route).
 
-- `GET` _function_: Load every locale file belonging to one post (matched by translationKey or the source-locale slug) and hand the editor back a ready-to-hydrate draft payload.
+- `GET` _function_: Loads every locale file of one post (by translationKey or source-locale slug) as a draft for the editor. Keys must be slug-shaped, so `../` cannot read outside content/blog.
 
 ### [`admin/blog-editor/posts/route.ts`](../../app/api/admin/blog-editor/posts/route.ts)
 
@@ -103,7 +103,7 @@ Route `/api/admin/contributions` (route).
 
 Route `/api/admin/contributions/summary` (route).
 
-- `GET` _function_: GET /api/admin/contributions/summary — the pending submissions, newest first.
+- `GET` _function_: GET /api/admin/contributions/summary: the pending submissions, newest first, for the shell's "new photos came in" notice. Lighter than the moderation list, which also lists every image blob; "seen" lives in the reader's browser.
 - `dynamic` _const_
 - `runtime` _const_
 
@@ -111,7 +111,7 @@ Route `/api/admin/contributions/summary` (route).
 
 Route `/api/admin/glossary-terms` (route).
 
-- `GET` _function_: The glossary, as the ride-profile editor needs it.
+- `GET` _function_: The glossary as the ride-profile editor's grouped picker needs it: names to pick from, where `/api/glossary-term-ids` has bare ids and `/api/glossary-search` only matches.
 - `runtime` _const_
 
 ### [`admin/media/analyze/route.ts`](../../app/api/admin/media/analyze/route.ts)
@@ -119,7 +119,7 @@ Route `/api/admin/glossary-terms` (route).
 Route `/api/admin/media/analyze` (route).
 
 - `POST` _function_
-- `runtime` _const_: Inspect freshly dropped files and propose where each belongs.
+- `runtime` _const_: Inspects freshly dropped files and proposes from their EXIF where each belongs: the park, the distance, the nearest rides.
 - `maxDuration` _const_
 
 ### [`admin/media/backlog/route.ts`](../../app/api/admin/media/backlog/route.ts)
@@ -127,7 +127,7 @@ Route `/api/admin/media/analyze` (route).
 Route `/api/admin/media/backlog` (route).
 
 - `GET` _function_
-- `runtime` _const_: One park's photo backlog: which rides have no picture, hardest-hitting first.
+- `runtime` _const_: One park's photo backlog: which rides have no picture, hardest-hitting first, ranked on the server so a phone in the park does not pull the whole park payload.
 - `dynamic` _const_
 - `maxDuration` _const_: The park payload is cheap; `/stats` retries a cold aggregate for a few seconds.
 
@@ -136,7 +136,7 @@ Route `/api/admin/media/backlog` (route).
 Route `/api/admin/media/commit` (route).
 
 - `POST` _function_
-- `runtime` _const_: The media database's write path: everything lands as a pull request.
+- `runtime` _const_: The media database's write path: every change lands as a pull request, because the database is the repository (Vercel's filesystem is read-only) and attribution data should be reviewable.
 - `maxDuration` _const_
 
 ### [`admin/media/coverage/route.ts`](../../app/api/admin/media/coverage/route.ts)
@@ -145,7 +145,7 @@ Route `/api/admin/media/coverage` (route).
 
 - `POST` _function_
 - `GET` _function_
-- `runtime` _const_: Which rides have no picture.
+- `runtime` _const_: Which rides have no picture, the question an editor asks before an afternoon of photos.
 - `dynamic` _const_
 
 ### [`admin/media/route.ts`](../../app/api/admin/media/route.ts)
@@ -161,14 +161,14 @@ Route `/api/admin/media` (route).
 Route `/api/admin/media/session` (route).
 
 - `GET` _function_
-- `runtime` _const_: Is a media session running, where is it, and what is already in it?
+- `runtime` _const_: Whether a media session is running, where, and what is in it. A session is the branch with the `media/session-` prefix and its pull request; the state lives in git, so a reload, a second tab or another machine see the same one.
 - `dynamic` _const_
 
 ### [`admin/session/route.ts`](../../app/api/admin/session/route.ts)
 
 Route `/api/admin/session` (route).
 
-- `GET` _function_: Who is signed in. 401 when nobody is, 503 when we cannot find out.
+- `GET` _function_: Who is signed in: 401 when nobody is, 503 when we cannot find out, so an API hiccup does not read as a logout and unmount the editor.
 - `POST` _function_
 - `DELETE` _function_: Sign out: revoke upstream, then drop the cookie whatever upstream said.
 - `runtime` _const_
@@ -217,7 +217,7 @@ Route `/api/contribute/start` (route).
 Route `/api/cron/content-changes` (route).
 
 - `GET` _function_
-- `maxDuration` _const_: The daily pass that turns "the catalog looks like this" into "these pages changed today".
+- `maxDuration` _const_: The daily pass that turns "the catalog looks like this" into "these pages changed today", run half an hour before the IndexNow submitter, which reads what it writes.
 
 ### [`cron/indexnow/route.ts`](../../app/api/cron/indexnow/route.ts)
 
@@ -231,20 +231,20 @@ Route `/api/cron/indexnow` (route).
 Route `/api/cron/prewarm` (route).
 
 - `GET` _function_
-- `maxDuration` _const_: Data-Cache prewarm crawler.
+- `maxDuration` _const_: Data Cache prewarm crawler. It warms one locale per park: the entry behind `getParkByGeoPath` is keyed by the backend URL and shared by all six locales, so a second locale is a second render for nothing.
 
 ### [`cron/websub/route.ts`](../../app/api/cron/websub/route.ts)
 
 Route `/api/cron/websub` (route).
 
-- `GET` _function_: Tell the WebSub hub the blog feeds may have changed.
+- `GET` _function_: Tells the WebSub hub the blog feeds may have changed, so subscribers get a push instead of polling. Daily and unconditional: the hub diffs the feed and pushes only on a change, so a ping for an unchanged feed costs one conditional GET.
 - `maxDuration` _const_
 
 ### [`favorites/route.ts`](../../app/api/favorites/route.ts)
 
 Route `/api/favorites` (route).
 
-- `GET` _function_: Response depends on cookies and optionally IP; must not be cached.
+- `GET` _function_: The answer depends on cookies and optionally the IP, so it is never cached.
 
 ### [`glossary-search/route.ts`](../../app/api/glossary-search/route.ts)
 
@@ -257,7 +257,7 @@ Route `/api/glossary-search` (route).
 Route `/api/glossary-term-ids` (route).
 
 - `GET` _function_
-- `revalidate` _const_: The canonical list of glossary term ids.
+- `revalidate` _const_: The canonical list of glossary term ids, which this app owns and the API only stores; the API diffs it against the ids in `attraction_ride_profiles`.
 
 ### [`image/route.ts`](../../app/api/image/route.ts)
 
@@ -286,7 +286,7 @@ Route `/api/media/[...id]` (route).
 Route `/api/media` (route).
 
 - `GET` _function_
-- `dynamic` _const_: MUST stay dynamic: every filter arrives as a query parameter, and `force-static` prerenders the route once with an EMPTY query and then serves that one response for every request — so `?q=…` silently returned the entire catalog.
+- `dynamic` _const_: Dynamic: every filter is a query parameter, and `force-static` would prerender once with an empty query and serve that for every request. The CDN still caches per full URL.
 
 ### [`ml/[...path]/route.ts`](../../app/api/ml/%5B...path%5D/route.ts)
 
@@ -324,19 +324,19 @@ Route `/api/parks/[...path]` (route).
 
 Route `/api/parks/backgrounds` (route).
 
-- `GET` _function_: Every park/ride photo the site ships, as a flat list of paths.
+- `GET` _function_: Every park and ride photo the site ships, as a flat list of paths from the media manifest. Paths are content-versioned, so a client can cache each one indefinitely.
 
 ### [`parks/live/route.ts`](../../app/api/parks/live/route.ts)
 
 Route `/api/parks/live` (route).
 
-- `GET` _function_: Live park status for one or more regions, in ONE call and in the projection the cards read.
+- `GET` _function_: Live park status for one or more regions in one call, in the projection the cards read (`useLiveParksByRegion`). The answer is identical for every visitor, so the CDN window collapses the polls.
 
 ### [`parks/near/route.ts`](../../app/api/parks/near/route.ts)
 
 Route `/api/parks/near` (route).
 
-- `GET` _function_: Live "parks near these coordinates" — backs the park page's nearby-parks client overlay (`useParkNeighbors`). The page renders the nearby cards status-free (cacheable shell); this endpoint supplies the live status/crowd on the client.
+- `GET` _function_: Live "parks near these coordinates" for the park page's nearby cards (`useParkNeighbors`), which render without status.
 
 ### [`parks/popular/route.ts`](../../app/api/parks/popular/route.ts)
 
@@ -356,7 +356,7 @@ Route `/api/push/ride-alerts` (route).
 
 Route `/api/push` (route).
 
-- `GET` _function_: Whether push works, and the key to subscribe with.
+- `GET` _function_: Whether push works and the key to subscribe with, asked before the browser offers the control, so a deploy without a VAPID keypair shows no switch that does nothing.
 
 ### [`push/show-follows/route.ts`](../../app/api/push/show-follows/route.ts)
 
@@ -391,7 +391,7 @@ Route `/api/trips/[id]` (route).
 
 - `GET` _function_
 - `PUT` _function_
-- `DELETE` _function_: Delete one stored plan.
+- `DELETE` _function_: Deletes one stored plan, sent when push is switched off: that forgets the id, which is the credential, so without this the plan would stay readable to whoever kept it.
 
 ### [`trips/route.ts`](../../app/api/trips/route.ts)
 

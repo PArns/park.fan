@@ -22,11 +22,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_app/login-screen.tsx`](../../app/admin/_app/login-screen.tsx)
 
-- `LoginScreen` _component_: The way in.
+- `LoginScreen` _component_: The admin login: e-mail, password and code in one form, behind one Turnstile solve.
 
 ### [`_app/must-change-password.tsx`](../../app/admin/_app/must-change-password.tsx)
 
-- `MustChangePassword` _component_: The only screen an account with a temporary password can reach.
+- `MustChangePassword` _component_: The only screen an account with a temporary password can reach, since such a password has been seen by more than one person. The backend refuses every other endpoint; this screen says so.
 
 ### [`_app/nav.ts`](../../app/admin/_app/nav.ts)
 
@@ -40,7 +40,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_app/providers.tsx`](../../app/admin/_app/providers.tsx)
 
-- `AdminProviders` _component_: Everything the admin needs before it can render anything.
+- `AdminProviders` _component_: Everything the admin needs before it renders, including its own QueryClientProvider: the admin sits outside the `[locale]` tree that has one.
 
 ### [`_app/session.tsx`](../../app/admin/_app/session.tsx)
 
@@ -57,15 +57,15 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_lib/api.ts`](../../app/admin/_lib/api.ts)
 
 - `useAdminQuery` _hook_: React Query hook that GETs an admin path through `adminFetch` under the given key. A `null` path disables the query, but an `enabled` passed in `options` overrides that.
-- `useInvalidateAdmin` _hook_: Drop every cached admin query under a prefix.
+- `useInvalidateAdmin` _hook_: Drops every cached admin query under a prefix: a curation write ripples (a park's name is embedded in each of its rides), and one prefix beats five keys at the call site.
 - `adminFetch` _function_: Same-origin fetch for admin API routes: sends `body` as JSON, returns the parsed payload (or `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
-- `AdminApiError` _class_: How the admin talks to everything.
+- `AdminApiError` _class_: A non-2xx answer from an admin route, with its status, message and payload.
 - `adminKeys` _const_: Namespaced so `invalidate('parks')` can drop a whole family at once.
 
 ### [`_lib/media-upload.ts`](../../app/admin/_lib/media-upload.ts)
 
 - `toSlug` _function_: `DSC_0042 (1).JPG` → `dsc-0042-1` — the id half of a media path.
-- `analyzePhoto` _function_: Ask the server where this photo was taken, from the original bytes.
+- `analyzePhoto` _function_: Asks the server where this photo was taken, from the original bytes (for an oversized file only the first megabyte, where the EXIF sits).
 - `commitPhoto` _function_: Commit one photograph into the open media session.
 - Types: `ParkSuggestion`, `RideSuggestion`, `AnalyzedFile`, `PhotoSidecar`, `CommitPhotoInput`, `CommitPhotoResult`
 
@@ -86,10 +86,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `SeverityBadge` _component_: Pill coloured by severity (low, medium, high, critical); any other value is grey.
 - `CrowdBadge` _component_: Pill coloured by crowd level (`very_low` to `very_high`) for the monitoring dashboards, with underscores shown as spaces. The public site uses `CrowdLevelBadge`.
 - `StatusBadge` _component_: Pill with a status dot: green for statuses like healthy, ok or online, amber for warning, degraded or pending, red for anything else.
-- `LoadingPanel` _component_: The dashboards' names for the shared state panels.
+- `LoadingPanel` _component_: Dashboard name for `LoadingState`. The state panels stay aliases rather than a rename across every dashboard call site.
 - `ErrorPanel` _component_: Dashboard name for `ErrorState`, showing the given error message.
 - `EmptyPanel` _component_: Dashboard name for `EmptyState`, with the label as its title.
-- `formatDisplayName` _function_: A person's name as a name.
+- `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
 - `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
 - `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
 - `formatAge` _function_: Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`.
@@ -99,14 +99,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/upload-transport.ts`](../../app/admin/_lib/upload-transport.ts)
 
-- `toDatabaseFormat` _function_: Re-encode into something the database stores, or hand the file back untouched.
-- `withoutMetadata` _function_: The same photo with nothing in it but pixels.
-- `fitForCommit` _function_: Fit a photo under the cap, or hand it back untouched when it already fits.
-- `analyzePayload` _function_: The bytes `analyze` needs to answer, which is not the whole photo.
+- `toDatabaseFormat` _function_: Re-encodes a file the media database cannot store as JPEG, or hands it back untouched. Like every canvas pass it strips EXIF, which is why `analyze` runs first, on the original bytes.
+- `withoutMetadata` _function_: The same photo with nothing in it but pixels, for pictures somebody else took: their EXIF in `public/media/` would publish a GPS fix and a camera serial. Re-encoding is the only way to drop it that keeps a portrait upright.
+- `fitForCommit` _function_: Fits a photo under the commit cap, or hands it back untouched when it already fits. It strips EXIF, so it runs after `analyze` has read the GPS tag and capture date off the original.
+- `analyzePayload` _function_: The bytes `analyze` needs: for an oversized original, the first megabyte, where the EXIF segment sits. Dimensions may not survive the cut; the route reports what it can.
 
 ### [`_lib/use-hero-photo.ts`](../../app/admin/_lib/use-hero-photo.ts)
 
-- `useHeroPhoto` _hook_: The rotating photograph, picked in the browser.
+- `useHeroPhoto` _hook_: The rotating admin photo, picked after mount because the choice depends on the clock, on which server and browser would disagree. It reads `@/lib/media/hero`, the client-safe slice of the media database.
 - Types: `HeroPhoto`
 
 ### [`_lib/use-local-preference.ts`](../../app/admin/_lib/use-local-preference.ts)
@@ -115,21 +115,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_ui/controls.tsx`](../../app/admin/_ui/controls.tsx)
 
-- `Field` _component_: The form controls the admin edits with.
+- `Field` _component_: A labelled field row: label and optional `aside`, the control, then an error or a hint.
 - `TextInput` _component_: Text `<input>` in the admin field style: 44 px high, 16 px text on phones, `h-9` from `sm`.
 - `TextArea` _component_: `<textarea>` in the admin field style, at least `min-h-20` tall.
-- `NumberInput` _component_: A number input that can tell "empty" from "zero".
-- `TriSwitch` _component_: A three-state switch: true, false, and "nothing said".
+- `NumberInput` _component_: A number input that tells empty from zero: on a curated height, 0 means "no minimum at all" and empty means "no correction, accept upstream".
+- `TriSwitch` _component_: A three-state switch (true, false, "nothing said"), because a curated boolean must be able to say `false` and to withdraw the correction without that becoming `false`.
 - `Switch` _component_: The ordinary two-state switch, for UI preferences rather than data.
-- `Select` _component_: A select on the installed popover, with an explicit empty option.
-- `MonthPicker` _component_: The twelve months, as a grid.
+- `Select` _component_: A select on the installed popover with an explicit empty option, since choosing nothing is how an editor withdraws a correction on a curated enum.
+- `MonthPicker` _component_: The twelve months as a grid, because a season is a shape: April to October reads as a block, and an artefact like `[1,2,3,4,12]`, a recording window that began in December, shows at once.
 - `useFieldId` _hook_: A labelled input id, for the many places a Field wraps one control.
-- `FIELD_CLASS` _const_: The same look for the places that render a bare `<input>` or `<textarea>`.
+- `FIELD_CLASS` _const_: The same look for a bare `<input>` or `<textarea>`, exported so no call site keeps its own copy. Padded rather than fixed-height, because the textareas carry their own `min-h-*`.
 - Types: `SelectOption`
 
 ### [`_ui/curated-draft.ts`](../../app/admin/_ui/curated-draft.ts)
 
-Crash protection for the curated-fields editor.
+Crash protection for the curated-fields editor: a draft in localStorage survives every way out of the form (a tab, a link, a reload, the back button, a crash), which no navigation guard can cover.
 
 - `loadCuratedDraft` _function_: Reads the unsaved curated-field corrections stored for a park or ride from localStorage. Returns `null` when there are none, the version differs or storage fails.
 - `saveCuratedDraft` _function_: Stores the editor's current corrections for a park or ride in localStorage, with a timestamp.
@@ -155,8 +155,8 @@ Crash protection for the curated-fields editor.
 ### [`_ui/metrics.tsx`](../../app/admin/_ui/metrics.tsx)
 
 - `MetricTile` _component_: Dashboard tile linking to the list it counts: a ring showing `value` as a share of `of`, the count beside it in German number format, and an optional note.
-- `CurationTrend` _component_: Thirty days of the admin's own work.
-- `BacklogBars` _component_: Backlog rows, each a link showing its count against the catalogue total and a bar for that share in the row's tone. Rows render in the order given.
+- `CurationTrend` _component_: Thirty days of the admin's own work, without axes: it answers whether anything happened lately, and the last day carries the label.
+- `BacklogBars` _component_: Backlog rows, each a link showing its count and a bar for its share of the whole catalogue, not of the biggest row, so not every list looks equally urgent. Rows render in the order given.
 - Types: `MetricTone`
 
 ### [`_ui/open-in-editor.tsx`](../../app/admin/_ui/open-in-editor.tsx)
@@ -165,8 +165,8 @@ Crash protection for the curated-fields editor.
 
 ### [`_ui/primitives.tsx`](../../app/admin/_ui/primitives.tsx)
 
-- `AdminPage` _component_: One page's rhythm, in one place.
-- `Panel` _component_: A surface, and the reason it looks like one.
+- `AdminPage` _component_: One admin page's column and spacing, in three widths named for what they hold: `wide` for boards and tables, the default for entity editors, `narrow` for a single form column.
+- `Panel` _component_: A card surface. `bg-card` on `bg-background` differs by two percent in lightness, so a drop shadow, an inset ring and a top highlight are what make it read as a card.
 - `PanelHeader` _component_: Header row of a `Panel`: optional icon, a title with a muted hint, an action on the right.
 - `PanelBody` _component_: Padded content area of a `Panel`.
 - `Toolbar` _component_: A horizontal strip of controls above a list: search, filters, view switch.
@@ -176,16 +176,16 @@ Crash protection for the curated-fields editor.
 - `LoadingState` _component_: Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading.
 - `ErrorState` _component_: Red error box showing a message, with an `Erneut` retry button when `onRetry` is given.
 - `EmptyState` _component_: Centred empty-panel message: optional icon, title, description and an action below.
-- `SkeletonRows` _component_: Rows shaped like the rows they replace.
+- `SkeletonRows` _component_: Skeleton rows shaped like the rows they replace, so a loading list does not push the toolbar and the pagination around.
 
 ### [`_ui/retirement.ts`](../../app/admin/_ui/retirement.ts)
 
-- `today` _function_: Der Tag, den `<input type="date">` und die API gleichermaßen wollen.
+- `today` _function_: Today as `YYYY-MM-DD`, the shape `<input type="date">` and the API both want.
 - `retireAttraction` _function_: Retires one ride as of `retiredAt` with the given reason, through the admin retire endpoint. The caller checks the reason first (`RETIRE_REASON_REQUIRED`) and invalidates `RETIREMENT_KEYS`.
-- `setRetiredHidden` _function_: Eine dauerhaft geschlossene Bahn auf der Parkseite aus- oder wieder einblenden.
+- `setRetiredHidden` _function_: Hides a permanently closed ride from the park page's closed-rides list, or shows it again. The ride's own page and sitemap entry stay, so the URL keeps its ranking.
 - `unretireAttraction` _function_: Takes a ride's retirement back, so it counts as an active attraction again.
-- `RETIRE_REASON_REQUIRED` _const_: Grund und Quelle sind Pflicht.
-- `RETIREMENT_KEYS` _const_: Query-Präfixe, die eine Stilllegung ungültig macht.
+- `RETIRE_REASON_REQUIRED` _const_: Reason and source are required: a retirement takes the ride out of every list and the sitemap, and without a written reason nobody can answer for the decision later.
+- `RETIREMENT_KEYS` _const_: Query prefixes a retirement invalidates.
 
 ### [`_ui/toast.tsx`](../../app/admin/_ui/toast.tsx)
 
@@ -197,7 +197,7 @@ Crash protection for the curated-fields editor.
 
 Route `/admin/account` (page).
 
-- `default (AccountPage)` _component_: The account's own settings: password, second factor, live sessions.
+- `default (AccountPage)` _component_: The account's own settings: password, second factor and live sessions, so "where am I signed in" and "end that one" are answered by the person themselves. Ending a session ends it at once.
 
 ### [`actions/page.tsx`](../../app/admin/actions/page.tsx)
 
@@ -219,7 +219,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`attractions/_components/attraction-status.tsx`](../../app/admin/attractions/_components/attraction-status.tsx)
 
-- `AttractionStatus` _component_: Der Status einer Bahn — und der Schalter dafür.
+- `AttractionStatus` _component_: A ride's status and the switch for it, on the ride's own page as well as in the retirement worklist, which shows a ride only while the detector proposes it. The required fields are the worklist's, since it is the same decision.
 
 ### [`attractions/_components/ride-profile-editor.tsx`](../../app/admin/attractions/_components/ride-profile-editor.tsx)
 
@@ -227,16 +227,16 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_components/author-create-modal.tsx`](../../app/admin/blog-editor/_components/author-create-modal.tsx)
 
-- `AuthorCreateModal` _component_: Modal that captures the minimum frontmatter for a content/blog/authors/&lt;key&gt; .md file — either creating a new one (key auto-derives from name) or editing an existing one (key field is locked).
+- `AuthorCreateModal` _component_: Creates or edits a content/blog/authors/&lt;key&gt;.md file (the key derives from the name and is locked when editing), previewing the author block readers see on a post.
 - Types: `NewAuthorDraft`
 
 ### [`blog-editor/_components/bubble-menu.tsx`](../../app/admin/blog-editor/_components/bubble-menu.tsx)
 
-- `EditorBubbleMenu` _component_: Selection-floating toolbar — bold, italic, strike, code, link.
+- `EditorBubbleMenu` _component_: The blog editor's selection toolbar, for text formatting only (bold, italic, strike, code, link); chips, links and widgets are edited in the PropertiesPanel.
 
 ### [`blog-editor/_components/category-create-modal.tsx`](../../app/admin/blog-editor/_components/category-create-modal.tsx)
 
-- `CategoryCreateModal` _component_: Captures a category entry for content/blog/categories.json — create OR edit.
+- `CategoryCreateModal` _component_: Creates or edits a category entry for content/blog/categories.json. In edit mode the path is locked, since a rename would have to migrate every post pointing at the old one.
 - Types: `NewCategoryDraft`
 
 ### [`blog-editor/_components/date-pop.tsx`](../../app/admin/blog-editor/_components/date-pop.tsx)
@@ -245,7 +245,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_components/editor-canvas.tsx`](../../app/admin/blog-editor/_components/editor-canvas.tsx)
 
-- `EditorCanvas` _component_: TipTap canvas with Notion-style affordances: bubble menu on selection (Bold/Italic/Strike/Code/Link), slash command on `/` for inserting blocks (headings/lists/tables/code/divider) and our park.fan custom inserts (Park/Ride/Spotlight via a …
+- `EditorCanvas` _component_: The blog editor's TipTap canvas: bubble menu, `/` slash command and park.fan inserts (park, ride, spotlight, embeds), emitting markdown on every change. Custom blocks stay structural as `[label](ref:…)` links and bare embed-URL lines.
 
 ### [`blog-editor/_components/fixed-toolbar.tsx`](../../app/admin/blog-editor/_components/fixed-toolbar.tsx)
 
@@ -254,15 +254,15 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_components/form-fields.tsx`](../../app/admin/blog-editor/_components/form-fields.tsx)
 
-- `Field` _component_: The blog editor's labelled field, now the admin's labelled field.
+- `Field` _component_: The blog editor's labelled field: the admin's shared one, with `error` as a boolean.
 
 ### [`blog-editor/_components/frontmatter-form.tsx`](../../app/admin/blog-editor/_components/frontmatter-form.tsx)
 
-- `FrontmatterForm` _component_: Notion-style page properties block. Big title + subtitle, then a compact grid of pills/dropdowns for the rest. The active locale is controlled outside this component (see LocaleTabs); only fields scoped to the active locale live here.
+- `FrontmatterForm` _component_: The blog editor's page properties for the active locale: title and summary, then a compact grid of the remaining frontmatter. The locale is chosen outside, in `LocaleTabs`.
 
 ### [`blog-editor/_components/image-picker.tsx`](../../app/admin/blog-editor/_components/image-picker.tsx)
 
-- `ImagePicker` _component_: Thin shell that unmounts the body when `open` is false, so each opening gets a fresh state slice without reaching for a state-reset effect (which React 19 forbids).
+- `ImagePicker` _component_: The blog editor's image picker, unmounted while closed so each opening starts from fresh state without a reset effect.
 - Types: `ImagePickResult`
 
 ### [`blog-editor/_components/locale-tabs.tsx`](../../app/admin/blog-editor/_components/locale-tabs.tsx)
@@ -271,20 +271,20 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_components/markdown-preview.tsx`](../../app/admin/blog-editor/_components/markdown-preview.tsx)
 
-- `MarkdownPreview` _component_: Editable `.md` source view. When `onChange` is wired the textarea is the source of truth for the canvas — TipTap's setContent picks up changes via the parent state.
+- `MarkdownPreview` _component_: The blog editor's `.md` source view, with line numbers that follow the textarea's scroll. Read-only without `onChange`.
 
 ### [`blog-editor/_components/park-ride-picker.tsx`](../../app/admin/blog-editor/_components/park-ride-picker.tsx)
 
-- `ParkRidePicker` _component_: Combobox modal: searches /api/search for parks (and rides when needed), shows up to 12 matches, and resolves the slug into a ref: key. Spotlight mode shows both parks and rides since the author picks either kind for a ?full card.
+- `ParkRidePicker` _component_: Search modal that picks a park or ride for a `ref:` link from `/api/search`; spotlight mode offers both kinds for a `?full` card.
 - Types: `PickerMode`, `RefOption`, `PickerResult`
 
 ### [`blog-editor/_components/post-picker.tsx`](../../app/admin/blog-editor/_components/post-picker.tsx)
 
-- `PostPicker` _component_: Modal listing every existing post (grouped by translationKey, newest first). Same shell-pattern as the image picker — body unmounts when closed so each open is a fresh state slice without breaking React 19's no-reset-in-effect.
+- `PostPicker` _component_: Modal listing every existing post, grouped by translationKey, newest first. Unmounted while closed, so each opening starts from fresh state.
 
 ### [`blog-editor/_components/properties-panel.tsx`](../../app/admin/blog-editor/_components/properties-panel.tsx)
 
-- `PropertiesPanel` _component_: Notion-style right-hand inspector. Replaces the popovers — clicking any chip in the editor selects it here, so editing scales to N chips without the stale-position weirdness the floating popovers ran into.
+- `PropertiesPanel` _component_: The blog editor's right-hand inspector: clicking a chip selects it here, and each section edits the doc through TipTap commands, with the doc as the source of truth on every keystroke.
 - Types: `EditorSelection`
 
 ### [`blog-editor/_components/save-bar.tsx`](../../app/admin/blog-editor/_components/save-bar.tsx)
@@ -299,7 +299,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_components/table-menu.tsx`](../../app/admin/blog-editor/_components/table-menu.tsx)
 
-- `TableMenu` _component_: Bubble toolbar for the blog editor that appears while the caret is in a table: add or remove rows and columns, pick the header colour theme, delete the table. Only operations GFM tables can hold.
+- `TableMenu` _component_: Bubble toolbar for the blog editor that appears while the caret is in a table: add or remove rows and columns, pick the header colour theme, delete the table.
 
 ### [`blog-editor/_extensions/active-chip.ts`](../../app/admin/blog-editor/_extensions/active-chip.ts)
 
@@ -319,7 +319,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_extensions/inline-badge.tsx`](../../app/admin/blog-editor/_extensions/inline-badge.tsx)
 
-- `mountInlineBadge` _function_: Mount the real `ParkStatusBadge` / `CrowdLevelBadge` / wait-time Badge React components into a DOM node owned by the ProseMirror widget decoration.
+- `mountInlineBadge` _function_: Mounts the real `ParkStatusBadge`, `CrowdLevelBadge` or wait-time `Badge` into a widget decoration's DOM node. The caller unmounts the returned root in the decoration's `destroy`.
 - Types: `InlineBadgeData`
 
 ### [`blog-editor/_extensions/ref-preview.ts`](../../app/admin/blog-editor/_extensions/ref-preview.ts)
@@ -342,10 +342,10 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_lib/chip-utils.ts`](../../app/admin/blog-editor/_lib/chip-utils.ts)
 
-- `reanchorPos` _function_: Re-resolve a chip's doc position right before writing to it. Positions are captured at click time; any edit above the chip shifts them, so a write at the captured pos could hit the wrong node (or out-of-bounds).
-- `eventToElement` _function_: Click targets in TipTap are often the deepest DOM node a click landed on — frequently a text node. `closest()` only exists on Elements, so plugins have to walk up one step before they can query.
-- `pickClosestByCoords` _function_: When a chip has multiple plausible spans in the doc (same park referenced twice, two attraction widgets sharing a slug, the same image used twice), pick the one whose anchor coordinate is closest to the chip rect. hypot combines X and Y so …
-- `createResolveCache` _function_: Creates a cache of `resolve-ref` lookups keyed by ref value, each entry loading, ready or failed and never refetched. Only the first `ensure` for a ref gets its `onResolve` called.
+- `reanchorPos` _function_: Re-resolves a chip's doc position right before writing to it, since an edit above the chip shifts the position captured at click time.
+- `eventToElement` _function_: The element a click landed on: TipTap's target is often a text node, which has no `closest()`.
+- `pickClosestByCoords` _function_: Picks, among several plausible spans for a chip (the same park referenced twice), the one whose anchor is closest to the chip's rect in X and Y. Returns `null` only for an empty list.
+- `createResolveCache` _function_: Creates a cache of `resolve-ref` lookups keyed by ref value, so plugins that see the same ref do not fetch it twice. Entries never revert from ready or failed, and only the first `ensure` for a ref gets its `onResolve` called.
 - Types: `ResolveCache`
 
 ### [`blog-editor/_lib/draft-autosave.ts`](../../app/admin/blog-editor/_lib/draft-autosave.ts)
@@ -382,7 +382,7 @@ Route `/admin/attractions/[id]` (page).
 
 - `serializeWithThemes` _function_: Inject magic comments above themed tables in the rendered markdown.
 - `parseThemesFromMarkdown` _function_: Strip the magic comments from incoming markdown and return both the clean source AND the per-table-index theme map so the caller can re-apply themes after tiptap-markdown has built the editor doc.
-- `applyThemesToDoc` _function_: Apply the per-table-index theme map to a freshly-parsed editor doc.
+- `applyThemesToDoc` _function_: Applies the per-table theme map to a freshly parsed doc, outside the undo history since it restores saved state. The caller suppresses its own onUpdate around this call.
 
 ### [`blog-editor/_lib/types.ts`](../../app/admin/blog-editor/_lib/types.ts)
 
@@ -419,7 +419,7 @@ Route `/admin/blog-editor` (page).
 
 ### [`capture/_components/photo-inputs.tsx`](../../app/admin/capture/_components/photo-inputs.tsx)
 
-- `PhotoInputs` _component_: The two ways to hand this screen a picture, and what happened to it afterwards.
+- `PhotoInputs` _component_: The capture screen's two photo inputs, camera and library, shared by the ride and park rows. Two, because on iOS `capture` opens only the camera, and the library is the way to a photo edited since.
 - `StateLine` _component_: Status line for one capture upload: reading, uploading, waiting for network, in the pull request, or the reason it failed.
 
 ### [`capture/_components/ride-row.tsx`](../../app/admin/capture/_components/ride-row.tsx)
@@ -428,17 +428,17 @@ Route `/admin/blog-editor` (page).
 
 ### [`capture/_components/upload-bar.tsx`](../../app/admin/capture/_components/upload-bar.tsx)
 
-- `UploadBar` _component_: What has happened to the photographs so far, pinned to the bottom of the screen.
+- `UploadBar` _component_: What happened to the photos so far, pinned to the bottom of the capture screen, with the link to the pull request that is merged from the phone. The queue count shows a failed upload is still somewhere.
 
 ### [`capture/_lib/naming.ts`](../../app/admin/capture/_lib/naming.ts)
 
-- `freeName` _function_: A free file name for a ride's next photograph.
-- `fieldTags` _function_: The tags a phone may set without guessing.
+- `freeName` _function_: A free file name for a ride's next photo: the ride's slug, then a suffix checked against `taken` (the collection plus everything committed or queued this session), because `commit` silently replaces a file at the same path.
+- `fieldTags` _function_: The tags a phone may set without guessing: `photo`, the subject, and the time of day only in the windows of the park's clock where it cannot be wrong. Dusk, dawn and blue hour are judgements about the light, left to the review pass.
 - `parkDate` _function_: `2026-08-29` in the park's own day, for `shotAt` when EXIF carries nothing.
 
 ### [`capture/_lib/park-memory.ts`](../../app/admin/capture/_lib/park-memory.ts)
 
-Which park this tab was photographing, kept across a reload.
+Which park this tab was photographing, kept across the reload a phone forces on a backgrounded tab. `sessionStorage`, so it never outlives the tab.
 
 - `subscribeParkMemory` _function_: Subscribes to changes of the remembered capture park in this tab; returns the unsubscribe.
 - `parkMemorySnapshot` _function_: The raw entry. A string is compared by value, so it is a stable snapshot.
@@ -450,12 +450,12 @@ Which park this tab was photographing, kept across a reload.
 
 ### [`capture/_lib/queue.ts`](../../app/admin/capture/_lib/queue.ts)
 
-Photographs that have been taken but not yet committed.
+Photos taken but not yet committed: in a park the network fails often, so a failed commit becomes a row here rather than an error. IndexedDB, not `localStorage`, because the value is a `Blob` that base64 would inflate past the quota.
 
 - `queuePhoto` _function_: Stores or replaces a photo waiting for network in the capture queue (IndexedDB), keyed by id.
 - `listQueued` _function_: Oldest first, so a drained queue commits in the order the photos were taken.
 - `dropQueued` _function_: Removes a photo from the capture queue, called once its commit has gone through.
-- `markAttempt` _function_: Record that an attempt failed, so the row shows why instead of just sitting there.
+- `markAttempt` _function_: Records a failed attempt so the row shows why. Separate from `queuePhoto` so noting an error never rewrites the blob.
 - `queueAvailable` _function_: Whether this browser can hold a queue at all — a private window may not.
 - Types: `QueuedPhoto`
 
@@ -469,9 +469,9 @@ Photographs that have been taken but not yet committed.
 
 ### [`capture/_lib/use-park-location.ts`](../../app/admin/capture/_lib/use-park-location.ts)
 
-- `useDevicePosition` _hook_: The device's position, kept current.
-- `useNearbyPark` _hook_: Which park the phone is in, via the public nearby endpoint.
-- `readInParkAnswer` _function_: The park an `in_park` answer names, and its path when the answer carries one.
+- `useDevicePosition` _hook_: The device's position, kept current. Watched with high accuracy because the list is ordered by distances of tens of metres, and every fix is published so the nearest-ride card keeps up with the walk.
+- `useNearbyPark` _hook_: Which park the phone is in, via the public nearby endpoint. Asked again every `RETRY_WITHOUT_PARK_MS` until a park is found, which then stays.
+- `readInParkAnswer` _function_: The park an `in_park` answer names, and its path when the answer carries one. The park object has no `url`, so the geography comes from the first ride that has one (`park.url` is still tried first).
 - `pathFromNearbyParks` _function_: The path of `slug` in a `nearby_parks` answer, whose parks each carry a `url`.
 - Types: `DevicePosition`, `PositionStatus`, `NearbyPark`
 
@@ -501,7 +501,7 @@ Route `/admin/data-quality` (page).
 
 - `SilencedClusterCard` _component_: Data-quality card for a group of a park's rides that went silent together, asking "season ending or dropped feed?": sets the season months for all of them in one write, or explains the feed case.
 - `UnreviewedParkCard` _component_: Data-quality card for one park's rides retired for absence and not yet reviewed: per ride (or all at once) mark it as gone, or as seasonal with its months.
-- `DATA_QUALITY_KEY` _const_: The answers to the two questions `/admin/data-quality` asks about rides (PAR-695): "season ending or dropped feed?" and "season or gone?".
+- `DATA_QUALITY_KEY` _const_: Query key of the data-quality report, invalidated after every season write.
 - Types: `SilencedCluster`, `AbsenceRetiredUnreviewed`
 
 ### [`duplicates/dropped-curations.tsx`](../../app/admin/duplicates/dropped-curations.tsx)
@@ -524,7 +524,7 @@ Route `/admin/duplicates` (page).
 
 Route `/admin` (error).
 
-- `default (AdminError)` _component_: What a crash in the admin looks like.
+- `default (AdminError)` _component_: What a crash in the admin looks like: what happened, the way out, and a retry of the one page rather than the session. `reset()` re-renders the segment, which is enough for a transient payload; the link is for when it is not.
 
 ### [`go/page.tsx`](../../app/admin/go/page.tsx)
 
@@ -542,7 +542,7 @@ Route `/admin/history` (page).
 
 Route `/admin` (layout).
 
-- `default (AdminLayout)` _component_: The admin's own document.
+- `default (AdminLayout)` _component_: The admin's own document, outside `app/[locale]` because it is not localized and needs none of the routed-messages machinery.
 - `metadata` _const_
 
 ### [`media/_components/focus-editor.tsx`](../../app/admin/media/_components/focus-editor.tsx)
@@ -570,21 +570,21 @@ Route `/admin` (layout).
 ### [`media/_components/panel-ui.tsx`](../../app/admin/media/_components/panel-ui.tsx)
 
 - `Section` _component_: A titled group of related controls — the editor's unit of "one question".
-- `Field` _component_: The admin's labelled field. Kept re-exported under this name so the media editor's ~30 call sites did not need touching in the same commit.
-- `Chip` _component_: A toggle that looks like a chip.
-- `Notice` _component_
+- `Field` _component_: The admin's shared labelled field, under the name the media editor uses.
+- `Chip` _component_: A toggle that looks like a chip, unlike the read-only label `Chip` in `_ui/primitives`.
+- `Notice` _component_: An info or warning box in the media editor.
 
 ### [`media/_components/ride-card-toggle.tsx`](../../app/admin/media/_components/ride-card-toggle.tsx)
 
-- `RideCardToggle` _component_
+- `RideCardToggle` _component_: The "this is the ride's photo" switch, with the photo it would take the role from in view.
 
 ### [`media/_components/upload-walkthrough.tsx`](../../app/admin/media/_components/upload-walkthrough.tsx)
 
-- `UploadWalkthrough` _component_
+- `UploadWalkthrough` _component_: One photo of the batch: large enough to judge, its EXIF findings, the ride shortlist as buttons, and the focal point set by clicking the picture.
 
 ### [`media/_lib/folders.ts`](../../app/admin/media/_lib/folders.ts)
 
-- `buildCollectionTree` _function_: Collections as a tree.
+- `buildCollectionTree` _function_: Collections as a tree. `counts` already holds the distinct images at or below each node (`listCollectionNodes()`), so summing children would count an image twice.
 - `visibleNodes` _function_: The rows to draw: every node except those under a collapsed parent.
 - `parseCollectionPath` _function_: What a typed collection path becomes, or null when it is not one.
 - `flattenTree` _function_: Depth-first, parents before their children — the order rows and `<option>`s are drawn in.
@@ -593,9 +593,7 @@ Route `/admin` (layout).
 
 ### [`media/_lib/replace-drop.ts`](../../app/admin/media/_lib/replace-drop.ts)
 
-Take the one image out of a drop or a file picker, or say why there is none.
-
-- `pickReplacement` _function_
+- `pickReplacement` _function_: Takes the one image out of a drop or a file picker, or says why there is none.
 - `replacementExt` _function_: The lower-case extension the database stores for a dropped file.
 - Types: `ReplaceDrop`
 
@@ -620,7 +618,7 @@ Route `/admin/ml` (page).
 
 Route `/admin` (page).
 
-- `default (AdminDashboard)` _component_: The first screen: what is going on, and what is worth doing next.
+- `default (AdminDashboard)` _component_: The first screen: what changed since the last visit and what is worth doing next, as lists a person can act on rather than a wall of metrics.
 
 ### [`parks/[id]/page.tsx`](../../app/admin/parks/%5Bid%5D/page.tsx)
 
@@ -630,23 +628,23 @@ Route `/admin/parks/[id]` (page).
 
 ### [`parks/_components/attraction-features-editor.tsx`](../../app/admin/parks/_components/attraction-features-editor.tsx)
 
-- `AttractionFeaturesEditor` _component_
+- `AttractionFeaturesEditor` _component_: The park editor's table for ride features such as fast pass or single rider, ride by ride.
 
 ### [`parks/_components/location-editor.tsx`](../../app/admin/parks/_components/location-editor.tsx)
 
-- `LocationEditor` _component_: Correcting where a park is.
+- `LocationEditor` _component_: Corrects where a park is, through `POST parks/:id/correct-location`.
 
 ### [`parks/_components/parks-map.tsx`](../../app/admin/parks/_components/parks-map.tsx)
 
-- `default (ParksMap)` _component_
+- `default (ParksMap)` _component_: The park list on a map, curated parks in the brand colour, each popup linking to its editor.
 
 ### [`parks/_components/photo-coverage.tsx`](../../app/admin/parks/_components/photo-coverage.tsx)
 
-- `PhotoCoverage` _component_: The rides in this park that have no picture.
+- `PhotoCoverage` _component_: The rides in this park that have no picture, looked up in the media index in one request; the ride list is already on screen, so it costs no API call.
 
 ### [`parks/_components/season-editor.tsx`](../../app/admin/parks/_components/season-editor.tsx)
 
-- `SeasonList` _component_
+- `SeasonList` _component_: A park's seasons, newest first, with the dialog to add or edit one when `canEdit`.
 
 ### [`parks/page.tsx`](../../app/admin/parks/page.tsx)
 
