@@ -23,6 +23,10 @@ interface FocusEditorProps {
   onChange: (focus: MediaFocus | null) => void;
 }
 
+/**
+ * Media editor section for an image's focal point: click the photo to set it or clear it, then see
+ * it in the real cards (`FocusPreviews`) and as an uncropped inline blog image.
+ */
 export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
   const frameRef = useRef<HTMLDivElement>(null);
 

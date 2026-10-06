@@ -38,6 +38,7 @@ export const PANEL_WIDTH_MAX = 900;
  */
 export const PAGE_MIN_PX = 360;
 
+/** Rounds a planner panel width and clamps it to 340–900 px. */
 export function clampPanelWidth(px: number): number {
   return Math.round(Math.min(Math.max(px, PANEL_WIDTH_MIN), PANEL_WIDTH_MAX));
 }

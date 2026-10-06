@@ -261,6 +261,10 @@ async function post(payload: Record<string, unknown>): Promise<TripSyncResult> {
  */
 let stopAutoSync: (() => void) | null = null;
 
+/**
+ * Starts a debounced (4 s) sync of the plan to the server on every plan change while a trip id is
+ * stored; a second call does nothing.
+ */
 export function startTripAutoSync(onReplaced?: (id: string) => void): void {
   if (stopAutoSync) return;
 
@@ -285,6 +289,7 @@ export function startTripAutoSync(onReplaced?: (id: string) => void): void {
   };
 }
 
+/** Stops the plan auto-sync started by `startTripAutoSync`, dropping any pending write. */
 export function stopTripAutoSync(): void {
   stopAutoSync?.();
 }

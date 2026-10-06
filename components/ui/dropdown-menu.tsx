@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Dropdown menu primitives (shadcn/ui on Radix DropdownMenu): trigger, content, items, checkbox and
+ * radio items, labels, separators, shortcut hints and submenus.
+ */
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';

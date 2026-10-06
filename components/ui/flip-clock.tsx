@@ -66,6 +66,10 @@ const Separator = () => (
   </div>
 );
 
+/**
+ * Countdown to `targetDate` in days, hours, minutes and seconds, each digit pair a glass tile that
+ * flips with framer-motion. Ticks only while on screen; used by the homepage announcement.
+ */
 export function FlipClock({ targetDate, labels }: FlipClockProps) {
   // `null` = not stamped yet → the skeleton shows (also covers SSR/hydration,
   // replacing the old separate `isClient` flag). The clock only ever swaps in

@@ -75,6 +75,10 @@ export function walkMinutesFrom(distanceM: number | null): number {
   return Math.ceil((distanceM * DETOUR_MAX) / WALK_PARK_M_PER_MIN);
 }
 
+/**
+ * Picks up to three open rides whose live wait is at least 10 minutes below their forecast peak in
+ * the next two hours, biggest gap first, for a visitor in the park.
+ */
 export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
   const { rides, day, nowMinute, riderHeightCm } = input;
   if (!day || !hasReadableWaitTimes(day.context)) return [];

@@ -49,6 +49,10 @@ export function dayScale(waits: readonly (number | null)[]): number {
   return Math.max(MIN_FULL_SCALE, max);
 }
 
+/**
+ * Returns how far a planner wait-time bar fills its track and how far its upward uncertainty band
+ * reaches, as fractions of the day's shared scale.
+ */
 export function barGeometry(
   wait: number | null,
   uncertaintyMinutes: number | null,

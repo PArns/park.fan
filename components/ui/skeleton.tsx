@@ -1,3 +1,7 @@
+/**
+ * Skeleton primitive (shadcn/ui): a pulsing placeholder block, rendered as a `div`, or as a `span`
+ * inside phrasing content.
+ */
 import { cn } from '@/lib/utils';
 
 type SkeletonProps = React.HTMLAttributes<HTMLElement> & {

@@ -62,6 +62,10 @@ interface Props {
   objectPosition: string;
 }
 
+/**
+ * Tabbed previews of an image at the editor's live `object-position` inside the real ride card,
+ * park card, blog card and park background, open and closed, with badge-row and footer toggles.
+ */
 export function FocusPreviews({ src, objectPosition }: Props) {
   const [tab, setTab] = useState<Tab>('ride');
   /** Badge row: one line, or wrapped to two — it shifts the photo down. */

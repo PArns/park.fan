@@ -286,7 +286,7 @@ Route `/[locale]/glossary` (page).
 
 ### [`how-park-fan-works/_night-shift.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_night-shift.tsx)
 
-- `NightShift` _component_
+- `NightShift` _component_: Guide page diagram of the nightly jobs: a UTC time track with a marker per job and a card for each, animated once with GSAP when it scrolls into view (not under reduced motion).
 - Types: `NightShiftJob`
 
 ### [`how-park-fan-works/_wait-scale.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_wait-scale.tsx)

@@ -7,11 +7,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`avatar.tsx`](../../components/ui/avatar.tsx)
 
+Avatar primitives (shadcn/ui on Radix Avatar): the round frame, the photo cropped from the top, and the fallback shown until the photo loads.
+
 - `Avatar` _component_
 - `AvatarImage` _component_: The photo inside the circle.
 - `AvatarFallback` _component_
 
 ### [`badge.tsx`](../../components/ui/badge.tsx)
+
+Badge primitive (shadcn/ui, with Radix Slot and class-variance-authority): a small rounded pill in four variants, plus `badgeLinkProps` for a link drawn as a badge.
 
 - `Badge` _component_
 - `badgeLinkProps` _function_: The exact presentation props `<Badge>` applies, for a link that should _look_ like a badge.
@@ -19,11 +23,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`button.tsx`](../../components/ui/button.tsx)
 
+Button primitive (shadcn/ui, with Radix Slot and class-variance-authority): six variants and the size scale every control uses, 32, 36 and 40 px on desktop with `sm` and `default` at 44 px on phones, plus `buttonLinkProps` for a link drawn …
+
 - `Button` _component_
 - `buttonLinkProps` _function_: The exact presentation props `<Button>` applies, for a link that should _look_ like a button.
 - `buttonVariants` _const_
 
 ### [`card.tsx`](../../components/ui/card.tsx)
+
+Card primitives (shadcn/ui, plain `div`s): a translucent, blurred card with header, title, description, action, content and footer slots.
 
 - `Card` _component_
 - `CardHeader` _component_
@@ -34,6 +42,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `CardContent` _component_
 
 ### [`command.tsx`](../../components/ui/command.tsx)
+
+Command palette primitives (shadcn/ui on cmdk): input, list, empty state, groups, items, separators and shortcut hints, and `CommandDialog`, which puts a palette in the site's dialog.
 
 - `Command` _component_
 - `CommandDialog` _component_
@@ -52,6 +62,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`dialog.tsx`](../../components/ui/dialog.tsx)
 
+Dialog primitives (shadcn/ui on Radix Dialog): root, trigger, portal, close, a blurred overlay that keeps clicks from reaching the page behind, and content with an optional close button, header, footer, title and description.
+
 - `Dialog` _component_
 - `DialogClose` _component_
 - `DialogContent` _component_
@@ -64,6 +76,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `DialogTrigger` _component_
 
 ### [`dropdown-menu.tsx`](../../components/ui/dropdown-menu.tsx)
+
+Dropdown menu primitives (shadcn/ui on Radix DropdownMenu): trigger, content, items, checkbox and radio items, labels, separators, shortcut hints and submenus.
 
 - `DropdownMenu` _component_
 - `DropdownMenuPortal` _component_
@@ -83,15 +97,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`flip-clock.tsx`](../../components/ui/flip-clock.tsx)
 
-- `FlipClock` _component_
+- `FlipClock` _component_: Countdown to `targetDate` in days, hours, minutes and seconds, each digit pair a glass tile that flips with framer-motion. Ticks only while on screen; used by the homepage announcement.
 
 ### [`hover-card.tsx`](../../components/ui/hover-card.tsx)
+
+Hover card primitives (shadcn/ui on Radix HoverCard): root, trigger and the floating content panel.
 
 - `HoverCard` _component_
 - `HoverCardTrigger` _component_
 - `HoverCardContent` _component_
 
 ### [`input.tsx`](../../components/ui/input.tsx)
+
+Text input primitive (shadcn/ui): a styled `<input>` with focus and invalid states.
 
 - `Input` _component_
 
@@ -102,6 +120,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`popover.tsx`](../../components/ui/popover.tsx)
 
+Popover primitives (shadcn/ui on Radix Popover): root, trigger, anchor and the floating content panel.
+
 - `Popover` _component_
 - `PopoverTrigger` _component_
 - `PopoverContent` _component_
@@ -109,13 +129,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`progress.tsx`](../../components/ui/progress.tsx)
 
+Progress bar primitive (shadcn/ui on Radix Progress) whose fill goes from green to yellow, orange and red as the value passes 40, 70 and 85.
+
 - `Progress` _component_
 
 ### [`separator.tsx`](../../components/ui/separator.tsx)
 
+Separator primitive (shadcn/ui on Radix Separator): a 1 px horizontal or vertical rule, decorative by default.
+
 - `Separator` _component_
 
 ### [`sheet.tsx`](../../components/ui/sheet.tsx)
+
+Sheet primitives (shadcn/ui on Radix Dialog): a panel that slides in from any side, with overlay, a close button that `hideClose` drops, header, footer, title and description. Draws the header's burger menu and the trip planner.
 
 - `Sheet` _component_
 - `SheetTrigger` _component_
@@ -128,9 +154,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`skeleton.tsx`](../../components/ui/skeleton.tsx)
 
+Skeleton primitive (shadcn/ui): a pulsing placeholder block, rendered as a `div`, or as a `span` inside phrasing content.
+
 - `Skeleton` _component_
 
 ### [`tabs.tsx`](../../components/ui/tabs.tsx)
+
+Tabs primitives (shadcn/ui on Radix Tabs): root, the pill-shaped tab list, triggers and content panels.
 
 - `Tabs` _component_
 - `TabsList` _component_
@@ -138,6 +168,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `TabsContent` _component_
 
 ### [`tooltip.tsx`](../../components/ui/tooltip.tsx)
+
+Tooltip primitives (shadcn/ui on Radix Tooltip): a provider with no open delay, the root (wrapped in its own provider), trigger, and content drawn above sheets and dialogs.
 
 - `Tooltip` _component_
 - `TooltipTrigger` _component_

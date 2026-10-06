@@ -81,6 +81,10 @@ interface Props {
   onClose: () => void;
 }
 
+/**
+ * Batch upload dialog for the media database: analyzes dropped (or seeded) photos for park and
+ * nearby rides, runs the walkthrough for each, then commits the batch to a draft pull request.
+ */
 export function MediaUpload({ vocabulary, newSession, seed, onDone, onClose }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [analysis, setAnalysis] = useState<AnalyzedFile[]>([]);

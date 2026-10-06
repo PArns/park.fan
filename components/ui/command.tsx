@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Command palette primitives (shadcn/ui on cmdk): input, list, empty state, groups, items,
+ * separators and shortcut hints, and `CommandDialog`, which puts a palette in the site's dialog.
+ */
 import * as React from 'react';
 import { Command as CommandPrimitive } from 'cmdk';
 import { SearchIcon } from 'lucide-react';

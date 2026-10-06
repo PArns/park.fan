@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Avatar primitives (shadcn/ui on Radix Avatar): the round frame, the photo cropped from the top,
+ * and the fallback shown until the photo loads.
+ */
 import * as React from 'react';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 

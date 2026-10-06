@@ -55,6 +55,10 @@ interface PushAvailability {
   topics: string[];
 }
 
+/**
+ * State and actions of the planner's push notification switch: support and VAPID check, enable
+ * (store the plan, then subscribe), disable, and topic choice. See the notes above.
+ */
 export function usePushSubscription() {
   const [state, setState] = useState<PushState>('checking');
   const [availability, setAvailability] = useState<PushAvailability | null>(null);

@@ -87,6 +87,10 @@ interface Props {
   onCommitted: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
 }
 
+/**
+ * Editor for one media database image: subject, use, tags, per-locale words, rights, focal point,
+ * folder and a staged replacement file, all written to its sidecar in one commit to a pull request.
+ */
 export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }: Props) {
   const [row, setRow] = useState<MediaRow | null>(null);
   const [geo, setGeo] = useState<GeoVerdict | null>(null);

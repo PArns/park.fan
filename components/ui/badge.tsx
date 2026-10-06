@@ -1,3 +1,7 @@
+/**
+ * Badge primitive (shadcn/ui, with Radix Slot and class-variance-authority): a small rounded pill
+ * in four variants, plus `badgeLinkProps` for a link drawn as a badge.
+ */
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';

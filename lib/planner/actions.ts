@@ -328,6 +328,9 @@ function nextFallbackStart(existing: readonly PlannerEntry[], floorMinute = 0): 
 }
 
 /**
+ * Returns the plan with one ride added to a park-day at the given minute, or an hour after the
+ * day's last block and never before now when none is given.
+ *
  * @param now Park-clock instant, defaulted so only a test ever passes one — the
  *   same shape `parkToday`, `parkMinuteNow` and `dayClock` already use.
  */
@@ -361,6 +364,10 @@ export function addEntry(
   });
 }
 
+/**
+ * Returns the plan without the block with this id on that park-day; the same state when the day
+ * does not exist.
+ */
 export function removeEntry(
   state: PlannerState,
   parkSlug: string,

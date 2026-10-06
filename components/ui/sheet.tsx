@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Sheet primitives (shadcn/ui on Radix Dialog): a panel that slides in from any side, with overlay,
+ * a close button that `hideClose` drops, header, footer, title and description. Draws the header's
+ * burger menu and the trip planner.
+ */
 import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';

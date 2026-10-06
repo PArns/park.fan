@@ -1,3 +1,8 @@
+/**
+ * Button primitive (shadcn/ui, with Radix Slot and class-variance-authority): six variants and the
+ * size scale every control uses, 32, 36 and 40 px on desktop with `sm` and `default` at 44 px on
+ * phones, plus `buttonLinkProps` for a link drawn as a button.
+ */
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';

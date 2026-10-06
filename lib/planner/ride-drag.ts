@@ -123,6 +123,10 @@ export function rememberRideDrag(ride: PlannerRideDrag): void {
   document.addEventListener('dragend', done, true);
 }
 
+/**
+ * Serializes a ride dragged onto the planner as the JSON carried under `PLANNER_RIDE_MIME`, with
+ * the name cut to 120 characters.
+ */
 export function serializeRideDrag(ride: PlannerRideDrag): string {
   return JSON.stringify({
     parkSlug: ride.parkSlug,

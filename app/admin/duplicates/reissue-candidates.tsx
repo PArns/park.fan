@@ -319,6 +319,11 @@ function CandidateRow({
   );
 }
 
+/**
+ * Duplicates section listing retired rides with a younger live ride within 30 m, pair by pair:
+ * merge into the retired row after a dry run (`canMerge`), or mark as not a duplicate (editor and
+ * up).
+ */
 export function ReissueCandidatesSection({ canMerge }: { canMerge: boolean }) {
   const canDismiss = useCan('editor');
   const query = useAdminQuery<ReissueReport>(QUERY_KEY, '/api/admin/reissue-candidates');

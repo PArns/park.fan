@@ -45,6 +45,10 @@ const VIEWS: { id: FolderView; label: string }[] = [
   { id: 'tag', label: 'Tags' },
 ];
 
+/**
+ * Collapsible folder rail beside the media grid, by collection, park or tag facet, each folder a
+ * filter with its image count. Below `lg` it is one `<select>` above the grid.
+ */
 export function FolderRail({
   vocabulary,
   total,

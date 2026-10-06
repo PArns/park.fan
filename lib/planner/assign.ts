@@ -91,6 +91,10 @@ export interface AssignResult {
   unplaced: string[];
 }
 
+/**
+ * Sort rank of a crowd level for the trip assignment: `very_low` is 0, `unknown` ranks behind
+ * `extreme`, and `closed` is infinite.
+ */
 export function crowdRank(level: AssignCrowd): number {
   return level === 'closed' ? Number.POSITIVE_INFINITY : RANK[level];
 }
@@ -121,6 +125,10 @@ function popcount(mask: number): number {
   return n;
 }
 
+/**
+ * Gives each park of a trip the quietest free day in the window under the rules above, adds a
+ * second day beside busy ones, and lists the parks that got none.
+ */
 export function assignParks(input: AssignInput): AssignResult {
   const dates = windowDates(input.from, input.to);
   const parks = input.parks.slice(0, MAX_ASSIGN_PARKS);

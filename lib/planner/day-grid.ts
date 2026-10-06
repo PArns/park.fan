@@ -581,6 +581,7 @@ export function drawnBoxPx(grid: DayGrid, minutes: number | null): number {
   return minutes === null ? noFigurePxFor(grid) : blockBoxFor(grid, minutes);
 }
 
+/** Rounds a minute to the nearest multiple of the step. */
 export function snapTo(minute: number, step: number): number {
   return Math.round(minute / step) * step;
 }

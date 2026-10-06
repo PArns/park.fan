@@ -1,3 +1,7 @@
+/**
+ * Card primitives (shadcn/ui, plain `div`s): a translucent, blurred card with header, title,
+ * description, action, content and footer slots.
+ */
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';

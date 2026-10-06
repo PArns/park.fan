@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Separator primitive (shadcn/ui on Radix Separator): a 1 px horizontal or vertical rule,
+ * decorative by default.
+ */
 import * as React from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 

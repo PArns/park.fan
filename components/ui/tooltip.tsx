@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Tooltip primitives (shadcn/ui on Radix Tooltip): a provider with no open delay, the root (wrapped
+ * in its own provider), trigger, and content drawn above sheets and dialogs.
+ */
 import * as React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 

@@ -42,6 +42,10 @@ export function subscribeToMinute(listener: () => void): () => void {
   };
 }
 
+/**
+ * Snapshot for `useSyncExternalStore`: the planner's minute counter, which goes up by one each
+ * minute while anyone subscribes.
+ */
 export function getMinuteTick(): number {
   return minuteTick;
 }
@@ -61,6 +65,10 @@ export function subscribeToNothing(): () => void {
   return () => {};
 }
 
+/**
+ * Snapshot that is always 0, paired with `subscribeToNothing` for a reader with no clock to watch,
+ * and as the server snapshot.
+ */
 export function getZero(): number {
   return 0;
 }

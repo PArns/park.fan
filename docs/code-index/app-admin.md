@@ -534,7 +534,7 @@ Route `/admin/duplicates` (page).
 
 ### [`duplicates/reissue-candidates.tsx`](../../app/admin/duplicates/reissue-candidates.tsx)
 
-- `ReissueCandidatesSection` _component_
+- `ReissueCandidatesSection` _component_: Duplicates section listing retired rides with a younger live ride within 30 m, pair by pair: merge into the retired row after a dry run (`canMerge`), or mark as not a duplicate (editor and up).
 
 ### [`error.tsx`](../../app/admin/error.tsx)
 
@@ -563,24 +563,24 @@ Route `/admin` (layout).
 
 ### [`media/_components/focus-editor.tsx`](../../app/admin/media/_components/focus-editor.tsx)
 
-- `FocusEditor` _component_
+- `FocusEditor` _component_: Media editor section for an image's focal point: click the photo to set it or clear it, then see it in the real cards (`FocusPreviews`) and as an uncropped inline blog image.
 
 ### [`media/_components/focus-previews.tsx`](../../app/admin/media/_components/focus-previews.tsx)
 
-- `FocusPreviews` _component_
+- `FocusPreviews` _component_: Tabbed previews of an image at the editor's live `object-position` inside the real ride card, park card, blog card and park background, open and closed, with badge-row and footer toggles.
 
 ### [`media/_components/folder-rail.tsx`](../../app/admin/media/_components/folder-rail.tsx)
 
-- `FolderRail` _component_
+- `FolderRail` _component_: Collapsible folder rail beside the media grid, by collection, park or tag facet, each folder a filter with its image count. Below `lg` it is one `<select>` above the grid.
 - Types: `FolderSelection`
 
 ### [`media/_components/media-detail.tsx`](../../app/admin/media/_components/media-detail.tsx)
 
-- `MediaDetail` _component_
+- `MediaDetail` _component_: Editor for one media database image: subject, use, tags, per-locale words, rights, focal point, folder and a staged replacement file, all written to its sidecar in one commit to a pull request.
 
 ### [`media/_components/media-upload.tsx`](../../app/admin/media/_components/media-upload.tsx)
 
-- `MediaUpload` _component_
+- `MediaUpload` _component_: Batch upload dialog for the media database: analyzes dropped (or seeded) photos for park and nearby rides, runs the walkthrough for each, then commits the batch to a draft pull request.
 - Types: `UploadSeed`, `LandedPhoto`
 
 ### [`media/_components/panel-ui.tsx`](../../app/admin/media/_components/panel-ui.tsx)

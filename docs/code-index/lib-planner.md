@@ -10,8 +10,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `addCustomEntry` _function_: A block the visitor writes themselves — a lunch break, a show, a meeting point.
 - `addShowEntry` _function_: One performance of a show, filed as a block that stays bound to it.
 - `setCustomBlock` _function_: Retitle or re-icon a free block. A no-op, by identity, on a ride.
-- `addEntry` _function_
-- `removeEntry` _function_
+- `addEntry` _function_: Returns the plan with one ride added to a park-day at the given minute, or an hour after the day's last block and never before now when none is given.
+- `removeEntry` _function_: Returns the plan without the block with this id on that park-day; the same state when the day does not exist.
 - `moveEntry` _function_: Move one entry to another minute. The list re-sorts; nothing else moves.
 - `applyPlan` _function_: A whole re-plan, in ONE write.
 - `restoreDay` _function_: Put a day back exactly as it was.
@@ -36,10 +36,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`assign.ts`](../../lib/planner/assign.ts)
 
-- `crowdRank` _function_
+- `crowdRank` _function_: Sort rank of a crowd level for the trip assignment: `very_low` is 0, `unknown` ranks behind `extreme`, and `closed` is infinite.
 - `levelOn` _function_: The forecast for one park and date, `unknown` where the snapshot has none.
 - `windowDates` _function_: Every date from `from` to `to`, at most `MAX_ASSIGN_DAYS`. Empty when `to` is before `from`.
-- `assignParks` _function_
+- `assignParks` _function_: Gives each park of a trip the quietest free day in the window under the rules above, adds a second day beside busy ones, and lists the parks that got none.
 - `MAX_ASSIGN_DAYS` _const_: The search is exact over the window and the parks below. Past them a trip is not one question any more, and the caller trims to these rather than waiting on a search that grows with both.
 - `MAX_ASSIGN_PARKS` _const_
 - Types: `AssignCrowd`, `AssignPark`, `AssignFixedDay`, `AssignInput`, `AssignedDay`, `AssignResult`
@@ -47,7 +47,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`bar-geometry.ts`](../../lib/planner/bar-geometry.ts)
 
 - `dayScale` _function_: The scale a day's bars share.
-- `barGeometry` _function_
+- `barGeometry` _function_: Returns how far a planner wait-time bar fills its track and how far its upward uncertainty band reaches, as fractions of the day's shared scale.
 - `MIN_FULL_SCALE` _const_: Shortest full-scale value, in minutes.
 - Types: `BarGeometry`
 
@@ -74,7 +74,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `noFigurePxFor` _function_: The box of a block with no figure, on THIS axis: `NO_FIGURE_MIN` minutes tall.
 - `packedSpanMinutes` _function_: How many minutes a block occupies for LANE PACKING, given its occupancy.
 - `drawnBoxPx` _function_: How tall a block is DRAWN, for the one caller that is not the block.
-- `snapTo` _function_
+- `snapTo` _function_: Rounds a minute to the nearest multiple of the step.
 - `clampStart` _function_: Where a block a VISITOR places may start.
 - `latestStart` _function_: `clampStart`'s ceiling as a number, for the two call sites that hand a `maxMinute` to a block rather than clamping a value.
 - `opensAtMinute` _function_: `HH:mm` in the park's own clock, as minutes since midnight. `null` on anything that is not that shape — the field is optional and comes from an API, so a bad value must degrade to "not known" rather than to minute zero.
@@ -183,9 +183,9 @@ Whether the drag gesture has been explained once.
 ### [`minute-tick.ts`](../../lib/planner/minute-tick.ts)
 
 - `subscribeToMinute` _function_: Driven by the app's shared minute clock (`useMinuteNow`) rather than an interval of its own.
-- `getMinuteTick` _function_
+- `getMinuteTick` _function_: Snapshot for `useSyncExternalStore`: the planner's minute counter, which goes up by one each minute while anyone subscribes.
 - `subscribeToNothing` _function_: The subscription a reader takes when there is nothing to keep up to date.
-- `getZero` _function_
+- `getZero` _function_: Snapshot that is always 0, paired with `subscribeToNothing` for a reader with no clock to watch, and as the server snapshot.
 
 ### [`month-grid.ts`](../../lib/planner/month-grid.ts)
 
@@ -201,7 +201,7 @@ Whether the drag gesture has been explained once.
 ### [`next-best-ride.ts`](../../lib/planner/next-best-ride.ts)
 
 - `walkMinutesFrom` _function_: Walking time from the visitor to a ride: the planner's ceiling, never a floor. A straight line is shorter than any path, so it is stretched by the detour factor and walked at park pace.
-- `suggestNextRides` _function_
+- `suggestNextRides` _function_: Picks up to three open rides whose live wait is at least 10 minutes below their forecast peak in the next two hours, biggest gap first, for a visitor in the park.
 - `NEXT_RIDE_LOOKAHEAD_MIN` _const_: How far ahead "later" reaches.
 - `NEXT_RIDE_MIN_SAVING_MIN` _const_: The smallest gap worth a suggestion. Forecast hours are rounded to 5 and live waits are posted in 5s, so a 5-minute gap is one rounding step and says nothing.
 - `NEXT_RIDE_LIMIT` _const_
@@ -242,7 +242,7 @@ Whether the drag gesture has been explained once.
 
 How wide the desktop panel is, as a store rather than as component state.
 
-- `clampPanelWidth` _function_
+- `clampPanelWidth` _function_: Rounds a planner panel width and clamps it to 340–900 px.
 - `PANEL_WIDTH_DEFAULT` _const_: `max-w-md`, the width the panel had before it could be resized.
 - `PANEL_WIDTH_MIN` _const_: Narrow enough to still hold a block's name and its figure side by side.
 - `PANEL_WIDTH_MAX` _const_: Past this the day grid is mostly empty canvas and the page behind is gone.
@@ -315,7 +315,7 @@ Which kinds of notification this browser wants.
 - `rideFromUrl` _function_: The same, from a whole URL. Relative hrefs resolve against the site.
 - `activeRideDrag` _function_: What is being dragged right now, or `null` — see `activeDrag`.
 - `rememberRideDrag` _function_: Remember a drag for its own length, and forget it at `dragend`.
-- `serializeRideDrag` _function_
+- `serializeRideDrag` _function_: Serializes a ride dragged onto the planner as the JSON carried under `PLANNER_RIDE_MIME`, with the name cut to 120 characters.
 - `parseRideDrag` _function_: The payload, or `null` where it is not one.
 - `buildRideDragPayload` _function_: The payload for one dragged ride card, or `null` when the element is not one.
 - `startRideDrag` _function_: Start a ride drag from a control that is NOT a link.
@@ -379,8 +379,8 @@ The link that hands a stored plan to somebody else, and how it is read back.
 
 - `getTripId` _function_: The stored trip id, or `null`. Safe to call before mount.
 - `syncTrip` _function_
-- `startTripAutoSync` _function_
-- `stopTripAutoSync` _function_
+- `startTripAutoSync` _function_: Starts a debounced (4 s) sync of the plan to the server on every plan change while a trip id is stored; a second call does nothing.
+- `stopTripAutoSync` _function_: Stops the plan auto-sync started by `startTripAutoSync`, dropping any pending write.
 - `forgetTrip` _function_: Delete the server's copy, then forget it.
 - Types: `TripSyncError`, `TripSyncResult`, `TripDeleteResult`
 
@@ -427,7 +427,7 @@ The link that hands a stored plan to somebody else, and how it is read back.
 
 ### [`use-push-subscription.ts`](../../lib/planner/use-push-subscription.ts)
 
-- `usePushSubscription` _hook_
+- `usePushSubscription` _hook_: State and actions of the planner's push notification switch: support and VAPID check, enable (store the plan, then subscribe), disable, and topic choice. See the notes above.
 - Types: `PushState`
 
 ### [`use-ride-drag-source.ts`](../../lib/planner/use-ride-drag-source.ts)

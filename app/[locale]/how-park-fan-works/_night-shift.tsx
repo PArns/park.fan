@@ -51,6 +51,10 @@ function formatUtc(locale: string, hour: number, minute: number): string {
   }).format(new Date(Date.UTC(2026, 0, 1, hour, minute)));
 }
 
+/**
+ * Guide page diagram of the nightly jobs: a UTC time track with a marker per job and a card for
+ * each, animated once with GSAP when it scrolls into view (not under reduced motion).
+ */
 export function NightShift({
   jobs,
   caption,
