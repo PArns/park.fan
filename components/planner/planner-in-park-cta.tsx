@@ -9,30 +9,11 @@ import { todayInZone } from '@/lib/planner/park-time';
 import type { NearbyAttractionsData } from '@/types/nearby';
 
 /**
- * "You are at Phantasialand — plan today here."
- *
- * The planner asked which park every single time, including when the visitor was
- * standing in one. `/api/nearby` already answers `in_park` with the park's slug,
- * name, timezone and URL, and the homepage has been reading it since long before
- * the planner existed — so this is a second reader of an answer the app already
- * has rather than a new question it asks.
- *
- * Three things keep it from being intrusive. It goes through
- * `useHomeNearbyParks`, whose radius and limit are the canonical pair, so on a
- * page that already asks this question React Query dedupes the two into one
- * request rather than adding a second with a different key. It is rendered only
- * inside the open panel, so a page nobody planned on makes no extra request at
- * all. And it does not ask for location: the geolocation context asks only for
- * the page parts that declare they use it (`useLocationNeeded`: the homepage
- * banner, the park page's location line), reads a position elsewhere only where
- * permission is already granted, and otherwise falls back to GeoIP — so opening
- * the planner cannot produce a permission dialog.
- *
- * It renders nothing where the park being planned is already the one underfoot,
- * which is the common case the moment somebody has used it once: an offer to do
- * what has just been done is noise.
- *
- * TODAY and not a date picker. Standing in a park is a statement about now.
+ * "You are at Phantasialand: plan today here." A second reader of `/api/nearby`'s `in_park` answer,
+ * through `useHomeNearbyParks` with its canonical radius and limit, so React Query dedupes it with
+ * the homepage's request. Only inside the open panel, and it never asks for location (see
+ * docs/rules/location-is-asked-for-where-it-is-needed.md). Nothing where the park being planned is
+ * already the one underfoot. Today, not a date picker: standing in a park is a statement about now.
  */
 export function PlannerInParkCta({ activeParkSlug }: { activeParkSlug: string | null }) {
   const t = useTranslations('planner');
@@ -43,9 +24,8 @@ export function PlannerInParkCta({ activeParkSlug }: { activeParkSlug: string | 
   const park = (data.data as NearbyAttractionsData).park;
   if (!park?.slug || park.slug === activeParkSlug) return null;
 
-  // The park object carries no URL in this answer (see `parkGeoFromUrl`), so the
-  // geography is read off a ride's — every one of them names the same four
-  // slugs. `find` rather than `[0]`: a ride with no URL must not end the search.
+  // This answer's park carries no URL (see `parkGeoFromUrl`), so the geography comes off a ride's;
+  // `find`, so a ride without a URL does not end the search.
   const geo =
     parkGeoFromUrl(park.url) ??
     (data.data as NearbyAttractionsData).rides.reduce<ReturnType<typeof parkGeoFromUrl>>(
@@ -61,9 +41,7 @@ export function PlannerInParkCta({ activeParkSlug }: { activeParkSlug: string | 
         onClick={() =>
           openDay(
             { slug: park.slug, name: park.name, geo, timezone: park.timezone },
-            // The park's own today, never the reader's: the two differ for
-            // anybody in a park west of their own clock, and the whole premise
-            // here is that the reader is standing in this one.
+            // The park's own today, never the reader's: the reader is standing in this park.
             todayInZone(park.timezone)
           )
         }

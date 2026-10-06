@@ -20,15 +20,9 @@ import { SNAP_MIN_FINE } from './day-grid';
 import { dayClock, resolveTimeZone } from './park-time';
 
 /**
- * Every change the planner can make to a plan, as pure functions on the state.
- *
- * Pure because they are the part worth testing: reordering, hour assignment and
- * tick-off are where an off-by-one hides, and none of it needs a browser. The
- * store's `update` applies them; nothing here touches storage.
- *
- * They are also all **immutable**. The store hands the same object to every
- * `useSyncExternalStore` consumer, so mutating in place would leave React
- * comparing an object to itself and skipping the render.
+ * Every change the planner can make to a plan, as pure functions on the state, so the off-by-ones
+ * can be tested without a browser. All immutable: the store hands one object to every
+ * `useSyncExternalStore` consumer, and a mutation in place would skip the render.
  */
 
 interface AddCustomParams {
@@ -86,17 +80,14 @@ function withDay(
       ...state.parks,
       [parkSlug]: {
         ...park,
-        // A park added earlier under a slug alone gets its real name and path
-        // the first time a caller supplies them.
+        // A park added under a slug alone gets its real name and path once a caller supplies them.
         name: seed?.parkName ?? park.name,
         geo: seed?.geo ?? park.geo,
         timezone: seed?.timezone ?? park.timezone,
         days: {
           ...park.days,
-          // The day's own preferences are carried through: every action here
-          // rewrites the whole day object, so anything not spread survives
-          // exactly one edit. Dropping who is coming the first time somebody
-          // moves a block would be a silent data loss.
+          // The day's preferences are carried through: every action rewrites the whole day object,
+          // and dropping who is coming on the first move would lose data silently.
           [date]: { ...park.days[date], date, entries },
         },
       },
@@ -105,11 +96,8 @@ function withDay(
 }
 
 /**
- * Entries in time order, keeping insertion order within the same minute.
- *
- * The tie-break is not cosmetic any more: on the day grid two blocks starting at
- * the same minute are laid out side by side, and this is the only stable
- * ordering a plan has to decide which of them takes the left column.
+ * Entries in time order, keeping insertion order within the same minute: the only stable ordering
+ * for which of two blocks starting together takes the left column.
  */
 function byStart(entries: PlannerEntry[]): PlannerEntry[] {
   return entries
@@ -124,12 +112,8 @@ function withHourMirror(entry: PlannerEntry): PlannerEntry {
 }
 
 /**
- * The latest minute a block a HAND put somewhere may carry.
- *
- * 25:00, an hour past the last midnight a park's own day can end on. It is the
- * backstop behind `clampStart`, which is what a drag is actually bounded
- * by, and it comes from that world: a pointer can be anywhere, including a
- * long way below the canvas.
+ * The latest minute a block a hand put somewhere may carry, 25:00: the backstop behind
+ * `clampStart`, since a pointer can be far below the canvas.
  */
 const MAX_DRAGGED_MINUTE = 25 * 60;
 
@@ -140,13 +124,8 @@ function clampMinute(minute: number, ceiling: number = MAX_DRAGGED_MINUTE): numb
 }
 
 /**
- * A block the visitor writes themselves — a lunch break, a show, a meeting point.
- *
- * It goes in exactly where a ride would, because to a day they cost the same
- * thing: an hour of it. What differs is where the height comes from. A ride's
- * block is as tall as the queue the model predicts; this one is as tall as the
- * visitor dragged it, which is why `durationMinutes` lives on the entry and not
- * in a forecast.
+ * A block the visitor writes themselves, a lunch break, a show or a meeting point. It goes in like
+ * a ride; its height is the duration the visitor dragged, so `durationMinutes` lives on the entry.
  */
 export function addCustomEntry(
   state: PlannerState,
@@ -159,11 +138,7 @@ export function addCustomEntry(
 
   const entry: PlannerEntry = withHourMirror({
     id: makeId('block', existing),
-    // The floor is the same one a ride gets, because both call sites that reach
-    // it say so already: the panels' `addFreeBlock` passes `nowFloor` through
-    // `nextFreeStart` under "a break filed into a morning that has gone is the
-    // same fault as a queue filed there" — and hands over `undefined` the moment
-    // there is no grid to compute it from.
+    // The same floor a ride gets: never before now (see `nowFloorMinute`).
     startMinute: clampMinute(
       startMinute ?? nextFallbackStart(existing, nowFloorMinute(date, timezone, now))
     ),
@@ -181,6 +156,7 @@ export function addCustomEntry(
   });
 }
 
+/** What {@link addShowEntry} files. */
 export interface AddShowParams {
   parkSlug: string;
   parkName: string;
@@ -198,12 +174,9 @@ export interface AddShowParams {
 export const DEFAULT_SHOW_MINUTES = 30;
 
 /**
- * One performance of a show, filed as a block that stays bound to it.
- *
- * It is a free block underneath (`custom`, icon `show`), so the day treats it
- * as the fixed hour it is, with `showSlug` on top for the walking-time sum. The
- * same performance is not filed twice: picking it again returns the state by
- * identity. Two different performances of one show are two entries.
+ * One performance of a show, filed as a free block (`custom`, icon `show`) bound to it by
+ * `showSlug`, which the walking-time sum reads. The same performance twice returns the state by
+ * identity; two performances of one show are two entries.
  */
 export function addShowEntry(state: PlannerState, params: AddShowParams): PlannerState {
   const { parkSlug, parkName, geo, timezone, date, showSlug, showName, startMinute } = params;
@@ -253,8 +226,7 @@ export function setCustomBlock(
     next.icon === target.custom.icon &&
     next.durationMinutes === target.custom.durationMinutes
   ) {
-    // Same object by identity, so `useSyncExternalStore` skips the render and a
-    // drag that ends where it started costs no localStorage write.
+    // The same object, so the render and the localStorage write are skipped.
     return state;
   }
 
@@ -272,37 +244,11 @@ function clampDuration(minutes: number): number {
 }
 
 /**
- * The earliest minute a block filed WITHOUT a chosen time may take, and `0` on
- * every date that is not today where the park is.
- *
- * The grid's callers already have this rule — `nowFloor` in `day-grid.ts`, which
- * `planner-day-column` and `planner-flyout` pass into `nextFreeStart` under the
- * comment "never before now". They can, because they hold a `DayGrid`. The two
- * surfaces that reach {@link nextFallbackStart} instead hold nothing but the
- * park's zone: the ride page's "In den Plan" / "Nochmal" button, and the same
- * two panels on a day whose payload has not arrived, where `grid` is `null` and
- * the explicit minute they compute becomes `undefined`. All of them filed at
- * 10:00 whatever the clock said, so pressing "In den Plan" on a ride page at
- * 15:20 wrote a queue five hours into a morning that has gone.
- *
- * Snapped UP for the same reason `nowFloor` is: every start in this app sits on
- * a quarter hour, and rounding 15:23 down to 15:15 files a block eight minutes
- * into a past nobody can act on. It is not capped at the end of the day either —
- * there is no `closeMin` here to cap against, and a minute the day has no room
- * for is the honest answer to a press made after closing.
- *
- * `resolveTimeZone` is the same fallback `todayInZone` already applies one
- * decision earlier, and the pairing is the point: a park whose zone has not
- * reached the plan (`PlannerPark.timezone` is optional, and the panels pass
- * `day?.timezone ?? park.timezone`) has its DATE picked in the reader's zone
- * too, so the floor is read against the clock the date came from. Where it did
- * not — a date chosen in the wizard's picker for a zone-less park — the floor
- * can be a few hours out inside the right day. That is a worse answer than the
- * park's own clock and a better one than this had before, which was 10:00 for
- * everybody, and it is bounded by the day either way. Refusing to raise
- * anything without a zone is the alternative and is the wrong one: it restores
- * the exact defect this exists to close for every park the payload happens not
- * to date. The real repair is upstream, in making the zone reliably present.
+ * The earliest minute a block filed without a chosen time may take, and `0` on every date that is
+ * not today where the park is: the `nowFloor` rule for callers that hold no `DayGrid` (the ride
+ * page's button, or a panel whose payload has not arrived). Snapped up to the quarter hour, and not
+ * capped at the end of the day. The zone falls back through `resolveTimeZone`, like the date did,
+ * so both are read on one clock.
  */
 function nowFloorMinute(date: string, timezone: string | undefined, now: number): number {
   const clock = dayClock(date, resolveTimeZone(timezone), now);
@@ -311,17 +257,9 @@ function nowFloorMinute(date: string, timezone: string | undefined, now: number)
 }
 
 /**
- * An hour after the last entry, so several adds in a row spread across the day —
- * and never before `floorMinute`, which only ever raises the answer.
- *
- * The spread runs into `clampMinute`'s 25:00 ceiling, and on today it reaches it
- * sooner because it starts from the clock: five presses after 20:00 exhaust the
- * day and further ones land on the ceiling together. They draw side by side —
- * see `byStart`, which keeps insertion order within a minute exactly so the grid
- * can lay them out as columns — and that reads as "these do not fit today",
- * which is true. It is the same judgement `nowFloor` makes at the other end, and
- * the alternative is the behaviour this replaces: eight rides filed 10:00–17:00
- * at twenty past eight in the evening, indistinguishable from a morning plan.
+ * An hour after the last entry, so several adds in a row spread across the day, and never before
+ * `floorMinute`. Late in the day the spread reaches `clampMinute`'s 25:00 ceiling, where the blocks
+ * draw side by side (see `byStart`), which reads as "these do not fit today".
  */
 function nextFallbackStart(existing: readonly PlannerEntry[], floorMinute = 0): number {
   const spread =
@@ -333,8 +271,7 @@ function nextFallbackStart(existing: readonly PlannerEntry[], floorMinute = 0): 
  * Returns the plan with one ride added to a park-day at the given minute, or an hour after the
  * day's last block and never before now when none is given.
  *
- * @param now Park-clock instant, defaulted so only a test ever passes one — the
- *   same shape `parkToday`, `parkMinuteNow` and `dayClock` already use.
+ * @param now Park-clock instant, defaulted so only a test passes one.
  */
 export function addEntry(
   state: PlannerState,
@@ -345,11 +282,8 @@ export function addEntry(
     params;
   const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
 
-  // No time given: an hour after the last entry, so adding several rides in a
-  // row spreads them across the day instead of stacking them on one minute, and
-  // never before now — see `nowFloorMinute`. The caller passes a real minute
-  // when it knows the day's shape — see `nextFreeStart`, which is what the grid
-  // uses.
+  // No time given: an hour after the last entry, never before now (see `nowFloorMinute`). A caller
+  // that knows the day's shape passes a real minute (`nextFreeStart`).
   const fallback = nextFallbackStart(existing, nowFloorMinute(date, timezone, now));
 
   const entry: PlannerEntry = withHourMirror({
@@ -387,13 +321,9 @@ export function removeEntry(
 }
 
 /**
- * Move one entry to another minute. The list re-sorts; nothing else moves.
- *
- * This is what a drag on the grid writes, so its two identity guards are not
- * hygiene. Every `plannerStore.update` stringifies the whole multi-park plan,
- * writes localStorage, rewrites the cookie and notifies every subscriber on the
- * page — and a drag that ends where it started is the commonest gesture there
- * is. Returning `state` itself, not a copy, is what makes that free.
+ * Move one entry to another minute; the list re-sorts and nothing else moves. What a drag writes,
+ * so its identity guards matter: every store update rewrites the whole plan and notifies every
+ * subscriber, and a drag ending where it started is the commonest gesture.
  */
 export function moveEntry(
   state: PlannerState,
@@ -422,6 +352,7 @@ export function moveEntry(
   );
 }
 
+/** One stop of a plan for {@link applyPlan}: an entry to move, or a ride to add. */
 export interface ApplyPlanStop {
   /** An existing entry to move, or `null` for a ride being added. */
   entryId: string | null;
@@ -431,20 +362,9 @@ export interface ApplyPlanStop {
 }
 
 /**
- * A whole re-plan, in ONE write.
- *
- * What the optimiser's two buttons commit. It has to be a single action rather
- * than a loop over `moveEntry`/`addEntry` for a reason that is not tidiness:
- * every `plannerStore.update` stringifies the whole multi-park plan, writes
- * localStorage, rewrites the cookie and notifies every subscriber on the page,
- * so re-planning thirteen headliners one at a time would be thirteen of that —
- * and twelve intermediate states in which the plan is half old and half new,
- * each of them rendered.
- *
- * Everything the caller did not name is KEPT and untouched: a lunch break, a
- * ticked-off ride, a block the optimiser was not given. This action moves and
- * adds; it never removes, so a bug in a caller cannot silently shorten
- * somebody's day.
+ * A whole re-plan, in one write, which is what the optimiser commits: a loop of single moves would
+ * rewrite and broadcast the whole plan per stop and render half-old, half-new days in between.
+ * Everything the caller did not name is kept: this moves and adds, and never removes.
  */
 export function applyPlan(
   state: PlannerState,
@@ -462,8 +382,7 @@ export function applyPlan(
 
   const moved = new Map<string, number>();
   const added: PlannerEntry[] = [];
-  // Ids are unique within the day, so a new one has to see the ones minted a
-  // moment ago as well as the ones already stored.
+  // Ids are unique within the day, so new ones have to see those minted a moment ago too.
   const seen = [...existing];
 
   for (const stop of stops) {
@@ -496,16 +415,8 @@ export function applyPlan(
 }
 
 /**
- * Put a day back exactly as it was.
- *
- * The other half of {@link applyPlan}, and the reason it exists: that action
- * rewrites a whole day in one press, and "plan every headliner" can turn a
- * three-ride afternoon into eleven blocks. Undoing that by hand is eleven drags,
- * which is not an undo.
- *
- * It REPLACES rather than merges, because that is what restoring a snapshot
- * means — an entry added since the snapshot was taken has to go, or pressing
- * undo would leave the day holding both versions.
+ * Put a day back exactly as it was: the undo for {@link applyPlan}. It replaces rather than merges,
+ * so an entry added since the snapshot goes.
  */
 export function restoreDay(
   state: PlannerState,
@@ -518,11 +429,8 @@ export function restoreDay(
 }
 
 /**
- * Push one entry and everything after it by the same amount.
- *
- * The second half of a repair, and never automatic: it exists so a visitor who
- * has been told their plan does not work can accept a fix in one gesture, with
- * the whole cascade as a single undoable write. Nothing calls it on its own.
+ * Push one entry and everything after it by the same amount: a repair the visitor accepts in one
+ * gesture and one undoable write. Never called on its own.
  */
 export function shiftFrom(
   state: PlannerState,
@@ -556,12 +464,8 @@ export function shiftFrom(
 }
 
 /**
- * Tick an entry off, recording what the queue actually was.
- *
- * `actualWait` is optional because it comes from the live data and can be
- * missing — a ride that was closed, a park with no readable wait times. Ticked
- * off without a figure is still a fact about the visit; a zero would be a claim
- * about the queue.
+ * Tick an entry off, recording what the queue actually was. `actualWait` is optional, since a
+ * closed ride or a park without readable waits has none; a zero would be a claim about the queue.
  */
 export function setEntryDone(
   state: PlannerState,
@@ -581,8 +485,7 @@ export function setEntryDone(
     existing.map((e) => {
       if (e.id !== entryId) return e;
       if (!done) {
-        // Un-ticking drops the recorded wait with it: keeping it would leave a
-        // measured number attached to an entry that is a plan again.
+        // Un-ticking drops the recorded wait: a plan again carries no measurement.
         const { done: _done, actualWait: _actual, ...rest } = e;
         return rest;
       }
@@ -602,15 +505,9 @@ export function setActive(
 }
 
 /**
- * Point the planner at a park and a day, registering the park if it is new.
- *
- * The way in from the park calendar, where a visitor picks the day BEFORE any
- * ride — the reverse of the ride page's order. `setActive` alone cannot do it:
- * it stores two strings, and a slug the state has never seen leaves the panel
- * with no name, no geo path and therefore no forecast to fetch.
- *
- * It adds no entry, so `hasAnyPlan` stays false and the launcher stays hidden
- * until something is actually planned. An existing day keeps its entries.
+ * Point the planner at a park and a day, registering the park if it is new: the calendar's way in,
+ * where the day comes before any ride, and a bare slug would leave the panel nothing to fetch. It
+ * adds no entry, so `hasAnyPlan` stays false; an existing day keeps its entries.
  */
 export function openDay(
   state: PlannerState,
@@ -627,12 +524,9 @@ export function openDay(
 }
 
 /**
- * File the days the visitor accepted from the trip assistant.
- *
- * A day with nothing in it and `reserved` set: the lists, the countdown, the share link and the
- * sync count it, which an empty day from `openDay` is not. A date that already holds a plan is
- * left exactly as it is, so accepting a proposal can never overwrite a day, and nothing here
- * moves the active park or date.
+ * File the days the visitor accepted from the trip assistant: empty days with `reserved` set, which
+ * the lists, the countdown, the share link and the sync count. A date that already holds a plan is
+ * left as it is, and the active park and date do not move.
  */
 export function reserveDays(
   state: PlannerState,
@@ -666,17 +560,8 @@ export function reserveDays(
 }
 
 /**
- * Record the zone the day payload came back with.
- *
- * Every other way into a plan starts on a park page, which knows the zone and
- * passes it. The overview's park search does not — it offers every park in the
- * catalogue and the search payload carries no zone — so a park added there would
- * reckon its dates in the READER's zone forever, which is the wrong day for a
- * Florida park planned from Germany after 18:00.
- *
- * `/plan/day` answers with the real one, so the first fetch teaches the plan.
- * Identity-guarded: returning `state` unchanged when there is nothing to learn
- * is what keeps the effect that calls this from looping.
+ * Record the zone the day payload came back with, for a park added from the overview's search,
+ * whose payload has no zone. Identity-guarded, so the effect that calls it cannot loop.
  */
 export function learnTimezone(
   state: PlannerState,
@@ -689,15 +574,9 @@ export function learnTimezone(
 }
 
 /**
- * Record who is coming, for one day.
- *
- * Merged rather than replaced, so a wizard step that only asks about the
- * children does not erase an answer about water rides. An empty result drops
- * the key entirely — `undefined` and "asked and answered nothing" have to stay
- * distinguishable, because the first is what every day starts as.
- *
- * Creates the day if it does not exist yet: the wizard asks this BEFORE any
- * ride is planned, which is the whole point of asking.
+ * Record who is coming, for one day. Merged, so a step that asks only about children keeps the
+ * answer about water rides; an empty result drops the key, since "not asked" must stay apart from
+ * "answered nothing". Creates the day if needed, since the wizard asks before any ride is planned.
  */
 export function setDayPrefs(
   state: PlannerState,
@@ -711,9 +590,7 @@ export function setDayPrefs(
   const current = park.days[date]?.prefs;
   const merged: PlannerDayPrefs = { ...current, ...patch };
 
-  // Normalised here as well as in the store's parser: this is the write path,
-  // and a height out of range would otherwise reach localStorage and be
-  // corrected only on the way back out.
+  // Normalised on the write path too, so an out-of-range height never reaches localStorage.
   const height =
     merged.riderHeightCm === undefined ? undefined : clampRiderHeight(merged.riderHeightCm);
   const next: PlannerDayPrefs = {
@@ -728,8 +605,7 @@ export function setDayPrefs(
     (current?.avoidWet ?? false) === (empty ? false : (next.avoidWet ?? false)) &&
     (current?.earlyEntry ?? false) === (empty ? false : (next.earlyEntry ?? false))
   ) {
-    // Same answers: the same object, so `useSyncExternalStore` skips the render
-    // and no localStorage write happens.
+    // Same answers: the same object, so no render and no localStorage write.
     return state;
   }
 

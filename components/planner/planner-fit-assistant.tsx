@@ -39,58 +39,27 @@ interface PlannerFitAssistantProps {
   /** The visitor's answer: what to plan, in what order, with which blocks. */
   onConfirm: (choice: FitChoice) => void;
   /**
-   * The answer to start from. Absent on a fresh conflict from the optimise
-   * row, where everything is ticked; the answer given last time on „Anpassen",
-   * which reopens this on the same question so the visitor revises what they
-   * chose rather than choosing again from scratch; and after one press on „In
-   * den Plan", everything ticked with that ride pinned (`requestedRideChoice`,
-   * PAR-637).
+   * The answer to start from: absent on a fresh conflict (everything ticked), the previous answer
+   * on „Anpassen", so the visitor revises rather than starts over, and after „In den Plan"
+   * everything ticked with that ride pinned (`requestedRideChoice`).
    */
   initialChoice?: FitChoice;
   /**
-   * The one ride whose press opened this, where it was one press for one ride
-   * (`AddToPlannerButton`, PAR-67). The title then names it, because that ride
-   * is the reason the dialog is on screen; the optimise buttons ask about a
-   * whole list and keep the general title.
+   * The one ride whose press opened this (`AddToPlannerButton`), named in the title because it is
+   * the reason the dialog is on screen.
    */
   requested?: string;
 }
 
 /**
- * What to give up, asked as a walk-through rather than as a footnote.
+ * What to give up, asked as a walk-through rather than as a footnote: measured levers (skipped
+ * where the day has no free block), the whole list with what falls out marked and a pin per row,
+ * and the result with what is left out by name.
  *
- * The day does not always hold what somebody asks it to. Phantasialand has ten
- * headliners and a nine-hour Saturday, and with an hour out of the middle for
- * lunch one of them has nowhere to go — measured, on 2026-09-12, and on
- * 2026-10-03 it is two. Until this, that came back as a clause in a grey
- * eleven-pixel line under the buttons („eine passt nicht mehr in den Tag")
- * beside a block drawn in the hatched hours, and the report that started this
- * work said what a reader does with that: nothing, because it does not read as
- * something to act on.
- *
- * So it is a dialog, it is three questions, and each one is answerable:
- *
- * 1. **Stellschrauben.** What could change so the day holds everything —
- *    measured levers, never advice. „Ohne Mittagspause passt der Plan" is
- *    printed on the days where taking the break out makes the whole list fit;
- *    on the days where it only helps it says how far it gets. Skipped entirely
- *    where the day has no free block to argue about, because a step with
- *    nothing on it is a step people learn to click through.
- * 2. **Wichtigkeit.** The whole list, ticked, with the rides that will not make
- *    it marked — and a pin per row that moves a ride to the top of the order
- *    the engine gives things up in. Untick, pin, watch the marks move: that is
- *    the „ausprobieren" the assistant exists for, and every recomputation is
- *    the same optimiser that runs on the press.
- * 3. **Ergebnis.** The day it comes to: how many rides, when the last queue is
- *    left, what it costs in queueing, and what is being left out by name.
- *
- * **Nothing is written until the last press.** Every screen recomputes against
- * a `FitChoice` held here, so backing out at any point leaves the plan exactly
- * as it was — which is what makes unticking a ride the visitor already has a
- * safe thing to offer. `optimizeDay` on its own may never delete an entry (it
- * parks it past the gate instead, see its `OVERFLOW_STRIDE`), and this is the
- * one place that rule is relaxed: not behind anybody's back, but in front of a
- * list where the ride is named and the press says what it will do.
+ * Nothing is written until the last press: every screen recomputes against a `FitChoice` held
+ * here, so backing out leaves the plan as it was. This is the one place an entry may be removed,
+ * in front of a list that names it. See
+ * docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
  */
 export function PlannerFitAssistant({
   open,
@@ -106,13 +75,8 @@ export function PlannerFitAssistant({
   const locale = useLocale();
 
   /**
-   * The answers, initialised at MOUNT and never reset by an effect.
-   *
-   * The call site gives this component a `key` that changes on every press, so
-   * each conflict is a fresh mount with a fresh answer — the same shape the
-   * wizard uses, and for the same reason: an effect watching `open` would be a
-   * cascading render that still has to guard against inheriting the previous
-   * day's keys.
+   * The answers, initialised at mount and never reset by an effect: the call site keys this
+   * component per press, so each conflict is a fresh mount, as the wizard does.
    */
   const [choice, setChoice] = useState<FitChoice>(() => initialChoice ?? fitChoiceAll());
   const steps: FitStep[] =
@@ -121,16 +85,12 @@ export function PlannerFitAssistant({
   const [forward, setForward] = useState(true);
 
   /**
-   * Everything the screens read, all three derived from one choice.
-   *
-   * Memoised together because they are three runs of the same search and the
-   * levers are one run per free block on top — 5–50 ms each, which is nothing
-   * on a press and is a stutter if it happens on every keystroke of a render.
+   * Everything the screens read, derived from one choice and memoised, since each is a run of the
+   * same search.
    */
   const order = useMemo(() => fitOrder(input, choice), [input, choice]);
   const outcome = useMemo(() => evaluateFit(input, choice), [input, choice]);
-  // One probe per free block, and only the first screen draws them: off it, every tick and pin
-  // paid for levers nobody could see.
+  // One probe per free block, and only the first screen draws them.
   const { levers, applied } = useMemo(
     () => (step === 'levers' ? fitLeverView(input, choice, outcome) : NO_LEVERS),
     [step, input, choice, outcome]
@@ -139,12 +99,8 @@ export function PlannerFitAssistant({
   const wanted = input.wishes.filter((wish) => !choice.dropped.has(wish.key)).length;
   const fits = outcome.fitted.length;
   /**
-   * Everything still ticked has a slot before closing.
-   *
-   * Read in three places and named once, because it is the dialog's only real
-   * state: the band at the top, the first step's sentence and the mark beside
-   * it all have to agree, and a visitor who has just unticked their way out of
-   * the problem is the one who notices when they do not.
+   * Everything still ticked has a slot before closing: the dialog's only real state, named once so
+   * the band, the first step's sentence and its mark agree.
    */
   const solved = fits >= wanted;
   const missed = useMemo(() => new Set(outcome.missed), [outcome]);
@@ -169,10 +125,8 @@ export function PlannerFitAssistant({
         showCloseButton={false}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
       >
-        {/* The band the wizard spends on a photograph, spent here on the
-            sentence that opened the dialog. There is no park to choose and the
-            panel behind this one is already showing the park's picture; what a
-            reader needs at the top is what is wrong and with which day. */}
+        {/* The band the wizard spends on a photograph, spent here on what is wrong and with which
+            day. */}
         <div className="bg-crowd-high/10 border-crowd-high/30 shrink-0 border-b px-5 py-3 sm:px-6">
           <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
             <AlertTriangle className="text-crowd-high size-4 shrink-0" aria-hidden="true" />
@@ -190,10 +144,8 @@ export function PlannerFitAssistant({
           onJump={(to) => goTo(steps[to])}
         />
 
-        {/* The one figure the whole dialog is about, on every screen and always
-            live. Pinning a ride or cutting the break short moves it in the same
-            frame the press lands in, which is what makes the two lists below
-            something to experiment with rather than a form to fill in. */}
+        {/* The figure the dialog is about, on every screen and live, so the lists below are
+            something to experiment with. */}
         <p
           data-planner-fit-count=""
           data-planner-fit-solved={solved ? '' : undefined}
@@ -203,13 +155,8 @@ export function PlannerFitAssistant({
           )}
         >
           <span className="flex items-center gap-1.5 font-medium">
-            {/* The mark is what carries the state at a glance, and the reason
-                for it is the report this change came out of: a visitor who
-                unticks their way to a day that fits sees the „fällt weg" marks
-                disappear and nothing arrive in their place, so the screen looks
-                like it lost something rather than like the problem is solved.
-                Colour alone would not do it either — it is the same sentence
-                either way, in a hue somebody may not be able to tell apart. */}
+            {/* The mark carries the state at a glance, so a list whose „fällt weg" marks just went
+                quiet reads as solved; colour alone would not. */}
             {solved ? (
               <Check className="size-3.5 shrink-0" aria-hidden="true" />
             ) : (
@@ -231,11 +178,8 @@ export function PlannerFitAssistant({
           <div key={step} className={cn('motion-safe:animate-in', STEP_MOTION[String(forward)])}>
             {step === 'levers' && (
               <div className="flex flex-col gap-3">
-                {/* Three states, not two. The step used to say „an den Blöcken
-                    liegt es nicht" whenever no lever was on offer, which is
-                    true while the day is short and a lie the moment somebody
-                    has already made it fit — and coming back to this screen
-                    after unticking a ride is exactly when it was read. */}
+                {/* Three states, not two: "an den Blöcken liegt es nicht" is a lie once the visitor
+                    has made the day fit. */}
                 <p
                   className={cn(
                     'text-xs leading-relaxed',
@@ -289,10 +233,8 @@ export function PlannerFitAssistant({
                   )}
                 </ul>
 
-                {/* Named, never counted. „zwei passen nicht" is the sentence
-                    this dialog exists to replace: the visitor is about to press
-                    a button that takes two rides out of their day, and the only
-                    honest thing to put in front of that press is which two. */}
+                {/* Named, never counted: before a press that takes rides out of the day, the honest
+                    thing to show is which ones. */}
                 {(outcome.missed.length > 0 || choice.dropped.size > 0) && (
                   <div className="border-crowd-high/30 bg-crowd-high/10 flex flex-col gap-1 rounded-md border px-2.5 py-2">
                     <p className="text-crowd-high text-[11px] font-medium">{t('fit.resultOut')}</p>

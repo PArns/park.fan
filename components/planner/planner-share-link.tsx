@@ -8,21 +8,10 @@ import { getTripId } from '@/lib/planner/trip-sync';
 import { sharedTripUrl } from '@/lib/planner/trip-share';
 
 /**
- * "Link zum Plan teilen", under the push switch and only while it is on.
- *
- * Only there because the link points at the server's copy of the plan, and that
- * copy exists only while push is on (PAR-82, option A). With push off there is
- * no trip id and nothing to share, so this renders nothing rather than a button
- * that would first have to upload the plan. The sentence that the link is the
- * password is `push.storedHint`, drawn right above this by the caller.
- *
- * `navigator.share` where the browser has one (phones), the clipboard where it
- * does not. Not `ShareButtons`: that row sends the URL to Facebook's and X's
- * share dialogs, and this URL lets anybody who has it read and edit the plan.
- *
- * The id is read when the button is pressed, not when it is drawn. `syncTrip`
- * replaces it when the server answers 404 for the old one, and a link built at
- * render time would then hand out a dead id.
+ * "Link zum Plan teilen", under the push switch and only while it is on: the link points at the
+ * server's copy, which exists only then. `navigator.share` where there is one, the clipboard
+ * otherwise; not `ShareButtons`, since this URL lets anybody who has it read and edit the plan. The
+ * id is read at the press, because `syncTrip` can replace it.
  */
 export function PlannerShareLink() {
   const t = useTranslations('planner.push');
@@ -41,7 +30,7 @@ export function PlannerShareLink() {
         await navigator.share({ title: t('shareTitle'), url });
         return;
       } catch (error) {
-        // The visitor closed the share sheet. Nothing went wrong.
+        // The visitor closed the share sheet.
         if (error instanceof DOMException && error.name === 'AbortError') return;
         // Anything else falls through to the clipboard.
       }
@@ -52,8 +41,7 @@ export function PlannerShareLink() {
       setResult('copied');
       setTimeout(() => setResult('idle'), 2000);
     } catch {
-      // Clipboard refused (permissions, an embedded view). The link is shown so
-      // it can be copied by hand, instead of a button that did nothing.
+      // Clipboard refused: the link is shown so it can be copied by hand.
       setResult({ failed: url });
     }
   };

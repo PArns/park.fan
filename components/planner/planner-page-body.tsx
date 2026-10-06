@@ -29,32 +29,20 @@ import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confirm';
 
 /**
- * The planner's own page: a directory of what is planned, and an explanation
- * when nothing is.
- *
- * It deliberately does NOT edit anything. The flyout is the editor — it has the
- * axis, the drag, the legs and the live corrections — and a second, page-sized
- * copy of that would be two implementations of one thing, drifting. Picking a
- * day here sets the active day and asks the panel to open, which is the same
- * signal the park calendar's "plan this day" already sends.
- *
- * The empty state is the reason the page exists at all. The launcher only
- * appears once something is planned, so before that the feature was invisible
- * unless somebody happened to be on a ride page and noticed one button. A page
- * in the menu can be arrived at on purpose, and it has room to say what the
- * thing is for.
+ * The planner's own page: a directory of what is planned, and an explanation when nothing is. It
+ * edits nothing: the flyout is the editor, and picking a day here sets the active day and asks the
+ * panel to open, as the park calendar's "plan this day" does. A page in the menu can be reached on
+ * purpose and has room to say what the planner is for.
  */
 export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPhoto[] }) {
   const t = useTranslations('planner');
   const locale = useLocale();
   const { state, setActive, clearDay } = usePlanner();
-  // `null` = closed, otherwise the park the wizard starts on — which is how the
-  // per-park button skips the first step. A second boolean beside a park would
-  // be two states for one thing, and they would disagree.
+  // `null` = closed, otherwise the park the wizard starts on; one state, so the two cannot
+  // disagree.
   const [wizardFor, setWizardFor] = useState<{ park: WizardPark | null } | null>(null);
   /**
-   * The day whose bin was pressed, or `null` — same shape and same reason as the
-   * panel's overview: one dialog under the whole list rather than one per row.
+   * The day whose bin was pressed, or `null`: one dialog under the whole list, as in the overview.
    */
   const [pendingClear, setPendingClear] = useState<ClearDayTarget | null>(null);
   // Mounted only while open, so every opening starts from its defaults.
@@ -80,20 +68,13 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 
   return (
     <div className="flex flex-col gap-8">
-      {/* The photographs stay, plan or no plan. They used to belong to the empty
-          state alone, so the moment somebody planned their first day the page
-          lost its picture band and opened on a button over a list — the one
-          screen that is meant to say „ein Tag im Park" looked like a settings
-          page. Above the button either way: it is what the page is about, and
-          the button is what to do about it. */}
+      {/* The photographs stay, plan or no plan: they are what the page is about, above the button
+          for what to do about it. */}
       <PlannerPolaroids photos={photos} />
 
-      {/* One way in, and it is a button rather than a search field. The field
-          asked which park and nothing else, so the two questions that decide
-          whether a day works — which day, and who is coming — were left to be
-          discovered in the panel afterwards. */}
-      {/* `PLANNER_START_ID` is what the hero's action jumps to. It sits here or on the intro
-          below, never on both: the two render for opposite states. */}
+      {/* One way in, a button into the wizard rather than a park search, so which day and who is
+          coming are asked too. `PLANNER_START_ID` is what the hero's action jumps to; it sits here
+          or on the intro below, which render for opposite states. */}
       {parks.length > 0 && (
         <div id={PLANNER_START_ID} className="flex scroll-mt-20 flex-wrap gap-2">
           <button
@@ -105,9 +86,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
             <CalendarPlus className="size-4" aria-hidden="true" />
             {t('wizard.open')}
           </button>
-          {/* The other question: not which rides on a day, but which park on which
-              day. A button beside the wizard rather than a banner over the list,
-              because a proposal is something asked for. */}
+          {/* The other question, which park on which day: a button beside the wizard, since a
+              proposal is something asked for. */}
           <button
             type="button"
             onClick={() => setAssistantOpen(true)}
@@ -126,8 +106,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 
       {parks.length > 0 && (
         <section>
-          {/* A chapter of the page like the article's below it, so it opens with the same
-              heading. No number: it renders only once something is planned. */}
+          {/* A chapter of the page like the article's below, with the same heading. No number: it
+              renders only once something is planned. */}
           <ChapterHeading
             icon={CalendarDays}
             title={t('page.yourPlans', { count: total })}
@@ -140,9 +120,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
                 <h3 className="text-muted-foreground border-border/60 flex items-center gap-1.5 border-b px-4 py-2.5 text-xs font-medium tracking-wide uppercase">
                   <MapPin className="size-3.5" aria-hidden="true" />
                   <span className="min-w-0 flex-1 truncate">{park.name}</span>
-                  {/* Another day at THIS park, which is the common case and
-                      would otherwise mean searching for a park the list is
-                      already showing. Starts the wizard on the date step. */}
+                  {/* Another day at this park, the common case: starts the wizard on the date
+                      step. */}
                   <button
                     type="button"
                     onClick={() =>
@@ -164,9 +143,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
                 </h3>
                 <ul>
                   {park.days.map((day) => {
-                    // Per park, against that park's own zone: a plan holding
-                    // Phantasialand and Magic Kingdom is on two different dates
-                    // at 23:00 in Berlin.
+                    // Per park, in that park's own zone: two parks can be on different dates.
                     const past = day.date < park.today;
                     const done = day.entries.filter((entry) => entry.done).length;
                     const label =
@@ -184,10 +161,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
                           data-planner-page-day={`${park.slug}:${day.date}`}
                           className={cn(
                             'hover:bg-accent flex min-w-0 flex-1 items-baseline justify-between gap-3 px-4 py-3 text-left transition-colors',
-                            // A finished day is kept and greyed rather than
-                            // swept up: the ticked entries carry real measured
-                            // minutes, and deleting it on a date change would
-                            // throw that away on the visitor's behalf.
+                            // A finished day is greyed, not swept up: its ticked entries carry real
+                            // measured minutes.
                             past && 'opacity-60'
                           )}
                         >
@@ -204,9 +179,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
                         </button>
                         <button
                           type="button"
-                          // The same question the panel asks, in the same
-                          // dialog. A finished day holds measured minutes and
-                          // nothing restores them.
+                          // The panel's own question and dialog: measured minutes cannot be
+                          // restored.
                           onClick={() => setPendingClear({ parkSlug: park.slug, date: day.date })}
                           aria-label={t('clearDay')}
                           className="text-muted-foreground/50 hover:text-destructive px-4 py-3 transition-colors"
@@ -221,10 +195,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
             ))}
           </div>
 
-          {/* The notification switch lives with the plans, not in the panel's
-              chrome: it is about a plan existing, and this page is where a
-              visitor looks at the ones they have. It renders nothing where push
-              cannot work — see `PlannerPushToggle`. */}
+          {/* The notification switch lives with the plans, since it is about a plan existing. It
+              renders nothing where push cannot work. */}
           <div className="bg-card mt-4 overflow-hidden rounded-2xl border">
             <PlannerPushToggle />
           </div>
@@ -239,8 +211,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 
       {assistantOpen && <PlannerTripAssistant onOpenChange={setAssistantOpen} />}
 
-      {/* Mounted only while open — that is what resets its answers, see the note
-          on `PlannerWizard`'s `open` prop. */}
+      {/* Mounted only while open, which resets its answers (see `PlannerWizard`'s `open`). */}
       {wizardFor && (
         <PlannerWizard
           open
@@ -253,17 +224,8 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 }
 
 /**
- * What the planner is, for somebody who has not used it.
- *
- * Three steps and a way to start, in that order, because the honest answer to
- * "how do I begin" is "pick a park" and the page cannot pick one for them. The
- * steps come from `PlannerHelpSteps`, which the panel's empty state also uses —
- * two copies of the same three sentences would drift on the first edit.
- *
- * The polaroids used to be part of this and are not any more: they belong to the
- * PAGE rather than to its empty state, because a visitor who has planned a day
- * is still looking at a page about days in parks. They are rendered by
- * `PlannerPageBody` above whatever comes next.
+ * What the planner is, for somebody who has not used it: three steps and a way to start. The steps
+ * are `PlannerHelpSteps`, shared with the panel's empty state so the sentences cannot drift.
  */
 function PlannerPageIntro({ onStart }: { onStart: () => void }) {
   const t = useTranslations('planner');
@@ -278,10 +240,8 @@ function PlannerPageIntro({ onStart }: { onStart: () => void }) {
       </div>
 
       <div className="mt-6 flex flex-wrap gap-2">
-        {/* The wizard is the primary action here: the honest answer to "how do I
-            begin" is "pick a park and a day", and this is the one control that
-            asks both. Browsing the catalogue stays as the way in for somebody
-            who does not know which park yet. */}
+        {/* The wizard is the primary action, the one control that asks for both a park and a day;
+            browsing the catalogue stays for somebody who does not know which park yet. */}
         <button
           type="button"
           onClick={onStart}

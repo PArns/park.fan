@@ -1,15 +1,8 @@
 /**
- * The link that hands a stored plan to somebody else, and how it is read back.
- *
- * The trip id is the credential (see `trip-sync.ts`), so it travels in the URL
- * FRAGMENT and never in the path or the query: a fragment is not sent to the
- * server, so it stays out of access logs and out of the `Referer` of anything
- * the page loads, and Umami is loaded with `data-exclude-hash="true"`
- * (`app/[locale]/layout.tsx`), so it does not reach the analytics either.
- *
- * No localized segment. Like `/favorites` and `/alerts`, the page shows state
- * that exists only for whoever holds the link, is `noindex`, and is in no
- * sitemap, so there is nothing a translated slug would help rank.
+ * The link that hands a stored plan to somebody else, and how it is read back. The trip id is the
+ * credential (see `trip-sync.ts`), so it travels in the URL fragment, which is not sent to the
+ * server, not in a `Referer`, and excluded from Umami (`data-exclude-hash`). No localized segment:
+ * the page is `noindex` and in no sitemap, like `/favorites`.
  */
 
 import { forgetArmedPush } from './push-arming';
@@ -22,9 +15,8 @@ import type { PlannerState } from './types';
 export const SHARED_TRIP_PATH = '/trip-planner/shared';
 
 /**
- * What `TripsService.newId` issues: 12 random bytes as base64url. The same rule
- * as the proxy in `app/api/trips/[id]/route.ts`, so the page refuses a mangled
- * link itself instead of asking the server about it.
+ * What `TripsService.newId` issues, 12 random bytes as base64url; the same rule as the proxy in
+ * `app/api/trips/[id]/route.ts`, so a mangled link is refused without asking the server.
  */
 const TRIP_ID = /^[A-Za-z0-9_-]{16}$/;
 
@@ -34,10 +26,8 @@ export function sharedTripUrl(origin: string, locale: string, tripId: string): s
 }
 
 /**
- * The trip id in a `location.hash`, or `null` when the fragment is not one.
- *
- * Decoded and trimmed before the check, because some messengers percent-encode
- * the fragment or carry a trailing space into the copied link.
+ * The trip id in a `location.hash`, or `null`. Decoded and trimmed first, since messengers may
+ * percent-encode the fragment or append a space.
  */
 export function tripIdFromHash(hash: string): string | null {
   let value = hash.startsWith('#') ? hash.slice(1) : hash;
@@ -51,24 +41,10 @@ export function tripIdFromHash(hash: string): string | null {
 }
 
 /**
- * Take a shared plan over as this browser's own.
- *
- * The plan replaces the local one, and the sender's id is not stored anywhere.
- * Every write that follows therefore goes to THIS browser's trip, if it has
- * one, and never to the sender's.
- *
- * With push on, the viewer's own copy on the server is updated right away. The
- * auto-sync would not do it: it is armed only while the push switch is mounted
- * (the open panel or the planner page), and it reacts to edits made after it
- * subscribed. Without this call, the notification job would keep reading the
- * viewer's previous plan until their next edit.
- *
- * That sync can also find the viewer's own trip expired and start a new one
- * (`replaced`). The subscription row still names the old id, and the auto-sync
- * callback that re-points it is not mounted on this page, so it is done here:
- * the same re-point, and the same answer when it fails as for a refused write
- * (the plan taken back down and the switch off), so no row is left reading a
- * trip that no longer exists.
+ * Take a shared plan over as this browser's own: it replaces the local plan, and the sender's id is
+ * stored nowhere. With push on, the copy is synced at once, since the auto-sync is not mounted
+ * here, and a trip replaced by that sync is re-pointed here too; where that fails, the plan is
+ * taken down and the switch reads off, as for a refused write.
  */
 export async function adoptSharedPlan(plan: PlannerState): Promise<void> {
   plannerStore.update((current) => ({ ...plan, version: current.version }));
@@ -76,11 +52,10 @@ export async function adoptSharedPlan(plan: PlannerState): Promise<void> {
   const synced = await syncTrip();
   if (!synced.ok || !synced.replaced) return;
   if (await repointPushSubscription(synced.id)) return;
-  // Overtaken by a switch-off: the id is already gone, and so is the plan.
+  // Overtaken by a switch-off: the id is gone, and so is the plan.
   if (getTripId() !== synced.id) return;
-  // The plan is taken down and the switch reads off; the browser's own
-  // subscription stays, because ride alerts and followed shows share it. A
-  // refused DELETE keeps the id (`forgetTrip`), so the next switch-off retries.
+  // The plan comes down and the switch reads off; the browser's subscription stays, as ride alerts
+  // and followed shows share it. A refused DELETE keeps the id, so the next switch-off retries.
   await forgetTrip();
   forgetArmedPush();
 }

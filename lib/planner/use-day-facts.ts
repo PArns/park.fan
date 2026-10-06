@@ -5,35 +5,28 @@ import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar
 import type { CalendarDay } from '@/lib/api/types';
 import type { PlannerGeo } from './types';
 
+/**
+ * What the park's best-days snapshot says about the coming days, as {@link usePlannerDayFacts}
+ * answers.
+ */
 export interface PlannerDayFacts {
   /** What the park's own forecast says about each day it reaches. */
   byDate: ReadonlyMap<string, CalendarDay>;
   /** The last day the snapshot covers, or `null` while it has not arrived. */
   lastDate: string | null;
   /**
-   * The park's IANA zone, straight out of the snapshot's `meta`.
-   *
-   * The reason this hook returns it at all: a park added from the planner's own
-   * search arrives with no zone (the search payload has none), and until now the
-   * only other source was `/plan/day` — which answers 404 until the backend
-   * ships. So the planner reckoned that park's dates in the READER's zone, which
-   * is the wrong day for a Florida park planned from Germany after 18:00.
+   * The park's IANA zone from the snapshot's `meta`: a park added from the search arrives with
+   * none, and without it the plan would reckon that park's dates in the reader's zone.
    */
   timezone: string | null;
   /**
-   * False where the park publishes no opening hours at all. A statement about
-   * the PARK, so it is worth saying out loud before somebody plans a day at it.
+   * False where the park publishes no opening hours at all, worth saying before a day is planned.
    */
   hasOperatingSchedule: boolean | null;
   loading: boolean;
   /**
-   * True only while the FIRST answer is outstanding — nothing has arrived yet.
-   *
-   * `loading` is `isFetching`, which is also true for a background refetch of a snapshot already
-   * in hand (the query's `staleTime` is 30 minutes, so that happens). A caller asking „may I trust
-   * `lastDate` yet" needs the other question, and answering it with `isFetching` gets it wrong in
-   * both directions: false during React Query's defer window, when nothing has been asked yet,
-   * and true again later over an answer that is already here.
+   * True only while the first answer is outstanding. Not `loading` (`isFetching`), which is also
+   * true for a background refetch and false before the query has been asked at all.
    */
   pending: boolean;
 }
@@ -41,18 +34,10 @@ export interface PlannerDayFacts {
 const EMPTY: ReadonlyMap<string, CalendarDay> = new Map();
 
 /**
- * What we already know about this park's next three months.
- *
- * The park's **best-days snapshot**, which is the cheap one: ~15 KB of status,
- * crowd level, hours and holiday flags per day, materialized by the backend and
- * CDN-cached — as against `/calendar`, which computes percentiles per day and
- * takes seconds cold. Ninety days, which is what sets the calendar's own
- * horizon: past the snapshot every cell would be a bare number.
- *
- * The query key is the park page's own, so on a park page this is a cache hit
- * rather than a second request — and it keeps that page's loading-priority
- * requirement, because the shared hook is gated on `useLoadLast` (see
- * `docs/architecture/system-overview.md` → park page loading priority).
+ * What we already know about this park's next three months, from its best-days snapshot: the cheap,
+ * CDN-cached one, ninety days long, which sets the calendar's horizon. The query key is the park
+ * page's own, so on a park page this is a cache hit, gated on `useLoadLast` like the page's (see
+ * docs/rules/park-page-loading-priority.md).
  */
 export function usePlannerDayFacts(
   park: { slug: string; geo: PlannerGeo } | null,
@@ -79,17 +64,14 @@ export function usePlannerDayFacts(
         timezone,
         hasOperatingSchedule,
         loading: isFetching,
-        // `!data && !isError`, not `true`: this branch is also taken for a snapshot that ARRIVED
-        // and was empty, and for one whose request has finished failing. Both are answers — „no
-        // days" and „we could not ask" — and a caller waiting on `pending` would wait for ever on
-        // the second, which is how „no answer yet" turns into „no button, no reason, ever".
+        // `!data && !isError`: an empty snapshot and a failed request are both answers, and a
+        // caller waiting on `pending` must not wait for ever on either.
         pending: !data && !isError,
       };
     }
     const byDate = new Map<string, CalendarDay>();
     for (const day of data.days) byDate.set(day.date, day);
-    // The snapshot is ordered, but a `max` costs nothing and does not rely on
-    // that — and this value decides how far the calendar lets somebody step.
+    // A `max` rather than trusting the order, since this decides how far the calendar can step.
     const lastDate = data.days.reduce((last, day) => (day.date > last ? day.date : last), '');
     return {
       byDate,

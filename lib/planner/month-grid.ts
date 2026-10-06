@@ -1,18 +1,8 @@
 /**
- * The month grid the planner picks a day on.
- *
- * Pure, and reckoned in UTC at NOON throughout — the same rule the rest of the
- * planner's date maths follows. A plan's dates are park-local strings, so there
- * is no instant here to convert and nothing for a well-meaning local-time `Date`
- * to convert wrongly: `new Date('2026-09-01')` is midnight UTC, which is August
- * for every reader west of Greenwich, and a grid built on that draws the wrong
- * month for a third of the planet.
- *
- * Monday first in all six locales, which is what the park calendar already does
- * (`park-calendar-grid.tsx` passes `weekStartsOn: 1`). Not because Monday is
- * universal — it is not, `en-US` starts on Sunday — but because a visitor
- * comparing the planner's grid with the park's calendar grid must not have to
- * notice that the columns moved.
+ * The month grid the planner picks a day on. Pure, and reckoned at noon UTC throughout, since a
+ * plan's dates are park-local strings and midnight UTC is the previous day west of Greenwich.
+ * Monday first in all six locales, matching the park calendar (`park-calendar-grid.tsx`), so the
+ * columns do not move between the two.
  */
 
 import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
@@ -57,8 +47,7 @@ export function firstOfMonth(month: PlannerMonth): string {
 export function shiftMonth(month: PlannerMonth, delta: number): PlannerMonth {
   const parsed = parse(month);
   if (!parsed) return month;
-  // Month arithmetic in a plain integer, never through `setUTCMonth` on the
-  // 31st: adding a month to January 31 there lands in March.
+  // Integer month arithmetic, never `setUTCMonth` on the 31st, which lands in March from January.
   const total = parsed.year * 12 + (parsed.month - 1) + delta;
   const year = Math.floor(total / 12);
   const monthNumber = (total % 12) + 1;
@@ -73,12 +62,7 @@ export function daysInMonth(month: PlannerMonth): number {
   return new Date(Date.UTC(parsed.year, parsed.month, 0, 12)).getUTCDate();
 }
 
-/**
- * Monday = 0 … Sunday = 6, for the first of the month.
- *
- * `getUTCDay` on a noon-UTC instant, so the answer cannot depend on where the
- * reader is.
- */
+/** Monday = 0 … Sunday = 6, for the first of the month, from a noon-UTC instant. */
 function mondayIndexOfFirst(month: PlannerMonth): number {
   const parsed = parse(month);
   if (!parsed) return 0;
@@ -87,12 +71,8 @@ function mondayIndexOfFirst(month: PlannerMonth): number {
 }
 
 /**
- * The whole grid: complete weeks, Monday first, padded with the real dates
- * either side rather than with holes.
- *
- * Real dates in the padding because they are still selectable — a trip that
- * starts on the 31st and ends on the 2nd is one trip, and a visitor who can see
- * the 1st in the corner of the grid will click it.
+ * The whole grid: complete weeks, Monday first, padded with the real dates either side, which stay
+ * selectable since a trip can cross a month boundary.
  */
 export function monthMatrix(month: PlannerMonth): MonthCell[] {
   const parsed = parse(month);

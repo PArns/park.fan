@@ -16,34 +16,15 @@ import {
 import { clampRiderHeight } from './party';
 
 /**
- * The planner's storage, as an external store.
+ * The planner's storage, as an external store over localStorage alone; a multi-park trip is a few
+ * KB and would ride on every request as a cookie.
  *
- * localStorage, and nothing else. A multi-day, multi-park trip runs to a few KB
- * against a cookie's 4, and it would ride up with every single request for
- * nothing.
- *
- * There WAS a `planner` cookie beside it, one character saying whether a plan
- * exists at all, and the reason written here was that the server could read it
- * and reserve the right box before hydration. Neither half of that was true.
- * `plannerCookieSaysHasPlan()` was exported and had no callers — verified in the
- * production chunks, where the identifier does not appear at all — so nothing
- * ever read it; and there is no box to reserve, because the way in is a `fixed`
- * edge tab that is drawn on every page whether or not anything is planned and
- * takes no space in the flow. What the cookie did do was travel with every
- * request to this origin, images and static chunks included, for a year, for a
- * reader that did not exist. It is not written any more. One that a visitor
- * already carries expires on its own, and nothing reads it in the meantime.
- *
- * It is an external store rather than React state for the reason
- * `temperature-unit-context.tsx` documents at length: hydration is not one pass.
- * Boundaries commit separately, so a provider effect that reads localStorage has
- * already run while a consumer further down the tree is still waiting — and that
- * consumer then hydrates against a value the server never rendered. React logs
- * the subtree and patches nothing. `useSyncExternalStore` takes a separate server
- * snapshot, so the first render is empty by construction and the real plan
- * arrives in the re-render right after it.
+ * An external store rather than React state, because hydration is not one pass (see
+ * `temperature-unit-context.tsx`): `useSyncExternalStore` takes a separate server snapshot, so the
+ * first render is empty by construction and the plan arrives in the re-render after it.
  */
 
+/** The localStorage key the plan lives under. */
 const STORAGE_KEY = 'parkfan_planner';
 
 /** What the server rendered, and therefore what hydration has to see. */
@@ -61,24 +42,8 @@ function secureJsonParse(raw: string): unknown {
 }
 
 /**
- * One entry, accepting both shapes for one release.
- *
- * The grid moved an entry's time from a whole `hour` to a `startMinute`, and
- * `parseState`'s policy is that anything unrecognised is DROPPED rather than
- * repaired. localStorage is the only copy of a plan, so a visitor with a second
- * tab open across a deploy boundary would have watched the older tab quietly
- * empty their trip. A legacy `hour` is therefore lifted to `hour * 60` on read,
- * and both fields are written on save, until the mirror can go.
- */
-
-/**
- * A free block, or `null` where the stored shape is not one.
- *
- * Read defensively because this comes out of localStorage, which is the only
- * copy a plan has and which a previous build wrote. An icon outside the closed
- * set falls back rather than dropping the block: the visitor's LABEL is the part
- * they typed, and losing a lunch break over an unknown icon name would be the
- * store deleting their plan to protect a class name.
+ * A free block, or `null` where the stored shape is not one. An icon outside the closed set falls
+ * back rather than dropping the block, so the label the visitor typed survives.
  */
 function toCustomBlock(value: unknown): PlannerCustomBlock | null {
   if (typeof value !== 'object' || value === null) return null;
@@ -96,11 +61,8 @@ function toCustomBlock(value: unknown): PlannerCustomBlock | null {
 }
 
 /**
- * The day's party preferences, or `null` where there are none.
- *
- * Absent rather than a zeroed object, so `hasPartyPrefs` can tell "not asked"
- * from "asked and answered nothing" — the first is the state every day starts
- * in and the second is a statement about the group.
+ * The day's party preferences, or `null` where there are none, so `hasPartyPrefs` can tell "not
+ * asked" from "asked and answered nothing".
  */
 function toPrefs(value: unknown): PlannerDayPrefs | null {
   if (typeof value !== 'object' || value === null) return null;
@@ -116,14 +78,17 @@ function toPrefs(value: unknown): PlannerDayPrefs | null {
   };
 }
 
+/**
+ * One entry. A legacy `hour` is lifted to `hour * 60` on read and both fields are written on save,
+ * so a tab on the previous build does not drop the plan, which has no other copy.
+ */
 function toEntry(value: unknown): PlannerEntry | null {
   if (typeof value !== 'object' || value === null) return null;
   const e = value as Record<string, unknown>;
   if (typeof e.id !== 'string') return null;
 
-  // A free block carries a `custom` object and no ride. A RIDE without its two
-  // strings is a broken row and is dropped, as before — the relaxation here is
-  // for the new shape, not a general loosening.
+  // A free block carries a `custom` object and no ride. A ride without its two strings is a broken
+  // row and is dropped.
   const custom = toCustomBlock(e.custom);
   if (!custom && (typeof e.attractionSlug !== 'string' || typeof e.attractionName !== 'string')) {
     return null;
@@ -142,16 +107,10 @@ function toEntry(value: unknown): PlannerEntry | null {
     ...(typeof e.attractionSlug === 'string' ? { attractionSlug: e.attractionSlug } : {}),
     ...(typeof e.attractionName === 'string' ? { attractionName: e.attractionName } : {}),
     ...(custom ? { custom } : {}),
-    // Only ever with a `custom` block: a show entry stands on one, and a stray
-    // slug on a ride would claim a show position for a queue.
+    // Only with a `custom` block: a stray slug on a ride would claim a show position for a queue.
     ...(custom && typeof e.showSlug === 'string' && e.showSlug ? { showSlug: e.showSlug } : {}),
-    // The same ceiling `applyPlan` writes under, and not the drag's 1500. A stop
-    // the optimiser could not fit before closing is filed PAST the gate on
-    // purpose, where the axis grows to hold it and the minutes are hatched —
-    // clamping at 1500 here put the overflow back on one minute the moment the
-    // plan was read again, so it survived the session and not the reload. The
-    // drag keeps its own, tighter ceiling; this is the storage boundary, and it
-    // has to admit everything a writer is allowed to store.
+    // The ceiling `applyPlan` writes under, not the drag's 1500: an optimiser stop filed past the
+    // gate must survive a reload. The storage boundary admits everything a writer may store.
     startMinute: Math.max(0, Math.min(MAX_PLANNED_MINUTE, Math.round(startMinute))),
     hour: Math.floor(Math.max(0, Math.min(MAX_PLANNED_MINUTE, startMinute)) / 60),
     ...(e.done === true ? { done: true } : {}),
@@ -160,21 +119,16 @@ function toEntry(value: unknown): PlannerEntry | null {
 }
 
 /**
- * Anything unrecognised is dropped rather than repaired. The stored shape will
- * change while this feature is being built, and a half-understood plan drawn as
- * if it were whole is worse than an empty one.
+ * Anything unrecognised is dropped rather than repaired: a half-understood plan drawn as if it were
+ * whole is worse than an empty one.
  */
 function parseState(raw: string): PlannerState {
   return toPlannerState(secureJsonParse(raw));
 }
 
 /**
- * A plan from outside this browser's storage, read by the same rules.
- *
- * The one caller is the shared-plan page, which gets somebody else's plan back
- * from `GET /api/trips/<id>`. That payload was written by another browser, maybe
- * an older build, and the API checks its outline and nothing more, so it is
- * exactly as untrusted as what `readState` pulls out of localStorage.
+ * A plan from outside this browser's storage, read by the same rules. Its one caller is the
+ * shared-plan page, whose payload another browser wrote and the API checks only in outline.
  */
 export function parsePlannerPayload(raw: string): PlannerState | null {
   let body: unknown;
@@ -225,9 +179,8 @@ function toPlannerState(parsed: unknown): PlannerState {
           city: String(geo.city ?? ''),
         },
         days,
-        // Stored so the cross-park overview and an add button on a page with no
-        // park payload can each answer "what day is it there?" — a question the
-        // browser's own offset gets wrong for any park in another zone.
+        // Stored so pages without a park payload can answer "what day is it there?", which the
+        // browser's own offset gets wrong for a park in another zone.
         ...(typeof park.timezone === 'string' ? { timezone: park.timezone } : {}),
       };
     }
@@ -250,9 +203,8 @@ function readState(): PlannerState {
     if (!raw) return EMPTY_PLANNER_STATE;
     return parseState(raw);
   } catch {
-    // A private window, cleared site data, or a browser refusing storage
-    // outright. An empty plan is the right answer; a thrown error here would
-    // take down every page, because this store is mounted in the layout.
+    // A private window, cleared data, or refused storage: an empty plan, since a throw here would
+    // take down every page, as this store is mounted in the layout.
     return EMPTY_PLANNER_STATE;
   }
 }
@@ -277,24 +229,19 @@ function write(next: PlannerState): void {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   } catch {
-    // Storage refused. The change still applies in memory for this session
-    // rather than being silently discarded under the visitor's hands.
+    // Storage refused: the change still applies in memory for this session.
   }
   for (const listener of listeners) listener();
 }
 
+/** The plan as an external store: subscribe, snapshots, and `update` through a reducer. */
 export const plannerStore = {
   subscribe,
   getSnapshot,
   getServerSnapshot,
   /**
-   * Replace the whole state through a reducer, then notify.
-   *
-   * A reducer that changed nothing returns the state it was given, and that has to end here. The
-   * version bump used to spread it into a new object anyway, so every no-op — a resize step that
-   * snapped to the same minute, `learnTimezone` with the zone it already had — stringified the
-   * whole multi-park plan into localStorage, re-rendered every `usePlanner` subscriber and re-armed
-   * the trip sync for a PUT of an unchanged plan.
+   * Replace the whole state through a reducer, then notify. A reducer that returns the state it was
+   * given ends here: no version bump, no write, no re-render, no trip sync for an unchanged plan.
    */
   update(recipe: (state: PlannerState) => PlannerState): void {
     if (typeof window === 'undefined') return;

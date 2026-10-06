@@ -4,19 +4,15 @@ import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * How far a connector stops short of a circle's centre, in pixels.
- *
- * The mark is `size-6`, so 12 is its radius and the rest is air. `top-[23px]`
- * on the lines is the same measurement vertically: 12 px of the row's own
- * padding plus that radius, less half the line.
+ * How far a connector stops short of a circle's centre, in pixels: the `size-6` mark's 12 px radius
+ * plus air. `top-[23px]` on the lines is the same measurement vertically: 12 px of padding plus
+ * that radius, less half the line.
  */
 const RAIL_DOT_CLEARANCE = 18;
 
 /**
- * Which way a stepped dialog's step slides in from, keyed by `String(forward)`.
- *
- * Two literal class strings because Tailwind's scanner never sees a class built
- * from a `slide-in-from-${side}` template.
+ * Which way a stepped dialog's step slides in from, keyed by `String(forward)`: literal class
+ * strings, since Tailwind's scanner never sees a templated one.
  */
 export const STEP_MOTION: Record<string, string> = {
   true: 'motion-safe:slide-in-from-right-4 motion-safe:fade-in-0 motion-safe:duration-200',
@@ -24,18 +20,9 @@ export const STEP_MOTION: Record<string, string> = {
 };
 
 /**
- * Where a stepped dialog is, in circles.
- *
- * One component for both of the planner's assistants — the wizard that opens a
- * day and the fit assistant that rescues one — because the alternative was the
- * second one carrying a copy of geometry the first had already got wrong once.
- * A step is a `{ key, label }` pair rather than a translation key, so the two
- * callers name their own steps in their own part of the namespace and this file
- * knows nothing about either.
- *
- * A step already walked is a button back to it; the one in front is not, which
- * is the whole rule — a rail that lets somebody jump forward past the question
- * that gates the next screen is a rail that has to re-derive every gate.
+ * Where a stepped dialog is, in circles: one rail for the wizard and the fit assistant, so the
+ * geometry is written once. Steps are `{ key, label }` pairs named by each caller. A walked step is
+ * a button back to it; the one ahead is not, so no gate has to be re-derived.
  */
 export function PlannerStepRail({
   steps,
@@ -53,21 +40,15 @@ export function PlannerStepRail({
 
   return (
     <div className="border-border/60 shrink-0 border-b px-5 pt-3 pb-2.5 sm:px-6">
-      {/* EQUAL columns, and the connectors measured off them. The first version
-          was a flex row where each step's connector took the space its own
-          label did not, so three circles whose labels are "Park", "Tag" and
-          "Wer kommt mit" came out at 15 %, 72 % and 92 % of the row with one
-          connector eleven times the length of the other — a progress bar that
-          reported the width of its own captions. */}
+      {/* Equal columns, with the connectors measured off them, so the circles do not sit wherever
+          their labels' widths push them. */}
       <ol
         className="relative grid"
         style={{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }}
         aria-label={label}
       >
-        {/* One line per GAP rather than one track behind the circles: two of the
-            three circle states are a translucent tint, and a line under those
-            shows through the middle of the mark. `RAIL_DOT_CLEARANCE` is the
-            circle's radius plus a little air. */}
+        {/* One line per gap rather than a track behind the circles, which would show through the
+            translucent circle states. */}
         {steps.slice(0, -1).map((step, gap) => (
           <span
             key={`gap-${step.key}`}

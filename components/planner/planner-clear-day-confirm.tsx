@@ -21,9 +21,8 @@ export function ClearDayConfirm({
   onConfirm: (parkSlug: string, date: string) => void;
 }) {
   const t = useTranslations('planner');
-  // Not `window.confirm`: an embedded view or a visitor who once ticked
-  // "prevent this page from creating additional dialogs" gets `false` back
-  // without seeing anything, and the bin then does nothing with no explanation.
+  // Not `window.confirm`: an embedded view, or a visitor who once blocked further dialogs, gets
+  // `false` without seeing anything.
   return (
     <ConfirmDialog
       open={pending !== null}

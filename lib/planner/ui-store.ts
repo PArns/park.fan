@@ -1,68 +1,32 @@
 'use client';
 
 /**
- * "Open the planner", as a signal rather than as state.
- *
- * The plan itself lives in `store.ts` and is persisted; whether the panel is on
- * screen is neither persisted nor owned by any one component. The launcher holds
- * the `open` boolean, and something else entirely — a day in the park calendar —
- * needs to be able to ask for it. A context would mean wrapping the layout for a
- * boolean; a field on the plan would write UI state into localStorage and hand a
- * visitor a panel that opens by itself the next time they arrive.
- *
- * So: a counter. Every request increments it, subscribers see it change, and two
- * requests in a row are two events rather than one no-op — which is what a plain
- * boolean would collapse them into once the panel had been closed in between.
+ * "Open the planner", as a signal rather than as state. Whether the panel is on screen is neither
+ * persisted nor owned by one component, and something outside the launcher (a calendar day) has to
+ * ask for it. A counter, so two requests with a close between them are two events, where a boolean
+ * would collapse them into a no-op.
  */
 
 type Listener = () => void;
 
 /**
- * What a request asks the panel to do once it is on screen.
+ * Which way into the trip planner produced an open. A closed union, so a typo is a compile error
+ * rather than a second spelling in the report.
  *
- * `panel` is the old signal unchanged and stays the default, so every caller
- * that just wants the panel reads exactly as before. `page-park-wizard` is the
- * one thing a park page's own header button could not say: open the panel AND
- * start the wizard on the park the route is about, so the reader lands on the
- * date step instead of on a panel with another button in it.
+ * - `tab`: the tab on the window's right edge, on every page but a phone's.
+ * - `header`: the header's calendar button, which replaces the tab on a phone
+ *   (`PlannerHeaderButton`).
+ * - `park-header`: "Tag im … planen" in a park page's or a wait-time calendar's header
+ *   (`ParkPlannerLink`).
+ * - `calendar-day`: "diesen Tag planen" in the wait-time calendar's day dialog (`PlanDayButton`).
+ * - `wizard`: the wizard's last step on the planner's own page; inside the panel it opens nothing.
+ * - `plan-list`: a day picked from the list on the planner's own page.
+ * - `shared-link`: "Planer öffnen" on the shared-plan page, after taking a plan over.
+ * - `home-hero`: "Heute planen" in the homepage hero (`HeroParkActions`).
+ * - `kids-page`: a step of the height ladder on a park's "with kids" page (`KidsPlannerButton`).
  *
- * It carries no park, deliberately. `plannerPagePark` already publishes which
- * park the route behind the panel is about, and the panel already reads it —
- * a park passed through here would be a second copy of that answer, free to
- * disagree with the beacon's the moment the reader walks to another park.
- *
- * The reader is the panel: `PlannerFlyout`'s `startPagePark` is exactly this
- * action, and it has only ever been reachable from a button drawn inside the
- * panel. This is what lets something outside ask for it.
- */
-/**
- * Which way into the trip planner produced an open.
- *
- * A closed union rather than a free string, so a typo is a compile error at the
- * call site instead of a value nobody notices in the report until the column has
- * two spellings of the same entry point.
- *
- * - `tab` — the tab on the window's right edge, drawn on every page but a phone's.
- * - `header` — the calendar button in the header, which replaces the tab on a phone
- *   (`PlannerHeaderButton`, `planner-phone:` only).
- * - `park-header` — "Tag im Phantasialand planen" in a park page's or a wait-time
- *   calendar's header (`ParkPlannerLink`).
- * - `calendar-day` — "diesen Tag planen" in the wait-time calendar's day dialog
- *   (`PlanDayButton`).
- * - `wizard` — the wizard's last step on the planner's own page. From inside the
- *   panel the wizard opens nothing, so that press is not an open and is absent
- *   here by construction.
- * - `plan-list` — a day picked out of the list on the planner's own page.
- * - `shared-link` — "Planer öffnen" on the shared-plan page, after the visitor
- *   took over a plan somebody sent them.
- * - `home-hero` — "Heute planen" in the homepage hero, shown to a visitor it has
- *   placed in or right next to a park (`HeroParkActions`).
- * - `kids-page` — a step of the height ladder on a park's "with kids" page
- *   (`KidsPlannerButton`), which also leaves the height for the wizard.
- *
- * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
- * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
- * inside the already-open panel. Neither is a way in.
+ * Not ways in: `AddToPlannerButton` files an entry without opening the panel, and
+ * `PlannerInParkCta` is only drawn inside the open panel.
  */
 export type PlannerOpenedSource =
   | 'tab'
@@ -75,26 +39,24 @@ export type PlannerOpenedSource =
   | 'home-hero'
   | 'kids-page';
 
+/**
+ * What a request asks the panel to do once it is on screen. `page-park-wizard` also starts the
+ * wizard on the park the route is about. It carries no park: `plannerPagePark` already publishes
+ * that, and a second copy could disagree with it.
+ */
 export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 
 let requests = 0;
 let wizardRequests = 0;
 /**
- * Who asked last, for the one `planner_opened` property.
- *
- * NOT a third counter and not part of any snapshot: it is read once, by the
- * launcher, in the commit where the panel actually goes from closed to open, and
- * nothing renders from it. `useSyncExternalStore` wants a primitive it can
- * compare, and a source in the snapshot would either be a second number to map
- * back to a string or an object that loops the subscribers — see
- * {@link plannerUi.getWizardSnapshot}.
- *
- * The initial value is the edge tab because that is the only way in that exists
- * on every page; it is overwritten before it is ever read.
+ * Who asked last, for the one `planner_opened` property. Read once by the launcher in the commit
+ * where the panel opens, and not part of any snapshot, which must stay a primitive. Initially the
+ * edge tab, the one way in on every page; overwritten before it is read.
  */
 let openSource: PlannerOpenedSource = 'tab';
 const listeners = new Set<Listener>();
 
+/** The planner's open signal: request counters to subscribe to, and who asked last. */
 export const plannerUi = {
   subscribe(listener: Listener): () => void {
     listeners.add(listener);
@@ -108,20 +70,10 @@ export const plannerUi = {
     return 0;
   },
   /**
-   * The subset of {@link getSnapshot}'s requests that asked for the wizard too.
-   *
-   * A SECOND COUNTER rather than an intent the panel reads back, and that is
-   * not a style choice. The panel's reader is an effect of the same shape the
-   * launcher's is — compare the count against the last one seen, act once — and
-   * an effect like that may hold nothing but a `setState`: reading the intent
-   * inside it is a call React cannot see through, and the React 19 lint refuses
-   * the whole effect over it (`react-hooks/set-state-in-effect`, measured on
-   * exactly this code). Two counters put the question in the subscription
-   * instead, where each subscriber compares its own number and a `panel`
-   * request cannot be mistaken for a wizard one by a reader that forgot to ask.
-   *
-   * Both are plain numbers, which is what `useSyncExternalStore` wants: an
-   * object snapshot would have to be memoized to keep it from looping.
+   * The subset of {@link getSnapshot}'s requests that asked for the wizard too. A second counter
+   * rather than an intent to read back, because the panel's effect may hold nothing but a
+   * `setState` (`react-hooks/set-state-in-effect`), and a plain number is what
+   * `useSyncExternalStore` compares.
    */
   getWizardSnapshot(): number {
     return wizardRequests;
@@ -131,17 +83,9 @@ export const plannerUi = {
     return 0;
   },
   /**
-   * Ask for the panel. The caller has usually just set the active park and day.
-   *
-   * A wizard request is ALSO a panel request — the panel has to be on screen
-   * for the dialog to open over it — so it moves both counters and the panel's
-   * own subscriber needs no special case for it.
-   *
-   * `source` comes FIRST and has no default, so a new way in cannot reach
-   * production unattributed: leaving it out is a compile error, and the two
-   * unions share no member, so swapping the arguments is one too. The intent
-   * keeps its default, which is why every existing caller reads as before bar
-   * the one word it now names itself with.
+   * Ask for the panel; the caller has usually just set the active park and day. A wizard request
+   * moves both counters, since the panel has to be on screen for the dialog. `source` comes first
+   * with no default, so a new way in cannot ship unattributed.
    */
   requestOpen(source: PlannerOpenedSource, next: PlannerOpenIntent = 'panel'): void {
     openSource = source;
@@ -150,22 +94,15 @@ export const plannerUi = {
     for (const listener of listeners) listener();
   },
   /**
-   * Say who is opening the panel without going through the counter.
-   *
-   * One caller, and it is the edge tab: it holds no plan and points at no day,
-   * so it sets the launcher's `open` itself rather than sending a request the
-   * launcher would only turn back into the same `setOpen(true)`. It still owes
-   * the report a name, and this is the whole of what it owes.
+   * Say who is opening the panel without going through the counter: the edge tab sets the
+   * launcher's `open` itself, but still owes the report a name.
    */
   noteOpenSource(source: PlannerOpenedSource): void {
     openSource = source;
   },
   /**
-   * The way in that produced the open now on screen.
-   *
-   * Only meaningful in the commit where the panel goes from closed to open —
-   * read at any other moment it names whoever asked last, which may be a request
-   * that arrived while the panel was already up and opened nothing.
+   * The way in that produced the open now on screen. Only meaningful in the commit where the panel
+   * opens; at any other time it names whoever asked last.
    */
   getOpenSource(): PlannerOpenedSource {
     return openSource;

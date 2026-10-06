@@ -11,17 +11,10 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
- * The page a shared-plan link opens: read somebody else's plan, then take a copy.
- *
- * The copy is the whole point (PAR-82, option A). The plan is written into THIS
- * browser's store and the sender's trip id is kept nowhere, so nothing here can
- * ever `PUT` to it: what the visitor changes afterwards is theirs, and the
- * sender's plan stays as it was. If this browser has push on, `adoptSharedPlan`
- * uploads the copy under this browser's own id.
- *
- * Nothing is written until the button is pressed. Opening a link must not
- * replace a plan the visitor already has, so when there is one the page says
- * so above the button.
+ * The page a shared-plan link opens: read somebody else's plan, then take a copy. The copy goes
+ * into this browser's store and the sender's trip id is kept nowhere, so nothing here can write to
+ * the sender's plan; with push on, `adoptSharedPlan` uploads it under this browser's own id.
+ * Nothing is written until the button is pressed, and a plan already here is mentioned above it.
  */
 
 type Load =
@@ -44,8 +37,7 @@ export function PlannerSharedPlan() {
   const t = useTranslations('planner');
   const locale = useLocale();
 
-  // `undefined` on the server and in the hydration pass, where there is no
-  // fragment to read; the real value arrives in the re-render right after.
+  // `undefined` on the server and in the hydration pass; the fragment arrives in the next render.
   const hash = useSyncExternalStore(
     subscribeHash,
     () => window.location.hash,
@@ -61,9 +53,7 @@ export function PlannerSharedPlan() {
 
   const [loaded, setLoaded] = useState<{ id: string; attempt: number; load: Load } | null>(null);
   const [attempt, setAttempt] = useState(0);
-  // The id that was taken over, not a boolean. A second link opened in the
-  // same tab changes only the fragment, and a boolean would then show "the
-  // plan is now in your planner" under a plan that is not.
+  // The id taken over, not a boolean: a second link in the same tab changes only the fragment.
   const [adoptedId, setAdoptedId] = useState<string | null>(null);
   const adopted = tripId !== undefined && tripId !== null && adoptedId === tripId;
 
@@ -97,8 +87,7 @@ export function PlannerSharedPlan() {
     };
   }, [tripId, attempt]);
 
-  // A result belongs to the id and the attempt it was fetched for. Anything
-  // else — a new fragment, or "try again" pressed — is loading again.
+  // A result belongs to the id and attempt it was fetched for; anything else is loading again.
   const load: Load =
     tripId === undefined
       ? { kind: 'loading' }

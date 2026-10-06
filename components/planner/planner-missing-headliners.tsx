@@ -29,22 +29,9 @@ interface PlannerMissingHeadlinersProps {
 /**
  * The park's headliners that are not in this day's plan.
  *
- * The CURATED set from the API (`isHeadliner`), never the day's tallest bars:
- * `dayPeak` says what is busy, and "did I miss the big one" is a question about
- * what the park is known for. A headliner having a quiet Tuesday is still the
- * ride somebody travelled for. Silent once they are all in — a hint that never
- * goes away is a decoration.
- *
- * It lived inside the ride search once and was taken out because the eight rows
- * below it showed the same rides. The search is `planner-wide:hidden` now — the phone's
- * surface alone — so the band would have vanished from the desktop with it,
- * which is where it was missed. Its own component, rendered beside the search
- * rather than in it, and the overlap with those rows is accepted: the list is a
- * catalogue of everything the day has, this is a short statement about the plan.
- *
- * A pill both adds on click and drags, because the two gestures answer
- * different questions — the click files it at the next free slot, the drag
- * picks the hour.
+ * The curated set (`isHeadliner`), never the day's busiest rides: a headliner on a quiet day is
+ * still the ride somebody travelled for. Silent once they are all in. A pill adds on click (next
+ * free slot) and drags (an hour of the visitor's choosing).
  */
 export function PlannerMissingHeadliners({
   parkSlug,
@@ -56,7 +43,7 @@ export function PlannerMissingHeadliners({
   prefs,
 }: PlannerMissingHeadlinersProps) {
   const t = useTranslations('planner');
-  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   /** The same arrangement the `planner-phone:` classes below switch on. */
   const isPhone = useMediaQuery(PLANNER_PHONE_QUERY);
@@ -79,7 +66,7 @@ export function PlannerMissingHeadliners({
       (ride) =>
         ride.isHeadliner &&
         !planned.has(ride.attractionSlug) &&
-        // Not a headliner this party can ride is not a headliner they missed.
+        // A headliner this party cannot ride is not one they missed.
         !partyFlags(ride, prefs).tooShort
     );
   }, [day, planned, prefs]);
@@ -90,16 +77,11 @@ export function PlannerMissingHeadliners({
     pxPerMin,
     earlyEntryOpenMin(day?.context)
   );
-  // Read on every render rather than once: this band is open for as long as the
-  // panel is, and a pill pressed at 14:00 may not file into the morning because
-  // the clock was read when the sheet opened. No subscription — nothing here
-  // has to disappear on a tick, and the value that matters is the one at the
-  // moment of the press.
+  // Read on every render: the band stays open with the panel, and a pill pressed at 14:00 may not
+  // file into the morning. No subscription, since only the value at the press matters.
   const clock = dayClock(date, resolveTimeZone(timezone));
-  // Per ride, not per park: filing every ride at the opening hour puts a block
-  // in hours the ride has no measured curve for — and some of them do not open
-  // with the gates at all. The clock is the third floor under the same rule:
-  // a queue in an hour that has passed is one nobody can join.
+  // Per ride, not per park: some rides open later than the gates or have no curve for the first
+  // hours, and the clock is the third floor under the same rule.
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
@@ -110,29 +92,18 @@ export function PlannerMissingHeadliners({
         )
       : undefined;
 
-  /** The band's heading. */
   const heading = (
     <>
       <Crown className="size-3 shrink-0" aria-hidden="true" />
-      {/* The line is one flex item, not three. `t.rich` splits the sentence into
-          text, link, text, and each run would otherwise become its own flex item
-          with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
+      {/* One flex item, not three: `t.rich` splits the sentence into runs, and each would get the
+          row's gap. */}
       <span>
         {t.rich('headliners.missing', {
           count: missing.length,
-          // A link on the wide arrangement, plain text on the phone. Every
-          // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
-          // line cannot pay it: as a link this word measured 50x15 and
-          // `check:planner` refused it, rightly — a 15 px target above the
-          // 44 px pills is one that gets missed.
-          //
-          // `showTooltip={false}` and that is NOT a preference: a tooltip
-          // opened from inside this sheet paints UNDER it. Measured at
-          // 1440x900 with the panel open — the box is 256x80 at x=934, the
-          // sheet starts at x=992, and 20 of 25 points sampled across the
-          // tooltip answer the sheet, because `TooltipContent` is `z-50`
-          // against the sheet's `z-[70]`. A definition four fifths hidden is
-          // worse than none; the link carries the reader to the whole of it.
+          // A link on the wide arrangement, plain text on a phone, where an 11 px line cannot be a
+          // 44 px target. `showTooltip={false}` because a tooltip opened from this sheet paints
+          // under it (`z-50` against the sheet's `z-[70]`); the link carries the reader to the
+          // whole definition.
           term: (chunks) =>
             isPhone ? (
               <>{chunks}</>
@@ -147,9 +118,7 @@ export function PlannerMissingHeadliners({
   );
 
   if (missing.length === 0) return null;
-  // A day that has been walked is a record, and "these headliners are still
-  // missing" is an offer about a day somebody can still have. On yesterday it
-  // is a reproach, and a pill files a ride at a minute the app picked.
+  // On a walked day "still missing" is a reproach, not an offer.
   if (clock.phase === 'past') return null;
 
   return (
@@ -157,49 +126,19 @@ export function PlannerMissingHeadliners({
       data-planner-headliner-hint=""
       className="border-border/60 planner-phone:py-1.5 shrink-0 border-t px-2 py-2"
     >
-      {/* Its own ground, and only ONE of them: this shipped as
-          `bg-crowd-high/10 bg-background/70`, which is two `background-color`
-          declarations on one element — the tint never painted, and the band was
-          the panel's ground with a crown on it. The photo behind the panel is
-          in a negative layer now and no longer thins anything, so the band can
-          go back to being what it says it is: the crowd tint, over the panel. */}
-      {/* ONE row on a phone, scrolled sideways (PAR-482). The band used to wrap
-          and was capped at 126 px with a vertical scroller of its own — two
-          rows of 44 px pills, which at 390×844 was more than a third of what
-          the axis had left, and a park with ten missing headliners still hid
-          most of them below a scroll nobody saw. A single row is 44 px plus the
-          heading, every pill stays reachable with a swipe, and the count in the
-          heading says how many there are. The desktop keeps the wrapping row,
-          where there is nothing to ration.
-
-          `planner-phone:` for the whole arrangement and not `max-sm:`, for the
-          reason the rest of the sheet gives: the band rations HEIGHT, which a
-          landscape phone is short of (PAR-76), not width. */}
+      {/* One background only: two `bg-*` colours on one element left the tint unpainted. One row
+          on a phone, scrolled sideways, so the band costs the axis a single 44 px row and the
+          heading's count says how many there are; the desktop keeps the wrapping row.
+          `planner-phone:` rather than `max-sm:`, since the band rations height. */}
       <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:p-1 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           {heading}
         </p>
-        {/* The pills are 26 px on a phone, so the 16 px thumbnail sits 4 px
-            from the pill's border above and below as it does on the left
-            (PAR-482: "die Headliner-Pillen sind viel zu hoch", then "oben zu
-            groß"). Their 44 px target is an `after:` reaching 12 px past the
-            border above and 6 below — `-top-[13px]` and `-bottom-[7px]`,
-            since an absolute box is placed from the PADDING edge and the pill
-            has a 1 px border. Up is where the room is: the heading, which is
-            text. Down it stops 1 px into the band's own padding, clear of the
-            optimise buttons' reach 3 px into the same padding from below.
-            A scroller clips its children for hit-testing as much as for
-            paint, so the row carries 14 px of padding above and 8 below (one
-            more than each reach, or the clip edge takes a pixel off) and
-            hands them back with negative margins: the pseudo-elements land
-            inside the scroller, and the band is no taller for them.
-            The heading keeps its own line on a phone as well: folded into
-            this row it took 150 of the 356 px the pills scroll in.
-
-            And on a phone the pills sit 4 px from the border on every side:
-            4 above to the heading, 4 below, 4 left and right (`p-1` on the
-            box). The box was `px-2` there, 8 px beside the pills and 4 above
-            and below them, and the report was that the uneven gaps showed. */}
+        {/* On a phone the pills are 26 px with a 44 px `after:` target reaching 12 px up and 6 down
+            (`-top-[13px]`/`-bottom-[7px]`, measured from the padding edge inside a 1 px border).
+            A scroller clips hit-testing, so the row carries 14 px of padding above and 8 below
+            and hands them back with negative margins. Pills sit 4 px from the border on every
+            side. */}
         <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-2.5 planner-phone:-mb-2 planner-phone:items-center planner-phone:pt-3.5 planner-phone:pb-2 mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (
             <button
@@ -226,11 +165,8 @@ export function PlannerMissingHeadliners({
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
                   },
-                  // The pill's own thumbnail, which is already decoded — a drag
-                  // image is snapshotted inside `dragstart` and cannot wait for
-                  // a load. `photo` rides along for the ride whose picture is
-                  // somehow not painted yet: it warms the same rendition so the
-                  // next drag has one.
+                  // The pill's own decoded thumbnail, since a drag image cannot wait for a load;
+                  // `photo` warms the same rendition for the next drag.
                   {
                     element: event.currentTarget,
                     photo: ride.backgroundImage,
@@ -240,14 +176,8 @@ export function PlannerMissingHeadliners({
               }
               className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:h-[26px] planner-phone:max-w-56 planner-phone:shrink-0 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-top-[13px] planner-phone:after:-bottom-[7px] planner-phone:after:content-[''] planner-wide:cursor-grab planner-wide:active:cursor-grabbing relative flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
             >
-              {/* The ride's picture, at 16 px. A pill was a word in a rounded
-                  box, which is what a filter chip looks like — and these are
-                  rides, the same objects the list below draws with a photograph
-                  each. Twenty-four of Phantasialand's thirty-four have no
-                  picture in the media database, so the coaster mark is the
-                  COMMON case rather than the exception and the box is the same
-                  size either way; a band where half the pills carried a
-                  thumbnail and half did not would read as a loading state. */}
+              {/* The ride's picture at 16 px, or the coaster mark, which is the common case, so the
+                  box is the same size either way. */}
               <PlannerRideThumb
                 src={ride.backgroundImage}
                 position={ride.backgroundPosition}

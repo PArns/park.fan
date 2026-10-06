@@ -11,8 +11,8 @@ import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
-// (`lib/i18n/route-namespaces.mjs`) — that list decides what the chunk carries,
-// this one what the provider declares to anything nested below it.
+// (`lib/i18n/route-namespaces.mjs`): that list decides what the chunk carries, this one what the
+// provider declares below it.
 const PLANNER_NAMESPACES = ['planner', 'parks.weather'] as const;
 
 const loadPlannerFlyoutHost = () =>
@@ -23,33 +23,15 @@ type PlannerFlyoutHostComponent = Awaited<ReturnType<typeof loadPlannerFlyoutHos
 /**
  * The planner's way in, and the panel it opens.
  *
- * A tab on the window's right edge rather than a header control, and that is
- * settled by measurement rather than taste: the header is 48 px with 13 px of
- * horizontal slack left at 320 px, and its own documentation says the next
- * control there is a question about the bar's height rather than about the
- * button.
- *
- * **The tab is always drawn; the PANEL is what loads lazily.** It used to be the
- * whole control that waited — nothing appeared until something was planned or
- * something asked for the panel — which made the feature invisible to everybody
- * who had not already used it. The tab can afford to be eager because it reads
- * only `navigation.planner`, a word the layout chrome already carries for the
- * header, the footer and the parks menu; the `planner` namespace itself is 15 KB
- * that would otherwise ride in the chrome of every page × six locales, for a
- * panel most visitors never open, so it is still fetched on demand.
- *
- * The two entry points differ in which comes first. `AddToPlannerButton` on a
- * ride puts an entry in. A day in the park calendar is the other order — the day
- * is chosen before any ride — so it sets the active day and then signals through
- * `plannerUi`, which is why the open state cannot key purely off the count.
- *
- * `fixed` costs no layout shift by construction, which is why this is the one
- * part of the feature with no box to reserve.
+ * The tab is always drawn and the panel loads lazily: the tab reads only `navigation.planner`,
+ * which the layout chrome already carries, while the `planner` namespace and the panel's code are
+ * fetched once the panel is wanted. A ride's `AddToPlannerButton` puts an entry in first; a
+ * calendar day sets the active day and signals through `plannerUi`, so the open state cannot key
+ * off the count alone.
  */
 export function PlannerLauncher() {
   const { total, state } = usePlanner();
-  // A counter, not a boolean: two requests in a row are two events, and the
-  // server snapshot is 0 so this is never in the first HTML.
+  // A counter, not a boolean: two requests in a row are two events. The server snapshot is 0.
   const openRequests = useSyncExternalStore(
     plannerUi.subscribe,
     plannerUi.getSnapshot,
@@ -57,25 +39,16 @@ export function PlannerLauncher() {
   );
   const [open, setOpen] = useState(false);
   /**
-   * Whether the past-day question is on screen instead of the panel.
-   *
-   * Held here because this is where the two ways in that name no day arrive,
-   * and drawn by the panel (`PlannerFlyout`), because the question is asked in
-   * the `planner` namespace and its „Neuen Tag planen" is the panel's wizard.
-   * This file is a lazy message boundary and may not read that namespace
-   * itself — see `PlannerFlyoutHost`.
+   * Whether the past-day question is on screen instead of the panel. Held here, where the ways in
+   * that name no day arrive, and drawn by `PlannerFlyout`, since this file is a lazy message
+   * boundary and may not read the `planner` namespace.
    */
   const [askingPastDay, setAskingPastDay] = useState(false);
 
   /**
-   * The planner's own button was pressed: open it, unless it would open on a
-   * day that is over.
-   *
-   * Only the edge tab and the header button come through here. Every other way
-   * in names its day — a calendar day, a park, a day off the list — and asking
-   * those whether they meant a new day would be asking a question they have
-   * already answered. The plan is read at the press rather than at render, so
-   * a trip that ends at midnight is past on the first click after it.
+   * The planner's own button was pressed: open it, unless it would open on a day that is over. Only
+   * the edge tab and the header button come here; every other way in names its day. The plan is
+   * read at the press, so a trip ending at midnight is past on the first click after it.
    */
   const openOrAsk = useCallback(() => {
     if (pastActiveDay(state)) setAskingPastDay(true);
@@ -83,18 +56,10 @@ export function PlannerLauncher() {
   }, [state]);
 
   /**
-   * Something outside the panel asked for it — a day picked in the park
-   * calendar, or the header button on a phone. An effect is right here and a
-   * render-time branch is not: the request arrives from another component's
-   * event, and the panel must reopen on a SECOND request after the visitor has
-   * closed it, which is why the counter is compared against the last one seen
-   * rather than against zero.
-   *
-   * The header button is the one request that names no day, so it gets the
-   * tab's treatment. The branch lives in a callback rather than in the effect,
-   * for the reason `startFromRequest` in `planner-flyout.tsx` gives:
-   * `react-hooks/set-state-in-effect` refuses an effect body that branches
-   * into a `setState`.
+   * Something outside the panel asked for it. An effect, because the request is another component's
+   * event and a second request after a close must reopen it, hence comparing against the last
+   * counter seen. The header button names no day, so it is treated like the tab. A callback rather
+   * than a branch in the effect, which `react-hooks/set-state-in-effect` refuses.
    */
   const answerRequest = useCallback(() => {
     if (plannerUi.getOpenSource() === 'header') openOrAsk();
@@ -107,38 +72,13 @@ export function PlannerLauncher() {
     answerRequest();
   }, [openRequests, answerRequest]);
 
-  /**
-   * One `planner_opened` per opening, with the way in that produced it.
-   *
-   * An effect OF ITS OWN, watching `open` rather than the request counter, and
-   * both halves of that are load-bearing. The counter moves on every request
-   * including the ones that arrive while the panel is already up — a second day
-   * pressed in the calendar, the wizard finishing inside the panel — where
-   * `setOpen(true)` above is a no-op and nothing opens; counting there would
-   * bill those as openings. The closed → open edge is the event.
-   *
-   * So it is a second effect for a reason of arithmetic and not of lint. The
-   * note on `plannerUi.getWizardSnapshot` warns that a call React cannot see
-   * through, added beside the `setOpen` above, can take
-   * `react-hooks/set-state-in-effect` down with it; putting
-   * `trackPlannerOpened(plannerUi.getOpenSource())` there was tried here and
-   * stayed green (the guarded early return is what the rule accepts), so that is
-   * not what forced the split — the over-counting is. This effect holds no
-   * `setState` either way, so the question cannot come back.
-   */
-  // The panel is worth loading once it has been opened, once there is something
-  // in it, or once something has asked for it. Closing it again does not unload
-  // the chunk: it is already in the browser, and unmounting the panel on close
-  // is what resets the wizard.
+  // The panel is worth loading once it has been opened, holds something, or was asked for. Closing
+  // it does not unload the chunk; unmounting the panel on close is what resets the wizard.
   const wanted = open || total > 0 || openRequests > 0;
   const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
-  // The panel's code (sheet, wizard, day column, ride search) is 82 KB gzip and
-  // used to ride in the first load of every page. It is fetched once the panel is
-  // wanted, beside the messages rather than after them. Held in state rather than
-  // behind `next/dynamic`, because `panelVisible` below has to know the code is
-  // THERE: a Suspense fallback of `null` would count a press as an opening while
-  // the chunk is still in flight, and a rejected import would throw into the
-  // nearest error boundary instead of leaving the tab alone.
+  // The panel's code is fetched once it is wanted, beside the messages. Held in state rather than
+  // behind `next/dynamic`, because `panelVisible` has to know the code is there, and a rejected
+  // import must leave the tab alone rather than reach an error boundary.
   const [Host, setHost] = useState<PlannerFlyoutHostComponent | null>(null);
   useEffect(() => {
     if (!wanted || Host) return;
@@ -148,8 +88,7 @@ export function PlannerLauncher() {
         if (live) setHost(() => component);
       },
       () => {
-        // Like the messages, a failed fetch is not retried: the tab stays, the
-        // panel does not open, and the next page load asks again.
+        // Not retried: the tab stays, the panel does not open, and the next page load asks again.
       }
     );
     return () => {
@@ -157,19 +96,14 @@ export function PlannerLauncher() {
     };
   }, [wanted, Host]);
   /**
-   * The panel is on screen — which is NOT the same as `open`.
-   *
-   * The `planner` namespace is 15 KB and arrives as its own chunk, so between
-   * the press and the panel there is a fetch. `open` flips at the press; the
-   * panel is drawn when the chunk lands. Billing the press counts an opening
-   * the visitor never saw — and `useLazyMessages` does not retry a failed
-   * fetch, so on a blocked asset it is an opening that never happens at all,
-   * followed by a second and a third as somebody presses again because nothing
-   * did. The edge tab already draws its own state off this composite rather
-   * than off `open`; the event now agrees with it.
+   * The panel is on screen, which is not the same as `open`: the press flips `open` before the
+   * chunk lands, and a fetch that fails never opens anything. The edge tab and `planner_opened`
+   * both follow this.
    */
   const panelVisible = wanted && messages.ready && Host !== null && open;
 
+  // One `planner_opened` per closed → open edge of what is on screen: a request while the panel is
+  // already up opens nothing and is not counted.
   const reported = useRef(false);
   useEffect(() => {
     if (panelVisible === reported.current) return;
@@ -179,27 +113,11 @@ export function PlannerLauncher() {
   }, [panelVisible]);
 
   /**
-   * How much of the window the panel is holding, for the page beside it.
-   *
-   * Follows `panelVisible`, not `open`: between the press and the chunk landing
-   * (about 240 ms at 150 ms RTT) the page would otherwise make room for a panel
-   * that is not drawn yet.
-   *
-   * A CSS custom property on the document element rather than a prop, because
-   * the reader is `app/[locale]/layout.tsx` — a Server Component shared by 3,109
-   * prerendered routes, which cannot take a value from a client store. It is
-   * unset until the panel opens, so the server renders `0px` through the
-   * `var()` fallback and a visitor who never opens the planner never pays a
-   * style recalculation for it.
-   *
-   * Written on every resize frame on purpose: the alternative is committing it
-   * on release, and then the page visibly lags a panel edge the pointer is
-   * already holding.
-   *
-   * Written from a subscription to the width store rather than from a render of
-   * this component. A render per resize frame here was a render of the whole
-   * panel below it, for a value that only this property, the sheet's own width
-   * and the edge tab use — and each of those now reads the store itself.
+   * How much of the window the panel is holding, for the page beside it. Follows `panelVisible`, so
+   * the page does not make room for a panel not drawn yet. A CSS custom property on the document,
+   * because the reader is the locale layout, a Server Component; unset until the panel opens, so
+   * the server renders `0px`. Written on every resize frame from a subscription to the width store,
+   * not from a render of the launcher.
    */
   useEffect(() => {
     const root = document.documentElement;
@@ -208,8 +126,8 @@ export function PlannerLauncher() {
       root.removeAttribute('data-planner-open');
       return;
     }
-    // The store also speaks on a window resize, where the capped width often
-    // stays what it was; that writes nothing.
+    // The store also speaks on a window resize where the capped width often stays; that writes
+    // nothing.
     let written = '';
     const writeInset = () => {
       const inset = `${plannerPanelWidth.getSnapshot()}px`;
@@ -219,12 +137,8 @@ export function PlannerLauncher() {
     };
     writeInset();
     const unsubscribe = plannerPanelWidth.subscribe(writeInset);
-    // An ATTRIBUTE beside the width, and it earns its place: a ride card on the
-    // page behind the panel becomes a drag source while the planner is open,
-    // and it has to say so. Passing that down as a prop would mean a context
-    // over the whole page and a re-render of forty cards on every open; an
-    // attribute on the document element is a stylesheet match and costs the
-    // cards nothing at all.
+    // An attribute beside the width: ride cards behind the panel become drag sources while it is
+    // open, and a stylesheet match costs them nothing where a context would re-render them all.
     root.setAttribute('data-planner-open', '');
     return () => {
       unsubscribe();
@@ -233,9 +147,8 @@ export function PlannerLauncher() {
     };
   }, [panelVisible]);
 
-  // MOUNTED as soon as the chunk is there, not only while open: the sheet plays
-  // its own close animation and the wizard resets by unmounting with the panel,
-  // so tying this to `open` would cut both.
+  // Mounted as soon as the chunk is there, not only while open: the sheet plays its own close
+  // animation and the wizard resets by unmounting with the panel.
   const panel =
     wanted && messages.ready && Host ? (
       <Host
@@ -251,19 +164,16 @@ export function PlannerLauncher() {
       <PlannerEdgeTab
         open={open && panel !== null}
         total={total}
-        // The tab is the one way in that never goes through the store, so it
-        // names itself here — before the flip, because the transition effect
-        // reads the source in the very next commit. Noted on the way out as well as
-        // the way in, which costs nothing and keeps a close from leaving the
-        // previous opener's name standing for whatever opens next.
+        // The tab never goes through the store, so it names itself, before the flip, since the
+        // transition effect reads the source in the next commit. On the way out too, so a close
+        // does not leave the previous opener's name standing.
         onToggle={() => {
           plannerUi.noteOpenSource('tab');
           if (open) setOpen(false);
           else openOrAsk();
         }}
       />
-      {/* Until the chunk resolves — a same-origin module, a few milliseconds —
-          nothing is drawn rather than raw message keys. */}
+      {/* Until the chunk resolves, nothing is drawn rather than raw message keys. */}
       {messages.messages ? (
         <RouteMessagesProvider messages={messages.messages} namespaces={PLANNER_NAMESPACES}>
           {panel}

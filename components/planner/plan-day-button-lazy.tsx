@@ -9,24 +9,12 @@ import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 const PLANNER_NAMESPACES = ['planner'] as const;
 
 /**
- * The lazy boundary around the calendar's "plan this day" button.
+ * The lazy boundary around the calendar's "plan this day" button, so the `planner` namespace is not
+ * in the payload of every park page and calendar URL for one label. It costs no flash: the button
+ * only renders inside the day dialog, so the chunk lands while the dialog animates in.
  *
- * Without it the `planner` namespace lands in the payload of the park page and
- * of every calendar URL — two of the three highest-invocation routes in the app —
- * for one label, in six locales, on every request including the crawler's. The
- * calendar surface was 27,984 URLs when this was written and is 5,820 since the
- * span cuts of 2026-08-28 and 2026-09-01; the boundary earns its keep either way,
- * because what it saves is per request, not per URL.
- *
- * A lazy boundary usually costs a flash, and here it costs none: this button
- * only ever renders inside the day-detail DIALOG, so the chunk is fetched at the
- * moment the dialog opens and lands while it is still animating in. Nothing is
- * drawn until it does, rather than a raw message key — the button sits at the
- * end of a row of badges, so its arrival moves nothing above it.
- *
- * This file must not call `useTranslations` itself: the generator counts a
- * boundary's own calls while stopping the walk at its imports, so a namespace
- * read here goes straight back into the chrome of every page.
+ * This file must not call `useTranslations` itself: the generator counts a boundary's own calls but
+ * stops at its imports, so a read here puts the namespace back into every page's chrome.
  */
 export function PlanDayButtonLazy(props: PlanDayButtonProps) {
   const messages = useLazyMessages(PLANNER_NAMESPACES, true);

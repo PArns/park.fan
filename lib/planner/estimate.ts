@@ -10,12 +10,9 @@ import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 
 /**
- * What a planned entry is expected to cost, and how much that expectation is
- * worth.
- *
- * The join between a plan (a ride at an hour) and the API's day payload (a curve
- * per ride). Kept apart from the components because it is where the honesty
- * rules live, and those need testing rather than eyeballing.
+ * What a planned entry is expected to cost, and how much that expectation is worth: the join
+ * between a plan and the API's day payload, kept out of the components so its honesty rules can
+ * be tested.
  */
 export interface PlannerEstimate {
   /** Expected wait in minutes at the planned hour, or null when unknown. */
@@ -26,47 +23,25 @@ export interface PlannerEstimate {
    */
   uncertaintyMinutes: number | null;
   /**
-   * The typical error of this ride's own numbers, in minutes, or `null` where
-   * the backend has not measured one.
-   *
-   * A different statement from {@link uncertaintyMinutes}, and the two must not
-   * be merged or swapped: that one is the model's own spread on this
-   * prediction, this one is how far its predictions have actually landed from
-   * the days that then happened. It is a TYPICAL error and not a bound — half
-   * the days fall further out — so it may be printed as a `±` beside the figure
-   * and never as an interval that is claimed to contain the answer.
+   * The typical error of this ride's own numbers, in minutes, or `null` where the backend has not
+   * measured one. Not {@link uncertaintyMinutes}, the model's spread on this prediction, and never
+   * merged with it. A typical error, not a bound, so it may be printed as a `±` but never as an
+   * interval claimed to contain the answer.
    */
   expectedError: number | null;
   /**
-   * Which regime THIS hour's figure came from, which is not always the day's.
-   *
-   * `/plan/day` sets `hours[].source` only where an hour departs from the day's
-   * `tier`, and today is exactly that case: 50 of Phantasialand's 254 hourly
-   * points on 2026-09-04 are `composed` under a `measured` day, because the
-   * 24-hour window the model measures does not cover the whole operating day.
-   * The block's lower edge is drawn from this — a hard end for a measurement, a
-   * fade for a composition — so reading the day's tier there would have drawn
-   * fifty composed hours as if somebody had measured them.
-   *
-   * `null` only where there is no day at all.
+   * Which regime this hour's figure came from, which is not always the day's: `/plan/day` sets
+   * `hours[].source` only where an hour departs from the day's `tier`, as today's composed hours
+   * do. The block's lower edge is drawn from this. `null` only where there is no day at all.
    */
   tier: PlanDayTier | null;
   /**
-   * Why there is no number, when there is none. `outside-hours` and `no-curve`
-   * are different things to tell a visitor: one is "not while the park is shut",
-   * the other is "we have never measured this ride's day".
+   * Why there is no number, when there is none. `outside-hours` ("not while the park is shut") and
+   * `no-curve` ("never measured") are different things to tell a visitor.
    *
-   * `assumed` is the one value that comes WITH a figure. It is the floor below,
-   * carried as a separate state rather than folded into `none` so that every
-   * surface can tell an assumption from a forecast — a block tints itself by
-   * how busy it is, and a queue nobody measured has no business claiming a
-   * colour.
-   *
-   * `early-entry` comes with a figure too, and the same one: a headliner filed
-   * before the park opens, on a day the visitor holds early entry. The API has
-   * no hour before the gates for any ride, so there is nothing measured to
-   * show; the assumption is stated instead (PAR-199, decision A). Read both
-   * through {@link isAssumedWait}.
+   * `assumed` and `early-entry` come with a figure, {@link ASSUMED_WAIT_MIN}, kept as their own
+   * states so no surface tints an assumption like a forecast. Read both through
+   * {@link isAssumedWait}.
    */
   missing:
     | 'none'
@@ -89,23 +64,11 @@ export function isAssumedWait(estimate: Pick<PlannerEstimate, 'missing'>): boole
 }
 
 /**
- * What a ride with no curve is taken to cost.
+ * What a ride with no curve is taken to cost, so it is not counted as zero in every total.
  *
- * The API omits a ride it has neither an hourly prediction nor a measured shape
- * for, and the planner used to answer that with an outlined box, no figure and
- * the sentence "für diese Bahn liegt keine Stundenkurve vor" — true, and useless
- * to somebody deciding whether the afternoon adds up, because the ride then
- * counted as zero in every total.
- *
- * Five minutes, and the number is not arbitrary: a park posts wait times in
- * multiples of five, so five is the shortest queue that can be posted at all,
- * and the rides this applies to are the ones nobody queues for — the flat rides
- * and walk-throughs the model never had enough observations to shape. It is the
- * smallest claim that is still a claim.
- *
- * It is marked wherever it is drawn (`missing: 'assumed'`): no crowd tint, and
- * the figure carries a `~`. An assumption that renders like a measurement is
- * the one thing this file exists to prevent.
+ * Five because parks post waits in multiples of five, so it is the shortest queue that can be
+ * posted, and the rides without a curve are the ones nobody queues for. Always marked where drawn
+ * (`missing: 'assumed'`): no crowd tint, and a `~` before the figure.
  */
 export const ASSUMED_WAIT_MIN = 5;
 
@@ -118,17 +81,13 @@ const UNKNOWN: PlannerEstimate = {
 };
 
 /**
- * A ride with no curve, at the day's own regime.
- *
- * A function rather than a constant because the tier belongs to the day: the
- * five minutes are an assumption either way, and the edge still says which kind
- * of day it is standing in.
+ * A ride with no curve, at the day's own regime: the five minutes are an assumption either way,
+ * and the edge still says which kind of day it is standing in.
  */
 function assumed(day: PlanDay): PlannerEstimate {
   return {
     wait: ASSUMED_WAIT_MIN,
-    // No band and no measured error, because there is no model behind this to
-    // have either.
+    // No band and no measured error: there is no model behind this.
     uncertaintyMinutes: null,
     expectedError: null,
     tier: day.tier ?? null,
@@ -139,19 +98,9 @@ function assumed(day: PlanDay): PlannerEstimate {
 /**
  * A park whose wait times nobody can read, at the day's own regime.
  *
- * The distinction this draws is the whole point. `assumed` and this land in the
- * same place — a ride the payload has no curve for — and mean opposite things.
- * `ASSUMED_WAIT_MIN` is for a ride with no HISTORY in a park that is measured:
- * five minutes is a placeholder for a queue somebody could in principle count.
- * Here there is no queue to count. Hansa-Park publishes its wait times only in
- * its own app on the park WLAN, so no number will ever arrive — and `/plan/day`
- * answers for it with `rides: []` and a drawn 11–21 axis, which is byte-for-byte
- * what a measured park with no history looks like.
- *
- * So the flag is read rather than derived, through the app's one reader
- * (`noLiveWaitTimesReason`), which treats an absent field as available: this
- * app deploys independently of the API, and a response predating the field must
- * behave exactly as it did before.
+ * Same payload shape as a measured ride with no history, opposite meaning: here no number will
+ * ever arrive. So the flag is read through `noLiveWaitTimesReason`, never derived. See
+ * docs/rules/parks-we-cannot-read.md.
  */
 function noSource(day: PlanDay): PlannerEstimate {
   return {
@@ -181,25 +130,14 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
       missing: 'no-day',
     };
   }
-  // The grid starts a block at any 15-minute step, and the API is hourly on both
-  // tiers, so the figure a block carries is its HOUR's. Interpolating between
-  // two points that are themselves already rounded to five is what printed 51,
-  // 53 and 47 elsewhere in this app.
-  //
-  // `entry.startMinute` is a minute on the GRID's axis, which for a park closing
-  // after midnight runs past 1440 — so the hour it falls in runs past 23, and
-  // the day's end has to be unfolded to meet it. Comparing against the raw
-  // `closeHour` made the test true for every hour of a 16:00–01:00 day, so
-  // every block reported `outside-hours`, the panel's total read zero minutes
-  // and the optimizer sorted a night by walking distance alone. Read through
-  // the grid's own rule rather than restated here: a second copy is what let
-  // the two disagree in the first place.
+  // The API is hourly, so a block carries its hour's figure; interpolating between two points
+  // already rounded to five prints figures like 51 and 47. `startMinute` runs past 1440 on a park
+  // closing after midnight, so the day's end is unfolded through the grid's own rule, never
+  // restated here.
   const hour = Math.floor(entry.startMinute / 60);
 
-  // Before the gates, on an early-entry day, for a ride that opens early: the
-  // assumption, marked as such. Asked per HOUR like everything else here, so the
-  // optimiser's hourly table (probed at :00) and a block at :45 in the same
-  // hour carry the same figure. A free block is still a free block.
+  // Before the gates, on an early-entry day, for a ride that opens early: the assumption, marked as
+  // such. Asked per hour, so the optimiser's hourly table and a block at :45 carry the same figure.
   if (hour < openHour && !entry.custom) {
     const early = earlyEntryOpenMin(day.context);
     if (
@@ -228,9 +166,8 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
     };
   }
 
-  // A free block is not a ride and has no forecast — it is a duration the
-  // visitor wrote down. `no-curve` would read as "we could not predict this",
-  // which is a claim about a queue that does not exist.
+  // A free block is a duration the visitor wrote down, not a ride: `no-curve` would claim we failed
+  // to predict a queue that does not exist.
   if (entry.custom)
     return {
       wait: null,
@@ -241,22 +178,14 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
     };
 
   const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
-  // A ride the API omitted, or an hour it has no point for: no measured shape to
-  // scale, so there is no curve rather than a flat one. Both are answered with
-  // the assumption rather than with a shrug — see `ASSUMED_WAIT_MIN` — EXCEPT
-  // where the park has no readable source at all, which is a different claim
-  // wearing the same shape. See `noSource`.
+  // A ride the API omitted, or an hour it has no point for, gets the assumption (see
+  // `ASSUMED_WAIT_MIN`), except where the park has no readable source at all. See `noSource`.
   const readable = hasReadableWaitTimes(day.context);
 
   if (!ride) return readable ? assumed(day) : noSource(day);
 
-  // Past midnight `hours[].hour` carries the UNFOLDED hour, the same axis the
-  // grid uses: 24 is midnight, 25 is 01:00. Measured on 2026-09-14 (Parc
-  // Astérix 2026-10-16 and Walibi Rhône-Alpes 2026-10-31, both 19 → 1, answer
-  // hours 19…25) and again on 2026-10-02 (Cedar Point 2026-10-31, 11 → 0,
-  // answers 11…24). `context.closeHour` beside it is still the folded wall-clock
-  // hour, so the two fields do not speak the same language — but the curve is
-  // only ever looked up here, at the axis hour.
+  // Past midnight `hours[].hour` carries the unfolded hour (24 is midnight, 25 is 01:00), the axis
+  // the grid uses, while `context.closeHour` stays the folded wall-clock hour.
   const point = ride.hours.find((h) => h.hour === hour);
   if (!point) return readable ? assumed(day) : noSource(day);
 
@@ -272,6 +201,7 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   };
 }
 
+/** The day's totals, as {@link totalsFor} sums them. */
 export interface PlannerTotals {
   /** Minutes queued, summing what is known. */
   expectedMinutes: number;
@@ -294,12 +224,9 @@ export interface PlannerTotals {
 }
 
 /**
- * The day's totals.
- *
- * Expected and actual are kept apart. Once a ride is ticked off its estimate
- * stops being the point, and a single "total wait" mixing predicted and measured
- * minutes would move for two different reasons at once — a visitor could not
- * tell a busier day from a longer plan.
+ * The day's totals. Expected and actual minutes are kept apart: a total mixing predicted and
+ * measured minutes would move for two reasons at once, and a visitor could not tell a busier day
+ * from a longer plan.
  */
 export function totalsFor(
   day: PlanDay | null | undefined,
@@ -314,10 +241,8 @@ export function totalsFor(
   let custom = 0;
 
   for (const entry of entries) {
-    // A free block is not a ride and not a forecast. It must not land in
-    // `unknown` — which would read as "we could not predict this" about a lunch
-    // break nobody asked us to predict — and its minutes are not WAITING, which
-    // is what `expectedMinutes` is labelled as.
+    // A free block is neither a ride nor a forecast: not `unknown`, and its minutes are not
+    // waiting.
     if (entry.custom) {
       custom++;
       continue;
@@ -346,6 +271,7 @@ export function totalsFor(
   return { expectedMinutes, counted, unknown, done, actualMinutes, actualCounted, custom };
 }
 
+/** How a ticked-off entry's queue compared with its forecast. */
 export interface PlannerActualDelta {
   /**
    * Measured minus forecast, in minutes, on the five-minute grid. Positive is a
@@ -353,47 +279,22 @@ export interface PlannerActualDelta {
    */
   minutes: number;
   /**
-   * Which way it went, and `same` where the grid says it did not go anywhere.
-   *
-   * A separate field rather than the sign of {@link minutes}, because zero has
-   * to be readable as a statement: a surface that tests the sign has to test
-   * for `0` as well, and the one that forgets prints "0 minutes over".
+   * Which way it went, and `same` where the grid says it did not go anywhere. Its own field rather
+   * than the sign of {@link minutes}, so zero cannot print as "0 minutes over".
    */
   direction: 'over' | 'under' | 'same';
 }
 
 /**
- * What a ticked-off entry actually cost against what was forecast for it.
+ * What a ticked-off entry actually cost against what was forecast for its hour.
  *
- * Both halves already existed and nothing compared them: `actualWait` is the
- * live reading the tick recorded, and `estimateFor` is the figure the block was
- * drawn at. The comparison is the point of ticking a ride off at all — a day
- * whose queues all came in under forecast is a different day from one that ran
- * over, and until now the planner stored both numbers and said nothing about the
- * difference.
+ * `roundWaitDeltaTo5`, never `roundWaitTo5`: this is a difference, and the wait rule floors
+ * everything under 2.5 to zero, which would swallow every queue shorter than forecast (see
+ * `lib/utils/wait-time.ts`).
  *
- * `roundWaitDeltaTo5`, never `roundWaitTo5`: this is a DIFFERENCE, and the
- * wait-time rule floors everything under 2.5 to zero because no queue is −15
- * minutes long. Pointed at a delta it deletes the whole falling half of the
- * scale, which is exactly how every shrinking queue on every park page came to
- * render as "stable" (see `lib/utils/wait-time.ts`). Here it would have swallowed
- * every queue that came in SHORTER than forecast, which is the outcome a visitor
- * most wants to see.
- *
- * `null` where there is nothing to compare, and the cases are not the same thing:
- *
- * - not ticked off, or ticked off with no figure — a closed ride, a park with no
- *   readable wait times. The visit is a fact, the queue is not.
- * - no forecast for the entry's hour at all (`wait: null`).
- * - a forecast that is the ASSUMED five minutes. `ASSUMED_WAIT_MIN` is a
- *   placeholder for a ride the model never had enough observations to shape, and
- *   a difference against it would report the app's own floor as a forecast error:
- *   a 25-minute queue on a flat ride would read "20 minutes over estimate" when
- *   nobody ever estimated anything.
- *
- * The forecast it compares against is the one for the entry's own hour, read
- * from the same payload that drew the block — the plan stores no snapshot of
- * what was predicted at the moment of ticking, so moving a ticked-off entry to
+ * `null` where there is nothing to compare: not ticked off or no recorded figure, no forecast for
+ * the hour, or a forecast that is only {@link ASSUMED_WAIT_MIN}, since a difference against the
+ * app's own floor is not a forecast error. No snapshot is stored, so moving a ticked-off entry to
  * another hour moves the figure it is compared with.
  */
 export function actualVsEstimate(
@@ -415,23 +316,15 @@ export function actualVsEstimate(
 /**
  * Whether the band may carry a figure at this distance.
  *
- * `uncertaintyMinutes` is the model's spread for the prediction it made, and it
- * is honest at any tier. What this function has no figure for is the widening
- * with distance: `leadTimeMae` is null until the backend's lead-time archive has
- * enough scored rows at this distance, and `forecastError` may not be scaled
- * into one — the horizon adds roughly four minutes to every band rather than a
- * factor, so a scaled figure is wrong at both ends (`RideDayCurve.forecastError`
- * in lib/api/types.ts).
- *
- * So: show the figure where the model gave one, and widen visually with distance
- * without ever attaching a number to the widening.
+ * `uncertaintyMinutes` is honest at any tier, but the widening with distance has no figure until
+ * the backend reports `leadTimeMae`, and `forecastError` may not be scaled into one (see
+ * `RideDayCurve.forecastError` in lib/api/types.ts). So the band widens visually with distance
+ * without a number attached.
  */
 export function bandCarriesFigure(day: PlanDay | null | undefined): boolean {
   if (!day) return false;
-  // An observed day has no band to carry a figure: the API sends
-  // `uncertaintyMinutes: null` on every ride of it, because a measurement has no
-  // spread. Saying so here rather than leaning on that keeps the two halves of
-  // the statement in one place.
+  // An observed day has no band: a measurement has no spread, and the API sends
+  // `uncertaintyMinutes: null` for every ride of it.
   if (day.tier === 'observed') return false;
   return day.tier === 'measured' || typeof day.leadTimeMae === 'number';
 }
@@ -456,26 +349,12 @@ function spanParts(
 }
 
 /**
- * How long an entry occupies the visitor, for placement arithmetic.
+ * How long an entry occupies the visitor, for drawing and for the gestures that work on what is
+ * drawn: a free block's duration, a ridden entry's actual minutes, otherwise the forecast plus its
+ * band. Shared so the ride search and the panel place a new ride after the same end.
  *
- * The reason this exists: the ride search filed every existing entry as 45
- * minutes when it looked for the next free slot, so a lunch block dragged out to
- * 85 minutes was read as ending 40 minutes before it does, and the next ride was
- * placed inside it — landing in a second lane with a conflict ring on it, on the
- * very gesture the resize was made for. The panel's own custom-block path had
- * this right and the search did not, which is exactly the kind of disagreement a
- * shared function is for.
- *
- * A free block's duration IS its length; a ridden entry's is what it actually
- * cost; everything else is the forecast plus its own band, because a block is
- * drawn that tall and a placement that ignores the band overlaps what a reader
- * can see. It deliberately does NOT reproduce the grid's `MIN_BLOCK_PX` floor:
- * that floor is about a block staying legible at 1.2 px/min and says nothing
- * about how long somebody is busy.
- *
- * This is the DRAWN length and the length a gesture is answered with. What the
- * optimiser schedules against is {@link plannedMinutes} — see its docstring for
- * why the two are different questions.
+ * Not the grid's `MIN_BLOCK_PX` floor, which is about legibility. The optimiser schedules against
+ * {@link plannedMinutes} instead.
  */
 export function occupiedMinutes(
   day: PlanDay | null | undefined,
@@ -487,29 +366,11 @@ export function occupiedMinutes(
 }
 
 /**
- * The same length with the band left off — what a plan is BUILT on.
+ * The same length with the band left off, what a plan is built on.
  *
- * `occupiedMinutes` answers "how tall is this block", and that is the right
- * answer for drawing it and for the gestures that work on what is drawn. It is
- * the wrong answer for the clock the optimiser runs, and the difference is not
- * cosmetic: `uncertaintyMinutes` is a half-width around the prediction, so
- * adding all of it schedules the pessimistic end of every queue as though it
- * were the expected one. On Phantasialand's payload for 2026-09-13 the band is
- * 29 minutes on Taron and 36–38 on F.L.Y. and the two Winja's — as long again
- * as the queue it is a spread around — so every stop after the first was pushed
- * back by most of an hour and the day ran past closing with a headliner left
- * out of it.
- *
- * It was also only ever HALF the optimiser's arithmetic: `waitByHour`, the cost
- * function and every comparison in `optimize.ts` read the bare `wait`, while the
- * clock that moved between two stops read this. Two numbers for one ride inside
- * one search, which is the shape of bug that module's own docstrings keep
- * naming.
- *
- * So the expected wait plans the day, and the band is what the block still
- * shows: a stop may start while the block before it is still drawing its spread,
- * because the spread is an interval the true value sits somewhere in and not an
- * appointment anybody has to keep.
+ * The band is a half-width around the prediction, so scheduling all of it paces the day off the
+ * pessimistic end of every queue, while the optimiser's costs read the bare wait. So the expected
+ * wait plans the day and the block still draws the band: the next stop may start inside it.
  */
 export function plannedMinutes(
   day: PlanDay | null | undefined,
@@ -519,7 +380,7 @@ export function plannedMinutes(
   return spanParts(day, entry, fallback).planned;
 }
 
-/** Where each entry starts and how long it is drawn, the shape the grid's placement and growth read. */
+/** Where each entry starts and how long it is drawn, for the grid's placement and growth. */
 export function spansFor(
   day: PlanDay | null | undefined,
   entries: readonly PlannerEntry[]

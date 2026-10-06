@@ -5,16 +5,10 @@ import { plannerPagePark } from '@/lib/planner/page-park';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 /**
- * Tells the planner which park the current route is about.
- *
- * Renders nothing. Mounted by every park-scoped page, because the panel lives
- * in the layout and otherwise cannot tell Toverland's calendar from
- * Phantasialand's — which is how the header came to read "Phantasialand" while
- * the reader was looking at Toverland.
- *
- * The cleanup clears by SLUG rather than unconditionally: two park routes swap
- * by mounting the new page before unmounting the old one, and a blind clear on
- * unmount would erase the park that just arrived.
+ * Tells the planner which park the current route is about. Renders nothing; mounted by every
+ * park-scoped page, since the layout's panel cannot otherwise tell one park's page from another's.
+ * The cleanup clears by slug: two park routes swap by mounting the new page first, and a blind
+ * clear would erase the park that just arrived.
  */
 export function PlannerPageParkBeacon({
   slug,
@@ -28,7 +22,7 @@ export function PlannerPageParkBeacon({
   name: string;
   geo: PlannerGeo;
   timezone?: string;
-  /** Resolved by the route — see `PlannerPagePark` for why not here. */
+  /** Resolved by the route; see `PlannerPagePark` for why. */
   backgroundImage?: string | null;
   backgroundPosition?: string;
 }) {

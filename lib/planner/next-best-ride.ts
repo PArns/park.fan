@@ -5,28 +5,22 @@ import { unfoldedCloseHour } from './day-grid';
 import { DETOUR_MAX, WALK_PARK_M_PER_MIN } from './leg';
 
 /**
- * "What now?" for a visitor who is standing in a park without a plan (PAR-419).
- *
- * The shortest queue is not the answer. A ride at 5 minutes that stays at 5 all
- * afternoon can wait; the one to walk to now is the ride whose queue is short NOW
- * and is forecast to be long SOON. So every suggestion is a measured difference
- * between two numbers the page already has: the live wait and the day's hourly
- * forecast (`/plan/day`, the planner's own curve) for the next two hours. The
- * same idea as `fitLevers`: a reason is a difference between two readings, never
- * advice.
- *
- * Pure: no clock, no storage, no fetch. The caller passes the park-local minute.
+ * "What now?" for a visitor standing in a park without a plan. Not the shortest queue: the ride to
+ * walk to now is the one whose queue is short now and forecast to be long soon, so every suggestion
+ * is a measured difference between the live wait and the day's hourly forecast for the next two
+ * hours, like `fitLevers`. Pure: the caller passes the park-local minute.
  */
 
 /** How far ahead "later" reaches. */
 export const NEXT_RIDE_LOOKAHEAD_MIN = 120;
 
 /**
- * The smallest gap worth a suggestion. Forecast hours are rounded to 5 and live
- * waits are posted in 5s, so a 5-minute gap is one rounding step and says nothing.
+ * The smallest gap worth a suggestion: forecasts and live waits are both in fives, so 5 minutes is
+ * one rounding step.
  */
 export const NEXT_RIDE_MIN_SAVING_MIN = 10;
 
+/** The most suggestions shown at once. */
 export const NEXT_RIDE_LIMIT = 3;
 
 /** The fields of a nearby row this rule reads (`AttractionWithDistance`). */
@@ -40,6 +34,7 @@ export interface NextRideCandidate {
   isCurrentlyInSeason?: boolean | null;
 }
 
+/** What {@link suggestNextRides} reads. */
 export interface NextRideInput {
   rides: readonly NextRideCandidate[];
   /** Today's `/plan/day`. Absent or empty means no forecast, and then no suggestion. */
@@ -50,6 +45,7 @@ export interface NextRideInput {
   riderHeightCm?: number;
 }
 
+/** One ride worth walking to now, and why. */
 export interface NextRideSuggestion {
   slug: string;
   name: string;
@@ -84,11 +80,8 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
   if (!day || !hasReadableWaitTimes(day.context)) return [];
   const forecastBySlug = new Map(day.rides.map((r) => [r.attractionSlug, r]));
   if (forecastBySlug.size === 0) return [];
-  // `closeHour` is the hour the closing time falls in, so that hour is not a
-  // whole open hour: a queue there is one the visitor may not get into.
-  // A day that runs past midnight (16:00–01:00) is unfolded onto one axis first,
-  // the same way `day-grid.ts` does it: hours and the clock after midnight move
-  // to 24+, or every evening hour would compare as later than a 1 o'clock close.
+  // `closeHour` is the hour the closing time falls in, so not a whole open hour. A day past
+  // midnight is unfolded onto one axis first, as in `day-grid.ts`.
   const { openHour, closeHour: rawCloseHour } = day.context;
   const wrapAt =
     openHour != null && rawCloseHour != null && rawCloseHour < openHour ? openHour : null;
@@ -110,8 +103,7 @@ export function suggestNextRides(input: NextRideInput): NextRideSuggestion[] {
     if (riderHeightCm != null && !canRideAtHeight(forecast, riderHeightCm)) continue;
 
     const walkMin = walkMinutesFrom(ride.distance);
-    // "Later" starts once the visitor could be there; an hour that has begun
-    // before they arrive is the hour they would queue in, not an alternative.
+    // "Later" starts once the visitor could be there.
     const arrival = now + walkMin;
     let peak: { hour: number; wait: number } | null = null;
     let peakAxis = 0;

@@ -12,12 +12,8 @@ import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confir
 interface PlannerOverviewProps {
   state: PlannerState;
   /**
-   * Starts a new day, through the wizard.
-   *
-   * It was a search field sitting at the top of this list, which asked the one
-   * question (which park) and skipped the two that decide whether the day works
-   * at all — which day, and who is coming. The wizard asks all three and lands
-   * on the park's own page, where the ride cards are.
+   * Starts a new day through the wizard, which asks which park, which day and who is coming, and
+   * lands on the park's own page.
    */
   onNewDay?: () => void;
   activeParkSlug: string | null;
@@ -27,21 +23,9 @@ interface PlannerOverviewProps {
 }
 
 /**
- * Every park and day in the plan, in one list.
- *
- * The panel otherwise only ever shows ONE day of ONE park, and everything else
- * a visitor has planned is reachable only by remembering it: the day picker
- * marks a planned date with a dot sixty entries deep, and the park switcher was
- * a row of chips naming parks with no indication of what was in them. A trip
- * across three parks and five days was invisible to the person who planned it.
- *
- * Days in the past are kept and shown greyed rather than swept up. A finished
- * day is a record of what was actually queued — the ticked-off entries carry
- * real measured minutes — and deleting it on a date change would throw that away
- * on the visitor's behalf.
- *
- * Sorted by park name and then by date, never by insertion: the order a plan was
- * built in is not an order anybody reads it in.
+ * Every park and day in the plan, in one list, since the panel otherwise shows one day of one park.
+ * Past days are kept and greyed rather than swept up: a finished day records what was actually
+ * queued. Sorted by park name, then date, never by insertion.
  */
 export function PlannerOverview({
   state,
@@ -54,18 +38,12 @@ export function PlannerOverview({
   const t = useTranslations('planner');
   const locale = useLocale();
   /**
-   * The day whose bin was pressed, or `null`.
-   *
-   * The park and the date rather than a boolean, because the dialog is rendered
-   * ONCE at the bottom of the list instead of per row: a `<ConfirmDialog>` inside
-   * the `map` would mount one Radix portal per planned day, all but one of them
-   * closed, for a question only one row can be asking.
+   * The day whose bin was pressed, or `null`: park and date, because the dialog is rendered once at
+   * the bottom of the list rather than one Radix portal per row.
    */
   const [pendingClear, setPendingClear] = useState<ClearDayTarget | null>(null);
-  // There is no single "today" in this list. A plan may hold Phantasialand and
-  // Magic Kingdom at once, and at 23:00 in Berlin those two parks are on
-  // different dates — so "Heute" and the greying-out of past days are decided
-  // per park, against that park's own zone.
+  // There is no single "today" here: two parks can be on different dates at once, so "Heute" and
+  // the greying-out are decided per park, in that park's zone.
 
   const parks = useMemo(
     () =>
@@ -78,13 +56,8 @@ export function PlannerOverview({
   );
 
   /**
-   * The one day the panel counts down to — the nearest planned day still ahead,
-   * whichever park it belongs to.
-   *
-   * One badge rather than one per row. Every other day in the list is reachable
-   * by reading the date beside it; the question this answers is the one a date
-   * does not, which is how long the wait is, and it has a single answer for the
-   * whole trip.
+   * The one day the panel counts down to, the nearest planned day ahead in any park: how long the
+   * wait is has a single answer for the whole trip, so one badge.
    */
   const next = useMemo(() => nextPlannedDay(state), [state]);
   const dayFormat = getDateTimeFormat(locale, { weekday: 'short', day: '2-digit', month: 'long' });
@@ -129,10 +102,8 @@ export function PlannerOverview({
               {park.days.map((day) => {
                 const isActive = park.slug === activeParkSlug && day.date === activeDate;
                 const past = day.date < park.today;
-                // The countdown goes on the nearest day ahead, and only from two
-                // nights out: at one the row already says "Morgen", and at zero
-                // it says "Heute". Those two labels ARE the count, and printing
-                // "in 1 Tag" beside "Morgen" is the same arithmetic twice.
+                // The countdown goes on the nearest day ahead, from two nights out: "Morgen" and
+                // "Heute" already are the count.
                 const countdown =
                   next !== null &&
                   next.parkSlug === park.slug &&
@@ -141,9 +112,8 @@ export function PlannerOverview({
                     ? next.inDays
                     : null;
                 const done = day.entries.filter((entry) => entry.done).length;
-                // Same wording as the day picker for the two dates that have a
-                // name: a list that calls today "Do., 03. September" while the
-                // picker beside it calls it "Heute" reads as two different days.
+                // The day picker's wording for the two dates that have a name, or the two read as
+                // different days.
                 const label =
                   day.date === park.today
                     ? t('day.today')
@@ -171,9 +141,7 @@ export function PlannerOverview({
                         </span>
                       )}
 
-                      {/* A day everything has been ridden on gets a tick instead of
-                        a count: "5 von 5" is arithmetic the reader should not
-                        have to do to see that a day is finished. */}
+                      {/* A finished day gets a tick instead of "5 von 5". */}
                       {done > 0 && done === day.entries.length ? (
                         <Check className="text-crowd-low size-3.5 shrink-0" />
                       ) : (

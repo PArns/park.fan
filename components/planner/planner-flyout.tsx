@@ -77,26 +77,13 @@ interface PlannerFlyoutProps {
   onAskingPastDayChange: (asking: boolean) => void;
 }
 
-/**
- * The planner panel.
- *
- * A right-hand sheet on a desktop and a bottom sheet on a phone, which is the
- * same component with a different `side` — the content is a column either way,
- * and the two differ in where they come from rather than in what they are.
- *
- * The scroll belongs to the list, never to `SheetContent`: that element is the
- * positioned ancestor of the desktop's close button, so scrolling it takes the
- * close button off screen. `components/ui/sheet.tsx` says so at the button, and
- * the burger menu solves it the same way. (The phone sheet draws its own ×
- * instead, in the header row beside the day picker — see `hideClose` below.)
- */
 /** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
 const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
 
 /**
  * The heights the phone sheet rests at, the way an iOS sheet has detents.
  *
- * - `large` is where it opens: everything under the site header (PAR-313).
+ * - `large` is where it opens: everything under the site header.
  * - `full` is the whole screen, for the most day at once.
  * - `medium` is half the screen, to see the page behind — the ride cards a
  *   plan is filled from — without closing the plan.
@@ -121,12 +108,9 @@ const SHEET_FLICK_HOLD_MS = 100;
 const SHEET_OVERPULL_PX = 24;
 
 /**
- * Where the window is too short to spare the site header a strip (PAR-482).
- * There `large` opens the sheet over the header, 12 px under the top edge; on
- * a taller window it stops under the header as before. The detent itself is
- * CSS (`--planner-sheet-large` and its `@media` twin in `app/globals.css`);
- * this copy of the query only answers whether the grabber has anything to
- * toggle on a landscape phone, where `large` is then the only detent.
+ * Where the window is too short to spare the site header a strip: there `large` opens over the
+ * header. The detent itself is CSS (`--planner-sheet-large` in `app/globals.css`); this copy only
+ * answers whether the grabber has anything to toggle on a landscape phone.
  */
 const SHEET_SHORT_QUERY = '(height < 50rem)';
 /** Under this, `full` is a sliver above `large` and is not offered. */
@@ -143,15 +127,9 @@ function cssLengthPx(value: string): number {
 }
 
 /**
- * The detents in pixels, for the drag, smallest first.
- *
- * Measured off the stylesheet rather than recomputed from `innerHeight`: the
- * sheet rests on `--planner-viewport` (see {@link useSheetViewport}), which
- * falls back to `svh`, and on iOS Safari `innerHeight` and `100svh` differ
- * whenever the toolbar collapses, so a drag that snapped against its own
- * arithmetic would pick one height and the CSS would then settle at another —
- * a second jump after the release. A probe with the very values the classes
- * use gives the drag the numbers the sheet will land on.
+ * The detents in pixels, for the drag, smallest first, measured off the stylesheet with a probe: on
+ * iOS `innerHeight` and `100svh` differ while the toolbar collapses, and a drag snapping to its own
+ * arithmetic would jump again when the CSS settles.
  */
 function sheetDetentHeights(withMedium: boolean) {
   const large = cssLengthPx('var(--planner-sheet-large)');
@@ -190,7 +168,8 @@ const panelHoldsTwoOnServer = () => maxColumnsFor(plannerPanelWidth.getServerSna
 /**
  * The trip planner panel: a right-hand sheet on desktop, a draggable bottom sheet with detents on
  * phones, holding the day picker and one or two day columns. Asks what to open when the active day
- * is already over.
+ * is already over. The scroll belongs to the list, never to `SheetContent`, which positions the
+ * desktop's close button (see `components/ui/sheet.tsx`).
  */
 export function PlannerFlyout({
   open,
@@ -200,12 +179,10 @@ export function PlannerFlyout({
 }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
-  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
-  // Only what the PANEL itself still uses. Everything that edits a day — the
-  // moves, the ticks, the removals, the party prefs — moved into
-  // `PlannerDayColumn` with the grid it acts on, because with two columns open
-  // each of those verbs needs a park and a date and there are two of each.
+  // Only what the panel itself uses: everything that edits a day lives in `PlannerDayColumn`, which
+  // knows its park and date.
   const {
     activeParkSlug,
     activeDate,
@@ -221,22 +198,14 @@ export function PlannerFlyout({
     setDayPrefs,
   } = usePlanner();
 
-  // Which of the two things the panel is: one day, or everything planned. It
-  // resets on close rather than persisting, because the day is what the panel is
-  // FOR — reopening it into a list of dates would make the common case a step
-  // longer for the sake of the rare one. Reset in the close handler rather than
-  // in an effect on `open`: the state change belongs to the event that caused it.
+  // One day, or everything planned. Reset on close, since the day is what the panel is for, and in
+  // the close handler rather than an effect, as the event caused it.
   const [showOverview, setShowOverview] = useState(false);
-  // The phone sheet's height, reset on the same event and for the same reason:
-  // the panel opens from a launcher on whatever page the visitor is reading, and
-  // coming back to a sheet that eats the screen because of a drag three pages ago
-  // is a surprise rather than a setting.
+  // The phone sheet's height, reset on the same event: a drag three pages ago is not a setting.
   const [detent, setDetent] = useState<SheetDetent>('large');
   /**
-   * The phone's search mode (PAR-482): the ride search has the sheet, the axis
-   * and the foot step aside. On in portrait only — a landscape phone draws the
-   * search in its own column beside the axis, where it already has room. See
-   * `searching` on {@link PlannerRideSearch} for when it turns on and off.
+   * The phone's search mode: the ride search has the sheet, the axis and the foot step aside.
+   * Portrait only; see `searching` on {@link PlannerRideSearch}.
    */
   const [searching, setSearching] = useState(false);
   if (!open && searching) setSearching(false);
@@ -280,41 +249,21 @@ export function PlannerFlyout({
   // top of the screen with no way out. See `useSheetViewport`.
   useSheetViewport(open && isPhone);
   /**
-   * A landscape phone — the one size where the sheet is a ROW rather than a
-   * stack, with the day's chrome left of the axis instead of above it.
-   *
-   * Always implies {@link isPhone}: the query is that one's height branch plus a
-   * width term, so nothing here can be true where that is false. Read for the
-   * one decision no class can make — which side of the row draws the context
-   * band — and passed on as `withBand`, exactly as `isPhone` is passed on as
-   * `withHead` and `withFoot`. Everything else the arrangement needs is
-   * `planner-landscape:` in the markup below, so the sheet does not depend on
-   * a hook having answered before it can be laid out.
+   * A landscape phone, the one size where the sheet is a row, with the day's chrome beside the
+   * axis. Always implies {@link isPhone}. Read only for which side draws the context band
+   * (`withBand`); everything else is `planner-landscape:` in the markup.
    */
   const isLandscape = useMediaQuery(PLANNER_LANDSCAPE_QUERY);
   /**
-   * A portrait phone: where the ride search is one row at rest and a tap or a
-   * click into it opens the search mode.
-   *
-   * It asked for a finger as well until the mouse's half of it was measured.
-   * `isPhone` is also a desktop window narrowed under 40rem, and the idea was
-   * that a mouse there drags rows out of the list onto the axis, so the list
-   * stayed drawn at rest. It stayed drawn in the block the sheet squeezes
-   * first: 106 px at 390×844 with ten rides planned, a 44 px free-block row
-   * and a list scrolling inside a box that scrolled too, not one ride whole on
-   * screen. The drag out of the list is what that costs, and a row's click
-   * still files the ride at the next free slot, where the block can be
-   * dragged on the axis like any other.
+   * A portrait phone, whatever the pointer: the ride search is one row at rest and opens its search
+   * mode on a tap, since at rest the sheet has no room for the list.
    */
   const phoneSearch = isPhone && !isLandscape;
   const searchMode = searching && phoneSearch;
   /**
-   * Whether a tap on the grabber has anywhere to go. A landscape phone has no
-   * `medium`, and a short window no `full`, so there `large` is the only
-   * detent and the grabber is a drag surface for dismissing and nothing else —
-   * it then stays out of the tab order and the accessibility tree rather than
-   * announcing "vergrößern oder verkleinern" for a press that does neither.
-   * The × beside it is the named way out.
+   * Whether a tap on the grabber has anywhere to go. On a short landscape window `large` is the
+   * only detent, so the grabber only drags and stays out of the tab order and accessibility tree;
+   * the × is the named way out.
    */
   const isShortWindow = useMediaQuery(SHEET_SHORT_QUERY);
   const grabberToggles = !(isLandscape && isShortWindow);
@@ -325,20 +274,9 @@ export function PlannerFlyout({
   if (isLandscape && detent === 'medium') setDetent('large');
   const router = useRouter();
   /**
-   * Whether the page behind the panel is the planner's own.
-   *
-   * `usePathname` from `@/i18n/navigation` strips the LOCALE and keeps the
-   * localized SEGMENT — the two are different things, and reading it as the
-   * first was a bug that shipped: matching `/trip-planner` alone left the guard
-   * dead on `/de/tagesplaner`, `/fr/planificateur` and three more, i.e. in five
-   * of six languages, on the one route it exists to protect. The rewrites in
-   * `next.config.ts` serve all six on the English route folder, but a rewrite
-   * does not change what the browser asked for and `usePathname` answers that.
-   *
-   * So: every segment, compared exactly. `header.tsx` matches
-   * `BEST_TIME_SEGMENTS` the same way for the same reason, and `PLANNER_SEGMENTS`
-   * is the one place those slugs are written down — a seventh locale adds itself
-   * here. Exact rather than a prefix, or `/trip-planner-anything` would count.
+   * Whether the page behind the panel is the planner's own. `usePathname` keeps the localized
+   * segment, so every locale's segment is compared, exactly, as `header.tsx` does for
+   * `BEST_TIME_SEGMENTS`.
    */
   const pathname = usePathname();
   const isPlannerPage = PLANNER_PATHS.has(pathname);
@@ -350,21 +288,10 @@ export function PlannerFlyout({
   );
 
   /**
-   * The sheet's width on the wide arrangement, written onto the element rather
-   * than rendered.
-   *
-   * A resize drag changes the width on every pointer move, and as a `style`
-   * prop it re-rendered this whole panel each time — both day columns, every
-   * block and leg, the foot, the ride search — to change one number on one
-   * element. It is written from the store instead, from the ref: the ref runs
-   * in the commit that creates the element, before the browser paints it, so
-   * the first frame of every sheet Radix mounts is as wide as it always was.
-   *
-   * A callback that tears down on `null` rather than one returning a cleanup,
-   * so it does not depend on every Radix layer between here and the element
-   * passing a cleanup through. `isPhone` is its dependency, and a change of it
-   * detaches and reattaches: on a phone the sheet spans the screen, and an
-   * inline pixel width would hold it at 448 px in the middle of a 390 px one.
+   * The sheet's width on the wide arrangement, written onto the element from the store rather than
+   * rendered, so a resize drag does not re-render the panel; the ref callback runs before the first
+   * paint. It tears down on `null` and reattaches when `isPhone` changes, since a phone sheet spans
+   * the screen.
    */
   const detachSheet = useRef<(() => void) | null>(null);
   const attachSheet = useCallback(
@@ -373,8 +300,7 @@ export function PlannerFlyout({
       detachSheet.current = null;
       sheetRef.current = sheet;
       if (!sheet || isPhone) return;
-      // The store also speaks on a window resize, where the capped width often
-      // stays what it was; that writes nothing.
+      // The store also speaks on a window resize where the capped width stays; that writes nothing.
       let written = '';
       const writeWidth = () => {
         const width = `${plannerPanelWidth.getSnapshot()}px`;
@@ -393,36 +319,11 @@ export function PlannerFlyout({
   );
 
   /**
-   * The second column, if there is room for one — and the switch, if there
-   * COULD be. Two questions, and they used to be one.
-   *
-   * `twoColumnsFit` is about the PANEL as it stands: below two minimum widths
-   * plus a divider, a second column would be narrower than a single one is ever
-   * allowed to be, so this is what decides whether one is DRAWN. Gated rather
-   * than hidden, because a column is not free — it is a `/plan/day` query, a
-   * best-days snapshot and a grid — and a column nobody can see must not be paid
-   * for. The arrangement itself survives: narrowing the panel puts the second
-   * column away and widening it brings the same day back.
-   *
-   * `twoColumnsOffered` is about the WINDOW, and it decides whether the switch
-   * is there. Hanging the switch on the panel's width made the feature
-   * self-concealing: the default panel is 448 px, two columns need 681, so at
-   * the width every visitor starts on there was no switch and nothing said the
-   * planner had a second column at all — it had to be found by dragging the edge
-   * far enough. The switch now widens the panel itself (below), which is only an
-   * honest offer where the window can carry it: `fitToViewport` caps the panel
-   * at `innerWidth - PAGE_MIN_PX`, so under `TWO_COLUMN_MIN_VIEWPORT` the cap
-   * would take the width back in the same frame.
-   *
-   * `isPhone` is kept beside it, and since PAR-76 it is **load-bearing rather
-   * than belt-and-braces**. It used to be unreachable — 639 px cannot also be
-   * 1041 px — but `isPhone` stopped being a statement about width: a 1280x400
-   * window on a coarse pointer is wide enough for `TWO_COLUMN_MIN_VIEWPORT` and
-   * a phone by the height term, so without this guard it would be offered two
-   * columns inside a bottom sheet. The two thresholds remain independent — one
-   * is a breakpoint, the other falls out of `PANEL_WIDTH_MIN` and `PAGE_MIN_PX`
-   * — and a phone is a bottom sheet the width of the screen, where no stored
-   * width applies at all.
+   * The second column if there is room for one, and the switch if there could be. `twoColumnsFit`
+   * asks the panel's width and gates drawing, since a column costs queries; the arrangement is
+   * remembered. `twoColumnsOffered` asks the window, since the switch widens the panel itself and
+   * `fitToViewport` would undo that below `TWO_COLUMN_MIN_VIEWPORT`. `isPhone` is load-bearing: a
+   * wide, short window on a coarse pointer is a phone and gets no second column.
    */
   const twoColumnsFit = !isPhone && panelWideForTwo;
   const windowFitsTwoColumns = useMediaQuery(TWO_COLUMN_VIEWPORT_QUERY);
@@ -436,10 +337,7 @@ export function PlannerFlyout({
 
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
 
-  // Ride cards on the page behind the panel become drag sources for as long as
-  // the panel is open. A drag needs somewhere to land, and this is the only time
-  // there is one — see `useRideDragSource` for why the payload is attached from
-  // here rather than by the card.
+  // Ride cards behind the panel are drag sources while it is open; see `useRideDragSource`.
   useRideDragSource(open);
 
   /** The wizard, which is how another day gets planned from in here. */
@@ -447,12 +345,8 @@ export function PlannerFlyout({
   /** A park to open it on, so the first step can be skipped. */
   const [wizardPark, setWizardPark] = useState<WizardPark | null>(null);
   /**
-   * A day to open it on, so the second step can be skipped too.
-   *
-   * Only ever set by {@link startPageDay}, and cleared everywhere `wizardPark`
-   * is: a date left behind would seed the NEXT wizard — the one opened from
-   * „Tag hier planen", which means "some day, you pick" — with a date chosen
-   * on a page the reader has since left.
+   * A day to open it on, so the second step is skipped too. Set only by {@link startPageDay} and
+   * cleared with `wizardPark`, so a date never seeds a later "some day, you pick" wizard.
    */
   const [wizardDate, setWizardDate] = useState<string | null>(null);
   /**
@@ -476,16 +370,13 @@ export function PlannerFlyout({
   });
   /** Who is coming, for this day. The wizard writes it; the chips change it. */
   const prefs = activeDate ? park?.days[activeDate]?.prefs : undefined;
-  // Folded exactly as the day column folds it, so the phone's search and foot
-  // plan against the same opening as the column. Memoised because a folded day
-  // is a new object, and the spans and the grid key on it.
+  // Folded as the day column folds it, so the phone's search and foot plan against the same
+  // opening; memoised because the spans and the grid key on it.
   const earlyEntry = prefs?.earlyEntry;
   const day = useMemo(() => withEarlyEntry(fetchedDay, earlyEntry), [fetchedDay, earlyEntry]);
 
-  // Four states, keyed off `isFetching` rather than `isPending`: a disabled query
-  // is pending forever, so with no park picked yet the band would pulse without a
-  // request ever having been made. `isFetching && !day` also keeps a background
-  // refetch from throwing the band back to a skeleton it has already left.
+  // `isFetching`, not `isPending` (a disabled query is pending for ever); `isFetching && !day`
+  // keeps a background refetch from returning the band to a skeleton.
   const dayState: PlannerDayState = isError
     ? 'error'
     : isFetching && !day
@@ -502,78 +393,40 @@ export function PlannerFlyout({
   const spans = useMemo(() => spansFor(day, activeEntries), [activeEntries, day]);
 
   /**
-   * The park's axis, grown until it contains the plan.
-   *
-   * `openMin` and `closeMin` are untouched by the growth, so the opening-hours
-   * band still marks the park's real day and everything that decides WHERE a
-   * block may go — `clampStart`, `rideFloor` — still speaks for the park. What
-   * grows is the canvas, and the room it gains is outside opening hours by
-   * construction, so it is hatched like every other minute out there.
+   * The park's axis, grown until it contains the plan; `openMin`/`closeMin` stay the park's.
+   * Memoised so the grid keeps its identity across renders that do not move it, since
+   * `PlannerOptimizeActions` keys a search on it.
    */
-  // Memoised, so the grid keeps its identity across renders that do not move
-  // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
-  // A number, so the memo below keys on a value and not on the context object.
+  // A number, so the memo keys on a value, not on the context object.
   const earlyOpen = earlyEntryOpenMin(day?.context);
-  // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
-  // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
-  // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
-  // grid itself when the plan fits, so the identity now moves only with the axis.
+  // Two memos, not one: `spans` changes on every edit, and `growGridForSpans` returns the base grid
+  // itself when the plan fits, so the identity moves only with the axis.
   const baseGrid = useMemo(
     () => buildDayGrid(openHour, closeHour, pxPerMin, earlyOpen),
     [openHour, closeHour, pxPerMin, earlyOpen]
   );
   const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
-  /**
-   * The park the page BEHIND the panel is about, which is a different question
-   * from the park being planned and was being answered with the wrong one: the
-   * header printed the plan's park, so standing on Toverland's calendar with a
-   * Phantasialand plan open it read "Phantasialand" and there was no way to
-   * plan what was on screen without leaving for the planner's own page.
-   */
+  /** The park the page behind the panel is about, which is not the park being planned. */
   const pagePark = useSyncExternalStore(
     plannerPagePark.subscribe,
     plannerPagePark.getSnapshot,
     plannerPagePark.getServerSnapshot
   );
   /**
-   * The page's park, where the day on screen is not already its own.
-   *
-   * It used to ask `!state.parks[pagePark.slug]` — whether the store had ever
-   * HEARD of the park — and that is not the question. `openDay` registers a park
-   * the moment a day is opened for it and adds no entry, `removeEntry` leaves
-   * `days[date] = {date, entries: []}` behind, and only `clearDay` prunes, and
-   * only when it drops the park's last day. So one visit to the calendar's plan
-   * button left an empty husk that silenced the offer for good — which is the
-   * state the panel was in when this was reported.
-   *
-   * What it asks now is whether the reader is already planning THIS park today.
-   * That covers the husk, and it covers the case the old test could not express
-   * at all: standing on Toverland's page with a Phantasialand day open, the
-   * right offer is Toverland.
+   * The page's park, where the day on screen is not already its own: on Toverland's page with a
+   * Phantasialand day open, the offer is Toverland. Not "has the store heard of this park", since
+   * `openDay` and `removeEntry` leave empty days behind.
    */
   const unplannedPagePark =
     pagePark && !(activeParkSlug === pagePark.slug && activeDate) ? pagePark : null;
 
   /**
-   * The photograph behind the panel, if the media database has one.
-   *
-   * Source and focal point travel as a PAIR: a `src` from `/plan/day` under a
-   * `position` from the page beacon would crop one park's picture to another
-   * park's curated point, and the two are separate fields with nothing
-   * connecting them.
-   *
-   * The second branch is what changed. While the plan's park IS the page's park
-   * — the ordinary case, since a day is usually started from the park's own
-   * page — its picture is already here on the beacon, out of the same media
-   * database `/plan/day` reads. Waiting for the query to say so opened the panel
-   * on the drawn ground and swapped the photo in a moment later, and where
-   * `/plan/day` 404s (it still does until the backend ships) the swap never came
-   * at all. A DIFFERENT park is unchanged and still shows no photo until its own
-   * answer arrives, which is the rule this branch was written for: a day whose
-   * query is in flight must not briefly show another park's façade.
+   * The photograph behind the panel. Source and focal point travel as a pair, so one park's picture
+   * is never cropped to another's point. Where the plan's park is the page's park, the beacon's
+   * photo is used at once; for a different park nothing shows until its own answer arrives.
    */
   const samePark = pagePark && pagePark.slug === activeParkSlug ? pagePark : null;
   const panelPhoto = !activeParkSlug
@@ -582,7 +435,7 @@ export function PlannerFlyout({
       ? { src: day.parkBackgroundImage, position: day.parkBackgroundPosition }
       : { src: samePark?.backgroundImage, position: samePark?.backgroundPosition };
 
-  /** Starts the wizard on the CALENDAR — which park is settled by the route. */
+  /** Starts the wizard on the calendar: which park is settled by the route. */
   const startPagePark = useCallback(() => {
     if (!unplannedPagePark) return;
     setWizardPark({ ...unplannedPagePark });
@@ -592,14 +445,9 @@ export function PlannerFlyout({
   }, [unplannedPagePark]);
 
   /**
-   * Starts the wizard for a day that is not in the plan yet — the past-day
-   * question's „Neuen Tag planen".
-   *
-   * On the page's park where there is one, like {@link startPagePark}, but it
-   * asks `pagePark` and not `unplannedPagePark`: the day that is over is very
-   * often at the park whose page the reader is on, and „you already have a
-   * day here" is exactly what a finished day must not be taken to mean.
-   * Anywhere else the wizard starts at its first step, the park.
+   * Starts the wizard for a day not in the plan yet (the past-day question's „Neuen Tag planen"),
+   * on the page's park where there is one. `pagePark`, not `unplannedPagePark`: the day that is
+   * over is often at this very park.
    */
   const startNewDay = useCallback(() => {
     setWizardPark(pagePark ? { ...pagePark } : null);
@@ -608,20 +456,9 @@ export function PlannerFlyout({
   }, [pagePark]);
 
   /**
-   * Starts the wizard on „Wer kommt mit" — park and day both already answered.
-   *
-   * It reads `pagePark` rather than `unplannedPagePark`, and that difference is
-   * the whole reason it is a second function instead of an argument to the one
-   * above. `unplannedPagePark` asks "is there anything left to plan HERE", and
-   * goes `null` the moment this park has any day open in the panel — which is
-   * right for a button that offers the park in general and wrong for one that
-   * names a date: „plane den 20." is a different question from „plane hier",
-   * and a second day at a park that already has one is exactly what somebody
-   * comparing two dates is about to ask for.
-   *
-   * `plannerPageDay.take` clears as it reads and refuses a date filed under
-   * another park, so a stale hand-off degrades to the old behaviour rather
-   * than to the wrong day.
+   * Starts the wizard on „Wer kommt mit", park and day both answered. `pagePark`, not
+   * `unplannedPagePark`: a second day at a park that already has one is exactly what a date
+   * comparison asks for. `plannerPageDay.take` refuses another park's date.
    */
   const startPageDay = useCallback(() => {
     if (!pagePark) return false;
@@ -634,49 +471,25 @@ export function PlannerFlyout({
   }, [pagePark]);
 
   /**
-   * The whole answer to a wizard request, as ONE callback.
-   *
-   * The choice between the two starts lives here rather than in the effect below, and that is not
-   * a style preference: `react-hooks/set-state-in-effect` refuses an effect body that branches
-   * into a `setState`, and the effect has to stay what it has always been — a comparison against
-   * the last counter seen, then one call. Putting the branch in a callback keeps the rule
-   * satisfied and keeps the two starts readable side by side.
+   * The whole answer to a wizard request, as one callback, so the effect below stays a counter
+   * comparison and one call (`react-hooks/set-state-in-effect` refuses a branch into `setState`).
    */
   const startFromRequest = useCallback(() => {
-    // A request that left a day behind is answered by that day; anything else is the park-header
-    // press this path was written for.
+    // A request that left a day behind is answered by that day; otherwise the park-header press.
     if (startPageDay()) return;
     startPagePark();
   }, [startPageDay, startPagePark]);
 
   /**
-   * Take the page behind the panel to a park's own page.
-   *
-   * Switching subject in the panel is switching subject on the page: the ride
-   * cards a plan is filled from are on the park's own page, and a panel about
-   * Europa-Park in front of Phantasialand's rides is a drag gesture with no
-   * valid target — the grid refuses a ride whose park is not its own.
-   *
-   * It used to refuse wherever `plannerPagePark` was `null` — every route that
-   * is not park-scoped — on the reasoning that there is no park page to return
-   * from. That was the wrong half of the question and it was reported from the
-   * homepage: two columns open, Toverland in the right one, and clicking it did
-   * nothing at all. Whether the page in front of the reader is a park page has
-   * no bearing on whether they want the park they just clicked; what decides it
-   * is that the columns are the subject and the page is where the rides come
-   * from.
-   *
-   * Two guards are left. A target that is already the page's park is a no-op
-   * rather than a reload. And the planner's own page is not left at all — see
-   * `isPlannerPage`.
+   * Take the page behind the panel to a park's own page: the ride cards a plan is filled from are
+   * there, and the grid refuses a ride from another park. A no-op where the page is already that
+   * park, and never on the planner's own page.
    */
   const goToPark = useCallback(
     (slug: string | null) => {
       if (!slug || pagePark?.slug === slug) return;
-      // The planner's OWN page is the one route this may not leave. Everywhere
-      // else the page is a place to drag rides out of and following the panel
-      // is the point; there, the page IS the panel's subject and navigating
-      // away would close the thing somebody just opened.
+      // The planner's own page is the one route this may not leave: there the page is the panel's
+      // subject.
       if (isPlannerPage) return;
       const target = state.parks[slug];
       if (!target) return;
@@ -688,41 +501,16 @@ export function PlannerFlyout({
   );
 
   /**
-   * Which of the two columns the reader is working in.
-   *
-   * Not the plan's active day, and the difference is the whole point: the
-   * primary column IS `activeParkSlug`, so making a click there change it would
-   * put the same day in both columns. This is a lighter thing — where the
-   * pointer last was — and it decides two things: which column is marked, and
-   * which park the page behind the panel shows.
-   *
-   * Local state rather than the store, so it lives exactly as long as the panel
-   * does. A remembered focus would be a claim about what somebody was doing
-   * yesterday.
+   * Which of the two columns the reader is working in: where the pointer last was, not the plan's
+   * active day. It marks the column and picks the park the page shows. Local state, so it lives as
+   * long as the panel.
    */
   const [focusSecond, setFocusSecond] = useState(false);
   /**
-   * Focus a column, and — where the gesture was a plain one — take the page.
-   *
-   * The navigation hangs on the CHANGE, never on the press. With one column
-   * open the focus can never change, so reading Toverland's page with a
-   * Phantasialand plan open and touching the panel navigates nowhere.
-   *
-   * **`navigate` is what keeps a control from relocating the reader.** The
-   * column arms this from `onPointerDownCapture` on its own root, so it fires
-   * before the press reaches anything inside — including that column's close
-   * button, its optimise bar, its free-block row and the grip of a block
-   * somebody is starting to drag. Marking the column is right in all of those
-   * (it IS the one being worked in); pushing a new route under a half-finished
-   * drag, or moving the whole page as the answer to "close this column", is
-   * not. The column decides which kind of press it was; see its capture
-   * handler.
-   *
-   * **The push is outside the updater**, which is not a style question: React
-   * may call an updater more than once — it does in StrictMode — and a
-   * `router.push` in there is two history entries and two RSC fetches for one
-   * press. The comparison it replaced is done against `focusSecond` here, where
-   * a dependency covers it.
+   * Focus a column and, where the press was a plain one, take the page. Navigation follows a change
+   * of focus, never the press, so a single column never navigates. `navigate` is false for a press
+   * on anything inside the column (see its capture handler). The push is outside the updater, which
+   * React may call twice.
    */
   const focusColumn = useCallback(
     (second: boolean, navigate: boolean) => {
@@ -732,9 +520,8 @@ export function PlannerFlyout({
     },
     [focusSecond, goToPark, secondColumn?.parkSlug, activeParkSlug]
   );
-  // A closed second column cannot be the focused one. Adjusted during render
-  // rather than in an effect — the state is derived from `secondColumn`, and an
-  // effect would leave one render with the marker on a column that is gone.
+  // A closed second column cannot be the focused one; adjusted during render, or the marker would
+  // sit on a gone column for one render.
   if (focusSecond && !secondColumn) setFocusSecond(false);
 
   /**
@@ -746,27 +533,10 @@ export function PlannerFlyout({
   const pastDay = askingPastDay ? pastActiveDay(state) : null;
 
   /**
-   * The park page's own button, answered.
-   *
-   * `ParkPlannerLink` in the park header asks for the panel AND for the wizard
-   * on the park the route is about — `requestOpen(source, 'page-park-wizard')`
-   * — and until this it only got the first half: the panel opened on whatever
-   * it had been showing, with „Tag im Phantasialand planen" as a second button
-   * inside it. The panel is the only place that can answer, because
-   * `startPagePark` is the action and it reads the beacon, the plan and the
-   * columns to decide what „this park, unplanned" means.
-   *
-   * The counter is compared against the last one SEEN rather than against zero,
-   * for the same reason `PlannerLauncher` does it: a second press after the
-   * reader has closed the panel is a second event, and a boolean would collapse
-   * the two. `useRef(0)` is what makes the first press work at all — the panel
-   * is lazily mounted, so on a page that has never opened it this effect first
-   * runs with the counter already at 1, which is the press that mounted it.
-   *
-   * It is the store's WIZARD counter, so a plain panel request from the park
-   * calendar or a ride button never reaches here at all — see
-   * `plannerUi.getWizardSnapshot`, which explains why that question is answered
-   * by a second subscription rather than by an intent read inside this effect.
+   * The park page's own button, answered: `ParkPlannerLink` asks for the panel and the wizard on
+   * the route's park, and only the panel can start it. The counter is compared against the last one
+   * seen, starting at 0, so the press that lazily mounted the panel counts. It is the store's
+   * wizard counter (see `plannerUi.getWizardSnapshot`).
    */
   const wizardRequests = useSyncExternalStore(
     plannerUi.subscribe,
@@ -781,14 +551,8 @@ export function PlannerFlyout({
   }, [wizardRequests, startFromRequest]);
 
   /**
-   * A block the visitor writes themselves — a lunch break, a show, a meeting
-   * point. One handler, because there are two call sites for one action: the
-   * phone's inside the ride search, the desktop's on a row of its own now that
-   * the search is the phone's surface alone.
-   *
-   * A plain function rather than a `useCallback`: it closes over four values
-   * that change on nearly every render anyway, so memoizing it would either lie
-   * about its dependencies or be rebuilt each time regardless.
+   * A block the visitor writes themselves: one handler for the phone's search and the desktop's
+   * row. A plain function, since what it closes over changes on nearly every render.
    */
   const addFreeBlock = () => {
     if (!park || !activeDate) return;
@@ -801,40 +565,27 @@ export function PlannerFlyout({
       date: activeDate,
       label: t('custom.defaultLabel'),
       icon: 'break',
-      // Never before now: a break filed into a morning that has gone is the
-      // same fault as a queue filed there. `nowFloor` is `openMin` on every
-      // other date, so nothing about a future plan moves.
+      // Never before now; `nowFloor` is `openMin` on every other date.
       startMinute: grid ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock)) : undefined,
     });
   };
 
-  // The park's own three-month forecast. It is here for ONE reason — the zone
-  // the effect below writes back — and it is the same query key the column's
-  // day picker asks for, so the two share a request rather than making two.
+  // The park's three-month forecast, here for the zone written back below, under the same query key
+  // as the column's day picker.
   const dayFacts = usePlannerDayFacts(park, open && !showOverview);
 
-  // The zone the day payload names, written back into the plan. A park added
-  // from the overview's search arrives without one — the search payload has no
-  // zone to give — and would otherwise reckon its dates in the reader's for as
-  // long as it stays in the plan. `learnTimezone` returns the state unchanged
-  // once it has been learnt, so this settles after one write and never loops.
+  // The zone the payloads name, written back into the plan for a park added from the overview's
+  // search, which has none. `learnTimezone` returns the same state once learnt, so this settles.
   useEffect(() => {
-    // Either source will do and the second one ARRIVES: `/plan/day` answers 404
-    // until the backend ships, while the best-days snapshot is live today and
-    // names the zone in its `meta`. Without it a park added from the planner's
-    // own search reckoned its dates in the reader's zone for as long as it
-    // stayed in the plan.
+    // Either source will do; the best-days snapshot names the zone in its `meta`.
     const zone = day?.timezone ?? dayFacts.timezone;
     if (!activeParkSlug || !zone) return;
     learnTimezone(activeParkSlug, zone);
   }, [activeParkSlug, day?.timezone, dayFacts.timezone, learnTimezone]);
 
   /**
-   * What the head needs, where the PANEL draws it — see `phoneHead` below.
-   *
-   * All three are the column's own derivations, read from the same store and
-   * the same query rather than passed down or fetched again: `dayFacts` above
-   * is the key the column's day picker asks for, so the two share one request.
+   * What the head needs where the panel draws it (see `phoneHead`), from the same store and query
+   * as the column's own.
    */
   const parks = useMemo(() => Object.values(state.parks), [state.parks]);
   const plannedDates = useMemo(
@@ -847,90 +598,37 @@ export function PlannerFlyout({
     [park]
   );
   /**
-   * Whether the panel's header IS the column's head, which is the phone case.
-   *
-   * `!showOverview` for the same reason the column carries the head at all:
-   * the overview replaces the day, and a park name and a date over a list of
-   * OTHER days would be a statement about something that is not on screen.
-   *
-   * `parks.length > 0` is the COLUMN's own gate, deliberately, and not the
-   * `park` the rest of this row hangs on. A plan can hold parks while
-   * `activeParkSlug` points at none of them — `clearDay` drops a park whose
-   * last day goes, and a stale id can arrive from `localStorage` — and in that
-   * state the head is the park chooser, i.e. the way out. Asking for `park`
-   * here took it off the phone entirely: no head in the header (this gate), no
-   * head in the column (`withHead` is false there), and no chevron either,
-   * since that one really is gated on `park`. A panel with a title and no
-   * control in it. The desktop has always shown the chooser in exactly this
-   * state, and now the phone shows it in the same place as everything else.
-   *
-   * What DOES follow `park` is the title's `sr-only` below: the word
-   * „Tagesplaner" gives way to a park name, so it may only give way where
-   * there is one.
+   * Whether the panel's header is the column's head, the phone case. Not over the overview, which
+   * is not a day. Gated on `parks.length` like the column, not on `park`: a plan can hold parks
+   * while none is active, and then the head is the park chooser, the way out.
    */
   const phoneHead = isPhone && !showOverview && parks.length > 0;
 
   /**
-   * The grabber, dragged: the sheet follows the finger and snaps to a detent on
-   * release, the way a sheet on iOS does (PAR-482).
+   * The grabber, dragged: the sheet follows the finger and snaps to the nearest detent on release;
+   * a flick moves one detent on, and a flick down from `medium` or a release well below it closes.
    *
-   * It used to commit on release against a distance and do nothing while the
-   * finger moved, with two heights to choose from — so the grabber could make
-   * the sheet bigger but never smaller, and nothing on screen answered the
-   * drag until it was over. Now every move places the sheet, and the release
-   * picks the detent nearest to where it was let go; a flick moves one detent
-   * on from where the drag started even over a short distance, and a flick
-   * down from `medium`, or a release well under it, closes the sheet.
-   *
-   * **Nothing here writes a `transform`.** The sheet is glass — a
-   * `backdrop-blur` over the page — and a transform on it or an ancestor makes
-   * it a backdrop root, which flattens the blur for as long as the transform is
-   * there (see the note on the class list below). So the drag moves the sheet
-   * with `bottom` and grows it with `height`, both plain layout properties:
-   * below its layout height the sheet slides down with its bottom edge past
-   * the screen, which is exactly how an iOS sheet's medium detent looks, and
-   * only a pull above that height resizes it. Written straight onto the
-   * element for the length of the gesture, not through React state — one
-   * style write per pointer move instead of a render of the whole panel.
-   *
-   * On release the detent is committed with `flushSync` and the inline styles
-   * come off in the same task, so the class transition (the iOS sheet curve,
-   * see below) carries the sheet from where the finger left it to the detent.
-   * A dismiss keeps them on, so the close animation starts where the sheet is
-   * rather than jumping back to a detent first.
+   * Nothing here writes a `transform`, which would make the glass a backdrop root and flatten its
+   * blur: the drag moves the sheet with `bottom` and grows it with `height`, written straight onto
+   * the element. On release the detent is committed with `flushSync` and the inline styles come
+   * off, so the class transition carries the sheet on; a dismiss keeps them, so the close starts
+   * there. A plain function, since it closes over the unmemoised `handleOpenChange`.
    */
-  // A plain function, like `handleOpenChange` above it and for the same reason:
-  // it closes over that one, which is not memoized, so a `useCallback` here would
-  // either lie about its dependencies or be rebuilt every render anyway.
   const handleSheetGrab = (event: React.PointerEvent<HTMLElement>) => {
     if (event.button !== 0) return;
     const handle = event.currentTarget;
     const sheet = sheetRef.current;
     if (!sheet) return;
     const pointerId = event.pointerId;
-    // Through the shared claim, like the grid's two gestures. A bare
-    // `setPointerCapture` throws `NotFoundError` for a pointer id that is not
-    // active, and an uncaught throw in a React event handler takes the whole
-    // gesture with it — here, before `draggedSheet` has even been reset, which
-    // leaves the NEXT tap on the handle reading as the end of this drag. The
-    // return value is the second half: without a capture a handle-bound
-    // `pointerup` never fires, so the listeners go to the document instead of
-    // waiting for an event that is not coming.
+    // Through the shared claim, like the grid's gestures: a bare `setPointerCapture` can throw, and
+    // without a capture the listeners go to the document. See `capturePointer`.
     const bus = capturePointer(handle, pointerId);
     const startY = event.clientY;
-    // A pointer drag ALWAYS ends in a click, so without this the tap handler
-    // undid the drag one event later: pulling up set the sheet tall and the
-    // click that followed toggled it straight back. Measured, not assumed — the
-    // height came back 717 px before and 717 px after an 80 px pull.
+    // A pointer drag always ends in a click, so the tap handler has to know a drag happened.
     draggedSheet.current = false;
 
-    // Where the sheet is, in the numbers the drag works in: how much screen
-    // there is, how much of the sheet stands on it, and how tall its box is
-    // laid out. Taken once, at the press. The first two come from the values
-    // the sheet is PLACED by — the custom properties and its own `bottom` —
-    // and not from `innerHeight`: at a page scale of 1.3 that stayed at 844
-    // while 649 px were on screen, so a pull capped by it could take the
-    // sheet 195 px past what `full` would then settle at.
+    // Where the sheet is, in the drag's numbers, taken once at the press from the values the sheet
+    // is placed by, not `innerHeight`, which ignores a page zoom.
     const room = cssLengthPx('var(--planner-viewport)');
     const lift = cssLengthPx('var(--planner-viewport-lift)');
     const layoutHeight = sheet.getBoundingClientRect().height;
@@ -976,9 +674,7 @@ export function PlannerFlyout({
       place(visibleAt(moveEvent.clientY));
     };
     const finish = (upEvent: PointerEvent) => {
-      // The gesture's own finger. On the document fallback a second pointer's
-      // `pointerup` would otherwise decide this sheet's height from a `dy`
-      // measured against a `startY` it never had.
+      // This gesture's own pointer, on the document fallback.
       if (!isSamePointer(upEvent, pointerId)) return;
       detach();
       const dy = upEvent.clientY - startY;
@@ -988,9 +684,8 @@ export function PlannerFlyout({
         return;
       }
       const visible = visibleAt(upEvent.clientY);
-      // The speed of the last move, and only if the finger was still moving
-      // when it let go: a fast pull that stopped and was held before the
-      // release is a placement, not a flick.
+      // The speed of the last move, only if the finger was still moving at release: a held release
+      // is a placement, not a flick.
       const held = upEvent.timeStamp - lastT > SHEET_FLICK_HOLD_MS;
       const velocity = !held && lastT > prevT ? (lastY - prevY) / (lastT - prevT) : 0;
       const nearest = detents.reduce((best, candidate) =>
@@ -1034,12 +729,8 @@ export function PlannerFlyout({
   };
 
   return (
-    // NOT modal on a desktop pointer. Radix's default puts `pointer-events: none`
-    // on everything outside the panel and a full-screen overlay over it, which
-    // is right for a dialog and wrong for a planner: the whole point of a side
-    // panel is that you keep browsing the park while it is open, and a ride card
-    // you cannot touch is a ride card you cannot drag onto the day. The phone
-    // sheet stays modal — a bottom sheet covering the screen has to trap.
+    // Not modal on a desktop: the page behind stays usable, so a ride card can be dragged onto the
+    // day. The phone's bottom sheet stays modal.
     <>
       <Sheet open={open} onOpenChange={handleOpenChange} modal={isPhone}>
         <SheetContent
@@ -1049,239 +740,69 @@ export function PlannerFlyout({
            here has to render at 16 px on a touch screen, or focusing it zooms
            the page in for good and pushes the handle off the screen. */
           data-planner-sheet=""
-          /* Not `SheetContent`'s own × on the phone: that one is drawn in the
-           sheet's top-right corner, which on a phone is the sheet header's day
-           picker. The phone draws its close button in the handle row instead
-           (PAR-483), beside the handle that drags the sheet away and toggles
-           its height on a tap. The desktop keeps this one: a side panel has no
-           handle, and its outside press is deliberately swallowed by
-           `onInteractOutside` below, so there the × and Escape are the whole
-           list.
-
-           Keyed on `isPhone` and not on a `max-sm:` class, because that is the
-           condition the sheet's SHAPE is keyed on two lines up — `side` and
-           `modal` read the same value, and a class would be a fourth copy of
-           `PLANNER_PHONE_QUERY` free to drift from the other three the next
-           time that query grows a term. The panel only mounts on an open, i.e.
-           long after hydration, so `useMediaQuery`'s `false` server snapshot
-           never reaches the screen here. */
+          /* No `SheetContent` × on a phone, where its corner is the day picker's; the phone draws
+             its own in the header row. Keyed on `isPhone`, like `side` and `modal`, not a class, so
+             the condition is not copied a fourth time. */
           hideClose={isPhone}
-          /* A click on the page does NOT close the panel on a desktop.
-           `DismissableLayer` fires this for every pointer press outside the
-           sheet, and outside the sheet is exactly where the work is: the panel
-           is deliberately non-modal so a ride card stays grabbable, and the
-           press that starts a drag is an outside press. So the gesture the
-           panel exists to receive was also the gesture that dismissed it —
-           and short of that, every click meant to scroll or read the park page
-           behind it shut the plan.
-           The phone keeps its overlay tap: there the sheet is modal, the page
-           behind is covered and inert, and tapping the shield is the ordinary
-           way out of a bottom sheet. Escape works in both; the × is the
-           desktop's, see `hideClose` above. */
+          /* An outside press does not close the panel on a desktop: the panel is non-modal so ride
+             cards stay grabbable, and the press that starts a drag is an outside press. The phone
+             keeps its overlay tap. */
           onInteractOutside={(event) => {
             if (!isPhone) event.preventDefault();
           }}
-          // `side="bottom"` ships `h-auto` and no ceiling, so the height is the
-          // call site's business. Never `vh`: on iOS the address bar makes `vh`
-          // taller than what is actually visible, and the summary row at the
-          // bottom would sit under it. Not `svh` either: that is the layout
-          // viewport, which is more than the screen shows under a zoom or with
-          // the keyboard up — see the detent classes below.
+          // `side="bottom"` ships `h-auto` and no ceiling. Never `vh` or `svh`: the detents below
+          // are counted in what is on screen.
           className={cn(
             'planner-phone:rounded-t-2xl flex w-full flex-col gap-0 p-0',
-            // Glass, like the header's menu band: a translucent dark ground with
-            // a real gaussian blur behind it, so the page keeps showing through
-            // while the plan stays readable over a park photo. `/80` rather than
-            // the `/95` the menu uses — a panel this tall is mostly its own
-            // background, and at /95 the blur is doing nothing anybody can see.
-            //
-            // The blur is why nothing here may put a `transform` or an `opacity`
-            // on the panel or an ancestor: either makes it a backdrop root and
-            // the blur goes flat. The open animation is an `animation`, which
-            // leaves nothing behind once it has run, so the glass is only flat
-            // while it slides.
+            // Glass: a translucent ground with a real blur, `/80` since a tall panel is mostly its
+            // own background. Nothing may put a `transform` or `opacity` on the panel or an
+            // ancestor, which would flatten the blur; the open animation leaves nothing behind.
             'bg-background/80 supports-[backdrop-filter]:bg-background/70 backdrop-blur-2xl',
-            // `isolate` is what keeps the park photo INSIDE the panel. It sits in
-            // a negative stacking layer — see `PlannerPanelPhoto` for why it has
-            // to — and a negative layer with no stacking context above it keeps
-            // going until it finds one, i.e. straight behind the panel's own
-            // background. `backdrop-filter` already forms one wherever it is
-            // supported, so this only matters where it is not; it costs nothing
-            // and takes the browser's word out of the arrangement.
+            // `isolate` keeps the park photo, in a negative layer, inside the panel (see
+            // `PlannerPanelPhoto`).
             'isolate',
             'border-border/70 planner-phone:border-t planner-wide:border-l planner-wide:shadow-2xl',
             // The width is the visitor's, so the class ceiling has to go — an
             // inline width beats `w-3/4` but not `max-w-md`, which would clamp
             // every drag past 448 px into looking broken rather than wide.
             'sm:max-w-none',
-            // The handle's whole job. `svh` for the same reason the cap already
-            // used it: on iOS `vh` counts the address bar and the summary row
-            // would sit under it.
-            //
-            // 92 rather than the 85 it opened at, which Patrick asked for in as
-            // many words ("der Flyout könnte auch höher sein"). 85svh is 717 px at
-            // 844 — the very 716 the column's arithmetic is written against — and
-            // the 15 % it left showed the page's tab bar under the sheet. 92svh is
-            // 776, so the axis gains 59 px before anything else in this change has
-            // been counted, and 68 px of the page behind it stays visible, which
-            // is what keeps the sheet reading as a sheet.
-            //
-            // And 100 rather than the 96 the handle used to pull to, because
-            // raising the resting height took the handle's job away: 96 − 92 is
-            // 4svh, measured 776 → 810 px at 390×844, i.e. 34 px of travel where
-            // it used to have 93. That is under half a 15-minute block on the
-            // phone axis, and `check:planner` says so out loud — its
-            // `after > before + 40` was green at 85svh and went red here. The
-            // check is right and the sheet was wrong: a control that moves the
-            // thing it grips by 34 px is a control nobody will pull twice.
-            //
-            // The 68 px it costs is the overlay, and that is the whole trade.
-            // Pulled up, the modal shield is behind the sheet and tapping beside
-            // it is no longer a way out — so what remains has to be real, and it
-            // is: the handle takes the sheet back down (a drag, or a tap, which
-            // is why the tap toggles rather than only dismissing), and the × in
-            // the handle row closes it outright. That × was gone from PAR-188 to
-            // PAR-483, and in that time a tap on the handle led into a state
-            // whose only exit was a 90 px drag nobody was told about.
-            //
-            // **A PORTRAIT phone rests on the header instead of on a percentage**
-            // (PAR-313). 92svh is 736 px at 800 and leaves 64, of which the site
-            // header is 48 and the rest is a strip of page nobody reads — so the
-            // sheet gave up a whole 15-minute block of axis to show 16 px of
-            // park page. `calc(100svh-3rem)` is the same edge stated as what it
-            // is: everything under the bar. The `3rem` is the `h-12` of
-            // `<header>` — this does not RESERVE the bar's height, which is what
-            // the four places in
-            // `docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md`
-            // do; it stops below it, and that rule's page names it as the one
-            // reader of the number outside the four.
-            //
-            // Resting at a full `100svh` is what the report asked for and it is
-            // not available: the handle's only job is the difference between the
-            // two states, and at 100 there is no difference left to pull. 48 px
-            // of travel is over the 40 `check:planner` asserts, where the 4svh
-            // the handle used to have before PAR-188 was under it.
-            //
-            // **`max()` and not a branch on the orientation**, because the two
-            // rules cross at a HEIGHT rather than at a shape: `h − 48 < 0.92·h`
-            // holds for every `h < 600`, so subtracting the bar is the bigger
-            // number on a tall window and the smaller one on a short window. A
-            // landscape phone is short (359 px against 342 at 390 high) and so is
-            // a 320×568 portrait phone and a split screen — an `isLandscape`
-            // branch would have caught the first of those and quietly made the
-            // other two SHORTER than they were. `max` takes whichever rule gives
-            // the sheet more, at every size, with no size named anywhere.
-            //
-            // **Three detents since PAR-482, and a height rather than a cap.** The
-            // resting height above is `large` (`--planner-sheet-large` in
-            // `app/globals.css`, the same `max()`), the whole screen is `full`, and
-            // `medium` is half the screen: the sheet keeps its `large` box and
-            // slides down with `bottom`, its lower half past the screen's edge,
-            // which is what an iOS sheet's medium detent looks like and costs the
-            // layout nothing. `h-*` beside `max-h-*` because the detent has to be
-            // a place the sheet IS — with `h-auto` a short day drew a short
-            // sheet, and `medium`'s offset, measured from the top of a `large`
-            // box, would have pushed it off the screen. The `max-h` stays the
-            // same value, which is what `check:planner` reads as the ceiling.
-            //
-            // **Every one of them is counted in what is on screen, not in
-            // `svh`** (`--planner-viewport`, see `useSheetViewport`). A viewport
-            // unit is the layout viewport, and the sheet was as tall as that
-            // whether or not the browser was showing all of it: zoomed in on a
-            // field, with the keyboard up, or in a browser whose units are not
-            // its window, iOS cut the rest off the top, and the grabber and the
-            // × went with it — "wenn das nicht Standardhöhe ist, lässt sich der
-            // Planer nicht schließen". The sheet stands on
-            // `--planner-viewport-lift` for the same reason: the bottom of the
-            // layout viewport is under the keyboard, the bottom of what is on
-            // screen is not.
+            // The phone's detents (`--planner-sheet-large` in `app/globals.css`): `large` rests
+            // under the site header or at 92 %, whichever gives more (`max()`, not an orientation
+            // branch); `full` is the whole screen; `medium` keeps the `large` box and slides down
+            // with `bottom`. `h-*` beside `max-h-*`, so a detent is a place the sheet is. All are
+            // counted in `--planner-viewport`, what is on screen, and the sheet stands on
+            // `--planner-viewport-lift` (see `useSheetViewport`).
             detent === 'full'
               ? 'planner-phone:h-(--planner-viewport) planner-phone:max-h-(--planner-viewport)'
               : 'planner-phone:h-(--planner-sheet-large) planner-phone:max-h-(--planner-sheet-large)',
             detent === 'medium'
               ? 'planner-phone:bottom-[calc(var(--planner-viewport-lift)_+_var(--planner-sheet-medium)_-_var(--planner-sheet-large))]'
               : 'planner-phone:bottom-(--planner-viewport-lift)',
-            // Snapping to a detent, and opening and closing, on the curve iOS
-            // uses for its sheets rather than a symmetric ease-in-out: fast off
-            // the mark, long settle. `--tw-ease` and `--tw-duration` are what
-            // `animate-in` reads too, so the slide in and out gets the same curve
-            // (PAR-190). The desktop panel keeps its 300 ms: it is timed against
-            // the page's own inset transition, which a phone does not have.
+            // Detent snaps and the slide in and out use the iOS sheet curve; `--tw-ease` and
+            // `--tw-duration` are what `animate-in` reads too. The desktop keeps its 300 ms, timed
+            // against the page's own inset transition.
             'planner-phone:transition-[height,max-height,bottom] planner-phone:duration-[400ms] planner-phone:ease-[cubic-bezier(0.32,0.72,0,1)]',
-            // A reader who asked for less motion gets a sheet that is there and
-            // gone, and a detent that snaps. `SheetContent` never honoured the
-            // preference, so on a phone the slide ran its 400 ms regardless
-            // (measured with `reducedMotion: 'reduce'`: `animation-name: enter`,
-            // one running animation). Radix unmounts at once when nothing is
-            // animating. The state variant is in the class because the
-            // `data-[state=open]:animate-in` above is one selector more specific
-            // than a bare `motion-reduce:animate-none` and wins over it. Here
-            // and not in `components/ui/sheet.tsx`: the header's burger sheet is
-            // not part of this change (PAR-190).
+            // Less motion where asked, which `SheetContent` never honoured. The state variants,
+            // because `data-[state=open]:animate-in` outranks a bare `animate-none`; here rather
+            // than in `components/ui/sheet.tsx`, which other sheets share.
             'motion-reduce:transition-none motion-reduce:data-[state=closed]:animate-none motion-reduce:data-[state=open]:animate-none'
           )}
           // The width is not a prop: `attachSheet` writes it, and leaves it off
           // on a phone.
           ref={attachSheet}
         >
-          {/* First child, so everything after it paints over it.
-
-            The picture is the PANEL's subject, and the subject is the plan's
-            park where there is one and the page's park where there is not. That
-            second half is what was missing: with nothing planned there is no
-            `/plan/day` to answer with a photo, so the panel opened as a black
-            rectangle on top of a park page that had one — and the empty state,
-            the one screen that has to say what this thing is for, was the one
-            screen with no park in it. Branching on the ACTIVE park rather than
-            falling back per field, so a day whose query is still in flight
-            shows nothing rather than briefly showing a different park.
-
-            Nothing at all is now a drawn ground rather than a black rectangle —
-            see `PlannerPanelPhoto`, which is where the 9-of-212 count that
-            makes that the normal case is written down. */}
+          {/* First child, so everything after it paints over it. The picture follows the plan's
+              park, or the page's where nothing is planned; it branches on the active park, so a day
+              still loading never shows another park's. Without a photo it draws a ground (see
+              `PlannerPanelPhoto`). */}
           <PlannerPanelPhoto src={panelPhoto.src} position={panelPhoto.position} />
 
-          {/* ONE row, not two. The title sat on its own line with nothing beside
-            it but Radix's 16 px close button, and the park name and the day
-            picker sat on a second — 83 px of a panel whose subject is a
-            vertical axis with 324 px to draw it in. Merged and at `py-2` the
-            head is 45 px, and the row's height is the day picker's own 28 px.
-
-            The desktop's `pr-7` is structural, not padding taste:
-            `SheetContent` puts its close button at `absolute top-4 right-4`,
-            which is now INSIDE this row, and without the clearance the picker's
-            forward chevron sits under it and one of the two becomes
-            untappable. */}
-          {/* `planner-phone:py-0` rather than the `py-1` it had: the two controls
-            in this row are 44 px tall on a phone now, so the padding that used
-            to give a 28 px button air is 8 px this panel spends on nothing. The
-            row is 44 px either way.
-
-            The padding and those two controls are ONE decision and move
-            together — which is why both carry `planner-phone:` and not the
-            `max-sm:` they were written with. Split them and a landscape phone
-            gets the tight padding with 28 px buttons still in it: a 29 px row of
-            targets a thumb cannot hit, measured at 844x390 before this line was
-            written. The clearance below is the same kind of pair and is keyed on
-            `isPhone` for the same reason — it clears the close button, so it has
-            to follow the condition that decides whether there IS one. */}
-          {/* The header is also the grabber's row (PAR-482), and that is where the
-            space went. The grabber used to have a 44 px row of its own with the
-            bell and the × in its margins, 89 px of chrome before the day's first
-            fact. Now the pill sits in a 16 px strip at the top of this header,
-            the × is the last control in the row below it and the bell went to
-            the end of the foot's optimise row. The row's controls are drawn 32 px tall and
-            reach 44 with an overhang of 6 px into the strip above and into this
-            header's `pb-1.5` below (`PHONE_TARGET_32`): 55 px in all, the same
-            targets.
-
-            The handle is a button laid BEHIND the row (`absolute inset-0`, and
-            the row after it in the DOM paints over it), so it takes a press
-            wherever no control is: the strip across the top, the row's side
-            padding. A control is never under it, which is what the 44 + 44
-            px stack of two separate rows could not promise — see the note on
-            the old pseudo-element in `docs/features/trip-planner.md`.
-            `planner-wide:hidden`, because a side panel has no grabber. */}
+          {/* One header row: the park and day, and on a phone the grabber in a strip above, the
+              bell and the ×. The phone's controls are drawn 32 px and reach 44 px into the strip
+              and the `pb-1.5` (`PHONE_TARGET_32`); padding and controls are both `planner-phone:`,
+              one decision. The handle is a button laid behind the row (`absolute inset-0`), so it
+              takes a press wherever no control is; `planner-wide:hidden`, as a side panel has
+              none. */}
           <SheetHeader className="border-border/60 planner-phone:pt-4 planner-phone:pb-1.5 relative shrink-0 gap-0 border-b px-3 py-2">
             <button
               type="button"
@@ -1304,49 +825,21 @@ export function PlannerFlyout({
               {/* iOS's own grabber: 36 × 5 px, centred in the strip. */}
               <span className="bg-muted-foreground/45 absolute top-[5px] left-1/2 h-[5px] w-9 -translate-x-1/2 rounded-full" />
             </button>
-            {/* The clearance is for the × and goes with it. On a desktop
-              `SheetContent` draws its close button `absolute top-4 right-4`,
-              inside this very row, so `pr-7` keeps the last control out from
-              under a 16 px target. The phone used to need `max-sm:pr-14` for
-              the same reason and one size up — there the button is
-              `planner-phone:right-2 planner-phone:size-11`, covering the rightmost 52 px
-              against the 28 + 12 the desktop pair reserves, and 12 px of "einen
-              Tag planen" sat under it. With `hideClose` there is nothing to
-              clear on a phone, and holding the 56 px anyway would spend them on
-              a button that is gone.
-
-              `!isPhone` and not `sm:`, because `hideClose` two elements up is
-              `isPhone`: a landscape phone is a phone by the height term but
-              matches `sm:`, so a width class would hold 28 px clear of a button
-              that is not drawn there. The × in `components/ui/sheet.tsx` keeps
-              its own `max-sm:` sizing — that file is shared with every other
-              sheet in the app — and the two never disagree, because on every
-              window this branch calls a phone the button is gone entirely. */}
-            {/* `relative`, so the row paints over the handle behind it and its
-              controls take their own presses. */}
+            {/* `pr-7` on a desktop keeps the last control out from under `SheetContent`'s × at
+                `absolute top-4 right-4`; with `hideClose` a phone has nothing to clear. `!isPhone`
+                rather than `sm:`, to follow `hideClose`. `relative`, so the row paints over the
+                handle behind it. */}
             <div
               className={cn(
                 'relative flex items-center gap-2',
-                // 4 px between the phone's controls, not 8: the row holds the
-                // park, the day picker, the bell and the ×, and every pixel of
-                // gap comes out of the park name (PAR-482).
+                // 4 px between the phone's controls: every pixel of gap comes off the park name.
                 isPhone ? 'gap-1' : 'pr-7'
               )}
             >
-              {/* Radix wants a title and a phone has no room for one. 45 px went
-                to this row and 45 to the column's own head, 90 px of a 776 px
-                sheet spent saying "Tagesplaner" over a park name and a date —
-                and the axis under them had 211. The two rows are one row there,
-                and what gives way is the word for the thing the reader is
-                already looking at. `sr-only` rather than gone: the sheet is a
-                dialog and a dialog owes its reader a name.
-
-                It stays visible wherever the row has no park name to carry it:
-                the overview (which is not a day), a plan with no park in it at
-                all, and the state where the plan holds parks but none of them
-                is active — there the head is a chooser reading „kein Park",
-                which labels a control and not the panel. `park` rather than
-                `phoneHead`, so the row is never left without a name on it. */}
+              {/* Radix wants a title. On a phone it is `sr-only` where the row carries a park name,
+                  since a dialog owes its reader a name; visible wherever the row has none (the
+                  overview, no active park). `park`, not `phoneHead`, so the row always has a
+                  name. */}
               <SheetTitle
                 className={cn(
                   'flex shrink-0 items-center gap-2 text-sm',
@@ -1356,12 +849,9 @@ export function PlannerFlyout({
                 <CalendarPlus className="size-4" />
                 {t('title')}
               </SheetTitle>
-              {/* The park and the day, on a phone. Same component, same place in
-                the DOM, drawn by the panel instead of by the column — see
-                `withHead` on {@link PlannerDayColumn}. Its own border and
-                padding come off, because the row it is in already has both;
-                `min-w-0` is what lets the park name truncate rather than push
-                the day picker off the edge. */}
+              {/* The park and the day on a phone, drawn by the panel instead of the column (see
+                  `withHead` on {@link PlannerDayColumn}); `min-w-0` lets the park name
+                  truncate. */}
               {phoneHead && (
                 <PlannerColumnHead
                   parks={parks}
@@ -1378,31 +868,16 @@ export function PlannerFlyout({
                   timezone={resolveTimeZone(day?.timezone ?? park?.timezone)}
                   facts={dayFacts.byDate}
                   maxDate={dayFacts.lastDate ?? undefined}
-                  /* The way into the overview, on the one arrangement where the
-                   chevron beside the date is gone — see the note on the toggle
-                   below. It is the park chooser's own foot, next to "Park
-                   hinzufügen", because both rows answer the same question a
-                   step apart: which plan am I in, and where is the other one. */
+                  /* The way into the overview on a phone, in the park chooser's foot. */
                   onShowOverview={park ? () => setShowOverview(true) : undefined}
                   className="min-w-0 flex-1 border-b-0 px-0 py-0"
                 />
               )}
               {park && (
                 <>
-                  {/* The park name is the way into the overview. It was a plain
-                    label with a row of chips under it naming the OTHER parks,
-                    and a chip said nothing about what was planned in one.
-
-                    **Not while the phone's head is up** (PAR-313). There this
-                    button is the icon alone — 44 px of chevron sitting against
-                    the day picker's own `›` — and the report read it as a
-                    minimize control, which is a fair reading of two chevrons
-                    side by side. `!phoneHead` and not `!isPhone`: with the
-                    overview OPEN `phoneHead` is false, and then this same
-                    button is drawn with its word and is the only way back. So
-                    what goes is the icon-only state and nothing else; the way
-                    IN moved into the park chooser beside it, see
-                    `onShowOverview` above. */}
+                  {/* The way into the overview. Not while the phone's head is up, where the icon
+                      alone beside the day picker's `›` read as a minimize control; with the
+                      overview open it is drawn with its word and is the way back. */}
                   {!phoneHead && (
                     <button
                       type="button"
@@ -1414,16 +889,9 @@ export function PlannerFlyout({
                         PHONE_TARGET_32
                       )}
                     >
-                      {/* "Meine Pläne", never the active park's name. This control
-                        opens the list of ALL plans, and labelling it with one of
-                        them made it read as a statement about the page — which on
-                        a different park's page is simply wrong. */}
+                      {/* "Meine Pläne", never the active park's name: it opens all plans. */}
                       <span className="truncate">{t('plans.title')}</span>
-                      {/* Always. Hiding it until a second park or day existed made
-                        the overview — the only route to another park or another
-                        day — invisible to everyone who had exactly one, which is
-                        everyone at the start. This chevron is where "how do I add
-                        another day" is answered, so it cannot wait. */}
+                      {/* Always: the overview is the only route to another park or day. */}
                       <ChevronDown
                         className={cn(
                           'size-3 shrink-0 transition-transform',
@@ -1432,45 +900,10 @@ export function PlannerFlyout({
                       />
                     </button>
                   )}
-                  {/* A day can be started from anywhere in the panel, not only
-                    from inside the overview. It carries the page's park where
-                    there is one, so the wizard opens on the calendar rather
-                    than asking a question the route already answers.
-
-                    NOT on a phone, and that is the decision this row cost.
-                    Measured for PAR-202 with the "+" drawn and without it, at
-                    320, 360, 390 and 430 px in all six locales (the locale
-                    moved no number). The row is the window less the header's
-                    two `px-3`, 336 px at 360. The park name gets what the day
-                    picker, the bell, the ×, the gaps and its own button's
-                    chevron and padding leave: 84 px at 360, 114 at 390, 44 at
-                    320. The "+" costs 48 of that (44 plus its `gap-1`), which
-                    leaves 36 at 360, 66 at 390 and 0 at 320. „Phantasialand" needs 80, so with the "+" it
-                    truncates at every width below 430. „Universal Studios
-                    Florida", the longest name among the homepage's featured
-                    parks, needs 139 and truncates below 430 even without it.
-                    Something had to go, and of the row's controls the
-                    "+" is the only one that closes no ROUTE. Two things reach
-                    what it reached, and it is worth being exact about which:
-                      · a second day at the park on screen is the day picker
-                        beside this, one tap on `›` — measured: the same park
-                        on an unplanned date, with axis, ride search and
-                        optimise, which is fewer taps than the "+" ever was;
-                      · the WIZARD is in the overview (the park chooser's foot
-                        opens it, see `onShowOverview`), where a new day stands
-                        next to the days that exist.
-                    What does not survive is the wizard arriving with the page's
-                    park already filled in — the overview's start deliberately
-                    asks that question, and seeding it would delete the park
-                    step for everyone (`initialPark` drops `park` from `steps`
-                    entirely, so it cannot be reached forwards or backwards).
-                    That residue is PAR-181 rather than a decision taken here.
-                    The day picker is the panel's most-pressed control and the
-                    park name is what tells a reader which plan they are in.
-
-                    `!isPhone` rather than `!phoneHead`: it is gone on a phone
-                    for good, not only while the head is up. The overview is
-                    where it went, and the overview is the other phone state. */}
+                  {/* A day can be started from anywhere in the panel, on the page's park where
+                      there is one. Not on a phone, where the row has no room left for the park
+                      name; there the day picker's `›` and the overview's wizard reach the same
+                      days. */}
                   {!isPhone && (
                     <button
                       type="button"
@@ -1487,50 +920,27 @@ export function PlannerFlyout({
                       <Plus className="size-4" aria-hidden="true" />
                     </button>
                   )}
-                  {/* The notification bell, up here on the desktop as on the
-                    phone (PAR-482 follow-up: „die Benachrichtigungen sollten so
-                    wie in Mobile nach oben"). It was a row of its own under the
-                    foot, the last and least tidy thing in the panel; the switch,
-                    its topics and the share link now open from the bell. Only
-                    with something planned, like before: switching it on
-                    uploads the plan. */}
+                  {/* The notification bell, only with something planned, since switching it on
+                      uploads the plan. */}
                   {!isPhone && activeEntries.length > 0 && <PlannerPushToggle variant="icon" />}
-                  {/* The second column, on and off. The day picker that used to
-                    sit here moved onto the column with the park name, because
-                    with two of them a panel-level picker cannot say which day
-                    it means — see `PlannerColumnHead`.
-
-                    It opens on the day AFTER the active one, same park: "and
-                    the day after" is the move two columns are for, and a second
-                    column showing the same date twice would open on the one
-                    arrangement that says nothing. The park is whatever is
-                    active, so switching either column's park is one press away
-                    and neither is decided here.
-
-                    Wherever the WINDOW could carry two — see
-                    `twoColumnsOffered` — and the press makes room for them. */}
+                  {/* The second column, on and off. It opens on the day after the active one, same
+                      park, which is what two columns are for. Offered wherever the window could
+                      carry two (`twoColumnsOffered`); the press makes room. */}
                   {activeDate && !showOverview && twoColumnsOffered && (
                     <button
                       type="button"
                       onClick={() => {
                         if (secondColumn) {
-                          // Closing leaves the width alone: somebody who dragged
-                          // the panel to 820 px asked for 820 px, and a switch
-                          // that reset it would be undoing a different gesture.
+                          // Closing leaves the width alone: it was the visitor's own.
                           plannerSecondColumn.close();
                           return;
                         }
-                        // Widening is the switch's job now that it is offered
-                        // below the width two columns need. `commit` rather than a
-                        // write of our own, so this goes through the same clamp
-                        // and the same storage key the edge drag uses — and only
-                        // upwards, for the same reason closing does not touch it.
+                        // Widen through `commit`, the edge drag's clamp and storage, and only
+                        // upwards.
                         if (plannerPanelWidth.getSnapshot() < TWO_COLUMN_MIN_WIDTH) {
                           plannerPanelWidth.commit(TWO_COLUMN_MIN_WIDTH);
                         }
-                        // A column narrowed away is remembered rather than
-                        // forgotten, so widening brings that day back instead of
-                        // overwriting it with tomorrow.
+                        // A column narrowed away is remembered, so widening brings that day back.
                         if (storedColumn) return;
                         if (!activeParkSlug) return;
                         plannerSecondColumn.open({
@@ -1554,33 +964,10 @@ export function PlannerFlyout({
                   )}
                 </>
               )}
-              {/* A drawn way out, on the phone as well (PAR-483). PAR-188 took the ×
-                off this sheet and left the handle as the exit: a drag past
-                `SHEET_DISMISS_PX`, or a tap on the shield beside the sheet. Both
-                failed in the field. A tap on the handle — the first thing anybody
-                tries — pulled the sheet up to 100svh, where the shield is 0 px
-                tall, so the only exit left was a drag nothing on screen names.
-                And on iOS a focused field under 16 px zooms the page in and never
-                zooms back (see `[data-planner-sheet]` in `app/globals.css`), which
-                slid the header off the top of the screen altogether: "der Planer
-                lässt sich nicht schließen".
-
-                The last control of this row rather than `SheetContent`'s own
-                corner slot, which would sit on top of the day picker's `›` (what
-                PAR-188 was about). Drawn 32 px wide, so the disc sits 12 px
-                from the sheet's edge like the park button on the left, and it
-                reaches 44 × 44: 6 px up and down (`PHONE_TARGET_32`) and 12 px
-                right, through the row's padding to the edge. The row at 360 px
-                is 336: the day picker 148, the bell and this 32 each, three
-                4 px gaps, and the park name keeps the rest. */}
-              {/* The notification bell, beside the × (PAR-482). It has been
-                the grabber's row, the summary line and the optimise row; up
-                here it is with the other control that is about the panel
-                rather than about the day, and the optimise row gets the show
-                switch. Only with something planned, like the desktop's row:
-                switching it on uploads the plan, and an empty one is nothing
-                to be told about. What it costs is the park name's room — see
-                the measurement on the × below. */}
+              {/* The bell beside the ×, only with something planned. Then a drawn way out on the
+                  phone, since the handle alone was an exit nobody found and a zoomed page could
+                  push the header off screen. 32 px drawn, so the disc sits 12 px from the edge,
+                  reaching 44 × 44 (`PHONE_TARGET_32` and the row's padding). */}
               {isPhone && park && activeEntries.length > 0 && <PlannerPushToggle variant="icon" />}
               {isPhone && (
                 <SheetClose
@@ -1611,9 +998,7 @@ export function PlannerFlyout({
                 onPick={(slug, date) => {
                   setActive(slug, date);
                   setShowOverview(false);
-                  // …and go to that park's page, because switching plans is
-                  // switching subject — see `goToPark`, which the column focus
-                  // uses for the same reason.
+                  // …and go to that park's page, as `goToPark` does for the column focus.
                   goToPark(slug);
                 }}
                 onClearDay={clearDay}
@@ -1622,92 +1007,28 @@ export function PlannerFlyout({
             </div>
           ) : (
             <>
-              {/* Only where a day has been CHOSEN, and that is the whole fix for a
-                sentence the panel had no business saying. `dayState` ends in a
-                fall-through `: 'empty'` (see above), and with no active park or
-                date the query is disabled — so `isFetching` is false, `day` is
-                undefined, and 'empty' arrives at the band meaning "nobody ever
-                asked". The band cannot tell that from a real 404 and printed
-                "Für diesen Tag liegt keine Prognose vor." over an empty
-                planner, above the offer to plan the park the reader is standing
-                in. Measured: zero requests to `/plan/day` had been made.
-
-                Guarded HERE rather than inside the band, because 'empty' is
-                also the honest 404 — a park and a date are chosen, the API
-                answered, and there the sentence is the only right one. And the
-                guard has to sit on the wrapper: it carries the `border-b`, so a
-                band that returned `null` from inside would leave a hairline
-                under the sheet header with nothing above it. */}
-              {/* The columns. One is the plan's active day; a second is the day
-                beside it, and both draw the same component so the chrome exists
-                once in the code.
-
-                A GRID rather than a flex row, and that is the whole of "make
-                the two columns look like a pair". Side by side as flex children
-                each column stacked its own head, its own context band and its
-                own axis — and the band's height is DATA: a park whose day
-                carries a school-holiday chip has a taller one, so the right
-                column's 09:00 sat 28 px below the left column's 09:00 and every
-                hour rule after it was out of step. Three rows here — head, band,
-                body — which each column takes as `grid-rows-subgrid`, so the two
-                bands are as tall as the taller one and the axes start on the
-                same pixel. `minmax(0,1fr)` because a grid track's default `auto`
-                minimum is its content, which a long ride name would push past
-                the panel.
-
-                A divider on the second column, because two grids of hour rules
-                need an edge to be told apart by.
-
-                Never on a phone: the sheet is the width of the screen there, and
-                two columns of a 390 px one would be 195 px each against the
-                318 px a single honest column needs. `isPhone` rather than a CSS
-                breakpoint, because a second column also costs a `/plan/day`
-                query and a hidden one must not be paid for. */}
-              {/* The sheet's body, and on ONE size it is a row.
-
-                `contents` everywhere else, which is the whole reason this
-                wrapper is affordable: an element with `display: contents` draws
-                no box at all, so at every other size the sheet's flex children
-                are the same boxes in the same order as before this change and
-                the portrait and desktop geometry cannot move by construction —
-                measured, and it did not. The three viewports and their numbers
-                are in `docs/features/trip-planner.md`.
-
-                On a landscape phone it becomes the row: `min-h-0` so the axis'
-                own scroller can bound itself, `flex-1` to take what the handle
-                and the sheet header leave. Why a row: 844x390 stacks 343 px of
-                chrome into a 359 px sheet and leaves the axis 16 px, and two
-                hours of day is 216 px at `PX_PER_MIN_COARSE` — the rows have to
-                move BESIDE the axis, because there is no order of them that
-                fits above it. See `planner-landscape` in `app/globals.css` for
-                the arithmetic and PAR-168 for the decision. */}
+              {/* The sheet's body: `contents`, so at every size but one its children are the
+                  sheet's own flex children, unchanged; on a landscape phone it is the row, the
+                  day's chrome beside the axis. See `planner-landscape` in `app/globals.css`. */}
               <div
                 className={cn(
                   'contents',
-                  /* The row only where there IS a day, and that is not caution —
-                   every row it puts on the left hangs on a chosen park and date,
-                   so without one the left column would be 320 px of the 829 px
-                   sheet standing empty beside its own divider, next to the empty
-                   state that is the one screen this panel has to get right.
-                   Without a day the sheet stays the stack it is today. */
+                  /* The row only where there is a day: every row it puts on the left hangs on a
+                     chosen park and date, so without one the left column would stand empty. */
                   park &&
                     activeDate &&
                     'planner-landscape:flex planner-landscape:min-h-0 planner-landscape:flex-1 planner-landscape:flex-row'
                 )}
               >
+                {/* The columns: a grid whose three rows (head, band, body) each column takes as
+                    `grid-rows-subgrid`, so both axes start on the same pixel. Never two columns on
+                    a phone, where a hidden one would still cost a `/plan/day` query. */}
                 <div
                   className={cn(
                     'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
-                    /* `basis-auto` on a phone, since the sheet has a definite
-                     height (PAR-482). `flex-1` is a ZERO basis, and against a
-                     definite height that hands this box only what the rows
-                     around it leave: the ride search kept its full 32svh and
-                     the axis fell to its 200 px floor (372 → 200 px in
-                     `check:planner`). With its content as the basis the
-                     overflow is shared out by size, the way it was under
-                     `h-auto`, and the search is again what gives way. The
-                     landscape row keeps the zero basis — there this box shares
-                     a ROW, where a content basis would be a width. */
+                    /* `basis-auto` on a phone, where the sheet has a definite height: `flex-1`'s
+                       zero basis left the axis only what the rows around it left. The landscape row
+                       keeps the zero basis, since a content basis there would be a width. */
                     'planner-phone:basis-auto planner-landscape:basis-0',
                     secondColumn ? 'grid-cols-2' : 'grid-cols-1',
                     // Stepped aside while the phone searches, and kept mounted:
@@ -1742,21 +1063,9 @@ export function PlannerFlyout({
                     }}
                   />
                   {secondColumn && (
-                    /* It arrives from the side it comes from rather than appearing
-                   in one frame — a 389 px block popping into a panel somebody
-                   is reading is a jump, not a change. On a DESCENDANT, which is
-                   the one place in this panel a transform is free: the glass is
-                   `SheetContent`'s, and a transform on that (or on any ancestor
-                   of it) makes it a backdrop root and flattens the blur. Short,
-                   because the column is already correct the moment it is there
-                   and the animation is only saying where it came from.
-                   `motion-reduce:animate-none` for a reader who has asked for
-                   none of this.
-
-                   On the column itself rather than on a wrapper around it: a
-                   `subgrid` child has to be a DIRECT child of the grid that owns
-                   the rows, and a div in between would have taken the three rows
-                   for itself and handed the column back one. */
+                    /* It slides in from its side, on the column itself: a transform on a descendant
+                       does not flatten the sheet's blur, and a `subgrid` child has to be a direct
+                       child of the grid. */
                     <PlannerDayColumn
                       parkSlug={secondColumn.parkSlug}
                       date={secondColumn.date}
@@ -1766,10 +1075,7 @@ export function PlannerFlyout({
                       open={open}
                       withFoot={!isPhone}
                       withHead={!isPhone}
-                      /* Never `!isLandscape`: a second column needs `!isPhone` to
-                     exist at all, and a landscape phone is a phone — so this is
-                     `true` wherever this element is drawn, and writing the
-                     other thing would only suggest a case that cannot arise. */
+                      /* Always `true`: a second column only exists off a phone. */
                       withBand
                       className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
                       onPickPark={(slug) =>
@@ -1786,64 +1092,26 @@ export function PlannerFlyout({
                   )}
                 </div>
 
-                {/* The other side of the row, and `contents` everywhere else for the
-                same reason the wrapper above is: at every size but one these
-                are the sheet's own flex children, in this order, unchanged.
-
-                On a landscape phone they become the left column — 20rem of the
-                829 px sheet, which leaves the axis 509 and is a little over the
-                318 px a single honest column is reckoned at elsewhere in this
-                file. `order-first` rather than a different DOM order, so the
-                reading order stays the one every other size has: the day, then
-                what can be done to it.
-
-                **That is a trade and it is worth naming.** `order` moves the box
-                and not the document, so here the visual order runs left to right
-                while tab and screen reader run right to left — the classic
-                WCAG 2.4.3 divergence. The alternative is reordering the children
-                for one size, which in React means these components unmount and
-                remount on rotation: the ride search loses its query, the column
-                its scroll position and its selected block. A reader who tabs
-                gets the axis before the controls that act on it, which is the
-                same order every other size gives them; a reader who rotates
-                keeps their work. See `docs/features/trip-planner.md`.
-
-                `overflow-y-auto` because the rows inside add up to more than the
-                270 px this row has — optimize 61, headliners up to 96, the free
-                block 33, the summary 37, the push toggle 30, plus the band and
-                whatever the search is showing. Above the axis that arithmetic
-                was the bug; beside it, it is a scrollbar in a column nobody has
-                to scroll to see the day. */}
+                {/* The other side of the row, `contents` at every size but one. On a landscape
+                    phone it is the left column: `order-first` rather than another DOM order, so
+                    rotating does not remount the search and the column, at the cost of tab order
+                    running axis first. `overflow-y-auto`, since its rows are taller than the
+                    row. */}
                 <div
-                  /* Named, so `check:planner` can ask THIS box whether it scrolls
-                   rather than walking up from the band inside it. Present at
-                   every size, like every other `data-planner-*` here — what the
-                   variants decide is the display, not the markup. */
+                  /* Named, so `check:planner` can ask this box whether it scrolls. */
                   data-planner-landscape-chrome=""
                   className={cn(
                     'contents',
-                    /* Same gate as the row above, and it has to be the same
-                     expression: a column without the row around it would be a
-                     320 px box inside a flex COLUMN, i.e. a narrow strip where
-                     the sheet used to be full width.
-
-                     `w-64` below 40rem, `w-80` above (PAR-231): the row now
-                     starts at 35.5rem, and at 568 px a 320 px column would leave
-                     the axis 248. 256 leaves it 312, close to the 318 px an
-                     honest planner column is reckoned at. */
+                    /* The same gate as the row, or a 320 px box would sit in a flex column. `w-64`
+                       below 40rem, `w-80` above, so a 568 px window still leaves the axis about
+                       312. */
                     park &&
                       activeDate &&
                       'planner-landscape:flex planner-landscape:order-first planner-landscape:w-64 planner-landscape:sm:w-80 planner-landscape:min-h-0 planner-landscape:shrink-0 planner-landscape:flex-col planner-landscape:overflow-y-auto planner-landscape:overscroll-y-contain planner-landscape:border-border/60 planner-landscape:border-r'
                   )}
                 >
-                  {/* The day's own head, and ONLY on a landscape phone — every other
-                  size draws it inside the column, where `withBand` leaves it.
-                  It is the same component with the same props either way; what
-                  changes is which side of the row it stands on, because 61 px
-                  above a 270 px axis is a quarter of the day and 61 px beside it
-                  is nothing. The border goes with it for the same reason it does
-                  in the column: a rule with nothing above it is a stray
-                  hairline. */}
+                  {/* The day's context band, here only on a landscape phone, where 61 px above a
+                      270 px axis would be a quarter of the day; elsewhere the column draws it. */}
                   {isLandscape && park && activeDate && (
                     <div className="border-border/60 min-w-0 shrink-0 border-b">
                       <PlannerContextBand
@@ -1859,43 +1127,14 @@ export function PlannerFlyout({
                     </div>
                   )}
 
-                  {/* The PHONE's search, the panel's own copy for the active day.
-                A coarse pointer has no drag and drop, so the search is the way
-                a ride gets into a plan and it does the inserting. The desktop
-                has its own since the PAR-482 follow-up, one per column inside
-                the column's foot row (`inline` on {@link PlannerRideSearch}),
-                beside a ride card dragged off the page, which is still the
-                better gesture there because it picks the hour at the same time.
-
-                `isPhone` rather than the `planner-wide:hidden` it was, for the
-                reason the foot below gives: this panel is mounted client-side
-                and never server-rendered, so the hook is right on its first
-                render, and with the desktop drawing a search of its own a
-                CSS-hidden copy here would be a second `input[type=search]` in
-                the sheet. */}
+                  {/* The phone's ride search, the panel's own copy for the active day, since a
+                      coarse pointer has no drag and drop; the desktop draws one per column
+                      (`inline` on {@link PlannerRideSearch}). `isPhone`, not a CSS class: the panel
+                      is client-only, and a hidden copy would be a second search field. */}
                   {isPhone && park && activeDate && (
-                    /* NOT `shrink-0`, unlike its neighbours: this is the block that
-                 has to give way when the sheet runs out of room, or the floor
-                 above it just moves the overflow onto the summary row. It keeps
-                 a cap so it cannot take the sheet on a tall phone either, and
-                 scrolls inside itself past that.
-
-                 32svh, down from 46. The field report read "die Ride-Suche ist
-                 höher als die Achse", and it was: 46svh is 388 px at 844, which
-                 is more than the axis's whole box. The cap is now a little over
-                 the axis's own 200 px floor (270 px at 844), so on a tall phone
-                 the two are the same order of size and on a short one this is
-                 still the element that gives way first.
-
-                 **Except on a landscape phone, where it gives way to nothing.**
-                 There this block is in the left column of a row whose content
-                 (band 138, optimize 111, headliners 143, summary 37, push 63 at
-                 320 px wide) is taller than the 269 px the column has — so every
-                 pixel of that overflow landed on the one `shrink` child and the
-                 search came out **0 px tall**, with its own inner element still
-                 reporting a box and clipping to nothing. Measured. The column
-                 scrolls there, which is the answer the stacked sheet does not
-                 have: nothing has to give way, so nothing may. */
+                    /* Not `shrink-0`: in the stacked sheet this block gives way first, capped at
+                       `32svh` and scrolling inside. On a landscape phone it does not shrink: the
+                       column scrolls instead, and a shrinking search came out 0 px tall. */
                     <div
                       className={cn(
                         'planner-phone:max-h-[32svh] planner-wide:hidden planner-landscape:shrink-0 min-h-0 shrink overflow-y-auto overscroll-y-contain',
@@ -1937,31 +1176,15 @@ export function PlannerFlyout({
                     </div>
                   )}
 
-                  {/* Named once, and only where the gesture exists: a fine pointer,
-                and a park page behind the panel to drag a card out of — and not
-                while the day is empty, because the empty axis says the same
-                sentence in the middle of the panel, from the same key. Two
-                copies of one instruction 300 px apart is how a hint stops
-                reading as a hint. */}
+                  {/* Named once, only where the gesture exists, and not on an empty day, whose axis
+                      says the same sentence from the same key. */}
                   <PlannerDragCoach
                     show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
                   />
 
-                  {/* The active day's foot, PHONE ONLY — the desktop's copy is drawn
-                by each column, one set per column, because every control in
-                here names a park and a date and there are two of each once a
-                second column is open. A phone never has a second column, and
-                the arithmetic that keeps it here is in `PlannerDayFoot`: inside
-                the column it would leave the axis 119 px of a 716 px sheet.
-
-                `isPhone` rather than the `planner-wide:hidden` the ride search below
-                uses, and the difference is real: that class exists because
-                `useMediaQuery` answers `false` on its server snapshot, and this
-                panel is never server-rendered — it is mounted client-side the
-                first time somebody asks for it, so the hook is right on its
-                first render here. Two copies in the DOM would be two of every
-                `data-planner-optimize` for a selector to pick the wrong one
-                of. */}
+                  {/* The active day's foot, phone only: the desktop's is drawn per column.
+                      `isPhone` rather than a CSS class, since the panel is client-only and two
+                      copies would duplicate `data-planner-optimize`. See `PlannerDayFoot`. */}
                   {isPhone && park && activeDate && (
                     /* `contents`, so the foot's rows stay rows of the sheet;
                      `hidden` while the phone searches, and kept mounted, so an
@@ -1978,22 +1201,15 @@ export function PlannerFlyout({
                         prefs={prefs}
                         entries={activeEntries}
                         onAddFreeBlock={addFreeBlock}
-                        /* The phone's show switch, at the end of the optimise
-                         row, because the phone draws no show band (PAR-482).
-                         Only for a day that has shows: the row is drawn for
-                         its trailing control alone where there is nothing to
-                         optimise, and a switch that renders nothing would
-                         leave that row empty. See `actionsTrailing`. */
+                        /* The phone's show switch, only for a day with shows, or the row would be
+                           drawn for an empty control. See `actionsTrailing`. */
                         actionsTrailing={dayHasShowLines(day) ? <PlannerShowsButton /> : undefined}
                       />
                     </div>
                   )}
 
-                  {/* Below the search, because it is an
-                offer about a DIFFERENT day than the one on screen — putting it
-                in the header would read as a statement about the plan being
-                looked at. Renders nothing unless the visitor is inside a park
-                that is not the one being planned. */}
+                  {/* An offer about a different day than the one on screen, so below the search and
+                      not in the header. Renders nothing unless the visitor is in another park. */}
                   <div className={cn('contents', searchMode && 'hidden')}>
                     <PlannerInParkCta activeParkSlug={activeParkSlug} />
                   </div>
@@ -2008,10 +1224,8 @@ export function PlannerFlyout({
           {wizardOpen && (
             <PlannerWizard
               open
-              // Started FROM a park page, the wizard opens on the calendar: the
-              // first question is already answered by where the reader is
-              // standing, and asking it again is the panel pretending not to know
-              // what page it is on.
+              // From a park page the wizard opens on the calendar: the route already says which
+              // park.
               initialPark={wizardPark}
               initialDate={wizardDate}
               initialRiderHeight={wizardHeight}

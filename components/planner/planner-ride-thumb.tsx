@@ -3,19 +3,11 @@ import { RollerCoaster } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * A ride's picture in a fixed box — or the mark that stands in for one.
- *
- * The fallback used to be a `+`, which reads as "add this" rather than as "no
- * photo" and put an action glyph where every neighbouring row shows a subject.
- * 198 of the 212 parks have no picture in the media database at all, so the
- * fallback is the COMMON case here, not the exception: it has to look like a
- * ride, and it has to fill the same box the photo would, or a list of rides
- * changes its rhythm depending on which ones we happen to have shot.
- *
- * `next/image` with a fixed box rather than the CSS background the blocks use:
- * that loader is tuned for full-bleed photos at q50 and turns a 32 px thumbnail
- * to mush. The focal point the admin set travels with the photo, so a picture
- * framed for a card is framed here too.
+ * A ride's picture in a fixed box, or the coaster mark that stands in for one. The fallback is the
+ * common case, so it has to look like a ride and fill the same box, or a list changes rhythm with
+ * the photos we happen to have. `next/image` rather than the blocks' CSS background, whose loader
+ * is tuned for full-bleed photos and blurs a 32 px thumbnail; the curated focal point travels
+ * along.
  */
 export function PlannerRideThumb({
   src,

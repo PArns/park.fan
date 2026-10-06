@@ -10,49 +10,22 @@ import { PlannerShareLink } from './planner-share-link';
 
 interface PlannerPushToggleProps {
   /**
-   * `row` is the block this has always been; `icon` is the bell in the panel's
-   * header, on the phone and, since the PAR-482 follow-up, on the desktop.
-   *
-   * A variant rather than a second component, and that is forced rather than
-   * chosen: {@link usePushSubscription} holds its own state and asks
-   * `/api/push` from an effect, so a wrapper that only wanted to know WHICH
-   * icon to draw would be a second subscription — two requests, and two
-   * answers free to disagree about whether notifications are on.
-   *
-   * What the icon variant changes is where the body is drawn, never what it
-   * says: the same switch, the same topics and the same sentences move into a
-   * popover behind a 44 px bell. The three states that render nothing render
-   * nothing here too, bell included — a bell that opens a popover explaining
-   * that this browser has no push is a control that does nothing.
+   * `row` is the block in the panel; `icon` is the bell in the panel's header. A variant rather
+   * than a second component, because {@link usePushSubscription} holds its own state and asks
+   * `/api/push`, so a wrapper would be a second subscription. The icon only moves the same body
+   * into a popover, and the states that render nothing render no bell either.
    */
   variant?: 'row' | 'icon';
 }
 
 /**
- * The one control that turns notifications on.
+ * The one control that turns notifications on. It renders nothing while `checking`, `unsupported`
+ * or `unavailable`: a disabled switch would promise what the site cannot keep. `denied` renders and
+ * says the browser is refusing.
  *
- * It renders NOTHING in three of the seven states, and that is the design rather
- * than an omission: `checking` has no answer yet, `unsupported` means this
- * browser has no push, and `unavailable` means this deploy has no VAPID keypair.
- * A disabled switch in any of them would be a promise the site cannot keep, and
- * a visitor cannot tell "not yet" from "never" by looking at one.
- *
- * `denied` does render, and says the browser is the one refusing — it is the
- * only state where the visitor has to go somewhere else to change the answer,
- * and a control that silently did nothing there would be the worst of the lot.
- *
- * The sentence under it is not decoration. Turning this on uploads the plan, and
- * the link to that copy is its only credential — no account, no password. That
- * has to be said where somebody presses the button, not in a policy page. It
- * also says what switching off does, because switching off DELETES that copy:
- * a hint that described the upload and stopped there would leave a visitor
- * guessing at the only part of this they can still act on.
- *
- * One sentence covers a refused deletion, not one per class. Switching off
- * always switches off — the notifications half owes the server nothing — so
- * what the reader needs is that the plan is still up there and what to press
- * to retry, and the one class carrying a figure worth printing, the limiter's
- * window, does not reach the client at all (PAR-146).
+ * The sentence under it says the link to the uploaded plan is its only credential, and that
+ * switching off deletes it, because that has to be said where the button is pressed. One sentence
+ * covers a refused deletion: the plan is still up there, and pressing again retries.
  */
 export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = {}) {
   const t = useTranslations('planner');
@@ -96,11 +69,7 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
         disabled={busy}
         aria-pressed={on}
         className={cn(
-          // `min-h-11`, not `py-2.5`. Padding sizes a box from its content, and
-          // the content here is a 14 px icon beside one line of `text-xs` —
-          // 10 px top and bottom of it came to 36, not 44. The topic rows
-          // below already say `min-h-11`, which is why they measured right and
-          // the master switch above them did not.
+          // `min-h-11`, not padding: padding around one line of `text-xs` came to 36 px, not 44.
           'planner-phone:min-h-11 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
           'hover:bg-accent disabled:opacity-60',
           on && 'text-foreground'
@@ -115,15 +84,9 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
         )}
         <span className="min-w-0 flex-1">{on ? t('push.on') : t('push.off')}</span>
       </button>
-      {/* Which kinds, and only where there is a choice to make. A deploy that
-          can send exactly one kind gets a sentence naming it instead of a list
-          of one checkbox, which would be the master switch drawn twice.
-
-          The list is the DEPLOY's topics, never a hard-coded set: an id this
-          app has no copy for is still offered, by its id, because hiding a
-          switch is worse than showing an untranslated word — and the labels for
-          the four ids the API is expected to grow into are already written, so
-          they appear the day it advertises them. */}
+      {/* Which kinds, only where there is a choice; one kind gets a sentence naming it. The list is
+          the deploy's topics, never a hard-coded set: an id without copy is offered by its id,
+          since hiding a switch is worse than an untranslated word. */}
       {on && availableTopics.length > 1 && (
         <fieldset className="mt-1 px-2" data-planner-push-topics="">
           <legend className="text-muted-foreground text-[10px] font-medium">
@@ -133,9 +96,8 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
             {availableTopics.map((topic) => {
               const key = `push.topics.${topic}`;
               const checked = selectedTopics === null || selectedTopics.includes(topic);
-              // The last one may not be unticked: a subscription with no topics
-              // is a switch that reads "on" and receives nothing. Turning all of
-              // them off is what the master switch above is for.
+              // The last one may not be unticked: a subscription with no topics reads "on" and
+              // receives nothing. Turning all off is the master switch's job.
               const last = checked && resolvedCount(availableTopics, selectedTopics) === 1;
               return (
                 <label
@@ -169,9 +131,7 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
         </fieldset>
       )}
 
-      {/* Only while it is on. Before that it is a warning about something that
-          has not happened; after, it is the one fact about the feature a
-          visitor needs to know they are living with. */}
+      {/* Only while it is on: before, it would warn about something that has not happened. */}
       {on && availableTopics.length === 1 && t.has(`push.topics.${availableTopics[0]}`) && (
         <p className="text-muted-foreground mt-1 px-2 text-[10px] leading-snug">
           {t('push.topics.only', { kind: t(`push.topics.${availableTopics[0]}`) })}
@@ -184,18 +144,13 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
         </p>
       )}
 
-      {/* Right under the sentence that says the link is the password, so the
-          warning and the button that hands the link out are read together. */}
+      {/* Right under the sentence that says the link is the password, so the two are read
+          together. */}
       {on && <PlannerShareLink />}
 
-      {/* Notifications did stop; the stored plan did not go with them. Said
-          out loud because the visible half of the press worked, so nothing
-          else on screen suggests the other half is outstanding.
-
-          `alert` rather than `status`: this is mounted in the same commit as
-          its text, and a polite region is announced on the text CHANGING
-          inside one that was already there — an assertive one is announced on
-          insertion, which is what actually happens here. */}
+      {/* Notifications did stop, the stored plan did not go with them, and nothing else on screen
+          says so. `alert`, not `status`: it is mounted with its text, and only an assertive region
+          is announced on insertion. */}
       {deleteError !== null && (
         <p
           className="text-destructive mt-1 px-2 text-[10px] leading-snug"
@@ -230,16 +185,8 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
 }
 
 /**
- * The bell, and the panel's switch behind it.
- *
- * `z-[80]` like every other popover this panel opens: `SheetContent` is
- * `z-[70]` and both are portalled to `<body>`, so the shared primitive's
- * `z-50` would draw this list behind the sheet that triggered it — a button
- * that opens something nobody can see or reach. The park chooser, the day
- * picker and the party chips all carry the same number for the same reason.
- *
- * `align="end"` because the bell sits at the sheet's right edge; centred on it
- * the panel would hang off the screen at 360 px.
+ * The bell, and the panel's switch behind it. `z-[80]` above the sheet's `z-[70]`, like every other
+ * popover this panel opens; `align="end"`, or at 360 px the popover hangs off the screen.
  */
 function PushPopover({
   label,
@@ -262,12 +209,8 @@ function PushPopover({
           title={label}
           className={cn(
             'text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:w-8 flex size-7 shrink-0 items-center justify-center rounded-md transition-colors',
-            // Drawn 32 × 32 beside the × in the phone's header row and 32 × 44
-            // to a finger (PAR-482): 6 px of overhang above and below, like
-            // every control in that row. The park name pays for its width,
-            // so it is drawn no wider than the chevrons beside it. On the
-            // desktop it is one of the header's 28 px icon buttons, beside
-            // „+" and the column switch.
+            // 32 × 32 drawn beside the phone header's ×, 32 × 44 to a finger, like every control in
+            // that row; on the desktop one of the header's 28 px icon buttons.
             PHONE_TARGET_32
           )}
         >

@@ -58,12 +58,8 @@ import { PlannerFitList } from './planner-fit-list';
 import { PlannerStepRail, STEP_MOTION } from './planner-step-rail';
 
 /**
- * A park as the wizard holds it.
- *
- * Everything past `geo` is decoration the SEARCH happened to hand over and the
- * hero paints — a photograph and a place name. All of it optional, because the
- * other way in carries none of it: "another day at this park" comes from the
- * plan itself, which stores the four slugs and the name and nothing else.
+ * A park as the wizard holds it. Everything past `geo` is optional decoration from the search hit,
+ * because "another day at this park" comes from the plan, which stores only the slugs and the name.
  */
 export interface WizardPark extends PlannerParkPick {
   timezone?: string;
@@ -71,12 +67,8 @@ export interface WizardPark extends PlannerParkPick {
 
 interface PlannerWizardProps {
   /**
-   * Always `true` in practice: the wizard is MOUNTED when it opens and
-   * unmounted when it closes, which is how the answers reset. An effect that
-   * cleared them on close was the first version, and React 19 rejects a
-   * `setState` in an effect body outright (`react-hooks/set-state-in-effect`) —
-   * rightly, because the mount boundary already does it for free and cannot
-   * forget a field.
+   * Always `true` in practice: the wizard is mounted when it opens and unmounted when it closes,
+   * which is how the answers reset without a `setState` in an effect.
    */
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -86,16 +78,9 @@ interface PlannerWizardProps {
    */
   initialPark?: WizardPark | null;
   /**
-   * A day to start on, which skips the second step as well.
-   *
-   * Only meaningful together with {@link initialPark} — a date without a park
-   * is a day at nowhere, and the step list below ignores it in that case
-   * rather than opening on a „Wer kommt mit" for a park nobody has named.
-   *
-   * What passes it is the calendar's day comparison: somebody who has just put
-   * two dates side by side and pressed „Diesen Tag planen" has answered both
-   * of the first two questions, and the wizard opening on the date step would
-   * be asking one of them for the second time.
+   * A day to start on, which skips the second step as well. Only counts together with
+   * {@link initialPark}: a date without a park is a day at nowhere. Passed by the calendar's day
+   * comparison, where both questions have already been answered.
    */
   initialDate?: string | null;
   /**
@@ -109,81 +94,31 @@ interface PlannerWizardProps {
 type Step = 'park' | 'date' | 'setup' | 'headliners';
 
 /**
- * Park-local minutes the lunch block starts at.
- *
- * A default, not a claim: the park's opening hours are not in the snapshot this
- * dialog reads (it carries status, crowd level and holiday flags — measured, not
- * assumed), so there is nothing to centre a break in yet. 12:30 is where a
- * European park's lunch queue is worst, the block is draggable the moment the
- * panel opens, and the alternative — asking about lunch and then putting the
- * block at the first free minute of the morning — would be worse.
+ * Park-local minutes the lunch block starts at. A default, not a claim: the snapshot this dialog
+ * reads has no opening hours to centre a break in, and the block is draggable once the panel opens.
  */
 const LUNCH_START_MINUTE = 12 * 60 + 30;
 const LUNCH_MINUTES = 60;
 
 /**
- * The id the probe files its lunch block under.
- *
- * It never reaches the store — the block is created by `addCustom` at the end,
- * with an id the store mints — but the fit step reads the block back out of
- * `evaluateFit`'s answer to find out whether it survived, and by how much it
- * was cut short. Named rather than repeated, because the two halves have to be
- * the same string or the wizard files an hour the visitor gave up.
+ * The id the probe files its lunch block under. It never reaches the store, but the fit step reads
+ * the block back out of `evaluateFit`'s answer by it, so both halves must use the same string.
  */
 const LUNCH_ENTRY_ID = 'wizard-lunch';
 
 /**
- * The elements an Enter already belongs to, as a selector.
- *
- * The first four are `PlannerDayColumn`'s guard for its Delete key, copied for
- * the same reason: a key pressed inside a field is the field's, and the panel
- * over there carries a search box and an editable block label. What is added
- * here are the controls the BROWSER itself acts on — Enter on a `<button>` or a
- * link fires that element's click — so reading the same keystroke as "next
- * step" would run two actions from one press. In this dialog that is not
- * hypothetical: every day of the month grid is a `<button>` whose click picks
- * the date, and the footer's own „Weiter" is one too, which would advance twice.
- *
- * `contenteditable` is spelled out in its two truthy forms rather than as a
- * bare attribute selector, exactly as one file over: `contenteditable="false"`
- * marks an element that does NOT own the key.
+ * The elements an Enter already belongs to, as a selector: fields, as in `PlannerDayColumn`'s
+ * Delete guard, plus the controls the browser itself fires on Enter, or one press would run two
+ * actions. `contenteditable="false"` does not own the key, so only the two truthy forms are listed.
  */
 const ENTER_BELONGS_TO =
   'input, textarea, select, button, a[href], [role="button"], [contenteditable=""], [contenteditable="true"]';
 
 /**
- * Planning a day, one question at a time.
- *
- * The feature's way in was a search field: type a park, and a panel opened on
- * an empty timeline for today, in the reader's own timezone, with no indication
- * of what to do next. Everything that made the day plannable — which day, who is
- * coming, whether the park is even open — had to be discovered afterwards, in a
- * panel, one control at a time. This asks the three questions in the order
- * somebody actually answers them, and then puts them on the park's own page,
- * where the ride cards are.
- *
- * Each step is a question, and none of them invents an answer:
- *
- * 1. **Which park.** The site's own search, so the four URL slugs a plan is
- *    filed under come from the API rather than being reconstructed from a name.
- * 2. **Which day**, on a month grid tinted with that park's own crowd forecast —
- *    the reason the step is worth a screen. The forecast also carries the park's
- *    TIMEZONE, which is what stops a plan being filed under the reader's date.
- * 3. **Who is coming.** Two answers that keep mattering (the shortest rider's
- *    height, whether the party wants to stay dry — both flags, never filters)
- *    and one that is just a block in the day (lunch).
- *
- * It ends on the park page with the panel open, because dragging a ride card
- * into the day is the gesture the whole feature is built around and there are no
- * ride cards in a dialog.
- *
- * **The frame is three fixed pieces around one changing one** — a photo band, a
- * progress rail, the step, a footer — which is what makes it read as one object
- * being filled in rather than three dialogs in a row. The first version was a
- * shadcn dialog with a title, the line "Schritt 2 von 3 · Tag" and a pair of
- * buttons: correct, and indistinguishable from a cookie prompt. Nothing about
- * it said the subject was a day out at a named park, though the search payload
- * had been carrying that park's own photograph the whole time.
+ * Planning a day, one question at a time: which park, which day, who is coming, and which big
+ * rides. It ends on the park's own page with the panel open, because dragging a ride card into the
+ * day is the gesture the feature is built around. See
+ * docs/features/trip-planner.md#the-wizard-is-the-way-in.
  */
 export function PlannerWizard({
   open,
@@ -195,7 +130,7 @@ export function PlannerWizard({
   /** A date only counts where a park came with it — see `initialDate`. */
   const seededDate = initialPark ? initialDate : null;
   const t = useTranslations('planner');
-  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   const locale = useLocale();
   const router = useRouter();
@@ -203,8 +138,7 @@ export function PlannerWizard({
 
   const [park, setPark] = useState<WizardPark | null>(initialPark);
   const [step, setStep] = useState<Step>(seededDate ? 'setup' : initialPark ? 'date' : 'park');
-  // Which way the last move went, which is all the step transition needs to
-  // know — see `STEP_MOTION`.
+  // Which way the last move went, which is all the step transition needs (see `STEP_MOTION`).
   const [forward, setForward] = useState(true);
   const [date, setDate] = useState<string | null>(seededDate);
   const [prefs, setPrefs] = useState<PlannerDayPrefs>(() =>
@@ -213,26 +147,17 @@ export function PlannerWizard({
   const [lunch, setLunch] = useState(false);
   const [planHeadliners, setPlanHeadliners] = useState(false);
   /**
-   * Which big rides, in which order of importance, and what to do about the
-   * break — the fit assistant's own answer, asked here one step earlier.
-   *
-   * It is held even while the toggle above is off, so switching the step back
-   * on does not throw away an order somebody already put the rides in. What it
-   * decides is only ever read where `planHeadliners` is true; see `finish`.
+   * Which big rides, in which order, and what to do about the break: the fit assistant's answer,
+   * asked one step earlier. Kept while the toggle is off so switching it back on keeps the order;
+   * only read where `planHeadliners` is true (see `finish`).
    */
   const [fitChoice, setFitChoice] = useState<FitChoice>(() => fitChoiceAll());
 
   const facts = usePlannerDayFacts(park, open && step !== 'park');
   /**
-   * Opening hours and weather for the day being picked.
-   *
-   * The best-days snapshot the calendar runs on answers `hours: null` and
-   * `weather: null` on every one of its 91 days — checked against the live
-   * endpoint, not assumed — so the card under the calendar could only ever show
-   * a crowd chip. `/plan/day` carries both in its `context`, and asking for it
-   * here is not a request the wizard spends: it is the exact query the panel
-   * runs the moment this wizard finishes, under the same key, so the last step
-   * warms the first screen of the next one.
+   * Opening hours and weather for the day being picked. The best-days snapshot carries neither, and
+   * `/plan/day` does; it is the query the panel runs as soon as the wizard finishes, under the same
+   * key, so this warms the next screen.
    */
   const planDay = usePlanDay({
     continent: park?.geo.continent ?? '',
@@ -240,41 +165,16 @@ export function PlannerWizard({
     city: park?.geo.city ?? '',
     parkSlug: park?.slug ?? '',
     date: date ?? undefined,
-    // `step !== 'park'` rather than `step === 'date'`: a wizard seeded with a date never VISITS
-    // the date step, so the gate that used to be satisfied on the way past it is never satisfied
-    // at all — `planDay.data` stays undefined, the last step finds no headliners, and „Große
-    // Bahnen" reports that the day has none. On the ordinary path this changes nothing that shows:
-    // `date` is null until the date step answers it, and afterwards the query is already cached
-    // under the same key.
+    // `step !== 'park'`, not `step === 'date'`: a wizard seeded with a date never visits the date
+    // step, and the last step would then find no headliners.
     enabled: open && step !== 'park' && Boolean(park && date),
   });
   /**
-   * The park's photograph, held for as long as the park is the park.
-   *
-   * `parkBackgroundImage` rides on the `/plan/day` payload and is a property of
-   * the PARK — the same file for every date it is ever asked about. The query
-   * it rides on is keyed by the DATE though, so every arrow press in the
-   * calendar starts a new one, `planDay.data` is `undefined` for as long as
-   * that is in flight, and the band fell back to its no-photo state and faded
-   * the same picture back in on arrival: a photograph blinking once per press,
-   * on the one screen whose whole job is pressing them. A day the park is shut
-   * did it for good — `/plan/day` answers 404 there and the hook resolves that
-   * to `null`, so the picture left and did not come back, on a step where the
-   * park has not changed and the picture is a statement about the park.
-   *
-   * The slug travels with the photo, so there is nothing here to clear: a
-   * picture remembered for another park is simply not this park's, and the read
-   * below says so. That is also what makes going back to the search and picking
-   * a second park safe without an effect watching for it.
-   *
-   * **Adjusted during render rather than in an effect**, which is the shape
-   * React documents for holding a value across a prop change and the shape this
-   * codebase is held to anyway (`react-hooks/set-state-in-effect`). It is also
-   * the better of the two here: an effect would commit the photo one render
-   * late, which is a frame of the no-photo state on the way IN as well.
-   *
-   * The search path never comes through here — a hit carries its own
-   * `imageUrl`, and {@link WizardHero} prefers it.
+   * The park's photograph, held for as long as the park is the park. The `/plan/day` query it rides
+   * on is keyed by date, so without this the picture blinks on every calendar press and leaves for
+   * good on a closed day (404). The slug travels with the photo, so a picture held for another park
+   * is simply not read. Adjusted during render, not in an effect, which would commit it a frame
+   * late.
    */
   const [parkPhoto, setParkPhoto] = useState<{
     slug: string;
@@ -288,46 +188,26 @@ export function PlannerWizard({
     setParkPhoto({ slug: parkSlug, src: dayPhoto, position: dayPhotoPosition });
   }
   const heldPhoto = parkSlug && parkPhoto?.slug === parkSlug ? parkPhoto : null;
-  // The park's own zone where the forecast has arrived, the reader's until then.
-  // Never a constant: `todayInZone` names that fallback and is the only door to it.
+  // The park's own zone where the forecast has arrived, the reader's until then; `todayInZone` is
+  // the only door to that fallback.
   const today = todayInZone(facts.timezone ?? park?.timezone);
   const chosen = date ? facts.byDate.get(date) : undefined;
 
   /**
-   * The park's headliners for this day, and how many of them the day holds.
-   *
-   * The wizard has the day payload already — it is what paints the hero — so
-   * asking the optimiser what fits costs one search and no request. It answers
-   * the question the visitor is standing in front of: "put the big rides in for
-   * me" is only a promise the app can keep where they all fit, and where they
-   * do not, saying so here is the difference between an offer and a surprise.
-   *
-   * The probe plans against the same day the finish will: with the lunch block
-   * where the wizard would put it, because an hour out of the middle is what
-   * decides the last headliner. Memoised on everything it reads, or the search
-   * would run on every keystroke of the step.
+   * The park's headliners for this day, and how many of them the day holds. The probe plans against
+   * the day the finish will file, lunch block included, because an hour out of the middle decides
+   * the last headliner.
    */
   const dayPayload = planDay.data ?? null;
   /**
-   * Is the DAY still on its way — the payload the headliner step is made of.
-   *
-   * Not `facts.pending`. `facts` is the best-days snapshot, keyed by park alone
-   * and already cached by four components on a park page; it answers instantly
-   * while `/plan/day` — keyed by park AND date, refetched on every arrow press —
-   * is still in flight. Waiting on the wrong one is the same as not waiting.
-   *
-   * `data === undefined` rather than `!data`, for the reason the same distinction
-   * exists in `use-day-facts`: a shut day answers 404 and the hook resolves that
-   * to `null`, which is an ANSWER. `!data` would hold the step open for ever on
-   * exactly the days that have nothing to offer.
+   * Whether the day the headliner step is made of is still on its way. Not `facts.pending`: the
+   * best-days snapshot is usually cached and answers at once while `/plan/day` is in flight.
+   * `=== undefined`, because a closed day resolves to `null`, which is an answer.
    */
   const dayPending = Boolean(park && date) && planDay.data === undefined && !planDay.isError;
   /**
-   * Whether this park lets hotel guests in before opening (PAR-197), which is
-   * the only case the early-entry question is asked in. Read off the same
-   * `/plan/day` payload as everything else on the day, and `=== true` because
-   * absent means "no" and "nobody checked" alike: on the other parks the step
-   * renders exactly what it did before.
+   * Whether this park lets hotel guests in before opening, the only case the early-entry question
+   * is asked in. `=== true`, because absent means "no" and "nobody checked" alike.
    */
   const parkHasEarlyEntry = dayPayload?.context.hasEarlyEntry === true;
   const earlyEntryMinutes = parkHasEarlyEntry
@@ -352,14 +232,9 @@ export function PlannerWizard({
   );
   const headliners = useMemo(() => headlinersToAdd(dayPayload, [], prefs), [dayPayload, prefs]);
   /**
-   * The headliners this party's own answers ruled out, and why (PAR-484).
-   *
-   * `headlinersToAdd` drops a ride that is too tall for the smallest rider or
-   * wet for a party that wants to stay dry, and an empty list used to fall into
-   * the same branch as "every headliner is already in": „Für diesen Tag fehlt
-   * keine große Bahn mehr" over a family whose children fit none of them. The
-   * total is `headlinersSkipped`, the engine's own count; the split only picks
-   * which sentence names the reason.
+   * The headliners this party's own answers ruled out, and why, so an empty list over a family
+   * whose children fit none of them does not read as "every headliner is already in". The total is
+   * the engine's own `headlinersSkipped`.
    */
   const unfitHeadliners = useMemo(() => {
     const total = headlinersSkipped(dayPayload, [], prefs);
@@ -414,12 +289,8 @@ export function PlannerWizard({
   }, [probeDay, wizardGrid, headliners, lunchEntries]);
 
   /**
-   * The search, only on the step that reads it.
-   *
-   * `fitInput` exists from the date step on, because `/plan/day` does, and these ran on every date
-   * picked and every setup toggle — up to five beam searches for the outcome and as many again
-   * per free block for the levers, on screens that draw neither. `finish` is only reachable from
-   * the last step, so it always finds the outcome computed.
+   * The search, only on the step that reads it: it costs several beam searches per change.
+   * `finish` is only reachable from the last step, so it always finds the outcome computed.
    */
   const onFitStep = step === 'headliners';
   const fitOutcome = useMemo(
@@ -447,19 +318,9 @@ export function PlannerWizard({
   const headlinerFit = fitOutcome ? fitOutcome.fitted.length : null;
   const headlinerConflict = headlinerFit !== null && headlinerFit < wantedHeadliners;
   /**
-   * Whether the visitor has answered anything about this day yet.
-   *
-   * It is what keeps the fit block ON SCREEN after they fix the problem. The
-   * block used to hang on `headlinerConflict` alone, so unticking the ride that
-   * did not fit took the conflict away and the whole thing — levers, list,
-   * marks — vanished under the finger that had just pressed a checkbox. The
-   * reported version of that: start removing rides and the list is simply gone,
-   * with no way back to it and no way to see what the removal bought.
-   *
-   * So the block appears while the day is short and stays for as long as
-   * anything has been chosen, which is derived rather than latched: a
-   * `useState` remembering "was tight once" would survive a change of park or
-   * date underneath it, and this cannot.
+   * Whether the visitor has answered anything about this day yet, which keeps the fit block on
+   * screen after they fix the problem. Derived, never latched, so a change of park or date cannot
+   * leave it standing. See docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
    */
   const fitChoiceTouched =
     fitChoice.dropped.size > 0 ||
@@ -470,11 +331,8 @@ export function PlannerWizard({
   const plannedSlugs = new Set(Object.keys(state.parks));
 
   /**
-   * Which questions are left, which is the same list the rail draws and the
-   * footer walks. A step that is not in here cannot be reached forwards OR
-   * backwards — which is what keeps „Zurück" on a seeded day from landing on
-   * an empty date step: on `['setup','headliners']` the first step's index is
-   * 0, and the back button is already disabled there.
+   * Which questions are left: the list the rail draws and the footer walks. A step not in here
+   * cannot be reached either way, so „Zurück" on a seeded day cannot land on an empty date step.
    */
   const steps: Step[] = seededDate
     ? ['setup', 'headliners']
@@ -490,33 +348,21 @@ export function PlannerWizard({
 
   const finish = () => {
     if (!park || !date) return;
-    // One park, one day, and the zone the forecast named — which is the whole
-    // reason the date step fetches anything at all.
+    // One park, one day, and the zone the forecast named.
     const withZone: WizardPark = { ...park, timezone: facts.timezone ?? park.timezone };
     openDay(withZone, date);
-    // The early-entry answer only counts where the question was on screen: a
-    // visitor who answered it and then stepped back to a day or park without
-    // early entry has not said anything about that one. The key is LEFT OUT
-    // rather than set to `undefined`: `setDayPrefs` merges, and an explicit
-    // `undefined` would erase an answer the day already holds whenever
-    // `/plan/day` has not arrived (or failed) at the moment of finishing.
+    // The early-entry answer only counts where the question was on screen. The key is left out
+    // rather than set to `undefined`, because `setDayPrefs` merges and `undefined` would erase an
+    // answer the day already holds.
     const { earlyEntry: _earlyEntry, ...rest } = prefs;
     const dayPrefs: PlannerDayPrefs = parkHasEarlyEntry ? prefs : rest;
     if (dayPrefs.riderHeightCm !== undefined || dayPrefs.avoidWet || dayPrefs.earlyEntry) {
       setDayPrefs(park.slug, date, dayPrefs);
     }
     /**
-     * The break, as the last step left it.
-     *
-     * „Ohne Mittagspause passt der Plan" is a lever on that step, so the block
-     * the wizard files is the one the fit answer KEPT — gone where the visitor
-     * pulled it, half as long where they cut it short, an hour otherwise.
-     * Reading it back out of `evaluateFit` rather than off a second piece of
-     * state is what makes the day that is filed the day that was shown: the
-     * probe planned around this exact block.
-     *
-     * Only where the headliners are actually being planned. A lever pulled and
-     * then abandoned by switching the toggle off is not an answer about lunch.
+     * The break, as the last step left it: read back out of `evaluateFit`, so the block filed is
+     * the one the probe planned around (gone, shortened or an hour). Only where the headliners are
+     * being planned; a lever pulled and then abandoned is not an answer about lunch.
      */
     const plannedFit = planHeadliners ? fitOutcome : null;
     const lunchBlock = plannedFit
@@ -536,13 +382,8 @@ export function PlannerWizard({
       });
     }
     /**
-     * The big rides, in the order the day is cheapest in.
-     *
-     * The same `FitChoice` the last step was drawn from, so what the visitor
-     * saw marked „fällt weg" is what is missing from the axis — and the rides
-     * they pinned are the ones that survived. Where they touched nothing it is
-     * the engine's own answer (`Candidate.dropWeight`), which is what the
-     * default has to mean if the step is not to be a toll gate.
+     * The big rides, from the same `FitChoice` the last step was drawn from, so what was marked
+     * „fällt weg" is what is missing from the axis and pinned rides are the ones that survive.
      */
     if (plannedFit) {
       applyPlan({
@@ -551,119 +392,48 @@ export function PlannerWizard({
         geo: park.geo,
         timezone: withZone.timezone,
         date,
-        // Only what is being ADDED: the lunch block is already in the store
-        // with an id this plan does not know, and re-filing it here would put
-        // a second one on the axis.
+        // Only what is being added: the lunch block is already in the store, and filing it again
+        // would put a second one on the axis.
         stops: plannedFit.stops.filter((stop) => stop.entryId === null),
       });
     }
     /**
-     * The panel this lands in reads `planner`, and on this route it is the
-     * LAUNCHER that has to fetch it.
-     *
-     * `PlannerLauncher` sits beside `children` in `app/[locale]/layout.tsx`, so
-     * it never sees a route's own namespaces and fetches the chunk wherever it
-     * is asked for — including here, on the planner's own page, where the
-     * wizard beside it got `planner` from the page payload. Left to the
-     * launcher alone that fetch starts from an effect a commit after the
-     * request below, i.e. behind the RSC request for the park page: measured
-     * from the homepage through `/tagesplaner` at 150 ms RTT, `open` was true
-     * after 75 ms and the panel was drawn after 307–328 ms, so for ~240 ms the
-     * page was already holding 448 px open for a panel that was not there.
-     *
-     * Not awaited, and the call is the loader's own deduplicated one, so the
-     * launcher's effect joins this request rather than starting a second.
+     * The panel this lands in reads `planner`, and on this route the launcher has to fetch it,
+     * which it would only start from an effect after the navigation. Not awaited; the loader
+     * deduplicates, so the launcher's own call joins this request.
      */
     void loadMessageChunk(locale as Locale);
     plannerUi.requestOpen('wizard');
     onOpenChange(false);
-    // The park's own page, where the ride cards are. `@/i18n/navigation`'s
-    // router, so the localized path is built rather than guessed.
-    //
-    // With `#attractions`, because landing at the top of the page is landing
-    // three screens above the only thing the panel wants: the cards. The hash
-    // is the park page's own mechanism — `useTabHashRouting` selects that tab
-    // and scrolls it under the sticky header — so this asks for the scroll in
-    // the language the page already speaks instead of reaching for the DOM
-    // after a navigation.
+    // The park's own page, via the localized router. `#attractions` lets the page's own
+    // `useTabHashRouting` select the ride cards and scroll them under the header.
     router.push(
       `/parks/${park.geo.continent}/${park.geo.country}/${park.geo.city}/${park.slug}#attractions` as '/europe/germany/rust/europa-park'
     );
   };
 
   /**
-   * The footer's primary control, as one object: what it does and whether it
-   * may run.
-   *
-   * There are two callers now — the button and the Enter key — and the whole
-   * point of the shape is that they cannot disagree. The obvious alternative
-   * was a second condition beside the key handler ("Enter advances where there
-   * is a date"), which is the same sentence written twice: the day the
-   * date step grows a second required answer, one of the two copies keeps the
-   * old one and Enter starts skipping a question the button still blocks.
-   *
-   * On the last step `enabled` repeats the condition `finish` itself refuses
-   * on, which is what turned the finish button from always-enabled into a
-   * control that states its own precondition. Nothing changes on screen — the
-   * date step's own button is what gates the way in, and the rail leads
-   * backwards only — but the guard inside `finish` is no longer the only place
-   * that knows.
-   *
-   * `null` on the first step, and that is why the footer is absent there rather
-   * than disabled: picking a park IS the advance, so a „Weiter" beside the list
-   * is a control nobody ever presses, and Enter has nothing to do for the same
-   * reason.
+   * The footer's primary control as one object, what it does and whether it may run, so the button
+   * and the Enter key cannot disagree. `null` on the first step, where picking a park is the
+   * advance, so there is no footer and Enter does nothing.
    */
   const primary: { run: () => void; enabled: boolean } | null =
     step === 'park'
       ? null
       : step === 'headliners'
-        ? // Bewusst NICHT an `dayPending` gehängt. Der Schritt sagt oben, dass er
-          // noch lädt, und das ist das, was er schuldet; den Knopf zusätzlich zu
-          // sperren macht den Wizard unabschließbar, sobald `/plan/day` hängt
-          // statt zu scheitern — ein `fetch` ohne Zeitgrenze setzt nie `isError`,
-          // und dann ist auch Enter tot. Eine Oberfläche, aus der es keinen
-          // Ausgang gibt, ist schlimmer als ein Tag ohne Headliner, den man
-          // im Panel in zwei Griffen füllt.
+        ? // Deliberately not gated on `dayPending`: the step already says it is loading, and a
+          // `/plan/day` that hangs without failing would otherwise leave no way out of the wizard.
           { run: finish, enabled: Boolean(park && date) }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
   /**
-   * Enter moves the wizard on.
+   * Enter moves the wizard on, by running the footer's primary control and only that.
    *
-   * Three questions on three screens, and until this the only way past each one
-   * was the pointer: the day is answered on a grid the keyboard can reach, and
-   * then the hand has to travel to a button in the corner to do the one thing
-   * that obviously comes next.
-   *
-   * **It hangs on the dialog's content, not on `document`.** `PlannerDayColumn`
-   * binds its Delete key to the document because it has nothing else to bind
-   * to — a block selected with the pointer leaves no element focused, so there
-   * is no node the key is guaranteed to pass through. This dialog is the
-   * opposite case: it is a focus trap, so every keystroke made while it is open
-   * lands on a descendant of the content and bubbles through here by
-   * construction. A document listener would additionally fire for the park page
-   * and the planner panel BEHIND the dialog, and would have to re-derive from
-   * `open` and from the event target what the DOM already knows; it would also
-   * keep listening through the close animation, while Radix still has the
-   * content mounted.
-   *
-   * **What Enter does is the footer's primary button and only that** — see
-   * `primary`, which the button renders off as well. So a step whose question
-   * has no answer yet ignores the key for exactly the reason the button is
-   * grey.
-   *
-   * **A key that belongs to the focused element stays with it** (see
-   * `ENTER_BELONGS_TO`). The park search keeps its own Enter — it picks the
-   * highlighted hit, which is the whole reason that handler exists — and it
-   * keeps it as an `<input>`, by the general rule, not by a name check for that
-   * component. A day cell in the month grid keeps its Enter the same way, so
-   * picking a date and skipping the step can never be one press.
-   * `defaultPrevented` is checked on top of the selector, so a control that
-   * handled the key without being on that list is still believed.
-   *
-   * `event.repeat` is refused because a held key would otherwise walk the last
-   * two steps and finish the wizard while the finger is still down.
+   * Bound to the dialog's content, not `document`: the dialog is a focus trap, so every key passes
+   * through here, and a document listener would also fire for the page behind it. A key that
+   * belongs to the focused element stays with it (`ENTER_BELONGS_TO`, plus `defaultPrevented`), so
+   * picking a date and skipping the step can never be one press. `event.repeat` is refused, or a
+   * held key walks through to the finish.
    */
   const advanceOnEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== 'Enter' || event.repeat || event.defaultPrevented) return;
@@ -676,18 +446,15 @@ export function PlannerWizard({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      {/* `flex flex-col` over the grid the dialog ships with, and `p-0` so the
-          photo band can reach all four edges. The middle row is the only one
-          that scrolls, which is what keeps the band and the buttons in place on
-          a phone in landscape. */}
+      {/* `flex flex-col` and `p-0` so the photo band reaches all four edges; only the middle row
+          scrolls, which keeps the band and the buttons in place on a landscape phone. */}
       <DialogContent
         showCloseButton={false}
         onKeyDown={advanceOnEnter}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
       >
-        {/* The step, spoken rather than drawn. The rail below says the same
-            thing in three circles, which a screen reader cannot read as
-            progress — and Radix wants a description on every dialog. */}
+        {/* The step, spoken: the rail is not readable as progress, and Radix wants a description
+            on every dialog. */}
         <DialogDescription className="sr-only">
           {t('wizard.step', { step: index + 1, total: steps.length })} · {t(`wizard.steps.${step}`)}
         </DialogDescription>
@@ -697,12 +464,8 @@ export function PlannerWizard({
           date={date}
           locale={locale}
           plannedDays={plannedDatesFor(state, park?.slug).length}
-          /* The park's picture for the three ways in that do NOT come through
-             the search — „+ Weiterer Tag", the panel's „+", the in-park CTA —
-             where the park comes out of the plan and a plan stores slugs rather
-             than asset URLs. It is the same photograph, from a payload this
-             dialog already fetches — held per park rather than read off the
-             current answer, see `parkPhoto`. */
+          /* The park's picture for the ways in that do not come through the search, where the
+             park comes out of the plan. Held per park, see `parkPhoto`. */
           dayPhoto={heldPhoto?.src ?? null}
           dayPhotoPosition={heldPhoto?.position}
         />
@@ -713,27 +476,13 @@ export function PlannerWizard({
           onJump={(to) => goTo(steps[to])}
         />
 
-        {/* The only row that scrolls, and the only one with no height of its
-            own — `min-h-0` is what lets a flex child shrink below its content so
-            `overflow-y-auto` has something to do.
-
-            Deliberately NO floor under it. Measured at 1280 and at 390, the
-            body is 68/76 px on an empty search, 362/390 px with six hits,
-            344/360 px on the calendar and 347/405 px on the last step (417/495
-            with every answer switched on). A floor at the tallest would open the
-            first step in a box two thirds empty, and a floor at the search
-            list's height would not stop the frame moving anyway: step one swings
-            300 px as the visitor types, which reads as the list arriving rather
-            than as the dialog lurching, because a centred dialog grows from both
-            edges at once. */}
+        {/* The only row that scrolls; `min-h-0` lets it shrink so `overflow-y-auto` works.
+            Deliberately no floor under it: the steps differ by hundreds of pixels, and a floor
+            would open the first step mostly empty. */}
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
-          {/* `key` remounts on every step, which is what re-triggers the CSS
-              animation. `motion-safe:` is the whole reduced-motion guard, and
-              it is CSS rather than GSAP on purpose: the house rules for GSAP
-              (`use-menu-reveal`) exist because a REVEAL that strands leaves an
-              invisible element behind, while a step swap animates content that
-              CSS already has at its resting state — the same trade
-              `tabs-with-hash` makes for the same reason, and it costs no chunk. */}
+          {/* `key` remounts on every step to re-trigger the CSS animation; `motion-safe:` is the
+              reduced-motion guard. See
+              docs/features/trip-planner.md#the-frame-and-why-it-looks-like-this. */}
           <div key={step} className={cn('motion-safe:animate-in', STEP_MOTION[String(forward)])}>
             {step === 'park' && (
               <PlannerParkSearch
@@ -786,22 +535,15 @@ export function PlannerWizard({
                   onChange={(next) =>
                     setPrefs((current) => ({
                       ...current,
-                      // One of the chips below, enforced by its own type — see
-                      // `RIDER_HEIGHT_DEFAULT_CM`.
+                      // One of the chips below, enforced by its type (`RIDER_HEIGHT_DEFAULT_CM`).
                       riderHeightCm: next ? RIDER_HEIGHT_DEFAULT_CM : undefined,
                     }))
                   }
                 >
                   {prefs.riderHeightCm !== undefined && (
                     <div className="flex flex-wrap gap-1.5">
-                      {/* `max-sm:min-h-9` stays a width class and does not move to
-                          `planner-phone:` (PAR-213): the wizard is not part of
-                          PAR-76's sweep, and 36 px is not the 44 px a coarse
-                          pointer gets from the month calendar in this dialog.
-                          At 844x390 the chips therefore stay at their natural
-                          height beside 44 px calendar cells. Whether the wizard
-                          takes the coarse-pointer path in landscape is a
-                          separate decision. */}
+                      {/* `max-sm:min-h-9` stays a width class: the wizard is outside the
+                          `planner-phone:` sweep, so these chips do not take the 44 px target. */}
                       {RIDER_HEIGHT_CHOICES.map((cm) => (
                         <button
                           key={cm}
@@ -815,8 +557,8 @@ export function PlannerWizard({
                               : 'hover:bg-accent border-border bg-background'
                           )}
                         >
-                          {/* Both units, picked by CSS — a height is a measurement
-                              and half the catalogue's parks post it in inches. */}
+                          {/* Both units, picked by CSS: half the catalogue's parks post heights
+                              in inches. */}
                           <RiderHeight cm={cm} />
                         </button>
                       ))}
@@ -834,10 +576,8 @@ export function PlannerWizard({
                   }
                 />
 
-                {/* Only at a park that carries the curated flag, so the other
-                    parks get no question that has nothing behind it. It can
-                    arrive after the step opens (a seeded date opens here while
-                    `/plan/day` is in flight), hence the fade. */}
+                {/* Only at a park with the curated flag. It can arrive after the step opens
+                    (a seeded date opens here while `/plan/day` is in flight), hence the fade. */}
                 {parkHasEarlyEntry && (
                   <div
                     data-planner-wizard-early-entry=""
@@ -861,39 +601,20 @@ export function PlannerWizard({
               </div>
             )}
 
-            {/* The big rides, on their own screen.
-                They were a fourth toggle among „Mittagessen", „Kinder sind
-                dabei" and „trocken bleiben" — three answers about the party and
-                one that rebuilds the whole day, with a hint that had to admit in
-                passing that not all of them would fit. The conflict is the
-                reason for the split: „Platz für 9 von 10" is not a footnote to
-                a checkbox, it is a decision, and this is where it is made. */}
+            {/* The big rides get their own step, because „Platz für 9 von 10" is a decision,
+                not a footnote to a checkbox. */}
             {step === 'headliners' && (
               <div className="flex flex-col gap-2.5">
-                {/* „Noch nicht gefragt" und „nichts gefunden" sehen von hier aus
-                    gleich aus, und der Unterschied ist der ganze Schritt.
-
-                    Ein Wizard mit gesetztem Datum öffnet auf `setup`, also ist
-                    dieser Schritt einen Klick vom Mount entfernt: `/plan/day`
-                    ist dann oft noch unterwegs, `headliners` ist `[]`, und der
-                    Satz „Für diesen Tag fehlt keine große Bahn mehr" behauptete
-                    ein Ergebnis, das niemand ausgerechnet hat. Wer in diesem
-                    Fenster abschließt, legt einen Tag ohne Bahnen an und hat
-                    dazu gelesen, dass keine fehlt.
-
-                    Gewartet wird auf `/plan/day` und nicht auf `facts` — siehe
-                    `dayPending`: die Best-Days-Momentaufnahme ist auf einer
-                    Parkseite längst im Cache und antwortet sofort, während der
-                    Tag selbst noch unterwegs ist. */}
+                {/* "Not asked yet" and "nothing found" look the same from here: a seeded wizard
+                    reaches this step while `/plan/day` may still be in flight, and claiming
+                    nothing is missing would file a day without rides. See `dayPending`. */}
                 {dayPending ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {t('wizard.facts.loading')}
                   </p>
                 ) : headliners.length === 0 && unfitHeadliners ? (
-                  /* Every headliner the day is missing was ruled out by the
-                     party, which is a problem to see and not a success to read
-                     past — so it is drawn as a notice, in the crowd tint the
-                     planner uses for a day that came out short. */
+                  /* Every missing headliner was ruled out by the party: a problem to see, so it
+                     is drawn as a notice in the crowd tint. */
                   <p
                     role="status"
                     data-planner-wizard-headliners-unfit=""
@@ -927,21 +648,11 @@ export function PlannerWizard({
                       onChange={setPlanHeadliners}
                     />
 
-                    {/* The fit assistant, one step early and in place.
-                        It is the same three pieces the panel's dialog uses —
-                        the measured levers, the ordered list, the „fällt weg"
-                        marks — and they recompute against the same engine that
-                        runs on „Plan öffnen".
-
-                        It opens where it is tight and STAYS once anything has
-                        been answered — see `fitChoiceTouched`. A day that holds
-                        all ten and has been left alone still gets nothing, so
-                        the common case is a toggle and not a form; what is not
-                        allowed is the block disappearing mid-edit, which is
-                        what hanging it on the conflict alone did. When the
-                        choice resolves, the band turns green and says so rather
-                        than leaving somebody looking at a list whose marks have
-                        just gone quiet. */}
+                    {/* The fit assistant, one step early and in place: the same levers, list and
+                        marks as the panel's dialog, against the same engine. It opens where the
+                        day is tight and stays once anything has been answered (see
+                        `fitChoiceTouched`); when the choice resolves, it turns green and says
+                        so. */}
                     {planHeadliners && fitLevers && (headlinerConflict || fitChoiceTouched) && (
                       <div
                         data-planner-wizard-fit=""
@@ -1009,31 +720,10 @@ export function PlannerWizard({
           </div>
         </div>
 
-        {/* No footer on the first step — which is `primary` being `null` there
-            rather than a second test on `step`, so the row and the Enter key
-            appear and disappear together. Picking a park from the list IS the
-            advance, so a `Weiter` button there is a control that never gets
-            pressed sitting next to a `Zurück` that leads nowhere.
-
-            `shrink-0`, or the last step on a short phone — 746 px against the
-            776 px a 92svh dialog gets at 844, and less on anything smaller —
-            squeezes the buttons instead of scrolling the body above them.
-
-            And `px-3` below `sm` rather than the step body's `px-5`, because
-            this row is the one place a label decides the width. Measured at
-            320 px across six locales, the pair of buttons wants 194–240 px and
-            French is the outlier at 240: `Retour` + `Ouvrir le planning` had
-            231 px to sit in and was nine short. Shortening the French was the
-            wrong repair — „planning" is the term the other nine strings in that
-            locale use, so trading it for „plan" to buy nine pixels would leave
-            one button disagreeing with the rest of the panel. At `px-3` the row
-            offers 247 px, so the widest locale keeps 7 px and nothing is
-            squeezed in any of the six.
-
-            Measure the NATURAL width (`scrollWidth` per control), never the
-            span the two ends occupy: `justify-between` fills the row whatever
-            fits, so that span equals the available width right up to the moment
-            it overflows and reads as "exactly right" all the way. */}
+        {/* No footer on the first step: `primary` is `null` there, so the row and the Enter key
+            come and go together. `shrink-0` so a short phone scrolls the body instead of
+            squeezing the buttons. `px-3` below `sm` because this row's width is set by its
+            labels. See docs/features/trip-planner.md#the-frame-and-why-it-looks-like-this. */}
         {primary && (
           <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
             <Button
@@ -1067,40 +757,9 @@ export function PlannerWizard({
 }
 
 /**
- * The band across the top: the park, its place, and the day once there is one.
- *
- * The photograph is the park's own — the same background picture its park page
- * paints, straight off the search hit that named it, at the focal point the
- * media database curates. It arrives at the moment the park is picked, which is
- * the one bit of theatre in here and is earned: choosing Phantasialand should
- * look different from choosing Efteling.
- *
- * **No photo is a designed state, not a grey box.** The first step has no park
- * yet, so it gets a tinted field and the oversized translucent glyph the site's
- * chapter headings use, at the same height, so nothing moves when the picture
- * lands. That band — both its fillings, the close button and the text block at
- * its lower edge — is {@link DialogHero} now, because the day comparison opens
- * from the same calendar and leads straight into this dialog: drawn as a plain
- * `DialogHeader` there and as this band here, the two read as two products. What
- * stayed behind is what only this dialog knows, which is where its picture comes
- * from.
- *
- * The OTHER gap is closed now. Three of the four ways into this dialog skip the
- * search — „+ Weiterer Tag" in the plan list, the „+" in the panel's header, the
- * in-park offer — and there the park comes out of the plan, which stores slugs
- * rather than asset URLs; measured, all three drew the tinted field for a park
- * whose photograph was on screen behind the dialog. It is filled from
- * `/plan/day`'s own `parkBackgroundImage`, which this dialog already fetches for
- * the date step's hours and weather, and which the panel behind it already
- * paints. So the picture arrives with the day rather than with the park on those
- * paths — one beat later, in the same fixed-height band, and never a request
- * that was not already being made. Once, though: `parkPhoto` in the dialog
- * above holds it for the park, so walking the calendar does not take it away
- * and hand it back per press.
- *
- * The client-safe media manifest (`@/lib/media/hero`, 21 KB) is still not used
- * and is now not needed: it holds a picture for eight of 212 parks, and the
- * payload this dialog already has covers every park the API answers for.
+ * The band across the top: the park, its place, and the day once there is one, drawn by
+ * {@link DialogHero}. Its photo comes from the search hit, or from `/plan/day`'s
+ * `parkBackgroundImage` on the ways in that skip the search, a request this dialog already makes.
  */
 function WizardHero({
   park,
@@ -1117,10 +776,8 @@ function WizardHero({
   dayPhoto?: string | null;
   dayPhotoPosition?: string;
   /**
-   * Days this park already has entries for. It is what the second line says on
-   * the one path that has neither a place nor a date yet — "another day at this
-   * park", where the park came from the plan rather than from the search — and
-   * the line was blank there, which reads as a field somebody forgot to fill.
+   * Days this park already has entries for: the second line on "another day at this park", which
+   * has neither a place nor a date yet.
    */
   plannedDays: number;
 }) {
@@ -1135,10 +792,7 @@ function WizardHero({
       photo={photo}
       photoPosition={photoPosition}
       title={park ? park.name : t('wizard.title')}
-      /* The DATE is what may not clip. At 360 px "Brühl, Deutschland ·
-         Samstag, 19. September" is wider than the band, and a single
-         `truncate` over the pair cuts the half the reader is here to check —
-         so the place gives way and the date keeps its width. */
+      /* The date may not clip: the place gives way and the date keeps its width. */
       descriptionClassName="flex items-baseline gap-1"
       description={
         park ? (
@@ -1166,29 +820,13 @@ function WizardHero({
 }
 
 /**
- * What we know about the chosen day — and only that.
+ * What we know about the chosen day, and only that: open or closed, crowd forecast, hours, weather
+ * and the date flags, none of them derived. Hours render only with the park's timezone, because
+ * every minute in the planner is park-local. See
+ * docs/features/trip-planner.md#what-the-day-card-may-say.
  *
- * Every figure here is a field of the park's own precomputed best-days snapshot:
- * whether it is open, the crowd forecast, the opening hours, the day's weather
- * and the three date flags that explain a busy day. Nothing is fetched for this
- * card and nothing is derived — a planner that filled in hours or a temperature
- * from somewhere else would be inventing the two facts a visitor is most likely
- * to act on.
- *
- * The empty state used to be the bug worth fixing here: with no day picked, the
- * card said "für diesen Tag haben wir noch keine Prognose", which is a claim
- * about a day nobody had named. There are four states and they are different
- * sentences — no day yet, the park publishes no hours at all, a closed day, and
- * a day we have a forecast for.
- *
- * Hours render only where the snapshot named the park's timezone, because a
- * clock time with no zone behind it is the planner's one unforgivable mistake:
- * every minute in this feature is park-local by construction.
- *
- * The weather condition rides along as `sr-only` text, which is what puts
- * `parks.weather` on this route's namespace list — 558 B brotli, for the one
- * thing in the row a reader without the icon would otherwise get nothing from.
- * Re-run `pnpm generate:route-namespaces` after touching this.
+ * The weather label is `sr-only` text, which puts `parks.weather` on this route's namespace list;
+ * re-run `pnpm generate:route-namespaces` after touching it.
  */
 function WizardDayCard({
   date,
@@ -1231,14 +869,10 @@ function WizardDayCard({
     return <p className={cn(frame, 'text-muted-foreground')}>{t('day.closed')}</p>;
   }
 
-  // Both of these come from `/plan/day` in practice: the best-days snapshot
-  // this card's crowd level comes from carries `hours: null` and
-  // `weather: null` on every day it covers. The snapshot is still read first,
-  // because a park whose snapshot ever does carry them should not be made to
-  // wait for a second request to say so.
+  // In practice both come from `/plan/day`, since the snapshot carries neither; the snapshot is
+  // still read first in case it ever does.
   const weather = day.weather ?? context?.weather ?? null;
-  // The site's own weather vocabulary — icon, tint and label per WMO code — so
-  // this card and the planner's weather rail describe one day the same way.
+  // The site's own weather vocabulary, so this card and the weather rail describe a day alike.
   const weatherConfig = weather ? getWeatherConfig(weather.icon, true) : null;
   const hours = day.hours?.type === 'OPERATING' ? day.hours : undefined;
 
@@ -1260,10 +894,8 @@ function WizardDayCard({
         ) : (
           context?.openHour != null &&
           context.closeHour != null && (
-            /* `/plan/day`'s hours, which are park-local HOURS rather than the
-               instants `ParkTimeRange` formats — so they are printed the way
-               the grid's own axis prints them, by the same helper, and not run
-               through a timezone conversion they have already had. */
+            /* `/plan/day`'s hours are park-local hours, not instants, so they are printed by the
+               axis's own helper and not run through a timezone conversion again. */
             <span className="text-muted-foreground flex items-center gap-1 tabular-nums">
               <Clock className="size-3.5 shrink-0" aria-hidden="true" />
               {formatGridTime(context.openHour * 60)}
@@ -1275,8 +907,7 @@ function WizardDayCard({
 
         {weather && weatherConfig && (
           <span className="text-muted-foreground flex items-center gap-1">
-            {/* A JSX member expression rather than an aliased component, so the
-                icon, the tint and the label all read off one narrowed object. */}
+            {/* A member expression, so icon, tint and label read off one narrowed object. */}
             <weatherConfig.icon
               className={cn('size-3.5 shrink-0', weatherConfig.color)}
               aria-hidden="true"
@@ -1286,7 +917,6 @@ function WizardDayCard({
               {' – '}
               <Temp celsius={weather.tempMax} />
             </span>
-            {/* The condition in words, for a reader who gets no icon. */}
             <span className="sr-only">{tWeather(weatherConfig.label)}</span>
           </span>
         )}
@@ -1304,18 +934,9 @@ function WizardDayCard({
 }
 
 /**
- * One question with a yes/no answer, as a card the whole of which is the switch.
- *
- * It was a native checkbox and two lines of text. Three of those in a column is
- * a form, and this dialog's other two steps are a photograph and a tinted
- * calendar — so the last step read like the settings page of a different
- * application. A card with a hit area, a tinted icon tile and a tick reads as
- * the same family as the ride cards these answers go on to mark.
- *
- * A `<button aria-pressed>` rather than a styled checkbox: the whole card is the
- * target, and a real `<input>` under a card that size means either a label
- * wrapping interactive children (the height chips are inside it) or a hidden
- * input whose focus ring has to be re-drawn by hand.
+ * One question with a yes/no answer, as a card the whole of which is the switch. A
+ * `<button aria-pressed>` rather than a styled checkbox: the card holds the height chips, and a
+ * label cannot wrap interactive children.
  */
 function WizardToggle({
   icon: Icon,

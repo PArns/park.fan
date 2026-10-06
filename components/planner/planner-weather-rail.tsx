@@ -15,41 +15,18 @@ interface PlannerWeatherRailProps {
 /**
  * The band down the edge of the day, and what it says when you point at it.
  *
- * It lives in the HOUR GUTTER, not on the canvas, and that is the whole reason
- * it can exist at all: the canvas is where the blocks are, its three lanes are
- * already documented down to 112 px on a phone, and a rail in flow beside them
- * would come out of the ride names. The gutter is 44 px (40 on a phone) and
- * carries one `text-[11px]` label per hour AT the hour line — so its left edge
- * and everything between two hour lines is empty space that costs nothing.
- *
- * **The band paints, it does not caption.** It used to stack a 10 px weather
- * glyph over a 9 px millimetre figure at every hour the weather turned, in a
- * gutter already holding an hour number — three type sizes and two vocabularies
- * in a 44 px column, and no reader could say what any of it meant. Nothing that
- * small is a label. So the column is the colour and the strength of the colour,
- * which is the "when" a plan is actually read for, and the words arrive on
- * demand: point at an hour and the hint names it in full — hour, condition,
- * temperature and millimetres, at a size a sentence can be read at.
- *
- * The hit area is `w-6` over a `w-1.5` band, the same split the block's drag
- * grip uses: a 6 px target is a target nobody hits, and widening the paint to
- * meet the pointer would put the weather back over the hour numbers.
- *
- * The colours are `getWeatherConfig`'s, one layer coarser: that map returns a
- * TEXT colour per code and the band needs a fill, and a 6 px column cannot carry
- * fifteen distinguishable hues anyway. The hint keeps the full vocabulary.
+ * It lives in the hour gutter, whose left edge is empty space, so it takes nothing from the blocks.
+ * The band paints and does not caption: colour and strength say when, and pointing at an hour
+ * opens a hint with hour, condition, temperature and millimetres in full. The hit area is `w-6`
+ * over a `w-1.5` band, like the block's grip. Colours are `getWeatherConfig`'s, one layer coarser.
  */
 export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
   const t = useTranslations('parks.weather');
   const locale = useLocale();
   const [hovered, setHovered] = useState<number | null>(null);
   /**
-   * Which kind of pointer opened the gesture that is ending in a click.
-   *
-   * `pointerdown` is the last event before `click` that still carries
-   * `pointerType`, and it is the only place this can be read: React's `onClick`
-   * gives a `MouseEvent`, whose `nativeEvent` is a `PointerEvent` in current
-   * browsers and is not guaranteed to be one.
+   * Which kind of pointer started the gesture that ends in a click. Read on `pointerdown`, since
+   * `onClick`'s event is not guaranteed to carry `pointerType`.
    */
   const pressType = useRef<string>('mouse');
 
@@ -58,15 +35,10 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
   const active = hovered === null ? null : (segments.find((s) => s.hour === hovered) ?? null);
 
   return (
-    /* NO `z-index` on this root, and that is load-bearing rather than tidy: a
-       positioned element with one becomes a stacking context, and the hint
-       below is then trapped inside it however high its own `z-40` is — it
-       rendered UNDER the blocks, which is the one place a tooltip may not be.
-       The band's slices carry the `z-0` instead; they are what has to stay
-       behind everything. */
+    /* No `z-index` on this root: it would make a stacking context and trap the hint's `z-40` under
+       the blocks. The band's slices carry `z-0` instead. */
     <div className="absolute inset-0" data-planner-weather-rail="">
-      {/* The band. Continuous by construction — every hour on the axis the
-          forecast covers gets a slice, whether or not anything changed. */}
+      {/* The band, continuous: every hour the forecast covers gets a slice. */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-0 w-1.5">
         {segments.map((segment) => (
           <div
@@ -81,17 +53,12 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
         ))}
       </div>
 
-      {/* One target per hour, over the band and wider than it. `w-6` and not
-          the gutter's full width: the hour numbers sit to the right of this and
-          a hint that opens when the pointer is merely near a number is a hint
-          nobody asked for. */}
+      {/* One target per hour, wider than the band but not the gutter's full width, so a hint does
+          not open when the pointer is merely near an hour number. */}
       <div
         className="absolute inset-y-0 left-0 w-6"
-        /* A finger's `pointerleave` arrives the moment it LIFTS, so on a phone
-           the hint was gone before the hand was out of the way — the whole rail
-           was a hover affordance on a device that has no hover. A coarse pointer
-           keeps what it opened and closes it with a second tap (below); a fine
-           one keeps the behaviour it had. */
+        /* A finger's `pointerleave` arrives as it lifts, so a coarse pointer keeps what it opened
+           and closes it with a second tap. */
         onPointerLeave={(event) => {
           if (event.pointerType !== 'touch') setHovered(null);
         }}
@@ -100,10 +67,7 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
           <button
             key={`hit-${segment.hour}`}
             type="button"
-            /* Out of the tab order on purpose, and the information is not: the
-               `sr-only` list below carries the whole band as prose, one entry per
-               hour the weather turns. Fifteen tab stops through a decorative
-               strip would be the worse of the two answers. */
+            /* Out of the tab order; the `sr-only` list below carries the whole band as prose. */
             tabIndex={-1}
             aria-label={labelTitle(
               t(getWeatherConfig(segment.code ?? 0, true).label),
@@ -115,24 +79,14 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
             onPointerDown={(event) => {
               pressType.current = event.pointerType;
             }}
-            /* Fine pointers only. For touch the browser fires `pointerenter`
-               BEFORE `pointerdown`, so an enter that also opened the hint would
-               make the click below close what it just opened — the rail would
-               show nothing at all on the one device this is for. */
+            /* Fine pointers only: on touch `pointerenter` comes before `pointerdown`, and the click
+               would close what the enter opened. */
             onPointerEnter={(event) => {
               if (event.pointerType !== 'touch') setHovered(segment.hour);
             }}
-            /* NO `onFocus`. It cannot fire for a keyboard — the button is
-               `tabIndex={-1}` and nothing focuses it programmatically — and it
-               DOES fire on a tap, because a browser focuses a `tabindex="-1"`
-               button on click. So its only effect was to open the hint one
-               event before the toggle below closed it again: the first tap
-               showed nothing. The keyboard's path is the `sr-only` list. */
-            /* The tap state, and only a tap's. A finger opens the hint here and
-               closes it by pressing the same hour again; pressing a different
-               hour moves it. A mouse is left alone — hover already answers it,
-               and a click that closed the hint under the pointer would be a
-               control that fights the gesture that opened it. */
+            /* No `onFocus`: the button is never keyboard-focused, and a tap focuses it, which would
+               open the hint just before the toggle closes it. A tap toggles the hint here; a mouse
+               is left to hover. */
             onClick={() => {
               if (pressType.current !== 'touch') return;
               setHovered((current) => (current === segment.hour ? null : segment.hour));
@@ -141,9 +95,8 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
         ))}
       </div>
 
-      {/* The hint. Anchored to the hovered hour and drawn to the RIGHT of the
-          band, over the canvas — the gutter has no room for a sentence, which
-          is what the labels this replaced were trying to prove otherwise. */}
+      {/* The hint, anchored to the hovered hour and drawn to the right of the band over the canvas,
+          since the gutter has no room for a sentence. */}
       {active && (
         <div
           role="tooltip"
@@ -176,9 +129,7 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
         </div>
       )}
 
-      {/* The whole band as prose, for a reader who cannot point at it. One entry
-          per hour the weather TURNS, which is the same sparseness the drawn
-          labels had and the reason they existed. */}
+      {/* The band as prose for a reader who cannot point: one entry per hour the weather turns. */}
       <ul className="sr-only">
         {segments
           .filter((segment) => segment.changes)
@@ -196,12 +147,7 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
   );
 }
 
-/**
- * The band's fill per group.
- *
- * Full class strings, never `bg-${group}` — Tailwind's scanner has to see them,
- * the same rule `crowd-level-styles.ts` states for the crowd palette.
- */
+/** The band's fill per group, as full class strings so Tailwind's scanner sees them. */
 const GROUP_FILL: Record<WeatherRailGroup, string> = {
   clear: 'bg-amber-400',
   cloud: 'bg-muted-foreground',
@@ -215,14 +161,9 @@ const GROUP_FILL: Record<WeatherRailGroup, string> = {
 const RAIN_SCALE_TOP_MM = 2.5;
 
 /**
- * How strongly an hour is painted.
- *
- * A dry hour recedes and a wet one comes forward, so the band reads as "when",
- * not merely as "what" — which is the question somebody planning a day actually
- * has. The ramp is the amount, not the condition: two hours of `rain` at 0.2 and
- * 2.4 mm are a drizzle and a soaking, and one flat alpha would draw them the
- * same. A thunderstorm is painted at full strength whatever it drops, because
- * the ride closures follow the lightning rather than the rain gauge.
+ * How strongly an hour is painted: by the amount of rain, so a drizzle and a soaking differ and the
+ * band reads as "when". A thunderstorm is always full strength, since ride closures follow the
+ * lightning, not the rain gauge.
  */
 function fillOpacity(segment: WeatherRailSegment): number {
   if (segment.group === 'storm') return 0.9;
@@ -234,13 +175,8 @@ function fillOpacity(segment: WeatherRailSegment): number {
 }
 
 /**
- * The sentence behind the colour.
- *
- * The millimetres go in as plain text rather than through `Precip`: this string
- * is not markup, so the `.u-metric`/`.u-imperial` pair has nothing to switch,
- * and the hint's own figure beside it answers for the reader's unit. It is
- * still formatted for the LOCALE — `toFixed` writes "0.4 mm", which is a
- * different number to every reader of a German sentence.
+ * The sentence behind the colour. Millimetres as plain text, since this string is not markup and
+ * the hint's own figure answers for the reader's unit, but formatted for the locale.
  */
 function labelTitle(condition: string, segment: WeatherRailSegment, locale: string): string {
   const hour = `${String(segment.hour).padStart(2, '0')}:00`;

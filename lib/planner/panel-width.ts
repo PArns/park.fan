@@ -1,19 +1,9 @@
 'use client';
 
 /**
- * How wide the desktop panel is, as a store rather than as component state.
- *
- * An external store and not `useState` for the reason `ui-store.ts` gives for
- * being one: the value has to survive the panel closing, and reading
- * `localStorage` in a render would make the first client render disagree with
- * the server's. `useSyncExternalStore` has a server snapshot for exactly this,
- * so the default is what renders on the server and the stored width arrives on
- * mount with no `setState` in an effect — which React 19 rejects outright.
- *
- * It is NOT part of the plan. The plan is a document somebody may keep for
- * months; how wide they like a panel is a preference of this browser, and
- * writing it into the plan would carry it into every export and every future
- * shape of the stored document.
+ * How wide the desktop panel is, as an external store rather than component state: it survives the
+ * panel closing, and the server snapshot is the default, so the stored width arrives on mount with
+ * no `setState` in an effect. A preference of this browser, not part of the plan.
  */
 
 const KEY = 'parkfan_planner_width';
@@ -26,15 +16,8 @@ export const PANEL_WIDTH_MIN = 340;
 export const PANEL_WIDTH_MAX = 900;
 
 /**
- * What the page keeps, whatever the stored width says.
- *
- * Measured off the header, which is the page's least compressible row: with the
- * nav and the search collapsed it still needs the lockup plus the action group,
- * 334.6 px in German and 333.9 in French. 360 leaves that its 25 px and is the
- * width below which the bar starts sliding under the panel again — which is the
- * fault this exists to prevent, one window size further down. At 768 px the
- * stored 448 becomes 408 and the bar fits; at 1024 px and up nothing is capped
- * and the panel is exactly as wide as it was dragged.
+ * What the page keeps, whatever the stored width says: the header's least compressible row needs
+ * about 335 px, and below 360 the bar slides under the panel again.
  */
 export const PAGE_MIN_PX = 360;
 
@@ -44,17 +27,10 @@ export function clampPanelWidth(px: number): number {
 }
 
 /**
- * The stored width, capped so the page beside it stays usable.
- *
- * Applied in `getSnapshot` rather than at each call site, because three
- * components read this — the panel's own width, the `--planner-inset` the page
- * is padded by, and the edge tab's offset — and a cap that reached only some of
- * them would move the tab off the panel's edge.
- *
- * `PANEL_WIDTH_MIN` still wins at the bottom: between 640 px (where the panel
- * becomes a bottom sheet instead) and about 700 px there is no width that
- * satisfies both, and a panel too narrow to hold a block's name is the worse of
- * the two failures.
+ * The stored width, capped so the page beside it stays usable. Applied in `getSnapshot`, since the
+ * panel's width, the page's `--planner-inset` and the edge tab's offset all read it.
+ * `PANEL_WIDTH_MIN` still wins where both cannot hold: a panel too narrow for a block's name is the
+ * worse failure.
  */
 function fitToViewport(px: number): number {
   if (typeof window === 'undefined') return px;
@@ -66,14 +42,10 @@ let loaded = false;
 const listeners = new Set<() => void>();
 
 /**
- * The window's width, read on subscribe and on each resize — never in `getSnapshot`.
- *
- * `window.innerWidth` forces a style and layout pass whenever the document is dirty, and React
- * calls `getSnapshot` in the middle of every render of a subscriber and again in the commit that
- * follows. The edge tab subscribes on every page, so each of its renders paid a full style
- * recalculation and layout of whatever the same commit had just changed: 317-522 ms at 4x CPU on
- * a park page, traced to this line (docs/rules/no-has-selector-in-the-stylesheet.md, "Layout
- * reads in a store"). `null` while nobody listens, and then the one caller reads the window.
+ * The window's width, read on subscribe and on each resize, never in `getSnapshot`: React calls
+ * that during every render, and `window.innerWidth` forces style and layout on a dirty document.
+ * `null` while nobody listens. See docs/rules/no-has-selector-in-the-stylesheet.md ("Layout reads
+ * in a store").
  */
 let viewport: number | null = null;
 
@@ -94,17 +66,17 @@ function load(): void {
     const parsed = raw === null ? NaN : Number.parseInt(raw, 10);
     if (Number.isFinite(parsed)) width = clampPanelWidth(parsed);
   } catch {
-    // Private mode, or storage disabled. The default is a perfectly good width.
+    // Private mode, or storage disabled: the default is a good width.
   }
 }
 
+/** The panel width as an external store: snapshots, a live preview and a stored commit. */
 export const plannerPanelWidth = {
   subscribe(listener: () => void): () => void {
     load();
     listeners.add(listener);
-    // The cap reads the window, so the window changing changes the answer. One
-    // listener for all subscribers, installed with the first and removed with
-    // the last, like the panel's minute tick.
+    // The cap reads the window, so one resize listener, installed with the first subscriber and
+    // removed with the last.
     if (listeners.size === 1) {
       viewport = window.innerWidth;
       window.addEventListener('resize', onResize);
@@ -125,10 +97,7 @@ export const plannerPanelWidth = {
   getServerSnapshot(): number {
     return PANEL_WIDTH_DEFAULT;
   },
-  /**
-   * Set the width without writing it down — what a drag calls on every frame.
-   * Persisting sixty times a second would be sixty synchronous storage writes.
-   */
+  /** Set the width without storing it, for every frame of a drag. */
   preview(px: number): void {
     const next = clampPanelWidth(px);
     if (next === width) return;
@@ -141,7 +110,7 @@ export const plannerPanelWidth = {
     try {
       window.localStorage.setItem(KEY, String(width));
     } catch {
-      // Nothing to do and nothing broken — the width holds for this session.
+      // The width holds for this session.
     }
   },
 };

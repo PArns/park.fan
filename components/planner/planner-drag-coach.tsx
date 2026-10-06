@@ -6,18 +6,9 @@ import { MousePointer2, X } from 'lucide-react';
 import { plannerDragCoach } from '@/lib/planner/drag-coach';
 
 /**
- * How a ride gets into the day, said once.
- *
- * The gesture is drag and drop from the page behind the panel, and a gesture
- * nobody names is a gesture nobody finds. It used to be named by a badge on
- * every ride card, permanently, which covered forty ride names to repeat one
- * sentence; that badge now waits for the pointer to arrive on a card, and this
- * is what reaches somebody who has not thought to hover yet.
- *
- * Shown only where the gesture exists — `planner-wide:flex`, because a coarse
- * pointer has no drag and drop and the panel's own search is the way in there —
- * and only while there is a park page behind the panel to drag from. Dismissed
- * for good on the button, because a hint that comes back is not a hint.
+ * How a ride gets into the day, said once: dragging from the page behind the panel is a gesture
+ * nobody finds unless it is named. Shown only where the gesture exists (a fine pointer, with a park
+ * page behind the panel), and dismissed for good on the button.
  */
 export function PlannerDragCoach({ show }: { show: boolean }) {
   const t = useTranslations('planner');
@@ -32,14 +23,9 @@ export function PlannerDragCoach({ show }: { show: boolean }) {
   return (
     <div
       data-planner-drag-coach=""
-      /* `planner-wide:flex` and not `sm:flex`: this coaches the one gesture a
-         coarse pointer does not have — drag a ride card off the park page onto
-         the axis — and on `planner-phone` the sheet is MODAL, so the page it
-         points at is covered and inert. At 844x390 `sm:` still drew it, over a
-         page nobody could reach. Same pairing, same message key, as the empty
-         day's two lines in `planner-day-grid.tsx` (PAR-76). `my-2`: it is the
-         panel's last row since the push switch went to the header (PAR-521),
-         and with `mt-2` alone it sat on the panel's bottom edge. */
+      /* `planner-wide:flex`, not `sm:flex`: on a phone the sheet is modal, so the page this points
+         at is covered; the empty day's lines in `planner-day-grid.tsx` pair the same way. `my-2`,
+         since it is the panel's last row. */
       className="border-primary/30 bg-primary/10 planner-wide:flex mx-2 my-2 hidden shrink-0 items-start gap-2 rounded-md border px-2 py-1.5"
     >
       <MousePointer2 className="text-primary mt-0.5 size-3.5 shrink-0" aria-hidden="true" />

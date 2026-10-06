@@ -6,6 +6,7 @@ import { parkBestDaysQueryOptions } from '@/lib/hooks/use-park-best-days-calenda
 import type { AssignCrowd } from './assign';
 import type { PlannerGeo } from './types';
 
+/** One park's forecast per date for the trip assistant, and its zone. */
 export interface AssignFacts {
   /** Date → forecast, from the park's best-days snapshot. */
   levels: ReadonlyMap<string, AssignCrowd>;
@@ -14,14 +15,10 @@ export interface AssignFacts {
 }
 
 /**
- * The best-days snapshot of several parks at once, for the trip assistant.
- *
- * The same query, under the same key, as `usePlannerDayFacts`, so a park the visitor has open
- * elsewhere is a cache hit. One request per park and only while the assistant is open.
- *
- * `pending` is true until every park has ANSWERED, successfully or not. A park whose request
- * failed is a park with no forecast, and `assignParks` reads a missing date as `unknown`, which
- * is what the row then says; waiting for it forever would be the assistant's own failure.
+ * The best-days snapshot of several parks at once, for the trip assistant, under
+ * `usePlannerDayFacts`'s query key so an open park is a cache hit. `pending` holds until every park
+ * has answered, successfully or not: a failed park has no forecast, which `assignParks` reads as
+ * `unknown`.
  */
 export function useParksBestDays(
   parks: readonly { slug: string; geo: PlannerGeo }[],
@@ -35,14 +32,13 @@ export function useParksBestDays(
         city: park.geo.city,
         parkSlug: park.slug,
       }),
-      // Not gated on `useLoadLast`: that rule orders the park page's own queries, and this dialog
-      // is open because the visitor asked for it.
+      // Not gated on `useLoadLast`, which orders the park page's own queries; this dialog was asked
+      // for.
       enabled: enabled && typeof window !== 'undefined',
     })),
   });
 
-  // One string for the whole set: a fixed-size dependency that changes when any park's answer
-  // does, however many parks there are.
+  // One string for the whole set: a fixed-size dependency that changes when any answer does.
   const stamp = results.map((result) => `${result.status}:${result.dataUpdatedAt}`).join('|');
 
   return useMemo(() => {
@@ -60,7 +56,7 @@ export function useParksBestDays(
       facts.set(park.slug, { levels, timezone: typeof zone === 'string' ? zone : null });
     });
     return { facts, pending };
-    // `results` is a new array on every render and `stamp` says when it changed in substance.
+    // `results` is a new array every render; `stamp` says when it changed in substance.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parks, stamp]);
 }

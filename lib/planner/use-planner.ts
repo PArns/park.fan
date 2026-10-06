@@ -34,19 +34,9 @@ import {
 import { trackPlanDayStarted } from '@/lib/analytics/umami';
 
 /**
- * Count a day the first time something lands in it.
- *
- * The interesting moment is the TRANSITION, not the write: a day that already
- * holds three rides and gains a fourth is somebody filling one in, and billing
- * that would put a row in Umami for every lap of every plan. So the store is
- * read BEFORE the update and the event fires only across empty → not empty,
- * which makes it exactly one row per park and date however the block got there
- * — dragged off a park page, added from the panel's list, or a free block
- * somebody wrote themselves.
- *
- * `plannerStore.getSnapshot()` rather than the `state` this hook renders with:
- * these callbacks are `useCallback`-stable on purpose, and closing over the
- * rendered state would make them stale exactly when two adds land in one tick.
+ * Count a day the first time something lands in it: the event fires only across empty to not empty,
+ * one row per park and date, however the block got there. Reads `plannerStore.getSnapshot()`, since
+ * these callbacks are stable and a rendered `state` would be stale when two adds land in one tick.
  */
 function countFirstBlock(parkSlug: string, parkName: string, date: string): void {
   const before = plannerStore.getSnapshot().parks[parkSlug]?.days[date]?.entries.length ?? 0;
@@ -81,16 +71,9 @@ interface AddCustomRideParams {
 }
 
 /**
- * The planner's state and everything that changes it.
- *
- * Reads through `useSyncExternalStore`, so every consumer sees the same object
- * and the server snapshot is an empty plan — see `store.ts` for why that has to
- * be a store rather than provider state.
- *
- * No provider is needed at all, which is the point: the store is a module, so a
- * ride card deep in a park page and the flyout in the layout talk to each other
- * without a context wrapping the whole tree. One less client boundary in the
- * layout, and nothing to serialize into the RSC payload of every page.
+ * The planner's state and everything that changes it, through `useSyncExternalStore` (see
+ * `store.ts`). No provider: the store is a module, so a ride card and the flyout talk without a
+ * context around the tree.
  */
 export function usePlanner() {
   const state = useSyncExternalStore(
@@ -100,11 +83,8 @@ export function usePlanner() {
   );
 
   /**
-   * @param now The instant this add reckons from, for a caller that derives
-   *   `params.date` from the clock too. Both have to come from ONE read or they
-   *   can disagree across park-local midnight — see `AddToPlannerButton`, whose
-   *   date is computed at render. Defaulted, so every other call site is
-   *   unchanged.
+   * @param now The instant this add reckons from, for a caller that derives `params.date` from the
+   *   clock too: both must come from one read or they can disagree across park-local midnight.
    */
   const addRide = useCallback((params: AddRideParams, now?: number) => {
     countFirstBlock(params.parkSlug, params.parkName, params.date);
@@ -195,12 +175,8 @@ export function usePlanner() {
   }, []);
 
   /**
-   * A whole re-plan in one write — what the optimiser commits.
-   *
-   * It counts the day the same way an add does, and for the same reason: a plan
-   * that goes from empty to eight headliners in one press is somebody starting
-   * a day at that park, and it is the only route into a day that would otherwise
-   * never be counted.
+   * A whole re-plan in one write, what the optimiser commits. It counts the day like an add does,
+   * since empty to eight headliners in one press is a day being started.
    */
   const applyPlan = useCallback(
     (params: {
@@ -258,13 +234,8 @@ export function usePlanner() {
 }
 
 /**
- * How many times this ride is in that day's plan.
- *
- * A count rather than a flag, because riding something twice is a plan and not a
- * mistake — a morning lap on a walk-on and an evening one for the lights. The
- * store has always allowed it (`makeId` counts collisions up), and only the two
- * controls said otherwise: the ride page DISABLED itself once a ride was in, and
- * the search greyed the row, which reads as "no" to everybody.
+ * How many times this ride is in that day's plan: a count, because riding something twice is a
+ * plan, not a mistake.
  */
 export function usePlannedCount(parkSlug: string, date: string | null, attractionSlug: string) {
   const state = useSyncExternalStore(

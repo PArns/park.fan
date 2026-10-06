@@ -6,13 +6,9 @@ import { getTripId } from './trip-sync';
 import { currentPushTimezone, rememberSentPushTimezone } from '../push/push-timezone';
 
 /**
- * The one request that writes a subscription row: this endpoint, against this
- * trip, with these topics.
- *
- * Sent when push is switched on, when the visitor changes what they want, and
- * when the trip id the row names was replaced. Kept in one place because the
- * three used to be copies, and a fourth field added to two of them is the kind
- * of drift nobody sees.
+ * The one request that writes a subscription row: this endpoint, against this trip, with these
+ * topics. Sent on switching push on, on a topic change and when the trip id was replaced; one copy,
+ * so a new field cannot reach only some of them.
  */
 export async function postSubscription(
   subscription: PushSubscription,
@@ -34,30 +30,19 @@ export async function postSubscription(
       topics,
     }),
   });
-  // The one place this is written: the server has just accepted this endpoint
-  // against this trip, and that answer is what the next mount reads instead of
-  // guessing from two local signals (`push-arming.ts`). Only on the 2xx, and
-  // deliberately not cleared on a refusal — see `forgetArmedPush`. Here rather
-  // than at each caller because a re-pointed row is a new pair and the record
-  // has to follow it.
+  // The one place the armed record is written: on the 2xx only, and not cleared on a refusal (see
+  // `forgetArmedPush`). Here, because a re-pointed row is a new pair the record has to follow.
   if (response.ok) rememberArmedPush(subscription.endpoint, tripId);
   return { response, timezone };
 }
 
 /**
- * Point this browser's subscription row at `tripId`, after `syncTrip` replaced
- * the id the row was written with.
+ * Point this browser's subscription row at `tripId`, after `syncTrip` replaced the id the row was
+ * written with. `false` where the server refused or there is no subscription, and the caller then
+ * switches push off; `true` where it was accepted, or a switch-off overtook it and nothing is left
+ * to point at. Shared by `usePushSubscription`'s auto-sync and `adoptSharedPlan`.
  *
- * `true` when the server accepted the row. `false` when it did not, when there
- * is no subscription to point, or when the id moved on again meanwhile
- * (`forgetTrip` clears it, so nothing is left to point at): the caller then owes
- * the visitor the same answer as a refused write, a switch that is off.
- *
- * Shared by the auto-sync callback in `usePushSubscription` and by
- * `adoptSharedPlan`, which runs without the hook and so without its callback.
- *
- * @param availableTopics what `GET /api/push` offers; fetched here when the
- *   caller does not have it already.
+ * @param availableTopics what `GET /api/push` offers; fetched here when the caller lacks it.
  */
 export async function repointPushSubscription(
   tripId: string,
@@ -66,15 +51,13 @@ export async function repointPushSubscription(
   try {
     const registration = await navigator.serviceWorker.getRegistration('/sw.js');
     const subscription = await registration?.pushManager.getSubscription();
-    // Overtaken by a switch-off (`forgetTrip` clears the id): nothing is left to
-    // point at. Not the effect's cleanup, which also runs on a remount and would
-    // drop a replacement that is still in flight.
+    // Overtaken by a switch-off (`forgetTrip` cleared the id). Not left to the effect's cleanup,
+    // which also runs on a remount and would drop a replacement still in flight.
     if (getTripId() !== tripId) return true;
     if (!subscription) return false;
     const topics = availableTopics ?? (await fetchAvailableTopics());
     if (!topics) return false;
-    // Read now rather than captured: the visitor may have narrowed the topics
-    // since the caller started.
+    // Read now: the visitor may have narrowed the topics since the caller started.
     const { response, timezone } = await postSubscription(
       subscription,
       tripId,

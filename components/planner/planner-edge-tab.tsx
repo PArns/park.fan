@@ -9,38 +9,14 @@ import { PANEL_WIDTH_DEFAULT, clampPanelWidth, plannerPanelWidth } from '@/lib/p
 import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 
 /**
- * The planner's tab, on the right edge of the window.
+ * The planner's tab on the right edge of the window: closed it is the way in, open it is the
+ * panel's own edge and drags to resize.
  *
- * It replaces the floating pill in the corner and it is one control doing two
- * jobs, which is the point rather than a compromise: closed it is the way in,
- * open it is the panel's own edge and drags to resize. A separate launcher and a
- * separate resize grip were two objects for one relationship, and the launcher
- * had the worse half of it — a panel that slides out from the right edge, opened
- * by a button in the bottom corner it has nothing to do with.
- *
- * **It reads `navigation` and nothing else, and that is load-bearing.** The
- * planner's own namespace is fetched lazily (see `planner-launcher.tsx`), so a
- * control that renders on every page before that chunk exists may only use what
- * the layout chrome already carries. `navigation.planner` is the word the
- * header, the footer and the parks menu all print, so it costs zero bytes here
- * and is by construction the same label. Anything from `planner` would render as
- * a raw key on every page of the site until somebody opened the panel.
- *
- * Two geometry decisions. The `right` offset is the panel's own width while it
- * is open, so the tab travels with the panel instead of being covered by it —
- * animated to match the sheet's own 500 ms opening and 300 ms close, and with
- * the transition switched OFF during a resize drag, where it has to sit under
- * the pointer rather than chase it. And the vertical centring is a full-height
- * wrapper with `items-center` rather than a `-translate-y-1/2`: a transform on
- * an element with a `backdrop-filter` makes it a backdrop root and flattens its
- * own blur, and the label's height varies by locale so a fixed margin cannot do
- * the job either.
- *
- * On a phone (`planner-phone`) it is not drawn at all. Open, the panel is a
- * modal bottom sheet with a grab handle of its own, and a tab clinging to the
- * right edge would be a second handle for the same object, over the overlay.
- * Closed, it was a 24 × 102 px tab over the right edge of every page (PAR-434), so
- * the way in there is `PlannerHeaderButton` in the bar instead.
+ * It reads only `navigation`: the `planner` namespace is fetched lazily (see
+ * `planner-launcher.tsx`), and a key from it would render raw on every page until the panel opens.
+ * Vertical centring uses a full-height `items-center` wrapper, because a transform on an element
+ * with `backdrop-filter` flattens its blur. Not drawn on a phone, where `PlannerHeaderButton` is
+ * the way in.
  */
 export function PlannerEdgeTab({
   open,
@@ -54,15 +30,8 @@ export function PlannerEdgeTab({
 }) {
   const t = useTranslations('navigation');
   /**
-   * The panel's width, read here rather than handed down by the launcher.
-   *
-   * A resize drag changes it on every pointer move. As a prop it made the
-   * launcher re-render for each move, and the launcher renders the whole panel
-   * — both day columns, every block and leg — so a drag re-rendered all of it to
-   * change one number. This tab is the only thing the launcher draws whose
-   * markup depends on the width; the page's inset and the sheet's own width are
-   * written from the store without a render (see `planner-launcher.tsx` and
-   * `planner-flyout.tsx`).
+   * The panel's width, read here rather than passed down by the launcher, so a resize drag
+   * re-renders this tab and not the whole panel the launcher draws.
    */
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
@@ -72,33 +41,23 @@ export function PlannerEdgeTab({
   const bandOverTab = useMenuBandOverEdgeTab();
   const [dragging, setDragging] = useState(false);
   /**
-   * Tear-down for a resize that is still running, reachable from outside it.
-   * The same slot the grid keeps, for the same reason: {@link capturePointer}
-   * may put the listeners on the `document`, where they outlive this component
-   * and keep `--planner-inset-ms` pinned at `0ms` for the rest of the session.
+   * Tear-down for a resize that is still running: {@link capturePointer} may put the listeners on
+   * the `document`, where they would outlive the tab and keep `--planner-inset-ms` at `0ms`.
    */
   const liveResize = useRef<(() => void) | null>(null);
   useEffect(() => () => liveResize.current?.(), []);
 
   /**
-   * Dragging the tab sideways resizes the panel.
-   *
-   * Live rather than committed on release: there is one meaning and one axis
-   * here, so the panel follows the pointer and the width is written down once,
-   * at the end. A drag ALWAYS ends in a click, so the gesture records whether it
-   * moved and the click handler reads that — otherwise every resize would be
-   * undone by the click that followed it.
+   * Dragging the tab sideways resizes the panel live, and the width is committed once at the end. A
+   * drag always ends in a click, so the gesture records whether it moved and the click is
+   * swallowed.
    */
   const startResize = (event: React.PointerEvent<HTMLElement>) => {
     if (!open || event.button !== 0) return;
     const handle = event.currentTarget;
     const pointerId = event.pointerId;
-    // The third planner gesture, and it had the same bare claim the other two
-    // were fixed for: `setPointerCapture` throws `NotFoundError` for a pointer
-    // id that is not active, and an uncaught throw in a React handler takes the
-    // gesture with it — here before `setDragging(true)` and before a single
-    // listener is attached, so the panel simply does not resize. See
-    // {@link capturePointer} for the fallback bus.
+    // `setPointerCapture` throws for a pointer id that is no longer active, which would abort the
+    // gesture before it starts. See {@link capturePointer} for the fallback.
     const bus = capturePointer(handle, pointerId);
     const startX = event.clientX;
     const startWidth = panelWidth;
@@ -107,9 +66,7 @@ export function PlannerEdgeTab({
     const widthAt = (clientX: number) => clampPanelWidth(startWidth + (startX - clientX));
 
     const onMove = (moveEvent: PointerEvent) => {
-      // This gesture's own pointer. On the document fallback every pointer on
-      // the page arrives here, and a second one would resize the panel from an
-      // `startX` it never had.
+      // This gesture's own pointer: on the document fallback every pointer on the page arrives.
       if (!isSamePointer(moveEvent, pointerId)) return;
       if (Math.abs(moveEvent.clientX - startX) > TAP_SLOP_PX) moved = true;
       if (moved) plannerPanelWidth.preview(widthAt(moveEvent.clientX));
@@ -139,8 +96,7 @@ export function PlannerEdgeTab({
     liveResize.current?.();
     liveResize.current = detach;
     setDragging(true);
-    // The page beside the panel animates its inset over 300 ms, which is right
-    // for an open and wrong under a pointer. Zero for the length of the drag.
+    // The page's inset animates over 300 ms, which is wrong under a pointer: zero while dragging.
     document.documentElement.style.setProperty('--planner-inset-ms', '0ms');
     bus.addEventListener('pointermove', onMove as EventListener);
     bus.addEventListener('pointerup', onUp as EventListener);
@@ -151,44 +107,24 @@ export function PlannerEdgeTab({
     <div
       className={cn(
         'pointer-events-none fixed inset-y-0 z-[60] flex items-center',
-        // `planner-phone:hidden` and not `max-sm:hidden`: this hides the tab
-        // while the panel is a BOTTOM SHEET, and which of the two arrangements
-        // the panel is in stopped being a question about width (PAR-76). At
-        // 844x390 the old class kept the tab visible and `right: panelWidth`
-        // then drove it 448 px inward — to a point behind a sheet that spans the
-        // whole window, i.e. an unreachable control over an opaque one. The
-        // `style` below is inert once this applies, which is why the offset
-        // needs no second term of its own.
-        //
-        // And it is hidden there while CLOSED as well (PAR-434): on a 390 px
-        // screen the closed tab was 24 × 102 px laid over the right edge of
-        // every page, across card text and prices. The way in on a phone is
-        // `PlannerHeaderButton` in the bar, which asks the same variant, so
-        // exactly one of the two exists at any size.
+        // `planner-phone:hidden`, not `max-sm:hidden`: whether the panel is a bottom sheet is no
+        // longer a question about width, and on a landscape phone the tab would sit behind the
+        // sheet. Hidden while closed too, where `PlannerHeaderButton` is the way in; it asks the
+        // same variant, so exactly one of the two exists at any size.
         'planner-phone:hidden',
-        // One clock for the three things that move together — the panel, the
-        // page's inset and this tab. See the note in `components/ui/sheet.tsx`.
+        // One clock for the panel, the page's inset and this tab. See `components/ui/sheet.tsx`.
         !dragging && 'transition-[right,opacity,visibility] duration-300 ease-in-out',
-        // A header menu band is open whose column runs under this tab (PAR-70):
-        // at 1024 and 1280 px the tab, on `z-[60]` above the band, covered 14 px
-        // of the alerts' remove buttons. Faded and `invisible` rather than
-        // unmounted, so it fades back when the band closes and is not a focus
-        // stop meanwhile. Never mid-drag: the pointer is on the tab.
+        // A header menu band whose column runs under this tab is open: fade and `invisible` rather
+        // than unmount, so it fades back and is no focus stop meanwhile. Never mid-drag.
         bandOverTab && !dragging && 'invisible opacity-0'
       )}
-      // On the wide arrangement the panel is a side sheet of exactly this width,
-      // so this puts the tab against its edge. On `planner-phone` it is a bottom
-      // sheet and the tab is hidden while open, so the offset is never seen there.
+      // On the wide arrangement this puts the tab against the side sheet's edge.
       style={{ right: open ? panelWidth : 0 }}
     >
       <button
         type="button"
-        /* `detail > 1` is the SECOND click of a double-click, and it is skipped
-           because the button carries a double-click gesture of its own (reset
-           the width, below). Without this a double-click toggled the panel
-           twice — closed and reopened it — which reset `showOverview` and the
-           sheet's phone height as a side effect and billed a `planner_opened`
-           for an opening nobody performed. */
+        /* `detail > 1` is the second click of a double-click, which has its own gesture (reset the
+           width); without this a double-click would close and reopen the panel. */
         onClick={(event) => {
           if (event.detail > 1) return;
           onToggle();
@@ -200,20 +136,9 @@ export function PlannerEdgeTab({
         data-planner-launcher=""
         data-planner-resize-edge={open ? '' : undefined}
         className={cn(
-          // Blue, and solid enough to be the loudest thing at the edge: this is
-          // the one control that opens the feature, and a glass tab over a park
-          // photo read as another panel edge rather than as a way in.
-          //
-          // The WIDTH is the sum of the two paddings and the widest child, and
-          // it was 36.6 px because the count badge — a padded pill at 18.6 px —
-          // was wider than both the icon (16) and the rotated word (15). That
-          // is a permanent strip down the right edge of every page, so the badge
-          // is a circle the size of the icon now and the icon is the floor.
-          //
-          // `pr-2` is clearance, not padding taste: the tab sits at `right: 0`
-          // when the panel is closed, which is where the page's own scrollbar
-          // is, and at `pr-1` the word ran under it. The left has no scrollbar
-          // to clear and gives its 2 px. 6 + 16 + 8 = 30 px, measured.
+          // Blue and solid, the loudest thing at the edge: it is the feature's way in. The width is
+          // padding plus the widest child, so the badge is no wider than the icon. `pr-2` clears
+          // the page's scrollbar at `right: 0`.
           'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-2 pl-1.5 shadow-lg ring-1',
           'supports-[backdrop-filter]:bg-primary/90 backdrop-blur-md',
           'hover:bg-primary/95 transition-colors',
@@ -221,29 +146,20 @@ export function PlannerEdgeTab({
         )}
       >
         <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
-        {/* `vertical-rl` plus a half turn, which is the pair that reads
-            bottom-to-top — `vertical-rl` alone runs top-to-bottom and puts the
-            first letter under the icon rather than beside the panel it names.
-            This is also the button's accessible name, so there is no
-            `aria-label` duplicating it. */}
+        {/* `vertical-rl` plus a half turn reads bottom-to-top. Also the button's accessible name,
+            so no `aria-label`. */}
         <span className="[transform:rotate(180deg)] text-[10px] font-semibold tracking-wide whitespace-nowrap uppercase [writing-mode:vertical-rl]">
           {t('planner')}
         </span>
-        {/* No badge at zero: opened from the calendar there is nothing planned
-            yet, and a "0" beside the label reads as a count that failed. */}
+        {/* No badge at zero: a "0" beside the label reads as a count that failed. */}
         {total > 0 && (
-          /* A circle the size of the icon rather than a padded pill, because this
-             is what the tab's width was: at `px-1.5` it measured 18.6 px and set
-             the box for the icon (16) and the word (15) both. `min-w-*` rather
-             than a fixed size, so a three-digit total still gets its room — one
-             and two digits, which is every plan anybody has, fit the circle with
-             none to spare and cost nothing. */
+          /* A circle the size of the icon, so the badge does not widen the tab; `min-w-*` so a
+             three-digit total still fits. */
           <span className="bg-primary-foreground/20 flex min-w-4 items-center justify-center rounded-full px-0.5 py-0.5 font-mono text-[10px] tabular-nums">
             {total}
           </span>
         )}
-        {/* Only while it is open, because only then is there anything to drag.
-            Drawn when closed it would promise a gesture that does nothing. */}
+        {/* Only while open, the only time there is anything to drag. */}
         {open && (
           <GripVertical className="text-primary-foreground/70 size-4 shrink-0" aria-hidden="true" />
         )}
