@@ -2,6 +2,7 @@
 title: '30 Jahre Movie Park Germany, und keine Marke von 1996 ist noch da'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -9,7 +10,7 @@ excerpt: >-
   Batman weg, Bugs Bunny weg, und seitdem baut der Park Fahrgeschäfte über sich
   selbst. Zum 30. Geburtstag: gemessene Wartezeiten, der Wochentag, bei dem die
   gängigen Ratgeber danebenliegen, der Fahrplan ab September und das Halloween Horror
-  Festival ab dem 26. September.
+  Festival, das noch bis zum 8. November läuft.
 tags:
   - movie-park
   - wartezeiten
@@ -33,7 +34,7 @@ seo:
   title: 'Movie Park Wartezeiten & Halloween 2026, ohne Batman'
   description: >-
     Movie Park mit gemessenen Wartezeiten: der Wochentag, bei dem Ratgeber
-    irren, Herbst-Fahrplan, Halloween ab 26.9. und wie du den Kassenaufschlag
+    irren, Herbst-Fahrplan, Halloween bis 8.11. und wie du den Kassenaufschlag
     sparst.
   keywords:
     - Movie Park Germany

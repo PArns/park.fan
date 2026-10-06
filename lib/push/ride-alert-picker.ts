@@ -12,6 +12,14 @@ export interface RideAlertPickerAttraction {
   currentWaitTime?: number | null;
 }
 
+/** Which alert the add-form is filling in. `reopen` is "tell me when it opens again". */
+export type RideAlertPickerKind = 'wait' | 'reopen';
+
+/** Whether a stored or fetched alert is the reopen kind; an absent `kind` is a wait-time alert. */
+export function isReopenAlert(alert: { kind?: string | null }): boolean {
+  return alert.kind === 'reopen';
+}
+
 export interface RideAlertPickerRow<T extends RideAlertPickerAttraction> {
   attraction: T;
   /**
@@ -33,14 +41,16 @@ export interface RideAlertPickerRow<T extends RideAlertPickerAttraction> {
 export function rideAlertPickerRows<T extends RideAlertPickerAttraction>(
   attractions: readonly T[],
   alertedIds: ReadonlySet<string>,
-  locale: string
+  locale: string,
+  kind: RideAlertPickerKind = 'wait'
 ): RideAlertPickerRow<T>[] {
   return attractions
     .filter((a) => !alertedIds.has(a.id))
     .sort((a, b) => a.name.localeCompare(b.name, locale))
     .map((attraction) => ({
       attraction,
-      selectable: hasUsableThresholdRange(attraction.currentWaitTime),
+      // A reopen alert has no threshold to fit under the queue, so no queue is too short for it.
+      selectable: kind === 'reopen' || hasUsableThresholdRange(attraction.currentWaitTime),
     }));
 }
 

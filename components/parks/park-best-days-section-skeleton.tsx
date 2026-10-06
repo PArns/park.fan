@@ -3,6 +3,7 @@ import { TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
 import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 /**
  * Loading placeholder for <ParkBestDaysSection> (non-compact). Its job is to hold the exact box the
@@ -45,7 +46,7 @@ export function ParkBestDaysSectionSkeleton({
   intro?: React.ReactNode;
 }) {
   return (
-    <section className="mt-8 space-y-4">
+    <section className={cn(CHAPTER_GAP_COMPACT, 'space-y-4')}>
       {/* Header and the three cards are ONE box, the way „Monat für Monat" and its month
         stepper are: the band squares off its bottom, the card underneath drops its top border
         and radius, and the chapter reads as one object instead of a lid resting on a gap of

@@ -510,6 +510,7 @@ export const TabsWithHash = memo(function TabsWithHash({
             variant="nudge"
             parkName={park.name}
             attractions={alertAttractions as RideAlertDialogAttraction[]}
+            reopenAvailable
           />
         )}
 

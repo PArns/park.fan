@@ -20,6 +20,8 @@ interface RideAlertsEntryButtonProps {
    * dialog, so there is one way to set an alert.
    */
   variant?: 'link' | 'nudge';
+  /** `hasReadableWaitTimes(park)` — see `RideAlertDialog`. */
+  reopenAvailable: boolean;
 }
 
 /**
@@ -32,6 +34,7 @@ export function RideAlertsEntryButton({
   parkName,
   attractions,
   variant = 'link',
+  reopenAvailable,
 }: RideAlertsEntryButtonProps) {
   const [open, setOpen] = useState(false);
   const t = useTranslations('pushAlerts.rideDialog');
@@ -82,6 +85,7 @@ export function RideAlertsEntryButton({
         onOpenChange={setOpen}
         parkName={parkName}
         attractions={attractions}
+        reopenAvailable={reopenAvailable}
       />
     </>
   );

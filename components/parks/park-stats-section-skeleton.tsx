@@ -3,6 +3,7 @@ import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { Skeleton } from '@/components/ui/skeleton';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 /** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
  *  mirror the same selection and the section already imports this file. */
@@ -102,7 +103,7 @@ export function ParkStatsSectionSkeleton({
   ];
 
   return (
-    <section className="mt-8" aria-hidden="true">
+    <section className={CHAPTER_GAP_COMPACT} aria-hidden="true">
       <ParkStatsHeader
         hidden={hideHeading}
         className={hideHeading ? undefined : 'mb-0 rounded-b-none'}

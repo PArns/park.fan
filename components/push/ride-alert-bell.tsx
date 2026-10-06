@@ -9,7 +9,10 @@ import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { hasUsableThresholdRange } from '@/lib/push/threshold-minutes';
 import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-dialog';
-import { useRideAlertParkAttractions } from './ride-alert-park-context';
+import {
+  useRideAlertParkAttractions,
+  useRideAlertReopenAvailable,
+} from './ride-alert-park-context';
 
 interface RideAlertBellProps {
   attractionId: string;
@@ -145,6 +148,7 @@ function RideAlertBellDialog({
   currentWaitTime,
 }: RideAlertBellProps & { open: boolean; onOpenChange: (open: boolean) => void }) {
   const parkAttractions = useRideAlertParkAttractions();
+  const reopenAvailable = useRideAlertReopenAvailable();
 
   // The park's list when there is one. This ride's own entry is the card's: its reading is the
   // one the bell's visibility rule just read, where the list counts a wait only while the ride is
@@ -185,6 +189,7 @@ function RideAlertBellDialog({
       parkName={parkName}
       attractions={dialogAttractions}
       initialAttractionId={attractionId}
+      reopenAvailable={reopenAvailable}
     />
   );
 }

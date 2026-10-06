@@ -13,6 +13,7 @@ import {
   historyGridReservation,
 } from '@/lib/parks/attraction-history-geometry';
 import { cn } from '@/lib/utils';
+import { CHAPTER_GAP } from '@/components/common/chapter-spacing';
 
 interface AttractionHistoryPanelProps {
   history?: AttractionHistoryDay[];
@@ -57,7 +58,7 @@ export function AttractionHistoryPanel({
   const reservation = historyGridReservation();
 
   return (
-    <section id="history" className={cn('mt-10 scroll-mt-24 max-sm:mt-6', className)}>
+    <section id="history" className={cn(CHAPTER_GAP, 'scroll-mt-24', className)}>
       <ChapterHeading
         icon={CalendarDays}
         title={t('historyCalendar')}

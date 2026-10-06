@@ -53,6 +53,7 @@ import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simulation';
 import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
 import { parkArgs } from '@/lib/i18n/park-phrase';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface ParkPageProps {
   params: Promise<{
@@ -432,7 +433,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             parkSlug={parkSlug}
             geoPath={`${continent}/${country}/${city}`}
             parkName={parkName}
-            className="mt-8"
+            className={CHAPTER_GAP_COMPACT}
           />
         }
         /* How busy the next twelve months look — the one chapter that reaches past the rolling

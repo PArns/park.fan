@@ -1910,8 +1910,8 @@
       "viewAll": "My alerts"
     },
     "rideBell": {
-      "setAlert": "Set a wait-time alert for {name}",
-      "alerted": "Wait-time alert for {name} is on – tap to edit"
+      "setAlert": "Set an alert for {name}",
+      "alerted": "Alert for {name} is on – tap to edit"
     },
     "rideDialog": {
       "title": "Wait-time alerts",
@@ -1939,7 +1939,12 @@
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
       "todayOnly": "Applies to today only – set it up again for another visit day.",
-      "loadError": "Couldn't load your alerts."
+      "loadError": "Couldn't load your alerts.",
+      "kindLabel": "What should the alert tell you about?",
+      "kindWait": "Wait under a threshold",
+      "kindReopen": "Tell me when it reopens",
+      "reopenLabel": "when it reopens",
+      "reopenHint": "One message when the ride is running again after a closure or breakdown."
     },
     "overview": {
       "title": "My alerts",
@@ -1955,7 +1960,8 @@
       "retired": "Retired",
       "loadError": "Couldn't load the list. Please reload the page.",
       "showAt": "at {time}",
-      "showNextAny": "whichever performance is next"
+      "showNextAny": "whichever performance is next",
+      "reopenLabel": "when it reopens"
     },
     "menu": {
       "link": "My alerts",
@@ -1966,7 +1972,8 @@
       "remove": "{name}: remove alert",
       "removeError": "The alert couldn’t be removed and is still armed. Please try again.",
       "removeRateLimited": "Too many attempts. Try again in {seconds} seconds.",
-      "loadError": "Couldn't load your alerts."
+      "loadError": "Couldn't load your alerts.",
+      "reopen": "when it reopens"
     },
     "pushErrors": {
       "generic": "That didn’t work. Please try again.",
@@ -2809,6 +2816,29 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    }
+  },
+  "compare": {
+    "kicker": "park.fan · Park comparison",
+    "title": "Two parks side by side",
+    "subtitle": "Typical wait, longest queue and quietest weekday from the last two years. Pick two to four parks; the choice is kept in the link.",
+    "action": "Pick parks",
+    "meta": {
+      "title": "Compare parks: wait times side by side",
+      "description": "Pick two to four theme parks and see typical wait, longest queue and quietest weekday in one table."
+    },
+    "tool": {
+      "pickerTitle": "Pick parks",
+      "count": "{count} of {max}",
+      "remove": "Remove {park}",
+      "placeholder": "Search for a park …",
+      "searching": "Searching …",
+      "noResults": "No park found.",
+      "chosen": "chosen",
+      "full": "More than {max} parks do not fit in the table. Remove one to pick another.",
+      "empty": "Pick two to four parks and the table appears.",
+      "second": "Pick a second park to compare.",
+      "noStats": "{count, plural, one {There is no measurement for {parks} yet.} other {There are no measurements for {parks} yet.}}"
     }
   }
 }

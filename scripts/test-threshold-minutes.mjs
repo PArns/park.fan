@@ -22,6 +22,7 @@ import {
 } from '../lib/push/threshold-minutes.ts';
 import {
   filterRideAlertPickerRows,
+  isReopenAlert,
   resolveRideAlertSelection,
   rideAlertPickerRows,
 } from '../lib/push/ride-alert-picker.ts';
@@ -227,6 +228,37 @@ test('no selection at all when no ride can take an alert', () => {
   );
   assert.equal(resolveRideAlertSelection(rows, ''), '');
   assert.equal(resolveRideAlertSelection(rows, 'a'), '');
+});
+
+test('a reopen alert can be set on a ride whose queue is too short, or closed', () => {
+  const park = [
+    { id: 'a', name: 'A', currentWaitTime: 0 },
+    { id: 'b', name: 'B', currentWaitTime: 5 },
+    { id: 'c', name: 'C', currentWaitTime: null },
+  ];
+  const wait = rideAlertPickerRows(park, new Set(), 'en');
+  assert.deepEqual(
+    wait.map((r) => r.selectable),
+    [false, false, true]
+  );
+  const reopen = rideAlertPickerRows(park, new Set(), 'en', 'reopen');
+  assert.deepEqual(
+    reopen.map((r) => r.selectable),
+    [true, true, true]
+  );
+  assert.equal(resolveRideAlertSelection(reopen, 'a'), 'a');
+  assert.equal(resolveRideAlertSelection(reopen, ''), 'a');
+});
+
+test('a ride that already has an alert stays out of the picker, whichever kind it is', () => {
+  const rows = rideAlertPickerRows(PARK, new Set(['fly']), 'de', 'reopen');
+  assert.ok(!rows.some((r) => r.attraction.id === 'fly'));
+});
+
+test('an alert without a kind is a wait-time alert; only "reopen" is the other kind', () => {
+  assert.equal(isReopenAlert({ thresholdMinutes: 20 }), false);
+  assert.equal(isReopenAlert({ kind: null, thresholdMinutes: 20 }), false);
+  assert.equal(isReopenAlert({ kind: 'reopen', thresholdMinutes: null }), true);
 });
 
 test('the search folds case, accents and punctuation', () => {

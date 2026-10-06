@@ -5,6 +5,7 @@ import { Bell, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { isReopenAlert } from '@/lib/push/ride-alert-picker';
 import { formatShowClock } from '@/lib/push/show-clock';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { usePushFollowsList } from '@/lib/push/use-push-follows-list';
@@ -159,7 +160,10 @@ export function AlertsOverview() {
                     )}
                   </div>
                   <p className="text-muted-foreground text-xs">
-                    {alert.parkName} · {t('thresholdLabel', { minutes: alert.thresholdMinutes })}
+                    {alert.parkName} ·{' '}
+                    {isReopenAlert(alert) || alert.thresholdMinutes === null
+                      ? t('reopenLabel')
+                      : t('thresholdLabel', { minutes: alert.thresholdMinutes })}
                   </p>
                   {removalError(rideRowKey(alert.attractionId))}
                 </div>

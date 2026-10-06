@@ -1910,8 +1910,8 @@
       "viewAll": "Mijn meldingen"
     },
     "rideBell": {
-      "setAlert": "Wachttijdmelding voor {name} instellen",
-      "alerted": "Wachttijdmelding voor {name} actief – tik om te bewerken"
+      "setAlert": "Melding voor {name} instellen",
+      "alerted": "Melding voor {name} actief – tik om te bewerken"
     },
     "rideDialog": {
       "title": "Wachttijdmeldingen",
@@ -1939,7 +1939,12 @@
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
       "todayOnly": "Geldt alleen voor vandaag – voor een andere bezoekdag moet de melding opnieuw worden ingesteld.",
-      "loadError": "De meldingen konden niet worden geladen."
+      "loadError": "De meldingen konden niet worden geladen.",
+      "kindLabel": "Waarover moet de melding gaan?",
+      "kindWait": "Wachttijd onder een grens",
+      "kindReopen": "Meld me als hij weer opengaat",
+      "reopenLabel": "als hij weer opengaat",
+      "reopenHint": "Eén bericht zodra de attractie na een sluiting of storing weer draait."
     },
     "overview": {
       "title": "Mijn meldingen",
@@ -1955,7 +1960,8 @@
       "retired": "Gesloopt",
       "loadError": "De lijst kon niet worden geladen. Herlaad de pagina.",
       "showAt": "om {time}",
-      "showNextAny": "eerstvolgende voorstelling"
+      "showNextAny": "eerstvolgende voorstelling",
+      "reopenLabel": "als hij weer opengaat"
     },
     "menu": {
       "link": "Mijn meldingen",
@@ -1966,7 +1972,8 @@
       "remove": "{name}: melding verwijderen",
       "removeError": "De melding kon niet worden verwijderd en staat nog aan. Probeer het nogmaals.",
       "removeRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
-      "loadError": "De meldingen konden niet worden geladen."
+      "loadError": "De meldingen konden niet worden geladen.",
+      "reopen": "als hij weer open is"
     },
     "pushErrors": {
       "generic": "Dat is niet gelukt. Probeer het nogmaals.",
@@ -2809,6 +2816,29 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    }
+  },
+  "compare": {
+    "kicker": "park.fan · Parkvergelijking",
+    "title": "Twee parken naast elkaar",
+    "subtitle": "Gebruikelijke wachttijd, langste rij en rustigste weekdag over de afgelopen twee jaar. Kies twee tot vier parken; de keuze staat in de link.",
+    "action": "Parken kiezen",
+    "meta": {
+      "title": "Parken vergelijken: wachttijden naast elkaar",
+      "description": "Kies twee tot vier pretparken en zie gebruikelijke wachttijd, langste rij en rustigste weekdag in één tabel."
+    },
+    "tool": {
+      "pickerTitle": "Parken kiezen",
+      "count": "{count} van {max}",
+      "remove": "{park} verwijderen",
+      "placeholder": "Park zoeken …",
+      "searching": "Zoeken …",
+      "noResults": "Geen park gevonden.",
+      "chosen": "gekozen",
+      "full": "Meer dan {max} parken passen niet in de tabel. Verwijder er een om een ander te kiezen.",
+      "empty": "Kies twee tot vier parken, dan verschijnt de tabel.",
+      "second": "Kies een tweede park om te vergelijken.",
+      "noStats": "{count, plural, one {Voor {parks} is er nog geen meting.} other {Voor {parks} zijn er nog geen metingen.}}"
     }
   }
 }

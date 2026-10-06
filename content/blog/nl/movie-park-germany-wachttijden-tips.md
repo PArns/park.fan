@@ -2,6 +2,7 @@
 title: '30 jaar Movie Park Germany, en geen enkel merk uit 1996 is er nog'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 featured: false
@@ -9,7 +10,7 @@ excerpt: >-
   Batman weg, Bugs Bunny weg, en sindsdien bouwt het park attracties over
   zichzelf. Voor de dertigste verjaardag: gemeten wachttijden, de weekdag
   waar de gangbare tipsites naast zitten, het rooster vanaf september en het
-  Halloween Horror Festival vanaf 26 september.
+  Halloween Horror Festival, dat nog tot 8 november loopt.
 tags:
   - movie-park
   - wachttijden
@@ -33,7 +34,7 @@ seo:
   title: 'Movie Park wachttijden & Halloween 2026, zonder Batman'
   description: >-
     Movie Park met gemeten wachttijden: de weekdag waar tipsites naast zitten,
-    het najaarsrooster, Halloween vanaf 26/9 en hoe je de kassatoeslag ontloopt.
+    het najaarsrooster, Halloween tot 8/11 en hoe je de kassatoeslag ontloopt.
   keywords:
     - Movie Park Germany
     - Movie Park wachttijden
