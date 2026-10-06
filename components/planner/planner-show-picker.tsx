@@ -22,7 +22,7 @@ interface PlannerShowPickerProps {
 }
 
 /** The key `planned` is built from, so the caller and the list agree on what "taken" means. */
-export function showLineKey(slug: string, minute: number): string {
+function showLineKey(slug: string, minute: number): string {
   return `${slug}@${minute}`;
 }
 
@@ -35,7 +35,7 @@ export function showLineKey(slug: string, minute: number): string {
  * uses, never as if the operator had published it. The entry it creates is bound
  * to the performance: see {@link addShowEntry}.
  */
-export function PlannerShowPicker({ lines, planned, onPick, className }: PlannerShowPickerProps) {
+function PlannerShowPicker({ lines, planned, onPick, className }: PlannerShowPickerProps) {
   const t = useTranslations('planner');
   const [open, setOpen] = useState(false);
   if (lines.length === 0) return null;

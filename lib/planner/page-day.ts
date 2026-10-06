@@ -78,8 +78,4 @@ export const plannerPageDay = {
     pending = null;
     return date;
   },
-  /** Drop anything pending — for a press that opens the panel without a day in mind. */
-  clear(): void {
-    pending = null;
-  },
 };

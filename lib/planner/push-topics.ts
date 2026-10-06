@@ -84,6 +84,3 @@ export function resolvePushTopics(
   // the last box unticked, and this is the second fence.
   return kept.length > 0 ? kept : [...available];
 }
-
-/** Topic ids this app has copy for. Anything else is rendered by its id. */
-export const KNOWN_PUSH_TOPICS = ['next-up', 'show-times', 'ride-status', 'wait-change'] as const;

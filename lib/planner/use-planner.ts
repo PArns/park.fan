@@ -258,14 +258,6 @@ export function usePlanner() {
 }
 
 /**
- * Whether one ride is already in a given day's plan — for the "add" control on a
- * ride card, which shows a different state once the ride is in.
- */
-export function useIsPlanned(parkSlug: string, date: string | null, attractionSlug: string) {
-  return usePlannedCount(parkSlug, date, attractionSlug) > 0;
-}
-
-/**
  * How many times this ride is in that day's plan.
  *
  * A count rather than a flag, because riding something twice is a plan and not a

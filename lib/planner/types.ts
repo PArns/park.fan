@@ -203,7 +203,7 @@ export function entriesFor(
 }
 
 /** How many entries a park has across every planned day. */
-export function countForPark(state: PlannerState, parkSlug: string): number {
+function countForPark(state: PlannerState, parkSlug: string): number {
   const park = state.parks[parkSlug];
   if (!park) return 0;
   return Object.values(park.days).reduce((sum, day) => sum + day.entries.length, 0);

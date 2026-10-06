@@ -274,15 +274,8 @@ const warmed = new Map<string, HTMLImageElement>();
  */
 const WARM_LIMIT = 32;
 
-/**
- * Ask for a ride's thumbnail now, so a drag that starts later has one.
- *
- * Called from a control's `pointerenter` — not on mount. A mouse drag is always
- * preceded by the pointer arriving on the control, which buys the fetch the
- * whole time between hovering and pressing, and a band of eight headliner pills
- * that nobody points at costs nothing.
- */
-export function warmRideDragThumb(src: string | null | undefined): void {
+/** Asks for a ride's thumbnail now, so the next drag from the same control has one. */
+function warmRideDragThumb(src: string | null | undefined): void {
   const url = thumbUrl(src);
   if (!url || warmed.has(url) || typeof window === 'undefined') return;
   const img = new window.Image();
