@@ -72,7 +72,7 @@ Per sei parchi sappiamo, attrazione per attrazione, se si trova in un edificio:
 Europa-Park, Phantasialand, Efteling, Movie Park Germany, Plopsaland Deutschland
 e Heide Park. Per Toverland, Walibi, Parc Astérix, Legoland e Disneyland Paris
 il dato manca, perciò qui non hanno un elenco di attrazioni. Il buco è nel nostro
-database e non dice nulla sui parchi.
+database e non c’entra con i parchi.
 
 ## Come abbiamo misurato i giorni di pioggia
 
@@ -105,7 +105,7 @@ asciutto, mentre la media scende.
 
 ## Giorni di pioggia in dodici parchi
 
-La tabella indica di quanto il tempo di attesa dei headliner è più basso nei
+La tabella riporta di quanto il tempo di attesa dei headliner è più basso nei
 giorni di pioggia che nei giorni asciutti di confronto. I dati sono aggiornati al
 6 ottobre 2026.
 
@@ -147,7 +147,7 @@ un’ipotesi.
 
 ## Quanto spesso ha piovuto
 
-Gli stessi dati meteo indicano anche quanti giorni di apertura sono stati
+Dagli stessi dati meteo risulta anche quanti giorni di apertura sono stati
 bagnati. Su tutti i giorni di apertura tra il 24 dicembre 2025 e il 5 ottobre
 2026, a Europa-Park il 16 % ha avuto almeno 2 millimetri di precipitazioni, a
 Parc Astérix il 15 %, a Plopsaland Deutschland il 15 %, a Legoland Deutschland il
@@ -178,17 +178,14 @@ all’aperto con coda coperta. I valori li compiliamo a mano, secondo le
 indicazioni dei parchi. Un’attrazione senza valore ha una posizione sconosciuta e
 non conta mai come coperta.
 
-Sulla pagina del parco il dato compare in tre punti. La scheda di ogni attrazione
-ha una riga che dice se la corsa è al chiuso, all’aperto o all’aperto con coda
-coperta. La barra dei filtri ha un filtro «Al coperto». E quando le previsioni a
+Sulla pagina del parco il dato compare in tre punti. La scheda di ogni attrazione ha una riga: al chiuso, all’aperto o all’aperto con coda coperta. La barra dei filtri ha un filtro «Al coperto». E quando le previsioni a
 breve termine annunciano pioggia, sulla pagina del parco compare l’avviso
 «Pioggia in arrivo» con il tempo che manca all’inizio, e sotto le attrazioni al
 coperto che in quel momento sono in funzione, ordinate per percorso a piedi e
 tempo di attesa.
 
 Filtro ed elenco compaiono solo se un parco ha un valore per almeno metà delle sue
-attrazioni in stagione e almeno una di queste è coperta. Un elenco a metà si
-legge come uno completo. Al 6 ottobre questo vale per i sei parchi di questa
+attrazioni in stagione e almeno una di queste è coperta. Al 6 ottobre questo vale per i sei parchi di questa
 guida.
 
 ## Europa-Park
@@ -233,7 +230,7 @@ Come stanno oggi le attrazioni al chiuso:
 
 ```
 
-Il resto del parco lo descrive la [guida a Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
+Di più sul parco nella [guida a Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
 
 ## Phantasialand
 
@@ -271,15 +268,13 @@ attrazioni al chiuso. Se vai per le montagne russe ne fai tre: le due di Wuze To
 e Crazy Bats. Il resto sono dark ride, madhouse, un drop tower e corse per
 famiglie.
 
-In inverno la scelta è più facile, perché il Wintertraum 2026 va dal 14 novembre
-al 24 gennaio. Come stanno oggi le attrazioni al chiuso:
+Come stanno oggi le attrazioni al chiuso:
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor coaster columns=type,peak,days
 
 ```
 
-Il parco completo, con ingresso, arrivo e hotel, lo descrive la
-[guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
+Di più sul parco nella [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
 
 ## Efteling
 
@@ -314,7 +309,7 @@ della pioggia dovrebbe controllarlo prima.
 
 ```
 
-Di più su parco, biglietti e apertura invernale nell’articolo
+Di più sul parco nell’articolo
 [Efteling, la Disney dei Paesi Bassi](/blog/efteling-la-disney-dei-paesi-bassi).
 
 ## Movie Park Germany
@@ -331,15 +326,13 @@ Secret, Time Riders e **Van Helsing's Factory**.
 
 Van Helsing's Factory ha aperto il 18 giugno 2011. È un bobsled coaster di
 Gerstlauer nell’ex padiglione dei Gremlins, veloce 36 km/h e lungo circa 400
-metri. La capacità è di 848 persone all’ora. Per un parco con ben più di un
-milione di visitatori all’anno è poco. Delle quattro attrazioni al chiuso è
+metri. La capacità è di 848 persone all’ora. Delle quattro attrazioni al chiuso è
 l’unica montagna russa.
 
 Nella nostra analisi il Movie Park ha la differenza più grande tra giorni di
 pioggia e giorni asciutti, il 31 % su 21 giorni di pioggia. Con quattro
 attrazioni al chiuso di giorno, l’offerta con la pioggia è piccola. Per un giorno
-di pioggia sceglierei un altro parco. La sera è diverso, appena aprono
-le case horror a ottobre.
+di pioggia sceglierei un altro parco. La sera a ottobre si aggiungono otto case horror.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulatore;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
@@ -363,8 +356,7 @@ bosco delle avventure e Heidi's Playground. Il padiglione indoor ha aperto nel
 minima.
 
 Le grandi montagne russe di Plopsaland Deutschland, tra cui la bigFM Expedition
-GeForce, sono all’aperto. Con bambini piccoli il parco in un giorno di pioggia ha
-quindi più da offrire di quanto le sue attrazioni lascino pensare. Chi viene con
+GeForce, sono all’aperto. Con bambini piccoli il parco in un giorno di pioggia ha otto giostre e aree gioco nel padiglione. Chi viene con
 ragazzi che arrivano per le montagne russe ha con la pioggia molto meno.
 
 Con nove giorni di pioggia nella nostra analisi, il valore di Plopsaland è il più
@@ -397,8 +389,7 @@ una giornata bagnata fin dall’inizio ci sono tre attrazioni sotto un tetto.
 
 ```
 
-La [guida all’Heide Park](/blog/heide-park-tempi-di-attesa-consigli) contiene
-Colossos, ingresso e pernottamento al parco.
+Di più sul parco, con Colossos, nella [guida all’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
 
 ## I sei parchi a confronto
 
@@ -458,7 +449,7 @@ Il meteo sopra il parco, qui per Brühl:
 
 ```
 
-La probabilità di pioggia nelle previsioni è una probabilità, non un orario. Con
+La probabilità di pioggia non dice quando piove. Con
 il tempo variabile conviene dividere la giornata in due metà: le attrazioni al
 chiuso nelle ore in cui piove, quelle all’aperto nelle pause. Quando inizia il
 prossimo rovescio si legge sulla pagina del parco, nell’avviso di pioggia, con il
@@ -467,8 +458,7 @@ tempo che manca all’inizio e l’intensità.
 ### Nel parco
 
 Sulla pagina del parco il filtro «Al coperto» nasconde tutto ciò che è all’aperto
-e non ha una coda coperta. L’elenco sotto l’avviso di pioggia ti mostra le
-attrazioni al coperto che in quel momento sono in funzione. Se il tuo dispositivo
+e non ha una coda coperta. Sotto l’avviso di pioggia ci sono le attrazioni al coperto che in quel momento sono in funzione. Se il tuo dispositivo
 ha consentito la posizione nel parco, l’elenco ordina per percorso a piedi più
 tempo di attesa, altrimenti solo per tempo di attesa.
 
@@ -521,4 +511,5 @@ climatica, e la tabella più su lo divide per mese.
 - Movie Park Germany, apertura 1996 e cambio di nome 2005: [Movie Park Germany (Wikipedia)](https://de.wikipedia.org/wiki/Movie_Park_Germany)
 - Plopsaland Deutschland, Holiday Park 1971, Studio 100 dal 2010, cambio di nome 2025 e padiglione indoor: [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Heide Park, apertura 1978 e Merlin dal 2007: [Heide Park Resort (Wikipedia)](https://de.wikipedia.org/wiki/Heide_Park_Resort)
+- Dettagli su Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory e sull’apertura invernale di Walibi Holland: le nostre guide a [Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli), [Heide Park](/blog/heide-park-tempi-di-attesa-consigli), [Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli) e [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), più la [guida ai parchi d’inverno](/blog/parchi-divertimenti-inverno-2026)
 - Altre guide: [Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) · [Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli) · [Efteling](/blog/efteling-la-disney-dei-paesi-bassi) · [Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli) · [Heide Park](/blog/heide-park-tempi-di-attesa-consigli) · [Toverland](/blog/toverland-troy-tempi-di-attesa-consigli) · [Parchi d’inverno](/blog/parchi-divertimenti-inverno-2026)

@@ -71,7 +71,7 @@ Für sechs Parks wissen wir pro Attraktion, ob sie im Gebäude liegt: Europa-Par
 Phantasialand, Efteling, Movie Park Germany, Plopsaland Deutschland und Heide
 Park. Bei Toverland, Walibi, Parc Astérix, Legoland und Disneyland Paris fehlt
 die Angabe, deshalb bekommen sie hier keine Bahnliste. Die Lücke liegt in
-unserer Datenbank und sagt nichts über die Parks.
+unserer Datenbank und hat mit den Parks nichts zu tun.
 
 ## Wie wir Regentage gemessen haben
 
@@ -103,7 +103,7 @@ Durchschnitt sinkt.
 
 ## Regentage in zwölf Parks
 
-Die Tabelle nennt, um wie viel die Headliner-Wartezeit an Regentagen niedriger
+In der Tabelle steht, um wie viel die Headliner-Wartezeit an Regentagen niedriger
 liegt als an trockenen Vergleichstagen. Stand ist der 6. Oktober 2026.
 
 | Park                                                               | Regentage | Trockene Vergleichstage | An Regentagen niedriger um |
@@ -144,7 +144,7 @@ Die Daten belegen das nicht, es ist eine Vermutung.
 
 ## Wie oft es geregnet hat
 
-Dieselben Wetterdaten sagen auch, wie viele Betriebstage nass waren. Von allen
+Aus denselben Wetterdaten ergibt sich auch, wie viele Betriebstage nass waren. Von allen
 Tagen mit Betrieb zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 hatten
 im Europa-Park 16 Prozent mindestens 2 Millimeter Niederschlag, im Parc Astérix
 15, in Plopsaland Deutschland 15, im Legoland Deutschland 18, im Disneyland
@@ -176,15 +176,14 @@ den Angaben der Parks. Bei einer Attraktion ohne Wert ist die Lage unbekannt, un
 als überdacht.
 
 Auf der Parkseite taucht das an drei Stellen auf. Die Karte jeder Bahn trägt eine
-Zeile, die sagt, ob die Fahrt im Gebäude, im Freien oder im Freien mit überdachter
-Warteschlange liegt. Die Filterleiste hat einen Filter „Überdacht“. Und wenn die
+Zeile: im Gebäude, im Freien oder im Freien mit überdachter Warteschlange. Die Filterleiste hat einen Filter „Überdacht“. Und wenn die
 Kurzfristvorhersage Regen ankündigt, steht auf der Parkseite eine Regenwarnung
 mit der Zeit bis zum Beginn, und darunter die überdachten Bahnen, die gerade
 laufen, geordnet nach Fußweg und Wartezeit.
 
 Filter und Liste erscheinen nur, wenn ein Park mindestens die Hälfte seiner
 Attraktionen in der Saison mit einem Wert führt und mindestens eine davon
-überdacht ist. Eine halbe Liste liest sich wie eine vollständige. Am 6. Oktober
+überdacht ist. Am 6. Oktober
 erfüllen das die sechs Parks dieses Guides.
 
 ## Europa-Park
@@ -229,7 +228,7 @@ Wie die Bahnen im Gebäude heute stehen:
 
 ```
 
-Den Rest des Parks beschreibt der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
+Mehr zum Park im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
 ## Phantasialand
 
@@ -265,15 +264,13 @@ Landschaftsthema. Bei Dauerregen bleiben dir in Brühl 14 Hallenbahnen. Als
 Achterbahnfan fährst du davon drei Coaster, die beiden in Wuze Town und Crazy
 Bats. Der Rest sind Dark Rides, Madhouses, ein Drop Tower und Familienfahrten.
 
-Im Winter fällt die Wahl leichter, weil der Wintertraum 2026 vom 14. November
-bis zum 24. Januar läuft. Wie die Bahnen im Gebäude heute stehen:
+Wie die Bahnen im Gebäude heute stehen:
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor-Coaster columns=type,peak,days
 
 ```
 
-Den vollständigen Park mit Eintritt, Anreise und Hotels beschreibt der
-[Phantasialand-Guide](/blog/phantasialand-tipps).
+Mehr zum Park im [Phantasialand-Guide](/blog/phantasialand-tipps).
 
 ## Efteling
 
@@ -306,7 +303,7 @@ Kalender des Parks, und wer wegen des Regens fährt, sollte es vorher nachsehen.
 
 ```
 
-Mehr zu Park, Tickets und Winterbetrieb im Artikel
+Mehr zum Park im Artikel
 [Efteling, das Disney der Niederlande](/blog/efteling-disney-der-niederlande).
 
 ## Movie Park Germany
@@ -323,15 +320,15 @@ Area 51 – Top Secret, Time Riders und **Van Helsing's Factory**.
 
 Van Helsing's Factory hat am 18. Juni 2011 eröffnet. Es ist ein Bobsled Coaster
 von Gerstlauer in der ehemaligen Gremlins-Halle, 36 km/h schnell und etwa 400
-Meter lang. Die Kapazität liegt bei 848 Personen pro Stunde. Bei einem Park mit
-deutlich mehr als einer Million Gästen im Jahr ist das knapp bemessen. Von den
+Meter lang. Die Kapazität liegt bei 848 Personen pro Stunde.
+Von den
 vier Bahnen im Gebäude ist sie die einzige Achterbahn.
 
 Der Movie Park hat in unserer Auswertung den größten Abstand zwischen Regentagen
 und trockenen Tagen, 31 Prozent auf 21 Regentagen. Mit vier Bahnen im Gebäude am
 Tag ist das Angebot bei Regen klein. Ich würde für einen Regentag einen anderen
-Park wählen. Am Abend sieht das anders aus, sobald im Oktober die
-Horrorhäuser öffnen.
+Park wählen. Abends kommen im Oktober acht
+Horrorhäuser dazu.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulator;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
@@ -355,7 +352,7 @@ Indoor eröffnet. Eine Mindestgröße führen wir für keine dieser acht.
 
 Die großen Achterbahnen von Plopsaland Deutschland, darunter die bigFM
 Expedition GeForce, stehen im Freien. Mit kleinen Kindern hat der Park an einem
-Regentag damit mehr zu bieten, als seine Bahnen vermuten lassen. Wer mit
+Regentag acht Fahrten und Spielbereiche in der Halle. Wer mit
 Jugendlichen kommt, die wegen der Achterbahnen anreisen, hat bei Regen deutlich
 weniger.
 
@@ -390,8 +387,8 @@ Bahnen unter Dach.
 
 ```
 
-Der [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps) enthält Colossos,
-Eintritt und die Übernachtung am Park.
+Mehr zum Park, mit Colossos, im
+[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 ## Die sechs Parks nebeneinander
 
@@ -452,8 +449,7 @@ hier für Brühl:
 
 ```
 
-Die Regenwahrscheinlichkeit in der Prognose ist eine Wahrscheinlichkeit, kein
-Zeitplan. Bei wechselhaftem Wetter lohnt es sich, den Tag in zwei Hälften zu
+Aus der Regenwahrscheinlichkeit geht nicht hervor, wann es regnet. Bei wechselhaftem Wetter lohnt es sich, den Tag in zwei Hälften zu
 teilen: Die Bahnen im Gebäude kommen in die Stunden, in denen es regnet, die
 Außenbahnen in die Pausen. Wann der nächste Schauer beginnt, steht auf der
 Parkseite in der Regenwarnung, mit der Zeit bis zum Beginn und der Stärke.
@@ -461,8 +457,8 @@ Parkseite in der Regenwarnung, mit der Zeit bis zum Beginn und der Stärke.
 ### Im Park
 
 Auf der Parkseite blendet der Filter „Überdacht“ alles aus, was im Freien liegt
-und keine überdachte Warteschlange hat. Die Liste unter der Regenwarnung zeigt
-dir die überdachten Bahnen, die gerade laufen. Hat dein Gerät den Standort im Park
+und keine überdachte Warteschlange hat. Unter der Regenwarnung stehen die
+überdachten Bahnen, die gerade laufen. Hat dein Gerät den Standort im Park
 freigegeben, ordnet die Liste nach Fußweg plus Wartezeit, sonst nur nach der
 Wartezeit.
 
@@ -513,4 +509,5 @@ Klimastatistik, und die Tabelle weiter oben schlüsselt es nach Monaten auf.
 - Movie Park Germany, Eröffnung 1996 und Umbenennung 2005: [Movie Park Germany (Wikipedia)](https://de.wikipedia.org/wiki/Movie_Park_Germany)
 - Plopsaland Deutschland, Holiday Park 1971, Studio 100 seit 2010, Umbenennung 2025 und Indoor-Halle: [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Heide Park, Eröffnung 1978 und Merlin seit 2007: [Heide Park Resort (Wikipedia)](https://de.wikipedia.org/wiki/Heide_Park_Resort)
+- Details zu Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory und zum Winterbetrieb von Walibi Holland: unsere Guides zu [Phantasialand](/blog/phantasialand-tipps), [Heide Park](/blog/heide-park-wartezeiten-tipps), [Movie Park](/blog/movie-park-germany-wartezeiten-tipps) und [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), dazu der [Winterparks-Guide](/blog/winter-freizeitparks-2026)
 - Weitere Guides: [Europa-Park](/blog/europa-park-wartezeiten-tipps) · [Phantasialand](/blog/phantasialand-tipps) · [Efteling](/blog/efteling-disney-der-niederlande) · [Movie Park](/blog/movie-park-germany-wartezeiten-tipps) · [Heide Park](/blog/heide-park-wartezeiten-tipps) · [Toverland](/blog/toverland-troy-wartezeiten-tipps) · [Winterparks](/blog/winter-freizeitparks-2026)

@@ -58,15 +58,14 @@ rideLinks:
 
 Quien va a un parque de atracciones en un día de lluvia espera menos de media.
 En los doce parques que hemos analizado, los headliners tuvieron en días de
-lluvia menos cola que en los días secos comparables, en Disneyland Paris un 4 %
-menos y en Movie Park un 31 % menos. Queda por saber qué atracciones merecen la
+lluvia menos cola que en los días secos comparables, en Disneyland Paris unos 4 % menos y en Movie Park unos 31 % menos. Queda por saber qué atracciones merecen la
 pena un día así, y las primeras son las que están en interior.
 
 De seis parques sabemos, atracción por atracción, si está en interior:
 Europa-Park, Phantasialand, Efteling, Movie Park Germany, Plopsaland Deutschland
 y Heide Park. De Toverland, Walibi, Parc Astérix, Legoland y Disneyland Paris
 falta el dato, así que aquí no tienen lista de atracciones. El hueco está en
-nuestra base de datos y no dice nada de los parques.
+nuestra base de datos y no tiene que ver con los parques.
 
 ## Cómo hemos medido los días de lluvia
 
@@ -99,7 +98,7 @@ mientras la media baja.
 
 ## Días de lluvia en doce parques
 
-La tabla indica cuánto más bajo es el tiempo de espera de los headliners en
+La tabla recoge cuánto más bajo es el tiempo de espera de los headliners en
 días de lluvia que en los días secos comparables. Datos a 6 de octubre de 2026.
 
 | Parque                                                             | Días de lluvia | Días secos comparables | En días de lluvia más bajo en |
@@ -139,7 +138,7 @@ suposición.
 
 ## Cuánto ha llovido
 
-Los mismos datos meteorológicos dicen cuántos días de apertura fueron mojados.
+De los mismos datos meteorológicos se deduce cuántos días de apertura fueron mojados.
 De todos los días con apertura entre el 24 de diciembre de 2025 y el 5 de
 octubre de 2026, tuvieron al menos 2 milímetros de precipitación el 16 % en
 Europa-Park, el 15 % en Parc Astérix, el 15 % en Plopsaland Deutschland, el
@@ -171,17 +170,14 @@ interior, al aire libre o al aire libre con cola cubierta. Los valores los
 curamos a mano, según los datos de los parques. Una atracción sin valor tiene la
 ubicación desconocida y nunca cuenta como cubierta.
 
-En la página del parque aparece en tres sitios. La ficha de cada atracción lleva
-una línea que dice si el recorrido es en interior, al aire libre o al aire libre
-con cola cubierta. La barra de filtros tiene un filtro «Cubiertas». Y cuando la
+En la página del parque aparece en tres sitios. La ficha de cada atracción lleva una línea: en interior, al aire libre o al aire libre con cola cubierta. La barra de filtros tiene un filtro «Cubiertas». Y cuando la
 previsión a corto plazo anuncia lluvia, la página del parque muestra el aviso
 «Lluvia esperada» con el tiempo que falta para que empiece, y debajo las
 atracciones cubiertas que están funcionando ahora, ordenadas por recorrido a pie
 y tiempo de espera.
 
 El filtro y la lista solo aparecen si un parque tiene valor en al menos la mitad
-de sus atracciones de temporada y al menos una de ellas es cubierta. Una lista a
-medias se lee como una completa. A 6 de octubre lo cumplen los seis parques de
+de sus atracciones de temporada y al menos una de ellas es cubierta. A 6 de octubre lo cumplen los seis parques de
 esta guía.
 
 ## Europa-Park
@@ -226,8 +222,7 @@ Cómo están hoy las atracciones en interior:
 
 ```
 
-El resto del parque lo describe la [guía de
-Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
+Más sobre el parque en la [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 
 ## Phantasialand
 
@@ -265,15 +260,13 @@ en interior. Si eres de montañas rusas, de ellas te subes a tres coasters: los
 dos de Wuze Town y Crazy Bats. El resto son dark rides, madhouses, una torre de
 caída y atracciones familiares.
 
-En invierno la elección es más fácil, porque el Wintertraum 2026 va del 14 de
-noviembre al 24 de enero. Cómo están hoy las atracciones en interior:
+Cómo están hoy las atracciones en interior:
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Torre de caída;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Coaster indoor columns=type,peak,days
 
 ```
 
-El parque completo, con entradas, llegada y hoteles, lo describe la [guía de
-Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+Más sobre el parque en la [guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 
 ## Efteling
 
@@ -308,7 +301,7 @@ parque, y quien va por la lluvia debería comprobarlo antes.
 
 ```
 
-Más sobre el parque, las entradas y la apertura en invierno, en el artículo
+Más sobre el parque en el artículo
 [Efteling, el Disney de los Países
 Bajos](/blog/efteling-el-disney-de-los-paises-bajos).
 
@@ -326,15 +319,13 @@ Studio Tour, Area 51 – Top Secret, Time Riders y **Van Helsing's Factory**.
 
 Van Helsing's Factory abrió el 18 de junio de 2011. Es un bobsled coaster de
 Gerstlauer en la antigua nave de Gremlins, de 36 km/h y unos 400 metros de
-largo. La capacidad es de 848 personas por hora. Para un parque con bastante más
-de un millón de visitantes al año, es justa. De las cuatro atracciones en
+largo. La capacidad es de 848 personas por hora. De las cuatro atracciones en
 interior, es la única montaña rusa.
 
 En nuestro análisis, Movie Park tiene la mayor diferencia entre días de lluvia y
 días secos: un 31 % sobre 21 días de lluvia. Con cuatro atracciones en interior
 durante el día, la oferta con lluvia es pequeña. Para un día de lluvia yo
-elegiría otro parque. Por la noche es distinto en cuanto abren, en octubre,
-las casas del terror.
+elegiría otro parque. Por la noche se suman en octubre ocho casas del terror.
 
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulador;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
@@ -358,8 +349,7 @@ bolas, un bosque de aventuras y Heidi's Playground. La nave indoor abrió en 201
 como Holiday Indoor. De ninguna de estas ocho tenemos altura mínima.
 
 Las grandes montañas rusas de Plopsaland Deutschland, entre ellas la bigFM
-Expedition GeForce, están al aire libre. Con niños pequeños, el parque ofrece un
-día de lluvia más de lo que sus atracciones hacen suponer. Quien viene con
+Expedition GeForce, están al aire libre. Con niños pequeños, el parque tiene un día de lluvia ocho atracciones y zonas de juego en la nave. Quien viene con
 adolescentes que viajan por las montañas rusas tiene bastante menos con lluvia.
 
 Con nueve días de lluvia en nuestro análisis, el valor de Plopsaland es el más
@@ -392,8 +382,7 @@ seca. Para un día que empieza mojado, hay tres atracciones bajo techo.
 
 ```
 
-La [guía de Heide Park](/blog/heide-park-tiempos-de-espera-consejos) trae
-Colossos, las entradas y el alojamiento junto al parque.
+Más sobre el parque, con Colossos, en la [guía de Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 
 ## Los seis parques, uno al lado del otro
 
@@ -453,7 +442,7 @@ visita. El tiempo sobre el parque, aquí para Brühl:
 
 ```
 
-La probabilidad de lluvia de la previsión es una probabilidad, no un horario. Con
+La probabilidad de lluvia no dice cuándo llueve. Con
 tiempo cambiante conviene partir el día en dos mitades: las atracciones en
 interior para las horas en que llueve, las exteriores para los claros. Cuándo
 empieza el próximo chubasco se ve en la página del parque, en el aviso de
@@ -462,8 +451,7 @@ lluvia, con el tiempo que falta y la intensidad.
 ### En el parque
 
 En la página del parque, el filtro «Cubiertas» oculta todo lo que está al aire
-libre y no tiene cola cubierta. La lista bajo el aviso de lluvia te muestra las
-atracciones cubiertas que están funcionando ahora. Si tu dispositivo ha dado
+libre y no tiene cola cubierta. Bajo el aviso de lluvia figuran las atracciones cubiertas que están funcionando ahora. Si tu dispositivo ha dado
 permiso para la ubicación dentro del parque, la lista ordena por recorrido a pie
 más tiempo de espera, y si no, solo por el tiempo de espera.
 
@@ -510,10 +498,11 @@ estadística climática, y la tabla de más arriba lo desglosa por meses.
 
 - Tiempos de espera en días de lluvia y número de días de lluvia: medición propia de park.fan a partir del calendario y de los valores diarios del tiempo, del 24 de diciembre de 2025 al 5 de octubre de 2026, datos meteorológicos de [Open-Meteo](https://open-meteo.com/)
 - Atracciones en interior, exteriores y colas cubiertas por atracción, alturas mínimas, fabricantes y años de apertura: curado en park.fan según los datos de los parques, a 6 de octubre de 2026
-- Europa-Park, apertura en 1975: [Europa-Park (Wikipedia)](https://de.wikipedia.org/wiki/Europa-Park)
-- Phantasialand, fundación en 1967: [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand)
-- Efteling, apertura en 1952: [Efteling (Wikipedia)](https://de.wikipedia.org/wiki/Efteling)
+- Europa-Park, apertura en 1975: [Europa-Park (Wikipedia)](https://es.wikipedia.org/wiki/Europa-Park)
+- Phantasialand, fundación en 1967: [Phantasialand (Wikipedia)](https://es.wikipedia.org/wiki/Phantasialand)
+- Efteling, apertura en 1952: [Efteling (Wikipedia)](https://es.wikipedia.org/wiki/Efteling)
 - Movie Park Germany, apertura en 1996 y cambio de nombre en 2005: [Movie Park Germany (Wikipedia)](https://de.wikipedia.org/wiki/Movie_Park_Germany)
-- Plopsaland Deutschland, Holiday Park 1971, Studio 100 desde 2010, cambio de nombre en 2025 y nave indoor: [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
+- Plopsaland Deutschland, Holiday Park 1971, Studio 100 desde 2010, cambio de nombre en 2025 y nave indoor: [Plopsaland Deutschland (Wikipedia)](https://es.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Heide Park, apertura en 1978 y Merlin desde 2007: [Heide Park Resort (Wikipedia)](https://de.wikipedia.org/wiki/Heide_Park_Resort)
+- Detalles sobre Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory y la apertura invernal de Walibi Holland: nuestras guías de [Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos), [Heide Park](/blog/heide-park-tiempos-de-espera-consejos), [Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos) y [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), más la [guía de parques en invierno](/blog/parques-atracciones-invierno-2026)
 - Más guías: [Europa-Park](/blog/europa-park-tiempos-de-espera-consejos) · [Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) · [Efteling](/blog/efteling-el-disney-de-los-paises-bajos) · [Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos) · [Heide Park](/blog/heide-park-tiempos-de-espera-consejos) · [Toverland](/blog/toverland-troy-tiempos-de-espera-consejos) · [Parques en invierno](/blog/parques-atracciones-invierno-2026)
