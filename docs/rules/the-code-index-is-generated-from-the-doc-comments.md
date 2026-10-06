@@ -13,10 +13,12 @@ directory, one line per export, each with the first sentence of the export's doc
   directory it would live in (and `lib/utils` for helpers). This is the lookup half of
   [reuse existing components](reuse-existing-components.md).
 - **Every exported component, hook, function and class has a doc comment.** A `/** … */` block
-  directly above the export, whose first sentence says what it renders, returns or does. That
-  sentence is the index entry, so it has to stand on its own. A `.tsx` file exporting one family of
-  components (`Dialog`, `DialogContent`, `DialogHeader`) may describe them once in a header comment
-  at the top of the file.
+  directly above the export: one sentence saying what it is for, never how it does it. That
+  sentence is the index entry, so it has to stand on its own, and it must not re-tell the body,
+  which is the part that changes. A second sentence only for a constraint a caller has to know
+  ("Client only."). A `.tsx` file exporting one family of components (`Dialog`, `DialogContent`,
+  `DialogHeader`) may describe them once in a header comment at the top of the file. What else a
+  comment may and may not say: [a comment says why, once](a-comment-says-why-once.md).
 - **Regenerate in the same pull request.** After adding, renaming, moving or removing an export, or
   changing its doc comment, run `pnpm generate:code-index` and commit `docs/code-index/`.
   `pnpm check:code-index` fails while a page is stale; CI runs it as the job `code-index-drift`.

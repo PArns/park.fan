@@ -42,6 +42,9 @@ three lines, the rest belongs in the page.
   helpers there first. Every exported component, hook and function carries a `/** … */` comment;
   after adding, renaming or removing an export or changing its comment, run `pnpm generate:code-index`
   in the same PR (`pnpm check:code-index`). [The rule](docs/rules/the-code-index-is-generated-from-the-doc-comments.md).
+- **[A comment says why, once](docs/rules/a-comment-says-why-once.md) (REQUIREMENT):** a reason the code
+  cannot show, in one to three sentences, or a link to the page that holds it. Never what the next line
+  does, JSX labels, banners, history, ticket numbers, dates or measurements; nothing checks a comment.
 - **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
   posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
   `pnpm check:prose` decides the half a machine can, a separate review pass
