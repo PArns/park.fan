@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FolderOpen, Loader2, PenLine, Plus, Trash2 } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { FrontmatterForm } from './_components/frontmatter-form';
 import { EditorCanvas } from './_components/editor-canvas';
 import { MarkdownPreview } from './_components/markdown-preview';
@@ -27,6 +28,11 @@ import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/p
 
 const DEFAULT_SOURCE: Locale = 'en';
 
+function readRestorableDraft(): DraftSnapshot | null {
+  const snap = loadDraftSnapshot();
+  return snap && isMeaningfulSnapshot(snap) ? snap : null;
+}
+
 /**
  * Blog editor workspace: one draft per locale with frontmatter form, rich-text or source view,
  * properties panel, translation from the source locale, and saving or deleting a post as a GitHub
@@ -48,17 +54,14 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [selection, setSelection] = useState<EditorSelection>(null);
   /** Lifted TipTap editor instance so PropertiesPanel can run commands. */
   const [editor, setEditor] = useState<Editor | null>(null);
-  /** A snapshot from a previous session for the "Restore draft?" banner, read after mount. */
-  const [restorable, setRestorable] = useState<DraftSnapshot | null>(null);
-  useEffect(() => {
-    // Deferred a tick — the React 19 lint (set-state-in-effect) flags
-    // synchronous setState in effects as a cascading-render hazard.
-    const t = setTimeout(() => {
-      const snap = loadDraftSnapshot();
-      if (snap && isMeaningfulSnapshot(snap)) setRestorable(snap);
-    }, 0);
-    return () => clearTimeout(t);
-  }, []);
+  /**
+   * A snapshot from a previous session for the "Restore draft?" banner: `undefined` until the
+   * first mounted render reads it, `null` when there is none or it has been answered. Read once
+   * into state, not subscribed to, because the autosave below rewrites the same slot.
+   */
+  const [restorable, setRestorable] = useState<DraftSnapshot | null | undefined>(undefined);
+  const mounted = useMounted();
+  if (mounted && restorable === undefined) setRestorable(readRestorableDraft());
 
   // The ref-preview extension fires `parkfan-selection` on click; listening at the top level
   // catches it wherever in the canvas it came from.
@@ -391,7 +394,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     const key = new URLSearchParams(window.location.search).get('post');
     if (!key) return;
     deepLinkHandled.current = true;
-    // Deferred a tick, like the draft-restore effect above: `onLoadPost` sets state.
+    // Deferred a tick: `onLoadPost` sets state.
     const timer = setTimeout(() => void onLoadPost(key), 0);
     return () => clearTimeout(timer);
     // `onLoadPost` closes over setters only, so a one-shot is safe here.
