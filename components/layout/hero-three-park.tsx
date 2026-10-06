@@ -140,5 +140,3 @@ export function HeroThreePark({
     />
   );
 }
-
-export default HeroThreePark;

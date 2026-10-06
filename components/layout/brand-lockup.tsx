@@ -37,17 +37,13 @@ import Image from 'next/image';
  * pin's height. It is `gap-2` in the header now, and it is the only place the spacing lives.
  */
 /**
- * The pin on its own, at whatever height the caller's class sets.
- *
- * It exists because the homepage hero's headline needs the mark without the wordmark, and the
- * artwork paths, the light/dark pair and the eager load may not be written down a second time —
- * the drawing lives in this file, so the next artwork change reaches every consumer.
+ * The lockup's pin, with its light and dark artwork, at whatever height the caller's class sets.
  *
  * `width`/`height` are the artwork's own ink box (90.03 × 124.21, rounded), not a rendered size:
  * they only tell the browser what to reserve before the file arrives, and `w-auto` takes the real
- * ratio from the file at any height. The header's 26 px pin renders exactly as before.
+ * ratio from the file at any height.
  */
-export function BrandPin({
+function BrandPin({
   /** The height, as a class — e.g. `h-[26px] w-auto`. */
   className,
   /** Force the light-ink artwork regardless of theme. */

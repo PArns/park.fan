@@ -37,7 +37,7 @@ interface HeroSearchShellProps {
  * a static string, so the shell can simply say it, and the box is then identical by
  * construction rather than by matching two heights.
  */
-export function HeroSearchRestingCard() {
+function HeroSearchRestingCard() {
   const tSearch = useTranslations('search');
 
   return (
