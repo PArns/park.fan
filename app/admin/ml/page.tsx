@@ -21,10 +21,10 @@ import type {
   MlComparisonBoard,
   ShadowComparisonRow,
 } from '@/lib/api/admin';
-import { KeyVal, Section, SeverityBadge, StatCard, StatusBadge } from '../_lib/ui';
+import { Section, SeverityBadge, StatCard, StatusBadge } from '../_lib/ui';
 import { formatAge, maeColor } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState, Meta } from '../_ui/primitives';
 import type {
   MlAlert,
   MlAnomalyStats,
@@ -953,13 +953,13 @@ export default function MlPage() {
                   }}
                 />
                 <div className="grid grid-cols-2 gap-3 pt-3 text-sm sm:grid-cols-4">
-                  <KeyVal
+                  <Meta
                     label="Predictions"
                     value={perf.live.totalPredictions.toLocaleString('en-GB')}
                   />
-                  <KeyVal label="Unique parks" value={perf.live.uniqueParks} />
-                  <KeyVal label="Unique rides" value={perf.live.uniqueAttractions} />
-                  <KeyVal
+                  <Meta label="Unique parks" value={perf.live.uniqueParks} />
+                  <Meta label="Unique rides" value={perf.live.uniqueAttractions} />
+                  <Meta
                     label="Train samples"
                     value={model.trainingData.trainSamples.toLocaleString('en-GB')}
                   />
@@ -981,17 +981,17 @@ export default function MlPage() {
                   </p>
                 </div>
                 <div className="grid grid-cols-3 gap-3">
-                  <KeyVal
+                  <Meta
                     label="Train MAE"
                     value={perf.drift.trainingMae.toFixed(2)}
-                    valueClass={maeColor(perf.drift.trainingMae)}
+                    valueClassName={maeColor(perf.drift.trainingMae)}
                   />
-                  <KeyVal
+                  <Meta
                     label="Live MAE"
                     value={perf.drift.liveMae.toFixed(2)}
-                    valueClass={maeColor(perf.drift.liveMae)}
+                    valueClassName={maeColor(perf.drift.liveMae)}
                   />
-                  <KeyVal label="Tracked days" value={perf.drift.dailyMetrics.length} />
+                  <Meta label="Tracked days" value={perf.drift.dailyMetrics.length} />
                 </div>
                 {perf.drift.byHorizon && (
                   <div className="border-border/40 space-y-1 border-t pt-2 text-xs">

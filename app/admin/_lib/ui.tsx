@@ -61,24 +61,6 @@ export function StatCard({
   );
 }
 
-/** Small label above a bold tabular value, for figures inside a dashboard card. */
-export function KeyVal({
-  label,
-  value,
-  valueClass,
-}: {
-  label: string;
-  value: React.ReactNode;
-  valueClass?: string;
-}) {
-  return (
-    <div>
-      <p className="text-muted-foreground text-xs">{label}</p>
-      <p className={cn('font-semibold tabular-nums', valueClass)}>{value}</p>
-    </div>
-  );
-}
-
 const SEVERITY_STYLES: Record<string, string> = {
   low: 'bg-blue-500/15 text-blue-400 border-blue-500/20',
   medium: 'bg-amber-500/15 text-amber-400 border-amber-500/20',

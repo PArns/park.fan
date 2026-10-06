@@ -118,15 +118,18 @@ export function Meta({
   label,
   value,
   className,
+  valueClassName,
 }: {
   label: ReactNode;
   value: ReactNode;
   className?: string;
+  /** Colours the value when the figure is a verdict (a hit rate, an error). */
+  valueClassName?: string;
 }) {
   return (
     <div className={cn('min-w-0', className)}>
       <p className="text-muted-foreground text-[11px] tracking-wide uppercase">{label}</p>
-      <p className="truncate text-sm font-medium tabular-nums">{value}</p>
+      <p className={cn('truncate text-sm font-medium tabular-nums', valueClassName)}>{value}</p>
     </div>
   );
 }

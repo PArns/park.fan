@@ -15,12 +15,12 @@ import {
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { KeyVal, Section, statusDot } from '../_lib/ui';
+import { Section, statusDot } from '../_lib/ui';
 import { formatUptime } from '../_lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
-import { AdminPage, ErrorState, LoadingState } from '../_ui/primitives';
+import { AdminPage, ErrorState, LoadingState, Meta } from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -459,11 +459,11 @@ export default function SystemPage() {
                 thresholds={[60, 80]}
               />
               <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
-                <KeyVal label="DB Size" value={`${data.postgres.dbSizeGB.toFixed(2)} GB`} />
-                <KeyVal
+                <Meta label="DB Size" value={`${data.postgres.dbSizeGB.toFixed(2)} GB`} />
+                <Meta
                   label="Cache Hit"
                   value={`${data.postgres.cacheHitPct?.toFixed(1) ?? '—'}%`}
-                  valueClass={
+                  valueClassName={
                     (data.postgres.cacheHitPct ?? 0) >= 99 ? 'text-emerald-400' : 'text-amber-400'
                   }
                 />
@@ -494,12 +494,12 @@ export default function SystemPage() {
                 thresholds={[60, 80]}
               />
               <div className="grid grid-cols-3 gap-3 pt-1 text-sm">
-                <KeyVal label="Keys" value={data.redis.keys.toLocaleString('en-GB')} />
-                <KeyVal label="Clients" value={data.redis.connectedClients} />
-                <KeyVal
+                <Meta label="Keys" value={data.redis.keys.toLocaleString('en-GB')} />
+                <Meta label="Clients" value={data.redis.connectedClients} />
+                <Meta
                   label="Hit Rate"
                   value={`${data.redis.hitRatePct?.toFixed(1) ?? '—'}%`}
-                  valueClass={
+                  valueClassName={
                     (data.redis.hitRatePct ?? 0) >= 80 ? 'text-emerald-400' : 'text-amber-400'
                   }
                 />
@@ -534,7 +534,7 @@ export default function SystemPage() {
                   <p className="text-muted-foreground mt-0.5 text-xs">rows ingested · last hour</p>
                 </div>
                 <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
-                  <KeyVal
+                  <Meta
                     label="Latest data point"
                     value={
                       fresh.latestQueueTime
@@ -573,7 +573,7 @@ export default function SystemPage() {
                   <p className="text-muted-foreground mt-0.5 text-xs">forecast horizon</p>
                 </div>
                 <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
-                  <KeyVal label="Forecast until" value={weatherDate ?? '—'} />
+                  <Meta label="Forecast until" value={weatherDate ?? '—'} />
                 </div>
               </CardContent>
             </Card>
