@@ -80,7 +80,7 @@ temporada de verano de 2027 salen a la venta el 10 de noviembre de 2026.
 
 ## Cómo funciona el punto de equilibrio
 
-El punto de equilibrio es el menor número entero de visitas con el que el pase anual cuesta menos que ese
+El punto de equilibrio es el menor número entero de visitas con el que el pase anual no cuesta más que ese
 mismo número de entradas de un día. Depende de dos magnitudes y ambas se mueven. La primera es el precio del
 día: entre el día más barato y el más caro hay 16 € en el Efteling, 9 € en Europa-Park, 12,50 € en
 Toverland y 34 € en Phantasialand. Por eso calculo con los dos extremos y doy un rango. Si vas sobre todo en
@@ -351,8 +351,8 @@ Esta es mi lectura de las cifras de arriba, no un consejo de compra. No sé dón
 libres.
 
 El Efteling con Classic funciona si puedes venir fuera de las semanas bloqueadas y estás en el parque al
-menos seis veces al año. Quien quiera ir entre mediados de octubre y principios de noviembre o entre Navidad
-y Año Nuevo necesita Plus. Premium elimina los 25 días bloqueados de Plus de 2027 y solo compensa a partir de
+menos seis veces al año. Quien quiera ir entre mediados de octubre y principios de noviembre necesita
+Plus. Quien quiera ir entre Navidad y Año Nuevo necesita Premium, porque Plus también está bloqueado entonces. Premium elimina los 25 días bloqueados de Plus de 2027 y solo compensa a partir de
 ocho a diez visitas. Por debajo de cuatro visitas no compensa ninguno de los tres niveles.
 
 Europa-Park con Silver funciona si vienes cinco veces o más y puedes vivir con los días que fija el parque.

@@ -78,7 +78,7 @@ prices for 2027. Europa-Park has announced that tickets for the 2027 summer seas
 
 ## How the break-even works
 
-The break-even is the smallest whole number of visits at which the annual pass costs less than the same
+The break-even is the smallest whole number of visits at which the annual pass costs no more than the same
 number of day tickets. It hangs on two quantities, and both move. The first is the day price. Between the
 cheapest and the dearest day the gap is €16 at Efteling, €9 at Europa-Park, €12.50 at Toverland and €34 at
 Phantasialand. So I calculate with both ends and give a range. If you mostly go on Saturdays, you sit at
@@ -346,8 +346,8 @@ This is my reading of the figures above, not a buying tip. I know neither where 
 you have free.
 
 Efteling with Classic works if you can come outside the blocked weeks and are at the park at least six
-times a year. If you want to go between mid-October and early November or between Christmas and New Year,
-you need Plus. Premium lifts the 25 blocked days Plus has in 2027 and only pays off from eight to ten
+times a year. If you want to go between mid-October and early November, you need Plus. Between Christmas and New Year you need
+Premium, because Plus is blocked then too. Premium lifts the 25 blocked days Plus has in 2027 and only pays off from eight to ten
 visits. Below four visits none of the three tiers pays off.
 
 Europa-Park with Silver works if you come five times or more and can live with the days the park sets.

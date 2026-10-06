@@ -81,7 +81,7 @@ Sommersaison 2027 ab dem 10. November 2026 in den Verkauf gehen.
 
 ## So rechnet sich der Break-even
 
-Der Break-even ist die kleinste ganze Zahl an Besuchen, bei der die Jahreskarte weniger kostet als
+Der Break-even ist die kleinste ganze Zahl an Besuchen, bei der die Jahreskarte nicht mehr kostet als
 dieselbe Zahl Tageskarten. Er hängt an zwei Größen, die beide schwanken. Die erste ist der Tagespreis:
 Zwischen billigstem und teuerstem Tag liegen im Efteling 16 €, im Europa-Park 9 €, im Toverland
 12,50 € und im Phantasialand 34 €. Ich rechne deshalb mit beiden Enden und gebe eine Spanne an. Wer
@@ -354,8 +354,8 @@ Das ist meine Einschätzung aus den Zahlen oben. Ich kenne weder deinen Wohnort 
 freien Tage.
 
 Der Efteling mit Classic funktioniert, wenn du außerhalb der Ferien kommen kannst und mindestens sechsmal im
-Jahr im Park bist. Wer zwischen Mitte Oktober und Anfang November oder zwischen Weihnachten und Neujahr hinwill, braucht die
-Plus. Premium hebt die 25 Sperrtage der Plus von 2027 auf und lohnt sich erst ab acht bis zehn Besuchen.
+Jahr im Park bist. Wer zwischen Mitte Oktober und Anfang November hinwill, braucht die Plus.
+Wer zwischen Weihnachten und Neujahr hinwill, braucht die Premium, denn auch die Plus ist dort gesperrt. Die Premium hebt die 25 Sperrtage der Plus von 2027 auf und lohnt sich erst ab acht bis zehn Besuchen.
 Unter vier Besuchen lohnt sich keine der drei Stufen.
 
 Der Europa-Park mit Silber funktioniert, wenn du fünfmal oder öfter kommst und mit den vom Park

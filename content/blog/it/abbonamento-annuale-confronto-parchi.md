@@ -81,7 +81,7 @@ parchi ha pubblicato prezzi per il 2027. Europa-Park ha annunciato che i bigliet
 
 ## Come funziona il punto di pareggio
 
-Il punto di pareggio è il più piccolo numero intero di visite per cui l’abbonamento costa meno di altrettanti
+Il punto di pareggio è il più piccolo numero intero di visite per cui l’abbonamento non costa più di altrettanti
 biglietti giornalieri. Dipende da due grandezze, e tutte e due si muovono. La prima è il prezzo del giorno:
 tra il giorno più economico e il più caro ci sono 16 € all’Efteling, 9 € a Europa-Park, 12,50 € a
 Toverland e 34 € a Phantasialand. Calcolo quindi con entrambi gli estremi e do un intervallo. Se vai
@@ -351,8 +351,8 @@ Questa è la mia lettura delle cifre qui sopra, non un consiglio d’acquisto. N
 giorni hai liberi.
 
 L’Efteling con Classic funziona se puoi venire fuori dalle settimane bloccate e sei nel parco almeno sei
-volte l’anno. Chi vuole andare tra metà ottobre e inizio novembre o tra Natale e Capodanno ha bisogno di
-Plus. Premium elimina i 25 giorni bloccati di Plus nel 2027 e conviene solo da otto a dieci visite. Sotto
+volte l’anno. Chi vuole andare tra metà ottobre e inizio novembre ha bisogno di
+Plus. Chi vuole andare tra Natale e Capodanno ha bisogno di Premium, perché anche Plus è bloccato in quei giorni. Premium elimina i 25 giorni bloccati di Plus nel 2027 e conviene solo da otto a dieci visite. Sotto
 le quattro visite non conviene nessuna delle tre formule.
 
 Europa-Park con Silver funziona se vieni cinque volte o più e puoi vivere con i giorni che fissa il parco.

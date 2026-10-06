@@ -79,7 +79,7 @@ voor het zomerseizoen 2027 vanaf 10 november 2026 in de verkoop gaan.
 
 ## Hoe het break-evenpunt werkt
 
-Het break-evenpunt is het kleinste hele aantal bezoeken waarbij de jaarkaart minder kost dan evenveel
+Het break-evenpunt is het kleinste hele aantal bezoeken waarbij de jaarkaart niet meer kost dan evenveel
 dagkaarten. Het hangt aan twee grootheden, en beide schommelen. De eerste is de dagprijs: tussen de
 goedkoopste en de duurste dag zit € 16 bij de Efteling, € 9 bij Europa-Park, € 12,50 bij Toverland en
 € 34 bij Phantasialand. Ik reken daarom met beide uiteinden en geef een range. Wie vooral op zaterdag
@@ -351,8 +351,8 @@ Dit is mijn lezing van de cijfers hierboven, geen koopadvies. Ik ken je woonplaa
 vrije dagen.
 
 De Efteling met Classic werkt als je buiten de geblokkeerde weken kunt komen en minstens zes keer per jaar
-in het park bent. Wie tussen half oktober en begin november of tussen Kerst en Nieuwjaar wil gaan, heeft
-Plus nodig. Premium heft de 25 geblokkeerde dagen van Plus in 2027 op en loont pas vanaf acht tot tien
+in het park bent. Wie tussen half oktober en begin november wil gaan, heeft
+Plus nodig. Wie tussen Kerst en Nieuwjaar wil gaan, heeft Premium nodig, want ook Plus is dan geblokkeerd. Premium heft de 25 geblokkeerde dagen van Plus in 2027 op en loont pas vanaf acht tot tien
 bezoeken. Onder de vier bezoeken loont geen van de drie varianten.
 
 Europa-Park met Silver werkt als je vijf keer of vaker komt en kunt leven met de dagen die het park

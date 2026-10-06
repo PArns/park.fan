@@ -81,7 +81,7 @@ d’été 2027 seront en vente à partir du 10 novembre 2026.
 
 ## Comment fonctionne le seuil de rentabilité
 
-Le seuil de rentabilité est le plus petit nombre entier de visites pour lequel l’abonnement coûte moins
+Le seuil de rentabilité est le plus petit nombre entier de visites pour lequel l’abonnement ne coûte pas plus
 que le même nombre de billets à la journée. Il dépend de deux grandeurs qui bougent toutes les deux. La
 première est le prix du jour : entre le jour le moins cher et le plus cher, l’écart est de 16 € à
 l’Efteling, 9 € à Europa-Park, 12,50 € à Toverland et 34 € à Phantasialand. Je calcule donc avec les deux
@@ -355,8 +355,8 @@ C’est ma lecture des chiffres ci-dessus, pas un conseil d’achat. Je ne conna
 tes jours libres.
 
 L’Efteling avec Classic convient si tu peux venir hors des semaines bloquées et que tu es au parc au moins
-six fois par an. Qui veut y aller entre la mi-octobre et le début de novembre ou entre Noël et le Nouvel
-An a besoin de Plus. Premium supprime les 25 jours bloqués de Plus en 2027 et ne devient rentable qu’à
+six fois par an. Qui veut y aller entre la mi-octobre et le début de novembre a besoin de
+Plus. Qui veut y aller entre Noël et le Nouvel An a besoin de Premium, car Plus y est bloqué aussi. Premium supprime les 25 jours bloqués de Plus en 2027 et ne devient rentable qu’à
 partir de huit à dix visites. En dessous de quatre visites, aucune des trois formules n’est rentable.
 
 Europa-Park avec Silver convient si tu viens cinq fois ou plus et que tu peux vivre avec les jours que le
