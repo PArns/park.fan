@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { foldRideName } from '@/lib/utils/text-fold';
 import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
@@ -83,15 +84,6 @@ interface PlannerRideSearchProps {
    * rows found are clicked or dragged onto the axis like the phone's.
    */
   inline?: boolean;
-}
-
-/** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
-function fold(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]/g, '');
 }
 
 /**
@@ -210,9 +202,9 @@ export function PlannerRideSearch({
 
   const matches = useMemo(() => {
     // Below: an empty list is rendered as a stated reason, not as nothing.
-    const needle = fold(query);
+    const needle = foldRideName(query);
     if (needle.length === 0) return byName;
-    return byName.filter((ride) => fold(ride.attractionName).includes(needle));
+    return byName.filter((ride) => foldRideName(ride.attractionName).includes(needle));
   }, [byName, query]);
 
   return (
