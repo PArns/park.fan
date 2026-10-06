@@ -3,6 +3,7 @@ import { cache } from 'react';
 import { api, ApiError } from './client';
 import { CACHE_TTL } from './cache-config';
 import { parkCacheTag } from './park-live-projection';
+import type { HoursScheduleItem } from '@/lib/parks/park-hours-ics';
 import { parseCoordinate, withAttractionCoordinates, withCoordinates } from './coordinates';
 import type {
   CrowdLevel,
@@ -279,6 +280,30 @@ export async function getParkSeasons(
   } catch {
     // A park page must not fail over a section that most parks do not have.
     return [];
+  }
+}
+
+/**
+ * The park's opening days from `/v1/parks/<geo>/schedule` — about 64 rows, an `OPERATING` and an
+ * `EXTRA_HOURS` row per date — for the `.ics` export. `null` for a park the API does not know;
+ * any other failure propagates, so the route can answer it as one.
+ */
+export async function getParkSchedule(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<{
+  park: { name: string; slug: string; timezone: string };
+  schedule: HoursScheduleItem[];
+} | null> {
+  try {
+    return await api.get(`/v1/parks/${continent}/${country}/${city}/${parkSlug}/schedule`, {
+      next: { revalidate: CACHE_TTL.schedule, tags: ['parks'] },
+    });
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
   }
 }
 

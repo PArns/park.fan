@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Definitief gesloten attracties",
       "since": "sinds {month}"
+    },
+    "hoursCalendar": {
+      "link": "Openingstijden naar agenda",
+      "summary": "{park}: open",
+      "estimated": "De tijden zijn geschat."
     }
   },
   "attractions": {
