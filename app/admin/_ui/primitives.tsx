@@ -91,6 +91,62 @@ export function PanelBody({ className, ...props }: ComponentProps<'div'>) {
   return <div className={cn('p-4', className)} {...props} />;
 }
 
+/**
+ * A bordered box inside a panel or a dialog: one machine, one model, one group of controls, under
+ * an optional title row and hint.
+ */
+export function Tile({
+  icon: Icon,
+  title,
+  hint,
+  action,
+  className,
+  children,
+}: {
+  icon?: LucideIcon;
+  title?: ReactNode;
+  hint?: ReactNode;
+  action?: ReactNode;
+  className?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <section
+      className={cn('border-border/60 bg-muted/20 space-y-2.5 rounded-lg border p-3', className)}
+    >
+      {(title || action) && (
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-muted-foreground flex min-w-0 items-center gap-2 text-[11px] font-semibold tracking-wider uppercase">
+            {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
+            {title}
+          </h3>
+          {action}
+        </div>
+      )}
+      {hint && <p className="text-muted-foreground text-[11px]">{hint}</p>}
+      {children}
+    </section>
+  );
+}
+
+/** A `Tile` holding one large tabular figure under its label, with an optional line beneath. */
+export function StatTile({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: ReactNode;
+  sub?: ReactNode;
+}) {
+  return (
+    <Tile title={label} className="space-y-1">
+      <span className="block text-3xl font-bold tabular-nums">{value}</span>
+      {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
+    </Tile>
+  );
+}
+
 /** A horizontal strip of controls above a list: search, filters, view switch. */
 export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
   return (

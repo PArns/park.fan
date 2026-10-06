@@ -17,10 +17,9 @@ import {
 import { useAdminFetch } from '../_lib/admin-context';
 import { Section } from '../_lib/ui';
 import { formatUptime } from '../_lib/format';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
-import { AdminPage, ErrorState, LoadingState, Meta, StatusDot } from '../_ui/primitives';
+import { AdminPage, ErrorState, LoadingState, Meta, StatusDot, Tile } from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -114,146 +113,120 @@ export default function SystemPage() {
     <AdminPage width="wide">
       <Section icon={Server} title="Host">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Card className="border-border/60">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                <Cpu className="h-3.5 w-3.5" /> CPU
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <span
-                    className={`text-3xl font-bold tabular-nums ${(data.host.cpu.loadPct ?? 0) >= 80 ? 'text-red-400' : (data.host.cpu.loadPct ?? 0) >= 60 ? 'text-amber-400' : 'text-foreground'}`}
-                  >
-                    {data.host.cpu.loadPct ?? '—'}%
-                  </span>
-                  <p className="text-muted-foreground mt-0.5 text-xs">Load</p>
-                </div>
-                <div>
-                  <span
-                    className={`flex items-center gap-1 text-3xl font-bold tabular-nums ${cpuTempClass}`}
-                  >
-                    <Thermometer className="h-5 w-5" />
-                    {cpuTemp ?? '—'}
-                    <span className="text-muted-foreground text-lg font-normal">°C</span>
-                  </span>
-                  <p className="text-muted-foreground mt-0.5 text-xs">Temp</p>
-                </div>
-              </div>
-              <p className="text-muted-foreground truncate text-xs" title={data.host.cpu.model}>
-                {data.host.cpu.cores} Cores · {data.host.cpu.model.split(' ').slice(0, 3).join(' ')}
-              </p>
-              <div className="space-y-1.5">
-                <MetricBar
-                  label="1m"
-                  value={data.host.cpu.load['1m']}
-                  max={maxLoad}
-                  unit=""
-                  thresholds={[60, 80]}
-                />
-                <MetricBar
-                  label="5m"
-                  value={data.host.cpu.load['5m']}
-                  max={maxLoad}
-                  unit=""
-                  thresholds={[60, 80]}
-                />
-                <MetricBar
-                  label="15m"
-                  value={data.host.cpu.load['15m']}
-                  max={maxLoad}
-                  unit=""
-                  thresholds={[60, 80]}
-                />
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border/60">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                <MemoryStick className="h-3.5 w-3.5" /> Memory
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
+          <Tile icon={Cpu} title="CPU" className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <span className="text-3xl font-bold tabular-nums">
-                  {data.host.memory.usedGB.toFixed(1)}
-                  <span className="text-muted-foreground text-lg font-normal"> GB</span>
+                <span
+                  className={`text-3xl font-bold tabular-nums ${(data.host.cpu.loadPct ?? 0) >= 80 ? 'text-red-400' : (data.host.cpu.loadPct ?? 0) >= 60 ? 'text-amber-400' : 'text-foreground'}`}
+                >
+                  {data.host.cpu.loadPct ?? '—'}%
                 </span>
-                <p className="text-muted-foreground mt-0.5 text-xs">
-                  of {data.host.memory.totalGB.toFixed(1)} GB
-                </p>
+                <p className="text-muted-foreground mt-0.5 text-xs">Load</p>
               </div>
+              <div>
+                <span
+                  className={`flex items-center gap-1 text-3xl font-bold tabular-nums ${cpuTempClass}`}
+                >
+                  <Thermometer className="h-5 w-5" />
+                  {cpuTemp ?? '—'}
+                  <span className="text-muted-foreground text-lg font-normal">°C</span>
+                </span>
+                <p className="text-muted-foreground mt-0.5 text-xs">Temp</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground truncate text-xs" title={data.host.cpu.model}>
+              {data.host.cpu.cores} Cores · {data.host.cpu.model.split(' ').slice(0, 3).join(' ')}
+            </p>
+            <div className="space-y-1.5">
               <MetricBar
-                label="Usage"
-                value={data.host.memory.usedGB}
-                max={data.host.memory.totalGB}
-                unit=" GB"
-                pct={data.host.memory.usedPct}
+                label="1m"
+                value={data.host.cpu.load['1m']}
+                max={maxLoad}
+                unit=""
+                thresholds={[60, 80]}
               />
-              {swap ? (
+              <MetricBar
+                label="5m"
+                value={data.host.cpu.load['5m']}
+                max={maxLoad}
+                unit=""
+                thresholds={[60, 80]}
+              />
+              <MetricBar
+                label="15m"
+                value={data.host.cpu.load['15m']}
+                max={maxLoad}
+                unit=""
+                thresholds={[60, 80]}
+              />
+            </div>
+          </Tile>
+
+          <Tile icon={MemoryStick} title="Memory" className="space-y-3">
+            <div>
+              <span className="text-3xl font-bold tabular-nums">
+                {data.host.memory.usedGB.toFixed(1)}
+                <span className="text-muted-foreground text-lg font-normal"> GB</span>
+              </span>
+              <p className="text-muted-foreground mt-0.5 text-xs">
+                of {data.host.memory.totalGB.toFixed(1)} GB
+              </p>
+            </div>
+            <MetricBar
+              label="Usage"
+              value={data.host.memory.usedGB}
+              max={data.host.memory.totalGB}
+              unit=" GB"
+              pct={data.host.memory.usedPct}
+            />
+            {swap ? (
+              <MetricBar
+                label={`Swap (${swap.usedGB.toFixed(1)} / ${swap.totalGB.toFixed(0)} GB)`}
+                value={swap.usedGB}
+                max={swap.totalGB}
+                unit=" GB"
+                pct={swap.usedPct}
+                thresholds={[50, 80]}
+              />
+            ) : null}
+          </Tile>
+
+          <Tile icon={HardDrive} title="Disk" className="space-y-3">
+            {diskValid ? (
+              <>
+                <div>
+                  <span className="text-3xl font-bold tabular-nums">
+                    {(disk.totalGB - disk.freeGB).toFixed(0)}
+                    <span className="text-muted-foreground text-lg font-normal"> GB</span>
+                  </span>
+                  <p className="text-muted-foreground mt-0.5 text-xs">
+                    of {disk.totalGB.toFixed(0)} GB · {disk.freeGB.toFixed(0)} GB free
+                  </p>
+                </div>
                 <MetricBar
-                  label={`Swap (${swap.usedGB.toFixed(1)} / ${swap.totalGB.toFixed(0)} GB)`}
-                  value={swap.usedGB}
-                  max={swap.totalGB}
+                  label="Used"
+                  value={disk.totalGB - disk.freeGB}
+                  max={disk.totalGB}
                   unit=" GB"
-                  pct={swap.usedPct}
-                  thresholds={[50, 80]}
+                  pct={disk.usedPct}
+                  thresholds={[75, 90]}
                 />
-              ) : null}
-            </CardContent>
-          </Card>
+              </>
+            ) : (
+              <p className="text-muted-foreground text-sm">N/A</p>
+            )}
+          </Tile>
 
-          <Card className="border-border/60">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                <HardDrive className="h-3.5 w-3.5" /> Disk
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {diskValid ? (
-                <>
-                  <div>
-                    <span className="text-3xl font-bold tabular-nums">
-                      {(disk.totalGB - disk.freeGB).toFixed(0)}
-                      <span className="text-muted-foreground text-lg font-normal"> GB</span>
-                    </span>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      of {disk.totalGB.toFixed(0)} GB · {disk.freeGB.toFixed(0)} GB free
-                    </p>
-                  </div>
-                  <MetricBar
-                    label="Used"
-                    value={disk.totalGB - disk.freeGB}
-                    max={disk.totalGB}
-                    unit=" GB"
-                    pct={disk.usedPct}
-                    thresholds={[75, 90]}
-                  />
-                </>
-              ) : (
-                <p className="text-muted-foreground text-sm">N/A</p>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card className="border-border/60">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                <Clock className="h-3.5 w-3.5" /> Uptime
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-1">
+          <Tile icon={Clock} title="Uptime">
+            <div className="space-y-1">
               <span className="text-3xl font-bold tabular-nums">
                 {formatUptime(data.host.uptimeHours)}
               </span>
               <p className="text-muted-foreground text-xs">
                 API v4 · {data.host.cpu.cores}-core server
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </Tile>
         </div>
       </Section>
 
@@ -271,114 +244,80 @@ export default function SystemPage() {
                 key={g.index ?? g.name}
                 className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
               >
-                <Card className="border-border/60">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                      <Gauge className="h-3.5 w-3.5" /> GPU Load
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div>
-                      <span className="text-3xl font-bold tabular-nums">
-                        {g.utilizationGpuPct ?? '—'}
-                        <span className="text-muted-foreground text-lg font-normal">%</span>
-                      </span>
-                      <p className="text-muted-foreground mt-0.5 truncate text-xs" title={g.name}>
-                        {g.name.replace(/^NVIDIA\s+/i, '')}
-                      </p>
-                    </div>
+                <Tile icon={Gauge} title="GPU Load" className="space-y-3">
+                  <div>
+                    <span className="text-3xl font-bold tabular-nums">
+                      {g.utilizationGpuPct ?? '—'}
+                      <span className="text-muted-foreground text-lg font-normal">%</span>
+                    </span>
+                    <p className="text-muted-foreground mt-0.5 truncate text-xs" title={g.name}>
+                      {g.name.replace(/^NVIDIA\s+/i, '')}
+                    </p>
+                  </div>
+                  <MetricBar
+                    label="Utilization"
+                    value={g.utilizationGpuPct ?? 0}
+                    max={100}
+                    unit="%"
+                    thresholds={[70, 90]}
+                  />
+                </Tile>
+
+                <Tile icon={Thermometer} title="Temperature" className="space-y-3">
+                  <div>
+                    <span className={`text-3xl font-bold tabular-nums ${tempClass}`}>
+                      {g.temperatureC ?? '—'}
+                      <span className="text-muted-foreground text-lg font-normal"> °C</span>
+                    </span>
+                    <p className="text-muted-foreground mt-0.5 text-xs">
+                      Mem I/O {g.utilizationMemPct ?? '—'}%
+                    </p>
+                  </div>
+                  <MetricBar label="Temp" value={temp} max={100} unit=" °C" thresholds={[70, 85]} />
+                </Tile>
+
+                <Tile icon={MemoryStick} title="VRAM" className="space-y-3">
+                  <div>
+                    <span className="text-3xl font-bold tabular-nums">
+                      {vramUsed.toFixed(1)}
+                      <span className="text-muted-foreground text-lg font-normal"> GB</span>
+                    </span>
+                    <p className="text-muted-foreground mt-0.5 text-xs">
+                      of {vramTotal.toFixed(0)} GB
+                    </p>
+                  </div>
+                  {vramTotal ? (
                     <MetricBar
-                      label="Utilization"
-                      value={g.utilizationGpuPct ?? 0}
-                      max={100}
-                      unit="%"
+                      label="Used"
+                      value={vramUsed}
+                      max={vramTotal}
+                      unit=" GB"
+                      pct={g.memoryUsedPct ?? undefined}
+                      thresholds={[75, 90]}
+                    />
+                  ) : null}
+                </Tile>
+
+                <Tile icon={Zap} title="Power" className="space-y-3">
+                  <div>
+                    <span className="text-3xl font-bold tabular-nums">
+                      {g.powerW?.toFixed(0) ?? '—'}
+                      <span className="text-muted-foreground text-lg font-normal"> W</span>
+                    </span>
+                    <p className="text-muted-foreground mt-0.5 text-xs">
+                      of {g.powerLimitW?.toFixed(0) ?? '—'} W limit
+                    </p>
+                  </div>
+                  {g.powerLimitW ? (
+                    <MetricBar
+                      label="Draw"
+                      value={g.powerW ?? 0}
+                      max={g.powerLimitW}
+                      unit=" W"
                       thresholds={[70, 90]}
                     />
-                  </CardContent>
-                </Card>
-
-                <Card className="border-border/60">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                      <Thermometer className="h-3.5 w-3.5" /> Temperature
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div>
-                      <span className={`text-3xl font-bold tabular-nums ${tempClass}`}>
-                        {g.temperatureC ?? '—'}
-                        <span className="text-muted-foreground text-lg font-normal"> °C</span>
-                      </span>
-                      <p className="text-muted-foreground mt-0.5 text-xs">
-                        Mem I/O {g.utilizationMemPct ?? '—'}%
-                      </p>
-                    </div>
-                    <MetricBar
-                      label="Temp"
-                      value={temp}
-                      max={100}
-                      unit=" °C"
-                      thresholds={[70, 85]}
-                    />
-                  </CardContent>
-                </Card>
-
-                <Card className="border-border/60">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                      <MemoryStick className="h-3.5 w-3.5" /> VRAM
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div>
-                      <span className="text-3xl font-bold tabular-nums">
-                        {vramUsed.toFixed(1)}
-                        <span className="text-muted-foreground text-lg font-normal"> GB</span>
-                      </span>
-                      <p className="text-muted-foreground mt-0.5 text-xs">
-                        of {vramTotal.toFixed(0)} GB
-                      </p>
-                    </div>
-                    {vramTotal ? (
-                      <MetricBar
-                        label="Used"
-                        value={vramUsed}
-                        max={vramTotal}
-                        unit=" GB"
-                        pct={g.memoryUsedPct ?? undefined}
-                        thresholds={[75, 90]}
-                      />
-                    ) : null}
-                  </CardContent>
-                </Card>
-
-                <Card className="border-border/60">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                      <Zap className="h-3.5 w-3.5" /> Power
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div>
-                      <span className="text-3xl font-bold tabular-nums">
-                        {g.powerW?.toFixed(0) ?? '—'}
-                        <span className="text-muted-foreground text-lg font-normal"> W</span>
-                      </span>
-                      <p className="text-muted-foreground mt-0.5 text-xs">
-                        of {g.powerLimitW?.toFixed(0) ?? '—'} W limit
-                      </p>
-                    </div>
-                    {g.powerLimitW ? (
-                      <MetricBar
-                        label="Draw"
-                        value={g.powerW ?? 0}
-                        max={g.powerLimitW}
-                        unit=" W"
-                        thresholds={[70, 90]}
-                      />
-                    ) : null}
-                  </CardContent>
-                </Card>
+                  ) : null}
+                </Tile>
               </div>
             );
           })}
@@ -391,42 +330,45 @@ export default function SystemPage() {
             {sensorEntries.map(([chip, list]) => {
               const hot = Math.max(...list.map((s) => s.tempC));
               return (
-                <Card key={chip} className="border-border/60">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center justify-between text-xs font-medium tracking-wide uppercase">
-                      <span className="text-muted-foreground flex items-center gap-2">
-                        <Thermometer className="h-3.5 w-3.5" /> {chipLabel(chip)}
-                        <span className="text-muted-foreground/60 normal-case">
-                          · {list.length} {list.length === 1 ? 'sensor' : 'sensors'}
-                        </span>
+                <Tile
+                  key={chip}
+                  icon={Thermometer}
+                  title={
+                    <>
+                      {chipLabel(chip)}
+                      <span className="text-muted-foreground/60 normal-case">
+                        · {list.length} {list.length === 1 ? 'sensor' : 'sensors'}
                       </span>
-                      <span className={`tabular-nums ${sensorTempClass(hot)}`}>peak {hot}°C</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-                      {list.map((s, i) => (
-                        <div
-                          key={`${s.label}-${i}`}
-                          className="border-border/40 bg-muted/20 rounded-md border px-2.5 py-1.5"
+                    </>
+                  }
+                  action={
+                    <span
+                      className={`text-[11px] font-semibold tracking-wider uppercase tabular-nums ${sensorTempClass(hot)}`}
+                    >
+                      peak {hot}°C
+                    </span>
+                  }
+                >
+                  <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+                    {list.map((s, i) => (
+                      <div
+                        key={`${s.label}-${i}`}
+                        className="border-border/40 bg-muted/20 rounded-md border px-2.5 py-1.5"
+                      >
+                        <p
+                          className="text-muted-foreground truncate text-[10px] tracking-wide uppercase"
+                          title={s.label}
                         >
-                          <p
-                            className="text-muted-foreground truncate text-[10px] tracking-wide uppercase"
-                            title={s.label}
-                          >
-                            {s.label}
-                          </p>
-                          <p
-                            className={`text-lg font-bold tabular-nums ${sensorTempClass(s.tempC)}`}
-                          >
-                            {s.tempC}
-                            <span className="text-muted-foreground text-xs font-normal"> °C</span>
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                          {s.label}
+                        </p>
+                        <p className={`text-lg font-bold tabular-nums ${sensorTempClass(s.tempC)}`}>
+                          {s.tempC}
+                          <span className="text-muted-foreground text-xs font-normal"> °C</span>
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </Tile>
               );
             })}
           </div>
@@ -435,148 +377,136 @@ export default function SystemPage() {
 
       <Section icon={Database} title="Database & Cache">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <Card className="border-border/60">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center justify-between text-base">
-                <span className="flex items-center gap-2">
-                  <Database className="text-primary h-4 w-4" /> PostgreSQL
+          <Tile
+            icon={Database}
+            title="PostgreSQL"
+            className="space-y-3"
+            action={
+              <span className="flex items-center gap-1.5 text-xs">
+                <StatusDot ok={pgOk} />
+                <span className={pgOk ? 'text-emerald-400' : 'text-red-400'}>
+                  {pgOk ? 'Connected' : data.postgres.status}
                 </span>
-                <span className="flex items-center gap-1.5 text-sm font-normal">
-                  <StatusDot ok={pgOk} />
-                  <span className={pgOk ? 'text-emerald-400' : 'text-red-400'}>
-                    {pgOk ? 'Connected' : data.postgres.status}
-                  </span>
-                </span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <MetricBar
-                label={`Connections (active: ${data.postgres.activeQueries})`}
-                value={data.postgres.connections}
-                max={data.postgres.maxConnections}
-                unit=""
-                pct={data.postgres.connectionsPct ?? undefined}
-                thresholds={[60, 80]}
+              </span>
+            }
+          >
+            <MetricBar
+              label={`Connections (active: ${data.postgres.activeQueries})`}
+              value={data.postgres.connections}
+              max={data.postgres.maxConnections}
+              unit=""
+              pct={data.postgres.connectionsPct ?? undefined}
+              thresholds={[60, 80]}
+            />
+            <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
+              <Meta label="DB Size" value={`${data.postgres.dbSizeGB.toFixed(2)} GB`} />
+              <Meta
+                label="Cache Hit"
+                value={`${data.postgres.cacheHitPct?.toFixed(1) ?? '—'}%`}
+                valueClassName={
+                  (data.postgres.cacheHitPct ?? 0) >= 99 ? 'text-emerald-400' : 'text-amber-400'
+                }
               />
-              <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
-                <Meta label="DB Size" value={`${data.postgres.dbSizeGB.toFixed(2)} GB`} />
-                <Meta
-                  label="Cache Hit"
-                  value={`${data.postgres.cacheHitPct?.toFixed(1) ?? '—'}%`}
-                  valueClassName={
-                    (data.postgres.cacheHitPct ?? 0) >= 99 ? 'text-emerald-400' : 'text-amber-400'
-                  }
-                />
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </Tile>
 
-          <Card className="border-border/60">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center justify-between text-base">
-                <span className="flex items-center gap-2">
-                  <Zap className="text-primary h-4 w-4" /> Redis
+          <Tile
+            icon={Zap}
+            title="Redis"
+            className="space-y-3"
+            action={
+              <span className="flex items-center gap-1.5 text-xs">
+                <StatusDot ok={redisOk} />
+                <span className={redisOk ? 'text-emerald-400' : 'text-red-400'}>
+                  {redisOk ? 'Connected' : data.redis.status}
                 </span>
-                <span className="flex items-center gap-1.5 text-sm font-normal">
-                  <StatusDot ok={redisOk} />
-                  <span className={redisOk ? 'text-emerald-400' : 'text-red-400'}>
-                    {redisOk ? 'Connected' : data.redis.status}
-                  </span>
-                </span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <MetricBar
-                label="Memory"
-                value={data.redis.usedMemoryMB}
-                max={data.redis.maxMemoryMB ?? data.redis.usedMemoryMB * 2}
-                unit=" MB"
-                thresholds={[60, 80]}
+              </span>
+            }
+          >
+            <MetricBar
+              label="Memory"
+              value={data.redis.usedMemoryMB}
+              max={data.redis.maxMemoryMB ?? data.redis.usedMemoryMB * 2}
+              unit=" MB"
+              thresholds={[60, 80]}
+            />
+            <div className="grid grid-cols-3 gap-3 pt-1 text-sm">
+              <Meta label="Keys" value={data.redis.keys.toLocaleString('en-GB')} />
+              <Meta label="Clients" value={data.redis.connectedClients} />
+              <Meta
+                label="Hit Rate"
+                value={`${data.redis.hitRatePct?.toFixed(1) ?? '—'}%`}
+                valueClassName={
+                  (data.redis.hitRatePct ?? 0) >= 80 ? 'text-emerald-400' : 'text-amber-400'
+                }
               />
-              <div className="grid grid-cols-3 gap-3 pt-1 text-sm">
-                <Meta label="Keys" value={data.redis.keys.toLocaleString('en-GB')} />
-                <Meta label="Clients" value={data.redis.connectedClients} />
-                <Meta
-                  label="Hit Rate"
-                  value={`${data.redis.hitRatePct?.toFixed(1) ?? '—'}%`}
-                  valueClassName={
-                    (data.redis.hitRatePct ?? 0) >= 80 ? 'text-emerald-400' : 'text-amber-400'
-                  }
-                />
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </Tile>
         </div>
       </Section>
 
       {fresh ? (
         <Section icon={Activity} title="Data Ingestion">
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Card className="border-border/60">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center justify-between text-base">
-                  <span className="flex items-center gap-2">
-                    <Waves className="text-primary h-4 w-4" /> Wait Times
+            <Tile
+              icon={Waves}
+              title="Wait Times"
+              className="space-y-3"
+              action={
+                <span className="flex items-center gap-1.5 text-xs">
+                  <StatusDot ok={queueStale != null && queueStale < 20} />
+                  <span className={queueClass}>
+                    {queueStale != null ? `${queueStale} min ago` : 'no data'}
                   </span>
-                  <span className="flex items-center gap-1.5 text-sm font-normal">
-                    <StatusDot ok={queueStale != null && queueStale < 20} />
-                    <span className={queueClass}>
-                      {queueStale != null ? `${queueStale} min ago` : 'no data'}
-                    </span>
-                  </span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div>
-                  <span className={`text-3xl font-bold tabular-nums ${queueClass}`}>
-                    {fresh.queueRowsLastHour.toLocaleString('en-GB')}
-                  </span>
-                  <p className="text-muted-foreground mt-0.5 text-xs">rows ingested · last hour</p>
-                </div>
-                <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
-                  <Meta
-                    label="Latest data point"
-                    value={
-                      fresh.latestQueueTime
-                        ? new Date(fresh.latestQueueTime).toLocaleString('en-GB')
-                        : '—'
-                    }
-                  />
-                </div>
-              </CardContent>
-            </Card>
+                </span>
+              }
+            >
+              <div>
+                <span className={`text-3xl font-bold tabular-nums ${queueClass}`}>
+                  {fresh.queueRowsLastHour.toLocaleString('en-GB')}
+                </span>
+                <p className="text-muted-foreground mt-0.5 text-xs">rows ingested · last hour</p>
+              </div>
+              <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
+                <Meta
+                  label="Latest data point"
+                  value={
+                    fresh.latestQueueTime
+                      ? new Date(fresh.latestQueueTime).toLocaleString('en-GB')
+                      : '—'
+                  }
+                />
+              </div>
+            </Tile>
 
-            <Card className="border-border/60">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center justify-between text-base">
-                  <span className="flex items-center gap-2">
-                    <CloudSun className="text-primary h-4 w-4" /> Weather Forecast
+            <Tile
+              icon={CloudSun}
+              title="Weather Forecast"
+              className="space-y-3"
+              action={
+                <span className="flex items-center gap-1.5 text-xs">
+                  <StatusDot ok={weatherDaysAhead != null && weatherDaysAhead > 0} />
+                  <span className={weatherClass}>
+                    {weatherDaysAhead != null
+                      ? weatherDaysAhead > 0
+                        ? `+${weatherDaysAhead}d ahead`
+                        : 'stalled'
+                      : 'no data'}
                   </span>
-                  <span className="flex items-center gap-1.5 text-sm font-normal">
-                    <StatusDot ok={weatherDaysAhead != null && weatherDaysAhead > 0} />
-                    <span className={weatherClass}>
-                      {weatherDaysAhead != null
-                        ? weatherDaysAhead > 0
-                          ? `+${weatherDaysAhead}d ahead`
-                          : 'stalled'
-                        : 'no data'}
-                    </span>
-                  </span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div>
-                  <span className={`text-3xl font-bold tabular-nums ${weatherClass}`}>
-                    {weatherDaysAhead ?? '—'}
-                    <span className="text-muted-foreground text-lg font-normal"> days</span>
-                  </span>
-                  <p className="text-muted-foreground mt-0.5 text-xs">forecast horizon</p>
-                </div>
-                <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
-                  <Meta label="Forecast until" value={weatherDate ?? '—'} />
-                </div>
-              </CardContent>
-            </Card>
+                </span>
+              }
+            >
+              <div>
+                <span className={`text-3xl font-bold tabular-nums ${weatherClass}`}>
+                  {weatherDaysAhead ?? '—'}
+                  <span className="text-muted-foreground text-lg font-normal"> days</span>
+                </span>
+                <p className="text-muted-foreground mt-0.5 text-xs">forecast horizon</p>
+              </div>
+              <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
+                <Meta label="Forecast until" value={weatherDate ?? '—'} />
+              </div>
+            </Tile>
           </div>
         </Section>
       ) : null}

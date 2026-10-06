@@ -13,13 +13,13 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { Section, StatCard } from '../_lib/ui';
+import { Section } from '../_lib/ui';
 import { FolderRail } from './_components/folder-rail';
 import { MediaDetail } from './_components/media-detail';
 import { MediaUpload } from './_components/media-upload';
 import type { FolderView } from './_lib/folders';
 import type { MediaRow, MediaStats, Vocabulary } from './_lib/types';
-import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState, StatTile } from '../_ui/primitives';
 import { fitForCommit } from '../_lib/upload-transport';
 import { pickReplacement, replacementExt } from './_lib/replace-drop';
 
@@ -410,12 +410,12 @@ export default function MediaAdminPage() {
         ) : null}
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
-          <StatCard label="Images" value={String(stats.total)} />
-          <StatCard label="Collections" value={String(stats.collections)} />
-          <StatCard label="Parks" value={String(stats.parks)} />
-          <StatCard label="With GPS" value={String(stats.withGps)} />
-          <StatCard label="Rights unknown" value={String(stats.unlicensed)} />
-          <StatCard label="Low resolution" value={String(stats.lowRes)} />
+          <StatTile label="Images" value={String(stats.total)} />
+          <StatTile label="Collections" value={String(stats.collections)} />
+          <StatTile label="Parks" value={String(stats.parks)} />
+          <StatTile label="With GPS" value={String(stats.withGps)} />
+          <StatTile label="Rights unknown" value={String(stats.unlicensed)} />
+          <StatTile label="Low resolution" value={String(stats.lowRes)} />
         </div>
 
         <Section title="Browse" icon={ImageIcon}>

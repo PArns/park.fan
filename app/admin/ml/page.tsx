@@ -21,9 +21,8 @@ import type {
   MlComparisonBoard,
   ShadowComparisonRow,
 } from '@/lib/api/admin';
-import { Section, StatCard } from '../_lib/ui';
+import { Section } from '../_lib/ui';
 import { formatAge, maeColor } from '../_lib/format';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   AdminPage,
   Chip,
@@ -31,7 +30,12 @@ import {
   ErrorState,
   LoadingState,
   Meta,
+  Panel,
+  PanelBody,
+  PanelHeader,
+  StatTile,
   StatusDot,
+  Tile,
   severityTone,
   statusTone,
 } from '../_ui/primitives';
@@ -127,15 +131,9 @@ function ServingCard({
   children: React.ReactNode;
 }) {
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="flex items-baseline justify-between gap-2 text-sm font-semibold">
-          <span>{name}</span>
-          <span className="text-muted-foreground text-[11px] font-normal">{role}</span>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-2">{children}</CardContent>
-    </Card>
+    <Tile title={name} action={<span className="text-muted-foreground text-[11px]">{role}</span>}>
+      {children}
+    </Tile>
   );
 }
 
@@ -169,13 +167,8 @@ function PerformerList({
   performers: MlPerformer[];
 }) {
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-          <Icon className="h-3.5 w-3.5" /> {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-1.5">
+    <Tile icon={Icon} title={title}>
+      <div className="space-y-1.5">
         {performers.map((p) => (
           <div key={p.attractionId} className="flex items-center justify-between gap-2 text-sm">
             <div className="min-w-0">
@@ -187,8 +180,8 @@ function PerformerList({
             </span>
           </div>
         ))}
-      </CardContent>
-    </Card>
+      </div>
+    </Tile>
   );
 }
 
@@ -322,98 +315,91 @@ function ShadowBoard({
 }) {
   const cells = aggregateShadowRows(rows ?? [], challengerModel);
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-          {challengerLabel} vs CatBoost · by segment × lead
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {error ? (
-          <p className="text-xs text-red-400">{error}</p>
-        ) : cells.length === 0 ? (
-          <p className="text-muted-foreground text-xs">{note ?? 'No comparison data yet'}</p>
-        ) : (
-          <div className="overflow-x-auto">
-            <div className="min-w-[34rem]">
-              <div className="border-border/60 text-muted-foreground grid grid-cols-9 gap-1 border-b pb-1 text-[11px] font-medium tracking-wide uppercase">
-                <span>Seg</span>
-                <span>Lead</span>
-                <span className="text-right">n</span>
-                <span className="text-right">Act</span>
-                <span className="text-right">Pred</span>
-                <span className="text-right">Bias</span>
-                <span className="text-right">CatB</span>
-                <span className="text-right">{challengerLabel}</span>
-                <span className="text-right">Δ</span>
-              </div>
-              {cells.map((c) => {
-                const wins = c.delta != null && c.delta > 0;
-                const isSummary = c.leadBucket === 'all';
-                return (
-                  <div
-                    key={`${c.segment}|${c.leadBucket}`}
-                    className={`border-border/40 grid grid-cols-9 gap-1 border-b py-1 text-xs last:border-0 ${
-                      isSummary ? 'bg-muted/30 font-medium' : ''
+    <Tile title={`${challengerLabel} vs CatBoost · by segment × lead`}>
+      {error ? (
+        <p className="text-xs text-red-400">{error}</p>
+      ) : cells.length === 0 ? (
+        <p className="text-muted-foreground text-xs">{note ?? 'No comparison data yet'}</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <div className="min-w-[34rem]">
+            <div className="border-border/60 text-muted-foreground grid grid-cols-9 gap-1 border-b pb-1 text-[11px] font-medium tracking-wide uppercase">
+              <span>Seg</span>
+              <span>Lead</span>
+              <span className="text-right">n</span>
+              <span className="text-right">Act</span>
+              <span className="text-right">Pred</span>
+              <span className="text-right">Bias</span>
+              <span className="text-right">CatB</span>
+              <span className="text-right">{challengerLabel}</span>
+              <span className="text-right">Δ</span>
+            </div>
+            {cells.map((c) => {
+              const wins = c.delta != null && c.delta > 0;
+              const isSummary = c.leadBucket === 'all';
+              return (
+                <div
+                  key={`${c.segment}|${c.leadBucket}`}
+                  className={`border-border/40 grid grid-cols-9 gap-1 border-b py-1 text-xs last:border-0 ${
+                    isSummary ? 'bg-muted/30 font-medium' : ''
+                  }`}
+                >
+                  <span className="font-mono">{SEGMENT_LABELS[c.segment] ?? c.segment}</span>
+                  <span className="text-muted-foreground font-mono">{c.leadBucket}</span>
+                  <span className="text-muted-foreground text-right font-mono tabular-nums">
+                    {c.n.toLocaleString('en-GB')}
+                  </span>
+                  <span className="text-right font-mono tabular-nums">{c.actual.toFixed(1)}</span>
+                  <span className="text-right font-mono tabular-nums">
+                    {c.challengerPred != null ? c.challengerPred.toFixed(1) : '—'}
+                  </span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.challengerBias == null
+                        ? 'text-muted-foreground'
+                        : biasColor(c.challengerBias)
                     }`}
                   >
-                    <span className="font-mono">{SEGMENT_LABELS[c.segment] ?? c.segment}</span>
-                    <span className="text-muted-foreground font-mono">{c.leadBucket}</span>
-                    <span className="text-muted-foreground text-right font-mono tabular-nums">
-                      {c.n.toLocaleString('en-GB')}
-                    </span>
-                    <span className="text-right font-mono tabular-nums">{c.actual.toFixed(1)}</span>
-                    <span className="text-right font-mono tabular-nums">
-                      {c.challengerPred != null ? c.challengerPred.toFixed(1) : '—'}
-                    </span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.challengerBias == null
-                          ? 'text-muted-foreground'
-                          : biasColor(c.challengerBias)
-                      }`}
-                    >
-                      {c.challengerBias == null
-                        ? '—'
-                        : `${c.challengerBias > 0 ? '+' : ''}${c.challengerBias.toFixed(1)}`}
-                    </span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.catboostMae != null ? maeColor(c.catboostMae) : 'text-muted-foreground'
-                      }`}
-                    >
-                      {c.catboostMae != null ? c.catboostMae.toFixed(1) : '—'}
-                    </span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.challengerMae == null
-                          ? 'text-muted-foreground'
-                          : wins
-                            ? 'font-semibold text-blue-400'
-                            : maeColor(c.challengerMae)
-                      }`}
-                    >
-                      {c.challengerMae != null ? c.challengerMae.toFixed(1) : '—'}
-                    </span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.delta == null
-                          ? 'text-muted-foreground'
-                          : wins
-                            ? 'text-emerald-400'
-                            : 'text-red-400'
-                      }`}
-                    >
-                      {c.delta == null ? '—' : `${c.delta > 0 ? '+' : ''}${c.delta.toFixed(1)}`}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+                    {c.challengerBias == null
+                      ? '—'
+                      : `${c.challengerBias > 0 ? '+' : ''}${c.challengerBias.toFixed(1)}`}
+                  </span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.catboostMae != null ? maeColor(c.catboostMae) : 'text-muted-foreground'
+                    }`}
+                  >
+                    {c.catboostMae != null ? c.catboostMae.toFixed(1) : '—'}
+                  </span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.challengerMae == null
+                        ? 'text-muted-foreground'
+                        : wins
+                          ? 'font-semibold text-blue-400'
+                          : maeColor(c.challengerMae)
+                    }`}
+                  >
+                    {c.challengerMae != null ? c.challengerMae.toFixed(1) : '—'}
+                  </span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.delta == null
+                        ? 'text-muted-foreground'
+                        : wins
+                          ? 'text-emerald-400'
+                          : 'text-red-400'
+                    }`}
+                  >
+                    {c.delta == null ? '—' : `${c.delta > 0 ? '+' : ''}${c.delta.toFixed(1)}`}
+                  </span>
+                </div>
+              );
+            })}
           </div>
-        )}
-      </CardContent>
-    </Card>
+        </div>
+      )}
+    </Tile>
   );
 }
 
@@ -479,81 +465,74 @@ function LeadCurveBoard({
 }) {
   const cells = aggregateLeadCurve(rows ?? []);
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-          PCN vs persistence · by forecast horizon
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {error ? (
-          <p className="text-xs text-red-400">{error}</p>
-        ) : cells.length === 0 ? (
-          <p className="text-muted-foreground text-xs">{note ?? 'No lead-curve data yet'}</p>
-        ) : (
-          <div className="overflow-x-auto">
-            <div className="min-w-[28rem]">
-              <div className="border-border/60 text-muted-foreground grid grid-cols-7 gap-1 border-b pb-1 text-[11px] font-medium tracking-wide uppercase">
-                <span>Lead</span>
-                <span>Seg</span>
-                <span className="text-right">n</span>
-                <span className="text-right">Act</span>
-                <span className="text-right">PCN</span>
-                <span className="text-right">Persist</span>
-                <span className="text-right">Δ</span>
-              </div>
-              {cells.map((c) => {
-                const wins = c.delta != null && c.delta > 0;
-                return (
-                  <div
-                    key={`${c.leadBucket}|${c.segment}`}
-                    className="border-border/40 grid grid-cols-7 gap-1 border-b py-1 text-xs last:border-0"
-                  >
-                    <span className="font-mono">{c.leadBucket}</span>
-                    <span className="text-muted-foreground font-mono">
-                      {SEGMENT_LABELS[c.segment] ?? c.segment}
-                    </span>
-                    <span className="text-muted-foreground text-right font-mono tabular-nums">
-                      {c.n.toLocaleString('en-GB')}
-                    </span>
-                    <span className="text-right font-mono tabular-nums">{c.actual.toFixed(1)}</span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.pcnMae == null
-                          ? 'text-muted-foreground'
-                          : wins
-                            ? 'font-semibold text-blue-400'
-                            : maeColor(c.pcnMae)
-                      }`}
-                    >
-                      {c.pcnMae != null ? c.pcnMae.toFixed(1) : '—'}
-                    </span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.persistMae != null ? maeColor(c.persistMae) : 'text-muted-foreground'
-                      }`}
-                    >
-                      {c.persistMae != null ? c.persistMae.toFixed(1) : '—'}
-                    </span>
-                    <span
-                      className={`text-right font-mono tabular-nums ${
-                        c.delta == null
-                          ? 'text-muted-foreground'
-                          : wins
-                            ? 'text-emerald-400'
-                            : 'text-red-400'
-                      }`}
-                    >
-                      {c.delta == null ? '—' : `${c.delta > 0 ? '+' : ''}${c.delta.toFixed(1)}`}
-                    </span>
-                  </div>
-                );
-              })}
+    <Tile title="PCN vs persistence · by forecast horizon">
+      {error ? (
+        <p className="text-xs text-red-400">{error}</p>
+      ) : cells.length === 0 ? (
+        <p className="text-muted-foreground text-xs">{note ?? 'No lead-curve data yet'}</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <div className="min-w-[28rem]">
+            <div className="border-border/60 text-muted-foreground grid grid-cols-7 gap-1 border-b pb-1 text-[11px] font-medium tracking-wide uppercase">
+              <span>Lead</span>
+              <span>Seg</span>
+              <span className="text-right">n</span>
+              <span className="text-right">Act</span>
+              <span className="text-right">PCN</span>
+              <span className="text-right">Persist</span>
+              <span className="text-right">Δ</span>
             </div>
+            {cells.map((c) => {
+              const wins = c.delta != null && c.delta > 0;
+              return (
+                <div
+                  key={`${c.leadBucket}|${c.segment}`}
+                  className="border-border/40 grid grid-cols-7 gap-1 border-b py-1 text-xs last:border-0"
+                >
+                  <span className="font-mono">{c.leadBucket}</span>
+                  <span className="text-muted-foreground font-mono">
+                    {SEGMENT_LABELS[c.segment] ?? c.segment}
+                  </span>
+                  <span className="text-muted-foreground text-right font-mono tabular-nums">
+                    {c.n.toLocaleString('en-GB')}
+                  </span>
+                  <span className="text-right font-mono tabular-nums">{c.actual.toFixed(1)}</span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.pcnMae == null
+                        ? 'text-muted-foreground'
+                        : wins
+                          ? 'font-semibold text-blue-400'
+                          : maeColor(c.pcnMae)
+                    }`}
+                  >
+                    {c.pcnMae != null ? c.pcnMae.toFixed(1) : '—'}
+                  </span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.persistMae != null ? maeColor(c.persistMae) : 'text-muted-foreground'
+                    }`}
+                  >
+                    {c.persistMae != null ? c.persistMae.toFixed(1) : '—'}
+                  </span>
+                  <span
+                    className={`text-right font-mono tabular-nums ${
+                      c.delta == null
+                        ? 'text-muted-foreground'
+                        : wins
+                          ? 'text-emerald-400'
+                          : 'text-red-400'
+                    }`}
+                  >
+                    {c.delta == null ? '—' : `${c.delta > 0 ? '+' : ''}${c.delta.toFixed(1)}`}
+                  </span>
+                </div>
+              );
+            })}
           </div>
-        )}
-      </CardContent>
-    </Card>
+        </div>
+      )}
+    </Tile>
   );
 }
 
@@ -561,13 +540,8 @@ function LeadCurveBoard({
 // scoreboard in the challenger section per the serving-map ↔ head-to-head split.
 function TftModelCard({ model }: { model: SystemHealthResponse['ml']['tft']['activeModel'] }) {
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-          Active model
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-1 text-sm">
+    <Tile title="Active model">
+      <div className="space-y-1 text-sm">
         {model ? (
           <>
             <p className="font-mono text-base">{model.version}</p>
@@ -585,8 +559,8 @@ function TftModelCard({ model }: { model: SystemHealthResponse['ml']['tft']['act
         ) : (
           <p className="text-muted-foreground text-xs">No model trained yet</p>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </Tile>
   );
 }
 
@@ -594,107 +568,100 @@ function TftModelCard({ model }: { model: SystemHealthResponse['ml']['tft']['act
 // holding both models side by side (TFT's edge lives on busy/hdlnr).
 function TftScoreboard({ comparison }: { comparison: SystemHealthResponse['ml']['comparison'] }) {
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-          vs CatBoost scoreboard
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {comparison?.rows?.length > 0 ? (
-          (() => {
-            type Pivot = {
-              date: string;
-              segment: string;
-              n: number;
-              cat?: ComparisonRow;
-              tft?: ComparisonRow;
-            };
-            const groups = new Map<string, Pivot>();
-            for (const r of comparison.rows) {
-              const segment = r.segment ?? 'all';
-              const key = `${r.targetDate}|${segment}`;
-              const g = groups.get(key) ?? { date: r.targetDate, segment, n: r.n };
-              if (r.model === 'tft') g.tft = r;
-              else g.cat = r;
-              groups.set(key, g);
-            }
-            const order: Record<string, number> = { all: 0, busy: 1, headliner: 2 };
-            const list = [...groups.values()]
-              .sort((a, b) =>
-                a.date < b.date
-                  ? 1
-                  : a.date > b.date
-                    ? -1
-                    : (order[a.segment] ?? 9) - (order[b.segment] ?? 9)
-              )
-              .slice(0, 12);
-            const segLabel: Record<string, string> = {
-              all: 'all',
-              busy: 'busy',
-              headliner: 'hdlnr',
-            };
-            const segClass: Record<string, string> = {
-              all: 'text-muted-foreground',
-              busy: 'text-amber-400',
-              headliner: 'text-violet-400',
-            };
-            return (
-              // Scrolls sideways on a phone rather than reflowing: this monitoring page is read
-              // at a desk.
-              <div className="space-y-0 overflow-x-auto">
-                <div className="border-border/60 text-muted-foreground grid min-w-[24rem] grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
-                  <span>Date</span>
-                  <span>Seg</span>
-                  <span className="text-right">n</span>
-                  <span className="text-right">CatB</span>
-                  <span className="text-right">TFT</span>
-                </div>
-                {list.map((g, i) => {
-                  const cm = g.cat ? Number(g.cat.mae) : NaN;
-                  const tm = g.tft ? Number(g.tft.mae) : NaN;
-                  const tftWins = Number.isFinite(cm) && Number.isFinite(tm) && tm < cm;
-                  return (
-                    <div
-                      key={i}
-                      className="border-border/40 grid min-w-[24rem] grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
-                    >
-                      <span className="text-muted-foreground">{g.date?.slice(5, 10)}</span>
-                      <span className={`font-mono ${segClass[g.segment] ?? ''}`}>
-                        {segLabel[g.segment] ?? g.segment}
-                      </span>
-                      <span className="text-muted-foreground text-right font-mono tabular-nums">
-                        {g.n}
-                      </span>
-                      <span
-                        className={`text-right font-mono tabular-nums ${Number.isFinite(cm) ? maeColor(cm) : 'text-muted-foreground'}`}
-                      >
-                        {Number.isFinite(cm) ? cm.toFixed(1) : '—'}
-                      </span>
-                      <span
-                        className={`text-right font-mono tabular-nums ${
-                          !Number.isFinite(tm)
-                            ? 'text-muted-foreground'
-                            : tftWins
-                              ? 'font-semibold text-blue-400'
-                              : maeColor(tm)
-                        }`}
-                      >
-                        {Number.isFinite(tm) ? tm.toFixed(1) : '—'}
-                      </span>
-                    </div>
-                  );
-                })}
+    <Tile title="vs CatBoost scoreboard">
+      {comparison?.rows?.length > 0 ? (
+        (() => {
+          type Pivot = {
+            date: string;
+            segment: string;
+            n: number;
+            cat?: ComparisonRow;
+            tft?: ComparisonRow;
+          };
+          const groups = new Map<string, Pivot>();
+          for (const r of comparison.rows) {
+            const segment = r.segment ?? 'all';
+            const key = `${r.targetDate}|${segment}`;
+            const g = groups.get(key) ?? { date: r.targetDate, segment, n: r.n };
+            if (r.model === 'tft') g.tft = r;
+            else g.cat = r;
+            groups.set(key, g);
+          }
+          const order: Record<string, number> = { all: 0, busy: 1, headliner: 2 };
+          const list = [...groups.values()]
+            .sort((a, b) =>
+              a.date < b.date
+                ? 1
+                : a.date > b.date
+                  ? -1
+                  : (order[a.segment] ?? 9) - (order[b.segment] ?? 9)
+            )
+            .slice(0, 12);
+          const segLabel: Record<string, string> = {
+            all: 'all',
+            busy: 'busy',
+            headliner: 'hdlnr',
+          };
+          const segClass: Record<string, string> = {
+            all: 'text-muted-foreground',
+            busy: 'text-amber-400',
+            headliner: 'text-violet-400',
+          };
+          return (
+            // Scrolls sideways on a phone rather than reflowing: this monitoring page is read
+            // at a desk.
+            <div className="space-y-0 overflow-x-auto">
+              <div className="border-border/60 text-muted-foreground grid min-w-[24rem] grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
+                <span>Date</span>
+                <span>Seg</span>
+                <span className="text-right">n</span>
+                <span className="text-right">CatB</span>
+                <span className="text-right">TFT</span>
               </div>
-            );
-          })()
-        ) : (
-          <p className="text-muted-foreground text-xs">
-            {comparison?.note ?? 'No comparison data yet'}
-          </p>
-        )}
-      </CardContent>
-    </Card>
+              {list.map((g, i) => {
+                const cm = g.cat ? Number(g.cat.mae) : NaN;
+                const tm = g.tft ? Number(g.tft.mae) : NaN;
+                const tftWins = Number.isFinite(cm) && Number.isFinite(tm) && tm < cm;
+                return (
+                  <div
+                    key={i}
+                    className="border-border/40 grid min-w-[24rem] grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
+                  >
+                    <span className="text-muted-foreground">{g.date?.slice(5, 10)}</span>
+                    <span className={`font-mono ${segClass[g.segment] ?? ''}`}>
+                      {segLabel[g.segment] ?? g.segment}
+                    </span>
+                    <span className="text-muted-foreground text-right font-mono tabular-nums">
+                      {g.n}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${Number.isFinite(cm) ? maeColor(cm) : 'text-muted-foreground'}`}
+                    >
+                      {Number.isFinite(cm) ? cm.toFixed(1) : '—'}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        !Number.isFinite(tm)
+                          ? 'text-muted-foreground'
+                          : tftWins
+                            ? 'font-semibold text-blue-400'
+                            : maeColor(tm)
+                      }`}
+                    >
+                      {Number.isFinite(tm) ? tm.toFixed(1) : '—'}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })()
+      ) : (
+        <p className="text-muted-foreground text-xs">
+          {comparison?.note ?? 'No comparison data yet'}
+        </p>
+      )}
+    </Tile>
   );
 }
 
@@ -752,8 +719,8 @@ export default function MlPage() {
     <AdminPage width="wide">
       <>
         <div className="space-y-3">
-          <Card className="border-border/60">
-            <CardContent className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
+          <Panel>
+            <PanelBody className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
               <StripCell label="Health">{driftChip}</StripCell>
               <StripCell label="CatBoost">
                 <div className="space-y-0.5">
@@ -789,17 +756,13 @@ export default function MlPage() {
                   </p>
                 </div>
               </StripCell>
-            </CardContent>
-          </Card>
+            </PanelBody>
+          </Panel>
 
           {(cbTraining || tftTraining || tftError) && (
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                  <Play className="h-3.5 w-3.5" /> Training in progress
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="grid gap-4 sm:grid-cols-2">
+            <Panel>
+              <PanelHeader icon={Play} title="Training in progress" />
+              <PanelBody className="grid gap-4 sm:grid-cols-2">
                 {cbTraining && catboost?.training.started_at && (
                   <div className="space-y-1.5">
                     <p className="text-xs font-medium">CatBoost</p>
@@ -822,8 +785,8 @@ export default function MlPage() {
                     <p className="text-xs text-red-400">{tftError}</p>
                   </div>
                 )}
-              </CardContent>
-            </Card>
+              </PanelBody>
+            </Panel>
           )}
         </div>
 
@@ -920,29 +883,24 @@ export default function MlPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            <StatCard
+            <StatTile
               label="Version"
               value={<span className="text-xl">{model.current.version}</span>}
               sub={model.current.modelType}
             />
-            <StatCard
+            <StatTile
               label="Model age"
               value={formatAge(d.system.modelAge)}
               sub={`${model.current.fileSizeMB.toFixed(1)} MB`}
             />
-            <StatCard label="Features" value={model.configuration.featureCount} sub="inputs used" />
+            <StatTile label="Features" value={model.configuration.featureCount} sub="inputs used" />
           </div>
         </Section>
 
         <Section icon={Gauge} title="Model health">
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
-            <Card className="border-border/60 lg:col-span-2">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                  Accuracy · training vs live
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="overflow-x-auto">
+            <Tile title="Accuracy · training vs live" className="lg:col-span-2">
+              <div className="overflow-x-auto">
                 <div className="border-border/60 text-muted-foreground grid min-w-[22rem] grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
                   <span />
                   <span className="text-right">MAE</span>
@@ -972,63 +930,56 @@ export default function MlPage() {
                     value={model.trainingData.trainSamples.toLocaleString('en-GB')}
                   />
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </Tile>
 
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                  <TrendingDown className="h-3.5 w-3.5" /> Drift
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="space-y-1">
-                  {driftChip}
-                  <p className="text-muted-foreground text-xs">
-                    drift {perf.drift.currentDrift.toFixed(2)} / threshold {perf.drift.threshold}
+            <Tile icon={TrendingDown} title="Drift" className="space-y-3">
+              <div className="space-y-1">
+                {driftChip}
+                <p className="text-muted-foreground text-xs">
+                  drift {perf.drift.currentDrift.toFixed(2)} / threshold {perf.drift.threshold}
+                </p>
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                <Meta
+                  label="Train MAE"
+                  value={perf.drift.trainingMae.toFixed(2)}
+                  valueClassName={maeColor(perf.drift.trainingMae)}
+                />
+                <Meta
+                  label="Live MAE"
+                  value={perf.drift.liveMae.toFixed(2)}
+                  valueClassName={maeColor(perf.drift.liveMae)}
+                />
+                <Meta label="Tracked days" value={perf.drift.dailyMetrics.length} />
+              </div>
+              {perf.drift.byHorizon && (
+                <div className="border-border/40 space-y-1 border-t pt-2 text-xs">
+                  {perf.drift.byHorizon.map((h) => (
+                    <div key={h.horizon} className="flex items-center justify-between gap-2">
+                      <span className="text-muted-foreground capitalize">{h.horizon}</span>
+                      {h.tracked && h.currentDrift != null ? (
+                        <span className="font-mono tabular-nums">
+                          {h.currentDrift.toFixed(1)}%
+                          {h.liveMae != null && (
+                            <span className="text-muted-foreground">
+                              {' '}
+                              · MAE {h.liveMae.toFixed(2)}
+                            </span>
+                          )}
+                        </span>
+                      ) : (
+                        <span className="text-muted-foreground">n/a · unscored</span>
+                      )}
+                    </div>
+                  ))}
+                  <p className="text-muted-foreground/70">
+                    Intraday drift tracks the CatBoost fallback (PCN serves intraday); far-daily is
+                    unscored.
                   </p>
                 </div>
-                <div className="grid grid-cols-3 gap-3">
-                  <Meta
-                    label="Train MAE"
-                    value={perf.drift.trainingMae.toFixed(2)}
-                    valueClassName={maeColor(perf.drift.trainingMae)}
-                  />
-                  <Meta
-                    label="Live MAE"
-                    value={perf.drift.liveMae.toFixed(2)}
-                    valueClassName={maeColor(perf.drift.liveMae)}
-                  />
-                  <Meta label="Tracked days" value={perf.drift.dailyMetrics.length} />
-                </div>
-                {perf.drift.byHorizon && (
-                  <div className="border-border/40 space-y-1 border-t pt-2 text-xs">
-                    {perf.drift.byHorizon.map((h) => (
-                      <div key={h.horizon} className="flex items-center justify-between gap-2">
-                        <span className="text-muted-foreground capitalize">{h.horizon}</span>
-                        {h.tracked && h.currentDrift != null ? (
-                          <span className="font-mono tabular-nums">
-                            {h.currentDrift.toFixed(1)}%
-                            {h.liveMae != null && (
-                              <span className="text-muted-foreground">
-                                {' '}
-                                · MAE {h.liveMae.toFixed(2)}
-                              </span>
-                            )}
-                          </span>
-                        ) : (
-                          <span className="text-muted-foreground">n/a · unscored</span>
-                        )}
-                      </div>
-                    ))}
-                    <p className="text-muted-foreground/70">
-                      Intraday drift tracks the CatBoost fallback (PCN serves intraday); far-daily
-                      is unscored.
-                    </p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+              )}
+            </Tile>
           </div>
         </Section>
 
@@ -1135,61 +1086,44 @@ export default function MlPage() {
 
         <Section icon={Bell} title="Monitoring">
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                  Anomalies
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {anomalies.data ? (
-                  <>
-                    <span className="text-3xl font-bold tabular-nums">
-                      {anomalies.data.totalAnomalies}
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {Object.entries(anomalies.data.bySeverity).map(([sev, n]) => (
-                        <span key={sev} className="flex items-center gap-1">
-                          <Chip tone={severityTone(sev)}>{sev}</Chip>
-                          <span className="text-muted-foreground text-xs tabular-nums">{n}</span>
-                        </span>
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground text-xs">
-                      avg score {anomalies.data.avgAnomalyScore.toFixed(2)}
-                    </p>
-                  </>
-                ) : (
-                  <span className="text-muted-foreground text-sm">…</span>
-                )}
-              </CardContent>
-            </Card>
+            <Tile title="Anomalies">
+              {anomalies.data ? (
+                <>
+                  <span className="text-3xl font-bold tabular-nums">
+                    {anomalies.data.totalAnomalies}
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {Object.entries(anomalies.data.bySeverity).map(([sev, n]) => (
+                      <span key={sev} className="flex items-center gap-1">
+                        <Chip tone={severityTone(sev)}>{sev}</Chip>
+                        <span className="text-muted-foreground text-xs tabular-nums">{n}</span>
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground text-xs">
+                    avg score {anomalies.data.avgAnomalyScore.toFixed(2)}
+                  </p>
+                </>
+              ) : (
+                <span className="text-muted-foreground text-sm">…</span>
+              )}
+            </Tile>
 
-            <Card className="border-border/60 lg:col-span-2">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                  <AlertTriangle className="h-3.5 w-3.5" /> Active alerts
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {activeAlerts.length === 0 ? (
-                  <EmptyState title="No active alerts." />
-                ) : (
-                  activeAlerts.map((a) => (
-                    <div
-                      key={a.id}
-                      className="border-border/60 bg-card rounded-lg border px-3 py-2"
-                    >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-medium">{a.title}</span>
-                        <Chip tone={severityTone(a.severity)}>{a.severity}</Chip>
-                      </div>
-                      <p className="text-muted-foreground mt-1 text-xs">{a.message}</p>
+            <Tile icon={AlertTriangle} title="Active alerts" className="lg:col-span-2">
+              {activeAlerts.length === 0 ? (
+                <EmptyState title="No active alerts." />
+              ) : (
+                activeAlerts.map((a) => (
+                  <div key={a.id} className="border-border/60 bg-card rounded-lg border px-3 py-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-medium">{a.title}</span>
+                      <Chip tone={severityTone(a.severity)}>{a.severity}</Chip>
                     </div>
-                  ))
-                )}
-              </CardContent>
-            </Card>
+                    <p className="text-muted-foreground mt-1 text-xs">{a.message}</p>
+                  </div>
+                ))
+              )}
+            </Tile>
           </div>
         </Section>
 

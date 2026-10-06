@@ -3,10 +3,19 @@
 import Link from 'next/link';
 import { Activity, Globe, Radio } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { Section, StatCard } from '../_lib/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Section } from '../_lib/ui';
 import type { AnalyticsGeoLive, AnalyticsRealtime, AnalyticsTicker } from '@/lib/api/admin-stats';
-import { AdminPage, Chip, ErrorState, LoadingState, crowdChipClass } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  StatTile,
+  Tile,
+  crowdChipClass,
+} from '../_ui/primitives';
 
 const TREND_ICON: Record<string, string> = { rising: '▲', falling: '▼', stable: '·' };
 const TREND_COLOR: Record<string, string> = {
@@ -29,26 +38,28 @@ export default function AnalyticsPage() {
     <AdminPage width="wide">
       <Section icon={Activity} title="Realtime counts">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          <StatCard label="Open parks" value={c.openParks} sub={`of ${c.parks}`} />
-          <StatCard label="Open rides" value={c.openAttractions} sub={`of ${c.attractions}`} />
-          <StatCard label="Shows" value={c.shows} />
-          <StatCard label="Restaurants" value={c.restaurants} />
-          <StatCard label="Total wait" value={`${c.totalWaitTime.toLocaleString('en-GB')}'`} />
-          <StatCard label="Queue records" value={c.queueDataRecords.toLocaleString('en-GB')} />
+          <StatTile label="Open parks" value={c.openParks} sub={`of ${c.parks}`} />
+          <StatTile label="Open rides" value={c.openAttractions} sub={`of ${c.attractions}`} />
+          <StatTile label="Shows" value={c.shows} />
+          <StatTile label="Restaurants" value={c.restaurants} />
+          <StatTile label="Total wait" value={`${c.totalWaitTime.toLocaleString('en-GB')}'`} />
+          <StatTile label="Queue records" value={c.queueDataRecords.toLocaleString('en-GB')} />
         </div>
       </Section>
 
       <Section icon={Globe} title="Geographic activity">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {(geo.data?.continents ?? []).map((cont) => (
-            <Card key={cont.slug} className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center justify-between text-sm capitalize">
-                  {cont.slug.replace(/-/g, ' ')}
-                  <span className="text-primary font-mono tabular-nums">{cont.openParkCount}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-1">
+            <Tile
+              key={cont.slug}
+              title={cont.slug.replace(/-/g, ' ')}
+              action={
+                <span className="text-primary font-mono text-sm tabular-nums">
+                  {cont.openParkCount}
+                </span>
+              }
+            >
+              <div className="space-y-1">
                 {cont.countries
                   .slice()
                   .sort((a, b) => b.openParkCount - a.openParkCount)
@@ -61,15 +72,15 @@ export default function AnalyticsPage() {
                       <span className="font-mono tabular-nums">{country.openParkCount}</span>
                     </div>
                   ))}
-              </CardContent>
-            </Card>
+              </div>
+            </Tile>
           ))}
         </div>
       </Section>
 
       <Section icon={Radio} title="Live ticker">
-        <Card className="border-border/60">
-          <CardContent className="divide-border/40 divide-y pt-2">
+        <Panel>
+          <PanelBody className="divide-border/40 divide-y py-2">
             {(ticker.data?.items ?? []).slice(0, 25).map((item, i) => (
               <Link
                 key={`${item.attractionSlug}-${i}`}
@@ -93,8 +104,8 @@ export default function AnalyticsPage() {
                 </span>
               </Link>
             ))}
-          </CardContent>
-        </Card>
+          </PanelBody>
+        </Panel>
         {ticker.data && (
           <p className="text-muted-foreground text-right text-xs">
             Generated {new Date(ticker.data.generatedAt).toLocaleTimeString('en-GB')}
