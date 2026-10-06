@@ -4,6 +4,7 @@ import { Fragment, useCallback, useEffect, useState } from 'react';
 import { differenceInSeconds } from 'date-fns';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 interface FlipClockProps {
   targetDate: string;
@@ -92,13 +93,14 @@ export function FlipClock({ targetDate, labels }: FlipClockProps) {
     return diffInSeconds <= 0;
   }, []);
 
-  // Initial stamp, deferred one task (no sync setState in the effect body) and
-  // ungated — the digits must be real before the IntersectionObserver's first
-  // callback flips `active`.
-  useEffect(() => {
-    const init = setTimeout(() => applyTimeLeft(new Date(targetDate)), 0);
-    return () => clearTimeout(init);
-  }, [targetDate, applyTimeLeft]);
+  // Stamped in the first mounted render, and again when the target changes, not gated on
+  // `active`: the digits must be real before the IntersectionObserver's first callback.
+  const mounted = useMounted();
+  const [stampedFor, setStampedFor] = useState<string | null>(null);
+  if (mounted && stampedFor !== targetDate) {
+    setStampedFor(targetDate);
+    applyTimeLeft(new Date(targetDate));
+  }
 
   // Per-second ticking only while watchable; clears itself for good once
   // expired (the interval's own tick detects it).

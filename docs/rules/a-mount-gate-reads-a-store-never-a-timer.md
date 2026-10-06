@@ -61,8 +61,8 @@ the hydration path (`use-tab-hash-routing.ts`), is deliberate and documented at 
 priority, so `useMounted()` there would turn the flip into a render a tap during hydration has to
 wait for. A flip as small as a switch's knob takes `useMounted()` (`theme-toggle.tsx`). A
 `setTimeout(…, 0)` that re-syncs a clock when a component becomes visible again
-(`weather-hourly-chart.tsx`, `nowcast-update-countdown.tsx`) runs once per visibility change, not
-once per mount.
+(`weather-hourly-chart.tsx`, `nowcast-update-countdown.tsx`, `ml-training-countdown.tsx`,
+`flip-clock.tsx`) runs once per visibility change, not once per mount.
 
 ## How to check
 
