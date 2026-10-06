@@ -10,7 +10,7 @@ import {
   waitTimeCrowdTier,
 } from '@/lib/utils/crowd-level-styles';
 import { formatGridTime } from '@/lib/planner/park-time';
-import { drawnBoxPx, heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
+import { drawnBoxPx, heightFor, laneBox, yFor, type DayGrid } from '@/lib/planner/day-grid';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
@@ -415,8 +415,7 @@ export function PlannerBlock({
           minutes: Math.abs(delta.minutes),
         });
 
-  const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
-  const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
+  const { left: laneLeft, width: laneWidth } = laneBox(lane);
 
   return (
     <li

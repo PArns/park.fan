@@ -19,8 +19,10 @@ import {
   drawnBoxPx,
   dayStartMin,
   heightFor,
+  laneBox,
   latestStart,
   minuteAt,
+  NO_LANE,
   packLanes,
   packedSpanMinutes,
   rideFloor,
@@ -130,13 +132,6 @@ interface PlannerDayGridProps {
    */
   onDragChange?: (dragging: boolean) => void;
 }
-
-/**
- * A lane's width, as the block itself computes it — same 2 px gutter, so a band
- * and the block it belongs to cannot drift apart at any lane count.
- */
-const laneWidth = (lane: { columns: number }) =>
-  `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
 
 /** How far from a live reading's own moment it may still speak for a block. */
 const LIVE_WINDOW_MIN = 45;
@@ -366,7 +361,7 @@ export function PlannerDayGrid({
         // Taron→F.L.Y.: the right arithmetic against the wrong pair as far as
         // anybody looking at it could tell. Reported as "the transfer is wrong,
         // and so is the distance — Winja's is in between".
-        lane: lanes.get(from.entry.id) ?? { column: 0, columns: 1, overflow: 0 },
+        lane: lanes.get(from.entry.id) ?? NO_LANE,
         fromMinute: from.entry.startMinute + (from.wait ?? 0),
         // What the block above is DRAWN at, which is not what its queue is: the
         // chip's room is measured against this edge, and `drawnBoxPx` is the
@@ -1365,7 +1360,7 @@ export function PlannerDayGrid({
                   ? null
                   : waitTimeCrowdTier(row.wait);
               if (!tone) return null;
-              const lane = layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 };
+              const lane = layout.lanes.get(row.entry.id) ?? NO_LANE;
               return (
                 <li
                   key={`band-${row.entry.id}`}
@@ -1377,8 +1372,7 @@ export function PlannerDayGrid({
                   style={{
                     top: band.top,
                     height: band.height,
-                    left: `calc((${laneWidth(lane)} + 2px) * ${lane.column})`,
-                    width: laneWidth(lane),
+                    ...laneBox(lane),
                     zIndex: 4,
                     maskImage: BAND_FADE,
                     WebkitMaskImage: BAND_FADE,
@@ -1465,7 +1459,7 @@ export function PlannerDayGrid({
                   /* THIS hour's regime, which on a measured day is not always
                      the day's — see `PlannerEstimate.tier`. */
                   tier={row.estimate.tier ?? tier}
-                  lane={layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
+                  lane={layout.lanes.get(row.entry.id) ?? NO_LANE}
                   land={row.ride?.land}
                   metresFromPrevious={previous?.leg.metres ?? null}
                   shows={showsByEntry.get(row.entry.id)}
@@ -1522,9 +1516,8 @@ export function PlannerDayGrid({
             const row = layout.rows.find((r) => r.entry.id === draggingId);
             if (!row) return null;
             const floor = rideFloor(grid, row.ride);
-            const lane = layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 };
-            const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
-            const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
+            const lane = layout.lanes.get(row.entry.id) ?? NO_LANE;
+            const { left: laneLeft, width: laneWidth } = laneBox(lane);
             return (
               <>
                 <div
@@ -1656,7 +1649,7 @@ function DragGhost({
          a measured hour and into a composed one is exactly the move whose edge
          has to change under the pointer. */
       tier={estimate.tier ?? tier}
-      lane={lane ?? { column: 0, columns: 1, overflow: 0 }}
+      lane={lane ?? NO_LANE}
       land={row.ride?.land}
       metresFromPrevious={null}
       showBandFigure={showBandFigure}

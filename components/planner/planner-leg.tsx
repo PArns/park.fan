@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import { yFor, type DayGrid, type LanePlacement } from '@/lib/planner/day-grid';
+import { laneBox, yFor, type DayGrid, type LanePlacement } from '@/lib/planner/day-grid';
 import { TRANSFER_CHIP_CLASS, TRANSFER_RAIL_CLASS } from '@/lib/planner/leg-styles';
 import { legChipPlacement } from '@/lib/planner/leg-chip';
 import { legDeficit, type Leg } from '@/lib/planner/leg';
@@ -76,8 +76,7 @@ export function PlannerLeg({
   const top = yFor(grid, fromMinute);
   const height = Math.max(0, yFor(grid, toMinute) - top);
 
-  const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
-  const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
+  const { left: laneLeft, width: laneWidth } = laneBox(lane);
 
   const verdictLabel = t(`transfer.${leg.verdict}`);
   const broken = leg.verdict === 'broken';

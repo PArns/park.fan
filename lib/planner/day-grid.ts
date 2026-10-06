@@ -783,6 +783,18 @@ export interface LanePlacement {
   overflow: number;
 }
 
+/** The lane of a block that shares its time with nothing: the full width. */
+export const NO_LANE: LanePlacement = { column: 0, columns: 1, overflow: 0 };
+
+/** A lane's horizontal box as CSS, so a block, its band and its leg cannot drift apart. */
+export function laneBox(lane: Pick<LanePlacement, 'column' | 'columns'>): {
+  left: string;
+  width: string;
+} {
+  const width = `calc((100% - ${(lane.columns - 1) * LANE_GUTTER_PX}px) / ${lane.columns})`;
+  return { left: `calc((${width} + ${LANE_GUTTER_PX}px) * ${lane.column})`, width };
+}
+
 /**
  * Which column each block sits in, Outlook-style.
  *
