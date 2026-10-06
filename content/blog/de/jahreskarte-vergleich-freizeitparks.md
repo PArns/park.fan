@@ -165,8 +165,8 @@ Bei allen Stufen gilt der Preis pro Person. Zwei Erwachsene mit Classic zahlen 4
 Der Sprung von Classic auf Plus kostet 70 €, der von Plus auf Premium 90 €. Beide Sprünge kaufen Tage
 und keine Leistung am Tag selbst: Von Classic auf Plus kommen in der Rechnung für 2027 43 Tage dazu, von
 Plus auf Premium 25. Auf einen zusätzlichen Tag gerechnet kostet die Plus gegenüber der Classic 1,63 €,
-die Premium gegenüber der Plus 3,60 €. Das ist weniger als jeder Tagespreis. Entscheidend ist aber nicht
-der Preis eines Tages, sondern ob du an diesen Tagen kommen willst. Wer in diesen Wochen nie kommt,
+die Premium gegenüber der Plus 3,60 €. Das ist weniger als jeder Tagespreis. Entscheidend ist, ob du an diesen
+Tagen kommen willst. Wer in diesen Wochen nie kommt,
 braucht die 43 Tage nicht.
 
 Dazu kommt der Wochentag. Im Efteling liegt zwischen dem ruhigsten und dem vollsten Wochentag nur eine
@@ -181,7 +181,7 @@ der Tageskarte, wer sechsmal oder öfter fährt, ist mit der Classic billiger dr
 Rabatt auf den Parkschein schon ab dem vierten bis sechsten Besuch.
 
 Die nächsten ruhigen Tage im Efteling zeigt das Widget. Die Tage, an denen die Classic nicht gilt, kannst du
-daneben legen.
+mit der Sperrtagsliste oben abgleichen.
 
 ```best-days-widget slug=efteling
 
@@ -205,7 +205,7 @@ Auto günstiger. Die gedruckte Karte kostet bei Silber 5 € extra, bei Gold ist
 Derzeit gibt es keine neue Karte. Der Park schreibt auf seiner Seite, das Kontingent sei erschöpft und
 der ResortPass bis auf Weiteres nicht erhältlich, auch nicht am Telefon, per E-Mail oder vor Ort.
 Wer schon eine Karte hat, wird vor dem Ablauf über die Verlängerung informiert. Die Rechnung für eine
-Neukarte ist deshalb erst relevant, wenn der Verkauf wieder aufgeht, und wann das ist, steht nirgends.
+Neukarte ist deshalb erst relevant, wenn der Verkauf wieder aufgeht, und wann das ist, sagt der Park nicht.
 
 Die Tageskarte kostet für Erwachsene 67 bis 76 €, für Kinder und Senioren 56,50 bis 65 €.
 
@@ -344,14 +344,13 @@ steht und die Karte an ihm gilt, passt sie zu deinem Plan.
 
 ```
 
-Die Spalte ist das, was eine Jahreskarte nicht kauft. Sie verkauft Zugang, nicht den passenden Tag. Wer
-unter der Woche kommen kann, hat mit Classic im Efteling und Magic Member im Toverland die größte
+Wer unter der Woche kommen kann, hat mit Classic im Efteling und Magic Member im Toverland die größte
 Freiheit zum kleinsten Preis. Wer nur am Wochenende frei hat, kommt beim Efteling mit Plus oder
 Premium besser, und beim Europa-Park mit Gold.
 
 ## Wer welche Karte braucht
 
-Das ist meine Einschätzung aus den Zahlen oben, kein Kauftipp. Ich kenne weder deinen Wohnort noch deine
+Das ist meine Einschätzung aus den Zahlen oben. Ich kenne weder deinen Wohnort noch deine
 freien Tage.
 
 Der Efteling mit Classic funktioniert, wenn du außerhalb der Ferien kommen kannst und mindestens sechsmal im
