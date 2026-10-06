@@ -20,9 +20,18 @@ const SHOW_FOLLOWS_KEY = 'parkfan_show_follows';
 const RIDE_ALERTS_KEY = 'parkfan_ride_alerts';
 export const PUSH_FOLLOWS_CHANGED_EVENT = 'push-follows-changed';
 
+/** `RideAlertRemote.kind` of an alert that fires when a ride opens, not on a wait time. */
+export type RideAlertKind = 'reopen';
+
 export interface RideAlertLocal {
   attractionId: string;
-  thresholdMinutes: number;
+  /** `null` for a reopen alert, which has no threshold. */
+  thresholdMinutes: number | null;
+  /**
+   * Absent or `null` is the wait-time alert, which is also every entry written before the
+   * reopen kind existed.
+   */
+  kind?: RideAlertKind | null;
 }
 
 /**
@@ -121,7 +130,8 @@ function readRideAlerts(): RideAlertLocal[] {
             typeof entry === 'object' &&
             entry !== null &&
             typeof (entry as RideAlertLocal).attractionId === 'string' &&
-            typeof (entry as RideAlertLocal).thresholdMinutes === 'number'
+            ((entry as RideAlertLocal).kind === 'reopen' ||
+              typeof (entry as RideAlertLocal).thresholdMinutes === 'number')
         )
       : [];
     rideAlertsCache = { raw, data };
@@ -234,10 +244,22 @@ export function listRideAlertsLocal(): RideAlertLocal[] {
   return readRideAlerts();
 }
 
-export function setRideAlertLocal(attractionId: string, thresholdMinutes: number): void {
+/** One entry per ride, whichever kind: setting one kind replaces the other, as the API does. */
+export function setRideAlertLocal(
+  attractionId: string,
+  thresholdMinutes: number | null,
+  kind: RideAlertKind | null = null
+): void {
   const current = readRideAlerts();
   const next = current.filter((entry) => entry.attractionId !== attractionId);
-  next.push({ attractionId, thresholdMinutes });
+  next.push(
+    kind === 'reopen'
+      ? { attractionId, thresholdMinutes: null, kind }
+      : {
+          attractionId,
+          thresholdMinutes,
+        }
+  );
   writeJson(RIDE_ALERTS_KEY, next);
 }
 

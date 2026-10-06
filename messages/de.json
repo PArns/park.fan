@@ -1910,8 +1910,8 @@
       "viewAll": "Meine Alarme"
     },
     "rideBell": {
-      "setAlert": "Wartezeit-Alarm für {name} einrichten",
-      "alerted": "Wartezeit-Alarm für {name} aktiv – zum Bearbeiten tippen"
+      "setAlert": "Alarm für {name} einrichten",
+      "alerted": "Alarm für {name} aktiv – zum Bearbeiten tippen"
     },
     "rideDialog": {
       "title": "Wartezeit-Alarme",
@@ -1938,7 +1938,12 @@
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
       "todayOnly": "Gilt nur für den heutigen Tag – für einen anderen Besuchstag muss der Alarm neu eingerichtet werden.",
-      "loadError": "Die Alarme konnten nicht geladen werden."
+      "loadError": "Die Alarme konnten nicht geladen werden.",
+      "kindLabel": "Worüber soll der Alarm informieren?",
+      "kindWait": "Wartezeit unter Marke",
+      "kindReopen": "Bescheid, wenn sie wieder öffnet",
+      "reopenLabel": "wenn sie wieder öffnet",
+      "reopenHint": "Eine Nachricht, sobald das Fahrgeschäft nach einer Schließung oder Störung wieder läuft."
     },
     "overview": {
       "title": "Meine Alarme",
@@ -1954,7 +1959,8 @@
       "retired": "Abgebaut",
       "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden.",
       "showAt": "um {time} Uhr",
-      "showNextAny": "jeweils nächste Vorstellung"
+      "showNextAny": "jeweils nächste Vorstellung",
+      "reopenLabel": "wenn sie wieder öffnet"
     },
     "menu": {
       "link": "Meine Alarme",
@@ -1965,7 +1971,8 @@
       "remove": "{name}: Alarm entfernen",
       "removeError": "Der Alarm ließ sich nicht entfernen und ist weiter scharf. Bitte noch einmal versuchen.",
       "removeRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
-      "loadError": "Die Alarme konnten nicht geladen werden."
+      "loadError": "Die Alarme konnten nicht geladen werden.",
+      "reopen": "wenn wieder offen"
     },
     "pushErrors": {
       "generic": "Das hat nicht geklappt. Bitte noch einmal versuchen.",

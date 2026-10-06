@@ -12,6 +12,7 @@ import {
   removeRideAlertLocal,
   setRideAlertLocal,
   setShowFollowedLocal,
+  type RideAlertKind,
 } from './push-follows-store';
 
 /**
@@ -30,7 +31,10 @@ export interface RideAlertRemote {
   parkName: string;
   parkSlug: string;
   path: string | null;
-  thresholdMinutes: number;
+  /** `null` is the wait-time alert, the only kind before `reopen` existed. */
+  kind?: RideAlertKind | null;
+  /** `null` for a reopen alert, which has no threshold. */
+  thresholdMinutes: number | null;
   armed: boolean;
   createdAt: string;
   /** Accepted at write time regardless — see the API's own `create` comment. */
@@ -213,6 +217,9 @@ export async function unfollowShow(showId: string): Promise<PushWriteResult<void
   return result;
 }
 
+/** What an alert is about: a wait dropping under a threshold, or the ride opening again. */
+type RideAlertWhat = { thresholdMinutes: number } | { kind: RideAlertKind };
+
 /**
  * Returns the server's own row, not just whether the write succeeded — a
  * caller updating its own list optimistically needs the real
@@ -222,32 +229,53 @@ export async function unfollowShow(showId: string): Promise<PushWriteResult<void
 async function postRideAlert(
   identity: { endpoint: string },
   attractionId: string,
-  thresholdMinutes: number
+  what: RideAlertWhat
 ): Promise<PushWriteResult<RideAlertRemote>> {
   try {
     const response = await fetch('/api/push/ride-alerts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ endpoint: identity.endpoint, attractionId, thresholdMinutes }),
+      // A reopen alert sends no threshold: the API's DTO asks for one only without a `kind`.
+      body: JSON.stringify({
+        endpoint: identity.endpoint,
+        attractionId,
+        ...('kind' in what ? { kind: what.kind } : { thresholdMinutes: what.thresholdMinutes }),
+      }),
     });
     if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
     const alert = (await response.json()) as RideAlertRemote;
-    setRideAlertLocal(attractionId, thresholdMinutes);
+    if ('kind' in what) setRideAlertLocal(attractionId, null, what.kind);
+    else setRideAlertLocal(attractionId, what.thresholdMinutes);
     return { ok: true, value: alert };
   } catch {
     return { ok: false, error: { reason: 'network' } };
   }
 }
 
-export async function setRideAlert(
+export function setRideAlert(
   attractionId: string,
   thresholdMinutes: number
+): Promise<PushWriteResult<RideAlertRemote>> {
+  return writeRideAlert(attractionId, { thresholdMinutes });
+}
+
+/**
+ * "Tell me when this ride opens again". The API keeps one alert per ride and browser, so this
+ * replaces a wait-time alert on the same ride, and `setRideAlert` replaces this one.
+ */
+export function setReopenAlert(attractionId: string): Promise<PushWriteResult<RideAlertRemote>> {
+  return writeRideAlert(attractionId, { kind: 'reopen' });
+}
+
+async function writeRideAlert(
+  attractionId: string,
+  what: RideAlertWhat
 ): Promise<PushWriteResult<RideAlertRemote>> {
   const registration = await identityForWrite();
   if (!registration.ok) {
     return { ok: false, error: { reason: 'unavailable', cause: registration.cause } };
   }
-  const result = await postRideAlert(registration.identity, attractionId, thresholdMinutes);
+  const result = await postRideAlert(registration.identity, attractionId, what);
   if (result.ok || result.error.reason !== 'not-found') return result;
   // Same reasoning as `followShow` — a 404 here most likely means the
   // backend's copy of this browser's subscription is gone, not that the
@@ -255,7 +283,7 @@ export async function setRideAlert(
   // the subscription once and retry before giving up.
   const resynced = await ensurePushRegistered();
   if (!resynced.ok) return result;
-  return postRideAlert(resynced.identity, attractionId, thresholdMinutes);
+  return postRideAlert(resynced.identity, attractionId, what);
 }
 
 /** Same contract as `unfollowShow` — see there for why the mirror moves last. */

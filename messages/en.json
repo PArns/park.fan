@@ -1910,8 +1910,8 @@
       "viewAll": "My alerts"
     },
     "rideBell": {
-      "setAlert": "Set a wait-time alert for {name}",
-      "alerted": "Wait-time alert for {name} is on – tap to edit"
+      "setAlert": "Set an alert for {name}",
+      "alerted": "Alert for {name} is on – tap to edit"
     },
     "rideDialog": {
       "title": "Wait-time alerts",
@@ -1938,7 +1938,12 @@
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
       "todayOnly": "Applies to today only – set it up again for another visit day.",
-      "loadError": "Couldn't load your alerts."
+      "loadError": "Couldn't load your alerts.",
+      "kindLabel": "What should the alert tell you about?",
+      "kindWait": "Wait under a threshold",
+      "kindReopen": "Tell me when it reopens",
+      "reopenLabel": "when it reopens",
+      "reopenHint": "One message when the ride is running again after a closure or breakdown."
     },
     "overview": {
       "title": "My alerts",
@@ -1954,7 +1959,8 @@
       "retired": "Retired",
       "loadError": "Couldn't load the list. Please reload the page.",
       "showAt": "at {time}",
-      "showNextAny": "whichever performance is next"
+      "showNextAny": "whichever performance is next",
+      "reopenLabel": "when it reopens"
     },
     "menu": {
       "link": "My alerts",
@@ -1965,7 +1971,8 @@
       "remove": "{name}: remove alert",
       "removeError": "The alert couldn’t be removed and is still armed. Please try again.",
       "removeRateLimited": "Too many attempts. Try again in {seconds} seconds.",
-      "loadError": "Couldn't load your alerts."
+      "loadError": "Couldn't load your alerts.",
+      "reopen": "when it reopens"
     },
     "pushErrors": {
       "generic": "That didn’t work. Please try again.",

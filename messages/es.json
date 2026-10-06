@@ -1910,7 +1910,7 @@
       "viewAll": "Mis avisos"
     },
     "rideBell": {
-      "setAlert": "Configurar aviso de tiempo de espera para {name}",
+      "setAlert": "Configurar aviso para {name}",
       "alerted": "Aviso activo para {name} – toca para editarlo"
     },
     "rideDialog": {
@@ -1938,7 +1938,12 @@
       "retired": "Retirada",
       "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
       "todayOnly": "Solo es válido para hoy: para otro día de visita hay que configurarlo de nuevo.",
-      "loadError": "No se pudieron cargar tus avisos."
+      "loadError": "No se pudieron cargar tus avisos.",
+      "kindLabel": "¿Sobre qué quieres que avise?",
+      "kindWait": "Espera bajo un límite",
+      "kindReopen": "Avisarme cuando reabra",
+      "reopenLabel": "cuando reabra",
+      "reopenHint": "Un mensaje en cuanto la atracción vuelva a funcionar tras un cierre o una avería."
     },
     "overview": {
       "title": "Mis avisos",
@@ -1954,7 +1959,8 @@
       "retired": "Retirada",
       "loadError": "No se pudo cargar la lista. Recarga la página.",
       "showAt": "a las {time}",
-      "showNextAny": "próxima función"
+      "showNextAny": "próxima función",
+      "reopenLabel": "cuando reabra"
     },
     "menu": {
       "link": "Mis avisos",
@@ -1965,7 +1971,8 @@
       "remove": "{name}: quitar aviso",
       "removeError": "No se pudo quitar el aviso y sigue activo. Inténtalo de nuevo.",
       "removeRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
-      "loadError": "No se pudieron cargar tus avisos."
+      "loadError": "No se pudieron cargar tus avisos.",
+      "reopen": "cuando reabra"
     },
     "pushErrors": {
       "generic": "No ha funcionado. Inténtalo de nuevo.",

@@ -1910,8 +1910,8 @@
       "viewAll": "Mijn meldingen"
     },
     "rideBell": {
-      "setAlert": "Wachttijdmelding voor {name} instellen",
-      "alerted": "Wachttijdmelding voor {name} actief – tik om te bewerken"
+      "setAlert": "Melding voor {name} instellen",
+      "alerted": "Melding voor {name} actief – tik om te bewerken"
     },
     "rideDialog": {
       "title": "Wachttijdmeldingen",
@@ -1938,7 +1938,12 @@
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
       "todayOnly": "Geldt alleen voor vandaag – voor een andere bezoekdag moet de melding opnieuw worden ingesteld.",
-      "loadError": "De meldingen konden niet worden geladen."
+      "loadError": "De meldingen konden niet worden geladen.",
+      "kindLabel": "Waarover moet de melding gaan?",
+      "kindWait": "Wachttijd onder een grens",
+      "kindReopen": "Meld me als hij weer opengaat",
+      "reopenLabel": "als hij weer opengaat",
+      "reopenHint": "Eén bericht zodra de attractie na een sluiting of storing weer draait."
     },
     "overview": {
       "title": "Mijn meldingen",
@@ -1954,7 +1959,8 @@
       "retired": "Gesloopt",
       "loadError": "De lijst kon niet worden geladen. Herlaad de pagina.",
       "showAt": "om {time}",
-      "showNextAny": "eerstvolgende voorstelling"
+      "showNextAny": "eerstvolgende voorstelling",
+      "reopenLabel": "als hij weer opengaat"
     },
     "menu": {
       "link": "Mijn meldingen",
@@ -1965,7 +1971,8 @@
       "remove": "{name}: melding verwijderen",
       "removeError": "De melding kon niet worden verwijderd en staat nog aan. Probeer het nogmaals.",
       "removeRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
-      "loadError": "De meldingen konden niet worden geladen."
+      "loadError": "De meldingen konden niet worden geladen.",
+      "reopen": "als hij weer open is"
     },
     "pushErrors": {
       "generic": "Dat is niet gelukt. Probeer het nogmaals.",
