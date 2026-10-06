@@ -90,13 +90,20 @@ export const SUBDIVISION_NAMES: Record<string, string> = {
   'DK-84': 'Sjælland',
 };
 
+const regionDisplayNames = new Map<string, Intl.DisplayNames>();
+
 /**
  * Localised country name for a 2-letter ISO code via `Intl.DisplayNames`
  * (falls back to the raw code). Covers every locale the app ships.
  */
 export function getCountryName(countryCode: string, locale: string): string {
   try {
-    return new Intl.DisplayNames([locale], { type: 'region' }).of(countryCode) ?? countryCode;
+    let names = regionDisplayNames.get(locale);
+    if (!names) {
+      names = new Intl.DisplayNames([locale], { type: 'region' });
+      regionDisplayNames.set(locale, names);
+    }
+    return names.of(countryCode) ?? countryCode;
   } catch {
     return countryCode;
   }
