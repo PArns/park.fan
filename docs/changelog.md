@@ -11,9 +11,9 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
-## 2.15.0 (2026-10-05) – Shows im Tagesplaner, der ruhigste Tag je Favorit und die App im Footer
+## 2.15.0 (2026-10-06) – Shows im Tagesplaner, der ruhigste Tag je Favorit und die App im Footer
 
-Geschnitten am 2026-10-05 aus 61 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.15.0.md`. Neueste Abschnitte zuerst.
+Geschnitten am 2026-10-06 aus 61 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.15.0.md`. Neueste Abschnitte zuerst.
 
 ### Planer: nach einer Show wird weder Ausgang noch Fahrt gerechnet, und eine Show ohne Koordinaten hat überall dieselbe Untergrenze
 
