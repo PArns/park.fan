@@ -6,6 +6,7 @@ import { Clock } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { useParkHourlyProfile } from '@/lib/hooks/use-park-hourly-profile';
 import { hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
@@ -93,7 +94,7 @@ export function ParkHourlyProfileCard({
 
   // Hour headers through Intl rather than a translated list: "9 Uhr" / "9 a.m." / "ore 9" are the
   // runtime's job, and the weekday names on the comparison table are already sourced this way.
-  const hourFormat = new Intl.DateTimeFormat(locale, { hour: 'numeric' });
+  const hourFormat = getDateTimeFormat(locale, { hour: 'numeric' });
   const hourLabel = (h: number) => hourFormat.format(new Date(Date.UTC(2023, 0, 1, h)));
 
   if (isPending && !initialProfile) {
@@ -239,7 +240,7 @@ export function ParkHourlyProfileCard({
         {labels.peakNote}{' '}
         {labels.footnote.replace(
           '{days}',
-          new Intl.NumberFormat(locale).format(profile.meta.totalSampleDays)
+          getNumberFormat(locale).format(profile.meta.totalSampleDays)
         )}
       </p>
     </GlassCard>

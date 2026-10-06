@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import type { FastPass } from '@/lib/api/types';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 
 /**
  * "QuickPass: 12 €" — the queue-jump product a ride sells.
@@ -85,7 +86,7 @@ export function formatFastPass(
   const amount = price ?? priceFrom;
   if (amount === null || amount === undefined || !currency) return name;
 
-  const formatted = new Intl.NumberFormat(locale, {
+  const formatted = getNumberFormat(locale, {
     style: 'currency',
     currency,
     // A pass costs 12 €, not 12,00 € — but 12,50 € keeps its cents.

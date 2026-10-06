@@ -91,6 +91,22 @@ export function getRelativeTimeFormat(
   return formatter;
 }
 
+const listFormatters = new Map<string, Intl.ListFormat>();
+
+/** Cached {@link Intl.ListFormat}. Same arguments → same instance. */
+export function getListFormat(
+  locale?: string | string[],
+  options?: Intl.ListFormatOptions
+): Intl.ListFormat {
+  const key = cacheKey(locale, options);
+  let formatter = listFormatters.get(key);
+  if (!formatter) {
+    formatter = new Intl.ListFormat(locale, options);
+    listFormatters.set(key, formatter);
+  }
+  return formatter;
+}
+
 /** Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`. */
 export function formatTime(
   value: number | Date,

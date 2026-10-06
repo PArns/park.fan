@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { ParkCalendarMonthIndexChip } from '@/components/parks/park-calendar-month-index-chip';
 import {
   parkCalendarMonthsBack,
@@ -83,10 +84,9 @@ export async function ParkCalendarMonthIndex({
     activeMonth ? m.year === activeMonth.year && m.month === activeMonth.month : isCurrent(m);
 
   /** Month name only — the year is the group's own heading, so repeating it in 25 chips is noise. */
+  const monthFormat = getDateTimeFormat(locale, { month: 'short', timeZone: 'UTC' });
   const shortLabel = (m: ParkCalendarMonth) =>
-    new Intl.DateTimeFormat(locale, { month: 'short', timeZone: 'UTC' }).format(
-      new Date(Date.UTC(m.year, m.month - 1, 1))
-    );
+    monthFormat.format(new Date(Date.UTC(m.year, m.month - 1, 1)));
 
   return (
     <nav aria-label={t('monthIndexLabel')} className={cn(className)}>

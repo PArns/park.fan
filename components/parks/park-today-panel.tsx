@@ -24,6 +24,7 @@ import { Progress } from '@/components/ui/progress';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
+import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
@@ -292,12 +293,12 @@ export function ParkTodayPanel({
       .filter((d) => d.getTime() > renderedAtMs)
       .sort((a, b) => a.getTime() - b.getTime())[0];
     if (!next) return null;
-    const date = next.toLocaleDateString(locale, {
+    const date = getDateTimeFormat(locale, {
       day: 'numeric',
       month: 'long',
       timeZone: timezone,
-    });
-    const time = next.toLocaleTimeString(locale, {
+    }).format(next);
+    const time = formatTime(next, locale, {
       hour: '2-digit',
       minute: '2-digit',
       timeZone: timezone,

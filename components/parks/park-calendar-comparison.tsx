@@ -26,6 +26,7 @@ import {
 } from '@/lib/parks/day-comparison';
 import { CROWD_TEXT_CLASS, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { DialogHero } from '@/components/common/dialog-hero';
@@ -237,19 +238,7 @@ export function ParkCalendarComparison({
       case 'days':
         return t('dayComparison.unitFlags', { value });
       case 'currency':
-        // `Intl.NumberFormat` throws a `RangeError` on a currency it does not know, and this runs
-        // inside render — an unrecognised code would take the whole dialog down rather than one
-        // row. `compareDays` already refuses anything that is not three letters; this is the
-        // second half of the same guard, because a `RangeError` here costs more than a fallback.
-        try {
-          return new Intl.NumberFormat(locale, {
-            style: 'currency',
-            currency: comparison.currency ?? 'EUR',
-            maximumFractionDigits: 0,
-          }).format(value);
-        } catch {
-          return `${Math.round(value)} ${comparison.currency ?? 'EUR'}`;
-        }
+        return formatWholeCurrency(value, locale, comparison.currency ?? 'EUR');
     }
   };
 
@@ -282,11 +271,7 @@ export function ParkCalendarComparison({
       case 'days':
         return t('dayComparison.unitFlags', { value: delta });
       case 'currency':
-        return new Intl.NumberFormat(locale, {
-          style: 'currency',
-          currency: comparison.currency ?? 'EUR',
-          maximumFractionDigits: 0,
-        }).format(delta);
+        return formatWholeCurrency(delta, locale, comparison.currency ?? 'EUR');
     }
   };
 
@@ -539,4 +524,21 @@ export function ParkCalendarComparison({
 /** `crowd` → `Crowd`, for the message key. Cheaper than a second lookup table that can drift. */
 function capitalize(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+/** A price in whole units of the park's currency, for the price row's cells and its difference. */
+function formatWholeCurrency(value: number, locale: string, currency: string): string {
+  // `Intl.NumberFormat` throws a `RangeError` on a currency it does not know, and this runs
+  // inside render: an unrecognised code would take the whole dialog down rather than one row.
+  // `compareDays` already refuses anything that is not three letters; this is the second half
+  // of the same guard.
+  try {
+    return getNumberFormat(locale, {
+      style: 'currency',
+      currency,
+      maximumFractionDigits: 0,
+    }).format(value);
+  } catch {
+    return `${Math.round(value)} ${currency}`;
+  }
 }

@@ -20,6 +20,7 @@ import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-gr
 import { Link, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
@@ -125,7 +126,7 @@ export function ParkCalendarPanel({
   const isCurrentMonth =
     month === null || (month.year === currentMonth.year && month.month === currentMonth.month);
   const label = (m: ParkCalendarMonth) =>
-    new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
+    getDateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
       new Date(Date.UTC(m.year, m.month - 1, 1))
     );
 

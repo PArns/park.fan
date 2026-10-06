@@ -3,6 +3,7 @@ import { CalendarRange, ExternalLink, Ticket } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { ParkSeason, ParkSeasonStatus } from '@/lib/api/types';
 
 /**
@@ -28,16 +29,18 @@ const STATUS_TONE: Record<ParkSeasonStatus, string> = {
   cancelled: 'border-border/60 bg-muted/50 text-muted-foreground',
 };
 
+const SHORT_DATE: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
+const FULL_DATE: Intl.DateTimeFormatOptions = { ...SHORT_DATE, year: 'numeric' };
+
 function formatRange(locale: string, start: string, end: string): string {
   const from = new Date(`${start}T12:00:00Z`);
   const to = new Date(`${end}T12:00:00Z`);
   if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) return `${start} – ${end}`;
 
   const sameYear = from.getUTCFullYear() === to.getUTCFullYear();
-  const short: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
-  const full: Intl.DateTimeFormatOptions = { ...short, year: 'numeric' };
+  const fromFormat = getDateTimeFormat(locale, sameYear ? SHORT_DATE : FULL_DATE);
 
-  return `${from.toLocaleDateString(locale, sameYear ? short : full)} – ${to.toLocaleDateString(locale, full)}`;
+  return `${fromFormat.format(from)} – ${getDateTimeFormat(locale, FULL_DATE).format(to)}`;
 }
 
 /**

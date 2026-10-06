@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { getListFormat } from '@/lib/utils/intl-format';
 
 interface CitySummarySectionProps {
   cityName: string;
@@ -13,9 +14,7 @@ interface CitySummarySectionProps {
 export async function CitySummarySection({ cityName, parkNames, locale }: CitySummarySectionProps) {
   const t = await getTranslations('explore.citySummary');
   // `Intl.ListFormat` joins with the locale's own conjunction („und", „en", „y").
-  const parks = new Intl.ListFormat(locale, { style: 'long', type: 'conjunction' }).format(
-    parkNames
-  );
+  const parks = getListFormat(locale, { style: 'long', type: 'conjunction' }).format(parkNames);
 
   return (
     <section aria-label={cityName} className="mb-8">

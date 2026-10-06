@@ -5,7 +5,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getParkArticleForms } from '@/lib/faq/park-faq';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import type { CalendarMonthSummary, NamedCalendarDay } from '@/lib/parks/calendar-month-summary';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -85,7 +85,7 @@ export async function ParkCalendarMonthSummary({
         timeZone: 'UTC',
       }).format(new Date(`${d.date}T00:00:00Z`))
     );
-    return new Intl.ListFormat(locale, { style: 'long', type: 'conjunction' }).format(parts);
+    return getListFormat(locale, { style: 'long', type: 'conjunction' }).format(parts);
   };
 
   // Past months are a record, future months a forecast, and the verb has to say which — „am

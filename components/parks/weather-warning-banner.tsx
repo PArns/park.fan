@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { WeatherNowcast, WeatherWarning } from '@/lib/api/types';
@@ -315,7 +316,7 @@ function formatValidity(
     if (!iso) return null;
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return null;
-    return new Intl.DateTimeFormat(locale, {
+    return getDateTimeFormat(locale, {
       weekday: 'short',
       hour: '2-digit',
       minute: '2-digit',
