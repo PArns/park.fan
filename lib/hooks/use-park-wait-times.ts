@@ -5,6 +5,7 @@ import type {
   ParkWaitTimesResponse,
   QueueDataItem,
 } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 /** Live, per-ride fields the blog's ride references overlay client-side. */
 export interface LiveRideFields {
@@ -63,12 +64,7 @@ export function useParkWaitTimes(
     // Client-only: during the static (Cache Components) prerender the consumers render from the
     // server-resolved snapshot, and activating React Query there would read the clock.
     enabled: enabled && !!parkSlug && typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 
   // Data only — subscribing consumers to `isFetching` would re-render every ride reference in the

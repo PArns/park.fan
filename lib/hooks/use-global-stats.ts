@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { GlobalStats } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 /**
  * Client-side refresh of the global "right now" statistics (open parks / operating attractions).
@@ -18,11 +19,6 @@ export function useGlobalStats() {
       return res.json();
     },
     enabled: typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 }

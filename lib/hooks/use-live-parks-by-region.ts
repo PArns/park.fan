@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import type { LiveParkFields } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 export type { LiveParkFields };
 
@@ -46,12 +47,7 @@ export function useLiveParksByRegion(regions: string[]) {
     },
     // Run only on the client: the SSR/prerendered shell renders status-free cards.
     enabled: key.length > 0 && typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 
   // Expose ONLY the data. React Query v5 tracks which fields consumers read; returning

@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
 import { readParkSimulationParam } from '@/lib/parks/park-simulation';
 import type { ParkWithAttractions } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 interface UseLiveParkDataParams {
   continent: string;
@@ -141,11 +142,6 @@ export function useLiveParkData({
     // component renders from `initialData`; activating React Query server-side would read
     // Date.now() internally, which a static prerender forbids.
     enabled: enabled && typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 }

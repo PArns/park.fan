@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { GeoLiveStatsDto } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 /**
  * Batch-fetch live "open park" counts per continent/country.
@@ -18,12 +19,7 @@ export function useGeoLiveStats() {
       return res.json();
     },
     enabled: typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 }
 
