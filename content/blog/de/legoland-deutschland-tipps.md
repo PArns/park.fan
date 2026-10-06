@@ -8,8 +8,7 @@ featured: false
 excerpt: >-
   Das Legoland Deutschland baut für Kinder von zwei bis zwölf, und an keiner der
   neun Headliner-Bahnen spart ein früher Start genug Zeit für einen
-  Rope-Drop-Tipp. Dazu die Mindestgrößen der großen Bahnen, Fastrack, Halloween
-  bis zum 8. November und die Schließtage 2026.
+  Rope-Drop-Tipp. Die höchste Mindestgröße liegt bei 1,25 Metern, Fastrack kostet ab 25 € und Halloween läuft bis zum 8. November.
 tags:
   - legoland
   - guenzburg
@@ -51,8 +50,7 @@ seo:
 Das **Legoland Deutschland** sagt über sich selbst, dass es für Kinder zwischen **zwei und
 zwölf Jahren** gebaut ist. Die höchste Mindestgröße im ganzen Park liegt bei **1,25 Metern**, an der
 Bahn [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Und an keiner der neun
-Headliner-Bahnen spart ein früher Start so viel Zeit, dass wir einen Rope-Drop-Tipp aussprechen
-würden. Wer einen Tag in Günzburg plant, braucht deshalb weniger Taktik als in Rust oder Brühl
+Headliner-Bahnen spart ein früher Start so viel Zeit, dass wir einen Rope-Drop-Tipp geben würden. Wer einen Tag in Günzburg plant, braucht deshalb weniger Taktik als in Rust oder Brühl
 und mehr Aufmerksamkeit für Zentimeter und Alter.
 
 Dieser Guide geht von Kindern zwischen drei und zwölf aus, vom Kinderwagen bis zur ersten
@@ -72,7 +70,7 @@ nur noch 750.000, und 2024 waren es nach dem Index der Themed Entertainment Asso
 Millionen**. Damit ist das Legoland nach dem Europa-Park und dem Phantasialand der drittmeistbesuchte
 Freizeitpark Deutschlands. Betrieben wird er seit 2005 von Merlin Entertainments. 2019 übernahmen
 Kirkbi, die Beteiligungsfirma der Lego-Eigner, Blackstone und ein kanadischer Pensionsfonds Merlin
-für 6,6 Milliarden Euro, den Park führt weiterhin Merlin.
+für 6,6 Milliarden Euro. Den Park führt weiterhin Merlin.
 
 Heute hat der Park nach eigener Angabe **68 Attraktionen in 11 Themenwelten** und mehr als 58
 Millionen Lego-Steine. Das Miniland besteht laut Park aus über 23 Millionen davon, gebaut von 140
@@ -112,7 +110,7 @@ LEGO NINJAGO The Ride, nicht aber auf Maximus und nicht auf Flying NINJAGO. Daf�
 fünf beziehungsweise zehn Zentimeter. Wer zwei Kinder in verschiedenen Größen hat, plant deshalb zwei
 Listen und fährt bei den großen Bahnen abwechselnd.
 
-Die Grenze für Fahrten ohne Erwachsenen ist die wichtigere. Ein Achtjähriger mit 1,30 Metern darf
+Die Grenze für Fahrten ohne Erwachsene ist die wichtigere. Ein Achtjähriger mit 1,30 Metern darf
 bei den meisten Bahnen aus der Tabelle allein fahren, ein Sechsjähriger mit 1,20 Metern nur auf den
 kleineren. Bei Flying NINJAGO, Power Builder und der Wüsten X-kursion gibt es außerdem eine
 **Maximalgröße** von 1,95 Metern, bei Maximus von 2,00 Metern. Das betrifft vor allem Eltern, die
@@ -153,22 +151,19 @@ und sieben Jahre.
 
 Die **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** ist die Wildwasserbahn
 von Intamin aus dem Eröffnungsjahr, mit einer zwölf Meter langen Abfahrt, bei der laut Park 80 Liter
-Wasser pro Sekunde in die Lagune stürzen. Trocken kommt hier niemand heraus. Im Oktober ist das der
-Grund, warum Wechselkleidung im Rucksack liegen sollte.
+Wasser pro Sekunde in die Lagune stürzen. Trocken kommt hier niemand heraus, im Oktober gehört deshalb Wechselkleidung in den Rucksack.
 
 **[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** von 2017 ist keine
 Achterbahn, sondern eine interaktive 4D-Fahrt. Du schleuderst per Handbewegung Lichtblitze,
-Feuerbälle, Eisfontänen und Luftstöße auf animierte Gegner, Nebel und warme Luft gehören zur Show,
+Feuerbälle, Eisfontänen und Luftstöße auf animierte Gegner. Nebel und warme Luft gehören zur Show,
 und am Ende steht fest, wer die meisten Punkte hatte. Die Fahrt dauert etwa dreieinhalb Minuten, die
-Geschichte muss man laut Park nicht kennen. Weil die Bahn im Gebäude steht, kommt sie weiter unten
-bei Regen noch einmal vor.
+Geschichte muss man laut Park nicht kennen.
 
 Für die Kleineren stehen die **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, eine
 Junior-Achterbahn von Gerstlauer von 2003, ab einem Meter mit Erwachsenem, und der
 **[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)**, bei dem man sich auf neun
 Metern Höhe dreht und dann fallen lässt, schon ab drei Jahren. Beim Wellenreiter und bei Käpt'n
-Nicks Piratenschlacht können außerdem Zuschauer an Land mitmachen und die Boote nass spritzen, und
-wer dort zuschaut, bleibt nicht unbedingt trocken.
+Nicks Piratenschlacht können außerdem Zuschauer an Land mitmachen und die Boote nass spritzen.
 
 ## Für die Kleinsten ab zwei Jahren
 
@@ -187,12 +182,12 @@ sieben bis dreizehn Jahren gibt es erst Theorieunterricht und dann einen Parcour
 Verkehrsschildern, am Ende steht ein Legoland-Führerschein. Betrieben werden beide laut Wikipedia in
 Kooperation mit Hyundai.
 
-Das **Miniland** ist der ruhigste Teil des Parks. Die meisten Modelle stehen im Maßstab 1:20. Das
+Im **Miniland** stehen die meisten Modelle im Maßstab 1:20. Das
 Schloss Neuschwanstein besteht aus über 300.000 Steinen und war das erste Modell, das die Werkstatt
 im Park komplett selbst entworfen hat, und seit 2025 steht dort ein 2,30 Meter langer Fortnite-Dino
 aus 73.000 Teilen.
 
-## Wartezeiten: welche Bahnen, welche Tage
+## Wartezeiten nach Bahn und Wochentag
 
 Die Tabelle führt die zehn Bahnen mit den längsten Wartezeiten auf, mit dem Median, dem
 Themenbereich und den Messtagen. Sie benutzt die englischen Namen des Parks: Fire Dragon steht für
@@ -219,8 +214,6 @@ zwanzig Messtage, allerdings aus einer einzigen Saison. Im
 Ferienwerktagen am niedrigsten, und das Legoland hängt von den Ferien in Bayern und
 Baden-Württemberg stärker ab als jeder der sechs Parks, die dort verglichen werden.
 
-Die Monate dazu:
-
 ```stats-widget slug=legoland-deutschland show=months
 
 ```
@@ -228,8 +221,7 @@ Die Monate dazu:
 Der August war der vollste Monat. Juni und September lagen unter Mai und Juli. Der Oktober hat bisher
 erst fünf Messtage, darüber sagen wir nichts.
 
-Wie sich der Tag verteilt, steht in der nächsten Tabelle, eine Zeile pro Bahn und eine Spalte pro
-Stunde. Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parkschluss.
+Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parkschluss. Die nächste Tabelle hat eine Zeile pro Bahn und eine Spalte pro Stunde.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
 
@@ -257,23 +249,18 @@ Auf der Seite jeder dieser Bahnen steht deshalb keine Rope-Drop-Empfehlung.
 
 ```
 
-Das ändert den Tag weniger, als man denkt. Du musst nicht um sieben Uhr am Parkplatz stehen. Wer früh
-kommt, nimmt sich am besten die beiden Bahnen, deren Kurve nur steigt, die Dschungel X-pedition und das
-Tret-o-Mobil, danach das Große LEGO Rennen und die Hafenrundfahrt, bei denen der Andrang am Vormittag
-am höchsten ist, und fährt Maximus, den Feuerdrachen und Flying NINJAGO später, weil sich ihre Kurve
-kaum bewegt. Wer es lieber ruhig mag, kommt an einem Freitag.
+Um sieben Uhr musst du deshalb nicht am Parkplatz stehen. Wer früh kommt, nimmt sich zuerst die beiden Bahnen, deren Kurve nur steigt, die Dschungel X-pedition und das Tret-o-Mobil. Danach folgen das Große LEGO Rennen und die Hafenrundfahrt, bei denen der Andrang am Vormittag am höchsten ist. Maximus, Feuerdrache und Flying NINJAGO fährst du später, weil sich ihre Kurve kaum bewegt. Wer es lieber ruhig mag, kommt an einem Freitag.
 
 ## Fastrack: drei Stufen für 18 Bahnen
 
 **Fastrack** heißt das, was vorher Express Pass hieß. Es ist ein Ticket mit einer festen Zahl von
 Fahrten, das an der gewählten Bahn einen Platz in einer kürzeren Warteschlange verschafft. Der Park
 hat das alte System, bei dem man sich eine bestimmte Zeitersparnis kaufte, nach Rückmeldungen von Gästen
-abgeschafft und zählt jetzt die Fahrten. Fastrack gilt pro Person, enthält **keinen Parkeintritt** und
-nur für den gebuchten Tag.
+abgeschafft und zählt jetzt die Fahrten. Fastrack gilt pro Person und nur für den gebuchten Tag, es enthält **keinen Parkeintritt**.
 
 Es gibt drei Stufen. **Bronze** kostet ab 25 €, **Silber** ab 42 € und **Gold** ab 89 €. Gold gilt
 für alle Fastrack-Bahnen des Tages, und der Park kann einen Ausweis verlangen, weil es nicht
-weitergegeben werden darf. Bei Bronze und Silber ist jede Fahrt ein Stück des Kontingents. Ein
+weitergegeben werden darf. Bei Bronze und Silber verbraucht jede Fahrt einen Teil des Kontingents. Ein
 Fastrack-Paket wird einmal alle drei Minuten gescannt, und das Kontingent pro Tag ist begrenzt.
 Fastrack gilt an 18 Attraktionen, darunter Maximus, Feuerdrache, Das Große LEGO Rennen, LEGO NINJAGO
 The Ride, Flying NINJAGO, Dschungel X-pedition, LEGOLAND Express, Aussichtsturm, Pyramiden Rallye,
@@ -302,7 +289,7 @@ Die **Jahreskarte** kostet ab 99 € und gilt ein Jahr, mit Rabatt auf Übernach
 freiem Eintritt zum WinterWonder. Die Basic-Variante kostet ab 79 €, hat aber 35 Ausschluss-Tage in
 der Saison. Der Merlin Abenteuer Pass kostet 139 € und schließt das Parken im Legoland und 28 weitere
 Merlin-Attraktionen ein. Wer jedes Mal den Online-Mindestpreis zahlt, hat die 99 € nach dem dritten
-Besuch wieder drin. Wer nur einmal kommt, braucht keine Jahreskarte.
+Besuch wieder drin.
 
 ## Öffnungszeiten, Schließtage und Saison 2026
 
@@ -343,9 +330,8 @@ Studios**, **LEGOLAND ATLANTIS by SEA LIFE**, die **LEGO Fabrik** und das Labyri
 Polizeistation. Atlantis hat nach Wikipedia über 2.000 Fische, und der Glastunnel dort ist acht Meter
 lang. Dazu kommt eine **Regen Rallye**, eine Rätselrunde für nasse Tage.
 
-Es regnet häufiger, als man denkt. Zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 fielen im
-Legoland Deutschland an 18 Prozent der Öffnungstage mindestens zwei Millimeter Regen, wie der
-[Regen-Vergleich](/blog/freizeitpark-bei-regen) für zwölf Parks aufführt. Der Park selbst rät zu
+Zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 fielen im
+Legoland Deutschland an 18 Prozent der Öffnungstage mindestens zwei Millimeter Regen, die Werte für alle zwölf Parks stehen im [Regen-Vergleich](/blog/freizeitpark-bei-regen). Der Park selbst rät zu
 Regenschirm, Regenponcho, wasserfesten Schuhen und Wechselkleidung.
 
 ```weather-widget slug=legoland-deutschland
@@ -354,7 +340,7 @@ Regenschirm, Regenponcho, wasserfesten Schuhen und Wechselkleidung.
 
 ## Essen, Babys und Kinderwagen
 
-Im Park gibt es unter anderem das **STARS Grill House** mit Speisekarte, das **City Restaurant** als
+Im Park gibt es unter anderem das **STARS Grill House**, das **City Restaurant** als
 Markthalle zum Selbstbedienen, **Pizza Mania!** mit Pizza und Pasta, das **Schnitzel Depot** und **Zum
 Ritterschmaus**, das der Park als günstig beschreibt. Im asiatischen und orientalischen Teil stehen
 das Asia Chicken House, die Ninja Kitchen und die Fata Morgana Kitchen. Das Café EIN STEIN eignet
@@ -393,13 +379,10 @@ Millionen Euro.
 
 Das **WinterWonder LEGOLAND** läuft 2026/27 an einzelnen Tagen: 28. und 29. November, 4. bis 6., 11. bis 13., 18. bis 23. und 26. bis 30. Dezember sowie 2. bis 10. Januar 2027. Es gibt eine
 Eisbahn, Eisstockbahnen und Shows im Halbstundentakt, und bei vielen Bahnen steht
-„witterungsabhängig geöffnet“. Ein Frühbucherticket kostet bis zum 15. November 22 € statt 36 €. Wie
-der Park im Winter neben den anderen deutschen Parks dasteht, steht im
-[Winter-Überblick](/blog/winter-freizeitparks-2026).
+„witterungsabhängig geöffnet“. Ein Frühbucherticket kostet bis zum 15. November 22 € statt 36 €. Der [Winter-Überblick](/blog/winter-freizeitparks-2026) vergleicht den Park im Winter mit den anderen deutschen Parks.
 
 Angekündigt hat das Legoland außerdem das erste LEGO Harry Potter Land der Welt und die erste Unterkunft
-mit diesem Thema. Ein Eröffnungsjahr nennt der Park dafür nicht. Was andere Parks für 2027 bestätigt
-haben, steht in den [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+mit diesem Thema. Ein Eröffnungsjahr nennt der Park dafür nicht. Die [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027) sammeln, was andere Parks für 2027 bestätigt haben.
 
 ## Häufige Fragen zum Legoland Deutschland
 
@@ -421,8 +404,7 @@ trockenen Vergleichstagen.
 Mit Erwachsenem ab 0,80 Metern bei Käpt'n Nicks Piratenschlacht und ab 1,00 Metern bei der Drachenjagd,
 der Dschungel X-pedition und dem Fire & Ice Tower. Ab 1,10 Metern fahren das Große LEGO Rennen und der
 Feuerdrache, ab 1,20 Metern Maximus und ab 1,25 Metern Flying NINJAGO. Allein verlangen die meisten
-Bahnen 1,20 Meter, Maximus und Käpt'n Nicks Piratenschlacht 1,30 Meter. Dazu kommt jeweils ein
-Mindestalter, das in der Tabelle oben steht.
+Bahnen 1,20 Meter, Maximus und Käpt'n Nicks Piratenschlacht 1,30 Meter. Dazu kommt jeweils ein Mindestalter: mit Erwachsenem zwischen einem und sieben Jahren, allein zwischen sechs und neun.
 
 ### Was kostet das Legoland Deutschland?
 
@@ -461,11 +443,11 @@ Wie das Legoland neben den übrigen Parks Deutschlands abschneidet, steht im
 Hansa-Parks in Sierksdorf stand von 1973 bis 1976 ein erstes deutsches Legoland, mehr dazu im
 [Hansa-Park-Guide](/blog/hansa-park-tipps).
 
-## Wo der Haken liegt
+## Für wen das Legoland weniger passt
 
 Vier Achterbahnen hat der Park, und nur eine davon, Maximus, fährt über Kopf. Wer mit Kindern über
 zwölf oder ohne Kind kommt, findet im Phantasialand oder im Europa-Park mehr Bahnen, die zu ihnen
-passen. Im Legoland enden die Mindestgrößen bei 1,25 Metern.
+passen.
 
 — Patrick
 
