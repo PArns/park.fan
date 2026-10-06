@@ -1,8 +1,13 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 import { Star } from 'lucide-react';
-import { isFavorite, toggleFavorite, type FavoriteType } from '@/lib/utils/favorites';
+import {
+  isFavorite,
+  subscribeToFavorites,
+  toggleFavorite,
+  type FavoriteType,
+} from '@/lib/utils/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { trackFavoriteAdd, trackFavoriteRemove } from '@/lib/analytics/umami';
@@ -21,7 +26,7 @@ interface FavoriteStarProps {
 
 /**
  * Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites,
- * stays in sync through `favorites-changed` events and tracks the change in Umami.
+ * reads its state from the favourites store and tracks the change in Umami.
  */
 export function FavoriteStar({
   type,
@@ -33,26 +38,12 @@ export function FavoriteStar({
   noCircle = true,
   variant = 'default',
 }: FavoriteStarProps) {
-  const [isFav, setIsFav] = useState(false);
+  const isFav = useSyncExternalStore(
+    subscribeToFavorites,
+    () => isFavorite(type, id),
+    () => false
+  );
   const t = useTranslations('favorites');
-
-  // Initialize state from cookies (effect only, so SSR/hydration render the default)
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsFav(isFavorite(type, id));
-  }, [type, id]);
-
-  // Listen for favorites-changed events
-  useEffect(() => {
-    const handleFavoritesChanged = () => {
-      setIsFav(isFavorite(type, id));
-    };
-
-    window.addEventListener('favorites-changed', handleFavoritesChanged);
-    return () => {
-      window.removeEventListener('favorites-changed', handleFavoritesChanged);
-    };
-  }, [type, id]);
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
@@ -60,7 +51,6 @@ export function FavoriteStar({
       e.stopPropagation();
 
       const newState = toggleFavorite(type, id);
-      setIsFav(newState);
       onToggle?.(newState);
 
       if (newState) {
