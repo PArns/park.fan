@@ -2,15 +2,10 @@ import { FlaskConical } from 'lucide-react';
 import type { ParkSimScenario } from '@/lib/parks/park-simulation';
 
 /**
- * The band that says this page is lying.
- *
- * `?state=` patches the park payload — a severe-weather warning that is not in force, a public
- * holiday that is not today. Nothing else in this app fabricates data, and the reason a
- * simulated page is safe to look at is that it announces itself: a screenshot of a preview
- * deployment carries this band, so a warning in it can never be mistaken for one the DWD issued.
- *
- * Deliberately untranslated. It is not part of the product, and a string in `messages/*.json`
- * would ship into six locale bundles for a band production never renders.
+ * The band that says this page is simulated. `?state=` patches the park payload (a weather warning
+ * not in force, a holiday that is not today), and the band shows in every screenshot so nothing on
+ * the page is mistaken for real. Untranslated on purpose: production never renders it, and a
+ * message key would ship into six locale bundles.
  */
 export function ParkSimulationNotice({ scenarios }: { scenarios: ParkSimScenario[] }) {
   if (scenarios.length === 0) return null;

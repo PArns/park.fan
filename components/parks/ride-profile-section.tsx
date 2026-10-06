@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
-// Glossary URLs carry their own locale segment (`/de/glossar/looping`) and are
-// served by a next.config rewrite, so the i18n <Link> would prefix the locale a
-// second time. Plain next/link it is — but with prefetch off, matching the
-// app-wide default in i18n/no-prefetch-link.
+// Glossary URLs carry their own locale segment and are served by a next.config rewrite, so the i18n
+// <Link> would prefix the locale twice. Plain next/link, prefetch off, matching the app-wide
+// default.
 import Link from 'next/link';
 import {
   Wrench,
@@ -37,11 +36,8 @@ interface RideProfileSectionProps {
 }
 
 /**
- * One labelled fact in the profile grid.
- *
- * Extracted when the grid grew past the three curated facts: the same `dt`/`dd`
- * pair repeated for every measurement is a place for one of them to drift.
- * `numeric` turns on tabular figures so a column of measurements lines up.
+ * One labelled fact in the profile grid. `numeric` turns on tabular figures so a column of
+ * measurements lines up.
  */
 function Fact({
   icon: Icon,
@@ -66,15 +62,10 @@ function Fact({
 }
 
 /**
- * The ride → glossary half of the link: what this ride is and what it does.
- *
- * Reads top-down the way the ride is built — who made it and when, what kind of
- * thing it is, then the layout itself as a rail you can step through in 3-D.
- * The facts used to sit at the BOTTOM, which read as a footnote; they are the
- * frame around the ride, not an afterthought.
- *
- * Term resolution is delegated to `resolveRideProfile` so this section and the
- * header teaser can never disagree about how many figures a ride has.
+ * The ride → glossary half of the link: what this ride is and what it does, top-down the way the
+ * ride is built (maker and year, kind, then the layout as a rail to step through in 3-D). Terms
+ * resolve through `resolveRideProfile`, so this section and the header teaser cannot disagree about
+ * how many figures a ride has. See docs/rules/ride-and-glossary-link.md.
  */
 export async function RideProfileSection({ profile, locale }: RideProfileSectionProps) {
   const t = await getTranslations('attraction.rideProfile');
@@ -83,11 +74,9 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
   const { elements, types, manufacturerHref } = resolved;
 
   const stats = profile.stats ?? null;
-  // Both questions come from `lib/glossary/ride-profile.ts`: whether the facts grid has anything
-  // to draw, and whether the CHAPTER renders at all — the latter being the predicate the ride
-  // page's chapter row asks before offering a jump to `#ride-profile`. One definition each, so
-  // the row cannot offer an anchor this section declines to render. Asked against the value
-  // already resolved above rather than resolving a second time.
+  // Both predicates come from `lib/glossary/ride-profile.ts`: whether the facts grid has anything
+  // to draw, and whether the chapter renders at all, which the ride page's chapter row also asks
+  // before offering `#ride-profile`.
   const hasFacts = hasRideProfileFacts(profile);
 
   if (!rideProfileRendersFrom(profile, resolved)) return null;
@@ -106,10 +95,10 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
   };
 
   return (
-    /* The heading is the lid of the box under it, not a band floating over one — see
-       `ChapterPanel`. It used to be a `PageSection` over a `GlassCard`, so the chapter read as a
-       title and a separate card with a strip of the ride's hero photo between them. The id is
-       the anchor the header teaser's "9 figures" jumps to. */
+    /*
+     * The heading is the lid of the box under it, not a band floating over one (see
+     * `ChapterPanel`). The id is the anchor the header teaser's "9 figures" jumps to.
+     */
     <ChapterPanel
       icon={Boxes}
       title={t('title')}
@@ -177,10 +166,8 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
         </dl>
       )}
 
-      {/* Whose numbers these are. The API resolves this — `attribution` is
-            null exactly when every surviving number is hand-curated and nobody
-            outside is owed a credit — so there is no rule to reimplement here
-            and no URL to assemble. */}
+      {/* Whose numbers these are. The API resolves it (`attribution` is null when every number is
+          hand-curated), so there is no rule to reimplement here. */}
       {stats?.attribution && (
         <p className="text-muted-foreground text-xs">
           <a

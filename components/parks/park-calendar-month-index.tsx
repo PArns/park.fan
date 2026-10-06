@@ -12,22 +12,12 @@ import {
 } from '@/lib/parks/calendar-segments';
 
 /**
- * Every month the route serves, as links, on every calendar page.
+ * Every month the route serves, as links, on every calendar page. The stepper links only the
+ * previous and next month, which left the far months many hops from the hub; this index puts every
+ * month one hop from every other.
  *
- * The stepper in `ParkCalendarPanel` made the months crawlable at all, but it links exactly two:
- * the previous and the next. Measured on production, the hub for Phantasialand emitted precisely
- * `…/2026/7` and `…/2026/9` — so November 2026 sat three hops beyond the hub, which is itself one
- * hop off the park page and five off the homepage. A crawler reaching the far end of a 25-link
- * chain has to want to, and the pages at the end of it are the ones a person searching
- * „phantasialand ostern 2027" would have wanted first.
- *
- * So the whole window is one hop from anywhere inside it. Rendered on the month pages too, not
- * only the hub: that turns the set into a mesh where every month is reachable from every other,
- * which is what stops the far months from being the least-linked pages on the site.
- *
- * Not a `ChapterHeading`. This is navigation, not a chapter of the page — it gets a labelled
- * `<nav>` and no `<h2>`, so the document outline still reads as the four chapters the page
- * actually has (CLAUDE.md, „a chapter opens the same way everywhere").
+ * Navigation, not a chapter: a labelled `<nav>` and no `<h2>`, so the outline keeps the page's own
+ * chapters. See docs/rules/a-chapter-opens-the-same-way-everywhere.md.
  */
 export async function ParkCalendarMonthIndex({
   locale,
@@ -50,9 +40,8 @@ export async function ParkCalendarMonthIndex({
   /** The month this page shows, or `null` on the hub. */
   activeMonth: ParkCalendarMonth | null;
   /**
-   * `scheduleCoverage.to` from the park payload — the last date the API can speak for. Omitted or
-   * null keeps the old fixed forward span, so a park with no published schedule and a payload
-   * cached before the field existed both behave exactly as before.
+   * `scheduleCoverage.to` from the park payload, the last date the API can speak for. Omitted or
+   * null keeps the fixed forward span, as for a park with no published schedule.
    */
   coverageTo?: string | null;
   className?: string;
@@ -101,9 +90,8 @@ export async function ParkCalendarMonthIndex({
             </span>
             {entries.map((m) => {
               const active = isActive(m);
-              // The current month's canonical address is the hub, so its chip links there rather
-              // than at `/2026/8` — the same rule the stepper follows, for the same reason: the
-              // app should not mint a URL that only exists to canonical away.
+              // The current month's canonical address is the hub, so its chip links there, as the
+              // stepper does: the app should not mint a URL that only exists to canonical away.
               const href = parkCalendarPath(
                 locale,
                 continent,

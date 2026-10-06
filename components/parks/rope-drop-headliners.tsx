@@ -22,13 +22,11 @@ function attractionHref(attraction: ParkAttraction, parkPath: string): string {
 }
 
 /**
- * "Worth arriving at park opening" strip on the park page, plus the inverse
- * picks ("better saved for the evening"). The API delivers `ropeDropHeadliners`
- * pre-filtered (worth=true) and sorted by savings desc; the evening picks are
- * derived from the attractions' ropeDrop data (see isEveningBetter). Full
- * details live on each attraction's detail page.
+ * „Worth arriving at park opening" strip on the park page, plus the evening picks. The API sends
+ * `ropeDropHeadliners` filtered and sorted by savings; the evening picks are derived from the
+ * attractions' ropeDrop data (see isEveningBetter). Memoised like `ParkTabsList`: its props hold
+ * still while the filters move.
  */
-/** Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move. */
 export const RopeDropHeadliners = memo(function RopeDropHeadliners({
   headliners,
   attractions,
@@ -60,11 +58,8 @@ export const RopeDropHeadliners = memo(function RopeDropHeadliners({
 
   return (
     <section
-      // w-fit + max-w keeps the panel clear of the search input, which used to sit absolutely at
-      // the top right of the attractions tab. It sits in <AttractionFilterPanel>'s own band above
-      // this one now, so the 320 px is a reservation for a neighbour that has moved out — kept as
-      // it was rather than removed here, because that is a layout decision and not a breakpoint
-      // one. The width it does hold now follows the page, not the window.
+      // `w-fit` with a `max-w` that keeps 320 px free on the right; the width follows the page, not
+      // the window.
       className="border-border/50 bg-background/60 w-fit rounded-xl border p-4 shadow-md backdrop-blur-md @min-[768px]/page:max-w-[calc(100%-320px)] dark:bg-[oklch(0.12_0.025_241_/_0.55)]"
       aria-label={t('title')}
     >

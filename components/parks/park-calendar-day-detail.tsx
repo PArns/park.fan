@@ -58,12 +58,8 @@ const TITLE_FORMAT: Intl.DateTimeFormatOptions = {
 };
 
 /**
- * Bar colour per crowd level for the hourly forecast mini-chart.
- *
- * These were six hand-picked Tailwind shades (`bg-teal-400`, `bg-rose-400`, …) chosen to
- * „mirror" the palette, and they missed it: the chart drew `very_high` in rose while every badge,
- * tile and legend on the page drew it in `--crowd-very-high`, an orange. One tier, two colours,
- * one dialog. It reads the palette now, so retuning a shade moves the chart with everything else.
+ * Bar colour per crowd level for the hourly mini-chart. It reads the crowd palette, so a retuned
+ * shade moves the chart with every badge and tile on the page.
  */
 const CROWD_BAR_COLOR: Record<string, string> = {
   ...CROWD_DOT_CLASS,
@@ -72,6 +68,7 @@ const CROWD_BAR_COLOR: Record<string, string> = {
 
 const CROWD_MEANING_LEVELS: readonly CrowdLevel[] = CROWD_LEVEL_ORDER;
 
+/** Props of the calendar day dialog. */
 export interface ParkCalendarDayDetailProps {
   /** The selected day, or null when the dialog is closed (or the target day is still loading). */
   day: CalendarDay | null;
@@ -80,27 +77,21 @@ export interface ParkCalendarDayDetailProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   /**
-   * Prev/next-day navigation. When provided, chevron buttons flank the title (and ←/→ keys
-   * work) so days can be flipped through without leaving the dialog. The parent owns the day
-   * switch; while the target day is loading it passes `day={null}` and the dialog keeps
-   * showing the previous day dimmed (see `lastDay` below) instead of closing.
+   * Prev/next-day navigation: chevrons in the header and the ←/→ keys. The parent owns the day
+   * switch; while the target day loads it passes `day={null}`, and the dialog keeps showing the
+   * previous day dimmed instead of closing.
    */
   onNavigate?: (direction: -1 | 1) => void;
   /**
-   * The park this calendar belongs to. Supplied by the callers that know it, and
-   * the only thing gating the "plan this day" control — the dialog itself is
-   * given a `CalendarDay`, which names no park.
+   * The park this calendar belongs to, and the only gate on the "plan this day" control: a
+   * `CalendarDay` names no park.
    */
   planner?: { parkSlug: string; parkName: string; geo: PlannerGeo };
 }
 
 /**
- * Click-to-open detail panel for a single crowd-calendar day. Works on touch and
- * pointer devices alike (a Radix Dialog, unlike the calendar's hover tooltips),
- * so mobile users get the full context too. Shows — in priority order — status &
- * hours, the crowd forecast + what it means, the expected headliner waits, an
- * hour-by-hour prediction chart (when available), weather, and the holiday
- * context (local + neighbouring regions) that drives the crowds.
+ * Click-to-open detail panel for one crowd-calendar day. A Radix Dialog, unlike the calendar's
+ * hover tooltips, so it works on touch too.
  */
 export function ParkCalendarDayDetail({
   day: dayProp,
@@ -110,52 +101,32 @@ export function ParkCalendarDayDetail({
   onNavigate,
   planner,
 }: ParkCalendarDayDetailProps) {
-  // "Today" in the PARK's timezone, not the reader's: the calendar shows a whole
-  // month and a visit cannot be planned for a day that has already happened
-  // where the park is. `en-CA` because it formats as YYYY-MM-DD, which is what
-  // `CalendarDay.date` is and what compares correctly as a string.
+  // "Today" in the park's timezone, not the reader's: a visit cannot be planned for a day that is
+  // already over where the park is.
   const todayInPark = parkDayOf(new Date(), parkTimezone);
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
 
-  // Retain the last non-null day so a nav step (parent fetches the target day → `day` is
-  // briefly null) dims the open dialog instead of unmounting it. Render-phase derived-state
-  // update (the React-sanctioned pattern) — no effect, no extra frame with stale content.
+  // Keep the last non-null day so a nav step (the target day is briefly null) dims the open dialog
+  // instead of unmounting it; a render-phase derived-state update, no effect.
   //
-  // NOT retained across the close, and that is measured rather than assumed.
-  // `ParkCalendarGrid` derives `day` and `open` from one `selectedDate`, so both
-  // go in the same commit and this returns `null` before Radix can put
-  // `data-state="closed"` on the content — the dialog is destroyed rather than
-  // closed, and `components/ui/dialog.tsx`'s 200 ms exit never runs, for every
-  // way out of it (the X, Escape and the overlay alike). Keeping `lastDay`
-  // through the close does restore that animation, and it costs far more than
-  // it is worth: the content then re-renders on every commit that follows the
-  // close — the planner panel mounting, the route changing — and the dialog took
-  // 605 ms to leave instead of 147 ungthrottled, 3868 instead of 1116 at 6× CPU
-  // and 20.8 s instead of 4.0 at 20×. A missing fade is a blemish; four extra
-  // seconds on a phone is the bug this was reported as.
+  // Not kept across the close: that would restore the exit fade, but the content then re-renders on
+  // every commit after the close (planner mount, route change), which took seconds on a throttled
+  // phone.
   const [lastDay, setLastDay] = useState<CalendarDay | null>(dayProp);
   if (dayProp && dayProp !== lastDay) setLastDay(dayProp);
   const day = dayProp ?? (open ? lastDay : null);
   // Target day is in flight: previous content stays visible but dimmed.
   const navigating = open && !dayProp && !!day;
 
-  // The hour-by-hour curve is the one field the month payload does NOT carry: it is scoped to the
-  // hour it was fetched in, and that payload is shared-cached for a day. So it is fetched here, for
-  // the one day the reader opened — and only where a curve can exist at all, which is today and
-  // tomorrow in the park's timezone.
+  // The hour-by-hour curve is not in the month payload: it is scoped to the hour it was fetched in,
+  // and that payload is cached for a day. So it is fetched here for the opened day, and only today
+  // and tomorrow in park time can have one. Tomorrow is derived because the API never sends
+  // `day.isTomorrow`.
   //
-  // Tomorrow is derived rather than read off `day.isTomorrow`. That field is declared on
-  // `CalendarDay` and the API never sends it: measured against the live month payload, every day
-  // of September including the 15th came back without the key, so a gate on it would have been
-  // false for tomorrow for ever, with a curve sitting on the endpoint and nothing drawing it.
-  // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
-  // needs no timezone of its own.
-  // Only while the dialog is open. This component stays mounted behind every park and calendar
-  // page (it renders `null` when closed), so an unconditional subscription would re-render it
-  // once a minute on those pages for the life of the tab, for a chart almost nobody opens. The
-  // shared clock stamps a fresh reading on the render that opens it.
+  // Only while the dialog is open: this component stays mounted behind every calendar page, and a
+  // clock subscription would re-render it every minute for a chart almost nobody opens.
   const browserNow = useMinuteNowDate(open);
   const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
   const canHaveHourly =
@@ -184,15 +155,9 @@ export function ParkCalendarDayDetail({
       : t('calendarView.details.schedule.open');
 
   /**
-   * On today the dialog can show two numbers, and they answer different questions: what the day
-   * was forecast to be, and how it has actually gone so far.
-   *
-   * The pair used to be `crowdLevel` (a live spot reading the backend wrote over today's cell)
-   * against `predictedCrowdLevel`. The override is gone — today's `crowdLevel` IS the forecast
-   * now — so the measured half comes from `todayCrowdLevel`, which is what it always was: the
-   * day-so-far P50, captured by the backend as its own field precisely so the two could be put
-   * side by side and mean something. It is absent on a closed day, on a park too thin to rate,
-   * and before the first measurement of the morning, so the row stays conditional.
+   * On today the dialog can show two numbers: the day's forecast (`crowdLevel`) and how it has gone
+   * so far (`todayCrowdLevel`, the backend's day-so-far P50). The latter is absent on a closed day,
+   * on a park too thin to rate and before the first measurement, so the row stays conditional.
    */
   const showLiveSplit =
     day.isToday &&
@@ -207,23 +172,17 @@ export function ParkCalendarDayDetail({
   const forecast = day.headlinerForecast;
   const hasForecast = !!forecast && forecast.rides.length > 0;
 
-  // `day.hourly` stays first: a caller that already holds a curve (a payload fetched with
-  // `includeHourly`) keeps rendering it, and the fetch above is the fallback that fills the gap
-  // the calendar grid's `includeHourly=none` leaves.
-  //
-  // `upcomingHourlyPredictions` does two things the raw array cannot: it carries the UTC `hour`
-  // over into an instant, so the axis can be labelled in park time, and it drops the bars whose
-  // hour is already over. The second is not cosmetic — the curve is a countdown of the remaining
-  // open hours and the backend serves it out of a cache that expires at park-local midnight, so a
-  // copy taken in the morning would draw this morning all evening.
+  // `day.hourly` first: a caller that already holds a curve keeps it, and the fetch fills the gap
+  // the grid's `includeHourly=none` leaves. `upcomingHourlyPredictions` turns the UTC `hour` into
+  // an instant for park-time labels and drops hours already over; the backend caches the curve
+  // until park-local midnight, so a morning copy would draw the morning all evening.
   const hourlySource = day.hourly ?? hourlyQuery.data ?? [];
   const hourly = upcomingHourlyPredictions(
     day.date,
     hourlySource.filter((h) => h.predictedWaitTime > 0),
-    // `browserNow` rather than `Date.now()`: a clock read during render is impure, and the minute
-    // tick is what retires a bar while the dialog is open instead of only at the next re-render.
-    // The fallback still cuts — it reads the same wall clock — it just does not schedule anything,
-    // which is all a render with the dialog not open (the hook then reads `null`) needs.
+    // `browserNow`, not `Date.now()`: a clock read in render is impure, and the minute tick retires
+    // a bar while the dialog is open. The fallback reads the same wall clock without scheduling
+    // anything.
     (browserNow ?? new Date()).getTime(),
     parkTimezone
   );
@@ -270,7 +229,6 @@ export function ParkCalendarDayDetail({
   }
   const showNeighbor = neighborGroups.length > 0 && !isClosed;
 
-  // Local holiday chips (public / school / bridge).
   const localChips: { icon: typeof PartyPopper; label: string; className: string }[] = [];
   if (day.isHoliday || day.isPublicHoliday) {
     // The API names holidays in English only, so the name goes through the locale table before it
@@ -306,11 +264,8 @@ export function ParkCalendarDayDetail({
   const hasHolidayContext = localChips.length > 0 || showNeighbor;
 
   /**
-   * The same three-pixel bar the day's tile in the grid wears, on the dialog's top edge.
-   *
-   * It is what makes the dialog read as that cell opened up rather than as a separate window:
-   * the reader clicked a tile with a yellow-and-amber edge and the panel that comes up carries
-   * it. Order matches the legend, so two dialogs never split the bar the other way round.
+   * The same three-pixel bar the day's tile wears, on the dialog's top edge, so the dialog reads as
+   * that cell opened up. Order matches the legend.
    */
   const signalBars = [
     day.isSchoolHoliday || day.isSchoolVacation ? DAY_SIGNAL_CLASS.school : null,
@@ -319,8 +274,7 @@ export function ParkCalendarDayDetail({
     day.isBridgeDay ? DAY_SIGNAL_CLASS.bridge : null,
   ].filter((c): c is string => c !== null);
 
-  // The level the panel is TINTED by — the forecast on today (where `crowdLevel` carries the live
-  // occupancy and the two are shown side by side), the day's own level otherwise.
+  // The level the panel is tinted by: the forecast on today, the day's own level otherwise.
   const panelLevel: ColoredCrowdLevel | null =
     meaningLevel && meaningLevel !== 'closed' && meaningLevel !== 'unknown'
       ? (meaningLevel as ColoredCrowdLevel)
@@ -336,12 +290,9 @@ export function ParkCalendarDayDetail({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      {/* Three rows — the day's signal bars and its band, the body, the one button — of which
-          only the middle scrolls, so the date at the top and „Bahnen für diesen Tag einplanen" at
-          the bottom hold still while the reader walks a long day. That button used to sit under
-          the ride list, the weather and the holiday block: on a phone it was two screens below
-          the forecast somebody had just read, which is the moment it is asking about. `svh`
-          rather than `vh`, or the last row sits under a mobile browser's own toolbar. */}
+      {/* Three rows, of which only the body scrolls, so the date and the plan button hold still
+          while the reader walks a long day. `svh` keeps the last row above a mobile browser's
+          toolbar. */}
       <DialogContent
         showCloseButton={false}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0"
@@ -366,11 +317,9 @@ export function ParkCalendarDayDetail({
           </div>
         )}
 
-        {/* The same band the planner wizard and the day comparison open with — this dialog is one
-            press from both of them, and a plain header here read as a different product. The day
-            stepper moves into it: the arrows used to flank the title, which put „previous day" a
-            few pixels from the close button in the one corner every dialog on this site uses for
-            discarding. */}
+        {/* The same band the planner wizard and the day comparison open with, since this dialog is
+            one press from both. The day stepper sits in it, away from the close button's corner.
+            */}
         <DialogHero
           icon={CalendarDays}
           title={title}
@@ -398,9 +347,8 @@ export function ParkCalendarDayDetail({
           actions={
             onNavigate ? (
               <>
-                {/* `secondary` and not the row's usual `outline`: an outline button is
-                    `dark:bg-input/30`, i.e. translucent, and it sits over the band's watermark —
-                    the arrows came out drawn on top of a calendar glyph. */}
+                {/* `secondary`, not the row's usual `outline`: an outline button is translucent in
+                    dark mode, and the band's watermark showed through the arrows. */}
                 <Button
                   variant="secondary"
                   size="icon"
@@ -433,7 +381,6 @@ export function ParkCalendarDayDetail({
           )}
           aria-busy={navigating}
         >
-          {/* Opening hours — park-local time; hover shows the viewer's local time (ParkTime). */}
           {day.status === 'OPERATING' && day.hours && (
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Clock className="h-4 w-4" />
@@ -454,10 +401,8 @@ export function ParkCalendarDayDetail({
             </div>
           )}
 
-          {/* The ticket price. It used to sit in the grid cell, where it was the one row that
-            could appear or not and therefore the one thing stopping the cell from having a fixed
-            height — which the reservation in `calendar-grid-geometry` pays for in layout shift.
-            It is a detail about one day, and this is the panel for details about one day. */}
+          {/* The ticket price lives here, not in the grid cell: as the one optional row there, it
+              kept the cell from having a fixed height. */}
           {day.ticket?.price && (
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Ticket className="h-4 w-4" />
@@ -467,10 +412,8 @@ export function ParkCalendarDayDetail({
             </div>
           )}
 
-          {/* Crowd forecast + what it means — the panel the grid's tile leads into, carrying the
-            same tint and the same wait time the cell showed. The level used to be a badge on a
-            plain background, which put the dialog's most important line at the same weight as
-            the section headings under it. */}
+          {/* The panel the grid's tile leads into, with the same tint and wait time the cell
+              showed. */}
           {day.crowdLevel && day.crowdLevel !== 'closed' && (
             <section
               className={cn(
@@ -509,9 +452,8 @@ export function ParkCalendarDayDetail({
                 )}
               </div>
               {/* Today splits in two: `todayCrowdLevel` is what the day has measured so far,
-                `crowdLevel` the forecast it was given. The panel above is tinted by the
-                forecast, so the measured half gets its own badge rather than being folded
-                into one word. */}
+                  `crowdLevel` its forecast. The panel is tinted by the forecast, so the measured
+                  half gets its own badge. */}
               {showLiveSplit && (
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <div className="flex items-center gap-2">
@@ -556,18 +498,14 @@ export function ParkCalendarDayDetail({
                   return (
                     <li key={r.attractionId} className="flex items-center justify-between gap-4">
                       <span className="truncate text-sm">{r.name}</span>
-                      {/* `items-baseline`, so the smaller band figure sits on the number's
-                          baseline and the row keeps the height the number alone gave it —
-                          which is what makes a day with a band and a day without one the same
-                          height while the reader steps through days with ←/→. */}
+                      {/* `items-baseline` keeps the row at the number's height, so days with and
+                          without a band are the same height while stepping with ←/→. */}
                       <span className="flex shrink-0 items-baseline gap-1.5">
                         <span className="text-foreground text-sm font-semibold tabular-nums">
                           ~{r.waitTime} {tCommon('min')}
                         </span>
-                        {/* The spread belongs to a PREDICTION, so an `actual` day gets no slot
-                            at all — the same split the planner makes for a ticked-off stop
-                            (`planner-entry-row.tsx` hands the band on as `null` once `done`),
-                            and a different statement from „no spread was reported". */}
+                        {/* The spread belongs to a prediction, so an `actual` day gets no slot at
+                            all, as the planner does for a ticked-off stop. */}
                         {!forecast!.actual && (
                           <span className="text-muted-foreground text-xs tabular-nums">
                             {hasBand
@@ -588,7 +526,6 @@ export function ParkCalendarDayDetail({
             </section>
           )}
 
-          {/* Hour-by-hour prediction */}
           {hourly.length > 0 && (
             <section className="flex flex-col gap-2">
               <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
@@ -615,7 +552,6 @@ export function ParkCalendarDayDetail({
             </section>
           )}
 
-          {/* Weather */}
           {day.weather && (
             <section className="flex flex-col gap-2">
               <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
@@ -640,7 +576,6 @@ export function ParkCalendarDayDetail({
                   </p>
                 </div>
               </div>
-              {/* Extra daily metrics — only render the ones the source provides. */}
               {(() => {
                 const w = day.weather!;
                 const metrics: { icon: typeof Wind; label: string; value: string }[] = [];
@@ -692,7 +627,6 @@ export function ParkCalendarDayDetail({
             </section>
           )}
 
-          {/* Holiday context (local + neighbouring regions) */}
           {hasHolidayContext && (
             <section className="flex flex-col gap-2">
               <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
@@ -720,7 +654,6 @@ export function ParkCalendarDayDetail({
                   <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
                     {t('influencingHolidaysBody')}
                   </p>
-                  {/* Split by country: a flag + country header, then its regions. */}
                   <div className="mt-2.5 flex flex-col gap-2">
                     {neighborGroups.map((g) => (
                       <div key={g.countryCode} className="flex flex-col gap-1">
@@ -749,14 +682,8 @@ export function ParkCalendarDayDetail({
           )}
         </div>
 
-        {/* Into the planner from here, and LAST on purpose: the decision this control acts on is
-            made by reading the crowd forecast, the headliner waits and the weather above it.
-            Placed under the opening hours it asked for a commitment before the dialog had said
-            anything.
-
-            The calendar is where a visitor decides WHICH day, and until now that decision had
-            nowhere to go — the planner's own day picker is inside a panel they had no reason to
-            have opened yet. Only on a day the park is actually open: planning a closed day is
+        {/* Last on purpose: the decision this acts on is made by reading the forecast, the waits
+            and the weather above it. Only on a day the park is open, since planning a closed day is
             planning nothing. */}
         {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
           <div className="border-border/60 shrink-0 border-t p-5">
@@ -766,11 +693,9 @@ export function ParkCalendarDayDetail({
               geo={planner.geo}
               date={day.date}
               timezone={parkTimezone}
-              // The dialog closes on the way out, and the visitor lands on the park's ride
-              // overview. Without it the planner opened BEHIND this dialog — which is a modal, so
-              // the panel it just opened was unreachable — and the reader was left on the
-              // calendar, which is the one page in the park with no ride cards to drag from. Both
-              // halves of the button's promise were missing.
+              // Close the dialog on the way out. It is modal, so the planner opened behind it was
+              // unreachable, and the reader was left on the one park page with no ride cards to
+              // drag from.
               onPlanned={() => onOpenChange(false)}
             />
           </div>

@@ -37,12 +37,8 @@ export function SeasonalBadge({
 
   const Icon = season === 'winter' ? Snowflake : season === 'summer' ? Sun : Leaf;
 
-  // What the badge says depends on whether the ride is running. In season the
-  // season name is the whole message ("Winter"). Out of it, the name alone was
-  // the message a visitor got least out of: the card beside it said "Geschlossen"
-  // and nothing on the page connected the two, so a closed ice rink in August
-  // read as a ride that happened to be shut rather than one that cannot open for
-  // another three months. "Nur im Winter" is both halves in three words.
+  // What the badge says depends on whether the ride is running. Out of season the season name alone
+  // did not connect to the card's „Geschlossen", so it says both halves: „Nur im Winter".
   const label = offSeason
     ? season === 'winter'
       ? t('seasonalWinterOnly')

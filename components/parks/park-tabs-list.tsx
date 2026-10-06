@@ -25,28 +25,14 @@ import { cn } from '@/lib/utils';
 
 /**
  * The park page's entry-tile row: five chapter cells that switch a tab in place, plus the cells
- * that are pages rather than panels — the crowd calendar, and the wait-time record where the park
- * has one — which are therefore links.
+ * that are pages rather than panels (the crowd calendar, the wait-time record), which are links.
+ * The five stay real `TabsTrigger`s so Radix keeps the roving tabindex, the arrow keys and
+ * `aria-selected`/`aria-controls`; a tab that navigated away would leave Radix holding a selection
+ * for a page nobody is on. What the cells say comes from `useParkTileItems`, shared with
+ * `ParkNavTiles`, so the two rows stay one row.
  *
- * Single source for markup `TabsWithHash` renders twice — once pre-mount (SSR + first client
- * render) and once post-mount. The two renders are byte-identical; the only real difference lives
- * on the surrounding `<Tabs>` element (uncontrolled `defaultValue` vs. controlled `activeTab` +
- * `onValueChange`), which stays in `TabsWithHash`.
- *
- * The five stay real `TabsTrigger`s so Radix keeps the roving tabindex, the arrow keys and the
- * `aria-selected`/`aria-controls` pairing a hand-rolled button would have to re-implement. A row
- * of cells that look identical and behave in two ways is a fair objection to the link cells, and
- * the alternative was worse: neither page can be a tab panel, and a tab that navigates away would
- * leave Radix holding a selection for a page nobody is on.
- *
- * Everything the cells SAY — labels, counts, live hints — comes from `useParkTileItems`, which
- * `ParkNavTiles` reads too. That is what keeps this row and the one on the calendar page the
- * same row rather than two rows that happen to look alike.
- */
-/**
- * Memoised: `TabsWithHash` builds this row inline, and every search keystroke, pill tap and tab tap
- * re-rendered it — `useParkTileItems` and its seven tiles — in the commit the interaction is
- * waiting on, with props that had not changed.
+ * Memoised: `TabsWithHash` builds it inline, and every search keystroke or tab tap would re-render
+ * it in the commit the interaction waits on.
  */
 export const ParkTabsList = memo(function ParkTabsList(props: ParkTileSource) {
   const locale = useLocale();
@@ -85,11 +71,10 @@ export const ParkTabsList = memo(function ParkTabsList(props: ParkTileSource) {
             key={item.key}
             href={href}
             className={cn(item.order, tileCell, phoneLastCellSpan(items.indexOf(item), tileCount))}
-            // The cells in this row that leave the page, and all three of these are one decision:
-            // hand the row's current position to the copy of itself on the page being opened, and
-            // stop both scroll-to-top mechanisms from throwing it away first. `getPathname`
-            // because `ScrollToTop` compares against `window.location.pathname`, which carries the
-            // locale prefix this href does not. See `useTileRowAnchor`.
+            // The cells that leave the page hand the row's position to its copy on the next page
+            // and stop both scroll-to-top mechanisms from throwing it away (`useTileRowAnchor`).
+            // `getPathname` because `ScrollToTop` compares against `window.location.pathname`,
+            // which carries the locale prefix.
             scroll={false}
             onClick={(e) => {
               rememberTileRow(e.currentTarget, parkSlug);

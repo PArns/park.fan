@@ -41,6 +41,7 @@ const REASON_ICON = {
   price: Coins,
 } as const;
 
+/** Props of the two-day comparison dialog. */
 export interface ParkCalendarComparisonProps {
   /** The first day picked. `null` closes the dialog — see `open`. */
   a: CalendarDay | null;
@@ -55,19 +56,11 @@ export interface ParkCalendarComparisonProps {
 }
 
 /**
- * Two calendar days, side by side, with the verdict on top.
+ * Two calendar days side by side, with the verdict on top. The arithmetic lives in
+ * `lib/parks/day-comparison.ts`; this file turns its keys and numbers into ICU messages.
  *
- * The arithmetic is entirely in `lib/parks/day-comparison.ts` and none of it is here: this file
- * turns keys and numbers into a sentence and six rows. That split is what lets the rules be
- * tested without a DOM, and it is why there is no model anywhere near this — every sentence below
- * is an ICU message with a measured number in it, the same shape `planner-fit-assistant.tsx`
- * uses.
- *
- * **The two columns are the layout, all the way down.** Header cards, every reason row and the
- * two plan buttons all sit in the same `grid-cols-2`, so a value on the left is day A at every
- * height of the dialog — including at 360 px, where the alternative (stacking the two days) would
- * put the numbers being compared a screen apart, which is the thing the reader came here to stop
- * doing. What stacks instead is each ROW: its label and difference sit above its two values.
+ * Header cards, reason rows and plan buttons share one `grid-cols-2`, so a value on the left is day
+ * A at every width. What stacks on a phone is each row: its label sits above its two values.
  */
 export function ParkCalendarComparison({
   a,
@@ -83,12 +76,8 @@ export function ParkCalendarComparison({
   const locale = useLocale();
 
   /**
-   * The dates, in the reader's own language rather than in German word order.
-   *
-   * `date-fns` patterns like `'EEEE, d. MMMM'` are a GERMAN sentence with a localised vocabulary:
-   * they gave „Tuesday, 10. November" on `/en`, and this dialog puts that string in its headline.
-   * `Intl.DateTimeFormat` puts the parts in the order the locale actually uses, and needs no
-   * pattern to be kept right in six languages.
+   * The dates in the reader's word order. A `date-fns` pattern like `'EEEE, d. MMMM'` is German
+   * word order with translated words; `Intl.DateTimeFormat` uses the order of each locale.
    */
   const fmt = useMemo(
     () => ({
@@ -105,23 +94,12 @@ export function ParkCalendarComparison({
   );
 
   /**
-   * How far ahead the planner can actually plan — the best-days snapshot's rolling 90 days.
+   * How far ahead the planner can plan: the best-days snapshot's rolling 90 days. The wizard's date
+   * step disables later days, and this path skips that step, so the check happens before the offer.
    *
-   * The calendar steps twelve months forward, the planner does not follow: past the snapshot
-   * there is no forecast for a day and the wizard's own date step renders it disabled. That step
-   * is SKIPPED on the way in from here, so the check has to happen before the offer. The hook is
-   * the planner's own and is held back by `useLoadLast`, so asking here cannot compete with the
-   * park page's live queries — and on this route the answer is already in the cache.
-   *
-   * Two different `null`s, and they are treated differently. **Nothing has arrived yet** and the
-   * button waits — `pending`, not `loading`: the latter is `isFetching`, which is false during
-   * React Query's defer window (nothing asked yet) and true again for a background refetch of a
-   * snapshot already in hand, so it answers this question wrongly in both directions. **Settled at
-   * `null`** — the request failed its retries — and the button stands, because that is precisely
-   * what the date step does in the same situation: `PlannerMonthCalendar` takes
-   * `maxDate={facts.lastDate ?? undefined}`, and an absent max means no max. Withdrawing the offer
-   * here would be stricter than the step this path replaces, on the ordinary near-term day, on a
-   * flaky connection.
+   * Until the answer arrives the button waits on `pending`, not `loading`: `isFetching` is false in
+   * the `useLoadLast` defer window and true on a background refetch. Settled at `null` (the request
+   * failed) the button stays, as the date step treats a missing max as no max.
    */
   const { lastDate: plannerHorizon, pending: horizonPending } = usePlannerDayFacts(
     { slug: planner.parkSlug, geo: planner.geo },
@@ -135,9 +113,8 @@ export function ParkCalendarComparison({
 
   if (!a || !b || !comparison) return null;
 
-  // `T12:00` and not `parseISO(day.date)`: a bare `YYYY-MM-DD` parses as UTC midnight, which is
-  // the previous day in every zone west of Greenwich — the date would shift for exactly the
-  // readers a park in Orlando is being compared for. Midday is far from either boundary.
+  // `T12:00`, not `parseISO(day.date)`: a bare `YYYY-MM-DD` parses as UTC midnight, which is the
+  // previous day west of Greenwich. Midday is far from either boundary.
   const asDate = (day: CalendarDay) => new Date(`${day.date}T12:00:00`);
   /** „Dienstag, 10. November" — for the verdict sentence, which is prose. */
   const dayLabel = (day: CalendarDay) => fmt.full.format(asDate(day));
@@ -148,12 +125,9 @@ export function ParkCalendarComparison({
   const dateLabel = (day: CalendarDay) => fmt.date.format(asDate(day));
 
   /**
-   * The sides the comparison itself has ruled out, as a set.
-   *
-   * The plan button reads THIS rather than re-deriving „can this day be visited" from the day's
-   * fields, because the two answers drifting apart is a bug with no symptom: a `status: 'UNKNOWN'`
-   * day was named the better day with no blocker line, and then silently got no button — the
-   * dialog recommending a day and refusing to plan it, with nothing on screen saying why.
+   * The sides the comparison itself has ruled out. The plan button reads this instead of
+   * re-deriving "can this day be visited", so the dialog never recommends a day and then silently
+   * refuses to plan it.
    */
   const blockedSides = new Set(
     comparison.blockers.flatMap((blocker) =>
@@ -163,13 +137,9 @@ export function ParkCalendarComparison({
 
   const winner = comparison.better === 'a' ? a : comparison.better === 'b' ? b : null;
   /**
-   * The headline.
-   *
-   * „Unentschieden" and „keiner von beiden" are two different sentences and the module reports
-   * both as `better: 'tie'` — rightly, since neither names a winner. Which one it is depends on
-   * whether anything was comparable in the first place: two past days, or two closed ones, are not
-   * equally good days, and „die beiden Tage nehmen sich nichts" over a five-bucket gap is the
-   * dialog saying something it can see is false.
+   * The headline. „Unentschieden" and „keiner von beiden" both come back as `better: 'tie'`; which
+   * one applies depends on whether anything was comparable at all, since two past or two closed
+   * days are not equally good days.
    */
   const verdict =
     blockedSides.size === 2
@@ -181,12 +151,8 @@ export function ParkCalendarComparison({
           : t('dayComparison.resultSlight', { day: dayLabel(winner) });
 
   /**
-   * The number a cell actually shows, rounded the way that unit is rounded.
-   *
-   * Both the cell and the difference read from this, and that is the point: waits of 30 and 32.4
-   * both print „30 Min", and a difference taken from the RAW values then printed „Unterschied:
-   * 0 Min" beside a ticked cell — a row contradicting itself in three words. A row says one thing
-   * or it says nothing, so the comparison the reader can SEE is the one that decides both.
+   * The number a cell shows, rounded the way its unit is. The cell and the difference both read
+   * this, so a row never ticks a winner between two cells that print the same figure.
    */
   const displayNumber = (reason: DayComparisonReason, value: number): number => {
     switch (reason.unit) {
@@ -206,12 +172,9 @@ export function ParkCalendarComparison({
     Math.abs(displayNumber(reason, reason.a) - displayNumber(reason, reason.b));
 
   /**
-   * Whether this row marks a winner at all.
-   *
-   * A row whose two cells print the same thing does not, however the underlying floats compare —
-   * a tick with no visible difference beside it reads as a bug, and at this precision the two days
-   * really are the same. The crowd row is exempt: its cells are level NAMES, and `better` there is
-   * already a comparison of whole buckets.
+   * Whether this row marks a winner. Two cells that print the same thing do not, whatever the
+   * floats say. The crowd row is exempt: its cells are level names, and `better` already compares
+   * buckets.
    */
   const rowDecides = (reason: DayComparisonReason): boolean =>
     reason.better !== 'tie' && (reason.unit === 'bucket' || shownDelta(reason) > 0);
@@ -245,8 +208,7 @@ export function ParkCalendarComparison({
   const formatDuration = (minutes: number): string => {
     const h = Math.floor(minutes / 60);
     const m = Math.round(minutes % 60);
-    // Under an hour there is no hour to name: a half-hour difference between two opening spans
-    // read „0 Std. 30 Min." before this branch existed.
+    // Under an hour there is no hour to name, so no „0 Std. 30 Min.".
     if (h === 0) return `${m} ${tCommon('min')}`;
     return m === 0
       ? t('dayComparison.unitHours', { hours: h })
@@ -254,10 +216,8 @@ export function ParkCalendarComparison({
   };
 
   /**
-   * The difference, in the row's unit — never a level name, which has no arithmetic.
-   *
-   * Computed from {@link shownDelta}, i.e. from the two numbers the cells print, so „Unterschied"
-   * is always the subtraction the reader can do themselves on the two figures beside it.
+   * The difference in the row's unit, never a level name. Computed from {@link shownDelta}, so it
+   * is always the subtraction of the two figures the reader sees.
    */
   const formatDelta = (reason: DayComparisonReason): string => {
     const delta = shownDelta(reason);
@@ -276,12 +236,9 @@ export function ParkCalendarComparison({
   };
 
   /**
-   * Past the planner's reach, which is a different refusal from a blocked day.
-   *
-   * The calendar steps twelve months forward and the planner's snapshot covers ninety days, so
-   * this is the ordinary case for anyone weighing dates next spring — not an edge. It gets a
-   * sentence rather than an empty cell: „recommends a day and then silently will not plan it" is
-   * the symptom `blockedSides` exists to prevent, and it would have walked straight back in here.
+   * Past the planner's ninety-day reach: a different refusal from a blocked day, and the ordinary
+   * case for dates next spring. It gets a sentence rather than an empty cell, for the same reason
+   * `blockedSides` exists.
    */
   const beyondPlanner = (day: CalendarDay): boolean =>
     !horizonPending && plannerHorizon !== null && day.date > plannerHorizon;
@@ -301,10 +258,8 @@ export function ParkCalendarComparison({
 
   const columnHead = (day: CalendarDay, side: 'a' | 'b') => {
     const wins = comparison.better === side && comparison.confidence !== 'tie';
-    // The same three-way read `park-calendar-day.tsx` does, and for the same reason: `status` and
-    // `crowdLevel` are two fields that can disagree. Collapsing them into „open or closed" labelled
-    // an OPEN day with no forecast as „Geschlossen" — while the tile it was picked from said
-    // „Keine Prognose" — and would have dressed a shut day in a stale crowd tier.
+    // The same three-way read as `park-calendar-day.tsx`: `status` and `crowdLevel` can disagree,
+    // and "open or closed" alone labelled an open day with no forecast „Geschlossen".
     const isClosed = day.status === 'CLOSED' || day.crowdLevel === 'closed';
     const level = day.crowdLevel;
     const colored: ColoredCrowdLevel | null =
@@ -318,10 +273,8 @@ export function ParkCalendarComparison({
           wins ? 'border-primary/60 bg-primary/5' : 'border-border/60'
         )}
       >
-        {/* Weekday and date on two lines rather than one truncated one: at 390 px a column is
-            about 145 px and „Samstag, 10. Oktober" came out as „Samstag, 10. Ok…", which loses the
-            month — the half of the label that says WHICH day this is when the two are in different
-            months, which is the case this whole screen exists for. */}
+        {/* Weekday and date on two lines: truncated to one, the label lost the month on a phone,
+            and the month is what tells two days in different months apart. */}
         <span className="text-muted-foreground text-[10px] font-bold tracking-wider uppercase">
           {weekdayLabel(day)}
         </span>
@@ -350,19 +303,15 @@ export function ParkCalendarComparison({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      {/* The planner wizard's anatomy, and deliberately so: this dialog is one press away from
-          that one, and a plain header here against a photo band there read as two products. Three
-          rows — band, body, buttons — of which only the middle one scrolls, so the verdict at the
-          top and the two „Tag planen" at the bottom hold still on a phone. `svh` rather than `vh`,
-          or the row of buttons sits under a mobile browser's own toolbar. */}
+      {/* The planner wizard's anatomy, since this dialog is one press away from it. Only the body
+          scrolls, so the verdict and the two plan buttons hold still on a phone; `svh` keeps the
+          buttons above a mobile browser's toolbar. */}
       <DialogContent
         showCloseButton={false}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
       >
-        {/* The verdict IS the description, not a line under one: it is the single sentence the
-            whole dialog exists to produce, and burying it under a generic subtitle would put the
-            answer third. `whitespace-normal`, because the band's default is one truncating line
-            and this sentence names a weekday and a date and runs to two at 360 px. */}
+        {/* The verdict is the description: it is the one sentence the dialog exists for.
+            `whitespace-normal` because the band defaults to one truncating line. */}
         <DialogHero
           icon={Scale}
           title={t('dayComparison.title')}
@@ -417,10 +366,8 @@ export function ParkCalendarComparison({
                         <Icon className="size-3.5 shrink-0" aria-hidden="true" />
                         {t(`dayComparison.reason${capitalize(reason.key)}`)}
                       </span>
-                      {/* The difference is a FACT and shows wherever the two cells differ — even
-                          on a row that names no winner (a blocked day, or two waits both past the
-                          ranking's two-hour ceiling). What the tick below adds is the claim; this
-                          only adds the subtraction. */}
+                      {/* The difference is a fact and shows wherever the two cells differ, even on
+                          a row that names no winner. The tick below is the claim. */}
                       {shownDelta(reason) > 0 && (
                         <span className="text-muted-foreground shrink-0 text-[11px] tabular-nums">
                           {t('dayComparison.difference', { value: formatDelta(reason) })}
@@ -452,33 +399,16 @@ export function ParkCalendarComparison({
           )}
         </div>
 
-        {/* One button per column, in the same grid and with the same horizontal padding as
-            everything above it, so „links planen" plans the day whose figures are on the left —
-            a footer that indented differently would break that alignment at the one row where it
-            decides which day gets filed. `mode="wizard"`: both questions the first two steps ask
-            have just been answered on this screen.
-
-            Pinned rather than scrolled, like the wizard's own row: at 390 px the body is taller
-            than the window and these two used to sit below six reason rows, so the day somebody
-            had just decided on was a scroll away from being planned.
-
-            Only for a day that can actually be planned, and here that guard carries more weight
-            than it does in the day dialog it is copied from (`park-calendar-day-detail.tsx`):
-            `mode="wizard"` skips the date step, and the date step is the ONLY place a date is
-            validated — `PlannerMonthCalendar` refuses a past or closed day. Without this, a
-            button sitting directly under „Der Park ist an diesem Tag geschlossen" would file that
-            day into the persisted plan. The column is held open rather than collapsed, so the
-            remaining button stays under the day it belongs to. */}
+        {/* One button per column in the same grid, so the left button plans the left day, pinned
+            like the wizard's own row. Only for a plannable day: `mode="wizard"` skips the date
+            step, the only place a past or closed day is refused. An empty column keeps the other
+            button under its own day. */}
         <div className="border-border/60 grid shrink-0 grid-cols-2 gap-2 border-t px-5 py-4">
           {([a, b] as const).map((day) =>
             !plannable(day) ? (
-              // Noch nicht gefragt ist nicht dasselbe wie „geht nicht".
-              //
-              // Solange die Momentaufnahme unterwegs ist, sind `plannable` und `beyondPlanner`
-              // BEIDE falsch, und die Zelle fiel in den letzten Zweig: der Dialog empfahl einen
-              // Tag, bot keinen Knopf und nannte keinen Grund, und schob die Knöpfe einen
-              // Wimpernschlag später nach. Genau das Symptom, gegen das `blockedSides` in
-              // dieser Datei eingeführt wurde — nur eine Sekunde lang.
+              // Not asked yet is not "cannot": while the snapshot is pending, `plannable` and
+              // `beyondPlanner` are both false, and the last branch would show no button and no
+              // reason.
               horizonPending ? (
                 <p
                   key={day.date}
@@ -507,9 +437,8 @@ export function ParkCalendarComparison({
                 date={day.date}
                 timezone={parkTimezone}
                 mode="wizard"
-                // Tighter than the day dialog's full-width instance: two of these share a row
-                // 390 px wide, where the default padding and gap pushed the label onto a third
-                // line.
+                // Tighter than the day dialog's instance: two share a phone-width row, and the
+                // default padding pushed the label onto a third line.
                 className="gap-1.5 px-2 text-xs max-sm:min-h-11 sm:text-sm"
                 onPlanned={() => onOpenChange(false)}
               />
@@ -528,10 +457,9 @@ function capitalize(value: string): string {
 
 /** A price in whole units of the park's currency, for the price row's cells and its difference. */
 function formatWholeCurrency(value: number, locale: string, currency: string): string {
-  // `Intl.NumberFormat` throws a `RangeError` on a currency it does not know, and this runs
-  // inside render: an unrecognised code would take the whole dialog down rather than one row.
-  // `compareDays` already refuses anything that is not three letters; this is the second half
-  // of the same guard.
+  // `Intl.NumberFormat` throws a `RangeError` on an unknown currency, and this runs in render: a
+  // bad code would take the whole dialog down. `compareDays` already refuses anything that is not
+  // three letters; this is the second half of that guard.
   try {
     return getNumberFormat(locale, {
       style: 'currency',

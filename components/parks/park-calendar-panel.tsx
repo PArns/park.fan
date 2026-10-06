@@ -30,29 +30,18 @@ import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
 
 /**
- * The month grid with its chapter heading — the client half of the calendar page.
- *
- * `ParkCalendarGrid` is imported the way the tab used to import it (`ssr: false`): it formats
- * every cell against the browser clock and decides its layout from the live viewport, neither of
- * which a server render can do. The loading box is the grid's own height rather than `null`,
- * because there is a whole page footer under it and a boundary that reserves nothing pushes that
- * footer down when the chunk lands.
- *
- * That box used to be `h-[36rem]` — 576 px, one number for two layouts and twelve months. It was
- * short at every breakpoint and catastrophically short on a phone: measured against production on
- * Phantasialand's November 2026, the real grid is 1992 px at 390 px wide, so the calendar landed
- * and threw everything below it — best days, statistics, FAQ, footer — down by 1416 px. The
- * height now comes from `calendarGridReservation`, which reads it off the month in the URL; see
- * that module for the measurements and why the row count is the part a server can know.
+ * `ParkCalendarGrid` is `ssr: false`: it formats every cell against the browser clock and picks its
+ * layout from the live viewport. The loading box is the grid's own height from
+ * `calendarGridReservation` rather than `null`, because the rest of the page sits under it. See
+ * docs/rules/a-streamed-section-owes-the-page-its-height.md.
  */
 const ParkCalendarGrid = dynamic(
   () => import('@/components/parks/park-calendar-grid').then((m) => m.ParkCalendarGrid),
   {
     ssr: false,
-    // The three custom properties are set by the wrapper below, which is the only place that
-    // knows the month. A `loading` component is created at module scope and never sees props, so
-    // the number has to reach it through the cascade — and the grid's OWN loading state renders
-    // the same component for the same reason, or the two waits reserve two different boxes.
+    // The three custom properties are set by the wrapper below, the only place that knows the
+    // month: a module-scope `loading` never sees props. The grid's own loading state renders the
+    // same component, so both waits reserve one box.
     loading: () => <ParkCalendarGridPlaceholder />,
   }
 );
@@ -82,23 +71,16 @@ export function ParkCalendarPanel({
   /** The month this URL names, or `null` on the hub — where the grid opens on today's month. */
   month: ParkCalendarMonth | null;
   /**
-   * Today's month in the PARK's timezone, resolved on the server.
-   *
-   * Passed in rather than read here: this is a Client Component, and a park in Florida is still
-   * on yesterday's date for six hours after midnight in Berlin — computing it on both sides of
-   * the boundary would disagree across a month rollover and hydrate into a „Heute" button that
-   * points at the wrong month, or none where there should be one.
+   * Today's month in the park's timezone, resolved on the server. Computed on both sides of the
+   * boundary, it would disagree across a month rollover and hydrate a „Heute" button pointing at
+   * the wrong month.
    */
   currentMonth: ParkCalendarMonth;
   prevMonth: ParkCalendarMonth | null;
   nextMonth: ParkCalendarMonth | null;
   /**
-   * The month index, rendered inside this card under the grid.
-   *
-   * It sat under the whole page before, as a bare `<nav>` on the park photo — white chips on a
-   * night shot of a carousel, with no surface behind them and every other chapter of the page
-   * between them and the calendar they belong to. It is the same control as the stepper at the
-   * top of this card, just showing every month at once, so it belongs in the same box.
+   * The month index, rendered inside this card under the grid: it is the same control as the
+   * stepper, showing every month at once.
    */
   monthIndex?: React.ReactNode;
   className?: string;
@@ -108,15 +90,9 @@ export function ParkCalendarPanel({
   // The month the grid will draw — on the hub that is today's, which is what it opens on.
   const reservation = calendarGridReservation(month ?? currentMonth);
   /**
-   * The URL for a month — and the hub's URL for the CURRENT month, deliberately.
-   *
-   * `/wartezeiten-kalender` and `/wartezeiten-kalender/2026/8` render the same grid in August, so the
-   * current month has two addresses. The route's canonical already points the month one at the
-   * hub, which is what a crawler needs; this stops the app from minting the duplicate in the
-   * first place. Without it, stepping back from September landed on `/2026/8` — a page whose own
-   * title, description and H1 are written for a URL that canonicals away and will never be shown.
-   *
-   * Typed and bookmarked `/2026/8` still resolves; the canonical remains the safety net for it.
+   * The URL for a month, and the hub's URL for the current month: `/wartezeiten-kalender` and
+   * `/wartezeiten-kalender/2026/8` render the same grid in August, and the app should not mint the
+   * duplicate whose canonical points away. A typed `/2026/8` still resolves.
    */
   const href = (m: ParkCalendarMonth | null) => {
     if (!m) return null;
@@ -130,17 +106,12 @@ export function ParkCalendarPanel({
       new Date(Date.UTC(m.year, m.month - 1, 1))
     );
 
-  /* The month stepper, rendered in the heading band rather than beside the grid.
-
-    It stays in THIS component wherever it sits, and that is what keeps the archive crawlable:
-    the grid is a `ssr: false` dynamic import — it formats every cell against the browser clock —
-    so anything inside it is absent from the served HTML. With the links down there a crawler
-    arriving at one month found no way to any other, and the archive existed only for whoever
-    guessed the URLs. This is an ordinary Client Component, so it renders on the server and the
-    two links are in the first byte.
-
-    `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the stepper
-    stops rather than pointing at a 404. */
+  /*
+   * The month stepper, in the heading band. It lives in this component and not in the `ssr: false`
+   * grid, so its two links are in the first byte and a crawler can reach every month.
+   * `prevMonth`/`nextMonth` are `null` where the route's window runs out, and the stepper stops
+   * rather than pointing at a 404.
+   */
   const monthStepper = (
     <>
       {!isCurrentMonth && (
@@ -161,9 +132,8 @@ export function ParkCalendarPanel({
             <MonthStepIcon>
               <CalendarCheck className="h-4 w-4" />
             </MonthStepIcon>
-            {/* Below `sm` the stepper has ~204 px for four controls, and this label is 45 px of
-                it in German, 84 in French. The `aria-label` above already names the target, so
-                dropping the text costs nothing but the width. */}
+            {/* Below `sm` the stepper has little room for four controls, and the `aria-label` above
+                already names the target, so dropping the text costs only the width. */}
             <span className="hidden sm:inline">{t('currentMonth')}</span>
           </Link>
         </Button>
@@ -171,17 +141,10 @@ export function ParkCalendarPanel({
       <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
         <ChevronLeft className="h-4 w-4" />
       </MonthStep>
-      {/* Centred and fixed-width so the two arrows do not move when the month name changes
-          length — „Mai 2026" against „September 2026" is 60 px of travel otherwise.
-
-          `month ?? currentMonth`, because the hub names no month in its URL and used to render an
-          empty box between the two arrows. It opens on today's month, so that is the month to
-          write — and `currentMonth` is resolved on the server in the PARK's timezone precisely so
-          both sides of the hydration boundary agree about which one that is. */}
-      {/* The 140 px is a DESK number: it exists so the arrows hold still while the month name
-          changes length, and a phone has no room to spend on holding anything still. Below `sm`
-          the box takes what the name needs and may wrap, which is what keeps the row inside the
-          column instead of pushing the „nächster Monat" arrow off the screen. */}
+      {/* Centred, and from `sm` fixed-width, so the arrows hold still when the month name changes
+          length; on a phone the box may wrap instead, which keeps the next-month arrow on screen.
+          `month ?? currentMonth` because the hub names no month in its URL and opens on today's,
+          resolved on the server in the park's zone so hydration agrees. */}
       <div className="min-w-0 flex-1 text-center font-semibold sm:min-w-[140px] sm:flex-none">
         {label(month ?? currentMonth)}
       </div>
@@ -193,9 +156,8 @@ export function ParkCalendarPanel({
 
   return (
     <section className={cn(className)}>
-      {/* `rounded-b-none`: this is the one band with something glued to its underside — the card
-        below carries `rounded-t-none border-t-0`, and the two halves are one box. Every other
-        chapter's band stands on its own and keeps all four corners. */}
+      {/* `rounded-b-none`: the card below carries `rounded-t-none border-t-0`, and the two halves
+          are one box. */}
       <ChapterHeading
         icon={CalendarDays}
         title={t('gridTitle')}
@@ -203,60 +165,44 @@ export function ParkCalendarPanel({
           month: label(month ?? currentMonth),
           ...parkArgs(locale as Locale, park.name, park.nameArticleDe),
         })}
-        /* The stepper and, under it, the switch that decides what a press on a day tile MEANS.
-
-           It used to sit inside the grid, above the tiles, and that was wrong twice. The grid is
-           a `dynamic(..., { ssr: false })` import, so the switch was absent from the served HTML
-           and arrived with the chunk — a control nobody could see on the first paint, and 52 px
-           (60 on a phone) of row that the `--cal-grid-h*` reservation did not cover, so
-           everything under the calendar was pushed down the moment the chunk mounted. Up here it
-           is server-rendered like the stepper and the legend, and the reservation is honest
-           again. The `dayComparisonStore` is a module store keyed by park slug, so the switch and
-           the grid share the state across that boundary without a prop. */
+        /*
+         * The stepper and, under it, the switch that decides what a press on a day tile means.
+         * Server-rendered here rather than in the `ssr: false` grid, so it shows on first paint and
+         * the `--cal-grid-h*` reservation still covers the grid. `dayComparisonStore` is keyed by
+         * park slug, so switch and grid share state without a prop.
+         */
         action={
           <div className="flex w-full min-w-0 flex-col items-end gap-2">
             <div className="flex w-full min-w-0 items-center justify-end gap-2">{monthStepper}</div>
             <CalendarCompareToggle parkSlug={parkSlug} />
           </div>
         }
-        /* Beside the heading, not inside its title row: this action is two storeys, and in the
-           row it made the row 80 px tall and pushed „Jeder Tag im September 2026 mit…" that far
-           down, away from the title it describes. */
+        /*
+         * Beside the heading, not in its title row: the action is two storeys tall and pushed the
+         * subline away from the title it describes.
+         */
         actionAside
         frosted
         className="mb-0 rounded-b-none"
       />
 
-      {/* Heading, stepper and grid are ONE box. The card takes `rounded-t-none border-t-0` so the
-        band's own `rounded-t-xl` and its `border-b` become this box's lid and its first rule — the
-        band used to end over open air with a strip of park photo between it and the grid's
-        separate card. See `monthStepper` above for why the links are not inside the grid. */}
+      {/* Heading, stepper and grid are one box: the card takes `rounded-t-none border-t-0`, so the
+          band's `rounded-t-xl` and `border-b` become its lid and first rule. */}
       <div
         className={cn(
-          // `TILE_GLASS`, the same recipe „Historische Wartezeit-Statistiken" and „Beste
-          // Reisezeit" use for their panels. This was a plain `Card`, i.e. the default
-          // `bg-background/60` + `backdrop-blur-md`, which put three chapters of one page on two
-          // different glass levels — the calendar thinner and less blurred than the two boxes
-          // above and below it, over the same park photograph.
+          // `TILE_GLASS`, the recipe the statistics and best-days panels use, so the page's
+          // chapters sit on one glass level over the same photo.
           TILE_GLASS,
           'border-border/50 relative flex flex-col gap-4 rounded-b-xl border border-t-0 p-4 md:p-6'
         )}
       >
-        {/* The colour key, on its own line above the grid. The month stepper used to share it
-          and has moved up into the heading band: the month is the page's subject, and ranking it
-          after a legend put the one control everybody reaches for at the end of a row. The legend
-          was inside the `ssr: false` grid before that and is server-rendered here — it needs no
-          data, and down there it made the grid's two loading states differ by its own height. */}
+        {/* The colour key, server-rendered on its own line above the grid: it needs no data, and
+            inside the grid it made the two loading states differ by its own height. */}
         <ParkCalendarLegend />
 
-        {/* The wrapper exists to carry the reservation, and it carries it as three custom
-          properties rather than three classes because Tailwind cannot see a class name that was
-          computed — `h-[${n}px]` produces no CSS. The arbitrary-value utilities on the skeleton
-          read these, so the arithmetic has exactly one home (`calendarGridReservation`) and the
-          JIT keeps working.
-
-          Set on the month the GRID will show, which on the hub is the current month rather than
-          `null` — the hub opens on today and reserves for today. */}
+        {/* The reservation travels as three custom properties, not classes, because Tailwind cannot
+            see a computed class name. Set on the month the grid will show, which on the hub is the
+            current month. */}
         <div
           style={
             {
@@ -287,17 +233,11 @@ export function ParkCalendarPanel({
 }
 
 /**
- * „Zwei Tage vergleichen" — the switch that turns a press on a day tile from „open this day" into
- * „pick this day".
- *
- * A `Button` in the default (primary) variant rather than the park page's `FilterToggle` pill: it
- * is the one thing on this card somebody can DO with the month they are looking at, and a filter
- * pill in a row of glass reads as a refinement of what is already on screen. Its pressed state
- * says what a second press does — a switch whose label never changes leaves „how do I get out of
- * this" to be guessed — and it keeps `aria-pressed`, because it is a button that stays down.
- *
- * It subscribes on its own rather than letting the panel read the store: a pick is a write on
- * every press, and a panel that re-rendered for it would re-render the grid under it too.
+ * „Zwei Tage vergleichen": the switch that turns a press on a day tile from „open this day" into
+ * „pick this day". A primary `Button`, not a `FilterToggle` pill, because it is the one thing on
+ * the card that acts on the month; its label says what a second press does, and it keeps
+ * `aria-pressed`. It subscribes on its own, so a pick does not re-render the panel and the grid
+ * under it.
  */
 function CalendarCompareToggle({ parkSlug }: { parkSlug: string }) {
   const t = useTranslations('parks.dayComparison');
@@ -313,14 +253,9 @@ function CalendarCompareToggle({ parkSlug }: { parkSlug: string }) {
     <Button
       variant={active ? 'secondary' : 'default'}
       size="sm"
-      // The `sm` size as it comes: 32 px at the desk, and NOT the 36 the stepper's controls take —
-      // it stands under that row rather than in it, so it owes it no height, and a filled button
-      // in the primary colour carries further than an outline one at the same size. Not full
-      // width below `sm` either: at 390 px that was 234 of the card's 358, under a title and over
-      // a legend, i.e. the loudest thing on a page whose subject is the month. What does NOT move
-      // is the phone height — `max-sm:h-11` is the touch floor the button scale imposes, and 44
-      // px is a target rather than a look. The horizontal padding is the size's own `px-2.5`
-      // beside an icon.
+      // The `sm` size as it comes: the button stands under the stepper row, not in it, so it owes
+      // that row no height; and not full width on a phone, where it would be the loudest thing on
+      // the card. `max-sm:h-11` is the touch floor of the button scale.
       aria-pressed={active}
       onClick={() => dayComparisonStore.setActive(parkSlug, !active)}
     >
@@ -355,20 +290,18 @@ function MonthStep({
   }
   return (
     <Button variant="outline" size="icon" asChild>
-      {/* `scroll={false}`: a month used to be a `setState` and the page stayed where it was. It is
-        a navigation now, and Next's default is to put a new page at the top — so pressing „nächster
-        Monat" threw the reader back to the park's title card and they had to scroll down to the
-        grid again for every month. The grid is in the same place on the next page, so leaving the
-        scroll alone is what makes the arrow read as a stepper rather than as a link. Only affects
-        in-app navigation; a cold load of a month URL still opens at the top, which is right. */}
+      {/* `scroll={false}`: the grid sits in the same place on the next month's page, so leaving the
+          scroll alone makes the arrow read as a stepper. A cold load of a month URL still opens at
+          the top. */}
       <Link
         href={href}
         aria-label={label}
         scroll={false}
-        /* `getPathname` and not `href`: this app's own scroll handler compares against
-           `window.location.pathname`, which carries the locale prefix (`localePrefix: 'always'`),
-           while `href` here is locale-relative — the two never matched and the page kept jumping
-           to the top on every month step. */
+        /*
+         * `getPathname`, not `href`: the app's scroll handler compares against
+         * `window.location.pathname`, which carries the locale prefix, while `href` is
+         * locale-relative.
+         */
         onClick={() => suppressScrollToTopFor(getPathname({ href, locale }))}
       >
         <MonthStepIcon>{children}</MonthStepIcon>
@@ -378,13 +311,9 @@ function MonthStep({
 }
 
 /**
- * The arrow, or a spinner while the month's page is on its way.
- *
- * A month used to be a `setState` and the grid's own `isLoading` covered the wait. It is a
- * navigation now, so that flag never fires — the fetch happens on the next page — and pressing an
- * arrow gave no feedback at all until the new page painted. `useLinkStatus` reports exactly that
- * gap, and it only reports for the `<Link>` it is rendered inside, which is why this is its own
- * component rather than a flag read one level up.
+ * The arrow, or a spinner while the month's page is on its way. A month step is a navigation, so
+ * the grid's `isLoading` never covers the wait; `useLinkStatus` does, but only inside the `<Link>`
+ * it is rendered in, hence its own component.
  */
 function MonthStepIcon({ children }: { children: React.ReactNode }) {
   const { pending } = useLinkStatus();

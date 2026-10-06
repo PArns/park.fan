@@ -3,6 +3,7 @@
  */
 import type { WeatherDay } from '@/lib/api/types';
 
+/** The demo forecast days, without the dates the showcase fills in. */
 export const FORECAST_TEMPLATE: Omit<WeatherDay, 'date' | 'dataType'>[] = [
   {
     temperatureMax: '15',
@@ -166,8 +167,10 @@ export const FORECAST_TEMPLATE: Omit<WeatherDay, 'date' | 'dataType'>[] = [
   },
 ];
 
+/** The weather conditions the showcase can render. */
 export type Variant = 'sunny' | 'partly' | 'rainy' | 'stormy' | 'snowy' | 'fog';
 
+/** Today's conditions for each demo variant. */
 export const VARIANT_CURRENT: Record<
   Variant,
   Omit<WeatherDay, 'date' | 'dataType'> & {

@@ -1,15 +1,9 @@
 import { GlassCard } from '@/components/common/glass-card';
 
 /**
- * The two shapes a statistics card can take.
- *
- * `CardFrame` is the standalone one — its own glass and padding, which is what the guide page's
- * anatomy demo and any future single use need. `BareFrame` is for the stats panel, where the
- * enclosing `PANEL_CELL` already draws the box, the padding and the hairline rules; a `GlassCard`
- * inside that is a second frame around the same content and reads as a card floating in a card.
- *
- * Two components rather than a conditional wrapper at each call site, so the `space-y-2` that
- * separates a card's heading from its table is written down once and cannot drift between the two.
+ * The standalone shape of a statistics card, with its own glass and padding (the guide page's
+ * demo). `BareFrame` is the one inside the stats panel, whose `PANEL_CELL` already draws the box;
+ * two components, so the heading-to-table `space-y-2` is written once.
  */
 export function CardFrame({ children }: { children: React.ReactNode }) {
   return (

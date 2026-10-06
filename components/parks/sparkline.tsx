@@ -4,6 +4,7 @@ import { useMemo, useState, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { useMounted } from '@/lib/hooks/use-mounted';
 
+/** One point of a sparkline series. */
 export interface SparklinePoint {
   x: number;
   label: string;
@@ -21,13 +22,9 @@ interface SparklineProps {
    */
   yDomain?: 'zero' | 'fit';
   /**
-   * Force the top of the scale, for two charts that are meant to be compared by eye.
-   *
-   * Without it each sparkline fits its own maximum, so a series that only moves
-   * 7 minutes is drawn with the same amplitude as one that moves 22 — which is
-   * exactly backwards when the comparison IS the point. Ignored under
-   * `yDomain: 'fit'`, and never below the data's own max, so a too-small value
-   * cannot clip the curve.
+   * Force the top of the scale, for two charts meant to be compared by eye; otherwise each fits its
+   * own maximum and a 7-minute swing looks as big as a 22-minute one. Ignored under
+   * `yDomain: 'fit'`, and never below the data's own max.
    */
   yMax?: number;
 }
@@ -62,14 +59,10 @@ export function Sparkline({
     return { ...base, yMin: 0, yMax: Math.max(...values, 10, yMaxProp ?? 0) };
   }, [points, yDomain, yMaxProp]);
 
-  // Local hover handlers instead of a global `window` mousemove listener: the attraction
-  // history grid mounts one sparkline per day (~31), and each global listener ran
-  // getBoundingClientRect() on EVERY pointer move anywhere on the page — 31 forced layout
-  // reads per mousemove. Local handlers only fire while the cursor is over this sparkline.
-  //
-  // The box is measured once per hover, on enter, rather than on every move: the tooltip's own
-  // position is written between two moves, so a read per move was a forced layout per move. Only
-  // `left` and `width` are used, and scrolling the page vertically moves neither.
+  // Local hover handlers rather than a global `window` listener: the history grid mounts one
+  // sparkline per day, and each global listener forced a layout read on every pointer move
+  // anywhere. The box is measured once per hover, on enter, because the tooltip writes between
+  // moves; only `left` and `width` are used, which vertical scrolling does not change.
   const boxRef = useRef<{ left: number; width: number } | null>(null);
   const handleMouseEnter = useCallback(() => {
     const el = containerRef.current;

@@ -48,42 +48,22 @@ interface RideNavTilesProps {
   /** Questions it renders. */
   faqCount: number;
   /**
-   * The two chapter titles this row cannot name itself.
-   *
-   * Handed in rather than looked up, and it is not a style choice: this is a Client Component, so
-   * a `useTranslations('seo.faq.attraction')` here puts that whole namespace — and
-   * `attraction.rideProfile` with it — into the routed message payload of all 42,756 attraction
-   * URLs, for two labels the server already has. Same reasoning as `leanParkForAttractionShell`
-   * one layer down: pass what is read, not what is available.
+   * The two chapter titles this row cannot name itself. Handed in, because
+   * `useTranslations('seo.faq.attraction')` in this Client Component would put that whole namespace
+   * into the routed messages of every attraction URL, for two labels the server already has.
    */
   labels: { rideProfile: string; faq: string };
 }
 
 /**
- * The ride page's chapter row — the park page's entry tiles, one page type over.
+ * The ride page's chapter row: the park page's entry tiles one page type over, with the same cell
+ * (`tileCell`), body (`EntryTileBody`) and place as the footer band of `ParkHeaderCard`.
  *
- * These are **jump links, not tabs**, and the difference is the whole point. The park page's
- * tiles switch a `Tabs` whose inactive panels are not in the DOM; doing the same here would take
- * the typical-wait table, the 30-day history, the ride profile and the FAQ out of the served HTML
- * of every ride page on the site, which is most of what a ride page is for. The chapters stay
- * where they are and the row is a way to reach them.
- *
- * What changed is everything else about it. The row used to be four rounded, gapped tiles
- * carrying an icon and a label and nothing else, sitting on the park photo under a card — while
- * the park page's row is a seamless band of hairline-ruled cells inside the header card, each
- * saying what is behind it right now. Two pages one click apart, two different objects doing the
- * same job. This one takes the park's cell (`tileCell`), the park's body (`EntryTileBody` with
- * its reserved two-line hint) and the park's place in the layout: the footer band of
- * `ParkHeaderCard`, under „Heute an dieser Bahn".
- *
- * The hints come from the query the live panel above it already runs — same key, one fetch — so
- * the row costs a request from nobody. Each is `null` until its data lands and the box is
- * reserved at two lines either way, which is what keeps the poll from moving the page.
- *
- * Nothing marks a tile „current": a scroll position is not a selection, and the honest version of
- * that is a scroll spy over chapters that are metres tall. `SelectionBar` is rendered all the
- * same — it is `opacity-0` without `data-state=active` or `aria-current`, so it costs a span and
- * keeps the two rows structurally identical.
+ * Jump links, not tabs: tabs would take the typical-wait table, the history, the ride profile and
+ * the FAQ out of the served HTML. The hints come from the live panel's query by the same key, and
+ * each box is reserved at two lines so the poll does not move the page. No tile is marked current,
+ * since a scroll position is not a selection; `SelectionBar` still renders, invisible, so both rows
+ * keep one structure.
  */
 export function RideNavTiles({
   continent,
@@ -127,14 +107,9 @@ export function RideNavTiles({
       }
     : attraction;
   /**
-   * The wait, and only when the ride is actually open.
-   *
-   * `getStandbyWait` says so in its own docstring — "a closed ride reports the last number its
-   * queue carried" — and the number it carries is usually `0`. Verified against the live API: at
-   * 06:37 UTC Phantasialand returns Taron `CLOSED` with `queues: [{ STANDBY, status: CLOSED,
-   * waitTime: 0 }]`, so this tile served „Jetzt 0 Min." in the first HTML of every ride page of
-   * every closed park, two rows under a panel saying „Geschlossen". The park's own tile row gates
-   * on the display status for the same reason.
+   * The wait, and only while the ride is open: a closed ride's queue usually still carries `0`,
+   * which would put „Jetzt 0 Min." under a panel saying „Geschlossen". The park's tile row gates on
+   * the display status for the same reason.
    */
   const status = getLiveAttractionStatus(live, undefined);
   const wait = status === 'OPERATING' ? getStandbyWait(live) : null;
@@ -147,8 +122,7 @@ export function RideNavTiles({
       .filter((s) => new Date(s.time).getTime() > nowMs)
       .sort((a, b) => a.time.localeCompare(b.time))[0];
     if (!slot) return null;
-    // `hour`/`minute` are load-bearing: without them Intl falls back to its DATE defaults and the
-    // tile reads „Beste Zeit: 26.8.2026 Uhr". Every other formatTime call site passes them.
+    // `hour`/`minute` are load-bearing: without them Intl falls back to its date defaults.
     return formatTime(new Date(slot.time), locale, {
       hour: '2-digit',
       minute: '2-digit',
@@ -161,8 +135,8 @@ export function RideNavTiles({
     let peak = 0;
     let measured = 0;
     for (const day of detail?.history ?? []) {
-      // `> 1`, the same threshold the grid calls a day OPEN. At `>= 1` the tile counted a day the
-      // grid draws as closed and said „29 Tage" over a grid showing 28.
+      // `> 1`, the threshold at which the grid calls a day open, so the tile counts the days the
+      // grid draws.
       if ((day.hourlyP90?.length ?? 0) < 2) continue;
       measured += 1;
       for (const point of day.hourlyP90) if (point.value > peak) peak = point.value;
@@ -182,9 +156,9 @@ export function RideNavTiles({
           {
             href: '#live',
             icon: Clock,
-            // The chapter it points at, not the reading in the hint: the live minute now opens the page
-            // inside the header card this row is the footer of, and a tile labelled „Wartezeit jetzt"
-            // that scrolls PAST it to a chart is a tile that lies about where it goes.
+            // The chapter it points at, not the hint's reading: the live minute is in the header
+            // card above, and a tile labelled „Wartezeit jetzt" that scrolled past it to a chart
+            // would lie about where it goes.
             label: t('todayChart.title'),
             hint:
               wait !== null

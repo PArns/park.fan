@@ -5,12 +5,9 @@ import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 import { cn } from '@/lib/utils';
 
-// Park/attraction hero sources are ≤1024px (the on-disk background.jpg / attraction images), so a
-// plain `100vw` made high-DPR phones request the upscaled w=1080 srcset candidate — more bytes,
-// zero extra detail. Under-declaring the mobile width to 60vw pulls the w=828 candidate instead
-// (the largest non-upscaled rendition); under the gradient / bg-background overlays the slight
-// upscale-on-display is imperceptible. Desktop keeps 100vw; the loader bands the quality by how
-// wide the rendition will actually be painted.
+// Hero sources are at most 1024px wide, so `100vw` made high-DPR phones fetch the upscaled w=1080
+// candidate. 60vw picks w=828, the largest non-upscaled rendition; under the overlays the slight
+// upscale on display does not show.
 const PARK_BG_SIZES = '(max-width: 768px) 60vw, 100vw';
 
 interface ParkBackgroundProps {
@@ -19,20 +16,13 @@ interface ParkBackgroundProps {
   /** Fix the background so it stays in place while content scrolls over it. */
   fixed?: boolean;
   /**
-   * CSS `object-position` for the crop, from the image's focal point.
-   *
-   * Resolved by the caller (a Server Component) rather than looked up here: this
-   * is a Client Component, and reaching into the media manifest from it would
-   * ship the whole catalog to the browser. See `objectPositionForSrc`.
+   * CSS `object-position` for the crop, from the image's focal point. The server caller resolves
+   * it: looking it up in this client file would ship the whole media manifest to the browser.
    */
   objectPosition?: string;
   /**
-   * Render inside the nearest positioned ancestor instead of the viewport.
-   *
-   * Both normal modes are `fixed` + `-z-10`, i.e. they deliberately escape every
-   * container and sit behind the page — which means the component cannot be shown
-   * in a bounded box without this. Used by the admin's focal-point preview so it
-   * can show the real background component rather than a look-alike.
+   * Render inside the nearest positioned ancestor instead of the viewport. Both normal modes are
+   * `fixed` + `-z-10` and escape every container, so the admin's focal-point preview needs this.
    */
   contained?: boolean;
 }
@@ -54,8 +44,6 @@ export function ParkBackground({
   // full-screen backdrop centres, the scrolling strip anchors to the top. A focal
   // point overrides whichever applies.
   const position = objectPosition ?? (fixed ? '50% 50%' : '50% 0%');
-  // `fixed inset-0 -z-10` is what makes this a page backdrop; contained mode swaps
-  // it for a plain absolute fill so a preview box can hold it.
   const shell = contained ? 'absolute inset-0' : 'fixed inset-0 -z-10';
 
   if (fixed) {
@@ -85,22 +73,11 @@ export function ParkBackground({
         'pointer-events-none overflow-hidden select-none',
         contained
           ? 'absolute inset-0'
-          : // `position: fixed` resolves against the VIEWPORT, so this layer is
-            // the one thing on a park page that the planner's inset cannot
-            // reach: the wrapper in `app/[locale]/layout.tsx` insets by padding,
-            // and padding an ancestor does nothing to a fixed descendant.
-            // Measured with a 448 px panel open on a 1440 px window, this hero
-            // still spanned 0→1440 while the page beside it was 992 — and the
-            // panel is glass, so the park photo read straight through it
-            // (average channel delta 19/255 over the panel's own 448×675 box).
-            // The right edge follows the same variable the page does, which is
-            // `0px` while the planner is shut, i.e. unchanged for everybody who
-            // never opens it. No transition on it deliberately: animating the
-            // width would re-rasterize a 1440×739 blurred photo for 300 ms.
-            // `planner-wide:` rather than `sm:`, for the reason the page
-            // wrapper gives: the panel is a bottom sheet on a landscape phone
-            // and there is no right-hand gutter to follow there (PAR-76). Same
-            // question, same two terms, same pair in `app/globals.css`.
+          : // `position: fixed` resolves against the viewport, so the page wrapper's
+            // padding inset cannot reach this layer: it follows `--planner-inset` itself, or the
+            // photo shows through the glass planner panel. No transition: animating the width
+            // re-rasterizes the blurred photo. `planner-wide:` rather than `sm:` because the panel
+            // is a bottom sheet on a landscape phone, the same pair as in `app/globals.css`.
             'planner-wide:right-[var(--planner-inset,0px)] fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px]'
       )}
     >
@@ -113,18 +90,14 @@ export function ParkBackground({
           priority
           placeholder="blur"
           blurDataURL={BACKGROUND_BLUR_DATA_URL}
-          // Anchored to the top by default: the strip is shorter than the scaled image, so
-          // `object-cover` has to crop somewhere, and centred cropping ate into the top of the
-          // picture (sky / the ride itself). An image with a focal point overrides that — see
-          // lib/media/focus.ts.
+          // Top-anchored by default: the strip is shorter than the scaled image, and a centred crop
+          // cut off the top of the picture. A focal point overrides it, see lib/media/focus.ts.
           className="object-cover"
           style={{ objectPosition: position }}
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />
-        {/* Gradient overlay to fade into the background color. Kept fully transparent for the top
-            ~80% of the strip so as much of the image shows as possible, then ramped to the solid
-            background only over the bottom portion — the fade lives low instead of starting mid-image. */}
+        {/* Transparent for the top 80% so the photo shows; the fade sits low, not mid-image. */}
         <div className="via-background/70 to-background absolute inset-0 bg-gradient-to-b from-transparent from-80% via-90%" />
         <div className="to-background absolute inset-0 bg-gradient-to-b from-transparent from-90%" />
       </div>

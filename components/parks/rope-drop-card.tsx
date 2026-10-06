@@ -33,69 +33,31 @@ interface RopeDropCardProps {
    */
   todayClosingUtc?: string | null;
   /**
-   * Whether any attraction in this park carries a rope-drop or evening
-   * recommendation.
-   *
-   * Read for one thing: whether the `bestTime` panel prints the "no need to rush" note in its
-   * footer. The note only makes sense as a contrast to recommended neighbours — in a park with
-   * no recommendation anywhere it would appear on every headliner as noise, saying that this
-   * ride is unlike siblings that are exactly like it.
-   *
-   * It used to pick the whole panel, and that is what PAR-122 closed: a park WITH neighbours put
-   * the ride's own readings out of reach and left half a card holding one line of grey text, on
-   * 470 ride pages in 87 parks.
+   * Whether any attraction in this park carries a rope-drop or evening recommendation. It decides
+   * only whether the `bestTime` panel prints the "no need to rush" note, which makes sense only as
+   * a contrast to recommended neighbours.
    */
   parkHasRecommendations?: boolean;
   /**
-   * The ride's typical waits, when the page has them.
-   *
-   * Read by the „best time" panel only, for the quietest weekday — the one answer to the
-   * chapter's own heading that survives when the recommendation itself is a no. It is the same
-   * object `AttractionTypicalWaits` draws in the cell next door, so naming a day costs no second
-   * request and nothing arrives after paint. Reading the same object is not by itself enough to
-   * keep the sentence and the bars in agreement — `quietestWeekdays` carries the two rules that
-   * do (round on the displayed grid, and stay silent where a dropped thin day draws a shorter
-   * bar than the day it would name). The third is in the strings: the sentence quotes the P50,
-   * while the only number the chart labels per column is the P90, so its adverb shares a root
-   * with the card's own P50 label („normalerweise" against „Normal") in all six locales — the
-   * word a reader has to match the figure against.
+   * The ride's typical waits, when the page has them, read by the `bestTime` panel for the quietest
+   * weekday: the one answer to the chapter's heading that survives a no. The same object
+   * `AttractionTypicalWaits` draws next door, so it costs no request. `quietestWeekdays` carries
+   * the rules that keep the sentence and the bars in agreement, and the sentence's adverb
+   * („normalerweise") matches the card's P50 label in all six locales.
    */
   typicalWaits?: TypicalWaits | null;
   /**
-   * Drop the card's own glass and padding.
-   *
-   * For a `PANEL_CELL`, which already draws the box, the padding and the hairline rules — a
-   * `GlassCard` inside one is a second frame around the same content, and on the ride page it
-   * was three boxes for one chapter. The tinted BORDER goes with it, so the tier the border used
-   * to carry has to be legible from the badge and the icon; both already say it.
+   * Drop the card's own glass and padding, for a `PANEL_CELL` that already draws the box. The
+   * tinted border goes too, so the tier must be legible from the badge and the icon, which both say
+   * it.
    */
   bare?: boolean;
   className?: string;
 }
 
 /**
- * Rope-drop recommendation panel for the attraction detail page. **Three** states, and the
- * component is total — it always returns an element, which its return type is what enforces
- * (see {@link ropeDropCardVariant} for the empty and half-empty cards that totality closes):
- *
- * * `worth` → full panel with the minutes saved by riding at park opening, the advantage window
- *   (concrete park time when the API resolved an opening time, minutes-after-open otherwise) and
- *   the quieter evening alternative when the day's trough isn't at opening.
- * * `evening` → inverse recommendation (long line right at opening, trough much later — ride
- *   late instead).
- * * `bestTime` → no recommendation for THIS ride: the ride's own readings instead, and the
- *   quietest weekday. Where the park's other rides do carry one, the "no need to rush" note
- *   rides along in the footer, which is the contrast it exists to draw.
- *
- * Server Component: only the embedded <ParkTime> islands (browser-timezone tooltip) hydrate on
- * the client.
- */
-/**
- * The card's frame when it is already inside a box.
- *
- * A plain `<div>` with the `GlassCard` signature, so the three call sites below can pick their
- * frame with one ternary instead of duplicating their whole subtree. `variant` is accepted and
- * ignored — there is no glass to grade when the enclosing `PANEL_CELL` is the surface.
+ * The card's frame when it is already inside a box: a plain `<div>` with the `GlassCard` signature,
+ * so the call sites pick their frame with one ternary. `variant` is accepted and ignored.
  */
 function BareCardFrame({
   className,
@@ -120,35 +82,13 @@ interface StatTile {
 }
 
 /**
- * The three-reading grid all three panels share.
+ * The three-reading grid all three panels share, so the `bestTime` panel carries the same weight as
+ * the recommendation it stands in for.
  *
- * It was written out three times before the "best time" panel existed, differing only in the
- * accent of the highlighted tile — and the whole point of that panel is that it carries the same
- * weight as the recommendation it stands in for, which is a promise a fourth copy of these
- * classes cannot keep.
- *
- * The row form is the measured one and its threshold is unchanged at 380 px. What changed is
- * which box those 380 px are measured on: the `@container/stattiles` wrapper, i.e. the tile row
- * itself, rather than the window. The window is the wrong ruler here because these tiles sit in a
- * `PANEL_CELL` whose width follows the chapter's column count, and that does not rise with the
- * window — measured on the ride page the row is 286 px at a 360 px window, 262.5 px at 640 and
- * 302.5 px at 768, so the two widths the old `max-[380px]:` left three-up are the narrowest the
- * row ever gets outside a phone, one of them narrower than the phone itself. Three-up in 302.5 px
- * is a 92.8 px tile with 68.8 px of content inside `p-3`, against „Zur Öffnung" and „Du sparst"
- * wanting 75–78 px: they wrap to two lines while „Tagespeak" does not, and the three values then
- * sit at three different heights.
- *
- * 380 px of row is what separates the two cases that have to stay apart: 302.5 px at a 768 px
- * window has to stack, 430.5 px at 1024 px has to stay three-up. Below it each tile becomes a
- * row, label left and value right — a long label costs height there instead of alignment, and
- * nothing overflows.
- *
- * Above the threshold every label has to fit on one line, and that is a budget on the strings, not
- * on this layout: at 381 px of row a tile has 93 px inside `p-3`, and a label with its icon may
- * take no more. The three that did not fit were shortened rather than the threshold raised
- * (PAR-218): „Vous économisez" (114 px) is „Vous gagnez", „Picco del giorno" (105.5 px) is
- * „Al picco", „En la apertura" (94.3 px) is „Al abrir". The widest label left is the French
- * „Vous gagnez" at 88.4 px. A new or retranslated label wider than 93 px wraps again here.
+ * Below 380 px of row each tile becomes a row, label left and value right. Measured on the
+ * `@container/stattiles` wrapper, not the window, because the tiles sit in a `PANEL_CELL` whose
+ * width does not follow the window. Above it every label must fit one line: a tile has 93 px inside
+ * `p-3`, a budget on the strings, so a new or retranslated label wider than that wraps again.
  */
 function StatTiles({ tone, stats }: { tone: 'emerald' | 'indigo' | 'primary'; stats: StatTile[] }) {
   const accent = {
@@ -247,10 +187,9 @@ export function RopeDropCard({
   const variant = ropeDropCardVariant(ropeDrop);
 
   /*
-   * Every wait this card prints, rounded once for the whole card rather than at each tile. The
-   * raw block stays available above for the gates that must not move onto the five-minute grid —
-   * `ropeDropCardVariant` just read it, and `rideByMinutesAfterOpen` / `bestSlotMinutesAfterOpen`
-   * below are offsets from opening rather than waits.
+   * Every wait this card prints, rounded once for the whole card. The raw block stays for the gates
+   * that must not move onto the five-minute grid (`ropeDropCardVariant`) and for the offsets from
+   * opening below, which are not waits.
    */
   const shown = ropeDropDisplayWaits(ropeDrop);
 
@@ -321,47 +260,26 @@ export function RopeDropCard({
     }
 
     /*
-     * Everything that is not a recommendation is this panel. It used to be two — where the park
-     * carried recommendations elsewhere, a ride without one got a muted one-liner in half a card
-     * instead (470 ride pages in 87 parks, measured 2026-09-15). The note survives as this
-     * panel's footer, which is the whole of PAR-122.
-     */
-    /*
-     * The chapter is called „Beste Besuchszeit planen", so it owes an answer even where the
-     * recommendation is a no. What it may say is bounded by what the shell already holds, and
-     * the shape of that data decided the panel — measured over the 183 rides it is drawn for:
+     * The chapter is called „Beste Besuchszeit planen", so it owes an answer even when the
+     * recommendation is a no, from what the shell already holds. The hour is rarely the answer (few
+     * rides have a trough both later and shorter than the opening wait), so the "quieter later"
+     * line renders only where it is true. The weekday usually is, and the day's own spread is real
+     * for every ride.
      *
-     * * The **hour** is not the answer. Only 15 of 183 have a trough that is both later than
-     *   opening and shorter than the wait at opening; 146 carry a trough wait equal to the
-     *   opening wait and 89 place it at opening itself. So the "quieter later" line renders on
-     *   the sixth of rides where it is true and nowhere else.
-     * * The **weekday** is. 119 of 183 name one or two quiet days, 61 read as a flat week and
-     *   3 stay silent (see `quietestWeekdays` for what separates those last two).
-     * * The **day's own spread** is real everywhere: `busyPeak − openWait` runs 0 to 50 minutes
-     *   with a median of 25. That is the fact the withheld rope-drop tip was standing on, and
-     *   it is the one thing every one of these rides can state.
-     *
-     * No sentence explains why the recommendation is missing. The threshold that decides it
-     * lives in the backend, this repo cannot cite it, and a reason invented here would be the
-     * kind of claim that reads as measured and is not.
+     * No sentence explains why the recommendation is missing: the threshold lives in the backend,
+     * and a reason invented here would read as measured when it is not.
      */
     const quiet = quietestWeekdays(typicalWaits, roundWaitTo5);
     /*
-     * Displayed, so rounded — the weekday sentence under these tiles is already on the 5-minute
-     * grid (it passes `roundWaitTo5` into the vote so the minutes it names are the minutes the
-     * bars draw), and the chart in the neighbouring cell rounds too. Left raw, one panel could
-     * read 23 / 48 beside „ca. 25 Min." and beside a bar labelled 50. This panel rounded its own
-     * three figures before the other three did; they come from the shared `shown` now, so the
-     * trough this panel labels and the one the `worth` panel calls the best slot are one value
-     * rounded once.
+     * Displayed, so rounded, like the weekday sentence under these tiles and the chart next door;
+     * raw, the panel could read 23 beside „ca. 25 Min.". From the shared `shown`, so this trough
+     * and the `worth` panel's best slot are one value rounded once.
      */
     const { openWait, busyPeak, trough: bestTimeTrough } = shown;
     /*
-     * Only where coming back later actually buys something: later than opening AND shorter. The
-     * test runs on the two ROUNDED figures because they are the two the reader compares — „später
-     * ca. 25 Min." under a tile reading 25 promises a saving that is not on the screen. It is
-     * also the stricter test of the two: `roundWaitTo5` is monotone, so a rounded pair that
-     * differs had a raw pair that differed the same way.
+     * Only where coming back later buys something: later than opening and shorter. Tested on the
+     * rounded figures, the two the reader compares; `roundWaitTo5` is monotone, so that is also the
+     * stricter test.
      */
     const troughIsBetter =
       bestTimeTrough != null &&
@@ -400,21 +318,17 @@ export function RopeDropCard({
             {
               icon: ArrowUpDown,
               label: t('spread'),
-              // Recomputed rather than read from `savings`, so the tile is the arithmetic of
-              // the two numbers in the sentence above it by construction — and of the two
-              // ROUNDED ones, or the third tile would not be the difference a reader can do in
-              // their head. They agree with `savings` on all 1,195 recommendations in production
-              // today, but it is a stored column, and this file already documents fields on
-              // stale rows carrying DB defaults.
+              // Recomputed rather than read from `savings`, so the tile is the arithmetic of the
+              // two rounded numbers in the sentence above it. `savings` is a stored column, and
+              // stale rows carry database defaults.
               value: busyPeak - openWait,
               highlight: true,
             },
           ]}
         />
         <div className="space-y-1.5 text-sm">
-          {/* `unknown` renders no line at all. „Kein Wochentag sticht heraus" is a measurement
-              and may only be printed where the week WAS measured — over the 159 of these rides
-              with no displayable typical waits it would be missing data dressed as a finding. */}
+          {/* `unknown` renders no line: „Kein Wochentag sticht heraus" is a measurement and may
+              only be printed where the week was measured. */}
           {quiet.verdict !== 'unknown' && (
             <p className="flex items-center gap-2 font-medium">
               <CalendarDays
@@ -451,25 +365,11 @@ export function RopeDropCard({
             </p>
           )}
         </div>
-        {/* ONE hairline for both notes, the shape the `worth` panel's footer already has —
-              two `border-t` paragraphs under each other would draw a rule per sentence and read
-              as two footers.
-
-              `notWorth` says something different here than it did as a panel of its own, and the
-              move is what forced it. It used to end on „die Wartezeiten bleiben über den Tag
-              überschaubar (ca. {openWait} Min. zur Öffnung)", alone in half a card. Under three
-              tiles and the sentence that already prints both figures, the bracket is a third copy
-              of the wait at opening — and the clause in front of it is a claim the tiles can
-              contradict outright: of these 470 rides, 65 peak at 60 minutes or more and 7 at 90 or
-              more, up to Tokyo DisneySea's Soaring reading 140 at opening and 180 at the peak,
-              directly above a line calling the day manageable.
-
-              So the footer keeps only what the branch actually knows. „Not worth rope-dropping" is
-              exactly `worth === false`, and the contrast is `parkHasRecommendations` — and it may
-              be stated as a comparison with the park's other rides because every one of those 470
-              sits in a park carrying at least one real `worth` tip: measured over all 213 parks,
-              **zero** of them recommend only evenings. The size of the queue is left to the tiles,
-              which measured it. */}
+        {/* One hairline for both notes, the shape of the `worth` panel's footer. The footer says
+            only what this branch knows: „not worth rope-dropping" is `worth === false`, and the
+            contrast with the park's other rides is `parkHasRecommendations`. The size of the queue
+            is left to the tiles, which measured it; a "manageable all day" clause would contradict
+            them on the busiest rides. */}
         {(parkHasRecommendations || ropeDrop.confidence === 'low') && (
           <div className="text-muted-foreground mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3 text-xs">
             {parkHasRecommendations && (
@@ -490,8 +390,8 @@ export function RopeDropCard({
     );
   }
 
-  // The day's absolute trough is only worth calling out when it lies outside
-  // the opening advantage window (in ~69% of cases it does, often the evening).
+  // The day's absolute trough is only worth calling out when it lies outside the opening advantage
+  // window, often in the evening.
   const showBestSlot =
     ropeDrop.bestSlotMinutesAfterOpen > ropeDrop.rideByMinutesAfterOpen && bestSlotPlausible;
 
@@ -566,7 +466,6 @@ export function RopeDropCard({
 
       <p className="text-muted-foreground mb-4 text-sm">{t('explainer')}</p>
 
-      {/* Open wait vs day peak vs savings */}
       <StatTiles tone="emerald" stats={stats} />
 
       <div className="space-y-1.5 text-sm">
@@ -584,11 +483,9 @@ export function RopeDropCard({
 
       <div className="text-muted-foreground mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3 text-xs">
         <span>
-          {/* Two more savings, three lines under the tile that holds the third — rounded on the
-              same delta grid, or this footer would print 32 beneath a tile reading 30. They are
-              read here rather than in `ropeDropDisplayWaits` because this is the only panel that
-              draws them, and a helper touching `byDaytype` for all four would reach into a block
-              the other three never ask a stale row for. */}
+          {/* Two more savings, rounded on the same delta grid as the tile above, or the footer
+              would print 32 under a tile reading 30. Read here, not in `ropeDropDisplayWaits`,
+              because only this panel draws them. */}
           {t('byDaytype', {
             weekend: roundWaitDeltaTo5(ropeDrop.byDaytype.weekend.savings),
             weekday: roundWaitDeltaTo5(ropeDrop.byDaytype.weekday.savings),

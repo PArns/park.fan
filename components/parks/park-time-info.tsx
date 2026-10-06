@@ -25,10 +25,11 @@ interface ParkTimeInfoProps {
   nextSchedule?: NextScheduleItem | null;
   status?: ParkStatus | null;
   hasOperatingSchedule?: boolean;
-  /** Geo-routing params — when provided, the card subscribes to the live park query (shared key
-   *  with LiveParkData → no extra fetch) so the status badge + schedule reflect the live state
-   *  instead of the up-to-1-day-stale server snapshot baked into the data-cache. Omitted by the
-   *  demo/mock showcases, which keep the static props. */
+  /**
+   * Geo-routing params. When provided, the card subscribes to the live park query (shared key with
+   * LiveParkData, so no extra fetch) instead of showing the up-to-a-day-old server snapshot. The
+   * demo showcases omit them and keep the static props.
+   */
   continent?: string;
   country?: string;
   city?: string;
@@ -40,16 +41,10 @@ interface ParkTimeInfoProps {
 const MAX_NEIGHBOURS = 2;
 
 /**
- * Client component that displays:
- * 1. Current time in the park's timezone (live updating)
- * 2. Opening hours for today
- * 3. "Opens in" / "Closes in" messages
- * 4. Today's holidays, with the chips of the park page's holiday band
- *
- * Every value comes from `useTodaySchedule`, the hook the park header (`ParkTodayPanel`) reads.
- * This card used to carry a line-for-line copy of it, and the copy had kept the holiday bug the
- * hook had since fixed. Without geo params the hook's live query stays disabled, so the guide page
- * and the UI showcase render from their fixtures and fetch nothing.
+ * The park's clock, today's opening hours with an opens-in or closes-in countdown, and today's
+ * holidays with the park page's holiday chips. Every value comes from `useTodaySchedule`, the hook
+ * `ParkTodayPanel` reads; without geo params its live query stays off, so the guide page and the UI
+ * showcase render from fixtures.
  */
 export function ParkTimeInfo({
   timezone,
@@ -153,7 +148,6 @@ export function ParkTimeInfo({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        {/* Opening Hours with Countdown FIRST */}
         {!isUnknown && (
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -184,7 +178,6 @@ export function ParkTimeInfo({
                 <span className="text-lg font-semibold tabular-nums">—</span>
               )}
             </div>
-            {/* Inline Countdown Badge */}
             {timeUntil && (
               <div className="flex items-center justify-end overflow-hidden">
                 <Badge
@@ -198,7 +191,6 @@ export function ParkTimeInfo({
           </div>
         )}
 
-        {/* Current Time - Below opening hours */}
         <div className="flex items-center justify-between">
           <span className="text-muted-foreground text-sm font-medium">{t('currentTime')}</span>
           <div className="flex items-center gap-1.5">
@@ -213,7 +205,6 @@ export function ParkTimeInfo({
           </div>
         </div>
 
-        {/* Timezone */}
         {timezone && (
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground text-sm font-medium">{t('timezone')}</span>
@@ -221,7 +212,6 @@ export function ParkTimeInfo({
           </div>
         )}
 
-        {/* Today's holidays: the park's own region in the band's colours, then the neighbours. */}
         {localChips.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {localChips.map((chip) => (

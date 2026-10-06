@@ -11,16 +11,10 @@ import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
 
 /**
- * The park page's link to its "with kids" page.
- *
- * Server-rendered and rendered only for a park that clears the gate (`kidsPageData` is `null`
- * below it), so no park page links at a 404. It sits under the ride tabs, where a parent who has
- * just moved the height slider is looking. The numbers in its text are the ones the other page
- * prints.
- *
- * Under the link is the height slider again (`ParkKidsHeightFilter`), the panel's own state and
- * not a copy of it: on a phone the panel keeps its slider behind the „Filter“ button, and this
- * block was the one place about children's heights that had no control for them (PO, 2026-10-03).
+ * The park page's link to its "with kids" page, rendered only for a park that clears the gate
+ * (`kidsPageData` is `null` below it), so no park page links at a 404. Under it is the height
+ * slider again (`ParkKidsHeightFilter`), on the panel's own state, since a phone keeps the panel's
+ * slider behind the „Filter“ button.
  */
 export async function ParkKidsLink({
   data,

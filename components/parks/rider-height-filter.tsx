@@ -21,39 +21,18 @@ interface RiderHeightFilterProps {
 }
 
 /**
- * "How tall is the rider?" — the park page's height filter.
+ * „How tall is the rider?": the park page's height filter.
  *
- * A slider rather than a row of chips, though the result set can only change at the
- * park's own limits: nobody knows their child's height as "one of 100, 120 or 140",
- * they know it as 118, and a control that offers three buttons makes them round it
- * themselves — in the direction that gets the answer wrong half the time.
+ * A slider, because a parent knows their child as 118 cm, not as "one of 100, 120 or 140". The
+ * input counts in stops (`riderHeightStops`), one per height at which the park's answer changes, so
+ * every position gives a different answer, and a child between two stops rounds down to the truth
+ * about what they may board. Because the input carries an index, `aria-valuetext` carries the
+ * height, in the unit the preference context gives.
  *
- * But the track is the park's own limits all the same. It used to be a 5 cm ruler
- * with the limits drawn on it as ticks, and most of its travel went to positions
- * that answer exactly like the one before them — dragging to 115 cm on a park whose
- * limits are 100 and 120 moves the thumb and moves nothing else. So the input counts
- * in STOPS (`riderHeightStops`), one per height at which the park's answer changes,
- * and every position on it is a different park. Rounding is the visitor's, and it is
- * the easy direction: a 118 cm child stands on the 100 stop, which is the truth about
- * what they may board.
- *
- * Because the native input now carries an INDEX, `aria-valuetext` carries the height
- * — otherwise a screen reader announces "3 of 7", which is a fact about the widget
- * and not about the park. It is the one place the unit cannot be expressed in CSS the
- * way {@link RiderHeight} does it, so it reads the preference through the context,
- * whose server snapshot is metric and whose real value arrives in the render after
- * hydration.
- *
- * The thumb is drawn as a `<div>` and a transparent `<input type="range">` lies over
- * the whole row — the same construction as the admin's one-field TOTP boxes. A native
- * range input styles its thumb through three vendor pseudo-elements that share no
- * cascade, and the filled part of the track is not addressable at all; drawing both
- * and keeping the real input for the pointer, keyboard and screen-reader behaviour
- * costs one absolutely positioned element and gets all of it for free.
- *
- * Off is a real state (`value === null`), not "the slider happens to sit at the
- * bottom": the bottom position is a legitimate answer (a toddler who clears nothing),
- * and it has to be distinguishable from a visitor who has not touched the control.
+ * The thumb is a drawn `<div>` under a transparent `<input type="range">` covering the row: a
+ * native range thumb styles through three unrelated vendor pseudo-elements and its fill not at all,
+ * and the real input keeps pointer, keyboard and screen-reader behaviour. Off is a real state
+ * (`value === null`), distinct from the bottom stop, which is a legitimate answer.
  */
 export function RiderHeightFilter({
   stops,
@@ -69,21 +48,13 @@ export function RiderHeightFilter({
 
   const isActive = value !== null;
   /**
-   * Where the thumb rests before anybody touches it: the left end.
-   *
-   * It used to rest on the park's lowest limit, on the reasoning that this is the
-   * first position at which the filter has anything to say. A thumb parked a fifth
-   * of the way along a track with a filled bar behind it is a control that has been
-   * set, and that is what it looked like — a value nobody chose, presented as a
-   * choice. At the end, with no fill and a hollow head, the same control reads as
-   * untouched.
+   * Where the thumb rests before anybody touches it: the left end, with no fill and a hollow head,
+   * so the control reads as untouched rather than as a value nobody chose.
    */
   const displayValue = value ?? stops[0];
   /**
-   * Defensive: the only writer of `value` is this component and it only ever writes
-   * a stop, but a height that fell between two of them (or below the first) belongs
-   * on the nearest stop at or below it — the direction that under-promises, and the
-   * same rounding a parent does when their child measures 118.
+   * Defensive: this component only ever writes a stop, but a height between two stops (or below the
+   * first) goes to the nearest stop at or below it, the direction that under-promises.
    */
   const index = Math.max(
     0,
@@ -99,13 +70,10 @@ export function RiderHeightFilter({
 
   return (
     <div className={className} style={{ '--thumb': '1rem' } as React.CSSProperties}>
-      {/* This is the cell's caption row, so the label matches the plain captions over the
-          search box and the toggles — the value and the reset ride along in it because
-          there is no other row with room for them.
-
-          `relative z-10` for the phone: the track's touch band below reaches up past its
-          own 20 px, and without a stacking order of its own the reset button would lose
-          the bottom of its target to a slider it is not part of. */}
+      {/* The cell's caption row, matching the plain captions over the search box and toggles; the
+          value and the reset ride in it because no other row has room. `relative z-10` because
+          below `sm` the track's touch band reaches up past its own 20 px and would take the bottom
+          of the reset button's target. */}
       <div className="relative z-10 flex h-6 items-center gap-2 max-sm:h-11">
         <label
           htmlFor={inputId}
@@ -180,11 +148,10 @@ export function RiderHeightFilter({
           // this slider's own label and has nothing else to be tapped for.
           className="peer absolute inset-x-0 top-0 h-full w-full cursor-pointer touch-manipulation appearance-none bg-transparent opacity-0 max-sm:-top-1 max-sm:h-11 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none"
         />
-        {/* The drawn head comes AFTER the input so it can read the input's keyboard focus as
-            `peer-focus-visible` — it used to ask the whole row with `group-has-[:focus-visible]`,
-            and a `:has()` rule anywhere in the stylesheet restyles the whole document on every
-            DOM change (docs/rules/no-has-selector-in-the-stylesheet.md). Painting over the
-            input is why it takes no pointer events: the invisible input stays the target. */}
+        {/* The drawn head comes after the input so it can read the input's keyboard focus as
+            `peer-focus-visible` instead of through a `:has()` rule
+            (docs/rules/no-has-selector-in-the-stylesheet.md). It takes no pointer events: the
+            invisible input stays the target. */}
         <div
           aria-hidden="true"
           className={cn(

@@ -7,19 +7,11 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { ParkSeason, ParkSeasonStatus } from '@/lib/api/types';
 
 /**
- * What is on at this park, and how sure we are of it.
- *
- * The seasons are researched by hand from the park's own calendar, and the
- * reason they carry a status is that a visitor planning October needs the
- * difference between dates a park has published and dates it merely ran last
- * year. Rendering all of them the same way would be a lie with dates on it, so
- * `expected` says so and `cancelled` is struck through rather than hidden — a
- * cancelled Halloween is exactly what somebody came to find out.
- *
- * `dates` is the other half. Walibi Holland's Fright Nights are the weekends
- * between 3 October and 1 November plus three single dates; drawn as a range
- * that tells a visitor the park is haunted on a Tuesday. When the list exists,
- * the card says how many days it actually covers.
+ * What is on at this park, and how sure we are of it. Seasons are researched by hand, and a visitor
+ * planning October needs to tell published dates from dates the park merely ran last year:
+ * `expected` says so, and `cancelled` is struck through rather than hidden. When a season has a
+ * `dates` list, the card counts the days it covers, so a run of weekends is not drawn as one solid
+ * range.
  */
 
 const STATUS_TONE: Record<ParkSeasonStatus, string> = {

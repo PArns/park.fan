@@ -1,25 +1,17 @@
 'use client';
 
 /**
- * WeatherBackground
- * -----------------
- * An animated, layered weather scene (sky gradient, sun/moon, drifting
- * clouds, a precipitation canvas and lightning) driven by an Open-Meteo
- * `weather_code` and `is_day` flag.
- *
- * Drop it as the FIRST child of a card that is `position: relative;
- * overflow: hidden` — content goes above it with z-index 1+.
- *
- * The optional `glass` overlay tames the animation so card text stays
- * readable. The overlay is theme-aware: dark tint on dark UI, light
- * tint on light UI. The sky / cloud colors themselves stay physically
- * plausible regardless of theme — a sunny sky should look sunny.
+ * An animated, layered weather scene (sky gradient, sun or moon, drifting clouds, a precipitation
+ * canvas and lightning) driven by an Open-Meteo `weather_code` and `is_day`. The `glass` overlay is
+ * theme-aware so card text stays readable, while the sky and cloud colours stay physically
+ * plausible in both themes.
  */
 
 import { memo, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { weatherCodeToScene, type WeatherScene } from './weather-scene';
 import './weather-background.css';
 
+/** Props of the animated weather scene. */
 export interface WeatherBackgroundProps {
   /** Open-Meteo `weather_code` (WMO interpretation code). */
   code: number;
@@ -56,10 +48,11 @@ const HAS_CELESTIAL: WeatherScene[] = ['clear', 'partly-cloudy'];
 
 const STAR_COUNT = 38;
 
-/* Phase groups for the twinkle. Each group is ONE animated wrapper holding a share of the
-   stars, so the scene runs 3 opacity animations instead of 38 — see the note in
-   weather-background.css for the measurement. Distinct durations keep them out of sync, so
-   the field still reads as individual stars flickering rather than one pulsing block. */
+/*
+ * Phase groups for the twinkle: each group is one animated wrapper holding a share of the stars, so
+ * the scene runs 3 opacity animations instead of 38 (see weather-background.css). Distinct
+ * durations keep them out of sync.
+ */
 const STAR_GROUPS = [
   { duration: 2.6, delay: 0 },
   { duration: 3.7, delay: -1.3 },
@@ -88,11 +81,9 @@ export const WeatherBackground = memo(function WeatherBackground({
   const cloudCount = CLOUD_COUNT[scene];
   const showCelestial = HAS_CELESTIAL.includes(scene);
 
-  // Stable random star field, generated once after mount. Generating it in a lazy
-  // initializer made the FIRST client render differ from the SSR HTML (server: no
-  // window → empty; client: 40 star spans) — a hydration mismatch that forced React
-  // to re-create the subtree on night scenes. An effect keeps SSR and the hydration
-  // render identical (both empty); the stars appear right after mount.
+  // Stable random star field, generated in an effect after mount: a lazy initializer made the first
+  // client render differ from the server HTML and forced React to re-create the subtree on night
+  // scenes.
   const [stars, setStars] = useState<{ top: number; left: number; size: number }[]>([]);
   useEffect(() => {
     if (!showCelestial) return;

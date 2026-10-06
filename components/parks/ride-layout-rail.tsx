@@ -44,16 +44,14 @@ const KIND_CLASS: Record<ElementKind, { dot: string; text: string; ring: string 
   },
 };
 
+/** The rail's translated strings, resolved on the server. */
 export interface RideLayoutRailLabels {
   hint: string;
   has3d: string;
   openGlossary: string;
   /**
-   * Accessible name for the player, per figure name.
-   *
-   * Formatted on the server and passed as a plain map rather than a formatter
-   * function: functions cannot cross the RSC boundary, and re-implementing the
-   * ICU substitution here would duplicate next-intl's job in a client bundle.
+   * Accessible name for the player, per figure name. A plain map formatted on the server, because a
+   * formatter function cannot cross the RSC boundary.
    */
   viewerTitles: Record<string, string>;
 }
@@ -65,12 +63,7 @@ interface RideLayoutRailProps {
 }
 
 /**
- * The ride's layout as a track you can read left to right, with a shared 3-D
- * viewer that opens in place.
- *
- * Replaces a flat list of names: nine identical rows told you what the ride
- * contains but nothing about what it feels like, and every figure was a
- * one-way trip out to the glossary.
+ * The ride's layout as a track read left to right, with a shared 3-D viewer that opens in place.
  */
 export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRailProps) {
   // Null until the first tap. `next/dynamic` fetches the three.js chunk when
@@ -152,11 +145,8 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
 
       {active && (
         <div className="border-border/60 bg-background/40 space-y-3 rounded-xl border p-4">
-          {/* Everything ABOUT the figure comes first — name, definition, and the way
-              out to the full glossary entry — then the animation of it. You tap a
-              figure to find out what it is, so reading the caption afterwards means
-              spending the animation guessing; and the link stranded below a
-              five-second loop was a footnote to a video nobody had finished. */}
+          {/* Everything about the figure comes first (name, definition, the glossary link), then
+              its animation: a reader taps a figure to find out what it is. */}
           <div>
             <h4 className={cn('text-sm font-semibold', KIND_CLASS[active.kind].text)}>
               {active.name}

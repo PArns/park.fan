@@ -88,7 +88,6 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
 
   return (
     <div className={`group/weather relative ${className ?? ''}`}>
-      {/* Left indicator / gradient */}
       <div
         className={`from-background/60 pointer-events-none absolute inset-y-0 left-0 z-10 w-12 rounded-l-2xl bg-gradient-to-r to-transparent transition-opacity duration-300 ${showLeft ? 'opacity-100' : 'opacity-0'}`}
       />
@@ -102,7 +101,6 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
         </button>
       )}
 
-      {/* Right indicator / gradient */}
       <div
         className={`from-background/60 pointer-events-none absolute inset-y-0 right-0 z-10 w-12 rounded-r-2xl bg-gradient-to-l to-transparent transition-opacity duration-300 ${showRight ? 'opacity-100' : 'opacity-0'}`}
       />

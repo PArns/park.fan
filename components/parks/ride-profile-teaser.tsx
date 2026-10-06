@@ -15,31 +15,18 @@ interface RideProfileTeaserProps {
   profile: RideProfile;
   locale: Locale;
   /**
-   * Extra badges that belong with the ride's facts (the RCDB link). Rendered
-   * after them and — crucially — before the jump link, which is pushed to the
-   * far right and must stay the last thing in the row.
+   * Extra badges that belong with the ride's facts (the RCDB link), rendered before the jump link,
+   * which is pushed to the far right and must stay last in the row.
    */
   children?: ReactNode;
 }
 
 /**
- * The ride's identifying facts, lifted into the page header.
- *
- * Every badge names its own fact ("Manufacturer: Intamin", not a wrench and a
- * word): in a row that also carries height limits and a land, an unlabelled
- * value is a guess, and a `title` only helps the half of the audience with a
- * mouse. Inversions lead because they are the one number people compare rides
- * by; the height limit before them is the one that decides whether you may
- * ride at all.
- *
- * Year and inversions are `sm:` and up only. The header already carries the
- * park, the distance, the land and the height limit, and on a 390 px screen
- * every extra badge is another line pushed in front of the live wait time —
- * which is what people came for. The full set sits two thumb-lengths below in
- * the profile itself.
- *
- * Renders a fragment, not its own wrapper, so the badges share the parent's
- * flex row with `AttractionMetaBadges` and wrap as one group.
+ * The ride's identifying facts, lifted into the page header. Every badge names its own fact
+ * („Manufacturer: Intamin"), since an unlabelled value in a row of height limits and lands is a
+ * guess. Year and inversions show from `sm` up only: on a phone every extra badge pushes the live
+ * wait time down. A fragment, so the badges wrap as one group with `AttractionMetaBadges` in the
+ * parent's row.
  */
 export async function RideProfileTeaser({ profile, locale, children }: RideProfileTeaserProps) {
   const t = await getTranslations('attraction.rideProfile');

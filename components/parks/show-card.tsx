@@ -20,8 +20,9 @@ interface ShowCardProps {
   }> | null;
   timezone: string;
   href: string;
-  parkName?: string; // Optional park name (for favorites section)
-  distance?: number; // Optional distance (for favorites section)
+  /** The favorites section names the park and the distance to it. */
+  parkName?: string;
+  distance?: number;
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
@@ -47,15 +48,9 @@ export function ShowCard({
   return (
     <Link href={href} prefetch={false} className="group block h-full">
       <Card className="hover:border-primary/50 relative h-full transition-all duration-200 hover:scale-[1.02] hover:shadow-md">
-        {/* Notification bell + favorite star. `max-sm:gap-7`, not a flat
-            `gap-1`: each icon's `::after` touch target is 44px, but only
-            below `sm` (`FavoriteStar`'s own "the target grows, the box does
-            not" split) — a mouse pointer has no such zone, so widening the
-            gap above `sm` would only add dead space a cursor never needed.
-            At `gap-1` (4px) the two 44px zones overlapped by roughly half
-            their width, a tap near the boundary landing on either icon;
-            `max-sm:gap-7` (28px) puts the two centres 44px apart, matching
-            the zone width exactly, so they meet with no overlap left. */}
+        {/* `max-sm:gap-7`: below `sm` each icon's `::after` touch target is 44 px, and 28 px
+            between them puts the two centres 44 px apart, so the zones meet without overlapping. A
+            mouse has no such zone, hence `gap-1` above `sm`. */}
         <div className="absolute top-2 right-2 z-20 flex items-center gap-1 max-sm:gap-7">
           <ShowFollowBell
             showId={id}
@@ -67,11 +62,8 @@ export function ShowCard({
           <FavoriteStar type="show" id={id} />
         </div>
         <CardContent className="p-4">
-          {/* `pr-12` reserves the corner icons' own footprint above `sm` (measured:
-              44px from this row's right edge to the notification bell's left edge,
-              for the two-icon row); `max-sm:pr-[72px]` matches the wider `max-sm:gap-7`
-              above (68px to the same edge, plus this file's own 4px buffer) so a long,
-              badge-less title wraps before it reaches them instead of running underneath. */}
+          {/* `pr-12` reserves the corner icons' footprint above `sm` and `max-sm:pr-[72px]` the
+              wider phone row, so a long title wraps before it runs under them. */}
           <div className="flex items-start justify-between gap-2 pr-12 max-sm:pr-[72px]">
             <h3 className={cn('font-semibold', parkName ? 'line-clamp-2' : '')}>{name}</h3>
             {isSeasonal && (
@@ -83,16 +75,14 @@ export function ShowCard({
             )}
           </div>
 
-          {/* Park Name (for favorites) */}
           {parkName && <p className="text-muted-foreground mt-1 truncate text-xs">{parkName}</p>}
 
-          {/* Distance (for favorites) */}
           {distance !== undefined && distance !== null && (
             <DistanceBadge distance={distance} className="mt-2" />
           )}
 
-          {/* Today's showtimes — client-rendered (time-relative past/next highlighting). The
-              skeleton fallback reserves one showtimes row so the badges swap in without shifting. */}
+          {/* Client-rendered, since past and next depend on the clock. The fallback reserves one
+              showtimes row so the badges swap in without a shift. */}
           {status === 'OPERATING' && (
             <Suspense
               fallback={
@@ -112,7 +102,6 @@ export function ShowCard({
             </Suspense>
           )}
 
-          {/* Status Badge for closed shows */}
           {status !== 'OPERATING' && (
             <div className="mt-2">
               <ParkStatusBadge status={status as import('@/lib/api/types').AttractionStatus} />

@@ -33,13 +33,9 @@ function buildWeather(today: Date, variant: Variant): WeatherData {
 }
 
 /**
- * ISO instant for a wall-clock hour in a park's own timezone.
- *
- * The offset has to be looked up rather than written down: `Europe/Berlin` is
- * +01:00 in January and +02:00 in July, and the showcase renders in both. Doing
- * it with `setHours` reads the RUNNER's timezone instead, which is how the demo
- * card ended up drawing its opening-hours band two hours off on a UTC machine —
- * and that band is now the thing the whole time axis is built around.
+ * ISO instant for a wall-clock hour in a park's own timezone. The offset is looked up, not written
+ * down: `Europe/Berlin` is +01:00 in January and +02:00 in July, and `setHours` would read the
+ * runner's timezone instead.
  */
 function parkInstant(dateStr: string, hour: number, timeZone: string): string {
   const naive = `${dateStr}T${String(hour).padStart(2, '0')}:00:00`;

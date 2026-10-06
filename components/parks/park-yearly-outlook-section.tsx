@@ -16,39 +16,18 @@ import {
 } from '@/lib/utils/yearly-outlook';
 
 /**
- * How busy the next twelve months look, month by month.
+ * How busy the next twelve months look, month by month: past the ninety-day cap of `/best-days`,
+ * from the same `/predictions/yearly` forecast the crowd calendar draws.
  *
- * The gap it fills is a hard edge: `/best-days` is capped at a rolling ninety days, so a visitor
- * booking next Easter in October left the park's own numbers behind and got the editorial
- * `/best-time-to-visit` text instead. `/predictions/yearly` is the same forecast the crowd
- * calendar draws, computed day by day and already recomputed nightly, and until now nothing in
- * this app asked for it.
+ * Loaded on the server, not behind `useLoadLast`: that rule keeps best-travel-time data from
+ * competing with the live queries for the browser's connections, and a chapter that issues no
+ * browser request cannot (docs/rules/park-page-loading-priority.md). The forecast is stable for a
+ * day, server HTML reaches crawlers, and the fetch is timeout-bounded inside its own `<Suspense>`.
  *
- * **It loads on the SERVER, not behind `useLoadLast`.** The loads-last rule exists so the
- * best-travel-time data can never compete with the live status, wait-time and weather queries for
- * the browser's connections — and a chapter that issues no browser request at all cannot. The
- * forecast is stable for a day (`CACHE_TTL.predictions`), so a client query would spend a second
- * download on bytes the first render already had, and it would put this chapter out of reach of
- * every crawler. What it borrows from the client path instead is the posture: the fetch is
- * timeout-bounded and consumed inside its own `<Suspense>` boundary, so a cold forecast holds up
- * a chunk eight screens down and never first byte.
- *
- * **Twelve rows always.** The endpoint answers with about six months, not twelve (measured
- * 2026-09-22 across fifteen parks: fourteen answered, all of them stopping on today + 182), and
- * Sesame Place San Diego's forecast does not start until March. Drawing only the months that came
- * back would make the chapter a different height on every park and leave the reader guessing
- * whether April is quiet or merely unknown. The frame is constant, the months past the horizon
- * say „no forecast", and the `<Suspense>` placeholder can reserve the height exactly.
- *
- * **A month says something only where the backend could rate it.** `/predictions/yearly` sends a
- * `recommendation` even for days it could not rate at all, so eight of forty sampled parks would
- * have shown „no forecast" and „181/181 recommended" on the same row. Every badge and every count
- * reads `ratedDays`, never the number of entries that came back.
- *
- * **No colour legend.** Each row names its own tier in words through `CrowdLevelBadge`, which is
- * the same badge and the same palette the calendar and the header card use, so the strip beside it
- * needs no second key. `ParkCalendarLegend` would have brought four calendar-only signal keys with
- * it that mean nothing here.
+ * Twelve rows always: the endpoint answers with about six months, and a constant frame lets the
+ * placeholder reserve the height exactly. Badges and counts read `ratedDays`, never the number of
+ * entries, because the endpoint sends a `recommendation` even for days it could not rate. No colour
+ * legend: each row names its tier through `CrowdLevelBadge`.
  */
 
 interface ParkYearlyOutlookSectionProps {
@@ -66,12 +45,9 @@ interface ParkYearlyOutlookSectionProps {
 const STRIP_HEIGHT = 'h-5';
 
 /**
- * How long this chapter may wait for the forecast before the page gives up on it.
- *
- * Same posture and the same number as the best-days seed: the response is a Redis read on a warm
- * cache, but a cold one falls through to a CatBoost rebuild that can take seconds, and this
- * chapter sits eight screens down. On timeout the section keeps its frame and says nothing, while
- * `after()` keeps the fetch alive so the next reader finds the data cache warm.
+ * How long this chapter may wait for the forecast, the same as the best-days seed: a cold cache
+ * falls through to a model rebuild that can take seconds. On timeout the section keeps its frame
+ * and says nothing, while `after()` warms the data cache for the next reader.
  */
 const FORECAST_TIMEOUT_MS = 3000;
 
@@ -100,10 +76,8 @@ function outlookMonthLabel(locale: string, year: number, month: number): string 
 function MonthStrip({ month }: { month: OutlookMonth }) {
   return (
     <div
-      // `w-full shrink-0` below `sm` and `flex-1` only from `sm` up: the row is a COLUMN on a
-      // phone, where `flex-1` would put the basis on the height instead of the width and collapse
-      // `h-5` to nothing — which is exactly what it did, and the strip was invisible at 360 px
-      // while every other part of the row rendered.
+      // `w-full shrink-0` below `sm` and `flex-1` only from `sm` up: the row is a column on a
+      // phone, where `flex-1` sets the height basis and collapses `h-5` to nothing.
       className={cn(
         'flex w-full min-w-0 shrink-0 gap-px overflow-hidden rounded-[3px] sm:flex-1',
         STRIP_HEIGHT
@@ -167,18 +141,12 @@ function OutlookMonthRow({
 }
 
 /**
- * The chapter's box: the heading band and the twelve rows under it.
+ * The chapter's box: the heading band and the twelve rows under it. The settled section and the
+ * `<Suspense>` placeholder both render it, so the reservation is the real geometry
+ * (docs/rules/a-streamed-section-owes-the-page-its-height.md).
  *
- * Both states of the boundary go through here — the settled section and the `<Suspense>`
- * placeholder — which is what makes the reservation the real geometry at every breakpoint rather
- * than a number somebody typed (docs/rules/a-streamed-section-owes-the-page-its-height.md).
- *
- * `muted` keeps every box and hides the badge and the count with `invisible`. A row that already
- * read „Keine Prognose" would be making a claim the page cannot make while the fetch is in
- * flight — or, on a timeout, one it never got to check.
- *
- * `headingId` is left off in the muted state on purpose: the two states overlap for the instant
- * React swaps them, and two elements with one id is one id too many.
+ * `muted` hides badge and count with `invisible`, since „Keine Prognose" would claim something the
+ * page does not know yet, and leaves off `headingId`, since the two states overlap for an instant.
  */
 export async function YearlyOutlookFrame({
   months,
@@ -250,10 +218,9 @@ export async function ParkYearlyOutlookSection({
     FORECAST_TIMEOUT_MS
   );
 
-  // `null` is the timeout or a failed fetch — the case the three seconds exist for. It is NOT
-  // „this park has no forecast", and returning nothing here would collapse the twelve rows the
-  // placeholder just reserved. So the empty frame stays, claiming nothing, and `after()` warms
-  // the data cache for the next reader.
+  // `null` is the timeout or a failed fetch, not "no forecast": returning nothing would collapse
+  // the twelve rows the placeholder reserved. So the empty frame stays, claiming nothing, and
+  // `after()` warms the data cache.
   if (!forecast) {
     return (
       <YearlyOutlookFrame
@@ -267,10 +234,8 @@ export async function ParkYearlyOutlookSection({
 
   const months = buildYearlyOutlook(forecast.predictions, todayIso);
 
-  // No month carries a single day the backend could RATE — either the park has no forecast at
-  // all, or it has one made entirely of `unknown` (Aquatica Orlando and seven more of forty
-  // sampled on 2026-09-22: a park with too little history for a typical-day peak). Twelve rows of
-  // „Keine Prognose" is not a chapter.
+  // No month has a single day the backend could rate: no forecast at all, or one made entirely of
+  // `unknown` (too little history). Twelve rows of „Keine Prognose" is not a chapter.
   if (months.every((month) => month.ratedDays === 0)) return null;
 
   return <YearlyOutlookFrame months={months} locale={locale} className={className} />;

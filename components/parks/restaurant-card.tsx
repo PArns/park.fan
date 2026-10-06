@@ -17,8 +17,9 @@ interface RestaurantCardProps {
   restaurant: RestaurantCardData;
   /** Makes the whole card a link — the favorites section, where it points at the park's tab. */
   href?: string;
-  parkName?: string; // Optional park name (for favorites section)
-  distance?: number; // Optional distance (for favorites section)
+  /** The favorites section names the park and the distance to it. */
+  parkName?: string;
+  distance?: number;
 }
 
 /**

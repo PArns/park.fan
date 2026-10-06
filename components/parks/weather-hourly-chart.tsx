@@ -138,14 +138,9 @@ const localMinutes = (iso: string) =>
   parseInt(iso.slice(11, 13), 10) * 60 + parseInt(iso.slice(14, 16), 10);
 
 /**
- * Catmull-Rom spline through the points, emitted as cubic beziers.
- *
- * The horizontal control offsets are clamped into the segment they belong to.
- * With evenly spaced points that clamp never binds (the tangent is a third of
- * the gap, the ends a sixth), so the curve is exactly the one this chart has
- * always drawn — but the axis is no longer evenly spaced, and at the opening
- * kink a 1.8 %-wide night hour meeting a 7.4 %-wide open one puts the first
- * control point past the segment's own end, which shows up as a cusp.
+ * Catmull-Rom spline through the points, emitted as cubic beziers. The horizontal control offsets
+ * are clamped into their own segment: on the uneven axis a narrow night hour meeting a wide open
+ * one would put a control point past the segment's end, which draws a cusp.
  */
 function smoothPath(pts: { x: number; y: number }[]): string {
   if (pts.length < 2) return '';
@@ -180,9 +175,8 @@ interface DayWindow {
 }
 
 /**
- * Today's OPERATING window as continuous point indices, or `null` when the park
- * publishes no opening hours for today (roughly a quarter of the catalogue on
- * any given day — closed, unknown, or nothing but an INFO entry).
+ * Today's operating window as continuous point indices, or `null` when the park publishes no
+ * opening hours for today (closed, unknown, or only an INFO entry).
  */
 function resolveDayWindow(
   points: WeatherHourlyPoint[],
@@ -229,15 +223,10 @@ interface HourColumn {
 }
 
 /**
- * The 24 hour columns: a rain bar and a tooltip hit area each.
- *
- * Split out and memoized because it is the expensive half of the chart — 24
- * Radix subtrees — and the component around it re-renders every minute to move
- * the "now" marker. Nothing in here changes more often than the hour does.
- *
- * Every hour keeps its own column, however narrow the compression makes it: the
- * `aria-label` is the only channel that survives on a phone, where Radix never
- * opens a tooltip.
+ * The 24 hour columns: a rain bar and a tooltip hit area each. Memoised on the hour, because the 24
+ * Radix subtrees are the expensive half and the component around them re-renders every minute for
+ * the "now" marker. Every hour keeps its own column, however narrow: its `aria-label` is the only
+ * channel on a phone, where Radix never opens a tooltip.
  */
 const HourColumns = memo(function HourColumns({
   columns,
@@ -321,14 +310,10 @@ interface RenderedTick extends AxisTick {
 }
 
 /**
- * The hour axis.
- *
- * Absolutely positioned, not a flex row of equal cells: the columns are no
- * longer equal, and the old cells were ~13 px wide on a phone, so the labels
- * ("14 Uhr" in German, not "14") wrapped to a second line and pushed the chart
- * 11.5 px past the box the weather card reserves for it. Every group is out of
- * flow and `whitespace-nowrap`, so the row's height cannot depend on how many
- * ticks there are, how wide they are, or which locale is rendering.
+ * The hour axis, absolutely positioned rather than a flex row of equal cells: the columns are
+ * unequal, and narrow cells wrapped labels like „14 Uhr" and overflowed the box the weather card
+ * reserves. Every group is out of flow and `whitespace-nowrap`, so the row's height does not depend
+ * on the ticks or the locale.
  */
 const AxisTicks = memo(function AxisTicks({
   ticks,
@@ -403,18 +388,11 @@ const AxisTicks = memo(function AxisTicks({
 });
 
 /**
- * Detailed day view for today: hourly temperature curve with rain bars
- * underneath, a "now" marker, and per-hour tooltips — the classic weather-app
- * hourly chart, but built around the park's own day rather than the calendar's.
- *
- * When the park publishes opening hours for today the time axis is compressed
- * outside them and stretched inside (`lib/utils/weather-chart-axis.ts`), which
- * is what makes room for hour-by-hour ticks and a few temperature readings
- * during the visit. Without those hours the axis stays linear and the chart is
- * the one it has always been.
- *
- * Renders nothing once the data no longer belongs to today (e.g. right after
- * midnight, until the next refetch rolls it over).
+ * Detailed day view for today: hourly temperature curve with rain bars, a "now" marker and per-hour
+ * tooltips, built around the park's own day. With opening hours for today the axis is compressed
+ * outside them and stretched inside (`lib/utils/weather-chart-axis.ts`); without them it stays
+ * linear. Renders nothing once the data no longer belongs to today. See
+ * docs/rules/weather-day-chart-is-built-around-the-parks-hours.md.
  */
 export function WeatherHourlyChart({
   points,
@@ -430,12 +408,9 @@ export function WeatherHourlyChart({
   const gradientId = useId();
   const tempLineGradientId = useId();
 
-  // Re-render every minute so the "now" marker tracks the actual time — but
-  // only while the chart is on screen and the tab is visible: the marker, the
-  // clip paths and the dimming rebuild per tick, which is pure waste while
-  // scrolled away. The deferred first tick re-syncs the marker immediately
-  // whenever the chart becomes watchable again. The columns and the axis are
-  // memoized on the hour, so the 24 tooltip subtrees are NOT part of that.
+  // Re-render every minute so the "now" marker tracks the time, but only while the chart is on
+  // screen and the tab is visible; the deferred first tick re-syncs the marker when it becomes
+  // watchable again.
   const { ref: rootRef, active } = useActiveOnScreen();
   const [nowMs, setNowMs] = useState(() => Date.now());
   useEffect(() => {
@@ -628,11 +603,9 @@ export function WeatherHourlyChart({
       : hourlyPts;
   const lineD = smoothPath(linePts);
 
-  // Temperature-tinted line: a vertical gradient whose stops sit at the y of each
-  // threshold temp. Since the y-axis IS temperature, only the part of the curve
-  // in a band takes that colour, with a smooth transition between. `currentColor`
-  // (the SVG's amber) is the normal 10–30 °C band, so it looks unchanged there;
-  // only > 30 °C (hot/red) and < 10 °C (cool → cold/blue) diverge.
+  // Temperature-tinted line: a vertical gradient with a stop at the y of each threshold
+  // temperature, so only the part of the curve in a band takes its colour. `currentColor` (the
+  // SVG's amber) covers the normal band; only the hot and cold ends diverge.
   const tempLineStops: { offset: number; color: string }[] = [];
   let runOff = 0;
   for (const [temp, , color] of TEMP_STOPS) {
@@ -728,7 +701,6 @@ export function WeatherHourlyChart({
           />
         )}
 
-        {/* Severe-weather windows (storm / hail / thunderstorm) */}
         {warnings
           .slice(0, MAX_WARNING_BANDS)
           .map(({ kind, fromPct, toPct, startLocal, endLocal }, i) => {
@@ -787,7 +759,6 @@ export function WeatherHourlyChart({
                 <stop key={i} offset={s.offset} stopColor={s.color} stopOpacity={s.opacity} />
               ))}
             </linearGradient>
-            {/* Temperature-tinted line stroke — vertical (y = temperature). */}
             <linearGradient
               id={tempLineGradientId}
               gradientUnits="userSpaceOnUse"
@@ -826,7 +797,6 @@ export function WeatherHourlyChart({
           ))}
         </svg>
 
-        {/* Rain bars + per-hour tooltip hit areas */}
         <HourColumns columns={columns} nowHour={nowHour} />
 
         {/* Wet stretches, as one rule under the bars they belong to — five 5 px
@@ -844,7 +814,6 @@ export function WeatherHourlyChart({
           />
         ))}
 
-        {/* "Now" marker */}
         <div
           className="border-foreground/30 pointer-events-none absolute inset-y-0 border-l border-dashed"
           style={{ left: `${nowPct}%` }}
@@ -900,7 +869,6 @@ export function WeatherHourlyChart({
           );
         })}
 
-        {/* Min/max temperature labels, anchored to their hours */}
         <span
           className={cn(
             'pointer-events-none absolute inline-flex items-center gap-0.5 text-[10px] font-semibold whitespace-nowrap tabular-nums',

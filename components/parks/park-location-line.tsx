@@ -12,23 +12,13 @@ import { useInParkBlock } from '@/lib/hooks/use-in-park-block';
 import { cn } from '@/lib/utils';
 
 /**
- * The park page's control for location, on the address line of the title card.
+ * The park page's control for location, on the title card's address line beside the distance badge:
+ * the button while nothing is decided, the way out after a block, „location on" once the position
+ * is in, and „you are in the park" when the nearby answer places the visitor here. It is the park
+ * page's ask (`useLocationNeeded`), see docs/rules/location-is-asked-for-where-it-is-needed.md.
  *
- * It used to be a row of its own between the title card and „Heute im Park", outside every card,
- * so on a phone its one line of muted text sat on the park's photo. And its "away" state said
- * „Du bist 55,7 km vom Park entfernt", which the distance badge two lines above already said. Here
- * it sits next to that badge: the button while nothing is decided, the way out after a block,
- * „location on" once the position is in, and „you are in the park" when the nearby answer places
- * the visitor here. The distance itself stays the badge's.
- *
- * This is the park page's ask for location (`useLocationNeeded`). A visitor who said yes on an
- * earlier visit is asked by the browser directly when the page opens; without an earlier yes the
- * button asks, and only on a tap (docs/rules/location-is-asked-for-where-it-is-needed.md).
- *
- * Layout: one box at one fixed height in every state, 44 px below `sm` (the button scale's phone
- * target) and 32 px from `sm` up, empty until the permission check has run. Nothing in it can
- * change the height of the title card: a label too long for the width wraps to a second line on a
- * phone and truncates from `sm` up.
+ * One box at one fixed height in every state (44 px below `sm`, 32 px above), so it never changes
+ * the title card's height: a long label wraps on a phone and truncates from `sm` up.
  */
 export function ParkLocationLine({
   park,
@@ -51,8 +41,8 @@ export function ParkLocationLine({
     >
       {state.kind === 'pending' && loading && (
         <p className="text-muted-foreground flex min-w-0 items-center gap-2">
-          {/* No pulse: the title card is glass, and an endless animation under a
-              `backdrop-filter` repaints the blur every frame (work-nobody-can-see-is-still-work). */}
+          {/* No pulse: an endless animation under the title card's `backdrop-filter` repaints the
+              blur every frame (docs/rules/work-nobody-can-see-is-still-work.md). */}
           <LocateFixed className="size-4 shrink-0" aria-hidden="true" />
           <span className="truncate">{t('loadingLocation')}</span>
         </p>
