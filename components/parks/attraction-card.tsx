@@ -472,18 +472,16 @@ export function AttractionCard({
           {/* Location line: pin · park · city, country · distance */}
           {(() => {
             const park = 'park' in attraction ? attraction.park : null;
-            const parkName =
+            const shownParkName =
               showParkName && park && 'name' in park ? stripNewPrefix(park.name) : null;
             const city = park && 'city' in park ? park.city : null;
             const rawCountry = park && 'country' in park ? park.country : null;
             const country = rawCountry
-              ? (() => {
-                  return translateGeoSlug(tGeo, 'countries', rawCountry, rawCountry);
-                })()
+              ? translateGeoSlug(tGeo, 'countries', rawCountry, rawCountry)
               : null;
             const place = [city, country].filter(Boolean).join(', ');
             const pieces = [
-              parkName,
+              shownParkName,
               place || null,
               distance != null ? formatDistance(distance) : null,
             ].filter(Boolean);
@@ -714,17 +712,13 @@ export function AttractionCard({
                 </div>
 
                 {/* Sparkline */}
-                {hasBottomPanel ? (
-                  <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
-                    <WaitTimeSparklineCard
-                      history={history ?? []}
-                      timezone={effectiveTimezone}
-                      fallbackWaitTime={waitTime}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex-1" />
-                )}
+                <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
+                  <WaitTimeSparklineCard
+                    history={history ?? []}
+                    timezone={effectiveTimezone}
+                    fallbackWaitTime={waitTime}
+                  />
+                </div>
               </div>
 
               {/* Divider + stats rows */}

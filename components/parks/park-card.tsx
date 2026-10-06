@@ -125,9 +125,7 @@ export function ParkCard({
   const effectiveCrowdLevel = crowdLevel ?? (analytics?.crowdLevel as CrowdLevel | undefined);
 
   const displayCountry = translateCountry
-    ? (() => {
-        return translateGeoSlug(tGeo, 'countries', country, country);
-      })()
+    ? translateGeoSlug(tGeo, 'countries', country, country)
     : country;
 
   // The photo and where to crop it are handed in, never looked up here. This card
