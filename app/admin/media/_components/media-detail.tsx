@@ -13,7 +13,8 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { FIELD_CLASS } from '../../_ui/controls';
+import { FIELD_CLASS, Field } from '../../_ui/controls';
+import { Tile } from '../../_ui/primitives';
 import type { MediaRole } from '@/lib/media/types';
 import type { MediaRow, Vocabulary } from '../_lib/types';
 import {
@@ -22,7 +23,7 @@ import {
   type PickerResult,
 } from '../../blog-editor/_components/park-ride-picker';
 import { FocusEditor } from './focus-editor';
-import { Chip, Field, Notice, Section } from './panel-ui';
+import { Chip, Notice } from './panel-ui';
 import { RideCardToggle } from './ride-card-toggle';
 import { OpenInEditor } from '../../_ui/open-in-editor';
 import { fitForCommit } from '../../_lib/upload-transport';
@@ -638,7 +639,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
             </Notice>
           )}
 
-          <Section title="What it shows">
+          <Tile title="What it shows">
             <Field label="Title">
               <input
                 className={INPUT}
@@ -687,9 +688,9 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 onChange={(e) => set('area', e.target.value || null)}
               />
             </Field>
-          </Section>
+          </Tile>
 
-          <Section
+          <Tile
             title="How it is used"
             hint="Roles are declared, never derived — a unique role can only belong to one image, and saving takes it from the one that had it."
           >
@@ -767,9 +768,9 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 <p className="mt-1 text-[11px] text-amber-500">{collectionError}</p>
               )}
             </Field>
-          </Section>
+          </Tile>
 
-          <Section title="Tags">
+          <Tile title="Tags">
             {vocabulary.facets.map((facet) => (
               <div key={facet.id}>
                 <span className="text-muted-foreground mb-1.5 block text-[11px] font-medium tracking-wide uppercase">
@@ -789,9 +790,9 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 </div>
               </div>
             ))}
-          </Section>
+          </Tile>
 
-          <Section
+          <Tile
             title="Words"
             action={
               <div className="flex gap-0.5">
@@ -828,9 +829,9 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
               value={draft.caption?.[locale] ?? ''}
               onChange={(e) => set('caption', { ...draft.caption, [locale]: e.target.value })}
             />
-          </Section>
+          </Tile>
 
-          <Section
+          <Tile
             title="Rights"
             hint="“unknown” is a real answer — do not invent an author to clear the warning."
           >
@@ -863,7 +864,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 </select>
               </Field>
             </div>
-          </Section>
+          </Tile>
         </div>
       </div>
 

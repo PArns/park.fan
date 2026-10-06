@@ -4,7 +4,7 @@ import { useCallback, useRef } from 'react';
 import Image from 'next/image';
 import type { MediaFocus } from '@/lib/media/types';
 import { FocusPreviews } from './focus-previews';
-import { Section } from './panel-ui';
+import { Tile } from '../../_ui/primitives';
 
 /**
  * Framing cannot be judged on the source photo, so the previews render the real cards and
@@ -43,7 +43,7 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
 
   return (
     <div className="space-y-4">
-      <Section
+      <Tile
         title="Focal point"
         action={
           <div className="flex items-center gap-2 text-xs">
@@ -91,15 +91,15 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
           Click the subject that must survive every crop. Drives both the CSS crop on cards and the
           build-time 16:9 / 4:3 / 1:1 renditions.
         </p>
-      </Section>
+      </Tile>
 
-      <Section title="How it lands">
+      <Tile title="How it lands">
         <FocusPreviews src={src} objectPosition={position} />
-      </Section>
+      </Tile>
 
       {/* Inline blog images are never cropped; shown so it is clear the focal point does
           nothing there. */}
-      <Section title="Inline article image" hint="Uncropped — the focal point does not apply here.">
+      <Tile title="Inline article image" hint="Uncropped — the focal point does not apply here.">
         <Image
           src={src}
           alt={alt}
@@ -108,7 +108,7 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
           className="h-auto w-40 rounded-lg"
           sizes="160px"
         />
-      </Section>
+      </Tile>
     </div>
   );
 }

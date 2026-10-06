@@ -116,8 +116,8 @@ export function Tile({
     >
       {(title || action) && (
         <div className="flex items-center justify-between gap-3">
-          <h3 className="text-muted-foreground flex min-w-0 items-center gap-2 text-[11px] font-semibold tracking-wider uppercase">
-            {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
+          <h3 className="flex min-w-0 items-center gap-2 text-[11px] font-semibold tracking-wider uppercase">
+            {Icon && <Icon className="text-muted-foreground h-3.5 w-3.5 shrink-0" />}
             {title}
           </h3>
           {action}
@@ -140,7 +140,10 @@ export function StatTile({
   sub?: ReactNode;
 }) {
   return (
-    <Tile title={label} className="space-y-1">
+    <Tile className="space-y-1">
+      <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+        {label}
+      </p>
       <span className="block text-3xl font-bold tabular-nums">{value}</span>
       {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
     </Tile>
