@@ -292,7 +292,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-best-days-header.tsx`](../../components/parks/park-best-days-header.tsx)
 
-- `ParkBestDaysHeader` _component_: The best-days section's frosted header. It carries NO calendar data — the park name, the subtitle and the three links are all known without the seed — which is why it lives in its own file: the loading placeholder …
+- `ParkBestDaysHeader` _component_: The best-days section's frosted header. It carries no calendar data, so the loading skeleton renders this same component and reserves the exact height at every breakpoint and in every locale.
 - `localizedParkName` _function_: "den Europa-Park", not "Europa-Park", where the German title needs the accusative.
 
 ### [`park-best-days-section-skeleton.tsx`](../../components/parks/park-best-days-section-skeleton.tsx)
@@ -305,22 +305,22 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-comparison.tsx`](../../components/parks/park-calendar-comparison.tsx)
 
-- `ParkCalendarComparison` _component_: Two calendar days, side by side, with the verdict on top.
+- `ParkCalendarComparison` _component_: Two calendar days side by side, with the verdict on top. The arithmetic lives in `lib/parks/day-comparison.ts`; this file turns its keys and numbers into ICU messages.
 - Types: `ParkCalendarComparisonProps`
 
 ### [`park-calendar-day-detail.tsx`](../../components/parks/park-calendar-day-detail.tsx)
 
-- `ParkCalendarDayDetail` _component_: Click-to-open detail panel for a single crowd-calendar day. Works on touch and pointer devices alike (a Radix Dialog, unlike the calendar's hover tooltips), so mobile users get the full context too.
+- `ParkCalendarDayDetail` _component_: Click-to-open detail panel for one crowd-calendar day. A Radix Dialog, unlike the calendar's hover tooltips, so it works on touch too.
 - Types: `ParkCalendarDayDetailProps`
 
 ### [`park-calendar-day.tsx`](../../components/parks/park-calendar-day.tsx)
 
-- `ParkCalendarDay` _component_: Memoize component to prevent unnecessary re-renders
+- `ParkCalendarDay` _component_: One day cell of the crowd calendar, memoised so a grid update re-renders only the days that changed.
 - Types: `ParkCalendarDayProps`
 
 ### [`park-calendar-grid-placeholder.tsx`](../../components/parks/park-calendar-grid-placeholder.tsx)
 
-- `ParkCalendarGridPlaceholder` _component_: The box the month grid stands in before it can draw itself.
+- `ParkCalendarGridPlaceholder` _component_: The box the month grid stands in for both waits: the `ssr: false` chunk and the calendar fetch.
 
 ### [`park-calendar-grid.tsx`](../../components/parks/park-calendar-grid.tsx)
 
@@ -328,20 +328,20 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-legend.tsx`](../../components/parks/park-calendar-legend.tsx)
 
-- `ParkCalendarLegend` _component_: What the colours in the month grid mean — the crowd scale, then the signal bar.
+- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one strip of butted chips because it is a ruler; the four signal keys are independent facts and keep their gaps.
 
 ### [`park-calendar-month-index-chip.tsx`](../../components/parks/park-calendar-month-index-chip.tsx)
 
-- `ParkCalendarMonthIndexChip` _component_: One month chip in `ParkCalendarMonthIndex`.
+- `ParkCalendarMonthIndexChip` _component_: One month chip in `ParkCalendarMonthIndex`. A Client Component only because `suppressScrollToTopFor` needs an `onClick`: without it, every jump to another month threw the reader back to the park's title card.
 
 ### [`park-calendar-month-index.tsx`](../../components/parks/park-calendar-month-index.tsx)
 
-- `ParkCalendarMonthIndex` _component_: Every month the route serves, as links, on every calendar page.
+- `ParkCalendarMonthIndex` _component_: Every month the route serves, as links, on every calendar page. The stepper links only the previous and next month, which left the far months many hops from the hub; this index puts every month one hop from every other.
 
 ### [`park-calendar-month-summary.tsx`](../../components/parks/park-calendar-month-summary.tsx)
 
-- `ParkCalendarMonthSummary` _component_: What a month page says about its month, in sentences, in the first byte.
-- `ParkCalendarMonthSummarySkeleton` _component_: The box the summary will fill, at the height it will fill it.
+- `ParkCalendarMonthSummary` _component_: What a month page says about its month, in sentences, in the first byte. The grid below is `ssr: false`, and without this block the month pages differed by little more than the month's name.
+- `ParkCalendarMonthSummarySkeleton` _component_: The box the summary will fill, at the height it will fill it: the calendar grid below is the tallest thing on the page, so every missing pixel moves all of it.
 
 ### [`park-calendar-panel.tsx`](../../components/parks/park-calendar-panel.tsx)
 
@@ -349,11 +349,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-card-nearby-skeleton.tsx`](../../components/parks/park-card-nearby-skeleton.tsx)
 
-- `ParkCardNearbySkeleton` _component_: Placeholder for one `<ParkCard>`, at the height the real card measures.
+- `ParkCardNearbySkeleton` _component_: Placeholder for one `<ParkCard>`, at the height the real card measures: a 100 px row below `sm`, a 365 px card above it.
 
 ### [`park-card-schedule-footer.tsx`](../../components/parks/park-card-schedule-footer.tsx)
 
-- `ParkCardScheduleFooter` _component_: Schedule/countdown footer of a park card.
+- `ParkCardScheduleFooter` _component_: Schedule and countdown footer of a park card. A Client Component because it reads the current time, which a server render under Cache Components cannot.
 
 ### [`park-card.tsx`](../../components/parks/park-card.tsx)
 
@@ -361,16 +361,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-comparison-card.tsx`](../../components/parks/park-comparison-card.tsx)
 
-- `ParkComparisonCard` _component_: Cross-park median comparison, fetched live instead of typed into the post by hand.
+- `ParkComparisonCard` _component_: Cross-park median comparison, fetched live instead of typed into the post. Rows keep the order the post lists them in, because the argument a post builds around the table depends on that sequence.
 
 ### [`park-entry-tiles.tsx`](../../components/parks/park-entry-tiles.tsx)
 
-- `SelectionBar` _component_: The selected cell's bar, along its top edge.
+- `SelectionBar` _component_: The selected cell's bar along its top edge. An element, not a border or a shadow: `border-t-primary` loses to the shorthand border colour the cell needs to beat `TabsTrigger`'s base, and an inset shadow loses to the base's `shadow-sm`.
 - `ParkTileGrid` _component_: The row's grid. Both renderings mount it, and the park page's tablist sits inside it at `display: contents` so its triggers become grid items directly — a link inside `role="tablist"` is not a tab, and the calendar cell is a link.
 - `useParkTileItems` _hook_: The cells with their live hints, plus how many there are (four of the seven are optional).
 - `phoneLastCellSpan` _function_: The span of the LAST cell on a phone, so the three-column row never ends on an empty cell: one cell left over takes the whole row, two share it.
-- `tileCell` _const_
-- `tileRowPhone` _const_: The row on a phone: three columns instead of two, and no second line in the cells.
+- `tileCell` _const_: The classes every cell of the row shares, tab trigger or link.
+- `tileRowPhone` _const_: The row on a phone: three columns instead of two, and no second line in the cells. Two columns put seven cells in four rows, most of the first screen; three columns make three rows. Both rows use it, `ParkTileGrid` and `RideNavTiles`.
 - `activeChip` _const_: The chip's active treatment, shared so a tab's selected state and a link's current state cannot drift apart.
 - `activeCell` _const_: The cell's active fill, likewise shared between the tab and the link rendering.
 - `EntryTileBody` _const_
@@ -382,62 +382,62 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-first-visit-guide.tsx`](../../components/parks/park-first-visit-guide.tsx)
 
-- `ParkFirstVisitGuide` _component_: "First visit?" — the park's own guide as the way in, with the glossary terms that guide leans on.
+- `ParkFirstVisitGuide` _component_: „First visit?": the park's own guide as the way in, with the glossary terms that guide leans on.
 
 ### [`park-header-card.tsx`](../../components/parks/park-header-card.tsx)
 
-- `ParkHeaderCard` _component_: The park page's header card: "Heute im Park" on top, the entry-tile row as its footer band.
+- `ParkHeaderCard` _component_: The park page's header card: „Heute im Park" on top, the entry-tile row as its footer band. One card, and the box lives here because both halves need the same `overflow-hidden` to clip their trailing hairlines.
 
 ### [`park-height-filter-context.tsx`](../../components/parks/park-height-filter-context.tsx)
 
 - `useParkHeightFilter` _hook_: Reads the park page's shared rider-height filter. `null` outside the park page and on a park that publishes no minimum heights.
-- `ParkHeightFilterContext` _const_
+- `ParkHeightFilterContext` _const_: Carries the shared rider-height filter from `TabsWithHash` to controls outside the panel.
 - Types: `ParkHeightFilter`
 
 ### [`park-holiday-row.tsx`](../../components/parks/park-holiday-row.tsx)
 
-- `ParkHolidayRow` _component_: Today's holidays, in one band, with the park's own region first.
-- `ParkHolidayBand` _component_: The band itself, for a caller that already holds today's schedule.
-- `HolidayChip` _component_: One chip of the band. Exported with the two builders below for `ParkTimeInfo`, which reads the same `useTodaySchedule().holiday` and used to draw its own chips: a school break went behind the public holiday's party-popper there, in …
+- `ParkHolidayRow` _component_: Today's holidays in one band, the park's own region first. That region is the subject: named, flagged, its chips in the per-type colours of the calendar's day detail.
+- `ParkHolidayBand` _component_: The band itself, for a caller that already holds today's schedule. `ParkTodayPanel` runs `useTodaySchedule` with the same inputs and hands its `sched.holiday` in, so the hook does not run twice.
+- `HolidayChip` _component_: One chip of the band. Exported with the two builders below for `ParkTimeInfo`, which reads the same `useTodaySchedule().holiday`, so both draw a holiday the same way.
 - `localHolidayChips` _function_: What the park's own state/country has today, in the order a visitor asks about it.
 - `neighbourRegions` _function_: Neighbouring regions on a school break, deduplicated by the name they render under.
 - `NEIGHBOUR_CHIP_TONE` _const_: Neighbouring regions are the second rank: neutral chips, no colour of their own.
 
 ### [`park-hourly-profile-card.tsx`](../../components/parks/park-hourly-profile-card.tsx)
 
-- `ParkHourlyProfileCard` _component_: The park's day shape as a matrix: one row per ride, one column per hour it is open.
+- `ParkHourlyProfileCard` _component_: The park's day shape as a matrix: one row per ride, one column per open hour. Readers ask when to walk to a ride, not how long its queue is, so each row's peak is marked and the rows are ranked by their busiest hour.
 - Types: `HourlyProfileLabels`
 
 ### [`park-in-park-block.tsx`](../../components/parks/park-in-park-block.tsx)
 
-- `ParkInParkBlock` _component_: "Near you" at the top of the park page, for a visitor who is standing in this park.
+- `ParkInParkBlock` _component_: „Near you" at the top of the park page, for a visitor standing in this park. It reads the same `/api/nearby` answer the header already asks for (`useHomeNearbyParks`, deduped by React Query), so it adds no request.
 
 ### [`park-info-card.tsx`](../../components/parks/park-info-card.tsx)
 
-- `ParkInfoCard` _component_: The things a visitor asks that no wait-time feed answers.
+- `ParkInfoCard` _component_: The things a visitor asks that no wait-time feed answers, each hand-written in the admin: the park's site, the street address, the year it opened.
 
 ### [`park-kids-height-filter.tsx`](../../components/parks/park-kids-height-filter.tsx)
 
-- `ParkKidsHeightFilter` _component_: The rider-height slider a second time, in the park page's „Mit Kindern“ block under the ride list.
+- `ParkKidsHeightFilter` _component_: The rider-height slider a second time, in the park page's „Mit Kindern“ block under the ride list, where a phone shows no other height control.
 
 ### [`park-kids-link.tsx`](../../components/parks/park-kids-link.tsx)
 
-- `ParkKidsLink` _component_: The park page's link to its "with kids" page.
+- `ParkKidsLink` _component_: The park page's link to its "with kids" page, rendered only for a park that clears the gate (`kidsPageData` is `null` below it), so no park page links at a 404.
 
 ### [`park-kids-tiers.tsx`](../../components/parks/park-kids-tiers.tsx)
 
-- `ParkKidsTiers` _component_: The park's height ladder: one card per height at which its answer changes.
+- `ParkKidsTiers` _component_: The park's height ladder: one card per height at which its answer changes. The steps and counts come from the same `riderHeightThresholds` and `canRideAtHeight` as the park page's slider, so the two pages cannot give a parent two answers.
 
 ### [`park-location-line.tsx`](../../components/parks/park-location-line.tsx)
 
-- `ParkLocationLine` _component_: The park page's control for location, on the address line of the title card.
+- `ParkLocationLine` _component_: The park page's control for location, on the title card's address line beside the distance badge: the button while nothing is decided, the way out after a block, „location on" once the position is in, and „you are in the park" when the …
 
 ### [`park-map-markers.tsx`](../../components/parks/park-map-markers.tsx)
 
-- `AttractionMarkers` _component_: Memoized: `attractions` is a `useMemo`-stable array in ParkMap, and nothing here is time-relative — so the once-per-minute `useMinuteNow` tick (needed only by the show markers) no longer reconciles every attraction marker.
-- `ShowMarkers` _component_: Memoized like its two siblings — it was the only marker layer left unmemoized, so it re-rendered (rebuilding a Leaflet Popup and running getNextShowtimeDate per show) on every ParkMap render. Its props are `useMemo`-stable at the call site.
-- `RestaurantMarkers` _component_: Memoized like AttractionMarkers — restaurants carry no time-relative content, so the minute tick never needs to touch them.
-- `getNextShowtimeDate` _function_: Returns the next future showtime as a Date, or null if none remain
+- `AttractionMarkers` _component_: The ride pins. Memoised: nothing here is time-relative, so the minute tick the show markers need does not reconcile them.
+- `ShowMarkers` _component_: The show pins, memoised like their siblings; the props are `useMemo`-stable at the call site.
+- `RestaurantMarkers` _component_: The restaurant pins, memoised: they carry nothing time-relative.
+- `getNextShowtimeDate` _function_: The show's next start time still to come, or `null` when none remain.
 
 ### [`park-map.tsx`](../../components/parks/park-map.tsx)
 
@@ -445,7 +445,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-nav-tiles.tsx`](../../components/parks/park-nav-tiles.tsx)
 
-- `ParkNavTiles` _component_: The same entry-tile row, on a park SUB-page — where every cell is a link.
+- `ParkNavTiles` _component_: The same entry-tile row on a park sub-page, where every cell is a link: chapter cells link to the park page with the chapter's hash, which its tab router reads, and the calendar and the wait-time record link to their own pages.
 
 ### [`park-page-shell.tsx`](../../components/parks/park-page-shell.tsx)
 
@@ -453,21 +453,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-panel-cell.tsx`](../../components/parks/park-panel-cell.tsx)
 
-- `PanelGrid` _component_: The grid the cells sit in.
+- `PanelGrid` _component_: The grid the cells sit in. `-mr-px -mb-px` plus the caller's `overflow-hidden` clip the trailing hairlines at every column count.
 - `PanelMetric` _component_: A caption and its value inside a `PANEL_CELL`.
 - `PANEL_CELL` _const_: One column of a park panel: hairline rules on the right and bottom, and the padding they need.
 
 ### [`park-planner-link.tsx`](../../components/parks/park-planner-link.tsx)
 
-- `ParkPlannerLink` _component_: "Plan a day at this park", in the park's own header.
+- `ParkPlannerLink` _component_: „Plan a day at this park", in the park's own header (park page and calendar, both `ParkTitleHeader`): the planner's one inbound link that carries an intent.
 
 ### [`park-purchases-card.tsx`](../../components/parks/park-purchases-card.tsx)
 
-- `ParkPurchasesCard` _component_: Day prices for paid skip-the-line products from the operating schedule (`schedule[].purchases`) — today Disney's Lightning Lane single passes and Multi/Premier Pass packages, incl. sold-out state.
+- `ParkPurchasesCard` _component_: Day prices for paid skip-the-line products from the operating schedule (`schedule[].purchases`): Disney's Lightning Lane passes and packages, including the sold-out state. Parks without purchase data render nothing.
 
 ### [`park-quick-links.tsx`](../../components/parks/park-quick-links.tsx)
 
-- `ParkQuickLinks` _component_: The park's own website, ticket shop and Wikipedia entry — a row of links directly under the intro in the page header.
+- `ParkQuickLinks` _component_: The park's own website, ticket shop and Wikipedia entry, as a row of links under the intro in the page header.
 
 ### [`park-seasons-card.tsx`](../../components/parks/park-seasons-card.tsx)
 
@@ -475,11 +475,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-simulation-notice.tsx`](../../components/parks/park-simulation-notice.tsx)
 
-- `ParkSimulationNotice` _component_: The band that says this page is lying.
+- `ParkSimulationNotice` _component_: The band that says this page is simulated. `?state=` patches the park payload (a weather warning not in force, a holiday that is not today), and the band shows in every screenshot so nothing on the page is mistaken for real.
 
 ### [`park-stats-attractions-card.tsx`](../../components/parks/park-stats-attractions-card.tsx)
 
-- `ParkStatsAttractionsCard` _component_: Top-ten ranking as a table: typical and peak wait side by side with what the ride is showing right now, which is the comparison the historical numbers exist for.
+- `ParkStatsAttractionsCard` _component_: Top-ten ranking as a table: typical and peak wait beside what the ride shows right now, the comparison the historical numbers exist for. A phone keeps only the peak column, since four numeric columns do not fit beside a ride name.
 
 ### [`park-stats-crowd-card.tsx`](../../components/parks/park-stats-crowd-card.tsx)
 
@@ -487,12 +487,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-stats-frame.tsx`](../../components/parks/park-stats-frame.tsx)
 
-- `CardFrame` _component_: The two shapes a statistics card can take.
+- `CardFrame` _component_: The standalone shape of a statistics card, with its own glass and padding (the guide page's demo).
 - `BareFrame` _component_: `CardFrame` without the glass: only the heading-to-table spacing, for a card inside the stats panel.
 
 ### [`park-stats-header.tsx`](../../components/parks/park-stats-header.tsx)
 
-- `ParkStatsHeader` _component_: The statistics chapter's header. Its own file for the same reason `ParkBestDaysHeader` has one: it carries no data — the title is a constant string and only the "aus N Messtagen" line needs the payload — so the loading placeholder renders …
+- `ParkStatsHeader` _component_: The statistics chapter's header. It carries no data except the subtitle, so the loading placeholder renders this same component and the title's height is reserved exactly in every locale and at every breakpoint.
 
 ### [`park-stats-method.tsx`](../../components/parks/park-stats-method.tsx)
 
@@ -519,11 +519,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-tabs-list.tsx`](../../components/parks/park-tabs-list.tsx)
 
-- `ParkTabsList` _component_: Memoised: `TabsWithHash` builds this row inline, and every search keystroke, pill tap and tab tap re-rendered it — `useParkTileItems` and its seven tiles — in the commit the interaction is waiting on, with props that had not changed.
+- `ParkTabsList` _component_: The park page's entry-tile row: five chapter cells that switch a tab in place, plus the cells that are pages rather than panels (the crowd calendar, the wait-time record), which are links.
 
 ### [`park-time-info.tsx`](../../components/parks/park-time-info.tsx)
 
-- `ParkTimeInfo` _component_: Client component that displays: 1. Current time in the park's timezone (live updating) 2. Opening hours for today 3. "Opens in" / "Closes in" messages 4. Today's holidays, with the chips of the park page's holiday band
+- `ParkTimeInfo` _component_: The park's clock, today's opening hours with an opens-in or closes-in countdown, and today's holidays with the park page's holiday chips.
 
 ### [`park-title-header.tsx`](../../components/parks/park-title-header.tsx)
 
@@ -531,16 +531,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-today-panel.tsx`](../../components/parks/park-today-panel.tsx)
 
-- `ParkTodayPanel` _component_: "Heute im Park" — one panel answering everything a visitor asks on arrival.
+- `ParkTodayPanel` _component_: „Heute im Park": one panel answering what a visitor asks on arrival: status, crowd, the headliner waits, the next shows, the weather and today's holidays.
 
 ### [`park-yearly-outlook-section.tsx`](../../components/parks/park-yearly-outlook-section.tsx)
 
-- `YearlyOutlookFrame` _component_: The chapter's box: the heading band and the twelve rows under it.
+- `YearlyOutlookFrame` _component_: The chapter's box: the heading band and the twelve rows under it. The settled section and the `<Suspense>` placeholder both render it, so the reservation is the real geometry (docs/rules/a-streamed-section-owes-the-page-its-height.md).
 - `ParkYearlyOutlookSection` _component_: Park page chapter forecasting the next twelve months: a crowd badge, a day strip and the count of recommended days per month, fetched on the server with a 3 s timeout.
 
 ### [`park-yearly-outlook-skeleton.tsx`](../../components/parks/park-yearly-outlook-skeleton.tsx)
 
-- `ParkYearlyOutlookSkeleton` _component_: What the page holds open while the forecast is in flight.
+- `ParkYearlyOutlookSkeleton` _component_: What the page holds open while the forecast is in flight: the chapter itself over an empty frame (`buildYearlyOutlook([], todayIso)`), so the reservation is the real geometry at every breakpoint and in both themes …
 
 ### [`peak-hour-badge.tsx`](../../components/parks/peak-hour-badge.tsx)
 
@@ -553,7 +553,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`rcdb-badge.tsx`](../../components/parks/rcdb-badge.tsx)
 
-- `RcdbBadge` _component_: Outbound link to the ride's Roller Coaster DataBase record.
+- `RcdbBadge` _component_: Outbound link to the ride's Roller Coaster DataBase record, naming the ride („Taron on RCDB") so the link says what is on the other end.
 
 ### [`restaurant-card-skeleton.tsx`](../../components/parks/restaurant-card-skeleton.tsx)
 
@@ -565,16 +565,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ride-crowd-scale-tooltip.tsx`](../../components/parks/ride-crowd-scale-tooltip.tsx)
 
-- `RideCrowdScaleTooltip` _component_: The crowd scale behind a ride card's badge, in THIS ride's minutes.
+- `RideCrowdScaleTooltip` _component_: The crowd scale behind a ride card's badge, in this ride's minutes.
 
 ### [`ride-day-curve-card.tsx`](../../components/parks/ride-day-curve-card.tsx)
 
-- `RideDayCurveCard` _component_: The day-curve chart, fed from `/stats/day`.
+- `RideDayCurveCard` _component_: The day-curve chart, fed from `/stats/day`: one small projection with the historical percentiles, today's measured hours and the forecast, behind the same `useLoadLast` gate as every historical aggregate.
 - Types: `DayCurveCandidate`, `RideDayCurveCardProps`
 
 ### [`ride-day-curve.tsx`](../../components/parks/ride-day-curve.tsx)
 
-- `RideDayCurve` _component_: A ride's day: today against what the ride normally does, with the spread it normally does it in.
+- `RideDayCurve` _component_: A ride's day: today against what the ride normally does, with the spread it normally does it in. The good windows are drawn on the plot, since the chart answers "when do I walk over there".
 - Types: `DayCurveWindow`, `RideDayCurveProps`
 
 ### [`ride-exposure-line.tsx`](../../components/parks/ride-exposure-line.tsx)
@@ -583,44 +583,44 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ride-layout-rail.tsx`](../../components/parks/ride-layout-rail.tsx)
 
-- `RideLayoutRail` _component_: The ride's layout as a track you can read left to right, with a shared 3-D viewer that opens in place.
+- `RideLayoutRail` _component_: The ride's layout as a track read left to right, with a shared 3-D viewer that opens in place.
 - Types: `RideLayoutRailLabels`
 
 ### [`ride-live-header.tsx`](../../components/parks/ride-live-header.tsx)
 
-- `RideLiveHeader` _component_: The live half of the ride page's header card — `RideNowPanel` with data in it.
+- `RideLiveHeader` _component_: The live half of the ride page's header card: `RideNowPanel` with data in it. A wrapper because the card is built by a Server Component and the queries have to cross the client boundary somewhere.
 
 ### [`ride-nav-tiles.tsx`](../../components/parks/ride-nav-tiles.tsx)
 
-- `RideNavTiles` _component_: The ride page's chapter row — the park page's entry tiles, one page type over.
+- `RideNavTiles` _component_: The ride page's chapter row: the park page's entry tiles one page type over, with the same cell (`tileCell`), body (`EntryTileBody`) and place as the footer band of `ParkHeaderCard`.
 
 ### [`ride-now-panel.tsx`](../../components/parks/ride-now-panel.tsx)
 
-- `RideNowPanel` _component_: „Heute an dieser Bahn" — the ride page's fold, and the park header panel's twin.
+- `RideNowPanel` _component_: „Heute an dieser Bahn": the ride page's fold and the twin of `ParkTodayPanel`, with the same header strip, `PanelGrid` columns and `PanelMetric` captions.
 
 ### [`ride-profile-section.tsx`](../../components/parks/ride-profile-section.tsx)
 
-- `RideProfileSection` _component_: The ride → glossary half of the link: what this ride is and what it does.
+- `RideProfileSection` _component_: The ride → glossary half of the link: what this ride is and what it does, top-down the way the ride is built (maker and year, kind, then the layout as a rail to step through in 3-D).
 
 ### [`ride-profile-teaser.tsx`](../../components/parks/ride-profile-teaser.tsx)
 
-- `RideProfileTeaser` _component_: The ride's identifying facts, lifted into the page header.
+- `RideProfileTeaser` _component_: The ride's identifying facts, lifted into the page header. Every badge names its own fact („Manufacturer: Intamin"), since an unlabelled value in a row of height limits and lands is a guess.
 
 ### [`ride-status-block.tsx`](../../components/parks/ride-status-block.tsx)
 
-- `RideStatusBlock` _component_: The block a ride's standing still is said in: a solid icon chip, a bold line, an optional second line, and whatever sits under a hairline below them.
-- `useWeekdayTime` _hook_: Weekday and clock time in the park's zone, as a phrase in the reader's language: „Sonntag, 21:00 Uhr", „Sunday at 09:00 PM", „zondag 21:00 uur".
+- `RideStatusBlock` _component_: The block a ride's standing still is said in: a solid icon chip, a bold line, an optional second line, and whatever sits under a hairline.
+- `useWeekdayTime` _hook_: Weekday and clock time in the park's zone as a phrase in the reader's language („Sonntag, 21:00 Uhr", „Sunday at 09:00 PM"), so every instant a block names reads the same.
 - `rideStatusFooterClass` _function_: The classes for a section under the block's hairline, in the block's tint.
 - Types: `RideStatusTone`
 
 ### [`ride-wait-table.tsx`](../../components/parks/ride-wait-table.tsx)
 
-- `RideWaitTable` _component_: The wait-time table a blog post used to type out by hand.
+- `RideWaitTable` _component_: A ride wait-time table for a blog post, fetched live so it never goes stale against the park page (docs/rules/a-wait-time-is-never-typed-into-a-post.md).
 - Types: `RideWaitTableLabels`
 
 ### [`rider-height-filter.tsx`](../../components/parks/rider-height-filter.tsx)
 
-- `RiderHeightFilter` _component_: "How tall is the rider?" — the park page's height filter.
+- `RiderHeightFilter` _component_: „How tall is the rider?": the park page's height filter.
 
 ### [`rope-drop-badge.tsx`](../../components/parks/rope-drop-badge.tsx)
 
@@ -633,7 +633,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`rope-drop-headliners.tsx`](../../components/parks/rope-drop-headliners.tsx)
 
-- `RopeDropHeadliners` _component_: Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move.
+- `RopeDropHeadliners` _component_: „Worth arriving at park opening" strip on the park page, plus the evening picks. The API sends `ropeDropHeadliners` filtered and sorted by savings; the evening picks are derived from the attractions' ropeDrop data (see isEveningBetter).
 
 ### [`seasonal-badge.tsx`](../../components/parks/seasonal-badge.tsx)
 
@@ -642,7 +642,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`show-card-showtimes.tsx`](../../components/parks/show-card-showtimes.tsx)
 
-- `ShowCardShowtimes` _component_: Today's showtimes for a show card (with past/next highlighting). Client Component because "today / is past / is next" depend on the current time — under Cache Components a server render can't read `new Date()`.
+- `ShowCardShowtimes` _component_: Today's showtimes for a show card, with past and next highlighted; a Client Component because both depend on the current time. Each badge opens `ShowFollowDialog` for its own performance, so tapping 19:10 files a reminder for 19:10.
 
 ### [`show-card-skeleton.tsx`](../../components/parks/show-card-skeleton.tsx)
 
@@ -654,7 +654,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`single-rider-badge.tsx`](../../components/parks/single-rider-badge.tsx)
 
-- `SingleRiderBadge` _component_: "Single Rider" — that the ride has such a queue at all.
+- `SingleRiderBadge` _component_: „Single Rider": that the ride has such a queue at all.
 
 ### [`sparkline.tsx`](../../components/parks/sparkline.tsx)
 
@@ -671,7 +671,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`transport-system-badge.tsx`](../../components/parks/transport-system-badge.tsx)
 
-- `TransportSystemBadge` _component_: „Transportsystem" — the word that separates a station from a ride.
+- `TransportSystemBadge` _component_: „Transportsystem": the word that separates a station from a ride.
 
 ### [`trend-icon.tsx`](../../components/parks/trend-icon.tsx)
 
@@ -687,7 +687,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`virtual-line-badge.tsx`](../../components/parks/virtual-line-badge.tsx)
 
-- `VirtualLineBadge` _component_: "Virtual queue" — that the ride hands out return times or boarding groups at all, as opposed to whether it is doing so right now.
+- `VirtualLineBadge` _component_: „Virtual queue": that the ride hands out return times or boarding groups at all, not whether it does right now.
 
 ### [`wait-time-badge.tsx`](../../components/parks/wait-time-badge.tsx)
 
@@ -707,6 +707,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`weather-background.tsx`](../../components/parks/weather-background.tsx)
 
+An animated, layered weather scene (sky gradient, sun or moon, drifting clouds, a precipitation canvas and lightning) driven by an Open-Meteo `weather_code` and `is_day`.
+
 - `WeatherBackground` _component_: Animated weather scene behind a weather card (sky, sun or moon, clouds, rain or snow, lightning) for an Open-Meteo `weather_code`. Place it first in a `relative overflow-hidden` card; `glass` adds a frosted overlay so text stays readable.
 - Types: `WeatherBackgroundProps`
 
@@ -714,8 +716,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 Static demo fixtures for the weather card showcase on the /ui style guide.
 
-- `FORECAST_TEMPLATE` _const_
-- `VARIANT_CURRENT` _const_
+- `FORECAST_TEMPLATE` _const_: The demo forecast days, without the dates the showcase fills in.
+- `VARIANT_CURRENT` _const_: Today's conditions for each demo variant.
 - Types: `Variant`
 
 ### [`weather-card-demo.tsx`](../../components/parks/weather-card-demo.tsx)
@@ -733,14 +735,14 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 
 ### [`weather-hourly-chart.tsx`](../../components/parks/weather-hourly-chart.tsx)
 
-- `WeatherHourlyChart` _component_: Detailed day view for today: hourly temperature curve with rain bars underneath, a "now" marker, and per-hour tooltips — the classic weather-app hourly chart, but built around the park's own day rather than the calendar's.
+- `WeatherHourlyChart` _component_: Detailed day view for today: hourly temperature curve with rain bars, a "now" marker and per-hour tooltips, built around the park's own day.
 
 ### [`weather-nowcast-banner.tsx`](../../components/parks/weather-nowcast-banner.tsx)
 
-- `NowcastAlertToggle` _component_: The warning as one line — the park header's title row carries it where the weather reading otherwise sits, and a press opens the full `NowcastAlertBanner` under that row.
+- `NowcastAlertToggle` _component_: The warning as one line, in the park header's title row where the weather reading otherwise sits; a press opens the full `NowcastAlertBanner` under the row.
 - `NowcastAlertBanner` _component_: The full warning: heading, sentence, update countdown and the precipitation timeline — and, under them, whatever the host adds as `children` (the park page's covered rides).
 - `WeatherNowcastBanner` _component_: The banner on its own, for surfaces that show it outright (the /ui showcase, the guide page).
-- `useNowcastAlert` _hook_: The nowcast warning due right now, or `null` — the query, the clock, the pick and the wording, without the box.
+- `useNowcastAlert` _hook_: The nowcast warning due right now, or `null`: the query, the clock, the pick and the wording, without the box. The park header's one-line toggle and the full banner both read it, so they cannot pick or word a warning differently.
 - Types: `NowcastAlert`
 
 ### [`weather-scene.ts`](../../components/parks/weather-scene.ts)
@@ -752,7 +754,7 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 
 Client on purpose: the demo windows are Date.now()-relative — evaluated in the browser per mount they always read "now-ish", while a server render on a static showcase page would bake in build-time dates that look expired days later.
 
-- `WeatherWarningBannerDemo` _component_: The banner renders nothing until it has mounted, so the box it lands in is held here: 394 px, the three warnings collapsed, measured at 360 to 1440 px in all six locales (PAR-683).
+- `WeatherWarningBannerDemo` _component_: The banner renders nothing until it has mounted, so the box it lands in is held here: 394 px, the three warnings collapsed, the same in every locale from 360 to 1440 px.
 
 ### [`weather-warning-banner.tsx`](../../components/parks/weather-warning-banner.tsx)
 
@@ -764,8 +766,8 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 
 ### [`works-period-badge.tsx`](../../components/parks/works-period-badge.tsx)
 
-- `WorksPeriodBadge` _component_: „Umbaupause" — the one word that separates a ride being rebuilt from a ride that happens to be shut.
+- `WorksPeriodBadge` _component_: „Umbaupause": the word that separates a ride being rebuilt from one that happens to be shut. Both read `CLOSED` and no feed tells them apart, so the window is curated.
 
 ### [`works-period-note.tsx`](../../components/parks/works-period-note.tsx)
 
-- `WorksPeriodNote` _component_: The ride page's sentence about a curated rebuild: since when, and until when.
+- `WorksPeriodNote` _component_: The ride page's sentence about a curated rebuild: since when and until when, the part a visitor can plan around. It sits where `NoLiveWaitTimesNotice` sits, above the chapters, because it answers the question the empty live panel raises.
