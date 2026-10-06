@@ -8,7 +8,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
@@ -106,15 +106,7 @@ function ParkCalendarDayComponent({
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
-  const dateLocale =
-    {
-      de,
-      en: enUS,
-      es,
-      fr,
-      it,
-      nl,
-    }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
+  const dateLocale = dateFnsLocale(locale);
 
   const dayDate = parseISO(day.date);
   const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });

@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { format, parseISO } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import type {
   AttractionHistoryDay as AttractionHistoryDayData,
   ScheduleItem,
@@ -111,8 +111,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
-  const dateLocale =
-    { de, en: enUS, es, fr, it, nl }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
+  const dateLocale = dateFnsLocale(locale);
 
   const dayDate = parseISO(day.dateStr);
   const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });

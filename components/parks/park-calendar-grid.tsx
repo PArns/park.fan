@@ -13,7 +13,6 @@ import {
   startOfWeek,
   getDay,
 } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -21,6 +20,7 @@ import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
@@ -75,16 +75,7 @@ export function ParkCalendarGrid({
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
 
-  // Map locale to date-fns locale
-  const dateLocale =
-    {
-      de,
-      en: enUS,
-      es,
-      fr,
-      it,
-      nl,
-    }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
+  const dateLocale = dateFnsLocale(locale);
 
   // Derived from the URL, not held in state. `month` is null only on the hub, where "this month"
   // is the answer and the browser clock is the right source for it.

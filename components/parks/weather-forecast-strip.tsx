@@ -3,8 +3,8 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
 import { parseISO } from 'date-fns';
-import { de, enUS, es, fr, nl, type Locale } from 'date-fns/locale';
 import { format } from 'date-fns';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { useEffect, useRef, useState } from 'react';
 import { getWeatherConfig, getDayWeatherWarning } from '@/lib/utils/weather-utils';
 import { Temp, Precip } from '@/components/common/unit-display';
@@ -16,8 +16,6 @@ interface WeatherForecastStripProps {
   className?: string;
 }
 
-const LOCALE_MAP: Record<string, Locale> = { de, es, fr, nl };
-
 /**
  * Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a
  * warning triangle for severe weather or heat. Renders nothing without a valid day.
@@ -25,7 +23,7 @@ const LOCALE_MAP: Record<string, Locale> = { de, es, fr, nl };
 export function WeatherForecastStrip({ forecast, className }: WeatherForecastStripProps) {
   const locale = useLocale();
   const t = useTranslations('parks.weather');
-  const dateFnsLocale = LOCALE_MAP[locale] ?? enUS;
+  const dateLocale = dateFnsLocale(locale);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
@@ -126,7 +124,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
           {validForecast.map((day, i) => {
             const { icon: ForecastIcon, color } = getWeatherConfig(day.weatherCode);
             const date = parseISO(day.date);
-            const dayLabel = format(date, 'EEE', { locale: dateFnsLocale });
+            const dayLabel = format(date, 'EEE', { locale: dateLocale });
             const precip = parseFloat(day.precipitationSum || '0');
             const tempMax = parseFloat(day.temperatureMax);
             const isLast = i === validForecast.length - 1;
@@ -148,7 +146,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                   {dayLabel}
                 </span>
                 <span className="text-muted-foreground/70 text-[9px] leading-none">
-                  {format(date, 'd.M.', { locale: dateFnsLocale })}
+                  {format(date, 'd.M.', { locale: dateLocale })}
                 </span>
                 <ForecastIcon className={`h-4 w-4 ${color}`} />
                 <div className="flex flex-col items-center leading-none">
