@@ -554,14 +554,7 @@ export function PlannerWizard({
         // Only what is being ADDED: the lunch block is already in the store
         // with an id this plan does not know, and re-filing it here would put
         // a second one on the axis.
-        stops: plannedFit.stops
-          .filter((stop) => stop.entryId === null)
-          .map((stop) => ({
-            entryId: null,
-            attractionSlug: stop.attractionSlug,
-            attractionName: stop.attractionName,
-            startMinute: stop.startMinute,
-          })),
+        stops: plannedFit.stops.filter((stop) => stop.entryId === null),
       });
     }
     /**

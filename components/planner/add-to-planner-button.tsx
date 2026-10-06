@@ -230,12 +230,7 @@ export function AddToPlannerButton({
       geo,
       timezone,
       date: filingDate,
-      stops: outcome.stops.map((stop) => ({
-        entryId: stop.entryId,
-        attractionSlug: stop.attractionSlug,
-        attractionName: stop.attractionName,
-        startMinute: stop.startMinute,
-      })),
+      stops: outcome.stops,
     });
     trackPlanOptimized(parkName);
     setActive(parkSlug, filingDate);

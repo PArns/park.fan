@@ -396,12 +396,7 @@ export function PlannerOptimizeActions({
       geo,
       timezone,
       date,
-      stops: plan.stops.map((stop) => ({
-        entryId: stop.entryId,
-        attractionSlug: stop.attractionSlug,
-        attractionName: stop.attractionName,
-        startMinute: stop.startMinute,
-      })),
+      stops: plan.stops,
     });
     trackPlanOptimized(parkName);
 
@@ -473,12 +468,7 @@ export function PlannerOptimizeActions({
       geo,
       timezone,
       date,
-      stops: outcome.stops.map((stop) => ({
-        entryId: stop.entryId,
-        attractionSlug: stop.attractionSlug,
-        attractionName: stop.attractionName,
-        startMinute: stop.startMinute,
-      })),
+      stops: outcome.stops,
     });
     trackPlanOptimized(parkName);
 
