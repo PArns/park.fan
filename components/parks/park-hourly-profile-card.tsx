@@ -94,7 +94,7 @@ export function ParkHourlyProfileCard({
 
   // Hour headers through Intl rather than a translated list: "9 Uhr" / "9 a.m." / "ore 9" are the
   // runtime's job, and the weekday names on the comparison table are already sourced this way.
-  const hourFormat = getDateTimeFormat(locale, { hour: 'numeric' });
+  const hourFormat = getDateTimeFormat(locale, { hour: 'numeric', timeZone: 'UTC' });
   const hourLabel = (h: number) => hourFormat.format(new Date(Date.UTC(2023, 0, 1, h)));
 
   if (isPending && !initialProfile) {
