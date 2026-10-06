@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { Precip, Temp } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { isWet, type WeatherRailGroup, type WeatherRailSegment } from '@/lib/planner/weather-rail';
@@ -244,9 +245,9 @@ function fillOpacity(segment: WeatherRailSegment): number {
 function labelTitle(condition: string, segment: WeatherRailSegment, locale: string): string {
   const hour = `${String(segment.hour).padStart(2, '0')}:00`;
   if (!isWet(segment)) return `${hour} · ${condition}`;
-  const mm = (segment.mm ?? 0).toLocaleString(locale, {
+  const mm = getNumberFormat(locale, {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
-  });
+  }).format(segment.mm ?? 0);
   return `${hour} · ${condition} · ${mm} mm`;
 }

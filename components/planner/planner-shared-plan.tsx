@@ -8,6 +8,7 @@ import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
 import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
 import { hasAnyPlan, plannedParks, type PlannerState } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * The page a shared-plan link opens: read somebody else's plan, then take a copy.
@@ -108,6 +109,13 @@ export function PlannerSharedPlan() {
           : { kind: 'loading' };
 
   const parks = load.kind !== 'ready' ? [] : plannedParks(load.plan.parks, locale);
+  const dayFormat = getDateTimeFormat(locale, {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 
   const adopt = (id: string, plan: PlannerState) => {
     void adoptSharedPlan(plan);
@@ -165,13 +173,7 @@ export function PlannerSharedPlan() {
               {park.days.map((day) => (
                 <li key={day.date} className="flex items-center gap-2 py-2 text-sm">
                   <span className="min-w-0 flex-1 truncate">
-                    {new Date(`${day.date}T12:00:00Z`).toLocaleDateString(locale, {
-                      weekday: 'short',
-                      day: '2-digit',
-                      month: 'long',
-                      year: 'numeric',
-                      timeZone: 'UTC',
-                    })}
+                    {dayFormat.format(new Date(`${day.date}T12:00:00Z`))}
                   </span>
                   <span className="text-muted-foreground shrink-0 text-xs">
                     {t('summary.rides', { count: day.entries.length })}

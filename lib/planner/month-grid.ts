@@ -15,6 +15,8 @@
  * notice that the columns moved.
  */
 
+import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
+
 /** A month, as `YYYY-MM`. */
 export type PlannerMonth = string;
 
@@ -118,20 +120,12 @@ export function monthMatrix(month: PlannerMonth): MonthCell[] {
 export function monthLabel(month: PlannerMonth, locale: string): string {
   const parsed = parse(month);
   if (!parsed) return month;
-  return new Date(Date.UTC(parsed.year, parsed.month - 1, 1, 12)).toLocaleDateString(locale, {
-    month: 'long',
-    year: 'numeric',
-  });
+  return getDateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
+    Date.UTC(parsed.year, parsed.month - 1, 1, 12)
+  );
 }
 
-/**
- * The seven column headers, Monday first, in the reader's language.
- *
- * Anchored on a date that IS a Monday (2024-01-01) rather than on today, so the
- * order cannot depend on when the page is rendered.
- */
+/** The seven column headers, Monday first, in the reader's language. */
 export function weekdayLabels(locale: string): string[] {
-  return Array.from({ length: 7 }, (_, index) =>
-    new Date(Date.UTC(2024, 0, 1 + index, 12)).toLocaleDateString(locale, { weekday: 'short' })
-  );
+  return Array.from({ length: 7 }, (_, index) => weekdayName((index + 1) % 7, locale, 'short'));
 }

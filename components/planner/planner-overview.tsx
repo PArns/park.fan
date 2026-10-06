@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, MapPin, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, nextPlannedDay, todayInZone } from '@/lib/planner/park-time';
 import { plannedParks, type PlannerState } from '@/lib/planner/types';
 import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confirm';
@@ -86,6 +87,7 @@ export function PlannerOverview({
    * whole trip.
    */
   const next = useMemo(() => nextPlannedDay(state), [state]);
+  const dayFormat = getDateTimeFormat(locale, { weekday: 'short', day: '2-digit', month: 'long' });
 
   const newDay = onNewDay ? (
     <div className="border-border/60 border-b px-2 py-2">
@@ -147,11 +149,7 @@ export function PlannerOverview({
                     ? t('day.today')
                     : day.date === park.tomorrow
                       ? t('day.tomorrow')
-                      : new Date(`${day.date}T12:00:00Z`).toLocaleDateString(locale, {
-                          weekday: 'short',
-                          day: '2-digit',
-                          month: 'long',
-                        });
+                      : dayFormat.format(new Date(`${day.date}T12:00:00Z`));
 
                 return (
                   <li key={day.date} className="flex items-center gap-1">

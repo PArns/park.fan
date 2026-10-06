@@ -13,6 +13,7 @@ import {
 } from '@/lib/planner/minute-tick';
 import { formatGridTime, parkMinuteNow } from '@/lib/planner/park-time';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { PHONE_TARGET_32_UP } from '@/lib/planner/touch-target';
 
 interface PlannerShowBandProps {
@@ -92,10 +93,9 @@ export function PlannerShowBand({
   // renders as the 27th for every reader west of Greenwich.
   const observedOn =
     projected && next?.observedOn
-      ? new Date(`${next.observedOn}T12:00:00Z`).toLocaleDateString(locale, {
-          day: 'numeric',
-          month: 'long',
-        })
+      ? getDateTimeFormat(locale, { day: 'numeric', month: 'long' }).format(
+          new Date(`${next.observedOn}T12:00:00Z`)
+        )
       : null;
   const label = projected ? t('shows.projected') : isToday ? t('shows.next') : t('shows.first');
 

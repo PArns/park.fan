@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerMonthCalendar } from './planner-month-calendar';
@@ -174,9 +175,7 @@ export function PlannerDayPicker({
 function dayLabel(date: string, today: string, locale: string, t: (key: string) => string): string {
   if (date === today) return t('day.today');
   if (date === addDays(today, 1)) return t('day.tomorrow');
-  return new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, {
-    weekday: 'short',
-    day: '2-digit',
-    month: '2-digit',
-  });
+  return getDateTimeFormat(locale, { weekday: 'short', day: '2-digit', month: '2-digit' }).format(
+    new Date(`${date}T12:00:00Z`)
+  );
 }

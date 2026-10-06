@@ -16,6 +16,7 @@ import {
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { PLANNER_START_ID } from '@/lib/planner/segments';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannedParks } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -75,6 +76,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
   };
 
   const total = parks.reduce((sum, park) => sum + park.days.length, 0);
+  const dayFormat = getDateTimeFormat(locale, { weekday: 'long', day: '2-digit', month: 'long' });
 
   return (
     <div className="flex flex-col gap-8">
@@ -172,11 +174,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
                         ? t('day.today')
                         : day.date === park.tomorrow
                           ? t('day.tomorrow')
-                          : new Date(`${day.date}T12:00:00Z`).toLocaleDateString(locale, {
-                              weekday: 'long',
-                              day: '2-digit',
-                              month: 'long',
-                            });
+                          : dayFormat.format(new Date(`${day.date}T12:00:00Z`));
 
                     return (
                       <li key={day.date} className="border-border/40 flex items-center border-t">
