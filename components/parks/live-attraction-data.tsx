@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { Badge } from '@/components/ui/badge';
 import { SectionHeading } from '@/components/common/section-heading';
-import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
+import { QUEUE_GLOSSARY_TERMS, QueueTypeBadge } from '@/components/parks/queue-type-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
 import { DailyWaitTimeChartPlaceholder } from '@/components/parks/daily-wait-time-chart-placeholder';
@@ -26,14 +26,6 @@ const QUEUE_TYPE_KEYS = {
   BOARDING_GROUP: 'queue.BOARDING_GROUP',
   PAID_STANDBY: 'queue.PAID_STANDBY',
 } as const satisfies Record<QueueType, string>;
-
-const QUEUE_TYPE_TERM: Partial<Record<QueueType, string>> = {
-  SINGLE_RIDER: 'single-rider',
-  RETURN_TIME: 'virtual-queue',
-  PAID_RETURN_TIME: 'lightning-lane',
-  PAID_STANDBY: 'express-pass',
-  BOARDING_GROUP: 'boarding-group',
-};
 
 const QUEUE_STATUS_KEYS = {
   OPERATING: 'queue.status.OPERATING',
@@ -213,8 +205,8 @@ export function LiveAttractionData({
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
                       <span className="font-medium">
-                        {QUEUE_TYPE_TERM[queue.queueType] ? (
-                          <GlossaryTermLink termId={QUEUE_TYPE_TERM[queue.queueType]!}>
+                        {QUEUE_GLOSSARY_TERMS[queue.queueType] ? (
+                          <GlossaryTermLink termId={QUEUE_GLOSSARY_TERMS[queue.queueType]!}>
                             {t(QUEUE_TYPE_KEYS[queue.queueType])}
                           </GlossaryTermLink>
                         ) : (

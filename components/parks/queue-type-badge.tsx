@@ -2,11 +2,12 @@ import { User, Zap, Ticket } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import type { QueueDataItem } from '@/lib/api/types';
+import type { QueueDataItem, QueueType } from '@/lib/api/types';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { formatTime } from '@/lib/utils/intl-format';
 
-const QUEUE_GLOSSARY_TERMS: Partial<Record<string, string>> = {
+/** The glossary term that explains each queue type, for the queue labels that link to it. */
+export const QUEUE_GLOSSARY_TERMS: Partial<Record<QueueType, string>> = {
   SINGLE_RIDER: 'single-rider',
   RETURN_TIME: 'virtual-queue',
   BOARDING_GROUP: 'boarding-group',
