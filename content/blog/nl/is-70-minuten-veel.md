@@ -2,6 +2,7 @@
 title: 'Hoe je ziet of 70 minuten wachten veel is'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
+updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
@@ -85,6 +86,26 @@ Deze widgets zijn er omdat in vier oudere artikelen de cijfers met de hand in
 markdowntabellen getypt stonden, verdeeld over zes talen, en die waren na een
 paar weken stilletjes uit elkaar gelopen, zoals de klokken in een
 vakantiehuisje.
+
+## Dezelfde 70 minuten op zaterdag en op dinsdag
+
+Voor Taron staan “normaal” en “druk” op de pagina van de attractie voor elke weekdag apart, en de
+weekenden springen er duidelijk uit. Zaterdag en zondag hebben de hogere waarden, dinsdag heeft de
+laagste. Met 70 minuten is het op een zaterdag dus een gewone dag bij deze attractie. Op een
+dinsdag zit je daarmee duidelijk boven wat daar normaal is.
+
+Wat normaal is, verschuift ook nog per maand. Voor het park als geheel, Taron en alle andere
+attracties samen, zijn juli en augustus de drukke maanden, en december kwam op de paar dagen die we
+hebben gemeten ongeveer even hoog uit. September is de rustigste maand die we hebben gemeten. Van
+oktober hebben we nog maar een paar dagen, omdat onze meetreeks pas in december 2025 is gestart en
+oktober 2026 net begonnen is.
+
+```stats-widget slug=phantasialand show=months
+
+```
+
+Bij de ingang staat daar niets van, alleen dat ene getal. Op de pagina van de attractie staan beide
+waarden voor vandaag, met de week dag voor dag eronder, zodat je die 70 minuten zelf kunt inschatten.
 
 ## De dag heeft een vorm
 
@@ -176,6 +197,26 @@ zegen. En bedrijfsmaanden die we uit onze eigen metingen aflezen, noemen we pas
 na 330 waarnemingsdagen. Daarvoor staat er geen enkele
 maand bij, omdat “draait van december tot april” dan de periode beschrijft
 waarin we toevallig al hebben gemeten.
+
+## Wat je met 70 minuten aan moet
+
+Staat het getal bij de ingang op of onder wat op die weekdag normaal is, dan sluit ik aan. Ligt het
+er duidelijk boven, dan loont een blik op het verloop per uur hierboven. Zie je daar voor de late
+middag of de avond een lagere waarde, dan doe je eerst een andere attractie en kom je later terug.
+Voor Taron staat op de pagina van de attractie naast het advies voor de opening ook een voor het
+einde van de dag, omdat de rij daar volgens onze metingen vlak voor sluitingstijd weer duidelijk
+korter wordt.
+
+Wie de tijd liever koopt, betaalt bij Taron 12 € voor één rit met de Quick Pass, zo staat het op de
+infopagina van Phantasialand (stand 5 oktober 2026). Je koopt hem alleen ter plekke, bij de
+gastenservice op de Kaiserplatz, en het aantal is beperkt. Bij een wachttijd die op die weekdag toch
+al normaal is, is dat zelden het geld waard. Hoe wij daarover denken en wanneer de Quick Pass
+Ultimate loont, lees je in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
+
+Voor een hele dag heb je de [dagplanner](/blog/dagplanner). Daar kies je je attracties en krijg je
+een volgorde op basis van de voorspelde wachttijden van die dag. Of ze allemaal voor sluitingstijd
+aan de beurt komen, zie je dan al voordat je vertrekt, en niet pas om vijf uur ’s middags bij de
+laatste rij.
 
 ## Waar dit allemaal staat
 

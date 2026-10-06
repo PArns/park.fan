@@ -104,7 +104,8 @@ globalThis.fetch = async (url, init) => {
   return fetchStub();
 };
 
-const { removeRideAlert, unfollowShow } = await import('../lib/push/push-follows.ts');
+const { removeRideAlert, setReopenAlert, setRideAlert, unfollowShow } =
+  await import('../lib/push/push-follows.ts');
 
 /** A `Response` with just the parts `classifyWriteFailure` reads. */
 function response(status, body = null) {
@@ -349,6 +350,52 @@ await test('a failed subscription lookup is a failure, not "nothing to delete"',
   assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
   assert.equal(calls.length, 0);
   assert.deepEqual(showFollows(), [{ showId: 's1', startTime: null }]);
+});
+
+await test('a reopen alert is sent without a threshold and replaces a wait-time alert in the mirror', async () => {
+  seed();
+  fetchStub = () => response(200, { attractionId: 'r1', kind: 'reopen', thresholdMinutes: null });
+  const result = await setReopenAlert('r1');
+  assert.equal(result.ok, true);
+  assert.deepEqual(calls[0].body, {
+    endpoint: 'https://push.example/abc',
+    attractionId: 'r1',
+    kind: 'reopen',
+  });
+  assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' }]);
+});
+
+await test('a wait-time alert replaces a reopen alert on the same ride', async () => {
+  seed({ rideAlerts: [{ attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' }] });
+  fetchStub = () => response(200, { attractionId: 'r1', kind: null, thresholdMinutes: 25 });
+  const result = await setRideAlert('r1', 25);
+  assert.equal(result.ok, true);
+  assert.deepEqual(calls[0].body, {
+    endpoint: 'https://push.example/abc',
+    attractionId: 'r1',
+    thresholdMinutes: 25,
+  });
+  assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 25 }]);
+});
+
+await test('a failed reopen write leaves the mirror alone', async () => {
+  seed();
+  fetchStub = () => response(400);
+  const result = await setReopenAlert('r1');
+  assert.equal(result.ok, false);
+  assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
+});
+
+await test('a reopen entry survives a reload and is removed like any other', async () => {
+  seed({
+    rideAlerts: [
+      { attractionId: 'r1', thresholdMinutes: null, kind: 'reopen' },
+      { attractionId: 'r2', thresholdMinutes: 20 },
+    ],
+  });
+  fetchStub = () => response(204);
+  await removeRideAlert('r1');
+  assert.deepEqual(rideAlerts(), [{ attractionId: 'r2', thresholdMinutes: 20 }]);
 });
 
 console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);

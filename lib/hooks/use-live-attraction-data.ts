@@ -90,6 +90,9 @@ export function useLiveAttractionData({
           // would keep accusing its operator of a breakdown until the shell is rebuilt, for as
           // long as the tab is open.
           outage: detail.outage,
+          // Same rule as `outage`, one line up: always the key, never a `??`
+          // onto the day-cached shell.
+          notRunToday: detail.notRunToday ?? null,
           queues: detail.queues ?? shellAttraction.queues,
           statistics: detail.statistics ?? shellAttraction.statistics,
           trend: detail.trend ?? shellAttraction.trend,

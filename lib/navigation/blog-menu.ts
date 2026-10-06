@@ -8,12 +8,12 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 /**
  * What the blog menu shows, and what it deliberately leaves out.
  *
- * The blog currently holds 16 articles per locale across **3 categories** (guides, behind-the-
- * scenes, new on park.fan), a few dozen tags and one author. News is not in it: news has its own
- * bar entry and panel (`lib/navigation/news-menu.ts`), and neither panel lists the other's posts.
- * So:
+ * The blog currently holds 24 articles per locale across **4 categories** (guides, new
+ * attractions, behind-the-scenes, new on park.fan), a few dozen tags and one author. News is not
+ * in it: news has its own bar entry and panel (`lib/navigation/news-menu.ts`), and neither panel
+ * lists the other's posts. So:
  *
- * - **Categories are in.** Three stable hubs; that is what a template link is for. The news
+ * - **Categories are in.** Four stable hubs; that is what a template link is for. The news
  *   category is not one of them — `buildCategoryTree` holds articles only.
  * - **The newest articles are in.** Five links (`RECENT_LIMIT` below), server-rendered. At this
  *   publishing rate the "the template's link set changes with every post" objection costs
@@ -23,7 +23,7 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
  * - **Tags are out, and this is the whole reason the panel is small.** 31 tag pages for 7 posts
  *   means most of them are one post's teaser under a different URL. Promoting that set into a
  *   template that runs on ~35,000 pages would hand sitewide weight to precisely the pages worth
- *   the least, and would dilute what the three category hubs get. Tags stay where they belong: on
+ *   the least, and would dilute what the four category hubs get. Tags stay where they belong: on
  *   the posts that carry them.
  *
  * No API call anywhere in here — both sources are the generated blog manifest, read synchronously

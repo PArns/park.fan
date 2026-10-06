@@ -813,8 +813,23 @@
         "recovery": "Alrededor del {percent} % se resolvió en una hora.",
         "recoveryOnly": "De las averías que ya habían durado tanto, alrededor del {percent} % volvió a estar en servicio en una hora."
       },
+      "estimateClosed": {
+        "range": "Las paradas como esta solían durar entre {from} y {to} más.",
+        "rangeOpen": "Las paradas como esta solían durar más de {from} más.",
+        "clockRange": "Las paradas como esta solían terminar entre {from} y {to}.",
+        "clockRangeOpen": "Las paradas como esta no solían terminar antes de {from}.",
+        "recovery": "Alrededor del {percent} % terminó en una hora.",
+        "recoveryOnly": "De las paradas que ya habían durado tanto, alrededor del {percent} % terminó en una hora."
+      },
       "sinceClosed": "Parada desde {when}",
       "startUnknownClosed": "Parada, inicio desconocido"
+    },
+    "notRunToday": {
+      "title": "Hoy aún no ha funcionado",
+      "lastRun": "Funcionó por última vez: {when}"
+    },
+    "rideStatus": {
+      "weekdayTime": "el {weekday} a las {time}"
     },
     "noLiveWaitTimes": {
       "title": "No hay tiempos de espera disponibles",
@@ -1895,7 +1910,7 @@
       "viewAll": "Mis avisos"
     },
     "rideBell": {
-      "setAlert": "Configurar aviso de tiempo de espera para {name}",
+      "setAlert": "Configurar aviso para {name}",
       "alerted": "Aviso activo para {name} – toca para editarlo"
     },
     "rideDialog": {
@@ -1923,7 +1938,12 @@
       "retired": "Retirada",
       "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
       "todayOnly": "Solo es válido para hoy: para otro día de visita hay que configurarlo de nuevo.",
-      "loadError": "No se pudieron cargar tus avisos."
+      "loadError": "No se pudieron cargar tus avisos.",
+      "kindLabel": "¿Sobre qué quieres que avise?",
+      "kindWait": "Espera bajo un límite",
+      "kindReopen": "Avisarme cuando reabra",
+      "reopenLabel": "cuando reabra",
+      "reopenHint": "Un mensaje en cuanto la atracción vuelva a funcionar tras un cierre o una avería."
     },
     "overview": {
       "title": "Mis avisos",
@@ -1939,7 +1959,8 @@
       "retired": "Retirada",
       "loadError": "No se pudo cargar la lista. Recarga la página.",
       "showAt": "a las {time}",
-      "showNextAny": "próxima función"
+      "showNextAny": "próxima función",
+      "reopenLabel": "cuando reabra"
     },
     "menu": {
       "link": "Mis avisos",
@@ -1950,7 +1971,8 @@
       "remove": "{name}: quitar aviso",
       "removeError": "No se pudo quitar el aviso y sigue activo. Inténtalo de nuevo.",
       "removeRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
-      "loadError": "No se pudieron cargar tus avisos."
+      "loadError": "No se pudieron cargar tus avisos.",
+      "reopen": "cuando reabra"
     },
     "pushErrors": {
       "generic": "No ha funcionado. Inténtalo de nuevo.",
@@ -2793,6 +2815,29 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    }
+  },
+  "compare": {
+    "kicker": "park.fan · Comparador de parques",
+    "title": "Dos parques, uno junto al otro",
+    "subtitle": "Espera habitual, cola más larga y día de la semana más tranquilo de los últimos dos años. Elige de dos a cuatro parques; la elección queda en el enlace.",
+    "action": "Elegir parques",
+    "meta": {
+      "title": "Comparar parques: esperas una junto a otra",
+      "description": "Elige de dos a cuatro parques temáticos y mira la espera habitual, la cola más larga y el día más tranquilo en una sola tabla."
+    },
+    "tool": {
+      "pickerTitle": "Elegir parques",
+      "count": "{count} de {max}",
+      "remove": "Quitar {park}",
+      "placeholder": "Buscar un parque …",
+      "searching": "Buscando …",
+      "noResults": "No se encontró ningún parque.",
+      "chosen": "elegido",
+      "full": "Más de {max} parques no caben en la tabla. Quita uno para elegir otro.",
+      "empty": "Elige de dos a cuatro parques y aparece la tabla.",
+      "second": "Elige un segundo parque para comparar.",
+      "noStats": "Todavía no hay mediciones de {parks}."
     }
   }
 }

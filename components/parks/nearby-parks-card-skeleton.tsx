@@ -6,6 +6,7 @@ import { NearbyHeading } from '@/components/parks/nearby-heading';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { HOME_NEARBY_LIMIT } from '@/lib/hooks/use-nearby-parks';
 import { cn } from '@/lib/utils';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 /**
  * Placeholder that mirrors the NearbyParksCard "nearby parks" layout 1:1 — heading + subtitle +
@@ -33,9 +34,9 @@ export function NearbyParksCardSkeleton({
   const t = useTranslations('nearby');
 
   return (
-    // mt-8 mirrors NearbyParksCard's TOP_SPACING so the swap to the live parks list keeps the
+    // CHAPTER_GAP_COMPACT mirrors NearbyParksCard's TOP_SPACING so the swap to the live parks list keeps the
     // same gap under the hero (no layout shift). The in-park banner is full-bleed and exempt.
-    <section className={cn('mt-8', className)} aria-hidden="true">
+    <section className={cn(CHAPTER_GAP_COMPACT, className)} aria-hidden="true">
       {/* The real heading, and the real TEXT, not a grey bar: the title needs no data, and a
           `<h2>` whose only child was a `Skeleton` put an empty heading into the document
           outline — twice, since the streamed HTML carries the fallback and the resolved copy

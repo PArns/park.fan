@@ -7,6 +7,7 @@ import { MapPin, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { getCountryName } from '@/lib/utils/region-names';
 import { cn } from '@/lib/utils';
+import { parkHits } from '@/lib/utils/search-park-hits';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 /** `/api/search` answers an empty set below this, so asking earlier is a lie. */
@@ -266,45 +267,4 @@ export function PlannerParkSearch({
 function countryLabel(park: ParkHit, locale: string): string | undefined {
   if (!park.countryCode) return park.country;
   return getCountryName(park.countryCode, locale);
-}
-
-/**
- * Park hits out of the search payload, with their geo read off the API's own URL.
- *
- * `/v1/parks/<continent>/<country>/<city>/<park>` — four slugs, taken rather than
- * derived. A result whose URL does not have that shape is dropped: a park filed
- * under a guessed path is a plan pointing at a 404.
- */
-function parkHits(data: unknown): ParkHit[] {
-  const list = Array.isArray(data)
-    ? data
-    : Array.isArray((data as { results?: unknown[] })?.results)
-      ? ((data as { results: unknown[] }).results ?? [])
-      : [];
-
-  const out: ParkHit[] = [];
-  for (const raw of list) {
-    const hit = raw as Record<string, unknown>;
-    if (hit.type !== 'park') continue;
-    if (typeof hit.slug !== 'string' || typeof hit.name !== 'string') continue;
-    if (typeof hit.url !== 'string') continue;
-
-    const parts = hit.url.split('/').filter(Boolean);
-    const parksAt = parts.indexOf('parks');
-    if (parksAt === -1) continue;
-    const geoParts = parts.slice(parksAt + 1);
-    if (geoParts.length < 4) continue;
-
-    out.push({
-      slug: hit.slug,
-      name: hit.name,
-      geo: { continent: geoParts[0], country: geoParts[1], city: geoParts[2] },
-      city: typeof hit.city === 'string' ? hit.city : undefined,
-      country: typeof hit.country === 'string' ? hit.country : undefined,
-      countryCode: typeof hit.countryCode === 'string' ? hit.countryCode : undefined,
-      imageUrl: typeof hit.imageUrl === 'string' ? hit.imageUrl : undefined,
-      imagePosition: typeof hit.imagePosition === 'string' ? hit.imagePosition : undefined,
-    });
-  }
-  return out;
 }

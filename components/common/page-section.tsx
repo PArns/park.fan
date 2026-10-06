@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { SectionHeading } from '@/components/common/section-heading';
 import { cn } from '@/lib/utils';
+import { CHAPTER_GAP } from '@/components/common/chapter-spacing';
 
 interface PageSectionProps {
   /** Chapter icon — the section's visual anchor. */
@@ -45,7 +46,7 @@ export function PageSection({
   children,
 }: PageSectionProps) {
   return (
-    <section id={id} className={cn('mt-10 max-sm:mt-6', id && 'scroll-mt-24', className)}>
+    <section id={id} className={cn(CHAPTER_GAP, id && 'scroll-mt-24', className)}>
       <SectionHeading icon={icon} title={title} hint={hint} badge={badge} frosted={frosted} />
       {children}
     </section>

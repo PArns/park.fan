@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Bell, Check, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -22,6 +23,7 @@ import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami'
 import {
   fetchRideAlertsRemote,
   removeRideAlert,
+  setReopenAlert,
   setRideAlert,
   type PushWriteError,
   type RideAlertRemote,
@@ -34,8 +36,10 @@ import {
 } from '@/components/push/threshold-minutes-input';
 import {
   filterRideAlertPickerRows,
+  isReopenAlert,
   resolveRideAlertSelection,
   rideAlertPickerRows,
+  type RideAlertPickerKind,
 } from '@/lib/push/ride-alert-picker';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
@@ -63,6 +67,11 @@ interface RideAlertDialogProps {
    * back to the first ride that can take one.
    */
   initialAttractionId?: string;
+  /**
+   * Whether the park's wait times can be read (`hasReadableWaitTimes`). Without a source nothing
+   * can ever report a ride opening, and the API refuses the alert, so the option is not drawn.
+   */
+  reopenAvailable: boolean;
 }
 
 /**
@@ -81,6 +90,7 @@ export function RideAlertDialog({
   parkName,
   attractions,
   initialAttractionId,
+  reopenAvailable,
 }: RideAlertDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
   const locale = useLocale();
@@ -93,6 +103,9 @@ export function RideAlertDialog({
   const [query, setQuery] = useState('');
   const [thresholdRaw, setThresholdRaw] = useState('');
   const threshold = parseThresholdMinutes(thresholdRaw);
+  // A ride has one alert, of one kind: the API replaces the other kind on a write.
+  const [pickedKind, setPickedKind] = useState<RideAlertPickerKind>('wait');
+  const kind: RideAlertPickerKind = reopenAvailable ? pickedKind : 'wait';
   const [adding, setAdding] = useState(false);
   /**
    * The rides currently being removed — a set, not one key, and their failures keyed the same
@@ -142,8 +155,8 @@ export function RideAlertDialog({
     [alerts]
   );
   const rows = useMemo(
-    () => rideAlertPickerRows(attractions, alertedIds, locale),
-    [attractions, alertedIds, locale]
+    () => rideAlertPickerRows(attractions, alertedIds, locale, kind),
+    [attractions, alertedIds, locale, kind]
   );
   const visibleRows = useMemo(() => filterRideAlertPickerRows(rows, query), [rows, query]);
 
@@ -188,10 +201,13 @@ export function RideAlertDialog({
     // Defensive, not the real gate — the button below is already disabled
     // while `threshold` is null, but a cleared field must never reach the
     // API as the `Number('') === 0` it would otherwise silently become.
-    if (!attraction || threshold === null) return;
+    if (!attraction || (kind === 'wait' && threshold === null)) return;
     setAdding(true);
     setAddError(null);
-    const result = await setRideAlert(attraction.id, threshold);
+    const result =
+      kind === 'reopen'
+        ? await setReopenAlert(attraction.id)
+        : await setRideAlert(attraction.id, threshold!);
     setAdding(false);
     if (!result.ok) {
       setAddError(result.error);
@@ -278,7 +294,9 @@ export function RideAlertDialog({
                         )}
                       </div>
                       <p className="text-muted-foreground text-xs">
-                        {t('thresholdLabel', { minutes: alert.thresholdMinutes })}
+                        {isReopenAlert(alert) || alert.thresholdMinutes === null
+                          ? t('reopenLabel')
+                          : t('thresholdLabel', { minutes: alert.thresholdMinutes })}
                       </p>
                       {/* Beside the alert it is about — this list can be a dozen rides long, and
                           a sentence under the whole list would name none of them. `role="alert"`
@@ -313,6 +331,24 @@ export function RideAlertDialog({
                 )}
               >
                 <p className="text-xs font-medium">{t('addTitle')}</p>
+                {reopenAvailable && (
+                  <Tabs
+                    value={kind}
+                    onValueChange={(value) => setPickedKind(value as RideAlertPickerKind)}
+                  >
+                    <TabsList
+                      aria-label={t('kindLabel')}
+                      className="h-auto w-full items-stretch max-sm:p-1"
+                    >
+                      <TabsTrigger value="wait" className="h-auto py-1.5 whitespace-normal">
+                        {t('kindWait')}
+                      </TabsTrigger>
+                      <TabsTrigger value="reopen" className="h-auto py-1.5 whitespace-normal">
+                        {t('kindReopen')}
+                      </TabsTrigger>
+                    </TabsList>
+                  </Tabs>
+                )}
                 {/* The list filters itself (`shouldFilter={false}`): cmdk's own
                     matcher scores fuzzy subsequences, so "tar" would also find
                     rides that merely contain a t, an a and an r in that order. */}
@@ -383,7 +419,12 @@ export function RideAlertDialog({
                 {/* No slider while no ride is picked — which happens only when
                     every ride left in the list is too short a queue for an alert.
                     A track drawn for nothing would read as a choice. */}
-                {selectedId && (
+                {selectedId && kind === 'reopen' && (
+                  <p className="text-muted-foreground text-[11px] leading-snug">
+                    {t('reopenHint')}
+                  </p>
+                )}
+                {selectedId && kind === 'wait' && (
                   <div className="flex flex-col gap-1.5">
                     <span className="text-muted-foreground text-xs">{t('thresholdInput')}</span>
                     <ThresholdMinutesInput
@@ -406,7 +447,7 @@ export function RideAlertDialog({
                 <Button
                   type="button"
                   onClick={handleAdd}
-                  disabled={!selectedId || adding || threshold === null}
+                  disabled={!selectedId || adding || (kind === 'wait' && threshold === null)}
                   size="sm"
                   className="self-start"
                 >

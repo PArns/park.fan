@@ -813,8 +813,23 @@
         "recovery": "Environ {percent} % étaient résolues en une heure.",
         "recoveryOnly": "Parmi les pannes durant déjà aussi longtemps, environ {percent} % étaient de nouveau signalées en service en une heure."
       },
+      "estimateClosed": {
+        "range": "Les arrêts de ce type duraient encore {from} à {to} en général.",
+        "rangeOpen": "Les arrêts de ce type duraient encore plus de {from} en général.",
+        "clockRange": "Les arrêts de ce type prenaient en général fin entre {from} et {to}.",
+        "clockRangeOpen": "Les arrêts de ce type ne prenaient en général pas fin avant {from}.",
+        "recovery": "Environ {percent} % avaient pris fin en une heure.",
+        "recoveryOnly": "Parmi les arrêts durant déjà aussi longtemps, environ {percent} % avaient pris fin en une heure."
+      },
       "sinceClosed": "À l'arrêt depuis {when}",
       "startUnknownClosed": "À l'arrêt, début inconnu"
+    },
+    "notRunToday": {
+      "title": "Pas encore en service aujourd'hui",
+      "lastRun": "En service pour la dernière fois : {when}"
+    },
+    "rideStatus": {
+      "weekdayTime": "{weekday} à {time}"
     },
     "noLiveWaitTimes": {
       "title": "Pas de temps d’attente disponibles",
@@ -1895,7 +1910,7 @@
       "viewAll": "Mes alertes"
     },
     "rideBell": {
-      "setAlert": "Configurer une alerte de temps d’attente pour {name}",
+      "setAlert": "Configurer une alerte pour {name}",
       "alerted": "Alerte active pour {name} – toucher pour modifier"
     },
     "rideDialog": {
@@ -1923,7 +1938,12 @@
       "retired": "Démonté",
       "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
       "todayOnly": "Valable pour aujourd’hui seulement – à configurer de nouveau pour un autre jour de visite.",
-      "loadError": "Impossible de charger vos alertes."
+      "loadError": "Impossible de charger vos alertes.",
+      "kindLabel": "Que doit signaler l’alerte ?",
+      "kindWait": "Attente sous un seuil",
+      "kindReopen": "Me prévenir à la réouverture",
+      "reopenLabel": "à la réouverture",
+      "reopenHint": "Un message dès que l’attraction refonctionne après une fermeture ou une panne."
     },
     "overview": {
       "title": "Mes alertes",
@@ -1939,7 +1959,8 @@
       "retired": "Démonté",
       "loadError": "Impossible de charger la liste. Veuillez recharger la page.",
       "showAt": "à {time}",
-      "showNextAny": "prochaine séance"
+      "showNextAny": "prochaine séance",
+      "reopenLabel": "à la réouverture"
     },
     "menu": {
       "link": "Mes alertes",
@@ -1950,7 +1971,8 @@
       "remove": "{name} : supprimer l’alerte",
       "removeError": "Impossible de supprimer l’alerte, elle est toujours active. Merci de réessayer.",
       "removeRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
-      "loadError": "Impossible de charger vos alertes."
+      "loadError": "Impossible de charger vos alertes.",
+      "reopen": "à la réouverture"
     },
     "pushErrors": {
       "generic": "Ça n’a pas fonctionné. Merci de réessayer.",
@@ -2793,6 +2815,29 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    }
+  },
+  "compare": {
+    "kicker": "park.fan · Comparatif de parcs",
+    "title": "Deux parcs côte à côte",
+    "subtitle": "Attente habituelle, file la plus longue et jour de semaine le plus calme sur les deux dernières années. Choisissez deux à quatre parcs ; le choix figure dans le lien.",
+    "action": "Choisir des parcs",
+    "meta": {
+      "title": "Comparer des parcs : les attentes côte à côte",
+      "description": "Choisissez deux à quatre parcs d’attractions et lisez l’attente habituelle, la file la plus longue et le jour le plus calme dans un seul tableau."
+    },
+    "tool": {
+      "pickerTitle": "Choisir des parcs",
+      "count": "{count} sur {max}",
+      "remove": "Retirer {park}",
+      "placeholder": "Chercher un parc …",
+      "searching": "Recherche …",
+      "noResults": "Aucun parc trouvé.",
+      "chosen": "choisi",
+      "full": "Plus de {max} parcs ne tiennent pas dans le tableau. Retirez-en un pour en choisir un autre.",
+      "empty": "Choisissez deux à quatre parcs et le tableau apparaît.",
+      "second": "Choisissez un deuxième parc pour comparer.",
+      "noStats": "{count, plural, one {Il n’y a pas encore de mesure pour {parks}.} other {Il n’y a pas encore de mesures pour {parks}.}}"
     }
   }
 }

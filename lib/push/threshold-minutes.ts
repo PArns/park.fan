@@ -89,7 +89,9 @@ export function defaultThresholdFor(currentWaitTime: number | null | undefined):
  *
  * The reading is rounded first because a live wait time is always a multiple
  * of five (parks post them that way — see `roundWaitTo5`), which keeps the
- * result on the slider's own grid without a second round.
+ * result on the slider's own grid without a second round. Disney's 13-minute
+ * walk-on is the one reading that is not, and ten under it is 3, which the
+ * floor below lifts to 5 — still on the grid.
  *
  * With no reading to work from — closed, out of season, or never reported —
  * the cap is the API's own maximum: there is nothing to say the visitor is
