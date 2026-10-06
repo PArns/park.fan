@@ -34,6 +34,7 @@ import {
 } from '@/lib/utils/weather-chart-axis';
 import type { ScheduleItem, WeatherHourlyPoint, WeatherNowcast } from '@/lib/api/types';
 import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatTempWithUnit } from '@/lib/utils/temperature';
 
 interface WeatherHourlyChartProps {
   /** Today's hourly points (naive park-local times, ascending). */
@@ -481,6 +482,12 @@ export function WeatherHourlyChart({
         minute: '2-digit',
         timeZone: 'UTC',
       });
+      // An attribute cannot follow the CSS unit switch, so the label names both scales, as the
+      // heat-warning label does.
+      const temp =
+        p.temperatureC != null
+          ? `${formatTempWithUnit(p.temperatureC, 'C')} (${formatTempWithUnit(p.temperatureC, 'F')}) · `
+          : '';
       return {
         time: p.time,
         timeLabel: time,
@@ -488,7 +495,7 @@ export function WeatherHourlyChart({
         width: xEdge(i + 1) - xEdge(i),
         barPct: mm > 0 ? Math.min(RAIN_AREA_PCT, Math.max(8, (mm / rainScale) * RAIN_AREA_PCT)) : 0,
         hour: hours[i],
-        ariaLabel: `${time} · ${p.temperatureC != null ? `${Math.round(p.temperatureC)}°C · ` : ''}${mm.toFixed(1)} mm${
+        ariaLabel: `${time} · ${temp}${mm.toFixed(1)} mm${
           prob != null ? ` · ${prob}% ${tNowcast('precipProbability')}` : ''
         }`,
         weatherCode: p.weatherCode ?? 0,
