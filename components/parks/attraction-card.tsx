@@ -357,6 +357,7 @@ export function AttractionCard({
                 backgroundImage={backgroundImage}
                 objectPosition={objectPosition}
                 currentWaitTime={waitTime}
+                status={status}
               />
             )}
             <GlassCircle>

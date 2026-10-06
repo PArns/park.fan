@@ -1922,6 +1922,7 @@
       "remove": "Supprimer {name}",
       "addTitle": "Ajouter une alerte",
       "selectRide": "Choisir une attraction",
+      "otherRide": "Autre attraction",
       "searchRide": "Rechercher une attraction",
       "noRideFound": "Aucune attraction de ce nom.",
       "noQueueNow": "Pas d’attente en ce moment",

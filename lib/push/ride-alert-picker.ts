@@ -10,6 +10,27 @@ export interface RideAlertPickerAttraction {
   id: string;
   name: string;
   currentWaitTime?: number | null;
+  /** The ride's live status. A stopped ride can take the reopen alert, whatever its queue reads. */
+  status?: string | null;
+}
+
+/** Statuses that mean the ride is not running and may come back: the reopen alert's subject. */
+const STOPPED_STATUSES: ReadonlySet<string> = new Set(['DOWN', 'CLOSED', 'REFURBISHMENT']);
+
+/** Whether the ride stands (`DOWN`, `CLOSED`, `REFURBISHMENT`) and so has a reopening to wait for. */
+export function isStoppedRide(attraction: { status?: string | null }): boolean {
+  return attraction.status != null && STOPPED_STATUSES.has(attraction.status);
+}
+
+/**
+ * The alert kinds a ride offers. A running ride has only the wait-time alert; a stopped one,
+ * where the park's wait times can be read, has both — and the reopening is the one to pick first.
+ */
+export function rideAlertKindsFor(
+  attraction: { status?: string | null } | undefined,
+  reopenAvailable: boolean
+): readonly RideAlertPickerKind[] {
+  return reopenAvailable && attraction && isStoppedRide(attraction) ? ['reopen', 'wait'] : ['wait'];
 }
 
 /** Which alert the add-form is filling in. `reopen` is "tell me when it opens again". */
@@ -42,15 +63,18 @@ export function rideAlertPickerRows<T extends RideAlertPickerAttraction>(
   attractions: readonly T[],
   alertedIds: ReadonlySet<string>,
   locale: string,
-  kind: RideAlertPickerKind = 'wait'
+  reopenAvailable = false
 ): RideAlertPickerRow<T>[] {
   return attractions
     .filter((a) => !alertedIds.has(a.id))
     .sort((a, b) => a.name.localeCompare(b.name, locale))
     .map((attraction) => ({
       attraction,
-      // A reopen alert has no threshold to fit under the queue, so no queue is too short for it.
-      selectable: kind === 'reopen' || hasUsableThresholdRange(attraction.currentWaitTime),
+      // A stopped ride offers the reopen alert, which has no threshold to fit under the queue,
+      // so no queue is too short for it.
+      selectable:
+        (reopenAvailable && isStoppedRide(attraction)) ||
+        hasUsableThresholdRange(attraction.currentWaitTime),
     }));
 }
 

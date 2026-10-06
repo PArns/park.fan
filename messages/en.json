@@ -1922,6 +1922,7 @@
       "remove": "Remove {name}",
       "addTitle": "Add a new alert",
       "selectRide": "Choose a ride",
+      "otherRide": "Other ride",
       "searchRide": "Search rides",
       "noRideFound": "No ride by that name.",
       "noQueueNow": "No queue right now",
