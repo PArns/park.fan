@@ -46,11 +46,6 @@ function setTripId(id: string | null): void {
   }
 }
 
-/** What goes on the wire: the plan, and nothing this file adds to it. */
-function payloadOf(state: PlannerState): Record<string, unknown> {
-  return state as unknown as Record<string, unknown>;
-}
-
 /**
  * Why the plan did not reach the server.
  *
@@ -125,8 +120,7 @@ export type TripSyncResult =
  */
 export async function syncTrip(): Promise<TripSyncResult> {
   const epoch = forgetCount;
-  const state = plannerStore.getSnapshot();
-  const payload = payloadOf(state);
+  const payload = plannerStore.getSnapshot();
   const existing = getTripId();
 
   if (existing) {
@@ -197,7 +191,7 @@ const SUPERSEDED: TripSyncResult = { ok: false, error: { reason: 'network' } };
 
 async function put(
   id: string,
-  payload: Record<string, unknown>
+  payload: PlannerState
 ): Promise<{ ok: true } | { ok: false; error: HttpWriteError }> {
   try {
     const response = await fetch(`/api/trips/${id}`, {
@@ -220,7 +214,7 @@ async function put(
  * may well have landed, but this browser cannot name what it landed as, which
  * is the same dead end as no answer at all.
  */
-async function post(payload: Record<string, unknown>): Promise<TripSyncResult> {
+async function post(payload: PlannerState): Promise<TripSyncResult> {
   try {
     const response = await fetch('/api/trips', {
       method: 'POST',
