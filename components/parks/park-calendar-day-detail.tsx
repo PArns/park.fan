@@ -5,7 +5,7 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import {
   Ban,
   ChevronLeft,
@@ -47,7 +47,14 @@ import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 
-const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
+// Intl, not a date-fns pattern: a pattern fixes one language's word order for all six.
+const TITLE_FORMAT: Intl.DateTimeFormatOptions = {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+};
 
 /**
  * Bar colour per crowd level for the hourly forecast mini-chart.
@@ -110,7 +117,6 @@ export function ParkCalendarDayDetail({
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
-  const dateLocale = DATE_LOCALES[locale as keyof typeof DATE_LOCALES] ?? enUS;
 
   // Retain the last non-null day so a nav step (parent fetches the target day → `day` is
   // briefly null) dims the open dialog instead of unmounting it. Render-phase derived-state
@@ -164,8 +170,10 @@ export function ParkCalendarDayDetail({
 
   if (!day) return null;
 
-  const dayDate = parseISO(day.date);
-  const title = format(dayDate, 'EEEE, d. MMMM yyyy', { locale: dateLocale });
+  const [year, month, dayOfMonth] = day.date.split('-').map(Number);
+  const title = getDateTimeFormat(locale, TITLE_FORMAT).format(
+    Date.UTC(year, month - 1, dayOfMonth)
+  );
 
   const isClosed = day.status === 'CLOSED';
   const statusLabel = isClosed
